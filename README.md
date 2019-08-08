@@ -64,16 +64,15 @@ Originally made this as a console application for personal use before working on
 ### Other Applications
 * in the works.
 
-_I'm not officially affiliated with unity, godot, bizhawk, shadertoy._
+**_I'm not officially affiliated with unity, godot, bizhawk, shadertoy;_**
 ## Issues & roadmap
 #### Priority:-
 * Passing input to child window turned out to be not as simple as using SetForegroundWindow, currently bizhawk uses its own keyhook & I did simple left click on chromium. Complete mouse & keyboard(optional) will need to be implemented next.
 * Unity games compiled with "run in background" disabled will pause since its not in focus, need to find a solution.
-* I'm just loading a blank page in chromium to pause; have to decide whether to minimize or write a function to retrieve processid of cef to pause the thread.
+* ~~I'm just loading a blank page in chromium to pause; have to decide whether to minimize or write a function to retrieve processid of cef to pause the thread.~~ Currently minimizing browser window to pause rendering, works in my limited testing scenario.. if not good enough will have to get the pid of cefsharp & force pause.
 * VLC stutters for higher resolution video(4k etc) on some low-end systems if the gpu downclocks too much(power saving). Turning off hw acceleration or setting lively to high performance power mode in gpu control panel fixes this.
 * Multimonitor systems not tested.
-* Currently minimizing browser window to pause rendering, works in my limited testing scenario.. if not good enough will have to get the pid of cefsharp & force pause.
-* Currently loading a fullscreen embedded instance of shadertoy links, there is room for much improvements.
+* Currently loading a fullscreen embedded instance of shadertoy links, there is room for much optimisation.
 #### Not priority:-
 * UI rework, ditch winform?
 * Library & Playlist.
