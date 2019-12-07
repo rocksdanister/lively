@@ -1,0 +1,18 @@
+﻿<Window x:Class="livelywpf.HelpWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:livelywpf"
+        xmlns:p = "clr-namespace:livelywpf.Properties"
+        mc:Ignorable="d"
+        Title="{x:Static p:Resources.txtHelp}" MinHeight="720" MinWidth="1100" Height="620" Width="1100" ShowInTaskbar="True" Topmost="True" ResizeMode="NoResize" Closing="Window_Closing">
+    <Grid >
+        <Border BorderBrush="#FF879F15" BorderThickness="1" Margin="10,10,10,48" >
+            <MediaElement Name="mePlayer" />
+        </Border>
+        <TextBlock Canvas.Left="241" Canvas.Top="98" FontSize="20" Margin="10,648,0,9" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="DemiBold">
+        <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://github.com/rocksdanister/lively/wiki" Foreground="#FF85A912" >www.github.com/rocksdanister/lively/wiki</Hyperlink>
+        </TextBlock>
+    </Grid>
+</Window>

@@ -1,0 +1,21 @@
+﻿<Window x:Class="livelywpf.WebWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:livelywpf"
+        mc:Ignorable="d"
+        Title="WebWindow" Height="450" Width="800"
+        WindowStyle="None"
+        AllowsTransparency="True" Closing="Window_Closing" Loaded="Window_Loaded"
+        >
+    <Grid Name="webGrid">
+        <WindowsFormsHost>
+            <!--
+        <cefSharp:ChromiumWebBrowser Grid.Row="0"
+
+        Address="https://github.com/cefsharp/CefSharp/wiki/Frequently-asked-questions" />
+        -->
+        </WindowsFormsHost>
+    </Grid>
+</Window>

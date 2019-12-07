@@ -1,0 +1,689 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="cmbBoxAllDisplays" xml:space="preserve">
+    <value> सभी प्रदर्शन (s) </value>
+  </data>
+  <data name="cmbBoxGIFPlayer1" xml:space="preserve">
+    <value>XamlAnimatedGif</value>
+  </data>
+  <data name="cmbBoxGIFPlayer1ToolTip" xml:space="preserve">
+    <value> कम मेमोरी उपयोग, उच्च सीपीयू उपयोग </value>
+  </data>
+  <data name="cmbBoxGIFPlayer2" xml:space="preserve">
+    <value>डायरेक्टशो</value>
+  </data>
+  <data name="cmbBoxGIFPlayer2ToolTip" xml:space="preserve">
+    <value> कम सीपीयू उपयोग (कोडेक सेटिंग्स के आधार पर) </value>
+  </data>
+  <data name="cmbBoxKill" xml:space="preserve">
+    <value> किल (फ्री मेमोरी) </value>
+  </data>
+  <data name="cmbBoxNothing" xml:space="preserve">
+    <value>कुछ भी नहीं है</value>
+  </data>
+  <data name="cmbBoxPaugeAlgorithmAllProcess" xml:space="preserve">
+    <value> सभी प्रक्रियाएँ (प्रायोगिक) </value>
+  </data>
+  <data name="cmbBoxPause" xml:space="preserve">
+    <value>रोकें</value>
+  </data>
+  <data name="cmbBoxPauseAlgorithmForeground" xml:space="preserve">
+    <value>अग्रभूमि प्रक्रिया</value>
+  </data>
+  <data name="cmbBoxPerDisplay" xml:space="preserve">
+    <value> प्रति प्रदर्शन </value>
+  </data>
+  <data name="cmbBoxSpan" xml:space="preserve">
+    <value>स्पैन (प्रायोगिक)</value>
+  </data>
+  <data name="cmbBoxVideoPlayer1" xml:space="preserve">
+    <value> Media Foundation </value>
+  </data>
+  <data name="cmbBoxVideoPlayer2" xml:space="preserve">
+    <value> DirectShow (Lav, ffdshow ..) </value>
+  </data>
+ <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="license" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\docs\license.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="msgAppCommandLineArgs" xml:space="preserve">
+    <value> यदि कोई हो, तो आवेदन के लिए कमांडलाइन तर्क दर्ज करें (यदि कोई हो तो खाली छोड़ दें): - </value>
+  </data>
+  <data name="msgAppCommandLineArgsTitle" xml:space="preserve">
+    <value>आरंभ तर्क</value>
+  </data>
+  <data name="msgAppGUIFailure" xml:space="preserve">
+    <value> चयनित वॉलपेपर (एप्लिकेशन) का कोई ग्राफ़िकल उपयोगकर्ता इंटरफ़ेस (GUI) नहीं है।
+आवेदन समाप्त ... </value>
+  </data>
+  <data name="msgAppTimeout" xml:space="preserve">
+    <value> एप्लिकेशन विंडो को पकड़ने में विफल।
+वॉलपेपर (एप्लिकेशन) को शुरू होने में बहुत अधिक समय लग रहा है (~ 30sec से अधिक), इसकी वजह यह हो सकती है:
+वायरस स्कैन / एप्लिकेशन बहुत बड़ा है।
+प्रतीक्षा करें &amp; पुनः प्रयास करें। (वैकल्पिक रूप से आप प्रतीक्षा समय को संपादित कर सकते हैं, अधिक जानकारी के लिए विकी देखें।)
+आवेदन समाप्त ... </value>
+  </data>
+  <data name="msgDamangedLivelyFile" xml:space="preserve">
+    <value> क्षतिग्रस्त वॉलपेपर फ़ाइल, पुनः डाउनलोड करने का प्रयास करें। </value>
+  </data>
+  <data name="msgDeleteConfirmation" xml:space="preserve">
+    <value> क्या आप वाकई डिस्क से वॉलपेपर को स्थायी रूप से हटाना चाहते हैं? </value>
+  </data>
+  <data name="msgDeleteConfirmationTitle" xml:space="preserve">
+    <value>हटाए जाने की पुष्टि करें </value>
+  </data>
+  <data name="msgDeletionFailure" xml:space="preserve">
+    <value> वर्तमान में वॉलपेपर के रूप में चल रहा है, हटा नहीं सकता!
+इसे हटाने के लिए इस वॉलपेपर को बंद करें। </value>
+  </data>
+  <data name="msgDeletionFailureTitle" xml:space="preserve">
+    <value> हटाए गए विफल </value>
+  </data>
+  <data name="msgDragDropOtherFormats" xml:space="preserve">
+    <value> यह फ़ाइल प्रारूप ड्रैग एंड amp के लिए समर्थित नहीं है; ड्रॉप करें, इसे 'टाइप करें' पेज के बजाय खोलें। </value>
+  </data>
+  <data name="msgDragDropOtherFormatsTitle" xml:space="preserve">
+    <value> जीवंत: समर्थित नहीं </value>
+  </data>
+  <data name="msgExternalAppWarning" xml:space="preserve">
+    <value> आप वॉलपेपर के रूप में एक बाहरी एप्लिकेशन खोल रहे हैं।
+दुर्भावनापूर्ण एप्लिकेशन मैलवेयर, वायरस को होस्ट कर सकते हैं .. और आपके सिस्टम को नुकसान पहुंचा सकते हैं।
+केवल तभी जारी रखें जब यह एप्लिकेशन किसी विश्वसनीय स्रोत से आता है। </value>
+  </data>
+  <data name="msgExternalAppWarningTitle" xml:space="preserve">
+    <value>चेतावनी</value>
+  </data>
+  <data name="msgGIFfailure" xml:space="preserve">
+    <value> GIF फ़ाइल प्लेबैक विफल।
+क्या GIF फ़ाइल दूषित है? पुन: डाउनलोड करने का प्रयास करें। </value>
+  </data>
+  <data name="msgHighContrastFailure" xml:space="preserve">
+    <value>जीवंत विंडोज हाई कंट्रास्ट मोड के साथ ठीक से काम नहीं कर सकता है!
+उच्च कंट्रास्ट मोड को अक्षम करें &amp; पुन: प्रयास करें। </value>
+  </data>
+  <data name="msgLoadExternalLink" xml:space="preserve">
+    <value> आप अपने ब्राउज़र पर एक बाहरी वेबपेज खोलने वाले हैं।
+
+यूआरएल: -</value>
+  </data>
+  <data name="msgLoadExternalLinkTitle" xml:space="preserve">
+    <value> वेबपृष्ठ लोड करें? </value>
+  </data>
+  <data name="msgLadingAppWallpaper" xml:space="preserve">
+    <value> बाहरी अनुप्रयोग शुरू करना </value>
+  </data>
+  <data name="msgMediaFoundationFailure" xml:space="preserve">
+    <value> मीडिया प्लेबैक विफल: लापता कोडेक / दूषित फ़ाइल।
+LAV कोडेक &amp; स्थापित करें; Directshow videoplayer पर स्विच करने का प्रयास करें।
+
+आगे के निर्देश:
+www.github.com/rocksdanister/lively/wiki/Video-Guide</value>
+  </data>
+  <data name="msgMediakitFailure" xml:space="preserve">
+    <value> मीडिया प्लेबैक विफल: लापता कोडेक / दूषित फ़ाइल।
+LAV कोडेक स्थापित करने के लिए मत भूलना:
+www.github.com/Nevcairiel/LAVFilters/releases
+
+आगे के निर्देश:
+www.github.com/rocksdanister/lively/wiki/Video-Guide</value>
+  </data>
+  <data name="msgRestoringInProgress" xml:space="preserve">
+    <value> वर्तमान में पिछले वॉलपेपर को पुनर्स्थापित कर रहे हैं, कृपया प्रतीक्षा करें। </value>
+  </data>
+  <data name="msgRestoringPrevWolars" xml:space="preserve">
+    <value> पिछले वॉलपेपर को पुनर्स्थापित करना .. </value>
+  </data>
+  <data name="msgSafeModeWarning" xml:space="preserve">
+    <value> लाइवली को ठीक से बंद नहीं किया गया था, सुरक्षित मोड में शुरू करना।
+क्या आप पहले से चल रहे वॉलपेपर को पुनर्स्थापित करना चाहते हैं?
+त्रुटि सूचना यहां दी गई है: -
+</value>
+  </data>
+  <data name="msgSingleInstanceOnly" xml:space="preserve">
+    <value>जीवंत पहले से ही चल रहा है!
+यदि नहीं तो जवाब देने की प्रक्रिया कार्यवाहक में "livelywpf" समाप्त करें &amp; पुन: प्रयास करें। </value>
+  </data>
+  <data name="msgUrlLoad" xml:space="preserve">
+    <value> लोड करने के लिए वेबसाइट लिंक दर्ज करें, Shadertoy.com shader लिंक समर्थित हैं: - </value>
+  </data>
+  <data name="msgUrlLoadTitle" xml:space="preserve">
+    <value> वेबपेज लोड करें </value>
+  </data>
+  <data name="msgUrlWarning" xml:space="preserve">
+    <value> आप बाहरी वेबसाइट लोड करने वाले हैं।
+दुर्भावनापूर्ण वेब पेज आपके कंप्यूटर के लिए हानिकारक हो सकते हैं (मैलवेयर, वायरस ..)
+केवल उन वेबसाइटों के लिंक डालें जिन पर आप भरोसा करते हैं। </value>
+  </data>
+  <data name="msgUrlWarningTitle" xml:space="preserve">
+    <value>चेतावनी</value>
+  </data>
+  <data name="msgWebBrowserMissing" xml:space="preserve">
+    <value> वेब ब्राउज़र घटक गायब है, या तो अलग से डाउनलोड करें: -
+https://github.com/rocksdanister/lively-cef
+या
+जीवंत का पूरा संस्करण डाउनलोड करें। </value>
+  </data>
+  <data name="msgWorkerWFailure" xml:space="preserve">
+    <value> ऐसा लगता है कि कुछ सेटिंग्स को जीवंत बनाने के लिए सेट करने की आवश्यकता है: -
+1. यह पीसी खोलें (मेरा कंप्यूटर)
+2. खाली क्षेत्र पर राइट-क्लिक करें
+3. गुण चुनें
+4. उन्नत सिस्टम सेटिंग्स का चयन करें
+5. प्रदर्शन टैब के तहत सेटिंग्स का चयन करें
+6. विंडो और amp के भीतर चेतन नियंत्रण और तत्वों को सक्षम करें; लागू करें।
+
+अगर विंडोज 7 बस सेट है - सर्वश्रेष्ठ उपस्थिति के लिए समायोजित करें &amp; लागू करें।
+यदि अभी भी काम नहीं कर रहा है, तो &amp; Live को फिर से शुरू / विंडोज़ को पुनरारंभ करें। </value>
+  </data>
+  <data name="titleAbout" xml:space="preserve">
+    <value>संक्षिप्त विवरण</value>
+  </data>
+  <data name="titleLibrary" xml:space="preserve">
+    <value>लाइब्रेरी</value>
+  </data>
+  <data name="titleSettings" xml:space="preserve">
+    <value>सेटिंग</value>
+  </data>
+  <data name="titleType" xml:space="preserve">
+    <value>प्रकार</value>
+  </data>
+  <data name="toolTipMinimizeMsg" xml:space="preserve">
+    <value> मुझे systemtray के लिए छोटा किया गया है, अधिक विकल्पों के लिए जीवंत आइकन पर राइट क्लिक करें। </value>
+  </data>
+  <data name="toolTipUpdateMsg" xml:space="preserve">
+    <value> एक नया संस्करण उपलब्ध है! </value>
+  </data>
+  <data name="toolTipWallpaperSkip" xml:space="preserve">
+    लापता फ़ाइल (नों) के कारण कुछ वॉलपेपर छोड़े गए थे
+  </data>
+  <data name="txtApplicationRules" xml:space="preserve">
+    <value> अनुप्रयोग नियम </value>
+  </data>
+  <data name="txtAudioIn" xml:space="preserve">
+    <value> ऑडियो इन: </value>
+  </data>
+  <data name="txtAudioInToolTip" xml:space="preserve">
+    <value> ब्राउज़र सिस्टम ऑडियो तक पहुंच को ब्लॉक करता है। </value>
+  </data>
+  <data name="txtAudioLabel1" xml:space="preserve">
+    <value> ऑडियो हमेशा कई मॉनिटर सिस्टम में अक्षम होता है। </value>
+  </data>
+  <data name="txtAudioLabel2" xml:space="preserve">
+    <value> "ऑडियो इन" अक्षम है, वेब ऑडियो विज़ुअलाइज़र काम नहीं करेगा। </value>
+  </data>
+  <data name="txtAudioOut" xml:space="preserve">
+    <value> ऑडियो आउट: </value>
+  </data>
+  <data name="txtAudioOutToolTip" xml:space="preserve">
+    <value> वीडियो प्लेयर को अनम्यूट / म्यूट करें। </value>
+  </data>
+  <data name="txtBrowser" xml:space="preserve">
+    <value> वेब ब्राउज़र: </value>
+  </data>
+  <data name="txtBrowserToolTip" xml:space="preserve">
+    <value> वेब वॉलपेपर के लिए वेब ब्राउज़र का चयन करें (जल्द ही आ रहा है) </value>
+  </data>
+  <data name="txtCloseAllWolars" xml:space="preserve">
+    <value> सभी वॉलपेपर बंद करें </value>
+  </data>
+  <data name="txtComingSoon" xml:space="preserve">
+    <value> जल्द ही आ रहा है </value>
+  </data>
+  <data name="txtContextMenuCloseAll" xml:space="preserve">
+    <value> सभी वॉलपेपर बंद करें </value>
+  </data>
+  <data name="txtContextMenuCloseWallpaper" xml:space="preserve">
+    <value> वॉलपेपर बंद करें </value>
+  </data>
+  <data name="txtContextMenuDeleteWallpaper" xml:space="preserve">
+    <value> वॉलपेपर हटाएं </value>
+  </data>
+  <data name="txtContextMenuExit" xml:space="preserve">
+    <value>बाहर निकलें</value>
+  </data>
+  <data name="txtContextMenuExport" xml:space="preserve">
+    <value>जीवंत निर्यात करें। ज़िप </value>
+  </data>
+  <data name="txtContextMenuOpenLively" xml:space="preserve">
+    <value> जीवंत रूप से खोलें </value>
+  </data>
+  <data name="txtContextMenuShowOnDisk" xml:space="preserve">
+    <value> डिस्क पर दिखाएँ </value>
+  </data>
+  <data name="txtContextMenuUpdate1" xml:space="preserve">
+    <value> अपडेट के लिए जाँच करना </value>
+  </data>
+  <data name="txtContextMenuUpdate2" xml:space="preserve">
+    <value> अपडेट उपलब्ध है! </value>
+  </data>
+  <data name="txtContextMenuUpdate3" xml:space="preserve">
+    <value> क्या यह बीटा सॉफ़्टवेयर है? </value>
+  </data>
+  <data name="txtContextMenuUpdate4" xml:space="preserve">
+    <value> जीवंत अप-टू-डेट है! </value>
+  </data>
+  <data name="txtContextMenuUpdate5" xml:space="preserve">
+    <value> अपडेट के लिए त्रुटि जाँच </value>
+  </data>
+  <data name="txtCreateWallpaper" xml:space="preserve">
+    <value> वॉलपेपर बनाएं </value>
+  </data>
+  <data name="txtCreatingZip" xml:space="preserve">
+    <value> जीवंत ज़िप फ़ाइल बनाना। </value>
+  </data>
+  <data name="txtDisplayPauseRule" xml:space="preserve">
+    <value> ठहराव नियम प्रदर्शित करें: </value>
+  </data>
+  <data name="txtGIFPlayer" xml:space="preserve">
+    <value> GIF प्लेयर: </value>
+  </data>
+  <data name="txtGifPlayerToolTip" xml:space="preserve">
+    <value> डायरेक्टशो को इंस्टॉल करने के लिए अतिरिक्त प्लगइन्स की आवश्यकता होती है। </value>
+  </data>
+  <data name="txtHelp" xml:space="preserve">
+    <value>सहायता</value>
+  </data>
+  <data name="txtIgnore" xml:space="preserve">
+    <value>अनदेखा करें</value>
+  </data>
+  <data name="txtInstallWallpaper" xml:space="preserve">
+    <value> वॉलपेपर स्थापित करें </value>
+  </data>
+  <data name="txtLabel1" xml:space="preserve">
+    <value> लोड करने के लिए वॉलपेपर प्रकार चुनें: - </value>
+  </data>
+  <data name="txtLabel10" xml:space="preserve">
+    <value>एट्रिब्यूशन:</value>
+  </data>
+  <data name="txtLabel11" xml:space="preserve">
+    <value> मुझे क्या उपयोग करना चाहिए? </value>
+  </data>
+  <data name="txtLabel12" xml:space="preserve">
+    <value>प्रकार:</value>
+  </data>
+  <data name="txtLabel120FPS" xml:space="preserve">
+    <value> बल 120FPS UI </value>
+  </data>
+  <data name="txtLabel13" xml:space="preserve">
+    <value>लेखक:</value>
+  </data>
+  <data name="txtLabel14" xml:space="preserve">
+    <value>संपर्क:</value>
+  </data>
+  <data name="txtLabel15" xml:space="preserve">
+    <value>सामान्य:</value>
+    <comment> सेटिंग टैब </comment>
+  </data>
+  <data name="txtLabel16" xml:space="preserve">
+    <value> एप्लिकेशन पुनरारंभ की आवश्यकता है: </value>
+    <comment> सेटिंग टैब </comment>
+  </data>
+  <data name="txtLabel17" xml:space="preserve">
+    <value>वीडियो:</value>
+    <comment> सेटिंग टैब </comment>
+  </data>
+  <data name="txtLabel18" xml:space="preserve">
+    <value>Gif:</value>
+    <comment> सेटिंग टैब </comment>
+  </data>
+  <data name="txtLabel19" xml:space="preserve">
+    <value> वेब ब्राउज़र: </value>
+    <comment> सेटिंग टैब </comment>
+  </data>
+  <data name="txtLabel2" xml:space="preserve">
+    <value> यदि आप इसके बजाय इसे पसंद करते हैं तो मीडियाफाइल्स को बस खींचें और छोड़ें। </value>
+  </data>
+  <data name="txtLabel20" xml:space="preserve">
+    <value>प्रदर्शन:</value>
+    <comment> सेटिंग टैब </comment>
+  </data>
+  <data name="txtLabel21" xml:space="preserve">
+    <value> चल रहे एप्लिकेशन के आधार पर वॉलपेपर (एस) प्लेबैक व्यवहार सेट करें: - </value>
+  </data>
+  <data name="txtLabel22" xml:space="preserve">
+    <value>जोड़ें</value>
+  </data>
+  <data name="txtLabel23" xml:space="preserve">
+    <value>निकालें</value>
+  </data>
+  <data name="txtLabel24" xml:space="preserve">
+    <value> वॉलपेपर लेआउट चुनें: - </value>
+  </data>
+  <data name="txtLabel25" xml:space="preserve">
+    <value> बनाने के लिए एक वॉलपेपर प्रकार चुनें: - </value>
+  </data>
+  <data name="txtLabel26" xml:space="preserve">
+    <value> लाइब्रेरी फ़ाइल: साझा करने के लिए आसान बनाएँ। ज़िप फ़ाइल जो लाइवली की लाइब्रेरी में वॉलपेपर लोड करती है।
+बस एक फाइल को वॉलपेपर के रूप में चलाने के लिए, यह आवश्यक नहीं है; बस जीवंत विंडो में फ़ाइल को ड्रैग और ड्रॉप करें। </value>
+  </data>
+  <data name="txtLabel27" xml:space="preserve">
+    <value> संपर्क वेबसाइट (वैकल्पिक): - </value>
+  </data>
+  <data name="txtLabel28" xml:space="preserve">
+    <value>लाइसेंस (वैकल्पिक): -</value>
+  </data>
+  <data name="txtLabel29" xml:space="preserve">
+    <value>शीर्षक: -</value>
+  </data>
+  <data name="txtLabel3" xml:space="preserve">
+    <value> ये सामग्री Unity Technologies, Godot, Bizhawk, Shadertoy.com / /> से संबद्ध या प्रायोजित नहीं हैं </value>
+  </data>
+  <data name="txtLabel30" xml:space="preserve">
+    <value>विवरण: -</value>
+  </data>
+  <data name="txtLabel31" xml:space="preserve">
+    <value> फ़ाइल का चयन करें </value>
+  </data>
+  <data name="txtLabel32" xml:space="preserve">
+    <value> थंबनेल (200x200) </value>
+  </data>
+  <data name="txtLabel33" xml:space="preserve">
+    <value>बनाएं</value>
+  </data>
+  <data name="txtLabel34" xml:space="preserve">
+    <value> Gif का पूर्वावलोकन करें (192x108) </value>
+  </data>
+  <data name="txtLabel35" xml:space="preserve">
+    <value> वॉलपेपर प्रकार: - </value>
+  </data>
+  <data name="txtLabel36" xml:space="preserve">
+    <value> फ़ाइलें और फ़ोल्डर जोड़े जा रहे हैं: - </value>
+  </data>
+  <data name="txtLabel37" xml:space="preserve">
+    <value>ठीक</value>
+  </data>
+  <data name="txtLabel38" xml:space="preserve">
+    <value>वापस</value>
+  </data>
+  <data name="txtLabel39" xml:space="preserve">
+    <value> वॉलपेपर स्थापित करना </value>
+  </data>
+  <data name="txtLabel4" xml:space="preserve">
+    <value>मीडिया</value>
+  </data>
+  <data name="txtLabel5" xml:space="preserve">
+    <value>खेल</value>
+  </data>
+  <data name="txtLabel6" xml:space="preserve">
+    <value>रेट्रो</value>
+  </data>
+  <data name="txtLabel7" xml:space="preserve">
+    <value>अन्य</value>
+  </data>
+  <data name="txtLabel8" xml:space="preserve">
+    <value>वेब</value>
+  </data>
+  <data name="txtLabel9" xml:space="preserve">
+    <value> ऑडियो विज़ुअलाइज़र </value>
+  </data>
+  <data name="txtLabelApplication" xml:space="preserve">
+    <value>अनुप्रयोग</value>
+  </data>
+  <data name="txtLabelAppName" xml:space="preserve">
+    <value>जीवंत</value>
+  </data>
+  <data name="txtLabelRule" xml:space="preserve">
+    <value>नियम</value>
+  </data>
+  <data name="txtLabelSoftwareUIRendering" xml:space="preserve">
+    <value> हार्डवेयर एक्सेलेरेशन को अक्षम करें </value>
+  </data>
+  <data name="txtLivelyAppWarning" xml:space="preserve">
+    <value> यह सुविधा वर्तमान में विकास में है।
+CHROME, STEAM .. जैसे कार्यक्रम न चलाएं, जो कई सबप्रोसेस को स्पॉन करते हैं।
+वहाँ खरीदे जाएँगे &amp; क्रेसेस, सावधानी के साथ आगे बढ़ें !!! </value>
+  </data>
+  <data name="txtLivelyErrorMsgTitle" xml:space="preserve">
+    <value> जीवंत: त्रुटि </value>
+    संदेश बॉक्स के लिए <comment> शीर्षक। </comment>
+  </data>
+  <data name="txtLivelyWaitMsgTitle" xml:space="preserve">
+    <value> कृपया प्रतीक्षा करें </value>
+    संदेश बॉक्स के लिए <comment> शीर्षक </comment>
+  </data>
+  <data name="txtLivelyWallpaperTypeApp" xml:space="preserve">
+    <value>अनुप्रयोग</value>
+  </data>
+  <data name="txtLivelyWallpaperTypeGIF" xml:space="preserve">
+    <value> एनिमेटेड GIF </value>
+  </data>
+  <data name="txtLivelyWallpaperTypeGodot" xml:space="preserve">
+    <value> गोडोट एप्लीकेशन </value>
+  </data>
+  <data name="txtLivelyWallpaperTypeUnity" xml:space="preserve">
+    <value> एकता अनुप्रयोग </value>
+  </data>
+  <data name="txtLivelyWallpaperTypeUnityAudio" xml:space="preserve">
+    <value> एकता ऑडियो रिएक्टिव </value>
+  </data>
+  <data name="txtLivelyWallpaperTypeVideo" xml:space="preserve">
+    <value>वीडियो</value>
+  </data>
+  <data name="txtLivelyWallpaperTypeWeb" xml:space="preserve">
+    <value>वेब</value>
+  </data>
+  <data name="txtLivelyWallpaperTypeWebAudio" xml:space="preserve">
+    <value> वेब ऑडियो रिएक्टिव </value>
+  </data>
+  <data name="txtLiveTile" xml:space="preserve">
+    <value> एनिमेटेड टाइल: </value>
+  </data>
+  <data name="txtLiveTileToolTip" xml:space="preserve">
+    <value> (प्रायोगिक, उच्च सीपीयू उपयोग) लाइब्रेरी टाइल पर वॉलपेपर पूर्वावलोकन खेलें। </value>
+  </data>
+  <data name="txtMsgFillAllFields" xml:space="preserve">
+    <value> सभी आवश्यक टेक्स्ट फ़ील्ड को हटाएं। </value>
+  </data>
+  <data name="txtMsgSelectWallpaperFile" xml:space="preserve">
+    <value> वॉलपेपर फ़ाइल चयनित नहीं </value>
+  </data>
+  <data name="txtNotes" xml:space="preserve">
+    <value>ध्यान दें:
+(१) जीवंत खिड़की इन नियमों की उपेक्षा करती है।
+(2) ऑडियो हमेशा म्यूट होता है जब अन्य ऐप्स फ़ोकस में होते हैं {सिवाय (1), लाइवली विंडो}।
+(3) फ़ोरग्राउंड प्रोसेस एल्गोरिदम की कुछ सीमाएँ हैं, अधिक जानकारी के लिए विकि की जाँच करें।
+(4) आवेदन नियमों की सर्वोच्च प्राथमिकता है।
+(5) वेब ब्राउजर को रोकने के बजाय कम से कम किया जा रहा है, इसलिए आपको कुछ मामलों में डिफ़ॉल्ट रूप से वॉलपेपर को अस्थायी रूप से पलटते हुए दिखाई देगा; फिक्स जल्द ही आ रहा है। </value>
+  </data>
+  <data name="txtOff" xml:space="preserve">
+    <value>बंद</value>
+  </data>
+  <data name="txtOn" xml:space="preserve">
+    <value>चालू</value>
+  </data>
+  <data name="txtOtherAppsFocus" xml:space="preserve">
+    <value> अन्य एप्लिकेशन फोकस किया गया: </value>
+  </data>
+  <data name="txtOtherAppsFullScreen" xml:space="preserve">
+    <value> अन्य एप्लिकेशन फुलस्क्रीन: </value>
+  </data>
+  <data name="txtPauseAl एल्गोरिथम" xml:space="preserve">
+    <value> एल्गोरिथ्म रोकें: </value>
+  </data>
+  <data name="txtPleaseWait" xml:space="preserve">
+    <value> लोड विफल </value>
+  </data>
+  <data name="txtPleaseWait2" xml:space="preserve">
+    <value> कृपया प्रतीक्षा करें </value>
+  </data>
+  <data name="txtSelectPreviewThumb" xml:space="preserve">
+    <value> प्रीव्यूक्लिप / थंबनेल फ़ाइल का चयन करें। </value>
+  </data>
+  <data name="txtSetWallpaper" xml:space="preserve">
+    <value> वॉलपेपर के रूप में सेट करें </value>
+  </data>
+  <data name="txtSpanWallpaperWarning" xml:space="preserve">
+    <value> कुछ वॉलपेपर ठीक से प्रदर्शित नहीं होंगे। </value>
+  </data>
+  <data name="txtStartup" xml:space="preserve">
+    <value> विंडोज से शुरू करें: </value>
+  </data>
+  <data name="txtStartupToolTip" xml:space="preserve">
+    <value> जीवंत रूप से अनइंस्टॉल करने से पहले इसे अनचेक करना सुनिश्चित करें। </value>
+  </data>
+  <data name="txtSupport" xml:space="preserve">
+    <value>समर्थन</value>
+  </data>
+  <data name="txtTileGIF" xml:space="preserve">
+    <value> एनिमेटेड GIF </value>
+  </data>
+  <data name="txtTileGodot" xml:space="preserve">
+    <value> Godot Software </value>
+  </data>
+  <data name="txtTileHTML" xml:space="preserve">
+    <value>HTML</value>
+  </data>
+  <data name="txtTileOther" xml:space="preserve">
+    <value>अन्य</value>
+  </data>
+  <data name="txtTileUnity" xml:space="preserve">
+    <value> एकता सॉफ्टवेयर </value>
+  </data>
+  <data name="txtTileVideo" xml:space="preserve">
+    <value>वीडियो</value>
+  </data>
+  <data name="txtTileWebsite" xml:space="preserve">
+    <value>वेबसाइट</value>
+  </data>
+  <data name="txtTitlebar" xml:space="preserve">
+    <value> जीवंत वॉलपेपर सिस्टम </value>
+  </data>
+  <data name="txtTransparency" xml:space="preserve">
+    <value> पारदर्शी UI: </value>
+  </data>
+  <data name="txtTransparencyToolTip" xml:space="preserve">
+    <value> जीवंत विंडो को अर्ध-पारदर्शी बनाएं। </value>
+  </data>
+  <data name="txtUpdateBanner" xml:space="preserve">
+    <value> जीवंत रूप से उपलब्ध अपडेट करें </value>
+  </data>
+  <data name="txtVideoPlayer" xml:space="preserve">
+    <value> वीडियो प्लेयर: </value>
+  </data>
+  <data name="txtVideoPlayerToolTip" xml:space="preserve">
+    <value> डायरेक्टशो को इंस्टॉल करने के लिए अतिरिक्त प्लगइन्स की आवश्यकता होती है। </value>
+  </data>
+  <data name="txtWallpaperPlayback" xml:space="preserve">
+    <value> वॉलपेपर प्लेबैक: </value>
+  </data>
+  <data name="txtWindowTitleSelectDisplay" xml:space="preserve">
+    <value> प्रदर्शन का चयन करें </value>
+  </data>
+</root>
