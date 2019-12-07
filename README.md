@@ -26,6 +26,8 @@ Just drag & drop files, webpages to set as wallpaper..
 
 Lively is still in development, if you encounter bugs create a github Issue along with <a href="https://github.com/rocksdanister/lively/wiki/Common-Problems"> log file</a>
 
+Help translate lively to other languages: <a href="https://github.com/rocksdanister/lively/blob/master/resources/translations/English/Resources.resx">Translation Document</a>
+
 <a href="https://github.com/rocksdanister/lively/wiki">Documentation</a>
 ## Features
 *Wait a sec, preview gif clips take some time to load.*
@@ -84,7 +86,7 @@ Lively is still in development, if you encounter bugs create a github Issue alon
 
 **_I'm not officially affiliated with Unity technologies, godot, bizhawk, shadertoy;_**
 ## Download
-##### Latest version: v0.3.4.0 (Windows 10, 8.1, 7 32bit)
+##### Latest version: v0.3.4.0 (Windows 10, 8.1)
 - [`lively_full_x86.zip`][direct-full-win32]  
    _130MB, Web wallpaper support & some sample wallpapers included._
   
