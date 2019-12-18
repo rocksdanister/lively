@@ -2464,8 +2464,7 @@ namespace livelywpf
                     break;
             }
 
-            return "\"" + link + "\"" + " --loop-file --keep-open" + quality;
-            //SetupWallpaper(link, SetupDesktop.WallpaperType.video_stream, "\"" + link + "\"" + " --loop-file --keep-open" + quality);
+            return "\"" + link + "\"" + " --loop-file --keep-open --hwdec=yes" + quality;
         }
 
         public readonly static string[] formatsVideo = { ".dat", ".wmv", ".3g2", ".3gp", ".3gp2", ".3gpp", ".amv", ".asf",  ".avi", ".bin", ".cue", ".divx", ".dv", ".flv", ".gxf", ".iso", ".m1v", ".m2v", ".m2t", ".m2ts", ".m4v",
