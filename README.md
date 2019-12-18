@@ -40,7 +40,7 @@ Help translate lively to other languages: <a href="https://github.com/rocksdanis
 * Hardware Acceleration support.
 * Audio will mute when not on desktop.
 #### Youtube & streams
-![demo-gif3](/resources/yt-gif?raw=true "html")
+![demo-gif3](/resources/yt-gif.gif?raw=true "html")
 
 * Just drag & drop youtube link to set as desktop wallpaper.
 * Video quality is adjustable in settings.
