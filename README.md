@@ -40,13 +40,13 @@ Help translate lively to other languages: <a href="https://github.com/rocksdanis
 * Hardware Acceleration support.
 * Audio will mute when not on desktop.
 #### Youtube & streams
-![demo-gif3](/resources/html.gif?raw=true "html")
+![demo-gif3](/resources/yt-gif?raw=true "html")
 
 * Just drag & drop youtube link to set as desktop wallpaper.
 * Video quality is adjustable in settings.
 * Additional software <a href="https://github.com/rocksdanister/lively/wiki/Youtube-Wallpaper">required.</a>
 #### Web Pages & html
-![demo-gif7](/resources/yt-gif.gif?raw=true "html")
+![demo-gif7](/resources/html.gif?raw=true "html")
 
 <a href="http://louie.co.nz/25th_hour/"> 25th Hour</a> by Loius Coyle
 * Chromium Embedded Framework.
@@ -98,10 +98,10 @@ Help translate lively to other languages: <a href="https://github.com/rocksdanis
 ## Download
 ##### Latest version: v0.5.0.0 (Windows 10, 8.1)
 - [`lively_full_x86.zip`][direct-full-win32]  
-   _130MB, Web wallpaper support & some sample wallpapers included._
+   _116MB, Web wallpaper support & some sample wallpapers included._
 
 - [`lively_x86.zip`][direct-just-win32]  
-   _130MB, Web wallpaper support.
+   _76MB, Web wallpaper support.
   
 - [`lively_lite_x86.zip`][direct-lite-win32]  
    _5MB, No web wallpaper support._
