@@ -12,9 +12,9 @@
         MinHeight="485" MinWidth="800">
     <Grid>
         <StackPanel Name="MainPanel" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,60,0,60.2" Width="700" >
-            <Label Content="{x:Static p:Resources.txtLabel25}" FontSize="24" Foreground="#FF899F1C" />
+            <Label Content="{x:Static p:Resources.txtLabel25}" FontSize="24" Foreground="{DynamicResource AccentColorBrush}" />
             <Controls:Tile Title ="{x:Static p:Resources.txtLabel26}" Click="Tile_Ext_Click" ClickMode="Release" Width="650" />
-            <Controls:Tile IsEnabled="False" Background="DarkOliveGreen" Title="Lively Wallpaper Creator(coming soon)" Click="Tile_Creator_Click" ClickMode="Release" Width="650" />
+            <Controls:Tile IsEnabled="False" Title="Lively Wallpaper Creator(coming soon)" Click="Tile_Creator_Click" ClickMode="Release" Width="650" />
         </StackPanel>
         <Frame x:Name="Create_Frame" />
     </Grid>

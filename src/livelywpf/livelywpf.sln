@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "livelywpf", "livelywpf\live
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "livelySubProcess", "livelySubProcess\livelySubProcess.csproj", "{42CF8B44-9366-4579-83CF-B8E460E5330F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "livelyUpdater", "livelyUpdater\livelyUpdater.csproj", "{C874D380-71C0-4701-A9C5-72BCE5C789AD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,18 @@ Global
 		{42CF8B44-9366-4579-83CF-B8E460E5330F}.Release|x64.Build.0 = Release|Any CPU
 		{42CF8B44-9366-4579-83CF-B8E460E5330F}.Release|x86.ActiveCfg = Release|Any CPU
 		{42CF8B44-9366-4579-83CF-B8E460E5330F}.Release|x86.Build.0 = Release|Any CPU
+		{C874D380-71C0-4701-A9C5-72BCE5C789AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C874D380-71C0-4701-A9C5-72BCE5C789AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C874D380-71C0-4701-A9C5-72BCE5C789AD}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C874D380-71C0-4701-A9C5-72BCE5C789AD}.Debug|x64.Build.0 = Debug|Any CPU
+		{C874D380-71C0-4701-A9C5-72BCE5C789AD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C874D380-71C0-4701-A9C5-72BCE5C789AD}.Debug|x86.Build.0 = Debug|Any CPU
+		{C874D380-71C0-4701-A9C5-72BCE5C789AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C874D380-71C0-4701-A9C5-72BCE5C789AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C874D380-71C0-4701-A9C5-72BCE5C789AD}.Release|x64.ActiveCfg = Release|Any CPU
+		{C874D380-71C0-4701-A9C5-72BCE5C789AD}.Release|x64.Build.0 = Release|Any CPU
+		{C874D380-71C0-4701-A9C5-72BCE5C789AD}.Release|x86.ActiveCfg = Release|Any CPU
+		{C874D380-71C0-4701-A9C5-72BCE5C789AD}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

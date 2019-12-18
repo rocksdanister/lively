@@ -61,7 +61,9 @@ namespace livelywpf
             [Description("Animated Gif")]
             gif,
             [Description("Unity Audio Visualiser")]
-            unity_audio
+            unity_audio,
+            [Description("Video Streams")]
+            video_stream
         }
 
         #region wp_internal_data
@@ -123,6 +125,19 @@ namespace livelywpf
             }
         }
 
+        public class ExtVidPlayers : WPBaseClass //mpv, vlc etc
+        {
+            public Process Proc { get; private set; }
+            public WallpaperType Type { get; private set; }
+            public UInt32 SuspendCnt { get; set; }
+            public ExtVidPlayers(IntPtr handle, string displayID, Process process, WallpaperType type, UInt32 suspendCnt) : base(handle, displayID)
+            {
+                this.Proc = process;
+                this.Type = type;
+                this.SuspendCnt = suspendCnt;
+            }
+        }
+
         public class CefProcess : WPBaseClass //external cefsharp.
         {
             public Process Proc { get; private set; }
@@ -138,6 +153,7 @@ namespace livelywpf
         }
 
         public static List<ExtProgram> extPrograms = new List<ExtProgram>();
+        public static List<ExtVidPlayers> extVidPlayers = new List<ExtVidPlayers>();
         public static List<GIFWallpaper> gifWallpapers = new List<GIFWallpaper>();
         public static List<MediaKit> mediakitPlayers = new List<MediaKit>();
         public static List<WMPlayer> wmPlayers = new List<WMPlayer>();
@@ -241,18 +257,12 @@ namespace livelywpf
 
             if (layout.Type == WallpaperType.video)
             {
-                #region mpv_ext_process_way
-                //external mpv video player.
-                //proc = Process.Start(System.AppDomain.CurrentDomain.BaseDirectory + @"\external\mpv\mpv.exe", "\"" + @path + "\"" + " --fullscreen --loop-file --keep-open");
-                #endregion
-
                 if (SaveData.config.VidPlayer == SaveData.VideoPlayer.mediakit)
                 {
                     Mediakit mediakitPlayer = new Mediakit(layout.FilePath);
                     mediakitPlayer.Show();
                     handle = new WindowInteropHelper(mediakitPlayer).Handle;
 
-                    //mediakitPlayers.Add(new MediaKit { mp = mediakitPlayer, handle = this.handle, displayID = layout.displayName, isGIF = false });
                     mediakitPlayers.Add(new MediaKit(handle, layout.DeviceName, mediakitPlayer, false));
                 }
                 else if (SaveData.config.VidPlayer == SaveData.VideoPlayer.windowsmp)
@@ -262,6 +272,98 @@ namespace livelywpf
                     handle = new WindowInteropHelper(wmPlayer).Handle;
 
                     wmPlayers.Add(new WMPlayer(handle, layout.DeviceName, wmPlayer));
+                }
+                else if( SaveData.config.VidPlayer == VideoPlayer.mpv )
+                {
+                    ProcessStartInfo startInfo = new ProcessStartInfo
+                    {
+                        FileName = AppDomain.CurrentDomain.BaseDirectory +"\\external\\mpv\\mpv.exe",
+                        UseShellExecute = false,
+                        WorkingDirectory = System.IO.Path.GetDirectoryName(layout.FilePath),
+                        Arguments = "\"" + layout.FilePath + "\"" + " --loop-file --keep-open" //+" --wid "+workerw  //--mute=yes 
+                    };
+
+
+                    Process proc = new Process(); //this compiler disposable object warning should be a mistake, the referenced object is disposed when wp is closed.
+                    proc = Process.Start(startInfo);
+                    try
+                    {
+                        ctsProcessWait = new CancellationTokenSource();
+                        taskAppWait = Task.Run(() => WaitForProcesWindow(layout.Type, proc), ctsProcessWait.Token);
+                        await taskAppWait;
+                    }
+                    catch (OperationCanceledException)
+                    {
+                        Logger.Info("app terminated early/user cancel");
+                        try
+                        {
+                            proc.Kill();
+                        }
+                        catch (Exception e)
+                        {
+                            Logger.Error(e.ToString());
+                        }
+
+                        dispatcherTimer.Start();
+                        return;
+                    }
+                    catch(InvalidOperationException e1)//app likely crashed/closed already!
+                    {
+                        Logger.Info("app crashed/terminated early(2):" + e1.ToString());
+                        try
+                        {
+                            proc.Kill();
+                        }
+                        catch (Exception e)
+                        {
+                            Logger.Error(e.ToString());
+                        }
+
+                        dispatcherTimer.Start();
+                        return;
+                    }
+                    catch(Exception e2)
+                    {
+                        Logger.Info("unexpected error:" + e2.ToString());
+                        try
+                        {
+                            proc.Kill();
+                        }
+                        catch (Exception e)
+                        {
+                            Logger.Error(e.ToString());
+                        }
+
+                        dispatcherTimer.Start();
+                        return;
+                    }
+
+                    handle = proc.MainWindowHandle;
+                    if (handle == IntPtr.Zero)
+                    {
+                        Logger.Info("Error: could not get windowhandle after waiting..");
+                        try
+                        {
+                            proc.Kill();
+                        }
+                        catch (Exception e)
+                        {
+                            Logger.Error(e.ToString());
+                        }
+                        //This usually happens if the app took too long then the timeout specified. (virus scan, too big a application, busy hdd? ).
+                        MessageBox.Show(Properties.Resources.msgAppTimeout, Properties.Resources.txtLivelyErrorMsgTitle);
+
+                        dispatcherTimer.Start();
+                        return;
+                    }
+
+                    extVidPlayers.Add(new ExtVidPlayers(handle, layout.DeviceName, proc, WallpaperType.video, 0));
+
+                    BorderlessWinStyle(handle);
+                    RemoveAppFromTaskbar(handle);
+                    //AddWallpaper(handle, layout.DeviceName);
+                    SaveData.runningPrograms.Add(new SaveData.RunningProgram { ProcessName = proc.ProcessName, Pid = proc.Id });
+                    SaveData.SaveRunningPrograms();
                 }
 
                 AddWallpaper(handle, layout.DeviceName);
@@ -325,6 +427,36 @@ namespace livelywpf
                     dispatcherTimer.Start();
                     return;
                 }
+                catch (InvalidOperationException e1)//app likely crashed/closed already!
+                {
+                    Logger.Info("app crashed/terminated early(2):" + e1.ToString());
+                    try
+                    {
+                        proc.Kill();
+                    }
+                    catch (Exception e)
+                    {
+                        Logger.Error(e.ToString());
+                    }
+
+                    dispatcherTimer.Start();
+                    return;
+                }
+                catch (Exception e2) //unexpected error.
+                {
+                    Logger.Info("unexpected error:" + e2.ToString());
+                    try
+                    {
+                        proc.Kill();
+                    }
+                    catch (Exception e)
+                    {
+                        Logger.Error(e.ToString());
+                    }
+
+                    dispatcherTimer.Start();
+                    return;
+                }
 
                 handle = proc.MainWindowHandle;
                 if (handle == IntPtr.Zero)
@@ -356,15 +488,29 @@ namespace livelywpf
                 SaveData.runningPrograms.Add(new SaveData.RunningProgram { ProcessName = proc.ProcessName, Pid = proc.Id });
                 SaveData.SaveRunningPrograms();
             }
-            else if (layout.Type == WallpaperType.app)
+            else if (layout.Type == WallpaperType.app || layout.Type == WallpaperType.video_stream) //video stream is using mpv player with youtube-dl
             {
-                ProcessStartInfo startInfo = new ProcessStartInfo
+                ProcessStartInfo startInfo;
+                if (layout.Type == WallpaperType.video_stream)
                 {
-                    FileName = layout.FilePath,
-                    UseShellExecute = false,
-                    WorkingDirectory = System.IO.Path.GetDirectoryName(layout.FilePath),
-                    Arguments = layout.Arguments
-                };
+                    startInfo = new ProcessStartInfo
+                    {
+                        FileName = AppDomain.CurrentDomain.BaseDirectory + "\\external\\mpv\\mpv.exe",
+                        UseShellExecute = false,
+                        WorkingDirectory = AppDomain.CurrentDomain.BaseDirectory + "\\external\\mpv",
+                        Arguments = layout.Arguments
+                    };
+                }
+                else
+                {
+                    startInfo = new ProcessStartInfo
+                    {
+                        FileName = layout.FilePath,
+                        UseShellExecute = false,
+                        WorkingDirectory = System.IO.Path.GetDirectoryName(layout.FilePath),
+                        Arguments = layout.Arguments
+                    };
+                }
 
                 Process proc = new Process(); //this compiler disposable object warning should be a mistake, the referenced object is disposed when wp is closed.
                 proc = Process.Start(startInfo);
@@ -377,7 +523,36 @@ namespace livelywpf
                 catch (OperationCanceledException)
                 {
                     Logger.Info("app terminated early, user cancel");
-                    Debug.WriteLine("app terminated early, user cancel");
+                    try
+                    {
+                        proc.Kill();
+                    }
+                    catch (Exception e)
+                    {
+                        Logger.Error(e.ToString());
+                    }
+
+                    dispatcherTimer.Start();
+                    return;
+                }
+                catch (InvalidOperationException e1)//app likely crashed/closed already!
+                {
+                    Logger.Info("app crashed/terminated early(2):" + e1.ToString());
+                    try
+                    {
+                        proc.Kill();
+                    }
+                    catch (Exception e)
+                    {
+                        Logger.Error(e.ToString());
+                    }
+
+                    dispatcherTimer.Start();
+                    return;
+                }
+                catch (Exception e2) //unexpected error.
+                {
+                    Logger.Info("unexpected error:" + e2.ToString());
                     try
                     {
                         proc.Kill();
@@ -492,6 +667,37 @@ namespace livelywpf
                     dispatcherTimer.Start();
                     return;
                 }
+                catch (InvalidOperationException e1)//app likely crashed/closed already!
+                {
+                    Logger.Info("app crashed/terminated early(2):" + e1.ToString());
+                    try
+                    {
+                        proc.Kill();
+                    }
+                    catch (Exception e)
+                    {
+                        Logger.Error(e.ToString());
+                    }
+
+                    dispatcherTimer.Start();
+                    return;
+                }
+                catch (Exception e2) //unexpected error.
+                {
+                    Logger.Info("unexpected error:" + e2.ToString());
+                    try
+                    {
+                        proc.Kill();
+                    }
+                    catch (Exception e)
+                    {
+                        Logger.Error(e.ToString());
+                    }
+
+                    dispatcherTimer.Start();
+                    return;
+                }
+
                 //handle = proc.MainWindowHandle;
                 if (handle == IntPtr.Zero)
                 {
@@ -551,6 +757,7 @@ namespace livelywpf
                     dispatcherTimer.Start();
                     return;
                 }
+
 
                 handle = bizhawkProc.MainWindowHandle;
                 if (IntPtr.Equals(handle, IntPtr.Zero))
@@ -733,6 +940,25 @@ namespace livelywpf
                     NativeMethods.MapWindowPoints(new WindowInteropHelper(displayID).Handle, workerw, ref prct, 2);
                     displayID.Close();
                     NativeMethods.SetWindowPos(extPrograms[i].Handle, 1, prct.Left, prct.Top, (item.Bounds.Width), (item.Bounds.Height), 0 | 0x0010);
+                    continue;
+                }
+
+                if ((i = extVidPlayers.FindIndex(x => x.DisplayID == item.DeviceName)) != -1)
+                {
+                    if (SaveData.config.WallpaperArrangement == WallpaperArrangement.span)
+                    {
+                        SpanUpdate(extVidPlayers[i].Handle);
+                        break;
+                    }
+
+                    DisplayID displayID = new DisplayID(item.DeviceName, item.Bounds.X, item.Bounds.Y)
+                    {
+                        Opacity = 0
+                    };
+                    displayID.Show();
+                    NativeMethods.MapWindowPoints(new WindowInteropHelper(displayID).Handle, workerw, ref prct, 2);
+                    displayID.Close();
+                    NativeMethods.SetWindowPos(extVidPlayers[i].Handle, 1, prct.Left, prct.Top, (item.Bounds.Width), (item.Bounds.Height), 0 | 0x0010);
                     continue;
                 }
 
@@ -961,6 +1187,7 @@ namespace livelywpf
             {
                 while (proc.WaitForInputIdle(-1) != true) //waiting for msgloop to be ready, gui not guaranteed to be ready.
                 {
+                    Debug.WriteLine("hello hello");
                     ctsProcessWait.Token.ThrowIfCancellationRequested();
                 }
             }
@@ -1830,6 +2057,29 @@ namespace livelywpf
 
             try
             {
+                if ((i = extVidPlayers.FindIndex(x => x.DisplayID == diplayDevice)) != -1)
+                {
+                    if (extVidPlayers[i].Proc != null)
+                    {
+                        if (extVidPlayers[i].Proc.HasExited == false)
+                        {
+                            extVidPlayers[i].Proc.Kill();
+                            extVidPlayers[i].Proc.Close();
+                            //setup.proc.Dispose();
+                            //extPrograms[i].proc = null;
+                        }
+                    }
+                    extVidPlayers.RemoveAt(i);
+                }
+                //return;
+            }
+            catch (Exception e)
+            {
+                Logger.Error(e.ToString());
+            }
+
+            try
+            {
                 if ((i = webProcesses.FindIndex(x => x.DisplayID == diplayDevice)) != -1)
                 {
                     webProcesses[i].Proc.OutputDataReceived -= WebProcess_OutputDataReceived;
@@ -1889,6 +2139,29 @@ namespace livelywpf
                     item.MP.Close();
                 }
                 wmPlayers.Clear();
+
+                try
+                {
+                    foreach (var item in extVidPlayers)
+                    {
+                        if (item.Proc != null)
+                        {
+                            //Debug.WriteLine("currProces" + proc.ProcessName);
+                            if (item.Proc.HasExited == false)
+                            {
+                                item.Proc.Kill();
+                                item.Proc.Close(); //calls dispose also.
+                                //setup.proc.Dispose();
+                                //item.proc = null;
+                            }
+                        }
+                    }
+                    extVidPlayers.Clear();
+                }
+                catch (Exception e)
+                {
+                    Logger.Info("Disposeerror:- " + e.ToString());
+                }
             }
             else if (type == WallpaperType.web || type == WallpaperType.url || type == WallpaperType.web_audio)
             {
@@ -1935,10 +2208,10 @@ namespace livelywpf
                 //webProcesses.RemoveAll(x => x.Type == SetupDesktop.WallpaperType.web); //exit event is removing it.
                 */
             }
-            else if (type == WallpaperType.godot || type == WallpaperType.unity || type == WallpaperType.unity_audio || type == WallpaperType.app)
+            else if (type == WallpaperType.godot || type == WallpaperType.unity || type == WallpaperType.unity_audio 
+                                                    || type == WallpaperType.app || type == WallpaperType.video_stream)
             {
                 var result = extPrograms.FindAll(x => x.Type == type);
-
                 try
                 {
                     foreach (var item in extPrograms)
@@ -2068,6 +2341,30 @@ namespace livelywpf
                 Logger.Info("Disposeerror:- " + e.ToString());
             }
 
+            try
+            {
+                foreach (var item in extVidPlayers)
+                {
+                    item.Proc.Refresh();
+                    if (item.Proc != null)
+                    {
+                        if (item.Proc.HasExited == false)
+                        {
+                            //item.Proc.CloseMainWindow();
+                            item.Proc.Kill();
+                            item.Proc.Close();
+                            //setup.proc.Dispose();
+                            //item.proc = null;
+                        }
+                    }
+                }
+                extVidPlayers.Clear();
+            }
+            catch (Exception e)
+            {
+                Logger.Info("Disposeerror:- " + e.ToString());
+            }
+
             foreach (var item in mediakitPlayers)
             {
                 item.MP.StopPlayer();
@@ -2109,13 +2406,13 @@ namespace livelywpf
         /// Setup running Process monitor timer fn.
         /// </summary>
         public static void InitializeTimer()
-        {
+        {        
             if (!_timerInitilaized)
             {
                 _timerInitilaized = true;
                 dispatcherTimer.Tick += new EventHandler(ProcessMonitor);
                 dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, SaveData.config.ProcessTimerInterval);
-            }
+            }           
         }
 
         private static void RemoveAppFromTaskbar(IntPtr handle)

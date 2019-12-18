@@ -6,13 +6,17 @@
         xmlns:local="clr-namespace:livelywpf"
         xmlns:p = "clr-namespace:livelywpf.Properties"
         mc:Ignorable="d"
-        Title="{x:Static p:Resources.txtHelp}" MinHeight="720" MinWidth="1100" Height="620" Width="1100" ShowInTaskbar="True" Topmost="True" ResizeMode="NoResize" Closing="Window_Closing">
+        Title="{x:Static p:Resources.txtHelp}" MinHeight="650" MinWidth="900" Height="650" Width="900" ShowInTaskbar="True" Topmost="True" ResizeMode="NoResize" Closing="Window_Closing">
     <Grid >
-        <Border BorderBrush="#FF879F15" BorderThickness="1" Margin="10,10,10,48" >
-            <MediaElement Name="mePlayer" />
+        <Border BorderBrush="#FF879F15" BorderThickness="1" Margin="10,25,10,100" >
+            <MediaElement Name="mePlayer"  />
         </Border>
-        <TextBlock Canvas.Left="241" Canvas.Top="98" FontSize="20" Margin="10,648,0,9" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="DemiBold">
-        <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://github.com/rocksdanister/lively/wiki" Foreground="#FF85A912" >www.github.com/rocksdanister/lively/wiki</Hyperlink>
+        <TextBlock Canvas.Left="241" Canvas.Top="98" FontSize="20" Margin="10,525,0,63" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="DemiBold" Height="32">
+        <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://github.com/rocksdanister/lively/wiki" Foreground="{DynamicResource AccentColorBrush}" >www.github.com/rocksdanister/lively/wiki</Hyperlink>
+        </TextBlock>
+        <TextBlock Name = "changelogtext" Canvas.Left="241" Canvas.Top="98" FontSize="14" Margin="10,0,0,28" HorizontalAlignment="Left" VerticalAlignment="Bottom" TextAlignment="Left" 
+                   Foreground="{DynamicResource AccentColorBrush}"  PreviewMouseDown="PreviewMouseDown" Width="430" Height="29" TextDecorations="Underline" >
+            What's new
         </TextBlock>
     </Grid>
 </Window>

@@ -32,7 +32,7 @@ namespace livelywpf
             InitializeComponent();
 
             mainWindow = obj;
-            if ((int)SaveData.config.WallpaperArrangement >= 0 && (int)SaveData.config.WallpaperArrangement <= 1)
+            if ((int)SaveData.config.WallpaperArrangement >= 0 && (int)SaveData.config.WallpaperArrangement <= 2)
             {
                 displayLayoutSelect.SelectedIndex = (int)SaveData.config.WallpaperArrangement;
             }

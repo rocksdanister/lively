@@ -61,9 +61,6 @@ namespace livelywpf
                 }
                 displayLBItems.Add(new DisplayListBox(scr.DeviceName, filePath));
             }
-            //displayLBItems.Add(new DisplayListBox("\\\\.\\DISPLAY2", null));
-            //displayLBItems.Add(new DisplayListBox("\\\\.\\DISPLAY3", null));
-            //displayLBItems.Add(new DisplayListBox("\\\\.\\DISPLAY4", null));
         }
 
         private void DisplayLB_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -16,7 +16,8 @@
         <Label x:Name="label" Content="{x:Static p:Resources.txtLabel24}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <ComboBox Name="displayLayoutSelect" Margin="10,41,583,203"  >
             <ComboBoxItem Content="{x:Static p:Resources.cmbBoxPerDisplay}"></ComboBoxItem>
-            <ComboBoxItem Background="IndianRed" Content="{x:Static p:Resources.cmbBoxSpan}"></ComboBoxItem>
+            <ComboBoxItem Content="{x:Static p:Resources.cmbBoxSpan}"></ComboBoxItem>
+            <ComboBoxItem Content="Duplicate"></ComboBoxItem>
         </ComboBox>
         <Label Content="{x:Static p:Resources.txtSpanWallpaperWarning}" HorizontalAlignment="Left" Margin="250,41,0,0" VerticalAlignment="Top" />
         <Button Name="closeAllBtn" Margin="546,241,39,3" ClickMode="Release" Click="ButtonCloseAll_Click">
@@ -43,7 +44,7 @@
                     <!--<Border ToolTip="{Binding FilePath}" BorderBrush="#FF879F15" BorderThickness="1" CornerRadius="8" Margin="-5,0,0,0">-->
                         <Button Width="200" Height="125" Margin="-5,0,0,0" ClickMode="Hover" ToolTip="{Binding FilePath}">
                             <StackPanel Orientation="Vertical"  Width="200" Height="125" >
-                                <Image Source="/images/monitor-480xw.png" Width="50" Height="50" />
+                            <Image Source="/images/monitor-50xw.png" Width="50" Height="50" />
                                 <TextBlock TextWrapping="Wrap" Text="{Binding DisplayDevice}"/>
                                 <TextBlock TextWrapping="Wrap" Text="{Binding FileName}"/>
                             </StackPanel>

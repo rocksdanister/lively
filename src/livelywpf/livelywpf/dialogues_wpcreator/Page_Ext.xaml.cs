@@ -211,16 +211,20 @@ namespace livelywpf
                 return;
             }
             
+            /*
+            //Optional
             if( !File.Exists(tmpInfo.Thumbnail) || !File.Exists(tmpInfo.Preview) )
             {
                 MessageBox.Show(Properties.Resources.txtSelectPreviewThumb);
                 return;
             }
-            
+            */
+
             SaveFileDialog saveFileDialog1 = new SaveFileDialog
             {
                 Title = "Select location to save the file",
-                Filter = "Lively/zip file|*.zip"
+                Filter = "Lively/zip file|*.zip",
+                OverwritePrompt = true
             };
 
             if (saveFileDialog1.ShowDialog() == true)
@@ -270,7 +274,40 @@ namespace livelywpf
         }
 
         private async Task CreateZipFile(string savePath, List<string> documentPaths)
-        {
+        {          
+            //savefiledialog will promt user if replacement.
+            if(File.Exists(savePath))
+            {
+                try
+                {
+                    File.Delete(savePath);
+                }
+                catch(Exception e)
+                {
+                    Logger.Info(e.ToString());
+                    MessageBox.Show("Failed to delete existing file on disk, skipping!",Properties.Resources.txtLivelyErrorMsgTitle);
+                    return;
+                }
+                /*
+                if (MessageBox.Show("Replace "+ Path.GetFileName(savePath) +"?", "Error: File Exists", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        File.Delete(savePath);
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Failed to delete existing file!");
+                        return;
+                    }
+                }
+                else
+                {
+                    return;
+                }
+                */
+            }
+
             string baseDirectory = Directory.GetParent(tmpInfo.FileName).ToString();
             try
             {
@@ -285,8 +322,10 @@ namespace livelywpf
                         //livelyinfo.json file in root.
                         zip.AddFile(documentPaths[documentPaths.Count - 1], "");
                         //root directory of zip.
-                        zip.AddFile(tmpInfo.Thumbnail, "");
-                        zip.AddFile(tmpInfo.Preview, "");
+                        if (File.Exists(tmpInfo.Thumbnail))
+                            zip.AddFile(tmpInfo.Thumbnail, "");
+                        if(File.Exists(tmpInfo.Preview))
+                            zip.AddFile(tmpInfo.Preview, "");
 
                         for (int i = 0; i < (documentPaths.Count - 1); i++)
                         {

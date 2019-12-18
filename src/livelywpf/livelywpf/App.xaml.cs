@@ -12,7 +12,7 @@ using System.Windows.Interop;
 using System.Globalization;
 
 using Props = livelywpf.Properties;
-
+using MahApps.Metro;
 
 namespace livelywpf
 {
@@ -71,7 +71,28 @@ namespace livelywpf
             SaveData.config.SafeShutdown = false;
             SaveData.SaveConfig();
 
+            #region theme
+            // add custom accent and theme resource dictionaries to the ThemeManager
+            // you should replace MahAppsMetroThemesSample with your application name
+            // and correct place where your custom accent lives
+            //ThemeManager.AddAccent("CustomAccent1", new Uri("pack://application:,,,/CustomAccent1.xaml"));
+
+            // get the current app style (theme and accent) from the application
+            // you can then use the current theme and custom accent instead set a new theme
+            Tuple<AppTheme, Accent> appStyle = ThemeManager.DetectAppStyle(Application.Current);
+
+            
+            // now set the Green accent and dark theme
+            ThemeManager.ChangeAppStyle(Application.Current,
+                                        ThemeManager.GetAccent(SaveData.livelyThemes[SaveData.config.Theme].Accent),
+                                        ThemeManager.GetAppTheme(SaveData.livelyThemes[SaveData.config.Theme].Base)); // or appStyle.Item1
+                                        
+            // now change app style to the custom accent and current theme
+            //ThemeManager.ChangeAppStyle(Application.Current, ThemeManager.GetAccent("CustomAccent1"), ThemeManager.GetAppTheme(SaveData.livelyThemes[SaveData.config.Theme].Base));
+            #endregion theme
+
             base.OnStartup(e);
+
             SetupExceptionHandling();
             w = new MainWindow(); 
         
@@ -88,20 +109,36 @@ namespace livelywpf
                     Owner = w,
                     WindowStartupLocation = WindowStartupLocation.CenterOwner
                 };
-                hw.ShowDialog();
-                
+                hw.ShowDialog();              
             }
+            /*
+            else if( !SaveData.config.AppVersion.Equals(System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString(), StringComparison.OrdinalIgnoreCase)) //whats new screen!
+            {
+                //if previous savedata version is different from currently running app, show help/update info screen.
+                SaveData.config.AppVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+                SaveData.SaveConfig();
+
+                dialogues_general.Changelog cl = new dialogues_general.Changelog
+                {
+                    WindowStartupLocation = WindowStartupLocation.CenterScreen,
+                    ShowActivated = true
+                };
+                cl.Show();
+            }
+            */
 
             if(SaveData.config.IsRestart)
             {
                 SaveData.config.IsRestart = false;
                 SaveData.SaveConfig();
 
-                //w.WindowStartupLocation = WindowStartupLocation.Manual;
                 w.Show();
                 w.UpdateWallpaperLibrary();
+                //w.ShowMainWindow();
 
                 w.tabControl1.SelectedIndex = 2; //settings tab
+                //SetupDesktop.SetFocus();
+                //w.Activate();
             }
             
         }
@@ -141,6 +178,7 @@ namespace livelywpf
         }
 
         private bool _savedDataLogged = false;
+
         private void LogSavedData()
         {
             if (!_savedDataLogged)
