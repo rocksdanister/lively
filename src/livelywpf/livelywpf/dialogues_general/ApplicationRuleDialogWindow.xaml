@@ -9,7 +9,7 @@
         mc:Ignorable="d"
         Title="{x:Static p:Resources.txtApplicationRules}" Height="450" Width="800" Closing="Window_Closing">
     <Grid>
-        <Label Content="{x:Static p:Resources.txtLabel21}" FontSize="16" Foreground="#FF899F1C"  />
+        <Label Content="{x:Static p:Resources.txtLabel21}" FontSize="16" Foreground="{DynamicResource AccentColorBrush}"  />
         <ListView x:Name="listView"  Width="Auto"  Margin="25,38,199.6,11" SelectionMode="Single" BorderThickness="1" SelectionChanged="ListView_SelectionChanged">
             <ListView.View>
                 <GridView >

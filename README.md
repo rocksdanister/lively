@@ -26,6 +26,8 @@ Just drag & drop files, webpages to set as wallpaper..
 
 Lively is still in development, if you encounter bugs create a github Issue along with <a href="https://github.com/rocksdanister/lively/wiki/Common-Problems"> log file</a>
 
+Help translate lively to other languages: <a href="https://github.com/rocksdanister/lively/blob/master/resources/translations/English/Resources.resx">Translation Document</a>
+
 <a href="https://github.com/rocksdanister/lively/wiki">Documentation</a>
 ## Features
 *Wait a sec, preview gif clips take some time to load.*
@@ -37,8 +39,14 @@ Lively is still in development, if you encounter bugs create a github Issue alon
 * Play .mp4, mkv, webm, avi, mov etc 
 * Hardware Acceleration support.
 * Audio will mute when not on desktop.
-#### Web Pages & html
+#### Youtube & streams
 ![demo-gif3](/resources/html.gif?raw=true "html")
+
+* Just drag & drop youtube link to set as desktop wallpaper.
+* Video quality is adjustable in settings.
+* Additional software <a href="https://github.com/rocksdanister/lively/wiki/Youtube-Wallpaper">required.</a>
+#### Web Pages & html
+![demo-gif7](/resources/yt-gif.gif?raw=true "html")
 
 <a href="http://louie.co.nz/25th_hour/"> 25th Hour</a> by Loius Coyle
 * Chromium Embedded Framework.
@@ -68,12 +76,16 @@ Lively is still in development, if you encounter bugs create a github Issue alon
 #### & more:
 - Easy to use, Just drag & drop media files & webpages into lively window to set it as wallpaper.
 - Easy to share Lively-zip format, just drag & drop the zip file to import it into Library, use the built-in creator to make them (ensures compatibility).
-- Full Multiple monitor support, play different wallpaper per screen or span a single wallpaper across all screens.
 - Hardware accelerated video playback, with option to use external Directshow codec of your choice. ( LAV(recommended), K-Lite, Kawaii Codec..)
 - Library to browse and preview wallpapers.
 - You can use it alongside rainmeter.
 - Efficient, its a native c# wpf application with c++ calls. 
 - Fully opensource & free; no blackmagic, no features behind paywall.
+#### multiple monitor support:
+- Full Multiple monitor support.
+- Span single wallpaper across all screens.
+- Duplicate same wallpaper all screens.
+- Different wallpaper per screens.
 #### Regarding Performance:
  * Wallpaper playback pauses when fullscreen application/games run on the machine (~0% cpu, gpu usage). 
  * Optionally you can set wallpaper to only play when on desktop.
@@ -82,20 +94,27 @@ Lively is still in development, if you encounter bugs create a github Issue alon
  * Kill wallpaper when fullscreen apps/games run(coming soon).
  * Mute audio when not on desktop (or optionally always mute).
 
-**_I'm not officially affiliated with Unity technologies, godot, bizhawk, shadertoy;_**
+**_I'm not officially affiliated with Unity technologies, youtube, godot, bizhawk, shadertoy;_**
 ## Download
-##### Latest version: v0.3.4.0 (Windows 10, 8.1, 7 32bit)
+##### Latest version: v0.5.0.0 (Windows 10, 8.1)
 - [`lively_full_x86.zip`][direct-full-win32]  
    _130MB, Web wallpaper support & some sample wallpapers included._
+
+- [`lively_x86.zip`][direct-just-win32]  
+   _130MB, Web wallpaper support.
   
 - [`lively_lite_x86.zip`][direct-lite-win32]  
    _5MB, No web wallpaper support._
    
-[direct-full-win32]: https://github.com/rocksdanister/lively/releases/download/v0.3.4.0/lively_full_x86.zip
+[direct-full-win32]: https://github.com/rocksdanister/lively/releases/download/v0.5.0.0/lively_full_x86.zip
 
-[direct-lite-win32]: https://github.com/rocksdanister/lively/releases/download/v0.3.4.0/lively_lite_x86.zip
+[direct-just-win32]: https://github.com/rocksdanister/lively/releases/download/v0.5.0.0/lively_x86.zip
+
+[direct-lite-win32]: https://github.com/rocksdanister/lively/releases/download/v0.5.0.0/lively_lite_x86.zip
 
 Unzip the file, select livelywpf.exe to get started, first run will be slow due to windows defender scanning.
+
+To update from old version, download `lively_x86.zip`, delete everything except `SaveData` & `wallpapers` folder from your existing lively folder & just unzip the new version over it.
 
 [Trouble Getting started? ](https://github.com/rocksdanister/lively/wiki/Getting-Started)
 
@@ -109,7 +128,7 @@ Certain antivirus software heuristics algorithm will detect lively as a virus, t
 ## Contributing
 Code contributions are welcome, check [guidelines](https://github.com/rocksdanister/lively/wiki) for making pull request.
 
-Currently Lively is only in English, other languages are machine translated. If interested in translating: 
+Currently Lively is only in English, other languages are machine translated. 
 
 ##### Related Projects
 https://github.com/rocksdanister/lively-cef

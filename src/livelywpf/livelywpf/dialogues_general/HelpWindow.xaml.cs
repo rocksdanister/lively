@@ -31,7 +31,7 @@ namespace livelywpf
             if (System.IO.File.Exists(path))
             {
                 mePlayer.Source = new Uri(path);
-                mePlayer.Stretch = Stretch.UniformToFill; 
+                mePlayer.Stretch = Stretch.Uniform;
                 mePlayer.MediaEnded += MePlayer_MediaEnded;
                 //mePlayer.MediaOpened += MePlayer_MediaOpened; 
                 mePlayer.MediaFailed += MePlayer_MediaFailed;
@@ -39,6 +39,19 @@ namespace livelywpf
 
                 mePlayer.Play();
             }
+             
+            changelogtext.Text = "What's new in Lively v" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+        }
+
+        private void PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            dialogues_general.Changelog changelogWindow = new dialogues_general.Changelog
+            {
+                Owner = this,
+                WindowStartupLocation = WindowStartupLocation.CenterOwner,
+                ShowActivated = true
+            };
+            changelogWindow.ShowDialog();
         }
 
         private void MePlayer_MediaOpened(object sender, RoutedEventArgs e)
@@ -96,5 +109,7 @@ namespace livelywpf
             mePlayer.Source = null;
             mePlayer.Close();
         }
+
+
     }
 }

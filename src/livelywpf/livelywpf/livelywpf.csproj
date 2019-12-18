@@ -170,6 +170,9 @@
     <Compile Include="dialogues_general\ApplicationRuleDialogWindow.xaml.cs">
       <DependentUpon>ApplicationRuleDialogWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="dialogues_general\Changelog.xaml.cs">
+      <DependentUpon>Changelog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="dialogues_wpcreator\CreateWallpaper.xaml.cs">
       <DependentUpon>CreateWallpaper.xaml</DependentUpon>
     </Compile>
@@ -202,6 +205,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="save\SharedBitmapSource.cs" />
     <Compile Include="save\SystemInfo.cs" />
     <Compile Include="wp_windows\GifWindow.xaml.cs">
       <DependentUpon>GifWindow.xaml</DependentUpon>
@@ -225,6 +229,10 @@
     <Compile Include="wp_lib\NativeMethods.cs" />
     <Compile Include="wp_lib\VolumeMixer.cs" />
     <Page Include="dialogues_general\ApplicationRuleDialogWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="dialogues_general\Changelog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -290,6 +298,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="docs\changelog.rtf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\seed_placeholder.png" />
     <EmbeddedResource Include="Properties\Icons.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Icons.Designer.cs</LastGenOutput>
@@ -332,6 +344,9 @@
     <Resource Include="images\icons8-language-32.png" />
     <Resource Include="images\icons8-language-30.png" />
     <Resource Include="images\icons8-language-60.png" />
+    <Resource Include="images\icons8-stream-48.png" />
+    <Resource Include="images\monitor-50xw.png" />
+    <Resource Include="images\icons8-language-50.png" />
     <Content Include="NLog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
@@ -388,9 +403,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\icons8-seed-of-life-96.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\monitor-50xw.png" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="IWshRuntimeLibrary">

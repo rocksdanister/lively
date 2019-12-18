@@ -24,7 +24,7 @@
                     <!--<Border ToolTip="{Binding FilePath}" BorderBrush="#FF879F15" BorderThickness="1" CornerRadius="8" Margin="-5,0,0,0">-->
                     <Button Width="200" Height="125" Margin="-5,0,0,0" ClickMode="Hover" ToolTip="{Binding FilePath}">
                         <StackPanel Orientation="Vertical"  Width="200" Height="125" >
-                            <Image Source="/images/monitor-480xw.png" Width="50" Height="50" />
+                            <Image Source="/images/monitor-50xw.png" Width="50" Height="50" />
                             <TextBlock TextWrapping="Wrap" Text="{Binding DisplayDevice}"/>
                             <TextBlock TextWrapping="Wrap" Text="{Binding FileName}"/>
                         </StackPanel>

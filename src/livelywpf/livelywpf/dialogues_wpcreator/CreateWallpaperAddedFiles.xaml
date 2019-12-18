@@ -8,9 +8,10 @@
         mc:Ignorable="d"
         Title="Click 'OK' to Confirm" Height="450" Width="800" MinHeight="500" MinWidth="800">
     <Grid>
-        <Label Content="{x:Static p:Resources.txtLabel36}" Height="50" FontSize="14" Foreground="#FF899F1C" Margin="10,10,545.6,426.4" />
+        <Label Content="{x:Static p:Resources.txtLabel36}" Height="50" FontSize="14" Foreground="{DynamicResource AccentColorBrush}" Margin="10,10,545.6,426.4" />
         <ListView Name="filesListVIew" Margin="10,60,53.6,54.4" />
-        <Button IsDefault="True" Content="{x:Static p:Resources.txtLabel37}"  Background="#FF899F1C" Click="Button_Click" Margin="0,0,53.6,18.4" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="105" ></Button>
-        <Button IsCancel="True" Content="{x:Static p:Resources.txtLabel38}"   Click="Button_Click_1" Margin="0,0,163.6,18.4" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="105" />
+        <Button IsDefault="True" Content="{x:Static p:Resources.txtLabel37}"  Background="{DynamicResource AccentColorBrush}" 
+                Click="Button_Click" Margin="0,0,53.6,18.4" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="105" ></Button>
+        <Button IsCancel="True" Content="{x:Static p:Resources.txtLabel38}"  Click="Button_Click_1" Margin="0,0,163.6,18.4" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="105" />
     </Grid>
 </Window>

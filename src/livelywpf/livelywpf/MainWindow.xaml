@@ -23,13 +23,14 @@
         Title="Lively" 
         WindowStartupLocation="CenterScreen"
         WindowTransitionsEnabled="False" 
-        GlowBrush="Olive" AllowsTransparency="True" WindowStyle="None" Drop="MetroWindow_Drop"
+        GlowBrush="{DynamicResource AccentColorBrush}"
+        AllowsTransparency="True" WindowStyle="None" Drop="MetroWindow_Drop"
         AllowDrop="true">
-
+    
     <Controls:MetroWindow.Resources>
         <Style TargetType="Label" x:Key="labelGreenH1">
-            <Setter Property="Foreground" Value="#FF879F15" />
-            <Setter Property="BorderBrush" Value="#FF7C7D7D" />
+            <Setter Property="Foreground" Value="{DynamicResource AccentColorBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource AccentColorBrush}" />
             <Setter Property="BorderThickness" Value="0,0,0,1" />
             <Setter Property="Margin" Value="0,0,0,5" />
             <Setter Property="FontSize" Value="16" />
@@ -56,6 +57,7 @@
         </Storyboard>
     </Controls:MetroWindow.Resources>
 
+
     <Grid Margin="10,28,-0.2,0.4">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="822*"/>
@@ -65,34 +67,40 @@
         <Controls:MetroTabControl Name="tabControl1" Grid.ColumnSpan="3" Margin="0,0,0,-0.4" >
             <TabItem Name="libTab" Header="{x:Static p:Resources.titleLibrary}">
                 <Canvas>
-                    <Border BorderBrush="#FF89A910" BorderThickness="0.5,0,0,0" Height="479" Canvas.Left="664" Canvas.Top="10" Width="224"/>
+                    <Border BorderBrush="{DynamicResource AccentColorBrush}" BorderThickness="0.5,0,0,0" Height="479" Canvas.Left="664" Canvas.Top="10" Width="224"/>
                     <ScrollViewer Height="479" Width="245" Canvas.Left="670" Canvas.Top="10" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Hidden" >
                         <ItemsControl x:Name="tileInfo" >
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate >
                                     <StackPanel Orientation="Vertical"  Width="228" Canvas.Left="670" Canvas.Top="169">
-                                        <Border BorderBrush="#FF879F15" BorderThickness="1" Height="126" Width="224	" Margin="-4,0,4,0" >
+                                        <Border BorderBrush="{DynamicResource AccentColorBrush}" BorderThickness="1" Height="126" Width="224	" Margin="-4,0,4,0" >
                                             <Image gif:AnimationBehavior.SourceUri="{Binding LivelyInfo.Preview, Converter={StaticResource nullConverter}}"
                                                    gif:AnimationBehavior.RepeatBehavior="Forever" Stretch="UniformToFill" />
                                         </Border>
 
-                                        <Button x:Name="SetWallpaperBtn" ClickMode="Release" Click="SetWallpaperBtn_Click" Background="#FF879F15" Margin="0,5,10,0" Foreground="White" Height="29" Canvas.Left="672" Canvas.Top="135" Width="210" >
+                                        <Button x:Name="SetWallpaperBtn" ClickMode="Release" Click="SetWallpaperBtn_Click" Background="{DynamicResource AccentColorBrush}" Margin="0,5,10,0" Foreground="White" Height="29" Canvas.Left="672" Canvas.Top="135" Width="210" >
                                             <WrapPanel>
                                                 <Image Source="/images/icons8-wallpaper-24.png" />
                                                 <TextBlock Text="{x:Static p:Resources.txtSetWallpaper}" />
                                             </WrapPanel>
                                         </Button>
 
-                                        <TextBox x:Name="LibraryTitle" IsReadOnly="True" FontSize="15" TextWrapping="Wrap"  BorderThickness="0,0,0,1" Text="{Binding LivelyInfo.Title}" Foreground="#FF879F15" Margin="0,0,0,1"/>
-                                        <TextBox x:Name="LibraryDesc" IsReadOnly="True" TextWrapping="Wrap" BorderThickness="0" Foreground="#FFAAA8A8" Text="{Binding LivelyInfo.Desc}"/>
-                                        <TextBox IsReadOnly="True" TextWrapping="WrapWithOverflow"  Text="{x:Static p:Resources.txtLabel12}"  BorderThickness="0,0,0,1" BorderBrush="#FF7C7D7D"/>
-                                        <TextBox x:Name="LibraryType" IsReadOnly="True" TextWrapping="Wrap" BorderThickness="0"  Foreground="#FFAAA8A8" Text="{Binding Type}"/>
-                                        <TextBox IsReadOnly="True" TextWrapping="WrapWithOverflow"  Text="{x:Static p:Resources.txtLabel13}"  BorderThickness="0,0,0,1" BorderBrush="#FF7C7D7D"/>
-                                        <TextBox x:Name="LibraryAuthor" IsReadOnly="True" TextWrapping="Wrap" BorderThickness="0"  Foreground="#FFAAA8A8" Text="{Binding LivelyInfo.Author}"/>
-                                        <TextBox  IsReadOnly="True" TextWrapping="WrapWithOverflow" Text="{x:Static p:Resources.txtLabel14}"  BorderThickness="0,0,0,1" BorderBrush="#FF7C7D7D"/>
+                                        <!--  Foreground="#FFAAA8A8"-->
+                                        <TextBox x:Name="LibraryTitle" IsReadOnly="True" FontSize="15" TextWrapping="Wrap"  BorderThickness="0,0,0,1" Text="{Binding LivelyInfo.Title}" 
+                                                 Foreground="{DynamicResource AccentColorBrush}" Margin="0,0,0,1"/>
+                                        <TextBox x:Name="LibraryDesc" IsReadOnly="True" TextWrapping="Wrap" BorderThickness="0" Text="{Binding LivelyInfo.Desc}"/>
+                                        <TextBox IsReadOnly="True" TextWrapping="WrapWithOverflow"  Text="{x:Static p:Resources.txtLabel12}"  BorderThickness="0,0,0,1" 
+                                                 Foreground="{DynamicResource AccentColorBrush2}"/>
+                                        <TextBox x:Name="LibraryType" IsReadOnly="True" TextWrapping="Wrap" BorderThickness="0" Text="{Binding Type}"/>
+                                        <TextBox IsReadOnly="True" TextWrapping="WrapWithOverflow"  Text="{x:Static p:Resources.txtLabel13}"  BorderThickness="0,0,0,1" 
+                                                 Foreground="{DynamicResource AccentColorBrush2}"/>
+                                        <TextBox x:Name="LibraryAuthor" IsReadOnly="True" TextWrapping="Wrap" BorderThickness="0" Text="{Binding LivelyInfo.Author}"/>
+                                        <TextBox  IsReadOnly="True" TextWrapping="WrapWithOverflow" Text="{x:Static p:Resources.txtLabel14}"  BorderThickness="0,0,0,1" 
+                                                 Foreground="{DynamicResource AccentColorBrush2}"/>
 
                                         <TextBlock TextWrapping="WrapWithOverflow" Canvas.Left="241" Canvas.Top="98">
-                                            <Hyperlink x:Name="LibraryContact"  RequestNavigate="Hyperlink_RequestNavigate_Warning" NavigateUri="{Binding UriContact, Converter={StaticResource nullConverter}}" Foreground="#FF85A912"  ><Run Text="{Binding LivelyInfo.Contact}"/></Hyperlink>
+                                            <Hyperlink x:Name="LibraryContact"  RequestNavigate="Hyperlink_RequestNavigate_Warning" NavigateUri="{Binding UriContact, Converter={StaticResource nullConverter}}" 
+                                                       Foreground="{DynamicResource AccentColorBrush}"  ><Run Text="{Binding LivelyInfo.Contact}"/></Hyperlink>
                                         </TextBlock>
                                     </StackPanel>
                                 </DataTemplate>
@@ -102,8 +110,9 @@
 
                     <!-- Library Tiles-->
 
-                    <ListBox x:Name="wallpapersLV"  HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="5,10,0,0" Height="479" Width="655" 
-                             SelectionChanged="WallpapersLV_SelectionChanged" ScrollViewer.VerticalScrollBarVisibility="Visible"  ScrollViewer.ScrollChanged="WallpapersLV_ScrollChanged" ScrollViewer.IsDeferredScrollingEnabled="True" >
+                    <ListBox x:Name="wallpapersLV"  HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="5,10,0,0" Height="479" Width="655" SelectionChanged="WallpapersLV_SelectionChanged" 
+                             ScrollViewer.VerticalScrollBarVisibility="Visible"  ScrollViewer.ScrollChanged="WallpapersLV_ScrollChanged" ScrollViewer.IsDeferredScrollingEnabled="True" >
+                        
                         <ListBox.ContextMenu>
                             <ContextMenu>
                                 <MenuItem Header="{x:Static p:Resources.txtContextMenuShowOnDisk}" Click="MenuItem_ShowOnDisk_Click" ></MenuItem>
@@ -121,11 +130,12 @@
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Vertical"  ToolTip="{Binding Type}" Width="118" Height="153" Margin="0,5,5,0" >
-                                    <Border BorderBrush="#FF879F15" BorderThickness="1" Height="118" Width="118" >
+                                    <Border BorderBrush="{DynamicResource AccentColorBrush}" BorderThickness="1" Height="118" Width="118" >
                                         <Image gif:AnimationBehavior.SourceUri="{Binding TilePreview, Converter={StaticResource nullConverter}}" Source="{Binding Img, Converter={StaticResource nullConverter}}"  Stretch="UniformToFill" />
                                         <!--<Image Source="{Binding Img}" Stretch="UniformToFill" />-->
                                     </Border >
-                                    <TextBlock TextWrapping="Wrap" FontSize="12" Text="{Binding LivelyInfo.Title}" Foreground="#FFF3F3F3" />
+                                    <TextBlock TextWrapping="Wrap" FontSize="12" Text="{Binding LivelyInfo.Title}"  />
+                                    <!-- Foreground="#FFF3F3F3"-->
                                 </StackPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
@@ -153,13 +163,30 @@
                     <Button Canvas.Left="801" Canvas.Top="496" ClickMode="Release" Height="27" Width="104"  Click="Hyperlink_SupportPage">
                         <WrapPanel ToolTip="https://ko-fi.com/rocksdanister">
                             <Image  Source="/images/icons8-heart-outline-24.png" />
-                            <TextBlock Canvas.Left="241" Canvas.Top="98" Foreground="#FF85A912" TextDecorations="Underline" Text="{x:Static p:Resources.txtSupport}">
+                            <TextBlock Canvas.Left="241" Canvas.Top="98" Foreground="{DynamicResource AccentColorBrush}" TextDecorations="Underline" Text="{x:Static p:Resources.txtSupport}"> <!--Foreground="#FF85A912"-->
                               <!--  <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" IsEnabled="False" Foreground="#FF85A912"></Hyperlink> -->
                             </TextBlock>
                             <!--<TextBlock Text="SUPPORT" />-->
                         </WrapPanel>
                     </Button>
-                    <TextBox x:Name="textBoxLibrarySearch" Height="19" Canvas.Left="162" TextWrapping="Wrap" TextChanged="TextBoxLibrarySearch_TextChanged" Canvas.Top="497" Width="186"/>
+                    <!-- TextBox x:Name="textBoxLibrarySearch" Height="19" Canvas.Left="162" TextWrapping="Wrap" TextChanged="TextBoxLibrarySearch_TextChanged" Canvas.Top="497" Width="186"/>-->
+
+                    <Grid Canvas.Top="497" Canvas.Left="162">
+                        <TextBox x:Name="textBoxLibrarySearch" Height="19" TextWrapping="Wrap" TextChanged="TextBoxLibrarySearch_TextChanged" Width="186"/>
+                        <TextBlock IsHitTestVisible="False" Text="Search" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,-2.5,0,0" Foreground="DarkGray">
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Text, ElementName=textBoxLibrarySearch}" Value="">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </Grid>
+
                 </Canvas>
             </TabItem>
             <TabItem Header="{x:Static p:Resources.titleType}">
@@ -220,26 +247,32 @@
                     >
                         <Image  Width="30" Height="30"  Margin="0"  Source="/images/icons8-webpage-50.png"></Image>
                     </Controls:Tile>
+                    <Controls:Tile TitleFontSize="12" Title="Stream"  Click="Tile_Video_stream_Click" ClickMode="Release" 
+                    Width="100"
+                    Height="100" Margin="0" Canvas.Left="287" Canvas.Top="264" 
+                    >
+                        <Image  Width="30" Height="30"  Margin="0"  Source="/images/icons8-stream-48.png"></Image>
+                    </Controls:Tile>
 
-                    <Label Content="{x:Static p:Resources.txtLabel9}" Canvas.Left="306" Canvas.Top="238" Foreground="#FF7D7B76"></Label>
+                    <Label Content="{x:Static p:Resources.txtLabel9}" Canvas.Left="425" Canvas.Top="238" Foreground="#FF7D7B76"></Label>
                     <Controls:Tile TitleFontSize="12" Title="{x:Static p:Resources.txtTileHTML}"  Click="Tile_HTML_AUDIO_Click" ClickMode="Release" 
                     Width="100"
-                    Height="100" Margin="0" Canvas.Left="306" Canvas.Top="264" 
+                    Height="100" Margin="0" Canvas.Left="425" Canvas.Top="264" 
                     >
                         <Image  Width="30" Height="30"  Margin="0,0,0,0"  Source="/images/audio-wave1.png"></Image>
                     </Controls:Tile>
 
                     <Controls:Tile TitleFontSize="12" Title="{x:Static p:Resources.txtTileUnity}" Click="Tile_UNITY_AUDIO_Click" ClickMode="Release" 
                     Width="100"
-                    Height="100" Margin="0" Canvas.Left="425" Canvas.Top="264" 
+                    Height="100" Margin="0" Canvas.Left="544" Canvas.Top="264" 
                     >
                         <!-- <Image  Width="40" Height="40" Margin="0,0,0,0"  Source="/images/audio-wave1.png"></Image> -->
                     </Controls:Tile>
 
-                    <Label Content="{x:Static p:Resources.txtLabelAppName}" Canvas.Left="570" Canvas.Top="238" Foreground="#FF7D7B76"></Label>
+                    <Label Content="{x:Static p:Resources.txtLabelAppName}" Canvas.Left="705" Canvas.Top="238" Foreground="#FF7D7B76"></Label>
                     <Controls:Tile TitleFontSize="12" Title="Lively .zip" Click="Tile_LIVELY_ZIP_Click" ClickMode="Release" 
                     Width="100"
-                    Height="100" Margin="0" Canvas.Left="565" Canvas.Top="264" 
+                    Height="100" Margin="0" Canvas.Left="705" Canvas.Top="264" 
                     >
                         <Image  Width="30" Height="30" Margin="0,0,0,0"  Source="/images/icons8-seed-of-life-64.png"></Image>
                     </Controls:Tile>
@@ -247,132 +280,173 @@
             </TabItem>
             <TabItem Header="{x:Static p:Resources.titleSettings}" >
                 <Canvas>
-                    <WrapPanel Height="523" >
+                    <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Hidden" Height="515" >
+                        <WrapPanel Orientation="Horizontal" Width="900">
+                            <!-- Height="510" -->
 
-                        <StackPanel Orientation="Vertical" Margin="15,5,0,0" Width="265" Height="500">
-                            <Label Content="{x:Static p:Resources.txtLabel15}"  Style="{StaticResource labelGreenH1}"/>
-                            <Controls:ToggleSwitch Name="transparencyToggle" Header="{x:Static p:Resources.txtTransparency}" ToolTip="{x:Static p:Resources.txtTransparencyToolTip}"></Controls:ToggleSwitch>
-                            <Controls:ToggleSwitch Name="StartupToggle" Header="{x:Static p:Resources.txtStartup}" ToolTip="{x:Static p:Resources.txtStartupToolTip}"  ></Controls:ToggleSwitch>
-                            <Controls:ToggleSwitch Name="TileAnimateToggle" Header="{x:Static p:Resources.txtLiveTile}" ToolTip="{x:Static p:Resources.txtLiveTileToolTip}"></Controls:ToggleSwitch>
-                            <Controls:ToggleSwitch Name="TileAutoToggle" Header="Generate Tile:" IsEnabled="False" ToolTip="Generate tiles automatically for all files, coming soon."></Controls:ToggleSwitch>
-                            <Label Content="{x:Static p:Resources.txtLabel16}" Style="{StaticResource labelGreenH1}"/>
+                            <StackPanel Orientation="Vertical" Margin="15,5,0,0" Width="265" Height="500">
+                                <Label Content="{x:Static p:Resources.txtLabel15}"  Style="{DynamicResource labelGreenH1}" />
+                                <Controls:ToggleSwitch Name="transparencyToggle" Header="{x:Static p:Resources.txtTransparency}" ToolTip="{x:Static p:Resources.txtTransparencyToolTip}"></Controls:ToggleSwitch>
+                                <Slider x:Name="transparencySlider" Minimum="0.5" Maximum="0.9" IsEnabled="False" IsMoveToPointEnabled="True" ></Slider>
+                                <Controls:ToggleSwitch Name="StartupToggle" Header="{x:Static p:Resources.txtStartup}" ToolTip="{x:Static p:Resources.txtStartupToolTip}"  ></Controls:ToggleSwitch>
+                                <Controls:ToggleSwitch Name="TileAnimateToggle" Header="{x:Static p:Resources.txtLiveTile}" ToolTip="{x:Static p:Resources.txtLiveTileToolTip}"></Controls:ToggleSwitch>
+                                <Controls:ToggleSwitch Name="TileAutoToggle" Header="Generate Tile:" IsEnabled="False" ToolTip="Generate tiles automatically for all files, coming soon."></Controls:ToggleSwitch>
+                                <Label Content="{x:Static p:Resources.txtLabel16}" Style="{StaticResource labelGreenH1}"/>
 
-                            <!--<Label Content="UI: " FontSize="14.667" />-->
-                            <WrapPanel Height="35">
-                                <Image Source="/images/icons8-language-60.png" Margin="2,0,0,0" Width="30" Height="30" />
-                                <TextBlock  Text="Language:" FontSize="14" VerticalAlignment="Center"  >
-                                    <TextBlock.Style>
-                                        <Style>
-                                            <Style.Triggers>
-                                                <Trigger Property="Image.IsVisible" Value="True">
-                                                    <Trigger.EnterActions>
-                                                        <BeginStoryboard Storyboard="{StaticResource langTextAnim}">
-                                                        </BeginStoryboard>
-                                                    </Trigger.EnterActions>
-                                                </Trigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </TextBlock.Style>
-                                </TextBlock>
-                            </WrapPanel>
-                            <ComboBox Name="comboBoxLanguage">
-                                <!--
+                                <!--<Label Content="UI: " FontSize="14.667" />-->
+                                <WrapPanel Height="35">
+                                    <Image Source="/images/icons8-language-50.png" Margin="2,0,0,0" Width="25" Height="25" />
+                                    <TextBlock  Text="Language:" FontSize="14" VerticalAlignment="Center"  >
+                                        <TextBlock.Style>
+                                            <Style>
+                                                <Style.Triggers>
+                                                    <Trigger Property="Image.IsVisible" Value="True">
+                                                        <Trigger.EnterActions>
+                                                            <BeginStoryboard Storyboard="{StaticResource langTextAnim}">
+                                                            </BeginStoryboard>
+                                                        </Trigger.EnterActions>
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </WrapPanel>
+                                <ComboBox Name="comboBoxLanguage">
+                                    <!--
                                 <ComboBoxItem IsSelected="True">English (en)</ComboBoxItem>
                                 <ComboBoxItem >中文</ComboBoxItem>
                                 -->
-                            </ComboBox>
+                                </ComboBox>
+                                <!--
                             <Controls:ToggleSwitch Name="fpsUIToggle" Header="Force Fast UI:"  >
                             </Controls:ToggleSwitch>
                             <Controls:ToggleSwitch Name="disableUIHWToggle" Header="Force Software Rendering:"></Controls:ToggleSwitch>
-                            <!--<Controls:ToggleSwitch IsEnabled="False" Name="bottomMostWPBtn" Header="High Contrast Workaround:" ToolTip="Render Wallpaper infront of icons"></Controls:ToggleSwitch>-->
-                        </StackPanel>
+                            -->
+                                <!--<Controls:ToggleSwitch IsEnabled="False" Name="bottomMostWPBtn" Header="High Contrast Workaround:" ToolTip="Render Wallpaper infront of icons"></Controls:ToggleSwitch>-->
+                                <TextBlock  Text="Theme:" FontSize="14" VerticalAlignment="Center" Padding="0,10,0,0" />
+                                <ComboBox Name="comboBoxTheme">
+                                </ComboBox>
+                            </StackPanel>
 
-                        <StackPanel Orientation="Vertical" Margin="15,5,0,0" Canvas.Left="203"  Width="265" Height="500">
+                            <StackPanel Orientation="Vertical" Margin="15,5,0,0" Canvas.Left="203"  Width="265" Height="500">
 
-                            <Label Content="{x:Static p:Resources.txtLabel17}" Style="{StaticResource labelGreenH1}"/>
-                            <Label Content="{x:Static p:Resources.txtVideoPlayer}" ToolTip="{x:Static p:Resources.txtVideoPlayerToolTip}" FontSize="14.667" />
-                            <ComboBox Name="comboBoxVideoPlayer">
-                                <!-- SelectionChanged="ComboBoxVideoPlayer_SelectionChanged"> -->
-                                <ComboBoxItem IsSelected="True" ToolTip="Use the included windows codec."  Content="{x:Static p:Resources.cmbBoxVideoPlayer1}"></ComboBoxItem>
-                                <ComboBoxItem ToolTip="Use external codec like LAV." Content="{x:Static p:Resources.cmbBoxVideoPlayer2}" ></ComboBoxItem>
-                                <ComboBoxItem IsEnabled="False">MPV</ComboBoxItem>
-                            </ComboBox>
-                            <TextBlock Canvas.Left="241" Canvas.Top="98">
-                                <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://github.com/rocksdanister/lively/wiki/Video-Guide" Foreground="#FF85A912" ><TextBlock Text="{x:Static p:Resources.txtLabel11}" /></Hyperlink>
+                                <Label Content="{x:Static p:Resources.txtLabel17}" Style="{StaticResource labelGreenH1}"/>
+                                <Label Content="{x:Static p:Resources.txtVideoPlayer}" ToolTip="{x:Static p:Resources.txtVideoPlayerToolTip}" FontSize="14.667" />
+                                <ComboBox Name="comboBoxVideoPlayer">
+                                    <!-- SelectionChanged="ComboBoxVideoPlayer_SelectionChanged"> -->
+                                    <ComboBoxItem IsSelected="True" ToolTip="Use the included windows codec."  Content="{x:Static p:Resources.cmbBoxVideoPlayer1}"></ComboBoxItem>
+                                    <ComboBoxItem ToolTip="Use external codec like LAV." Content="{x:Static p:Resources.cmbBoxVideoPlayer2}" ></ComboBoxItem>
+                                    <ComboBoxItem >mpv</ComboBoxItem>
+                                </ComboBox>
+                                <TextBlock Canvas.Left="241" Canvas.Top="98">
+                                <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://github.com/rocksdanister/lively/wiki/Video-Guide" 
+                                           Foreground="{DynamicResource AccentColorBrush3}" ><TextBlock Text="{x:Static p:Resources.txtLabel11}" /></Hyperlink>
                             </TextBlock>
-                            <Controls:ToggleSwitch Name="videoMuteToggle" Header="{x:Static p:Resources.txtAudioOut}" ToolTip="{x:Static p:Resources.txtAudioOutToolTip}" ></Controls:ToggleSwitch>
-                            <TextBlock Name="vid_audio_WarningText" TextWrapping="Wrap" Foreground="Olive" Text="{x:Static p:Resources.txtAudioLabel1}"/>
+                                <Controls:ToggleSwitch Name="videoMuteToggle" Header="{x:Static p:Resources.txtAudioOut}" ToolTip="{x:Static p:Resources.txtAudioOutToolTip}" ></Controls:ToggleSwitch>
+                                <TextBlock Name="vid_audio_WarningText" TextWrapping="Wrap" Foreground="{DynamicResource AccentColorBrush3}" Text="{x:Static p:Resources.txtAudioLabel1}"/>
 
-                            <Label Content="{x:Static p:Resources.txtLabel18}" Style="{StaticResource labelGreenH1}"/>
-                            <Label Content="{x:Static p:Resources.txtGIFPlayer}" ToolTip="{x:Static p:Resources.txtGifPlayerToolTip}" FontSize="14.667" />
-                            <ComboBox Name="comboBoxGIFPlayer">
-                                <ComboBoxItem IsSelected="True" ToolTip="{x:Static p:Resources.cmbBoxGIFPlayer1ToolTip}" Content="{x:Static p:Resources.cmbBoxGIFPlayer1}" ></ComboBoxItem>
-                                <ComboBoxItem ToolTip="{x:Static p:Resources.cmbBoxGIFPlayer2ToolTip}" Content="{x:Static p:Resources.cmbBoxGIFPlayer2}"></ComboBoxItem>
-                            </ComboBox>
-                            <TextBlock Canvas.Left="241" Canvas.Top="98">
-                                <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://github.com/rocksdanister/lively/wiki/GIF-Guide" Foreground="#FF85A912"><TextBlock Text="{x:Static p:Resources.txtLabel11}" /></Hyperlink>
+                                <Label Content="{x:Static p:Resources.txtLabel18}" Style="{StaticResource labelGreenH1}"/>
+                                <Label Content="{x:Static p:Resources.txtGIFPlayer}" ToolTip="{x:Static p:Resources.txtGifPlayerToolTip}" FontSize="14.667" />
+                                <ComboBox Name="comboBoxGIFPlayer">
+                                    <ComboBoxItem IsSelected="True" ToolTip="{x:Static p:Resources.cmbBoxGIFPlayer1ToolTip}" Content="{x:Static p:Resources.cmbBoxGIFPlayer1}" ></ComboBoxItem>
+                                    <ComboBoxItem ToolTip="{x:Static p:Resources.cmbBoxGIFPlayer2ToolTip}" Content="{x:Static p:Resources.cmbBoxGIFPlayer2}"></ComboBoxItem>
+                                </ComboBox>
+                                <TextBlock Canvas.Left="241" Canvas.Top="98">
+                                <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://github.com/rocksdanister/lively/wiki/GIF-Guide" 
+                                           Foreground="{DynamicResource AccentColorBrush3}"><TextBlock Text="{x:Static p:Resources.txtLabel11}" /></Hyperlink>
                             </TextBlock>
-                            <Label Content="{x:Static p:Resources.txtLabel19}" Style="{StaticResource labelGreenH1}"/>
-                            <Label Content="{x:Static p:Resources.txtBrowser}" ToolTip="{x:Static p:Resources.txtBrowserToolTip}" FontSize="14.667" />
-                            <ComboBox>
-                                <ComboBoxItem IsSelected="True" >CEF (External)</ComboBoxItem>
-                                <ComboBoxItem IsEnabled="False" >Microsoft Edge (Internal)</ComboBoxItem>
-                            </ComboBox>
-                            <Controls:ToggleSwitch Name="cefAudioInMuteToggle" Header="{x:Static p:Resources.txtAudioIn}" ToolTip="{x:Static p:Resources.txtAudioInToolTip}"></Controls:ToggleSwitch>
-                            <TextBlock Name="web_audio_WarningText" TextWrapping="Wrap" Foreground="IndianRed" Text="{x:Static p:Resources.txtAudioLabel2}"/>
-                        </StackPanel>
+                                <Label Content="{x:Static p:Resources.txtLabel19}" Style="{StaticResource labelGreenH1}"/>
+                                <Label Content="{x:Static p:Resources.txtBrowser}" ToolTip="{x:Static p:Resources.txtBrowserToolTip}" FontSize="14.667" />
+                                <ComboBox>
+                                    <ComboBoxItem IsSelected="True" >CEF (External)</ComboBoxItem>
+                                    <ComboBoxItem IsEnabled="False" >Microsoft Edge (Internal)</ComboBoxItem>
+                                </ComboBox>
+                                <Controls:ToggleSwitch Name="cefAudioInMuteToggle" Header="{x:Static p:Resources.txtAudioIn}" ToolTip="{x:Static p:Resources.txtAudioInToolTip}"></Controls:ToggleSwitch>
+                                <TextBlock Name="web_audio_WarningText" TextWrapping="Wrap" Foreground="IndianRed" Text="{x:Static p:Resources.txtAudioLabel2}"/>
+                            </StackPanel>
 
-                        <StackPanel Orientation="Vertical" Margin="15,5,0,0" Canvas.Left="203"  Width="265" Height="500">
-                            <Label Content="{x:Static p:Resources.txtLabel20}" Style="{StaticResource labelGreenH1}"/>
+                            <StackPanel Orientation="Vertical" Margin="15,5,0,0" Canvas.Left="203"  Width="265" Height="500">
+                                <Label Content="{x:Static p:Resources.txtLabel20}" Style="{StaticResource labelGreenH1}"/>
 
-                            <Label Content="{x:Static p:Resources.txtWallpaperPlayback}" BorderBrush="#FF7C7D7D" BorderThickness="0,0,0,1" FontSize="14.667" />
-                            <Label Content="{x:Static p:Resources.txtOtherAppsFullScreen}" FontSize="12.667" />
-                            <ComboBox Name="comboBoxFullscreenPerf" >
-                                <ComboBoxItem IsSelected="True"  Content="{x:Static p:Resources.cmbBoxPause}"></ComboBoxItem>
-                                <ComboBoxItem Background="IndianRed" Content="{x:Static p:Resources.cmbBoxNothing}" ></ComboBoxItem>
-                                <ComboBoxItem IsEnabled="False" Content="{x:Static p:Resources.cmbBoxKill}"></ComboBoxItem>
-                            </ComboBox>
-                            <Label Content="{x:Static p:Resources.txtOtherAppsFocus}" FontSize="12.667" />
-                            <ComboBox Name="comboBoxFocusedPerf" >
-                                <ComboBoxItem  Content="{x:Static p:Resources.cmbBoxPause}"></ComboBoxItem>
-                                <ComboBoxItem IsSelected="True"  Content="{x:Static p:Resources.cmbBoxNothing}"></ComboBoxItem>
-                                <ComboBoxItem IsEnabled="False"  Content="{x:Static p:Resources.cmbBoxKill}"></ComboBoxItem>
-                            </ComboBox>
-                            <Label  Content="{x:Static p:Resources.txtDisplayPauseRule}" FontSize="14.667" />
-                            <ComboBox Name="comboBoxMonitorPauseRule" >
-                                <ComboBoxItem IsSelected="True" Content="{x:Static p:Resources.cmbBoxPerDisplay}"></ComboBoxItem>
-                                <ComboBoxItem Content="{x:Static p:Resources.cmbBoxAllDisplays}" ></ComboBoxItem>
-                            </ComboBox>
-                            <Label  Content="{x:Static p:Resources.txtPauseAlgorith}" FontSize="14.667" />
-                            <ComboBox Name="comboBoxPauseAlgorithm" >
-                                <ComboBoxItem IsSelected="True" Content="{x:Static p:Resources.cmbBoxPauseAlgorithmForeground}"></ComboBoxItem>
-                                <ComboBoxItem  Background="IndianRed" Content="{x:Static p:Resources.cmbBoxPaugeAlgorithmAllProcess}"></ComboBoxItem>
-                            </ComboBox>
-                            <Button Margin="0,7,0,0" Content="{x:Static p:Resources.txtApplicationRules}" ClickMode="Release" Click="Button_AppRule_Click"></Button>
-                            <!--<TextBlock TextWrapping="WrapWithOverflow" Foreground="Olive" FontSize="11" Height="190" Margin="0,0,-0.2,0">Note:<LineBreak/>(1) Lively window ignores these rules.<LineBreak/>(2) Audio is always muted when other apps are in focus {except {1}, Lively window}.<LineBreak/>
+                                <Label Content="{x:Static p:Resources.txtWallpaperPlayback}" BorderBrush="#FF7C7D7D" BorderThickness="0,0,0,1" FontSize="14.667" />
+                                <Label Content="{x:Static p:Resources.txtOtherAppsFullScreen}" FontSize="12.667" />
+                                <ComboBox Name="comboBoxFullscreenPerf" >
+                                    <ComboBoxItem IsSelected="True"  Content="{x:Static p:Resources.cmbBoxPause}"></ComboBoxItem>
+                                    <ComboBoxItem Background="IndianRed" Content="{x:Static p:Resources.cmbBoxNothing}" ></ComboBoxItem>
+                                    <ComboBoxItem IsEnabled="False" Content="{x:Static p:Resources.cmbBoxKill}"></ComboBoxItem>
+                                </ComboBox>
+                                <Label Content="{x:Static p:Resources.txtOtherAppsFocus}" FontSize="12.667" />
+                                <ComboBox Name="comboBoxFocusedPerf" >
+                                    <ComboBoxItem  Content="{x:Static p:Resources.cmbBoxPause}"></ComboBoxItem>
+                                    <ComboBoxItem IsSelected="True"  Content="{x:Static p:Resources.cmbBoxNothing}"></ComboBoxItem>
+                                    <ComboBoxItem IsEnabled="False"  Content="{x:Static p:Resources.cmbBoxKill}"></ComboBoxItem>
+                                </ComboBox>
+                                <Label  Content="{x:Static p:Resources.txtDisplayPauseRule}" FontSize="14.667" />
+                                <ComboBox Name="comboBoxMonitorPauseRule" >
+                                    <ComboBoxItem IsSelected="True" Content="{x:Static p:Resources.cmbBoxPerDisplay}"></ComboBoxItem>
+                                    <ComboBoxItem Content="{x:Static p:Resources.cmbBoxAllDisplays}" ></ComboBoxItem>
+                                </ComboBox>
+                                <Label  Content="{x:Static p:Resources.txtPauseAlgorith}" FontSize="14.667" />
+                                <ComboBox Name="comboBoxPauseAlgorithm" >
+                                    <ComboBoxItem IsSelected="True" Content="{x:Static p:Resources.cmbBoxPauseAlgorithmForeground}"></ComboBoxItem>
+                                    <ComboBoxItem  Background="IndianRed" Content="{x:Static p:Resources.cmbBoxPaugeAlgorithmAllProcess}"></ComboBoxItem>
+                                </ComboBox>
+                                <Button Margin="0,7,0,0" Content="{x:Static p:Resources.txtApplicationRules}" ClickMode="Release" Click="Button_AppRule_Click"></Button>
+                                <!--<TextBlock TextWrapping="WrapWithOverflow" Foreground="Olive" FontSize="11" Height="190" Margin="0,0,-0.2,0">Note:<LineBreak/>(1) Lively window ignores these rules.<LineBreak/>(2) Audio is always muted when other apps are in focus {except {1}, Lively window}.<LineBreak/>
                                 (3) Foreground Process algorithm has some limitations, check wiki for more information.<LineBreak/>(4) Application Rules has the highest priority.
                                 <LineBreak/>(5) Web browser is being minimized instead of pausing, so you will see wallpaper temporarily reverting to default in some cases; fix is coming soon.</TextBlock>-->
-                            <ScrollViewer >
-                                <TextBlock TextWrapping="WrapWithOverflow" Foreground="Olive" Text="{x:Static p:Resources.txtNotes}"  />
-                            </ScrollViewer>
-                        </StackPanel>
+                                <ScrollViewer >
+                                    <TextBlock TextWrapping="WrapWithOverflow" Foreground="{DynamicResource AccentColorBrush2}" Text="{x:Static p:Resources.txtNotes}"  />
+                                </ScrollViewer>
+                            </StackPanel>
 
-                    </WrapPanel>
+                            <StackPanel Orientation="Vertical" Margin="15,5,0,0" Width="265" Height="500">
+                                <Label Content="Audio:" Style="{StaticResource labelGreenH1}"/>
+                                <Controls:ToggleSwitch Name="audioFocusedToggle" Header="{x:Static p:Resources.txtOtherAppsFocus}" ></Controls:ToggleSwitch>
+                                
+                                <Label Content="Stream:" Style="{StaticResource labelGreenH1}"/>
+                                <Label Content="Video Quality:" FontSize="14.667" />
+                                <ComboBox Name="cmbBoxStreamQuality" >
+                                    <ComboBoxItem Content="Best"></ComboBoxItem>
+                                    <ComboBoxItem Content="2160p"></ComboBoxItem>
+                                    <ComboBoxItem Content="1440p"></ComboBoxItem>
+                                    <ComboBoxItem IsSelected="True" Content="1080p"></ComboBoxItem>
+                                    <ComboBoxItem Content="720p"></ComboBoxItem>
+                                    <ComboBoxItem Content="480p"></ComboBoxItem>
+                                </ComboBox>
+
+                                <Label Content="Video Codec:" FontSize="14.667" />
+                                <ComboBox IsEnabled="False" >
+                                    <ComboBoxItem Content="VP9" IsSelected="True"></ComboBoxItem>
+                                    <ComboBoxItem Content="x264"></ComboBoxItem>
+                                </ComboBox>
+                                
+                            </StackPanel>
+
+                            <StackPanel Orientation="Vertical" Margin="15,5,0,0" Width="265" Height="500">
+                                <Label Content="{x:Static p:Resources.txtLivelyWallpaperTypeApp}" Style="{StaticResource labelGreenH1}"/>
+                                <Controls:ToggleSwitch Name="appMuteToggle" Header="{x:Static p:Resources.txtAudioOut}" ></Controls:ToggleSwitch>
+                            </StackPanel>
+
+                        </WrapPanel>
+                    </ScrollViewer>
                 </Canvas>
             </TabItem>
             <TabItem Header="{x:Static p:Resources.titleAbout}" >
                 <Canvas>
-                    <FlowDocumentScrollViewer Name="licenseFlowDocumentViewer" VerticalScrollBarVisibility="Visible" Canvas.Left="45" Canvas.Top="167" Width="805" Height="326" BorderBrush="#FF788B1F" BorderThickness="1" SelectionBrush="#FF788B1F" Foreground="Black" Background="Transparent"  >
-                        <FlowDocument Hyperlink.RequestNavigate="Hyperlink_RequestNavigate_Warning" Name="licenseDocument" Background="WhiteSmoke" >
+                    <FlowDocumentScrollViewer Name="licenseFlowDocumentViewer" VerticalScrollBarVisibility="Visible" Canvas.Left="45" Canvas.Top="167" Width="805" Height="326" BorderBrush="{DynamicResource AccentColorBrush}" Foreground="Black" BorderThickness="1" >
+                        <FlowDocument Hyperlink.RequestNavigate="Hyperlink_RequestNavigate_Warning" Name="licenseDocument"  Background="WhiteSmoke" >
                         </FlowDocument>
                     </FlowDocumentScrollViewer>
-                    <Label Content="Lively" Height="60" Width="109" FontSize="36" Foreground="#FF899F1C" Canvas.Left="25" Canvas.Top="21" FontWeight="Bold"/>
-                    <Label Content="by Rocksdanister" Height="33" Width="152" FontSize="18" Foreground="#FF717D7D" Canvas.Left="84" Canvas.Top="86" RenderTransformOrigin="0.517,0.506"/>
-                    <TextBlock Name ="lblVersionNumber" TextAlignment="Left" Text="99.0.0.0" TextWrapping="WrapWithOverflow" Height="34" Width="75" FontSize="18" Foreground="#FF717D7D" Canvas.Left="139" Canvas.Top="45" RenderTransformOrigin="0.517,0.506"/>
+                    <Label Content="Lively" Height="60" Width="109" FontSize="36" Foreground="{DynamicResource AccentColorBrush}" Canvas.Left="25" Canvas.Top="21" FontWeight="Bold"/>
+                    <Label Content="by Rocksdanister" Height="33" Width="152" FontSize="18"  Canvas.Left="84" Canvas.Top="86" RenderTransformOrigin="0.517,0.506"/>
+                    <TextBlock Name ="lblVersionNumber" TextAlignment="Left" Text="99.0.0.0" TextWrapping="WrapWithOverflow" Height="34" Width="75" FontSize="18" Foreground="{DynamicResource AccentColorBrush2}"
+                               Canvas.Left="139" Canvas.Top="45" RenderTransformOrigin="0.517,0.506"
+                               PreviewMouseDown="lblVersionNumber_PreviewMouseDown"/>
                     <TextBlock Canvas.Left="241" Canvas.Top="98">
-                        <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://github.com/rocksdanister" Foreground="#FF85A912">https://github.com/rocksdanister</Hyperlink>
+                        <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://github.com/rocksdanister" Foreground="{DynamicResource AccentColorBrush2}">https://github.com/rocksdanister</Hyperlink>
                     </TextBlock>
-                    <Label Content="{x:Static p:Resources.txtLabel10}" Foreground="#FF6A7A7D" Canvas.Left="45" Canvas.Top="130" FontSize="16" RenderTransformOrigin="0.468,0.534" />
+                    <Label Content="{x:Static p:Resources.txtLabel10}" Foreground="{DynamicResource AccentColorBrush3}" Canvas.Left="45" Canvas.Top="130" FontSize="16" RenderTransformOrigin="0.468,0.534" />
                     <!-- <Image Visibility="Hidden"  Source="/images/icons8-seed-of-life-96.png" Canvas.Left="228" Canvas.Top="17" Height="64" Width="77" /> -->
                     <!-- animated lively icon -->
 
@@ -428,16 +502,16 @@
         </Controls:MetroTabControl>
 
         <TextBlock Margin="0,-20,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="15" Width="450" Name="hyperlinkUpdateBanner" Visibility="Hidden" >
-            <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://github.com/rocksdanister/lively/" Foreground="#FF85A912" >
+            <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://github.com/rocksdanister/lively/" Foreground="{DynamicResource AccentColorBrush}" >
                 <TextBlock  Name="hyperlinkUpdateBannerText" Text="Update available Lively " />
             </Hyperlink>
         </TextBlock>
 
-        <Image x:Name="image" ToolTip="Display Settings/Info" HorizontalAlignment="Left" Height="20"  Width="20" Margin="29.6,-20,0,0" MouseLeftButtonUp="Image_Display_MouseLeftButtonUp" Source="/images/monitor-50xw.png" VerticalAlignment="Top" Grid.Column="1"/>
+        <Image x:Name="image" ToolTip="Display Settings/Info" HorizontalAlignment="Left" Height="20"  Width="20" Margin="29.6,-20,0,0" MouseLeftButtonUp="Image_Display_MouseLeftButtonUp" 
+               Source="/images/monitor-50xw.png" VerticalAlignment="Top" Grid.Column="1"/>
         <StackPanel Margin="570,-20,38.6,0" Orientation="Horizontal" VerticalAlignment="Top" Grid.ColumnSpan="2"  >
             <!--<Image Width="15" Height="15" Source="/images/icons8-seed-of-life-96.png"></Image>-->
-            <TextBlock TextAlignment="Right" Text="{x:Static p:Resources.txtTitlebar}"  Foreground="#FF7D7B76" FontSize="12" Width="271" />
-
+            <TextBlock TextAlignment="Right" Text="{x:Static p:Resources.txtTitlebar}"  Foreground="{DynamicResource AccentColorBrush}" FontSize="12" Width="271" />
         </StackPanel>
     </Grid>
 </Controls:MetroWindow>

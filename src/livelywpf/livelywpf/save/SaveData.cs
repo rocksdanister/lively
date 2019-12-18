@@ -11,6 +11,10 @@ using System.ComponentModel;
 using System.Linq.Expressions;
 using System.Windows.Media.Imaging;
 using System.Globalization;
+using System.Windows.Interop;
+using System.Windows;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace livelywpf
 {
@@ -292,7 +296,7 @@ namespace livelywpf
             public SetupDesktop.WallpaperType Type { get; set; } //unsure
             public string FilePath { get; set; }
             public string Arguments { get; set; }
-
+            //public string Arguments2 { get; set; } //for webstream, url is stored here
             public WallpaperLayout()
             {
                 //displayID = 1;
@@ -300,6 +304,7 @@ namespace livelywpf
                 FilePath = null;
                 DeviceName = null;
                 Arguments = "";
+                //Arguments2 = "";
             }
         }
 
@@ -380,6 +385,7 @@ namespace livelywpf
         {
             windowsmp, //0
             mediakit, //1
+            mpv
         }
 
         public enum GIFPlayer
@@ -406,7 +412,9 @@ namespace livelywpf
             [Description("Per Display")]
             per,
             [Description("Span Across All Display(s)")]
-            span
+            span,
+            [Description("Same wp for all Display(s)")]
+            duplicate
         }
 
         public enum WallpaperRenderingMode
@@ -415,6 +423,25 @@ namespace livelywpf
             behind_icons,
             [Description("Make the window bottom-most, infront of icons")]
             bottom_most
+        }
+
+        /// <summary>
+        /// Suggested stream quality, youtube-dl will pick upto the suggested resolution.
+        /// </summary>
+        public enum StreamQualitySuggestion
+        {
+            [Description("upto 8K")]
+            best,
+            [Description("3840 x 2160, 4K")]
+            h2160p,
+            [Description("2560 x 1440, 2K")]
+            h1440p,
+            [Description("1920 x 1080")]
+            h1080p,
+            [Description("1280 x 720")]
+            h720p,
+            [Description("840 x 480")]
+            h480p
         }
 
         [Serializable]
@@ -429,7 +456,24 @@ namespace livelywpf
                 this.Codes = codes;
             }
         }
-        //codes: https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-lcid/a9eac961-e77d-41a6-90a5-ce1a8b0cdb9c
+
+        [Serializable]
+        public class SupportedThemes
+        {
+            public string Name { get; set; }
+            public string Accent { get; set; }
+            public string Base { get; set; }
+
+            public SupportedThemes(string name, string accent, string @base)
+            {
+                this.Name = name;
+                this.Accent = accent;
+                this.Base = @base;
+            }
+        }
+
+
+        //lang-codes: https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-lcid/a9eac961-e77d-41a6-90a5-ce1a8b0cdb9c
         public static SupportedLanguages[] supportedLanguages = new SupportedLanguages[] {
                                     new SupportedLanguages("English(en-US)", new string[]{"en-US"}), //technically not US english, sue me..
                                     new SupportedLanguages("中文(zh-CN)", new string[]{"zh", "zh-Hans","zh-CN","zh-SG"}), //are they same?
@@ -437,6 +481,21 @@ namespace livelywpf
                                     new SupportedLanguages("русский(ru)", new string[]{"ru", "ru-BY", "ru-KZ", "ru-KG", "ru-MD", "ru-RU","ru-UA"}), //are they same?
                                     new SupportedLanguages("हिन्दी(hi-IN)", new string[]{"hi", "hi-IN"})                                 
                                     };
+
+        public static SupportedThemes[] livelyThemes = new SupportedThemes[] { 
+                                            new SupportedThemes("DarkLime","Lime","BaseDark"),
+                                            new SupportedThemes("DarkOlive","Olive","BaseDark"),
+                                            new SupportedThemes("DarkEmerald","Emerald","BaseDark"),
+                                            new SupportedThemes("DarkTea","Teal","BaseDark"),
+                                            new SupportedThemes("DarkCyan","Cyan","BaseDark"),
+                                            new SupportedThemes("DarkAmber","Amber","BaseDark"),
+                                            new SupportedThemes("DarkSteel","Steel","BaseDark"),
+                                            new SupportedThemes("DarkTaupe","Taupe","BaseDark"),
+                                            new SupportedThemes("DarkSienna","Sienna","BaseDark"),
+                                            new SupportedThemes("LightIndigo","Indigo","BaseLight"),
+                                            new SupportedThemes("LightCrimson","Crimson","BaseLight"),
+        }; 
+
         [Serializable]
         public class ConfigFile
         {
@@ -473,6 +532,7 @@ namespace livelywpf
 
             public bool Startup { get; set; }
             public bool AppTransparency { get; set; }
+            public double AppTransparencyPercent { get; set; }
             public bool IsFirstRun { get; set; }
             public AppRulesEnum AppFocusPause { get; set; }
             public AppRulesEnum AppFullscreenPause { get; set; }
@@ -482,9 +542,14 @@ namespace livelywpf
             public bool MuteCef { get; set; } //unused, need to get processid of subprocess of cef.
             public bool MuteCefAudioIn { get; set; }
             public bool MuteMic { get; set; }
+            public bool MuteAppWP { get; set; }
+            public bool MuteGlobal { get; set; } //mute audio of all types of wp's
+            public bool AlwaysAudio { get; set; } //play audio even when not on desktop
             public bool LiveTile { get; set; }
             public System.Windows.Media.Stretch VideoScaler { get; set; }
             public System.Windows.Media.Stretch GifScaler { get; set; }
+            public int Theme { get; set; }
+            public StreamQualitySuggestion StreamQuality { get; set; } //video stream quality for youtube-dl, 0 - best(4k)
 
             public WallpaperArrangement WallpaperArrangement { get; set; } // 0 -per monitor, 1-span
             public bool DXVA { get; set; } //hw acceleration videoplayback, currently unused.
@@ -528,6 +593,9 @@ namespace livelywpf
                 MuteMic = false;
                 MuteCefAudioIn = false;
                 MuteVideo = false;
+                MuteAppWP = false;
+                MuteGlobal = false;
+                AlwaysAudio = false;
                 ProcessMonitorAlgorithm = ProcessMonitorAlgorithm.foreground;
                 WallpaperArrangement = WallpaperArrangement.per;
                 AppVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
@@ -552,6 +620,9 @@ namespace livelywpf
                 WallpaperWaitTime = 30000; // 30sec
                 ProcessTimerInterval = 500; //reduce to 250 for quicker response.
                 Language = CultureInfo.CurrentCulture.Name;//"en"; 
+                Theme = 0;
+                StreamQuality = StreamQualitySuggestion.h720p;
+                AppTransparencyPercent = 0.9f;
 
                 //media scaling
                 VideoScaler = System.Windows.Media.Stretch.UniformToFill; //3
@@ -751,7 +822,15 @@ namespace livelywpf
                 }
                 else
                 {
-                    Img = null;
+                    if (File.Exists(info.Preview))
+                    {
+                        Img = null;
+                    }
+                    else
+                    {
+                        //if no preview gif, then load stock img.
+                        Img = LoadConvertImage(info.Thumbnail);
+                    }
                 }
                 UriContact = GetUri(info.Contact, "https");
                 Type = LibraryInfoTypeText(info);
@@ -812,17 +891,24 @@ namespace livelywpf
                 //return new BitmapImage(new Uri(filename)); // file gets locked, can't delete folder.
                 try
                 {
-                    using (var stream = File.OpenRead(filename))
+                    if (File.Exists(filename))
                     {
-                        var bmp = new BitmapImage();
-                        bmp.BeginInit();
-                        bmp.StreamSource = stream;
-                        bmp.CacheOption = BitmapCacheOption.OnLoad;//allow deletion of file on disk.
-                        bmp.EndInit();
-                        return bmp;
+                        using (var stream = File.OpenRead(filename))
+                        {
+                            var bmp = new BitmapImage();
+                            bmp.BeginInit();
+                            bmp.StreamSource = stream;
+                            bmp.CacheOption = BitmapCacheOption.OnLoad;//allow deletion of file on disk.
+                            bmp.EndInit();
+                            return bmp;
+                        }
+                    }
+                    else
+                    {
+                        return ToBitmapImage(Properties.Icons.seed_placeholder);
                     }
                 }
-                catch (Exception)
+                catch 
                 {
                     return null;
                 }
@@ -831,15 +917,29 @@ namespace livelywpf
             /// <summary>
             /// Reduces imagesize to 100x100
             /// </summary>
-            private BitmapImage LoadConvertImage(string filename)
+            public BitmapImage LoadConvertImage(string filename)
             {
-                BitmapImage bi = new BitmapImage();
-                bi.BeginInit();
-                bi.DecodePixelWidth = 100;
-                bi.CacheOption = BitmapCacheOption.OnLoad; //allow deletion of file on disk.
-                bi.UriSource = new Uri(filename);
-                bi.EndInit();
-                return bi;
+                try
+                {
+                    if (File.Exists(filename))
+                    {
+                        BitmapImage bi = new BitmapImage();
+                        bi.BeginInit();
+                        bi.DecodePixelWidth = 100;
+                        bi.CacheOption = BitmapCacheOption.OnLoad; //allow deletion of file on disk.
+                        bi.UriSource = new Uri(filename);
+                        bi.EndInit();
+                        return bi;
+                    }
+                    else
+                    {
+                        return ToBitmapImage(Properties.Icons.seed_placeholder);
+                    }
+                }
+                catch
+                {
+                    return null;
+                }
             }
 
             private Uri GetUri(string s, string scheme)
@@ -860,6 +960,32 @@ namespace livelywpf
                 {
                     return null;
                 }
+            }
+        }
+
+        public static BitmapImage ToBitmapImage(this Bitmap bitmap)
+        {
+            try
+            {
+                using (var memory = new MemoryStream())
+                {
+                    bitmap.Save(memory, ImageFormat.Png);
+                    memory.Position = 0;
+
+                    var bitmapImage = new BitmapImage();
+                    bitmapImage.BeginInit();
+                    bitmapImage.DecodePixelWidth = 100;
+                    bitmapImage.StreamSource = memory;
+                    bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                    bitmapImage.EndInit();
+                    bitmapImage.Freeze();
+
+                    return bitmapImage;
+                }
+            }
+            catch
+            {
+                return null;
             }
         }
 
