@@ -280,7 +280,7 @@ namespace livelywpf
                         FileName = AppDomain.CurrentDomain.BaseDirectory +"\\external\\mpv\\mpv.exe",
                         UseShellExecute = false,
                         WorkingDirectory = System.IO.Path.GetDirectoryName(layout.FilePath),
-                        Arguments = "\"" + layout.FilePath + "\"" + " --loop-file --keep-open" //+" --wid "+workerw  //--mute=yes 
+                        Arguments = "\"" + layout.FilePath + "\"" + " --loop-file --keep-open --hwdec=yes" //+" --wid "+workerw  //--mute=yes 
                     };
 
 

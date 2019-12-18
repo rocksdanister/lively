@@ -96,21 +96,21 @@ Help translate lively to other languages: <a href="https://github.com/rocksdanis
 
 **_I'm not officially affiliated with Unity technologies, youtube, godot, bizhawk, shadertoy;_**
 ## Download
-##### Latest version: v0.5.0.0 (Windows 10, 8.1)
+##### Latest version: v0.5.1.0 (Windows 10, 8.1)
 - [`lively_full_x86.zip`][direct-full-win32]  
    _116MB, Web wallpaper support & some sample wallpapers included._
 
 - [`lively_x86.zip`][direct-just-win32]  
-   _76MB, Web wallpaper support.
+   _76MB, Web wallpaper support._
   
 - [`lively_lite_x86.zip`][direct-lite-win32]  
    _5MB, No web wallpaper support._
    
-[direct-full-win32]: https://github.com/rocksdanister/lively/releases/download/v0.5.0.0/lively_full_x86.zip
+[direct-full-win32]: https://github.com/rocksdanister/lively/releases/download/v0.5.1.0/lively_full_x86.zip
 
-[direct-just-win32]: https://github.com/rocksdanister/lively/releases/download/v0.5.0.0/lively_x86.zip
+[direct-just-win32]: https://github.com/rocksdanister/lively/releases/download/v0.5.1.0/lively_x86.zip
 
-[direct-lite-win32]: https://github.com/rocksdanister/lively/releases/download/v0.5.0.0/lively_lite_x86.zip
+[direct-lite-win32]: https://github.com/rocksdanister/lively/releases/download/v0.5.1.0/lively_lite_x86.zip
 
 Unzip the file, select livelywpf.exe to get started, first run will be slow due to windows defender scanning.
 
