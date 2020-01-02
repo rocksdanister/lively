@@ -51,7 +51,7 @@
   <data name="cmbBoxVideoPlayer2" xml:space="preserve">
     <value>DirectShow(Lav, ffdshow..)</value>
   </data>
-  
+
   <data name="msgAppCommandLineArgs" xml:space="preserve">
     <value>Enter commandline arguments for the application if any (optional, leave blank if none):-</value>
   </data>
@@ -337,7 +337,7 @@ If still not working, close &amp; start Lively again/ restart windows.</value>
     <comment>settings tab</comment>
   </data>
   <data name="txtLabel2" xml:space="preserve">
-    <value>Just drag and drop mediafiles if you prefer it that way instead.</value>
+    <value>Just drag and drop files if you prefer it that way instead.</value>
   </data>
   <data name="txtLabel20" xml:space="preserve">
     <value>Performance:</value>
@@ -434,6 +434,12 @@ To simply play a file as wallpaper, this is not required; just drag and drop the
   <data name="txtLabelSoftwareUIRendering" xml:space="preserve">
     <value>Disable Hardware Acceleration</value>
   </data>
+  <data name="txtLabelStream" xml:space="preserve">
+    <value>Stream</value>
+  </data>
+  <data name="txtLabelVideoQuality" xml:space="preserve">
+    <value>Video Quality</value>
+  </data>
   <data name="txtLivelyAppWarning" xml:space="preserve">
     <value>This feature is currently in development.
 Do NOT run programs such as CHROME, STEAM.. which spawn multiple Subprocesses.
@@ -462,6 +468,9 @@ THERE WILL BE BUGS &amp; CRASHES, PROCEED WITH CAUTION!!!</value>
   <data name="txtLivelyWallpaperTypeUnityAudio" xml:space="preserve">
     <value>Unity Audio Reactive</value>
   </data>
+  <data name="txtLivelyWallpaperTypeUrl" xml:space="preserve">
+    <value>Online</value>
+  </data>
   <data name="txtLivelyWallpaperTypeVideo" xml:space="preserve">
     <value>Video</value>
   </data>
@@ -475,7 +484,7 @@ THERE WILL BE BUGS &amp; CRASHES, PROCEED WITH CAUTION!!!</value>
     <value>Animated Tile:</value>
   </data>
   <data name="txtLiveTileToolTip" xml:space="preserve">
-    <value>(Experimental, High cpu usage)Play wallpaper preview on library tile.</value>
+    <value>(Experimental) Wallpaper preview on tile.</value>
   </data>
   <data name="txtMsgFillAllFields" xml:space="preserve">
     <value>Fille all the required text fields.</value>
@@ -488,8 +497,7 @@ THERE WILL BE BUGS &amp; CRASHES, PROCEED WITH CAUTION!!!</value>
 (1) Lively window ignores these rules.
 (2) Audio is always muted when other apps are in focus {except (1), Lively window}.
 (3) Foreground Process algorithm has some limitations, check wiki for more information.
-(4) Application Rules has the highest priority.
-(5) Web browser is being minimized for pausing, so you will see wallpaper temporarily reverting to default in some cases; fix is coming soon.</value>
+(4) Application Rules has the highest priority.</value>
   </data>
   <data name="txtOff" xml:space="preserve">
     <value>Off</value>
@@ -511,6 +519,9 @@ THERE WILL BE BUGS &amp; CRASHES, PROCEED WITH CAUTION!!!</value>
   </data>
   <data name="txtPleaseWait2" xml:space="preserve">
     <value>Please Wait</value>
+  </data>
+  <data name="txtPreviewWallpaperNote" xml:space="preserve">
+    <value>Keep this window in focus while processing.</value>
   </data>
   <data name="txtSelectPreviewThumb" xml:space="preserve">
     <value>Select previewclip/thumbnail file.</value>

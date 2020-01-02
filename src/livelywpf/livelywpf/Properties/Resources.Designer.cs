@@ -1245,6 +1245,24 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Stream.
+        /// </summary>
+        public static string txtLabelStream {
+            get {
+                return ResourceManager.GetString("txtLabelStream", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Video Quality.
+        /// </summary>
+        public static string txtLabelVideoQuality {
+            get {
+                return ResourceManager.GetString("txtLabelVideoQuality", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This feature is currently in development.
         ///Do NOT run programs such as CHROME, STEAM.. which spawn multiple Subprocesses.
         ///THERE WILL BE BUGS &amp; CRASHES, PROCEED WITH CAUTION!!!.
@@ -1315,6 +1333,15 @@ namespace livelywpf.Properties {
         public static string txtLivelyWallpaperTypeUnityAudio {
             get {
                 return ResourceManager.GetString("txtLivelyWallpaperTypeUnityAudio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Online.
+        /// </summary>
+        public static string txtLivelyWallpaperTypeUrl {
+            get {
+                return ResourceManager.GetString("txtLivelyWallpaperTypeUrl", resourceCulture);
             }
         }
         
@@ -1454,6 +1481,15 @@ namespace livelywpf.Properties {
         public static string txtPleaseWait2 {
             get {
                 return ResourceManager.GetString("txtPleaseWait2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Keep this window in focus while processing..
+        /// </summary>
+        public static string txtPreviewWallpaperNote {
+            get {
+                return ResourceManager.GetString("txtPreviewWallpaperNote", resourceCulture);
             }
         }
         

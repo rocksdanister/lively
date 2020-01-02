@@ -13,6 +13,7 @@ using System.Globalization;
 
 using Props = livelywpf.Properties;
 using MahApps.Metro;
+using livelywpf.Lively.Helpers;
 
 namespace livelywpf
 {
@@ -25,10 +26,19 @@ namespace livelywpf
 
         static Mutex mutex = new Mutex(false, "LIVELY:DESKTOPWALLPAPERSYSTEM");
 
-        MainWindow w = null;
+        public static MainWindow w = null;
         protected override void OnStartup(StartupEventArgs e)
         {
-            Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "\\SaveData"); //create if not exist
+            //delete residue tempfiles
+            FileOperations.EmptyDirectory(AppDomain.CurrentDomain.BaseDirectory + "\\tmpdata");
+
+            //create directories if not exist
+            Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "\\SaveData");
+            Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "\\wallpapers");
+            Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "\\SaveData\\wptmp");
+            Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "\\tmpdata");
+            Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "\\tmpdata\\wpdata");
+
             SaveData.LoadConfig();
 
             #region language
@@ -82,7 +92,7 @@ namespace livelywpf
             Tuple<AppTheme, Accent> appStyle = ThemeManager.DetectAppStyle(Application.Current);
 
             
-            // now set the Green accent and dark theme
+            // setting accent & theme
             ThemeManager.ChangeAppStyle(Application.Current,
                                         ThemeManager.GetAccent(SaveData.livelyThemes[SaveData.config.Theme].Accent),
                                         ThemeManager.GetAppTheme(SaveData.livelyThemes[SaveData.config.Theme].Base)); // or appStyle.Item1
@@ -111,21 +121,6 @@ namespace livelywpf
                 };
                 hw.ShowDialog();              
             }
-            /*
-            else if( !SaveData.config.AppVersion.Equals(System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString(), StringComparison.OrdinalIgnoreCase)) //whats new screen!
-            {
-                //if previous savedata version is different from currently running app, show help/update info screen.
-                SaveData.config.AppVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
-                SaveData.SaveConfig();
-
-                dialogues_general.Changelog cl = new dialogues_general.Changelog
-                {
-                    WindowStartupLocation = WindowStartupLocation.CenterScreen,
-                    ShowActivated = true
-                };
-                cl.Show();
-            }
-            */
 
             if(SaveData.config.IsRestart)
             {
@@ -222,19 +217,19 @@ namespace livelywpf
 
             try
             {
-                // wait a few seconds in case that the instance is just shutting down
-                //if (!mutex.WaitOne())
+                //if (!mutex.WaitOne()) //indefinite wait.
+                // wait a few seconds in case livelywpf instance is just shutting down..
                 if (!mutex.WaitOne(TimeSpan.FromSeconds(5), false))
                 {
                     //this is ignoring the config-file saved language, only checking system language.
                     System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(CultureInfo.CurrentCulture.Name); 
-                    MessageBox.Show(Props.Resources.msgSingleInstanceOnly, Props.Resources.txtLivelyWaitMsgTitle);
+                    MessageBox.Show(Props.Resources.msgSingleInstanceOnly, Props.Resources.txtLivelyWaitMsgTitle, MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     return;
                 }
             }
             catch(AbandonedMutexException e)
             {
-                //Note to self:- logger backup(in the even of previous lively crash) is at App() contructor fn, DO NOT start writing loghere to avoid erasing crashlog.
+                //Note to self:- logger backup(in the even of previous lively crash) is at App() contructor func, DO NOT start writing loghere to avoid overwriting crashlog.
                 System.Diagnostics.Debug.WriteLine(e.Message);
             }
 

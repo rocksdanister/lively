@@ -545,6 +545,12 @@ To simply play a file as wallpaper, this is not required; just drag and drop the
   <data name="txtLabelSoftwareUIRendering" xml:space="preserve">
     <value>Disable Hardware Acceleration</value>
   </data>
+  <data name="txtLabelStream" xml:space="preserve">
+    <value>Stream</value>
+  </data>
+  <data name="txtLabelVideoQuality" xml:space="preserve">
+    <value>Video Quality</value>
+  </data>
   <data name="txtLivelyAppWarning" xml:space="preserve">
     <value>This feature is currently in development.
 Do NOT run programs such as CHROME, STEAM.. which spawn multiple Subprocesses.
@@ -572,6 +578,9 @@ THERE WILL BE BUGS &amp; CRASHES, PROCEED WITH CAUTION!!!</value>
   </data>
   <data name="txtLivelyWallpaperTypeUnityAudio" xml:space="preserve">
     <value>Unity Audio Reactive</value>
+  </data>
+  <data name="txtLivelyWallpaperTypeUrl" xml:space="preserve">
+    <value>Online</value>
   </data>
   <data name="txtLivelyWallpaperTypeVideo" xml:space="preserve">
     <value>Video</value>
@@ -621,6 +630,9 @@ THERE WILL BE BUGS &amp; CRASHES, PROCEED WITH CAUTION!!!</value>
   </data>
   <data name="txtPleaseWait2" xml:space="preserve">
     <value>Please Wait</value>
+  </data>
+  <data name="txtPreviewWallpaperNote" xml:space="preserve">
+    <value>Keep this window in focus while processing.</value>
   </data>
   <data name="txtSelectPreviewThumb" xml:space="preserve">
     <value>Select previewclip/thumbnail file.</value>

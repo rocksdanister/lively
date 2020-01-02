@@ -26,7 +26,7 @@ Just drag & drop files, webpages to set as wallpaper..
 
 Lively is still in development, if you encounter bugs create a github Issue along with <a href="https://github.com/rocksdanister/lively/wiki/Common-Problems"> log file</a>
 
-Help translate lively to other languages: <a href="https://github.com/rocksdanister/lively/blob/master/resources/translations/English/Resources.resx">Translation Document</a>
+Help translate lively to other languages: <a href="https://github.com/rocksdanister/lively/blob/master/resources/translations">Translation Document</a>
 
 <a href="https://github.com/rocksdanister/lively/wiki">Documentation</a>
 ## Features
@@ -96,25 +96,25 @@ Help translate lively to other languages: <a href="https://github.com/rocksdanis
 
 **_I'm not officially affiliated with Unity technologies, youtube, godot, bizhawk, shadertoy;_**
 ## Download
-##### Latest version: v0.5.1.0 (Windows 10, 8.1)
+##### Latest version: v0.6.0.0 (Windows 10, 8.1)
 - [`lively_full_x86.zip`][direct-full-win32]  
-   _116MB, Web wallpaper support & some sample wallpapers included._
+   _122MB, Web wallpaper support & some sample wallpapers included._
 
 - [`lively_x86.zip`][direct-just-win32]  
-   _76MB, Web wallpaper support._
+   _82MB, Web wallpaper support._
   
 - [`lively_lite_x86.zip`][direct-lite-win32]  
-   _5MB, No web wallpaper support._
+   _11MB, No web wallpaper support._
    
-[direct-full-win32]: https://github.com/rocksdanister/lively/releases/download/v0.5.1.0/lively_full_x86.zip
+[direct-full-win32]: https://github.com/rocksdanister/lively/releases/download/v0.6.0.0/lively_full_x86.zip
 
-[direct-just-win32]: https://github.com/rocksdanister/lively/releases/download/v0.5.1.0/lively_x86.zip
+[direct-just-win32]: https://github.com/rocksdanister/lively/releases/download/v0.6.0.0/lively_x86.zip
 
-[direct-lite-win32]: https://github.com/rocksdanister/lively/releases/download/v0.5.1.0/lively_lite_x86.zip
+[direct-lite-win32]: https://github.com/rocksdanister/lively/releases/download/v0.6.0.0/lively_lite_x86.zip
 
 Unzip the file, select livelywpf.exe to get started, first run will be slow due to windows defender scanning.
 
-To update from old version, download `lively_x86.zip`, delete everything except `SaveData` & `wallpapers` folder from your existing lively folder & just unzip the new version over it.
+To update from old version, download `lively_x86.zip`, delete everything(backup mpv & youtube-dl folder if you have it installed) except `SaveData` & `wallpapers` folder from your existing lively folder & just unzip the new version over it.
 
 [Trouble Getting started? ](https://github.com/rocksdanister/lively/wiki/Getting-Started)
 
@@ -128,7 +128,9 @@ Certain antivirus software heuristics algorithm will detect lively as a virus, t
 ## Contributing
 Code contributions are welcome, check [guidelines](https://github.com/rocksdanister/lively/wiki) for making pull request.
 
-Currently Lively is only in English, other languages are machine translated. 
+Currently Lively is only human translated English & Spanish, other languages are machine translated. 
+
+Help translate lively to other languages: <a href="https://github.com/rocksdanister/lively/blob/master/resources/translations">Translation Document</a>
 
 ##### Related Projects
 https://github.com/rocksdanister/lively-cef

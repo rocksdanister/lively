@@ -200,6 +200,7 @@ namespace livelywpf
             public SetupDesktop.WallpaperType Type { get; set; }
             public string FileName { get; set; }
             public string Arguments { get; set; } //start commandline args
+            public bool IsAbsolutePath { get; set; } //for auto-generated tile: true, user opened wp's
             public LivelyInfo()
             {
                 AppVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
@@ -213,6 +214,7 @@ namespace livelywpf
                 License = null;
                 Contact = null;
                 Arguments = null;
+                IsAbsolutePath = false;
             }
 
             public LivelyInfo(LivelyInfo info)
@@ -232,7 +234,7 @@ namespace livelywpf
         }
 
         public static LivelyInfo info = new LivelyInfo();
-        public static void SaveWallpaperMetaData(LivelyInfo info, string path) //used to create livelyinfo.json file
+        public static void SaveWallpaperMetaData(LivelyInfo info, string saveDirectory) //used to create livelyinfo.json file
         {
             //return;
             JsonSerializer serializer = new JsonSerializer
@@ -246,7 +248,7 @@ namespace livelywpf
             */
             try
             {
-                using (StreamWriter sw = new StreamWriter(path + "\\LivelyInfo.json"))
+                using (StreamWriter sw = new StreamWriter(saveDirectory + "\\LivelyInfo.json"))
                 using (JsonWriter writer = new JsonTextWriter(sw))
                 {
                     serializer.Serialize(writer, info);
@@ -261,13 +263,13 @@ namespace livelywpf
         /// <summary>
         /// Load Livelinfo.json file.
         /// </summary>
-        /// <param name="path"></param>
+        /// <param name="directory"></param>
         /// <returns>true - success, false - failure</returns>
-        public static bool LoadWallpaperMetaData(string path)
+        public static bool LoadWallpaperMetaData(string directory)
         {
             try
             {
-                using (StreamReader file = File.OpenText(path + "\\LivelyInfo.json"))
+                using (StreamReader file = File.OpenText(directory + "\\LivelyInfo.json"))
                 {
                     JsonSerializer serializer = new JsonSerializer();
                     info = (LivelyInfo)serializer.Deserialize(file, typeof(LivelyInfo));
@@ -276,12 +278,12 @@ namespace livelywpf
             }
             catch (IOException e1)
             {
-                Logger.Error("Error trying to read livelyinfo file from disc:- " + path + "\n" + e1.ToString() );
+                Logger.Error("Error trying to read livelyinfo file from disc:- " + directory + "\n" + e1.ToString() );
                 return false;
             }
             catch(Exception e2)
             {
-                Logger.Error("Corrupted livelinfo file, skipping wallpaper:- " + path + "\n" + e2.ToString());
+                Logger.Error("Corrupted livelinfo file, skipping wallpaper:- " + directory + "\n" + e2.ToString());
                 return false;
             }
         }
@@ -430,7 +432,7 @@ namespace livelywpf
         /// </summary>
         public enum StreamQualitySuggestion
         {
-            [Description("upto 8K")]
+            [Description(">= 8K")]
             best,
             [Description("3840 x 2160, 4K")]
             h2160p,
@@ -479,7 +481,8 @@ namespace livelywpf
                                     new SupportedLanguages("中文(zh-CN)", new string[]{"zh", "zh-Hans","zh-CN","zh-SG"}), //are they same?
                                     new SupportedLanguages("日本人(ja-JP)", new string[]{"ja", "ja-JP"}),
                                     new SupportedLanguages("русский(ru)", new string[]{"ru", "ru-BY", "ru-KZ", "ru-KG", "ru-MD", "ru-RU","ru-UA"}), //are they same?
-                                    new SupportedLanguages("हिन्दी(hi-IN)", new string[]{"hi", "hi-IN"})                                 
+                                    new SupportedLanguages("हिन्दी(hi-IN)", new string[]{"hi", "hi-IN"}),
+                                    new SupportedLanguages("español(es)", new string[]{"es"})
                                     };
 
         public static SupportedThemes[] livelyThemes = new SupportedThemes[] { 
@@ -495,6 +498,31 @@ namespace livelywpf
                                             new SupportedThemes("LightIndigo","Indigo","BaseLight"),
                                             new SupportedThemes("LightCrimson","Crimson","BaseLight"),
         }; 
+
+        [Serializable]
+        public class PreviewGIF
+        {
+            public bool CaptureGif { get; set; }
+            /// <summary>
+            /// Frames to capture every second.
+            /// </summary>
+            public int CaptureFps { get; set; } 
+            /// <summary>
+            /// Duration to capture.
+            /// </summary>
+            public int CaptureDuration { get; set; }
+            /// <summary>
+            /// Saved gif frame rate.
+            /// </summary>
+            public int GifFps { get; set; } 
+            public PreviewGIF()
+            {
+                CaptureGif = true;
+                CaptureFps = 15;
+                CaptureDuration = 4;
+                GifFps = 60;
+            }
+        }
 
         [Serializable]
         public class ConfigFile
@@ -533,6 +561,12 @@ namespace livelywpf
             public bool Startup { get; set; }
             public bool AppTransparency { get; set; }
             public double AppTransparencyPercent { get; set; }
+            public bool GenerateTile { get; set; } 
+            /// <summary>
+            /// create lively .zip file for dropped wp's after importing to library.
+            /// </summary>
+            public bool LivelyZipGenerate { get; set; }
+            public bool WaterMark1 { get; set; }
             public bool IsFirstRun { get; set; }
             public AppRulesEnum AppFocusPause { get; set; }
             public AppRulesEnum AppFullscreenPause { get; set; }
@@ -564,6 +598,10 @@ namespace livelywpf
             public string MPVPath { get; set; } //mpv external video player, unused
             public bool Ui120FPS { get; set; }
             public bool UiDisableHW { get; set; }
+            /// <summary>
+            /// Do not downscale thumbnail image to 100x100
+            /// </summary>
+            public bool UseHighQualityThumbnail { get; set; }
 
             /// <summary>
             /// Timer interval(in milliseconds), used to monitor running apps to determine pause/play of wp's.
@@ -584,7 +622,7 @@ namespace livelywpf
 
             public bool IsRestart { get; set; }
             public bool InstallUpdate { get; set; } //future use.
-
+            public PreviewGIF PreviewGIF { get; set; }
             //default values
             public ConfigFile()
             {
@@ -623,6 +661,10 @@ namespace livelywpf
                 Theme = 0;
                 StreamQuality = StreamQualitySuggestion.h720p;
                 AppTransparencyPercent = 0.9f;
+                GenerateTile = true;
+                LivelyZipGenerate = false;
+                WaterMark1 = true;
+                UseHighQualityThumbnail = true;
 
                 //media scaling
                 VideoScaler = System.Windows.Media.Stretch.UniformToFill; //3
@@ -636,11 +678,13 @@ namespace livelywpf
                 SafeShutdown = true;
                 IsRestart = false;
                 InstallUpdate = false;
+
+                PreviewGIF = new PreviewGIF();
             }
         }
         public static ConfigFile config = new ConfigFile();
         /// <summary>
-        /// Loads settigns file from disk if found, else creates settings files with default constructor values.
+        /// Loads settigns file from disk if found, else creates settings files with default values.
         /// </summary>
         public static void LoadConfig()
         {
@@ -774,6 +818,7 @@ namespace livelywpf
         public class TileData : INotifyPropertyChanged
         {
             private BitmapImage img;
+            private BitmapImage watermarkImg1;
             private string tilePreview;
             public BitmapImage Img
             {
@@ -789,6 +834,18 @@ namespace livelywpf
                 {
                     img = value;
                     OnPropertyChanged("Img");
+                }
+            }
+            public BitmapImage WatermarkImg1
+            {
+                get
+                {
+                    return watermarkImg1;
+                }
+                set
+                {
+                    watermarkImg1 = value;
+                    OnPropertyChanged("watermarkImg1");
                 }
             }
             public string TilePreview
@@ -811,9 +868,10 @@ namespace livelywpf
             public Uri UriContact { get; set; }
             public string Type { get; set; }
             public SaveData.LivelyInfo LivelyInfo { get; set; }
-
-            public TileData(SaveData.LivelyInfo info)
+            public string LivelyInfoDirectoryLocation {get; set;}
+            public TileData(SaveData.LivelyInfo info, string livelyInfoDirectory)
             {
+                LivelyInfoDirectoryLocation = livelyInfoDirectory;
                 TilePreview = null; //otherwise everything gets loaded at once!
                 if (!SaveData.config.LiveTile)
                 {
@@ -835,6 +893,27 @@ namespace livelywpf
                 UriContact = GetUri(info.Contact, "https");
                 Type = LibraryInfoTypeText(info);
                 LivelyInfo = info;
+
+                if (SaveData.config.WaterMark1)
+                {
+                    if (info.Type == SetupDesktop.WallpaperType.url || info.Type == SetupDesktop.WallpaperType.video_stream)
+                    {
+                        WatermarkImg1 = ToBitmapImage(Properties.Icons.icons8_online_48);
+                    }
+                    else if (info.IsAbsolutePath)
+                    {
+                        WatermarkImg1 = ToBitmapImage(Properties.Icons.icons8_hdd_48);
+                    }
+                    else
+                    {
+                        WatermarkImg1 = null;
+                    }
+                }
+                else
+                {
+                    WatermarkImg1 = null;
+                }
+
             }
 
             private void OnPropertyChanged(string property)
@@ -875,6 +954,14 @@ namespace livelywpf
                 else if (info.Type == SetupDesktop.WallpaperType.web_audio)
                 {
                     return Properties.Resources.txtLivelyWallpaperTypeWebAudio;
+                }
+                else if(info.Type == SetupDesktop.WallpaperType.video_stream)
+                {
+                    return Properties.Resources.txtLabelStream;
+                }
+                else if(info.Type == SetupDesktop.WallpaperType.url)
+                {
+                    return Properties.Resources.txtLivelyWallpaperTypeUrl;
                 }
                 else if (info.Type == SetupDesktop.WallpaperType.gif)
                 {
@@ -925,7 +1012,12 @@ namespace livelywpf
                     {
                         BitmapImage bi = new BitmapImage();
                         bi.BeginInit();
-                        bi.DecodePixelWidth = 100;
+                        if (!SaveData.config.UseHighQualityThumbnail)
+                        {
+                            //downscale
+                            bi.DecodePixelWidth = 100; 
+                            bi.DecodePixelHeight = 100;
+                        }
                         bi.CacheOption = BitmapCacheOption.OnLoad; //allow deletion of file on disk.
                         bi.UriSource = new Uri(filename);
                         bi.EndInit();
@@ -1046,7 +1138,8 @@ namespace livelywpf
                     }
                     catch (ArgumentException)
                     {
-                        FileName = "Error";
+                        //FileName = "Error";
+                        FileName = filePath;
                     }
 
                     if (String.IsNullOrWhiteSpace(FileName))

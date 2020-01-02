@@ -45,9 +45,9 @@
                         <Button Width="200" Height="125" Margin="-5,0,0,0" ClickMode="Hover" ToolTip="{Binding FilePath}">
                             <StackPanel Orientation="Vertical"  Width="200" Height="125" >
                             <Image Source="/images/monitor-50xw.png" Width="50" Height="50" />
-                                <TextBlock TextWrapping="Wrap" Text="{Binding DisplayDevice}"/>
-                                <TextBlock TextWrapping="Wrap" Text="{Binding FileName}"/>
-                            </StackPanel>
+                            <TextBlock TextWrapping="Wrap" Text="{Binding DisplayDevice}"/>
+                            <TextBlock TextWrapping="Wrap" Text="{Binding FileName}"/>
+                        </StackPanel>
                         </Button>
                         <!--</Border>-->
                 </DataTemplate>

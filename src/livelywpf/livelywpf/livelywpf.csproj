@@ -101,6 +101,9 @@
     <Reference Include="DotNetZip, Version=1.13.4.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
       <HintPath>..\packages\DotNetZip.1.13.4\lib\net40\DotNetZip.dll</HintPath>
     </Reference>
+    <Reference Include="Magick.NET-Q16-x86, Version=7.14.5.0, Culture=neutral, PublicKeyToken=2004825badfa91ec, processorArchitecture=x86">
+      <HintPath>..\packages\Magick.NET-Q16-x86.7.14.5\lib\net40\Magick.NET-Q16-x86.dll</HintPath>
+    </Reference>
     <Reference Include="MahApps.Metro, Version=1.6.5.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.6.5\lib\net47\MahApps.Metro.dll</HintPath>
     </Reference>
@@ -189,11 +192,23 @@
       <DependentUpon>DisplaySelectWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="display\DpiHelper.cs" />
+    <Compile Include="Lively\Helpers\FileOperations.cs" />
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Lively\Helpers\ImageOperations.cs" />
+    <Compile Include="Lively\Helpers\WindowOperations.cs" />
+    <Compile Include="preview\QuickPreview.xaml.cs">
+      <DependentUpon>QuickPreview.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Icons.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Icons.resx</DependentUpon>
+    </Compile>
+    <Compile Include="wp_windows\LivelywpHolder.xaml.cs">
+      <DependentUpon>LivelywpHolder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="preview\PreviewWallpaper.xaml.cs">
+      <DependentUpon>PreviewWallpaper.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.zh.Designer.cs">
       <DependentUpon>Resources.zh.resx</DependentUpon>
@@ -207,6 +222,7 @@
     </Compile>
     <Compile Include="save\SharedBitmapSource.cs" />
     <Compile Include="save\SystemInfo.cs" />
+    <Compile Include="Lively\Helpers\CaptureWindow.cs" />
     <Compile Include="wp_windows\GifWindow.xaml.cs">
       <DependentUpon>GifWindow.xaml</DependentUpon>
     </Compile>
@@ -256,6 +272,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="preview\QuickPreview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="wp_windows\LivelywpHolder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="preview\PreviewWallpaper.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="wp_windows\GifWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -301,11 +329,11 @@
     <None Include="docs\changelog.rtf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\seed_placeholder.png" />
     <EmbeddedResource Include="Properties\Icons.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Icons.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.es.resx" />
     <EmbeddedResource Include="Properties\Resources.hi.resx" />
     <EmbeddedResource Include="Properties\Resources.ja.resx" />
     <EmbeddedResource Include="Properties\Resources.ru.resx" />
@@ -347,6 +375,11 @@
     <Resource Include="images\icons8-stream-48.png" />
     <Resource Include="images\monitor-50xw.png" />
     <Resource Include="images\icons8-language-50.png" />
+    <Resource Include="icons\seed_placeholder.png" />
+    <Resource Include="images\icons8-online-60.png" />
+    <Resource Include="images\icons8-hdd-60.png" />
+    <Resource Include="images\icons8-hdd-48.png" />
+    <Resource Include="images\icons8-online-48.png" />
     <Content Include="NLog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
@@ -438,6 +471,7 @@
     <Analyzer Include="..\packages\Microsoft.NetFramework.Analyzers.2.9.7\analyzers\dotnet\cs\Microsoft.NetFramework.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.NetFramework.Analyzers.2.9.7\analyzers\dotnet\cs\Microsoft.NetFramework.CSharp.Analyzers.dll" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
@@ -449,6 +483,8 @@
     <Error Condition="!Exists('..\packages\Microsoft.NetCore.Analyzers.2.9.7\build\Microsoft.NetCore.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.NetCore.Analyzers.2.9.7\build\Microsoft.NetCore.Analyzers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.NetFramework.Analyzers.2.9.7\build\Microsoft.NetFramework.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.NetFramework.Analyzers.2.9.7\build\Microsoft.NetFramework.Analyzers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeAnalysis.FxCopAnalyzers.2.9.7\build\Microsoft.CodeAnalysis.FxCopAnalyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeAnalysis.FxCopAnalyzers.2.9.7\build\Microsoft.CodeAnalysis.FxCopAnalyzers.props'))" />
+    <Error Condition="!Exists('..\packages\Magick.NET-Q16-x86.7.14.5\build\net40\Magick.NET-Q16-x86.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Magick.NET-Q16-x86.7.14.5\build\net40\Magick.NET-Q16-x86.targets'))" />
   </Target>
   <Import Project="..\packages\WPFMediaKit.2.2.0\build\WPFMediaKit.targets" Condition="Exists('..\packages\WPFMediaKit.2.2.0\build\WPFMediaKit.targets')" />
+  <Import Project="..\packages\Magick.NET-Q16-x86.7.14.5\build\net40\Magick.NET-Q16-x86.targets" Condition="Exists('..\packages\Magick.NET-Q16-x86.7.14.5\build\net40\Magick.NET-Q16-x86.targets')" />
 </Project>

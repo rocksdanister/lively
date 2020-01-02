@@ -545,6 +545,12 @@ https://github.com/rocksdanister/lively-cef
   <data name="txtLabelSoftwareUIRendering" xml:space="preserve">
     <value> Отключить аппаратное ускорение </value>
   </data>
+  <data name="txtLabelStream" xml:space="preserve">
+    <value>ручей</value>
+  </data>
+  <data name="txtLabelVideoQuality" xml:space="preserve">
+    <value>качество видео</value>
+  </data>
   <data name="txtLivelyAppWarning" xml:space="preserve">
     <value> Эта функция в настоящее время в разработке.
 НЕ запускайте такие программы, как CHROME, STEAM .., которые порождают несколько подпроцессов.
@@ -572,6 +578,9 @@ https://github.com/rocksdanister/lively-cef
   </data>
   <data name="txtLivelyWallpaperTypeUnityAudio" xml:space="preserve">
     <value> Unity Audio Reactive </value>
+  </data>
+  <data name="txtLivelyWallpaperTypeUrl" xml:space="preserve">
+    <value>онлайн</value>
   </data>
   <data name="txtLivelyWallpaperTypeVideo" xml:space="preserve">
     <value> Видео </value>
@@ -622,6 +631,9 @@ https://github.com/rocksdanister/lively-cef
   </data>
   <data name="txtPleaseWait2" xml:space="preserve">
     <value> Пожалуйста, подождите </value>
+  </data>
+  <data name="txtPreviewWallpaperNote" xml:space="preserve">
+    <value>Держите это окно в фокусе во время обработки.</value>
   </data>
   <data name="txtSelectPreviewThumb" xml:space="preserve">
     <value> Выберите файл предварительного просмотра / файл эскиза. </value>
