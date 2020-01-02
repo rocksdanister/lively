@@ -545,6 +545,12 @@ https://github.com/rocksdanister/lively-cef
   <data name="txtLabelSoftwareUIRendering" xml:space="preserve">
     <value>禁用硬件加速</value>
   </data>
+  <data name="txtLabelStream" xml:space="preserve">
+    <value>流</value>
+  </data>
+  <data name="txtLabelVideoQuality" xml:space="preserve">
+    <value>视频质量</value>
+  </data>
   <data name="txtLivelyAppWarning" xml:space="preserve">
     <value>此功能目前正在开发中。
 不要运行诸如CHROME，STEAM ..之类的程序，这些程序会产生多个子进程。
@@ -572,6 +578,9 @@ https://github.com/rocksdanister/lively-cef
   </data>
   <data name="txtLivelyWallpaperTypeUnityAudio" xml:space="preserve">
     <value>Unity音频反应式</value>
+  </data>
+  <data name="txtLivelyWallpaperTypeUrl" xml:space="preserve">
+    <value>线上</value>
   </data>
   <data name="txtLivelyWallpaperTypeVideo" xml:space="preserve">
     <value>视频</value>
@@ -622,6 +631,9 @@ https://github.com/rocksdanister/lively-cef
   </data>
   <data name="txtPleaseWait2" xml:space="preserve">
     <value>请稍候</value>
+  </data>
+  <data name="txtPreviewWallpaperNote" xml:space="preserve">
+    <value>在处理过程中，请保持该窗口的焦点。</value>
   </data>
   <data name="txtSelectPreviewThumb" xml:space="preserve">
     <value>选择预览剪辑/缩略图文件。</value>

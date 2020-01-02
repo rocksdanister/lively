@@ -30,7 +30,7 @@ namespace livelywpf
         public static List<WallpaperLayout> wallpapers = new List<WallpaperLayout>();
         private static DispatcherTimer dispatcherTimer = new DispatcherTimer();
 
-        private static IntPtr handle, workerWOrig, progman, desktopHandle, shellHandle;
+        private static IntPtr  workerWOrig, progman, desktopHandle, shellHandle; //handle,
         private static int processID;
         /// <summary>
         /// Amount of time to wait(approx) for external application wp to launch(milliseconds)
@@ -142,13 +142,17 @@ namespace livelywpf
         {
             public Process Proc { get; private set; }
             public WallpaperType Type { get; private set; }
+            public string FilePath { get; private set; }
             public UInt32 SuspendCnt { get; set; } //currently unused
+            public bool ShowPreviewWindow { get; private set; }
 
-            public CefProcess(IntPtr handle, string displayID, Process process, WallpaperType type, UInt32 suspendCnt) : base(handle, displayID)
+            public CefProcess(IntPtr handle, string displayID, Process process, WallpaperType type, UInt32 suspendCnt, string filePath, bool showPrevWindow) : base(handle, displayID)
             {
                 this.Proc = process;
                 this.Type = type;
                 this.SuspendCnt = suspendCnt;
+                this.FilePath = filePath;
+                this.ShowPreviewWindow = showPrevWindow;
             }
         }
 
@@ -168,12 +172,13 @@ namespace livelywpf
         public static CancellationTokenSource ctsMonitor = new CancellationTokenSource();
         static CancellationTokenSource ctsProcessWait = null;// = new CancellationTokenSource();
 
+        private static IntPtr folderView;
         //credit: https://www.codeproject.com/Articles/856020/Draw-Behind-Desktop-Icons-in-Windows-plus
         /// <summary>
         /// Setup wallpaper & start the process monitoring.
         /// </summary>
         /// <param name="layout"></param>
-        public static async void SetWallpaper(SaveData.WallpaperLayout layout)
+        public static async void SetWallpaper(SaveData.WallpaperLayout layout, bool showPreviewWindow)
         {
             if(MainWindow.highContrastFix) //todo:- last minute addition, should properly finish it later.
             {
@@ -246,6 +251,17 @@ namespace livelywpf
                 else
                 {
                     _isInitialized = true;
+                    /*
+                    //input test
+                    var styleCurrentWindowExtended = NativeMethods.GetWindowLongPtr(workerw, (-20));
+                    var styleNewWindowExtended =
+                            styleCurrentWindowExtended.ToInt64() |
+                             (
+                                 (Int64)NativeMethods.WindowStyles.WS_EX_TRANSPARENT |
+                                 (Int64)NativeMethods.WindowStyles.WS_EX_LAYERED 
+                             );
+                    NativeMethods.SetWindowLongPtr(new HandleRef(null, workerw), (-20), (IntPtr)styleCurrentWindowExtended);
+                    */
                 }
             }
 
@@ -255,6 +271,7 @@ namespace livelywpf
             }
             dispatcherTimer.Stop();
 
+            IntPtr handle = new IntPtr();
             if (layout.Type == WallpaperType.video)
             {
                 if (SaveData.config.VidPlayer == SaveData.VideoPlayer.mediakit)
@@ -339,7 +356,7 @@ namespace livelywpf
                     }
 
                     handle = proc.MainWindowHandle;
-                    if (handle == IntPtr.Zero)
+                    if (handle.Equals(IntPtr.Zero))
                     {
                         Logger.Info("Error: could not get windowhandle after waiting..");
                         try
@@ -364,9 +381,9 @@ namespace livelywpf
                     //AddWallpaper(handle, layout.DeviceName);
                     SaveData.runningPrograms.Add(new SaveData.RunningProgram { ProcessName = proc.ProcessName, Pid = proc.Id });
                     SaveData.SaveRunningPrograms();
-                }
 
-                AddWallpaper(handle, layout.DeviceName);
+                }
+                AddWallpaper(handle, layout, showPreviewWindow);
             }
             else if (layout.Type == WallpaperType.gif)
             {
@@ -389,7 +406,7 @@ namespace livelywpf
                     mediakitPlayers.Add(new MediaKit(handle, layout.DeviceName, mediakitPlayer, true));
                 }
 
-                AddWallpaper(handle, layout.DeviceName);
+                AddWallpaper(handle, layout, showPreviewWindow);
             }
             else if (layout.Type == WallpaperType.unity || layout.Type == WallpaperType.unity_audio)
             {
@@ -459,7 +476,7 @@ namespace livelywpf
                 }
 
                 handle = proc.MainWindowHandle;
-                if (handle == IntPtr.Zero)
+                if (handle.Equals(IntPtr.Zero))
                 {
                     Logger.Info("Error: could not get windowhandle after waiting..");
                     try
@@ -482,7 +499,7 @@ namespace livelywpf
                 //StaticPinvoke.SetWindowLongPtr(new HandleRef(null,handle), (-20),(IntPtr)StaticPinvoke.WS_EX_TOOLWINDOW); 
                 RemoveAppFromTaskbar(handle);
 
-                AddWallpaper(handle, layout.DeviceName);
+                AddWallpaper(handle, layout, showPreviewWindow);
 
                 //saving to list of pgms to kill in the event lively crashes.
                 SaveData.runningPrograms.Add(new SaveData.RunningProgram { ProcessName = proc.ProcessName, Pid = proc.Id });
@@ -567,7 +584,7 @@ namespace livelywpf
                 }
 
                 handle = proc.MainWindowHandle;
-                if (handle == IntPtr.Zero)
+                if (handle.Equals(IntPtr.Zero))
                 {
                     Logger.Info("Error: could not get windowhandle after waiting..");
                     try
@@ -590,7 +607,7 @@ namespace livelywpf
                 BorderlessWinStyle(handle);
                 RemoveAppFromTaskbar(handle);
 
-                AddWallpaper(handle, layout.DeviceName);
+                AddWallpaper(handle, layout, showPreviewWindow);
 
                 SaveData.runningPrograms.Add(new SaveData.RunningProgram { ProcessName = proc.ProcessName, Pid = proc.Id });
                 SaveData.SaveRunningPrograms();
@@ -627,7 +644,7 @@ namespace livelywpf
                 webProcess.BeginOutputReadLine();
 
                 //webProcesses.Add(new CefProcess { proc = webProcess, displayID = layout.displayName, type = layout.type, handle = IntPtr.Zero, suspendCnt = 0 });
-                webProcesses.Add(new CefProcess(handle, layout.DeviceName, webProcess, layout.Type, 0));
+                webProcesses.Add(new CefProcess(handle, layout.DeviceName, webProcess, layout.Type, 0, layout.FilePath, showPreviewWindow));
 
                 SaveData.runningPrograms.Add(new SaveData.RunningProgram { ProcessName = webProcess.ProcessName, Pid = webProcess.Id });
                 SaveData.SaveRunningPrograms();
@@ -648,7 +665,7 @@ namespace livelywpf
                 try
                 {
                     ctsProcessWait = new CancellationTokenSource();
-                    taskAppWait = Task.Run(() => WaitForProcesWindow(layout.Type, proc), ctsProcessWait.Token);
+                    taskAppWait = Task.Run(() => handle = WaitForProcesWindow(layout.Type, proc).Result, ctsProcessWait.Token);
                     await taskAppWait;
                 }
                 catch (OperationCanceledException)
@@ -698,8 +715,7 @@ namespace livelywpf
                     return;
                 }
 
-                //handle = proc.MainWindowHandle;
-                if (handle == IntPtr.Zero)
+                if (handle.Equals(IntPtr.Zero))
                 {
                     Logger.Info("Error: could not get windowhandle after waiting..");
                     try
@@ -721,10 +737,11 @@ namespace livelywpf
                 BorderlessWinStyle(handle);
                 RemoveAppFromTaskbar(handle);
 
-                AddWallpaper(handle, layout.DeviceName);
+                AddWallpaper(handle, layout, showPreviewWindow);
 
                 SaveData.runningPrograms.Add(new SaveData.RunningProgram { ProcessName = proc.ProcessName, Pid = proc.Id });
                 SaveData.SaveRunningPrograms();
+
             }
             else if (layout.Type == WallpaperType.bizhawk)
             {
@@ -780,7 +797,7 @@ namespace livelywpf
                 //BorderlessWinStyle(handle);
                 RemoveAppFromTaskbar(handle);
 
-                AddWallpaper(handle, layout.DeviceName);
+                AddWallpaper(handle, layout, showPreviewWindow);
                 //StaticPinvoke.ShowWindow(handle, 3); //maximise
 
                 SaveData.runningPrograms.Add(new SaveData.RunningProgram { ProcessName = bizhawkProc.ProcessName, Pid = bizhawkProc.Id });
@@ -794,6 +811,10 @@ namespace livelywpf
                 return;
             }
 
+            if(layout.Type == WallpaperType.video_stream)
+            {
+                layout.Arguments = null; //no need to store it, since it is being generated everytime.
+            }
             wallpapers.Add(layout);
             SaveData.SaveWallpaperLayout();
 
@@ -807,10 +828,15 @@ namespace livelywpf
         /// </summary>
         /// <param name="handle">window handle of process to add as wallpaper</param>
         /// <param name="display">displaystring of display to sent wp to.</param>
-        private static void AddWallpaper(IntPtr handle, string display = null)
+        private static async void AddWallpaper(IntPtr handle, WallpaperLayout layout, bool showPreviewWindow)
         {
+            if (showPreviewWindow && SaveData.config.GenerateTile)
+            {
+                await ShowPreviewDialogSTAThread(layout, handle);
+            }
 
-            if(SaveData.config.WallpaperArrangement == WallpaperArrangement.span)
+            string display = layout.DeviceName;
+            if (SaveData.config.WallpaperArrangement == WallpaperArrangement.span)
             {
                 SpanWallpaper(handle);
                 return;
@@ -821,7 +847,7 @@ namespace livelywpf
             {
                 foreach (var displayItem in Screen.AllScreens)
                 {
-                    if( display == displayItem.DeviceName)
+                    if (display == displayItem.DeviceName)
                     {
                         SetWindowBottomMost(handle);
                         if (!NativeMethods.SetWindowPos(handle, 1, displayItem.Bounds.X, displayItem.Bounds.Y, (displayItem.WorkingArea.Width), (displayItem.WorkingArea.Height), 0 | 0x0010))
@@ -872,8 +898,45 @@ namespace livelywpf
                     }
                 }
             }
+
             SetFocus(true);
             RefreshDesktop();
+            //some websites don't have resizing events, reloading page to fullscreen.
+            if (layout.Type == WallpaperType.web || layout.Type == WallpaperType.web_audio || layout.Type == WallpaperType.url)
+            {
+                var cefBrowser = webProcesses.Find(x => x.Handle.Equals(handle));
+                cefBrowser.Proc.StandardInput.WriteLine("Reload");
+            }
+        }
+
+        public static Task ShowPreviewDialogSTAThread(WallpaperLayout layout, IntPtr wallpaperHandle)
+        {
+            var tcs = new TaskCompletionSource<object>();
+            var thread = new Thread(() =>
+            {  
+                try
+                {
+                    System.Windows.Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, new ThreadStart(delegate
+                    {
+                        PreviewWallpaper previewWindow = new PreviewWallpaper(wallpaperHandle, layout);
+                        if (App.w != null)
+                        {
+                            previewWindow.Owner = App.w;
+                            previewWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                        }
+                        previewWindow.ShowDialog();
+                    }));
+                    tcs.SetResult(null);
+                }
+                catch (Exception e)
+                {
+                    tcs.SetException(e);
+                    Logger.Error(e.ToString());
+                }
+            });
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+            return tcs.Task;
         }
 
         /// <summary>
@@ -1056,6 +1119,7 @@ namespace livelywpf
         {
             try
             {
+                IntPtr handle = new IntPtr();
                 //Retrieves the windowhandle of cefsubprocess, cefsharp is launching cef as a separate proces..if you add the full pgm as child of workerw then there are problems (prob related sharing input queue)
                 //Instead hiding the pgm window & adding cefrender window instead.
                 Logger.Info("Cefsharp Handle:- " + e.Data);
@@ -1091,8 +1155,18 @@ namespace livelywpf
                     
                     //webViewHandle = handle;
                     currProcess.Handle = handle;
+                    //experiment
+                    //SetParentWorkerW(handle);
+                    //SetParent(handle, IntPtr.Zero);
 
-                    AddWallpaper(handle, currProcess.DisplayID);
+                    //layout data is only used for drag & drop files, to create preview screen. 
+                    AddWallpaper(handle, new WallpaperLayout() 
+                                { 
+                                    DeviceName = currProcess.DisplayID,
+                                    FilePath = currProcess.FilePath,
+                                    Arguments = null,
+                                    Type = currProcess.Type 
+                                }, currProcess.ShowPreviewWindow);
                 }
             }
             catch (Exception)
@@ -1174,11 +1248,11 @@ namespace livelywpf
         /// <param name="type"></param>
         /// <param name="proc"></param>
         /// <returns></returns>
-        private static async Task<bool> WaitForProcesWindow(WallpaperType type, Process proc)
+        private static async Task<IntPtr> WaitForProcesWindow(WallpaperType type, Process proc)
         {
             if (proc == null)
             {
-                return false;
+                return IntPtr.Zero;
             }
 
             IntPtr configW = IntPtr.Zero; 
@@ -1187,13 +1261,13 @@ namespace livelywpf
             {
                 while (proc.WaitForInputIdle(-1) != true) //waiting for msgloop to be ready, gui not guaranteed to be ready.
                 {
-                    Debug.WriteLine("hello hello");
                     ctsProcessWait.Token.ThrowIfCancellationRequested();
                 }
             }
             catch(InvalidOperationException) //no gui, failed to enter idle state.
             {
-                _ = Task.Run(() => (MessageBox.Show(Properties.Resources.msgAppGUIFailure, Properties.Resources.txtLivelyErrorMsgTitle)));
+                _ = Task.Run(() => (MessageBox.Show(Properties.Resources.msgAppGUIFailure, Properties.Resources.txtLivelyErrorMsgTitle, 
+                                                     MessageBoxButton.OK, MessageBoxImage.Error)));
                 throw new OperationCanceledException();            
             }
 
@@ -1211,8 +1285,8 @@ namespace livelywpf
                     //Task.Delay(500).Wait(); // 500x20 ~10sec
                     await Task.Delay(1);
                 }
-                handle = configW;
-                return true;
+                //handle = configW;
+                return configW;
             }
             else if (type == WallpaperType.unity || type == WallpaperType.unity_audio)
             {
@@ -1294,10 +1368,10 @@ namespace livelywpf
             {
                 Logger.Info("Error: could not get windowhandle after waiting..");
                 //MessageBox.Show("Error: could not get windowhandle after waiting..");
-                return false;
+                return IntPtr.Zero;
             }
             else
-                return true;
+                return proc.MainWindowHandle;
         }
         #endregion wp_wait
 
@@ -2487,7 +2561,7 @@ namespace livelywpf
         /// Adds the wp as child of spawned desktop-workerw window.
         /// </summary>
         /// <param name="windowHandle">handle of wp</param>
-        private static void SetParentWorkerW(IntPtr windowHandle)
+        public static void SetParentWorkerW(IntPtr windowHandle)
         {
             //return;
             if (System.Environment.OSVersion.Version.Major == 6 && System.Environment.OSVersion.Version.Minor == 1) //windows 7
@@ -2510,6 +2584,15 @@ namespace livelywpf
             }            
         }
 
+        public static void SetParentSafe(IntPtr child, IntPtr parent)
+        {
+            IntPtr ret = NativeMethods.SetParent(child, parent);
+            if (ret.Equals(IntPtr.Zero))
+            {
+                LogWin32Error("failed to set custom parent,");
+            }
+        }
+
         /// <summary>
         /// Sets the window as bottom-most, no-activate window.
         /// </summary>
@@ -2524,17 +2607,20 @@ namespace livelywpf
         /// </summary>
         public static void SetFocus(bool focusLively = true)
         {
-            //IntPtr progman = NativeMethods.FindWindow("Progman", null);
-            NativeMethods.SetForegroundWindow(progman); //change focus from the started window//application.
-            NativeMethods.SetFocus(progman);
-
-            IntPtr livelyWindow = new WindowInteropHelper(System.Windows.Application.Current.MainWindow).Handle;
-            if (!livelyWindow.Equals(IntPtr.Zero) && NativeMethods.IsWindowVisible(livelyWindow) && focusLively)  //todo:- not working for cefsharp wp launch, why?
+            System.Windows.Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, new ThreadStart(delegate
             {
-                NativeMethods.SetForegroundWindow(livelyWindow);
-                NativeMethods.SetFocus(livelyWindow);
-            }
+                //IntPtr progman = NativeMethods.FindWindow("Progman", null);
+                NativeMethods.SetForegroundWindow(progman); //change focus from the started window//application.
+                NativeMethods.SetFocus(progman);
 
+                IntPtr livelyWindow = new WindowInteropHelper(System.Windows.Application.Current.MainWindow).Handle;
+                if (!livelyWindow.Equals(IntPtr.Zero) && NativeMethods.IsWindowVisible(livelyWindow) && focusLively)  //todo:- not working for cefsharp wp launch, why?
+                {
+                    NativeMethods.SetForegroundWindow(livelyWindow);
+                    NativeMethods.SetFocus(livelyWindow);
+                }
+            }));
+     
         }
 
         public static void RestartWallpapers()
@@ -2546,13 +2632,13 @@ namespace livelywpf
 
             foreach (var item in bcp)
             {
-                SetupDesktop.SetWallpaper(new WallpaperLayout() { Arguments = item.Arguments, DeviceName = item.DeviceName, FilePath = item.FilePath, Type = item.Type });
+                SetupDesktop.SetWallpaper(new WallpaperLayout() { Arguments = item.Arguments, DeviceName = item.DeviceName, FilePath = item.FilePath, Type = item.Type }, false);
             }
 
             dispatcherTimer.Start();
         }
 
-        private static void LogWin32Error(string msg = null)
+        public static void LogWin32Error(string msg = null)
         {
             //todo: throw win32 exception.
             int err = System.Runtime.InteropServices.Marshal.GetLastWin32Error();

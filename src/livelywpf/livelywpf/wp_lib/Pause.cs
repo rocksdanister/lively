@@ -119,12 +119,12 @@ namespace livelywpf
                             NativeMethods.ShowWindow(item.Handle, 1); //normal
                             NativeMethods.ShowWindow(item.Handle, 5); //show
 
-                            if (!SaveData.config.AlwaysAudio || SaveData.config.MuteCefAudioIn || displayDeviceName != null)
+                            if ( (!SaveData.config.AlwaysAudio || SaveData.config.MuteCefAudioIn || displayDeviceName != null) 
+                                                                && item.Type != SetupDesktop.WallpaperType.web_audio)
                                 VolumeMixer.SetApplicationMute(item.Proc.Id, true);
                             else
                                 VolumeMixer.SetApplicationMute(item.Proc.Id, false);
                         }
-                        //Pause.ResumeAllThreads(item);
                     }
 
                     foreach (var item in SetupDesktop.extPrograms)
@@ -134,7 +134,8 @@ namespace livelywpf
                             Pause.ResumeAllThreads(item);
                             //pausing audio thread causes some audio to remain playing?!
                             //(SaveData.config.MuteAppWP || display != null) && item.Type != SetupDesktop.WallpaperType.unity_audio
-                            if (!SaveData.config.AlwaysAudio && item.Type != SetupDesktop.WallpaperType.unity_audio || SaveData.config.MuteAppWP || displayDeviceName != null)
+                            if ( (!SaveData.config.AlwaysAudio || SaveData.config.MuteAppWP || displayDeviceName != null) 
+                                                               && item.Type != SetupDesktop.WallpaperType.unity_audio)
                             {
                                 VolumeMixer.SetApplicationMute(item.Proc.Id, true);
                             }

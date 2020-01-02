@@ -159,7 +159,7 @@
   <data name="cmbBoxVideoPlayer2" xml:space="preserve">
     <value> DirectShow (Lav, ffdshow ..) </value>
   </data>
- <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="license" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\docs\license.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
@@ -311,7 +311,7 @@ https://github.com/rocksdanister/lively-cef
     <value> एक नया संस्करण उपलब्ध है! </value>
   </data>
   <data name="toolTipWallpaperSkip" xml:space="preserve">
-    लापता फ़ाइल (नों) के कारण कुछ वॉलपेपर छोड़े गए थे
+    <value>लापता फ़ाइल (नों) के कारण कुछ वॉलपेपर छोड़े गए थे</value>
   </data>
   <data name="txtApplicationRules" xml:space="preserve">
     <value> अनुप्रयोग नियम </value>
@@ -483,7 +483,7 @@ https://github.com/rocksdanister/lively-cef
     <value>शीर्षक: -</value>
   </data>
   <data name="txtLabel3" xml:space="preserve">
-    <value> ये सामग्री Unity Technologies, Godot, Bizhawk, Shadertoy.com / /> से संबद्ध या प्रायोजित नहीं हैं </value>
+    <value> ये सामग्री Unity Technologies, Godot, Bizhawk, Shadertoy.com / /&gt; से संबद्ध या प्रायोजित नहीं हैं </value>
   </data>
   <data name="txtLabel30" xml:space="preserve">
     <value>विवरण: -</value>
@@ -551,12 +551,12 @@ CHROME, STEAM .. जैसे कार्यक्रम न चलाएं, �
 वहाँ खरीदे जाएँगे &amp; क्रेसेस, सावधानी के साथ आगे बढ़ें !!! </value>
   </data>
   <data name="txtLivelyErrorMsgTitle" xml:space="preserve">
-    <value> जीवंत: त्रुटि </value>
-    संदेश बॉक्स के लिए <comment> शीर्षक। </comment>
+    <value>संदेश बॉक्स के लिए</value>
+    <comment> शीर्षक। </comment>
   </data>
   <data name="txtLivelyWaitMsgTitle" xml:space="preserve">
-    <value> कृपया प्रतीक्षा करें </value>
-    संदेश बॉक्स के लिए <comment> शीर्षक </comment>
+    <value>संदेश बॉक्स के लिए</value>
+    <comment> शीर्षक </comment>
   </data>
   <data name="txtLivelyWallpaperTypeApp" xml:space="preserve">
     <value>अनुप्रयोग</value>
@@ -685,5 +685,17 @@ CHROME, STEAM .. जैसे कार्यक्रम न चलाएं, �
   </data>
   <data name="txtWindowTitleSelectDisplay" xml:space="preserve">
     <value> प्रदर्शन का चयन करें </value>
+  </data>
+  <data name="txtLabelStream" xml:space="preserve">
+    <value>धारा</value>
+  </data>
+  <data name="txtLabelVideoQuality" xml:space="preserve">
+    <value>वीडियो की गुणवत्ता</value>
+  </data>
+  <data name="txtLivelyWallpaperTypeUrl" xml:space="preserve">
+    <value>ऑनलाइन</value>
+  </data>
+  <data name="txtPreviewWallpaperNote" xml:space="preserve">
+    <value>इस विंडो को संसाधित करते समय ध्यान में रखें।</value>
   </data>
 </root>

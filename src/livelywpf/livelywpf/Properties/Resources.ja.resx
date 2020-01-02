@@ -159,7 +159,7 @@
   <data name="cmbBoxVideoPlayer2" xml:space="preserve">
     <value> DirectShow（Lav、ffdshow ..）</value>
   </data>
-<assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="license" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\docs\license.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
@@ -545,6 +545,12 @@ Windows 7が設定されている場合-最適な外観と調整適用します�
   <data name="txtLabelSoftwareUIRendering" xml:space="preserve">
     <value>ハードウェアアクセラレーションを無効にする</value>
   </data>
+  <data name="txtLabelStream" xml:space="preserve">
+    <value>ストリーム</value>
+  </data>
+  <data name="txtLabelVideoQuality" xml:space="preserve">
+    <value>ビデオ品質</value>
+  </data>
   <data name="txtLivelyAppWarning" xml:space="preserve">
     <value>この機能は現在開発中です。
 複数のサブプロセスを生成するCHROME、STEAMなどのプログラムを実行しないでください。
@@ -572,6 +578,9 @@ Windows 7が設定されている場合-最適な外観と調整適用します�
   </data>
   <data name="txtLivelyWallpaperTypeUnityAudio" xml:space="preserve">
     <value> Unity Audio Reactive </value>
+  </data>
+  <data name="txtLivelyWallpaperTypeUrl" xml:space="preserve">
+    <value>オンライン</value>
   </data>
   <data name="txtLivelyWallpaperTypeVideo" xml:space="preserve">
     <value>ビデオ</value>
@@ -622,6 +631,9 @@ Windows 7が設定されている場合-最適な外観と調整適用します�
   </data>
   <data name="txtPleaseWait2" xml:space="preserve">
     <value>しばらくお待ちください</value>
+  </data>
+  <data name="txtPreviewWallpaperNote" xml:space="preserve">
+    <value>処理中はこのウィンドウに焦点を合わせてください。</value>
   </data>
   <data name="txtSelectPreviewThumb" xml:space="preserve">
     <value> previewclip / thumbnailファイルを選択します。</value>

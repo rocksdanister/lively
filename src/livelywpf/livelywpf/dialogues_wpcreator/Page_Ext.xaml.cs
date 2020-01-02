@@ -21,6 +21,7 @@ using MessageBox = System.Windows.MessageBox;
 using Path = System.IO.Path;
 using System.Globalization;
 using Microsoft.Win32;
+using livelywpf.Lively.Helpers;
 
 namespace livelywpf
 {
@@ -237,7 +238,6 @@ namespace livelywpf
                     tmp.Preview = Path.GetFileName(tmp.Preview);
                     tmp.Thumbnail = Path.GetFileName(tmp.Thumbnail);
 
-                    System.IO.Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "\\tmpdata");
                     SaveData.SaveWallpaperMetaData(tmp, AppDomain.CurrentDomain.BaseDirectory + "\\tmpdata");
 
                     /*
@@ -288,24 +288,7 @@ namespace livelywpf
                     MessageBox.Show("Failed to delete existing file on disk, skipping!",Properties.Resources.txtLivelyErrorMsgTitle);
                     return;
                 }
-                /*
-                if (MessageBox.Show("Replace "+ Path.GetFileName(savePath) +"?", "Error: File Exists", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
-                {
-                    try
-                    {
-                        File.Delete(savePath);
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Failed to delete existing file!");
-                        return;
-                    }
-                }
-                else
-                {
-                    return;
-                }
-                */
+
             }
 
             string baseDirectory = Directory.GetParent(tmpInfo.FileName).ToString();
@@ -402,8 +385,14 @@ namespace livelywpf
 
                     if(height != 200 & width != 200)
                     {
-                        MessageBox.Show("Select ONLY 200x200(width x height) image thumbnail file");
-                        return;
+                        //MessageBox.Show("Select ONLY 200x200(width x height) image thumbnail file");
+                        //return;
+                        string saveFileName = AppDomain.CurrentDomain.BaseDirectory + "//tmpdata//wpdata//" + Path.GetRandomFileName() + ".jpg";
+                        ImageOperations.ResizeImage(openFileDialog1.FileName, saveFileName, new System.Drawing.Size(200, 200));
+
+                        tmpInfo.Thumbnail = saveFileName;
+                        data.Clear();
+                        data.Add(new BindClass(tmpInfo));
                     }
                     else
                     {
@@ -439,8 +428,14 @@ namespace livelywpf
 
                     if (width != 192 && height != 108)
                     {
-                        MessageBox.Show("Select ONLY 192x108(width x height) GIF preview file");
-                        return;
+                        //MessageBox.Show("Select ONLY 192x108(width x height) GIF preview file");
+                        //return;
+                        string saveFileName = AppDomain.CurrentDomain.BaseDirectory + "//tmpdata//wpdata//" + Path.GetRandomFileName() + ".gif";
+                        ImageOperations.ResizeGif(openFileDialog1.FileName, saveFileName, new System.Drawing.Size(192, 108));
+
+                        tmpInfo.Preview = saveFileName;
+                        data.Clear();
+                        data.Add(new BindClass(tmpInfo));
                     }
                     else
                     {
