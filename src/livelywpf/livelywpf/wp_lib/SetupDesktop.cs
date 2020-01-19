@@ -294,10 +294,10 @@ namespace livelywpf
                 {
                     ProcessStartInfo startInfo = new ProcessStartInfo
                     {
-                        FileName = AppDomain.CurrentDomain.BaseDirectory +"\\external\\mpv\\mpv.exe",
+                        FileName = App.pathData +"\\external\\mpv\\mpv.exe",
                         UseShellExecute = false,
                         WorkingDirectory = System.IO.Path.GetDirectoryName(layout.FilePath),
-                        Arguments = "\"" + layout.FilePath + "\"" + " --loop-file --keep-open --hwdec=yes" //+" --wid "+workerw  //--mute=yes 
+                        Arguments = "\"" + layout.FilePath + "\"" + " --force-window=yes --loop-file --keep-open --hwdec=yes" //+" --wid "+workerw  //--mute=yes 
                     };
 
 
@@ -512,9 +512,9 @@ namespace livelywpf
                 {
                     startInfo = new ProcessStartInfo
                     {
-                        FileName = AppDomain.CurrentDomain.BaseDirectory + "\\external\\mpv\\mpv.exe",
+                        FileName = App.pathData + "\\external\\mpv\\mpv.exe",
                         UseShellExecute = false,
-                        WorkingDirectory = AppDomain.CurrentDomain.BaseDirectory + "\\external\\mpv",
+                        WorkingDirectory = App.pathData + "\\external\\mpv",
                         Arguments = layout.Arguments
                     };
                 }
@@ -631,10 +631,11 @@ namespace livelywpf
                     //start1.Arguments = "\"" + layout.filePath + "\"" + " " + "\"" + "online" + "\"";
                     start1.Arguments = layout.FilePath + @" online";
                 }
-                start1.FileName = AppDomain.CurrentDomain.BaseDirectory + @"\external\cef\LivelyCefSharp.exe";
+                start1.FileName = System.IO.Path.Combine(App.pathData , "external","cef","LivelyCefSharp.exe");
                 start1.RedirectStandardInput = true;
                 start1.RedirectStandardOutput = true;
                 start1.UseShellExecute = false;
+                start1.WorkingDirectory = System.IO.Path.Combine(App.pathData, "external", "cef");
 
                 Process webProcess = new Process();
                 webProcess = Process.Start(start1);
@@ -751,7 +752,7 @@ namespace livelywpf
                     FileName = layout.FilePath,
                     UseShellExecute = false,
                     WorkingDirectory = System.IO.Path.GetDirectoryName(layout.FilePath),
-                    Arguments = "--config=" + AppDomain.CurrentDomain.BaseDirectory + @"\BizhawkConfig.ini"
+                    Arguments = "--config=" + App.pathData + @"\BizhawkConfig.ini"
                 };
 
                 //Process proc = new Process();
@@ -901,7 +902,7 @@ namespace livelywpf
 
             SetFocus(true);
             RefreshDesktop();
-            //some websites don't have resizing events, reloading page to fullscreen.
+            //some websites don't have resizing events, reloading page after fullscreen to force resize.
             if (layout.Type == WallpaperType.web || layout.Type == WallpaperType.web_audio || layout.Type == WallpaperType.url)
             {
                 var cefBrowser = webProcesses.Find(x => x.Handle.Equals(handle));

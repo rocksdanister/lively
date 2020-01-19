@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MahApps.Metro.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,7 @@ namespace livelywpf
     /// <summary>
     /// Interaction logic for CreateWallpaperAddedFiles.xaml
     /// </summary>
-    public partial class CreateWallpaperAddedFiles : Window
+    public partial class CreateWallpaperAddedFiles : MetroWindow
     {
         public CreateWallpaperAddedFiles(List<string> files)
         {

@@ -14,13 +14,14 @@ using System.Windows.Forms;
 using System.IO;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using MahApps.Metro.Controls;
 
-namespace livelywpf
+namespace livelywpf.Dialogues
 {
     /// <summary>
     /// Interaction logic for ApplicationRuleDialogWindow.xaml
     /// </summary>
-    public partial class ApplicationRuleDialogWindow : Window
+    public partial class ApplicationRuleDialogWindow : MetroWindow
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 

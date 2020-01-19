@@ -391,6 +391,9 @@ Windows 7が設定されている場合-最適な外観と調整適用します�
   <data name="txtDisplayPauseRule" xml:space="preserve">
     <value>一時停止ルールを表示：</value>
   </data>
+  <data name="txtDownload" xml:space="preserve">
+    <value>ダウンロード</value>
+  </data>
   <data name="txtGIFPlayer" xml:space="preserve">
     <value> GIFプレーヤー：</value>
   </data>
@@ -402,6 +405,9 @@ Windows 7が設定されている場合-最適な外観と調整適用します�
   </data>
   <data name="txtIgnore" xml:space="preserve">
     <value>無視</value>
+  </data>
+  <data name="txtInstall" xml:space="preserve">
+    <value>インストール</value>
   </data>
   <data name="txtInstallWallpaper" xml:space="preserve">
     <value>壁紙をインストール</value>
@@ -685,6 +691,9 @@ Windows 7が設定されている場合-最適な外観と調整適用します�
   </data>
   <data name="txtUpdateBanner" xml:space="preserve">
     <value>更新をライブで利用可能</value>
+  </data>
+  <data name="txtUpdateDownloadErrorMsg" xml:space="preserve">
+    <value>更新に失敗しました。インストーラーをダウンロードしてみてください</value>
   </data>
   <data name="txtVideoPlayer" xml:space="preserve">
     <value>動画プレーヤー：</value>

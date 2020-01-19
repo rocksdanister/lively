@@ -165,6 +165,10 @@ namespace livelywpf
                 //loop running on list when modification being done(rare), ignore since this fn is run continously every 500msec... everythings fine *nervous laughter*
                 //todo: could make a copy of it usin ToList(), will try later.
             }
+            catch
+            {
+                //TODO: FIX IT, SetApplicationMute error handle.
+            }
   
         }
 
@@ -349,6 +353,10 @@ namespace livelywpf
             catch(InvalidOperationException)
             {
                 //ignore
+            }
+            catch
+            {
+                //TODO: FIX IT, SetApplicationMute error handle.
             }
         }
 

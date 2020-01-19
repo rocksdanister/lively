@@ -803,6 +803,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Download.
+        /// </summary>
+        public static string txtDownload {
+            get {
+                return ResourceManager.GetString("txtDownload", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to GIF Player:.
         /// </summary>
         public static string txtGIFPlayer {
@@ -835,6 +844,15 @@ namespace livelywpf.Properties {
         public static string txtIgnore {
             get {
                 return ResourceManager.GetString("txtIgnore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Install.
+        /// </summary>
+        public static string txtInstall {
+            get {
+                return ResourceManager.GetString("txtInstall", resourceCulture);
             }
         }
         
@@ -1643,6 +1661,15 @@ namespace livelywpf.Properties {
         public static string txtUpdateBanner {
             get {
                 return ResourceManager.GetString("txtUpdateBanner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to update. Try downloading the installer from.
+        /// </summary>
+        public static string txtUpdateDownloadErrorMsg {
+            get {
+                return ResourceManager.GetString("txtUpdateDownloadErrorMsg", resourceCulture);
             }
         }
         

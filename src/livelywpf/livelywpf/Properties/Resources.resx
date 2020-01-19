@@ -391,6 +391,9 @@ If still not working, close &amp; start Lively again/ restart windows.</value>
   <data name="txtDisplayPauseRule" xml:space="preserve">
     <value>Display Pause Rule:</value>
   </data>
+  <data name="txtDownload" xml:space="preserve">
+    <value>Download</value>
+  </data>
   <data name="txtGIFPlayer" xml:space="preserve">
     <value>GIF Player:</value>
   </data>
@@ -402,6 +405,9 @@ If still not working, close &amp; start Lively again/ restart windows.</value>
   </data>
   <data name="txtIgnore" xml:space="preserve">
     <value>Ignore</value>
+  </data>
+  <data name="txtInstall" xml:space="preserve">
+    <value>Install</value>
   </data>
   <data name="txtInstallWallpaper" xml:space="preserve">
     <value>Install Wallpaper</value>
@@ -684,6 +690,9 @@ THERE WILL BE BUGS &amp; CRASHES, PROCEED WITH CAUTION!!!</value>
   </data>
   <data name="txtUpdateBanner" xml:space="preserve">
     <value>Update available Lively</value>
+  </data>
+  <data name="txtUpdateDownloadErrorMsg" xml:space="preserve">
+    <value>Failed to update. Try downloading the installer from</value>
   </data>
   <data name="txtVideoPlayer" xml:space="preserve">
     <value>Video Player:</value>

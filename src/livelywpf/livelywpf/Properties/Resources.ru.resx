@@ -391,6 +391,9 @@ https://github.com/rocksdanister/lively-cef
   <data name="txtDisplayPauseRule" xml:space="preserve">
     <value> Показать правило паузы: </value>
   </data>
+  <data name="txtDownload" xml:space="preserve">
+    <value>скачать</value>
+  </data>
   <data name="txtGIFPlayer" xml:space="preserve">
     <value> GIF Player: </value>
   </data>
@@ -402,6 +405,9 @@ https://github.com/rocksdanister/lively-cef
   </data>
   <data name="txtIgnore" xml:space="preserve">
     <value> Игнорировать </value>
+  </data>
+  <data name="txtInstall" xml:space="preserve">
+    <value>устанавливать</value>
   </data>
   <data name="txtInstallWallpaper" xml:space="preserve">
     <value> Установить обои </value>
@@ -685,6 +691,9 @@ https://github.com/rocksdanister/lively-cef
   </data>
   <data name="txtUpdateBanner" xml:space="preserve">
     <value> Доступно обновление Lively </value>
+  </data>
+  <data name="txtUpdateDownloadErrorMsg" xml:space="preserve">
+    <value>Не удалось обновить. Попробуйте скачать установщик с</value>
   </data>
   <data name="txtVideoPlayer" xml:space="preserve">
     <value> Видеоплеер: </value>

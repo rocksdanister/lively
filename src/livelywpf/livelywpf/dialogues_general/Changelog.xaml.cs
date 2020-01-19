@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MahApps.Metro.Controls;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -13,12 +14,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace livelywpf.dialogues_general
+namespace livelywpf.Dialogues
 {
     /// <summary>
     /// Interaction logic for Changelog.xaml
     /// </summary>
-    public partial class Changelog : Window
+    public partial class Changelog : MetroWindow
     {
 
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();

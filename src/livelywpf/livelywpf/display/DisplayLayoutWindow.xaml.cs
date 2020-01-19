@@ -1,8 +1,10 @@
-﻿using System;
+﻿using MahApps.Metro.Controls;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,7 +23,7 @@ namespace livelywpf
     /// <summary>
     /// Interaction logic for DisplayLayoutWindow.xaml
     /// </summary>
-    public partial class DisplayLayoutWindow : Window
+    public partial class DisplayLayoutWindow : MetroWindow
     {
         private ObservableCollection<DisplayListBox> displayLBItems = new ObservableCollection<DisplayListBox>();
 
@@ -132,16 +134,23 @@ namespace livelywpf
 
             foreach (var item in displayLBItems)
             {
-                if (item.DisplayDevice.Equals(displayLBItems[DisplayLB.SelectedIndex].DisplayDevice))
+                if (item.DisplayDevice.Equals(displayLBItems[DisplayLB.SelectedIndex].DisplayDevice, StringComparison.Ordinal))
                 {
                     if (item.FilePath != null)
                     {
-                        ProcessStartInfo startInfo = new ProcessStartInfo
+                        if (Directory.Exists(item.FilePath))
                         {
-                            Arguments = System.IO.Path.GetDirectoryName(item.FilePath),
-                            FileName = "explorer.exe"
-                        };
-                        Process.Start(startInfo);
+                            try
+                            {
+                                ProcessStartInfo startInfo = new ProcessStartInfo
+                                {
+                                    Arguments = "\"" + System.IO.Path.GetDirectoryName(item.FilePath) + "\"",
+                                    FileName = "explorer.exe"
+                                };
+                                Process.Start(startInfo);
+                            }
+                            catch { }
+                        }
                     }
                     break;
                 }

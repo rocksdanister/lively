@@ -62,6 +62,9 @@ namespace livelywpf
         private bool _isRestoringWallpapers = false;
         public static bool highContrastFix = false;
 
+        private Release gitRelease = null;
+        private string gitUrl = null;
+
         public MainWindow()
         {
             SystemInfo.LogHardwareInfo();
@@ -71,7 +74,7 @@ namespace livelywpf
             //todo:- should reconsider.
             try
             {
-                Process.Start(Path.Combine(AppDomain.CurrentDomain.BaseDirectory + "\\livelySubProcess.exe"), Process.GetCurrentProcess().Id.ToString(CultureInfo.InvariantCulture));
+                Process.Start(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "livelySubProcess.exe"), Process.GetCurrentProcess().Id.ToString(CultureInfo.InvariantCulture));
             }
             catch(Exception e)
             {
@@ -127,20 +130,17 @@ namespace livelywpf
 
             //attribution document.
             TextRange textRange = new TextRange(licenseDocument.ContentStart, licenseDocument.ContentEnd);
-            if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory + "\\docs\\license.rtf")))
+            try
             {
-                try
+                using (FileStream fileStream = File.Open(Path.Combine(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "docs", "license.rtf")), FileMode.Open, FileAccess.Read, FileShare.Read))
                 {
-                    using (FileStream fileStream = File.Open(Path.Combine(AppDomain.CurrentDomain.BaseDirectory + "\\docs\\license.rtf"), FileMode.Open, FileAccess.Read, FileShare.Read))
-                    {
-                        textRange.Load(fileStream, System.Windows.DataFormats.Rtf);
-                    }
-                    licenseFlowDocumentViewer.Document = licenseDocument;
+                    textRange.Load(fileStream, System.Windows.DataFormats.Rtf);
                 }
-                catch
-                {
-                    Logger.Error("Failed to load license file");
-                }
+                licenseFlowDocumentViewer.Document = licenseDocument;
+            }
+            catch(Exception e)
+            {
+                Logger.Error("Failed to load license file:" + e.ToString());
             }
             /*
             DoubleAnimation anim = new DoubleAnimation();
@@ -155,7 +155,7 @@ namespace livelywpf
                 SaveData.config.AppVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
                 SaveData.SaveConfig();
 
-                dialogues_general.Changelog cl = new dialogues_general.Changelog
+                Dialogues.Changelog cl = new Dialogues.Changelog
                 {
                     WindowStartupLocation = WindowStartupLocation.CenterScreen,
                     ShowActivated = true
@@ -181,13 +181,110 @@ namespace livelywpf
             //SaveData.LoadConfig(); //app.xaml.cs loads config file.
             SaveData.LoadWallpaperLayout();
             RestoreMenuSettings();
-            SetStartupRegistry(SaveData.config.Startup);
+            //SetStartupRegistry(SaveData.config.Startup);
 
-            await GithubCheck(); 
+            //github update check
+            try
+            {
+                gitRelease = await UpdaterGit.GetLatestRelease("lively", "rocksdanister", 45000); //45000
+                int result = UpdaterGit.CompareAssemblyVersion(gitRelease);
+                if (result > 0) //github ver greater, update available!
+                {
+                    try {
+                        //asset format: lively_setup_x86_full_vXXXX.exe, XXXX - 4 digit version no.
+                        gitUrl = await UpdaterGit.GetAssetUrl("lively_setup_x86_full", gitRelease, "lively", "rocksdanister");
+                        //gitUrl = await UpdaterGit.GetAssetUrl("lively_lite_x86", gitRelease, "lively", "rocksdanister");
+                    }
+                    catch (Exception e) 
+                    {
+                        Logger.Error("Error retriving asseturl for update: " + e.Message);
+                    }
+
+                    update_traybtn.Text = Properties.Resources.txtContextMenuUpdate2;
+                    hyperlinkUpdateBannerText.Text = Properties.Resources.txtUpdateBanner + " " + gitRelease.TagName;
+                    hyperlinkUpdateBanner.Visibility = Visibility.Visible;
+
+                    if (UpdateNotifyOrNot())
+                    {
+                        if (App.w != null)
+                        {
+                            //system tray notification, only displayed if lively is minimized to tray.
+                            if (!App.w.IsVisible)
+                            {
+                                _notifyIcon.ShowBalloonTip(2000, "lively", Properties.Resources.toolTipUpdateMsg, ToolTipIcon.None);
+                            }
+                            else
+                            {
+                                //update downloader window.
+                                ShowLivelyUpdateWindow();
+                            }
+                        }
+                    }
+                }
+                else if (result < 0) //this is early access software.
+                {
+                    update_traybtn.Text = Properties.Resources.txtContextMenuUpdate3;
+                }
+                else //up-to-date
+                {
+                    update_traybtn.Text = Properties.Resources.txtContextMenuUpdate4;
+                }
+            }
+            catch(Exception e)
+            {
+                //todo: retry after waiting.
+                update_traybtn.Text = Properties.Resources.txtContextMenuUpdate5;
+                Logger.Error("Error checking for update: " + e.Message);
+            }
             update_traybtn.Enabled = true;
         }
 
+        #region git_update
+
+        Dialogues.AppUpdate appUpdateWindow = null;
+        private void ShowLivelyUpdateWindow()
+        {
+            if (appUpdateWindow == null)
+            {
+                appUpdateWindow = new Dialogues.AppUpdate(gitRelease, gitUrl)
+                {
+                    WindowStartupLocation = WindowStartupLocation.CenterScreen
+                };
+                if (App.w.IsVisible)
+                {
+                    appUpdateWindow.Owner = this;
+                    WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                }
+                appUpdateWindow.Show();
+                appUpdateWindow.Closed += AppUpdateWindow_Closed;
+            }
+        }
+
+        private void AppUpdateWindow_Closed(object sender, EventArgs e)
+        {
+            appUpdateWindow = null;
+        }
+
+        private bool UpdateNotifyOrNot()
+        {
+            if(gitRelease == null || gitUrl == null)
+            {
+                return false;
+            }
+            else if(SaveData.config.IsFirstRun || String.IsNullOrWhiteSpace(gitRelease.TagName) ||
+                gitRelease.TagName.Equals(SaveData.config.IgnoreUpdateTag, StringComparison.Ordinal))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        #endregion git_update
+
         #region CefGallery
+        //incomplete: work in progress, not sure weather to finish this.. deviantart downloader.
         Process webProcess;
         private void StartCefBrowserNewWindow(string url)
         {
@@ -196,7 +293,7 @@ namespace livelywpf
             //start1.Arguments = url + @" deviantart";
             start1.Arguments = url + @" online";
 
-            start1.FileName = AppDomain.CurrentDomain.BaseDirectory + @"\external\cef\LivelyCefSharp.exe";
+            start1.FileName = App.pathData + @"\external\cef\LivelyCefSharp.exe";
             start1.RedirectStandardInput = true;
             start1.RedirectStandardOutput = true;
             start1.UseShellExecute = false;
@@ -218,7 +315,7 @@ namespace livelywpf
 
         private static void WebProcess_OutputDataReceived(object sender, DataReceivedEventArgs e)
         {
-            Logger.Info("CEF:"+e.Data);
+            Logger.Info("CEF:" + e.Data);
             try
             {
                 if (e.Data.Contains("LOADWP"))
@@ -231,90 +328,17 @@ namespace livelywpf
                         App.w.WallpaperInstaller(downloadedFilePath);
                     }));
                 }
-                /*
-                else if (e.Data.Contains("HWND"))
-                {
-                    var handle = new IntPtr(Convert.ToInt32(e.Data.Substring(4), 10));
-
-                    NativeMethods.ShowWindow(webProcess.MainWindowHandle, 0);
-
-                    handle = NativeMethods.FindWindowEx(handle, IntPtr.Zero, "Chrome_WidgetWin_0", null);
-
-                    if (IntPtr.Equals(handle, IntPtr.Zero))//unlikely.
-                    {
-                        try
-                        {
-                            webProcess.Kill();
-                        }
-                        catch (Exception ex)
-                        {
-                            Logger.Error("Error getting webview handle:- " + ex.ToString());
-                            Debug.WriteLine("web handle 0:- " + ex.Message + " " + ex.StackTrace);
-                        }
-
-                        return;
-                    }
-                    helper_fns.WindowOperations.MapProgramtoFrameworkElement(App.w, handle , App.w.borderBrowser);
-                   //var param = helper_fns.WindowOperations.GetAbsolutePlacement(tabBrowser);
-                }
-                */
             }
-            catch(NullReferenceException)
+            catch (NullReferenceException)
             {
 
             }
-            catch(Exception)
+            catch (Exception)
             {
                 //todo
             }
         }
         #endregion CefGallery
-
-        #region github_update_check
-        /// <summary>
-        /// Compares application Version string with github release version & shows native windows notification.
-        /// Note: Comaprison result<0 if github release tag is less than 4 digits.
-        /// </summary>
-        private async Task GithubCheck()
-        {
-            await Task.Delay(45000); //45sec delay (computer startup..)
-            //await Task.Delay(100);
-            try
-            {
-                GitHubClient client = new GitHubClient(new ProductHeaderValue("lively"));
-                var releases = await client.Repository.Release.GetAll("rocksdanister", "lively");
-                //GitHubClient client = new GitHubClient(new ProductHeaderValue("rePaper"));
-                //var releases = await client.Repository.Release.GetAll("rocksdanister", "rePaper");
-                var latest = releases[0];
-
-                //string tmp = latest.TagName.Replace("v", string.Empty);
-                string tmp = Regex.Replace(latest.TagName, "[A-Za-z ]", "");
-                var gitVersion = new Version(tmp);
-                var appVersion = new Version(System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString());
-                var result = gitVersion.CompareTo(appVersion);
-                if (result > 0) //github ver greater, update available!
-                {
-                    _notifyIcon.ShowBalloonTip(2000, "lively", Properties.Resources.toolTipUpdateMsg, ToolTipIcon.None);
-                    update_traybtn.Text = Properties.Resources.txtContextMenuUpdate2;
-                    hyperlinkUpdateBannerText.Text = Properties.Resources.txtUpdateBanner+" v" + tmp;
-                    hyperlinkUpdateBanner.Visibility = Visibility.Visible;
-                }
-                else if (result < 0) //this is early access software.
-                {
-                    update_traybtn.Text = Properties.Resources.txtContextMenuUpdate3;
-                }
-                else //up-to-date
-                {
-                    update_traybtn.Text = Properties.Resources.txtContextMenuUpdate4;
-                }
-            }
-            catch (Exception e)
-            {
-                update_traybtn.Text = Properties.Resources.txtContextMenuUpdate5;
-                Logger.Error("Error checking for update: " + e.Message);
-            }
-        }
-        #endregion github_update_check
 
         #region system_events
         private void SystemEvents_PowerModeChanged(object sender, PowerModeChangedEventArgs e)
@@ -453,6 +477,37 @@ namespace livelywpf
             }
             key.Close();
         }
+        /// <summary>
+        /// Checks if startup registry entry is present.
+        /// </summary>
+        /// <returns></returns>
+        private static bool CheckStartupRegistry()
+        {
+            Microsoft.Win32.RegistryKey key = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+            Assembly curAssembly = Assembly.GetExecutingAssembly();
+            string result = null;
+            try
+            {
+                result = (string)key.GetValue(curAssembly.GetName().Name);
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.ToString());
+            }
+            finally
+            {
+                key.Close();
+            }
+
+            if (String.IsNullOrEmpty(result))
+            {            
+                return false;
+            }
+            else
+            {
+                return true;
+            }     
+        }
 
         [Obsolete("Fails to work when folderpath contains non-english characters(WshShell is ancient afterall); use SetStartupRegistry() instead.")]
         /// <summary>
@@ -471,7 +526,7 @@ namespace livelywpf
 
                     IWshRuntimeLibrary.IWshShortcut shortcut = (IWshRuntimeLibrary.IWshShortcut)shell.CreateShortcut(shortcutAddress);
                     shortcut.Description = "Lively Wallpaper System";
-                    shortcut.WorkingDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                    shortcut.WorkingDirectory = App.pathData;
                     shortcut.TargetPath = curAssembly.Location;
                     shortcut.Save();
                 }
@@ -520,14 +575,14 @@ namespace livelywpf
             selectedTile.Clear();
             //wallpapersLV.SelectedIndex = -1;
             List<SaveData.TileData> tmpLoadedWallpapers = new List<SaveData.TileData>();
-            var wpDir = Directory.GetDirectories( Path.Combine( AppDomain.CurrentDomain.BaseDirectory, "wallpapers"));
-            var tmpDir = Directory.GetDirectories( Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SaveData\\wptmp"));
+            var wpDir = Directory.GetDirectories( Path.Combine( App.pathData, "wallpapers"));
+            var tmpDir = Directory.GetDirectories( Path.Combine(App.pathData, "SaveData", "wptmp"));
             var dir = wpDir.Concat(tmpDir).ToArray();
 
             for (int i = 0; i < dir.Length; i++)
             {
                 var item = dir[i];
-                if (File.Exists(item + "\\LivelyInfo.json"))
+                if (File.Exists(Path.Combine(item, "LivelyInfo.json")))
                 {
                     if (SaveData.LoadWallpaperMetaData(item))
                     {       
@@ -535,7 +590,7 @@ namespace livelywpf
                         {
                             if (info.Type == SetupDesktop.WallpaperType.video_stream || info.Type == SetupDesktop.WallpaperType.url)
                             {
-
+                                //online content.
                             }
                             else
                             {
@@ -569,12 +624,28 @@ namespace livelywpf
                             }
                         }
                         else //absolute path wp's ( //SaveData//wptmp//)
-                        {
+                        {                     
                             if (File.Exists(SaveData.info.Preview) != true)
-                                SaveData.info.Preview = null;
+                            {
+                                //backward compatible with portable ver of lively, if file is moved and absolute path is wrong.
+                                if (File.Exists(Path.Combine(item, Path.GetFileName(SaveData.info.Preview))))
+                                {
+                                    SaveData.info.Preview = Path.Combine(item, Path.GetFileName(SaveData.info.Preview));
+                                }
+                                else
+                                    SaveData.info.Preview = null;
+                            }
 
                             if (File.Exists(SaveData.info.Thumbnail) != true)
-                                SaveData.info.Thumbnail = null;
+                            {
+                                if (File.Exists(Path.Combine(item, Path.GetFileName(SaveData.info.Thumbnail))))
+                                {
+                                    SaveData.info.Thumbnail = Path.Combine(item, Path.GetFileName(SaveData.info.Thumbnail));
+                                }
+                                else
+                                    SaveData.info.Thumbnail = null;
+                            }
+                            
                         }
 
                         if (File.Exists(SaveData.info.FileName) || info.IsAbsolutePath //load anyway for absolutepath, setupwallpaper will check if file exists for this type and give warning.
@@ -626,7 +697,7 @@ namespace livelywpf
                 tabControl1.SelectedIndex = 0;
 
             var randomFolderName = Path.GetRandomFileName();
-            var dir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SaveData", "wptmp", randomFolderName);
+            var dir = Path.Combine(App.pathData, "SaveData", "wptmp", randomFolderName);
             try
             {
                 Directory.CreateDirectory(dir);
@@ -637,12 +708,12 @@ namespace livelywpf
                 return;
             }
 
-            if (SaveData.LoadWallpaperMetaData(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "tmpdata","wpdata\\") ))
+            if (SaveData.LoadWallpaperMetaData(Path.Combine(App.pathData, "tmpdata","wpdata\\") ))
             {
                 //making the thumbnail & preview absolute paths.
-                if(File.Exists( Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "tmpdata", "wpdata", SaveData.info.Preview) ))
+                if(File.Exists( Path.Combine(App.pathData, "tmpdata", "wpdata", SaveData.info.Preview) ))
                     SaveData.info.Preview = Path.Combine(dir,SaveData.info.Preview);
-                if (File.Exists( Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "tmpdata", "wpdata", SaveData.info.Thumbnail) ))
+                if (File.Exists( Path.Combine(App.pathData, "tmpdata", "wpdata", SaveData.info.Thumbnail) ))
                     SaveData.info.Thumbnail = Path.Combine(dir, SaveData.info.Thumbnail);
 
                 SaveData.SaveWallpaperMetaData(SaveData.info, dir);
@@ -650,7 +721,7 @@ namespace livelywpf
             else
             {
                 Logger.Error("LoadWallpaperFromWpDataFolder(): Failed to load livelyinfo for tmpwallpaper!..deleting tmpfiles.");
-                Task.Run(() => (FileOperations.EmptyDirectory( Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "tmpdata", "wpdata\\") )));
+                Task.Run(() => (FileOperations.EmptyDirectory( Path.Combine(App.pathData, "tmpdata", "wpdata\\") )));
                 try
                 {
                     Directory.Delete(dir);
@@ -664,11 +735,11 @@ namespace livelywpf
 
             try
             {
-                if (File.Exists( Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "tmpdata", "wpdata", Path.GetFileName(SaveData.info.Thumbnail)) ))
-                    File.Copy( Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "tmpdata", "wpdata", Path.GetFileName(SaveData.info.Thumbnail)), SaveData.info.Thumbnail);
+                if (File.Exists( Path.Combine(App.pathData, "tmpdata", "wpdata", Path.GetFileName(SaveData.info.Thumbnail)) ))
+                    File.Copy( Path.Combine(App.pathData, "tmpdata", "wpdata", Path.GetFileName(SaveData.info.Thumbnail)), SaveData.info.Thumbnail);
 
-                if (File.Exists( Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "tmpdata", "wpdata", Path.GetFileName(SaveData.info.Preview)) ))
-                    File.Copy( Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "tmpdata", "wpdata", Path.GetFileName(SaveData.info.Preview)), SaveData.info.Preview);
+                if (File.Exists( Path.Combine(App.pathData, "tmpdata", "wpdata", Path.GetFileName(SaveData.info.Preview)) ))
+                    File.Copy( Path.Combine(App.pathData, "tmpdata", "wpdata", Path.GetFileName(SaveData.info.Preview)), SaveData.info.Preview);
                     
             }
             catch (Exception e)
@@ -678,7 +749,7 @@ namespace livelywpf
             finally
             {
                 UpdateWallpaperLibrary();
-                Task.Run(() => (FileOperations.EmptyDirectory(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "tmpdata", "wpdata\\"))));
+                Task.Run(() => (FileOperations.EmptyDirectory(Path.Combine(App.pathData, "tmpdata", "wpdata\\"))));
                 //selecting newly added wp.
                 foreach (var item in tileDataList)
                 {
@@ -1088,13 +1159,13 @@ namespace livelywpf
                                         SaveData.info.FileName = null;
                                     }
                                 }
-                                SaveData.SaveWallpaperMetaData(SaveData.info, AppDomain.CurrentDomain.BaseDirectory + "\\tmpdata\\wpdata\\");
+                                SaveData.SaveWallpaperMetaData(SaveData.info, App.pathData + "\\tmpdata\\wpdata\\");
                             }
                             else
                             {
                                 return;
                             }
-                            zip.AddFile(AppDomain.CurrentDomain.BaseDirectory + "\\tmpdata\\wpdata\\LivelyInfo.json", "");
+                            zip.AddFile(App.pathData + "\\tmpdata\\wpdata\\LivelyInfo.json", "");
                         }
 
                         for (int i = 0; i < folderContents.Count; i++)
@@ -1221,14 +1292,37 @@ namespace livelywpf
 
         private void CreateSysTray()
         {
+            //NotifyIcon Fix: https://stackoverflow.com/questions/28833702/wpf-notifyicon-crash-on-first-run-the-root-visual-of-a-visualtarget-cannot-hav/29116917
+            //Rarely I get this error "The root Visual of a VisualTarget cannot have a parent..", hard to pinpoint not knowing how to recreate the error.
+            System.Windows.Controls.ToolTip tt = new System.Windows.Controls.ToolTip();
+            tt.IsOpen = true;
+            tt.IsOpen = false;
+
             _notifyIcon = new System.Windows.Forms.NotifyIcon();
             _notifyIcon.DoubleClick += (s, args) => ShowMainWindow();
-            //_notifyIcon.Click += (s, args) => ShowMainWindow();
-            //_notifyIcon.Icon = System.Drawing.Icon.ExtractAssociatedIcon(System.Reflection.Assembly.GetEntryAssembly().ManifestModule.Name);
             _notifyIcon.Icon = Properties.Icons.icons8_seed_of_life_96_normal;
-            _notifyIcon.Visible = true;
 
             CreateContextMenu();
+            _notifyIcon.Visible = true;
+        }
+
+        System.Windows.Forms.ToolStripMenuItem update_traybtn;
+        private void CreateContextMenu()
+        {
+            _notifyIcon.ContextMenuStrip =
+              new System.Windows.Forms.ContextMenuStrip();
+            _notifyIcon.Text = Properties.Resources.txtTitlebar;
+
+            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.txtContextMenuOpenLively, Properties.Icons.icon_monitor).Click += (s, e) => ShowMainWindow();
+            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.txtContextMenuCloseAll, Properties.Icons.icon_erase).Click += (s, e) => SetupDesktop.CloseAllWallpapers();
+            update_traybtn = new System.Windows.Forms.ToolStripMenuItem(Properties.Resources.txtContextMenuUpdate1, Properties.Icons.icon_update);
+            //update_traybtn.Click += (s, e) => Process.Start("https://github.com/rocksdanister/lively");
+            update_traybtn.Click += (s,e) => ShowLivelyUpdateWindow();
+            update_traybtn.Enabled = false;
+            _notifyIcon.ContextMenuStrip.Items.Add(update_traybtn);
+
+            _notifyIcon.ContextMenuStrip.Items.Add("-");
+            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.txtContextMenuExit, Properties.Icons.icon_close).Click += (s, e) => ExitApplication();
         }
         public static void SwitchTrayIcon(bool isPaused)
         {
@@ -1251,24 +1345,6 @@ namespace livelywpf
             {
                 //app closing.
             }
-        }
-
-        System.Windows.Forms.ToolStripMenuItem update_traybtn;
-        private void CreateContextMenu()
-        {
-            _notifyIcon.ContextMenuStrip =
-              new System.Windows.Forms.ContextMenuStrip();
-            _notifyIcon.Text = Properties.Resources.txtTitlebar;
-
-            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.txtContextMenuOpenLively, Properties.Icons.icon_monitor).Click += (s, e) => ShowMainWindow();
-            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.txtContextMenuCloseAll, Properties.Icons.icon_erase).Click += (s, e) => SetupDesktop.CloseAllWallpapers();
-            update_traybtn = new System.Windows.Forms.ToolStripMenuItem(Properties.Resources.txtContextMenuUpdate1, Properties.Icons.icon_update);
-            update_traybtn.Click += (s, e) => Process.Start("https://github.com/rocksdanister/lively");
-            update_traybtn.Enabled = false;
-            _notifyIcon.ContextMenuStrip.Items.Add(update_traybtn);
-
-            _notifyIcon.ContextMenuStrip.Items.Add("-");
-            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.txtContextMenuExit, Properties.Icons.icon_close).Click += (s, e) => ExitApplication();
         }
 
         private int prevSelectedLibIndex = -1;
@@ -1306,9 +1382,8 @@ namespace livelywpf
 
                 //systraymenu dispose
                 _notifyIcon.Visible = false;
-                //_notifyIcon.Icon = null;
                 _notifyIcon.Icon.Dispose();
-                _notifyIcon.Icon = null;
+                //_notifyIcon.Icon = null;
                 _notifyIcon.Dispose();
             }
         }
@@ -1320,23 +1395,29 @@ namespace livelywpf
             //this.Close(); // MainWindow_Closing() handles the exit actions.
         }
 
+        private int windowShowCnt = 0;
         public async void ShowMainWindow()
         {
             //TODO:- add error if waitin to kill browser process, onclose runnin and user call this fn.
-            if (this.IsVisible)
+            if (App.w.IsVisible)//this.IsVisible)
             {
-                if (this.WindowState == WindowState.Minimized)
+                if (App.w.WindowState == WindowState.Minimized)
                 {
-                    this.WindowState = WindowState.Normal;
+                    App.w.WindowState = WindowState.Normal;
                 }
-                this.Activate();
+                App.w.Activate();
             }
             else
             {
                 UpdateWallpaperLibrary();
-                this.Show();
-                this.Activate();
+                App.w.Show();
+                //App.w.Activate();
 
+                if(UpdateNotifyOrNot() && windowShowCnt == 0)
+                {
+                    ShowLivelyUpdateWindow();
+                }
+                windowShowCnt++;
                 /*
                 //todo:- make sure it closes in the event restorewallpaper() is already done.
                 if (_isRestoringWallpapers && progressController == null)
@@ -1402,7 +1483,7 @@ namespace livelywpf
                     return;
                 }
 
-                if (!File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory + "\\external\\cef\\LivelyCefSharp.exe")))
+                if (!File.Exists(Path.Combine(App.pathData + "\\external\\cef\\LivelyCefSharp.exe")))
                 {
                     Logger.Info("cefsharp is missing, skipping wallpaper.");
                     _ = Task.Run(() => (MessageBox.Show(Properties.Resources.msgWebBrowserMissing, Properties.Resources.txtLivelyErrorMsgTitle, 
@@ -1412,7 +1493,7 @@ namespace livelywpf
             }
             else if(type == SetupDesktop.WallpaperType.video && SaveData.config.VidPlayer == VideoPlayer.mpv)
             {
-                if(!File.Exists(AppDomain.CurrentDomain.BaseDirectory + "\\external\\mpv\\mpv.exe"))
+                if(!File.Exists(App.pathData + "\\external\\mpv\\mpv.exe"))
                 {
                     _ = Task.Run(() => (MessageBox.Show("mpv player missing!\nwww.github.com/rocksdanister/lively/wiki/Video-Guide", Properties.Resources.txtLivelyErrorMsgTitle, 
                                                                                                                     MessageBoxButton.OK, MessageBoxImage.Information)));
@@ -1562,7 +1643,7 @@ namespace livelywpf
                         continue;
                     }
 
-                    if (!File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory + "\\external\\cef\\LivelyCefSharp.exe")))
+                    if (!File.Exists(Path.Combine(App.pathData + "\\external\\cef\\LivelyCefSharp.exe")))
                     {
                         Logger.Info("cefsharp is missing, skipping wallpaper.");
                         _ = Task.Run(() => (MessageBox.Show(Properties.Resources.msgWebBrowserMissing, Properties.Resources.txtLivelyErrorMsgTitle)));
@@ -1571,7 +1652,7 @@ namespace livelywpf
                 }
                 else if (layout.Type == SetupDesktop.WallpaperType.video && SaveData.config.VidPlayer == VideoPlayer.mpv)
                 {
-                    if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + "\\external\\mpv\\mpv.exe"))
+                    if (!File.Exists(App.pathData + "\\external\\mpv\\mpv.exe"))
                     {
                         _ = Task.Run(() => (MessageBox.Show("mpv player missing!\nwww.github.com/rocksdanister/lively/wiki/Video-Guide", Properties.Resources.txtLivelyErrorMsgTitle)));
                         continue;
@@ -1668,7 +1749,7 @@ namespace livelywpf
         {
             string randomFolderName = Path.GetRandomFileName();
             string extractPath = null;
-            extractPath = AppDomain.CurrentDomain.BaseDirectory + "\\wallpapers\\" + randomFolderName;
+            extractPath = App.pathData + "\\wallpapers\\" + randomFolderName;
 
             //Todo: implement CheckZip() {thread blocking}, Error will be thrown during extractiong, which is being handled so not a big deal.
             //Ionic.Zip.ZipFile.CheckZip(zipLocation)
@@ -1676,7 +1757,7 @@ namespace livelywpf
             if (Directory.Exists(extractPath)) //likely impossible.
             {
                 Debug.WriteLine("same foldername with files, should be impossible... retrying with new random foldername");
-                extractPath = AppDomain.CurrentDomain.BaseDirectory + "\\wallpapers\\" + Path.GetRandomFileName();
+                extractPath = App.pathData + "\\wallpapers\\" + Path.GetRandomFileName();
 
                 if (Directory.Exists(extractPath))
                 {
@@ -1980,7 +2061,7 @@ namespace livelywpf
             MessageBox.Show(Properties.Resources.txtComingSoon, Properties.Resources.txtLivelyErrorMsgTitle, MessageBoxButton.OK, MessageBoxImage.Error);
             return;
 
-            var dir = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + @"\external\bizhawk", "EmuHawk.exe", SearchOption.AllDirectories); //might be slow, only check top?
+            var dir = Directory.GetFiles(App.pathData + @"\external\bizhawk", "EmuHawk.exe", SearchOption.AllDirectories); //might be slow, only check top?
             if (dir.Length != 0)
             {
                 SetupWallpaper(dir[0], SetupDesktop.WallpaperType.bizhawk);
@@ -2089,10 +2170,10 @@ namespace livelywpf
             if (string.IsNullOrEmpty(url))
                 return;
 
-            if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "\\external\\mpv\\youtube-dl.exe") && File.Exists(AppDomain.CurrentDomain.BaseDirectory + "\\external\\mpv\\mpv.exe"))
+            if (File.Exists(App.pathData + "\\external\\mpv\\youtube-dl.exe") && File.Exists(App.pathData + "\\external\\mpv\\mpv.exe"))
             {
                 SetupWallpaper(url, SetupDesktop.WallpaperType.video_stream);
-                //SetupWallpaper(AppDomain.CurrentDomain.BaseDirectory + "\\external\\mpv\\mpv.exe", SetupDesktop.WallpaperType.app, "\"" + url + "\"" + " --loop-file --keep-open");
+                //SetupWallpaper(App.pathData + "\\external\\mpv\\mpv.exe", SetupDesktop.WallpaperType.app, "\"" + url + "\"" + " --loop-file --keep-open");
             }
             else
             {
@@ -2345,7 +2426,8 @@ namespace livelywpf
                 SaveData.SaveConfig();
                 comboBoxGIFPlayer.SelectedIndex = (int)SaveData.config.GifPlayer;
             }
-            StartupToggle.IsChecked = SaveData.config.Startup;
+            //StartupToggle.IsChecked = SaveData.config.Startup;
+            StartupToggle.IsChecked = CheckStartupRegistry();
 
             #region shit
             //todo:- do it more elegantly.
@@ -2534,8 +2616,7 @@ namespace livelywpf
 
         public void Button_Click_HowTo(object sender, RoutedEventArgs e)
         {
-            //Process.Start("https://github.com/rocksdanister/lively/wiki");
-            HelpWindow w = new HelpWindow
+            Dialogues.HelpWindow w = new Dialogues.HelpWindow
             {
                 Owner = this,
                 WindowStartupLocation = WindowStartupLocation.CenterOwner
@@ -2690,9 +2771,9 @@ namespace livelywpf
 
         private void WebLoadDragDrop(string link)
         {
-            if (link.Contains("youtube.com/watch?v=")) //drag drop only for youtube.com streams
+            if (link.Contains("youtube.com/watch?v=") || link.Contains("bilibili.com/video/")) //drag drop only for youtube.com streams
             {
-                if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "\\external\\mpv\\youtube-dl.exe") && File.Exists(AppDomain.CurrentDomain.BaseDirectory + "\\external\\mpv\\mpv.exe"))
+                if (File.Exists(App.pathData + "\\external\\mpv\\youtube-dl.exe") && File.Exists(App.pathData + "\\external\\mpv\\mpv.exe"))
                 {
                     //YoutubeDLArgGenerate(link);
                     SetupWallpaper(link, SetupDesktop.WallpaperType.video_stream);
@@ -2721,32 +2802,39 @@ namespace livelywpf
         private static string YoutubeDLArgGenerate(string link)
         {
             string quality = null;
-            switch(SaveData.config.StreamQuality)
+            if (!link.Contains("bilibili.com/video/")) //youtube-dl failing if quality flag is set.
             {
-                case StreamQualitySuggestion.best:
-                    quality = String.Empty;
-                    break;
-                case StreamQualitySuggestion.h2160p:
-                    quality = " --ytdl-format bestvideo[height<=2160]+bestaudio/best[height<=2160]";
-                    break;
-                case StreamQualitySuggestion.h1440p:
-                    quality = " --ytdl-format bestvideo[height<=1440]+bestaudio/best[height<=1440]";
-                    break;
-                case StreamQualitySuggestion.h1080p:
-                    quality = " --ytdl-format bestvideo[height<=1080]+bestaudio/best[height<=1080]";
-                    break;
-                case StreamQualitySuggestion.h720p:
-                    quality = " --ytdl-format bestvideo[height<=720]+bestaudio/best[height<=720]";
-                    break;
-                case StreamQualitySuggestion.h480p:
-                    quality = " --ytdl-format bestvideo[height<=480]+bestaudio/best[height<=480]";
-                    break;
-                default:
-                    quality = " --ytdl-format bestvideo[height<=720]+bestaudio/best[height<=720]";
-                    break;
+                switch (SaveData.config.StreamQuality)
+                {
+                    case StreamQualitySuggestion.best:
+                        quality = String.Empty;
+                        break;
+                    case StreamQualitySuggestion.h2160p:
+                        quality = " --ytdl-format bestvideo[height<=2160]+bestaudio/best[height<=2160]";
+                        break;
+                    case StreamQualitySuggestion.h1440p:
+                        quality = " --ytdl-format bestvideo[height<=1440]+bestaudio/best[height<=1440]";
+                        break;
+                    case StreamQualitySuggestion.h1080p:
+                        quality = " --ytdl-format bestvideo[height<=1080]+bestaudio/best[height<=1080]";
+                        break;
+                    case StreamQualitySuggestion.h720p:
+                        quality = " --ytdl-format bestvideo[height<=720]+bestaudio/best[height<=720]";
+                        break;
+                    case StreamQualitySuggestion.h480p:
+                        quality = " --ytdl-format bestvideo[height<=480]+bestaudio/best[height<=480]";
+                        break;
+                    default:
+                        quality = " --ytdl-format bestvideo[height<=720]+bestaudio/best[height<=720]";
+                        break;
+                }
+            }
+            else
+            {
+                quality = String.Empty;
             }
 
-            return "\"" + link + "\"" + " --loop-file --keep-open --hwdec=yes" + quality;
+            return "\"" + link + "\"" + " --force-window=yes --loop-file --keep-open --hwdec=yes" + quality;
         }
 
         public readonly static string[] formatsVideo = { ".dat", ".wmv", ".3g2", ".3gp", ".3gp2", ".3gpp", ".amv", ".asf",  ".avi", ".bin", ".cue", ".divx", ".dv", ".flv", ".gxf", ".iso", ".m1v", ".m2v", ".m2t", ".m2ts", ".m4v",
@@ -2763,7 +2851,7 @@ namespace livelywpf
 
         private void Button_AppRule_Click(object sender, RoutedEventArgs e)
         {
-            ApplicationRuleDialogWindow w = new ApplicationRuleDialogWindow
+            Dialogues.ApplicationRuleDialogWindow w = new Dialogues.ApplicationRuleDialogWindow
             {
                 WindowStartupLocation = WindowStartupLocation.CenterOwner,
                 Owner = this
@@ -2815,12 +2903,12 @@ namespace livelywpf
             System.Windows.Application.Current.Shutdown();
         }
 
-        dialogues_general.Changelog changelogWindow = null;
+        Dialogues.Changelog changelogWindow = null;
         private void lblVersionNumber_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             if (changelogWindow == null)
             {
-                changelogWindow = new dialogues_general.Changelog
+                changelogWindow = new Dialogues.Changelog
                 {
                     WindowStartupLocation = WindowStartupLocation.CenterScreen,
                     ShowActivated = true
@@ -2840,6 +2928,11 @@ namespace livelywpf
         private void ChangelogWindow_Closed(object sender, EventArgs e)
         {
             changelogWindow = null;
+        }
+
+        private void hyperlinkUpdateBanner_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            ShowLivelyUpdateWindow();
         }
 
         #endregion ui_events
