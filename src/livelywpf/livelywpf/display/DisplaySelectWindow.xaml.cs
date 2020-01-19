@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MahApps.Metro.Controls;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace livelywpf
     /// <summary>
     /// Interaction logic for DisplaySelectWindow.xaml
     /// </summary>
-    public partial class DisplaySelectWindow : Window
+    public partial class DisplaySelectWindow : MetroWindow
     { 
         private ObservableCollection<DisplayListBox> displayLBItems = new ObservableCollection<DisplayListBox>();
 

@@ -1,5 +1,6 @@
 ﻿using ImageMagick;
 using livelywpf.Lively.Helpers;
+using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -20,6 +21,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using static livelywpf.SaveData;
+using Path = System.IO.Path;
 
 namespace livelywpf
 {
@@ -28,7 +30,7 @@ namespace livelywpf
     /// </summary>
     public partial class PreviewWallpaper : Window
     {
-        string saveDirectory = AppDomain.CurrentDomain.BaseDirectory + "\\tmpdata\\wpdata";
+        string saveDirectory = Path.Combine(App.pathData, "tmpdata", "wpdata");
         int gifAnimationDelay = (int)Math.Round( (1f /SaveData.config.PreviewGIF.CaptureFps) * 1000f); //in milliseconds
         int gifSaveAnimationDelay = (int)Math.Round((1f / SaveData.config.PreviewGIF.GifFps) * 1000f);
         int gifTotalFrames = SaveData.config.PreviewGIF.CaptureFps * SaveData.config.PreviewGIF.CaptureDuration;
@@ -37,7 +39,7 @@ namespace livelywpf
         SaveData.WallpaperLayout layout = new SaveData.WallpaperLayout();
         public PreviewWallpaper(IntPtr handle, SaveData.WallpaperLayout layout)
         {
-            FileOperations.EmptyDirectory(AppDomain.CurrentDomain.BaseDirectory + "\\tmpdata\\wpdata"); //clear previous tempdata if exists.
+            FileOperations.EmptyDirectory(saveDirectory); //clear previous tempdata if exists.
 
             InitializeComponent();
             this.layout = layout;
@@ -125,7 +127,7 @@ namespace livelywpf
             GenerateLivelyInfo(layout);
             Rect reviewPanel;
 
-            #region previewgif
+            #region preview_images
             //preview clip (animated gif file).
             if (SaveData.config.PreviewGIF.CaptureGif)
             {
@@ -137,6 +139,11 @@ namespace livelywpf
                                 (int)(((int)reviewPanel.Left + (int)(reviewPanel.Right)) /2f) - 192/2, (int)(((int)reviewPanel.Top + (int)(reviewPanel.Bottom ))/2f) - 108/2, 192, 108); //384,216
                     await Task.Delay(gifAnimationDelay);
 
+                    if ((i + 1) > gifProgressBar.Maximum)
+                        gifProgressBar.Value = gifProgressBar.Maximum;
+                    else
+                        gifProgressBar.Value = i + 1;
+                    /*
                     this.Dispatcher.Invoke(() =>
                     {
                         if((i + 1) > gifProgressBar.Maximum)
@@ -144,17 +151,16 @@ namespace livelywpf
                         else
                             gifProgressBar.Value = i + 1;
                     });
+                    */
                 }
                 //create animated gif from captured images.
                 await Task.Run(() => CreateGif());
             }
             else
             {
-                await Task.Delay(1000); //wait 1sec before capturing thumbnail..incase wallpaper is not loaded yet.
+                await Task.Delay(100); //wait before capturing thumbnail..incase wallpaper is not loaded yet.
             }
-            #endregion
 
-            #region thumbnail
             // 200x200 thumbnail image capture.
             reviewPanel = WindowOperations.GetAbsolutePlacement(PreviewBorder, true);
             CaptureWindow.CopyScreen(saveDirectory, "lively_t.jpg", 
@@ -163,6 +169,11 @@ namespace livelywpf
             #endregion
 
             _InProgressClosing = false;
+            System.Windows.Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, new ThreadStart(delegate
+            {
+                App.w.LoadWallpaperFromWpDataFolder();
+            }));
+
             this.Close();
         }
 
@@ -173,12 +184,6 @@ namespace livelywpf
                 e.Cancel = true;
                 return;
             }
-
-            System.Windows.Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, new ThreadStart(delegate
-            {
-                App.w.LoadWallpaperFromWpDataFolder();
-            }));
-
             //..detach wp window from this dialogue.
             SetupDesktop.SetParentSafe(processHWND, IntPtr.Zero);
         }

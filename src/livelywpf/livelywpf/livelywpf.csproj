@@ -170,6 +170,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="dialogues_general\AppUpdate.xaml.cs">
+      <DependentUpon>AppUpdate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lively\Helpers\UpdaterGit.cs" />
+    <Compile Include="save\CefProperties.cs" />
     <Compile Include="dialogues_general\ApplicationRuleDialogWindow.xaml.cs">
       <DependentUpon>ApplicationRuleDialogWindow.xaml</DependentUpon>
     </Compile>
@@ -245,6 +250,10 @@
     <Compile Include="wp_lib\NativeMethods.cs" />
     <Compile Include="wp_lib\VolumeMixer.cs" />
     <Page Include="dialogues_general\ApplicationRuleDialogWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="dialogues_general\AppUpdate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

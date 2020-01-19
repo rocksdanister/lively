@@ -698,4 +698,13 @@ CHROME, STEAM .. जैसे कार्यक्रम न चलाएं, �
   <data name="txtPreviewWallpaperNote" xml:space="preserve">
     <value>इस विंडो को संसाधित करते समय ध्यान में रखें।</value>
   </data>
+  <data name="txtDownload" xml:space="preserve">
+    <value>डाउनलोड</value>
+  </data>
+  <data name="txtInstall" xml:space="preserve">
+    <value>इंस्टॉल</value>
+  </data>
+  <data name="txtUpdateDownloadErrorMsg" xml:space="preserve">
+    <value>अपडेट करने में विफल। से इंस्टॉलर डाउनलोड करने का प्रयास करें</value>
+  </data>
 </root>

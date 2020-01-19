@@ -391,6 +391,9 @@ https://github.com/rocksdanister/lively-cef
   <data name="txtDisplayPauseRule" xml:space="preserve">
     <value>显示暂停规则：</value>
   </data>
+  <data name="txtDownload" xml:space="preserve">
+    <value>下载</value>
+  </data>
   <data name="txtGIFPlayer" xml:space="preserve">
     <value> GIF播放器：</value>
   </data>
@@ -402,6 +405,9 @@ https://github.com/rocksdanister/lively-cef
   </data>
   <data name="txtIgnore" xml:space="preserve">
     <value>忽略</value>
+  </data>
+  <data name="txtInstall" xml:space="preserve">
+    <value>安装</value>
   </data>
   <data name="txtInstallWallpaper" xml:space="preserve">
     <value>安装墙纸</value>
@@ -685,6 +691,9 @@ https://github.com/rocksdanister/lively-cef
   </data>
   <data name="txtUpdateBanner" xml:space="preserve">
     <value>有可用更新Lively</value>
+  </data>
+  <data name="txtUpdateDownloadErrorMsg" xml:space="preserve">
+    <value>更新失败。尝试从下载下载安装程序</value>
   </data>
   <data name="txtVideoPlayer" xml:space="preserve">
     <value>视频播放器：</value>

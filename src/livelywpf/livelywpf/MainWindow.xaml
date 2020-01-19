@@ -7,10 +7,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:livelywpf"
-        xmlns:p = "clr-namespace:livelywpf.Properties"
-                      
+        xmlns:p = "clr-namespace:livelywpf.Properties"                
         xmlns:gif="https://github.com/XamlAnimatedGif/XamlAnimatedGif"
-                            
+                      
         mc:Ignorable="d"
         ResizeMode="NoResize"
         MinWidth="930" MinHeight="600"
@@ -24,7 +23,7 @@
         GlowBrush="{DynamicResource AccentColorBrush}"
         AllowsTransparency="True" WindowStyle="None" Drop="MetroWindow_Drop"
         AllowDrop="true">
-    
+
     <Controls:MetroWindow.Resources>
         <Style TargetType="Label" x:Key="labelGreenH1">
             <Setter Property="Foreground" Value="{DynamicResource AccentColorBrush}" />
@@ -70,15 +69,16 @@
             <DoubleAnimation To="0.0" />
         </Storyboard>
     </Controls:MetroWindow.Resources>
-    
+
     <Grid Margin="10,28,-0.2,0.4">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="822*"/>
+            <ColumnDefinition Width="544*"/>
+            <ColumnDefinition Width="279*"/>
             <ColumnDefinition Width="63*"/>
             <ColumnDefinition Width="34*"/>
         </Grid.ColumnDefinitions>
-        <Controls:MetroTabControl Name="tabControl1" Grid.ColumnSpan="3" Margin="0,0,0,-0.4" >
-            <TabItem Name="libTab" Header="{x:Static p:Resources.titleLibrary}"> 
+        <Controls:MetroTabControl Name="tabControl1" Grid.ColumnSpan="4" Margin="0,0,0,-0.4" >
+            <TabItem Name="libTab" Header="{x:Static p:Resources.titleLibrary}">
                 <Canvas>
                     <Border BorderBrush="{DynamicResource AccentColorBrush}" BorderThickness="0.5,0,0,0" Height="479" Canvas.Left="664" Canvas.Top="10" Width="224"/>
                     <ScrollViewer Height="479" Width="245" Canvas.Left="670" Canvas.Top="10" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Hidden" >
@@ -125,7 +125,7 @@
 
                     <ListBox x:Name="wallpapersLV"  HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="5,10,0,0" Height="479" Width="655" SelectionChanged="WallpapersLV_SelectionChanged" 
                              ScrollViewer.VerticalScrollBarVisibility="Visible"  ScrollViewer.ScrollChanged="WallpapersLV_ScrollChanged" ScrollViewer.IsDeferredScrollingEnabled="True" >
-                        
+
                         <ListBox.ContextMenu>
                             <ContextMenu>
                                 <MenuItem Header="{x:Static p:Resources.txtContextMenuShowOnDisk}" Click="MenuItem_ShowOnDisk_Click" ></MenuItem>
@@ -436,7 +436,7 @@
                                     <ComboBoxItem Content="VP9" IsSelected="True"></ComboBoxItem>
                                     <ComboBoxItem Content="x264"></ComboBoxItem>
                                 </ComboBox>
-                                
+
                             </StackPanel>
 
                             <StackPanel Orientation="Vertical" Margin="15,5,0,0" Width="265" Height="500">
@@ -484,25 +484,26 @@
                             </Style>
                         </Image.Style>
                     </Image>
-        
+
                 </Canvas>
             </TabItem>
             <TabItem Header="Browser" Name="tabBrowser" Visibility="Hidden">
                 <Border x:Name="borderBrowser">
-                    
+
                 </Border>
             </TabItem>
         </Controls:MetroTabControl>
 
-        <TextBlock Margin="0,-20,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="15" Width="450" Name="hyperlinkUpdateBanner" Visibility="Hidden" >
-            <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://github.com/rocksdanister/lively/" Foreground="{DynamicResource AccentColorBrush}" >
+        <TextBlock Margin="0,-20,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="15"  Name="hyperlinkUpdateBanner" Visibility="Hidden" 
+                                                                                                MouseLeftButtonDown="hyperlinkUpdateBanner_MouseLeftButtonDown" >
+            <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://github.com/rocksdanister/lively/" IsEnabled="False" Foreground="{DynamicResource AccentColorBrush2}" >
                 <TextBlock  Name="hyperlinkUpdateBannerText" Text="Update available Lively " />
             </Hyperlink>
         </TextBlock>
 
-        <Image x:Name="image" ToolTip="Display Settings/Info" HorizontalAlignment="Left" Height="20"  Width="20" Margin="29.6,-20,0,0" MouseLeftButtonUp="Image_Display_MouseLeftButtonUp" 
-               Source="/images/monitor-50xw.png" VerticalAlignment="Top" Grid.Column="1"/>
-        <StackPanel Margin="570,-20,38.6,0" Orientation="Horizontal" VerticalAlignment="Top" Grid.ColumnSpan="2"  >
+        <Image x:Name="image" ToolTip="Display Settings/Info" HorizontalAlignment="Left" Height="20"  Width="20" Margin="29.8,-20,0,0" MouseLeftButtonUp="Image_Display_MouseLeftButtonUp" 
+               Source="/images/monitor-50xw.png" VerticalAlignment="Top" Grid.Column="2"/>
+        <StackPanel Margin="25.8,-20,38.4,0" Orientation="Horizontal" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.Column="1"  >
             <!--<Image Width="15" Height="15" Source="/images/icons8-seed-of-life-96.png"></Image>-->
             <TextBlock TextAlignment="Right" Text="{x:Static p:Resources.txtTitlebar}"  Foreground="{DynamicResource AccentColorBrush}" FontSize="12" Width="271" />
         </StackPanel>

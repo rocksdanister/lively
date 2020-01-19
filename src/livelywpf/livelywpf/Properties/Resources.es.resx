@@ -391,6 +391,9 @@ Si aún no funciona, cierre Lively e inícielo de nuevo/ reinicie Windows.</valu
   <data name="txtDisplayPauseRule" xml:space="preserve">
     <value>Regla de pausa de pantalla:</value>
   </data>
+  <data name="txtDownload" xml:space="preserve">
+    <value>descargar</value>
+  </data>
   <data name="txtGIFPlayer" xml:space="preserve">
     <value>Reproductor GIF:</value>
   </data>
@@ -402,6 +405,9 @@ Si aún no funciona, cierre Lively e inícielo de nuevo/ reinicie Windows.</valu
   </data>
   <data name="txtIgnore" xml:space="preserve">
     <value>Ignorar</value>
+  </data>
+  <data name="txtInstall" xml:space="preserve">
+    <value>Instalar en pc</value>
   </data>
   <data name="txtInstallWallpaper" xml:space="preserve">
     <value>Install fondo de pantalla</value>
@@ -685,6 +691,9 @@ NO inicie programas como CHROME o STEAM.. que crean múltiples subprocesos.
   </data>
   <data name="txtUpdateBanner" xml:space="preserve">
     <value>Actualización de Lively disponible</value>
+  </data>
+  <data name="txtUpdateDownloadErrorMsg" xml:space="preserve">
+    <value>Error al actualizar Intente descargar el instalador desde</value>
   </data>
   <data name="txtVideoPlayer" xml:space="preserve">
     <value>Reproductor de Video:</value>

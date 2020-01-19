@@ -122,6 +122,7 @@ namespace livelySubProcess
         }
 
         public static List<RunningProgram> runningPrograms = new List<RunningProgram>();
+        private static string pathData = Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "LivelyWallpaper");
 
         public class RunningProgramsList
         {
@@ -130,7 +131,7 @@ namespace livelySubProcess
 
         public static void LoadRunningPrograms()
         {
-            if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + "\\lively_running_pgms.json"))
+            if (!File.Exists(Path.Combine(pathData,"lively_running_pgms.json")))
             {
                 return;
             }
@@ -139,7 +140,7 @@ namespace livelySubProcess
             {
 
                 // deserialize JSON directly from a file
-                using (StreamReader file = File.OpenText(AppDomain.CurrentDomain.BaseDirectory + "\\lively_running_pgms.json"))
+                using (StreamReader file = File.OpenText( Path.Combine(pathData, "lively_running_pgms.json")))
                 {
                     JsonSerializer serializer = new JsonSerializer();
                     RunningProgramsList tmp = (RunningProgramsList)serializer.Deserialize(file, typeof(RunningProgramsList));
@@ -169,7 +170,7 @@ namespace livelySubProcess
                 NullValueHandling = NullValueHandling.Include
             };
 
-            using (StreamWriter sw = new StreamWriter(AppDomain.CurrentDomain.BaseDirectory + "\\lively_running_pgms.json"))
+            using (StreamWriter sw = new StreamWriter( Path.Combine(pathData, "\\lively_running_pgms.json")))
             using (JsonWriter writer = new JsonTextWriter(sw))
             {
                 serializer.Serialize(writer, tmp);

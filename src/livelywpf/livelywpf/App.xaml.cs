@@ -23,21 +23,37 @@ namespace livelywpf
     public partial class App : Application
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-
         static Mutex mutex = new Mutex(false, "LIVELY:DESKTOPWALLPAPERSYSTEM");
-
         public static MainWindow w = null;
+
+        //folder paths
+        public static readonly string pathData = Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Lively Wallpaper");
+        /*
+        public static string pathSaveData = Path.Combine(pathData, "SaveData");
+        public static string pathWpTmp = Path.Combine(pathData, "SaveData", "wptmp");
+        public static string pathWallpapers = Path.Combine(pathData, "wallpapers");
+        public static string pathTmpData = Path.Combine(pathData, "tmpdata");
+        public static string pathWpData = Path.Combine(pathData, "tmpdata", "wpdata");
+        */
         protected override void OnStartup(StartupEventArgs e)
         {
-            //delete residue tempfiles
-            FileOperations.EmptyDirectory(AppDomain.CurrentDomain.BaseDirectory + "\\tmpdata");
-
-            //create directories if not exist
-            Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "\\SaveData");
-            Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "\\wallpapers");
-            Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "\\SaveData\\wptmp");
-            Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "\\tmpdata");
-            Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "\\tmpdata\\wpdata");
+            //delete residue tempfiles if any!
+            FileOperations.EmptyDirectory(Path.Combine(pathData, "tmpdata"));
+            try
+            {
+                //create directories if not exist
+                Directory.CreateDirectory(Path.Combine(pathData, "SaveData"));
+                Directory.CreateDirectory(Path.Combine(pathData, "SaveData", "wptmp"));
+                Directory.CreateDirectory(Path.Combine(pathData, "wallpapers"));
+                Directory.CreateDirectory(Path.Combine(pathData, "tmpdata"));
+                Directory.CreateDirectory(Path.Combine(pathData, "tmpdata", "wpdata"));
+            }
+            catch(Exception ex)
+            {
+                //not logging here, just display & terminate.
+                MessageBox.Show(ex.Message, Props.Resources.txtLivelyErrorMsgTitle, MessageBoxButton.OK, MessageBoxImage.Error);
+                Environment.Exit(1);
+            }
 
             SaveData.LoadConfig();
 
@@ -49,26 +65,26 @@ namespace livelywpf
 
             if (!SaveData.config.SafeShutdown)
             {
-                //clearing previous wp persisting image if any.
+                //clearing previous wp persisting image if any (not required, subProcess clears it).
                 SetupDesktop.RefreshDesktop();
 
-                Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "\\ErrorLogs\\");
+                Directory.CreateDirectory( Path.Combine(pathData, "ErrorLogs"));
                 string fileName = DateTime.Now.ToString("yyyyMMdd_HHmmss", CultureInfo.InvariantCulture) + ".txt";
-                if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "\\ErrorLogs\\" + fileName))
+                if (File.Exists( Path.Combine(pathData, "ErrorLogs", fileName) ))
                     fileName = Path.GetRandomFileName() + ".txt";
 
                 try
                 {                    
-                    File.Copy(AppDomain.CurrentDomain.BaseDirectory + "\\logfile.txt",
-                            AppDomain.CurrentDomain.BaseDirectory + "\\ErrorLogs\\" + fileName);
+                    File.Copy( Path.Combine(pathData, "logfile.txt"),
+                            Path.Combine(pathData, "ErrorLogs", fileName));
                 }
                 catch(IOException e1)
                 {
                     System.Diagnostics.Debug.WriteLine(e1.ToString());    
                 }
                 
-                var result = MessageBox.Show(Props.Resources.msgSafeModeWarning + 
-                    AppDomain.CurrentDomain.BaseDirectory + "ErrorLogs\\" + fileName
+                var result = MessageBox.Show(Props.Resources.msgSafeModeWarning +
+                    Path.Combine(pathData, "ErrorLogs", fileName)
                     , Props.Resources.txtLivelyErrorMsgTitle, MessageBoxButton.YesNo);
 
                 if (result == MessageBoxResult.No)
@@ -114,7 +130,7 @@ namespace livelywpf
                 w.Show();
                 w.UpdateWallpaperLibrary(); 
 
-                HelpWindow hw = new HelpWindow
+                Dialogues.HelpWindow hw = new Dialogues.HelpWindow
                 {
                     Owner = w,
                     WindowStartupLocation = WindowStartupLocation.CenterOwner

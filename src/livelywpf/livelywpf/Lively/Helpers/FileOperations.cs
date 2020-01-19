@@ -12,7 +12,7 @@ namespace livelywpf.Lively.Helpers
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         /// <summary>
-        /// Deletes file & folder contents of a directory (directory remains).
+        /// Deletes file & folder contents of a directory (parent directory remains).
         /// </summary>
         /// <param name="directory"></param>
         /// <returns>success =true, error =false</returns>
@@ -26,13 +26,15 @@ namespace livelywpf.Lively.Helpers
                 {
                     file.Delete();
                 }
+
                 foreach (DirectoryInfo dir in di.EnumerateDirectories())
                 {
                     dir.Delete(true);
                 }
             }
-            catch
+            catch(Exception e) 
             {
+                Logger.Error(e.ToString());
                 return false;
             }
 

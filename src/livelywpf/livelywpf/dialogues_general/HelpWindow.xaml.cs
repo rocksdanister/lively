@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MahApps.Metro.Controls;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -13,12 +14,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace livelywpf
+namespace livelywpf.Dialogues
 {
     /// <summary>
     /// Interaction logic for HelpWindow.xaml
     /// </summary>
-    public partial class HelpWindow : Window
+    public partial class HelpWindow : MetroWindow
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
@@ -45,7 +46,7 @@ namespace livelywpf
 
         private void PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            dialogues_general.Changelog changelogWindow = new dialogues_general.Changelog
+            Dialogues.Changelog changelogWindow = new Dialogues.Changelog
             {
                 Owner = this,
                 WindowStartupLocation = WindowStartupLocation.CenterOwner,
