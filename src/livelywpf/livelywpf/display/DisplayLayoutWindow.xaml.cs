@@ -138,7 +138,7 @@ namespace livelywpf
                 {
                     if (item.FilePath != null)
                     {
-                        if (Directory.Exists(item.FilePath))
+                        if (File.Exists(item.FilePath))
                         {
                             try
                             {

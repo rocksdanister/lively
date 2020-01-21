@@ -389,6 +389,7 @@
     <Resource Include="images\icons8-hdd-60.png" />
     <Resource Include="images\icons8-hdd-48.png" />
     <Resource Include="images\icons8-online-48.png" />
+    <Resource Include="icons\icons8-pause-30.png" />
     <Content Include="NLog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>

@@ -1377,6 +1377,7 @@ namespace livelywpf
         #endregion wp_wait
 
         #region thread_monitor_pause/play
+
         //todo:- remove/reduce redundant/useless variables.
         static IntPtr hWnd, shell_tray;
         static Process currProcess;
@@ -1923,37 +1924,6 @@ namespace livelywpf
                 return true;
             else
                 return false;
-            /*
-            if (MainWindow.multiscreen)
-            {
-                
-                NativeMethods.GetWindowRect(hWnd, out appBounds);
-                try
-                {
-                    screenBounds = Array.Find(Screen.AllScreens, x => x.DeviceName == display).Bounds;
-                }
-                catch (ArgumentNullException e)
-                {
-                    Logger.Error("Array.Find() returned null" + e.ToString());
-                    return false;
-                }
-
-                if ((appBounds.Bottom - appBounds.Top) >= screenBounds.Height * .95f && (appBounds.Right - appBounds.Left) >= screenBounds.Width * .95f) // > if foreground app 95% working-area( - taskbar of monitor)
-                    return true;
-                else
-                    return false;
-                
-            }
-            else
-            {
-                NativeMethods.GetWindowRect(hWnd, out appBounds);
-                screenBounds = System.Windows.Forms.Screen.FromHandle(hWnd).Bounds;
-                if ((appBounds.Bottom - appBounds.Top) >= screenBounds.Height * .95f && (appBounds.Right - appBounds.Left) >= screenBounds.Width * .95f) // > if foreground app 95% working-area( - taskbar of monitor)
-                    return true;
-                else
-                    return false;
-            }
-            */
         }
 
         /// <summary>
@@ -2064,6 +2034,29 @@ namespace livelywpf
         #endregion obsolete
 
         #endregion thread_monitor_pause/play
+
+        public static bool PauseAllWallpapers(bool isPause)
+        {
+            if (_timerInitilaized)
+            {
+                if (isPause)
+                {
+                    Pause.SuspendWallpaper(true);
+                    dispatcherTimer.Stop();
+                }
+                else
+                {
+                    Pause.ResumeWallpaper(false);
+                    dispatcherTimer.Start();
+                }
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+       
+        }
 
         #region wp_close_funtions
         /// <summary>
@@ -2549,6 +2542,7 @@ namespace livelywpf
                 NativeMethods.DrawMenuBar(handle);
             }
         }
+
         /// <summary>
         /// Force redraw desktop, clears wp persisting on screen even after close.
         /// </summary>

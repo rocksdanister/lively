@@ -1306,7 +1306,8 @@ namespace livelywpf
             _notifyIcon.Visible = true;
         }
 
-        System.Windows.Forms.ToolStripMenuItem update_traybtn;
+        System.Windows.Forms.ToolStripMenuItem update_traybtn, pause_traybtn;
+        private bool playpauseToggle = false;
         private void CreateContextMenu()
         {
             _notifyIcon.ContextMenuStrip =
@@ -1319,6 +1320,13 @@ namespace livelywpf
             //update_traybtn.Click += (s, e) => Process.Start("https://github.com/rocksdanister/lively");
             update_traybtn.Click += (s,e) => ShowLivelyUpdateWindow();
             update_traybtn.Enabled = false;
+
+            //todo:- store a "state" in setupdesktop, maintain that state even after wp change. (also checkmark this menu if paused)
+            pause_traybtn = new System.Windows.Forms.ToolStripMenuItem("Play/Pause", Properties.Icons.icons8_pause_30);
+            pause_traybtn.Click += (s, e) => SetupDesktop.PauseAllWallpapers(playpauseToggle = !playpauseToggle);
+            _notifyIcon.ContextMenuStrip.Items.Add(pause_traybtn);
+
+            _notifyIcon.ContextMenuStrip.Items.Add("-");
             _notifyIcon.ContextMenuStrip.Items.Add(update_traybtn);
 
             _notifyIcon.ContextMenuStrip.Items.Add("-");
