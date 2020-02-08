@@ -49,10 +49,10 @@ Help translate lively to other languages: <a href="https://github.com/rocksdanis
 ![demo-gif7](/resources/html.gif?raw=true "html")
 
 <a href="http://louie.co.nz/25th_hour/"> 25th Hour</a> by Loius Coyle
-* Chromium Embedded Framework.
 * Load HTML file or web address as wallpaper.
 * Runs webgl, javascript .. basically anything that works on chrome.
 * Audio Reactive Wallpaper support, create wallpapers that react to <a href="https://github.com/rocksdanister/lively/wiki/Web-Guide-II-:-System-Audio-Data">system audio</a>
+* Customisation support, <a href="https://github.com/rocksdanister/lively/wiki/Web-Guide-IV-:-Interaction">documentation.</a>
 #### Shaders
 ![demo-gif7](/resources/shadertoy.gif?raw=true "htmlshadertoy") 
 
@@ -75,6 +75,7 @@ Help translate lively to other languages: <a href="https://github.com/rocksdanis
 * Experimentail, works for some.
 #### & more:
 - Easy to use, Just drag & drop media files & webpages into lively window to set it as wallpaper.
+- Real-time customisable web wallpaper support.
 - Easy to share Lively-zip format, just drag & drop the zip file to import it into Library, use the built-in creator to make them (ensures compatibility).
 - Hardware accelerated video playback, with option to use external Directshow codec of your choice. ( LAV(recommended), K-Lite, Kawaii Codec..)
 - Library to browse and preview wallpapers.
@@ -96,13 +97,13 @@ Help translate lively to other languages: <a href="https://github.com/rocksdanis
 
 **_I'm not officially affiliated with Unity technologies, godot, shadertoy;_**
 ## Download
-##### Latest version: v0.6.5.0 (Windows 10, 8.1)[What's new?](https://github.com/rocksdanister/lively/releases/tag/v0.6.5.0)
-- [`setup.exe`][direct-full-win32]  
-   _98MB, Web wallpaper support & some sample wallpapers included._
-
-**From v0.6.5 onwards lively will be in installer form, new userdata & plugins location is “Documents\Lively Wallpaper”.**
+##### Latest version: v0.8.0.0 (Windows 10, 8.1)[What's new?](https://github.com/rocksdanister/lively/releases/tag/v0.8.0.0)
+- [`Download`][direct-full-win32]  
+   _92MB, Web wallpaper support & some sample wallpapers included._
    
-[direct-full-win32]: https://github.com/rocksdanister/lively/releases/download/v0.6.5.0/lively_setup_x86_full_v0650.exe
+**Latest Visual C++ Redistributable is required: [vc_redist.x86.exe](https://aka.ms/vs/16/release/vc_redist.x86.exe)**
+   
+[direct-full-win32]: https://github.com/rocksdanister/lively/releases/download/v0.8.0.0/lively_setup_x86_full_v0800.exe
 
 [Trouble Getting started? ](https://github.com/rocksdanister/lively/wiki/Getting-Started)
 

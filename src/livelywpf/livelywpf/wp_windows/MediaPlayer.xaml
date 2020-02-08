@@ -7,15 +7,12 @@
         mc:Ignorable="d"
         Title="MediaPlayer" Height="360" Width="640"       
         WindowStyle="None"
-        WindowState="Maximized"
         ResizeMode="NoResize"
-        ShowInTaskbar="False"
-        xmlns:controls="clr-namespace:WPFMediaKit.DirectShow.Controls;assembly=WPFMediaKit"
-        xmlns:players="clr-namespace:WPFMediaKit.DirectShow.MediaPlayers;assembly=WPFMediaKit" Closing="Window_Closing"
+        Closing="Window_Closing"
         >
    
     <Grid>
-       <!-- <controls:MediaUriElement x:Name="mediaUriElement"   /> -->
+        <!-- <controls:MediaUriElement x:Name="mediaUriElement" /> -->
         <MediaElement  Name="mePlayer" /> 
     </Grid>
 </Window>

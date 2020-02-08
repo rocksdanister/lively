@@ -298,6 +298,7 @@ namespace livelywpf
             public SetupDesktop.WallpaperType Type { get; set; } //unsure
             public string FilePath { get; set; }
             public string Arguments { get; set; }
+            //public int playbackSpeed { get; set; } //video only.
             //public string Arguments2 { get; set; } //for webstream, url is stored here
             public WallpaperLayout()
             {
@@ -306,6 +307,7 @@ namespace livelywpf
                 FilePath = null;
                 DeviceName = null;
                 Arguments = "";
+                //playbackSpeed = 100;
                 //Arguments2 = "";
             }
         }
@@ -476,16 +478,17 @@ namespace livelywpf
 
 
         //lang-codes: https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-lcid/a9eac961-e77d-41a6-90a5-ce1a8b0cdb9c
-        public static SupportedLanguages[] supportedLanguages = new SupportedLanguages[] {
+        public static readonly SupportedLanguages[] supportedLanguages = new SupportedLanguages[] {
                                     new SupportedLanguages("English(en-US)", new string[]{"en-US"}), //technically not US english, sue me..
                                     new SupportedLanguages("中文(zh-CN)", new string[]{"zh", "zh-Hans","zh-CN","zh-SG"}), //are they same?
                                     new SupportedLanguages("日本人(ja-JP)", new string[]{"ja", "ja-JP"}),
                                     new SupportedLanguages("русский(ru)", new string[]{"ru", "ru-BY", "ru-KZ", "ru-KG", "ru-MD", "ru-RU","ru-UA"}), //are they same?
                                     new SupportedLanguages("हिन्दी(hi-IN)", new string[]{"hi", "hi-IN"}),
-                                    new SupportedLanguages("español(es)", new string[]{"es"})
+                                    new SupportedLanguages("español(es)", new string[]{"es"}),
+                                    new SupportedLanguages("italian(it)", new string[]{"it", "it-IT", "it-SM","it-CH","it-VA"})
                                     };
 
-        public static SupportedThemes[] livelyThemes = new SupportedThemes[] { 
+        public static readonly SupportedThemes[] livelyThemes = new SupportedThemes[] { 
                                             new SupportedThemes("DarkLime","Lime","BaseDark"),
                                             new SupportedThemes("DarkOlive","Olive","BaseDark"),
                                             new SupportedThemes("DarkEmerald","Emerald","BaseDark"),
@@ -495,8 +498,8 @@ namespace livelywpf
                                             new SupportedThemes("DarkSteel","Steel","BaseDark"),
                                             new SupportedThemes("DarkTaupe","Taupe","BaseDark"),
                                             new SupportedThemes("DarkSienna","Sienna","BaseDark"),
-                                            new SupportedThemes("LightIndigo","Indigo","BaseLight"),
-                                            new SupportedThemes("LightCrimson","Crimson","BaseLight"),
+                                            //new SupportedThemes("LightIndigo","Indigo","BaseLight"),
+                                            //new SupportedThemes("LightCrimson","Crimson","BaseLight"),
         }; 
 
         [Serializable]
@@ -822,6 +825,57 @@ namespace livelywpf
             private BitmapImage img;
             private BitmapImage watermarkImg1;
             private string tilePreview;
+            public bool IsCustomisable { get; private set; } //does LivelyProperties.json value exist
+            private bool customiseBtnToggle;
+            private Visibility setWpBtnVisibility;
+            private Visibility customiseWpBtnVisibility;
+            public bool CustomiseBtnToggle
+            {
+                get
+                {
+                    return customiseBtnToggle;
+                }
+                set
+                {
+                    customiseBtnToggle = value;
+                    if(value)
+                    {
+                        //SetWpBtnVisibility = Visibility.Collapsed;
+                        SetWpBtnVisibility = Visibility.Visible;
+                        CustomiseWpBtnVisibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        SetWpBtnVisibility = Visibility.Visible;
+                        CustomiseWpBtnVisibility = Visibility.Collapsed;
+                    }
+                    OnPropertyChanged("CustomiseBtnToggle");
+                }
+            }
+            public Visibility SetWpBtnVisibility
+            {
+                get
+                {
+                    return setWpBtnVisibility;
+                }
+                set
+                {
+                    setWpBtnVisibility = value;
+                    OnPropertyChanged("SetWpBtnVisibility");
+                }
+            }
+            public Visibility CustomiseWpBtnVisibility
+            {
+                get
+                {
+                    return customiseWpBtnVisibility;
+                }
+                set
+                {
+                    customiseWpBtnVisibility = value;
+                    OnPropertyChanged("CustomiseWpBtnVisibility");
+                }
+            }
             public BitmapImage Img
             {
                 get
@@ -896,6 +950,19 @@ namespace livelywpf
                 Type = LibraryInfoTypeText(info);
                 LivelyInfo = info;
 
+                CustomiseBtnToggle = false;
+                //SetWpBtnVisibility = Visibility.Visible;
+                //CustomiseWpBtnVisibility = Visibility.Collapsed;
+                //design decision: customisable if the properties file is with the wp file, need not be with livelyinfo location (wptmp in SaveData)
+                if (File.Exists(Path.Combine(Path.GetDirectoryName(info.FileName), "LivelyProperties.json")))
+                {
+                    //todo: watermark gear or something.
+                    IsCustomisable = true;
+                }
+                else
+                    IsCustomisable = false;
+
+
                 if (SaveData.config.WaterMark1)
                 {
                     if (info.Type == SetupDesktop.WallpaperType.url || info.Type == SetupDesktop.WallpaperType.video_stream)
@@ -906,6 +973,10 @@ namespace livelywpf
                     {
                         WatermarkImg1 = ToBitmapImage(Properties.Icons.icons8_hdd_48);
                     }
+                    else if(IsCustomisable)
+                    {
+                        WatermarkImg1 = ToBitmapImage(Properties.Icons.icons8_gear_32);
+                    }
                     else
                     {
                         WatermarkImg1 = null;
@@ -915,7 +986,6 @@ namespace livelywpf
                 {
                     WatermarkImg1 = null;
                 }
-
             }
 
             private void OnPropertyChanged(string property)

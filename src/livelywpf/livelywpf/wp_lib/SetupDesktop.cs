@@ -40,6 +40,15 @@ namespace livelywpf
         private static bool _isInitialized = false;
         //private static bool _cefReady = true;
 
+        public enum EngineState
+        {
+            [Description("All Wallpapers Paused")]
+            paused,
+            [Description("Normal")]
+            normal
+        }
+        private static EngineState engineState = EngineState.normal;
+
         public enum WallpaperType
         {
             [Description("Application")]
@@ -64,6 +73,16 @@ namespace livelywpf
             unity_audio,
             [Description("Video Streams")]
             video_stream
+        }
+
+        public static EngineState GetEngineState()
+        {
+            return engineState;
+        }
+
+        public static void SetEngineState(EngineState state)
+        {
+            engineState = state;
         }
 
         #region wp_internal_data
@@ -276,7 +295,7 @@ namespace livelywpf
             {
                 if (SaveData.config.VidPlayer == SaveData.VideoPlayer.mediakit)
                 {
-                    Mediakit mediakitPlayer = new Mediakit(layout.FilePath);
+                    Mediakit mediakitPlayer = new Mediakit(layout.FilePath, 100);
                     mediakitPlayer.Show();
                     handle = new WindowInteropHelper(mediakitPlayer).Handle;
 
@@ -284,7 +303,7 @@ namespace livelywpf
                 }
                 else if (SaveData.config.VidPlayer == SaveData.VideoPlayer.windowsmp)
                 {
-                    MediaPlayer wmPlayer = new MediaPlayer(layout.FilePath);
+                    MediaPlayer wmPlayer = new MediaPlayer(layout.FilePath, 100);
                     wmPlayer.Show();
                     handle = new WindowInteropHelper(wmPlayer).Handle;
 
@@ -398,7 +417,7 @@ namespace livelywpf
                 }
                 else if (SaveData.config.GifPlayer == SaveData.GIFPlayer.mediakit)
                 {
-                    Mediakit mediakitPlayer = new Mediakit(layout.FilePath);
+                    Mediakit mediakitPlayer = new Mediakit(layout.FilePath, 100);
                     mediakitPlayer.Show();
                     handle = new WindowInteropHelper(mediakitPlayer).Handle;
 
@@ -1233,11 +1252,16 @@ namespace livelywpf
         /// </summary>
         public static void TaskProcessWaitCancel()
         {
+            if (ctsProcessWait == null)
+                return;
+
             ctsProcessWait.Cancel();
+            /*
             while (!taskAppWait.IsCanceled && !taskAppWait.IsCompleted)
             {
 
             }
+            */
             ctsProcessWait.Dispose();
             ctsProcessWait = null;
         }
@@ -1396,6 +1420,12 @@ namespace livelywpf
             if (!_isInitialized)
             {
                 dispatcherTimer.Stop();
+                return;
+            }
+
+            if(engineState == EngineState.paused)
+            {
+                Pause.SuspendWallpaper(true);
                 return;
             }
 
@@ -2035,29 +2065,6 @@ namespace livelywpf
 
         #endregion thread_monitor_pause/play
 
-        public static bool PauseAllWallpapers(bool isPause)
-        {
-            if (_timerInitilaized)
-            {
-                if (isPause)
-                {
-                    Pause.SuspendWallpaper(true);
-                    dispatcherTimer.Stop();
-                }
-                else
-                {
-                    Pause.ResumeWallpaper(false);
-                    dispatcherTimer.Start();
-                }
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-       
-        }
-
         #region wp_close_funtions
         /// <summary>
         /// Close wallpaper running on given monitor devicename.
@@ -2353,7 +2360,7 @@ namespace livelywpf
             {
                 foreach (var item in webProcesses)
                 {
-                    //Things exploded *_* ...threads man. todo:- Close the browser properly goddamit.
+                    // todo:- Close the browser properly, using WM_CLOSE or IPC message instead.
                     /*
                     item.Proc.OutputDataReceived -= WebProcess_OutputDataReceived;
                     item.Proc.StandardInput.WriteLine("Terminate");
@@ -2468,6 +2475,52 @@ namespace livelywpf
         #endregion
 
         #region everything_else
+
+        public static void SendCustomiseMsgtoWallpaper(string displayDevice)
+        {
+            try
+            {
+                foreach (var item in webProcesses)
+                {
+                    if (item.Type == WallpaperType.url)
+                        continue;
+
+                    if (displayDevice.Equals(item.DisplayID, StringComparison.Ordinal))
+                    {
+                        item.Proc.StandardInput.WriteLine("lively-customise " + item.DisplayID);
+                        break; //todo: decide what to do multiscreen
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                //Debug.WriteLine(ex.ToString());
+                Logger.Info(ex.ToString());
+            }
+        }
+
+        public static void SendCustomiseMsgtoWallpaper2(string filePath)
+        {
+            try
+            {
+                foreach (var item in webProcesses)
+                {
+                    if (item.Type == WallpaperType.url)
+                        continue;
+
+                    if (filePath.Equals(item.FilePath, StringComparison.Ordinal))
+                    {
+                        item.Proc.StandardInput.WriteLine("lively-customise " + item.DisplayID);
+                        break; //todo: decide what to do multiscreen
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                //Debug.WriteLine(ex.ToString());
+                Logger.Info(ex.ToString());
+            }
+        }
 
         private static bool _timerInitilaized = false;
         /// <summary>
