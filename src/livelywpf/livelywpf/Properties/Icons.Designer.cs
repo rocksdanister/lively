@@ -63,6 +63,16 @@ namespace livelywpf.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap gear_color_48 {
+            get {
+                object obj = ResourceManager.GetObject("gear_color_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icon_close {
             get {
                 object obj = ResourceManager.GetObject("icon_close", resourceCulture);
@@ -103,6 +113,26 @@ namespace livelywpf.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_edit_file_26 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_edit_file_26", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_gear_32 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_gear_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_hdd_48 {
             get {
                 object obj = ResourceManager.GetObject("icons8_hdd_48", resourceCulture);
@@ -116,6 +146,26 @@ namespace livelywpf.Properties {
         internal static System.Drawing.Bitmap icons8_hdd_60 {
             get {
                 object obj = ResourceManager.GetObject("icons8_hdd_60", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_heart_outline_16 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_heart_outline_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_heart_outline_24 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_heart_outline_24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -141,6 +191,16 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_pause_30 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_pause_30", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon icons8_seed_of_life_96_normal {
@@ -157,6 +217,36 @@ namespace livelywpf.Properties {
             get {
                 object obj = ResourceManager.GetObject("icons8_seed_of_life_96_pause", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_settings_48 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_settings_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_wrench_24 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_wrench_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_wrench_48 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_wrench_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

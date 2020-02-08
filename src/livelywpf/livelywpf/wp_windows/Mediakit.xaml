@@ -4,13 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:controls="clr-namespace:WPFMediaKit.DirectShow.Controls;assembly=WPFMediaKit"
-        xmlns:players="clr-namespace:WPFMediaKit.DirectShow.MediaPlayers;assembly=WPFMediaKit"
         xmlns:local="clr-namespace:livelywpf"
         mc:Ignorable="d"
         WindowStyle="None"
-        WindowState="Maximized"
         ResizeMode="NoResize"    
-        ShowInTaskbar="False"
         Title="Mediakit" Height="450" Width="800" Closing="Window_Closing">
     <Grid>
         <controls:MediaUriElement x:Name="mePlayer" />

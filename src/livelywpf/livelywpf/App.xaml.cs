@@ -107,11 +107,22 @@ namespace livelywpf
             // you can then use the current theme and custom accent instead set a new theme
             Tuple<AppTheme, Accent> appStyle = ThemeManager.DetectAppStyle(Application.Current);
 
-            
-            // setting accent & theme
-            ThemeManager.ChangeAppStyle(Application.Current,
+            //white theme disabled temp: for v0.8
+            if (SaveData.config.Theme == 9 || SaveData.config.Theme == 10)
+            {
+                SaveData.config.Theme = 0;
+                SaveData.SaveConfig();
+                ThemeManager.ChangeAppStyle(Application.Current,
                                         ThemeManager.GetAccent(SaveData.livelyThemes[SaveData.config.Theme].Accent),
                                         ThemeManager.GetAppTheme(SaveData.livelyThemes[SaveData.config.Theme].Base)); // or appStyle.Item1
+            }
+            else
+            {
+                // setting accent & theme
+                ThemeManager.ChangeAppStyle(Application.Current,
+                                            ThemeManager.GetAccent(SaveData.livelyThemes[SaveData.config.Theme].Accent),
+                                            ThemeManager.GetAppTheme(SaveData.livelyThemes[SaveData.config.Theme].Base)); // or appStyle.Item1
+            }
                                         
             // now change app style to the custom accent and current theme
             //ThemeManager.ChangeAppStyle(Application.Current, ThemeManager.GetAccent("CustomAccent1"), ThemeManager.GetAppTheme(SaveData.livelyThemes[SaveData.config.Theme].Base));

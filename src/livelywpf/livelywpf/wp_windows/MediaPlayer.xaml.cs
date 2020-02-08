@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,6 +14,8 @@ using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
+//using MahApps.Metro.Controls;
 
 namespace livelywpf
 {
@@ -23,7 +26,7 @@ namespace livelywpf
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
-        public MediaPlayer(string path)
+        public MediaPlayer(string path, int playSpeed)
         {
             InitializeComponent();
 
@@ -33,6 +36,8 @@ namespace livelywpf
             mePlayer.MediaOpened += MePlayer_MediaOpened;
             mePlayer.MediaEnded += MePlayer_MediaEnded;
             mePlayer.MediaFailed += MePlayer_MediaFailed;
+
+            mePlayer.SpeedRatio = playSpeed/100f; // 0<=x<=inf, default=1
             if (SaveData.config.MuteVideo || MainWindow.multiscreen)
                 mePlayer.Volume = 0;
             else
@@ -49,7 +54,23 @@ namespace livelywpf
         {
             //todo proper error handling.
             Logger.Error("MediaFoundation Playback Failure:-" + e.ErrorException);
-            MessageBox.Show(Properties.Resources.msgMediaFoundationFailure, Properties.Resources.txtLivelyErrorMsgTitle);
+
+            if (App.w != null)
+            {
+                System.Windows.Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, new ThreadStart(delegate
+                {
+                    App.w.WpfNotification(MainWindow.NotificationType.errorUrl, Properties.Resources.txtLivelyErrorMsgTitle, Properties.Resources.msgMediaFoundationFailure + "\n" + e.ErrorException, "https://github.com/rocksdanister/lively/wiki/Video-Guide");
+                }));
+            }
+            else
+            {
+                MessageBox.Show(Properties.Resources.msgMediaFoundationFailure, Properties.Resources.txtLivelyErrorMsgTitle);
+            }
+        }
+
+        public void SetPlayBackSpeed(int percent)
+        {
+            mePlayer.SpeedRatio = percent;
         }
 
         public void MutePlayer( bool isMute)

@@ -238,14 +238,14 @@ namespace livelywpf
                     tmp.Preview = Path.GetFileName(tmp.Preview);
                     tmp.Thumbnail = Path.GetFileName(tmp.Thumbnail);
 
-                    SaveData.SaveWallpaperMetaData(tmp, AppDomain.CurrentDomain.BaseDirectory + "\\tmpdata");
+                    SaveData.SaveWallpaperMetaData(tmp, Path.Combine(App.pathData, "tmpdata"));
 
                     /*
                     //if previous livelyinfo.json file(s) exists in wallpaper directory, remove all of them.
                     folderContents.RemoveAll(x => Path.GetFileName(x).Equals(Path.GetFileName(folderContents[folderContents.Count - 1]),
                                         StringComparison.InvariantCultureIgnoreCase));
                                         */
-                    folderContents.Add(AppDomain.CurrentDomain.BaseDirectory + @"tmpdata\LivelyInfo.json");
+                    folderContents.Add( Path.Combine(App.pathData, "tmpdata","LivelyInfo.json"));
 
                     //btnCreateWallpaer.IsEnabled = false;
                     await CreateZipFile(saveFileDialog1.FileName, folderContents);
@@ -261,6 +261,8 @@ namespace livelywpf
                         Process.Start(startInfo);
                     }
 
+                    //clearing temp files if any.
+                    FileOperations.EmptyDirectory(Path.Combine(App.pathData, "SaveData", "wptmp"));
                     //this.NavigationService.GoBack(); //won't work, since prev is window, not page.
                     var wnd = Window.GetWindow(this);
                     wnd.Close();
@@ -387,7 +389,7 @@ namespace livelywpf
                     {
                         //MessageBox.Show("Select ONLY 200x200(width x height) image thumbnail file");
                         //return;
-                        string saveFileName = AppDomain.CurrentDomain.BaseDirectory + "//tmpdata//wpdata//" + Path.GetRandomFileName() + ".jpg";
+                        string saveFileName = Path.Combine(App.pathData, "tmpdata","wpdata", Path.GetRandomFileName() + ".jpg");
                         ImageOperations.ResizeImage(openFileDialog1.FileName, saveFileName, new System.Drawing.Size(200, 200));
 
                         tmpInfo.Thumbnail = saveFileName;
@@ -430,7 +432,7 @@ namespace livelywpf
                     {
                         //MessageBox.Show("Select ONLY 192x108(width x height) GIF preview file");
                         //return;
-                        string saveFileName = AppDomain.CurrentDomain.BaseDirectory + "//tmpdata//wpdata//" + Path.GetRandomFileName() + ".gif";
+                        string saveFileName = Path.Combine(App.pathData, "tmpdata","wpdata", Path.GetRandomFileName() + ".gif");
                         ImageOperations.ResizeGif(openFileDialog1.FileName, saveFileName, new System.Drawing.Size(192, 108));
 
                         tmpInfo.Preview = saveFileName;

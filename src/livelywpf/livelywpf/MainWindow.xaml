@@ -9,6 +9,7 @@
         xmlns:local="clr-namespace:livelywpf"
         xmlns:p = "clr-namespace:livelywpf.Properties"                
         xmlns:gif="https://github.com/XamlAnimatedGif/XamlAnimatedGif"
+        xmlns:notification="clr-namespace:Enterwell.Clients.Wpf.Notifications.Controls;assembly=Enterwell.Clients.Wpf.Notifications"
                       
         mc:Ignorable="d"
         ResizeMode="NoResize"
@@ -80,38 +81,54 @@
         <Controls:MetroTabControl Name="tabControl1" Grid.ColumnSpan="4" Margin="0,0,0,-0.4" >
             <TabItem Name="libTab" Header="{x:Static p:Resources.titleLibrary}">
                 <Canvas>
-                    <Border BorderBrush="{DynamicResource AccentColorBrush}" BorderThickness="0.5,0,0,0" Height="479" Canvas.Left="664" Canvas.Top="10" Width="224"/>
-                    <ScrollViewer Height="479" Width="245" Canvas.Left="670" Canvas.Top="10" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Hidden" >
-                        <ItemsControl x:Name="tileInfo" >
+
+                    <Grid  Width="255" Height="599" Background="#191919" Canvas.Left="665" Canvas.Top="-67"/>
+                    <!--<Border BorderBrush="{DynamicResource AccentColorBrush}" BorderThickness="0.5,0,0,0" Height="479" Canvas.Left="664" Canvas.Top="10" Width="224"/>-->
+                    <ScrollViewer Height="479" Width="245" Canvas.Left="673" Canvas.Top="10" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Hidden" >
+                        <ItemsControl x:Name="tileInfo"  >
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate >
                                     <StackPanel Orientation="Vertical"  Width="228" Canvas.Left="670" Canvas.Top="169">
-                                        <Border BorderBrush="{DynamicResource AccentColorBrush}" BorderThickness="1" Height="126" Width="224	" Margin="-4,0,4,0" >
+                                        <Border BorderBrush="{DynamicResource AccentColorBrush}" BorderThickness="2" Height="126" Width="224	" Margin="-5,0,4,0" >
                                             <Image gif:AnimationBehavior.SourceUri="{Binding LivelyInfo.Preview, Converter={StaticResource nullConverter}}"
                                                    gif:AnimationBehavior.RepeatBehavior="Forever" Stretch="UniformToFill" />
                                         </Border>
 
-                                        <Button x:Name="SetWallpaperBtn" ClickMode="Release" Click="SetWallpaperBtn_Click" Background="{DynamicResource AccentColorBrush}" Margin="0,5,10,0" Foreground="White" Height="29" Canvas.Left="672" Canvas.Top="135" Width="210" >
-                                            <WrapPanel>
+                                        <Button x:Name="SetWallpaperBtn" Visibility="{Binding SetWpBtnVisibility}" Margin="0,5,10,0" ClickMode="Release" Click="SetWallpaperBtn_Click" 
+                                                Background="{DynamicResource AccentColorBrush}"  Foreground="White" Height="29" Canvas.Left="672" Canvas.Top="135" Width="210" >
+                                            <WrapPanel HorizontalAlignment="Left">
                                                 <Image Source="/images/icons8-wallpaper-24.png" />
-                                                <TextBlock Text="{x:Static p:Resources.txtSetWallpaper}" />
+                                                <TextBlock Text="{x:Static p:Resources.txtSetWallpaper}"  />
                                             </WrapPanel>
                                         </Button>
 
+                                        <Button x:Name="CustomiseWallpaperBtn" Visibility="{Binding CustomiseWpBtnVisibility}" Margin="0,5,10,0" ClickMode="Release" Click="MenuItem_CustomiseWallpaper_Click" 
+                                                Background="{DynamicResource AccentColorBrush3}"  Foreground="White" Height="29" Canvas.Left="672" Canvas.Top="135" Width="210" >
+                                            <WrapPanel HorizontalAlignment="Left">
+                                                <Image Source="/images/icons8-gear-32.png" />
+                                                <TextBlock Text="Customise Wallpaper"  />
+                                            </WrapPanel>
+                                        </Button>
+                                        <!--
+                                        <StackPanel>
+                                            <TextBox IsReadOnly="True" TextWrapping="Wrap" BorderThickness="0" Text="Speed"/>
+                                            <Slider Minimum="0" Maximum="200" />
+                                        </StackPanel>
+                                        -->
                                         <!--  Foreground="#FFAAA8A8"-->
-                                        <TextBox x:Name="LibraryTitle" IsReadOnly="True" FontSize="15" TextWrapping="Wrap"  BorderThickness="0,0,0,1" Text="{Binding LivelyInfo.Title}" 
+                                        <TextBox x:Name="LibraryTitle" Background="#191919" IsReadOnly="True" FontSize="15" TextWrapping="Wrap"  BorderThickness="0,0,0,1" Text="{Binding LivelyInfo.Title}" 
                                                  Foreground="{DynamicResource AccentColorBrush}" Margin="0,0,0,1"/>
-                                        <TextBox x:Name="LibraryDesc" IsReadOnly="True" TextWrapping="Wrap" BorderThickness="0" Text="{Binding LivelyInfo.Desc}"/>
-                                        <TextBox IsReadOnly="True" TextWrapping="WrapWithOverflow"  Text="{x:Static p:Resources.txtLabel12}"  BorderThickness="0,0,0,1" 
+                                        <TextBox x:Name="LibraryDesc" Background="#191919" IsReadOnly="True" TextWrapping="Wrap" BorderThickness="0" Text="{Binding LivelyInfo.Desc}"/>
+                                        <TextBox IsReadOnly="True" Background="#191919" TextWrapping="WrapWithOverflow"  Text="{x:Static p:Resources.txtLabel12}"  BorderThickness="0,0,0,1" 
                                                  Foreground="{DynamicResource AccentColorBrush2}"/>
-                                        <TextBox x:Name="LibraryType" IsReadOnly="True" TextWrapping="Wrap" BorderThickness="0" Text="{Binding Type}"/>
-                                        <TextBox IsReadOnly="True" TextWrapping="WrapWithOverflow"  Text="{x:Static p:Resources.txtLabel13}"  BorderThickness="0,0,0,1" 
+                                        <TextBox x:Name="LibraryType" Background="#191919" IsReadOnly="True" TextWrapping="Wrap" BorderThickness="0" Text="{Binding Type}"/>
+                                        <TextBox IsReadOnly="True" Background="#191919" TextWrapping="WrapWithOverflow"  Text="{x:Static p:Resources.txtLabel13}"  BorderThickness="0,0,0,1" 
                                                  Foreground="{DynamicResource AccentColorBrush2}"/>
-                                        <TextBox x:Name="LibraryAuthor" IsReadOnly="True" TextWrapping="Wrap" BorderThickness="0" Text="{Binding LivelyInfo.Author}"/>
-                                        <TextBox  IsReadOnly="True" TextWrapping="WrapWithOverflow" Text="{x:Static p:Resources.txtLabel14}"  BorderThickness="0,0,0,1" 
+                                        <TextBox x:Name="LibraryAuthor" Background="#191919" IsReadOnly="True" TextWrapping="Wrap" BorderThickness="0" Text="{Binding LivelyInfo.Author}"/>
+                                        <TextBox  IsReadOnly="True" Background="#191919" TextWrapping="WrapWithOverflow" Text="{x:Static p:Resources.txtLabel14}"  BorderThickness="0,0,0,1" 
                                                  Foreground="{DynamicResource AccentColorBrush2}"/>
 
-                                        <TextBlock TextWrapping="WrapWithOverflow" Canvas.Left="241" Canvas.Top="98">
+                                        <TextBlock TextWrapping="WrapWithOverflow" Background="#191919" Canvas.Left="241" Canvas.Top="98">
                                             <Hyperlink x:Name="LibraryContact"  RequestNavigate="Hyperlink_RequestNavigate_Warning" NavigateUri="{Binding UriContact, Converter={StaticResource nullConverter}}" 
                                                        Foreground="{DynamicResource AccentColorBrush}"  ><Run Text="{Binding LivelyInfo.Contact}"/></Hyperlink>
                                         </TextBlock>
@@ -123,7 +140,7 @@
 
                     <!-- Library Tiles-->
 
-                    <ListBox x:Name="wallpapersLV"  HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="5,10,0,0" Height="479" Width="655" SelectionChanged="WallpapersLV_SelectionChanged" 
+                    <ListBox x:Name="wallpapersLV"  HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="5,10,0,0" Height="478" Width="655" SelectionChanged="WallpapersLV_SelectionChanged" 
                              ScrollViewer.VerticalScrollBarVisibility="Visible"  ScrollViewer.ScrollChanged="WallpapersLV_ScrollChanged" ScrollViewer.IsDeferredScrollingEnabled="True" >
 
                         <ListBox.ContextMenu>
@@ -142,12 +159,12 @@
                         </ItemsControl.ItemsPanel>
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <StackPanel Orientation="Vertical"  ToolTip="{Binding Type}" Width="118" Height="153" Margin="0,5,5,0" >
-                                    <Border BorderBrush="{DynamicResource AccentColorBrush}" BorderThickness="1" Height="118" Width="118" >
+                                <StackPanel Orientation="Vertical"  ToolTip="{Binding Type}" Width="118" Height="153" Margin="0,4.75,5,0" >
+                                    <Border BorderBrush="{DynamicResource AccentColorBrush}" BorderThickness="2" Height="118" Width="118" >
                                         <Grid>
                                             <Image gif:AnimationBehavior.SourceUri="{Binding TilePreview, Converter={StaticResource nullConverter}}" 
                                                Source="{Binding Img, Converter={StaticResource nullConverter}}"  Stretch="UniformToFill" />
-                                            <Image Source="{Binding WatermarkImg1, Converter={StaticResource nullConverter}}" VerticalAlignment="Top" HorizontalAlignment="Right" Width="20" Height="20" />
+                                            <Image Source="{Binding WatermarkImg1, Converter={StaticResource nullConverter}}" VerticalAlignment="Top" HorizontalAlignment="Right" Width="15" Height="15" />
                                         </Grid>
                                     </Border >
                                     <TextBlock TextWrapping="Wrap" FontSize="12" Text="{Binding LivelyInfo.Title}"  />
@@ -156,38 +173,38 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-
+                    <!--
                     <Button Canvas.Left="523" Canvas.Top="496" ClickMode="Release" Click="Button_Click_InstallWallpaper" Height="27" Width="139">
                         <WrapPanel>
                             <Image Source="/images/icons8-insert-30.png" />
                             <TextBlock Text="{x:Static p:Resources.txtInstallWallpaper}" />
                         </WrapPanel>
                     </Button>
-                    <Button Canvas.Left="446" Canvas.Top="496" ClickMode="Release" Click="Button_Click_HowTo" Height="27" Width="72">
+                    -->
+
+                    <Button Canvas.Left="609" Canvas.Top="496" ClickMode="Release" Click="Button_Click_HowTo" Height="26">
                         <WrapPanel>
                             <Image Source="/images/icons8-help-24.png" />
-                            <TextBlock Text="{x:Static p:Resources.txtHelp}" />
+                            <!--<TextBlock Text="{x:Static p:Resources.txtHelp}" />-->
                         </WrapPanel>
                     </Button>
-                    <Button Canvas.Left="10" Canvas.Top="496" ClickMode="Release" Click="Button_Click_CreateWallpaper" Height="27" Width="142" >
+                    <Button Canvas.Left="637" Canvas.Top="496" ClickMode="Release" Click="Button_Click_CreateWallpaper" Height="26"  >
                         <!--Width="142"-->
                         <WrapPanel>
                             <Image Source="/images/icons8-create-26.png" />
-                            <TextBlock Text="{x:Static p:Resources.txtCreateWallpaper}" />
+                            <!--<TextBlock Text="{x:Static p:Resources.txtCreateWallpaper}" />-->
                         </WrapPanel>
                     </Button>
-                    <Button Canvas.Left="801" Canvas.Top="496" ClickMode="Release" Height="27" Width="104"  Click="Hyperlink_SupportPage">
+                    <!--
+                    <Button Canvas.Left="573" Canvas.Top="498" ClickMode="Release" Height="28"   Click="Hyperlink_SupportPage" >
                         <WrapPanel ToolTip="https://ko-fi.com/rocksdanister">
                             <Image  Source="/images/icons8-heart-outline-24.png" />
-                            <TextBlock Canvas.Left="241" Canvas.Top="98" Foreground="{DynamicResource AccentColorBrush}" TextDecorations="Underline" Text="{x:Static p:Resources.txtSupport}"> <!--Foreground="#FF85A912"-->
-                              <!--  <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" IsEnabled="False" Foreground="#FF85A912"></Hyperlink> -->
-                            </TextBlock>
-                            <!--<TextBlock Text="SUPPORT" />-->
                         </WrapPanel>
                     </Button>
+                    -->
                     <!-- TextBox x:Name="textBoxLibrarySearch" Height="19" Canvas.Left="162" TextWrapping="Wrap" TextChanged="TextBoxLibrarySearch_TextChanged" Canvas.Top="497" Width="186"/>-->
 
-                    <Grid Canvas.Top="497" Canvas.Left="162">
+                    <Grid Canvas.Top="496" Canvas.Left="5">
                         <TextBox x:Name="textBoxLibrarySearch" Height="19" TextWrapping="Wrap" TextChanged="TextBoxLibrarySearch_TextChanged" Width="186"/>
                         <TextBlock IsHitTestVisible="False" Text="Search" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,-2.5,0,0" Foreground="DarkGray">
                             <TextBlock.Style>
@@ -494,18 +511,26 @@
             </TabItem>
         </Controls:MetroTabControl>
 
+        <!--
         <TextBlock Margin="0,-20,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="15"  Name="hyperlinkUpdateBanner" Visibility="Hidden" 
                                                                                                 MouseLeftButtonDown="hyperlinkUpdateBanner_MouseLeftButtonDown" >
             <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://github.com/rocksdanister/lively/" IsEnabled="False" Foreground="{DynamicResource AccentColorBrush2}" >
                 <TextBlock  Name="hyperlinkUpdateBannerText" Text="Update available Lively " />
             </Hyperlink>
         </TextBlock>
-
-        <Image x:Name="image" ToolTip="Display Settings/Info" HorizontalAlignment="Left" Height="20"  Width="20" Margin="29.8,-20,0,0" MouseLeftButtonUp="Image_Display_MouseLeftButtonUp" 
+        -->
+        <!--
+        <Border Grid.Column="1"  Margin="-100,-20,0,0">
+            <notification:NotificationMessageContainer Name="notify" Manager="{Binding Manager}"  />
+        </Border>
+        -->
+        <notification:NotificationMessageContainer Name="notify" Manager="{Binding Manager}" Margin="-15,5,0,0" />
+        <!--Margin="-15,-25,0,0"-->
+        <Image x:Name="image" ToolTip="Display Settings/Info" HorizontalAlignment="Left" Height="20"  Width="20" Margin="40.8,-21,0,0" MouseLeftButtonUp="Image_Display_MouseLeftButtonUp" 
                Source="/images/monitor-50xw.png" VerticalAlignment="Top" Grid.Column="2"/>
-        <StackPanel Margin="25.8,-20,38.4,0" Orientation="Horizontal" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.Column="1"  >
+        <StackPanel Margin="37,-21,27.4,0" Orientation="Horizontal" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.Column="1"  >
             <!--<Image Width="15" Height="15" Source="/images/icons8-seed-of-life-96.png"></Image>-->
-            <TextBlock TextAlignment="Right" Text="{x:Static p:Resources.txtTitlebar}"  Foreground="{DynamicResource AccentColorBrush}" FontSize="12" Width="271" />
+            <TextBlock TextAlignment="Right" Text="{x:Static p:Resources.txtTitlebar}"  Foreground="{DynamicResource AccentColorBrush}" FontSize="12" Width="278" />
         </StackPanel>
     </Grid>
 </Controls:MetroWindow>

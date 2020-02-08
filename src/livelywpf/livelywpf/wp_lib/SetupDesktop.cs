@@ -40,6 +40,15 @@ namespace livelywpf
         private static bool _isInitialized = false;
         //private static bool _cefReady = true;
 
+        public enum EngineState
+        {
+            [Description("All Wallpapers Paused")]
+            paused,
+            [Description("Normal")]
+            normal
+        }
+        private static EngineState engineState = EngineState.normal;
+
         public enum WallpaperType
         {
             [Description("Application")]
@@ -64,6 +73,16 @@ namespace livelywpf
             unity_audio,
             [Description("Video Streams")]
             video_stream
+        }
+
+        public static EngineState GetEngineState()
+        {
+            return engineState;
+        }
+
+        public static void SetEngineState(EngineState state)
+        {
+            engineState = state;
         }
 
         #region wp_internal_data
@@ -276,7 +295,7 @@ namespace livelywpf
             {
                 if (SaveData.config.VidPlayer == SaveData.VideoPlayer.mediakit)
                 {
-                    Mediakit mediakitPlayer = new Mediakit(layout.FilePath);
+                    Mediakit mediakitPlayer = new Mediakit(layout.FilePath, 100);
                     mediakitPlayer.Show();
                     handle = new WindowInteropHelper(mediakitPlayer).Handle;
 
@@ -284,7 +303,7 @@ namespace livelywpf
                 }
                 else if (SaveData.config.VidPlayer == SaveData.VideoPlayer.windowsmp)
                 {
-                    MediaPlayer wmPlayer = new MediaPlayer(layout.FilePath);
+                    MediaPlayer wmPlayer = new MediaPlayer(layout.FilePath, 100);
                     wmPlayer.Show();
                     handle = new WindowInteropHelper(wmPlayer).Handle;
 
@@ -398,7 +417,7 @@ namespace livelywpf
                 }
                 else if (SaveData.config.GifPlayer == SaveData.GIFPlayer.mediakit)
                 {
-                    Mediakit mediakitPlayer = new Mediakit(layout.FilePath);
+                    Mediakit mediakitPlayer = new Mediakit(layout.FilePath, 100);
                     mediakitPlayer.Show();
                     handle = new WindowInteropHelper(mediakitPlayer).Handle;
 
@@ -1233,11 +1252,16 @@ namespace livelywpf
         /// </summary>
         public static void TaskProcessWaitCancel()
         {
+            if (ctsProcessWait == null)
+                return;
+
             ctsProcessWait.Cancel();
+            /*
             while (!taskAppWait.IsCanceled && !taskAppWait.IsCompleted)
             {
 
             }
+            */
             ctsProcessWait.Dispose();
             ctsProcessWait = null;
         }
@@ -1377,6 +1401,7 @@ namespace livelywpf
         #endregion wp_wait
 
         #region thread_monitor_pause/play
+
         //todo:- remove/reduce redundant/useless variables.
         static IntPtr hWnd, shell_tray;
         static Process currProcess;
@@ -1395,6 +1420,12 @@ namespace livelywpf
             if (!_isInitialized)
             {
                 dispatcherTimer.Stop();
+                return;
+            }
+
+            if(engineState == EngineState.paused)
+            {
+                Pause.SuspendWallpaper(true);
                 return;
             }
 
@@ -1923,37 +1954,6 @@ namespace livelywpf
                 return true;
             else
                 return false;
-            /*
-            if (MainWindow.multiscreen)
-            {
-                
-                NativeMethods.GetWindowRect(hWnd, out appBounds);
-                try
-                {
-                    screenBounds = Array.Find(Screen.AllScreens, x => x.DeviceName == display).Bounds;
-                }
-                catch (ArgumentNullException e)
-                {
-                    Logger.Error("Array.Find() returned null" + e.ToString());
-                    return false;
-                }
-
-                if ((appBounds.Bottom - appBounds.Top) >= screenBounds.Height * .95f && (appBounds.Right - appBounds.Left) >= screenBounds.Width * .95f) // > if foreground app 95% working-area( - taskbar of monitor)
-                    return true;
-                else
-                    return false;
-                
-            }
-            else
-            {
-                NativeMethods.GetWindowRect(hWnd, out appBounds);
-                screenBounds = System.Windows.Forms.Screen.FromHandle(hWnd).Bounds;
-                if ((appBounds.Bottom - appBounds.Top) >= screenBounds.Height * .95f && (appBounds.Right - appBounds.Left) >= screenBounds.Width * .95f) // > if foreground app 95% working-area( - taskbar of monitor)
-                    return true;
-                else
-                    return false;
-            }
-            */
         }
 
         /// <summary>
@@ -2360,7 +2360,7 @@ namespace livelywpf
             {
                 foreach (var item in webProcesses)
                 {
-                    //Things exploded *_* ...threads man. todo:- Close the browser properly goddamit.
+                    // todo:- Close the browser properly, using WM_CLOSE or IPC message instead.
                     /*
                     item.Proc.OutputDataReceived -= WebProcess_OutputDataReceived;
                     item.Proc.StandardInput.WriteLine("Terminate");
@@ -2476,6 +2476,52 @@ namespace livelywpf
 
         #region everything_else
 
+        public static void SendCustomiseMsgtoWallpaper(string displayDevice)
+        {
+            try
+            {
+                foreach (var item in webProcesses)
+                {
+                    if (item.Type == WallpaperType.url)
+                        continue;
+
+                    if (displayDevice.Equals(item.DisplayID, StringComparison.Ordinal))
+                    {
+                        item.Proc.StandardInput.WriteLine("lively-customise " + item.DisplayID);
+                        break; //todo: decide what to do multiscreen
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                //Debug.WriteLine(ex.ToString());
+                Logger.Info(ex.ToString());
+            }
+        }
+
+        public static void SendCustomiseMsgtoWallpaper2(string filePath)
+        {
+            try
+            {
+                foreach (var item in webProcesses)
+                {
+                    if (item.Type == WallpaperType.url)
+                        continue;
+
+                    if (filePath.Equals(item.FilePath, StringComparison.Ordinal))
+                    {
+                        item.Proc.StandardInput.WriteLine("lively-customise " + item.DisplayID);
+                        break; //todo: decide what to do multiscreen
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                //Debug.WriteLine(ex.ToString());
+                Logger.Info(ex.ToString());
+            }
+        }
+
         private static bool _timerInitilaized = false;
         /// <summary>
         /// Setup running Process monitor timer fn.
@@ -2549,6 +2595,7 @@ namespace livelywpf
                 NativeMethods.DrawMenuBar(handle);
             }
         }
+
         /// <summary>
         /// Force redraw desktop, clears wp persisting on screen even after close.
         /// </summary>

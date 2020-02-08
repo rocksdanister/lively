@@ -41,17 +41,6 @@ namespace livelywpf.Dialogues
             this.filePath = Path.Combine(App.pathData, "tmpdata", "update.exe");
             InitializeComponent();
             
-            if(SaveData.config.IgnoreUpdateTag == null)
-            {
-                chkMarkIgnore.IsChecked = false;
-            }
-            else
-            {
-                chkMarkIgnore.IsChecked = true;
-            }
-            chkMarkIgnore.Checked += ChkMarkIgnore_Checked;
-            chkMarkIgnore.Unchecked += ChkMarkIgnore_Checked;
-
             try
             {
                 if(release == null)
@@ -61,6 +50,21 @@ namespace livelywpf.Dialogues
                                                                        + "\n\n" + Properties.Resources.txtUpdateDownloadErrorMsg + "\nwww.github.com/rocksdanister/lively")));
                     return;
                 }
+
+                if (String.IsNullOrWhiteSpace(SaveData.config.IgnoreUpdateTag))
+                {
+                    chkMarkIgnore.IsChecked = false;
+                }
+                else if (!release.TagName.Equals(SaveData.config.IgnoreUpdateTag, StringComparison.Ordinal))
+                {
+                    chkMarkIgnore.IsChecked = false;
+                }
+                else
+                {
+                    chkMarkIgnore.IsChecked = true;
+                }
+                chkMarkIgnore.Checked += ChkMarkIgnore_Checked;
+                chkMarkIgnore.Unchecked += ChkMarkIgnore_Checked;
 
                 int result = UpdaterGit.CompareAssemblyVersion(release);
                 if (result > 0) //github ver greater, update available!

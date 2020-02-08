@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,6 +14,7 @@ using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using WPFMediaKit.DirectShow.Controls;
 
 namespace livelywpf
@@ -24,7 +26,7 @@ namespace livelywpf
     public partial class Mediakit : Window
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        public Mediakit(string path)
+        public Mediakit(string path, int playSpeed)
         {
             InitializeComponent();
 
@@ -35,6 +37,8 @@ namespace livelywpf
             mePlayer.MediaEnded += MePlayer_MediaEnded;
             mePlayer.MediaOpened += MePlayer_MediaOpened;
             mePlayer.Loop = true; //convenient!
+
+            mePlayer.SpeedRatio = playSpeed / 100f; // 0<=x<=inf, default=1
             if (SaveData.config.MuteVideo || MainWindow.multiscreen)
                 mePlayer.Volume = 0;
             else
@@ -76,9 +80,18 @@ namespace livelywpf
             Logger.Error("Mediakit Playback Failure: " + e.Exception.ToString());
             if (e.Exception.HResult != -2147467261) //nullreference error(when mediaload fails), otherwise double error message!.
             {
-                System.Windows.MessageBox.Show(Properties.Resources.msgMediakitFailure + "\n\nError:\n" + e.Message, Properties.Resources.txtLivelyErrorMsgTitle);
+                if(App.w != null)
+                {
+                    System.Windows.Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, new ThreadStart(delegate
+                    {
+                        App.w.WpfNotification(MainWindow.NotificationType.errorUrl, Properties.Resources.txtLivelyErrorMsgTitle, Properties.Resources.msgMediakitFailure + "\n" + e.Message, "https://github.com/rocksdanister/lively/wiki/Video-Guide");
+                    }));                 
+                }
+                else
+                {
+                    System.Windows.MessageBox.Show(Properties.Resources.msgMediakitFailure + "\n\nError:\n" + e.Message, Properties.Resources.txtLivelyErrorMsgTitle);
+                }
             }
-
         }
 
         private void MePlayer_MediaEnded(object sender, RoutedEventArgs e)

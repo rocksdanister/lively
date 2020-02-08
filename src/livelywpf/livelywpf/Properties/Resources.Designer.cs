@@ -373,9 +373,7 @@ namespace livelywpf.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Media playback failed: Missing Codec/ Corrupted File.
         ///Install LAV codec &amp; Try switching to Directshow videoplayer.
-        ///
-        ///Further Instructions: 
-        ///www.github.com/rocksdanister/lively/wiki/Video-Guide.
+        ///.
         /// </summary>
         public static string msgMediaFoundationFailure {
             get {
@@ -385,11 +383,8 @@ namespace livelywpf.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to Media playback failed: Missing Codec/ Corrupted File.
-        ///Don&apos;t forget to install LAV codec:
-        ///www.github.com/Nevcairiel/LAVFilters/releases
-        ///
-        ///Further Instructions: 
-        ///www.github.com/rocksdanister/lively/wiki/Video-Guide.
+        ///Don&apos;t forget to install LAV codec.
+        ///.
         /// </summary>
         public static string msgMediakitFailure {
             get {
@@ -497,7 +492,8 @@ namespace livelywpf.Properties {
         ///6. Enable Animate controls and elements inside windows &amp; Apply.
         ///
         ///If Windows 7 just set - Adjust for best appearance &amp; Apply.
-        ///If still not working, close &amp; start Lively again/ restart windows..
+        ///If still not working, close &amp; start Lively again/ restart windows.
+        ///(Does not work in insider windows 10 builds).
         /// </summary>
         public static string msgWorkerWFailure {
             get {
@@ -785,7 +781,7 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Creating Lively zip file..
+        ///   Looks up a localized string similar to Creating Lively zip file.
         /// </summary>
         public static string txtCreatingZip {
             get {
@@ -1292,7 +1288,7 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lively: Error.
+        ///   Looks up a localized string similar to Error.
         /// </summary>
         public static string txtLivelyErrorMsgTitle {
             get {

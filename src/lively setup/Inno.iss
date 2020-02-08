@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Lively Wallpaper"
-#define MyAppVersion "0.6.5.0"
+#define MyAppVersion "0.8.0.0"
 #define MyAppPublisher "rocksdanister"
 #define MyAppURL "https://github.com/rocksdanister/lively"
 #define MyAppExeName "livelywpf.exe"
@@ -94,17 +94,26 @@ Name: "cef"; Description: "Web Wallpaper Support"; Types: full
 Name: "wallpapers"; Description: "Sample Wallpapers"; Types: full
 
 [Files]
+; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 Source: "Release\livelywpf.exe"; DestDir: "{app}"; Flags: ignoreversion;Components: program
 Source: "Release\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: program
 Source: "Lively Wallpaper\external\cef\*"; DestDir: "{userdocs}\Lively Wallpaper\external\cef"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: cef
-Source: "Lively Wallpaper\wallpapers\*"; DestDir: "{userdocs}\Lively Wallpaper\wallpapers"; Flags: ignoreversion recursesubdirs createallsubdirs onlyifdoesntexist uninsneveruninstall; Components: wallpapers
-; NOTE: Don't use "Flags: ignoreversion" on any shared system files
+Source: "Lively Wallpaper\wallpapers\*"; DestDir: "{userdocs}\Lively Wallpaper\wallpapers"; Flags: ignoreversion recursesubdirs createallsubdirs onlyifdoesntexist uninsneveruninstall; Components: wallpapers; Check: ShouldInstallWallpapers
+; pushing new set of wp's with customisation to existing users, shouldInstallWallpaper check will be added from later version onwards..
+Source: "Lively Wallpaper\wallpapers new\*"; DestDir: "{userdocs}\Lively Wallpaper\wallpapers"; Flags: ignoreversion recursesubdirs createallsubdirs onlyifdoesntexist uninsneveruninstall; Components: wallpapers;
 
 [Icons]
 Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
 Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
 
+[Run]
+Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall 
+;skipifsilent
+
 [Code]
+var
+  isAlreadyInstalled: Boolean;
+
 // event fired when the uninstall step is changed: https://stackoverflow.com/revisions/12645836/1
 procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);
 begin
@@ -122,12 +131,6 @@ begin
       end;
   end;
 end;
-
-[Run]
-Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall 
-;skipifsilent
-
-[Code]
 
 //Uninstall previous install: https://stackoverflow.com/questions/2000296/inno-setup-how-to-automatically-uninstall-previous-installed-version
 //note: Inno does not delete files, it just overwrites & keeps the old ones if they have different name..it can get accumulated/confusing when program structure change?!
@@ -164,16 +167,22 @@ begin
 
   // default return value
   Result := 0;
-
   // get the uninstall string of the old app
   sUnInstallString := GetUninstallString();
   if sUnInstallString <> '' then begin
     sUnInstallString := RemoveQuotes(sUnInstallString);
     if Exec(sUnInstallString, '/VERYSILENT /NORESTART /SUPPRESSMSGBOXES','', SW_HIDE, ewWaitUntilTerminated, iResultCode) then
-      Result := 3
+      begin
+        isAlreadyInstalled := True;
+        Result := 3;
+      end
     else
+      begin
+      isAlreadyInstalled := True;
       Result := 2;
+      end
   end else
+    isAlreadyInstalled := False;
     Result := 1;
 end;
 
@@ -189,3 +198,7 @@ begin
   end;
 end;
 
+function ShouldInstallWallpapers: Boolean;
+begin
+    Result := not isAlreadyInstalled;
+end;
