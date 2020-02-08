@@ -99,7 +99,7 @@ Help translate lively to other languages: <a href="https://github.com/rocksdanis
 ## Download
 ##### Latest version: v0.8.0.0 (Windows 10, 8.1)[What's new?](https://github.com/rocksdanister/lively/releases/tag/v0.8.0.0)
 - [`Download`][direct-full-win32]  
-   _92MB, Web wallpaper support & some sample wallpapers included._
+   _90MB, Web wallpaper support & some sample wallpapers included._
    
 **Latest Visual C++ Redistributable is required: [vc_redist.x86.exe](https://aka.ms/vs/16/release/vc_redist.x86.exe)**
    
