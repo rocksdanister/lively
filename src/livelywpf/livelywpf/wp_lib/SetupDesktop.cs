@@ -199,7 +199,7 @@ namespace livelywpf
         /// <param name="layout"></param>
         public static async void SetWallpaper(SaveData.WallpaperLayout layout, bool showPreviewWindow)
         {
-            if(MainWindow.highContrastFix) //todo:- last minute addition, should properly finish it later.
+            if(MainWindow.HighContrastFix) //todo:- last minute addition, should properly finish it later.
             {
                 //_isInitialized = true;
             }
@@ -313,7 +313,7 @@ namespace livelywpf
                 {
                     ProcessStartInfo startInfo = new ProcessStartInfo
                     {
-                        FileName = App.pathData +"\\external\\mpv\\mpv.exe",
+                        FileName = App.PathData +"\\external\\mpv\\mpv.exe",
                         UseShellExecute = false,
                         WorkingDirectory = System.IO.Path.GetDirectoryName(layout.FilePath),
                         Arguments = "\"" + layout.FilePath + "\"" + " --force-window=yes --loop-file --keep-open --hwdec=yes" //+" --wid "+workerw  //--mute=yes 
@@ -531,9 +531,9 @@ namespace livelywpf
                 {
                     startInfo = new ProcessStartInfo
                     {
-                        FileName = App.pathData + "\\external\\mpv\\mpv.exe",
+                        FileName = App.PathData + "\\external\\mpv\\mpv.exe",
                         UseShellExecute = false,
-                        WorkingDirectory = App.pathData + "\\external\\mpv",
+                        WorkingDirectory = App.PathData + "\\external\\mpv",
                         Arguments = layout.Arguments
                     };
                 }
@@ -650,11 +650,11 @@ namespace livelywpf
                     //start1.Arguments = "\"" + layout.filePath + "\"" + " " + "\"" + "online" + "\"";
                     start1.Arguments = layout.FilePath + @" online";
                 }
-                start1.FileName = System.IO.Path.Combine(App.pathData , "external","cef","LivelyCefSharp.exe");
+                start1.FileName = System.IO.Path.Combine(App.PathData , "external","cef","LivelyCefSharp.exe");
                 start1.RedirectStandardInput = true;
                 start1.RedirectStandardOutput = true;
                 start1.UseShellExecute = false;
-                start1.WorkingDirectory = System.IO.Path.Combine(App.pathData, "external", "cef");
+                start1.WorkingDirectory = System.IO.Path.Combine(App.PathData, "external", "cef");
 
                 Process webProcess = new Process();
                 webProcess = Process.Start(start1);
@@ -771,7 +771,7 @@ namespace livelywpf
                     FileName = layout.FilePath,
                     UseShellExecute = false,
                     WorkingDirectory = System.IO.Path.GetDirectoryName(layout.FilePath),
-                    Arguments = "--config=" + App.pathData + @"\BizhawkConfig.ini"
+                    Arguments = "--config=" + App.PathData + @"\BizhawkConfig.ini"
                 };
 
                 //Process proc = new Process();
@@ -863,7 +863,7 @@ namespace livelywpf
             }
 
             //bottom-most window instead of behind-icon
-            if (MainWindow.highContrastFix)
+            if (MainWindow.HighContrastFix)
             {
                 foreach (var displayItem in Screen.AllScreens)
                 {
@@ -939,9 +939,9 @@ namespace livelywpf
                     System.Windows.Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, new ThreadStart(delegate
                     {
                         PreviewWallpaper previewWindow = new PreviewWallpaper(wallpaperHandle, layout);
-                        if (App.w != null)
+                        if (App.W != null)
                         {
-                            previewWindow.Owner = App.w;
+                            previewWindow.Owner = App.W;
                             previewWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
                         }
                         previewWindow.ShowDialog();
@@ -996,7 +996,7 @@ namespace livelywpf
         /// </summary>
         public static void UpdateAllWallpaperRect()
         {
-            if(MainWindow.multiscreen || MainWindow.highContrastFix) //bug:wp disappearing, probably overlapping one another. todo:- fix, I think its due to the new setwindowpos introduced for displayID window.
+            if(MainWindow.Multiscreen || MainWindow.HighContrastFix) //bug:wp disappearing, probably overlapping one another. todo:- fix, I think its due to the new setwindowpos introduced for displayID window.
             {
                 Logger.Debug("wp rect adjustment disabled for multiscreen/highcontrast due to bug/incomplete, skipping!");
                 return;
@@ -1437,7 +1437,7 @@ namespace livelywpf
             else if (SaveData.config.ProcessMonitorAlgorithm == SaveData.ProcessMonitorAlgorithm.all) //TODO:- rewrite with EnumWindowsProc instead of going through all running Processes, might eliminate the issue's I'm having.(ps: i was wrong, nvrmind xD)
             {
                 //todo:- this algorithm is incomplete for multiple-screen, have to finish it. (I dont like what I'm doing here).
-                if(MainWindow.multiscreen)
+                if(MainWindow.Multiscreen)
                 {
                     /*
                     //IntPtr shellWindow = NativeMethods.GetShellWindow();
@@ -1631,7 +1631,7 @@ namespace livelywpf
                 //Check we haven't picked up the desktop or the shell
                 if (!(hWnd.Equals(desktopHandle) || hWnd.Equals(shellHandle)))
                 {
-                    if (MainWindow.multiscreen == false || SaveData.config.DisplayPauseSettings == SaveData.DisplayPauseEnum.all)
+                    if (MainWindow.Multiscreen == false || SaveData.config.DisplayPauseSettings == SaveData.DisplayPauseEnum.all)
                     {
                         if (IntPtr.Equals(hWnd, workerWOrig)) //win10
                         {
@@ -1806,8 +1806,8 @@ namespace livelywpf
                 //Check we haven't picked up the desktop or the shell
                 if (!(hWnd.Equals(desktopHandle) || hWnd.Equals(shellHandle)))
                 {                
-                    if (MainWindow.multiscreen == false || SaveData.config.DisplayPauseSettings == SaveData.DisplayPauseEnum.all //pause all wp's when any window is maximised.
-                            || (MainWindow.multiscreen && SaveData.config.WallpaperArrangement == WallpaperArrangement.span) )//assuming single wp for span, so just pause "everything"
+                    if (MainWindow.Multiscreen == false || SaveData.config.DisplayPauseSettings == SaveData.DisplayPauseEnum.all //pause all wp's when any window is maximised.
+                            || (MainWindow.Multiscreen && SaveData.config.WallpaperArrangement == WallpaperArrangement.span) )//assuming single wp for span, so just pause "everything"
                     {
                         if (IntPtr.Equals(hWnd, workerWOrig)) //win10
                         {

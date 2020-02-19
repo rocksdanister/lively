@@ -39,7 +39,7 @@ namespace livelywpf
             mePlayer.Loop = true; //convenient!
 
             mePlayer.SpeedRatio = playSpeed / 100f; // 0<=x<=inf, default=1
-            if (SaveData.config.MuteVideo || MainWindow.multiscreen)
+            if (SaveData.config.MuteVideo || MainWindow.Multiscreen)
                 mePlayer.Volume = 0;
             else
                 mePlayer.Volume = 1;
@@ -80,11 +80,11 @@ namespace livelywpf
             Logger.Error("Mediakit Playback Failure: " + e.Exception.ToString());
             if (e.Exception.HResult != -2147467261) //nullreference error(when mediaload fails), otherwise double error message!.
             {
-                if(App.w != null)
+                if(App.W != null)
                 {
                     System.Windows.Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, new ThreadStart(delegate
                     {
-                        App.w.WpfNotification(MainWindow.NotificationType.errorUrl, Properties.Resources.txtLivelyErrorMsgTitle, Properties.Resources.msgMediakitFailure + "\n" + e.Message, "https://github.com/rocksdanister/lively/wiki/Video-Guide");
+                        App.W.WpfNotification(MainWindow.NotificationType.errorUrl, Properties.Resources.txtLivelyErrorMsgTitle, Properties.Resources.msgMediakitFailure + "\n" + e.Message, "https://github.com/rocksdanister/lively/wiki/Video-Guide");
                     }));                 
                 }
                 else

@@ -14,6 +14,7 @@ using System.Globalization;
 using Props = livelywpf.Properties;
 using MahApps.Metro;
 using livelywpf.Lively.Helpers;
+using NLog;
 
 namespace livelywpf
 {
@@ -23,11 +24,16 @@ namespace livelywpf
     public partial class App : Application
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        static Mutex mutex = new Mutex(false, "LIVELY:DESKTOPWALLPAPERSYSTEM");
-        public static MainWindow w = null;
+        static readonly Mutex mutex = new Mutex(false, "LIVELY:DESKTOPWALLPAPERSYSTEM");
+        public static MainWindow W { get; private set; }
 
+        /// <summary>
+        /// portable lively build, no installer.
+        /// Do not forget to also update livelysubprocess project.
+        /// </summary>
+        public static readonly bool isPortableBuild = false;
         //folder paths
-        public static readonly string pathData = Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Lively Wallpaper");
+        public static string PathData { get; private set; }
         /*
         public static string pathSaveData = Path.Combine(pathData, "SaveData");
         public static string pathWpTmp = Path.Combine(pathData, "SaveData", "wptmp");
@@ -35,22 +41,31 @@ namespace livelywpf
         public static string pathTmpData = Path.Combine(pathData, "tmpdata");
         public static string pathWpData = Path.Combine(pathData, "tmpdata", "wpdata");
         */
+
         protected override void OnStartup(StartupEventArgs e)
         {
+            if (isPortableBuild)
+            {
+                PathData = AppDomain.CurrentDomain.BaseDirectory;
+            }
+            else
+            {
+                PathData = Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Lively Wallpaper");
+            }
             //delete residue tempfiles if any!
-            FileOperations.EmptyDirectory(Path.Combine(pathData, "tmpdata"));
+            FileOperations.EmptyDirectory(Path.Combine(PathData, "tmpdata"));
             try
             {
                 //create directories if not exist
-                Directory.CreateDirectory(Path.Combine(pathData, "SaveData"));
-                Directory.CreateDirectory(Path.Combine(pathData, "SaveData", "wptmp"));
-                Directory.CreateDirectory(Path.Combine(pathData, "wallpapers"));
-                Directory.CreateDirectory(Path.Combine(pathData, "tmpdata"));
-                Directory.CreateDirectory(Path.Combine(pathData, "tmpdata", "wpdata"));
+                Directory.CreateDirectory(Path.Combine(PathData, "SaveData"));
+                Directory.CreateDirectory(Path.Combine(PathData, "SaveData", "wptmp"));
+                Directory.CreateDirectory(Path.Combine(PathData, "wallpapers"));
+                Directory.CreateDirectory(Path.Combine(PathData, "tmpdata"));
+                Directory.CreateDirectory(Path.Combine(PathData, "tmpdata", "wpdata"));
             }
             catch(Exception ex)
             {
-                //not logging here, just display & terminate.
+                //not logging here, something must be seriously wrong.. just display & terminate.
                 MessageBox.Show(ex.Message, Props.Resources.txtLivelyErrorMsgTitle, MessageBoxButton.OK, MessageBoxImage.Error);
                 Environment.Exit(1);
             }
@@ -68,15 +83,15 @@ namespace livelywpf
                 //clearing previous wp persisting image if any (not required, subProcess clears it).
                 SetupDesktop.RefreshDesktop();
 
-                Directory.CreateDirectory( Path.Combine(pathData, "ErrorLogs"));
+                Directory.CreateDirectory( Path.Combine(PathData, "ErrorLogs"));
                 string fileName = DateTime.Now.ToString("yyyyMMdd_HHmmss", CultureInfo.InvariantCulture) + ".txt";
-                if (File.Exists( Path.Combine(pathData, "ErrorLogs", fileName) ))
+                if (File.Exists( Path.Combine(PathData, "ErrorLogs", fileName) ))
                     fileName = Path.GetRandomFileName() + ".txt";
 
                 try
                 {                    
-                    File.Copy( Path.Combine(pathData, "logfile.txt"),
-                            Path.Combine(pathData, "ErrorLogs", fileName));
+                    File.Copy( Path.Combine(PathData, "logfile.txt"),
+                            Path.Combine(PathData, "ErrorLogs", fileName));
                 }
                 catch(IOException e1)
                 {
@@ -84,7 +99,7 @@ namespace livelywpf
                 }
                 
                 var result = MessageBox.Show(Props.Resources.msgSafeModeWarning +
-                    Path.Combine(pathData, "ErrorLogs", fileName)
+                    Path.Combine(PathData, "ErrorLogs", fileName)
                     , Props.Resources.txtLivelyErrorMsgTitle, MessageBoxButton.YesNo);
 
                 if (result == MessageBoxResult.No)
@@ -123,27 +138,42 @@ namespace livelywpf
                                             ThemeManager.GetAccent(SaveData.livelyThemes[SaveData.config.Theme].Accent),
                                             ThemeManager.GetAppTheme(SaveData.livelyThemes[SaveData.config.Theme].Base)); // or appStyle.Item1
             }
-                                        
+
             // now change app style to the custom accent and current theme
             //ThemeManager.ChangeAppStyle(Application.Current, ThemeManager.GetAccent("CustomAccent1"), ThemeManager.GetAppTheme(SaveData.livelyThemes[SaveData.config.Theme].Base));
             #endregion theme
 
+            #region nlog
+            var config = new NLog.Config.LoggingConfiguration();
+
+            // Targets where to log to: File and Console
+            var logfile = new NLog.Targets.FileTarget("logfile") { FileName = Path.Combine(PathData, "logfile.txt"), DeleteOldFileOnStartup = true};
+            var logconsole = new NLog.Targets.ConsoleTarget("logconsole");
+
+            // Rules for mapping loggers to targets            
+            config.AddRule(LogLevel.Info, LogLevel.Fatal, logconsole);
+            config.AddRule(LogLevel.Debug, LogLevel.Fatal, logfile);
+
+            // Apply config           
+            NLog.LogManager.Configuration = config;
+            #endregion nlog
+
             base.OnStartup(e);
 
             SetupExceptionHandling();
-            w = new MainWindow(); 
+            W = new MainWindow(); 
         
             if (SaveData.config.IsFirstRun)
             {
                 //SaveData.config.isFirstRun = false; //only after minimizing to tray isFirstRun is set to false.
                 SaveData.SaveConfig(); //creating disk file temp, not needed!
 
-                w.Show();
-                w.UpdateWallpaperLibrary(); 
+                W.Show();
+                W.UpdateWallpaperLibrary(); 
 
                 Dialogues.HelpWindow hw = new Dialogues.HelpWindow
                 {
-                    Owner = w,
+                    Owner = W,
                     WindowStartupLocation = WindowStartupLocation.CenterOwner
                 };
                 hw.ShowDialog();              
@@ -154,11 +184,11 @@ namespace livelywpf
                 SaveData.config.IsRestart = false;
                 SaveData.SaveConfig();
 
-                w.Show();
-                w.UpdateWallpaperLibrary();
+                W.Show();
+                W.UpdateWallpaperLibrary();
                 //w.ShowMainWindow();
 
-                w.tabControl1.SelectedIndex = 2; //settings tab
+                W.tabControl1.SelectedIndex = 2; //settings tab
                 //SetupDesktop.SetFocus();
                 //w.Activate();
             }
@@ -227,8 +257,8 @@ namespace livelywpf
             if(e.ReasonSessionEnding == ReasonSessionEnding.Shutdown || e.ReasonSessionEnding == ReasonSessionEnding.Logoff)
             {
                 e.Cancel = true; //delay shutdown till lively close properly.
-                if (w != null)
-                    w.ExitApplication();
+                if (W != null)
+                    W.ExitApplication();
             }
             
         }

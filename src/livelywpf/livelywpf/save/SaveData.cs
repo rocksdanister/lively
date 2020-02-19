@@ -142,7 +142,7 @@ namespace livelywpf
             */
             try
             {
-                using (StreamWriter sw = new StreamWriter(App.pathData + "\\SaveData\\application_rules.json"))
+                using (StreamWriter sw = new StreamWriter(App.PathData + "\\SaveData\\application_rules.json"))
                 using (JsonWriter writer = new JsonTextWriter(sw))
                 {
                     serializer.Serialize(writer, tmp);
@@ -157,7 +157,7 @@ namespace livelywpf
         public static void LoadApplicationRules()
         {
             //default rules.
-            if (!File.Exists(App.pathData + "\\SaveData\\application_rules.json"))
+            if (!File.Exists(App.PathData + "\\SaveData\\application_rules.json"))
             {
                 appRules.Add(new ApplicationRules { AppName = "Photoshop", Rule = AppRulesEnum.pause });
                 appRules.Add(new ApplicationRules { AppName = "Discord", Rule = AppRulesEnum.ignore });
@@ -168,7 +168,7 @@ namespace livelywpf
             try
             {
                 // deserialize JSON directly from a file
-                using (StreamReader file = File.OpenText(App.pathData + "\\SaveData\\application_rules.json"))
+                using (StreamReader file = File.OpenText(App.PathData + "\\SaveData\\application_rules.json"))
                 {
                     JsonSerializer serializer = new JsonSerializer();
                     ApplicationRulesList tmp = (ApplicationRulesList)serializer.Deserialize(file, typeof(ApplicationRulesList));
@@ -343,7 +343,7 @@ namespace livelywpf
              */
             try
             {
-                using (StreamWriter sw = new StreamWriter(App.pathData + "\\SaveData\\lively_layout.json"))
+                using (StreamWriter sw = new StreamWriter(App.PathData + "\\SaveData\\lively_layout.json"))
                 using (JsonWriter writer = new JsonTextWriter(sw))
                 {
                     serializer.Serialize(writer, tmp);
@@ -358,7 +358,7 @@ namespace livelywpf
 
         public static void LoadWallpaperLayout()
         {
-            if (!File.Exists(App.pathData + "\\SaveData\\lively_layout.json"))
+            if (!File.Exists(App.PathData + "\\SaveData\\lively_layout.json"))
             {
                 //SaveWallpaperLayout()
                 return;
@@ -367,7 +367,7 @@ namespace livelywpf
             try
             {
                 // deserialize JSON directly from a file
-                using (StreamReader file = File.OpenText(App.pathData + "\\SaveData\\lively_layout.json"))
+                using (StreamReader file = File.OpenText(App.PathData + "\\SaveData\\lively_layout.json"))
                 {
                     JsonSerializer serializer = new JsonSerializer();
                     WallpaperLayoutList tmp = (WallpaperLayoutList)serializer.Deserialize(file, typeof(WallpaperLayoutList));
@@ -672,8 +672,8 @@ namespace livelywpf
                 IgnoreUpdateTag = null;
 
                 //media scaling
-                VideoScaler = System.Windows.Media.Stretch.UniformToFill; //3
-                GifScaler = System.Windows.Media.Stretch.UniformToFill;
+                VideoScaler = System.Windows.Media.Stretch.Fill; 
+                GifScaler = System.Windows.Media.Stretch.Fill;
 
                 WarningApp = 0;
                 WarningUnity = 0;
@@ -693,7 +693,7 @@ namespace livelywpf
         /// </summary>
         public static void LoadConfig()
         {
-            if (!File.Exists(App.pathData + "\\SaveData\\lively_config.json"))
+            if (!File.Exists(App.PathData + "\\SaveData\\lively_config.json"))
             {
                 //writing default savefile to storage.
                 SaveConfig();
@@ -703,7 +703,7 @@ namespace livelywpf
             try
             {
                 // deserialize JSON directly from a file
-                using (StreamReader file = File.OpenText(App.pathData + "\\SaveData\\lively_config.json"))
+                using (StreamReader file = File.OpenText(App.PathData + "\\SaveData\\lively_config.json"))
                 {
                     JsonSerializer serializer = new JsonSerializer();
                     config = (ConfigFile)serializer.Deserialize(file, typeof(ConfigFile));
@@ -731,7 +731,7 @@ namespace livelywpf
             */
             try
             {
-                using (StreamWriter sw = new StreamWriter(App.pathData + "\\SaveData\\lively_config.json"))
+                using (StreamWriter sw = new StreamWriter(App.PathData + "\\SaveData\\lively_config.json"))
                 using (JsonWriter writer = new JsonTextWriter(sw))
                 {
                     serializer.Serialize(writer, config);
@@ -781,7 +781,7 @@ namespace livelywpf
 
             try
             {
-                using (StreamWriter sw = new StreamWriter(App.pathData + "\\lively_running_pgms.json"))
+                using (StreamWriter sw = new StreamWriter(App.PathData + "\\lively_running_pgms.json"))
                 using (JsonWriter writer = new JsonTextWriter(sw))
                 {
                     serializer.Serialize(writer, tmp);
@@ -795,7 +795,7 @@ namespace livelywpf
 
         public static void LoadRunningPrograms()
         {
-            if (!File.Exists(App.pathData + "\\lively_running_pgms.json"))
+            if (!File.Exists(App.PathData + "\\lively_running_pgms.json"))
             {
                 return;
             }
@@ -803,7 +803,7 @@ namespace livelywpf
             try
             {
                 // deserialize JSON directly from a file
-                using (StreamReader file = File.OpenText(App.pathData + "\\lively_running_pgms.json"))
+                using (StreamReader file = File.OpenText(App.PathData + "\\lively_running_pgms.json"))
                 {
                     JsonSerializer serializer = new JsonSerializer();
                     RunningProgramsList tmp = (RunningProgramsList)serializer.Deserialize(file, typeof(RunningProgramsList));

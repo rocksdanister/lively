@@ -159,7 +159,7 @@
                         </ItemsControl.ItemsPanel>
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <StackPanel Orientation="Vertical"  ToolTip="{Binding Type}" Width="118" Height="153" Margin="0,4.75,5,0" >
+                                <StackPanel Orientation="Vertical" Width="118" Height="153" Margin="0,4.75,5,0" >
                                     <Border BorderBrush="{DynamicResource AccentColorBrush}" BorderThickness="2" Height="118" Width="118" >
                                         <Grid>
                                             <Image gif:AnimationBehavior.SourceUri="{Binding TilePreview, Converter={StaticResource nullConverter}}" 
@@ -428,9 +428,10 @@
                                 <!--<TextBlock TextWrapping="WrapWithOverflow" Foreground="Olive" FontSize="11" Height="190" Margin="0,0,-0.2,0">Note:<LineBreak/>(1) Lively window ignores these rules.<LineBreak/>(2) Audio is always muted when other apps are in focus {except {1}, Lively window}.<LineBreak/>
                                 (3) Foreground Process algorithm has some limitations, check wiki for more information.<LineBreak/>(4) Application Rules has the highest priority.
                                 <LineBreak/>(5) Web browser is being minimized instead of pausing, so you will see wallpaper temporarily reverting to default in some cases; fix is coming soon.</TextBlock>-->
-                                <ScrollViewer Height="180">
+                                <ScrollViewer Height="180" >
                                     <TextBlock TextWrapping="WrapWithOverflow" Foreground="{DynamicResource AccentColorBrush2}" Text="{x:Static p:Resources.txtNotes}"  />
                                 </ScrollViewer>
+
                             </StackPanel>
 
                             <StackPanel Orientation="Vertical" Margin="15,5,0,0" Width="265" Height="500">
@@ -461,6 +462,27 @@
                                 <Controls:ToggleSwitch Name="appMuteToggle" Header="{x:Static p:Resources.txtAudioOut}" ></Controls:ToggleSwitch>
                             </StackPanel>
 
+                            <StackPanel Orientation="Vertical" Margin="15,5,0,0" Width="265" Height="500">
+                                <Label Content="Display" Style="{StaticResource labelGreenH1}"/>
+                                <Button ClickMode="Release" Click="Display_layout_Btn" >Wallpaper Layout</Button>
+
+                                <Label Content="Video Scaling:" ToolTip="{x:Static p:Resources.txtVideoPlayerToolTip}" FontSize="14.667" />
+                                <ComboBox Name="comboBoxVideoPlayerScaling">
+                                    <ComboBoxItem IsSelected="True"  Content="None"></ComboBoxItem>
+                                    <ComboBoxItem Content="Fill" ></ComboBoxItem>
+                                    <ComboBoxItem Content="Uniform"></ComboBoxItem>
+                                    <ComboBoxItem  Content="Uniform Fill"></ComboBoxItem>
+                                </ComboBox>
+
+                                <Label Content="GIF Scaling:" ToolTip="{x:Static p:Resources.txtVideoPlayerToolTip}" FontSize="14.667" />
+                                <ComboBox Name="comboBoxGIFPlayerScaling">
+                                    <ComboBoxItem IsSelected="True"  Content="None"></ComboBoxItem>
+                                    <ComboBoxItem Content="Fill" ></ComboBoxItem>
+                                    <ComboBoxItem Content="Uniform"></ComboBoxItem>
+                                    <ComboBoxItem  Content="Uniform Fill"></ComboBoxItem>
+                                </ComboBox>
+
+                            </StackPanel>
                         </WrapPanel>
                     </ScrollViewer>
                 </Canvas>
@@ -472,11 +494,12 @@
                         </FlowDocument>
                     </FlowDocumentScrollViewer>
                     <Label Content="Lively" Height="60" Width="109" FontSize="36" Foreground="{DynamicResource AccentColorBrush}" Canvas.Left="25" Canvas.Top="21" FontWeight="Bold"/>
-                    <Label Content="by Rocksdanister" Height="33" Width="152" FontSize="18"  Canvas.Left="84" Canvas.Top="86" RenderTransformOrigin="0.517,0.506"/>
+                    <Label Content="by Rocksdanister" Height="33" Width="152" FontSize="18"  Canvas.Left="154" Canvas.Top="84" RenderTransformOrigin="0.517,0.506"/>
                     <TextBlock Name ="lblVersionNumber" TextAlignment="Left" Text="99.0.0.0" TextWrapping="WrapWithOverflow" Height="34" Width="75" FontSize="18" Foreground="{DynamicResource AccentColorBrush2}"
                                Canvas.Left="139" Canvas.Top="45" RenderTransformOrigin="0.517,0.506"
                                PreviewMouseDown="lblVersionNumber_PreviewMouseDown"/>
-                    <TextBlock Canvas.Left="241" Canvas.Top="98">
+                    <Label Name="lblPortableTxt" Content="Portable" VerticalContentAlignment="Top" Foreground="{DynamicResource AccentColorBrush3}" RenderTransformOrigin="0.468,0.534" Canvas.Left="87" Canvas.Top="81" />
+                    <TextBlock Canvas.Left="311" Canvas.Top="95">
                         <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://github.com/rocksdanister" Foreground="{DynamicResource AccentColorBrush2}">https://github.com/rocksdanister</Hyperlink>
                     </TextBlock>
                     <Label Content="{x:Static p:Resources.txtLabel10}" Foreground="{DynamicResource AccentColorBrush3}" Canvas.Left="45" Canvas.Top="130" FontSize="16" RenderTransformOrigin="0.468,0.534" />

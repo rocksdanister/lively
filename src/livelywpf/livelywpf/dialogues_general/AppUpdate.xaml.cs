@@ -38,7 +38,7 @@ namespace livelywpf.Dialogues
         {
             this.release = release;
             this.url = fileUrl;
-            this.filePath = Path.Combine(App.pathData, "tmpdata", "update.exe");
+            this.filePath = Path.Combine(App.PathData, "tmpdata", "update.exe");
             InitializeComponent();
             
             try
@@ -67,19 +67,25 @@ namespace livelywpf.Dialogues
                 chkMarkIgnore.Unchecked += ChkMarkIgnore_Checked;
 
                 int result = UpdaterGit.CompareAssemblyVersion(release);
+
                 if (result > 0) //github ver greater, update available!
                 {
                     btnInstall.IsEnabled = true;
                     chkMarkIgnore.IsEnabled = true;
                     StringBuilder sb = new StringBuilder(release.Body);
-                    //todo: rewrite this in a better way
-                    sb.Replace("#","").Replace("\t", "  "); //formatting git text.
-                    richTxtBoxGitBody.Document.Blocks.Add(new Paragraph(new Run(sb.ToString())));
+                    //todo: rewrite this in a efficient manner.
+                    //formatting git text.
+                    sb.Replace("#", "").Replace("\t", "  ");
 
-                    //flodocumentviewer implementation.
-                    //TextRange textRange = new TextRange(flowDocument.ContentStart, flowDocument.ContentEnd);
-                    //textRange.Text = bodyText;
-                    //flowDocumentViewer.Document = flowDocument;
+                    if (App.isPortableBuild)
+                    {
+                        //custom msg maybe?
+                    }
+                    else
+                    {
+
+                    }
+                    richTxtBoxGitBody.Document.Blocks.Add(new Paragraph(new Run(sb.ToString())));
                 }
                 else if (result < 0) //this is early access software.
                 {
@@ -91,7 +97,6 @@ namespace livelywpf.Dialogues
                     this.Title = Properties.Resources.txtContextMenuUpdate4;
                     richTxtBoxGitBody.Document.Blocks.Add(new Paragraph(new Run(Properties.Resources.txtContextMenuUpdate4)));
                 }
-                //txtDownload.Text = "Ready to download " + release.TagName;
                 chkMarkIgnore.Content = Properties.Resources.txtIgnore +" " + release.TagName;
             }
             catch(Exception e)
@@ -122,8 +127,8 @@ namespace livelywpf.Dialogues
                 //downloader replaces eitherways.
             }
 
-            client.DownloadProgressChanged += Client_DownloadProgressChanged;// new DownloadProgressChangedEventHandler(Client_DownloadProgressChanged);
-            client.DownloadFileCompleted += Client_DownloadFileCompleted;//new AsyncCompletedEventHandler(Client_DownloadFileCompleted);
+            client.DownloadProgressChanged += Client_DownloadProgressChanged;
+            client.DownloadFileCompleted += Client_DownloadFileCompleted;
             try
             {
                 client.DownloadFileAsync(new Uri(url), filePath);
@@ -150,6 +155,14 @@ namespace livelywpf.Dialogues
 
         private void btnInstall_Click(object sender, RoutedEventArgs e)
         {
+            if(App.isPortableBuild)
+            {
+                MessageBox.Show(Properties.Resources.txtMsgUpdaterPortableUnsupported,
+                    Properties.Resources.txtLivelyErrorMsgTitle, MessageBoxButton.OK, MessageBoxImage.Error);
+                Process.Start("https://github.com/rocksdanister/lively/releases");
+                return;
+            }
+            //btn is disabled, if its enabled again then user clicked again to install.
             if (_downloadStarted)
             {
                 if (File.Exists(filePath))
@@ -158,7 +171,7 @@ namespace livelywpf.Dialogues
                     {
                         Process.Start(filePath, "/SILENT /CLOSEAPPLICATIONS /RESTARTAPPLICATIONS");
                         //inno installer will auto retry, waiting for application exit.
-                        App.w.ExitApplication();
+                        App.W.ExitApplication();
                     }
                     catch(Exception ex)
                     {

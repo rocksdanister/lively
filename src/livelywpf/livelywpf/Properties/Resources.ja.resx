@@ -609,6 +609,9 @@ Windows 7が設定されている場合-最適な外観と調整適用します�
   <data name="txtMsgSelectWallpaperFile" xml:space="preserve">
     <value>壁紙ファイルが選択されていません</value>
   </data>
+  <data name="txtMsgUpdaterPortableUnsupported" xml:space="preserve">
+    <value>アップデータはLivelyのポータブルバージョンではサポートされていません。Webサイトから最新のポータブルリリースをダウンロードしてください。</value>
+  </data>
   <data name="txtNotes" xml:space="preserve">
     <value>注：
 （1）Livelyウィンドウはこれらのルールを無視します。

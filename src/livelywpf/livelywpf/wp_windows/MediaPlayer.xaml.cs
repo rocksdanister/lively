@@ -38,7 +38,7 @@ namespace livelywpf
             mePlayer.MediaFailed += MePlayer_MediaFailed;
 
             mePlayer.SpeedRatio = playSpeed/100f; // 0<=x<=inf, default=1
-            if (SaveData.config.MuteVideo || MainWindow.multiscreen)
+            if (SaveData.config.MuteVideo || MainWindow.Multiscreen)
                 mePlayer.Volume = 0;
             else
                 mePlayer.Volume = 1;
@@ -55,11 +55,11 @@ namespace livelywpf
             //todo proper error handling.
             Logger.Error("MediaFoundation Playback Failure:-" + e.ErrorException);
 
-            if (App.w != null)
+            if (App.W != null)
             {
                 System.Windows.Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, new ThreadStart(delegate
                 {
-                    App.w.WpfNotification(MainWindow.NotificationType.errorUrl, Properties.Resources.txtLivelyErrorMsgTitle, Properties.Resources.msgMediaFoundationFailure + "\n" + e.ErrorException, "https://github.com/rocksdanister/lively/wiki/Video-Guide");
+                    App.W.WpfNotification(MainWindow.NotificationType.errorUrl, Properties.Resources.txtLivelyErrorMsgTitle, Properties.Resources.msgMediaFoundationFailure + "\n" + e.ErrorException, "https://github.com/rocksdanister/lively/wiki/Video-Guide");
                 }));
             }
             else

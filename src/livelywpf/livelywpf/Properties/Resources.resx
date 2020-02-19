@@ -605,6 +605,9 @@ THERE WILL BE BUGS &amp; CRASHES, PROCEED WITH CAUTION!!!</value>
   <data name="txtMsgSelectWallpaperFile" xml:space="preserve">
     <value>Wallpaper file not selected</value>
   </data>
+  <data name="txtMsgUpdaterPortableUnsupported" xml:space="preserve">
+    <value>Updater is not supported in portable version of Lively, download latest portable release from the website.</value>
+  </data>
   <data name="txtNotes" xml:space="preserve">
     <value>Note:
 (1) Lively window ignores these rules.

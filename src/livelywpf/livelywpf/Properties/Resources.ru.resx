@@ -609,6 +609,9 @@ https://github.com/rocksdanister/lively-cef
   <data name="txtMsgSelectWallpaperFile" xml:space="preserve">
     <value> Файл обоев не выбран </value>
   </data>
+  <data name="txtMsgUpdaterPortableUnsupported" xml:space="preserve">
+    <value>Программа обновления не поддерживается в портативной версии Lively, загрузите последнюю портативную версию с веб-сайта.</value>
+  </data>
   <data name="txtNotes" xml:space="preserve">
     <value> Примечание:
 (1) Живое окно игнорирует эти правила.

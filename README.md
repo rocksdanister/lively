@@ -28,7 +28,7 @@ Lively is still in development, if you encounter bugs create a github Issue alon
 
 Help translate lively to other languages: <a href="https://github.com/rocksdanister/lively/blob/master/resources/translations">Translation Document</a>
 
-<a href="https://github.com/rocksdanister/lively/wiki">Documentation</a>
+<a href="https://github.com/rocksdanister/lively/wiki">Full Documentation</a>
 ## Features
 *Wait a sec, preview gif clips take some time to load.*
 #### Video
@@ -97,26 +97,33 @@ Help translate lively to other languages: <a href="https://github.com/rocksdanis
 
 **_I'm not officially affiliated with Unity technologies, godot, shadertoy;_**
 ## Download
-##### Latest version: v0.8.0.0 (Windows 10, 8.1)[What's new?](https://github.com/rocksdanister/lively/releases/tag/v0.8.0.0)
-- [`Download`][direct-full-win32]  
-   _90MB, Web wallpaper support & some sample wallpapers included._
+##### Latest version: v0.8.5.0 (Windows 10, 8.1)[What's new?](https://github.com/rocksdanister/lively/releases/tag/v0.8.5.0)
+- [`Download Lively Installer`][direct-full-win32]  
+   _102MB, Web wallpaper support & some sample wallpapers included._
+- [`Download Lively Portable`][direct-full-portable-win32]  
+  _111MB, (No Installation) Web wallpaper support & some sample wallpapers included._
+  
+**Portable build: Latest Visual C++ Redistributable is required: [vc_redist.x86.exe](https://aka.ms/vs/16/release/vc_redist.x86.exe)**
    
-**Latest Visual C++ Redistributable is required: [vc_redist.x86.exe](https://aka.ms/vs/16/release/vc_redist.x86.exe)**
-   
-[direct-full-win32]: https://github.com/rocksdanister/lively/releases/download/v0.8.0.0/lively_setup_x86_full_v0800.exe
+[direct-full-win32]: https://github.com/rocksdanister/lively/releases/download/v0.8.0.0/lively_setup_x86_full_v0850.exe
 
-[Trouble Getting started? ](https://github.com/rocksdanister/lively/wiki/Getting-Started)
+[direct-full-portable-win32]: https://github.com/rocksdanister/lively/releases/download/v0.8.5.0/lively_portable_x86_full_v0850.zip
+
+[Having trouble? ](https://github.com/rocksdanister/lively/wiki/Common-Problems)
 
 Certain antivirus software heuristics algorithm will detect lively as a virus, this is a false positive
 **lively is fully [opensource](https://en.wikipedia.org/wiki/Free_and_open-source_software), you are free to inspect the code.**
 
+**Installer will give smartscreen [warning.]**(https://github.com/rocksdanister/lively/issues/9)
 ## Issues
-[TODO List](https://trello.com/b/rdFFxuMF/lively-wallpaper-system)
+~~[TODO List](https://trello.com/b/rdFFxuMF/lively-wallpaper-system)~~
+
+See github [issues.](https://github.com/rocksdanister/lively/issues)
 
 ## Contributing
 Code contributions are welcome, check [guidelines](https://github.com/rocksdanister/lively/wiki) for making pull request.
 
-Currently Lively is only human translated English & Spanish, other languages are machine translated. 
+Currently Lively is only human translated in English, Spanish & Italian; other languages are machine translated. 
 
 Help translate lively to other languages: <a href="https://github.com/rocksdanister/lively/blob/master/resources/translations">Translation Document</a>
 
