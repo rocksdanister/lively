@@ -105,7 +105,7 @@ Help translate lively to other languages: <a href="https://github.com/rocksdanis
   
 **Portable build: Latest Visual C++ Redistributable is required: [vc_redist.x86.exe](https://aka.ms/vs/16/release/vc_redist.x86.exe)**
    
-[direct-full-win32]: https://github.com/rocksdanister/lively/releases/download/v0.8.0.0/lively_setup_x86_full_v0850.exe
+[direct-full-win32]: https://github.com/rocksdanister/lively/releases/download/v0.8.5.0/lively_setup_x86_full_v0850.exe
 
 [direct-full-portable-win32]: https://github.com/rocksdanister/lively/releases/download/v0.8.5.0/lively_portable_x86_full_v0850.zip
 
