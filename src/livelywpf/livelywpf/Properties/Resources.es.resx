@@ -609,6 +609,9 @@ NO inicie programas como CHROME o STEAM.. que crean múltiples subprocesos.
   <data name="txtMsgSelectWallpaperFile" xml:space="preserve">
     <value>Archivo no seleccionado</value>
   </data>
+  <data name="txtMsgUpdaterPortableUnsupported" xml:space="preserve">
+    <value>Updater no es compatible con la versión portátil de Lively, descargue la última versión portátil del sitio web.</value>
+  </data>
   <data name="txtNotes" xml:space="preserve">
     <value>Nota:
 (1) La ventana de Lively ignora estas reglas.

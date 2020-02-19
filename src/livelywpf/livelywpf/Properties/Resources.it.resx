@@ -406,7 +406,7 @@ Se non funziona ancora, chiudi &amp; riavvia Lively / riavvia windows.</value>
   <data name="txtIgnore" xml:space="preserve">
     <value>Ignora</value>
   </data>
-    <data name="txtInstall" xml:space="preserve">
+  <data name="txtInstall" xml:space="preserve">
     <value>Installa</value>
   </data>
   <data name="txtInstallWallpaper" xml:space="preserve">
@@ -608,6 +608,9 @@ CI SARANNO BUGS &amp; CRASHES, CONTINUA CON PRUDENZA!!!</value>
   </data>
   <data name="txtMsgSelectWallpaperFile" xml:space="preserve">
     <value>Wallpaper non selezionato</value>
+  </data>
+  <data name="txtMsgUpdaterPortableUnsupported" xml:space="preserve">
+    <value>L'aggiornamento non è supportato nella versione portatile di Lively, scarica l'ultima versione portatile dal sito Web.</value>
   </data>
   <data name="txtNotes" xml:space="preserve">
     <value>Note:

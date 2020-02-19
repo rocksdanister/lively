@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Lively Wallpaper"
-#define MyAppVersion "0.8.0.0"
+#define MyAppVersion "0.8.5.0"
 #define MyAppPublisher "rocksdanister"
 #define MyAppURL "https://github.com/rocksdanister/lively"
 #define MyAppExeName "livelywpf.exe"
@@ -94,13 +94,15 @@ Name: "cef"; Description: "Web Wallpaper Support"; Types: full
 Name: "wallpapers"; Description: "Sample Wallpapers"; Types: full
 
 [Files]
+Source: "VC\VC_redist.x86.exe"; DestDir: {tmp}; Flags: deleteafterinstall
+
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 Source: "Release\livelywpf.exe"; DestDir: "{app}"; Flags: ignoreversion;Components: program
 Source: "Release\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: program
 Source: "Lively Wallpaper\external\cef\*"; DestDir: "{userdocs}\Lively Wallpaper\external\cef"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: cef
 Source: "Lively Wallpaper\wallpapers\*"; DestDir: "{userdocs}\Lively Wallpaper\wallpapers"; Flags: ignoreversion recursesubdirs createallsubdirs onlyifdoesntexist uninsneveruninstall; Components: wallpapers; Check: ShouldInstallWallpapers
-; pushing new set of wp's with customisation to existing users, shouldInstallWallpaper check will be added from later version onwards..
-Source: "Lively Wallpaper\wallpapers new\*"; DestDir: "{userdocs}\Lively Wallpaper\wallpapers"; Flags: ignoreversion recursesubdirs createallsubdirs onlyifdoesntexist uninsneveruninstall; Components: wallpapers;
+; pushing new set of wp's with customisation to existing users (v0.8 only), shouldInstallWallpaper check will be added from later version onwards..
+Source: "Lively Wallpaper\wallpapers new\*"; DestDir: "{userdocs}\Lively Wallpaper\wallpapers"; Flags: ignoreversion recursesubdirs createallsubdirs onlyifdoesntexist uninsneveruninstall; Components: wallpapers; Check: ShouldInstallWallpapers
 
 [Icons]
 Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
@@ -109,10 +111,46 @@ Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: de
 [Run]
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall 
 ;skipifsilent
+Filename: "{tmp}\VC_redist.x86.exe"; Check: VCRedistNeedsInstall; StatusMsg: Installing Visual Studio Runtime Libraries...
 
 [Code]
 var
   isAlreadyInstalled: Boolean;
+
+// Visual C++ redistributive component install.
+//ref: https://bell0bytes.eu/inno-setup-vc/
+type
+  INSTALLSTATE = Longint;
+
+  const
+  INSTALLSTATE_INVALIDARG = -2;  { An invalid parameter was passed to the function. }
+  INSTALLSTATE_UNKNOWN = -1;     { The product is neither advertised or installed. }
+  INSTALLSTATE_ADVERTISED = 1;   { The product is advertised but not installed. }
+  INSTALLSTATE_ABSENT = 2;       { The product is installed for a different user. }
+  INSTALLSTATE_DEFAULT = 5;      { The product is installed for the current user. }
+
+#IFDEF UNICODE
+  #DEFINE AW "W"
+#ELSE
+  #DEFINE AW "A"
+#ENDIF
+
+{ Visual C++ 2019 v14, the included installer is a bundle consisting of older vers }
+VC_2019_REDIST_X86_MIN = '{2E72FA1F-BADB-4337-B8AE-F7C17EC57D1D}';
+
+function MsiQueryProductState(szProduct: string): INSTALLSTATE; 
+  external 'MsiQueryProductState{#AW}@msi.dll stdcall';
+
+function VCVersionInstalled(const ProductID: string): Boolean;
+begin
+  Result := MsiQueryProductState(ProductID) = INSTALLSTATE_DEFAULT;
+end;
+
+function VCRedistNeedsInstall: Boolean;
+begin
+  Result := not VCVersionInstalled(VC_2019_REDIST_X86_MIN);
+end;
+
 
 // event fired when the uninstall step is changed: https://stackoverflow.com/revisions/12645836/1
 procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);

@@ -188,7 +188,7 @@ namespace livelywpf.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {\rtf1\adeflang1025\ansi\ansicpg1252\uc1\adeff0\deff0\stshfdbch0\stshfloch31506\stshfhich31506\stshfbi31506\deflang1033\deflangfe1033\themelang1033\themelangfe0\themelangcs0{\fonttbl{\f0\fbidi \froman\fcharset0\fprq2{\*\panose 02020603050405020304}Times New Roman;}{\f1\fbidi \fswiss\fcharset0\fprq2{\*\panose 020b0604020202020204}Arial;}
-        ///{\f2\fbidi \fmodern\fcharset0\fprq1{\*\panose 02070309020205020404}Courier New;}{\f2\fbidi \fmodern\fcharset0\fprq1{\*\panose 02070309020205020404}Courier New;}{\f39\fbidi  [rest of string was truncated]&quot;;.
+        ///{\f2\fbidi \fmodern\fcharset0\fprq1{\*\panose 02070309020205020404}Courier New;}{\f2\fbidi \fmodern\fcharset0\fprq1{\*\panose 02070309020205020404}Courier New;}{\f37\fbidi  [rest of string was truncated]&quot;;.
         /// </summary>
         public static string license {
             get {
@@ -1419,6 +1419,15 @@ namespace livelywpf.Properties {
         public static string txtMsgSelectWallpaperFile {
             get {
                 return ResourceManager.GetString("txtMsgSelectWallpaperFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updater is not supported in portable version of Lively, download latest portable release from the website..
+        /// </summary>
+        public static string txtMsgUpdaterPortableUnsupported {
+            get {
+                return ResourceManager.GetString("txtMsgUpdaterPortableUnsupported", resourceCulture);
             }
         }
         

@@ -17,6 +17,7 @@ namespace livelywpf
         public static void LogHardwareInfo()
         {
             Logger.Info("Lively v" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() + " " + CultureInfo.CurrentCulture.Name + "  64Bit:" + Environment.Is64BitProcess);
+            Logger.Info("Portable build: " + App.isPortableBuild);
             GetOSInfo();
             GetCPUInfo();
             GetGPUInfo();

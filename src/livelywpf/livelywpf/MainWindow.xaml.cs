@@ -55,14 +55,14 @@ namespace livelywpf
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
-        public static bool multiscreen = false;
-        ProgressDialogController progressController = null;
+        public static bool Multiscreen { get; private set;}
+        public static bool HighContrastFix { get; private set; }
+        private ProgressDialogController progressController = null;
         private ObservableCollection<TileData> tileDataList = new ObservableCollection<TileData>();
         private ObservableCollection<TileData> selectedTile = new ObservableCollection<TileData>();
 
         private ICollectionView tileDataFiltered;
         private bool _isRestoringWallpapers = false;
-        public static bool highContrastFix = false;
 
         private Release gitRelease = null;
         private string gitUrl = null;
@@ -80,7 +80,7 @@ namespace livelywpf
             }
             catch(Exception e)
             {
-                Logger.Error(e,"Starting livelybg.exe failure: " + e.ToString());
+                Logger.Error(e,"Starting livelySubProcess failure: " + e.Message);
             }
             #endregion lively_SubProcess
 
@@ -90,7 +90,11 @@ namespace livelywpf
 
             if(SaveData.config.WallpaperRendering == WallpaperRenderingMode.bottom_most)
             {
-                highContrastFix = true;
+                HighContrastFix = true;
+            }
+            else
+            {
+                HighContrastFix = false;
             }
 
             if (SaveData.config.Ui120FPS)
@@ -144,10 +148,6 @@ namespace livelywpf
             {
                 Logger.Error("Failed to load license file:" + e.Message);
             }
-            /*
-            DoubleAnimation anim = new DoubleAnimation();
-            Storyboard storyBoard = (Storyboard)this.Resources["fidgetSpinner"];
-            */
 
             //whats new (changelog) screen!
             if (!SaveData.config.AppVersion.Equals(System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString(), StringComparison.OrdinalIgnoreCase)
@@ -166,10 +166,11 @@ namespace livelywpf
             }
 
             //restore previously running wp's.
+            Multiscreen = false;
             SystemEvents_DisplaySettingsChanged(this, null); 
 
             //Incomplete, currently in development:- all process algorithm with multiscreen is buggy.
-            if (multiscreen && SaveData.config.ProcessMonitorAlgorithm == ProcessMonitorAlgorithm.all)
+            if (Multiscreen && SaveData.config.ProcessMonitorAlgorithm == ProcessMonitorAlgorithm.all)
             {
                 Logger.Info("Skipping all-process algorthm on multiscreen(in-development)");
                 comboBoxPauseAlgorithm.SelectedIndex = (int)ProcessMonitorAlgorithm.foreground; //event will save settings.
@@ -180,15 +181,14 @@ namespace livelywpf
         {
             //load savefiles. 
             SaveData.LoadApplicationRules();
-            //SaveData.LoadConfig(); //app.xaml.cs loads config file.
+            //SaveData.LoadConfig(); //App() loads config file.
             SaveData.LoadWallpaperLayout();
             RestoreMenuSettings();
-            //SetStartupRegistry(SaveData.config.Startup);
 
             //github update check
             try
             {
-                gitRelease = await UpdaterGit.GetLatestRelease("lively", "rocksdanister", 45000); //45000
+                gitRelease = await UpdaterGit.GetLatestRelease("lively", "rocksdanister", 45000); //45sec
                 int result = UpdaterGit.CompareAssemblyVersion(gitRelease);
                 if (result > 0) //github ver greater, update available!
                 {
@@ -204,10 +204,10 @@ namespace livelywpf
                     update_traybtn.Text = Properties.Resources.txtContextMenuUpdate2;  
                     if (UpdateNotifyOrNot())
                     {
-                        if (App.w != null)
+                        if (App.W != null)
                         {
                             //system tray notification, only displayed if lively is minimized to tray.
-                            if (!App.w.IsVisible)
+                            if (!App.W.IsVisible)
                             {
                                 _notifyIcon.ShowBalloonTip(2000, "lively", Properties.Resources.toolTipUpdateMsg, ToolTipIcon.None);
                             }
@@ -222,19 +222,19 @@ namespace livelywpf
                                .HasMessage(Properties.Resources.txtUpdateBanner + " " + gitRelease.TagName)
                                .WithButton(Properties.Resources.txtDownload, button => { ShowLivelyUpdateWindow(); })
                                .Dismiss().WithButton(Properties.Resources.txtLabel37, button => { })
-                            /*
-                            .WithAdditionalContent(ContentLocation.Bottom,
-                            new Border
-                            {
-                                BorderThickness = new Thickness(0, 1, 0, 0),
-                                BorderBrush = new SolidColorBrush(Color.FromArgb(128, 28, 28, 28)),
-                                Child = new System.Windows.Controls.CheckBox
+                                /*
+                                .WithAdditionalContent(ContentLocation.Bottom,
+                                new Border
                                 {
-                                    Margin = new Thickness(12, 8, 12, 8),
-                                    Content = Properties.Resources.txtIgnore + " " + gitRelease.TagName
-                                }
-                            })
-                            */
+                                    BorderThickness = new Thickness(0, 1, 0, 0),
+                                    BorderBrush = new SolidColorBrush(Color.FromArgb(128, 28, 28, 28)),
+                                    Child = new System.Windows.Controls.CheckBox
+                                    {
+                                        Margin = new Thickness(12, 8, 12, 8),
+                                        Content = Properties.Resources.txtIgnore + " " + gitRelease.TagName
+                                    }
+                                })
+                                */
                             .Queue();
                         }
                     }
@@ -263,15 +263,14 @@ namespace livelywpf
         private void ShowLivelyUpdateWindow()
         {
             if (appUpdateWindow == null)
-            {
-                
+            {            
                 appUpdateWindow = new Dialogues.AppUpdate(gitRelease, gitUrl)
                 {
                     WindowStartupLocation = WindowStartupLocation.CenterScreen
                 };
-                if (App.w.IsVisible)
+                if (App.W.IsVisible)
                 {
-                    appUpdateWindow.Owner = App.w;
+                    appUpdateWindow.Owner = App.W;
                     WindowStartupLocation = WindowStartupLocation.CenterOwner;
                 }
                 
@@ -313,7 +312,7 @@ namespace livelywpf
             //start1.Arguments = url + @" deviantart";
             start1.Arguments = url + @" online";
 
-            start1.FileName = App.pathData + @"\external\cef\LivelyCefSharp.exe";
+            start1.FileName = App.PathData + @"\external\cef\LivelyCefSharp.exe";
             start1.RedirectStandardInput = true;
             start1.RedirectStandardOutput = true;
             start1.UseShellExecute = false;
@@ -344,8 +343,8 @@ namespace livelywpf
 
                     System.Windows.Application.Current.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Background, new ThreadStart(delegate
                     {
-                        App.w.ShowMainWindow();
-                        App.w.WallpaperInstaller(downloadedFilePath);
+                        App.W.ShowMainWindow();
+                        App.W.WallpaperInstaller(downloadedFilePath);
                     }));
                 }
             }
@@ -384,11 +383,11 @@ namespace livelywpf
                     Debug.WriteLine("Detected Displays:- " + item);
                     Logger.Debug("Detected Displays:- " + item);
                 }
-                multiscreen = true;
+                Multiscreen = true;
             }
             else
             {
-                multiscreen = false;
+                Multiscreen = false;
                 Logger.Debug("Single Display Mode:- " + Screen.PrimaryScreen);
             }
 
@@ -554,7 +553,7 @@ namespace livelywpf
 
                     IWshRuntimeLibrary.IWshShortcut shortcut = (IWshRuntimeLibrary.IWshShortcut)shell.CreateShortcut(shortcutAddress);
                     shortcut.Description = "Lively Wallpaper System";
-                    shortcut.WorkingDirectory = App.pathData;
+                    shortcut.WorkingDirectory = App.PathData;
                     shortcut.TargetPath = curAssembly.Location;
                     shortcut.Save();
                 }
@@ -603,8 +602,8 @@ namespace livelywpf
             selectedTile.Clear();
             //wallpapersLV.SelectedIndex = -1;
             List<SaveData.TileData> tmpLoadedWallpapers = new List<SaveData.TileData>();
-            var wpDir = Directory.GetDirectories( Path.Combine( App.pathData, "wallpapers"));
-            var tmpDir = Directory.GetDirectories( Path.Combine(App.pathData, "SaveData", "wptmp"));
+            var wpDir = Directory.GetDirectories( Path.Combine( App.PathData, "wallpapers"));
+            var tmpDir = Directory.GetDirectories( Path.Combine(App.PathData, "SaveData", "wptmp"));
             var dir = wpDir.Concat(tmpDir).ToArray();
 
             for (int i = 0; i < dir.Length; i++)
@@ -725,7 +724,7 @@ namespace livelywpf
                 tabControl1.SelectedIndex = 0;
 
             var randomFolderName = Path.GetRandomFileName();
-            var dir = Path.Combine(App.pathData, "SaveData", "wptmp", randomFolderName);
+            var dir = Path.Combine(App.PathData, "SaveData", "wptmp", randomFolderName);
             try
             {
                 Directory.CreateDirectory(dir);
@@ -736,12 +735,12 @@ namespace livelywpf
                 return;
             }
 
-            if (SaveData.LoadWallpaperMetaData(Path.Combine(App.pathData, "tmpdata","wpdata\\") ))
+            if (SaveData.LoadWallpaperMetaData(Path.Combine(App.PathData, "tmpdata","wpdata\\") ))
             {
                 //making the thumbnail & preview absolute paths.
-                if(File.Exists( Path.Combine(App.pathData, "tmpdata", "wpdata", SaveData.info.Preview) ))
+                if(File.Exists( Path.Combine(App.PathData, "tmpdata", "wpdata", SaveData.info.Preview) ))
                     SaveData.info.Preview = Path.Combine(dir,SaveData.info.Preview);
-                if (File.Exists( Path.Combine(App.pathData, "tmpdata", "wpdata", SaveData.info.Thumbnail) ))
+                if (File.Exists( Path.Combine(App.PathData, "tmpdata", "wpdata", SaveData.info.Thumbnail) ))
                     SaveData.info.Thumbnail = Path.Combine(dir, SaveData.info.Thumbnail);
 
                 SaveData.SaveWallpaperMetaData(SaveData.info, dir);
@@ -749,7 +748,7 @@ namespace livelywpf
             else
             {
                 Logger.Error("LoadWallpaperFromWpDataFolder(): Failed to load livelyinfo for tmpwallpaper!..deleting tmpfiles.");
-                Task.Run(() => (FileOperations.EmptyDirectory( Path.Combine(App.pathData, "tmpdata", "wpdata\\") )));
+                Task.Run(() => (FileOperations.EmptyDirectory( Path.Combine(App.PathData, "tmpdata", "wpdata\\") )));
                 try
                 {
                     Directory.Delete(dir);
@@ -763,11 +762,11 @@ namespace livelywpf
 
             try
             {
-                if (File.Exists( Path.Combine(App.pathData, "tmpdata", "wpdata", Path.GetFileName(SaveData.info.Thumbnail)) ))
-                    File.Copy( Path.Combine(App.pathData, "tmpdata", "wpdata", Path.GetFileName(SaveData.info.Thumbnail)), SaveData.info.Thumbnail);
+                if (File.Exists( Path.Combine(App.PathData, "tmpdata", "wpdata", Path.GetFileName(SaveData.info.Thumbnail)) ))
+                    File.Copy( Path.Combine(App.PathData, "tmpdata", "wpdata", Path.GetFileName(SaveData.info.Thumbnail)), SaveData.info.Thumbnail);
 
-                if (File.Exists( Path.Combine(App.pathData, "tmpdata", "wpdata", Path.GetFileName(SaveData.info.Preview)) ))
-                    File.Copy( Path.Combine(App.pathData, "tmpdata", "wpdata", Path.GetFileName(SaveData.info.Preview)), SaveData.info.Preview);
+                if (File.Exists( Path.Combine(App.PathData, "tmpdata", "wpdata", Path.GetFileName(SaveData.info.Preview)) ))
+                    File.Copy( Path.Combine(App.PathData, "tmpdata", "wpdata", Path.GetFileName(SaveData.info.Preview)), SaveData.info.Preview);
                     
             }
             catch (Exception e)
@@ -777,7 +776,7 @@ namespace livelywpf
             finally
             {
                 UpdateWallpaperLibrary();
-                Task.Run(() => (FileOperations.EmptyDirectory(Path.Combine(App.pathData, "tmpdata", "wpdata\\"))));
+                Task.Run(() => (FileOperations.EmptyDirectory(Path.Combine(App.PathData, "tmpdata", "wpdata\\"))));
                 //selecting newly added wp.
                 foreach (var item in tileDataList)
                 {
@@ -817,6 +816,7 @@ namespace livelywpf
                 }
             }
             selectedTile.Add(selection);
+            wallpapersLV.ScrollIntoView(selection);
             /*
             if(!File.Exists(selectedTile[0].LivelyInfo.Preview)) //if no preview gif, load image instead.
             {
@@ -988,7 +988,7 @@ namespace livelywpf
 
         private void MenuItem_SetWallpaper_Click(object sender, RoutedEventArgs e) //contextmenu
         {
-            SetWallpaperBtn_Click(null, null);
+            SetWallpaperBtn_Click(this, null);
         }
         private async void SetWallpaperBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -1051,7 +1051,7 @@ namespace livelywpf
             if (wallpapersLV.SelectedIndex == -1)
                 return;
 
-            if (multiscreen)
+            if (Multiscreen)
             {
                 var selection = (TileData)wallpapersLV.SelectedItem;
                 SetupDesktop.SendCustomiseMsgtoWallpaper2(selection.LivelyInfo.FileName);
@@ -1063,7 +1063,7 @@ namespace livelywpf
         }
         private static void ShowCustomiseWidget()
         {
-            if (multiscreen)
+            if (Multiscreen)
             {
                 //monitor select dialog
                 DisplaySelectWindow displaySelectWindow = new DisplaySelectWindow
@@ -1272,13 +1272,13 @@ namespace livelywpf
                                     SaveData.info.FileName = null;
                                 }
                             }
-                            SaveData.SaveWallpaperMetaData(SaveData.info, App.pathData + "\\tmpdata\\wpdata\\");
+                            SaveData.SaveWallpaperMetaData(SaveData.info, App.PathData + "\\tmpdata\\wpdata\\");
                         }
                         else
                         {
                             return;
                         }
-                        zip.AddFile(App.pathData + "\\tmpdata\\wpdata\\LivelyInfo.json", "");
+                        zip.AddFile(App.PathData + "\\tmpdata\\wpdata\\LivelyInfo.json", "");
                         folderContents.Remove(folderContents.Single(x => Contains(x, "LivelyInfo.json", StringComparison.OrdinalIgnoreCase)));
                     }
                     else
@@ -1545,17 +1545,17 @@ namespace livelywpf
 
         private static void ToggleWallpaperPlaybackState()
         {
-            if (App.w != null)
+            if (App.W != null)
             {
                 if (SetupDesktop.GetEngineState() == SetupDesktop.EngineState.normal)
                 {
                     SetupDesktop.SetEngineState(SetupDesktop.EngineState.paused);
-                    App.w.pause_traybtn.Checked = true;
+                    App.W.pause_traybtn.Checked = true;
                 }
                 else
                 {
                     SetupDesktop.SetEngineState(SetupDesktop.EngineState.normal);
-                    App.w.pause_traybtn.Checked = false;
+                    App.W.pause_traybtn.Checked = false;
                 }
             }
         }
@@ -1565,7 +1565,7 @@ namespace livelywpf
             try
             {
                 //don't make much sense with per-display rule in multiple display systems, so turning off.
-                if (!multiscreen && !_isExit)
+                if (!Multiscreen && !_isExit)
                 {
                     if (isPaused)
                     {
@@ -1631,29 +1631,23 @@ namespace livelywpf
             //this.Close(); // MainWindow_Closing() handles the exit actions.
         }
 
-        private int windowShowCnt = 0;
         public async void ShowMainWindow()
         {
             //TODO:- add error if waitin to kill browser process, onclose runnin and user call this fn.
-            if (App.w.IsVisible)//this.IsVisible)
+            if (App.W.IsVisible)//this.IsVisible)
             {
-                if (App.w.WindowState == WindowState.Minimized)
+                if (App.W.WindowState == WindowState.Minimized)
                 {
-                    App.w.WindowState = WindowState.Normal;
+                    App.W.WindowState = WindowState.Normal;
                 }
-                App.w.Activate();
+                App.W.Activate();
             }
             else
             {
                 UpdateWallpaperLibrary();
-                App.w.Show();
+                App.W.Show();
                 //App.w.Activate();
 
-                if(UpdateNotifyOrNot() && windowShowCnt == 0)
-                {
-                    //ShowLivelyUpdateWindow();
-                }
-                windowShowCnt++;
             }
         }
 
@@ -1696,14 +1690,14 @@ namespace livelywpf
             }
             else if (type == SetupDesktop.WallpaperType.web || type == SetupDesktop.WallpaperType.url || type == SetupDesktop.WallpaperType.web_audio)
             {
-                if (highContrastFix)
+                if (HighContrastFix)
                 {
                     Logger.Info("behind-icon mode, skipping cef.");
                     _ = Task.Run(() => (MessageBox.Show("Web wallpaper is not available in High Contrast mode workaround, coming soon.", Properties.Resources.txtLivelyErrorMsgTitle)));
                     return;
                 }
 
-                if (!File.Exists(App.pathData + "\\external\\cef\\LivelyCefSharp.exe"))
+                if (!File.Exists(App.PathData + "\\external\\cef\\LivelyCefSharp.exe"))
                 {
                     Logger.Info("cefsharp is missing, skipping wallpaper.");
                     //_ = Task.Run(() => (MessageBox.Show(Properties.Resources.msgWebBrowserMissing, Properties.Resources.txtLivelyErrorMsgTitle, 
@@ -1714,7 +1708,7 @@ namespace livelywpf
             }
             else if ((type == SetupDesktop.WallpaperType.video && SaveData.config.VidPlayer == VideoPlayer.mpv))
             {
-                if (!File.Exists(App.pathData + "\\external\\mpv\\mpv.exe"))
+                if (!File.Exists(App.PathData + "\\external\\mpv\\mpv.exe"))
                 {
                     //_ = Task.Run(() => (MessageBox.Show("mpv player missing!\nwww.github.com/rocksdanister/lively/wiki/Video-Guide", Properties.Resources.txtLivelyErrorMsgTitle, 
                     //                                                                                                MessageBoxButton.OK, MessageBoxImage.Information)));
@@ -1724,7 +1718,7 @@ namespace livelywpf
             }
             else if (type == SetupDesktop.WallpaperType.video_stream)
             {
-                if (!File.Exists(App.pathData + "\\external\\mpv\\mpv.exe") || !File.Exists(App.pathData + "\\external\\mpv\\youtube-dl.exe"))
+                if (!File.Exists(App.PathData + "\\external\\mpv\\mpv.exe") || !File.Exists(App.PathData + "\\external\\mpv\\youtube-dl.exe"))
                 {
                     WpfNotification(NotificationType.infoUrl, Properties.Resources.txtLivelyErrorMsgTitle, "mpv player/youtube-dl missing!", "https://github.com/rocksdanister/lively/wiki/Youtube-Wallpaper");
                     return;
@@ -1746,7 +1740,7 @@ namespace livelywpf
             MetroProgressBar progressBar = null;
             isProcessWaitCancelled = false;
             INotificationMessage notification = null;
-            if (multiscreen && SaveData.config.WallpaperArrangement == WallpaperArrangement.duplicate)
+            if (Multiscreen && SaveData.config.WallpaperArrangement == WallpaperArrangement.duplicate)
             {
                 List<WallpaperLayout> tmp = new List<WallpaperLayout>();
                 foreach (var item in Screen.AllScreens)
@@ -1761,7 +1755,7 @@ namespace livelywpf
                 RestoreWallpaper(tmp);
                 return;
             }
-            else if (multiscreen && SaveData.config.WallpaperArrangement == WallpaperArrangement.per)
+            else if (Multiscreen && SaveData.config.WallpaperArrangement == WallpaperArrangement.per)
             {   
                 //monitor select dialog
                 DisplaySelectWindow displaySelectWindow = new DisplaySelectWindow
@@ -1816,7 +1810,7 @@ namespace livelywpf
                 //progressController.Canceled += ProgressController_Canceled;
                 */
                 notification = notify.Manager.CreateMessage()
-                    //.Accent("#808080")
+                    .Accent("#FF0000")
                     .Background("#333")
                     .HasHeader(Properties.Resources.txtLivelyWaitMsgTitle)
                     .HasMessage(Properties.Resources.msgLoadingAppWallpaper)
@@ -1845,23 +1839,6 @@ namespace livelywpf
 
             while (SetupDesktop.IsProcessWaitDone() == 0)
             {
-                /*
-                if (progressController != null)
-                {
-                    if (progress > 1)
-                        progress = 1;
-
-                    progressController.SetProgress(progress);
-                    progress += 100f / SetupDesktop.wallpaperWaitTime; //~approximation
-
-                    if (progressController.IsCanceled)
-                    {
-                        //cancelled = true;
-                        SetupDesktop.TaskProcessWaitCancel();
-                        break;
-                    }
-                }
-                */
                 if(progressBar != null)
                 {
                     if (progress > 100)
@@ -1920,24 +1897,10 @@ namespace livelywpf
             float progress = 0;
             int loadedWallpaperCount = 0;
             _isRestoringWallpapers = true;
-            /*
-            //cant show dialog when app started with window minimized.
-            if (this.IsVisible)
-            {
-                try
-                {
-                    progressController = await this.ShowProgressAsync(Properties.Resources.txtLivelyWaitMsgTitle, Properties.Resources.msgRestoringPrevWallpapers, true,
-                           new MetroDialogSettings() { AnimateHide = true, AnimateShow = false });
-                }
-                catch(Exception) //just in case.
-                {
-                    progressController = null;
-                }               
-            }
-            */
+
             MetroProgressBar progressBar = null;
             var notification = notify.Manager.CreateMessage()
-                //.Accent("#808080")
+                .Accent("#FF0000")
                 .Background("#333")
                 .HasHeader(Properties.Resources.txtLivelyWaitMsgTitle)
                 .HasMessage(Properties.Resources.msgLoadingAppWallpaper)
@@ -1962,14 +1925,14 @@ namespace livelywpf
             {
                 if (layout.Type == SetupDesktop.WallpaperType.web || layout.Type == SetupDesktop.WallpaperType.url || layout.Type == SetupDesktop.WallpaperType.web_audio)
                 {
-                    if (highContrastFix)
+                    if (HighContrastFix)
                     {
                         Logger.Info("behind-icon mode, skipping cef.");
                         _ = Task.Run(() => (MessageBox.Show("Web wallpaper is not available in High Contrast mode workaround, coming soon.", "Lively: Error, High Contrast Mode")));
                         continue;
                     }
 
-                    if (!File.Exists(Path.Combine(App.pathData + "\\external\\cef\\LivelyCefSharp.exe")))
+                    if (!File.Exists(Path.Combine(App.PathData + "\\external\\cef\\LivelyCefSharp.exe")))
                     {
                         Logger.Info("cefsharp is missing, skipping wallpaper.");
                         //_ = Task.Run(() => (MessageBox.Show(Properties.Resources.msgWebBrowserMissing, Properties.Resources.txtLivelyErrorMsgTitle)));
@@ -1979,7 +1942,7 @@ namespace livelywpf
                 }
                 else if (layout.Type == SetupDesktop.WallpaperType.video && SaveData.config.VidPlayer == VideoPlayer.mpv)
                 {
-                    if (!File.Exists(App.pathData + "\\external\\mpv\\mpv.exe"))
+                    if (!File.Exists(App.PathData + "\\external\\mpv\\mpv.exe"))
                     {
                         //_ = Task.Run(() => (MessageBox.Show("mpv player missing!\nwww.github.com/rocksdanister/lively/wiki/Video-Guide", Properties.Resources.txtLivelyErrorMsgTitle)));
                         WpfNotification(NotificationType.infoUrl, Properties.Resources.txtLivelyErrorMsgTitle, "mpv player missing!", "https://www.github.com/rocksdanister/lively/wiki/Video-Guide");
@@ -1988,7 +1951,7 @@ namespace livelywpf
                 }
                 else if (layout.Type == SetupDesktop.WallpaperType.video_stream)
                 {
-                    if (!File.Exists(App.pathData + "\\external\\mpv\\mpv.exe") || !File.Exists(App.pathData + "\\external\\mpv\\youtube-dl.exe"))
+                    if (!File.Exists(App.PathData + "\\external\\mpv\\mpv.exe") || !File.Exists(App.PathData + "\\external\\mpv\\youtube-dl.exe"))
                     {
                         WpfNotification(NotificationType.infoUrl, Properties.Resources.txtLivelyErrorMsgTitle, "mpv player/youtube-dl missing!", "https://github.com/rocksdanister/lively/wiki/Youtube-Wallpaper");
                         continue;
@@ -1996,7 +1959,7 @@ namespace livelywpf
                 }
 
                 SaveData.WallpaperLayout tmpData = new SaveData.WallpaperLayout();
-                if (multiscreen && (SaveData.config.WallpaperArrangement == WallpaperArrangement.per || SaveData.config.WallpaperArrangement == WallpaperArrangement.duplicate))
+                if (Multiscreen && (SaveData.config.WallpaperArrangement == WallpaperArrangement.per || SaveData.config.WallpaperArrangement == WallpaperArrangement.duplicate))
                 {
                     tmpData.FilePath = layout.FilePath;
                     tmpData.Type = layout.Type;
@@ -2036,15 +1999,7 @@ namespace livelywpf
                 Logger.Info("Setting up wallpaper:-" + tmpData.FilePath);
                 SetupDesktop.SetWallpaper(tmpData, false); //set wallpaper
                 loadedWallpaperCount++;
-                /*
-                if (progressController != null)
-                {
-                    if (progress > 1)
-                        progress = 1;
-                    progressController.SetProgress(progress);
-                    progress += (float)loadedWallpaperCount / (float)layoutList.Count;
-                }
-                */
+
 
                 progressBar.Value = progress * 100;
                 progress += (float)loadedWallpaperCount / (float)layoutList.Count;
@@ -2052,17 +2007,6 @@ namespace livelywpf
                 while (SetupDesktop.IsProcessWaitDone() == 0)
                 {
                     await Task.Delay(50);
-                    /*
-                    if (progressController != null)
-                    {
-                        if (progressController.IsCanceled)
-                        {
-                            cancelled = true;
-                            SetupDesktop.TaskProcessWaitCancel();
-                            break;
-                        }
-                    }
-                    */
                     if (isProcessRestoreCancelled)
                     {
                         break;
@@ -2076,15 +2020,6 @@ namespace livelywpf
             }
 
             _isRestoringWallpapers = false;
-            /*
-            if (progressController != null)
-            {
-                progressController.SetProgress(1);
-                //progressController.Canceled -= ProgressController_Canceled;
-                await progressController.CloseAsync();
-                progressController = null;
-            }
-            */
             layoutList.Clear();
             layoutList = null;
 
@@ -2115,7 +2050,7 @@ namespace livelywpf
             ZipInstallInfo zipInstance = null;
             string randomFolderName = Path.GetRandomFileName();
             string extractPath = null;
-            extractPath = App.pathData + "\\wallpapers\\" + randomFolderName;
+            extractPath = App.PathData + "\\wallpapers\\" + randomFolderName;
 
             //Todo: implement CheckZip() {thread blocking}, Error will be thrown during extractiong, which is being handled so not a big deal.
             //Ionic.Zip.ZipFile.CheckZip(zipLocation)
@@ -2123,7 +2058,7 @@ namespace livelywpf
             if (Directory.Exists(extractPath)) //likely impossible.
             {
                 Debug.WriteLine("same foldername with files, should be impossible... retrying with new random foldername");
-                extractPath = App.pathData + "\\wallpapers\\" + Path.GetRandomFileName();
+                extractPath = App.PathData + "\\wallpapers\\" + Path.GetRandomFileName();
 
                 if (Directory.Exists(extractPath))
                 {
@@ -2215,7 +2150,6 @@ namespace livelywpf
 
                         //await this.ShowMessageAsync("Error", "Not Lively wallpaper file.\nCheck out wiki page on how to create proper wallpaper file", MessageDialogStyle.Affirmative,
                         //    new MetroDialogSettings() { DialogTitleFontSize = 25, ColorScheme = MetroDialogColorScheme.Inverted, DialogMessageFontSize = 16 });
-
                     }
                 }
             }
@@ -2478,7 +2412,7 @@ namespace livelywpf
             WpfNotification(NotificationType.info, Properties.Resources.txtLivelyErrorMsgTitle, Properties.Resources.txtComingSoon);
             return;
 
-            var dir = Directory.GetFiles(App.pathData + @"\external\bizhawk", "EmuHawk.exe", SearchOption.AllDirectories); //might be slow, only check top?
+            var dir = Directory.GetFiles(App.PathData + @"\external\bizhawk", "EmuHawk.exe", SearchOption.AllDirectories); //might be slow, only check top?
             if (dir.Length != 0)
             {
                 SetupWallpaper(dir[0], SetupDesktop.WallpaperType.bizhawk);
@@ -2644,6 +2578,32 @@ namespace livelywpf
             cmbBoxStreamQuality.SelectionChanged += CmbBoxStreamQuality_SelectionChanged;
             transparencySlider.ValueChanged += TransparencySlider_ValueChanged;
             TileGenerateToggle.IsCheckedChanged += TileGenerateToggle_IsCheckedChanged;
+            comboBoxVideoPlayerScaling.SelectionChanged += ComboBoxVideoPlayerScaling_SelectionChanged;
+            comboBoxGIFPlayerScaling.SelectionChanged += ComboBoxGIFPlayerScaling_SelectionChanged;
+        }
+
+        private void ComboBoxGIFPlayerScaling_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            SaveData.config.GifScaler = (Stretch)comboBoxGIFPlayerScaling.SelectedIndex;
+            SaveData.SaveConfig();
+
+            var result = SetupDesktop.wallpapers.FindAll(x => x.Type == SetupDesktop.WallpaperType.gif);
+            SetupDesktop.CloseAllWallpapers(SetupDesktop.WallpaperType.gif);
+
+            if (result != null)
+                RestoreWallpaper(result);
+        }
+
+        private void ComboBoxVideoPlayerScaling_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            SaveData.config.VideoScaler = (Stretch)comboBoxVideoPlayerScaling.SelectedIndex;
+            SaveData.SaveConfig();
+
+            var videoWp = SetupDesktop.wallpapers.FindAll(x => x.Type == SetupDesktop.WallpaperType.video); //youtube is started as apptype, not included!
+            SetupDesktop.CloseAllWallpapers(SetupDesktop.WallpaperType.video);
+
+            if (videoWp != null)
+                RestoreWallpaper(videoWp);
         }
 
         private void TileGenerateToggle_IsCheckedChanged(object sender, EventArgs e)
@@ -2702,6 +2662,11 @@ namespace livelywpf
 
         private void RestoreMenuSettings()
         {
+            if(!App.isPortableBuild)
+            {
+                lblPortableTxt.Visibility = Visibility.Collapsed;
+            }
+
             if (SaveData.config.AppTransparency)
             {
                 if (SaveData.config.AppTransparencyPercent >= 0.5 && SaveData.config.AppTransparencyPercent <= 0.9)
@@ -2733,6 +2698,28 @@ namespace livelywpf
             TileAnimateToggle.IsChecked = SaveData.config.LiveTile;
             //fpsUIToggle.IsChecked = SaveData.config.Ui120FPS;
             //disableUIHWToggle.IsChecked = SaveData.config.UiDisableHW;
+
+            try
+            {
+                comboBoxGIFPlayerScaling.SelectedIndex = (int)SaveData.config.GifScaler;
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                SaveData.config.GifScaler = Stretch.UniformToFill;
+                SaveData.SaveConfig();
+                comboBoxGIFPlayerScaling.SelectedIndex = (int)SaveData.config.GifScaler;
+            }
+
+            try
+            {
+                comboBoxVideoPlayerScaling.SelectedIndex = (int)SaveData.config.VideoScaler;
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                SaveData.config.VideoScaler= Stretch.UniformToFill;
+                SaveData.SaveConfig();
+                comboBoxVideoPlayerScaling.SelectedIndex = (int)SaveData.config.VideoScaler;
+            }
 
             try
             {
@@ -2884,7 +2871,7 @@ namespace livelywpf
         {
             if (comboBoxPauseAlgorithm.SelectedIndex == 1)
             {
-                if (multiscreen)
+                if (Multiscreen)
                 {
                     comboBoxPauseAlgorithm.SelectedIndex = 0;
                     WpfNotification(NotificationType.info, Properties.Resources.txtLivelyErrorMsgTitle, "Currently this algorithm is incomplete in multiple display systems, disabling.");
@@ -3046,6 +3033,18 @@ namespace livelywpf
             //Debug.WriteLine("retured val:- " + DisplayLayoutWindow.index);
         }
 
+        private void Display_layout_Btn(object sender, EventArgs e)
+        {
+            DisplayLayoutWindow displayWindow = new DisplayLayoutWindow(this)
+            {
+                Owner = Window.GetWindow(this)
+            };
+            displayWindow.ShowDialog();
+            displayWindow.Close();
+            this.Activate();
+            //Debug.WriteLine("retured val:- " + DisplayLayoutWindow.index);
+        }
+
         /// <summary>
         /// Videoplayer change, restarts currently playing wp's to newly selected system.
         /// </summary>
@@ -3070,10 +3069,6 @@ namespace livelywpf
         /// <param name="e"></param>
         private void ComboBoxGIFPlayer_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            /*
-            if (setup == null)
-                return;
-            */
             SaveData.config.GifPlayer = (SaveData.GIFPlayer)comboBoxGIFPlayer.SelectedIndex;
             SaveData.SaveConfig();
 
@@ -3358,6 +3353,11 @@ namespace livelywpf
         private void hyperlinkUpdateBanner_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             ShowLivelyUpdateWindow();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
         #endregion ui_events

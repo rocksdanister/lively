@@ -609,6 +609,9 @@ https://github.com/rocksdanister/lively-cef
   <data name="txtMsgSelectWallpaperFile" xml:space="preserve">
     <value>未选择墙纸文件</value>
   </data>
+  <data name="txtMsgUpdaterPortableUnsupported" xml:space="preserve">
+    <value>Lively的便携式版本不支持Updater，请从网站下载最新的便携式版本。</value>
+  </data>
   <data name="txtNotes" xml:space="preserve">
     <value>注意：
 （1）活泼的窗户忽略了这些规则。

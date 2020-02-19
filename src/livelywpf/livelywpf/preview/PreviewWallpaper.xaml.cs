@@ -30,7 +30,7 @@ namespace livelywpf
     /// </summary>
     public partial class PreviewWallpaper : Window
     {
-        string saveDirectory = Path.Combine(App.pathData, "tmpdata", "wpdata");
+        string saveDirectory = Path.Combine(App.PathData, "tmpdata", "wpdata");
         int gifAnimationDelay = (int)Math.Round( (1f /SaveData.config.PreviewGIF.CaptureFps) * 1000f); //in milliseconds
         int gifSaveAnimationDelay = (int)Math.Round((1f / SaveData.config.PreviewGIF.GifFps) * 1000f);
         int gifTotalFrames = SaveData.config.PreviewGIF.CaptureFps * SaveData.config.PreviewGIF.CaptureDuration;
@@ -171,7 +171,7 @@ namespace livelywpf
             _InProgressClosing = false;
             System.Windows.Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, new ThreadStart(delegate
             {
-                App.w.LoadWallpaperFromWpDataFolder();
+                App.W.LoadWallpaperFromWpDataFolder();
             }));
 
             this.Close();

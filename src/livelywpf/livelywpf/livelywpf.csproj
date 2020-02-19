@@ -407,10 +407,9 @@
     <Resource Include="images\icons8-wrench-48.png" />
     <Resource Include="images\icons8-settings-48.png" />
     <Resource Include="images\icons8-gear-32.png" />
-    <Content Include="NLog.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <None Include="NLog.config">
       <SubType>Designer</SubType>
-    </Content>
+    </None>
     <None Include="docs\license.rtf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
