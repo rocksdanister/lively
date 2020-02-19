@@ -109,12 +109,12 @@ Help translate lively to other languages: <a href="https://github.com/rocksdanis
 
 [direct-full-portable-win32]: https://github.com/rocksdanister/lively/releases/download/v0.8.5.0/lively_portable_x86_full_v0850.zip
 
-[Having trouble? ](https://github.com/rocksdanister/lively/wiki/Common-Problems)
+**Installer will give Smartscreen warning, [discussion.](https://github.com/rocksdanister/lively/issues/9)**
 
 Certain antivirus software heuristics algorithm will detect lively as a virus, this is a false positive
 **lively is fully [opensource](https://en.wikipedia.org/wiki/Free_and_open-source_software), you are free to inspect the code.**
 
-**Installer will give smartscreen [warning.]**(https://github.com/rocksdanister/lively/issues/9)
+[Having trouble? ](https://github.com/rocksdanister/lively/wiki/Common-Problems)
 ## Issues
 ~~[TODO List](https://trello.com/b/rdFFxuMF/lively-wallpaper-system)~~
 
