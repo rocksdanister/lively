@@ -428,7 +428,8 @@
                                 <!--<TextBlock TextWrapping="WrapWithOverflow" Foreground="Olive" FontSize="11" Height="190" Margin="0,0,-0.2,0">Note:<LineBreak/>(1) Lively window ignores these rules.<LineBreak/>(2) Audio is always muted when other apps are in focus {except {1}, Lively window}.<LineBreak/>
                                 (3) Foreground Process algorithm has some limitations, check wiki for more information.<LineBreak/>(4) Application Rules has the highest priority.
                                 <LineBreak/>(5) Web browser is being minimized instead of pausing, so you will see wallpaper temporarily reverting to default in some cases; fix is coming soon.</TextBlock>-->
-                                <ScrollViewer Height="180" >
+                                <Controls:ToggleSwitch Name="batteryPauseToggle" Header="Pause on Battery Power"  ></Controls:ToggleSwitch>
+                                <ScrollViewer Height="180" Visibility="Collapsed" >
                                     <TextBlock TextWrapping="WrapWithOverflow" Foreground="{DynamicResource AccentColorBrush2}" Text="{x:Static p:Resources.txtNotes}"  />
                                 </ScrollViewer>
 

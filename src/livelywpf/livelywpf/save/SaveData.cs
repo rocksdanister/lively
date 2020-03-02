@@ -575,6 +575,7 @@ namespace livelywpf
             public AppRulesEnum AppFullscreenPause { get; set; }
             public DisplayPauseEnum DisplayPauseSettings { get; set; }
             public ProcessMonitorAlgorithm ProcessMonitorAlgorithm { get; set; }
+            public bool BatteryWallpaperPause { get; set; }
             public bool MuteVideo { get; set; }
             public bool MuteCef { get; set; } //unused, need to get processid of subprocess of cef.
             public bool MuteCefAudioIn { get; set; }
@@ -587,7 +588,6 @@ namespace livelywpf
             public System.Windows.Media.Stretch GifScaler { get; set; }
             public int Theme { get; set; }
             public StreamQualitySuggestion StreamQuality { get; set; } //video stream quality for youtube-dl, 0 - best(4k)
-
             public WallpaperArrangement WallpaperArrangement { get; set; } // 0 -per monitor, 1-span
             public bool DXVA { get; set; } //hw acceleration videoplayback, currently unused.
             public bool MouseHook { get; set; } //unused currently.
@@ -670,6 +670,7 @@ namespace livelywpf
                 WaterMark1 = true;
                 UseHighQualityThumbnail = true;
                 IgnoreUpdateTag = null;
+                BatteryWallpaperPause = false;
 
                 //media scaling
                 VideoScaler = System.Windows.Media.Stretch.Fill; 

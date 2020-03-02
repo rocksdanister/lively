@@ -1607,6 +1607,7 @@ namespace livelywpf
             }
             else
             {
+                //static event, otherwise memory leak.
                 SystemEvents.DisplaySettingsChanged -= SystemEvents_DisplaySettingsChanged;
 
                 SaveData.config.SafeShutdown = true;
@@ -2580,6 +2581,13 @@ namespace livelywpf
             TileGenerateToggle.IsCheckedChanged += TileGenerateToggle_IsCheckedChanged;
             comboBoxVideoPlayerScaling.SelectionChanged += ComboBoxVideoPlayerScaling_SelectionChanged;
             comboBoxGIFPlayerScaling.SelectionChanged += ComboBoxGIFPlayerScaling_SelectionChanged;
+            batteryPauseToggle.IsCheckedChanged += BatteryPauseToggle_IsCheckedChanged;
+        }
+
+        private void BatteryPauseToggle_IsCheckedChanged(object sender, EventArgs e)
+        {
+            SaveData.config.BatteryWallpaperPause = batteryPauseToggle.IsChecked.Value;
+            SaveData.SaveConfig();
         }
 
         private void ComboBoxGIFPlayerScaling_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -2667,6 +2675,7 @@ namespace livelywpf
                 lblPortableTxt.Visibility = Visibility.Collapsed;
             }
 
+            batteryPauseToggle.IsChecked = SaveData.config.BatteryWallpaperPause;
             if (SaveData.config.AppTransparency)
             {
                 if (SaveData.config.AppTransparencyPercent >= 0.5 && SaveData.config.AppTransparencyPercent <= 0.9)

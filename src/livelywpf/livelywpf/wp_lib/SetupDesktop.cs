@@ -1429,6 +1429,16 @@ namespace livelywpf
                 return;
             }
 
+            if(SaveData.config.BatteryWallpaperPause)
+            {
+                //on battery
+                if (System.Windows.Forms.SystemInformation.PowerStatus.PowerLineStatus == System.Windows.Forms.PowerLineStatus.Offline)
+                {
+                    Pause.SuspendWallpaper(true);
+                    return;
+                }
+            }
+
             if(SaveData.config.ProcessMonitorAlgorithm == SaveData.ProcessMonitorAlgorithm.foreground)
             {
                 //light, reliable & quick; have some limitations when smaller foreground window opened on top of already maximised window, this will fail detection.

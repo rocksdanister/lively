@@ -83,7 +83,7 @@ namespace livelywpf
             if (displayLayoutSelect.SelectedIndex == -1)
                 return;
 
-            SaveData.config.WallpaperArrangement = (SaveData.WallpaperArrangement) displayLayoutSelect.SelectedIndex;
+            SaveData.config.WallpaperArrangement = (SaveData.WallpaperArrangement)displayLayoutSelect.SelectedIndex;
             SaveData.SaveConfig();
 
             //close all currently running wp's & reset ui
