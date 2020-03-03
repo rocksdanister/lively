@@ -1759,7 +1759,7 @@ namespace livelywpf
                 return;
             }
             //Debug.WriteLine("FOREGROUND PROCESS:- " + currProcess.ProcessName);
-
+            
             #region Exceptions & Fixes
             ProcessMonitorFixes();
             try
@@ -1791,7 +1791,24 @@ namespace livelywpf
                         break;
                     }
                 }
-                
+
+                /*
+                //todo: use classname instead of processname for checking exception cases.
+                #region classname       
+                int nRet;
+                // Pre-allocate 256 characters, since this is the maximum class name length.
+                StringBuilder ClassName = new StringBuilder(256);
+                //Get the window class name
+                nRet = NativeMethods.GetClassName(hWnd, ClassName, ClassName.Capacity);
+                if (nRet != 0)
+                {
+                    Debug.WriteLine("classfetch success:" + ClassName.ToString());
+                }
+                else
+                    Debug.WriteLine("classfetch failed");
+                #endregion classname
+                */
+
                 if (currProcess.ProcessName.Equals("emuhawk", StringComparison.OrdinalIgnoreCase) || currProcess.ProcessName.Equals("livelywpf", StringComparison.OrdinalIgnoreCase) ||
                         currProcess.ProcessName.Equals("devenv", StringComparison.OrdinalIgnoreCase) || currProcess.ProcessName.Equals("shellexperiencehost", StringComparison.OrdinalIgnoreCase) ||  //visual studio, notification tray etc
                         (currProcess.ProcessName.Equals("searchui", StringComparison.OrdinalIgnoreCase)) || currProcess.ProcessName.Equals("livelycefsharp", StringComparison.OrdinalIgnoreCase))  //startmenu search..
@@ -1816,8 +1833,8 @@ namespace livelywpf
                 //Check we haven't picked up the desktop or the shell
                 if (!(hWnd.Equals(desktopHandle) || hWnd.Equals(shellHandle)))
                 {                
-                    if (MainWindow.Multiscreen == false || SaveData.config.DisplayPauseSettings == SaveData.DisplayPauseEnum.all //pause all wp's when any window is maximised.
-                            || (MainWindow.Multiscreen && SaveData.config.WallpaperArrangement == WallpaperArrangement.span) )//assuming single wp for span, so just pause "everything"
+                    if (MainWindow.Multiscreen == false || SaveData.config.DisplayPauseSettings == SaveData.DisplayPauseEnum.all) //pause all wp's when any window is maximised.
+                            //|| (MainWindow.Multiscreen && SaveData.config.WallpaperArrangement == WallpaperArrangement.span) )//assuming single wp for span, so just pause "everything"
                     {
                         if (IntPtr.Equals(hWnd, workerWOrig)) //win10
                         {
@@ -1890,6 +1907,24 @@ namespace livelywpf
                         {
                             Pause.ResumeWallpaper(false, currDisplay);
                         }
+                        else if(SaveData.config.WallpaperArrangement == WallpaperArrangement.span)
+                        {
+                            if(IsZoomedSpan(hWnd))
+                            {
+                                Pause.SuspendWallpaper(true, Screen.PrimaryScreen.DeviceName);
+                            }
+                            else //window is not greater >90%
+                            {
+                                if (SaveData.config.AppFocusPause == SaveData.AppRulesEnum.pause)
+                                {
+                                    Pause.SuspendWallpaper(true, Screen.PrimaryScreen.DeviceName);
+                                }
+                                else
+                                {
+                                    Pause.SuspendWallpaper(false, Screen.PrimaryScreen.DeviceName); //resume with audio disabled etc
+                                }
+                            }
+                        }
                         else if (NativeMethods.IsZoomed(hWnd)) // if window is maximised.
                         {
                             if (SaveData.config.AppFullscreenPause == SaveData.AppRulesEnum.ignore)
@@ -1961,6 +1996,35 @@ namespace livelywpf
             NativeMethods.GetWindowRect(hWnd, out appBounds);
             screenBounds = System.Windows.Forms.Screen.FromHandle(hWnd).Bounds;
             if ((appBounds.Bottom - appBounds.Top) >= screenBounds.Height * .95f && (appBounds.Right - appBounds.Left) >= screenBounds.Width * .95f) // > if foreground app 95% working-area( - taskbar of monitor)
+                return true;
+            else
+                return false;
+        }
+
+        /// <summary>
+        /// Checks if the hWnd dimension is spanned across all displays.
+        /// </summary>
+        /// <param name="hWnd"></param>
+        /// <returns></returns>
+        private static bool IsZoomedSpan(IntPtr hWnd)
+        {
+            try
+            {
+                NativeMethods.GetWindowThreadProcessId(hWnd, out processID);
+                currProcess = Process.GetProcessById(processID);
+            }
+            catch
+            {
+
+                Debug.WriteLine("getting processname failure, skipping isZoomedCustom()");
+                //ignore, admin process etc
+                return false;
+            }
+
+            NativeMethods.GetWindowRect(hWnd, out appBounds);
+            //screenBounds = System.Windows.Forms.Screen.FromHandle(hWnd).Bounds;
+            //Debug.WriteLine("app:" + (appBounds.Bottom - appBounds.Top) +" " + (appBounds.Right - appBounds.Left) + "\nvirtual:" + SystemInformation.VirtualScreen.Height + " " + SystemInformation.VirtualScreen.Width);
+            if ((appBounds.Bottom - appBounds.Top) >= SystemInformation.VirtualScreen.Height * .95f && (appBounds.Right - appBounds.Left) >= SystemInformation.VirtualScreen.Width * .95f) // > if foreground app 95% working-area( - taskbar of monitor)
                 return true;
             else
                 return false;

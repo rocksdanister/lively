@@ -1565,7 +1565,7 @@ namespace livelywpf
             try
             {
                 //don't make much sense with per-display rule in multiple display systems, so turning off.
-                if (!Multiscreen && !_isExit)
+                if ( (!Multiscreen || SaveData.config.WallpaperArrangement == WallpaperArrangement.span) && !_isExit)
                 {
                     if (isPaused)
                     {
