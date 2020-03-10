@@ -1,0 +1,131 @@
+///
+/// Hyperspace by HTML5 UP
+/// html5up.net | @ajlkn
+/// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+///
+
+/* Spotlights */
+
+	.spotlights {
+		> section {
+			@include vendor('display', 'flex');
+			@include vendor('flex-direction', 'row');
+			min-height: 22.5em;
+
+			body.is-ie & {
+				min-height: 0;
+			}
+
+			> .image {
+				background-position: center center;
+				background-size: cover;
+				border-radius: 0;
+				display: block;
+				position: relative;
+				width: 25em;
+
+				img {
+					border-radius: 0;
+					display: block;
+				}
+
+				&:before {
+					@include vendor('transition', 'opacity #{_duration(activation)} ease');
+					background: transparentize(_palette(bg), 0.1);
+					content: '';
+					display: block;
+					height: 100%;
+					left: 0;
+					opacity: 0;
+					position: absolute;
+					top: 0;
+					width: 100%;
+				}
+			}
+
+			> .content {
+				@include padding(4em, 5em);
+				@include vendor('display', 'flex');
+				@include vendor('flex-direction', 'column');
+				@include vendor('justify-content', 'center');
+				width: #{_size(inner-width) - 25em};
+				-ms-flex: 1;
+
+				> .inner {
+					@include vendor('transform', 'translateX(0) translateY(0)');
+					@include vendor('transition', (
+						'opacity #{_duration(activation)} ease',
+						'transform #{_duration(activation)} ease'
+					));
+					opacity: 1;
+				}
+			}
+
+			&:nth-child(1) {
+			}
+
+			&:nth-child(2) {
+				background-color: rgba(0,0,0,0.05);
+			}
+
+			&:nth-child(3) {
+				background-color: rgba(0,0,0,0.1);
+			}
+
+			&.inactive,
+			body.is-preload & {
+				> .image {
+					&:before {
+						opacity: 1;
+					}
+				}
+
+				> .content {
+					> .inner {
+						@include vendor('transform', 'translateX(-1em)');
+						opacity: 0;
+					}
+				}
+			}
+
+			@include breakpoint('<=xlarge') {
+				> .content {
+					@include padding(4em, 4em);
+				}
+			}
+
+			@include breakpoint('<=medium') {
+				display: block;
+
+				> .image {
+					width: 100%;
+					height: 50vh;
+				}
+
+				> .content {
+					width: 100%;
+				}
+
+				&.inactive,
+				body.is-preload & {
+					> .content {
+						> .inner {
+							@include vendor('transform', 'translateY(1em)');
+						}
+					}
+				}
+			}
+
+			@include breakpoint('<=small') {
+				> .image {
+					height: 50vh;
+					min-height: 15em;
+				}
+
+				> .content {
+					@include padding(3em, 2em);
+				}
+			}
+		}
+	}
+

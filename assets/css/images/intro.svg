@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000px" height="500px" viewBox="0 0 1000 500" zoomAndPan="disable" preserveAspectRatio="none">
+
+    <style type="text/css"><![CDATA[
+		line
+		{
+			stroke: rgba(255,255,255,0.05);
+			stroke-width: 1px;
+		}
+    ]]></style>
+
+	<line x1="1100" y1="500" x2="-1000" y2="250" />
+	<line x1="1100" y1="500" x2="-1000" y2="-100" />
+	<line x1="1100" y1="500" x2="-1000" y2="-500" />
+	<line x1="1100" y1="500" x2="-250" y2="-500" />
+	<line x1="1100" y1="500" x2="300" y2="-500" />
+	<line x1="1100" y1="500" x2="750" y2="-500" />
+
+	<line x1="1750" y1="0" x2="750" y2="500" />
+	<line x1="1500" y1="0" x2="500" y2="500" />
+	<line x1="1150" y1="0" x2="150" y2="500" />
+	<line x1="700" y1="0" x2="-300" y2="500" />
+	<line x1="150" y1="0" x2="-850" y2="500" />
+
+</svg>
