@@ -68,7 +68,12 @@
 					  color: 0x50409a,
 					  waveSpeed: 0.50,
 					})
+					//horizon scrollbar fix... sort of.
+					window.onload = function() {
+						window.dispatchEvent(new Event('resize'));
+  					};
 					</script>
+
 				<!-- One -->
 					<section id="one" class="wrapper style2 spotlights">
 					<section>
