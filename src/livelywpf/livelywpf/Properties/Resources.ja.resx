@@ -400,6 +400,9 @@ Windows 7が設定されている場合-最適な外観と調整適用します�
   <data name="txtGifPlayerToolTip" xml:space="preserve">
     <value> Directshowには、追加プラグインのインストールが必要です。</value>
   </data>
+  <data name="txtGifScaling" xml:space="preserve">
+    <value>GIFフィット：</value>
+  </data>
   <data name="txtHelp" xml:space="preserve">
     <value>ヘルプ</value>
   </data>
@@ -704,8 +707,14 @@ Windows 7が設定されている場合-最適な外観と調整適用します�
   <data name="txtVideoPlayerToolTip" xml:space="preserve">
     <value> Directshowには、追加プラグインのインストールが必要です。</value>
   </data>
+  <data name="txtVideoScaling" xml:space="preserve">
+    <value>ビデオフィット：</value>
+  </data>
   <data name="txtWallpaperPlayback" xml:space="preserve">
     <value>壁紙の再生：</value>
+  </data>
+  <data name="txtWhenBattery" xml:space="preserve">
+    <value>バッテリー電源の場合：</value>
   </data>
   <data name="txtWindowTitleSelectDisplay" xml:space="preserve">
     <value>表示を選択</value>

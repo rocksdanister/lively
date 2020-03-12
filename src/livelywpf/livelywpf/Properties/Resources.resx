@@ -151,7 +151,7 @@
     <value>Per Display</value>
   </data>
   <data name="cmbBoxSpan" xml:space="preserve">
-    <value>Span(Experimental)</value>
+    <value>Span</value>
   </data>
   <data name="cmbBoxVideoPlayer1" xml:space="preserve">
     <value>Media Foundation</value>
@@ -395,6 +395,9 @@ If still not working, close &amp; start Lively again/ restart windows.
   </data>
   <data name="txtGifPlayerToolTip" xml:space="preserve">
     <value>Directshow requires additionals plugins to be installed.</value>
+  </data>
+  <data name="txtGifScaling" xml:space="preserve">
+    <value>GIF Scaling/Fit:</value>
   </data>
   <data name="txtHelp" xml:space="preserve">
     <value>Help</value>
@@ -699,8 +702,14 @@ THERE WILL BE BUGS &amp; CRASHES, PROCEED WITH CAUTION!!!</value>
   <data name="txtVideoPlayerToolTip" xml:space="preserve">
     <value>Directshow requires additionals plugins to be installed.</value>
   </data>
+  <data name="txtVideoScaling" xml:space="preserve">
+    <value>Video Scaling/Fit:</value>
+  </data>
   <data name="txtWallpaperPlayback" xml:space="preserve">
     <value>Wallpaper Playback:</value>
+  </data>
+  <data name="txtWhenBattery" xml:space="preserve">
+    <value>When on Battery Power:</value>
   </data>
   <data name="txtWindowTitleSelectDisplay" xml:space="preserve">
     <value>Select Display</value>

@@ -400,6 +400,9 @@ https://github.com/rocksdanister/lively-cef
   <data name="txtGifPlayerToolTip" xml:space="preserve">
     <value> Directshow需要安装其他插件。</value>
   </data>
+  <data name="txtGifScaling" xml:space="preserve">
+    <value>GIF适合度：</value>
+  </data>
   <data name="txtHelp" xml:space="preserve">
     <value>帮助</value>
   </data>
@@ -704,8 +707,14 @@ https://github.com/rocksdanister/lively-cef
   <data name="txtVideoPlayerToolTip" xml:space="preserve">
     <value> Directshow需要安装其他插件。</value>
   </data>
+  <data name="txtVideoScaling" xml:space="preserve">
+    <value>影片适合度：</value>
+  </data>
   <data name="txtWallpaperPlayback" xml:space="preserve">
     <value>墙纸播放：</value>
+  </data>
+  <data name="txtWhenBattery" xml:space="preserve">
+    <value>电池供电时：</value>
   </data>
   <data name="txtWindowTitleSelectDisplay" xml:space="preserve">
     <value>选择显示</value>

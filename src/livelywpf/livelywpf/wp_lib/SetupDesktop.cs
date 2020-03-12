@@ -1429,7 +1429,7 @@ namespace livelywpf
                 return;
             }
 
-            if(SaveData.config.BatteryWallpaperPause)
+            if(SaveData.config.BatteryPause == AppRulesEnum.pause)
             {
                 //on battery
                 if (System.Windows.Forms.SystemInformation.PowerStatus.PowerLineStatus == System.Windows.Forms.PowerLineStatus.Offline)
@@ -2022,7 +2022,6 @@ namespace livelywpf
             }
 
             NativeMethods.GetWindowRect(hWnd, out appBounds);
-            //screenBounds = System.Windows.Forms.Screen.FromHandle(hWnd).Bounds;
             //Debug.WriteLine("app:" + (appBounds.Bottom - appBounds.Top) +" " + (appBounds.Right - appBounds.Left) + "\nvirtual:" + SystemInformation.VirtualScreen.Height + " " + SystemInformation.VirtualScreen.Width);
             if ((appBounds.Bottom - appBounds.Top) >= SystemInformation.VirtualScreen.Height * .95f && (appBounds.Right - appBounds.Left) >= SystemInformation.VirtualScreen.Width * .95f) // > if foreground app 95% working-area( - taskbar of monitor)
                 return true;
@@ -2685,16 +2684,18 @@ namespace livelywpf
         /// <param name="windowHandle">handle of wp</param>
         public static void SetParentWorkerW(IntPtr windowHandle)
         {
-            //return;
             if (System.Environment.OSVersion.Version.Major == 6 && System.Environment.OSVersion.Version.Minor == 1) //windows 7
             {
-                NativeMethods.ShowWindow(workerw, (uint)0); //hide worker handle.
+                if(!workerw.Equals(progman)) //this should fix the win7 wp disappearing issue.
+                    NativeMethods.ShowWindow(workerw, (uint)0);
+
                 IntPtr ret = NativeMethods.SetParent(windowHandle, progman);
                 if(ret.Equals(IntPtr.Zero))
                 {
                     LogWin32Error("failed to set parent(win7),");
                 }
-                workerw = progman;//worker handle is progman in win7, this is untested with all fn's: addwallpaper(), wp pause, resize events.. (I don't have win7 system with me).
+                //workerw is assumed as progman in win7, this is untested with all fn's: addwallpaper(), wp pause, resize events.. (I don't have win7 system with me).
+                workerw = progman;
             }
             else
             {

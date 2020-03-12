@@ -710,4 +710,13 @@ CHROME, STEAM .. जैसे कार्यक्रम न चलाएं, �
   <data name="txtMsgUpdaterPortableUnsupported" xml:space="preserve">
     <value>अपडेटर लाइवली के पोर्टेबल संस्करण में समर्थित नहीं है, वेबसाइट से नवीनतम पोर्टेबल रिलीज़ डाउनलोड करें।</value>
   </data>
+  <data name="txtGifScaling" xml:space="preserve">
+    <value>GIF फ़िट:</value>
+  </data>
+  <data name="txtVideoScaling" xml:space="preserve">
+    <value>वीडियो फ़िट:</value>
+  </data>
+  <data name="txtWhenBattery" xml:space="preserve">
+    <value>जब बैटरी पावर पर:</value>
+  </data>
 </root>

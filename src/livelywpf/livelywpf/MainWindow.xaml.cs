@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -9,16 +8,11 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using System.Diagnostics;
-
 using System.Reflection;
 using Ionic.Zip;
-//using System.IO.Compression;
 using System.Windows.Forms;
 using System.IO;
 using Microsoft.Win32;
@@ -29,16 +23,13 @@ using System.Security.Cryptography;
 using Octokit;
 using FileMode = System.IO.FileMode;
 using Microsoft.WindowsAPICodePack.Shell;
-using IWshRuntimeLibrary;
 using System.Threading;
 using File = System.IO.File;
 using NLog;
 using System.Collections.ObjectModel;
 using System.Windows.Media.Animation;
 using System.ComponentModel;
-
 using static livelywpf.SaveData;
-using System.Text.RegularExpressions;
 using System.Windows.Interop;
 using SaveFileDialog = Microsoft.Win32.SaveFileDialog;
 using System.Globalization;
@@ -675,15 +666,27 @@ namespace livelywpf
                             
                         }
 
-                        if (File.Exists(SaveData.info.FileName) || info.IsAbsolutePath //load anyway for absolutepath, setupwallpaper will check if file exists for this type and give warning.
-                            || info.Type == SetupDesktop.WallpaperType.video_stream || info.Type == SetupDesktop.WallpaperType.url) 
+                        //load anyway for absolutepath, setupwallpaper will check if file exists for this type and give warning.
+                        //this also prevents disk powerup in the event the files are in different hdd thats sleeping and lively is launched from tray.
+                        if (info.IsAbsolutePath) 
                         {
-                            Logger.Info("Loading Wallpaper:- " + SaveData.info.FileName + " " + SaveData.info.Type);
+                            Logger.Info("Loading Wallpaper (absolute path):- " + SaveData.info.FileName + " " + SaveData.info.Type);
+                            tmpLoadedWallpapers.Add(new TileData(info, item));
+                        }
+                        else if(info.Type == SetupDesktop.WallpaperType.video_stream
+                                || info.Type == SetupDesktop.WallpaperType.url) //no files for this type.)
+                        {
+                            Logger.Info("Loading Wallpaper (url/stream):- " + SaveData.info.FileName + " " + SaveData.info.Type);
+                            tmpLoadedWallpapers.Add(new TileData(info, item));
+                        }
+                        else if (File.Exists(SaveData.info.FileName))
+                        {
+                            Logger.Info("Loading Wallpaper (wp dir):- " + SaveData.info.FileName + " " + SaveData.info.Type);
                             tmpLoadedWallpapers.Add(new TileData(info, item));
                         }
                         else
                         {
-                            Logger.Info("Files does not exist, skipping wallpaper:- " + SaveData.info.FileName + " " + SaveData.info.Type);
+                            Logger.Info("Skipping wallpaper:- " + SaveData.info.FileName + " " + SaveData.info.Type);
                         }
                     }
                 }
@@ -2581,12 +2584,12 @@ namespace livelywpf
             TileGenerateToggle.IsCheckedChanged += TileGenerateToggle_IsCheckedChanged;
             comboBoxVideoPlayerScaling.SelectionChanged += ComboBoxVideoPlayerScaling_SelectionChanged;
             comboBoxGIFPlayerScaling.SelectionChanged += ComboBoxGIFPlayerScaling_SelectionChanged;
-            batteryPauseToggle.IsCheckedChanged += BatteryPauseToggle_IsCheckedChanged;
+            comboBoxBatteryPerf.SelectionChanged += ComboBoxBatteryPerf_SelectionChanged;
         }
 
-        private void BatteryPauseToggle_IsCheckedChanged(object sender, EventArgs e)
+        private void ComboBoxBatteryPerf_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            SaveData.config.BatteryWallpaperPause = batteryPauseToggle.IsChecked.Value;
+            SaveData.config.BatteryPause = (SaveData.AppRulesEnum)comboBoxBatteryPerf.SelectedIndex;
             SaveData.SaveConfig();
         }
 
@@ -2675,7 +2678,7 @@ namespace livelywpf
                 lblPortableTxt.Visibility = Visibility.Collapsed;
             }
 
-            batteryPauseToggle.IsChecked = SaveData.config.BatteryWallpaperPause;
+            
             if (SaveData.config.AppTransparency)
             {
                 if (SaveData.config.AppTransparencyPercent >= 0.5 && SaveData.config.AppTransparencyPercent <= 0.9)
@@ -2717,6 +2720,17 @@ namespace livelywpf
                 SaveData.config.GifScaler = Stretch.UniformToFill;
                 SaveData.SaveConfig();
                 comboBoxGIFPlayerScaling.SelectedIndex = (int)SaveData.config.GifScaler;
+            }
+
+            try
+            {
+                comboBoxBatteryPerf.SelectedIndex = (int)SaveData.config.BatteryPause;
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                SaveData.config.BatteryPause = AppRulesEnum.ignore;
+                SaveData.SaveConfig();
+                comboBoxBatteryPerf.SelectedIndex = (int)SaveData.config.BatteryPause;
             }
 
             try
@@ -3093,7 +3107,11 @@ namespace livelywpf
 
         private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
         {
-            Process.Start(e.Uri.AbsoluteUri);
+            try
+            {
+                Process.Start(e.Uri.AbsoluteUri);
+            }
+            catch { } //if no default mail client, win7 error.
         }
 
         private void Hyperlink_SupportPage(object sender, RoutedEventArgs e)
@@ -3266,11 +3284,14 @@ namespace livelywpf
             return "\"" + link + "\"" + " --force-window=yes --loop-file --keep-open --hwdec=yes" + quality;
         }
 
-        public readonly static string[] formatsVideo = { ".dat", ".wmv", ".3g2", ".3gp", ".3gp2", ".3gpp", ".amv", ".asf",  ".avi", ".bin", ".cue", ".divx", ".dv", ".flv", ".gxf", ".iso", ".m1v", ".m2v", ".m2t", ".m2ts", ".m4v",
-                                        ".mkv", ".mov", ".mp2", ".mp2v", ".mp4", ".mp4v", ".mpa", ".mpe", ".mpeg", ".mpeg1", ".mpeg2", ".mpeg4", ".mpg", ".mpv2", ".mts", ".nsv", ".nuv", ".ogg", ".ogm", ".ogv", ".ogx", ".ps", ".rec", ".rm",
-                                        ".rmvb", ".tod", ".ts", ".tts", ".vob", ".vro", ".webm" };
+//        public readonly static string[] formatsVideo = { ".dat", ".wmv", ".3g2", ".3gp", ".3gp2", ".3gpp", ".amv", ".asf",  ".avi", ".bin", ".cue", ".divx", ".dv", ".flv", ".gxf", ".iso", ".m1v", ".m2v", ".m2t", ".m2ts", ".m4v",
+//                                        ".mkv", ".mov", ".mp2", ".mp2v", ".mp4", ".mp4v", ".mpa", ".mpe", ".mpeg", ".mpeg1", ".mpeg2", ".mpeg4", ".mpg", ".mpv2", ".mts", ".nsv", ".nuv", ".ogg", ".ogm", ".ogv", ".ogx", ".ps", ".rec", ".rm",
+//                                        ".rmvb", ".tod", ".ts", ".tts", ".vob", ".vro", ".webm" };
         static bool IsVideoFile(string path)
         {
+            string[] formatsVideo = { ".dat", ".wmv", ".3g2", ".3gp", ".3gp2", ".3gpp", ".amv", ".asf",  ".avi", ".bin", ".cue", ".divx", ".dv", ".flv", ".gxf", ".iso", ".m1v", ".m2v", ".m2t", ".m2ts", ".m4v",
+                                        ".mkv", ".mov", ".mp2", ".mp2v", ".mp4", ".mp4v", ".mpa", ".mpe", ".mpeg", ".mpeg1", ".mpeg2", ".mpeg4", ".mpg", ".mpv2", ".mts", ".nsv", ".nuv", ".ogg", ".ogm", ".ogv", ".ogx", ".ps", ".rec", ".rm",
+                                        ".rmvb", ".tod", ".ts", ".tts", ".vob", ".vro", ".webm" };
             if (formatsVideo.Contains(Path.GetExtension(path), StringComparer.OrdinalIgnoreCase))
             {
                 return true;

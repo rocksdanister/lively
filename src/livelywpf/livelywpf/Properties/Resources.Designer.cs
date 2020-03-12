@@ -160,7 +160,7 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Span(Experimental).
+        ///   Looks up a localized string similar to Span.
         /// </summary>
         public static string cmbBoxSpan {
             get {
@@ -822,6 +822,15 @@ namespace livelywpf.Properties {
         public static string txtGifPlayerToolTip {
             get {
                 return ResourceManager.GetString("txtGifPlayerToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GIF Scaling/Fit:.
+        /// </summary>
+        public static string txtGifScaling {
+            get {
+                return ResourceManager.GetString("txtGifScaling", resourceCulture);
             }
         }
         
@@ -1697,11 +1706,29 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Video Scaling/Fit:.
+        /// </summary>
+        public static string txtVideoScaling {
+            get {
+                return ResourceManager.GetString("txtVideoScaling", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wallpaper Playback:.
         /// </summary>
         public static string txtWallpaperPlayback {
             get {
                 return ResourceManager.GetString("txtWallpaperPlayback", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When on Battery Power:.
+        /// </summary>
+        public static string txtWhenBattery {
+            get {
+                return ResourceManager.GetString("txtWhenBattery", resourceCulture);
             }
         }
         

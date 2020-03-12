@@ -400,6 +400,9 @@ Se non funziona ancora, chiudi &amp; riavvia Lively / riavvia windows.</value>
   <data name="txtGifPlayerToolTip" xml:space="preserve">
     <value>Directshow richiede plugins aggiuntivi per essere installato.</value>
   </data>
+  <data name="txtGifScaling" xml:space="preserve">
+    <value>Vestibilità GIF:</value>
+  </data>
   <data name="txtHelp" xml:space="preserve">
     <value>Aiuto</value>
   </data>
@@ -703,8 +706,14 @@ CI SARANNO BUGS &amp; CRASHES, CONTINUA CON PRUDENZA!!!</value>
   <data name="txtVideoPlayerToolTip" xml:space="preserve">
     <value>Directshow richiede altri plugins per essere installato.</value>
   </data>
+  <data name="txtVideoScaling" xml:space="preserve">
+    <value>Adattamento video:</value>
+  </data>
   <data name="txtWallpaperPlayback" xml:space="preserve">
     <value>Wallpaper Playback:</value>
+  </data>
+  <data name="txtWhenBattery" xml:space="preserve">
+    <value>Quando è alimentato a batteria:</value>
   </data>
   <data name="txtWindowTitleSelectDisplay" xml:space="preserve">
     <value>Seleziona Display</value>

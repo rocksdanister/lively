@@ -400,6 +400,9 @@ Si aún no funciona, cierre Lively e inícielo de nuevo/ reinicie Windows.</valu
   <data name="txtGifPlayerToolTip" xml:space="preserve">
     <value>Directshow requiere plugins adicionales instalados.</value>
   </data>
+  <data name="txtGifScaling" xml:space="preserve">
+    <value>Ajuste GIF:</value>
+  </data>
   <data name="txtHelp" xml:space="preserve">
     <value>Ayuda</value>
   </data>
@@ -704,8 +707,14 @@ NO inicie programas como CHROME o STEAM.. que crean múltiples subprocesos.
   <data name="txtVideoPlayerToolTip" xml:space="preserve">
     <value>Directshow requiere plugins adicionales instalados.</value>
   </data>
+  <data name="txtVideoScaling" xml:space="preserve">
+    <value>Ajuste de video:</value>
+  </data>
   <data name="txtWallpaperPlayback" xml:space="preserve">
     <value>Reproducción de fondo de pantalla:</value>
+  </data>
+  <data name="txtWhenBattery" xml:space="preserve">
+    <value>Cuando funciona con batería:</value>
   </data>
   <data name="txtWindowTitleSelectDisplay" xml:space="preserve">
     <value>Seleccionar pantalla</value>
