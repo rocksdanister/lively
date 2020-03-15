@@ -1023,20 +1023,10 @@ namespace livelywpf
                 else if (ch == MessageDialogResult.Affirmative)
                 {}
             }
-            /*
-            int i = 0;
-            if ((i = SetupDesktop.wallpapers.FindIndex(x => x.FilePath.Equals(selection.LivelyInfo.FileName, StringComparison.Ordinal))) != -1)
-            {
-                if(selection.IsCustomisable)//File.Exists(Path.Combine(Path.GetDirectoryName(selection.LivelyInfo.FileName), "LivelyProperties.json")))
-                {
-                    SetupDesktop.SendCustomiseMsgtoWallpaper(SetupDesktop.wallpapers[i].DeviceName);
-                    //ShowCustomiseWidget(SetupDesktop.wallpapers[i].DeviceName);
-                    return;
-                }
-            }
-            */
+
             if (selection.IsCustomisable)
             {
+                //show customise btn when wp set.
                 selection.CustomiseBtnToggle = true;
             }
             
@@ -1048,6 +1038,11 @@ namespace livelywpf
                 SetupWallpaper(selection.LivelyInfo.FileName, selection.LivelyInfo.Type, null, true);
         }
 
+        /// <summary>
+        /// Library wp customise btn.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MenuItem_CustomiseWallpaper_Click(object sender, RoutedEventArgs e) //contextmenu
         {
             //ShowCustomiseWidget();
@@ -1057,13 +1052,39 @@ namespace livelywpf
             if (Multiscreen)
             {
                 var selection = (TileData)wallpapersLV.SelectedItem;
-                SetupDesktop.SendCustomiseMsgtoWallpaper2(selection.LivelyInfo.FileName);
+
+                //checking if same wp running more than 1 instance.
+                var wp = SetupDesktop.webProcesses.FindAll(x => x.FilePath.Equals(selection.LivelyInfo.FileName, StringComparison.Ordinal));
+                if (wp.Count > 1)
+                {
+                    //monitor select dialog
+                    DisplaySelectWindow displaySelectWindow = new DisplaySelectWindow
+                    {
+                        WindowStartupLocation = WindowStartupLocation.CenterScreen
+                    };
+                    displaySelectWindow.ShowDialog();
+
+                    if (DisplaySelectWindow.selectedDisplay == null) //none
+                    {
+                        return;
+                    }
+                    SetupDesktop.SendCustomiseMsgtoWallpaper(DisplaySelectWindow.selectedDisplay);
+                }
+                else
+                {
+                    SetupDesktop.SendCustomiseMsgtoWallpaper2(selection.LivelyInfo.FileName);
+                }
             }
             else
             {
                 SetupDesktop.SendCustomiseMsgtoWallpaper(Screen.PrimaryScreen.DeviceName);
             }
         }
+
+        /// <summary>
+        /// System tray customise option.
+        /// Always display selection dialog for multiple screens.
+        /// </summary>
         private static void ShowCustomiseWidget()
         {
             if (Multiscreen)
@@ -2601,8 +2622,10 @@ namespace livelywpf
             var result = SetupDesktop.wallpapers.FindAll(x => x.Type == SetupDesktop.WallpaperType.gif);
             SetupDesktop.CloseAllWallpapers(SetupDesktop.WallpaperType.gif);
 
-            if (result != null)
+            if (result.Count != 0)
+            {
                 RestoreWallpaper(result);
+            }
         }
 
         private void ComboBoxVideoPlayerScaling_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -2613,8 +2636,10 @@ namespace livelywpf
             var videoWp = SetupDesktop.wallpapers.FindAll(x => x.Type == SetupDesktop.WallpaperType.video); //youtube is started as apptype, not included!
             SetupDesktop.CloseAllWallpapers(SetupDesktop.WallpaperType.video);
 
-            if (videoWp != null)
+            if (videoWp.Count != 0)
+            {
                 RestoreWallpaper(videoWp);
+            }
         }
 
         private void TileGenerateToggle_IsCheckedChanged(object sender, EventArgs e)
@@ -2641,7 +2666,7 @@ namespace livelywpf
             var streamWP = SetupDesktop.wallpapers.FindAll(x => x.Type == SetupDesktop.WallpaperType.video_stream); 
             SetupDesktop.CloseAllWallpapers(SetupDesktop.WallpaperType.video_stream);
 
-            if (streamWP != null)
+            if (streamWP.Count != 0)
             {
                 RestoreWallpaper(streamWP);
             }
@@ -3081,8 +3106,10 @@ namespace livelywpf
             var videoWp = SetupDesktop.wallpapers.FindAll(x => x.Type == SetupDesktop.WallpaperType.video); //youtube is started as apptype, not included!
             SetupDesktop.CloseAllWallpapers(SetupDesktop.WallpaperType.video);
 
-            if (videoWp != null)
+            if (videoWp.Count != 0)
+            {
                 RestoreWallpaper(videoWp);
+            }
         }
 
         /// <summary>
@@ -3098,11 +3125,10 @@ namespace livelywpf
             var result = SetupDesktop.wallpapers.FindAll(x => x.Type == SetupDesktop.WallpaperType.gif);
             SetupDesktop.CloseAllWallpapers(SetupDesktop.WallpaperType.gif);
 
-            //no gif wp's currently running to restore; ignore.
-            if (result == null)
-                return;
-            else
+            if (result.Count != 0)
+            {
                 RestoreWallpaper(result);
+            }
         }
 
         private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)

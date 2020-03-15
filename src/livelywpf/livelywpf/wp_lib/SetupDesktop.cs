@@ -616,7 +616,7 @@ namespace livelywpf
                     }
                     //This usually happens if the app took too long then the timeout specified. (virus scan, too big a application, busy hdd? ).
                     MessageBox.Show(Properties.Resources.msgAppTimeout, Properties.Resources.txtLivelyErrorMsgTitle);
-
+   
                     dispatcherTimer.Start();
                     return;
                 }
@@ -634,21 +634,22 @@ namespace livelywpf
             }
             else if (layout.Type == WallpaperType.web || layout.Type == WallpaperType.url || layout.Type == WallpaperType.web_audio)
             {
-                //multiple instace. todo:- make it spawn a new browser window instead.
                 ProcessStartInfo start1 = new ProcessStartInfo();
                 if (layout.Type == WallpaperType.web)
                 {
-                    //start1.Arguments = "\"" + layout.filePath + "\"" + @" local" + @" audio";
-                    start1.Arguments = "\"" + layout.FilePath + "\"" + @" local";
+                    start1.Arguments = "--url "+"\"" + layout.FilePath + "\"" + " --type local" +" --display "+ "\"" + layout.DeviceName + "\"" +
+                                                            " --property "+ "\"" + System.IO.Path.Combine(App.PathData, "SaveData", "wpdata") +"\"";
                 }
                 else if (layout.Type == WallpaperType.web_audio)
                 {
-                    start1.Arguments = "\"" + layout.FilePath + "\"" + @" local" + @" audio";
+                    //start1.Arguments = "\"" + layout.FilePath + "\"" + @" local" + @" audio";
+                    start1.Arguments = "--url " + "\"" + layout.FilePath + "\"" + " --type local" + " --display " + "\"" + layout.DeviceName + "\"" + " --audio true" + 
+                                                                                    " --property " + "\"" + System.IO.Path.Combine(App.PathData, "SaveData", "wpdata") + "\"";
                 }
                 else
                 {
-                    //start1.Arguments = "\"" + layout.filePath + "\"" + " " + "\"" + "online" + "\"";
-                    start1.Arguments = layout.FilePath + @" online";
+                    //start1.Arguments = layout.FilePath + @" online";
+                    start1.Arguments = "--url " + "\"" + layout.FilePath + "\"" + " --type online" + " --display " + "\"" + layout.DeviceName + "\"";
                 }
                 start1.FileName = System.IO.Path.Combine(App.PathData , "external","cef","LivelyCefSharp.exe");
                 start1.RedirectStandardInput = true;
@@ -2584,7 +2585,7 @@ namespace livelywpf
                     if (filePath.Equals(item.FilePath, StringComparison.Ordinal))
                     {
                         item.Proc.StandardInput.WriteLine("lively-customise " + item.DisplayID);
-                        break; //todo: decide what to do multiscreen
+                        break; 
                     }
                 }
             }

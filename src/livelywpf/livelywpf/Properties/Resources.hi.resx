@@ -719,4 +719,7 @@ CHROME, STEAM .. जैसे कार्यक्रम न चलाएं, �
   <data name="txtWhenBattery" xml:space="preserve">
     <value>जब बैटरी पावर पर:</value>
   </data>
+  <data name="txtMoreWp" xml:space="preserve">
+    <value>अधिक वॉलपेपर ...</value>
+  </data>
 </root>

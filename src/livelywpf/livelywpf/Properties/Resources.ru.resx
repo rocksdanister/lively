@@ -606,6 +606,9 @@ https://github.com/rocksdanister/lively-cef
   <data name="txtLiveTileToolTip" xml:space="preserve">
     <value> (Экспериментальное, высокая загрузка ЦП) Воспроизвести предварительный просмотр обоев на плитке библиотеки. </value>
   </data>
+  <data name="txtMoreWp" xml:space="preserve">
+    <value>Больше обоев ...</value>
+  </data>
   <data name="txtMsgFillAllFields" xml:space="preserve">
     <value> Заполните все обязательные текстовые поля. </value>
   </data>

@@ -606,6 +606,9 @@ CI SARANNO BUGS &amp; CRASHES, CONTINUA CON PRUDENZA!!!</value>
   <data name="txtLiveTileToolTip" xml:space="preserve">
     <value>(Experimental) Preview del Wallpaper su piastrella.</value>
   </data>
+  <data name="txtMoreWp" xml:space="preserve">
+    <value>Più sfondi ...</value>
+  </data>
   <data name="txtMsgFillAllFields" xml:space="preserve">
     <value>Riempi tutti i requisiti scritti.</value>
   </data>

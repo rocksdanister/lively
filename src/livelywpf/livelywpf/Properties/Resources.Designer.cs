@@ -1414,6 +1414,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to More Wallpapers....
+        /// </summary>
+        public static string txtMoreWp {
+            get {
+                return ResourceManager.GetString("txtMoreWp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fille all the required text fields..
         /// </summary>
         public static string txtMsgFillAllFields {
