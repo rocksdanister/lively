@@ -400,6 +400,9 @@ Si aún no funciona, cierre Lively e inícielo de nuevo/ reinicie Windows.</valu
   <data name="txtGifPlayerToolTip" xml:space="preserve">
     <value>Directshow requiere plugins adicionales instalados.</value>
   </data>
+  <data name="txtGifScaling" xml:space="preserve">
+    <value>Ajuste GIF:</value>
+  </data>
   <data name="txtHelp" xml:space="preserve">
     <value>Ayuda</value>
   </data>
@@ -603,6 +606,9 @@ NO inicie programas como CHROME o STEAM.. que crean múltiples subprocesos.
   <data name="txtLiveTileToolTip" xml:space="preserve">
     <value>(Experimental, Alto uso de la CPU)Reproduzca la vista previa del fondo de pantalla en el mosaico de la librería.</value>
   </data>
+  <data name="txtMoreWp" xml:space="preserve">
+    <value>Más fondos de pantalla ...</value>
+  </data>
   <data name="txtMsgFillAllFields" xml:space="preserve">
     <value>Rellene todos los espacios requeridos.</value>
   </data>
@@ -704,8 +710,14 @@ NO inicie programas como CHROME o STEAM.. que crean múltiples subprocesos.
   <data name="txtVideoPlayerToolTip" xml:space="preserve">
     <value>Directshow requiere plugins adicionales instalados.</value>
   </data>
+  <data name="txtVideoScaling" xml:space="preserve">
+    <value>Ajuste de video:</value>
+  </data>
   <data name="txtWallpaperPlayback" xml:space="preserve">
     <value>Reproducción de fondo de pantalla:</value>
+  </data>
+  <data name="txtWhenBattery" xml:space="preserve">
+    <value>Cuando funciona con batería:</value>
   </data>
   <data name="txtWindowTitleSelectDisplay" xml:space="preserve">
     <value>Seleccionar pantalla</value>

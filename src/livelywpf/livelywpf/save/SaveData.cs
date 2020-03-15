@@ -573,6 +573,7 @@ namespace livelywpf
             public bool IsFirstRun { get; set; }
             public AppRulesEnum AppFocusPause { get; set; }
             public AppRulesEnum AppFullscreenPause { get; set; }
+            public AppRulesEnum BatteryPause { get; set; }
             public DisplayPauseEnum DisplayPauseSettings { get; set; }
             public ProcessMonitorAlgorithm ProcessMonitorAlgorithm { get; set; }
             public bool MuteVideo { get; set; }
@@ -587,7 +588,6 @@ namespace livelywpf
             public System.Windows.Media.Stretch GifScaler { get; set; }
             public int Theme { get; set; }
             public StreamQualitySuggestion StreamQuality { get; set; } //video stream quality for youtube-dl, 0 - best(4k)
-
             public WallpaperArrangement WallpaperArrangement { get; set; } // 0 -per monitor, 1-span
             public bool DXVA { get; set; } //hw acceleration videoplayback, currently unused.
             public bool MouseHook { get; set; } //unused currently.
@@ -645,6 +645,7 @@ namespace livelywpf
                 IsFirstRun = true;
                 AppFocusPause = AppRulesEnum.ignore;
                 AppFullscreenPause = AppRulesEnum.pause;
+                BatteryPause = AppRulesEnum.ignore;
                 DXVA = true;
                 MouseHook = true;
                 KeyHook = false;
@@ -662,7 +663,7 @@ namespace livelywpf
                 WallpaperWaitTime = 30000; // 30sec
                 ProcessTimerInterval = 500; //reduce to 250 for quicker response.
                 Language = CultureInfo.CurrentCulture.Name;//"en"; 
-                Theme = 0;
+                Theme = 1; //dark-olive, original default was dark-lime
                 StreamQuality = StreamQualitySuggestion.h720p;
                 AppTransparencyPercent = 0.9f;
                 GenerateTile = true;

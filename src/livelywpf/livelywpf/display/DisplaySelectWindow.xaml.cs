@@ -26,6 +26,7 @@ namespace livelywpf
 
         List<DisplayID> displayIDWindows = new List<DisplayID>();
         public static string selectedDisplay = null;
+
         public DisplaySelectWindow()
         {
             InitializeComponent();

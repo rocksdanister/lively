@@ -616,7 +616,7 @@ namespace livelywpf
                     }
                     //This usually happens if the app took too long then the timeout specified. (virus scan, too big a application, busy hdd? ).
                     MessageBox.Show(Properties.Resources.msgAppTimeout, Properties.Resources.txtLivelyErrorMsgTitle);
-
+   
                     dispatcherTimer.Start();
                     return;
                 }
@@ -634,21 +634,22 @@ namespace livelywpf
             }
             else if (layout.Type == WallpaperType.web || layout.Type == WallpaperType.url || layout.Type == WallpaperType.web_audio)
             {
-                //multiple instace. todo:- make it spawn a new browser window instead.
                 ProcessStartInfo start1 = new ProcessStartInfo();
                 if (layout.Type == WallpaperType.web)
                 {
-                    //start1.Arguments = "\"" + layout.filePath + "\"" + @" local" + @" audio";
-                    start1.Arguments = "\"" + layout.FilePath + "\"" + @" local";
+                    start1.Arguments = "--url "+"\"" + layout.FilePath + "\"" + " --type local" +" --display "+ "\"" + layout.DeviceName + "\"" +
+                                                            " --property "+ "\"" + System.IO.Path.Combine(App.PathData, "SaveData", "wpdata") +"\"";
                 }
                 else if (layout.Type == WallpaperType.web_audio)
                 {
-                    start1.Arguments = "\"" + layout.FilePath + "\"" + @" local" + @" audio";
+                    //start1.Arguments = "\"" + layout.FilePath + "\"" + @" local" + @" audio";
+                    start1.Arguments = "--url " + "\"" + layout.FilePath + "\"" + " --type local" + " --display " + "\"" + layout.DeviceName + "\"" + " --audio true" + 
+                                                                                    " --property " + "\"" + System.IO.Path.Combine(App.PathData, "SaveData", "wpdata") + "\"";
                 }
                 else
                 {
-                    //start1.Arguments = "\"" + layout.filePath + "\"" + " " + "\"" + "online" + "\"";
-                    start1.Arguments = layout.FilePath + @" online";
+                    //start1.Arguments = layout.FilePath + @" online";
+                    start1.Arguments = "--url " + "\"" + layout.FilePath + "\"" + " --type online" + " --display " + "\"" + layout.DeviceName + "\"";
                 }
                 start1.FileName = System.IO.Path.Combine(App.PathData , "external","cef","LivelyCefSharp.exe");
                 start1.RedirectStandardInput = true;
@@ -1429,6 +1430,16 @@ namespace livelywpf
                 return;
             }
 
+            if(SaveData.config.BatteryPause == AppRulesEnum.pause)
+            {
+                //on battery
+                if (System.Windows.Forms.SystemInformation.PowerStatus.PowerLineStatus == System.Windows.Forms.PowerLineStatus.Offline)
+                {
+                    Pause.SuspendWallpaper(true);
+                    return;
+                }
+            }
+
             if(SaveData.config.ProcessMonitorAlgorithm == SaveData.ProcessMonitorAlgorithm.foreground)
             {
                 //light, reliable & quick; have some limitations when smaller foreground window opened on top of already maximised window, this will fail detection.
@@ -1749,7 +1760,7 @@ namespace livelywpf
                 return;
             }
             //Debug.WriteLine("FOREGROUND PROCESS:- " + currProcess.ProcessName);
-
+            
             #region Exceptions & Fixes
             ProcessMonitorFixes();
             try
@@ -1781,7 +1792,24 @@ namespace livelywpf
                         break;
                     }
                 }
-                
+
+                /*
+                //todo: use classname instead of processname for checking exception cases.
+                #region classname       
+                int nRet;
+                // Pre-allocate 256 characters, since this is the maximum class name length.
+                StringBuilder ClassName = new StringBuilder(256);
+                //Get the window class name
+                nRet = NativeMethods.GetClassName(hWnd, ClassName, ClassName.Capacity);
+                if (nRet != 0)
+                {
+                    Debug.WriteLine("classfetch success:" + ClassName.ToString());
+                }
+                else
+                    Debug.WriteLine("classfetch failed");
+                #endregion classname
+                */
+
                 if (currProcess.ProcessName.Equals("emuhawk", StringComparison.OrdinalIgnoreCase) || currProcess.ProcessName.Equals("livelywpf", StringComparison.OrdinalIgnoreCase) ||
                         currProcess.ProcessName.Equals("devenv", StringComparison.OrdinalIgnoreCase) || currProcess.ProcessName.Equals("shellexperiencehost", StringComparison.OrdinalIgnoreCase) ||  //visual studio, notification tray etc
                         (currProcess.ProcessName.Equals("searchui", StringComparison.OrdinalIgnoreCase)) || currProcess.ProcessName.Equals("livelycefsharp", StringComparison.OrdinalIgnoreCase))  //startmenu search..
@@ -1806,8 +1834,8 @@ namespace livelywpf
                 //Check we haven't picked up the desktop or the shell
                 if (!(hWnd.Equals(desktopHandle) || hWnd.Equals(shellHandle)))
                 {                
-                    if (MainWindow.Multiscreen == false || SaveData.config.DisplayPauseSettings == SaveData.DisplayPauseEnum.all //pause all wp's when any window is maximised.
-                            || (MainWindow.Multiscreen && SaveData.config.WallpaperArrangement == WallpaperArrangement.span) )//assuming single wp for span, so just pause "everything"
+                    if (MainWindow.Multiscreen == false || SaveData.config.DisplayPauseSettings == SaveData.DisplayPauseEnum.all) //pause all wp's when any window is maximised.
+                            //|| (MainWindow.Multiscreen && SaveData.config.WallpaperArrangement == WallpaperArrangement.span) )//assuming single wp for span, so just pause "everything"
                     {
                         if (IntPtr.Equals(hWnd, workerWOrig)) //win10
                         {
@@ -1880,6 +1908,24 @@ namespace livelywpf
                         {
                             Pause.ResumeWallpaper(false, currDisplay);
                         }
+                        else if(SaveData.config.WallpaperArrangement == WallpaperArrangement.span)
+                        {
+                            if(IsZoomedSpan(hWnd))
+                            {
+                                Pause.SuspendWallpaper(true, Screen.PrimaryScreen.DeviceName);
+                            }
+                            else //window is not greater >90%
+                            {
+                                if (SaveData.config.AppFocusPause == SaveData.AppRulesEnum.pause)
+                                {
+                                    Pause.SuspendWallpaper(true, Screen.PrimaryScreen.DeviceName);
+                                }
+                                else
+                                {
+                                    Pause.SuspendWallpaper(false, Screen.PrimaryScreen.DeviceName); //resume with audio disabled etc
+                                }
+                            }
+                        }
                         else if (NativeMethods.IsZoomed(hWnd)) // if window is maximised.
                         {
                             if (SaveData.config.AppFullscreenPause == SaveData.AppRulesEnum.ignore)
@@ -1951,6 +1997,34 @@ namespace livelywpf
             NativeMethods.GetWindowRect(hWnd, out appBounds);
             screenBounds = System.Windows.Forms.Screen.FromHandle(hWnd).Bounds;
             if ((appBounds.Bottom - appBounds.Top) >= screenBounds.Height * .95f && (appBounds.Right - appBounds.Left) >= screenBounds.Width * .95f) // > if foreground app 95% working-area( - taskbar of monitor)
+                return true;
+            else
+                return false;
+        }
+
+        /// <summary>
+        /// Checks if the hWnd dimension is spanned across all displays.
+        /// </summary>
+        /// <param name="hWnd"></param>
+        /// <returns></returns>
+        private static bool IsZoomedSpan(IntPtr hWnd)
+        {
+            try
+            {
+                NativeMethods.GetWindowThreadProcessId(hWnd, out processID);
+                currProcess = Process.GetProcessById(processID);
+            }
+            catch
+            {
+
+                Debug.WriteLine("getting processname failure, skipping isZoomedCustom()");
+                //ignore, admin process etc
+                return false;
+            }
+
+            NativeMethods.GetWindowRect(hWnd, out appBounds);
+            //Debug.WriteLine("app:" + (appBounds.Bottom - appBounds.Top) +" " + (appBounds.Right - appBounds.Left) + "\nvirtual:" + SystemInformation.VirtualScreen.Height + " " + SystemInformation.VirtualScreen.Width);
+            if ((appBounds.Bottom - appBounds.Top) >= SystemInformation.VirtualScreen.Height * .95f && (appBounds.Right - appBounds.Left) >= SystemInformation.VirtualScreen.Width * .95f) // > if foreground app 95% working-area( - taskbar of monitor)
                 return true;
             else
                 return false;
@@ -2511,7 +2585,7 @@ namespace livelywpf
                     if (filePath.Equals(item.FilePath, StringComparison.Ordinal))
                     {
                         item.Proc.StandardInput.WriteLine("lively-customise " + item.DisplayID);
-                        break; //todo: decide what to do multiscreen
+                        break; 
                     }
                 }
             }
@@ -2611,16 +2685,18 @@ namespace livelywpf
         /// <param name="windowHandle">handle of wp</param>
         public static void SetParentWorkerW(IntPtr windowHandle)
         {
-            //return;
             if (System.Environment.OSVersion.Version.Major == 6 && System.Environment.OSVersion.Version.Minor == 1) //windows 7
             {
-                NativeMethods.ShowWindow(workerw, (uint)0); //hide worker handle.
+                if(!workerw.Equals(progman)) //this should fix the win7 wp disappearing issue.
+                    NativeMethods.ShowWindow(workerw, (uint)0);
+
                 IntPtr ret = NativeMethods.SetParent(windowHandle, progman);
                 if(ret.Equals(IntPtr.Zero))
                 {
                     LogWin32Error("failed to set parent(win7),");
                 }
-                workerw = progman;//worker handle is progman in win7, this is untested with all fn's: addwallpaper(), wp pause, resize events.. (I don't have win7 system with me).
+                //workerw is assumed as progman in win7, this is untested with all fn's: addwallpaper(), wp pause, resize events.. (I don't have win7 system with me).
+                workerw = progman;
             }
             else
             {

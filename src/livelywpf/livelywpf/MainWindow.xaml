@@ -141,7 +141,8 @@
                     <!-- Library Tiles-->
 
                     <ListBox x:Name="wallpapersLV"  HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="5,10,0,0" Height="478" Width="655" SelectionChanged="WallpapersLV_SelectionChanged" 
-                             ScrollViewer.VerticalScrollBarVisibility="Visible"  ScrollViewer.ScrollChanged="WallpapersLV_ScrollChanged" ScrollViewer.IsDeferredScrollingEnabled="True" >
+                             ScrollViewer.VerticalScrollBarVisibility="Visible"  ScrollViewer.ScrollChanged="WallpapersLV_ScrollChanged" >
+                        <!--  ScrollViewer.IsDeferredScrollingEnabled="True"-->
 
                         <ListBox.ContextMenu>
                             <ContextMenu>
@@ -217,6 +218,12 @@
                                     </Style.Triggers>
                                 </Style>
                             </TextBlock.Style>
+                        </TextBlock>
+
+                        <TextBlock TextAlignment="Right"  Canvas.Left="311" Canvas.Top="95" Margin="413,7,-413.4,2.6" ToolTip="https://www.reddit.com/r/LivelyWallpaper/">
+                            <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://www.reddit.com/r/LivelyWallpaper/" Foreground="#FF7D7B76">
+                                  <TextBlock Foreground="#FF7D7B76" Text="{x:Static p:Resources.txtMoreWp}" VerticalAlignment="Center" TextDecorations="Underline" />
+                            </Hyperlink>
                         </TextBlock>
                     </Grid>
 
@@ -323,7 +330,14 @@
                                 <Slider x:Name="transparencySlider" Minimum="0.5" Maximum="0.9" IsEnabled="False" IsMoveToPointEnabled="True" ></Slider>
                                 <Controls:ToggleSwitch Name="StartupToggle" Header="{x:Static p:Resources.txtStartup}" ToolTip="{x:Static p:Resources.txtStartupToolTip}"  ></Controls:ToggleSwitch>
                                 <Controls:ToggleSwitch Name="TileAnimateToggle" Header="{x:Static p:Resources.txtLiveTile}" ToolTip="{x:Static p:Resources.txtLiveTileToolTip}"></Controls:ToggleSwitch>
-                                <Controls:ToggleSwitch IsEnabled="False" Visibility="Hidden" Name="TileGenerateToggle" Header="Generate Tile:" ToolTip="Generate tiles automatically for all files, coming soon."></Controls:ToggleSwitch>
+                                <!--<Label Content="Display" Style="{StaticResource labelGreenH1}"/>-->
+                                <Button ClickMode="Release" Click="Display_layout_Btn" >
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="/images/monitor-50xw.png" Width="20" Height="20"/>
+                                        <TextBlock Text="Display Layout" VerticalAlignment="Center" />
+                                    </StackPanel>
+                                </Button>
+                                <Controls:ToggleSwitch IsEnabled="False" Visibility="Collapsed" Name="TileGenerateToggle" Header="Generate Tile:" ToolTip="Generate tiles automatically for all files, coming soon."></Controls:ToggleSwitch>
                                 <Label Content="{x:Static p:Resources.txtLabel16}" Style="{StaticResource labelGreenH1}"/>
 
                                 <!--<Label Content="UI: " FontSize="14.667" />-->
@@ -364,6 +378,15 @@
                             <StackPanel Orientation="Vertical" Margin="15,5,0,0" Canvas.Left="203"  Width="265" Height="500">
 
                                 <Label Content="{x:Static p:Resources.txtLabel17}" Style="{StaticResource labelGreenH1}"/>
+
+                                <Label Content="{x:Static p:Resources.txtVideoScaling}" FontSize="14.667" />
+                                <ComboBox Name="comboBoxVideoPlayerScaling">
+                                    <ComboBoxItem IsSelected="True"  Content="None"></ComboBoxItem>
+                                    <ComboBoxItem Content="Fill" ></ComboBoxItem>
+                                    <ComboBoxItem Content="Uniform"></ComboBoxItem>
+                                    <ComboBoxItem  Content="Uniform Fill"></ComboBoxItem>
+                                </ComboBox>
+                                
                                 <Label Content="{x:Static p:Resources.txtVideoPlayer}" ToolTip="{x:Static p:Resources.txtVideoPlayerToolTip}" FontSize="14.667" />
                                 <ComboBox Name="comboBoxVideoPlayer">
                                     <!-- SelectionChanged="ComboBoxVideoPlayer_SelectionChanged"> -->
@@ -373,21 +396,11 @@
                                 </ComboBox>
                                 <TextBlock Canvas.Left="241" Canvas.Top="98">
                                 <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://github.com/rocksdanister/lively/wiki/Video-Guide" 
-                                           Foreground="{DynamicResource AccentColorBrush3}" ><TextBlock Text="{x:Static p:Resources.txtLabel11}" /></Hyperlink>
-                            </TextBlock>
+                                           Foreground="{DynamicResource AccentColorBrush2}" ><TextBlock Text="{x:Static p:Resources.txtLabel11}" /></Hyperlink>
+                                </TextBlock>
                                 <Controls:ToggleSwitch Name="videoMuteToggle" Header="{x:Static p:Resources.txtAudioOut}" ToolTip="{x:Static p:Resources.txtAudioOutToolTip}" ></Controls:ToggleSwitch>
-                                <TextBlock Name="vid_audio_WarningText" TextWrapping="Wrap" Foreground="{DynamicResource AccentColorBrush3}" Text="{x:Static p:Resources.txtAudioLabel1}"/>
-
-                                <Label Content="{x:Static p:Resources.txtLabel18}" Style="{StaticResource labelGreenH1}"/>
-                                <Label Content="{x:Static p:Resources.txtGIFPlayer}" ToolTip="{x:Static p:Resources.txtGifPlayerToolTip}" FontSize="14.667" />
-                                <ComboBox Name="comboBoxGIFPlayer">
-                                    <ComboBoxItem IsSelected="True" ToolTip="{x:Static p:Resources.cmbBoxGIFPlayer1ToolTip}" Content="{x:Static p:Resources.cmbBoxGIFPlayer1}" ></ComboBoxItem>
-                                    <ComboBoxItem ToolTip="{x:Static p:Resources.cmbBoxGIFPlayer2ToolTip}" Content="{x:Static p:Resources.cmbBoxGIFPlayer2}"></ComboBoxItem>
-                                </ComboBox>
-                                <TextBlock Canvas.Left="241" Canvas.Top="98">
-                                <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://github.com/rocksdanister/lively/wiki/GIF-Guide" 
-                                           Foreground="{DynamicResource AccentColorBrush3}"><TextBlock Text="{x:Static p:Resources.txtLabel11}" /></Hyperlink>
-                            </TextBlock>
+                                <TextBlock Name="vid_audio_WarningText" TextWrapping="Wrap" Foreground="{DynamicResource AccentColorBrush2}" Text="{x:Static p:Resources.txtAudioLabel1}"/>
+                                
                                 <Label Content="{x:Static p:Resources.txtLabel19}" Style="{StaticResource labelGreenH1}"/>
                                 <Label Content="{x:Static p:Resources.txtBrowser}" ToolTip="{x:Static p:Resources.txtBrowserToolTip}" FontSize="14.667" />
                                 <ComboBox>
@@ -396,6 +409,7 @@
                                 </ComboBox>
                                 <Controls:ToggleSwitch Name="cefAudioInMuteToggle" Header="{x:Static p:Resources.txtAudioIn}" ToolTip="{x:Static p:Resources.txtAudioInToolTip}"></Controls:ToggleSwitch>
                                 <TextBlock Name="web_audio_WarningText" TextWrapping="Wrap" Foreground="IndianRed" Text="{x:Static p:Resources.txtAudioLabel2}"/>
+                                
                             </StackPanel>
 
                             <StackPanel Orientation="Vertical" Margin="15,5,0,0" Canvas.Left="203"  Width="265" Height="500">
@@ -414,6 +428,12 @@
                                     <ComboBoxItem IsSelected="True"  Content="{x:Static p:Resources.cmbBoxNothing}"></ComboBoxItem>
                                     <ComboBoxItem IsEnabled="False"  Content="{x:Static p:Resources.cmbBoxKill}"></ComboBoxItem>
                                 </ComboBox>
+                                <Label Content="{x:Static p:Resources.txtWhenBattery}" FontSize="12.667" />
+                                <ComboBox Name="comboBoxBatteryPerf" >
+                                    <ComboBoxItem Content="{x:Static p:Resources.cmbBoxPause}"></ComboBoxItem>
+                                    <ComboBoxItem IsSelected="True"  Content="{x:Static p:Resources.cmbBoxNothing}"></ComboBoxItem>
+                                    <ComboBoxItem IsEnabled="False"  Content="{x:Static p:Resources.cmbBoxKill}"></ComboBoxItem>
+                                </ComboBox>
                                 <Label  Content="{x:Static p:Resources.txtDisplayPauseRule}" FontSize="14.667" />
                                 <ComboBox Name="comboBoxMonitorPauseRule" >
                                     <ComboBoxItem IsSelected="True" Content="{x:Static p:Resources.cmbBoxPerDisplay}"></ComboBoxItem>
@@ -428,16 +448,20 @@
                                 <!--<TextBlock TextWrapping="WrapWithOverflow" Foreground="Olive" FontSize="11" Height="190" Margin="0,0,-0.2,0">Note:<LineBreak/>(1) Lively window ignores these rules.<LineBreak/>(2) Audio is always muted when other apps are in focus {except {1}, Lively window}.<LineBreak/>
                                 (3) Foreground Process algorithm has some limitations, check wiki for more information.<LineBreak/>(4) Application Rules has the highest priority.
                                 <LineBreak/>(5) Web browser is being minimized instead of pausing, so you will see wallpaper temporarily reverting to default in some cases; fix is coming soon.</TextBlock>-->
-                                <ScrollViewer Height="180" >
+                                                                
+                                <Label Content="Audio:" Style="{StaticResource labelGreenH1}"/>
+                                <Controls:ToggleSwitch Name="audioFocusedToggle" Header="{x:Static p:Resources.txtOtherAppsFocus}" ></Controls:ToggleSwitch>
+                                <ScrollViewer Height="180" Visibility="Collapsed" >
                                     <TextBlock TextWrapping="WrapWithOverflow" Foreground="{DynamicResource AccentColorBrush2}" Text="{x:Static p:Resources.txtNotes}"  />
                                 </ScrollViewer>
 
                             </StackPanel>
 
                             <StackPanel Orientation="Vertical" Margin="15,5,0,0" Width="265" Height="500">
+                                <!--
                                 <Label Content="Audio:" Style="{StaticResource labelGreenH1}"/>
                                 <Controls:ToggleSwitch Name="audioFocusedToggle" Header="{x:Static p:Resources.txtOtherAppsFocus}" ></Controls:ToggleSwitch>
-
+-->
                                 <Label Content="{x:Static p:Resources.txtLabelStream}" Style="{StaticResource labelGreenH1}"/>
                                 <Label Content="{x:Static p:Resources.txtLabelVideoQuality}" FontSize="14.667" />
                                 <ComboBox Name="cmbBoxStreamQuality" >
@@ -454,27 +478,9 @@
                                     <ComboBoxItem Content="VP9" IsSelected="True"></ComboBoxItem>
                                     <ComboBoxItem Content="x264"></ComboBoxItem>
                                 </ComboBox>
-
-                            </StackPanel>
-
-                            <StackPanel Orientation="Vertical" Margin="15,5,0,0" Width="265" Height="500">
-                                <Label Content="{x:Static p:Resources.txtLivelyWallpaperTypeApp}" Style="{StaticResource labelGreenH1}"/>
-                                <Controls:ToggleSwitch Name="appMuteToggle" Header="{x:Static p:Resources.txtAudioOut}" ></Controls:ToggleSwitch>
-                            </StackPanel>
-
-                            <StackPanel Orientation="Vertical" Margin="15,5,0,0" Width="265" Height="500">
-                                <Label Content="Display" Style="{StaticResource labelGreenH1}"/>
-                                <Button ClickMode="Release" Click="Display_layout_Btn" >Wallpaper Layout</Button>
-
-                                <Label Content="Video Scaling:" ToolTip="{x:Static p:Resources.txtVideoPlayerToolTip}" FontSize="14.667" />
-                                <ComboBox Name="comboBoxVideoPlayerScaling">
-                                    <ComboBoxItem IsSelected="True"  Content="None"></ComboBoxItem>
-                                    <ComboBoxItem Content="Fill" ></ComboBoxItem>
-                                    <ComboBoxItem Content="Uniform"></ComboBoxItem>
-                                    <ComboBoxItem  Content="Uniform Fill"></ComboBoxItem>
-                                </ComboBox>
-
-                                <Label Content="GIF Scaling:" ToolTip="{x:Static p:Resources.txtVideoPlayerToolTip}" FontSize="14.667" />
+                                
+                                <Label Content="{x:Static p:Resources.txtLabel18}" Style="{StaticResource labelGreenH1}"/>
+                                <Label Content="{x:Static p:Resources.txtGifScaling}" FontSize="14.667" />
                                 <ComboBox Name="comboBoxGIFPlayerScaling">
                                     <ComboBoxItem IsSelected="True"  Content="None"></ComboBoxItem>
                                     <ComboBoxItem Content="Fill" ></ComboBoxItem>
@@ -482,6 +488,26 @@
                                     <ComboBoxItem  Content="Uniform Fill"></ComboBoxItem>
                                 </ComboBox>
 
+                                <Label Content="{x:Static p:Resources.txtGIFPlayer}" ToolTip="{x:Static p:Resources.txtGifPlayerToolTip}" FontSize="14.667" />
+                                <ComboBox Name="comboBoxGIFPlayer">
+                                    <ComboBoxItem IsSelected="True" ToolTip="{x:Static p:Resources.cmbBoxGIFPlayer1ToolTip}" Content="{x:Static p:Resources.cmbBoxGIFPlayer1}" ></ComboBoxItem>
+                                    <ComboBoxItem ToolTip="{x:Static p:Resources.cmbBoxGIFPlayer2ToolTip}" Content="{x:Static p:Resources.cmbBoxGIFPlayer2}"></ComboBoxItem>
+                                </ComboBox>
+                                <TextBlock Canvas.Left="241" Canvas.Top="98">
+                                <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://github.com/rocksdanister/lively/wiki/GIF-Guide" 
+                                           Foreground="{DynamicResource AccentColorBrush2}"><TextBlock Text="{x:Static p:Resources.txtLabel11}" /></Hyperlink>
+                                </TextBlock>
+
+                                <Label Content="{x:Static p:Resources.txtLivelyWallpaperTypeApp}" Style="{StaticResource labelGreenH1}"/>
+                                <Controls:ToggleSwitch Name="appMuteToggle" Header="{x:Static p:Resources.txtAudioOut}" ></Controls:ToggleSwitch>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Vertical" Margin="15,5,0,0" Width="265" Height="500">
+   
+                            </StackPanel>
+
+                            <StackPanel Orientation="Vertical" Margin="15,5,0,0" Width="265" Height="500">
+                                
                             </StackPanel>
                         </WrapPanel>
                     </ScrollViewer>
@@ -500,9 +526,9 @@
                                PreviewMouseDown="lblVersionNumber_PreviewMouseDown"/>
                     <Label Name="lblPortableTxt" Content="Portable" VerticalContentAlignment="Top" Foreground="{DynamicResource AccentColorBrush3}" RenderTransformOrigin="0.468,0.534" Canvas.Left="87" Canvas.Top="81" />
                     <TextBlock Canvas.Left="311" Canvas.Top="95">
-                        <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://github.com/rocksdanister" Foreground="{DynamicResource AccentColorBrush2}">https://github.com/rocksdanister</Hyperlink>
+                        <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://github.com/rocksdanister" Foreground="#FF7D7B76">https://github.com/rocksdanister</Hyperlink>
                     </TextBlock>
-                    <Label Content="{x:Static p:Resources.txtLabel10}" Foreground="{DynamicResource AccentColorBrush3}" Canvas.Left="45" Canvas.Top="130" FontSize="16" RenderTransformOrigin="0.468,0.534" />
+                    <Label Content="{x:Static p:Resources.txtLabel10}" Foreground="#FF7D7B76" Canvas.Left="45" Canvas.Top="130" FontSize="16" RenderTransformOrigin="0.468,0.534" />
                     <!-- <Image Visibility="Hidden"  Source="/images/icons8-seed-of-life-96.png" Canvas.Left="228" Canvas.Top="17" Height="64" Width="77" /> -->
                     <!-- animated lively icon -->
 
@@ -524,7 +550,13 @@
                             </Style>
                         </Image.Style>
                     </Image>
-
+                    
+                    <TextBlock x:Name="textBlock"  TextWrapping="Wrap" Canvas.Left="691" Canvas.Top="498"  >  
+                    <Hyperlink NavigateUri="mailto:awoo.git@gmail.com?subject=Feedback:Lively" RequestNavigate="Hyperlink_RequestNavigate" Foreground="#FF7D7B76">
+                        Contact: awoo.git@gmail.com
+                    </Hyperlink>
+                    </TextBlock>
+                    
                 </Canvas>
             </TabItem>
             <TabItem Header="Browser" Name="tabBrowser" Visibility="Hidden">
@@ -532,6 +564,7 @@
 
                 </Border>
             </TabItem>
+           
         </Controls:MetroTabControl>
 
         <!--

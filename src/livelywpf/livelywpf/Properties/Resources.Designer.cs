@@ -160,7 +160,7 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Span(Experimental).
+        ///   Looks up a localized string similar to Span.
         /// </summary>
         public static string cmbBoxSpan {
             get {
@@ -826,6 +826,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to GIF Scaling/Fit:.
+        /// </summary>
+        public static string txtGifScaling {
+            get {
+                return ResourceManager.GetString("txtGifScaling", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Help.
         /// </summary>
         public static string txtHelp {
@@ -1405,6 +1414,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to More Wallpapers....
+        /// </summary>
+        public static string txtMoreWp {
+            get {
+                return ResourceManager.GetString("txtMoreWp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fille all the required text fields..
         /// </summary>
         public static string txtMsgFillAllFields {
@@ -1697,11 +1715,29 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Video Scaling/Fit:.
+        /// </summary>
+        public static string txtVideoScaling {
+            get {
+                return ResourceManager.GetString("txtVideoScaling", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wallpaper Playback:.
         /// </summary>
         public static string txtWallpaperPlayback {
             get {
                 return ResourceManager.GetString("txtWallpaperPlayback", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When on Battery Power:.
+        /// </summary>
+        public static string txtWhenBattery {
+            get {
+                return ResourceManager.GetString("txtWhenBattery", resourceCulture);
             }
         }
         

@@ -159,7 +159,11 @@ namespace livelywpf.Dialogues
             {
                 MessageBox.Show(Properties.Resources.txtMsgUpdaterPortableUnsupported,
                     Properties.Resources.txtLivelyErrorMsgTitle, MessageBoxButton.OK, MessageBoxImage.Error);
-                Process.Start("https://github.com/rocksdanister/lively/releases");
+                try
+                {
+                    Process.Start("https://github.com/rocksdanister/lively/releases");
+                }
+                catch { }
                 return;
             }
             //btn is disabled, if its enabled again then user clicked again to install.

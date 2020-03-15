@@ -59,6 +59,7 @@ namespace livelywpf
                 //create directories if not exist
                 Directory.CreateDirectory(Path.Combine(PathData, "SaveData"));
                 Directory.CreateDirectory(Path.Combine(PathData, "SaveData", "wptmp"));
+                Directory.CreateDirectory(Path.Combine(PathData, "SaveData", "wpdata"));
                 Directory.CreateDirectory(Path.Combine(PathData, "wallpapers"));
                 Directory.CreateDirectory(Path.Combine(PathData, "tmpdata"));
                 Directory.CreateDirectory(Path.Combine(PathData, "tmpdata", "wpdata"));
