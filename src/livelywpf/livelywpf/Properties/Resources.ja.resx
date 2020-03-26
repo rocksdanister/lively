@@ -548,6 +548,9 @@ Windows 7が設定されている場合-最適な外観と調整適用します�
   <data name="txtLabelAppName" xml:space="preserve">
     <value>活気のある</value>
   </data>
+  <data name="txtLabelInteraction" xml:space="preserve">
+    <value>インタラクション</value>
+  </data>
   <data name="txtLabelRule" xml:space="preserve">
     <value>ルール</value>
   </data>
@@ -608,6 +611,9 @@ Windows 7が設定されている場合-最適な外観と調整適用します�
   </data>
   <data name="txtMoreWp" xml:space="preserve">
     <value>その他の壁紙...</value>
+  </data>
+  <data name="txtMouse" xml:space="preserve">
+    <value>マウス</value>
   </data>
   <data name="txtMsgFillAllFields" xml:space="preserve">
     <value>必要なすべてのテキストフィールドに入力します。</value>

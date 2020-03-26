@@ -934,7 +934,7 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to General:.
+        ///   Looks up a localized string similar to General.
         /// </summary>
         public static string txtLabel15 {
             get {
@@ -943,7 +943,7 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Require app restart:.
+        ///   Looks up a localized string similar to Require app restart.
         /// </summary>
         public static string txtLabel16 {
             get {
@@ -952,7 +952,7 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Video:.
+        ///   Looks up a localized string similar to Video.
         /// </summary>
         public static string txtLabel17 {
             get {
@@ -961,7 +961,7 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Gif:.
+        ///   Looks up a localized string similar to Gif.
         /// </summary>
         public static string txtLabel18 {
             get {
@@ -970,7 +970,7 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Web Browser:.
+        ///   Looks up a localized string similar to Web Browser.
         /// </summary>
         public static string txtLabel19 {
             get {
@@ -988,7 +988,7 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Performance:.
+        ///   Looks up a localized string similar to Performance.
         /// </summary>
         public static string txtLabel20 {
             get {
@@ -1250,6 +1250,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Interaction.
+        /// </summary>
+        public static string txtLabelInteraction {
+            get {
+                return ResourceManager.GetString("txtLabelInteraction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Rule.
         /// </summary>
         public static string txtLabelRule {
@@ -1419,6 +1428,15 @@ namespace livelywpf.Properties {
         public static string txtMoreWp {
             get {
                 return ResourceManager.GetString("txtMoreWp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mouse.
+        /// </summary>
+        public static string txtMouse {
+            get {
+                return ResourceManager.GetString("txtMouse", resourceCulture);
             }
         }
         

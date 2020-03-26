@@ -449,7 +449,7 @@
                                 (3) Foreground Process algorithm has some limitations, check wiki for more information.<LineBreak/>(4) Application Rules has the highest priority.
                                 <LineBreak/>(5) Web browser is being minimized instead of pausing, so you will see wallpaper temporarily reverting to default in some cases; fix is coming soon.</TextBlock>-->
                                                                 
-                                <Label Content="Audio:" Style="{StaticResource labelGreenH1}"/>
+                                <Label Content="Audio" Style="{StaticResource labelGreenH1}"/>
                                 <Controls:ToggleSwitch Name="audioFocusedToggle" Header="{x:Static p:Resources.txtOtherAppsFocus}" ></Controls:ToggleSwitch>
                                 <ScrollViewer Height="180" Visibility="Collapsed" >
                                     <TextBlock TextWrapping="WrapWithOverflow" Foreground="{DynamicResource AccentColorBrush2}" Text="{x:Static p:Resources.txtNotes}"  />
@@ -503,7 +503,14 @@
                             </StackPanel>
 
                             <StackPanel Orientation="Vertical" Margin="15,5,0,0" Width="265" Height="500">
-   
+                                <Label Content="Interaction" Style="{StaticResource labelGreenH1}"/>
+                                <ComboBox Name="comboBoxWpInputSettings">
+                                    <ComboBoxItem Content="{x:Static p:Resources.txtOff}" />
+                                    <ComboBoxItem IsSelected="True" Content="{x:Static p:Resources.txtMouse}"/>
+                                    <ComboBoxItem IsEnabled="False" Content="Mouse + KB"/>
+                                </ComboBox>
+                                <Label Content="{x:Static p:Resources.txtOtherAppsFocus}" FontSize="14.667" />
+                                <CheckBox Name="chkboxMouseOtherAppsFocus" Margin="2.5,2.5,0,0" Content="{x:Static p:Resources.txtMouse}"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Vertical" Margin="15,5,0,0" Width="265" Height="500">

@@ -548,6 +548,9 @@ Para solo aplicar un archivo como fondo de pantalla, esto no es necesario; solo 
   <data name="txtLabelAppName" xml:space="preserve">
     <value>Lively</value>
   </data>
+  <data name="txtLabelInteraction" xml:space="preserve">
+    <value>Interacción</value>
+  </data>
   <data name="txtLabelRule" xml:space="preserve">
     <value>Regla</value>
   </data>
@@ -608,6 +611,9 @@ NO inicie programas como CHROME o STEAM.. que crean múltiples subprocesos.
   </data>
   <data name="txtMoreWp" xml:space="preserve">
     <value>Más fondos de pantalla ...</value>
+  </data>
+  <data name="txtMouse" xml:space="preserve">
+    <value>Ratón</value>
   </data>
   <data name="txtMsgFillAllFields" xml:space="preserve">
     <value>Rellene todos los espacios requeridos.</value>

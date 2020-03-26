@@ -57,6 +57,7 @@ namespace livelywpf
 
         private Release gitRelease = null;
         private string gitUrl = null;
+        RawInputDX DesktopInputForward = null;
 
         public MainWindow()
         {
@@ -166,6 +167,7 @@ namespace livelywpf
                 Logger.Info("Skipping all-process algorthm on multiscreen(in-development)");
                 comboBoxPauseAlgorithm.SelectedIndex = (int)ProcessMonitorAlgorithm.foreground; //event will save settings.
             }
+
         }
 
         private async void RestoreSaveSettings()
@@ -247,6 +249,33 @@ namespace livelywpf
             }
             update_traybtn.Enabled = true;
         }
+
+        #region wp_input_setup
+        private void WallpaperInputForwardingToggle(bool isEnable)
+        {
+            if (isEnable)
+            {
+                if (DesktopInputForward == null)
+                {
+                    DesktopInputForward = new RawInputDX();
+                    DesktopInputForward.Closing += DesktopInputForward_Closing;
+                    DesktopInputForward.Show();
+                }
+            }
+            else
+            {
+                if (DesktopInputForward != null)
+                {
+                    DesktopInputForward.Close();
+                }
+            }
+        }
+
+        private void DesktopInputForward_Closing(object sender, CancelEventArgs e)
+        {
+            DesktopInputForward = null;
+        }
+        #endregion
 
         #region git_update
 
@@ -1509,6 +1538,25 @@ namespace livelywpf
             wallpapersLV.SelectedIndex = -1; //clears selectedTile info panel.
 
             FileOperations.DeleteDirectoryAsync(selection.LivelyInfoDirectoryLocation);
+            try
+            {   
+                //Delete LivelyProperties.info copy folder.
+                string[] wpdataDir = Directory.GetDirectories(Path.Combine(App.PathData, "SaveData", "wpdata"));
+                var wpFolderName = new System.IO.DirectoryInfo(selection.LivelyInfoDirectoryLocation).Name;
+                for (int i = 0; i < wpdataDir.Length; i++)
+                {
+                    var item = new System.IO.DirectoryInfo(wpdataDir[i]).Name;
+                    if (wpFolderName.Equals(item, StringComparison.Ordinal))
+                    {
+                        FileOperations.DeleteDirectoryAsync(wpdataDir[i]);
+                        break;
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                Logger.Error(ex.ToString());
+            }
         }
 
         #endregion wallpaper_library
@@ -2606,6 +2654,29 @@ namespace livelywpf
             comboBoxVideoPlayerScaling.SelectionChanged += ComboBoxVideoPlayerScaling_SelectionChanged;
             comboBoxGIFPlayerScaling.SelectionChanged += ComboBoxGIFPlayerScaling_SelectionChanged;
             comboBoxBatteryPerf.SelectionChanged += ComboBoxBatteryPerf_SelectionChanged;
+            comboBoxWpInputSettings.SelectionChanged += ComboBoxWpInputSettings_SelectionChanged;
+            chkboxMouseOtherAppsFocus.Checked += ChkboxMouseOtherAppsFocus_Checked;
+            chkboxMouseOtherAppsFocus.Unchecked += ChkboxMouseOtherAppsFocus_Checked;
+        }
+
+        private void ChkboxMouseOtherAppsFocus_Checked(object sender, RoutedEventArgs e)
+        {
+            SaveData.config.MouseInputMovAlways = chkboxMouseOtherAppsFocus.IsChecked.Value;
+            SaveData.SaveConfig();
+        }
+
+        private void ComboBoxWpInputSettings_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(comboBoxWpInputSettings.SelectedIndex == 0)
+            {
+                WallpaperInputForwardingToggle(false);
+            }
+            else if(comboBoxWpInputSettings.SelectedIndex == 1)
+            {
+                WallpaperInputForwardingToggle(true);
+            }
+            SaveData.config.InputForwardMode = comboBoxWpInputSettings.SelectedIndex;
+            SaveData.SaveConfig();
         }
 
         private void ComboBoxBatteryPerf_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -2698,11 +2769,28 @@ namespace livelywpf
 
         private void RestoreMenuSettings()
         {
-            if(!App.isPortableBuild)
+            chkboxMouseOtherAppsFocus.IsChecked = SaveData.config.MouseInputMovAlways;
+
+            if (SaveData.config.InputForwardMode == 1)
+            {
+                WallpaperInputForwardingToggle(true);
+            }
+
+            try
+            {
+                comboBoxWpInputSettings.SelectedIndex = SaveData.config.InputForwardMode;
+            }
+            catch(ArgumentOutOfRangeException)
+            {
+                SaveData.config.InputForwardMode = 1;
+                SaveData.SaveConfig();
+                comboBoxWpInputSettings.SelectedIndex = 1;
+            }
+
+            if (!App.isPortableBuild)
             {
                 lblPortableTxt.Visibility = Visibility.Collapsed;
             }
-
             
             if (SaveData.config.AppTransparency)
             {

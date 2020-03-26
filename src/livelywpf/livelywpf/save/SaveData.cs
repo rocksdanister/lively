@@ -627,6 +627,17 @@ namespace livelywpf
             public bool IsRestart { get; set; }
             public bool InstallUpdate { get; set; } //future use.
             public PreviewGIF PreviewGIF { get; set; }
+            /// <summary>
+            /// 0 = Off
+            /// 1 = Simulate mouse input & movement.
+            /// </summary>
+            public int InputForwardMode { get; set; }
+            /// <summary>
+            /// True: Always forward mouse movement, even when foreground apps open;
+            /// False: Only forward on desktop.
+            /// </summary>
+            public bool MouseInputMovAlways { get; set; }
+
             //default values
             public ConfigFile()
             {
@@ -686,6 +697,8 @@ namespace livelywpf
                 InstallUpdate = false;
 
                 PreviewGIF = new PreviewGIF();
+                InputForwardMode = 1; //mouse only.
+                MouseInputMovAlways = true;
             }
         }
         public static ConfigFile config = new ConfigFile();
