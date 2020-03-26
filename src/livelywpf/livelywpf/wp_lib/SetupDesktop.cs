@@ -21,7 +21,7 @@ namespace livelywpf
     /// Main static class that deals with adding & managing wallpaper's (wp). 
     /// </summary>
     public static class SetupDesktop
-    {
+    {   
         //todo:- remove/reduce redundant/useless variables.
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         /// <summary>
@@ -2772,6 +2772,26 @@ namespace livelywpf
             }
         }
 
+        /// <summary>
+        /// Is foreground desktop.
+        /// </summary>
+        /// <returns></returns>
+        public static bool IsDesktop()
+        {
+            IntPtr hWnd = NativeMethods.GetForegroundWindow();
+            if (IntPtr.Equals(hWnd, workerWOrig))
+            {
+                return true;
+            }
+            else if (IntPtr.Equals(hWnd, progman))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         #endregion everything_else
     }
 }

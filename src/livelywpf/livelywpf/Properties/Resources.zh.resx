@@ -548,6 +548,9 @@ https://github.com/rocksdanister/lively-cef
   <data name="txtLabelAppName" xml:space="preserve">
     <value>Lively</value>
   </data>
+  <data name="txtLabelInteraction" xml:space="preserve">
+    <value>相互作用</value>
+  </data>
   <data name="txtLabelRule" xml:space="preserve">
     <value>规则</value>
   </data>
@@ -608,6 +611,9 @@ https://github.com/rocksdanister/lively-cef
   </data>
   <data name="txtMoreWp" xml:space="preserve">
     <value>更多壁纸...</value>
+  </data>
+  <data name="txtMouse" xml:space="preserve">
+    <value>鼠</value>
   </data>
   <data name="txtMsgFillAllFields" xml:space="preserve">
     <value>填写所有必填的文本字段。</value>

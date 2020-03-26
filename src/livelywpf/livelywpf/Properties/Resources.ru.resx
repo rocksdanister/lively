@@ -548,6 +548,9 @@ https://github.com/rocksdanister/lively-cef
   <data name="txtLabelAppName" xml:space="preserve">
     <value> Лайвли </value>
   </data>
+  <data name="txtLabelInteraction" xml:space="preserve">
+    <value>взаимодействие</value>
+  </data>
   <data name="txtLabelRule" xml:space="preserve">
     <value> Правило </value>
   </data>
@@ -608,6 +611,9 @@ https://github.com/rocksdanister/lively-cef
   </data>
   <data name="txtMoreWp" xml:space="preserve">
     <value>Больше обоев ...</value>
+  </data>
+  <data name="txtMouse" xml:space="preserve">
+    <value>мышь</value>
   </data>
   <data name="txtMsgFillAllFields" xml:space="preserve">
     <value> Заполните все обязательные текстовые поля. </value>

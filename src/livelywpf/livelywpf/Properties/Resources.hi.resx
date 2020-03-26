@@ -722,4 +722,10 @@ CHROME, STEAM .. जैसे कार्यक्रम न चलाएं, �
   <data name="txtMoreWp" xml:space="preserve">
     <value>अधिक वॉलपेपर ...</value>
   </data>
+  <data name="txtLabelInteraction" xml:space="preserve">
+    <value>इंटरेक्शन</value>
+  </data>
+  <data name="txtMouse" xml:space="preserve">
+    <value>चूहा</value>
+  </data>
 </root>

@@ -433,30 +433,30 @@ If still not working, close &amp; start Lively again/ restart windows.
     <value>Contact:</value>
   </data>
   <data name="txtLabel15" xml:space="preserve">
-    <value>General:</value>
+    <value>General</value>
     <comment>settings tab</comment>
   </data>
   <data name="txtLabel16" xml:space="preserve">
-    <value>Require app restart:</value>
+    <value>Require app restart</value>
     <comment>settings tab</comment>
   </data>
   <data name="txtLabel17" xml:space="preserve">
-    <value>Video:</value>
+    <value>Video</value>
     <comment>settings tab</comment>
   </data>
   <data name="txtLabel18" xml:space="preserve">
-    <value>Gif:</value>
+    <value>Gif</value>
     <comment>settings tab</comment>
   </data>
   <data name="txtLabel19" xml:space="preserve">
-    <value>Web Browser:</value>
+    <value>Web Browser</value>
     <comment>settings tab</comment>
   </data>
   <data name="txtLabel2" xml:space="preserve">
     <value>Just drag and drop files if you prefer it that way instead.</value>
   </data>
   <data name="txtLabel20" xml:space="preserve">
-    <value>Performance:</value>
+    <value>Performance</value>
     <comment>settings tab</comment>
   </data>
   <data name="txtLabel21" xml:space="preserve">
@@ -544,6 +544,9 @@ To simply play a file as wallpaper, this is not required; just drag and drop the
   <data name="txtLabelAppName" xml:space="preserve">
     <value>Lively</value>
   </data>
+  <data name="txtLabelInteraction" xml:space="preserve">
+    <value>Interaction</value>
+  </data>
   <data name="txtLabelRule" xml:space="preserve">
     <value>Rule</value>
   </data>
@@ -604,6 +607,9 @@ THERE WILL BE BUGS &amp; CRASHES, PROCEED WITH CAUTION!!!</value>
   </data>
   <data name="txtMoreWp" xml:space="preserve">
     <value>More Wallpapers...</value>
+  </data>
+  <data name="txtMouse" xml:space="preserve">
+    <value>Mouse</value>
   </data>
   <data name="txtMsgFillAllFields" xml:space="preserve">
     <value>Fille all the required text fields.</value>
