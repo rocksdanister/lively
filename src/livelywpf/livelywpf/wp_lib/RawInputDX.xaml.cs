@@ -215,7 +215,13 @@ namespace livelywpf
         /// <returns>Localised cursor value</returns>
         private static Point CalculateMousePos(int x, int y, Screen display)
         {
-            if(!MainWindow.Multiscreen || SaveData.config.WallpaperArrangement == SaveData.WallpaperArrangement.span)
+            if(SaveData.config.WallpaperArrangement == SaveData.WallpaperArrangement.span)
+            {
+                x -= SystemInformation.VirtualScreen.Location.X;
+                y -= SystemInformation.VirtualScreen.Location.Y;
+                return new Point(x, y);
+            }
+            if(!MainWindow.Multiscreen)
             {
                 return new Point(x, y);
             }
