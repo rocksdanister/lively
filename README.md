@@ -97,7 +97,7 @@ Help translate lively to other languages: <a href="https://github.com/rocksdanis
 
 **_I'm not officially affiliated with Unity technologies, godot, shadertoy;_**
 ## Download
-##### Latest version: v0.9.5.0 (Windows 10, 8.1)[What's new?](https://github.com/rocksdanister/lively/releases/tag/v0.9.5.0)
+##### Latest version: v0.9.5.1 (Windows 10, 8.1)[What's new?](https://github.com/rocksdanister/lively/releases/tag/v0.9.5.1)
 - [`Download Lively Installer`][direct-full-win32]  
    _102MB, Web wallpaper support & some sample wallpapers included._
 - [`Download Lively Portable`][direct-full-portable-win32]  
@@ -105,9 +105,9 @@ Help translate lively to other languages: <a href="https://github.com/rocksdanis
   
 **Portable build: Latest Visual C++ Redistributable is required: [vc_redist.x86.exe](https://aka.ms/vs/16/release/vc_redist.x86.exe)**
    
-[direct-full-win32]: https://github.com/rocksdanister/lively/releases/download/v0.9.5.0/lively_setup_x86_full_v0950.exe
+[direct-full-win32]: https://github.com/rocksdanister/lively/releases/download/v0.9.5.1/lively_setup_x86_full_v0951.exe
 
-[direct-full-portable-win32]: https://github.com/rocksdanister/lively/releases/download/v0.9.5.0/lively_portable_x86_full_v0950.zip
+[direct-full-portable-win32]: https://github.com/rocksdanister/lively/releases/download/v0.9.5.1/lively_portable_x86_full_v0951.zip
 
 **Installer will give Smartscreen warning, [discussion.](https://github.com/rocksdanister/lively/issues/9)**
 

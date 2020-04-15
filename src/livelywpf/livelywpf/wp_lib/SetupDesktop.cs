@@ -396,8 +396,7 @@ namespace livelywpf
                     extVidPlayers.Add(new ExtVidPlayers(handle, layout.DeviceName, proc, WallpaperType.video, 0));
 
                     BorderlessWinStyle(handle);
-                    RemoveAppFromTaskbar(handle);
-                    //AddWallpaper(handle, layout.DeviceName);
+                    RemoveWindowFromTaskbar(handle);
                     SaveData.runningPrograms.Add(new SaveData.RunningProgram { ProcessName = proc.ProcessName, Pid = proc.Id });
                     SaveData.SaveRunningPrograms();
 
@@ -514,9 +513,7 @@ namespace livelywpf
                 }
 
                 extPrograms.Add(new ExtProgram(handle, layout.DeviceName, proc, layout.Type, 0));
-                //removing from taskbar.
-                //StaticPinvoke.SetWindowLongPtr(new HandleRef(null,handle), (-20),(IntPtr)StaticPinvoke.WS_EX_TOOLWINDOW); 
-                RemoveAppFromTaskbar(handle);
+                RemoveWindowFromTaskbar(handle);
 
                 AddWallpaper(handle, layout, showPreviewWindow);
 
@@ -624,7 +621,7 @@ namespace livelywpf
                 extPrograms.Add(new ExtProgram(handle, layout.DeviceName, proc, layout.Type, 0));
 
                 BorderlessWinStyle(handle);
-                RemoveAppFromTaskbar(handle);
+                RemoveWindowFromTaskbar(handle);
 
                 AddWallpaper(handle, layout, showPreviewWindow);
 
@@ -756,7 +753,7 @@ namespace livelywpf
 
                 extPrograms.Add(new ExtProgram(handle, layout.DeviceName, proc, layout.Type, 0));
                 BorderlessWinStyle(handle);
-                RemoveAppFromTaskbar(handle);
+                RemoveWindowFromTaskbar(handle);
 
                 AddWallpaper(handle, layout, showPreviewWindow);
 
@@ -815,8 +812,8 @@ namespace livelywpf
                     return;
                 }
 
-                //BorderlessWinStyle(handle);
-                RemoveAppFromTaskbar(handle);
+                BorderlessWinStyle(handle);
+                RemoveWindowFromTaskbar(handle);
 
                 AddWallpaper(handle, layout, showPreviewWindow);
                 //StaticPinvoke.ShowWindow(handle, 3); //maximise
@@ -2610,9 +2607,14 @@ namespace livelywpf
             }           
         }
 
-        private static void RemoveAppFromTaskbar(IntPtr handle)
+        public static void RemoveWindowFromTaskbar(IntPtr handle)
         {
-            NativeMethods.SetWindowLongPtr(new HandleRef(null, handle), (int)NativeMethods.GWL.GWL_EXSTYLE, (IntPtr)NativeMethods.WindowStyles.WS_EX_NOACTIVATE);
+            var styleNewWindowExtended =
+                   (Int64)NativeMethods.WindowStyles.WS_EX_NOACTIVATE
+                   | (Int64)NativeMethods.WindowStyles.WS_EX_TOOLWINDOW;
+
+            // update window styles
+            NativeMethods.SetWindowLongPtr(new HandleRef(null, handle), (-20), (IntPtr)styleNewWindowExtended);
         }
 
         /// <summary>

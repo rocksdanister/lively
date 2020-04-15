@@ -40,7 +40,7 @@ namespace livelywpf
             var windowInteropHelper = new WindowInteropHelper(this);
             var hwnd = windowInteropHelper.Handle;
 
-            //ExInputSink flag makes it work even when not in foreground, similar to global hook.. but asynchronous!
+            //ExInputSink flag makes it work even when not in foreground, similar to global hook.. but asynchronous, no complications & no AV false detection!
             RawInputDevice.RegisterDevice(HidUsageAndPage.Mouse,
                 RawInputDeviceFlags.ExInputSink, hwnd);
 
@@ -215,30 +215,35 @@ namespace livelywpf
         /// <returns>Localised cursor value</returns>
         private static Point CalculateMousePos(int x, int y, Screen display)
         {
-            if(!MainWindow.Multiscreen || SaveData.config.WallpaperArrangement == SaveData.WallpaperArrangement.span)
+            if (MainWindow.Multiscreen)
             {
-                return new Point(x, y);
-            }
+                if (SaveData.config.WallpaperArrangement == SaveData.WallpaperArrangement.span)
+                {
+                    x -= SystemInformation.VirtualScreen.Location.X;
+                    y -= SystemInformation.VirtualScreen.Location.Y;
+                }
+                else //per-display or duplicate mode.
+                {
+                    if (x < 0)
+                    {
+                        x = SystemInformation.VirtualScreen.Width + x - Screen.PrimaryScreen.Bounds.Width;
+                    }
+                    else
+                    {
+                        x -= Math.Abs(display.Bounds.X);
+                    }
 
-            if (x < 0)
-            {
-                x = SystemInformation.VirtualScreen.Width + x - Screen.PrimaryScreen.Bounds.Width;
-            }
-            else
-            {
-                x -= Math.Abs(display.Bounds.X);
-            }
-
-            if (y < 0)
-            {
-                y = SystemInformation.VirtualScreen.Height + y - Screen.PrimaryScreen.Bounds.Height;
-            }
-            else
-            {
-                y -= Math.Abs(display.Bounds.Y);
+                    if (y < 0)
+                    {
+                        y = SystemInformation.VirtualScreen.Height + y - Screen.PrimaryScreen.Bounds.Height;
+                    }
+                    else
+                    {
+                        y -= Math.Abs(display.Bounds.Y);
+                    }
+                }
             }
             return new Point(x, y);
         }
-
     }
 }
