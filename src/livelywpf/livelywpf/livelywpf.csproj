@@ -351,9 +351,6 @@
     <Compile Include="wp_lib\RawInputDX.xaml.cs">
       <DependentUpon>RawInputDX.xaml</DependentUpon>
     </Compile>
-    <Compile Include="wp_windows\LivelywpHolder.xaml.cs">
-      <DependentUpon>LivelywpHolder.xaml</DependentUpon>
-    </Compile>
     <Compile Include="preview\PreviewWallpaper.xaml.cs">
       <DependentUpon>PreviewWallpaper.xaml</DependentUpon>
     </Compile>
@@ -428,10 +425,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="wp_lib\RawInputDX.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="wp_windows\LivelywpHolder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

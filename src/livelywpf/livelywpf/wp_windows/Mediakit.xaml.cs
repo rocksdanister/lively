@@ -29,6 +29,7 @@ namespace livelywpf
         public Mediakit(string path, int playSpeed)
         {
             InitializeComponent();
+            this.Loaded += Mediakit_Loaded;
 
             mePlayer.LoadedBehavior = WPFMediaKit.DirectShow.MediaPlayers.MediaState.Manual;
             mePlayer.Source = new Uri(path);
@@ -45,6 +46,12 @@ namespace livelywpf
                 mePlayer.Volume = 1;
 
             mePlayer.Play();
+        }
+
+        private void Mediakit_Loaded(object sender, RoutedEventArgs e)
+        {
+            //ShowInTaskbar = false :- causing issue with windows10 Taskview.
+            SetupDesktop.RemoveWindowFromTaskbar(new WindowInteropHelper(this).Handle);
         }
 
         private void MePlayer_MediaOpened(object sender, RoutedEventArgs e)

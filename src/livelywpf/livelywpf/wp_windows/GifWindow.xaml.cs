@@ -27,12 +27,19 @@ namespace livelywpf
         public GifWindow(string path)
         {
             InitializeComponent();
+            this.Loaded += GifWindow_Loaded;
 
             gifImg.Stretch = SaveData.config.GifScaler;
             AnimationBehavior.AddErrorHandler(gifImg, ErrorEvent);
             AnimationBehavior.AddLoadedHandler(gifImg, AnimationBehavior_OnLoaded);
             AnimationBehavior.SetSourceUri(gifImg, new Uri(path));
             AnimationBehavior.SetRepeatBehavior(gifImg, System.Windows.Media.Animation.RepeatBehavior.Forever);
+        }
+
+        private void GifWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            //ShowInTaskbar = false :- causing issue with windows10 Taskview.
+            SetupDesktop.RemoveWindowFromTaskbar(new WindowInteropHelper(this).Handle);
         }
 
         private void ErrorEvent(object s, AnimationErrorEventArgs e) 

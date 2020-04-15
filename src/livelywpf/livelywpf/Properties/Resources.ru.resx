@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -118,614 +118,609 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="cmbBoxAllDisplays" xml:space="preserve">
-    <value> Все отображения </value>
+    <value>Все экран(ы)</value>
   </data>
   <data name="cmbBoxGIFPlayer1" xml:space="preserve">
-    <value> XamlAnimatedGif </value>
+    <value>XamlAnimatedGif</value>
   </data>
   <data name="cmbBoxGIFPlayer1ToolTip" xml:space="preserve">
-    <value> Низкое использование памяти, высокое использование процессора </value>
+    <value>Низкое использование памяти, высокая нагрузка на ЦП</value>
   </data>
   <data name="cmbBoxGIFPlayer2" xml:space="preserve">
-    <value> DirectShow </value>
+    <value>DirectShow</value>
   </data>
   <data name="cmbBoxGIFPlayer2ToolTip" xml:space="preserve">
-    <value> Более низкое использование процессора (в зависимости от настроек кодека) </value>
+    <value>Более низкая нагрузка на ЦП (зависит от настроек кодека)</value>
   </data>
   <data name="cmbBoxKill" xml:space="preserve">
-    <value> Kill (Свободная память) </value>
+    <value>Убить(Освободит память)</value>
   </data>
   <data name="cmbBoxNothing" xml:space="preserve">
-    <value> Nothing </value>
+    <value>Ничего</value>
   </data>
   <data name="cmbBoxPaugeAlgorithmAllProcess" xml:space="preserve">
-    <value> Все процессы (экспериментальные) </value>
+    <value>Все процессы (Экспериментальная)</value>
   </data>
   <data name="cmbBoxPause" xml:space="preserve">
-    <value> Пауза </value>
+    <value>Остановить</value>
   </data>
   <data name="cmbBoxPauseAlgorithmForeground" xml:space="preserve">
-    <value> Процесс переднего плана </value>
+    <value>Исполняемый(передний) процесс</value>
   </data>
   <data name="cmbBoxPerDisplay" xml:space="preserve">
-    <value> на дисплей </value>
+    <value>Опр. дисплей</value>
   </data>
   <data name="cmbBoxSpan" xml:space="preserve">
-    <value> Спан (экспериментальный) </value>
+    <value>Span</value>
   </data>
   <data name="cmbBoxVideoPlayer1" xml:space="preserve">
-    <value> Media Foundation </value>
+    <value>Media Foundation</value>
   </data>
   <data name="cmbBoxVideoPlayer2" xml:space="preserve">
-    <value> DirectShow (Lav, ffdshow ..) </value>
+    <value>DirectShow(Lav, ffdshow..)</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="license" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\docs\license.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
   <data name="msgAppCommandLineArgs" xml:space="preserve">
-    <value> Введите аргументы командной строки для приложения, если таковые имеются (необязательно, оставьте пустым, если их нет): - </value>
+    <value>Введите аргументы консоли для программы (Необязательно, оставьте пустым если нет):-</value>
   </data>
   <data name="msgAppCommandLineArgsTitle" xml:space="preserve">
-    <value> Начальные аргументы </value>
+    <value>Выполнить команды</value>
   </data>
   <data name="msgAppGUIFailure" xml:space="preserve">
-    <value> Выбранные обои (приложение) не имеют графического интерфейса пользователя (GUI).
-Завершение приложения ... </value>
+    <value>Выбранные обои(приложение) не имеют графического пользовательского интерфейса (GUI).
+Завершение программы...</value>
   </data>
   <data name="msgAppTimeout" xml:space="preserve">
-    <value> Не удалось поймать окно приложения.
-Обои (приложение) запускаются слишком долго (более ~ 30 секунд), это может быть связано с:
-Проверка на вирусы / Приложение слишком большое.
-Подождите &amp; Попробуйте еще раз. (При желании вы можете отредактировать время ожидания, за дополнительной информацией обращайтесь к вики).
-Завершение приложения ... </value>
+    <value>Не удалось поймать окно программы.
+Обои(программа) занимает слишком много времени для старта(больше ~30сек), Это может быть связано с тем:
+Проверка на вирусы / Программа слишком большие.
+Подождите &amp; попробуйте снова. (При желании вы можете изменить время ожидания, для большей информации воспользуйтесь поиском.)
+Завершение программы...</value>
   </data>
   <data name="msgDamangedLivelyFile" xml:space="preserve">
-    <value> Поврежденный файл обоев, попробуйте загрузить заново. </value>
+    <value>Файл обоев поврежден, попробуй скачать заново.</value>
   </data>
   <data name="msgDeleteConfirmation" xml:space="preserve">
-    <value> Вы уверены, что хотите удалить обои с диска навсегда? </value>
+    <value>Вы уверены, что хотите безвозвратно удалить обои с диска?</value>
   </data>
   <data name="msgDeleteConfirmationTitle" xml:space="preserve">
-    <value> Подтвердить удаление </value>
+    <value>Подтвердите удаление</value>
   </data>
   <data name="msgDeletionFailure" xml:space="preserve">
-    <value> В настоящее время работает в качестве обоев, не может удалить!
-Закройте эти обои, чтобы удалить их. </value>
+    <value>В данный момент запущено в качестве обоев, невозможно удалить!
+Закройте данные обои, чтобы удалить их.</value>
   </data>
   <data name="msgDeletionFailureTitle" xml:space="preserve">
-    <value> Ошибка удаления </value>
+    <value>Не удалось удалить</value>
   </data>
   <data name="msgDragDropOtherFormats" xml:space="preserve">
-    <value> Этот формат файла не поддерживается для перетаскивания &amp; вместо этого откройте его на странице «Тип». </value>
+    <value>Формат данного файла не поддерживается для перетаскивания, откройте его внутри вкладки 'Тип'.</value>
   </data>
   <data name="msgDragDropOtherFormatsTitle" xml:space="preserve">
-    <value> Lively: не поддерживается </value>
+    <value>Lively: Не поддерживается</value>
   </data>
   <data name="msgExternalAppWarning" xml:space="preserve">
-    <value> Вы открываете внешнее приложение в качестве обоев.
-Вредоносные программы могут содержать вредоносные программы, вирусы и наносить вред вашей системе.
-Продолжайте, только если это приложение поступает из надежного источника. </value>
+    <value>Вы открываете внешнее приложение как обои.
+Вредоносные приложенмя могут содержать опасность, вирусы.. и могут навредить вашей системе.
+Продолжайте только в том случае, если приложение получено из надежного источника.</value>
   </data>
   <data name="msgExternalAppWarningTitle" xml:space="preserve">
-    <value> Предупреждение </value>
+    <value>Предупреждение</value>
   </data>
   <data name="msgGIFfailure" xml:space="preserve">
-    <value> Ошибка воспроизведения файла GIF.
-Файл GIF поврежден? Попробуйте перезагружать. </value>
+    <value>Не удалось воспроизвести GIF файл.
+GIF файл поврежден? Скачайте заново.</value>
   </data>
   <data name="msgHighContrastFailure" xml:space="preserve">
-    <value> Lively не может работать должным образом при включенном режиме высокой контрастности Windows!
-Отключить режим высокой контрастности &amp; Попробуйте еще раз. </value>
+    <value>Lively не может работать корректно в Windows в режиме высокой контрастности!
+Выключите режим высокой контрастности &amp; Попробуйте снова.</value>
   </data>
   <data name="msgLoadExternalLink" xml:space="preserve">
-    <value> Вы собираетесь открыть внешнюю веб-страницу в своем браузере.
+    <value>Вы собираетесь открыть внешнюю страницу в своем браузере.
 
-URL: - </value>
+URL:-</value>
   </data>
   <data name="msgLoadExternalLinkTitle" xml:space="preserve">
-    <value> Загрузить веб-страницу? </value>
+    <value>Загрузить веб-страницу?</value>
   </data>
   <data name="msgLoadingAppWallpaper" xml:space="preserve">
-    <value> Запуск внешнего приложения. </value>
+    <value>Запускается внешняя программа..</value>
   </data>
   <data name="msgMediaFoundationFailure" xml:space="preserve">
-    <value> Ошибка воспроизведения мультимедиа: отсутствует кодек / поврежденный файл.
-Установите кодек LAV &amp; Попробуйте переключиться на видеоплеер Directshow.
-
-Дальнейшие инструкции:
-www.github.com/rocksdanister/lively/wiki/Video-Guide </value>
+    <value>Не удалось воспроизвести media: Отсутствует кодек/ Файл поврежден.
+Установите LAV кодек &amp; попробуйте переключиться на Directshow.
+</value>
   </data>
   <data name="msgMediakitFailure" xml:space="preserve">
-    <value> Ошибка воспроизведения мультимедиа: отсутствует кодек / поврежденный файл.
-Не забудьте установить кодек LAV:
-www.github.com/Nevcairiel/LAVFilters/releases
-
-Дальнейшие инструкции:
-www.github.com/rocksdanister/lively/wiki/Video-Guide </value>
+    <value>Воспроизведение не удалось: Отсутствует кодек/ Файл поврежден.
+Не забудьте установить LAV кодек.
+</value>
   </data>
   <data name="msgRestoringInProgress" xml:space="preserve">
-    <value> В настоящее время восстановление предыдущих обоев, пожалуйста, подождите. </value>
+    <value>Восстанавливаются предыдущие обои, пожалуйста подождите.</value>
   </data>
   <data name="msgRestoringPrevWallpapers" xml:space="preserve">
-    <value> Восстановление предыдущих обоев. </value>
+    <value>Восстановление предыдущих обоев..</value>
   </data>
   <data name="msgSafeModeWarning" xml:space="preserve">
-    <value> Лайвли не был закрыт должным образом, начиная с безопасного режима.
-Вы хотите восстановить ранее запущенные обои?
-Информация об ошибке сохраняется в: -
+    <value>Lively не был закрыт должным образом, запуск в безопасном режиме.
+Вы желаете восстановить предыдущие запущенные обои?
+Ошибка! Информация сохранена в:-
 </value>
   </data>
   <data name="msgSingleInstanceOnly" xml:space="preserve">
-    <value> Lively уже запущен!
-Если не отвечает, завершите процесс "livelywpf" в диспетчере задач &amp; попробуйте еще раз. </value>
+    <value>Lively уже запущен!
+Если не отвечает - завершите процесс "livelywpf" в диспетчере задач &amp; попробуйте заново.</value>
   </data>
   <data name="msgUrlLoad" xml:space="preserve">
-    <value> Введите ссылку на сайт для загрузки, шейдерные ссылки Shadertoy.com поддерживаются: - </value>
+    <value>Введите ссылку веб-страницы чтобы загрузить, поддерживаются ссылки Shadertoy.com:-</value>
   </data>
   <data name="msgUrlLoadTitle" xml:space="preserve">
-    <value> Загрузить веб-страницу </value>
+    <value>Загрузка веб-страницы</value>
   </data>
   <data name="msgUrlWarning" xml:space="preserve">
-    <value> Вы собираетесь загрузить внешний веб-сайт.
-Вредоносные веб-страницы могут быть вредны для вашего компьютера (вредоносные программы, вирусы ..)
-Введите только ссылки на веб-сайты, которым вы доверяете. </value>
+    <value>Вы собираетесь загрузить внешнюю веб-страницу.
+Вредоносные веб-страницы могут быть опасны для вашего компьютера
+Вводите ссылки только тех ресурсов, которым вы доверяете.</value>
   </data>
   <data name="msgUrlWarningTitle" xml:space="preserve">
-    <value> Предупреждение </value>
+    <value>Предупреждение</value>
   </data>
   <data name="msgWebBrowserMissing" xml:space="preserve">
-    <value> Компонент веб-браузера отсутствует, либо загрузите отдельно: -
-https://github.com/rocksdanister/lively-cef
-ИЛИ
-Загрузите полную версию Lively. </value>
+    <value>Компонент Web браузера не найден, либо загрузите отдельно:-
+https://github.com/rocksdanister/lively-cef 
+или
+скачайте полную версию lively.</value>
   </data>
   <data name="msgWorkerWFailure" xml:space="preserve">
-    <value> Похоже, что некоторые настройки должны быть установлены, чтобы Lively работал: -
-1. Откройте этот компьютер (мой компьютер)
-2. Щелкните правой кнопкой мыши пустую область
-3. Выберите Свойства
-4. Выберите «Дополнительные параметры системы».
-5. На вкладке «Быстродействие» выберите «Настройки».
-6. Включите элементы управления Animate и элементы в окнах &amp; Подать заявление.
+    <value>Похоже нужно изменить некоторые настройки, чтобы Lively заработал:-  
+1. Откройте ярлык "Этот компьютер"
+2. Нажмите правую кнопку мыши в пустом месте
+3. Выберите пункт "Свойства"
+4. Выберите "Дополнительные параметры системы"
+5. Во вкладке "Дополнительно" в поле "Быстродействите" нажмите "Параметры"
+6. Поставьте галочку в поле "Анимированные элементы управления и элементы внутри окна", нажмите "Применить" -> "ОК".
 
-Если Windows 7 просто установлена ​​- отрегулируйте для лучшего внешнего вида &amp; Подать заявление.
-Если все еще не работает, закройте &amp; снова запустить Lively / перезапустить Windows. </value>
+Если Windows 7, то просто выберите пункт - "Обеспечить наилучший внешний вид" &amp; примените.
+Если по прежнему не заработает, закройте &amp; запустите Lively заново/ перезапустите Windows.
+(Не работает в инсайдерских сборках windows 10)</value>
   </data>
   <data name="titleAbout" xml:space="preserve">
-    <value>около</value>
+    <value>О программе</value>
   </data>
   <data name="titleLibrary" xml:space="preserve">
-    <value> Библиотека </value>
+    <value>Библиотека</value>
   </data>
   <data name="titleSettings" xml:space="preserve">
-    <value> Настройки </value>
+    <value>Настройки</value>
   </data>
   <data name="titleType" xml:space="preserve">
-    <value> Тип </value>
+    <value>Тип</value>
   </data>
   <data name="toolTipMinimizeMsg" xml:space="preserve">
-    <value> Я сворачиваюсь в системный трей, щелкните правой кнопкой мыши на значке lively, чтобы получить дополнительные параметры. </value>
+    <value>Я свернут на панель задач, нажми правую кнопку мыши на иконку lively для дополнительных опций.</value>
   </data>
   <data name="toolTipUpdateMsg" xml:space="preserve">
-    <value> Доступна новая версия! </value>
+    <value>Доступна новая версия!</value>
   </data>
   <data name="toolTipWallpaperSkip" xml:space="preserve">
-    <value> Некоторые обои были пропущены из-за отсутствия файлов! </value>
+    <value>Некоторые обои были пропущены из - за потери файла(ов)!</value>
   </data>
   <data name="txtApplicationRules" xml:space="preserve">
-    <value> Правила применения </value>
+    <value>Правила для программ</value>
   </data>
   <data name="txtAudioIn" xml:space="preserve">
-    <value> Аудио вход: </value>
+    <value>Улавливание звука:</value>
   </data>
   <data name="txtAudioInToolTip" xml:space="preserve">
-    <value> Блокирует доступ браузеров к системному аудио. </value>
+    <value>Блокирует доступ браузеров к системному звуку.</value>
   </data>
   <data name="txtAudioLabel1" xml:space="preserve">
-    <value> Аудио всегда отключено в системах с несколькими мониторами. </value>
+    <value>Аудио всегда выключено при нескольких мониторах</value>
   </data>
   <data name="txtAudioLabel2" xml:space="preserve">
-    <value> «Аудиовход» отключен, веб-аудио визуализаторы не будут работать. </value>
+    <value>"Улавливание звука" выключено, Web audio visualisers не будет работать.</value>
   </data>
   <data name="txtAudioOut" xml:space="preserve">
-    <value> Аудио выход: </value>
+    <value>Воспр. звука:</value>
   </data>
   <data name="txtAudioOutToolTip" xml:space="preserve">
-    <value> Включить / выключить звук проигрывателя видео. </value>
+    <value>Вкл/Выкл воспроизведение звука.</value>
   </data>
   <data name="txtBrowser" xml:space="preserve">
-    <value> веб-браузер: </value>
+    <value>Web Браузер:</value>
   </data>
   <data name="txtBrowserToolTip" xml:space="preserve">
-    <value> Выберите веб-браузер для веб-обоев (скоро) </value>
+    <value>Выбрать web браузер для веб обоев(Скоро будет)</value>
   </data>
   <data name="txtCloseAllWallpapers" xml:space="preserve">
-    <value> Закрыть все обои </value>
+    <value>Закрыть все обои</value>
   </data>
   <data name="txtComingSoon" xml:space="preserve">
-    <value> Скоро в продаже </value>
+    <value>Скоро будет</value>
   </data>
   <data name="txtContextMenuCloseAll" xml:space="preserve">
-    <value> Закрыть все обои </value>
+    <value>Закрыть все обои</value>
   </data>
   <data name="txtContextMenuCloseWallpaper" xml:space="preserve">
-    <value> Закрыть обои </value>
+    <value>Закрыть обои</value>
   </data>
   <data name="txtContextMenuDeleteWallpaper" xml:space="preserve">
-    <value> Удалить обои </value>
+    <value>Удалить обои</value>
   </data>
   <data name="txtContextMenuExit" xml:space="preserve">
-    <value> Выход </value>
+    <value>Выход</value>
   </data>
   <data name="txtContextMenuExport" xml:space="preserve">
-    <value> Экспортировать живой .zip </value>
+    <value>Экспорт lively .zip</value>
   </data>
   <data name="txtContextMenuOpenLively" xml:space="preserve">
-    <value> Open Lively </value>
+    <value>Открыть Lively</value>
   </data>
   <data name="txtContextMenuShowOnDisk" xml:space="preserve">
-    <value> Показать на диске </value>
+    <value>Показать на диске</value>
   </data>
   <data name="txtContextMenuUpdate1" xml:space="preserve">
-    <value> Проверка на наличие обновлений </value>
+    <value>Проверка обновления...</value>
   </data>
   <data name="txtContextMenuUpdate2" xml:space="preserve">
-    <value> Доступно обновление! </value>
+    <value>Доступно обновление!</value>
   </data>
   <data name="txtContextMenuUpdate3" xml:space="preserve">
-    <value> Это бета-версия программного обеспечения? </value>
+    <value>Это бета версия?</value>
   </data>
   <data name="txtContextMenuUpdate4" xml:space="preserve">
-    <value> Lively актуален! </value>
+    <value>Lively обновился!</value>
   </data>
   <data name="txtContextMenuUpdate5" xml:space="preserve">
-    <value> Ошибка проверки обновления </value>
+    <value>Ошибка при обновлении</value>
   </data>
   <data name="txtCreateWallpaper" xml:space="preserve">
-    <value> Создать обои </value>
+    <value>Создать обои</value>
   </data>
   <data name="txtCreatingZip" xml:space="preserve">
-    <value> Создание живого zip-файла. </value>
+    <value>Создание Lively zip</value>
   </data>
   <data name="txtDisplayPauseRule" xml:space="preserve">
-    <value> Показать правило паузы: </value>
+    <value>Правило остановки экранов:</value>
   </data>
   <data name="txtDownload" xml:space="preserve">
-    <value>скачать</value>
+    <value>Загрузить</value>
   </data>
   <data name="txtGIFPlayer" xml:space="preserve">
-    <value> GIF Player: </value>
+    <value>Воспроизведение GIF:</value>
   </data>
   <data name="txtGifPlayerToolTip" xml:space="preserve">
-    <value> Directshow требует установки дополнительных плагинов. </value>
+    <value>Directshow требует установки дополнительных плагинов.</value>
   </data>
   <data name="txtGifScaling" xml:space="preserve">
-    <value>GIF Fit:</value>
+    <value>Масштабирование/Подгонка GIF:</value>
   </data>
   <data name="txtHelp" xml:space="preserve">
-    <value> Справка </value>
+    <value>Помощь</value>
   </data>
   <data name="txtIgnore" xml:space="preserve">
-    <value> Игнорировать </value>
+    <value>Игнорировать</value>
   </data>
   <data name="txtInstall" xml:space="preserve">
-    <value>устанавливать</value>
+    <value>Установить</value>
   </data>
   <data name="txtInstallWallpaper" xml:space="preserve">
-    <value> Установить обои </value>
+    <value>Установить обои</value>
   </data>
   <data name="txtLabel1" xml:space="preserve">
-    <value> Выберите тип обоев для загрузки: - </value>
+    <value>Выберите тип обоев для загрузки:-</value>
   </data>
   <data name="txtLabel10" xml:space="preserve">
-    <value> Атрибуция: </value>
+    <value>Attribution:</value>
   </data>
   <data name="txtLabel11" xml:space="preserve">
-    <value> Что я должен использовать? </value>
+    <value>Что мне использовать?</value>
   </data>
   <data name="txtLabel12" xml:space="preserve">
-    <value> Тип: </value>
+    <value>Тип:</value>
   </data>
   <data name="txtLabel120FPS" xml:space="preserve">
-    <value> Принудительно 120FPS UI </value>
+    <value>Force 120FPS UI</value>
   </data>
   <data name="txtLabel13" xml:space="preserve">
-    <value> Автор: </value>
+    <value>Автор:</value>
   </data>
   <data name="txtLabel14" xml:space="preserve">
-    <value> Контакт: </value>
+    <value>Контакты:</value>
   </data>
   <data name="txtLabel15" xml:space="preserve">
-    <value> Общие: </value>
-    <comment> вкладка настроек </comment>
+    <value>Основные</value>
+    <comment>settings tab</comment>
   </data>
   <data name="txtLabel16" xml:space="preserve">
-    <value> Требовать перезагрузки приложения: </value>
-    <comment> вкладка настроек </comment>
+    <value>Требуется перезапуск программы</value>
+    <comment>settings tab</comment>
   </data>
   <data name="txtLabel17" xml:space="preserve">
-    <value> Видео: </value>
-    <comment> вкладка настроек </comment>
+    <value>Video</value>
+    <comment>settings tab</comment>
   </data>
   <data name="txtLabel18" xml:space="preserve">
-    <value> Gif: </value>
-    <comment> вкладка настроек </comment>
+    <value>Gif</value>
+    <comment>settings tab</comment>
   </data>
   <data name="txtLabel19" xml:space="preserve">
-    <value> веб-браузер: </value>
-    <comment> вкладка настроек </comment>
+    <value>Web Браузер</value>
+    <comment>settings tab</comment>
   </data>
   <data name="txtLabel2" xml:space="preserve">
-    <value> Просто перетащите медиафайлы, если хотите, вместо этого. </value>
+    <value>Просто перетащите файлы, если вам так удобнее.</value>
   </data>
   <data name="txtLabel20" xml:space="preserve">
-    <value> Производительность: </value>
-    <comment> вкладка настроек </comment>
+    <value>Производительность</value>
+    <comment>settings tab</comment>
   </data>
   <data name="txtLabel21" xml:space="preserve">
-    <value> Установить поведение воспроизведения обоев на основе запущенного приложения: - </value>
+    <value>Установить правило воспроизведения обоев при запущенных приложениях:-</value>
   </data>
   <data name="txtLabel22" xml:space="preserve">
-    <value> Добавить </value>
+    <value>Добавить</value>
   </data>
   <data name="txtLabel23" xml:space="preserve">
-    <value> Удалить </value>
+    <value>Убрать</value>
   </data>
   <data name="txtLabel24" xml:space="preserve">
-    <value> Выберите макет обоев: - </value>
+    <value>Выберите слой обоев:-</value>
   </data>
   <data name="txtLabel25" xml:space="preserve">
-    <value> Выберите тип обоев для создания: - </value>
+    <value>Выберите тип обоев, чтобы создать:-</value>
   </data>
   <data name="txtLabel26" xml:space="preserve">
-    <value> Библиотечный файл: создайте легкий для распространения ZIP-файл, который загружает обои в библиотеку Lively.
-Чтобы просто воспроизвести файл в качестве обоев, это не требуется; просто перетащите файл в живое окно. </value>
+    <value>Файлы библиотеки: Легко создавать и делиться .zip - файл загружает обои в библиотеку Lively.
+Чтобы просто воспроизвести файл в качестве обоев этого не требуется; просто перетащи файл в окно Lively.</value>
   </data>
   <data name="txtLabel27" xml:space="preserve">
-    <value> Контактный веб-сайт (необязательно): - </value>
+    <value>Контакты(Необязательно):-</value>
   </data>
   <data name="txtLabel28" xml:space="preserve">
-    <value> Лицензия (по желанию): - </value>
+    <value>Лицензия(Необязательно):-</value>
   </data>
   <data name="txtLabel29" xml:space="preserve">
-    <value> Заголовок: - </value>
+    <value>Заголовок:-</value>
   </data>
   <data name="txtLabel3" xml:space="preserve">
-    <value> Эти материалы не спонсируются и не связаны с Unity Technologies, Godot, Bizhawk, Shadertoy.com </value>
+    <value>Данные материалы не спонсируются и не связаны с Unity Technologies, Godot, Bizhawk, Shadertoy.com</value>
   </data>
   <data name="txtLabel30" xml:space="preserve">
-    <value> Описание: - </value>
+    <value>Описание:-</value>
   </data>
   <data name="txtLabel31" xml:space="preserve">
-    <value> Выбрать файл </value>
+    <value>Выберите файл</value>
   </data>
   <data name="txtLabel32" xml:space="preserve">
-    <value> Миниатюра (200x200) </value>
+    <value>Уменьшенное изображение (200x200)</value>
   </data>
   <data name="txtLabel33" xml:space="preserve">
-    <value> Создать </value>
+    <value>Создать</value>
   </data>
   <data name="txtLabel34" xml:space="preserve">
-    <value> Предварительный просмотр Gif (192x108) </value>
+    <value>GIF предпросмотр(192x108)</value>
   </data>
   <data name="txtLabel35" xml:space="preserve">
-    <value> Тип обоев: - </value>
+    <value>Тип обоев:-</value>
   </data>
   <data name="txtLabel36" xml:space="preserve">
-    <value> Добавляемые файлы и папки: - </value>
+    <value>Файлы и(или) директории были добавлены:-</value>
   </data>
   <data name="txtLabel37" xml:space="preserve">
-    <value> ОК </value>
+    <value>Ок</value>
   </data>
   <data name="txtLabel38" xml:space="preserve">
-    <value> Назад </value>
+    <value>Назад</value>
   </data>
   <data name="txtLabel39" xml:space="preserve">
-    <value> Установка обоев </value>
+    <value>Установка обоев</value>
   </data>
   <data name="txtLabel4" xml:space="preserve">
-    <value> Средства массовой информации </value>
+    <value>Media</value>
   </data>
   <data name="txtLabel5" xml:space="preserve">
-    <value> Игры </value>
+    <value>Games</value>
   </data>
   <data name="txtLabel6" xml:space="preserve">
-    <value> ретро </value>
+    <value>Retro</value>
   </data>
   <data name="txtLabel7" xml:space="preserve">
-    <value> Другое </value>
+    <value>Другое</value>
   </data>
   <data name="txtLabel8" xml:space="preserve">
-    <value> Web </value>
+    <value>Web</value>
   </data>
   <data name="txtLabel9" xml:space="preserve">
-    <value> Аудио визуализатор </value>
+    <value>Audio Visualiser</value>
   </data>
   <data name="txtLabelApplication" xml:space="preserve">
-    <value> Применение </value>
+    <value>Программа</value>
   </data>
   <data name="txtLabelAppName" xml:space="preserve">
-    <value> Лайвли </value>
+    <value>Lively</value>
   </data>
   <data name="txtLabelInteraction" xml:space="preserve">
-    <value>взаимодействие</value>
+    <value>Взаимодействие</value>
   </data>
   <data name="txtLabelRule" xml:space="preserve">
-    <value> Правило </value>
+    <value>Правило</value>
   </data>
   <data name="txtLabelSoftwareUIRendering" xml:space="preserve">
-    <value> Отключить аппаратное ускорение </value>
+    <value>Выключить аппаратное ускорение</value>
   </data>
   <data name="txtLabelStream" xml:space="preserve">
-    <value>ручей</value>
+    <value>Stream</value>
   </data>
   <data name="txtLabelVideoQuality" xml:space="preserve">
-    <value>качество видео</value>
+    <value>Качество видео:</value>
   </data>
   <data name="txtLivelyAppWarning" xml:space="preserve">
-    <value> Эта функция в настоящее время в разработке.
-НЕ запускайте такие программы, как CHROME, STEAM .., которые порождают несколько подпроцессов.
-БУДУТ ЖУКИ &amp; Аварии, продолжайте с осторожностью !!! </value>
+    <value>Данная функция сейчас находится в разработке.
+Не запускайте программы как chrome, steam.. которые создают множество подпроцессов.
+Появятся баги &amp; краши, Действовать осторожно!!!</value>
   </data>
   <data name="txtLivelyErrorMsgTitle" xml:space="preserve">
-    <value> Лайвли: ошибка </value>
-    <comment> заголовок для сообщения. </comment>
+    <value>Ошибка</value>
+    <comment>title for messagebox.</comment>
   </data>
   <data name="txtLivelyWaitMsgTitle" xml:space="preserve">
-    <value> Пожалуйста, подождите </value>
-    <comment> заголовок для сообщения </comment>
+    <value>Пожалуйста подождите</value>
+    <comment>title for messagebox</comment>
   </data>
   <data name="txtLivelyWallpaperTypeApp" xml:space="preserve">
-    <value> Применение </value>
+    <value>Программа</value>
   </data>
   <data name="txtLivelyWallpaperTypeGIF" xml:space="preserve">
-    <value> Анимированный GIF </value>
+    <value>GIF анимация</value>
   </data>
   <data name="txtLivelyWallpaperTypeGodot" xml:space="preserve">
-    <value> Приложение Годо </value>
+    <value>Godot Application</value>
   </data>
   <data name="txtLivelyWallpaperTypeUnity" xml:space="preserve">
-    <value> Unity Application </value>
+    <value>Unity Application</value>
   </data>
   <data name="txtLivelyWallpaperTypeUnityAudio" xml:space="preserve">
-    <value> Unity Audio Reactive </value>
+    <value>Unity Audio Reactive</value>
   </data>
   <data name="txtLivelyWallpaperTypeUrl" xml:space="preserve">
-    <value>онлайн</value>
+    <value>Online</value>
   </data>
   <data name="txtLivelyWallpaperTypeVideo" xml:space="preserve">
-    <value> Видео </value>
+    <value>Video</value>
   </data>
   <data name="txtLivelyWallpaperTypeWeb" xml:space="preserve">
-    <value> Web </value>
+    <value>Web</value>
   </data>
   <data name="txtLivelyWallpaperTypeWebAudio" xml:space="preserve">
-    <value> Web Audio Reactive </value>
+    <value>Web Audio Reactive</value>
   </data>
   <data name="txtLiveTile" xml:space="preserve">
-    <value> Анимированная плитка: </value>
+    <value>Анимированные плитки в библиотеке:</value>
   </data>
   <data name="txtLiveTileToolTip" xml:space="preserve">
-    <value> (Экспериментальное, высокая загрузка ЦП) Воспроизвести предварительный просмотр обоев на плитке библиотеки. </value>
+    <value>(Экспериментальная)Предпросмотр обоев</value>
   </data>
   <data name="txtMoreWp" xml:space="preserve">
-    <value>Больше обоев ...</value>
+    <value>Больше обоев...</value>
   </data>
   <data name="txtMouse" xml:space="preserve">
-    <value>мышь</value>
+    <value>Мышь</value>
   </data>
   <data name="txtMsgFillAllFields" xml:space="preserve">
-    <value> Заполните все обязательные текстовые поля. </value>
+    <value>Заполните все необходимые поля.</value>
   </data>
   <data name="txtMsgSelectWallpaperFile" xml:space="preserve">
-    <value> Файл обоев не выбран </value>
+    <value>Файл с обоями не выбран</value>
   </data>
   <data name="txtMsgUpdaterPortableUnsupported" xml:space="preserve">
-    <value>Программа обновления не поддерживается в портативной версии Lively, загрузите последнюю портативную версию с веб-сайта.</value>
+    <value>Обновление не поддерживается в портативной версии Lively, скачайте последнюю портативную версию с сайта.</value>
   </data>
   <data name="txtNotes" xml:space="preserve">
-    <value> Примечание:
-(1) Живое окно игнорирует эти правила.
-(2) Звук всегда отключается, когда в фокусе находятся другие приложения {кроме (1), окна Lively}.
-(3) Алгоритм процесса переднего плана имеет некоторые ограничения, проверьте вики для получения дополнительной информации.
-(4) Правила применения имеют наивысший приоритет.
-(5) веб-браузер сворачивается, а не приостанавливается, поэтому вы увидите, что обои в некоторых случаях временно возвращаются к значениям по умолчанию; исправление скоро. </value>
+    <value>Прим:
+(1) Окно Lively игнорирует эти правила.
+(2) Звук всегда выключен, если в фокусе находятся другие программы {кроме (1), окна Lively}.
+(3) Приоритетные процессы имеют некоторые ограничения, воспользуйтесь поиском для большей информации.
+(4) Правила для программ имеют наивысший приоритет.</value>
   </data>
   <data name="txtOff" xml:space="preserve">
-    <value> Off </value>
+    <value>Выкл</value>
   </data>
   <data name="txtOn" xml:space="preserve">
-    <value> На </value>
+    <value>Вкл</value>
   </data>
   <data name="txtOtherAppsFocus" xml:space="preserve">
-    <value> Другое сфокусированное приложение: </value>
+    <value>Фокус на другой программе:</value>
   </data>
   <data name="txtOtherAppsFullScreen" xml:space="preserve">
-    <value> Другое приложение в полноэкранном режиме: </value>
+    <value>Другая программа на весь экран:</value>
   </data>
   <data name="txtPauseAlgorith" xml:space="preserve">
-    <value> Алгоритм паузы: </value>
+    <value>Алгоритм остановки:</value>
   </data>
   <data name="txtPleaseWait" xml:space="preserve">
-    <value> Ошибка загрузки </value>
+    <value>Ошибка загрузки</value>
   </data>
   <data name="txtPleaseWait2" xml:space="preserve">
-    <value> Пожалуйста, подождите </value>
+    <value>Пожалуйста подождите</value>
   </data>
   <data name="txtPreviewWallpaperNote" xml:space="preserve">
-    <value>Держите это окно в фокусе во время обработки.</value>
+    <value>Оставайтесь на этом окне во время обработки.</value>
   </data>
   <data name="txtSelectPreviewThumb" xml:space="preserve">
-    <value> Выберите файл предварительного просмотра / файл эскиза. </value>
+    <value>Выберите иконку файла.</value>
   </data>
   <data name="txtSetWallpaper" xml:space="preserve">
-    <value> Установить в качестве обоев </value>
+    <value>Установить обои</value>
   </data>
   <data name="txtSpanWallpaperWarning" xml:space="preserve">
-    <value> Некоторые обои не будут правильно отображаться на экранах. </value>
+    <value>Некоторые обои не будут заполнять все экраны должным образом.</value>
   </data>
   <data name="txtStartup" xml:space="preserve">
-    <value> Начать с Windows: </value>
+    <value>Включение с Windows:</value>
   </data>
   <data name="txtStartupToolTip" xml:space="preserve">
-    <value> Обязательно снимите этот флажок перед удалением lively. </value>
+    <value>Убедитесь, что вы сняли этот флажок перед удалением lively.</value>
   </data>
   <data name="txtSupport" xml:space="preserve">
-    <value> Поддержка </value>
+    <value>Поддержать</value>
   </data>
   <data name="txtTileGIF" xml:space="preserve">
-    <value> Анимированный GIF </value>
+    <value>GIF анимация</value>
   </data>
   <data name="txtTileGodot" xml:space="preserve">
-    <value> Godot Software </value>
+    <value>Godot Software</value>
   </data>
   <data name="txtTileHTML" xml:space="preserve">
-    <value> HTML </value>
+    <value>HTML</value>
   </data>
   <data name="txtTileOther" xml:space="preserve">
-    <value> Другое </value>
+    <value>Другое</value>
   </data>
   <data name="txtTileUnity" xml:space="preserve">
-    <value> Unity Software </value>
+    <value>Unity Software</value>
   </data>
   <data name="txtTileVideo" xml:space="preserve">
-    <value> Видео </value>
+    <value>Видео</value>
   </data>
   <data name="txtTileWebsite" xml:space="preserve">
-    <value> Сайт </value>
+    <value>Website</value>
   </data>
   <data name="txtTitlebar" xml:space="preserve">
-    <value> Lively Wallpaper System </value>
+    <value>Lively Wallpaper System</value>
   </data>
   <data name="txtTransparency" xml:space="preserve">
-    <value> Прозрачный интерфейс: </value>
+    <value>Прозрачность окна:</value>
   </data>
   <data name="txtTransparencyToolTip" xml:space="preserve">
-    <value> Сделать живое окно полупрозрачным. </value>
+    <value>Сделать окно lively полупрозрачным.</value>
   </data>
   <data name="txtUpdateBanner" xml:space="preserve">
-    <value> Доступно обновление Lively </value>
+    <value>Доступно обновление Lively</value>
   </data>
   <data name="txtUpdateDownloadErrorMsg" xml:space="preserve">
-    <value>Не удалось обновить. Попробуйте скачать установщик с</value>
+    <value>Не удалось обновить. Попробуйте загрузить установщик с сайта</value>
   </data>
   <data name="txtVideoPlayer" xml:space="preserve">
-    <value> Видеоплеер: </value>
+    <value>Видеоплеер:</value>
   </data>
   <data name="txtVideoPlayerToolTip" xml:space="preserve">
-    <value> Directshow требует установки дополнительных плагинов. </value>
+    <value>Directshow требует установки дополнительных плагинов.</value>
   </data>
   <data name="txtVideoScaling" xml:space="preserve">
-    <value>Видео Fit:</value>
+    <value>Масштабирование/Подгонка видео:</value>
   </data>
   <data name="txtWallpaperPlayback" xml:space="preserve">
-    <value> Обои для воспроизведения: </value>
+    <value>Режим воспроизведения обоев:</value>
   </data>
   <data name="txtWhenBattery" xml:space="preserve">
-    <value>Когда от батареи:</value>
+    <value>При работе от аккумулятора:</value>
   </data>
   <data name="txtWindowTitleSelectDisplay" xml:space="preserve">
-    <value> Выберите Показать </value>
+    <value>Выбрать дисплей</value>
   </data>
 </root>
