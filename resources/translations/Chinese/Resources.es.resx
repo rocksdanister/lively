@@ -1,0 +1,590 @@
+﻿  // Translator notes:-
+  // Translate the text inside value field: <value>Hello </value>  ---->  <value>Bonjour </value>
+  // Maintain similar spacing and lines if you can.
+  // &amp; stands for: &
+  // Save the file as Resources.Languagetag.resx eg: Resources.en-US.resx.  
+  // Languagetag: https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-lcid/a9eac961-e77d-41a6-90a5-ce1a8b0cdb9c
+  // I can add your name in the about page if interested, do let me know otherwise.
+  // Some text are just names, ignore them. example: XamlAnimatedGif, Directshow..
+  // Using an xml editing software will make editing this easy, example: Sublime-Text
+  // Some of my sentences are long and unnecessary, translate it however you want.
+  // 由于本人对壁纸方面的了解并不深入, 期待后续能有小伙伴能把翻译完善一下.   2020.04.19
+
+  <data name="cmbBoxAllDisplays" xml:space="preserve">
+    <value>全部</value>
+  </data>
+  <data name="cmbBoxGIFPlayer1" xml:space="preserve">
+    <value>XamlAnimatedGif</value>
+  </data>
+  <data name="cmbBoxGIFPlayer1ToolTip" xml:space="preserve">
+    <value>低内存使用率低, 高CPU使用率</value>
+  </data>
+  <data name="cmbBoxGIFPlayer2" xml:space="preserve">
+    <value>DirectShow</value>
+  </data>
+  <data name="cmbBoxGIFPlayer2ToolTip" xml:space="preserve">
+    <value>降低CPU使用率 (取决于编解码器设置)</value>
+  </data>
+  <data name="cmbBoxKill" xml:space="preserve">
+    <value>停止 (释放内存)</value>
+  </data>
+  <data name="cmbBoxNothing" xml:space="preserve">
+    <value>保持运行</value>
+  </data>
+  <data name="cmbBoxPaugeAlgorithmAllProcess" xml:space="preserve">
+    <value>所有程序 (实验性)</value>
+  </data>
+  <data name="cmbBoxPause" xml:space="preserve">
+    <value>暂停</value>
+  </data>
+  <data name="cmbBoxPauseAlgorithmForeground" xml:space="preserve">
+    <value>前台程序</value>
+  </data>
+  <data name="cmbBoxPerDisplay" xml:space="preserve">
+    <value>单独</value>
+  </data>
+  <data name="cmbBoxSpan" xml:space="preserve">
+    <value>跨显示器 (实验性)</value>
+  </data>
+  <data name="cmbBoxVideoPlayer1" xml:space="preserve">
+    <value>Media Foundation</value>
+  </data>
+  <data name="cmbBoxVideoPlayer2" xml:space="preserve">
+    <value>DirectShow(Lav, ffdshow..)</value>
+  </data>
+
+  <data name="msgAppCommandLineArgs" xml:space="preserve">
+    <value>输入应用程序的命令行参数 (可选, 不需要请留空):-</value>
+  </data>
+  <data name="msgAppCommandLineArgsTitle" xml:space="preserve">
+    <value>启动时的命令行参数</value>
+  </data>
+  <data name="msgAppGUIFailure" xml:space="preserve">
+    <value>所选壁纸(应用程序)没有图形用户界面(GUI)。
+正在终止程序...</value>
+  </data>
+  <data name="msgAppTimeout" xml:space="preserve">
+    <value>无法捕获应用程序窗口。
+该壁纸(应用程序) 在启动时花费了很长时间(约30秒以上), 这可能是因为:
+病毒扫描/应用程序太大。
+您可以等待一段时间后重试. (您也可以编辑程序的等待时间，详情请查看Wiki。)
+正在终止程序...</value>
+  </data>
+  <data name="msgDamangedLivelyFile" xml:space="preserve">
+    <value>壁纸文件已损坏，请尝试重新下载。</value>
+  </data>
+  <data name="msgDeleteConfirmation" xml:space="preserve">
+    <value>您确定要从磁盘上永久删除该壁纸吗？?</value>
+  </data>
+  <data name="msgDeleteConfirmationTitle" xml:space="preserve">
+    <value>删除确认</value>
+  </data>
+  <data name="msgDeletionFailure" xml:space="preserve">
+    <value>该壁纸目前正在使用中, 无法删除!
+请关闭壁纸后再进行删除</value>
+  </data>
+  <data name="msgDeletionFailureTitle" xml:space="preserve">
+    <value>删除失败</value>
+  </data>
+  <data name="msgDragDropOtherFormats" xml:space="preserve">
+    <value>此文件格式不支持拖放，请在 “类型” 标签页中打开它。</value>
+  </data>
+  <data name="msgDragDropOtherFormatsTitle" xml:space="preserve">
+    <value>Lively: 不支持</value>
+  </data>
+  <data name="msgExternalAppWarning" xml:space="preserve">
+    <value>请注意, 您正在准备把一个外部应用程序作为壁纸。
+恶意应用程序可能趁机注入木马、病毒..这将损害您的系统。
+仅当你信任此应用程序时，方可继续。</value>
+  </data>
+  <data name="msgExternalAppWarningTitle" xml:space="preserve">
+    <value>警告</value>
+  </data>
+  <data name="msgGIFfailure" xml:space="preserve">
+    <value>GIF文件播放失败。
+GIF文件是否已损坏？请尝试重新下载。</value>
+  </data>
+  <data name="msgHighContrastFailure" xml:space="preserve">
+    <value>Lively 无法在 "Windows高对比度 (Windows High Contrast)" 模式下正常工作！
+请禁用高对比度模式，然后重试。</value>
+  </data>
+  <data name="msgLoadExternalLink" xml:space="preserve">
+    <value>您即将在浏览器上打开一个外部网页……
+
+网址:-</value>
+  </data>
+  <data name="msgLoadExternalLinkTitle" xml:space="preserve">
+    <value>载入网页?</value>
+  </data>
+  <data name="msgLoadingAppWallpaper" xml:space="preserve">
+    <value>正在启动外部应用程序...</value>
+  </data>
+  <data name="msgMediaFoundationFailure" xml:space="preserve">
+    <value>媒体播放失败：无法找到编解码器 / 文件损坏。
+可以尝试安装 LAV 编解码器. 或者尝试切换到 "Directshow" 视频播放器。
+
+更多详细说明: 
+www.github.com/rocksdanister/lively/wiki/Video-Guide</value>
+  </data>
+  <data name="msgMediakitFailure" xml:space="preserve">
+    <value>媒体播放失败：无法找到编解码器 / 文件损坏。
+如需安装LAV编解码器，请访问:
+www.github.com/Nevcairiel/LAVFilters/releases
+
+更多详细说明: 
+www.github.com/rocksdanister/lively/wiki/Video-Guide</value>
+  </data>
+  <data name="msgRestoringInProgress" xml:space="preserve">
+    <value>目前正在恢复先前的壁纸, 请稍候...</value>
+  </data>
+  <data name="msgRestoringPrevWallpapers" xml:space="preserve">
+    <value>正在恢复先前的壁纸..</value>
+  </data>
+  <data name="msgSafeModeWarning" xml:space="preserve">
+    <value>Lively 没有被正确关闭, 正在以安全模式启动
+您是否要还原以前运行的壁纸?
+错误信息已被保存至:-
+</value>
+  </data>
+  <data name="msgSingleInstanceOnly" xml:space="preserve">
+    <value>Lively 已经在运行了
+如果没有响应，请在任务管理器中终止进程 “lively wpf” ，然后重试.</value>
+  </data>
+  <data name="msgUrlLoad" xml:space="preserve">
+    <value>输入要加载的网站链接，支持 Shadertoy.com着色器链接:-</value>
+  </data>
+  <data name="msgUrlLoadTitle" xml:space="preserve">
+    <value>载入网页</value>
+  </data>
+  <data name="msgUrlWarning" xml:space="preserve">
+    <value>你即将加载一个外部网页
+恶意网页可能对您的计算机有害（恶意软件，病毒..）
+仅在此输入您信任的网站的链接。</value>
+  </data>
+  <data name="msgUrlWarningTitle" xml:space="preserve">
+    <value>警告</value>
+  </data>
+  <data name="msgWebBrowserMissing" xml:space="preserve">
+    <value>Web浏览器组件丢失，你可以单独下载:-
+https://github.com/rocksdanister/lively-cef 
+或者
+重新下载完整版的 lively.</value>
+  </data>
+  <data name="msgWorkerWFailure" xml:space="preserve">
+    <value>似乎需要进行一些设置才能使Lively工作:-  
+1. 打开此电脑（我的电脑）
+2. 右键单击空白区域
+3. 选择"属性"
+4. 选择 "高级系统设置"
+5. 在 "性能" 选项卡下，选择 "设置"
+6. 启用 "窗口内的动画控件和元素"-应用.
+
+如果是 Windows7 系统只需设置 - "调整为最近外观" - 应用.
+如果仍不起作用, 重启 Lively / 重启操作系统.</value>
+  </data>
+  <data name="titleAbout" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="titleLibrary" xml:space="preserve">
+    <value>库</value>
+  </data>
+  <data name="titleSettings" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="titleType" xml:space="preserve">
+    <value>类型</value>
+  </data>
+  <data name="toolTipMinimizeMsg" xml:space="preserve">
+    <value>我已被最小化到系统托盘，右键单击 Lively 的图标以获取更多选项。</value>
+  </data>
+  <data name="toolTipUpdateMsg" xml:space="preserve">
+    <value>有新版本可用！</value>
+  </data>
+  <data name="toolTipWallpaperSkip" xml:space="preserve">
+    <value>由于缺少文件而跳过了某些壁纸!</value>
+  </data>
+  <data name="txtApplicationRules" xml:space="preserve">
+    <value>分应用规则配置</value>
+  </data>
+  <data name="txtAudioIn" xml:space="preserve">
+    <value>音频输入:</value>
+  </data>
+  <data name="txtAudioInToolTip" xml:space="preserve">
+    <value>Blocks browsers access to system audio.</value>
+  </data>
+  <data name="txtAudioLabel1" xml:space="preserve">
+    <value>在多显示器系统中音频将始终被禁用.</value>
+  </data>
+  <data name="txtAudioLabel2" xml:space="preserve">
+    <value>"音频输入" 已禁用，Web音频可视化 将无法工作.</value>
+  </data>
+  <data name="txtAudioOut" xml:space="preserve">
+    <value>音频输出:</value>
+  </data>
+  <data name="txtAudioOutToolTip" xml:space="preserve">
+    <value>取消静音 / 静音  视频播放器.</value>
+  </data>
+  <data name="txtBrowser" xml:space="preserve">
+    <value>网页浏览器:</value>
+  </data>
+  <data name="txtBrowserToolTip" xml:space="preserve">
+    <value>选择用于运行网络壁纸的网络浏览器(即将上线)</value>
+  </data>
+  <data name="txtCloseAllWallpapers" xml:space="preserve">
+    <value>关闭所有壁纸</value>
+  </data>
+  <data name="txtComingSoon" xml:space="preserve">
+    <value>即将上线</value>
+  </data>
+  <data name="txtContextMenuCloseAll" xml:space="preserve">
+    <value>关闭所有壁纸</value>
+  </data>
+  <data name="txtContextMenuCloseWallpaper" xml:space="preserve">
+    <value>关闭壁纸</value>
+  </data>
+  <data name="txtContextMenuDeleteWallpaper" xml:space="preserve">
+    <value>删除壁纸</value>
+  </data>
+  <data name="txtContextMenuExit" xml:space="preserve">
+    <value>退出</value>
+  </data>
+  <data name="txtContextMenuExport" xml:space="preserve">
+    <value>输出 lively .zip</value>
+  </data>
+  <data name="txtContextMenuOpenLively" xml:space="preserve">
+    <value>打开 Lively</value>
+  </data>
+  <data name="txtContextMenuShowOnDisk" xml:space="preserve">
+    <value>在资源管理器中打开 (打开文件所在位置)</value>
+  </data>
+  <data name="txtContextMenuUpdate1" xml:space="preserve">
+    <value>检查更新</value>
+  </data>
+  <data name="txtContextMenuUpdate2" xml:space="preserve">
+    <value>发现新版本!</value>
+  </data>
+  <data name="txtContextMenuUpdate3" xml:space="preserve">
+    <value>这是Beta版软件吗?</value>
+  </data>
+  <data name="txtContextMenuUpdate4" xml:space="preserve">
+    <value>已是最新版本</value>
+  </data>
+  <data name="txtContextMenuUpdate5" xml:space="preserve">
+    <value>检查更新出错!</value>
+  </data>
+  <data name="txtCreateWallpaper" xml:space="preserve">
+    <value>创建壁纸</value>
+  </data>
+  <data name="txtCreatingZip" xml:space="preserve">
+    <value>创建 Lively zip 文件.</value>
+  </data>
+  <data name="txtDisplayPauseRule" xml:space="preserve">
+    <value>播放器暂停规则(作用范围):</value>
+  </data>
+  <data name="txtGIFPlayer" xml:space="preserve">
+    <value>GIF 播放器:</value>
+  </data>
+  <data name="txtGifPlayerToolTip" xml:space="preserve">
+    <value>Directshow 需要安装额外的插件.</value>
+  </data>
+  <data name="txtHelp" xml:space="preserve">
+    <value>帮助</value>
+  </data>
+  <data name="txtIgnore" xml:space="preserve">
+    <value>忽略</value>
+  </data>
+  <data name="txtInstallWallpaper" xml:space="preserve">
+    <value>安装壁纸</value>
+  </data>
+  <data name="txtLabel1" xml:space="preserve">
+    <value>选择要加载的墙纸类型:-</value>
+  </data>
+  <data name="txtLabel10" xml:space="preserve">
+    <value>说明/属性:</value>
+  </data>
+  <data name="txtLabel11" xml:space="preserve">
+    <value>我应该用什么?</value>
+  </data>
+  <data name="txtLabel12" xml:space="preserve">
+    <value>类型:</value>
+  </data>
+  <data name="txtLabel120FPS" xml:space="preserve">
+    <value>强制 120FPS UI</value>
+  </data>
+  <data name="txtLabel13" xml:space="preserve">
+    <value>作者:</value>
+  </data>
+  <data name="txtLabel14" xml:space="preserve">
+    <value>联系:</value>
+  </data>
+  <data name="txtLabel15" xml:space="preserve">
+    <value>常规的:</value>
+    <comment>设置标签</comment>
+  </data>
+  <data name="txtLabel16" xml:space="preserve">
+    <value>需要 Lively 重启:</value>
+    <comment>设置标签</comment>
+  </data>
+  <data name="txtLabel17" xml:space="preserve">
+    <value>视频:</value>
+    <comment>设置标签</comment>
+  </data>
+  <data name="txtLabel18" xml:space="preserve">
+    <value>Gif:</value>
+    <comment>设置标签</comment>
+  </data>
+  <data name="txtLabel19" xml:space="preserve">
+    <value>网页浏览器:</value>
+    <comment>设置标签</comment>
+  </data>
+  <data name="txtLabel2" xml:space="preserve">
+    <value>如果您喜欢，只需拖放文件到此处即可。</value>
+  </data>
+  <data name="txtLabel20" xml:space="preserve">
+    <value>性能:</value>
+    <comment>设置标签</comment>
+  </data>
+  <data name="txtLabel21" xml:space="preserve">
+    <value>根据正在运行的应用程序设置壁纸播放行为:-</value>
+  </data>
+  <data name="txtLabel22" xml:space="preserve">
+    <value>添加</value>
+  </data>
+  <data name="txtLabel23" xml:space="preserve">
+    <value>移除</value>
+  </data>
+  <data name="txtLabel24" xml:space="preserve">
+    <value>选择壁纸布局:-</value>
+  </data>
+  <data name="txtLabel25" xml:space="preserve">
+    <value>选择需要创建的墙纸类型:-</value>
+  </data>
+  <data name="txtLabel26" xml:space="preserve">
+    <value>库文件：创建易于共享的.zip文件，以便于他人将墙纸加载到Lively的库中。
+如果只需将简单的文件作为墙纸播放，上述操作不是必需的。届时只需将文件拖放到 Lively 的窗口即可。</value>
+  </data>
+  <data name="txtLabel27" xml:space="preserve">
+    <value>联系网站 (可选):-</value>
+  </data>
+  <data name="txtLabel28" xml:space="preserve">
+    <value>权利许可 (License, 可选):-</value>
+  </data>
+  <data name="txtLabel29" xml:space="preserve">
+    <value>标题:-</value>
+  </data>
+  <data name="txtLabel3" xml:space="preserve">
+    <value>这些材料不是由 Unity Technologies，Godot，Bizhawk，Shadertoy.com 赞助或附属的。</value>
+  </data>
+  <data name="txtLabel30" xml:space="preserve">
+    <value>描述:-</value>
+  </data>
+  <data name="txtLabel31" xml:space="preserve">
+    <value>选择文件</value>
+  </data>
+  <data name="txtLabel32" xml:space="preserve">
+    <value>缩略图 (200x200)</value>
+  </data>
+  <data name="txtLabel33" xml:space="preserve">
+    <value>创建</value>
+  </data>
+  <data name="txtLabel34" xml:space="preserve">
+    <value>Gif 预览图 (192x108)</value>
+  </data>
+  <data name="txtLabel35" xml:space="preserve">
+    <value>壁纸类型:-</value>
+  </data>
+  <data name="txtLabel36" xml:space="preserve">
+    <value>已添加的文件和目录:-</value>
+  </data>
+  <data name="txtLabel37" xml:space="preserve">
+    <value>完成</value>
+  </data>
+  <data name="txtLabel38" xml:space="preserve">
+    <value>返回</value>
+  </data>
+  <data name="txtLabel39" xml:space="preserve">
+    <value>正在安装墙纸</value>
+  </data>
+  <data name="txtLabel4" xml:space="preserve">
+    <value>媒体</value>
+  </data>
+  <data name="txtLabel5" xml:space="preserve">
+    <value>游戏</value>
+  </data>
+  <data name="txtLabel6" xml:space="preserve">
+    <value>怀旧 (Retro)</value>
+  </data>
+  <data name="txtLabel7" xml:space="preserve">
+    <value>其他</value>
+  </data>
+  <data name="txtLabel8" xml:space="preserve">
+    <value>网页</value>
+  </data>
+  <data name="txtLabel9" xml:space="preserve">
+    <value>音频可视化</value>
+  </data>
+  <data name="txtLabelApplication" xml:space="preserve">
+    <value>应用程序</value>
+  </data>
+  <data name="txtLabelAppName" xml:space="preserve">
+    <value>Lively</value>
+  </data>
+  <data name="txtLabelRule" xml:space="preserve">
+    <value>规则</value>
+  </data>
+  <data name="txtLabelSoftwareUIRendering" xml:space="preserve">
+    <value>禁用硬件加速</value>
+  </data>
+  <data name="txtLabelStream" xml:space="preserve">
+    <value>流 (Stream)</value>
+  </data>
+  <data name="txtLabelVideoQuality" xml:space="preserve">
+    <value>视频质量</value>
+  </data>
+  <data name="txtLivelyAppWarning" xml:space="preserve">
+    <value>此功能目前正在开发中。
+不要运行诸如 CHROME，STEAM ..之类的程序，这些程序会产生多个子进程。
+可能会出现 错误 &amp; 崩溃, 请谨慎操作!!!</value>
+  </data>
+  <data name="txtLivelyErrorMsgTitle" xml:space="preserve">
+    <value>Lively: 错误</value>
+    <comment>消息框的标题</comment>
+  </data>
+  <data name="txtLivelyWaitMsgTitle" xml:space="preserve">
+    <value>请稍候...</value>
+    <comment>消息框的标题</comment>
+  </data>
+  <data name="txtLivelyWallpaperTypeApp" xml:space="preserve">
+    <value>应用程序</value>
+  </data>
+  <data name="txtLivelyWallpaperTypeGIF" xml:space="preserve">
+    <value>GIF 动态图</value>
+  </data>
+  <data name="txtLivelyWallpaperTypeGodot" xml:space="preserve">
+    <value>Godot 应用程序</value>
+  </data>
+  <data name="txtLivelyWallpaperTypeUnity" xml:space="preserve">
+    <value>Unity 应用程序</value>
+  </data>
+  <data name="txtLivelyWallpaperTypeUnityAudio" xml:space="preserve">
+    <value>Unity Audio Reactive</value>
+  </data>
+  <data name="txtLivelyWallpaperTypeUrl" xml:space="preserve">
+    <value>在线网页 (Online)</value>
+  </data>
+  <data name="txtLivelyWallpaperTypeVideo" xml:space="preserve">
+    <value>视频</value>
+  </data>
+  <data name="txtLivelyWallpaperTypeWeb" xml:space="preserve">
+    <value>网页</value>
+  </data>
+  <data name="txtLivelyWallpaperTypeWebAudio" xml:space="preserve">
+    <value>Web Audio Reactive</value>
+  </data>
+  <data name="txtLiveTile" xml:space="preserve">
+    <value>Animated Tile:</value>
+  </data>
+  <data name="txtLiveTileToolTip" xml:space="preserve">
+    <value>(实验性) Wallpaper preview on tile.</value>
+  </data>
+  <data name="txtMsgFillAllFields" xml:space="preserve">
+    <value>请填写所有必填的文本框.</value>
+  </data>
+  <data name="txtMsgSelectWallpaperFile" xml:space="preserve">
+    <value>未选择壁纸文件</value>
+  </data>
+  <data name="txtNotes" xml:space="preserve">
+    <value>注意:
+(1) Lively 忽略了这些规则.
+(2) 当其他应用程序处于焦点时，音频将始终处于静音状态 {except (1), Lively window}。
+(3) 前台程序判断算法有一些局限性，有关更多信息，请参见Wiki。
+(4) 应用程序规则具有最高优先级.</value>
+  </data>
+  <data name="txtOff" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="txtOn" xml:space="preserve">
+    <value>开启</value>
+  </data>
+  <data name="txtOtherAppsFocus" xml:space="preserve">
+    <value>其他应用程序获得焦点:</value>
+  </data>
+  <data name="txtOtherAppsFullScreen" xml:space="preserve">
+    <value>其他应用程序全屏:</value>
+  </data>
+  <data name="txtPauseAlgorith" xml:space="preserve">
+    <value>暂停规则:</value>
+  </data>
+  <data name="txtPleaseWait" xml:space="preserve">
+    <value>加载失败</value>
+  </data>
+  <data name="txtPleaseWait2" xml:space="preserve">
+    <value>请稍候</value>
+  </data>
+  <data name="txtPreviewWallpaperNote" xml:space="preserve">
+    <value>当运行(处理)中时, 请保持此窗口的焦点</value>
+  </data>
+  <data name="txtSelectPreviewThumb" xml:space="preserve">
+    <value>选择 预览/缩略图 文件.</value>
+  </data>
+  <data name="txtSetWallpaper" xml:space="preserve">
+    <value>设置为壁纸</value>
+  </data>
+  <data name="txtSpanWallpaperWarning" xml:space="preserve">
+    <value>某些墙纸无法正确跨显示器显示.</value>
+  </data>
+  <data name="txtStartup" xml:space="preserve">
+    <value>开机自启动:</value>
+  </data>
+  <data name="txtStartupToolTip" xml:space="preserve">
+    <value>卸载前请确保取消选中此复选框.</value>
+  </data>
+  <data name="txtSupport" xml:space="preserve">
+    <value>支持</value>
+  </data>
+  <data name="txtTileGIF" xml:space="preserve">
+    <value>GIF 动画</value>
+  </data>
+  <data name="txtTileGodot" xml:space="preserve">
+    <value>Godot 软件</value>
+  </data>
+  <data name="txtTileHTML" xml:space="preserve">
+    <value>HTML</value>
+  </data>
+  <data name="txtTileOther" xml:space="preserve">
+    <value>其他</value>
+  </data>
+  <data name="txtTileUnity" xml:space="preserve">
+    <value>Unity 软件</value>
+  </data>
+  <data name="txtTileVideo" xml:space="preserve">
+    <value>视频</value>
+  </data>
+  <data name="txtTileWebsite" xml:space="preserve">
+    <value>网站</value>
+  </data>
+  <data name="txtTitlebar" xml:space="preserve">
+    <value>Lively Wallpaper System</value>
+  </data>
+  <data name="txtTransparency" xml:space="preserve">
+    <value>半透明风格:</value>
+  </data>
+  <data name="txtTransparencyToolTip" xml:space="preserve">
+    <value>使 Lively 程序窗口半透明.</value>
+  </data>
+  <data name="txtUpdateBanner" xml:space="preserve">
+    <value> Lively 有可用的更新!</value>
+  </data>
+  <data name="txtVideoPlayer" xml:space="preserve">
+    <value>视频播放器:</value>
+  </data>
+  <data name="txtVideoPlayerToolTip" xml:space="preserve">
+    <value>使用 Directshow 需要安装额外的插件.</value>
+  </data>
+  <data name="txtWallpaperPlayback" xml:space="preserve">
+    <value>壁纸播放设置:</value>
+  </data>
+  <data name="txtWindowTitleSelectDisplay" xml:space="preserve">
+    <value>选择显示器</value>
+  </data>
+</root>
