@@ -140,8 +140,8 @@
 
                     <!-- Library Tiles-->
 
-                    <ListBox x:Name="wallpapersLV"  HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="5,10,0,0" Height="478" Width="655" SelectionChanged="WallpapersLV_SelectionChanged" 
-                             ScrollViewer.VerticalScrollBarVisibility="Visible"  ScrollViewer.ScrollChanged="WallpapersLV_ScrollChanged" >
+                    <ListBox x:Name="wallpapersLV" VerticalAlignment="Top" Margin="5,10,0,0" Height="478" Width="655" SelectionChanged="WallpapersLV_SelectionChanged" 
+                             ScrollViewer.VerticalScrollBarVisibility="Visible"  ScrollViewer.ScrollChanged="WallpapersLV_ScrollChanged">
                         <!--  ScrollViewer.IsDeferredScrollingEnabled="True"-->
 
                         <ListBox.ContextMenu>

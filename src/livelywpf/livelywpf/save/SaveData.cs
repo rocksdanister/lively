@@ -61,6 +61,7 @@ namespace livelywpf
         {
             private string appName;
             private AppRulesEnum rule;
+            [JsonIgnore]
             public string LocalisedRule { get; set; }
             public string AppName
             {
@@ -159,6 +160,7 @@ namespace livelywpf
             //default rules.
             if (!File.Exists(App.PathData + "\\SaveData\\application_rules.json"))
             {
+                appRules.Clear();
                 appRules.Add(new ApplicationRules { AppName = "Photoshop", Rule = AppRulesEnum.pause });
                 appRules.Add(new ApplicationRules { AppName = "Discord", Rule = AppRulesEnum.ignore });
                 SaveApplicationRules();
@@ -172,13 +174,25 @@ namespace livelywpf
                 {
                     JsonSerializer serializer = new JsonSerializer();
                     ApplicationRulesList tmp = (ApplicationRulesList)serializer.Deserialize(file, typeof(ApplicationRulesList));
-                    appRules = tmp.App;
+                    var item = tmp;
+                    if(item != null)
+                    {
+                        appRules = item.App;
+                    }
+                    else
+                    {
+                        throw new ArgumentNullException("json null/corrupt");
+                    }
                 }
 
             }
             catch (Exception e)
             {
                 Logger.Error(e.ToString());
+
+                appRules.Clear();
+                SaveApplicationRules();
+
             }
         }
 
@@ -371,14 +385,23 @@ namespace livelywpf
                 {
                     JsonSerializer serializer = new JsonSerializer();
                     WallpaperLayoutList tmp = (WallpaperLayoutList)serializer.Deserialize(file, typeof(WallpaperLayoutList));
-                    SetupDesktop.wallpapers = tmp.Layouts;
+                    var item = tmp.Layouts;
+                    if (item == null)
+                    {
+                        throw new ArgumentNullException("json null/corrupt");
+                    }
+                    else
+                    {
+                        SetupDesktop.wallpapers = item;
+                    }
                 }
-
             }
             catch (Exception e)
             {
-                SetupDesktop.wallpapers.Clear();
                 Logger.Error(e.ToString());
+
+                SetupDesktop.wallpapers.Clear();
+                SaveWallpaperLayout();
             }
         }
         #endregion
@@ -482,10 +505,13 @@ namespace livelywpf
                                     new SupportedLanguages("English(en-US)", new string[]{"en-US"}), //technically not US english, sue me..
                                     new SupportedLanguages("中文(zh-CN)", new string[]{"zh", "zh-Hans","zh-CN","zh-SG"}), //are they same?
                                     new SupportedLanguages("日本人(ja-JP)", new string[]{"ja", "ja-JP"}),
-                                    new SupportedLanguages("русский(ru)", new string[]{"ru", "ru-BY", "ru-KZ", "ru-KG", "ru-MD", "ru-RU","ru-UA"}), //are they same?
+                                    new SupportedLanguages("Pусский(ru)", new string[]{"ru", "ru-BY", "ru-KZ", "ru-KG", "ru-MD", "ru-RU","ru-UA"}), //are they same?
                                     new SupportedLanguages("हिन्दी(hi-IN)", new string[]{"hi", "hi-IN"}),
-                                    new SupportedLanguages("español(es)", new string[]{"es"}),
-                                    new SupportedLanguages("italian(it)", new string[]{"it", "it-IT", "it-SM","it-CH","it-VA"})
+                                    new SupportedLanguages("Español(es)", new string[]{"es"}),
+                                    new SupportedLanguages("Italian(it)", new string[]{"it", "it-IT", "it-SM","it-CH","it-VA"}),
+                                    new SupportedLanguages("عربى(ar-AE)", new string[]{"ar"}),
+                                    new SupportedLanguages("Française(fr)", new string[]{"fr"}),
+                                    new SupportedLanguages("Deutsche(de)", new string[]{"de"}),
                                     };
 
         public static readonly SupportedThemes[] livelyThemes = new SupportedThemes[] { 
@@ -705,9 +731,9 @@ namespace livelywpf
         /// <summary>
         /// Loads settigns file from disk if found, else creates settings files with default values.
         /// </summary>
-        public static void LoadConfig()
+        public static void LoadConfig(bool loadDefaultIfError = false)
         {
-            if (!File.Exists(App.PathData + "\\SaveData\\lively_config.json"))
+            if (!File.Exists(Path.Combine(App.PathData, "SaveData", "lively_config.json")))
             {
                 //writing default savefile to storage.
                 SaveConfig();
@@ -717,17 +743,47 @@ namespace livelywpf
             try
             {
                 // deserialize JSON directly from a file
-                using (StreamReader file = File.OpenText(App.PathData + "\\SaveData\\lively_config.json"))
+                using (StreamReader file = File.OpenText(Path.Combine(App.PathData, "SaveData","lively_config.json")))
                 {
-                    JsonSerializer serializer = new JsonSerializer();
-                    config = (ConfigFile)serializer.Deserialize(file, typeof(ConfigFile));
+                    JsonSerializer serializer = new JsonSerializer();    
+                    var tmp = (ConfigFile)serializer.Deserialize(file, typeof(ConfigFile));
+                  
+                    if(tmp == null)
+                    {
+                        throw new ArgumentNullException("json null/corrupt");
+                    }
+                    else
+                    {
+                        config = tmp;
+                        if(loadDefaultIfError)
+                        {
+                            //ignoring problems in lively shutdown.
+                            config.SafeShutdown = true;
+                        }
+                    }
                 }
-                
-                //config = JsonConvert.DeserializeObject<Config>(App.pathData + "\\lively_config.json");
             }
-            catch(Exception e)
+            catch(Exception e2)
             {
-                Logger.Error(e.ToString());
+                //backup file.
+                if (File.Exists(Path.Combine(App.PathData, "SaveData", "lively_config_b.json")) && loadDefaultIfError != true)
+                {
+                    File.Copy(Path.Combine(App.PathData, "SaveData", "lively_config_b.json"),
+                     Path.Combine(App.PathData, "SaveData", "lively_config.json"),
+                     true);
+                    //if backup is also corrupt, load default to avoid recursion.
+                    LoadConfig(true);
+                }
+                else
+                {
+                    //writing default savefile to storage.
+                    config = new ConfigFile
+                    {
+                        IsFirstRun = false
+                    };
+                    SaveConfig();
+                }
+                Logger.Error(e2.ToString());
             }
         }
 
@@ -745,10 +801,19 @@ namespace livelywpf
             */
             try
             {
-                using (StreamWriter sw = new StreamWriter(App.PathData + "\\SaveData\\lively_config.json"))
+                using (StreamWriter sw = new StreamWriter(Path.Combine(App.PathData, "SaveData", "lively_config.json")))
                 using (JsonWriter writer = new JsonTextWriter(sw))
                 {
                     serializer.Serialize(writer, config);
+                }
+
+                //I suspect this is whats causing file corruption, writing at the end during windows shutdown
+                //Shutdown cancel msg might not be working properly in some systems.
+                if(!config.SafeShutdown)
+                {
+                    File.Copy(Path.Combine(App.PathData, "SaveData", "lively_config.json"), 
+                        Path.Combine(App.PathData, "SaveData", "lively_config_b.json"),
+                        true);
                 }
             }
             catch(Exception e)
@@ -821,7 +886,16 @@ namespace livelywpf
                 {
                     JsonSerializer serializer = new JsonSerializer();
                     RunningProgramsList tmp = (RunningProgramsList)serializer.Deserialize(file, typeof(RunningProgramsList));
-                    runningPrograms = tmp.Item;
+                    var item = tmp.Item;
+                    if (item != null)
+                    {
+                        runningPrograms = item;
+                    }
+                    else
+                    {
+                        //writing default savefile to storage.
+                        SaveRunningPrograms();
+                    }
                 }
 
             }

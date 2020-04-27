@@ -190,6 +190,9 @@ namespace livelywpf
 
                 foreach (var item in SetupDesktop.extPrograms)
                 {
+                    if (item.Type == SetupDesktop.WallpaperType.video_stream)
+                        continue;
+
                     if (item.DisplayID.Equals(display.DeviceName, StringComparison.Ordinal) || SaveData.config.WallpaperArrangement == SaveData.WallpaperArrangement.span)
                     {
                         UInt32 lParam = (uint)mouse.Y;

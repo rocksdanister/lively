@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -118,40 +118,40 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="cmbBoxAllDisplays" xml:space="preserve">
-    <value>全部</value>
+    <value>جميع الشاشة(ات)</value>
   </data>
   <data name="cmbBoxGIFPlayer1" xml:space="preserve">
     <value>XamlAnimatedGif</value>
   </data>
   <data name="cmbBoxGIFPlayer1ToolTip" xml:space="preserve">
-    <value>低内存使用率低, 高CPU使用率</value>
+    <value>إستخدام أقل للمعالج, إستخدام عالي للمعالج</value>
   </data>
   <data name="cmbBoxGIFPlayer2" xml:space="preserve">
     <value>DirectShow</value>
   </data>
   <data name="cmbBoxGIFPlayer2ToolTip" xml:space="preserve">
-    <value>降低CPU使用率 (取决于编解码器设置)</value>
+    <value>إستخدام أقل للمعالج (يعتمد على إعدادات الكوديك)</value>
   </data>
   <data name="cmbBoxKill" xml:space="preserve">
-    <value>停止 (释放内存)</value>
+    <value>إغلاق(يوفر ويحرر الذاكرة)</value>
   </data>
   <data name="cmbBoxNothing" xml:space="preserve">
-    <value>保持运行</value>
+    <value>لا شيئ</value>
   </data>
   <data name="cmbBoxPaugeAlgorithmAllProcess" xml:space="preserve">
-    <value>所有程序 (实验性)</value>
+    <value>جميع العمليات (تجريبي)</value>
   </data>
   <data name="cmbBoxPause" xml:space="preserve">
-    <value>暂停</value>
+    <value>إيقاف مؤقت</value>
   </data>
   <data name="cmbBoxPauseAlgorithmForeground" xml:space="preserve">
-    <value>前台程序</value>
+    <value>معالجة المقدمة</value>
   </data>
   <data name="cmbBoxPerDisplay" xml:space="preserve">
-    <value>单独</value>
+    <value>لكل شاشة</value>
   </data>
   <data name="cmbBoxSpan" xml:space="preserve">
-    <value>跨显示器 (实验性)</value>
+    <value>إمتداد(تجريبي)</value>
   </data>
   <data name="cmbBoxVideoPlayer1" xml:space="preserve">
     <value>Media Foundation</value>
@@ -164,564 +164,563 @@
     <value>..\docs\license.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
   <data name="msgAppCommandLineArgs" xml:space="preserve">
-    <value>输入应用程序的命令行参数 (可选, 不需要请留空):-</value>
+    <value>أدخل قيم سطر الأوامر إن وجدت (إختياري, أتركه فارغاً إن لم توجد):-</value>
   </data>
   <data name="msgAppCommandLineArgsTitle" xml:space="preserve">
-    <value>启动时的命令行参数</value>
+    <value>بدء القيمة</value>
   </data>
   <data name="msgAppGUIFailure" xml:space="preserve">
-    <value>所选壁纸(应用程序)没有图形用户界面(GUI)。
-正在终止程序...</value>
+    <value>الخلفية المُختارة(التطبيق) ليس لها واجهة مستخدم رسومية.
+إنهاء التطبيق...</value>
   </data>
   <data name="msgAppTimeout" xml:space="preserve">
-    <value>无法捕获应用程序窗口。
-该壁纸(应用程序) 在启动时花费了很长时间(约30秒以上), 这可能是因为:
-病毒扫描/应用程序太大。
-您可以等待一段时间后重试. (您也可以编辑程序的等待时间，详情请查看Wiki。)
-正在终止程序...</value>
+    <value>فشل في التقاط نافذة التطبيق.
+الخلفية(التطبيق) يستغرق وقتاً طويلاً للبدء(أكثر من ~30ثانية), قد يكون بسبب:
+فحص الفيروسات/ التطبيق كبير جداً.
+إنتظر &amp; حاول مرة أخرى. (إختيارياً يمكنك تعديل وقت الإنتظار, يمكنك مراجعة الويكي الخاصة بالبرنامج لمزيد من المعلومات.)
+إغلاق التطبيق...</value>
   </data>
   <data name="msgDamangedLivelyFile" xml:space="preserve">
-    <value>壁纸文件已损坏，请尝试重新下载。</value>
+    <value>ملف الخلفية تالف, حاول إعادة تنزيله.</value>
   </data>
   <data name="msgDeleteConfirmation" xml:space="preserve">
-    <value>您确定要从磁盘上永久删除该壁纸吗？?</value>
+    <value>هل أنت متأكد من حذف الخلفية بشكل دائم من القرص؟</value>
   </data>
   <data name="msgDeleteConfirmationTitle" xml:space="preserve">
-    <value>删除确认</value>
+    <value>تأكيد الحذف</value>
   </data>
   <data name="msgDeletionFailure" xml:space="preserve">
-    <value>该壁纸目前正在使用中, 无法删除!
-请关闭壁纸后再进行删除</value>
+    <value>تعمل حالياً كخلفية, لا يمكن حذفها!
+أوقف/أغلق الخلفية لحذفها.</value>
   </data>
   <data name="msgDeletionFailureTitle" xml:space="preserve">
-    <value>删除失败</value>
+    <value>فشل الحذف</value>
   </data>
   <data name="msgDragDropOtherFormats" xml:space="preserve">
-    <value>此文件格式不支持拖放，请在 “类型” 标签页中打开它。</value>
+    <value>لا تدعم صيغة الملف السحب &amp; رمي, إفتحه في صفحة 'نوع' بدلاً من ذلك.</value>
   </data>
   <data name="msgDragDropOtherFormatsTitle" xml:space="preserve">
-    <value>Lively: 不支持</value>
+    <value>لايفلي: غير مدعوم</value>
   </data>
   <data name="msgExternalAppWarning" xml:space="preserve">
-    <value>请注意, 您正在准备把一个外部应用程序作为壁纸。
-恶意应用程序可能趁机注入木马、病毒..这将损害您的系统。
-仅当你信任此应用程序时，方可继续。</value>
+    <value>أنت تفتح تطبيقاً خارجياً كخلفية, يمكن للتطبيقات الضارة أن تستضيف البرامج الضارة والفيروسات... والتي قد تُلحق الضرر بنظامك.
+تابع فقط إذا كان التطبيق من مصدر موثوق.</value>
   </data>
   <data name="msgExternalAppWarningTitle" xml:space="preserve">
-    <value>警告</value>
+    <value>تحذير</value>
   </data>
   <data name="msgGIFfailure" xml:space="preserve">
-    <value>GIF文件播放失败。
-GIF文件是否已损坏？请尝试重新下载。</value>
+    <value>فشل تشغيل الصور المتحركة (جي آي إف).
+هل ملف الجي آي إف تالف؟ حاول إعادة تنزيله.</value>
   </data>
   <data name="msgHighContrastFailure" xml:space="preserve">
-    <value>Lively 无法在 "Windows高对比度 (Windows High Contrast)" 模式下正常工作！
-请禁用高对比度模式，然后重试。</value>
+    <value>لا يمكن للايفلي أن يعمل بصورة صحيحة في حين أن وضع التباين العالي للويندوز مُمَكّن!
+عطّل وضع التباين العالي &amp; حاول مرة أخرى.</value>
   </data>
   <data name="msgLoadExternalLink" xml:space="preserve">
-    <value>您即将在浏览器上打开一个外部网页……
+    <value>أنت على وشك فتح صفحة موقع خارجي على متصفحك.
 
-网址:-</value>
+URL:-</value>
   </data>
   <data name="msgLoadExternalLinkTitle" xml:space="preserve">
-    <value>载入网页?</value>
+    <value>تحميل الصفحة؟</value>
   </data>
   <data name="msgLoadingAppWallpaper" xml:space="preserve">
-    <value>正在启动外部应用程序...</value>
+    <value>بدء التطبيق الخارجي..</value>
   </data>
   <data name="msgMediaFoundationFailure" xml:space="preserve">
-    <value>媒体播放失败：无法找到编解码器 / 文件损坏。
-可以尝试安装 LAV 编解码器. 或者尝试切换到 "Directshow" 视频播放器。
+    <value>فشل تشغيل الوسائط: كوديك مفقود/ ملف تالف.
+LAV ثبّت كوديك &amp; Directshow حاول التبديل إلى مشغّل.
 
-更多详细说明: 
+مزيد من التعليمات: 
 www.github.com/rocksdanister/lively/wiki/Video-Guide</value>
   </data>
   <data name="msgMediakitFailure" xml:space="preserve">
-    <value>媒体播放失败：无法找到编解码器 / 文件损坏。
-如需安装LAV编解码器，请访问:
+    <value>فشل تشغيل الوسائط: كوديك مفقود/ ملف تالف.
+LAV لا تنسى تثبيت كوديك:
 www.github.com/Nevcairiel/LAVFilters/releases
 
-更多详细说明: 
+مزيد من التعليمات: 
 www.github.com/rocksdanister/lively/wiki/Video-Guide</value>
   </data>
   <data name="msgRestoringInProgress" xml:space="preserve">
-    <value>目前正在恢复先前的壁纸, 请稍候...</value>
+    <value>جارٍ استعادة الخلفية(ات) السابقة, يرجى الانتظار.</value>
   </data>
   <data name="msgRestoringPrevWallpapers" xml:space="preserve">
-    <value>正在恢复先前的壁纸..</value>
+    <value>إستعادة الخلفية(ات) السابقة..</value>
   </data>
   <data name="msgSafeModeWarning" xml:space="preserve">
-    <value>Lively 没有被正确关闭, 正在以安全模式启动
-您是否要还原以前运行的壁纸?
-错误信息已被保存至:-
+    <value>لم يتم إغلاق لايفلي بشكل صحيح, البدء في الوضع الآمن.
+هل ترغب في استعادة الخلفيات السابقة؟
+يتم حفظ معلومات الخطأ/الفشل في:-
 </value>
   </data>
   <data name="msgSingleInstanceOnly" xml:space="preserve">
-    <value>Lively 已经在运行了
-如果没有响应，请在任务管理器中终止进程 “lively wpf” ，然后重试.</value>
+    <value>التطبيق قيد التشغيل بالفعل!
+ "livelywpf" في حالة عدم استجابة البرنامج أغلقه من مدير المهام تحت اسم &amp; حاول مرة أخرى.</value>
   </data>
   <data name="msgUrlLoad" xml:space="preserve">
-    <value>输入要加载的网站链接，支持 Shadertoy.com着色器链接:-</value>
+    <value>أدخل رابط الموقع للتحميل, Shadertoy.com  روابط هذا الموقع مدعومة:-</value>
   </data>
   <data name="msgUrlLoadTitle" xml:space="preserve">
-    <value>载入网页</value>
+    <value>تحميل الصفحة</value>
   </data>
   <data name="msgUrlWarning" xml:space="preserve">
-    <value>你即将加载一个外部网页
-恶意网页可能对您的计算机有害（恶意软件，病毒..）
-仅在此输入您信任的网站的链接。</value>
+    <value>أنت على وشك تحميل صفحة موقع خارجية.
+يمكن لصفحات المواقع أن تكون ضارة (برامج ضارة, فيروسات ..)
+أدخل فقط روابط مواقع موثوقة.</value>
   </data>
   <data name="msgUrlWarningTitle" xml:space="preserve">
-    <value>警告</value>
+    <value>تحذير</value>
   </data>
   <data name="msgWebBrowserMissing" xml:space="preserve">
-    <value>Web浏览器组件丢失，你可以单独下载:-
+    <value>مكون متصفح الإنترنت مفقود, إما أن تنزل بشكل منفصل:-
 https://github.com/rocksdanister/lively-cef 
-或者
-重新下载完整版的 lively.</value>
+أو
+نزّل النسخة الكاملة من لايفلي.</value>
   </data>
   <data name="msgWorkerWFailure" xml:space="preserve">
-    <value>似乎需要进行一些设置才能使Lively工作:-  
-1. 打开此电脑（我的电脑）
-2. 右键单击空白区域
-3. 选择"属性"
-4. 选择 "高级系统设置"
-5. 在 "性能" 选项卡下，选择 "设置"
-6. 启用 "窗口内的动画控件和元素"-应用.
+    <value>يبدو أنه يجب ضبط بعد الإعدادات لجعل لايفلي يعمل:-  
+1. من سطح المكتب
+2. أنقر على زر البحث
+3. إبحث عن الأداء (أو Performance(
+4. أنقر على أول خيار
+5. ستظهر لوحة تحكم
+6. يجب أن يكون أول خيار مفعّل (علامة اختيار) &amp; تطبيق.
 
-如果是 Windows7 系统只需设置 - "调整为最近外观" - 应用.
-如果仍不起作用, 重启 Lively / 重启操作系统.</value>
+إذا تم تعيين ويندوز 7 - يُعدل إلى ضبط لأفضل مظهر &amp; تطبيق.
+إذا كان لا يزال لا يعمل, أغلق &amp; شغِّل لايفلي مجدداً/ أعِد تشغيل ويندوز.</value>
   </data>
   <data name="titleAbout" xml:space="preserve">
-    <value>关于</value>
+    <value>حول</value>
   </data>
   <data name="titleLibrary" xml:space="preserve">
-    <value>库</value>
+    <value>المكتبة</value>
   </data>
   <data name="titleSettings" xml:space="preserve">
-    <value>设置</value>
+    <value>الإعدادات</value>
   </data>
   <data name="titleType" xml:space="preserve">
-    <value>类型</value>
+    <value>النوع</value>
   </data>
   <data name="toolTipMinimizeMsg" xml:space="preserve">
-    <value>我已被最小化到系统托盘，右键单击 Lively 的图标以获取更多选项。</value>
+    <value>تم تصغيري إلى علبة النظام, أنقر بالزر الأيمن لمزيد من الخيارات.</value>
   </data>
   <data name="toolTipUpdateMsg" xml:space="preserve">
-    <value>有新版本可用！</value>
+    <value>نسخة جديدة متوفرة!</value>
   </data>
   <data name="toolTipWallpaperSkip" xml:space="preserve">
-    <value>由于缺少文件而跳过了某些壁纸!</value>
+    <value>بعض الخلفيات تم تخطيها بسبب ملف(ات) تالف(ة)!</value>
   </data>
   <data name="txtApplicationRules" xml:space="preserve">
-    <value>分应用规则配置</value>
+    <value>قواعد التطبيق</value>
   </data>
   <data name="txtAudioIn" xml:space="preserve">
-    <value>音频输入:</value>
+    <value>مدخل الصوت:</value>
   </data>
   <data name="txtAudioInToolTip" xml:space="preserve">
-    <value>Blocks browsers access to system audio.</value>
+    <value>يمنع وصول المتصفحات إلى صوت النظام.</value>
   </data>
   <data name="txtAudioLabel1" xml:space="preserve">
-    <value>在多显示器系统中音频将始终被禁用.</value>
+    <value>يتم تعطيل الصوت دائماً في أنظمة الشاشات المتعددة.</value>
   </data>
   <data name="txtAudioLabel2" xml:space="preserve">
-    <value>"音频输入" 已禁用，Web音频可视化 将无法工作.</value>
+    <value>مدخل الصوت معطّل, لن يعمل مرئي صوتيات الويب .</value>
   </data>
   <data name="txtAudioOut" xml:space="preserve">
-    <value>音频输出:</value>
+    <value>مخرج الصوت:</value>
   </data>
   <data name="txtAudioOutToolTip" xml:space="preserve">
-    <value>取消静音 / 静音  视频播放器.</value>
+    <value>كتم/إلغاء كتم صوت مشغّل الفيديو.</value>
   </data>
   <data name="txtBrowser" xml:space="preserve">
-    <value>网页浏览器:</value>
+    <value>متصفح الويب:</value>
   </data>
   <data name="txtBrowserToolTip" xml:space="preserve">
-    <value>选择用于运行网络壁纸的网络浏览器(即将上线)</value>
+    <value>تحديد متصفح الويب لخلفيات الويب(قريباً)</value>
   </data>
   <data name="txtCloseAllWallpapers" xml:space="preserve">
-    <value>关闭所有壁纸</value>
+    <value>إغلاق جميع الخلفيات</value>
   </data>
   <data name="txtComingSoon" xml:space="preserve">
-    <value>即将上线</value>
+    <value>قريباً</value>
   </data>
   <data name="txtContextMenuCloseAll" xml:space="preserve">
-    <value>关闭所有壁纸</value>
+    <value>إغلاق جميع الخلفيات</value>
   </data>
   <data name="txtContextMenuCloseWallpaper" xml:space="preserve">
-    <value>关闭壁纸</value>
+    <value>إغلاق الخلفية</value>
   </data>
   <data name="txtContextMenuDeleteWallpaper" xml:space="preserve">
-    <value>删除壁纸</value>
+    <value>حذف الخلفية</value>
   </data>
   <data name="txtContextMenuExit" xml:space="preserve">
-    <value>退出</value>
+    <value>إغلاق</value>
   </data>
   <data name="txtContextMenuExport" xml:space="preserve">
-    <value>输出 lively .zip</value>
+    <value>تصدير كـ lively .zip</value>
   </data>
   <data name="txtContextMenuOpenLively" xml:space="preserve">
-    <value>打开 Lively</value>
+    <value>تشغيل لايفلي</value>
   </data>
   <data name="txtContextMenuShowOnDisk" xml:space="preserve">
-    <value>在资源管理器中打开 (打开文件所在位置)</value>
+    <value>عرض على القرص</value>
   </data>
   <data name="txtContextMenuUpdate1" xml:space="preserve">
-    <value>检查更新</value>
+    <value>التحقق من وجود تحديث</value>
   </data>
   <data name="txtContextMenuUpdate2" xml:space="preserve">
-    <value>发现新版本!</value>
+    <value>تحديث متوفر!</value>
   </data>
   <data name="txtContextMenuUpdate3" xml:space="preserve">
-    <value>这是Beta版软件吗?</value>
+    <value>هل هذا برنامج تجريبي (بيتا)؟</value>
   </data>
   <data name="txtContextMenuUpdate4" xml:space="preserve">
-    <value>已是最新版本</value>
+    <value>لايفلي مُحدَّث!</value>
   </data>
   <data name="txtContextMenuUpdate5" xml:space="preserve">
-    <value>检查更新出错!</value>
+    <value>خطأ في التحقق من التحديث</value>
   </data>
   <data name="txtCreateWallpaper" xml:space="preserve">
-    <value>创建壁纸</value>
+    <value>إنشاء خلفية</value>
   </data>
   <data name="txtCreatingZip" xml:space="preserve">
-    <value>创建 Lively zip 文件.</value>
+    <value>إنشاء ملف Lively zip.</value>
   </data>
   <data name="txtDisplayPauseRule" xml:space="preserve">
-    <value>播放器暂停规则(作用范围):</value>
+    <value>عرض قاعدة الإيقاف المؤقت:</value>
   </data>
   <data name="txtGIFPlayer" xml:space="preserve">
-    <value>GIF 播放器:</value>
+    <value>(GIF)مُشغل جي آي إف:</value>
   </data>
   <data name="txtGifPlayerToolTip" xml:space="preserve">
-    <value>Directshow 需要安装额外的插件.</value>
+    <value>ملحقات إضافية لتثبيته DirectShow يتطلب.</value>
   </data>
   <data name="txtHelp" xml:space="preserve">
-    <value>帮助</value>
+    <value>مساعدة</value>
   </data>
   <data name="txtIgnore" xml:space="preserve">
-    <value>忽略</value>
+    <value>تجاهل</value>
   </data>
   <data name="txtInstallWallpaper" xml:space="preserve">
-    <value>安装壁纸</value>
+    <value>تثبيت الخلفية</value>
   </data>
   <data name="txtLabel1" xml:space="preserve">
-    <value>选择要加载的墙纸类型:-</value>
+    <value>حدد نوع الخلفية للتحميل:-</value>
   </data>
   <data name="txtLabel10" xml:space="preserve">
-    <value>说明/属性:</value>
+    <value>الإسناد:</value>
   </data>
   <data name="txtLabel11" xml:space="preserve">
-    <value>我应该用什么?</value>
+    <value>ماذا يجب أن أستخدم؟</value>
   </data>
   <data name="txtLabel12" xml:space="preserve">
-    <value>类型:</value>
+    <value>النوع:</value>
   </data>
   <data name="txtLabel120FPS" xml:space="preserve">
-    <value>强制 120FPS UI</value>
+    <value> 120FPS إجبار واجهة المستخدم</value>
   </data>
   <data name="txtLabel13" xml:space="preserve">
-    <value>作者:</value>
+    <value>المؤلف:</value>
   </data>
   <data name="txtLabel14" xml:space="preserve">
-    <value>联系:</value>
+    <value>التواصل:</value>
   </data>
   <data name="txtLabel15" xml:space="preserve">
-    <value>常规的:</value>
-    <comment>设置标签</comment>
+    <value>عام:</value>
+    <comment>settings tab</comment>
   </data>
   <data name="txtLabel16" xml:space="preserve">
-    <value>需要 Lively 重启:</value>
-    <comment>设置标签</comment>
+    <value>يتطلب إعادة تشغيل البرنامج:</value>
+    <comment>settings tab</comment>
   </data>
   <data name="txtLabel17" xml:space="preserve">
-    <value>视频:</value>
-    <comment>设置标签</comment>
+    <value>الفيديو:</value>
+    <comment>settings tab</comment>
   </data>
   <data name="txtLabel18" xml:space="preserve">
-    <value>Gif:</value>
-    <comment>设置标签</comment>
+    <value>الجي آي إف:</value>
+    <comment>settings tab</comment>
   </data>
   <data name="txtLabel19" xml:space="preserve">
-    <value>网页浏览器:</value>
-    <comment>设置标签</comment>
+    <value>متصفح الويب:</value>
+    <comment>settings tab</comment>
   </data>
   <data name="txtLabel2" xml:space="preserve">
-    <value>如果您喜欢，只需拖放文件到此处即可。</value>
+    <value>فقط إسحب وارمي الملفات إن كنت تفضّل بهذه الطريقة.</value>
   </data>
   <data name="txtLabel20" xml:space="preserve">
-    <value>性能:</value>
-    <comment>设置标签</comment>
+    <value>الأداء:</value>
+    <comment>settings tab</comment>
   </data>
   <data name="txtLabel21" xml:space="preserve">
-    <value>根据正在运行的应用程序设置壁纸播放行为:-</value>
+    <value>تعيين الخلفية(ات) سلوك التشغيل بناءً على تشغيل التطبيق:-</value>
   </data>
   <data name="txtLabel22" xml:space="preserve">
-    <value>添加</value>
+    <value>إضافة</value>
   </data>
   <data name="txtLabel23" xml:space="preserve">
-    <value>移除</value>
+    <value>إزلة</value>
   </data>
   <data name="txtLabel24" xml:space="preserve">
-    <value>选择壁纸布局:-</value>
+    <value>حدد تخطيط الخلفية:-</value>
   </data>
   <data name="txtLabel25" xml:space="preserve">
-    <value>选择需要创建的墙纸类型:-</value>
+    <value>إختر نوع خلفية للإنشاء:-</value>
   </data>
   <data name="txtLabel26" xml:space="preserve">
-    <value>库文件：创建易于共享的.zip文件，以便于他人将墙纸加载到Lively的库中。
-如果只需将简单的文件作为墙纸播放，上述操作不是必需的。届时只需将文件拖放到 Lively 的窗口即可。</value>
+    <value>ملف المكتبة: أنشِئ ملف مضغوط سهل المشاركة لتحميل الخلفية في مكتبة لايفلي (الملفات المضغوطة كـ رار أو زيب)
+لبدء ملف كخلفية بسهولة, هذا غير مطلوب; فقط إسحب وارمي الملف داخل نافذة لايفلي.</value>
   </data>
   <data name="txtLabel27" xml:space="preserve">
-    <value>联系网站 (可选):-</value>
+    <value>التواصل مع الموقع(إختياري):-</value>
   </data>
   <data name="txtLabel28" xml:space="preserve">
-    <value>权利许可 (License, 可选):-</value>
+    <value>الرخصة(إختياري):-</value>
   </data>
   <data name="txtLabel29" xml:space="preserve">
-    <value>标题:-</value>
+    <value>العنوان/الاسم:-</value>
   </data>
   <data name="txtLabel3" xml:space="preserve">
-    <value>这些材料不是由 Unity Technologies，Godot，Bizhawk，Shadertoy.com 赞助或附属的。</value>
+    <value>Unity Technologies هذه المواد لا ترعاها أو تتبعها, Godot, Bizhawk, Shadertoy.com</value>
   </data>
   <data name="txtLabel30" xml:space="preserve">
-    <value>描述:-</value>
+    <value>الوصف:-</value>
   </data>
   <data name="txtLabel31" xml:space="preserve">
-    <value>选择文件</value>
+    <value>إختر الملف</value>
   </data>
   <data name="txtLabel32" xml:space="preserve">
-    <value>缩略图 (200x200)</value>
+    <value>صورة مصغرة (200x200)</value>
   </data>
   <data name="txtLabel33" xml:space="preserve">
-    <value>创建</value>
+    <value>إنشاء</value>
   </data>
   <data name="txtLabel34" xml:space="preserve">
-    <value>Gif 预览图 (192x108)</value>
+    <value>GIF معاينة الصورة المتحركة (192x108)</value>
   </data>
   <data name="txtLabel35" xml:space="preserve">
-    <value>壁纸类型:-</value>
+    <value>نوع الخلفية:-</value>
   </data>
   <data name="txtLabel36" xml:space="preserve">
-    <value>已添加的文件和目录:-</value>
+    <value>تتم إضافة الملفات والمجلدات:-</value>
   </data>
   <data name="txtLabel37" xml:space="preserve">
-    <value>完成</value>
+    <value>موافق</value>
   </data>
   <data name="txtLabel38" xml:space="preserve">
-    <value>返回</value>
+    <value>رجوع</value>
   </data>
   <data name="txtLabel39" xml:space="preserve">
-    <value>正在安装墙纸</value>
+    <value>جاري تثبيت الخلفية</value>
   </data>
   <data name="txtLabel4" xml:space="preserve">
-    <value>媒体</value>
+    <value>وسائط</value>
   </data>
   <data name="txtLabel5" xml:space="preserve">
-    <value>游戏</value>
+    <value>ألعاب</value>
   </data>
   <data name="txtLabel6" xml:space="preserve">
-    <value>怀旧 (Retro)</value>
+    <value>ريترو</value>
   </data>
   <data name="txtLabel7" xml:space="preserve">
-    <value>其他</value>
+    <value>أخرى</value>
   </data>
   <data name="txtLabel8" xml:space="preserve">
-    <value>网页</value>
+    <value>ويب</value>
   </data>
   <data name="txtLabel9" xml:space="preserve">
-    <value>音频可视化</value>
+    <value>مرئيّ الصوت</value>
   </data>
   <data name="txtLabelApplication" xml:space="preserve">
-    <value>应用程序</value>
+    <value>التطبيق</value>
   </data>
   <data name="txtLabelAppName" xml:space="preserve">
-    <value>Lively</value>
+    <value>لايفلي</value>
   </data>
   <data name="txtLabelRule" xml:space="preserve">
-    <value>规则</value>
+    <value>القاعدة</value>
   </data>
   <data name="txtLabelSoftwareUIRendering" xml:space="preserve">
-    <value>禁用硬件加速</value>
+    <value>تعطيل تسريع الهاردوير</value>
   </data>
   <data name="txtLabelStream" xml:space="preserve">
-    <value>流 (Stream)</value>
+    <value>ستريم/فيديو مباشر</value>
   </data>
   <data name="txtLabelVideoQuality" xml:space="preserve">
-    <value>视频质量</value>
+    <value>جودة الفيديو</value>
   </data>
   <data name="txtLivelyAppWarning" xml:space="preserve">
-    <value>此功能目前正在开发中。
-不要运行诸如 CHROME，STEAM ..之类的程序，这些程序会产生多个子进程。
-可能会出现 错误 &amp; 崩溃, 请谨慎操作!!!</value>
+    <value>هذه الميزة قيد التطوير حالياً.
+لا تقم بتشغيل برامج مثل جوجل كروم, ستيم.. والتي تفرز عدة عمليات فرعية.
+ستكون هناك أخطاء &amp; تعطيلات/كراشات, !!!تقدم بحذر</value>
   </data>
   <data name="txtLivelyErrorMsgTitle" xml:space="preserve">
-    <value>Lively: 错误</value>
-    <comment>消息框的标题</comment>
+    <value>لايفلي: خطأ</value>
+    <comment>title for messagebox.</comment>
   </data>
   <data name="txtLivelyWaitMsgTitle" xml:space="preserve">
-    <value>请稍候...</value>
-    <comment>消息框的标题</comment>
+    <value>يرجى الإنتظار</value>
+    <comment>title for messagebox</comment>
   </data>
   <data name="txtLivelyWallpaperTypeApp" xml:space="preserve">
-    <value>应用程序</value>
+    <value>التطبيق</value>
   </data>
   <data name="txtLivelyWallpaperTypeGIF" xml:space="preserve">
-    <value>GIF 动态图</value>
+    <value>صورة متحركة</value>
   </data>
   <data name="txtLivelyWallpaperTypeGodot" xml:space="preserve">
-    <value>Godot 应用程序</value>
+    <value>Godot تطبيق</value>
   </data>
   <data name="txtLivelyWallpaperTypeUnity" xml:space="preserve">
-    <value>Unity 应用程序</value>
+    <value>Unity تطبيق</value>
   </data>
   <data name="txtLivelyWallpaperTypeUnityAudio" xml:space="preserve">
-    <value>Unity Audio Reactive</value>
+    <value>Unity رد فعل صوتي بـ</value>
   </data>
   <data name="txtLivelyWallpaperTypeUrl" xml:space="preserve">
-    <value>在线网页 (Online)</value>
+    <value>عبر الإنترنت</value>
   </data>
   <data name="txtLivelyWallpaperTypeVideo" xml:space="preserve">
-    <value>视频</value>
+    <value>فيديو</value>
   </data>
   <data name="txtLivelyWallpaperTypeWeb" xml:space="preserve">
-    <value>网页</value>
+    <value>ويب</value>
   </data>
   <data name="txtLivelyWallpaperTypeWebAudio" xml:space="preserve">
-    <value>Web Audio Reactive</value>
+    <value>رد فعل ويب صوتي</value>
   </data>
   <data name="txtLiveTile" xml:space="preserve">
-    <value>Animated Tile:</value>
+    <value>لوحة متحركة:</value>
   </data>
   <data name="txtLiveTileToolTip" xml:space="preserve">
-    <value>(实验性) Wallpaper preview on tile.</value>
+    <value>(تجريبي) معينة الخلفية على اللوحة.</value>
   </data>
   <data name="txtMsgFillAllFields" xml:space="preserve">
-    <value>请填写所有必填的文本框.</value>
+    <value>إملأ جميع الحقول النصية المطلوبة.</value>
   </data>
   <data name="txtMsgSelectWallpaperFile" xml:space="preserve">
-    <value>未选择壁纸文件</value>
+    <value>لم يتم اختيار ملف الخلفية</value>
   </data>
   <data name="txtNotes" xml:space="preserve">
-    <value>注意:
-(1) Lively 忽略了这些规则.
-(2) 当其他应用程序处于焦点时，音频将始终处于静音状态 {except (1), Lively window}。
-(3) 前台程序判断算法有一些局限性，有关更多信息，请参见Wiki。
-(4) 应用程序规则具有最高优先级.</value>
+    <value>ملاحظة:
+(1) نافذة لايفلي تتجاهل هذه القواعد.
+(2) الصوت دائماً مكتوم عندما تكون البرامج/التطبيقات في التركيز {باستثناء (1), نافذة لايفلي}.
+(3) لدى خوارزمية معالجة المقدمة بعض القيود, راجع الويكي لمزيد من المعلومات.
+(4) لدى قواعد التطبيق الأولوية القصوى.</value>
   </data>
   <data name="txtOff" xml:space="preserve">
-    <value>关闭</value>
+    <value>إيقاف</value>
   </data>
   <data name="txtOn" xml:space="preserve">
-    <value>开启</value>
+    <value>تشغيل</value>
   </data>
   <data name="txtOtherAppsFocus" xml:space="preserve">
-    <value>其他应用程序获得焦点:</value>
+    <value>تركيز تطبيق آخر:</value>
   </data>
   <data name="txtOtherAppsFullScreen" xml:space="preserve">
-    <value>其他应用程序全屏:</value>
+    <value>تطبيقات وضع ملء الشاشة الأخرى:</value>
   </data>
   <data name="txtPauseAlgorith" xml:space="preserve">
-    <value>暂停规则:</value>
+    <value>إيقاف مؤقت للخوارزمية:</value>
   </data>
   <data name="txtPleaseWait" xml:space="preserve">
-    <value>加载失败</value>
+    <value>فشل التحميل</value>
   </data>
   <data name="txtPleaseWait2" xml:space="preserve">
-    <value>请稍候</value>
+    <value>يرجى الإنتظار</value>
   </data>
   <data name="txtPreviewWallpaperNote" xml:space="preserve">
-    <value>当运行(处理)中时, 请保持此窗口的焦点</value>
+    <value>يرجى عدم إغلاق النافذة أثناء المعالجة.</value>
   </data>
   <data name="txtSelectPreviewThumb" xml:space="preserve">
-    <value>选择 预览/缩略图 文件.</value>
+    <value>إختر معاينة/صورة مصغرة للملف.</value>
   </data>
   <data name="txtSetWallpaper" xml:space="preserve">
-    <value>设置为壁纸</value>
+    <value>تعيين كخلفية</value>
   </data>
   <data name="txtSpanWallpaperWarning" xml:space="preserve">
-    <value>某些墙纸无法正确跨显示器显示.</value>
+    <value>لن تمتد بعض الخلفيات عبر شاشات العرض بشكل صحيح.</value>
   </data>
   <data name="txtStartup" xml:space="preserve">
-    <value>开机自启动:</value>
+    <value>البدء مع ويندوز:</value>
   </data>
   <data name="txtStartupToolTip" xml:space="preserve">
-    <value>卸载前请确保取消选中此复选框.</value>
+    <value>تأكد من إلغاء تحديد هذا قبل إلغاء تثبيت لايفلي.</value>
   </data>
   <data name="txtSupport" xml:space="preserve">
-    <value>支持</value>
+    <value>الدعم</value>
   </data>
   <data name="txtTileGIF" xml:space="preserve">
-    <value>GIF 动画</value>
+    <value>صورة متحركة</value>
   </data>
   <data name="txtTileGodot" xml:space="preserve">
-    <value>Godot 软件</value>
+    <value>Godot برنامج</value>
   </data>
   <data name="txtTileHTML" xml:space="preserve">
     <value>HTML</value>
   </data>
   <data name="txtTileOther" xml:space="preserve">
-    <value>其他</value>
+    <value>أخرى</value>
   </data>
   <data name="txtTileUnity" xml:space="preserve">
-    <value>Unity 软件</value>
+    <value>Unity برنامج</value>
   </data>
   <data name="txtTileVideo" xml:space="preserve">
-    <value>视频</value>
+    <value>فيديو</value>
   </data>
   <data name="txtTileWebsite" xml:space="preserve">
-    <value>网站</value>
+    <value>موقع</value>
   </data>
   <data name="txtTitlebar" xml:space="preserve">
-    <value>Lively Wallpaper System</value>
+    <value>نظام خلفية لايفلي</value>
   </data>
   <data name="txtTransparency" xml:space="preserve">
-    <value>半透明风格:</value>
+    <value>واجهة مستخدم شفافة:</value>
   </data>
   <data name="txtTransparencyToolTip" xml:space="preserve">
-    <value>使 Lively 程序窗口半透明.</value>
+    <value>جعل نافذة لايفلي شبه شفافة.</value>
   </data>
   <data name="txtUpdateBanner" xml:space="preserve">
-    <value> Lively 有可用的更新!</value>
+    <value>تحديث لايفلي متوفر</value>
   </data>
   <data name="txtVideoPlayer" xml:space="preserve">
-    <value>视频播放器:</value>
+    <value>مشغّل الفيديو:</value>
   </data>
   <data name="txtVideoPlayerToolTip" xml:space="preserve">
-    <value>使用 Directshow 需要安装额外的插件.</value>
+    <value>ملحقات إضافية لتثبيته Directshow يتطلب.</value>
   </data>
   <data name="txtWallpaperPlayback" xml:space="preserve">
-    <value>壁纸播放设置:</value>
+    <value>تشغيل الخلفية:</value>
   </data>
   <data name="txtWindowTitleSelectDisplay" xml:space="preserve">
-    <value>选择显示器</value>
+    <value>تحديد الشاشة</value>
   </data>
   <data name="txtGifScaling" xml:space="preserve">
-    <value>GIF 缩放/调整:</value>
+    <value>تحجيم/مناسب الصورة المتحركة:</value>
   </data>
   <data name="txtInstall" xml:space="preserve">
-    <value>安装</value>
+    <value>تثبيت</value>
   </data>
  <data name="txtLabelInteraction" xml:space="preserve">
-    <value>交互</value>
+    <value>التفاعل</value>
   </data>
   <data name="txtMoreWp" xml:space="preserve">
-    <value>更多壁纸...</value>
+    <value>المزيد من الخلفيات...</value>
   </data>
   <data name="txtMouse" xml:space="preserve">
-    <value>鼠标</value>
+    <value>الفأرة</value>
   </data>
   <data name="txtMsgUpdaterPortableUnsupported" xml:space="preserve">
-    <value>免安装版的 Lively 暂不支持自动更新。请前往网页下载最新的免安装版手动更新</value>
+    <value>من لايفلي, حمّل الإصدار الحالي من الموقع Portable المحدّث لا يدعم نسخة .</value>
   </data>
  <data name="txtUpdateDownloadErrorMsg" xml:space="preserve">
-    <value>更新失败。请尝试从此处下载安装程序:</value>
+    <value>فشل التحديث. حاول تنزيل المثبت من الموقع</value>
   </data>
  <data name="txtVideoScaling" xml:space="preserve">
-    <value>视频 缩放/调整:</value>
+    <value>تحجيم/مناسب الفيديو:</value>
   </data>
   <data name="txtWhenBattery" xml:space="preserve">
-    <value>当处于电池供电模式时:</value>
+    <value>عندما يكون على وضع البطارية:</value>
   </data>
 </root>

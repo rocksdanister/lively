@@ -75,7 +75,14 @@ namespace livelywpf
 
             #region language
             //CultureInfo.CurrentCulture = new CultureInfo("ru-RU", false); //not working?
-            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(SaveData.config.Language);
+            try
+            {
+                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(SaveData.config.Language);
+            }
+            catch(CultureNotFoundException)
+            {
+                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
+            }
             //System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("zh-CN"); //zh-CN
             #endregion language
 

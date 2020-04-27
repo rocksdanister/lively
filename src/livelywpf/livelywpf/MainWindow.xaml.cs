@@ -108,7 +108,7 @@ namespace livelywpf
             InitializeComponent();
             notify.Manager = new NotificationMessageManager();
             this.Closing += MainWindow_Closing;
-            SystemEvents.DisplaySettingsChanged += SystemEvents_DisplaySettingsChanged; //static event, unsubcribe!
+            //SystemEvents.DisplaySettingsChanged += SystemEvents_DisplaySettingsChanged; //static event, unsubcribe!
             //todo:- Window.DpiChangedEvent, so far not required.
             //todo:- Suspend/hibernate events (SystemEvents.PowerModeChanged += SystemEvents_PowerModeChanged)
 
@@ -159,7 +159,8 @@ namespace livelywpf
 
             //restore previously running wp's.
             Multiscreen = false;
-            SystemEvents_DisplaySettingsChanged(this, null); 
+            SystemEvents_DisplaySettingsChanged(this, null);
+            SystemEvents.DisplaySettingsChanged += SystemEvents_DisplaySettingsChanged; //static event, unsubcribe!
 
             //Incomplete, currently in development:- all process algorithm with multiscreen is buggy.
             if (Multiscreen && SaveData.config.ProcessMonitorAlgorithm == ProcessMonitorAlgorithm.all)
@@ -454,26 +455,26 @@ namespace livelywpf
                 Logger.Info("Restarting/Restoring All Wallpaper(s)");
 
                 //remove wp's with file missing on disk, except for url type( filePath =  website url).
-                if( wallpapersToBeLoaded.RemoveAll(x => !File.Exists(x.FilePath) && x.Type != SetupDesktop.WallpaperType.url && x.Type != SetupDesktop.WallpaperType.video_stream) > 0)
+                if (wallpapersToBeLoaded.RemoveAll(x => !File.Exists(x.FilePath) && x.Type != SetupDesktop.WallpaperType.url && x.Type != SetupDesktop.WallpaperType.video_stream) > 0)
                 {
-                    _notifyIcon.ShowBalloonTip(10000,"lively",Properties.Resources.toolTipWallpaperSkip, ToolTipIcon.None);
+                    _notifyIcon.ShowBalloonTip(10000, "lively", Properties.Resources.toolTipWallpaperSkip, ToolTipIcon.None);
                     notify.Manager.CreateMessage()
-                   .Accent("#FF0000")
-                   .HasBadge("Warn")
-                   .Background("#333")
-                   .HasHeader(Properties.Resources.txtLivelyErrorMsgTitle)
-                   .HasMessage(Properties.Resources.toolTipWallpaperSkip)
-                   .Dismiss().WithButton("Ok", button => { })
-                   .Queue();
+                    .Accent("#FF0000")
+                    .HasBadge("Warn")
+                    .Background("#333")
+                    .HasHeader(Properties.Resources.txtLivelyErrorMsgTitle)
+                    .HasMessage(Properties.Resources.toolTipWallpaperSkip)
+                    .Dismiss().WithButton("Ok", button => { })
+                    .Queue();
                 }
 
-                if(SaveData.config.WallpaperArrangement == WallpaperArrangement.span)
+                if (SaveData.config.WallpaperArrangement == WallpaperArrangement.span)
                 {
                     //unlikely to happen unless user edits the json file manually or some file error? 
-                    if(wallpapersToBeLoaded.Count > 1)
+                    if (wallpapersToBeLoaded.Count > 1)
                     {
                         //span across all display(s), only 1 wp allowed!
-                        wallpapersToBeLoaded.RemoveRange(1, (wallpapersToBeLoaded.Count-1) );
+                        wallpapersToBeLoaded.RemoveRange(1, (wallpapersToBeLoaded.Count - 1));
                     }
                 }
                 RestoreWallpaper(wallpapersToBeLoaded);
@@ -525,10 +526,10 @@ namespace livelywpf
             key.Close();
         }
         /// <summary>
-        /// Checks if startup registry entry is present.
+        /// Checks if startup registry entry is present and returns key value.
         /// </summary>
         /// <returns></returns>
-        private static bool CheckStartupRegistry()
+        private static string CheckStartupRegistry()
         {
             Microsoft.Win32.RegistryKey key = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
             Assembly curAssembly = Assembly.GetExecutingAssembly();
@@ -546,14 +547,21 @@ namespace livelywpf
                 key.Close();
             }
 
+            return result;
+            /*
             if (String.IsNullOrEmpty(result))
             {            
                 return false;
             }
-            else
+            else if(String.Equals(result, curAssembly.Location, StringComparison.Ordinal))
             {
                 return true;
+            }
+            else
+            {
+                return false;
             }     
+            */
         }
 
         [Obsolete("Fails to work when folderpath contains non-english characters(WshShell is ancient afterall); use SetStartupRegistry() instead.")]
@@ -1965,7 +1973,9 @@ namespace livelywpf
         /// <param name="layout"></param>
         private async void RestoreWallpaper(List<SaveData.WallpaperLayout> layoutList)
         {
-            //bool cancelled = false;
+            if (_isRestoringWallpapers)
+                return;
+
             isProcessRestoreCancelled = false;
             float progress = 0;
             int loadedWallpaperCount = 0;
@@ -2956,8 +2966,26 @@ namespace livelywpf
                 SaveData.SaveConfig();
                 comboBoxGIFPlayer.SelectedIndex = (int)SaveData.config.GifPlayer;
             }
-            //StartupToggle.IsChecked = SaveData.config.Startup;
-            StartupToggle.IsChecked = CheckStartupRegistry();
+
+            //ignoring save file, instead check registry if key exists..
+            var startupkeyValue = CheckStartupRegistry();
+            if (String.IsNullOrEmpty(startupkeyValue))
+            {
+                SaveData.config.Startup = false;
+            }
+            else if (String.Equals(startupkeyValue, Assembly.GetExecutingAssembly().Location, StringComparison.Ordinal))
+            {
+                //everything looks good.
+                SaveData.config.Startup = true;
+            }
+            else
+            {
+                SaveData.config.Startup = true;
+                //key value do not match, delete & add key again.
+                SetStartupRegistry(true);
+            }
+            StartupToggle.IsChecked = SaveData.config.Startup;
+            SaveData.SaveConfig(); //saving startup state.
 
             #region shit
             //todo:- do it more elegantly.
