@@ -546,12 +546,8 @@ namespace livelywpf
             /// </summary>
             public int GifFps { get; set; } 
 
-            public System.Drawing.Size GifSizePerc { get; set; }
-            public System.Drawing.Point GifOffsets { get; set; }
             public PreviewGIF()
             {
-                GifSizePerc = new System.Drawing.Size(100, 100);
-                GifOffsets = new System.Drawing.Point(0, 0);
                 CaptureGif = true;
                 CaptureFps = 15;
                 CaptureDuration = 4;
