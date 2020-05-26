@@ -125,7 +125,8 @@ namespace livelywpf
             OkBtn.IsEnabled = false;
 
             GenerateLivelyInfo(layout);
-            Rect reviewPanel;
+            Rect previewPanelPos;
+            Size previewPanelSize = WindowOperations.GetElementPixelSize(PreviewBorder);
 
             #region preview_images
             //preview clip (animated gif file).
@@ -134,37 +135,44 @@ namespace livelywpf
                 //generate screen capture images.
                 for (int i = 0; i < gifTotalFrames; i++)
                 {
-                    reviewPanel = WindowOperations.GetAbsolutePlacement(PreviewBorder, true);
-                    CaptureWindow.CopyScreen(saveDirectory, i.ToString(CultureInfo.InvariantCulture) + ".jpg", 
-                                (int)(((int)reviewPanel.Left + (int)(reviewPanel.Right)) /2f) - 192/2, (int)(((int)reviewPanel.Top + (int)(reviewPanel.Bottom ))/2f) - 108/2, 192, 108); //384,216
+                    //updating the position incase window is moved.
+                    previewPanelPos = WindowOperations.GetAbsolutePlacement(PreviewBorder, true);
+                    CaptureWindow.CopyScreen(
+                                saveDirectory,
+                                i.ToString(CultureInfo.InvariantCulture) + ".jpg",
+                                (int)previewPanelPos.Left,
+                                (int)previewPanelPos.Top,
+                                (int)previewPanelSize.Width,
+                                (int)previewPanelSize.Height);
+                                //SaveData.config.PreviewGIF.GifSize.Width + SaveData.config.PreviewGIF.GifOffsets.X,
+                                //SaveData.config.PreviewGIF.GifSize.Height + SaveData.config.PreviewGIF.GifOffsets.Y); //384,216
+
                     await Task.Delay(gifAnimationDelay);
 
                     if ((i + 1) > gifProgressBar.Maximum)
                         gifProgressBar.Value = gifProgressBar.Maximum;
                     else
                         gifProgressBar.Value = i + 1;
-                    /*
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        if((i + 1) > gifProgressBar.Maximum)
-                            gifProgressBar.Value = gifProgressBar.Maximum;
-                        else
-                            gifProgressBar.Value = i + 1;
-                    });
-                    */
                 }
                 //create animated gif from captured images.
                 await Task.Run(() => CreateGif());
             }
             else
             {
-                await Task.Delay(100); //wait before capturing thumbnail..incase wallpaper is not loaded yet.
+                //wait before capturing thumbnail..incase wallpaper is not loaded yet.
+                await Task.Delay(100);
             }
 
-            // 200x200 thumbnail image capture.
-            reviewPanel = WindowOperations.GetAbsolutePlacement(PreviewBorder, true);
-            CaptureWindow.CopyScreen(saveDirectory, "lively_t.jpg", 
-                         (int)(((int)reviewPanel.Left + (int)(reviewPanel.Right)) / 2f) - 200 / 2, (int)(((int)reviewPanel.Top + (int)(reviewPanel.Bottom)) / 2f) - 200 / 2, 200, 200);
+            //200x200 thumbnail image capture.
+            //updating the position incase window is moved.
+            previewPanelPos = WindowOperations.GetAbsolutePlacement(PreviewBorder, true);
+            CaptureWindow.CopyScreen(
+                        saveDirectory,
+                        "lively_t.jpg",
+                        (int)previewPanelPos.Left + (int)previewPanelSize.Width/5,
+                        (int)previewPanelPos.Top,
+                        (int)previewPanelSize.Height,
+                        (int)previewPanelSize.Height);
 
             #endregion
 

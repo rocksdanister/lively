@@ -497,7 +497,7 @@ https://github.com/rocksdanister/lively-cef
     <value>إنشاء</value>
   </data>
   <data name="txtLabel34" xml:space="preserve">
-    <value>GIF معاينة الصورة المتحركة (192x108)</value>
+    <value>GIF معاينة الصورة المتحركة</value>
   </data>
   <data name="txtLabel35" xml:space="preserve">
     <value>نوع الخلفية:-</value>
@@ -702,7 +702,7 @@ https://github.com/rocksdanister/lively-cef
   <data name="txtInstall" xml:space="preserve">
     <value>تثبيت</value>
   </data>
- <data name="txtLabelInteraction" xml:space="preserve">
+  <data name="txtLabelInteraction" xml:space="preserve">
     <value>التفاعل</value>
   </data>
   <data name="txtMoreWp" xml:space="preserve">
@@ -714,10 +714,10 @@ https://github.com/rocksdanister/lively-cef
   <data name="txtMsgUpdaterPortableUnsupported" xml:space="preserve">
     <value>من لايفلي, حمّل الإصدار الحالي من الموقع Portable المحدّث لا يدعم نسخة .</value>
   </data>
- <data name="txtUpdateDownloadErrorMsg" xml:space="preserve">
+  <data name="txtUpdateDownloadErrorMsg" xml:space="preserve">
     <value>فشل التحديث. حاول تنزيل المثبت من الموقع</value>
   </data>
- <data name="txtVideoScaling" xml:space="preserve">
+  <data name="txtVideoScaling" xml:space="preserve">
     <value>تحجيم/مناسب الفيديو:</value>
   </data>
   <data name="txtWhenBattery" xml:space="preserve">

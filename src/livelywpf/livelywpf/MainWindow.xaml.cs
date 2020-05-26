@@ -1669,8 +1669,15 @@ namespace livelywpf
             if (!_isExit)
             {
                 e.Cancel = true;
+                //show notification regarding app minimized status.
                 if (SaveData.config.IsFirstRun)
                 {
+                    Dialogues.HelpWindow w = new Dialogues.HelpWindow(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "docs","help_vid_2.mp4"))
+                    {
+                        Owner = this,
+                        WindowStartupLocation = WindowStartupLocation.CenterOwner
+                    };
+                    w.Show();
                     _notifyIcon.ShowBalloonTip(3000, "Lively",Properties.Resources.toolTipMinimizeMsg,ToolTipIcon.None);
 
                     SaveData.config.IsFirstRun = false;
@@ -3174,7 +3181,7 @@ namespace livelywpf
 
         public void Button_Click_HowTo(object sender, RoutedEventArgs e)
         {
-            Dialogues.HelpWindow w = new Dialogues.HelpWindow
+            Dialogues.HelpWindow w = new Dialogues.HelpWindow(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "docs","help_vid_1.mp4"))
             {
                 Owner = this,
                 WindowStartupLocation = WindowStartupLocation.CenterOwner
@@ -3423,7 +3430,7 @@ namespace livelywpf
                 quality = String.Empty;
             }
 
-            return "\"" + link + "\"" + " --force-window=yes --loop-file --keep-open --hwdec=yes" + quality;
+            return "\"" + link + "\"" + " --force-window=yes --loop-file --keep-open --hwdec=yes --no-keepaspect" + quality;
         }
 
 //        public readonly static string[] formatsVideo = { ".dat", ".wmv", ".3g2", ".3gp", ".3gp2", ".3gpp", ".amv", ".asf",  ".avi", ".bin", ".cue", ".divx", ".dv", ".flv", ".gxf", ".iso", ".m1v", ".m2v", ".m2t", ".m2ts", ".m4v",

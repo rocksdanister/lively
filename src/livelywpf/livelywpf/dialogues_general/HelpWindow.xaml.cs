@@ -23,15 +23,14 @@ namespace livelywpf.Dialogues
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
-        public HelpWindow()
+        public HelpWindow(string videoPath)
         {
             InitializeComponent();
 
             mePlayer.LoadedBehavior = MediaState.Manual;
-            string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory + "\\docs\\help_vid_1.mp4");
-            if (System.IO.File.Exists(path))
+            if (System.IO.File.Exists(videoPath))
             {
-                mePlayer.Source = new Uri(path);
+                mePlayer.Source = new Uri(videoPath);
                 mePlayer.Stretch = Stretch.Uniform;
                 mePlayer.MediaEnded += MePlayer_MediaEnded;
                 //mePlayer.MediaOpened += MePlayer_MediaOpened; 
@@ -40,7 +39,7 @@ namespace livelywpf.Dialogues
 
                 mePlayer.Play();
             }
-             
+            
             changelogtext.Text = "What's new in Lively v" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
         }
 

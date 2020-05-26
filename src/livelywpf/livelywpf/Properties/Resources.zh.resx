@@ -498,7 +498,7 @@ https://github.com/rocksdanister/lively-cef
     <value>创建</value>
   </data>
   <data name="txtLabel34" xml:space="preserve">
-    <value>Gif 预览图 (192x108)</value>
+    <value>Gif 预览图</value>
   </data>
   <data name="txtLabel35" xml:space="preserve">
     <value>壁纸类型:-</value>
@@ -703,7 +703,7 @@ https://github.com/rocksdanister/lively-cef
   <data name="txtInstall" xml:space="preserve">
     <value>安装</value>
   </data>
- <data name="txtLabelInteraction" xml:space="preserve">
+  <data name="txtLabelInteraction" xml:space="preserve">
     <value>交互</value>
   </data>
   <data name="txtMoreWp" xml:space="preserve">
@@ -715,10 +715,10 @@ https://github.com/rocksdanister/lively-cef
   <data name="txtMsgUpdaterPortableUnsupported" xml:space="preserve">
     <value>免安装版的 Lively 暂不支持自动更新。请前往网页下载最新的免安装版手动更新</value>
   </data>
- <data name="txtUpdateDownloadErrorMsg" xml:space="preserve">
+  <data name="txtUpdateDownloadErrorMsg" xml:space="preserve">
     <value>更新失败。请尝试从此处下载安装程序:</value>
   </data>
- <data name="txtVideoScaling" xml:space="preserve">
+  <data name="txtVideoScaling" xml:space="preserve">
     <value>视频 缩放/调整:</value>
   </data>
   <data name="txtWhenBattery" xml:space="preserve">

@@ -512,6 +512,7 @@ namespace livelywpf
                                     new SupportedLanguages("عربى(ar-AE)", new string[]{"ar"}),
                                     new SupportedLanguages("Française(fr)", new string[]{"fr"}),
                                     new SupportedLanguages("Deutsche(de)", new string[]{"de"}),
+                                    new SupportedLanguages("portuguesa(pt)", new string[]{"pt"}),
                                     };
 
         public static readonly SupportedThemes[] livelyThemes = new SupportedThemes[] { 
@@ -544,8 +545,13 @@ namespace livelywpf
             /// Saved gif frame rate.
             /// </summary>
             public int GifFps { get; set; } 
+
+            public System.Drawing.Size GifSizePerc { get; set; }
+            public System.Drawing.Point GifOffsets { get; set; }
             public PreviewGIF()
             {
+                GifSizePerc = new System.Drawing.Size(100, 100);
+                GifOffsets = new System.Drawing.Point(0, 0);
                 CaptureGif = true;
                 CaptureFps = 15;
                 CaptureDuration = 4;

@@ -503,7 +503,7 @@ To simply play a file as wallpaper, this is not required; just drag and drop the
     <value>Create</value>
   </data>
   <data name="txtLabel34" xml:space="preserve">
-    <value>Preview Gif (192x108)</value>
+    <value>Preview Gif</value>
   </data>
   <data name="txtLabel35" xml:space="preserve">
     <value>Wallpaper Type:-</value>
