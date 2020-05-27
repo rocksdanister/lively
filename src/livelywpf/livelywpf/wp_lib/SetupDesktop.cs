@@ -270,17 +270,6 @@ namespace livelywpf
                 else
                 {
                     _isInitialized = true;
-                    /*
-                    //input test
-                    var styleCurrentWindowExtended = NativeMethods.GetWindowLongPtr(workerw, (-20));
-                    var styleNewWindowExtended =
-                            styleCurrentWindowExtended.ToInt64() |
-                             (
-                                 (Int64)NativeMethods.WindowStyles.WS_EX_TRANSPARENT |
-                                 (Int64)NativeMethods.WindowStyles.WS_EX_LAYERED 
-                             );
-                    NativeMethods.SetWindowLongPtr(new HandleRef(null, workerw), (-20), (IntPtr)styleCurrentWindowExtended);
-                    */
                 }
             }
 
@@ -316,7 +305,7 @@ namespace livelywpf
                         FileName = App.PathData +"\\external\\mpv\\mpv.exe",
                         UseShellExecute = false,
                         WorkingDirectory = System.IO.Path.GetDirectoryName(layout.FilePath),
-                        Arguments = "\"" + layout.FilePath + "\"" + " --force-window=yes --loop-file --keep-open --hwdec=yes" //+" --wid "+workerw  //--mute=yes 
+                        Arguments = "\"" + layout.FilePath + "\"" + " --force-window=yes --loop-file --keep-open --hwdec=yes --no-keepaspect" //+" --wid "+workerw  //--mute=yes 
                     };
 
 
@@ -1592,7 +1581,7 @@ namespace livelywpf
             {
                 hWnd = proc.MainWindowHandle;
 
-                if (proc.ProcessName.Equals("emuhawk", StringComparison.OrdinalIgnoreCase) || proc.ProcessName.Equals("livelywpf", StringComparison.OrdinalIgnoreCase) ||
+                if (currProcess.ProcessName.Equals("rainmeter", StringComparison.OrdinalIgnoreCase) || proc.ProcessName.Equals("emuhawk", StringComparison.OrdinalIgnoreCase) || proc.ProcessName.Equals("livelywpf", StringComparison.OrdinalIgnoreCase) ||
                         proc.ProcessName.Equals("devenv", StringComparison.OrdinalIgnoreCase) || proc.ProcessName.Equals("shellexperiencehost", StringComparison.OrdinalIgnoreCase) ||  //visual studio, notification tray etc
                         (proc.ProcessName.Equals("searchui", StringComparison.OrdinalIgnoreCase)) )  //startmenu search..
 
@@ -1807,7 +1796,7 @@ namespace livelywpf
                 #endregion classname
                 */
 
-                if (currProcess.ProcessName.Equals("emuhawk", StringComparison.OrdinalIgnoreCase) || currProcess.ProcessName.Equals("livelywpf", StringComparison.OrdinalIgnoreCase) ||
+                if (currProcess.ProcessName.Equals("rainmeter", StringComparison.OrdinalIgnoreCase) || currProcess.ProcessName.Equals("emuhawk", StringComparison.OrdinalIgnoreCase) || currProcess.ProcessName.Equals("livelywpf", StringComparison.OrdinalIgnoreCase) ||
                         currProcess.ProcessName.Equals("devenv", StringComparison.OrdinalIgnoreCase) || currProcess.ProcessName.Equals("shellexperiencehost", StringComparison.OrdinalIgnoreCase) ||  //visual studio, notification tray etc
                         (currProcess.ProcessName.Equals("searchui", StringComparison.OrdinalIgnoreCase)) || currProcess.ProcessName.Equals("livelycefsharp", StringComparison.OrdinalIgnoreCase))  //startmenu search..
                 {

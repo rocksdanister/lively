@@ -507,7 +507,7 @@ Para solo aplicar un archivo como fondo de pantalla, esto no es necesario; solo 
     <value>Crear</value>
   </data>
   <data name="txtLabel34" xml:space="preserve">
-    <value>Previsualizar Gif (192x108)</value>
+    <value>Previsualizar Gif</value>
   </data>
   <data name="txtLabel35" xml:space="preserve">
     <value>Tipo de fondo de pantalla:-</value>

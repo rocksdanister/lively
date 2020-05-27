@@ -1,0 +1,726 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="cmbBoxAllDisplays" xml:space="preserve">
+    <value>Todos os Ecrãs</value>
+  </data>
+  <data name="cmbBoxGIFPlayer1" xml:space="preserve">
+    <value>XamlAnimatedGif</value>
+  </data>
+  <data name="cmbBoxGIFPlayer1ToolTip" xml:space="preserve">
+    <value>Utilização baixa de memória, utilização alta de CPU</value>
+  </data>
+  <data name="cmbBoxGIFPlayer2" xml:space="preserve">
+    <value>DirectShow</value>
+  </data>
+  <data name="cmbBoxGIFPlayer2ToolTip" xml:space="preserve">
+    <value>Utilização de CPU mais baixa (dependendo das definições do codec)</value>
+  </data>
+  <data name="cmbBoxKill" xml:space="preserve">
+    <value>Terminar(Libertar Memória)</value>
+  </data>
+  <data name="cmbBoxNothing" xml:space="preserve">
+    <value>Nada</value>
+  </data>
+  <data name="cmbBoxPaugeAlgorithmAllProcess" xml:space="preserve">
+    <value>Todos os processos (Experimental)</value>
+  </data>
+  <data name="cmbBoxPause" xml:space="preserve">
+    <value>Pausar</value>
+  </data>
+  <data name="cmbBoxPauseAlgorithmForeground" xml:space="preserve">
+    <value>Processo em primeiro plano</value>
+  </data>
+  <data name="cmbBoxPerDisplay" xml:space="preserve">
+    <value>Por Ecrã</value>
+  </data>
+  <data name="cmbBoxSpan" xml:space="preserve">
+    <value>Esticar</value>
+  </data>
+  <data name="cmbBoxVideoPlayer1" xml:space="preserve">
+    <value>Media Foundation</value>
+  </data>
+  <data name="cmbBoxVideoPlayer2" xml:space="preserve">
+    <value>DirectShow(Lav, ffdshow..)</value>
+  </data>
+ <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="license" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\docs\license.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="msgAppCommandLineArgs" xml:space="preserve">
+    <value>Inserir argumentos de linha de comando para a aplicação se existirem (opcional, deixar em branco se nenhums):-</value>
+  </data>
+  <data name="msgAppCommandLineArgsTitle" xml:space="preserve">
+    <value>Argumentos de início</value>
+  </data>
+  <data name="msgAppGUIFailure" xml:space="preserve">
+   <value>O fundo seleccionado(aplicação) não têm interface de utilizador(GUI).
+Terminando aplicação...</value>
+  </data>
+  <data name="msgAppTimeout" xml:space="preserve">
+    <value>Falha ao capturar a janela da aplicação.
+O fundo(aplicação) está a demorar a iniciar(mais de ~30 segundos), pode ser devido a:
+Análise de Vírus/ A aplicação é muito grande.
+Esperar e tentar novamente. (opcionalmente pode editar o tempo de espera, consulte a wiki para mais informações.)
+Terminando aplicação...</value>
+  </data>
+  <data name="msgDamangedLivelyFile" xml:space="preserve">
+    <value>Ficheiro de fundo danificado, tente descarregar novamente.</value>
+  </data>
+  <data name="msgDeleteConfirmation" xml:space="preserve">
+    <value>De certeza que quer apagar permanentemente o fundo do disco?</value>
+  </data>
+  <data name="msgDeleteConfirmationTitle" xml:space="preserve">
+    <value>Confirmar Remoção</value>
+  </data>
+  <data name="msgDeletionFailure" xml:space="preserve">
+    <value>Fundo a correr de momento, não é possivel remover!
+Feche o fundo para o eliminar.</value>
+  </data>
+  <data name="msgDeletionFailureTitle" xml:space="preserve">
+    <value>A remoção falhou</value>
+  </data>
+  <data name="msgDragDropOtherFormats" xml:space="preserve">
+    <value>Não é suportado arrastar e soltar este formato de ficheiro, abra-o na página 'Tipo'</value>
+  </data>
+  <data name="msgDragDropOtherFormatsTitle" xml:space="preserve">
+    <value>Lively: Não suportado</value>
+  </data>
+  <data name="msgExternalAppWarning" xml:space="preserve">
+    <value>Está a abrir uma aplicação externa como fundo.
+Aplicações maliciosas podem conter malware, vírus.. e danificar o sistema.
+Apenas prossiga se a aplicação é proveniente de uma fonte confiável.</value>
+  </data>
+  <data name="msgExternalAppWarningTitle" xml:space="preserve">
+    <value>Aviso</value>
+  </data>
+  <data name="msgGIFfailure" xml:space="preserve">
+    <value>A reprodução do ficheiro GIF falhou.
+O ficheiro GIF está corrumpido? Tente descarregar novamente.</value>
+  </data>
+  <data name="msgHighContrastFailure" xml:space="preserve">
+    <value>O Lively não funciona corretamente com o modo de alto contraste do Windows ativo!
+Desative o modo de alto contraste e tente de novo.</value>
+  </data>
+  <data name="msgLoadExternalLink" xml:space="preserve">
+    <value>Está prestes a abrir uma página web externa no seu browser.
+
+URL:-</value>
+  </data>
+  <data name="msgLoadExternalLinkTitle" xml:space="preserve">
+    <value>Carregar página web?</value>
+  </data>
+  <data name="msgLoadingAppWallpaper" xml:space="preserve">
+    <value>Iniciando aplicação externa..</value>
+  </data>
+  <data name="msgMediaFoundationFailure" xml:space="preserve">
+    <value>A reprodução de Média falhou: Codec em falta/ Ficheiro corrompido.
+Instale o codec LAV e experimente mudar para o reprodutor Directshow.
+</value>
+  </data>
+  <data name="msgMediakitFailure" xml:space="preserve">
+    <value>A reprodução de Média falhou: Codec em falta/ Ficheiro corrompido.
+Não se esqueça de instalar o codec LAV.
+</value>
+  </data>
+  <data name="msgRestoringInProgress" xml:space="preserve">
+    <value>A restaurar o fundo(s) anterior(es), aguarde por favor.</value>
+  </data>
+  <data name="msgRestoringPrevWallpapers" xml:space="preserve">
+    <value>A restaurar o(s) fundo(s) anterior(es)..</value>
+  </data>
+  <data name="msgSafeModeWarning" xml:space="preserve">
+    <value>O Lively foi fechado de forma imprópria, iniciado em modo seguro.
+Pretende restaurar fundos previamente a correr?
+Informação de erro guardada em:-
+</value>
+  </data>
+  <data name="msgSingleInstanceOnly" xml:space="preserve">
+    <value> O Lively já está a correr!
+Se não está a responder termine o processo "livelywpf" no gestor de tarefas e tente de novo</value>
+  </data>
+  <data name="msgUrlLoad" xml:space="preserve">
+    <value>Insira o link da página web a carregar, links do Shadertoy.com são suportados:-</value>
+  </data>
+  <data name="msgUrlLoadTitle" xml:space="preserve">
+    <value>Carregar página web</value>
+  </data>
+  <data name="msgUrlWarning" xml:space="preserve">
+    <value>Está preste a carregar uma página web externa.
+Páginas maliciosas podem danificar o seu computador (malware, virus ..)
+Apenas insira links de páginas web que confia.</value>
+  </data>
+  <data name="msgUrlWarningTitle" xml:space="preserve">
+    <value>Aviso</value>
+  </data>
+  <data name="msgWebBrowserMissing" xml:space="preserve">
+    <value>Componente do navegador web em falta, descarregue separadamente:-
+https://github.com/rocksdanister/lively-cef 
+OU
+Descarregue a versão completa do lively.</value>
+  </data>
+  <data name="msgWorkerWFailure" xml:space="preserve">
+     <value>Parece que algumas definições necessitam de ser definidas para que o Lively funcione:-  
+1. Abrir Este PC(O meu Computador)
+2. Clicar com o botão direito numa área vazia.
+3. Seleccionar Propriedades
+4. Seleccionar Definições Avançadas do Sistema
+5. Na aba Desempenho selecionar Definições
+6. Ativar Animar controlos e elementos dentro de janelas.
+
+Se for Windows 7 ativar - Ajustar para a melhor aparência e Aplicar.
+Se ainda não funcionar, fechei e inicie o Lively/ reinicei o Windows.
+(Não funciona nas versões insider do windows 10)</value>
+  </data>
+  <data name="titleAbout" xml:space="preserve">
+    <value>Acerca</value>
+  </data>
+  <data name="titleLibrary" xml:space="preserve">
+    <value>Biblioteca</value>
+  </data>
+  <data name="titleSettings" xml:space="preserve">
+    <value>Definições</value>
+  </data>
+  <data name="titleType" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="toolTipMinimizeMsg" xml:space="preserve">
+    <value>Estou minimizado na área de notificação, clique com o botão direito no lively para mais opções.</value>
+  </data>
+  <data name="toolTipUpdateMsg" xml:space="preserve">
+    <value>Uma nova versão está disponível!</value>
+  </data>
+  <data name="toolTipWallpaperSkip" xml:space="preserve">
+    <value>Alguns fundo(s) foram ignorado(s) devido a ficheiro(s) em falta!</value>
+  </data>
+  <data name="txtApplicationRules" xml:space="preserve">
+    <value>Regras de Aplicação</value>
+  </data>
+  <data name="txtAudioIn" xml:space="preserve">
+    <value>Entrada de Áudio:</value>
+  </data>
+  <data name="txtAudioInToolTip" xml:space="preserve">
+    <value>Bloqueia o acesso do navegador ao áudio do sistema.</value>
+  </data>
+  <data name="txtAudioLabel1" xml:space="preserve">
+    <value>O Áudio é sempre desativado em sistemas com multiplos monitores.</value>
+  </data>
+  <data name="txtAudioLabel2" xml:space="preserve">
+    <value>A "Entrada de Áudio" é desativada, visualizadores de áudio web não irão funcionar.</value>
+  </data>
+  <data name="txtAudioOut" xml:space="preserve">
+    <value>Saída de Audio:</value>
+  </data>
+  <data name="txtAudioOutToolTip" xml:space="preserve">
+    <value>Desativar/ativar som do reprodutor de vídeo.</value>
+  </data>
+  <data name="txtBrowser" xml:space="preserve">
+    <value>Navegador Web:</value>
+  </data>
+  <data name="txtBrowserToolTip" xml:space="preserve">
+    <value>Seleccionar navegador web para fundos web(brevemente)</value>
+  </data>
+  <data name="txtCloseAllWallpapers" xml:space="preserve">
+    <value>Fechar Todos os Fundos</value>
+  </data>
+  <data name="txtComingSoon" xml:space="preserve">
+    <value>Brevemente</value>
+  </data>
+  <data name="txtContextMenuCloseAll" xml:space="preserve">
+    <value>Fechar Todos os Fundos</value>
+  </data>
+  <data name="txtContextMenuCloseWallpaper" xml:space="preserve">
+    <value>Fechar Fundo</value>
+  </data>
+  <data name="txtContextMenuDeleteWallpaper" xml:space="preserve">
+    <value>Eliminar Fundo</value>
+  </data>
+  <data name="txtContextMenuExit" xml:space="preserve">
+    <value>Sair</value>
+  </data>
+  <data name="txtContextMenuExport" xml:space="preserve">
+    <value>Exportar lively .zip</value>
+  </data>
+  <data name="txtContextMenuOpenLively" xml:space="preserve">
+    <value>Abrir Lively</value>
+  </data>
+  <data name="txtContextMenuShowOnDisk" xml:space="preserve">
+    <value>Mostrar em Disco</value>
+  </data>
+  <data name="txtContextMenuUpdate1" xml:space="preserve">
+    <value>Procurar atualizações</value>
+  </data>
+  <data name="txtContextMenuUpdate2" xml:space="preserve">
+    <value>Atualização Disponível!</value>
+  </data>
+  <data name="txtContextMenuUpdate3" xml:space="preserve">
+    <value>Isto é software Beta?</value>
+  </data>
+  <data name="txtContextMenuUpdate4" xml:space="preserve">
+    <value>O Lively está atualizado!</value>
+  </data>
+  <data name="txtContextMenuUpdate5" xml:space="preserve">
+    <value>Erro ao Procurar Atualização</value>
+  </data>
+  <data name="txtCreateWallpaper" xml:space="preserve">
+    <value>Criar Fundo</value>
+  </data>
+  <data name="txtCreatingZip" xml:space="preserve">
+    <value>A Criar ficheiro zip Lively</value>
+  </data>
+  <data name="txtDisplayPauseRule" xml:space="preserve">
+    <value>Regra do Ecrã de Pausa:</value>
+  </data>
+  <data name="txtDownload" xml:space="preserve">
+    <value>Descarregar</value>
+  </data>
+  <data name="txtGIFPlayer" xml:space="preserve">
+    <value>Reprodutor de GIF:</value>
+  </data>
+  <data name="txtGifPlayerToolTip" xml:space="preserve">
+    <value>Directshow necessita que plugins adicionais sejam instalados.</value>
+  </data>
+  <data name="txtGifScaling" xml:space="preserve">
+    <value>Escala/Ajuste GIF:</value>
+  </data>
+  <data name="txtHelp" xml:space="preserve">
+    <value>Ajuda</value>
+  </data>
+  <data name="txtIgnore" xml:space="preserve">
+    <value>Ignorar</value>
+  </data>
+  <data name="txtInstall" xml:space="preserve">
+    <value>Instalar</value>
+  </data>
+  <data name="txtInstallWallpaper" xml:space="preserve">
+    <value>Instalar Fundo</value>
+  </data>
+  <data name="txtLabel1" xml:space="preserve">
+    <value>Seleccionar tipo de fundo a carregar:-</value>
+  </data>
+  <data name="txtLabel10" xml:space="preserve">
+    <value>Atribuição:</value>
+  </data>
+  <data name="txtLabel11" xml:space="preserve">
+    <value>O que devo usar?</value>
+  </data>
+  <data name="txtLabel12" xml:space="preserve">
+    <value>Tipo:</value>
+  </data>
+  <data name="txtLabel120FPS" xml:space="preserve">
+    <value>Forçar 120FPS IU</value>
+  </data>
+  <data name="txtLabel13" xml:space="preserve">
+    <value>Autor:</value>
+  </data>
+  <data name="txtLabel14" xml:space="preserve">
+    <value>Contacto:</value>
+  </data>
+  <data name="txtLabel15" xml:space="preserve">
+    <value>Geral</value>
+    <comment>settings tab</comment>
+  </data>
+  <data name="txtLabel16" xml:space="preserve">
+    <value>Requer reinício da app</value>
+    <comment>settings tab</comment>
+  </data>
+  <data name="txtLabel17" xml:space="preserve">
+    <value>Vídeo</value>
+    <comment>settings tab</comment>
+  </data>
+  <data name="txtLabel18" xml:space="preserve">
+    <value>Gif</value>
+    <comment>settings tab</comment>
+  </data>
+  <data name="txtLabel19" xml:space="preserve">
+    <value>Navegador Web</value>
+    <comment>settings tab</comment>
+  </data>
+  <data name="txtLabel2" xml:space="preserve">
+    <value>Arraste e solte ficheiros se preferir dessa maneira.</value>
+  </data>
+  <data name="txtLabel20" xml:space="preserve">
+    <value>Desempenho</value>
+    <comment>settings tab</comment>
+  </data>
+  <data name="txtLabel21" xml:space="preserve">
+    <value>Definir o comportamento da reprodução do(s) fundo(s) baseado na aplicação a correr:-</value>
+  </data>
+  <data name="txtLabel22" xml:space="preserve">
+    <value>Adicionar</value>
+  </data>
+  <data name="txtLabel23" xml:space="preserve">
+    <value>Remover</value>
+  </data>
+  <data name="txtLabel24" xml:space="preserve">
+    <value>Seleccionar disposição do(s) fundo(s):-</value>
+  </data>
+  <data name="txtLabel25" xml:space="preserve">
+    <value>Escolha o tipo de fundo a criar:-</value>
+  </data>
+  <data name="txtLabel26" xml:space="preserve">
+    <value>Ficheiro de Biblioteca: Cria um ficheiro .zip fácil de partilhar que carrega o fundo para a biblioteca do Lively.
+Para reproduzir um ficheiro como fundo, isto não é necessário; arraste e solte o ficheiro na janela do lively.</value>
+  </data>
+  <data name="txtLabel27" xml:space="preserve">
+    <value>Página Web de Contacto(opcional):-</value>
+  </data>
+  <data name="txtLabel28" xml:space="preserve">
+    <value>Licença(opcional):-</value>
+  </data>
+  <data name="txtLabel29" xml:space="preserve">
+    <value>Título:-</value>
+  </data>
+  <data name="txtLabel3" xml:space="preserve">
+    <value>Estes materiais não são patrocinados ou afiliados com Unity Technologies, Godot, Bizhawk, Shadertoy.com</value>
+  </data>
+  <data name="txtLabel30" xml:space="preserve">
+    <value>Descrição:-</value>
+  </data>
+  <data name="txtLabel31" xml:space="preserve">
+    <value>Seleccionar Ficheiro</value>
+  </data>
+  <data name="txtLabel32" xml:space="preserve">
+    <value>Miniatura (200x200)</value>
+  </data>
+  <data name="txtLabel33" xml:space="preserve">
+    <value>Criar</value>
+  </data>
+  <data name="txtLabel34" xml:space="preserve">
+    <value>Gif de pre-visualização</value>
+  </data>
+  <data name="txtLabel35" xml:space="preserve">
+    <value>Tipo de fundo:-</value>
+  </data>
+  <data name="txtLabel36" xml:space="preserve">
+    <value>Ficheiros e Pastas a serem adicionados:-</value>
+  </data>
+  <data name="txtLabel37" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="txtLabel38" xml:space="preserve">
+    <value>Retroceder</value>
+  </data>
+  <data name="txtLabel39" xml:space="preserve">
+    <value>Instalando Fundo</value>
+  </data>
+  <data name="txtLabel4" xml:space="preserve">
+    <value>Média</value>
+  </data>
+  <data name="txtLabel5" xml:space="preserve">
+    <value>Jogos</value>
+  </data>
+  <data name="txtLabel6" xml:space="preserve">
+    <value>Retro</value>
+  </data>
+  <data name="txtLabel7" xml:space="preserve">
+    <value>Outros</value>
+  </data>
+  <data name="txtLabel8" xml:space="preserve">
+    <value>Web</value>
+  </data>
+  <data name="txtLabel9" xml:space="preserve">
+    <value>Visualizadores de Áudio</value>
+  </data>
+  <data name="txtLabelApplication" xml:space="preserve">
+    <value>Aplicação</value>
+  </data>
+  <data name="txtLabelAppName" xml:space="preserve">
+    <value>Lively</value>
+  </data>
+  <data name="txtLabelInteraction" xml:space="preserve">
+    <value>Interacção</value>
+  </data>
+  <data name="txtLabelRule" xml:space="preserve">
+    <value>Regra</value>
+  </data>
+  <data name="txtLabelSoftwareUIRendering" xml:space="preserve">
+    <value>Desativar Aceleração por Hardware</value>
+  </data>
+  <data name="txtLabelStream" xml:space="preserve">
+    <value>Stream</value>
+  </data>
+  <data name="txtLabelVideoQuality" xml:space="preserve">
+    <value>Qualidade do Vídeo</value>
+  </data>
+  <data name="txtLivelyAppWarning" xml:space="preserve">
+    <value>Esta funcionalidade está em desenvolvimento.
+Não corra programas como CHROME, STEAM.. que lançam multiplos Subprocessos.
+ENCONTRARA BUGS E CRASHES, PROCEDA COM CAUTELA!!!</value>
+  </data>
+  <data name="txtLivelyErrorMsgTitle" xml:space="preserve">
+    <value>Erro</value>
+    <comment>title for messagebox.</comment>
+  </data>
+  <data name="txtLivelyWaitMsgTitle" xml:space="preserve">
+    <value>Aguarde Por Favor</value>
+    <comment>title for messagebox</comment>
+  </data>
+  <data name="txtLivelyWallpaperTypeApp" xml:space="preserve">
+    <value>Aplicação</value>
+  </data>
+  <data name="txtLivelyWallpaperTypeGIF" xml:space="preserve">
+    <value>GIF Animado</value>
+  </data>
+  <data name="txtLivelyWallpaperTypeGodot" xml:space="preserve">
+    <value>Aplicação Godot</value>
+  </data>
+  <data name="txtLivelyWallpaperTypeUnity" xml:space="preserve">
+    <value>Aplicação Unity</value>
+  </data>
+  <data name="txtLivelyWallpaperTypeUnityAudio" xml:space="preserve">
+    <value>Unity Reativo a Áudio</value>
+  </data>
+  <data name="txtLivelyWallpaperTypeUrl" xml:space="preserve">
+    <value>Online</value>
+  </data>
+  <data name="txtLivelyWallpaperTypeVideo" xml:space="preserve">
+    <value>Vídeo</value>
+  </data>
+  <data name="txtLivelyWallpaperTypeWeb" xml:space="preserve">
+    <value>Web</value>
+  </data>
+  <data name="txtLivelyWallpaperTypeWebAudio" xml:space="preserve">
+    <value>Web Reativo a Áudio</value>
+  </data>
+  <data name="txtLiveTile" xml:space="preserve">
+    <value>Telha Animada:</value>
+  </data>
+  <data name="txtLiveTileToolTip" xml:space="preserve">
+    <value>(Experimental) Pre-visualização do fundo na telha.</value>
+  </data>
+  <data name="txtMoreWp" xml:space="preserve">
+    <value>Mais Fundos...</value>
+  </data>
+  <data name="txtMouse" xml:space="preserve">
+    <value>Rato</value>
+  </data>
+  <data name="txtMsgFillAllFields" xml:space="preserve">
+    <value>Preencha todos os campos de texto requeridos.</value>
+  </data>
+  <data name="txtMsgSelectWallpaperFile" xml:space="preserve">
+    <value>Ficheiro de fundo não seleccionado</value>
+  </data>
+  <data name="txtMsgUpdaterPortableUnsupported" xml:space="preserve">
+    <value>O atualizador não é suportado na versão portátil do Lively, descarregue a última versão portátil da página web.</value>
+  </data>
+  <data name="txtNotes" xml:space="preserve">
+    <value>Nota:
+(1) A janela do Lively ignora essas regras.
+(2) O Áudio será sempre silenciado quando outras aplicações estarem em foco {exceto (1), janela do Lively}.
+(3) O algoritmo de processos em primeiro plano têm algumas limitações, consulte a wiki para mais informações.
+(4) As regras de aplicação têm a prioridade maxima.</value>
+  </data>
+  <data name="txtOff" xml:space="preserve">
+    <value>Desligado</value>
+  </data>
+  <data name="txtOn" xml:space="preserve">
+    <value>Ligado</value>
+  </data>
+  <data name="txtOtherAppsFocus" xml:space="preserve">
+    <value>Outras Aplicações em Foco:</value>
+  </data>
+  <data name="txtOtherAppsFullScreen" xml:space="preserve">
+    <value>Outras Aplicações em Ecrã Inteiro:</value>
+  </data>
+  <data name="txtPauseAlgorith" xml:space="preserve">
+    <value>Algoritmo de Pausa:</value>
+  </data>
+  <data name="txtPleaseWait" xml:space="preserve">
+    <value>O Carregamento Falhou</value>
+  </data>
+  <data name="txtPleaseWait2" xml:space="preserve">
+    <value>Por Favor Aguarde</value>
+  </data>
+  <data name="txtPreviewWallpaperNote" xml:space="preserve">
+    <value>Mantenha esta janela em foco enquanto o processamento decorre.</value>
+  </data>
+  <data name="txtSelectPreviewThumb" xml:space="preserve">
+    <value>Seleccione o ficheiro clip de pre-visualização/miniatura.</value>
+  </data>
+  <data name="txtSetWallpaper" xml:space="preserve">
+    <value>Definir como Fundo</value>
+  </data>
+  <data name="txtSpanWallpaperWarning" xml:space="preserve">
+    <value>Alguns fundos não irão esticar pelos ecrãs devidamente.</value>
+  </data>
+  <data name="txtStartup" xml:space="preserve">
+    <value>Iniciar com o Windows:</value>
+  </data>
+  <data name="txtStartupToolTip" xml:space="preserve">
+    <value>Certifique-se de que desmarca isto antes de desinstalar o lively.</value>
+  </data>
+  <data name="txtSupport" xml:space="preserve">
+    <value>Suporte</value>
+  </data>
+  <data name="txtTileGIF" xml:space="preserve">
+    <value>GIF Animado</value>
+  </data>
+  <data name="txtTileGodot" xml:space="preserve">
+    <value>Software Godot</value>
+  </data>
+  <data name="txtTileHTML" xml:space="preserve">
+    <value>HTML</value>
+  </data>
+  <data name="txtTileOther" xml:space="preserve">
+    <value>Outros</value>
+  </data>
+  <data name="txtTileUnity" xml:space="preserve">
+    <value>Software Unity</value>
+  </data>
+  <data name="txtTileVideo" xml:space="preserve">
+    <value>Vídeo</value>
+  </data>
+  <data name="txtTileWebsite" xml:space="preserve">
+    <value>Website</value>
+  </data>
+  <data name="txtTitlebar" xml:space="preserve">
+    <value>Sistema de Fundos Lively</value>
+  </data>
+  <data name="txtTransparency" xml:space="preserve">
+    <value>IU Transparente:</value>
+  </data>
+  <data name="txtTransparencyToolTip" xml:space="preserve">
+    <value>Tornar janela do lively semitransparente.</value>
+  </data>
+  <data name="txtUpdateBanner" xml:space="preserve">
+    <value>Atualização do Lively Disponível</value>
+  </data>
+  <data name="txtUpdateDownloadErrorMsg" xml:space="preserve">
+    <value>Atualização falhada. Tente descarregar o instalador novamente</value>
+  </data>
+  <data name="txtVideoPlayer" xml:space="preserve">
+    <value>Reprodutor de Vídeo:</value>
+  </data>
+  <data name="txtVideoPlayerToolTip" xml:space="preserve">
+    <value>Directshow requer a instalação de plugins adicionais.</value>
+  </data>
+  <data name="txtVideoScaling" xml:space="preserve">
+    <value>Escala/Ajuste de Vídeo:</value>
+  </data>
+  <data name="txtWallpaperPlayback" xml:space="preserve">
+    <value>Reprodução do Fundo:</value>
+  </data>
+  <data name="txtWhenBattery" xml:space="preserve">
+    <value>Durante o uso de Bateria:</value>
+  </data>
+  <data name="txtWindowTitleSelectDisplay" xml:space="preserve">
+    <value>Seleccionar Ecrã</value>
+  </data>
+</root>

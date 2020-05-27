@@ -497,7 +497,7 @@ Pour lancer le déroulement d'un fichier en fond d'écran , ceci n'est pas requi
     <value>Créer</value>
   </data>
   <data name="txtLabel34" xml:space="preserve">
-    <value>Prévisualisation du Gif (192x108)</value>
+    <value>Prévisualisation du Gif</value>
   </data>
   <data name="txtLabel35" xml:space="preserve">
     <value> Type de fond d'écran :-</value>

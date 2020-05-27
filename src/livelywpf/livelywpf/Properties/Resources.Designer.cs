@@ -1124,7 +1124,7 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Preview Gif (192x108).
+        ///   Looks up a localized string similar to Preview Gif.
         /// </summary>
         public static string txtLabel34 {
             get {
