@@ -14,30 +14,35 @@ chinese.RunAtStartup=从Windows开始
 japanese.RunAtStartup=窓から始める
 russian.RunAtStartup=начать с Windows
 spanish.RunAtStartup=Iniciar Windows
+ukrainian.RunAtStartup=Запустити разом з Windows
 
 english.FullInstall=Full
 chinese.FullInstall=充分
 japanese.FullInstall=一杯
 russian.FullInstall=полный
 spanish.FullInstall=llena
+ukrainian.FullInstall=Повна
 
 english.LiteInstall=Lite
 chinese.LiteInstall=精简版
 japanese.LiteInstall=ライト
 russian.LiteInstall=облегченная
 spanish.LiteInstall=lite
+ukrainian.LiteInstall=Мінімальна
 
 english.CustomInstall=Custom
 chinese.CustomInstall=习俗
 japanese.CustomInstall=カスタム
 russian.CustomInstall=обычай
 spanish.CustomInstall=personalizada
+ukrainian.CustomInstall=Обрати
 
 english.DeleteEverythigMsgBox=Do you want to delete userdata & wallpapers in
 chinese.DeleteEverythigMsgBox=您要删除用户数据和墙纸吗
 japanese.DeleteEverythigMsgBox=ユーザーデータと壁紙を削除しますか
 russian.DeleteEverythigMsgBox=Вы хотите удалить пользовательские данные и обои
 spanish.DeleteEverythigMsgBox=¿Desea eliminar datos de usuario y fondos de pantalla en
+ukrainian.DeleteEverythigMsgBox=Бажаєте видалити користувацькі дані та шпалери в
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
@@ -71,6 +76,7 @@ Name: "chinese"; MessagesFile: "Setup Languages\ChineseSimplified.isl"
 Name: "japanese"; MessagesFile: "compiler:Languages\Japanese.isl";
 Name: "russian"; MessagesFile: "compiler:Languages\Russian.isl";
 Name: "spanish"; MessagesFile: "compiler:Languages\Spanish.isl";
+Name: "ukrainian"; MessagesFile: "compiler:Languages\ukrainian.isl";
 
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; 

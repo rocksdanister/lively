@@ -513,6 +513,7 @@ namespace livelywpf
                                     new SupportedLanguages("Française(fr)", new string[]{"fr"}),
                                     new SupportedLanguages("Deutsche(de)", new string[]{"de"}),
                                     new SupportedLanguages("portuguesa(pt)", new string[]{"pt"}),
+									new SupportedLanguages("Українська(uk)", new string[]{"uk", "uk-UA"}),
                                     };
 
         public static readonly SupportedThemes[] livelyThemes = new SupportedThemes[] { 

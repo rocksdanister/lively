@@ -1,0 +1,725 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="cmbBoxAllDisplays" xml:space="preserve">
+    <value>Всі екрани</value>
+  </data>
+  <data name="cmbBoxGIFPlayer1" xml:space="preserve">
+    <value>XamlAnimatedGif</value>
+  </data>
+  <data name="cmbBoxGIFPlayer1ToolTip" xml:space="preserve">
+    <value>Низьке використання пам'яті, високе навантаження на процесор</value>
+  </data>
+  <data name="cmbBoxGIFPlayer2" xml:space="preserve">
+    <value>DirectShow</value>
+  </data>
+  <data name="cmbBoxGIFPlayer2ToolTip" xml:space="preserve">
+    <value>Нижче навантаження на процесор (залежить від налаштувань кодека)</value>
+  </data>
+  <data name="cmbBoxKill" xml:space="preserve">
+    <value>Вбити (Звільняє пам'ять)</value>
+  </data>
+  <data name="cmbBoxNothing" xml:space="preserve">
+    <value>Нічого</value>
+  </data>
+  <data name="cmbBoxPaugeAlgorithmAllProcess" xml:space="preserve">
+    <value>Всі процеси (Експериментально)</value>
+  </data>
+  <data name="cmbBoxPause" xml:space="preserve">
+    <value>Зупинити</value>
+  </data>
+  <data name="cmbBoxPauseAlgorithmForeground" xml:space="preserve">
+    <value>Процес переднього плану</value>
+  </data>
+  <data name="cmbBoxPerDisplay" xml:space="preserve">
+    <value>Певний екран</value>
+  </data>
+  <data name="cmbBoxSpan" xml:space="preserve">
+    <value>Перекривати</value>
+  </data>
+  <data name="cmbBoxVideoPlayer1" xml:space="preserve">
+    <value>Media Foundation</value>
+  </data>
+  <data name="cmbBoxVideoPlayer2" xml:space="preserve">
+    <value>DirectShow(Lav, ffdshow..)</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="license" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\docs\license.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="msgAppCommandLineArgs" xml:space="preserve">
+    <value>Введіть аргументи командного радка для програми, якщо потрібно (не обов'язково):-</value>
+  </data>
+  <data name="msgAppCommandLineArgsTitle" xml:space="preserve">
+    <value>Виконати команди</value>
+  </data>
+  <data name="msgAppGUIFailure" xml:space="preserve">
+    <value>Обрані шпалери(програма) не мають графічної оболонки(GUI).
+Вимкнення програми...</value>
+  </data>
+  <data name="msgAppTimeout" xml:space="preserve">
+    <value>Не вдалося зловити вікно програми.
+Шпалери(додаток) надто довго запускається(більше ніж ~30 сек.), це може бути через:
+Перевірку на віруси / Програма надто велика.
+Зачекайте і спробуйте знову. (ви можете змінити час очікування, гляньте wiki для детальнішої інформації.)
+Вимкнення програми...</value>
+  </data>
+  <data name="msgDamangedLivelyFile" xml:space="preserve">
+    <value>Файл шпалерів пошкоджено, спробуйте завантажити заново.</value>
+  </data>
+  <data name="msgDeleteConfirmation" xml:space="preserve">
+    <value>Ви справді бажаєте остаточно видалити шпалери з диску?</value>
+  </data>
+  <data name="msgDeleteConfirmationTitle" xml:space="preserve">
+    <value>Підтвердіть видалення</value>
+  </data>
+  <data name="msgDeletionFailure" xml:space="preserve">
+    <value>Не можу видалити, в даний момент запущено як шпалери!
+Закрийте дані шпалери щоб видалити їх.</value>
+  </data>
+  <data name="msgDeletionFailureTitle" xml:space="preserve">
+    <value>Не вдалося видалити</value>
+  </data>
+  <data name="msgDragDropOtherFormats" xml:space="preserve">
+    <value>Це формат не підтримується для перетягування, відкрийте його через вкладку "Тип".</value>
+  </data>
+  <data name="msgDragDropOtherFormatsTitle" xml:space="preserve">
+    <value>Lively: Не підтримується</value>
+  </data>
+  <data name="msgExternalAppWarning" xml:space="preserve">
+    <value>Ви відкриваєте зовнішню програму як шпалери.
+Шкідливі програми можуть містити віруси і зашкодити Вашій системі.
+Продовжуйте лише в тому разі, якщо програму отримано з надійного джерела.</value>
+  </data>
+  <data name="msgExternalAppWarningTitle" xml:space="preserve">
+    <value>Увага</value>
+  </data>
+  <data name="msgGIFfailure" xml:space="preserve">
+    <value>Не вдалося відтворити GIF файл.
+Можливо він пошкоджений? Спробуйте завантажити заново.</value>
+  </data>
+  <data name="msgHighContrastFailure" xml:space="preserve">
+    <value>Lively не може працювати з Windows в режимі високої контрастності!
+Вимкніть режим високої контрастності і спробуйте знову.</value>
+  </data>
+  <data name="msgLoadExternalLink" xml:space="preserve">
+    <value>Ви збираєтеся відкрити зовнішню сторінку у браузері.
+
+URL:-</value>
+  </data>
+  <data name="msgLoadExternalLinkTitle" xml:space="preserve">
+    <value>Завантажити сторінку?</value>
+  </data>
+  <data name="msgLoadingAppWallpaper" xml:space="preserve">
+    <value>Запускається зовнішня програма..</value>
+  </data>
+  <data name="msgMediaFoundationFailure" xml:space="preserve">
+    <value>Помилка відтворення медіафайлу: відсутній кодек / пошкоджений файл.
+Встановіть LAV кодек і спробуйте перемкнути на Directshow.
+</value>
+  </data>
+  <data name="msgMediakitFailure" xml:space="preserve">
+    <value>Помилка відтворення медіафайлу: відсутній кодек / пошкоджений файл.
+Встановіть LAV кодек.
+</value>
+  </data>
+  <data name="msgRestoringInProgress" xml:space="preserve">
+    <value>Відновлюються попередні шпалери, зачекайте будь ласка.</value>
+  </data>
+  <data name="msgRestoringPrevWallpapers" xml:space="preserve">
+    <value>Відновлення попередніх шпалерів..</value>
+  </data>
+  <data name="msgSafeModeWarning" xml:space="preserve">
+    <value>Lively було неправильно вимкнено, запускамо в безпечному режимі.
+Бажаєте відновити попередні запущені шпалери?
+Інформація про помилку зберігається в:-
+</value>
+  </data>
+  <data name="msgSingleInstanceOnly" xml:space="preserve">
+    <value>Lively вже запущено!
+Якщо завис, вимкніть процес "livelywpf" через диспетчер завдань і спробуйте знову.</value>
+  </data>
+  <data name="msgUrlLoad" xml:space="preserve">
+    <value>Введіть посилання на сторінку, підтримуються посилання Shadertoy.com:-</value>
+  </data>
+  <data name="msgUrlLoadTitle" xml:space="preserve">
+    <value>Завантажити сторінку</value>
+  </data>
+  <data name="msgUrlWarning" xml:space="preserve">
+    <value>Ви збираєтеся завантажити зовнішню web-сторінку.
+Шкідливі web-сторінки можуть зашкодити Вашому комп'ютеру
+Вводьте посилання тільки на ті сайти, яким довіряєте.</value>
+  </data>
+  <data name="msgUrlWarningTitle" xml:space="preserve">
+    <value>Увага</value>
+  </data>
+  <data name="msgWebBrowserMissing" xml:space="preserve">
+    <value>Відсутній компонент веб браузера, завантажте окремо:-
+https://github.com/rocksdanister/lively-cef 
+або
+Завантажте повну версію lively.</value>
+  </data>
+  <data name="msgWorkerWFailure" xml:space="preserve">
+    <value>Здається, потрібно змінити деякі налаштування, щоб Lively запрацював:-  
+1. Відкрийте Мій комп'ютер
+2. Натисніть правою кнопкою миші на пустій ділянці
+3. Оберіть "Властивості"
+4. Оберіть "Додаткові настройки системи"
+5. На вкладці Продуктивність оберіть "Настройки"
+6. Ввімкніть "Анімація елементів керування та елементів всередині вікна" і натисніть застосувати.
+
+Якщо у Вас Windows 7, виберіть - "Налаштувати на кращий вигляд" і натисніть застосувати.
+Якщо далі не працює, перезавантажте Lively / windows.
+(Не працює в інсайдерських збірках windows 10)</value>
+  </data>
+  <data name="titleAbout" xml:space="preserve">
+    <value>Про програму</value>
+  </data>
+  <data name="titleLibrary" xml:space="preserve">
+    <value>Бібліотека</value>
+  </data>
+  <data name="titleSettings" xml:space="preserve">
+    <value>Налаштування</value>
+  </data>
+  <data name="titleType" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="toolTipMinimizeMsg" xml:space="preserve">
+    <value>Я згорнувся до системного трею, натисніть правою кнопкою миші на значок lively для додаткових опцій.</value>
+  </data>
+  <data name="toolTipUpdateMsg" xml:space="preserve">
+    <value>Доступна нова версія!</value>
+  </data>
+  <data name="toolTipWallpaperSkip" xml:space="preserve">
+    <value>Деякі шпалери пропущено через відсутні файли!</value>
+  </data>
+  <data name="txtApplicationRules" xml:space="preserve">
+    <value>Правила для програм</value>
+  </data>
+  <data name="txtAudioIn" xml:space="preserve">
+    <value>Звуковий вхід:</value>
+  </data>
+  <data name="txtAudioInToolTip" xml:space="preserve">
+    <value>Блокує доступ браузера до системного звуку.</value>
+  </data>
+  <data name="txtAudioLabel1" xml:space="preserve">
+    <value>Звук завжди вимкнено в системах з кількома екранами.</value>
+  </data>
+  <data name="txtAudioLabel2" xml:space="preserve">
+    <value>Звуковий вхід вимкнено, веб-аудіовізуалізатори не працюватимуть.</value>
+  </data>
+  <data name="txtAudioOut" xml:space="preserve">
+    <value>Звуковий вихід:</value>
+  </data>
+  <data name="txtAudioOutToolTip" xml:space="preserve">
+    <value>Увімкнути / вимкнути звук відеоплеєра.</value>
+  </data>
+  <data name="txtBrowser" xml:space="preserve">
+    <value>Веб браузер:</value>
+  </data>
+  <data name="txtBrowserToolTip" xml:space="preserve">
+    <value>Оберіть браузер для веб-шпалер(незабаром)</value>
+  </data>
+  <data name="txtCloseAllWallpapers" xml:space="preserve">
+    <value>Закрити всі шпалери</value>
+  </data>
+  <data name="txtComingSoon" xml:space="preserve">
+    <value>Незабаром</value>
+  </data>
+  <data name="txtContextMenuCloseAll" xml:space="preserve">
+    <value>Закрити всі шпалери</value>
+  </data>
+  <data name="txtContextMenuCloseWallpaper" xml:space="preserve">
+    <value>Закрити шпалери</value>
+  </data>
+  <data name="txtContextMenuDeleteWallpaper" xml:space="preserve">
+    <value>Видалити шпалери</value>
+  </data>
+  <data name="txtContextMenuExit" xml:space="preserve">
+    <value>Вихід</value>
+  </data>
+  <data name="txtContextMenuExport" xml:space="preserve">
+    <value>Експортувати lively .zip</value>
+  </data>
+  <data name="txtContextMenuOpenLively" xml:space="preserve">
+    <value>Відкрити Lively</value>
+  </data>
+  <data name="txtContextMenuShowOnDisk" xml:space="preserve">
+    <value>Показати на диску</value>
+  </data>
+  <data name="txtContextMenuUpdate1" xml:space="preserve">
+    <value>Перевірити оновлення</value>
+  </data>
+  <data name="txtContextMenuUpdate2" xml:space="preserve">
+    <value>Доступне оновлення!</value>
+  </data>
+  <data name="txtContextMenuUpdate3" xml:space="preserve">
+    <value>Це програмне забезпечення бета-версії?</value>
+  </data>
+  <data name="txtContextMenuUpdate4" xml:space="preserve">
+    <value>Lively оновлено!</value>
+  </data>
+  <data name="txtContextMenuUpdate5" xml:space="preserve">
+    <value>Помилка перевірки оновлення</value>
+  </data>
+  <data name="txtCreateWallpaper" xml:space="preserve">
+    <value>Створити шпалери</value>
+  </data>
+  <data name="txtCreatingZip" xml:space="preserve">
+    <value>Створення Lively zip</value>
+  </data>
+  <data name="txtDisplayPauseRule" xml:space="preserve">
+    <value>Правило зупинки екрану:</value>
+  </data>
+  <data name="txtDownload" xml:space="preserve">
+    <value>Завантажити</value>
+  </data>
+  <data name="txtGIFPlayer" xml:space="preserve">
+    <value>GIF програвач:</value>
+  </data>
+  <data name="txtGifPlayerToolTip" xml:space="preserve">
+    <value>Directshow вимагає встановлення додаткових плагінів.</value>
+  </data>
+  <data name="txtGifScaling" xml:space="preserve">
+    <value>Масштабування GIF:</value>
+  </data>
+  <data name="txtHelp" xml:space="preserve">
+    <value>Допомога</value>
+  </data>
+  <data name="txtIgnore" xml:space="preserve">
+    <value>Ігнорувати</value>
+  </data>
+  <data name="txtInstall" xml:space="preserve">
+    <value>Встановити</value>
+  </data>
+  <data name="txtInstallWallpaper" xml:space="preserve">
+    <value>Встановити шпалери</value>
+  </data>
+  <data name="txtLabel1" xml:space="preserve">
+    <value>Виберіть тип шпалер для завантаження:-</value>
+  </data>
+  <data name="txtLabel10" xml:space="preserve">
+    <value>Attribution:</value>
+  </data>
+  <data name="txtLabel11" xml:space="preserve">
+    <value>Що мені варто використовувати?</value>
+  </data>
+  <data name="txtLabel12" xml:space="preserve">
+    <value>Тип:</value>
+  </data>
+  <data name="txtLabel120FPS" xml:space="preserve">
+    <value>Форсувати 120FPS UI</value>
+  </data>
+  <data name="txtLabel13" xml:space="preserve">
+    <value>Автор:</value>
+  </data>
+  <data name="txtLabel14" xml:space="preserve">
+    <value>Контакти:</value>
+  </data>
+  <data name="txtLabel15" xml:space="preserve">
+    <value>Основні</value>
+    <comment>вкладка налаштувань</comment>
+  </data>
+  <data name="txtLabel16" xml:space="preserve">
+    <value>Потребує перезапуску програми</value>
+    <comment>вкладка налаштувань</comment>
+  </data>
+  <data name="txtLabel17" xml:space="preserve">
+    <value>Відео</value>
+    <comment>вкладка налаштувань</comment>
+  </data>
+  <data name="txtLabel18" xml:space="preserve">
+    <value>Gif</value>
+    <comment>вкладка налаштувань</comment>
+  </data>
+  <data name="txtLabel19" xml:space="preserve">
+    <value>Веб браузер</value>
+    <comment>вкладка налаштувань</comment>
+  </data>
+  <data name="txtLabel2" xml:space="preserve">
+    <value>Просто перетягніть файли, якщо надаєте перевагу такому способу.</value>
+  </data>
+  <data name="txtLabel20" xml:space="preserve">
+    <value>Продуктивність</value>
+    <comment>вкладка налаштувань</comment>
+  </data>
+  <data name="txtLabel21" xml:space="preserve">
+    <value>Встановіть поведінку відтворення шпалер на основі запущеної програми:-</value>
+  </data>
+  <data name="txtLabel22" xml:space="preserve">
+    <value>Додати</value>
+  </data>
+  <data name="txtLabel23" xml:space="preserve">
+    <value>Видалити</value>
+  </data>
+  <data name="txtLabel24" xml:space="preserve">
+    <value>Виберіть макет шпалер:-</value>
+  </data>
+  <data name="txtLabel25" xml:space="preserve">
+    <value>Виберіть тип шпалер для створення:-</value>
+  </data>
+  <data name="txtLabel26" xml:space="preserve">
+    <value>Файл бібліотеки: Створіть .zip файл, який завантажує шпалери в бібліотеку Lively і ним просто поділитися. Це не обов'язково робити. Якщо Ви просто хочете відтворити файл як шпалери, перетягніть його у вікно Lively.</value>
+  </data>
+  <data name="txtLabel27" xml:space="preserve">
+    <value>Контактний веб-сайт (необов’язково):-</value>
+  </data>
+  <data name="txtLabel28" xml:space="preserve">
+    <value>Ліцензія (необов’язково):-</value>
+  </data>
+  <data name="txtLabel29" xml:space="preserve">
+    <value>Назва:-</value>
+  </data>
+  <data name="txtLabel3" xml:space="preserve">
+    <value>Ці матеріали не спонсоруються та не пов'язані з Unity Technologies, Godot, Bizhawk, Shadertoy.com</value>
+  </data>
+  <data name="txtLabel30" xml:space="preserve">
+    <value>Опис:-</value>
+  </data>
+  <data name="txtLabel31" xml:space="preserve">
+    <value>Оберіть файл</value>
+  </data>
+  <data name="txtLabel32" xml:space="preserve">
+    <value>Ескіз (200x200)</value>
+  </data>
+  <data name="txtLabel33" xml:space="preserve">
+    <value>Створити</value>
+  </data>
+  <data name="txtLabel34" xml:space="preserve">
+    <value>Попередній перегляд (Gif)</value>
+  </data>
+  <data name="txtLabel35" xml:space="preserve">
+    <value>Тип шпалер:-</value>
+  </data>
+  <data name="txtLabel36" xml:space="preserve">
+    <value>Файли та папки додано:-</value>
+  </data>
+  <data name="txtLabel37" xml:space="preserve">
+    <value>Ок</value>
+  </data>
+  <data name="txtLabel38" xml:space="preserve">
+    <value>Назад</value>
+  </data>
+  <data name="txtLabel39" xml:space="preserve">
+    <value>Встановлення шпалер</value>
+  </data>
+  <data name="txtLabel4" xml:space="preserve">
+    <value>Медіафайли</value>
+  </data>
+  <data name="txtLabel5" xml:space="preserve">
+    <value>Ігри</value>
+  </data>
+  <data name="txtLabel6" xml:space="preserve">
+    <value>Ретро</value>
+  </data>
+  <data name="txtLabel7" xml:space="preserve">
+    <value>Інше</value>
+  </data>
+  <data name="txtLabel8" xml:space="preserve">
+    <value>Веб</value>
+  </data>
+  <data name="txtLabel9" xml:space="preserve">
+    <value>Аудіовізуалізатор</value>
+  </data>
+  <data name="txtLabelApplication" xml:space="preserve">
+    <value>Додаток</value>
+  </data>
+  <data name="txtLabelAppName" xml:space="preserve">
+    <value>Lively</value>
+  </data>
+  <data name="txtLabelInteraction" xml:space="preserve">
+    <value>Взаємодія</value>
+  </data>
+  <data name="txtLabelRule" xml:space="preserve">
+    <value>Правило</value>
+  </data>
+  <data name="txtLabelSoftwareUIRendering" xml:space="preserve">
+    <value>Вимкнути апаратне прискорення</value>
+  </data>
+  <data name="txtLabelStream" xml:space="preserve">
+    <value>Стрім</value>
+  </data>
+  <data name="txtLabelVideoQuality" xml:space="preserve">
+    <value>Якість відео</value>
+  </data>
+  <data name="txtLivelyAppWarning" xml:space="preserve">
+    <value>Ця функція наразі розробляється.
+НЕ запускайте такі програми, як CHROME, STEAM.., які породжують кілька підпроцесів.
+МОЖЛИВІ БАГИ, ВИЛЬОТИ, ПРОДОВЖУЙТЕ З ОБЕРЕЖНІСТЮ!!!</value>
+  </data>
+  <data name="txtLivelyErrorMsgTitle" xml:space="preserve">
+    <value>Помилка</value>
+    <comment>title for messagebox.</comment>
+  </data>
+  <data name="txtLivelyWaitMsgTitle" xml:space="preserve">
+    <value>Будь ласка, зачекайте</value>
+    <comment>title for messagebox</comment>
+  </data>
+  <data name="txtLivelyWallpaperTypeApp" xml:space="preserve">
+    <value>Додаток</value>
+  </data>
+  <data name="txtLivelyWallpaperTypeGIF" xml:space="preserve">
+    <value>Анімація GIF</value>
+  </data>
+  <data name="txtLivelyWallpaperTypeGodot" xml:space="preserve">
+    <value>Godot додаток</value>
+  </data>
+  <data name="txtLivelyWallpaperTypeUnity" xml:space="preserve">
+    <value>Unity додаток</value>
+  </data>
+  <data name="txtLivelyWallpaperTypeUnityAudio" xml:space="preserve">
+    <value>Unity Audio Reactive</value>
+  </data>
+  <data name="txtLivelyWallpaperTypeUrl" xml:space="preserve">
+    <value>Online</value>
+  </data>
+  <data name="txtLivelyWallpaperTypeVideo" xml:space="preserve">
+    <value>Відео</value>
+  </data>
+  <data name="txtLivelyWallpaperTypeWeb" xml:space="preserve">
+    <value>Веб</value>
+  </data>
+  <data name="txtLivelyWallpaperTypeWebAudio" xml:space="preserve">
+    <value>Web Audio Reactive</value>
+  </data>
+  <data name="txtLiveTile" xml:space="preserve">
+    <value>Анімована плитка:</value>
+  </data>
+  <data name="txtLiveTileToolTip" xml:space="preserve">
+    <value>(Експериментальний) Попередній перегляд шпалер на плитці.</value>
+  </data>
+  <data name="txtMoreWp" xml:space="preserve">
+    <value>Більше шпалер...</value>
+  </data>
+  <data name="txtMouse" xml:space="preserve">
+    <value>Миша</value>
+  </data>
+  <data name="txtMsgFillAllFields" xml:space="preserve">
+    <value>Заповніть усі необхідні текстові поля.</value>
+  </data>
+  <data name="txtMsgSelectWallpaperFile" xml:space="preserve">
+    <value>Файл шпалер не вибрано</value>
+  </data>
+  <data name="txtMsgUpdaterPortableUnsupported" xml:space="preserve">
+    <value>Оновлення не підтримується в портативній версії Lively, завантажте останню портативну версію з веб-сайту.</value>
+  </data>
+  <data name="txtNotes" xml:space="preserve">
+    <value>Примітка:
+(1) Вікно Lively ігнорує ці правила.
+(2) Аудіо завжди вимкнено, коли інші програми у фокусі {крім (1), вікна Lively}.
+(3) Алгоритм процесу переднього плану має деякі обмеження, перегляньте wiki для отримання додаткової інформації.
+(4) Правила додатків мають найвищий пріоритет.</value>
+  </data>
+  <data name="txtOff" xml:space="preserve">
+    <value>ВИМК</value>
+  </data>
+  <data name="txtOn" xml:space="preserve">
+    <value>УВІМК</value>
+  </data>
+  <data name="txtOtherAppsFocus" xml:space="preserve">
+    <value>Інший додаток у фокусі:</value>
+  </data>
+  <data name="txtOtherAppsFullScreen" xml:space="preserve">
+    <value>Інший додаток на весь екран:</value>
+  </data>
+  <data name="txtPauseAlgorith" xml:space="preserve">
+    <value>Алгоритм зупинки:</value>
+  </data>
+  <data name="txtPleaseWait" xml:space="preserve">
+    <value>Не вдалося завантажити</value>
+  </data>
+  <data name="txtPleaseWait2" xml:space="preserve">
+    <value>Будь ласка, зачекайте</value>
+  </data>
+  <data name="txtPreviewWallpaperNote" xml:space="preserve">
+    <value>Тримайте це вікно у фокусі під час обробки.</value>
+  </data>
+  <data name="txtSelectPreviewThumb" xml:space="preserve">
+    <value>Виберіть файл попереднього перегляду / мініатюри.</value>
+  </data>
+  <data name="txtSetWallpaper" xml:space="preserve">
+    <value>Встановити як шпалери</value>
+  </data>
+  <data name="txtSpanWallpaperWarning" xml:space="preserve">
+    <value>Деякі шпалери неправильно перетинатимуться крізь екрани.</value>
+  </data>
+  <data name="txtStartup" xml:space="preserve">
+    <value>Запускати разом з Windows:</value>
+  </data>
+  <data name="txtStartupToolTip" xml:space="preserve">
+    <value>Не забудьте зняти цей прапорець перед видаленням lively.</value>
+  </data>
+  <data name="txtSupport" xml:space="preserve">
+    <value>Підтримка</value>
+  </data>
+  <data name="txtTileGIF" xml:space="preserve">
+    <value>GIF анімація</value>
+  </data>
+  <data name="txtTileGodot" xml:space="preserve">
+    <value>Godot Software</value>
+  </data>
+  <data name="txtTileHTML" xml:space="preserve">
+    <value>HTML</value>
+  </data>
+  <data name="txtTileOther" xml:space="preserve">
+    <value>Інше</value>
+  </data>
+  <data name="txtTileUnity" xml:space="preserve">
+    <value>Unity Software</value>
+  </data>
+  <data name="txtTileVideo" xml:space="preserve">
+    <value>Відео</value>
+  </data>
+  <data name="txtTileWebsite" xml:space="preserve">
+    <value>Вебсайт</value>
+  </data>
+  <data name="txtTitlebar" xml:space="preserve">
+    <value>Lively Wallpaper System</value>
+  </data>
+  <data name="txtTransparency" xml:space="preserve">
+    <value>Прозорість UI:</value>
+  </data>
+  <data name="txtTransparencyToolTip" xml:space="preserve">
+    <value>Зробити вікно lively напівпрозорим.</value>
+  </data>
+  <data name="txtUpdateBanner" xml:space="preserve">
+    <value>Доступне оновлення Lively</value>
+  </data>
+  <data name="txtUpdateDownloadErrorMsg" xml:space="preserve">
+    <value>Помилка оновлення. Спробуйте завантажити інсталятор з</value>
+  </data>
+  <data name="txtVideoPlayer" xml:space="preserve">
+    <value>Відео програвач:</value>
+  </data>
+  <data name="txtVideoPlayerToolTip" xml:space="preserve">
+    <value>Directshow вимагає встановлення додаткових плагінів.</value>
+  </data>
+  <data name="txtVideoScaling" xml:space="preserve">
+    <value>Масштабування відео:</value>
+  </data>
+  <data name="txtWallpaperPlayback" xml:space="preserve">
+    <value>Відтворення шпалер:</value>
+  </data>
+  <data name="txtWhenBattery" xml:space="preserve">
+    <value>Коли працює від акумулятора:</value>
+  </data>
+  <data name="txtWindowTitleSelectDisplay" xml:space="preserve">
+    <value>Виберіть екран</value>
+  </data>
+</root>
