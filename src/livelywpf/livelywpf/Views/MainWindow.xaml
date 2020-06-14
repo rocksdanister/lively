@@ -15,14 +15,17 @@
         Title="Lively"
         >
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        
+        <TextBlock Grid.Column="1">Lively Wallpaper</TextBlock>
         <!-- Looks like its based on old version, using native uwp control instead-->
         <!--<ui:NavigationView IsBackButtonVisible="Collapsed" />-->
-        
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
-        </Grid.ColumnDefinitions>
         <xamlHost:WindowsXamlHost Grid.Column="0" x:Name="MyNavView" InitialTypeName="Windows.UI.Xaml.Controls.NavigationView" ChildChanged="MyNavView_ChildChanged"/>
-        <ui:Frame x:Name="ContentFrame" Grid.Column="1" />
+        
+        <ui:Frame x:Name="ContentFrame" Grid.Column="1" Margin="10, 50, 0, 0" />
+        
     </Grid>
 </Window>

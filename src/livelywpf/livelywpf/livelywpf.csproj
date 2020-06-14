@@ -7,6 +7,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <Platforms>AnyCPU;x64;x86</Platforms>
+    <StartupObject>livelywpf.Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,6 +21,11 @@
     <PackageReference Include="NLog" Version="4.7.2" />
     <PackageReference Include="Octokit" Version="0.47.0" />
     <PackageReference Include="RawInput.Sharp" Version="0.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\livelygrid\livelygrid.csproj" />
+    <ProjectReference Include="..\rootuwp\rootuwp.csproj" />
   </ItemGroup>
 
 </Project>
