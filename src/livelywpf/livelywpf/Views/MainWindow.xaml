@@ -11,7 +11,7 @@
         xmlns:xamlHost="clr-namespace:Microsoft.Toolkit.Wpf.UI.XamlHost;assembly=Microsoft.Toolkit.Wpf.UI.XamlHost"
         xmlns:local="clr-namespace:livelywpf"
         mc:Ignorable="d"
-        Height="720" Width="1280"
+        Height="720" Width="1200"
         Title="Lively"
         >
     <Grid>
@@ -24,8 +24,7 @@
         <!-- Looks like its based on old version, using native uwp control instead-->
         <!--<ui:NavigationView IsBackButtonVisible="Collapsed" />-->
         <xamlHost:WindowsXamlHost Grid.Column="0" x:Name="MyNavView" InitialTypeName="Windows.UI.Xaml.Controls.NavigationView" ChildChanged="MyNavView_ChildChanged"/>
-        
+
         <ui:Frame x:Name="ContentFrame" Grid.Column="1" Margin="10, 50, 0, 0" />
-        
     </Grid>
 </Window>

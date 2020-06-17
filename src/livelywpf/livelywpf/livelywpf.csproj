@@ -28,4 +28,10 @@
     <ProjectReference Include="..\rootuwp\rootuwp.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Core\" />
+    <Folder Include="Data\" />
+    <Folder Include="Helpers\" />
+  </ItemGroup>
+
 </Project>

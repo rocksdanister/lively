@@ -12,9 +12,7 @@
       >
 
     <Grid>
-        <StackPanel HorizontalAlignment="Left" Margin="25,25,0,0">
-            <ui:ToggleSwitch >Run at Startup</ui:ToggleSwitch>
-            <ui:ToggleSwitch >Animated Tile</ui:ToggleSwitch>
-        </StackPanel>
+        <xamlHost:WindowsXamlHost x:Name="SettingsNavView" InitialTypeName="Windows.UI.Xaml.Controls.NavigationView" ChildChanged="SettingsNavView_ChildChanged"/>
+
     </Grid>
 </Page>

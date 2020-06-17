@@ -1,0 +1,16 @@
+﻿<Window x:Class="livelywpf.MediaElementUWP"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:Microsoft.Toolkit.Wpf.UI.Controls;assembly=Microsoft.Toolkit.Wpf.UI.Controls"
+    
+        mc:Ignorable="d"
+        Title="LivelyMediaElementUWP" Height="450" Width="800"
+        >
+    <Grid>
+        <Controls:MediaPlayerElement x:Name="mePlayer" 
+                  Source="https://mediaplatstorage1.blob.core.windows.net/windows-universal-samples-media/elephantsdream-clip-h264_sd-aac_eng-aac_spa-aac_eng_commentary-srt_eng-srt_por-srt_swe.mkv" />
+
+    </Grid>
+</Window>

@@ -9,9 +9,42 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
 
-    <Grid>
+    <UserControl.Resources>
+        <DataTemplate x:Name="Small">
+            <Grid Width="192" Height="108" AutomationProperties.Name="{Binding Title}">
+                <Image Source="{Binding ImagePath}" Stretch="UniformToFill"/>
+                <StackPanel Orientation="Vertical" Height="60" VerticalAlignment="Bottom" Background="{ThemeResource SystemBaseLowColor}" Padding="12">
+                    <TextBlock Text="{Binding Title}"/>
+                    <TextBlock Text="{Binding Desc}" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
         
-        <GridView ItemsSource= "{x:Bind Items}">
+        <DataTemplate x:Name="Normal">
+            <Grid Width="272" Height="153" AutomationProperties.Name="{Binding Title}">
+                <Image Source="{Binding ImagePath}" Stretch="UniformToFill"/>
+                <StackPanel Orientation="Vertical" Height="60" VerticalAlignment="Bottom" Background="{ThemeResource SystemBaseLowColor}" Padding="12">
+                    <TextBlock Text="{Binding Title}"/>
+                    <TextBlock Text="{Binding Desc}" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Name="Large">
+            <Grid Width="320" Height="180" AutomationProperties.Name="{Binding Title}">
+                <Image Source="{Binding ImagePath}" Stretch="UniformToFill"/>
+                <StackPanel Orientation="Vertical" Height="60" VerticalAlignment="Bottom" Background="{ThemeResource SystemBaseLowColor}" Padding="12">
+                    <TextBlock Text="{Binding Title}"/>
+                    <TextBlock Text="{Binding Desc}" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+    
+    <Grid>
+
+        <GridView x:Name="GridControl" ItemsSource= "{x:Bind Items}" ItemTemplate="{StaticResource Normal}">
+            <!--
             <GridView.ItemTemplate>
                 <DataTemplate x:Name="ImageOverlayDataTemplate">
                     <Grid Width="320" Height="180" AutomationProperties.Name="{Binding Title}">
@@ -23,6 +56,7 @@
                     </Grid>
                 </DataTemplate>
             </GridView.ItemTemplate>
+            -->
             <GridView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <!--MaximumRowsOrColumns="3"-->

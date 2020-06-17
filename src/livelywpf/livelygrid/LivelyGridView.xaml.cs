@@ -18,12 +18,41 @@ using Windows.UI.Xaml.Navigation;
 
 namespace livelygrid
 {
+    public enum GridSize
+    {
+        Small,
+        Normal,
+        Large
+    }
+
     public sealed partial class LivelyGridView : UserControl
     {
         public ObservableCollection<ViewModel> Items = new ObservableCollection<ViewModel>();
+        public GridView LivelyGrid = null;
         public LivelyGridView()
         {
             this.InitializeComponent();
+            LivelyGrid = GridControl;
         }
+
+        public void GridElementSize(GridSize gridSize)
+        {
+            switch (gridSize)
+            {
+                case GridSize.Small:
+                    LivelyGrid.ItemTemplate = (DataTemplate)this.Resources["Small"];
+                    break;
+                case GridSize.Normal:
+                    LivelyGrid.ItemTemplate = (DataTemplate)this.Resources["Normal"];
+                    break;
+                case GridSize.Large:
+                    LivelyGrid.ItemTemplate = (DataTemplate)this.Resources["Large"];
+                    break;
+                default:
+                    LivelyGrid.ItemTemplate = (DataTemplate)this.Resources["Normal"];
+                    break;
+            }
+        }
+
     }
 }

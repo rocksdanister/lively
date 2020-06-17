@@ -12,16 +12,18 @@
       Title="LibraryView">
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="5*"/>
-            <ColumnDefinition Width="1*"/>
-        </Grid.ColumnDefinitions>
-        
-        <xamlHost:WindowsXamlHost Grid.Column="0" InitialTypeName="livelygrid.LivelyGridView" ChildChanged="LivelyGridView_ChildChanged" />
 
-        <StackPanel Grid.Column="1" >
-            <TextBlock FontSize="35" Foreground="Red" >Info Area</TextBlock>
-        </StackPanel>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="0.25*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- backspace key not working with native suggestbox :/ -->
+        <!--<xamlHost:WindowsXamlHost Grid.Column="0" InitialTypeName="Windows.UI.Xaml.Controls.AutoSuggestBox" Margin="0,0,10,0" Width="250" VerticalAlignment="Top" HorizontalAlignment="Right"/>-->
+        
+        <ui:AutoSuggestBox Name="LibSuggestBox" Grid.Column="0" Width="225" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0, 0, 5, 0"></ui:AutoSuggestBox>
+        
+        <xamlHost:WindowsXamlHost Name="LivelyGrid" Grid.Column="0" InitialTypeName="livelygrid.LivelyGridView" ChildChanged="LivelyGridView_ChildChanged" Margin="0,50,0,0"/>
         
     </Grid>
 </Page>
