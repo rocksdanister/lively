@@ -31,7 +31,8 @@
   <ItemGroup>
     <Folder Include="Core\" />
     <Folder Include="Data\" />
-    <Folder Include="Helpers\" />
+    <Folder Include="Model\" />
+    <Folder Include="ViewModel\" />
   </ItemGroup>
 
 </Project>
