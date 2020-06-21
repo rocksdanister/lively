@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace livelygrid
+namespace livelywpf
 {
-    public class ViewModel : INotifyPropertyChanged
+    public class LibraryModel : ObservableObject
     {
         private string _title;
         private string _desc;
@@ -17,7 +14,7 @@ namespace livelygrid
             get
             {
                 return _title;
-            }
+            }   
             set
             {
                 _title = value;
@@ -50,13 +47,5 @@ namespace livelygrid
                 OnPropertyChanged("ImagePath");
             }
         }
-
-        private void OnPropertyChanged(string property)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
     }
 }

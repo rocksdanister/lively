@@ -10,6 +10,16 @@
     d:DesignWidth="400">
 
     <UserControl.Resources>
+        <!-- switch to reduce resource usage -->
+        <DataTemplate x:Name="NoPreview">
+            <Grid Width="192" Height="108" AutomationProperties.Name="{Binding Title}">
+                <StackPanel Orientation="Vertical" Height="60" VerticalAlignment="Bottom" Background="{ThemeResource SystemBaseLowColor}" Padding="12">
+                    <TextBlock Text="{Binding Title}"/>
+                    <TextBlock Text="{Binding Desc}" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+        
         <DataTemplate x:Name="Small">
             <Grid Width="192" Height="108" AutomationProperties.Name="{Binding Title}">
                 <Image Source="{Binding ImagePath}" Stretch="UniformToFill"/>
@@ -43,7 +53,7 @@
     
     <Grid>
 
-        <GridView x:Name="GridControl" ItemsSource= "{x:Bind Items}" ItemTemplate="{StaticResource Normal}">
+        <GridView x:Name="GridControl" ItemsSource= "{Binding LibraryItems}" ItemTemplate="{StaticResource Normal}">
             <!--
             <GridView.ItemTemplate>
                 <DataTemplate x:Name="ImageOverlayDataTemplate">

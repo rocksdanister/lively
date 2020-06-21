@@ -22,7 +22,7 @@ namespace livelywpf.Views
     /// </summary>
     public partial class LibraryView : System.Windows.Controls.Page
     {
-        ObservableCollection<livelygrid.ViewModel> LibraryItems { get; set; }
+        public LibraryViewModel LibraryVM { get; set; }
         livelygrid.LivelyGridView LivelyGridControl { get; set; }
 
         public LibraryView()
@@ -39,16 +39,9 @@ namespace livelywpf.Views
 
             if (LivelyGridControl != null)
             {
-                LibraryItems = new ObservableCollection<livelygrid.ViewModel>();
-                LibraryItems.Add(new livelygrid.ViewModel() { Title = "title1", Desc = "a wallpaper that is cool", ImagePath = @"C:\Users\rocks\Documents\GIFS\patrick.gif" });
-                LibraryItems.Add(new livelygrid.ViewModel() { Title = "title2", Desc = "a wallpaper that is cool", ImagePath = @"C:\Users\rocks\Documents\GIFS\patrick.gif" });
-                LibraryItems.Add(new livelygrid.ViewModel() { Title = "title3", Desc = "a wallpaper that is cool", ImagePath = @"C:\Users\rocks\Documents\GIFS\patrick.gif" });
-                LibraryItems.Add(new livelygrid.ViewModel() { Title = "title4", Desc = "a wallpaper that is cool", ImagePath = @"C:\Users\rocks\Documents\GIFS\patrick.gif" });
-                LibraryItems.Add(new livelygrid.ViewModel() { Title = "title5", Desc = "a wallpaper that is cool", ImagePath = @"C:\Users\rocks\Documents\GIFS\patrick.gif" });
-                LibraryItems.Add(new livelygrid.ViewModel() { Title = "title6", Desc = "a wallpaper that is cool", ImagePath = @"C:\Users\rocks\Documents\GIFS\patrick.gif" });
-                LibraryItems.Add(new livelygrid.ViewModel() { Title = "title7", Desc = "a wallpaper that is cool", ImagePath = @"C:\Users\rocks\Documents\GIFS\patrick.gif" });
-                LibraryItems.Add(new livelygrid.ViewModel() { Title = "title1", Desc = "a wallpaper that is cool", ImagePath = @"C:\Users\rocks\Documents\GIFS\patrick.gif" });
-                LivelyGridControl.Items = LibraryItems;
+                LibraryVM = new LibraryViewModel();
+
+                LivelyGridControl.DataContext = LibraryVM;
                 LivelyGridControl.LivelyGrid.SelectionChanged += LivelyGrid_SelectionChanged;
                 //LivelyGridControl.GridElementSize(livelygrid.GridSize.Small);
             }
@@ -60,8 +53,8 @@ namespace livelywpf.Views
 
             ContentDialog noWifiDialog = new ContentDialog
             {
-                Title = LibraryItems[gridView.SelectedIndex].Title,
-                Content = LibraryItems[gridView.SelectedIndex].Desc,
+                //Title = LibraryVM[gridView.SelectedIndex].Title,
+                //Content = LibraryVM[gridView.SelectedIndex].Desc,
                 PrimaryButtonText = "Set as Wallpaper",
                 CloseButtonText = "Cancel"
             };

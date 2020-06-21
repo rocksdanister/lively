@@ -22,12 +22,12 @@ namespace livelygrid
     {
         Small,
         Normal,
-        Large
+        Large,
+        NoPreview
     }
 
     public sealed partial class LivelyGridView : UserControl
     {
-        public ObservableCollection<ViewModel> Items = new ObservableCollection<ViewModel>();
         public GridView LivelyGrid = null;
         public LivelyGridView()
         {
@@ -48,11 +48,13 @@ namespace livelygrid
                 case GridSize.Large:
                     LivelyGrid.ItemTemplate = (DataTemplate)this.Resources["Large"];
                     break;
+                case GridSize.NoPreview:
+                    LivelyGrid.ItemTemplate = (DataTemplate)this.Resources["NoPreview"];
+                    break;
                 default:
                     LivelyGrid.ItemTemplate = (DataTemplate)this.Resources["Normal"];
                     break;
             }
         }
-
     }
 }

@@ -5,7 +5,6 @@
     <!-- https://docs.microsoft.com/en-us/windows/apps/desktop/modernize/host-custom-control-with-xaml-islands -->
     <EnableTypeInfoReflection>false</EnableTypeInfoReflection>
     <EnableXBindDiagnostics>false</EnableXBindDiagnostics>
-    
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{BAEB3FF9-8189-4179-9F70-EA4B76049570}</ProjectGuid>
@@ -127,9 +126,7 @@
     <Compile Include="LivelyGridView.xaml.cs">
       <DependentUpon>LivelyGridView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModel.cs" />
     <EmbeddedResource Include="Properties\livelygrid.rd.xml" />
   </ItemGroup>
   <ItemGroup>

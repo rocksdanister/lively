@@ -1,5 +1,6 @@
 ﻿using Microsoft.Toolkit.Wpf.UI.XamlHost;
 using ModernWpf.Media.Animation;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.Linq;

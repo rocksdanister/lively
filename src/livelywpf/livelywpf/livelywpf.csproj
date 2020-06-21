@@ -30,9 +30,7 @@
 
   <ItemGroup>
     <Folder Include="Core\" />
-    <Folder Include="Data\" />
-    <Folder Include="Model\" />
-    <Folder Include="ViewModel\" />
+    <Folder Include="DataJSON\" />
   </ItemGroup>
 
 </Project>
