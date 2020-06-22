@@ -30,7 +30,6 @@
 
   <ItemGroup>
     <Folder Include="Core\" />
-    <Folder Include="DataJSON\" />
   </ItemGroup>
 
 </Project>

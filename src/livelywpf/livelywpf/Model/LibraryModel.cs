@@ -4,6 +4,7 @@ using System.Text;
 
 namespace livelywpf
 {
+    [Serializable]
     public class LibraryModel : ObservableObject
     {
         private string _title;

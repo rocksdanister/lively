@@ -27,7 +27,8 @@ namespace livelywpf
         public MainWindow()
         {
             InitializeComponent();
-            ContentFrame.Navigate(typeof(livelywpf.Views.LibraryView), new Uri("Views/LibraryView.xaml", UriKind.Relative), new SuppressNavigationTransitionInfo());
+            //ContentFrame.Navigate(typeof(livelywpf.Views.LibraryView), new Uri("Views/LibraryView.xaml", UriKind.Relative), new SuppressNavigationTransitionInfo());
+            SettingsViewModel vm = new SettingsViewModel();
         }
 
 

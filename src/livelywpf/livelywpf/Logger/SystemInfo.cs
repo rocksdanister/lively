@@ -5,7 +5,7 @@ using System.Text;
 namespace livelywpf
 {
     /// <summary>
-    /// Retrieve system information:- operating system version, cpu & gpu name.
+    /// Retrieve system information:- operating system version, cpu, gpu etc..
     /// </summary>
     public static class SystemInfo
     {
