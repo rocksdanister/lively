@@ -54,22 +54,8 @@
     <Grid>
 
         <GridView x:Name="GridControl" ItemsSource= "{Binding LibraryItems}" ItemTemplate="{StaticResource Normal}">
-            <!--
-            <GridView.ItemTemplate>
-                <DataTemplate x:Name="ImageOverlayDataTemplate">
-                    <Grid Width="320" Height="180" AutomationProperties.Name="{Binding Title}">
-                        <Image Source="{Binding ImagePath}" Stretch="UniformToFill"/>
-                        <StackPanel Orientation="Vertical" Height="60" VerticalAlignment="Bottom" Background="{ThemeResource SystemBaseLowColor}" Padding="12">
-                            <TextBlock Text="{Binding Title}"/>
-                            <TextBlock Text="{Binding Desc}" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
-                        </StackPanel>
-                    </Grid>
-                </DataTemplate>
-            </GridView.ItemTemplate>
-            -->
             <GridView.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <!--MaximumRowsOrColumns="3"-->
                     <ItemsWrapGrid Name="GridWrap" Orientation="Horizontal"/>
                 </ItemsPanelTemplate>
             </GridView.ItemsPanel>

@@ -28,11 +28,9 @@ namespace livelygrid
 
     public sealed partial class LivelyGridView : UserControl
     {
-        public GridView LivelyGrid = null;
         public LivelyGridView()
         {
             this.InitializeComponent();
-            LivelyGrid = GridControl;
         }
 
         public void GridElementSize(GridSize gridSize)
@@ -40,19 +38,19 @@ namespace livelygrid
             switch (gridSize)
             {
                 case GridSize.Small:
-                    LivelyGrid.ItemTemplate = (DataTemplate)this.Resources["Small"];
+                    GridControl.ItemTemplate = (DataTemplate)this.Resources["Small"];
                     break;
                 case GridSize.Normal:
-                    LivelyGrid.ItemTemplate = (DataTemplate)this.Resources["Normal"];
+                    GridControl.ItemTemplate = (DataTemplate)this.Resources["Normal"];
                     break;
                 case GridSize.Large:
-                    LivelyGrid.ItemTemplate = (DataTemplate)this.Resources["Large"];
+                    GridControl.ItemTemplate = (DataTemplate)this.Resources["Large"];
                     break;
                 case GridSize.NoPreview:
-                    LivelyGrid.ItemTemplate = (DataTemplate)this.Resources["NoPreview"];
+                    GridControl.ItemTemplate = (DataTemplate)this.Resources["NoPreview"];
                     break;
                 default:
-                    LivelyGrid.ItemTemplate = (DataTemplate)this.Resources["Normal"];
+                    GridControl.ItemTemplate = (DataTemplate)this.Resources["Normal"];
                     break;
             }
         }

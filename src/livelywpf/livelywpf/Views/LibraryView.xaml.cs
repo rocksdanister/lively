@@ -28,6 +28,8 @@ namespace livelywpf.Views
         public LibraryView()
         {
             InitializeComponent();
+            LibraryVM = new LibraryViewModel();
+            this.DataContext = LibraryVM; //uwp control also gets binded..
         }
 
         private void LivelyGridView_ChildChanged(object sender, EventArgs e)
@@ -39,10 +41,7 @@ namespace livelywpf.Views
 
             if (LivelyGridControl != null)
             {
-                LibraryVM = new LibraryViewModel();
-
-                LivelyGridControl.DataContext = LibraryVM;
-                LivelyGridControl.LivelyGrid.SelectionChanged += LivelyGrid_SelectionChanged;
+                //LivelyGridControl.LivelyGrid.SelectionChanged += LivelyGrid_SelectionChanged;
                 //LivelyGridControl.GridElementSize(livelygrid.GridSize.Small);
             }
         }

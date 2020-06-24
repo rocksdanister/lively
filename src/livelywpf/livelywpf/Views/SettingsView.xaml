@@ -10,9 +10,11 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SettingsView"
       >
-
     <Grid>
-        <xamlHost:WindowsXamlHost x:Name="SettingsNavView" InitialTypeName="Windows.UI.Xaml.Controls.NavigationView" ChildChanged="SettingsNavView_ChildChanged"/>
+        <!-- minwidth is required, otherwise the performance tab is empty on first time select?.-->
+        <xamlHost:WindowsXamlHost InitialTypeName="livelysettings.SettingsPage" 
+                                  ChildChanged="SettingsPageHost_ChildChanged" 
+                                  MinWidth="800"/>
 
     </Grid>
 </Page>

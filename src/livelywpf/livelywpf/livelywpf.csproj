@@ -25,11 +25,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\livelygrid\livelygrid.csproj" />
+    <ProjectReference Include="..\livelysettings\livelysettings.csproj" />
     <ProjectReference Include="..\rootuwp\rootuwp.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Core\" />
   </ItemGroup>
 
 </Project>

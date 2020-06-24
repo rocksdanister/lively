@@ -407,6 +407,20 @@ namespace livelywpf
             }
         }
 
+        private int _tileSize;
+        public int TileSize
+        {
+            get
+            {
+                return _tileSize;
+            }
+            set
+            {
+                _tileSize = value;
+                OnPropertyChanged("TileSize");
+            }
+        }
+
         /*
         //todo need to rewrite audio manager from scratch.
         public bool MuteVideo { get; set; }
@@ -475,6 +489,8 @@ namespace livelywpf
 
             InputForward = InputForwardMode.mouse;
             MouseInputMovAlways = true;
+
+            TileSize = 1;
         }
     }
 }

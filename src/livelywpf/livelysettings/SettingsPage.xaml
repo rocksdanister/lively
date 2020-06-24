@@ -1,0 +1,113 @@
+﻿<UserControl
+    x:Class="livelysettings.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:livelysettings"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="800"
+    d:DesignWidth="800">
+
+    <Grid>
+        <Pivot x:Name="rootPivot" Title="Settings">
+            <PivotItem Header="General">
+                <Grid>
+                    <ScrollViewer>
+                        <StackPanel Margin="0,10,0,0">
+                            <ToggleSwitch IsOn="{Binding IsStartup, Mode=TwoWay}">Start with windows</ToggleSwitch>
+
+                            <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}">
+                                Lively needs to run in the background for wallpaper playback.</TextBlock>
+
+                            <ComboBox SelectedIndex="0" Header="Language" Margin="0,10,0,0" Width="150">
+                                <ComboBoxItem>English</ComboBoxItem>
+                                <ComboBoxItem>Russian</ComboBoxItem>
+                            </ComboBox>
+                            <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}">
+                                Lively will restart to apply the new language.</TextBlock>
+
+                            <ComboBox Header="Tile Size" Margin="0,10,0,0" Width="150" SelectedIndex="{Binding CmbboxSelectedTileSizeIndex, Mode=TwoWay}" >
+                                <ComboBoxItem>Small</ComboBoxItem>
+                                <ComboBoxItem>Normal</ComboBoxItem>
+                                <ComboBoxItem>Large</ComboBoxItem>
+                            </ComboBox>
+                            <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}">
+                                Library wallpaper tile size.</TextBlock>
+
+                            <TextBlock Margin="0, 10, 0, 0">Theme</TextBlock>
+                            <TextBlock TextWrapping="Wrap" FontSize="12" Margin="0, 5, 0, 0">
+                              <Run Text="Lively adapts to system theme settings, to change appearance go to " />
+                                  <Hyperlink NavigateUri="ms-settings:colors">
+                                      <Run Text="Windows Settings." />
+                                  </Hyperlink>
+                            </TextBlock>
+
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </PivotItem>
+
+            <PivotItem Header="Performance">
+                <Grid>
+                    <ScrollViewer>
+                        <StackPanel>
+                            <TextBlock FontSize="20" Margin="0, 10, 0, 0">Wallpaper playback</TextBlock>
+                            <ComboBox SelectedIndex="0" Header="Other Applications Fullscreen" Margin="0,10,0,0" Width="200" >
+                            <ComboBoxItem>Pause</ComboBoxItem>
+                            <ComboBoxItem>Nothing</ComboBoxItem>
+                            <ComboBoxItem>Kill</ComboBoxItem>
+                            </ComboBox>
+                            <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}">
+                            Set what to do when you run fullscreen games/applications are in focus.</TextBlock>
+
+                            <ComboBox SelectedIndex="0" Header="Other Applications Focused" Margin="0,10,0,0" Width="200">
+                            <ComboBoxItem>Pause</ComboBoxItem>
+                            <ComboBoxItem>Nothing</ComboBoxItem>
+                            <ComboBoxItem>Kill</ComboBoxItem>
+                            </ComboBox>
+                            <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}">
+                            Set what to do when you any application is in focus.</TextBlock>
+
+                            <ComboBox SelectedIndex="0" Header="When on Battery Power" Margin="0,10,0,0" Width="200">
+                            <ComboBoxItem>Pause</ComboBoxItem>
+                            <ComboBoxItem>Nothing</ComboBoxItem>
+                            <ComboBoxItem>Kill</ComboBoxItem>
+                            </ComboBox>
+                            <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}">
+                            Only for portable systems running on battery.</TextBlock>
+
+                            <ComboBox SelectedIndex="0" Header="Display Pause Rule" Margin="0,10,0,0" Width="200">
+                            <ComboBoxItem>Per Display</ComboBoxItem>
+                            <ComboBoxItem>All Display(s)</ComboBoxItem>
+                            </ComboBox>
+                            <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}">
+                            Per: Pause wallpaper only on the screen in which application is focused/fullscreen.
+                            <LineBreak/>All: Pause wallpaper on all screen(s) if any application is focused/fullscreen.</TextBlock>
+
+                            
+                            <ComboBox SelectedIndex="0" Header="Pause Algorithm" Margin="0,10,0,0" Width="200">
+                            <ComboBoxItem>Foreground</ComboBoxItem>
+                            <ComboBoxItem>All Process</ComboBoxItem>
+                            </ComboBox>
+                            <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}">
+                            Foreground: Lightweight, only checks the single process that is in foreground to determine wallpaper playback behaviour.
+                            <LineBreak/>All Process: Heavier, Scans all the process to determine playback behaviour.</TextBlock>
+                            
+                            <Button Margin="0, 10, 0, 0" Style="{StaticResource ButtonRevealStyle}" Content="Application Rules" Command="{Binding ApplicationRulesCommand}" />
+                            <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}">
+                            Define different wallpaper playback rules based on running application.</TextBlock>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </PivotItem>
+
+            <PivotItem Header="Wallpaper">
+            </PivotItem>
+            
+            <PivotItem Header="Audio">
+            </PivotItem>
+        </Pivot>
+        
+    </Grid>
+</UserControl>

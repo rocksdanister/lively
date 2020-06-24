@@ -23,42 +23,22 @@ namespace livelywpf.Views
         public SettingsView()
         {
             InitializeComponent();
-            //ShowContentDialog();
+            SettingsViewModel vm = new SettingsViewModel();
+            this.DataContext = vm;
         }
 
-        private void SettingsNavView_ChildChanged(object sender, EventArgs e)
+        private void SettingsPageHost_ChildChanged(object sender, EventArgs e)
         {
-            WindowsXamlHost windowsXamlHost = (WindowsXamlHost)sender;
+            // Hook up x:Bind source.
+            global::Microsoft.Toolkit.Wpf.UI.XamlHost.WindowsXamlHost windowsXamlHost =
+                sender as global::Microsoft.Toolkit.Wpf.UI.XamlHost.WindowsXamlHost;
+            global::livelysettings.SettingsPage userControl =
+                windowsXamlHost.GetUwpInternalObject() as global::livelysettings.SettingsPage;
 
-            Windows.UI.Xaml.Controls.NavigationView navView =
-                (Windows.UI.Xaml.Controls.NavigationView)windowsXamlHost.Child;
-
-            if (navView != null)
+            if (userControl != null)
             {
-                //navView.OpenPaneLength = 50;
-                navView.PaneDisplayMode = NavigationViewPaneDisplayMode.Top;
-                navView.SelectionFollowsFocus = NavigationViewSelectionFollowsFocus.Enabled;
-                navView.IsPaneToggleButtonVisible = false;
-                navView.IsBackButtonVisible = NavigationViewBackButtonVisible.Collapsed;
-                navView.IsSettingsVisible = false;
-                navView.MenuItems.Add(CreateMenu("General", "general", Symbol.Go));
-                navView.MenuItems.Add(CreateMenu("Performance", "perf", Symbol.Clock));
-                navView.MenuItems.Add(CreateMenu("Audio", "audio", Symbol.Audio));
-                navView.MenuItems.Add(CreateMenu("Wallpaper", "wallpaper", Symbol.ImportAll));
-                //navView.ItemInvoked += NavView_ItemInvoked;
+
             }
-        }
-
-        private Windows.UI.Xaml.Controls.NavigationViewItem CreateMenu(string menuName, string tag, Symbol icon)
-        {
-            Windows.UI.Xaml.Controls.NavigationViewItem item = new NavigationViewItem
-            {
-                Name = menuName,
-                Content = menuName,
-                Tag = tag,
-                Icon = new SymbolIcon(icon)
-            };
-            return item;
         }
     }
 }

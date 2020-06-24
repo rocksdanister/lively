@@ -27,8 +27,6 @@ namespace livelywpf
         public MainWindow()
         {
             InitializeComponent();
-            //ContentFrame.Navigate(typeof(livelywpf.Views.LibraryView), new Uri("Views/LibraryView.xaml", UriKind.Relative), new SuppressNavigationTransitionInfo());
-            SettingsViewModel vm = new SettingsViewModel();
         }
 
 
@@ -50,6 +48,9 @@ namespace livelywpf
                 navView.MenuItems.Add(CreateMenu("Playlist", "playlist", Symbol.SlideShow));
                 navView.MenuItems.Add(CreateMenu("About", "about", Symbol.Comment));
                 navView.ItemInvoked += NavView_ItemInvoked;
+
+                navView.SelectedItem = navView.MenuItems.ElementAt(0);
+                ContentFrame.Navigate(typeof(livelywpf.Views.LibraryView), new Uri("Views/LibraryView.xaml", UriKind.Relative), new SuppressNavigationTransitionInfo());
             }
         }
 
@@ -66,7 +67,6 @@ namespace livelywpf
             else if (args.InvokedItemContainer != null)
             {
                 var navItemTag = args.InvokedItemContainer.Tag.ToString();
-
                 switch (navItemTag)
                 {
                     case "library":
