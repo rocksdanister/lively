@@ -32,26 +32,14 @@ namespace livelywpf
             }
             set
             {
-                if (value == null)
+                if (String.IsNullOrWhiteSpace(value))
                 {
-                    value = "en-US";
-                }
-
-                bool detectedLang = false;
-                //todo: make this more elegant? 
-                foreach (var item in LanguagesModel.SupportedLanguages)
-                {
-                    if (Array.Exists(item.Codes, x => x.Equals(value, StringComparison.OrdinalIgnoreCase)))
-                    {
-                        _language = value;
-                        detectedLang = true;
-                        break;
-                    }
-                }
-
-                if (!detectedLang)
                     _language = "en-US";
-
+                }
+                else
+                {
+                    _language = value;
+                }
                 OnPropertyChanged("Language");
             }
         }
@@ -466,7 +454,7 @@ namespace livelywpf
 
             WallpaperWaitTime = 30000; // 30sec
             ProcessTimerInterval = 500; //reduce to 250 for quicker response.
-            Language = CultureInfo.CurrentCulture.Name;//"en"; 
+            Language = CultureInfo.CurrentCulture.Name;
             StreamQuality = StreamQualitySuggestion.h720p;
             GenerateTile = true;
             LivelyZipGenerate = false;

@@ -20,14 +20,16 @@
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}">
                                 Lively needs to run in the background for wallpaper playback.</TextBlock>
 
-                            <ComboBox SelectedIndex="0" Header="Language" Margin="0,10,0,0" Width="150">
-                                <ComboBoxItem>English</ComboBoxItem>
-                                <ComboBoxItem>Russian</ComboBoxItem>
-                            </ComboBox>
+                            <ComboBox SelectedIndex="0" Header="Language" Margin="0,10,0,0" MinWidth="150" 
+                                      ItemsSource="{Binding LanguageItems}" 
+                                      DisplayMemberPath="Language"
+                                      SelectedItem="{Binding SelectedLanguageItem, Mode=TwoWay}"
+                                      />
+
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}">
                                 Lively will restart to apply the new language.</TextBlock>
 
-                            <ComboBox Header="Tile Size" Margin="0,10,0,0" Width="150" SelectedIndex="{Binding CmbboxSelectedTileSizeIndex, Mode=TwoWay}" >
+                            <ComboBox Header="Tile Size" Margin="0,10,0,0" MinWidth="150" SelectedIndex="{Binding SelectedTileSizeIndex, Mode=TwoWay}" >
                                 <ComboBoxItem>Small</ComboBoxItem>
                                 <ComboBoxItem>Normal</ComboBoxItem>
                                 <ComboBoxItem>Large</ComboBoxItem>
@@ -53,7 +55,8 @@
                     <ScrollViewer>
                         <StackPanel>
                             <TextBlock FontSize="20" Margin="0, 10, 0, 0">Wallpaper playback</TextBlock>
-                            <ComboBox SelectedIndex="0" Header="Other Applications Fullscreen" Margin="0,10,0,0" Width="200" >
+
+                            <ComboBox Header="Other Applications Fullscreen" Margin="0,10,0,0" MinWidth="200" SelectedIndex="{Binding SelectedAppFullScreenIndex, Mode=TwoWay}">
                             <ComboBoxItem>Pause</ComboBoxItem>
                             <ComboBoxItem>Nothing</ComboBoxItem>
                             <ComboBoxItem>Kill</ComboBoxItem>
@@ -61,7 +64,7 @@
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}">
                             Set what to do when you run fullscreen games/applications are in focus.</TextBlock>
 
-                            <ComboBox SelectedIndex="0" Header="Other Applications Focused" Margin="0,10,0,0" Width="200">
+                            <ComboBox Header="Other Applications Focused" Margin="0,10,0,0" MinWidth="200" SelectedIndex="{Binding SelectedAppFocusIndex, Mode=TwoWay}">
                             <ComboBoxItem>Pause</ComboBoxItem>
                             <ComboBoxItem>Nothing</ComboBoxItem>
                             <ComboBoxItem>Kill</ComboBoxItem>
@@ -69,7 +72,7 @@
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}">
                             Set what to do when you any application is in focus.</TextBlock>
 
-                            <ComboBox SelectedIndex="0" Header="When on Battery Power" Margin="0,10,0,0" Width="200">
+                            <ComboBox Header="When on Battery Power" Margin="0,10,0,0" MinWidth="200" SelectedIndex="{Binding SelectedBatteryPowerIndex, Mode=TwoWay}">
                             <ComboBoxItem>Pause</ComboBoxItem>
                             <ComboBoxItem>Nothing</ComboBoxItem>
                             <ComboBoxItem>Kill</ComboBoxItem>
@@ -77,7 +80,7 @@
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}">
                             Only for portable systems running on battery.</TextBlock>
 
-                            <ComboBox SelectedIndex="0" Header="Display Pause Rule" Margin="0,10,0,0" Width="200">
+                            <ComboBox Header="Display Pause Rule" Margin="0,10,0,0" MinWidth="200" SelectedIndex="{Binding SelectedDisplayPauseRuleIndex, Mode=TwoWay}">
                             <ComboBoxItem>Per Display</ComboBoxItem>
                             <ComboBoxItem>All Display(s)</ComboBoxItem>
                             </ComboBox>
@@ -85,8 +88,7 @@
                             Per: Pause wallpaper only on the screen in which application is focused/fullscreen.
                             <LineBreak/>All: Pause wallpaper on all screen(s) if any application is focused/fullscreen.</TextBlock>
 
-                            
-                            <ComboBox SelectedIndex="0" Header="Pause Algorithm" Margin="0,10,0,0" Width="200">
+                            <ComboBox Header="Pause Algorithm" Margin="0,10,0,0" MinWidth="200" SelectedIndex="{Binding SelectedPauseAlgorithmIndex, Mode=TwoWay}">
                             <ComboBoxItem>Foreground</ComboBoxItem>
                             <ComboBoxItem>All Process</ComboBoxItem>
                             </ComboBox>

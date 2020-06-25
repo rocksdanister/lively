@@ -10,7 +10,7 @@ namespace livelywpf
     {
         public LibraryViewModel()
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 15; i++)
             {
                 LibraryItems.Add(new LibraryModel() { Title = i.ToString(), Desc = "a wallpaper that is cool", ImagePath = @"C:\Users\rocks\Documents\GIFS\lively.gif" });
             }

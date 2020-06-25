@@ -5,6 +5,40 @@ using System.Text;
 
 namespace livelywpf
 {
+    public enum WallpaperType
+    {
+        [Description("Application")]
+        app,
+        [Description("Webpage")]
+        web,
+        [Description("Webpage Audio Visualiser")]
+        webaudio,
+        [Description("Webpage Link")] //"Type" tab only, not for "Library"! 
+        url,
+        [Description("Bizhawk Emulator")]
+        bizhawk,
+        [Description("Unity Game")]
+        unity,
+        [Description("Godot Game")]
+        godot,
+        [Description("Video")]
+        video,
+        [Description("Animated Gif")]
+        gif,
+        [Description("Unity Audio Visualiser")]
+        unityaudio,
+        [Description("Video Streams")]
+        videostream
+    }
+
+    public enum EngineState
+    {
+        [Description("All Wallpapers Paused")]
+        paused,
+        [Description("Normal")]
+        normal
+    }
+
     /// <summary>
     /// Per application pause behavior.
     /// </summary>

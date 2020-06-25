@@ -41,6 +41,7 @@ namespace livelywpf.Views
 
             if (LivelyGridControl != null)
             {
+                LivelyGridControl.GridElementSize((livelygrid.GridSize)Program.SettingsVM.SelectedTileSizeIndex);
                 //LivelyGridControl.LivelyGrid.SelectionChanged += LivelyGrid_SelectionChanged;
                 //LivelyGridControl.GridElementSize(livelygrid.GridSize.Small);
             }

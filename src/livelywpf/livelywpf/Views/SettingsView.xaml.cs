@@ -23,8 +23,8 @@ namespace livelywpf.Views
         public SettingsView()
         {
             InitializeComponent();
-            SettingsViewModel vm = new SettingsViewModel();
-            this.DataContext = vm;
+            //SettingsViewModel vm = new SettingsViewModel();
+            this.DataContext = Program.SettingsVM;
         }
 
         private void SettingsPageHost_ChildChanged(object sender, EventArgs e)

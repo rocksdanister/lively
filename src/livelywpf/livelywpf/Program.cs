@@ -9,15 +9,16 @@ namespace livelywpf
 {
     public class Program
     {
-        //private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private static readonly Mutex mutex = new Mutex(false, "LIVELY:DESKTOPWALLPAPERSYSTEM");
+
+        public static SettingsViewModel SettingsVM = new SettingsViewModel();
 
         [System.STAThreadAttribute()]
         public static void Main()
         {
             try
             {
-                //if (!mutex.WaitOne()) //indefinite wait.
                 // wait a few seconds in case livelywpf instance is just shutting down..
                 if (!mutex.WaitOne(TimeSpan.FromSeconds(5), false))
                 {
