@@ -12,6 +12,7 @@ namespace livelywpf
 {
     public class SettingsViewModel : ObservableObject
     {
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         public SettingsViewModel()
         {
             Settings = SettingsJSON.LoadConfig(@"C:\Users\rocks\Documents\GIFS\lively_config.json");

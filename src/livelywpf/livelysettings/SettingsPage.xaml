@@ -13,7 +13,7 @@
         <Pivot x:Name="rootPivot" Title="Settings">
             <PivotItem Header="General">
                 <Grid>
-                    <ScrollViewer>
+                    <ScrollViewer Margin="0, 0, 15, 0">
                         <StackPanel Margin="0,10,0,0">
                             <ToggleSwitch IsOn="{Binding IsStartup, Mode=TwoWay}">Start with windows</ToggleSwitch>
 

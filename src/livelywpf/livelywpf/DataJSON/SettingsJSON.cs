@@ -33,8 +33,9 @@ namespace livelywpf
             catch (Exception e)
             {
                 Logger.Error(e.ToString());
-                return null;
             }
+
+            return null;
         }
 
         public static void SaveConfig(string filePath, SettingsModel configFile)

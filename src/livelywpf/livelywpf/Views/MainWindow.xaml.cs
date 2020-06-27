@@ -27,6 +27,7 @@ namespace livelywpf
         public MainWindow()
         {
             InitializeComponent();
+            //SetupDesktop.SetWallpaper();
         }
 
 
