@@ -23,7 +23,7 @@
         
         <ui:AutoSuggestBox Name="LibSuggestBox" Grid.Column="0" Width="225" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0, 15, 5, 0"></ui:AutoSuggestBox>
         
-        <xamlHost:WindowsXamlHost Name="LivelyGrid" Grid.Column="0" InitialTypeName="livelygrid.LivelyGridView" ChildChanged="LivelyGridView_ChildChanged" Margin="0, 60, 0, 0"/>
+        <xamlHost:WindowsXamlHost Name="LivelyGrid" Grid.Column="0" InitialTypeName="livelygrid.LivelyGridView" ChildChanged="LivelyGridView_ChildChanged" Margin="0, 60, 0, 0" />
         
     </Grid>
 </Page>

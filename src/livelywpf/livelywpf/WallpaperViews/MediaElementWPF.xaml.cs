@@ -2,6 +2,7 @@
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Interop;
 using System.Windows.Media;
 
 namespace livelywpf
@@ -13,7 +14,7 @@ namespace livelywpf
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
-        public MediaElementWPF(string filePath, int playSpeed)
+        public MediaElementWPF(string filePath)
         {
             InitializeComponent();
             this.Loaded += MediaPlayer_Loaded;
@@ -21,11 +22,11 @@ namespace livelywpf
             mePlayer.LoadedBehavior = MediaState.Manual;
             mePlayer.Source = new Uri(filePath);
             mePlayer.Stretch = Stretch.Fill;//SaveData.config.VideoScaler;
-            mePlayer.MediaOpened += MePlayer_MediaOpened;
+            //mePlayer.MediaOpened += MePlayer_MediaOpened;
             mePlayer.MediaEnded += MePlayer_MediaEnded;
             mePlayer.MediaFailed += MePlayer_MediaFailed;
 
-            mePlayer.SpeedRatio = playSpeed / 100f; // 0<=x<=inf, default=1
+            //mePlayer.SpeedRatio = playSpeed / 100f; // 0<=x<=inf, default=1
             /*
             if (SaveData.config.MuteVideo || MainWindow.Multiscreen)
                 mePlayer.Volume = 0;
@@ -39,13 +40,9 @@ namespace livelywpf
         private void MediaPlayer_Loaded(object sender, RoutedEventArgs e)
         {
             //ShowInTaskbar = false :- causing issue with windows10 Taskview.
-            //SetupDesktop.RemoveWindowFromTaskbar(new WindowInteropHelper(this).Handle);
+            WindowOperations.RemoveWindowFromTaskbar(new WindowInteropHelper(this).Handle);
         }
 
-        private void MePlayer_MediaOpened(object sender, RoutedEventArgs e)
-        {
-
-        }
         private void MePlayer_MediaFailed(object sender, ExceptionRoutedEventArgs e)
         {
             //todo proper error handling.
@@ -112,7 +109,7 @@ namespace livelywpf
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            mePlayer.MediaOpened -= MePlayer_MediaOpened;
+            //mePlayer.MediaOpened -= MePlayer_MediaOpened;
             mePlayer.MediaEnded -= MePlayer_MediaEnded;
             mePlayer.MediaFailed -= MePlayer_MediaFailed;
 

@@ -137,6 +137,5 @@ You can always help development by buying me a cup of coffee(paypal):
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/P5P1U8NQ)
 
 ## License
-Lively is licensed under Microsoft Public License (Ms-PL). 
-Individual license of libraries used is found in license file in the source.
+TBD
 

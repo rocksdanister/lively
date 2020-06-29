@@ -1,7 +1,9 @@
-﻿using System;
+﻿using livelywpf.Core;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Interop;
 using System.Windows.Threading;
@@ -15,7 +17,9 @@ namespace livelywpf
         static IntPtr progman, workerw;
         private static bool _isInitialized = false;
 
-        public static async void SetWallpaper()
+        public static List<IWallpaper> Wallpapers = new List<IWallpaper>();
+
+        public static async void SetWallpaper(LibraryModel wallp = null)
         {
             if (SystemInformation.HighContrast)
             {
@@ -83,18 +87,49 @@ namespace livelywpf
                     _isInitialized = true;
                 }
             }
-
             /*
+            switch (wpData.LivelyInfo.Type)
+            {
+                case WallpaperType.app:
+                    break;
+                case WallpaperType.web:
+                    break;
+                case WallpaperType.webaudio:
+                    break;
+                case WallpaperType.url:
+                    break;
+                case WallpaperType.bizhawk:
+                    break;
+                case WallpaperType.unity:
+                    break;
+                case WallpaperType.godot:
+                    break;
+                case WallpaperType.video:
+                    break;
+                case WallpaperType.gif:
+                    break;
+                case WallpaperType.unityaudio:
+                    break;
+                case WallpaperType.videostream:
+                    break;
+                default:
+                    break;
+            }
+            */
             //test
+
             IntPtr handle = new IntPtr();
             GIFViewUWP uwpGIF = new GIFViewUWP(@"C:\Users\rocks\Documents\GIFS\ranger.gif");
             uwpGIF.Show();
             handle = new WindowInteropHelper(uwpGIF).Handle;
-            WindowOperations.BorderlessWinStyle(handle);
-            WindowOperations.RemoveWindowFromTaskbar(handle);
+            Wallpapers.Add(new GIFPlayerUWP(uwpGIF,handle, null));
+            
+            WindowOperations.BorderlessWinStyle(Wallpapers[0].GetHWND());
+            WindowOperations.RemoveWindowFromTaskbar(Wallpapers[0].GetHWND());
+            AddWallpaper(Wallpapers[0], Screen.PrimaryScreen);
 
-            AddWallpaper(handle, Screen.PrimaryScreen);
-            */
+            await Task.Delay(4000);
+            //CloseWallpaper(WallpaperType.gif);
         }
 
         /// <summary>
@@ -102,7 +137,7 @@ namespace livelywpf
         /// </summary>
         /// <param name="handle">window handle of process to add as wallpaper</param>
         /// <param name="display">displaystring of display to sent wp to.</param>
-        private static async void AddWallpaper(IntPtr handle, Screen display)
+        private static async void AddWallpaper(IWallpaper wallp, Screen display)
         {
             foreach (var displayItem in Screen.AllScreens)
             {
@@ -111,6 +146,7 @@ namespace livelywpf
                     NativeMethods.RECT prct = new NativeMethods.RECT();
                     NativeMethods.POINT topLeft;
                     //StaticPinvoke.POINT bottomRight;
+                    IntPtr handle = wallp.GetHWND();
 
                     Logger.Info("Sending WP -> " + displayItem);
                     if (!NativeMethods.SetWindowPos(handle, 1, displayItem.Bounds.X, displayItem.Bounds.Y, (displayItem.Bounds.Width), (displayItem.Bounds.Height), 0 | 0x0010))
@@ -145,6 +181,22 @@ namespace livelywpf
             RefreshDesktop();
         }
 
+        public static void CloseAllWallpapers()
+        {
+            Wallpapers.ForEach(x => x.Close());
+            Wallpapers.Clear();
+        }
+
+        public static void CloseWallpaper(WallpaperType type)
+        {
+            Wallpapers.ForEach(x => { 
+                if (x.GetWallpaperType() == type) 
+                    x.Close(); 
+                }
+            );
+            Wallpapers.RemoveAll(x => x.GetWallpaperType() == type);
+        }
+
         /// <summary>
         /// Focus fix, otherwise when new applicaitons launch fullscreen wont giveup window handle once SetParent() is called.
         /// </summary>
@@ -166,7 +218,7 @@ namespace livelywpf
         }
 
         /// <summary>
-        /// Force redraw desktop, clears wp persisting on screen even after close.
+        /// Force redraw desktop - clears wallpaper persisting on screen even after close.
         /// </summary>
         private static void RefreshDesktop()
         {
@@ -177,7 +229,7 @@ namespace livelywpf
         /// <summary>
         /// Adds the wp as child of spawned desktop-workerw window.
         /// </summary>
-        /// <param name="windowHandle">handle of wp</param>
+        /// <param name="windowHandle">handle of window</param>
         private static void SetParentWorkerW(IntPtr windowHandle)
         {
             if (System.Environment.OSVersion.Version.Major == 6 && System.Environment.OSVersion.Version.Minor == 1) //windows 7

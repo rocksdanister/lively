@@ -6,7 +6,7 @@
         xmlns:xamlHost="clr-namespace:Microsoft.Toolkit.Wpf.UI.XamlHost;assembly=Microsoft.Toolkit.Wpf.UI.XamlHost"
         
         ShowInTaskbar="False"
-        WindowState="Maximized"
+        WindowState="Normal"
         ResizeMode="NoResize"
         WindowStyle="None"
         mc:Ignorable="d"

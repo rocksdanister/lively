@@ -27,9 +27,7 @@ namespace livelywpf
         public MainWindow()
         {
             InitializeComponent();
-            //SetupDesktop.SetWallpaper();
         }
-
 
         private void MyNavView_ChildChanged(object sender, EventArgs e)
         {
@@ -52,6 +50,7 @@ namespace livelywpf
 
                 navView.SelectedItem = navView.MenuItems.ElementAt(0);
                 ContentFrame.Navigate(typeof(livelywpf.Views.LibraryView), new Uri("Views/LibraryView.xaml", UriKind.Relative), new SuppressNavigationTransitionInfo());
+
             }
         }
 
