@@ -135,6 +135,16 @@ namespace livelywpf.Core
     #region web browsers
     public class WebProcess : IWallpaper
     {
+        public WebProcess(Process proc, IntPtr hwnd, LibraryModel model = null)
+        {
+            this.HWND = hwnd;
+            this.Proc = proc;
+            this.Model = model;
+        }
+        IntPtr HWND { get; set; }
+        Process Proc { get; set; }
+        LibraryModel Model { get; set; }
+
         public void Close()
         {
             throw new NotImplementedException();
@@ -142,22 +152,22 @@ namespace livelywpf.Core
 
         public IntPtr GetHWND()
         {
-            throw new NotImplementedException();
+            return HWND;
         }
 
         public Process GetProcess()
         {
-            throw new NotImplementedException();
+            return Proc;
         }
 
         public LibraryModel GetWallpaperData()
         {
-            throw new NotImplementedException();
+            return Model;
         }
 
         public WallpaperType GetWallpaperType()
         {
-            throw new NotImplementedException();
+            return Model.LivelyInfo.Type;
         }
 
         public void Pause()
@@ -172,7 +182,7 @@ namespace livelywpf.Core
 
         public void SetHWND(IntPtr hwnd)
         {
-            throw new NotImplementedException();
+            this.HWND = hwnd;
         }
 
         public void Stop()
@@ -182,4 +192,83 @@ namespace livelywpf.Core
     }
 
     #endregion web browsers
+
+    #region program wallpapers
+    public class ExtPrograms : IWallpaper
+    {
+        public ExtPrograms(Process proc, IntPtr hwnd, LibraryModel model = null)
+        {
+            this.HWND = hwnd;
+            this.Proc = proc;
+            this.Model = model;
+            SuspendCnt = 0;
+        }
+        IntPtr HWND { get; set; }
+        Process Proc { get; set; }
+        LibraryModel Model { get; set; }
+        public UInt32 SuspendCnt { get; set; }
+        public void Close()
+        {
+            try
+            {
+                Proc.Kill();
+                Proc.Close();
+            }
+            catch { }
+        }
+
+        public IntPtr GetHWND()
+        {
+            return HWND;
+        }
+
+        public Process GetProcess()
+        {
+            return Proc;
+        }
+
+        public LibraryModel GetWallpaperData()
+        {
+            return Model;
+        }
+
+        public WallpaperType GetWallpaperType()
+        {
+            return Model.LivelyInfo.Type;
+        }
+
+        public void Pause()
+        {
+            try
+            {
+                ProcessSuspend.SuspendAllThreads(this);
+                //thread buggy noise otherwise?!
+                VolumeMixer.SetApplicationMute(Proc.Id, true);
+            }
+            catch { }
+        }
+
+        public void Play()
+        {
+            try
+            {
+                ProcessSuspend.ResumeAllThreads(this);
+                //thread buggy noise otherwise?!
+                VolumeMixer.SetApplicationMute(Proc.Id, false);
+            }
+            catch { }
+        }
+
+        public void SetHWND(IntPtr hwnd)
+        {
+            HWND = hwnd;
+        }
+
+        public void Stop()
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    #endregion progarm wallpapers
 }

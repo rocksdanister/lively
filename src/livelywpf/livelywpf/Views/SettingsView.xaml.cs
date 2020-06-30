@@ -25,7 +25,6 @@ namespace livelywpf.Views
             InitializeComponent();
             //SettingsViewModel vm = new SettingsViewModel();
             this.DataContext = Program.SettingsVM;
-            SetupDesktop.SetWallpaper();
         }
 
         private void SettingsPageHost_ChildChanged(object sender, EventArgs e)

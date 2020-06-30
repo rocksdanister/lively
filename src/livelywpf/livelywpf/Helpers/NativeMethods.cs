@@ -12,6 +12,10 @@ namespace livelywpf
 #pragma warning disable CA1707, CA1401, CA1712
     public static class NativeMethods
     {
+
+        [DllImport("user32.dll")]
+        public static extern int GetClassName(int hWnd, StringBuilder lpClassName, int nMaxCount);
+
         #region windows message
 
         [DllImport("User32.dll", EntryPoint = "PostMessageW", CallingConvention = CallingConvention.Winapi

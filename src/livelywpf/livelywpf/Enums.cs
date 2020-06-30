@@ -30,7 +30,7 @@ namespace livelywpf
         [Description("Video Streams")]
         videostream
     }
-
+    
     public enum EngineState
     {
         [Description("All Wallpapers Paused")]
