@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
@@ -85,7 +86,7 @@ namespace livelywpf
             get { return _filePath; }
             set
             {
-                if (File.Exists(_filePath))
+                if (File.Exists(value))
                 {
                     _filePath = value;
                 }

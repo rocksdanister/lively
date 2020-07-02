@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 using System.Windows.Input;
 
 namespace livelywpf
@@ -24,6 +25,18 @@ namespace livelywpf
             {
                 LibraryItems.Add(item);
             }
+
+            //testing
+            /*
+            foreach (var item in LibraryItems)
+            {
+                if(item.LivelyInfo.Type == WallpaperType.web)
+                {
+                    SetupDesktop.SetWallpaper(item, Screen.PrimaryScreen);
+                    break;
+                }
+            }
+            */
         }
 
         private ObservableCollection<LibraryModel> _libraryItems = new ObservableCollection<LibraryModel>();

@@ -17,7 +17,10 @@ namespace livelywpf
         protected override void OnStartup(StartupEventArgs e)
         {
             AppWindow = new MainWindow();
+            //uwp root app needs this it seems.. is it possible to skip?
             AppWindow.Show();
+            AppWindow.Hide();
+
             base.OnStartup(e);
         }
     }

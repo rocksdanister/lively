@@ -139,3 +139,4 @@ You can always help development by buying me a cup of coffee(paypal):
 ## License
 TBD
 
+(For working build check v0.9.6.0 branch.)

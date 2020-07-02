@@ -7,7 +7,6 @@ namespace livelywpf
 {
     class Systray : IDisposable
     {
-        private System.Windows.Forms.ContextMenuStrip trayMenu = new System.Windows.Forms.ContextMenuStrip();
         private System.Windows.Forms.NotifyIcon _notifyIcon = new System.Windows.Forms.NotifyIcon();
         public Systray()
         {
@@ -17,20 +16,22 @@ namespace livelywpf
             tt.IsOpen = true;
             tt.IsOpen = false;
 
-            ///notifyIcon = new System.Windows.Forms.NotifyIcon();
-            //_notifyIcon.DoubleClick += (s, args) => ShowMainWindow();
+            _notifyIcon.DoubleClick += (s, args) => Program.ShowMainWindow();
             _notifyIcon.Icon = Properties.Icons.appicon;
             _notifyIcon.Text = "Lively Wallpaper";
 
             CreateContextMenu();
-            _notifyIcon.ContextMenuStrip = trayMenu;
             _notifyIcon.Visible = true;
             
         }
 
         private void CreateContextMenu()
         {
+            _notifyIcon.ContextMenuStrip =
+             new System.Windows.Forms.ContextMenuStrip();
 
+            _notifyIcon.ContextMenuStrip.Items.Add("Open Lively", Properties.Icons.icons8_home_page_961).Click += (s, e) => Program.ShowMainWindow();
+            _notifyIcon.ContextMenuStrip.Items.Add("Exit", Properties.Icons.icons8_close_window_961).Click += (s, e) => Program.ExitApplication();
         }
 
         public void Dispose()

@@ -16,6 +16,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Media.TextFormatting;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Windows.UI.Xaml.Controls;
@@ -27,6 +28,8 @@ namespace livelywpf
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static bool _isExit = false;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -94,5 +97,17 @@ namespace livelywpf
             return item;
         }
 
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!_isExit)
+            {
+                e.Cancel = true;
+                this.Hide();
+            }
+            else
+            {
+                //todo
+            }
+        }
     }
 }

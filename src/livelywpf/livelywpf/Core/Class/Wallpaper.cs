@@ -168,7 +168,13 @@ namespace livelywpf.Core
 
         public void Close()
         {
-            throw new NotImplementedException();
+            //todo: send close msg through ipc instead.
+            try
+            {
+                Proc.Kill();
+                Proc.Close();
+            }
+            catch { }
         }
 
         public IntPtr GetHWND()

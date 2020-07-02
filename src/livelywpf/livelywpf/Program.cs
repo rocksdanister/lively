@@ -52,9 +52,10 @@ namespace livelywpf
             }
         }
 
+        private static Systray sysTray;
         private static void App_Startup(object sender, StartupEventArgs e)
         {
-            Systray sys = new Systray();
+            sysTray = new Systray();
         }
 
         private static void App_SessionEnding(object sender, SessionEndingCancelEventArgs e)
@@ -63,9 +64,27 @@ namespace livelywpf
             {
                 //delay shutdown till lively close properly.
                 e.Cancel = true;
-                System.Windows.Application.Current.Shutdown();
+                ExitApplication();
             }
         }
 
+        public static void ShowMainWindow()
+        {
+            if (App.AppWindow != null)
+                App.AppWindow.Show();
+        }
+
+        public static void ExitApplication()
+        {
+            MainWindow._isExit = true;
+            SetupDesktop.CloseAllWallpapers();
+            if (sysTray != null)
+            {
+                sysTray.Dispose();
+            }
+            SetupDesktop.RefreshDesktop();
+
+            System.Windows.Application.Current.Shutdown();
+        }
     }
 }

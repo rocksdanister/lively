@@ -24,7 +24,7 @@ namespace livelywpf
         {
             if (SystemInformation.HighContrast)
             {
-                Logger.Error("Failed to setup, high contrast mode!");
+                Logger.Error("Failed to setup workers, high contrast mode!");
                 return;
             }
             else if (!_isInitialized)
@@ -89,83 +89,96 @@ namespace livelywpf
                 }
             }
 
-            Process process;
-            switch (wp.LivelyInfo.Type)
+            if( wp.LivelyInfo.Type == WallpaperType.web || wp.LivelyInfo.Type == WallpaperType.webaudio || wp.LivelyInfo.Type == WallpaperType.url)
             {
-                case WallpaperType.app:
-                    ProcessStartInfo startInfo;
-                    startInfo = new ProcessStartInfo
-                    {
-                        FileName = wp.FilePath,
-                        UseShellExecute = false,
-                        WorkingDirectory = System.IO.Path.GetDirectoryName(wp.FilePath),
-                        Arguments = wp.LivelyInfo.Arguments,
-                    };
-                    break;
-                case WallpaperType.videostream:
-                    break;
-                case WallpaperType.web:
-                    process = LaunchCefSharpPgm("--url " + "\"" + wp.FilePath + "\"" + " --type local" + " --display " + "\"" + Screen.PrimaryScreen + "\"" +
-                                                  " --property " + "\"" + System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Lively Wallpaper", "SaveData", "wpdata") + "\"");
-                    Wallpapers.Add(new WebProcess(process, IntPtr.Zero, wp, targetDisplay));
-                    break;
-                case WallpaperType.webaudio:
-                    process = LaunchCefSharpPgm("--url " + "\"" + wp.FilePath + "\"" + " --type local" + " --display " + "\"" + Screen.PrimaryScreen + "\"" + " --audio true" +
-                              " --property " + "\"" + System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Lively Wallpaper", "SaveData", "wpdata") + "\"");
-                    Wallpapers.Add(new WebProcess(process, IntPtr.Zero, wp, targetDisplay));
-                    break;
-                case WallpaperType.url:
-                    process = LaunchCefSharpPgm("--url " + "\"" + wp.FilePath + "\"" + " --type online" + " --display " + "\"" + Screen.PrimaryScreen + "\"");
-                    Wallpapers.Add(new WebProcess(process, IntPtr.Zero, wp, targetDisplay));
-                    break;
-                case WallpaperType.bizhawk:
-                    break;
-                case WallpaperType.unity:
-                    break;
-                case WallpaperType.godot:
-                    break;
-                case WallpaperType.video:
-                    break;
-                case WallpaperType.gif:
-                    break;
-                case WallpaperType.unityaudio:
-                    break;
-                default:
-                    break;
+                string cmdArgs;
+                if (wp.LivelyInfo.Type == WallpaperType.web)
+                {
+                    cmdArgs = "--url " + "\"" + wp.FilePath + "\"" + " --type local" + " --display " + "\"" + targetDisplay.DeviceName + "\"" +
+                                  " --property " + "\"" + System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Lively Wallpaper", "SaveData", "wpdata") + "\"";
+                }
+                else if(wp.LivelyInfo.Type == WallpaperType.webaudio)
+                {
+                    cmdArgs = "--url " + "\"" + wp.FilePath + "\"" + " --type local" + " --display " + "\"" + targetDisplay.DeviceName + "\"" + " --audio true" +
+                          " --property " + "\"" + System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Lively Wallpaper", "SaveData", "wpdata") + "\"";
+                }
+                else
+                {
+                    cmdArgs = "--url " + "\"" + wp.FilePath + "\"" + " --type online" + " --display " + "\"" + targetDisplay.DeviceName + "\"";
+                }
+
+                ProcessStartInfo start = new ProcessStartInfo
+                {
+                    Arguments = cmdArgs,
+                    FileName = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Lively Wallpaper", "external", "cef", "LivelyCefSharp.exe"),
+                    RedirectStandardInput = true,
+                    RedirectStandardOutput = true,
+                    UseShellExecute = false,
+                    WorkingDirectory = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Lively Wallpaper", "external", "cef")
+                };
+
+                Process webProcess = new Process
+                {
+                    StartInfo = start,
+                    EnableRaisingEvents = true
+                };
+                webProcess.OutputDataReceived += WebProcess_OutputDataReceived;
+
+                Wallpapers.Add(new WebProcess(webProcess, IntPtr.Zero, wp, targetDisplay));
+                webProcess.Start();
+                //webProcess.Exited += WebProcess_Exited; //todo: see closeallwallpapers()
+                webProcess.BeginOutputReadLine();
             }
-            
-            //test
-            /*
-            IntPtr handle = new IntPtr();
-            GIFViewUWP uwpGIF = new GIFViewUWP(@"C:\Users\rocks\Documents\GIFS\ranger.gif");
-            uwpGIF.Show();
-            handle = new WindowInteropHelper(uwpGIF).Handle;
-            Wallpapers.Add(new GIFPlayerUWP(uwpGIF,handle, null));
-            
-            WindowOperations.BorderlessWinStyle(Wallpapers[0].GetHWND());
-            WindowOperations.RemoveWindowFromTaskbar(Wallpapers[0].GetHWND());
-            AddWallpaper(Wallpapers[0], Screen.PrimaryScreen);
-            */
+            else if(wp.LivelyInfo.Type == WallpaperType.video)
+            {
+
+            }
+            else if(wp.LivelyInfo.Type == WallpaperType.gif)
+            {
+
+            }
         }
 
-        private static Process LaunchCefSharpPgm(string startArgs)
+        /// <summary>
+        /// Calculates the position of window w.r.t parent workerw handle & sets it as child window to it.
+        /// </summary>
+        /// <param name="handle">window handle of process to add as wallpaper</param>
+        /// <param name="display">displaystring of display to sent wp to.</param>
+        private static async void AddWallpaper(IWallpaper wp)
         {
-            ProcessStartInfo start = new ProcessStartInfo();
-            start.Arguments = startArgs;
-            start.FileName = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Lively Wallpaper", "external", "cef", "LivelyCefSharp.exe");
-            start.RedirectStandardInput = true;
-            start.RedirectStandardOutput = true;
-            start.UseShellExecute = false;
-            start.WorkingDirectory = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Lively Wallpaper", "external", "cef");
+            NativeMethods.RECT prct = new NativeMethods.RECT();
+            NativeMethods.POINT topLeft;
+            //StaticPinvoke.POINT bottomRight;
+            IntPtr handle = wp.GetHWND();
+            Screen targetDisplay = wp.GetScreen();
+            Logger.Info("Sending WP -> " + targetDisplay);
 
-            Process webProcess = new Process();
-            webProcess = Process.Start(start);
-            webProcess.EnableRaisingEvents = true;
-            webProcess.OutputDataReceived += WebProcess_OutputDataReceived;
-            //webProcess.Exited += WebProcess_Exited; //todo: see closeallwallpapers()
-            webProcess.BeginOutputReadLine();
+            if (!NativeMethods.SetWindowPos(handle, 1, targetDisplay.Bounds.X, targetDisplay.Bounds.Y, (targetDisplay.Bounds.Width), (targetDisplay.Bounds.Height), 0 | 0x0010))
+            {
+                NLogger.LogWin32Error("setwindowpos(2) fail AddWallpaper(),");
+            }
 
-            return webProcess;
+            //ScreentoClient is no longer used, this supports windows mirrored mode also, calculate new relative position of window w.r.t parent.
+            NativeMethods.MapWindowPoints(handle, workerw, ref prct, 2);
+
+            SetParentWorkerW(handle);
+            //Position the wp window relative to the new parent window(workerw).
+            if (!NativeMethods.SetWindowPos(handle, 1, prct.Left, prct.Top, (targetDisplay.Bounds.Width), (targetDisplay.Bounds.Height), 0 | 0x0010))
+            {
+                NLogger.LogWin32Error("setwindowpos(3) fail addwallpaper(),");
+            }
+
+            #region logging
+            NativeMethods.GetWindowRect(handle, out prct);
+            Logger.Info("Relative Coordinates of WP -> " + prct.Left + " " + prct.Right + " " + targetDisplay.Bounds.Width + " " + targetDisplay.Bounds.Height);
+            topLeft.X = prct.Left;
+            topLeft.Y = prct.Top;
+            NativeMethods.ScreenToClient(workerw, ref topLeft);
+            Logger.Info("Coordinate wrt to screen ->" + topLeft.X + " " + topLeft.Y + " " + targetDisplay.Bounds.Width + " " + targetDisplay.Bounds.Height);
+            #endregion logging.
+
+            SetFocus(true);
+            RefreshDesktop();
         }
 
         private static void WebProcess_OutputDataReceived(object sender, DataReceivedEventArgs e)
@@ -200,71 +213,13 @@ namespace livelywpf
                     }
 
                     webBrowser.SetHWND(handle);
-                    //AddWallpaper(webBrowser, Screen.PrimaryScreen);
-                    /*
-                    //layout data is only used for drag & drop files, to create preview screen. 
-                    AddWallpaper(handle, new WallpaperLayout()
-                    {
-                        DeviceName = webBrowser.DisplayID,
-                        FilePath = webBrowser.FilePath,
-                        Arguments = null,
-                        Type = webBrowser.Type
-                    }, webBrowser.ShowPreviewWindow);
-                    */
+                    AddWallpaper(webBrowser);
                 }
             }
             catch (Exception ex)
             {
-                Logger.Error("cef-error: "+ex.ToString());
+                Logger.Error("cef-error: " + ex.ToString());
             }
-        }
-
-        /// <summary>
-        /// Calculates the position of window w.r.t parent workerw handle & sets it as child window to it.
-        /// </summary>
-        /// <param name="handle">window handle of process to add as wallpaper</param>
-        /// <param name="display">displaystring of display to sent wp to.</param>
-        private static async void AddWallpaper(IWallpaper wp, Screen display)
-        {
-            foreach (var displayItem in Screen.AllScreens)
-            {
-                if (display == displayItem)
-                {
-                    NativeMethods.RECT prct = new NativeMethods.RECT();
-                    NativeMethods.POINT topLeft;
-                    //StaticPinvoke.POINT bottomRight;
-                    IntPtr handle = wp.GetHWND();
-
-                    Logger.Info("Sending WP -> " + displayItem);
-                    if (!NativeMethods.SetWindowPos(handle, 1, displayItem.Bounds.X, displayItem.Bounds.Y, (displayItem.Bounds.Width), (displayItem.Bounds.Height), 0 | 0x0010))
-                    {
-                        NLogger.LogWin32Error("setwindowpos(2) fail AddWallpaper(),");
-                    }
-
-                    //ScreentoClient is no longer used, this supports windows mirrored mode also, calculate new relative position of window w.r.t parent.
-                    NativeMethods.MapWindowPoints(handle, workerw, ref prct, 2);
-
-                    SetParentWorkerW(handle);
-                    //Position the wp window relative to the new parent window(workerw).
-                    if (!NativeMethods.SetWindowPos(handle, 1, prct.Left, prct.Top, (displayItem.Bounds.Width), (displayItem.Bounds.Height), 0 | 0x0010))
-                    {
-                        NLogger.LogWin32Error("setwindowpos(3) fail addwallpaper(),");
-                    }
-
-                    #region logging
-                    NativeMethods.GetWindowRect(handle, out prct);
-                    Logger.Info("Relative Coordinates of WP -> " + prct.Left + " " + prct.Right + " " + displayItem.Bounds.Width + " " + displayItem.Bounds.Height);
-                    topLeft.X = prct.Left;
-                    topLeft.Y = prct.Top;
-                    NativeMethods.ScreenToClient(workerw, ref topLeft);
-                    Logger.Info("Coordinate wrt to screen ->" + topLeft.X + " " + topLeft.Y + " " + displayItem.Bounds.Width + " " + displayItem.Bounds.Height);
-                    #endregion logging.
-                    break;
-                }
-            }
-
-            SetFocus(true);
-            RefreshDesktop();
         }
 
         public static void CloseAllWallpapers()
@@ -281,6 +236,26 @@ namespace livelywpf
                     x.Close();             
             });
             Wallpapers.RemoveAll(x => x.GetWallpaperType() == type);
+        }
+
+        public static void CloseWallpaper(Screen display)
+        {
+            Wallpapers.ForEach(x =>
+            {
+                if (x.GetScreen() == display)
+                    x.Close();
+            });
+            Wallpapers.RemoveAll(x => x.GetScreen() == display);
+        }
+
+        public static void CloseWallpaper(LibraryModel wp)
+        {
+            Wallpapers.ForEach(x =>
+            {
+                if (x.GetWallpaperData() == wp)
+                    x.Close();
+            });
+            Wallpapers.RemoveAll(x => x.GetWallpaperData() == wp);
         }
 
         /// <summary>
@@ -306,7 +281,7 @@ namespace livelywpf
         /// <summary>
         /// Force redraw desktop - clears wallpaper persisting on screen even after close.
         /// </summary>
-        private static void RefreshDesktop()
+        public static void RefreshDesktop()
         {
             //todo:- right now I'm just telling windows to change wallpaper with a null value of zero size, there has to be a PROPER way to do this.
             NativeMethods.SystemParametersInfo(NativeMethods.SPI_SETDESKWALLPAPER, 0, null, NativeMethods.SPIF_UPDATEINIFILE);
