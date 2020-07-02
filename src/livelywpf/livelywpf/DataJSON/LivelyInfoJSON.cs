@@ -14,7 +14,7 @@ namespace livelywpf
         /// Save lively wallpaper metadata file on disk.
         /// </summary>
         /// <param name="data">livelyinfo data</param>
-        /// <param name="filePath">livelyinfo.json filepath</param>
+        /// <param name="filePath">Save filepath</param>
         public static void SaveWallpaperMetaData(LivelyInfoModel data, string filePath) 
         {
             JsonSerializer serializer = new JsonSerializer

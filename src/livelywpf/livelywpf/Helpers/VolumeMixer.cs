@@ -5,7 +5,7 @@ using System.Text;
 
 namespace livelywpf
 {
-    //credit: https://stackoverflow.com/questions/14306048/controlling-volume-mixer
+    //ref: https://stackoverflow.com/questions/14306048/controlling-volume-mixer
     public class VolumeMixer
     {
         public static float? GetApplicationVolume(int pid)

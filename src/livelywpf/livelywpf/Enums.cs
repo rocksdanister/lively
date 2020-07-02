@@ -103,4 +103,9 @@ namespace livelywpf
         mousekeyboard,
     }
 
+    public enum DisplayIdentificationMode
+    {
+        screenClass,
+        screenLayout
+    }
 }

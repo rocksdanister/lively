@@ -190,7 +190,12 @@ namespace livelywpf
         
         private void ShowApplicationRulesWindow()
         {
-            MessageBox.Show("application rules");
+            ApplicationRulesView app = new ApplicationRulesView
+            {
+                WindowStartupLocation = WindowStartupLocation.CenterOwner,
+                Owner = App.AppWindow,
+            };
+            app.ShowDialog();
         }
 
         private int _selectedAppFullScreenIndex;

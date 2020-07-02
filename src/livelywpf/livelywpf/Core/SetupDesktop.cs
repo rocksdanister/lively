@@ -88,7 +88,7 @@ namespace livelywpf
                     _isInitialized = true;
                 }
             }
-            
+
             Process process;
             switch (wp.LivelyInfo.Type)
             {
@@ -107,16 +107,16 @@ namespace livelywpf
                 case WallpaperType.web:
                     process = LaunchCefSharpPgm("--url " + "\"" + wp.FilePath + "\"" + " --type local" + " --display " + "\"" + Screen.PrimaryScreen + "\"" +
                                                   " --property " + "\"" + System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Lively Wallpaper", "SaveData", "wpdata") + "\"");
-                    Wallpapers.Add(new WebProcess(process, IntPtr.Zero, wp));
+                    Wallpapers.Add(new WebProcess(process, IntPtr.Zero, wp, targetDisplay));
                     break;
                 case WallpaperType.webaudio:
                     process = LaunchCefSharpPgm("--url " + "\"" + wp.FilePath + "\"" + " --type local" + " --display " + "\"" + Screen.PrimaryScreen + "\"" + " --audio true" +
                               " --property " + "\"" + System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Lively Wallpaper", "SaveData", "wpdata") + "\"");
-                    Wallpapers.Add(new WebProcess(process, IntPtr.Zero, wp));
+                    Wallpapers.Add(new WebProcess(process, IntPtr.Zero, wp, targetDisplay));
                     break;
                 case WallpaperType.url:
                     process = LaunchCefSharpPgm("--url " + "\"" + wp.FilePath + "\"" + " --type online" + " --display " + "\"" + Screen.PrimaryScreen + "\"");
-                    Wallpapers.Add(new WebProcess(process, IntPtr.Zero, wp));
+                    Wallpapers.Add(new WebProcess(process, IntPtr.Zero, wp, targetDisplay));
                     break;
                 case WallpaperType.bizhawk:
                     break;
@@ -133,7 +133,7 @@ namespace livelywpf
                 default:
                     break;
             }
-
+            
             //test
             /*
             IntPtr handle = new IntPtr();

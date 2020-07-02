@@ -1,9 +1,12 @@
-﻿using Microsoft.Toolkit.Wpf.UI.XamlHost;
+﻿using livelywpf.Core;
+using livelywpf.Views;
+using Microsoft.Toolkit.Wpf.UI.XamlHost;
 using ModernWpf.Media.Animation;
 using NLog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel.Channels;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;

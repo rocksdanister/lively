@@ -3,7 +3,7 @@
         ui:WindowHelper.UseModernWindowStyle="True"
         ui:TitleBar.ExtendViewIntoTitleBar="True"
         ui:ThemeManager.IsThemeAware="True"
-
+        
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -11,7 +11,7 @@
         xmlns:xamlHost="clr-namespace:Microsoft.Toolkit.Wpf.UI.XamlHost;assembly=Microsoft.Toolkit.Wpf.UI.XamlHost"
         xmlns:local="clr-namespace:livelywpf"
         mc:Ignorable="d"
-        Height="720" Width="1200"
+        Height="750" Width="1200"
         Title="Lively"
         >
     <Grid>
@@ -19,8 +19,8 @@
             <ColumnDefinition Width="50" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        
-        <TextBlock Grid.Column="1">Lively Wallpaper</TextBlock>
+
+        <TextBlock Grid.Column="1" FontSize="12" Margin="0,10,0,0">Lively Wallpaper</TextBlock>
         <!-- Looks like its based on old version, using native uwp control instead-->
         <!--<ui:NavigationView IsBackButtonVisible="Collapsed" />-->
         <xamlHost:WindowsXamlHost Grid.Column="0" x:Name="MyNavView" InitialTypeName="Windows.UI.Xaml.Controls.NavigationView" ChildChanged="MyNavView_ChildChanged"/>

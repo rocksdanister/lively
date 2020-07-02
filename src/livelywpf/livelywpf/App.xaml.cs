@@ -13,5 +13,12 @@ namespace livelywpf
     /// </summary>
     public partial class App : Application
     {
+        public static MainWindow AppWindow { get; private set; }
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            AppWindow = new MainWindow();
+            AppWindow.Show();
+            base.OnStartup(e);
+        }
     }
 }

@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Forms;
-using System.Windows.Input;
 using System.Windows.Interop;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Linearstar.Windows.RawInput;
 
 namespace livelywpf.Core
@@ -208,7 +199,7 @@ namespace livelywpf.Core
         /// <returns>Localised cursor value</returns>
         private static Point CalculateMousePos(int x, int y, Screen display)
         {
-            if (Screen.AllScreens.Count() > 0)
+            if (ScreenHelper.IsMultiScreen())
             {
                 if (Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span)
                 {

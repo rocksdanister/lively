@@ -409,6 +409,20 @@ namespace livelywpf
             }
         }
 
+        private DisplayIdentificationMode _displayIdentification;
+        public DisplayIdentificationMode DisplayIdentification
+        {
+            get
+            {
+                return _displayIdentification;
+            }
+            set
+            {
+                _displayIdentification = value;
+                OnPropertyChanged("DisplayIdentification");
+            }
+        }
+
         /*
         //todo need to rewrite audio manager from scratch.
         public bool MuteVideo { get; set; }
@@ -479,6 +493,7 @@ namespace livelywpf
             MouseInputMovAlways = true;
 
             TileSize = 1;
+            DisplayIdentification = DisplayIdentificationMode.screenLayout;
         }
     }
 }

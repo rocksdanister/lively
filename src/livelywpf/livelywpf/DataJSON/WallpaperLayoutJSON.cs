@@ -6,16 +6,16 @@ using System.Text;
 
 namespace livelywpf
 {
-    class ApplicationRulesJSON
+    class WallpaperLayoutJSON
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
         /// <summary>
-        /// Save apprules to disk.
+        /// Save wallpaper arrangement on display to disk.
         /// </summary>
-        /// <param name="data">Apprules list</param>
-        /// <param name="filePath">Save filepath</param>
-        public static void SaveAppRules(List<ApplicationRulesModel> data, string filePath)
+        /// <param name="data"></param>
+        /// <param name="filePath"></param>
+        public static void SaveWallpaperLayout(WallpaperLayoutModel data, string filePath)
         {
             JsonSerializer serializer = new JsonSerializer
             {
@@ -38,18 +38,18 @@ namespace livelywpf
         }
 
         /// <summary>
-        /// Load lively wallpaper metadata file from disk.
+        /// Load wallpaper arrangement on display from disk.
         /// </summary>
-        /// <param name="filePath">livelyinfo.json filepath</param>
-        /// <returns>livelyinfo data</returns>
-        public static List<ApplicationRulesModel> LoadAppRules(string filePath)
+        /// <param name="filePath"></param>
+        /// <returns></returns>
+        public static WallpaperLayoutModel LoadWallpaperLayout(string filePath)
         {
             try
             {
                 using (StreamReader file = File.OpenText(filePath))
                 {
                     JsonSerializer serializer = new JsonSerializer();
-                    var tmp = (List<ApplicationRulesModel>)serializer.Deserialize(file, typeof(List<ApplicationRulesModel>));
+                    var tmp = (WallpaperLayoutModel)serializer.Deserialize(file, typeof(LivelyInfoModel));
 
                     //if file is corrupted, json can return null.
                     if (tmp == null)

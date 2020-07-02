@@ -64,44 +64,66 @@ namespace livelywpf.Core
             catch
             {
                 Logger.Info("(Foreground) Getting processname failure, skipping!");
-                //ignore, admin process etc
+                //ignore - admin process etc
+                PlayWallpapers();
                 return;
             }
 
             if (String.IsNullOrEmpty(fProcess.ProcessName) || fHandle.Equals(IntPtr.Zero))
             {
                 Debug.WriteLine("getting processname failure/handle null, skipping!");
+                PlayWallpapers();
                 return;
             }
-
-            //to-do: loop through app list.
 
             if (fProcess.ProcessName.Equals("livelywpf", StringComparison.OrdinalIgnoreCase) ||  fProcess.ProcessName.Equals("livelycefsharp", StringComparison.OrdinalIgnoreCase)) 
             {
                 PlayWallpapers();
             }
 
-            if (!(fHandle.Equals(NativeMethods.GetDesktopWindow()) || fHandle.Equals(NativeMethods.GetShellWindow())))
+            try
             {
-                if (Program.SettingsVM.Settings.DisplayPauseSettings == DisplayPauseEnum.all) //to-do: if multiscreen true
+                //looping through custom rules for user defined apps.
+                foreach (var item in Program.AppRulesVM.AppRules)
                 {
-                    //win10 and win7 desktop foreground while lively is running.
-                    if(IntPtr.Equals(fHandle, workerWOrig) || IntPtr.Equals(fHandle, progman))
+                    if (String.Equals(item.AppName, fProcess.ProcessName, StringComparison.OrdinalIgnoreCase))
                     {
-                        PlayWallpapers();
+                        if (item.Rule == AppRulesEnum.ignore)
+                        {
+                            PlayWallpapers();
+                            return;
+                        }
+                        else if (item.Rule == AppRulesEnum.pause)
+                        {
+                            PauseWallpapers();
+                            return;
+                        }
                     }
-                    //maximised window or window covering whole screen.
-                    else if(NativeMethods.IsZoomed(fHandle) || IsZoomedCustom(fHandle))
+                }
+
+                if (!(fHandle.Equals(NativeMethods.GetDesktopWindow()) || fHandle.Equals(NativeMethods.GetShellWindow())))
+                {
+                    if (Program.SettingsVM.Settings.DisplayPauseSettings == DisplayPauseEnum.all) //to-do: if multiscreen true
                     {
-                        PauseWallpapers();
-                    }
-                    //window is just in focus, not covering screen.
-                    else
-                    {
-                        PlayWallpapers();
+                        //win10 and win7 desktop foreground while lively is running.
+                        if (IntPtr.Equals(fHandle, workerWOrig) || IntPtr.Equals(fHandle, progman))
+                        {
+                            PlayWallpapers();
+                        }
+                        //maximised window or window covering whole screen.
+                        else if (NativeMethods.IsZoomed(fHandle) || IsZoomedCustom(fHandle))
+                        {
+                            PauseWallpapers();
+                        }
+                        //window is just in focus, not covering screen.
+                        else
+                        {
+                            PlayWallpapers();
+                        }
                     }
                 }
             }
+            catch { }
         }
 
         private static void PauseWallpapers()

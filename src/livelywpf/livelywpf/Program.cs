@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using System.Windows;
@@ -13,6 +14,7 @@ namespace livelywpf
         private static readonly Mutex mutex = new Mutex(false, "LIVELY:DESKTOPWALLPAPERSYSTEM");
 
         public static SettingsViewModel SettingsVM = new SettingsViewModel();
+        public static ApplicationRulesViewModel AppRulesVM = new ApplicationRulesViewModel();
 
         [System.STAThreadAttribute()]
         public static void Main()
@@ -30,7 +32,6 @@ namespace livelywpf
             }
             catch (AbandonedMutexException e)
             {
-                //Note to self:- logger backup(in the even of previous lively crash) is at App() contructor func, DO NOT start writing loghere to avoid overwriting crashlog.
                 System.Diagnostics.Debug.WriteLine(e.Message);
             }
 
@@ -40,6 +41,8 @@ namespace livelywpf
                 {
                     livelywpf.App app = new livelywpf.App();
                     app.InitializeComponent();
+                    app.Startup += App_Startup;
+                    app.SessionEnding += App_SessionEnding;
                     app.Run();
                 }
             }
@@ -48,5 +51,21 @@ namespace livelywpf
                 mutex.ReleaseMutex(); 
             }
         }
+
+        private static void App_Startup(object sender, StartupEventArgs e)
+        {
+            Systray sys = new Systray();
+        }
+
+        private static void App_SessionEnding(object sender, SessionEndingCancelEventArgs e)
+        {
+            if (e.ReasonSessionEnding == ReasonSessionEnding.Shutdown || e.ReasonSessionEnding == ReasonSessionEnding.Logoff)
+            {
+                //delay shutdown till lively close properly.
+                e.Cancel = true;
+                System.Windows.Application.Current.Shutdown();
+            }
+        }
+
     }
 }

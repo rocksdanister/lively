@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
+using System.Windows.Forms;
 
 namespace livelywpf.Core
 {
+    #region interface
     public interface IWallpaper
     {
         WallpaperType GetWallpaperType();
@@ -16,21 +18,26 @@ namespace livelywpf.Core
         void Play();
         void Stop();
         void Close();
+        Screen GetScreen();
     }
+
+    #endregion interface
 
     #region video players
     public class VideoPlayerWPF : IWallpaper
     {
-        public VideoPlayerWPF(MediaElementWPF player, IntPtr hwnd, LibraryModel model = null)
+        public VideoPlayerWPF(MediaElementWPF player, IntPtr hwnd, LibraryModel model, Screen display)
         {
             this.HWND = hwnd;
             this.Player = player;
             this.Model = model;
+            this.Display = display;
         }
 
         IntPtr HWND { get; set; }
         MediaElementWPF Player { get; set; }
         LibraryModel Model { get; set; }
+        Screen Display { get; set; }
         public WallpaperType GetWallpaperType()
         {
             return WallpaperType.video;
@@ -67,6 +74,11 @@ namespace livelywpf.Core
         {
             Player.Close();
         }
+
+        public Screen GetScreen()
+        {
+            return Display;
+        }
     }
 
     #endregion video players
@@ -74,15 +86,17 @@ namespace livelywpf.Core
     #region gif players
     public class GIFPlayerUWP : IWallpaper
     {
-        public GIFPlayerUWP(GIFViewUWP player, IntPtr hwnd, LibraryModel model = null)
+        public GIFPlayerUWP(GIFViewUWP player, IntPtr hwnd, LibraryModel model, Screen display)
         {
             this.HWND = hwnd;
             this.Player = player;
             this.Model = model;
+            this.Display = display;
         }
         IntPtr HWND { get; set; }
         GIFViewUWP Player { get; set; }
         LibraryModel Model { get; set; }
+        Screen Display { get; set; }
         public void Close()
         {
             Player.Close();
@@ -96,6 +110,11 @@ namespace livelywpf.Core
         public Process GetProcess()
         {
             throw new NotImplementedException();
+        }
+
+        public Screen GetScreen()
+        {
+            return Display;
         }
 
         public LibraryModel GetWallpaperData()
@@ -135,15 +154,17 @@ namespace livelywpf.Core
     #region web browsers
     public class WebProcess : IWallpaper
     {
-        public WebProcess(Process proc, IntPtr hwnd, LibraryModel model = null)
+        public WebProcess(Process proc, IntPtr hwnd, LibraryModel model, Screen display)
         {
             this.HWND = hwnd;
             this.Proc = proc;
             this.Model = model;
+            this.Display = display;
         }
         IntPtr HWND { get; set; }
         Process Proc { get; set; }
         LibraryModel Model { get; set; }
+        Screen Display { get; set; }
 
         public void Close()
         {
@@ -158,6 +179,11 @@ namespace livelywpf.Core
         public Process GetProcess()
         {
             return Proc;
+        }
+
+        public Screen GetScreen()
+        {
+            return Display;
         }
 
         public LibraryModel GetWallpaperData()
@@ -196,16 +222,18 @@ namespace livelywpf.Core
     #region program wallpapers
     public class ExtPrograms : IWallpaper
     {
-        public ExtPrograms(Process proc, IntPtr hwnd, LibraryModel model = null)
+        public ExtPrograms(Process proc, IntPtr hwnd, LibraryModel model, Screen display)
         {
             this.HWND = hwnd;
             this.Proc = proc;
             this.Model = model;
+            this.Display = display;
             SuspendCnt = 0;
         }
         IntPtr HWND { get; set; }
         Process Proc { get; set; }
         LibraryModel Model { get; set; }
+        Screen Display { get; set; }
         public UInt32 SuspendCnt { get; set; }
         public void Close()
         {
@@ -267,6 +295,11 @@ namespace livelywpf.Core
         public void Stop()
         {
             throw new NotImplementedException();
+        }
+
+        public Screen GetScreen()
+        {
+            return Display;
         }
     }
 
