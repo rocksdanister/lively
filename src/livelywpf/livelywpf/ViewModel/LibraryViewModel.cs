@@ -18,25 +18,13 @@ namespace livelywpf
         {
             string[] wallpaperScanFolders = new string[] {
                 Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Lively Wallpaper", "wallpapers"),
-                Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Lively Wallpaper", "SaveData", "wptmp")
+                //Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Lively Wallpaper", "SaveData", "wptmp")
             };
 
             foreach (var item in ScanWallpaperFolder(wallpaperScanFolders))
             {
                 LibraryItems.Add(item);
             }
-
-            //testing
-            /*
-            foreach (var item in LibraryItems)
-            {
-                if(item.LivelyInfo.Type == WallpaperType.web)
-                {
-                    SetupDesktop.SetWallpaper(item, Screen.PrimaryScreen);
-                    break;
-                }
-            }
-            */
         }
 
         private ObservableCollection<LibraryModel> _libraryItems = new ObservableCollection<LibraryModel>();
@@ -50,6 +38,21 @@ namespace livelywpf
                     _libraryItems = value;
                     OnPropertyChanged("LibraryItems");
                 }
+            }
+        }
+
+        private LibraryModel _selectedItem;
+        public LibraryModel SelectedItem
+        {
+            get
+            {
+                return _selectedItem;
+            }
+            set
+            {
+                _selectedItem = value;
+                SetupDesktop.SetWallpaper(_selectedItem, Screen.PrimaryScreen);
+                OnPropertyChanged("SelectedItem");
             }
         }
 

@@ -168,13 +168,21 @@ namespace livelywpf.Core
 
         public void Close()
         {
-            //todo: send close msg through ipc instead.
+            try
+            {
+                Proc.StandardInput.WriteLine("lively:terminate");
+                Proc.Close();
+            }
+            catch { }
+            /*
+            //force close.
             try
             {
                 Proc.Kill();
                 Proc.Close();
             }
             catch { }
+            */
         }
 
         public IntPtr GetHWND()
@@ -204,12 +212,14 @@ namespace livelywpf.Core
 
         public void Pause()
         {
-            throw new NotImplementedException();
+            //minimize browser.
+            NativeMethods.ShowWindow(HWND, 6); 
         }
 
         public void Play()
         {
-            throw new NotImplementedException();
+            NativeMethods.ShowWindow(HWND, 1); //normal
+            NativeMethods.ShowWindow(HWND, 5); //show
         }
 
         public void SetHWND(IntPtr hwnd)

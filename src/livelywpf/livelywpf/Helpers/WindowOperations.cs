@@ -167,5 +167,24 @@ namespace livelywpf
             NativeMethods.SetWindowLongPtr(new HandleRef(null, handle), (-20), (IntPtr)styleNewWindowExtended);
         }
 
+        public const int GWL_EXSTYLE = -20;
+        public const int WS_EX_LAYERED = 0x80000;
+        public const int LWA_ALPHA = 0x2;
+        public const int LWA_COLORKEY = 0x1;
+
+        /// <summary>
+        /// Set window alpha.
+        /// </summary>
+        /// <param name="Handle"></param>
+        public static void SetWindowTransparency(IntPtr Handle)
+        {
+            var styleCurrentWindowExtended = NativeMethods.GetWindowLongPtr(Handle, (-20));
+            var styleNewWindowExtended =
+                styleCurrentWindowExtended.ToInt64() ^
+                NativeMethods.WindowStyles.WS_EX_LAYERED;
+
+            NativeMethods.SetWindowLongPtr(new HandleRef(null, Handle), GWL_EXSTYLE, (IntPtr)styleNewWindowExtended);
+            NativeMethods.SetLayeredWindowAttributes(Handle, 0, 128, LWA_ALPHA);
+        }
     }
 }

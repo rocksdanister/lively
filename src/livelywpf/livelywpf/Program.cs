@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
@@ -12,6 +13,7 @@ namespace livelywpf
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private static readonly Mutex mutex = new Mutex(false, "LIVELY:DESKTOPWALLPAPERSYSTEM");
+        public static readonly string LivelyDir =  Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Lively Wallpaper");
 
         public static SettingsViewModel SettingsVM = new SettingsViewModel();
         public static ApplicationRulesViewModel AppRulesVM = new ApplicationRulesViewModel();

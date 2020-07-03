@@ -22,6 +22,8 @@ namespace livelywpf
 
         public static async void SetWallpaper(LibraryModel wp, Screen targetDisplay)
         {
+            CloseWallpaper(targetDisplay);
+
             if (SystemInformation.HighContrast)
             {
                 Logger.Error("Failed to setup workers, high contrast mode!");
@@ -207,7 +209,7 @@ namespace livelywpf
 
                     if (IntPtr.Equals(handle, IntPtr.Zero))//unlikely.
                     {
-                        webBrowser.Close();
+                        CloseWallpaper(webBrowser.GetWallpaperData());
                         Logger.Error("cef-error: Error getting webhandle, terminating!.");
                         return;
                     }

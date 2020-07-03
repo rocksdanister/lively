@@ -41,8 +41,8 @@ namespace livelywpf
                         }
                     }
                     break;
-                //ignoring DeviceName which can change during driver update, windows restart etc..
                 case DisplayIdentificationMode.screenLayout:
+                    //ignoring DeviceName which can change during driver update, windows restart etc..
                     foreach (var item in Screen.AllScreens)
                     {
                         if(item.WorkingArea == screen.WorkingArea && item.Bounds == screen.Bounds)
@@ -67,8 +67,8 @@ namespace livelywpf
                         screenStatus = true;
                     }
                     break;
-                //ignoring DeviceName which can change during driver update, windows restart etc..
                 case DisplayIdentificationMode.screenLayout:
+                    //ignoring DeviceName which can change during driver update, windows restart etc..
                     if (screen1.WorkingArea == screen2.WorkingArea && screen1.Bounds == screen2.Bounds)
                     {
                         screenStatus = true;

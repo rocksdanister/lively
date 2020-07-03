@@ -16,6 +16,9 @@ namespace livelywpf
         public static MainWindow AppWindow { get; private set; }
         protected override void OnStartup(StartupEventArgs e)
         {
+            NLogger.SetupNLog();
+            NLogger.LogHardwareInfo();
+
             AppWindow = new MainWindow();
             //uwp root app needs this it seems.. is it possible to skip?
             AppWindow.Show();

@@ -14,6 +14,10 @@ namespace livelywpf
     {
 
         [DllImport("user32.dll")]
+        public static extern bool SetLayeredWindowAttributes(IntPtr hwnd, uint crKey, byte bAlpha, uint dwFlags);
+
+
+        [DllImport("user32.dll")]
         public static extern int GetClassName(int hWnd, StringBuilder lpClassName, int nMaxCount);
 
         #region windows message
