@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:xamlHost="clr-namespace:Microsoft.Toolkit.Wpf.UI.XamlHost;assembly=Microsoft.Toolkit.Wpf.UI.XamlHost"
         
+        WindowStartupLocation="Manual"
+        Left='-9999'
         ShowInTaskbar="False"
         WindowState="Normal"
         ResizeMode="NoResize"

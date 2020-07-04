@@ -31,14 +31,6 @@ namespace livelywpf
         videostream
     }
     
-    public enum EngineState
-    {
-        [Description("All Wallpapers Paused")]
-        paused,
-        [Description("Normal")]
-        normal
-    }
-
     /// <summary>
     /// Per application pause behavior.
     /// </summary>
@@ -107,5 +99,13 @@ namespace livelywpf
     {
         screenClass,
         screenLayout
+    }
+
+    public enum PlaybackState
+    {
+        [Description("All Wallpapers Paused")]
+        paused,
+        [Description("Normal")]
+        play
     }
 }

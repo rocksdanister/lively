@@ -42,11 +42,7 @@ namespace livelywpf
 
         public void Play()
         {
-            if (ApiInformation.IsPropertyPresent("Windows.UI.Xaml.Media.Imaging.BitmapImage", "IsPlaying")
-                && BitMapImg.IsPlaying == true)
-            {
-                BitMapImg.Stop();
-            }
+            BitMapImg.Play();
         }
 
         /// <summary>
@@ -54,7 +50,11 @@ namespace livelywpf
         /// </summary>
         public void Stop()
         {
-            BitMapImg.Play();
+            if (ApiInformation.IsPropertyPresent("Windows.UI.Xaml.Media.Imaging.BitmapImage", "IsPlaying")
+             && BitMapImg.IsPlaying == true)
+            {
+                BitMapImg.Stop();
+            }
         }
 
         /// <summary>

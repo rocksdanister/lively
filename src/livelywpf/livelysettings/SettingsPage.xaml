@@ -59,7 +59,7 @@
                             <ComboBox Header="Other Applications Fullscreen" Margin="0,10,0,0" MinWidth="200" SelectedIndex="{Binding SelectedAppFullScreenIndex, Mode=TwoWay}">
                             <ComboBoxItem>Pause</ComboBoxItem>
                             <ComboBoxItem>Nothing</ComboBoxItem>
-                            <ComboBoxItem>Kill</ComboBoxItem>
+                            <ComboBoxItem IsEnabled="False">Kill</ComboBoxItem>
                             </ComboBox>
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}">
                             Set what to do when you run fullscreen games/applications are in focus.</TextBlock>
@@ -67,7 +67,7 @@
                             <ComboBox Header="Other Applications Focused" Margin="0,10,0,0" MinWidth="200" SelectedIndex="{Binding SelectedAppFocusIndex, Mode=TwoWay}">
                             <ComboBoxItem>Pause</ComboBoxItem>
                             <ComboBoxItem>Nothing</ComboBoxItem>
-                            <ComboBoxItem>Kill</ComboBoxItem>
+                            <ComboBoxItem IsEnabled="False">Kill</ComboBoxItem>
                             </ComboBox>
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}">
                             Set what to do when you any application is in focus.</TextBlock>
@@ -75,7 +75,7 @@
                             <ComboBox Header="When on Battery Power" Margin="0,10,0,0" MinWidth="200" SelectedIndex="{Binding SelectedBatteryPowerIndex, Mode=TwoWay}">
                             <ComboBoxItem>Pause</ComboBoxItem>
                             <ComboBoxItem>Nothing</ComboBoxItem>
-                            <ComboBoxItem>Kill</ComboBoxItem>
+                            <ComboBoxItem IsEnabled="False">Kill</ComboBoxItem>
                             </ComboBox>
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}">
                             Only for portable systems running on battery.</TextBlock>

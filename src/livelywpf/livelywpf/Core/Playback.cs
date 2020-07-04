@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Text;
 using System.Windows.Forms;
+using System.Windows.Threading;
 
 namespace livelywpf.Core
 {
@@ -22,6 +24,8 @@ namespace livelywpf.Core
             "RainmeterMeterWindow"
         };
         static IntPtr workerWOrig, progman;
+        private static PlaybackState wallpaperPlaybackState = PlaybackState.play;
+        private static DispatcherTimer dispatcherTimer = new DispatcherTimer();
 
         public static void Initialize()
         {
@@ -35,6 +39,32 @@ namespace livelywpf.Core
                     workerWOrig = NativeMethods.FindWindowEx(NativeMethods.GetDesktopWindow(), workerWOrig, "WorkerW", null);
                     folderView = NativeMethods.FindWindowEx(workerWOrig, IntPtr.Zero, "SHELLDLL_DefView", null);
                 } while (folderView == IntPtr.Zero && workerWOrig != IntPtr.Zero);
+            }
+            InitializeTimer();
+            dispatcherTimer.Start();
+        }
+
+        private static void InitializeTimer()
+        {
+            dispatcherTimer.Tick += new EventHandler(ProcessMonitor);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, Program.SettingsVM.Settings.ProcessTimerInterval);
+        }
+
+        private static void ProcessMonitor(object sender, EventArgs e)
+        {
+            if (wallpaperPlaybackState == PlaybackState.paused)
+            {
+                PauseWallpapers();
+                return;
+            }
+
+            if (Program.SettingsVM.Settings.ProcessMonitorAlgorithm == ProcessMonitorAlgorithm.foreground)
+            {
+                ForegroundAppMonitor();
+            }
+            else
+            {
+                throw new NotImplementedException();
             }
         }
 
@@ -52,6 +82,7 @@ namespace livelywpf.Core
                     if (String.Equals(item, cName, StringComparison.OrdinalIgnoreCase))
                     {
                         PlayWallpapers();
+                        return;
                     }
                 }
             }
@@ -79,6 +110,7 @@ namespace livelywpf.Core
             if (fProcess.ProcessName.Equals("livelywpf", StringComparison.OrdinalIgnoreCase) ||  fProcess.ProcessName.Equals("livelycefsharp", StringComparison.OrdinalIgnoreCase)) 
             {
                 PlayWallpapers();
+                return;
             }
 
             try
@@ -103,22 +135,88 @@ namespace livelywpf.Core
 
                 if (!(fHandle.Equals(NativeMethods.GetDesktopWindow()) || fHandle.Equals(NativeMethods.GetShellWindow())))
                 {
-                    if (Program.SettingsVM.Settings.DisplayPauseSettings == DisplayPauseEnum.all) //to-do: if multiscreen true
+                    if (!ScreenHelper.IsMultiScreen() || Program.SettingsVM.Settings.DisplayPauseSettings == DisplayPauseEnum.all)
                     {
-                        //win10 and win7 desktop foreground while lively is running.
                         if (IntPtr.Equals(fHandle, workerWOrig) || IntPtr.Equals(fHandle, progman))
                         {
+                            //win10 and win7 desktop foreground while lively is running.
                             PlayWallpapers();
                         }
-                        //maximised window or window covering whole screen.
                         else if (NativeMethods.IsZoomed(fHandle) || IsZoomedCustom(fHandle))
                         {
-                            PauseWallpapers();
+                            //maximised window or window covering whole screen.
+                            if (Program.SettingsVM.Settings.AppFullscreenPause == AppRulesEnum.ignore)
+                                PlayWallpapers();
+                            else
+                                PauseWallpapers();
                         }
-                        //window is just in focus, not covering screen.
                         else
                         {
-                            PlayWallpapers();
+                            //window is just in focus, not covering screen.
+                            if (Program.SettingsVM.Settings.AppFocusPause == AppRulesEnum.pause)
+                                PauseWallpapers();
+                            else
+                                PlayWallpapers();
+                        }
+                    }
+                    else 
+                    {
+                        //multiscreen wp pause algorithm, for per-monitor pause rule.
+                        Screen focusedScreen;
+                        if ((focusedScreen = MapWindowToMonitor(fHandle)) != null)
+                        {
+                            //unpausing the rest of wallpapers.
+                            //this is a limitation of this algorithm since only one window can be foreground!
+                            foreach (var item in ScreenHelper.GetScreen())
+                            {
+                                if (item != focusedScreen)
+                                    PlayWallpaper(item);
+                            }
+                        }
+                        else
+                        {
+                            //no display connected?
+                            return;
+                        }
+
+                        if (IntPtr.Equals(fHandle, workerWOrig) || IntPtr.Equals(fHandle, progman))
+                        {
+                            //win10 and win7 desktop foreground while lively is running.
+                            PlayWallpaper(focusedScreen);
+                        }
+                        else if (Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span)
+                        {
+                            if (IsZoomedSpan(fHandle))
+                            {
+                                PauseWallpaper(Screen.PrimaryScreen);
+                            }
+                            else //window is not greater >90%
+                            {
+                                if (Program.SettingsVM.Settings.AppFocusPause == AppRulesEnum.pause)
+                                {
+                                    PauseWallpaper(Screen.PrimaryScreen);
+                                }
+                                else
+                                {
+                                    PlayWallpaper(Screen.PrimaryScreen);
+                                }
+                            }
+                        }
+                        else if (NativeMethods.IsZoomed(fHandle) || IsZoomedCustom(fHandle))
+                        {
+                            //maximised window or window covering whole screen.
+                            if (Program.SettingsVM.Settings.AppFullscreenPause == AppRulesEnum.ignore)
+                                PlayWallpaper(focusedScreen);
+                            else
+                                PauseWallpaper(focusedScreen);
+                        }
+                        else
+                        {
+                            //window is just in focus, not covering screen.
+                            if (Program.SettingsVM.Settings.AppFocusPause == AppRulesEnum.pause)
+                                PauseWallpaper(focusedScreen);
+                            else
+                                PlayWallpaper(focusedScreen);
                         }
                     }
                 }
@@ -142,12 +240,45 @@ namespace livelywpf.Core
             });
         }
 
+        private static void PauseWallpaper(Screen display)
+        {
+            SetupDesktop.Wallpapers.ForEach(x =>
+            {
+                if(x.GetScreen() == display)
+                    x.Pause();
+            });
+        }
+
+        private static void PlayWallpaper(Screen display)
+        {
+            SetupDesktop.Wallpapers.ForEach(x =>
+            {
+                if (x.GetScreen() == display)
+                    x.Pause();
+            });
+        }
+
         /// <summary>
         /// Checks if hWnd window size is >95% for its running screen.
         /// </summary>
         /// <returns>True if window dimensions are greater.</returns>
         private static bool IsZoomedCustom(IntPtr hWnd)
         {
+            /*
+            try
+            {
+                NativeMethods.GetWindowThreadProcessId(hWnd, out processID);
+                currProcess = Process.GetProcessById(processID);
+            }
+            catch
+            {
+
+                Debug.WriteLine("getting processname failure, skipping isZoomedCustom()");
+                //ignore, admin process etc
+                return false;
+            }
+            */
+
             try
             {
                 System.Drawing.Rectangle screenBounds;
@@ -163,6 +294,56 @@ namespace livelywpf.Core
             catch { 
                 return false; 
             }
+        }
+
+        /// <summary>
+        /// Finds out which displaydevice the given application is residing.
+        /// </summary>
+        /// <param name="handle"></param>
+        /// <returns></returns>
+        private static Screen MapWindowToMonitor(IntPtr handle)
+        {
+            try
+            {
+                var screen = System.Windows.Forms.Screen.FromHandle(handle);
+                return screen;
+            }
+            catch
+            {
+                //what if there is no display connected? idk.
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Checks if the hWnd dimension is spanned across all displays.
+        /// </summary>
+        /// <param name="hWnd"></param>
+        /// <returns></returns>
+        private static bool IsZoomedSpan(IntPtr hWnd)
+        {
+            NativeMethods.RECT appBounds;
+            NativeMethods.GetWindowRect(hWnd, out appBounds);
+            // If foreground app 95% working-area( - taskbar of monitor)
+            if ((appBounds.Bottom - appBounds.Top) >= SystemInformation.VirtualScreen.Height * .95f &&
+                (appBounds.Right - appBounds.Left) >= SystemInformation.VirtualScreen.Width * .95f) 
+                return true;
+            else
+                return false;
+        }
+
+        /// <summary>
+        /// Sets a wallpaper temporary play/pause behavior that does not persist when application restart.
+        /// </summary>
+        /// <param name="state"></param>
+        public static void SetWallpaperPlaybackState(PlaybackState state)
+        {
+            wallpaperPlaybackState = state;
+        }
+
+        public static PlaybackState GetWallpaperPlaybackState()
+        {
+            return wallpaperPlaybackState;
         }
 
         /// <summary>

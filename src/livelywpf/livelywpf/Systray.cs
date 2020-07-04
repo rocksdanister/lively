@@ -1,4 +1,5 @@
-﻿using System;
+﻿using livelywpf.Core;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Controls;
@@ -25,13 +26,34 @@ namespace livelywpf
             
         }
 
+        private static System.Windows.Forms.ToolStripMenuItem pauseTrayBtn;
         private void CreateContextMenu()
         {
             _notifyIcon.ContextMenuStrip =
              new System.Windows.Forms.ContextMenuStrip();
 
             _notifyIcon.ContextMenuStrip.Items.Add("Open Lively", Properties.Icons.icons8_home_page_961).Click += (s, e) => Program.ShowMainWindow();
+
+            pauseTrayBtn = new System.Windows.Forms.ToolStripMenuItem("Pause All Wallpapers", null);
+            pauseTrayBtn.Click += (s, e) => ToggleWallpaperPlaybackState();
+            _notifyIcon.ContextMenuStrip.Items.Add(pauseTrayBtn);
+
+            _notifyIcon.ContextMenuStrip.Items.Add("-");
             _notifyIcon.ContextMenuStrip.Items.Add("Exit", Properties.Icons.icons8_close_window_961).Click += (s, e) => Program.ExitApplication();
+        }
+
+        private static void ToggleWallpaperPlaybackState()
+        {
+            if(Playback.GetWallpaperPlaybackState() == PlaybackState.play)
+            {
+                Playback.SetWallpaperPlaybackState(PlaybackState.paused);
+                pauseTrayBtn.Checked = true;
+            }
+            else
+            {
+                Playback.SetWallpaperPlaybackState(PlaybackState.play);
+                pauseTrayBtn.Checked = false;
+            }
         }
 
         public void Dispose()

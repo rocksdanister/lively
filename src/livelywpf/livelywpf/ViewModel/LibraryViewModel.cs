@@ -18,7 +18,7 @@ namespace livelywpf
         {
             string[] wallpaperScanFolders = new string[] {
                 Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Lively Wallpaper", "wallpapers"),
-                //Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Lively Wallpaper", "SaveData", "wptmp")
+                Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Lively Wallpaper", "SaveData", "wptmp")
             };
 
             foreach (var item in ScanWallpaperFolder(wallpaperScanFolders))

@@ -22,20 +22,6 @@ namespace livelywpf
                 SettingsJSON.SaveConfig(@"C:\Users\rocks\Documents\GIFS\lively_config.json", Settings);
             }
 
-            SelectedTileSizeIndex = Settings.TileSize;
-
-            var startupStatus = WindowsStartup.CheckStartupRegistry();
-            if (startupStatus)
-            {
-                IsStartup = true;
-            }
-            else
-            {
-                IsStartup = false;
-                //delete the wrong key if any.
-                WindowsStartup.SetStartupRegistry(false);
-            }
-
             //lang-codes: https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-lcid/a9eac961-e77d-41a6-90a5-ce1a8b0cdb9c
             LanguageItems = new ObservableCollection<LanguagesModel>()
             {
@@ -52,6 +38,25 @@ namespace livelywpf
                     new LanguagesModel("portuguesa(pt)", new string[]{"pt"}),
             };
             SelectedLanguageItem = SearchSupportedLanguage(Settings.Language);
+
+            var startupStatus = WindowsStartup.CheckStartupRegistry();
+            if (startupStatus)
+            {
+                IsStartup = true;
+            }
+            else
+            {
+                IsStartup = false;
+                //delete the wrong key if any.
+                WindowsStartup.SetStartupRegistry(false);
+            }
+
+            SelectedTileSizeIndex = Settings.TileSize;
+            SelectedAppFullScreenIndex = (int)Settings.AppFullscreenPause;
+            SelectedAppFocusIndex = (int)Settings.AppFocusPause;
+            SelectedBatteryPowerIndex = (int)Settings.BatteryPause;
+            SelectedDisplayPauseRuleIndex = (int)Settings.DisplayPauseSettings;
+            SelectedPauseAlgorithmIndex = (int)Settings.ProcessMonitorAlgorithm;
         }
 
         private SettingsModel _settings;

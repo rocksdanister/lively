@@ -6,6 +6,8 @@
         mc:Ignorable="d"
         Title="MediaElementWPF" Height="450" Width="800"
         
+        WindowStartupLocation="Manual"
+        Left='-9999'
         WindowStyle="None"
         ResizeMode="NoResize"
         Closing="Window_Closing">
