@@ -12,7 +12,9 @@
         ResizeMode="NoResize"
         WindowStyle="None"
         mc:Ignorable="d"
-        Title="GIFViewUWP" Height="450" Width="800">
+        Title="GIFViewUWP" Height="450" Width="800"
+        Background="#FF2B2B2B">
+    
     <Grid>
         <xamlHost:WindowsXamlHost Grid.Column="0" x:Name="ImageUWP" InitialTypeName="Windows.UI.Xaml.Controls.Image" ChildChanged="ImageUWP_ChildChanged" />
     </Grid>

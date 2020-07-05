@@ -2,10 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Windows.Data;
 using System.Windows.Forms;
 using System.Windows.Input;
 
@@ -41,6 +43,23 @@ namespace livelywpf
             }
         }
 
+        public ICollectionView LibraryItemsFiltered
+        {
+            get { return CollectionViewSource.GetDefaultView(LibraryItems); }
+        }
+
+        private string _searchText;
+        public string SearchText
+        {
+            get { return _searchText; }
+            set
+            {   
+                _searchText = value;
+                FilterCollection(_searchText);
+                OnPropertyChanged("SearchText");
+            }
+        }
+
         private LibraryModel _selectedItem;
         public LibraryModel SelectedItem
         {
@@ -57,6 +76,15 @@ namespace livelywpf
         }
 
         #region helpers
+
+        public void FilterCollection(string str)
+        {
+            if (String.IsNullOrEmpty(str))
+                LibraryItemsFiltered.Filter = null;
+
+            LibraryItemsFiltered.Filter = i => (((LibraryModel)i).LivelyInfo.Title.IndexOf(str, StringComparison.OrdinalIgnoreCase)) > -1;
+            LibraryItemsFiltered.Refresh();
+        }
 
         /// <summary>
         /// Load wallpapers from the given parent folder(), only top directory is scanned.

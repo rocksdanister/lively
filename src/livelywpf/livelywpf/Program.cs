@@ -73,7 +73,10 @@ namespace livelywpf
         public static void ShowMainWindow()
         {
             if (App.AppWindow != null)
+            {
                 App.AppWindow.Show();
+                App.AppWindow.WindowState = WindowState.Normal;
+            }
         }
 
         public static void ExitApplication()

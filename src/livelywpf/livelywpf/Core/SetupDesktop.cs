@@ -102,7 +102,12 @@ namespace livelywpf
             }
             else if(wp.LivelyInfo.Type == WallpaperType.video)
             {
+                /*
                 pendingWallpapers.Add(new VideoPlayerWPF(wp.FilePath, wp, targetDisplay));
+                pendingWallpapers[^1].Show();
+                AddWallpaper(pendingWallpapers[^1]);
+                */
+                pendingWallpapers.Add(new VideoPlayerMPV(wp.FilePath, wp, targetDisplay));
                 pendingWallpapers[^1].Show();
                 AddWallpaper(pendingWallpapers[^1]);
             }
@@ -121,6 +126,15 @@ namespace livelywpf
         /// <param name="display">displaystring of display to sent wp to.</param>
         private static async void AddWallpaper(IWallpaper wp)
         {
+            //close to early, otherwise 2 fullscreen wp running sametime is heavy.
+            var currWallpaper = Wallpapers.Find(x => x.GetScreen() == wp.GetScreen());
+            if (currWallpaper != null)
+            {
+                CloseWallpaper(currWallpaper.GetScreen());
+            }
+            Wallpapers.Add(wp);
+            pendingWallpapers.Remove(wp);
+
             NativeMethods.RECT prct = new NativeMethods.RECT();
             NativeMethods.POINT topLeft;
             //StaticPinvoke.POINT bottomRight;
@@ -143,24 +157,16 @@ namespace livelywpf
                 NLogger.LogWin32Error("setwindowpos(3) fail addwallpaper(),");
             }
 
-            #region logging
+            SetFocus(true);
+            RefreshDesktop();
+
+            //logging.
             NativeMethods.GetWindowRect(handle, out prct);
             Logger.Info("Relative Coordinates of WP -> " + prct.Left + " " + prct.Right + " " + targetDisplay.Bounds.Width + " " + targetDisplay.Bounds.Height);
             topLeft.X = prct.Left;
             topLeft.Y = prct.Top;
             NativeMethods.ScreenToClient(workerw, ref topLeft);
             Logger.Info("Coordinate wrt to screen ->" + topLeft.X + " " + topLeft.Y + " " + targetDisplay.Bounds.Width + " " + targetDisplay.Bounds.Height);
-            #endregion logging.
-
-            var currWallpaper = Wallpapers.Find(x => x.GetScreen() == wp.GetScreen());
-            if(currWallpaper != null)
-                CloseWallpaper(currWallpaper.GetScreen());
-
-            Wallpapers.Add(wp);
-            pendingWallpapers.Remove(wp);
-
-            SetFocus(true);
-            RefreshDesktop();
         }
 
         private static void WebProcess_OutputDataReceived(object sender, DataReceivedEventArgs e)
@@ -246,7 +252,7 @@ namespace livelywpf
         /// </summary>
         private static void SetFocus(bool focusLively = true)
         {
-            System.Windows.Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, new ThreadStart(delegate
+            System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
             {
                 //IntPtr progman = NativeMethods.FindWindow("Progman", null);
                 NativeMethods.SetForegroundWindow(progman); //change focus from the started window//application.

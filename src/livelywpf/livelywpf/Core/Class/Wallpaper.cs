@@ -28,6 +28,75 @@ namespace livelywpf.Core
     #endregion interface
 
     #region video players
+
+    public class VideoPlayerMPV : IWallpaper
+    {
+        public VideoPlayerMPV(string filePath, LibraryModel model, Screen display)
+        {
+            Player = new MPVElement(filePath);
+            this.Model = model;
+            this.Display = display;
+        }
+
+        IntPtr HWND { get; set; }
+        MPVElement Player { get; set; }
+        LibraryModel Model { get; set; }
+        Screen Display { get; set; }
+        public WallpaperType GetWallpaperType()
+        {
+            return WallpaperType.video;
+        }
+        public LibraryModel GetWallpaperData()
+        {
+            return Model;
+        }
+        public IntPtr GetHWND()
+        {
+            return HWND;
+        }
+        public void SetHWND(IntPtr hwnd)
+        {
+            this.HWND = hwnd;
+        }
+        public Process GetProcess()
+        {
+            throw new NotImplementedException();
+        }
+        public void Play()
+        {
+            Player.PlayMedia();
+        }
+        public void Pause()
+        {
+            Player.PausePlayer();
+        }
+        public void Stop()
+        {
+            Player.StopPlayer();
+        }
+        public void Close()
+        {
+            System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
+            {
+                Player.Close();
+            }));
+        }
+
+        public Screen GetScreen()
+        {
+            return Display;
+        }
+
+        public void Show()
+        {
+            if (Player != null)
+            {
+                Player.Show();
+                HWND = new WindowInteropHelper(Player).Handle;
+            }
+        }
+    }
+
     public class VideoPlayerWPF : IWallpaper
     {
         public VideoPlayerWPF(string filePath, LibraryModel model, Screen display)
@@ -75,7 +144,7 @@ namespace livelywpf.Core
         }
         public void Close()
         {
-            System.Windows.Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, new ThreadStart(delegate
+            System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
             {
                 Player.Close();
             }));
@@ -113,7 +182,7 @@ namespace livelywpf.Core
         Screen Display { get; set; }
         public void Close()
         {
-            System.Windows.Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, new ThreadStart(delegate
+            System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
             {
                 Player.Close();
             }));

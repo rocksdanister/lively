@@ -53,7 +53,7 @@
     
     <Grid>
 
-        <GridView x:Name="GridControl" ItemsSource= "{Binding LibraryItems}" ItemTemplate="{StaticResource Normal}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+        <GridView x:Name="GridControl" ItemsSource= "{Binding LibraryItemsFiltered}" ItemTemplate="{StaticResource Normal}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
             <GridView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <ItemsWrapGrid Name="GridWrap" Orientation="Horizontal"/>

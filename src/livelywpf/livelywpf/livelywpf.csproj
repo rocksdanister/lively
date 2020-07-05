@@ -12,12 +12,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DotNetZip" Version="1.13.8" />
     <PackageReference Include="Magick.NET-Q16-x86" Version="7.18.0" />
     <PackageReference Include="Microsoft.Toolkit.Wpf.UI.Controls" Version="6.0.1" />
     <PackageReference Include="Microsoft.Toolkit.Wpf.UI.XamlHost" Version="6.0.1" />
     <PackageReference Include="Microsoft.Windows.Compatibility" Version="3.1.0" />
     <PackageReference Include="ModernWpfUI" Version="0.9.0" />
+    <PackageReference Include="Mpv.NET" Version="1.1.1" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="NLog" Version="4.7.2" />
     <PackageReference Include="Octokit" Version="0.47.0" />

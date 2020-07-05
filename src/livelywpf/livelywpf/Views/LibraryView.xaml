@@ -21,7 +21,7 @@
         <!-- backspace key not working with native suggestbox :/ -->
         <!--<xamlHost:WindowsXamlHost Grid.Column="0" InitialTypeName="Windows.UI.Xaml.Controls.AutoSuggestBox" Margin="0,0,10,0" Width="250" VerticalAlignment="Top" HorizontalAlignment="Right"/>-->
         
-        <ui:AutoSuggestBox Name="LibSuggestBox" Grid.Column="0" Width="225" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0, 15, 5, 0"></ui:AutoSuggestBox>
+        <ui:AutoSuggestBox Name="LibSuggestBox" Grid.Column="0" Width="225" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0, 15, 5, 0" Text="{Binding SearchText, Mode=TwoWay}"></ui:AutoSuggestBox>
         
         <xamlHost:WindowsXamlHost Name="LivelyGrid" Grid.Column="0" InitialTypeName="livelygrid.LivelyGridView" ChildChanged="LivelyGridView_ChildChanged" Margin="0, 60, 0, 0" />
         
