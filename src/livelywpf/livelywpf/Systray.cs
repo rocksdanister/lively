@@ -44,14 +44,14 @@ namespace livelywpf
 
         private static void ToggleWallpaperPlaybackState()
         {
-            if(Playback.GetWallpaperPlaybackState() == PlaybackState.play)
+            if(Playback.PlaybackState == PlaybackState.play)
             {
-                Playback.SetWallpaperPlaybackState(PlaybackState.paused);
+                Playback.PlaybackState = PlaybackState.paused;
                 pauseTrayBtn.Checked = true;
             }
             else
             {
-                Playback.SetWallpaperPlaybackState(PlaybackState.play);
+                Playback.PlaybackState = PlaybackState.play;
                 pauseTrayBtn.Checked = false;
             }
         }

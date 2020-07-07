@@ -304,5 +304,45 @@ namespace livelywpf
                 }
             }
         }
+
+        private static RawInputDX InputForwardWindow = null;
+        /// <summary>
+        /// Forward input from desktop to wallpapers.
+        /// </summary>
+        /// <param name="mode">mouse, keyboard + mouse, off</param>
+        public static void WallpaperInputForward(InputForwardMode mode)
+        {
+            if(mode == InputForwardMode.off)
+            {
+                if (InputForwardWindow != null)
+                {
+                    InputForwardWindow.Closing -= DesktopInputForward_Closing;
+                    InputForwardWindow.Close();
+                }
+            }
+            else
+            {
+                if (InputForwardWindow == null)
+                {
+                    InputForwardWindow = new RawInputDX(mode);
+                    InputForwardWindow.Closing += DesktopInputForward_Closing;
+                    InputForwardWindow.Show();
+                }
+                else
+                {
+                    if(mode != InputForwardWindow.InputMode)
+                    {
+                        InputForwardWindow.Closing -= DesktopInputForward_Closing;
+                        InputForwardWindow.Close();
+
+                        WallpaperInputForward(mode);
+                    }
+                }
+            }
+        }
+        private static void DesktopInputForward_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            InputForwardWindow = null;
+        }
     }
 }

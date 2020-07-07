@@ -24,7 +24,7 @@ namespace livelywpf.Core
             "RainmeterMeterWindow"
         };
         static IntPtr workerWOrig, progman;
-        private static PlaybackState wallpaperPlaybackState = PlaybackState.play;
+        public static PlaybackState PlaybackState { get; set; }
         private static DispatcherTimer dispatcherTimer = new DispatcherTimer();
 
         public static void Initialize()
@@ -40,8 +40,10 @@ namespace livelywpf.Core
                     folderView = NativeMethods.FindWindowEx(workerWOrig, IntPtr.Zero, "SHELLDLL_DefView", null);
                 } while (folderView == IntPtr.Zero && workerWOrig != IntPtr.Zero);
             }
+
             InitializeTimer();
             dispatcherTimer.Start();
+            PlaybackState = PlaybackState.play;
         }
 
         private static void InitializeTimer()
@@ -52,7 +54,7 @@ namespace livelywpf.Core
 
         private static void ProcessMonitor(object sender, EventArgs e)
         {
-            if (wallpaperPlaybackState == PlaybackState.paused)
+            if (PlaybackState == PlaybackState.paused)
             {
                 PauseWallpapers();
                 return;
@@ -254,7 +256,7 @@ namespace livelywpf.Core
             SetupDesktop.Wallpapers.ForEach(x =>
             {
                 if (x.GetScreen() == display)
-                    x.Pause();
+                    x.Play();
             });
         }
 
@@ -330,20 +332,6 @@ namespace livelywpf.Core
                 return true;
             else
                 return false;
-        }
-
-        /// <summary>
-        /// Sets a wallpaper temporary play/pause behavior that does not persist when application restart.
-        /// </summary>
-        /// <param name="state"></param>
-        public static void SetWallpaperPlaybackState(PlaybackState state)
-        {
-            wallpaperPlaybackState = state;
-        }
-
-        public static PlaybackState GetWallpaperPlaybackState()
-        {
-            return wallpaperPlaybackState;
         }
 
         /// <summary>

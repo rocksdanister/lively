@@ -14,7 +14,8 @@ namespace livelywpf.Core
     public partial class RawInputDX : Window
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        public RawInputDX()
+        public InputForwardMode InputMode { get; private set; }
+        public RawInputDX(InputForwardMode inputMode)
         {
             InitializeComponent();
             //Starting a hidden window outside screen region.
@@ -22,6 +23,7 @@ namespace livelywpf.Core
             this.WindowStartupLocation = WindowStartupLocation.Manual;
             this.Left = -99999;
             SourceInitialized += Window_SourceInitialized;
+            this.InputMode = inputMode;
         }
 
         private void Window_SourceInitialized(object sender, EventArgs e)
@@ -29,9 +31,16 @@ namespace livelywpf.Core
             var windowInteropHelper = new WindowInteropHelper(this);
             var hwnd = windowInteropHelper.Handle;
 
-            //ExInputSink flag makes it work even when not in foreground, similar to global hook.. but asynchronous, no complications & no AV false detection!
-            RawInputDevice.RegisterDevice(HidUsageAndPage.Mouse,
-                RawInputDeviceFlags.ExInputSink, hwnd);
+            if (InputMode == InputForwardMode.mouse)
+            {
+                //ExInputSink flag makes it work even when not in foreground, similar to global hook.. but asynchronous, no complications and no AV false detection!
+                RawInputDevice.RegisterDevice(HidUsageAndPage.Mouse,
+                    RawInputDeviceFlags.ExInputSink, hwnd);
+            }
+            else if(InputMode == InputForwardMode.mousekeyboard)
+            {
+                throw new NotImplementedException();
+            }
 
             HwndSource source = HwndSource.FromHwnd(hwnd);
             source.AddHook(Hook);
@@ -39,7 +48,10 @@ namespace livelywpf.Core
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            RawInputDevice.UnregisterDevice(HidUsageAndPage.Mouse);
+            if (InputMode == InputForwardMode.mouse)
+            {
+                RawInputDevice.UnregisterDevice(HidUsageAndPage.Mouse);
+            }
         }
 
         protected IntPtr Hook(IntPtr hwnd, int msg, IntPtr wparam, IntPtr lparam, ref bool handled)

@@ -37,7 +37,6 @@ namespace livelywpf
             player.API.SetPropertyString("hwdec", "auto");
             player.API.SetPropertyString("keepaspect", "no");
             player.Load(filePath);
-            player.Resume();
         }
 
         private void Player_MediaError(object sender, EventArgs e)

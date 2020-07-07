@@ -57,6 +57,7 @@ namespace livelywpf
             SelectedBatteryPowerIndex = (int)Settings.BatteryPause;
             SelectedDisplayPauseRuleIndex = (int)Settings.DisplayPauseSettings;
             SelectedPauseAlgorithmIndex = (int)Settings.ProcessMonitorAlgorithm;
+            SetupDesktop.WallpaperInputForward(Settings.InputForward);
         }
 
         private SettingsModel _settings;

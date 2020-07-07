@@ -22,14 +22,14 @@ namespace livelywpf.Views
     /// </summary>
     public partial class LibraryView : System.Windows.Controls.Page
     {
-        public LibraryViewModel LibraryVM { get; set; }
+        //public LibraryViewModel LibraryVM { get; set; }
         livelygrid.LivelyGridView LivelyGridControl { get; set; }
 
         public LibraryView()
         {
             InitializeComponent();
-            LibraryVM = new LibraryViewModel();
-            this.DataContext = LibraryVM; //uwp control also gets binded..
+            //LibraryVM = new LibraryViewModel();
+            this.DataContext = Program.LibraryVM; //uwp control also gets binded..
         }
 
         private void LivelyGridView_ChildChanged(object sender, EventArgs e)

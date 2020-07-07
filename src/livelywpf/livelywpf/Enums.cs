@@ -103,9 +103,9 @@ namespace livelywpf
 
     public enum PlaybackState
     {
-        [Description("All Wallpapers Paused")]
-        paused,
         [Description("Normal")]
-        play
+        play,
+        [Description("All Wallpapers Paused")]
+        paused
     }
 }

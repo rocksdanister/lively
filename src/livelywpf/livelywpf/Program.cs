@@ -5,6 +5,7 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace livelywpf
@@ -17,6 +18,7 @@ namespace livelywpf
 
         public static SettingsViewModel SettingsVM = new SettingsViewModel();
         public static ApplicationRulesViewModel AppRulesVM = new ApplicationRulesViewModel();
+        public static LibraryViewModel LibraryVM = new LibraryViewModel();
 
         [System.STAThreadAttribute()]
         public static void Main()
