@@ -9,6 +9,8 @@
     <Platforms>AnyCPU;x64;x86</Platforms>
     <StartupObject>livelywpf.Program</StartupObject>
     <ApplicationIcon>appicon.ico</ApplicationIcon>
+    <Version>1.0.0</Version>
+    <AssemblyVersion>0.8.0.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>

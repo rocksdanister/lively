@@ -18,7 +18,7 @@ namespace livelywpf
         protected override void OnStartup(StartupEventArgs e)
         {
             NLogger.SetupNLog();
-            SetupExceptionHandling();
+            SetupUnhandledExceptionLogging();
             NLogger.LogHardwareInfo();
 
             AppWindow = new MainWindow();
@@ -29,7 +29,7 @@ namespace livelywpf
             base.OnStartup(e);
         }
 
-        private void SetupExceptionHandling()
+        private void SetupUnhandledExceptionLogging()
         {
             AppDomain.CurrentDomain.UnhandledException += (s, e) =>
                 LogUnhandledException((Exception)e.ExceptionObject, "AppDomain.CurrentDomain.UnhandledException");

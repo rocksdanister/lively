@@ -1,0 +1,25 @@
+﻿<Window x:Class="livelywpf.Views.AppUpdaterView"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        ui:WindowHelper.UseModernWindowStyle="True"
+        ui:TitleBar.ExtendViewIntoTitleBar="False"
+        ui:ThemeManager.IsThemeAware="True"        
+        ui:TitleBar.IsIconVisible="True"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:livelywpf.Views"
+        mc:Ignorable="d"
+        Title="Lively Update" Height="700" Width="650"
+        Closing="Window_Closing"
+        ResizeMode="NoResize"
+        >
+    <Grid>
+        <StackPanel Margin="10, 10, 10, 10">
+            <RichTextBox x:Name="changelog" MaxHeight="550" MinHeight="550" IsReadOnly="True"/>
+            <ui:ProgressBar Name="progressBar" MinHeight="10" Margin="0, 10, 0, 0"/>
+            <TextBlock x:Name="sizeTxt" HorizontalAlignment="Right">-/- MB</TextBlock>
+            <Button Name="downloadBtn" HorizontalAlignment="Center" Click="Download_Button_Click" Margin="0, 10, 0, 0">Download</Button>
+        </StackPanel>
+    </Grid>
+</Window>
