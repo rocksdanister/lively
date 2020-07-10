@@ -52,6 +52,7 @@ namespace livelywpf
             Contact = info.Contact;
             License = info.License;
             Arguments = info.Arguments;
+            IsAbsolutePath = info.IsAbsolutePath;
         }
     }
 }

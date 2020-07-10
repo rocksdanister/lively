@@ -29,6 +29,83 @@ namespace livelywpf.Core
 
     #region video players
 
+    public class VideoPlayerVLC : IWallpaper
+    {
+        public VideoPlayerVLC(string filePath, LibraryModel model, Screen display)
+        {
+            Player = new VLCElement(filePath);
+            this.Model = model;
+            this.Display = display;
+        }
+
+        IntPtr HWND { get; set; }
+        VLCElement Player { get; set; }
+        LibraryModel Model { get; set; }
+        Screen Display { get; set; }
+
+        public void Close()
+        {
+            System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
+            {
+                Player.Close();
+            }));
+        }
+
+        public IntPtr GetHWND()
+        {
+            return HWND;
+        }
+
+        public Process GetProcess()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Screen GetScreen()
+        {
+            return Display;
+        }
+
+        public LibraryModel GetWallpaperData()
+        {
+            return Model;
+        }
+
+        public WallpaperType GetWallpaperType()
+        {
+            return Model.LivelyInfo.Type;
+        }
+
+        public void Pause()
+        {
+            Player.PausePlayer();
+        }
+
+        public void Play()
+        {
+            Player.PlayMedia();
+        }
+
+        public void SetHWND(IntPtr hwnd)
+        {
+            HWND = hwnd;
+        }
+
+        public void Show()
+        {
+            if (Player != null)
+            {
+                Player.Show();
+                HWND = new WindowInteropHelper(Player).Handle;
+            }
+        }
+
+        public void Stop()
+        {
+            Player.StopPlayer();
+        }
+    }
+
     public class VideoPlayerMPV : IWallpaper
     {
         public VideoPlayerMPV(string filePath, LibraryModel model, Screen display)
@@ -44,7 +121,7 @@ namespace livelywpf.Core
         Screen Display { get; set; }
         public WallpaperType GetWallpaperType()
         {
-            return WallpaperType.video;
+            return Model.LivelyInfo.Type;
         }
         public LibraryModel GetWallpaperData()
         {

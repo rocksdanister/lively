@@ -33,6 +33,9 @@ namespace livelywpf
         public MainWindow()
         {
             InitializeComponent();
+
+            //VLCElement vlc = new VLCElement(@"H:\4k Videos\[MV] SIYEON(시연) (Dreamcatcher(드림캐쳐)) _ 'Paradise'   Special Clip.mkv");
+            //vlc.Show();
         }
 
         private void MyNavView_ChildChanged(object sender, EventArgs e)

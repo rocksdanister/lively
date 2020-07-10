@@ -61,7 +61,7 @@ namespace livelywpf
         private static void App_Startup(object sender, StartupEventArgs e)
         {
             sysTray = new Systray();
-            AppUpdater();
+            //AppUpdater();
         }
         private static async void AppUpdater()
         {

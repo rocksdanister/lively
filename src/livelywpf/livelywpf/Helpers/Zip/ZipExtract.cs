@@ -13,6 +13,8 @@ namespace livelywpf
     {
 
         /// <summary>
+        /// Extract zip file to given path.
+        /// Example:
         /// ZipExtract("K:\\ziptest\\Fluids_v2.zip", "K:\\ziptest\\extracted", true);
         /// </summary>
         /// <param name="archivePath">Input zip path.</param>
@@ -29,9 +31,10 @@ namespace livelywpf
                     throw new Exception("LivelyInfo.json not found");
                 }
 
-                long i = 0;
+                //long i = 0;
                 foreach (ZipEntry zipEntry in zf)
                 {
+                    //progress
                     //float percentage = (float)++i / zf.Count;
                     //Debug.WriteLine(percentage + " " + zipEntry.Name);
 

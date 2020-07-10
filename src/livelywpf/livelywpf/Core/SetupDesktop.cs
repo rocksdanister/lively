@@ -107,9 +107,18 @@ namespace livelywpf
                 pendingWallpapers[^1].Show();
                 AddWallpaper(pendingWallpapers[^1]);
                 */
+
+                /*
                 pendingWallpapers.Add(new VideoPlayerMPV(wp.FilePath, wp, targetDisplay));
                 pendingWallpapers[^1].Show();
                 AddWallpaper(pendingWallpapers[^1]);
+                */
+
+                
+                pendingWallpapers.Add(new VideoPlayerVLC(wp.FilePath, wp, targetDisplay));
+                pendingWallpapers[^1].Show();
+                AddWallpaper(pendingWallpapers[^1]);
+                
             }
             else if(wp.LivelyInfo.Type == WallpaperType.gif)
             {
@@ -245,6 +254,15 @@ namespace livelywpf
                     x.Close();
             });
             Wallpapers.RemoveAll(x => x.GetWallpaperData() == wp);
+        }
+
+        public static void SendMessageWallpaper(LibraryModel wp, string msg)
+        {
+            Wallpapers.ForEach(x =>
+            {
+                if (x.GetWallpaperData() == wp)
+                    x.GetProcess().StandardInput.WriteLine(msg);
+            });
         }
 
         /// <summary>

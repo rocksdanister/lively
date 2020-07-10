@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,6 +15,7 @@ using System.Windows.Shapes;
 using Windows.Foundation.Metadata;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
 
 namespace livelywpf.Views
 {
@@ -42,8 +44,56 @@ namespace livelywpf.Views
             if (LivelyGridControl != null)
             {
                 LivelyGridControl.GridElementSize((livelygrid.GridSize)Program.SettingsVM.SelectedTileSizeIndex);
-                //LivelyGridControl.SelectionChanged += LivelyGrid_SelectionChanged;
-                //LivelyGridControl.GridElementSize(livelygrid.GridSize.Small);
+                LivelyGridControl.ContextMenuClick += LivelyGridControl_ContextMenuClick;
+            }
+        }
+
+        /// <summary>
+        /// Not possible to do direct mvvm currently, putting the contextmenu inside datatemplate works but.. 
+        /// the menu is opening only when right clicking on the DataTemplate content which is not covering completely the GridViewItem.
+        /// So the workaround I did is set it outside of template and the datacontext is calculated in code behind.
+        /// ref: https://github.com/microsoft/microsoft-ui-xaml/issues/911
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LivelyGridControl_ContextMenuClick(object sender, object e)
+        {
+            var s = sender as MenuFlyoutItem;
+            var obj = (LibraryModel)e;
+            Debug.WriteLine(obj.Title);
+            switch (s.Name)
+            {
+                case "showOnDisk":
+                    Program.LibraryVM.WallpaperShowOnDisk(e);
+                    break;
+                case "setWallpaper":
+                    Program.LibraryVM.WallpaperSet(e);
+                    break;
+                case "exportWallpaper":
+                    string savePath = "";
+                    var saveFileDialog1 = new Microsoft.Win32.SaveFileDialog()
+                    {
+                        Title = "Select location to save the file",
+                        Filter = "Lively/zip file|*.zip",
+                        FileName = ((LibraryModel)e).Title,
+                    };
+                    if (saveFileDialog1.ShowDialog() == true)
+                    {
+                        savePath = saveFileDialog1.FileName;
+                    }
+                    if (String.IsNullOrEmpty(savePath))
+                    {
+                        break;
+                    }
+                    Program.LibraryVM.WallpaperExport(e, savePath);
+                    break;
+                case "deleteWallpaper":
+                    Program.LibraryVM.WallpaperDelete(e);
+                    break;
+                case "customiseWallpaper":
+                    //todo: send display info.
+                    Program.LibraryVM.WallpaperSendMsg(e, "lively-customise ");
+                    break;
             }
         }
 

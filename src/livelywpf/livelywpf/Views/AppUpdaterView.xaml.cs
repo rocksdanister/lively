@@ -41,6 +41,7 @@ namespace livelywpf.Views
             else
             {
                 MessageBox.Show("Download failed, try downloading from the website instead.");
+                _forceClose = true;
                 this.Close();
             }
         }

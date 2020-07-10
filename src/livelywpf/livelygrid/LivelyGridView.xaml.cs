@@ -29,6 +29,11 @@ namespace livelygrid
 
     public sealed partial class LivelyGridView : UserControl
     {
+        private Object selectedTile;
+        /// <summary>
+        /// Fires when flyoutmenu is clicked, object is datacontext.
+        /// </summary>
+        public event EventHandler<object> ContextMenuClick;
         public LivelyGridView()
         {
             this.InitializeComponent();
@@ -53,6 +58,22 @@ namespace livelygrid
                 default:
                     GridControl.ItemTemplate = (DataTemplate)this.Resources["Normal"];
                     break;
+            }
+        }
+
+        private void GridControl_RightTapped(object sender, RightTappedRoutedEventArgs e)
+        {
+            GridView gridView = (GridView)sender;
+            contextMenu.ShowAt(gridView, e.GetPosition(gridView));
+            var a = ((FrameworkElement)e.OriginalSource).DataContext;
+            selectedTile = a;
+        }
+
+        private void contextMenu_Click(object sender, RoutedEventArgs e)
+        {
+            if (selectedTile != null)
+            {
+                ContextMenuClick?.Invoke(sender, selectedTile);
             }
         }
     }

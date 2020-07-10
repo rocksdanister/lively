@@ -1,20 +1,17 @@
-﻿<Window x:Class="livelywpf.MPVElement"
+﻿<Window x:Class="livelywpf.VLCElement"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:windowsForms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        xmlns:wpf="clr-namespace:LibVLCSharp.WPF;assembly=LibVLCSharp.WPF"
         mc:Ignorable="d"
-        Title="MPVElement" Height="450" Width="800"
+        Title="VLCElement" Height="450" Width="800"
         WindowStartupLocation="Manual"
         Left='-9999'
         WindowStyle="None"
         ResizeMode="NoResize"
-        Closing="Window_Closing" Background="#FF2B2B2B"
-        >
+        Closing="Window_Closing" Background="#FF2B2B2B">
     <Grid>
-        <WindowsFormsHost>
-            <windowsForms:Panel x:Name="PlayerHost" />
-        </WindowsFormsHost>
+        <wpf:VideoView x:Name="videoView"/>
     </Grid>
 </Window>
