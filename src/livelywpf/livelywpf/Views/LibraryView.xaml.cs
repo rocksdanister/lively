@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -26,12 +27,12 @@ namespace livelywpf.Views
     {
         //public LibraryViewModel LibraryVM { get; set; }
         livelygrid.LivelyGridView LivelyGridControl { get; set; }
-
+        //LibraryViewModel LibraryVM = new LibraryViewModel();
         public LibraryView()
         {
             InitializeComponent();
-            //LibraryVM = new LibraryViewModel();
-            this.DataContext = Program.LibraryVM; //uwp control also gets binded..
+            //uwp control also gets binded..
+            this.DataContext = Program.LibraryVM; 
         }
 
         private void LivelyGridView_ChildChanged(object sender, EventArgs e)
@@ -97,6 +98,7 @@ namespace livelywpf.Views
             }
         }
 
+        /*
         private async void LivelyGrid_SelectionChanged(object sender, Windows.UI.Xaml.Controls.SelectionChangedEventArgs e)
         {
             var gridView = sender as Windows.UI.Xaml.Controls.GridView;
@@ -118,6 +120,13 @@ namespace livelywpf.Views
             }
 
             ContentDialogResult result = await noWifiDialog.ShowAsync();
+        }
+        */
+
+        private void Page_Unloaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            //stop rendering previews..
+            LivelyGridControl.GridElementSize(livelygrid.GridSize.NoPreview);
         }
     }
 }

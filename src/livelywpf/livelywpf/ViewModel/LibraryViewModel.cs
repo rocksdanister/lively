@@ -80,7 +80,10 @@ namespace livelywpf
             set
             {
                 _selectedItem = value;
-                SetupDesktop.SetWallpaper(_selectedItem, Screen.PrimaryScreen);
+                if (value != null)
+                {
+                    WallpaperSet(value);
+                }
                 OnPropertyChanged("SelectedItem");
             }
         }
@@ -107,34 +110,18 @@ namespace livelywpf
 
         public void WallpaperShowOnDisk(object obj)
         {
-            try
+            var selection = (LibraryModel)obj;
+            string folderPath;
+            if (selection.LivelyInfo.Type == WallpaperType.url || selection.LivelyInfo.Type == WallpaperType.videostream)
             {
-                var selection = (LibraryModel)obj;
-                string folderPath;
-                if (selection.LivelyInfo.Type == WallpaperType.url || selection.LivelyInfo.Type == WallpaperType.videostream)
-                {
-                    folderPath = selection.LivelyInfoFolderPath;
-                }
-                else
-                {
-                    folderPath = Path.GetDirectoryName(selection.FilePath);
-                }
+                folderPath = selection.LivelyInfoFolderPath;
+            }
+            else
+            {
+                folderPath = Path.GetDirectoryName(selection.FilePath);
+            }
 
-                //todo: move to spearate class.
-                if (Directory.Exists(folderPath))
-                {
-                    ProcessStartInfo startInfo = new ProcessStartInfo
-                    {
-                        Arguments = "\"" + folderPath + "\"",
-                        FileName = "explorer.exe"
-                    };
-                    Process.Start(startInfo);
-                }
-            }
-            catch (Exception e)
-            {
-                Logger.Error("folder open error:- " + e.Message);
-            }
+            FileOperations.OpenFolder(folderPath);
         }
 
         public async void WallpaperExport(object obj, string saveFile)
@@ -184,9 +171,42 @@ namespace livelywpf
             });
         }
 
-        public void WallpaperDelete(object obj)
+        public async void WallpaperDelete(object obj)
         {
-            throw new NotImplementedException();
+            var selection = (LibraryModel)obj;
+            //close if running.
+            SetupDesktop.CloseWallpaper(selection);
+            //delete wp folder.      
+            var success = await FileOperations.DeleteDirectoryAsync(selection.LivelyInfoFolderPath, 1000, 4000);
+
+            if (success)
+            {
+                if (SelectedItem == selection)
+                {
+                    SelectedItem = null;
+                }
+                //remove from library.
+                LibraryItems.Remove(selection);
+                try
+                {
+                    //Delete LivelyProperties.json backup folder.
+                    string[] wpdataDir = Directory.GetDirectories(Path.Combine(Program.LivelyDir, "SaveData", "wpdata"));
+                    var wpFolderName = new System.IO.DirectoryInfo(selection.LivelyInfoFolderPath).Name;
+                    for (int i = 0; i < wpdataDir.Length; i++)
+                    {
+                        var item = new System.IO.DirectoryInfo(wpdataDir[i]).Name;
+                        if (wpFolderName.Equals(item, StringComparison.Ordinal))
+                        {
+                            _ = FileOperations.DeleteDirectoryAsync(wpdataDir[i], 1000, 4000);
+                            break;
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    Logger.Error(e.ToString());
+                }
+            }
         }
 
         private async void WallpaperInstall(string livelyZipPath)
@@ -283,7 +303,7 @@ namespace livelywpf
                     {
                         //online content, no file.
                         Logger.Info("Loading Wallpaper (no-file):- " + info.FileName + " " + info.Type);
-                        return new LibraryModel(info, null);
+                        return new LibraryModel(info, folderPath);
                     }
                     else
                     {

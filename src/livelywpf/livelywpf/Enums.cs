@@ -108,4 +108,11 @@ namespace livelywpf
         [Description("All Wallpapers Paused")]
         paused
     }
+
+    public enum LivelyMediaPlayer
+    {
+        wmf,
+        libvlc,
+        libmpv
+    }
 }

@@ -102,23 +102,30 @@ namespace livelywpf
             }
             else if(wp.LivelyInfo.Type == WallpaperType.video)
             {
-                /*
-                pendingWallpapers.Add(new VideoPlayerWPF(wp.FilePath, wp, targetDisplay));
-                pendingWallpapers[^1].Show();
-                AddWallpaper(pendingWallpapers[^1]);
-                */
-
-                /*
-                pendingWallpapers.Add(new VideoPlayerMPV(wp.FilePath, wp, targetDisplay));
-                pendingWallpapers[^1].Show();
-                AddWallpaper(pendingWallpapers[^1]);
-                */
-
-                
+                switch(Program.SettingsVM.Settings.VideoPlayer)
+                {
+                    case LivelyMediaPlayer.libmpv:
+                        pendingWallpapers.Add(new VideoPlayerMPV(wp.FilePath, wp, targetDisplay));
+                        pendingWallpapers[^1].Show();
+                        AddWallpaper(pendingWallpapers[^1]);
+                        break;
+                    case LivelyMediaPlayer.libvlc:
+                        pendingWallpapers.Add(new VideoPlayerVLC(wp.FilePath, wp, targetDisplay));
+                        pendingWallpapers[^1].Show();
+                        AddWallpaper(pendingWallpapers[^1]);
+                        break;
+                    case LivelyMediaPlayer.wmf:
+                        pendingWallpapers.Add(new VideoPlayerWPF(wp.FilePath, wp, targetDisplay));
+                        pendingWallpapers[^1].Show();
+                        AddWallpaper(pendingWallpapers[^1]);
+                        break;
+                }
+            }
+            else if(wp.LivelyInfo.Type == WallpaperType.videostream)
+            {
                 pendingWallpapers.Add(new VideoPlayerVLC(wp.FilePath, wp, targetDisplay));
                 pendingWallpapers[^1].Show();
                 AddWallpaper(pendingWallpapers[^1]);
-                
             }
             else if(wp.LivelyInfo.Type == WallpaperType.gif)
             {

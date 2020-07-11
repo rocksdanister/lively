@@ -423,6 +423,16 @@ namespace livelywpf
             }
         }
 
+        private LivelyMediaPlayer _videoPlayer;
+        public LivelyMediaPlayer VideoPlayer
+        {
+            get { return _videoPlayer; }
+            set
+            {
+                _videoPlayer = value;
+                OnPropertyChanged("VideoPlayer");
+            }
+        }
         /*
         //todo need to rewrite audio manager from scratch.
         public bool MuteVideo { get; set; }
@@ -456,7 +466,7 @@ namespace livelywpf
             AppFocusPause = AppRulesEnum.ignore;
             AppFullscreenPause = AppRulesEnum.pause;
             BatteryPause = AppRulesEnum.ignore;
-
+            VideoPlayer = LivelyMediaPlayer.libvlc;
             /*
             VidPlayer = VideoPlayer.windowsmp;
             //CurrWallpaperPath = null;

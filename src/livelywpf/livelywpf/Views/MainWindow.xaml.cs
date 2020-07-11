@@ -5,6 +5,7 @@ using ModernWpf.Media.Animation;
 using NLog;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.ServiceModel.Channels;
 using System.Text;
@@ -29,21 +30,17 @@ namespace livelywpf
     public partial class MainWindow : Window
     {
         public static bool _isExit = false;
-
+        private NavigationView navView;
         public MainWindow()
         {
             InitializeComponent();
-
-            //VLCElement vlc = new VLCElement(@"H:\4k Videos\[MV] SIYEON(시연) (Dreamcatcher(드림캐쳐)) _ 'Paradise'   Special Clip.mkv");
-            //vlc.Show();
         }
 
         private void MyNavView_ChildChanged(object sender, EventArgs e)
         {
             WindowsXamlHost windowsXamlHost = (WindowsXamlHost)sender;
 
-            Windows.UI.Xaml.Controls.NavigationView navView =
-                (Windows.UI.Xaml.Controls.NavigationView)windowsXamlHost.Child;
+            navView = (Windows.UI.Xaml.Controls.NavigationView)windowsXamlHost.Child;
 
             if (navView != null)
             {
@@ -59,7 +56,6 @@ namespace livelywpf
 
                 navView.SelectedItem = navView.MenuItems.ElementAt(0);
                 ContentFrame.Navigate(typeof(livelywpf.Views.LibraryView), new Uri("Views/LibraryView.xaml", UriKind.Relative), new SuppressNavigationTransitionInfo());
-
             }
         }
 
@@ -105,11 +101,25 @@ namespace livelywpf
             if (!_isExit)
             {
                 e.Cancel = true;
+                ContentFrame.Content = null;
                 this.Hide();
+                GC.Collect();
             }
             else
             {
                 //todo
+            }
+        }
+
+        private void Window_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if(navView != null && (bool)e.NewValue)
+            {
+                if(ContentFrame.Content == null)
+                {
+                    navView.SelectedItem = navView.MenuItems.ElementAt(0);
+                    ContentFrame.Navigate(typeof(livelywpf.Views.LibraryView), new Uri("Views/LibraryView.xaml", UriKind.Relative), new SuppressNavigationTransitionInfo());
+                }
             }
         }
     }

@@ -105,6 +105,20 @@
             </PivotItem>
 
             <PivotItem Header="Wallpaper">
+                <Grid>
+                    <ScrollViewer>
+                        <StackPanel>
+                            <ComboBox Header="Video Player" Margin="0,10,0,0" MinWidth="200" SelectedIndex="{Binding SelectedVideoPlayerIndex, Mode=TwoWay}">
+                                <ComboBoxItem>wmf</ComboBoxItem>
+                                <ComboBoxItem>libVLC</ComboBoxItem>
+                                <ComboBoxItem>libMPV</ComboBoxItem>
+                            </ComboBox>
+                            <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}">
+                            Select the videoplayer to use while playing video wallpapers.
+                            <LineBreak/>libVLC is recommended for stability.</TextBlock>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
             </PivotItem>
             
             <PivotItem Header="Audio">

@@ -53,13 +53,13 @@
     
     <Grid>
 
-        <GridView x:Name="GridControl" ItemsSource= "{Binding LibraryItems}" ItemTemplate="{StaticResource Normal}" 
+        <GridView HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="GridControl" ItemsSource= "{Binding LibraryItems}" ItemTemplate="{StaticResource Normal}" 
                   SelectedItem="{Binding SelectedItem, Mode=TwoWay}" RightTapped="GridControl_RightTapped">
             <MenuFlyout x:Name="contextMenu">
                 <MenuFlyout.Items>
                     <MenuFlyoutItem x:Name="setWallpaper" Text="Set as Wallpaper" Click="contextMenu_Click"/>
-                    <MenuFlyoutItem x:Name="customiseWallpaper" Text="Customise Wallpaper" Click="contextMenu_Click"/>
                     <MenuFlyoutItem x:Name="showOnDisk" Text="Show on Disk" Click="contextMenu_Click"/>
+                    <MenuFlyoutItem x:Name="customiseWallpaper" Text="Customise Wallpaper" Click="contextMenu_Click"/>
                     <MenuFlyoutItem x:Name="exportWallpaper" Text="Export Lively .Zip" Click="contextMenu_Click"/>
                     <MenuFlyoutItem x:Name="deleteWallpaper" Text="Delete Wallpaper" Click="contextMenu_Click"/>
                 </MenuFlyout.Items>

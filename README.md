@@ -139,6 +139,6 @@ You can always help development by buying me a cup of coffee(paypal):
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/P5P1U8NQ)
 
 ## License
-Lively v1.0 onwards is licensed under GPL-3
+Lively v1.0 onwards is licensed under GPL-3.
 
 Previous version is licensed under MS-PL, see v0.9.6.0 branch for working builds.

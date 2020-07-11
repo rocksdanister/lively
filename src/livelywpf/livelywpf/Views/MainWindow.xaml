@@ -13,7 +13,8 @@
         mc:Ignorable="d"
         Height="750" Width="1200"
         Title="Lively"
-        Closing="Window_Closing" 
+        Closing="Window_Closing"        
+        IsVisibleChanged="Window_IsVisibleChanged"
         >
     <Grid>
         <Grid.ColumnDefinitions>

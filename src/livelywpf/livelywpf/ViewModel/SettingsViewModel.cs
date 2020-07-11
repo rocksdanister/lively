@@ -1,4 +1,5 @@
-﻿using livelywpf.Views;
+﻿using livelywpf.Core;
+using livelywpf.Views;
 using Octokit;
 using System;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Windows;
+using System.Windows.Forms;
 using System.Windows.Input;
 
 namespace livelywpf
@@ -57,6 +59,7 @@ namespace livelywpf
             SelectedBatteryPowerIndex = (int)Settings.BatteryPause;
             SelectedDisplayPauseRuleIndex = (int)Settings.DisplayPauseSettings;
             SelectedPauseAlgorithmIndex = (int)Settings.ProcessMonitorAlgorithm;
+            SelectedVideoPlayerIndex = (int)Settings.VideoPlayer;
             SetupDesktop.WallpaperInputForward(Settings.InputForward);
         }
 
@@ -290,5 +293,44 @@ namespace livelywpf
         }
 
         #endregion performance
+
+        #region wallpaper
+
+        private int _selectedVideoPlayerIndex;
+        public int SelectedVideoPlayerIndex
+        {
+            get
+            {
+                return _selectedVideoPlayerIndex;
+            }
+            set
+            {
+                if(_selectedVideoPlayerIndex != value)
+                {
+                    VideoPlayerSwitch((LivelyMediaPlayer)value);
+                }
+                _selectedVideoPlayerIndex = value;
+                OnPropertyChanged("SelectedVideoPlayerIndex");
+
+                //todo: argumentoutofrange exception
+                Settings.VideoPlayer = (LivelyMediaPlayer)value;
+                UpdateConfigFile();
+            }
+        }
+
+        private void VideoPlayerSwitch(LivelyMediaPlayer player)
+        {
+            List<LibraryModel> wpCurr = new List<LibraryModel>();
+            foreach (var item in SetupDesktop.Wallpapers)
+            {
+                if(item.GetWallpaperType() == WallpaperType.video)
+                    wpCurr.Add(item.GetWallpaperData());
+            }
+            SetupDesktop.CloseWallpaper(WallpaperType.video);
+
+            //todo: restart wpCurr
+        }
+
+        #endregion wallpaper
     }
 }

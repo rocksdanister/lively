@@ -48,7 +48,7 @@ namespace livelywpf
                     if (data.Preview != null)
                     {
                         var imgPath = Path.Combine(folderPath, data.Preview);
-                        if(File.Exists(imgPath))
+                        if (File.Exists(imgPath))
                         {
                             ImagePath = imgPath;
                         }
