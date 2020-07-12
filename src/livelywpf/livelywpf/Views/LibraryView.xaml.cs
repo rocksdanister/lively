@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -12,7 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation.Metadata;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -25,9 +26,9 @@ namespace livelywpf.Views
     /// </summary>
     public partial class LibraryView : System.Windows.Controls.Page
     {
-        //public LibraryViewModel LibraryVM { get; set; }
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         livelygrid.LivelyGridView LivelyGridControl { get; set; }
-        //LibraryViewModel LibraryVM = new LibraryViewModel();
+
         public LibraryView()
         {
             InitializeComponent();
@@ -46,6 +47,7 @@ namespace livelywpf.Views
             {
                 LivelyGridControl.GridElementSize((livelygrid.GridSize)Program.SettingsVM.SelectedTileSizeIndex);
                 LivelyGridControl.ContextMenuClick += LivelyGridControl_ContextMenuClick;
+                LivelyGridControl.FileDroppedEvent += LivelyGridControl_FileDroppedEvent;
             }
         }
 
@@ -98,35 +100,85 @@ namespace livelywpf.Views
             }
         }
 
-        /*
-        private async void LivelyGrid_SelectionChanged(object sender, Windows.UI.Xaml.Controls.SelectionChangedEventArgs e)
+        private async void LivelyGridControl_FileDroppedEvent(object sender, Windows.UI.Xaml.DragEventArgs e)
         {
-            var gridView = sender as Windows.UI.Xaml.Controls.GridView;
-
-            ContentDialog noWifiDialog = new ContentDialog
+            if (e.DataView.Contains(StandardDataFormats.WebLink))
             {
-                //Title = LibraryVM[gridView.SelectedIndex].Title,
-                //Content = LibraryVM[gridView.SelectedIndex].Desc,
-                PrimaryButtonText = "Set as Wallpaper",
-                CloseButtonText = "Cancel"
-            };
-
-            // Use this code to associate the dialog to the appropriate AppWindow by setting
-            // the dialog's XamlRoot to the same XamlRoot as an element that is already present in the AppWindow.
-            if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 8))
-            {
-                //note: can still select the suggestbox, how to add multiple roots?
-                noWifiDialog.XamlRoot = gridView.XamlRoot;
+                var uri = await e.DataView.GetWebLinkAsync();
+                Logger.Info("Dropped url:- " + uri.ToString());
             }
+            else if (e.DataView.Contains(StandardDataFormats.StorageItems))
+            {
+                var items = await e.DataView.GetStorageItemsAsync();
+                if (items.Count > 0)
+                {
+                    //selecting first file only.
+                    var item = items[0].Path;
+                    Logger.Info("Dropped file:- " + item);
+                    try
+                    {
+                        if (String.IsNullOrWhiteSpace(Path.GetExtension(item)))
+                            return;
+                    }
+                    catch (ArgumentException)
+                    {
+                        Logger.Info("Invalid character, skipping dropped file:- " + item);
+                        return;
+                    }
 
-            ContentDialogResult result = await noWifiDialog.ShowAsync();
+                    if (Path.GetExtension(item).Equals(".gif", StringComparison.OrdinalIgnoreCase))
+                    {
+                        throw new NotImplementedException();
+                    }
+                    else if (Path.GetExtension(item).Equals(".html", StringComparison.OrdinalIgnoreCase))
+                    {
+                        throw new NotImplementedException();
+                    }
+                    else if (Path.GetExtension(item).Equals(".zip", StringComparison.OrdinalIgnoreCase))
+                    {
+                        Program.LibraryVM.WallpaperInstall(item);
+                    }
+                    else if (FileOperations.IsVideoFile(item))
+                    {
+                        throw new NotImplementedException();
+                    }
+                    else
+                    {
+                        throw new NotImplementedException();
+                    }
+                }
+            }
         }
-        */
 
         private void Page_Unloaded(object sender, System.Windows.RoutedEventArgs e)
         {
             //stop rendering previews..
             LivelyGridControl.GridElementSize(livelygrid.GridSize.NoPreview);
         }
+
+        /*
+        private async void LivelyGrid_SelectionChanged(object sender, Windows.UI.Xaml.Controls.SelectionChangedEventArgs e)
+        {
+        var gridView = sender as Windows.UI.Xaml.Controls.GridView;
+
+        ContentDialog noWifiDialog = new ContentDialog
+        {
+        //Title = LibraryVM[gridView.SelectedIndex].Title,
+        //Content = LibraryVM[gridView.SelectedIndex].Desc,
+        PrimaryButtonText = "Set as Wallpaper",
+        CloseButtonText = "Cancel"
+        };
+
+        // Use this code to associate the dialog to the appropriate AppWindow by setting
+        // the dialog's XamlRoot to the same XamlRoot as an element that is already present in the AppWindow.
+        if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 8))
+        {
+        //note: can still select the suggestbox, how to add multiple roots?
+        noWifiDialog.XamlRoot = gridView.XamlRoot;
+        }
+
+        ContentDialogResult result = await noWifiDialog.ShowAsync();
+        }
+        */
     }
 }

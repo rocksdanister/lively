@@ -33,7 +33,10 @@ namespace livelywpf
         {
             LibVLCSharp.Shared.Core.Initialize();
 
-            _libVLC = new LibVLC();
+            //flags: 
+            //"--no-disable-screensaver" : enable monitor sleep.
+            //ref: https://wiki.videolan.org/VLC_command-line_help
+            _libVLC = new LibVLC("--no-disable-screensaver");
             _mediaPlayer = new MediaPlayer(_libVLC)
             {
                 AspectRatio = "Fill",

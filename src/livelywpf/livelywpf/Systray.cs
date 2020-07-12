@@ -38,6 +38,8 @@ namespace livelywpf
             pauseTrayBtn.Click += (s, e) => ToggleWallpaperPlaybackState();
             _notifyIcon.ContextMenuStrip.Items.Add(pauseTrayBtn);
 
+            _notifyIcon.ContextMenuStrip.Items.Add("Close All Wallpapers", null).Click += (s, e) => SetupDesktop.CloseAllWallpapers();
+
             _notifyIcon.ContextMenuStrip.Items.Add("-");
             _notifyIcon.ContextMenuStrip.Items.Add("Exit", Properties.Icons.icons8_close_window_961).Click += (s, e) => Program.ExitApplication();
         }

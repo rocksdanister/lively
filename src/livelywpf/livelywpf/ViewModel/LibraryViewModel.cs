@@ -118,7 +118,7 @@ namespace livelywpf
             }
             else
             {
-                folderPath = Path.GetDirectoryName(selection.FilePath);
+                folderPath = selection.FilePath;//Path.GetDirectoryName(selection.FilePath);
             }
 
             FileOperations.OpenFolder(folderPath);
@@ -163,6 +163,7 @@ namespace livelywpf
                         //installed lively wallpaper.
                         ZipCreate.CreateZip(saveFile, new List<string>() { Path.GetDirectoryName(selection.FilePath) });
                     }
+                    FileOperations.OpenFolder(saveFile);
                 }
                 catch (Exception e)
                 {
@@ -209,7 +210,7 @@ namespace livelywpf
             }
         }
 
-        private async void WallpaperInstall(string livelyZipPath)
+        public async void WallpaperInstall(string livelyZipPath)
         {
             var installDir = Path.Combine(Program.LivelyDir, "wallpapers", Path.GetRandomFileName());
             await Task.Run(() =>
