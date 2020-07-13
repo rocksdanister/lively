@@ -14,7 +14,7 @@
         <!-- switch to reduce resource usage -->
         <DataTemplate x:Name="NoPreview">
             <Grid Width="192" Height="108" AutomationProperties.Name="{Binding Title}">
-                <StackPanel Orientation="Vertical" Height="60" VerticalAlignment="Bottom" Background="{ThemeResource SystemBaseLowColor}" Padding="12">
+                <StackPanel Orientation="Vertical" Height="60" VerticalAlignment="Bottom" Background="{ThemeResource SystemAltMediumColor}" Padding="7">
                     <TextBlock Text="{Binding Title}"/>
                     <TextBlock Text="{Binding Desc}" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
                 </StackPanel>
@@ -24,7 +24,7 @@
         <DataTemplate x:Name="Small">
             <Grid Width="192" Height="108" AutomationProperties.Name="{Binding Title}">
                 <Image Source="{Binding ImagePath}" Stretch="UniformToFill"/>
-                <StackPanel Orientation="Vertical" Height="60" VerticalAlignment="Bottom" Background="{ThemeResource SystemBaseLowColor}" Padding="12">
+                <StackPanel Orientation="Vertical" Height="60" VerticalAlignment="Bottom" Background="{ThemeResource SystemAltMediumColor}" Padding="7">
                     <TextBlock Text="{Binding Title}"/>
                     <TextBlock Text="{Binding Desc}" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
                 </StackPanel>
@@ -34,9 +34,9 @@
         <DataTemplate x:Name="Normal">
             <Grid Width="272" Height="153" AutomationProperties.Name="{Binding Title}">
                 <Image Source="{Binding ImagePath}" Stretch="UniformToFill"/>
-                <StackPanel Orientation="Vertical" Height="60" VerticalAlignment="Bottom" Background="{ThemeResource SystemBaseLowColor}" Padding="12">
-                    <TextBlock Text="{Binding Title}"/>
-                    <TextBlock Text="{Binding Desc}" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                <StackPanel Orientation="Vertical" Height="60" VerticalAlignment="Bottom" Background="{ThemeResource SystemAltMediumColor}" Padding="7">
+                    <TextBlock Text="{Binding Title}" MaxLines="1"/>
+                    <TextBlock Text="{Binding Desc}" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" MaxLines="2"/>
                 </StackPanel>
             </Grid>
         </DataTemplate>
@@ -44,7 +44,7 @@
         <DataTemplate x:Name="Large">
             <Grid Width="320" Height="180" AutomationProperties.Name="{Binding Title}">
                 <Image Source="{Binding ImagePath}" Stretch="UniformToFill"/>
-                <StackPanel Orientation="Vertical" Height="60" VerticalAlignment="Bottom" Background="{ThemeResource SystemBaseLowColor}" Padding="12">
+                <StackPanel Orientation="Vertical" Height="60" VerticalAlignment="Bottom" Background="{ThemeResource SystemAltMediumColor}" Padding="7">
                     <TextBlock Text="{Binding Title}"/>
                     <TextBlock Text="{Binding Desc}" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
                 </StackPanel>
@@ -71,7 +71,7 @@
             </GridView.ItemsPanel>
         </GridView>
 
-        <RelativePanel x:Name="AddFilePanel" Background="#75000000" Visibility="Collapsed">
+        <RelativePanel x:Name="AddFilePanel" Background="{ThemeResource SystemAltMediumColor}" Visibility="Collapsed">
             <SymbolIcon x:Name="AddSymbol" Symbol="Add" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" 
             Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" RenderTransformOrigin="0.5,0.5">
                 <SymbolIcon.RenderTransform>
