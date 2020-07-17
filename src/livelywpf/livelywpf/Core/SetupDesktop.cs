@@ -1,4 +1,5 @@
 ﻿using livelywpf.Core;
+using livelywpf.Views;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -20,9 +21,9 @@ namespace livelywpf
         private static bool _isInitialized = false;
 
         public static List<IWallpaper> Wallpapers = new List<IWallpaper>();
-        private static List<IWallpaper> pendingWallpapers = new List<IWallpaper>();
+        //public static event EventHandler<IWallpaper> WallpaperLoaded;
 
-        public static async void SetWallpaper(LibraryModel wp, Screen targetDisplay)
+        public static void SetWallpaper(LibraryModel wp, Screen targetDisplay)
         {
             if (SystemInformation.HighContrast)
             {
@@ -92,46 +93,83 @@ namespace livelywpf
                 }
             }
 
-            if( wp.LivelyInfo.Type == WallpaperType.web || wp.LivelyInfo.Type == WallpaperType.webaudio || wp.LivelyInfo.Type == WallpaperType.url)
+            if( wp.LivelyInfo.Type == WallpaperType.web 
+            || wp.LivelyInfo.Type == WallpaperType.webaudio 
+            || wp.LivelyInfo.Type == WallpaperType.url)
             {
-                //todo: Process Exited event.
-                pendingWallpapers.Add(new WebProcess(wp.FilePath, wp, targetDisplay));
-                //Receiving cefsharp window handle through ipc.
-                pendingWallpapers[^1].GetProcess().OutputDataReceived += WebProcess_OutputDataReceived;
-                pendingWallpapers[^1].Show();
+                //todo process exit event.
+                var item = new WebProcess(wp.FilePath, wp, targetDisplay);
+                item.WindowInitialized += SetupDesktop_WallpaperInitialized;
+                item.Show();
+
             }
             else if(wp.LivelyInfo.Type == WallpaperType.video)
             {
-                switch(Program.SettingsVM.Settings.VideoPlayer)
+                if(Program.SettingsVM.Settings.VideoPlayer == LivelyMediaPlayer.libmpv)
                 {
-                    case LivelyMediaPlayer.libmpv:
-                        pendingWallpapers.Add(new VideoPlayerMPV(wp.FilePath, wp, targetDisplay));
-                        pendingWallpapers[^1].Show();
-                        AddWallpaper(pendingWallpapers[^1]);
-                        break;
-                    case LivelyMediaPlayer.libvlc:
-                        pendingWallpapers.Add(new VideoPlayerVLC(wp.FilePath, wp, targetDisplay));
-                        pendingWallpapers[^1].Show();
-                        AddWallpaper(pendingWallpapers[^1]);
-                        break;
-                    case LivelyMediaPlayer.wmf:
-                        pendingWallpapers.Add(new VideoPlayerWPF(wp.FilePath, wp, targetDisplay));
-                        pendingWallpapers[^1].Show();
-                        AddWallpaper(pendingWallpapers[^1]);
-                        break;
+                    var item = new VideoPlayerMPV(wp.FilePath, wp, targetDisplay);
+                    item.WindowInitialized += SetupDesktop_WallpaperInitialized;
+                    item.Show();
+                }
+                else if(Program.SettingsVM.Settings.VideoPlayer == LivelyMediaPlayer.libvlc)
+                {
+                    var item = new VideoPlayerVLC(wp.FilePath, wp, targetDisplay);
+                    item.WindowInitialized += SetupDesktop_WallpaperInitialized;
+                    item.Show();
+                }
+                else
+                {
+                    var item = new VideoPlayerWPF(wp.FilePath, wp, targetDisplay);
+                    item.WindowInitialized += SetupDesktop_WallpaperInitialized;
+                    item.Show();
                 }
             }
             else if(wp.LivelyInfo.Type == WallpaperType.videostream)
             {
-                pendingWallpapers.Add(new VideoPlayerVLC(wp.FilePath, wp, targetDisplay));
-                pendingWallpapers[^1].Show();
-                AddWallpaper(pendingWallpapers[^1]);
+                var item = new VideoPlayerVLC(wp.FilePath, wp, targetDisplay);
+                item.WindowInitialized += SetupDesktop_WallpaperInitialized;
+                item.Show();
             }
             else if(wp.LivelyInfo.Type == WallpaperType.gif)
             {
-                pendingWallpapers.Add(new GIFPlayerUWP(wp.FilePath, wp, targetDisplay));
-                pendingWallpapers[^1].Show();
-                AddWallpaper(pendingWallpapers[^1]);
+                var item = new GIFPlayerUWP(wp.FilePath, wp, targetDisplay);
+                item.WindowInitialized += SetupDesktop_WallpaperInitialized;
+                item.Show();
+            }
+        }
+
+        private static async void SetupDesktop_WallpaperInitialized(object sender, WindowInitializedArgs e)
+        {
+            var wallpaper = (IWallpaper)sender;
+            if(e.Success)
+            {
+                //preview and create gif and thumbnail for user dropped file.
+                if (wallpaper.GetWallpaperData().DataType == LibraryTileType.processing)
+                {
+                    await ShowPreviewDialogSTAThread(wallpaper);
+                }
+                else if(wallpaper.GetWallpaperData().DataType == LibraryTileType.videoConvert)
+                {
+                    await ShowVLCScreenCaptureDialogSTAThread(wallpaper);
+                    wallpaper.Close();
+                    RefreshDesktop();
+                    return;
+                }
+
+                //close previous wp, otherwise 2 fullscreen wp running sametime is heavy.
+                var prevWallpaper = Wallpapers.Find(x => x.GetScreen() == wallpaper.GetScreen());
+                if (prevWallpaper != null)
+                {
+                    CloseWallpaper(prevWallpaper.GetWallpaperData());
+                }
+
+                AddWallpaper(wallpaper.GetHWND(), wallpaper.GetScreen());
+                Wallpapers.Add(wallpaper);
+            }
+            else
+            {
+                Logger.Error(e.Error.ToString());
+                wallpaper.Close();
             }
         }
 
@@ -140,22 +178,12 @@ namespace livelywpf
         /// </summary>
         /// <param name="handle">window handle of process to add as wallpaper</param>
         /// <param name="display">displaystring of display to sent wp to.</param>
-        private static async void AddWallpaper(IWallpaper wp)
+        private static void AddWallpaper(IntPtr handle, Screen targetDisplay)
         {
-            //close to early, otherwise 2 fullscreen wp running sametime is heavy.
-            var currWallpaper = Wallpapers.Find(x => x.GetScreen() == wp.GetScreen());
-            if (currWallpaper != null)
-            {
-                CloseWallpaper(currWallpaper.GetScreen());
-            }
-            Wallpapers.Add(wp);
-            pendingWallpapers.Remove(wp);
 
             NativeMethods.RECT prct = new NativeMethods.RECT();
             NativeMethods.POINT topLeft;
             //StaticPinvoke.POINT bottomRight;
-            IntPtr handle = wp.GetHWND();
-            Screen targetDisplay = wp.GetScreen();
             Logger.Info("Sending WP -> " + targetDisplay);
 
             if (!NativeMethods.SetWindowPos(handle, 1, targetDisplay.Bounds.X, targetDisplay.Bounds.Y, (targetDisplay.Bounds.Width), (targetDisplay.Bounds.Height), 0 | 0x0010))
@@ -173,6 +201,7 @@ namespace livelywpf
                 NLogger.LogWin32Error("setwindowpos(3) fail addwallpaper(),");
             }
 
+            //WallpaperLoaded?.Invoke(null, wp);
             SetFocus(true);
             RefreshDesktop();
 
@@ -185,52 +214,74 @@ namespace livelywpf
             Logger.Info("Coordinate wrt to screen ->" + topLeft.X + " " + topLeft.Y + " " + targetDisplay.Bounds.Width + " " + targetDisplay.Bounds.Height);
         }
 
-        private static void WebProcess_OutputDataReceived(object sender, DataReceivedEventArgs e)
+        public static Task ShowPreviewDialogSTAThread(IWallpaper wp)
         {
-            try
+            var tcs = new TaskCompletionSource<object>();
+            var thread = new Thread(() =>
             {
-                IntPtr handle = new IntPtr();
-                //Retrieves the windowhandle of cefsubprocess, cefsharp is launching cef as a separate proces..
-                //If you add the full pgm as child of workerw then there are problems (prob related sharing input queue)
-                //Instead hiding the pgm window & adding cefrender window instead.
-                Logger.Info("Cefsharp Handle:- " + e.Data);
-                if (e.Data.Contains("HWND"))
+                try
                 {
-                    var webBrowser = pendingWallpapers.Find(x => x.GetProcess() == sender);
-
-                    handle = new IntPtr(Convert.ToInt32(e.Data.Substring(4), 10));
-                    //note-handle: WindowsForms10.Window.8.app.0.141b42a_r9_ad1
-
-                    //hidin other windows, no longer required since I'm doing it in cefsharp pgm itself.
-                    NativeMethods.ShowWindow(webBrowser.GetProcess().MainWindowHandle, 0);
-
-                    //WARNING:- If you put the whole cefsharp window, workerw crashes and refuses to start again on next startup!!, this is a workaround.
-                    handle = NativeMethods.FindWindowEx(handle, IntPtr.Zero, "Chrome_WidgetWin_0", null);
-                    //cefRenderWidget = StaticPinvoke.FindWindowEx(handle, IntPtr.Zero, "Chrome_RenderWidgetHostHWND", null);
-                    //cefIntermediate = StaticPinvoke.FindWindowEx(handle, IntPtr.Zero, "Intermediate D3D Window", null);
-
-                    if (IntPtr.Equals(handle, IntPtr.Zero))//unlikely.
+                    System.Windows.Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, new ThreadStart(delegate
                     {
-                        webBrowser.Close();
-                        pendingWallpapers.Remove(webBrowser);
-                        Logger.Error("cef-error: Error getting webhandle, terminating!.");
-                        return;
-                    }
-
-                    webBrowser.SetHWND(handle);
-                    AddWallpaper(webBrowser);
+                        var previewWindow = new LibraryPreviewView(wp)
+                        {
+                            DataContext = new LibraryPreviewViewModel(wp)
+                        };
+                        if (App.AppWindow != null)
+                        {
+                            previewWindow.Owner = App.AppWindow;
+                            previewWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                        }
+                        previewWindow.ShowDialog();
+                    }));
+                    tcs.SetResult(null);
                 }
-            }
-            catch (Exception ex)
+                catch (Exception e)
+                {
+                    tcs.SetException(e);
+                    Logger.Error(e.ToString());
+                }
+            });
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+            return tcs.Task;
+        }
+
+        public static Task ShowVLCScreenCaptureDialogSTAThread(IWallpaper wp)
+        {
+            var tcs = new TaskCompletionSource<object>();
+            var thread = new Thread(() =>
             {
-                Logger.Error("cef-error: " + ex.ToString());
-            }
+                try
+                {
+                    System.Windows.Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, new ThreadStart(delegate
+                    {
+                        var vlcCaptureWindow = new VLCWallpaperRecordWindow(wp);
+                        if (App.AppWindow != null)
+                        {
+                            vlcCaptureWindow.Owner = App.AppWindow;
+                            vlcCaptureWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                        }
+                        vlcCaptureWindow.ShowDialog();
+                    }));
+                    tcs.SetResult(null);
+                }
+                catch (Exception e)
+                {
+                    tcs.SetException(e);
+                    Logger.Error(e.ToString());
+                }
+            });
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+            return tcs.Task;
         }
 
         public static void CloseAllWallpapers()
         {
             Wallpapers.ForEach(x => x.Close());
             Wallpapers.Clear();
+            RefreshDesktop();
         }
 
         public static void CloseWallpaper(WallpaperType type)
@@ -241,6 +292,7 @@ namespace livelywpf
                     x.Close();             
             });
             Wallpapers.RemoveAll(x => x.GetWallpaperType() == type);
+            RefreshDesktop();
         }
 
         public static void CloseWallpaper(Screen display)
@@ -251,6 +303,7 @@ namespace livelywpf
                     x.Close();
             });
             Wallpapers.RemoveAll(x => x.GetScreen() == display);
+            RefreshDesktop();
         }
 
         public static void CloseWallpaper(LibraryModel wp)
@@ -261,6 +314,7 @@ namespace livelywpf
                     x.Close();
             });
             Wallpapers.RemoveAll(x => x.GetWallpaperData() == wp);
+            RefreshDesktop();
         }
 
         public static void SendMessageWallpaper(LibraryModel wp, string msg)

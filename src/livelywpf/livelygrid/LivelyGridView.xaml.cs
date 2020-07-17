@@ -109,5 +109,10 @@ namespace livelygrid
         }
 
         #endregion
+
+        private void moreInformation_Click(object sender, RoutedEventArgs e)
+        {
+            FlyoutBase.ShowAttachedFlyout((FrameworkElement)sender);
+        }
     }
 }

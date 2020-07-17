@@ -77,7 +77,7 @@ namespace livelywpf
             }
         }
 
-        private void UpdateConfigFile()
+        public void UpdateConfigFile()
         {
             //testing
             SettingsJSON.SaveConfig(@"C:\Users\rocks\Documents\GIFS\lively_config.json", Settings);

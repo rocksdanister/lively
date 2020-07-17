@@ -1,18 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
+using System.Windows.Forms;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation.Metadata;
 using Windows.UI.Xaml;
@@ -59,7 +50,7 @@ namespace livelywpf.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void LivelyGridControl_ContextMenuClick(object sender, object e)
+        private async void LivelyGridControl_ContextMenuClick(object sender, object e)
         {
             var s = sender as MenuFlyoutItem;
             var obj = (LibraryModel)e;
@@ -91,11 +82,21 @@ namespace livelywpf.Views
                     Program.LibraryVM.WallpaperExport(e, savePath);
                     break;
                 case "deleteWallpaper":
-                    Program.LibraryVM.WallpaperDelete(e);
+                    var result = await ShowDeleteConfirmationDialog(sender, e);
+                    if (result == ContentDialogResult.Primary)
+                    {
+                        Program.LibraryVM.WallpaperDelete(e);
+                    }
                     break;
                 case "customiseWallpaper":
                     //todo: send display info.
                     Program.LibraryVM.WallpaperSendMsg(e, "lively-customise ");
+                    break;
+                case "convertVideo":
+                    Program.LibraryVM.WallpaperVideoConvert(obj);
+                    break;
+                case "moreInformation":
+                    throw new NotImplementedException();
                     break;
             }
         }
@@ -106,6 +107,7 @@ namespace livelywpf.Views
             {
                 var uri = await e.DataView.GetWebLinkAsync();
                 Logger.Info("Dropped url:- " + uri.ToString());
+                Program.LibraryVM.AddWallpaper(uri.ToString(), WallpaperType.url, LibraryTileType.processing, Screen.PrimaryScreen);
             }
             else if (e.DataView.Contains(StandardDataFormats.StorageItems))
             {
@@ -128,11 +130,11 @@ namespace livelywpf.Views
 
                     if (Path.GetExtension(item).Equals(".gif", StringComparison.OrdinalIgnoreCase))
                     {
-                        throw new NotImplementedException();
+                        Program.LibraryVM.AddWallpaper(item, WallpaperType.gif, LibraryTileType.processing, Screen.PrimaryScreen);
                     }
                     else if (Path.GetExtension(item).Equals(".html", StringComparison.OrdinalIgnoreCase))
                     {
-                        throw new NotImplementedException();
+                        Program.LibraryVM.AddWallpaper(item, WallpaperType.web, LibraryTileType.processing, Screen.PrimaryScreen);
                     }
                     else if (Path.GetExtension(item).Equals(".zip", StringComparison.OrdinalIgnoreCase))
                     {
@@ -140,14 +142,42 @@ namespace livelywpf.Views
                     }
                     else if (FileOperations.IsVideoFile(item))
                     {
-                        throw new NotImplementedException();
+                        Program.LibraryVM.AddWallpaper(item, WallpaperType.video, LibraryTileType.processing, Screen.PrimaryScreen);
                     }
                     else
                     {
-                        throw new NotImplementedException();
+                        System.Windows.MessageBox.Show("not supported");
                     }
                 }
             }
+        }
+
+        private async Task<ContentDialogResult> ShowDeleteConfirmationDialog(object sender, object arg)
+        {
+            var item = (MenuFlyoutItem)sender;
+            var lib = (LibraryModel)arg;
+
+            var tb = new Windows.UI.Xaml.Controls.TextBlock
+            {
+                Text = lib.Title + " by " + lib.LivelyInfo.Author
+            };
+            ContentDialog noWifiDialog = new ContentDialog
+            {
+                Title = "Are you sure you wish to delete the wallpaper?",
+                Content = tb,
+                PrimaryButtonText ="Yes",
+                SecondaryButtonText ="No",
+            };
+
+            // Use this code to associate the dialog to the appropriate AppWindow by setting
+            // the dialog's XamlRoot to the same XamlRoot as an element that is already present in the AppWindow.
+            if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 8))
+            {
+                noWifiDialog.XamlRoot = item.XamlRoot;
+            }
+
+            ContentDialogResult result = await noWifiDialog.ShowAsync();
+            return result;
         }
 
         private void Page_Unloaded(object sender, System.Windows.RoutedEventArgs e)
@@ -155,30 +185,5 @@ namespace livelywpf.Views
             //stop rendering previews..
             LivelyGridControl.GridElementSize(livelygrid.GridSize.NoPreview);
         }
-
-        /*
-        private async void LivelyGrid_SelectionChanged(object sender, Windows.UI.Xaml.Controls.SelectionChangedEventArgs e)
-        {
-        var gridView = sender as Windows.UI.Xaml.Controls.GridView;
-
-        ContentDialog noWifiDialog = new ContentDialog
-        {
-        //Title = LibraryVM[gridView.SelectedIndex].Title,
-        //Content = LibraryVM[gridView.SelectedIndex].Desc,
-        PrimaryButtonText = "Set as Wallpaper",
-        CloseButtonText = "Cancel"
-        };
-
-        // Use this code to associate the dialog to the appropriate AppWindow by setting
-        // the dialog's XamlRoot to the same XamlRoot as an element that is already present in the AppWindow.
-        if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 8))
-        {
-        //note: can still select the suggestbox, how to add multiple roots?
-        noWifiDialog.XamlRoot = gridView.XamlRoot;
-        }
-
-        ContentDialogResult result = await noWifiDialog.ShowAsync();
-        }
-        */
     }
 }

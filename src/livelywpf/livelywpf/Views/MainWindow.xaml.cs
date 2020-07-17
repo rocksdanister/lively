@@ -1,5 +1,6 @@
 ﻿using livelywpf.Core;
 using livelywpf.Views;
+using livelywpf.Views.ScreenRecordlibVLC;
 using Microsoft.Toolkit.Wpf.UI.XamlHost;
 using ModernWpf.Media.Animation;
 using NLog;

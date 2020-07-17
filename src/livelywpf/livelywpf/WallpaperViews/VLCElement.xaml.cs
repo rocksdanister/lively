@@ -15,7 +15,7 @@ namespace livelywpf
     public partial class VLCElement : Window
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        bool _coreInitialized = false;
+        bool _mediaReady = false;
         bool _isNetworkFile = false;
         LibVLC _libVLC;
         MediaPlayer _mediaPlayer;
@@ -58,7 +58,7 @@ namespace livelywpf
                 _media = new Media(_libVLC, _filePath, FromType.FromPath);
                 _mediaPlayer.Play(_media);
             }
-            _coreInitialized = true;
+            _mediaReady = true;
         }
 
         private void _mediaPlayer_EndReached(object sender, EventArgs e)
@@ -75,33 +75,35 @@ namespace livelywpf
 
         public void PausePlayer()
         {
-            if (_mediaPlayer.IsPlaying && _coreInitialized)
+            if (_mediaPlayer.IsPlaying && _mediaReady)
             {
-                ThreadPool.QueueUserWorkItem(_ => _mediaPlayer.Pause());
+                _mediaPlayer.Pause();
+                //ThreadPool.QueueUserWorkItem(_ => _mediaPlayer.Pause());
             }
         }
 
         public void PlayMedia()
         {
-            if (_coreInitialized)
+            if (_mediaReady)
             {
-                ThreadPool.QueueUserWorkItem(_ => _mediaPlayer.Play());
+                _mediaPlayer.Play();
+                //ThreadPool.QueueUserWorkItem(_ => _mediaPlayer.Play());
             }
         }
 
         public void StopPlayer()
         {
-            if (_coreInitialized)
+            if (_mediaReady)
             {
-                ThreadPool.QueueUserWorkItem(_ => _mediaPlayer.Stop());
+                _mediaPlayer.Stop();
+                //ThreadPool.QueueUserWorkItem(_ => _mediaPlayer.Stop());
             }
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            //todo: somethings off..corrupt memory error on close.
+            _mediaReady = false;
             _mediaPlayer.EndReached -= _mediaPlayer_EndReached;
-            ThreadPool.QueueUserWorkItem(_ => _mediaPlayer.Stop());
             _mediaPlayer.Dispose();
             _libVLC.Dispose();
             _media.Dispose();

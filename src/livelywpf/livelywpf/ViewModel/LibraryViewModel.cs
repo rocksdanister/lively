@@ -32,6 +32,8 @@ namespace livelywpf
                 LibraryItems.Add(item);
             }
 
+            //SetupDesktop.WallpaperLoaded += SetupDesktop_WallpaperLoaded;
+
             //not possible currently, turn on when possible.
             //ref: https://github.com/microsoft/microsoft-ui-xaml/issues/911
             //SetWallpaperItemClicked = new RelayCommand(WallpaperSet);
@@ -112,15 +114,15 @@ namespace livelywpf
         {
             var selection = (LibraryModel)obj;
             string folderPath;
-            if (selection.LivelyInfo.Type == WallpaperType.url || selection.LivelyInfo.Type == WallpaperType.videostream)
+            if (selection.LivelyInfo.Type == WallpaperType.url 
+            || selection.LivelyInfo.Type == WallpaperType.videostream)
             {
                 folderPath = selection.LivelyInfoFolderPath;
             }
             else
             {
-                folderPath = selection.FilePath;//Path.GetDirectoryName(selection.FilePath);
+                folderPath = selection.FilePath;
             }
-
             FileOperations.OpenFolder(folderPath);
         }
 
@@ -135,12 +137,31 @@ namespace livelywpf
                     || selection.LivelyInfo.Type == WallpaperType.url)
                     {
                         //no wallpaper file on disk, only wallpaper metadata.
-                        ZipCreate.CreateZip(saveFile, new List<string>() { selection.LivelyInfoFolderPath });
+                        var tmpDir = Path.Combine(Program.LivelyDir, "tmpdata", "wpdata");
+                        FileOperations.EmptyDirectory(tmpDir);
+                        LivelyInfoModel info = new LivelyInfoModel(selection.LivelyInfo)
+                        {
+                            IsAbsolutePath = false
+                        };
+
+                        //..changing absolute filepaths to relative, FileName is not modified since its url.
+                        if (selection.ThumbnailPath != null)
+                        {
+                            File.Copy(selection.ThumbnailPath, Path.Combine(tmpDir, Path.GetFileName(selection.ThumbnailPath)));
+                            info.Thumbnail = Path.GetFileName(selection.ThumbnailPath);
+                        }
+                        if (selection.PreviewClipPath != null)
+                        {
+                            File.Copy(selection.PreviewClipPath, Path.Combine(tmpDir, Path.GetFileName(selection.PreviewClipPath)));
+                            info.Preview = Path.GetFileName(selection.PreviewClipPath);
+                        }
+                        LivelyInfoJSON.SaveWallpaperMetaData(info, Path.Combine(tmpDir, "LivelyInfo.json"));
+
+                        ZipCreate.CreateZip(saveFile, new List<string>() { tmpDir });
                     }
                     else if(selection.LivelyInfo.IsAbsolutePath)
                     {
-                        List<string> metaData = new List<string>();
-                        metaData.AddRange(Directory.GetFiles(selection.LivelyInfoFolderPath, "*.*", SearchOption.TopDirectoryOnly));
+                        //livelyinfo.json only contains the absolute filepath of the file; file is in different location.
                         List<string> files = new List<string>();
                         if (selection.LivelyInfo.Type == WallpaperType.video || selection.LivelyInfo.Type == WallpaperType.gif)
                         {
@@ -151,11 +172,35 @@ namespace livelywpf
                             files.AddRange(Directory.GetFiles(Directory.GetParent(selection.FilePath).ToString(), "*.*", SearchOption.AllDirectories));
                         }
 
+                        var tmpDir = Path.Combine(Program.LivelyDir, "tmpdata", "wpdata");
+                        FileOperations.EmptyDirectory(tmpDir);
+                        LivelyInfoModel info = new LivelyInfoModel(selection.LivelyInfo)
+                        {
+                            IsAbsolutePath = false
+                        };
+                        info.FileName = Path.GetFileName(info.FileName);
+
+                        //..changing absolute filepaths to relative.
+                        if (selection.ThumbnailPath != null)
+                        {
+                            File.Copy(selection.ThumbnailPath, Path.Combine(tmpDir, Path.GetFileName(selection.ThumbnailPath)));
+                            info.Thumbnail = Path.GetFileName(selection.ThumbnailPath);
+                        }
+                        if (selection.PreviewClipPath != null)
+                        {
+                            File.Copy(selection.PreviewClipPath, Path.Combine(tmpDir, Path.GetFileName(selection.PreviewClipPath)));
+                            info.Preview = Path.GetFileName(selection.PreviewClipPath);
+                        }
+                        LivelyInfoJSON.SaveWallpaperMetaData(info, Path.Combine(tmpDir, "LivelyInfo.json"));
+
+                        List<string> metaData = new List<string>();
+                        metaData.AddRange(Directory.GetFiles(tmpDir, "*.*", SearchOption.TopDirectoryOnly));
                         var fileData = new List<ZipCreate.FileData>
                         {
-                            new ZipCreate.FileData() { Files = metaData, ParentDirectory = selection.LivelyInfoFolderPath },
+                            new ZipCreate.FileData() { Files = metaData, ParentDirectory = tmpDir },
                             new ZipCreate.FileData() { Files = files, ParentDirectory = Directory.GetParent(selection.FilePath).ToString() }
                         };
+         
                         ZipCreate.CreateZip(saveFile, fileData);
                     }
                     else 
@@ -230,12 +275,14 @@ namespace livelywpf
                 }
             });
 
-            var libItem = ScanWallpaperFolder(installDir);
-            if (libItem != null)
-            {
-                var binarySearchIndex = BinarySearch(LibraryItems, libItem.Title);
-                LibraryItems.Insert(binarySearchIndex, libItem);
-            }
+            AddWallpaper(installDir);
+        }
+
+        public void WallpaperVideoConvert(object obj)
+        {
+            var selection = (LibraryModel)obj;
+            var model = new LibraryModel(selection.LivelyInfo, selection.LivelyInfoFolderPath, LibraryTileType.videoConvert);
+            SetupDesktop.SetWallpaper(model, Screen.PrimaryScreen);
         }
 
         #endregion wallpaper operations
@@ -243,10 +290,53 @@ namespace livelywpf
         #region contextmenu
 
         public RelayCommand SetWallpaperItemClicked { get; set; }
+        public RelayCommand DeleteWallpaperItemClicked { get; set; }
+        public RelayCommand ShowDiskWallpaperItemClicked { get; set; }
+        public RelayCommand ZipWallpaperItemClicked { get; set; }
 
         #endregion contextmenu
 
         #region helpers
+
+        public void AddWallpaper(string path, WallpaperType wpType, LibraryTileType dataType, Screen screen)
+        {
+            var dir = Path.Combine(Program.LivelyDir, "SaveData", "wptmp", Path.GetRandomFileName());
+            if (dataType == LibraryTileType.processing)
+            {
+                //Preview gif and thumbnail to be captured..
+                //Create a tile at index 0, updates value realtime.
+                try
+                {
+                    Directory.CreateDirectory(dir);
+                }
+                catch (Exception e)
+                {
+                    Logger.Error(e.ToString());
+                    return;
+                }
+                var data = new LivelyInfoModel() { 
+                    Title = "Processing..",
+                    Type = wpType,
+                    IsAbsolutePath = true,
+                    FileName = path,
+                    Preview = null,
+                    Thumbnail = null
+                };
+                var model = new LibraryModel(data, dir, LibraryTileType.processing);
+                LibraryItems.Insert(0, model);
+                SetupDesktop.SetWallpaper(model, screen);
+            }
+        }
+
+        public void AddWallpaper(string folderPath)
+        {
+            var libItem = ScanWallpaperFolder(folderPath);
+            if (libItem != null)
+            {
+                var binarySearchIndex = BinarySearch(LibraryItems, libItem.Title);
+                LibraryItems.Insert(binarySearchIndex, libItem);
+            }
+        }
 
         public void FilterCollection(string str)
         {
@@ -290,7 +380,7 @@ namespace livelywpf
                     }
                 }
             }
-            return SortWallpaper(tmpLibItems);
+            return SortWallpapers(tmpLibItems);
         }
         
         private LibraryModel ScanWallpaperFolder(string folderPath)
@@ -327,7 +417,7 @@ namespace livelywpf
             return null;
         }
         
-        private List<LibraryModel> SortWallpaper(List<LibraryModel> data)
+        private List<LibraryModel> SortWallpapers(List<LibraryModel> data)
         {
             try
             {
@@ -337,6 +427,12 @@ namespace livelywpf
             {
                 return null;
             }
+        }
+
+        public void SortExistingWallpaper(LibraryModel item)
+        {
+            var binarySearchIndex = BinarySearch(LibraryItems, item.Title);
+            LibraryItems.Move(LibraryItems.IndexOf(item), binarySearchIndex);
         }
 
         private int BinarySearch(ObservableCollection<LibraryModel> item, string x)

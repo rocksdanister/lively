@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
@@ -23,6 +24,14 @@ namespace livelywpf.Core
         void Stop();
         void Close();
         Screen GetScreen();
+        event EventHandler<WindowInitializedArgs> WindowInitialized;
+    }
+
+    public class WindowInitializedArgs
+    {
+        public bool Success { get; set; }
+        public Exception Error { get; set; }
+        public string Msg { get; set; }
     }
 
     #endregion interface
@@ -42,6 +51,8 @@ namespace livelywpf.Core
         VLCElement Player { get; set; }
         LibraryModel Model { get; set; }
         Screen Display { get; set; }
+
+        public event EventHandler<WindowInitializedArgs> WindowInitialized;
 
         public void Close()
         {
@@ -97,6 +108,7 @@ namespace livelywpf.Core
             {
                 Player.Show();
                 HWND = new WindowInteropHelper(Player).Handle;
+                WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = true, Error = null });
             }
         }
 
@@ -119,6 +131,9 @@ namespace livelywpf.Core
         MPVElement Player { get; set; }
         LibraryModel Model { get; set; }
         Screen Display { get; set; }
+
+        public event EventHandler<WindowInitializedArgs> WindowInitialized;
+
         public WallpaperType GetWallpaperType()
         {
             return Model.LivelyInfo.Type;
@@ -170,6 +185,7 @@ namespace livelywpf.Core
             {
                 Player.Show();
                 HWND = new WindowInteropHelper(Player).Handle;
+                WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = true, Error = null });
             }
         }
     }
@@ -187,6 +203,9 @@ namespace livelywpf.Core
         MediaElementWPF Player { get; set; }
         LibraryModel Model { get; set; }
         Screen Display { get; set; }
+
+        public event EventHandler<WindowInitializedArgs> WindowInitialized;
+
         public WallpaperType GetWallpaperType()
         {
             return WallpaperType.video;
@@ -238,6 +257,7 @@ namespace livelywpf.Core
             {
                 Player.Show();
                 HWND = new WindowInteropHelper(Player).Handle;
+                WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = true, Error = null });
             }
         }
     }
@@ -257,6 +277,9 @@ namespace livelywpf.Core
         GIFViewUWP Player { get; set; }
         LibraryModel Model { get; set; }
         Screen Display { get; set; }
+
+        public event EventHandler<WindowInitializedArgs> WindowInitialized;
+
         public void Close()
         {
             System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
@@ -311,6 +334,7 @@ namespace livelywpf.Core
             {
                 Player.Show();
                 HWND = new WindowInteropHelper(Player).Handle;
+                WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = true, Error = null });
             }
         }
 
@@ -369,6 +393,8 @@ namespace livelywpf.Core
         LibraryModel Model { get; set; }
         Screen Display { get; set; }
 
+        public event EventHandler<WindowInitializedArgs> WindowInitialized;
+
         public void Close()
         {
             try
@@ -377,6 +403,7 @@ namespace livelywpf.Core
                 Proc.Close();
             }
             catch {
+
                 try
                 {
                     //force terminate.
@@ -435,10 +462,56 @@ namespace livelywpf.Core
             {
                 try
                 {
+                    Proc.OutputDataReceived += Proc_OutputDataReceived;
                     Proc.Start();
                     Proc.BeginOutputReadLine();
                 }
                 catch { }
+            }
+        }
+
+        private void Proc_OutputDataReceived(object sender, DataReceivedEventArgs e)
+        {
+            bool status = true, initialized = false;
+            Exception error = null;
+            string msg = null;
+            try
+            {
+                IntPtr handle = new IntPtr();
+                //Retrieves the windowhandle of cefsubprocess, cefsharp is launching cef as a separate proces..
+                //If you add the full pgm as child of workerw then there are problems (prob related sharing input queue)
+                //Instead hiding the pgm window & adding cefrender window instead.
+                msg = "Cefsharp Handle:" + e.Data;
+                if (e.Data.Contains("HWND"))
+                {
+                    handle = new IntPtr(Convert.ToInt32(e.Data.Substring(4), 10));
+                    //note-handle: WindowsForms10.Window.8.app.0.141b42a_r9_ad1
+
+                    //hidin other windows, no longer required since I'm doing it in cefsharp pgm itself.
+                    NativeMethods.ShowWindow(GetProcess().MainWindowHandle, 0);
+
+                    //WARNING:- If you put the whole cefsharp window, workerw crashes and refuses to start again on next startup!!, this is a workaround.
+                    handle = NativeMethods.FindWindowEx(handle, IntPtr.Zero, "Chrome_WidgetWin_0", null);
+                    //cefRenderWidget = StaticPinvoke.FindWindowEx(handle, IntPtr.Zero, "Chrome_RenderWidgetHostHWND", null);
+                    //cefIntermediate = StaticPinvoke.FindWindowEx(handle, IntPtr.Zero, "Intermediate D3D Window", null);
+
+                    if (IntPtr.Equals(handle, IntPtr.Zero))//unlikely.
+                    {
+                        status = false;
+                    }
+                    SetHWND(handle);
+                }
+            }
+            catch (Exception ex)
+            {
+                status = false;
+                error = ex;
+            }
+
+            if (!initialized)
+            {
+                initialized = true;
+                WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = status, Error = error, Msg = msg });
             }
         }
 
@@ -451,6 +524,7 @@ namespace livelywpf.Core
     #endregion web browsers
 
     #region program wallpapers
+    //todo
     public class ExtPrograms : IWallpaper
     {
         public ExtPrograms(Process proc, IntPtr hwnd, LibraryModel model, Screen display)
@@ -466,6 +540,9 @@ namespace livelywpf.Core
         LibraryModel Model { get; set; }
         Screen Display { get; set; }
         public UInt32 SuspendCnt { get; set; }
+
+        public event EventHandler<WindowInitializedArgs> WindowInitialized;
+
         public void Close()
         {
             try

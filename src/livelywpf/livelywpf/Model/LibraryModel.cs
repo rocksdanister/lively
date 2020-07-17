@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Security.Cryptography;
@@ -8,11 +9,24 @@ using Windows.Storage.Provider;
 
 namespace livelywpf
 {
+    public enum LibraryTileType
+    {
+        [Description("Converting to mp4")]
+        videoConvert,
+        [Description("To be added to library")]
+        processing,
+        installing,
+        downloading,
+        [Description("Ready to be used")]
+        ready
+    }
+
     [Serializable]
     public class LibraryModel : ObservableObject
     {
-        public LibraryModel(LivelyInfoModel data, string folderPath)
+        public LibraryModel(LivelyInfoModel data, string folderPath, LibraryTileType tileType = LibraryTileType.ready)
         {
+            DataType = tileType;
             LivelyInfo = new LivelyInfoModel(data);
             Title = data.Title;
             Desc = data.Desc;
@@ -22,47 +36,48 @@ namespace livelywpf
             if (data.IsAbsolutePath)
             {
                 FilePath = data.FileName;
-
-                if (File.Exists(data.Preview))
-                {
-                    ImagePath = data.Preview;
-                }
-                else
-                {
-                    ImagePath = data.Thumbnail;
-                }
+                PreviewClipPath = data.Preview;
+                ThumbnailPath = data.Thumbnail;
             }
             else
             {
-                try
+                if (data.Type == WallpaperType.url 
+                || data.Type == WallpaperType.videostream)
                 {
-                    FilePath = Path.Combine(folderPath, data.FileName);
+                    //no file.
+                    FilePath = data.FileName;
                 }
-                catch
+                else
                 {
-                    FilePath = null;
+                    try
+                    {
+                        FilePath = Path.Combine(folderPath, data.FileName);
+                    }
+                    catch
+                    {
+                        FilePath = null;
+                    }
                 }
 
                 try
                 {
-                    if (data.Preview != null)
-                    {
-                        var imgPath = Path.Combine(folderPath, data.Preview);
-                        if (File.Exists(imgPath))
-                        {
-                            ImagePath = imgPath;
-                        }
-                    }
-                    else
-                    {
-                        ImagePath = Path.Combine(folderPath, data.Thumbnail);
-                    }
+                    PreviewClipPath = Path.Combine(folderPath, data.Preview);
                 }
                 catch
                 {
-                    ImagePath = null;
+                    PreviewClipPath = null;
+                }
+
+                try
+                {
+                    ThumbnailPath = Path.Combine(folderPath, data.Thumbnail);
+                }
+                catch
+                {
+                    ThumbnailPath = null;
                 }
             }
+            ImagePath = File.Exists(PreviewClipPath) ? PreviewClipPath : ThumbnailPath;
             LivelyInfoFolderPath = folderPath;
         }
 
@@ -80,19 +95,31 @@ namespace livelywpf
             }
         }
 
+        private LibraryTileType _dataType;
+        public LibraryTileType DataType
+        {
+            get { return _dataType; }
+            set
+            {
+                _dataType = value;
+                OnPropertyChanged("DataType");
+            }
+        }
+
         private string _filePath;
         public string FilePath
         {
             get { return _filePath; }
             set
             {
-                if (File.Exists(value))
+                if (LivelyInfo.Type == WallpaperType.url 
+                || LivelyInfo.Type == WallpaperType.videostream)
                 {
                     _filePath = value;
                 }
                 else
                 {
-                    _filePath = null;
+                    _filePath = File.Exists(value) ? value : null;
                 }
                 OnPropertyChanged("FilePath");
             }
@@ -151,6 +178,34 @@ namespace livelywpf
             }
         }
 
+        private string _previewClipPath;
+        public string PreviewClipPath
+        {
+            get
+            {
+                return _previewClipPath;
+            }
+            set
+            {
+                _previewClipPath = File.Exists(value) ? value : null;
+                OnPropertyChanged("PreviewClipPath");
+            }
+        }
+
+        private string _thumbnailPath;
+        public string ThumbnailPath
+        {
+            get
+            {
+                return _thumbnailPath;
+            }
+            set
+            {
+                _thumbnailPath = File.Exists(value) ? value : null;
+                OnPropertyChanged("ThumbnailPath");
+            }
+        }
+
         private Uri _srcWebsite;
         public Uri SrcWebsite
         {
@@ -180,7 +235,7 @@ namespace livelywpf
         }
 
         #region helpers
-        private Uri GetUri(string s, string scheme)
+        public Uri GetUri(string s, string scheme)
         {
             try
             {

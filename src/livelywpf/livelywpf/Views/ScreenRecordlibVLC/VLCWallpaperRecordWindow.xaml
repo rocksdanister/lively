@@ -1,0 +1,25 @@
+﻿<Window x:Class="livelywpf.Views.VLCWallpaperRecordWindow"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        ui:WindowHelper.UseModernWindowStyle="True"
+        ui:TitleBar.ExtendViewIntoTitleBar="True"
+        ui:ThemeManager.IsThemeAware="True"    
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:livelywpf.Views"
+        mc:Ignorable="d"
+        MaxWidth="1280" MaxHeight="720"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Title="libVLC ScreenRecord"
+        Closing="Window_Closing"
+        Loaded="Window_Loaded">
+    <Grid >
+        
+        <Border Width="1280" Height="720" x:Name="PreviewBorder" BorderBrush="Black" BorderThickness="1" Visibility="Hidden"
+                HorizontalAlignment="Left" VerticalAlignment="Top" 
+                OpacityMask="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+        
+    </Grid>
+</Window>
