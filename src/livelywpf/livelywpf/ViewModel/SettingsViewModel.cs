@@ -182,8 +182,8 @@ namespace livelywpf
 
         #region performance
 
-        private ICommand _applicationRulesCommand;
-        public ICommand ApplicationRulesCommand
+        private RelayCommand _applicationRulesCommand;
+        public RelayCommand ApplicationRulesCommand
         {
             get
             {

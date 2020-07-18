@@ -1,21 +1,29 @@
 ﻿using livelywpf.Core;
+using livelywpf.Views;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Input;
 
 namespace livelywpf
 {
     class LibraryPreviewViewModel : ObservableObject
     {
-        //private readonly LivelyInfoModel Data = new LivelyInfoModel();
         readonly private LibraryModel libData;
-        public LibraryPreviewViewModel(IWallpaper wallpaper)
+        readonly ILibraryPreview Winstance;
+        public LibraryPreviewViewModel( ILibraryPreview wInterface, IWallpaper wallpaper)
         {
+            Winstance = wInterface;
+            Winstance.CaptureProgress += WInstance_CaptureProgress;
+            Winstance.PreviewUpdated += WInstance_PreviewUpdated;
+            Winstance.ThumbnailUpdated += WInstance_ThumbnailUpdated;
+            Winstance.WallpaperAttached += WInstance_WallpaperAttached;
+
             libData = wallpaper.GetWallpaperData();
-            //Data.Type = libData.LivelyInfo.Type;
             if (libData.LivelyInfo.Type == WallpaperType.url
             || libData.LivelyInfo.Type == WallpaperType.web
             || libData.LivelyInfo.Type == WallpaperType.webaudio)
@@ -55,29 +63,7 @@ namespace livelywpf
             ZipCheck = Program.SettingsVM.Settings.LivelyZipGenerate;
         }
 
-        private bool _gifCheck;
-        public bool GifCheck
-        {
-            get { return _gifCheck; }
-            set
-            {
-                _gifCheck = value;
-                Program.SettingsVM.Settings.GifCapture = _gifCheck;
-                Program.SettingsVM.UpdateConfigFile();
-            }
-        }
-
-        private bool _zipCheck;
-        public bool ZipCheck
-        {
-            get { return _zipCheck; }
-            set
-            {
-                _zipCheck = value;
-                Program.SettingsVM.Settings.LivelyZipGenerate = _zipCheck;
-                Program.SettingsVM.UpdateConfigFile();
-            }
-        }
+        #region data
 
         private string _title;
         public string Title
@@ -91,8 +77,6 @@ namespace livelywpf
                 OnPropertyChanged("Title");
             }
         }
-
-        #region data
 
         private string _desc;
         public string Desc
@@ -133,6 +117,145 @@ namespace livelywpf
         }
 
         #endregion data
+
+        #region ui 
+
+        private double _currentProgress;
+        public double CurrentProgress
+        {
+            get { return _currentProgress; }
+            set
+            {
+                _currentProgress = value;
+                OnPropertyChanged("CurrentProgress");
+            }
+        }
+
+        private bool _gifCheck;
+        public bool GifCheck
+        {
+            get { return _gifCheck; }
+            set
+            {
+                _gifCheck = value;
+                Program.SettingsVM.Settings.GifCapture = _gifCheck;
+                Program.SettingsVM.UpdateConfigFile();
+            }
+        }
+
+        private bool _zipCheck;
+        public bool ZipCheck
+        {
+            get { return _zipCheck; }
+            set
+            {
+                _zipCheck = value;
+                Program.SettingsVM.Settings.LivelyZipGenerate = _zipCheck;
+                Program.SettingsVM.UpdateConfigFile();
+            }
+        }
+
+        #endregion ui
+
+        #region interface methods
+
+        private void WInstance_WallpaperAttached(object sender, EventArgs e)
+        {
+            Winstance.StartThumbnailCaptureLoop(libData.LivelyInfoFolderPath);
+        }
+
+        private bool _canCancelOperation = true;
+        private void WInstance_CaptureProgress(object sender, double value)
+        {
+            if(_canCancelOperation)
+            {
+                _canCancelOperation = false;
+                CaptureCommand.RaiseCanExecuteChanged();
+                CancelCommand.RaiseCanExecuteChanged();
+            }
+
+            CurrentProgress = value;
+            if (CurrentProgress == 100)
+            {
+                libData.DataType = LibraryTileType.ready;
+                LivelyInfoJSON.SaveWallpaperMetaData(libData.LivelyInfo, Path.Combine(libData.LivelyInfoFolderPath, "LivelyInfo.json"));
+                Program.LibraryVM.SortExistingWallpaper(libData);
+
+                if (Program.SettingsVM.Settings.LivelyZipGenerate)
+                {
+                    string savePath = "";
+                    var saveFileDialog1 = new Microsoft.Win32.SaveFileDialog()
+                    {
+                        Title = "Select location to save the file",
+                        Filter = "Lively/zip file|*.zip",
+                        FileName = libData.Title,
+                    };
+                    if (saveFileDialog1.ShowDialog() == true)
+                    {
+                        savePath = saveFileDialog1.FileName;
+                    }
+                    if (!String.IsNullOrEmpty(savePath))
+                    {
+                        Program.LibraryVM.WallpaperExport(libData, savePath);
+                    }
+                }
+                Winstance.Exit();
+            }
+        }
+
+        private RelayCommand _captureCommand;
+        public RelayCommand CaptureCommand
+        {
+            get
+            {
+                if (_captureCommand == null)
+                {
+                    _captureCommand = new RelayCommand(
+                        param => Winstance.StartCapture(libData.LivelyInfoFolderPath), param => _canCancelOperation);
+                }
+                return _captureCommand;
+            }
+            private set
+            {
+                _captureCommand = value;
+            }
+        }
+
+        private RelayCommand _cancelCommand;
+        public RelayCommand CancelCommand
+        {
+            get
+            {
+                if (_cancelCommand == null)
+                {
+                    _cancelCommand = new RelayCommand(
+                        param => Winstance.Exit(), param => _canCancelOperation);
+                }
+                return _cancelCommand;
+            }
+            private set
+            {
+                _cancelCommand = value;
+            }
+        }
+
+        private void WInstance_ThumbnailUpdated(object sender, string path)
+        {
+            libData.ImagePath = null;
+            libData.ImagePath = path;
+            libData.LivelyInfo.Thumbnail = path;
+            libData.ThumbnailPath = path;
+        }
+
+        private void WInstance_PreviewUpdated(object sender, string path)
+        {
+            libData.ImagePath = null;
+            libData.ImagePath = path;
+            libData.LivelyInfo.Preview = path;
+            libData.PreviewClipPath = path;
+        }
+
+        #endregion interface methods
 
         #region helpers
 

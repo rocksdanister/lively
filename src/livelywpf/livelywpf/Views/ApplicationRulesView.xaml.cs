@@ -22,5 +22,10 @@ namespace livelywpf.Views
             InitializeComponent();
             this.DataContext = Program.AppRulesVM;
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Program.AppRulesVM.UpdateDiskFile();
+        }
     }
 }

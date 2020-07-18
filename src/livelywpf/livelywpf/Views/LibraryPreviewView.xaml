@@ -3,7 +3,6 @@
         ui:WindowHelper.UseModernWindowStyle="True"
         ui:TitleBar.ExtendViewIntoTitleBar="False"
         ui:ThemeManager.IsThemeAware="True" 
-        ui:TitleBar.IsIconVisible="True"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -30,18 +29,20 @@
                 <TextBox MaxLength="250" Name="textboxDesc" Text="{Binding Desc, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True" TextWrapping="Wrap" Height="81" Margin="10,5,25,10" />
 
                 <Label Content="Author" />
-                <TextBox MaxLength="50" Name="textboxAuthor" Text="{Binding Author, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True" TextWrapping="Wrap"  Margin="10,5,25,10" />
+                <TextBox MaxLength="50" Name="textboxAuthor" Text="{Binding Author, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextWrapping="WrapWithOverflow" Margin="10,5,25,10" />
 
                 <Label Content="Source" />
-                <TextBox Name="textboxContact" Text="{Binding Url, Mode=TwoWay}" AcceptsReturn="True" TextWrapping="Wrap"  Margin="10,5,25,0" />
+                <TextBox Name="textboxContact" Text="{Binding Url, Mode=TwoWay}" TextWrapping="WrapWithOverflow"  Margin="10,5,25,0" />
 
                 <CheckBox x:Name="chkBoxCreatePreview" Content="Create Preview" Margin="10,10,0,0" IsChecked="{Binding Path=GifCheck, Mode=TwoWay}"/>
                 <CheckBox x:Name="chkBoxCreateZip" Content="Create Lively .zip" Margin="10,10,0,0" IsChecked="{Binding Path=ZipCheck, Mode=TwoWay}"/>
+                
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0, 0, 10, 0">
-                    <Button x:Name="CancelBtn" Content="Cancel"  ClickMode="Release" MinWidth="100" Margin="0, 0, 10, 0" IsEnabled="False"/>
-                    <Button x:Name="OkBtn" Content="OK"  ClickMode="Release" MinWidth="100" Click="OkBtn_Click"/>
+                    <Button x:Name="CancelBtn" Content="Cancel" MinWidth="100" Margin="0, 0, 10, 0" Command="{Binding CancelCommand}"/>
+                    <Button x:Name="OkBtn" Content="OK" MinWidth="100" Command="{Binding CaptureCommand}"/>
                 </StackPanel>
-                <ui:ProgressBar Name="gifProgressBar" VerticalAlignment="Bottom" Margin="0, 15, 0, 0" />
+                
+                <ui:ProgressBar Name="gifProgressBar" Value="{Binding CurrentProgress, Mode=OneWay}" VerticalAlignment="Bottom" Margin="0, 15, 0, 0" />
             </StackPanel>
         </ScrollViewer>
         

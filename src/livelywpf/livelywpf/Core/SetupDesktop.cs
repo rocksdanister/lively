@@ -3,6 +3,7 @@ using livelywpf.Views;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -147,6 +148,18 @@ namespace livelywpf
                 if (wallpaper.GetWallpaperData().DataType == LibraryTileType.processing)
                 {
                     await ShowPreviewDialogSTAThread(wallpaper);
+                    if(!File.Exists(
+                    Path.Combine(wallpaper.GetWallpaperData().LivelyInfoFolderPath,"LivelyInfo.json")))
+                    {
+                        //user cancelled/fail!
+                        wallpaper.Close();
+                        RefreshDesktop();
+                        await System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
+                        {
+                            Program.LibraryVM.WallpaperDelete(wallpaper.GetWallpaperData());
+                        }));
+                        return;
+                    }
                 }
                 else if(wallpaper.GetWallpaperData().DataType == LibraryTileType.videoConvert)
                 {
@@ -223,10 +236,7 @@ namespace livelywpf
                 {
                     System.Windows.Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, new ThreadStart(delegate
                     {
-                        var previewWindow = new LibraryPreviewView(wp)
-                        {
-                            DataContext = new LibraryPreviewViewModel(wp)
-                        };
+                        var previewWindow = new LibraryPreviewView(wp);
                         if (App.AppWindow != null)
                         {
                             previewWindow.Owner = App.AppWindow;

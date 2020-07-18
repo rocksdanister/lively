@@ -8,28 +8,38 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:livelywpf.Views"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        Title="Application Rules" Height="450" Width="800">
+        Title="Application Rules" Height="450" Width="800" Closing="Window_Closing">
+
     <Grid>
 
-        <ListView x:Name="listView" Width="Auto" Margin="25,38,199.6,11" SelectionMode="Single" ItemsSource="{Binding AppRules}">
+        <TextBlock Margin="25,5,0,0">Wallpaper playback behaviour based on running application</TextBlock>
+        <ListView x:Name="listView" Width="Auto" Margin="25,38,199.6,11" SelectionMode="Single" 
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                  BorderBrush="{DynamicResource SystemControlForegroundBaseLowBrush}" BorderThickness="1"
+                  ItemsSource="{Binding AppRules}" SelectedItem="{Binding SelectedItem}" 
+                  Style="{StaticResource {x:Static GridView.GridViewStyleKey}}">
+            <!-- style required for modernwpf gridview listview -->
             <ListView.View>
-                <GridView >
-                    <GridViewColumn Header="Application" Width="350" DisplayMemberBinding="{Binding AppRules.AppName, Mode=TwoWay}" />
-                    <GridViewColumn Header="Rule" Width="220" DisplayMemberBinding="{Binding Rule, Mode=TwoWay}" />
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Width="400" Header="Application" DisplayMemberBinding="{Binding AppName, Mode=TwoWay}" />
+                        <GridViewColumn Width="200" Header="Rule" DisplayMemberBinding="{Binding Rule, Mode=TwoWay}" />
+                    </GridView.Columns>
                 </GridView>
             </ListView.View>
         </ListView>
 
-        <Button Content="Add" HorizontalAlignment="Left" Margin="624,123,0,0" VerticalAlignment="Top" MinWidth="133"/>
-        <Button IsEnabled="False" Content="Remove" HorizontalAlignment="Left" Margin="624,155,0,0" VerticalAlignment="Top" MinWidth="133"/>
+        <Button Content="Add" HorizontalAlignment="Left" Margin="624,123,0,0" VerticalAlignment="Top" MinWidth="133" Command="{Binding AddCommand}"/>
+        <Button Content="Remove" HorizontalAlignment="Left" Margin="624,160,0,0" VerticalAlignment="Top" MinWidth="133" Command="{Binding RemoveCommand}"/>
 
-        <ComboBox HorizontalAlignment="Left" Margin="613,202,0,0" VerticalAlignment="Top" MinWidth="155" IsEnabled="False">
+        <ComboBox HorizontalAlignment="Left" Margin="613,202,0,0" VerticalAlignment="Top" MinWidth="155" SelectedIndex="{Binding SelectedAppRuleProperty, Mode=TwoWay}">
             <ComboBoxItem>Pause</ComboBoxItem>
             <ComboBoxItem>Ignore</ComboBoxItem>
             <ComboBoxItem IsEnabled="False">Kill</ComboBoxItem>
         </ComboBox>
-        
     </Grid>
+    
 </Window>
