@@ -15,7 +15,7 @@ namespace livelywpf
         /// </summary>
         /// <param name="data"></param>
         /// <param name="filePath"></param>
-        public static void SaveWallpaperLayout(WallpaperLayoutModel data, string filePath)
+        public static void SaveWallpaperLayout(List<WallpaperLayoutModel> data, string filePath)
         {
             JsonSerializer serializer = new JsonSerializer
             {
@@ -42,14 +42,14 @@ namespace livelywpf
         /// </summary>
         /// <param name="filePath"></param>
         /// <returns></returns>
-        public static WallpaperLayoutModel LoadWallpaperLayout(string filePath)
+        public static List<WallpaperLayoutModel> LoadWallpaperLayout(string filePath)
         {
             try
             {
                 using (StreamReader file = File.OpenText(filePath))
                 {
                     JsonSerializer serializer = new JsonSerializer();
-                    var tmp = (WallpaperLayoutModel)serializer.Deserialize(file, typeof(LivelyInfoModel));
+                    var tmp = (List<WallpaperLayoutModel>)serializer.Deserialize(file, typeof(List<WallpaperLayoutModel>));
 
                     //if file is corrupted, json can return null.
                     if (tmp == null)
@@ -64,6 +64,7 @@ namespace livelywpf
             }
             catch (Exception e)
             {
+                //System.Windows.MessageBox.Show(e.ToString());
                 Logger.Error(e.ToString());
             }
 

@@ -24,7 +24,12 @@ namespace livelywpf
             Winstance.WallpaperAttached += WInstance_WallpaperAttached;
 
             libData = wallpaper.GetWallpaperData();
-            if (libData.LivelyInfo.Type == WallpaperType.url
+            if(libData.LivelyInfo.Type == WallpaperType.videostream)
+            {
+                Url = libData.FilePath;
+                Title = GetLastSegmentUrl(libData.FilePath);
+            }
+            else if (libData.LivelyInfo.Type == WallpaperType.url
             || libData.LivelyInfo.Type == WallpaperType.web
             || libData.LivelyInfo.Type == WallpaperType.webaudio)
             {

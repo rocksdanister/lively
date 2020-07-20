@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -76,6 +77,30 @@ namespace livelywpf
                     break;
             }
             return screenStatus;
+        }
+
+        public static Screen GetScreen(string DeviceName, Rectangle Bounds, Rectangle WorkingArea, DisplayIdentificationMode mode)
+        {
+            foreach (var item in Screen.AllScreens)
+            {
+                switch (mode)
+                {
+                    case DisplayIdentificationMode.screenClass:
+                        if (item.DeviceName.Equals(DeviceName))
+                        {
+                            return item;
+                        }
+                        break;
+                    case DisplayIdentificationMode.screenLayout:
+                        //ignoring DeviceName which can change during driver update, windows restart etc..
+                        if (item.WorkingArea == WorkingArea && item.Bounds == Bounds)
+                        {
+                            return item;
+                        }
+                        break;
+                }
+            }
+            return null;
         }
     }
 }

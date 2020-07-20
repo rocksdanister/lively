@@ -41,8 +41,8 @@ namespace livelywpf.Core
     public class VideoPlayerVLC : IWallpaper
     {
         public VideoPlayerVLC(string filePath, LibraryModel model, Screen display)
-        {
-            Player = new VLCElement(filePath);
+        {          
+            Player = new VLCElement(filePath, model.LivelyInfo.Type == WallpaperType.videostream);
             this.Model = model;
             this.Display = display;
         }

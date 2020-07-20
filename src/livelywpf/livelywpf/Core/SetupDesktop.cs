@@ -22,7 +22,7 @@ namespace livelywpf
         private static bool _isInitialized = false;
 
         public static List<IWallpaper> Wallpapers = new List<IWallpaper>();
-        //public static event EventHandler<IWallpaper> WallpaperLoaded;
+        public static event EventHandler WallpaperChanged;
 
         public static void SetWallpaper(LibraryModel wp, Screen targetDisplay)
         {
@@ -173,17 +173,43 @@ namespace livelywpf
                 var prevWallpaper = Wallpapers.Find(x => x.GetScreen() == wallpaper.GetScreen());
                 if (prevWallpaper != null)
                 {
-                    CloseWallpaper(prevWallpaper.GetWallpaperData());
+                    CloseWallpaperWithoutEvent(prevWallpaper.GetWallpaperData());
+                    //CloseWallpaper(prevWallpaper.GetWallpaperData());
                 }
 
                 AddWallpaper(wallpaper.GetHWND(), wallpaper.GetScreen());
                 Wallpapers.Add(wallpaper);
+                WallpaperChanged?.Invoke(null, null);
+                SaveWallpaperLayoutDisk();
             }
             else
             {
                 Logger.Error(e.Error.ToString());
                 wallpaper.Close();
             }
+        }
+
+        private static void SaveWallpaperLayoutDisk()
+        {
+            List<WallpaperLayoutModel> layout = new List<WallpaperLayoutModel>();
+            foreach (var item in Wallpapers)
+            {
+                /*
+                layout.Add(new WallpaperLayoutModel(
+                    item.GetScreen().DeviceName, 
+                    item.GetScreen().BitsPerPixel,
+                    item.GetScreen().Bounds,
+                    item.GetScreen().WorkingArea,
+                    item.GetWallpaperData().LivelyInfoFolderPath));
+                */
+                layout.Add(new WallpaperLayoutModel(
+                item.GetScreen(),
+                item.GetWallpaperData().LivelyInfoFolderPath));
+            }
+
+            WallpaperLayoutJSON.SaveWallpaperLayout(
+                  layout,
+                  Path.Combine(Program.LivelyDir, "wallpaper_layout.json"));
         }
 
         /// <summary>
@@ -292,6 +318,7 @@ namespace livelywpf
             Wallpapers.ForEach(x => x.Close());
             Wallpapers.Clear();
             RefreshDesktop();
+            WallpaperChanged?.Invoke(null, null);
         }
 
         public static void CloseWallpaper(WallpaperType type)
@@ -303,6 +330,7 @@ namespace livelywpf
             });
             Wallpapers.RemoveAll(x => x.GetWallpaperType() == type);
             RefreshDesktop();
+            WallpaperChanged?.Invoke(null, null);
         }
 
         public static void CloseWallpaper(Screen display)
@@ -314,6 +342,7 @@ namespace livelywpf
             });
             Wallpapers.RemoveAll(x => x.GetScreen() == display);
             RefreshDesktop();
+            WallpaperChanged?.Invoke(null, null);
         }
 
         public static void CloseWallpaper(LibraryModel wp)
@@ -325,6 +354,7 @@ namespace livelywpf
             });
             Wallpapers.RemoveAll(x => x.GetWallpaperData() == wp);
             RefreshDesktop();
+            WallpaperChanged?.Invoke(null, null);
         }
 
         public static void SendMessageWallpaper(LibraryModel wp, string msg)
@@ -334,6 +364,17 @@ namespace livelywpf
                 if (x.GetWallpaperData() == wp)
                     x.GetProcess().StandardInput.WriteLine(msg);
             });
+        }
+
+        private static void CloseWallpaperWithoutEvent(LibraryModel wp)
+        {
+            Wallpapers.ForEach(x =>
+            {
+                if (x.GetWallpaperData() == wp)
+                    x.Close();
+            });
+            Wallpapers.RemoveAll(x => x.GetWallpaperData() == wp);
+            RefreshDesktop();
         }
 
         /// <summary>

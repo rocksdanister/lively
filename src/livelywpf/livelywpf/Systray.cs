@@ -23,7 +23,7 @@ namespace livelywpf
 
             CreateContextMenu();
             _notifyIcon.Visible = true;
-            
+
         }
 
         private static System.Windows.Forms.ToolStripMenuItem pauseTrayBtn;
@@ -46,7 +46,7 @@ namespace livelywpf
 
         private static void ToggleWallpaperPlaybackState()
         {
-            if(Playback.PlaybackState == PlaybackState.play)
+            if (Playback.PlaybackState == PlaybackState.play)
             {
                 Playback.PlaybackState = PlaybackState.paused;
                 pauseTrayBtn.Checked = true;

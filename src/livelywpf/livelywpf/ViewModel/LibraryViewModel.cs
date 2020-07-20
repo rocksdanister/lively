@@ -32,8 +32,7 @@ namespace livelywpf
                 LibraryItems.Add(item);
             }
 
-            //SetupDesktop.WallpaperLoaded += SetupDesktop_WallpaperLoaded;
-
+            SetupDesktop.WallpaperChanged += SetupDesktop_WallpaperChanged;
             //not possible currently, turn on when possible.
             //ref: https://github.com/microsoft/microsoft-ui-xaml/issues/911
             //SetWallpaperItemClicked = new RelayCommand(WallpaperSet);
@@ -81,11 +80,17 @@ namespace livelywpf
             }
             set
             {
-                _selectedItem = value;
                 if (value != null)
                 {
-                    WallpaperSet(value);
+                    bool found = false;
+                    foreach (var item in SetupDesktop.Wallpapers)
+                    {
+                        found = item.GetWallpaperData() == value;
+                    }
+                    if(!found)
+                        WallpaperSet(value);
                 }
+                _selectedItem = value;
                 OnPropertyChanged("SelectedItem");
             }
         }
@@ -460,6 +465,58 @@ namespace livelywpf
             }
             return l;
         }
+
         #endregion helpers
+
+        #region setupdesktop
+
+        private void SetupDesktop_WallpaperChanged(object sender, EventArgs e)
+        {
+            Debug.WriteLine("Wallpaper Changed!");
+            foreach (var item in SetupDesktop.Wallpapers)
+            {
+                //testing, check if it is the user selected screen in the ui/display mode etc..
+                if (true)
+                {
+                    System.Windows.Application.Current.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background,
+                        new System.Threading.ThreadStart(delegate
+                        {
+                            SelectedItem = item.GetWallpaperData();
+                        }));
+                    break;
+                }
+            }
+
+            if (SetupDesktop.Wallpapers.Count == 0)
+            {
+                System.Windows.Application.Current.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background,
+                   new System.Threading.ThreadStart(delegate
+                   {
+                       SelectedItem = null;
+                   }));
+            }
+        }
+
+        public void RestoreWallpaper()
+        {
+            //todo: remove the missing wallpaper from the save file etc..
+            var layout = WallpaperLayoutJSON.LoadWallpaperLayout(Path.Combine(Program.LivelyDir, "wallpaper_layout.json"));
+            if (layout == null)
+            {
+                return;
+            }
+
+            foreach (var item in layout)
+            {
+                var found = LibraryItems.FirstOrDefault(x => x.LivelyInfoFolderPath.Equals(item.LivelyInfoPath));
+                var screen = ScreenHelper.GetScreen(item.DeviceName, item.Bounds, item.WorkingArea, DisplayIdentificationMode.screenLayout);
+                if (found != null && screen != null)
+                {
+                    SetupDesktop.SetWallpaper(found, screen);
+                }
+            }
+        }
+
+        #endregion setupdesktop
     }
 }

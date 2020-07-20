@@ -16,19 +16,21 @@ namespace livelywpf
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         bool _mediaReady = false;
-        bool _isNetworkFile = false;
         LibVLC _libVLC;
         MediaPlayer _mediaPlayer;
         Media _media;
         string _filePath;
+        bool _isStream;
 
-        public VLCElement(string filePath)
+        public VLCElement(string filePath, bool isStream = false)
         {
             InitializeComponent();
             videoView.Loaded += VideoView_Loaded;
             _filePath = filePath;
+            _isStream = isStream;
         }
 
+        //todo errorhandling
         async void VideoView_Loaded(object sender, RoutedEventArgs e)
         {
             LibVLCSharp.Shared.Core.Initialize();
@@ -45,13 +47,12 @@ namespace livelywpf
             _mediaPlayer.EndReached += _mediaPlayer_EndReached;
             videoView.MediaPlayer = _mediaPlayer;
 
-            if (_filePath.Contains("youtube.com/watch?v="))
+            if (_isStream)
             {
                 //ref: https://code.videolan.org/videolan/LibVLCSharp/-/issues/156#note_35657
                 _media = new Media(_libVLC, _filePath, FromType.FromLocation);
                 await _media.Parse(MediaParseOptions.ParseNetwork);
                 _mediaPlayer.Play(_media.SubItems.First());
-                _isNetworkFile = true;
             }
             else
             {
@@ -63,7 +64,7 @@ namespace livelywpf
 
         private void _mediaPlayer_EndReached(object sender, EventArgs e)
         {
-            if(_isNetworkFile)
+            if(_isStream)
             {
                 ThreadPool.QueueUserWorkItem(_ => _mediaPlayer.Play(_media.SubItems.First()));
             }

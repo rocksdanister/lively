@@ -108,6 +108,8 @@
                 <Grid>
                     <ScrollViewer>
                         <StackPanel>
+                            
+                            <TextBlock FontSize="20" Margin="0, 10, 0, 0">Video</TextBlock>
                             <ComboBox Header="Video Player" Margin="0,10,0,0" MinWidth="200" SelectedIndex="{Binding SelectedVideoPlayerIndex, Mode=TwoWay}">
                                 <ComboBoxItem>wmf</ComboBoxItem>
                                 <ComboBoxItem>libVLC</ComboBoxItem>
@@ -116,6 +118,39 @@
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}">
                             Select the videoplayer to use while playing video wallpapers.
                             <LineBreak/>libVLC is recommended for stability.</TextBlock>
+
+                            <TextBlock FontSize="20" Margin="0, 10, 0, 0">Web Browser</TextBlock>
+                            <ComboBox Header="Engine" Margin="0,10,0,0" MinWidth="200">
+                                <ComboBoxItem>CEF</ComboBoxItem>
+                                <ComboBoxItem IsEnabled="False">MS Edge</ComboBoxItem>
+                            </ComboBox>
+                            <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}">
+                            CEF(Chromium Embedded Framework) is a lightweight chromium engine.
+                            <LineBreak/>Edge(chromium) is the built in webview of windows 10.</TextBlock>
+                            <TextBlock  Margin="0, 10, 0, 0">Debugging Port</TextBlock>
+                            <TextBox MinWidth="200" HorizontalAlignment="Left"></TextBox>
+                            <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}">
+                                Enter the port for debugging webpage wallpapers, browser restart is required for changes to take effect.
+                                <LineBreak/>When ready navigate to http://localhost:portnumber to access developer console.
+                            </TextBlock>
+
+                            <TextBlock FontSize="20" Margin="0, 10, 0, 0">Stream</TextBlock>
+                            <ComboBox IsEnabled="False" Header="Video Quality" Margin="0,10,0,0" MinWidth="200" SelectedIndex="{Binding SelectedVideoPlayerIndex, Mode=TwoWay}">
+                                <ComboBoxItem>Best</ComboBoxItem>
+                                <ComboBoxItem>2160p</ComboBoxItem>
+                                <ComboBoxItem>1440p</ComboBoxItem>
+                                <ComboBoxItem>1080p</ComboBoxItem>
+                                <ComboBoxItem>720p</ComboBoxItem>
+                                <ComboBoxItem>480p</ComboBoxItem>
+                            </ComboBox>
+                            <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}">
+                                Select the desired video quality for online streams.
+                            </TextBlock>
+                            <CheckBox Content="Detect Streams" />
+                            <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}">
+                                If supported video stream link is detected use the video player instead of loading the webpage.
+                            </TextBlock>
+                            
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>

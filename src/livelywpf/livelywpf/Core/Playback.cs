@@ -20,7 +20,7 @@ namespace livelywpf.Core
             "MultitaskingViewFrame",
             //taskbar
             "Shell_TrayWnd",
-            //rainmeter widgets (?)
+            //rainmeter widgets
             "RainmeterMeterWindow"
         };
         static IntPtr workerWOrig, progman;
@@ -118,8 +118,9 @@ namespace livelywpf.Core
             try
             {
                 //looping through custom rules for user defined apps.
-                foreach (var item in Program.AppRulesVM.AppRules)
+                for (int i = 0; i < Program.AppRulesVM.AppRules.Count; i++)
                 {
+                    var item = Program.AppRulesVM.AppRules[i];
                     if (String.Equals(item.AppName, fProcess.ProcessName, StringComparison.OrdinalIgnoreCase))
                     {
                         if (item.Rule == AppRulesEnum.ignore)

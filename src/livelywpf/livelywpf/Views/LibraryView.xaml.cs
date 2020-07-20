@@ -107,7 +107,14 @@ namespace livelywpf.Views
             {
                 var uri = await e.DataView.GetWebLinkAsync();
                 Logger.Info("Dropped url:- " + uri.ToString());
-                Program.LibraryVM.AddWallpaper(uri.ToString(), WallpaperType.url, LibraryTileType.processing, Screen.PrimaryScreen);
+                if (libVLCStreams.CheckStream(uri))
+                {
+                    Program.LibraryVM.AddWallpaper(uri.ToString(), WallpaperType.videostream, LibraryTileType.processing, Screen.PrimaryScreen);
+                }
+                else
+                {
+                    Program.LibraryVM.AddWallpaper(uri.ToString(), WallpaperType.url, LibraryTileType.processing, Screen.PrimaryScreen);
+                }
             }
             else if (e.DataView.Contains(StandardDataFormats.StorageItems))
             {
@@ -146,7 +153,7 @@ namespace livelywpf.Views
                     }
                     else
                     {
-                        System.Windows.MessageBox.Show("not supported");
+                        System.Windows.MessageBox.Show("not supported currently");
                     }
                 }
             }

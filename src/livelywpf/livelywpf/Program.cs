@@ -27,11 +27,16 @@ namespace livelywpf
             try
             {
                 // wait a few seconds in case livelywpf instance is just shutting down..
-                if (!mutex.WaitOne(TimeSpan.FromSeconds(5), false))
+                if (!mutex.WaitOne(TimeSpan.FromSeconds(1), false))
                 {
-                    //this is ignoring the config-file saved language, only checking system language.
-                    System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(CultureInfo.CurrentCulture.Name);
-                    MessageBox.Show("Already running!");
+                    //ref: https://stackoverflow.com/questions/19147/what-is-the-correct-way-to-create-a-single-instance-wpf-application
+                    // send our Win32 message to make the currently running instance
+                    // jump on top of all the other windows
+                    NativeMethods.PostMessage(
+                        (IntPtr)NativeMethods.HWND_BROADCAST,
+                        NativeMethods.WM_SHOWME,
+                        IntPtr.Zero,
+                        IntPtr.Zero);
                     return;
                 }
             }
@@ -42,8 +47,9 @@ namespace livelywpf
 
             try
             {
-                using (new rootuwp.App())
+                using (var uwp = new rootuwp.App())
                 {
+                    //uwp.RequestedTheme = Windows.UI.Xaml.ApplicationTheme.Light;
                     livelywpf.App app = new livelywpf.App();
                     app.InitializeComponent();
                     app.Startup += App_Startup;
@@ -62,7 +68,9 @@ namespace livelywpf
         {
             sysTray = new Systray();
             //AppUpdater();
+            //LibraryVM.RestoreWallpaper();
         }
+
         private static async void AppUpdater()
         {
             try

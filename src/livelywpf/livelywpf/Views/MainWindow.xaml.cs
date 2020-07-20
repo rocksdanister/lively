@@ -1,26 +1,11 @@
-﻿using livelywpf.Core;
-using livelywpf.Views;
-using livelywpf.Views.ScreenRecordlibVLC;
+﻿
 using Microsoft.Toolkit.Wpf.UI.XamlHost;
 using ModernWpf.Media.Animation;
 using NLog;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.ServiceModel.Channels;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Media.TextFormatting;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Interop;
 using Windows.UI.Xaml.Controls;
 
 namespace livelywpf
@@ -123,5 +108,25 @@ namespace livelywpf
                 }
             }
         }
+
+        #region single instance
+
+        protected override void OnSourceInitialized(EventArgs e)
+        {
+            base.OnSourceInitialized(e);
+            var source = PresentationSource.FromVisual(this) as HwndSource;
+            source.AddHook(WndProc);
+        }
+
+        private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        {
+            if (msg == NativeMethods.WM_SHOWME)
+            {
+                Program.ShowMainWindow();   
+            }
+            return IntPtr.Zero;
+        }
+
+        #endregion
     }
 }
