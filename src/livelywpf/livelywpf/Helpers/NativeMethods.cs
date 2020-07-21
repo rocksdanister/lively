@@ -16,7 +16,7 @@ namespace livelywpf
         #region single instance
 
         public const int HWND_BROADCAST = 0xffff;
-        public static readonly int WM_SHOWME = RegisterWindowMessage("WM_SHOWME");
+        public static readonly int WM_SHOWLIVELY = RegisterWindowMessage("WM_SHOWLIVELYMAINWINDOW");
         [DllImport("user32")]
         public static extern bool PostMessage(IntPtr hwnd, int msg, IntPtr wparam, IntPtr lparam);
         [DllImport("user32")]

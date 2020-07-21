@@ -32,9 +32,10 @@ namespace livelywpf
                     //ref: https://stackoverflow.com/questions/19147/what-is-the-correct-way-to-create-a-single-instance-wpf-application
                     // send our Win32 message to make the currently running instance
                     // jump on top of all the other windows
+                    // todo: ditch this once ipc is ready?
                     NativeMethods.PostMessage(
                         (IntPtr)NativeMethods.HWND_BROADCAST,
-                        NativeMethods.WM_SHOWME,
+                        NativeMethods.WM_SHOWLIVELY,
                         IntPtr.Zero,
                         IntPtr.Zero);
                     return;

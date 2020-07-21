@@ -120,7 +120,7 @@ namespace livelywpf
 
         private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
-            if (msg == NativeMethods.WM_SHOWME)
+            if (msg == NativeMethods.WM_SHOWLIVELY)
             {
                 Program.ShowMainWindow();   
             }

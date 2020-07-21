@@ -71,6 +71,16 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap appicon_96 {
+            get {
+                object obj = ResourceManager.GetObject("appicon_96", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon icons8_close_window_96 {
@@ -91,6 +101,26 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_delete_52 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_delete_52", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_home_64 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_home_64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon icons8_home_page_96 {
@@ -106,6 +136,16 @@ namespace livelywpf.Properties {
         internal static System.Drawing.Bitmap icons8_home_page_961 {
             get {
                 object obj = ResourceManager.GetObject("icons8_home_page_961", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_pause_52 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_pause_52", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

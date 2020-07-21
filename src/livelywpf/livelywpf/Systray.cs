@@ -1,8 +1,12 @@
 ﻿using livelywpf.Core;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Text;
 using System.Windows.Controls;
+using System.Windows.Forms;
 
 namespace livelywpf
 {
@@ -29,19 +33,26 @@ namespace livelywpf
         private static System.Windows.Forms.ToolStripMenuItem pauseTrayBtn;
         private void CreateContextMenu()
         {
-            _notifyIcon.ContextMenuStrip =
-             new System.Windows.Forms.ContextMenuStrip();
+            _notifyIcon.ContextMenuStrip = new System.Windows.Forms.ContextMenuStrip
+            {
+                ForeColor = Color.AliceBlue,
+                Padding = new Padding(0),
+                Margin = new Padding(0),
+                //Font = new System.Drawing.Font("Segoe UI", 10F),
+            };
 
-            _notifyIcon.ContextMenuStrip.Items.Add("Open Lively", Properties.Icons.icons8_home_page_961).Click += (s, e) => Program.ShowMainWindow();
+            _notifyIcon.ContextMenuStrip.Renderer = new Helpers.CustomContextMenu.RendererDark();
+            _notifyIcon.ContextMenuStrip.Items.Add("Open Lively", Properties.Icons.icons8_home_64).Click += (s, e) => Program.ShowMainWindow();
 
-            pauseTrayBtn = new System.Windows.Forms.ToolStripMenuItem("Pause All Wallpapers", null);
+            pauseTrayBtn = new System.Windows.Forms.ToolStripMenuItem("Pause Wallpapers", Properties.Icons.icons8_pause_52);
             pauseTrayBtn.Click += (s, e) => ToggleWallpaperPlaybackState();
             _notifyIcon.ContextMenuStrip.Items.Add(pauseTrayBtn);
 
-            _notifyIcon.ContextMenuStrip.Items.Add("Close All Wallpapers", null).Click += (s, e) => SetupDesktop.CloseAllWallpapers();
+            _notifyIcon.ContextMenuStrip.Items.Add("Close Wallpapers", null).Click += (s, e) => SetupDesktop.CloseAllWallpapers();
 
-            _notifyIcon.ContextMenuStrip.Items.Add("-");
-            _notifyIcon.ContextMenuStrip.Items.Add("Exit", Properties.Icons.icons8_close_window_961).Click += (s, e) => Program.ExitApplication();
+            //_notifyIcon.ContextMenuStrip.Items.Add("-");
+            _notifyIcon.ContextMenuStrip.Items.Add(new Helpers.CustomContextMenu.StripSeparatorCustom().stripSeparator);
+            _notifyIcon.ContextMenuStrip.Items.Add("Exit", Properties.Icons.icons8_delete_52).Click += (s, e) => Program.ExitApplication();
         }
 
         private static void ToggleWallpaperPlaybackState()
