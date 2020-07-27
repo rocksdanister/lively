@@ -17,7 +17,7 @@ namespace livelywpf
             var config = new NLog.Config.LoggingConfiguration();
 
             // Targets where to log to: File and Console
-            var logfile = new NLog.Targets.FileTarget("logfile") { FileName = Path.Combine(Program.LivelyDir, "logfile.txt"), DeleteOldFileOnStartup = true };
+            var logfile = new NLog.Targets.FileTarget("logfile") { FileName = Path.Combine(Program.AppDataDir, "logs", "logfile.txt"), DeleteOldFileOnStartup = true };
             var logconsole = new NLog.Targets.ConsoleTarget("logconsole");
 
             // Rules for mapping loggers to targets            
@@ -35,11 +35,13 @@ namespace livelywpf
                 SetupNLog();
             }
 
-            Logger.Info("Lively v" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() + " " + CultureInfo.CurrentCulture.Name + "  64Bit:" + Environment.Is64BitProcess);
-            //Logger.Info("Portable build: " + App.isPortableBuild);
-            Logger.Info(SystemInfo.GetOSInfo());
-            Logger.Info(SystemInfo.GetCPUInfo());
-            Logger.Info(SystemInfo.GetGPUInfo());
+            Logger.Info(
+                "\n" + "Lively v" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() +
+                " " + CultureInfo.CurrentCulture.Name +
+                " 64Bit:" + Environment.Is64BitProcess +
+                "\n" + SystemInfo.GetOSInfo() +
+                SystemInfo.GetCPUInfo() +
+                SystemInfo.GetGPUInfo());
         }
 
         public static void LogWin32Error(string msg = null)

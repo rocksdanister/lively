@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
@@ -24,6 +25,8 @@ namespace livelywpf.Core
         void Stop();
         void Close();
         Screen GetScreen();
+        void SendMessage(string msg);
+        string GetLivelyPropertyCopyPath();
         event EventHandler<WindowInitializedArgs> WindowInitialized;
     }
 
@@ -67,6 +70,11 @@ namespace livelywpf.Core
             return HWND;
         }
 
+        public string GetLivelyPropertyCopyPath()
+        {
+            throw new NotImplementedException();
+        }
+
         public Process GetProcess()
         {
             throw new NotImplementedException();
@@ -95,6 +103,11 @@ namespace livelywpf.Core
         public void Play()
         {
             Player.PlayMedia();
+        }
+
+        public void SendMessage(string msg)
+        {
+            throw new NotImplementedException();
         }
 
         public void SetHWND(IntPtr hwnd)
@@ -188,6 +201,16 @@ namespace livelywpf.Core
                 WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = true, Error = null });
             }
         }
+
+        public void SendMessage(string msg)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetLivelyPropertyCopyPath()
+        {
+            throw new NotImplementedException();
+        }
     }
 
     public class VideoPlayerWPF : IWallpaper
@@ -260,6 +283,16 @@ namespace livelywpf.Core
                 WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = true, Error = null });
             }
         }
+
+        public void SendMessage(string msg)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetLivelyPropertyCopyPath()
+        {
+            throw new NotImplementedException();
+        }
     }
 
     #endregion video players
@@ -293,6 +326,11 @@ namespace livelywpf.Core
             return HWND;
         }
 
+        public string GetLivelyPropertyCopyPath()
+        {
+            throw new NotImplementedException();
+        }
+
         public Process GetProcess()
         {
             throw new NotImplementedException();
@@ -323,6 +361,11 @@ namespace livelywpf.Core
             Player.Play();
         }
 
+        public void SendMessage(string msg)
+        {
+            throw new NotImplementedException();
+        }
+
         public void SetHWND(IntPtr hwnd)
         {
             this.HWND = hwnd;
@@ -351,16 +394,48 @@ namespace livelywpf.Core
     {
         public WebProcess(string path, LibraryModel model, Screen display)
         {
+            LivelyPropertyCopy = "";
+            if (model.LivelyPropertyPath != null)
+            {
+                //customisable wallpaper, livelyproperty.json is present.
+                var dataFolder = Path.Combine(Program.WallpaperDir, "SaveData", "wpdata");
+                try
+                {
+                    //extract last digits of the Screen class DeviceName, eg: \\.\DISPLAY4 -> 4
+                    var screenNumber = ScreenHelper.GetScreenNumber(display);
+                    if (screenNumber != null)
+                    {
+                        //Create a directory with the wp foldername in SaveData/wpdata/, copy livelyproperties.json into this.
+                        //Further modifications are done to the copy file.
+                        var wpdataFolder = Path.Combine(dataFolder, new DirectoryInfo(model.LivelyInfoFolderPath).Name, screenNumber);
+                        Directory.CreateDirectory(wpdataFolder);
+
+                        LivelyPropertyCopy = Path.Combine(wpdataFolder, "LivelyProperties.json");
+                        if (!File.Exists(LivelyPropertyCopy))
+                            File.Copy(model.LivelyPropertyPath, LivelyPropertyCopy);
+
+                    }
+                    else
+                    {
+                        //todo: fallback, use the original file (restore feature disabled.)
+                    }
+                }
+                catch
+                {
+                    //todo: fallback, use the original file (restore feature disabled.)
+                }
+            }
+
             string cmdArgs;
             if (model.LivelyInfo.Type == WallpaperType.web)
             {
                 cmdArgs = "--url " + "\"" + path + "\"" + " --type local" + " --display " + "\"" + display + "\"" +
-                              " --property " + "\"" + System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Lively Wallpaper", "SaveData", "wpdata") + "\"";
+                              " --property " + "\"" + LivelyPropertyCopy + "\"";
             }
             else if (model.LivelyInfo.Type == WallpaperType.webaudio)
             {
                 cmdArgs = "--url " + "\"" + path + "\"" + " --type local" + " --display " + "\"" + display + "\"" + " --audio true" +
-                      " --property " + "\"" + System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Lively Wallpaper", "SaveData", "wpdata") + "\"";
+                      " --property " + "\"" + LivelyPropertyCopy + "\"";
             }
             else
             {
@@ -370,11 +445,11 @@ namespace livelywpf.Core
             ProcessStartInfo start = new ProcessStartInfo
             {
                 Arguments = cmdArgs,
-                FileName = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Lively Wallpaper", "external", "cef", "LivelyCefSharp.exe"),
+                FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "cef", "LivelyCefSharp.exe"),
                 RedirectStandardInput = true,
                 RedirectStandardOutput = true,
                 UseShellExecute = false,
-                WorkingDirectory = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Lively Wallpaper", "external", "cef")
+                WorkingDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "cef")
             };
 
             Process webProcess = new Process
@@ -392,6 +467,10 @@ namespace livelywpf.Core
         Process Proc { get; set; }
         LibraryModel Model { get; set; }
         Screen Display { get; set; }
+        /// <summary>
+        /// copy of LivelyProperties.json file used to modify for current running screen.
+        /// </summary>
+        string LivelyPropertyCopy { get; set; }
 
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
 
@@ -443,12 +522,16 @@ namespace livelywpf.Core
         {
             //minimize browser.
             NativeMethods.ShowWindow(HWND, 6); 
+
+            //SendMessage("lively-playback pause");
         }
 
         public void Play()
         {
             NativeMethods.ShowWindow(HWND, 1); //normal
             NativeMethods.ShowWindow(HWND, 5); //show
+
+            //SendMessage("lively-playback play");
         }
 
         public void SetHWND(IntPtr hwnd)
@@ -466,7 +549,10 @@ namespace livelywpf.Core
                     Proc.Start();
                     Proc.BeginOutputReadLine();
                 }
-                catch { }
+                catch(Exception e) 
+                {
+                    WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = false, Error = e, Msg = null });
+                }
             }
         }
 
@@ -518,6 +604,23 @@ namespace livelywpf.Core
         public void Stop()
         {
             throw new NotImplementedException();
+        }
+
+        public void SendMessage(string msg)
+        {
+            if (Proc != null)
+            {
+                try
+                {
+                    Proc.StandardInput.WriteLine(msg);
+                }
+                catch { }
+            }
+        }
+
+        public string GetLivelyPropertyCopyPath()
+        {
+            return LivelyPropertyCopy;
         }
     }
 
@@ -611,6 +714,16 @@ namespace livelywpf.Core
         }
 
         public void Show()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SendMessage(string msg)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetLivelyPropertyCopyPath()
         {
             throw new NotImplementedException();
         }

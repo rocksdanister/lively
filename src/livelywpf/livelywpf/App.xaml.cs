@@ -21,6 +21,11 @@ namespace livelywpf
             SetupUnhandledExceptionLogging();
             NLogger.LogHardwareInfo();
 
+            //view models
+            Program.SettingsVM = new SettingsViewModel();
+            Program.AppRulesVM = new ApplicationRulesViewModel();
+            Program.LibraryVM = new LibraryViewModel();
+
             AppWindow = new MainWindow();
             //uwp root app needs this it seems.. is it possible to skip?
             AppWindow.Show();

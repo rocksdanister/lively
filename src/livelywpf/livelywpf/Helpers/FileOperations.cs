@@ -46,7 +46,7 @@ namespace livelywpf
         }
 
         /// <summary>
-        /// Deletes file amd folder contents of a directory (parent directory remains).
+        /// Deletes file and folder contents of a directory (parent directory remains).
         /// </summary>
         /// <param name="directory"></param>
         /// <returns>true if succes, false otherwise.</returns>

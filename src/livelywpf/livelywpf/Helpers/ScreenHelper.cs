@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace livelywpf
@@ -101,6 +102,28 @@ namespace livelywpf
                 }
             }
             return null;
+        }
+
+        /// <summary>
+        /// Extract last digits of the Screen class DeviceName, eg: \\.\DISPLAY4 -> 4
+        /// </summary>
+        /// <param name="DeviceName">devicename string</param>
+        /// <returns>null if fail</returns>
+        public static string GetScreenNumber(string DeviceName)
+        {
+            var result = Regex.Match(DeviceName, @"\d+$", RegexOptions.RightToLeft);
+            return result.Success ? result.Value : null;
+        }
+
+        /// <summary>
+        /// Extract last digits of the Screen class DeviceName, eg: \\.\DISPLAY4 -> 4
+        /// </summary>
+        /// <param name="screen">screen class</param>
+        /// <returns>null if fail</returns>
+        public static string GetScreenNumber(Screen screen)
+        {
+            var result = Regex.Match(screen.DeviceName, @"\d+$", RegexOptions.RightToLeft);
+            return result.Success ? result.Value : null;
         }
     }
 }

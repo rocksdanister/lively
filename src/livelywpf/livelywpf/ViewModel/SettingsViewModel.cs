@@ -4,6 +4,7 @@ using Octokit;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -17,11 +18,11 @@ namespace livelywpf
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         public SettingsViewModel()
         {
-            Settings = SettingsJSON.LoadConfig(@"C:\Users\rocks\Documents\GIFS\lively_config.json");
+            Settings = SettingsJSON.LoadConfig(Path.Combine(Program.AppDataDir, "Settings.json"));
             if (Settings == null)
             {
                 Settings = new SettingsModel();
-                SettingsJSON.SaveConfig(@"C:\Users\rocks\Documents\GIFS\lively_config.json", Settings);
+                SettingsJSON.SaveConfig(Path.Combine(Program.AppDataDir, "Settings.json"), Settings);
             }
 
             //lang-codes: https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-lcid/a9eac961-e77d-41a6-90a5-ce1a8b0cdb9c
@@ -80,7 +81,7 @@ namespace livelywpf
         public void UpdateConfigFile()
         {
             //testing
-            SettingsJSON.SaveConfig(@"C:\Users\rocks\Documents\GIFS\lively_config.json", Settings);
+            SettingsJSON.SaveConfig(Path.Combine(Program.AppDataDir, "Settings.json"), Settings);
         }
 
         /// <summary>

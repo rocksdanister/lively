@@ -89,8 +89,29 @@ namespace livelywpf.Views
                     }
                     break;
                 case "customiseWallpaper":
-                    //todo: send display info.
-                    Program.LibraryVM.WallpaperSendMsg(e, "lively-customise ");
+                    //Program.LibraryVM.WallpaperSendMsg(e, "lively-customise ");
+
+                    /*
+                    //system tray customise dialogue widget.
+                    var settingsWidget = new Cef.LivelyPropertiesTrayWidget(obj);
+                    settingsWidget.Show();                  
+                    */
+
+                    
+                    //In app customise dialogue; 
+                    //Can't use contentdialogue since the window object is not uwp.
+                    //modernwpf contentdialogue does not have xamlroot so can't draw over livelygrid.
+                    LivelyGridControl.DimBackground(true);
+                    var overlay = new Cef.LivelyPropertiesWindow(obj, Program.LibraryVM.GetLivelyPropertyCopyPath(e)) {
+                        Owner = App.AppWindow, 
+                        WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner,
+                        Width = App.AppWindow.Width/1.5,
+                        Height = App.AppWindow.Height/1.5,
+                        Title = obj.Title + " Properties"
+                    };
+                    overlay.ShowDialog();
+                    LivelyGridControl.DimBackground(false);
+                    
                     break;
                 case "convertVideo":
                     Program.LibraryVM.WallpaperVideoConvert(obj);
@@ -168,7 +189,7 @@ namespace livelywpf.Views
             {
                 Text = lib.Title + " by " + lib.LivelyInfo.Author
             };
-            ContentDialog noWifiDialog = new ContentDialog
+            ContentDialog deleteDialog = new ContentDialog
             {
                 Title = "Are you sure you wish to delete the wallpaper?",
                 Content = tb,
@@ -180,10 +201,10 @@ namespace livelywpf.Views
             // the dialog's XamlRoot to the same XamlRoot as an element that is already present in the AppWindow.
             if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 8))
             {
-                noWifiDialog.XamlRoot = item.XamlRoot;
+                deleteDialog.XamlRoot = item.XamlRoot;
             }
 
-            ContentDialogResult result = await noWifiDialog.ShowAsync();
+            ContentDialogResult result = await deleteDialog.ShowAsync();
             return result;
         }
 

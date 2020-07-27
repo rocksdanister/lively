@@ -16,7 +16,7 @@ namespace livelywpf.Views
     {
         IWallpaper wallpaper;
         bool _processing = false;
-        readonly string wallpaperDir = Path.Combine(Program.LivelyDir, "wallpapers", Path.GetRandomFileName());
+        readonly string wallpaperDir = Path.Combine(Program.WallpaperDir, "wallpapers", Path.GetRandomFileName());
         CapturelibVLC capture = new CapturelibVLC();
 
         public VLCWallpaperRecordWindow(IWallpaper wp)

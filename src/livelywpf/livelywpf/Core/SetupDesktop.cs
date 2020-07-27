@@ -209,7 +209,7 @@ namespace livelywpf
 
             WallpaperLayoutJSON.SaveWallpaperLayout(
                   layout,
-                  Path.Combine(Program.LivelyDir, "wallpaper_layout.json"));
+                  Path.Combine(Program.WallpaperDir, "wallpaper_layout.json"));
         }
 
         /// <summary>
@@ -362,7 +362,7 @@ namespace livelywpf
             Wallpapers.ForEach(x =>
             {
                 if (x.GetWallpaperData() == wp)
-                    x.GetProcess().StandardInput.WriteLine(msg);
+                    x.SendMessage(msg);
             });
         }
 

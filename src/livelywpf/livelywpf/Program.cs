@@ -15,11 +15,12 @@ namespace livelywpf
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private static readonly Mutex mutex = new Mutex(false, "LIVELY:DESKTOPWALLPAPERSYSTEM");
-        public static readonly string LivelyDir =  Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Lively Wallpaper");
+        public static readonly string WallpaperDir =  Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Lively Wallpaper");
+        public static readonly string AppDataDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Lively Wallpaper");
 
-        public static SettingsViewModel SettingsVM = new SettingsViewModel();
-        public static ApplicationRulesViewModel AppRulesVM = new ApplicationRulesViewModel();
-        public static LibraryViewModel LibraryVM = new LibraryViewModel();
+        public static SettingsViewModel SettingsVM;
+        public static ApplicationRulesViewModel AppRulesVM;
+        public static LibraryViewModel LibraryVM;
 
         [System.STAThreadAttribute()]
         public static void Main()
@@ -32,7 +33,7 @@ namespace livelywpf
                     //ref: https://stackoverflow.com/questions/19147/what-is-the-correct-way-to-create-a-single-instance-wpf-application
                     // send our Win32 message to make the currently running instance
                     // jump on top of all the other windows
-                    // todo: ditch this once ipc is ready?
+                    // todo: ditch this once ipc server is ready?
                     NativeMethods.PostMessage(
                         (IntPtr)NativeMethods.HWND_BROADCAST,
                         NativeMethods.WM_SHOWLIVELY,
@@ -67,6 +68,24 @@ namespace livelywpf
         private static Systray sysTray;
         private static void App_Startup(object sender, StartupEventArgs e)
         {
+            try
+            {
+                //create directories if not exist, eg: C:\Users\<User>\AppData\Roaming
+                Directory.CreateDirectory(AppDataDir);
+                Directory.CreateDirectory(Path.Combine(AppDataDir, "logs"));
+                Directory.CreateDirectory(Path.Combine(AppDataDir, "temp"));
+                Directory.CreateDirectory(Path.Combine(WallpaperDir, "wallpapers"));
+                Directory.CreateDirectory(Path.Combine(WallpaperDir, "SaveData", "wptmp"));
+                Directory.CreateDirectory(Path.Combine(WallpaperDir, "SaveData", "wpdata"));
+            }
+            catch (Exception ex)
+            {
+                //not logging here, something must be seriously wrong.. just display & terminate.
+                MessageBox.Show(ex.Message, "Error: Failed to create data folder", MessageBoxButton.OK, MessageBoxImage.Error);
+                ExitApplication();
+                //Environment.Exit(1);
+            }
+
             sysTray = new Systray();
             //AppUpdater();
             //LibraryVM.RestoreWallpaper();
@@ -130,7 +149,7 @@ namespace livelywpf
             if (App.AppWindow != null)
             {
                 App.AppWindow.Show();
-                App.AppWindow.WindowState = WindowState.Normal;
+                App.AppWindow.WindowState = App.AppWindow.WindowState != WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
             }
         }
 

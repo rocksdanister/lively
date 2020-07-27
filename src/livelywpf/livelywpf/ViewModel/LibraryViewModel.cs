@@ -20,8 +20,8 @@ namespace livelywpf
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private readonly string[] wallpaperScanFolders = new string[] {
-                Path.Combine(Program.LivelyDir, "wallpapers"),
-                Path.Combine(Program.LivelyDir, "SaveData", "wptmp")
+                Path.Combine(Program.WallpaperDir, "wallpapers"),
+                Path.Combine(Program.WallpaperDir, "SaveData", "wptmp")
             };
 
         public LibraryViewModel()
@@ -108,6 +108,7 @@ namespace livelywpf
         public void WallpaperSendMsg(object obj, string message)
         {
             var selection = (LibraryModel)obj;
+            //currently enabled for these types.
             if (selection.LivelyInfo.Type == WallpaperType.web 
             || selection.LivelyInfo.Type == WallpaperType.webaudio)
             {
@@ -142,7 +143,7 @@ namespace livelywpf
                     || selection.LivelyInfo.Type == WallpaperType.url)
                     {
                         //no wallpaper file on disk, only wallpaper metadata.
-                        var tmpDir = Path.Combine(Program.LivelyDir, "tmpdata", "wpdata");
+                        var tmpDir = Path.Combine(Program.AppDataDir, "temp");
                         FileOperations.EmptyDirectory(tmpDir);
                         LivelyInfoModel info = new LivelyInfoModel(selection.LivelyInfo)
                         {
@@ -177,7 +178,7 @@ namespace livelywpf
                             files.AddRange(Directory.GetFiles(Directory.GetParent(selection.FilePath).ToString(), "*.*", SearchOption.AllDirectories));
                         }
 
-                        var tmpDir = Path.Combine(Program.LivelyDir, "tmpdata", "wpdata");
+                        var tmpDir = Path.Combine(Program.AppDataDir, "temp");
                         FileOperations.EmptyDirectory(tmpDir);
                         LivelyInfoModel info = new LivelyInfoModel(selection.LivelyInfo)
                         {
@@ -241,7 +242,7 @@ namespace livelywpf
                 try
                 {
                     //Delete LivelyProperties.json backup folder.
-                    string[] wpdataDir = Directory.GetDirectories(Path.Combine(Program.LivelyDir, "SaveData", "wpdata"));
+                    string[] wpdataDir = Directory.GetDirectories(Path.Combine(Program.WallpaperDir, "SaveData", "wpdata"));
                     var wpFolderName = new System.IO.DirectoryInfo(selection.LivelyInfoFolderPath).Name;
                     for (int i = 0; i < wpdataDir.Length; i++)
                     {
@@ -262,7 +263,7 @@ namespace livelywpf
 
         public async void WallpaperInstall(string livelyZipPath)
         {
-            var installDir = Path.Combine(Program.LivelyDir, "wallpapers", Path.GetRandomFileName());
+            var installDir = Path.Combine(Program.WallpaperDir, "wallpapers", Path.GetRandomFileName());
             await Task.Run(() =>
             {
                 try
@@ -305,7 +306,7 @@ namespace livelywpf
 
         public void AddWallpaper(string path, WallpaperType wpType, LibraryTileType dataType, Screen screen)
         {
-            var dir = Path.Combine(Program.LivelyDir, "SaveData", "wptmp", Path.GetRandomFileName());
+            var dir = Path.Combine(Program.WallpaperDir, "SaveData", "wptmp", Path.GetRandomFileName());
             if (dataType == LibraryTileType.processing)
             {
                 //Preview gif and thumbnail to be captured..
@@ -440,6 +441,57 @@ namespace livelywpf
             LibraryItems.Move(LibraryItems.IndexOf(item), binarySearchIndex);
         }
 
+        /// <summary>
+        /// Get LivelyProperties.json copy filepath for currently running screen if wallpaper is active, otherwise returns for primaryscreen.
+        /// null if non-customisable wallpaper.
+        /// </summary>
+        /// <param name="obj">LibraryModel object</param>
+        /// <returns></returns>
+        public string GetLivelyPropertyCopyPath(object obj)
+        {
+            var selection = (LibraryModel)obj;
+            if (selection.LivelyPropertyPath == null)
+                return null;
+
+            foreach (var item in SetupDesktop.Wallpapers)
+            {
+                if(item.GetWallpaperData() == selection)
+                {
+                    return item.GetLivelyPropertyCopyPath();
+                }
+            }
+
+            //wallpaper not running, give the path for primaryscreen.
+            string livelyPropertyCopy = "";
+            try
+            {
+                var screenNumber = ScreenHelper.GetScreenNumber(Screen.PrimaryScreen);
+                var dataFolder = Path.Combine(Program.WallpaperDir, "SaveData", "wpdata");
+                if (screenNumber != null)
+                {
+                    //Create a directory with the wp foldername in SaveData/wpdata/, copy livelyproperties.json into this.
+                    //Further modifications are done to the copy file.
+                    var wpdataFolder = Path.Combine(dataFolder, new DirectoryInfo(selection.LivelyInfoFolderPath).Name, screenNumber);
+                    Directory.CreateDirectory(wpdataFolder);
+
+                    livelyPropertyCopy = Path.Combine(wpdataFolder, "LivelyProperties.json");
+                    if (!File.Exists(livelyPropertyCopy))
+                        File.Copy(selection.LivelyPropertyPath, livelyPropertyCopy);
+
+                }
+                else
+                {
+                    //todo: fallback, use the original file (restore feature disabled.)
+                }
+            }
+            catch
+            {
+                //todo: fallback, use the original file (restore feature disabled.)
+            }
+
+            return livelyPropertyCopy;
+        }
+
         private int BinarySearch(ObservableCollection<LibraryModel> item, string x)
         {
             if (x is null)
@@ -500,7 +552,7 @@ namespace livelywpf
         public void RestoreWallpaper()
         {
             //todo: remove the missing wallpaper from the save file etc..
-            var layout = WallpaperLayoutJSON.LoadWallpaperLayout(Path.Combine(Program.LivelyDir, "wallpaper_layout.json"));
+            var layout = WallpaperLayoutJSON.LoadWallpaperLayout(Path.Combine(Program.WallpaperDir, "wallpaper_layout.json"));
             if (layout == null)
             {
                 return;

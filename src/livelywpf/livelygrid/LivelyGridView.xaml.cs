@@ -43,6 +43,8 @@ namespace livelygrid
             this.InitializeComponent();
         }
 
+        #region grid
+
         public void GridElementSize(GridSize gridSize)
         {
             switch (gridSize)
@@ -65,12 +67,21 @@ namespace livelygrid
             }
         }
 
+        public void DimBackground(bool val)
+        {
+            DimOverlay.Visibility = val ? Visibility.Visible : Visibility.Collapsed;
+        }
+
         private void GridControl_RightTapped(object sender, RightTappedRoutedEventArgs e)
         {
             GridView gridView = (GridView)sender;
             contextMenu.ShowAt(gridView, e.GetPosition(gridView));
             var a = ((FrameworkElement)e.OriginalSource).DataContext;
             selectedTile = a;
+
+            //haha xD 
+            //..todo: make librarymodel class library and load dll.
+            customiseWallpaper.IsEnabled = ((dynamic)a).LivelyPropertyPath == null ? false : true;
         }
 
         private void contextMenu_Click(object sender, RoutedEventArgs e)
@@ -80,6 +91,8 @@ namespace livelygrid
                 ContextMenuClick?.Invoke(sender, selectedTile);
             }
         }
+
+        #endregion //grid
 
         #region drag and drop
 
@@ -108,7 +121,7 @@ namespace livelygrid
             this.AddFilePanel.Visibility = Visibility.Collapsed;
         }
 
-        #endregion
+        #endregion //drag and drop
 
     }
 }

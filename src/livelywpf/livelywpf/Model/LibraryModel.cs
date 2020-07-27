@@ -35,12 +35,22 @@ namespace livelywpf
 
             if (data.IsAbsolutePath)
             {
+                //full filepath is stored in Livelyinfo.json metadata file.
                 FilePath = data.FileName;
                 PreviewClipPath = data.Preview;
                 ThumbnailPath = data.Thumbnail;
+                try
+                {
+                    LivelyPropertyPath = Path.Combine(Directory.GetParent(data.FileName).ToString(), "LivelyProperties.json");
+                }
+                catch 
+                {
+                    LivelyPropertyPath = null;
+                }
             }
             else
             {
+                //Only relative path is stored, this will be inside "Lively Wallpaper" folder.
                 if (data.Type == WallpaperType.url 
                 || data.Type == WallpaperType.videostream)
                 {
@@ -56,6 +66,15 @@ namespace livelywpf
                     catch
                     {
                         FilePath = null;
+                    }
+
+                    try
+                    {
+                        LivelyPropertyPath = Path.Combine(folderPath, "LivelyProperties.json");
+                    }
+                    catch 
+                    {
+                        LivelyPropertyPath = null;
                     }
                 }
 
@@ -231,6 +250,20 @@ namespace livelywpf
             {
                 _wpType = value;
                 OnPropertyChanged("WpType");
+            }
+        }
+
+        private string _livelyPropertyPath;
+        /// <summary>
+        /// LivelyProperties.json filepath if present, null otherwise.
+        /// </summary>
+        public string LivelyPropertyPath
+        {
+            get { return _livelyPropertyPath; }
+            set
+            {
+                _livelyPropertyPath = File.Exists(value) ? value : null;
+                OnPropertyChanged("LivelyPropertyPath");
             }
         }
 

@@ -34,6 +34,7 @@
         <DataTemplate x:Name="Normal">
             <Grid Width="272" Height="153" AutomationProperties.Name="{Binding Title}">
                 <Image Source="{Binding ImagePath}" Stretch="UniformToFill"/>
+                <!--<SymbolIcon Symbol="Setting" VerticalAlignment="Top" HorizontalAlignment="Right"/>-->
                 <StackPanel Orientation="Vertical" Height="60" VerticalAlignment="Bottom" Background="{ThemeResource SystemAltMediumColor}" Padding="7">
                     <TextBlock Text="{Binding Title}" MaxLines="1"/>
                     <TextBlock Text="{Binding Desc}" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" MaxLines="2"/>
@@ -72,7 +73,28 @@
                 </ItemsPanelTemplate>
             </GridView.ItemsPanel>
         </GridView>
+        
+        <!--
+        <CommandBar>
+            <AppBarToggleButton Icon="Shuffle" Label="Shuffle" />
+            <AppBarToggleButton Icon="RepeatAll" Label="Repeat" />
+            <AppBarSeparator/>
+            <AppBarButton Icon="Back" Label="Back" />
+            <AppBarButton Icon="Stop" Label="Stop" />
+            <AppBarButton Icon="Play" Label="Play" />
+            <AppBarButton Icon="Forward" Label="Forward" />
 
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Label="Like" />
+                <AppBarButton Label="Dislike" />
+            </CommandBar.SecondaryCommands>
+
+            <CommandBar.Content>
+                <TextBlock Text="Now playing..." Margin="12,14"/>
+            </CommandBar.Content>
+        </CommandBar>
+        -->
+        <RelativePanel x:Name="DimOverlay"  Background="{ThemeResource SystemAltMediumColor}" Visibility="Collapsed"/>
         <RelativePanel x:Name="AddFilePanel" Background="{ThemeResource SystemAltMediumColor}" Visibility="Collapsed">
             <SymbolIcon x:Name="AddSymbol" Symbol="Add" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" 
             Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" RenderTransformOrigin="0.5,0.5">

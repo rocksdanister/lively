@@ -57,7 +57,7 @@ namespace livelywpf.Views
             {
                 try
                 {
-                    download.DownloadFile(fileUrl, Path.Combine(Program.LivelyDir, "tmpdata", "update.exe"));
+                    download.DownloadFile(fileUrl, Path.Combine(Program.WallpaperDir, "tmpdata", "update.exe"));
                     download.DownloadFileCompleted += UpdateDownload_DownloadFileCompleted;
                     download.DownloadProgressChanged += UpdateDownload_DownloadProgressChanged;
                 }
