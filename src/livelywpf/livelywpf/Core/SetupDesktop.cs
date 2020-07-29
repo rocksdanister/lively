@@ -209,7 +209,7 @@ namespace livelywpf
 
             WallpaperLayoutJSON.SaveWallpaperLayout(
                   layout,
-                  Path.Combine(Program.WallpaperDir, "wallpaper_layout.json"));
+                  Path.Combine(Program.AppDataDir, "WallpaperLayout.json"));
         }
 
         /// <summary>

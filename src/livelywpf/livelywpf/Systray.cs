@@ -62,8 +62,11 @@ namespace livelywpf
             //testing only.
             if (Program.LibraryVM.SelectedItem != null)
             {
-                var settingsWidget = new Cef.LivelyPropertiesTrayWidget(Program.LibraryVM.SelectedItem, Program.LibraryVM.GetLivelyPropertyCopyPath(Program.LibraryVM.SelectedItem));
-                settingsWidget.Show();
+                if (Program.LibraryVM.SelectedItem.LivelyPropertyPath != null)
+                {
+                    var settingsWidget = new Cef.LivelyPropertiesTrayWidget(Program.LibraryVM.SelectedItem, Program.LibraryVM.GetLivelyPropertyCopyPath(Program.LibraryVM.SelectedItem));
+                    settingsWidget.Show();
+                }
             }
         }
 

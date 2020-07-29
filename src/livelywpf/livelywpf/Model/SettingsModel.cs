@@ -1,7 +1,9 @@
-﻿using System;
+﻿using livelywpf.Model;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
+using System.Windows.Forms;
 
 namespace livelywpf
 {
@@ -444,6 +446,18 @@ namespace livelywpf
                 OnPropertyChanged("GifCapture");
             }
         }
+
+
+        private LivelyScreenModel _selectedDisplay;
+        public LivelyScreenModel SelectedDisplay
+        {
+            get { return _selectedDisplay; }
+            set
+            {
+                _selectedDisplay = value;
+                OnPropertyChanged("SelectedDisplay");
+            }
+        }
         /*
         //todo need to rewrite audio manager from scratch.
         public bool MuteVideo { get; set; }
@@ -500,12 +514,6 @@ namespace livelywpf
             ScalerVideo = System.Windows.Media.Stretch.Fill;
             ScalerGif = System.Windows.Media.Stretch.Fill;
             GifCapture = true;
-            /*
-            WarningApp = 0;
-            WarningUnity = 0;
-            WarningGodot = 0;
-            WarningURL = 0;
-            */
 
             SafeShutdown = true;
             IsRestart = false;
@@ -515,6 +523,7 @@ namespace livelywpf
 
             TileSize = 1;
             DisplayIdentification = DisplayIdentificationMode.screenLayout;
+            SelectedDisplay = new LivelyScreenModel(Screen.PrimaryScreen);
         }
     }
 }

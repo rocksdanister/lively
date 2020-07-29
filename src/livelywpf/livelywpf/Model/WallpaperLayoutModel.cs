@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.Windows;
 using Newtonsoft.Json;
+using livelywpf.Model;
 
 namespace livelywpf
 {
@@ -14,30 +15,20 @@ namespace livelywpf
     [Serializable]
     public class WallpaperLayoutModel
     {
-        public string DeviceName { get; set; }
-        public int BitsPerPixel { get; set; }
-        public Rectangle Bounds {get; set;}
-        public Rectangle WorkingArea { get; set; }
+        public LivelyScreenModel LivelyScreen { get; set; }
         public string LivelyInfoPath { get; set; }
 
         [JsonConstructor]
-        public WallpaperLayoutModel(string DeviceName, int BitsPerPixel, Rectangle Bounds, Rectangle WorkingArea, string livelyInfoPath)
+        public WallpaperLayoutModel(string DeviceName, int BitsPerPixel, Rectangle Bounds, Rectangle WorkingArea, string livelyInfoPath) 
         {
-            this.DeviceName = DeviceName;
-            this.BitsPerPixel = BitsPerPixel;
-            this.Bounds = Bounds;
-            this.WorkingArea = WorkingArea;
+            LivelyScreen = new LivelyScreenModel(DeviceName, BitsPerPixel, Bounds, WorkingArea);
             this.LivelyInfoPath = livelyInfoPath;
         }
 
         public WallpaperLayoutModel(Screen Display, string livelyInfoPath)
         {
-            this.DeviceName = Display.DeviceName;
-            this.BitsPerPixel = Display.BitsPerPixel;
-            this.Bounds = Display.Bounds;
-            this.WorkingArea = Display.WorkingArea;
+            LivelyScreen = new LivelyScreenModel(Display);
             this.LivelyInfoPath = livelyInfoPath;
         }
-
     }
 }

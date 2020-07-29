@@ -79,9 +79,16 @@ namespace livelygrid
             var a = ((FrameworkElement)e.OriginalSource).DataContext;
             selectedTile = a;
 
-            //haha xD 
-            //..todo: make librarymodel class library and load dll.
-            customiseWallpaper.IsEnabled = ((dynamic)a).LivelyPropertyPath == null ? false : true;
+            try
+            {
+                //haha xD 
+                //..todo: make librarymodel class library and load dll.
+                customiseWallpaper.IsEnabled = ((dynamic)a).LivelyPropertyPath == null ? false : true;
+            }
+            catch
+            {
+                customiseWallpaper.IsEnabled = false;
+            }
         }
 
         private void contextMenu_Click(object sender, RoutedEventArgs e)

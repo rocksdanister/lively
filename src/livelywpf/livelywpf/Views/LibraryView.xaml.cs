@@ -53,8 +53,13 @@ namespace livelywpf.Views
         private async void LivelyGridControl_ContextMenuClick(object sender, object e)
         {
             var s = sender as MenuFlyoutItem;
-            var obj = (LibraryModel)e;
-            Debug.WriteLine(obj.Title);
+            LibraryModel obj;
+            try
+            {
+                obj = (LibraryModel)e;
+            }
+            catch { return; }
+
             switch (s.Name)
             {
                 case "showOnDisk":

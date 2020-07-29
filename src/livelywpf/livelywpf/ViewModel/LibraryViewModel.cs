@@ -33,7 +33,9 @@ namespace livelywpf
             }
 
             SetupDesktop.WallpaperChanged += SetupDesktop_WallpaperChanged;
-            //not possible currently, turn on when possible.
+
+            //RestoreWallpaper();
+
             //ref: https://github.com/microsoft/microsoft-ui-xaml/issues/911
             //SetWallpaperItemClicked = new RelayCommand(WallpaperSet);
         }
@@ -87,7 +89,7 @@ namespace livelywpf
                     {
                         found = item.GetWallpaperData() == value;
                     }
-                    if(!found)
+                    if (!found)
                         WallpaperSet(value);
                 }
                 _selectedItem = value;
@@ -552,7 +554,7 @@ namespace livelywpf
         public void RestoreWallpaper()
         {
             //todo: remove the missing wallpaper from the save file etc..
-            var layout = WallpaperLayoutJSON.LoadWallpaperLayout(Path.Combine(Program.WallpaperDir, "wallpaper_layout.json"));
+            var layout = WallpaperLayoutJSON.LoadWallpaperLayout(Path.Combine(Program.AppDataDir, "WallpaperLayout.json"));
             if (layout == null)
             {
                 return;
@@ -561,7 +563,7 @@ namespace livelywpf
             foreach (var item in layout)
             {
                 var found = LibraryItems.FirstOrDefault(x => x.LivelyInfoFolderPath.Equals(item.LivelyInfoPath));
-                var screen = ScreenHelper.GetScreen(item.DeviceName, item.Bounds, item.WorkingArea, DisplayIdentificationMode.screenLayout);
+                var screen = ScreenHelper.GetScreen(item.LivelyScreen.DeviceName, item.LivelyScreen.Bounds, item.LivelyScreen.WorkingArea, DisplayIdentificationMode.screenLayout);
                 if (found != null && screen != null)
                 {
                     SetupDesktop.SetWallpaper(found, screen);

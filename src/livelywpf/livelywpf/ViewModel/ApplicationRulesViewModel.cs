@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Windows.Documents;
 
 namespace livelywpf
 {
@@ -10,7 +12,7 @@ namespace livelywpf
         private bool itemSelected = false;
         public ApplicationRulesViewModel()
         {
-            var list = ApplicationRulesJSON.LoadAppRules(@"C:\Users\rocks\Documents\GIFS\application_rules.json");
+            var list = ApplicationRulesJSON.LoadAppRules(Path.Combine(Program.AppDataDir, "AppRules.json"));
             if (list == null)
             {
                 AppRules = new ObservableCollection<ApplicationRulesModel>
@@ -25,6 +27,7 @@ namespace livelywpf
             {
                 AppRules = new ObservableCollection<ApplicationRulesModel>(list);
             }
+
         }
 
         private ObservableCollection<ApplicationRulesModel> _appRules;
@@ -58,6 +61,7 @@ namespace livelywpf
             }
         }
 
+        
         private int _selectedAppRuleProperty;
         public int SelectedAppRuleProperty
         {
@@ -72,6 +76,7 @@ namespace livelywpf
                 OnPropertyChanged("SelectedAppRuleProperty");
             }
         }
+            
 
         private RelayCommand _addCommand;
         public RelayCommand AddCommand
@@ -139,8 +144,7 @@ namespace livelywpf
 
         public void UpdateDiskFile()
         {
-            //test
-            ApplicationRulesJSON.SaveAppRules(AppRules.ToList(), @"C:\Users\rocks\Documents\GIFS\application_rules.json");
+            ApplicationRulesJSON.SaveAppRules(AppRules.ToList(), Path.Combine(Program.AppDataDir, "AppRules.json"));
         }
     }
 }

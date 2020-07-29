@@ -1,6 +1,7 @@
 ﻿using Microsoft.Toolkit.Wpf.UI.XamlHost;
 using System;
 using System.Windows;
+using System.Windows.Interop;
 using Windows.Foundation.Metadata;
 using Windows.UI.Xaml.Media.Imaging;
 
@@ -21,6 +22,13 @@ namespace livelywpf
         {
             FilePath = filePath;
             InitializeComponent();
+            this.Loaded += GIFViewUWP_Loaded;
+        }
+
+        private void GIFViewUWP_Loaded(object sender, RoutedEventArgs e)
+        {
+            //ShowInTaskbar = false :- causing issue with windows10 Taskview.
+            WindowOperations.RemoveWindowFromTaskbar(new WindowInteropHelper(this).Handle);
         }
 
         private void ImageUWP_ChildChanged(object sender, EventArgs e)

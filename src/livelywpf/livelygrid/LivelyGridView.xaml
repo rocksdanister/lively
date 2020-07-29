@@ -34,7 +34,11 @@
         <DataTemplate x:Name="Normal">
             <Grid Width="272" Height="153" AutomationProperties.Name="{Binding Title}">
                 <Image Source="{Binding ImagePath}" Stretch="UniformToFill"/>
-                <!--<SymbolIcon Symbol="Setting" VerticalAlignment="Top" HorizontalAlignment="Right"/>-->
+                <!--
+                <Viewbox MaxHeight="10" MaxWidth="10" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5, 5, 5, 5">
+                    <SymbolIcon Symbol="Document"/>
+                </Viewbox>
+                -->
                 <StackPanel Orientation="Vertical" Height="60" VerticalAlignment="Bottom" Background="{ThemeResource SystemAltMediumColor}" Padding="7">
                     <TextBlock Text="{Binding Title}" MaxLines="1"/>
                     <TextBlock Text="{Binding Desc}" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" MaxLines="2"/>

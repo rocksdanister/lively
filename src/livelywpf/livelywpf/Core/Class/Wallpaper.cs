@@ -390,6 +390,7 @@ namespace livelywpf.Core
     #endregion gif players
 
     #region web browsers
+
     public class WebProcess : IWallpaper
     {
         public WebProcess(string path, LibraryModel model, Screen display)
