@@ -63,6 +63,9 @@ namespace livelywpf
                     case "library":
                         ContentFrame.Navigate(typeof(livelywpf.Views.LibraryView), new Uri("Views/LibraryView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
                         break;
+                    case "about":
+                        ContentFrame.Navigate(typeof(livelywpf.Views.AboutView), new Uri("Views/AboutView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
+                        break;
                     default:
                         //ContentFrame.Navigate(typeof(livelywpf.Views.LibraryView), new Uri("Views/LibraryView.xaml", UriKind.Relative), new DrillInNavigationTransitionInfo()); //new EntranceNavigationTransitionInfo()
                         break;
