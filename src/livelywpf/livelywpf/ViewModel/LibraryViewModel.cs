@@ -306,6 +306,24 @@ namespace livelywpf
 
         #region helpers
 
+        public void UpdateLivelyUIRenderingState(LivelyGUIState mode)
+        {          
+            if(mode == LivelyGUIState.normal)
+            {
+                foreach (var item in LibraryItems)
+                {
+                    item.ImagePath = File.Exists(item.PreviewClipPath) ? item.PreviewClipPath : item.ThumbnailPath;
+                }
+            }
+            else if(mode == LivelyGUIState.lite)
+            {
+                foreach (var item in LibraryItems)
+                {
+                    item.ImagePath = item.ThumbnailPath;
+                }
+            }
+        }
+
         public void AddWallpaper(string path, WallpaperType wpType, LibraryTileType dataType, Screen screen)
         {
             var dir = Path.Combine(Program.WallpaperDir, "SaveData", "wptmp", Path.GetRandomFileName());

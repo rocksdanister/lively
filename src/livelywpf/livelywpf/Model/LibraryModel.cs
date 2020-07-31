@@ -96,8 +96,17 @@ namespace livelywpf
                     ThumbnailPath = null;
                 }
             }
-            ImagePath = File.Exists(PreviewClipPath) ? PreviewClipPath : ThumbnailPath;
+
             LivelyInfoFolderPath = folderPath;
+            if (Program.SettingsVM.Settings.LivelyGUIRendering == LivelyGUIState.normal)
+            {
+                //Use animated gif if exists.
+                ImagePath = File.Exists(PreviewClipPath) ? PreviewClipPath : ThumbnailPath;
+            }
+            else if(Program.SettingsVM.Settings.LivelyGUIRendering == LivelyGUIState.lite)
+            {
+                ImagePath = ThumbnailPath;
+            }
         }
 
         private LivelyInfoModel _livelyInfo;

@@ -61,6 +61,7 @@ namespace livelywpf
             SelectedDisplayPauseRuleIndex = (int)Settings.DisplayPauseSettings;
             SelectedPauseAlgorithmIndex = (int)Settings.ProcessMonitorAlgorithm;
             SelectedVideoPlayerIndex = (int)Settings.VideoPlayer;
+            SelectedLivelyUIModeIndex = (int)Settings.LivelyGUIRendering;
             SetupDesktop.WallpaperInputForward(Settings.InputForward);
         }
 
@@ -176,6 +177,30 @@ namespace livelywpf
 
                 //todo: argumentoutofrange exception
                 Settings.TileSize = value;
+            }
+        }
+
+        private int _selectedLivelyUIModeIndex;
+        public int SelectedLivelyUIModeIndex
+        {
+            get
+            {
+                return _selectedLivelyUIModeIndex;
+            }
+            set
+            {
+                _selectedLivelyUIModeIndex = value;
+                OnPropertyChanged("SelectedLivelyUIModeIndex");
+
+                //prevent running on startup.
+                if (Settings.LivelyGUIRendering != (LivelyGUIState)value)
+                {
+                    Settings.LivelyGUIRendering = (LivelyGUIState)value;
+                    UpdateConfigFile();
+
+                    if(Program.LibraryVM != null)
+                        Program.LibraryVM.UpdateLivelyUIRenderingState(Settings.LivelyGUIRendering);
+                }
             }
         }
 

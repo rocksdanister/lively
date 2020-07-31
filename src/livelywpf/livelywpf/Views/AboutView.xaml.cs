@@ -19,12 +19,11 @@ namespace livelywpf.Views
         public AboutView()
         {
             InitializeComponent();
-
             appVersionText.Text = "v" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            //attribution document.
-            TextRange textRange = new TextRange(licenseDocument.ContentStart, licenseDocument.ContentEnd);
             try
             {
+                //attribution document.
+                TextRange textRange = new TextRange(licenseDocument.ContentStart, licenseDocument.ContentEnd);
                 using (FileStream fileStream = File.Open(Path.Combine(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Docs", "license.rtf")), FileMode.Open, FileAccess.Read, FileShare.Read))
                 {
                     textRange.Load(fileStream, System.Windows.DataFormats.Rtf);

@@ -88,6 +88,13 @@ namespace livelywpf
         duplicate
     }
 
+    public enum LivelyGUIState
+    {
+        normal,
+        lite,
+        headless
+    }
+
     public enum InputForwardMode
     {
         off,
@@ -115,4 +122,5 @@ namespace livelywpf
         libvlc,
         libmpv
     }
+
 }

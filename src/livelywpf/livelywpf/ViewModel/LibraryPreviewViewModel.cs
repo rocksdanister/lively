@@ -254,8 +254,11 @@ namespace livelywpf
 
         private void WInstance_PreviewUpdated(object sender, string path)
         {
-            libData.ImagePath = null;
-            libData.ImagePath = path;
+            if (Program.SettingsVM.Settings.LivelyGUIRendering != LivelyGUIState.lite)
+            {
+                libData.ImagePath = null;
+                libData.ImagePath = path;
+            }
             libData.LivelyInfo.Preview = path;
             libData.PreviewClipPath = path;
         }

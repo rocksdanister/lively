@@ -458,6 +458,19 @@ namespace livelywpf
                 OnPropertyChanged("SelectedDisplay");
             }
         }
+
+        private LivelyGUIState _livelyGUIRendering;
+        public LivelyGUIState LivelyGUIRendering
+        {
+            get { return _livelyGUIRendering; }
+            set
+            {
+                _livelyGUIRendering = value;
+                OnPropertyChanged("LivelyGUIRendering");
+            }
+        }
+
+        //private 
         /*
         //todo need to rewrite audio manager from scratch.
         public bool MuteVideo { get; set; }
@@ -524,6 +537,7 @@ namespace livelywpf
             TileSize = 1;
             DisplayIdentification = DisplayIdentificationMode.screenLayout;
             SelectedDisplay = new LivelyScreenModel(Screen.PrimaryScreen);
+            LivelyGUIRendering = LivelyGUIState.normal;
         }
     }
 }

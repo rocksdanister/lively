@@ -147,6 +147,12 @@ namespace livelywpf
                 //preview and create gif and thumbnail for user dropped file.
                 if (wallpaper.GetWallpaperData().DataType == LibraryTileType.processing)
                 {
+                    if(Program.SettingsVM.Settings.LivelyGUIRendering == LivelyGUIState.lite)
+                    {
+                        //close before gif capture.
+                        CloseWallpaperWithoutEvent(wallpaper.GetScreen());
+                    }
+
                     await ShowPreviewDialogSTAThread(wallpaper);
                     if(!File.Exists(
                     Path.Combine(wallpaper.GetWallpaperData().LivelyInfoFolderPath,"LivelyInfo.json")))
@@ -170,12 +176,7 @@ namespace livelywpf
                 }
 
                 //close previous wp, otherwise 2 fullscreen wp running sametime is heavy.
-                var prevWallpaper = Wallpapers.Find(x => x.GetScreen() == wallpaper.GetScreen());
-                if (prevWallpaper != null)
-                {
-                    CloseWallpaperWithoutEvent(prevWallpaper.GetWallpaperData());
-                    //CloseWallpaper(prevWallpaper.GetWallpaperData());
-                }
+                CloseWallpaperWithoutEvent(wallpaper.GetScreen());
 
                 AddWallpaper(wallpaper.GetHWND(), wallpaper.GetScreen());
                 Wallpapers.Add(wallpaper);
@@ -374,6 +375,17 @@ namespace livelywpf
                     x.Close();
             });
             Wallpapers.RemoveAll(x => x.GetWallpaperData() == wp);
+            RefreshDesktop();
+        }
+
+        public static void CloseWallpaperWithoutEvent(Screen display)
+        {
+            Wallpapers.ForEach(x =>
+            {
+                if (x.GetScreen() == display)
+                    x.Close();
+            });
+            Wallpapers.RemoveAll(x => x.GetScreen() == display);
             RefreshDesktop();
         }
 
