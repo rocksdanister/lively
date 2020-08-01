@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
 
@@ -470,6 +471,17 @@ namespace livelywpf
             }
         }
 
+        private string _wallpaperDir;
+        public string WallpaperDir
+        {
+            get { return _wallpaperDir; }
+            set
+            {
+                _wallpaperDir = value;
+                OnPropertyChanged("WallpaperDir");
+            }
+        }
+
         //private 
         /*
         //todo need to rewrite audio manager from scratch.
@@ -538,6 +550,7 @@ namespace livelywpf
             DisplayIdentification = DisplayIdentificationMode.screenLayout;
             SelectedDisplay = new LivelyScreenModel(Screen.PrimaryScreen);
             LivelyGUIRendering = LivelyGUIState.normal;
+            WallpaperDir = Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Lively Wallpaper");
         }
     }
 }

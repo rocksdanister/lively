@@ -19,7 +19,7 @@ namespace livelywpf
     public class LibraryViewModel : ObservableObject
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private readonly string[] wallpaperScanFolders = new string[] {
+        private List<string> wallpaperScanFolders = new List<string>() {
                 Path.Combine(Program.WallpaperDir, "wallpapers"),
                 Path.Combine(Program.WallpaperDir, "SaveData", "wptmp")
             };
@@ -33,7 +33,8 @@ namespace livelywpf
             }
 
             SetupDesktop.WallpaperChanged += SetupDesktop_WallpaperChanged;
-
+            Program.SettingsVM.LivelyGUIStateChanged += SettingsVM_LivelyGUIStateChanged;
+            Program.SettingsVM.LivelyWallpaperDirChange += SettingsVM_LivelyWallpaperDirChange;
             //RestoreWallpaper();
 
             //ref: https://github.com/microsoft/microsoft-ui-xaml/issues/911
@@ -97,7 +98,7 @@ namespace livelywpf
             }
         }
 
-        #endregion collections
+        #endregion //collections
 
         #region wallpaper operations
 
@@ -293,36 +294,20 @@ namespace livelywpf
             SetupDesktop.SetWallpaper(model, Screen.PrimaryScreen);
         }
 
-        #endregion wallpaper operations
+        #endregion //wallpaper operations
 
         #region contextmenu
 
+        /*
         public RelayCommand SetWallpaperItemClicked { get; set; }
         public RelayCommand DeleteWallpaperItemClicked { get; set; }
         public RelayCommand ShowDiskWallpaperItemClicked { get; set; }
         public RelayCommand ZipWallpaperItemClicked { get; set; }
+        */
 
-        #endregion contextmenu
+        #endregion //contextmenu
 
         #region helpers
-
-        public void UpdateLivelyUIRenderingState(LivelyGUIState mode)
-        {          
-            if(mode == LivelyGUIState.normal)
-            {
-                foreach (var item in LibraryItems)
-                {
-                    item.ImagePath = File.Exists(item.PreviewClipPath) ? item.PreviewClipPath : item.ThumbnailPath;
-                }
-            }
-            else if(mode == LivelyGUIState.lite)
-            {
-                foreach (var item in LibraryItems)
-                {
-                    item.ImagePath = item.ThumbnailPath;
-                }
-            }
-        }
 
         public void AddWallpaper(string path, WallpaperType wpType, LibraryTileType dataType, Screen screen)
         {
@@ -378,10 +363,10 @@ namespace livelywpf
         /// </summary>
         /// <param name="folderPaths">Parent folders to search for subdirectories.</param>
         /// <returns>Sorted(based on Title) wallpaper data.</returns>
-        private List<LibraryModel> ScanWallpaperFolders(string[] folderPaths)
+        private List<LibraryModel> ScanWallpaperFolders(List<string> folderPaths)
         {
             List<String[]> dir = new List<string[]>();
-            for (int i = 0; i < folderPaths.Length; i++)
+            for (int i = 0; i < folderPaths.Count; i++)
             {
                 try
                 {
@@ -538,7 +523,7 @@ namespace livelywpf
             return l;
         }
 
-        #endregion helpers
+        #endregion //helpers
 
         #region setupdesktop
 
@@ -589,6 +574,41 @@ namespace livelywpf
             }
         }
 
-        #endregion setupdesktop
+        #endregion //setupdesktop
+
+        #region settings changed
+
+        private void SettingsVM_LivelyGUIStateChanged(object sender, LivelyGUIState mode)
+        {
+            if (mode == LivelyGUIState.normal)
+            {
+                foreach (var item in LibraryItems)
+                {
+                    item.ImagePath = File.Exists(item.PreviewClipPath) ? item.PreviewClipPath : item.ThumbnailPath;
+                }
+            }
+            else if (mode == LivelyGUIState.lite)
+            {
+                foreach (var item in LibraryItems)
+                {
+                    item.ImagePath = item.ThumbnailPath;
+                }
+            }
+        }
+
+        private void SettingsVM_LivelyWallpaperDirChange(object sender, string dir)
+        {
+            LibraryItems.Clear();
+            wallpaperScanFolders.Clear();
+            wallpaperScanFolders.Add(Path.Combine(dir, "wallpapers"));
+            wallpaperScanFolders.Add(Path.Combine(dir, "SaveData", "wptmp"));
+
+            foreach (var item in ScanWallpaperFolders(wallpaperScanFolders))
+            {
+                LibraryItems.Add(item);
+            }
+        }
+
+        #endregion //settings changed
     }
 }

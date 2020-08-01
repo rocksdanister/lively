@@ -110,7 +110,7 @@ namespace livelywpf
 
         private void AddProgram()
         {
-            Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog
+            var openFileDialog = new Microsoft.Win32.OpenFileDialog
             {
                 Filter = "application (*.exe) |*.exe"
             };

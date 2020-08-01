@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Input;
@@ -180,6 +181,7 @@ namespace livelywpf
             }
         }
 
+        public event EventHandler<LivelyGUIState> LivelyGUIStateChanged;
         private int _selectedLivelyUIModeIndex;
         public int SelectedLivelyUIModeIndex
         {
@@ -192,15 +194,63 @@ namespace livelywpf
                 _selectedLivelyUIModeIndex = value;
                 OnPropertyChanged("SelectedLivelyUIModeIndex");
 
-                //prevent running on startup.
+                //prevent running on startup etc.
                 if (Settings.LivelyGUIRendering != (LivelyGUIState)value)
                 {
                     Settings.LivelyGUIRendering = (LivelyGUIState)value;
                     UpdateConfigFile();
 
-                    if(Program.LibraryVM != null)
-                        Program.LibraryVM.UpdateLivelyUIRenderingState(Settings.LivelyGUIRendering);
+                    LivelyGUIStateChanged?.Invoke(null, (LivelyGUIState)value);
                 }
+            }
+        }
+
+        public event EventHandler<string> LivelyWallpaperDirChange;
+        private RelayCommand _wallpaperDirectoryChangeCommand;
+        public RelayCommand WallpaperDirectoryChangeCommand
+        {
+            get
+            {
+                if (_wallpaperDirectoryChangeCommand == null)
+                {
+                    _wallpaperDirectoryChangeCommand = new RelayCommand(
+                        param => WallpaperDirectoryChange()
+                        );
+                }
+                return _wallpaperDirectoryChangeCommand;
+            }
+        }
+
+        private async void WallpaperDirectoryChange()
+        {
+            var folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                //todo async
+                //todo delete src directory or just use Directory.Move
+                try
+                {
+                    FileOperations.DirectoryCopy(Path.Combine(Program.WallpaperDir, "wallpapers"), 
+                        Path.Combine(folderBrowserDialog.SelectedPath, "wallpapers"), true);
+                    FileOperations.DirectoryCopy(Path.Combine(Program.WallpaperDir, "SaveData", "wptmp"),
+                        Path.Combine(folderBrowserDialog.SelectedPath, "SaveData", "wptmp"), true);
+                    FileOperations.DirectoryCopy(Path.Combine(Program.WallpaperDir, "SaveData", "wpdata"),
+                        Path.Combine(folderBrowserDialog.SelectedPath, "SaveData", "wpdata"), true);
+                }
+                catch(Exception e)
+                {
+                    System.Windows.MessageBox.Show("Failed to write to new directory: " + e.Message);
+                    return;
+                }
+
+                //close all running wp's.
+                SetupDesktop.CloseAllWallpapers();
+                await Task.Delay(1000);
+
+                Settings.WallpaperDir = folderBrowserDialog.SelectedPath;
+                UpdateConfigFile();
+                Program.WallpaperDir = Settings.WallpaperDir;
+                LivelyWallpaperDirChange?.Invoke(null, folderBrowserDialog.SelectedPath);
             }
         }
 

@@ -29,7 +29,7 @@ namespace livelywpf
                 {
                     startInfo.Arguments = "/select, \"" + path + "\"";
                 }
-                else if(Directory.Exists(path))
+                else if (Directory.Exists(path))
                 {
                     startInfo.Arguments = "\"" + path + "\"";
                 }
@@ -39,7 +39,7 @@ namespace livelywpf
                 }
                 Process.Start(startInfo);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Logger.Error(e.Message + "\n" + e.StackTrace);
             }
@@ -87,14 +87,14 @@ namespace livelywpf
             bool status = true;
             if (Directory.Exists(folderPath))
             {
-                await Task.Delay(initialDelay); 
+                await Task.Delay(initialDelay);
                 try
                 {
                     await Task.Run(() => Directory.Delete(folderPath, true));
                 }
                 catch (Exception ex)
                 {
-                    Logger.Error("Folder Delete Failure: " + ex.Message + "\n" +"Retrying..");
+                    Logger.Error("Folder Delete Failure: " + ex.Message + "\n" + "Retrying..");
                     await Task.Delay(retryDelay);
                     try
                     {
@@ -119,13 +119,58 @@ namespace livelywpf
         {
             bool status = false;
             string[] formatsVideo = { ".dat", ".wmv", ".3g2", ".3gp", ".3gp2", ".3gpp", ".amv", ".asf",  ".avi", ".bin", ".cue", ".divx", ".dv", ".flv", ".gxf", ".iso", ".m1v", ".m2v", ".m2t", ".m2ts", ".m4v",
-                                      ".mkv", ".mov", ".mp2", ".mp2v", ".mp4", ".mp4v", ".mpa", ".mpe", ".mpeg", ".mpeg1", ".mpeg2", ".mpeg4", ".mpg", ".mpv2", ".mts", ".nsv", ".nuv", ".ogg", ".ogm", ".ogv", 
+                                      ".mkv", ".mov", ".mp2", ".mp2v", ".mp4", ".mp4v", ".mpa", ".mpe", ".mpeg", ".mpeg1", ".mpeg2", ".mpeg4", ".mpg", ".mpv2", ".mts", ".nsv", ".nuv", ".ogg", ".ogm", ".ogv",
                                       ".ogx", ".ps", ".rec", ".rm",".rmvb", ".tod", ".ts", ".tts", ".vob", ".vro", ".webm" };
             if (formatsVideo.Contains(Path.GetExtension(path), StringComparer.OrdinalIgnoreCase))
             {
                 status = true;
             }
             return status;
+        }
+
+        //ref: https://docs.microsoft.com/en-us/dotnet/standard/io/how-to-copy-directories
+        /// <summary>
+        /// Synchronous directory copy operation.
+        /// </summary>
+        /// <param name="sourceDirName"></param>
+        /// <param name="destDirName"></param>
+        /// <param name="copySubDirs"></param>
+        public static void DirectoryCopy(string sourceDirName, string destDirName, bool copySubDirs)
+        {
+            // Get the subdirectories for the specified directory.
+            DirectoryInfo dir = new DirectoryInfo(sourceDirName);
+
+            if (!dir.Exists)
+            {
+                throw new DirectoryNotFoundException(
+                    "Source directory does not exist or could not be found: "
+                    + sourceDirName);
+            }
+
+            DirectoryInfo[] dirs = dir.GetDirectories();
+            // If the destination directory doesn't exist, create it.
+            if (!Directory.Exists(destDirName))
+            {
+                Directory.CreateDirectory(destDirName);
+            }
+
+            // Get the files in the directory and copy them to the new location.
+            FileInfo[] files = dir.GetFiles();
+            foreach (FileInfo file in files)
+            {
+                string temppath = Path.Combine(destDirName, file.Name);
+                file.CopyTo(temppath, false);
+            }
+
+            // If copying subdirectories, copy them and their contents to new location.
+            if (copySubDirs)
+            {
+                foreach (DirectoryInfo subdir in dirs)
+                {
+                    string temppath = Path.Combine(destDirName, subdir.Name);
+                    DirectoryCopy(subdir.FullName, temppath, copySubDirs);
+                }
+            }
         }
     }
 }

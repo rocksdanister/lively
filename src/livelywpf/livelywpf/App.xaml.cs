@@ -23,6 +23,7 @@ namespace livelywpf
 
             //view models
             Program.SettingsVM = new SettingsViewModel();
+            Program.WallpaperDir = Program.SettingsVM.Settings.WallpaperDir;
             Program.AppRulesVM = new ApplicationRulesViewModel();
             Program.LibraryVM = new LibraryViewModel();
 

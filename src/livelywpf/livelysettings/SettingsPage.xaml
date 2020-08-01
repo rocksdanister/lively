@@ -55,6 +55,20 @@
                                   </Hyperlink>
                             </TextBlock>
                             
+                            <TextBlock Margin="0, 10, 0, 0">Wallpaper Directory</TextBlock>
+                            <Border Background="{ThemeResource SystemListLowColor}" Margin="0, 10, 0, 0" MaxWidth="600" MinWidth="600" MinHeight="30" HorizontalAlignment="Left" >
+                                <Button Command="{Binding WallpaperDirectoryChangeCommand}" >
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <ContentPresenter />
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                    <TextBlock TextWrapping="Wrap" Padding="5, 0, 0, 0" Text="{Binding Settings.WallpaperDir}"/>
+                                </Button>
+                            </Border>
+                            <TextBlock Margin="0, 10, 0, 0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}">
+                                Directory used to store wallpaper files.</TextBlock>
+
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>
