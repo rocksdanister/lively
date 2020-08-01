@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ICSharpCode.SharpZipLib.Zip;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
@@ -66,6 +67,7 @@ namespace livelywpf
         }
 
         private static Systray sysTray;
+        private static Views.SetupWizard.SetupView setupWizard = null;
         private static void App_Startup(object sender, StartupEventArgs e)
         {
             try
@@ -89,6 +91,15 @@ namespace livelywpf
             sysTray = new Systray();
             //AppUpdater();
             //LibraryVM.RestoreWallpaper();
+
+            if (Program.SettingsVM.Settings.IsFirstRun)
+            {
+                setupWizard = new Views.SetupWizard.SetupView()
+                {
+                    WindowStartupLocation = WindowStartupLocation.CenterScreen
+                };
+                setupWizard.Show();
+            }
         }
 
         private static async void AppUpdater()
@@ -148,6 +159,14 @@ namespace livelywpf
         {
             if (App.AppWindow != null)
             {
+                if(setupWizard != null)
+                {
+                    SettingsVM.Settings.IsFirstRun = false;
+                    SettingsVM.UpdateConfigFile();
+                    setupWizard.ExitWindow();
+                    setupWizard = null;
+                }
+
                 App.AppWindow.Show();
                 App.AppWindow.WindowState = App.AppWindow.WindowState != WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
             }

@@ -25,9 +25,7 @@ namespace livelywpf
         private void MyNavView_ChildChanged(object sender, EventArgs e)
         {
             WindowsXamlHost windowsXamlHost = (WindowsXamlHost)sender;
-
             navView = (Windows.UI.Xaml.Controls.NavigationView)windowsXamlHost.Child;
-
             if (navView != null)
             {
                 navView.OpenPaneLength = 50;
@@ -130,6 +128,6 @@ namespace livelywpf
             return IntPtr.Zero;
         }
 
-        #endregion
+        #endregion //single instance
     }
 }

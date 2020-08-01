@@ -216,7 +216,8 @@ namespace livelywpf.Views
         private void Page_Unloaded(object sender, System.Windows.RoutedEventArgs e)
         {
             //stop rendering previews..
-            LivelyGridControl.GridElementSize(livelygrid.GridSize.NoPreview);
+            if(LivelyGridControl != null)
+                LivelyGridControl.GridElementSize(livelygrid.GridSize.NoPreview);
         }
     }
 }

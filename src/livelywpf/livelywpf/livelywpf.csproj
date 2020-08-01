@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <None Remove="Resources\appicon_96.png" />
+    <None Remove="Resources\tutorial_systray.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -42,6 +43,7 @@
 
   <ItemGroup>
     <Resource Include="Resources\appicon_96.png" />
+    <Resource Include="Resources\tutorial_systray.png" />
   </ItemGroup>
 
   <ItemGroup>
