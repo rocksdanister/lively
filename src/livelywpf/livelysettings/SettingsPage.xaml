@@ -46,7 +46,29 @@
                             Normal: Everything Enabled.
                             <LineBreak/>Lite: Disable animated tile and other fancy features.
                             <LineBreak/>Headless: No User Interface.</TextBlock>
-                            
+
+                            <StackPanel Orientation="Horizontal" Margin="0, 10, 0, 5">
+                                <TextBlock>Wallpaper Directory</TextBlock>
+                                <ProgressRing Margin="5, 0, 0, 0"  IsActive="{Binding WallpapeDirectoryChanging}"/>
+                            </StackPanel>
+                            <Button MaxWidth="450" MinWidth="450" MinHeight="30" Style="{StaticResource ButtonRevealStyle}"
+                                    HorizontalContentAlignment="Left" Content="{Binding Settings.WallpaperDir}"
+                                    Command="{Binding WallpaperDirectoryChangeCommand}" />
+                            <!--
+                            <Border Background="{ThemeResource SystemListLowColor}" MaxWidth="600" MinWidth="600" MinHeight="30" HorizontalAlignment="Left">
+                                <Button Command="{Binding WallpaperDirectoryChangeCommand}" >
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <ContentPresenter />
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                    <TextBlock TextWrapping="Wrap" FontSize="12" Padding="5, 0, 0, 0" MinWidth="600" MinHeight="30" Text="{Binding Settings.WallpaperDir}"/>
+                                </Button>
+                            </Border>
+                            -->
+                            <TextBlock Margin="0, 10, 0, 0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}">
+                                Directory used to store wallpaper files.</TextBlock>
+
                             <TextBlock Margin="0, 10, 0, 0">Theme</TextBlock>
                             <TextBlock TextWrapping="Wrap" FontSize="12" Margin="0, 5, 0, 0">
                               <Run Text="Lively adapts to system theme settings, to change appearance go to " />
@@ -55,20 +77,6 @@
                                   </Hyperlink>
                             </TextBlock>
                             
-                            <TextBlock Margin="0, 10, 0, 0">Wallpaper Directory</TextBlock>
-                            <Border Background="{ThemeResource SystemListLowColor}" Margin="0, 10, 0, 0" MaxWidth="600" MinWidth="600" MinHeight="30" HorizontalAlignment="Left" >
-                                <Button Command="{Binding WallpaperDirectoryChangeCommand}" >
-                                    <Button.Template>
-                                        <ControlTemplate TargetType="Button">
-                                            <ContentPresenter />
-                                        </ControlTemplate>
-                                    </Button.Template>
-                                    <TextBlock TextWrapping="Wrap" Padding="5, 0, 0, 0" Text="{Binding Settings.WallpaperDir}"/>
-                                </Button>
-                            </Border>
-                            <TextBlock Margin="0, 10, 0, 0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}">
-                                Directory used to store wallpaper files.</TextBlock>
-
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>

@@ -214,10 +214,21 @@ namespace livelywpf
                 if (_wallpaperDirectoryChangeCommand == null)
                 {
                     _wallpaperDirectoryChangeCommand = new RelayCommand(
-                        param => WallpaperDirectoryChange()
+                        param => WallpaperDirectoryChange(), param => !WallpapeDirectoryChanging
                         );
                 }
                 return _wallpaperDirectoryChangeCommand;
+            }
+        }
+
+        public bool _wallpapeDirectoryChanging;
+        public bool WallpapeDirectoryChanging
+        {
+            get { return _wallpapeDirectoryChanging; }
+            set
+            {
+                _wallpapeDirectoryChanging = value;
+                OnPropertyChanged("WallpapeDirectoryChanging");
             }
         }
 
@@ -226,31 +237,46 @@ namespace livelywpf
             var folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
             {
-                //todo async
-                //todo delete src directory or just use Directory.Move
                 try
                 {
-                    FileOperations.DirectoryCopy(Path.Combine(Program.WallpaperDir, "wallpapers"), 
-                        Path.Combine(folderBrowserDialog.SelectedPath, "wallpapers"), true);
-                    FileOperations.DirectoryCopy(Path.Combine(Program.WallpaperDir, "SaveData", "wptmp"),
-                        Path.Combine(folderBrowserDialog.SelectedPath, "SaveData", "wptmp"), true);
-                    FileOperations.DirectoryCopy(Path.Combine(Program.WallpaperDir, "SaveData", "wpdata"),
-                        Path.Combine(folderBrowserDialog.SelectedPath, "SaveData", "wpdata"), true);
+                    WallpapeDirectoryChanging = true;
+                    WallpaperDirectoryChangeCommand.RaiseCanExecuteChanged();
+                    await Task.Run(() =>
+                    {
+                        FileOperations.DirectoryCopy(Path.Combine(Program.WallpaperDir, "wallpapers"),
+                            Path.Combine(folderBrowserDialog.SelectedPath, "wallpapers"), true);
+                        FileOperations.DirectoryCopy(Path.Combine(Program.WallpaperDir, "SaveData", "wptmp"),
+                            Path.Combine(folderBrowserDialog.SelectedPath, "SaveData", "wptmp"), true);
+                        FileOperations.DirectoryCopy(Path.Combine(Program.WallpaperDir, "SaveData", "wpdata"),
+                            Path.Combine(folderBrowserDialog.SelectedPath, "SaveData", "wpdata"), true);
+                    });
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
-                    System.Windows.MessageBox.Show("Failed to write to new directory: " + e.Message);
+                    Logger.Error("Lively Folder Change Fail: " + e.Message);
+                    System.Windows.MessageBox.Show("Failed to write to new directory:\n" + e.Message, "Error");
                     return;
+                }
+                finally
+                {
+                    WallpapeDirectoryChanging = false;
+                    WallpaperDirectoryChangeCommand.RaiseCanExecuteChanged();
                 }
 
                 //close all running wp's.
                 SetupDesktop.CloseAllWallpapers();
-                await Task.Delay(1000);
 
+                var previousDirectory = Settings.WallpaperDir;
                 Settings.WallpaperDir = folderBrowserDialog.SelectedPath;
                 UpdateConfigFile();
                 Program.WallpaperDir = Settings.WallpaperDir;
                 LivelyWallpaperDirChange?.Invoke(null, folderBrowserDialog.SelectedPath);
+
+                var result = await FileOperations.DeleteDirectoryAsync(previousDirectory, 1000, 3000);
+                if(!result)
+                {
+                    System.Windows.MessageBox.Show("Failed to delete old wallpaper directory!\nTry deleting it manually.", "Error");
+                }
             }
         }
 
