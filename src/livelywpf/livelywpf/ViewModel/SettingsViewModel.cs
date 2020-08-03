@@ -160,7 +160,7 @@ namespace livelywpf
                 Settings.Language = _selectedLanguageItem.Codes[0];
 
                 OnPropertyChanged("SelectedLanguageItem");
-                UpdateConfigFile();
+                //UpdateConfigFile();
             }
         }
 
@@ -272,8 +272,10 @@ namespace livelywpf
                 Program.WallpaperDir = Settings.WallpaperDir;
                 LivelyWallpaperDirChange?.Invoke(null, folderBrowserDialog.SelectedPath);
 
-                var result = await FileOperations.DeleteDirectoryAsync(previousDirectory, 1000, 3000);
-                if(!result)
+                //not deleting the root folder, what if the user selects a folder that is not used by Lively alone!
+                var result1 = await FileOperations.DeleteDirectoryAsync( Path.Combine(previousDirectory, "wallpapers"), 1000, 3000);
+                var result2 = await FileOperations.DeleteDirectoryAsync(Path.Combine(previousDirectory, "SaveData"), 0, 1000);
+                if (!(result1 && result2))
                 {
                     System.Windows.MessageBox.Show("Failed to delete old wallpaper directory!\nTry deleting it manually.", "Error");
                 }

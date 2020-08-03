@@ -1,5 +1,4 @@
-﻿
-using Microsoft.Toolkit.Wpf.UI.XamlHost;
+﻿using Microsoft.Toolkit.Wpf.UI.XamlHost;
 using ModernWpf.Media.Animation;
 using NLog;
 using System;
@@ -32,10 +31,10 @@ namespace livelywpf
                 navView.IsPaneToggleButtonVisible = false;
                 navView.IsBackButtonVisible = NavigationViewBackButtonVisible.Collapsed;
                 navView.PaneDisplayMode = NavigationViewPaneDisplayMode.LeftCompact;
-                navView.MenuItems.Add(CreateMenu("Library", "library", Symbol.Library));
+                navView.MenuItems.Add(CreateMenu(Properties.Resources.TitleLibrary, "library", Symbol.Library));
                 navView.MenuItems.Add(CreateMenu("Layout", "layout", Symbol.ViewAll));
                 navView.MenuItems.Add(CreateMenu("Playlist", "playlist", Symbol.SlideShow));
-                navView.MenuItems.Add(CreateMenu("About", "about", Symbol.Comment));
+                navView.MenuItems.Add(CreateMenu(Properties.Resources.TitleAbout, "about", Symbol.Comment));
                 navView.ItemInvoked += NavView_ItemInvoked;
 
                 navView.SelectedItem = navView.MenuItems.ElementAt(0);

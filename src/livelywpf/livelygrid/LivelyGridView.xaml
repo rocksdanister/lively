@@ -62,13 +62,13 @@
                   SelectedItem="{Binding SelectedItem, Mode=TwoWay}" RightTapped="GridControl_RightTapped">
             <MenuFlyout x:Name="contextMenu">
                 <MenuFlyout.Items>
-                    <MenuFlyoutItem x:Name="moreInformation" Text="Information" Click="contextMenu_Click"/>
-                    <MenuFlyoutItem x:Name="setWallpaper" Text="Set as Wallpaper" Click="contextMenu_Click"/>
-                    <MenuFlyoutItem x:Name="showOnDisk" Text="Show on Disk" Click="contextMenu_Click"/>
-                    <MenuFlyoutItem x:Name="customiseWallpaper" Text="Customise Wallpaper" Click="contextMenu_Click"/>
-                    <MenuFlyoutItem x:Name="exportWallpaper" Text="Export Lively .Zip" Click="contextMenu_Click"/>
-                    <MenuFlyoutItem x:Name="convertVideo" Text="Convert to Video" Click="contextMenu_Click"/>
-                    <MenuFlyoutItem x:Name="deleteWallpaper" Text="Delete Wallpaper" Click="contextMenu_Click"/>
+                    <MenuFlyoutItem x:Name="moreInformation" Text="{x:Bind UIText.TextInformation}" Click="contextMenu_Click"/>
+                    <MenuFlyoutItem x:Name="setWallpaper" Text="{x:Bind UIText.TextSetWallpaper}" Click="contextMenu_Click"/>
+                    <MenuFlyoutItem x:Name="showOnDisk" Text="{x:Bind UIText.TextShowDisk}" Click="contextMenu_Click"/>
+                    <MenuFlyoutItem x:Name="customiseWallpaper" Text="{x:Bind UIText.TextCustomise}" Click="contextMenu_Click"/>
+                    <MenuFlyoutItem x:Name="exportWallpaper" Text="{x:Bind UIText.TextExportZip}" Click="contextMenu_Click"/>
+                    <MenuFlyoutItem x:Name="convertVideo" Text="{x:Bind UIText.TextConvertVideo}" Click="contextMenu_Click"/>
+                    <MenuFlyoutItem x:Name="deleteWallpaper" Text="{x:Bind UIText.TextDelete}" Click="contextMenu_Click"/>
                 </MenuFlyout.Items>
             </MenuFlyout>
             <GridView.ItemsPanel>
@@ -106,7 +106,7 @@
                     <CompositeTransform ScaleX="1.5" ScaleY="1.5"/>
                 </SymbolIcon.RenderTransform>
             </SymbolIcon>
-            <TextBlock RelativePanel.Below="AddSymbol" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="0,12,0,0" Text="New Wallpaper" 
+            <TextBlock RelativePanel.Below="AddSymbol" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="0,12,0,0" Text="{x:Bind UIText.TextAddWallpaper}" 
                        Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" FontSize="24"></TextBlock>
         </RelativePanel>
 

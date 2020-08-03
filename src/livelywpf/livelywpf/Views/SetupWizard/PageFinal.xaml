@@ -5,6 +5,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:livelywpf.Views.SetupWizard"
+      xmlns:p = "clr-namespace:livelywpf.Properties"    
       mc:Ignorable="d" 
       d:DesignHeight="500" d:DesignWidth="800"
       Title="PageFinal">
@@ -12,9 +13,10 @@
     <Grid>
         <DockPanel >
             <Image DockPanel.Dock="Left" Source="pack://application:,,,/Resources/tutorial_systray.png" Stretch="Uniform" Margin="0, 5, 0, 0"/>
-            <TextBlock Margin="10,10,0,0" FontSize="12" TextWrapping="Wrap" >
-                <Bold>All Done!</Bold>
-                <LineBreak/>Lively is running in the background now, open Lively from system-tray to continue.</TextBlock>
+            <StackPanel Margin="10,10,0,0">
+                <TextBlock TextWrapping="Wrap" FontWeight="Bold" FontSize="25" Text="{x:Static p:Resources.TextCompleted}"/>
+                <TextBlock Text="{x:Static p:Resources.DescriptionMinimizedTray}"/>
+            </StackPanel>
         </DockPanel>
     </Grid>
 </Page>

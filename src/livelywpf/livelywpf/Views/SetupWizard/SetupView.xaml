@@ -9,8 +9,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:livelywpf.Views.SetupWizard"
+        xmlns:p = "clr-namespace:livelywpf.Properties"      
         mc:Ignorable="d"
-        Title="Lively Setup" Height="500" Width="800"
+        Title="{x:Static p:Resources.TitleLivelySetup}" Height="650" Width="960"
         ResizeMode="NoResize"
         Closing="Window_Closing"
         >
@@ -21,10 +22,10 @@
         </Grid.RowDefinitions>
 
         <ui:Frame x:Name="ContentFrame" Grid.Row="0" Margin="25, 25, 25, 5"/>
-        <Button x:Name="NextBtn" Grid.Row="1" HorizontalAlignment="Right" Margin="0, 0, 30, 0" MinWidth="125" Content="Next" Click="Button_Click">
+        <Button x:Name="NextBtn" Grid.Row="1" HorizontalAlignment="Right" Margin="0, 0, 30, 0" MinWidth="125" Content="{x:Static p:Resources.TextNext}" Click="Button_Click">
             <ui:FlyoutBase.AttachedFlyout>
                 <ui:Flyout>
-                    <TextBlock Text="Finish the setup to continue."  />
+                    <TextBlock Text="{x:Static p:Resources.TipLivelySetupOnClose}"  />
                 </ui:Flyout>
             </ui:FlyoutBase.AttachedFlyout>
         </Button>

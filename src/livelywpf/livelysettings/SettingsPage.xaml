@@ -140,6 +140,15 @@
                 <Grid>
                     <ScrollViewer>
                         <StackPanel>
+                            <TextBlock FontSize="20" Margin="0, 10, 0, 0">Interaction</TextBlock>
+                            <ComboBox Header="Wallpaper Input" Margin="0,10,0,0" MinWidth="200" SelectedIndex="{Binding SelectedVideoPlayerIndex, Mode=TwoWay}">
+                                <ComboBoxItem>Off</ComboBoxItem>
+                                <ComboBoxItem>Mouse</ComboBoxItem>
+                                <ComboBoxItem IsEnabled="False">Mouse + KB</ComboBoxItem>
+                            </ComboBox>
+                            <CheckBox Content="Mouse interaction when not on desktop" />
+                            <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}">
+                            Select weather interaction with wallpaper is possible.</TextBlock>
                             
                             <TextBlock FontSize="20" Margin="0, 10, 0, 0">Video</TextBlock>
                             <ComboBox Header="Video Player" Margin="0,10,0,0" MinWidth="200" SelectedIndex="{Binding SelectedVideoPlayerIndex, Mode=TwoWay}">
@@ -182,7 +191,6 @@
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}">
                                 If supported video stream link is detected use the video player instead of loading the webpage.
                             </TextBlock>
-                            
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>

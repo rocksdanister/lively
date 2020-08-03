@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -26,6 +27,17 @@ namespace livelywpf
             Program.WallpaperDir = Program.SettingsVM.Settings.WallpaperDir;
             Program.AppRulesVM = new ApplicationRulesViewModel();
             Program.LibraryVM = new LibraryViewModel();
+
+            //culture.
+            try
+            {
+                //System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("zh-CN");
+                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(Program.SettingsVM.Settings.Language);
+            }
+            catch (CultureNotFoundException)
+            {
+                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
+            }
 
             AppWindow = new MainWindow();
             //uwp root app needs this it seems.. is it possible to skip?

@@ -36,11 +36,25 @@ namespace livelywpf.Views
 
             if (LivelyGridControl != null)
             {
+                LivelyGridControl.UIText = this.Localization;
                 LivelyGridControl.GridElementSize((livelygrid.GridSize)Program.SettingsVM.SelectedTileSizeIndex);
                 LivelyGridControl.ContextMenuClick += LivelyGridControl_ContextMenuClick;
                 LivelyGridControl.FileDroppedEvent += LivelyGridControl_FileDroppedEvent;
             }
         }
+
+        //Don't know if there is an easier way to chang UserControl language, tried setting framework language to no effect.
+        livelygrid.LocalizeText Localization = new livelygrid.LocalizeText()
+        {
+            TextAddWallpaper = Properties.Resources.TitleAddWallpaper,
+            TextConvertVideo = Properties.Resources.TextConvertVideo,
+            TextCustomise = Properties.Resources.TextCustomiseWallpaper,
+            TextDelete = Properties.Resources.TextDeleteWallpaper,
+            TextExportZip = Properties.Resources.TextExportWallpaperZip,
+            TextInformation = Properties.Resources.TitleAbout,
+            TextSetWallpaper = Properties.Resources.TextSetWallpaper,
+            TextShowDisk = Properties.Resources.TextShowOnDisk
+        };
 
         /// <summary>
         /// Not possible to do direct mvvm currently, putting the contextmenu inside datatemplate works but.. 
@@ -93,16 +107,7 @@ namespace livelywpf.Views
                         Program.LibraryVM.WallpaperDelete(e);
                     }
                     break;
-                case "customiseWallpaper":
-                    //Program.LibraryVM.WallpaperSendMsg(e, "lively-customise ");
-
-                    /*
-                    //system tray customise dialogue widget.
-                    var settingsWidget = new Cef.LivelyPropertiesTrayWidget(obj);
-                    settingsWidget.Show();                  
-                    */
-
-                    
+                case "customiseWallpaper":                    
                     //In app customise dialogue; 
                     //Can't use contentdialogue since the window object is not uwp.
                     //modernwpf contentdialogue does not have xamlroot so can't draw over livelygrid.

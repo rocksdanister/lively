@@ -30,8 +30,22 @@ namespace livelygrid
         NoPreview
     }
 
+    public class LocalizeText
+    {
+        public string TextInformation { get; set; }
+        public string TextSetWallpaper { get; set; }
+        public string TextShowDisk { get; set; }
+        public string TextCustomise { get; set; }
+        public string TextConvertVideo { get; set; }
+        public string TextExportZip { get; set; }
+        public string TextDelete { get; set; }
+        public string TextAddWallpaper { get; set; }
+    }
+
     public sealed partial class LivelyGridView : UserControl
     {
+        public LocalizeText UIText { get; set; }
+
         private Object selectedTile;
         /// <summary>
         /// Fires when flyoutmenu is clicked, object is datacontext.

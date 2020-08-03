@@ -1,0 +1,390 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DescriptionAppRules" xml:space="preserve">
+    <value>根据正在运行的应用程序设置壁纸播放行为</value>
+  </data>
+  <data name="DescriptionMinimizedTray" xml:space="preserve">
+    <value>我已被最小化到系统托盘，右键单击 Lively 的图标以获取更多选项。</value>
+  </data>
+  <data name="DescriptionRecordStart" xml:space="preserve">
+    <value>Press to begin recording.</value>
+  </data>
+  <data name="DescriptionWelcomeWizard" xml:space="preserve">
+    <value>This wizard will get you started on setting up Lively.</value>
+  </data>
+  <data name="HeaderAppRules" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TextAdd" xml:space="preserve">
+    <value>添加</value>
+  </data>
+  <data name="TextApplication" xml:space="preserve">
+    <value>应用程序</value>
+  </data>
+  <data name="TextAuthor" xml:space="preserve">
+    <value>作者</value>
+  </data>
+  <data name="TextBack" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="TextCompleted" xml:space="preserve">
+    <value>Completed!</value>
+  </data>
+  <data name="TextConvertVideo" xml:space="preserve">
+    <value>Convert to Video</value>
+  </data>
+  <data name="TextCustomiseWallpaper" xml:space="preserve">
+    <value>Customise Wallpaper</value>
+  </data>
+  <data name="TextDeleteWallpaper" xml:space="preserve">
+    <value>删除壁纸</value>
+  </data>
+  <data name="TextExportWallpaperZip" xml:space="preserve">
+    <value>输出 lively .zip</value>
+  </data>
+  <data name="TextmoreInfo" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="TextMouseInteractOnDesktop" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TextNext" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="TextPerformaneKill" xml:space="preserve">
+    <value>停止</value>
+  </data>
+  <data name="TextPerformaneNone" xml:space="preserve">
+    <value>保持运行</value>
+  </data>
+  <data name="TextPerformanePause" xml:space="preserve">
+    <value>暂停</value>
+  </data>
+  <data name="TextRemove" xml:space="preserve">
+    <value>移除</value>
+  </data>
+  <data name="TextRule" xml:space="preserve">
+    <value>规则</value>
+  </data>
+  <data name="TextSearch" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="TextSetWallpaper" xml:space="preserve">
+    <value>设置为壁纸</value>
+  </data>
+  <data name="TextShowOnDisk" xml:space="preserve">
+    <value>在资源管理器中打开 (打开文件所在位置)</value>
+  </data>
+  <data name="TextSource" xml:space="preserve">
+    <value>Source</value>
+  </data>
+  <data name="TextStart" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="TextStop" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="TextTileSizeLarge" xml:space="preserve">
+    <value>Large</value>
+  </data>
+  <data name="TextTileSizeNormal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="TextTileSizeSmall" xml:space="preserve">
+    <value>Small</value>
+  </data>
+  <data name="TextUIHeadless" xml:space="preserve">
+    <value>Headless</value>
+  </data>
+  <data name="TextUILite" xml:space="preserve">
+    <value>Lite</value>
+  </data>
+  <data name="TextUINormal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="TextWallpaperType" xml:space="preserve">
+    <value>类型</value>
+  </data>
+  <data name="TextWelcome" xml:space="preserve">
+    <value>Welcome</value>
+  </data>
+  <data name="TileVideoPlayer" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TipAppFocus" xml:space="preserve">
+    <value>Set what to do when any application is in focus.</value>
+  </data>
+  <data name="TipAppFullScreen" xml:space="preserve">
+    <value>Set what to do when fullscreen games/applications are running.</value>
+  </data>
+  <data name="TipAppRules" xml:space="preserve">
+    <value>Set different wallpaper playback rules based on running application.</value>
+  </data>
+  <data name="TipAppTheme" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TipBatteryPower" xml:space="preserve">
+    <value>(For battery operated systems only) Change playback when AC power is disconnected.</value>
+  </data>
+  <data name="TipBrowserDebuggingPort" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TipDisplayPauseRule" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TipLanguage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TipLivelySetupOnClose" xml:space="preserve">
+    <value>Finish the setup to continue.</value>
+  </data>
+  <data name="TipPauseAlgorithm" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TipStreamWallpaperDetect" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TipStreamWallpaperVideoQuality" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TipTileSize" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TipUIMode" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TipVideoPlayer" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TipWallpaperDir" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TipWallpaperInput" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TipWallpaperPlayback" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TipWebBrowserEngine" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TipWindowsStartup" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TitleAbout" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="TitleAddWallpaper" xml:space="preserve">
+    <value>Add Wallpaper</value>
+  </data>
+  <data name="TitleAppFocus" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TitleAppFullScreen" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TitleAppName" xml:space="preserve">
+    <value>Lively Wallpaper</value>
+  </data>
+  <data name="TitleAppRules" xml:space="preserve">
+    <value>分应用规则配置</value>
+  </data>
+  <data name="TitleAppTheme" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TitleAudio" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TitleBatteryPower" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TitleBrowserDebuggingPort" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TitleDisplayPauseRule" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TitleGeneral" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TitleInteraction" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TitleLanguage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TitleLibrary" xml:space="preserve">
+    <value>库</value>
+  </data>
+  <data name="TitleLivelySetup" xml:space="preserve">
+    <value>Lively Setup</value>
+  </data>
+  <data name="TitleMisc" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TitlePauseAlgo" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TitlePerformance" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TitleSettings" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="TitleStreamWallpaper" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TitleStreamWallpaperDetect" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TitleTileSize" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TitleUIMode" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TitleVideo" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TitleWallpaper" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TitleWallpaperDir" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TitleWallpaperInput" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TitleWallpaperPlayback" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TitleWebBrowser" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TitleWebBrowserEngine" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TitleWindowsStartup" xml:space="preserve">
+    <value>开机自启动</value>
+  </data>
+</root>

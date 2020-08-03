@@ -8,14 +8,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:livelywpf.Views"
+        xmlns:p = "clr-namespace:livelywpf.Properties"  
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        Title="Application Rules" Height="450" Width="800" Closing="Window_Closing">
+        Title="{x:Static p:Resources.TitleAppRules}" Height="450" Width="800" Closing="Window_Closing">
 
     <Grid>
-        
-        <TextBlock Margin="25,5,0,0">Wallpaper playback behaviour based on running application</TextBlock>
+
+        <TextBlock Margin="25,5,0,0" Text="{x:Static p:Resources.DescriptionAppRules}"/> 
         <ListView x:Name="listView" Width="Auto" Margin="25,38,199.6,11" SelectionMode="Single" 
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                   BorderBrush="{DynamicResource SystemControlForegroundBaseLowBrush}" BorderThickness="1"
@@ -25,20 +26,20 @@
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
-                        <GridViewColumn Width="400" Header="Application" DisplayMemberBinding="{Binding AppName, Mode=TwoWay}" />
-                        <GridViewColumn Width="200" Header="Rule" DisplayMemberBinding="{Binding Rule, Mode=TwoWay}" />
+                        <GridViewColumn Width="400" Header="{x:Static p:Resources.TextApplication}" DisplayMemberBinding="{Binding AppName, Mode=TwoWay}" />
+                        <GridViewColumn Width="200" Header="{x:Static p:Resources.TextRule}" DisplayMemberBinding="{Binding Rule, Mode=TwoWay}" />
                     </GridView.Columns>
                 </GridView>
             </ListView.View>
         </ListView>
 
-        <Button Content="Add" HorizontalAlignment="Left" Margin="624,123,0,0" VerticalAlignment="Top" MinWidth="133" Command="{Binding AddCommand}"/>
-        <Button Content="Remove" HorizontalAlignment="Left" Margin="624,160,0,0" VerticalAlignment="Top" MinWidth="133" Command="{Binding RemoveCommand}"/>
+        <Button Content="{x:Static p:Resources.TextAdd}" HorizontalAlignment="Left" Margin="624,123,0,0" VerticalAlignment="Top" MinWidth="133" Command="{Binding AddCommand}"/>
+        <Button Content="{x:Static p:Resources.TextRemove}" HorizontalAlignment="Left" Margin="624,160,0,0" VerticalAlignment="Top" MinWidth="133" Command="{Binding RemoveCommand}"/>
 
         <ui:RadioButtons HorizontalAlignment="Left" Margin="630,202,0,0" VerticalAlignment="Top" MinWidth="155" SelectedIndex="{Binding SelectedAppRuleProperty, Mode=TwoWay}">
-            <RadioButton>Pause</RadioButton>
-            <RadioButton>Ignore</RadioButton>
-            <RadioButton IsEnabled="False">Kill</RadioButton>
+            <RadioButton Content="{x:Static p:Resources.TextPerformanePause}"/>
+            <RadioButton Content="{x:Static p:Resources.TextPerformanceNone}"/>
+            <RadioButton IsEnabled="False" Content="{x:Static p:Resources.TextPerformanceKill}"/>
         </ui:RadioButtons>
     </Grid>
     

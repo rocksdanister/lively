@@ -9,9 +9,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:xamlHost="clr-namespace:Microsoft.Toolkit.Wpf.UI.XamlHost;assembly=Microsoft.Toolkit.Wpf.UI.XamlHost"
         xmlns:local="clr-namespace:livelywpf"
+        xmlns:p = "clr-namespace:livelywpf.Properties"                
         mc:Ignorable="d"
         Height="750" Width="1200"
-        Title="Lively"
+        Title="{x:Static p:Resources.TitleAppName}"
         Closing="Window_Closing"        
         IsVisibleChanged="Window_IsVisibleChanged"
         >
@@ -21,8 +22,7 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Column="1" FontSize="12" Margin="0,10,0,0">Lively Wallpaper</TextBlock>
-        <!-- Looks like its based on old version, using native uwp control instead-->
+        <TextBlock Grid.Column="1" FontSize="12" Margin="0,10,0,0" Text="{x:Static p:Resources.TitleAppName}" /> 
         <!--<ui:NavigationView IsBackButtonVisible="Collapsed" />-->
         <xamlHost:WindowsXamlHost Grid.Column="0" x:Name="MyNavView" InitialTypeName="Windows.UI.Xaml.Controls.NavigationView" ChildChanged="MyNavView_ChildChanged"/>
 

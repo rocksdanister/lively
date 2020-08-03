@@ -43,7 +43,7 @@ namespace livelywpf.Views.ScreenRecordlibVLC
             if (_recordStarted == false)
             {
                 timerText.Text = "0:00";
-                recordBtn.Content = "Stop";
+                recordBtn.Content = Properties.Resources.TextStop;
                 recordBtn.Background = Brushes.Red;
                 _recordStarted = true;
                 RecordEvent?.Invoke(this, true);
