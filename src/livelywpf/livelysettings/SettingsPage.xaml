@@ -14,9 +14,8 @@
             <PivotItem Header="{x:Bind UIText.TitleGeneral}">
                 <Grid>
                     <ScrollViewer Margin="0, 0, 15, 0">
-                        <StackPanel Margin="0,10,0,0">
+                        <StackPanel Margin="0, 10, 0, 0">
                             <ToggleSwitch IsOn="{Binding IsStartup, Mode=TwoWay}" Header="{x:Bind UIText.TitleWindowsStart}"/>
-
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipWindowsStart}"/>
 
                             <ComboBox SelectedIndex="0" Margin="0,10,0,0" MinWidth="150" Header="{x:Bind UIText.TitleLanguage}"
@@ -176,6 +175,14 @@
             </PivotItem>
             
             <PivotItem Header="{x:Bind UIText.TitleMisc}">
+                <Grid>
+                    <ScrollViewer>
+                        <StackPanel>
+                            <ToggleSwitch IsOn="{Binding IsSysTrayIconVisible, Mode=TwoWay}" Header="{x:Bind UIText.TitleSysTrayIconHide}"/>
+                            <TextBlock Margin="0, 10, 0, 0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipSysTrayIconHide}"/>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
             </PivotItem>
         </Pivot>
         

@@ -88,7 +88,7 @@ namespace livelywpf
                 //Environment.Exit(1);
             }
 
-            sysTray = new Systray();
+            sysTray = new Systray(SettingsVM.IsSysTrayIconVisible);
             //AppUpdater();
             //LibraryVM.RestoreWallpaper();
 

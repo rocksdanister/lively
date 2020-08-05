@@ -482,6 +482,17 @@ namespace livelywpf
             }
         }
 
+        private bool _sysTrayIcon;
+        public bool SysTrayIcon
+        {
+            get { return _sysTrayIcon; }
+            set
+            {
+                _sysTrayIcon = value;
+                OnPropertyChanged("SysTrayIcon");
+            }
+        }
+
         //private 
         /*
         //todo need to rewrite audio manager from scratch.
@@ -551,6 +562,7 @@ namespace livelywpf
             SelectedDisplay = new LivelyScreenModel(Screen.PrimaryScreen);
             LivelyGUIRendering = LivelyGUIState.normal;
             WallpaperDir = Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Lively Wallpaper");
+            SysTrayIcon = true;
         }
     }
 }

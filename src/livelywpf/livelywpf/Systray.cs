@@ -13,7 +13,7 @@ namespace livelywpf
     class Systray : IDisposable
     {
         private System.Windows.Forms.NotifyIcon _notifyIcon = new System.Windows.Forms.NotifyIcon();
-        public Systray()
+        public Systray(bool visibility = true)
         {
             //NotifyIcon Fix: https://stackoverflow.com/questions/28833702/wpf-notifyicon-crash-on-first-run-the-root-visual-of-a-visualtarget-cannot-hav/29116917
             //Rarely I get this error "The root Visual of a VisualTarget cannot have a parent..", hard to pinpoint not knowing how to recreate the error.
@@ -26,8 +26,8 @@ namespace livelywpf
             _notifyIcon.Text = "Lively Wallpaper";
 
             CreateContextMenu();
-            _notifyIcon.Visible = true;
-
+            _notifyIcon.Visible = visibility;
+            Program.SettingsVM.TrayIconVisibilityChange += SettingsVM_TrayIconVisibilityChange;
         }
 
         private static System.Windows.Forms.ToolStripMenuItem pauseTrayBtn;
@@ -70,7 +70,7 @@ namespace livelywpf
             }
         }
 
-        private static void ToggleWallpaperPlaybackState()
+        public static void ToggleWallpaperPlaybackState()
         {
             if (Playback.PlaybackState == PlaybackState.play)
             {
@@ -84,8 +84,22 @@ namespace livelywpf
             }
         }
 
+        private void SettingsVM_TrayIconVisibilityChange(object sender, bool visibility)
+        {
+            TrayIconVisibility(visibility);
+        }
+
+        private void TrayIconVisibility(bool visibility)
+        {
+            if(_notifyIcon != null)
+            {
+                _notifyIcon.Visible = visibility;
+            }
+        }
+
         public void Dispose()
         {
+            Program.SettingsVM.TrayIconVisibilityChange -= SettingsVM_TrayIconVisibilityChange;
             _notifyIcon.Visible = false;
             _notifyIcon.Icon.Dispose();
             _notifyIcon.Dispose();

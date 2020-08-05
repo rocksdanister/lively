@@ -87,6 +87,10 @@ namespace livelysettings
         public string TipWallpaperStreamQuality { get; set; }
         public string TitleDetectWallpaperStream { get; set; }
         public string TipDetectWallpaperStream { get; set; }
+
+        //Misc
+        public string TitleSysTrayIconHide { get; set; }
+        public string TipSysTrayIconHide { get; set; }
     }
 
     public sealed partial class SettingsPage : UserControl

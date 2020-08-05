@@ -64,6 +64,7 @@ namespace livelywpf
             SelectedVideoPlayerIndex = (int)Settings.VideoPlayer;
             SelectedLivelyUIModeIndex = (int)Settings.LivelyGUIRendering;
             SetupDesktop.WallpaperInputForward(Settings.InputForward);
+            IsSysTrayIconVisible = Settings.SysTrayIcon;
         }
 
         private SettingsModel _settings;
@@ -436,5 +437,26 @@ namespace livelywpf
         }
 
         #endregion wallpaper
+
+        #region misc
+
+        public event EventHandler<bool> TrayIconVisibilityChange;
+        private bool _isSysTrayIconVisible;
+        public bool IsSysTrayIconVisible
+        {
+            get
+            {
+                return _isSysTrayIconVisible;
+            }
+            set
+            {
+                _isSysTrayIconVisible = value;
+                Settings.SysTrayIcon = _isSysTrayIconVisible;
+                OnPropertyChanged("IsSysTrayIconVisible");
+                TrayIconVisibilityChange?.Invoke(null, _isSysTrayIconVisible);
+            }
+        }
+
+        #endregion //misc
     }
 }
