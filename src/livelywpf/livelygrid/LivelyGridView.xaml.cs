@@ -45,7 +45,6 @@ namespace livelygrid
     public sealed partial class LivelyGridView : UserControl
     {
         public LocalizeText UIText { get; set; }
-
         private Object selectedTile;
         /// <summary>
         /// Fires when flyoutmenu is clicked, object is datacontext.

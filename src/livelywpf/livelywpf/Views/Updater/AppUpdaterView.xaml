@@ -9,8 +9,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:livelywpf.Views"
+        xmlns:p = "clr-namespace:livelywpf.Properties"       
         mc:Ignorable="d"
-        Title="Lively Update" Height="700" Width="650"
+        Title="{x:Static p:Resources.TextUpdateAvailable}" Height="700" Width="650"
         Closing="Window_Closing"
         ResizeMode="NoResize"
         >
@@ -19,7 +20,7 @@
             <RichTextBox x:Name="changelog" MaxHeight="550" MinHeight="550" IsReadOnly="True"/>
             <ui:ProgressBar Name="progressBar" MinHeight="10" Margin="0, 10, 0, 0"/>
             <TextBlock x:Name="sizeTxt" HorizontalAlignment="Right">-/- MB</TextBlock>
-            <Button Name="downloadBtn" HorizontalAlignment="Center" Click="Download_Button_Click" Margin="0, 10, 0, 0">Download</Button>
+            <Button Name="downloadBtn" HorizontalAlignment="Center" Click="Download_Button_Click" Margin="0, 10, 0, 0" Content="{x:Static p:Resources.TextDownload}"/> 
         </StackPanel>
     </Grid>
 </Window>

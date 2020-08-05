@@ -37,7 +37,7 @@
         <Button Content="{x:Static p:Resources.TextRemove}" HorizontalAlignment="Left" Margin="624,160,0,0" VerticalAlignment="Top" MinWidth="133" Command="{Binding RemoveCommand}"/>
 
         <ui:RadioButtons HorizontalAlignment="Left" Margin="630,202,0,0" VerticalAlignment="Top" MinWidth="155" SelectedIndex="{Binding SelectedAppRuleProperty, Mode=TwoWay}">
-            <RadioButton Content="{x:Static p:Resources.TextPerformanePause}"/>
+            <RadioButton Content="{x:Static p:Resources.TextPerformancePause}"/>
             <RadioButton Content="{x:Static p:Resources.TextPerformanceNone}"/>
             <RadioButton IsEnabled="False" Content="{x:Static p:Resources.TextPerformanceKill}"/>
         </ui:RadioButtons>

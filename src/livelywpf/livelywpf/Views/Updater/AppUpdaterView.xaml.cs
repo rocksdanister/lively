@@ -15,6 +15,7 @@ namespace livelywpf.Views
         private readonly Uri fileUrl;
         private bool _forceClose = false;
         private bool downloadComplete = false;
+        string savePath = "";
 
         public AppUpdaterView(Uri fileUrl, string changelogText)
         {
@@ -36,11 +37,11 @@ namespace livelywpf.Views
                 //success
                 downloadComplete = true;
                 downloadBtn.IsEnabled = true;
-                downloadBtn.Content = "Install";
+                downloadBtn.Content = Properties.Resources.TextInstall;
             }
             else
             {
-                MessageBox.Show("Download failed, try downloading from the website instead.");
+                MessageBox.Show(Properties.Resources.LivelyExceptionAppUpdateFail, Properties.Resources.TextError);
                 _forceClose = true;
                 this.Close();
             }
@@ -55,15 +56,30 @@ namespace livelywpf.Views
             }
             else
             {
+                var saveFileDialog1 = new Microsoft.Win32.SaveFileDialog()
+                {
+                    Title = "Select location to save the file",
+                    Filter = "Executable|*.exe",
+                    FileName = "update.exe",
+                };
+                if (saveFileDialog1.ShowDialog() == true)
+                {
+                    savePath = saveFileDialog1.FileName;
+                }
+                if (String.IsNullOrEmpty(savePath))
+                {
+                    return;
+                }
+
                 try
                 {
-                    download.DownloadFile(fileUrl, Path.Combine(Program.WallpaperDir, "tmpdata", "update.exe"));
+                    download.DownloadFile(fileUrl, savePath);
                     download.DownloadFileCompleted += UpdateDownload_DownloadFileCompleted;
                     download.DownloadProgressChanged += UpdateDownload_DownloadProgressChanged;
                 }
                 catch
                 {
-                    MessageBox.Show("Download failed, try downloading from the website instead.");
+                    MessageBox.Show(Properties.Resources.LivelyExceptionAppUpdateFail, Properties.Resources.TextError);
                     _forceClose = true;
                     this.Close();
                 }
@@ -77,10 +93,10 @@ namespace livelywpf.Views
                 e.Cancel = true;
                 ContentDialog cancelDownload = new ContentDialog
                 {
-                    Title = "Hold on",
-                    Content = "Are you sure you want to cancel update?",
-                    PrimaryButtonText = "Yes",
-                    SecondaryButtonText = "No"
+                    Title = Properties.Resources.TitlePleaseWait,
+                    Content = Properties.Resources.DescriptionCancelQuestion,
+                    PrimaryButtonText = Properties.Resources.TextYes,
+                    SecondaryButtonText = Properties.Resources.TextNo,
                 };
                 ContentDialogResult result = await cancelDownload.ShowAsync();
                 if (result == ContentDialogResult.Primary)

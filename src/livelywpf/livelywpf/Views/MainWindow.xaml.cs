@@ -32,8 +32,8 @@ namespace livelywpf
                 navView.IsBackButtonVisible = NavigationViewBackButtonVisible.Collapsed;
                 navView.PaneDisplayMode = NavigationViewPaneDisplayMode.LeftCompact;
                 navView.MenuItems.Add(CreateMenu(Properties.Resources.TitleLibrary, "library", Symbol.Library));
-                navView.MenuItems.Add(CreateMenu("Layout", "layout", Symbol.ViewAll));
-                navView.MenuItems.Add(CreateMenu("Playlist", "playlist", Symbol.SlideShow));
+                navView.MenuItems.Add(CreateMenu(Properties.Resources.TitleScreenLayout, "layout", Symbol.ViewAll));
+                //navView.MenuItems.Add(CreateMenu("Playlist", "playlist", Symbol.SlideShow));
                 navView.MenuItems.Add(CreateMenu(Properties.Resources.TitleAbout, "about", Symbol.Comment));
                 navView.ItemInvoked += NavView_ItemInvoked;
 

@@ -42,19 +42,19 @@ namespace livelywpf
             };
 
             _notifyIcon.ContextMenuStrip.Renderer = new Helpers.CustomContextMenu.RendererDark();
-            _notifyIcon.ContextMenuStrip.Items.Add("Open Lively", Properties.Icons.icons8_home_64).Click += (s, e) => Program.ShowMainWindow();
+            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextOpenLively, Properties.Icons.icons8_home_64).Click += (s, e) => Program.ShowMainWindow();
 
-            _notifyIcon.ContextMenuStrip.Items.Add("Close Wallpapers", null).Click += (s, e) => SetupDesktop.CloseAllWallpapers();
+            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextCloseWallpapers, null).Click += (s, e) => SetupDesktop.CloseAllWallpapers();
 
-            pauseTrayBtn = new System.Windows.Forms.ToolStripMenuItem("Pause Wallpapers", Properties.Icons.icons8_pause_52);
+            pauseTrayBtn = new System.Windows.Forms.ToolStripMenuItem(Properties.Resources.TextPauseWallpapers, Properties.Icons.icons8_pause_52);
             pauseTrayBtn.Click += (s, e) => ToggleWallpaperPlaybackState();
             _notifyIcon.ContextMenuStrip.Items.Add(pauseTrayBtn);
 
-            _notifyIcon.ContextMenuStrip.Items.Add("Customize Wallpapers", null).Click += Systray_Click;
+            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextCustomiseWallpaper, null).Click += Systray_Click;
 
             //_notifyIcon.ContextMenuStrip.Items.Add("-");
             _notifyIcon.ContextMenuStrip.Items.Add(new Helpers.CustomContextMenu.StripSeparatorCustom().stripSeparator);
-            _notifyIcon.ContextMenuStrip.Items.Add("Exit", Properties.Icons.icons8_delete_52).Click += (s, e) => Program.ExitApplication();
+            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextExit, Properties.Icons.icons8_delete_52).Click += (s, e) => Program.ExitApplication();
         }
 
         private void Systray_Click(object sender, EventArgs e)

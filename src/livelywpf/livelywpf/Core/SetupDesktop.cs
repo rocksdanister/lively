@@ -29,6 +29,7 @@ namespace livelywpf
             if (SystemInformation.HighContrast)
             {
                 Logger.Error("Failed to setup workers, high contrast mode!");
+                System.Windows.MessageBox.Show(Properties.Resources.LivelyExceptionHighContrastMode, Properties.Resources.TextError);
                 return;
             }
             else if (!_isInitialized)
@@ -82,9 +83,9 @@ namespace livelywpf
 
                 if (IntPtr.Equals(workerw, IntPtr.Zero) || workerw == null)
                 {
-                    Logger.Error("Failed to setup, workerw handle null!");
-                    //todo: set the settings through code using SystemParametersInfo() - complication: microsoft uses registry to update the radio button UI in the Performance dialog, 
-                    //which DOES not reflect actual applied settings! o_O..will have to edit registry too.
+                    //todo: set the settings through code using SystemParametersInfo() or something?
+                    Logger.Error("Failed to setup wallpaper, WorkerW handle null!");
+                    System.Windows.MessageBox.Show(Properties.Resources.LivelyExceptionWorkerWSetupFail, Properties.Resources.TextError);
                     return;
                 }
                 else
@@ -195,14 +196,6 @@ namespace livelywpf
             List<WallpaperLayoutModel> layout = new List<WallpaperLayoutModel>();
             foreach (var item in Wallpapers)
             {
-                /*
-                layout.Add(new WallpaperLayoutModel(
-                    item.GetScreen().DeviceName, 
-                    item.GetScreen().BitsPerPixel,
-                    item.GetScreen().Bounds,
-                    item.GetScreen().WorkingArea,
-                    item.GetWallpaperData().LivelyInfoFolderPath));
-                */
                 layout.Add(new WallpaperLayoutModel(
                 item.GetScreen(),
                 item.GetWallpaperData().LivelyInfoFolderPath));

@@ -36,25 +36,24 @@ namespace livelywpf.Views
 
             if (LivelyGridControl != null)
             {
-                LivelyGridControl.UIText = this.Localization;
+                //Don't know if there is an easier way to chang UserControl language, tried setting framework language to no effect.
+                //todo: find better way to do this.
+                LivelyGridControl.UIText = new livelygrid.LocalizeText()
+                {
+                    TextAddWallpaper = Properties.Resources.TitleAddWallpaper,
+                    TextConvertVideo = Properties.Resources.TextConvertVideo,
+                    TextCustomise = Properties.Resources.TextCustomiseWallpaper,
+                    TextDelete = Properties.Resources.TextDeleteWallpaper,
+                    TextExportZip = Properties.Resources.TextExportWallpaperZip,
+                    TextInformation = Properties.Resources.TitleAbout,
+                    TextSetWallpaper = Properties.Resources.TextSetWallpaper,
+                    TextShowDisk = Properties.Resources.TextShowOnDisk
+                };
                 LivelyGridControl.GridElementSize((livelygrid.GridSize)Program.SettingsVM.SelectedTileSizeIndex);
                 LivelyGridControl.ContextMenuClick += LivelyGridControl_ContextMenuClick;
                 LivelyGridControl.FileDroppedEvent += LivelyGridControl_FileDroppedEvent;
             }
         }
-
-        //Don't know if there is an easier way to chang UserControl language, tried setting framework language to no effect.
-        livelygrid.LocalizeText Localization = new livelygrid.LocalizeText()
-        {
-            TextAddWallpaper = Properties.Resources.TitleAddWallpaper,
-            TextConvertVideo = Properties.Resources.TextConvertVideo,
-            TextCustomise = Properties.Resources.TextCustomiseWallpaper,
-            TextDelete = Properties.Resources.TextDeleteWallpaper,
-            TextExportZip = Properties.Resources.TextExportWallpaperZip,
-            TextInformation = Properties.Resources.TitleAbout,
-            TextSetWallpaper = Properties.Resources.TextSetWallpaper,
-            TextShowDisk = Properties.Resources.TextShowOnDisk
-        };
 
         /// <summary>
         /// Not possible to do direct mvvm currently, putting the contextmenu inside datatemplate works but.. 
@@ -201,10 +200,10 @@ namespace livelywpf.Views
             };
             ContentDialog deleteDialog = new ContentDialog
             {
-                Title = "Are you sure you wish to delete the wallpaper?",
+                Title = Properties.Resources.DescriptionDeleteConfirmation,
                 Content = tb,
-                PrimaryButtonText ="Yes",
-                SecondaryButtonText ="No",
+                PrimaryButtonText = Properties.Resources.TextYes,
+                SecondaryButtonText = Properties.Resources.TextNo
             };
 
             // Use this code to associate the dialog to the appropriate AppWindow by setting
