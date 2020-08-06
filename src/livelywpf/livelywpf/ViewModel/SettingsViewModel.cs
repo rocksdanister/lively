@@ -29,17 +29,19 @@ namespace livelywpf
             //lang-codes: https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-lcid/a9eac961-e77d-41a6-90a5-ce1a8b0cdb9c
             LanguageItems = new ObservableCollection<LanguagesModel>()
             {
-                    new LanguagesModel("English(en-US)", new string[]{"en", "en-US"}), //technically not US english, sue me..
-                    new LanguagesModel("中文(zh-CN)", new string[]{"zh", "zh-Hans","zh-CN","zh-SG"}), //are they same?
-                    new LanguagesModel("日本人(ja-JP)", new string[]{"ja", "ja-JP"}),
-                    new LanguagesModel("Pусский(ru)", new string[]{"ru", "ru-BY", "ru-KZ", "ru-KG", "ru-MD", "ru-RU","ru-UA"}), //are they same?
-                    new LanguagesModel("हिन्दी(hi-IN)", new string[]{"hi", "hi-IN"}),
+                    new LanguagesModel("English(en)", new string[]{"en", "en-US"}),
+                    new LanguagesModel("中文(zh-CN)", new string[]{"zh", "zh-Hans","zh-CN","zh-SG"}), 
+                    new LanguagesModel("한국어(ko-KR)", new string[]{"ko", "ko-KR","ko-KP"}),
+                    new LanguagesModel("Pусский(ru)", new string[]{"ru", "ru-BY", "ru-KZ", "ru-KG", "ru-MD", "ru-RU","ru-UA"}), 
+                    new LanguagesModel("Українська(uk)", new string[]{"uk", "uk-UA"}),
                     new LanguagesModel("Español(es)", new string[]{"es"}),
                     new LanguagesModel("Italian(it)", new string[]{"it", "it-IT", "it-SM","it-CH","it-VA"}),
                     new LanguagesModel("عربى(ar-AE)", new string[]{"ar"}),
                     new LanguagesModel("Française(fr)", new string[]{"fr"}),
                     new LanguagesModel("Deutsche(de)", new string[]{"de"}),
                     new LanguagesModel("portuguesa(pt)", new string[]{"pt"}),
+                    new LanguagesModel("portuguesa(pt-BR)", new string[]{"pt-BR"}),
+
             };
             SelectedLanguageItem = SearchSupportedLanguage(Settings.Language);
 
@@ -158,10 +160,18 @@ namespace livelywpf
                     //en-US
                     _selectedLanguageItem = LanguageItems[0];
                 }
-                Settings.Language = _selectedLanguageItem.Codes[0];
-
                 OnPropertyChanged("SelectedLanguageItem");
-                //UpdateConfigFile();
+
+                if (Settings.Language != _selectedLanguageItem.Codes[0])
+                {
+                    //Settings.IsRestart = true;
+                    Settings.Language = _selectedLanguageItem.Codes[0];
+                    UpdateConfigFile();
+                    //Program.RestartApplication();
+
+                    //todo use service to display nice lookin dialogue.
+                    System.Windows.MessageBox.Show(Properties.Resources.TipLanguage);
+                }         
             }
         }
 

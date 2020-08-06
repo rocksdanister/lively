@@ -172,6 +172,13 @@ namespace livelywpf
             }
         }
 
+        [Obsolete("not working, mutex delay is too low so its sending msg to show mainwindow instead.")]
+        public static void RestartApplication()
+        {
+            Process.Start(Application.ResourceAssembly.Location);
+            ExitApplication();
+        }
+
         public static void ExitApplication()
         {
             MainWindow._isExit = true;

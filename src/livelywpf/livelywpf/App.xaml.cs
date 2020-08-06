@@ -28,7 +28,7 @@ namespace livelywpf
             Program.AppRulesVM = new ApplicationRulesViewModel();
             Program.LibraryVM = new LibraryViewModel();
 
-            //culture.
+            //localization
             try
             {
                 //System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("zh-CN");
@@ -36,7 +36,7 @@ namespace livelywpf
             }
             catch (CultureNotFoundException)
             {
-                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
+                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en");
             }
 
             AppWindow = new MainWindow();
