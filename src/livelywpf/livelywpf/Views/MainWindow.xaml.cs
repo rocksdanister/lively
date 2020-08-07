@@ -1,13 +1,14 @@
-﻿using LibVLCSharp.Shared;
-using Microsoft.Toolkit.Wpf.UI.XamlHost;
+﻿using Microsoft.Toolkit.Wpf.UI.XamlHost;
 //using ModernWpf.Controls;
 using ModernWpf.Media.Animation;
 using NLog;
 using Octokit;
 using System;
 using System.Linq;
+using System.Threading;
 using System.Windows;
 using System.Windows.Interop;
+using System.Windows.Threading;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 
@@ -153,7 +154,10 @@ namespace livelywpf
 
         private void SetupDesktop_WallpaperChanged(object sender, EventArgs e)
         {
-            wallpaperStatusText.Text = SetupDesktop.Wallpapers.Count.ToString();
+            System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
+            {
+                wallpaperStatusText.Text = SetupDesktop.Wallpapers.Count.ToString();
+            }));
         }
 
         private void Btn_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
