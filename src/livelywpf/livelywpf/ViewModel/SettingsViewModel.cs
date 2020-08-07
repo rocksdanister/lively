@@ -41,7 +41,8 @@ namespace livelywpf
                     new LanguagesModel("Deutsche(de)", new string[]{"de"}),
                     new LanguagesModel("portuguesa(pt)", new string[]{"pt"}),
                     new LanguagesModel("portuguesa(pt-BR)", new string[]{"pt-BR"}),
-
+                    new LanguagesModel("Filipino(fil)", new string[]{"fil","fil-PH"}),
+                    new LanguagesModel("Magyar(hu)", new string[]{"hu","hu-HU"}),
             };
             SelectedLanguageItem = SearchSupportedLanguage(Settings.Language);
 

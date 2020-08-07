@@ -118,468 +118,469 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DescriptionAppRules" xml:space="preserve">
-    <value>Definir o comportamento de reprodução do(s) plano(s) de fundo baseado na aplicação ativa</value>
+    <value>A háttékép lejátszása a futó alkalmazásokon alapszik.</value>
   </data>
   <data name="DescriptionCancelQuestion" xml:space="preserve">
-    <value>Tem certeza de que deseja cancelar?</value>
+    <value>Biztos vissza akarod vonni?</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
-    <value>Tem certeza que deseja apagar permanentemente esse plano de fundo?</value>
+    <value>Biztos véglegesen törölni akarod a háttérképet a Lemezről?</value>
   </data>
   <data name="DescriptionDragDropFIle" xml:space="preserve">
-    <value>Simplesmente arraste e solte os arquivos na Biblioteca.</value>
+    <value>Egyszerűen húzz és dobj fájlokat a Könyvtárba.</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
-    <value>Você está tentando abrir uma aplicação externa como plano de fundo.
-Aplicações maliciosas podem conter malware, vírus e outros que podem danificar o seu sistema.
-Prossiga apenas se a aplicação é proveniente de uma fonte confiável.</value>
+    <value>Egy külső alkalmazást nyitsz meg háttérképként.
+Rosszindulatú alkalmazások hordozhatnak káros szoftvert, vírust.. és kárt okozhatnak a rendszerben.
+Csak akkor folytasd, ha ez az alkalmazás egy megbízható forrásból származik.</value>
   </data>
   <data name="DescriptionMinimizedTray" xml:space="preserve">
-    <value>Estou minimizado na área de notificação, clique com o botão direito no ícone do lively para mais opções.</value>
+    <value>A Lively minimalizálva lett a talcára, jobb klikkelj a lively ikonra a folytatáshoz.</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
-    <value>Pressione para iniciar a gravação.</value>
+    <value>Nyomd meg az Indítást a felvételhez.</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
-    <value>Restaurando os planos de fundo anteriores...</value>
+    <value>Az előző hátter(ek) visszaállítása, kérem várjon...</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
-    <value>Uma nova versão está disponível!</value>
+    <value>Egy új verziója elérhető a programnak!</value>
   </data>
   <data name="DescriptionWebpageLoad" xml:space="preserve">
-    <value>Insira o link do site para carregar; links do Shadertoy.com são suportados</value>
+    <value>Írd be a weboldal linket a betöltéshez, shadertoy.com árnyék linkek támogatottak.</value>
   </data>
   <data name="DescriptionWelcomeWizard" xml:space="preserve">
-    <value>Esse assistente irá te ajudar a configurar o Lively.</value>
+    <value>Ez a varázsló segít elkezdeni a Lively felépítését.</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
-    <value>Falha ao atualizar. Tente baixar o instalador novamente.</value>
+    <value>Frissítési hiba; próbáld meg letölteni a telepítőt innen: https://github.com/rocksdanister/lively/releases</value>
   </data>
   <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
-    <value>Arquivo de plano de fundo danificado, tente baixar novamente.</value>
+    <value>Meghibásodott háttérkép fájl, próbáld meg újra letölteni.</value>
   </data>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
-    <value>Oops... Parece que algo deu errado :(
-Para que possamos entender e corrigir o problema, compartilhe o arquivo de log com o desenvolvedor.
-Instruções para compartilhar o arquivo de log:
+    <value>Hoppá... Úgy látszik valami rosszul sikerült... :(
+Hogy jobban meg legyen értve és ki legyen javítva a hiba, osszd meg a naplófájlt a fejlesztővel.
+Instrukciók a naplófájl megosztásához:
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
-    <value>O Lively não consegue funcionar corretamente com o modo de alto contraste do Windows ativado!
-Desative o modo de alto contraste e tente de novo.</value>
+    <value>A Lively nem tud megfelelően működni, ha a Windows Kontrasztos megjelenítés be van kapcsolva.
+Kérem, kapcsolja ki a Lively megfelelő működéséhez.</value>
   </data>
   <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
-    <value>Não é um arquivo do Lively wallpaper.</value>
+    <value>Nem Lively háttérkép fájl.</value>
   </data>
   <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
-    <value>Uma nova versão está disponível!</value>
+    <value>A Lively nem lett megfelelően bezárva, indítás biztonságos módban.
+Szeretnéd visszaállítani az előzőleg futó háttérképeket?</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
-    <value>Parece que algumas definições necessitam ser definidas para que o Lively funcione:  
-1. Abrir "Meu Computador"
-2. Clicar com o botão direito em uma área vazia.
-3. Selecionar "Propriedades"
-4. Selecionar "Configurações avançadas do sistema"
-5. Na aba "Desempenho" selecionar "Configurações"
-6. Ativar "Animar controles e elementos no Windows".
+    <value>Úgy látszik néhány beállítást be kell állítani, hogy a Lively működjön:-  
+1. Nyisd meg ezt a gépet(Ez a gép)
+2. Kattints az üres területre
+3. Válaszd ki a Tulajdonságokat
+4. Válaszd ki a Speciális rendszerbeállításokat
+5. A Teljesítmény fül alatt kattints a Beállításokra
+6. Engedélyezd az Ablakokon belüli vezérlők és elemek animálását és nyomj az Alkalmazra.
 
-Se for Windows 7, definir "Ajustar para melhor aparência" e aplicar.
-Se ainda não funcionar, feche e inicie o Lively novamente ou reinicie o Windows.
-(Não funciona nas versões insider do Windows 10)</value>
+Ha a Windows 7 épphogy csak be lett állítva - Igazítsd a legjobb megjelenéshez &amp;amp; Alkalmaz.
+Ha még mindig nem működik, zárd be &amp;amp; indítsd el a Livelyt újra/ indítsd újra a Windowst.
+(Nem működik néhány bennfentes Windows felépítésnél.)</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
-    <value>Adicionar</value>
+    <value>Hozzáadás</value>
   </data>
   <data name="TextApplication" xml:space="preserve">
-    <value>Aplicação</value>
+    <value>Alkalmazás</value>
   </data>
   <data name="TextAttribution" xml:space="preserve">
-    <value>Atribuições</value>
+    <value>Tulajdonság</value>
   </data>
   <data name="TextAuthor" xml:space="preserve">
-    <value>Autor</value>
+    <value>Szerző</value>
   </data>
   <data name="TextBack" xml:space="preserve">
-    <value>Voltar</value>
+    <value>Vissza</value>
   </data>
   <data name="TextCloseWallpapers" xml:space="preserve">
-    <value>Fechar plano de fundo</value>
+    <value>Háttérkép</value>
   </data>
   <data name="TextCompleted" xml:space="preserve">
-    <value>Pronto!</value>
+    <value>Teljesítve!</value>
   </data>
   <data name="TextConvertVideo" xml:space="preserve">
-    <value>Converter para vídeo</value>
+    <value>Videóvá konvertálás</value>
   </data>
   <data name="TextCustomiseWallpaper" xml:space="preserve">
-    <value>Personalizar plano de fundo</value>
+    <value>Háttérkép testreszabása</value>
   </data>
   <data name="TextDeleteWallpaper" xml:space="preserve">
-    <value>Excluir plano de fundo</value>
+    <value>Háttérkép törlése</value>
   </data>
   <data name="TextDisplayPauseRuleAllScreen" xml:space="preserve">
-    <value>Todas as telas</value>
+    <value>Összes Képernyő</value>
   </data>
   <data name="TextDisplayPauseRulePerScreen" xml:space="preserve">
-    <value>Por tela</value>
+    <value>Képernyőnként</value>
   </data>
   <data name="TextDownload" xml:space="preserve">
-    <value>Download</value>
+    <value>Letöltés</value>
   </data>
   <data name="TextError" xml:space="preserve">
-    <value>Erro</value>
+    <value>Hiba</value>
   </data>
   <data name="TextExit" xml:space="preserve">
-    <value>Sair</value>
+    <value>Kilépés</value>
   </data>
   <data name="TextExportWallpaperZip" xml:space="preserve">
-    <value>Exportar lively .zip</value>
+    <value>Lively .zip exportálása</value>
   </data>
   <data name="TextGIF" xml:space="preserve">
-    <value>GIF animado</value>
+    <value>Animált GIF</value>
   </data>
   <data name="TextInstall" xml:space="preserve">
-    <value>Instalar</value>
+    <value>Telepítés</value>
   </data>
   <data name="TextmoreInfo" xml:space="preserve">
-    <value>Informações</value>
+    <value>Információ</value>
   </data>
   <data name="TextMoreWallpapers" xml:space="preserve">
-    <value>Mais Planos de Fundo...</value>
+    <value>Több háttérkép</value>
   </data>
   <data name="TextMouseInteractOnDesktop" xml:space="preserve">
-    <value>Interação do mouse quando a aplicação está em foco</value>
+    <value>Egér Interakció, ha egy alkalmazás fókuszban van.</value>
   </data>
   <data name="TextNext" xml:space="preserve">
-    <value>Próximo</value>
+    <value>Következő</value>
   </data>
   <data name="TextNo" xml:space="preserve">
-    <value>Não</value>
+    <value>Nem</value>
   </data>
   <data name="TextOnline" xml:space="preserve">
     <value>Online</value>
   </data>
   <data name="TextOpenLively" xml:space="preserve">
-    <value>Abrir Lively</value>
+    <value>Lively indítása</value>
   </data>
   <data name="TextPauseAlgoAllProcess" xml:space="preserve">
-    <value>Todos os processos</value>
+    <value>Összes Folyamat</value>
   </data>
   <data name="TextPauseAlgoForegroundProcess" xml:space="preserve">
-    <value>Processo em primeiro plano</value>
+    <value>Előtérbeli Folyamat</value>
   </data>
   <data name="TextPauseWallpapers" xml:space="preserve">
-    <value>Pausar planos de fundo</value>
+    <value>Háttérképek megállítása</value>
   </data>
   <data name="TextPerformanceKill" xml:space="preserve">
-    <value>Encerrar</value>
+    <value>Megölés</value>
   </data>
   <data name="TextPerformanceNone" xml:space="preserve">
-    <value>Nada</value>
+    <value>Semmi</value>
   </data>
   <data name="TextPerformancePause" xml:space="preserve">
-    <value>Pausar</value>
+    <value>Megállítás</value>
   </data>
   <data name="TextRemove" xml:space="preserve">
-    <value>Remover</value>
+    <value>Eltávolítás</value>
   </data>
   <data name="TextRule" xml:space="preserve">
-    <value>Regra</value>
+    <value>Előírás</value>
   </data>
   <data name="TextScreen" xml:space="preserve">
-    <value>Tela</value>
+    <value>Képernyő</value>
   </data>
   <data name="TextSearch" xml:space="preserve">
-    <value>Procurar</value>
+    <value>Keresés</value>
   </data>
   <data name="TextSetWallpaper" xml:space="preserve">
-    <value>Definir como plano de fundo</value>
+    <value>Beállítás Háttérképnek</value>
   </data>
   <data name="TextShowOnDisk" xml:space="preserve">
-    <value>Mostrar na pasta</value>
+    <value>Mutasd a Lemezen</value>
   </data>
   <data name="TextSource" xml:space="preserve">
-    <value>Fonte</value>
+    <value>Forrás</value>
   </data>
   <data name="TextStart" xml:space="preserve">
-    <value>Iniciar</value>
+    <value>Indítás</value>
   </data>
   <data name="TextStop" xml:space="preserve">
-    <value>Parar</value>
+    <value>Megállítás</value>
   </data>
   <data name="TextTags" xml:space="preserve">
-    <value>Tags</value>
+    <value>Címkék</value>
   </data>
   <data name="TextTileSizeLarge" xml:space="preserve">
-    <value>Grande</value>
+    <value>Nagy</value>
   </data>
   <data name="TextTileSizeNormal" xml:space="preserve">
-    <value>Normal</value>
+    <value>Közepes</value>
   </data>
   <data name="TextTileSizeSmall" xml:space="preserve">
-    <value>Pequeno</value>
+    <value>Kicsi</value>
   </data>
   <data name="TextUIHeadless" xml:space="preserve">
-    <value>Destacado</value>
+    <value>Fejetlen</value>
   </data>
   <data name="TextUILite" xml:space="preserve">
-    <value>Leve</value>
+    <value>Egyszerű</value>
   </data>
   <data name="TextUINormal" xml:space="preserve">
-    <value>Normal</value>
+    <value>Normál</value>
   </data>
   <data name="TextUpdateAvailable" xml:space="preserve">
-    <value>Atualização disponível!</value>
+    <value>Frissítés elérhető!</value>
   </data>
   <data name="TextUpdateCheck" xml:space="preserve">
-    <value>Procurar atualizações</value>
+    <value>Frissítés keresése</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
-    <value>Erro ao verificar atualização</value>
+    <value>Hiba frissítés keresése közben</value>
   </data>
   <data name="TextUpdateChecking" xml:space="preserve">
-    <value>Procurando por atualizações</value>
+    <value>Frissítés keresése</value>
   </data>
   <data name="TextUpdateUptodate" xml:space="preserve">
-    <value>O Lively está atualizado!</value>
+    <value>Legfrissebb verziójú Program!</value>
   </data>
   <data name="TextVideo" xml:space="preserve">
-    <value>Vídeo</value>
+    <value>Videó</value>
   </data>
   <data name="TextWallpaperLayoutDuplicate" xml:space="preserve">
-    <value>Duplicar o mesmo plano de fundo</value>
+    <value>Azonos háttérkép duplikálása</value>
   </data>
   <data name="TextWallpaperLayoutSpan" xml:space="preserve">
-    <value>Expandir</value>
+    <value>Képernyő átfogása</value>
   </data>
   <data name="TextWallpaperType" xml:space="preserve">
-    <value>Extensões</value>
+    <value>Típus</value>
   </data>
   <data name="TextWebsite" xml:space="preserve">
-    <value>Website</value>
+    <value>Weboldal</value>
   </data>
   <data name="TextWebStream" xml:space="preserve">
-    <value>Stream</value>
+    <value>Élő adás</value>
   </data>
   <data name="TextWelcome" xml:space="preserve">
-    <value>Bem vindo</value>
+    <value>Üdvözöllek</value>
   </data>
   <data name="TextYes" xml:space="preserve">
-    <value>Sim</value>
+    <value>Igen</value>
   </data>
   <data name="TileVideoPlayer" xml:space="preserve">
-    <value>Reprodutor de Vídeo</value>
+    <value>Videó lejátszó</value>
   </data>
   <data name="TipAppFocus" xml:space="preserve">
-    <value>Defina o que fazer quando alguma aplicação está em foco.</value>
+    <value>Állítsd be mi legyen, ha egy alkalmazás fókuszban van.</value>
   </data>
   <data name="TipAppFullScreen" xml:space="preserve">
-    <value>Defina o que fazer quando algum jogo/aplicação em tela cheia está sendo executada.</value>
+    <value>Állítsd be mi legyen, ha teljes képernyős játékok/alkalmazások futnak.</value>
   </data>
   <data name="TipAppRules" xml:space="preserve">
-    <value>Defina diferentes regras de reprodução dos planos de fundo baseado na aplicação sendo executada.</value>
+    <value>Állíts be különböző háttérkép lejátszási szabályokat a futó alkalmazásokon alapulva.</value>
   </data>
   <data name="TipAppTheme" xml:space="preserve">
-    <value>O Lively adapta sua aparência de acordo com o tema do sistema</value>
+    <value>A Lively a rendszer téma beállításához igazítja magát, hogy megváltoztassa a megjelenést.</value>
   </data>
   <data name="TipBatteryPower" xml:space="preserve">
-    <value>(Somente para sistemas com bateria) Mudar reprodução quando o cabo de energia está desconectado.</value>
+    <value>(Csak az akkumulátor működő rendszereknél) Változtasd meg a lejátszást, ha az AC tápkábel nincs csatlakoztatva.</value>
   </data>
   <data name="TipBrowserDebuggingPort" xml:space="preserve">
-    <value>Insira a porta para debug de planos de fundo de páginas web, é preciso reiniciar o navegador para que as mudanças tenham efeito.
-Quando estiver pronto vá para http://localhost:numerodaporta para acessar o console de desenvolvedor.</value>
+    <value>Írd be a portot a weboldal háttérképek hibakereséséhez, kereső újraindítás szükséges a változások eléréséhez.
+A kész vagy menj a http://localhost:portnumber hogy hozzáférj a fejlesztői konzolhoz.</value>
   </data>
   <data name="TipDisplayPauseRule" xml:space="preserve">
-    <value>Individual: Pausar o plano de fundo somente na tela em que a aplicação está em foco/tela cheia.
-Todos: Pausar o plano de fundo em todas as telas se alguma aplicação está em foco/tela cheia.</value>
+    <value>Egyik: Szüneteltesd a háttérképet csak azon a képernyőn, amelyen az alkalmazás fókuszban/teljes képernyőben van.
+Összes: Szüneteltesd a háttérképet az összes képernyő(kö)n, ha egy alkalmazás fókuszban/teljes képernyőben van.</value>
   </data>
   <data name="TipHideSysTray" xml:space="preserve">
-    <value>Visibilidade do ícone na gaveta do sistema, o Lively continuará funcionando com o ícone escondido.</value>
+    <value>Tálca ikon láthatóság, a lively továbbra is futni fog, ha az ikon el van rejtve.</value>
   </data>
   <data name="TipLanguage" xml:space="preserve">
-    <value>O Lively irá reiniciar para aplicar o novo idioma.</value>
+    <value>A Lively újra fog indulni, hogy alkalmazza az új nyelvet.</value>
   </data>
   <data name="TipLivelySetupOnClose" xml:space="preserve">
-    <value>Termine a instalação para continuar.</value>
+    <value>Fejezd be a felépítést a folytatáshoz.</value>
   </data>
   <data name="TipPauseAlgorithm" xml:space="preserve">
-    <value>Primeiro plano: Mais leve, só verifica um único processo que está em primeiro plano para determinar o comportamento da repeodução do plano de fundo.
-Todos os processos: Mais pesado, escaneia todos os processos para determinar o comportamento da reprodução.</value>
+    <value>Előtér: Könnyű, csak egy folyamatot vizsgál át, ami előtérben van, hogy meghatározza a háttérkép lejátszás viselkedését.
+Összes folyamat: Nehezebb, az összes folyamatot beszkenneli, hogy meghatározza a lejátszás viselkedését.</value>
   </data>
   <data name="TipStreamWallpaperDetect" xml:space="preserve">
-    <value>Se um link de stream suportado for detectado use o player de vídeo ao invés de carregar a página da web.</value>
+    <value>Ha egy támogatott videó élő adás link elérhető, használd a videó lejátszót, ahelyett, hogy betöltenél egy weboldalt.</value>
   </data>
   <data name="TipStreamWallpaperVideoQuality" xml:space="preserve">
-    <value>Selecione a qualidade de vídeo desejada para streams online.</value>
+    <value>Válaszd ki a kívánt videó minőséget csak az élő adásokhoz.</value>
   </data>
   <data name="TipTileSize" xml:space="preserve">
-    <value>Tamanho dos azulejos dos planos de fundo na biblioteca.</value>
+    <value>A háttérkép csempék mérete a Könyvtárban.</value>
   </data>
   <data name="TipUIMode" xml:space="preserve">
-    <value>Para sistemas mais fracos selecione o modo Leve.</value>
+    <value>Az alsó kategóriás rendszerekhez válaszd az Egyszerű módot.</value>
   </data>
   <data name="TipVideoPlayer" xml:space="preserve">
-    <value>Selecione o player para planos de fundo de vídeo.
-libVLC é recomendado.</value>
+    <value>Válaszd ki a lejátszót, amit videó háttérhez szoktál használni.
+libVLC javasolt.</value>
   </data>
   <data name="TipWallpaperDir" xml:space="preserve">
-    <value>Caminho usado para armazenar os arquivos dos planos de fundo.</value>
+    <value>Az Path (fájl elérési útja) a háttérkép fájlok tárolására van használva.</value>
   </data>
   <data name="TipWallpaperInput" xml:space="preserve">
-    <value>Selecione as formas de interação com o plano de fundo.</value>
+    <value>Válaszd ki az utakat, hogy interakcióba lépj a háttérképpel.</value>
   </data>
   <data name="TipWallpaperPlayback" xml:space="preserve">
-    <value>Pausar a reprodução do plano de fundo quando a área de trabalho não estiver em foco.</value>
+    <value>Állítsd le a háttérkép lejátszást, ha az asztal nincs fókuszban.</value>
   </data>
   <data name="TipWebBrowserDiskCache" xml:space="preserve">
-    <value>Armazenar arquivos temporários no disco ao invés da memória, as configurações serão restauradas quando o navegador for reiniciado.</value>
+    <value>Tárolj ideiglenes fájlokat a Lemezen memória helyett, a beállítások vissza lesznek állítva, ha a böngésző újraindult.</value>
   </data>
   <data name="TipWebBrowserEngine" xml:space="preserve">
-    <value>CEF(Chromium Embedded Framework) é uma engine chromium leve.
-O Edge é a webview embutida do Windows 10.</value>
+    <value>A CEF(Krómmal Beágyazott Szerkezet) egy könnyű króm motor.
+Az Edge a Windows 10 beépített WebView-ja (Lehetővé teszi, hogy webes tartalmakat nyisson meg egy alkalmazáson belül.)</value>
   </data>
   <data name="TipWindowsStartup" xml:space="preserve">
-    <value>O Lively precisa ser executado em segundo plano para reproduzir o plano de fundo.</value>
+    <value>A Livelynek futnia kell a háttérben a háttérkép lejátszásához.</value>
   </data>
   <data name="TitleAbout" xml:space="preserve">
-    <value>Sobre</value>
+    <value>Róla</value>
   </data>
   <data name="TitleAddWallpaper" xml:space="preserve">
-    <value>Adicionar</value>
+    <value>Háttérkép Hozzáadása</value>
   </data>
   <data name="TitleAppFocus" xml:space="preserve">
-    <value>Outra aplicação em foco</value>
+    <value>Alkalmazások Fókuszban</value>
   </data>
   <data name="TitleAppFullScreen" xml:space="preserve">
-    <value>Quando outra aplicação estiver em tela cheia</value>
+    <value>Alkalmazások Teljes képernyőben</value>
   </data>
   <data name="TitleAppName" xml:space="preserve">
-    <value>Lively Wallpaper</value>
+    <value>Lively Háttérkép</value>
   </data>
   <data name="TitleAppRules" xml:space="preserve">
-    <value>Regras de aplicações</value>
+    <value>Alkalmazás Szabályok</value>
   </data>
   <data name="TitleAppTheme" xml:space="preserve">
-    <value>Tema</value>
+    <value>Téma</value>
   </data>
   <data name="TitleAudio" xml:space="preserve">
-    <value>Áudio</value>
+    <value>Audió</value>
   </data>
   <data name="TitleAudioPlayOnScreen" xml:space="preserve">
-    <value>Reproduzir áudio da tela</value>
+    <value>Audió lejátszása a képernyőn</value>
   </data>
   <data name="TitleBatteryPower" xml:space="preserve">
-    <value>Quando estiver na energia da bateria</value>
+    <value>Ha Akkumulátoros Áramon van</value>
   </data>
   <data name="TitleBrowseFile" xml:space="preserve">
-    <value>Procurar arquivos de vídeo, gif, página da web... para definir como plano de fundo</value>
+    <value>Keresés videó, gif, weboldal... fájl után, beállítani háttérképnek.</value>
   </data>
   <data name="TitleBrowserDebuggingPort" xml:space="preserve">
-    <value>Porta para debug</value>
+    <value>Hibakeresési port</value>
   </data>
   <data name="TitleDeleteConfirmation" xml:space="preserve">
-    <value>Confirmar exclusão</value>
+    <value>Törlés elfogadása</value>
   </data>
   <data name="TitleDisplayPauseRule" xml:space="preserve">
-    <value>Regra de exibição em pausa</value>
+    <value>Szüneteltetési Előírás Megjelenítése</value>
   </data>
   <data name="TitleGeneral" xml:space="preserve">
-    <value>Geral</value>
+    <value>Általános</value>
   </data>
   <data name="TitleHelp" xml:space="preserve">
-    <value>Ajuda</value>
+    <value>Segítség</value>
   </data>
   <data name="TitleHideSysTray" xml:space="preserve">
-    <value>Ícone na gaveta do sistema</value>
+    <value>Tálca Ikon</value>
   </data>
   <data name="TitleInteraction" xml:space="preserve">
-    <value>Interação</value>
+    <value>Interakció</value>
   </data>
   <data name="TitleLanguage" xml:space="preserve">
-    <value>Requer a reinicialização do app</value>
+    <value>Nyelv</value>
   </data>
   <data name="TitleLibrary" xml:space="preserve">
-    <value>Biblioteca</value>
+    <value>Könyvtár</value>
   </data>
   <data name="TitleLivelySetup" xml:space="preserve">
-    <value>Instalação do Lively</value>
+    <value>Lively Felépítés</value>
   </data>
   <data name="TitleMisc" xml:space="preserve">
-    <value>Outros</value>
+    <value>Egyéb</value>
   </data>
   <data name="TitleMute" xml:space="preserve">
-    <value>Som desativado</value>
+    <value>Némítás</value>
   </data>
   <data name="TitlePauseAlgo" xml:space="preserve">
-    <value>Algoritmo de pausa</value>
+    <value>Algoritmus szüneteltetése</value>
   </data>
   <data name="TitlePerformance" xml:space="preserve">
-    <value>Desempenho</value>
+    <value>Működés</value>
   </data>
   <data name="TitlePlaylist" xml:space="preserve">
-    <value>Lista de reprodução</value>
+    <value>Lejátszási lista</value>
   </data>
   <data name="TitlePleaseWait" xml:space="preserve">
-    <value>Espere, por favor</value>
+    <value>Kérem várjon...</value>
   </data>
   <data name="TitleScalingFit" xml:space="preserve">
-    <value>Escala/Ajuste</value>
+    <value>Arányosítás/Illesztés</value>
   </data>
   <data name="TitleScreenLayout" xml:space="preserve">
-    <value>Layout da tela</value>
+    <value>Képernyő elrendezés</value>
   </data>
   <data name="TitleSettings" xml:space="preserve">
-    <value>Configurações</value>
+    <value>Beállítások</value>
   </data>
   <data name="TitleStreamWallpaper" xml:space="preserve">
-    <value>Stream</value>
+    <value>Élő adás</value>
   </data>
   <data name="TitleStreamWallpaperDetect" xml:space="preserve">
-    <value>Detectar Streams</value>
+    <value>Élő adások Érzékelése</value>
   </data>
   <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
-    <value>Qualidade do Vídeo</value>
+    <value>Videó Minőség</value>
   </data>
   <data name="TitleTileSize" xml:space="preserve">
-    <value>Tamanho do azulejo</value>
+    <value>Csempe Méret</value>
   </data>
   <data name="TitleUIMode" xml:space="preserve">
-    <value>Interface do usuário</value>
+    <value>Felhasználói Felület</value>
   </data>
   <data name="TitleVideo" xml:space="preserve">
-    <value>Vídeo</value>
+    <value>Videó</value>
   </data>
   <data name="TitleWallpaper" xml:space="preserve">
-    <value>Plano de fundo</value>
+    <value>Háttérkép</value>
   </data>
   <data name="TitleWallpaperDir" xml:space="preserve">
-    <value>Diretório do plano de fundo</value>
+    <value>Háttérkép Címtár</value>
   </data>
   <data name="TitleWallpaperInput" xml:space="preserve">
-    <value>Entrada do plano de fundo</value>
+    <value>Bemenő Háttérkép</value>
   </data>
   <data name="TitleWallpaperLayout" xml:space="preserve">
-    <value>Selecione a disposição do plano de fundo</value>
+    <value>Háttérkép Elrendezés</value>
   </data>
   <data name="TitleWallpaperPlayback" xml:space="preserve">
-    <value>Reprodução do plano de fundo</value>
+    <value>Háttérkép Lejátszás</value>
   </data>
   <data name="TitleWarning" xml:space="preserve">
-    <value>Aviso</value>
+    <value>Figyelmeztetés</value>
   </data>
   <data name="TitleWebBrowser" xml:space="preserve">
-    <value>Navegador Web</value>
+    <value>Web Böngésző</value>
   </data>
   <data name="TitleWebBrowserDiskCache" xml:space="preserve">
-    <value>Cache em disco</value>
+    <value>Lemez gyorsítótár</value>
   </data>
   <data name="TitleWebBrowserEngine" xml:space="preserve">
-    <value>Engine</value>
+    <value>Motor</value>
   </data>
   <data name="TitleWebpageLoad" xml:space="preserve">
-    <value>Carregar página web</value>
+    <value>Weboldal Betöltése</value>
   </data>
   <data name="TitleWindowsStartup" xml:space="preserve">
-    <value>Iniciar com o Windows</value>
+    <value>Indítás Windowssal</value>
   </data>
 </root>

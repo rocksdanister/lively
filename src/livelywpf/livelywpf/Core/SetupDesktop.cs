@@ -143,6 +143,7 @@ namespace livelywpf
         private static async void SetupDesktop_WallpaperInitialized(object sender, WindowInitializedArgs e)
         {
             var wallpaper = (IWallpaper)sender;
+            wallpaper.WindowInitialized -= SetupDesktop_WallpaperInitialized;
             if(e.Success)
             {
                 //preview and create gif and thumbnail for user dropped file.

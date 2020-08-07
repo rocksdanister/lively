@@ -560,7 +560,7 @@ namespace livelywpf
             TileSize = 1;
             DisplayIdentification = DisplayIdentificationMode.screenLayout;
             SelectedDisplay = new LivelyScreenModel(Screen.PrimaryScreen);
-            LivelyGUIRendering = LivelyGUIState.normal;
+            LivelyGUIRendering = LivelyGUIState.lite;
             WallpaperDir = Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Lively Wallpaper");
             SysTrayIcon = true;
         }

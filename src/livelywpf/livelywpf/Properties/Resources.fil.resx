@@ -118,468 +118,466 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DescriptionAppRules" xml:space="preserve">
-    <value>Definir o comportamento de reprodução do(s) plano(s) de fundo baseado na aplicação ativa</value>
+    <value>Pag-uugali ng pag-playback ng wallpaper batay sa pagpapatakbo ng application.</value>
   </data>
   <data name="DescriptionCancelQuestion" xml:space="preserve">
-    <value>Tem certeza de que deseja cancelar?</value>
+    <value>Sigurado ka bang gusto mong kanselahin?</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
-    <value>Tem certeza que deseja apagar permanentemente esse plano de fundo?</value>
+    <value>Sigurado ka bang nais mong permanenteng tanggalin ang wallpaper mula sa disk?</value>
   </data>
   <data name="DescriptionDragDropFIle" xml:space="preserve">
-    <value>Simplesmente arraste e solte os arquivos na Biblioteca.</value>
+    <value>I-drag lamang at i-drop ang mga file sa Library.</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
-    <value>Você está tentando abrir uma aplicação externa como plano de fundo.
-Aplicações maliciosas podem conter malware, vírus e outros que podem danificar o seu sistema.
-Prossiga apenas se a aplicação é proveniente de uma fonte confiável.</value>
+    <value>Binubuksan mo ang isang panlabas na application bilang wallpaper. Ang mga nakakahamak na apllikasyon ay maaaring mag-host ng malware, virus.. na makakahamak sa iyong system. Patuloy lamang kung ang aplikasyon na ito ay nagmula sa mapagkakatiwalaang mapagkukunan</value>
   </data>
   <data name="DescriptionMinimizedTray" xml:space="preserve">
-    <value>Estou minimizado na área de notificação, clique com o botão direito no ícone do lively para mais opções.</value>
+    <value>Ang Lively ay nai-minimize sa system tray, mag--click sa Lively icon upang matuloy.</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
-    <value>Pressione para iniciar a gravação.</value>
+    <value>Pindutin upang simulan ang pag-record.</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
-    <value>Restaurando os planos de fundo anteriores...</value>
+    <value>Kasalukuyang ibinabalik ang nakaraang mga wallpaper, magyayaring maghintay...</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
-    <value>Uma nova versão está disponível!</value>
+    <value>May isang bagong bersyon ng sofware ay magagamit!</value>
   </data>
   <data name="DescriptionWebpageLoad" xml:space="preserve">
-    <value>Insira o link do site para carregar; links do Shadertoy.com são suportados</value>
+    <value>Ipasok ang link sa website upang mai-load, suportado ang mga link ng shadertoy.com</value>
   </data>
   <data name="DescriptionWelcomeWizard" xml:space="preserve">
-    <value>Esse assistente irá te ajudar a configurar o Lively.</value>
+    <value>Sisimulan ka ng wizard na ito sa pag-set up ng Lively.</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
-    <value>Falha ao atualizar. Tente baixar o instalador novamente.</value>
+    <value>Nabigong i-update; subukang i-download ang installer mula sa:
+https://github.com/rocksdanister/lively/releases</value>
   </data>
   <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
-    <value>Arquivo de plano de fundo danificado, tente baixar novamente.</value>
+    <value>Nasira ang file ng wallpaper, subukang muling i-download.</value>
   </data>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
-    <value>Oops... Parece que algo deu errado :(
-Para que possamos entender e corrigir o problema, compartilhe o arquivo de log com o desenvolvedor.
-Instruções para compartilhar o arquivo de log:
+    <value>Oops ... Mukhang may nanyaring mali :(
+Upang higit na maunawaan ang error na ito at ayusin ang isyu, ibahagi ang log file sa nag-develop.
+Mga tagubilin para sa pagbabahagi ng log file:
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
-    <value>O Lively não consegue funcionar corretamente com o modo de alto contraste do Windows ativado!
-Desative o modo de alto contraste e tente de novo.</value>
+    <value>Ang lively ay hindi maaaring gumana nang maayos sa Windows High Contrast mode na pinagana!
+Huwag paganahin ang mode na High Contrast at subukang muli.</value>
   </data>
   <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
-    <value>Não é um arquivo do Lively wallpaper.</value>
+    <value>Hindi Lively wallpaper file.</value>
   </data>
   <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
-    <value>Uma nova versão está disponível!</value>
+    <value>Ang Lively ay hindi nagsarado nang maayos, nagsisimula na ang Safe Mode. Nais mo bang ibalik ang dating mga tumatakbo na wallpaper?</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
-    <value>Parece que algumas definições necessitam ser definidas para que o Lively funcione:  
-1. Abrir "Meu Computador"
-2. Clicar com o botão direito em uma área vazia.
-3. Selecionar "Propriedades"
-4. Selecionar "Configurações avançadas do sistema"
-5. Na aba "Desempenho" selecionar "Configurações"
-6. Ativar "Animar controles e elementos no Windows".
+    <value>Mukhang kailangang itakda ang ilang mga setting upang gumana ang Lively 
+1. Buksan ang This PC(My Computer)
+2. Mag-right-click na walang laman na lugar
+3. Piliin ang Properties
+4. Piliian Advanced System Settings
+5. Sa babang Performance Tab, piliin ang Settings
+6. Paganahin ang Animate Controls at Elements sa Windows at i-Apply.
 
-Se for Windows 7, definir "Ajustar para melhor aparência" e aplicar.
-Se ainda não funcionar, feche e inicie o Lively novamente ou reinicie o Windows.
-(Não funciona nas versões insider do Windows 10)</value>
+If Windows 7 just set - Adjust for best appearance &amp;amp; Apply.
+Pag hindi pa gumagana, close &amp;amp; buksan ulit ang Lively/ restart windows.
+(Hindi gumagana sa ibang mga insider windows 10 builds)</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
-    <value>Adicionar</value>
+    <value>Idagdag</value>
   </data>
   <data name="TextApplication" xml:space="preserve">
-    <value>Aplicação</value>
+    <value>Application</value>
   </data>
   <data name="TextAttribution" xml:space="preserve">
-    <value>Atribuições</value>
+    <value>Pagkilala</value>
   </data>
   <data name="TextAuthor" xml:space="preserve">
-    <value>Autor</value>
+    <value>May-akda</value>
   </data>
   <data name="TextBack" xml:space="preserve">
-    <value>Voltar</value>
+    <value>Balik</value>
   </data>
   <data name="TextCloseWallpapers" xml:space="preserve">
-    <value>Fechar plano de fundo</value>
+    <value>Isarado ang Wallpapers</value>
   </data>
   <data name="TextCompleted" xml:space="preserve">
-    <value>Pronto!</value>
+    <value>Tapos!</value>
   </data>
   <data name="TextConvertVideo" xml:space="preserve">
-    <value>Converter para vídeo</value>
+    <value>I-convert sa Video</value>
   </data>
   <data name="TextCustomiseWallpaper" xml:space="preserve">
-    <value>Personalizar plano de fundo</value>
+    <value>I-customise ang Wallpaper</value>
   </data>
   <data name="TextDeleteWallpaper" xml:space="preserve">
-    <value>Excluir plano de fundo</value>
+    <value>Tanggalin ang Wallpaper</value>
   </data>
   <data name="TextDisplayPauseRuleAllScreen" xml:space="preserve">
-    <value>Todas as telas</value>
+    <value>Lahat ng Screen</value>
   </data>
   <data name="TextDisplayPauseRulePerScreen" xml:space="preserve">
-    <value>Por tela</value>
+    <value>Bawat Screen</value>
   </data>
   <data name="TextDownload" xml:space="preserve">
     <value>Download</value>
   </data>
   <data name="TextError" xml:space="preserve">
-    <value>Erro</value>
+    <value>Error</value>
   </data>
   <data name="TextExit" xml:space="preserve">
-    <value>Sair</value>
+    <value>Exit</value>
   </data>
   <data name="TextExportWallpaperZip" xml:space="preserve">
-    <value>Exportar lively .zip</value>
+    <value>Export lively .zip</value>
   </data>
   <data name="TextGIF" xml:space="preserve">
-    <value>GIF animado</value>
+    <value>Animated GIF</value>
   </data>
   <data name="TextInstall" xml:space="preserve">
-    <value>Instalar</value>
+    <value>Install</value>
   </data>
   <data name="TextmoreInfo" xml:space="preserve">
-    <value>Informações</value>
+    <value>Information</value>
   </data>
   <data name="TextMoreWallpapers" xml:space="preserve">
-    <value>Mais Planos de Fundo...</value>
+    <value>Marami pang mga Wallpaper</value>
   </data>
   <data name="TextMouseInteractOnDesktop" xml:space="preserve">
-    <value>Interação do mouse quando a aplicação está em foco</value>
+    <value>Pakikipag-ugnay sa mouse kapag nakatuon ang application</value>
   </data>
   <data name="TextNext" xml:space="preserve">
-    <value>Próximo</value>
+    <value>Susunod</value>
   </data>
   <data name="TextNo" xml:space="preserve">
-    <value>Não</value>
+    <value>Hindi</value>
   </data>
   <data name="TextOnline" xml:space="preserve">
     <value>Online</value>
   </data>
   <data name="TextOpenLively" xml:space="preserve">
-    <value>Abrir Lively</value>
+    <value>Buksan angLively</value>
   </data>
   <data name="TextPauseAlgoAllProcess" xml:space="preserve">
-    <value>Todos os processos</value>
+    <value>Lahat ng proseso</value>
   </data>
   <data name="TextPauseAlgoForegroundProcess" xml:space="preserve">
-    <value>Processo em primeiro plano</value>
+    <value>Paunang Proseso</value>
   </data>
   <data name="TextPauseWallpapers" xml:space="preserve">
-    <value>Pausar planos de fundo</value>
+    <value>I-pause ang mga Wallpaper</value>
   </data>
   <data name="TextPerformanceKill" xml:space="preserve">
-    <value>Encerrar</value>
+    <value>Patayin</value>
   </data>
   <data name="TextPerformanceNone" xml:space="preserve">
-    <value>Nada</value>
+    <value>Wala</value>
   </data>
   <data name="TextPerformancePause" xml:space="preserve">
-    <value>Pausar</value>
+    <value>Huminto</value>
   </data>
   <data name="TextRemove" xml:space="preserve">
-    <value>Remover</value>
+    <value>Alisin</value>
   </data>
   <data name="TextRule" xml:space="preserve">
-    <value>Regra</value>
+    <value>Panuntunan</value>
   </data>
   <data name="TextScreen" xml:space="preserve">
-    <value>Tela</value>
+    <value>Screen</value>
   </data>
   <data name="TextSearch" xml:space="preserve">
-    <value>Procurar</value>
+    <value>Search</value>
   </data>
   <data name="TextSetWallpaper" xml:space="preserve">
-    <value>Definir como plano de fundo</value>
+    <value>Itakda bilang wallpaper</value>
   </data>
   <data name="TextShowOnDisk" xml:space="preserve">
-    <value>Mostrar na pasta</value>
+    <value>Ipakita sa Disk</value>
   </data>
   <data name="TextSource" xml:space="preserve">
-    <value>Fonte</value>
+    <value>Pinagmulan</value>
   </data>
   <data name="TextStart" xml:space="preserve">
-    <value>Iniciar</value>
+    <value>Magsimula</value>
   </data>
   <data name="TextStop" xml:space="preserve">
-    <value>Parar</value>
+    <value>Maghinto</value>
   </data>
   <data name="TextTags" xml:space="preserve">
     <value>Tags</value>
   </data>
   <data name="TextTileSizeLarge" xml:space="preserve">
-    <value>Grande</value>
+    <value>Malaki</value>
   </data>
   <data name="TextTileSizeNormal" xml:space="preserve">
     <value>Normal</value>
   </data>
   <data name="TextTileSizeSmall" xml:space="preserve">
-    <value>Pequeno</value>
+    <value>Maliit</value>
   </data>
   <data name="TextUIHeadless" xml:space="preserve">
-    <value>Destacado</value>
+    <value>Headless</value>
   </data>
   <data name="TextUILite" xml:space="preserve">
-    <value>Leve</value>
+    <value>Lite</value>
   </data>
   <data name="TextUINormal" xml:space="preserve">
     <value>Normal</value>
   </data>
   <data name="TextUpdateAvailable" xml:space="preserve">
-    <value>Atualização disponível!</value>
+    <value>Magagamit ang pag-Update!</value>
   </data>
   <data name="TextUpdateCheck" xml:space="preserve">
-    <value>Procurar atualizações</value>
+    <value>Suriin para sa pag-Update</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
-    <value>Erro ao verificar atualização</value>
+    <value>Nabigong suriin para sa pag-update ng software</value>
   </data>
   <data name="TextUpdateChecking" xml:space="preserve">
-    <value>Procurando por atualizações</value>
+    <value>Pagsuri para sa pag-Update</value>
   </data>
   <data name="TextUpdateUptodate" xml:space="preserve">
-    <value>O Lively está atualizado!</value>
+    <value>Ang Software ay up-to-date na!</value>
   </data>
   <data name="TextVideo" xml:space="preserve">
-    <value>Vídeo</value>
+    <value>Video</value>
   </data>
   <data name="TextWallpaperLayoutDuplicate" xml:space="preserve">
-    <value>Duplicar o mesmo plano de fundo</value>
+    <value>I-duplicate ang parehong wallpaper</value>
   </data>
   <data name="TextWallpaperLayoutSpan" xml:space="preserve">
-    <value>Expandir</value>
+    <value>Span sa buong mga screen</value>
   </data>
   <data name="TextWallpaperType" xml:space="preserve">
-    <value>Extensões</value>
+    <value>Type</value>
   </data>
   <data name="TextWebsite" xml:space="preserve">
     <value>Website</value>
   </data>
   <data name="TextWebStream" xml:space="preserve">
-    <value>Stream</value>
+    <value>Web Stream</value>
   </data>
   <data name="TextWelcome" xml:space="preserve">
-    <value>Bem vindo</value>
+    <value>Welcome</value>
   </data>
   <data name="TextYes" xml:space="preserve">
-    <value>Sim</value>
+    <value>Oo</value>
   </data>
   <data name="TileVideoPlayer" xml:space="preserve">
-    <value>Reprodutor de Vídeo</value>
+    <value>Video Player</value>
   </data>
   <data name="TipAppFocus" xml:space="preserve">
-    <value>Defina o que fazer quando alguma aplicação está em foco.</value>
+    <value>Itakda kung ano ang gagawin kapag nakatuon ang anumang aplikasyon</value>
   </data>
   <data name="TipAppFullScreen" xml:space="preserve">
-    <value>Defina o que fazer quando algum jogo/aplicação em tela cheia está sendo executada.</value>
+    <value>Itakda kung ano ang gagawin kapag tumatakbo ang mga laro / application ng fullscreen.</value>
   </data>
   <data name="TipAppRules" xml:space="preserve">
-    <value>Defina diferentes regras de reprodução dos planos de fundo baseado na aplicação sendo executada.</value>
+    <value>Itakda ang iba't ibang mga patakaran sa pag-playback ng wallpaper batay sa pagpapatakbo ng application.</value>
   </data>
   <data name="TipAppTheme" xml:space="preserve">
-    <value>O Lively adapta sua aparência de acordo com o tema do sistema</value>
+    <value>Ang Lively ay umaayon sa mga setting ng tema ng system, upang baguhin ang hitsura.</value>
   </data>
   <data name="TipBatteryPower" xml:space="preserve">
-    <value>(Somente para sistemas com bateria) Mudar reprodução quando o cabo de energia está desconectado.</value>
+    <value>(Para sa mga operating system lamang ng baterya) Baguhin ang pag-playback kapag ang AC ay hindi naka-disconnect.</value>
   </data>
   <data name="TipBrowserDebuggingPort" xml:space="preserve">
-    <value>Insira a porta para debug de planos de fundo de páginas web, é preciso reiniciar o navegador para que as mudanças tenham efeito.
-Quando estiver pronto vá para http://localhost:numerodaporta para acessar o console de desenvolvedor.</value>
+    <value>Ipasok ang port para sa pag-debug ng mga wallpaper ng web page, kinakailangan na i-restart ang browser para sa mga pagbabago na magkakabisa.
+Kapag handa na mag-navigate sa http://localhost:portnumber upang ma-access ang console ng developer.</value>
   </data>
   <data name="TipDisplayPauseRule" xml:space="preserve">
-    <value>Individual: Pausar o plano de fundo somente na tela em que a aplicação está em foco/tela cheia.
-Todos: Pausar o plano de fundo em todas as telas se alguma aplicação está em foco/tela cheia.</value>
+    <value>Per: I-pause ang wallpaper lamang sa screen kung saan ang application ay nakatuon / fullscreen.
+Lahat: I-pause ang wallpaper sa lahat ng (mga) screen kung ang anumang application ay nakatuon / fullscreen.</value>
   </data>
   <data name="TipHideSysTray" xml:space="preserve">
-    <value>Visibilidade do ícone na gaveta do sistema, o Lively continuará funcionando com o ícone escondido.</value>
+    <value>Ang kakayahang makita ang icon ng system-tray, ang Lively ay patuloy na tatakbo kasama ang icon na nakatago.</value>
   </data>
   <data name="TipLanguage" xml:space="preserve">
-    <value>O Lively irá reiniciar para aplicar o novo idioma.</value>
+    <value>Ang lively ay mai-restart upang ilapat ang bagong wika.</value>
   </data>
   <data name="TipLivelySetupOnClose" xml:space="preserve">
-    <value>Termine a instalação para continuar.</value>
+    <value>Tapusin ang pag-setup upang magpatuloy.</value>
   </data>
   <data name="TipPauseAlgorithm" xml:space="preserve">
-    <value>Primeiro plano: Mais leve, só verifica um único processo que está em primeiro plano para determinar o comportamento da repeodução do plano de fundo.
-Todos os processos: Mais pesado, escaneia todos os processos para determinar o comportamento da reprodução.</value>
+    <value>Tapusin ang pag-setup upang magpatuloy.</value>
   </data>
   <data name="TipStreamWallpaperDetect" xml:space="preserve">
-    <value>Se um link de stream suportado for detectado use o player de vídeo ao invés de carregar a página da web.</value>
+    <value>If supported video stream link is detected use the video player instead of loading the webpage.</value>
   </data>
   <data name="TipStreamWallpaperVideoQuality" xml:space="preserve">
-    <value>Selecione a qualidade de vídeo desejada para streams online.</value>
+    <value>Select the desired video quality for online streams.</value>
   </data>
   <data name="TipTileSize" xml:space="preserve">
-    <value>Tamanho dos azulejos dos planos de fundo na biblioteca.</value>
+    <value>Size of the wallpaper tiles in Library.</value>
   </data>
   <data name="TipUIMode" xml:space="preserve">
-    <value>Para sistemas mais fracos selecione o modo Leve.</value>
+    <value>For low-end systems select Lite mode.</value>
   </data>
   <data name="TipVideoPlayer" xml:space="preserve">
-    <value>Selecione o player para planos de fundo de vídeo.
-libVLC é recomendado.</value>
+    <value>Select the player used for video wallpaper.
+libVLC is recommended.</value>
   </data>
   <data name="TipWallpaperDir" xml:space="preserve">
-    <value>Caminho usado para armazenar os arquivos dos planos de fundo.</value>
+    <value>Path used to store wallpaper files.</value>
   </data>
   <data name="TipWallpaperInput" xml:space="preserve">
-    <value>Selecione as formas de interação com o plano de fundo.</value>
+    <value>Select ways to interact with wallpaper.</value>
   </data>
   <data name="TipWallpaperPlayback" xml:space="preserve">
-    <value>Pausar a reprodução do plano de fundo quando a área de trabalho não estiver em foco.</value>
+    <value>Pause wallpaper playback when desktop is not focused.</value>
   </data>
   <data name="TipWebBrowserDiskCache" xml:space="preserve">
-    <value>Armazenar arquivos temporários no disco ao invés da memória, as configurações serão restauradas quando o navegador for reiniciado.</value>
+    <value>Store temporary files on disk instead of memory, settings gets restored when browser is restarted.</value>
   </data>
   <data name="TipWebBrowserEngine" xml:space="preserve">
-    <value>CEF(Chromium Embedded Framework) é uma engine chromium leve.
-O Edge é a webview embutida do Windows 10.</value>
+    <value>CEF(Chromium Embedded Framework) is a lightweight chromium engine.
+Edge is the built in webview of windows 10.</value>
   </data>
   <data name="TipWindowsStartup" xml:space="preserve">
-    <value>O Lively precisa ser executado em segundo plano para reproduzir o plano de fundo.</value>
+    <value>Lively needs to run in the background for wallpaper playback.</value>
   </data>
   <data name="TitleAbout" xml:space="preserve">
-    <value>Sobre</value>
+    <value>About</value>
   </data>
   <data name="TitleAddWallpaper" xml:space="preserve">
-    <value>Adicionar</value>
+    <value>Add Wallpaper</value>
   </data>
   <data name="TitleAppFocus" xml:space="preserve">
-    <value>Outra aplicação em foco</value>
+    <value>Applications Focused</value>
   </data>
   <data name="TitleAppFullScreen" xml:space="preserve">
-    <value>Quando outra aplicação estiver em tela cheia</value>
+    <value>Applications Fullscreen</value>
   </data>
   <data name="TitleAppName" xml:space="preserve">
     <value>Lively Wallpaper</value>
   </data>
   <data name="TitleAppRules" xml:space="preserve">
-    <value>Regras de aplicações</value>
+    <value>Application Rules</value>
   </data>
   <data name="TitleAppTheme" xml:space="preserve">
-    <value>Tema</value>
+    <value>Theme</value>
   </data>
   <data name="TitleAudio" xml:space="preserve">
-    <value>Áudio</value>
+    <value>Audio</value>
   </data>
   <data name="TitleAudioPlayOnScreen" xml:space="preserve">
-    <value>Reproduzir áudio da tela</value>
+    <value>Play audio on screen</value>
   </data>
   <data name="TitleBatteryPower" xml:space="preserve">
-    <value>Quando estiver na energia da bateria</value>
+    <value>When on Battery Power</value>
   </data>
   <data name="TitleBrowseFile" xml:space="preserve">
-    <value>Procurar arquivos de vídeo, gif, página da web... para definir como plano de fundo</value>
+    <value>Browse for video, gif, webpage... file to set as wallpaper</value>
   </data>
   <data name="TitleBrowserDebuggingPort" xml:space="preserve">
-    <value>Porta para debug</value>
+    <value>Debugging Port</value>
   </data>
   <data name="TitleDeleteConfirmation" xml:space="preserve">
-    <value>Confirmar exclusão</value>
+    <value>Confirm Deletion</value>
   </data>
   <data name="TitleDisplayPauseRule" xml:space="preserve">
-    <value>Regra de exibição em pausa</value>
+    <value>Display Pause Rule</value>
   </data>
   <data name="TitleGeneral" xml:space="preserve">
-    <value>Geral</value>
+    <value>General</value>
   </data>
   <data name="TitleHelp" xml:space="preserve">
-    <value>Ajuda</value>
+    <value>Help</value>
   </data>
   <data name="TitleHideSysTray" xml:space="preserve">
-    <value>Ícone na gaveta do sistema</value>
+    <value>System-tray Icon</value>
   </data>
   <data name="TitleInteraction" xml:space="preserve">
-    <value>Interação</value>
+    <value>Interaction</value>
   </data>
   <data name="TitleLanguage" xml:space="preserve">
-    <value>Requer a reinicialização do app</value>
+    <value>Language</value>
   </data>
   <data name="TitleLibrary" xml:space="preserve">
-    <value>Biblioteca</value>
+    <value>Library</value>
   </data>
   <data name="TitleLivelySetup" xml:space="preserve">
-    <value>Instalação do Lively</value>
+    <value>Lively Setup</value>
   </data>
   <data name="TitleMisc" xml:space="preserve">
-    <value>Outros</value>
+    <value>Miscellaneous</value>
   </data>
   <data name="TitleMute" xml:space="preserve">
-    <value>Som desativado</value>
+    <value>Mute</value>
   </data>
   <data name="TitlePauseAlgo" xml:space="preserve">
-    <value>Algoritmo de pausa</value>
+    <value>Pause Algorithm</value>
   </data>
   <data name="TitlePerformance" xml:space="preserve">
-    <value>Desempenho</value>
+    <value>Performance</value>
   </data>
   <data name="TitlePlaylist" xml:space="preserve">
-    <value>Lista de reprodução</value>
+    <value>Playlist</value>
   </data>
   <data name="TitlePleaseWait" xml:space="preserve">
-    <value>Espere, por favor</value>
+    <value>Please Wait</value>
   </data>
   <data name="TitleScalingFit" xml:space="preserve">
-    <value>Escala/Ajuste</value>
+    <value>Scaling/Fit</value>
   </data>
   <data name="TitleScreenLayout" xml:space="preserve">
-    <value>Layout da tela</value>
+    <value>Screen Layout</value>
   </data>
   <data name="TitleSettings" xml:space="preserve">
-    <value>Configurações</value>
+    <value>Settings</value>
   </data>
   <data name="TitleStreamWallpaper" xml:space="preserve">
     <value>Stream</value>
   </data>
   <data name="TitleStreamWallpaperDetect" xml:space="preserve">
-    <value>Detectar Streams</value>
+    <value>Detect Streams</value>
   </data>
   <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
-    <value>Qualidade do Vídeo</value>
+    <value>Video Quality</value>
   </data>
   <data name="TitleTileSize" xml:space="preserve">
-    <value>Tamanho do azulejo</value>
+    <value>Tile Size</value>
   </data>
   <data name="TitleUIMode" xml:space="preserve">
-    <value>Interface do usuário</value>
+    <value>User Interface</value>
   </data>
   <data name="TitleVideo" xml:space="preserve">
-    <value>Vídeo</value>
+    <value>Video</value>
   </data>
   <data name="TitleWallpaper" xml:space="preserve">
-    <value>Plano de fundo</value>
+    <value>Wallpaper</value>
   </data>
   <data name="TitleWallpaperDir" xml:space="preserve">
-    <value>Diretório do plano de fundo</value>
+    <value>Wallpaper Directory</value>
   </data>
   <data name="TitleWallpaperInput" xml:space="preserve">
-    <value>Entrada do plano de fundo</value>
+    <value>Wallpaper Input</value>
   </data>
   <data name="TitleWallpaperLayout" xml:space="preserve">
-    <value>Selecione a disposição do plano de fundo</value>
+    <value>Wallpaper Layout</value>
   </data>
   <data name="TitleWallpaperPlayback" xml:space="preserve">
-    <value>Reprodução do plano de fundo</value>
+    <value>Wallpaper Playback</value>
   </data>
   <data name="TitleWarning" xml:space="preserve">
-    <value>Aviso</value>
+    <value>Warning</value>
   </data>
   <data name="TitleWebBrowser" xml:space="preserve">
-    <value>Navegador Web</value>
+    <value>Web Browser</value>
   </data>
   <data name="TitleWebBrowserDiskCache" xml:space="preserve">
-    <value>Cache em disco</value>
+    <value>Disk cache</value>
   </data>
   <data name="TitleWebBrowserEngine" xml:space="preserve">
     <value>Engine</value>
   </data>
   <data name="TitleWebpageLoad" xml:space="preserve">
-    <value>Carregar página web</value>
+    <value>Load Webpage</value>
   </data>
   <data name="TitleWindowsStartup" xml:space="preserve">
-    <value>Iniciar com o Windows</value>
+    <value>Start with Windows</value>
   </data>
 </root>

@@ -11,7 +11,7 @@
         xmlns:local="clr-namespace:livelywpf"
         xmlns:p = "clr-namespace:livelywpf.Properties"                
         mc:Ignorable="d"
-        Height="750" Width="1200"
+        Height="720" Width="1225"
         Title="{x:Static p:Resources.TitleAppName}"
         Closing="Window_Closing"        
         IsVisibleChanged="Window_IsVisibleChanged"
@@ -22,10 +22,27 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Column="1" FontSize="12" Margin="0,10,0,0" Text="{x:Static p:Resources.TitleAppName}" /> 
-        <!--<ui:NavigationView IsBackButtonVisible="Collapsed" />-->
-        <xamlHost:WindowsXamlHost Grid.Column="0" x:Name="MyNavView" InitialTypeName="Windows.UI.Xaml.Controls.NavigationView" ChildChanged="MyNavView_ChildChanged"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
-        <ui:Frame x:Name="ContentFrame" Grid.Column="1" Margin="10, 50, 0, 0" />
+        <!-- title area-->
+        <TextBlock Grid.Column="1" Grid.Row="0" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10, 0, 0, 0" Text="{x:Static p:Resources.TitleAppName}" />
+        <xamlHost:WindowsXamlHost x:Name="ScreenLayoutBar" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0, 0, 150, 0" 
+                                 MinHeight="33" MaxHeight="33" MinWidth="75" InitialTypeName="Windows.UI.Xaml.Controls.Button" ChildChanged="ScreenLayoutBar_ChildChanged" />
+
+        <!--
+        <Button Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0, 0, 150, 0" MaxHeight="35" MinWidth="75">
+            <StackPanel Orientation="Horizontal">
+                <ui:FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE7F4;" />
+                <TextBlock Text="2" Margin="5, -3.5, 0, 0" FontSize="16"/>
+            </StackPanel>
+        </Button>
+        -->
+        
+        <!-- content -->
+        <xamlHost:WindowsXamlHost Grid.Column="0" Grid.RowSpan="2" x:Name="MyNavView" InitialTypeName="Windows.UI.Xaml.Controls.NavigationView" ChildChanged="MyNavView_ChildChanged"/>
+        <ui:Frame x:Name="ContentFrame" Grid.Column="1" Grid.Row="1" Margin="10, 10, 5, 5" />
     </Grid>
 </Window>

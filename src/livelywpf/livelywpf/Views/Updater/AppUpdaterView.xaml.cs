@@ -107,6 +107,8 @@ namespace livelywpf.Views
             }
             else
             {
+                download.DownloadFileCompleted -= UpdateDownload_DownloadFileCompleted;
+                download.DownloadProgressChanged -= UpdateDownload_DownloadProgressChanged;
                 download.Dispose();
             }
         }

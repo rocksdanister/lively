@@ -204,6 +204,10 @@ namespace livelywpf
                         Program.LibraryVM.WallpaperExport(libData, savePath);
                     }
                 }
+                Winstance.CaptureProgress -= WInstance_CaptureProgress;
+                Winstance.PreviewUpdated -= WInstance_PreviewUpdated;
+                Winstance.ThumbnailUpdated -= WInstance_ThumbnailUpdated;
+                Winstance.WallpaperAttached -= WInstance_WallpaperAttached;
                 Winstance.Exit();
             }
         }

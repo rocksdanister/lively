@@ -31,7 +31,7 @@ namespace livelywpf
             //localization
             try
             {
-                //System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("zh-CN");
+                //System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("hu");
                 System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(Program.SettingsVM.Settings.Language);
             }
             catch (CultureNotFoundException)

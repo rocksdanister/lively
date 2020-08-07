@@ -1,11 +1,15 @@
-﻿using Microsoft.Toolkit.Wpf.UI.XamlHost;
+﻿using LibVLCSharp.Shared;
+using Microsoft.Toolkit.Wpf.UI.XamlHost;
+//using ModernWpf.Controls;
 using ModernWpf.Media.Animation;
 using NLog;
+using Octokit;
 using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Interop;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
 
 namespace livelywpf
 {
@@ -108,6 +112,56 @@ namespace livelywpf
                 }
             }
         }
+
+        #region wallpaper statusbar
+
+        TextBlock wallpaperStatusText;
+        private void ScreenLayoutBar_ChildChanged(object sender, EventArgs e)
+        {
+            WindowsXamlHost windowsXamlHost = (WindowsXamlHost)sender;
+            var btn = (Windows.UI.Xaml.Controls.Button)windowsXamlHost.Child;
+            if (btn != null)
+            {
+                var toolTip = new ToolTip
+                {
+                    Content = Properties.Resources.TitleScreenLayout
+                };
+                ToolTipService.SetToolTip(btn, toolTip);
+
+                var stackPanel = new StackPanel
+                {
+                    Orientation = Orientation.Horizontal,
+                };
+                stackPanel.Children.Add(new FontIcon()
+                {
+                    FontFamily = new Windows.UI.Xaml.Media.FontFamily("Segoe MDL2 Assets"),
+                    Glyph = "\uE7F4"
+                });
+                wallpaperStatusText = new TextBlock()
+                {
+                    Text = SetupDesktop.Wallpapers.Count.ToString(),
+                    FontSize = 16,
+                    Margin = new Windows.UI.Xaml.Thickness(5, -3.5, 0, 0)
+                };
+                stackPanel.Children.Add(wallpaperStatusText);
+
+                btn.Content = stackPanel;
+                btn.Click += Btn_Click;
+                SetupDesktop.WallpaperChanged += SetupDesktop_WallpaperChanged;
+            }
+        }
+
+        private void SetupDesktop_WallpaperChanged(object sender, EventArgs e)
+        {
+            wallpaperStatusText.Text = SetupDesktop.Wallpapers.Count.ToString();
+        }
+
+        private void Btn_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            MessageBox.Show("hi");
+        }
+
+        #endregion //wallpaper statusbar
 
         #region single instance
 

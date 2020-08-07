@@ -189,6 +189,7 @@ namespace livelywpf.Views
             }
         }
 
+        //todo: make dialogue service.
         private async Task<ContentDialogResult> ShowDeleteConfirmationDialog(object sender, object arg)
         {
             var item = (MenuFlyoutItem)sender;
@@ -219,9 +220,13 @@ namespace livelywpf.Views
 
         private void Page_Unloaded(object sender, System.Windows.RoutedEventArgs e)
         {
-            //stop rendering previews..
-            if(LivelyGridControl != null)
+            if (LivelyGridControl != null)
+            {
+                LivelyGridControl.ContextMenuClick -= LivelyGridControl_ContextMenuClick;
+                LivelyGridControl.FileDroppedEvent -= LivelyGridControl_FileDroppedEvent;
+                //stop rendering previews... this should be automatic(?), but its not for some reason.
                 LivelyGridControl.GridElementSize(livelygrid.GridSize.NoPreview);
+            }
         }
     }
 }
