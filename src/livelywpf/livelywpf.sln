@@ -7,13 +7,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "livelywpf", "livelywpf\live
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rootuwp", "rootuwp\rootuwp.csproj", "{52B53800-6404-420A-9CF6-F49AAAD29A60}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "livelygrid", "livelygrid\livelygrid.csproj", "{BAEB3FF9-8189-4179-9F70-EA4B76049570}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "livelygrid", "UserControls\livelygrid\livelygrid.csproj", "{BAEB3FF9-8189-4179-9F70-EA4B76049570}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "livelysettings", "livelysettings\livelysettings.csproj", "{7B67937A-6988-4246-B5D7-EB4A5685A2DF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "livelysettings", "UserControls\livelysettings\livelysettings.csproj", "{7B67937A-6988-4246-B5D7-EB4A5685A2DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "livelycefproperties", "livelycefproperties\livelycefproperties.csproj", "{6B6D94CE-4723-44B2-B831-69DC9F6166F9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "livelycefproperties", "UserControls\livelycefproperties\livelycefproperties.csproj", "{6B6D94CE-4723-44B2-B831-69DC9F6166F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "livelyscreenlayout", "livelyscreenlayout\livelyscreenlayout.csproj", "{4086AE73-D21E-4783-832C-72052905C5F8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "livelyscreenlayout", "UserControls\livelyscreenlayout\livelyscreenlayout.csproj", "{4086AE73-D21E-4783-832C-72052905C5F8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UserControls", "UserControls", "{E70E569A-4AE6-43A1-A613-BF0A0C3B1279}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -158,6 +160,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BAEB3FF9-8189-4179-9F70-EA4B76049570} = {E70E569A-4AE6-43A1-A613-BF0A0C3B1279}
+		{7B67937A-6988-4246-B5D7-EB4A5685A2DF} = {E70E569A-4AE6-43A1-A613-BF0A0C3B1279}
+		{6B6D94CE-4723-44B2-B831-69DC9F6166F9} = {E70E569A-4AE6-43A1-A613-BF0A0C3B1279}
+		{4086AE73-D21E-4783-832C-72052905C5F8} = {E70E569A-4AE6-43A1-A613-BF0A0C3B1279}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {610123B0-B303-4841-A754-BE0D8AF515DD}

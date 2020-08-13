@@ -1,5 +1,6 @@
 ﻿using livelywpf.Core;
 using livelywpf.Views;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -16,6 +17,8 @@ namespace livelywpf
 {
     public static class SetupDesktop
     {
+        #region init
+
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
         static IntPtr progman, workerw;
@@ -23,6 +26,10 @@ namespace livelywpf
 
         public static List<IWallpaper> Wallpapers = new List<IWallpaper>();
         public static event EventHandler WallpaperChanged;
+
+        #endregion //init
+
+        #region core
 
         public static void SetWallpaper(LibraryModel wp, LivelyScreen targetDisplay)
         {
@@ -91,8 +98,8 @@ namespace livelywpf
                 else
                 {
                     _isInitialized = true;
-                    //Playback.Initialize();
                     Playback playBack = new Playback();
+                    //SystemEvents.DisplaySettingsChanged += SystemEvents_DisplaySettingsChanged;
                 }
             }
 
@@ -140,6 +147,7 @@ namespace livelywpf
                 item.Show();
             }
         }
+
 
         private static async void SetupDesktop_WallpaperInitialized(object sender, WindowInitializedArgs e)
         {
@@ -231,6 +239,10 @@ namespace livelywpf
                   Path.Combine(Program.AppDataDir, "WallpaperLayout.json"));
         }
 
+        #endregion //core
+
+        #region wallpaper add
+
         /// <summary>
         /// Calculates the position of window w.r.t parent workerw handle & sets it as child window to it.
         /// </summary>
@@ -294,6 +306,10 @@ namespace livelywpf
             throw new NotImplementedException();
         }
 
+        #endregion //wallpaper add
+
+        #region threads
+
         public static Task ShowPreviewDialogSTAThread(IWallpaper wp)
         {
             var tcs = new TaskCompletionSource<object>();
@@ -353,6 +369,10 @@ namespace livelywpf
             thread.Start();
             return tcs.Task;
         }
+
+        #endregion threads
+
+        #region wallpaper close
 
         public static void CloseAllWallpapers()
         {
@@ -424,6 +444,10 @@ namespace livelywpf
             Wallpapers.Clear();
             RefreshDesktop();
         }
+
+        #endregion //wallpaper close
+
+        #region helper functons
 
         /// <summary>
         /// Focus fix, otherwise when new applicaitons launch fullscreen wont giveup window handle once SetParent() is called.
@@ -522,5 +546,7 @@ namespace livelywpf
         {
             InputForwardWindow = null;
         }
+
+        #endregion //helper functions
     }
 }

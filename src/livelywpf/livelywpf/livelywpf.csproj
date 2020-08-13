@@ -35,11 +35,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\livelycefproperties\livelycefproperties.csproj" />
-    <ProjectReference Include="..\livelygrid\livelygrid.csproj" />
-    <ProjectReference Include="..\livelyscreenlayout\livelyscreenlayout.csproj" />
-    <ProjectReference Include="..\livelysettings\livelysettings.csproj" />
     <ProjectReference Include="..\rootuwp\rootuwp.csproj" />
+    <ProjectReference Include="..\UserControls\livelycefproperties\livelycefproperties.csproj" />
+    <ProjectReference Include="..\UserControls\livelygrid\livelygrid.csproj" />
+    <ProjectReference Include="..\UserControls\livelyscreenlayout\livelyscreenlayout.csproj" />
+    <ProjectReference Include="..\UserControls\livelysettings\livelysettings.csproj" />
   </ItemGroup>
 
   <ItemGroup>
