@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Windows.Forms;
 using System.Drawing;
 using System.Windows;
 using Newtonsoft.Json;
 using livelywpf.Model;
+using livelywpf.Core;
 
 namespace livelywpf
 {
@@ -15,19 +15,19 @@ namespace livelywpf
     [Serializable]
     public class WallpaperLayoutModel
     {
-        public LivelyScreenModel LivelyScreen { get; set; }
+        public LivelyScreen LivelyScreen { get; set; }
         public string LivelyInfoPath { get; set; }
 
         [JsonConstructor]
         public WallpaperLayoutModel(string DeviceName, int BitsPerPixel, Rectangle Bounds, Rectangle WorkingArea, string livelyInfoPath) 
         {
-            LivelyScreen = new LivelyScreenModel(DeviceName, BitsPerPixel, Bounds, WorkingArea);
+            LivelyScreen = new LivelyScreen(DeviceName, BitsPerPixel, Bounds, WorkingArea);
             this.LivelyInfoPath = livelyInfoPath;
         }
 
-        public WallpaperLayoutModel(Screen Display, string livelyInfoPath)
+        public WallpaperLayoutModel(LivelyScreen Display, string livelyInfoPath)
         {
-            LivelyScreen = new LivelyScreenModel(Display);
+            LivelyScreen = Display;
             this.LivelyInfoPath = livelyInfoPath;
         }
     }

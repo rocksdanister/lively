@@ -59,12 +59,17 @@ namespace livelywpf
 
         private void Systray_Click(object sender, EventArgs e)
         {
-            //testing only.
+            //testing only!!!
             if (Program.LibraryVM.SelectedItem != null)
             {
                 if (Program.LibraryVM.SelectedItem.LivelyPropertyPath != null)
                 {
-                    var settingsWidget = new Cef.LivelyPropertiesTrayWidget(Program.LibraryVM.SelectedItem, Program.LibraryVM.GetLivelyPropertyCopyPath(Program.LibraryVM.SelectedItem));
+                    var settingsWidget = new Cef.LivelyPropertiesTrayWidget(
+                        Program.LibraryVM.SelectedItem,
+                        Program.LibraryVM.GetLivelyPropertyCopyPath(Program.LibraryVM.SelectedItem),
+                        ScreenHelper.GetPrimaryScreen()
+                        //SetupDesktop.Wallpapers.Find(x=>x.GetWallpaperData() == Program.LibraryVM.SelectedItem).GetScreen()
+                        );
                     settingsWidget.Show();
                 }
             }

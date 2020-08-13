@@ -35,6 +35,7 @@ namespace livelywpf.Cef
         {
             InitializeComponent();
             this.livelyPropertyPath = livelyPropertyPath; 
+            //todo: use LivelyScreen instead, what if wp instance closes.
             wallpaperData = data;
             LoadUI();
 

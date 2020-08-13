@@ -12,7 +12,8 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        Title="{x:Static p:Resources.TitleAppRules}" Height="450" Width="800" Closing="Window_Closing">
+        Title="{x:Static p:Resources.TitleAppRules}" Height="450" Width="800" Closing="Window_Closing"
+        BorderBrush="{DynamicResource SystemControlHighlightAltListAccentHighBrush}">
 
     <Grid>
 

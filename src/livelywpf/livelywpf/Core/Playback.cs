@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Text;
-using System.Windows.Forms;
+using System.Windows;
+//using System.Windows.Forms;
 using System.Windows.Threading;
 
 namespace livelywpf.Core
 {
-    public static class Playback
+    public class Playback
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-
-        readonly static String[] windowsClassDefaults = new string[]
+        readonly String[] windowsClassDefaults = new string[]
         {
             //startmeu, taskview, action center etc
             "Windows.UI.Core.CoreWindow",
@@ -20,14 +20,20 @@ namespace livelywpf.Core
             "MultitaskingViewFrame",
             //taskbar
             "Shell_TrayWnd",
+            "Shell_SecondaryTrayWnd",
             //rainmeter widgets
             "RainmeterMeterWindow"
         };
-        static IntPtr workerWOrig, progman;
+        private static IntPtr workerWOrig, progman;
         public static PlaybackState PlaybackState { get; set; }
-        private static DispatcherTimer dispatcherTimer = new DispatcherTimer();
+        private readonly DispatcherTimer dispatcherTimer = new DispatcherTimer();
 
-        public static void Initialize()
+        public Playback()
+        {
+            Initialize();
+        }
+
+        private void Initialize()
         {
             progman = NativeMethods.FindWindow("Progman", null);
             var folderView = NativeMethods.FindWindowEx(progman, IntPtr.Zero, "SHELLDLL_DefView", null);
@@ -46,13 +52,13 @@ namespace livelywpf.Core
             PlaybackState = PlaybackState.play;
         }
 
-        private static void InitializeTimer()
+        private void InitializeTimer()
         {
             dispatcherTimer.Tick += new EventHandler(ProcessMonitor);
             dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, Program.SettingsVM.Settings.ProcessTimerInterval);
         }
 
-        private static void ProcessMonitor(object sender, EventArgs e)
+        private void ProcessMonitor(object sender, EventArgs e)
         {
             if (PlaybackState == PlaybackState.paused)
             {
@@ -70,7 +76,7 @@ namespace livelywpf.Core
             }
         }
 
-        private static void ForegroundAppMonitor()
+        private void ForegroundAppMonitor()
         {
             const int maxChars = 256;
             StringBuilder className = new StringBuilder(maxChars);
@@ -165,14 +171,14 @@ namespace livelywpf.Core
                     else 
                     {
                         //multiscreen wp pause algorithm, for per-monitor pause rule.
-                        Screen focusedScreen;
+                        LivelyScreen focusedScreen;
                         if ((focusedScreen = MapWindowToMonitor(fHandle)) != null)
                         {
                             //unpausing the rest of wallpapers.
                             //this is a limitation of this algorithm since only one window can be foreground!
                             foreach (var item in ScreenHelper.GetScreen())
                             {
-                                if (item != focusedScreen)
+                                if (!ScreenHelper.ScreenCompare(item, focusedScreen, DisplayIdentificationMode.screenLayout))//item != focusedScreen)
                                     PlayWallpaper(item);
                             }
                         }
@@ -191,17 +197,17 @@ namespace livelywpf.Core
                         {
                             if (IsZoomedSpan(fHandle))
                             {
-                                PauseWallpaper(Screen.PrimaryScreen);
+                                PauseWallpaper(ScreenHelper.GetPrimaryScreen());
                             }
                             else //window is not greater >90%
                             {
                                 if (Program.SettingsVM.Settings.AppFocusPause == AppRulesEnum.pause)
                                 {
-                                    PauseWallpaper(Screen.PrimaryScreen);
+                                    PauseWallpaper(ScreenHelper.GetPrimaryScreen());
                                 }
                                 else
                                 {
-                                    PlayWallpaper(Screen.PrimaryScreen);
+                                    PlayWallpaper(ScreenHelper.GetPrimaryScreen());
                                 }
                             }
                         }
@@ -243,20 +249,20 @@ namespace livelywpf.Core
             });
         }
 
-        private static void PauseWallpaper(Screen display)
+        private static void PauseWallpaper(LivelyScreen display)
         {
             SetupDesktop.Wallpapers.ForEach(x =>
             {
-                if(x.GetScreen() == display)
+                if(ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.screenLayout))
                     x.Pause();
             });
         }
 
-        private static void PlayWallpaper(Screen display)
+        private static void PlayWallpaper(LivelyScreen display)
         {
             SetupDesktop.Wallpapers.ForEach(x =>
             {
-                if (x.GetScreen() == display)
+                if (ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.screenLayout))
                     x.Play();
             });
         }
@@ -304,12 +310,12 @@ namespace livelywpf.Core
         /// </summary>
         /// <param name="handle"></param>
         /// <returns></returns>
-        private static Screen MapWindowToMonitor(IntPtr handle)
+        private LivelyScreen MapWindowToMonitor(IntPtr handle)
         {
             try
             {
                 var screen = System.Windows.Forms.Screen.FromHandle(handle);
-                return screen;
+                return new LivelyScreen(screen);
             }
             catch
             {
@@ -323,13 +329,13 @@ namespace livelywpf.Core
         /// </summary>
         /// <param name="hWnd"></param>
         /// <returns></returns>
-        private static bool IsZoomedSpan(IntPtr hWnd)
+        private bool IsZoomedSpan(IntPtr hWnd)
         {
             NativeMethods.RECT appBounds;
             NativeMethods.GetWindowRect(hWnd, out appBounds);
             // If foreground app 95% working-area( - taskbar of monitor)
-            if ((appBounds.Bottom - appBounds.Top) >= SystemInformation.VirtualScreen.Height * .95f &&
-                (appBounds.Right - appBounds.Left) >= SystemInformation.VirtualScreen.Width * .95f) 
+            if ((appBounds.Bottom - appBounds.Top) >= System.Windows.Forms.SystemInformation.VirtualScreen.Height * .95f &&
+               (appBounds.Right - appBounds.Left) >= System.Windows.Forms.SystemInformation.VirtualScreen.Width * .95f)
                 return true;
             else
                 return false;

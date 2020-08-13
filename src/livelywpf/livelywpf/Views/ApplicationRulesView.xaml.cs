@@ -17,6 +17,5 @@ namespace livelywpf.Views
         {
             Program.AppRulesVM.UpdateDiskFile();
         }
-
     }
 }

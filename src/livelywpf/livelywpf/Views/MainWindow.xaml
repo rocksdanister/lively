@@ -15,7 +15,7 @@
         Title="{x:Static p:Resources.TitleAppName}"
         Closing="Window_Closing"        
         IsVisibleChanged="Window_IsVisibleChanged"
-        >
+        BorderBrush="{DynamicResource SystemControlHighlightAltListAccentHighBrush}">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="50" />
@@ -43,6 +43,6 @@
         
         <!-- content -->
         <xamlHost:WindowsXamlHost Grid.Column="0" Grid.RowSpan="2" x:Name="MyNavView" InitialTypeName="Windows.UI.Xaml.Controls.NavigationView" ChildChanged="MyNavView_ChildChanged"/>
-        <ui:Frame x:Name="ContentFrame" Grid.Column="1" Grid.Row="1" Margin="10, 10, 5, 5" />
+        <ui:Frame x:Name="ContentFrame" Grid.Column="1" Grid.Row="1" Margin="5, 5, 5, 5" />
     </Grid>
 </Window>

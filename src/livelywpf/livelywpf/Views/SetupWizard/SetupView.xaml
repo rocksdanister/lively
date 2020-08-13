@@ -14,7 +14,7 @@
         Title="{x:Static p:Resources.TitleLivelySetup}" Height="650" Width="960"
         ResizeMode="NoResize"
         Closing="Window_Closing"
-        >
+        BorderBrush="{DynamicResource SystemControlHighlightAltListAccentHighBrush}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />

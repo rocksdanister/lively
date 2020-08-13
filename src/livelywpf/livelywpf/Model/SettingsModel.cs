@@ -449,8 +449,8 @@ namespace livelywpf
         }
 
 
-        private LivelyScreenModel _selectedDisplay;
-        public LivelyScreenModel SelectedDisplay
+        private livelywpf.Core.LivelyScreen _selectedDisplay;
+        public livelywpf.Core.LivelyScreen SelectedDisplay
         {
             get { return _selectedDisplay; }
             set
@@ -559,7 +559,7 @@ namespace livelywpf
 
             TileSize = 1;
             DisplayIdentification = DisplayIdentificationMode.screenLayout;
-            SelectedDisplay = new LivelyScreenModel(Screen.PrimaryScreen);
+            SelectedDisplay = ScreenHelper.GetPrimaryScreen();//livelywpf.Core.LivelyScreen();
             LivelyGUIRendering = LivelyGUIState.lite;
             WallpaperDir = Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Lively Wallpaper");
             SysTrayIcon = true;

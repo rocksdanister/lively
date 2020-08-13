@@ -163,7 +163,7 @@ namespace livelywpf
                 }
                 OnPropertyChanged("SelectedLanguageItem");
 
-                if (Settings.Language != _selectedLanguageItem.Codes[0])
+                if(_selectedLanguageItem.Codes.FirstOrDefault(x => x == Settings.Language) == null)
                 {
                     //Settings.IsRestart = true;
                     Settings.Language = _selectedLanguageItem.Codes[0];
@@ -171,8 +171,8 @@ namespace livelywpf
                     //Program.RestartApplication();
 
                     //todo use service to display nice lookin dialogue.
-                    System.Windows.MessageBox.Show(Properties.Resources.TipLanguage);
-                }         
+                    System.Windows.MessageBox.Show("still in development..");
+                }    
             }
         }
 
@@ -246,6 +246,7 @@ namespace livelywpf
 
         private async void WallpaperDirectoryChange()
         {
+            bool isLivelyDir = false;
             var folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
             {
@@ -253,20 +254,33 @@ namespace livelywpf
                 {
                     WallpapeDirectoryChanging = true;
                     WallpaperDirectoryChangeCommand.RaiseCanExecuteChanged();
-                    await Task.Run(() =>
+
+                    if (Directory.Exists(Path.Combine(folderBrowserDialog.SelectedPath, "wallpapers")) &&
+                        Directory.Exists(Path.Combine(folderBrowserDialog.SelectedPath, "SaveData")))
                     {
-                        FileOperations.DirectoryCopy(Path.Combine(Program.WallpaperDir, "wallpapers"),
-                            Path.Combine(folderBrowserDialog.SelectedPath, "wallpapers"), true);
-                        FileOperations.DirectoryCopy(Path.Combine(Program.WallpaperDir, "SaveData", "wptmp"),
-                            Path.Combine(folderBrowserDialog.SelectedPath, "SaveData", "wptmp"), true);
-                        FileOperations.DirectoryCopy(Path.Combine(Program.WallpaperDir, "SaveData", "wpdata"),
-                            Path.Combine(folderBrowserDialog.SelectedPath, "SaveData", "wpdata"), true);
-                    });
+                        //if directory exists, do not copy existing files.
+                        isLivelyDir = true;
+                        Directory.CreateDirectory(Path.Combine(folderBrowserDialog.SelectedPath, "wallpapers"));
+                        Directory.CreateDirectory(Path.Combine(folderBrowserDialog.SelectedPath, "SaveData", "wptmp"));
+                        Directory.CreateDirectory(Path.Combine(folderBrowserDialog.SelectedPath, "SaveData", "wpdata"));
+                    }
+                    else
+                    {
+                        await Task.Run(() =>
+                        {
+                            FileOperations.DirectoryCopy(Path.Combine(Program.WallpaperDir, "wallpapers"),
+                                Path.Combine(folderBrowserDialog.SelectedPath, "wallpapers"), true);
+                            FileOperations.DirectoryCopy(Path.Combine(Program.WallpaperDir, "SaveData", "wptmp"),
+                                Path.Combine(folderBrowserDialog.SelectedPath, "SaveData", "wptmp"), true);
+                            FileOperations.DirectoryCopy(Path.Combine(Program.WallpaperDir, "SaveData", "wpdata"),
+                                Path.Combine(folderBrowserDialog.SelectedPath, "SaveData", "wpdata"), true);
+                        });
+                    }
                 }
                 catch (Exception e)
                 {
                     Logger.Error("Lively Folder Change Fail: " + e.Message);
-                    System.Windows.MessageBox.Show("Failed to write to new directory:\n" + e.Message, "Error");
+                    System.Windows.MessageBox.Show("Failed to write to new directory:\n" + e.Message, Properties.Resources.TextError);
                     return;
                 }
                 finally
@@ -284,13 +298,17 @@ namespace livelywpf
                 Program.WallpaperDir = Settings.WallpaperDir;
                 LivelyWallpaperDirChange?.Invoke(null, folderBrowserDialog.SelectedPath);
 
-                //not deleting the root folder, what if the user selects a folder that is not used by Lively alone!
-                var result1 = await FileOperations.DeleteDirectoryAsync( Path.Combine(previousDirectory, "wallpapers"), 1000, 3000);
-                var result2 = await FileOperations.DeleteDirectoryAsync(Path.Combine(previousDirectory, "SaveData"), 0, 1000);
-                if (!(result1 && result2))
+                if (!isLivelyDir)
                 {
-                    System.Windows.MessageBox.Show("Failed to delete old wallpaper directory!\nTry deleting it manually.", "Error");
+                    //not deleting the root folder, what if the user selects a folder that is not used by Lively alone!
+                    var result1 = await FileOperations.DeleteDirectoryAsync(Path.Combine(previousDirectory, "wallpapers"), 1000, 3000);
+                    var result2 = await FileOperations.DeleteDirectoryAsync(Path.Combine(previousDirectory, "SaveData"), 0, 1000);
+                    if (!(result1 && result2))
+                    {
+                        System.Windows.MessageBox.Show("Failed to delete old wallpaper directory!\nTry deleting it manually.", "Error");
+                    }
                 }
+                folderBrowserDialog.Dispose();
             }
         }
 

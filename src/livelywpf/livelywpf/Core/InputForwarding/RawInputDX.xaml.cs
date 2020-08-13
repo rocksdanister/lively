@@ -187,12 +187,15 @@ namespace livelywpf.Core
                     x.GetWallpaperType() == WallpaperType.unity ||
                     x.GetWallpaperType() == WallpaperType.godot)
                     {
-                        //The low-order word specifies the x-coordinate of the cursor, the high-order word specifies the y-coordinate of the cursor.
-                        //ref: https://docs.microsoft.com/en-us/windows/win32/inputdev/wm-mousemove
-                        UInt32 lParam = (uint)mouse.Y;
-                        lParam <<= 16;
-                        lParam |= (uint)mouse.X;
-                        NativeMethods.PostMessageW(x.GetHWND(), msg, wParam, (IntPtr)lParam);
+                        if (ScreenHelper.ScreenCompare(display, x.GetScreen(), DisplayIdentificationMode.screenLayout))
+                        {
+                            //The low-order word specifies the x-coordinate of the cursor, the high-order word specifies the y-coordinate of the cursor.
+                            //ref: https://docs.microsoft.com/en-us/windows/win32/inputdev/wm-mousemove
+                            UInt32 lParam = (uint)mouse.Y;
+                            lParam <<= 16;
+                            lParam |= (uint)mouse.X;
+                            NativeMethods.PostMessageW(x.GetHWND(), msg, wParam, (IntPtr)lParam);
+                        }
                     }
                 });
             }

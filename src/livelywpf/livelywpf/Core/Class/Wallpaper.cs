@@ -5,9 +5,9 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
-using System.Windows.Forms;
 using System.Windows.Interop;
 using System.Windows.Threading;
+using livelywpf.Model;
 
 namespace livelywpf.Core
 {
@@ -24,7 +24,7 @@ namespace livelywpf.Core
         void Play();
         void Stop();
         void Close();
-        Screen GetScreen();
+        LivelyScreen GetScreen();
         void SendMessage(string msg);
         string GetLivelyPropertyCopyPath();
         event EventHandler<WindowInitializedArgs> WindowInitialized;
@@ -43,17 +43,17 @@ namespace livelywpf.Core
 
     public class VideoPlayerVLC : IWallpaper
     {
-        public VideoPlayerVLC(string filePath, LibraryModel model, Screen display)
+        public VideoPlayerVLC(string filePath, LibraryModel model, LivelyScreen screen)
         {          
             Player = new VLCElement(filePath, model.LivelyInfo.Type == WallpaperType.videostream);
             this.Model = model;
-            this.Display = display;
+            this.Display = screen;
         }
 
         IntPtr HWND { get; set; }
         VLCElement Player { get; set; }
         LibraryModel Model { get; set; }
-        Screen Display { get; set; }
+        LivelyScreen Display { get; set; }
 
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
 
@@ -72,7 +72,7 @@ namespace livelywpf.Core
 
         public string GetLivelyPropertyCopyPath()
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         public Process GetProcess()
@@ -80,7 +80,7 @@ namespace livelywpf.Core
             throw new NotImplementedException();
         }
 
-        public Screen GetScreen()
+        public LivelyScreen GetScreen()
         {
             return Display;
         }
@@ -133,7 +133,7 @@ namespace livelywpf.Core
 
     public class VideoPlayerMPV : IWallpaper
     {
-        public VideoPlayerMPV(string filePath, LibraryModel model, Screen display)
+        public VideoPlayerMPV(string filePath, LibraryModel model, LivelyScreen display)
         {
             Player = new MPVElement(filePath);
             this.Model = model;
@@ -143,7 +143,7 @@ namespace livelywpf.Core
         IntPtr HWND { get; set; }
         MPVElement Player { get; set; }
         LibraryModel Model { get; set; }
-        Screen Display { get; set; }
+        LivelyScreen Display { get; set; }
 
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
 
@@ -187,7 +187,7 @@ namespace livelywpf.Core
             }));
         }
 
-        public Screen GetScreen()
+        public LivelyScreen GetScreen()
         {
             return Display;
         }
@@ -209,13 +209,13 @@ namespace livelywpf.Core
 
         public string GetLivelyPropertyCopyPath()
         {
-            throw new NotImplementedException();
+            return null;
         }
     }
 
     public class VideoPlayerWPF : IWallpaper
     {
-        public VideoPlayerWPF(string filePath, LibraryModel model, Screen display)
+        public VideoPlayerWPF(string filePath, LibraryModel model, LivelyScreen display)
         {
             Player = new MediaElementWPF(filePath);
             this.Model = model;
@@ -225,7 +225,7 @@ namespace livelywpf.Core
         IntPtr HWND { get; set; }
         MediaElementWPF Player { get; set; }
         LibraryModel Model { get; set; }
-        Screen Display { get; set; }
+        LivelyScreen Display { get; set; }
 
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
 
@@ -269,7 +269,7 @@ namespace livelywpf.Core
             }));
         }
 
-        public Screen GetScreen()
+        public LivelyScreen GetScreen()
         {
             return Display;
         }
@@ -291,7 +291,7 @@ namespace livelywpf.Core
 
         public string GetLivelyPropertyCopyPath()
         {
-            throw new NotImplementedException();
+            return null;
         }
     }
 
@@ -300,7 +300,7 @@ namespace livelywpf.Core
     #region gif players
     public class GIFPlayerUWP : IWallpaper
     {
-        public GIFPlayerUWP(string filePath, LibraryModel model, Screen display)
+        public GIFPlayerUWP(string filePath, LibraryModel model, LivelyScreen display)
         {
             Player = new GIFViewUWP(filePath);
             this.Model = model;
@@ -309,7 +309,7 @@ namespace livelywpf.Core
         IntPtr HWND { get; set; }
         GIFViewUWP Player { get; set; }
         LibraryModel Model { get; set; }
-        Screen Display { get; set; }
+        LivelyScreen Display { get; set; }
 
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
 
@@ -328,7 +328,7 @@ namespace livelywpf.Core
 
         public string GetLivelyPropertyCopyPath()
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         public Process GetProcess()
@@ -336,7 +336,7 @@ namespace livelywpf.Core
             throw new NotImplementedException();
         }
 
-        public Screen GetScreen()
+        public LivelyScreen GetScreen()
         {
             return Display;
         }
@@ -393,9 +393,9 @@ namespace livelywpf.Core
 
     public class WebProcess : IWallpaper
     {
-        public WebProcess(string path, LibraryModel model, Screen display)
+        public WebProcess(string path, LibraryModel model, LivelyScreen display)
         {
-            LivelyPropertyCopy = "";
+            LivelyPropertyCopy = null;
             if (model.LivelyPropertyPath != null)
             {
                 //customisable wallpaper, livelyproperty.json is present.
@@ -403,7 +403,7 @@ namespace livelywpf.Core
                 try
                 {
                     //extract last digits of the Screen class DeviceName, eg: \\.\DISPLAY4 -> 4
-                    var screenNumber = ScreenHelper.GetScreenNumber(display);
+                    var screenNumber = display.DeviceNumber;
                     if (screenNumber != null)
                     {
                         //Create a directory with the wp foldername in SaveData/wpdata/, copy livelyproperties.json into this.
@@ -467,7 +467,7 @@ namespace livelywpf.Core
         IntPtr HWND { get; set; }
         Process Proc { get; set; }
         LibraryModel Model { get; set; }
-        Screen Display { get; set; }
+        LivelyScreen Display { get; set; }
         /// <summary>
         /// copy of LivelyProperties.json file used to modify for current running screen.
         /// </summary>
@@ -504,7 +504,7 @@ namespace livelywpf.Core
             return Proc;
         }
 
-        public Screen GetScreen()
+        public LivelyScreen GetScreen()
         {
             return Display;
         }
@@ -631,7 +631,7 @@ namespace livelywpf.Core
     //todo
     public class ExtPrograms : IWallpaper
     {
-        public ExtPrograms(Process proc, IntPtr hwnd, LibraryModel model, Screen display)
+        public ExtPrograms(Process proc, IntPtr hwnd, LibraryModel model, LivelyScreen display)
         {
             this.HWND = hwnd;
             this.Proc = proc;
@@ -642,7 +642,7 @@ namespace livelywpf.Core
         IntPtr HWND { get; set; }
         Process Proc { get; set; }
         LibraryModel Model { get; set; }
-        Screen Display { get; set; }
+        LivelyScreen Display { get; set; }
         public UInt32 SuspendCnt { get; set; }
 
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
@@ -709,7 +709,7 @@ namespace livelywpf.Core
             throw new NotImplementedException();
         }
 
-        public Screen GetScreen()
+        public LivelyScreen GetScreen()
         {
             return Display;
         }
@@ -726,7 +726,7 @@ namespace livelywpf.Core
 
         public string GetLivelyPropertyCopyPath()
         {
-            throw new NotImplementedException();
+            return null;
         }
     }
 

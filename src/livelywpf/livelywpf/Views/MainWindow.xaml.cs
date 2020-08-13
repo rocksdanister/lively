@@ -1,4 +1,5 @@
-﻿using Microsoft.Toolkit.Wpf.UI.XamlHost;
+﻿using livelywpf.Views;
+using Microsoft.Toolkit.Wpf.UI.XamlHost;
 //using ModernWpf.Controls;
 using ModernWpf.Media.Animation;
 using NLog;
@@ -6,9 +7,11 @@ using Octokit;
 using System;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Threading;
+using Windows.Networking.NetworkOperators;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 
@@ -154,15 +157,34 @@ namespace livelywpf
 
         private void SetupDesktop_WallpaperChanged(object sender, EventArgs e)
         {
-            System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
-            {
-                wallpaperStatusText.Text = SetupDesktop.Wallpapers.Count.ToString();
-            }));
+            System.Diagnostics.Debug.WriteLine("Wallpaper-Changed:StatusBar:" + SetupDesktop.Wallpapers.Count);
+            this.Dispatcher.BeginInvoke(new Action(() => { wallpaperStatusText.Text = SetupDesktop.Wallpapers.Count.ToString(); }));
         }
 
+        ScreenLayoutView layoutWindow = null;
         private void Btn_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            MessageBox.Show("hi");
+            if (layoutWindow == null)
+            {
+                layoutWindow = new ScreenLayoutView()
+                {
+                    Owner = App.AppWindow,
+                    WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner,
+                    Width = App.AppWindow.Width / 1.5,
+                    Height = App.AppWindow.Height / 1.5,
+                };
+                layoutWindow.Closed += LayoutWindow_Closed;
+                layoutWindow.Show();
+            }
+            else
+            {
+                layoutWindow.Activate();
+            }
+        }
+
+        private void LayoutWindow_Closed(object sender, EventArgs e)
+        {
+            layoutWindow = null;
         }
 
         #endregion //wallpaper statusbar

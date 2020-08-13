@@ -5,10 +5,14 @@ using System.Windows.Forms;
 using System.Drawing;
 using Newtonsoft.Json;
 
-namespace livelywpf.Model
+namespace livelywpf.Core
 {
+    /// <summary>
+    /// Currently very similar to winform screen class, the idea is to abstract it...
+    /// So that in the future when I remove/change winform library only this and ScreenHelper.cs file require modification.
+    /// </summary>
     [Serializable]
-    public class LivelyScreenModel
+    public class LivelyScreen
     {
         public string DeviceName { get; set; }
         public string DeviceNumber { get; set; }
@@ -17,7 +21,7 @@ namespace livelywpf.Model
         public Rectangle WorkingArea { get; set; }
 
         [JsonConstructor]
-        public LivelyScreenModel(string DeviceName, int BitsPerPixel, Rectangle Bounds, Rectangle WorkingArea)
+        public LivelyScreen(string DeviceName, int BitsPerPixel, Rectangle Bounds, Rectangle WorkingArea)
         {
             this.DeviceName = DeviceName;
             this.DeviceNumber = ScreenHelper.GetScreenNumber(DeviceName);
@@ -26,10 +30,10 @@ namespace livelywpf.Model
             this.WorkingArea = WorkingArea;
         }
 
-        public LivelyScreenModel(Screen Display)
+        public LivelyScreen(Screen Display)
         {
             this.DeviceName = Display.DeviceName;
-            this.DeviceNumber = ScreenHelper.GetScreenNumber(Display);
+            this.DeviceNumber = ScreenHelper.GetScreenNumber(Display.DeviceName);
             this.BitsPerPixel = Display.BitsPerPixel;
             this.Bounds = Display.Bounds;
             this.WorkingArea = Display.WorkingArea;

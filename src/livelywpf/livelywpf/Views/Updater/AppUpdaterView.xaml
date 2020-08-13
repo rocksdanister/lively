@@ -14,7 +14,7 @@
         Title="{x:Static p:Resources.TextUpdateAvailable}" Height="700" Width="650"
         Closing="Window_Closing"
         ResizeMode="NoResize"
-        >
+        BorderBrush="{DynamicResource SystemControlHighlightAltListAccentHighBrush}">
     <Grid>
         <StackPanel Margin="10, 10, 10, 10">
             <RichTextBox x:Name="changelog" MaxHeight="550" MinHeight="550" IsReadOnly="True"/>

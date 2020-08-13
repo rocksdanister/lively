@@ -37,6 +37,7 @@
   <ItemGroup>
     <ProjectReference Include="..\livelycefproperties\livelycefproperties.csproj" />
     <ProjectReference Include="..\livelygrid\livelygrid.csproj" />
+    <ProjectReference Include="..\livelyscreenlayout\livelyscreenlayout.csproj" />
     <ProjectReference Include="..\livelysettings\livelysettings.csproj" />
     <ProjectReference Include="..\rootuwp\rootuwp.csproj" />
   </ItemGroup>

@@ -1,0 +1,23 @@
+﻿<Window x:Class="livelywpf.Views.ScreenLabelView"  
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        ui:WindowHelper.UseModernWindowStyle="False"
+        ui:ThemeManager.IsThemeAware="True" 
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:livelywpf.Views"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False"
+        Title="ScreenLabelView" Height="250" Width="250"
+        Topmost="True" Loaded="Window_Loaded"
+        Background="{DynamicResource SystemControlPageBackgroundAltHighBrush}"
+        Foreground="{DynamicResource SystemControlPageTextBaseHighBrush}"
+        BorderBrush="DimGray"
+        BorderThickness="1">
+    <Grid>
+        <TextBlock x:Name="ScreenLabel" FontSize="150" VerticalAlignment="Center" HorizontalAlignment="Center" Text="2"/>
+    </Grid>
+</Window>

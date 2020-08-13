@@ -1,0 +1,32 @@
+﻿<UserControl
+    x:Class="livelyscreenlayout.ScreenLayoutView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:livelyscreenlayout"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="400"
+    d:DesignWidth="400">
+
+    <Grid BorderBrush="{ThemeResource SystemBaseLowColor}" BorderThickness="1">
+        <GridView HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="GridControl" Margin="5, 5, 5, 5"
+                  ItemsSource= "{Binding ScreenItems}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" >
+            <GridView.ItemTemplate>
+                <DataTemplate >
+                    <Grid Width="192" Height="108" Background="{ThemeResource SystemBaseLowColor}">
+                        <Image Source="{Binding ScreenImagePath}" Stretch="UniformToFill" Opacity="0.50"/>
+                        <Viewbox Width="192" Height="108">
+                            <TextBlock Text="{Binding ScreenTitle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Viewbox>
+                    </Grid>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+            <GridView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <ItemsWrapGrid Name="GridWrap" Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </GridView.ItemsPanel>
+        </GridView>
+    </Grid>
+</UserControl>

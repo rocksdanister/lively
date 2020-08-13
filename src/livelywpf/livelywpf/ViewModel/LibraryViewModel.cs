@@ -11,8 +11,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
-using System.Windows.Forms;
 using System.Windows.Input;
+using livelywpf.Core;
+using System.Windows;
 
 namespace livelywpf
 {
@@ -28,7 +29,6 @@ namespace livelywpf
         {
             foreach (var item in ScanWallpaperFolders(wallpaperScanFolders))
             {
-                //LibraryItems.Insert(BinarySearch(LibraryItems, item.Title), item);
                 LibraryItems.Add(item);
             }
 
@@ -84,11 +84,29 @@ namespace livelywpf
             set
             {
                 if (value != null)
-                {
+                {                    
                     bool found = false;
                     foreach (var item in SetupDesktop.Wallpapers)
                     {
-                        found = item.GetWallpaperData() == value;
+                        if (item.GetWallpaperData() == value)
+                        {
+                            if (Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span
+                            || Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.duplicate)
+                            {
+                                found = true;
+                                break;
+                            }
+                            else
+                            {
+                                if (ScreenHelper.ScreenCompare(item.GetScreen(), 
+                                Program.SettingsVM.Settings.SelectedDisplay,
+                                DisplayIdentificationMode.screenLayout))
+                                {
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
                     }
                     if (!found)
                         WallpaperSet(value);
@@ -102,10 +120,18 @@ namespace livelywpf
 
         #region wallpaper operations
 
-        public void WallpaperSet(object obj)
+        public void WallpaperSet(object obj, LivelyScreen targetDisplay = null)
         {
             var selection = (LibraryModel)obj;
-            SetupDesktop.SetWallpaper(selection, Screen.PrimaryScreen);
+            if(selection.FilePath == null)
+            {
+                MessageBox.Show("File Not Found!", Properties.Resources.TextError);
+                return;
+            }
+            if(targetDisplay == null)
+                SetupDesktop.SetWallpaper(selection, Program.SettingsVM.Settings.SelectedDisplay);
+            else
+                SetupDesktop.SetWallpaper(selection, targetDisplay);
         }
 
         public void WallpaperSendMsg(object obj, string message)
@@ -291,7 +317,8 @@ namespace livelywpf
         {
             var selection = (LibraryModel)obj;
             var model = new LibraryModel(selection.LivelyInfo, selection.LivelyInfoFolderPath, LibraryTileType.videoConvert);
-            SetupDesktop.SetWallpaper(model, Screen.PrimaryScreen);
+            //SetupDesktop.SetWallpaper(model, Screen.PrimaryScreen);
+            WallpaperSet(model);
         }
 
         #endregion //wallpaper operations
@@ -309,7 +336,7 @@ namespace livelywpf
 
         #region helpers
 
-        public void AddWallpaper(string path, WallpaperType wpType, LibraryTileType dataType, Screen screen)
+        public void AddWallpaper(string path, WallpaperType wpType, LibraryTileType dataType, LivelyScreen screen)
         {
             var dir = Path.Combine(Program.WallpaperDir, "SaveData", "wptmp", Path.GetRandomFileName());
             if (dataType == LibraryTileType.processing)
@@ -335,7 +362,8 @@ namespace livelywpf
                 };
                 var model = new LibraryModel(data, dir, LibraryTileType.processing);
                 LibraryItems.Insert(0, model);
-                SetupDesktop.SetWallpaper(model, screen);
+                //SetupDesktop.SetWallpaper(model, screen);
+                WallpaperSet(model, screen);
             }
         }
 
@@ -470,7 +498,7 @@ namespace livelywpf
             string livelyPropertyCopy = "";
             try
             {
-                var screenNumber = ScreenHelper.GetScreenNumber(Screen.PrimaryScreen);
+                var screenNumber = ScreenHelper.GetScreenNumber(ScreenHelper.GetPrimaryScreen().DeviceName);
                 var dataFolder = Path.Combine(Program.WallpaperDir, "SaveData", "wpdata");
                 if (screenNumber != null)
                 {
@@ -527,24 +555,26 @@ namespace livelywpf
 
         #region setupdesktop
 
-        private void SetupDesktop_WallpaperChanged(object sender, EventArgs e)
+        public void SetupDesktop_WallpaperChanged(object sender, EventArgs e)
         {
-            Debug.WriteLine("Wallpaper Changed!");
+            bool found = false;
             foreach (var item in SetupDesktop.Wallpapers)
             {
-                //testing, check if it is the user selected screen in the ui/display mode etc..
-                if (true)
+                if (ScreenHelper.ScreenCompare(item.GetScreen(), Program.SettingsVM.Settings.SelectedDisplay, DisplayIdentificationMode.screenLayout)
+                || Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span
+                || Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.duplicate)
                 {
                     System.Windows.Application.Current.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background,
                         new System.Threading.ThreadStart(delegate
                         {
                             SelectedItem = item.GetWallpaperData();
                         }));
+                    found = true;
                     break;
                 }
             }
 
-            if (SetupDesktop.Wallpapers.Count == 0)
+            if (!found)
             {
                 System.Windows.Application.Current.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background,
                    new System.Threading.ThreadStart(delegate
@@ -569,7 +599,8 @@ namespace livelywpf
                 var screen = ScreenHelper.GetScreen(item.LivelyScreen.DeviceName, item.LivelyScreen.Bounds, item.LivelyScreen.WorkingArea, DisplayIdentificationMode.screenLayout);
                 if (found != null && screen != null)
                 {
-                    SetupDesktop.SetWallpaper(found, screen);
+                    //SetupDesktop.SetWallpaper(found, screen);
+                    WallpaperSet(found, screen);
                 }
             }
         }

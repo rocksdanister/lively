@@ -12,7 +12,8 @@
         ResizeMode="NoResize"
         Title="Add to Library" Width="410" Height="710"
         Loaded="Window_Loaded"
-        Closing="Window_Closing">
+        Closing="Window_Closing"
+        BorderBrush="{DynamicResource SystemControlHighlightAltListAccentHighBrush}">
     
     <Grid>
         <!-- wallpaper window will be placed here! -->

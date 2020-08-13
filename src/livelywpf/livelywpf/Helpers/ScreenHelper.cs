@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using livelywpf.Core;
 
 namespace livelywpf
 {
@@ -23,9 +24,25 @@ namespace livelywpf
             return Screen.AllScreens.Count();
         }
 
-        public static Screen[] GetScreen()
+        public static List<LivelyScreen> GetScreen()
+        {
+            //todo optimise
+            var result = new List<LivelyScreen>();
+            foreach (var item in Screen.AllScreens)
+            {
+                result.Add(new LivelyScreen(item));
+            }
+            return result;
+        }
+
+        public static Screen[] GetScreenWinform()
         {
             return Screen.AllScreens;
+        }
+
+        public static LivelyScreen GetPrimaryScreen()
+        {
+            return new LivelyScreen(Screen.PrimaryScreen);
         }
 
         public static bool ScreenExists(Screen screen, DisplayIdentificationMode mode)
@@ -80,9 +97,77 @@ namespace livelywpf
             return screenStatus;
         }
 
-        public static Screen GetScreen(string DeviceName, Rectangle Bounds, Rectangle WorkingArea, DisplayIdentificationMode mode)
+        public static bool ScreenCompare(Screen screen1, LivelyScreen screen2, DisplayIdentificationMode mode)
         {
-            foreach (var item in Screen.AllScreens)
+            bool screenStatus = false;
+            switch (mode)
+            {
+                case DisplayIdentificationMode.screenClass:
+                    if (screen1.DeviceName == screen2.DeviceName)
+                    {
+                        screenStatus = true;
+                    }
+                    break;
+                case DisplayIdentificationMode.screenLayout:
+                    //ignoring DeviceName which can change during driver update, windows restart etc..
+                    if (screen1.WorkingArea == screen2.WorkingArea && screen1.Bounds == screen2.Bounds)
+                    {
+                        screenStatus = true;
+                    }
+                    break;
+            }
+            return screenStatus;
+        }
+
+        public static bool ScreenCompare(LivelyScreen screen1, LivelyScreen screen2, DisplayIdentificationMode mode)
+        {
+            bool screenStatus = false;
+            switch (mode)
+            {
+                case DisplayIdentificationMode.screenClass:
+                    if (screen1.DeviceName == screen2.DeviceName)
+                    {
+                        screenStatus = true;
+                    }
+                    break;
+                case DisplayIdentificationMode.screenLayout:
+                    //ignoring DeviceName which can change during driver update, windows restart etc..
+                    if (screen1.WorkingArea == screen2.WorkingArea && screen1.Bounds == screen2.Bounds)
+                    {
+                        screenStatus = true;
+                    }
+                    break;
+            }
+            return screenStatus;
+        }
+
+        public static Screen GetScreenWinform(string DeviceName, Rectangle Bounds, Rectangle WorkingArea, DisplayIdentificationMode mode)
+        {
+            foreach (var item in GetScreenWinform())
+            {
+                switch (mode)
+                {
+                    case DisplayIdentificationMode.screenClass:
+                        if (item.DeviceName.Equals(DeviceName))
+                        {
+                            return item;
+                        }
+                        break;
+                    case DisplayIdentificationMode.screenLayout:
+                        //ignoring DeviceName which can change during driver update, windows restart etc..
+                        if (item.WorkingArea == WorkingArea && item.Bounds == Bounds)
+                        {
+                            return item;
+                        }
+                        break;
+                }
+            }
+            return null;
+        }
+
+        public static LivelyScreen GetScreen(string DeviceName, Rectangle Bounds, Rectangle WorkingArea, DisplayIdentificationMode mode)
+        {
+            foreach (var item in GetScreen())
             {
                 switch (mode)
                 {
@@ -105,25 +190,14 @@ namespace livelywpf
         }
 
         /// <summary>
-        /// Extract last digits of the Screen class DeviceName, eg: \\.\DISPLAY4 -> 4
+        /// Extract last digits of the Screen class DeviceName(WinForm Screen class DeviceName only.), eg: \\.\DISPLAY4 -> 4
         /// </summary>
         /// <param name="DeviceName">devicename string</param>
         /// <returns>null if fail</returns>
         public static string GetScreenNumber(string DeviceName)
         {
             var result = Regex.Match(DeviceName, @"\d+$", RegexOptions.RightToLeft);
-            return result.Success ? result.Value : null;
-        }
-
-        /// <summary>
-        /// Extract last digits of the Screen class DeviceName, eg: \\.\DISPLAY4 -> 4
-        /// </summary>
-        /// <param name="screen">screen class</param>
-        /// <returns>null if fail</returns>
-        public static string GetScreenNumber(Screen screen)
-        {
-            var result = Regex.Match(screen.DeviceName, @"\d+$", RegexOptions.RightToLeft);
-            return result.Success ? result.Value : null;
+            return result.Success ? result.Value : "-1";//null;
         }
     }
 }

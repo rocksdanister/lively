@@ -12,7 +12,8 @@
         mc:Ignorable="d"
         ShowInTaskbar="False"
         ResizeMode="NoResize"
-        Title="LivelyPropertiesWindow" Width="400" Height="400">
+        Title="LivelyPropertiesWindow" Width="400" Height="400"
+        BorderBrush="{DynamicResource SystemControlHighlightAltListAccentHighBrush}">
     <Grid>
         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="15, 25, 15, 15">
             <ui:Frame x:Name="ContentFrame" Margin="50, 10, 50, 25" />

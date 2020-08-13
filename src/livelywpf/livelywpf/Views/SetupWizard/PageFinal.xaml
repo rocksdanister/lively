@@ -15,7 +15,7 @@
             <Image DockPanel.Dock="Left" Source="pack://application:,,,/Resources/tutorial_systray.png" Stretch="Uniform" Margin="0, 5, 0, 0"/>
             <StackPanel Margin="10,10,0,0">
                 <TextBlock TextWrapping="Wrap" FontWeight="Bold" FontSize="25" Text="{x:Static p:Resources.TextCompleted}"/>
-                <TextBlock Text="{x:Static p:Resources.DescriptionMinimizedTray}"/>
+                <TextBlock TextWrapping="Wrap" Text="{x:Static p:Resources.DescriptionMinimizedTray}"/>
             </StackPanel>
         </DockPanel>
     </Grid>
