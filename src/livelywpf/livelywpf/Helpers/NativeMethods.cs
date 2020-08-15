@@ -1061,6 +1061,7 @@ namespace livelywpf
         //public static extern int MessageBox(IntPtr hwnd, String text, String caption, uint type);
 
         #region SetupDesktop.cs
+
         [Flags]
         public enum SendMessageTimeoutFlags : uint
         {

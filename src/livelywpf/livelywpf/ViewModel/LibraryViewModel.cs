@@ -35,7 +35,7 @@ namespace livelywpf
             SetupDesktop.WallpaperChanged += SetupDesktop_WallpaperChanged;
             Program.SettingsVM.LivelyGUIStateChanged += SettingsVM_LivelyGUIStateChanged;
             Program.SettingsVM.LivelyWallpaperDirChange += SettingsVM_LivelyWallpaperDirChange;
-            //RestoreWallpaper();
+            RestoreWallpaper();
 
             //ref: https://github.com/microsoft/microsoft-ui-xaml/issues/911
             //SetWallpaperItemClicked = new RelayCommand(WallpaperSet);
@@ -323,7 +323,7 @@ namespace livelywpf
 
         #endregion //wallpaper operations
 
-        #region contextmenu
+        #region context actions
 
         /*
         public RelayCommand SetWallpaperItemClicked { get; set; }
@@ -332,7 +332,7 @@ namespace livelywpf
         public RelayCommand ZipWallpaperItemClicked { get; set; }
         */
 
-        #endregion //contextmenu
+        #endregion //context actions
 
         #region helpers
 
@@ -587,20 +587,23 @@ namespace livelywpf
         public void RestoreWallpaper()
         {
             //todo: remove the missing wallpaper from the save file etc..
-            var layout = WallpaperLayoutJSON.LoadWallpaperLayout(Path.Combine(Program.AppDataDir, "WallpaperLayout.json"));
-            if (layout == null)
+            var wallpaperLayout = WallpaperLayoutJSON.LoadWallpaperLayout(Path.Combine(Program.AppDataDir, "WallpaperLayout.json"));
+            if (wallpaperLayout == null)
             {
                 return;
             }
 
-            foreach (var item in layout)
+            foreach (var layout in wallpaperLayout)
             {
-                var found = LibraryItems.FirstOrDefault(x => x.LivelyInfoFolderPath.Equals(item.LivelyInfoPath));
-                var screen = ScreenHelper.GetScreen(item.LivelyScreen.DeviceName, item.LivelyScreen.Bounds, item.LivelyScreen.WorkingArea, DisplayIdentificationMode.screenLayout);
-                if (found != null && screen != null)
+                var libraryItem = LibraryItems.FirstOrDefault(x => x.LivelyInfoFolderPath.Equals(layout.LivelyInfoPath));
+                var screen = ScreenHelper.GetScreen(layout.LivelyScreen.DeviceName, layout.LivelyScreen.Bounds, layout.LivelyScreen.WorkingArea, DisplayIdentificationMode.screenLayout);
+                if (libraryItem != null && screen != null)
                 {
-                    //SetupDesktop.SetWallpaper(found, screen);
-                    WallpaperSet(found, screen);
+                    if (ScreenHelper.ScreenExists(screen, DisplayIdentificationMode.screenLayout))
+                    {
+                        Logger.Info("Restoring Wallpaper: " + libraryItem.Title + " " + libraryItem.LivelyInfoFolderPath);
+                        WallpaperSet(libraryItem, screen);
+                    }
                 }
             }
         }

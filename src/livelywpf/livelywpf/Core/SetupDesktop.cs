@@ -5,11 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-//using System.Windows.Forms;
 using System.Windows.Interop;
 using System.Windows.Threading;
 
@@ -20,10 +18,9 @@ namespace livelywpf
         #region init
 
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-
         static IntPtr progman, workerw;
         private static bool _isInitialized = false;
-
+        private static Playback processMonitor;
         public static List<IWallpaper> Wallpapers = new List<IWallpaper>();
         public static event EventHandler WallpaperChanged;
 
@@ -98,8 +95,10 @@ namespace livelywpf
                 else
                 {
                     _isInitialized = true;
-                    Playback playBack = new Playback();
-                    //SystemEvents.DisplaySettingsChanged += SystemEvents_DisplaySettingsChanged;
+                    processMonitor = new Playback();
+                    processMonitor.Start();
+                    SystemEvents.DisplaySettingsChanged += SystemEvents_DisplaySettingsChanged;
+                    WallpaperChanged += SetupDesktop_WallpaperChanged;
                 }
             }
 
@@ -111,7 +110,6 @@ namespace livelywpf
                 var item = new WebProcess(wp.FilePath, wp, targetDisplay);
                 item.WindowInitialized += SetupDesktop_WallpaperInitialized;
                 item.Show();
-
             }
             else if(wp.LivelyInfo.Type == WallpaperType.video)
             {
@@ -147,7 +145,6 @@ namespace livelywpf
                 item.Show();
             }
         }
-
 
         private static async void SetupDesktop_WallpaperInitialized(object sender, WindowInitializedArgs e)
         {
@@ -215,7 +212,7 @@ namespace livelywpf
                 } 
                 Wallpapers.Add(wallpaper);
                 WallpaperChanged?.Invoke(null, null);
-                SaveWallpaperLayoutDisk();
+                //SaveWallpaperLayout();
             }
             else
             {
@@ -223,8 +220,53 @@ namespace livelywpf
                 wallpaper.Close();
             }
         }
+        private static void SetupDesktop_WallpaperChanged(object sender, EventArgs e)
+        {
+            SaveWallpaperLayout();
+        }
 
-        private static void SaveWallpaperLayoutDisk()
+        private static void SystemEvents_DisplaySettingsChanged(object sender, EventArgs e)
+        {
+            Logger.Info("Display settings changed!");
+            List<IWallpaper> orphans = new List<IWallpaper>();
+
+            Wallpapers.ForEach(x =>
+            {
+                bool found = false;
+                foreach (var item in ScreenHelper.GetScreen())
+                {
+                    if (ScreenHelper.ScreenCompare(x.GetScreen(), item, DisplayIdentificationMode.screenLayout))
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found)
+                {
+                    orphans.Add(x);
+                }
+            });
+
+            if (orphans.Count != 0)
+            {
+                if (orphans.FindIndex(x => ScreenHelper.ScreenCompare(Program.SettingsVM.Settings.SelectedDisplay, x.GetScreen(), DisplayIdentificationMode.screenLayout)) != -1)
+                {
+                    Program.SettingsVM.Settings.SelectedDisplay = ScreenHelper.GetPrimaryScreen();
+                    Program.SettingsVM.UpdateConfigFile();
+                }
+
+                orphans.ForEach(x =>
+                {
+                    Logger.Info("Disconnected Device:" + x.GetScreen().DeviceName + " " + x.GetScreen().Bounds);
+                    x.Close();
+                });
+                Wallpapers.RemoveAll(x => orphans.Contains(x));
+                orphans.Clear();
+                WallpaperChanged?.Invoke(null, null);
+            }
+        }
+
+        private static void SaveWallpaperLayout()
         {
             List<WallpaperLayoutModel> layout = new List<WallpaperLayoutModel>();
             foreach (var item in Wallpapers)
@@ -237,6 +279,17 @@ namespace livelywpf
             WallpaperLayoutJSON.SaveWallpaperLayout(
                   layout,
                   Path.Combine(Program.AppDataDir, "WallpaperLayout.json"));
+        }
+
+        public static void ShutDown()
+        {
+            if(_isInitialized)
+            {
+                WallpaperChanged -= SetupDesktop_WallpaperChanged;
+                SystemEvents.DisplaySettingsChanged -= SystemEvents_DisplaySettingsChanged;
+                processMonitor.Stop();
+                CloseAllWallpapersWithoutEvent();
+            }
         }
 
         #endregion //core
@@ -380,6 +433,7 @@ namespace livelywpf
             Wallpapers.Clear();
             RefreshDesktop();
             WallpaperChanged?.Invoke(null, null);
+            //SaveWallpaperLayout();
         }
 
         public static void CloseWallpaper(WallpaperType type)
@@ -392,6 +446,7 @@ namespace livelywpf
             Wallpapers.RemoveAll(x => x.GetWallpaperType() == type);
             RefreshDesktop();
             WallpaperChanged?.Invoke(null, null);
+            //SaveWallpaperLayout();
         }
 
         public static void CloseWallpaper(LivelyScreen display)
@@ -404,6 +459,7 @@ namespace livelywpf
             Wallpapers.RemoveAll(x => ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.screenLayout));
             RefreshDesktop();
             WallpaperChanged?.Invoke(null, null);
+            //SaveWallpaperLayout();
         }
 
         public static void CloseWallpaper(LibraryModel wp)
@@ -416,13 +472,28 @@ namespace livelywpf
             Wallpapers.RemoveAll(x => x.GetWallpaperData() == wp);
             RefreshDesktop();
             WallpaperChanged?.Invoke(null, null);
+            //SaveWallpaperLayout();
         }
 
+        /// <summary>
+        /// Note: If more than one instance of same wallpaper running, will send message to both.
+        /// </summary>
+        /// <param name="wp"></param>
+        /// <param name="msg"></param>
         public static void SendMessageWallpaper(LibraryModel wp, string msg)
         {
             Wallpapers.ForEach(x =>
             {
                 if (x.GetWallpaperData() == wp)
+                    x.SendMessage(msg);
+            });
+        }
+
+        public static void SendMessageWallpaper(LivelyScreen display, string msg)
+        {
+            Wallpapers.ForEach(x =>
+            {
+                if (ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.screenLayout))
                     x.SendMessage(msg);
             });
         }

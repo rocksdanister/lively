@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using livelywpf.Core;
 
 namespace livelywpf
 {
@@ -182,13 +183,11 @@ namespace livelywpf
         public static void ExitApplication()
         {
             MainWindow._isExit = true;
-            SetupDesktop.CloseAllWallpapers();
+            SetupDesktop.ShutDown();
             if (sysTray != null)
             {
                 sysTray.Dispose();
             }
-            SetupDesktop.RefreshDesktop();
-
             System.Windows.Application.Current.Shutdown();
         }
     }

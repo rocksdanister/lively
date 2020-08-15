@@ -33,6 +33,16 @@ namespace livelywpf.Core
             Initialize();
         }
 
+        public void Start()
+        {
+            dispatcherTimer.Start();
+        }
+
+        public void Stop()
+        {
+            dispatcherTimer.Stop();
+        }
+
         private void Initialize()
         {
             progman = NativeMethods.FindWindow("Progman", null);
@@ -48,7 +58,6 @@ namespace livelywpf.Core
             }
 
             InitializeTimer();
-            dispatcherTimer.Start();
             PlaybackState = PlaybackState.play;
         }
 

@@ -64,7 +64,37 @@ namespace livelywpf
                     //ignoring DeviceName which can change during driver update, windows restart etc..
                     foreach (var item in Screen.AllScreens)
                     {
-                        if(item.WorkingArea == screen.WorkingArea && item.Bounds == screen.Bounds)
+                        if(item.Bounds == screen.Bounds)
+                        {
+                            screenStatus = true;
+                            break;
+                        }
+                    }
+                    break;
+            }
+            return screenStatus;
+        }
+
+        public static bool ScreenExists(LivelyScreen screen, DisplayIdentificationMode mode)
+        {
+            bool screenStatus = false;
+            switch (mode)
+            {
+                case DisplayIdentificationMode.screenClass:
+                    foreach (var item in Screen.AllScreens)
+                    {
+                        if (item.DeviceName == screen.DeviceName)
+                        {
+                            screenStatus = true;
+                            break;
+                        }
+                    }
+                    break;
+                case DisplayIdentificationMode.screenLayout:
+                    //ignoring DeviceName which can change during driver update, windows restart etc..
+                    foreach (var item in Screen.AllScreens)
+                    {
+                        if (item.Bounds == screen.Bounds)
                         {
                             screenStatus = true;
                             break;
@@ -88,7 +118,7 @@ namespace livelywpf
                     break;
                 case DisplayIdentificationMode.screenLayout:
                     //ignoring DeviceName which can change during driver update, windows restart etc..
-                    if (screen1.WorkingArea == screen2.WorkingArea && screen1.Bounds == screen2.Bounds)
+                    if (screen1.Bounds == screen2.Bounds)
                     {
                         screenStatus = true;
                     }
@@ -110,7 +140,7 @@ namespace livelywpf
                     break;
                 case DisplayIdentificationMode.screenLayout:
                     //ignoring DeviceName which can change during driver update, windows restart etc..
-                    if (screen1.WorkingArea == screen2.WorkingArea && screen1.Bounds == screen2.Bounds)
+                    if (screen1.Bounds == screen2.Bounds)
                     {
                         screenStatus = true;
                     }
@@ -132,7 +162,7 @@ namespace livelywpf
                     break;
                 case DisplayIdentificationMode.screenLayout:
                     //ignoring DeviceName which can change during driver update, windows restart etc..
-                    if (screen1.WorkingArea == screen2.WorkingArea && screen1.Bounds == screen2.Bounds)
+                    if (screen1.Bounds == screen2.Bounds)
                     {
                         screenStatus = true;
                     }
@@ -155,7 +185,7 @@ namespace livelywpf
                         break;
                     case DisplayIdentificationMode.screenLayout:
                         //ignoring DeviceName which can change during driver update, windows restart etc..
-                        if (item.WorkingArea == WorkingArea && item.Bounds == Bounds)
+                        if (item.Bounds == Bounds)
                         {
                             return item;
                         }
@@ -179,7 +209,7 @@ namespace livelywpf
                         break;
                     case DisplayIdentificationMode.screenLayout:
                         //ignoring DeviceName which can change during driver update, windows restart etc..
-                        if (item.WorkingArea == WorkingArea && item.Bounds == Bounds)
+                        if (item.Bounds == Bounds)
                         {
                             return item;
                         }
@@ -193,11 +223,14 @@ namespace livelywpf
         /// Extract last digits of the Screen class DeviceName(WinForm Screen class DeviceName only.), eg: \\.\DISPLAY4 -> 4
         /// </summary>
         /// <param name="DeviceName">devicename string</param>
-        /// <returns>null if fail</returns>
+        /// <returns>-1 if fail</returns>
         public static string GetScreenNumber(string DeviceName)
         {
+            if (DeviceName == null)
+                return "-1";
+
             var result = Regex.Match(DeviceName, @"\d+$", RegexOptions.RightToLeft);
-            return result.Success ? result.Value : "-1";//null;
+            return result.Success ? result.Value : "-1";
         }
     }
 }
