@@ -136,7 +136,7 @@ namespace livelywpf.Views
             {
                 var uri = await e.DataView.GetWebLinkAsync();
                 Logger.Info("Dropped url:- " + uri.ToString());
-                if (libVLCStreams.CheckStream(uri))
+                if (libVLCStreams.CheckStream(uri) && Program.SettingsVM.Settings.AutoDetectOnlineStreams)
                 {
                     Program.LibraryVM.AddWallpaper(uri.ToString(), WallpaperType.videostream, LibraryTileType.processing, ScreenHelper.GetPrimaryScreen());
                 }

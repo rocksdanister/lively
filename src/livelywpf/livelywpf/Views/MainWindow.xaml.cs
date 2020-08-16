@@ -37,14 +37,14 @@ namespace livelywpf
             {
                 navView.OpenPaneLength = 50;
                 navView.IsPaneToggleButtonVisible = false;
+                navView.IsBackEnabled = false;
                 navView.IsBackButtonVisible = NavigationViewBackButtonVisible.Collapsed;
                 navView.PaneDisplayMode = NavigationViewPaneDisplayMode.LeftCompact;
                 navView.MenuItems.Add(CreateMenu(Properties.Resources.TitleLibrary, "library", Symbol.Library));
-                navView.MenuItems.Add(CreateMenu(Properties.Resources.TitleScreenLayout, "layout", Symbol.ViewAll));
+                navView.MenuItems.Add(CreateMenu(Properties.Resources.TitleAddWallpaper, "add", Symbol.Add));
                 //navView.MenuItems.Add(CreateMenu("Playlist", "playlist", Symbol.SlideShow));
                 navView.MenuItems.Add(CreateMenu(Properties.Resources.TitleAbout, "about", Symbol.Comment));
                 navView.ItemInvoked += NavView_ItemInvoked;
-
                 navView.SelectedItem = navView.MenuItems.ElementAt(0);
                 ContentFrame.Navigate(typeof(livelywpf.Views.LibraryView), new Uri("Views/LibraryView.xaml", UriKind.Relative), new SuppressNavigationTransitionInfo());
             }
@@ -67,6 +67,9 @@ namespace livelywpf
                 {
                     case "library":
                         ContentFrame.Navigate(typeof(livelywpf.Views.LibraryView), new Uri("Views/LibraryView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
+                        break;
+                    case "add":
+                        //ContentFrame.Navigate(typeof(livelywpf.Views.LibraryView), new Uri("Views/LibraryView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
                         break;
                     case "about":
                         ContentFrame.Navigate(typeof(livelywpf.Views.AboutView), new Uri("Views/AboutView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());

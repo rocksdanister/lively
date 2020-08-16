@@ -12,487 +12,69 @@ namespace livelywpf
     [Serializable]
     public class SettingsModel : ObservableObject
     {
-        private string _appVersion;
-        public string AppVersion
-        {
-            get
-            {
-                return _appVersion;
-            }
-            set
-            {
-                _appVersion = value;
-                OnPropertyChanged("AppVersion");
-            }
-        }
-
-        private string _language;
-        public string Language
-        {
-            get
-            {
-                return _language;
-            }
-            set
-            {
-                if (String.IsNullOrWhiteSpace(value))
-                {
-                    _language = "en-US";
-                }
-                else
-                {
-                    _language = value;
-                }
-                OnPropertyChanged("Language");
-            }
-        }
-
-        private bool _startup;
-        public bool Startup
-        {
-            get
-            {
-                return _startup;
-            }
-            set
-            {
-                _startup = value;
-                OnPropertyChanged("Startup");
-            }
-        }
-
-        private bool _generateTile;
+        public string AppVersion { get; set; }
+        public string Language { get; set; }
+        public bool Startup { get; set; }
         /// <summary>
         /// Add user opened wallpapers to library.
         /// </summary>
-        public bool GenerateTile
-        {
-            get
-            {
-                return _generateTile;
-            }
-            set
-            {
-                _generateTile = value;
-                OnPropertyChanged("GenerateTile");
-            }
-        }
+        public bool GenerateTile { get; set; }
 
-        private bool _livelyZipGenerate;
-        /// <summary>
-        /// create lively .zip file for dropped wp's after importing to library.
-        /// </summary>
-        public bool LivelyZipGenerate
-        {
-            get
-            {
-                return _livelyZipGenerate;
-            }
-            set
-            {
-                _livelyZipGenerate = value;
-                OnPropertyChanged("LivelyZipGenerate");
-            }
-        }
-
-        private bool _waterMarkTile;
+        public bool LivelyZipGenerate { get; set; }
         /// <summary>
         /// Show wallpaper info icon topright of library tile.
         /// </summary>
-        public bool WaterMarkTile
-        {
-            get
-            {
-                return _waterMarkTile;
-            }
-            set
-            {
-                _waterMarkTile = value;
-                OnPropertyChanged("WaterMarkTile");
-            }
-        }
+        public bool WaterMarkTile { get; set; }
+        public bool IsFirstRun { get; set; }
+        public AppRulesEnum AppFocusPause { get; set; }
 
-        private bool _isFirstRun;
-        /// <summary>
-        /// First time lively run.
-        /// </summary>
-        public bool IsFirstRun
-        {
-            get
-            {
-                return _isFirstRun;
-            }
-            set
-            {
-                _isFirstRun = value;
-                OnPropertyChanged("IsFirstRun");
-            }
-        }
+        public AppRulesEnum AppFullscreenPause { get; set; }
+        public AppRulesEnum BatteryPause { get; set; }
 
-        private AppRulesEnum _appFocusPuase;
-        public AppRulesEnum AppFocusPause
-        {
-            get
-            {
-                return _appFocusPuase;
-            }
-            set
-            {
-                _appFocusPuase = value;
-                OnPropertyChanged("AppFocusPause");
-            }
-        }
-
-        private AppRulesEnum _appFullscreenPause;
-        public AppRulesEnum AppFullscreenPause
-        {
-            get
-            {
-                return _appFullscreenPause;
-            }
-            set
-            {
-                _appFullscreenPause = value;
-                OnPropertyChanged("AppFullscreenPause");
-            }
-        }
-
-        private AppRulesEnum _batteryPause;
-        public AppRulesEnum BatteryPause
-        {
-            get
-            {
-                return _batteryPause;
-            }
-            set
-            {
-                _batteryPause = value;
-                OnPropertyChanged("BatteryPause");
-            }
-        }
-
-        private DisplayPauseEnum _displayPauseSettings;
-        public DisplayPauseEnum DisplayPauseSettings
-        {
-            get
-            {
-                return _displayPauseSettings;
-            }
-            set
-            {
-                _displayPauseSettings = value;
-                OnPropertyChanged("DisplayPauseSettings");
-            }
-        }
-
-        private ProcessMonitorAlgorithm _processMonitorAlgorithm;
-        public ProcessMonitorAlgorithm ProcessMonitorAlgorithm
-        {
-            get
-            {
-                return _processMonitorAlgorithm;
-            }
-            set
-            {
-                _processMonitorAlgorithm = value;
-                OnPropertyChanged("ProcessMonitorAlgorithm");
-            }
-        }
-
-        private bool _liveTile;
+        public DisplayPauseEnum DisplayPauseSettings { get; set; }
+        public ProcessMonitorAlgorithm ProcessMonitorAlgorithm { get; set; }
         /// <summary>
         /// Show animatd library tiles.
         /// </summary>
-        public bool LiveTile
-        {
-            get
-            {
-                return _liveTile;
-            }
-            set
-            {
-                _liveTile = value;
-                OnPropertyChanged("LiveTile");
-            }
-        }
-
-        private System.Windows.Media.Stretch _scalerVideo;
-        public System.Windows.Media.Stretch ScalerVideo
-        {
-            get
-            {
-                return _scalerVideo;
-            }
-            set
-            {
-                _scalerVideo = value;
-                OnPropertyChanged("ScalerVideo");
-            }
-        }
-
-        private System.Windows.Media.Stretch _scalerGif;
-        public System.Windows.Media.Stretch ScalerGif
-        {
-            get
-            {
-                return _scalerGif;
-            }
-            set
-            {
-                _scalerGif = value;
-                OnPropertyChanged("ScalerGif");
-            }
-        }
-
-        private StreamQualitySuggestion _streamQuality;
+        public bool LiveTile { get; set; }
+        public System.Windows.Media.Stretch ScalerVideo { get; set; }
+        public System.Windows.Media.Stretch ScalerGif { get; set; }
         /// <summary>
-        /// Video stream quality for youtube-dl, 0 - best(4k)
+        /// Video stream quality for streams, 0 - best(4k)
         /// </summary>
-        public StreamQualitySuggestion StreamQuality
-        {
-            get
-            {
-                return _streamQuality;
-            }
-            set
-            {
-                _streamQuality = value;
-                OnPropertyChanged("StreamQuality");
-            }
-        }
-
-        private WallpaperArrangement _wallpaperArrangement;
-        public WallpaperArrangement WallpaperArrangement
-        {
-            get
-            {
-                return _wallpaperArrangement;
-            }
-            set
-            {
-                _wallpaperArrangement = value;
-                OnPropertyChanged("WallpaperArrangement");
-            }
-        }
-
-        private string _savedURL;
-        public string SavedURL
-        {
-            get
-            {
-                return _savedURL;
-            }
-            set
-            {
-                //todo validate url
-                _savedURL = value;
-                OnPropertyChanged("SavedURL");
-            }
-        }
-
-        private string _ignoreUpdateTag;
-        public string IgnoreUpdateTag
-        {
-            get
-            {
-                return _ignoreUpdateTag;
-            }
-            set
-            {
-                _ignoreUpdateTag = value;
-                OnPropertyChanged("IgnoreUpdateTag");
-            }
-        }
-
-        private int _processTimerInterval;
+        public StreamQualitySuggestion StreamQuality { get; set; }
+        public WallpaperArrangement WallpaperArrangement { get; set; }
+        public string SavedURL { get; set; }
+        public string IgnoreUpdateTag { get; set; }
         /// <summary>
         /// Timer interval(in milliseconds), used to monitor running apps to determine pause/play of wp's.
         /// </summary>
-        public int ProcessTimerInterval
-        {
-            get
-            {
-                return _processTimerInterval;
-            }
-            set
-            {
-                _processTimerInterval = value;
-                OnPropertyChanged("ProcessTimerInterval");
-            }
-        }
-
-        private int _wallpaperWaitTime;
+        public int ProcessTimerInterval { get; set; }
         /// <summary>
         /// Timeout for application wallpaper startup (in milliseconds), lively will kill wp if gui is not ready within this timeframe.
         /// </summary>
-        public int WallpaperWaitTime
-        {
-            get
-            {
-                return _wallpaperWaitTime;
-            }
-            set
-            {
-                _wallpaperWaitTime = value;
-                OnPropertyChanged("WallpaperWaitTime");
-            }
-        }
-
-        private bool _safeShutDown;
-        public bool SafeShutdown
-        {
-            get
-            {
-                return _safeShutDown;
-            }
-            set
-            {
-                _safeShutDown = value;
-                OnPropertyChanged("SafeShutdown");
-            }
-        }
-
-        private bool _isRestart;
-        public bool IsRestart
-        {
-            get
-            {
-                return _isRestart;
-            }
-            set
-            {
-                _isRestart = value;
-                OnPropertyChanged("IsRestart");
-            }
-        }
-
-        private InputForwardMode _inputForward;
-        public InputForwardMode InputForward
-        {
-            get
-            {
-                return _inputForward;
-            }
-            set
-            {
-                _inputForward = value;
-                OnPropertyChanged("InputForward");
-            }
-        }
-
-        private bool _mouseInputMovAlways;
+        public int WallpaperWaitTime { get; set; }
+        public bool SafeShutdown { get; set; }
+        public bool IsRestart { get; set; }
+        public InputForwardMode InputForward { get; set; }
         /// <summary>
         /// True: Always forward mouse movement, even when foreground apps open;
         /// False: Only forward on desktop.
         /// </summary>
-        public bool MouseInputMovAlways
-        {
-            get
-            {
-                return _mouseInputMovAlways;
-            }
-            set
-            {
-                _mouseInputMovAlways = value;
-                OnPropertyChanged("MouseInputMovAlways");
-            }
-        }
-
-        private int _tileSize;
-        public int TileSize
-        {
-            get
-            {
-                return _tileSize;
-            }
-            set
-            {
-                _tileSize = value;
-                OnPropertyChanged("TileSize");
-            }
-        }
-
-        private DisplayIdentificationMode _displayIdentification;
-        public DisplayIdentificationMode DisplayIdentification
-        {
-            get
-            {
-                return _displayIdentification;
-            }
-            set
-            {
-                _displayIdentification = value;
-                OnPropertyChanged("DisplayIdentification");
-            }
-        }
-
-        private LivelyMediaPlayer _videoPlayer;
-        public LivelyMediaPlayer VideoPlayer
-        {
-            get { return _videoPlayer; }
-            set
-            {
-                _videoPlayer = value;
-                OnPropertyChanged("VideoPlayer");
-            }
-        }
-
-        private bool _gifCapture;
-        public bool GifCapture
-        {
-            get { return _gifCapture; }
-            set
-            {
-                _gifCapture = value;
-                OnPropertyChanged("GifCapture");
-            }
-        }
-
-
-        private livelywpf.Core.LivelyScreen _selectedDisplay;
-        public livelywpf.Core.LivelyScreen SelectedDisplay
-        {
-            get { return _selectedDisplay; }
-            set
-            {
-                _selectedDisplay = value;
-                OnPropertyChanged("SelectedDisplay");
-            }
-        }
-
-        private LivelyGUIState _livelyGUIRendering;
-        public LivelyGUIState LivelyGUIRendering
-        {
-            get { return _livelyGUIRendering; }
-            set
-            {
-                _livelyGUIRendering = value;
-                OnPropertyChanged("LivelyGUIRendering");
-            }
-        }
-
-        private string _wallpaperDir;
-        public string WallpaperDir
-        {
-            get { return _wallpaperDir; }
-            set
-            {
-                _wallpaperDir = value;
-                OnPropertyChanged("WallpaperDir");
-            }
-        }
-
-        private bool _sysTrayIcon;
-        public bool SysTrayIcon
-        {
-            get { return _sysTrayIcon; }
-            set
-            {
-                _sysTrayIcon = value;
-                OnPropertyChanged("SysTrayIcon");
-            }
-        }
-
+        public bool MouseInputMovAlways { get; set; }
+        public int TileSize { get; set; }
+        public DisplayIdentificationMode DisplayIdentification { get; set; }
+        public LivelyMediaPlayer VideoPlayer { get; set; }
+        public bool GifCapture { get; set; }
+        public livelywpf.Core.LivelyScreen SelectedDisplay { get; set; }
+        public LivelyGUIState LivelyGUIRendering { get; set; }
+        public string WallpaperDir { get; set; }
+        public bool SysTrayIcon { get; set; }
+        public bool AutoDetectOnlineStreams { get; set; }
+        /// <summary>
+        /// Cefsharp debug port.
+        /// </summary>
+        public string WebDebugPort { get; set; }
         //private 
         /*
         //todo need to rewrite audio manager from scratch.
@@ -518,7 +100,6 @@ namespace livelywpf
         public SettingsModel()
         {
             SavedURL = "https://www.shadertoy.com/view/MsKcRh";
-
             ProcessMonitorAlgorithm = ProcessMonitorAlgorithm.foreground;
             WallpaperArrangement = WallpaperArrangement.per;
             AppVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
@@ -528,14 +109,6 @@ namespace livelywpf
             AppFullscreenPause = AppRulesEnum.pause;
             BatteryPause = AppRulesEnum.ignore;
             VideoPlayer = LivelyMediaPlayer.libvlc;
-            /*
-            VidPlayer = VideoPlayer.windowsmp;
-            //CurrWallpaperPath = null;
-            MPVPath = null;
-            RunOnlyDesktop = false;
-            AppTransparency = false;
-            GifPlayer = GIFPlayer.xaml;
-            */
 
             WallpaperWaitTime = 30000; // 30sec
             ProcessTimerInterval = 500; //reduce to 250 for quicker response.
@@ -559,10 +132,12 @@ namespace livelywpf
 
             TileSize = 1;
             DisplayIdentification = DisplayIdentificationMode.screenLayout;
-            SelectedDisplay = ScreenHelper.GetPrimaryScreen();//livelywpf.Core.LivelyScreen();
+            SelectedDisplay = ScreenHelper.GetPrimaryScreen();
             LivelyGUIRendering = LivelyGUIState.lite;
             WallpaperDir = Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Lively Wallpaper");
             SysTrayIcon = true;
+            WebDebugPort = string.Empty;
+            AutoDetectOnlineStreams = true;
         }
     }
 }

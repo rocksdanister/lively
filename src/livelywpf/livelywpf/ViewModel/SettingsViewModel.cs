@@ -66,8 +66,11 @@ namespace livelywpf
             SelectedPauseAlgorithmIndex = (int)Settings.ProcessMonitorAlgorithm;
             SelectedVideoPlayerIndex = (int)Settings.VideoPlayer;
             SelectedLivelyUIModeIndex = (int)Settings.LivelyGUIRendering;
-            SetupDesktop.WallpaperInputForward(Settings.InputForward);
+            SelectedWallpaperInputMode = (int)Settings.InputForward;
+            MouseMoveOnDesktop = Settings.MouseInputMovAlways;
             IsSysTrayIconVisible = Settings.SysTrayIcon;
+            WebDebuggingPort = Settings.WebDebugPort;
+            DetectStreamWallpaper = Settings.AutoDetectOnlineStreams;
         }
 
         private SettingsModel _settings;
@@ -430,6 +433,18 @@ namespace livelywpf
 
         #region wallpaper
 
+        private int _selectedWallpaperInputMode;
+        public int SelectedWallpaperInputMode
+        {
+            get { return _selectedWallpaperInputMode; }
+            set
+            {
+                _selectedWallpaperInputMode = value;
+                SetupDesktop.WallpaperInputForward((InputForwardMode)_selectedWallpaperInputMode);
+                OnPropertyChanged("SelectedWallpaperInputMode");
+            }
+        }
+
         private int _selectedVideoPlayerIndex;
         public int SelectedVideoPlayerIndex
         {
@@ -463,6 +478,50 @@ namespace livelywpf
             SetupDesktop.CloseWallpaper(WallpaperType.video);
 
             //todo: restart wpCurr
+        }
+
+        private bool _mouseMoveOnDesktop;
+        public bool MouseMoveOnDesktop
+        {
+            get { return _mouseMoveOnDesktop; }
+            set
+            {
+                _mouseMoveOnDesktop = value;
+                Settings.MouseInputMovAlways = _mouseMoveOnDesktop;
+                OnPropertyChanged("MouseMoveOnDesktop");
+            }
+        }
+
+        private string _webDebuggingPort;
+        public string WebDebuggingPort
+        {
+            get { return _webDebuggingPort; }
+            set
+            {
+                _webDebuggingPort = value;
+                if(Settings.WebDebugPort != _webDebuggingPort)
+                {
+                    Settings.WebDebugPort = _webDebuggingPort;
+                    UpdateConfigFile();
+                }
+                OnPropertyChanged("WebDebuggingPort");
+            }
+        }
+
+        public bool _detectStreamWallpaper;
+        public bool DetectStreamWallpaper
+        {
+            get { return _detectStreamWallpaper; }
+            set
+            {
+                _detectStreamWallpaper = value;
+                if(Settings.AutoDetectOnlineStreams != _detectStreamWallpaper)
+                {
+                    Settings.AutoDetectOnlineStreams = _detectStreamWallpaper;
+                    UpdateConfigFile();
+                }
+                OnPropertyChanged("DetectStreamWallpaper");
+            }
         }
 
         #endregion wallpaper

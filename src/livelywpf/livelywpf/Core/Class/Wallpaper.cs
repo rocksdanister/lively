@@ -25,6 +25,7 @@ namespace livelywpf.Core
         void Stop();
         void Close();
         LivelyScreen GetScreen();
+        void SetScreen(LivelyScreen display);
         void SendMessage(string msg);
         string GetLivelyPropertyCopyPath();
         event EventHandler<WindowInitializedArgs> WindowInitialized;
@@ -113,6 +114,11 @@ namespace livelywpf.Core
         public void SetHWND(IntPtr hwnd)
         {
             HWND = hwnd;
+        }
+
+        public void SetScreen(LivelyScreen display)
+        {
+            this.Display = display;
         }
 
         public void Show()
@@ -211,6 +217,11 @@ namespace livelywpf.Core
         {
             return null;
         }
+
+        public void SetScreen(LivelyScreen display)
+        {
+            this.Display = display;
+        }
     }
 
     public class VideoPlayerWPF : IWallpaper
@@ -293,11 +304,17 @@ namespace livelywpf.Core
         {
             return null;
         }
+
+        public void SetScreen(LivelyScreen display)
+        {
+            this.Display = display;
+        }
     }
 
     #endregion video players
 
     #region gif players
+
     public class GIFPlayerUWP : IWallpaper
     {
         public GIFPlayerUWP(string filePath, LibraryModel model, LivelyScreen display)
@@ -371,6 +388,11 @@ namespace livelywpf.Core
             this.HWND = hwnd;
         }
 
+        public void SetScreen(LivelyScreen display)
+        {
+            this.Display = display;
+        }
+
         public void Show()
         {
             if(Player != null)
@@ -430,17 +452,42 @@ namespace livelywpf.Core
             string cmdArgs;
             if (model.LivelyInfo.Type == WallpaperType.web)
             {
-                cmdArgs = "--url " + "\"" + path + "\"" + " --type local" + " --display " + "\"" + display + "\"" +
-                              " --property " + "\"" + LivelyPropertyCopy + "\"";
+                //Fail to send empty string as arg; "debug" is set as optional variable in cmdline parser library.
+                if (string.IsNullOrWhiteSpace(Program.SettingsVM.Settings.WebDebugPort))
+                {
+                    cmdArgs = "--url " + "\"" + path + "\"" + " --type local" + " --display " + "\"" + display + "\"" +
+                        " --property " + "\"" + LivelyPropertyCopy + "\"";
+                }
+                else
+                {
+                    cmdArgs = "--url " + "\"" + path + "\"" + " --type local" + " --display " + "\"" + display + "\"" +
+                      " --property " + "\"" + LivelyPropertyCopy + "\"" + " --debug " + Program.SettingsVM.Settings.WebDebugPort;
+                }
             }
             else if (model.LivelyInfo.Type == WallpaperType.webaudio)
             {
-                cmdArgs = "--url " + "\"" + path + "\"" + " --type local" + " --display " + "\"" + display + "\"" + " --audio true" +
-                      " --property " + "\"" + LivelyPropertyCopy + "\"";
+                if (string.IsNullOrWhiteSpace(Program.SettingsVM.Settings.WebDebugPort))
+                {
+                    cmdArgs = "--url " + "\"" + path + "\"" + " --type local" + " --display " + "\"" + display + "\"" + " --audio true" +
+                          " --property " + "\"" + LivelyPropertyCopy + "\"";
+                }
+                else
+                {
+                    cmdArgs = "--url " + "\"" + path + "\"" + " --type local" + " --display " + "\"" + display + "\"" + " --audio true" +
+                        " --property " + "\"" + LivelyPropertyCopy + "\"" + " --debug " + Program.SettingsVM.Settings.WebDebugPort;
+                }
             }
             else
             {
-                cmdArgs = "--url " + "\"" + path + "\"" + " --type online" + " --display " + "\"" + display + "\"";
+                if (string.IsNullOrWhiteSpace(Program.SettingsVM.Settings.WebDebugPort))
+                {
+                    cmdArgs = "--url " + "\"" + path + "\"" + " --type online" + " --display " + "\"" + display + "\"";
+                }
+                else
+                {
+                    cmdArgs = "--url " + "\"" + path + "\"" + " --type online" + " --display " + "\"" + display + "\"" +
+                       " --debug " + Program.SettingsVM.Settings.WebDebugPort;
+                }
             }
 
             ProcessStartInfo start = new ProcessStartInfo
@@ -623,6 +670,11 @@ namespace livelywpf.Core
         {
             return LivelyPropertyCopy;
         }
+
+        public void SetScreen(LivelyScreen display)
+        {
+            this.Display = display;
+        }
     }
 
     #endregion web browsers
@@ -727,6 +779,11 @@ namespace livelywpf.Core
         public string GetLivelyPropertyCopyPath()
         {
             return null;
+        }
+
+        public void SetScreen(LivelyScreen display)
+        {
+            this.Display = display;
         }
     }
 

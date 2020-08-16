@@ -100,5 +100,10 @@ namespace livelysettings
         {
             this.InitializeComponent();
         }
+
+        private void TextBox_BeforeTextChanging(TextBox sender, TextBoxBeforeTextChangingEventArgs args)
+        {
+            args.Cancel = args.NewText.Any(c => !char.IsDigit(c));
+        }
     }
 }
