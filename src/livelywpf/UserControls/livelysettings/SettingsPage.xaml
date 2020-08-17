@@ -45,7 +45,7 @@
                                 <ProgressRing Margin="5, 0, 0, 0"  IsActive="{Binding WallpapeDirectoryChanging}"/>
                             </StackPanel>
                             <Button MaxWidth="450" MinWidth="450" MinHeight="30" Style="{StaticResource ButtonRevealStyle}"
-                                    HorizontalContentAlignment="Left" Content="{Binding Settings.WallpaperDir}"
+                                    HorizontalContentAlignment="Left" Content="{Binding WallpaperDirectory}"
                                     Command="{Binding WallpaperDirectoryChangeCommand}" />
                             <!--
                             <Border Background="{ThemeResource SystemListLowColor}" MaxWidth="600" MinWidth="600" MinHeight="30" HorizontalAlignment="Left">

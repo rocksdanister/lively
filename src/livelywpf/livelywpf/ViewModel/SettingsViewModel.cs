@@ -71,6 +71,7 @@ namespace livelywpf
             IsSysTrayIconVisible = Settings.SysTrayIcon;
             WebDebuggingPort = Settings.WebDebugPort;
             DetectStreamWallpaper = Settings.AutoDetectOnlineStreams;
+            WallpaperDirectory = Settings.WallpaperDir;
         }
 
         private SettingsModel _settings;
@@ -220,6 +221,17 @@ namespace livelywpf
             }
         }
 
+        private string _wallpaperDirectory;
+        public string WallpaperDirectory
+        {
+            get { return _wallpaperDirectory; }
+            set
+            {
+                _wallpaperDirectory = value;
+
+            }
+        }
+
         public event EventHandler<string> LivelyWallpaperDirChange;
         private RelayCommand _wallpaperDirectoryChangeCommand;
         public RelayCommand WallpaperDirectoryChangeCommand
@@ -298,6 +310,7 @@ namespace livelywpf
                 var previousDirectory = Settings.WallpaperDir;
                 Settings.WallpaperDir = folderBrowserDialog.SelectedPath;
                 UpdateConfigFile();
+                WallpaperDirectory = Settings.WallpaperDir;
                 Program.WallpaperDir = Settings.WallpaperDir;
                 LivelyWallpaperDirChange?.Invoke(null, folderBrowserDialog.SelectedPath);
 

@@ -138,11 +138,17 @@ namespace livelywpf.Views
                 Logger.Info("Dropped url:- " + uri.ToString());
                 if (libVLCStreams.CheckStream(uri) && Program.SettingsVM.Settings.AutoDetectOnlineStreams)
                 {
-                    Program.LibraryVM.AddWallpaper(uri.ToString(), WallpaperType.videostream, LibraryTileType.processing, ScreenHelper.GetPrimaryScreen());
+                    Program.LibraryVM.AddWallpaper(uri.ToString(),
+                        WallpaperType.videostream,
+                        LibraryTileType.processing,
+                        Program.SettingsVM.Settings.SelectedDisplay);
                 }
                 else
                 {
-                    Program.LibraryVM.AddWallpaper(uri.ToString(), WallpaperType.url, LibraryTileType.processing, ScreenHelper.GetPrimaryScreen());
+                    Program.LibraryVM.AddWallpaper(uri.ToString(),
+                        WallpaperType.url,
+                        LibraryTileType.processing,
+                        Program.SettingsVM.Settings.SelectedDisplay);
                 }
             }
             else if (e.DataView.Contains(StandardDataFormats.StorageItems))
@@ -166,11 +172,17 @@ namespace livelywpf.Views
 
                     if (Path.GetExtension(item).Equals(".gif", StringComparison.OrdinalIgnoreCase))
                     {
-                        Program.LibraryVM.AddWallpaper(item, WallpaperType.gif, LibraryTileType.processing, ScreenHelper.GetPrimaryScreen());
+                        Program.LibraryVM.AddWallpaper(item,
+                            WallpaperType.gif,
+                            LibraryTileType.processing,
+                            Program.SettingsVM.Settings.SelectedDisplay);
                     }
                     else if (Path.GetExtension(item).Equals(".html", StringComparison.OrdinalIgnoreCase))
                     {
-                        Program.LibraryVM.AddWallpaper(item, WallpaperType.web, LibraryTileType.processing, ScreenHelper.GetPrimaryScreen());
+                        Program.LibraryVM.AddWallpaper(item,
+                            WallpaperType.web,
+                            LibraryTileType.processing,
+                            Program.SettingsVM.Settings.SelectedDisplay);
                     }
                     else if (Path.GetExtension(item).Equals(".zip", StringComparison.OrdinalIgnoreCase))
                     {
@@ -178,7 +190,10 @@ namespace livelywpf.Views
                     }
                     else if (FileOperations.IsVideoFile(item))
                     {
-                        Program.LibraryVM.AddWallpaper(item, WallpaperType.video, LibraryTileType.processing, ScreenHelper.GetPrimaryScreen());
+                        Program.LibraryVM.AddWallpaper(item,
+                            WallpaperType.video,
+                            LibraryTileType.processing,
+                            Program.SettingsVM.Settings.SelectedDisplay);
                     }
                     else
                     {

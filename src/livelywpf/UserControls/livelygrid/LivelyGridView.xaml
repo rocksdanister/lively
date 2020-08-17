@@ -39,6 +39,7 @@
                     <SymbolIcon Symbol="Document"/>
                 </Viewbox>
                 -->
+                <ProgressRing MaxHeight="25" MaxWidth="25" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5, 5, 5, 5" IsActive="{Binding ItemStartup}"/>
                 <StackPanel Orientation="Vertical" Height="60" VerticalAlignment="Bottom" Background="{ThemeResource SystemAltMediumColor}" Padding="7">
                     <TextBlock Text="{Binding Title}" MaxLines="1"/>
                     <TextBlock Text="{Binding Desc}" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" MaxLines="2"/>

@@ -12,6 +12,7 @@ namespace livelywpf
 #pragma warning disable CA1707, CA1401, CA1712
     public static class NativeMethods
     {
+        public const int BM_CLICK = 0x00F5; //left-click
 
         #region single instance
 

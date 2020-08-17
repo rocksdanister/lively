@@ -160,6 +160,7 @@ namespace livelywpf
         {
             if (App.AppWindow != null)
             {
+                //Exit firstrun setupwizard.
                 if(setupWizard != null)
                 {
                     SettingsVM.Settings.IsFirstRun = false;

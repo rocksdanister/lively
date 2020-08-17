@@ -107,8 +107,20 @@ namespace livelywpf
             || wp.LivelyInfo.Type == WallpaperType.webaudio 
             || wp.LivelyInfo.Type == WallpaperType.url)
             {
-                //todo process exit event.
+                wp.ItemStartup = true;
                 var item = new WebProcess(wp.FilePath, wp, targetDisplay);
+                item.WindowInitialized += SetupDesktop_WallpaperInitialized;
+                item.Show();
+            }
+            if (wp.LivelyInfo.Type == WallpaperType.app
+            || wp.LivelyInfo.Type == WallpaperType.godot
+            || wp.LivelyInfo.Type == WallpaperType.unity)
+            {
+                System.Windows.MessageBox.Show("not supported currently");
+                return;
+
+                wp.ItemStartup = true;
+                var item = new ExtPrograms(wp.FilePath, wp, targetDisplay);
                 item.WindowInitialized += SetupDesktop_WallpaperInitialized;
                 item.Show();
             }
@@ -151,7 +163,11 @@ namespace livelywpf
         {
             var wallpaper = (IWallpaper)sender;
             wallpaper.WindowInitialized -= SetupDesktop_WallpaperInitialized;
-            if(e.Success)
+            await System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
+            {
+                wallpaper.GetWallpaperData().ItemStartup = false;
+            }));
+            if (e.Success)
             {
                 //preview and create gif and thumbnail for user dropped file.
                 if (wallpaper.GetWallpaperData().DataType == LibraryTileType.processing)
@@ -335,6 +351,7 @@ namespace livelywpf
                 SystemEvents.DisplaySettingsChanged -= SystemEvents_DisplaySettingsChanged;
                 processMonitor.Stop();
                 CloseAllWallpapersWithoutEvent();
+                RefreshDesktop();
             }
         }
 
@@ -477,9 +494,7 @@ namespace livelywpf
         {
             Wallpapers.ForEach(x => x.Close());
             Wallpapers.Clear();
-            RefreshDesktop();
             WallpaperChanged?.Invoke(null, null);
-            //SaveWallpaperLayout();
         }
 
         public static void CloseWallpaper(WallpaperType type)
@@ -490,9 +505,7 @@ namespace livelywpf
                     x.Close();             
             });
             Wallpapers.RemoveAll(x => x.GetWallpaperType() == type);
-            RefreshDesktop();
             WallpaperChanged?.Invoke(null, null);
-            //SaveWallpaperLayout();
         }
 
         public static void CloseWallpaper(LivelyScreen display)
@@ -503,9 +516,7 @@ namespace livelywpf
                     x.Close();
             });
             Wallpapers.RemoveAll(x => ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.screenLayout));
-            RefreshDesktop();
             WallpaperChanged?.Invoke(null, null);
-            //SaveWallpaperLayout();
         }
 
         public static void CloseWallpaper(LibraryModel wp)
@@ -516,9 +527,7 @@ namespace livelywpf
                     x.Close();
             });
             Wallpapers.RemoveAll(x => x.GetWallpaperData() == wp);
-            RefreshDesktop();
             WallpaperChanged?.Invoke(null, null);
-            //SaveWallpaperLayout();
         }
 
         /// <summary>
@@ -552,14 +561,12 @@ namespace livelywpf
                     x.Close();
             });
             Wallpapers.RemoveAll(x => ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.screenLayout));
-            RefreshDesktop();
         }
 
         private static void CloseAllWallpapersWithoutEvent()
         {
             Wallpapers.ForEach(x => x.Close());
             Wallpapers.Clear();
-            RefreshDesktop();
         }
 
         #endregion //wallpaper close

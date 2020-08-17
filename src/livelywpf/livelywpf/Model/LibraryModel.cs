@@ -107,6 +107,7 @@ namespace livelywpf
             {
                 ImagePath = ThumbnailPath;
             }
+            ItemStartup = false;
         }
 
         private LivelyInfoModel _livelyInfo;
@@ -273,6 +274,17 @@ namespace livelywpf
             {
                 _livelyPropertyPath = File.Exists(value) ? value : null;
                 OnPropertyChanged("LivelyPropertyPath");
+            }
+        }
+
+        private bool _itemStartup;
+        public bool ItemStartup
+        {
+            get { return _itemStartup; }
+            set
+            {
+                _itemStartup = value;
+                OnPropertyChanged("ItemStartup");
             }
         }
 
