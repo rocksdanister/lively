@@ -58,6 +58,13 @@ namespace livelywpf
                 WindowsStartup.SetStartupRegistry(false);
             }
 
+            if(ScreenHelper.GetScreen().FindIndex(x => ScreenHelper.ScreenCompare(x, Settings.SelectedDisplay, DisplayIdentificationMode.screenLayout)) == -1)
+            {
+                //Previous screen missing, use current primary screen.
+                Settings.SelectedDisplay = ScreenHelper.GetPrimaryScreen();
+                UpdateConfigFile();
+            }
+
             SelectedTileSizeIndex = Settings.TileSize;
             SelectedAppFullScreenIndex = (int)Settings.AppFullscreenPause;
             SelectedAppFocusIndex = (int)Settings.AppFocusPause;

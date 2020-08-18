@@ -11,13 +11,13 @@
         WindowStyle="None"
         ResizeMode="NoResize"
         ShowInTaskbar="False"
-        Title="ScreenLabelView" Height="250" Width="250"
+        Title="ScreenLabelView" Height="175" Width="175"
         Topmost="True" Loaded="Window_Loaded"
         Background="{DynamicResource SystemControlPageBackgroundAltHighBrush}"
         Foreground="{DynamicResource SystemControlPageTextBaseHighBrush}"
         BorderBrush="DimGray"
         BorderThickness="1">
     <Grid>
-        <TextBlock x:Name="ScreenLabel" FontSize="150" VerticalAlignment="Center" HorizontalAlignment="Center" Text="2"/>
+        <TextBlock x:Name="ScreenLabel" FontSize="100" VerticalAlignment="Center" HorizontalAlignment="Center" Text="2"/>
     </Grid>
 </Window>

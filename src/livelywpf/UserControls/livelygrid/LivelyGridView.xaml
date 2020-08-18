@@ -24,6 +24,7 @@
         <DataTemplate x:Name="Small">
             <Grid Width="192" Height="108" AutomationProperties.Name="{Binding Title}">
                 <Image Source="{Binding ImagePath}" Stretch="UniformToFill"/>
+                <ProgressRing Height="15" Width="15" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5, 5, 5, 5" IsActive="{Binding ItemStartup}"/>
                 <StackPanel Orientation="Vertical" Height="60" VerticalAlignment="Bottom" Background="{ThemeResource SystemAltMediumColor}" Padding="7">
                     <TextBlock Text="{Binding Title}"/>
                     <TextBlock Text="{Binding Desc}" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
@@ -39,7 +40,7 @@
                     <SymbolIcon Symbol="Document"/>
                 </Viewbox>
                 -->
-                <ProgressRing MaxHeight="25" MaxWidth="25" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5, 5, 5, 5" IsActive="{Binding ItemStartup}"/>
+                <ProgressRing Height="25" Width="25" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5, 5, 5, 5" IsActive="{Binding ItemStartup}"/>
                 <StackPanel Orientation="Vertical" Height="60" VerticalAlignment="Bottom" Background="{ThemeResource SystemAltMediumColor}" Padding="7">
                     <TextBlock Text="{Binding Title}" MaxLines="1"/>
                     <TextBlock Text="{Binding Desc}" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" MaxLines="2"/>
@@ -50,6 +51,7 @@
         <DataTemplate x:Name="Large">
             <Grid Width="320" Height="180" AutomationProperties.Name="{Binding Title}">
                 <Image Source="{Binding ImagePath}" Stretch="UniformToFill"/>
+                <ProgressRing Height="35" Width="35" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5, 5, 5, 5" IsActive="{Binding ItemStartup}"/>
                 <StackPanel Orientation="Vertical" Height="60" VerticalAlignment="Bottom" Background="{ThemeResource SystemAltMediumColor}" Padding="7">
                     <TextBlock Text="{Binding Title}"/>
                     <TextBlock Text="{Binding Desc}" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>

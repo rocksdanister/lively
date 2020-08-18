@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Media.TextFormatting;
 using livelywpf.Core;
@@ -11,53 +12,22 @@ namespace livelywpf
 {
     public class ScreenLayoutViewModel : ObservableObject
     {
-        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         public ScreenLayoutViewModel()
         {
-            if(Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span 
-            || Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.duplicate)
-            {
-                ScreenItems = new ObservableCollection<Model.ScreenLayoutModel>();
-                if (SetupDesktop.Wallpapers.Count == 0)
-                {
-                    ScreenItems.Add(new ScreenLayoutModel(Program.SettingsVM.Settings.SelectedDisplay, null, null, "---"));
-                }
-                else
-                {
-                    var x = SetupDesktop.Wallpapers[0];
-                    ScreenItems.Add(new ScreenLayoutModel(x.GetScreen(), x.GetWallpaperData().ThumbnailPath, x.GetLivelyPropertyCopyPath(), "---"));
-                }
-            }
-            else
-            {
-                List<Model.ScreenLayoutModel> unsortedScreenItems = new List<Model.ScreenLayoutModel>();
-                foreach (var item in ScreenHelper.GetScreen())
-                {
-                    string imgPath = null;
-                    string livelyPropertyFilePath = null;
-                    SetupDesktop.Wallpapers.ForEach(x =>
-                    {
-                        if (ScreenHelper.ScreenCompare(item, x.GetScreen(), DisplayIdentificationMode.screenLayout))
-                        {
-                            imgPath = x.GetWallpaperData().ThumbnailPath;
-                            livelyPropertyFilePath = x.GetLivelyPropertyCopyPath();
-                        }
-                    });
-                    unsortedScreenItems.Add(new Model.ScreenLayoutModel(item, imgPath, livelyPropertyFilePath, item.DeviceNumber));
-                }
-                ScreenItems = new ObservableCollection<Model.ScreenLayoutModel>(unsortedScreenItems.OrderBy(x => x.Screen.Bounds.X).ToList());
-            }
-
-            foreach (var item in ScreenItems)
-            {
-                if(ScreenHelper.ScreenCompare(item.Screen, Program.SettingsVM.Settings.SelectedDisplay, DisplayIdentificationMode.screenLayout))
-                {
-                    SelectedItem = item;
-                    break;
-                }
-            }
-
             SelectedWallpaperLayout = (int)Program.SettingsVM.Settings.WallpaperArrangement;
+            ScreenItems = new ObservableCollection<ScreenLayoutModel>();
+            UpdateLayout();
+
+            SetupDesktop.WallpaperChanged += SetupDesktop_WallpaperChanged;
+        }
+
+        private void SetupDesktop_WallpaperChanged(object sender, EventArgs e)
+        {
+            System.Windows.Application.Current.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background,
+                new System.Threading.ThreadStart(delegate
+                {
+                    UpdateLayout();
+                }));
         }
 
         private ObservableCollection<ScreenLayoutModel> _screenItems;
@@ -90,6 +60,7 @@ namespace livelywpf
                     {
                         Program.SettingsVM.Settings.SelectedDisplay = value.Screen;
                         Program.SettingsVM.UpdateConfigFile();
+                        //Updating library selected item.
                         Program.LibraryVM.SetupDesktop_WallpaperChanged(null, null);
                     }
                 }
@@ -111,7 +82,8 @@ namespace livelywpf
                 {
                     Program.SettingsVM.Settings.WallpaperArrangement = (WallpaperArrangement)value;
                     Program.SettingsVM.UpdateConfigFile();
-                    ClearScreenLayout();
+                    //ClearScreenLayout();
+                    SetupDesktop.CloseAllWallpapers();
                 }
             }
         }
@@ -214,34 +186,53 @@ namespace livelywpf
 
         #region helpers
 
-        private void ClearScreenLayout()
+        private void UpdateLayout()
         {
-            SetupDesktop.CloseAllWallpapers();
             ScreenItems.Clear();
-            if (Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span)
+            if (Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span
+            || Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.duplicate)
             {
-                ScreenItems.Add(new Model.ScreenLayoutModel(
-                    Program.SettingsVM.Settings.SelectedDisplay,
-                    null, null, "---"));
+                if (SetupDesktop.Wallpapers.Count == 0)
+                {
+                    ScreenItems.Add(new ScreenLayoutModel(Program.SettingsVM.Settings.SelectedDisplay, null, null, "---"));
+                }
+                else
+                {
+                    var x = SetupDesktop.Wallpapers[0];
+                    ScreenItems.Add(new ScreenLayoutModel(x.GetScreen(), x.GetWallpaperData().ThumbnailPath, x.GetLivelyPropertyCopyPath(), "---"));
+                }
             }
-            else if(Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.per)
+            else
             {
                 List<Model.ScreenLayoutModel> unsortedScreenItems = new List<Model.ScreenLayoutModel>();
                 foreach (var item in ScreenHelper.GetScreen())
                 {
-                    unsortedScreenItems.Add(new Model.ScreenLayoutModel(item, null, null, item.DeviceNumber));
-                }
-                ScreenItems = new ObservableCollection<Model.ScreenLayoutModel>(unsortedScreenItems.OrderBy(x => x.Screen.Bounds.X).ToList());
-
-                foreach (var item in ScreenItems)
-                {
-                    if (ScreenHelper.ScreenCompare(item.Screen, Program.SettingsVM.Settings.SelectedDisplay, DisplayIdentificationMode.screenLayout))
+                    string imgPath = null;
+                    string livelyPropertyFilePath = null;
+                    SetupDesktop.Wallpapers.ForEach(x =>
                     {
-                        SelectedItem = item;
-                        break;
-                    }
+                        if (ScreenHelper.ScreenCompare(item, x.GetScreen(), DisplayIdentificationMode.screenLayout))
+                        {
+                            imgPath = x.GetWallpaperData().ThumbnailPath;
+                            livelyPropertyFilePath = x.GetLivelyPropertyCopyPath();
+                        }
+                    });
+                    unsortedScreenItems.Add(new Model.ScreenLayoutModel(item, imgPath, livelyPropertyFilePath, item.DeviceNumber));
                 }
-                SelectedWallpaperLayout = (int)Program.SettingsVM.Settings.WallpaperArrangement;
+
+                foreach (var item in unsortedScreenItems.OrderBy(x => x.Screen.Bounds.X).ToList())
+                {
+                    ScreenItems.Add(item);
+                }
+            }
+
+            foreach (var item in ScreenItems)
+            {
+                if (ScreenHelper.ScreenCompare(item.Screen, Program.SettingsVM.Settings.SelectedDisplay, DisplayIdentificationMode.screenLayout))
+                {
+                    SelectedItem = item;
+                    break;
+                }
             }
         }
 

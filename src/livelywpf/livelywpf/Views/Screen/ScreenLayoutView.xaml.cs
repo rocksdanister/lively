@@ -22,13 +22,9 @@ namespace livelywpf.Views
         {
             InitializeComponent();
             this.DataContext = new ScreenLayoutViewModel();
+            CreateLabelWindows();
 
-            foreach (var item in ScreenHelper.GetScreen())
-            {
-                ScreenLabelView lbl = new ScreenLabelView(item.DeviceNumber, item.Bounds.Left + 10, item.Bounds.Top + 10);
-                lbl.Show();
-                screenLabels.Add(lbl);
-            }
+            SetupDesktop.WallpaperChanged += SetupDesktop_WallpaperChanged;
         }
 
         private void ScreenLayoutControl_ChildChanged(object sender, EventArgs e)
@@ -40,16 +36,44 @@ namespace livelywpf.Views
 
             if (control != null)
             {
+
             }
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void SetupDesktop_WallpaperChanged(object sender, EventArgs e)
+        {
+            this.Dispatcher.BeginInvoke(new Action(() => {
+                CloseLabelWindows();
+                CreateLabelWindows();
+            }));
+        }
+
+        private void CreateLabelWindows()
+        {
+            if(ScreenHelper.IsMultiScreen() && Program.SettingsVM.Settings.WallpaperArrangement != WallpaperArrangement.span)
+            {
+                foreach (var item in ScreenHelper.GetScreen())
+                {
+                    ScreenLabelView lbl = new ScreenLabelView(item.DeviceNumber, item.Bounds.Left + 10, item.Bounds.Top + 10);
+                    lbl.Show();
+                    screenLabels.Add(lbl);
+                }
+            }
+        }
+
+        private void CloseLabelWindows()
         {
             foreach (var item in screenLabels)
             {
                 item.Close();
             }
             screenLabels.Clear();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            SetupDesktop.WallpaperChanged -= SetupDesktop_WallpaperChanged;
+            CloseLabelWindows();
         }
     }
 }

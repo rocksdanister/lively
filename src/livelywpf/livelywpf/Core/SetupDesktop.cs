@@ -29,6 +29,11 @@ namespace livelywpf
 
         #region core
 
+        static SetupDesktop()
+        {
+            SystemEvents.DisplaySettingsChanged += SystemEvents_DisplaySettingsChanged;
+        }
+
         public static void SetWallpaper(LibraryModel wp, LivelyScreen targetDisplay)
         {
             if (SystemParameters.HighContrast)
@@ -98,7 +103,7 @@ namespace livelywpf
                     _isInitialized = true;
                     processMonitor = new Playback();
                     processMonitor.Start();
-                    SystemEvents.DisplaySettingsChanged += SystemEvents_DisplaySettingsChanged;
+                    //SystemEvents.DisplaySettingsChanged += SystemEvents_DisplaySettingsChanged;
                     WallpaperChanged += SetupDesktop_WallpaperChanged;
                 }
             }
@@ -283,15 +288,14 @@ namespace livelywpf
                         });
                         Wallpapers.RemoveAll(x => orphans.Contains(x));
                         orphans.Clear();
-                        WallpaperChanged?.Invoke(null, null);
                     }
+                    WallpaperChanged?.Invoke(null, null);
                 }
                 else
                 {
                     Logger.Info("System parameters changed: Screen Properties");
                     UpdateWallpaperRect();
                 }
-                RefreshDesktop();
                 screenList.Clear();
                 screenList.AddRange(ScreenHelper.GetScreen());
             }
@@ -326,6 +330,7 @@ namespace livelywpf
                     Wallpapers[i].SetScreen(item);
                 }
             }
+            RefreshDesktop();
         }
 
         private static void SaveWallpaperLayout()

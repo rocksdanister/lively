@@ -160,7 +160,6 @@ namespace livelywpf
 
         private void SetupDesktop_WallpaperChanged(object sender, EventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("Wallpaper-Changed:StatusBar:" + SetupDesktop.Wallpapers.Count);
             this.Dispatcher.BeginInvoke(new Action(() => { wallpaperStatusText.Text = SetupDesktop.Wallpapers.Count.ToString(); }));
         }
 
