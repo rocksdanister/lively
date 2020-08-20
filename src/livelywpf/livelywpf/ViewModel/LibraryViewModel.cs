@@ -35,7 +35,7 @@ namespace livelywpf
             SetupDesktop.WallpaperChanged += SetupDesktop_WallpaperChanged;
             Program.SettingsVM.LivelyGUIStateChanged += SettingsVM_LivelyGUIStateChanged;
             Program.SettingsVM.LivelyWallpaperDirChange += SettingsVM_LivelyWallpaperDirChange;
-            RestoreWallpaper();
+            //RestoreWallpaperFromSave();
 
             //ref: https://github.com/microsoft/microsoft-ui-xaml/issues/911
             //SetWallpaperItemClicked = new RelayCommand(WallpaperSet);
@@ -123,12 +123,32 @@ namespace livelywpf
         public void WallpaperSet(object obj, LivelyScreen targetDisplay = null)
         {
             var selection = (LibraryModel)obj;
-            if(selection.FilePath == null)
+            bool fileExists;
+            //wallpaper file is outside lively folder, always check.
+            if (selection.LivelyInfo.IsAbsolutePath)
+            {
+                if (selection.LivelyInfo.Type == WallpaperType.url ||
+                    selection.LivelyInfo.Type == WallpaperType.videostream)
+                {
+                    fileExists = true;
+                }
+                else
+                {
+                    fileExists = File.Exists(selection.FilePath);
+                }
+            }
+            else
+            { 
+                fileExists = selection.FilePath != null;
+            }
+
+            if (!fileExists)
             {
                 MessageBox.Show("File Not Found!", Properties.Resources.TextError);
                 return;
             }
-            if(targetDisplay == null)
+
+            if (targetDisplay == null)
                 SetupDesktop.SetWallpaper(selection, Program.SettingsVM.Settings.SelectedDisplay);
             else
                 SetupDesktop.SetWallpaper(selection, targetDisplay);
@@ -584,7 +604,7 @@ namespace livelywpf
             }
         }
 
-        public void RestoreWallpaper()
+        public void RestoreWallpaperFromSave()
         {
             //todo: remove the missing wallpaper from the save file etc..
             var wallpaperLayout = WallpaperLayoutJSON.LoadWallpaperLayout(Path.Combine(Program.AppDataDir, "WallpaperLayout.json"));

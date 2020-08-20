@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="DescriptionAddWallpaper" xml:space="preserve">
+    <value>Select a file or specify a website url to set as a wallpaper.</value>
+  </data>
   <data name="DescriptionAppRules" xml:space="preserve">
     <value>根据正在运行的应用程序设置壁纸播放行为</value>
   </data>
@@ -203,6 +206,9 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextBack" xml:space="preserve">
     <value>返回</value>
   </data>
+  <data name="TextBrowse" xml:space="preserve">
+    <value>Browse</value>
+  </data>
   <data name="TextCloseWallpapers" xml:space="preserve">
     <value>关闭所有壁纸</value>
   </data>
@@ -238,6 +244,12 @@ https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="TextGIF" xml:space="preserve">
     <value>GIF</value>
+  </data>
+  <data name="TextGo" xml:space="preserve">
+    <value>GO</value>
+  </data>
+  <data name="TextHelpTranslate" xml:space="preserve">
+    <value>Help translate Lively.</value>
   </data>
   <data name="TextInstall" xml:space="preserve">
     <value>安装</value>
@@ -371,6 +383,12 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TileVideoPlayer" xml:space="preserve">
     <value>视频播放器</value>
   </data>
+  <data name="TipAddWallpaperFileBrowse" xml:space="preserve">
+    <value>Set all supported file types as wallpaper.</value>
+  </data>
+  <data name="TipAddWallpaperURL" xml:space="preserve">
+    <value>Set the web page of the URL you entered as wallpaper.</value>
+  </data>
   <data name="TipAppFocus" xml:space="preserve">
     <value>设置其他程式运行时的行为</value>
   </data>
@@ -484,6 +502,9 @@ Edge is the built in webview of windows 10.</value>
   <data name="TitleDisplayPauseRule" xml:space="preserve">
     <value>播放器暂停规则(作用范围)</value>
   </data>
+  <data name="TitleEnterUrl" xml:space="preserve">
+    <value>Enter URL</value>
+  </data>
   <data name="TitleGeneral" xml:space="preserve">
     <value>常规的</value>
   </data>
@@ -528,6 +549,9 @@ Edge is the built in webview of windows 10.</value>
   </data>
   <data name="TitleScreenLayout" xml:space="preserve">
     <value>Screen Layout</value>
+  </data>
+  <data name="TitleSelectFile" xml:space="preserve">
+    <value>Select File</value>
   </data>
   <data name="TitleSettings" xml:space="preserve">
     <value>设置</value>
@@ -583,4 +607,54 @@ Edge is the built in webview of windows 10.</value>
   <data name="TitleWindowsStartup" xml:space="preserve">
     <value>开机自启动</value>
   </data>
+  <data name="DescriptionPleaseRestartLively" xml:space="preserve">
+    <value>Please restart Lively for settings to take effect.</value>
+  </data>
+  <data name="TextSupport" xml:space="preserve">
+    <value>Support</value>
+  </data>
+  <data name="TextClose" xml:space="preserve">
+    <value>Close</value>
+  </data> 
+  <data name="TextCustomise" xml:space="preserve">
+    <value>Customise</value>
+  </data>     
+  <data name="DescriptionScreenLayout" xml:space="preserve">
+    <value>Choose Display</value>
+  </data>    
+  <data name="TextWallpaperLayoutPerScreen" xml:space="preserve">
+    <value>Selected screen only</value>
+  </data>  
+  <data name="TipWallpaperLayout" xml:space="preserve">
+    <value>How wallpaper is applied to connected display devices.</value>
+  </data> 
+  <data name="TitleWallpaperDirMoveExisting" xml:space="preserve">
+    <value>Move existing wallpapers to new folder</value>
+  </data>   
+  <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
+    <value>Media playback failed :(
+Try changing the videoplayer in lively settings.
+
+In order to better understand this error and fix the issue, share the log file with the developer.
+Instructions for sharing log file:
+https://github.com/rocksdanister/lively/wiki</value>
+  </data> 
+  <data name="TextOff" xml:space="preserve">
+    <value>OFF</value>
+  </data>
+  <data name="TextOn" xml:space="preserve">
+    <value>ON</value>
+  </data>   
+  <data name="TextMouse" xml:space="preserve">
+    <value>Mouse</value>
+  </data>  
+  <data name="TextKeyboard" xml:space="preserve">
+    <value>Keyboard</value>
+  </data>  
+  <data name="TitleDocumentation" xml:space="preserve">
+    <value>Documentation</value>
+  </data> 
+  <data name="TitleCommunity" xml:space="preserve">
+    <value>Community</value>
+  </data>    
 </root>

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
- <!-- 
+  <!-- 
     Microsoft ResX Schema 
     
     Version 2.0
@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="DescriptionAddWallpaper" xml:space="preserve">
+    <value>Select a file or specify a website url to set as a wallpaper.</value>
+  </data>
   <data name="DescriptionAppRules" xml:space="preserve">
     <value>تعيين الخلفية(ات) سلوك التشغيل بناءً على تشغيل التطبيق:-</value>
   </data>
@@ -136,11 +139,17 @@
   <data name="DescriptionMinimizedTray" xml:space="preserve">
     <value>تم تصغيري إلى علبة النظام, أنقر بالزر الأيمن لمزيد من الخيارات.</value>
   </data>
+  <data name="DescriptionPleaseRestartLively" xml:space="preserve">
+    <value>Please restart Lively for settings to take effect.</value>
+  </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
     <value>Press to begin recording.</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
     <value>إستعادة الخلفية(ات) السابقة..</value>
+  </data>
+  <data name="DescriptionScreenLayout" xml:space="preserve">
+    <value>Choose screen</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
     <value>نسخة جديدة متوفرة!</value>
@@ -167,6 +176,14 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>لا يمكن للايفلي أن يعمل بصورة صحيحة في حين أن وضع التباين العالي للويندوز مُمَكّن!
 عطّل وضع التباين العالي &amp; حاول مرة أخرى.</value>
   </data>
+  <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
+    <value>Media playback failed :(
+Try changing the videoplayer in lively settings.
+
+In order to better understand this error and fix the issue, share the log file with the developer.
+Instructions for sharing log file:
+https://github.com/rocksdanister/lively/wiki</value>
+  </data>  
   <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
     <value>Not Lively wallpaper file.</value>
   </data>
@@ -200,6 +217,12 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextBack" xml:space="preserve">
     <value>Back</value>
   </data>
+  <data name="TextBrowse" xml:space="preserve">
+    <value>Browse</value>
+  </data>
+  <data name="TextClose" xml:space="preserve">
+    <value>Close</value>
+  </data>
   <data name="TextCloseWallpapers" xml:space="preserve">
     <value>إغلاق الخلفية</value>
   </data>
@@ -208,6 +231,9 @@ https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="TextConvertVideo" xml:space="preserve">
     <value>Convert to Video</value>
+  </data>
+  <data name="TextCustomise" xml:space="preserve">
+    <value>Customise</value>
   </data>
   <data name="TextCustomiseWallpaper" xml:space="preserve">
     <value>Customise Wallpaper</value>
@@ -236,15 +262,27 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextGIF" xml:space="preserve">
     <value>Animated GIF</value>
   </data>
+  <data name="TextGo" xml:space="preserve">
+    <value>GO</value>
+  </data>
+  <data name="TextHelpTranslate" xml:space="preserve">
+    <value>Help translate Lively.</value>
+  </data>
   <data name="TextInstall" xml:space="preserve">
     <value>تثبيت</value>
   </data>
+  <data name="TextKeyboard" xml:space="preserve">
+    <value>Keyboard</value>
+  </data>  
   <data name="TextmoreInfo" xml:space="preserve">
     <value>Information</value>
   </data>
   <data name="TextMoreWallpapers" xml:space="preserve">
     <value>المزيد من الخلفيات...</value>
   </data>
+  <data name="TextMouse" xml:space="preserve">
+    <value>Mouse</value>
+  </data>  
   <data name="TextMouseInteractOnDesktop" xml:space="preserve">
     <value>Mouse interaction when application focused</value>
   </data>
@@ -254,6 +292,12 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextNo" xml:space="preserve">
     <value>No</value>
   </data>
+  <data name="TextOff" xml:space="preserve">
+    <value>OFF</value>
+  </data>  
+  <data name="TextOn" xml:space="preserve">
+    <value>ON</value>
+  </data>  
   <data name="TextOnline" xml:space="preserve">
     <value>عبر الإنترنت</value>
   </data>
@@ -305,6 +349,9 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextStop" xml:space="preserve">
     <value>Stop</value>
   </data>
+  <data name="TextSupport" xml:space="preserve">
+    <value>Support</value>
+  </data>
   <data name="TextTags" xml:space="preserve">
     <value>Tags</value>
   </data>
@@ -347,6 +394,9 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextWallpaperLayoutDuplicate" xml:space="preserve">
     <value>Duplicate same wallpaper</value>
   </data>
+  <data name="TextWallpaperLayoutPerScreen" xml:space="preserve">
+    <value>Selected screen only</value>
+  </data>
   <data name="TextWallpaperLayoutSpan" xml:space="preserve">
     <value>إمتداد(تجريبي)</value>
   </data>
@@ -367,6 +417,12 @@ https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="TileVideoPlayer" xml:space="preserve">
     <value>مشغّل الفيديو:</value>
+  </data>
+  <data name="TipAddWallpaperFileBrowse" xml:space="preserve">
+    <value>Set all supported file types as wallpaper.</value>
+  </data>
+  <data name="TipAddWallpaperURL" xml:space="preserve">
+    <value>Set the web page of the URL you entered as wallpaper.</value>
   </data>
   <data name="TipAppFocus" xml:space="preserve">
     <value>Set what to do when any application is in focus.</value>
@@ -426,6 +482,9 @@ libVLC is recommended.</value>
   <data name="TipWallpaperInput" xml:space="preserve">
     <value>Select ways to interact with wallpaper.</value>
   </data>
+  <data name="TipWallpaperLayout" xml:space="preserve">
+    <value>How wallpaper is applied to connected display devices.</value>
+  </data>
   <data name="TipWallpaperPlayback" xml:space="preserve">
     <value>Pause wallpaper playback when desktop is not focused.</value>
   </data>
@@ -475,11 +534,20 @@ Edge is the built in webview of windows 10.</value>
   <data name="TitleBrowserDebuggingPort" xml:space="preserve">
     <value>Debugging Port</value>
   </data>
+  <data name="TitleCommunity" xml:space="preserve">
+    <value>Community</value>
+  </data>  
   <data name="TitleDeleteConfirmation" xml:space="preserve">
     <value>تأكيد الحذف</value>
   </data>
   <data name="TitleDisplayPauseRule" xml:space="preserve">
     <value>عرض قاعدة الإيقاف المؤقت:</value>
+  </data>
+  <data name="TitleDocumentation" xml:space="preserve">
+    <value>Documentation</value>
+  </data>  
+  <data name="TitleEnterUrl" xml:space="preserve">
+    <value>Enter URL</value>
   </data>
   <data name="TitleGeneral" xml:space="preserve">
     <value>عام:</value>
@@ -526,6 +594,9 @@ Edge is the built in webview of windows 10.</value>
   <data name="TitleScreenLayout" xml:space="preserve">
     <value>Screen Layout</value>
   </data>
+  <data name="TitleSelectFile" xml:space="preserve">
+    <value>Select File</value>
+  </data>
   <data name="TitleSettings" xml:space="preserve">
     <value>الإعدادات</value>
   </data>
@@ -553,6 +624,9 @@ Edge is the built in webview of windows 10.</value>
   <data name="TitleWallpaperDir" xml:space="preserve">
     <value>Wallpaper Directory</value>
   </data>
+  <data name="TitleWallpaperDirMoveExisting" xml:space="preserve">
+    <value>Move existing wallpapers to new folder</value>
+  </data>  
   <data name="TitleWallpaperInput" xml:space="preserve">
     <value>Wallpaper Input</value>
   </data>

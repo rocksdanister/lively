@@ -61,6 +61,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select a file or specify a website url to set as a wallpaper..
+        /// </summary>
+        public static string DescriptionAddWallpaper {
+            get {
+                return ResourceManager.GetString("DescriptionAddWallpaper", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wallpaper playback behaviour based on running application..
         /// </summary>
         public static string DescriptionAppRules {
@@ -117,6 +126,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please restart Lively for settings to take effect..
+        /// </summary>
+        public static string DescriptionPleaseRestartLively {
+            get {
+                return ResourceManager.GetString("DescriptionPleaseRestartLively", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Press to begin recording..
         /// </summary>
         public static string DescriptionRecordStart {
@@ -131,6 +149,15 @@ namespace livelywpf.Properties {
         public static string DescriptionRestoringWallpaper {
             get {
                 return ResourceManager.GetString("DescriptionRestoringWallpaper", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose Display.
+        /// </summary>
+        public static string DescriptionScreenLayout {
+            get {
+                return ResourceManager.GetString("DescriptionScreenLayout", resourceCulture);
             }
         }
         
@@ -199,6 +226,20 @@ namespace livelywpf.Properties {
         public static string LivelyExceptionHighContrastMode {
             get {
                 return ResourceManager.GetString("LivelyExceptionHighContrastMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Media playback failed :(
+        ///Try changing the videoplayer in lively settings.
+        ///
+        ///In order to better understand this error and fix the issue, share the log file with the developer.
+        ///Instructions for sharing log file:
+        ///https://github.com/rocksdanister/lively/wiki.
+        /// </summary>
+        public static string LivelyExceptionMediaPlayback {
+            get {
+                return ResourceManager.GetString("LivelyExceptionMediaPlayback", resourceCulture);
             }
         }
         
@@ -286,6 +327,24 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Browse.
+        /// </summary>
+        public static string TextBrowse {
+            get {
+                return ResourceManager.GetString("TextBrowse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        public static string TextClose {
+            get {
+                return ResourceManager.GetString("TextClose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Close Wallpapers.
         /// </summary>
         public static string TextCloseWallpapers {
@@ -309,6 +368,15 @@ namespace livelywpf.Properties {
         public static string TextConvertVideo {
             get {
                 return ResourceManager.GetString("TextConvertVideo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Customise.
+        /// </summary>
+        public static string TextCustomise {
+            get {
+                return ResourceManager.GetString("TextCustomise", resourceCulture);
             }
         }
         
@@ -394,11 +462,38 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to GO.
+        /// </summary>
+        public static string TextGo {
+            get {
+                return ResourceManager.GetString("TextGo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Help translate Lively..
+        /// </summary>
+        public static string TextHelpTranslate {
+            get {
+                return ResourceManager.GetString("TextHelpTranslate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Install.
         /// </summary>
         public static string TextInstall {
             get {
                 return ResourceManager.GetString("TextInstall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Keyboard.
+        /// </summary>
+        public static string TextKeyboard {
+            get {
+                return ResourceManager.GetString("TextKeyboard", resourceCulture);
             }
         }
         
@@ -417,6 +512,15 @@ namespace livelywpf.Properties {
         public static string TextMoreWallpapers {
             get {
                 return ResourceManager.GetString("TextMoreWallpapers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mouse.
+        /// </summary>
+        public static string TextMouse {
+            get {
+                return ResourceManager.GetString("TextMouse", resourceCulture);
             }
         }
         
@@ -444,6 +548,24 @@ namespace livelywpf.Properties {
         public static string TextNo {
             get {
                 return ResourceManager.GetString("TextNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OFF.
+        /// </summary>
+        public static string TextOff {
+            get {
+                return ResourceManager.GetString("TextOff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ON.
+        /// </summary>
+        public static string TextOn {
+            get {
+                return ResourceManager.GetString("TextOn", resourceCulture);
             }
         }
         
@@ -565,7 +687,7 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Show on Disk.
+        ///   Looks up a localized string similar to Open File Location.
         /// </summary>
         public static string TextShowOnDisk {
             get {
@@ -597,6 +719,15 @@ namespace livelywpf.Properties {
         public static string TextStop {
             get {
                 return ResourceManager.GetString("TextStop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Support.
+        /// </summary>
+        public static string TextSupport {
+            get {
+                return ResourceManager.GetString("TextSupport", resourceCulture);
             }
         }
         
@@ -727,6 +858,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Selected screen only.
+        /// </summary>
+        public static string TextWallpaperLayoutPerScreen {
+            get {
+                return ResourceManager.GetString("TextWallpaperLayoutPerScreen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Span across screens.
         /// </summary>
         public static string TextWallpaperLayoutSpan {
@@ -786,6 +926,24 @@ namespace livelywpf.Properties {
         public static string TileVideoPlayer {
             get {
                 return ResourceManager.GetString("TileVideoPlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set all supported file types as wallpaper..
+        /// </summary>
+        public static string TipAddWallpaperFileBrowse {
+            get {
+                return ResourceManager.GetString("TipAddWallpaperFileBrowse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set the web page of the URL you entered as wallpaper..
+        /// </summary>
+        public static string TipAddWallpaperURL {
+            get {
+                return ResourceManager.GetString("TipAddWallpaperURL", resourceCulture);
             }
         }
         
@@ -956,6 +1114,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to How wallpaper is applied to connected display devices..
+        /// </summary>
+        public static string TipWallpaperLayout {
+            get {
+                return ResourceManager.GetString("TipWallpaperLayout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pause wallpaper playback when desktop is not focused..
         /// </summary>
         public static string TipWallpaperPlayback {
@@ -1101,6 +1268,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Community.
+        /// </summary>
+        public static string TitleCommunity {
+            get {
+                return ResourceManager.GetString("TitleCommunity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm Deletion.
         /// </summary>
         public static string TitleDeleteConfirmation {
@@ -1115,6 +1291,24 @@ namespace livelywpf.Properties {
         public static string TitleDisplayPauseRule {
             get {
                 return ResourceManager.GetString("TitleDisplayPauseRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Documentation.
+        /// </summary>
+        public static string TitleDocumentation {
+            get {
+                return ResourceManager.GetString("TitleDocumentation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter URL.
+        /// </summary>
+        public static string TitleEnterUrl {
+            get {
+                return ResourceManager.GetString("TitleEnterUrl", resourceCulture);
             }
         }
         
@@ -1245,11 +1439,20 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Screen Layout.
+        ///   Looks up a localized string similar to Control Panel.
         /// </summary>
         public static string TitleScreenLayout {
             get {
                 return ResourceManager.GetString("TitleScreenLayout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select File.
+        /// </summary>
+        public static string TitleSelectFile {
+            get {
+                return ResourceManager.GetString("TitleSelectFile", resourceCulture);
             }
         }
         
@@ -1335,6 +1538,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Move existing wallpapers to new folder.
+        /// </summary>
+        public static string TitleWallpaperDirMoveExisting {
+            get {
+                return ResourceManager.GetString("TitleWallpaperDirMoveExisting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wallpaper Input.
         /// </summary>
         public static string TitleWallpaperInput {
@@ -1344,7 +1556,7 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Wallpaper Layout.
+        ///   Looks up a localized string similar to Placement Method.
         /// </summary>
         public static string TitleWallpaperLayout {
             get {

@@ -36,6 +36,7 @@ namespace livelysettings
         public string TipUIMode { get; set; }
         public string TitleWallpaperDir { get; set; }
         public string TipWallpaperDir { get; set; }
+        public string TitleWallpaperDirMoveExisting { get; set; }
         public string TitleTheme { get; set; }
         public string TipTheme { get; set; }
         public string TextTileSizeSmall { get; set; }
@@ -87,6 +88,9 @@ namespace livelysettings
         public string TipWallpaperStreamQuality { get; set; }
         public string TitleDetectWallpaperStream { get; set; }
         public string TipDetectWallpaperStream { get; set; }
+        public string TextWallpaperInputOff { get; set; }
+        public string TextWallpaperInputMouse { get; set; }
+        public string TextWallpaperInputKeyboard { get; set; }
 
         //Misc
         public string TitleSysTrayIconHide { get; set; }

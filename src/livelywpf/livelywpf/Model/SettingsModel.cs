@@ -69,6 +69,7 @@ namespace livelywpf
         public livelywpf.Core.LivelyScreen SelectedDisplay { get; set; }
         public LivelyGUIState LivelyGUIRendering { get; set; }
         public string WallpaperDir { get; set; }
+        public bool WallpaperDirMoveExistingWallpaperNewDir { get; set; }
         public bool SysTrayIcon { get; set; }
         public bool AutoDetectOnlineStreams { get; set; }
         /// <summary>
@@ -135,6 +136,7 @@ namespace livelywpf
             SelectedDisplay = ScreenHelper.GetPrimaryScreen();
             LivelyGUIRendering = LivelyGUIState.lite;
             WallpaperDir = Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Lively Wallpaper");
+            WallpaperDirMoveExistingWallpaperNewDir = true;
             SysTrayIcon = true;
             WebDebugPort = string.Empty;
             AutoDetectOnlineStreams = true;

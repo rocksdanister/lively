@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="DescriptionAddWallpaper" xml:space="preserve">
+    <value>Select a file or specify a website url to set as a wallpaper.</value>
+  </data>
   <data name="DescriptionAppRules" xml:space="preserve">
     <value>Wallpaper playback behaviour based on running application.</value>
   </data>
@@ -137,11 +140,17 @@ Only continue if this application comes from a trusted source.</value>
   <data name="DescriptionMinimizedTray" xml:space="preserve">
     <value>Lively is minimized to systemtray, right click lively icon to continue.</value>
   </data>
+  <data name="DescriptionPleaseRestartLively" xml:space="preserve">
+    <value>Please restart Lively for settings to take effect.</value>
+  </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
     <value>Press to begin recording.</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
     <value>Currently restoring previous wallpaper(s), please wait...</value>
+  </data>
+  <data name="DescriptionScreenLayout" xml:space="preserve">
+    <value>Choose Display</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
     <value>A new version of software is available!</value>
@@ -168,6 +177,14 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
     <value>Lively cannot work properly with Windows High Contrast mode enabled!
 Disable High Contrast mode and try again.</value>
+  </data>
+  <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
+    <value>Media playback failed :(
+Try changing the videoplayer in lively settings.
+
+In order to better understand this error and fix the issue, share the log file with the developer.
+Instructions for sharing log file:
+https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
     <value>Not Lively wallpaper file.</value>
@@ -204,6 +221,12 @@ If still not working, close &amp;amp; start Lively again/ restart windows.
   <data name="TextBack" xml:space="preserve">
     <value>Back</value>
   </data>
+  <data name="TextBrowse" xml:space="preserve">
+    <value>Browse</value>
+  </data>
+  <data name="TextClose" xml:space="preserve">
+    <value>Close</value>
+  </data>
   <data name="TextCloseWallpapers" xml:space="preserve">
     <value>Close Wallpapers</value>
   </data>
@@ -212,6 +235,9 @@ If still not working, close &amp;amp; start Lively again/ restart windows.
   </data>
   <data name="TextConvertVideo" xml:space="preserve">
     <value>Convert to Video</value>
+  </data>
+  <data name="TextCustomise" xml:space="preserve">
+    <value>Customise</value>
   </data>
   <data name="TextCustomiseWallpaper" xml:space="preserve">
     <value>Customise Wallpaper</value>
@@ -240,14 +266,26 @@ If still not working, close &amp;amp; start Lively again/ restart windows.
   <data name="TextGIF" xml:space="preserve">
     <value>Animated GIF</value>
   </data>
+  <data name="TextGo" xml:space="preserve">
+    <value>GO</value>
+  </data>
+  <data name="TextHelpTranslate" xml:space="preserve">
+    <value>Help translate Lively.</value>
+  </data>
   <data name="TextInstall" xml:space="preserve">
     <value>Install</value>
+  </data>
+  <data name="TextKeyboard" xml:space="preserve">
+    <value>Keyboard</value>
   </data>
   <data name="TextmoreInfo" xml:space="preserve">
     <value>Information</value>
   </data>
   <data name="TextMoreWallpapers" xml:space="preserve">
     <value>More Wallpapers</value>
+  </data>
+  <data name="TextMouse" xml:space="preserve">
+    <value>Mouse</value>
   </data>
   <data name="TextMouseInteractOnDesktop" xml:space="preserve">
     <value>Mouse interaction when application focused</value>
@@ -257,6 +295,12 @@ If still not working, close &amp;amp; start Lively again/ restart windows.
   </data>
   <data name="TextNo" xml:space="preserve">
     <value>No</value>
+  </data>
+  <data name="TextOff" xml:space="preserve">
+    <value>OFF</value>
+  </data>
+  <data name="TextOn" xml:space="preserve">
+    <value>ON</value>
   </data>
   <data name="TextOnline" xml:space="preserve">
     <value>Online</value>
@@ -298,7 +342,7 @@ If still not working, close &amp;amp; start Lively again/ restart windows.
     <value>Set as Wallpaper</value>
   </data>
   <data name="TextShowOnDisk" xml:space="preserve">
-    <value>Show on Disk</value>
+    <value>Open File Location</value>
   </data>
   <data name="TextSource" xml:space="preserve">
     <value>Source</value>
@@ -308,6 +352,9 @@ If still not working, close &amp;amp; start Lively again/ restart windows.
   </data>
   <data name="TextStop" xml:space="preserve">
     <value>Stop</value>
+  </data>
+  <data name="TextSupport" xml:space="preserve">
+    <value>Support</value>
   </data>
   <data name="TextTags" xml:space="preserve">
     <value>Tags</value>
@@ -351,6 +398,9 @@ If still not working, close &amp;amp; start Lively again/ restart windows.
   <data name="TextWallpaperLayoutDuplicate" xml:space="preserve">
     <value>Duplicate same wallpaper</value>
   </data>
+  <data name="TextWallpaperLayoutPerScreen" xml:space="preserve">
+    <value>Selected screen only</value>
+  </data>
   <data name="TextWallpaperLayoutSpan" xml:space="preserve">
     <value>Span across screens</value>
   </data>
@@ -371,6 +421,12 @@ If still not working, close &amp;amp; start Lively again/ restart windows.
   </data>
   <data name="TileVideoPlayer" xml:space="preserve">
     <value>Video Player</value>
+  </data>
+  <data name="TipAddWallpaperFileBrowse" xml:space="preserve">
+    <value>Set all supported file types as wallpaper.</value>
+  </data>
+  <data name="TipAddWallpaperURL" xml:space="preserve">
+    <value>Set the web page of the URL you entered as wallpaper.</value>
   </data>
   <data name="TipAppFocus" xml:space="preserve">
     <value>Set what to do when any application is in focus.</value>
@@ -430,6 +486,9 @@ libVLC is recommended.</value>
   <data name="TipWallpaperInput" xml:space="preserve">
     <value>Select ways to interact with wallpaper.</value>
   </data>
+  <data name="TipWallpaperLayout" xml:space="preserve">
+    <value>How wallpaper is applied to connected display devices.</value>
+  </data>
   <data name="TipWallpaperPlayback" xml:space="preserve">
     <value>Pause wallpaper playback when desktop is not focused.</value>
   </data>
@@ -479,11 +538,20 @@ Edge is the built in webview of windows 10.</value>
   <data name="TitleBrowserDebuggingPort" xml:space="preserve">
     <value>Debugging Port</value>
   </data>
+  <data name="TitleCommunity" xml:space="preserve">
+    <value>Community</value>
+  </data>
   <data name="TitleDeleteConfirmation" xml:space="preserve">
     <value>Confirm Deletion</value>
   </data>
   <data name="TitleDisplayPauseRule" xml:space="preserve">
     <value>Display Pause Rule</value>
+  </data>
+  <data name="TitleDocumentation" xml:space="preserve">
+    <value>Documentation</value>
+  </data>
+  <data name="TitleEnterUrl" xml:space="preserve">
+    <value>Enter URL</value>
   </data>
   <data name="TitleGeneral" xml:space="preserve">
     <value>General</value>
@@ -528,7 +596,10 @@ Edge is the built in webview of windows 10.</value>
     <value>Scaling/Fit</value>
   </data>
   <data name="TitleScreenLayout" xml:space="preserve">
-    <value>Screen Layout</value>
+    <value>Control Panel</value>
+  </data>
+  <data name="TitleSelectFile" xml:space="preserve">
+    <value>Select File</value>
   </data>
   <data name="TitleSettings" xml:space="preserve">
     <value>Settings</value>
@@ -557,11 +628,14 @@ Edge is the built in webview of windows 10.</value>
   <data name="TitleWallpaperDir" xml:space="preserve">
     <value>Wallpaper Directory</value>
   </data>
+  <data name="TitleWallpaperDirMoveExisting" xml:space="preserve">
+    <value>Move existing wallpapers to new folder</value>
+  </data>
   <data name="TitleWallpaperInput" xml:space="preserve">
     <value>Wallpaper Input</value>
   </data>
   <data name="TitleWallpaperLayout" xml:space="preserve">
-    <value>Wallpaper Layout</value>
+    <value>Placement Method</value>
   </data>
   <data name="TitleWallpaperPlayback" xml:space="preserve">
     <value>Wallpaper Playback</value>

@@ -9,10 +9,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:livelywpf.Views"
         xmlns:xamlHost="clr-namespace:Microsoft.Toolkit.Wpf.UI.XamlHost;assembly=Microsoft.Toolkit.Wpf.UI.XamlHost"
-        xmlns:p = "clr-namespace:livelywpf.Properties"      
+        xmlns:p = "clr-namespace:livelywpf.Properties"       
         mc:Ignorable="d" 
-        ShowInTaskbar="False"
-        ResizeMode="NoResize"
+        WindowStyle="ToolWindow"
         d:DesignHeight="600" d:DesignWidth="600"
         Title="{x:Static p:Resources.TitleScreenLayout}" Height="600" Width="600"
         BorderBrush="{DynamicResource SystemControlHighlightAltListAccentHighBrush}"
@@ -22,21 +21,25 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="200" />
         </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="{x:Static p:Resources.DescriptionScreenLayout}" Margin="15, 5, 0, 0"/>
+        <xamlHost:WindowsXamlHost Grid.Row="0" x:Name="ScreenLayoutControl" InitialTypeName="livelyscreenlayout.ScreenLayoutView" 
+                                  ChildChanged="ScreenLayoutControl_ChildChanged" Margin="15, 30 ,15, 10"/>
         
-        <xamlHost:WindowsXamlHost Grid.Row="0" x:Name="ScreenLayoutControl" InitialTypeName="livelyscreenlayout.ScreenLayoutView" ChildChanged="ScreenLayoutControl_ChildChanged" Margin="15, 15 ,15, 10"/>
         <StackPanel Grid.Row="1" HorizontalAlignment="Left" Margin="15, 5, 5, 5">
-            <TextBlock Text="Wallpaper Arrangement" FontSize="15"/>
-            <ui:RadioButtons VerticalAlignment="Top" MinWidth="155" SelectedIndex="{Binding SelectedWallpaperLayout, Mode=TwoWay}">
-                <RadioButton Content="Per Screen"/>
-                <RadioButton Content="Span"/>
-                <RadioButton Content="Duplicate" IsEnabled="False"/>
+            <TextBlock Text="{x:Static p:Resources.TitleWallpaperLayout}" FontSize="15"/>
+            <ui:RadioButtons VerticalAlignment="Top" SelectedIndex="{Binding SelectedWallpaperLayout, Mode=TwoWay}">
+                <RadioButton Content="{x:Static p:Resources.TextWallpaperLayoutPerScreen}"/>
+                <RadioButton Content="{x:Static p:Resources.TextWallpaperLayoutSpan}"/>
+                <RadioButton Content="{x:Static p:Resources.TextWallpaperLayoutDuplicate}" IsEnabled="False"/>
             </ui:RadioButtons>
-            <TextBlock Margin="0,10,0,0" FontSize="12" Foreground="{DynamicResource SystemControlPageBackgroundBaseLowBrush}" TextWrapping="Wrap" Text="How wallpaper is arranged in display."/>
+            <TextBlock Margin="0,10,0,0" FontSize="12" Foreground="{DynamicResource SystemControlPageBackgroundBaseLowBrush}" TextWrapping="Wrap" 
+                       Text="{x:Static p:Resources.TipWallpaperLayout}"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="15, 0, 15, 40">
-            <Button Content="Customise" MinWidth="150" Margin="0, 5, 0, 0" Command="{Binding CustomiseWallpaperCommand}"/>
-            <Button Content="Close" MinWidth="150" Margin="0, 5, 0, 0" Command="{Binding CloseWallpaperCommand}"/>
+            <Button Content="{x:Static p:Resources.TextCustomise}" MinWidth="135" Margin="0, 5, 0, 0" Command="{Binding CustomiseWallpaperCommand}"/>
+            <Button Content="{x:Static p:Resources.TextClose}" MinWidth="135" Margin="0, 5, 0, 0" Command="{Binding CloseWallpaperCommand}"/>
         </StackPanel>
     </Grid>
 </Window>

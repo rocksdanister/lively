@@ -13,7 +13,7 @@
     <Grid>
         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center">
             <ui:ToggleSwitch IsOn="{Binding IsStartup, Mode=TwoWay}" Header="{x:Static p:Resources.TitleWindowsStartup}"/>
-            <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Text="{x:Static p:Resources.TipWindowsStartup}"/>
+            <TextBlock Margin="0,10,0,0" FontSize="12" Foreground="Gray" TextWrapping="Wrap" Text="{x:Static p:Resources.TipWindowsStartup}"/>
         </StackPanel>
     </Grid>
 </Page>

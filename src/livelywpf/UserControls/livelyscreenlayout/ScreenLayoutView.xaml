@@ -17,7 +17,7 @@
                     <Grid Width="192" Height="108" Background="{ThemeResource SystemBaseLowColor}">
                         <Image Source="{Binding ScreenImagePath}" Stretch="UniformToFill" Opacity="0.50"/>
                         <Viewbox Width="192" Height="108">
-                            <TextBlock Text="{Binding ScreenTitle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding ScreenTitle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Viewbox>
                     </Grid>
                 </DataTemplate>

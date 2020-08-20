@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="DescriptionAddWallpaper" xml:space="preserve">
+    <value>Select a file or specify a website url to set as a wallpaper.</value>
+  </data>
   <data name="DescriptionAppRules" xml:space="preserve">
     <value>Definir o comportamento de reprodução do(s) plano(s) de fundo baseado na aplicação ativa</value>
   </data>
@@ -202,6 +205,9 @@ Se ainda não funcionar, feche e inicie o Lively novamente ou reinicie o Windows
   <data name="TextBack" xml:space="preserve">
     <value>Voltar</value>
   </data>
+  <data name="TextBrowse" xml:space="preserve">
+    <value>Browse</value>
+  </data>
   <data name="TextCloseWallpapers" xml:space="preserve">
     <value>Fechar plano de fundo</value>
   </data>
@@ -237,6 +243,12 @@ Se ainda não funcionar, feche e inicie o Lively novamente ou reinicie o Windows
   </data>
   <data name="TextGIF" xml:space="preserve">
     <value>GIF animado</value>
+  </data>
+  <data name="TextGo" xml:space="preserve">
+    <value>GO</value>
+  </data>
+  <data name="TextHelpTranslate" xml:space="preserve">
+    <value>Help translate Lively.</value>
   </data>
   <data name="TextInstall" xml:space="preserve">
     <value>Instalar</value>
@@ -370,6 +382,12 @@ Se ainda não funcionar, feche e inicie o Lively novamente ou reinicie o Windows
   <data name="TileVideoPlayer" xml:space="preserve">
     <value>Reprodutor de Vídeo</value>
   </data>
+  <data name="TipAddWallpaperFileBrowse" xml:space="preserve">
+    <value>Set all supported file types as wallpaper.</value>
+  </data>
+  <data name="TipAddWallpaperURL" xml:space="preserve">
+    <value>Set the web page of the URL you entered as wallpaper.</value>
+  </data>
   <data name="TipAppFocus" xml:space="preserve">
     <value>Defina o que fazer quando alguma aplicação está em foco.</value>
   </data>
@@ -483,6 +501,9 @@ O Edge é a webview embutida do Windows 10.</value>
   <data name="TitleDisplayPauseRule" xml:space="preserve">
     <value>Regra de exibição em pausa</value>
   </data>
+  <data name="TitleEnterUrl" xml:space="preserve">
+    <value>Enter URL</value>
+  </data>
   <data name="TitleGeneral" xml:space="preserve">
     <value>Geral</value>
   </data>
@@ -527,6 +548,9 @@ O Edge é a webview embutida do Windows 10.</value>
   </data>
   <data name="TitleScreenLayout" xml:space="preserve">
     <value>Layout da tela</value>
+  </data>
+  <data name="TitleSelectFile" xml:space="preserve">
+    <value>Select File</value>
   </data>
   <data name="TitleSettings" xml:space="preserve">
     <value>Configurações</value>
@@ -582,4 +606,54 @@ O Edge é a webview embutida do Windows 10.</value>
   <data name="TitleWindowsStartup" xml:space="preserve">
     <value>Iniciar com o Windows</value>
   </data>
+  <data name="DescriptionPleaseRestartLively" xml:space="preserve">
+    <value>Please restart Lively for settings to take effect.</value>
+  </data>
+  <data name="TextSupport" xml:space="preserve">
+    <value>Support</value>
+  </data>
+  <data name="TextClose" xml:space="preserve">
+    <value>Close</value>
+  </data> 
+  <data name="TextCustomise" xml:space="preserve">
+    <value>Customise</value>
+  </data>     
+  <data name="DescriptionScreenLayout" xml:space="preserve">
+    <value>Choose Display</value>
+  </data>    
+  <data name="TextWallpaperLayoutPerScreen" xml:space="preserve">
+    <value>Selected screen only</value>
+  </data>  
+  <data name="TipWallpaperLayout" xml:space="preserve">
+    <value>How wallpaper is applied to connected display devices.</value>
+  </data> 
+  <data name="TitleWallpaperDirMoveExisting" xml:space="preserve">
+    <value>Move existing wallpapers to new folder</value>
+  </data>   
+  <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
+    <value>Media playback failed :(
+Try changing the videoplayer in lively settings.
+
+In order to better understand this error and fix the issue, share the log file with the developer.
+Instructions for sharing log file:
+https://github.com/rocksdanister/lively/wiki</value>
+  </data> 
+  <data name="TextOff" xml:space="preserve">
+    <value>OFF</value>
+  </data>
+  <data name="TextOn" xml:space="preserve">
+    <value>ON</value>
+  </data>   
+  <data name="TextMouse" xml:space="preserve">
+    <value>Mouse</value>
+  </data>  
+  <data name="TextKeyboard" xml:space="preserve">
+    <value>Keyboard</value>
+  </data>  
+  <data name="TitleDocumentation" xml:space="preserve">
+    <value>Documentation</value>
+  </data> 
+  <data name="TitleCommunity" xml:space="preserve">
+    <value>Community</value>
+  </data>    
 </root>

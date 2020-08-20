@@ -27,6 +27,7 @@ namespace livelywpf.Core
         void Play();
         void Stop();
         void Close();
+        void Terminate();
         LivelyScreen GetScreen();
         void SetScreen(LivelyScreen display);
         void SendMessage(string msg);
@@ -144,6 +145,11 @@ namespace livelywpf.Core
         {
             Player.StopPlayer();
         }
+
+        public void Terminate()
+        {
+            Close();
+        }
     }
 
     public class VideoPlayerMPV : IWallpaper
@@ -237,6 +243,11 @@ namespace livelywpf.Core
         {
             this.Display = display;
         }
+
+        public void Terminate()
+        {
+            Close();
+        }
     }
 
     public class VideoPlayerWPF : IWallpaper
@@ -329,6 +340,11 @@ namespace livelywpf.Core
         public void SetScreen(LivelyScreen display)
         {
             this.Display = display;
+        }
+
+        public void Terminate()
+        {
+            Close();
         }
     }
 
@@ -433,6 +449,11 @@ namespace livelywpf.Core
         public void Stop()
         {
             Player.Stop();
+        }
+
+        public void Terminate()
+        {
+            Close();
         }
     }
 
@@ -558,7 +579,6 @@ namespace livelywpf.Core
                 Proc.OutputDataReceived -= Proc_OutputDataReceived;
             }
             catch {
-                Debug.WriteLine("CEF close fail");
                 try
                 {
                     //force terminate.
@@ -709,6 +729,17 @@ namespace livelywpf.Core
         public void SetScreen(LivelyScreen display)
         {
             this.Display = display;
+        }
+
+        public void Terminate()
+        {
+            try
+            {
+                Proc.Kill();
+                Proc.Close();
+            }
+            catch { }
+            SetupDesktop.RefreshDesktop();
         }
     }
 
@@ -1017,6 +1048,17 @@ namespace livelywpf.Core
         public void SetScreen(LivelyScreen display)
         {
             this.Display = display;
+        }
+
+        public void Terminate()
+        {
+            try
+            {
+                Proc.Kill();
+                Proc.Close();
+            }
+            catch { }
+            SetupDesktop.RefreshDesktop();
         }
     }
 

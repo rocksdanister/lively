@@ -52,6 +52,9 @@ namespace livelywpf
 
             _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextCustomiseWallpaper, null).Click += Systray_Click;
 
+            _notifyIcon.ContextMenuStrip.Items.Add(new Helpers.CustomContextMenu.StripSeparatorCustom().stripSeparator);
+            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextSupport, Properties.Icons.icons8_heart_48).Click += (s, e) => OpenExternal("https://ko-fi.com/rocksdanister");
+
             //_notifyIcon.ContextMenuStrip.Items.Add("-");
             _notifyIcon.ContextMenuStrip.Items.Add(new Helpers.CustomContextMenu.StripSeparatorCustom().stripSeparator);
             _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextExit, Properties.Icons.icons8_delete_52).Click += (s, e) => Program.ExitApplication();
@@ -100,6 +103,20 @@ namespace livelywpf
             {
                 _notifyIcon.Visible = visibility;
             }
+        }
+
+        private void OpenExternal(string url)
+        {
+            try
+            {
+                var ps = new ProcessStartInfo(url)
+                {
+                    UseShellExecute = true,
+                    Verb = "open"
+                };
+                Process.Start(ps);
+            }
+            catch { }
         }
 
         public void Dispose()

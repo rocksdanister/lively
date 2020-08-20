@@ -1,0 +1,34 @@
+﻿<Page x:Class="livelywpf.Views.AddWallpaperView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:livelywpf.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      xmlns:p = "clr-namespace:livelywpf.Properties"   
+      Title="AddWallpaperView">
+
+    <Grid>
+        <Border>
+            <StackPanel VerticalAlignment="Center" Margin="10, 0, 0, 0" HorizontalAlignment="Left">
+                <Image />
+                <TextBlock Margin="0, 10, 0, 0" HorizontalAlignment="Center" Text="{x:Static p:Resources.DescriptionDragDropFIle}"/>
+
+                <TextBlock Margin="0, 50, 0, 0" FontSize="17" Text="{x:Static p:Resources.DescriptionAddWallpaper}"/>
+                <TextBlock Margin="0, 10, 0, 0" Text="{x:Static p:Resources.TitleSelectFile}"/>
+                <Button x:Name="FileBtn" Click="FileBtn_Click" ClickMode="Release" Margin="0, 5, 0, 0" MinWidth="150">Browse</Button>
+                <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="Gray" 
+                           Text="{x:Static p:Resources.TipAddWallpaperFileBrowse}"/>
+
+                <TextBlock Margin="0, 10, 0, 0" Text="{x:Static p:Resources.TitleEnterUrl}"/>
+                <StackPanel Orientation="Horizontal" Margin="0, 5, 0, 0">
+                    <TextBox x:Name="UrlText" TextChanged="UrlText_TextChanged" MinWidth="500"/>
+                    <Button x:Name="UrlBtn" Click="UrlBtn_Click" Margin="10, 0, 0, 0" Content="{x:Static p:Resources.TextGo}"/> 
+                </StackPanel>
+                <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="Gray" 
+                           Text="{x:Static p:Resources.TipAddWallpaperURL}"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

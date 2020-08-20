@@ -29,6 +29,8 @@ namespace livelywpf
             InitializeComponent();
         }
 
+        #region navigation
+
         private void MyNavView_ChildChanged(object sender, EventArgs e)
         {
             WindowsXamlHost windowsXamlHost = (WindowsXamlHost)sender;
@@ -43,6 +45,7 @@ namespace livelywpf
                 navView.MenuItems.Add(CreateMenu(Properties.Resources.TitleLibrary, "library", Symbol.Library));
                 navView.MenuItems.Add(CreateMenu(Properties.Resources.TitleAddWallpaper, "add", Symbol.Add));
                 //navView.MenuItems.Add(CreateMenu("Playlist", "playlist", Symbol.SlideShow));
+                navView.MenuItems.Add(CreateMenu(Properties.Resources.TitleHelp, "help", Symbol.Help));
                 navView.MenuItems.Add(CreateMenu(Properties.Resources.TitleAbout, "about", Symbol.Comment));
                 navView.ItemInvoked += NavView_ItemInvoked;
                 navView.SelectedItem = navView.MenuItems.ElementAt(0);
@@ -63,21 +66,39 @@ namespace livelywpf
             else if (args.InvokedItemContainer != null)
             {
                 var navItemTag = args.InvokedItemContainer.Tag.ToString();
-                switch (navItemTag)
-                {
-                    case "library":
-                        ContentFrame.Navigate(typeof(livelywpf.Views.LibraryView), new Uri("Views/LibraryView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
-                        break;
-                    case "add":
-                        //ContentFrame.Navigate(typeof(livelywpf.Views.LibraryView), new Uri("Views/LibraryView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
-                        break;
-                    case "about":
-                        ContentFrame.Navigate(typeof(livelywpf.Views.AboutView), new Uri("Views/AboutView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
-                        break;
-                    default:
-                        //ContentFrame.Navigate(typeof(livelywpf.Views.LibraryView), new Uri("Views/LibraryView.xaml", UriKind.Relative), new DrillInNavigationTransitionInfo()); //new EntranceNavigationTransitionInfo()
-                        break;
-                }
+                NavigatePage(navItemTag);
+            }
+        }
+
+        public void NavViewNavigate(string tag)
+        {
+            if (navView != null)
+            {
+                navView.SelectedItem = navView.MenuItems.First(x => ((NavigationViewItem)x).Tag.ToString() == tag);
+                NavigatePage(tag);
+            }
+        }
+
+        private void NavigatePage(string tag)
+        {
+            switch (tag)
+            {
+                case "library":
+                    ContentFrame.Navigate(typeof(livelywpf.Views.LibraryView), new Uri("Views/LibraryView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
+                    break;
+                case "add":
+                    ContentFrame.Navigate(typeof(livelywpf.Views.AddWallpaperView), new Uri("Views/AddWallpaperView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
+                    break;
+                case "about":
+                    ContentFrame.Navigate(typeof(livelywpf.Views.AboutView), new Uri("Views/AboutView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
+                    break;
+                case "help":
+                    ContentFrame.Navigate(typeof(livelywpf.Views.HelpView), new Uri("Views/HelpView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
+                    break;
+                default:
+                    //new DrillInNavigationTransitionInfo()
+                    ContentFrame.Navigate(typeof(livelywpf.Views.LibraryView), new Uri("Views/LibraryView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo()); 
+                    break;
             }
         }
 
@@ -92,6 +113,10 @@ namespace livelywpf
             };
             return item;
         }
+
+        #endregion //navigation
+
+        #region window mgmnt
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
@@ -119,6 +144,8 @@ namespace livelywpf
                 }
             }
         }
+
+        #endregion //window mdmnt
 
         #region wallpaper statusbar
 
@@ -191,7 +218,7 @@ namespace livelywpf
 
         #endregion //wallpaper statusbar
 
-        #region single instance
+        #region window msg
 
         protected override void OnSourceInitialized(EventArgs e)
         {
@@ -209,6 +236,6 @@ namespace livelywpf
             return IntPtr.Zero;
         }
 
-        #endregion //single instance
+        #endregion //window msg
     }
 }

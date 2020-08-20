@@ -61,7 +61,7 @@
     </UserControl.Resources>
 
     <Grid>
-        <GridView HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="GridControl" ItemsSource= "{Binding LibraryItems}" ItemTemplate="{StaticResource Normal}" 
+        <GridView HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="GridControl" ItemsSource= "{Binding LibraryItems}" ItemTemplate="{StaticResource Normal}" 
                   SelectedItem="{Binding SelectedItem, Mode=TwoWay}" RightTapped="GridControl_RightTapped">
             <MenuFlyout x:Name="contextMenu">
                 <MenuFlyout.Items>

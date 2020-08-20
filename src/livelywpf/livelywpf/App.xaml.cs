@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -22,16 +23,32 @@ namespace livelywpf
             SetupUnhandledExceptionLogging();
             NLogger.LogHardwareInfo();
 
+            try
+            {
+                //create directories if not exist, eg: C:\Users\<User>\AppData\Roaming
+                Directory.CreateDirectory(Program.AppDataDir);
+                Directory.CreateDirectory(Path.Combine(Program.AppDataDir, "logs"));
+                Directory.CreateDirectory(Path.Combine(Program.AppDataDir, "temp"));
+                Directory.CreateDirectory(Path.Combine(Program.AppDataDir, "wallpapers"));
+                Directory.CreateDirectory(Path.Combine(Program.AppDataDir, "SaveData", "wptmp"));
+                Directory.CreateDirectory(Path.Combine(Program.AppDataDir, "SaveData", "wpdata"));
+            }
+            catch (Exception ex)
+            {
+                //not logging here, something must be seriously wrong.. just display & terminate.
+                MessageBox.Show(ex.Message, "Error: Failed to create data folder", MessageBoxButton.OK, MessageBoxImage.Error);
+                Program.ExitApplication();
+            }
+
             //view models
             Program.SettingsVM = new SettingsViewModel();
             Program.WallpaperDir = Program.SettingsVM.Settings.WallpaperDir;
             Program.AppRulesVM = new ApplicationRulesViewModel();
             Program.LibraryVM = new LibraryViewModel();
 
-            //localization
             try
             {
-                //System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("hu");
+                //localization.
                 System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(Program.SettingsVM.Settings.Language);
             }
             catch (CultureNotFoundException)
@@ -39,12 +56,22 @@ namespace livelywpf
                 System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en");
             }
 
+            if (Program.SettingsVM.Settings.IsFirstRun)
+            {
+                //ExtractWallpaperBundle();
+            }
+
             AppWindow = new MainWindow();
-            //uwp root app needs this it seems.. is it possible to skip?
+            //uwp root app needs this.. is it possible to skip?
             AppWindow.Show();
             AppWindow.Hide();
-
             base.OnStartup(e);
+        }
+
+        private void ExtractWallpaperBundle()
+        {
+            //ZipExtract.ZipExtractFile( , , false);
+            throw new NotImplementedException();
         }
 
         private void SetupUnhandledExceptionLogging()

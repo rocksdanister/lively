@@ -79,6 +79,7 @@ namespace livelywpf
             WebDebuggingPort = Settings.WebDebugPort;
             DetectStreamWallpaper = Settings.AutoDetectOnlineStreams;
             WallpaperDirectory = Settings.WallpaperDir;
+            MoveExistingWallpaperNewDir = Settings.WallpaperDirMoveExistingWallpaperNewDir;
         }
 
         private SettingsModel _settings;
@@ -181,8 +182,8 @@ namespace livelywpf
                     UpdateConfigFile();
                     //Program.RestartApplication();
 
-                    //todo use service to display nice lookin dialogue.
-                    System.Windows.MessageBox.Show("still in development..");
+                    //todo: temporary only, change it to better.
+                    System.Windows.MessageBox.Show(Properties.Resources.DescriptionPleaseRestartLively, Properties.Resources.TitleAppName);
                 }    
             }
         }
@@ -235,7 +236,7 @@ namespace livelywpf
             set
             {
                 _wallpaperDirectory = value;
-
+                OnPropertyChanged("WallpaperDirectory");
             }
         }
 
@@ -255,7 +256,7 @@ namespace livelywpf
             }
         }
 
-        public bool _wallpapeDirectoryChanging;
+        private bool _wallpapeDirectoryChanging;
         public bool WallpapeDirectoryChanging
         {
             get { return _wallpapeDirectoryChanging; }
@@ -263,6 +264,23 @@ namespace livelywpf
             {
                 _wallpapeDirectoryChanging = value;
                 OnPropertyChanged("WallpapeDirectoryChanging");
+            }
+        }
+
+        private bool _moveExistingWallpaperNewDir;
+        public bool MoveExistingWallpaperNewDir
+        {
+            get { return _moveExistingWallpaperNewDir; }
+            set
+            {
+                _moveExistingWallpaperNewDir = value;
+                OnPropertyChanged("MoveExistingWallpaperNewDir");
+
+                if (Settings.WallpaperDirMoveExistingWallpaperNewDir != _moveExistingWallpaperNewDir)
+                {
+                    Settings.WallpaperDirMoveExistingWallpaperNewDir = _moveExistingWallpaperNewDir;
+                    UpdateConfigFile();
+                }
             }
         }
 
@@ -278,7 +296,8 @@ namespace livelywpf
                     WallpaperDirectoryChangeCommand.RaiseCanExecuteChanged();
 
                     if (Directory.Exists(Path.Combine(folderBrowserDialog.SelectedPath, "wallpapers")) &&
-                        Directory.Exists(Path.Combine(folderBrowserDialog.SelectedPath, "SaveData")))
+                        Directory.Exists(Path.Combine(folderBrowserDialog.SelectedPath, "SaveData")) ||
+                        !Settings.WallpaperDirMoveExistingWallpaperNewDir)
                     {
                         //if directory exists, do not copy existing files.
                         isLivelyDir = true;

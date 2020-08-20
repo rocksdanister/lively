@@ -30,15 +30,37 @@ namespace livelywpf
             LivelyInfo = new LivelyInfoModel(data);
             Title = data.Title;
             Desc = data.Desc;
-            WpType = data.Type.ToString(); //todo: this is just for testing, final sent the translated text.
+            WpType = LocaliseWallpaperTypeEnum(data.Type);
             SrcWebsite = GetUri(data.Contact, "https");
 
             if (data.IsAbsolutePath)
             {
                 //full filepath is stored in Livelyinfo.json metadata file.
                 FilePath = data.FileName;
-                PreviewClipPath = data.Preview;
-                ThumbnailPath = data.Thumbnail;
+                
+                //This is to keep backward compatibility with older wallpaper files.
+                //When I originally made the property all the paths where made absolute, not just wallpaper path.
+                //But previewgif and thumb are always inside the temporary lively created folder.
+                try
+                {
+                    //PreviewClipPath = data.Preview;
+                    PreviewClipPath = Path.Combine(folderPath, Path.GetFileName(data.Preview));
+                }
+                catch
+                {
+                    PreviewClipPath = null;
+                }
+
+                try
+                {
+                    //ThumbnailPath = data.Thumbnail;
+                    ThumbnailPath = Path.Combine(folderPath, Path.GetFileName(data.Thumbnail));
+                }
+                catch
+                {
+                    ThumbnailPath = null;
+                }
+
                 try
                 {
                     LivelyPropertyPath = Path.Combine(Directory.GetParent(data.FileName).ToString(), "LivelyProperties.json");
@@ -250,6 +272,9 @@ namespace livelywpf
         }
 
         private string _wpType;
+        /// <summary>
+        /// Localised wallpapertype text.
+        /// </summary>
         public string WpType
         {
             get
@@ -289,6 +314,7 @@ namespace livelywpf
         }
 
         #region helpers
+
         public Uri GetUri(string s, string scheme)
         {
             try
@@ -308,6 +334,27 @@ namespace livelywpf
                 return null;
             }
         }
+
+        private string LocaliseWallpaperTypeEnum(WallpaperType type)
+        {
+            string localisedText = type switch
+            {
+                WallpaperType.app => Properties.Resources.TextApplication,
+                WallpaperType.unity => Properties.Resources.TextApplication + " Unity",
+                WallpaperType.godot => Properties.Resources.TextApplication + " Godot",
+                WallpaperType.unityaudio => Properties.Resources.TextApplication + " Unity " + Properties.Resources.TitleAudio,
+                WallpaperType.bizhawk => Properties.Resources.TextApplication + " Bizhawk",
+                WallpaperType.web => Properties.Resources.TextWebsite,
+                WallpaperType.webaudio => Properties.Resources.TextWebsite + " " + Properties.Resources.TitleAudio,
+                WallpaperType.url => Properties.Resources.TextOnline,
+                WallpaperType.video => Properties.Resources.TextVideo,
+                WallpaperType.gif => Properties.Resources.TextGIF,
+                WallpaperType.videostream => Properties.Resources.TextWebStream,
+                _ => "Nil",
+            };
+            return localisedText;
+        }
+
         #endregion helpers
     }
 }

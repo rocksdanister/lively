@@ -17,7 +17,7 @@ namespace livelywpf
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private static readonly Mutex mutex = new Mutex(false, "LIVELY:DESKTOPWALLPAPERSYSTEM");
-        public static string WallpaperDir;// =  Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Lively Wallpaper");
+        public static string WallpaperDir; //Loaded from Settings.json
         public static readonly string AppDataDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Lively Wallpaper");
 
         public static SettingsViewModel SettingsVM;
@@ -71,27 +71,8 @@ namespace livelywpf
         private static Views.SetupWizard.SetupView setupWizard = null;
         private static void App_Startup(object sender, StartupEventArgs e)
         {
-            try
-            {
-                //create directories if not exist, eg: C:\Users\<User>\AppData\Roaming
-                Directory.CreateDirectory(AppDataDir);
-                Directory.CreateDirectory(Path.Combine(AppDataDir, "logs"));
-                Directory.CreateDirectory(Path.Combine(AppDataDir, "temp"));
-                Directory.CreateDirectory(Path.Combine(WallpaperDir, "wallpapers"));
-                Directory.CreateDirectory(Path.Combine(WallpaperDir, "SaveData", "wptmp"));
-                Directory.CreateDirectory(Path.Combine(WallpaperDir, "SaveData", "wpdata"));
-            }
-            catch (Exception ex)
-            {
-                //not logging here, something must be seriously wrong.. just display & terminate.
-                MessageBox.Show(ex.Message, "Error: Failed to create data folder", MessageBoxButton.OK, MessageBoxImage.Error);
-                ExitApplication();
-                //Environment.Exit(1);
-            }
-
             sysTray = new Systray(SettingsVM.IsSysTrayIconVisible);
             //AppUpdater();
-            //LibraryVM.RestoreWallpaper();
 
             if (Program.SettingsVM.Settings.IsFirstRun)
             {
@@ -101,6 +82,11 @@ namespace livelywpf
                 };
                 setupWizard.Show();
             }
+
+            //If the first xamlhost element is closed, the rest of the host controls crashes/closes (?)-
+            //Example: UWP gifplayer is started before the rest and closed.
+            //This fixes that issue since the xamlhost UI elements are started in AppWindow.Show()
+            LibraryVM.RestoreWallpaperFromSave();
         }
 
         private static async void AppUpdater()

@@ -18,7 +18,7 @@
             </StackPanel>
             <Button MaxWidth="450" MinWidth="450" MinHeight="30" HorizontalContentAlignment="Left" Content="{Binding Settings.WallpaperDir}"
                                     Command="{Binding WallpaperDirectoryChangeCommand}" />
-            <TextBlock Margin="0, 10, 0, 0" FontSize="12" TextWrapping="Wrap" Text="{x:Static p:Resources.TipWallpaperDir}"/>
+            <TextBlock Margin="0, 10, 0, 0" FontSize="12" Foreground="Gray" TextWrapping="Wrap" Text="{x:Static p:Resources.TipWallpaperDir}"/>
         </StackPanel>
     </Grid>
 </Page>

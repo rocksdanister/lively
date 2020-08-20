@@ -18,7 +18,7 @@
                 <RadioButton Content="{x:Static p:Resources.TextUILite}"/>
                 <RadioButton IsEnabled="False" Content="{x:Static p:Resources.TextUIHeadless}"/> 
             </ui:RadioButtons>
-            <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Text="{x:Static p:Resources.TipUIMode}"/>
+            <TextBlock Margin="0,10,0,0" FontSize="12" Foreground="Gray" TextWrapping="Wrap" Text="{x:Static p:Resources.TipUIMode}"/>
         </StackPanel>
     </Grid>
 </Page>

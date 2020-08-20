@@ -62,7 +62,8 @@ namespace livelywpf.Views
                     TextTileSizeSmall = Properties.Resources.TextTileSizeSmall,
                     TextUImodeHeadless = Properties.Resources.TextUIHeadless,
                     TextUIModeLite = Properties.Resources.TextUILite,
-                    TextUIModeNormal = Properties.Resources.TextUINormal,                   
+                    TextUIModeNormal = Properties.Resources.TextUINormal,
+                    TitleWallpaperDirMoveExisting = Properties.Resources.TitleWallpaperDirMoveExisting,
                     //perf
                     TitleWallpaperPlayback = Properties.Resources.TitleWallpaperPlayback,
                     TitlePerfAppFullScreen = Properties.Resources.TitleAppFullScreen,
@@ -104,6 +105,9 @@ namespace livelywpf.Views
                     TipWallpaperStreamQuality = Properties.Resources.TipStreamWallpaperVideoQuality,
                     TitleDetectWallpaperStream = Properties.Resources.TitleStreamWallpaperDetect,
                     TipDetectWallpaperStream = Properties.Resources.TipStreamWallpaperVideoQuality,
+                    TextWallpaperInputOff = Properties.Resources.TextOff,
+                    TextWallpaperInputKeyboard = Properties.Resources.TextKeyboard,
+                    TextWallpaperInputMouse = Properties.Resources.TextMouse,
                     //misc
                     TitleSysTrayIconHide = Properties.Resources.TitleHideSysTray,
                     TipSysTrayIconHide = Properties.Resources.TipHideSysTray

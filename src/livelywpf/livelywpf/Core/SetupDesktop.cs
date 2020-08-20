@@ -29,11 +29,6 @@ namespace livelywpf
 
         #region core
 
-        static SetupDesktop()
-        {
-            SystemEvents.DisplaySettingsChanged += SystemEvents_DisplaySettingsChanged;
-        }
-
         public static void SetWallpaper(LibraryModel wp, LivelyScreen targetDisplay)
         {
             if (SystemParameters.HighContrast)
@@ -103,8 +98,9 @@ namespace livelywpf
                     _isInitialized = true;
                     processMonitor = new Playback();
                     processMonitor.Start();
-                    //SystemEvents.DisplaySettingsChanged += SystemEvents_DisplaySettingsChanged;
+                    SystemEvents.DisplaySettingsChanged += SystemEvents_DisplaySettingsChanged;
                     WallpaperChanged += SetupDesktop_WallpaperChanged;
+                    Logger.Info("Core Initialized");
                 }
             }
 
@@ -355,7 +351,8 @@ namespace livelywpf
                 WallpaperChanged -= SetupDesktop_WallpaperChanged;
                 SystemEvents.DisplaySettingsChanged -= SystemEvents_DisplaySettingsChanged;
                 processMonitor.Stop();
-                CloseAllWallpapersWithoutEvent();
+                //CloseAllWallpapersWithoutEvent();
+                TerminateAllWallpapersWithoutEvent();
                 RefreshDesktop();
             }
         }
@@ -571,6 +568,18 @@ namespace livelywpf
         private static void CloseAllWallpapersWithoutEvent()
         {
             Wallpapers.ForEach(x => x.Close());
+            Wallpapers.Clear();
+        }
+
+        public static void TerminateAllWallpapers()
+        {
+            Wallpapers.ForEach(x => x.Terminate());
+            Wallpapers.Clear();
+        }
+
+        private static void TerminateAllWallpapersWithoutEvent()
+        {
+            Wallpapers.ForEach(x => x.Terminate());
             Wallpapers.Clear();
         }
 
