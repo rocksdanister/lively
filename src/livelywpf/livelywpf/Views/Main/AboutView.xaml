@@ -28,7 +28,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         
-        <StackPanel Orientation="Horizontal" Grid.Row="0" VerticalAlignment="Center">
+        <StackPanel Orientation="Horizontal" Grid.Row="0" VerticalAlignment="Center" Margin="25, 0, 0, 0">
             <TextBlock Text="Lively" FontSize="25" Margin="0, 0, 5, 0" FontWeight="Medium"/>
             <!-- animated lively icon -->
             <Image x:Name="livelyIcon" Source="pack://application:,,,/Resources/appicon_96.png" Width="50" Height="50" Margin="0, 0, 5, 0">
@@ -49,8 +49,10 @@
                     </Style>
                 </Image.Style>
             </Image>
-            <TextBlock x:Name="appVersionText" Text="v1.0.0.0" FontSize="15" Margin="0, 0, 5, 0" VerticalAlignment="Center"/>
-            <TextBlock Text="by Rocksdanister" FontSize="15" Margin="0, 0, 5, 0" VerticalAlignment="Bottom"/>
+            <StackPanel Margin="0, 5, 0, 0">
+                <TextBlock x:Name="appVersionText" Text="v1.0.0.0" FontSize="15" Margin="0, 0, 5, 0" VerticalAlignment="Center"/>
+                <TextBlock Text="by Rocksdanister" FontSize="15" Margin="25, 0, 5, 0" VerticalAlignment="Bottom"/>
+            </StackPanel>
         </StackPanel>
 
         <FlowDocumentScrollViewer Name="licenseFlowDocumentViewer" VerticalScrollBarVisibility="Visible" Foreground="Black" Grid.Row="1" Margin="25, 50, 50, 50">

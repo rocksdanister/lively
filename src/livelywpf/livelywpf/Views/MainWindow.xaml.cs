@@ -48,8 +48,7 @@ namespace livelywpf
                 navView.MenuItems.Add(CreateMenu(Properties.Resources.TitleHelp, "help", Symbol.Help));
                 navView.MenuItems.Add(CreateMenu(Properties.Resources.TitleAbout, "about", Symbol.Comment));
                 navView.ItemInvoked += NavView_ItemInvoked;
-                navView.SelectedItem = navView.MenuItems.ElementAt(0);
-                ContentFrame.Navigate(typeof(livelywpf.Views.LibraryView), new Uri("Views/LibraryView.xaml", UriKind.Relative), new SuppressNavigationTransitionInfo());
+                NavViewNavigate("library");
             }
         }
 
@@ -179,6 +178,7 @@ namespace livelywpf
                 };
                 stackPanel.Children.Add(wallpaperStatusText);
 
+                //btn.Background = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 23, 23, 23));
                 btn.Content = stackPanel;
                 btn.Click += Btn_Click;
                 SetupDesktop.WallpaperChanged += SetupDesktop_WallpaperChanged;
@@ -192,6 +192,11 @@ namespace livelywpf
 
         ScreenLayoutView layoutWindow = null;
         private void Btn_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            ShowControlPanelDialog();
+        }
+
+        public void ShowControlPanelDialog()
         {
             if (layoutWindow == null)
             {
@@ -209,6 +214,7 @@ namespace livelywpf
             {
                 layoutWindow.Activate();
             }
+
         }
 
         private void LayoutWindow_Closed(object sender, EventArgs e)

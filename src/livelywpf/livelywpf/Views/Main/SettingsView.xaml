@@ -5,10 +5,11 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:livelywpf.Views"
       xmlns:ui="http://schemas.modernwpf.com/2019"
+      xmlns:p = "clr-namespace:livelywpf.Properties"  
       xmlns:xamlHost="clr-namespace:Microsoft.Toolkit.Wpf.UI.XamlHost;assembly=Microsoft.Toolkit.Wpf.UI.XamlHost"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="SettingsView"
+      Title="{x:Static p:Resources.TitleSettings}"
       >
     <Grid>
         <!-- minwidth is required, otherwise the performance tab is empty on first time select?.-->

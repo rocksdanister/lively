@@ -38,7 +38,7 @@ namespace livelywpf.Views
             {
                 //Don't know if there is an easier way to chang UserControl language, tried setting framework language to no effect.
                 //todo: find better way to do this.
-                LivelyGridControl.UIText = new livelygrid.LocalizeText()
+                LivelyGridControl.UIText = new livelygrid.LocalizeTextGridView()
                 {
                     TextAddWallpaper = Properties.Resources.TitleAddWallpaper,
                     TextConvertVideo = Properties.Resources.TextConvertVideo,
@@ -125,7 +125,7 @@ namespace livelywpf.Views
                     Program.LibraryVM.WallpaperVideoConvert(obj);
                     break;
                 case "moreInformation":
-                    throw new NotImplementedException();
+                    await ShowWallpaperInfoDialog(sender, e);
                     break;
             }
         }
@@ -229,6 +229,39 @@ namespace livelywpf.Views
             }
 
             ContentDialogResult result = await deleteDialog.ShowAsync();
+            return result;
+        }
+
+        private async Task<ContentDialogResult> ShowWallpaperInfoDialog(object sender, object arg)
+        {
+            var item = (MenuFlyoutItem)sender;
+            var lib = (LibraryModel)arg;
+
+            var info = new livelygrid.InfoPage
+            {
+                DataContext = lib,
+                UIText = new livelygrid.LocalizeTextInfoPage()
+                {
+                    Author = Properties.Resources.TextAuthor, 
+                    Website = Properties.Resources.TextWebsite,
+                    Type = Properties.Resources.TextWallpaperType,
+                }
+            };
+            ContentDialog infoDialog = new ContentDialog
+            {
+                Title = lib.Title,
+                Content = info,
+                CloseButtonText = Properties.Resources.TextClose,
+            };
+
+            // Use this code to associate the dialog to the appropriate AppWindow by setting
+            // the dialog's XamlRoot to the same XamlRoot as an element that is already present in the AppWindow.
+            if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 8))
+            {
+                infoDialog.XamlRoot = item.XamlRoot;
+            }
+
+            ContentDialogResult result = await infoDialog.ShowAsync();
             return result;
         }
 

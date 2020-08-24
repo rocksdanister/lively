@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
+using System.IO;
 
 namespace livelywpf
 {
@@ -21,7 +22,7 @@ namespace livelywpf
             {
                 try
                 {
-                    key.SetValue(curAssembly.GetName().Name, curAssembly.Location);
+                    key.SetValue(curAssembly.GetName().Name, Path.ChangeExtension(curAssembly.Location, ".exe"));
                 }
                 catch (Exception ex)
                 {
@@ -80,7 +81,7 @@ namespace livelywpf
                 //no key value.
                 return false;
             }
-            else if (String.Equals(startupKey, Assembly.GetExecutingAssembly().Location, StringComparison.Ordinal))
+            else if (String.Equals(startupKey, Path.ChangeExtension(Assembly.GetExecutingAssembly().Location, ".exe"), StringComparison.Ordinal))
             {
                 //everything is ok.
                 return true;

@@ -123,6 +123,9 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="InfoPage.xaml.cs">
+      <DependentUpon>InfoPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LivelyGridView.xaml.cs">
       <DependentUpon>LivelyGridView.xaml</DependentUpon>
     </Compile>
@@ -135,6 +138,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="InfoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LivelyGridView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

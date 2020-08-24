@@ -5,8 +5,10 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Text;
+using System.Threading;
 using System.Windows.Controls;
 using System.Windows.Forms;
+using System.Windows.Threading;
 
 namespace livelywpf
 {
@@ -28,9 +30,12 @@ namespace livelywpf
             CreateContextMenu();
             _notifyIcon.Visible = visibility;
             Program.SettingsVM.TrayIconVisibilityChange += SettingsVM_TrayIconVisibilityChange;
+            SetupDesktop.WallpaperChanged += SetupDesktop_WallpaperChanged;
         }
 
-        private static System.Windows.Forms.ToolStripMenuItem pauseTrayBtn;
+        private System.Windows.Forms.ToolStripMenuItem pauseTrayBtn;
+        private System.Windows.Forms.ToolStripMenuItem customiseWallpaperBtn;
+        public System.Windows.Forms.ToolStripMenuItem UpdateTrayBtn { get; set; }
         private void CreateContextMenu()
         {
             _notifyIcon.ContextMenuStrip = new System.Windows.Forms.ContextMenuStrip
@@ -50,7 +55,20 @@ namespace livelywpf
             pauseTrayBtn.Click += (s, e) => ToggleWallpaperPlaybackState();
             _notifyIcon.ContextMenuStrip.Items.Add(pauseTrayBtn);
 
-            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextCustomiseWallpaper, null).Click += Systray_Click;
+            customiseWallpaperBtn = new System.Windows.Forms.ToolStripMenuItem(Properties.Resources.TextCustomiseWallpaper, null)
+            {
+                Enabled = false
+            };
+            customiseWallpaperBtn.Click += CustomiseWallpaper;
+            _notifyIcon.ContextMenuStrip.Items.Add(customiseWallpaperBtn);
+
+            _notifyIcon.ContextMenuStrip.Items.Add(new Helpers.CustomContextMenu.StripSeparatorCustom().stripSeparator);
+            UpdateTrayBtn = new System.Windows.Forms.ToolStripMenuItem(Properties.Resources.TextUpdateChecking, null)
+            {
+                Enabled = false
+            };
+            UpdateTrayBtn.Click += (s, e) => Program.ShowUpdateDialog();
+            _notifyIcon.ContextMenuStrip.Items.Add(UpdateTrayBtn);
 
             _notifyIcon.ContextMenuStrip.Items.Add(new Helpers.CustomContextMenu.StripSeparatorCustom().stripSeparator);
             _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextSupport, Properties.Icons.icons8_heart_48).Click += (s, e) => OpenExternal("https://ko-fi.com/rocksdanister");
@@ -60,25 +78,29 @@ namespace livelywpf
             _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextExit, Properties.Icons.icons8_delete_52).Click += (s, e) => Program.ExitApplication();
         }
 
-        private void Systray_Click(object sender, EventArgs e)
+        public void ShowBalloonNotification(int timeout, string title, string msg)
         {
-            //testing only!!!
-            if (Program.LibraryVM.SelectedItem != null)
+            _notifyIcon.ShowBalloonTip(timeout, title, msg, ToolTipIcon.None);
+        }
+
+        private void CustomiseWallpaper(object sender, EventArgs e)
+        {
+            var items = SetupDesktop.Wallpapers.FindAll(x => x.GetWallpaperData().LivelyPropertyPath != null);
+            if(items.Count == 1)
             {
-                if (Program.LibraryVM.SelectedItem.LivelyPropertyPath != null)
-                {
-                    var settingsWidget = new Cef.LivelyPropertiesTrayWidget(
-                        Program.LibraryVM.SelectedItem,
-                        Program.LibraryVM.GetLivelyPropertyCopyPath(Program.LibraryVM.SelectedItem),
-                        ScreenHelper.GetPrimaryScreen()
-                        //SetupDesktop.Wallpapers.Find(x=>x.GetWallpaperData() == Program.LibraryVM.SelectedItem).GetScreen()
-                        );
-                    settingsWidget.Show();
-                }
+                var settingsWidget = new Cef.LivelyPropertiesTrayWidget(
+                    items[0].GetWallpaperData(),
+                    items[0].GetLivelyPropertyCopyPath(),
+                    items[0].GetScreen());
+                settingsWidget.Show();
+            }
+            else
+            {
+                App.AppWindow.ShowControlPanelDialog();
             }
         }
 
-        public static void ToggleWallpaperPlaybackState()
+        public void ToggleWallpaperPlaybackState()
         {
             if (Playback.PlaybackState == PlaybackState.play)
             {
@@ -90,6 +112,14 @@ namespace livelywpf
                 Playback.PlaybackState = PlaybackState.play;
                 pauseTrayBtn.Checked = false;
             }
+        }
+
+        private void SetupDesktop_WallpaperChanged(object sender, EventArgs e)
+        {
+            System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
+            {
+                customiseWallpaperBtn.Enabled = SetupDesktop.Wallpapers.FindAll(x => x.GetWallpaperData().LivelyPropertyPath != null).Count != 0;
+            }));
         }
 
         private void SettingsVM_TrayIconVisibilityChange(object sender, bool visibility)

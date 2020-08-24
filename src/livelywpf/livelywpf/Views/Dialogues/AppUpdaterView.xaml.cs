@@ -1,6 +1,7 @@
 ﻿using ModernWpf.Controls;
 using System;
 using System.IO;
+using System.Linq;
 using System.Windows;
 using System.Windows.Documents;
 
@@ -11,17 +12,28 @@ namespace livelywpf.Views
     /// </summary>
     public partial class AppUpdaterView : Window
     {
-        private readonly DownloadHelper download = new DownloadHelper();
+        private DownloadHelper download;
         private readonly Uri fileUrl;
         private bool _forceClose = false;
         private bool downloadComplete = false;
+        private string fileName;
         string savePath = "";
 
         public AppUpdaterView(Uri fileUrl, string changelogText)
         {
             InitializeComponent();
-            this.fileUrl = fileUrl;
-            changelog.Document.Blocks.Add(new Paragraph(new Run(changelogText)));
+            if(fileUrl != null)
+            {
+                this.fileName = fileUrl.Segments.Last();
+                this.fileUrl = fileUrl;
+                changelog.Document.Blocks.Add(new Paragraph(new Run(changelogText)));
+            }
+            else
+            {
+                downloadBtn.IsEnabled = false;
+                this.Title = Properties.Resources.TextupdateCheckFail;
+                changelog.Document.Blocks.Add(new Paragraph(new Run(Properties.Resources.LivelyExceptionAppUpdateFail)));
+            }
         }
 
         private void UpdateDownload_DownloadProgressChanged(object sender, DownloadEventArgs e)
@@ -60,7 +72,7 @@ namespace livelywpf.Views
                 {
                     Title = "Select location to save the file",
                     Filter = "Executable|*.exe",
-                    FileName = "update.exe",
+                    FileName = fileName,
                 };
                 if (saveFileDialog1.ShowDialog() == true)
                 {
@@ -73,6 +85,7 @@ namespace livelywpf.Views
 
                 try
                 {
+                    download = new DownloadHelper();
                     download.DownloadFile(fileUrl, savePath);
                     download.DownloadFileCompleted += UpdateDownload_DownloadFileCompleted;
                     download.DownloadProgressChanged += UpdateDownload_DownloadProgressChanged;
@@ -88,7 +101,7 @@ namespace livelywpf.Views
 
         private async void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (_forceClose != true)
+            if (_forceClose != true && download != null)
             {
                 e.Cancel = true;
                 ContentDialog cancelDownload = new ContentDialog
@@ -107,9 +120,12 @@ namespace livelywpf.Views
             }
             else
             {
-                download.DownloadFileCompleted -= UpdateDownload_DownloadFileCompleted;
-                download.DownloadProgressChanged -= UpdateDownload_DownloadProgressChanged;
-                download.Dispose();
+                if (download != null)
+                {
+                    download.DownloadFileCompleted -= UpdateDownload_DownloadFileCompleted;
+                    download.DownloadProgressChanged -= UpdateDownload_DownloadProgressChanged;
+                    download.Dispose();
+                }
             }
         }
     }

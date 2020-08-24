@@ -10,11 +10,12 @@
     <StartupObject>livelywpf.Program</StartupObject>
     <ApplicationIcon>appicon.ico</ApplicationIcon>
     <Version>1.0.0</Version>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <AssemblyVersion>0.9.0.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Resources\appicon_96.png" />
+    <None Remove="Resources\icons8-helping-hand-96.png" />
     <None Remove="Resources\tutorial_systray.png" />
   </ItemGroup>
 
@@ -31,7 +32,6 @@
     <PackageReference Include="Octokit" Version="0.48.0" />
     <PackageReference Include="RawInput.Sharp" Version="0.0.3" />
     <PackageReference Include="SharpZipLib" Version="1.2.0" />
-    <PackageReference Include="VideoLAN.LibVLC.Windows" Version="3.0.11" />
   </ItemGroup>
 
   <ItemGroup>
@@ -44,6 +44,7 @@
 
   <ItemGroup>
     <Resource Include="Resources\appicon_96.png" />
+    <Resource Include="Resources\icons8-helping-hand-96.png" />
     <Resource Include="Resources\tutorial_systray.png" />
   </ItemGroup>
 
@@ -62,7 +63,7 @@
 
   <ItemGroup>
     <EmbeddedResource Update="Properties\Icons.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Icons.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Properties\Resources.resx">
@@ -75,6 +76,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Docs\drag_drop_animation.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Docs\license.rtf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

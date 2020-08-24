@@ -109,7 +109,7 @@ namespace livelywpf
             AppFocusPause = AppRulesEnum.ignore;
             AppFullscreenPause = AppRulesEnum.pause;
             BatteryPause = AppRulesEnum.ignore;
-            VideoPlayer = LivelyMediaPlayer.libvlc;
+            VideoPlayer = LivelyMediaPlayer.libvlcExt;
 
             WallpaperWaitTime = 30000; // 30sec
             ProcessTimerInterval = 500; //reduce to 250 for quicker response.
@@ -135,7 +135,8 @@ namespace livelywpf
             DisplayIdentification = DisplayIdentificationMode.screenLayout;
             SelectedDisplay = ScreenHelper.GetPrimaryScreen();
             LivelyGUIRendering = LivelyGUIState.lite;
-            WallpaperDir = Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Lively Wallpaper");
+            //Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Lively Wallpaper");
+            WallpaperDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Lively Wallpaper", "Library");
             WallpaperDirMoveExistingWallpaperNewDir = true;
             SysTrayIcon = true;
             WebDebugPort = string.Empty;

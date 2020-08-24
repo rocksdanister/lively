@@ -8,6 +8,7 @@
         
         WindowStartupLocation="Manual"
         Left='-9999'
+        ShowInTaskbar="False"
         WindowStyle="None"
         ResizeMode="NoResize"
         Closing="Window_Closing"

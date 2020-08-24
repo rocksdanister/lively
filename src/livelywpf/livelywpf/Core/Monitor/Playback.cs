@@ -124,7 +124,9 @@ namespace livelywpf.Core
                 return;
             }
 
-            if (fProcess.ProcessName.Equals("livelywpf", StringComparison.OrdinalIgnoreCase) ||  fProcess.ProcessName.Equals("livelycefsharp", StringComparison.OrdinalIgnoreCase)) 
+            if (fProcess.ProcessName.Equals("livelywpf", StringComparison.OrdinalIgnoreCase) ||
+                fProcess.ProcessName.Equals("livelycefsharp", StringComparison.OrdinalIgnoreCase) ||
+                fProcess.ProcessName.Equals("libvlcplayer", StringComparison.OrdinalIgnoreCase)) 
             {
                 PlayWallpapers();
                 return;

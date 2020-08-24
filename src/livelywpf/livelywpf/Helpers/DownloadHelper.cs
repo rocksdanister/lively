@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Net;
+using System.ServiceModel.Description;
 using System.Text;
+using System.Windows;
+using Windows.Web.UI.Interop;
 
 namespace livelywpf
 {
@@ -22,6 +25,7 @@ namespace livelywpf
         public double Percentage { get; set; }
     }
 
+    [Obsolete("Cannot cancel in-progress download: https://github.com/dotnet/runtime/issues/31479")]
     class DownloadHelper : IDisposable
     {
         private WebClient webClient;
@@ -57,6 +61,11 @@ namespace livelywpf
             {
                 DownloadFileCompleted?.Invoke(this, true);
             }
+            else if(e.Cancelled)
+            {
+                MessageBox.Show("CANCELLED");
+                webClient.Dispose();
+            }
             else
             {
                 DownloadFileCompleted?.Invoke(this, false);
@@ -76,6 +85,7 @@ namespace livelywpf
                 {
                     webClient.DownloadFileCompleted -= Client_DownloadFileCompleted;
                     webClient.DownloadProgressChanged -= Client_DownloadProgressChanged;
+                    //Does not Work!: https://github.com/dotnet/runtime/issues/31479
                     webClient.CancelAsync();
                     webClient.Dispose();
                 }

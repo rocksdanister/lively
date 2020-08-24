@@ -30,7 +30,7 @@ namespace livelygrid
         NoPreview
     }
 
-    public class LocalizeText
+    public class LocalizeTextGridView
     {
         public string TextInformation { get; set; }
         public string TextSetWallpaper { get; set; }
@@ -44,7 +44,7 @@ namespace livelygrid
 
     public sealed partial class LivelyGridView : UserControl
     {
-        public LocalizeText UIText { get; set; }
+        public LocalizeTextGridView UIText { get; set; }
         private Object selectedTile;
         /// <summary>
         /// Fires when flyoutmenu is clicked, object is datacontext.

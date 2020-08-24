@@ -4,6 +4,7 @@ using Octokit;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -43,9 +44,11 @@ namespace livelywpf
                     new LanguagesModel("portuguesa(pt-BR)", new string[]{"pt-BR"}),
                     new LanguagesModel("Filipino(fil)", new string[]{"fil","fil-PH"}),
                     new LanguagesModel("Magyar(hu)", new string[]{"hu","hu-HU"}),
+                    new LanguagesModel("svenska(sv)", new string[]{"sv","sv-AX","sv-FI","sv-SE"}),
             };
             SelectedLanguageItem = SearchSupportedLanguage(Settings.Language);
 
+            //Ignoring the savefile setting, only checking the registry and user action on ui.
             var startupStatus = WindowsStartup.CheckStartupRegistry();
             if (startupStatus)
             {
@@ -54,7 +57,7 @@ namespace livelywpf
             else
             {
                 IsStartup = false;
-                //delete the wrong key if any.
+                //delete the wrong key(filepath, name etc) if any.
                 WindowsStartup.SetStartupRegistry(false);
             }
 
@@ -98,28 +101,7 @@ namespace livelywpf
 
         public void UpdateConfigFile()
         {
-            //testing
             SettingsJSON.SaveConfig(Path.Combine(Program.AppDataDir, "Settings.json"), Settings);
-        }
-
-        /// <summary>
-        /// Checks LanguageItems and see if language with the given code exists.
-        /// </summary>
-        /// <param name="langCode">language code</param>
-        /// <returns>Languagemodel if found; null otherwise.</returns>
-        private LanguagesModel SearchSupportedLanguage(string langCode)
-        {
-            foreach (var lang in LanguageItems)
-            {
-                foreach (var code in lang.Codes)
-                {
-                    if (string.Equals(code, langCode, StringComparison.OrdinalIgnoreCase))
-                    {
-                        return lang;
-                    }
-                }
-            }
-            return null;
         }
 
         #region general
@@ -135,7 +117,6 @@ namespace livelywpf
             {
                 _isStartup = value;
                 OnPropertyChanged("IsStartup");
-
                 WindowsStartup.SetStartupRegistry(value);
             }
         }
@@ -177,13 +158,13 @@ namespace livelywpf
 
                 if(_selectedLanguageItem.Codes.FirstOrDefault(x => x == Settings.Language) == null)
                 {
-                    //Settings.IsRestart = true;
+                    Settings.IsRestart = true;
                     Settings.Language = _selectedLanguageItem.Codes[0];
                     UpdateConfigFile();
-                    //Program.RestartApplication();
+                    Program.RestartApplication();
 
                     //todo: temporary only, change it to better.
-                    System.Windows.MessageBox.Show(Properties.Resources.DescriptionPleaseRestartLively, Properties.Resources.TitleAppName);
+                    //System.Windows.MessageBox.Show(Properties.Resources.DescriptionPleaseRestartLively, Properties.Resources.TitleAppName);
                 }    
             }
         }
@@ -200,8 +181,11 @@ namespace livelywpf
                 _selectedTileSizeIndex = value;
                 OnPropertyChanged("SelectedTileSizeIndex");
 
-                //todo: argumentoutofrange exception
-                Settings.TileSize = value;
+                if(Settings.TileSize != _selectedTileSizeIndex)
+                {
+                    Settings.TileSize = _selectedTileSizeIndex;
+                    UpdateConfigFile();
+                }
             }
         }
 
@@ -240,7 +224,6 @@ namespace livelywpf
             }
         }
 
-        public event EventHandler<string> LivelyWallpaperDirChange;
         private RelayCommand _wallpaperDirectoryChangeCommand;
         public RelayCommand WallpaperDirectoryChangeCommand
         {
@@ -284,6 +267,303 @@ namespace livelywpf
             }
         }
 
+        private RelayCommand _openWallpaperDirectory;
+        public RelayCommand OpenWallpaperDirectory
+        {
+            get
+            {
+                if (_openWallpaperDirectory == null)
+                {
+                    _openWallpaperDirectory = new RelayCommand(
+                            param => FileOperations.OpenFolder(Settings.WallpaperDir)
+                        );
+                }
+                return _openWallpaperDirectory;
+            }
+        }
+
+        #endregion general
+
+        #region performance
+
+        private RelayCommand _applicationRulesCommand;
+        public RelayCommand ApplicationRulesCommand
+        {
+            get
+            {
+                if (_applicationRulesCommand == null)
+                {
+                    _applicationRulesCommand = new RelayCommand(
+                            param => ShowApplicationRulesWindow()
+                        );
+                }
+                return _applicationRulesCommand;
+            }
+        }
+        
+        private void ShowApplicationRulesWindow()
+        {
+            ApplicationRulesView app = new ApplicationRulesView
+            {
+                WindowStartupLocation = WindowStartupLocation.CenterOwner,
+                Owner = App.AppWindow,
+            };
+            app.ShowDialog();
+        }
+
+        private int _selectedAppFullScreenIndex;
+        public int SelectedAppFullScreenIndex
+        {
+            get
+            {
+                return _selectedAppFullScreenIndex;
+            }
+            set
+            {
+                _selectedAppFullScreenIndex = value;
+                OnPropertyChanged("SelectedAppFullScreenIndex");
+
+                if(Settings.AppFullscreenPause != (AppRulesEnum)_selectedAppFullScreenIndex)
+                {
+                    Settings.AppFullscreenPause = (AppRulesEnum)_selectedAppFullScreenIndex;
+                    UpdateConfigFile();
+                }
+            }
+        }
+
+        private int _selectedAppFocusIndex;
+        public int SelectedAppFocusIndex
+        {
+            get
+            {
+                return _selectedAppFocusIndex;
+            }
+            set
+            {
+                _selectedAppFocusIndex = value;
+                OnPropertyChanged("SelectedAppFocusIndex");
+
+                if(Settings.AppFocusPause != (AppRulesEnum)_selectedAppFocusIndex)
+                {
+                    Settings.AppFocusPause = (AppRulesEnum)_selectedAppFocusIndex;
+                    UpdateConfigFile();
+                }
+            }
+        }
+
+        private int _selectedBatteryPowerIndex;
+        public int SelectedBatteryPowerIndex
+        {
+            get
+            {
+                return _selectedBatteryPowerIndex;
+            }
+            set
+            {
+                _selectedBatteryPowerIndex = value;
+                OnPropertyChanged("SelectedBatteryPowerIndex");
+
+                if(Settings.BatteryPause != (AppRulesEnum)_selectedBatteryPowerIndex)
+                {
+                    Settings.BatteryPause = (AppRulesEnum)_selectedBatteryPowerIndex;
+                    UpdateConfigFile();
+                }
+            }
+        }
+
+        private int _selectedDisplayPauseRuleIndex;
+        public int SelectedDisplayPauseRuleIndex
+        {
+            get
+            {
+                return _selectedDisplayPauseRuleIndex;
+            }
+            set
+            {
+                _selectedDisplayPauseRuleIndex = value;
+                OnPropertyChanged("SelectedDisplayPauseRuleIndex");
+
+                if(Settings.DisplayPauseSettings != (DisplayPauseEnum)_selectedDisplayPauseRuleIndex)
+                {
+                    Settings.DisplayPauseSettings = (DisplayPauseEnum)_selectedDisplayPauseRuleIndex;
+                    UpdateConfigFile();
+                }
+            }
+        }
+
+        private int _selectedPauseAlgorithmIndex;
+        public int SelectedPauseAlgorithmIndex
+        {
+            get
+            {
+                return _selectedPauseAlgorithmIndex;
+            }
+            set
+            {
+                _selectedPauseAlgorithmIndex = value;
+                OnPropertyChanged("SelectedPauseAlgorithmIndex");
+
+                if(Settings.ProcessMonitorAlgorithm != (ProcessMonitorAlgorithm)_selectedPauseAlgorithmIndex)
+                {
+                    Settings.ProcessMonitorAlgorithm = (ProcessMonitorAlgorithm)_selectedPauseAlgorithmIndex;
+                    UpdateConfigFile();
+                }
+            }
+        }
+
+        #endregion performance
+
+        #region wallpaper
+
+        private int _selectedWallpaperInputMode;
+        public int SelectedWallpaperInputMode
+        {
+            get { return _selectedWallpaperInputMode; }
+            set
+            {
+                _selectedWallpaperInputMode = value;
+                SetupDesktop.WallpaperInputForward((InputForwardMode)_selectedWallpaperInputMode);
+                OnPropertyChanged("SelectedWallpaperInputMode");
+
+                if (Settings.InputForward != (InputForwardMode)_selectedWallpaperInputMode)
+                {
+                    Settings.InputForward = (InputForwardMode)_selectedWallpaperInputMode;
+                    UpdateConfigFile();
+                }
+            }
+        }
+
+        private int _selectedVideoPlayerIndex;
+        public int SelectedVideoPlayerIndex
+        {
+            get
+            {
+                return _selectedVideoPlayerIndex;
+            }
+            set
+            {
+                _selectedVideoPlayerIndex = value;
+                OnPropertyChanged("SelectedVideoPlayerIndex");
+
+                if(Settings.VideoPlayer != (LivelyMediaPlayer)_selectedVideoPlayerIndex)
+                {
+                    Settings.VideoPlayer = (LivelyMediaPlayer)_selectedVideoPlayerIndex;
+                    UpdateConfigFile();
+                    VideoPlayerSwitch((LivelyMediaPlayer)_selectedVideoPlayerIndex);
+                }
+            }
+        }
+
+        private bool _mouseMoveOnDesktop;
+        public bool MouseMoveOnDesktop
+        {
+            get { return _mouseMoveOnDesktop; }
+            set
+            {
+                _mouseMoveOnDesktop = value;
+                OnPropertyChanged("MouseMoveOnDesktop");
+
+                if (Settings.MouseInputMovAlways != _mouseMoveOnDesktop)
+                {
+                    Settings.MouseInputMovAlways = _mouseMoveOnDesktop;
+                    UpdateConfigFile();
+                }
+            }
+        }
+
+        private string _webDebuggingPort;
+        public string WebDebuggingPort
+        {
+            get { return _webDebuggingPort; }
+            set
+            {
+                _webDebuggingPort = value;
+                if(Settings.WebDebugPort != _webDebuggingPort)
+                {
+                    Settings.WebDebugPort = _webDebuggingPort;
+                    UpdateConfigFile();
+                }
+                OnPropertyChanged("WebDebuggingPort");
+            }
+        }
+
+        public bool _detectStreamWallpaper;
+        public bool DetectStreamWallpaper
+        {
+            get { return _detectStreamWallpaper; }
+            set
+            {
+                _detectStreamWallpaper = value;
+                if(Settings.AutoDetectOnlineStreams != _detectStreamWallpaper)
+                {
+                    Settings.AutoDetectOnlineStreams = _detectStreamWallpaper;
+                    UpdateConfigFile();
+                }
+                OnPropertyChanged("DetectStreamWallpaper");
+            }
+        }
+
+        #endregion wallpaper
+
+        #region misc
+
+        public event EventHandler<bool> TrayIconVisibilityChange;
+        private bool _isSysTrayIconVisible;
+        public bool IsSysTrayIconVisible
+        {
+            get
+            {
+                return _isSysTrayIconVisible;
+            }
+            set
+            {
+                _isSysTrayIconVisible = value;
+                OnPropertyChanged("IsSysTrayIconVisible");
+                TrayIconVisibilityChange?.Invoke(null, _isSysTrayIconVisible);
+                if (Settings.SysTrayIcon != _isSysTrayIconVisible)
+                {
+                    Settings.SysTrayIcon = _isSysTrayIconVisible;
+                    UpdateConfigFile();
+                }
+            }
+        }
+
+        #endregion //misc
+
+        #region helper fns
+
+        /// <summary>
+        /// Checks LanguageItems and see if language with the given code exists.
+        /// </summary>
+        /// <param name="langCode">language code</param>
+        /// <returns>Languagemodel if found; null otherwise.</returns>
+        private LanguagesModel SearchSupportedLanguage(string langCode)
+        {
+            foreach (var lang in LanguageItems)
+            {
+                foreach (var code in lang.Codes)
+                {
+                    if (string.Equals(code, langCode, StringComparison.OrdinalIgnoreCase))
+                    {
+                        return lang;
+                    }
+                }
+            }
+            return null;
+        }
+
+        private void VideoPlayerSwitch(LivelyMediaPlayer player)
+        {
+            var prevWallpapers = SetupDesktop.Wallpapers.FindAll(x => x.GetWallpaperType() == WallpaperType.video).ToList();
+            SetupDesktop.CloseWallpaper(WallpaperType.video);
+            foreach (var item in prevWallpapers)
+            {
+                Program.LibraryVM.WallpaperSet(item.GetWallpaperData(), item.GetScreen());
+            }
+            prevWallpapers.Clear();
+        }
+
+        public event EventHandler<string> LivelyWallpaperDirChange;
         private async void WallpaperDirectoryChange()
         {
             bool isLivelyDir = false;
@@ -347,243 +627,13 @@ namespace livelywpf
                     var result2 = await FileOperations.DeleteDirectoryAsync(Path.Combine(previousDirectory, "SaveData"), 0, 1000);
                     if (!(result1 && result2))
                     {
-                        System.Windows.MessageBox.Show("Failed to delete old wallpaper directory!\nTry deleting it manually.", "Error");
+                        System.Windows.MessageBox.Show("Failed to delete old wallpaper directory!\nTry deleting it manually.", Properties.Resources.TextError);
                     }
                 }
                 folderBrowserDialog.Dispose();
             }
         }
 
-        #endregion general
-
-        #region performance
-
-        private RelayCommand _applicationRulesCommand;
-        public RelayCommand ApplicationRulesCommand
-        {
-            get
-            {
-                if (_applicationRulesCommand == null)
-                {
-                    _applicationRulesCommand = new RelayCommand(
-                        param => ShowApplicationRulesWindow()
-                        );
-                }
-                return _applicationRulesCommand;
-            }
-        }
-        
-        private void ShowApplicationRulesWindow()
-        {
-            ApplicationRulesView app = new ApplicationRulesView
-            {
-                WindowStartupLocation = WindowStartupLocation.CenterOwner,
-                Owner = App.AppWindow,
-            };
-            app.ShowDialog();
-        }
-
-        private int _selectedAppFullScreenIndex;
-        public int SelectedAppFullScreenIndex
-        {
-            get
-            {
-                return _selectedAppFullScreenIndex;
-            }
-            set
-            {
-                _selectedAppFullScreenIndex = value;
-                OnPropertyChanged("SelectedAppFullScreenIndex");
-
-                //todo: argumentoutofrange exception
-                Settings.AppFullscreenPause = (AppRulesEnum)value;
-            }
-        }
-
-        private int _selectedAppFocusIndex;
-        public int SelectedAppFocusIndex
-        {
-            get
-            {
-                return _selectedAppFocusIndex;
-            }
-            set
-            {
-                _selectedAppFocusIndex = value;
-                OnPropertyChanged("SelectedAppFocusIndex");
-
-                //todo: argumentoutofrange exception
-                Settings.AppFocusPause = (AppRulesEnum)value;
-            }
-        }
-
-        private int _selectedBatteryPowerIndex;
-        public int SelectedBatteryPowerIndex
-        {
-            get
-            {
-                return _selectedBatteryPowerIndex;
-            }
-            set
-            {
-                _selectedBatteryPowerIndex = value;
-                OnPropertyChanged("SelectedBatteryPowerIndex");
-
-                //todo: argumentoutofrange exception
-                Settings.BatteryPause = (AppRulesEnum)value;
-            }
-        }
-
-        private int _selectedDisplayPauseRuleIndex;
-        public int SelectedDisplayPauseRuleIndex
-        {
-            get
-            {
-                return _selectedDisplayPauseRuleIndex;
-            }
-            set
-            {
-                _selectedDisplayPauseRuleIndex = value;
-                OnPropertyChanged("SelectedDisplayPauseRuleIndex");
-
-                //todo: argumentoutofrange exception
-                Settings.DisplayPauseSettings = (DisplayPauseEnum)value;
-            }
-        }
-
-        private int _selectedPauseAlgorithmIndex;
-        public int SelectedPauseAlgorithmIndex
-        {
-            get
-            {
-                return _selectedPauseAlgorithmIndex;
-            }
-            set
-            {
-                _selectedPauseAlgorithmIndex = value;
-                OnPropertyChanged("SelectedPauseAlgorithmIndex");
-
-                //todo: argumentoutofrange exception
-                Settings.ProcessMonitorAlgorithm = (ProcessMonitorAlgorithm)value;
-            }
-        }
-
-        #endregion performance
-
-        #region wallpaper
-
-        private int _selectedWallpaperInputMode;
-        public int SelectedWallpaperInputMode
-        {
-            get { return _selectedWallpaperInputMode; }
-            set
-            {
-                _selectedWallpaperInputMode = value;
-                SetupDesktop.WallpaperInputForward((InputForwardMode)_selectedWallpaperInputMode);
-                OnPropertyChanged("SelectedWallpaperInputMode");
-            }
-        }
-
-        private int _selectedVideoPlayerIndex;
-        public int SelectedVideoPlayerIndex
-        {
-            get
-            {
-                return _selectedVideoPlayerIndex;
-            }
-            set
-            {
-                if(_selectedVideoPlayerIndex != value)
-                {
-                    VideoPlayerSwitch((LivelyMediaPlayer)value);
-                }
-                _selectedVideoPlayerIndex = value;
-                OnPropertyChanged("SelectedVideoPlayerIndex");
-
-                //todo: argumentoutofrange exception
-                Settings.VideoPlayer = (LivelyMediaPlayer)value;
-                UpdateConfigFile();
-            }
-        }
-
-        private void VideoPlayerSwitch(LivelyMediaPlayer player)
-        {
-            List<LibraryModel> wpCurr = new List<LibraryModel>();
-            foreach (var item in SetupDesktop.Wallpapers)
-            {
-                if(item.GetWallpaperType() == WallpaperType.video)
-                    wpCurr.Add(item.GetWallpaperData());
-            }
-            SetupDesktop.CloseWallpaper(WallpaperType.video);
-
-            //todo: restart wpCurr
-        }
-
-        private bool _mouseMoveOnDesktop;
-        public bool MouseMoveOnDesktop
-        {
-            get { return _mouseMoveOnDesktop; }
-            set
-            {
-                _mouseMoveOnDesktop = value;
-                Settings.MouseInputMovAlways = _mouseMoveOnDesktop;
-                OnPropertyChanged("MouseMoveOnDesktop");
-            }
-        }
-
-        private string _webDebuggingPort;
-        public string WebDebuggingPort
-        {
-            get { return _webDebuggingPort; }
-            set
-            {
-                _webDebuggingPort = value;
-                if(Settings.WebDebugPort != _webDebuggingPort)
-                {
-                    Settings.WebDebugPort = _webDebuggingPort;
-                    UpdateConfigFile();
-                }
-                OnPropertyChanged("WebDebuggingPort");
-            }
-        }
-
-        public bool _detectStreamWallpaper;
-        public bool DetectStreamWallpaper
-        {
-            get { return _detectStreamWallpaper; }
-            set
-            {
-                _detectStreamWallpaper = value;
-                if(Settings.AutoDetectOnlineStreams != _detectStreamWallpaper)
-                {
-                    Settings.AutoDetectOnlineStreams = _detectStreamWallpaper;
-                    UpdateConfigFile();
-                }
-                OnPropertyChanged("DetectStreamWallpaper");
-            }
-        }
-
-        #endregion wallpaper
-
-        #region misc
-
-        public event EventHandler<bool> TrayIconVisibilityChange;
-        private bool _isSysTrayIconVisible;
-        public bool IsSysTrayIconVisible
-        {
-            get
-            {
-                return _isSysTrayIconVisible;
-            }
-            set
-            {
-                _isSysTrayIconVisible = value;
-                Settings.SysTrayIcon = _isSysTrayIconVisible;
-                OnPropertyChanged("IsSysTrayIconVisible");
-                TrayIconVisibilityChange?.Invoke(null, _isSysTrayIconVisible);
-            }
-        }
-
-        #endregion //misc
+        #endregion //helper fns
     }
 }

@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Threading;
 using livelywpf.Model;
@@ -24,6 +25,7 @@ namespace livelywpf.Core
         Process GetProcess();
         void Show();
         void Pause();
+        void Resume();
         void Play();
         void Stop();
         void Close();
@@ -82,7 +84,7 @@ namespace livelywpf.Core
 
         public Process GetProcess()
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         public LivelyScreen GetScreen()
@@ -125,12 +127,15 @@ namespace livelywpf.Core
             this.Display = display;
         }
 
-        public void Show()
+        public async void Show()
         {
             if (Player != null)
             {
                 Player.Closed += Player_Closed;
-                Player.Show();
+                await System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
+                {
+                    Player.Show();
+                }));
                 HWND = new WindowInteropHelper(Player).Handle;
                 WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = true, Error = null });
             }
@@ -149,6 +154,11 @@ namespace livelywpf.Core
         public void Terminate()
         {
             Close();
+        }
+
+        public void Resume()
+        {
+            throw new NotImplementedException();
         }
     }
 
@@ -186,7 +196,7 @@ namespace livelywpf.Core
         }
         public Process GetProcess()
         {
-            throw new NotImplementedException();
+            return null;
         }
         public void Play()
         {
@@ -248,6 +258,11 @@ namespace livelywpf.Core
         {
             Close();
         }
+
+        public void Resume()
+        {
+            throw new NotImplementedException();
+        }
     }
 
     public class VideoPlayerWPF : IWallpaper
@@ -284,7 +299,7 @@ namespace livelywpf.Core
         }
         public Process GetProcess()
         {
-            throw new NotImplementedException();
+            return null;
         }
         public void Play()
         {
@@ -346,6 +361,213 @@ namespace livelywpf.Core
         {
             Close();
         }
+
+        public void Resume()
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class VideoPlayerVLCExt : IWallpaper
+    {
+        public VideoPlayerVLCExt(string path, LibraryModel model, LivelyScreen display)
+        {
+            ProcessStartInfo start = new ProcessStartInfo
+            {
+                Arguments = "\"" + path + "\"",
+                FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "libVLCPlayer", "libVLCPlayer.exe"),
+                RedirectStandardInput = true,
+                RedirectStandardOutput = true,
+                UseShellExecute = false,
+                WorkingDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "libVLCPlayer")
+            };
+
+            Process videoPlayerProc = new Process
+            {
+                StartInfo = start,
+                EnableRaisingEvents = true
+            };
+            //webProcess.OutputDataReceived += WebProcess_OutputDataReceived;
+
+            this.Proc = videoPlayerProc;
+            this.Model = model;
+            this.Display = display;
+        }
+        IntPtr HWND { get; set; }
+        Process Proc { get; set; }
+        LibraryModel Model { get; set; }
+        LivelyScreen Display { get; set; }
+        /// <summary>
+        /// copy of LivelyProperties.json file used to modify for current running screen.
+        /// </summary>
+        //string LivelyPropertyCopy { get; set; }
+
+        public event EventHandler<WindowInitializedArgs> WindowInitialized;
+
+        public void Close()
+        {
+            try
+            {
+                Proc.Refresh();
+                Proc.StandardInput.WriteLine("lively:terminate");
+                Proc.OutputDataReceived -= Proc_OutputDataReceived;
+            }
+            catch
+            {
+                try
+                {
+                    //force terminate.
+                    Proc.Kill();
+                    Proc.Close();
+                    SetupDesktop.RefreshDesktop();
+                }
+                catch { }
+            }
+        }
+
+        public IntPtr GetHWND()
+        {
+            return HWND;
+        }
+
+        public Process GetProcess()
+        {
+            return Proc;
+        }
+
+        public LivelyScreen GetScreen()
+        {
+            return Display;
+        }
+
+        public LibraryModel GetWallpaperData()
+        {
+            return Model;
+        }
+
+        public WallpaperType GetWallpaperType()
+        {
+            return Model.LivelyInfo.Type;
+        }
+
+        public void Pause()
+        {
+            SendMessage("lively:vid-pause");
+        }
+
+        public void Play()
+        {
+            SendMessage("lively:vid-play");
+        }
+
+        public void SetHWND(IntPtr hwnd)
+        {
+            this.HWND = hwnd;
+        }
+
+        public void Show()
+        {
+            if (Proc != null)
+            {
+                try
+                {
+                    Proc.Exited += Proc_Exited;
+                    Proc.OutputDataReceived += Proc_OutputDataReceived;
+                    Proc.Start();
+                    Proc.BeginOutputReadLine();
+                }
+                catch (Exception e)
+                {
+                    WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = false, Error = e, Msg = null });
+                    Close();
+                }
+            }
+        }
+
+        private void Proc_Exited(object sender, EventArgs e)
+        {
+            Proc.Close();
+            SetupDesktop.RefreshDesktop();
+        }
+
+        private void Proc_OutputDataReceived(object sender, DataReceivedEventArgs e)
+        {
+            bool status = true, initialized = false;
+            Exception error = null;
+            string msg = null;
+            try
+            {
+                IntPtr handle = new IntPtr();
+                //Retrieves the windowhandle of cefsubprocess, cefsharp is launching cef as a separate proces..
+                //If you add the full pgm as child of workerw then there are problems (prob related sharing input queue)
+                //Instead hiding the pgm window & adding cefrender window instead.
+                msg = "libVLCPlayer Handle:" + e.Data;
+                if (e.Data.Contains("HWND"))
+                {
+                    handle = new IntPtr(Convert.ToInt32(e.Data.Substring(4), 10));
+                    if (IntPtr.Equals(handle, IntPtr.Zero))//unlikely.
+                    {
+                        status = false;
+                    }
+                    SetHWND(handle);
+                }
+            }
+            catch (Exception ex)
+            {
+                status = false;
+                error = ex;
+            }
+
+            if (!initialized)
+            {
+                initialized = true;
+                WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = status, Error = error, Msg = msg });
+            }
+            Proc.OutputDataReceived -= Proc_OutputDataReceived;
+        }
+
+        public void Stop()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SendMessage(string msg)
+        {
+            if (Proc != null)
+            {
+                try
+                {
+                    Proc.StandardInput.WriteLine(msg);
+                }
+                catch { }
+            }
+        }
+
+        public string GetLivelyPropertyCopyPath()
+        {
+            return null;
+        }
+
+        public void SetScreen(LivelyScreen display)
+        {
+            this.Display = display;
+        }
+
+        public void Terminate()
+        {
+            try
+            {
+                Proc.Kill();
+                Proc.Close();
+            }
+            catch { }
+            SetupDesktop.RefreshDesktop();
+        }
+
+        public void Resume()
+        {
+            throw new NotImplementedException();
+        }
     }
 
     #endregion video players
@@ -387,7 +609,7 @@ namespace livelywpf.Core
 
         public Process GetProcess()
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         public LivelyScreen GetScreen()
@@ -454,6 +676,11 @@ namespace livelywpf.Core
         public void Terminate()
         {
             Close();
+        }
+
+        public void Resume()
+        {
+            throw new NotImplementedException();
         }
     }
 
@@ -741,6 +968,11 @@ namespace livelywpf.Core
             catch { }
             SetupDesktop.RefreshDesktop();
         }
+
+        public void Resume()
+        {
+            throw new NotImplementedException();
+        }
     }
 
     #endregion web browsers
@@ -804,6 +1036,8 @@ namespace livelywpf.Core
 
             try
             {
+                //Not reliable, app may refuse to close(dialogue window visible etc)
+                //Proc.CloseMainWindow();
                 Proc.Refresh();
                 Proc.Kill();
                 Proc.Close();
@@ -1059,6 +1293,11 @@ namespace livelywpf.Core
             }
             catch { }
             SetupDesktop.RefreshDesktop();
+        }
+
+        public void Resume()
+        {
+            throw new NotImplementedException();
         }
     }
 

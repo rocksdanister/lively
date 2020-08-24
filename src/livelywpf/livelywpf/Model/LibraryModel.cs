@@ -30,7 +30,8 @@ namespace livelywpf
             LivelyInfo = new LivelyInfoModel(data);
             Title = data.Title;
             Desc = data.Desc;
-            WpType = LocaliseWallpaperTypeEnum(data.Type);
+            Author = data.Author;
+            WallpaperType = LocaliseWallpaperTypeEnum(data.Type);
             SrcWebsite = GetUri(data.Contact, "https");
 
             if (data.IsAbsolutePath)
@@ -73,8 +74,8 @@ namespace livelywpf
             else
             {
                 //Only relative path is stored, this will be inside "Lively Wallpaper" folder.
-                if (data.Type == WallpaperType.url 
-                || data.Type == WallpaperType.videostream)
+                if (data.Type == livelywpf.WallpaperType.url 
+                || data.Type == livelywpf.WallpaperType.videostream)
                 {
                     //no file.
                     FilePath = data.FileName;
@@ -163,8 +164,8 @@ namespace livelywpf
             get { return _filePath; }
             set
             {
-                if (LivelyInfo.Type == WallpaperType.url 
-                || LivelyInfo.Type == WallpaperType.videostream)
+                if (LivelyInfo.Type == livelywpf.WallpaperType.url 
+                || LivelyInfo.Type == livelywpf.WallpaperType.videostream)
                 {
                     _filePath = value;
                 }
@@ -201,6 +202,20 @@ namespace livelywpf
             }
         }
 
+        private string _author;
+        public string Author
+        {
+            get
+            {
+                return _author;
+            }
+            set
+            {
+                _author = string.IsNullOrWhiteSpace(value) ? "-" : value;
+                OnPropertyChanged("Author");
+            }
+        }
+
         private string _desc;
         public string Desc
         {
@@ -210,7 +225,7 @@ namespace livelywpf
             }
             set
             {
-                _desc = value;
+                _desc = string.IsNullOrWhiteSpace(value) ? "-" : value;
                 OnPropertyChanged("Desc");
             }
         }
@@ -271,20 +286,20 @@ namespace livelywpf
             }
         }
 
-        private string _wpType;
+        private string _wallpaperType;
         /// <summary>
         /// Localised wallpapertype text.
         /// </summary>
-        public string WpType
+        public string WallpaperType
         {
             get
             {
-                return _wpType;
+                return _wallpaperType;
             }
             set
             {
-                _wpType = value;
-                OnPropertyChanged("WpType");
+                _wallpaperType = value;
+                OnPropertyChanged("WallpaperType");
             }
         }
 
@@ -339,17 +354,17 @@ namespace livelywpf
         {
             string localisedText = type switch
             {
-                WallpaperType.app => Properties.Resources.TextApplication,
-                WallpaperType.unity => Properties.Resources.TextApplication + " Unity",
-                WallpaperType.godot => Properties.Resources.TextApplication + " Godot",
-                WallpaperType.unityaudio => Properties.Resources.TextApplication + " Unity " + Properties.Resources.TitleAudio,
-                WallpaperType.bizhawk => Properties.Resources.TextApplication + " Bizhawk",
-                WallpaperType.web => Properties.Resources.TextWebsite,
-                WallpaperType.webaudio => Properties.Resources.TextWebsite + " " + Properties.Resources.TitleAudio,
-                WallpaperType.url => Properties.Resources.TextOnline,
-                WallpaperType.video => Properties.Resources.TextVideo,
-                WallpaperType.gif => Properties.Resources.TextGIF,
-                WallpaperType.videostream => Properties.Resources.TextWebStream,
+                livelywpf.WallpaperType.app => Properties.Resources.TextApplication,
+                livelywpf.WallpaperType.unity => Properties.Resources.TextApplication + " Unity",
+                livelywpf.WallpaperType.godot => Properties.Resources.TextApplication + " Godot",
+                livelywpf.WallpaperType.unityaudio => Properties.Resources.TextApplication + " Unity " + Properties.Resources.TitleAudio,
+                livelywpf.WallpaperType.bizhawk => Properties.Resources.TextApplication + " Bizhawk",
+                livelywpf.WallpaperType.web => Properties.Resources.TextWebsite,
+                livelywpf.WallpaperType.webaudio => Properties.Resources.TextWebsite + " " + Properties.Resources.TitleAudio,
+                livelywpf.WallpaperType.url => Properties.Resources.TextOnline,
+                livelywpf.WallpaperType.video => Properties.Resources.TextVideo,
+                livelywpf.WallpaperType.gif => Properties.Resources.TextGIF,
+                livelywpf.WallpaperType.videostream => Properties.Resources.TextWebStream,
                 _ => "Nil",
             };
             return localisedText;

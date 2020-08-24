@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.IO;
 using System.Threading;
-using System.Threading.Tasks;
 using LibVLCSharp.Shared;
 
 namespace livelywpf
@@ -18,7 +16,7 @@ namespace livelywpf
 
         public void Initialize(string savePath, int width, int height, int left, int top)
         {
-            LibVLCSharp.Shared.Core.Initialize();
+            LibVLCSharp.Shared.Core.Initialize(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "libVLCPlayer", "libvlc", "win-x86"));
             libVLC = new LibVLC();
             mediaPlayer = new MediaPlayer(libVLC);
             media = new Media(libVLC, "screen://", FromType.FromLocation);
@@ -28,6 +26,7 @@ namespace livelywpf
             media.AddOption(":screen-height=" + height);
             media.AddOption(":screen-fps=24");
             media.AddOption(":sout=#transcode{vcodec=h264,vb=0,scale=0,acodec=mp4a,ab=128,channels=2,samplerate=44100}:file{dst=" + savePath + "}");
+            //media.AddOption(":sout=#transcode{vcodec=hevc,vb=0,scale=0,acodec=mp4a,ab=128,channels=2,samplerate=44100}:file{dst=" + savePath + "}");
             media.AddOption(":sout-keep");
         }
 

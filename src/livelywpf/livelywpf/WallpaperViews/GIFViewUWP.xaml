@@ -8,6 +8,7 @@
         Left='-9999'
         ResizeMode="NoResize"
         WindowStyle="None"
+        ShowInTaskbar="False"
         mc:Ignorable="d"
         Title="GIFViewUWP" Height="450" Width="800"
         Background="#FF2B2B2B">

@@ -15,14 +15,20 @@ namespace livelywpf
 {
     public class Program
     {
+        #region init
+
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private static readonly Mutex mutex = new Mutex(false, "LIVELY:DESKTOPWALLPAPERSYSTEM");
         public static string WallpaperDir; //Loaded from Settings.json
-        public static readonly string AppDataDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Lively Wallpaper");
+        public static readonly string AppDataDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Lively Wallpaper");
 
         public static SettingsViewModel SettingsVM;
         public static ApplicationRulesViewModel AppRulesVM;
         public static LibraryViewModel LibraryVM;
+
+        #endregion //init
+
+        #region app entry
 
         [System.STAThreadAttribute()]
         public static void Main()
@@ -51,6 +57,8 @@ namespace livelywpf
 
             try
             {
+                //XAML Islands, uwp root app is used to discover win10 controls.
+                //See App.xaml.cs for wpf startup override fn.
                 using (var uwp = new rootuwp.App())
                 {
                     //uwp.RequestedTheme = Windows.UI.Xaml.ApplicationTheme.Light;
@@ -89,48 +97,103 @@ namespace livelywpf
             LibraryVM.RestoreWallpaperFromSave();
         }
 
+        #endregion //app entry
+
+        #region app updater
+
+        private static Uri gitUpdateUri;
+        private static string gitUpdatChangelog;
+        private static bool _showUpdateDialog = false;
         private static async void AppUpdater()
         {
             try
             {
-                var gitRelease = await UpdaterGithub.GetLatestRelease("lively", "rocksdanister", 10000);
+                var gitRelease = await UpdaterGithub.GetLatestRelease("lively", "rocksdanister", 1000);
                 int result = UpdaterGithub.CompareAssemblyVersion(gitRelease);
                 if (result > 0)
                 {
                     try
                     {
                         //download asset format: lively_setup_x86_full_vXXXX.exe, XXXX - 4 digit version no.
-                        var gitUrl = await UpdaterGithub.GetAssetUrl("lively_setup_x86_full", gitRelease, "lively", "rocksdanister");
+                        var gitUrl = await UpdaterGithub.GetAssetUrl("lively_setup_x86_full", 
+                            gitRelease, "lively", "rocksdanister");
 
                         //changelog text
                         StringBuilder sb = new StringBuilder(gitRelease.Body);
                         //formatting git text.
                         sb.Replace("#", "").Replace("\t", "  ");
-                        Views.AppUpdaterView updateWindow = new Views.AppUpdaterView(new Uri(gitUrl), sb.ToString())
+                        gitUpdatChangelog = sb.ToString();
+                        sb.Clear();
+                        gitUpdateUri = new Uri(gitUrl);
+
+                        if(App.AppWindow.IsVisible)
                         {
-                            WindowStartupLocation = WindowStartupLocation.CenterScreen
-                        };
-                        updateWindow.Show();
+                            ShowUpdateDialog();
+                        }
+                        else
+                        {
+                            _showUpdateDialog = true;
+                            sysTray.ShowBalloonNotification(4000, 
+                                Properties.Resources.TitleAppName,
+                                Properties.Resources.DescriptionUpdateAvailable);
+                        }
                     }
                     catch (Exception e)
                     {
                         Logger.Error("Error retriving asseturl for update: " + e.Message);
                     }
+                    sysTray.UpdateTrayBtn.Text = Properties.Resources.TextUpdateAvailable;
+                    sysTray.UpdateTrayBtn.Enabled = true;
                 }
                 else if (result < 0)
                 {
                     //beta release.
+                    sysTray.UpdateTrayBtn.Text = "o_O";
                 }
                 else
                 {
                     //up-to-date
+                    sysTray.UpdateTrayBtn.Text = Properties.Resources.TextUpdateUptodate;
                 }
             }
             catch (Exception e)
             {
                 Logger.Error("Git update check fail:" + e.Message);
+                sysTray.UpdateTrayBtn.Text = Properties.Resources.TextupdateCheckFail;
+                sysTray.UpdateTrayBtn.Enabled = true;
             }
         }
+
+        private static Views.AppUpdaterView updateWindow = null;
+        public static void ShowUpdateDialog()
+        {
+            _showUpdateDialog = false;
+            if (updateWindow == null)
+            {
+                updateWindow = new Views.AppUpdaterView(gitUpdateUri, gitUpdatChangelog);
+                if (App.AppWindow.IsVisible)
+                {
+                    updateWindow.Owner = App.AppWindow;
+                    updateWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                }
+                else
+                {
+                    updateWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                }
+                updateWindow.Closed += UpdateWindow_Closed;
+                updateWindow.Show();
+            }
+        }
+
+        private static void UpdateWindow_Closed(object sender, EventArgs e)
+        {
+            updateWindow.Closed -= UpdateWindow_Closed;
+            updateWindow = null;
+        }
+
+        #endregion //app updater.
+
+        #region app sessons
 
         private static void App_SessionEnding(object sender, SessionEndingCancelEventArgs e)
         {
@@ -155,15 +218,19 @@ namespace livelywpf
                     setupWizard = null;
                 }
 
+                if(_showUpdateDialog)
+                {
+                    ShowUpdateDialog();
+                }
+
                 App.AppWindow.Show();
                 App.AppWindow.WindowState = App.AppWindow.WindowState != WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
             }
         }
 
-        [Obsolete("not working, mutex delay is too low so its sending msg to show mainwindow instead.")]
         public static void RestartApplication()
         {
-            Process.Start(Application.ResourceAssembly.Location);
+            Process.Start(Path.ChangeExtension(System.Reflection.Assembly.GetExecutingAssembly().Location, ".exe"));
             ExitApplication();
         }
 
@@ -177,5 +244,7 @@ namespace livelywpf
             }
             System.Windows.Application.Current.Shutdown();
         }
+
+        #endregion //app sessions
     }
 }

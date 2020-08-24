@@ -29,6 +29,11 @@ namespace livelywpf
 
         #region core
 
+        static SetupDesktop()
+        {
+            SystemEvents.DisplaySettingsChanged += SystemEvents_DisplaySettingsChanged;
+        }
+
         public static void SetWallpaper(LibraryModel wp, LivelyScreen targetDisplay)
         {
             if (SystemParameters.HighContrast)
@@ -95,12 +100,12 @@ namespace livelywpf
                 }
                 else
                 {
+                    Logger.Info("Core Initialized");
                     _isInitialized = true;
                     processMonitor = new Playback();
                     processMonitor.Start();
-                    SystemEvents.DisplaySettingsChanged += SystemEvents_DisplaySettingsChanged;
                     WallpaperChanged += SetupDesktop_WallpaperChanged;
-                    Logger.Info("Core Initialized");
+                    StartLivelySubProcess();
                 }
             }
 
@@ -119,11 +124,6 @@ namespace livelywpf
             {
                 System.Windows.MessageBox.Show("not supported currently");
                 return;
-
-                wp.ItemStartup = true;
-                var item = new ExtPrograms(wp.FilePath, wp, targetDisplay);
-                item.WindowInitialized += SetupDesktop_WallpaperInitialized;
-                item.Show();
             }
             else if(wp.LivelyInfo.Type == WallpaperType.video)
             {
@@ -135,7 +135,15 @@ namespace livelywpf
                 }
                 else if(Program.SettingsVM.Settings.VideoPlayer == LivelyMediaPlayer.libvlc)
                 {
+                    wp.ItemStartup = true;
                     var item = new VideoPlayerVLC(wp.FilePath, wp, targetDisplay);
+                    item.WindowInitialized += SetupDesktop_WallpaperInitialized;
+                    item.Show();
+                }
+                else if(Program.SettingsVM.Settings.VideoPlayer == LivelyMediaPlayer.libvlcExt)
+                {
+                    wp.ItemStartup = true;
+                    var item = new VideoPlayerVLCExt(wp.FilePath, wp, targetDisplay);
                     item.WindowInitialized += SetupDesktop_WallpaperInitialized;
                     item.Show();
                 }
@@ -148,6 +156,7 @@ namespace livelywpf
             }
             else if(wp.LivelyInfo.Type == WallpaperType.videostream)
             {
+                wp.ItemStartup = true;
                 var item = new VideoPlayerVLC(wp.FilePath, wp, targetDisplay);
                 item.WindowInitialized += SetupDesktop_WallpaperInitialized;
                 item.Show();
@@ -170,6 +179,11 @@ namespace livelywpf
             }));
             if (e.Success)
             {
+                if(wallpaper.GetProcess() != null)
+                {
+                    SendMsgLivelySubProcess("lively:add-pgm " + wallpaper.GetProcess().Id);
+                }
+
                 //preview and create gif and thumbnail for user dropped file.
                 if (wallpaper.GetWallpaperData().DataType == LibraryTileType.processing)
                 {
@@ -248,6 +262,8 @@ namespace livelywpf
         {
             try
             {
+                int index;
+                var allScreens = ScreenHelper.GetScreen();
                 if (ScreenHelper.ScreenCount() != screenList.Count)
                 {
                     Logger.Info("System parameters changed: Screen Connected/Disconnected");
@@ -255,7 +271,7 @@ namespace livelywpf
                     Wallpapers.ForEach(x =>
                     {
                         bool found = false;
-                        foreach (var item in ScreenHelper.GetScreen())
+                        foreach (var item in allScreens)
                         {
                             if (ScreenHelper.ScreenCompare(x.GetScreen(), item, DisplayIdentificationMode.screenLayout))
                             {
@@ -271,11 +287,16 @@ namespace livelywpf
 
                     if (orphans.Count != 0)
                     {
-                        if (orphans.FindIndex(x => ScreenHelper.ScreenCompare(Program.SettingsVM.Settings.SelectedDisplay, x.GetScreen(), DisplayIdentificationMode.screenLayout)) != -1)
+                        if ((index = allScreens.FindIndex(x => ScreenHelper.ScreenCompare(
+                            Program.SettingsVM.Settings.SelectedDisplay, x, DisplayIdentificationMode.screenLayout))) != -1)
+                        {
+                            Program.SettingsVM.Settings.SelectedDisplay = allScreens[index];
+                        }
+                        else
                         {
                             Program.SettingsVM.Settings.SelectedDisplay = ScreenHelper.GetPrimaryScreen();
-                            Program.SettingsVM.UpdateConfigFile();
                         }
+                        Program.SettingsVM.UpdateConfigFile();
 
                         orphans.ForEach(x =>
                         {
@@ -290,10 +311,20 @@ namespace livelywpf
                 else
                 {
                     Logger.Info("System parameters changed: Screen Properties");
+                    if ((index = allScreens.FindIndex(x => ScreenHelper.ScreenCompare(
+                        Program.SettingsVM.Settings.SelectedDisplay, x, DisplayIdentificationMode.screenLayout))) != -1)
+                    {
+                        Program.SettingsVM.Settings.SelectedDisplay = allScreens[index];
+                    }
+                    else
+                    {
+                        Program.SettingsVM.Settings.SelectedDisplay = ScreenHelper.GetPrimaryScreen();
+                    }
+                    Program.SettingsVM.UpdateConfigFile();
                     UpdateWallpaperRect();
                 }
                 screenList.Clear();
-                screenList.AddRange(ScreenHelper.GetScreen());
+                screenList.AddRange(allScreens);
             }
             catch(Exception ex)
             {
@@ -346,14 +377,52 @@ namespace livelywpf
 
         public static void ShutDown()
         {
-            if(_isInitialized)
+            SystemEvents.DisplaySettingsChanged -= SystemEvents_DisplaySettingsChanged;
+            if (_isInitialized)
             {
                 WallpaperChanged -= SetupDesktop_WallpaperChanged;
-                SystemEvents.DisplaySettingsChanged -= SystemEvents_DisplaySettingsChanged;
                 processMonitor.Stop();
                 //CloseAllWallpapersWithoutEvent();
                 TerminateAllWallpapersWithoutEvent();
                 RefreshDesktop();
+            }
+        }
+
+        private static Process livelySubProcess;
+        private static void StartLivelySubProcess()
+        {
+            try
+            {
+                ProcessStartInfo start = new ProcessStartInfo()
+                {
+                    Arguments = Process.GetCurrentProcess().Id.ToString(System.Globalization.CultureInfo.InvariantCulture),
+                    FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "subproc", "livelySubProcess.exe"),
+                    RedirectStandardInput = true,
+                    //RedirectStandardOutput = true,
+                    UseShellExecute = false,
+                };
+
+                livelySubProcess = new Process
+                {
+                    StartInfo = start,
+                };
+                livelySubProcess.Start();
+            }
+            catch (Exception e)
+            {
+                Logger.Error("subProcess start fail:" + e.Message);
+            }
+        }
+
+        private static void SendMsgLivelySubProcess(string text)
+        {
+            if(livelySubProcess != null)
+            {
+                try
+                {
+                    livelySubProcess.StandardInput.WriteLine(text);
+                }
+                catch { }
             }
         }
 
@@ -497,14 +566,21 @@ namespace livelywpf
             Wallpapers.ForEach(x => x.Close());
             Wallpapers.Clear();
             WallpaperChanged?.Invoke(null, null);
+            SendMsgLivelySubProcess("lively:clear");
         }
 
         public static void CloseWallpaper(WallpaperType type)
         {
             Wallpapers.ForEach(x => 
             { 
-                if (x.GetWallpaperType() == type) 
-                    x.Close();             
+                if (x.GetWallpaperType() == type)
+                {
+                    if (x.GetProcess() != null)
+                    {
+                        SendMsgLivelySubProcess("lively:rmv-pgm " + x.GetProcess().Id);
+                    }
+                    x.Close();
+                }         
             });
             Wallpapers.RemoveAll(x => x.GetWallpaperType() == type);
             WallpaperChanged?.Invoke(null, null);
@@ -515,7 +591,13 @@ namespace livelywpf
             Wallpapers.ForEach(x =>
             {
                 if (ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.screenLayout))
+                {
+                    if(x.GetProcess() != null)
+                    {
+                        SendMsgLivelySubProcess("lively:rmv-pgm " + x.GetProcess().Id);
+                    }
                     x.Close();
+                }
             });
             Wallpapers.RemoveAll(x => ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.screenLayout));
             WallpaperChanged?.Invoke(null, null);
@@ -526,7 +608,13 @@ namespace livelywpf
             Wallpapers.ForEach(x =>
             {
                 if (x.GetWallpaperData() == wp)
+                {
+                    if (x.GetProcess() != null)
+                    {
+                        SendMsgLivelySubProcess("lively:rmv-pgm " + x.GetProcess().Id);
+                    }
                     x.Close();
+                }
             });
             Wallpapers.RemoveAll(x => x.GetWallpaperData() == wp);
             WallpaperChanged?.Invoke(null, null);
@@ -542,7 +630,9 @@ namespace livelywpf
             Wallpapers.ForEach(x =>
             {
                 if (x.GetWallpaperData() == wp)
+                {
                     x.SendMessage(msg);
+                }
             });
         }
 
@@ -560,7 +650,13 @@ namespace livelywpf
             Wallpapers.ForEach(x =>
             {
                 if (ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.screenLayout))
+                {
+                    if (x.GetProcess() != null)
+                    {
+                        SendMsgLivelySubProcess("lively:rmv-pgm " + x.GetProcess().Id);
+                    }
                     x.Close();
+                }
             });
             Wallpapers.RemoveAll(x => ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.screenLayout));
         }
@@ -569,18 +665,21 @@ namespace livelywpf
         {
             Wallpapers.ForEach(x => x.Close());
             Wallpapers.Clear();
+            SendMsgLivelySubProcess("lively:clear");
         }
 
         public static void TerminateAllWallpapers()
         {
             Wallpapers.ForEach(x => x.Terminate());
             Wallpapers.Clear();
+            SendMsgLivelySubProcess("lively:clear");
         }
 
         private static void TerminateAllWallpapersWithoutEvent()
         {
             Wallpapers.ForEach(x => x.Terminate());
             Wallpapers.Clear();
+            SendMsgLivelySubProcess("lively:clear");
         }
 
         #endregion //wallpaper close

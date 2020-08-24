@@ -22,7 +22,7 @@ namespace livelywpf.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Icons {
+    public class Icons {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace livelywpf.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("livelywpf.Properties.Icons", typeof(Icons).Assembly);
@@ -51,7 +51,7 @@ namespace livelywpf.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace livelywpf.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon appicon {
+        public static System.Drawing.Icon appicon {
             get {
                 object obj = ResourceManager.GetObject("appicon", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
@@ -73,7 +73,7 @@ namespace livelywpf.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap appicon_96 {
+        public static System.Drawing.Bitmap appicon_96 {
             get {
                 object obj = ResourceManager.GetObject("appicon_96", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -83,7 +83,7 @@ namespace livelywpf.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon icons8_close_window_96 {
+        public static System.Drawing.Icon icons8_close_window_96 {
             get {
                 object obj = ResourceManager.GetObject("icons8_close_window_96", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
@@ -93,7 +93,7 @@ namespace livelywpf.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_close_window_961 {
+        public static System.Drawing.Bitmap icons8_close_window_961 {
             get {
                 object obj = ResourceManager.GetObject("icons8_close_window_961", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -103,7 +103,7 @@ namespace livelywpf.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_delete_52 {
+        public static System.Drawing.Bitmap icons8_delete_52 {
             get {
                 object obj = ResourceManager.GetObject("icons8_delete_52", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -113,7 +113,7 @@ namespace livelywpf.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_heart_48 {
+        public static System.Drawing.Bitmap icons8_heart_48 {
             get {
                 object obj = ResourceManager.GetObject("icons8_heart_48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -123,7 +123,7 @@ namespace livelywpf.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_home_64 {
+        public static System.Drawing.Bitmap icons8_home_64 {
             get {
                 object obj = ResourceManager.GetObject("icons8_home_64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -133,7 +133,7 @@ namespace livelywpf.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon icons8_home_page_96 {
+        public static System.Drawing.Icon icons8_home_page_96 {
             get {
                 object obj = ResourceManager.GetObject("icons8_home_page_96", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
@@ -143,7 +143,7 @@ namespace livelywpf.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_home_page_961 {
+        public static System.Drawing.Bitmap icons8_home_page_961 {
             get {
                 object obj = ResourceManager.GetObject("icons8_home_page_961", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -153,7 +153,7 @@ namespace livelywpf.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_pause_52 {
+        public static System.Drawing.Bitmap icons8_pause_52 {
             get {
                 object obj = ResourceManager.GetObject("icons8_pause_52", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -163,7 +163,7 @@ namespace livelywpf.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap tutorial_systray {
+        public static System.Drawing.Bitmap tutorial_systray {
             get {
                 object obj = ResourceManager.GetObject("tutorial_systray", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));

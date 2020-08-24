@@ -120,7 +120,7 @@ namespace livelywpf
 
         #region wallpaper operations
 
-        public void WallpaperSet(object obj, LivelyScreen targetDisplay = null)
+        public bool WallpaperSet(object obj, LivelyScreen targetDisplay = null)
         {
             var selection = (LibraryModel)obj;
             bool fileExists;
@@ -145,13 +145,17 @@ namespace livelywpf
             if (!fileExists)
             {
                 MessageBox.Show("File Not Found!", Properties.Resources.TextError);
-                return;
+                return false;
             }
 
             if (targetDisplay == null)
                 SetupDesktop.SetWallpaper(selection, Program.SettingsVM.Settings.SelectedDisplay);
-            else
+            else if (ScreenHelper.ScreenExists(targetDisplay, DisplayIdentificationMode.screenLayout))
                 SetupDesktop.SetWallpaper(selection, targetDisplay);
+            else
+                return false;
+
+            return true;
         }
 
         public void WallpaperSendMsg(object obj, string message)

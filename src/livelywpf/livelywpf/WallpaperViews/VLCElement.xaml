@@ -10,6 +10,7 @@
         Left='-9999'
         WindowStyle="None"
         ResizeMode="NoResize"
+        Loaded="Window_Loaded"
         Closing="Window_Closing" Background="#FF2B2B2B">
     <Grid>
         <wpf:VideoView x:Name="videoView"/>

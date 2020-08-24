@@ -1,8 +1,12 @@
-﻿using System;
+﻿using Microsoft.Toolkit.Wpf.UI.XamlHost;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Navigation;
 
 namespace livelywpf.Views
 {
@@ -110,6 +114,50 @@ namespace livelywpf.Views
                 App.AppWindow.NavViewNavigate("library");
             }
             filterString.Clear();
+        }
+
+        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            try
+            {
+                var ps = new ProcessStartInfo(e.Uri.AbsoluteUri)
+                {
+                    UseShellExecute = true,
+                    Verb = "open"
+                };
+                Process.Start(ps);
+            }
+            catch { }
+            e.Handled = true;
+        }
+
+        Windows.UI.Xaml.Controls.Image img;
+        private void PreviewGif_ChildChanged(object sender, EventArgs e)
+        {
+            WindowsXamlHost windowsXamlHost = (WindowsXamlHost)sender;
+            img = (Windows.UI.Xaml.Controls.Image)windowsXamlHost.Child;
+            if (img != null)
+            {
+                var imgPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Docs", "drag_drop_animation.gif");
+                if(File.Exists(imgPath))
+                {
+                    var bmi = new Windows.UI.Xaml.Media.Imaging.BitmapImage(new Uri(imgPath))
+                    {
+                        DecodePixelWidth = 320,
+                        DecodePixelHeight = 180
+                    };
+                    img.Source = bmi;
+                }
+            }
+        }
+
+        private void Page_Unloaded(object sender, RoutedEventArgs e)
+        {
+            //Still rendering otherwise?!
+            if(img != null)
+            {
+                img.Source = null;
+            }
         }
     }
 }

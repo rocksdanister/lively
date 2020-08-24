@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Interop;
 using LibVLCSharp.Shared;
 
 namespace livelywpf
@@ -21,6 +22,7 @@ namespace livelywpf
         Media _media;
         string _filePath;
         bool _isStream;
+        //float vidPosition;
 
         public VLCElement(string filePath, bool isStream = false)
         {
@@ -30,36 +32,58 @@ namespace livelywpf
             _isStream = isStream;
         }
 
-        //todo errorhandling
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            //ShowInTaskbar = false :- causing issue with windows10 Taskview.
+            WindowOperations.RemoveWindowFromTaskbar(new WindowInteropHelper(this).Handle);
+            this.ShowInTaskbar = false;
+            this.ShowInTaskbar = true;
+        }
+
         async void VideoView_Loaded(object sender, RoutedEventArgs e)
         {
-            LibVLCSharp.Shared.Core.Initialize();
+            try
+            {
+                LibVLCSharp.Shared.Core.Initialize(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "libVLCPlayer", "libvlc", "win-x86"));
 
-            //flags: 
-            //"--no-disable-screensaver" : enable monitor sleep.
-            //ref: https://wiki.videolan.org/VLC_command-line_help
-            _libVLC = new LibVLC("--no-disable-screensaver");
-            _mediaPlayer = new MediaPlayer(_libVLC)
-            {
-                AspectRatio = "Fill",
-                EnableHardwareDecoding = true
-            };
-            _mediaPlayer.EndReached += _mediaPlayer_EndReached;
-            videoView.MediaPlayer = _mediaPlayer;
+                //flags: 
+                //"--no-disable-screensaver" : enable monitor sleep.
+                //ref: https://wiki.videolan.org/VLC_command-line_help
+                _libVLC = new LibVLC("--no-disable-screensaver");
+                _mediaPlayer = new MediaPlayer(_libVLC)
+                {
+                    AspectRatio = "Fill",
+                    EnableHardwareDecoding = true
+                };
+                _mediaPlayer.EndReached += _mediaPlayer_EndReached;
+                _mediaPlayer.EncounteredError += _mediaPlayer_EncounteredError;
+                videoView.MediaPlayer = _mediaPlayer;
 
-            if (_isStream)
-            {
-                //ref: https://code.videolan.org/videolan/LibVLCSharp/-/issues/156#note_35657
-                _media = new Media(_libVLC, _filePath, FromType.FromLocation);
-                await _media.Parse(MediaParseOptions.ParseNetwork);
-                _mediaPlayer.Play(_media.SubItems.First());
+                if (_isStream)
+                {
+                    //ref: https://code.videolan.org/videolan/LibVLCSharp/-/issues/156#note_35657
+                    _media = new Media(_libVLC, _filePath, FromType.FromLocation);
+                    await _media.Parse(MediaParseOptions.ParseNetwork);
+                    _mediaPlayer.Play(_media.SubItems.First());
+                }
+                else
+                {
+                    _media = new Media(_libVLC, _filePath, FromType.FromPath);
+                    _mediaPlayer.Play(_media);
+                }
+                _mediaReady = true;
             }
-            else
+            catch(Exception ex)
             {
-                _media = new Media(_libVLC, _filePath, FromType.FromPath);
-                _mediaPlayer.Play(_media);
+                Logger.Error(ex.ToString());
             }
-            _mediaReady = true;
+
+        }
+
+        private void _mediaPlayer_EncounteredError(object sender, EventArgs e)
+        {
+            Logger.Error("libVLC Playback Failure:" + e.ToString());
+            MessageBox.Show(Properties.Resources.LivelyExceptionMediaPlayback);
         }
 
         private void _mediaPlayer_EndReached(object sender, EventArgs e)
@@ -78,17 +102,18 @@ namespace livelywpf
         {
             if (_mediaPlayer.IsPlaying && _mediaReady)
             {
+                //vidPosition = _mediaPlayer.Position;
+                //_mediaPlayer.Stop();
                 _mediaPlayer.Pause();
-                //ThreadPool.QueueUserWorkItem(_ => _mediaPlayer.Pause());
             }
         }
 
         public void PlayMedia()
         {
-            if (_mediaReady)
+            if (_mediaReady && !_mediaPlayer.IsPlaying)
             {
                 _mediaPlayer.Play();
-                //ThreadPool.QueueUserWorkItem(_ => _mediaPlayer.Play());
+                //_mediaPlayer.Position = vidPosition;
             }
         }
 
@@ -103,11 +128,18 @@ namespace livelywpf
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            _mediaReady = false;
-            _mediaPlayer.EndReached -= _mediaPlayer_EndReached;
-            _mediaPlayer.Dispose();
-            _libVLC.Dispose();
-            _media.Dispose();
+            try
+            {
+                _mediaReady = false;
+                _mediaPlayer.EndReached -= _mediaPlayer_EndReached;
+                _mediaPlayer.Dispose();
+                _libVLC.Dispose();
+                _media.Dispose();
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.ToString());
+            }
         }
     }
 }

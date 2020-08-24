@@ -120,6 +120,7 @@ namespace livelywpf
     {
         wmf,
         libvlc,
+        libvlcExt,
         libmpv
     }
 
