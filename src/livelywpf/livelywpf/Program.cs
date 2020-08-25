@@ -57,8 +57,8 @@ namespace livelywpf
 
             try
             {
-                //XAML Islands, uwp root app is used to discover win10 controls.
-                //See App.xaml.cs for wpf startup override fn.
+                //XAML Islands, uwp entry app.
+                //See App.xaml.cs for wpf app startup override fn.
                 using (var uwp = new rootuwp.App())
                 {
                     //uwp.RequestedTheme = Windows.UI.Xaml.ApplicationTheme.Light;
@@ -108,7 +108,7 @@ namespace livelywpf
         {
             try
             {
-                var gitRelease = await UpdaterGithub.GetLatestRelease("lively", "rocksdanister", 1000);
+                var gitRelease = await UpdaterGithub.GetLatestRelease("lively", "rocksdanister", 2500);
                 int result = UpdaterGithub.CompareAssemblyVersion(gitRelease);
                 if (result > 0)
                 {

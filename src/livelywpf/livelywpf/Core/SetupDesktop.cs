@@ -298,12 +298,19 @@ namespace livelywpf
                         }
                         Program.SettingsVM.UpdateConfigFile();
 
-                        orphans.ForEach(x =>
+                        if(Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span)
                         {
-                            Logger.Info("System parameters changed: Disconnected Screen -> " + x.GetScreen().DeviceName + " " + x.GetScreen().Bounds);
-                            x.Close();
-                        });
-                        Wallpapers.RemoveAll(x => orphans.Contains(x));
+                            UpdateWallpaperRect();
+                        }
+                        else
+                        {
+                            orphans.ForEach(x =>
+                            {
+                                Logger.Info("System parameters changed: Disconnected Screen -> " + x.GetScreen().DeviceName + " " + x.GetScreen().Bounds);
+                                x.Close();
+                            });
+                            Wallpapers.RemoveAll(x => orphans.Contains(x));
+                        }
                         orphans.Clear();
                     }
                     WallpaperChanged?.Invoke(null, null);
@@ -334,27 +341,45 @@ namespace livelywpf
 
         private static void UpdateWallpaperRect()
         {
-            //Known issue: If resolution is changed along with dpi is also changed, then this method will produce unreliable results.
+            //Known issues: If resolution is changed along with dpi is also changed, then this method will produce unreliable results, multiscreen bugs.
             //Possible cause: the window being used as reference is not updated to the new dpi in time?
-            int i;
-            NativeMethods.RECT prct = new NativeMethods.RECT();
-            foreach (var item in ScreenHelper.GetScreen())
+            if (ScreenHelper.IsMultiScreen() && Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span)
             {
-                //If number of connected devices is unchanged -> devicename is also unchanged?
-                if((i = Wallpapers.FindIndex(x=> ScreenHelper.ScreenCompare(item, x.GetScreen(), DisplayIdentificationMode.screenClass))) != -1)
+                if(Wallpapers.Count != 0)
                 {
-                    Logger.Info("System parameters changed: Screen Param old/new -> " + Wallpapers[i].GetScreen().Bounds + "/" + item.Bounds);
-                    //Using this window as reference for MapWindowPoints.                  
-                    Window w = new Window() { Width = 10, Height = 10};
-                    w.Show();
-                    NativeMethods.SetWindowPos(new WindowInteropHelper(w).Handle, 1, item.Bounds.Left, item.Bounds.Top, 0, 0,
-                            (int)NativeMethods.SetWindowPosFlags.SWP_NOACTIVATE | (int)NativeMethods.SetWindowPosFlags.SWP_NOSIZE);
-                    NativeMethods.MapWindowPoints(new WindowInteropHelper(w).Handle, workerw, ref prct, 2);
-                    w.Close();
+                    NativeMethods.RECT prct = new NativeMethods.RECT();
+                    //get spawned workerw rectangle data.
+                    NativeMethods.GetWindowRect(workerw, out prct);
 
-                    //Updating position and data of wallpaper.
-                    NativeMethods.SetWindowPos(Wallpapers[i].GetHWND(), 1, prct.Left, prct.Top, (item.Bounds.Width), (item.Bounds.Height), 0 | 0x0010);
-                    Wallpapers[i].SetScreen(item);
+                    //fill wp into the whole workerw area.
+                    if (!NativeMethods.SetWindowPos(Wallpapers[0].GetHWND(), 1, 0, 0, prct.Right - prct.Left, prct.Bottom - prct.Top, 0 | 0x0010))
+                    {
+                        NLogger.LogWin32Error("setwindowpos fail SpanWallpaper(),");
+                    }
+                }
+            }
+            else
+            {
+                int i;
+                NativeMethods.RECT prct = new NativeMethods.RECT();
+                foreach (var item in ScreenHelper.GetScreen())
+                {
+                    //If number of connected devices is unchanged -> devicename is also unchanged?
+                    if ((i = Wallpapers.FindIndex(x => ScreenHelper.ScreenCompare(item, x.GetScreen(), DisplayIdentificationMode.screenClass))) != -1)
+                    {
+                        Logger.Info("System parameters changed: Screen Param old/new -> " + Wallpapers[i].GetScreen().Bounds + "/" + item.Bounds);
+                        //Using this window as reference for MapWindowPoints position.                  
+                        Window w = new Window() { Width = 10, Height = 10};
+                        w.Show();
+                        NativeMethods.SetWindowPos(new WindowInteropHelper(w).Handle, 1, item.Bounds.Left, item.Bounds.Top, 0, 0,
+                                (int)NativeMethods.SetWindowPosFlags.SWP_NOACTIVATE | (int)NativeMethods.SetWindowPosFlags.SWP_NOSIZE);
+                        NativeMethods.MapWindowPoints(new WindowInteropHelper(w).Handle, workerw, ref prct, 2);
+                        w.Close();
+
+                        //Updating position and data of wallpaper.
+                        NativeMethods.SetWindowPos(Wallpapers[i].GetHWND(), 1, prct.Left, prct.Top, (item.Bounds.Width), (item.Bounds.Height), 0 | 0x0010);
+                        Wallpapers[i].SetScreen(item);
+                    }
                 }
             }
             RefreshDesktop();
@@ -441,7 +466,7 @@ namespace livelywpf
             NativeMethods.RECT prct = new NativeMethods.RECT();
             NativeMethods.POINT topLeft;
             //StaticPinvoke.POINT bottomRight;
-            Logger.Info("Sending WP -> " + targetDisplay);
+            Logger.Info("Setting wallpaper -> " + targetDisplay.DeviceName + " " + targetDisplay.Bounds);
 
             if (!NativeMethods.SetWindowPos(handle, 1, targetDisplay.Bounds.X, targetDisplay.Bounds.Y, (targetDisplay.Bounds.Width), (targetDisplay.Bounds.Height), 0 | 0x0010))
             {

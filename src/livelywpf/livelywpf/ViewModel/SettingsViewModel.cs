@@ -31,7 +31,8 @@ namespace livelywpf
             LanguageItems = new ObservableCollection<LanguagesModel>()
             {
                     new LanguagesModel("English(en)", new string[]{"en", "en-US"}),
-                    new LanguagesModel("中文(zh-CN)", new string[]{"zh", "zh-Hans","zh-CN","zh-SG"}), 
+                    new LanguagesModel("中文(zh-CN)", new string[]{"zh", "zh-Hans","zh-CN","zh-SG"}),
+                    new LanguagesModel("繁體中文(zh-Hant)", new string[]{ "zh-HK", "zh-MO", "zh-TW"}),
                     new LanguagesModel("한국어(ko-KR)", new string[]{"ko", "ko-KR","ko-KP"}),
                     new LanguagesModel("Pусский(ru)", new string[]{"ru", "ru-BY", "ru-KZ", "ru-KG", "ru-MD", "ru-RU","ru-UA"}), 
                     new LanguagesModel("Українська(uk)", new string[]{"uk", "uk-UA"}),

@@ -1,5 +1,6 @@
 ﻿using ModernWpf.Controls;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -64,7 +65,17 @@ namespace livelywpf.Views
             downloadBtn.IsEnabled = false;
             if (downloadComplete)
             {
-                //run setup
+                try
+                {
+                    //run setup in silent mode.
+                    Process.Start(savePath, "/SILENT /CLOSEAPPLICATIONS /RESTARTAPPLICATIONS");
+                    //inno installer will auto retry, waiting for application exit.
+                    Program.ExitApplication();
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(Properties.Resources.LivelyExceptionAppUpdateFail, Properties.Resources.TextError);
+                }
             }
             else
             {

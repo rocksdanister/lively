@@ -1,17 +1,6 @@
-﻿using Microsoft.Toolkit.Wpf.UI.XamlHost;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Windows.UI.Xaml.Controls;
 
 namespace livelywpf.Views
 {
@@ -37,7 +26,6 @@ namespace livelywpf.Views
 
             if (userControl != null)
             {
-                //todo: find better way to do this.
                 userControl.UIText = new livelysettings.LocalizeText()
                 {
                     TitleGeneral = Properties.Resources.TitleGeneral,

@@ -44,7 +44,7 @@ namespace livelywpf.Core
         public string Msg { get; set; }
     }
 
-    #endregion interface
+    #endregion // interface
 
     #region video players
 
@@ -570,7 +570,7 @@ namespace livelywpf.Core
         }
     }
 
-    #endregion video players
+    #endregion // video players
 
     #region gif players
 
@@ -684,7 +684,7 @@ namespace livelywpf.Core
         }
     }
 
-    #endregion gif players
+    #endregion // gif players
 
     #region web browsers
 
@@ -975,7 +975,7 @@ namespace livelywpf.Core
         }
     }
 
-    #endregion web browsers
+    #endregion // web browsers
 
     #region program wallpapers
 
@@ -1301,5 +1301,5 @@ namespace livelywpf.Core
         }
     }
 
-    #endregion progarm wallpapers
+    #endregion // progarm wallpapers
 }

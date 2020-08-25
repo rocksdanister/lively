@@ -1,0 +1,656 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DescriptionAddWallpaper" xml:space="preserve">
+    <value>選擇一個文件或指定的網站設置為背景。</value>
+  </data>
+  <data name="DescriptionAppRules" xml:space="preserve">
+    <value>根據正在運行的應用程序來設置背景的播放行為。</value>
+  </data>
+  <data name="DescriptionCancelQuestion" xml:space="preserve">
+    <value>你確定要取消嗎?</value>
+  </data>
+  <data name="DescriptionDeleteConfirmation" xml:space="preserve">
+    <value>您確定要從磁盤上永久刪除背景嗎？</value>
+  </data>
+  <data name="DescriptionDragDropFIle" xml:space="preserve">
+    <value>將文件拖放到資料庫中。</value>
+  </data>
+  <data name="DescriptionExternalAppWarning" xml:space="preserve">
+    <value>請注意!您正在準備把一個外部應用程序作為背景。 惡意應用程序可能會注入木馬、病毒..這將損害您的系統。                                                                                   僅當你信任此應用程序時，才可繼續。</value>
+  </data>
+  <data name="DescriptionMinimizedTray" xml:space="preserve">
+    <value>Lively已被最小化到系統托盤，右鍵單擊 Lively的圖標以獲取更多選項。</value>
+  </data>
+  <data name="DescriptionPleaseRestartLively" xml:space="preserve">
+    <value>請重新啟動Lively，以使設置生效。</value>
+  </data>
+  <data name="DescriptionRecordStart" xml:space="preserve">
+    <value>按下以開始錄影。</value>
+  </data>
+  <data name="DescriptionRestoringWallpaper" xml:space="preserve">
+    <value>正在恢復先前的背景，請稍候...</value>
+  </data>
+  <data name="DescriptionScreenLayout" xml:space="preserve">
+    <value>選擇背景</value>
+  </data>
+  <data name="DescriptionUpdateAvailable" xml:space="preserve">
+    <value>有新版本可用！</value>
+  </data>
+  <data name="DescriptionWebpageLoad" xml:space="preserve">
+    <value>輸入網站鏈接進行加載，支持shadertoy.com著色器鏈</value>
+  </data>
+  <data name="DescriptionWelcomeWizard" xml:space="preserve">
+    <value>我將幫助您開始設置Lively。</value>
+  </data>
+  <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
+    <value>更新失敗。請嘗試從以下位置下載安裝程序： https://github.com/rocksdanister/lively/releases</value>
+  </data>
+  <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
+    <value>背景文件已損壞，請嘗試重新下載。</value>
+  </data>
+  <data name="LivelyExceptionGeneral" xml:space="preserve">
+    <value>糟糕...好像出了點問題:(
+為了更好地理解此錯誤並解決問題，請與開發人員共享日誌文件。
+共享日誌文件的說明：
+https://github.com/rocksdanister/lively/wiki</value>
+  </data>
+  <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
+    <value>啟用Windows高對比度(Windows High Contrast)模式後，Lively無法正常工作！
+請禁用高對比度模式，然後重試。</value>
+  </data>
+  <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
+    <value>媒體播放失敗:(
+請嘗試在lively的設置中更改視頻播放器。
+
+為了更好地理解此錯誤並解決問題，請與開發人員共享日誌文件。
+共享日誌文件的說明：
+https://github.com/rocksdanister/lively/wiki</value>
+  </data>
+  <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
+    <value>不是Lively的背景文件。</value>
+  </data>
+  <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
+    <value>Lively沒有被正確關閉, 正在以安全模式啟動
+您是否要還原以前運行的壁紙?</value>
+  </data>
+  <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
+    <value>看起來需要進行一些設置才能使Lively工作：-
+1. 打開此電腦（我的電腦）
+2. 右鍵單擊空白區域
+3. 選擇"屬性"
+4. 選擇 "高級系統設置"
+5. 在 "性能" 選項中，選擇 "設置"
+6. 啟用 "窗口內的動畫控件和元素"-應用。
+
+如果是 Windows7 系統只需設置 - "調整為最近外觀"然後應用。</value>
+  </data>
+  <data name="TextAdd" xml:space="preserve">
+    <value>添加</value>
+  </data>
+  <data name="TextApplication" xml:space="preserve">
+    <value>應用程序</value>
+  </data>
+  <data name="TextAttribution" xml:space="preserve">
+    <value>屬性</value>
+  </data>
+  <data name="TextAuthor" xml:space="preserve">
+    <value>作者</value>
+  </data>
+  <data name="TextBack" xml:space="preserve">
+    <value>返回</value>
+  </data>
+  <data name="TextBrowse" xml:space="preserve">
+    <value>瀏覽</value>
+  </data>
+  <data name="TextClose" xml:space="preserve">
+    <value>關閉</value>
+  </data>
+  <data name="TextCloseWallpapers" xml:space="preserve">
+    <value>關閉背景</value>
+  </data>
+  <data name="TextCompleted" xml:space="preserve">
+    <value>完成了！</value>
+  </data>
+  <data name="TextConvertVideo" xml:space="preserve">
+    <value>轉換為影片</value>
+  </data>
+  <data name="TextCustomise" xml:space="preserve">
+    <value>自定義</value>
+  </data>
+  <data name="TextCustomiseWallpaper" xml:space="preserve">
+    <value>自定義背景</value>
+  </data>
+  <data name="TextDeleteWallpaper" xml:space="preserve">
+    <value>刪除背景</value>
+  </data>
+  <data name="TextDisplayPauseRuleAllScreen" xml:space="preserve">
+    <value>全螢幕</value>
+  </data>
+  <data name="TextDisplayPauseRulePerScreen" xml:space="preserve">
+    <value>單獨</value>
+  </data>
+  <data name="TextDownload" xml:space="preserve">
+    <value>下載</value>
+  </data>
+  <data name="TextError" xml:space="preserve">
+    <value>錯誤</value>
+  </data>
+  <data name="TextExit" xml:space="preserve">
+    <value>退出</value>
+  </data>
+  <data name="TextExportWallpaperZip" xml:space="preserve">
+    <value>輸出 lively .zip</value>
+  </data>
+  <data name="TextGIF" xml:space="preserve">
+    <value>GIF</value>
+  </data>
+  <data name="TextGo" xml:space="preserve">
+    <value>GO</value>
+  </data>
+  <data name="TextHelpTranslate" xml:space="preserve">
+    <value>幫助翻譯Lively。</value>
+  </data>
+  <data name="TextInstall" xml:space="preserve">
+    <value>安裝</value>
+  </data>
+  <data name="TextKeyboard" xml:space="preserve">
+    <value>Keyboard</value>
+  </data>
+  <data name="TextmoreInfo" xml:space="preserve">
+    <value>資訊</value>
+  </data>
+  <data name="TextMoreWallpapers" xml:space="preserve">
+    <value>更多背景</value>
+  </data>
+  <data name="TextMouse" xml:space="preserve">
+    <value>滑鼠</value>
+  </data>
+  <data name="TextMouseInteractOnDesktop" xml:space="preserve">
+    <value>當聚焦在程式上的滑鼠的互動</value>
+  </data>
+  <data name="TextNext" xml:space="preserve">
+    <value>繼續</value>
+  </data>
+  <data name="TextNo" xml:space="preserve">
+    <value>沒有</value>
+  </data>
+  <data name="TextOff" xml:space="preserve">
+    <value>OFF</value>
+  </data>
+  <data name="TextOn" xml:space="preserve">
+    <value>ON</value>
+  </data>
+  <data name="TextOnline" xml:space="preserve">
+    <value>在線網頁 (Online)</value>
+  </data>
+  <data name="TextOpenLively" xml:space="preserve">
+    <value>開啟Lively</value>
+  </data>
+  <data name="TextPauseAlgoAllProcess" xml:space="preserve">
+    <value>所有程序</value>
+  </data>
+  <data name="TextPauseAlgoForegroundProcess" xml:space="preserve">
+    <value>前台處理 </value>
+  </data>
+  <data name="TextPauseWallpapers" xml:space="preserve">
+    <value>暫停背景</value>
+  </data>
+  <data name="TextPerformanceKill" xml:space="preserve">
+    <value>Kill</value>
+  </data>
+  <data name="TextPerformanceNone" xml:space="preserve">
+    <value>Nothing</value>
+  </data>
+  <data name="TextPerformancePause" xml:space="preserve">
+    <value>暫停</value>
+  </data>
+  <data name="TextRemove" xml:space="preserve">
+    <value>移除</value>
+  </data>
+  <data name="TextRule" xml:space="preserve">
+    <value>規則</value>
+  </data>
+  <data name="TextScreen" xml:space="preserve">
+    <value>螢幕</value>
+  </data>
+  <data name="TextSearch" xml:space="preserve">
+    <value>搜尋</value>
+  </data>
+  <data name="TextSetWallpaper" xml:space="preserve">
+    <value>設置為背景</value>
+  </data>
+  <data name="TextShowOnDisk" xml:space="preserve">
+    <value>打開文件所在位置</value>
+  </data>
+  <data name="TextSource" xml:space="preserve">
+    <value>來源</value>
+  </data>
+  <data name="TextStart" xml:space="preserve">
+    <value>開始</value>
+  </data>
+  <data name="TextStop" xml:space="preserve">
+    <value>結束</value>
+  </data>
+  <data name="TextSupport" xml:space="preserve">
+    <value>支持</value>
+  </data>
+  <data name="TextTags" xml:space="preserve">
+    <value>Tags</value>
+  </data>
+  <data name="TextTileSizeLarge" xml:space="preserve">
+    <value>大</value>
+  </data>
+  <data name="TextTileSizeNormal" xml:space="preserve">
+    <value>中</value>
+  </data>
+  <data name="TextTileSizeSmall" xml:space="preserve">
+    <value>小</value>
+  </data>
+  <data name="TextUIHeadless" xml:space="preserve">
+    <value>Headless</value>
+  </data>
+  <data name="TextUILite" xml:space="preserve">
+    <value>Lite</value>
+  </data>
+  <data name="TextUINormal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="TextUpdateAvailable" xml:space="preserve">
+    <value>有更新可用！</value>
+  </data>
+  <data name="TextUpdateCheck" xml:space="preserve">
+    <value>檢查更新</value>
+  </data>
+  <data name="TextupdateCheckFail" xml:space="preserve">
+    <value>無法檢查軟件更新</value>
+  </data>
+  <data name="TextUpdateChecking" xml:space="preserve">
+    <value>檢查更新</value>
+  </data>
+  <data name="TextUpdateUptodate" xml:space="preserve">
+    <value>已是最新版本</value>
+  </data>
+  <data name="TextVideo" xml:space="preserve">
+    <value>影片</value>
+  </data>
+  <data name="TextWallpaperLayoutDuplicate" xml:space="preserve">
+    <value>複製相同的背景</value>
+  </data>
+  <data name="TextWallpaperLayoutPerScreen" xml:space="preserve">
+    <value>僅選定的屏幕</value>
+  </data>
+  <data name="TextWallpaperLayoutSpan" xml:space="preserve">
+    <value>跨顯示器</value>
+  </data>
+  <data name="TextWallpaperType" xml:space="preserve">
+    <value>類型</value>
+  </data>
+  <data name="TextWebsite" xml:space="preserve">
+    <value>網站</value>
+  </data>
+  <data name="TextWebStream" xml:space="preserve">
+    <value>Web Stream</value>
+  </data>
+  <data name="TextWelcome" xml:space="preserve">
+    <value>歡迎</value>
+  </data>
+  <data name="TextYes" xml:space="preserve">
+    <value>是</value>
+  </data>
+  <data name="TileVideoPlayer" xml:space="preserve">
+    <value>影片播放器</value>
+  </data>
+  <data name="TipAddWallpaperFileBrowse" xml:space="preserve">
+    <value>將所有支持的文件類型設置為背景。</value>
+  </data>
+  <data name="TipAddWallpaperURL" xml:space="preserve">
+    <value>將您輸入在URL的網頁設置為背景。</value>
+  </data>
+  <data name="TipAppFocus" xml:space="preserve">
+    <value>設置在其他程式運行時的操作。</value>
+  </data>
+  <data name="TipAppFullScreen" xml:space="preserve">
+    <value>設置在運行全屏遊戲/應用程序時的操作。</value>
+  </data>
+  <data name="TipAppRules" xml:space="preserve">
+    <value>根據運行的應用程序設置不同的背景播放。</value>
+  </data>
+  <data name="TipAppTheme" xml:space="preserve">
+    <value>Lively 適應系統主題設置，更改外觀。</value>
+  </data>
+  <data name="TipBatteryPower" xml:space="preserve">
+    <value>(For battery operated systems only) Change playback when AC power is disconnected.</value>
+  </data>
+  <data name="TipBrowserDebuggingPort" xml:space="preserve">
+    <value>Enter the port for debugging webpage wallpapers, browser restart is required for changes to take effect.
+When ready navigate to http://localhost:portnumber to access developer console.</value>
+  </data>
+  <data name="TipDisplayPauseRule" xml:space="preserve">
+    <value>Per: Pause wallpaper only on the screen in which application is focused/fullscreen.
+All: Pause wallpaper on all screen(s) if any application is focused/fullscreen.</value>
+  </data>
+  <data name="TipHideSysTray" xml:space="preserve">
+    <value>System-tray icon visibility, lively will continue to run with the icon hidden.</value>
+  </data>
+  <data name="TipLanguage" xml:space="preserve">
+    <value>將Lively重新啟動以應用新語言。</value>
+  </data>
+  <data name="TipLivelySetupOnClose" xml:space="preserve">
+    <value>完成設置以繼續。</value>
+  </data>
+  <data name="TipPauseAlgorithm" xml:space="preserve">
+    <value>Foreground: Lightweight, only checks the single process that is in foreground to determine wallpaper playback behaviour.
+All Process: Heavier, Scans all the process to determine playback behaviour.</value>
+  </data>
+  <data name="TipStreamWallpaperDetect" xml:space="preserve">
+    <value>如果檢測到受支持的視頻流(video stream)鏈接，請使用視頻播放器，而不要加載網頁。</value>
+  </data>
+  <data name="TipStreamWallpaperVideoQuality" xml:space="preserve">
+    <value>選擇你想要的線上視頻品質。</value>
+  </data>
+  <data name="TipTileSize" xml:space="preserve">
+    <value>预览背景的大小。</value>
+  </data>
+  <data name="TipUIMode" xml:space="preserve">
+    <value>對於低端系統，請選擇精簡模式。</value>
+  </data>
+  <data name="TipVideoPlayer" xml:space="preserve">
+    <value>選擇用於背景的影片播放器。
+建議使用libVLC。</value>
+  </data>
+  <data name="TipWallpaperDir" xml:space="preserve">
+    <value>儲存背景的路徑</value>
+  </data>
+  <data name="TipWallpaperInput" xml:space="preserve">
+    <value>選擇與背景互動的方式</value>
+  </data>
+  <data name="TipWallpaperLayout" xml:space="preserve">
+    <value>如何將背景應用於連接的顯示設備。</value>
+  </data>
+  <data name="TipWallpaperPlayback" xml:space="preserve">
+    <value>當桌面未聚焦時，暫停牆紙播放。</value>
+  </data>
+  <data name="TipWebBrowserDiskCache" xml:space="preserve">
+    <value>Store temporary files on disk instead of memory, settings gets restored when browser is restarted.</value>
+  </data>
+  <data name="TipWebBrowserEngine" xml:space="preserve">
+    <value>CEF(Chromium Embedded Framework) is a lightweight chromium engine.
+Edge is the built in webview of windows 10.</value>
+  </data>
+  <data name="TipWindowsStartup" xml:space="preserve">
+    <value>Lively需要在後台運行以播放牆紙。</value>
+  </data>
+  <data name="TitleAbout" xml:space="preserve">
+    <value>關於</value>
+  </data>
+  <data name="TitleAddWallpaper" xml:space="preserve">
+    <value>添加牆紙</value>
+  </data>
+  <data name="TitleAppFocus" xml:space="preserve">
+    <value>其他應用程序獲得焦點</value>
+  </data>
+  <data name="TitleAppFullScreen" xml:space="preserve">
+    <value>其他應用程序全螢幕時</value>
+  </data>
+  <data name="TitleAppName" xml:space="preserve">
+    <value>Lively背景</value>
+  </data>
+  <data name="TitleAppRules" xml:space="preserve">
+    <value>應用配置</value>
+  </data>
+  <data name="TitleAppTheme" xml:space="preserve">
+    <value>主題</value>
+  </data>
+  <data name="TitleAudio" xml:space="preserve">
+    <value>音訊</value>
+  </data>
+  <data name="TitleAudioPlayOnScreen" xml:space="preserve">
+    <value>在屏幕上播放音頻</value>
+  </data>
+  <data name="TitleBatteryPower" xml:space="preserve">
+    <value>電池供電時</value>
+  </data>
+  <data name="TitleBrowseFile" xml:space="preserve">
+    <value>瀏覽視頻，gif，網頁...文件設置為背景</value>
+  </data>
+  <data name="TitleBrowserDebuggingPort" xml:space="preserve">
+    <value>Debugging Port</value>
+  </data>
+  <data name="TitleCommunity" xml:space="preserve">
+    <value>社區</value>
+  </data>
+  <data name="TitleDeleteConfirmation" xml:space="preserve">
+    <value>確認刪除?</value>
+  </data>
+  <data name="TitleDisplayPauseRule" xml:space="preserve">
+    <value>播放器暫停規則</value>
+  </data>
+  <data name="TitleDocumentation" xml:space="preserve">
+    <value>文檔</value>
+  </data>
+  <data name="TitleEnterUrl" xml:space="preserve">
+    <value>輸入網址</value>
+  </data>
+  <data name="TitleGeneral" xml:space="preserve">
+    <value>常規</value>
+  </data>
+  <data name="TitleHelp" xml:space="preserve">
+    <value>幫助</value>
+  </data>
+  <data name="TitleHideSysTray" xml:space="preserve">
+    <value>System-tray Icon</value>
+  </data>
+  <data name="TitleInteraction" xml:space="preserve">
+    <value>互動</value>
+  </data>
+  <data name="TitleLanguage" xml:space="preserve">
+    <value>語言</value>
+  </data>
+  <data name="TitleLibrary" xml:space="preserve">
+    <value>資料庫</value>
+  </data>
+  <data name="TitleLivelySetup" xml:space="preserve">
+    <value>Lively Setup</value>
+  </data>
+  <data name="TitleMisc" xml:space="preserve">
+    <value>雜項</value>
+  </data>
+  <data name="TitleMute" xml:space="preserve">
+    <value>靜音</value>
+  </data>
+  <data name="TitlePauseAlgo" xml:space="preserve">
+    <value>暫停運作</value>
+  </data>
+  <data name="TitlePerformance" xml:space="preserve">
+    <value>性能</value>
+  </data>
+  <data name="TitlePlaylist" xml:space="preserve">
+    <value>播放清單</value>
+  </data>
+  <data name="TitlePleaseWait" xml:space="preserve">
+    <value>請稍候</value>
+  </data>
+  <data name="TitleScalingFit" xml:space="preserve">
+    <value>縮放/適合</value>
+  </data>
+  <data name="TitleScreenLayout" xml:space="preserve">
+    <value>控制面板</value>
+  </data>
+  <data name="TitleSelectFile" xml:space="preserve">
+    <value>選擇文件</value>
+  </data>
+  <data name="TitleSettings" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="TitleStreamWallpaper" xml:space="preserve">
+    <value>Stream</value>
+  </data>
+  <data name="TitleStreamWallpaperDetect" xml:space="preserve">
+    <value>Detect Streams</value>
+  </data>
+  <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
+    <value>影片質量</value>
+  </data>
+  <data name="TitleTileSize" xml:space="preserve">
+    <value>Tile Size</value>
+  </data>
+  <data name="TitleUIMode" xml:space="preserve">
+    <value>用戶界面</value>
+  </data>
+  <data name="TitleVideo" xml:space="preserve">
+    <value>影片</value>
+  </data>
+  <data name="TitleWallpaper" xml:space="preserve">
+    <value>背景</value>
+  </data>
+  <data name="TitleWallpaperDir" xml:space="preserve">
+    <value>背景目錄</value>
+  </data>
+  <data name="TitleWallpaperDirMoveExisting" xml:space="preserve">
+    <value>將現有牆紙移動到新文件夾</value>
+  </data>
+  <data name="TitleWallpaperInput" xml:space="preserve">
+    <value>背景輸入</value>
+  </data>
+  <data name="TitleWallpaperLayout" xml:space="preserve">
+    <value>放置方式</value>
+  </data>
+  <data name="TitleWallpaperPlayback" xml:space="preserve">
+    <value>背景播放</value>
+  </data>
+  <data name="TitleWarning" xml:space="preserve">
+    <value>警告</value>
+  </data>
+  <data name="TitleWebBrowser" xml:space="preserve">
+    <value>網頁瀏覽器</value>
+  </data>
+  <data name="TitleWebBrowserDiskCache" xml:space="preserve">
+    <value>Disk cache</value>
+  </data>
+  <data name="TitleWebBrowserEngine" xml:space="preserve">
+    <value>引擎</value>
+  </data>
+  <data name="TitleWebpageLoad" xml:space="preserve">
+    <value>載入網頁</value>
+  </data>
+  <data name="TitleWindowsStartup" xml:space="preserve">
+    <value>開機啟動</value>
+  </data>
+</root>

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Reflection;
+using System.Xml.Schema;
 
 namespace livelywpf
 {
@@ -31,6 +32,8 @@ namespace livelywpf
                 Directory.CreateDirectory(Program.AppDataDir);
                 Directory.CreateDirectory(Path.Combine(Program.AppDataDir, "logs"));
                 Directory.CreateDirectory(Path.Combine(Program.AppDataDir, "temp"));
+                //clear temp files if any.
+                FileOperations.EmptyDirectory(Path.Combine(Program.AppDataDir, "temp"));
             }
             catch (Exception ex)
             {
@@ -55,9 +58,13 @@ namespace livelywpf
                 MessageBox.Show(ex.Message, "Error: Failed to create wallpaper folder", MessageBoxButton.OK, MessageBoxImage.Error);
                 Program.ExitApplication();
             }
-            if (Program.SettingsVM.Settings.IsFirstRun)
+            //previous installed appversion is different from current instance.
+            if (!Program.SettingsVM.Settings.AppVersion.Equals(Assembly.GetExecutingAssembly().GetName().Version.ToString(), StringComparison.OrdinalIgnoreCase)
+                || Program.SettingsVM.Settings.IsFirstRun)
             {
-                ExtractWallpaperBundle();
+                Program.SettingsVM.Settings.WallpaperBundleVersion = ExtractWallpaperBundle();
+                Program.SettingsVM.Settings.AppVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+                Program.SettingsVM.UpdateConfigFile();
             }
 
             try
@@ -93,20 +100,35 @@ namespace livelywpf
         /// <summary>
         /// Extract default wallpapers.
         /// </summary>
-        private void ExtractWallpaperBundle()
+        private int ExtractWallpaperBundle()
         {
-            //todo: Check appversion, if newer version then Settings.json saved version - extract version specific bundles if exists.
             //todo: Add a "please wait" page in SetupWizard to indicate extraction in progress.
+            int maxExtracted = Program.SettingsVM.Settings.WallpaperBundleVersion;
             try
             {
-                //Note: Sharpzip library will overwrite files if exists during extraction.
-                ZipExtract.ZipExtractFile(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "wallpaper bundle", "base.zip"), 
-                    Path.Combine(Program.WallpaperDir, "wallpapers"), false);
+                //wallpaper bundles filenames are 0.zip, 1.zip ...
+                var sortedBundles = Directory.GetFiles(
+                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bundle"))
+                    .OrderBy(x => x);
+
+                foreach (var item in sortedBundles)
+                {
+                    if(int.TryParse(Path.GetFileNameWithoutExtension(item), out int val))
+                    {
+                        if (val > maxExtracted)
+                        {
+                            //Sharpzip library will overwrite files if exists during extraction.
+                            ZipExtract.ZipExtractFile(item, Path.Combine(Program.WallpaperDir, "wallpapers"), false);
+                            maxExtracted = val;
+                        }
+                    }
+                }
             }
             catch(Exception e)
             {
                 Logger.Error("Base Wallpaper Extract Fail:" + e.ToString());
             }
+            return maxExtracted;
         }
 
         private void SetupUnhandledExceptionLogging()

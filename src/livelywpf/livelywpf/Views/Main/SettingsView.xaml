@@ -13,10 +13,8 @@
       >
     <Grid>
         <!-- minwidth is required, otherwise the performance tab is empty on first time select?.-->
-        <xamlHost:WindowsXamlHost InitialTypeName="livelysettings.SettingsPage" 
-                                  ChildChanged="SettingsPageHost_ChildChanged" 
-                                  MinWidth="800"
-                                  />
+        <xamlHost:WindowsXamlHost Name="xamlHostControl" InitialTypeName="livelysettings.SettingsPage" 
+                                  ChildChanged="SettingsPageHost_ChildChanged" MinHeight="450" MinWidth="800"/>
 
     </Grid>
 </Page>

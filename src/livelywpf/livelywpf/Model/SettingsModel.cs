@@ -76,6 +76,7 @@ namespace livelywpf
         /// Cefsharp debug port.
         /// </summary>
         public string WebDebugPort { get; set; }
+        public int WallpaperBundleVersion { get; set; }
         //private 
         /*
         //todo need to rewrite audio manager from scratch.
@@ -141,6 +142,7 @@ namespace livelywpf
             SysTrayIcon = true;
             WebDebugPort = string.Empty;
             AutoDetectOnlineStreams = true;
+            WallpaperBundleVersion = -1;
         }
     }
 }

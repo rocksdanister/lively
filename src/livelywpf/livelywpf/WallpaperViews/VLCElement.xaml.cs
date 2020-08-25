@@ -117,6 +117,7 @@ namespace livelywpf
             }
         }
 
+
         public void StopPlayer()
         {
             if (_mediaReady)

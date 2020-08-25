@@ -59,7 +59,6 @@ namespace livelywpf
 
             if (args.IsSettingsInvoked)
             {
-                //ContentFrame.NavigationService.Navigate(new Uri("Views/SettingsView.xaml", UriKind.Relative));
                 ContentFrame.Navigate(typeof(livelywpf.Views.SettingsView), new Uri("Views/SettingsView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
             }
             else if (args.InvokedItemContainer != null)
