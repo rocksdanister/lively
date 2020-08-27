@@ -12,13 +12,13 @@
 - [License](#license)
 
 ## About
-![demo-gif](/resources/main_preview.gif?raw=true "demo")
+<img src="/resources/main_preview.gif" width="600" height="338"/>
 
 (This is preview of upcoming v1.0 update)
 
 Turn Video & GIF Files, Emulators, HTML, Web address & Shaders, Games into Windows desktop wallpaper; **Wallpapers will completely pause playback( 0% cpu & gpu usage) when fullscreen application/games are running.**
 
-![demo-gif2](/resources/main_dragdrop.gif?raw=true "dragdrop")
+<img src="/resources/main_dragdrop.gif" width="600" height="338"/>
 
 Just drag & drop files, webpages to set as wallpaper..
 
@@ -34,43 +34,43 @@ Help translate lively to other languages: <a href="https://github.com/rocksdanis
 ## Features
 *Wait a sec, preview gif clips take some time to load.*
 #### Video
-![demo-gif2](/resources/wallpaper_video.gif?raw=true "video")
+<img src="/resources/wallpaper_video.gif" width="600" height="338"/>
 
 <a href="https://visualdon.uk/project/eternal-light/">Eternal Light</a> by VISUALDON
 * Use external codec packs or internal windows codec.
 * Play .mp4, mkv, webm, avi, mov etc 
 * Hardware Acceleration support.
 * Audio will mute when not on desktop.
-#### Youtube & streams
-![demo-gif3](/resources/wallpaper_yt.gif?raw=true "html")
-
-* Just drag & drop youtube link to set as desktop wallpaper.
-* Video quality is adjustable in settings.
-#### Web Pages & html
-![demo-gif7](/resources/wallpaper_html.gif?raw=true "html")
+#### Webpages
+<img src="/resources/wallpaper_html.gif" width="600" height="338"/>
 
 <a href="http://louie.co.nz/25th_hour/"> 25th Hour</a> by Loius Coyle
 * Load HTML file or web address as wallpaper.
 * Runs webgl, javascript .. basically anything that works on chrome.
 * Audio Reactive Wallpaper support, create wallpapers that react to <a href="https://github.com/rocksdanister/lively/wiki/Web-Guide-II-:-System-Audio-Data">system audio</a>
 * Customisation support, <a href="https://github.com/rocksdanister/lively/wiki/Web-Guide-IV-:-Interaction">documentation.</a>
+#### Youtube & streams
+<img src="/resources/wallpaper_yt.gif" width="600" height="338"/>
+
+* Just drag & drop youtube link to set as desktop wallpaper.
+* Video quality is adjustable in settings.
 #### Shaders
-![demo-gif7](/resources/wallpaper_shadertoy.gif?raw=true "htmlshadertoy") 
+<img src="/resources/wallpaper_shadertoy.gif" width="600" height="338"/>
 
 <a href="https://www.shadertoy.com/view/ltffzl">Heartfelt </a> by BigWIngs
 * Run GLSL shaders in browser.
 * Shadertoy.com urls are supported as wallpaper.
 #### GIFs
-![demo-gif6](/resources/wallpaper_gif.gif?raw=true "gif")
+<img src="/resources/wallpaper_gif.gif" width="600" height="338"/>
 
 <a href="https://giphy.com/gifs/nyan-cat-sIIhZliB2McAo"> Nyan cat</a>
 * Make Memes/Cinemagraphs as wallpaper ... 
 #### Retro Game Emulators
-![demo-gif4](/resources/wallpaper_emulator.gif?raw=true "html") 
+<img src="/resources/wallpaper_emulator.gif" width="600" height="338"/>
+
 * Coming soon
 #### Games & Applications
-![demo-gif5](/resources/unity.gif?raw=true "unity") 
-* Can launch Unity & Godot games and any application as wallpaper.
+* Can set Unity, Godot games and any application as wallpaper.
 * Dynamic audio visualisers, 3D scenes..
 #### & more:
 - Easy to use, Just drag'n'drop media files & webpages into lively window to set it as wallpaper.
