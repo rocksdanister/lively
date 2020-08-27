@@ -12,13 +12,13 @@
 - [License](#license)
 
 ## About
-![demo-gif](/resources/preview.gif?raw=true "demo")
+![demo-gif](/resources/main_preview.gif?raw=true "demo")
 
 (This is preview of upcoming v1.0 update)
 
 Turn Video & GIF Files, Emulators, HTML, Web address & Shaders, Games into Windows desktop wallpaper; **Wallpapers will completely pause playback( 0% cpu & gpu usage) when fullscreen application/games are running.**
 
-![demo-gif2](/resources/dragdrop.gif?raw=true "dragdrop")
+![demo-gif2](/resources/main_dragdrop.gif?raw=true "dragdrop")
 
 Just drag & drop files, webpages to set as wallpaper..
 
@@ -30,25 +30,24 @@ Lively is still in development, if you encounter bugs create a github Issue alon
 
 Help translate lively to other languages: <a href="https://github.com/rocksdanister/lively-translations">Translation Files</a>
 
-<a href="https://github.com/rocksdanister/lively/wiki">Full Documentation</a>
+<a href="https://github.com/rocksdanister/lively/wiki">Lively Documentation</a>
 ## Features
 *Wait a sec, preview gif clips take some time to load.*
 #### Video
-![demo-gif2](/resources/vid.gif?raw=true "video")
+![demo-gif2](/resources/wallpaper_video.gif?raw=true "video")
 
-<a href="https://www.pexels.com/video/aerial-view-of-a-foggy-landscape-2547258/">Foggy Landscape</a> by Tom Fisk
+<a href="https://visualdon.uk/project/eternal-light/">Eternal Light</a> by VISUALDON
 * Use external codec packs or internal windows codec.
 * Play .mp4, mkv, webm, avi, mov etc 
 * Hardware Acceleration support.
 * Audio will mute when not on desktop.
 #### Youtube & streams
-![demo-gif3](/resources/yt-gif.gif?raw=true "html")
+![demo-gif3](/resources/wallpaper_yt.gif?raw=true "html")
 
 * Just drag & drop youtube link to set as desktop wallpaper.
 * Video quality is adjustable in settings.
-* Additional software <a href="https://github.com/rocksdanister/lively/wiki/Youtube-Wallpaper">required.</a>
 #### Web Pages & html
-![demo-gif7](/resources/html.gif?raw=true "html")
+![demo-gif7](/resources/wallpaper_html.gif?raw=true "html")
 
 <a href="http://louie.co.nz/25th_hour/"> 25th Hour</a> by Loius Coyle
 * Load HTML file or web address as wallpaper.
@@ -56,46 +55,38 @@ Help translate lively to other languages: <a href="https://github.com/rocksdanis
 * Audio Reactive Wallpaper support, create wallpapers that react to <a href="https://github.com/rocksdanister/lively/wiki/Web-Guide-II-:-System-Audio-Data">system audio</a>
 * Customisation support, <a href="https://github.com/rocksdanister/lively/wiki/Web-Guide-IV-:-Interaction">documentation.</a>
 #### Shaders
-![demo-gif7](/resources/shadertoy.gif?raw=true "htmlshadertoy") 
+![demo-gif7](/resources/wallpaper_shadertoy.gif?raw=true "htmlshadertoy") 
 
-<a href="https://www.shadertoy.com/view/lscczl">The Universe Within</a>, <a href="https://www.shadertoy.com/view/MdfBRX">The Drive Home</a> by BigWIngs
+<a href="https://www.shadertoy.com/view/ltffzl">Heartfelt </a> by BigWIngs
 * Run GLSL shaders in browser.
 * Shadertoy.com urls are supported as wallpaper.
-#### Retro Game Emulators
-![demo-gif4](/resources/emulator.gif?raw=true "html") 
-* Coming soon
-#### Games
-![demo-gif5](/resources/unity.gif?raw=true "unity") 
-* Can launch Unity & Godot games as wallpaper.
-* Dynamic audio visualisers, 3D scenes..
 #### GIFs
-![demo-gif6](/resources/gif.gif?raw=true "gif")
+![demo-gif6](/resources/wallpaper_gif.gif?raw=true "gif")
 
 <a href="https://giphy.com/gifs/nyan-cat-sIIhZliB2McAo"> Nyan cat</a>
 * Make Memes/Cinemagraphs as wallpaper ... 
-#### Other Applications
-* Experimentail, works for some.
+#### Retro Game Emulators
+![demo-gif4](/resources/wallpaper_emulator.gif?raw=true "html") 
+* Coming soon
+#### Games & Applications
+![demo-gif5](/resources/unity.gif?raw=true "unity") 
+* Can launch Unity & Godot games and any application as wallpaper.
+* Dynamic audio visualisers, 3D scenes..
 #### & more:
-- Easy to use, Just drag & drop media files & webpages into lively window to set it as wallpaper.
-- Real-time customisable web wallpaper support.
-- Easy to share Lively-zip format, just drag & drop the zip file to import it into Library, use the built-in creator to make them (ensures compatibility).
-- Hardware accelerated video playback, with option to use external Directshow codec of your choice. ( LAV(recommended), K-Lite, Kawaii Codec..)
-- Library to browse and preview wallpapers.
-- You can use it alongside rainmeter.
-- Efficient, its a native c# wpf application with c++ calls. 
+- Easy to use, Just drag'n'drop media files & webpages into lively window to set it as wallpaper.
+- Hardware accelerated video playback, powered by mpv player.
+- Interactive webgl wallpapers, powered by lightweight chromium engine Cef.
+- Windows 10 fluent design, lively appearance adapts to system theme settings.
+- Efficient, its a native .net core application.
 - Fully opensource & free; no blackmagic, no features behind paywall.
-#### multiple monitor support:
+#### Performance:
+ * Wallpaper playback pauses when fullscreen application/games run on the machine (~0% cpu, gpu usage). 
+ * Set wallpaper playback rules based on running foreground application.
+#### Multiple monitor support:
 - Full Multiple monitor support.
 - Span single wallpaper across all screens.
 - Duplicate same wallpaper all screens.
 - Different wallpaper per screens.
-#### Regarding Performance:
- * Wallpaper playback pauses when fullscreen application/games run on the machine (~0% cpu, gpu usage). 
- * Optionally you can set wallpaper to only play when on desktop.
- * Application rules: Set wallpaper playback rules based on running foreground application.(like always pause when photoshop is open etc)
- * Based on display(multiple monitor): Pause wallpaper playback per-display(depending on which monitor fullscreen apps/games run) or all display(s).
- * Kill wallpaper when fullscreen apps/games run(coming soon).
- * Mute audio when not on desktop (or optionally always mute).
 
 **_I'm not officially affiliated with Unity technologies, godot, shadertoy;_**
 ## Download
@@ -118,21 +109,15 @@ Certain antivirus software heuristics algorithm will detect lively as a virus, t
 
 [Having trouble? ](https://github.com/rocksdanister/lively/wiki/Common-Problems)
 ## Issues
-~~[TODO List](https://trello.com/b/rdFFxuMF/lively-wallpaper-system)~~
-
 See github [issues.](https://github.com/rocksdanister/lively/issues)
 
 ## Contributing
 Code contributions are welcome, check [guidelines](https://github.com/rocksdanister/lively/wiki) for making pull request.
 
-Some Lively languages are machine translated,
-
 Help translate lively to other languages: <a href="https://github.com/rocksdanister/lively-translations">Translation Files</a>
 
 ##### Related Projects
 https://github.com/rocksdanister/lively-cef
-
-https://github.com/rocksdanister/lively-gallery
 
 ## Support
 You can always help development by buying me a cup of coffee(paypal):
