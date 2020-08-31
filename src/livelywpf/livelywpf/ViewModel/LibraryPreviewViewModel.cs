@@ -184,7 +184,7 @@ namespace livelywpf
             {
                 libData.DataType = LibraryTileType.ready;
                 LivelyInfoJSON.SaveWallpaperMetaData(libData.LivelyInfo, Path.Combine(libData.LivelyInfoFolderPath, "LivelyInfo.json"));
-                Program.LibraryVM.SortExistingWallpaper(libData);
+                Program.LibraryVM.SortLibraryItem(libData);
 
                 if (Program.SettingsVM.Settings.LivelyZipGenerate)
                 {

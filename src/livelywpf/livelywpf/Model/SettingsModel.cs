@@ -39,10 +39,7 @@ namespace livelywpf
         public bool LiveTile { get; set; }
         public System.Windows.Media.Stretch ScalerVideo { get; set; }
         public System.Windows.Media.Stretch ScalerGif { get; set; }
-        /// <summary>
-        /// Video stream quality for streams, 0 - best(4k)
-        /// </summary>
-        public StreamQualitySuggestion StreamQuality { get; set; }
+        //public StreamQualitySuggestion StreamQuality { get; set; }
         public WallpaperArrangement WallpaperArrangement { get; set; }
         public string SavedURL { get; set; }
         public string IgnoreUpdateTag { get; set; }
@@ -65,6 +62,7 @@ namespace livelywpf
         public int TileSize { get; set; }
         public DisplayIdentificationMode DisplayIdentification { get; set; }
         public LivelyMediaPlayer VideoPlayer { get; set; }
+        public LivelyMediaPlayer StreamVideoPlayer { get; set; }
         public bool GifCapture { get; set; }
         public livelywpf.Core.LivelyScreen SelectedDisplay { get; set; }
         public LivelyGUIState LivelyGUIRendering { get; set; }
@@ -77,6 +75,7 @@ namespace livelywpf
         /// </summary>
         public string WebDebugPort { get; set; }
         public int WallpaperBundleVersion { get; set; }
+        public StreamQualitySuggestion StreamQuality {get; set;}
         //private 
         /*
         //todo need to rewrite audio manager from scratch.
@@ -110,12 +109,13 @@ namespace livelywpf
             AppFocusPause = AppRulesEnum.ignore;
             AppFullscreenPause = AppRulesEnum.pause;
             BatteryPause = AppRulesEnum.ignore;
-            VideoPlayer = LivelyMediaPlayer.libvlcExt;
+            VideoPlayer = LivelyMediaPlayer.libmpvExt;
+            StreamVideoPlayer = LivelyMediaPlayer.libmpvExt;
 
             WallpaperWaitTime = 30000; // 30sec
             ProcessTimerInterval = 500; //reduce to 250 for quicker response.
             Language = CultureInfo.CurrentCulture.Name;
-            StreamQuality = StreamQualitySuggestion.h720p;
+            StreamQuality = StreamQualitySuggestion.Highest;
             GenerateTile = true;
             LivelyZipGenerate = false;
             WaterMarkTile = true;
@@ -138,7 +138,7 @@ namespace livelywpf
             LivelyGUIRendering = LivelyGUIState.lite;
             //Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Lively Wallpaper");
             WallpaperDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Lively Wallpaper", "Library");
-            WallpaperDirMoveExistingWallpaperNewDir = true;
+            WallpaperDirMoveExistingWallpaperNewDir = false;
             SysTrayIcon = true;
             WebDebugPort = string.Empty;
             AutoDetectOnlineStreams = true;

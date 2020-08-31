@@ -34,6 +34,9 @@ namespace livelywpf
         {
             //ShowInTaskbar = false :- causing issue with windows10 Taskview.
             WindowOperations.RemoveWindowFromTaskbar(new WindowInteropHelper(this).Handle);
+            //this hides the window from taskbar and also fixes crash when win10 taskview is launched. 
+            this.ShowInTaskbar = false;
+            this.ShowInTaskbar = true;
         }
 
         private void MePlayer_MediaFailed(object sender, ExceptionRoutedEventArgs e)

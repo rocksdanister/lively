@@ -11,7 +11,7 @@ using LibVLCSharp.Shared;
 namespace libVLCPlayer
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// lively libvlc videoplayer (External.)
     /// </summary>
     public partial class MainWindow : Window
     {
@@ -23,13 +23,14 @@ namespace libVLCPlayer
         bool _isStream;
         float vidPosition;
 
+        //todo:https://code.videolan.org/videolan/LibVLCSharp/-/issues/136
+        //take screenshot and display static image when player.Stop() is called.
         public MainWindow(string[] args)
         {
             InitializeComponent();
-            videoView.Loaded += VideoView_Loaded;
             _filePath = args[0];
             _isStream = false;
-            ListenToParent();
+            videoView.Loaded += VideoView_Loaded;
         }
 
         //todo errorhandling
@@ -37,9 +38,8 @@ namespace libVLCPlayer
         {
             try
             {
-
+                //DLL load hangs thread.
                 LibVLCSharp.Shared.Core.Initialize();
-
                 //flags: 
                 //"--no-disable-screensaver" : enable monitor sleep.
                 //ref: https://wiki.videolan.org/VLC_command-line_help
@@ -70,10 +70,17 @@ namespace libVLCPlayer
             {
                 //todo: send error to lively parent program.
             }
+            finally
+            {
+                ListenToParent();
+            }
         }
 
         private void _mediaPlayer_EndReached(object sender, EventArgs e)
         {
+            if (_mediaPlayer == null)
+                return;
+
             if (_isStream)
             {
                 ThreadPool.QueueUserWorkItem(_ => _mediaPlayer.Play(_media.SubItems.First()));
@@ -86,6 +93,9 @@ namespace libVLCPlayer
 
         public void PausePlayer()
         {
+            if (_mediaPlayer == null)
+                return;
+
             if (_mediaPlayer.IsPlaying && _mediaReady)
             {
                 vidPosition = _mediaPlayer.Position;
@@ -97,6 +107,9 @@ namespace libVLCPlayer
 
         public void PlayMedia()
         {
+            if (_mediaPlayer == null)
+                return;
+
             if (_mediaReady && !_mediaPlayer.IsPlaying)
             {
                 _mediaPlayer.Play();
@@ -107,6 +120,9 @@ namespace libVLCPlayer
 
         public void StopPlayer()
         {
+            if (_mediaPlayer == null)
+                return;
+
             if (_mediaReady)
             {
                 _mediaPlayer.Stop();
@@ -136,6 +152,7 @@ namespace libVLCPlayer
 
             // update window styles
             SetWindowLongPtr(new HandleRef(null, handle), (-20), (IntPtr)styleNewWindowExtended);
+            //this hides the window from taskbar and also fixes crash when win10 taskview is launched. 
             this.ShowInTaskbar = false;
             this.ShowInTaskbar = true;
 

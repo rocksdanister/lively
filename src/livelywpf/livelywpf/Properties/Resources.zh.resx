@@ -438,8 +438,7 @@ All Process: Heavier, Scans all the process to determine playback behaviour.</va
     <value>低端系统建议使用Lite模式</value>
   </data>
   <data name="TipVideoPlayer" xml:space="preserve">
-    <value>选择背景使用的视频播放器.建议使用
-libVLC</value>
+    <value>选择背景使用的视频播放器.</value>
   </data>
   <data name="TipWallpaperDir" xml:space="preserve">
     <value>储存背景的路径</value>

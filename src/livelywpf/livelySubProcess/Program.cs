@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace livelySubProcess
 {
+    /// <summary>
+    /// Kills external application type wallpapers in the event lively main pgm is killed by taskmanager/other pgms like av software.
+    /// This is just incase safety, when shutdown properly the "wpItems" list is cleared by lively before exit.
+    /// </summary>
     class Program
     {
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
@@ -47,23 +51,6 @@ namespace livelySubProcess
             }
             ListenToParent();
             lively.WaitForExit();
-
-            /*
-            foreach (var proc in Process.GetProcesses())
-            {
-                foreach (var wp in wpItems)
-                {
-                    if(proc.Id == wp)
-                    {
-                        try
-                        {
-                            proc.Kill();
-                        }
-                        catch { }
-                    }
-                }
-            }
-            */
 
             foreach (var item in wpItems)
             {

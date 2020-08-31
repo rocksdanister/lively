@@ -96,7 +96,10 @@ namespace livelywpf
             }
             else
             {
-                App.AppWindow.ShowControlPanelDialog();
+                if(App.AppWindow != null)
+                {
+                    App.AppWindow.ShowControlPanelDialog();
+                }
             }
         }
 

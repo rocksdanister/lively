@@ -111,7 +111,7 @@ namespace livelywpf.Core
             }
             catch
             {
-                Logger.Info("(Foreground) Getting processname failure, skipping!");
+                Logger.Info("Getting processname failure, resuming playback!");
                 //ignore - admin process etc
                 PlayWallpapers();
                 return;
@@ -119,14 +119,15 @@ namespace livelywpf.Core
 
             if (String.IsNullOrEmpty(fProcess.ProcessName) || fHandle.Equals(IntPtr.Zero))
             {
-                Debug.WriteLine("getting processname failure/handle null, skipping!");
+                Logger.Info("Getting processname failure/handle null, resuming playback!");
                 PlayWallpapers();
                 return;
             }
 
             if (fProcess.ProcessName.Equals("livelywpf", StringComparison.OrdinalIgnoreCase) ||
                 fProcess.ProcessName.Equals("livelycefsharp", StringComparison.OrdinalIgnoreCase) ||
-                fProcess.ProcessName.Equals("libvlcplayer", StringComparison.OrdinalIgnoreCase)) 
+                fProcess.ProcessName.Equals("libvlcplayer", StringComparison.OrdinalIgnoreCase) ||
+                fProcess.ProcessName.Equals("libmpvplayer", StringComparison.OrdinalIgnoreCase))
             {
                 PlayWallpapers();
                 return;

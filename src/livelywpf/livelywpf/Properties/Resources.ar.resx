@@ -473,8 +473,7 @@ All Process: Heavier, Scans all the process to determine playback behaviour.</va
     <value>For low-end systems select Lite mode.</value>
   </data>
   <data name="TipVideoPlayer" xml:space="preserve">
-    <value>Select the player used for video wallpaper.
-libVLC is recommended.</value>
+    <value>Select the player used for video wallpaper.</value>
   </data>
   <data name="TipWallpaperDir" xml:space="preserve">
     <value>Path used to store wallpaper files.</value>

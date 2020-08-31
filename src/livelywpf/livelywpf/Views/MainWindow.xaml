@@ -11,7 +11,7 @@
         xmlns:local="clr-namespace:livelywpf"
         xmlns:p = "clr-namespace:livelywpf.Properties"                
         mc:Ignorable="d"
-        Height="720" Width="1225"
+        Height="720" Width="1200"
         Title="{x:Static p:Resources.TitleAppName}"
         Closing="Window_Closing"        
         IsVisibleChanged="Window_IsVisibleChanged"

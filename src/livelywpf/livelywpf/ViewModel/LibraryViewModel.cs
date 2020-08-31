@@ -14,6 +14,8 @@ using System.Windows.Data;
 using System.Windows.Input;
 using livelywpf.Core;
 using System.Windows;
+using System.Runtime.CompilerServices;
+//using System.Windows.Forms;
 
 namespace livelywpf
 {
@@ -492,10 +494,12 @@ namespace livelywpf
             }
         }
 
-        public void SortExistingWallpaper(LibraryModel item)
+        public void SortLibraryItem(LibraryModel item)
         {
+            LibraryItems.Remove(item);
             var binarySearchIndex = BinarySearch(LibraryItems, item.Title);
-            LibraryItems.Move(LibraryItems.IndexOf(item), binarySearchIndex);
+            //LibraryItems.Move(LibraryItems.IndexOf(item), binarySearchIndex);
+            LibraryItems.Insert(binarySearchIndex, item);
         }
 
         /// <summary>
@@ -572,7 +576,7 @@ namespace livelywpf
                 else
                     r = m - 1;
             }
-            return l;
+            return l;//(l - 1);
         }
 
         #endregion //helpers
@@ -617,13 +621,21 @@ namespace livelywpf
                 return;
             }
 
-            foreach (var layout in wallpaperLayout)
+            if(Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span)
             {
-                var libraryItem = LibraryItems.FirstOrDefault(x => x.LivelyInfoFolderPath.Equals(layout.LivelyInfoPath));
-                var screen = ScreenHelper.GetScreen(layout.LivelyScreen.DeviceName, layout.LivelyScreen.Bounds, layout.LivelyScreen.WorkingArea, DisplayIdentificationMode.screenLayout);
-                if (libraryItem != null && screen != null)
+                if(wallpaperLayout.Count != 0)
                 {
-                    if (ScreenHelper.ScreenExists(screen, DisplayIdentificationMode.screenLayout))
+                    var libraryItem = LibraryItems.FirstOrDefault(x => x.LivelyInfoFolderPath.Equals(wallpaperLayout[0].LivelyInfoPath));
+                    WallpaperSet(libraryItem, ScreenHelper.GetPrimaryScreen());
+                }
+            }
+            else
+            {
+                foreach (var layout in wallpaperLayout)
+                {
+                    var libraryItem = LibraryItems.FirstOrDefault(x => x.LivelyInfoFolderPath.Equals(layout.LivelyInfoPath));
+                    var screen = ScreenHelper.GetScreen(layout.LivelyScreen.DeviceName, layout.LivelyScreen.Bounds, layout.LivelyScreen.WorkingArea, DisplayIdentificationMode.screenLayout);
+                    if (libraryItem != null && screen != null)
                     {
                         Logger.Info("Restoring Wallpaper: " + libraryItem.Title + " " + libraryItem.LivelyInfoFolderPath);
                         WallpaperSet(libraryItem, screen);

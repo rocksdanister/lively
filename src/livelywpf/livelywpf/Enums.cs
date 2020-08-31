@@ -61,18 +61,20 @@ namespace livelywpf
     /// </summary>
     public enum StreamQualitySuggestion
     {
-        [Description(">= 8K")]
-        best,
-        [Description("3840 x 2160, 4K")]
-        h2160p,
-        [Description("2560 x 1440, 2K")]
-        h1440p,
-        [Description("1920 x 1080")]
-        h1080p,
-        [Description("1280 x 720")]
-        h720p,
-        [Description("840 x 480")]
-        h480p
+        [Description("144p")]
+        Lowest,
+        [Description("240p")]
+        Low,
+        [Description("360p")]
+        LowMedium,
+        [Description("480p")]
+        Medium,
+        [Description("720p")]
+        MediumHigh,
+        [Description("1080p")]
+        High,
+        [Description("1081p")]
+        Highest
     }
 
     /// <summary>
@@ -121,7 +123,8 @@ namespace livelywpf
         wmf,
         libvlc,
         libvlcExt,
-        libmpv
+        libmpv,
+        libmpvExt
     }
 
 }

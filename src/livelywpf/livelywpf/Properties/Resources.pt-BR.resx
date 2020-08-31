@@ -437,8 +437,7 @@ Todos os processos: Mais pesado, escaneia todos os processos para determinar o c
     <value>Para sistemas mais fracos selecione o modo Leve.</value>
   </data>
   <data name="TipVideoPlayer" xml:space="preserve">
-    <value>Selecione o player para planos de fundo de vídeo.
-libVLC é recomendado.</value>
+    <value>Selecione o player para planos de fundo de vídeo.</value>
   </data>
   <data name="TipWallpaperDir" xml:space="preserve">
     <value>Caminho usado para armazenar os arquivos dos planos de fundo.</value>

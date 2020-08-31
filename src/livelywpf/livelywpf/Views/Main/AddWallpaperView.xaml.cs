@@ -73,7 +73,7 @@ namespace livelywpf.Views
             }
 
             Program.LibraryVM.AddWallpaper(UrlText.Text,
-                          WallpaperType.videostream,
+                          WallpaperType.url,
                           LibraryTileType.processing,
                           Program.SettingsVM.Settings.SelectedDisplay);
             App.AppWindow.NavViewNavigate("library");
@@ -143,8 +143,8 @@ namespace livelywpf.Views
                 {
                     var bmi = new Windows.UI.Xaml.Media.Imaging.BitmapImage(new Uri(imgPath))
                     {
-                        DecodePixelWidth = 320,
-                        DecodePixelHeight = 180
+                        DecodePixelWidth = 384,
+                        DecodePixelHeight = 216
                     };
                     img.Source = bmi;
                 }

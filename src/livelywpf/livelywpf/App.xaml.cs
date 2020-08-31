@@ -103,6 +103,7 @@ namespace livelywpf
         private int ExtractWallpaperBundle()
         {
             //todo: Add a "please wait" page in SetupWizard to indicate extraction in progress.
+            //Lively stores the last extracted bundle filename, extraction proceeds from next file onwards.
             int maxExtracted = Program.SettingsVM.Settings.WallpaperBundleVersion;
             try
             {

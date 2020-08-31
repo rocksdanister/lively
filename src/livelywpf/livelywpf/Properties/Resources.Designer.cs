@@ -1086,8 +1086,7 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select the player used for video wallpaper.
-        ///libVLC is recommended..
+        ///   Looks up a localized string similar to Select the player used for video wallpaper..
         /// </summary>
         public static string TipVideoPlayer {
             get {

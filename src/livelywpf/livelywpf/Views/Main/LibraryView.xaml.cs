@@ -1,4 +1,5 @@
-﻿using System;
+﻿using livelywpf.Helpers;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
@@ -136,7 +137,9 @@ namespace livelywpf.Views
             {
                 var uri = await e.DataView.GetWebLinkAsync();
                 Logger.Info("Dropped url:- " + uri.ToString());
-                if (libVLCStreams.CheckStream(uri) && Program.SettingsVM.Settings.AutoDetectOnlineStreams)
+                if (Program.SettingsVM.Settings.AutoDetectOnlineStreams &&
+                    Program.SettingsVM.Settings.StreamVideoPlayer == LivelyMediaPlayer.libmpvExt ?
+                    libMPVStreams.CheckStream(uri) : libVLCStreams.CheckStream(uri))
                 {
                     Program.LibraryVM.AddWallpaper(uri.ToString(),
                         WallpaperType.videostream,

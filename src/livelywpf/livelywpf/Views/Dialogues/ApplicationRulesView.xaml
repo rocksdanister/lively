@@ -28,7 +28,7 @@
                 <GridView>
                     <GridView.Columns>
                         <GridViewColumn Width="400" Header="{x:Static p:Resources.TextApplication}" DisplayMemberBinding="{Binding AppName, Mode=TwoWay}" />
-                        <GridViewColumn Width="200" Header="{x:Static p:Resources.TextRule}" DisplayMemberBinding="{Binding Rule, Mode=TwoWay}" />
+                        <GridViewColumn Width="200" Header="{x:Static p:Resources.TextRule}" DisplayMemberBinding="{Binding RuleText, Mode=TwoWay}" />
                     </GridView.Columns>
                 </GridView>
             </ListView.View>

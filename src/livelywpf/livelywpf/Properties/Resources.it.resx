@@ -440,7 +440,7 @@ Tutto il processo: più pesante, analizza tutto il processo per determinare il c
     <value>Per i sistemi di fascia bassa selezionare la modalità Lite.</value>
   </data>
   <data name="TipVideoPlayer" xml:space="preserve">
-    <value>Seleziona il lettore utilizzato per lo sfondo del video. libVLC è consigliato.</value>
+    <value>Seleziona il lettore utilizzato per lo sfondo del video.</value>
   </data>
   <data name="TipWallpaperDir" xml:space="preserve">
     <value>Percorso utilizzato per memorizzare gli wallpapers.</value>

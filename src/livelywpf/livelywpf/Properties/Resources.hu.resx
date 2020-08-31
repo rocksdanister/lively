@@ -438,8 +438,7 @@ A kész vagy menj a http://localhost:portnumber hogy hozzáférj a fejlesztői k
     <value>Az alsó kategóriás rendszerekhez válaszd az Egyszerű módot.</value>
   </data>
   <data name="TipVideoPlayer" xml:space="preserve">
-    <value>Válaszd ki a lejátszót, amit videó háttérhez szoktál használni.
-libVLC javasolt.</value>
+    <value>Válaszd ki a lejátszót, amit videó háttérhez szoktál használni.</value>
   </data>
   <data name="TipWallpaperDir" xml:space="preserve">
     <value>Az Path (fájl elérési útja) a háttérkép fájlok tárolására van használva.</value>

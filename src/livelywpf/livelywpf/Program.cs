@@ -19,9 +19,10 @@ namespace livelywpf
 
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private static readonly Mutex mutex = new Mutex(false, "LIVELY:DESKTOPWALLPAPERSYSTEM");
-        public static string WallpaperDir; //Loaded from Settings.json
+        public static string WallpaperDir; //Loaded from Settings.json (User configurable.)
         public static readonly string AppDataDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Lively Wallpaper");
 
+        //todo: use singleton or something instead?
         public static SettingsViewModel SettingsVM;
         public static ApplicationRulesViewModel AppRulesVM;
         public static LibraryViewModel LibraryVM;
@@ -39,8 +40,7 @@ namespace livelywpf
                 if (!mutex.WaitOne(TimeSpan.FromSeconds(1), false))
                 {
                     //ref: https://stackoverflow.com/questions/19147/what-is-the-correct-way-to-create-a-single-instance-wpf-application
-                    // send our Win32 message to make the currently running instance
-                    // jump on top of all the other windows
+                    // send our registered Win32 message to make the currently running lively instance to bring to foreground.
                     // todo: ditch this once ipc server is ready?
                     NativeMethods.PostMessage(
                         (IntPtr)NativeMethods.HWND_BROADCAST,
@@ -80,7 +80,7 @@ namespace livelywpf
         private static void App_Startup(object sender, StartupEventArgs e)
         {
             sysTray = new Systray(SettingsVM.IsSysTrayIconVisible);
-            //AppUpdater();
+            AppUpdater();
 
             if (Program.SettingsVM.Settings.IsFirstRun)
             {
@@ -108,7 +108,7 @@ namespace livelywpf
         {
             try
             {
-                var gitRelease = await UpdaterGithub.GetLatestRelease("lively", "rocksdanister", 2500);
+                var gitRelease = await UpdaterGithub.GetLatestRelease("lively", "rocksdanister", 45000);
                 int result = UpdaterGithub.CompareAssemblyVersion(gitRelease);
                 if (result > 0)
                 {
@@ -148,7 +148,7 @@ namespace livelywpf
                 else if (result < 0)
                 {
                     //beta release.
-                    sysTray.UpdateTrayBtn.Text = "o_O";
+                    sysTray.UpdateTrayBtn.Text = ">_<'";
                 }
                 else
                 {

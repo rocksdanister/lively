@@ -211,7 +211,7 @@ namespace livelywpf
             }
             set
             {
-                _author = string.IsNullOrWhiteSpace(value) ? "-" : value;
+                _author = string.IsNullOrWhiteSpace(value) ? "---" : value;
                 OnPropertyChanged("Author");
             }
         }
@@ -225,7 +225,7 @@ namespace livelywpf
             }
             set
             {
-                _desc = string.IsNullOrWhiteSpace(value) ? "-" : value;
+                _desc = string.IsNullOrWhiteSpace(value) ? "---" : value;
                 OnPropertyChanged("Desc");
             }
         }

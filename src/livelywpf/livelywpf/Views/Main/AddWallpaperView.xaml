@@ -15,10 +15,10 @@
         <StackPanel VerticalAlignment="Top" Margin="10, 0, 0, 0" HorizontalAlignment="Left">
             <TextBlock FontSize="12" Text="{x:Static p:Resources.TitleWallpaper}" FontWeight="Bold" Margin="0, 10, 0, 0"/>
             <xamlHost:WindowsXamlHost x:Name="PreviewGif" HorizontalAlignment="Left" 
-                      Width="320" Height="180" Margin="0, 10, 0, 0" InitialTypeName="Windows.UI.Xaml.Controls.Image" ChildChanged="PreviewGif_ChildChanged"  />
+                      Width="384" Height="216" Margin="0, 10, 0, 0" InitialTypeName="Windows.UI.Xaml.Controls.Image" ChildChanged="PreviewGif_ChildChanged"  />
             <TextBlock FontSize="12" Margin="25, 5, 0, 0" Text="{x:Static p:Resources.DescriptionDragDropFIle}"/>
 
-            <TextBlock Margin="0, 50, 0, 0" FontSize="17" Text="{x:Static p:Resources.DescriptionAddWallpaper}"/>
+            <TextBlock Margin="0, 25, 0, 0" FontSize="17" Text="{x:Static p:Resources.DescriptionAddWallpaper}"/>
             <TextBlock Margin="0, 10, 0, 0" Text="{x:Static p:Resources.TitleSelectFile}"/>
             <Button x:Name="FileBtn" Click="FileBtn_Click" ClickMode="Release" Margin="0, 5, 0, 0" MinWidth="150">Browse</Button>
             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="Gray" 
@@ -32,8 +32,8 @@
             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="Gray" 
                         Text="{x:Static p:Resources.TipAddWallpaperURL}"/>
 
-            <TextBlock Margin="0, 10, 0, 0" ToolTip="https://www.deviantart.com/livelywallpaper/gallery/">           
-                <Hyperlink FontSize="15" Foreground="Gray" NavigateUri="https://www.deviantart.com/livelywallpaper/gallery/" RequestNavigate="Hyperlink_RequestNavigate">
+            <TextBlock Margin="0, 10, 0, 0" ToolTip="https://www.reddit.com/r/LivelyWallpaper/">           
+                <Hyperlink FontSize="15" Foreground="Gray" NavigateUri="https://www.reddit.com/r/LivelyWallpaper/" RequestNavigate="Hyperlink_RequestNavigate">
                     <TextBlock Text="{x:Static p:Resources.TextMoreWallpapers}"/>
                 </Hyperlink>
             </TextBlock>

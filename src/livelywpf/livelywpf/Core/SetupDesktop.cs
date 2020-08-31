@@ -23,6 +23,7 @@ namespace livelywpf
         private static bool _isInitialized = false;
         private static Playback processMonitor;
         public static List<IWallpaper> Wallpapers = new List<IWallpaper>();
+        private static readonly List<IWallpaper> wallpapersPending = new List<IWallpaper>();
         public static event EventHandler WallpaperChanged;
 
         #endregion //init
@@ -109,6 +110,14 @@ namespace livelywpf
                 }
             }
 
+            int index;
+            if(ScreenHelper.ScreenExists(targetDisplay, DisplayIdentificationMode.screenLayout) &&
+                (index = wallpapersPending.FindIndex(x => ScreenHelper.ScreenCompare(x.GetScreen(), targetDisplay, DisplayIdentificationMode.screenLayout))) != -1)
+            {
+                Logger.Info("Core: Skipping, wallpaper already queued/screen not found:" + targetDisplay.DeviceName);
+                return;
+            }
+
             if(wp.LivelyInfo.Type == WallpaperType.web 
             || wp.LivelyInfo.Type == WallpaperType.webaudio 
             || wp.LivelyInfo.Type == WallpaperType.url)
@@ -116,6 +125,7 @@ namespace livelywpf
                 wp.ItemStartup = true;
                 var item = new WebProcess(wp.FilePath, wp, targetDisplay);
                 item.WindowInitialized += SetupDesktop_WallpaperInitialized;
+                wallpapersPending.Add(item);
                 item.Show();
             }
             if (wp.LivelyInfo.Type == WallpaperType.app
@@ -127,10 +137,21 @@ namespace livelywpf
             }
             else if(wp.LivelyInfo.Type == WallpaperType.video)
             {
+                //How many videoplayers? Yes.
                 if(Program.SettingsVM.Settings.VideoPlayer == LivelyMediaPlayer.libmpv)
                 {
+                    wp.ItemStartup = true;
                     var item = new VideoPlayerMPV(wp.FilePath, wp, targetDisplay);
                     item.WindowInitialized += SetupDesktop_WallpaperInitialized;
+                    wallpapersPending.Add(item);
+                    item.Show();
+                }
+                else if(Program.SettingsVM.Settings.VideoPlayer == LivelyMediaPlayer.libmpvExt)
+                {
+                    wp.ItemStartup = true;
+                    var item = new VideoPlayerMPVExt(wp.FilePath, wp, targetDisplay);
+                    item.WindowInitialized += SetupDesktop_WallpaperInitialized;
+                    wallpapersPending.Add(item);
                     item.Show();
                 }
                 else if(Program.SettingsVM.Settings.VideoPlayer == LivelyMediaPlayer.libvlc)
@@ -138,6 +159,7 @@ namespace livelywpf
                     wp.ItemStartup = true;
                     var item = new VideoPlayerVLC(wp.FilePath, wp, targetDisplay);
                     item.WindowInitialized += SetupDesktop_WallpaperInitialized;
+                    wallpapersPending.Add(item);
                     item.Show();
                 }
                 else if(Program.SettingsVM.Settings.VideoPlayer == LivelyMediaPlayer.libvlcExt)
@@ -145,117 +167,148 @@ namespace livelywpf
                     wp.ItemStartup = true;
                     var item = new VideoPlayerVLCExt(wp.FilePath, wp, targetDisplay);
                     item.WindowInitialized += SetupDesktop_WallpaperInitialized;
+                    wallpapersPending.Add(item);
                     item.Show();
                 }
-                else
+                else if(Program.SettingsVM.Settings.VideoPlayer == LivelyMediaPlayer.wmf)
                 {
                     var item = new VideoPlayerWPF(wp.FilePath, wp, targetDisplay);
                     item.WindowInitialized += SetupDesktop_WallpaperInitialized;
+                    wallpapersPending.Add(item);
                     item.Show();
                 }
             }
             else if(wp.LivelyInfo.Type == WallpaperType.videostream)
             {
-                wp.ItemStartup = true;
-                var item = new VideoPlayerVLC(wp.FilePath, wp, targetDisplay);
-                item.WindowInitialized += SetupDesktop_WallpaperInitialized;
-                item.Show();
+                if(Program.SettingsVM.Settings.StreamVideoPlayer == LivelyMediaPlayer.libmpvExt)
+                {
+                    wp.ItemStartup = true;
+                    var item = new VideoPlayerMPVExt(wp.FilePath, wp, targetDisplay, Program.SettingsVM.Settings.StreamQuality);
+                    item.WindowInitialized += SetupDesktop_WallpaperInitialized;
+                    wallpapersPending.Add(item);
+                    item.Show();
+                }
+                else if(Program.SettingsVM.Settings.StreamVideoPlayer == LivelyMediaPlayer.libvlcExt)
+                {
+                    wp.ItemStartup = true;
+                    var item = new VideoPlayerVLC(wp.FilePath, wp, targetDisplay);
+                    item.WindowInitialized += SetupDesktop_WallpaperInitialized;
+                    wallpapersPending.Add(item);
+                    item.Show();
+                }
             }
             else if(wp.LivelyInfo.Type == WallpaperType.gif)
             {
                 var item = new GIFPlayerUWP(wp.FilePath, wp, targetDisplay);
                 item.WindowInitialized += SetupDesktop_WallpaperInitialized;
+                wallpapersPending.Add(item);
                 item.Show();
             }
         }
 
+        static SemaphoreSlim semaphoreSlim = new SemaphoreSlim(1, 1);
+
         private static async void SetupDesktop_WallpaperInitialized(object sender, WindowInitializedArgs e)
         {
-            var wallpaper = (IWallpaper)sender;
-            wallpaper.WindowInitialized -= SetupDesktop_WallpaperInitialized;
-            await System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
+            await semaphoreSlim.WaitAsync();
+            try
             {
-                wallpaper.GetWallpaperData().ItemStartup = false;
-            }));
-            if (e.Success)
-            {
-                if(wallpaper.GetProcess() != null)
+                var wallpaper = (IWallpaper)sender;
+                wallpapersPending.Remove(wallpaper);
+                wallpaper.WindowInitialized -= SetupDesktop_WallpaperInitialized;
+                await System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
                 {
-                    SendMsgLivelySubProcess("lively:add-pgm " + wallpaper.GetProcess().Id);
-                }
-
-                //preview and create gif and thumbnail for user dropped file.
-                if (wallpaper.GetWallpaperData().DataType == LibraryTileType.processing)
+                    wallpaper.GetWallpaperData().ItemStartup = false;
+                }));
+                if (e.Success)
                 {
-                    //quitting running wallpaper before gif capture for low-end systemss.
-                    if (Program.SettingsVM.Settings.LivelyGUIRendering == LivelyGUIState.lite)
+                    if (wallpaper.GetProcess() != null)
                     {
-                        switch (Program.SettingsVM.Settings.WallpaperArrangement)
+                        SendMsgLivelySubProcess("lively:add-pgm " + wallpaper.GetProcess().Id);
+                    }
+
+                    //preview and create gif and thumbnail for user dropped file.
+                    if (wallpaper.GetWallpaperData().DataType == LibraryTileType.processing)
+                    {
+                        //quitting running wallpaper before gif capture for low-end systemss.
+                        if (Program.SettingsVM.Settings.LivelyGUIRendering == LivelyGUIState.lite)
                         {
-                            case WallpaperArrangement.per:
-                                CloseWallpaperWithoutEvent(wallpaper.GetScreen());
-                                break;
-                            case WallpaperArrangement.span:
-                                CloseAllWallpapersWithoutEvent();
-                                break;
-                            case WallpaperArrangement.duplicate:
-                                CloseAllWallpapersWithoutEvent();
-                                break;
+                            switch (Program.SettingsVM.Settings.WallpaperArrangement)
+                            {
+                                case WallpaperArrangement.per:
+                                    CloseWallpaperWithoutEvent(wallpaper.GetScreen());
+                                    break;
+                                case WallpaperArrangement.span:
+                                    CloseAllWallpapersWithoutEvent();
+                                    break;
+                                case WallpaperArrangement.duplicate:
+                                    CloseAllWallpapersWithoutEvent();
+                                    break;
+                            }
+                        }
+
+                        await ShowPreviewDialogSTAThread(wallpaper);
+                        if (!File.Exists(
+                        Path.Combine(wallpaper.GetWallpaperData().LivelyInfoFolderPath, "LivelyInfo.json")))
+                        {
+                            //user cancelled/fail!
+                            wallpaper.Close();
+                            RefreshDesktop();
+                            await System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
+                            {
+                                Program.LibraryVM.WallpaperDelete(wallpaper.GetWallpaperData());
+                            }));
+                            return; //exit
                         }
                     }
-
-                    await ShowPreviewDialogSTAThread(wallpaper);
-                    if (!File.Exists(
-                    Path.Combine(wallpaper.GetWallpaperData().LivelyInfoFolderPath, "LivelyInfo.json")))
+                    else if (wallpaper.GetWallpaperData().DataType == LibraryTileType.videoConvert)
                     {
-                        //user cancelled/fail!
+                        //converting existing library item into video wallpaper using libVLC.
+                        await ShowVLCScreenCaptureDialogSTAThread(wallpaper);
                         wallpaper.Close();
                         RefreshDesktop();
-                        await System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
-                        {
-                            Program.LibraryVM.WallpaperDelete(wallpaper.GetWallpaperData());
-                        }));
                         return; //exit
                     }
-                }
-                else if (wallpaper.GetWallpaperData().DataType == LibraryTileType.videoConvert)
-                {
-                    //converting existing library item into video wallpaper using libVLC.
-                    await ShowVLCScreenCaptureDialogSTAThread(wallpaper);
-                    wallpaper.Close();
-                    RefreshDesktop();
-                    return; //exit
-                }
 
-                switch(Program.SettingsVM.Settings.WallpaperArrangement)
+                    switch (Program.SettingsVM.Settings.WallpaperArrangement)
+                    {
+                        case WallpaperArrangement.per:
+                            CloseWallpaperWithoutEvent(wallpaper.GetScreen());
+                            SetWallpaperPerScreen(wallpaper.GetHWND(), wallpaper.GetScreen());
+                            break;
+                        case WallpaperArrangement.span:
+                            CloseAllWallpapersWithoutEvent();
+                            SetWallpaperSpanScreen(wallpaper.GetHWND());
+                            break;
+                        case WallpaperArrangement.duplicate:
+                            CloseAllWallpapersWithoutEvent();
+                            SetWallpaperDuplicateScreen(wallpaper.GetHWND());
+                            break;
+                    }
+                    Wallpapers.Add(wallpaper);
+                    WallpaperChanged?.Invoke(null, null);
+                }
+                else
                 {
-                    case WallpaperArrangement.per:
-                        CloseWallpaperWithoutEvent(wallpaper.GetScreen());
-                        SetWallpaperPerScreen(wallpaper.GetHWND(), wallpaper.GetScreen());
-                        break;
-                    case WallpaperArrangement.span:
-                        CloseAllWallpapersWithoutEvent();
-                        SetWallpaperSpanScreen(wallpaper.GetHWND());
-                        break;
-                    case WallpaperArrangement.duplicate:
-                        CloseAllWallpapersWithoutEvent();
-                        SetWallpaperDuplicateScreen(wallpaper.GetHWND());
-                        break;
-                } 
-                Wallpapers.Add(wallpaper);
-                WallpaperChanged?.Invoke(null, null);
-                //SaveWallpaperLayout();
+                    Logger.Error("Core: Failed to launch wallpaper: " + e.Msg + "\n" + e.Error.ToString());
+                    wallpaper.Terminate();
+                    WallpaperChanged?.Invoke(null, null);
+                    MessageBox.Show(e.Error.Message, Properties.Resources.TitleAppName);
+                }
             }
-            else
+            finally
             {
-                Logger.Error(e.Error.ToString());
-                wallpaper.Close();
+                semaphoreSlim.Release();
             }
         }
 
+        static readonly object _layoutWriteLock = new object();
         private static void SetupDesktop_WallpaperChanged(object sender, EventArgs e)
         {
-            SaveWallpaperLayout();
+            lock (_layoutWriteLock)
+            {
+                SaveWallpaperLayout();
+            }
         }
 
         private static void SystemEvents_DisplaySettingsChanged(object sender, EventArgs e)
@@ -298,7 +351,7 @@ namespace livelywpf
                         }
                         Program.SettingsVM.UpdateConfigFile();
 
-                        if(Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span)
+                        if (Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span)
                         {
                             UpdateWallpaperRect();
                         }
@@ -333,7 +386,7 @@ namespace livelywpf
                 screenList.Clear();
                 screenList.AddRange(allScreens);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Logger.Error(ex.ToString());
             }
@@ -341,43 +394,30 @@ namespace livelywpf
 
         private static void UpdateWallpaperRect()
         {
-            //Known issues: If resolution is changed along with dpi is also changed, then this method will produce unreliable results, multiscreen bugs.
+            //Known issues: Buggy if screen dpi is greater than 100% in multiscreen.
             //Possible cause: the window being used as reference is not updated to the new dpi in time?
             if (ScreenHelper.IsMultiScreen() && Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span)
             {
                 if(Wallpapers.Count != 0)
                 {
-                    NativeMethods.RECT prct = new NativeMethods.RECT();
-                    //get spawned workerw rectangle data.
-                    NativeMethods.GetWindowRect(workerw, out prct);
-
-                    //fill wp into the whole workerw area.
-                    if (!NativeMethods.SetWindowPos(Wallpapers[0].GetHWND(), 1, 0, 0, prct.Right - prct.Left, prct.Bottom - prct.Top, 0 | 0x0010))
-                    {
-                        NLogger.LogWin32Error("setwindowpos fail SpanWallpaper(),");
-                    }
+                    //detach wallpaper window from this dialogue.
+                    WindowOperations.SetParentSafe(Wallpapers[0].GetHWND(), IntPtr.Zero);
+                    SetWallpaperSpanScreen(Wallpapers[0].GetHWND());
+                    Wallpapers[0].SetScreen(ScreenHelper.GetPrimaryScreen());
                 }
             }
             else
             {
                 int i;
-                NativeMethods.RECT prct = new NativeMethods.RECT();
                 foreach (var item in ScreenHelper.GetScreen())
                 {
-                    //If number of connected devices is unchanged -> devicename is also unchanged?
+                    //Assumption: If number of connected devices is unchanged -> devicename is also unchanged?
                     if ((i = Wallpapers.FindIndex(x => ScreenHelper.ScreenCompare(item, x.GetScreen(), DisplayIdentificationMode.screenClass))) != -1)
                     {
                         Logger.Info("System parameters changed: Screen Param old/new -> " + Wallpapers[i].GetScreen().Bounds + "/" + item.Bounds);
-                        //Using this window as reference for MapWindowPoints position.                  
-                        Window w = new Window() { Width = 10, Height = 10};
-                        w.Show();
-                        NativeMethods.SetWindowPos(new WindowInteropHelper(w).Handle, 1, item.Bounds.Left, item.Bounds.Top, 0, 0,
-                                (int)NativeMethods.SetWindowPosFlags.SWP_NOACTIVATE | (int)NativeMethods.SetWindowPosFlags.SWP_NOSIZE);
-                        NativeMethods.MapWindowPoints(new WindowInteropHelper(w).Handle, workerw, ref prct, 2);
-                        w.Close();
-
-                        //Updating position and data of wallpaper.
-                        NativeMethods.SetWindowPos(Wallpapers[i].GetHWND(), 1, prct.Left, prct.Top, (item.Bounds.Width), (item.Bounds.Height), 0 | 0x0010);
+                        //detach wallpaper window from this dialogue.
+                        WindowOperations.SetParentSafe(Wallpapers[i].GetHWND(), IntPtr.Zero);
+                        SetWallpaperPerScreen(Wallpapers[i].GetHWND(), item);
                         Wallpapers[i].SetScreen(item);
                     }
                 }
@@ -698,6 +738,7 @@ namespace livelywpf
             Wallpapers.ForEach(x => x.Terminate());
             Wallpapers.Clear();
             SendMsgLivelySubProcess("lively:clear");
+            WallpaperChanged?.Invoke(null, null);
         }
 
         private static void TerminateAllWallpapersWithoutEvent()
@@ -718,16 +759,22 @@ namespace livelywpf
         {
             System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
             {
-                //IntPtr progman = NativeMethods.FindWindow("Progman", null);
-                NativeMethods.SetForegroundWindow(progman); //change focus from the started window//application.
+                //change focus from the started window//application.
+                NativeMethods.SetForegroundWindow(progman);
                 NativeMethods.SetFocus(progman);
 
+                if(App.AppWindow != null)
+                {
+                    App.AppWindow.Activate();
+                }
+                /*
                 IntPtr livelyWindow = new WindowInteropHelper(System.Windows.Application.Current.MainWindow).Handle;
                 if (!livelyWindow.Equals(IntPtr.Zero) && NativeMethods.IsWindowVisible(livelyWindow) && focusLively)  //todo:- not working for cefsharp wp launch, why?
                 {
                     NativeMethods.SetForegroundWindow(livelyWindow);
                     NativeMethods.SetFocus(livelyWindow);
                 }
+                */
             }));
         }
 
@@ -736,7 +783,7 @@ namespace livelywpf
         /// </summary>
         public static void RefreshDesktop()
         {
-            //todo:- right now I'm just telling windows to change wallpaper with a null value of zero size, there has to be a PROPER way to do this.
+            //todo: I'm just telling windows to change wallpaper with a null value of zero size, find proper way to do this.
             NativeMethods.SystemParametersInfo(NativeMethods.SPI_SETDESKWALLPAPER, 0, null, NativeMethods.SPIF_UPDATEINIFILE);
         }
 
@@ -746,7 +793,8 @@ namespace livelywpf
         /// <param name="windowHandle">handle of window</param>
         private static void SetParentWorkerW(IntPtr windowHandle)
         {
-            if (System.Environment.OSVersion.Version.Major == 6 && System.Environment.OSVersion.Version.Minor == 1) //windows 7
+            //Legacy, Windows 7
+            if (System.Environment.OSVersion.Version.Major == 6 && System.Environment.OSVersion.Version.Minor == 1)
             {
                 if (!workerw.Equals(progman)) //this should fix the win7 wp disappearing issue.
                     NativeMethods.ShowWindow(workerw, (uint)0);

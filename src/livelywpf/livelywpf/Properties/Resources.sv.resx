@@ -475,8 +475,7 @@ Alla proceser: Tyngre, Skannar alla proceser för att bestämma uppspelningsbete
     <value>För Lite-end-system väljer du Lite-läge.</value>
   </data>
   <data name="TipVideoPlayer" xml:space="preserve">
-    <value>Välj den spelare som används för videotapet.
-libVLC rekommenderas.</value>
+    <value>Välj den spelare som används för videotapet.</value>
   </data>
   <data name="TipWallpaperDir" xml:space="preserve">
     <value>Sökväg som används för att lagra tapetfiler.</value>

@@ -25,7 +25,7 @@ namespace livelywpf.Views.SetupWizard
         readonly List<object> pages = new List<object>() { 
             new PageWelcome(),
             new PageStartup(),
-            new PageDirectory(),
+            //new PageDirectory(),
             new PageUI(),
             new PageFinal() 
         };
@@ -33,7 +33,7 @@ namespace livelywpf.Views.SetupWizard
         public SetupView()
         {
             InitializeComponent();
-            ContentFrame.Navigate(pages[index], new DrillInNavigationTransitionInfo());
+            ContentFrame.Navigate(pages[index], new EntranceNavigationTransitionInfo());
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -45,7 +45,7 @@ namespace livelywpf.Views.SetupWizard
                 NextBtn.Visibility = Visibility.Collapsed;
                 //_isClosable = true;
             }
-            ContentFrame.Navigate(pages[index], new DrillInNavigationTransitionInfo());
+            ContentFrame.Navigate(pages[index], new EntranceNavigationTransitionInfo());
         }
 
         public void ExitWindow()

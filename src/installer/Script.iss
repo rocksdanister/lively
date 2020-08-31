@@ -13,10 +13,10 @@ chinese.RunAtStartup=开机自启动
 russian.RunAtStartup=Включение с Windows
 spanish.RunAtStartup=Iniciar con Windows
 
-english.DeleteEverythigMsgBox=Do you want to delete userdata?
-chinese.DeleteEverythigMsgBox=Do you want to delete userdata?
-russian.DeleteEverythigMsgBox=Do you want to delete userdata?
-spanish.DeleteEverythigMsgBox=Do you want to delete userdata?
+english.DeleteEverythigMsgBox=Do you want to delete data folder?
+chinese.DeleteEverythigMsgBox=Do you want to delete data folder?
+russian.DeleteEverythigMsgBox=Do you want to delete data folder?
+spanish.DeleteEverythigMsgBox=Do you want to delete data folder?
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
@@ -135,7 +135,7 @@ begin
     then
       // deletion confirmed by user.
       begin
-        // Delete the directory Documents/LivelyWallpaper and everything inside it
+        // Delete the directory "C:\Users\<UserName>\AppData\Local\Lively Wallpaper" and everything inside it
         DelTree(ExpandConstant('{localappdata}\Lively Wallpaper'), True, True, True);
       end;
   end;

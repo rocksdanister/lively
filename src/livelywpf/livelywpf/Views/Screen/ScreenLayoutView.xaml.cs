@@ -24,7 +24,7 @@ namespace livelywpf.Views
             this.DataContext = new ScreenLayoutViewModel();
             CreateLabelWindows();
 
-            SetupDesktop.WallpaperChanged += SetupDesktop_WallpaperChanged;
+            //SetupDesktop.WallpaperChanged += SetupDesktop_WallpaperChanged;
         }
 
         private void ScreenLayoutControl_ChildChanged(object sender, EventArgs e)
@@ -72,7 +72,7 @@ namespace livelywpf.Views
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            SetupDesktop.WallpaperChanged -= SetupDesktop_WallpaperChanged;
+            //SetupDesktop.WallpaperChanged -= SetupDesktop_WallpaperChanged;
             CloseLabelWindows();
         }
     }

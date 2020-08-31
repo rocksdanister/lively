@@ -24,6 +24,8 @@ namespace livelywpf
         bool _isStream;
         //float vidPosition;
 
+        //todo:https://code.videolan.org/videolan/LibVLCSharp/-/issues/136
+        //take screenshot and display static image when player.Stop() is called.
         public VLCElement(string filePath, bool isStream = false)
         {
             InitializeComponent();
@@ -34,8 +36,9 @@ namespace livelywpf
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //ShowInTaskbar = false :- causing issue with windows10 Taskview.
+            //update window style.
             WindowOperations.RemoveWindowFromTaskbar(new WindowInteropHelper(this).Handle);
+            //this hides the window from taskbar and also fixes crash when win10 taskview is launched. 
             this.ShowInTaskbar = false;
             this.ShowInTaskbar = true;
         }
@@ -75,7 +78,7 @@ namespace livelywpf
             }
             catch(Exception ex)
             {
-                Logger.Error(ex.ToString());
+                Logger.Error("libVLC Init Failure:" + ex.ToString());
             }
 
         }

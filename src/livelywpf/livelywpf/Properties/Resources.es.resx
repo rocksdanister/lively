@@ -437,8 +437,7 @@ All Process: Heavier, Scans all the process to determine playback behaviour.</va
     <value>Para sistemas de gama baja, selecciona el modo Lite.</value>
   </data>
   <data name="TipVideoPlayer" xml:space="preserve">
-    <value>Selecciona el reproductor utilizado para el fondo de pantalla de video.
-Se recomienda libVLC.</value>
+    <value>Selecciona el reproductor utilizado para el fondo de pantalla de video.</value>
   </data>
   <data name="TipWallpaperDir" xml:space="preserve">
     <value>Ruta utilizada para almacenar archivos de fondo de pantalla.</value>

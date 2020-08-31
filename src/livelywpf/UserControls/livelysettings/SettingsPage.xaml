@@ -132,7 +132,8 @@
                                 <ComboBoxItem>wmf</ComboBoxItem>
                                 <ComboBoxItem>libVLC</ComboBoxItem>
                                 <ComboBoxItem>libVLC(External)</ComboBoxItem>
-                                <ComboBoxItem IsEnabled="False">libMPV</ComboBoxItem>
+                                <ComboBoxItem>libMPV</ComboBoxItem>
+                                <ComboBoxItem>libMPV(External)</ComboBoxItem>
                             </ComboBox>
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipVideoPlayer}"/>
 
@@ -151,13 +152,14 @@
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipBrowserDebuggingPort}"/>
 
                             <TextBlock FontSize="20" Margin="0, 10, 0, 0" Text="{x:Bind UIText.TitleWallpaperStream}"/>
-                            <ComboBox IsEnabled="False" Header="{x:Bind UIText.TitleWallpaperStreamQuality}" Margin="0,10,0,0" MinWidth="200">
-                                <ComboBoxItem>Best</ComboBoxItem>
-                                <ComboBoxItem>2160p</ComboBoxItem>
-                                <ComboBoxItem>1440p</ComboBoxItem>
-                                <ComboBoxItem>1080p</ComboBoxItem>
-                                <ComboBoxItem>720p</ComboBoxItem>
+                            <ComboBox Header="{x:Bind UIText.TitleWallpaperStreamQuality}" Margin="0,10,0,0" MinWidth="200" SelectedIndex="{Binding SelectedWallpaperStreamQualityIndex, Mode=TwoWay}">
+                                <ComboBoxItem>144p</ComboBoxItem>
+                                <ComboBoxItem>240p</ComboBoxItem>
+                                <ComboBoxItem>360p</ComboBoxItem>
                                 <ComboBoxItem>480p</ComboBoxItem>
+                                <ComboBoxItem>720p</ComboBoxItem>
+                                <ComboBoxItem>1080p</ComboBoxItem>
+                                <ComboBoxItem>1080p+</ComboBoxItem>
                             </ComboBox>
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipWallpaperStreamQuality}"/>
 

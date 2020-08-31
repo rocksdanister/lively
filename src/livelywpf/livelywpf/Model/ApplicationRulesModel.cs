@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -37,7 +38,29 @@ namespace livelywpf
             set
             {
                 _rule = value;
+                RuleText = _rule switch
+                {
+                    AppRulesEnum.pause => Properties.Resources.TextPerformancePause,
+                    AppRulesEnum.ignore => Properties.Resources.TextPerformanceNone,
+                    AppRulesEnum.kill => Properties.Resources.TextPerformanceKill,
+                    _ => Properties.Resources.TextPerformanceNone,
+                };
                 OnPropertyChanged("Rule");
+            }
+        }
+
+        private string _ruleText;
+        [JsonIgnore]
+        public string RuleText
+        {
+            get
+            {
+                return _ruleText;
+            }
+            set
+            {
+                _ruleText = value;
+                OnPropertyChanged("RuleText");
             }
         }
     }

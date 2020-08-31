@@ -7,13 +7,10 @@
       xmlns:ui="http://schemas.modernwpf.com/2019"
       xmlns:p = "clr-namespace:livelywpf.Properties"  
       xmlns:xamlHost="clr-namespace:Microsoft.Toolkit.Wpf.UI.XamlHost;assembly=Microsoft.Toolkit.Wpf.UI.XamlHost"
-
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="{x:Static p:Resources.TitleLibrary}" Unloaded="Page_Unloaded">
-
     <Grid>
-
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10*"/>
             <ColumnDefinition Width="0.25*"/>

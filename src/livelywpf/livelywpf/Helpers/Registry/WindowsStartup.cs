@@ -70,27 +70,29 @@ namespace livelywpf
         }
 
         /// <summary>
-        /// Verify if windows startup registry value is valid.
+        /// Checks application key status in windows startup registry.
         /// </summary>
-        /// <returns>true: valid, false: not found/invalid.</returns>
-        public static bool CheckStartupRegistry()
+        /// <returns>0: not found, 1: correct keypresent, -1: wrong keypresent</returns>
+        public static int CheckStartupRegistry()
         {
+            int status;
             var startupKey = GetStartupRegistry();
             if (String.IsNullOrEmpty(startupKey))
             {
                 //no key value.
-                return false;
+                status = 0;
             }
             else if (String.Equals(startupKey, Path.ChangeExtension(Assembly.GetExecutingAssembly().Location, ".exe"), StringComparison.Ordinal))
             {
                 //everything is ok.
-                return true;
+                status = 1;
             }
             else
             {
                 //key values do not match, wrong location in registry.
-                return false;
+                status = -1;
             }
+            return status;
         }
     }
 }

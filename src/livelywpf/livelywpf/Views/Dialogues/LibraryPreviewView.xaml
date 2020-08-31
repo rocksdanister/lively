@@ -33,7 +33,7 @@
                 <TextBox MaxLength="50" Name="textboxAuthor" Text="{Binding Author, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextWrapping="WrapWithOverflow" Margin="10,5,25,10" />
 
                 <Label Content="Source" />
-                <TextBox Name="textboxContact" Text="{Binding Url, Mode=TwoWay}" TextWrapping="WrapWithOverflow"  Margin="10,5,25,0" />
+                <TextBox Name="textboxContact" Text="{Binding Url, Mode=TwoWay}" TextWrapping="NoWrap" MaxHeight="20" Height="20"  Margin="10,5,25,0" />
 
                 <CheckBox x:Name="chkBoxCreatePreview" Content="Create Preview" Margin="10,10,0,0" IsChecked="{Binding Path=GifCheck, Mode=TwoWay}"/>
                 <CheckBox x:Name="chkBoxCreateZip" Content="Create Lively .zip" Margin="10,10,0,0" IsChecked="{Binding Path=ZipCheck, Mode=TwoWay}"/>

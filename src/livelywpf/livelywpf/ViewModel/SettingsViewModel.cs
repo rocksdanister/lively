@@ -46,19 +46,15 @@ namespace livelywpf
                     new LanguagesModel("Filipino(fil)", new string[]{"fil","fil-PH"}),
                     new LanguagesModel("Magyar(hu)", new string[]{"hu","hu-HU"}),
                     new LanguagesModel("svenska(sv)", new string[]{"sv","sv-AX","sv-FI","sv-SE"}),
+                    new LanguagesModel("melayu(ms)", new string[]{"ms", "ms-BN","ms-MY"})
             };
             SelectedLanguageItem = SearchSupportedLanguage(Settings.Language);
 
-            //Ignoring the savefile setting, only checking the registry and user action on ui.
-            var startupStatus = WindowsStartup.CheckStartupRegistry();
-            if (startupStatus)
+            //Ignoring the Settings.json savefile value, only checking the windows registry and user action on the ui.
+            IsStartup = WindowsStartup.CheckStartupRegistry() == 1;
+            if (!IsStartup)
             {
-                IsStartup = true;
-            }
-            else
-            {
-                IsStartup = false;
-                //delete the wrong key(filepath, name etc) if any.
+                //Delete the wrong key(filepath, name etc.)
                 WindowsStartup.SetStartupRegistry(false);
             }
 
@@ -76,6 +72,7 @@ namespace livelywpf
             SelectedDisplayPauseRuleIndex = (int)Settings.DisplayPauseSettings;
             SelectedPauseAlgorithmIndex = (int)Settings.ProcessMonitorAlgorithm;
             SelectedVideoPlayerIndex = (int)Settings.VideoPlayer;
+            SelectedWallpaperStreamQualityIndex = (int)Settings.StreamQuality;
             SelectedLivelyUIModeIndex = (int)Settings.LivelyGUIRendering;
             SelectedWallpaperInputMode = (int)Settings.InputForward;
             MouseMoveOnDesktop = Settings.MouseInputMovAlways;
@@ -450,7 +447,25 @@ namespace livelywpf
                 {
                     Settings.VideoPlayer = (LivelyMediaPlayer)_selectedVideoPlayerIndex;
                     UpdateConfigFile();
-                    VideoPlayerSwitch((LivelyMediaPlayer)_selectedVideoPlayerIndex);
+                    //VideoPlayerSwitch((LivelyMediaPlayer)_selectedVideoPlayerIndex);
+                    WallpaperRestart(WallpaperType.video);
+                }
+            }
+        }
+
+        private int _selectedWallpaperStreamQualityIndex;
+        public int SelectedWallpaperStreamQualityIndex
+        {
+            get { return _selectedWallpaperStreamQualityIndex; }
+            set
+            {
+                _selectedWallpaperStreamQualityIndex = value;
+                OnPropertyChanged("SelectedWallpaperStreamQualityIndex");
+                if(Settings.StreamQuality != (StreamQualitySuggestion)_selectedWallpaperStreamQualityIndex)
+                {
+                    Settings.StreamQuality = (StreamQualitySuggestion)_selectedWallpaperStreamQualityIndex;
+                    UpdateConfigFile();
+                    WallpaperRestart(WallpaperType.videostream);
                 }
             }
         }
@@ -553,10 +568,10 @@ namespace livelywpf
             return null;
         }
 
-        private void VideoPlayerSwitch(LivelyMediaPlayer player)
+        private void WallpaperRestart(WallpaperType type)
         {
-            var prevWallpapers = SetupDesktop.Wallpapers.FindAll(x => x.GetWallpaperType() == WallpaperType.video).ToList();
-            SetupDesktop.CloseWallpaper(WallpaperType.video);
+            var prevWallpapers = SetupDesktop.Wallpapers.FindAll(x => x.GetWallpaperType() == type).ToList();
+            SetupDesktop.CloseWallpaper(type);
             foreach (var item in prevWallpapers)
             {
                 Program.LibraryVM.WallpaperSet(item.GetWallpaperData(), item.GetScreen());
@@ -567,26 +582,51 @@ namespace livelywpf
         public event EventHandler<string> LivelyWallpaperDirChange;
         private async void WallpaperDirectoryChange()
         {
-            bool isLivelyDir = false;
-            var folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            bool isDestEmptyDir = false;
+            var folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog
+            {
+                SelectedPath = Program.WallpaperDir
+            };
             if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
             {
+                if(string.Equals(folderBrowserDialog.SelectedPath, Settings.WallpaperDir, StringComparison.OrdinalIgnoreCase))
+                {
+                    return;
+                }
+
                 try
                 {
+                    var parentDir = Directory.GetParent(folderBrowserDialog.SelectedPath).ToString();
+                    if (parentDir != null)
+                    {
+                        if (Directory.Exists(Path.Combine(parentDir, "wallpapers")) &&
+                            Directory.Exists(Path.Combine(parentDir, "SaveData","wpdata")))
+                        {
+                            //User selected wrong directory, lively needs the SaveData folder also(root).
+                            var result = System.Windows.MessageBox.Show("Did you mean to select?\n" + parentDir +
+                                "\nBoth 'SaveData' and 'wallpapers' folders are required by lively!",
+                                Properties.Resources.TitlePleaseWait, 
+                                MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes);
+                            switch (result)
+                            {
+                                case MessageBoxResult.Yes:
+                                    folderBrowserDialog.SelectedPath = parentDir;
+                                    break;
+                                case MessageBoxResult.No:
+                                    //none
+                                    break;
+                            }
+                        }
+                    }
+
                     WallpapeDirectoryChanging = true;
                     WallpaperDirectoryChangeCommand.RaiseCanExecuteChanged();
+                    //create destination directory's if not exist.
+                    Directory.CreateDirectory(Path.Combine(folderBrowserDialog.SelectedPath, "wallpapers"));
+                    Directory.CreateDirectory(Path.Combine(folderBrowserDialog.SelectedPath, "SaveData", "wptmp"));
+                    Directory.CreateDirectory(Path.Combine(folderBrowserDialog.SelectedPath, "SaveData", "wpdata"));
 
-                    if (Directory.Exists(Path.Combine(folderBrowserDialog.SelectedPath, "wallpapers")) &&
-                        Directory.Exists(Path.Combine(folderBrowserDialog.SelectedPath, "SaveData")) ||
-                        !Settings.WallpaperDirMoveExistingWallpaperNewDir)
-                    {
-                        //if directory exists, do not copy existing files.
-                        isLivelyDir = true;
-                        Directory.CreateDirectory(Path.Combine(folderBrowserDialog.SelectedPath, "wallpapers"));
-                        Directory.CreateDirectory(Path.Combine(folderBrowserDialog.SelectedPath, "SaveData", "wptmp"));
-                        Directory.CreateDirectory(Path.Combine(folderBrowserDialog.SelectedPath, "SaveData", "wpdata"));
-                    }
-                    else
+                    if (Settings.WallpaperDirMoveExistingWallpaperNewDir)
                     {
                         await Task.Run(() =>
                         {
@@ -597,6 +637,10 @@ namespace livelywpf
                             FileOperations.DirectoryCopy(Path.Combine(Program.WallpaperDir, "SaveData", "wpdata"),
                                 Path.Combine(folderBrowserDialog.SelectedPath, "SaveData", "wpdata"), true);
                         });
+                    }
+                    else
+                    {
+                        isDestEmptyDir = true;
                     }
                 }
                 catch (Exception e)
@@ -611,8 +655,8 @@ namespace livelywpf
                     WallpaperDirectoryChangeCommand.RaiseCanExecuteChanged();
                 }
 
-                //close all running wp's.
-                SetupDesktop.CloseAllWallpapers();
+                //exit all running wp's immediately
+                SetupDesktop.TerminateAllWallpapers();
 
                 var previousDirectory = Settings.WallpaperDir;
                 Settings.WallpaperDir = folderBrowserDialog.SelectedPath;
@@ -621,7 +665,7 @@ namespace livelywpf
                 Program.WallpaperDir = Settings.WallpaperDir;
                 LivelyWallpaperDirChange?.Invoke(null, folderBrowserDialog.SelectedPath);
 
-                if (!isLivelyDir)
+                if (!isDestEmptyDir)
                 {
                     //not deleting the root folder, what if the user selects a folder that is not used by Lively alone!
                     var result1 = await FileOperations.DeleteDirectoryAsync(Path.Combine(previousDirectory, "wallpapers"), 1000, 3000);

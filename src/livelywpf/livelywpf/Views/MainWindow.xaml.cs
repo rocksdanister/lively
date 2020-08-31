@@ -167,17 +167,19 @@ namespace livelywpf
                 stackPanel.Children.Add(new FontIcon()
                 {
                     FontFamily = new Windows.UI.Xaml.Media.FontFamily("Segoe MDL2 Assets"),
+                    //Foreground = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 255, 255, 255)),
                     Glyph = "\uE7F4"
                 });
                 wallpaperStatusText = new TextBlock()
                 {
                     Text = SetupDesktop.Wallpapers.Count.ToString(),
                     FontSize = 16,
+                    //Foreground = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 255, 255, 255)),
                     Margin = new Windows.UI.Xaml.Thickness(5, -3.5, 0, 0)
                 };
                 stackPanel.Children.Add(wallpaperStatusText);
 
-                //btn.Background = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 23, 23, 23));
+                //btn.Background = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 25, 25, 25));
                 btn.Content = stackPanel;
                 btn.Click += Btn_Click;
                 SetupDesktop.WallpaperChanged += SetupDesktop_WallpaperChanged;
@@ -186,7 +188,7 @@ namespace livelywpf
 
         private void SetupDesktop_WallpaperChanged(object sender, EventArgs e)
         {
-            this.Dispatcher.BeginInvoke(new Action(() => { wallpaperStatusText.Text = SetupDesktop.Wallpapers.Count.ToString(); }));
+            _ = this.Dispatcher.BeginInvoke(new Action(() => { wallpaperStatusText.Text = SetupDesktop.Wallpapers.Count.ToString(); }));
         }
 
         ScreenLayoutView layoutWindow = null;
@@ -219,6 +221,7 @@ namespace livelywpf
         private void LayoutWindow_Closed(object sender, EventArgs e)
         {
             layoutWindow = null;
+            this.Activate();
         }
 
         #endregion //wallpaper statusbar

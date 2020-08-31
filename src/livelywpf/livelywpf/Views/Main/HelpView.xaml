@@ -43,6 +43,11 @@
                     Discord
                 </Hyperlink>
                 </TextBlock>
+                <TextBlock ToolTip="https://www.deviantart.com/livelywallpaper/gallery/">           
+                <Hyperlink Foreground="Gray" NavigateUri="https://www.deviantart.com/livelywallpaper/gallery/" RequestNavigate="Hyperlink_RequestNavigate">
+                    DeviantArt
+                </Hyperlink>
+                </TextBlock>
             </StackPanel>
         </StackPanel>
     </Grid>

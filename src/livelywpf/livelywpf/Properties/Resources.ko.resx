@@ -477,8 +477,7 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp;amp; 적용.
     <value>저사양 시스템의 경우 라이트 모드를 선택합니다.</value>
   </data>
   <data name="TipVideoPlayer" xml:space="preserve">
-    <value>비디오 배경 화면에 사용되는 플레이어를 선택합니다.
-libVLC를 권장합니다.</value>
+    <value>비디오 배경 화면에 사용되는 플레이어를 선택합니다.</value>
   </data>
   <data name="TipWallpaperDir" xml:space="preserve">
     <value>배경 화면 파일을 저장하는 데 사용되는 경로입니다.</value>

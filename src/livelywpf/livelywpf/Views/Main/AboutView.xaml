@@ -29,7 +29,7 @@
         </Grid.RowDefinitions>
         
         <StackPanel Orientation="Horizontal" Grid.Row="0" VerticalAlignment="Center" Margin="25, 0, 0, 0">
-            <TextBlock Text="Lively" FontSize="25" Margin="0, 0, 5, 0" FontWeight="Medium"/>
+            <TextBlock Text="{x:Static p:Resources.TitleAppName}" FontSize="25" Margin="0, 0, 5, 0" FontWeight="Medium"/>
             <!-- animated lively icon -->
             <Image x:Name="livelyIcon" Source="pack://application:,,,/Resources/appicon_96.png" Width="50" Height="50" Margin="0, 0, 5, 0">
                 <Image.RenderTransform>

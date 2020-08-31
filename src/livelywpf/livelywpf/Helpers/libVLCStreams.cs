@@ -10,12 +10,8 @@ namespace livelywpf
     {
         public static bool CheckStream(Uri uri)
         {
-            bool status = false;
+            bool status = true;
             var luaPlaylistPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "libVLCPlayer", "libvlc", "win-x86", "lua", "playlist");
-            if(!Directory.Exists(luaPlaylistPath))
-            {
-                status = false;
-            }
 
             string host;
             string url;

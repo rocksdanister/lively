@@ -13,12 +13,14 @@
     <UserControl.Resources>
         <!-- switch to reduce resource usage -->
         <DataTemplate x:Name="NoPreview">
+            <!--
             <Grid Width="192" Height="108" AutomationProperties.Name="{Binding Title}">
                 <StackPanel Orientation="Vertical" Height="60" VerticalAlignment="Bottom" Background="{ThemeResource SystemAltMediumColor}" Padding="7">
                     <TextBlock Text="{Binding Title}"/>
                     <TextBlock Text="{Binding Desc}" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
                 </StackPanel>
             </Grid>
+            -->
         </DataTemplate>
         
         <DataTemplate x:Name="Small">
