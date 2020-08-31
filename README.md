@@ -14,8 +14,6 @@
 ## About
 <img src="/resources/main_preview.gif" width="600" height="338"/>
 
-(This is preview of upcoming v1.0 update)
-
 Turn Video & GIF Files, Emulators, HTML, Web address & Shaders, Games into Windows desktop wallpaper; **Wallpapers will completely pause playback( 0% cpu & gpu usage) when fullscreen application/games are running.**
 
 <img src="/resources/main_dragdrop.gif" width="600" height="338"/>
