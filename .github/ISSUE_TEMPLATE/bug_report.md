@@ -34,8 +34,4 @@ If applicable, add screenshots/video to help explain your problem.
 Add any other context about the problem here.
 
 **Log file**
-First launch lively again - this will create the necessary error information files for you to share, you will be prompted with a message asking weather to restore previously running wallpaper, best to choose No if you are unsure what caused the crash.
-
-For every crash, the error information log file will be found under folder:
-
-`Documents/Lively Wallpaper/ErrorLogs` or inside lively `ErrorLogs` folder if portable build.
+Share the crashlog file logfile.txt from Local Appdata folder C:\Users\<UserName>\AppData\Local\Lively Wallpaper\logs with detailed information (The file gets overwritten each time lively starts, so make sure its from when lively crashed.)
