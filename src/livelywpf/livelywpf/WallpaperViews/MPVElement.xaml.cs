@@ -23,7 +23,7 @@ namespace livelywpf
                 player = new MpvPlayer(PlayerHost.Handle, Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "libMPVPlayer", "lib", "mpv-1.dll"))
                 {
                     Loop = true,
-                    Volume = 100,
+                    Volume = 0,
                 };
                 player.MediaError += Player_MediaError;
                 player.API.SetPropertyString("hwdec", "auto");
@@ -56,17 +56,34 @@ namespace livelywpf
 
         public void PausePlayer()
         {
-            player.Pause();
+            if(player != null)
+            {
+                player.Pause();
+            }
         }
 
         public void PlayMedia()
         {
-            player.Resume();
+            if (player != null)
+            {
+                player.Resume();
+            }
         }
 
         public void StopPlayer()
         {
-            player.Stop();
+            if (player != null)
+            {
+                player.Stop();
+            }
+        }
+
+        public void SetVolume(int val)
+        {
+            if (player != null)
+            {
+                player.Volume = val;
+            }
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

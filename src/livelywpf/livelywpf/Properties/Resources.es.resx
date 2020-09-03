@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DescriptionAddWallpaper" xml:space="preserve">
-    <value>Select a file or specify a website url to set as a wallpaper.</value>
+    <value>Seleccione un archivo o especifique un enlace a un sitio web para usarlo como fondo de pantalla.</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
     <value>Comportamiento del fondo de pantalla de acuerdo a que aplicación está en ejecución.</value>
@@ -171,7 +171,7 @@ https://github.com/rocksdanister/lively/wiki</value>
 Deshabilita el modo de alto contraste e intente nuevamente.</value>
   </data>
   <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
-    <value>No es un archivo de fondo de pantalla de Lively.</value>
+    <value>No es un archivo de fondo de Lively.</value>
   </data>
   <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
     <value>Lively no se cerró correctamente, iniciando en modo seguro.
@@ -197,7 +197,7 @@ Si aún no funciona, cierra e inicia Lively nuevamente o reinicia Windows.
     <value>Aplicación</value>
   </data>
   <data name="TextAttribution" xml:space="preserve">
-    <value>Attribution</value>
+    <value>Atribución</value>
   </data>
   <data name="TextAuthor" xml:space="preserve">
     <value>Autor</value>
@@ -206,7 +206,7 @@ Si aún no funciona, cierra e inicia Lively nuevamente o reinicia Windows.
     <value>Regresar</value>
   </data>
   <data name="TextBrowse" xml:space="preserve">
-    <value>Browse</value>
+    <value>Navegar</value>
   </data>
   <data name="TextCloseWallpapers" xml:space="preserve">
     <value>Cerrar fondos de pantalla</value>
@@ -224,10 +224,10 @@ Si aún no funciona, cierra e inicia Lively nuevamente o reinicia Windows.
     <value>Eliminar fondo de pantalla</value>
   </data>
   <data name="TextDisplayPauseRuleAllScreen" xml:space="preserve">
-    <value>All Screen</value>
+    <value>Todas las pantallas</value>
   </data>
   <data name="TextDisplayPauseRulePerScreen" xml:space="preserve">
-    <value>Per Screen</value>
+    <value>Por pantalla</value>
   </data>
   <data name="TextDownload" xml:space="preserve">
     <value>Descargar</value>
@@ -245,10 +245,10 @@ Si aún no funciona, cierra e inicia Lively nuevamente o reinicia Windows.
     <value>GIF animado</value>
   </data>
   <data name="TextGo" xml:space="preserve">
-    <value>GO</value>
+    <value>Iniciar</value>
   </data>
   <data name="TextHelpTranslate" xml:space="preserve">
-    <value>Help translate Lively.</value>
+    <value>Ayuda a traducir Lively.</value>
   </data>
   <data name="TextInstall" xml:space="preserve">
     <value>Instalar</value>
@@ -260,7 +260,7 @@ Si aún no funciona, cierra e inicia Lively nuevamente o reinicia Windows.
     <value>Más fondos de pantalla</value>
   </data>
   <data name="TextMouseInteractOnDesktop" xml:space="preserve">
-    <value>Interacción con el mouse cuando una aplicación está enfocada</value>
+    <value>Interactuar con el mouse cuando una aplicación está enfocada</value>
   </data>
   <data name="TextNext" xml:space="preserve">
     <value>Siguiente</value>
@@ -284,10 +284,10 @@ Si aún no funciona, cierra e inicia Lively nuevamente o reinicia Windows.
     <value>Pausar fondos de pantalla</value>
   </data>
   <data name="TextPerformanceKill" xml:space="preserve">
-    <value>Kill</value>
+    <value>Terminar</value>
   </data>
   <data name="TextPerformanceNone" xml:space="preserve">
-    <value>Nothing</value>
+    <value>Nada</value>
   </data>
   <data name="TextPerformancePause" xml:space="preserve">
     <value>Pausa</value>
@@ -314,10 +314,10 @@ Si aún no funciona, cierra e inicia Lively nuevamente o reinicia Windows.
     <value>Fuente</value>
   </data>
   <data name="TextStart" xml:space="preserve">
-    <value>Start</value>
+    <value>Comenzar</value>
   </data>
   <data name="TextStop" xml:space="preserve">
-    <value>Stop</value>
+    <value>Parar</value>
   </data>
   <data name="TextTags" xml:space="preserve">
     <value>Etiquetas</value>
@@ -362,7 +362,7 @@ Si aún no funciona, cierra e inicia Lively nuevamente o reinicia Windows.
     <value>Duplicar el mismo fondo de pantalla</value>
   </data>
   <data name="TextWallpaperLayoutSpan" xml:space="preserve">
-    <value>Span across screens</value>
+    <value>Estirar</value>
   </data>
   <data name="TextWallpaperType" xml:space="preserve">
     <value>Tipo</value>
@@ -383,10 +383,10 @@ Si aún no funciona, cierra e inicia Lively nuevamente o reinicia Windows.
     <value>Reproductor de video</value>
   </data>
   <data name="TipAddWallpaperFileBrowse" xml:space="preserve">
-    <value>Set all supported file types as wallpaper.</value>
+    <value>Configura todos los tipos de archivos compatibles como fondo de pantalla.</value>
   </data>
   <data name="TipAddWallpaperURL" xml:space="preserve">
-    <value>Set the web page of the URL you entered as wallpaper.</value>
+    <value>Configura la página web de la URL que ingresó como fondo de pantalla.</value>
   </data>
   <data name="TipAppFocus" xml:space="preserve">
     <value>Establecer qué hacer cuando una aplicación esté enfocada.</value>
@@ -398,18 +398,18 @@ Si aún no funciona, cierra e inicia Lively nuevamente o reinicia Windows.
     <value>Establecer diferentes reglas de reproducción de fondo de pantalla en función a qué aplicación está ejecutandose.</value>
   </data>
   <data name="TipAppTheme" xml:space="preserve">
-    <value>Lively se adapta a la configuración del tema del sistema, para cambiar la apariencia, vaya a</value>
+    <value>Lively se adapta a la configuración del tema del sistema, para cambiar la apariencia, ve a</value>
   </data>
   <data name="TipBatteryPower" xml:space="preserve">
     <value>(Solo para sistemas que funcionan con batería) Cambiar la reproducción cuando se desconecte la fuente de alimentación.</value>
   </data>
   <data name="TipBrowserDebuggingPort" xml:space="preserve">
-    <value>Ingresa el puerto para depurar los fondos de pantalla de la página web, se requiere reiniciar el navegador para que los cambios surtan efecto.
+    <value>Ingresa el puerto para depurar los fondos de pantalla web, se requiere reiniciar el navegador para que los cambios surtan efecto.
 Cuando esté listo, navega a http://localhost: número de puerto para acceder a la consola del desarrollador.</value>
   </data>
   <data name="TipDisplayPauseRule" xml:space="preserve">
-    <value>Per: Pause wallpaper only on the screen in which application is focused/fullscreen.
-All: Pause wallpaper on all screen(s) if any application is focused/fullscreen.</value>
+    <value>Por: Pausa el fondo solo en la pantalla donde la aplicación está enfocada / pantalla completa.
+Todas: pausa el fondo en la(s) pantalla(s) si alguna aplicación está enfocada / pantalla completa.</value>
   </data>
   <data name="TipHideSysTray" xml:space="preserve">
     <value>Visibilidad del icono de la bandeja del sistema, Lively continuará ejecutándose aún con el icono oculto.</value>
@@ -421,17 +421,17 @@ All: Pause wallpaper on all screen(s) if any application is focused/fullscreen.<
     <value>Finalice la configuración para continuar.</value>
   </data>
   <data name="TipPauseAlgorithm" xml:space="preserve">
-    <value>Foreground: Lightweight, only checks the single process that is in foreground to determine wallpaper playback behaviour.
-All Process: Heavier, Scans all the process to determine playback behaviour.</value>
+    <value>Primer plano: Ligero, solo comprueba el único proceso que esté en primer plano para determinar el comportamiento de reproducción del fondo.
+Todos los procesos: Pesado, analiza todos los procesos abiertos para determinar el comportamiento de reproducción del fondo.</value>
   </data>
   <data name="TipStreamWallpaperDetect" xml:space="preserve">
-    <value>If supported video stream link is detected use the video player instead of loading the webpage.</value>
+    <value>Si se detecta un enlace a un stream compatible, usar el reproductor de video en lugar de cargar el sitio web.</value>
   </data>
   <data name="TipStreamWallpaperVideoQuality" xml:space="preserve">
-    <value>Selecciona la calidad de video deseada para las transmisiones en línea.</value>
+    <value>Selecciona la calidad de video deseada para los streams</value>
   </data>
   <data name="TipTileSize" xml:space="preserve">
-    <value>Size of the wallpaper tiles in Library.</value>
+    <value>Tamaño de los mosaicos de la Biblioteca.</value>
   </data>
   <data name="TipUIMode" xml:space="preserve">
     <value>Para sistemas de gama baja, selecciona el modo Lite.</value>
@@ -471,10 +471,10 @@ Edge es la vista web integrada en Windows 10.</value>
     <value>Aplicaciones de pantalla completa</value>
   </data>
   <data name="TitleAppName" xml:space="preserve">
-    <value>Fondo de pantalla de Lively</value>
+    <value>Lively Wallpaper</value>
   </data>
   <data name="TitleAppRules" xml:space="preserve">
-    <value>Reglas de aplicación</value>
+    <value>Reglas por aplicación</value>
   </data>
   <data name="TitleAppTheme" xml:space="preserve">
     <value>Tema</value>
@@ -486,10 +486,10 @@ Edge es la vista web integrada en Windows 10.</value>
     <value>Reproducir audio en pantalla</value>
   </data>
   <data name="TitleBatteryPower" xml:space="preserve">
-    <value>When on Battery Power</value>
+    <value>Al usar la batería</value>
   </data>
   <data name="TitleBrowseFile" xml:space="preserve">
-    <value>Browse for video, gif, webpage... file to set as wallpaper</value>
+    <value>Explorar archivos de video, gifs, páginas web... para establecer como fondo</value>
   </data>
   <data name="TitleBrowserDebuggingPort" xml:space="preserve">
     <value>Puerto de depuración</value>
@@ -498,10 +498,10 @@ Edge es la vista web integrada en Windows 10.</value>
     <value>Confirmar la eliminación</value>
   </data>
   <data name="TitleDisplayPauseRule" xml:space="preserve">
-    <value>Display Pause Rule</value>
+    <value>Regla de Pausa de Pantalla</value>
   </data>
   <data name="TitleEnterUrl" xml:space="preserve">
-    <value>Enter URL</value>
+    <value>Insertar enlace</value>
   </data>
   <data name="TitleGeneral" xml:space="preserve">
     <value>General</value>
@@ -513,7 +513,7 @@ Edge es la vista web integrada en Windows 10.</value>
     <value>Icono de la bandeja del sistema</value>
   </data>
   <data name="TitleInteraction" xml:space="preserve">
-    <value>Interaction</value>
+    <value>Interacción</value>
   </data>
   <data name="TitleLanguage" xml:space="preserve">
     <value>Idioma</value>
@@ -525,7 +525,7 @@ Edge es la vista web integrada en Windows 10.</value>
     <value>Configuración de Lively</value>
   </data>
   <data name="TitleMisc" xml:space="preserve">
-    <value>Misceláneos</value>
+    <value>Misceláneo</value>
   </data>
   <data name="TitleMute" xml:space="preserve">
     <value>Silenciar</value>
@@ -540,16 +540,16 @@ Edge es la vista web integrada en Windows 10.</value>
     <value>Lista de reproducción</value>
   </data>
   <data name="TitlePleaseWait" xml:space="preserve">
-    <value>Porfavor Espera</value>
+    <value>Por favor Espera</value>
   </data>
   <data name="TitleScalingFit" xml:space="preserve">
-    <value>Scaling/Fit</value>
+    <value>Escalar/Ajustar</value>
   </data>
   <data name="TitleScreenLayout" xml:space="preserve">
     <value>Diseño de pantalla</value>
   </data>
   <data name="TitleSelectFile" xml:space="preserve">
-    <value>Select File</value>
+    <value>Seleccionar Archivo</value>
   </data>
   <data name="TitleSettings" xml:space="preserve">
     <value>Configuraciones</value>
@@ -558,13 +558,13 @@ Edge es la vista web integrada en Windows 10.</value>
     <value>Stream</value>
   </data>
   <data name="TitleStreamWallpaperDetect" xml:space="preserve">
-    <value>Detect Streams</value>
+    <value>Detectar Streams</value>
   </data>
   <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
-    <value>Calidad de Video</value>
+    <value>Calidad de Streams</value>
   </data>
   <data name="TitleTileSize" xml:space="preserve">
-    <value>Tile Size</value>
+    <value>Tamaño de los Mosaicos</value>
   </data>
   <data name="TitleUIMode" xml:space="preserve">
     <value>Interfaz de usuario</value>
@@ -573,19 +573,19 @@ Edge es la vista web integrada en Windows 10.</value>
     <value>Video</value>
   </data>
   <data name="TitleWallpaper" xml:space="preserve">
-    <value>Fondo de pantalla</value>
+    <value>Fondos de pantalla</value>
   </data>
   <data name="TitleWallpaperDir" xml:space="preserve">
     <value>Directorio de fondos de pantalla</value>
   </data>
   <data name="TitleWallpaperInput" xml:space="preserve">
-    <value>Wallpaper Input</value>
+    <value>Input</value>
   </data>
   <data name="TitleWallpaperLayout" xml:space="preserve">
-    <value>Wallpaper Layout</value>
+    <value>Disposición de/los fondo(s)</value>
   </data>
   <data name="TitleWallpaperPlayback" xml:space="preserve">
-    <value>Wallpaper Playback</value>
+    <value>Reproducción del Fondo</value>
   </data>
   <data name="TitleWarning" xml:space="preserve">
     <value>Advertencia</value>
@@ -606,53 +606,62 @@ Edge es la vista web integrada en Windows 10.</value>
     <value>Iniciar con Windows</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
-    <value>Please restart Lively for settings to take effect.</value>
+    <value>Por favor reinicia Lively para que las configuraciones tengan efecto.</value>
   </data>
   <data name="TextSupport" xml:space="preserve">
-    <value>Support</value>
+    <value>Soporte</value>
   </data>
   <data name="TextClose" xml:space="preserve">
-    <value>Close</value>
+    <value>Cerrar</value>
   </data> 
   <data name="TextCustomise" xml:space="preserve">
-    <value>Customise</value>
+    <value>Personalizar</value>
   </data>     
   <data name="DescriptionScreenLayout" xml:space="preserve">
-    <value>Choose Display</value>
+    <value>Elegir Pantalla</value>
   </data>    
   <data name="TextWallpaperLayoutPerScreen" xml:space="preserve">
-    <value>Selected screen only</value>
+    <value>Solo la pantalla seleccionada</value>
   </data>  
   <data name="TipWallpaperLayout" xml:space="preserve">
-    <value>How wallpaper is applied to connected display devices.</value>
+    <value>Cómo se aplica el fondo a las pantallas conectadas.</value>
   </data> 
   <data name="TitleWallpaperDirMoveExisting" xml:space="preserve">
-    <value>Move existing wallpapers to new folder</value>
+    <value>Mover los fondos de pantalla existentes al nuevo directorio</value>
   </data>   
   <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
-    <value>Media playback failed :(
-Try changing the videoplayer in lively settings.
+    <value>El reproducto de contenido ha fallado :(
+Inta cambiar el reproducto de video desde la configuración de Lively.
 
-In order to better understand this error and fix the issue, share the log file with the developer.
-Instructions for sharing log file:
+Para enteder mejor este error y solucionar el problema, comparte el archivo de registro con el desarrollador.
+Visita el siguiente enlace con instrucciones sobre como compartir el archivo de registro:
 https://github.com/rocksdanister/lively/wiki</value>
   </data> 
   <data name="TextOff" xml:space="preserve">
-    <value>OFF</value>
+    <value>APAGADO</value>
   </data>
   <data name="TextOn" xml:space="preserve">
-    <value>ON</value>
+    <value>ENCENDIDO</value>
   </data>   
   <data name="TextMouse" xml:space="preserve">
-    <value>Mouse</value>
+    <value>Ratón</value>
   </data>  
   <data name="TextKeyboard" xml:space="preserve">
-    <value>Keyboard</value>
+    <value>Teclado</value>
   </data>  
   <data name="TitleDocumentation" xml:space="preserve">
-    <value>Documentation</value>
+    <value>Documentación</value>
   </data> 
   <data name="TitleCommunity" xml:space="preserve">
-    <value>Community</value>
+    <value>Comunidad</value>
   </data>  
+    <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
+    <value>Are you sure you want to delete this wallpaper from the Library?</value>
+  </data>
+    <data name="TipAudioMaster" xml:space="preserve">
+    <value>Volume level of all wallpapers.</value>
+  </data>
+    <data name="TitleAudioMaster" xml:space="preserve">
+    <value>Master Volume</value>
+  </data>
 </root>

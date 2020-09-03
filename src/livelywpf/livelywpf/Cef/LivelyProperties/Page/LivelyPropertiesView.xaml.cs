@@ -1,4 +1,5 @@
-﻿using Microsoft.Toolkit.Wpf.UI.XamlHost;
+﻿using livelywpf.Core;
+using Microsoft.Toolkit.Wpf.UI.XamlHost;
 using Newtonsoft.Json.Linq;
 using NLog;
 using System;
@@ -25,15 +26,17 @@ namespace livelywpf.Cef
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         readonly string livelyPropertyPath;
         readonly LibraryModel wallpaperData;
+        readonly LivelyScreen screen;
         JObject livelyPropertyData;
 
         //UI
         readonly Thickness margin = new Thickness(0, 10, 0, 0);
         readonly double maxWidth = 200;
 
-        public LivelyPropertiesView(LibraryModel data, string livelyPropertyPath)
+        public LivelyPropertiesView(LibraryModel data, string livelyPropertyPath, LivelyScreen screen)
         {
             InitializeComponent();
+            this.screen = screen;
             this.livelyPropertyPath = livelyPropertyPath; 
             //todo: use LivelyScreen instead, what if wp instance closes.
             wallpaperData = data;
@@ -290,7 +293,7 @@ namespace livelywpf.Cef
             {
                 var item = (Windows.UI.Xaml.Controls.Slider)sender;
 
-                Program.LibraryVM.WallpaperSendMsg(wallpaperData, "lively-customise slider " + item.Name + " " + item.Value);
+                WallpaperSendMsg("lively-customise slider " + item.Name + " " + item.Value);
                 livelyPropertyData[item.Name]["value"] = item.Value;
                 UpdatePropertyFile();
             }
@@ -347,7 +350,7 @@ namespace livelywpf.Cef
             {
                 var item = (Windows.UI.Xaml.Controls.ComboBox)sender;
                 var filePath = Path.Combine(livelyPropertyData[item.Name]["folder"].ToString(), item.SelectedItem.ToString()); //filename is unique.
-                Program.LibraryVM.WallpaperSendMsg(wallpaperData, "lively-customise folderDropdown " + item.Name + " " + "\"" + filePath + "\"");
+                WallpaperSendMsg("lively-customise folderDropdown " + item.Name + " " + "\"" + filePath + "\"");
                 livelyPropertyData[item.Name]["value"] = item.SelectedItem.ToString();
                 UpdatePropertyFile();
             }
@@ -388,7 +391,7 @@ namespace livelywpf.Cef
             {
                 var item = (Windows.UI.Xaml.Controls.ComboBox)sender;
                 //Form1.chromeBrowser.ExecuteScriptAsync("livelyPropertyListener", item.Name, item.SelectedIndex);
-                Program.LibraryVM.WallpaperSendMsg(wallpaperData, "lively-customise dropdown " + item.Name + " " + item.SelectedIndex);
+                WallpaperSendMsg("lively-customise dropdown " + item.Name + " " + item.SelectedIndex);
                 livelyPropertyData[item.Name]["value"] = item.SelectedIndex;
                 UpdatePropertyFile();
             }
@@ -432,7 +435,7 @@ namespace livelywpf.Cef
                 {
                     item.Fill = new SolidColorBrush(Color.FromArgb(colorDialog.Color.A, colorDialog.Color.R, colorDialog.Color.G, colorDialog.Color.B));
                     //Form1.chromeBrowser.ExecuteScriptAsync("livelyPropertyListener", item.Name, ToHexValue(colorDialog.Color));
-                    Program.LibraryVM.WallpaperSendMsg(wallpaperData, "lively-customise color " + item.Name + " " + ToHexValue(colorDialog.Color));
+                    WallpaperSendMsg("lively-customise color " + item.Name + " " + ToHexValue(colorDialog.Color));
                     livelyPropertyData[item.Name]["value"] = ToHexValue(colorDialog.Color);
                     UpdatePropertyFile();
                 }
@@ -458,7 +461,7 @@ namespace livelywpf.Cef
             {
                 uiPanel.Children.Clear();
                 LoadUI();
-                Program.LibraryVM.WallpaperSendMsg(wallpaperData, "lively-customise button lively_default_settings_reload 1");
+                WallpaperSendMsg("lively-customise button lively_default_settings_reload 1");
             }
         }
 
@@ -468,7 +471,7 @@ namespace livelywpf.Cef
             {
                 var item = (Button)sender;
                 //Form1.chromeBrowser.ExecuteScriptAsync("livelyPropertyListener", item.Name, true);
-                Program.LibraryVM.WallpaperSendMsg(wallpaperData, "lively-customise button " + item.Name + " " + true);
+                WallpaperSendMsg("lively-customise button " + item.Name + " " + true);
             }
             catch { }
         }
@@ -483,7 +486,7 @@ namespace livelywpf.Cef
             {
                 var item = (CheckBox)sender;
                 //Form1.chromeBrowser.ExecuteScriptAsync("livelyPropertyListener", item.Name, item.Checked);
-                Program.LibraryVM.WallpaperSendMsg(wallpaperData, "lively-customise checkbox " + item.Name + " " + (item.IsChecked == true));
+                WallpaperSendMsg("lively-customise checkbox " + item.Name + " " + (item.IsChecked == true));
                 Debug.WriteLine("lively-customise " + item.Name + " " + (item.IsChecked == true));
                 livelyPropertyData[item.Name]["value"] = item.IsChecked == true;
                 UpdatePropertyFile();
@@ -501,7 +504,7 @@ namespace livelywpf.Cef
             {
                 var item = (TextBox)sender;
                 //Form1.chromeBrowser.ExecuteScriptAsync("livelyPropertyListener", item.Name, item.Text);
-                Program.LibraryVM.WallpaperSendMsg(wallpaperData, "lively-customise textbox " + item.Name + " " + "\"" + item.Text + "\"");
+                WallpaperSendMsg("lively-customise textbox " + item.Name + " " + "\"" + item.Text + "\"");
                 Debug.WriteLine("lively-customise textbox " + item.Name + " " + "\"" + item.Text + "\"");
                 livelyPropertyData[item.Name]["value"] = item.Text;
                 UpdatePropertyFile();
@@ -516,6 +519,11 @@ namespace livelywpf.Cef
         private void UpdatePropertyFile()
         {
             Cef.LivelyPropertiesJSON.SaveLivelyProperties(livelyPropertyPath, livelyPropertyData);
+        }
+
+        private void WallpaperSendMsg(string message)
+        {
+            SetupDesktop.SendMessageWallpaper(screen, message);
         }
 
         private void ReloadMenuValues()

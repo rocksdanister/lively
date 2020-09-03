@@ -74,136 +74,143 @@ namespace livelywpf.Views
             }
             catch { return; }
 
-            switch (s.Name)
-            {
-                case "showOnDisk":
-                    Program.LibraryVM.WallpaperShowOnDisk(e);
-                    break;
-                case "setWallpaper":
-                    Program.LibraryVM.WallpaperSet(e);
-                    break;
-                case "exportWallpaper":
-                    string savePath = "";
-                    var saveFileDialog1 = new Microsoft.Win32.SaveFileDialog()
-                    {
-                        Title = "Select location to save the file",
-                        Filter = "Lively/zip file|*.zip",
-                        FileName = ((LibraryModel)e).Title,
-                    };
-                    if (saveFileDialog1.ShowDialog() == true)
-                    {
-                        savePath = saveFileDialog1.FileName;
-                    }
-                    if (String.IsNullOrEmpty(savePath))
-                    {
+            await this.Dispatcher.InvokeAsync(new Action(async () => {
+                switch (s.Name)
+                {
+                    case "showOnDisk":
+                        Program.LibraryVM.WallpaperShowOnDisk(e);
                         break;
-                    }
-                    Program.LibraryVM.WallpaperExport(e, savePath);
-                    break;
-                case "deleteWallpaper":
-                    var result = await ShowDeleteConfirmationDialog(sender, e);
-                    if (result == ContentDialogResult.Primary)
-                    {
-                        Program.LibraryVM.WallpaperDelete(e);
-                    }
-                    break;
-                case "customiseWallpaper":                    
-                    //In app customise dialogue; 
-                    //Can't use contentdialogue since the window object is not uwp.
-                    //modernwpf contentdialogue does not have xamlroot so can't draw over livelygrid.
-                    LivelyGridControl.DimBackground(true);
-                    var overlay = new Cef.LivelyPropertiesWindow(obj, Program.LibraryVM.GetLivelyPropertyCopyPath(e)) {
-                        Owner = App.AppWindow, 
-                        WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner,
-                        Width = App.AppWindow.Width/1.5,
-                        Height = App.AppWindow.Height/1.5,
-                        Title = obj.Title + " Properties"
-                    };
-                    overlay.ShowDialog();
-                    LivelyGridControl.DimBackground(false);                
-                    break;
-                case "convertVideo":
-                    Program.LibraryVM.WallpaperVideoConvert(obj);
-                    break;
-                case "moreInformation":
-                    await ShowWallpaperInfoDialog(sender, e);
-                    break;
-            }
+                    case "setWallpaper":
+                        Program.LibraryVM.WallpaperSet(e);
+                        break;
+                    case "exportWallpaper":
+                        string savePath = "";
+                        var saveFileDialog1 = new Microsoft.Win32.SaveFileDialog()
+                        {
+                            Title = "Select location to save the file",
+                            Filter = "Lively/zip file|*.zip",
+                            FileName = ((LibraryModel)e).Title,
+                        };
+                        if (saveFileDialog1.ShowDialog() == true)
+                        {
+                            savePath = saveFileDialog1.FileName;
+                        }
+                        if (String.IsNullOrEmpty(savePath))
+                        {
+                            break;
+                        }
+                        Program.LibraryVM.WallpaperExport(e, savePath);
+                        break;
+                    case "deleteWallpaper":
+                        var result = await ShowDeleteConfirmationDialog(sender, e);
+                        if (result == ContentDialogResult.Primary)
+                        {
+                            Program.LibraryVM.WallpaperDelete(e);
+                        }
+                        break;
+                    case "customiseWallpaper":
+                        //In app customise dialogue; 
+                        //Can't use contentdialogue since the window object is not uwp.
+                        //modernwpf contentdialogue does not have xamlroot so can't draw over livelygrid.
+                        LivelyGridControl.DimBackground(true);
+                        var details = Program.LibraryVM.GetLivelyPropertyDetails(e);
+                        var overlay =
+                            new Cef.LivelyPropertiesWindow(obj, details.Item1, details.Item2)
+                            {
+                                Owner = App.AppWindow,
+                                WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner,
+                                Width = App.AppWindow.Width / 1.5,
+                                Height = App.AppWindow.Height / 1.5,
+                                Title = obj.Title + " Properties"
+                            };
+                        overlay.ShowDialog();
+                        LivelyGridControl.DimBackground(false);
+                        break;
+                    case "convertVideo":
+                        Program.LibraryVM.WallpaperVideoConvert(obj);
+                        break;
+                    case "moreInformation":
+                        await ShowWallpaperInfoDialog(sender, e);
+                        break;
+                }
+            }));
         }
 
         private async void LivelyGridControl_FileDroppedEvent(object sender, Windows.UI.Xaml.DragEventArgs e)
         {
-            if (e.DataView.Contains(StandardDataFormats.WebLink))
-            {
-                var uri = await e.DataView.GetWebLinkAsync();
-                Logger.Info("Dropped url:- " + uri.ToString());
-                if (Program.SettingsVM.Settings.AutoDetectOnlineStreams &&
-                    Program.SettingsVM.Settings.StreamVideoPlayer == LivelyMediaPlayer.libmpvExt ?
-                    libMPVStreams.CheckStream(uri) : libVLCStreams.CheckStream(uri))
+            await this.Dispatcher.InvokeAsync(new Action(async () => {
+                if (e.DataView.Contains(StandardDataFormats.WebLink))
                 {
-                    Program.LibraryVM.AddWallpaper(uri.ToString(),
-                        WallpaperType.videostream,
-                        LibraryTileType.processing,
-                        Program.SettingsVM.Settings.SelectedDisplay);
-                }
-                else
-                {
-                    Program.LibraryVM.AddWallpaper(uri.ToString(),
-                        WallpaperType.url,
-                        LibraryTileType.processing,
-                        Program.SettingsVM.Settings.SelectedDisplay);
-                }
-            }
-            else if (e.DataView.Contains(StandardDataFormats.StorageItems))
-            {
-                var items = await e.DataView.GetStorageItemsAsync();
-                if (items.Count > 0)
-                {
-                    //selecting first file only.
-                    var item = items[0].Path;
-                    Logger.Info("Dropped file:- " + item);
-                    try
+                    var uri = await e.DataView.GetWebLinkAsync();
+                    Logger.Info("Dropped url:- " + uri.ToString());
+                    if (Program.SettingsVM.Settings.AutoDetectOnlineStreams &&
+                        Program.SettingsVM.Settings.StreamVideoPlayer == LivelyMediaPlayer.libmpvExt ?
+                        libMPVStreams.CheckStream(uri) : libVLCStreams.CheckStream(uri))
                     {
-                        if (String.IsNullOrWhiteSpace(Path.GetExtension(item)))
-                            return;
-                    }
-                    catch (ArgumentException)
-                    {
-                        Logger.Info("Invalid character, skipping dropped file:- " + item);
-                        return;
-                    }
-
-                    if (Path.GetExtension(item).Equals(".gif", StringComparison.OrdinalIgnoreCase))
-                    {
-                        Program.LibraryVM.AddWallpaper(item,
-                            WallpaperType.gif,
-                            LibraryTileType.processing,
-                            Program.SettingsVM.Settings.SelectedDisplay);
-                    }
-                    else if (Path.GetExtension(item).Equals(".html", StringComparison.OrdinalIgnoreCase))
-                    {
-                        Program.LibraryVM.AddWallpaper(item,
-                            WallpaperType.web,
-                            LibraryTileType.processing,
-                            Program.SettingsVM.Settings.SelectedDisplay);
-                    }
-                    else if (Path.GetExtension(item).Equals(".zip", StringComparison.OrdinalIgnoreCase))
-                    {
-                        Program.LibraryVM.WallpaperInstall(item);
-                    }
-                    else if (FileOperations.IsVideoFile(item))
-                    {
-                        Program.LibraryVM.AddWallpaper(item,
-                            WallpaperType.video,
+                        Program.LibraryVM.AddWallpaper(uri.ToString(),
+                            WallpaperType.videostream,
                             LibraryTileType.processing,
                             Program.SettingsVM.Settings.SelectedDisplay);
                     }
                     else
                     {
-                        System.Windows.MessageBox.Show("not supported currently");
+                        Program.LibraryVM.AddWallpaper(uri.ToString(),
+                            WallpaperType.url,
+                            LibraryTileType.processing,
+                            Program.SettingsVM.Settings.SelectedDisplay);
                     }
                 }
-            }
+                else if (e.DataView.Contains(StandardDataFormats.StorageItems))
+                {
+                    var items = await e.DataView.GetStorageItemsAsync();
+                    if (items.Count > 0)
+                    {
+                        //selecting first file only.
+                        var item = items[0].Path;
+                        Logger.Info("Dropped file:- " + item);
+                        try
+                        {
+                            if (String.IsNullOrWhiteSpace(Path.GetExtension(item)))
+                                return;
+                        }
+                        catch (ArgumentException)
+                        {
+                            Logger.Info("Invalid character, skipping dropped file:- " + item);
+                            return;
+                        }
+
+                        if (Path.GetExtension(item).Equals(".gif", StringComparison.OrdinalIgnoreCase))
+                        {
+                            Program.LibraryVM.AddWallpaper(item,
+                                WallpaperType.gif,
+                                LibraryTileType.processing,
+                                Program.SettingsVM.Settings.SelectedDisplay);
+                        }
+                        else if (Path.GetExtension(item).Equals(".html", StringComparison.OrdinalIgnoreCase))
+                        {
+                            Program.LibraryVM.AddWallpaper(item,
+                                WallpaperType.web,
+                                LibraryTileType.processing,
+                                Program.SettingsVM.Settings.SelectedDisplay);
+                        }
+                        else if (Path.GetExtension(item).Equals(".zip", StringComparison.OrdinalIgnoreCase))
+                        {
+                            Program.LibraryVM.WallpaperInstall(item);
+                        }
+                        else if (FileOperations.IsVideoFile(item))
+                        {
+                            Program.LibraryVM.AddWallpaper(item,
+                                WallpaperType.video,
+                                LibraryTileType.processing,
+                                Program.SettingsVM.Settings.SelectedDisplay);
+                        }
+                        else
+                        {
+                            System.Windows.MessageBox.Show("not supported currently");
+                        }
+                    }
+                }
+            }));
         }
 
         //todo: make dialogue service.
@@ -218,11 +225,14 @@ namespace livelywpf.Views
             };
             ContentDialog deleteDialog = new ContentDialog
             {
-                Title = Properties.Resources.DescriptionDeleteConfirmation,
                 Content = tb,
                 PrimaryButtonText = Properties.Resources.TextYes,
                 SecondaryButtonText = Properties.Resources.TextNo
             };
+            if (lib.LivelyInfo.IsAbsolutePath)
+                deleteDialog.Title = Properties.Resources.DescriptionDeleteConfirmationLibrary;
+            else
+                deleteDialog.Title = Properties.Resources.DescriptionDeleteConfirmation;
 
             // Use this code to associate the dialog to the appropriate AppWindow by setting
             // the dialog's XamlRoot to the same XamlRoot as an element that is already present in the AppWindow.

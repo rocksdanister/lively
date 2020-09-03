@@ -5,6 +5,7 @@ using ModernWpf.Media.Animation;
 using NLog;
 using Octokit;
 using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Threading;
 using Windows.Networking.NetworkOperators;
+using Windows.UI.Core;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 
@@ -110,6 +112,16 @@ namespace livelywpf
                 Icon = new SymbolIcon(icon)
             };
             return item;
+        }
+
+        private void ContentFrame_Navigating(object sender, System.Windows.Navigation.NavigatingCancelEventArgs e)
+        {
+            //fix: https://github.com/rocksdanister/lively/issues/114
+            //When backspace is pressed while focused on frame hosting uwp usercontrol textbox, the key is passed to frame also.
+            if (e.NavigationMode == System.Windows.Navigation.NavigationMode.Back)
+            {
+                e.Cancel = true;
+            }
         }
 
         #endregion //navigation

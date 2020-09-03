@@ -28,7 +28,14 @@ namespace livelywpf
         [Description("Unity Audio Visualiser")]
         unityaudio,
         [Description("Video Streams")]
-        videostream
+        videostream,
+    }
+
+    public enum AudioPauseAlgorithm
+    {
+        none,
+        cursor,
+        primaryscreen,
     }
     
     /// <summary>

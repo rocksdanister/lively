@@ -31,15 +31,15 @@
             <ui:RadioButtons VerticalAlignment="Top" SelectedIndex="{Binding SelectedWallpaperLayout, Mode=TwoWay}">
                 <RadioButton Content="{x:Static p:Resources.TextWallpaperLayoutPerScreen}"/>
                 <RadioButton Content="{x:Static p:Resources.TextWallpaperLayoutSpan}"/>
-                <RadioButton Content="{x:Static p:Resources.TextWallpaperLayoutDuplicate}" IsEnabled="False"/>
+                <!--<RadioButton Content="{x:Static p:Resources.TextWallpaperLayoutDuplicate}" Visibility="Hidden" IsEnabled="False"/>-->
             </ui:RadioButtons>
             <TextBlock Margin="0,10,0,0" FontSize="12" Foreground="{DynamicResource SystemControlPageBackgroundBaseLowBrush}" TextWrapping="Wrap" 
                        Text="{x:Static p:Resources.TipWallpaperLayout}"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="15, 0, 15, 40">
-            <Button Content="{x:Static p:Resources.TextCustomise}" MinWidth="135" Margin="0, 5, 0, 0" Command="{Binding CustomiseWallpaperCommand}"/>
-            <Button Content="{x:Static p:Resources.TextClose}" MinWidth="135" Margin="0, 5, 0, 0" Command="{Binding CloseWallpaperCommand}"/>
+            <Button Content="{x:Static p:Resources.TextCustomiseWallpaper}" MinWidth="155" Margin="0, 5, 0, 0" Command="{Binding CustomiseWallpaperCommand}"/>
+            <Button Content="{x:Static p:Resources.TextCloseWallpapers}" MinWidth="155" Margin="0, 5, 0, 0" Command="{Binding CloseWallpaperCommand}"/>
         </StackPanel>
     </Grid>
 </Window>

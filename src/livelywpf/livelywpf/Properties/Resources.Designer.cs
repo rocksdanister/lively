@@ -88,11 +88,20 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to permanently delete the wallpaper from the disk?.
+        ///   Looks up a localized string similar to Are you sure you want to permanently delete this wallpaper from the disk?.
         /// </summary>
         public static string DescriptionDeleteConfirmation {
             get {
                 return ResourceManager.GetString("DescriptionDeleteConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete this wallpaper from the Library?.
+        /// </summary>
+        public static string DescriptionDeleteConfirmationLibrary {
+            get {
+                return ResourceManager.GetString("DescriptionDeleteConfirmationLibrary", resourceCulture);
             }
         }
         
@@ -984,6 +993,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Volume level of all wallpapers..
+        /// </summary>
+        public static string TipAudioMaster {
+            get {
+                return ResourceManager.GetString("TipAudioMaster", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to (For battery operated systems only) Change playback when AC power is disconnected..
         /// </summary>
         public static string TipBatteryPower {
@@ -1227,6 +1245,15 @@ namespace livelywpf.Properties {
         public static string TitleAudio {
             get {
                 return ResourceManager.GetString("TitleAudio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Master Volume.
+        /// </summary>
+        public static string TitleAudioMaster {
+            get {
+                return ResourceManager.GetString("TitleAudioMaster", resourceCulture);
             }
         }
         

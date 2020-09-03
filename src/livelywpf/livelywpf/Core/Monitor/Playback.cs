@@ -90,7 +90,7 @@ namespace livelywpf.Core
             const int maxChars = 256;
             StringBuilder className = new StringBuilder(maxChars);
             var fHandle = NativeMethods.GetForegroundWindow();
-            Process fProcess = null;
+            Process fProcess;
             if (NativeMethods.GetClassName((int)fHandle, className, maxChars) > 0)
             {
                 string cName = className.ToString();
@@ -117,24 +117,25 @@ namespace livelywpf.Core
                 return;
             }
 
-            if (String.IsNullOrEmpty(fProcess.ProcessName) || fHandle.Equals(IntPtr.Zero))
-            {
-                Logger.Info("Getting processname failure/handle null, resuming playback!");
-                PlayWallpapers();
-                return;
-            }
-
-            if (fProcess.ProcessName.Equals("livelywpf", StringComparison.OrdinalIgnoreCase) ||
-                fProcess.ProcessName.Equals("livelycefsharp", StringComparison.OrdinalIgnoreCase) ||
-                fProcess.ProcessName.Equals("libvlcplayer", StringComparison.OrdinalIgnoreCase) ||
-                fProcess.ProcessName.Equals("libmpvplayer", StringComparison.OrdinalIgnoreCase))
-            {
-                PlayWallpapers();
-                return;
-            }
-
             try
             {
+                if (String.IsNullOrEmpty(fProcess.ProcessName) || fHandle.Equals(IntPtr.Zero))
+                {
+                    Logger.Info("Getting processname failure/handle null, resuming playback!");
+                    PlayWallpapers();
+                    return;
+                }
+
+                if (fProcess.ProcessName.Equals("livelywpf", StringComparison.OrdinalIgnoreCase) ||
+                    fProcess.ProcessName.Equals("livelycefsharp", StringComparison.OrdinalIgnoreCase) ||
+                    fProcess.ProcessName.Equals("libvlcplayer", StringComparison.OrdinalIgnoreCase) ||
+                    fProcess.ProcessName.Equals("libmpvplayer", StringComparison.OrdinalIgnoreCase))
+                {
+                    PlayWallpapers();
+                    SetWallpapersVoume(Program.SettingsVM.Settings.AudioVolumeGlobal);
+                    return;
+                }
+
                 //looping through custom rules for user defined apps.
                 for (int i = 0; i < Program.AppRulesVM.AppRules.Count; i++)
                 {
@@ -144,6 +145,7 @@ namespace livelywpf.Core
                         if (item.Rule == AppRulesEnum.ignore)
                         {
                             PlayWallpapers();
+                            SetWallpapersVoume(Program.SettingsVM.Settings.AudioVolumeGlobal);
                             return;
                         }
                         else if (item.Rule == AppRulesEnum.pause)
@@ -190,8 +192,11 @@ namespace livelywpf.Core
                             //this is a limitation of this algorithm since only one window can be foreground!
                             foreach (var item in ScreenHelper.GetScreen())
                             {
-                                if (!ScreenHelper.ScreenCompare(item, focusedScreen, DisplayIdentificationMode.screenLayout))//item != focusedScreen)
+                                if (!ScreenHelper.ScreenCompare(item, focusedScreen, DisplayIdentificationMode.screenLayout))
+                                {
                                     PlayWallpaper(item);
+                                    //SetWallpaperVoume(0, item);
+                                }
                             }
                         }
                         else
@@ -204,6 +209,7 @@ namespace livelywpf.Core
                         {
                             //win10 and win7 desktop foreground while lively is running.
                             PlayWallpaper(focusedScreen);
+                            SetWallpaperVoume(Program.SettingsVM.Settings.AudioVolumeGlobal, focusedScreen);
                         }
                         else if (Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span)
                         {
@@ -240,6 +246,7 @@ namespace livelywpf.Core
                                 PlayWallpaper(focusedScreen);
                         }
                     }
+                    SetWallpapersVoume(Program.SettingsVM.Settings.AudioVolumeGlobal);
                 }
             }
             catch { }
@@ -276,6 +283,25 @@ namespace livelywpf.Core
             {
                 if (ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.screenLayout))
                     x.Play();
+            });
+        }
+
+        private static void SetWallpapersVoume(int volume)
+        {
+            SetupDesktop.Wallpapers.ForEach(x =>
+            {
+                x.SetVolume(volume);
+            });
+        }
+
+        private static void SetWallpaperVoume(int volume, LivelyScreen display)
+        {
+            SetupDesktop.Wallpapers.ForEach(x =>
+            {
+                if (ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.screenLayout))
+                {
+                    x.SetVolume(volume);
+                }
             });
         }
 

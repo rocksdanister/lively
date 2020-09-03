@@ -56,7 +56,8 @@ namespace livelywpf
                 _mediaPlayer = new MediaPlayer(_libVLC)
                 {
                     AspectRatio = "Fill",
-                    EnableHardwareDecoding = true
+                    EnableHardwareDecoding = true,
+                    Volume = 0
                 };
                 _mediaPlayer.EndReached += _mediaPlayer_EndReached;
                 _mediaPlayer.EncounteredError += _mediaPlayer_EncounteredError;
@@ -126,7 +127,14 @@ namespace livelywpf
             if (_mediaReady)
             {
                 _mediaPlayer.Stop();
-                //ThreadPool.QueueUserWorkItem(_ => _mediaPlayer.Stop());
+            }
+        }
+
+        public void SetVolume(int val)
+        {
+            if (_mediaReady)
+            {
+                _mediaPlayer.Volume = val;
             }
         }
 

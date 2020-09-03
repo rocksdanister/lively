@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Management;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
@@ -33,6 +34,7 @@ namespace livelywpf.Core
         void SetScreen(LivelyScreen display);
         void SendMessage(string msg);
         string GetLivelyPropertyCopyPath();
+        void SetVolume(int volume);
         event EventHandler<WindowInitializedArgs> WindowInitialized;
     }
 
@@ -47,6 +49,9 @@ namespace livelywpf.Core
 
     #region video players
 
+    /// <summary>
+    /// Built in libvlc videoplayer.
+    /// </summary>
     public class VideoPlayerVLC : IWallpaper
     {
         public VideoPlayerVLC(string filePath, LibraryModel model, LivelyScreen screen)
@@ -65,10 +70,13 @@ namespace livelywpf.Core
 
         public void Close()
         {
-            System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
+            if(Player != null)
             {
-                Player.Close();
-            }));
+                System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
+                {
+                    Player.Close();
+                }));
+            }
         }
 
         public IntPtr GetHWND()
@@ -103,17 +111,23 @@ namespace livelywpf.Core
 
         public void Pause()
         {
-            Player.PausePlayer();
+            if (Player != null)
+            {
+                Player.PausePlayer();
+            }
         }
 
         public void Play()
         {
-            Player.PlayMedia();
+            if (Player != null)
+            {
+                Player.PlayMedia();
+            }
         }
 
         public void SendMessage(string msg)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public void SetHWND(IntPtr hwnd)
@@ -147,7 +161,10 @@ namespace livelywpf.Core
 
         public void Stop()
         {
-            Player.StopPlayer();
+            if (Player != null)
+            {
+                Player.StopPlayer();
+            }
         }
 
         public void Terminate()
@@ -157,10 +174,21 @@ namespace livelywpf.Core
 
         public void Resume()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+        }
+
+        public void SetVolume(int volume)
+        {
+            if(Player != null)
+            {
+                Player.SetVolume(volume);
+            }
         }
     }
 
+    /// <summary>
+    /// Built in libmpv videoplayer.
+    /// </summary>
     public class VideoPlayerMPV : IWallpaper
     {
         public VideoPlayerMPV(string filePath, LibraryModel model, LivelyScreen display)
@@ -199,22 +227,34 @@ namespace livelywpf.Core
         }
         public void Play()
         {
-            Player.PlayMedia();
+            if(Player != null)
+            {
+                Player.PlayMedia();
+            }
         }
         public void Pause()
         {
-            Player.PausePlayer();
+            if (Player != null)
+            {
+                Player.PausePlayer();
+            }
         }
         public void Stop()
         {
-            Player.StopPlayer();
+            if (Player != null)
+            {
+                Player.StopPlayer();
+            }
         }
         public void Close()
         {
-            System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
+            if(Player != null)
             {
-                Player.Close();
-            }));
+                System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
+                {
+                    Player.Close();
+                }));
+            }
         }
 
         public LivelyScreen GetScreen()
@@ -240,7 +280,7 @@ namespace livelywpf.Core
 
         public void SendMessage(string msg)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public string GetLivelyPropertyCopyPath()
@@ -260,10 +300,21 @@ namespace livelywpf.Core
 
         public void Resume()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+        }
+
+        public void SetVolume(int volume)
+        {
+            if(Player != null)
+            {
+                Player.SetVolume(volume);
+            }
         }
     }
 
+    /// <summary>
+    /// Built in Windws media foundation player.
+    /// </summary>
     public class VideoPlayerWPF : IWallpaper
     {
         public VideoPlayerWPF(string filePath, LibraryModel model, LivelyScreen display)
@@ -343,7 +394,7 @@ namespace livelywpf.Core
 
         public void SendMessage(string msg)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public string GetLivelyPropertyCopyPath()
@@ -363,10 +414,18 @@ namespace livelywpf.Core
 
         public void Resume()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+        }
+
+        public void SetVolume(int volume)
+        {
+            Player.SetVolume(volume);
         }
     }
 
+    /// <summary>
+    /// libVLC videoplayer (External plugin.)
+    /// </summary>
     public class VideoPlayerVLCExt : IWallpaper
     {
         public VideoPlayerVLCExt(string path, LibraryModel model, LivelyScreen display)
@@ -522,7 +581,7 @@ namespace livelywpf.Core
 
         public void Stop()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public void SendMessage(string msg)
@@ -560,10 +619,18 @@ namespace livelywpf.Core
 
         public void Resume()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+        }
+
+        public void SetVolume(int volume)
+        {
+            SendMessage("lively:vid-volume " + volume);
         }
     }
 
+    /// <summary>
+    /// libMPV videoplayer (External plugin.)
+    /// </summary>
     public class VideoPlayerMPVExt : IWallpaper
     {
         public VideoPlayerMPVExt(string path, LibraryModel model, LivelyScreen display, 
@@ -659,7 +726,7 @@ namespace livelywpf.Core
 
         public void Stop()
         {
-            throw new NotImplementedException();
+            
         }
 
         public void Show()
@@ -758,7 +825,12 @@ namespace livelywpf.Core
 
         public void Resume()
         {
-            throw new NotImplementedException();
+
+        }
+
+        public void SetVolume(int volume)
+        {
+            SendMessage("lively:vid-volume " + volume);
         }
     }
 
@@ -831,7 +903,7 @@ namespace livelywpf.Core
 
         public void SendMessage(string msg)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public void SetHWND(IntPtr hwnd)
@@ -873,6 +945,11 @@ namespace livelywpf.Core
         public void Resume()
         {
             throw new NotImplementedException();
+        }
+
+        public void SetVolume(int volume)
+        {
+            //gif has no sound.
         }
     }
 
@@ -1135,7 +1212,7 @@ namespace livelywpf.Core
 
         public void Stop()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public void SendMessage(string msg)
@@ -1173,7 +1250,51 @@ namespace livelywpf.Core
 
         public void Resume()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+        }
+
+        public void SetVolume(int volume)
+        {
+            /*
+            try
+            {
+                if (Proc != null)
+                {
+                    //VolumeMixer.SetApplicationVolume(Proc.Id, volume);
+                    SetProcessAndChildrenVolume(Proc.Id, volume);
+                }
+            }
+            catch { }
+            */
+        }
+
+        private void SetProcessAndChildrenVolume(int pid, int volume)
+        {
+            ManagementObjectSearcher searcher = new ManagementObjectSearcher("Select * From Win32_Process Where ParentProcessID=" + pid);
+            ManagementObjectCollection moc = searcher.Get();
+            foreach (ManagementObject mo in moc)
+            {
+                SetProcessAndChildrenVolume(Convert.ToInt32(mo["ProcessID"]), volume);
+            }
+            VolumeMixer.SetApplicationVolume(Process.GetProcessById(pid).Id, volume);
+        }
+
+        private void KillProcessAndChildren(int pid)
+        {
+            ManagementObjectSearcher searcher = new ManagementObjectSearcher("Select * From Win32_Process Where ParentProcessID=" + pid);
+            ManagementObjectCollection moc = searcher.Get();
+            foreach (ManagementObject mo in moc)
+            {
+                KillProcessAndChildren(Convert.ToInt32(mo["ProcessID"]));
+            }
+
+            try
+            {
+                Process proc = Process.GetProcessById(pid);
+                proc.Kill();
+            }
+            catch (ArgumentException)
+            { /* process already exited */ }
         }
     }
 
@@ -1475,7 +1596,7 @@ namespace livelywpf.Core
 
         public void SendMessage(string msg)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public string GetLivelyPropertyCopyPath()
@@ -1502,6 +1623,11 @@ namespace livelywpf.Core
         public void Resume()
         {
             throw new NotImplementedException();
+        }
+
+        public void SetVolume(int volume)
+        {
+            
         }
     }
 

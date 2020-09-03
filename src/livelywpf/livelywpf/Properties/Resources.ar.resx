@@ -183,7 +183,7 @@ Try changing the videoplayer in lively settings.
 In order to better understand this error and fix the issue, share the log file with the developer.
 Instructions for sharing log file:
 https://github.com/rocksdanister/lively/wiki</value>
-  </data>  
+  </data>
   <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
     <value>Not Lively wallpaper file.</value>
   </data>
@@ -273,7 +273,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="TextKeyboard" xml:space="preserve">
     <value>Keyboard</value>
-  </data>  
+  </data>
   <data name="TextmoreInfo" xml:space="preserve">
     <value>Information</value>
   </data>
@@ -282,7 +282,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="TextMouse" xml:space="preserve">
     <value>Mouse</value>
-  </data>  
+  </data>
   <data name="TextMouseInteractOnDesktop" xml:space="preserve">
     <value>Mouse interaction when application focused</value>
   </data>
@@ -294,10 +294,10 @@ https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="TextOff" xml:space="preserve">
     <value>OFF</value>
-  </data>  
+  </data>
   <data name="TextOn" xml:space="preserve">
     <value>ON</value>
-  </data>  
+  </data>
   <data name="TextOnline" xml:space="preserve">
     <value>عبر الإنترنت</value>
   </data>
@@ -436,6 +436,9 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TipAppTheme" xml:space="preserve">
     <value>Lively adapts to system theme settings, to change appearance goto</value>
   </data>
+  <data name="TipAudioMaster" xml:space="preserve">
+    <value>Volume level of all wallpapers.</value>
+  </data>
   <data name="TipBatteryPower" xml:space="preserve">
     <value>(For battery operated systems only) Change playback when AC power is disconnected.</value>
   </data>
@@ -521,6 +524,9 @@ Edge is the built in webview of windows 10.</value>
   <data name="TitleAudio" xml:space="preserve">
     <value>Audio</value>
   </data>
+  <data name="TitleAudioMaster" xml:space="preserve">
+    <value>Master Volume</value>
+  </data>
   <data name="TitleAudioPlayOnScreen" xml:space="preserve">
     <value>Play audio on screen</value>
   </data>
@@ -535,7 +541,7 @@ Edge is the built in webview of windows 10.</value>
   </data>
   <data name="TitleCommunity" xml:space="preserve">
     <value>Community</value>
-  </data>  
+  </data>
   <data name="TitleDeleteConfirmation" xml:space="preserve">
     <value>تأكيد الحذف</value>
   </data>
@@ -544,7 +550,7 @@ Edge is the built in webview of windows 10.</value>
   </data>
   <data name="TitleDocumentation" xml:space="preserve">
     <value>Documentation</value>
-  </data>  
+  </data>
   <data name="TitleEnterUrl" xml:space="preserve">
     <value>Enter URL</value>
   </data>
@@ -625,7 +631,7 @@ Edge is the built in webview of windows 10.</value>
   </data>
   <data name="TitleWallpaperDirMoveExisting" xml:space="preserve">
     <value>Move existing wallpapers to new folder</value>
-  </data>  
+  </data>
   <data name="TitleWallpaperInput" xml:space="preserve">
     <value>Wallpaper Input</value>
   </data>
@@ -652,5 +658,8 @@ Edge is the built in webview of windows 10.</value>
   </data>
   <data name="TitleWindowsStartup" xml:space="preserve">
     <value>البدء مع ويندوز:</value>
+  </data>
+    <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
+    <value>Are you sure you want to delete this wallpaper from the Library?</value>
   </data>
 </root>

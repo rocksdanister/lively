@@ -91,6 +91,10 @@ namespace livelysettings
         public string TextWallpaperInputOff { get; set; }
         public string TextWallpaperInputMouse { get; set; }
         public string TextWallpaperInputKeyboard { get; set; }
+        //Audio
+        public string TitleAudio { get; set; }
+        public string TitleMasterAudio { get; set; }
+        public string TipMasterAudio { get; set; }
 
         //Misc
         public string TitleSysTrayIconHide { get; set; }

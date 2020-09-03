@@ -127,7 +127,10 @@
     <value>Are you sure you want to cancel?</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
-    <value>Are you sure you want to permanently delete the wallpaper from the disk?</value>
+    <value>Are you sure you want to permanently delete this wallpaper from the disk?</value>
+  </data>
+  <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
+    <value>Are you sure you want to delete this wallpaper from the Library?</value>
   </data>
   <data name="DescriptionDragDropFIle" xml:space="preserve">
     <value>Simply drag and drop files into Library.</value>
@@ -440,6 +443,9 @@ If still not working, close &amp;amp; start Lively again/ restart windows.
   <data name="TipAppTheme" xml:space="preserve">
     <value>Lively adapts to system theme settings, to change appearance goto</value>
   </data>
+  <data name="TipAudioMaster" xml:space="preserve">
+    <value>Volume level of all wallpapers.</value>
+  </data>
   <data name="TipBatteryPower" xml:space="preserve">
     <value>(For battery operated systems only) Change playback when AC power is disconnected.</value>
   </data>
@@ -524,6 +530,9 @@ Edge is the built in webview of windows 10.</value>
   </data>
   <data name="TitleAudio" xml:space="preserve">
     <value>Audio</value>
+  </data>
+  <data name="TitleAudioMaster" xml:space="preserve">
+    <value>Master Volume</value>
   </data>
   <data name="TitleAudioPlayOnScreen" xml:space="preserve">
     <value>Play audio on screen</value>

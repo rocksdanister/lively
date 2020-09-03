@@ -170,7 +170,19 @@
                     </ScrollViewer>
                 </Grid>
             </PivotItem>
-            
+
+            <PivotItem Header="{x:Bind UIText.TitleAudio}">
+                <Grid>
+                    <ScrollViewer>
+                        <StackPanel>
+                            <TextBlock FontSize="20" Margin="0, 10, 0, 0" Text="{x:Bind UIText.TitleMasterAudio}"/>
+                            <Slider MaxWidth="250" Width="250" Maximum="100" Minimum="0" HorizontalAlignment="Left" Value="{Binding GlobalWallpaperVolume, Mode=TwoWay}"/>
+                            <TextBlock Margin="0, 10, 0, 0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipMasterAudio}"/>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </PivotItem>
+
             <PivotItem Header="{x:Bind UIText.TitleMisc}">
                 <Grid>
                     <ScrollViewer>

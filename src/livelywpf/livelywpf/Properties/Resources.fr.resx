@@ -658,4 +658,13 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TitleCommunity" xml:space="preserve">
     <value>Communauté</value>
   </data>
+    <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
+    <value>Are you sure you want to delete this wallpaper from the Library?</value>
+  </data>
+    <data name="TipAudioMaster" xml:space="preserve">
+    <value>Volume level of all wallpapers.</value>
+  </data>
+    <data name="TitleAudioMaster" xml:space="preserve">
+    <value>Master Volume</value>
+  </data>
 </root>

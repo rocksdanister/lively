@@ -92,10 +92,14 @@ namespace livelywpf.Views
                     TitleWallpaperStreamQuality = Properties.Resources.TitleStreamWallpaperVideoQuality,
                     TipWallpaperStreamQuality = Properties.Resources.TipStreamWallpaperVideoQuality,
                     TitleDetectWallpaperStream = Properties.Resources.TitleStreamWallpaperDetect,
-                    TipDetectWallpaperStream = Properties.Resources.TipStreamWallpaperVideoQuality,
+                    TipDetectWallpaperStream = Properties.Resources.TipStreamWallpaperDetect,
                     TextWallpaperInputOff = Properties.Resources.TextOff,
                     TextWallpaperInputKeyboard = Properties.Resources.TextKeyboard,
                     TextWallpaperInputMouse = Properties.Resources.TextMouse,
+                    //audio
+                    TitleAudio = Properties.Resources.TitleAudio,
+                    TitleMasterAudio = Properties.Resources.TitleAudioMaster,
+                    TipMasterAudio = Properties.Resources.TipAudioMaster,
                     //misc
                     TitleSysTrayIconHide = Properties.Resources.TitleHideSysTray,
                     TipSysTrayIconHide = Properties.Resources.TipHideSysTray

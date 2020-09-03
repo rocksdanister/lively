@@ -28,7 +28,7 @@ namespace livelywpf.Cef
             //xPos = screen.Bounds.Right - this.width - 100;
             //yPos = screen.Bounds.Bottom - this.height - 10;
 
-            ContentFrame.Navigate(new Cef.LivelyPropertiesView(data, livelyPropertyPath), new SuppressNavigationTransitionInfo());
+            ContentFrame.Navigate(new Cef.LivelyPropertiesView(data, livelyPropertyPath, screen), new SuppressNavigationTransitionInfo());
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

@@ -76,6 +76,10 @@ namespace livelywpf
         public string WebDebugPort { get; set; }
         public int WallpaperBundleVersion { get; set; }
         public StreamQualitySuggestion StreamQuality {get; set;}
+        /// <summary>
+        /// 0 - 100 sound level, affects every wallpaper type.
+        /// </summary>
+        public int AudioVolumeGlobal { get; set; }
         //private 
         /*
         //todo need to rewrite audio manager from scratch.
@@ -143,6 +147,7 @@ namespace livelywpf
             WebDebugPort = string.Empty;
             AutoDetectOnlineStreams = true;
             WallpaperBundleVersion = -1;
+            AudioVolumeGlobal = 50;
         }
     }
 }

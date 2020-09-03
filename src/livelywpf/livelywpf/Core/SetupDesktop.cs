@@ -274,6 +274,7 @@ namespace livelywpf
                     {
                         case WallpaperArrangement.per:
                             CloseWallpaperWithoutEvent(wallpaper.GetScreen());
+                            //CloseaWallpaperAfterDelay(wallpaper.GetScreen(), 500);
                             SetWallpaperPerScreen(wallpaper.GetHWND(), wallpaper.GetScreen());
                             break;
                         case WallpaperArrangement.span:
@@ -731,6 +732,32 @@ namespace livelywpf
             Wallpapers.ForEach(x => x.Close());
             Wallpapers.Clear();
             SendMsgLivelySubProcess("lively:clear");
+        }
+
+        private async static void CloseaWallpaperAfterDelay(LivelyScreen display, int delay)
+        {
+            List<IWallpaper> tmp = new List<IWallpaper>();
+            Wallpapers.ForEach(x =>
+            {
+                if (ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.screenLayout))
+                {
+                    if (x.GetProcess() != null)
+                    {
+                        SendMsgLivelySubProcess("lively:rmv-pgm " + x.GetProcess().Id);
+                    }
+                    tmp.Add(x);
+                }
+            });
+            Wallpapers.RemoveAll(x => ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.screenLayout));
+
+            await Task.Delay(delay);
+            tmp.ForEach (x =>
+            {
+                if (ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.screenLayout))
+                {
+                    x.Close();
+                }
+            });
         }
 
         public static void TerminateAllWallpapers()

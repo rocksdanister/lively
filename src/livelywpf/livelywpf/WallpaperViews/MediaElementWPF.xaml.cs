@@ -25,7 +25,7 @@ namespace livelywpf
             //mePlayer.MediaOpened += MePlayer_MediaOpened;
             mePlayer.MediaEnded += MePlayer_MediaEnded;
             mePlayer.MediaFailed += MePlayer_MediaFailed;
-
+            mePlayer.Volume = 0;
             mePlayer.Play();
         }
 
@@ -71,6 +71,11 @@ namespace livelywpf
         public void StopPlayer()
         {
             mePlayer.Stop();
+        }
+
+        public void SetVolume(int val)
+        {
+            mePlayer.Volume = (double)val/100;
         }
 
         //credit: https://stackoverflow.com/questions/4338951/how-do-i-determine-if-mediaelement-is-playing/4341285

@@ -48,14 +48,18 @@ namespace libMPVPlayer
                 player = new MpvPlayer(PlayerHost.Handle)
                 {
                     Loop = true,
-                    Volume = 100,
+                    Volume = 0,          
                 };
                 player.MediaError += Player_MediaError1;
+                //flags ref: https://mpv.io/manual/master/
                 //use gpu decoding if preferable.
                 player.API.SetPropertyString("hwdec", "auto");
-                player.API.SetPropertyString("keepaspect", "no");
+                player.API.SetPropertyString("keepaspect", "yes");
                 //Enable Windows screensaver.
                 player.API.SetPropertyString("stop-screensaver", "no");
+                //trying new stuff
+                //player.API.SetPropertyString("ontop", "yes");
+                //player.API.SetPropertyString("fullscreen", "yes");
                 //ytdl.
                 player.EnableYouTubeDl();
                 YouTubeDlVideoQuality quality = YouTubeDlVideoQuality.Highest;
@@ -141,6 +145,14 @@ namespace libMPVPlayer
             }
         }
 
+        private void SetVolume(int volume)
+        {
+            if (player != null)
+            {
+                player.Volume = volume;
+            }
+        }
+
         /// <summary>
         /// std I/O redirect, used to communicate with lively. 
         /// </summary>
@@ -166,14 +178,31 @@ namespace libMPVPlayer
                         {
                             break;
                         }
+                        else if (Contains(text, "lively:vid-volume", StringComparison.OrdinalIgnoreCase))
+                        {
+                            var msg = text.Split(' ');
+                            if (msg.Length < 2)
+                                continue;
+
+                            if (int.TryParse(msg[1], out int value))
+                            {
+                                SetVolume(value);
+                            }
+                        }
                     }
                 });
+            }
+            catch
+            {
+                //todo: send error to lively parent program.
+            }
+            finally
+            {
                 Application.Current.Shutdown();
             }
-            catch { }
         }
 
-        #region pinvoke
+        #region helpers
 
         [DllImport("user32.dll", EntryPoint = "SetWindowLong")]
         public static extern int SetWindowLong32(HandleRef hWnd, int nIndex, int dwNewLong);
@@ -195,6 +224,26 @@ namespace libMPVPlayer
 
         }
 
-        #endregion //pinvoke
+        /// <summary>
+        /// String Contains method with StringComparison property.
+        /// </summary>
+        /// <param name="str"></param>
+        /// <param name="substring"></param>
+        /// <param name="comp"></param>
+        /// <returns></returns>
+        private static bool Contains(String str, String substring,
+                                    StringComparison comp)
+        {
+            if (substring == null | str == null)
+                throw new ArgumentNullException("string",
+                                             "substring/string cannot be null.");
+            else if (!Enum.IsDefined(typeof(StringComparison), comp))
+                throw new ArgumentException("comp is not a member of StringComparison",
+                                         "comp");
+
+            return str.IndexOf(substring, comp) >= 0;
+        }
+
+        #endregion //helpers
     }
 }

@@ -81,6 +81,7 @@ namespace livelywpf
             DetectStreamWallpaper = Settings.AutoDetectOnlineStreams;
             WallpaperDirectory = Settings.WallpaperDir;
             MoveExistingWallpaperNewDir = Settings.WallpaperDirMoveExistingWallpaperNewDir;
+            GlobalWallpaperVolume = Settings.AudioVolumeGlobal;
         }
 
         private SettingsModel _settings;
@@ -503,7 +504,7 @@ namespace livelywpf
             }
         }
 
-        public bool _detectStreamWallpaper;
+        private bool _detectStreamWallpaper;
         public bool DetectStreamWallpaper
         {
             get { return _detectStreamWallpaper; }
@@ -520,6 +521,26 @@ namespace livelywpf
         }
 
         #endregion wallpaper
+
+        #region audio
+
+        private int _globalWallpaperVolume;
+        public int GlobalWallpaperVolume
+        {
+            get { return _globalWallpaperVolume; }
+            set
+            {
+                _globalWallpaperVolume = value;
+                if (Settings.AudioVolumeGlobal != _globalWallpaperVolume)
+                {
+                    Settings.AudioVolumeGlobal = _globalWallpaperVolume;
+                    UpdateConfigFile();
+                }
+                OnPropertyChanged("GlobalWallpaperVolume");
+            }
+        }
+
+        #endregion audio
 
         #region misc
 

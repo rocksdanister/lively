@@ -160,16 +160,18 @@ namespace livelywpf
             return true;
         }
 
+        /*
         public void WallpaperSendMsg(object obj, string message)
         {
             var selection = (LibraryModel)obj;
-            //currently enabled for these types.
+            //currently enabled for these types only.
             if (selection.LivelyInfo.Type == WallpaperType.web 
             || selection.LivelyInfo.Type == WallpaperType.webaudio)
             {
                 SetupDesktop.SendMessageWallpaper(selection, message);
             }
         }
+        */
 
         public void WallpaperShowOnDisk(object obj)
         {
@@ -503,54 +505,63 @@ namespace livelywpf
         }
 
         /// <summary>
-        /// Get LivelyProperties.json copy filepath for currently running screen if wallpaper is active, otherwise returns for primaryscreen.
+        /// Get LivelyProperties.json copy filepath and corresponding screen logic based on running wallpapers.
         /// null if non-customisable wallpaper.
         /// </summary>
         /// <param name="obj">LibraryModel object</param>
         /// <returns></returns>
-        public string GetLivelyPropertyCopyPath(object obj)
+        public Tuple<string, LivelyScreen> GetLivelyPropertyDetails(object obj)
         {
             var selection = (LibraryModel)obj;
             if (selection.LivelyPropertyPath == null)
                 return null;
 
-            foreach (var item in SetupDesktop.Wallpapers)
-            {
-                if(item.GetWallpaperData() == selection)
-                {
-                    return item.GetLivelyPropertyCopyPath();
-                }
-            }
-
-            //wallpaper not running, give the path for primaryscreen.
             string livelyPropertyCopy = "";
-            try
-            {
-                var screenNumber = ScreenHelper.GetScreenNumber(ScreenHelper.GetPrimaryScreen().DeviceName);
-                var dataFolder = Path.Combine(Program.WallpaperDir, "SaveData", "wpdata");
-                if (screenNumber != null)
+            LivelyScreen screen;
+            var items = SetupDesktop.Wallpapers.FindAll(x => x.GetWallpaperData() == obj);
+            if(items.Count == 0)
+            {                
+                //wallpaper not running, give the path for primaryscreen.
+                screen = ScreenHelper.GetPrimaryScreen();
+                try
                 {
-                    //Create a directory with the wp foldername in SaveData/wpdata/, copy livelyproperties.json into this.
-                    //Further modifications are done to the copy file.
-                    var wpdataFolder = Path.Combine(dataFolder, new DirectoryInfo(selection.LivelyInfoFolderPath).Name, screenNumber);
-                    Directory.CreateDirectory(wpdataFolder);
+                    var dataFolder = Path.Combine(Program.WallpaperDir, "SaveData", "wpdata");
+                    if (screen.DeviceNumber != null)
+                    {
+                        //Create a directory with the wp foldername in SaveData/wpdata/, copy livelyproperties.json into this.
+                        //Further modifications are done to the copy file.
+                        var wpdataFolder = Path.Combine(dataFolder, new DirectoryInfo(selection.LivelyInfoFolderPath).Name, screen.DeviceNumber);
+                        Directory.CreateDirectory(wpdataFolder);
 
-                    livelyPropertyCopy = Path.Combine(wpdataFolder, "LivelyProperties.json");
-                    if (!File.Exists(livelyPropertyCopy))
-                        File.Copy(selection.LivelyPropertyPath, livelyPropertyCopy);
-
+                        livelyPropertyCopy = Path.Combine(wpdataFolder, "LivelyProperties.json");
+                        if (!File.Exists(livelyPropertyCopy))
+                            File.Copy(selection.LivelyPropertyPath, livelyPropertyCopy);
+                    }
+                    else
+                    {
+                        //todo: fallback, use the original file (restore feature disabled.)
+                    }
                 }
-                else
+                catch (Exception e)
                 {
                     //todo: fallback, use the original file (restore feature disabled.)
+                    Logger.Error(e.ToString());
                 }
             }
-            catch
+            else if(items.Count == 1)
             {
-                //todo: fallback, use the original file (restore feature disabled.)
+                //send regardless of selected display, if wallpaper is running on non selected display - its modified instead.
+                livelyPropertyCopy = items[0].GetLivelyPropertyCopyPath();
+                screen = items[0].GetScreen();
             }
-
-            return livelyPropertyCopy;
+            else
+            {
+                //more than one screen; if selected display, sendpath otherwise send the first one found.
+                int index = items.FindIndex(x => ScreenHelper.ScreenCompare(Program.SettingsVM.Settings.SelectedDisplay, x.GetScreen(), DisplayIdentificationMode.screenLayout));
+                livelyPropertyCopy = index == -1 ? items[0].GetLivelyPropertyCopyPath() : items[index].GetLivelyPropertyCopyPath();
+                screen = index == -1 ? items[0].GetScreen() : items[index].GetScreen();
+            }
+            return new Tuple<string, LivelyScreen>(livelyPropertyCopy, screen);
         }
 
         private int BinarySearch(ObservableCollection<LibraryModel> item, string x)

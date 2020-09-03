@@ -33,7 +33,6 @@ namespace libVLCPlayer
             videoView.Loaded += VideoView_Loaded;
         }
 
-        //todo errorhandling
         async void VideoView_Loaded(object sender, RoutedEventArgs e)
         {
             try
@@ -47,7 +46,8 @@ namespace libVLCPlayer
                 _mediaPlayer = new MediaPlayer(_libVLC)
                 {
                     AspectRatio = "Fill",
-                    EnableHardwareDecoding = true
+                    EnableHardwareDecoding = true,
+                    Volume = 0
                 };
                 _mediaPlayer.EndReached += _mediaPlayer_EndReached;
                 videoView.MediaPlayer = _mediaPlayer;
@@ -91,7 +91,7 @@ namespace libVLCPlayer
             }
         }
 
-        public void PausePlayer()
+        private void PausePlayer()
         {
             if (_mediaPlayer == null)
                 return;
@@ -100,12 +100,10 @@ namespace libVLCPlayer
             {
                 vidPosition = _mediaPlayer.Position;
                 _mediaPlayer.Stop();
-                //_mediaPlayer.Pause();
-                //ThreadPool.QueueUserWorkItem(_ => _mediaPlayer.Pause());
             }
         }
 
-        public void PlayMedia()
+        private void PlayMedia()
         {
             if (_mediaPlayer == null)
                 return;
@@ -114,11 +112,10 @@ namespace libVLCPlayer
             {
                 _mediaPlayer.Play();
                 _mediaPlayer.Position = vidPosition;
-                //ThreadPool.QueueUserWorkItem(_ => _mediaPlayer.Play());
             }
         }
 
-        public void StopPlayer()
+        private void StopPlayer()
         {
             if (_mediaPlayer == null)
                 return;
@@ -126,7 +123,14 @@ namespace libVLCPlayer
             if (_mediaReady)
             {
                 _mediaPlayer.Stop();
-                //ThreadPool.QueueUserWorkItem(_ => _mediaPlayer.Stop());
+            }
+        }
+
+        private void SetVolume(int volume)
+        {
+            if(_mediaReady)
+            {
+                _mediaPlayer.Volume = volume;
             }
         }
 
@@ -185,26 +189,43 @@ namespace libVLCPlayer
                         {
                             break;
                         }
+                        else if (Contains(text, "lively:vid-volume", StringComparison.OrdinalIgnoreCase))
+                        {
+                            var msg = text.Split(' ');
+                            if (msg.Length < 2)
+                                continue;
+
+                            if (int.TryParse(msg[1], out int value))
+                            {
+                                SetVolume(value);
+                            }
+                        }
                     }
                 });
+            }
+            catch 
+            {
+                //todo: send error to lively parent program.
+            }
+            finally
+            {
                 Application.Current.Shutdown();
             }
-            catch { }
         }
 
-        #region pinvoke
+        #region helpers
 
         [DllImport("user32.dll", EntryPoint = "SetWindowLong")]
-        public static extern int SetWindowLong32(HandleRef hWnd, int nIndex, int dwNewLong);
+        private static extern int SetWindowLong32(HandleRef hWnd, int nIndex, int dwNewLong);
 
         [DllImport("user32.dll", EntryPoint = "SetWindowLongPtr")]
-        public static extern IntPtr SetWindowLongPtr64(HandleRef hWnd, int nIndex, IntPtr dwNewLong);
+        private static extern IntPtr SetWindowLongPtr64(HandleRef hWnd, int nIndex, IntPtr dwNewLong);
         private const uint WS_EX_NOACTIVATE = 0x08000000;
         private const uint WS_EX_TOOLWINDOW = 0x00000080;
         // This helper static method is required because the 32-bit version of user32.dll does not contain this API
         // (on any versions of Windows), so linking the method will fail at run-time. The bridge dispatches the request
         // to the correct function (GetWindowLong in 32-bit mode and GetWindowLongPtr in 64-bit mode)
-        public static IntPtr SetWindowLongPtr(HandleRef hWnd, int nIndex, IntPtr dwNewLong)
+        private static IntPtr SetWindowLongPtr(HandleRef hWnd, int nIndex, IntPtr dwNewLong)
         {
 
             if (IntPtr.Size == 8)
@@ -214,6 +235,26 @@ namespace libVLCPlayer
 
         }
 
-        #endregion //pinvoke
+        /// <summary>
+        /// String Contains method with StringComparison property.
+        /// </summary>
+        /// <param name="str"></param>
+        /// <param name="substring"></param>
+        /// <param name="comp"></param>
+        /// <returns></returns>
+        private static bool Contains(String str, String substring,
+                                    StringComparison comp)
+        {
+            if (substring == null | str == null)
+                throw new ArgumentNullException("string",
+                                             "substring/string cannot be null.");
+            else if (!Enum.IsDefined(typeof(StringComparison), comp))
+                throw new ArgumentException("comp is not a member of StringComparison",
+                                         "comp");
+
+            return str.IndexOf(substring, comp) >= 0;
+        }
+
+        #endregion //helpers
     }
 }
