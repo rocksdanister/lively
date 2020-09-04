@@ -284,7 +284,7 @@ namespace livelywpf
         {
             var selection = (LibraryModel)obj;
             //close if running.
-            SetupDesktop.CloseWallpaper(selection);
+            SetupDesktop.TerminateWallpaper(selection);
             //delete wp folder.      
             var success = await FileOperations.DeleteDirectoryAsync(selection.LivelyInfoFolderPath, 1000, 4000);
 

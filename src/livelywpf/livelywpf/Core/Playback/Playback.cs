@@ -9,6 +9,9 @@ using System.Windows.Threading;
 
 namespace livelywpf.Core
 {
+    /// <summary>
+    /// System monitor logic to pause/unpause wallpaper playback.
+    /// </summary>
     public class Playback
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
