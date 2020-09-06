@@ -91,7 +91,7 @@ Help translate lively to other languages: <a href="https://github.com/rocksdanis
 ##### Latest version: v1.0.5.0 (Windows 10 1903 or above)[What's new?](https://github.com/rocksdanister/lively/releases/tag/v1.0.5.0)
 - [`Download Lively Wallpaper`][direct-full-win32] 
      
-[direct-full-win32]: https://github.com/rocksdanister/lively/releases/download/v1.0.1.0/lively_setup_x86_full_v1050.exe
+[direct-full-win32]: https://github.com/rocksdanister/lively/releases/download/v1.0.5.0/lively_setup_x86_full_v1050.exe
 
 **Installer will give Smartscreen warning, [discussion.](https://github.com/rocksdanister/lively/issues/9)**
 
