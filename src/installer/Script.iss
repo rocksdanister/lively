@@ -2,7 +2,7 @@
 ; https://jrsoftware.org/isinfo.php
 
 #define MyAppName "Lively Wallpaper"
-#define MyAppVersion "1.0.1.0"
+#define MyAppVersion "1.0.5.0"
 #define MyAppPublisher "rocksdanister"
 #define MyAppURL "https://github.com/rocksdanister/lively"
 #define MyAppExeName "livelywpf.exe"
@@ -210,4 +210,19 @@ end;
 function ShouldInstallWallpapers: Boolean;
 begin
     Result := not isAlreadyInstalled;
+end;
+
+//////////////////////////////////////////////////////////////////////
+function InitializeUninstall(): Boolean;
+var
+  ErrorCode: Integer;
+begin
+  if CheckForMutexes('LIVELY:DESKTOPWALLPAPERSYSTEM') and
+     (MsgBox('Application is running, do you want to close it?',
+             mbConfirmation, MB_OKCANCEL) = IDOK) then
+  begin
+    ShellExec('open','taskkill.exe','/f /im {#MyAppExeName}','',SW_HIDE,ewWaitUntilTerminated,ErrorCode);
+  end;
+
+  Result := True;
 end;
