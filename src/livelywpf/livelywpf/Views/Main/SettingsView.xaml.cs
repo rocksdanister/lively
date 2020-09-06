@@ -74,6 +74,12 @@ namespace livelywpf.Views
                     TextPauseAlgorithmAll = Properties.Resources.TextPauseAlgoAllProcess,
                     TextPauseAlgorithmForeground = Properties.Resources.TextPauseAlgoForegroundProcess,
                     //wallpaper
+                    TitleWallpaperFit = Properties.Resources.TitleWallpaperFit,
+                    TipWallpaperFit = Properties.Resources.TipWallpaperFit,
+                    TextWallpaperFitFill = Properties.Resources.TextWallpaperFitFill,
+                    TextWallpaperFitNone = Properties.Resources.TextWallpaperFitNone,
+                    TextWallpaperFitUniform = Properties.Resources.TextWallpaperFitUniform,
+                    TextWallpaperFitUniformFill = Properties.Resources.TextWallpaperFitUniformToFill,
                     TitleInteraction = Properties.Resources.TitleInteraction,
                     TitleWallpaperInput = Properties.Resources.TitleWallpaperInput,
                     TipWallpaperInput = Properties.Resources.TipWallpaperInput,

@@ -80,6 +80,7 @@ namespace livelywpf
         /// 0 - 100 sound level, affects every wallpaper type.
         /// </summary>
         public int AudioVolumeGlobal { get; set; }
+        public WallpaperScaler WallpaperScaling { get; set; }
         //private 
         /*
         //todo need to rewrite audio manager from scratch.
@@ -148,6 +149,7 @@ namespace livelywpf
             AutoDetectOnlineStreams = true;
             WallpaperBundleVersion = -1;
             AudioVolumeGlobal = 50;
+            WallpaperScaling = WallpaperScaler.fill;
         }
     }
 }

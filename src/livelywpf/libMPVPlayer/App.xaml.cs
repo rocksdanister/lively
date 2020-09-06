@@ -15,9 +15,18 @@ namespace libMPVPlayer
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
+            this.SessionEnding += App_SessionEnding;
             var wnd = new MainWindow(e.Args);
             //SetupUnhandledExceptionLogging();
             wnd.Show();
+        }
+
+        private void App_SessionEnding(object sender, SessionEndingCancelEventArgs e)
+        {
+            if (e.ReasonSessionEnding == ReasonSessionEnding.Shutdown || e.ReasonSessionEnding == ReasonSessionEnding.Logoff)
+            {
+                e.Cancel = true;
+            }
         }
 
         private void SetupUnhandledExceptionLogging()

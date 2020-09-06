@@ -48,16 +48,25 @@ namespace livelywpf
             Program.WallpaperDir = Program.SettingsVM.Settings.WallpaperDir;
             try
             {
-                Directory.CreateDirectory(Path.Combine(Program.WallpaperDir, "wallpapers"));
-                Directory.CreateDirectory(Path.Combine(Program.WallpaperDir, "SaveData", "wptmp"));
-                Directory.CreateDirectory(Path.Combine(Program.WallpaperDir, "SaveData", "wpdata"));
+                CreateWallpaperDir();
             }
             catch (Exception ex)
             {
-                Logger.Error("Wallpaper Directory creation fail:" + ex.ToString());
-                MessageBox.Show(ex.Message, "Error: Failed to create wallpaper folder", MessageBoxButton.OK, MessageBoxImage.Error);
-                Program.ExitApplication();
+                Logger.Error("Wallpaper Directory creation fail, falling back to default directory:" + ex.ToString());
+                Program.SettingsVM.Settings.WallpaperDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Lively Wallpaper", "Library");
+                Program.SettingsVM.UpdateConfigFile();
+                try
+                {
+                    CreateWallpaperDir();
+                }
+                catch(Exception ie)
+                {
+                    Logger.Error("Wallpaper Directory creation failed, Exiting:" + ie.ToString());
+                    MessageBox.Show(ie.Message, "Error: Failed to create wallpaper folder", MessageBoxButton.OK, MessageBoxImage.Error);
+                    Program.ExitApplication();
+                }
             }
+
             //previous installed appversion is different from current instance.
             if (!Program.SettingsVM.Settings.AppVersion.Equals(Assembly.GetExecutingAssembly().GetName().Version.ToString(), StringComparison.OrdinalIgnoreCase)
                 || Program.SettingsVM.Settings.IsFirstRun)
@@ -98,7 +107,7 @@ namespace livelywpf
         }
 
         /// <summary>
-        /// Extract default wallpapers.
+        /// Extract default wallpapers and incremental if any.
         /// </summary>
         private int ExtractWallpaperBundle()
         {
@@ -130,6 +139,13 @@ namespace livelywpf
                 Logger.Error("Base Wallpaper Extract Fail:" + e.ToString());
             }
             return maxExtracted;
+        }
+
+        private void CreateWallpaperDir()
+        {
+            Directory.CreateDirectory(Path.Combine(Program.WallpaperDir, "wallpapers"));
+            Directory.CreateDirectory(Path.Combine(Program.WallpaperDir, "SaveData", "wptmp"));
+            Directory.CreateDirectory(Path.Combine(Program.WallpaperDir, "SaveData", "wpdata"));
         }
 
         private void SetupUnhandledExceptionLogging()

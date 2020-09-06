@@ -12,8 +12,6 @@ namespace livelywpf
 {
     public static class ScreenHelper
     {
-        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-
         public static bool IsMultiScreen()
         {
             return Screen.AllScreens.Count() > 1;

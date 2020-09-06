@@ -89,7 +89,20 @@ namespace livelywpf.Views
             }
             catch(UriFormatException)
             {
-                return;
+                try
+                {
+                    //if user did not input https/http assume https connection.
+                    uri = new UriBuilder(UrlText.Text)
+                    {
+                        Scheme = "https",
+                        Port = -1,
+                    }.Uri;
+                    UrlText.Text = uri.ToString();
+                }
+                catch
+                {
+                    return;
+                }
             }
 
             if (Program.SettingsVM.Settings.AutoDetectOnlineStreams &&

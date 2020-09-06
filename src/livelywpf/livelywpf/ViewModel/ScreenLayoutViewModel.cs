@@ -108,7 +108,14 @@ namespace livelywpf
 
         private void CloseWallpaper(ScreenLayoutModel selection)
         {
-            SetupDesktop.CloseWallpaper(selection.Screen);
+            if(Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.per)
+            {
+                SetupDesktop.CloseWallpaper(selection.Screen);
+            }
+            else
+            {
+                SetupDesktop.CloseAllWallpapers();
+            }
             selection.ScreenImagePath = null;
             selection.LivelyPropertyPath = null;
             CanCloseWallpaper();

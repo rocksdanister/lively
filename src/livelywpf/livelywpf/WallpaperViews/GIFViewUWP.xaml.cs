@@ -17,10 +17,11 @@ namespace livelywpf
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         BitmapImage BitMapImg { get; set; }
         private string FilePath { get; set; }
-
-        public GIFViewUWP(string filePath)
+        private readonly WallpaperScaler stretch;
+        public GIFViewUWP(string filePath, WallpaperScaler stretch = WallpaperScaler.fill)
         {
             FilePath = filePath;
+            this.stretch = stretch;
             InitializeComponent();
             this.Loaded += GIFViewUWP_Loaded;
         }
@@ -44,11 +45,24 @@ namespace livelywpf
             if (imgElement != null)
             {
                 BitMapImg = new Windows.UI.Xaml.Media.Imaging.BitmapImage();
-                imgElement.Stretch = Windows.UI.Xaml.Media.Stretch.Fill;
-                BitMapImg.UriSource = new Uri(FilePath);
-                //BitMapImg.ImageFailed
+                BitMapImg.ImageFailed += BitMapImg_ImageFailed;
+                imgElement.Stretch = (Windows.UI.Xaml.Media.Stretch)stretch;
+                try
+                {
+                    BitMapImg.UriSource = new Uri(FilePath);
+                }
+                catch(Exception ex)
+                {
+                    Logger.Error(ex.ToString());
+                    return;
+                }
                 imgElement.Source = BitMapImg;
             }
+        }
+
+        private void BitMapImg_ImageFailed(object sender, Windows.UI.Xaml.ExceptionRoutedEventArgs e)
+        {
+            Logger.Error(e.ErrorMessage);
         }
 
         public void Play()
@@ -73,7 +87,7 @@ namespace livelywpf
         /// </summary>
         public void Pause()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
     }
 }

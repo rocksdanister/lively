@@ -118,200 +118,228 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DescriptionAddWallpaper" xml:space="preserve">
-    <value>Select a file or specify a website url to set as a wallpaper.</value>
+    <value>Selecteer een bestand of website-url om als achtergrond in te stellen.</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
-    <value>Встановіть поведінку відтворення шпалер на основі запущеної програми</value>
+    <value>Afspeelgedrag van de achtergrond op basis van actieve programma's.</value>
   </data>
   <data name="DescriptionCancelQuestion" xml:space="preserve">
-    <value>Are you sure you want to cancel?</value>
+    <value>Weet u het zeker dat u wilt annuleren?</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
-    <value>Ви справді бажаєте остаточно видалити шпалери з диску?</value>
+    <value>Deze achtergrond wordt definitief verwijderd, weet u het zeker?</value>
+  </data>
+  <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
+    <value>Deze achtergrond wordt uit de Bibliotheek verwijderd, weet u het zeker?</value>
   </data>
   <data name="DescriptionDragDropFIle" xml:space="preserve">
-    <value>Simply drag and drop files into Library.</value>
+    <value>U kunt de bestanden eenvoudig naar de Bibliotheek slepen.</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
-    <value>Ви відкриваєте зовнішню програму як шпалери.
-Шкідливі програми можуть містити віруси і зашкодити Вашій системі.
-Продовжуйте лише в тому разі, якщо програму отримано з надійного джерела.</value>
+    <value>U opent een extern programma als achtergrond. Kwaadaardige applicaties kunnen malware en virussen hosten, dit kan schade toebrengen aan uw systeem. Ga alleen verder als het programma vanuit een betrouwbare bron is verkregen.</value>
   </data>
   <data name="DescriptionMinimizedTray" xml:space="preserve">
-    <value>Я згорнувся до системного трею, натисніть правою кнопкою миші на значок lively для додаткових опцій.</value>
+    <value>Lively wordt geminimaliseerd naar de systeembalk, om verder te gaan klikt u met de rechtermuisknop op Lively.</value>
+  </data>
+  <data name="DescriptionPleaseRestartLively" xml:space="preserve">
+    <value>Herstart Lively om de nieuwe instellingen toe te passen. </value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
-    <value>Press to begin recording.</value>
+    <value>Druk om te beginnen met opnemen.</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
-    <value>Відновлення попередніх шпалерів..</value>
+    <value>Momenteel bezig met het herstellen van de vorige achtergrond(en), een ogenblik geduld alstublieft...</value>
+  </data>
+  <data name="DescriptionScreenLayout" xml:space="preserve">
+    <value>Kies scherm.</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
-    <value>Доступна нова версія!</value>
+    <value>Een nieuwe versie is beschikbaar!</value>
   </data>
   <data name="DescriptionWebpageLoad" xml:space="preserve">
-    <value>Введіть посилання на сторінку, підтримуються посилання Shadertoy.com</value>
+    <value>Voer een link in om te laden, shadertoy.com shader links worden ondersteund.</value>
   </data>
   <data name="DescriptionWelcomeWizard" xml:space="preserve">
-    <value>This wizard will get you started on setting up Lively.</value>
+    <value>De wizard helpt u bij het instellen van Lively.</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
-    <value>Помилка оновлення. Спробуйте завантажити інсталятор з</value>
+    <value>Update mislukt; probeer het installatieprogramma te downloaden op: https://github.com/rocksdanister/lively/releases</value>
   </data>
   <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
-    <value>Файл шпалерів пошкоджено, спробуйте завантажити заново.</value>
+    <value>Het achtergrondbestand is beschadigd, probeer het opnieuw te downloaden. </value>
   </data>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
-    <value>Oops... Looks like something wen't wrong :(
-In order to better understand this error and fix the issue, share the log file with the developer.
-Instructions for sharing log file:
-https://github.com/rocksdanister/lively/wiki</value>
+    <value>Oeps... er lijkt iets mis te gaan :(
+Om de foutmelding beter te begrijpen en te corrigeren, raden we aan om het logboekbestand te delen met de ontwikkelaar. Instructie voor het delen van logboekbestanden zijn hier te vinden: https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
-    <value>Lively не може працювати з Windows в режимі високої контрастності!
-Вимкніть режим високої контрастності і спробуйте знову.</value>
+    <value>Lively werkt niet goed met Windows High Contrast modus inschakeld! Schakel High Contrast modus uit en probeer het opnieuw.</value>
+  </data>
+  <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
+    <value>Afspelen van media is mislukt :(
+Probeer de videospeler te veranderen in Lively instellingen. 
+Om de foutmelding beter te begrijpen en te corrigeren, raden we aan om het logboekbestand te delen met de ontwikkelaar. Instructie voor het delen van logboekbestanden zijn hier te vinden: https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
-    <value>Not Lively wallpaper file.</value>
+    <value>Geen Lively achtergrondbestand.</value>
   </data>
   <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
-    <value>Доступна нова версія!</value>
+    <value>Lively is verkeerd afgesloten, programma start in veilig modus.
+Wilt u de vorige achtergrond(en) herstellen?</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
-    <value>Здається, потрібно змінити деякі налаштування, щоб Lively запрацював:-  
-1. Відкрийте Мій комп'ютер
-2. Натисніть правою кнопкою миші на пустій ділянці
-3. Оберіть "Властивості"
-4. Оберіть "Додаткові настройки системи"
-5. На вкладці Продуктивність оберіть "Настройки"
-6. Ввімкніть "Анімація елементів керування та елементів всередині вікна" і натисніть застосувати.
+    <value>Er zullen enkele instellingen toegepast moeten worden om Lively te starten:
+1. Open 'Deze Computer'.
+2. Klik met rechtermuisknop in een leeg gebied.
+3. Selecteer 'Eigenschappen'.
+4. Selecteer 'Geavanceerde Systeeminstellingen'.
+5. Selecteer op tabblad 'Prestatie' de instellingen.
+6. Schakel 'Animeer besturingselementen in vensters' in en pas toe.
 
-Якщо у Вас Windows 7, виберіть - "Налаштувати на кращий вигляд" і натисніть застосувати.
-Якщо далі не працює, перезавантажте Lively / windows.
-(Не працює в інсайдерських збірках windows 10)</value>
+Voor Windows 7 selecteer 'Pas aan voor het beste uiterlijk' en pas toe.
+Als dat niet werkt herstart Lively en Windows. (Werkt niet met sommige insider Windows 10 builds) -</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
-    <value>Додати</value>
+    <value>Toevoegen</value>
   </data>
   <data name="TextApplication" xml:space="preserve">
-    <value>Додаток</value>
+    <value>Applicatie</value>
   </data>
   <data name="TextAttribution" xml:space="preserve">
-    <value>Attribution</value>
+    <value>Attributie</value>
   </data>
   <data name="TextAuthor" xml:space="preserve">
-    <value>Автор</value>
+    <value>Auteur</value>
   </data>
   <data name="TextBack" xml:space="preserve">
-    <value>Back</value>
+    <value>Terug</value>
   </data>
   <data name="TextBrowse" xml:space="preserve">
-    <value>Browse</value>
+    <value>Bladeren</value>
+  </data>
+  <data name="TextClose" xml:space="preserve">
+    <value>Afsluiten</value>
   </data>
   <data name="TextCloseWallpapers" xml:space="preserve">
-    <value>Закрити шпалери</value>
+    <value>Achtergronden Sluiten</value>
   </data>
   <data name="TextCompleted" xml:space="preserve">
-    <value>Completed!</value>
+    <value>Voltooid!</value>
   </data>
   <data name="TextConvertVideo" xml:space="preserve">
-    <value>Convert to Video</value>
+    <value>Omzetten naar Video</value>
+  </data>
+  <data name="TextCustomise" xml:space="preserve">
+    <value>Bewerken</value>
   </data>
   <data name="TextCustomiseWallpaper" xml:space="preserve">
-    <value>Customise Wallpaper</value>
+    <value>Achtergronden Bewerken</value>
   </data>
   <data name="TextDeleteWallpaper" xml:space="preserve">
-    <value>Видалити шпалери</value>
+    <value>Achtergronden Verwijderen</value>
   </data>
   <data name="TextDisplayPauseRuleAllScreen" xml:space="preserve">
-    <value>Всі екрани</value>
+    <value>Alle Schermen</value>
   </data>
   <data name="TextDisplayPauseRulePerScreen" xml:space="preserve">
-    <value>Певний екран</value>
+    <value>Per Scherm</value>
   </data>
   <data name="TextDownload" xml:space="preserve">
     <value>Download</value>
   </data>
   <data name="TextError" xml:space="preserve">
-    <value>Помилка</value>
+    <value>Foutmelding</value>
   </data>
   <data name="TextExit" xml:space="preserve">
-    <value>Вихід</value>
+    <value>Afsluiten</value>
   </data>
   <data name="TextExportWallpaperZip" xml:space="preserve">
-    <value>Експортувати lively .zip</value>
+    <value>Exporteer Lively .zip</value>
   </data>
   <data name="TextGIF" xml:space="preserve">
-    <value>Animated GIF</value>
+    <value>Geanimeerde GIF
+Geanimeerde GIF</value>
   </data>
   <data name="TextGo" xml:space="preserve">
-    <value>GO</value>
+    <value>Doorgaan</value>
   </data>
   <data name="TextHelpTranslate" xml:space="preserve">
-    <value>Help translate Lively.</value>
+    <value>Help Lively vertalen.</value>
   </data>
   <data name="TextInstall" xml:space="preserve">
-    <value>Встановити</value>
+    <value>Installeer</value>
+  </data>
+  <data name="TextKeyboard" xml:space="preserve">
+    <value>Toetsenbord</value>
   </data>
   <data name="TextmoreInfo" xml:space="preserve">
-    <value>Information</value>
+    <value>Informatie</value>
   </data>
   <data name="TextMoreWallpapers" xml:space="preserve">
-    <value>Більше шпалер...</value>
+    <value>Meer Achtergronden</value>
+  </data>
+  <data name="TextMouse" xml:space="preserve">
+    <value>Muis</value>
   </data>
   <data name="TextMouseInteractOnDesktop" xml:space="preserve">
-    <value>Mouse interaction when application focused</value>
+    <value>Muisinteractie zodra toepassing focus heeft</value>
   </data>
   <data name="TextNext" xml:space="preserve">
-    <value>Next</value>
+    <value>Volgende</value>
   </data>
   <data name="TextNo" xml:space="preserve">
-    <value>No</value>
+    <value>Nee</value>
+  </data>
+  <data name="TextOff" xml:space="preserve">
+    <value>UIT</value>
+  </data>
+  <data name="TextOn" xml:space="preserve">
+    <value>AAN</value>
   </data>
   <data name="TextOnline" xml:space="preserve">
     <value>Online</value>
   </data>
   <data name="TextOpenLively" xml:space="preserve">
-    <value>Відкрити Lively</value>
+    <value>Open Lively</value>
   </data>
   <data name="TextPauseAlgoAllProcess" xml:space="preserve">
-    <value>Всі процеси</value>
+    <value>Alle Processen</value>
   </data>
   <data name="TextPauseAlgoForegroundProcess" xml:space="preserve">
-    <value>Процес переднього плану</value>
+    <value>Voorgrond Processen</value>
   </data>
   <data name="TextPauseWallpapers" xml:space="preserve">
-    <value>Pause Wallpapers</value>
+    <value>Pauzeer Wallpapers</value>
   </data>
   <data name="TextPerformanceKill" xml:space="preserve">
-    <value>Kill</value>
+    <value>Beëindig</value>
   </data>
   <data name="TextPerformanceNone" xml:space="preserve">
-    <value>Nothing</value>
+    <value>Niets</value>
   </data>
   <data name="TextPerformancePause" xml:space="preserve">
-    <value>Pause</value>
+    <value>Pauzeer</value>
   </data>
   <data name="TextRemove" xml:space="preserve">
-    <value>Видалити</value>
+    <value>Verwijder</value>
   </data>
   <data name="TextRule" xml:space="preserve">
-    <value>Правило</value>
+    <value>Regel</value>
   </data>
   <data name="TextScreen" xml:space="preserve">
-    <value>Screen</value>
+    <value>Scherm</value>
   </data>
   <data name="TextSearch" xml:space="preserve">
-    <value>Search</value>
+    <value>Zoek</value>
   </data>
   <data name="TextSetWallpaper" xml:space="preserve">
-    <value>Встановити як шпалери</value>
+    <value>Als achtergrond instellen</value>
   </data>
   <data name="TextShowOnDisk" xml:space="preserve">
-    <value>Показати на диску</value>
+    <value>Open bestandslocatie</value>
   </data>
   <data name="TextSource" xml:space="preserve">
-    <value>Source</value>
+    <value>Bron</value>
   </data>
   <data name="TextStart" xml:space="preserve">
     <value>Start</value>
@@ -319,17 +347,20 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextStop" xml:space="preserve">
     <value>Stop</value>
   </data>
+  <data name="TextSupport" xml:space="preserve">
+    <value>Ondersteuning</value>
+  </data>
   <data name="TextTags" xml:space="preserve">
     <value>Tags</value>
   </data>
   <data name="TextTileSizeLarge" xml:space="preserve">
-    <value>Large</value>
+    <value>Groot</value>
   </data>
   <data name="TextTileSizeNormal" xml:space="preserve">
-    <value>Normal</value>
+    <value>Normaal</value>
   </data>
   <data name="TextTileSizeSmall" xml:space="preserve">
-    <value>Small</value>
+    <value>Klein</value>
   </data>
   <data name="TextUIHeadless" xml:space="preserve">
     <value>Headless</value>
@@ -338,331 +369,290 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Lite</value>
   </data>
   <data name="TextUINormal" xml:space="preserve">
-    <value>Normal</value>
+    <value>Normaal</value>
   </data>
   <data name="TextUpdateAvailable" xml:space="preserve">
-    <value>Доступне оновлення!</value>
+    <value>Update beschikbaar!</value>
   </data>
   <data name="TextUpdateCheck" xml:space="preserve">
-    <value>Check for update</value>
+    <value>Controleer voor updates</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
-    <value>Помилка перевірки оновлення</value>
+    <value>Het controleren voor updates is mislukt</value>
   </data>
   <data name="TextUpdateChecking" xml:space="preserve">
-    <value>Перевірити оновлення</value>
+    <value>Controleren voor updates</value>
   </data>
   <data name="TextUpdateUptodate" xml:space="preserve">
-    <value>Lively оновлено!</value>
+    <value>Software is up-to-date!</value>
   </data>
   <data name="TextVideo" xml:space="preserve">
-    <value>Відео</value>
+    <value>Video</value>
   </data>
   <data name="TextWallpaperLayoutDuplicate" xml:space="preserve">
-    <value>Duplicate same wallpaper</value>
+    <value>Kopieer dezelfde achtergrond</value>
+  </data>
+  <data name="TextWallpaperLayoutPerScreen" xml:space="preserve">
+    <value>Alleen geselecteerde scherm</value>
   </data>
   <data name="TextWallpaperLayoutSpan" xml:space="preserve">
-    <value>Перекривати</value>
+    <value>Over alle schermen verdelen</value>
   </data>
   <data name="TextWallpaperType" xml:space="preserve">
-    <value>Тип</value>
+    <value>Type</value>
   </data>
   <data name="TextWebsite" xml:space="preserve">
-    <value>Вебсайт</value>
+    <value>Website</value>
   </data>
   <data name="TextWebStream" xml:space="preserve">
-    <value>Стрім</value>
+    <value>Webstream</value>
   </data>
   <data name="TextWelcome" xml:space="preserve">
-    <value>Welcome</value>
+    <value>Welkom</value>
   </data>
   <data name="TextYes" xml:space="preserve">
-    <value>Yes</value>
+    <value>Ja</value>
   </data>
   <data name="TileVideoPlayer" xml:space="preserve">
-    <value>Відео програвач</value>
+    <value>Video Speler</value>
   </data>
   <data name="TipAddWallpaperFileBrowse" xml:space="preserve">
-    <value>Set all supported file types as wallpaper.</value>
+    <value>Stel alle ondersteunde bestandstypen in als achtergrond.</value>
   </data>
   <data name="TipAddWallpaperURL" xml:space="preserve">
-    <value>Set the web page of the URL you entered as wallpaper.</value>
+    <value>Stel de webpagina van de URL die u hebt ingevoerd in als achtergrond.</value>
   </data>
   <data name="TipAppFocus" xml:space="preserve">
-    <value>Set what to do when any application is in focus.</value>
+    <value>Stel in wat u wilt doen wanneer een applicatie in focus is.</value>
   </data>
   <data name="TipAppFullScreen" xml:space="preserve">
-    <value>Set what to do when fullscreen games/applications are running.</value>
+    <value>Stel in wat u wilt doen wanneer games/toepassingen op het volledig scherm worden uitgevoerd. </value>
   </data>
   <data name="TipAppRules" xml:space="preserve">
-    <value>Set different wallpaper playback rules based on running application.</value>
+    <value>Stel verschillende achtergrond afspeelmogelijkheden in gebaseerd op actieve toepassingen. </value>
   </data>
   <data name="TipAppTheme" xml:space="preserve">
-    <value>Lively adapts to system theme settings, to change appearance goto</value>
+    <value>Lively past zich aan op het systeem thema om het uiterlijk te wijzigen.</value>
+  </data>
+  <data name="TipAudioMaster" xml:space="preserve">
+    <value>Volume van alle achtergronden.</value>
   </data>
   <data name="TipBatteryPower" xml:space="preserve">
-    <value>(For battery operated systems only) Change playback when AC power is disconnected.</value>
+    <value>(Alleen voor systeem op accu) Wijzig de weergave zodra de voeding is losgekoppeld.</value>
   </data>
   <data name="TipBrowserDebuggingPort" xml:space="preserve">
-    <value>Enter the port for debugging webpage wallpapers, browser restart is required for changes to take effect.
-When ready navigate to http://localhost:portnumber to access developer console.</value>
+    <value>Voer een poort in voor het debuggen van webpagina achtergronden, de veranderingen vinden laats nadat de browser opnieuw gestart is. Bezoek http://localhost:poortnummer om de ontwikkelaarsconsole te openen. </value>
   </data>
   <data name="TipDisplayPauseRule" xml:space="preserve">
-    <value>Per: Pause wallpaper only on the screen in which application is focused/fullscreen.
-All: Pause wallpaper on all screen(s) if any application is focused/fullscreen.</value>
+    <value>Per: Achtergrond alleen pauzeren op het scherm waar de toepassing de focus heeft/volledig scherm weergeeft. Alle: Achtergrond pauzeren op alle schermen waar de toepassing de focus heeft/volledig scherm weergeeft.</value>
   </data>
   <data name="TipHideSysTray" xml:space="preserve">
-    <value>System-tray icon visibility, lively will continue to run with the icon hidden.</value>
+    <value>Systeembalk iconen, Lively blijft draaien met het icoon verborgen.</value>
   </data>
   <data name="TipLanguage" xml:space="preserve">
-    <value>Lively will restart to apply the new language.</value>
+    <value>Lively zal herstart moeten worden om de nieuwe taal instellingen toe te passen.</value>
   </data>
   <data name="TipLivelySetupOnClose" xml:space="preserve">
-    <value>Finish the setup to continue.</value>
+    <value>Voltooi de installatie om verder te gaan.</value>
   </data>
   <data name="TipPauseAlgorithm" xml:space="preserve">
-    <value>Foreground: Lightweight, only checks the single process that is in foreground to determine wallpaper playback behaviour.
-All Process: Heavier, Scans all the process to determine playback behaviour.</value>
+    <value>Voorgrond: Lightweight, controleert alleen het proces dat zich op de voorgrond bevindt om afspeelmogelijkheden te bepalen.
+Alle processen: Heavier, Scant alle processen om afspeelmogelijkheden te bepalen.</value>
   </data>
   <data name="TipStreamWallpaperDetect" xml:space="preserve">
-    <value>If supported video stream link is detected use the video player instead of loading the webpage.</value>
+    <value>Als er een ondersteunde videostream link gebruikt wordt, gebruik de videospeler in plaats van de webpagina te laden.</value>
   </data>
   <data name="TipStreamWallpaperVideoQuality" xml:space="preserve">
-    <value>Select the desired video quality for online streams.</value>
+    <value>Selecteer de gewenste videokwaliteit voor online streams.</value>
   </data>
   <data name="TipTileSize" xml:space="preserve">
-    <value>Size of the wallpaper tiles in Library.</value>
+    <value>Grootte van de achtergrond tegels in de Bibliotheek.</value>
   </data>
   <data name="TipUIMode" xml:space="preserve">
-    <value>For low-end systems select Lite mode.</value>
+    <value>Voor low-end computersystemen selecteer Lite modus.</value>
   </data>
   <data name="TipVideoPlayer" xml:space="preserve">
-    <value>Select the player used for video wallpaper.</value>
+    <value>Selecteer de gewenste speler voor video achtergronden.</value>
   </data>
   <data name="TipWallpaperDir" xml:space="preserve">
-    <value>Path used to store wallpaper files.</value>
+    <value>Het pad dat wordt gebruikt voor achtergrondbestanden.</value>
   </data>
   <data name="TipWallpaperInput" xml:space="preserve">
-    <value>Select ways to interact with wallpaper.</value>
+    <value>Selecteer manieren van interactie voor de achtergrond.</value>
+  </data>
+  <data name="TipWallpaperLayout" xml:space="preserve">
+    <value>Hoe de achtergrond wordt toegepast op de aangesloten schermen.</value>
   </data>
   <data name="TipWallpaperPlayback" xml:space="preserve">
-    <value>Pause wallpaper playback when desktop is not focused.</value>
+    <value>Pauzeer het afspelen van de achtergrond zodra het bureaublad geen focus heeft.</value>
   </data>
   <data name="TipWebBrowserDiskCache" xml:space="preserve">
-    <value>Store temporary files on disk instead of memory, settings gets restored when browser is restarted.</value>
+    <value>Tijdelijke bestanden opslaan op schijf in plaats van geheugen, instellingen worden hersteld zodra de browser opnieuw gestart wordt.</value>
   </data>
   <data name="TipWebBrowserEngine" xml:space="preserve">
-    <value>CEF(Chromium Embedded Framework) is a lightweight chromium engine.
-Edge is the built in webview of windows 10.</value>
-  </data>
+    
+  <value>CEF(Chromium Embedded Framework) is een lichtgewicht Chromium programma. Edge is de ingebouwde webweergave voor Windows 10.</value></data>
   <data name="TipWindowsStartup" xml:space="preserve">
-    <value>Lively needs to run in the background for wallpaper playback.</value>
+    <value>Voor achtergrond afspeelmogelijkheden moet Lively in de achtergond blijven draaien.</value>
   </data>
   <data name="TitleAbout" xml:space="preserve">
-    <value>Про програму</value>
+    <value>Over</value>
   </data>
   <data name="TitleAddWallpaper" xml:space="preserve">
-    <value>Додати</value>
+    <value>Achtergrond Toevoegen</value>
   </data>
   <data name="TitleAppFocus" xml:space="preserve">
-    <value>Інший додаток у фокусі</value>
+    <value>Toepassingen Gefocust</value>
   </data>
   <data name="TitleAppFullScreen" xml:space="preserve">
-    <value>Інший додаток на весь екран</value>
+    <value>Toepassingen op volledig scherm</value>
   </data>
   <data name="TitleAppName" xml:space="preserve">
-    <value>Lively Wallpaper</value>
+    <value>Lively Achtergronden</value>
   </data>
   <data name="TitleAppRules" xml:space="preserve">
-    <value>Правила для програм</value>
+    <value>Toepassingsregels</value>
   </data>
   <data name="TitleAppTheme" xml:space="preserve">
-    <value>Theme</value>
+    <value>Thema</value>
   </data>
   <data name="TitleAudio" xml:space="preserve">
     <value>Audio</value>
   </data>
+  <data name="TitleAudioMaster" xml:space="preserve">
+    <value>Master Volume</value>
+  </data>
   <data name="TitleAudioPlayOnScreen" xml:space="preserve">
-    <value>Play audio on screen</value>
+    <value>Speel audio af op scherm</value>
   </data>
   <data name="TitleBatteryPower" xml:space="preserve">
-    <value>Коли працює від акумулятора</value>
+    <value>Op batterijvoeding</value>
   </data>
   <data name="TitleBrowseFile" xml:space="preserve">
-    <value>Browse for video, gif, webpage... file to set as wallpaper</value>
+    <value>Blader naar video, gif, webpagina... bestand om als achtergrond in te stellen</value>
   </data>
   <data name="TitleBrowserDebuggingPort" xml:space="preserve">
-    <value>Debugging Port</value>
+    <value>Debugging Poort</value>
   </data>
-  <data name="TitleDeleteConfirmation" xml:space="preserve">
-    <value>Підтвердіть видалення</value>
-  </data>
-  <data name="TitleDisplayPauseRule" xml:space="preserve">
-    <value>Правило зупинки екрану</value>
-  </data>
-  <data name="TitleEnterUrl" xml:space="preserve">
-    <value>Enter URL</value>
-  </data>
-  <data name="TitleGeneral" xml:space="preserve">
-    <value>Основні</value>
-  </data>
-  <data name="TitleHelp" xml:space="preserve">
-    <value>Допомога</value>
-  </data>
-  <data name="TitleHideSysTray" xml:space="preserve">
-    <value>System-tray Icon</value>
-  </data>
-  <data name="TitleInteraction" xml:space="preserve">
-    <value>Взаємодія</value>
-  </data>
-  <data name="TitleLanguage" xml:space="preserve">
-    <value>Потребує перезапуску програми</value>
-  </data>
-  <data name="TitleLibrary" xml:space="preserve">
-    <value>Бібліотека</value>
-  </data>
-  <data name="TitleLivelySetup" xml:space="preserve">
-    <value>Lively Setup</value>
-  </data>
-  <data name="TitleMisc" xml:space="preserve">
-    <value>Miscellaneous</value>
-  </data>
-  <data name="TitleMute" xml:space="preserve">
-    <value>Mute</value>
-  </data>
-  <data name="TitlePauseAlgo" xml:space="preserve">
-    <value>Алгоритм зупинки</value>
-  </data>
-  <data name="TitlePerformance" xml:space="preserve">
-    <value>Продуктивність</value>
-  </data>
-  <data name="TitlePlaylist" xml:space="preserve">
-    <value>Playlist</value>
-  </data>
-  <data name="TitlePleaseWait" xml:space="preserve">
-    <value>Будь ласка, зачекайте</value>
-  </data>
-  <data name="TitleScalingFit" xml:space="preserve">
-    <value>Scaling/Fit</value>
-  </data>
-  <data name="TitleScreenLayout" xml:space="preserve">
-    <value>Screen Layout</value>
-  </data>
-  <data name="TitleSelectFile" xml:space="preserve">
-    <value>Select File</value>
-  </data>
-  <data name="TitleSettings" xml:space="preserve">
-    <value>Налаштування</value>
-  </data>
-  <data name="TitleStreamWallpaper" xml:space="preserve">
-    <value>Стрім</value>
-  </data>
-  <data name="TitleStreamWallpaperDetect" xml:space="preserve">
-    <value>Detect Streams</value>
-  </data>
-  <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
-    <value>Якість відео</value>
-  </data>
-  <data name="TitleTileSize" xml:space="preserve">
-    <value>Tile Size</value>
-  </data>
-  <data name="TitleUIMode" xml:space="preserve">
-    <value>User Interface</value>
-  </data>
-  <data name="TitleVideo" xml:space="preserve">
-    <value>Відео</value>
-  </data>
-  <data name="TitleWallpaper" xml:space="preserve">
-    <value>Wallpaper</value>
-  </data>
-  <data name="TitleWallpaperDir" xml:space="preserve">
-    <value>Wallpaper Directory</value>
-  </data>
-  <data name="TitleWallpaperInput" xml:space="preserve">
-    <value>Wallpaper Input</value>
-  </data>
-  <data name="TitleWallpaperLayout" xml:space="preserve">
-    <value>Виберіть макет шпалер</value>
-  </data>
-  <data name="TitleWallpaperPlayback" xml:space="preserve">
-    <value>Відтворення шпалер</value>
-  </data>
-  <data name="TitleWarning" xml:space="preserve">
-    <value>Увага</value>
-  </data>
-  <data name="TitleWebBrowser" xml:space="preserve">
-    <value>Веб браузер:</value>
-  </data>
-  <data name="TitleWebBrowserDiskCache" xml:space="preserve">
-    <value>Disk cache</value>
-  </data>
-  <data name="TitleWebBrowserEngine" xml:space="preserve">
-    <value>Engine</value>
-  </data>
-  <data name="TitleWebpageLoad" xml:space="preserve">
-    <value>Завантажити сторінку</value>
-  </data>
-  <data name="TitleWindowsStartup" xml:space="preserve">
-    <value>Запускати разом з Windows</value>
-  </data>
-  <data name="DescriptionPleaseRestartLively" xml:space="preserve">
-    <value>Please restart Lively for settings to take effect.</value>
-  </data>
-  <data name="TextSupport" xml:space="preserve">
-    <value>Support</value>
-  </data>
-  <data name="TextClose" xml:space="preserve">
-    <value>Close</value>
-  </data> 
-  <data name="TextCustomise" xml:space="preserve">
-    <value>Customise</value>
-  </data>     
-  <data name="DescriptionScreenLayout" xml:space="preserve">
-    <value>Choose Display</value>
-  </data>    
-  <data name="TextWallpaperLayoutPerScreen" xml:space="preserve">
-    <value>Selected screen only</value>
-  </data>  
-  <data name="TipWallpaperLayout" xml:space="preserve">
-    <value>How wallpaper is applied to connected display devices.</value>
-  </data> 
-  <data name="TitleWallpaperDirMoveExisting" xml:space="preserve">
-    <value>Move existing wallpapers to new folder</value>
-  </data>   
-  <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
-    <value>Media playback failed :(
-Try changing the videoplayer in lively settings.
-
-In order to better understand this error and fix the issue, share the log file with the developer.
-Instructions for sharing log file:
-https://github.com/rocksdanister/lively/wiki</value>
-  </data> 
-  <data name="TextOff" xml:space="preserve">
-    <value>OFF</value>
-  </data>
-  <data name="TextOn" xml:space="preserve">
-    <value>ON</value>
-  </data>   
-  <data name="TextMouse" xml:space="preserve">
-    <value>Mouse</value>
-  </data>  
-  <data name="TextKeyboard" xml:space="preserve">
-    <value>Keyboard</value>
-  </data>  
-  <data name="TitleDocumentation" xml:space="preserve">
-    <value>Documentation</value>
-  </data> 
   <data name="TitleCommunity" xml:space="preserve">
     <value>Community</value>
   </data>
-    <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
-    <value>Are you sure you want to delete this wallpaper from the Library?</value>
+  <data name="TitleDeleteConfirmation" xml:space="preserve">
+    <value>Bevestig verwijdering</value>
   </data>
-    <data name="TipAudioMaster" xml:space="preserve">
-    <value>Volume level of all wallpapers.</value>
+  <data name="TitleDisplayPauseRule" xml:space="preserve">
+    <value>Geef pauzeregels weer</value>
   </data>
-    <data name="TitleAudioMaster" xml:space="preserve">
-    <value>Master Volume</value>
+  <data name="TitleDocumentation" xml:space="preserve">
+    <value>Documentatie</value>
+  </data>
+  <data name="TitleEnterUrl" xml:space="preserve">
+    <value>URL toevoegen</value>
+  </data>
+  <data name="TitleGeneral" xml:space="preserve">
+    <value>Algemeen</value>
+  </data>
+  <data name="TitleHelp" xml:space="preserve">
+    <value>Hulp</value>
+  </data>
+  <data name="TitleHideSysTray" xml:space="preserve">
+    <value>Systeemvak icoon</value>
+  </data>
+  <data name="TitleInteraction" xml:space="preserve">
+    <value>Interactie</value>
+  </data>
+  <data name="TitleLanguage" xml:space="preserve">
+    <value>Taal</value>
+  </data>
+  <data name="TitleLibrary" xml:space="preserve">
+    <value>Bibliotheek</value>
+  </data>
+  <data name="TitleLivelySetup" xml:space="preserve">
+    <value>Lively Installatie</value>
+  </data>
+  <data name="TitleMisc" xml:space="preserve">
+    <value>Diversen</value>
+  </data>
+  <data name="TitleMute" xml:space="preserve">
+    <value>Onderdrukken</value>
+  </data>
+  <data name="TitlePauseAlgo" xml:space="preserve">
+    <value>Algoritme onderbreken</value>
+  </data>
+  <data name="TitlePerformance" xml:space="preserve">
+    <value>Prestatie</value>
+  </data>
+  <data name="TitlePlaylist" xml:space="preserve">
+    <value>Afspeellijst</value>
+  </data>
+  <data name="TitlePleaseWait" xml:space="preserve">
+    <value>Ogenblik geduld aub</value>
+  </data>
+  <data name="TitleScalingFit" xml:space="preserve">
+    <value>Schalen/Aanpassen</value>
+  </data>
+  <data name="TitleScreenLayout" xml:space="preserve">
+    <value>Controlepaneel</value>
+  </data>
+  <data name="TitleSelectFile" xml:space="preserve">
+    <value>Selecteer Bestand</value>
+  </data>
+  <data name="TitleSettings" xml:space="preserve">
+    <value>Eigenschappen</value>
+  </data>
+  <data name="TitleStreamWallpaper" xml:space="preserve">
+    <value>Stream</value>
+  </data>
+  <data name="TitleStreamWallpaperDetect" xml:space="preserve">
+    <value>Detecteer Streams</value>
+  </data>
+  <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
+    <value>Video kwaliteit</value>
+  </data>
+  <data name="TitleTileSize" xml:space="preserve">
+    <value>Tegelgrootte</value>
+  </data>
+  <data name="TitleUIMode" xml:space="preserve">
+    <value>Gebruikersomgeving</value>
+  </data>
+  <data name="TitleVideo" xml:space="preserve">
+    <value>Video</value>
+  </data>
+  <data name="TitleWallpaper" xml:space="preserve">
+    <value>Achtergrond</value>
+  </data>
+  <data name="TitleWallpaperDir" xml:space="preserve">
+    <value>Achtergrond folder</value>
+  </data>
+  <data name="TitleWallpaperDirMoveExisting" xml:space="preserve">
+    <value>Verplaats bestaande achtergronden naar een nieuwe folder</value>
+  </data>
+  <data name="TitleWallpaperInput" xml:space="preserve">
+    <value>Achtergrond invoer</value>
+  </data>
+  <data name="TitleWallpaperLayout" xml:space="preserve">
+    <value>Plaatsingsmethode</value>
+  </data>
+  <data name="TitleWallpaperPlayback" xml:space="preserve">
+    <value>Achtergrond afspeelmogelijkheden</value>
+  </data>
+  <data name="TitleWarning" xml:space="preserve">
+    <value>Waarschuwing</value>
+  </data>
+  <data name="TitleWebBrowser" xml:space="preserve">
+    <value>Web Browser</value>
+  </data>
+  <data name="TitleWebBrowserDiskCache" xml:space="preserve">
+    <value>Schijfcache</value>
+  </data>
+  <data name="TitleWebBrowserEngine" xml:space="preserve">
+    <value>Programma</value>
+  </data>
+  <data name="TitleWebpageLoad" xml:space="preserve">
+    <value>Laad webpagina</value>
+  </data>
+  <data name="TitleWindowsStartup" xml:space="preserve">
+    <value>Met Windows opstarten</value>
   </data>
     <data name="TextWallpaperFitFill" xml:space="preserve">
     <value>Fill</value>
@@ -681,5 +671,5 @@ https://github.com/rocksdanister/lively/wiki</value>
   </data>
     <data name="TitleWallpaperFit" xml:space="preserve">
     <value>Choose a fit</value>
-  </data>    
+  </data>
 </root>

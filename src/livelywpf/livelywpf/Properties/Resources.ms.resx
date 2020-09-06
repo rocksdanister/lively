@@ -117,7 +117,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DescriptionAddWallpaper" xml:space="preserve">
-    <value>Pilih fail atau tentukan laman sesawang URL untuk dijadikan wallpaper.</value>
+    <value>Pilih fail atau tentukan laman sesawang URL sebagai wallpaper.</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
     <value>Tingkah laku main semula wallpaper berdasarkan aplikasi yang sedang berjalan.</value>
@@ -126,10 +126,10 @@
     <value>Adakah anda pasti anda mahu batalkan?</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
-    <value>Adakah anda pasti anda mahu memadamkan wallpaper secara tetap daripada simpanan ?</value>
+    <value>Adakah anda pasti anda mahu memadamkan wallpaper secara tetap daripada simpanan?</value>
   </data>
   <data name="DescriptionDragDropFIle" xml:space="preserve">
-    <value>Seret dan lepaskan ke dalam pustaka.</value>
+    <value>Seret dan lepaskan fail ke dalam pustaka.</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
     <value>Anda sedang membuka sebuah aplikasi sebagai wallpaper.
@@ -137,13 +137,13 @@ Aplikasi sebegini mungkin mempunyai virus yang mampu merosakkan sistem anda.
 Hanya teruskan jika aplikasi ini berasal daripada sumber yang dipercayai.</value>
   </data>
   <data name="DescriptionMinimizedTray" xml:space="preserve">
-    <value>Lively diminimumkan ke dulang sistem, klik kanan ikon Lively untuk teruskan.</value>
+    <value>Lively diminimumkan ke dalam dulang sistem. Klik kanan ikon Lively untuk teruskan.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
-    <value>Sila mulakan semula Lively untuk mengemaskini konfigurasi.</value>
+    <value>Mulakan semula Lively untuk mengemaskini konfigurasi.</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
-    <value>Tekan untuk mula merakam.</value>
+    <value>Tekan untuk mulakan rakaman.</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
     <value>Mengembalikan wallpaper terdahulu, sila tunggu...</value>
@@ -155,7 +155,7 @@ Hanya teruskan jika aplikasi ini berasal daripada sumber yang dipercayai.</value
     <value>Perisian versi terbaharu sedia untuk dimuat turun!</value>
   </data>
   <data name="DescriptionWebpageLoad" xml:space="preserve">
-    <value>Masukkan pautan laman sesawang untuk dimuatkan, pautan shader shadertoy.com disokong.</value>
+    <value>Masukkan pautan laman sesawang untuk dimuatkan. Pautan shader shadertoy.com disokong.</value>
   </data>
   <data name="DescriptionWelcomeWizard" xml:space="preserve">
     <value>Wizard ini akan membantu anda mengesetkan Lively.</value>
@@ -165,11 +165,11 @@ Hanya teruskan jika aplikasi ini berasal daripada sumber yang dipercayai.</value
 https://github.com/rocksdanister/lively/releases</value>
   </data>
   <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
-    <value>Fail wallpaper rosak, muat turun wallpaper semula.</value>
+    <value>Fail wallpaper rosak, muat turun semula wallpaper.</value>
   </data>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
     <value>Ralat dikesan semasa proses sedang berjalan.
-Untuk memahami ralat ini secara lebih baik dan menyelesaikan isu,  kongsikan fail log dengan pengarang.
+Untuk memahami ralat ini secara lebih baik dan menyelesaikan isu, kongsikan fail log dengan pengarang.
 Panduan kongsi:
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
@@ -179,9 +179,9 @@ Nyahaktifkan mod Kontras Tinggi dan cuba semula.</value>
   </data>
   <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
     <value>Gagal memainkan media.
-Sila ubah pemain video di konfigurasi Lively.
+Sila ubah pemain video di seting Lively.
 
-Untuk memahami ralat ini secara lebih baik dan menyelesaikan isu, kongsikan fail log dengan pengarang.
+Untuk memahami ralat ini secara lebih baik dan selesaikan isu, kongsikan fail log dengan pengarang.
 Panduan kongsi:
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
@@ -189,7 +189,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Fail bukan fail wallpaper Lively.</value>
   </data>
   <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
-    <value>Lively tidak ditamatkan secara teratur, memulakan aplikasi dalam modus selamat. Adakah anda mahu mengembalikan wallpaper yang sebelumnya?</value>
+    <value>Lively tidak ditamatkan secara teratur, memulakan aplikasi dalam mod selamat. Adakah anda mahu mengembalikan wallpaper yang sebelumnya?</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
     <value>Panduan bagi memulakan Lively secara teratur:  
@@ -200,9 +200,9 @@ https://github.com/rocksdanister/lively/wiki</value>
 5. Dibawah tab Performance pilih Settings
 6. Aktifkan "Animate controls and elements inside Windows" dan klik Apply.
 
-Jika Windows 7 setkan - "Adjust for best appearance" dan klik Apply.
-Jika masih tidak berkesan, mulakan semulat Lively/Windows.
-(Tidak berfungsi untuk sebilangan binaan Windows 10 Insider)</value>
+Bagi Windows 7 setkan - "Adjust for best appearance" dan klik Apply.
+Jika masih tidak berkesan, mulakan semula Lively/Windows.
+(Tidak berfungsi untuk sebahagian binaan Windows 10 Insider)</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
     <value>Tambah</value>
@@ -274,13 +274,13 @@ Jika masih tidak berkesan, mulakan semulat Lively/Windows.
     <value>Pasang</value>
   </data>
   <data name="TextKeyboard" xml:space="preserve">
-    <value>Papan kekunci</value>
+    <value>Papan Kekunci</value>
   </data>
   <data name="TextmoreInfo" xml:space="preserve">
     <value>Maklumat</value>
   </data>
   <data name="TextMoreWallpapers" xml:space="preserve">
-    <value>Lanjutan Wallpaper</value>
+    <value>Klik Untuk Lebih Pilihan Wallpaper</value>
   </data>
   <data name="TextMouse" xml:space="preserve">
     <value>Tetikus</value>
@@ -313,7 +313,7 @@ Jika masih tidak berkesan, mulakan semulat Lively/Windows.
     <value>Proses Latar Depan</value>
   </data>
   <data name="TextPauseWallpapers" xml:space="preserve">
-    <value>Jeda Wallpaper</value>
+    <value>Henti Seketika Wallpaper</value>
   </data>
   <data name="TextPerformanceKill" xml:space="preserve">
     <value>Tamat</value>
@@ -322,7 +322,7 @@ Jika masih tidak berkesan, mulakan semulat Lively/Windows.
     <value>Tiada</value>
   </data>
   <data name="TextPerformancePause" xml:space="preserve">
-    <value>Jeda</value>
+    <value>Henti Seketika</value>
   </data>
   <data name="TextRemove" xml:space="preserve">
     <value>Buang</value>
@@ -361,7 +361,7 @@ Jika masih tidak berkesan, mulakan semulat Lively/Windows.
     <value>Besar</value>
   </data>
   <data name="TextTileSizeNormal" xml:space="preserve">
-    <value>Normal</value>
+    <value>Biasa</value>
   </data>
   <data name="TextTileSizeSmall" xml:space="preserve">
     <value>Kecil</value>
@@ -373,7 +373,7 @@ Jika masih tidak berkesan, mulakan semulat Lively/Windows.
     <value>Lite</value>
   </data>
   <data name="TextUINormal" xml:space="preserve">
-    <value>Normal</value>
+    <value>Biasa</value>
   </data>
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>Kemaskini terkini sedia ada!</value>
@@ -421,13 +421,13 @@ Jika masih tidak berkesan, mulakan semulat Lively/Windows.
     <value>Pemain Video</value>
   </data>
   <data name="TipAddWallpaperFileBrowse" xml:space="preserve">
-    <value>Setkan semua jenis fail yang disokong sebagai wallpaper.</value>
+    <value>Setkan fail (semua jenis yang disokong) sebagai wallpaper.</value>
   </data>
   <data name="TipAddWallpaperURL" xml:space="preserve">
-    <value>Setkan laman web dipunyai URL yang dimasukkan sebagai wallpaper.</value>
+    <value>Setkan halaman web (berdasarkan URL) sebagai wallpaper.</value>
   </data>
   <data name="TipAppFocus" xml:space="preserve">
-    <value>Setkan tindakan jika sebarang aplikasi di dalam fokus.</value>
+    <value>Setkan tindakan jika apa-apa aplikasi berada di dalam fokus.</value>
   </data>
   <data name="TipAppFullScreen" xml:space="preserve">
     <value>Setkan tindakan jika permainan/aplikasi berskrin penuh sedang berjalan.</value>
@@ -436,71 +436,71 @@ Jika masih tidak berkesan, mulakan semulat Lively/Windows.
     <value>Setkan peraturan bagi main semula wallpaper berdasarkan aplikasi yang sedang berjalan</value>
   </data>
   <data name="TipAppTheme" xml:space="preserve">
-    <value>Lively menurut seting bagi tema sistem, untuk mengubah penampilan pergi ke</value>
+    <value>Lively menurut seting bagi tema sistem. Untuk mengubah penampilan pergi ke</value>
   </data>
   <data name="TipBatteryPower" xml:space="preserve">
-    <value>(Sistem berkuasa bateri sahaja) Ubah main semula  jika kuasa AC terputus.</value>
+    <value>(Sistem berkuasa bateri sahaja) Ubah main semula jika kuasa AC terputus.</value>
   </data>
   <data name="TipBrowserDebuggingPort" xml:space="preserve">
-    <value>Masukkan port untuk nyahpepijat wallpaper laman web, browser mesti dimulakan semula untuk menguatkuasakan seting baharu.
+    <value>Masukkan port untuk nyahpepijat wallpaper laman web. Pelayar web mesti dimulakan semula untuk menguatkuasakan seting baharu.
 Jika bersedia layari http://localhost:portnumber untuk mengakses konsol developer.</value>
   </data>
   <data name="TipDisplayPauseRule" xml:space="preserve">
-    <value>Per: Jeda wallpaper hanya untuk skrin di mana aplikasi berada di dalam fokus/skrin penuh.
-Semua: Jeda wallpaper untuk semua skrin jika apa-apa aplikasi berada di dalam fokus/skrin penuh.</value>
+    <value>Per: Henti seketika wallpaper hanya bagi skrin jika apa-apa aplikasi berada di dalam fokus/skrin penuh.
+Semua: Henti seketika wallpaper bagi semua skrin jika apa-apa aplikasi berada di dalam fokus/skrin penuh.</value>
   </data>
   <data name="TipHideSysTray" xml:space="preserve">
-    <value>Darjah penglihatan ikon dulang sistem, Lively akan berjalan dengan ikon tersembunyi.</value>
+    <value>Visibiliti ikon dulang sistem. Jika dinyahaktifkan, Lively akan berjalan dengan ikon tersembunyi.</value>
   </data>
   <data name="TipLanguage" xml:space="preserve">
-    <value>Lively akan dimulakan semula untuk menggunakan bahasa terbaharu.</value>
+    <value>Lively akan dimulakan semula bagi menggunakan bahasa terbaharu.</value>
   </data>
   <data name="TipLivelySetupOnClose" xml:space="preserve">
     <value>Habiskan setup untuk teruskan.</value>
   </data>
   <data name="TipPauseAlgorithm" xml:space="preserve">
-    <value>Latar depan: Ringkas dan ringan, hanya memeriksa satu proses di latar depan bagi menentukan tingkah laku main semula wallpaper.
-Semua Proses: Lebih berat, mengimbas semua proses bagi menentukan tingkah laku main semula wallpaper.</value>
+    <value>Latar depan: Ringkas dan ringan, hanya memeriksa satu proses di latar depan untuk menentukan tingkah laku main semula wallpaper.
+Semua Proses: Lebih berat, mengimbas semua proses untuk menentukan tingkah laku main semula wallpaper.</value>
   </data>
   <data name="TipStreamWallpaperDetect" xml:space="preserve">
-    <value>Jika link strim video yang disokong telah dikesan, gunakan pemain video, sebaliknya muatkan laman web,</value>
+    <value>Jika link strim video yang disokong terjumpa,gunakan pemain video (sebaliknya muatkan laman web).</value>
   </data>
   <data name="TipStreamWallpaperVideoQuality" xml:space="preserve">
     <value>Setkan kualiti video bagi strim atas talian.</value>
   </data>
   <data name="TipTileSize" xml:space="preserve">
-    <value>Saiz jubin wallpaper di dalam pustaka,</value>
+    <value>Saiz jubin wallpaper di dalam pustaka.</value>
   </data>
   <data name="TipUIMode" xml:space="preserve">
-    <value>Bagi sistem berspesifikasi rendah, aktifkan mod Lite.</value>
+    <value>Aktifkan mod Lite jika sistem anda berspesifikasi rendah.</value>
   </data>
   <data name="TipVideoPlayer" xml:space="preserve">
     <value>Pilih pemain semula bagi wallpaper bersifat video.</value>
   </data>
   <data name="TipWallpaperDir" xml:space="preserve">
-    <value>Laluan digunakan untuk menyimpan fail wallpaper.</value>
+    <value>Direktori yang digunakan untuk menyimpan fail wallpaper.</value>
   </data>
   <data name="TipWallpaperInput" xml:space="preserve">
-    <value>Pilih cara berinteraksi dengan wallpaper.</value>
+    <value>Pilih kaedah interaksi dengan wallpaper.</value>
   </data>
   <data name="TipWallpaperLayout" xml:space="preserve">
     <value>Bagaiman wallpaper disetkan bagi peranti paparan yang terhubung,</value>
   </data>
   <data name="TipWallpaperPlayback" xml:space="preserve">
-    <value>Jeda main semula wallpaper jika Desktop tidak dalam fokus.</value>
+    <value>Henti seketika main semula wallpaper jika desktop tidak berada di dalam fokus.</value>
   </data>
   <data name="TipWebBrowserDiskCache" xml:space="preserve">
-    <value>Simpan fail sementara di dalam storan (sebaliknya memori), seting akan diubah balik jika browser dimulakan semula.</value>
+    <value>Simpan fail sementara di dalam storan (sebaliknya memori). Seting akan diubah balik jika pelayar web dimulakan semula.</value>
   </data>
   <data name="TipWebBrowserEngine" xml:space="preserve">
     <value>CEF (Chromium Embedded Framework) ialah enjin Chromium bersifat ringan.
 Edge ialah Webview sedia ada bagi Windows 10.</value>
   </data>
   <data name="TipWindowsStartup" xml:space="preserve">
-    <value>Lively mesti berjalan di latar belakang untuk memainkan semula wallpaper</value>
+    <value>Lively mesti berjalan di latar belakang untuk memainkan semula wallpaper.</value>
   </data>
   <data name="TitleAbout" xml:space="preserve">
-    <value>Tentang</value>
+    <value>Tentang Lively</value>
   </data>
   <data name="TitleAddWallpaper" xml:space="preserve">
     <value>Tambah Wallpaper</value>
@@ -527,10 +527,10 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
     <value>Main audio atas skrin</value>
   </data>
   <data name="TitleBatteryPower" xml:space="preserve">
-    <value>Semasa berjalan atas kuasa bateri</value>
+    <value>Jika Berfungsi Dengan Kuasa Bateri</value>
   </data>
   <data name="TitleBrowseFile" xml:space="preserve">
-    <value>Cari video, gif, laman web atau fail untuk dijadikan wallpaper</value>
+    <value>Cari video, gif, laman web atau fail untuk dijadikan wallpaper.</value>
   </data>
   <data name="TitleBrowserDebuggingPort" xml:space="preserve">
     <value>Port Nyahpepijat</value>
@@ -539,10 +539,10 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
     <value>Komuniti</value>
   </data>
   <data name="TitleDeleteConfirmation" xml:space="preserve">
-    <value>Sahkan Padaman</value>
+    <value>Sahkan Pemadaman</value>
   </data>
   <data name="TitleDisplayPauseRule" xml:space="preserve">
-    <value>Peraturan Jeda Paparan</value>
+    <value>Protokol Henti Seketika Wallpaper</value>
   </data>
   <data name="TitleDocumentation" xml:space="preserve">
     <value>Dokumentasi</value>
@@ -551,10 +551,10 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
     <value>Masukkan laman sesawang</value>
   </data>
   <data name="TitleGeneral" xml:space="preserve">
-    <value>Umum</value>
+    <value>Am</value>
   </data>
   <data name="TitleHelp" xml:space="preserve">
-    <value>Bantu</value>
+    <value>Bantuan</value>
   </data>
   <data name="TitleHideSysTray" xml:space="preserve">
     <value>Ikon Dulang Sistem</value>
@@ -572,13 +572,13 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
     <value>Setup Lively</value>
   </data>
   <data name="TitleMisc" xml:space="preserve">
-    <value>Lain-lain</value>
+    <value>Pelbagai</value>
   </data>
   <data name="TitleMute" xml:space="preserve">
     <value>Senyap</value>
   </data>
   <data name="TitlePauseAlgo" xml:space="preserve">
-    <value>Algoritma Jeda</value>
+    <value>Algoritma Henti Seketika</value>
   </data>
   <data name="TitlePerformance" xml:space="preserve">
     <value>Prestasi</value>
@@ -635,13 +635,13 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
     <value>Kaedah Penyusunan</value>
   </data>
   <data name="TitleWallpaperPlayback" xml:space="preserve">
-    <value>Pemainan Semula Wallpaper</value>
+    <value>Main Semula Wallpaper</value>
   </data>
   <data name="TitleWarning" xml:space="preserve">
     <value>Amaran</value>
   </data>
   <data name="TitleWebBrowser" xml:space="preserve">
-    <value>Pelayar web</value>
+    <value>Pelayar Web</value>
   </data>
   <data name="TitleWebBrowserDiskCache" xml:space="preserve">
     <value>Cache simpanan</value>
@@ -655,13 +655,31 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
   <data name="TitleWindowsStartup" xml:space="preserve">
     <value>Mula dengan Windows</value>
   </data>
-    <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
-    <value>Are you sure you want to delete this wallpaper from the Library?</value>
+  <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
+    <value>Adakah anda mahu memadamkan wallpaper ini daripada pustaka?</value>
   </data>
-    <data name="TipAudioMaster" xml:space="preserve">
-    <value>Volume level of all wallpapers.</value>
+  <data name="TipAudioMaster" xml:space="preserve">
+    <value>Darjah kekuatan bunyi bagi semua wallpaper.</value>
   </data>
-    <data name="TitleAudioMaster" xml:space="preserve">
-    <value>Master Volume</value>
+  <data name="TitleAudioMaster" xml:space="preserve">
+    <value>Kekuataan Bunyi (Utama)</value>
+  </data>
+    <data name="TextWallpaperFitFill" xml:space="preserve">
+    <value>Fill</value>
+  </data>
+  <data name="TextWallpaperFitNone" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="TextWallpaperFitUniform" xml:space="preserve">
+    <value>Uniform</value>
+  </data>
+  <data name="TextWallpaperFitUniformToFill" xml:space="preserve">
+    <value>Uniform Fill</value>
+  </data>
+    <data name="TipWallpaperFit" xml:space="preserve">
+    <value>Wallpaper scaling algorithm.</value>
+  </data>
+    <data name="TitleWallpaperFit" xml:space="preserve">
+    <value>Choose a fit</value>
   </data>
 </root>

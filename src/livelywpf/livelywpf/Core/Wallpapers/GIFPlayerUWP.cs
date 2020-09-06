@@ -8,9 +8,9 @@ namespace livelywpf.Core
 {
     public class GIFPlayerUWP : IWallpaper
     {
-        public GIFPlayerUWP(string filePath, LibraryModel model, LivelyScreen display)
+        public GIFPlayerUWP(string filePath, LibraryModel model, LivelyScreen display, WallpaperScaler scaler = WallpaperScaler.fill)
         {
-            Player = new GIFViewUWP(filePath);
+            Player = new GIFViewUWP(filePath, scaler);
             this.Model = model;
             this.Display = display;
         }
@@ -112,7 +112,7 @@ namespace livelywpf.Core
 
         public void Resume()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public void SetVolume(int volume)

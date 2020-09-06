@@ -663,5 +663,23 @@ https://github.com/rocksdanister/lively/wiki</value>
   </data>
     <data name="TitleAudioMaster" xml:space="preserve">
     <value>Master Volume</value>
-  </data>    
+  </data> 
+    <data name="TextWallpaperFitFill" xml:space="preserve">
+    <value>Fill</value>
+  </data>
+  <data name="TextWallpaperFitNone" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="TextWallpaperFitUniform" xml:space="preserve">
+    <value>Uniform</value>
+  </data>
+  <data name="TextWallpaperFitUniformToFill" xml:space="preserve">
+    <value>Uniform Fill</value>
+  </data>
+    <data name="TipWallpaperFit" xml:space="preserve">
+    <value>Wallpaper scaling algorithm.</value>
+  </data>
+    <data name="TitleWallpaperFit" xml:space="preserve">
+    <value>Choose a fit</value>
+  </data>   
 </root>

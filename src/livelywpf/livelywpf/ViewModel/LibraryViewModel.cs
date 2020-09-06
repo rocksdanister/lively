@@ -15,6 +15,7 @@ using System.Windows.Input;
 using livelywpf.Core;
 using System.Windows;
 using System.Runtime.CompilerServices;
+using System.Threading;
 //using System.Windows.Forms;
 
 namespace livelywpf
@@ -92,21 +93,25 @@ namespace livelywpf
                     {
                         if (item.GetWallpaperData() == value)
                         {
-                            if (Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span
-                            || Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.duplicate)
+                            if (Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span)
                             {
                                 found = true;
                                 break;
                             }
-                            else
+                            else if(Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.per)
                             {
                                 if (ScreenHelper.ScreenCompare(item.GetScreen(), 
-                                Program.SettingsVM.Settings.SelectedDisplay,
-                                DisplayIdentificationMode.screenLayout))
+                                        Program.SettingsVM.Settings.SelectedDisplay,
+                                        DisplayIdentificationMode.screenLayout))
                                 {
                                     found = true;
                                     break;
                                 }
+                            }
+                            else if(Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.duplicate)
+                            {
+                                found = true;
+                                break;
                             }
                         }
                     }
@@ -149,29 +154,12 @@ namespace livelywpf
                 MessageBox.Show("File Not Found!", Properties.Resources.TextError);
                 return false;
             }
-
             if (targetDisplay == null)
                 SetupDesktop.SetWallpaper(selection, Program.SettingsVM.Settings.SelectedDisplay);
-            else if (ScreenHelper.ScreenExists(targetDisplay, DisplayIdentificationMode.screenLayout))
-                SetupDesktop.SetWallpaper(selection, targetDisplay);
             else
-                return false;
-
+                SetupDesktop.SetWallpaper(selection, targetDisplay);
             return true;
         }
-
-        /*
-        public void WallpaperSendMsg(object obj, string message)
-        {
-            var selection = (LibraryModel)obj;
-            //currently enabled for these types only.
-            if (selection.LivelyInfo.Type == WallpaperType.web 
-            || selection.LivelyInfo.Type == WallpaperType.webaudio)
-            {
-                SetupDesktop.SendMessageWallpaper(selection, message);
-            }
-        }
-        */
 
         public void WallpaperShowOnDisk(object obj)
         {
@@ -318,27 +306,30 @@ namespace livelywpf
             }
         }
 
+        static readonly SemaphoreSlim semaphoreSlimInstallLock = new SemaphoreSlim(1, 1);
         public async void WallpaperInstall(string livelyZipPath)
         {
-            var installDir = Path.Combine(Program.WallpaperDir, "wallpapers", Path.GetRandomFileName());
-            await Task.Run(() =>
+            await semaphoreSlimInstallLock.WaitAsync();
+            string installDir = null;
+            try
+            {
+                installDir = Path.Combine(Program.WallpaperDir, "wallpapers", Path.GetRandomFileName());
+                await Task.Run(() => ZipExtract.ZipExtractFile(livelyZipPath, installDir, true));
+                AddWallpaper(installDir);
+            }
+            catch (Exception e)
             {
                 try
                 {
-                    ZipExtract.ZipExtractFile(livelyZipPath, installDir, true);
+                    Directory.Delete(installDir, true);
                 }
-                catch (Exception e)
-                {
-                    Logger.Error(e.ToString());
-                    try
-                    {
-                        Directory.Delete(installDir, true);
-                    }
-                    catch { }
-                }
-            });
-
-            AddWallpaper(installDir);
+                catch { }
+                Logger.Error(e.ToString());
+            }
+            finally
+            {
+                semaphoreSlimInstallLock.Release();
+            }
         }
 
         public void WallpaperVideoConvert(object obj)
@@ -599,9 +590,8 @@ namespace livelywpf
             bool found = false;
             foreach (var item in SetupDesktop.Wallpapers)
             {
-                if (ScreenHelper.ScreenCompare(item.GetScreen(), Program.SettingsVM.Settings.SelectedDisplay, DisplayIdentificationMode.screenLayout)
-                || Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span
-                || Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.duplicate)
+                if (ScreenHelper.ScreenCompare(item.GetScreen(), Program.SettingsVM.Settings.SelectedDisplay, DisplayIdentificationMode.screenLayout) ||
+                    Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span)
                 {
                     System.Windows.Application.Current.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background,
                         new System.Threading.ThreadStart(delegate
@@ -632,7 +622,8 @@ namespace livelywpf
                 return;
             }
 
-            if(Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span)
+            if(Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span ||
+                Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.duplicate)
             {
                 if(wallpaperLayout.Count != 0)
                 {

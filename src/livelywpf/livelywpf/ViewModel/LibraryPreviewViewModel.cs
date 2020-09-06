@@ -2,10 +2,13 @@
 using livelywpf.Views;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Management;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
@@ -38,6 +41,7 @@ namespace livelywpf
 
                 try
                 {
+                    //wallpaper.GetProcess().Refresh();
                     Title = wallpaper.GetProcess().MainWindowTitle;
                 }
                 catch { }

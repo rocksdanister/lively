@@ -134,4 +134,15 @@ namespace livelywpf
         libmpvExt
     }
 
+    /// <summary>
+    /// Same as: https://docs.microsoft.com/en-us/dotnet/api/system.windows.media.stretch?view=netcore-3.1
+    /// </summary>
+    public enum WallpaperScaler
+    {
+        none,
+        fill,
+        uniform,
+        uniformFill
+    }
+
 }

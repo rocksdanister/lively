@@ -180,20 +180,21 @@ namespace livelywpf.Core
                 SetupDesktop.Wallpapers.ForEach(x =>
                 {
                     if (x.GetWallpaperType() == WallpaperType.web ||
-                    x.GetWallpaperType() == WallpaperType.webaudio ||
-                    x.GetWallpaperType() == WallpaperType.app ||
-                    x.GetWallpaperType() == WallpaperType.url ||
-                    x.GetWallpaperType() == WallpaperType.bizhawk ||
-                    x.GetWallpaperType() == WallpaperType.unity ||
-                    x.GetWallpaperType() == WallpaperType.godot)
+                        x.GetWallpaperType() == WallpaperType.webaudio ||
+                        x.GetWallpaperType() == WallpaperType.app ||
+                        x.GetWallpaperType() == WallpaperType.url ||
+                        x.GetWallpaperType() == WallpaperType.bizhawk ||
+                        x.GetWallpaperType() == WallpaperType.unity ||
+                        x.GetWallpaperType() == WallpaperType.godot)
                     {
-                        if (ScreenHelper.ScreenCompare(display, x.GetScreen(), DisplayIdentificationMode.screenLayout))
+                        if (ScreenHelper.ScreenCompare(display, x.GetScreen(), DisplayIdentificationMode.screenLayout) ||
+                                Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span)
                         {
                             //The low-order word specifies the x-coordinate of the cursor, the high-order word specifies the y-coordinate of the cursor.
                             //ref: https://docs.microsoft.com/en-us/windows/win32/inputdev/wm-mousemove
-                            UInt32 lParam = (uint)mouse.Y;
+                            uint lParam = Convert.ToUInt32(mouse.Y);
                             lParam <<= 16;
-                            lParam |= (uint)mouse.X;
+                            lParam |= Convert.ToUInt32(mouse.X);
                             NativeMethods.PostMessageW(x.GetHWND(), msg, wParam, (IntPtr)lParam);
                         }
                     }
@@ -201,7 +202,7 @@ namespace livelywpf.Core
             }
             catch (Exception e)
             {
-                Logger.Error(e.ToString());
+                Logger.Error("Input Forwarding Error:" + e.Message);
             }
         }
 

@@ -14,14 +14,14 @@ namespace livelywpf
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
-        public MediaElementWPF(string filePath)
+        public MediaElementWPF(string filePath, WallpaperScaler scaler = WallpaperScaler.fill)
         {
             InitializeComponent();
             this.Loaded += MediaPlayer_Loaded;
 
             mePlayer.LoadedBehavior = MediaState.Manual;
             mePlayer.Source = new Uri(filePath);
-            mePlayer.Stretch = Stretch.Fill;
+            mePlayer.Stretch = (Stretch)scaler;
             //mePlayer.MediaOpened += MePlayer_MediaOpened;
             mePlayer.MediaEnded += MePlayer_MediaEnded;
             mePlayer.MediaFailed += MePlayer_MediaFailed;

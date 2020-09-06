@@ -5,11 +5,13 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Threading;
+using Windows.ApplicationModel.Wallet.System;
 
 namespace livelywpf
 {
@@ -141,7 +143,8 @@ namespace livelywpf
                 if(Program.SettingsVM.Settings.VideoPlayer == LivelyMediaPlayer.libmpv)
                 {
                     wp.ItemStartup = true;
-                    var item = new VideoPlayerMPV(wp.FilePath, wp, targetDisplay);
+                    var item = new VideoPlayerMPV(wp.FilePath, wp, 
+                        targetDisplay, Program.SettingsVM.Settings.WallpaperScaling);
                     item.WindowInitialized += SetupDesktop_WallpaperInitialized;
                     wallpapersPending.Add(item);
                     item.Show();
@@ -149,7 +152,8 @@ namespace livelywpf
                 else if(Program.SettingsVM.Settings.VideoPlayer == LivelyMediaPlayer.libmpvExt)
                 {
                     wp.ItemStartup = true;
-                    var item = new VideoPlayerMPVExt(wp.FilePath, wp, targetDisplay);
+                    var item = new VideoPlayerMPVExt(wp.FilePath, wp, targetDisplay, 
+                        Program.SettingsVM.Settings.WallpaperScaling);
                     item.WindowInitialized += SetupDesktop_WallpaperInitialized;
                     wallpapersPending.Add(item);
                     item.Show();
@@ -172,7 +176,8 @@ namespace livelywpf
                 }
                 else if(Program.SettingsVM.Settings.VideoPlayer == LivelyMediaPlayer.wmf)
                 {
-                    var item = new VideoPlayerWPF(wp.FilePath, wp, targetDisplay);
+                    var item = new VideoPlayerWPF(wp.FilePath, wp, 
+                        targetDisplay, Program.SettingsVM.Settings.WallpaperScaling);
                     item.WindowInitialized += SetupDesktop_WallpaperInitialized;
                     wallpapersPending.Add(item);
                     item.Show();
@@ -183,7 +188,8 @@ namespace livelywpf
                 if(Program.SettingsVM.Settings.StreamVideoPlayer == LivelyMediaPlayer.libmpvExt)
                 {
                     wp.ItemStartup = true;
-                    var item = new VideoPlayerMPVExt(wp.FilePath, wp, targetDisplay, Program.SettingsVM.Settings.StreamQuality);
+                    var item = new VideoPlayerMPVExt(wp.FilePath, wp, targetDisplay, 
+                        Program.SettingsVM.Settings.WallpaperScaling, Program.SettingsVM.Settings.StreamQuality);
                     item.WindowInitialized += SetupDesktop_WallpaperInitialized;
                     wallpapersPending.Add(item);
                     item.Show();
@@ -199,18 +205,18 @@ namespace livelywpf
             }
             else if(wp.LivelyInfo.Type == WallpaperType.gif)
             {
-                var item = new GIFPlayerUWP(wp.FilePath, wp, targetDisplay);
+                var item = new GIFPlayerUWP(wp.FilePath, wp, 
+                    targetDisplay, Program.SettingsVM.Settings.WallpaperScaling);
                 item.WindowInitialized += SetupDesktop_WallpaperInitialized;
                 wallpapersPending.Add(item);
                 item.Show();
             }
         }
 
-        static SemaphoreSlim semaphoreSlim = new SemaphoreSlim(1, 1);
-
+        static readonly SemaphoreSlim semaphoreSlimWallpaperInitLock = new SemaphoreSlim(1, 1);
         private static async void SetupDesktop_WallpaperInitialized(object sender, WindowInitializedArgs e)
         {
-            await semaphoreSlim.WaitAsync();
+            await semaphoreSlimWallpaperInitLock.WaitAsync();
             try
             {
                 var wallpaper = (IWallpaper)sender;
@@ -248,8 +254,7 @@ namespace livelywpf
                         }
 
                         await ShowPreviewDialogSTAThread(wallpaper);
-                        if (!File.Exists(
-                        Path.Combine(wallpaper.GetWallpaperData().LivelyInfoFolderPath, "LivelyInfo.json")))
+                        if (!File.Exists(Path.Combine(wallpaper.GetWallpaperData().LivelyInfoFolderPath, "LivelyInfo.json")))
                         {
                             //user cancelled/fail!
                             wallpaper.Close();
@@ -270,21 +275,29 @@ namespace livelywpf
                         return; //exit
                     }
 
-                    switch (Program.SettingsVM.Settings.WallpaperArrangement)
+                    if(!ScreenHelper.IsMultiScreen())
                     {
-                        case WallpaperArrangement.per:
-                            CloseWallpaper(wallpaper.GetScreen(), false);
-                            //CloseaWallpaperAfterDelay(wallpaper.GetScreen(), 500);
-                            SetWallpaperPerScreen(wallpaper.GetHWND(), wallpaper.GetScreen());
-                            break;
-                        case WallpaperArrangement.span:
-                            CloseAllWallpapers(false);
-                            SetWallpaperSpanScreen(wallpaper.GetHWND());
-                            break;
-                        case WallpaperArrangement.duplicate:
-                            CloseAllWallpapers(false);
-                            SetWallpaperDuplicateScreen(wallpaper.GetHWND());
-                            break;
+                        CloseAllWallpapers(false);
+                        SetWallpaperPerScreen(wallpaper.GetHWND(), wallpaper.GetScreen());
+                    }
+                    else
+                    {
+                        switch (Program.SettingsVM.Settings.WallpaperArrangement)
+                        {
+                            case WallpaperArrangement.per:
+                                CloseWallpaper(wallpaper.GetScreen(), false);
+                                //CloseaWallpaperAfterDelay(wallpaper.GetScreen(), 500);
+                                SetWallpaperPerScreen(wallpaper.GetHWND(), wallpaper.GetScreen());
+                                break;
+                            case WallpaperArrangement.span:
+                                CloseAllWallpapers(false);
+                                SetWallpaperSpanScreen(wallpaper.GetHWND());
+                                break;
+                            case WallpaperArrangement.duplicate:
+                                CloseWallpaper(wallpaper.GetScreen(), false);
+                                await SetWallpaperDuplicateScreen(wallpaper);
+                                break;
+                        }
                     }
                     Wallpapers.Add(wallpaper);
                     WallpaperChanged?.Invoke(null, null);
@@ -299,9 +312,87 @@ namespace livelywpf
             }
             finally
             {
-                semaphoreSlim.Release();
+                semaphoreSlimWallpaperInitLock.Release();
             }
         }
+
+        #region wallpaper add
+
+        /// <summary>
+        /// Calculates the position of window w.r.t parent workerw handle & sets it as child window to it.
+        /// </summary>
+        /// <param name="handle">window handle of process to add as wallpaper</param>
+        /// <param name="display">displaystring of display to sent wp to.</param>
+        private static void SetWallpaperPerScreen(IntPtr handle, LivelyScreen targetDisplay)
+        {
+            NativeMethods.RECT prct = new NativeMethods.RECT();
+            NativeMethods.POINT topLeft;
+            //StaticPinvoke.POINT bottomRight;
+            Logger.Info("Setting wallpaper -> " + targetDisplay.DeviceName + " " + targetDisplay.Bounds);
+
+            if (!NativeMethods.SetWindowPos(handle, 1, targetDisplay.Bounds.X, targetDisplay.Bounds.Y, (targetDisplay.Bounds.Width), (targetDisplay.Bounds.Height), 0 | 0x0010))
+            {
+                NLogger.LogWin32Error("setwindowpos(2) fail AddWallpaper(),");
+            }
+
+            //ScreentoClient is no longer used, this supports windows mirrored mode also, calculate new relative position of window w.r.t parent.
+            NativeMethods.MapWindowPoints(handle, workerw, ref prct, 2);
+
+            SetParentWorkerW(handle);
+            //Position the wp window relative to the new parent window(workerw).
+            if (!NativeMethods.SetWindowPos(handle, 1, prct.Left, prct.Top, (targetDisplay.Bounds.Width), (targetDisplay.Bounds.Height), 0 | 0x0010))
+            {
+                NLogger.LogWin32Error("setwindowpos(3) fail addwallpaper(),");
+            }
+            SetFocus(true);
+            RefreshDesktop();
+
+            //logging.
+            NativeMethods.GetWindowRect(handle, out prct);
+            Logger.Info("Relative Coordinates of WP -> " + prct.Left + " " + prct.Right + " " + targetDisplay.Bounds.Width + " " + targetDisplay.Bounds.Height);
+            topLeft.X = prct.Left;
+            topLeft.Y = prct.Top;
+            NativeMethods.ScreenToClient(workerw, ref topLeft);
+            Logger.Info("Coordinate wrt to screen ->" + topLeft.X + " " + topLeft.Y + " " + targetDisplay.Bounds.Width + " " + targetDisplay.Bounds.Height);
+        }
+
+        /// <summary>
+        /// Spans wp across all screens.
+        /// </summary>
+        private static void SetWallpaperSpanScreen(IntPtr handle)
+        {
+            NativeMethods.RECT prct = new NativeMethods.RECT();
+            //get spawned workerw rectangle data.
+            NativeMethods.GetWindowRect(workerw, out prct);
+            SetParentWorkerW(handle);
+
+            //fill wp into the whole workerw area.
+            if (!NativeMethods.SetWindowPos(handle, 1, 0, 0, prct.Right - prct.Left, prct.Bottom - prct.Top, 0 | 0x0010))
+            {
+                NLogger.LogWin32Error("setwindowpos fail SpanWallpaper(),");
+            }
+            SetFocus(true);
+            RefreshDesktop();
+        }
+
+        private static async Task SetWallpaperDuplicateScreen(IWallpaper wallpaper)
+        {
+            SetWallpaperPerScreen(wallpaper.GetHWND(), wallpaper.GetScreen());
+
+            var remainingScreens = ScreenHelper.GetScreen();
+            var currDuplicates = Wallpapers.FindAll(x => x.GetWallpaperData() == wallpaper.GetWallpaperData());
+            remainingScreens.RemoveAll(x => ScreenHelper.ScreenCompare(wallpaper.GetScreen(), x, DisplayIdentificationMode.screenLayout) ||
+                currDuplicates.FindIndex(y => ScreenHelper.ScreenCompare(y.GetScreen(), x, DisplayIdentificationMode.screenLayout)) != -1);
+            if (remainingScreens.Count != 0)
+            {
+                await System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
+                {
+                    SetWallpaper(wallpaper.GetWallpaperData(), remainingScreens[0]);
+                }));
+            }
+        }
+
+        #endregion //wallpaper add
 
         static readonly object _layoutWriteLock = new object();
         private static void SetupDesktop_WallpaperChanged(object sender, EventArgs e)
@@ -310,6 +401,26 @@ namespace livelywpf
             {
                 SaveWallpaperLayout();
             }
+        }
+        private static void SaveWallpaperLayout()
+        {
+            List<WallpaperLayoutModel> layout = new List<WallpaperLayoutModel>();
+            foreach (var item in Wallpapers)
+            {
+                layout.Add(new WallpaperLayoutModel(
+                item.GetScreen(),
+                item.GetWallpaperData().LivelyInfoFolderPath));
+
+                if(Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.duplicate ||
+                   Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span )
+                {
+                    break;
+                }
+            }
+
+            WallpaperLayoutJSON.SaveWallpaperLayout(
+                  layout,
+                  Path.Combine(Program.AppDataDir, "WallpaperLayout.json"));
         }
 
         private static void SystemEvents_DisplaySettingsChanged(object sender, EventArgs e)
@@ -426,34 +537,6 @@ namespace livelywpf
             RefreshDesktop();
         }
 
-        private static void SaveWallpaperLayout()
-        {
-            List<WallpaperLayoutModel> layout = new List<WallpaperLayoutModel>();
-            foreach (var item in Wallpapers)
-            {
-                layout.Add(new WallpaperLayoutModel(
-                item.GetScreen(),
-                item.GetWallpaperData().LivelyInfoFolderPath));
-            }
-
-            WallpaperLayoutJSON.SaveWallpaperLayout(
-                  layout,
-                  Path.Combine(Program.AppDataDir, "WallpaperLayout.json"));
-        }
-
-        public static void ShutDown()
-        {
-            SystemEvents.DisplaySettingsChanged -= SystemEvents_DisplaySettingsChanged;
-            if (_isInitialized)
-            {
-                WallpaperChanged -= SetupDesktop_WallpaperChanged;
-                processMonitor.Stop();
-                //CloseAllWallpapersWithoutEvent();
-                TerminateAllWallpapers(false);
-                RefreshDesktop();
-            }
-        }
-
         private static Process livelySubProcess;
         private static void StartLivelySubProcess()
         {
@@ -491,75 +574,20 @@ namespace livelywpf
                 catch { }
             }
         }
+        public static void ShutDown()
+        {
+            SystemEvents.DisplaySettingsChanged -= SystemEvents_DisplaySettingsChanged;
+            if (_isInitialized)
+            {
+                WallpaperChanged -= SetupDesktop_WallpaperChanged;
+                processMonitor.Stop();
+                //CloseAllWallpapersWithoutEvent();
+                TerminateAllWallpapers(false);
+                RefreshDesktop();
+            }
+        }
 
         #endregion //core
-
-        #region wallpaper add
-
-        /// <summary>
-        /// Calculates the position of window w.r.t parent workerw handle & sets it as child window to it.
-        /// </summary>
-        /// <param name="handle">window handle of process to add as wallpaper</param>
-        /// <param name="display">displaystring of display to sent wp to.</param>
-        private static void SetWallpaperPerScreen(IntPtr handle, LivelyScreen targetDisplay)
-        {
-
-            NativeMethods.RECT prct = new NativeMethods.RECT();
-            NativeMethods.POINT topLeft;
-            //StaticPinvoke.POINT bottomRight;
-            Logger.Info("Setting wallpaper -> " + targetDisplay.DeviceName + " " + targetDisplay.Bounds);
-
-            if (!NativeMethods.SetWindowPos(handle, 1, targetDisplay.Bounds.X, targetDisplay.Bounds.Y, (targetDisplay.Bounds.Width), (targetDisplay.Bounds.Height), 0 | 0x0010))
-            {
-                NLogger.LogWin32Error("setwindowpos(2) fail AddWallpaper(),");
-            }
-
-            //ScreentoClient is no longer used, this supports windows mirrored mode also, calculate new relative position of window w.r.t parent.
-            NativeMethods.MapWindowPoints(handle, workerw, ref prct, 2);
-
-            SetParentWorkerW(handle);
-            //Position the wp window relative to the new parent window(workerw).
-            if (!NativeMethods.SetWindowPos(handle, 1, prct.Left, prct.Top, (targetDisplay.Bounds.Width), (targetDisplay.Bounds.Height), 0 | 0x0010))
-            {
-                NLogger.LogWin32Error("setwindowpos(3) fail addwallpaper(),");
-            }
-            SetFocus(true);
-            RefreshDesktop();
-
-            //logging.
-            NativeMethods.GetWindowRect(handle, out prct);
-            Logger.Info("Relative Coordinates of WP -> " + prct.Left + " " + prct.Right + " " + targetDisplay.Bounds.Width + " " + targetDisplay.Bounds.Height);
-            topLeft.X = prct.Left;
-            topLeft.Y = prct.Top;
-            NativeMethods.ScreenToClient(workerw, ref topLeft);
-            Logger.Info("Coordinate wrt to screen ->" + topLeft.X + " " + topLeft.Y + " " + targetDisplay.Bounds.Width + " " + targetDisplay.Bounds.Height);
-        }
-
-        /// <summary>
-        /// Spans wp across all screens.
-        /// </summary>
-        private static void SetWallpaperSpanScreen(IntPtr handle)
-        {
-            NativeMethods.RECT prct = new NativeMethods.RECT();
-            //get spawned workerw rectangle data.
-            NativeMethods.GetWindowRect(workerw, out prct);
-            SetParentWorkerW(handle);
-
-            //fill wp into the whole workerw area.
-            if (!NativeMethods.SetWindowPos(handle, 1, 0, 0, prct.Right - prct.Left, prct.Bottom - prct.Top, 0 | 0x0010))
-            {
-                NLogger.LogWin32Error("setwindowpos fail SpanWallpaper(),");
-            }
-            SetFocus(true);
-            RefreshDesktop();
-        }
-
-        private static void SetWallpaperDuplicateScreen(IntPtr handle)
-        {
-            throw new NotImplementedException();
-        }
-
-        #endregion //wallpaper add
 
         #region threads
 
@@ -762,14 +790,6 @@ namespace livelywpf
                 {
                     App.AppWindow.Activate();
                 }
-                /*
-                IntPtr livelyWindow = new WindowInteropHelper(System.Windows.Application.Current.MainWindow).Handle;
-                if (!livelyWindow.Equals(IntPtr.Zero) && NativeMethods.IsWindowVisible(livelyWindow) && focusLively)  //todo:- not working for cefsharp wp launch, why?
-                {
-                    NativeMethods.SetForegroundWindow(livelyWindow);
-                    NativeMethods.SetFocus(livelyWindow);
-                }
-                */
             }));
         }
 

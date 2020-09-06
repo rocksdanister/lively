@@ -858,6 +858,42 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fill.
+        /// </summary>
+        public static string TextWallpaperFitFill {
+            get {
+                return ResourceManager.GetString("TextWallpaperFitFill", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to None.
+        /// </summary>
+        public static string TextWallpaperFitNone {
+            get {
+                return ResourceManager.GetString("TextWallpaperFitNone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uniform.
+        /// </summary>
+        public static string TextWallpaperFitUniform {
+            get {
+                return ResourceManager.GetString("TextWallpaperFitUniform", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uniform Fill.
+        /// </summary>
+        public static string TextWallpaperFitUniformToFill {
+            get {
+                return ResourceManager.GetString("TextWallpaperFitUniformToFill", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Duplicate same wallpaper.
         /// </summary>
         public static string TextWallpaperLayoutDuplicate {
@@ -1118,6 +1154,15 @@ namespace livelywpf.Properties {
         public static string TipWallpaperDir {
             get {
                 return ResourceManager.GetString("TipWallpaperDir", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wallpaper scaling algorithm..
+        /// </summary>
+        public static string TipWallpaperFit {
+            get {
+                return ResourceManager.GetString("TipWallpaperFit", resourceCulture);
             }
         }
         
@@ -1569,6 +1614,15 @@ namespace livelywpf.Properties {
         public static string TitleWallpaperDirMoveExisting {
             get {
                 return ResourceManager.GetString("TitleWallpaperDirMoveExisting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose a fit.
+        /// </summary>
+        public static string TitleWallpaperFit {
+            get {
+                return ResourceManager.GetString("TitleWallpaperFit", resourceCulture);
             }
         }
         

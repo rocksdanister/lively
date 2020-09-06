@@ -14,7 +14,7 @@ namespace livelywpf
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private readonly MpvPlayer player;
 
-        public MPVElement(string filePath)
+        public MPVElement(string filePath, WallpaperScaler stretch = WallpaperScaler.fill)
         {
             InitializeComponent();
             try
@@ -27,13 +27,28 @@ namespace livelywpf
                 };
                 player.MediaError += Player_MediaError;
                 player.API.SetPropertyString("hwdec", "auto");
-                player.API.SetPropertyString("keepaspect", "no");
+                switch (stretch)
+                {
+                    //I think these are the mpv equivalent scaler settings.
+                    case WallpaperScaler.fill:
+                        player.API.SetPropertyString("keepaspect", "no");
+                        break;
+                    case WallpaperScaler.none:
+                        player.API.SetPropertyString("video-unscaled", "yes");
+                        break;
+                    case WallpaperScaler.uniform:
+                        player.API.SetPropertyString("keepaspect", "yes");
+                        break;
+                    case WallpaperScaler.uniformFill:
+                        player.API.SetPropertyString("panscan", "1.0");
+                        break;
+                }
                 //Enable Windows screensaver
                 player.API.SetPropertyString("stop-screensaver", "no");
                 player.Load(filePath);
                 player.Resume();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Logger.Error("libMPV Init Failure:" + e.ToString());
             }

@@ -11,12 +11,11 @@ namespace livelywpf.Core
     public class VideoPlayerMPVExt : IWallpaper
     {
         public VideoPlayerMPVExt(string path, LibraryModel model, LivelyScreen display, 
-            StreamQualitySuggestion streamQuality = StreamQualitySuggestion.Highest)
+            WallpaperScaler scaler = WallpaperScaler.fill, StreamQualitySuggestion streamQuality = StreamQualitySuggestion.Highest)
         {
             ProcessStartInfo start = new ProcessStartInfo
             {
-                //Arguments = "\"" + path + "\"",
-                Arguments = "--path " + "\"" + path + "\"" + " --stream " + (int)streamQuality,
+                Arguments = "--path " + "\"" + path + "\"" + " --stream " + (int)streamQuality + " --stretch " + (int)scaler,
                 FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "libMPVPlayer", "libMPVPlayer.exe"),
                 RedirectStandardInput = true,
                 RedirectStandardOutput = true,
