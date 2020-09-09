@@ -664,22 +664,25 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
   <data name="TitleAudioMaster" xml:space="preserve">
     <value>Kekuataan Bunyi (Utama)</value>
   </data>
-    <data name="TextWallpaperFitFill" xml:space="preserve">
-    <value>Fill</value>
+  <data name="TextWallpaperFitFill" xml:space="preserve">
+    <value>Isi</value>
   </data>
   <data name="TextWallpaperFitNone" xml:space="preserve">
-    <value>None</value>
+    <value>Tiada</value>
   </data>
   <data name="TextWallpaperFitUniform" xml:space="preserve">
-    <value>Uniform</value>
+    <value>Seragam</value>
   </data>
   <data name="TextWallpaperFitUniformToFill" xml:space="preserve">
-    <value>Uniform Fill</value>
+    <value>Isi Seragam</value>
   </data>
-    <data name="TipWallpaperFit" xml:space="preserve">
-    <value>Wallpaper scaling algorithm.</value>
+  <data name="TipWallpaperFit" xml:space="preserve">
+    <value>Algoritma Skala Wallpaper</value>
   </data>
-    <data name="TitleWallpaperFit" xml:space="preserve">
-    <value>Choose a fit</value>
+  <data name="TitleWallpaperFit" xml:space="preserve">
+    <value>Pilih Padanan</value>
+  </data>
+    <data name="TextPreviewWallpaper" xml:space="preserve">
+    <value>Preview Wallpaper</value>
   </data>
 </root>

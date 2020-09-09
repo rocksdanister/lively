@@ -25,7 +25,7 @@ namespace livelywpf
 
             _notifyIcon.DoubleClick += (s, args) => Program.ShowMainWindow();
             _notifyIcon.Icon = Properties.Icons.appicon;
-            _notifyIcon.Text = "Lively Wallpaper";
+            _notifyIcon.Text = Properties.Resources.TitleAppName;
 
             CreateContextMenu();
             _notifyIcon.Visible = visibility;
@@ -45,6 +45,7 @@ namespace livelywpf
                 Margin = new Padding(0),
                 //Font = new System.Drawing.Font("Segoe UI", 10F),
             };
+            _notifyIcon.ContextMenuStrip.Opening += ContextMenuStrip_Opening;
 
             _notifyIcon.ContextMenuStrip.Renderer = new Helpers.CustomContextMenu.RendererDark();
             _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextOpenLively, Properties.Icons.icons8_home_64).Click += (s, e) => Program.ShowMainWindow();
@@ -76,6 +77,55 @@ namespace livelywpf
             //_notifyIcon.ContextMenuStrip.Items.Add("-");
             _notifyIcon.ContextMenuStrip.Items.Add(new Helpers.CustomContextMenu.StripSeparatorCustom().stripSeparator);
             _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextExit, Properties.Icons.icons8_delete_52).Click += (s, e) => Program.ExitApplication();
+        }
+
+        /// <summary>
+        /// Fix for when menu opens to the nearest screen instead of the screen in which cursor is located.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ContextMenuStrip_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            ContextMenuStrip menuStrip = (sender as ContextMenuStrip);
+            if (ScreenHelper.IsMultiScreen())
+            {
+                //Finding screen in which cursor is present.
+                var screen = Screen.FromPoint(Cursor.Position);
+
+                var mousePos = Cursor.Position;
+                //Converting global cursor pos. to given screen pos.
+                mousePos.X += mousePos.X < 0 ?
+                    SystemInformation.VirtualScreen.Width - Screen.PrimaryScreen.Bounds.Width : -Math.Abs(screen.Bounds.X);
+                mousePos.Y += mousePos.Y < 0 ?
+                    SystemInformation.VirtualScreen.Height - Screen.PrimaryScreen.Bounds.Height : -Math.Abs(screen.Bounds.Y);
+
+                //guessing taskbar pos. based on cursor pos. on display.
+                bool isLeft = mousePos.X < screen.Bounds.Width * .5;
+                bool isTop = mousePos.Y < screen.Bounds.Height * .5;
+
+                //menu popup pos. rule.
+                if (isLeft && isTop)
+                {
+                    //not possible?
+                    menuStrip.Show(Cursor.Position, ToolStripDropDownDirection.Default);
+                }
+                if (isLeft && !isTop)
+                {
+                    menuStrip.Show(Cursor.Position, ToolStripDropDownDirection.AboveRight);
+                }
+                else if (!isLeft && isTop)
+                {
+                    menuStrip.Show(Cursor.Position, ToolStripDropDownDirection.BelowLeft);
+                }
+                else if (!isLeft && !isTop)
+                {
+                    menuStrip.Show(Cursor.Position, ToolStripDropDownDirection.AboveLeft);
+                }
+            }
+            else
+            {
+                menuStrip.Show(Cursor.Position, ToolStripDropDownDirection.AboveLeft);
+            }
         }
 
         public void ShowBalloonNotification(int timeout, string title, string msg)

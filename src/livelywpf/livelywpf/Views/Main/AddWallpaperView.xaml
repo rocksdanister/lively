@@ -14,7 +14,7 @@
     <Grid>
         <StackPanel VerticalAlignment="Top" Margin="10, 0, 0, 0" HorizontalAlignment="Left">
             <TextBlock FontSize="12" Text="{x:Static p:Resources.TitleWallpaper}" FontWeight="Bold" Margin="0, 10, 0, 0"/>
-            <xamlHost:WindowsXamlHost x:Name="PreviewGif" HorizontalAlignment="Left" 
+            <xamlHost:WindowsXamlHost x:Name="PreviewGif" HorizontalAlignment="Left"
                       Width="384" Height="216" Margin="0, 10, 0, 0" InitialTypeName="Windows.UI.Xaml.Controls.Image" ChildChanged="PreviewGif_ChildChanged"  />
             <TextBlock FontSize="12" Margin="25, 5, 0, 0" Text="{x:Static p:Resources.DescriptionDragDropFIle}"/>
 

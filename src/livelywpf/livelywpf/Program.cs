@@ -19,7 +19,8 @@ namespace livelywpf
 
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private static readonly Mutex mutex = new Mutex(false, "LIVELY:DESKTOPWALLPAPERSYSTEM");
-        public static string WallpaperDir; //Loaded from Settings.json (User configurable.)
+        //Loaded from Settings.json (User configurable.)
+        public static string WallpaperDir;
         public static readonly string AppDataDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Lively Wallpaper");
 
         //todo: use singleton or something instead?
@@ -39,7 +40,7 @@ namespace livelywpf
                 // wait a few seconds in case livelywpf instance is just shutting down..
                 if (!mutex.WaitOne(TimeSpan.FromSeconds(1), false))
                 {
-                    //ref: https://stackoverflow.com/questions/19147/what-is-the-correct-way-to-create-a-single-instance-wpf-application
+                    // ref: https://stackoverflow.com/questions/19147/what-is-the-correct-way-to-create-a-single-instance-wpf-application
                     // send our registered Win32 message to make the currently running lively instance to bring to foreground.
                     // todo: ditch this once ipc server is ready?
                     NativeMethods.PostMessage(

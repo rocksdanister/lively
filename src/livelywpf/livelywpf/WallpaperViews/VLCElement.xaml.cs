@@ -142,11 +142,14 @@ namespace livelywpf
         {
             try
             {
-                _mediaReady = false;
-                _mediaPlayer.EndReached -= _mediaPlayer_EndReached;
-                _mediaPlayer.Dispose();
-                _libVLC.Dispose();
-                _media.Dispose();
+                if(_mediaReady)
+                {
+                    _mediaReady = false;
+                    _mediaPlayer.EndReached -= _mediaPlayer_EndReached;
+                    _mediaPlayer.Dispose();
+                    _libVLC.Dispose();
+                    _media.Dispose();
+                }
             }
             catch (Exception ex)
             {

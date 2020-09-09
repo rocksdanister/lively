@@ -188,7 +188,7 @@ namespace livelywpf.Core
                         x.GetWallpaperType() == WallpaperType.godot)
                     {
                         if (ScreenHelper.ScreenCompare(display, x.GetScreen(), DisplayIdentificationMode.screenLayout) ||
-                                Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span)
+                            Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span)
                         {
                             //The low-order word specifies the x-coordinate of the cursor, the high-order word specifies the y-coordinate of the cursor.
                             //ref: https://docs.microsoft.com/en-us/windows/win32/inputdev/wm-mousemove

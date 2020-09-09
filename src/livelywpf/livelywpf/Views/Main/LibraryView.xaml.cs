@@ -48,7 +48,8 @@ namespace livelywpf.Views
                     TextExportZip = Properties.Resources.TextExportWallpaperZip,
                     TextInformation = Properties.Resources.TitleAbout,
                     TextSetWallpaper = Properties.Resources.TextSetWallpaper,
-                    TextShowDisk = Properties.Resources.TextShowOnDisk
+                    TextShowDisk = Properties.Resources.TextShowOnDisk,
+                    TextPreviewWallpaper = Properties.Resources.TextPreviewWallpaper
                 };
                 LivelyGridControl.GridElementSize((livelygrid.GridSize)Program.SettingsVM.SelectedTileSizeIndex);
                 LivelyGridControl.ContextMenuClick += LivelyGridControl_ContextMenuClick;
@@ -77,6 +78,14 @@ namespace livelywpf.Views
             await this.Dispatcher.InvokeAsync(new Action(async () => {
                 switch (s.Name)
                 {
+                    case "previewWallpaper":
+                        var prev = new WallpaperPreviewWindow((LibraryModel)e)
+                        {
+                            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner,
+                            Owner = App.AppWindow
+                        };
+                        prev.Show();
+                        break;
                     case "showOnDisk":
                         Program.LibraryVM.WallpaperShowOnDisk(e);
                         break;

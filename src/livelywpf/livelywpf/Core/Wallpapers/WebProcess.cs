@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.Management;
+using System.Text;
 
 namespace livelywpf.Core
 {
@@ -42,56 +43,35 @@ namespace livelywpf.Core
                 }
             }
 
-            string cmdArgs;
-            if (model.LivelyInfo.Type == WallpaperType.web)
+            StringBuilder cmdArgs = new StringBuilder();
+            cmdArgs.Append("--url " + "\"" + path + "\"" + " --display " + "\"" + display + "\"");
+            cmdArgs.Append(model.LivelyInfo.Type == WallpaperType.url ? " --type online" : " --type local" + " --property " + "\"" + LivelyPropertyCopy + "\"");
+            //Fail to send empty string as arg; "debug" is set as optional variable in cmdline parser library.
+            if (!string.IsNullOrWhiteSpace(Program.SettingsVM.Settings.WebDebugPort))
             {
-                //Fail to send empty string as arg; "debug" is set as optional variable in cmdline parser library.
-                if (string.IsNullOrWhiteSpace(Program.SettingsVM.Settings.WebDebugPort))
-                {
-                    cmdArgs = "--url " + "\"" + path + "\"" + " --type local" + " --display " + "\"" + display + "\"" +
-                        " --property " + "\"" + LivelyPropertyCopy + "\"";
-                }
-                else
-                {
-                    cmdArgs = "--url " + "\"" + path + "\"" + " --type local" + " --display " + "\"" + display + "\"" +
-                      " --property " + "\"" + LivelyPropertyCopy + "\"" + " --debug " + Program.SettingsVM.Settings.WebDebugPort;
-                }
+                cmdArgs.Append(" --debug " + Program.SettingsVM.Settings.WebDebugPort);
             }
-            else if (model.LivelyInfo.Type == WallpaperType.webaudio)
+
+            if (Program.SettingsVM.Settings.CefDiskCache)
             {
-                if (string.IsNullOrWhiteSpace(Program.SettingsVM.Settings.WebDebugPort))
-                {
-                    cmdArgs = "--url " + "\"" + path + "\"" + " --type local" + " --display " + "\"" + display + "\"" + " --audio true" +
-                          " --property " + "\"" + LivelyPropertyCopy + "\"";
-                }
-                else
-                {
-                    cmdArgs = "--url " + "\"" + path + "\"" + " --type local" + " --display " + "\"" + display + "\"" + " --audio true" +
-                        " --property " + "\"" + LivelyPropertyCopy + "\"" + " --debug " + Program.SettingsVM.Settings.WebDebugPort;
-                }
+                cmdArgs.Append(" --cache " + "\"" + Path.Combine(Program.AppDataDir, "Cef", "cache", display.DeviceNumber) + "\"");
             }
-            else
+
+            if (model.LivelyInfo.Type == WallpaperType.webaudio)
             {
-                if (string.IsNullOrWhiteSpace(Program.SettingsVM.Settings.WebDebugPort))
-                {
-                    cmdArgs = "--url " + "\"" + path + "\"" + " --type online" + " --display " + "\"" + display + "\"";
-                }
-                else
-                {
-                    cmdArgs = "--url " + "\"" + path + "\"" + " --type online" + " --display " + "\"" + display + "\"" +
-                       " --debug " + Program.SettingsVM.Settings.WebDebugPort;
-                }
+                cmdArgs.Append(" --audio true");
             }
 
             ProcessStartInfo start = new ProcessStartInfo
             {
-                Arguments = cmdArgs,
+                Arguments = cmdArgs.ToString(),
                 FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "cef", "LivelyCefSharp.exe"),
                 RedirectStandardInput = true,
                 RedirectStandardOutput = true,
                 UseShellExecute = false,
                 WorkingDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "cef")
             };
+            cmdArgs.Clear();
 
             Process webProcess = new Process
             {

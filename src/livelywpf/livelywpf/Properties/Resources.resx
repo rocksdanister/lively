@@ -329,6 +329,9 @@ If still not working, close &amp;amp; start Lively again/ restart windows.
   <data name="TextPerformancePause" xml:space="preserve">
     <value>Pause</value>
   </data>
+  <data name="TextPreviewWallpaper" xml:space="preserve">
+    <value>Preview Wallpaper</value>
+  </data>
   <data name="TextRemove" xml:space="preserve">
     <value>Remove</value>
   </data>

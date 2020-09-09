@@ -679,4 +679,7 @@ Edge is the built in webview of windows 10.</value>
     <data name="TitleWallpaperFit" xml:space="preserve">
     <value>Choose a fit</value>
   </data>
+    <data name="TextPreviewWallpaper" xml:space="preserve">
+    <value>Preview Wallpaper</value>
+  </data>
 </root>

@@ -10,7 +10,11 @@
     <StartupObject>livelywpf.Program</StartupObject>
     <ApplicationIcon>appicon.ico</ApplicationIcon>
     <Version>1.0.0</Version>
-    <AssemblyVersion>1.0.5.0</AssemblyVersion>
+    <AssemblyVersion>1.0.7.0</AssemblyVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+    <DefineConstants>TRACE</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,7 +32,7 @@
     <PackageReference Include="ModernWpfUI" Version="0.9.1" />
     <PackageReference Include="Mpv.NET" Version="1.1.1" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="NLog" Version="4.7.3" />
+    <PackageReference Include="NLog" Version="4.7.4" />
     <PackageReference Include="Octokit" Version="0.48.0" />
     <PackageReference Include="RawInput.Sharp" Version="0.0.3" />
     <PackageReference Include="SharpZipLib" Version="1.2.0" />

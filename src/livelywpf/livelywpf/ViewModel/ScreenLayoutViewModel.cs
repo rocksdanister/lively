@@ -196,8 +196,7 @@ namespace livelywpf
         private void UpdateLayout()
         {
             ScreenItems.Clear();
-            if (Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span
-            || Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.duplicate)
+            if (Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span)
             {
                 if (SetupDesktop.Wallpapers.Count == 0)
                 {
@@ -224,7 +223,14 @@ namespace livelywpf
                             livelyPropertyFilePath = x.GetLivelyPropertyCopyPath();
                         }
                     });
-                    unsortedScreenItems.Add(new Model.ScreenLayoutModel(item, imgPath, livelyPropertyFilePath, item.DeviceNumber));
+                    if(Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.duplicate)
+                    {
+                        unsortedScreenItems.Add(new Model.ScreenLayoutModel(item, imgPath, livelyPropertyFilePath, "-"));
+                    }
+                    else
+                    {
+                        unsortedScreenItems.Add(new Model.ScreenLayoutModel(item, imgPath, livelyPropertyFilePath, item.DeviceNumber));
+                    }
                 }
 
                 foreach (var item in unsortedScreenItems.OrderBy(x => x.Screen.Bounds.X).ToList())

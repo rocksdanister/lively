@@ -121,8 +121,8 @@ namespace livelywpf
             }
 
             if(wp.LivelyInfo.Type == WallpaperType.web 
-            || wp.LivelyInfo.Type == WallpaperType.webaudio 
-            || wp.LivelyInfo.Type == WallpaperType.url)
+                || wp.LivelyInfo.Type == WallpaperType.webaudio 
+                || wp.LivelyInfo.Type == WallpaperType.url)
             {
                 wp.ItemStartup = true;
                 var item = new WebProcess(wp.FilePath, wp, targetDisplay);
@@ -131,8 +131,8 @@ namespace livelywpf
                 item.Show();
             }
             if (wp.LivelyInfo.Type == WallpaperType.app
-            || wp.LivelyInfo.Type == WallpaperType.godot
-            || wp.LivelyInfo.Type == WallpaperType.unity)
+                || wp.LivelyInfo.Type == WallpaperType.godot
+                || wp.LivelyInfo.Type == WallpaperType.unity)
             {
                 System.Windows.MessageBox.Show("not supported currently");
                 return;
@@ -217,9 +217,10 @@ namespace livelywpf
         private static async void SetupDesktop_WallpaperInitialized(object sender, WindowInitializedArgs e)
         {
             await semaphoreSlimWallpaperInitLock.WaitAsync();
+            IWallpaper wallpaper = null;
             try
             {
-                var wallpaper = (IWallpaper)sender;
+                wallpaper = (IWallpaper)sender;
                 wallpapersPending.Remove(wallpaper);
                 wallpaper.WindowInitialized -= SetupDesktop_WallpaperInitialized;
                 await System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
@@ -309,6 +310,15 @@ namespace livelywpf
                     WallpaperChanged?.Invoke(null, null);
                     MessageBox.Show(e.Error.Message, Properties.Resources.TitleAppName);
                 }
+            }
+            catch(Exception ex)
+            {
+                Logger.Error("Core: Failed processing wallpaper: " + ex.ToString());
+                if(wallpaper != null)
+                {
+                    wallpaper.Terminate();
+                }
+                WallpaperChanged?.Invoke(null, null);
             }
             finally
             {

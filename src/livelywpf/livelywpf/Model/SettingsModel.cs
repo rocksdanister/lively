@@ -39,7 +39,6 @@ namespace livelywpf
         public bool LiveTile { get; set; }
         public System.Windows.Media.Stretch ScalerVideo { get; set; }
         public System.Windows.Media.Stretch ScalerGif { get; set; }
-        //public StreamQualitySuggestion StreamQuality { get; set; }
         public WallpaperArrangement WallpaperArrangement { get; set; }
         public string SavedURL { get; set; }
         public string IgnoreUpdateTag { get; set; }
@@ -81,27 +80,7 @@ namespace livelywpf
         /// </summary>
         public int AudioVolumeGlobal { get; set; }
         public WallpaperScaler WallpaperScaling { get; set; }
-        //private 
-        /*
-        //todo need to rewrite audio manager from scratch.
-        public bool MuteVideo { get; set; }
-        public bool MuteCef { get; set; } //unused, need to get processid of subprocess of cef.
-        public bool MuteCefAudioIn { get; set; }
-        public bool MuteMic { get; set; }
-        public bool MuteAppWP { get; set; }
-        public bool MuteGlobal { get; set; } //mute audio of all types of wp's
-        public bool AlwaysAudio { get; set; } //play audio even when not on desktop
-
-        // warning user of risk, count.
-        public int WarningUnity { get; set; }
-        public int WarningGodot { get; set; }
-        public int WarningURL { get; set; }
-        public int WarningApp { get; set; }
-
-        public bool RunOnlyDesktop { get; set; } //run only when on desktop focus.
-        public VideoPlayer VidPlayer { get; set; }
-        public GIFPlayer GifPlayer { get; set; }
-        */
+        public bool CefDiskCache { get; set; }
 
         public SettingsModel()
         {
@@ -150,6 +129,7 @@ namespace livelywpf
             WallpaperBundleVersion = -1;
             AudioVolumeGlobal = 50;
             WallpaperScaling = WallpaperScaler.fill;
+            CefDiskCache = false;
         }
     }
 }

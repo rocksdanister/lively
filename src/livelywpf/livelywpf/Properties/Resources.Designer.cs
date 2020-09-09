@@ -651,6 +651,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Preview Wallpaper.
+        /// </summary>
+        public static string TextPreviewWallpaper {
+            get {
+                return ResourceManager.GetString("TextPreviewWallpaper", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove.
         /// </summary>
         public static string TextRemove {

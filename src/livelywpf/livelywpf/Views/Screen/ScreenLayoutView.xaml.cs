@@ -50,7 +50,7 @@ namespace livelywpf.Views
 
         private void CreateLabelWindows()
         {
-            if(ScreenHelper.IsMultiScreen() && Program.SettingsVM.Settings.WallpaperArrangement != WallpaperArrangement.span)
+            if(ScreenHelper.IsMultiScreen())
             {
                 foreach (var item in ScreenHelper.GetScreen())
                 {

@@ -84,6 +84,7 @@ namespace livelywpf
             MoveExistingWallpaperNewDir = Settings.WallpaperDirMoveExistingWallpaperNewDir;
             GlobalWallpaperVolume = Settings.AudioVolumeGlobal;
             SelectedWallpaperScalingIndex = (int)Settings.WallpaperScaling;
+            CefDiskCache = Settings.CefDiskCache;
         }
 
         private SettingsModel _settings;
@@ -525,6 +526,22 @@ namespace livelywpf
                     UpdateConfigFile();
                 }
                 OnPropertyChanged("WebDebuggingPort");
+            }
+        }
+
+        private bool _cefDiskCache;
+        public bool CefDiskCache
+        {
+            get { return _cefDiskCache; }
+            set
+            {
+                _cefDiskCache = value;
+                if(Settings.CefDiskCache != _cefDiskCache)
+                {
+                    Settings.CefDiskCache = _cefDiskCache;
+                    UpdateConfigFile();
+                }
+                OnPropertyChanged("CefDiskCache");
             }
         }
 

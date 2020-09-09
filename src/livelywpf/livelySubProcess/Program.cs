@@ -9,6 +9,7 @@ namespace livelySubProcess
     /// <summary>
     /// Kills external application type wallpapers in the event lively main pgm is killed by taskmanager/other pgms like av software.
     /// This is just incase safety, when shutdown properly the "wpItems" list is cleared by lively before exit.
+    /// The external lively pgms such as livelycefsharp and libmpvplayer etc will close themselves if lively exits without subprocess.
     /// </summary>
     class Program
     {

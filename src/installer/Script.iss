@@ -2,7 +2,7 @@
 ; https://jrsoftware.org/isinfo.php
 
 #define MyAppName "Lively Wallpaper"
-#define MyAppVersion "1.0.5.0"
+#define MyAppVersion "1.0.7.0"
 #define MyAppPublisher "rocksdanister"
 #define MyAppURL "https://github.com/rocksdanister/lively"
 #define MyAppExeName "livelywpf.exe"
@@ -68,6 +68,7 @@ Root: HKCU; Subkey: "Software\Microsoft\Windows\CurrentVersion\Run"; ValueType: 
 [Files]
 Source: "VC\VC_redist.x86.exe"; DestDir: {tmp}; Flags: deleteafterinstall
 Source: "dotnetcore\windowsdesktop-runtime-3.1.7-win-x86.exe"; DestDir: {tmp}; Flags: deleteafterinstall
+Source: "dotnetcore\netcorecheck.exe"; DestDir: {tmp}; Flags: deleteafterinstall
 
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 Source: "Release\livelywpf.exe"; DestDir: "{app}"; Flags: ignoreversion;
@@ -81,8 +82,7 @@ Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: de
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall 
 ;skipifsilent
 Filename: "{tmp}\VC_redist.x86.exe"; Check: VCRedistNeedsInstall; StatusMsg: Installing Visual Studio Runtime Libraries...
-;todo: check if .net core is already installed.
-Filename: "{tmp}\windowsdesktop-runtime-3.1.7-win-x86.exe"; StatusMsg: Installing .Net Core 3.1...
+Filename: "{tmp}\windowsdesktop-runtime-3.1.7-win-x86.exe"; Check: NetCoreNeedsInstall('3.1.7');  StatusMsg: Installing .Net Core 3.1...
 
 [Code]
 var
@@ -213,6 +213,7 @@ begin
 end;
 
 //////////////////////////////////////////////////////////////////////
+// Uninstaller promts user whether to close lively if running before proceeding.
 function InitializeUninstall(): Boolean;
 var
   ErrorCode: Integer;
@@ -225,4 +226,19 @@ begin
   end;
 
   Result := True;
+end;
+//////////////////////////////////////////////////////////////////////
+// Credits: https://github.com/domgho/InnoDependencyInstaller
+// NetCoreCheck tool is necessary for detecting if a specific version of .NET Core/.NET 5.0 is installed: https://github.com/dotnet/runtime/issues/36479
+// Source code: https://github.com/dotnet/deployment-tools/tree/master/src/clickonce/native/projects/NetCoreCheck
+// Download netcorecheck.exe: https://go.microsoft.com/fwlink/?linkid=2135256
+// Download netcorecheck_x64.exe: https://go.microsoft.com/fwlink/?linkid=2135504
+function NetCoreNeedsInstall(version: String): Boolean;
+var
+	netcoreRuntime: String;
+	resultCode: Integer;
+begin
+  // Example: 'Microsoft.NETCore.App', 'Microsoft.AspNetCore.App', 'Microsoft.WindowsDesktop.App'
+  netcoreRuntime := 'Microsoft.WindowsDesktop.App'
+	Result := not(Exec(ExpandConstant('{tmp}{\}') + 'netcorecheck.exe', netcoreRuntime + ' ' + version, '', SW_HIDE, ewWaitUntilTerminated, resultCode) and (resultCode = 0));
 end;
