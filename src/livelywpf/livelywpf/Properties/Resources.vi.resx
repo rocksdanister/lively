@@ -252,7 +252,7 @@ Nếu vẫn không thể hoạt động, đóng lại &amp;amp; khởi động l
     <value>Tất cả màn hình</value>
   </data>
   <data name="TextDisplayPauseRulePerScreen" xml:space="preserve">
-    <value>Tưng màn hình</value>
+    <value>Từng màn hình</value>
   </data>
   <data name="TextDownload" xml:space="preserve">
     <value>Tải xuống</value>
@@ -264,7 +264,7 @@ Nếu vẫn không thể hoạt động, đóng lại &amp;amp; khởi động l
     <value>Thoát</value>
   </data>
   <data name="TextExportWallpaperZip" xml:space="preserve">
-    <value>Xuát lively .zip</value>
+    <value>Xuất lively .zip</value>
   </data>
   <data name="TextGIF" xml:space="preserve">
     <value>GIFđộng</value>
