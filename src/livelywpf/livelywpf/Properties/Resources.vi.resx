@@ -127,8 +127,8 @@
     <value>Bạn có chắc muốn hủy bỏ?</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
-    <value>Bạn có chắc chắn muốn xóa vĩnh viễn hình nền này khỏi bộ nhớ?</value>
-  </data>
+    
+  <value>Bạn có chắc chắn muốn xóa vĩnh viễn hình nền này khỏi bộ nhớ?</value></data>
   <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
     <value>Bạn có chắc chắn muốn xóa nền này khỏi thư viện?</value>
   </data>
@@ -462,7 +462,7 @@ Nếu vẫn không thể hoạt động, đóng lại &amp;amp; khởi động l
     <value>(Dành cho laptop,...) Thay đổi quy luật phát lại khi nguồn AC bị ngắt.</value>
   </data>
   <data name="TipBrowserDebuggingPort" xml:space="preserve">
-    <value>Nhập cổng để debug webpage hình nền, bắt buoojjc phải khởi động lại trình duyệt để thay đổi có hiệu lực.
+    <value>Nhập cổng để debug webpage hình nền, bắt buộc phải khởi động lại trình duyệt để thay đổi có hiệu lực.
 Khi sắn sàng, đi tới http://localhost:portnumber để truy cập bảng điều khiển cho nhà phát triển.</value>
   </data>
   <data name="TipDisplayPauseRule" xml:space="preserve">
@@ -655,10 +655,10 @@ Edge là webview được tích hợp sẵn của windows 10.</value>
     <value>Di chuyển các hình nền hiện có vào thư mục mới</value>
   </data>
   <data name="TitleWallpaperFit" xml:space="preserve">
-    <value>Chọn một phù hợp</value>
+    <value>Chọn tỉ lệ hình nền</value>
   </data>
   <data name="TitleWallpaperInput" xml:space="preserve">
-    <value>Nhập hình nền</value>
+    <value>Tương tác bằng</value>
   </data>
   <data name="TitleWallpaperLayout" xml:space="preserve">
     <value>phương pháp sắp xếp</value>
