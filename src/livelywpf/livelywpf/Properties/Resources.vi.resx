@@ -127,8 +127,8 @@
     <value>Bạn có chắc muốn hủy bỏ?</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
-    
-  <value>Bạn có chắc chắn muốn xóa vĩnh viễn hình nền này khỏi bộ nhớ?</value></data>
+    <value>Bạn có chắc chắn muốn xóa vĩnh viễn hình nền này khỏi bộ nhớ?</value>
+  </data>
   <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
     <value>Bạn có chắc chắn muốn xóa nền này khỏi thư viện?</value>
   </data>
@@ -523,7 +523,7 @@ Edge là webview được tích hợp sẵn của windows 10.</value>
     <value>Lively cần chạy trong nền để phát lại hình nền.</value>
   </data>
   <data name="TitleAbout" xml:space="preserve">
-    <value>Về</value>
+    <value>Giới thiệu</value>
   </data>
   <data name="TitleAddWallpaper" xml:space="preserve">
     <value>Thêm hình nền</value>
