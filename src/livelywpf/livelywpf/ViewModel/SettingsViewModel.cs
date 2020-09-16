@@ -48,6 +48,7 @@ namespace livelywpf
                 new LanguagesModel("svenska(sv)", new string[]{"sv","sv-AX","sv-FI","sv-SE"}),
                 new LanguagesModel("melayu(ms)", new string[]{"ms", "ms-BN","ms-MY"}),
                 new LanguagesModel("Nederlands(nl-NL)", new string[]{"nl-NL"}),
+                new LanguagesModel("Tiếng Việt(vi-VI)", new string[]{"vi"}),
             };
             SelectedLanguageItem = SearchSupportedLanguage(Settings.Language);
 
