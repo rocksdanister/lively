@@ -3944,9 +3944,12 @@ input, select, textarea {
 		}
 
 .imageRotate {
+	position: absolute;
+	width: 10%;
+	z-index: -1;
     -webkit-animation:spin 14s linear infinite;
     -moz-animation:spin 14s linear infinite;
-    animation:spin 14s linear infinite;
+	animation:spin 14s linear infinite; 
 }
 @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }

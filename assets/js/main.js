@@ -188,3 +188,19 @@
 			});
 
 })(jQuery);
+
+//Here I go, messing up a perfectly good webpage.. ATT dabjulmaros
+window.onload=e=>{
+	posSpinner();
+}
+
+window.onresize=e=>{
+    posSpinner();
+}
+
+function posSpinner(){
+	const header = $('#intro > div > div > h1')[0];
+	const logo = $('.imageRotate')[0];
+	logo.style.top=`${header.offsetHeight/4-logo.width/2}px`;
+	logo.style.left=`calc(${-logo.width/2+"px"} + .5rem)`;
+}
