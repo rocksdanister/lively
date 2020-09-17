@@ -108,7 +108,10 @@ namespace livelywpf
                     processMonitor = new Playback();
                     processMonitor.Start();
                     WallpaperChanged += SetupDesktop_WallpaperChanged;
-                    StartLivelySubProcess();
+                    if(!Program.IsMSIX)
+                    {
+                        StartLivelySubProcess();
+                    }
                 }
             }
 

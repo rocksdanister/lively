@@ -38,7 +38,7 @@ namespace livelywpf
             Logger.Info(
                 "\n" + "Lively v" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() +
                 " " + CultureInfo.CurrentCulture.Name +
-                " 64Bit:" + Environment.Is64BitProcess +
+                " 64Bit:" + Environment.Is64BitProcess + " MSIX:" + Program.IsMSIX +
                 "\n" + SystemInfo.GetOSInfo() +
                 SystemInfo.GetCPUInfo() +
                 SystemInfo.GetGPUInfo());

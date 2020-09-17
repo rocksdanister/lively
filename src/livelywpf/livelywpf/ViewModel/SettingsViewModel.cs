@@ -85,6 +85,7 @@ namespace livelywpf
             GlobalWallpaperVolume = Settings.AudioVolumeGlobal;
             SelectedWallpaperScalingIndex = (int)Settings.WallpaperScaling;
             CefDiskCache = Settings.CefDiskCache;
+            IsDebugMenuVisible = Settings.DebugMenu;
         }
 
         private SettingsModel _settings;
@@ -601,6 +602,24 @@ namespace livelywpf
                 if (Settings.SysTrayIcon != _isSysTrayIconVisible)
                 {
                     Settings.SysTrayIcon = _isSysTrayIconVisible;
+                    UpdateConfigFile();
+                }
+            }
+        }
+
+        public event EventHandler<bool> DebugMenuVisibilityChange;
+        private bool _isDebugMenuVisible;
+        public bool IsDebugMenuVisible
+        {
+            get { return _isDebugMenuVisible; }
+            set
+            {
+                _isDebugMenuVisible = value;
+                OnPropertyChanged("IsDebugMenuVisible");
+                if (Settings.DebugMenu != _isDebugMenuVisible)
+                {
+                    DebugMenuVisibilityChange?.Invoke(null, _isDebugMenuVisible);
+                    Settings.DebugMenu = _isDebugMenuVisible;
                     UpdateConfigFile();
                 }
             }

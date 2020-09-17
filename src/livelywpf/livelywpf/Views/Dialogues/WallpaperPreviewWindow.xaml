@@ -8,7 +8,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        ResizeMode="NoResize"
+        ResizeMode="CanResize"
         WindowStyle="ToolWindow"
         BorderBrush="{DynamicResource SystemControlHighlightAltListAccentHighBrush}"   
         Title="Preview" Height="740" Width="1280"

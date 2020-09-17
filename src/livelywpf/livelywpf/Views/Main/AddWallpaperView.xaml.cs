@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -51,16 +52,15 @@ namespace livelywpf.Views
             }
         }
 
-        //todo: add lively .zip
         readonly FileFilter[] wallpaperFilter = new FileFilter[] {
             new FileFilter(WallpaperType.video, "*.dat; *.wmv; *.3g2; *.3gp; *.3gp2;" +
-                " *.3gpp; *.amv; *.asf;  *.avi; *.bin; *.cue; *.divx; *.dv; *.flv; *.gxf; *.iso; *.m1v; *.m2v; *.m2t; *.m2ts; *.m4v; " +
-                " *.mkv; *.mov; *.mp2; *.mp2v; *.mp4; *.mp4v; *.mpa; *.mpe; *.mpeg; *.mpeg1; *.mpeg2; *.mpeg4; *.mpg; *.mpv2; *.mts; " +
+                "*.3gpp; *.amv; *.asf;  *.avi; *.bin; *.cue; *.divx; *.dv; *.flv; *.gxf; *.iso; *.m1v; *.m2v; *.m2t; *.m2ts; *.m4v; " +
+                "*.mkv; *.mov; *.mp2; *.mp2v; *.mp4; *.mp4v; *.mpa; *.mpe; *.mpeg; *.mpeg1; *.mpeg2; *.mpeg4; *.mpg; *.mpv2; *.mts; " +
                 "*.nsv; *.nuv; *.ogg; *.ogm; *.ogv; *.ogx; *.ps; *.rec; *.rm; *.rmvb; *.tod; *.ts; *.tts; *.vob; *.vro; *.webm"),
             new FileFilter(WallpaperType.gif, "*.gif"),
             new FileFilter(WallpaperType.web, "*.html"),
             new FileFilter(WallpaperType.webaudio, "*.html"),
-            new FileFilter((WallpaperType)(100), "*.zip", Properties.Resources.TitleAppName), //lively .zip is not a wallpapertype, its a file.
+            new FileFilter((WallpaperType)(100), "*.zip", Properties.Resources.TitleAppName), //lively .zip is not a wallpapertype, its a filetyple.
             /*
             new FileFilter(WallpaperType.unity,"Unity Game Executable |*.exe"),
             new FileFilter(WallpaperType.unityaudio,"Unity Audio Visualiser |*.exe"),
@@ -69,15 +69,73 @@ namespace livelywpf.Views
             */
         };
 
+        private readonly StringBuilder filterString;
         public AddWallpaperView()
         {
             InitializeComponent();
             UrlText.Text = Program.SettingsVM.Settings.SavedURL;
+
+            filterString = new StringBuilder();
+            filterString.Append("All Files|*.*|");
+            foreach (var item in wallpaperFilter)
+            {
+                filterString.Append(item.LocalisedTypeText);
+                filterString.Append("|");
+                filterString.Append(item.Extentions);
+                filterString.Append("|");
+            }
+            filterString.Remove(filterString.Length - 1, 1);
+        }
+
+        private void FileBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog openFileDlg = new Microsoft.Win32.OpenFileDialog
+            {
+                Title = Properties.Resources.TitleAddWallpaper,
+                CheckFileExists = true,
+                CheckPathExists = true,       
+            };
+            openFileDlg.Filter = filterString.ToString();
+            Nullable<bool> result = openFileDlg.ShowDialog();
+
+            if (result == true)
+            {
+                if (Path.GetExtension(openFileDlg.FileName).Equals(".zip", StringComparison.OrdinalIgnoreCase)) 
+                {
+                    Program.LibraryVM.WallpaperInstall(openFileDlg.FileName);
+                }
+                else if(openFileDlg.FilterIndex == 1)
+                {
+                    //All Files
+                    var item = wallpaperFilter.FirstOrDefault(x => x.Extentions.Contains(Path.GetExtension(openFileDlg.FileName), StringComparison.OrdinalIgnoreCase));
+                    if(item != null)
+                    {
+                        Program.LibraryVM.AddWallpaper(openFileDlg.FileName,
+                            item.Type,
+                            LibraryTileType.processing,
+                            Program.SettingsVM.Settings.SelectedDisplay);
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+                else
+                {
+                    Program.LibraryVM.AddWallpaper(openFileDlg.FileName,
+                    wallpaperFilter[openFileDlg.FilterIndex - 2].Type,
+                    LibraryTileType.processing,
+                    Program.SettingsVM.Settings.SelectedDisplay);
+                }
+                //fix, xalmhost element takes time to disappear.
+                PreviewGif.Visibility = Visibility.Collapsed;
+                App.AppWindow.NavViewNavigate("library");
+            }
         }
 
         private void UrlBtn_Click(object sender, RoutedEventArgs e)
         {
-            if(string.IsNullOrWhiteSpace(UrlText.Text))
+            if (string.IsNullOrWhiteSpace(UrlText.Text))
             {
                 return;
             }
@@ -87,7 +145,7 @@ namespace livelywpf.Views
             {
                 uri = new Uri(UrlText.Text);
             }
-            catch(UriFormatException)
+            catch (UriFormatException)
             {
                 try
                 {
@@ -125,50 +183,6 @@ namespace livelywpf.Views
             Program.SettingsVM.Settings.SavedURL = UrlText.Text;
             Program.SettingsVM.UpdateConfigFile();
             App.AppWindow.NavViewNavigate("library");
-        }
-
-        private void UrlText_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            //Program.SettingsVM.Settings.SavedURL = UrlText.Text;
-            //Program.SettingsVM.UpdateConfigFile();
-        }
-
-        private void FileBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Microsoft.Win32.OpenFileDialog openFileDlg = new Microsoft.Win32.OpenFileDialog
-            {
-                Title = Properties.Resources.TitleAddWallpaper,
-                CheckFileExists = true,
-                CheckPathExists = true,       
-            };
-            StringBuilder filterString = new StringBuilder();
-            foreach (var item in wallpaperFilter)
-            {
-                filterString.Append(item.LocalisedTypeText);
-                filterString.Append("|");
-                filterString.Append(item.Extentions);
-                filterString.Append("|"); 
-            }
-            filterString.Remove(filterString.Length - 1, 1);
-            openFileDlg.Filter = filterString.ToString();
-            Nullable<bool> result = openFileDlg.ShowDialog();
-
-            if (result == true)
-            {
-                if (Path.GetExtension(openFileDlg.FileName).Equals(".zip", StringComparison.OrdinalIgnoreCase)) 
-                {
-                    Program.LibraryVM.WallpaperInstall(openFileDlg.FileName);
-                }
-                else
-                {
-                    Program.LibraryVM.AddWallpaper(openFileDlg.FileName,
-                    wallpaperFilter[openFileDlg.FilterIndex - 1].Type,
-                    LibraryTileType.processing,
-                    Program.SettingsVM.Settings.SelectedDisplay);
-                }
-                App.AppWindow.NavViewNavigate("library");
-            }
-            filterString.Clear();
         }
 
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
@@ -209,7 +223,7 @@ namespace livelywpf.Views
         private void Page_Unloaded(object sender, RoutedEventArgs e)
         {
             //Still rendering otherwise?!
-            if(img != null)
+            if (img != null)
             {
                 img.Source = null;
             }

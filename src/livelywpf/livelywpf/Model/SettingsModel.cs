@@ -81,6 +81,7 @@ namespace livelywpf
         public int AudioVolumeGlobal { get; set; }
         public WallpaperScaler WallpaperScaling { get; set; }
         public bool CefDiskCache { get; set; }
+        public bool DebugMenu { get; set; }
 
         public SettingsModel()
         {
@@ -130,6 +131,7 @@ namespace livelywpf
             AudioVolumeGlobal = 50;
             WallpaperScaling = WallpaperScaler.fill;
             CefDiskCache = false;
+            DebugMenu = false;
         }
     }
 }

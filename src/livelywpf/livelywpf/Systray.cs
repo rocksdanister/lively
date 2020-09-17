@@ -63,16 +63,19 @@ namespace livelywpf
             customiseWallpaperBtn.Click += CustomiseWallpaper;
             _notifyIcon.ContextMenuStrip.Items.Add(customiseWallpaperBtn);
 
-            _notifyIcon.ContextMenuStrip.Items.Add(new Helpers.CustomContextMenu.StripSeparatorCustom().stripSeparator);
-            UpdateTrayBtn = new System.Windows.Forms.ToolStripMenuItem(Properties.Resources.TextUpdateChecking, null)
+            if(!Program.IsMSIX)
             {
-                Enabled = false
-            };
-            UpdateTrayBtn.Click += (s, e) => Program.ShowUpdateDialog();
-            _notifyIcon.ContextMenuStrip.Items.Add(UpdateTrayBtn);
+                _notifyIcon.ContextMenuStrip.Items.Add(new Helpers.CustomContextMenu.StripSeparatorCustom().stripSeparator);
+                UpdateTrayBtn = new System.Windows.Forms.ToolStripMenuItem(Properties.Resources.TextUpdateChecking, null)
+                {
+                    Enabled = false
+                };
+                UpdateTrayBtn.Click += (s, e) => Program.ShowUpdateDialog();
+                _notifyIcon.ContextMenuStrip.Items.Add(UpdateTrayBtn);
 
-            _notifyIcon.ContextMenuStrip.Items.Add(new Helpers.CustomContextMenu.StripSeparatorCustom().stripSeparator);
-            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextSupport, Properties.Icons.icons8_heart_48).Click += (s, e) => OpenExternal("https://ko-fi.com/rocksdanister");
+                _notifyIcon.ContextMenuStrip.Items.Add(new Helpers.CustomContextMenu.StripSeparatorCustom().stripSeparator);
+                _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextSupport, Properties.Icons.icons8_heart_48).Click += (s, e) => OpenExternal("https://ko-fi.com/rocksdanister");
+            }
 
             //_notifyIcon.ContextMenuStrip.Items.Add("-");
             _notifyIcon.ContextMenuStrip.Items.Add(new Helpers.CustomContextMenu.StripSeparatorCustom().stripSeparator);

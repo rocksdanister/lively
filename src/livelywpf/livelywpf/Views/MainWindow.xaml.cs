@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Forms.Design.Behavior;
 using System.Windows.Interop;
 using System.Windows.Threading;
 using Windows.Networking.NetworkOperators;
@@ -26,6 +27,7 @@ namespace livelywpf
     {
         public static bool _isExit = false;
         private NavigationView navView;
+        private Windows.UI.Xaml.Controls.NavigationViewItem debugMenu;
         public MainWindow()
         {
             InitializeComponent();
@@ -44,13 +46,22 @@ namespace livelywpf
                 navView.IsBackEnabled = false;
                 navView.IsBackButtonVisible = NavigationViewBackButtonVisible.Collapsed;
                 navView.PaneDisplayMode = NavigationViewPaneDisplayMode.LeftCompact;
-                navView.MenuItems.Add(CreateMenu(Properties.Resources.TitleLibrary, "library", Symbol.Library));
-                navView.MenuItems.Add(CreateMenu(Properties.Resources.TitleAddWallpaper, "add", Symbol.Add));
-                //navView.MenuItems.Add(CreateMenu("Playlist", "playlist", Symbol.SlideShow));
-                navView.MenuItems.Add(CreateMenu(Properties.Resources.TitleHelp, "help", Symbol.Help));
-                navView.MenuItems.Add(CreateMenu(Properties.Resources.TitleAbout, "about", Symbol.Comment));
+                navView.MenuItems.Add(CreateMenu(Properties.Resources.TitleLibrary, "library", "\uE8F1"));
+                navView.MenuItems.Add(CreateMenu(Properties.Resources.TitleAddWallpaper, "add", "\uE710"));
+                navView.MenuItems.Add(CreateMenu(Properties.Resources.TitleHelp, "help", "\uE897"));
+                navView.MenuItems.Add(CreateMenu(Properties.Resources.TitleAbout, "about", "\uE90A"));
+                navView.MenuItems.Add(debugMenu = CreateMenu("Debug", "debug", "\uEBE8", Program.SettingsVM.Settings.DebugMenu));
+                Program.SettingsVM.DebugMenuVisibilityChange += SettingsVM_DebugMenuVisibilityChange;
                 navView.ItemInvoked += NavView_ItemInvoked;
                 NavViewNavigate("library");
+            }
+        }
+
+        private void SettingsVM_DebugMenuVisibilityChange(object sender, bool visibility)
+        {
+            if(debugMenu != null)
+            {
+                debugMenu.Visibility = visibility ? Windows.UI.Xaml.Visibility.Visible : Windows.UI.Xaml.Visibility.Collapsed;
             }
         }
 
@@ -95,21 +106,29 @@ namespace livelywpf
                 case "help":
                     ContentFrame.Navigate(typeof(livelywpf.Views.HelpView), new Uri("Views/HelpView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
                     break;
+                case "debug":
+                    ContentFrame.Navigate(typeof(livelywpf.Views.DebugView), new Uri("Views/DebugView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
+                    break;
                 default:
-                    //new DrillInNavigationTransitionInfo()
                     ContentFrame.Navigate(typeof(livelywpf.Views.LibraryView), new Uri("Views/LibraryView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo()); 
                     break;
             }
         }
 
-        private Windows.UI.Xaml.Controls.NavigationViewItem CreateMenu(string menuName, string tag, Symbol icon)
+        //Glyph code: https://docs.microsoft.com/en-us/windows/uwp/design/style/segoe-ui-symbol-font
+        private Windows.UI.Xaml.Controls.NavigationViewItem CreateMenu(string menuName, string tag, string glyph, bool visibility = true)
         {
             Windows.UI.Xaml.Controls.NavigationViewItem item = new NavigationViewItem
             {
                 Name = menuName,
                 Content = menuName,
                 Tag = tag,
-                Icon = new SymbolIcon(icon)
+                Icon = new FontIcon()
+                {
+                    FontFamily = new Windows.UI.Xaml.Media.FontFamily("Segoe MDL2 Assets"),
+                    Glyph = glyph
+                },
+                Visibility = visibility ? Windows.UI.Xaml.Visibility.Visible : Windows.UI.Xaml.Visibility.Collapsed,
             };
             return item;
         }

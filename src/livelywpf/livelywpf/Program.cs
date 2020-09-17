@@ -22,6 +22,7 @@ namespace livelywpf
         //Loaded from Settings.json (User configurable.)
         public static string WallpaperDir;
         public static readonly string AppDataDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Lively Wallpaper");
+        public static readonly bool IsMSIX = new DesktopBridge.Helpers().IsRunningAsUwp();
 
         //todo: use singleton or something instead?
         public static SettingsViewModel SettingsVM;
@@ -107,6 +108,9 @@ namespace livelywpf
         private static bool _showUpdateDialog = false;
         private static async void AppUpdater()
         {
+            if (IsMSIX)
+                return;
+
             try
             {
                 var gitRelease = await UpdaterGithub.GetLatestRelease("lively", "rocksdanister", 45000);

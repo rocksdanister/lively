@@ -167,7 +167,7 @@
                             </ComboBox>
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipBrowserEngine}"/>
 
-                            <CheckBox Content="{x:Bind UIText.TitleDiskCache}" Margin="0, 5, 0, 0" IsChecked="{Binding CefDiskCache, Mode=TwoWay}" IsEnabled="False"/>
+                            <CheckBox Content="{x:Bind UIText.TitleDiskCache}" Margin="0, 5, 0, 0" IsChecked="{Binding CefDiskCache, Mode=TwoWay}"/>
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipDisCache}"/>
 
                             <TextBlock Margin="0, 10, 0, 0" Text="{x:Bind UIText.TitleBrowserDebuggingPort}"/>
@@ -197,6 +197,9 @@
                         <StackPanel>
                             <ToggleSwitch IsOn="{Binding IsSysTrayIconVisible, Mode=TwoWay}" Header="{x:Bind UIText.TitleSysTrayIconHide}"/>
                             <TextBlock Margin="0, 10, 0, 0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipSysTrayIconHide}"/>
+
+                            <ToggleSwitch IsOn="{Binding IsDebugMenuVisible, Mode=TwoWay}" Header="Debug"/>
+                            <TextBlock Margin="0, 10, 0, 0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="Show developer menu, lively will restart to apply new setting."/>
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>

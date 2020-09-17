@@ -62,6 +62,11 @@ namespace livelywpf.Core
                 cmdArgs.Append(" --audio true");
             }
 
+            if(!String.IsNullOrWhiteSpace(model.LivelyInfo.Arguments))
+            {
+                cmdArgs.Append(" " + model.LivelyInfo.Arguments);
+            }
+
             ProcessStartInfo start = new ProcessStartInfo
             {
                 Arguments = cmdArgs.ToString(),
@@ -98,20 +103,23 @@ namespace livelywpf.Core
 
         public void Close()
         {
-            Terminate();
-            /*
-            //Issue: Cef.shutdown() crashing in dualscreen/at times.
+            //Terminate();
+            
             try
             {
                 Proc.Refresh();
                 Proc.OutputDataReceived -= Proc_OutputDataReceived;
                 Proc.StandardInput.WriteLine("lively:terminate");
-                //Proc.CloseMainWindow();
+                //Issue: Cef.shutdown() crashing when simultaneously closed.
+                //TODO: Make it Async function.
+                Proc.WaitForExit(4000);
+                Terminate();
             }
-            catch {
-              Terminate();
+            catch
+            {
+                Terminate();
             }
-            */
+            
         }
 
         public IntPtr GetHWND()
