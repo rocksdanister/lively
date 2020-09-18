@@ -74,7 +74,6 @@ namespace livelywpf.Views
         {
             InitializeComponent();
             UrlText.Text = Program.SettingsVM.Settings.SavedURL;
-
             filterString = new StringBuilder();
             filterString.Append("All Files|*.*|");
             foreach (var item in wallpaperFilter)

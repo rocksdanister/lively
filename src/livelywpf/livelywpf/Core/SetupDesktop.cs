@@ -246,13 +246,16 @@ namespace livelywpf
                             switch (Program.SettingsVM.Settings.WallpaperArrangement)
                             {
                                 case WallpaperArrangement.per:
-                                    CloseWallpaper(wallpaper.GetScreen(), false);
+                                    //CloseWallpaper(wallpaper.GetScreen(), false);
+                                    TerminateWallpaper(wallpaper.GetScreen(), false);
                                     break;
                                 case WallpaperArrangement.span:
-                                    CloseAllWallpapers(false);
+                                    //CloseAllWallpapers(false);
+                                    TerminateAllWallpapers(false);
                                     break;
                                 case WallpaperArrangement.duplicate:
-                                    CloseAllWallpapers(false);
+                                    //CloseAllWallpapers(false);
+                                    TerminateAllWallpapers(false);
                                     break;
                             }
                         }
@@ -261,7 +264,7 @@ namespace livelywpf
                         if (!File.Exists(Path.Combine(wallpaper.GetWallpaperData().LivelyInfoFolderPath, "LivelyInfo.json")))
                         {
                             //user cancelled/fail!
-                            wallpaper.Close();
+                            wallpaper.Terminate();
                             RefreshDesktop();
                             await System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
                             {
@@ -281,7 +284,7 @@ namespace livelywpf
 
                     if(!ScreenHelper.IsMultiScreen())
                     {
-                        CloseAllWallpapers(false);
+                        TerminateAllWallpapers(false);
                         SetWallpaperPerScreen(wallpaper.GetHWND(), wallpaper.GetScreen());
                     }
                     else
@@ -289,16 +292,19 @@ namespace livelywpf
                         switch (Program.SettingsVM.Settings.WallpaperArrangement)
                         {
                             case WallpaperArrangement.per:
-                                CloseWallpaper(wallpaper.GetScreen(), false);
-                                //CloseaWallpaperAfterDelay(wallpaper.GetScreen(), 500);
+                                //CloseWallpaper(wallpaper.GetScreen(), false);
+                                TerminateWallpaper(wallpaper.GetScreen(), false);
                                 SetWallpaperPerScreen(wallpaper.GetHWND(), wallpaper.GetScreen());
                                 break;
                             case WallpaperArrangement.span:
-                                CloseAllWallpapers(false);
+                                //CloseAllWallpapers(false);
+                                TerminateAllWallpapers(false);
                                 SetWallpaperSpanScreen(wallpaper.GetHWND());
                                 break;
                             case WallpaperArrangement.duplicate:
-                                CloseWallpaper(wallpaper.GetScreen(), false);
+                                //CloseWallpaper(wallpaper.GetScreen(), false);
+                                TerminateWallpaper(wallpaper.GetScreen(), false);
+                                //Recursion..
                                 await SetWallpaperDuplicateScreen(wallpaper);
                                 break;
                         }
@@ -336,7 +342,7 @@ namespace livelywpf
         /// </summary>
         /// <param name="handle">window handle of process to add as wallpaper</param>
         /// <param name="display">displaystring of display to sent wp to.</param>
-        private static void SetWallpaperPerScreen(IntPtr handle, LivelyScreen targetDisplay)
+        private static void SetWallpaperPerScreen(IntPtr handle, LivelyScreen targetDisplay, bool focus = true)
         {
             NativeMethods.RECT prct = new NativeMethods.RECT();
             NativeMethods.POINT topLeft;
@@ -357,7 +363,11 @@ namespace livelywpf
             {
                 NLogger.LogWin32Error("setwindowpos(3) fail addwallpaper(),");
             }
-            SetFocus(true);
+
+            if(focus)
+            {
+                SetFocus(true);
+            }
             RefreshDesktop();
 
             //logging.
@@ -372,7 +382,7 @@ namespace livelywpf
         /// <summary>
         /// Spans wp across all screens.
         /// </summary>
-        private static void SetWallpaperSpanScreen(IntPtr handle)
+        private static void SetWallpaperSpanScreen(IntPtr handle, bool focus = true)
         {
             NativeMethods.RECT prct = new NativeMethods.RECT();
             //get spawned workerw rectangle data.
@@ -384,7 +394,11 @@ namespace livelywpf
             {
                 NLogger.LogWin32Error("setwindowpos fail SpanWallpaper(),");
             }
-            SetFocus(true);
+
+            if (focus)
+            {
+                SetFocus(true);
+            }
             RefreshDesktop();
         }
 
@@ -519,16 +533,26 @@ namespace livelywpf
 
         private static void UpdateWallpaperRect()
         {
+            //Logger.Info("System parameters changed: wallpaper resizing disabled due to focus bug.");
+            //return;
+            NativeMethods.RECT prct = new NativeMethods.RECT();
+
             //Known issues: Buggy if screen dpi is greater than 100% in multiscreen.
             //Possible cause: the window being used as reference is not updated to the new dpi in time?
             if (ScreenHelper.IsMultiScreen() && Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span)
             {
                 if(Wallpapers.Count != 0)
                 {
-                    //detach wallpaper window from this dialogue.
+                    //detach wallpaper window from this dialogue.              
                     WindowOperations.SetParentSafe(Wallpapers[0].GetHWND(), IntPtr.Zero);
-                    SetWallpaperSpanScreen(Wallpapers[0].GetHWND());
+                    SetWallpaperSpanScreen(Wallpapers[0].GetHWND(), false);
                     Wallpapers[0].SetScreen(ScreenHelper.GetPrimaryScreen());
+                    
+                    /*
+                    NativeMethods.GetWindowRect(workerw, out prct); //get spawned workerw rectangle data.
+                    NativeMethods.SetWindowPos(Wallpapers[0].GetHWND(), 1, 0, 0, prct.Right - prct.Left, prct.Bottom - prct.Top, 0 | 0x0010); //fill wp into the whole workerw area.
+                    Wallpapers[0].SetScreen(ScreenHelper.GetPrimaryScreen());
+                    */
                 }
             }
             else
@@ -540,10 +564,24 @@ namespace livelywpf
                     if ((i = Wallpapers.FindIndex(x => ScreenHelper.ScreenCompare(item, x.GetScreen(), DisplayIdentificationMode.screenClass))) != -1)
                     {
                         Logger.Info("System parameters changed: Screen Param old/new -> " + Wallpapers[i].GetScreen().Bounds + "/" + item.Bounds);
-                        //detach wallpaper window from this dialogue.
+                        //detach wallpaper window from this dialogue.                       
                         WindowOperations.SetParentSafe(Wallpapers[i].GetHWND(), IntPtr.Zero);
-                        SetWallpaperPerScreen(Wallpapers[i].GetHWND(), item);
+                        SetWallpaperPerScreen(Wallpapers[i].GetHWND(), item, false);
                         Wallpapers[i].SetScreen(item);
+                        
+                        /*
+                        //Using this window as reference for MapWindowPoints.                  
+                        Window w = new Window() { Width = 10, Height = 10, ShowActivated = false, ShowInTaskbar = false };
+                        w.Show();
+                        NativeMethods.SetWindowPos(new WindowInteropHelper(w).Handle, 1, item.Bounds.Left, item.Bounds.Top, 0, 0,
+                                (int)NativeMethods.SetWindowPosFlags.SWP_NOACTIVATE | (int)NativeMethods.SetWindowPosFlags.SWP_NOSIZE);
+                        NativeMethods.MapWindowPoints(new WindowInteropHelper(w).Handle, workerw, ref prct, 2);
+                        w.Close();
+
+                        //Updating position and data of wallpaper.
+                        NativeMethods.SetWindowPos(Wallpapers[i].GetHWND(), 1, prct.Left, prct.Top, (item.Bounds.Width), (item.Bounds.Height), 0 | 0x0010);
+                        Wallpapers[i].SetScreen(item);
+                        */
                     }
                 }
             }
@@ -684,23 +722,6 @@ namespace livelywpf
             CloseAllWallpapers(true);
         }
 
-        public static void CloseWallpaper(WallpaperType type)
-        {
-            Wallpapers.ForEach(x => 
-            { 
-                if (x.GetWallpaperType() == type)
-                {
-                    if (x.GetProcess() != null)
-                    {
-                        SendMsgLivelySubProcess("lively:rmv-pgm " + x.GetProcess().Id);
-                    }
-                    x.Close();
-                }         
-            });
-            Wallpapers.RemoveAll(x => x.GetWallpaperType() == type);
-            WallpaperChanged?.Invoke(null, null);
-        }
-
         private static void CloseWallpaper(LivelyScreen display, bool fireEvent)
         {
             Wallpapers.ForEach(x =>
@@ -715,7 +736,7 @@ namespace livelywpf
                 }
             });
             Wallpapers.RemoveAll(x => ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.screenLayout));
-            if(fireEvent)
+            if (fireEvent)
             {
                 WallpaperChanged?.Invoke(null, null);
             }
@@ -726,7 +747,54 @@ namespace livelywpf
             CloseWallpaper(display, true);
         }
 
+        public static void TerminateWallpaper(WallpaperType type)
+        {
+            Wallpapers.ForEach(x => 
+            { 
+                if (x.GetWallpaperType() == type)
+                {
+                    if (x.GetProcess() != null)
+                    {
+                        SendMsgLivelySubProcess("lively:rmv-pgm " + x.GetProcess().Id);
+                    }
+                    x.Terminate();
+                }         
+            });
+            Wallpapers.RemoveAll(x => x.GetWallpaperType() == type);
+            WallpaperChanged?.Invoke(null, null);
+        }
+
+        private static void TerminateWallpaper(LivelyScreen display, bool fireEvent)
+        {
+            Wallpapers.ForEach(x =>
+            {
+                if (ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.screenLayout))
+                {
+                    if (x.GetProcess() != null)
+                    {
+                        SendMsgLivelySubProcess("lively:rmv-pgm " + x.GetProcess().Id);
+                    }
+                    x.Terminate();
+                }
+            });
+            Wallpapers.RemoveAll(x => ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.screenLayout));
+            if (fireEvent)
+            {
+                WallpaperChanged?.Invoke(null, null);
+            }
+        }
+
+        public static void TerminateWallpaper(LivelyScreen display)
+        {
+            TerminateWallpaper(display, true);
+        }
+
         public static void TerminateWallpaper(LibraryModel wp)
+        {
+            TerminateWallpaper(wp, true);
+        }
+
+        private static void TerminateWallpaper(LibraryModel wp, bool fireEvent)
         {
             Wallpapers.ForEach(x =>
             {
@@ -740,7 +808,10 @@ namespace livelywpf
                 }
             });
             Wallpapers.RemoveAll(x => x.GetWallpaperData() == wp);
-            WallpaperChanged?.Invoke(null, null);
+            if (fireEvent)
+            {
+                WallpaperChanged?.Invoke(null, null);
+            }
         }
 
         private static void TerminateAllWallpapers(bool fireEvent)

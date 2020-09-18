@@ -10,6 +10,7 @@ namespace livelywpf.Model
         public ScreenLayoutModel(LivelyScreen screen, string screenImagePath, string livelypropertyFilePath, string screenTitle)
         {
             this.Screen = screen;
+            this.ScreenSubTitle = " (" + screen.DeviceNumber + ")";
             this.ScreenImagePath = screenImagePath;
             this.LivelyPropertyPath = livelypropertyFilePath;
             this.ScreenTitle = screenTitle;
@@ -56,6 +57,17 @@ namespace livelywpf.Model
             {
                 _screenTitle = value;
                 OnPropertyChanged("ScreenTitle");
+            }
+        }
+
+        private string _screenSubTitle;
+        public string ScreenSubTitle
+        {
+            get { return _screenSubTitle; }
+            set
+            {
+                _screenSubTitle = value;
+                OnPropertyChanged("ScreenSubTitle");
             }
         }
     }

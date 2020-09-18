@@ -43,11 +43,13 @@ namespace livelywpf
                 new LanguagesModel("Deutsche(de)", new string[]{"de"}),
                 new LanguagesModel("portuguesa(pt)", new string[]{"pt"}),
                 new LanguagesModel("portuguesa(pt-BR)", new string[]{"pt-BR"}),
-                new LanguagesModel("Filipino(fil)", new string[]{"fil","fil-PH"}),
-                new LanguagesModel("Magyar(hu)", new string[]{"hu","hu-HU"}),
-                new LanguagesModel("svenska(sv)", new string[]{"sv","sv-AX","sv-FI","sv-SE"}),
-                new LanguagesModel("melayu(ms)", new string[]{"ms", "ms-BN","ms-MY"}),
+                new LanguagesModel("Filipino(fil)", new string[]{"fil", "fil-PH"}),
+                new LanguagesModel("Magyar(hu)", new string[]{"hu", "hu-HU"}),
+                new LanguagesModel("svenska(sv)", new string[]{"sv","sv-AX", "sv-FI", "sv-SE"}),
+                new LanguagesModel("melayu(ms)", new string[]{"ms", "ms-BN", "ms-MY"}),
                 new LanguagesModel("Nederlands(nl-NL)", new string[]{"nl-NL"}),
+                new LanguagesModel("Tiếng Việt(vi)", new string[]{"vi", "vi-VN"}),
+                new LanguagesModel("日本語(ja)", new string[]{"ja", "ja-JP"}),
             };
             SelectedLanguageItem = SearchSupportedLanguage(Settings.Language);
 
@@ -165,9 +167,6 @@ namespace livelywpf
                     Settings.Language = _selectedLanguageItem.Codes[0];
                     UpdateConfigFile();
                     Program.RestartApplication();
-
-                    //todo: temporary only, change it to better.
-                    //System.Windows.MessageBox.Show(Properties.Resources.DescriptionPleaseRestartLively, Properties.Resources.TitleAppName);
                 }    
             }
         }
@@ -652,7 +651,7 @@ namespace livelywpf
         private void WallpaperRestart(WallpaperType type)
         {
             var prevWallpapers = SetupDesktop.Wallpapers.FindAll(x => x.GetWallpaperType() == type).ToList();
-            SetupDesktop.CloseWallpaper(type);
+            SetupDesktop.TerminateWallpaper(type);
             foreach (var item in prevWallpapers)
             {
                 Program.LibraryVM.WallpaperSet(item.GetWallpaperData(), item.GetScreen());

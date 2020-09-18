@@ -52,7 +52,8 @@ namespace livelywpf.Core
                 cmdArgs.Append(" --debug " + Program.SettingsVM.Settings.WebDebugPort);
             }
 
-            if (Program.SettingsVM.Settings.CefDiskCache)
+            //Disk cache is only needed for online websites (if enabled.)
+            if (Program.SettingsVM.Settings.CefDiskCache && model.LivelyInfo.Type == WallpaperType.url)
             {
                 cmdArgs.Append(" --cache " + "\"" + Path.Combine(Program.AppDataDir, "Cef", "cache", display.DeviceNumber) + "\"");
             }
@@ -102,9 +103,7 @@ namespace livelywpf.Core
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
 
         public void Close()
-        {
-            //Terminate();
-            
+        {    
             try
             {
                 Proc.Refresh();
@@ -112,8 +111,10 @@ namespace livelywpf.Core
                 Proc.StandardInput.WriteLine("lively:terminate");
                 //Issue: Cef.shutdown() crashing when simultaneously closed.
                 //TODO: Make it Async function.
-                Proc.WaitForExit(4000);
-                Terminate();
+                if (!Proc.WaitForExit(4000))
+                {
+                    Terminate();
+                }
             }
             catch
             {

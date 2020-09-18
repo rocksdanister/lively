@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -118,571 +118,573 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DescriptionAddWallpaper" xml:space="preserve">
-    <value>Wählen Sie eine Datei aus oder geben Sie eine Website-URL an, die als Hintergrundbild festgelegt werden soll.</value>
+    <value>ファイルを選択するか、ウェブサイトのURLを指定して壁紙として設定します。</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
-    <value>Legen Sie das Wiedergabeverhalten von Hintergrundbildern basierend auf der laufenden Anwendung fest</value>
+    <value>実行中のアプリケーションに基づく壁紙の再生動作です。</value>
   </data>
   <data name="DescriptionCancelQuestion" xml:space="preserve">
-    <value>Bist du dir sicher abzubrechen?</value>
+    <value>本当にキャンセルしますか？</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
-    <value>Sind Sie sicher das Hintergrundbild permanent von Ihrem Laufwerk zu löschen?</value>
+    <value>ディスクからこの壁紙を永久に削除しますか？</value>
+  </data>
+  <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
+    <value>この壁紙をライブラリから削除してもよろしいですか？</value>
   </data>
   <data name="DescriptionDragDropFIle" xml:space="preserve">
-    <value>Ziehen Sie einfach Dateien per Drag &amp; Drop in die Bibliothek.</value>
+    <value>ライブラリにファイルをドラッグ＆ドロップしてください。</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
-    <value>Sie öffnen eine externe Anwendung als Hintergrundbild.
-Schädliche Anwendungen können Malware, Viren usw. beinhalten und Ihrem System Schaden zufügen.
-Fahren Sie nur fort, wenn diese Anwendung aus einer vertrauenswürdigen Quelle stammt.</value>
+    <value>壁紙として外部アプリケーションを開いています。
+悪意のあるアプリケーションは、マルウェアやウイルスをホストし、システムに害を及ぼす可能性があります。
+このアプリケーションが信頼できるソースから来ている場合のみ続行してください。</value>
   </data>
   <data name="DescriptionMinimizedTray" xml:space="preserve">
-    <value>Lively ist in das systemtray minimiert, rechtsklicken Sie das Lively-Symbol für mehr optionen.</value>
+    <value>活気がシステムトレイに最小化されているので、活気のアイコンを右クリックして続行します。</value>
+  </data>
+  <data name="DescriptionPleaseRestartLively" xml:space="preserve">
+    <value>設定を有効にするために、Livelyを再起動してください。</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
-    <value>Drücke um die Aufnahme zu starten.</value>
+    <value>押して録画を開始します。</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
-    <value>Das letzte/ Die letzten Hintergrundbild/er wird/werden wiederhergestellt</value>
+    <value>前の壁紙を復元中、お待ちください...</value>
+  </data>
+  <data name="DescriptionScreenLayout" xml:space="preserve">
+    <value>表示を選択</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
-    <value>Eine neuere Version ist verfügbar!</value>
+    <value>新バージョンのソフトが登場しました！</value>
   </data>
   <data name="DescriptionWebpageLoad" xml:space="preserve">
-    <value>Geben Sie die Internetseiten-URL ein, Shadertoy.com shader links werden nicht unterstützt</value>
+    <value>ウェブサイトのURLを入力してください、shadertoy.comのシェーダーリンクがサポートされています。</value>
   </data>
   <data name="DescriptionWelcomeWizard" xml:space="preserve">
-    <value>Dieses Setup hilft dir Lively einzustellen!</value>
+    <value>このウィザードを使って、Livelyの設定を開始します。</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
-    <value>Aktualisierung fehlgeschlagen. Versuchen Sie, das Installationsprogramm neu herunterzuladen</value>
+    <value>アップデートに失敗しました。
+https://github.com/rocksdanister/lively/releases</value>
   </data>
   <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
-    <value>Beschädigte Hintergrungbild-Datei, versuchen Sie es neuzuladen.</value>
+    <value>破損した壁紙ファイルは、再ダウンロードしてみてください。</value>
   </data>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
-    <value>Oops... Looks like something wen't wrong :(
-In order to better understand this error and fix the issue, share the log file with the developer.
-Instructions for sharing log file:
+    <value>おっと... 何かが間違っているようです :(
+このエラーをより良く理解し、問題を解決するために、ログファイルを開発者と共有してください。
+ログファイルの共有方法は以下の通りです。
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
-    <value>Lively kann nicht richtig funktionieren, wenn der Hohe Kontrast Modus von Windows aktiviert ist!
-Schalten Sie den Hohen Kontrast Modus aus &amp; versuchen Sie es erneut.</value>
+    <value>Windowsのハイコントラストモードが有効な状態では、Livelyが正常に動作しません。
+ハイコントラストモードを無効にして、もう一度試してみてください。</value>
+  </data>
+  <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
+    <value>メディア再生に失敗しました。
+livelyの設定でビデオプレイヤーを変更してみてください。
+
+このエラーを理解し、問題を解決するために、ログファイルを開発者と共有してください。
+ログファイルの共有方法：
+https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
-    <value>Keine Lively wallpaper Datei.</value>
+    <value>Livelyの壁紙ファイルではありません。</value>
   </data>
   <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
-    <value>Eine Version ist verfügbar!</value>
+    <value>Livelyが正常に閉じられず、セーフモードで起動していました。
+以前実行していた壁紙を復元しますか？</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
-    <value>Es sieht so aus, als müssten einige Einstellungen vorgenommen werden, damit Lively funktioniert: -
-1. Öffnen Sie "Dieser PC" im Explorer.
-2. Klicken Sie mit der rechten Maustaste auf leeren einen Bereich
-3. Klicken Sie auf Eigenschaften
-4. Klicken Sie auf Erweiterte Systemeinstellungen
-5. Wählen Sie auf der Registerkarte Leistung die Option Einstellungen
-6. Aktivieren Sie "Steuerelemente und Elemente innerhalb von Fenstern animieren"&amp; klicken Sie auf Übernehmen.
+    <value>Livelyを動作させるためには、いくつかの設定が必要なようです。 
+1. 1.このPC(マイコンピュータ)を開きます。
+2. 空の領域を右クリックします。
+3. プロパティを選択します。
+4. システムの詳細設定を選択します。
+5. パフォーマンス」タブで「設定」を選択します。
+6. 6. ウィンドウ内のコントロールと要素のアニメーションを有効にし、適用します。
 
-Wenn Sie Windows 7 benutzten - einfach auf "Für optimale Darstellung anpassen auswählen" &amp; auf "Übernehmen" klicken.
-Wenn es immer noch nicht funktioniert, schließen  &amp; starte Lively neu oder .
-(Does not work in insider windows 10 builds)</value>
+Windows 7の場合は、単に設定 - 最適な外観に調整 &amp;amp; 適用します。
+それでも動作しない場合は、閉じて、もう一度Livelyを起動するか、Windowsを再起動してください。
+(一部のインサイダーのWindows 10ビルドでは動作しません)</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
-    <value>Hinzufügen</value>
+    <value>追加</value>
   </data>
   <data name="TextApplication" xml:space="preserve">
-    <value>Programm</value>
+    <value>アプリケーション</value>
   </data>
   <data name="TextAttribution" xml:space="preserve">
-    <value>Attribute</value>
+    <value>属性</value>
   </data>
   <data name="TextAuthor" xml:space="preserve">
-    <value>Autor</value>
+    <value>著者</value>
   </data>
   <data name="TextBack" xml:space="preserve">
-    <value>Back</value>
+    <value>戻る</value>
   </data>
   <data name="TextBrowse" xml:space="preserve">
-    <value>Suche</value>
+    <value>閲覧</value>
+  </data>
+  <data name="TextClose" xml:space="preserve">
+    <value>閉じる</value>
   </data>
   <data name="TextCloseWallpapers" xml:space="preserve">
-    <value>Schließe Hintergrund</value>
+    <value>壁紙を閉じる</value>
   </data>
   <data name="TextCompleted" xml:space="preserve">
-    <value>Completed!</value>
+    <value>完成！</value>
   </data>
   <data name="TextConvertVideo" xml:space="preserve">
-    <value>Convertiere zum Video Format</value>
+    <value>ビデオに変換する</value>
+  </data>
+  <data name="TextCustomise" xml:space="preserve">
+    <value>カスタマイズ</value>
   </data>
   <data name="TextCustomiseWallpaper" xml:space="preserve">
-    <value>Customise Wallpaper</value>
+    <value>壁紙をカスタマイズする</value>
   </data>
   <data name="TextDeleteWallpaper" xml:space="preserve">
-    <value>Lösche Hintergrund</value>
+    <value>削除</value>
   </data>
   <data name="TextDisplayPauseRuleAllScreen" xml:space="preserve">
-    <value>Alle Anzeigen</value>
+    <value>全画面</value>
   </data>
   <data name="TextDisplayPauseRulePerScreen" xml:space="preserve">
-    <value>Pro Anzeige</value>
+    <value>1画面当たり</value>
   </data>
   <data name="TextDownload" xml:space="preserve">
-    <value>Download</value>
+    <value>ダウンロード</value>
   </data>
   <data name="TextError" xml:space="preserve">
-    <value>Fehler</value>
+    <value>エラー</value>
   </data>
   <data name="TextExit" xml:space="preserve">
-    <value>Beenden</value>
+    <value>終了</value>
   </data>
   <data name="TextExportWallpaperZip" xml:space="preserve">
-    <value>Exportiere lively .zip</value>
+    <value>Lively .zipを出力する</value>
   </data>
   <data name="TextGIF" xml:space="preserve">
-    <value>Animiertes GIF</value>
+    <value>アニメーションGIF</value>
   </data>
   <data name="TextGo" xml:space="preserve">
     <value>GO</value>
   </data>
   <data name="TextHelpTranslate" xml:space="preserve">
-    <value>Helfe Lively zu übersetzen</value>
+    <value>Livelyの翻訳を手伝ってください。</value>
   </data>
   <data name="TextInstall" xml:space="preserve">
-    <value>Installieren</value>
-  </data>
-  <data name="TextmoreInfo" xml:space="preserve">
-    <value>Information</value>
-  </data>
-  <data name="TextMoreWallpapers" xml:space="preserve">
-    <value>Mehr Hintergründe...</value>
-  </data>
-  <data name="TextMouseInteractOnDesktop" xml:space="preserve">
-    <value>Mouse interaction when application focused</value>
-  </data>
-  <data name="TextNext" xml:space="preserve">
-    <value>Next</value>
-  </data>
-  <data name="TextNo" xml:space="preserve">
-    <value>No</value>
-  </data>
-  <data name="TextOnline" xml:space="preserve">
-    <value>Online</value>
-  </data>
-  <data name="TextOpenLively" xml:space="preserve">
-    <value>Öffne Lively</value>
-  </data>
-  <data name="TextPauseAlgoAllProcess" xml:space="preserve">
-    <value>Alle Prozesse (Experimentel)</value>
-  </data>
-  <data name="TextPauseAlgoForegroundProcess" xml:space="preserve">
-    <value>Vordergrund Prozess</value>
-  </data>
-  <data name="TextPauseWallpapers" xml:space="preserve">
-    <value>Pause Wallpapers</value>
-  </data>
-  <data name="TextPerformanceKill" xml:space="preserve">
-    <value>Kill</value>
-  </data>
-  <data name="TextPerformanceNone" xml:space="preserve">
-    <value>Nichts</value>
-  </data>
-  <data name="TextPerformancePause" xml:space="preserve">
-    <value>Pause</value>
-  </data>
-  <data name="TextRemove" xml:space="preserve">
-    <value>Löschen</value>
-  </data>
-  <data name="TextRule" xml:space="preserve">
-    <value>Regel</value>
-  </data>
-  <data name="TextScreen" xml:space="preserve">
-    <value>Bildschirm</value>
-  </data>
-  <data name="TextSearch" xml:space="preserve">
-    <value>Suche</value>
-  </data>
-  <data name="TextSetWallpaper" xml:space="preserve">
-    <value>Als Hintergrund festlegen</value>
-  </data>
-  <data name="TextShowOnDisk" xml:space="preserve">
-    <value>Auf Festplatte anzeiegen</value>
-  </data>
-  <data name="TextSource" xml:space="preserve">
-    <value>Source</value>
-  </data>
-  <data name="TextStart" xml:space="preserve">
-    <value>Start</value>
-  </data>
-  <data name="TextStop" xml:space="preserve">
-    <value>Stop</value>
-  </data>
-  <data name="TextTags" xml:space="preserve">
-    <value>Tags</value>
-  </data>
-  <data name="TextTileSizeLarge" xml:space="preserve">
-    <value>Large</value>
-  </data>
-  <data name="TextTileSizeNormal" xml:space="preserve">
-    <value>Normal</value>
-  </data>
-  <data name="TextTileSizeSmall" xml:space="preserve">
-    <value>Small</value>
-  </data>
-  <data name="TextUIHeadless" xml:space="preserve">
-    <value>Headless</value>
-  </data>
-  <data name="TextUILite" xml:space="preserve">
-    <value>Lite</value>
-  </data>
-  <data name="TextUINormal" xml:space="preserve">
-    <value>Normal</value>
-  </data>
-  <data name="TextUpdateAvailable" xml:space="preserve">
-    <value>Update verfügbar!</value>
-  </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
-    <value>Nach Updates suchen.</value>
-  </data>
-  <data name="TextupdateCheckFail" xml:space="preserve">
-    <value>Suche nach Updates fehlgeschlagen.</value>
-  </data>
-  <data name="TextUpdateChecking" xml:space="preserve">
-    <value>Suche nach Updates</value>
-  </data>
-  <data name="TextUpdateUptodate" xml:space="preserve">
-    <value>Lively ist auf dem neusten Stand!</value>
-  </data>
-  <data name="TextVideo" xml:space="preserve">
-    <value>Video</value>
-  </data>
-  <data name="TextWallpaperLayoutDuplicate" xml:space="preserve">
-    <value>Duplicate same wallpaper</value>
-  </data>
-  <data name="TextWallpaperLayoutSpan" xml:space="preserve">
-    <value>Spanne</value>
-  </data>
-  <data name="TextWallpaperType" xml:space="preserve">
-    <value>Einfügen</value>
-  </data>
-  <data name="TextWebsite" xml:space="preserve">
-    <value>Website</value>
-  </data>
-  <data name="TextWebStream" xml:space="preserve">
-    <value>Stream</value>
-  </data>
-  <data name="TextWelcome" xml:space="preserve">
-    <value>Willkommen</value>
-  </data>
-  <data name="TextYes" xml:space="preserve">
-    <value>Ja</value>
-  </data>
-  <data name="TileVideoPlayer" xml:space="preserve">
-    <value>Videoplayer</value>
-  </data>
-  <data name="TipAddWallpaperFileBrowse" xml:space="preserve">
-    <value>Set all supported file types as wallpaper.</value>
-  </data>
-  <data name="TipAddWallpaperURL" xml:space="preserve">
-    <value>Set the web page of the URL you entered as wallpaper.</value>
-  </data>
-  <data name="TipAppFocus" xml:space="preserve">
-    <value>Set what to do when any application is in focus.</value>
-  </data>
-  <data name="TipAppFullScreen" xml:space="preserve">
-    <value>Set what to do when fullscreen games/applications are running.</value>
-  </data>
-  <data name="TipAppRules" xml:space="preserve">
-    <value>Set different wallpaper playback rules based on running application.</value>
-  </data>
-  <data name="TipAppTheme" xml:space="preserve">
-    <value>Lively adapts to system theme settings, to change appearance goto</value>
-  </data>
-  <data name="TipBatteryPower" xml:space="preserve">
-    <value>(For battery operated systems only) Change playback when AC power is disconnected.</value>
-  </data>
-  <data name="TipBrowserDebuggingPort" xml:space="preserve">
-    <value>Enter the port for debugging webpage wallpapers, browser restart is required for changes to take effect.
-When ready navigate to http://localhost:portnumber to access developer console.</value>
-  </data>
-  <data name="TipDisplayPauseRule" xml:space="preserve">
-    <value>Per: Pause wallpaper only on the screen in which application is focused/fullscreen.
-All: Pause wallpaper on all screen(s) if any application is focused/fullscreen.</value>
-  </data>
-  <data name="TipHideSysTray" xml:space="preserve">
-    <value>System-tray icon visibility, lively will continue to run with the icon hidden.</value>
-  </data>
-  <data name="TipLanguage" xml:space="preserve">
-    <value>Lively will restart to apply the new language.</value>
-  </data>
-  <data name="TipLivelySetupOnClose" xml:space="preserve">
-    <value>Finish the setup to continue.</value>
-  </data>
-  <data name="TipPauseAlgorithm" xml:space="preserve">
-    <value>Foreground: Lightweight, only checks the single process that is in foreground to determine wallpaper playback behaviour.
-All Process: Heavier, Scans all the process to determine playback behaviour.</value>
-  </data>
-  <data name="TipStreamWallpaperDetect" xml:space="preserve">
-    <value>If supported video stream link is detected use the video player instead of loading the webpage.</value>
-  </data>
-  <data name="TipStreamWallpaperVideoQuality" xml:space="preserve">
-    <value>Select the desired video quality for online streams.</value>
-  </data>
-  <data name="TipTileSize" xml:space="preserve">
-    <value>Size of the wallpaper tiles in Library.</value>
-  </data>
-  <data name="TipUIMode" xml:space="preserve">
-    <value>For low-end systems select Lite mode.</value>
-  </data>
-  <data name="TipVideoPlayer" xml:space="preserve">
-    <value>Select the player used for video wallpaper.</value>
-  </data>
-  <data name="TipWallpaperDir" xml:space="preserve">
-    <value>Path used to store wallpaper files.</value>
-  </data>
-  <data name="TipWallpaperInput" xml:space="preserve">
-    <value>Select ways to interact with wallpaper.</value>
-  </data>
-  <data name="TipWallpaperPlayback" xml:space="preserve">
-    <value>Pause wallpaper playback when desktop is not focused.</value>
-  </data>
-  <data name="TipWebBrowserDiskCache" xml:space="preserve">
-    <value>Store temporary files on disk instead of memory, settings gets restored when browser is restarted.</value>
-  </data>
-  <data name="TipWebBrowserEngine" xml:space="preserve">
-    <value>CEF(Chromium Embedded Framework) is a lightweight chromium engine.
-Edge is the built in webview of windows 10.</value>
-  </data>
-  <data name="TipWindowsStartup" xml:space="preserve">
-    <value>Lively needs to run in the background for wallpaper playback.</value>
-  </data>
-  <data name="TitleAbout" xml:space="preserve">
-    <value>über Lively</value>
-  </data>
-  <data name="TitleAddWallpaper" xml:space="preserve">
-    <value>Hinzufügen</value>
-  </data>
-  <data name="TitleAppFocus" xml:space="preserve">
-    <value>Andere Anwendung im Vordergrund</value>
-  </data>
-  <data name="TitleAppFullScreen" xml:space="preserve">
-    <value>Andere Anwendung im Vollbild</value>
-  </data>
-  <data name="TitleAppName" xml:space="preserve">
-    <value>Lively Wallpaper</value>
-  </data>
-  <data name="TitleAppRules" xml:space="preserve">
-    <value>Anwendungsregel</value>
-  </data>
-  <data name="TitleAppTheme" xml:space="preserve">
-    <value>Theme</value>
-  </data>
-  <data name="TitleAudio" xml:space="preserve">
-    <value>Audio</value>
-  </data>
-  <data name="TitleAudioPlayOnScreen" xml:space="preserve">
-    <value>Play audio on screen</value>
-  </data>
-  <data name="TitleBatteryPower" xml:space="preserve">
-    <value>Im Akkubetrieb</value>
-  </data>
-  <data name="TitleBrowseFile" xml:space="preserve">
-    <value>Browse for video, gif, webpage... file to set as wallpaper</value>
-  </data>
-  <data name="TitleBrowserDebuggingPort" xml:space="preserve">
-    <value>Debugging Port</value>
-  </data>
-  <data name="TitleDeleteConfirmation" xml:space="preserve">
-    <value>Bestätige Löschung</value>
-  </data>
-  <data name="TitleDisplayPauseRule" xml:space="preserve">
-    <value>Pausenregel anzeigen</value>
-  </data>
-  <data name="TitleEnterUrl" xml:space="preserve">
-    <value>Enter URL</value>
-  </data>
-  <data name="TitleGeneral" xml:space="preserve">
-    <value>Allgemein</value>
-  </data>
-  <data name="TitleHelp" xml:space="preserve">
-    <value>Hilfe</value>
-  </data>
-  <data name="TitleHideSysTray" xml:space="preserve">
-    <value>System-tray Icon</value>
-  </data>
-  <data name="TitleInteraction" xml:space="preserve">
-    <value>Interaktion</value>
-  </data>
-  <data name="TitleLanguage" xml:space="preserve">
-    <value>Erfordert App-Neustart</value>
-  </data>
-  <data name="TitleLibrary" xml:space="preserve">
-    <value>Bibliothek</value>
-  </data>
-  <data name="TitleLivelySetup" xml:space="preserve">
-    <value>Lively Setup</value>
-  </data>
-  <data name="TitleMisc" xml:space="preserve">
-    <value>Miscellaneous</value>
-  </data>
-  <data name="TitleMute" xml:space="preserve">
-    <value>Mute</value>
-  </data>
-  <data name="TitlePauseAlgo" xml:space="preserve">
-    <value>Pausen-Algorithmus</value>
-  </data>
-  <data name="TitlePerformance" xml:space="preserve">
-    <value>Leistung</value>
-  </data>
-  <data name="TitlePlaylist" xml:space="preserve">
-    <value>Playlist</value>
-  </data>
-  <data name="TitlePleaseWait" xml:space="preserve">
-    <value>Bitte warten</value>
-  </data>
-  <data name="TitleScalingFit" xml:space="preserve">
-    <value>Scaling/Fit</value>
-  </data>
-  <data name="TitleScreenLayout" xml:space="preserve">
-    <value>Screen Layout</value>
-  </data>
-  <data name="TitleSelectFile" xml:space="preserve">
-    <value>Select File</value>
-  </data>
-  <data name="TitleSettings" xml:space="preserve">
-    <value>Einstellungen</value>
-  </data>
-  <data name="TitleStreamWallpaper" xml:space="preserve">
-    <value>Stream</value>
-  </data>
-  <data name="TitleStreamWallpaperDetect" xml:space="preserve">
-    <value>Detect Streams</value>
-  </data>
-  <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
-    <value>Video Quality</value>
-  </data>
-  <data name="TitleTileSize" xml:space="preserve">
-    <value>Tile Size</value>
-  </data>
-  <data name="TitleUIMode" xml:space="preserve">
-    <value>User Interface</value>
-  </data>
-  <data name="TitleVideo" xml:space="preserve">
-    <value>Video</value>
-  </data>
-  <data name="TitleWallpaper" xml:space="preserve">
-    <value>Wallpaper</value>
-  </data>
-  <data name="TitleWallpaperDir" xml:space="preserve">
-    <value>Wallpaper Directory</value>
-  </data>
-  <data name="TitleWallpaperInput" xml:space="preserve">
-    <value>Wallpaper Input</value>
-  </data>
-  <data name="TitleWallpaperLayout" xml:space="preserve">
-    <value>Wählen Sie das Hintergrund-Layout</value>
-  </data>
-  <data name="TitleWallpaperPlayback" xml:space="preserve">
-    <value>Hintergrundbildwiedergabe:</value>
-  </data>
-  <data name="TitleWarning" xml:space="preserve">
-    <value>Warnung</value>
-  </data>
-  <data name="TitleWebBrowser" xml:space="preserve">
-    <value>Internetbrowser</value>
-  </data>
-  <data name="TitleWebBrowserDiskCache" xml:space="preserve">
-    <value>Disk cache</value>
-  </data>
-  <data name="TitleWebBrowserEngine" xml:space="preserve">
-    <value>Engine</value>
-  </data>
-  <data name="TitleWebpageLoad" xml:space="preserve">
-    <value>Lade Internetseite...</value>
-  </data>
-  <data name="TitleWindowsStartup" xml:space="preserve">
-    <value>Starte mit Windows</value>
-  </data>
-  <data name="DescriptionPleaseRestartLively" xml:space="preserve">
-    <value>Please restart Lively for settings to take effect.</value>
-  </data>
-  <data name="TextSupport" xml:space="preserve">
-    <value>Support</value>
-  </data>
-  <data name="TextClose" xml:space="preserve">
-    <value>Close</value>
-  </data>
-  <data name="TextCustomise" xml:space="preserve">
-    <value>Customise</value>
-  </data>
-  <data name="DescriptionScreenLayout" xml:space="preserve">
-    <value>Choose Display</value>
-  </data>
-  <data name="TextWallpaperLayoutPerScreen" xml:space="preserve">
-    <value>Selected screen only</value>
-  </data>
-  <data name="TipWallpaperLayout" xml:space="preserve">
-    <value>How wallpaper is applied to connected display devices.</value>
-  </data>
-  <data name="TitleWallpaperDirMoveExisting" xml:space="preserve">
-    <value>Move existing wallpapers to new folder</value>
-  </data>
-  <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
-    <value>Media playback failed :(
-Try changing the videoplayer in lively settings.
-
-In order to better understand this error and fix the issue, share the log file with the developer.
-Instructions for sharing log file:
-https://github.com/rocksdanister/lively/wiki</value>
-  </data>
-  <data name="TextOff" xml:space="preserve">
-    <value>OFF</value>
-  </data>
-  <data name="TextOn" xml:space="preserve">
-    <value>ON</value>
-  </data>
-  <data name="TextMouse" xml:space="preserve">
-    <value>Mouse</value>
+    <value>インストール</value>
   </data>
   <data name="TextKeyboard" xml:space="preserve">
-    <value>Keyboard</value>
+    <value>キーボード</value>
   </data>
-  <data name="TitleDocumentation" xml:space="preserve">
-    <value>Documentation</value>
+  <data name="TextmoreInfo" xml:space="preserve">
+    <value>情報のご案内</value>
   </data>
-  <data name="TitleCommunity" xml:space="preserve">
-    <value>Community</value>
+  <data name="TextMoreWallpapers" xml:space="preserve">
+    <value>他の壁紙を見る</value>
   </data>
-  <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
-    <value>Are you sure you want to delete this wallpaper from the Library?</value>
+  <data name="TextMouse" xml:space="preserve">
+    <value>マウス</value>
   </data>
-  <data name="TipAudioMaster" xml:space="preserve">
-    <value>Volume level of all wallpapers.</value>
+  <data name="TextMouseInteractOnDesktop" xml:space="preserve">
+    <value>アプリケーションに焦点を当てた場合のマウスの相互作用を設定します。</value>
   </data>
-  <data name="TitleAudioMaster" xml:space="preserve">
-    <value>Master Volume</value>
+  <data name="TextNext" xml:space="preserve">
+    <value>次へ</value>
+  </data>
+  <data name="TextNo" xml:space="preserve">
+    <value>いいえ</value>
+  </data>
+  <data name="TextOff" xml:space="preserve">
+    <value>オフ</value>
+  </data>
+  <data name="TextOn" xml:space="preserve">
+    <value>オン</value>
+  </data>
+  <data name="TextOnline" xml:space="preserve">
+    <value>オンライン</value>
+  </data>
+  <data name="TextOpenLively" xml:space="preserve">
+    <value>Livelyを開く</value>
+  </data>
+  <data name="TextPauseAlgoAllProcess" xml:space="preserve">
+    <value>すべてのプロセス</value>
+  </data>
+  <data name="TextPauseAlgoForegroundProcess" xml:space="preserve">
+    <value>前景のプロセス</value>
+  </data>
+  <data name="TextPauseWallpapers" xml:space="preserve">
+    <value>壁紙を一時停止する</value>
+  </data>
+  <data name="TextPerformanceKill" xml:space="preserve">
+    <value>停止</value>
+  </data>
+  <data name="TextPerformanceNone" xml:space="preserve">
+    <value>何もしない</value>
+  </data>
+  <data name="TextPerformancePause" xml:space="preserve">
+    <value>一時停止</value>
+  </data>
+  <data name="TextRemove" xml:space="preserve">
+    <value>削除</value>
+  </data>
+  <data name="TextRule" xml:space="preserve">
+    <value>ルール</value>
+  </data>
+  <data name="TextScreen" xml:space="preserve">
+    <value>画面</value>
+  </data>
+  <data name="TextSearch" xml:space="preserve">
+    <value>検索</value>
+  </data>
+  <data name="TextSetWallpaper" xml:space="preserve">
+    <value>壁紙として設定する</value>
+  </data>
+  <data name="TextShowOnDisk" xml:space="preserve">
+    <value>ファイルの場所を開く</value>
+  </data>
+  <data name="TextSource" xml:space="preserve">
+    <value>ソース</value>
+  </data>
+  <data name="TextStart" xml:space="preserve">
+    <value>スタート</value>
+  </data>
+  <data name="TextStop" xml:space="preserve">
+    <value>停止</value>
+  </data>
+  <data name="TextSupport" xml:space="preserve">
+    <value>サポート</value>
+  </data>
+  <data name="TextTags" xml:space="preserve">
+    <value>タグ</value>
+  </data>
+  <data name="TextTileSizeLarge" xml:space="preserve">
+    <value>大</value>
+  </data>
+  <data name="TextTileSizeNormal" xml:space="preserve">
+    <value>中</value>
+  </data>
+  <data name="TextTileSizeSmall" xml:space="preserve">
+    <value>小</value>
+  </data>
+  <data name="TextUIHeadless" xml:space="preserve">
+    <value>ヘッドレス</value>
+  </data>
+  <data name="TextUILite" xml:space="preserve">
+    <value>ライト</value>
+  </data>
+  <data name="TextUINormal" xml:space="preserve">
+    <value>通常</value>
+  </data>
+  <data name="TextUpdateAvailable" xml:space="preserve">
+    <value>アップデートが可能です。</value>
+  </data>
+  <data name="TextUpdateCheck" xml:space="preserve">
+    <value>アップデートの確認します。</value>
+  </data>
+  <data name="TextupdateCheckFail" xml:space="preserve">
+    <value>アップデートの確認失敗しました。</value>
+  </data>
+  <data name="TextUpdateChecking" xml:space="preserve">
+    <value>アップデートの確認中。。。</value>
+  </data>
+  <data name="TextUpdateUptodate" xml:space="preserve">
+    <value>最新のものを使用しています。</value>
+  </data>
+  <data name="TextVideo" xml:space="preserve">
+    <value>ビデオ</value>
   </data>
   <data name="TextWallpaperFitFill" xml:space="preserve">
-    <value>Fill</value>
+    <value>フィル</value>
   </data>
   <data name="TextWallpaperFitNone" xml:space="preserve">
-    <value>None</value>
+    <value>なし</value>
   </data>
   <data name="TextWallpaperFitUniform" xml:space="preserve">
-    <value>Uniform</value>
+    <value>ユニフォーム</value>
   </data>
   <data name="TextWallpaperFitUniformToFill" xml:space="preserve">
-    <value>Uniform Fill</value>
+    <value>ユニフォームフィル</value>
+  </data>
+  <data name="TextWallpaperLayoutDuplicate" xml:space="preserve">
+    <value>同じ壁紙を複製する</value>
+  </data>
+  <data name="TextWallpaperLayoutPerScreen" xml:space="preserve">
+    <value>選択した画面のみ</value>
+  </data>
+  <data name="TextWallpaperLayoutSpan" xml:space="preserve">
+    <value>画面をまたいでのスパン</value>
+  </data>
+  <data name="TextWallpaperType" xml:space="preserve">
+    <value>タイプ</value>
+  </data>
+  <data name="TextWebsite" xml:space="preserve">
+    <value>ウェブサイト</value>
+  </data>
+  <data name="TextWebStream" xml:space="preserve">
+    <value>ウェブストリーム</value>
+  </data>
+  <data name="TextWelcome" xml:space="preserve">
+    <value>ようこそ</value>
+  </data>
+  <data name="TextYes" xml:space="preserve">
+    <value>はい</value>
+  </data>
+  <data name="TileVideoPlayer" xml:space="preserve">
+    <value>ビデオプレーヤー</value>
+  </data>
+  <data name="TipAddWallpaperFileBrowse" xml:space="preserve">
+    <value>サポートされているすべてのファイルタイプを壁紙として設定します。</value>
+  </data>
+  <data name="TipAddWallpaperURL" xml:space="preserve">
+    <value>入力したURLのWebページを壁紙に設定します。</value>
+  </data>
+  <data name="TipAppFocus" xml:space="preserve">
+    <value>任意のアプリケーションがフォーカスされている時のモードです。</value>
+  </data>
+  <data name="TipAppFullScreen" xml:space="preserve">
+    <value>フルスクリーンのゲーム/アプリケーションが実行されている時のモードです。</value>
+  </data>
+  <data name="TipAppRules" xml:space="preserve">
+    <value>実行中のアプリケーションに基づいて異なる壁紙の再生ルールを設定します。</value>
+  </data>
+  <data name="TipAppTheme" xml:space="preserve">
+    <value>システムテーマの設定に適応し、外観を変更するには goto</value>
+  </data>
+  <data name="TipAudioMaster" xml:space="preserve">
+    <value>すべての壁紙の音量レベルです。</value>
+  </data>
+  <data name="TipBatteryPower" xml:space="preserve">
+    <value>(電池駆動の場合のみ）AC電源を切った状態で再生ルールを変更します。</value>
+  </data>
+  <data name="TipBrowserDebuggingPort" xml:space="preserve">
+    <value>ウェブページの壁紙をデバッグするためのポートを入力してください。
+準備ができたら http://localhost:portnumber にアクセスして開発者コンソールにアクセスしてください。</value>
+  </data>
+  <data name="TipDisplayPauseRule" xml:space="preserve">
+    <value>全画面: アプリケーションがフォーカスされている/フルスクリーンの画面でのみ壁紙を一時停止します。
+すべて: アプリケーションがフォーカス/フルスクリーンの場合、すべての画面で壁紙を一時停止します。</value>
+  </data>
+  <data name="TipHideSysTray" xml:space="preserve">
+    <value>システムトレイのアイコンを表示すると、Livelyはアイコンが隠された状態で実行され続けます。</value>
+  </data>
+  <data name="TipLanguage" xml:space="preserve">
+    <value>賑やかに新しい言語を適用するために再始動します。</value>
+  </data>
+  <data name="TipLivelySetupOnClose" xml:space="preserve">
+    <value>設定を終了して続行します。</value>
+  </data>
+  <data name="TipPauseAlgorithm" xml:space="preserve">
+    <value>フォアグラウンドプロセス：軽量で、壁紙の再生動作を決定するためにフォアグラウンドにある単一のプロセスのみをチェックします。
+すべてのプロセス：重く、すべてのプロセスをスキャンして再生動作を判断します。</value>
+  </data>
+  <data name="TipStreamWallpaperDetect" xml:space="preserve">
+    <value>サポートされているビデオストリームリンクが検出された場合は、ウェブページを読み込む代わりにビデオプレーヤーを使用してください。</value>
+  </data>
+  <data name="TipStreamWallpaperVideoQuality" xml:space="preserve">
+    <value>オンラインストリームにビデオ品質を選択します。</value>
+  </data>
+  <data name="TipTileSize" xml:space="preserve">
+    <value>ライブラリーの壁紙タイルのサイズ。</value>
+  </data>
+  <data name="TipUIMode" xml:space="preserve">
+    <value>ローエンドシステムの場合は、Lite モードを選択します。</value>
+  </data>
+  <data name="TipVideoPlayer" xml:space="preserve">
+    <value>動画の壁紙に使用するプレーヤーを選択します。</value>
+  </data>
+  <data name="TipWallpaperDir" xml:space="preserve">
+    <value>壁紙ファイルを保存するためのパスです。</value>
   </data>
   <data name="TipWallpaperFit" xml:space="preserve">
-    <value>Wallpaper scaling algorithm.</value>
+    <value>壁紙のスケーリングアルゴリズムです。</value>
+  </data>
+  <data name="TipWallpaperInput" xml:space="preserve">
+    <value>壁紙との相互作用の方法を選択します。</value>
+  </data>
+  <data name="TipWallpaperLayout" xml:space="preserve">
+    <value>接続されたディスプレイデバイスに壁紙を貼る方法です。</value>
+  </data>
+  <data name="TipWallpaperPlayback" xml:space="preserve">
+    <value>デスクトップにフォーカスが合っていない場合、壁紙の再生を一時停止します。</value>
+  </data>
+  <data name="TipWebBrowserDiskCache" xml:space="preserve">
+    <value>一時ファイルをメモリではなくディスクに保存し、ブラウザの再起動時に設定を復元します。</value>
+  </data>
+  <data name="TipWebBrowserEngine" xml:space="preserve">
+    <value>CEF(Chromium Embedded Framework)は軽量なクロムエンジンです。
+Edgeはwindows 10に組み込まれているWebビューです。</value>
+  </data>
+  <data name="TipWindowsStartup" xml:space="preserve">
+    <value>Livelyは壁紙再生のためにバックグラウンドで実行する必要があります。</value>
+  </data>
+  <data name="TitleAbout" xml:space="preserve">
+    <value>情報</value>
+  </data>
+  <data name="TitleAddWallpaper" xml:space="preserve">
+    <value>壁紙の追加</value>
+  </data>
+  <data name="TitleAppFocus" xml:space="preserve">
+    <value>アプリケーションフォーカス</value>
+  </data>
+  <data name="TitleAppFullScreen" xml:space="preserve">
+    <value>アプリケーション フルスクリーン</value>
+  </data>
+  <data name="TitleAppName" xml:space="preserve">
+    <value>Lively壁紙</value>
+  </data>
+  <data name="TitleAppRules" xml:space="preserve">
+    <value>アプリケーションのルール</value>
+  </data>
+  <data name="TitleAppTheme" xml:space="preserve">
+    <value>テーマ</value>
+  </data>
+  <data name="TitleAudio" xml:space="preserve">
+    <value>音声</value>
+  </data>
+  <data name="TitleAudioMaster" xml:space="preserve">
+    <value>マスターボリューム</value>
+  </data>
+  <data name="TitleAudioPlayOnScreen" xml:space="preserve">
+    <value>画面上でオーディオを再生します。</value>
+  </data>
+  <data name="TitleBatteryPower" xml:space="preserve">
+    <value>バッテリ電源オン時</value>
+  </data>
+  <data name="TitleBrowseFile" xml:space="preserve">
+    <value>ビデオ、GIF、ウェブページ...壁紙として設定するファイルを参照します。</value>
+  </data>
+  <data name="TitleBrowserDebuggingPort" xml:space="preserve">
+    <value>デバッグポート</value>
+  </data>
+  <data name="TitleCommunity" xml:space="preserve">
+    <value>コミュニティ</value>
+  </data>
+  <data name="TitleDeleteConfirmation" xml:space="preserve">
+    <value>削除の確認</value>
+  </data>
+  <data name="TitleDisplayPauseRule" xml:space="preserve">
+    <value>表示の一時停止ルール</value>
+  </data>
+  <data name="TitleDocumentation" xml:space="preserve">
+    <value>ドキュメンテーション</value>
+  </data>
+  <data name="TitleEnterUrl" xml:space="preserve">
+    <value>URLを入力してください。</value>
+  </data>
+  <data name="TitleGeneral" xml:space="preserve">
+    <value>一般</value>
+  </data>
+  <data name="TitleHelp" xml:space="preserve">
+    <value>ヘルプ</value>
+  </data>
+  <data name="TitleHideSysTray" xml:space="preserve">
+    <value>システムトレイアイコン</value>
+  </data>
+  <data name="TitleInteraction" xml:space="preserve">
+    <value>インタラクション</value>
+  </data>
+  <data name="TitleLanguage" xml:space="preserve">
+    <value>言語</value>
+  </data>
+  <data name="TitleLibrary" xml:space="preserve">
+    <value>ライブラリー</value>
+  </data>
+  <data name="TitleLivelySetup" xml:space="preserve">
+    <value>Lively セットアップ</value>
+  </data>
+  <data name="TitleMisc" xml:space="preserve">
+    <value>その他</value>
+  </data>
+  <data name="TitleMute" xml:space="preserve">
+    <value>ミュート</value>
+  </data>
+  <data name="TitlePauseAlgo" xml:space="preserve">
+    <value>一時停止アルゴリズム</value>
+  </data>
+  <data name="TitlePerformance" xml:space="preserve">
+    <value>パフォーマンス</value>
+  </data>
+  <data name="TitlePlaylist" xml:space="preserve">
+    <value>プレイリスト</value>
+  </data>
+  <data name="TitlePleaseWait" xml:space="preserve">
+    <value>お待ちください。</value>
+  </data>
+  <data name="TitleScalingFit" xml:space="preserve">
+    <value>スケーリング/フィット</value>
+  </data>
+  <data name="TitleScreenLayout" xml:space="preserve">
+    <value>コントロールパネル</value>
+  </data>
+  <data name="TitleSelectFile" xml:space="preserve">
+    <value>ファイルを選択</value>
+  </data>
+  <data name="TitleSettings" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="TitleStreamWallpaper" xml:space="preserve">
+    <value>ストリーム壁紙</value>
+  </data>
+  <data name="TitleStreamWallpaperDetect" xml:space="preserve">
+    <value>ストリームの検出</value>
+  </data>
+  <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
+    <value>ビデオ画質</value>
+  </data>
+  <data name="TitleTileSize" xml:space="preserve">
+    <value>タイルのサイズ</value>
+  </data>
+  <data name="TitleUIMode" xml:space="preserve">
+    <value>ユーザーインターフェース</value>
+  </data>
+  <data name="TitleVideo" xml:space="preserve">
+    <value>ビデオ</value>
+  </data>
+  <data name="TitleWallpaper" xml:space="preserve">
+    <value>壁紙</value>
+  </data>
+  <data name="TitleWallpaperDir" xml:space="preserve">
+    <value>壁紙ディレクトリ</value>
+  </data>
+  <data name="TitleWallpaperDirMoveExisting" xml:space="preserve">
+    <value>既存の壁紙を新しいフォルダに移動します。</value>
   </data>
   <data name="TitleWallpaperFit" xml:space="preserve">
-    <value>Choose a fit</value>
+    <value>フィット感を選ぶ</value>
+  </data>
+  <data name="TitleWallpaperInput" xml:space="preserve">
+    <value>壁紙入力</value>
+  </data>
+  <data name="TitleWallpaperLayout" xml:space="preserve">
+    <value>配置方法</value>
+  </data>
+  <data name="TitleWallpaperPlayback" xml:space="preserve">
+    <value>壁紙再生</value>
+  </data>
+  <data name="TitleWarning" xml:space="preserve">
+    <value>警告</value>
+  </data>
+  <data name="TitleWebBrowser" xml:space="preserve">
+    <value>ウェブブラウザ</value>
+  </data>
+  <data name="TitleWebBrowserDiskCache" xml:space="preserve">
+    <value>ディスクキャッシュ</value>
+  </data>
+  <data name="TitleWebBrowserEngine" xml:space="preserve">
+    <value>エンジン</value>
+  </data>
+  <data name="TitleWebpageLoad" xml:space="preserve">
+    <value>ウェブページの読み込み</value>
+  </data>
+  <data name="TitleWindowsStartup" xml:space="preserve">
+    <value>ウィンドウズ起動時に同時に起動します。</value>
   </data>
   <data name="TextPreviewWallpaper" xml:space="preserve">
     <value>Preview Wallpaper</value>
-  </data>  
+  </data>
 </root>

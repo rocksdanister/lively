@@ -63,16 +63,6 @@ namespace livelywpf
                         //Updating library selected item.
                         Program.LibraryVM.SetupDesktop_WallpaperChanged(null, null);
                     }
-
-                    if(Program.SettingsVM.Settings.SelectedDisplay != null)
-                    {
-                        TextWallpaperLayoutPerScreen = Properties.Resources.TextWallpaperLayoutPerScreen +
-                            " (" + Program.SettingsVM.Settings.SelectedDisplay.DeviceNumber + ")";
-                    }
-                    else
-                    {
-                        TextWallpaperLayoutPerScreen = Properties.Resources.TextWallpaperLayoutPerScreen;
-                    }
                 }
             }
         }
@@ -92,20 +82,8 @@ namespace livelywpf
                 {
                     Program.SettingsVM.Settings.WallpaperArrangement = (WallpaperArrangement)value;
                     Program.SettingsVM.UpdateConfigFile();
-                    //ClearScreenLayout();
-                    SetupDesktop.CloseAllWallpapers();
+                    SetupDesktop.TerminateAllWallpapers();
                 }
-            }
-        }
-
-        private string _textWallpaperLayoutPerScreen;
-        public string TextWallpaperLayoutPerScreen
-        {
-            get { return _textWallpaperLayoutPerScreen; }
-            set
-            {
-                _textWallpaperLayoutPerScreen = value;
-                OnPropertyChanged("TextWallpaperLayoutPerScreen");
             }
         }
 
@@ -131,11 +109,11 @@ namespace livelywpf
         {
             if(Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.per)
             {
-                SetupDesktop.CloseWallpaper(selection.Screen);
+                SetupDesktop.TerminateWallpaper(selection.Screen);
             }
             else
             {
-                SetupDesktop.CloseAllWallpapers();
+                SetupDesktop.TerminateAllWallpapers();
             }
             selection.ScreenImagePath = null;
             selection.LivelyPropertyPath = null;

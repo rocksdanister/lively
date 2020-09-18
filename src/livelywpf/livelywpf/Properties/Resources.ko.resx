@@ -127,7 +127,10 @@
     <value>정말로 취소하시겠습니까?</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
-    <value>디스크에서 배경 화면을 삭제하시겠습니까?</value>
+    <value>디스크에서 배경 화면을 영구적으로 삭제하시겠습니까?</value>
+  </data>
+  <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
+    <value>라이브러리에서 이 배경 화면을 삭제하시겠습니까?</value>
   </data>
   <data name="DescriptionDragDropFIle" xml:space="preserve">
     <value>간단히 파일을 라이브러리로 끌어 놓으세요.</value>
@@ -282,7 +285,7 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp;amp; 적용.
     <value>정보</value>
   </data>
   <data name="TextMoreWallpapers" xml:space="preserve">
-    <value>추가 배경 화면</value>
+    <value>더 많은 배경 화면</value>
   </data>
   <data name="TextMouse" xml:space="preserve">
     <value>마우스</value>
@@ -326,6 +329,9 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp;amp; 적용.
   <data name="TextPerformancePause" xml:space="preserve">
     <value>일시 중지</value>
   </data>
+  <data name="TextPreviewWallpaper" xml:space="preserve">
+    <value>배경 화면 미리보기</value>
+  </data>
   <data name="TextRemove" xml:space="preserve">
     <value>제거</value>
   </data>
@@ -354,7 +360,7 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp;amp; 적용.
     <value>중지</value>
   </data>
   <data name="TextSupport" xml:space="preserve">
-    <value>지원 문의</value>
+    <value>기부하기</value>
   </data>
   <data name="TextTags" xml:space="preserve">
     <value>태그</value>
@@ -384,17 +390,29 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp;amp; 적용.
     <value>업데이트 확인</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
-    <value>업데이트 확인이 실패되었습니다.</value>
+    <value>업데이트 확인 실패됨.</value>
   </data>
   <data name="TextUpdateChecking" xml:space="preserve">
     <value>업데이트 확인</value>
   </data>
   <data name="TextUpdateUptodate" xml:space="preserve">
-    <value>현재 최신 버전입니다!</value>
+    <value>현재 최신 버전!</value>
   </data>
   <data name="TextVideo" xml:space="preserve">
     <value>비디오</value>
   </data>
+  <data name="TextWallpaperFitFill" xml:space="preserve">
+    <value>채우기</value>
+  </data>
+  <data name="TextWallpaperFitNone" xml:space="preserve">
+    <value>없음</value>
+  </data>
+  <data name="TextWallpaperFitUniform" xml:space="preserve">
+    <value>비율유지 확대/축소(맞춤)</value>
+  </data>
+  <data name="TextWallpaperFitUniformToFill" xml:space="preserve">
+    <value>비율유지 확대/축소(잘림)</value>
+  </data>    
   <data name="TextWallpaperLayoutDuplicate" xml:space="preserve">
     <value>동일한 배경 화면 복사</value>
   </data>
@@ -440,6 +458,9 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp;amp; 적용.
   <data name="TipAppTheme" xml:space="preserve">
     <value>Lively는 시스템 테마 설정에 맞게 모양을 변경합니다.</value>
   </data>
+  <data name="TipAudioMaster" xml:space="preserve">
+    <value>모든 배경 화면의 볼륨 수준.</value>
+  </data>  
   <data name="TipBatteryPower" xml:space="preserve">
     <value>(배터리 작동 시스템 전용) AC 전원이 차단되면 재생을 변경합니다.</value>
   </data>
@@ -482,6 +503,9 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp;amp; 적용.
   <data name="TipWallpaperDir" xml:space="preserve">
     <value>배경 화면 파일을 저장하는 데 사용되는 경로입니다.</value>
   </data>
+  <data name="TipWallpaperFit" xml:space="preserve">
+    <value>배경 화면 크기 조정 알고리즘.</value>
+  </data>  
   <data name="TipWallpaperInput" xml:space="preserve">
     <value>배경 화면과 상호 작용하는 방법을 선택합니다.</value>
   </data>
@@ -525,6 +549,9 @@ Edge는 Windows 10의 내장 웹뷰입니다.</value>
   <data name="TitleAudio" xml:space="preserve">
     <value>오디오</value>
   </data>
+  <data name="TitleAudioMaster" xml:space="preserve">
+    <value>마스터 볼륨</value>
+  </data>  
   <data name="TitleAudioPlayOnScreen" xml:space="preserve">
     <value>화면에 오디오 재생</value>
   </data>
@@ -630,6 +657,9 @@ Edge는 Windows 10의 내장 웹뷰입니다.</value>
   <data name="TitleWallpaperDirMoveExisting" xml:space="preserve">
     <value>기존 배경 화면을 새 폴더로 이동</value>
   </data>
+  <data name="TitleWallpaperFit" xml:space="preserve">
+    <value>배경 화면 맞춤 방식 선택</value>
+  </data>  
   <data name="TitleWallpaperInput" xml:space="preserve">
     <value>배경 화면 입력</value>
   </data>
@@ -656,35 +686,5 @@ Edge는 Windows 10의 내장 웹뷰입니다.</value>
   </data>
   <data name="TitleWindowsStartup" xml:space="preserve">
     <value>Windows 시작 시 실행</value>
-  </data>
-    <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
-    <value>Are you sure you want to delete this wallpaper from the Library?</value>
-  </data>
-    <data name="TipAudioMaster" xml:space="preserve">
-    <value>Volume level of all wallpapers.</value>
-  </data>
-    <data name="TitleAudioMaster" xml:space="preserve">
-    <value>Master Volume</value>
-  </data>
-    <data name="TextWallpaperFitFill" xml:space="preserve">
-    <value>Fill</value>
-  </data>
-  <data name="TextWallpaperFitNone" xml:space="preserve">
-    <value>None</value>
-  </data>
-  <data name="TextWallpaperFitUniform" xml:space="preserve">
-    <value>Uniform</value>
-  </data>
-  <data name="TextWallpaperFitUniformToFill" xml:space="preserve">
-    <value>Uniform Fill</value>
-  </data>
-    <data name="TipWallpaperFit" xml:space="preserve">
-    <value>Wallpaper scaling algorithm.</value>
-  </data>
-    <data name="TitleWallpaperFit" xml:space="preserve">
-    <value>Choose a fit</value>
-  </data>
-    <data name="TextPreviewWallpaper" xml:space="preserve">
-    <value>Preview Wallpaper</value>
   </data>
 </root>

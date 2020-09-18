@@ -36,7 +36,6 @@ namespace livelywpf.Views
             {
                 //detach wallpaper window from this dialogue.
                 WindowOperations.SetParentSafe(wallpaper.GetHWND(), IntPtr.Zero);
-                //wallpaper.Terminate();
                 wallpaper.Close();
             }
         }
