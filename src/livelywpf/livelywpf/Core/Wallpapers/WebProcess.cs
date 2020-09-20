@@ -8,6 +8,7 @@ namespace livelywpf.Core
 {
     public class WebProcess : IWallpaper
     {
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         //todo: Check this library out https://github.com/Tyrrrz/CliWrap
         public WebProcess(string path, LibraryModel model, LivelyScreen display)
         {
@@ -74,6 +75,7 @@ namespace livelywpf.Core
                 FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "cef", "LivelyCefSharp.exe"),
                 RedirectStandardInput = true,
                 RedirectStandardOutput = true,
+                RedirectStandardError = true,
                 UseShellExecute = false,
                 WorkingDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "cef")
             };
@@ -103,13 +105,14 @@ namespace livelywpf.Core
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
 
         public void Close()
-        {    
+        {
+            //Issue: Cef.shutdown() crashing when multiple instance is closed simulataneously.
+            Terminate();
+            /*
             try
             {
                 Proc.Refresh();
-                Proc.OutputDataReceived -= Proc_OutputDataReceived;
                 Proc.StandardInput.WriteLine("lively:terminate");
-                //Issue: Cef.shutdown() crashing when simultaneously closed.
                 //TODO: Make it Async function.
                 if (!Proc.WaitForExit(4000))
                 {
@@ -120,7 +123,7 @@ namespace livelywpf.Core
             {
                 Terminate();
             }
-            
+            */
         }
 
         public IntPtr GetHWND()
@@ -180,7 +183,7 @@ namespace livelywpf.Core
                 }
                 catch(Exception e) 
                 {
-                    WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = false, Error = e, Msg = null });
+                    WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = false, Error = e, Msg = "Failed to start process." });
                     Close();
                 }
             }
@@ -191,61 +194,68 @@ namespace livelywpf.Core
             if(!Initialized)
             {
                 //Exited with no error and without even firing OutputDataReceived; probably some external factor.
-                WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = false, Error = null, Msg = "Pgm exited early!" });
+                WindowInitialized?.Invoke(this, new WindowInitializedArgs()
+                {
+                    Success = false,
+                    Error = new Exception(Properties.Resources.LivelyExceptionGeneral),
+                    Msg = "Process exited before giving HWND."
+                });
             }
+            Proc.OutputDataReceived -= Proc_OutputDataReceived;
             Proc.Close();
             SetupDesktop.RefreshDesktop();
         }
 
         private void Proc_OutputDataReceived(object sender, DataReceivedEventArgs e)
         {
-            bool status = true;
-            Exception error = null;
-            string msg = null;
-            try
+            //When the redirected stream is closed, a null line is sent to the event handler.
+            if (!String.IsNullOrEmpty(e.Data))
             {
-                IntPtr handle = new IntPtr();
-                //Retrieves the windowhandle of cefsubprocess, cefsharp is launching cef as a separate proces..
-                //If you add the full pgm as child of workerw then there are problems (prob related sharing input queue)
-                //Instead hiding the pgm window & adding cefrender window instead.
-                msg = "Cefsharp Handle:" + e.Data;
                 if (e.Data.Contains("HWND"))
                 {
-                    handle = new IntPtr(Convert.ToInt32(e.Data.Substring(4), 10));
-                    //note-handle: WindowsForms10.Window.8.app.0.141b42a_r9_ad1
+                    bool status = true;
+                    Exception error = null;
+                    string msg = null;
+                    try
+                    {
+                        msg = "Cefsharp Handle:" + e.Data;
+                        IntPtr handle = new IntPtr();
+                        handle = new IntPtr(Convert.ToInt32(e.Data.Substring(4), 10));
+                        //note-handle: WindowsForms10.Window.8.app.0.141b42a_r9_ad1
 
-                    //hidin other windows, no longer required since I'm doing it in cefsharp pgm itself.
-                    NativeMethods.ShowWindow(GetProcess().MainWindowHandle, 0);
+                        //hidin other windows, no longer required since I'm doing it in cefsharp pgm itself.
+                        NativeMethods.ShowWindow(GetProcess().MainWindowHandle, 0);
 
-                    //WARNING:- If you put the whole cefsharp window, workerw crashes and refuses to start again on next startup!!, this is a workaround.
-                    handle = NativeMethods.FindWindowEx(handle, IntPtr.Zero, "Chrome_WidgetWin_0", null);
-                    //cefRenderWidget = StaticPinvoke.FindWindowEx(handle, IntPtr.Zero, "Chrome_RenderWidgetHostHWND", null);
-                    //cefIntermediate = StaticPinvoke.FindWindowEx(handle, IntPtr.Zero, "Intermediate D3D Window", null);
+                        //WARNING:- If you put the whole cefsharp window, workerw crashes and refuses to start again on next startup!!, this is a workaround.
+                        handle = NativeMethods.FindWindowEx(handle, IntPtr.Zero, "Chrome_WidgetWin_0", null);
+                        //cefRenderWidget = StaticPinvoke.FindWindowEx(handle, IntPtr.Zero, "Chrome_RenderWidgetHostHWND", null);
+                        //cefIntermediate = StaticPinvoke.FindWindowEx(handle, IntPtr.Zero, "Intermediate D3D Window", null);
 
-                    if (IntPtr.Equals(handle, IntPtr.Zero))//unlikely.
+                        if (IntPtr.Equals(handle, IntPtr.Zero))//unlikely.
+                        {
+                            status = false;
+                        }
+                        SetHWND(handle);
+                    }
+                    catch (Exception ex)
                     {
                         status = false;
+                        error = ex;
                     }
-                    SetHWND(handle);
+                    finally
+                    {
+                        if (!Initialized)
+                        {
+                            WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = status, Error = error, Msg = msg });
+                        }
+                        Initialized = true;
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                status = false;
-                error = ex;
-            }
-            finally
-            {
-                /*
-                if(status)
+                else
                 {
-                    NativeMethods.SetWindowPos(GetHWND(), 1, -9999, 0, 0, 0,
-                        (int)NativeMethods.SetWindowPosFlags.SWP_NOACTIVATE | (int)NativeMethods.SetWindowPosFlags.SWP_NOSIZE);
+                    Logger.Info("CEF:" + e.Data);
                 }
-                */
             }
-            Initialized = true;
-            WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = status, Error = error, Msg = msg });
         }
 
         public void Stop()

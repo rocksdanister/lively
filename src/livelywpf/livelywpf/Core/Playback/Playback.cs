@@ -77,6 +77,14 @@ namespace livelywpf.Core
                 PauseWallpapers();
                 return;
             }
+            else if(Program.SettingsVM.Settings.BatteryPause == AppRulesEnum.pause)
+            {
+                if (System.Windows.Forms.SystemInformation.PowerStatus.PowerLineStatus == System.Windows.Forms.PowerLineStatus.Offline)
+                {
+                    PauseWallpapers();
+                    return;
+                }
+            }
 
             if (Program.SettingsVM.Settings.ProcessMonitorAlgorithm == ProcessMonitorAlgorithm.foreground)
             {

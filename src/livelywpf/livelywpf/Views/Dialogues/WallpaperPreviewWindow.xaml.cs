@@ -36,7 +36,28 @@ namespace livelywpf.Views
             {
                 //detach wallpaper window from this dialogue.
                 WindowOperations.SetParentSafe(wallpaper.GetHWND(), IntPtr.Zero);
-                wallpaper.Close();
+                try
+                {
+                    //temporary..till webprocess async close is ready.
+                    if(wallpaper.GetWallpaperType() == WallpaperType.url)
+                    {
+                        var Proc = wallpaper.GetProcess();
+                        Proc.Refresh();
+                        Proc.StandardInput.WriteLine("lively:terminate");
+                        if (!Proc.WaitForExit(4000))
+                        {
+                            wallpaper.Terminate();
+                        }
+                    }
+                    else
+                    {
+                        wallpaper.Close();
+                    }
+                }
+                catch
+                {
+                    wallpaper.Terminate();
+                }
             }
         }
 

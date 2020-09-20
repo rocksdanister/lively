@@ -10,6 +10,7 @@ namespace livelywpf.Core
     /// </summary>
     public class VideoPlayerVLCExt : IWallpaper
     {
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         public VideoPlayerVLCExt(string path, LibraryModel model, LivelyScreen display)
         {
             ProcessStartInfo start = new ProcessStartInfo
@@ -52,7 +53,6 @@ namespace livelywpf.Core
             {
                 Proc.Refresh();
                 Proc.StandardInput.WriteLine("lively:terminate");
-                Proc.OutputDataReceived -= Proc_OutputDataReceived;
             }
             catch
             {
@@ -113,7 +113,7 @@ namespace livelywpf.Core
                 }
                 catch (Exception e)
                 {
-                    WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = false, Error = e, Msg = null });
+                    WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = false, Error = e, Msg = "Failed to start process." });
                     Close();
                 }
             }
@@ -124,41 +124,59 @@ namespace livelywpf.Core
             if (!Initialized)
             {
                 //Exited with no error and without even firing OutputDataReceived; probably some external factor.
-                WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = false, Error = null, Msg = "Pgm exited early!" });
+                WindowInitialized?.Invoke(this, new WindowInitializedArgs()
+                {
+                    Success = false,
+                    Error = new Exception(Properties.Resources.LivelyExceptionGeneral),
+                    Msg = "Process exited before giving HWND."
+                });
             }
+            Proc.OutputDataReceived -= Proc_OutputDataReceived;
             Proc.Close();
             SetupDesktop.RefreshDesktop();
         }
 
         private void Proc_OutputDataReceived(object sender, DataReceivedEventArgs e)
         {
-            bool status = true;
-            Exception error = null;
-            string msg = null;
-            try
+            //When the redirected stream is closed, a null line is sent to the event handler.
+            if (!String.IsNullOrEmpty(e.Data))
             {
-                IntPtr handle = new IntPtr();
-                //Retrieves the windowhandle of cefsubprocess, cefsharp is launching cef as a separate proces..
-                //If you add the full pgm as child of workerw then there are problems (prob related sharing input queue)
-                //Instead hiding the pgm window & adding cefrender window instead.
-                msg = "libVLCPlayer Handle:" + e.Data;
                 if (e.Data.Contains("HWND"))
                 {
-                    handle = new IntPtr(Convert.ToInt32(e.Data.Substring(4), 10));
-                    if (IntPtr.Equals(handle, IntPtr.Zero))//unlikely.
+                    bool status = true;
+                    Exception error = null;
+                    string msg = null;
+                    try
+                    {
+                        msg = "libVLCPlayer Handle:" + e.Data;
+                        IntPtr handle = new IntPtr();
+                        handle = new IntPtr(Convert.ToInt32(e.Data.Substring(4), 10));
+                        if (IntPtr.Equals(handle, IntPtr.Zero))//unlikely.
+                        {
+                            status = false;
+                        }
+                        SetHWND(handle);
+                    }
+                    catch (Exception ex)
                     {
                         status = false;
+                        error = ex;
                     }
-                    SetHWND(handle);
+                    finally
+                    {
+                        if (!Initialized)
+                        {
+                            WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = status, Error = error, Msg = msg });
+                        }
+                        //First run sent msg will be window handle.
+                        Initialized = true;
+                    }
+                }
+                else
+                {
+                    Logger.Info("VLC:" + e.Data);
                 }
             }
-            catch (Exception ex)
-            {
-                status = false;
-                error = ex;
-            }
-            Initialized = true;
-            WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = status, Error = error, Msg = msg });
         }
 
         public void Stop()

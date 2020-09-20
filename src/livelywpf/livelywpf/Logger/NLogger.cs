@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Text;
+using System.Linq;
 
 namespace livelywpf
 {
@@ -13,11 +14,18 @@ namespace livelywpf
         private static bool _isInitialized = false;
         public static void SetupNLog()
         {
-            _isInitialized = true;
+            DeletePreviousLogFiles(5);
             var config = new NLog.Config.LoggingConfiguration();
 
+            //process start date as filename
+            string fileName = DateTime.Now.ToString("yyyyMMdd_HHmmss", CultureInfo.InvariantCulture) + ".txt";
+            if (File.Exists(Path.Combine(Program.AppDataDir, "logs", fileName)))
+            {
+                fileName = Path.GetRandomFileName() + ".txt";
+            }
+
             // Targets where to log to: File and Console
-            var logfile = new NLog.Targets.FileTarget("logfile") { FileName = Path.Combine(Program.AppDataDir, "logs", "logfile.txt"), DeleteOldFileOnStartup = true };
+            var logfile = new NLog.Targets.FileTarget("logfile") { FileName = Path.Combine(Program.AppDataDir, "logs", fileName), DeleteOldFileOnStartup = false };
             var logconsole = new NLog.Targets.ConsoleTarget("logconsole");
 
             // Rules for mapping loggers to targets            
@@ -26,6 +34,42 @@ namespace livelywpf
 
             // Apply config           
             NLog.LogManager.Configuration = config;
+            _isInitialized = true;
+        }
+
+        private static void DeletePreviousLogFiles(int maxLogs)
+        {
+            try
+            {
+                foreach (var fi in new DirectoryInfo(Path.Combine(Program.AppDataDir, "logs")).GetFiles().OrderByDescending(x => x.LastWriteTime).Skip(maxLogs))
+                {
+                    fi.Delete();
+                }
+            }
+            catch { }
+        }
+
+        /// <summary>
+        /// Returns data stored in class object file.
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static string PropertyList(object obj)
+        {
+            try
+            {
+                var props = obj.GetType().GetProperties();
+                var sb = new StringBuilder();
+                foreach (var p in props)
+                {
+                    sb.AppendLine(p.Name + ": " + p.GetValue(obj, null));
+                }
+                return sb.ToString();
+            }
+            catch
+            {
+                return "Failed to retrive properties of config file.";
+            }
         }
 
         public static void LogHardwareInfo()

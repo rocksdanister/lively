@@ -217,7 +217,7 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Oops... Looks like something wen&apos;t wrong :(
+        ///   Looks up a localized string similar to Oops... Looks like something went wrong :(
         ///In order to better understand this error and fix the issue, share the log file with the developer.
         ///Instructions for sharing log file:
         ///https://github.com/rocksdanister/lively/wiki.

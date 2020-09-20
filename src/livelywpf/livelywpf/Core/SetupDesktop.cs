@@ -20,7 +20,7 @@ namespace livelywpf
         #region init
 
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private static List<LivelyScreen> screenList = ScreenHelper.GetScreen();
+        private static readonly List<LivelyScreen> screenList = ScreenHelper.GetScreen();
         static IntPtr progman, workerw;
         private static bool _isInitialized = false;
         private static Playback processMonitor;
@@ -39,6 +39,7 @@ namespace livelywpf
 
         public static void SetWallpaper(LibraryModel wp, LivelyScreen targetDisplay)
         {
+            Logger.Info("Core: Setting Wallpaper=>" + wp.Title);
             if (SystemParameters.HighContrast)
             {
                 Logger.Error("Failed to setup workers, high contrast mode!");
@@ -115,11 +116,10 @@ namespace livelywpf
                 }
             }
 
-            int index;
             if(ScreenHelper.ScreenExists(targetDisplay, DisplayIdentificationMode.screenLayout) &&
-                (index = wallpapersPending.FindIndex(x => ScreenHelper.ScreenCompare(x.GetScreen(), targetDisplay, DisplayIdentificationMode.screenLayout))) != -1)
+                wallpapersPending.FindIndex(x => ScreenHelper.ScreenCompare(x.GetScreen(), targetDisplay, DisplayIdentificationMode.screenLayout)) != -1)
             {
-                Logger.Info("Core: Skipping, wallpaper already queued/screen not found:" + targetDisplay.DeviceName);
+                Logger.Info("Core: Skipping, wallpaper already queued/screen not found=>" + targetDisplay.DeviceName);
                 return;
             }
 
@@ -246,16 +246,13 @@ namespace livelywpf
                             switch (Program.SettingsVM.Settings.WallpaperArrangement)
                             {
                                 case WallpaperArrangement.per:
-                                    //CloseWallpaper(wallpaper.GetScreen(), false);
-                                    TerminateWallpaper(wallpaper.GetScreen(), false);
+                                    CloseWallpaper(wallpaper.GetScreen(), false);
                                     break;
                                 case WallpaperArrangement.span:
-                                    //CloseAllWallpapers(false);
-                                    TerminateAllWallpapers(false);
+                                    CloseAllWallpapers(false);
                                     break;
                                 case WallpaperArrangement.duplicate:
-                                    //CloseAllWallpapers(false);
-                                    TerminateAllWallpapers(false);
+                                    CloseAllWallpapers(false);
                                     break;
                             }
                         }
@@ -292,18 +289,15 @@ namespace livelywpf
                         switch (Program.SettingsVM.Settings.WallpaperArrangement)
                         {
                             case WallpaperArrangement.per:
-                                //CloseWallpaper(wallpaper.GetScreen(), false);
-                                TerminateWallpaper(wallpaper.GetScreen(), false);
+                                CloseWallpaper(wallpaper.GetScreen(), false);
                                 SetWallpaperPerScreen(wallpaper.GetHWND(), wallpaper.GetScreen());
                                 break;
                             case WallpaperArrangement.span:
-                                //CloseAllWallpapers(false);
-                                TerminateAllWallpapers(false);
+                                CloseAllWallpapers(false);
                                 SetWallpaperSpanScreen(wallpaper.GetHWND());
                                 break;
                             case WallpaperArrangement.duplicate:
-                                //CloseWallpaper(wallpaper.GetScreen(), false);
-                                TerminateWallpaper(wallpaper.GetScreen(), false);
+                                CloseWallpaper(wallpaper.GetScreen(), false);
                                 //Recursion..
                                 await SetWallpaperDuplicateScreen(wallpaper);
                                 break;
@@ -314,7 +308,7 @@ namespace livelywpf
                 }
                 else
                 {
-                    Logger.Error("Core: Failed to launch wallpaper: " + e.Msg + "\n" + e.Error.ToString());
+                    Logger.Error("Core: Failed to launch wallpaper=>" + e.Msg + "\n" + e.Error.ToString());
                     wallpaper.Terminate();
                     WallpaperChanged?.Invoke(null, null);
                     MessageBox.Show(e.Error.Message, Properties.Resources.TitleAppName);
@@ -322,7 +316,7 @@ namespace livelywpf
             }
             catch(Exception ex)
             {
-                Logger.Error("Core: Failed processing wallpaper: " + ex.ToString());
+                Logger.Error("Core: Failed processing wallpaper=>" + ex.ToString());
                 if(wallpaper != null)
                 {
                     wallpaper.Terminate();
@@ -347,7 +341,7 @@ namespace livelywpf
             NativeMethods.RECT prct = new NativeMethods.RECT();
             NativeMethods.POINT topLeft;
             //StaticPinvoke.POINT bottomRight;
-            Logger.Info("Setting wallpaper -> " + targetDisplay.DeviceName + " " + targetDisplay.Bounds);
+            Logger.Info("Sending wallpaper(Per Screen)=>" + targetDisplay.DeviceName + " " + targetDisplay.Bounds);
 
             if (!NativeMethods.SetWindowPos(handle, 1, targetDisplay.Bounds.X, targetDisplay.Bounds.Y, (targetDisplay.Bounds.Width), (targetDisplay.Bounds.Height), 0 | 0x0010))
             {
@@ -372,11 +366,11 @@ namespace livelywpf
 
             //logging.
             NativeMethods.GetWindowRect(handle, out prct);
-            Logger.Info("Relative Coordinates of WP -> " + prct.Left + " " + prct.Right + " " + targetDisplay.Bounds.Width + " " + targetDisplay.Bounds.Height);
+            Logger.Debug("Relative Coordinates of WP=>" + prct.Left + " " + prct.Right + " " + targetDisplay.Bounds.Width + " " + targetDisplay.Bounds.Height);
             topLeft.X = prct.Left;
             topLeft.Y = prct.Top;
             NativeMethods.ScreenToClient(workerw, ref topLeft);
-            Logger.Info("Coordinate wrt to screen ->" + topLeft.X + " " + topLeft.Y + " " + targetDisplay.Bounds.Width + " " + targetDisplay.Bounds.Height);
+            Logger.Debug("Coordinate wrt to screen=>" + topLeft.X + " " + topLeft.Y + " " + targetDisplay.Bounds.Width + " " + targetDisplay.Bounds.Height);
         }
 
         /// <summary>
@@ -390,6 +384,7 @@ namespace livelywpf
             SetParentWorkerW(handle);
 
             //fill wp into the whole workerw area.
+            Logger.Info("Sending wallpaper(Span)=>" + prct.Left + " " + prct.Right + " " + (prct.Right - prct.Left) + " " + (prct.Bottom - prct.Top));
             if (!NativeMethods.SetWindowPos(handle, 1, 0, 0, prct.Right - prct.Left, prct.Bottom - prct.Top, 0 | 0x0010))
             {
                 NLogger.LogWin32Error("setwindowpos fail SpanWallpaper(),");
@@ -412,6 +407,7 @@ namespace livelywpf
                 currDuplicates.FindIndex(y => ScreenHelper.ScreenCompare(y.GetScreen(), x, DisplayIdentificationMode.screenLayout)) != -1);
             if (remainingScreens.Count != 0)
             {
+                Logger.Info("Sending/Queuing wallpaper(Duplicate)=>" + remainingScreens[0].DeviceName + " " + remainingScreens[0].Bounds);
                 await System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
                 {
                     SetWallpaper(wallpaper.GetWallpaperData(), remainingScreens[0]);

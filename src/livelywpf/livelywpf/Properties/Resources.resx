@@ -172,7 +172,7 @@ https://github.com/rocksdanister/lively/releases</value>
     <value>Damaged wallpaper file, try redownloading.</value>
   </data>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
-    <value>Oops... Looks like something wen't wrong :(
+    <value>Oops... Looks like something went wrong :(
 In order to better understand this error and fix the issue, share the log file with the developer.
 Instructions for sharing log file:
 https://github.com/rocksdanister/lively/wiki</value>

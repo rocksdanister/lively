@@ -190,7 +190,12 @@ namespace libMPVPlayer
                     while (true)
                     {
                         string text = await Console.In.ReadLineAsync();
-                        if (String.Equals(text, "lively:vid-pause", StringComparison.OrdinalIgnoreCase))
+                        if(String.IsNullOrEmpty(text))
+                        {
+                            //When the redirected stream is closed, a null line is sent to the event handler. 
+                            break;
+                        }
+                        else if (String.Equals(text, "lively:vid-pause", StringComparison.OrdinalIgnoreCase))
                         {
                             PausePlayer();
                         }

@@ -33,7 +33,7 @@
                 <RadioButton>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="{x:Static p:Resources.TextWallpaperLayoutPerScreen}"/>
-                        <TextBlock Foreground="{DynamicResource SystemControlHighlightAltListAccentHighBrush}" FontWeight="ExtraBold" Text="{Binding SelectedItem.ScreenSubTitle}"/>
+                        <TextBlock Foreground="{DynamicResource SystemControlHighlightAltListAccentHighBrush}" FontWeight="Bold" Text="{Binding SelectedItem.ScreenSubTitle}"/>
                     </StackPanel>
                 </RadioButton>
                 <RadioButton Content="{x:Static p:Resources.TextWallpaperLayoutSpan}"/>

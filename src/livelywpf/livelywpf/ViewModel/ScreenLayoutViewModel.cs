@@ -82,7 +82,7 @@ namespace livelywpf
                 {
                     Program.SettingsVM.Settings.WallpaperArrangement = (WallpaperArrangement)value;
                     Program.SettingsVM.UpdateConfigFile();
-                    SetupDesktop.TerminateAllWallpapers();
+                    SetupDesktop.CloseAllWallpapers();
                 }
             }
         }
@@ -109,11 +109,11 @@ namespace livelywpf
         {
             if(Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.per)
             {
-                SetupDesktop.TerminateWallpaper(selection.Screen);
+                SetupDesktop.CloseWallpaper(selection.Screen);
             }
             else
             {
-                SetupDesktop.TerminateAllWallpapers();
+                SetupDesktop.CloseAllWallpapers();
             }
             selection.ScreenImagePath = null;
             selection.LivelyPropertyPath = null;

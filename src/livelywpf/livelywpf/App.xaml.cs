@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Reflection;
 using System.Xml.Schema;
+using Windows.ApplicationModel.VoiceCommands;
 
 namespace livelywpf
 {
@@ -174,7 +175,18 @@ namespace livelywpf
             }
             finally
             {
+                LogConfigFile();
                 Logger.Error(message + "\n" + exception.ToString());
+            }
+        }
+
+        private bool _configLogged = false;
+        private void LogConfigFile()
+        {
+            if(!_configLogged)
+            {
+                Logger.Info("Saved config file=>\n" + NLogger.PropertyList(Program.SettingsVM.Settings));
+                _configLogged = true;
             }
         }
     }
