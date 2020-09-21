@@ -10,13 +10,15 @@
         xmlns:xaml="clr-namespace:Microsoft.Toolkit.Wpf.UI.XamlHost;assembly=Microsoft.Toolkit.Wpf.UI.XamlHost"
         xmlns:local="clr-namespace:livelywpf.Cef"
         mc:Ignorable="d"
-        Title="Properties" Height="450" Width="250"
-        MinWidth="250"
-        MinHeight="300"
-        AllowsTransparency="True"
+        Title="Properties" 
+        Width="250" Height="450" 
+        MinWidth="250" MinHeight="300"
+        MaxWidth="250"
         WindowStyle="None"
-        ResizeMode="NoResize"
-        Loaded="Window_Loaded">
+        ResizeMode="CanResize"
+        AllowsTransparency="True"
+        Loaded="Window_Loaded"
+        BorderBrush="{DynamicResource SystemControlHighlightAltListAccentHighBrush}">
     
     <Grid>
         <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto" Margin="0, 15, 0, 0">

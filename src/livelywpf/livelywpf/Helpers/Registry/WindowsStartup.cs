@@ -65,7 +65,6 @@ namespace livelywpf
             {
                 key.Close();
             }
-
             return result;
         }
 

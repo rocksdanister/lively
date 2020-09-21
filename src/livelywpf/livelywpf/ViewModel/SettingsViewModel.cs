@@ -54,12 +54,8 @@ namespace livelywpf
             SelectedLanguageItem = SearchSupportedLanguage(Settings.Language);
 
             //Ignoring the Settings.json savefile value, only checking the windows registry and user action on the ui.
-            IsStartup = WindowsStartup.CheckStartupRegistry() == 1;
-            if (!IsStartup)
-            {
-                //Delete the wrong key(filepath, name etc.)
-                WindowsStartup.SetStartupRegistry(false);
-            }
+            //todo: Use https://docs.microsoft.com/en-us/uwp/api/windows.applicationmodel.startuptask?view=winrt-19041
+            IsStartup = WindowsStartup.CheckStartupRegistry() == 1 || WindowsStartup.CheckStartupRegistry() == -1;
 
             if(ScreenHelper.GetScreen().FindIndex(x => ScreenHelper.ScreenCompare(x, Settings.SelectedDisplay, DisplayIdentificationMode.screenLayout)) == -1)
             {

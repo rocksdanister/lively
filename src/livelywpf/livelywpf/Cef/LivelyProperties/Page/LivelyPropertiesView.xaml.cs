@@ -128,6 +128,8 @@ namespace livelywpf.Cef
                     {
                         Name = item.Key,
                         Fill = (SolidColorBrush)new BrushConverter().ConvertFromString(item.Value["value"].ToString()),
+                        Stroke = new SolidColorBrush(Color.FromRgb(200, 200 ,200)),
+                        StrokeThickness = 0.5,
                         MinWidth = maxWidth,
                         MaxWidth = maxWidth,
                         MaxHeight = 15,

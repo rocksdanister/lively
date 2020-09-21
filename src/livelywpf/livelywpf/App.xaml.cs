@@ -33,8 +33,8 @@ namespace livelywpf
                 Directory.CreateDirectory(Program.AppDataDir);
                 Directory.CreateDirectory(Path.Combine(Program.AppDataDir, "logs"));
                 Directory.CreateDirectory(Path.Combine(Program.AppDataDir, "temp"));
+                Directory.CreateDirectory(Path.Combine(Program.AppDataDir, "Cef"));
                 //clear temp files if any.
-                FileOperations.EmptyDirectory(Path.Combine(Program.AppDataDir, "temp"));
             }
             catch (Exception ex)
             {
@@ -42,6 +42,7 @@ namespace livelywpf
                 MessageBox.Show(ex.Message, "Error: Failed to create data folder", MessageBoxButton.OK, MessageBoxImage.Error);
                 Program.ExitApplication();
             }
+            FileOperations.EmptyDirectory(Path.Combine(Program.AppDataDir, "temp"));
 
             #region vm init
 
