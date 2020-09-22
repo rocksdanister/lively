@@ -29,13 +29,12 @@ namespace livelywpf.Core
         /// Set window handle.
         /// This is only metadata, have no effect on actual handle.
         /// </summary>
-        /// <param name="hwnd"></param>
+        /// <param name="hwnd">HWND</param>
         void SetHWND(IntPtr hwnd);
         /// <summary>
         /// Get process information.
-        /// Returns null if not a Program wallpaper.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>null if not a program wallpaper.</returns>
         Process GetProcess();
         /// <summary>
         /// Start wallpaper.
@@ -84,14 +83,13 @@ namespace livelywpf.Core
         void SendMessage(string msg);
         /// <summary>
         /// Get location of LivelyProperties.json copy file in Savedata/wpdata
-        /// Returns null if no file.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>null if no file.</returns>
         string GetLivelyPropertyCopyPath();
         /// <summary>
         /// Set wallpaper volume.
         /// </summary>
-        /// <param name="volume">Range 0 - 1</param>
+        /// <param name="volume">Range 0 - 100</param>
         void SetVolume(int volume);
         /// <summary>
         /// Fires after Show() method is called.
