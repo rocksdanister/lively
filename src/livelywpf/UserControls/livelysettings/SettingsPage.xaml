@@ -198,8 +198,8 @@
                             <ToggleSwitch IsOn="{Binding IsSysTrayIconVisible, Mode=TwoWay}" Header="{x:Bind UIText.TitleSysTrayIconHide}"/>
                             <TextBlock Margin="0, 10, 0, 0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipSysTrayIconHide}"/>
 
-                            <ToggleSwitch Margin="0,10,0,0" IsOn="{Binding IsDebugMenuVisible, Mode=TwoWay}" Header="Debug"/>
-                            <TextBlock Margin="0, 10, 0, 0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="Show developer menu, lively will restart to apply new setting."/>
+                            <ToggleSwitch Margin="0,10,0,0" IsOn="{Binding IsDebugMenuVisible, Mode=TwoWay}" Header="{x:Bind UIText.TitleDebug}"/>
+                            <TextBlock Margin="0, 10, 0, 0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipDebug}"/>
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>

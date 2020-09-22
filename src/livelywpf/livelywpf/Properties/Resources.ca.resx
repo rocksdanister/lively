@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -118,583 +118,581 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DescriptionAddWallpaper" xml:space="preserve">
-    <value>选择一个文件或指定一个网站 URL 以设置为壁纸。</value>
+    <value>Seleccioneu un fitxer o especifiqueu un enllaç a un lloc web per fer-lo servir com a fons de pantalla.</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
-    <value>根据正在运行的应用程序设置壁纸播放行为</value>
+    <value>Comportament del fons de pantalla d'acord amb quina aplicació està en execució.</value>
   </data>
   <data name="DescriptionCancelQuestion" xml:space="preserve">
-    <value>您确定要取消吗?</value>
+    <value>Esteu segur que voleu cancel·lar?</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
-    <value>您确定要从磁盘上永久删除该壁纸吗？</value>
+    <value>Esteu segur que voleu eliminar permanentment el fons de pantalla del disc dur?</value>
   </data>
   <data name="DescriptionDragDropFIle" xml:space="preserve">
-    <value>拖曳文件至图库。</value>
+    <value>Simplement arrossega i deixa anar els arxius a la biblioteca.</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
-    <value>请注意, 您将使用一个外部应用程序作为壁纸。
-恶意应用程序可能趁机注入木马、病毒..这将损害您的系统。
-仅当您信任此应用程序时，方可继续。</value>
+    <value>Esteu obrint una aplicació externa com a fons de pantalla. Les aplicacions externes poden contenir malware, virus .. i danyar el teu sistema. Només contínua si aquesta aplicació prové d'una font fiable.</value>
   </data>
   <data name="DescriptionMinimizedTray" xml:space="preserve">
-    <value>Lively 已被最小化到系统托盘，右键单击 Lively 的图标以获取更多选项。</value>
+    <value>Lively es minimitza a la safata del sistema, fes clic dret a la icona de lively per continuar.</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
-    <value>按下以开始录影</value>
+    <value>Pressiona per començar a gravar.</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
-    <value>正在恢复以前的壁纸..</value>
+    <value>Restaurant fons de pantalla anterior(s), si us plau espera ...</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
-    <value>有新版本可用！</value>
+    <value>Una nova versió de software està disponible!</value>
   </data>
   <data name="DescriptionWebpageLoad" xml:space="preserve">
-    <value>输入要加载的网站链接，支持 Shadertoy.com 着色器链接</value>
+    <value>Ingressa l'enllaç d'un lloc web per carregar-ho. També pots utilitzar enllaços de shadertoy.com.</value>
   </data>
   <data name="DescriptionWelcomeWizard" xml:space="preserve">
-    <value>该想到将会帮助您设置 Lively 。</value>
+    <value>Aquest assistent t'ajudarà a configurar Lively.</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
-    <value>更新失败。请尝试从此处下载安装程序：
+    <value>Error a l'actualitzar; intenta descarregar l'instal·lador des de:
 https://github.com/rocksdanister/lively/releases</value>
   </data>
   <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
-    <value>壁纸文件已损坏，请尝试重新下载。</value>
+    <value>Arxiu de fons de pantalla danyat, intenta descarregar-lo novament.</value>
   </data>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
-    <value>哎呀...好像有什么东西坏掉了 :(
-为了更好地了解这个错误并修复问题，请将日志文件分享给开发者。
-分享日志文件的说明：
+    <value>Vaja ... sembla que alguna cosa va sortir malament :(
+Per entendre millor aquest error i solucionar el problema, comparteix el fitxer de registre amb el desenvolupador.
+Visita el següent enllaç amb instruccions sobre com compartir l'arxiu de registre:
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
-    <value>Lively 无法在 Windows 高对比度 (Windows High Contrast) 模式下正常工作！
-请禁用高对比度模式，然后重试。</value>
+    <value>Lively no pot funcionar correctament amb el mode d'alt contrast de Windows activat!
+Deshabilita el mode d'alt contrast i intenti-ho novament.</value>
   </data>
   <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
-    <value>不是合法的 Lively 壁纸文件。</value>
+    <value>No és un fitxer de fons de Lively.</value>
   </data>
   <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
-    <value>Lively 没有被正确关闭, 正在以安全模式启动。
-您是否希望还原以前运行的壁纸?</value>
+    <value>Lively no es va tancar correctament, s'està iniciant en mode segur.
+Voleu restaurar els fons de pantalla que s'estaven executant anteriorment?</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
-    <value>似乎需要进行一些设置才能使Lively工作：  
-1. 打开此电脑（我的电脑）
-2. 右键单击空白区域
-3. 选择"属性"
-4. 选择"高级系统设置"
-5. 在"性能"选项卡下，选择"设置"
-6. 启用"窗口内的动画控件和元素"并应用。
+    <value>Has d'aplicar algunes configuracions per a què Lively funcioni:
+1. Al navegador d'arxius dóna clic dret a "Aquest Equip"
+2. Selecciona Propietats
+3. Selecciona Configuració avançada de sistema3
+4. A la pestanya Rendiment, selecciona Configuració
+5. Habilita animar els elements i controls de les finestres
+6. Aplica els canvis
 
-如果是 Windows 7 系统只需设置"调整为最近外观"并应用。
-如果仍不起作用, 重启 Lively 或重启操作系统。
-(在一些 Windows 10 预览体验计划版本中无法工作)</value>
+Si Windows 7 s'acaba de configurar: ajusta'l per obtenir la millor aparença i aplica els canvis.
+Si encara no funciona l'aplicació, tanca i inicia Lively novament o reinicia Windows.
+(No funciona en algunes versions insider de Windows 10)</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
-    <value>添加</value>
+    <value>Afegir</value>
   </data>
   <data name="TextApplication" xml:space="preserve">
-    <value>应用程序</value>
+    <value>Aplicació</value>
   </data>
   <data name="TextAttribution" xml:space="preserve">
-    <value>说明/属性</value>
+    <value>Atribució</value>
   </data>
   <data name="TextAuthor" xml:space="preserve">
-    <value>作者</value>
+    <value>Autor</value>
   </data>
   <data name="TextBack" xml:space="preserve">
-    <value>返回</value>
+    <value>Retornar</value>
   </data>
   <data name="TextBrowse" xml:space="preserve">
-    <value>浏览</value>
+    <value>Navegar</value>
   </data>
   <data name="TextCloseWallpapers" xml:space="preserve">
-    <value>关闭所有壁纸</value>
+    <value>Tancar fons de pantalla.</value>
   </data>
   <data name="TextCompleted" xml:space="preserve">
-    <value>完成!</value>
+    <value>Completat!</value>
   </data>
   <data name="TextConvertVideo" xml:space="preserve">
-    <value>转换成视频</value>
+    <value>Convertir a Vídeo</value>
   </data>
   <data name="TextCustomiseWallpaper" xml:space="preserve">
-    <value>自定义壁纸</value>
+    <value>Personalitzar el fons de pantalla</value>
   </data>
   <data name="TextDeleteWallpaper" xml:space="preserve">
-    <value>删除壁纸</value>
+    <value>Eliminar el fons de pantalla</value>
   </data>
   <data name="TextDisplayPauseRuleAllScreen" xml:space="preserve">
-    <value>所有屏幕</value>
+    <value>Totes les pantalles</value>
   </data>
   <data name="TextDisplayPauseRulePerScreen" xml:space="preserve">
-    <value>每个屏幕</value>
+    <value>Per pantalla</value>
   </data>
   <data name="TextDownload" xml:space="preserve">
-    <value>下载</value>
+    <value>Descarregar</value>
   </data>
   <data name="TextError" xml:space="preserve">
-    <value>错误</value>
+    <value>Error</value>
   </data>
   <data name="TextExit" xml:space="preserve">
-    <value>退出</value>
+    <value>Sortir</value>
   </data>
   <data name="TextExportWallpaperZip" xml:space="preserve">
-    <value>输出为 Lively .zip</value>
+    <value>Exportar .zip de Lively</value>
   </data>
   <data name="TextGIF" xml:space="preserve">
-    <value>动态 GIF</value>
+    <value>GIF animat</value>
   </data>
   <data name="TextGo" xml:space="preserve">
-    <value>GO</value>
+    <value>Iniciar</value>
   </data>
   <data name="TextHelpTranslate" xml:space="preserve">
-    <value>帮助翻译 Lively 。</value>
+    <value>Ajuda a traduïr Lively.</value>
   </data>
   <data name="TextInstall" xml:space="preserve">
-    <value>安装</value>
+    <value>Instal·lar</value>
   </data>
   <data name="TextmoreInfo" xml:space="preserve">
-    <value>资讯</value>
+    <value>Informació</value>
   </data>
   <data name="TextMoreWallpapers" xml:space="preserve">
-    <value>更多壁纸</value>
+    <value>Més fons de pantalla</value>
   </data>
   <data name="TextMouseInteractOnDesktop" xml:space="preserve">
-    <value>应用聚焦时的鼠标交互</value>
+    <value>Interactuar amb el mouse quan una aplicació està enfocada.</value>
   </data>
   <data name="TextNext" xml:space="preserve">
-    <value>下一步</value>
+    <value>Següent</value>
   </data>
   <data name="TextNo" xml:space="preserve">
-    <value>没有</value>
+    <value>No</value>
   </data>
   <data name="TextOnline" xml:space="preserve">
-    <value>在线网页 (Online)</value>
+    <value>En línia</value>
   </data>
   <data name="TextOpenLively" xml:space="preserve">
-    <value>打开 Lively</value>
+    <value>Obrir Lively</value>
   </data>
   <data name="TextPauseAlgoAllProcess" xml:space="preserve">
-    <value>所有进程</value>
+    <value>Tots els processos</value>
   </data>
   <data name="TextPauseAlgoForegroundProcess" xml:space="preserve">
-    <value>前台进程</value>
+    <value>Processos en primer plà</value>
   </data>
   <data name="TextPauseWallpapers" xml:space="preserve">
-    <value>暂停壁纸</value>
+    <value>Pausar els fons de pantalla</value>
   </data>
   <data name="TextPerformanceKill" xml:space="preserve">
-    <value>停止</value>
+    <value>Acabar</value>
   </data>
   <data name="TextPerformanceNone" xml:space="preserve">
-    <value>保持运行</value>
+    <value>Res</value>
   </data>
   <data name="TextPerformancePause" xml:space="preserve">
-    <value>暂停</value>
+    <value>Pausa</value>
   </data>
   <data name="TextRemove" xml:space="preserve">
-    <value>移除</value>
+    <value>Eliminar</value>
   </data>
   <data name="TextRule" xml:space="preserve">
-    <value>规则</value>
+    <value>Regla</value>
   </data>
   <data name="TextScreen" xml:space="preserve">
-    <value>屏幕</value>
+    <value>Pantalla</value>
   </data>
   <data name="TextSearch" xml:space="preserve">
-    <value>搜索</value>
+    <value>Cercar</value>
   </data>
   <data name="TextSetWallpaper" xml:space="preserve">
-    <value>设置为壁纸</value>
+    <value>Establir com a fons de pantalla</value>
   </data>
   <data name="TextShowOnDisk" xml:space="preserve">
-    <value>打开文件所在位置</value>
+    <value>Mostrar en el disc dur.</value>
   </data>
   <data name="TextSource" xml:space="preserve">
-    <value>来源</value>
+    <value>Font</value>
   </data>
   <data name="TextStart" xml:space="preserve">
-    <value>开始</value>
+    <value>Començar</value>
   </data>
   <data name="TextStop" xml:space="preserve">
-    <value>结束</value>
+    <value>Pausar</value>
   </data>
   <data name="TextTags" xml:space="preserve">
-    <value>标签</value>
+    <value>Etiquetes</value>
   </data>
   <data name="TextTileSizeLarge" xml:space="preserve">
-    <value>大</value>
+    <value>Gran</value>
   </data>
   <data name="TextTileSizeNormal" xml:space="preserve">
-    <value>中</value>
+    <value>Normal</value>
   </data>
   <data name="TextTileSizeSmall" xml:space="preserve">
-    <value>小</value>
+    <value>Petit</value>
   </data>
   <data name="TextUIHeadless" xml:space="preserve">
-    <value>无UI (Headless)</value>
+    <value>Headless</value>
   </data>
   <data name="TextUILite" xml:space="preserve">
-    <value>精简 (Lite)</value>
+    <value>Lite</value>
   </data>
   <data name="TextUINormal" xml:space="preserve">
-    <value>正常 (Normal)</value>
+    <value>Normal</value>
   </data>
   <data name="TextUpdateAvailable" xml:space="preserve">
-    <value>发现新版本！</value>
+    <value>Actualització disponible!</value>
   </data>
   <data name="TextUpdateCheck" xml:space="preserve">
-    <value>检查更新</value>
+    <value>Cercar per actualitzacions.</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
-    <value>检查更新出错</value>
+    <value>Error a l'verificar l'actualització de software.</value>
   </data>
   <data name="TextUpdateChecking" xml:space="preserve">
-    <value>正在检查更新</value>
+    <value>Comprovació de l'actualització</value>
   </data>
   <data name="TextUpdateUptodate" xml:space="preserve">
-    <value>已是最新版本！</value>
+    <value>El software està actualitzat!</value>
   </data>
   <data name="TextVideo" xml:space="preserve">
-    <value>视频</value>
+    <value>Vídeo</value>
   </data>
   <data name="TextWallpaperLayoutDuplicate" xml:space="preserve">
-    <value>复制相同壁纸</value>
+    <value>Duplicar el mateix fons de pantalla</value>
   </data>
   <data name="TextWallpaperLayoutSpan" xml:space="preserve">
-    <value>跨显示器</value>
+    <value>Estirar</value>
   </data>
   <data name="TextWallpaperType" xml:space="preserve">
-    <value>类型</value>
+    <value>Tipus</value>
   </data>
   <data name="TextWebsite" xml:space="preserve">
-    <value>网站</value>
+    <value>Lloc web</value>
   </data>
   <data name="TextWebStream" xml:space="preserve">
-    <value>Web流 (Web Stream)</value>
+    <value>Web Stream</value>
   </data>
   <data name="TextWelcome" xml:space="preserve">
-    <value>欢迎</value>
+    <value>Benvingut</value>
   </data>
   <data name="TextYes" xml:space="preserve">
-    <value>是</value>
+    <value>Sí</value>
   </data>
   <data name="TileVideoPlayer" xml:space="preserve">
-    <value>视频播放器</value>
+    <value>Reproductor de vídeo</value>
   </data>
   <data name="TipAddWallpaperFileBrowse" xml:space="preserve">
-    <value>将所有支持的文件类型设置为壁纸。</value>
+    <value>Configura tots els tipus d'arxius compatibles com a fons de pantalla.</value>
   </data>
   <data name="TipAddWallpaperURL" xml:space="preserve">
-    <value>将您输入的URL的网页设置为墙纸。</value>
+    <value>Estableix la pàgina web de la URL que ha ingressat com a fons de pantalla.</value>
   </data>
   <data name="TipAppFocus" xml:space="preserve">
-    <value>设置当任何应用程序处于焦点时的行为。</value>
+    <value>Estableix què fer quan una aplicació estigui enfocada.</value>
   </data>
   <data name="TipAppFullScreen" xml:space="preserve">
-    <value>设置全屏游戏/应用程序运行时的操作。</value>
+    <value>Establir què fer quan s'executen jocs / aplicacions a pantalla completa.</value>
   </data>
   <data name="TipAppRules" xml:space="preserve">
-    <value>根据运行的应用程序设置不同的壁纸播放规则。</value>
+    <value>Establir diferents regles de reproducció de fons de pantalla en funció a quina aplicació està executant.</value>
   </data>
   <data name="TipAppTheme" xml:space="preserve">
-    <value>Lively 自适应系统主题设置，要更改外观请前往</value>
+    <value>Lively s'adapta a la configuració del tema de el sistema, per a canviar l'aparença, ves a</value>
   </data>
   <data name="TipBatteryPower" xml:space="preserve">
-    <value>（仅电池供电的系统）当电源断开时改变播放方式。</value>
+    <value>(Només per a sistemes que funcionen amb bateria) Canviar la reproducció quan es desconnecti la font d'alimentació.</value>
   </data>
   <data name="TipBrowserDebuggingPort" xml:space="preserve">
-    <value>输入调试网页壁纸的端口，需要重新启动浏览器才能使修改生效。
-准备好后前往 http://localhost:portnumber ，进入开发者控制台。</value>
+    <value>Ingressa el port per depurar els fons de pantalla web, es requereix reiniciar el navegador perquè els canvis tinguin efecte.
+Quan estigui llest, navega a http: // localhost: número de port, per a accedir a la consola de desenvolupador.</value>
   </data>
   <data name="TipDisplayPauseRule" xml:space="preserve">
-    <value>每个：只在应用程序聚焦/全屏的屏幕上暂停壁纸。
-所有：如果有应用程序聚焦/全屏，则在所有屏幕上暂停壁纸。</value>
+    <value>Per: Pausa el fons només a la pantalla on l'aplicació està enfocada / pantalla completa.
+Totes: pausa el fons en la/les pantalla(es) si alguna aplicació està enfocada / pantalla completa.</value>
   </data>
   <data name="TipHideSysTray" xml:space="preserve">
-    <value>系统托盘图标可见性， Lively 会在图标隐藏的情况下继续运行。</value>
+    <value>Visibilitat de la icona de la safata del sistema. Lively es continuarà executant encara amb la icona oculta.</value>
   </data>
   <data name="TipLanguage" xml:space="preserve">
-    <value>重启 Lively 以应用新的语言。</value>
+    <value>Lively es reiniciarà per a aplicar el nou idioma.</value>
   </data>
   <data name="TipLivelySetupOnClose" xml:space="preserve">
-    <value>完成配置以继续。</value>
+    <value>Finalitzeu la configuració per continuar.</value>
   </data>
   <data name="TipPauseAlgorithm" xml:space="preserve">
-    <value>前台：轻量，只检查前台的单一进程，以确定壁纸播放行为。
-所有进程：较重，扫描所有进程以确定播放行为。</value>
+    <value>Primer pla: Lleuger, només comprova l'únic procés que estigui en primer pla per determinar el comportament de reproducció de fons.
+Tots els processos: Pesat, analitza tots els processos oberts per determinar el comportament de reproducció de fons.</value>
   </data>
   <data name="TipStreamWallpaperDetect" xml:space="preserve">
-    <value>如果检测到支持的视频流链接，则使用视频播放器而非加载网页。</value>
+    <value>Si es detecta un enllaç a un stream compatible, fer servir el reproductor de vídeo en lloc de carregar el lloc web.</value>
   </data>
   <data name="TipStreamWallpaperVideoQuality" xml:space="preserve">
-    <value>选择在线流媒体的视频质量</value>
+    <value>Seleccioni la qualitat de vídeo desitjada per als streams</value>
   </data>
   <data name="TipTileSize" xml:space="preserve">
-    <value>图库中壁纸预览的大小。</value>
+    <value>Mida dels mosaics de la Biblioteca.</value>
   </data>
   <data name="TipUIMode" xml:space="preserve">
-    <value>低端系统建议使用精简 (Lite) 模式。</value>
+    <value>Per a sistemes de gamma baixa, selecciona el mode Lite.</value>
   </data>
   <data name="TipVideoPlayer" xml:space="preserve">
-    <value>选择壁纸使用的视频播放器。</value>
+    <value>Selecciona el reproductor de vídeo que s'utilitzarà per al fons de pantalla.</value>
   </data>
   <data name="TipWallpaperDir" xml:space="preserve">
-    <value>存储壁纸的路径。</value>
+    <value>Ruta utilitzada per a emmagatzemar arxius del fons de pantalla.</value>
   </data>
   <data name="TipWallpaperInput" xml:space="preserve">
-    <value>选择与背景互动的方式。</value>
+    <value>Seleccionar formes d'interactuar amb el fons de pantalla.</value>
   </data>
   <data name="TipWallpaperPlayback" xml:space="preserve">
-    <value>当桌面失去焦点时，暂停壁纸播放。</value>
+    <value>Pausa la reproducción del fondo de pantalla cuando el escritorio no está enfocado.</value>
   </data>
   <data name="TipWebBrowserDiskCache" xml:space="preserve">
-    <value>将临时文件存储在磁盘而不是内存上，当浏览器重新启动时，设置将被恢复。</value>
+    <value>Emmagatzemar arxius temporals en el disc en lloc de la memòria, la configuració es restaurarà quan es reiniciï el navegador.</value>
   </data>
   <data name="TipWebBrowserEngine" xml:space="preserve">
-    <value>CEF (Chromium Embedded Framework) 是一个轻量级的Chromium引擎。
-Edge 是 Windows 10 内置的浏览器。</value>
+    <value>CEF (Chromium Embedded Framework) és un motor de chromium lleuger.
+Edge és la vista web integrada amb Windows 10.</value>
   </data>
   <data name="TipWindowsStartup" xml:space="preserve">
-    <value>Lively 需要在后台运行以播放壁纸。</value>
+    <value>Lively necessita executar-se en segon pla per a reproduir el fons de pantalla.</value>
   </data>
   <data name="TitleAbout" xml:space="preserve">
-    <value>关于</value>
+    <value>Sobre</value>
   </data>
   <data name="TitleAddWallpaper" xml:space="preserve">
-    <value>添加壁纸</value>
+    <value>Afegir fons de pantalla</value>
   </data>
   <data name="TitleAppFocus" xml:space="preserve">
-    <value>其他应用程序获得焦点</value>
+    <value>Aplicacions enfocades</value>
   </data>
   <data name="TitleAppFullScreen" xml:space="preserve">
-    <value>其他应用程序全屏</value>
+    <value>Aplicacions de pantalla completa</value>
   </data>
   <data name="TitleAppName" xml:space="preserve">
-    <value>Lively背景</value>
+    <value>Lively Wallpaper</value>
   </data>
   <data name="TitleAppRules" xml:space="preserve">
-    <value>应用规则</value>
+    <value>Regles per aplicació</value>
   </data>
   <data name="TitleAppTheme" xml:space="preserve">
-    <value>主题</value>
+    <value>Tema</value>
   </data>
   <data name="TitleAudio" xml:space="preserve">
-    <value>音频</value>
+    <value>Àudio</value>
   </data>
   <data name="TitleAudioPlayOnScreen" xml:space="preserve">
-    <value>播放屏幕上的音频</value>
+    <value>Reproduir àudio en pantalla</value>
   </data>
   <data name="TitleBatteryPower" xml:space="preserve">
-    <value>当处于电池供电模式时</value>
+    <value>Al usar la bateria</value>
   </data>
   <data name="TitleBrowseFile" xml:space="preserve">
-    <value>浏览视频、GIF、网页......文件以设置为壁纸</value>
+    <value>Explorar archius de vídeo, gifs, pàgines web... per a establir com a fons</value>
   </data>
   <data name="TitleBrowserDebuggingPort" xml:space="preserve">
-    <value>调试端口</value>
+    <value>Port de depuració</value>
   </data>
   <data name="TitleDeleteConfirmation" xml:space="preserve">
-    <value>确认删除</value>
+    <value>Confirmar l'eliminació</value>
   </data>
   <data name="TitleDisplayPauseRule" xml:space="preserve">
-    <value>播放器暂停规则</value>
+    <value>Regla de Pausa de Pantalla</value>
   </data>
   <data name="TitleEnterUrl" xml:space="preserve">
-    <value>输入 URL</value>
+    <value>Inserir enllaç</value>
   </data>
   <data name="TitleGeneral" xml:space="preserve">
-    <value>通用</value>
+    <value>General</value>
   </data>
   <data name="TitleHelp" xml:space="preserve">
-    <value>帮助</value>
+    <value>Ajuda</value>
   </data>
   <data name="TitleHideSysTray" xml:space="preserve">
-    <value>系统托盘图标</value>
+    <value>Icona de la safata del sistema</value>
   </data>
   <data name="TitleInteraction" xml:space="preserve">
-    <value>交互</value>
+    <value>Interacció</value>
   </data>
   <data name="TitleLanguage" xml:space="preserve">
-    <value>语言</value>
+    <value>Idioma</value>
   </data>
   <data name="TitleLibrary" xml:space="preserve">
-    <value>图库</value>
+    <value>Bilbioteca</value>
   </data>
   <data name="TitleLivelySetup" xml:space="preserve">
-    <value>Lively 配置</value>
+    <value>Configuració de Lively</value>
   </data>
   <data name="TitleMisc" xml:space="preserve">
-    <value>杂项</value>
+    <value>Miscel·lani</value>
   </data>
   <data name="TitleMute" xml:space="preserve">
-    <value>静音</value>
+    <value>Silenciar</value>
   </data>
   <data name="TitlePauseAlgo" xml:space="preserve">
-    <value>暂停算法</value>
+    <value>Algorisme de Pausa</value>
   </data>
   <data name="TitlePerformance" xml:space="preserve">
-    <value>性能</value>
+    <value>Rendiment</value>
   </data>
   <data name="TitlePlaylist" xml:space="preserve">
-    <value>播放列表</value>
+    <value>Lista de reproducción</value>
   </data>
   <data name="TitlePleaseWait" xml:space="preserve">
-    <value>请稍候</value>
+    <value>Si us plau, espera</value>
   </data>
   <data name="TitleScalingFit" xml:space="preserve">
-    <value>缩放/调整</value>
+    <value>Escalar/Ajustar</value>
   </data>
   <data name="TitleScreenLayout" xml:space="preserve">
-    <value>控制面板</value>
+    <value>Disseny de pantalla</value>
   </data>
   <data name="TitleSelectFile" xml:space="preserve">
-    <value>选择文件</value>
+    <value>Seleccionar Arxiu</value>
   </data>
   <data name="TitleSettings" xml:space="preserve">
-    <value>设置</value>
+    <value>Configuracions</value>
   </data>
   <data name="TitleStreamWallpaper" xml:space="preserve">
-    <value>流 (Stream)</value>
+    <value>Stream</value>
   </data>
   <data name="TitleStreamWallpaperDetect" xml:space="preserve">
-    <value>检测流</value>
+    <value>Detectar Streams</value>
   </data>
   <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
-    <value>视频质量</value>
+    <value>Qualitat dels Streams</value>
   </data>
   <data name="TitleTileSize" xml:space="preserve">
-    <value>预览大小</value>
+    <value>Mida dels Mosaics</value>
   </data>
   <data name="TitleUIMode" xml:space="preserve">
-    <value>用户界面</value>
+    <value>Interfície d'usuari</value>
   </data>
   <data name="TitleVideo" xml:space="preserve">
-    <value>视频</value>
+    <value>Vídeo</value>
   </data>
   <data name="TitleWallpaper" xml:space="preserve">
-    <value>壁纸</value>
+    <value>Fons de pantalla.</value>
   </data>
   <data name="TitleWallpaperDir" xml:space="preserve">
-    <value>壁纸路径</value>
+    <value>Directori dels fons de pantalla</value>
   </data>
   <data name="TitleWallpaperInput" xml:space="preserve">
-    <value>壁纸输入</value>
+    <value>Entrada</value>
   </data>
   <data name="TitleWallpaperLayout" xml:space="preserve">
-    <value>布局方式</value>
+    <value>Disposició del/dels fons</value>
   </data>
   <data name="TitleWallpaperPlayback" xml:space="preserve">
-    <value>壁纸播放</value>
+    <value>Reproducció de fons</value>
   </data>
   <data name="TitleWarning" xml:space="preserve">
-    <value>警告</value>
+    <value>Advertència</value>
   </data>
   <data name="TitleWebBrowser" xml:space="preserve">
-    <value>网页浏览器</value>
+    <value>Navegador web</value>
   </data>
   <data name="TitleWebBrowserDiskCache" xml:space="preserve">
-    <value>磁盘缓存</value>
+    <value>Memòria cachè del disc</value>
   </data>
   <data name="TitleWebBrowserEngine" xml:space="preserve">
-    <value>引擎</value>
+    <value>Motor</value>
   </data>
   <data name="TitleWebpageLoad" xml:space="preserve">
-    <value>载入网页</value>
+    <value>Carregar pàgina web</value>
   </data>
   <data name="TitleWindowsStartup" xml:space="preserve">
-    <value>开机自启动</value>
+    <value>Iniciar amb Windows</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
-    <value>请重新启动 Lively 以使设置生效。</value>
+    <value>Si us plau reinicia Lively per a què les configuracions tinguin efecte.</value>
   </data>
   <data name="TextSupport" xml:space="preserve">
-    <value>支持</value>
+    <value>Suport</value>
   </data>
   <data name="TextClose" xml:space="preserve">
-    <value>关闭</value>
+    <value>Tancar</value>
   </data>
   <data name="TextCustomise" xml:space="preserve">
-    <value>自定义</value>
+    <value>Personalitzar</value>
   </data>
   <data name="DescriptionScreenLayout" xml:space="preserve">
-    <value>选择屏幕</value>
+    <value>Escollir pantalla</value>
   </data>
   <data name="TextWallpaperLayoutPerScreen" xml:space="preserve">
-    <value>仅选中的屏幕</value>
+    <value>Nomès la pantalla seleccionada</value>
   </data>
   <data name="TipWallpaperLayout" xml:space="preserve">
-    <value>壁纸应用于连接的显示设备的方式。</value>
+    <value>Com s'aplica el fons a les pantalles connectades.</value>
   </data>
   <data name="TitleWallpaperDirMoveExisting" xml:space="preserve">
-    <value>移动现有的壁纸到新的文件夹</value>
+    <value>Moure els fons de pantalla existents al nou directori.</value>
   </data>
   <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
-    <value>媒体播放失败 :(
-请尝试在 Lively 设置中改变视频播放器。
+    <value>El reproductor de contingut ha fallat :(
+S'ha de canviar el reproductor de vídeo des de la configuració de Lively.
 
-为了更好地了解这个错误并修复问题，请将日志文件分享给开发者。
-分享日志文件的说明：
+Per a entendre millor aquest error i solucionar el problema, comparteix l'arxiu de registre amb el desenvolupador.
+Visita el següent enllaç amb instruccions sobre com compartir l'arxiu de registre:
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="TextOff" xml:space="preserve">
-    <value>关</value>
+    <value>APAGAT</value>
   </data>
   <data name="TextOn" xml:space="preserve">
-    <value>开</value>
+    <value>ENCÈS</value>
   </data>
   <data name="TextMouse" xml:space="preserve">
-    <value>鼠标</value>
+    <value>Ratolí</value>
   </data>
   <data name="TextKeyboard" xml:space="preserve">
-    <value>键盘</value>
+    <value>Teclat</value>
   </data>
   <data name="TitleDocumentation" xml:space="preserve">
-    <value>文档</value>
+    <value>Documentació</value>
   </data>
   <data name="TitleCommunity" xml:space="preserve">
-    <value>社区</value>
+    <value>Comunitat</value>
   </data>
   <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
-    <value>您确定要从图库中删除这张壁纸吗？</value>
+    <value>Esteu segur que voleu suprimir aquest fons de pantalla de la Biblioteca?</value>
   </data>
   <data name="TipAudioMaster" xml:space="preserve">
-    <value>所有壁纸的音量大小。</value>
+    <value>Nivell de volum dels fons de pantalla.</value>
   </data>
   <data name="TitleAudioMaster" xml:space="preserve">
-    <value>主音量</value>
+    <value>Volum mestre</value>
   </data>
   <data name="TextWallpaperFitFill" xml:space="preserve">
-    <value>填充</value>
+    <value>Omplir</value>
   </data>
   <data name="TextWallpaperFitNone" xml:space="preserve">
-    <value>无</value>
+    <value>Cap</value>
   </data>
   <data name="TextWallpaperFitUniform" xml:space="preserve">
-    <value>统一</value>
+    <value>Uniforme</value>
   </data>
   <data name="TextWallpaperFitUniformToFill" xml:space="preserve">
-    <value>统一填充</value>
+    <value>Omplir uniformement</value>
   </data>
   <data name="TipWallpaperFit" xml:space="preserve">
-    <value>壁纸缩放算法。</value>
+    <value>Algorisme d'escalat del fons de pantalla.</value>
   </data>
   <data name="TitleWallpaperFit" xml:space="preserve">
-    <value>选择契合度</value>
+    <value>Trieu un ajust</value>
   </data>
   <data name="TextPreviewWallpaper" xml:space="preserve">
     <value>Preview Wallpaper</value>
-  </data>
-  <data name="TextAllFiles" xml:space="preserve">
-    <value>All Files</value>
   </data>
   <data name="TitleDebug" xml:space="preserve">
     <value>Debug</value>
   </data>
   <data name="TipDebug" xml:space="preserve">
     <value>Show developer menu</value>
+  </data>
+  <data name="TextAllFiles" xml:space="preserve">
+    <value>All Files</value>
   </data>
   <data name="TextFileNotFound" xml:space="preserve">
     <value>File not found</value>

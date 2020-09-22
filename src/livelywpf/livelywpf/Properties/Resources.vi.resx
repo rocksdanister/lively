@@ -127,8 +127,8 @@
     <value>Bạn có chắc muốn hủy bỏ?</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
-    
-  <value>Bạn có chắc chắn muốn xóa vĩnh viễn hình nền này khỏi bộ nhớ?</value></data>
+    <value>Bạn có chắc chắn muốn xóa vĩnh viễn hình nền này khỏi bộ nhớ?</value>
+  </data>
   <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
     <value>Bạn có chắc chắn muốn xóa nền này khỏi thư viện?</value>
   </data>
@@ -687,4 +687,16 @@ Edge là webview được tích hợp sẵn của windows 10.</value>
   <data name="TextPreviewWallpaper" xml:space="preserve">
     <value>Preview Wallpaper</value>
   </data>
+  <data name="TextAllFiles" xml:space="preserve">
+    <value>All Files</value>
+  </data>
+  <data name="TitleDebug" xml:space="preserve">
+    <value>Debug</value>
+  </data>
+  <data name="TipDebug" xml:space="preserve">
+    <value>Show developer menu</value>
+  </data>
+  <data name="TextFileNotFound" xml:space="preserve">
+    <value>File not found</value>
+  </data>  
 </root>

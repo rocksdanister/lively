@@ -53,10 +53,10 @@ namespace livelywpf.Views
         }
 
         readonly FileFilter[] wallpaperFilter = new FileFilter[] {
-            new FileFilter(WallpaperType.video, "*.dat; *.wmv; *.3g2; *.3gp; *.3gp2;" +
-                "*.3gpp; *.amv; *.asf;  *.avi; *.bin; *.cue; *.divx; *.dv; *.flv; *.gxf; *.iso; *.m1v; *.m2v; *.m2t; *.m2ts; *.m4v; " +
-                "*.mkv; *.mov; *.mp2; *.mp2v; *.mp4; *.mp4v; *.mpa; *.mpe; *.mpeg; *.mpeg1; *.mpeg2; *.mpeg4; *.mpg; *.mpv2; *.mts; " +
-                "*.nsv; *.nuv; *.ogg; *.ogm; *.ogv; *.ogx; *.ps; *.rec; *.rm; *.rmvb; *.tod; *.ts; *.tts; *.vob; *.vro; *.webm"),
+            new FileFilter(WallpaperType.video, 
+                "*.wmv; *.avi; *.bin; *.divx; *.flv; *.m4v; " +
+                "*.mkv; *.mov; *.mp4; *.mp4v; *.mpeg4; *.mpg; *.webm" +
+                "*.ogm; *.ogv; *.ogx; *.ts"),
             new FileFilter(WallpaperType.gif, "*.gif"),
             new FileFilter(WallpaperType.web, "*.html"),
             new FileFilter(WallpaperType.webaudio, "*.html"),
@@ -75,7 +75,7 @@ namespace livelywpf.Views
             InitializeComponent();
             UrlText.Text = Program.SettingsVM.Settings.SavedURL;
             filterString = new StringBuilder();
-            filterString.Append("All Files|*.*|");
+            filterString.Append(Properties.Resources.TextAllFiles + "|*.*|");
             foreach (var item in wallpaperFilter)
             {
                 filterString.Append(item.LocalisedTypeText);

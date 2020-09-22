@@ -308,7 +308,14 @@ namespace livelywpf
                 }
                 else
                 {
-                    Logger.Error("Core: Failed to launch wallpaper=>" + e.Msg + "\n" + e.Error.ToString());
+                    if(e.Error != null)
+                    {
+                        Logger.Error("Core: Failed to launch wallpaper=>" + e.Msg + "\n" + e.Error.ToString());
+                    }
+                    else
+                    {
+                        Logger.Error("Core: Failed to launch wallpaper=>" + e.Msg);
+                    }
                     wallpaper.Terminate();
                     WallpaperChanged?.Invoke(null, null);
                     MessageBox.Show(e.Error.Message, Properties.Resources.TitleAppName);

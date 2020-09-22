@@ -50,6 +50,7 @@ namespace livelywpf
                 new LanguagesModel("Nederlands(nl-NL)", new string[]{"nl-NL"}),
                 new LanguagesModel("Tiếng Việt(vi)", new string[]{"vi", "vi-VN"}),
                 new LanguagesModel("日本語(ja)", new string[]{"ja", "ja-JP"}),
+                new LanguagesModel("Català(ca)", new string[]{ "ca", "ca-AD", "ca-FR", "ca-IT", "ca-ES"}),
             };
             SelectedLanguageItem = SearchSupportedLanguage(Settings.Language);
 

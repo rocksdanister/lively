@@ -684,5 +684,17 @@ https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="TextPreviewWallpaper" xml:space="preserve">
     <value>Preview Wallpaper</value>
-  </data>  
+  </data>
+  <data name="TextAllFiles" xml:space="preserve">
+    <value>All Files</value>
+  </data>
+  <data name="TitleDebug" xml:space="preserve">
+    <value>Debug</value>
+  </data>
+  <data name="TipDebug" xml:space="preserve">
+    <value>Show developer menu</value>
+  </data>
+  <data name="TextFileNotFound" xml:space="preserve">
+    <value>File not found</value>
+  </data>
 </root>

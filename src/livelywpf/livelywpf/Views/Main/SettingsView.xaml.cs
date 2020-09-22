@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
-using System.Windows;
 
 namespace livelywpf.Views
 {
@@ -108,7 +106,9 @@ namespace livelywpf.Views
                     TipMasterAudio = Properties.Resources.TipAudioMaster,
                     //misc
                     TitleSysTrayIconHide = Properties.Resources.TitleHideSysTray,
-                    TipSysTrayIconHide = Properties.Resources.TipHideSysTray
+                    TipSysTrayIconHide = Properties.Resources.TipHideSysTray,
+                    TitleDebug = Properties.Resources.TitleDebug,
+                    TipDebug = Properties.Resources.TipDebug
                 };               
             }
         }

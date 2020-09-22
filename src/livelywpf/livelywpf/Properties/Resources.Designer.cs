@@ -272,17 +272,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to It looks like some settings needs to be set to make Lively work:-  
-        ///1. Open This PC(My Computer)
-        ///2. Right-click empty area
-        ///3. Select Properties
-        ///4. Select Advanced System Settings
-        ///5. Under Performance tab select Settings
-        ///6. Enable Animate controls and elements inside windows and Apply.
+        ///   Looks up a localized string similar to It looks like some settings needs to be set to make Lively work:  
+        ///1. Press the Win + R keys to open Run, 
+        ///2. Type SystemPropertiesPerformance.exe into Run, click on &quot;OK&quot; to open Performance Options.
+        ///3. Enable/Check &quot;Animate controls and elements inside windows&quot; (If already checked, then uncheck and check) &amp; Apply.
+        ///4. Click &quot;Apply&quot; then press &quot;OK&quot; to close the window.
         ///
         ///If Windows 7 just set - Adjust for best appearance &amp;amp; Apply.
-        ///If still not working, close &amp;amp; start Lively again/ restart windows.
-        ///(Does not work in some insider windows 10 builds).
+        ///If still not working, close &amp; start Lively again/restart windows.
+        ///(D [rest of string was truncated]&quot;;.
         /// </summary>
         public static string LivelyExceptionWorkerWSetupFail {
             get {
@@ -296,6 +294,15 @@ namespace livelywpf.Properties {
         public static string TextAdd {
             get {
                 return ResourceManager.GetString("TextAdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All Files.
+        /// </summary>
+        public static string TextAllFiles {
+            get {
+                return ResourceManager.GetString("TextAllFiles", resourceCulture);
             }
         }
         
@@ -458,6 +465,15 @@ namespace livelywpf.Properties {
         public static string TextExportWallpaperZip {
             get {
                 return ResourceManager.GetString("TextExportWallpaperZip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File not found.
+        /// </summary>
+        public static string TextFileNotFound {
+            get {
+                return ResourceManager.GetString("TextFileNotFound", resourceCulture);
             }
         }
         
@@ -1066,6 +1082,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Show developer menu.
+        /// </summary>
+        public static string TipDebug {
+            get {
+                return ResourceManager.GetString("TipDebug", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Per: Pause wallpaper only on the screen in which application is focused/fullscreen.
         ///All: Pause wallpaper on all screen(s) if any application is focused/fullscreen..
         /// </summary>
@@ -1353,6 +1378,15 @@ namespace livelywpf.Properties {
         public static string TitleCommunity {
             get {
                 return ResourceManager.GetString("TitleCommunity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Debug.
+        /// </summary>
+        public static string TitleDebug {
+            get {
+                return ResourceManager.GetString("TitleDebug", resourceCulture);
             }
         }
         

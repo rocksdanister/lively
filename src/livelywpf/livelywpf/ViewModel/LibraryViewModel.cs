@@ -151,7 +151,7 @@ namespace livelywpf
 
             if (!fileExists)
             {
-                MessageBox.Show("File Not Found!", Properties.Resources.TextError);
+                MessageBox.Show(Properties.Resources.TextFileNotFound, Properties.Resources.TextError);
                 return false;
             }
             if (targetDisplay == null)

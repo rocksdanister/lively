@@ -613,22 +613,22 @@ Edge jest przeglądarką wbudowaną w windows 10.</value>
   </data>
   <data name="TextClose" xml:space="preserve">
     <value>Zamknij</value>
-  </data> 
+  </data>
   <data name="TextCustomise" xml:space="preserve">
     <value>Dostosuj</value>
-  </data>     
+  </data>
   <data name="DescriptionScreenLayout" xml:space="preserve">
     <value>Zamknij wyświetlacz</value>
-  </data>    
+  </data>
   <data name="TextWallpaperLayoutPerScreen" xml:space="preserve">
     <value>Tylko wybrany ekran</value>
-  </data>  
+  </data>
   <data name="TipWallpaperLayout" xml:space="preserve">
     <value>Jak zastosowywana jest tapeta do podłączonych urządzeń odtwarzania.</value>
-  </data> 
+  </data>
   <data name="TitleWallpaperDirMoveExisting" xml:space="preserve">
     <value>Przenieś istniejące tapety do nowego folderu</value>
-  </data>   
+  </data>
   <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
     <value>Niepowodzenie odtwarzania multimediów :(
 Spróbuj zmienić odtwarzacz wideo w ustawieniach lively.
@@ -636,35 +636,35 @@ Spróbuj zmienić odtwarzacz wideo w ustawieniach lively.
 Aby lepiej zrozumieć i pomóc w naprawie błędu, wyślij plik dziennika do twórcy aplikacji.
 Instrukcje jak to zrobić znajdziesz pod adresem:
 https://github.com/rocksdanister/lively/wiki</value>
-  </data> 
+  </data>
   <data name="TextOff" xml:space="preserve">
     <value>Wył</value>
   </data>
   <data name="TextOn" xml:space="preserve">
     <value>Wł</value>
-  </data>   
+  </data>
   <data name="TextMouse" xml:space="preserve">
     <value>Mysz</value>
-  </data>  
+  </data>
   <data name="TextKeyboard" xml:space="preserve">
     <value>Klawiatura</value>
-  </data>  
+  </data>
   <data name="TitleDocumentation" xml:space="preserve">
     <value>Dokumentacja</value>
-  </data> 
+  </data>
   <data name="TitleCommunity" xml:space="preserve">
     <value>Społeczność</value>
-  </data>    
-    <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
+  </data>
+  <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
     <value>Na pewno chcesz usunąć tapetę z Biblioteki?</value>
   </data>
-    <data name="TipAudioMaster" xml:space="preserve">
+  <data name="TipAudioMaster" xml:space="preserve">
     <value>Poziom dźwięku dla wszystkich tapet.</value>
   </data>
-    <data name="TitleAudioMaster" xml:space="preserve">
+  <data name="TitleAudioMaster" xml:space="preserve">
     <value>Głośność główna</value>
   </data>
-    <data name="TextWallpaperFitFill" xml:space="preserve">
+  <data name="TextWallpaperFitFill" xml:space="preserve">
     <value>Fill</value>
   </data>
   <data name="TextWallpaperFitNone" xml:space="preserve">
@@ -676,13 +676,25 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextWallpaperFitUniformToFill" xml:space="preserve">
     <value>Uniform Fill</value>
   </data>
-    <data name="TipWallpaperFit" xml:space="preserve">
+  <data name="TipWallpaperFit" xml:space="preserve">
     <value>Wallpaper scaling algorithm.</value>
   </data>
-    <data name="TitleWallpaperFit" xml:space="preserve">
+  <data name="TitleWallpaperFit" xml:space="preserve">
     <value>Choose a fit</value>
   </data>
-    <data name="TextPreviewWallpaper" xml:space="preserve">
+  <data name="TextPreviewWallpaper" xml:space="preserve">
     <value>Preview Wallpaper</value>
   </data>
+  <data name="TextAllFiles" xml:space="preserve">
+    <value>All Files</value>
+  </data>
+  <data name="TitleDebug" xml:space="preserve">
+    <value>Debug</value>
+  </data>
+  <data name="TipDebug" xml:space="preserve">
+    <value>Show developer menu</value>
+  </data>
+  <data name="TextFileNotFound" xml:space="preserve">
+    <value>File not found</value>
+  </data>  
 </root>

@@ -197,20 +197,21 @@ https://github.com/rocksdanister/lively/wiki</value>
 Do you wish to restore previously running wallpapers?</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
-    <value>It looks like some settings needs to be set to make Lively work:-  
-1. Open This PC(My Computer)
-2. Right-click empty area
-3. Select Properties
-4. Select Advanced System Settings
-5. Under Performance tab select Settings
-6. Enable Animate controls and elements inside windows and Apply.
+    <value>It looks like some settings needs to be set to make Lively work:  
+1. Press the Win + R keys to open Run, 
+2. Type SystemPropertiesPerformance.exe into Run, click on "OK" to open Performance Options.
+3. Enable/Check "Animate controls and elements inside windows" (If already checked, then uncheck and check) &amp; Apply.
+4. Click "Apply" then press "OK" to close the window.
 
 If Windows 7 just set - Adjust for best appearance &amp;amp; Apply.
-If still not working, close &amp;amp; start Lively again/ restart windows.
+If still not working, close &amp; start Lively again/restart windows.
 (Does not work in some insider windows 10 builds)</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
     <value>Add</value>
+  </data>
+  <data name="TextAllFiles" xml:space="preserve">
+    <value>All Files</value>
   </data>
   <data name="TextApplication" xml:space="preserve">
     <value>Application</value>
@@ -265,6 +266,9 @@ If still not working, close &amp;amp; start Lively again/ restart windows.
   </data>
   <data name="TextExportWallpaperZip" xml:space="preserve">
     <value>Export lively .zip</value>
+  </data>
+  <data name="TextFileNotFound" xml:space="preserve">
+    <value>File not found</value>
   </data>
   <data name="TextGIF" xml:space="preserve">
     <value>Animated GIF</value>
@@ -468,6 +472,9 @@ If still not working, close &amp;amp; start Lively again/ restart windows.
     <value>Enter the port for debugging webpage wallpapers, browser restart is required for changes to take effect.
 When ready navigate to http://localhost:portnumber to access developer console.</value>
   </data>
+  <data name="TipDebug" xml:space="preserve">
+    <value>Show developer menu</value>
+  </data>
   <data name="TipDisplayPauseRule" xml:space="preserve">
     <value>Per: Pause wallpaper only on the screen in which application is focused/fullscreen.
 All: Pause wallpaper on all screen(s) if any application is focused/fullscreen.</value>
@@ -566,6 +573,9 @@ Edge is the built in webview of windows 10.</value>
   </data>
   <data name="TitleCommunity" xml:space="preserve">
     <value>Community</value>
+  </data>
+  <data name="TitleDebug" xml:space="preserve">
+    <value>Debug</value>
   </data>
   <data name="TitleDeleteConfirmation" xml:space="preserve">
     <value>Confirm Deletion</value>
