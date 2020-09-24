@@ -17,41 +17,6 @@ namespace livelywpf.Views
     /// </summary>
     public partial class AddWallpaperView : Page
     {
-        private class FileFilter
-        {
-            public WallpaperType Type { get; set; }
-            public string Extentions { get; set; }
-            public string LocalisedTypeText { get; set; }
-
-            public FileFilter(WallpaperType type, string filterText, string localisedText = null)
-            {
-                this.Type = type;
-                this.Extentions = filterText;
-                if(localisedText == null)
-                {
-                    LocalisedTypeText = this.Type switch
-                    {
-                        WallpaperType.app => Properties.Resources.TextApplication,
-                        WallpaperType.unity => Properties.Resources.TextApplication + " Unity",
-                        WallpaperType.godot => Properties.Resources.TextApplication + " Godot",
-                        WallpaperType.unityaudio => Properties.Resources.TextApplication + " Unity " + Properties.Resources.TitleAudio,
-                        WallpaperType.bizhawk => Properties.Resources.TextApplication + " Bizhawk",
-                        WallpaperType.web => Properties.Resources.TextWebsite,
-                        WallpaperType.webaudio => Properties.Resources.TextWebsite + " " + Properties.Resources.TitleAudio,
-                        WallpaperType.url => Properties.Resources.TextOnline,
-                        WallpaperType.video => Properties.Resources.TextVideo,
-                        WallpaperType.gif => Properties.Resources.TextGIF,
-                        WallpaperType.videostream => Properties.Resources.TextWebStream,
-                        _ => "Nil",
-                    };
-                }
-                else
-                {
-                    this.LocalisedTypeText = localisedText;
-                }
-            }
-        }
-
         readonly FileFilter[] wallpaperFilter = new FileFilter[] {
             new FileFilter(WallpaperType.video, 
                 "*.wmv; *.avi; *.bin; *.divx; *.flv; *.m4v; " +
@@ -104,18 +69,25 @@ namespace livelywpf.Views
                 }
                 else if(openFileDlg.FilterIndex == 1)
                 {
-                    //All Files
-                    var item = wallpaperFilter.FirstOrDefault(x => x.Extentions.Contains(Path.GetExtension(openFileDlg.FileName), StringComparison.OrdinalIgnoreCase));
-                    if(item != null)
+                    if (false)//Path.GetExtension(openFileDlg.FileName).Equals(".exe", StringComparison.OrdinalIgnoreCase))
                     {
-                        Program.LibraryVM.AddWallpaper(openFileDlg.FileName,
-                            item.Type,
-                            LibraryTileType.processing,
-                            Program.SettingsVM.Settings.SelectedDisplay);
+                        //await AppSelectContentDialog.ShowAsync();
                     }
                     else
                     {
-                        return;
+                        //All Files
+                        var item = wallpaperFilter.FirstOrDefault(x => x.Extentions.Contains(Path.GetExtension(openFileDlg.FileName), StringComparison.OrdinalIgnoreCase));
+                        if (item != null)
+                        {
+                            Program.LibraryVM.AddWallpaper(openFileDlg.FileName,
+                                 item.Type,
+                                 LibraryTileType.processing,
+                                 Program.SettingsVM.Settings.SelectedDisplay);
+                        }
+                        else
+                        {
+                            return;
+                        }
                     }
                 }
                 else

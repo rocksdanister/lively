@@ -111,7 +111,14 @@ namespace livelywpf.Views
                         Program.LibraryVM.WallpaperExport(e, savePath);
                         break;
                     case "deleteWallpaper":
-                        var result = await ShowDeleteConfirmationDialog(sender, e);
+                        var result = await Helpers.DialogService.ShowConfirmationDialog(
+                            ((LibraryModel)e).LivelyInfo.IsAbsolutePath ?
+                                Properties.Resources.DescriptionDeleteConfirmationLibrary : Properties.Resources.DescriptionDeleteConfirmation,
+                            ((LibraryModel)e).Title + " by " + ((LibraryModel)e).LivelyInfo.Author,
+                            ((UIElement)sender).XamlRoot,
+                            Properties.Resources.TextYes,
+                            Properties.Resources.TextNo);
+
                         if (result == ContentDialogResult.Primary)
                         {
                             Program.LibraryVM.WallpaperDelete(e);
@@ -139,7 +146,21 @@ namespace livelywpf.Views
                         Program.LibraryVM.WallpaperVideoConvert(obj);
                         break;
                     case "moreInformation":
-                        await ShowWallpaperInfoDialog(sender, e);
+                        var infoView = new livelygrid.InfoPage
+                        {
+                            DataContext = ((LibraryModel)e),
+                            UIText = new livelygrid.LocalizeTextInfoPage()
+                            {
+                                Author = Properties.Resources.TextAuthor,
+                                Website = Properties.Resources.TextWebsite,
+                                Type = Properties.Resources.TextWallpaperType,
+                            }
+                        };
+                        await Helpers.DialogService.ShowConfirmationDialog(
+                            ((LibraryModel)e).Title,
+                            infoView,
+                            ((UIElement)sender).XamlRoot,
+                            Properties.Resources.TextClose);
                         break;
                 }
             }));
@@ -202,8 +223,27 @@ namespace livelywpf.Views
                                 LibraryTileType.processing,
                                 Program.SettingsVM.Settings.SelectedDisplay);
                         }
+                        else if (Path.GetExtension(item).Equals(".exe", StringComparison.OrdinalIgnoreCase))
+                        {
+                            //Show warning before proceeding.
+                            var result = await Helpers.DialogService.ShowConfirmationDialog(
+                                 Properties.Resources.TitlePleaseWait,
+                                 Properties.Resources.DescriptionExternalAppWarning,
+                                 ((UIElement)sender).XamlRoot,
+                                 Properties.Resources.TextYes,
+                                 Properties.Resources.TextNo);
+
+                            if (result == ContentDialogResult.Primary)
+                            {
+                                Program.LibraryVM.AddWallpaper(item,
+                                    WallpaperType.app,
+                                    LibraryTileType.processing,
+                                    Program.SettingsVM.Settings.SelectedDisplay);
+                            }
+                        }
                         else if (Path.GetExtension(item).Equals(".zip", StringComparison.OrdinalIgnoreCase))
                         {
+                            //todo: Show warning if program (.exe) wallpaper.
                             Program.LibraryVM.WallpaperInstall(item);
                         }
                         else if (FileOperations.IsVideoFile(item))
@@ -215,76 +255,15 @@ namespace livelywpf.Views
                         }
                         else
                         {
-                            System.Windows.MessageBox.Show("not supported currently");
+                            await Helpers.DialogService.ShowConfirmationDialog(
+                               Properties.Resources.TextError,
+                               "Unsupported file format.",
+                               ((UIElement)sender).XamlRoot,
+                               Properties.Resources.TextClose);
                         }
                     }
                 }
             }));
-        }
-
-        //todo: make dialogue service.
-        private async Task<ContentDialogResult> ShowDeleteConfirmationDialog(object sender, object arg)
-        {
-            var item = (MenuFlyoutItem)sender;
-            var lib = (LibraryModel)arg;
-
-            var tb = new Windows.UI.Xaml.Controls.TextBlock
-            {
-                Text = lib.Title + " by " + lib.LivelyInfo.Author
-            };
-            ContentDialog deleteDialog = new ContentDialog
-            {
-                Content = tb,
-                PrimaryButtonText = Properties.Resources.TextYes,
-                SecondaryButtonText = Properties.Resources.TextNo
-            };
-            if (lib.LivelyInfo.IsAbsolutePath)
-                deleteDialog.Title = Properties.Resources.DescriptionDeleteConfirmationLibrary;
-            else
-                deleteDialog.Title = Properties.Resources.DescriptionDeleteConfirmation;
-
-            // Use this code to associate the dialog to the appropriate AppWindow by setting
-            // the dialog's XamlRoot to the same XamlRoot as an element that is already present in the AppWindow.
-            if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 8))
-            {
-                deleteDialog.XamlRoot = item.XamlRoot;
-            }
-
-            ContentDialogResult result = await deleteDialog.ShowAsync();
-            return result;
-        }
-
-        private async Task<ContentDialogResult> ShowWallpaperInfoDialog(object sender, object arg)
-        {
-            var item = (MenuFlyoutItem)sender;
-            var lib = (LibraryModel)arg;
-
-            var info = new livelygrid.InfoPage
-            {
-                DataContext = lib,
-                UIText = new livelygrid.LocalizeTextInfoPage()
-                {
-                    Author = Properties.Resources.TextAuthor, 
-                    Website = Properties.Resources.TextWebsite,
-                    Type = Properties.Resources.TextWallpaperType,
-                }
-            };
-            ContentDialog infoDialog = new ContentDialog
-            {
-                Title = lib.Title,
-                Content = info,
-                CloseButtonText = Properties.Resources.TextClose,
-            };
-
-            // Use this code to associate the dialog to the appropriate AppWindow by setting
-            // the dialog's XamlRoot to the same XamlRoot as an element that is already present in the AppWindow.
-            if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 8))
-            {
-                infoDialog.XamlRoot = item.XamlRoot;
-            }
-
-            ContentDialogResult result = await infoDialog.ShowAsync();
-            return result;
         }
 
         private void Page_Unloaded(object sender, System.Windows.RoutedEventArgs e)

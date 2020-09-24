@@ -65,7 +65,7 @@ namespace livelywpf.Cef
         {
             if (livelyPropertyData.Count == 0)
             {
-                //nothing here
+                //Empty..
                 AddUIElement(new TextBlock
                 {
                     Text = "El Psy Congroo",

@@ -63,7 +63,6 @@ namespace livelywpf
             }
             else if(e.Cancelled)
             {
-                MessageBox.Show("CANCELLED");
                 webClient.Dispose();
             }
             else

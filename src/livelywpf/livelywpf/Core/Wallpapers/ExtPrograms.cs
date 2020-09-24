@@ -148,6 +148,12 @@ namespace livelywpf.Core
                     }
                     else
                     {
+                        if(GetWallpaperType() != WallpaperType.unity)
+                        {
+                            WindowOperations.BorderlessWinStyle(HWND);
+                            WindowOperations.RemoveWindowFromTaskbar(HWND);
+                        }
+                        //Program ready!
                         WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = true, Error = null, Msg = null });
                     }
                 }
@@ -217,6 +223,7 @@ namespace livelywpf.Core
                 for (int i = 0; i < timeOut && Proc.HasExited == false; i++)
                 {
                     ctsProcessWait.Token.ThrowIfCancellationRequested();
+                    //todo: verify pid of window.
                     wHWND = NativeMethods.FindWindowEx(IntPtr.Zero, IntPtr.Zero, "Engine", null);
                     if (!IntPtr.Equals(wHWND, IntPtr.Zero))
                         break;

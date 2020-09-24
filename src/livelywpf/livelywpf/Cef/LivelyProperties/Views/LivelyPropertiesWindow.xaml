@@ -15,7 +15,7 @@
         MinWidth="300" MinHeight="300"
         BorderBrush="{DynamicResource SystemControlHighlightAltListAccentHighBrush}">
     <Grid>
-        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="10, 10, 15, 10">
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="10, 10, 5, 10">
             <ui:Frame x:Name="ContentFrame" Margin="60, 0, 0, 0"/>
         </ScrollViewer>
     </Grid>

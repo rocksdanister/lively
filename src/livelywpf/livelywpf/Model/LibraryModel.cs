@@ -1,4 +1,5 @@
-﻿using System;
+﻿using livelywpf.Helpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -31,7 +32,7 @@ namespace livelywpf
             Title = data.Title;
             Desc = data.Desc;
             Author = data.Author;
-            WallpaperType = LocaliseWallpaperTypeEnum(data.Type);
+            WallpaperType = FileFilter.LocaliseWallpaperTypeEnum(data.Type);
             SrcWebsite = GetUri(data.Contact, "https");
 
             if (data.IsAbsolutePath)
@@ -348,26 +349,6 @@ namespace livelywpf
             {
                 return null;
             }
-        }
-
-        private string LocaliseWallpaperTypeEnum(WallpaperType type)
-        {
-            string localisedText = type switch
-            {
-                livelywpf.WallpaperType.app => Properties.Resources.TextApplication,
-                livelywpf.WallpaperType.unity => Properties.Resources.TextApplication + " Unity",
-                livelywpf.WallpaperType.godot => Properties.Resources.TextApplication + " Godot",
-                livelywpf.WallpaperType.unityaudio => Properties.Resources.TextApplication + " Unity " + Properties.Resources.TitleAudio,
-                livelywpf.WallpaperType.bizhawk => Properties.Resources.TextApplication + " Bizhawk",
-                livelywpf.WallpaperType.web => Properties.Resources.TextWebsite,
-                livelywpf.WallpaperType.webaudio => Properties.Resources.TextWebsite + " " + Properties.Resources.TitleAudio,
-                livelywpf.WallpaperType.url => Properties.Resources.TextOnline,
-                livelywpf.WallpaperType.video => Properties.Resources.TextVideo,
-                livelywpf.WallpaperType.gif => Properties.Resources.TextGIF,
-                livelywpf.WallpaperType.videostream => Properties.Resources.TextWebStream,
-                _ => "Nil",
-            };
-            return localisedText;
         }
 
         #endregion helpers

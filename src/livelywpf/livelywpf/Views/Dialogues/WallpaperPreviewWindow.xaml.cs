@@ -73,12 +73,15 @@ namespace livelywpf.Views
                 item.WindowInitialized += SetupDesktop_WallpaperInitialized;
                 item.Show();
             }
-            if (wp.LivelyInfo.Type == WallpaperType.app
+            else if (wp.LivelyInfo.Type == WallpaperType.app
                 || wp.LivelyInfo.Type == WallpaperType.godot
                 || wp.LivelyInfo.Type == WallpaperType.unity)
             {
-                MessageBox.Show("not supported currently");
-                this.Close();
+                wp.ItemStartup = true;
+                var item = new ExtPrograms(wp.FilePath, wp, targetDisplay, 
+                    Program.SettingsVM.Settings.WallpaperWaitTime);
+                item.WindowInitialized += SetupDesktop_WallpaperInitialized;
+                item.Show();
             }
             else if (wp.LivelyInfo.Type == WallpaperType.video)
             {

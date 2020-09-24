@@ -57,8 +57,9 @@ namespace livelywpf.Views
             {
                 Title = "Do you wish to navigate to external website?",
                 Content = arg.ToString(),
-                PrimaryButtonText = "Yes",
-                SecondaryButtonText = "No",
+                PrimaryButtonText = Properties.Resources.TextYes,
+                SecondaryButtonText = Properties.Resources.TextNo,
+                DefaultButton = ContentDialogButton.Secondary
             };
             return await confirmDialog.ShowAsync();
         }
