@@ -174,7 +174,7 @@ https://github.com/rocksdanister/lively/releases </value>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
     <value>Упс... Похоже, что-то пошло не так :(
 Для того, чтобы лучше понять ошибку и решить проблему, отправьте разработчику файл лога.
-Прочитайте, о том, как это можно сделать:
+Прочитайте о том, как это можно сделать:
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
@@ -684,19 +684,19 @@ Edge - встроенный в Windows 10 WebView.</value>
 Попробуйте изменить видеоплеер в настройках Lively.
 
 Для того, чтобы лучше понять ошибку и решить проблему, отправьте разработчику файл лога.
-Прочитайте, о том, как это можно сделать:
+Прочитайте о том, как это можно сделать:
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="TextAllFiles" xml:space="preserve">
-    <value>All Files</value>
+    <value>Все файлы</value>
   </data>
   <data name="TitleDebug" xml:space="preserve">
-    <value>Debug</value>
+    <value>Отладка</value>
   </data>
   <data name="TipDebug" xml:space="preserve">
-    <value>Show developer menu</value>
+    <value>Показать меню разработчика.</value>
   </data>
   <data name="TextFileNotFound" xml:space="preserve">
-    <value>File not found</value>
+    <value>Файл не найден</value>
   </data>  
 </root>

@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Linq;
-using System.Windows.Media.TextFormatting;
-using livelywpf.Core;
+using System.Windows;
 using livelywpf.Model;
-using Octokit;
 
 namespace livelywpf
 {
@@ -78,11 +75,12 @@ namespace livelywpf
             {
                 _selectedWallpaperLayout = value;
                 OnPropertyChanged("SelectedWallpaperLayout");
-                if (Program.SettingsVM.Settings.WallpaperArrangement != (WallpaperArrangement)value)
+                if (Program.SettingsVM.Settings.WallpaperArrangement != (WallpaperArrangement)_selectedWallpaperLayout)
                 {
-                    Program.SettingsVM.Settings.WallpaperArrangement = (WallpaperArrangement)value;
+                    Program.SettingsVM.Settings.WallpaperArrangement = (WallpaperArrangement)_selectedWallpaperLayout;
                     Program.SettingsVM.UpdateConfigFile();
                     SetupDesktop.CloseAllWallpapers();
+                    //UpdateWallpaper(previous, (WallpaperArrangement)_selectedWallpaperLayout);
                 }
             }
         }
@@ -246,6 +244,58 @@ namespace livelywpf
                     break;
                 }
             }
+        }
+
+        private void UpdateWallpaper(WallpaperArrangement previous, WallpaperArrangement current)
+        {
+            MessageBox.Show(previous + " " + current);
+            var wallpapers = SetupDesktop.Wallpapers.ToList();
+            SetupDesktop.CloseAllWallpapers();
+            if (previous == WallpaperArrangement.per && current == WallpaperArrangement.span)
+            {
+                int i = wallpapers.FindIndex(x => ScreenHelper.ScreenCompare(x.GetScreen(), SelectedItem.Screen, DisplayIdentificationMode.screenLayout));
+                if(i != -1)
+                {                  
+                    Program.LibraryVM.WallpaperSet(wallpapers[i].GetWallpaperData(), wallpapers[i].GetScreen());
+                }
+            }
+            else if(previous == WallpaperArrangement.span && current == WallpaperArrangement.per)
+            {
+                if(wallpapers.Count != 0)
+                {
+                    Program.LibraryVM.WallpaperSet(wallpapers[0].GetWallpaperData(), wallpapers[0].GetScreen());
+                }
+            }   
+            else if(previous == WallpaperArrangement.per && current == WallpaperArrangement.duplicate)
+            {
+                int i = wallpapers.FindIndex(x => ScreenHelper.ScreenCompare(x.GetScreen(), SelectedItem.Screen, DisplayIdentificationMode.screenLayout));
+                if (i != -1)
+                {
+                    Program.LibraryVM.WallpaperSet(wallpapers[i].GetWallpaperData(), wallpapers[i].GetScreen());
+                }
+            }
+            else if (previous == WallpaperArrangement.duplicate && current == WallpaperArrangement.per)
+            {
+                if (wallpapers.Count != 0)
+                {
+                    Program.LibraryVM.WallpaperSet(wallpapers[0].GetWallpaperData(), SelectedItem.Screen);
+                }
+            }
+            else if (previous == WallpaperArrangement.span && current == WallpaperArrangement.duplicate)
+            {
+                if (wallpapers.Count != 0)
+                {
+                    Program.LibraryVM.WallpaperSet(wallpapers[0].GetWallpaperData(), wallpapers[0].GetScreen());
+                }
+            }
+            else if (previous == WallpaperArrangement.duplicate && current == WallpaperArrangement.span)
+            {
+                if (wallpapers.Count != 0)
+                {
+                    Program.LibraryVM.WallpaperSet(wallpapers[0].GetWallpaperData(), wallpapers[0].GetScreen());
+                }
+            }
+            wallpapers.Clear();
         }
 
         #endregion //helpers

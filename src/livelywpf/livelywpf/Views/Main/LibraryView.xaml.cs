@@ -128,9 +128,9 @@ namespace livelywpf.Views
                             {
                                 Owner = App.AppWindow,
                                 WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner,
-                                Width = App.AppWindow.Width / 1.5,
+                                Width = 350,//App.AppWindow.Width / 3.0,
                                 Height = App.AppWindow.Height / 1.5,
-                                Title = obj.Title + " Properties"
+                                Title = obj.Title
                             };
                         overlay.ShowDialog();
                         LivelyGridControl.DimBackground(false);

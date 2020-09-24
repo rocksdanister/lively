@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 namespace livelywpf.Core
 {
     /// <summary>
-    /// Issue(.net core) window handle zero: https://github.com/dotnet/runtime/issues/32690
+    /// Program(.exe) Unity, godot.. wallpaper.
     /// </summary>
     public class ExtPrograms : IWallpaper
     {
-        public ExtPrograms(string path, LibraryModel model, LivelyScreen display)
+        public ExtPrograms(string path, LibraryModel model, LivelyScreen display, int timeOut = 20)
         {
             string cmdArgs;
             if (model.LivelyInfo.Type == WallpaperType.unity)
@@ -43,6 +43,7 @@ namespace livelywpf.Core
             this.Proc = proc;
             this.Model = model;
             this.Display = display;
+            this.timeOut = timeOut;
             SuspendCnt = 0;
         }
         IntPtr HWND { get; set; }
@@ -52,8 +53,9 @@ namespace livelywpf.Core
         public UInt32 SuspendCnt { get; set; }
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
 
-        CancellationTokenSource ctsProcessWait = new CancellationTokenSource();
+        private readonly CancellationTokenSource ctsProcessWait = new CancellationTokenSource();
         private Task processWaitTask;
+        private readonly int timeOut;
 
         public async void Close()
         {
@@ -63,15 +65,9 @@ namespace livelywpf.Core
                 await Task.Delay(1);
             }
 
-            try
-            {
-                //Not reliable, app may refuse to close(dialogue window visible etc)
-                //Proc.CloseMainWindow();
-                Proc.Refresh();
-                Proc.Kill();
-                Proc.Close();
-            }
-            catch { }
+            //Not reliable, app may refuse to close(open dialogue window.. etc)
+            //Proc.CloseMainWindow();
+            Terminate();
         }
 
         public IntPtr GetHWND()
@@ -123,7 +119,7 @@ namespace livelywpf.Core
 
         public void Stop()
         {
-            throw new NotImplementedException();
+            
         }
 
         public LivelyScreen GetScreen()
@@ -143,7 +139,12 @@ namespace livelywpf.Core
                     await processWaitTask;
                     if(HWND.Equals(IntPtr.Zero))
                     {
-                        WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = false, Error = null, Msg = "Pgm handle is zero!" });
+                        WindowInitialized?.Invoke(this, new WindowInitializedArgs()
+                        {
+                            Success = false,
+                            Error = new Exception(Properties.Resources.LivelyExceptionGeneral),
+                            Msg = "Process window handle is zero."
+                        });
                     }
                     else
                     {
@@ -152,17 +153,26 @@ namespace livelywpf.Core
                 }
                 catch(OperationCanceledException e1)
                 {
-                    WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = false, Error = e1, Msg = "Pgm terminated early/user cancel!" });
+                    WindowInitialized?.Invoke(this, new WindowInitializedArgs() { 
+                        Success = false, 
+                        Error = e1, 
+                        Msg = "Program wallpaper terminated early/user cancel." });
                     Close();
                 }
                 catch(InvalidOperationException e2)
                 {
-                    WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = false, Error = e2, Msg = "Pgm crashed/closed already!" });
+                    WindowInitialized?.Invoke(this, new WindowInitializedArgs() { 
+                        Success = false,
+                        Error = e2,
+                        Msg = "Program wallpaper crashed/closed already!" });
                     Close();
                 }
                 catch (Exception e3)
                 {
-                    WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = false, Error = e3, Msg = null });
+                    WindowInitialized?.Invoke(this, new WindowInitializedArgs() { 
+                        Success = false,
+                        Error = e3,
+                        Msg = ":(" });
                     Close();
                 }
             }
@@ -186,12 +196,10 @@ namespace livelywpf.Core
                 return IntPtr.Zero;
             }
 
-            IntPtr configW = IntPtr.Zero;
-            int i = 0;
             try
             {
                 Proc.Refresh();
-                //waiting for msgloop to be ready, gui not guaranteed to be ready!.
+                //waiting for program messageloop to be ready (GUI is not guaranteed to be ready.)
                 while (Proc.WaitForInputIdle(-1) != true) 
                 {
                     ctsProcessWait.Token.ThrowIfCancellationRequested();
@@ -199,67 +207,99 @@ namespace livelywpf.Core
             }
             catch (InvalidOperationException)
             {
-                //no gui, failed to enter idle state.
+                //No GUI, program failed to enter idle state.
                 throw new OperationCanceledException();
             }
 
+            IntPtr wHWND = IntPtr.Zero;
             if (GetWallpaperType() == WallpaperType.godot)
             {
-                while (i < Program.SettingsVM.Settings.WallpaperWaitTime && Proc.HasExited == false)
+                for (int i = 0; i < timeOut && Proc.HasExited == false; i++)
                 {
-                    i++;
-                    configW = NativeMethods.FindWindowEx(IntPtr.Zero, IntPtr.Zero, "Engine", null);
-                    if (!IntPtr.Equals(configW, IntPtr.Zero))
+                    ctsProcessWait.Token.ThrowIfCancellationRequested();
+                    wHWND = NativeMethods.FindWindowEx(IntPtr.Zero, IntPtr.Zero, "Engine", null);
+                    if (!IntPtr.Equals(wHWND, IntPtr.Zero))
                         break;
                     await Task.Delay(1);
                 }
-                return configW;
+                return wHWND;
             }
             else if (GetWallpaperType() == WallpaperType.unity)
             {
-                i = 0;
-                //Player settings dialog of Unity, simulating play button click or search workerw if paramter given in argument.
-                while (i < Program.SettingsVM.Settings.WallpaperWaitTime && Proc.HasExited == false)
+                //Player settings dialog of Unity (if exists.)
+                for (int i = 0; i < timeOut && Proc.HasExited == false; i++)
                 {
                     ctsProcessWait.Token.ThrowIfCancellationRequested();
-                    i++;
-                    if (!IntPtr.Equals(Proc.MainWindowHandle, IntPtr.Zero))
+                    if (!IntPtr.Equals((wHWND = GetProcessWindow(Proc, true)), IntPtr.Zero))
                         break;
                     await Task.Delay(1);
                 }
-                configW = NativeMethods.FindWindowEx(Proc.MainWindowHandle, IntPtr.Zero, "Button", "Play!");
-                if (!IntPtr.Equals(configW, IntPtr.Zero))
+
+                IntPtr cHWND = NativeMethods.FindWindowEx(wHWND, IntPtr.Zero, "Button", "Play!");
+                if (!IntPtr.Equals(cHWND, IntPtr.Zero))
                 {
-                    //simulate Play! button click. (Unity config window)
-                    NativeMethods.SendMessage(configW, NativeMethods.BM_CLICK, IntPtr.Zero, IntPtr.Zero);
+                    //Simulate Play! button click. (Unity config window)
+                    NativeMethods.SendMessage(cHWND, NativeMethods.BM_CLICK, IntPtr.Zero, IntPtr.Zero);
                 }
-
                 await Task.Delay(1);
+                //Refresh
+                wHWND = IntPtr.Zero;
             }
-            Proc.Refresh(); //update window-handle of unity config
 
-            i = 0;
-            //there does not seem to be a "proper" way to check whether mainwindow is ready.
-            while (i < Program.SettingsVM.Settings.WallpaperWaitTime && Proc.HasExited == false)
+            for (int i = 0; i < timeOut && Proc.HasExited == false; i++)
             {
                 ctsProcessWait.Token.ThrowIfCancellationRequested();
-                i++;
-                if (!IntPtr.Equals(Proc.MainWindowHandle, IntPtr.Zero))
+                if (!IntPtr.Equals((wHWND = GetProcessWindow(Proc, true)), IntPtr.Zero))
                 {
-                    //moving the window out of screen.
-                    //StaticPinvoke.SetWindowPos(proc.MainWindowHandle, 1, -20000, 0, 0, 0, 0x0010 | 0x0001); 
                     break;
                 }
                 await Task.Delay(1);
             }
+            return wHWND;
+        }
 
-            Proc.Refresh();
-            if (Proc.MainWindowHandle == IntPtr.Zero)
-            {
+        /// <summary>
+        /// Retrieve window handle of process.
+        /// </summary>
+        /// <param name="proc">Process to search for.</param>
+        /// <param name="win32Search">Use win32 method to find window.</param>
+        /// <returns></returns>
+        private IntPtr GetProcessWindow(Process proc, bool win32Search = false)
+        {
+            if (Proc == null)
                 return IntPtr.Zero;
+
+            if(win32Search)
+            {
+                return FindWindowByProcessId(proc.Id);
             }
             else
-                return Proc.MainWindowHandle;
+            {
+                Proc.Refresh();
+                //Issue(.net core) MainWindowHandle zero: https://github.com/dotnet/runtime/issues/32690
+                return proc.MainWindowHandle;
+            }
+        }
+
+        private IntPtr FindWindowByProcessId(int pid)
+        {
+            IntPtr HWND = IntPtr.Zero;
+            NativeMethods.EnumWindows(new NativeMethods.EnumWindowsProc((tophandle, topparamhandle) =>
+            {
+                _ = NativeMethods.GetWindowThreadProcessId(tophandle, out int cur_pid);
+                if (cur_pid == pid)
+                {
+                    if (NativeMethods.IsWindowVisible(tophandle))
+                    {
+                        HWND = tophandle;
+                        return false;
+                    }
+                }
+
+                return true;
+            }), IntPtr.Zero);
+
+            return HWND;
         }
 
         /// <summary>
@@ -299,7 +339,7 @@ namespace livelywpf.Core
 
         public void SendMessage(string msg)
         {
-            //throw new NotImplementedException();
+
         }
 
         public string GetLivelyPropertyCopyPath()

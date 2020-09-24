@@ -60,13 +60,12 @@ namespace livelywpf.Views
             new FileFilter(WallpaperType.gif, "*.gif"),
             new FileFilter(WallpaperType.web, "*.html"),
             new FileFilter(WallpaperType.webaudio, "*.html"),
-            new FileFilter((WallpaperType)(100), "*.zip", Properties.Resources.TitleAppName), //lively .zip is not a wallpapertype, its a filetyple.
-            /*
-            new FileFilter(WallpaperType.unity,"Unity Game Executable |*.exe"),
-            new FileFilter(WallpaperType.unityaudio,"Unity Audio Visualiser |*.exe"),
-            new FileFilter(WallpaperType.app,"Application |*.exe"),
-            new FileFilter(WallpaperType.godot,"Godot Game Executable |*.exe")
-            */
+            new FileFilter(WallpaperType.app,"*.exe"),
+            new FileFilter(WallpaperType.unity,"*.exe"),
+            //new FileFilter(WallpaperType.unityaudio,"Unity Audio Visualiser |*.exe"),
+            new FileFilter(WallpaperType.godot,"*.exe"),
+            //note: lively .zip is not a wallpapertype, its a filetype.
+            new FileFilter((WallpaperType)(100), "*.zip", Properties.Resources.TitleAppName),
         };
 
         private readonly StringBuilder filterString;

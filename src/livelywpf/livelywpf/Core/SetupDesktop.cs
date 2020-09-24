@@ -133,12 +133,15 @@ namespace livelywpf
                 wallpapersPending.Add(item);
                 item.Show();
             }
-            if (wp.LivelyInfo.Type == WallpaperType.app
+            if(wp.LivelyInfo.Type == WallpaperType.app
                 || wp.LivelyInfo.Type == WallpaperType.godot
                 || wp.LivelyInfo.Type == WallpaperType.unity)
             {
-                System.Windows.MessageBox.Show("not supported currently");
-                return;
+                wp.ItemStartup = true;
+                var item = new ExtPrograms(wp.FilePath, wp, targetDisplay, Program.SettingsVM.Settings.WallpaperWaitTime);
+                item.WindowInitialized += SetupDesktop_WallpaperInitialized;
+                wallpapersPending.Add(item);
+                item.Show();
             }
             else if(wp.LivelyInfo.Type == WallpaperType.video)
             {
@@ -539,7 +542,6 @@ namespace livelywpf
             //Logger.Info("System parameters changed: wallpaper resizing disabled due to focus bug.");
             //return;
             NativeMethods.RECT prct = new NativeMethods.RECT();
-
             //Known issues: Buggy if screen dpi is greater than 100% in multiscreen.
             //Possible cause: the window being used as reference is not updated to the new dpi in time?
             if (ScreenHelper.IsMultiScreen() && Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span)
@@ -550,7 +552,6 @@ namespace livelywpf
                     WindowOperations.SetParentSafe(Wallpapers[0].GetHWND(), IntPtr.Zero);
                     SetWallpaperSpanScreen(Wallpapers[0].GetHWND(), false);
                     Wallpapers[0].SetScreen(ScreenHelper.GetPrimaryScreen());
-                    
                     /*
                     NativeMethods.GetWindowRect(workerw, out prct); //get spawned workerw rectangle data.
                     NativeMethods.SetWindowPos(Wallpapers[0].GetHWND(), 1, 0, 0, prct.Right - prct.Left, prct.Bottom - prct.Top, 0 | 0x0010); //fill wp into the whole workerw area.
@@ -566,12 +567,11 @@ namespace livelywpf
                     //Assumption: If number of connected devices is unchanged -> devicename is also unchanged?
                     if ((i = Wallpapers.FindIndex(x => ScreenHelper.ScreenCompare(item, x.GetScreen(), DisplayIdentificationMode.screenClass))) != -1)
                     {
-                        Logger.Info("System parameters changed: Screen Param old/new -> " + Wallpapers[i].GetScreen().Bounds + "/" + item.Bounds);
+                        Logger.Info("System parameters changed: Screen Param old/new -> " + Wallpapers[i].GetScreen().Bounds + "/" + item.Bounds);                    
                         //detach wallpaper window from this dialogue.                       
                         WindowOperations.SetParentSafe(Wallpapers[i].GetHWND(), IntPtr.Zero);
                         SetWallpaperPerScreen(Wallpapers[i].GetHWND(), item, false);
-                        Wallpapers[i].SetScreen(item);
-                        
+                        Wallpapers[i].SetScreen(item);                      
                         /*
                         //Using this window as reference for MapWindowPoints.                  
                         Window w = new Window() { Width = 10, Height = 10, ShowActivated = false, ShowInTaskbar = false };

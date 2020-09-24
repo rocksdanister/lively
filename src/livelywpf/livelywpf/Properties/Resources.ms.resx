@@ -684,18 +684,18 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
     <value>Pilih Padanan</value>
   </data>
   <data name="TextPreviewWallpaper" xml:space="preserve">
-    <value>Preview Wallpaper</value>
+    <value>Previu Wallpaper</value>
   </data>
   <data name="TextAllFiles" xml:space="preserve">
-    <value>All Files</value>
+    <value>Semua Fail</value>
   </data>
   <data name="TitleDebug" xml:space="preserve">
-    <value>Debug</value>
+    <value>Nyahpepijat</value>
   </data>
   <data name="TipDebug" xml:space="preserve">
-    <value>Show developer menu</value>
+    <value>Papar Menu Developer</value>
   </data>
   <data name="TextFileNotFound" xml:space="preserve">
-    <value>File not found</value>
+    <value>Fail tidak dijumpai</value>
   </data>  
 </root>

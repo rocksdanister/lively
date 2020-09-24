@@ -21,6 +21,7 @@ namespace livelywpf.Cef
             this.Height = (int)(SystemParameters.WorkArea.Height / 1.1f);
             this.Top = SystemParameters.WorkArea.Bottom - this.Height - 10;
             this.Left = SystemParameters.WorkArea.Right - this.Width - 5;
+            this.Title = data.Title;
 
             //top-right location
             //this.width = (int)this.Width;
