@@ -39,18 +39,5 @@
                 </Hyperlink>
             </TextBlock>
         </StackPanel>
-        <!--
-        <ui:ContentDialog x:Name="AppSelectContentDialog"
-            Title="{x:Static p:Resources.TitlePleaseWait}"
-            PrimaryButtonText="{x:Static p:Resources.TextYes}"
-            SecondaryButtonText="{x:Static p:Resources.TextNo}"
-            DefaultButton="Primary">
-            <ui:RadioButtons VerticalAlignment="Top" MinWidth="155">
-                <RadioButton Content="Unity" IsChecked="True"/>
-                <RadioButton Content="Godot"/>
-                <RadioButton Content="Other"/>
-            </ui:RadioButtons>
-        </ui:ContentDialog>
-        -->
     </Grid>
 </Page>

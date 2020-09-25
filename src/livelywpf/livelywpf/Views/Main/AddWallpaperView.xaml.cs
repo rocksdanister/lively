@@ -19,14 +19,14 @@ namespace livelywpf.Views
     {
         readonly FileFilter[] wallpaperFilter = new FileFilter[] {
             new FileFilter(WallpaperType.video, 
-                "*.wmv; *.avi; *.bin; *.divx; *.flv; *.m4v; " +
-                "*.mkv; *.mov; *.mp4; *.mp4v; *.mpeg4; *.mpg; *.webm" +
-                "*.ogm; *.ogv; *.ogx; *.ts"),
+                "*.wmv; *.avi; *.flv; *.m4v;" +
+                "*.mkv; *.mov; *.mp4; *.mp4v; *.mpeg4;" +
+                "*.mpg; *.webm; *.ogm; *.ogv; *.ogx"),
             new FileFilter(WallpaperType.gif, "*.gif"),
             new FileFilter(WallpaperType.web, "*.html"),
             new FileFilter(WallpaperType.webaudio, "*.html"),
             new FileFilter(WallpaperType.app,"*.exe"),
-            new FileFilter(WallpaperType.unity,"*.exe"),
+            //new FileFilter(WallpaperType.unity,"*.exe"),
             //new FileFilter(WallpaperType.unityaudio,"Unity Audio Visualiser |*.exe"),
             new FileFilter(WallpaperType.godot,"*.exe"),
             //note: lively .zip is not a wallpapertype, its a filetype.
@@ -69,25 +69,21 @@ namespace livelywpf.Views
                 }
                 else if(openFileDlg.FilterIndex == 1)
                 {
-                    if (false)//Path.GetExtension(openFileDlg.FileName).Equals(".exe", StringComparison.OrdinalIgnoreCase))
+                    //All Files
+                    var item = wallpaperFilter.FirstOrDefault(x => x.Extentions.Contains(
+                        Path.GetExtension(openFileDlg.FileName),
+                        StringComparison.OrdinalIgnoreCase));
+
+                    if (item != null)
                     {
-                        //await AppSelectContentDialog.ShowAsync();
+                        Program.LibraryVM.AddWallpaper(openFileDlg.FileName,
+                             item.Type,
+                             LibraryTileType.processing,
+                             Program.SettingsVM.Settings.SelectedDisplay);
                     }
                     else
                     {
-                        //All Files
-                        var item = wallpaperFilter.FirstOrDefault(x => x.Extentions.Contains(Path.GetExtension(openFileDlg.FileName), StringComparison.OrdinalIgnoreCase));
-                        if (item != null)
-                        {
-                            Program.LibraryVM.AddWallpaper(openFileDlg.FileName,
-                                 item.Type,
-                                 LibraryTileType.processing,
-                                 Program.SettingsVM.Settings.SelectedDisplay);
-                        }
-                        else
-                        {
-                            return;
-                        }
+                        return;
                     }
                 }
                 else

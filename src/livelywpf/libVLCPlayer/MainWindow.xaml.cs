@@ -50,6 +50,7 @@ namespace libVLCPlayer
                     Volume = 0
                 };
                 _mediaPlayer.EndReached += _mediaPlayer_EndReached;
+                _mediaPlayer.EncounteredError += _mediaPlayer_EncounteredError;
                 videoView.MediaPlayer = _mediaPlayer;
 
                 if (_isStream)
@@ -66,9 +67,9 @@ namespace libVLCPlayer
                 }
                 _mediaReady = true;
             }
-            catch 
+            catch (Exception ex)
             {
-                //todo: send error to lively parent program.
+                Console.WriteLine(ex.Message);
             }
             finally
             {
@@ -147,6 +148,11 @@ namespace libVLCPlayer
             catch { }
         }
 
+        private void _mediaPlayer_EncounteredError(object sender, EventArgs e)
+        {
+            Console.WriteLine("Media playback Error");
+        }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             IntPtr handle = new WindowInteropHelper(this).Handle;
@@ -208,9 +214,9 @@ namespace libVLCPlayer
                     }
                 });
             }
-            catch 
+            catch (Exception e)
             {
-                //todo: send error to lively parent program.
+                Console.WriteLine(e.Message);
             }
             finally
             {

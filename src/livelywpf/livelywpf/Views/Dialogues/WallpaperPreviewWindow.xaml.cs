@@ -77,6 +77,12 @@ namespace livelywpf.Views
                 || wp.LivelyInfo.Type == WallpaperType.godot
                 || wp.LivelyInfo.Type == WallpaperType.unity)
             {
+                if (Program.IsMSIX)
+                {
+                    Logger.Info("WallpaperPreview: Skipping program wallpaper on MSIX package.");
+                    return;
+                }
+
                 wp.ItemStartup = true;
                 var item = new ExtPrograms(wp.FilePath, wp, targetDisplay, 
                     Program.SettingsVM.Settings.WallpaperWaitTime);

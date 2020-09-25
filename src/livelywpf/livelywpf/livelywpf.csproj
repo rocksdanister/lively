@@ -10,11 +10,11 @@
     <StartupObject>livelywpf.Program</StartupObject>
     <ApplicationIcon>appicon.ico</ApplicationIcon>
     <Version>1.0.0</Version>
-    <AssemblyVersion>1.0.8.0</AssemblyVersion>
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
@@ -25,12 +25,12 @@
 
   <ItemGroup>
     <PackageReference Include="DesktopBridge.Helpers" Version="1.2.2" />
-    <PackageReference Include="LibVLCSharp.WPF" Version="3.4.7" />
-    <PackageReference Include="Magick.NET-Q16-x86" Version="7.21.1" />
+    <PackageReference Include="LibVLCSharp.WPF" Version="3.4.8" />
+    <PackageReference Include="Magick.NET-Q16-x86" Version="7.22.0" />
     <PackageReference Include="Microsoft.Toolkit.Wpf.UI.Controls" Version="6.1.2" />
     <PackageReference Include="Microsoft.Toolkit.Wpf.UI.XamlHost" Version="6.1.2" />
     <PackageReference Include="Microsoft.Windows.Compatibility" Version="3.1.1" />
-    <PackageReference Include="ModernWpfUI" Version="0.9.1" />
+    <PackageReference Include="ModernWpfUI" Version="0.9.2" />
     <PackageReference Include="Mpv.NET" Version="1.1.1" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="NLog" Version="4.7.4" />

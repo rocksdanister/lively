@@ -17,7 +17,7 @@ namespace libMPVPlayer
         {
             this.SessionEnding += App_SessionEnding;
             var wnd = new MainWindow(e.Args);
-            //SetupUnhandledExceptionLogging();
+            SetupUnhandledExceptionLogging();
             wnd.Show();
         }
 
@@ -43,7 +43,7 @@ namespace libMPVPlayer
 
         private void LogUnhandledException(Exception exception, string source)
         {
-            MessageBox.Show(exception.ToString());
+            Console.WriteLine(exception.Message);
         }
     }
 }

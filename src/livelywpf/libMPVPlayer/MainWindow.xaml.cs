@@ -97,9 +97,9 @@ namespace libMPVPlayer
                 player.Load(opts.FilePath);
                 player.Resume();
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                //todo: pass msg to parent process.
+                Console.WriteLine(e.Message);
             }
             finally
             {
@@ -109,7 +109,7 @@ namespace libMPVPlayer
 
         private void HandleParseError(IEnumerable<Error> errs)
         {
-            //todo: pass msg to parent process.
+            Console.WriteLine("Error parsing cmdline args, Exiting!");
             Application.Current.Shutdown();
         }
 
@@ -134,7 +134,7 @@ namespace libMPVPlayer
 
         private void Player_MediaError1(object sender, System.EventArgs e)
         {
-            //todo: pass msg to parent process.
+            Console.WriteLine("Media playback Error");
         }
 
         public void PausePlayer()
@@ -221,9 +221,9 @@ namespace libMPVPlayer
                     }
                 });
             }
-            catch
+            catch(Exception e)
             {
-                //todo: send error to lively parent program.
+                Console.WriteLine(e.Message);
             }
             finally
             {

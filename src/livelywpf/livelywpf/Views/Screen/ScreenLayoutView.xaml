@@ -39,7 +39,7 @@
                 <RadioButton Content="{x:Static p:Resources.TextWallpaperLayoutSpan}"/>
                 <RadioButton Content="{x:Static p:Resources.TextWallpaperLayoutDuplicate}"/>
             </ui:RadioButtons>
-            <TextBlock Margin="0,10,0,0" FontSize="12" Foreground="{DynamicResource SystemControlPageBackgroundBaseLowBrush}" TextWrapping="Wrap" 
+            <TextBlock Margin="0,10,0,0" FontSize="12" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}" TextWrapping="Wrap" 
                        Text="{x:Static p:Resources.TipWallpaperLayout}"/>
         </StackPanel>
 

@@ -172,7 +172,7 @@ namespace livelywpf.Views
                 if (e.DataView.Contains(StandardDataFormats.WebLink))
                 {
                     var uri = await e.DataView.GetWebLinkAsync();
-                    Logger.Info("Dropped url:- " + uri.ToString());
+                    Logger.Info("Dropped url=>" + uri.ToString());
                     if (Program.SettingsVM.Settings.AutoDetectOnlineStreams &&
                         Program.SettingsVM.Settings.StreamVideoPlayer == LivelyMediaPlayer.libmpvExt ?
                         libMPVStreams.CheckStream(uri) : libVLCStreams.CheckStream(uri))
@@ -197,7 +197,7 @@ namespace livelywpf.Views
                     {
                         //selecting first file only.
                         var item = items[0].Path;
-                        Logger.Info("Dropped file:- " + item);
+                        Logger.Info("Dropped file=>" + item);
                         try
                         {
                             if (String.IsNullOrWhiteSpace(Path.GetExtension(item)))
@@ -205,7 +205,7 @@ namespace livelywpf.Views
                         }
                         catch (ArgumentException)
                         {
-                            Logger.Info("Invalid character, skipping dropped file:- " + item);
+                            Logger.Info("Invalid character, skipping dropped file=>" + item);
                             return;
                         }
 
@@ -257,7 +257,7 @@ namespace livelywpf.Views
                         {
                             await Helpers.DialogService.ShowConfirmationDialog(
                                Properties.Resources.TextError,
-                               "Unsupported file format.",
+                               "Unsupported file format *" + Path.GetExtension(item),
                                ((UIElement)sender).XamlRoot,
                                Properties.Resources.TextClose);
                         }

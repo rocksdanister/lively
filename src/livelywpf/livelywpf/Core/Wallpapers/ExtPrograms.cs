@@ -12,20 +12,14 @@ namespace livelywpf.Core
     {
         public ExtPrograms(string path, LibraryModel model, LivelyScreen display, int timeOut = 20)
         {
-            string cmdArgs;
-            if (model.LivelyInfo.Type == WallpaperType.unity)
-            {
-                //-popupwindow removes from taskbar
-                //-fullscreen disable fullscreen mode if set during compilation (lively is handling resizing window instead).
-                //Alternative flags:
-                //Unity attaches to workerw by itself; Problem: Process window handle is returning zero.
-                //"-parentHWND " + workerw.ToString();// + " -popupwindow" + " -;
-                cmdArgs = "-popupwindow -screen-fullscreen 0";
-            }
-            else
-            {
-                cmdArgs = model.LivelyInfo.Arguments;
-            }
+            // Unity flags
+            //-popupwindow removes from taskbar
+            //-fullscreen disable fullscreen mode if set during compilation (lively is handling resizing window instead).
+            //Alternative flags:
+            //Unity attaches to workerw by itself; Problem: Process window handle is returning zero.
+            //"-parentHWND " + workerw.ToString();// + " -popupwindow" + " -;
+            //cmdArgs = "-popupwindow -screen-fullscreen 0";
+            string cmdArgs = model.LivelyInfo.Arguments;
 
             ProcessStartInfo start = new ProcessStartInfo
             {
@@ -92,6 +86,8 @@ namespace livelywpf.Core
 
         public void Pause()
         {
+            //Disabled, need further testing.
+            /*
             try
             {
                 ProcessSuspend.SuspendAllThreads(this);
@@ -99,10 +95,13 @@ namespace livelywpf.Core
                 VolumeMixer.SetApplicationMute(Proc.Id, true);
             }
             catch { }
+            */
         }
 
         public void Play()
         {
+            //Disabled, need further testing.
+            /*
             try
             {
                 ProcessSuspend.ResumeAllThreads(this);
@@ -110,6 +109,7 @@ namespace livelywpf.Core
                 VolumeMixer.SetApplicationMute(Proc.Id, false);
             }
             catch { }
+            */
         }
 
         public void SetHWND(IntPtr hwnd)
@@ -148,13 +148,13 @@ namespace livelywpf.Core
                     }
                     else
                     {
-                        if(GetWallpaperType() != WallpaperType.unity)
-                        {
-                            WindowOperations.BorderlessWinStyle(HWND);
-                            WindowOperations.RemoveWindowFromTaskbar(HWND);
-                        }
+                        WindowOperations.BorderlessWinStyle(HWND);
+                        WindowOperations.RemoveWindowFromTaskbar(HWND);
                         //Program ready!
-                        WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = true, Error = null, Msg = null });
+                        WindowInitialized?.Invoke(this, new WindowInitializedArgs() { 
+                            Success = true, 
+                            Error = null, 
+                            Msg = null });
                     }
                 }
                 catch(OperationCanceledException e1)
@@ -231,36 +231,36 @@ namespace livelywpf.Core
                 }
                 return wHWND;
             }
-            else if (GetWallpaperType() == WallpaperType.unity)
-            {
-                //Player settings dialog of Unity (if exists.)
-                for (int i = 0; i < timeOut && Proc.HasExited == false; i++)
-                {
-                    ctsProcessWait.Token.ThrowIfCancellationRequested();
-                    if (!IntPtr.Equals((wHWND = GetProcessWindow(Proc, true)), IntPtr.Zero))
-                        break;
-                    await Task.Delay(1);
-                }
 
-                IntPtr cHWND = NativeMethods.FindWindowEx(wHWND, IntPtr.Zero, "Button", "Play!");
-                if (!IntPtr.Equals(cHWND, IntPtr.Zero))
-                {
-                    //Simulate Play! button click. (Unity config window)
-                    NativeMethods.SendMessage(cHWND, NativeMethods.BM_CLICK, IntPtr.Zero, IntPtr.Zero);
-                }
-                await Task.Delay(1);
-                //Refresh
-                wHWND = IntPtr.Zero;
-            }
-
+            //Find process window.
             for (int i = 0; i < timeOut && Proc.HasExited == false; i++)
             {
                 ctsProcessWait.Token.ThrowIfCancellationRequested();
                 if (!IntPtr.Equals((wHWND = GetProcessWindow(Proc, true)), IntPtr.Zero))
-                {
                     break;
-                }
                 await Task.Delay(1);
+            }
+
+            //Player settings dialog of Unity (if exists.)
+            IntPtr cHWND = NativeMethods.FindWindowEx(wHWND, IntPtr.Zero, "Button", "Play!");
+            if (!IntPtr.Equals(cHWND, IntPtr.Zero))
+            {
+                //Simulate Play! button click. (Unity config window)
+                NativeMethods.SendMessage(cHWND, NativeMethods.BM_CLICK, IntPtr.Zero, IntPtr.Zero);
+                //Refreshing..
+                wHWND = IntPtr.Zero;
+                await Task.Delay(1);
+
+                //Search for Unity main Window.
+                for (int i = 0; i < timeOut && Proc.HasExited == false; i++)
+                {
+                    ctsProcessWait.Token.ThrowIfCancellationRequested();
+                    if (!IntPtr.Equals((wHWND = GetProcessWindow(Proc, true)), IntPtr.Zero))
+                    {
+                        break;
+                    }
+                    await Task.Delay(1);
+                }
             }
             return wHWND;
         }

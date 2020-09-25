@@ -97,7 +97,7 @@ namespace livelywpf
             VideoPlayer = LivelyMediaPlayer.libmpvExt;
             StreamVideoPlayer = LivelyMediaPlayer.libmpvExt;
 
-            WallpaperWaitTime = 30000; // 30sec
+            WallpaperWaitTime = 20000; // 20sec
             ProcessTimerInterval = 500; //reduce to 250 for quicker response.
             Language = CultureInfo.CurrentCulture.Name;
             StreamQuality = StreamQualitySuggestion.Highest;

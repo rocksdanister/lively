@@ -88,10 +88,10 @@ Help translate lively to other languages: <a href="https://github.com/rocksdanis
 
 **_I'm not officially affiliated with Unity technologies, godot, shadertoy;_**
 ## Download
-##### Latest version: v1.0.8.0 (Windows 10 1903 or above)[What's new?](https://github.com/rocksdanister/lively/releases/tag/v1.0.8.0)
+##### Latest version: v1.1.0.0 (Windows 10 1903 or above)[What's new?](https://github.com/rocksdanister/lively/releases/tag/v1.1.0.0)
 - [`Download Lively Wallpaper`][direct-full-win32] 
      
-[direct-full-win32]: https://github.com/rocksdanister/lively/releases/download/v1.0.8.0/lively_setup_x86_full_v1080.exe
+[direct-full-win32]: https://github.com/rocksdanister/lively/releases/download/v1.1.0.0/lively_setup_x86_full_v1100.exe
 
 **Installer will give Smartscreen warning, [discussion.](https://github.com/rocksdanister/lively/issues/9)**
 

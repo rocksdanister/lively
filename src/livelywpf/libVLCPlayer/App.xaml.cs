@@ -15,9 +15,18 @@ namespace libVLCPlayer
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
+            this.SessionEnding += App_SessionEnding;
             MainWindow wnd = new MainWindow(e.Args);
-            //SetupUnhandledExceptionLogging();
+            SetupUnhandledExceptionLogging();
             wnd.Show();
+        }
+
+        private void App_SessionEnding(object sender, SessionEndingCancelEventArgs e)
+        {
+            if (e.ReasonSessionEnding == ReasonSessionEnding.Shutdown || e.ReasonSessionEnding == ReasonSessionEnding.Logoff)
+            {
+                e.Cancel = true;
+            }
         }
 
         private void SetupUnhandledExceptionLogging()
@@ -34,7 +43,7 @@ namespace libVLCPlayer
 
         private void LogUnhandledException(Exception exception, string source)
         {
-            MessageBox.Show(exception.ToString());
+            Console.WriteLine(exception.Message);
         }
     }
 }

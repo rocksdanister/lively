@@ -546,8 +546,6 @@ namespace livelywpf
 
         private static void UpdateWallpaperRect()
         {
-            //Logger.Info("System parameters changed: wallpaper resizing disabled due to focus bug.");
-            //return;
             NativeMethods.RECT prct = new NativeMethods.RECT();
             //Known issues: Buggy if screen dpi is greater than 100% in multiscreen.
             //Possible cause: the window being used as reference is not updated to the new dpi in time?
@@ -555,15 +553,12 @@ namespace livelywpf
             {
                 if(Wallpapers.Count != 0)
                 {
-                    //detach wallpaper window from this dialogue.              
-                    WindowOperations.SetParentSafe(Wallpapers[0].GetHWND(), IntPtr.Zero);
-                    SetWallpaperSpanScreen(Wallpapers[0].GetHWND(), false);
-                    Wallpapers[0].SetScreen(ScreenHelper.GetPrimaryScreen());
+                    Logger.Info("System parameters changed: Screen Param(Span)");
                     /*
                     NativeMethods.GetWindowRect(workerw, out prct); //get spawned workerw rectangle data.
-                    NativeMethods.SetWindowPos(Wallpapers[0].GetHWND(), 1, 0, 0, prct.Right - prct.Left, prct.Bottom - prct.Top, 0 | 0x0010); //fill wp into the whole workerw area.
-                    Wallpapers[0].SetScreen(ScreenHelper.GetPrimaryScreen());
+                    NativeMethods.SetWindowPos(Wallpapers[0].GetHWND(), 1, 0, 0, prct.Right - prct.Left, prct.Bottom - prct.Top, 0 | 0x0010);   
                     */
+                    Wallpapers[0].SetScreen(ScreenHelper.GetPrimaryScreen());
                 }
             }
             else
@@ -571,27 +566,23 @@ namespace livelywpf
                 int i;
                 foreach (var item in ScreenHelper.GetScreen())
                 {
-                    //Assumption: If number of connected devices is unchanged -> devicename is also unchanged?
                     if ((i = Wallpapers.FindIndex(x => ScreenHelper.ScreenCompare(item, x.GetScreen(), DisplayIdentificationMode.screenClass))) != -1)
                     {
-                        Logger.Info("System parameters changed: Screen Param old/new -> " + Wallpapers[i].GetScreen().Bounds + "/" + item.Bounds);                    
-                        //detach wallpaper window from this dialogue.                       
-                        WindowOperations.SetParentSafe(Wallpapers[i].GetHWND(), IntPtr.Zero);
-                        SetWallpaperPerScreen(Wallpapers[i].GetHWND(), item, false);
-                        Wallpapers[i].SetScreen(item);                      
+                        Logger.Info("System parameters changed: Screen Param old/new -> " + Wallpapers[i].GetScreen().Bounds + "/" + item.Bounds);
                         /*
-                        //Using this window as reference for MapWindowPoints.                  
-                        Window w = new Window() { Width = 10, Height = 10, ShowActivated = false, ShowInTaskbar = false };
+                        //temporarily disabled due to buggy behaviour exclusive fullscreen game alt-tabbing.
+                        //Using this window as reference for MapWindowPoints.                         
+                        Window w = new Window() { Width = 0, Height = 0, ShowActivated = false, ShowInTaskbar = false, Focusable = false};
                         w.Show();
                         NativeMethods.SetWindowPos(new WindowInteropHelper(w).Handle, 1, item.Bounds.Left, item.Bounds.Top, 0, 0,
                                 (int)NativeMethods.SetWindowPosFlags.SWP_NOACTIVATE | (int)NativeMethods.SetWindowPosFlags.SWP_NOSIZE);
                         NativeMethods.MapWindowPoints(new WindowInteropHelper(w).Handle, workerw, ref prct, 2);
                         w.Close();
-
+                        
                         //Updating position and data of wallpaper.
                         NativeMethods.SetWindowPos(Wallpapers[i].GetHWND(), 1, prct.Left, prct.Top, (item.Bounds.Width), (item.Bounds.Height), 0 | 0x0010);
-                        Wallpapers[i].SetScreen(item);
                         */
+                        Wallpapers[i].SetScreen(item);                 
                     }
                 }
             }

@@ -118,11 +118,10 @@ namespace livelywpf
         public static bool IsVideoFile(string path)
         {
             bool status = false;
-            string[] formatsVideo = {
-                "*.wmv; *.avi; *.bin; *.divx; *.flv; *.m4v; " +
-                "*.mkv; *.mov; *.mp4; *.mp4v; *.mpeg4; *.mpg; *.webm" +
-                "*.ogm; *.ogv; *.ogx; *.ts" };
-            if (formatsVideo.Contains(Path.GetExtension(path), StringComparer.OrdinalIgnoreCase))
+            string formatsVideo = "*.wmv; *.avi; *.flv; *.m4v;" +
+                "*.mkv; *.mov; *.mp4; *.mp4v; *.mpeg4;" +
+                "*.mpg; *.webm; *.ogm; *.ogv; *.ogx";
+            if (formatsVideo.Contains(Path.GetExtension(path), StringComparison.OrdinalIgnoreCase))
             {
                 status = true;
             }
