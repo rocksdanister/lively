@@ -209,57 +209,50 @@ namespace livelywpf.Views
                             return;
                         }
 
-                        if (Path.GetExtension(item).Equals(".gif", StringComparison.OrdinalIgnoreCase))
+                        WallpaperType type;
+                        if((type = FileFilter.GetFileType(item)) != (WallpaperType)(-1))
                         {
-                            Program.LibraryVM.AddWallpaper(item,
-                                WallpaperType.gif,
-                                LibraryTileType.processing,
-                                Program.SettingsVM.Settings.SelectedDisplay);
-                        }
-                        else if (Path.GetExtension(item).Equals(".html", StringComparison.OrdinalIgnoreCase))
-                        {
-                            Program.LibraryVM.AddWallpaper(item,
-                                WallpaperType.web,
-                                LibraryTileType.processing,
-                                Program.SettingsVM.Settings.SelectedDisplay);
-                        }
-                        else if (Path.GetExtension(item).Equals(".exe", StringComparison.OrdinalIgnoreCase))
-                        {
-                            //Show warning before proceeding.
-                            var result = await Helpers.DialogService.ShowConfirmationDialog(
-                                 Properties.Resources.TitlePleaseWait,
-                                 Properties.Resources.DescriptionExternalAppWarning,
-                                 ((UIElement)sender).XamlRoot,
-                                 Properties.Resources.TextYes,
-                                 Properties.Resources.TextNo);
+                            if(type == WallpaperType.app || 
+                                type == WallpaperType.unity || 
+                                type == WallpaperType.unityaudio ||
+                                type == WallpaperType.godot)
+                            {
+                                //Show warning before proceeding.
+                                var result = await Helpers.DialogService.ShowConfirmationDialog(
+                                     Properties.Resources.TitlePleaseWait,
+                                     Properties.Resources.DescriptionExternalAppWarning,
+                                     ((UIElement)sender).XamlRoot,
+                                     Properties.Resources.TextYes,
+                                     Properties.Resources.TextNo);
 
-                            if (result == ContentDialogResult.Primary)
+                                if (result == ContentDialogResult.Primary)
+                                {
+                                    Program.LibraryVM.AddWallpaper(item,
+                                        WallpaperType.app,
+                                        LibraryTileType.processing,
+                                        Program.SettingsVM.Settings.SelectedDisplay);
+                                }
+                            }
+                            else if(type == (WallpaperType)100)
+                            {
+                                //todo: Show warning if program (.exe) wallpaper.
+                                Program.LibraryVM.WallpaperInstall(item);
+                            }
+                            else
                             {
                                 Program.LibraryVM.AddWallpaper(item,
-                                    WallpaperType.app,
-                                    LibraryTileType.processing,
-                                    Program.SettingsVM.Settings.SelectedDisplay);
+                                  type,
+                                  LibraryTileType.processing,
+                                  Program.SettingsVM.Settings.SelectedDisplay);
                             }
-                        }
-                        else if (Path.GetExtension(item).Equals(".zip", StringComparison.OrdinalIgnoreCase))
-                        {
-                            //todo: Show warning if program (.exe) wallpaper.
-                            Program.LibraryVM.WallpaperInstall(item);
-                        }
-                        else if (FileOperations.IsVideoFile(item))
-                        {
-                            Program.LibraryVM.AddWallpaper(item,
-                                WallpaperType.video,
-                                LibraryTileType.processing,
-                                Program.SettingsVM.Settings.SelectedDisplay);
                         }
                         else
                         {
                             await Helpers.DialogService.ShowConfirmationDialog(
-                               Properties.Resources.TextError,
-                               "Unsupported file format *" + Path.GetExtension(item),
-                               ((UIElement)sender).XamlRoot,
-                               Properties.Resources.TextClose);
+                              Properties.Resources.TextError,
+                              "Unsupported file format (" + Path.GetExtension(item).ToUpperInvariant() + ")",
+                              ((UIElement)sender).XamlRoot,
+                              Properties.Resources.TextClose);
                         }
                     }
                 }

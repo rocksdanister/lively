@@ -163,7 +163,6 @@ namespace livelywpf.Core
                         Success = false, 
                         Error = e1, 
                         Msg = "Program wallpaper terminated early/user cancel." });
-                    Close();
                 }
                 catch(InvalidOperationException e2)
                 {
@@ -171,7 +170,6 @@ namespace livelywpf.Core
                         Success = false,
                         Error = e2,
                         Msg = "Program wallpaper crashed/closed already!" });
-                    Close();
                 }
                 catch (Exception e3)
                 {
@@ -179,7 +177,6 @@ namespace livelywpf.Core
                         Success = false,
                         Error = e3,
                         Msg = ":(" });
-                    Close();
                 }
             }
         }

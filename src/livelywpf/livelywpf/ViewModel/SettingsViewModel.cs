@@ -432,6 +432,7 @@ namespace livelywpf
                     WallpaperRestart(WallpaperType.video);
                     WallpaperRestart(WallpaperType.video);
                     WallpaperRestart(WallpaperType.gif);
+                    WallpaperRestart(WallpaperType.picture);
                 }
             }
         }

@@ -50,6 +50,7 @@ namespace livelywpf.Views
     {
         private bool _processing = false;
         private string thumbnailPathTemp;
+        private WallpaperType wallpaperType;
         readonly DispatcherTimer dispatcherTimer = new DispatcherTimer();
         readonly int gifAnimationDelay = (int)Math.Round((1f / 15f * 1000f)); //in milliseconds
         readonly int gifSaveAnimationDelay = (int)Math.Round((1f / 90f) * 1000f);
@@ -65,6 +66,7 @@ namespace livelywpf.Views
             LibraryPreviewViewModel vm = new LibraryPreviewViewModel(this, wp);
             this.DataContext = vm;
             HWND = wp.GetHWND();
+            wallpaperType = wp.GetWallpaperType();
             InitializeComponent();
         }
 
@@ -147,12 +149,11 @@ namespace livelywpf.Views
                (int)previewPanelPos.Top,
                (int)previewPanelSize.Width,
                (int)previewPanelSize.Height);
-            //wallpaper.GetWallpaperData().LivelyInfo.Thumbnail = Path.Combine(saveDirectory, "lively_t.jpg");
             ThumbnailUpdated?.Invoke(this, Path.Combine(saveDirectory, "lively_t.jpg"));
 
             double progress = 0;
             //preview clip (animated gif file).
-            if (Program.SettingsVM.Settings.GifCapture)
+            if (Program.SettingsVM.Settings.GifCapture && wallpaperType != WallpaperType.picture)
             {
                 //generate screen capture images.
                 for (int i = 0; i < gifTotalFrames; i++)

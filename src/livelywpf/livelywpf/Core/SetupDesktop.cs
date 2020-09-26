@@ -216,7 +216,7 @@ namespace livelywpf
                     item.Show();
                 }
             }
-            else if(wp.LivelyInfo.Type == WallpaperType.gif)
+            else if(wp.LivelyInfo.Type == WallpaperType.gif || wp.LivelyInfo.Type == WallpaperType.picture)
             {
                 var item = new GIFPlayerUWP(wp.FilePath, wp, 
                     targetDisplay, Program.SettingsVM.Settings.WallpaperScaling);

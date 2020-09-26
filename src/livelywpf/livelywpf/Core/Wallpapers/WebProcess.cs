@@ -154,7 +154,7 @@ namespace livelywpf.Core
         public void Pause()
         {
             //minimize browser.
-            NativeMethods.ShowWindow(HWND, 6); 
+            NativeMethods.ShowWindow(HWND, 6);
             //SendMessage("lively-playback pause");
         }
 

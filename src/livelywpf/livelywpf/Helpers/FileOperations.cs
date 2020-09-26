@@ -110,24 +110,6 @@ namespace livelywpf
             return status;
         }
 
-        /// <summary>
-        /// Check if the file is video.
-        /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
-        public static bool IsVideoFile(string path)
-        {
-            bool status = false;
-            string formatsVideo = "*.wmv; *.avi; *.flv; *.m4v;" +
-                "*.mkv; *.mov; *.mp4; *.mp4v; *.mpeg4;" +
-                "*.mpg; *.webm; *.ogm; *.ogv; *.ogx";
-            if (formatsVideo.Contains(Path.GetExtension(path), StringComparison.OrdinalIgnoreCase))
-            {
-                status = true;
-            }
-            return status;
-        }
-
         //ref: https://docs.microsoft.com/en-us/dotnet/standard/io/how-to-copy-directories
         /// <summary>
         /// Synchronous directory copy operation.

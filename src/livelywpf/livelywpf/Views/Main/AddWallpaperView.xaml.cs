@@ -22,9 +22,11 @@ namespace livelywpf.Views
                 "*.wmv; *.avi; *.flv; *.m4v;" +
                 "*.mkv; *.mov; *.mp4; *.mp4v; *.mpeg4;" +
                 "*.mpg; *.webm; *.ogm; *.ogv; *.ogx"),
-            new FileFilter(WallpaperType.gif, "*.gif"),
+            new FileFilter(WallpaperType.picture, 
+                "*.jpg; *.jpeg; *.png; *.bmp; *.tif; *.tiff"),
             new FileFilter(WallpaperType.web, "*.html"),
             new FileFilter(WallpaperType.webaudio, "*.html"),
+            new FileFilter(WallpaperType.gif, "*.gif"),
             new FileFilter(WallpaperType.app,"*.exe"),
             //new FileFilter(WallpaperType.unity,"*.exe"),
             //new FileFilter(WallpaperType.unityaudio,"Unity Audio Visualiser |*.exe"),

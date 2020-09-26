@@ -56,7 +56,7 @@ namespace livelywpf.Core
 
         public WallpaperType GetWallpaperType()
         {
-            return WallpaperType.gif;
+            return Model.LivelyInfo.Type;
         }
 
         public void Pause()

@@ -29,6 +29,8 @@ namespace livelywpf
         unityaudio,
         [Description("Video Streams")]
         videostream,
+        [Description("Video Streams")]
+        picture,
     }
 
     public enum AudioPauseAlgorithm
