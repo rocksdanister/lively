@@ -41,39 +41,37 @@ namespace livelywpf.Helpers
             return status;
         }
 
-        /*
         /// <summary>
-        /// Returns commandline argument for youtube-dl + mpv.
+        /// Returns commandline argument for youtube-dl + mpv player.
         /// </summary>
-        private static string YoutubeDLArgGenerate(StreamQualitySuggestion qualitySuggestion, string link)
+        public static string YoutubeDLArgGenerate(StreamQualitySuggestion qualitySuggestion, string link)
         {
             string quality = null;
             switch (qualitySuggestion)
             {
-                case StreamQualitySuggestion.best:
-                    quality = String.Empty;
+                case StreamQualitySuggestion.Lowest:
+                    quality = " --ytdl-format bestvideo[height<=480]+bestaudio/best[height<=144]";
                     break;
-                case StreamQualitySuggestion.h2160p:
-                    quality = " --ytdl-format bestvideo[height<=2160]+bestaudio/best[height<=2160]";
+                case StreamQualitySuggestion.Low:
+                    quality = " --ytdl-format bestvideo[height<=480]+bestaudio/best[height<=240]";
                     break;
-                case StreamQualitySuggestion.h1440p:
-                    quality = " --ytdl-format bestvideo[height<=1440]+bestaudio/best[height<=1440]";
+                case StreamQualitySuggestion.LowMedium:
+                    quality = " --ytdl-format bestvideo[height<=480]+bestaudio/best[height<=360]";
                     break;
-                case StreamQualitySuggestion.h1080p:
-                    quality = " --ytdl-format bestvideo[height<=1080]+bestaudio/best[height<=1080]";
-                    break;
-                case StreamQualitySuggestion.h720p:
-                    quality = " --ytdl-format bestvideo[height<=720]+bestaudio/best[height<=720]";
-                    break;
-                case StreamQualitySuggestion.h480p:
+                case StreamQualitySuggestion.Medium:
                     quality = " --ytdl-format bestvideo[height<=480]+bestaudio/best[height<=480]";
                     break;
-                default:
+                case StreamQualitySuggestion.MediumHigh:
                     quality = " --ytdl-format bestvideo[height<=720]+bestaudio/best[height<=720]";
+                    break;
+                case StreamQualitySuggestion.High:
+                    quality = " --ytdl-format bestvideo[height<=1080]+bestaudio/best[height<=1080]";
+                    break;
+                case StreamQualitySuggestion.Highest:
+                    quality = String.Empty;
                     break;
             }
             return "\"" + link + "\"" + " --force-window=yes --loop-file --keep-open --hwdec=yes --no-keepaspect" + quality;
         }
-        */
     }
 }

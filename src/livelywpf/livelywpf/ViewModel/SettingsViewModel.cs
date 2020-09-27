@@ -31,6 +31,7 @@ namespace livelywpf
             LanguageItems = new ObservableCollection<LanguagesModel>()
             {
                 new LanguagesModel("English(en)", new string[]{"en", "en-US"}),
+                new LanguagesModel("日本語(ja)", new string[]{"ja", "ja-JP"}),
                 new LanguagesModel("中文(zh-CN)", new string[]{"zh", "zh-Hans","zh-CN","zh-SG"}),
                 new LanguagesModel("繁體中文(zh-Hant)", new string[]{ "zh-HK", "zh-MO", "zh-TW"}),
                 new LanguagesModel("한국어(ko-KR)", new string[]{"ko", "ko-KR","ko-KP"}),
@@ -49,7 +50,6 @@ namespace livelywpf
                 new LanguagesModel("melayu(ms)", new string[]{"ms", "ms-BN", "ms-MY"}),
                 new LanguagesModel("Nederlands(nl-NL)", new string[]{"nl-NL"}),
                 new LanguagesModel("Tiếng Việt(vi)", new string[]{"vi", "vi-VN"}),
-                new LanguagesModel("日本語(ja)", new string[]{"ja", "ja-JP"}),
                 new LanguagesModel("Català(ca)", new string[]{ "ca", "ca-AD", "ca-FR", "ca-IT", "ca-ES"}),
             };
             SelectedLanguageItem = SearchSupportedLanguage(Settings.Language);

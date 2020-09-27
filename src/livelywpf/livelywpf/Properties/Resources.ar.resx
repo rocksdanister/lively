@@ -695,4 +695,13 @@ Edge is the built in webview of windows 10.</value>
   <data name="TextFileNotFound" xml:space="preserve">
     <value>File not found</value>
   </data>
+  <data name="TextPicture" xml:space="preserve">
+    <value>Picture</value>
+  </data>
+  <data name="TextUnsupportedFile" xml:space="preserve">
+    <value>File format not supported</value>
+  </data>
+  <data name="TextProcessingWallpaper" xml:space="preserve">
+    <value>Processing</value>
+  </data>
 </root>

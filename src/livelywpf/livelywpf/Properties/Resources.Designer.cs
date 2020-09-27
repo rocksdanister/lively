@@ -667,11 +667,29 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Picture.
+        /// </summary>
+        public static string TextPicture {
+            get {
+                return ResourceManager.GetString("TextPicture", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Preview Wallpaper.
         /// </summary>
         public static string TextPreviewWallpaper {
             get {
                 return ResourceManager.GetString("TextPreviewWallpaper", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Processing.
+        /// </summary>
+        public static string TextProcessingWallpaper {
+            get {
+                return ResourceManager.GetString("TextProcessingWallpaper", resourceCulture);
             }
         }
         
@@ -825,6 +843,15 @@ namespace livelywpf.Properties {
         public static string TextUINormal {
             get {
                 return ResourceManager.GetString("TextUINormal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File format not supported.
+        /// </summary>
+        public static string TextUnsupportedFile {
+            get {
+                return ResourceManager.GetString("TextUnsupportedFile", resourceCulture);
             }
         }
         

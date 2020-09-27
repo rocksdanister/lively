@@ -5,6 +5,7 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Forms;
+using System.Windows.Interop;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation.Metadata;
 using Windows.UI.Xaml;
@@ -250,7 +251,7 @@ namespace livelywpf.Views
                         {
                             await Helpers.DialogService.ShowConfirmationDialog(
                               Properties.Resources.TextError,
-                              "Unsupported file format (" + Path.GetExtension(item).ToUpperInvariant() + ")",
+                              Properties.Resources.TextUnsupportedFile +" (" + Path.GetExtension(item).ToUpperInvariant() + ")",
                               ((UIElement)sender).XamlRoot,
                               Properties.Resources.TextClose);
                         }

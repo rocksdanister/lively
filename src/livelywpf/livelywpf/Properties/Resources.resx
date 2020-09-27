@@ -333,8 +333,14 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="TextPerformancePause" xml:space="preserve">
     <value>Pause</value>
   </data>
+  <data name="TextPicture" xml:space="preserve">
+    <value>Picture</value>
+  </data>
   <data name="TextPreviewWallpaper" xml:space="preserve">
     <value>Preview Wallpaper</value>
+  </data>
+  <data name="TextProcessingWallpaper" xml:space="preserve">
+    <value>Processing</value>
   </data>
   <data name="TextRemove" xml:space="preserve">
     <value>Remove</value>
@@ -386,6 +392,9 @@ If still not working, close &amp; start Lively again/restart windows.
   </data>
   <data name="TextUINormal" xml:space="preserve">
     <value>Normal</value>
+  </data>
+  <data name="TextUnsupportedFile" xml:space="preserve">
+    <value>File format not supported</value>
   </data>
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>Update available!</value>

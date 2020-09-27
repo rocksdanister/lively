@@ -32,7 +32,7 @@ namespace livelywpf
             Title = data.Title;
             Desc = data.Desc;
             Author = data.Author;
-            WallpaperType = FileFilter.LocaliseWallpaperTypeEnum(data.Type);
+            WallpaperType = FileFilter.GetLocalisedWallpaperTypeText(data.Type);
             SrcWebsite = GetUri(data.Contact, "https");
 
             if (data.IsAbsolutePath)

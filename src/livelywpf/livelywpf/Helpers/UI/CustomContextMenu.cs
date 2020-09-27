@@ -7,6 +7,7 @@ using System.Windows.Forms;
 
 namespace livelywpf.Helpers
 {
+    //System-tray menu custom style.
     //ref:
     //https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.toolstripprofessionalrenderer?view=netcore-3.1
     //https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.professionalcolortable?view=netcore-3.1

@@ -95,11 +95,11 @@ namespace livelywpf.Views
 
         private void CaptureLoop(object sender, EventArgs e)
         {
-            Rect previewPanelPos = WindowOperations.GetAbsolutePlacement(PreviewBorder, true);
-            Size previewPanelSize = WindowOperations.GetElementPixelSize(PreviewBorder);
-
-            if(File.Exists(Path.Combine(thumbnailPathTemp, "lively_t.jpg")))
+            if (File.Exists(Path.Combine(thumbnailPathTemp, "lively_t.jpg")))
             {
+                if (wallpaperType == WallpaperType.picture)
+                    return;
+
                 try
                 {
                     File.Delete(Path.Combine(thumbnailPathTemp, "lively_t.jpg"));
@@ -109,6 +109,9 @@ namespace livelywpf.Views
                     dispatcherTimer.Stop();
                 }
             }
+
+            Rect previewPanelPos = WindowOperations.GetAbsolutePlacement(PreviewBorder, true);
+            Size previewPanelSize = WindowOperations.GetElementPixelSize(PreviewBorder);
 
             //thumbnail capture
             CaptureScreen.CopyScreen(
@@ -141,7 +144,7 @@ namespace livelywpf.Views
             }
             catch { }
 
-            //thumbnail capture
+            //final thumbnail capture..
             CaptureScreen.CopyScreen(
                saveDirectory,
                "lively_t.jpg",
@@ -151,6 +154,7 @@ namespace livelywpf.Views
                (int)previewPanelSize.Height);
             ThumbnailUpdated?.Invoke(this, Path.Combine(saveDirectory, "lively_t.jpg"));
 
+            System.Diagnostics.Debug.WriteLine(">>>WALLPAPER TYPE:" + wallpaperType);
             double progress = 0;
             //preview clip (animated gif file).
             if (Program.SettingsVM.Settings.GifCapture && wallpaperType != WallpaperType.picture)

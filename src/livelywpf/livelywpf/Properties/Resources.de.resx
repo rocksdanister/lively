@@ -697,4 +697,13 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextFileNotFound" xml:space="preserve">
     <value>File not found</value>
   </data>
+  <data name="TextPicture" xml:space="preserve">
+    <value>Picture</value>
+  </data>
+  <data name="TextUnsupportedFile" xml:space="preserve">
+    <value>File format not supported</value>
+  </data>
+  <data name="TextProcessingWallpaper" xml:space="preserve">
+    <value>Processing</value>
+  </data>
 </root>

@@ -372,7 +372,7 @@ namespace livelywpf
                     return;
                 }
                 var data = new LivelyInfoModel() { 
-                    Title = "Processing..",
+                    Title = Properties.Resources.TextProcessingWallpaper + "...",
                     Type = wpType,
                     IsAbsolutePath = true,
                     FileName = path,

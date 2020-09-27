@@ -25,11 +25,12 @@ namespace livelywpf
         video,
         [Description("Animated Gif")]
         gif,
+        //backward compatibility with lively pre v1.0
         [Description("Unity Audio Visualiser")]
         unityaudio,
         [Description("Video Streams")]
         videostream,
-        [Description("Video Streams")]
+        [Description("Static picture")]
         picture,
     }
 
