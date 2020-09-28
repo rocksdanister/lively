@@ -22,11 +22,6 @@ namespace livelywpf
         public static MainWindow AppWindow { get; private set; }
         protected override void OnStartup(StartupEventArgs e)
         {
-            //wpf app startup
-            NLogger.SetupNLog();
-            SetupUnhandledExceptionLogging();
-            NLogger.LogHardwareInfo();
-
             try
             {
                 //create directories if not exist, eg: C:\Users\<User>\AppData\Local
@@ -34,14 +29,19 @@ namespace livelywpf
                 Directory.CreateDirectory(Path.Combine(Program.AppDataDir, "logs"));
                 Directory.CreateDirectory(Path.Combine(Program.AppDataDir, "temp"));
                 Directory.CreateDirectory(Path.Combine(Program.AppDataDir, "Cef"));
-                //clear temp files if any.
             }
             catch (Exception ex)
             {
-                Logger.Error("Temp Directory creation fail:" + ex.ToString());
-                MessageBox.Show(ex.Message, "Error: Failed to create data folder", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(ex.Message, "AppData Directory Initialize Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 Program.ExitApplication();
             }
+
+            //Setting up logging.
+            NLogger.SetupNLog();
+            SetupUnhandledExceptionLogging();
+            NLogger.LogHardwareInfo();
+
+            //clear temp files if any.
             FileOperations.EmptyDirectory(Path.Combine(Program.AppDataDir, "temp"));
 
             #region vm init

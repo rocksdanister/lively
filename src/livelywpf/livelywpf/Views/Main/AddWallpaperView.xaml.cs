@@ -76,10 +76,17 @@ namespace livelywpf.Views
                 }
                 else
                 {
-                    Program.LibraryVM.AddWallpaper(openFileDlg.FileName,
-                        FileFilter.LivelySupportedFormats[openFileDlg.FilterIndex - 2].Type,
-                        LibraryTileType.processing,
-                        Program.SettingsVM.Settings.SelectedDisplay);
+                    if(FileFilter.LivelySupportedFormats[openFileDlg.FilterIndex - 2].Type == (WallpaperType)100)
+                    {
+                        Program.LibraryVM.WallpaperInstall(openFileDlg.FileName);
+                    }
+                    else
+                    {
+                        Program.LibraryVM.AddWallpaper(openFileDlg.FileName,
+                            FileFilter.LivelySupportedFormats[openFileDlg.FilterIndex - 2].Type,
+                            LibraryTileType.processing,
+                            Program.SettingsVM.Settings.SelectedDisplay);
+                    }
                 }
 
                 //fix, xalmhost element takes time to disappear.

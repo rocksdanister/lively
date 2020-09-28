@@ -98,8 +98,9 @@ namespace livelywpf
                 if (IntPtr.Equals(workerw, IntPtr.Zero) || workerw == null)
                 {
                     //todo: set the settings through code using SystemParametersInfo() or something?
-                    Logger.Error("Failed to setup wallpaper, WorkerW handle null!");
+                    Logger.Error("Core: Failed to setup wallpaper, WorkerW handle null!");
                     System.Windows.MessageBox.Show(Properties.Resources.LivelyExceptionWorkerWSetupFail, Properties.Resources.TextError);
+                    WallpaperChanged?.Invoke(null, null);
                     return;
                 }
                 else

@@ -154,7 +154,6 @@ namespace livelywpf.Views
                (int)previewPanelSize.Height);
             ThumbnailUpdated?.Invoke(this, Path.Combine(saveDirectory, "lively_t.jpg"));
 
-            System.Diagnostics.Debug.WriteLine(">>>WALLPAPER TYPE:" + wallpaperType);
             double progress = 0;
             //preview clip (animated gif file).
             if (Program.SettingsVM.Settings.GifCapture && wallpaperType != WallpaperType.picture)
