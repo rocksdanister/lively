@@ -13,21 +13,21 @@ namespace livelywpf.Helpers
     public class FileFilter
     {
         public static readonly FileData[] LivelySupportedFormats = new FileData[] {
-            new FileData(WallpaperType.video,
-                "*.wmv; *.avi; *.flv; *.m4v;" +
-                "*.mkv; *.mov; *.mp4; *.mp4v; *.mpeg4;" +
-                "*.mpg; *.webm; *.ogm; *.ogv; *.ogx"),
-            new FileData(WallpaperType.picture,
-                "*.jpg; *.jpeg; *.png; *.bmp; *.tif; *.tiff"),
-            new FileData(WallpaperType.gif, "*.gif"),
-            new FileData(WallpaperType.web, "*.html"),
-            new FileData(WallpaperType.webaudio, "*.html"),
-            new FileData(WallpaperType.app,"*.exe"),
+            new FileData(WallpaperType.video, new string[]{".wmv", ".avi", ".flv", ".m4v",
+                    ".mkv", ".mov", ".mp4", ".mp4v", ".mpeg4",
+                    ".mpg", ".webm", ".ogm", ".ogv", ".ogx" }),
+            new FileData(WallpaperType.picture, new string[] {".jpg", ".jpeg", ".png", 
+                    ".bmp", ".tif", ".tiff" }),
+            new FileData(WallpaperType.gif, new string[]{".gif" }),
+            new FileData(WallpaperType.web, new string[]{".html" }),
+            new FileData(WallpaperType.webaudio, new string[]{".html" }),
+            new FileData(WallpaperType.app, new string[]{".exe" }),
             //new FileFilter(WallpaperType.unity,"*.exe"),
             //new FileFilter(WallpaperType.unityaudio,"Unity Audio Visualiser |*.exe"),
-            new FileData(WallpaperType.godot,"*.exe"),
+            new FileData(WallpaperType.godot, new string[]{".exe" }),
             //note: lively .zip is not a wallpapertype, its a filetype.
-            new FileData((WallpaperType)(100), "*.zip")};
+            new FileData((WallpaperType)(100),  new string[]{".zip" })
+        };
 
         public static string GetLocalisedWallpaperTypeText(WallpaperType type)
         {
@@ -57,14 +57,40 @@ namespace livelywpf.Helpers
         /// </summary>
         /// <param name="filePath">Path to file.</param>
         /// <returns>-1 if not supported, 100 if Lively .zip</returns>
-        public static WallpaperType GetFileType(string filePath)
+        public static WallpaperType GetLivelyFileType(string filePath)
         {
             //todo: Use file header(?) to verify filetype instead of extension.
-            var item = LivelySupportedFormats.FirstOrDefault(x => x.Extentions.Contains(
-                Path.GetExtension(filePath),
-                StringComparison.OrdinalIgnoreCase));
+            var item = LivelySupportedFormats.FirstOrDefault(
+                x => x.Extentions.Any(y => y.Equals(Path.GetExtension(filePath), StringComparison.OrdinalIgnoreCase)));
 
             return item != null ? item.Type : (WallpaperType)(-1);
+        }
+
+        /// <summary>
+        /// Generating filter text for file dialog (culture localised.)
+        /// </summary>
+        /// <param name="anyFile">Show any filetype.</param>
+        /// <returns></returns>
+        public static string GetLivelySupportedFileDialogFilter(bool anyFile = false)
+        {
+            StringBuilder filterString = new StringBuilder();
+            if(anyFile)
+            {
+                filterString.Append(Properties.Resources.TextAllFiles + "|*.*|");
+            }
+            foreach (var item in LivelySupportedFormats)
+            {
+                filterString.Append(GetLocalisedWallpaperTypeText(item.Type));
+                filterString.Append("|");
+                foreach (var extension in item.Extentions)
+                {
+                    filterString.Append("*").Append(extension).Append(";");
+                }
+                filterString.Remove(filterString.Length - 1, 1);
+                filterString.Append("|");
+            }
+            filterString.Remove(filterString.Length - 1, 1);
+            return filterString.ToString();
         }
     }
 }

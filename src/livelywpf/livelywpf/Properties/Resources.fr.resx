@@ -53,7 +53,6 @@
     value   : The object must be serialized with 
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
-
     mimetype: application/x-microsoft.net.object.bytearray.base64
     value   : The object must be serialized into a byte array 
             : using a System.ComponentModel.TypeConverter
@@ -167,7 +166,7 @@ Instructions pour partager le fichier journal:
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
-    <value>Lively ne peut pas fonctionner correctement avec le mode Contrastes Fortes de Windows activé !
+    <value>Lively ne peut pas fonctionner correctement avec le mode Contrastes Forts de Windows activé !
 Désactivez le mode Contraste Élevé &amp; essayez à nouveau.</value>
   </data>
   <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
@@ -186,7 +185,7 @@ SystemPropertiesPerformance.exe, cliquez sur "OK" pour ouvrir les Options de Per
 
 Si Windows 7 vient de se mettre en route - Ajuster le pour la meilleure apparence &amp; Appliquer.
 Si cela ne fonctionne toujours pas, fermer &amp; relancer Lively / redémarrer Windows.
-(Ne marche pas dans quelques versions insider de WIndows 10)</value>
+(Ne marche pas dans quelques versions insider de Windows 10)</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
     <value>Ajouter</value>
@@ -207,7 +206,7 @@ Si cela ne fonctionne toujours pas, fermer &amp; relancer Lively / redémarrer W
     <value>Naviguer</value>
   </data>
   <data name="TextCloseWallpapers" xml:space="preserve">
-    <value>Fermer les fonds d'ecran</value>
+    <value>Fermer les fonds d'écran</value>
   </data>
   <data name="TextCompleted" xml:space="preserve">
     <value>Complété !</value>
@@ -216,10 +215,10 @@ Si cela ne fonctionne toujours pas, fermer &amp; relancer Lively / redémarrer W
     <value>Convertir en vidéo</value>
   </data>
   <data name="TextCustomiseWallpaper" xml:space="preserve">
-    <value>Customiser le fond d'ecran</value>
+    <value>Customiser le fond d'écran</value>
   </data>
   <data name="TextDeleteWallpaper" xml:space="preserve">
-    <value>Supprimer le fond d'ecran</value>
+    <value>Supprimer le fond d'écran</value>
   </data>
   <data name="TextDisplayPauseRuleAllScreen" xml:space="preserve">
     <value>Tous les affichages </value>
@@ -366,7 +365,7 @@ Si cela ne fonctionne toujours pas, fermer &amp; relancer Lively / redémarrer W
     <value>Type</value>
   </data>
   <data name="TextWebsite" xml:space="preserve">
-    <value>Site Web </value>
+    <value>Site Web</value>
   </data>
   <data name="TextWebStream" xml:space="preserve">
     <value>Live</value>
@@ -390,13 +389,13 @@ Si cela ne fonctionne toujours pas, fermer &amp; relancer Lively / redémarrer W
     <value>Définissez ce qui se passe lorsqu'une application est au premier plan</value>
   </data>
   <data name="TipAppFullScreen" xml:space="preserve">
-    <value>Définissez ce qui se passe lorsqu'une application ou un jeu sont en pleine écran</value>
+    <value>Définissez ce qui se passe lorsqu'une application ou un jeu sont en plein écran</value>
   </data>
   <data name="TipAppRules" xml:space="preserve">
     <value>Définissez différentes règles de lecture de fond d'écran en fonction de l'application en cours d'exécution.</value>
   </data>
   <data name="TipAppTheme" xml:space="preserve">
-    <value>Lively s'adapte aux paramètres du thème du système, pour changer son apparence</value>
+    <value>Lively s'adapte aux paramètres du thème du système pour changer son apparence</value>
   </data>
   <data name="TipBatteryPower" xml:space="preserve">
     <value>(Pour les systèmes alimentés par batterie uniquement) Changez la lecture lorsque l'alimentation secteur est déconnectée</value>
@@ -438,14 +437,13 @@ Tous les processus: plus lourd, analyse tout le processus pour déterminer le co
     <value>Sélectionnez le lecteur utilisé pour le fond d'écran vidéo.</value>
   </data>
   <data name="TipWallpaperDir" xml:space="preserve">
-    <value>Chemin utilisé pour stocker les fichiers de fond d'ecran.</value>
+    <value>Chemin utilisé pour stocker les fichiers de fond d'écran.</value>
   </data>
   <data name="TipWallpaperInput" xml:space="preserve">
     <value>Sélectionnez des moyens d'interagir avec le fond d'écran.</value>
   </data>
   <data name="TipWallpaperPlayback" xml:space="preserve">
-    <value>Suspend la lecture du fond d'écran lorsque le bureau n'est pas mis au point.
-    </value>
+    <value>Suspend la lecture du fond d'écran lorsque le bureau n'est pas mis au point.</value>
   </data>
   <data name="TipWebBrowserDiskCache" xml:space="preserve">
     <value>Stocker les fichiers temporaires sur le disque au lieu de la mémoire, les paramètres sont restaurés lorsque le navigateur est redémarré.</value>
@@ -467,7 +465,7 @@ Edge est la vue Web intégrée de Windows 10.</value>
     <value>Autres applications de premier plan</value>
   </data>
   <data name="TitleAppFullScreen" xml:space="preserve">
-    <value>Autres Applications en Plein Écran</value>
+    <value>Autres applications en plein écran</value>
   </data>
   <data name="TitleAppName" xml:space="preserve">
     <value>Fond d'écran Lively</value>
@@ -488,8 +486,7 @@ Edge est la vue Web intégrée de Windows 10.</value>
     <value>Mode batterie Activé</value>
   </data>
   <data name="TitleBrowseFile" xml:space="preserve">
-    <value>Recherchez un fichier vidéo, gif, page Web ... à définir comme fond d'écran
-    </value>
+    <value>Recherchez un fichier vidéo, gif, page Web ... à définir comme fond d'écran</value>
   </data>
   <data name="TitleBrowserDebuggingPort" xml:space="preserve">
     <value>Port de débogage</value>
@@ -510,8 +507,7 @@ Edge est la vue Web intégrée de Windows 10.</value>
     <value>Aide</value>
   </data>
   <data name="TitleHideSysTray" xml:space="preserve">
-    <value>Icône de la barre d'état système
- </value>
+    <value>Icône de la barre d'état système</value>
   </data>
   <data name="TitleInteraction" xml:space="preserve">
     <value>Interaction</value>
@@ -544,8 +540,7 @@ Edge est la vue Web intégrée de Windows 10.</value>
     <value>Veuillez patientez...</value>
   </data>
   <data name="TitleScalingFit" xml:space="preserve">
-    <value>Mise à l'échelle/Ajustement
- </value>
+    <value>Mise à l'échelle/Ajustement</value>
   </data>
   <data name="TitleScreenLayout" xml:space="preserve">
     <value>Mise en page de l'écran</value>
@@ -581,7 +576,7 @@ Edge est la vue Web intégrée de Windows 10.</value>
     <value>Répertoire des fonds d'écran</value>
   </data>
   <data name="TitleWallpaperInput" xml:space="preserve">
-    <value>Entrée du fond d'ecran</value>
+    <value>Entrée du fond d'écran</value>
   </data>
   <data name="TitleWallpaperLayout" xml:space="preserve">
     <value>Sélectionner la disposition du fond d'écran</value>
@@ -623,7 +618,7 @@ Edge est la vue Web intégrée de Windows 10.</value>
     <value>Choisir l'écran</value>
   </data>
   <data name="TextWallpaperLayoutPerScreen" xml:space="preserve">
-    <value>Ecran selectionné uniquement</value>
+    <value>Écran selectionné uniquement</value>
   </data>
   <data name="TipWallpaperLayout" xml:space="preserve">
     <value>Comment le fond d'écran est appliqué aux écrans connectés.</value>
@@ -640,8 +635,8 @@ Instructions pour partager le fichier de log :
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="TextOff" xml:space="preserve">
-    
-  <value>ÉTEINT</value></data>
+    <value>ÉTEINT</value>
+  </data>
   <data name="TextOn" xml:space="preserve">
     <value>ALLUMÉ</value>
   </data>
@@ -661,7 +656,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Êtes-vous sur de vraiment vouloir supprimer ce fond d'écran de la bibliothèque?</value>
   </data>
   <data name="TipAudioMaster" xml:space="preserve">
-    <value>Niveau sonor des fonds d'écran.</value>
+    <value>Niveau sonore des fonds d'écran.</value>
   </data>
   <data name="TitleAudioMaster" xml:space="preserve">
     <value>Volume principal</value>
@@ -700,12 +695,12 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Fichier non trouvé</value>
   </data>
   <data name="TextPicture" xml:space="preserve">
-    <value>Picture</value>
+    <value>Image</value>
   </data>
   <data name="TextUnsupportedFile" xml:space="preserve">
-    <value>File format not supported</value>
+    <value>Format de fichier non supporté</value>
   </data>
   <data name="TextProcessingWallpaper" xml:space="preserve">
-    <value>Processing</value>
+    <value>Processus en cours...</value>
   </data>
 </root>

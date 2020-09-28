@@ -211,7 +211,7 @@ namespace livelywpf.Views
                         }
 
                         WallpaperType type;
-                        if((type = FileFilter.GetFileType(item)) != (WallpaperType)(-1))
+                        if((type = FileFilter.GetLivelyFileType(item)) != (WallpaperType)(-1))
                         {
                             if(type == WallpaperType.app || 
                                 type == WallpaperType.unity || 
@@ -251,7 +251,7 @@ namespace livelywpf.Views
                         {
                             await Helpers.DialogService.ShowConfirmationDialog(
                               Properties.Resources.TextError,
-                              Properties.Resources.TextUnsupportedFile +" (" + Path.GetExtension(item).ToUpperInvariant() + ")",
+                              Properties.Resources.TextUnsupportedFile +" (" + Path.GetExtension(item) + ")",
                               ((UIElement)sender).XamlRoot,
                               Properties.Resources.TextClose);
                         }

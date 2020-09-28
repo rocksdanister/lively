@@ -232,6 +232,7 @@ namespace livelywpf
         {
             await semaphoreSlimWallpaperInitLock.WaitAsync();
             IWallpaper wallpaper = null;
+            bool reloadRequired = false;
             try
             {
                 wallpaper = (IWallpaper)sender;
@@ -280,6 +281,10 @@ namespace livelywpf
                             }));
                             return; //exit
                         }
+
+                        reloadRequired = wallpaper.GetWallpaperType() == WallpaperType.web ||
+                            wallpaper.GetWallpaperType() == WallpaperType.webaudio ||
+                            wallpaper.GetWallpaperType() == WallpaperType.url;
                     }
                     else if (wallpaper.GetWallpaperData().DataType == LibraryTileType.videoConvert)
                     {
@@ -314,6 +319,12 @@ namespace livelywpf
                                 break;
                         }
                     }
+                    //Reload webpage, fix if the webpage code is not subscribed to window size changed event.
+                    if(reloadRequired)
+                    {
+                        wallpaper.SendMessage("Reload");
+                    }
+
                     Wallpapers.Add(wallpaper);
                     WallpaperChanged?.Invoke(null, null);
                 }

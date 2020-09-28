@@ -1,11 +1,8 @@
 ﻿using livelywpf.Helpers;
 using Microsoft.Toolkit.Wpf.UI.XamlHost;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
@@ -20,6 +17,7 @@ namespace livelywpf.Views
         public AddWallpaperView()
         {
             InitializeComponent();
+            //Load saved url.
             UrlText.Text = Program.SettingsVM.Settings.SavedURL;
         }
 
@@ -31,18 +29,7 @@ namespace livelywpf.Views
                 CheckFileExists = true,
                 CheckPathExists = true,       
             };
-            StringBuilder filterString = new StringBuilder();
-            //Any filetype.
-            filterString.Append(Properties.Resources.TextAllFiles + "|*.*|");
-            foreach (var item in FileFilter.LivelySupportedFormats)
-            {
-                filterString.Append(FileFilter.GetLocalisedWallpaperTypeText(item.Type));
-                filterString.Append("|");
-                filterString.Append(item.Extentions);
-                filterString.Append("|");
-            }
-            filterString.Remove(filterString.Length - 1, 1);
-            openFileDlg.Filter = filterString.ToString();
+            openFileDlg.Filter = FileFilter.GetLivelySupportedFileDialogFilter(true);
             Nullable<bool> result = openFileDlg.ShowDialog();
 
             if (result == true)
@@ -51,7 +38,7 @@ namespace livelywpf.Views
                 {
                     //Any filetype.
                     WallpaperType type;
-                    if ((type = FileFilter.GetFileType(openFileDlg.FileName)) != (WallpaperType)(-1))
+                    if ((type = FileFilter.GetLivelyFileType(openFileDlg.FileName)) != (WallpaperType)(-1))
                     {
                         if (type == (WallpaperType)100)
                         {
@@ -69,7 +56,7 @@ namespace livelywpf.Views
                     else
                     {
                         System.Windows.MessageBox.Show(
-                            Properties.Resources.TextUnsupportedFile + " (" + Path.GetExtension(openFileDlg.FileName).ToUpperInvariant() + ")",
+                            Properties.Resources.TextUnsupportedFile + " (" + Path.GetExtension(openFileDlg.FileName) + ")",
                             Properties.Resources.TextError);
                         return;
                     }
