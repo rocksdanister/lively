@@ -1,15 +1,9 @@
-﻿using ICSharpCode.SharpZipLib.Zip;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Diagnostics;
-using System.Globalization;
 using System.IO;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
-using livelywpf.Core;
 
 namespace livelywpf
 {
@@ -22,7 +16,7 @@ namespace livelywpf
         //Loaded from Settings.json (User configurable.)
         public static string WallpaperDir;
         public static readonly string AppDataDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Lively Wallpaper");
-        public static readonly bool IsMSIX = new DesktopBridge.Helpers().IsRunningAsUwp();
+        public static readonly bool IsMSIX = false;//new DesktopBridge.Helpers().IsRunningAsUwp();
 
         //todo: use singleton or something instead?
         public static SettingsViewModel SettingsVM;

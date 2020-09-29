@@ -14,11 +14,12 @@ namespace livelywpf.Views
     /// </summary>
     public partial class AddWallpaperView : Page
     {
+        private readonly string fileDialogFilter;
         public AddWallpaperView()
         {
             InitializeComponent();
-            //Load saved url.
             UrlText.Text = Program.SettingsVM.Settings.SavedURL;
+            fileDialogFilter = FileFilter.GetLivelySupportedFileDialogFilter(true);
         }
 
         private void FileBtn_Click(object sender, RoutedEventArgs e)
@@ -29,7 +30,7 @@ namespace livelywpf.Views
                 CheckFileExists = true,
                 CheckPathExists = true,       
             };
-            openFileDlg.Filter = FileFilter.GetLivelySupportedFileDialogFilter(true);
+            openFileDlg.Filter = fileDialogFilter;
             Nullable<bool> result = openFileDlg.ShowDialog();
 
             if (result == true)

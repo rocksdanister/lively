@@ -16,7 +16,7 @@
                     <ScrollViewer Margin="0, 0, 15, 0">
                         <StackPanel Margin="0, 10, 0, 0">
                             <ToggleSwitch IsOn="{Binding IsStartup, Mode=TwoWay}" Header="{x:Bind UIText.TitleWindowsStart}"/>
-                            <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipWindowsStart}"/>
+                            <TextBlock Margin="0,5,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipWindowsStart}"/>
                             
                             <ComboBox SelectedIndex="0" Margin="0,10,0,0" MinWidth="150" Header="{x:Bind UIText.TitleLanguage}"
                                       ItemsSource="{Binding LanguageItems}" 
@@ -24,14 +24,15 @@
                                       SelectedItem="{Binding SelectedLanguageItem, Mode=TwoWay}"
                                       />
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipLanguage}"/>
-                            <!--<HyperlinkButton Margin="0, 0, 0, 0" FontSize="12" Content="Help translate Lively." NavigateUri="https://github.com/rocksdanister/lively-translations"/>-->
+                            <HyperlinkButton Margin="0, 0, 0, 0" FontSize="12" Content="{x:Bind UIText.TextHelpTranslateLively}" 
+                                             NavigateUri="https://github.com/rocksdanister/lively-translations" ToolTipService.ToolTip="https://github.com/rocksdanister/lively-translations"/>
 
                             <ComboBox Margin="0,10,0,0" MinWidth="150" SelectedIndex="{Binding SelectedTileSizeIndex, Mode=TwoWay}" Header="{x:Bind UIText.TitleTileSize}" >
                                 <ComboBoxItem Content="{x:Bind UIText.TextTileSizeSmall}"/>
                                 <ComboBoxItem Content="{x:Bind UIText.TextTileSizeNormal}"/>
                                 <ComboBoxItem Content="{x:Bind UIText.TextTileSizeLarge}"/>
                             </ComboBox>
-                            <TextBlock Margin="0,5,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipTitleSize}"/>
+                            <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipTitleSize}"/>
 
                             <ComboBox Margin="0,10,0,0" MinWidth="150" SelectedIndex="{Binding SelectedLivelyUIModeIndex, Mode=TwoWay}" Header="{x:Bind UIText.TitleUIMode}">
                                 <ComboBoxItem Content="{x:Bind UIText.TextUIModeNormal}"/>
@@ -157,7 +158,7 @@
                             </ComboBox>
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipWallpaperStreamQuality}"/>
 
-                            <CheckBox Content="{x:Bind UIText.TitleDetectWallpaperStream}" IsChecked="{Binding DetectStreamWallpaper, Mode=TwoWay}"/>
+                            <CheckBox  Margin="0,10,0,0" Content="{x:Bind UIText.TitleDetectWallpaperStream}" IsChecked="{Binding DetectStreamWallpaper, Mode=TwoWay}"/>
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipDetectWallpaperStream}"/>
                             
                             <TextBlock FontSize="20" Margin="0, 10, 0, 0" Text="{x:Bind UIText.TitleWebBrowser}"/>

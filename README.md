@@ -35,10 +35,9 @@ Help translate lively to other languages: <a href="https://github.com/rocksdanis
 <img src="/resources/wallpaper_video.gif" width="600" height="338"/>
 
 <a href="https://visualdon.uk/project/eternal-light/">Eternal Light</a> by VISUALDON
-* Use external codec packs or internal windows codec.
+* Powered by mpv and vlc player.
 * Play .mp4, mkv, webm, avi, mov etc 
 * Hardware Acceleration support.
-* Audio will mute when not on desktop.
 #### Webpages
 <img src="/resources/wallpaper_html.gif" width="600" height="338"/>
 
@@ -88,10 +87,10 @@ Help translate lively to other languages: <a href="https://github.com/rocksdanis
 
 **_I'm not officially affiliated with Unity technologies, godot, shadertoy;_**
 ## Download
-##### Latest version: v1.1.0.0 (Windows 10 1903 or above)[What's new?](https://github.com/rocksdanister/lively/releases/tag/v1.1.0.0)
+##### Latest version: v1.1.2.0 (Windows 10 1903 or above)[What's new?](https://github.com/rocksdanister/lively/releases/tag/v1.1.2.0)
 - [`Download Lively Wallpaper`][direct-full-win32] 
      
-[direct-full-win32]: https://github.com/rocksdanister/lively/releases/download/v1.1.0.0/lively_setup_x86_full_v1100.exe
+[direct-full-win32]: https://github.com/rocksdanister/lively/releases/download/v1.1.2.0/lively_setup_x86_full_v1120.exe
 
 **Installer will give Smartscreen warning, [discussion.](https://github.com/rocksdanister/lively/issues/9)**
 

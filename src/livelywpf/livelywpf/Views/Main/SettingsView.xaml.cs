@@ -50,6 +50,7 @@ namespace livelywpf.Views
                     TextUIModeLite = Properties.Resources.TextUILite,
                     TextUIModeNormal = Properties.Resources.TextUINormal,
                     TitleWallpaperDirMoveExisting = Properties.Resources.TitleWallpaperDirMoveExisting,
+                    TextHelpTranslateLively = Properties.Resources.TextHelpTranslate,
                     //perf
                     TitleWallpaperPlayback = Properties.Resources.TitleWallpaperPlayback,
                     TitlePerfAppFullScreen = Properties.Resources.TitleAppFullScreen,

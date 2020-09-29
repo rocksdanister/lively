@@ -90,6 +90,7 @@ namespace livelywpf.Helpers
                 filterString.Append("|");
             }
             filterString.Remove(filterString.Length - 1, 1);
+
             return filterString.ToString();
         }
     }

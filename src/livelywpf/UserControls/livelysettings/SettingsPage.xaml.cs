@@ -26,6 +26,7 @@ namespace livelysettings
         public string TitleSettings { get; set; }
 
         //general 
+        public string TextHelpTranslateLively { get; set; }
         public string TitleWindowsStart { get; set; }
         public string TipWindowsStart { get; set; }
         public string TitleLanguage { get; set; }

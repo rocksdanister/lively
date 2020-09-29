@@ -50,7 +50,7 @@ namespace livelywpf
                 navView.MenuItems.Add(CreateMenu(Properties.Resources.TitleAddWallpaper, "add", "\uE710"));
                 navView.MenuItems.Add(CreateMenu(Properties.Resources.TitleHelp, "help", "\uE897"));
                 navView.MenuItems.Add(CreateMenu(Properties.Resources.TitleAbout, "about", "\uE90A"));
-                navView.MenuItems.Add(debugMenu = CreateMenu("Debug", "debug", "\uEBE8", Program.SettingsVM.Settings.DebugMenu));
+                navView.MenuItems.Add(debugMenu = CreateMenu(Properties.Resources.TitleDebug, "debug", "\uEBE8", Program.SettingsVM.Settings.DebugMenu));
                 Program.SettingsVM.DebugMenuVisibilityChange += SettingsVM_DebugMenuVisibilityChange;
                 navView.ItemInvoked += NavView_ItemInvoked;
                 NavViewNavigate("library");

@@ -134,8 +134,16 @@ namespace livelywpf.Views
                 }
                 else
                 {
-                    Logger.Error("Wallpaper Preview: Failed to launch wallpaper: " + e.Msg + "\n" + e.Error.ToString());
-                    MessageBox.Show(e.Error.Message, Properties.Resources.TitleAppName);
+                    if (e.Error != null)
+                    {
+                        Logger.Error("Wallpaper Preview: Failed to launch wallpaper=>" + e.Msg + "\n" + e.Error);
+                    }
+                    else
+                    {
+                        Logger.Error("Wallpaper Preview: Failed to launch wallpaper=> (No Exception thrown)" + e.Msg);
+                    }
+                    MessageBox.Show(Properties.Resources.LivelyExceptionGeneral, Properties.Resources.TextError);
+
                     _ = this.Dispatcher.BeginInvoke(new Action(() => {
                         this.Close();
                     }));

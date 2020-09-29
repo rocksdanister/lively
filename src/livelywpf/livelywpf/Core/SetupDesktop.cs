@@ -322,7 +322,7 @@ namespace livelywpf
                     //Reload webpage, fix if the webpage code is not subscribed to window size changed event.
                     if(reloadRequired)
                     {
-                        wallpaper.SendMessage("Reload");
+                        wallpaper.SendMessage("lively:reload");
                     }
 
                     Wallpapers.Add(wallpaper);
@@ -336,11 +336,11 @@ namespace livelywpf
                     }
                     else
                     {
-                        Logger.Error("Core: Failed to launch wallpaper=>" + e.Msg);
+                        Logger.Error("Core: Failed to launch wallpaper=>(No Exception thrown)" + e.Msg);
                     }
                     wallpaper.Terminate();
                     WallpaperChanged?.Invoke(null, null);
-                    MessageBox.Show(e.Error.Message, Properties.Resources.TitleAppName);
+                    MessageBox.Show(Properties.Resources.LivelyExceptionGeneral, Properties.Resources.TextError);
                 }
             }
             catch(Exception ex)

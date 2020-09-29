@@ -214,7 +214,9 @@ namespace livelywpf
                     {
                         //livelyinfo.json only contains the absolute filepath of the file; file is in different location.
                         List<string> files = new List<string>();
-                        if (selection.LivelyInfo.Type == WallpaperType.video || selection.LivelyInfo.Type == WallpaperType.gif)
+                        if (selection.LivelyInfo.Type == WallpaperType.video ||
+                        selection.LivelyInfo.Type == WallpaperType.gif ||
+                        selection.LivelyInfo.Type == WallpaperType.picture)
                         {
                             files.Add(selection.FilePath);
                         }

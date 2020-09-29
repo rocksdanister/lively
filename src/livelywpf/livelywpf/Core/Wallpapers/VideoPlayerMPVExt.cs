@@ -152,7 +152,6 @@ namespace livelywpf.Core
                     bool status = true;
                     Exception error = null;
                     string msg = null;
-
                     try
                     {
                         msg = "libMPVPlayer Handle:" + e.Data;

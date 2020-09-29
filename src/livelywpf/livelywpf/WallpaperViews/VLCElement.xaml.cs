@@ -22,7 +22,7 @@ namespace livelywpf
         Media _media;
         string _filePath;
         bool _isStream;
-        //float vidPosition;
+        float vidPosition;
 
         //todo:https://code.videolan.org/videolan/LibVLCSharp/-/issues/136
         //take screenshot and display static image when player.Stop() is called.
@@ -104,20 +104,25 @@ namespace livelywpf
 
         public void PausePlayer()
         {
+            if (_mediaPlayer == null)
+                return;
+
             if (_mediaPlayer.IsPlaying && _mediaReady)
             {
-                //vidPosition = _mediaPlayer.Position;
-                //_mediaPlayer.Stop();
-                _mediaPlayer.Pause();
+                vidPosition = _mediaPlayer.Position;
+                _mediaPlayer.Stop();
             }
         }
 
         public void PlayMedia()
         {
+            if (_mediaPlayer == null)
+                return;
+
             if (_mediaReady && !_mediaPlayer.IsPlaying)
             {
                 _mediaPlayer.Play();
-                //_mediaPlayer.Position = vidPosition;
+                _mediaPlayer.Position = vidPosition;
             }
         }
 

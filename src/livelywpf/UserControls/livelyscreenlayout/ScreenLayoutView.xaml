@@ -9,7 +9,7 @@
     d:DesignHeight="400"
     d:DesignWidth="400">
 
-    <Grid BorderBrush="{ThemeResource SystemBaseLowColor}" BorderThickness="1">
+    <Grid BorderBrush="{ThemeResource SystemBaseLowColor}" BorderThickness="1" Background="{ThemeResource SystemListLowColor}">
         <GridView HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="GridControl" Margin="5, 5, 5, 5"
                   ItemsSource= "{Binding ScreenItems}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" >
             <GridView.ItemTemplate>
@@ -17,7 +17,7 @@
                     <Grid Width="192" Height="108" Background="{ThemeResource SystemBaseLowColor}">
                         <Image Source="{Binding ScreenImagePath}" Stretch="UniformToFill" Opacity="0.50"/>
                         <Viewbox Width="192" Height="108">
-                        <TextBlock Text="{Binding ScreenTitle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding ScreenTitle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Viewbox>
                     </Grid>
                 </DataTemplate>

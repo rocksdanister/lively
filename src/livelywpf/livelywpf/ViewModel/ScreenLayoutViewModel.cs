@@ -207,7 +207,7 @@ namespace livelywpf
             }
             else
             {
-                List<Model.ScreenLayoutModel> unsortedScreenItems = new List<Model.ScreenLayoutModel>();
+                var unsortedScreenItems = new List<ScreenLayoutModel>();
                 foreach (var item in ScreenHelper.GetScreen())
                 {
                     string imgPath = null;
@@ -220,14 +220,9 @@ namespace livelywpf
                             livelyPropertyFilePath = x.GetLivelyPropertyCopyPath();
                         }
                     });
-                    if(Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.duplicate)
-                    {
-                        unsortedScreenItems.Add(new Model.ScreenLayoutModel(item, imgPath, livelyPropertyFilePath, item.DeviceNumber + '"'));
-                    }
-                    else
-                    {
-                        unsortedScreenItems.Add(new Model.ScreenLayoutModel(item, imgPath, livelyPropertyFilePath, item.DeviceNumber));
-                    }
+                    unsortedScreenItems.Add((Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.duplicate ?
+                        new ScreenLayoutModel(item, imgPath, livelyPropertyFilePath, item.DeviceNumber + '"') :
+                        new ScreenLayoutModel(item, imgPath, livelyPropertyFilePath, item.DeviceNumber)));
                 }
 
                 foreach (var item in unsortedScreenItems.OrderBy(x => x.Screen.Bounds.X).ToList())
@@ -248,7 +243,6 @@ namespace livelywpf
 
         private void UpdateWallpaper(WallpaperArrangement previous, WallpaperArrangement current)
         {
-            MessageBox.Show(previous + " " + current);
             var wallpapers = SetupDesktop.Wallpapers.ToList();
             SetupDesktop.CloseAllWallpapers();
             if (previous == WallpaperArrangement.per && current == WallpaperArrangement.span)
