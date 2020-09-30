@@ -110,6 +110,7 @@ Help translate lively to other languages: <a href="https://github.com/rocksdanis
 https://github.com/rocksdanister/lively-cef
 
 ## Support
+Support the free internet and support the FOSS.
 You can always help development by buying me a cup of coffee(paypal):
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/P5P1U8NQ)
 
