@@ -1403,7 +1403,7 @@ namespace livelywpf
         [DllImport("user32.dll")]
         public static extern bool ScreenToClient(IntPtr hWnd, ref POINT lpPoint);
 
-        [DllImport("user32", ExactSpelling = true)]
+        [DllImport("user32", ExactSpelling = true, SetLastError = true)]
         [return: MarshalAs(UnmanagedType.I4)]
         public static extern int MapWindowPoints(IntPtr hWndFrom, IntPtr hWndTo, [In, Out] ref RECT rect, [MarshalAs(UnmanagedType.U4)] int cPoints);
 

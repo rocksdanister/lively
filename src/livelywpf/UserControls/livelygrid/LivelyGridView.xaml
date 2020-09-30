@@ -22,7 +22,7 @@
             </Grid>
             -->
         </DataTemplate>
-        
+
         <DataTemplate x:Name="Small">
             <Grid Width="192" Height="108" AutomationProperties.Name="{Binding Title}">
                 <Image Source="{Binding ImagePath}" Stretch="UniformToFill"/>
@@ -33,7 +33,7 @@
                 </StackPanel>
             </Grid>
         </DataTemplate>
-        
+
         <DataTemplate x:Name="Normal">
             <Grid Width="272" Height="153" AutomationProperties.Name="{Binding Title}">
                 <Image Source="{Binding ImagePath}" Stretch="UniformToFill"/>
@@ -83,7 +83,7 @@
                 </ItemsPanelTemplate>
             </GridView.ItemsPanel>
         </GridView>
-        
+
         <!--
         <CommandBar>
             <AppBarToggleButton Icon="Shuffle" Label="Shuffle" />

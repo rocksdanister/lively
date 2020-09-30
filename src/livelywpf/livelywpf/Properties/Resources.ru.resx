@@ -700,12 +700,12 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Файл не найден</value>
   </data>
   <data name="TextPicture" xml:space="preserve">
-    <value>Picture</value>
+    <value>Изображение</value>
   </data>
   <data name="TextUnsupportedFile" xml:space="preserve">
-    <value>File format not supported</value>
+    <value>Формат файла не поддерживается</value>
   </data>
   <data name="TextProcessingWallpaper" xml:space="preserve">
-    <value>Processing</value>
-  </data>  
+    <value>Обработка</value>
+  </data>
 </root>

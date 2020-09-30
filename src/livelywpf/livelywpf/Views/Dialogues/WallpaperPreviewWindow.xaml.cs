@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Interop;
 using livelywpf.Core;
 
 namespace livelywpf.Views
@@ -16,7 +17,21 @@ namespace livelywpf.Views
         public WallpaperPreviewWindow(LibraryModel wp)
         {
             InitializeComponent();
+            this.SizeChanged += WallpaperPreviewWindow_SizeChanged;
             this.wallpaperData = wp;
+        }
+
+        private void WallpaperPreviewWindow_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if(wallpaper != null)
+            {
+                var item = WindowOperations.GetAbsolutePlacement(PreviewBorder, true);
+                NativeMethods.POINT pts = new NativeMethods.POINT() { X = (int)item.Left, Y = (int)item.Top };
+                if (NativeMethods.ScreenToClient(new WindowInteropHelper(this).Handle, ref pts))
+                {
+                    NativeMethods.SetWindowPos(wallpaper.GetHWND(), 1, pts.X, pts.Y, (int)item.Width, (int)item.Height, 0 | 0x0010);
+                }
+            }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -130,6 +145,8 @@ namespace livelywpf.Views
                     _ = this.Dispatcher.BeginInvoke(new Action(() => {       
                         //attach wp hwnd to border ui element.
                         WindowOperations.SetProgramToFramework(this, wallpaper.GetHWND(), PreviewBorder);
+                        //fix for wallpaper overlapping window bordere in high dpi screens.
+                        this.Width += 1;
                     }));
                 }
                 else

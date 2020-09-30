@@ -5,12 +5,16 @@ using System.Threading.Tasks;
 
 namespace livelywpf.Core
 {
-    /// <summary>
-    /// Program(.exe) Unity, godot.. wallpaper.
-    /// </summary>
     public class ExtPrograms : IWallpaper
     {
-        public ExtPrograms(string path, LibraryModel model, LivelyScreen display, int timeOut = 20)
+        /// <summary>
+        /// Launch Program(.exe) Unity, godot.. as wallpaper.
+        /// </summary>
+        /// <param name="path">Path to program exe</param>
+        /// <param name="model">Wallpaper data</param>
+        /// <param name="display">Screen metadata</param>
+        /// <param name="timeOut">Time to wait for program to be ready(in milliseconds)</param>
+        public ExtPrograms(string path, LibraryModel model, LivelyScreen display, int timeOut = 20000)
         {
             // Unity flags
             //-popupwindow removes from taskbar
