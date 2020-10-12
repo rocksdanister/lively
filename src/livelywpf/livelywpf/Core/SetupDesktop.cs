@@ -128,22 +128,35 @@ namespace livelywpf
                 || wp.LivelyInfo.Type == WallpaperType.webaudio 
                 || wp.LivelyInfo.Type == WallpaperType.url)
             {
-                if(Program.IsMSIX)
-                {
-                    Logger.Info("Core: Skipping program wallpaper on MSIX package.");
-                    return;
-                }
 
-                wp.ItemStartup = true;
-                var item = new WebProcess(wp.FilePath, wp, targetDisplay);
-                item.WindowInitialized += SetupDesktop_WallpaperInitialized;
-                wallpapersPending.Add(item);
-                item.Show();
+                if(Program.SettingsVM.Settings.WebBrowser == LivelyWebBrowser.cef)
+                {
+                    wp.ItemStartup = true;
+                    var item = new WebProcess(wp.FilePath, wp, targetDisplay);
+                    item.WindowInitialized += SetupDesktop_WallpaperInitialized;
+                    wallpapersPending.Add(item);
+                    item.Show();
+                }
+                else if(Program.SettingsVM.Settings.WebBrowser == LivelyWebBrowser.webview2)
+                {
+                    wp.ItemStartup = true;
+                    var item = new WebEdge(wp.FilePath, wp, targetDisplay);
+                    item.WindowInitialized += SetupDesktop_WallpaperInitialized;
+                    wallpapersPending.Add(item);
+                    item.Show();
+                }
             }
             else if(wp.LivelyInfo.Type == WallpaperType.app
                 || wp.LivelyInfo.Type == WallpaperType.godot
                 || wp.LivelyInfo.Type == WallpaperType.unity)
             {
+
+                if (Program.IsMSIX)
+                {
+                    Logger.Info("Core: Skipping program wallpaper on MSIX package.");
+                    return;
+                }
+
                 wp.ItemStartup = true;
                 var item = new ExtPrograms(wp.FilePath, wp, targetDisplay, 
                     Program.SettingsVM.Settings.WallpaperWaitTime);

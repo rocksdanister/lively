@@ -62,6 +62,7 @@ namespace livelywpf
         public DisplayIdentificationMode DisplayIdentification { get; set; }
         public LivelyMediaPlayer VideoPlayer { get; set; }
         public LivelyMediaPlayer StreamVideoPlayer { get; set; }
+        public LivelyWebBrowser WebBrowser { get; set; }
         public bool GifCapture { get; set; }
         public livelywpf.Core.LivelyScreen SelectedDisplay { get; set; }
         public LivelyGUIState LivelyGUIRendering { get; set; }
@@ -96,6 +97,7 @@ namespace livelywpf
             BatteryPause = AppRulesEnum.ignore;
             VideoPlayer = LivelyMediaPlayer.libmpvExt;
             StreamVideoPlayer = LivelyMediaPlayer.libmpvExt;
+            WebBrowser = LivelyWebBrowser.cef;
 
             WallpaperWaitTime = 20000; // 20sec
             ProcessTimerInterval = 500; //reduce to 250 for quicker response.

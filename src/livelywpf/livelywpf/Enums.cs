@@ -137,6 +137,12 @@ namespace livelywpf
         libmpvExt
     }
 
+    public enum LivelyWebBrowser
+    {
+        cef,
+        webview2
+    }
+
     /// <summary>
     /// Same as: https://docs.microsoft.com/en-us/dotnet/api/system.windows.media.stretch?view=netcore-3.1
     /// </summary>

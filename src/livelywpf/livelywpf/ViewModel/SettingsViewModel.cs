@@ -89,6 +89,7 @@ namespace livelywpf
             SelectedWallpaperScalingIndex = (int)Settings.WallpaperScaling;
             CefDiskCache = Settings.CefDiskCache;
             IsDebugMenuVisible = Settings.DebugMenu;
+            SelectedWebBrowserIndex = (int)Settings.WebBrowser;
         }
 
         private SettingsModel _settings;
@@ -494,6 +495,29 @@ namespace livelywpf
                     Settings.StreamQuality = (StreamQualitySuggestion)_selectedWallpaperStreamQualityIndex;
                     UpdateConfigFile();
                     WallpaperRestart(WallpaperType.videostream);
+                }
+            }
+        }
+
+        private int _selectedWebBrowserIndex;
+        public int SelectedWebBrowserIndex
+        {
+            get
+            {
+                return _selectedWebBrowserIndex;
+            }
+            set
+            {
+                _selectedWebBrowserIndex = value;
+                OnPropertyChanged("SelectedVideoPlayerIndex");
+
+                if (Settings.WebBrowser != (LivelyWebBrowser)_selectedWebBrowserIndex)
+                {
+                    Settings.WebBrowser = (LivelyWebBrowser)_selectedWebBrowserIndex;
+                    UpdateConfigFile();
+                    WallpaperRestart(WallpaperType.web);
+                    WallpaperRestart(WallpaperType.webaudio);
+                    WallpaperRestart(WallpaperType.url);
                 }
             }
         }
