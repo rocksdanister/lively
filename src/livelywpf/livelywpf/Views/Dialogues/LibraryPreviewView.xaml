@@ -7,10 +7,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:livelywpf.Views"
+        xmlns:p = "clr-namespace:livelywpf.Properties"   
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        Title="Add to Library" Width="410" Height="710"
+        Title="{x:Static p:Resources.TitleLibrary}" Width="410" Height="710"
         Loaded="Window_Loaded"
         Closing="Window_Closing"
         BorderBrush="{DynamicResource SystemControlHighlightAltListAccentHighBrush}">
@@ -23,24 +23,24 @@
 
         <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="10, 225, 10, 0">
             <StackPanel>
-                <Label Content="Title" Margin="0, 10, 0, 0" />
+                <Label Content="{x:Static p:Resources.TextTitle}" Margin="0, 10, 0, 0" />
                 <TextBox MaxLength="30" Name="textboxTitle" Margin ="10,5,25,10" Text="{Binding Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-                <Label Content="Description" />
+                <Label Content="{x:Static p:Resources.TextDescription}" />
                 <TextBox MaxLength="250" Name="textboxDesc" Text="{Binding Desc, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True" TextWrapping="Wrap" Height="81" Margin="10,5,25,10" />
 
-                <Label Content="Author" />
+                <Label Content="{x:Static p:Resources.TextAuthor}" />
                 <TextBox MaxLength="50" Name="textboxAuthor" Text="{Binding Author, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextWrapping="WrapWithOverflow" Margin="10,5,25,10" />
 
-                <Label Content="Source" />
+                <Label Content="{x:Static p:Resources.TextWebsite}" />
                 <TextBox Name="textboxContact" Text="{Binding Url, Mode=TwoWay}" TextWrapping="NoWrap" MaxHeight="20" Height="20"  Margin="10,5,25,0" />
 
-                <CheckBox x:Name="chkBoxCreatePreview" Content="Create Preview" Margin="10,10,0,0" IsChecked="{Binding Path=GifCheck, Mode=TwoWay}"/>
-                <CheckBox x:Name="chkBoxCreateZip" Content="Create Lively .zip" Margin="10,10,0,0" IsChecked="{Binding Path=ZipCheck, Mode=TwoWay}"/>
+                <CheckBox x:Name="chkBoxCreatePreview" Content="{x:Static p:Resources.TextCreatePreview}" Margin="10,10,0,0" IsChecked="{Binding Path=GifCheck, Mode=TwoWay}"/>
+                <CheckBox x:Name="chkBoxCreateZip" Content="{x:Static p:Resources.TextExportWallpaperZip}" Margin="10,10,0,0" IsChecked="{Binding Path=ZipCheck, Mode=TwoWay}"/>
                 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0, 0, 10, 0">
-                    <Button x:Name="CancelBtn" Content="Cancel" MinWidth="100" Margin="0, 0, 10, 0" Command="{Binding CancelCommand}"/>
-                    <Button x:Name="OkBtn" Content="OK" MinWidth="100" Command="{Binding CaptureCommand}"/>
+                    <Button x:Name="CancelBtn" Content="{x:Static p:Resources.TextClose}" MinWidth="100" Margin="0, 0, 10, 0" Command="{Binding CancelCommand}"/>
+                    <Button x:Name="OkBtn" Content="{x:Static p:Resources.TextOK}" MinWidth="100" Command="{Binding CaptureCommand}" Background="{DynamicResource SystemControlHighlightAltListAccentHighBrush}"/>
                 </StackPanel>
                 
                 <ui:ProgressBar Name="gifProgressBar" Value="{Binding CurrentProgress, Mode=OneWay}" VerticalAlignment="Bottom" Margin="0, 15, 0, 0" />

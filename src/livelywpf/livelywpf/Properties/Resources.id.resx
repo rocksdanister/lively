@@ -118,594 +118,593 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DescriptionAddWallpaper" xml:space="preserve">
-    <value>Select a file or specify a website url to set as a wallpaper.</value>
+    <value>Pilih file atau URL halaman web untuk dijadikan sebagai wallpaper.</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
-    <value>Tapet uppspelnings beteende baserat på aktiva program.</value>
+    <value>Pemutaran wallpaper berdasarkan aplikasi yang sedang berjalan.</value>
   </data>
   <data name="DescriptionCancelQuestion" xml:space="preserve">
-    <value>Är du säker på att du vill avbryta?</value>
+    <value>Anda yakin akan membatalkan?</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
-    <value>Är du säker på att du vill radera dena tapet från disken?</value>
+    <value>Anda yakin akan menghapus wallpaper ini dari hard disk secara permanen?</value>
+  </data>
+  <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
+    <value>Anda yakin ingin menghapus wallpaper ini dari pustaka?</value>
   </data>
   <data name="DescriptionDragDropFIle" xml:space="preserve">
-    <value>Bara dra och släpp filer till biblioteket.</value>
+    <value>Seret dan lepaskan file pada pustaka.</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
-    <value>Du håller på att öppna ett externt program som din tapet.
-Skadliga program kan inehåla virus som kan skade ditt system. Fortsätt bara om du litar på programet.</value>
+    <value>Anda membuka aplikasi eksternal sebagai wallpaper.
+Aplikasi seperti ini dapat terkontaminasi oleh malware, virus.. dan dapat merusak sistem anda.
+Lanjutkan jika aplikasi berasal dari sumber terpercaya</value>
   </data>
   <data name="DescriptionMinimizedTray" xml:space="preserve">
-    <value>Livley är minimerat till systemfältet högerclicka på livley för att fortsätta.</value>
+    <value>Lively dikecilkan ke systemtray, klik kanan pada ikon Lively untuk melanjutkan.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
-    <value>Please restart Lively for settings to take effect.</value>
+    <value>Mohon mulai ulang Lively agar pengaturan dapat diterapkan.</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
-    <value>Tryck för att börja spela in.</value>
+    <value>Tekan untuk mulai merekam.</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
-    <value>Håller på att åtterställa tidigare tapeter var snäll och vänta...</value>
+    <value>Sedang memulihkan wallpaper sebelumnya, mohon tunggu...</value>
   </data>
   <data name="DescriptionScreenLayout" xml:space="preserve">
-    <value>Choose Display</value>
+    <value>Pilih tampilan</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
-    <value>En ny verision är tillgänglig.</value>
+    <value>Versi terbaru Lively tersedia untuk didownload!</value>
   </data>
   <data name="DescriptionWebpageLoad" xml:space="preserve">
-    <value>Skriv en hemplats länk att lada shadertoy.com shader-länkar stöds.</value>
+    <value>Masukkan URL halaman web untuk dimuat, tautan shader dari shadertoy.com dapat digunakan.</value>
   </data>
   <data name="DescriptionWelcomeWizard" xml:space="preserve">
-    <value>Den wizarden kommer få dig startad men att instalera Livley.</value>
+    <value>Wizard ini akan membantu anda untuk mengatur Lively.</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
-    <value>Updatering mislyckades försök instalera instaleraren från:; 
-https://github.com/rocksdanister/lively/releases</value>
+    <value>Gagal untuk mendapatkan update; coba download installer dari:
+https://github.com/rocksdanister/lively/releases
+</value>
   </data>
   <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
-    <value>Skadad tapet fil försök att lada ner den igen</value>
+    <value>File wallpaper rusak, coba unduh ulang.</value>
   </data>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
-    <value>Oops... Ser ut som att något gick fell :(
-för att förstå fellet dela log filen med uttveklaren
-Instrukturer för att dela log filen
+    <value>Waduuu... Keliatannya terjadi masalah :(
+Untuk mengetahui lebih lanjut tentang masalah ini dan memperbaikinya, bagikan file log kepada pengembang.
+Instruksi untuk membagikan file log:
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
-    <value>Livley kan inte fungera ordentligt med Windows Hög Kontrast läge på! Försök att stänga av det och försöka igen.</value>
+    <value>Lively tidak dapat berfungsi dengan Mode Kontras Tinggi Windows!
+Matikan ModeKontras Tinggi dan mulai ulang.</value>
   </data>
   <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
-    <value>Media playback failed :(
-Try changing the videoplayer in lively settings.
+    <value>Gagal memutar media:(
+Silakan coba untuk mengganti pemutar video di pengaturan Lively.
 
-In order to better understand this error and fix the issue, share the log file with the developer.
-Instructions for sharing log file:
+Untuk mengerti lebih lanjut tentang kesalahan ini dan memperbaikinya, bagikan file log kepada pengembang. 
+Instruksi untuk membagikan file log:
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
-    <value>Inte en Livley tapet fil.</value>
+    <value>Bukan file wallpaper untuk Lively.</value>
   </data>
   <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
-    <value>Lively was not closed properly, starting in safe mode.
-Do you wish to restore previously running wallpapers?</value>
+    <value>Lively sebelumnya tidak dimatikan secara teratur, akan memulai dengan mode aman. Apakah Anda ingin memulihkan wallpaper yang berjalan sebelumnya?</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
-    <value>It looks like some settings needs to be set to make Lively work:-  
-1. Open This PC(My Computer)
-2. Right-click empty area
-3. Select Properties
-4. Select Advanced System Settings
-5. Under Performance tab select Settings
-6. Enable Animate controls and elements inside windows and Apply.
+    <value>Sepertinya beberapa pengaturan perlu dilakukan agar Lively dapat digunakan:
+1. Tekan tombol windows
+2. Cari "Adjust the appearance and performance of Windows"
+3. Pada tab Visual Effects aktifkan "Animate controls and elements inside Windows"
+4. Klik "Apply" lalu "OK"
 
-If Windows 7 just set - Adjust for best appearance &amp;amp; Apply.
-If still not working, close &amp;amp; start Lively again/ restart windows.
-(Does not work in some insider windows 10 builds)</value>
+Untuk Windows 7, pilih "Adjust for best appearance" dan klik "Apply".
+Jika masih tidak berfungsi, tutup dan mulai ulang Lively/Windows.
+(Tidak berfungsi untuk beberapa Windows 10 Insider)</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
-    <value>Lägg till</value>
+    <value>Tambah</value>
+  </data>
+  <data name="TextAllFiles" xml:space="preserve">
+    <value>Semua File</value>
   </data>
   <data name="TextApplication" xml:space="preserve">
-    <value>Application</value>
+    <value>Aplikasi</value>
   </data>
   <data name="TextAttribution" xml:space="preserve">
-    <value>Attribution</value>
+    <value>Atribut</value>
   </data>
   <data name="TextAuthor" xml:space="preserve">
-    <value>Skapare</value>
+    <value>Pengarang</value>
   </data>
   <data name="TextBack" xml:space="preserve">
-    <value>Tillbaka</value>
+    <value>Kembali</value>
   </data>
   <data name="TextBrowse" xml:space="preserve">
-    <value>Browse</value>
+    <value>Telusuri</value>
   </data>
   <data name="TextClose" xml:space="preserve">
-    <value>Close</value>
+    <value>Tutup</value>
   </data>
   <data name="TextCloseWallpapers" xml:space="preserve">
-    <value>Stäng Tapeter</value>
+    <value>Tutup Wallpaper</value>
   </data>
   <data name="TextCompleted" xml:space="preserve">
-    <value>Avslutad!</value>
+    <value>Selesai!</value>
   </data>
   <data name="TextConvertVideo" xml:space="preserve">
-    <value>Konvertera till video</value>
+    <value>Ubah ke Video</value>
   </data>
   <data name="TextCustomise" xml:space="preserve">
-    <value>Customise</value>
+    <value>Sesuaikan</value>
   </data>
   <data name="TextCustomiseWallpaper" xml:space="preserve">
-    <value>Anpassa tapeter</value>
+    <value>Sesuaikan Wallpaper</value>
   </data>
   <data name="TextDeleteWallpaper" xml:space="preserve">
-    <value>Ta bort tapet</value>
+    <value>Hapus Wallpaper</value>
   </data>
   <data name="TextDisplayPauseRuleAllScreen" xml:space="preserve">
-    <value>Alla skärmar</value>
+    <value>Semua Layar</value>
   </data>
   <data name="TextDisplayPauseRulePerScreen" xml:space="preserve">
-    <value>Per skärm</value>
+    <value>Per Layar</value>
   </data>
   <data name="TextDownload" xml:space="preserve">
-    <value>Ladda ner</value>
+    <value>Unduh</value>
   </data>
   <data name="TextError" xml:space="preserve">
-    <value>Fel</value>
+    <value>Error</value>
   </data>
   <data name="TextExit" xml:space="preserve">
-    <value>Stäng</value>
+    <value>Keluar</value>
   </data>
   <data name="TextExportWallpaperZip" xml:space="preserve">
-    <value>Exportera lively .zip</value>
+    <value>Ekspor Llively .zip</value>
+  </data>
+  <data name="TextFileNotFound" xml:space="preserve">
+    <value>File tidak ditemukan</value>
   </data>
   <data name="TextGIF" xml:space="preserve">
-    <value>Animerad GIF</value>
+    <value>GIF Beranimasi</value>
   </data>
   <data name="TextGo" xml:space="preserve">
-    <value>GO</value>
+    <value>PERGI</value>
   </data>
   <data name="TextHelpTranslate" xml:space="preserve">
-    <value>Help translate Lively.</value>
+    <value>Bantu menerjemahkan Lively.</value>
   </data>
   <data name="TextInstall" xml:space="preserve">
-    <value>Installera</value>
+    <value>Pasang</value>
   </data>
   <data name="TextKeyboard" xml:space="preserve">
     <value>Keyboard</value>
   </data>
   <data name="TextmoreInfo" xml:space="preserve">
-    <value>Information</value>
+    <value>Informasi</value>
   </data>
   <data name="TextMoreWallpapers" xml:space="preserve">
-    <value>Mer tapeter</value>
+    <value>Wallpaper Lainnya</value>
   </data>
   <data name="TextMouse" xml:space="preserve">
-    <value>Mouse</value>
+    <value>Tetikus</value>
   </data>
   <data name="TextMouseInteractOnDesktop" xml:space="preserve">
-    <value>Mus interaktion när program är fokuserade</value>
+    <value>Interaksi tetikus ketika aplikasi sedang dalam keadaan fokus</value>
   </data>
   <data name="TextNext" xml:space="preserve">
-    <value>Nästa</value>
+    <value>Selanjutnya</value>
   </data>
   <data name="TextNo" xml:space="preserve">
-    <value>Nej</value>
+    <value>Tidak</value>
   </data>
   <data name="TextOff" xml:space="preserve">
-    <value>OFF</value>
+    <value>Mati</value>
   </data>
   <data name="TextOn" xml:space="preserve">
-    <value>ON</value>
+    <value>Nyala</value>
   </data>
   <data name="TextOnline" xml:space="preserve">
-    <value>Online</value>
+    <value>Daring</value>
   </data>
   <data name="TextOpenLively" xml:space="preserve">
-    <value>Öpna Lively</value>
+    <value>Buka Lively</value>
   </data>
   <data name="TextPauseAlgoAllProcess" xml:space="preserve">
-    <value>Alla processer</value>
+    <value>Semua Proses</value>
   </data>
   <data name="TextPauseAlgoForegroundProcess" xml:space="preserve">
-    <value>Förgrunds processer</value>
+    <value>Proses Latar Depan</value>
   </data>
   <data name="TextPauseWallpapers" xml:space="preserve">
-    <value>Pause tapeter</value>
+    <value>Jeda Wallpaper</value>
   </data>
   <data name="TextPerformanceKill" xml:space="preserve">
-    <value>Döda</value>
+    <value>Hentikan</value>
   </data>
   <data name="TextPerformanceNone" xml:space="preserve">
-    <value>Inget</value>
+    <value>Kosong</value>
   </data>
   <data name="TextPerformancePause" xml:space="preserve">
-    <value>Pausa</value>
+    <value>Jeda</value>
+  </data>
+  <data name="TextPicture" xml:space="preserve">
+    <value>Gambar</value>
+  </data>
+  <data name="TextPreviewWallpaper" xml:space="preserve">
+    <value>Pratinjau Wallpaper</value>
+  </data>
+  <data name="TextProcessingWallpaper" xml:space="preserve">
+    <value>Memproses</value>
   </data>
   <data name="TextRemove" xml:space="preserve">
-    <value>Radera</value>
+    <value>Hapus</value>
   </data>
   <data name="TextRule" xml:space="preserve">
-    <value>Regel</value>
+    <value>Peraturan</value>
   </data>
   <data name="TextScreen" xml:space="preserve">
-    <value>Skärm</value>
+    <value>Layar</value>
   </data>
   <data name="TextSearch" xml:space="preserve">
-    <value>Sök</value>
+    <value>Cari</value>
   </data>
   <data name="TextSetWallpaper" xml:space="preserve">
-    <value>Sät till tapet</value>
+    <value>Atur sebagai Wallpaper</value>
   </data>
   <data name="TextShowOnDisk" xml:space="preserve">
-    <value>Visa på disk</value>
+    <value>Buka Lokasi File</value>
   </data>
   <data name="TextSource" xml:space="preserve">
-    <value>Källa</value>
+    <value>Sumber</value>
   </data>
   <data name="TextStart" xml:space="preserve">
-    <value>Start</value>
+    <value>Mulai</value>
   </data>
   <data name="TextStop" xml:space="preserve">
-    <value>Stop</value>
+    <value>Berhenti</value>
   </data>
   <data name="TextSupport" xml:space="preserve">
-    <value>Support</value>
+    <value>Dukungan</value>
   </data>
   <data name="TextTags" xml:space="preserve">
-    <value>Etiketter</value>
+    <value>Label</value>
   </data>
   <data name="TextTileSizeLarge" xml:space="preserve">
-    <value>Stor</value>
+    <value>Besar</value>
   </data>
   <data name="TextTileSizeNormal" xml:space="preserve">
     <value>Normal</value>
   </data>
   <data name="TextTileSizeSmall" xml:space="preserve">
-    <value>Liten</value>
+    <value>Kecil</value>
   </data>
   <data name="TextUIHeadless" xml:space="preserve">
-    <value>Huvudlös</value>
+    <value>Tanpa Kepala Windows</value>
   </data>
   <data name="TextUILite" xml:space="preserve">
-    <value>Lätt</value>
+    <value>Ringan</value>
   </data>
   <data name="TextUINormal" xml:space="preserve">
     <value>Normal</value>
   </data>
+  <data name="TextUnsupportedFile" xml:space="preserve">
+    <value>Format file tidak didukung</value>
+  </data>
   <data name="TextUpdateAvailable" xml:space="preserve">
-    <value>Uppdatering tillgänglig!</value>
+    <value>Update tersedia!</value>
   </data>
   <data name="TextUpdateCheck" xml:space="preserve">
-    <value>Sök efter uppdatering</value>
+    <value>Cek untuk update</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
-    <value>Det gick inte att kontrollera effter programuppdateringar</value>
+    <value>Gagal untuk memeriksa update perangkat lunak</value>
   </data>
   <data name="TextUpdateChecking" xml:space="preserve">
-    <value>Kontrollerar för uppdatering</value>
+    <value>Sedang mencek update</value>
   </data>
   <data name="TextUpdateUptodate" xml:space="preserve">
-    <value>Programvaran är aktuell!</value>
+    <value>Perangkat lunak sudah terbaru!</value>
   </data>
   <data name="TextVideo" xml:space="preserve">
     <value>Video</value>
   </data>
+  <data name="TextWallpaperFitFill" xml:space="preserve">
+    <value>Isi</value>
+  </data>
+  <data name="TextWallpaperFitNone" xml:space="preserve">
+    <value>Kosongkan</value>
+  </data>
+  <data name="TextWallpaperFitUniform" xml:space="preserve">
+    <value>Seragam</value>
+  </data>
+  <data name="TextWallpaperFitUniformToFill" xml:space="preserve">
+    <value>Isi Seragam</value>
+  </data>
   <data name="TextWallpaperLayoutDuplicate" xml:space="preserve">
-    <value>Duplicera samma tapet</value>
+    <value>Duplikat wallpaper yang sama</value>
   </data>
   <data name="TextWallpaperLayoutPerScreen" xml:space="preserve">
-    <value>Selected screen only</value>
+    <value>Hanya layar yang dipilih</value>
   </data>
   <data name="TextWallpaperLayoutSpan" xml:space="preserve">
-    <value>Spänn över skärmar</value>
+    <value>Rentangkan ke layar lain</value>
   </data>
   <data name="TextWallpaperType" xml:space="preserve">
-    <value>Typ</value>
+    <value>Tipe</value>
   </data>
   <data name="TextWebsite" xml:space="preserve">
-    <value>Hemsida</value>
+    <value>Situs Web</value>
   </data>
   <data name="TextWebStream" xml:space="preserve">
     <value>Web Stream</value>
   </data>
   <data name="TextWelcome" xml:space="preserve">
-    <value>Välkommen</value>
+    <value>Selamat Datang</value>
   </data>
   <data name="TextYes" xml:space="preserve">
-    <value>Ja</value>
+    <value>Ya</value>
   </data>
   <data name="TileVideoPlayer" xml:space="preserve">
-    <value>Videospelare</value>
+    <value>Pemutar Video</value>
   </data>
   <data name="TipAddWallpaperFileBrowse" xml:space="preserve">
-    <value>Set all supported file types as wallpaper.</value>
+    <value>Atur semua file yang didukung sebagai wallpaper.</value>
   </data>
   <data name="TipAddWallpaperURL" xml:space="preserve">
-    <value>Set the web page of the URL you entered as wallpaper.</value>
+    <value>Atur tautan halaman web sebagai wallpaper.</value>
   </data>
   <data name="TipAppFocus" xml:space="preserve">
-    <value>Ställ in vad du ska göra när ett program står i fokus.</value>
+    <value>Atur apa yang akan dilakukan jika aplikasi lain sedang dalam fokus.</value>
   </data>
   <data name="TipAppFullScreen" xml:space="preserve">
-    <value>Ställ in vad du ska göra när helskärmsspel/applikationer körs.</value>
+    <value>Atur apa yang akan dilakukan jika permainan/aplikasi fullscreen sedang berjalan.</value>
   </data>
   <data name="TipAppRules" xml:space="preserve">
-    <value>Ställ in olika tapet suppspelningsregler baserat på program som körs.</value>
+    <value>Atur pemutaran wallpaper yang berbeda berdasarkan aplikasi yang berjalan.</value>
   </data>
   <data name="TipAppTheme" xml:space="preserve">
-    <value>Lively anpassar sig till inställningarna för systemtema för att ändra utseendet</value>
+    <value>Lively mengadaptasi tema pada sistem, untuk mengubah penampilan pergi ke</value>
+  </data>
+  <data name="TipAudioMaster" xml:space="preserve">
+    <value>Tingkat suara untuk semua wallpaper.</value>
   </data>
   <data name="TipBatteryPower" xml:space="preserve">
-    <value>(Endast för batteridrivna system) Ändra uppspelning när AC ström är frånkopplad.</value>
+    <value>(Hanya untuk sistem yang beroperasi dengan baterai) Ganti pemutaran jika daya terputus.</value>
   </data>
   <data name="TipBrowserDebuggingPort" xml:space="preserve">
-    <value>Ange porten för felsökning av tapet på webbsidan, omstart av webbläsaren krävs för att ändringarna ska träda i kraft.
-När du är redo navigerar du till http://localhost:portnumber för att komma åt utvecklarkonsolen.</value>
+    <value>Masukkan port untuk melakukan debug pada wallpaper halaman web, dibutuhkan untuk memulai ulang browser untuk menerapkan perubahan.
+Ketika sudah siap, pergi ke http://localhost:portnumber untuk mengakses konsol pengembang.</value>
+  </data>
+  <data name="TipDebug" xml:space="preserve">
+    <value>Tampilkan menu pengembang.</value>
   </data>
   <data name="TipDisplayPauseRule" xml:space="preserve">
-    <value>Per: Pausa tapeter endast på skärmen där applikationen är fokuserad/fullskärm.
-Allt: Pausa tapeter på alla skärmar om någon applikation är fokuserad/fullskärm.</value>
+    <value>Per: Jeda wallpaper hanya pada layar yang mana terdapat aplikasi fullscreen/sedang difokuskan.
+Semua: Jeda wallpaper untuk semua layar jika ada aplikasi fullscreen/sedang difokuskan.</value>
   </data>
   <data name="TipHideSysTray" xml:space="preserve">
-    <value>Systemfälts ikon synligt, Livley kommer att fortsäta köra med ikonen gömd</value>
+    <value>Visibilitas System-tray ikon, Lively akan terus berjalan dengan ikon yang disembunyikan.</value>
   </data>
   <data name="TipLanguage" xml:space="preserve">
-    <value>Livley kommer starta om för att tillämpa det nya språket</value>
+    <value>Lively akan dimulai ulang untuk menerapkan bahasa baru.</value>
   </data>
   <data name="TipLivelySetupOnClose" xml:space="preserve">
-    <value>Avsluta installationen för att fortsätta.</value>
+    <value>Selesaikan setup untuk melanjutkan.</value>
   </data>
   <data name="TipPauseAlgorithm" xml:space="preserve">
-    <value>Förgrund: Lätt, kontrollerar bara den enda processen som är i förgrunden för att bestämma bakgrundsuppspelningsbeteende.
-Alla proceser: Tyngre, Skannar alla proceser för att bestämma uppspelningsbeteende.</value>
+    <value>Latar depan: Ringan, hanya mencek satu proses yang tardapat di layar depan untuk menentukan tingkah laku pemutaran wallpaper.
+Semua proses: Lebih berat, memindai semua proses untuk menentukan tingkah laku pemutaran</value>
   </data>
   <data name="TipStreamWallpaperDetect" xml:space="preserve">
-    <value>Om videoström änk upptäcks, använd videospelaren istället för att ladda webbsidan.</value>
+    <value>Jika tautan stream video yang didukung terdekteksi, gunakan pemutar video daripada memuat halaman web</value>
   </data>
   <data name="TipStreamWallpaperVideoQuality" xml:space="preserve">
-    <value>Välj önskad videokvalitet för online-strömmar.</value>
+    <value>Pilih kualitas video yang diinginkan untuk stream daring.</value>
   </data>
   <data name="TipTileSize" xml:space="preserve">
-    <value>Storlek på tapetplattorna i biblioteket.</value>
+    <value>Ukuran wallpaper di kolom pustaka.</value>
   </data>
   <data name="TipUIMode" xml:space="preserve">
-    <value>För Lite-end-system väljer du Lite-läge.</value>
+    <value>Untuk sistem low-end pilih mode ringan.</value>
   </data>
   <data name="TipVideoPlayer" xml:space="preserve">
-    <value>Välj den spelare som används för videotapet.</value>
+    <value>Pilih pemutar yang akan digunakan untuk wallpaper video.</value>
   </data>
   <data name="TipWallpaperDir" xml:space="preserve">
-    <value>Sökväg som används för att lagra tapetfiler.</value>
+    <value>Lokasi yang digunakan untuk menyimpan file wallpaper.</value>
+  </data>
+  <data name="TipWallpaperFit" xml:space="preserve">
+    <value>Algoritma skala wallpaper.</value>
   </data>
   <data name="TipWallpaperInput" xml:space="preserve">
-    <value>Välj sätt att interagera med tapeter.</value>
+    <value>Pilih cara untuk berinteraksi dengan wallpaper.</value>
   </data>
   <data name="TipWallpaperLayout" xml:space="preserve">
-    <value>How wallpaper is applied to connected display devices.</value>
+    <value>Bagaimana wallpaper diterapkan pada perangkat layar yang terhubung.</value>
   </data>
   <data name="TipWallpaperPlayback" xml:space="preserve">
-    <value>Pausa tapet uppspelning när skrivbordet inte är fokuserat.</value>
+    <value>Jeda pemutaran wallpaper ketika desktop sedang tidak difokuskan.</value>
   </data>
   <data name="TipWebBrowserDiskCache" xml:space="preserve">
-    <value>Lagra tillfälliga filer på disken istället för minne, inställningarna återställs när webbläsaren startas om.</value>
+    <value>Simpan file sementara di harddisk daripada ram, pengaturan dikembalikan saat browser dimulai kembali.</value>
   </data>
   <data name="TipWebBrowserEngine" xml:space="preserve">
-    <value>CEF(Chromium Embedded Framework är en lätt krommotor.
-Edge är den inbyggda webbvisningen av Windows 10.</value>
+    <value>CEF(Chromium Embedded Framework) adalah mesin chromium yang ringan. Edge adalah tampilan web bawaan dari windows 10.</value>
   </data>
   <data name="TipWindowsStartup" xml:space="preserve">
-    <value>Lively måste köras i bakgrunden för uppspelning av tapeter.</value>
+    <value>Lively harus berjalan di latar belakang untuk memutar wallpaper.</value>
   </data>
   <data name="TitleAbout" xml:space="preserve">
-    <value>Om</value>
+    <value>Tentang</value>
   </data>
   <data name="TitleAddWallpaper" xml:space="preserve">
-    <value>Lägg till tapet</value>
+    <value>Tambahkan Wallpaper</value>
   </data>
   <data name="TitleAppFocus" xml:space="preserve">
-    <value>Program fokuserade</value>
+    <value>Aplikasi yang Difokuskan</value>
   </data>
   <data name="TitleAppFullScreen" xml:space="preserve">
-    <value>Program Hellskärm</value>
+    <value>Aplikasi Fullscreen</value>
   </data>
   <data name="TitleAppName" xml:space="preserve">
-    <value>Lively Tapet</value>
+    <value>Lively Wallpaper</value>
   </data>
   <data name="TitleAppRules" xml:space="preserve">
-    <value>Programregler</value>
+    <value>Peraturan Aplikasi</value>
   </data>
   <data name="TitleAppTheme" xml:space="preserve">
     <value>Tema</value>
   </data>
   <data name="TitleAudio" xml:space="preserve">
-    <value>ljud</value>
+    <value>Suara</value>
+  </data>
+  <data name="TitleAudioMaster" xml:space="preserve">
+    <value>Master Volume</value>
   </data>
   <data name="TitleAudioPlayOnScreen" xml:space="preserve">
-    <value>Spela ljud på skärmen</value>
+    <value>Putar audio pada layar</value>
   </data>
   <data name="TitleBatteryPower" xml:space="preserve">
-    <value>När du är på batteriström</value>
+    <value>Ketika Pada Daya Baterai</value>
   </data>
   <data name="TitleBrowseFile" xml:space="preserve">
-    <value>Bläddra efter video, gif, webbsida ... fil för att ställa in som tapet</value>
+    <value>Telusuri file video, gif, halaman web untuk dijadikan sebagai wallpaper.</value>
   </data>
   <data name="TitleBrowserDebuggingPort" xml:space="preserve">
-    <value>Debuggings Port</value>
+    <value>Port Debug</value>
   </data>
   <data name="TitleCommunity" xml:space="preserve">
-    <value>Community</value>
+    <value>Komunitas</value>
+  </data>
+  <data name="TitleDebug" xml:space="preserve">
+    <value>Debug</value>
   </data>
   <data name="TitleDeleteConfirmation" xml:space="preserve">
-    <value>Bekräfta radering</value>
+    <value>Konfirmasi Penghapusan</value>
   </data>
   <data name="TitleDisplayPauseRule" xml:space="preserve">
-    <value>Visa pausregel</value>
+    <value>Peraturan Jeda Per-layar</value>
   </data>
   <data name="TitleDocumentation" xml:space="preserve">
-    <value>Documentation</value>
+    <value>Dokumentasi</value>
   </data>
   <data name="TitleEnterUrl" xml:space="preserve">
-    <value>Enter URL</value>
+    <value>Masukkan URL</value>
   </data>
   <data name="TitleGeneral" xml:space="preserve">
-    <value>Allmänt</value>
+    <value>Umum</value>
   </data>
   <data name="TitleHelp" xml:space="preserve">
-    <value>Hjälp</value>
+    <value>Bantuan</value>
   </data>
   <data name="TitleHideSysTray" xml:space="preserve">
-    <value>Systemfälts ikon</value>
+    <value>Ikon System-tray</value>
   </data>
   <data name="TitleInteraction" xml:space="preserve">
-    <value>interaktion</value>
+    <value>Interaksi</value>
   </data>
   <data name="TitleLanguage" xml:space="preserve">
-    <value>Språk</value>
+    <value>Bahasa</value>
   </data>
   <data name="TitleLibrary" xml:space="preserve">
-    <value>Bibliotek</value>
+    <value>Pustaka</value>
   </data>
   <data name="TitleLivelySetup" xml:space="preserve">
-    <value>Lively Uppstart</value>
+    <value>Lively Setup</value>
   </data>
   <data name="TitleMisc" xml:space="preserve">
-    <value>Diverse</value>
+    <value>Lainnya</value>
   </data>
   <data name="TitleMute" xml:space="preserve">
-    <value>Tysta</value>
+    <value>Senyap</value>
   </data>
   <data name="TitlePauseAlgo" xml:space="preserve">
-    <value>Pausa algoritmen</value>
+    <value>Algoritma Jeda</value>
   </data>
   <data name="TitlePerformance" xml:space="preserve">
-    <value>Prestanda</value>
+    <value>Performa</value>
   </data>
   <data name="TitlePlaylist" xml:space="preserve">
-    <value>Spellista</value>
+    <value>Daftar Putar</value>
   </data>
   <data name="TitlePleaseWait" xml:space="preserve">
-    <value>Var vänlig vänta</value>
+    <value>Mohon Tunggu</value>
   </data>
   <data name="TitleScalingFit" xml:space="preserve">
-    <value>Skalning/Fyll</value>
+    <value>Skala/Pas</value>
   </data>
   <data name="TitleScreenLayout" xml:space="preserve">
-    <value>Skärmlayout</value>
+    <value>Panel Kendali</value>
   </data>
   <data name="TitleSelectFile" xml:space="preserve">
-    <value>Select File</value>
+    <value>Pilih File</value>
   </data>
   <data name="TitleSettings" xml:space="preserve">
-    <value>Inställningar</value>
+    <value>Pengaturan</value>
   </data>
   <data name="TitleStreamWallpaper" xml:space="preserve">
-    <value>Ström</value>
+    <value>Stream</value>
   </data>
   <data name="TitleStreamWallpaperDetect" xml:space="preserve">
-    <value>Upptäck strömmar</value>
+    <value>Deteksi Stream</value>
   </data>
   <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
-    <value>Videokvalitet</value>
+    <value>Kualitas Video</value>
   </data>
   <data name="TitleTileSize" xml:space="preserve">
-    <value>Rutstorlek</value>
+    <value>Ukuran Kolom</value>
   </data>
   <data name="TitleUIMode" xml:space="preserve">
-    <value>Användargränssnitt</value>
+    <value>Tampilan</value>
   </data>
   <data name="TitleVideo" xml:space="preserve">
     <value>Video</value>
   </data>
   <data name="TitleWallpaper" xml:space="preserve">
-    <value>Tapet</value>
+    <value>Wallpaper</value>
   </data>
   <data name="TitleWallpaperDir" xml:space="preserve">
-    <value>Tapetkatalog</value>
+    <value>Lokasi Wallpaper</value>
   </data>
   <data name="TitleWallpaperDirMoveExisting" xml:space="preserve">
-    <value>Move existing wallpapers to new folder</value>
-  </data>
-  <data name="TitleWallpaperInput" xml:space="preserve">
-    <value>Tapetsinmatning</value>
-  </data>
-  <data name="TitleWallpaperLayout" xml:space="preserve">
-    <value>Tapetslayout</value>
-  </data>
-  <data name="TitleWallpaperPlayback" xml:space="preserve">
-    <value>Tappetsuppspelning</value>
-  </data>
-  <data name="TitleWarning" xml:space="preserve">
-    <value>Varning</value>
-  </data>
-  <data name="TitleWebBrowser" xml:space="preserve">
-    <value>Webbläsare</value>
-  </data>
-  <data name="TitleWebBrowserDiskCache" xml:space="preserve">
-    <value>Diskcache</value>
-  </data>
-  <data name="TitleWebBrowserEngine" xml:space="preserve">
-    <value>Motor</value>
-  </data>
-  <data name="TitleWebpageLoad" xml:space="preserve">
-    <value>Ladda webbsidan</value>
-  </data>
-  <data name="TitleWindowsStartup" xml:space="preserve">
-    <value>Starta med Windows</value>
-  </data>
-  <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
-    <value>Are you sure you want to delete this wallpaper from the Library?</value>
-  </data>
-  <data name="TipAudioMaster" xml:space="preserve">
-    <value>Volume level of all wallpapers.</value>
-  </data>
-  <data name="TitleAudioMaster" xml:space="preserve">
-    <value>Master Volume</value>
-  </data>
-  <data name="TextWallpaperFitFill" xml:space="preserve">
-    <value>Fill</value>
-  </data>
-  <data name="TextWallpaperFitNone" xml:space="preserve">
-    <value>None</value>
-  </data>
-  <data name="TextWallpaperFitUniform" xml:space="preserve">
-    <value>Uniform</value>
-  </data>
-  <data name="TextWallpaperFitUniformToFill" xml:space="preserve">
-    <value>Uniform Fill</value>
-  </data>
-  <data name="TipWallpaperFit" xml:space="preserve">
-    <value>Wallpaper scaling algorithm.</value>
+    <value>Pindahkan wallpaper yang sudah ada pada folder baru</value>
   </data>
   <data name="TitleWallpaperFit" xml:space="preserve">
-    <value>Choose a fit</value>
+    <value>Pilih yang pas</value>
   </data>
-  <data name="TextPreviewWallpaper" xml:space="preserve">
-    <value>Preview Wallpaper</value>
+  <data name="TitleWallpaperInput" xml:space="preserve">
+    <value>Masukan Wallpaper</value>
   </data>
-  <data name="TextAllFiles" xml:space="preserve">
-    <value>All Files</value>
+  <data name="TitleWallpaperLayout" xml:space="preserve">
+    <value>Metode Penyimpanan</value>
   </data>
-  <data name="TitleDebug" xml:space="preserve">
-    <value>Debug</value>
+  <data name="TitleWallpaperPlayback" xml:space="preserve">
+    <value>Pemutaran Wallpaper</value>
   </data>
-  <data name="TipDebug" xml:space="preserve">
-    <value>Show developer menu</value>
+  <data name="TitleWarning" xml:space="preserve">
+    <value>Peringatan</value>
   </data>
-  <data name="TextFileNotFound" xml:space="preserve">
-    <value>File not found</value>
+  <data name="TitleWebBrowser" xml:space="preserve">
+    <value>Web Browser</value>
   </data>
-  <data name="TextPicture" xml:space="preserve">
-    <value>Picture</value>
+  <data name="TitleWebBrowserDiskCache" xml:space="preserve">
+    <value>Disk cache</value>
   </data>
-  <data name="TextUnsupportedFile" xml:space="preserve">
-    <value>File format not supported</value>
+  <data name="TitleWebBrowserEngine" xml:space="preserve">
+    <value>Mesin</value>
   </data>
-  <data name="TextProcessingWallpaper" xml:space="preserve">
-    <value>Processing</value>
-  </data> 
+  <data name="TitleWebpageLoad" xml:space="preserve">
+    <value>Muat Halaman Web</value>
+  </data>
+  <data name="TitleWindowsStartup" xml:space="preserve">
+    <value>Mulai bersama Windows</value>
+  </data>
   <data name="TextTitle" xml:space="preserve">
     <value>Title</value>
   </data>
@@ -720,5 +719,5 @@ Edge är den inbyggda webbvisningen av Windows 10.</value>
   </data>
   <data name="TextCreatePreview" xml:space="preserve">
     <value>Create Preview</value>
-  </data>   
+  </data>  
 </root>

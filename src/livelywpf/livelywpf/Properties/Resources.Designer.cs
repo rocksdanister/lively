@@ -352,6 +352,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string TextCancel {
+            get {
+                return ResourceManager.GetString("TextCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Close.
         /// </summary>
         public static string TextClose {
@@ -388,6 +397,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create Preview.
+        /// </summary>
+        public static string TextCreatePreview {
+            get {
+                return ResourceManager.GetString("TextCreatePreview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Customise.
         /// </summary>
         public static string TextCustomise {
@@ -411,6 +429,15 @@ namespace livelywpf.Properties {
         public static string TextDeleteWallpaper {
             get {
                 return ResourceManager.GetString("TextDeleteWallpaper", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        public static string TextDescription {
+            get {
+                return ResourceManager.GetString("TextDescription", resourceCulture);
             }
         }
         
@@ -582,6 +609,15 @@ namespace livelywpf.Properties {
         public static string TextOff {
             get {
                 return ResourceManager.GetString("TextOff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        public static string TextOK {
+            get {
+                return ResourceManager.GetString("TextOK", resourceCulture);
             }
         }
         
@@ -816,6 +852,15 @@ namespace livelywpf.Properties {
         public static string TextTileSizeSmall {
             get {
                 return ResourceManager.GetString("TextTileSizeSmall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title.
+        /// </summary>
+        public static string TextTitle {
+            get {
+                return ResourceManager.GetString("TextTitle", resourceCulture);
             }
         }
         

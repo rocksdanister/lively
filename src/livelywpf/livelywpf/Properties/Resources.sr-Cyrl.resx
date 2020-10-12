@@ -118,594 +118,577 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DescriptionAddWallpaper" xml:space="preserve">
-    <value>Select a file or specify a website url to set as a wallpaper.</value>
+    <value>Изабери фајл или напиши адресу сајта од позадине.</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
-    <value>Tapet uppspelnings beteende baserat på aktiva program.</value>
+    <value>Позадинско плеј-бек понашање базирано од апликације.</value>
   </data>
   <data name="DescriptionCancelQuestion" xml:space="preserve">
-    <value>Är du säker på att du vill avbryta?</value>
+    <value>Да ли си сигуран да желиш отказати?</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
-    <value>Är du säker på att du vill radera dena tapet från disken?</value>
-  </data>
-  <data name="DescriptionDragDropFIle" xml:space="preserve">
-    <value>Bara dra och släpp filer till biblioteket.</value>
-  </data>
-  <data name="DescriptionExternalAppWarning" xml:space="preserve">
-    <value>Du håller på att öppna ett externt program som din tapet.
-Skadliga program kan inehåla virus som kan skade ditt system. Fortsätt bara om du litar på programet.</value>
-  </data>
-  <data name="DescriptionMinimizedTray" xml:space="preserve">
-    <value>Livley är minimerat till systemfältet högerclicka på livley för att fortsätta.</value>
-  </data>
-  <data name="DescriptionPleaseRestartLively" xml:space="preserve">
-    <value>Please restart Lively for settings to take effect.</value>
-  </data>
-  <data name="DescriptionRecordStart" xml:space="preserve">
-    <value>Tryck för att börja spela in.</value>
-  </data>
-  <data name="DescriptionRestoringWallpaper" xml:space="preserve">
-    <value>Håller på att åtterställa tidigare tapeter var snäll och vänta...</value>
-  </data>
-  <data name="DescriptionScreenLayout" xml:space="preserve">
-    <value>Choose Display</value>
-  </data>
-  <data name="DescriptionUpdateAvailable" xml:space="preserve">
-    <value>En ny verision är tillgänglig.</value>
-  </data>
-  <data name="DescriptionWebpageLoad" xml:space="preserve">
-    <value>Skriv en hemplats länk att lada shadertoy.com shader-länkar stöds.</value>
-  </data>
-  <data name="DescriptionWelcomeWizard" xml:space="preserve">
-    <value>Den wizarden kommer få dig startad men att instalera Livley.</value>
-  </data>
-  <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
-    <value>Updatering mislyckades försök instalera instaleraren från:; 
-https://github.com/rocksdanister/lively/releases</value>
-  </data>
-  <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
-    <value>Skadad tapet fil försök att lada ner den igen</value>
-  </data>
-  <data name="LivelyExceptionGeneral" xml:space="preserve">
-    <value>Oops... Ser ut som att något gick fell :(
-för att förstå fellet dela log filen med uttveklaren
-Instrukturer för att dela log filen
-https://github.com/rocksdanister/lively/wiki</value>
-  </data>
-  <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
-    <value>Livley kan inte fungera ordentligt med Windows Hög Kontrast läge på! Försök att stänga av det och försöka igen.</value>
-  </data>
-  <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
-    <value>Media playback failed :(
-Try changing the videoplayer in lively settings.
-
-In order to better understand this error and fix the issue, share the log file with the developer.
-Instructions for sharing log file:
-https://github.com/rocksdanister/lively/wiki</value>
-  </data>
-  <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
-    <value>Inte en Livley tapet fil.</value>
-  </data>
-  <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
-    <value>Lively was not closed properly, starting in safe mode.
-Do you wish to restore previously running wallpapers?</value>
-  </data>
-  <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
-    <value>It looks like some settings needs to be set to make Lively work:-  
-1. Open This PC(My Computer)
-2. Right-click empty area
-3. Select Properties
-4. Select Advanced System Settings
-5. Under Performance tab select Settings
-6. Enable Animate controls and elements inside windows and Apply.
-
-If Windows 7 just set - Adjust for best appearance &amp;amp; Apply.
-If still not working, close &amp;amp; start Lively again/ restart windows.
-(Does not work in some insider windows 10 builds)</value>
-  </data>
-  <data name="TextAdd" xml:space="preserve">
-    <value>Lägg till</value>
-  </data>
-  <data name="TextApplication" xml:space="preserve">
-    <value>Application</value>
-  </data>
-  <data name="TextAttribution" xml:space="preserve">
-    <value>Attribution</value>
-  </data>
-  <data name="TextAuthor" xml:space="preserve">
-    <value>Skapare</value>
-  </data>
-  <data name="TextBack" xml:space="preserve">
-    <value>Tillbaka</value>
-  </data>
-  <data name="TextBrowse" xml:space="preserve">
-    <value>Browse</value>
-  </data>
-  <data name="TextClose" xml:space="preserve">
-    <value>Close</value>
-  </data>
-  <data name="TextCloseWallpapers" xml:space="preserve">
-    <value>Stäng Tapeter</value>
-  </data>
-  <data name="TextCompleted" xml:space="preserve">
-    <value>Avslutad!</value>
-  </data>
-  <data name="TextConvertVideo" xml:space="preserve">
-    <value>Konvertera till video</value>
-  </data>
-  <data name="TextCustomise" xml:space="preserve">
-    <value>Customise</value>
-  </data>
-  <data name="TextCustomiseWallpaper" xml:space="preserve">
-    <value>Anpassa tapeter</value>
-  </data>
-  <data name="TextDeleteWallpaper" xml:space="preserve">
-    <value>Ta bort tapet</value>
-  </data>
-  <data name="TextDisplayPauseRuleAllScreen" xml:space="preserve">
-    <value>Alla skärmar</value>
-  </data>
-  <data name="TextDisplayPauseRulePerScreen" xml:space="preserve">
-    <value>Per skärm</value>
-  </data>
-  <data name="TextDownload" xml:space="preserve">
-    <value>Ladda ner</value>
-  </data>
-  <data name="TextError" xml:space="preserve">
-    <value>Fel</value>
-  </data>
-  <data name="TextExit" xml:space="preserve">
-    <value>Stäng</value>
-  </data>
-  <data name="TextExportWallpaperZip" xml:space="preserve">
-    <value>Exportera lively .zip</value>
-  </data>
-  <data name="TextGIF" xml:space="preserve">
-    <value>Animerad GIF</value>
-  </data>
-  <data name="TextGo" xml:space="preserve">
-    <value>GO</value>
-  </data>
-  <data name="TextHelpTranslate" xml:space="preserve">
-    <value>Help translate Lively.</value>
-  </data>
-  <data name="TextInstall" xml:space="preserve">
-    <value>Installera</value>
-  </data>
-  <data name="TextKeyboard" xml:space="preserve">
-    <value>Keyboard</value>
-  </data>
-  <data name="TextmoreInfo" xml:space="preserve">
-    <value>Information</value>
-  </data>
-  <data name="TextMoreWallpapers" xml:space="preserve">
-    <value>Mer tapeter</value>
-  </data>
-  <data name="TextMouse" xml:space="preserve">
-    <value>Mouse</value>
-  </data>
-  <data name="TextMouseInteractOnDesktop" xml:space="preserve">
-    <value>Mus interaktion när program är fokuserade</value>
-  </data>
-  <data name="TextNext" xml:space="preserve">
-    <value>Nästa</value>
-  </data>
-  <data name="TextNo" xml:space="preserve">
-    <value>Nej</value>
-  </data>
-  <data name="TextOff" xml:space="preserve">
-    <value>OFF</value>
-  </data>
-  <data name="TextOn" xml:space="preserve">
-    <value>ON</value>
-  </data>
-  <data name="TextOnline" xml:space="preserve">
-    <value>Online</value>
-  </data>
-  <data name="TextOpenLively" xml:space="preserve">
-    <value>Öpna Lively</value>
-  </data>
-  <data name="TextPauseAlgoAllProcess" xml:space="preserve">
-    <value>Alla processer</value>
-  </data>
-  <data name="TextPauseAlgoForegroundProcess" xml:space="preserve">
-    <value>Förgrunds processer</value>
-  </data>
-  <data name="TextPauseWallpapers" xml:space="preserve">
-    <value>Pause tapeter</value>
-  </data>
-  <data name="TextPerformanceKill" xml:space="preserve">
-    <value>Döda</value>
-  </data>
-  <data name="TextPerformanceNone" xml:space="preserve">
-    <value>Inget</value>
-  </data>
-  <data name="TextPerformancePause" xml:space="preserve">
-    <value>Pausa</value>
-  </data>
-  <data name="TextRemove" xml:space="preserve">
-    <value>Radera</value>
-  </data>
-  <data name="TextRule" xml:space="preserve">
-    <value>Regel</value>
-  </data>
-  <data name="TextScreen" xml:space="preserve">
-    <value>Skärm</value>
-  </data>
-  <data name="TextSearch" xml:space="preserve">
-    <value>Sök</value>
-  </data>
-  <data name="TextSetWallpaper" xml:space="preserve">
-    <value>Sät till tapet</value>
-  </data>
-  <data name="TextShowOnDisk" xml:space="preserve">
-    <value>Visa på disk</value>
-  </data>
-  <data name="TextSource" xml:space="preserve">
-    <value>Källa</value>
-  </data>
-  <data name="TextStart" xml:space="preserve">
-    <value>Start</value>
-  </data>
-  <data name="TextStop" xml:space="preserve">
-    <value>Stop</value>
-  </data>
-  <data name="TextSupport" xml:space="preserve">
-    <value>Support</value>
-  </data>
-  <data name="TextTags" xml:space="preserve">
-    <value>Etiketter</value>
-  </data>
-  <data name="TextTileSizeLarge" xml:space="preserve">
-    <value>Stor</value>
-  </data>
-  <data name="TextTileSizeNormal" xml:space="preserve">
-    <value>Normal</value>
-  </data>
-  <data name="TextTileSizeSmall" xml:space="preserve">
-    <value>Liten</value>
-  </data>
-  <data name="TextUIHeadless" xml:space="preserve">
-    <value>Huvudlös</value>
-  </data>
-  <data name="TextUILite" xml:space="preserve">
-    <value>Lätt</value>
-  </data>
-  <data name="TextUINormal" xml:space="preserve">
-    <value>Normal</value>
-  </data>
-  <data name="TextUpdateAvailable" xml:space="preserve">
-    <value>Uppdatering tillgänglig!</value>
-  </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
-    <value>Sök efter uppdatering</value>
-  </data>
-  <data name="TextupdateCheckFail" xml:space="preserve">
-    <value>Det gick inte att kontrollera effter programuppdateringar</value>
-  </data>
-  <data name="TextUpdateChecking" xml:space="preserve">
-    <value>Kontrollerar för uppdatering</value>
-  </data>
-  <data name="TextUpdateUptodate" xml:space="preserve">
-    <value>Programvaran är aktuell!</value>
-  </data>
-  <data name="TextVideo" xml:space="preserve">
-    <value>Video</value>
-  </data>
-  <data name="TextWallpaperLayoutDuplicate" xml:space="preserve">
-    <value>Duplicera samma tapet</value>
-  </data>
-  <data name="TextWallpaperLayoutPerScreen" xml:space="preserve">
-    <value>Selected screen only</value>
-  </data>
-  <data name="TextWallpaperLayoutSpan" xml:space="preserve">
-    <value>Spänn över skärmar</value>
-  </data>
-  <data name="TextWallpaperType" xml:space="preserve">
-    <value>Typ</value>
-  </data>
-  <data name="TextWebsite" xml:space="preserve">
-    <value>Hemsida</value>
-  </data>
-  <data name="TextWebStream" xml:space="preserve">
-    <value>Web Stream</value>
-  </data>
-  <data name="TextWelcome" xml:space="preserve">
-    <value>Välkommen</value>
-  </data>
-  <data name="TextYes" xml:space="preserve">
-    <value>Ja</value>
-  </data>
-  <data name="TileVideoPlayer" xml:space="preserve">
-    <value>Videospelare</value>
-  </data>
-  <data name="TipAddWallpaperFileBrowse" xml:space="preserve">
-    <value>Set all supported file types as wallpaper.</value>
-  </data>
-  <data name="TipAddWallpaperURL" xml:space="preserve">
-    <value>Set the web page of the URL you entered as wallpaper.</value>
-  </data>
-  <data name="TipAppFocus" xml:space="preserve">
-    <value>Ställ in vad du ska göra när ett program står i fokus.</value>
-  </data>
-  <data name="TipAppFullScreen" xml:space="preserve">
-    <value>Ställ in vad du ska göra när helskärmsspel/applikationer körs.</value>
-  </data>
-  <data name="TipAppRules" xml:space="preserve">
-    <value>Ställ in olika tapet suppspelningsregler baserat på program som körs.</value>
-  </data>
-  <data name="TipAppTheme" xml:space="preserve">
-    <value>Lively anpassar sig till inställningarna för systemtema för att ändra utseendet</value>
-  </data>
-  <data name="TipBatteryPower" xml:space="preserve">
-    <value>(Endast för batteridrivna system) Ändra uppspelning när AC ström är frånkopplad.</value>
-  </data>
-  <data name="TipBrowserDebuggingPort" xml:space="preserve">
-    <value>Ange porten för felsökning av tapet på webbsidan, omstart av webbläsaren krävs för att ändringarna ska träda i kraft.
-När du är redo navigerar du till http://localhost:portnumber för att komma åt utvecklarkonsolen.</value>
-  </data>
-  <data name="TipDisplayPauseRule" xml:space="preserve">
-    <value>Per: Pausa tapeter endast på skärmen där applikationen är fokuserad/fullskärm.
-Allt: Pausa tapeter på alla skärmar om någon applikation är fokuserad/fullskärm.</value>
-  </data>
-  <data name="TipHideSysTray" xml:space="preserve">
-    <value>Systemfälts ikon synligt, Livley kommer att fortsäta köra med ikonen gömd</value>
-  </data>
-  <data name="TipLanguage" xml:space="preserve">
-    <value>Livley kommer starta om för att tillämpa det nya språket</value>
-  </data>
-  <data name="TipLivelySetupOnClose" xml:space="preserve">
-    <value>Avsluta installationen för att fortsätta.</value>
-  </data>
-  <data name="TipPauseAlgorithm" xml:space="preserve">
-    <value>Förgrund: Lätt, kontrollerar bara den enda processen som är i förgrunden för att bestämma bakgrundsuppspelningsbeteende.
-Alla proceser: Tyngre, Skannar alla proceser för att bestämma uppspelningsbeteende.</value>
-  </data>
-  <data name="TipStreamWallpaperDetect" xml:space="preserve">
-    <value>Om videoström änk upptäcks, använd videospelaren istället för att ladda webbsidan.</value>
-  </data>
-  <data name="TipStreamWallpaperVideoQuality" xml:space="preserve">
-    <value>Välj önskad videokvalitet för online-strömmar.</value>
-  </data>
-  <data name="TipTileSize" xml:space="preserve">
-    <value>Storlek på tapetplattorna i biblioteket.</value>
-  </data>
-  <data name="TipUIMode" xml:space="preserve">
-    <value>För Lite-end-system väljer du Lite-läge.</value>
-  </data>
-  <data name="TipVideoPlayer" xml:space="preserve">
-    <value>Välj den spelare som används för videotapet.</value>
-  </data>
-  <data name="TipWallpaperDir" xml:space="preserve">
-    <value>Sökväg som används för att lagra tapetfiler.</value>
-  </data>
-  <data name="TipWallpaperInput" xml:space="preserve">
-    <value>Välj sätt att interagera med tapeter.</value>
-  </data>
-  <data name="TipWallpaperLayout" xml:space="preserve">
-    <value>How wallpaper is applied to connected display devices.</value>
-  </data>
-  <data name="TipWallpaperPlayback" xml:space="preserve">
-    <value>Pausa tapet uppspelning när skrivbordet inte är fokuserat.</value>
-  </data>
-  <data name="TipWebBrowserDiskCache" xml:space="preserve">
-    <value>Lagra tillfälliga filer på disken istället för minne, inställningarna återställs när webbläsaren startas om.</value>
-  </data>
-  <data name="TipWebBrowserEngine" xml:space="preserve">
-    <value>CEF(Chromium Embedded Framework är en lätt krommotor.
-Edge är den inbyggda webbvisningen av Windows 10.</value>
-  </data>
-  <data name="TipWindowsStartup" xml:space="preserve">
-    <value>Lively måste köras i bakgrunden för uppspelning av tapeter.</value>
-  </data>
-  <data name="TitleAbout" xml:space="preserve">
-    <value>Om</value>
-  </data>
-  <data name="TitleAddWallpaper" xml:space="preserve">
-    <value>Lägg till tapet</value>
-  </data>
-  <data name="TitleAppFocus" xml:space="preserve">
-    <value>Program fokuserade</value>
-  </data>
-  <data name="TitleAppFullScreen" xml:space="preserve">
-    <value>Program Hellskärm</value>
-  </data>
-  <data name="TitleAppName" xml:space="preserve">
-    <value>Lively Tapet</value>
-  </data>
-  <data name="TitleAppRules" xml:space="preserve">
-    <value>Programregler</value>
-  </data>
-  <data name="TitleAppTheme" xml:space="preserve">
-    <value>Tema</value>
-  </data>
-  <data name="TitleAudio" xml:space="preserve">
-    <value>ljud</value>
-  </data>
-  <data name="TitleAudioPlayOnScreen" xml:space="preserve">
-    <value>Spela ljud på skärmen</value>
-  </data>
-  <data name="TitleBatteryPower" xml:space="preserve">
-    <value>När du är på batteriström</value>
-  </data>
-  <data name="TitleBrowseFile" xml:space="preserve">
-    <value>Bläddra efter video, gif, webbsida ... fil för att ställa in som tapet</value>
-  </data>
-  <data name="TitleBrowserDebuggingPort" xml:space="preserve">
-    <value>Debuggings Port</value>
-  </data>
-  <data name="TitleCommunity" xml:space="preserve">
-    <value>Community</value>
-  </data>
-  <data name="TitleDeleteConfirmation" xml:space="preserve">
-    <value>Bekräfta radering</value>
-  </data>
-  <data name="TitleDisplayPauseRule" xml:space="preserve">
-    <value>Visa pausregel</value>
-  </data>
-  <data name="TitleDocumentation" xml:space="preserve">
-    <value>Documentation</value>
-  </data>
-  <data name="TitleEnterUrl" xml:space="preserve">
-    <value>Enter URL</value>
-  </data>
-  <data name="TitleGeneral" xml:space="preserve">
-    <value>Allmänt</value>
-  </data>
-  <data name="TitleHelp" xml:space="preserve">
-    <value>Hjälp</value>
-  </data>
-  <data name="TitleHideSysTray" xml:space="preserve">
-    <value>Systemfälts ikon</value>
-  </data>
-  <data name="TitleInteraction" xml:space="preserve">
-    <value>interaktion</value>
-  </data>
-  <data name="TitleLanguage" xml:space="preserve">
-    <value>Språk</value>
-  </data>
-  <data name="TitleLibrary" xml:space="preserve">
-    <value>Bibliotek</value>
-  </data>
-  <data name="TitleLivelySetup" xml:space="preserve">
-    <value>Lively Uppstart</value>
-  </data>
-  <data name="TitleMisc" xml:space="preserve">
-    <value>Diverse</value>
-  </data>
-  <data name="TitleMute" xml:space="preserve">
-    <value>Tysta</value>
-  </data>
-  <data name="TitlePauseAlgo" xml:space="preserve">
-    <value>Pausa algoritmen</value>
-  </data>
-  <data name="TitlePerformance" xml:space="preserve">
-    <value>Prestanda</value>
-  </data>
-  <data name="TitlePlaylist" xml:space="preserve">
-    <value>Spellista</value>
-  </data>
-  <data name="TitlePleaseWait" xml:space="preserve">
-    <value>Var vänlig vänta</value>
-  </data>
-  <data name="TitleScalingFit" xml:space="preserve">
-    <value>Skalning/Fyll</value>
-  </data>
-  <data name="TitleScreenLayout" xml:space="preserve">
-    <value>Skärmlayout</value>
-  </data>
-  <data name="TitleSelectFile" xml:space="preserve">
-    <value>Select File</value>
-  </data>
-  <data name="TitleSettings" xml:space="preserve">
-    <value>Inställningar</value>
-  </data>
-  <data name="TitleStreamWallpaper" xml:space="preserve">
-    <value>Ström</value>
-  </data>
-  <data name="TitleStreamWallpaperDetect" xml:space="preserve">
-    <value>Upptäck strömmar</value>
-  </data>
-  <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
-    <value>Videokvalitet</value>
-  </data>
-  <data name="TitleTileSize" xml:space="preserve">
-    <value>Rutstorlek</value>
-  </data>
-  <data name="TitleUIMode" xml:space="preserve">
-    <value>Användargränssnitt</value>
-  </data>
-  <data name="TitleVideo" xml:space="preserve">
-    <value>Video</value>
-  </data>
-  <data name="TitleWallpaper" xml:space="preserve">
-    <value>Tapet</value>
-  </data>
-  <data name="TitleWallpaperDir" xml:space="preserve">
-    <value>Tapetkatalog</value>
-  </data>
-  <data name="TitleWallpaperDirMoveExisting" xml:space="preserve">
-    <value>Move existing wallpapers to new folder</value>
-  </data>
-  <data name="TitleWallpaperInput" xml:space="preserve">
-    <value>Tapetsinmatning</value>
-  </data>
-  <data name="TitleWallpaperLayout" xml:space="preserve">
-    <value>Tapetslayout</value>
-  </data>
-  <data name="TitleWallpaperPlayback" xml:space="preserve">
-    <value>Tappetsuppspelning</value>
-  </data>
-  <data name="TitleWarning" xml:space="preserve">
-    <value>Varning</value>
-  </data>
-  <data name="TitleWebBrowser" xml:space="preserve">
-    <value>Webbläsare</value>
-  </data>
-  <data name="TitleWebBrowserDiskCache" xml:space="preserve">
-    <value>Diskcache</value>
-  </data>
-  <data name="TitleWebBrowserEngine" xml:space="preserve">
-    <value>Motor</value>
-  </data>
-  <data name="TitleWebpageLoad" xml:space="preserve">
-    <value>Ladda webbsidan</value>
-  </data>
-  <data name="TitleWindowsStartup" xml:space="preserve">
-    <value>Starta med Windows</value>
+    <value>Да ли си сигуран да желиш да заувек избришеш ову позадину са диска?</value>
   </data>
   <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
-    <value>Are you sure you want to delete this wallpaper from the Library?</value>
+    <value>Да ли си сигуран да желиш да избришеш ову позадину из библиотеке?</value>
   </data>
-  <data name="TipAudioMaster" xml:space="preserve">
-    <value>Volume level of all wallpapers.</value>
+  <data name="DescriptionDragDropFIle" xml:space="preserve">
+    <value>Једноставно превуци и пусти фајл у библиотеку.</value>
   </data>
-  <data name="TitleAudioMaster" xml:space="preserve">
-    <value>Master Volume</value>
+  <data name="DescriptionExternalAppWarning" xml:space="preserve">
+    <value>Отвараш спољашну апликацију као позадину.Злонамерне апликације могу да убаце вирусе... и оштете ваш рачунар.Једино прихватајте ако апликација долази од провереног извора.</value>
   </data>
-  <data name="TextWallpaperFitFill" xml:space="preserve">
-    <value>Fill</value>
+  <data name="DescriptionMinimizedTray" xml:space="preserve">
+    <value>Ливелy је минимизиран у рачунару, десним кликом на ливелy иконицу како би наставио.</value>
   </data>
-  <data name="TextWallpaperFitNone" xml:space="preserve">
-    <value>None</value>
+  <data name="DescriptionPleaseRestartLively" xml:space="preserve">
+    <value>Ливелy је минимизиран у рачунару, десним кликом на ливелy иконицу како би наставио.</value>
   </data>
-  <data name="TextWallpaperFitUniform" xml:space="preserve">
-    <value>Uniform</value>
+  <data name="DescriptionRecordStart" xml:space="preserve">
+    <value>Стисни да започнеш снимање.</value>
   </data>
-  <data name="TextWallpaperFitUniformToFill" xml:space="preserve">
-    <value>Uniform Fill</value>
+  <data name="DescriptionRestoringWallpaper" xml:space="preserve">
+    <value>Тренутно враћам претходне позадине, молим вас сачекајте...</value>
   </data>
-  <data name="TipWallpaperFit" xml:space="preserve">
-    <value>Wallpaper scaling algorithm.</value>
+  <data name="DescriptionScreenLayout" xml:space="preserve">
+    <value>Изабери монитор</value>
   </data>
-  <data name="TitleWallpaperFit" xml:space="preserve">
-    <value>Choose a fit</value>
+  <data name="DescriptionUpdateAvailable" xml:space="preserve">
+    <value>Нова верзија софтвера је доступна!</value>
   </data>
-  <data name="TextPreviewWallpaper" xml:space="preserve">
-    <value>Preview Wallpaper</value>
+  <data name="DescriptionWebpageLoad" xml:space="preserve">
+    <value>Унеси линк вебсајта за учитавање, shadertoy.com линкови су подрзани.</value>
+  </data>
+  <data name="DescriptionWelcomeWizard" xml:space="preserve">
+    <value>Ово ће вам помоћи да започнете са Ливелy.</value>
+  </data>
+  <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
+    <value>Неуспешна надоградња; покусај да скинес инсталер sa:https://github.com/rocksdanister/lively/releases</value>
+  </data>
+  <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
+    <value>Оштећен позадински фајл, покушај да поново преузмеш.</value>
+  </data>
+  <data name="LivelyExceptionGeneral" xml:space="preserve">
+    <value>Упс... Изгледа да је нешто направило грешку :(Да би боље разумео ову грешку и да решис проблем, подели евиденцију апликације(лог) са развијачем апликације.Упутства за поделу евиденције:https://github.com/rocksdanister/lively/wiki</value>
+  </data>
+  <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
+    <value>Ливелy не може да ради нормлано са Њиндоњс Висок Контраст режимом!Искљуци Високи Контраст режим и покушај поново</value>
+  </data>
+  <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
+    <value>Медијски плеј-бек неуспешан :(Покушај да промениш видео-плејер у Ливелy подешавањима.Да би боље разумео проблем и могао да решиш грешку подели евиденцију(лог) фајл и пошаљи програмеру.Инструкције за дељење евиденције:https://github.com/rocksdanister/lively/wiki</value>
+  </data>
+  <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
+    <value>Није Ливелy позадински фајл.</value>
+  </data>
+  <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
+    <value>Ливелy није угашен нормално, пали се у сигурном режиму.Да ли желиш да повратиш претходну позадину?</value>
+  </data>
+  <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
+    <value>Изгледа да нека подешавања морају да се промене да би Ливелy радио:
+1. Притисни Windows дугме + R да би отворио Рун,
+2. Укукуцај SystemPropertiesPerfomance.еxe у Run, стисни "ОК" да отвориш Подешавања Перформанса.
+3. Дозволи/Провери "Animate controls and elements inside Windows" (Ако је већ штиклирано, притисни опет да онемогућиш и опет штиклирај) и пристисни "Аpply".
+4. Кликни "Apply" и онда притисни "ОК" да затвориш прозор.
+
+Ако имас Windows 7 само штиклирај - "Adjust for best appearance &amp;amp; онда "Apply".
+Ако још не ради, угаси и упали Ливелy опет/рестартуј Windows.
+(Не ради на неким Windows 10 системима)</value>
+  </data>
+  <data name="TextAdd" xml:space="preserve">
+    <value>Додај</value>
   </data>
   <data name="TextAllFiles" xml:space="preserve">
-    <value>All Files</value>
+    <value>Сви фајлови</value>
   </data>
-  <data name="TitleDebug" xml:space="preserve">
-    <value>Debug</value>
+  <data name="TextApplication" xml:space="preserve">
+    <value>Апликација</value>
   </data>
-  <data name="TipDebug" xml:space="preserve">
-    <value>Show developer menu</value>
+  <data name="TextAttribution" xml:space="preserve">
+    <value>Приписивање</value>
+  </data>
+  <data name="TextAuthor" xml:space="preserve">
+    <value>Аутор</value>
+  </data>
+  <data name="TextBack" xml:space="preserve">
+    <value>Назад</value>
+  </data>
+  <data name="TextBrowse" xml:space="preserve">
+    <value>Претражи</value>
+  </data>
+  <data name="TextClose" xml:space="preserve">
+    <value>Затвори</value>
+  </data>
+  <data name="TextCloseWallpapers" xml:space="preserve">
+    <value>Затвори позадину</value>
+  </data>
+  <data name="TextCompleted" xml:space="preserve">
+    <value>Завршено!</value>
+  </data>
+  <data name="TextConvertVideo" xml:space="preserve">
+    <value>Пребаци у видео</value>
+  </data>
+  <data name="TextCustomise" xml:space="preserve">
+    <value>Измени</value>
+  </data>
+  <data name="TextCustomiseWallpaper" xml:space="preserve">
+    <value>Измени позадину</value>
+  </data>
+  <data name="TextDeleteWallpaper" xml:space="preserve">
+    <value>Избриши позадину</value>
+  </data>
+  <data name="TextDisplayPauseRuleAllScreen" xml:space="preserve">
+    <value>Сви Екрани</value>
+  </data>
+  <data name="TextDisplayPauseRulePerScreen" xml:space="preserve">
+    <value>По екрану</value>
+  </data>
+  <data name="TextDownload" xml:space="preserve">
+    <value>Преузми</value>
+  </data>
+  <data name="TextError" xml:space="preserve">
+    <value>Грешка</value>
+  </data>
+  <data name="TextExit" xml:space="preserve">
+    <value>Изађи</value>
+  </data>
+  <data name="TextExportWallpaperZip" xml:space="preserve">
+    <value>Претвори ливелy у .зип</value>
   </data>
   <data name="TextFileNotFound" xml:space="preserve">
-    <value>File not found</value>
+    <value>Фајл није пронађен</value>
+  </data>
+  <data name="TextGIF" xml:space="preserve">
+    <value>Анимирани ГИФ</value>
+  </data>
+  <data name="TextGo" xml:space="preserve">
+    <value>Крени</value>
+  </data>
+  <data name="TextHelpTranslate" xml:space="preserve">
+    <value>Помози око превода за Ливелy</value>
+  </data>
+  <data name="TextInstall" xml:space="preserve">
+    <value>Инсталирај</value>
+  </data>
+  <data name="TextKeyboard" xml:space="preserve">
+    <value>Тастатура</value>
+  </data>
+  <data name="TextmoreInfo" xml:space="preserve">
+    <value>Информације</value>
+  </data>
+  <data name="TextMoreWallpapers" xml:space="preserve">
+    <value>Више позадина</value>
+  </data>
+  <data name="TextMouse" xml:space="preserve">
+    <value>Миш</value>
+  </data>
+  <data name="TextMouseInteractOnDesktop" xml:space="preserve">
+    <value>Утицај миша када је апликација фокусирана</value>
+  </data>
+  <data name="TextNext" xml:space="preserve">
+    <value>Следеће</value>
+  </data>
+  <data name="TextNo" xml:space="preserve">
+    <value>Не</value>
+  </data>
+  <data name="TextOff" xml:space="preserve">
+    <value>Угашено</value>
+  </data>
+  <data name="TextOn" xml:space="preserve">
+    <value>Упаљено</value>
+  </data>
+  <data name="TextOnline" xml:space="preserve">
+    <value>Повезан</value>
+  </data>
+  <data name="TextOpenLively" xml:space="preserve">
+    <value>Отвори Ливели</value>
+  </data>
+  <data name="TextPauseAlgoAllProcess" xml:space="preserve">
+    <value>Сви процеси</value>
+  </data>
+  <data name="TextPauseAlgoForegroundProcess" xml:space="preserve">
+    <value>Позадински процеси</value>
+  </data>
+  <data name="TextPauseWallpapers" xml:space="preserve">
+    <value>Паузирај позадину</value>
+  </data>
+  <data name="TextPerformanceKill" xml:space="preserve">
+    <value>Стопирај</value>
+  </data>
+  <data name="TextPerformanceNone" xml:space="preserve">
+    <value>Ништа</value>
+  </data>
+  <data name="TextPerformancePause" xml:space="preserve">
+    <value>Паузирај</value>
   </data>
   <data name="TextPicture" xml:space="preserve">
-    <value>Picture</value>
+    <value>Слика</value>
   </data>
-  <data name="TextUnsupportedFile" xml:space="preserve">
-    <value>File format not supported</value>
+  <data name="TextPreviewWallpaper" xml:space="preserve">
+    <value>Преглед позадине</value>
   </data>
   <data name="TextProcessingWallpaper" xml:space="preserve">
-    <value>Processing</value>
-  </data> 
+    <value>Процесовање</value>
+  </data>
+  <data name="TextRemove" xml:space="preserve">
+    <value>Избриши</value>
+  </data>
+  <data name="TextRule" xml:space="preserve">
+    <value>Правило</value>
+  </data>
+  <data name="TextScreen" xml:space="preserve">
+    <value>Екран</value>
+  </data>
+  <data name="TextSearch" xml:space="preserve">
+    <value>Претражи</value>
+  </data>
+  <data name="TextSetWallpaper" xml:space="preserve">
+    <value>Постави као позадину</value>
+  </data>
+  <data name="TextShowOnDisk" xml:space="preserve">
+    <value>Отвори локацију фајла</value>
+  </data>
+  <data name="TextSource" xml:space="preserve">
+    <value>Извор</value>
+  </data>
+  <data name="TextStart" xml:space="preserve">
+    <value>Почетак</value>
+  </data>
+  <data name="TextStop" xml:space="preserve">
+    <value>Заустави</value>
+  </data>
+  <data name="TextSupport" xml:space="preserve">
+    <value>Подршка</value>
+  </data>
+  <data name="TextTags" xml:space="preserve">
+    <value>Тагови</value>
+  </data>
+  <data name="TextTileSizeLarge" xml:space="preserve">
+    <value>Огромно</value>
+  </data>
+  <data name="TextTileSizeNormal" xml:space="preserve">
+    <value>Нормално</value>
+  </data>
+  <data name="TextTileSizeSmall" xml:space="preserve">
+    <value>Мало</value>
+  </data>
+  <data name="TextUIHeadless" xml:space="preserve">
+    <value>Безглав</value>
+  </data>
+  <data name="TextUILite" xml:space="preserve">
+    <value>Лако</value>
+  </data>
+  <data name="TextUINormal" xml:space="preserve">
+    <value>Нормално</value>
+  </data>
+  <data name="TextUnsupportedFile" xml:space="preserve">
+    <value>Формат фајла није подржан</value>
+  </data>
+  <data name="TextUpdateAvailable" xml:space="preserve">
+    <value>Надоградња доступна!</value>
+  </data>
+  <data name="TextUpdateCheck" xml:space="preserve">
+    <value>Провери за надогрању</value>
+  </data>
+  <data name="TextupdateCheckFail" xml:space="preserve">
+    <value>Неуспешна провера новог софтвера</value>
+  </data>
+  <data name="TextUpdateChecking" xml:space="preserve">
+    <value>Провера за најновије апликацију</value>
+  </data>
+  <data name="TextUpdateUptodate" xml:space="preserve">
+    <value>Најновија верзија је у употреби!</value>
+  </data>
+  <data name="TextVideo" xml:space="preserve">
+    <value>Видео</value>
+  </data>
+  <data name="TextWallpaperFitFill" xml:space="preserve">
+    
+  <value>Попуни</value></data>
+  <data name="TextWallpaperFitNone" xml:space="preserve">
+    <value>Нема</value>
+  </data>
+  <data name="TextWallpaperFitUniform" xml:space="preserve">
+    <value>Униформ</value>
+  </data>
+  <data name="TextWallpaperFitUniformToFill" xml:space="preserve">
+    <value>Попуни униформ</value>
+  </data>
+  <data name="TextWallpaperLayoutDuplicate" xml:space="preserve">
+    <value>Удвостручи позадину</value>
+  </data>
+  <data name="TextWallpaperLayoutPerScreen" xml:space="preserve">
+    <value>Само изабран екран</value>
+  </data>
+  <data name="TextWallpaperLayoutSpan" xml:space="preserve">
+    <value>Размак између екрана</value>
+  </data>
+  <data name="TextWallpaperType" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="TextWebsite" xml:space="preserve">
+    <value>Вебсајт</value>
+  </data>
+  <data name="TextWebStream" xml:space="preserve">
+    <value>Веб Стрим</value>
+  </data>
+  <data name="TextWelcome" xml:space="preserve">
+    <value>Добродошао</value>
+  </data>
+  <data name="TextYes" xml:space="preserve">
+    <value>Да</value>
+  </data>
+  <data name="TileVideoPlayer" xml:space="preserve">
+    <value>Видео Плејер</value>
+  </data>
+  <data name="TipAddWallpaperFileBrowse" xml:space="preserve">
+    <value>Погледај све подржане плејере</value>
+  </data>
+  <data name="TipAddWallpaperURL" xml:space="preserve">
+    <value>Постави веб урл као позадину</value>
+  </data>
+  <data name="TipAppFocus" xml:space="preserve">
+    <value>Постави шта да ради апликација када је други прозор фокусиран.</value>
+  </data>
+  <data name="TipAppFullScreen" xml:space="preserve">
+    <value>Постави шта да ради апликација када је игирца или апликација у фуллсцреену.</value>
+  </data>
+  <data name="TipAppRules" xml:space="preserve">
+    <value>Постави другачије плеј-бек опције када је апликација фокусирана.</value>
+  </data>
+  <data name="TipAppTheme" xml:space="preserve">
+    <value>Ливелy мења изглед њиндоњса у складу са апликацијом да видиш подешавања иди на</value>
+  </data>
+  <data name="TipAudioMaster" xml:space="preserve">
+    <value>Јачина звука позадина.</value>
+  </data>
+  <data name="TipBatteryPower" xml:space="preserve">
+    <value>(Са системима са батеријом(лаптоп)) Постави другачије плеј-бек опције када је искљуцено са пуњача</value>
+  </data>
+  <data name="TipBrowserDebuggingPort" xml:space="preserve">
+    <value>Унесите порт за отклањање грешака у позадинама веб страница, потребно је поновно покретање прегледача да би промене ступиле на снагу. Када будете спремни, идите на хттп: http: // localhost: број порта за приступ конзоли за програмере. Унеси порт за уклањање грешака позадине, поновно покретање претраживача је обавезно да се промене добиле ефекат.</value>
+  </data>
+  <data name="TipDebug" xml:space="preserve">
+    <value>Покажи мени за девелопере</value>
+  </data>
+  <data name="TipDisplayPauseRule" xml:space="preserve">
+    <value>По: Паузирај позадину на екрану само кад је апликација у фуллсцрену или фокусирана.Све: Паузирај позадину на свим екранима ако је апликација фокусарина или у фуллсцрену</value>
+  </data>
+  <data name="TipHideSysTray" xml:space="preserve">
+    <value>Икона видљива у системском платну(срелица која показује на горе у доњем углу), Ливелy ће наставити радити са сакривеном иконом.</value>
+  </data>
+  <data name="TipLanguage" xml:space="preserve">
+    <value>Ливлеy ће се рестартовати како би промене језика добила ефекат.</value>
+  </data>
+  <data name="TipLivelySetupOnClose" xml:space="preserve">
+    <value>Заврши преузимање да би наставио.</value>
+  </data>
+  <data name="TipPauseAlgorithm" xml:space="preserve">
+    <value>Први план: Лако, само провера процес са једним језгром које је у првом плану да одреди понашање плеј-бека позадине.Сви Процеси: Тежи, Скенира све процесе да одреди плеј-бек понашање.</value>
+  </data>
+  <data name="TipStreamWallpaperDetect" xml:space="preserve">
+    <value>Ако је подржан видео линк детектован користи видео плејер уместо учитавања странице.</value>
+  </data>
+  <data name="TipStreamWallpaperVideoQuality" xml:space="preserve">
+    <value>Изабери зељену резолуцији видеа(позадине).</value>
+  </data>
+  <data name="TipTileSize" xml:space="preserve">
+    <value>Величина плочица позадинске Библиотеке.</value>
+  </data>
+  <data name="TipUIMode" xml:space="preserve">
+    <value>За слабије рачунаре изаберите Лак мод.</value>
+  </data>
+  <data name="TipVideoPlayer" xml:space="preserve">
+    <value>Изабери плејер за пуштање видеа.</value>
+  </data>
+  <data name="TipWallpaperDir" xml:space="preserve">
+    <value>Локација за чување свих позадина.</value>
+  </data>
+  <data name="TipWallpaperFit" xml:space="preserve">
+    <value>Алгоритам одређивања величине позадине.</value>
+  </data>
+  <data name="TipWallpaperInput" xml:space="preserve">
+    <value>Изабери начине за интеракцију са позадину</value>
+  </data>
+  <data name="TipWallpaperLayout" xml:space="preserve">
+    <value>Како је позадина намештена са конектованим мониторима.</value>
+  </data>
+  <data name="TipWallpaperPlayback" xml:space="preserve">
+    <value>Паузирај плеј-бек када позадина није фокусирана.</value>
+  </data>
+  <data name="TipWebBrowserDiskCache" xml:space="preserve">
+    <value>Чувај привремен фајлове у диску уместо рам меморије, подешавања се врацују када се претраживач поново покрене.</value>
+  </data>
+  <data name="TipWebBrowserEngine" xml:space="preserve">
+    <value>ЦЕФ(Цхрониум Ембеддед Фрамењорк) је лаган цхромиум систем. Едге је уграђен претраживач за Њиндоњс 10.</value>
+  </data>
+  <data name="TipWindowsStartup" xml:space="preserve">
+    <value>Ливелy мора да ради у позадини за позадински плеј-бек.</value>
+  </data>
+  <data name="TitleAbout" xml:space="preserve">
+    <value>О Ливелy-ју</value>
+  </data>
+  <data name="TitleAddWallpaper" xml:space="preserve">
+    <value>Dodaj pozadinu</value>
+  </data>
+  <data name="TitleAppFocus" xml:space="preserve">
+    <value>Апликација је фокусирана</value>
+  </data>
+  <data name="TitleAppFullScreen" xml:space="preserve">
+    <value>Апликација је у Фуллсцреену</value>
+  </data>
+  <data name="TitleAppName" xml:space="preserve">
+    <value>Ливелy позадина</value>
+  </data>
+  <data name="TitleAppRules" xml:space="preserve">
+    <value>Правила апликације</value>
+  </data>
+  <data name="TitleAppTheme" xml:space="preserve">
+    <value>Тема</value>
+  </data>
+  <data name="TitleAudio" xml:space="preserve">
+    <value>Аудио</value>
+  </data>
+  <data name="TitleAudioMaster" xml:space="preserve">
+    <value>Јачина звука</value>
+  </data>
+  <data name="TitleAudioPlayOnScreen" xml:space="preserve">
+    <value>Пусти адуио на екрану</value>
+  </data>
+  <data name="TitleBatteryPower" xml:space="preserve">
+    <value>Када је на снази батерије(Без пуњача)</value>
+  </data>
+  <data name="TitleBrowseFile" xml:space="preserve">
+    <value>Претражи за видео, гиф, страницу сајта... фајл за постављање као позадину</value>
+  </data>
+  <data name="TitleBrowserDebuggingPort" xml:space="preserve">
+    <value>Порт за отклањање грешака</value>
+  </data>
+  <data name="TitleCommunity" xml:space="preserve">
+    <value>Заједница</value>
+  </data>
+  <data name="TitleDebug" xml:space="preserve">
+    <value>Отклањање грешака</value>
+  </data>
+  <data name="TitleDeleteConfirmation" xml:space="preserve">
+    <value>Потврди брисање</value>
+  </data>
+  <data name="TitleDisplayPauseRule" xml:space="preserve">
+    <value>Прикажи Правило о Паузирању</value>
+  </data>
+  <data name="TitleDocumentation" xml:space="preserve">
+    <value>Документација</value>
+  </data>
+  <data name="TitleEnterUrl" xml:space="preserve">
+    <value>Унеси УРЛ</value>
+  </data>
+  <data name="TitleGeneral" xml:space="preserve">
+    <value>Генерално</value>
+  </data>
+  <data name="TitleHelp" xml:space="preserve">
+    <value>Помоћ</value>
+  </data>
+  <data name="TitleHideSysTray" xml:space="preserve">
+    <value>Икона у позадини система</value>
+  </data>
+  <data name="TitleInteraction" xml:space="preserve">
+    <value>Интеракција</value>
+  </data>
+  <data name="TitleLanguage" xml:space="preserve">
+    <value>Језик</value>
+  </data>
+  <data name="TitleLibrary" xml:space="preserve">
+    <value>Библиотека</value>
+  </data>
+  <data name="TitleLivelySetup" xml:space="preserve">
+    <value>Ливели инсталација</value>
+  </data>
+  <data name="TitleMisc" xml:space="preserve">
+    <value>Остало</value>
+  </data>
+  <data name="TitleMute" xml:space="preserve">
+    <value>Пригушити звук</value>
+  </data>
+  <data name="TitlePauseAlgo" xml:space="preserve">
+    <value>Алгоритам паузирања</value>
+  </data>
+  <data name="TitlePerformance" xml:space="preserve">
+    <value>Перформансе</value>
+  </data>
+  <data name="TitlePlaylist" xml:space="preserve">
+    <value>Плејлиста</value>
+  </data>
+  <data name="TitlePleaseWait" xml:space="preserve">
+    <value>Молим вас сачекајте</value>
+  </data>
+  <data name="TitleScalingFit" xml:space="preserve">
+    <value>Скалирање/Подесити</value>
+  </data>
+  <data name="TitleScreenLayout" xml:space="preserve">
+    <value>Контролна табла</value>
+  </data>
+  <data name="TitleSelectFile" xml:space="preserve">
+    <value>Изабери Фајл</value>
+  </data>
+  <data name="TitleSettings" xml:space="preserve">
+    <value>Подешавања</value>
+  </data>
+  <data name="TitleStreamWallpaper" xml:space="preserve">
+    <value>Ток</value>
+  </data>
+  <data name="TitleStreamWallpaperDetect" xml:space="preserve">
+    <value>Надји ток снимка</value>
+  </data>
+  <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
+    <value>Квалитет видеа</value>
+  </data>
+  <data name="TitleTileSize" xml:space="preserve">
+    <value>Величина плочица</value>
+  </data>
+  <data name="TitleUIMode" xml:space="preserve">
+    <value>Кориснички интерфејс</value>
+  </data>
+  <data name="TitleVideo" xml:space="preserve">
+    <value>Видео</value>
+  </data>
+  <data name="TitleWallpaper" xml:space="preserve">
+    <value>Позадина</value>
+  </data>
+  <data name="TitleWallpaperDir" xml:space="preserve">
+    <value>Локације позадине</value>
+  </data>
+  <data name="TitleWallpaperDirMoveExisting" xml:space="preserve">
+    <value>Помери постајућу позадину</value>
+  </data>
+  <data name="TitleWallpaperFit" xml:space="preserve">
+    <value>Прилагоди резолуцији екрана</value>
+  </data>
+  <data name="TitleWallpaperInput" xml:space="preserve">
+    <value>Позадински улаз</value>
+  </data>
+  <data name="TitleWallpaperLayout" xml:space="preserve">
+    <value>Метод постављања</value>
+  </data>
+  <data name="TitleWallpaperPlayback" xml:space="preserve">
+    <value>Плеј-бек позадине</value>
+  </data>
+  <data name="TitleWarning" xml:space="preserve">
+    <value>Упозорење</value>
+  </data>
+  <data name="TitleWebBrowser" xml:space="preserve">
+    <value>Веб Претразивач</value>
+  </data>
+  <data name="TitleWebBrowserDiskCache" xml:space="preserve">
+    <value>Кеш меморија диска</value>
+  </data>
+  <data name="TitleWebBrowserEngine" xml:space="preserve">
+    <value>Погон</value>
+  </data>
+  <data name="TitleWebpageLoad" xml:space="preserve">
+    <value>Учитај њеб страницу</value>
+  </data>
+  <data name="TitleWindowsStartup" xml:space="preserve">
+    <value>Стартуј са Windowsom</value>
+  </data>
   <data name="TextTitle" xml:space="preserve">
     <value>Title</value>
   </data>
@@ -720,5 +703,5 @@ Edge är den inbyggda webbvisningen av Windows 10.</value>
   </data>
   <data name="TextCreatePreview" xml:space="preserve">
     <value>Create Preview</value>
-  </data>   
+  </data>
 </root>

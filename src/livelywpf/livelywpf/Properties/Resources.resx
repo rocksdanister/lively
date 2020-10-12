@@ -228,6 +228,9 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="TextBrowse" xml:space="preserve">
     <value>Browse</value>
   </data>
+  <data name="TextCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
   <data name="TextClose" xml:space="preserve">
     <value>Close</value>
   </data>
@@ -240,6 +243,9 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="TextConvertVideo" xml:space="preserve">
     <value>Convert to Video</value>
   </data>
+  <data name="TextCreatePreview" xml:space="preserve">
+    <value>Create Preview</value>
+  </data>
   <data name="TextCustomise" xml:space="preserve">
     <value>Customise</value>
   </data>
@@ -248,6 +254,9 @@ If still not working, close &amp; start Lively again/restart windows.
   </data>
   <data name="TextDeleteWallpaper" xml:space="preserve">
     <value>Delete Wallpaper</value>
+  </data>
+  <data name="TextDescription" xml:space="preserve">
+    <value>Description</value>
   </data>
   <data name="TextDisplayPauseRuleAllScreen" xml:space="preserve">
     <value>All Screen</value>
@@ -305,6 +314,9 @@ If still not working, close &amp; start Lively again/restart windows.
   </data>
   <data name="TextOff" xml:space="preserve">
     <value>OFF</value>
+  </data>
+  <data name="TextOK" xml:space="preserve">
+    <value>OK</value>
   </data>
   <data name="TextOn" xml:space="preserve">
     <value>ON</value>
@@ -383,6 +395,9 @@ If still not working, close &amp; start Lively again/restart windows.
   </data>
   <data name="TextTileSizeSmall" xml:space="preserve">
     <value>Small</value>
+  </data>
+  <data name="TextTitle" xml:space="preserve">
+    <value>Title</value>
   </data>
   <data name="TextUIHeadless" xml:space="preserve">
     <value>Headless</value>

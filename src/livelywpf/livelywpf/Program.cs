@@ -217,13 +217,13 @@ namespace livelywpf
                     setupWizard = null;
                 }
 
-                if(_showUpdateDialog)
+                App.AppWindow.Show();
+                App.AppWindow.WindowState = App.AppWindow.WindowState != WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
+
+                if (_showUpdateDialog)
                 {
                     ShowUpdateDialog();
                 }
-
-                App.AppWindow.Show();
-                App.AppWindow.WindowState = App.AppWindow.WindowState != WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
             }
         }
 

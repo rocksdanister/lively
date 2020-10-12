@@ -1,6 +1,7 @@
 ﻿using ModernWpf.Controls;
 using System;
 using System.Diagnostics;
+using System.Drawing.Text;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;

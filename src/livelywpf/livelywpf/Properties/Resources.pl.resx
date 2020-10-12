@@ -674,36 +674,51 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Uniform</value>
   </data>
   <data name="TextWallpaperFitUniformToFill" xml:space="preserve">
-    <value>Uniform Fill</value>
+    <value>Wypełnij równomiernie</value>
   </data>
   <data name="TipWallpaperFit" xml:space="preserve">
-    <value>Wallpaper scaling algorithm.</value>
+    <value>Algorytm skalowania tapety.</value>
   </data>
   <data name="TitleWallpaperFit" xml:space="preserve">
-    <value>Choose a fit</value>
+    <value>Wybierz dopasowanie</value>
   </data>
   <data name="TextPreviewWallpaper" xml:space="preserve">
-    <value>Preview Wallpaper</value>
+    <value>Podgląd tapety</value>
   </data>
   <data name="TextAllFiles" xml:space="preserve">
-    <value>All Files</value>
+    <value>Wszystkie pliki</value>
   </data>
   <data name="TitleDebug" xml:space="preserve">
-    <value>Debug</value>
+    <value>Debugowanie</value>
   </data>
   <data name="TipDebug" xml:space="preserve">
-    <value>Show developer menu</value>
+    <value>Pokaż menu dewelopera</value>
   </data>
   <data name="TextFileNotFound" xml:space="preserve">
-    <value>File not found</value>
+    <value>Nie znaleziono pliku</value>
   </data>
   <data name="TextPicture" xml:space="preserve">
-    <value>Picture</value>
+    <value>Obraz</value>
   </data>
   <data name="TextUnsupportedFile" xml:space="preserve">
-    <value>File format not supported</value>
+    <value>Nieobsługiwany format pliku</value>
   </data>
   <data name="TextProcessingWallpaper" xml:space="preserve">
-    <value>Processing</value>
-  </data>  
+    <value>Przetwarzam</value>
+  </data>
+  <data name="TextTitle" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="TextDescription" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="TextOK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="TextCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="TextCreatePreview" xml:space="preserve">
+    <value>Create Preview</value>
+  </data>    
 </root>

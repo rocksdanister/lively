@@ -330,7 +330,7 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp;amp; 적용.
     <value>일시 중지</value>
   </data>
   <data name="TextPreviewWallpaper" xml:space="preserve">
-    <value>Preview Wallpaper</value>
+    <value>배경 화면 미리보기</value>
   </data>
   <data name="TextRemove" xml:space="preserve">
     <value>제거</value>
@@ -688,24 +688,39 @@ Edge는 Windows 10의 내장 웹뷰입니다.</value>
     <value>Windows 시작 시 실행</value>
   </data>
   <data name="TextAllFiles" xml:space="preserve">
-    <value>All Files</value>
+    <value>모든 파일</value>
   </data>
   <data name="TitleDebug" xml:space="preserve">
-    <value>Debug</value>
+    <value>디버그</value>
   </data>
   <data name="TipDebug" xml:space="preserve">
-    <value>Show developer menu</value>
+    <value>개발자 메뉴 표시</value>
   </data>
   <data name="TextFileNotFound" xml:space="preserve">
-    <value>File not found</value>
+    <value>파일을 찾을 수 없습니다.</value>
   </data>
   <data name="TextPicture" xml:space="preserve">
-    <value>Picture</value>
+    <value>사진</value>
   </data>
   <data name="TextUnsupportedFile" xml:space="preserve">
-    <value>File format not supported</value>
+    <value>지원하지 않는 파일 형식입니다.</value>
   </data>
   <data name="TextProcessingWallpaper" xml:space="preserve">
-    <value>Processing</value>
-  </data>  
+    <value>처리 중</value>
+  </data>
+  <data name="TextTitle" xml:space="preserve">
+    <value>제목</value>
+  </data>
+  <data name="TextDescription" xml:space="preserve">
+    <value>설명</value>
+  </data>
+  <data name="TextOK" xml:space="preserve">
+    <value>확인</value>
+  </data>
+  <data name="TextCancel" xml:space="preserve">
+    <value>취소</value>
+  </data>
+  <data name="TextCreatePreview" xml:space="preserve">
+    <value>미리보기 만들기</value>
+  </data>    
 </root>
