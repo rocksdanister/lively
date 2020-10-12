@@ -509,7 +509,7 @@ namespace livelywpf
             set
             {
                 _selectedWebBrowserIndex = value;
-                OnPropertyChanged("SelectedVideoPlayerIndex");
+                OnPropertyChanged("SelectedWebBrowserIndex");
 
                 if (Settings.WebBrowser != (LivelyWebBrowser)_selectedWebBrowserIndex)
                 {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Text;
 using System.Threading;
 using System.Windows.Interop;
@@ -12,7 +13,39 @@ namespace livelywpf.Core
     {
         public WebEdge(string path, LibraryModel model, LivelyScreen display)
         {
-            Player = new WebView2Element(path);
+            LivelyPropertyCopy = null;
+            if (model.LivelyPropertyPath != null)
+            {
+                //customisable wallpaper, livelyproperty.json is present.
+                var dataFolder = Path.Combine(Program.WallpaperDir, "SaveData", "wpdata");
+                try
+                {
+                    //extract last digits of the Screen class DeviceName, eg: \\.\DISPLAY4 -> 4
+                    var screenNumber = display.DeviceNumber;
+                    if (screenNumber != null)
+                    {
+                        //Create a directory with the wp foldername in SaveData/wpdata/, copy livelyproperties.json into this.
+                        //Further modifications are done to the copy file.
+                        var wpdataFolder = Path.Combine(dataFolder, new DirectoryInfo(model.LivelyInfoFolderPath).Name, screenNumber);
+                        Directory.CreateDirectory(wpdataFolder);
+
+                        LivelyPropertyCopy = Path.Combine(wpdataFolder, "LivelyProperties.json");
+                        if (!File.Exists(LivelyPropertyCopy))
+                            File.Copy(model.LivelyPropertyPath, LivelyPropertyCopy);
+
+                    }
+                    else
+                    {
+                        //todo: fallback, use the original file (restore feature disabled.)
+                    }
+                }
+                catch
+                {
+                    //todo: fallback, use the original file (restore feature disabled.)
+                }
+            }
+
+            Player = new WebView2Element(path, LivelyPropertyCopy);
             this.Model = model;
             this.Display = display;
         }
@@ -22,6 +55,10 @@ namespace livelywpf.Core
         WebView2Element Player { get; set; }
         LibraryModel Model { get; set; }
         LivelyScreen Display { get; set; }
+        /// <summary>
+        /// copy of LivelyProperties.json file used to modify for current running screen.
+        /// </summary>
+        string LivelyPropertyCopy { get; set; }
 
         public void Close()
         {
@@ -38,7 +75,7 @@ namespace livelywpf.Core
 
         public string GetLivelyPropertyCopyPath()
         {
-            return null;
+            return LivelyPropertyCopy;
         }
 
         public Process GetProcess()
@@ -78,17 +115,20 @@ namespace livelywpf.Core
 
         public void SendMessage(string msg)
         {
-
+            if(Player != null)
+            {
+                Player.SendMessage(msg);
+            }
         }
 
         public void SetHWND(IntPtr hwnd)
         {
-
+            this.HWND = hwnd;
         }
 
         public void SetScreen(LivelyScreen display)
         {
- 
+            this.Display = display;
         }
 
         public void SetVolume(int volume)
