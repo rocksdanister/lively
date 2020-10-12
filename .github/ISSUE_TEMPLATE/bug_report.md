@@ -34,4 +34,4 @@ If applicable, add screenshots/video to help explain your problem.
 Add any other context about the problem here.
 
 **Log file**
-Share the crashlog file logfile.txt from Local Appdata folder C:\Users\<UserName>\AppData\Local\Lively Wallpaper\logs with detailed information (The file gets overwritten each time lively starts, so make sure its from when lively crashed.)
+Share the log file(s) from Local Appdata folder C:\Users\<UserName>\AppData\Local\Lively Wallpaper\logs
