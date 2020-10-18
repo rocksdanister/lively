@@ -82,7 +82,8 @@ namespace livelywpf.Core
         /// <param name="msg"></param>
         void SendMessage(string msg);
         /// <summary>
-        /// Get location of LivelyProperties.json copy file in Savedata/wpdata
+        /// Get location of LivelyProperties.json copy file in Savedata/wpdata.
+        /// This will be a copy of the original file (different screens will have different copy.)
         /// </summary>
         /// <returns>null if no file.</returns>
         string GetLivelyPropertyCopyPath();

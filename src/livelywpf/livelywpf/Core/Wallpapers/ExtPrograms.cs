@@ -7,6 +7,16 @@ namespace livelywpf.Core
 {
     public class ExtPrograms : IWallpaper
     {
+        IntPtr HWND { get; set; }
+        Process Proc { get; set; }
+        LibraryModel Model { get; set; }
+        LivelyScreen Display { get; set; }
+        public UInt32 SuspendCnt { get; set; }
+        public event EventHandler<WindowInitializedArgs> WindowInitialized;
+        private readonly CancellationTokenSource ctsProcessWait = new CancellationTokenSource();
+        private Task processWaitTask;
+        private readonly int timeOut;
+
         /// <summary>
         /// Launch Program(.exe) Unity, godot.. as wallpaper.
         /// </summary>
@@ -44,16 +54,6 @@ namespace livelywpf.Core
             this.timeOut = timeOut;
             SuspendCnt = 0;
         }
-        IntPtr HWND { get; set; }
-        Process Proc { get; set; }
-        LibraryModel Model { get; set; }
-        LivelyScreen Display { get; set; }
-        public UInt32 SuspendCnt { get; set; }
-        public event EventHandler<WindowInitializedArgs> WindowInitialized;
-
-        private readonly CancellationTokenSource ctsProcessWait = new CancellationTokenSource();
-        private Task processWaitTask;
-        private readonly int timeOut;
 
         public async void Close()
         {

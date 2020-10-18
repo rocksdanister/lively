@@ -132,6 +132,7 @@ namespace livelywpf.Views
                 dispatcherTimer.Stop();
             }
             _processing = true;
+            taskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Normal;
             Rect previewPanelPos = WindowOperations.GetAbsolutePlacement(PreviewBorder, true);
             Size previewPanelSize = WindowOperations.GetElementPixelSize(PreviewBorder);
 
@@ -174,6 +175,7 @@ namespace livelywpf.Views
                     await Task.Delay(gifAnimationDelay);
                     //upto 99% 
                     progress = ((i + 1f) / (gifTotalFrames + 1f))*100f;
+                    taskbarItemInfo.ProgressValue = progress/100f;
                     CaptureProgress?.Invoke(this, progress);
                 }
 
@@ -194,6 +196,7 @@ namespace livelywpf.Views
             }
 
             _processing = false;
+            taskbarItemInfo.ProgressValue = 100f;
             CaptureProgress?.Invoke(this, 100);
         }
 

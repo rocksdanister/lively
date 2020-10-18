@@ -11,6 +11,14 @@ namespace livelywpf.Core
 {
     class WebEdge : IWallpaper
     {
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+        public event EventHandler<WindowInitializedArgs> WindowInitialized;
+        IntPtr HWND { get; set; }
+        WebView2Element Player { get; set; }
+        LibraryModel Model { get; set; }
+        LivelyScreen Display { get; set; }
+        string LivelyPropertyCopy { get; set; }
+
         public WebEdge(string path, LibraryModel model, LivelyScreen display)
         {
             LivelyPropertyCopy = null;
@@ -45,20 +53,10 @@ namespace livelywpf.Core
                 }
             }
 
-            Player = new WebView2Element(path, LivelyPropertyCopy);
+            Player = new WebView2Element(path, model.LivelyInfo.Type, LivelyPropertyCopy);
             this.Model = model;
             this.Display = display;
         }
-
-        public event EventHandler<WindowInitializedArgs> WindowInitialized;
-        IntPtr HWND { get; set; }
-        WebView2Element Player { get; set; }
-        LibraryModel Model { get; set; }
-        LivelyScreen Display { get; set; }
-        /// <summary>
-        /// copy of LivelyProperties.json file used to modify for current running screen.
-        /// </summary>
-        string LivelyPropertyCopy { get; set; }
 
         public void Close()
         {
@@ -143,8 +141,16 @@ namespace livelywpf.Core
                 Player.Closed += Player_Closed;
                 Player.Show();
                 HWND = new WindowInteropHelper(Player).Handle;
+                //Logger.Debug("WEBVIEW2: old HWND=>" + HWND);
+                //Player.webView.CoreWebView2Ready += WebView_CoreWebView2Ready;
                 WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = true, Error = null });
             }
+        }
+
+        private void WebView_CoreWebView2Ready(object sender, EventArgs e)
+        {
+            Logger.Debug("WEBVIEW2: new HWND=>" + Player.webView.Handle);   
+            //SetHWND(Player.webView.Handle);
         }
 
         private void Player_Closed(object sender, EventArgs e)

@@ -11,19 +11,18 @@ namespace livelywpf.Core
     /// </summary>
     public class VideoPlayerMPV : IWallpaper
     {
+        IntPtr HWND { get; set; }
+        MPVElement Player { get; set; }
+        LibraryModel Model { get; set; }
+        LivelyScreen Display { get; set; }
+        public event EventHandler<WindowInitializedArgs> WindowInitialized;
+
         public VideoPlayerMPV(string filePath, LibraryModel model, LivelyScreen display, WallpaperScaler scaler = WallpaperScaler.fill)
         {
             Player = new MPVElement(filePath, scaler);
             this.Model = model;
             this.Display = display;
         }
-
-        IntPtr HWND { get; set; }
-        MPVElement Player { get; set; }
-        LibraryModel Model { get; set; }
-        LivelyScreen Display { get; set; }
-
-        public event EventHandler<WindowInitializedArgs> WindowInitialized;
 
         public WallpaperType GetWallpaperType()
         {

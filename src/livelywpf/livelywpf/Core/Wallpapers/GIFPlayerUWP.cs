@@ -8,18 +8,18 @@ namespace livelywpf.Core
 {
     public class GIFPlayerUWP : IWallpaper
     {
+        IntPtr HWND { get; set; }
+        GIFViewUWP Player { get; set; }
+        LibraryModel Model { get; set; }
+        LivelyScreen Display { get; set; }
+        public event EventHandler<WindowInitializedArgs> WindowInitialized;
+
         public GIFPlayerUWP(string filePath, LibraryModel model, LivelyScreen display, WallpaperScaler scaler = WallpaperScaler.fill)
         {
             Player = new GIFViewUWP(filePath, scaler);
             this.Model = model;
             this.Display = display;
         }
-        IntPtr HWND { get; set; }
-        GIFViewUWP Player { get; set; }
-        LibraryModel Model { get; set; }
-        LivelyScreen Display { get; set; }
-
-        public event EventHandler<WindowInitializedArgs> WindowInitialized;
 
         public void Close()
         {

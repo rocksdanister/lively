@@ -40,6 +40,7 @@ namespace livelywpf.Views
         private void UpdateDownload_DownloadProgressChanged(object sender, DownloadEventArgs e)
         {
             progressBar.Value = e.Percentage;
+            taskbarItemInfo.ProgressValue = e.Percentage/100f;
             sizeTxt.Text = e.DownloadedSize + "/" + e.TotalSize + " MB";
         }
 
@@ -51,12 +52,15 @@ namespace livelywpf.Views
                 downloadComplete = true;
                 downloadBtn.IsEnabled = true;
                 downloadBtn.Content = Properties.Resources.TextInstall;
+                taskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
             }
             else
             {
-                MessageBox.Show(Properties.Resources.LivelyExceptionAppUpdateFail, Properties.Resources.TextError);
+                taskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Error;
+                changelog.Document.Blocks.Clear();
+                changelog.Document.Blocks.Add(new Paragraph(new Run(Properties.Resources.LivelyExceptionAppUpdateFail)));
                 _forceClose = true;
-                this.Close();
+                //this.Close();
             }
         }
 
@@ -72,7 +76,7 @@ namespace livelywpf.Views
                     //inno installer will auto retry, waiting for application exit.
                     Program.ExitApplication();
                 }
-                catch(Exception ex)
+                catch
                 {
                     MessageBox.Show(Properties.Resources.LivelyExceptionAppUpdateFail, Properties.Resources.TextError);
                 }
@@ -100,12 +104,15 @@ namespace livelywpf.Views
                     download.DownloadFile(fileUrl, savePath);
                     download.DownloadFileCompleted += UpdateDownload_DownloadFileCompleted;
                     download.DownloadProgressChanged += UpdateDownload_DownloadProgressChanged;
+                    taskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Normal;
                 }
                 catch
                 {
-                    MessageBox.Show(Properties.Resources.LivelyExceptionAppUpdateFail, Properties.Resources.TextError);
+                    taskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Error;
+                    changelog.Document.Blocks.Clear();
+                    changelog.Document.Blocks.Add(new Paragraph(new Run(Properties.Resources.LivelyExceptionAppUpdateFail)));
                     _forceClose = true;
-                    this.Close();
+                    //this.Close();
                 }
             }
         }

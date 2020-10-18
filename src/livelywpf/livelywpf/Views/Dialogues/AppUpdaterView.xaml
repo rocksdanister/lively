@@ -13,8 +13,12 @@
         mc:Ignorable="d"
         Title="{x:Static p:Resources.TextUpdateAvailable}" Height="700" Width="650"
         Closing="Window_Closing"
-        ResizeMode="NoResize"
+        ResizeMode="CanMinimize"
+        WindowStyle="SingleBorderWindow"
         BorderBrush="{DynamicResource SystemControlHighlightAltListAccentHighBrush}">
+    <Window.TaskbarItemInfo>
+        <TaskbarItemInfo x:Name="taskbarItemInfo" ProgressState="None"/>
+    </Window.TaskbarItemInfo>
     <Grid>
         <StackPanel Margin="10, 10, 10, 10">
             <RichTextBox x:Name="changelog" MaxHeight="550" MinHeight="550" IsReadOnly="True"/>

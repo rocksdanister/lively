@@ -10,6 +10,14 @@ namespace livelywpf.Core
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         //todo: Check this library out https://github.com/Tyrrrz/CliWrap
+        IntPtr HWND { get; set; }
+        Process Proc { get; set; }
+        LibraryModel Model { get; set; }
+        LivelyScreen Display { get; set; }
+        string LivelyPropertyCopy { get; set; }
+        private bool Initialized { get; set; }
+        public event EventHandler<WindowInitializedArgs> WindowInitialized;
+
         public WebProcess(string path, LibraryModel model, LivelyScreen display)
         {
             LivelyPropertyCopy = null;
@@ -92,17 +100,6 @@ namespace livelywpf.Core
             this.Model = model;
             this.Display = display;
         }
-        IntPtr HWND { get; set; }
-        Process Proc { get; set; }
-        LibraryModel Model { get; set; }
-        LivelyScreen Display { get; set; }
-        /// <summary>
-        /// copy of LivelyProperties.json file used to modify for current running screen.
-        /// </summary>
-        string LivelyPropertyCopy { get; set; }
-
-        private bool Initialized { get; set; }
-        public event EventHandler<WindowInitializedArgs> WindowInitialized;
 
         public void Close()
         {

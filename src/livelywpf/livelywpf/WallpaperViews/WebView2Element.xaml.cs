@@ -1,8 +1,6 @@
 ﻿using Microsoft.Web.WebView2.Wpf;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,11 +17,16 @@ namespace livelywpf
         //ref: https://docs.microsoft.com/en-us/microsoft-edge/webview2/gettingstarted/wpf
         private readonly string htmlPath;
         private readonly string livelyPropertyPath;
-        public WebView2Element(string path, string livelyPropertyPath)
+        private readonly WallpaperType wallpaperType;
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+
+        public WebView2Element(string path, WallpaperType type, string livelyPropertyPath)
         {
             this.htmlPath = path;
             this.livelyPropertyPath = livelyPropertyPath;
+            this.wallpaperType = type;
             InitializeComponent();
+            webView.CoreWebView2.ProcessFailed += CoreWebView2_ProcessFailed;
             webView.EnsureCoreWebView2Async();
             this.Loaded += WebView2Element_Loaded;
         }
@@ -36,24 +39,43 @@ namespace livelywpf
             this.ShowInTaskbar = false;
             this.ShowInTaskbar = true;
         }
+
         private void webView_CoreWebView2Ready(object sender, EventArgs e)
         {
             //todo: 
             //link checking
             //cross-origin request fix for disk files.
-            webView.CoreWebView2.Navigate(htmlPath);
+            if(wallpaperType == WallpaperType.url && htmlPath.Contains("shadertoy.com/view"))
+            {
+                webView.CoreWebView2.NavigateToString(ShadertoyURLtoEmbedLink(htmlPath));   
+            }
+            else
+            {
+                webView.CoreWebView2.Navigate(htmlPath);
+            }
         }
 
         private void webView_NavigationCompleted(object sender, Microsoft.Web.WebView2.Core.CoreWebView2NavigationCompletedEventArgs e)
         {
             RestoreLivelyProperties(livelyPropertyPath);
         }
+        private void CoreWebView2_ProcessFailed(object sender, Microsoft.Web.WebView2.Core.CoreWebView2ProcessFailedEventArgs e)
+        {
+            Logger.Error("Webview2: fail=>" + e.ToString());
+        }
 
         public void SendMessage(string msg)
         {
             if (String.Equals(msg, "lively:reload", StringComparison.OrdinalIgnoreCase))
             {
-                webView.Reload();
+                try
+                {
+                    webView.Reload();
+                }
+                catch(Exception e)
+                {
+                    Logger.Error("Webview2: reload error=>" + e.Message);
+                }
             }
             else if (msg.Contains("lively:customise", StringComparison.OrdinalIgnoreCase))
             {
@@ -61,9 +83,9 @@ namespace livelywpf
                 {
                     LivelyPropertiesMsg(msg);
                 }
-                catch
+                catch(Exception e)
                 {
-                    //todo: logging.
+                    Logger.Error("Webview2: lively property error=>" + e.Message);
                 }
             }
         }
@@ -76,7 +98,10 @@ namespace livelywpf
                 {
                     webView.Dispose();
                 }
-                catch { }
+                catch(Exception ex)
+                {
+                    Logger.Error("Webview2: Dispose error=>" + ex.Message);
+                }
             }
         }
 
@@ -85,20 +110,22 @@ namespace livelywpf
         //credit: https://stackoverflow.com/questions/62835549/equivalent-of-webbrowser-invokescriptstring-object-in-webview2
         private async Task<string> ExecuteScriptFunctionAsync(string functionName, params object[] parameters)
         {
-            string script = functionName + "(";
+            var script = new StringBuilder();
+            script.Append(functionName);
+            script.Append("(");
             for (int i = 0; i < parameters.Length; i++)
             {
-                script += JsonConvert.SerializeObject(parameters[i]);
+                script.Append(JsonConvert.SerializeObject(parameters[i]));
                 if (i < parameters.Length - 1)
                 {
-                    script += ", ";
+                    script.Append(", ");
                 }
             }
-            script += ");";
-            return await webView.ExecuteScriptAsync(script);
+            script.Append(");");
+            return await webView.ExecuteScriptAsync(script.ToString());
         }
 
-        private async void RestoreLivelyProperties(string propertyPath)
+        private void RestoreLivelyProperties(string propertyPath)
         {
             try
             {
@@ -113,45 +140,47 @@ namespace livelywpf
                         if (uiElementType.Equals("slider", StringComparison.OrdinalIgnoreCase) ||
                             uiElementType.Equals("dropdown", StringComparison.OrdinalIgnoreCase))
                         {
-                            await ExecuteScriptFunctionAsync("livelyPropertyListener", item.Key, (int)item.Value["value"]);
+                            _ = ExecuteScriptFunctionAsync("livelyPropertyListener", item.Key, (int)item.Value["value"]);
                         }
                         else if (uiElementType.Equals("folderDropdown", StringComparison.OrdinalIgnoreCase))
                         {
                             var filePath = Path.Combine(Path.GetDirectoryName(htmlPath), item.Value["folder"].ToString(), item.Value["value"].ToString());
                             if (File.Exists(filePath))
                             {
-                                await ExecuteScriptFunctionAsync("livelyPropertyListener",
+                                _ = ExecuteScriptFunctionAsync("livelyPropertyListener",
                                 item.Key,
                                 Path.Combine(item.Value["folder"].ToString(), item.Value["value"].ToString()));
                             }
                             else
                             {
-                                await ExecuteScriptFunctionAsync("livelyPropertyListener",
+                                _ = ExecuteScriptFunctionAsync("livelyPropertyListener",
                                 item.Key,
                                 null); //or custom msg
                             }
                         }
                         else if (uiElementType.Equals("checkbox", StringComparison.OrdinalIgnoreCase))
                         {
-                            await ExecuteScriptFunctionAsync("livelyPropertyListener", item.Key, (bool)item.Value["value"]);
+                            _ = ExecuteScriptFunctionAsync("livelyPropertyListener", item.Key, (bool)item.Value["value"]);
                         }
                         else if (uiElementType.Equals("color", StringComparison.OrdinalIgnoreCase) || uiElementType.Equals("textbox", StringComparison.OrdinalIgnoreCase))
                         {
-                            await ExecuteScriptFunctionAsync("livelyPropertyListener", item.Key, (string)item.Value["value"]);
+                            _ = ExecuteScriptFunctionAsync("livelyPropertyListener", item.Key, (string)item.Value["value"]);
                         }
                     }
                 }
             }
-            catch { }
+            catch (Exception e)
+            {
+                Logger.Error("Webview2: lively property restore error=>" + e.Message);
+            }
         }
 
         /// <summary>
         /// Re-using cefsharp ipc msg code.
-        /// not Working? why...
         /// ref: https://github.com/rocksdanister/lively/wiki/Web-Guide-IV-:-Interaction
         /// </summary>
         /// <param name="val"></param>
-        private async void LivelyPropertiesMsg(string val)
+        private void LivelyPropertiesMsg(string val)
         {
             var msg = val.Split(' ');
             if (msg.Length < 4)
@@ -162,7 +191,7 @@ namespace livelywpf
             {
                 if (int.TryParse(msg[3], out int value))
                 {
-                    await ExecuteScriptFunctionAsync("livelyPropertyListener", msg[2], value);
+                    _ = ExecuteScriptFunctionAsync("livelyPropertyListener", msg[2], value);
                 }
             }
             else if (uiElementType.Equals("slider", StringComparison.OrdinalIgnoreCase))
@@ -170,7 +199,7 @@ namespace livelywpf
                 //MessageBox.Show(msg[3] + " " + double.TryParse(msg[3], out double test));
                 if (double.TryParse(msg[3], out double value))
                 {
-                    await ExecuteScriptFunctionAsync("livelyPropertyListener", msg[2], value);
+                    _ = ExecuteScriptFunctionAsync("livelyPropertyListener", msg[2], value);
                 }
             }
             else if (uiElementType.Equals("folderDropdown", StringComparison.OrdinalIgnoreCase))
@@ -180,13 +209,13 @@ namespace livelywpf
                 var filePath = Path.Combine(Path.GetDirectoryName(htmlPath), val.Substring(sIndex, lIndex - sIndex + 1));
                 if (File.Exists(filePath))
                 {
-                    await ExecuteScriptFunctionAsync("livelyPropertyListener",
+                    _ = ExecuteScriptFunctionAsync("livelyPropertyListener",
                     msg[2],
                     val.Substring(sIndex, lIndex - sIndex + 1));
                 }
                 else
                 {
-                    await ExecuteScriptFunctionAsync("livelyPropertyListener",
+                    _ = ExecuteScriptFunctionAsync("livelyPropertyListener",
                     msg[2],
                     null); //or custom msg
                 }
@@ -195,18 +224,18 @@ namespace livelywpf
             {
                 if (bool.TryParse(msg[3], out bool value))
                 {
-                    await ExecuteScriptFunctionAsync("livelyPropertyListener", msg[2], value);
+                    _ = ExecuteScriptFunctionAsync("livelyPropertyListener", msg[2], value);
                 }
             }
             else if (uiElementType.Equals("color", StringComparison.OrdinalIgnoreCase))
             {
-                await ExecuteScriptFunctionAsync("livelyPropertyListener", msg[2], msg[3]);
+                _ = ExecuteScriptFunctionAsync("livelyPropertyListener", msg[2], msg[3]);
             }
             else if (uiElementType.Equals("textbox", StringComparison.OrdinalIgnoreCase))
             {
                 var sIndex = val.IndexOf("\"") + 1;
                 var lIndex = val.LastIndexOf("\"") - 1;
-                await ExecuteScriptFunctionAsync("livelyPropertyListener",
+                _ = ExecuteScriptFunctionAsync("livelyPropertyListener",
                     msg[2],
                     val.Substring(sIndex, lIndex - sIndex + 1));
             }
@@ -218,9 +247,48 @@ namespace livelywpf
                 }
                 else
                 {
-                    await ExecuteScriptFunctionAsync("livelyPropertyListener", msg[2], true);
+                    _ = ExecuteScriptFunctionAsync("livelyPropertyListener", msg[2], true);
                 }
             }
+        }
+
+        /// <summary>
+        /// Converts shadertoy.com url to embed link: fullscreen, muted audio.
+        /// </summary>
+        /// <param name="shadertoylink"></param>
+        /// <returns>shadertoy embed url</returns>
+        private string ShadertoyURLtoEmbedLink(string shadertoylink)
+        {
+            Uri uri;
+            try
+            {
+                uri = new Uri(shadertoylink);
+            }
+            catch (UriFormatException)
+            {
+                try
+                {
+                    //if user did not input https/http assume https connection.
+                    uri = new UriBuilder(shadertoylink)
+                    {
+                        Scheme = "https",
+                        Port = -1,
+                    }.Uri;
+                    shadertoylink = uri.ToString();
+                }
+                catch
+                {
+                    
+                }
+            }
+
+            shadertoylink = shadertoylink.Replace("view/", "embed/");
+
+            string text = @"<!DOCTYPE html><html lang=""en"" dir=""ltr""> <head> <meta charset=""utf - 8""> 
+                    <title>Digital Brain</title> <style media=""screen""> iframe { position: fixed; width: 100%; height: 100%; top: 0; right: 0; bottom: 0;
+                    left: 0; z-index; -1; pointer-events: none;  } </style> </head> <body> <iframe width=""640"" height=""360"" frameborder=""0"" 
+                    src=" + shadertoylink + @"?gui=false&t=10&paused=false&muted=true""></iframe> </body></html>";
+            return text;
         }
 
         #endregion //helpers
