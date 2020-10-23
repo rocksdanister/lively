@@ -56,7 +56,7 @@ namespace livelywpf.Core
             cmdArgs.Append("--url " + "\"" + path + "\"" + " --display " + "\"" + display + "\"");
             cmdArgs.Append(model.LivelyInfo.Type == WallpaperType.url ? " --type online" : " --type local" + " --property " + "\"" + LivelyPropertyCopy + "\"");
             //Fail to send empty string as arg; "debug" is set as optional variable in cmdline parser library.
-            if (!string.IsNullOrWhiteSpace(Program.SettingsVM.Settings.WebDebugPort))
+            if(!string.IsNullOrWhiteSpace(Program.SettingsVM.Settings.WebDebugPort))
             {
                 cmdArgs.Append(" --debug " + Program.SettingsVM.Settings.WebDebugPort);
             }
@@ -72,7 +72,7 @@ namespace livelywpf.Core
                 cmdArgs.Append(" --audio true");
             }
 
-            if(!String.IsNullOrWhiteSpace(model.LivelyInfo.Arguments))
+            if (!String.IsNullOrWhiteSpace(model.LivelyInfo.Arguments))
             {
                 cmdArgs.Append(" " + model.LivelyInfo.Arguments);
             }
@@ -178,7 +178,7 @@ namespace livelywpf.Core
                     Proc.Start();
                     Proc.BeginOutputReadLine();
                 }
-                catch(Exception e) 
+                catch(Exception e)
                 {
                     WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = false, Error = e, Msg = "Failed to start process." });
                     Close();
@@ -187,8 +187,8 @@ namespace livelywpf.Core
         }
 
         private void Proc_Exited(object sender, EventArgs e)
-        {       
-            if(!Initialized)
+        {     
+            if (!Initialized)
             {
                 //Exited with no error and without even firing OutputDataReceived; probably some external factor.
                 WindowInitialized?.Invoke(this, new WindowInitializedArgs()
@@ -215,9 +215,8 @@ namespace livelywpf.Core
                     string msg = null;
                     try
                     {
-                        msg = "Cefsharp Handle:" + e.Data;
-                        IntPtr handle = new IntPtr();
-                        handle = new IntPtr(Convert.ToInt32(e.Data.Substring(4), 10));
+                        msg = e.Data;
+                        var handle = new IntPtr(Convert.ToInt32(e.Data.Substring(4), 10));
                         //note-handle: WindowsForms10.Window.8.app.0.141b42a_r9_ad1
 
                         //hidin other windows, no longer required since I'm doing it in cefsharp pgm itself.
@@ -248,10 +247,7 @@ namespace livelywpf.Core
                         Initialized = true;
                     }
                 }
-                else
-                {
-                    Logger.Info("CEF:" + e.Data);
-                }
+                Logger.Info("CEF:" + e.Data);
             }
         }
 

@@ -49,7 +49,7 @@ namespace livelywpf.Helpers
         private HWUsageMonitor()
         {
             InitCounters();
-            //HWMonitorService();
+            HWMonitorService();
         }
 
         public void StartService()

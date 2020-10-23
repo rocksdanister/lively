@@ -15,10 +15,6 @@ namespace livelywpf.Core
         Process Proc { get; set; }
         LibraryModel Model { get; set; }
         LivelyScreen Display { get; set; }
-        /// <summary>
-        /// copy of LivelyProperties.json file used to modify for current running screen.
-        /// </summary>
-        //string LivelyPropertyCopy { get; set; }
         private bool Initialized { get; set; }
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
 
@@ -27,7 +23,8 @@ namespace livelywpf.Core
         {
             ProcessStartInfo start = new ProcessStartInfo
             {
-                Arguments = "--path " + "\"" + path + "\"" + " --stream " + (int)streamQuality + " --stretch " + (int)scaler,
+                Arguments = "--path " + "\"" + path + "\"" + " --stream " + (int)streamQuality + 
+                        " --stretch " + (int)scaler + " --datadir " + "\"" + Program.AppDataDir + "\"",
                 FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "libMPVPlayer", "libMPVPlayer.exe"),
                 RedirectStandardInput = true,
                 RedirectStandardOutput = true,
@@ -41,7 +38,6 @@ namespace livelywpf.Core
                 StartInfo = start,
                 EnableRaisingEvents = true
             };
-            //webProcess.OutputDataReceived += WebProcess_OutputDataReceived;
 
             this.Proc = videoPlayerProc;
             this.Model = model;
@@ -149,6 +145,7 @@ namespace livelywpf.Core
             {
                 if (e.Data.Contains("HWND"))
                 {
+                    Logger.Info("MPV:" + e.Data);
                     bool status = true;
                     Exception error = null;
                     string msg = null;
@@ -178,10 +175,7 @@ namespace livelywpf.Core
                         Initialized = true;
                     }
                 }
-                else
-                {
-                    Logger.Info("MPV:" + e.Data);
-                }
+                Logger.Info("libMPV(Ext):" + e.Data);
             }
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows;
@@ -46,6 +47,11 @@ namespace libMPVPlayer
             Default = 0,
             HelpText = "Video Scaling algorithm.")]
             public int StretchMode { get; set; }
+
+            [Option("datadir",
+            Required = false,
+            HelpText = "App data directory")]
+            public string AppDataDir { get; set; }
         }
 
         private void RunOptions(Options opts)
@@ -58,40 +64,48 @@ namespace libMPVPlayer
                     Volume = 0,          
                 };
                 player.MediaError += Player_MediaError1;
-                //flags ref: https://mpv.io/manual/master/
-                //use gpu decoding if preferable.
-                player.API.SetPropertyString("hwdec", "auto");
-                //Enable Windows screensaver.
-                player.API.SetPropertyString("stop-screensaver", "no");
-                //ytdl.
-                player.EnableYouTubeDl();
-                YouTubeDlVideoQuality quality = YouTubeDlVideoQuality.Highest;
-                try 
+                if (File.Exists(Path.Combine(opts.AppDataDir, "mpv", "mpv.conf")))
                 {
-                    quality = (YouTubeDlVideoQuality)(Enum.GetValues(typeof(YouTubeDlVideoQuality))).GetValue(opts.StreamQuality);
+                    Console.WriteLine("Init custom mpv.conf");
+                    player.API.LoadConfigFile(Path.Combine(opts.AppDataDir, "mpv", "mpv.conf"));
                 }
-                catch { }
-                player.YouTubeDlVideoQuality = quality;
-                //video scaling.
-                System.Windows.Media.Stretch stretch = (System.Windows.Media.Stretch)opts.StretchMode;
-                switch (stretch)
+                else
                 {
-                    //I think these are the mpv equivalent scaler settings.
-                    case System.Windows.Media.Stretch.None:
-                        player.API.SetPropertyString("video-unscaled", "yes");
-                        break;
-                    case System.Windows.Media.Stretch.Fill:
-                        player.API.SetPropertyString("keepaspect", "no");
-                        break;
-                    case System.Windows.Media.Stretch.Uniform:
-                        player.API.SetPropertyString("keepaspect", "yes");
-                        break;
-                    case System.Windows.Media.Stretch.UniformToFill:
-                        player.API.SetPropertyString("panscan", "1.0");
-                        break;
-                    default:
-                        player.API.SetPropertyString("keepaspect", "no");
-                        break;
+                    //flags ref: https://mpv.io/manual/master/
+                    //use gpu decoding if preferable.
+                    player.API.SetPropertyString("hwdec", "auto");
+                    //Enable Windows screensaver.
+                    player.API.SetPropertyString("stop-screensaver", "no");
+                    //ytdl.
+                    player.EnableYouTubeDl();
+                    YouTubeDlVideoQuality quality = YouTubeDlVideoQuality.Highest;
+                    try
+                    {
+                        quality = (YouTubeDlVideoQuality)(Enum.GetValues(typeof(YouTubeDlVideoQuality))).GetValue(opts.StreamQuality);
+                    }
+                    catch { }
+                    player.YouTubeDlVideoQuality = quality;
+                    //video scaling.
+                    System.Windows.Media.Stretch stretch = (System.Windows.Media.Stretch)opts.StretchMode;
+                    switch (stretch)
+                    {
+                        //I think these are the mpv equivalent scaler settings.
+                        case System.Windows.Media.Stretch.None:
+                            player.API.SetPropertyString("video-unscaled", "yes");
+                            break;
+                        case System.Windows.Media.Stretch.Fill:
+                            player.API.SetPropertyString("keepaspect", "no");
+                            break;
+                        case System.Windows.Media.Stretch.Uniform:
+                            player.API.SetPropertyString("keepaspect", "yes");
+                            break;
+                        case System.Windows.Media.Stretch.UniformToFill:
+                            player.API.SetPropertyString("panscan", "1.0");
+                            break;
+                        default:
+                            player.API.SetPropertyString("keepaspect", "no");
+                            break;
+                    }
                 }
                 //stream/file.
                 player.Load(opts.FilePath);

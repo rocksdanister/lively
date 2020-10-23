@@ -172,10 +172,7 @@ namespace livelywpf.Core
                         Initialized = true;
                     }
                 }
-                else
-                {
-                    Logger.Info("VLC:" + e.Data);
-                }
+                Logger.Info("libVLC(Ext):" + e.Data);
             }
         }
 

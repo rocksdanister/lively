@@ -20,43 +20,52 @@ namespace livelywpf
             try
             {
                 this.Loaded += MediaPlayer_Loaded;
-                player = new MpvPlayer(PlayerHost.Handle, Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "libMPVPlayer", "lib", "mpv-1.dll"))
+                player = new MpvPlayer(PlayerHost.Handle, 
+                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "libMPVPlayer", "lib", "mpv-1.dll"))
                 {
                     Loop = true,
                     Volume = 0,
                 };
                 player.MediaError += Player_MediaError;
-                player.API.SetPropertyString("hwdec", "auto");
-                switch (stretch)
+                if(File.Exists(Path.Combine(Program.AppDataDir,"mpv","mpv.conf")))
                 {
-                    //I think these are the mpv equivalent scaler settings.
-                    case WallpaperScaler.fill:
-                        player.API.SetPropertyString("keepaspect", "no");
-                        break;
-                    case WallpaperScaler.none:
-                        player.API.SetPropertyString("video-unscaled", "yes");
-                        break;
-                    case WallpaperScaler.uniform:
-                        player.API.SetPropertyString("keepaspect", "yes");
-                        break;
-                    case WallpaperScaler.uniformFill:
-                        player.API.SetPropertyString("panscan", "1.0");
-                        break;
+                    Logger.Info("libMPV: Init custom mpv.conf");
+                    player.API.LoadConfigFile(Path.Combine(Program.AppDataDir, "mpv", "mpv.conf"));
                 }
-                //Enable Windows screensaver
-                player.API.SetPropertyString("stop-screensaver", "no");
+                else
+                {
+                    player.API.SetPropertyString("hwdec", "auto");
+                    switch (stretch)
+                    {
+                        //I think these are the mpv equivalent scaler settings.
+                        case WallpaperScaler.fill:
+                            player.API.SetPropertyString("keepaspect", "no");
+                            break;
+                        case WallpaperScaler.none:
+                            player.API.SetPropertyString("video-unscaled", "yes");
+                            break;
+                        case WallpaperScaler.uniform:
+                            player.API.SetPropertyString("keepaspect", "yes");
+                            break;
+                        case WallpaperScaler.uniformFill:
+                            player.API.SetPropertyString("panscan", "1.0");
+                            break;
+                    }
+                    //Enable Windows screensaver
+                    player.API.SetPropertyString("stop-screensaver", "no");
+                }
                 player.Load(filePath);
                 player.Resume();
             }
             catch (Exception e)
             {
-                Logger.Error("libMPV Init Failure:" + e.ToString());
+                Logger.Error("libMPV: Init Failure=>" + e.ToString());
             }
         }
 
         private void Player_MediaError(object sender, EventArgs e)
         {
-            Logger.Error("libMPV Playback Failure:" + e.ToString());
+            Logger.Error("libMPV: Playback Failure=>" + e.ToString());
             MessageBox.Show(Properties.Resources.LivelyExceptionMediaPlayback);
         }
 
