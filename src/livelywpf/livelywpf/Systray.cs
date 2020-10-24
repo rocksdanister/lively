@@ -139,7 +139,7 @@ namespace livelywpf
         private void CustomiseWallpaper(object sender, EventArgs e)
         {
             var items = SetupDesktop.Wallpapers.FindAll(x => x.GetWallpaperData().LivelyPropertyPath != null);
-            if(items.Count == 1)
+            if (items.Count == 1)
             {
                 //quick wallpaper customise tray widget.
                 var settingsWidget = new Cef.LivelyPropertiesTrayWidget(
@@ -151,7 +151,7 @@ namespace livelywpf
             else
             {
                 //if more than one customisable wallpaper running, open control panel.
-                if(App.AppWindow != null)
+                if (App.AppWindow != null)
                 {
                     App.AppWindow.ShowControlPanelDialog();
                 }
@@ -187,7 +187,7 @@ namespace livelywpf
 
         private void TrayIconVisibility(bool visibility)
         {
-            if(_notifyIcon != null)
+            if (_notifyIcon != null)
             {
                 _notifyIcon.Visible = visibility;
             }

@@ -309,14 +309,14 @@ namespace livelywpf
         }
 
         static readonly SemaphoreSlim semaphoreSlimInstallLock = new SemaphoreSlim(1, 1);
-        public async void WallpaperInstall(string livelyZipPath)
+        public async void WallpaperInstall(string livelyZipPath, bool verifyLivelyZip = true)
         {
             await semaphoreSlimInstallLock.WaitAsync();
             string installDir = null;
             try
             {
                 installDir = Path.Combine(Program.WallpaperDir, "wallpapers", Path.GetRandomFileName());
-                await Task.Run(() => ZipExtract.ZipExtractFile(livelyZipPath, installDir, true));
+                await Task.Run(() => ZipExtract.ZipExtractFile(livelyZipPath, installDir, verifyLivelyZip));
                 AddWallpaper(installDir);
             }
             catch (Exception e)

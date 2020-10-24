@@ -15,6 +15,6 @@
     
     <DockPanel>
         <!--Source="https://www.microsoft.com"-->
-        <wv2:WebView2 Name="webView" NavigationCompleted="webView_NavigationCompleted" CoreWebView2Ready="webView_CoreWebView2Ready" />
+        <wv2:WebView2 Name="webView" NavigationCompleted="webView_NavigationCompleted"/>
     </DockPanel>
 </Window>

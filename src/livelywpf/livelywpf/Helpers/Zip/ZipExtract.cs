@@ -73,5 +73,33 @@ namespace livelywpf
                 }
             }
         }
+
+        /// <summary>
+        /// Verify whether the archive is lively wallpaper format.
+        /// Returns false if corrupted zip.
+        /// </summary>
+        /// <param name="archivePath">Path to .zip file.</param>
+        /// <returns></returns>
+        public static bool CheckLivelyZip(string archivePath)
+        {
+            bool result = true;
+            try
+            {
+                using (Stream fsInput = File.OpenRead(archivePath))
+                using (var zf = new ZipFile(fsInput))
+                {
+
+                    if (zf.FindEntry("LivelyInfo.json", true) == -1)
+                    {
+                        result = false;
+                    }
+                }
+            }
+            catch
+            {
+                result = false;
+            }
+            return result;
+        }
     }
 }

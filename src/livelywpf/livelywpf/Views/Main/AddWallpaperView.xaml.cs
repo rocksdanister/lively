@@ -44,7 +44,17 @@ namespace livelywpf.Views
                         if (type == (WallpaperType)100)
                         {
                             //lively .zip is not a wallpaper type.
-                            Program.LibraryVM.WallpaperInstall(openFileDlg.FileName);
+                            if (ZipExtract.CheckLivelyZip(openFileDlg.FileName))
+                            {
+                                Program.LibraryVM.WallpaperInstall(openFileDlg.FileName, false);
+                            }
+                            else
+                            {
+                                System.Windows.MessageBox.Show(
+                                   Properties.Resources.LivelyExceptionNotLivelyZip,
+                                   Properties.Resources.TextError);
+                                return;
+                            }
                         }
                         else
                         {
@@ -66,7 +76,17 @@ namespace livelywpf.Views
                 {
                     if(FileFilter.LivelySupportedFormats[openFileDlg.FilterIndex - 2].Type == (WallpaperType)100)
                     {
-                        Program.LibraryVM.WallpaperInstall(openFileDlg.FileName);
+                        if(ZipExtract.CheckLivelyZip(openFileDlg.FileName))
+                        {
+                            Program.LibraryVM.WallpaperInstall(openFileDlg.FileName, false);
+                        }
+                        else
+                        {
+                            System.Windows.MessageBox.Show(
+                               Properties.Resources.LivelyExceptionNotLivelyZip,
+                               Properties.Resources.TextError);
+                            return;
+                        }
                     }
                     else
                     {

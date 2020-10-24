@@ -65,9 +65,9 @@ namespace livelywpf
                     app.Run();
                 }
             }
-            finally 
-            { 
-                mutex.ReleaseMutex(); 
+            finally
+            {
+                mutex.ReleaseMutex();
             }
         }
 
@@ -114,7 +114,7 @@ namespace livelywpf
                     try
                     {
                         //download asset format: lively_setup_x86_full_vXXXX.exe, XXXX - 4 digit version no.
-                        var gitUrl = await UpdaterGithub.GetAssetUrl("lively_setup_x86_full", 
+                        var gitUrl = await UpdaterGithub.GetAssetUrl("lively_setup_x86_full",
                             gitRelease, "lively", "rocksdanister");
 
                         //changelog text
@@ -125,14 +125,14 @@ namespace livelywpf
                         sb.Clear();
                         gitUpdateUri = new Uri(gitUrl);
 
-                        if(App.AppWindow.IsVisible)
+                        if (App.AppWindow.IsVisible)
                         {
                             ShowUpdateDialog();
                         }
                         else
                         {
                             _showUpdateDialog = true;
-                            sysTray.ShowBalloonNotification(4000, 
+                            sysTray.ShowBalloonNotification(4000,
                                 Properties.Resources.TitleAppName,
                                 Properties.Resources.DescriptionUpdateAvailable);
                         }
@@ -209,7 +209,7 @@ namespace livelywpf
             if (App.AppWindow != null)
             {
                 //Exit firstrun setupwizard.
-                if(setupWizard != null)
+                if (setupWizard != null)
                 {
                     SettingsVM.Settings.IsFirstRun = false;
                     SettingsVM.UpdateConfigFile();

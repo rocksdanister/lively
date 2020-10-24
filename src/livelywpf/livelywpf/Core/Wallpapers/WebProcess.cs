@@ -56,7 +56,7 @@ namespace livelywpf.Core
             cmdArgs.Append("--url " + "\"" + path + "\"" + " --display " + "\"" + display + "\"");
             cmdArgs.Append(model.LivelyInfo.Type == WallpaperType.url ? " --type online" : " --type local" + " --property " + "\"" + LivelyPropertyCopy + "\"");
             //Fail to send empty string as arg; "debug" is set as optional variable in cmdline parser library.
-            if(!string.IsNullOrWhiteSpace(Program.SettingsVM.Settings.WebDebugPort))
+            if (!string.IsNullOrWhiteSpace(Program.SettingsVM.Settings.WebDebugPort))
             {
                 cmdArgs.Append(" --debug " + Program.SettingsVM.Settings.WebDebugPort);
             }
@@ -178,7 +178,7 @@ namespace livelywpf.Core
                     Proc.Start();
                     Proc.BeginOutputReadLine();
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = false, Error = e, Msg = "Failed to start process." });
                     Close();
@@ -187,7 +187,7 @@ namespace livelywpf.Core
         }
 
         private void Proc_Exited(object sender, EventArgs e)
-        {     
+        {
             if (!Initialized)
             {
                 //Exited with no error and without even firing OutputDataReceived; probably some external factor.

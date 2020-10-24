@@ -46,10 +46,10 @@ Help translate lively to other languages: <a href="https://github.com/rocksdanis
 * Runs webgl, javascript .. basically anything that works on chrome.
 * Audio Reactive Wallpaper support, create wallpapers that react to <a href="https://github.com/rocksdanister/lively/wiki/Web-Guide-II-:-System-Audio-Data">system audio</a>
 * Customisation support, <a href="https://github.com/rocksdanister/lively/wiki/Web-Guide-IV-:-Interaction">documentation.</a>
-#### Youtube & streams
+#### Video Streams
 <img src="/resources/wallpaper_yt.gif" width="600" height="338"/>
 
-* Just drag & drop youtube link to set as desktop wallpaper.
+* Just drag & drop stream links.
 * Video quality is adjustable in settings.
 #### Shaders
 <img src="/resources/wallpaper_shadertoy.gif" width="600" height="338"/>

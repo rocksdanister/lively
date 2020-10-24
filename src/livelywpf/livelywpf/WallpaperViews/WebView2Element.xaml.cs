@@ -1,4 +1,4 @@
-﻿using Microsoft.Web.WebView2.Wpf;
+﻿//using Microsoft.Web.WebView2.Wpf;
 using Newtonsoft.Json;
 using System;
 using System.IO;
@@ -22,13 +22,30 @@ namespace livelywpf
 
         public WebView2Element(string path, WallpaperType type, string livelyPropertyPath)
         {
+            InitializeComponent();
             this.htmlPath = path;
             this.livelyPropertyPath = livelyPropertyPath;
             this.wallpaperType = type;
-            InitializeComponent();
+            InitWebView();
+        }
+
+        private async void InitWebView()
+        {
+            await webView.EnsureCoreWebView2Async();
+            //only after await, null otherwise.
             webView.CoreWebView2.ProcessFailed += CoreWebView2_ProcessFailed;
-            webView.EnsureCoreWebView2Async();
-            this.Loaded += WebView2Element_Loaded;
+
+            //TODO:
+            //link checking
+            //cross-origin request fix for disk files.
+            if (wallpaperType == WallpaperType.url && htmlPath.Contains("shadertoy.com/view"))
+            {
+                webView.CoreWebView2.NavigateToString(ShadertoyURLtoEmbedLink(htmlPath));
+            }
+            else
+            {
+                webView.CoreWebView2.Navigate(htmlPath);
+            }
         }
 
         private void WebView2Element_Loaded(object sender, RoutedEventArgs e)
@@ -40,25 +57,11 @@ namespace livelywpf
             this.ShowInTaskbar = true;
         }
 
-        private void webView_CoreWebView2Ready(object sender, EventArgs e)
-        {
-            //todo: 
-            //link checking
-            //cross-origin request fix for disk files.
-            if(wallpaperType == WallpaperType.url && htmlPath.Contains("shadertoy.com/view"))
-            {
-                webView.CoreWebView2.NavigateToString(ShadertoyURLtoEmbedLink(htmlPath));   
-            }
-            else
-            {
-                webView.CoreWebView2.Navigate(htmlPath);
-            }
-        }
-
         private void webView_NavigationCompleted(object sender, Microsoft.Web.WebView2.Core.CoreWebView2NavigationCompletedEventArgs e)
         {
             RestoreLivelyProperties(livelyPropertyPath);
         }
+
         private void CoreWebView2_ProcessFailed(object sender, Microsoft.Web.WebView2.Core.CoreWebView2ProcessFailedEventArgs e)
         {
             Logger.Error("Webview2: fail=>" + e.ToString());

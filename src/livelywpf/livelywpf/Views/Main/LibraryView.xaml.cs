@@ -236,8 +236,20 @@ namespace livelywpf.Views
                             }
                             else if(type == (WallpaperType)100)
                             {
+                                //lively wallpaper .zip
                                 //todo: Show warning if program (.exe) wallpaper.
-                                Program.LibraryVM.WallpaperInstall(item);
+                                if(ZipExtract.CheckLivelyZip(item))
+                                {
+                                    Program.LibraryVM.WallpaperInstall(item, false);
+                                }
+                                else
+                                {
+                                    await Helpers.DialogService.ShowConfirmationDialog(
+                                      Properties.Resources.TextError,
+                                      Properties.Resources.LivelyExceptionNotLivelyZip,
+                                      ((UIElement)sender).XamlRoot,
+                                      Properties.Resources.TextClose);
+                                }
                             }
                             else
                             {
