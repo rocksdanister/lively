@@ -17,6 +17,7 @@ namespace livelywpf
         public static string WallpaperDir;
         public static readonly string AppDataDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Lively Wallpaper");
         public static readonly bool IsMSIX = false;//new DesktopBridge.Helpers().IsRunningAsUwp();
+        public static readonly bool IsTestBuild = false;
 
         //todo: use singleton or something instead?
         public static SettingsViewModel SettingsVM;
@@ -107,7 +108,16 @@ namespace livelywpf
 
             try
             {
-                var gitRelease = await UpdaterGithub.GetLatestRelease("lively", "rocksdanister", 45000);
+                Octokit.Release gitRelease;
+                if (IsTestBuild)
+                {
+                    gitRelease = await UpdaterGithub.GetLatestRelease("lively-beta", "rocksdanister", 45000);
+                }
+                else
+                {
+                    gitRelease = await UpdaterGithub.GetLatestRelease("lively", "rocksdanister", 45000);
+                }
+
                 int result = UpdaterGithub.CompareAssemblyVersion(gitRelease);
                 if (result > 0)
                 {

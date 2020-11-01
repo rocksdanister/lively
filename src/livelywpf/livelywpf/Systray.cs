@@ -97,10 +97,8 @@ namespace livelywpf
 
                 var mousePos = Cursor.Position;
                 //Converting global cursor pos. to given screen pos.
-                mousePos.X += mousePos.X < 0 ?
-                    SystemInformation.VirtualScreen.Width - Screen.PrimaryScreen.Bounds.Width : -Math.Abs(screen.Bounds.X);
-                mousePos.Y += mousePos.Y < 0 ?
-                    SystemInformation.VirtualScreen.Height - Screen.PrimaryScreen.Bounds.Height : -Math.Abs(screen.Bounds.Y);
+                mousePos.X += -1 * screen.Bounds.X;
+                mousePos.Y += -1 * screen.Bounds.Y;
 
                 //guessing taskbar pos. based on cursor pos. on display.
                 bool isLeft = mousePos.X < screen.Bounds.Width * .5;

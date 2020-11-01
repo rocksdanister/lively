@@ -88,7 +88,7 @@ namespace livelywpf.Core
                                 //SetupDesktop.MouseRBtnDownSimulate(M.X, M.Y);
                                 break;
                             case Linearstar.Windows.RawInput.Native.RawMouseButtonFlags.RightButtonUp:
-                                //issue: click being skipped.
+                                //issue: click being skipped; desktop already has its own rightclick contextmenu.
                                 //SetupDesktop.MouseRBtnUpSimulate(M.X, M.Y);
                                 break;
                             case Linearstar.Windows.RawInput.Native.RawMouseButtonFlags.None:
@@ -224,23 +224,8 @@ namespace livelywpf.Core
                 }
                 else //per-display or duplicate mode.
                 {
-                    if (x < 0)
-                    {
-                        x = SystemInformation.VirtualScreen.Width + x - Screen.PrimaryScreen.Bounds.Width;
-                    }
-                    else
-                    {
-                        x -= Math.Abs(display.Bounds.X);
-                    }
-
-                    if (y < 0)
-                    {
-                        y = SystemInformation.VirtualScreen.Height + y - Screen.PrimaryScreen.Bounds.Height;
-                    }
-                    else
-                    {
-                        y -= Math.Abs(display.Bounds.Y);
-                    }
+                    x += -1 * display.Bounds.X;
+                    y += -1 * display.Bounds.Y;
                 }
             }
             return new Point(x, y);

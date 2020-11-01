@@ -707,18 +707,18 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Przetwarzam</value>
   </data>
   <data name="TextTitle" xml:space="preserve">
-    <value>Title</value>
+    <value>Tytuł</value>
   </data>
   <data name="TextDescription" xml:space="preserve">
-    <value>Description</value>
+    <value>Opis</value>
   </data>
   <data name="TextOK" xml:space="preserve">
     <value>OK</value>
   </data>
   <data name="TextCancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Anuluj</value>
   </data>
   <data name="TextCreatePreview" xml:space="preserve">
-    <value>Create Preview</value>
+    <value>Stwórz podgląd</value>
   </data>    
 </root>

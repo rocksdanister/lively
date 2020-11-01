@@ -83,6 +83,11 @@ namespace livelywpf
         public WallpaperScaler WallpaperScaling { get; set; }
         public bool CefDiskCache { get; set; }
         public bool DebugMenu { get; set; }
+        /// <summary>
+        /// Fetch beta lively release updates from lively-beta repository.
+        /// {Unused currently.}
+        /// </summary>
+        public bool TestBuild { get; set; }
 
         public SettingsModel()
         {
@@ -134,6 +139,7 @@ namespace livelywpf
             WallpaperScaling = WallpaperScaler.fill;
             CefDiskCache = false;
             DebugMenu = false;
+            TestBuild = false;
         }
     }
 }

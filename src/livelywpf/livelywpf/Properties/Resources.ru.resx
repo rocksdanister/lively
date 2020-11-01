@@ -712,15 +712,15 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Title</value>
   </data>
   <data name="TextDescription" xml:space="preserve">
-    <value>Description</value>
+    <value>Описание</value>
   </data>
   <data name="TextOK" xml:space="preserve">
-    <value>OK</value>
+    <value>Ок</value>
   </data>
   <data name="TextCancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Отмена</value>
   </data>
   <data name="TextCreatePreview" xml:space="preserve">
-    <value>Create Preview</value>
+    <value>Создать предпросмотр</value>
   </data>  
 </root>

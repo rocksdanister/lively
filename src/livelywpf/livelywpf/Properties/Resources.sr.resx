@@ -690,18 +690,18 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Startuj sa Windowsom</value>
   </data>
   <data name="TextTitle" xml:space="preserve">
-    <value>Title</value>
+    <value>Titl</value>
   </data>
   <data name="TextDescription" xml:space="preserve">
-    <value>Description</value>
+    <value>Deskripcija</value>
   </data>
   <data name="TextOK" xml:space="preserve">
     <value>OK</value>
   </data>
   <data name="TextCancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Otkaži</value>
   </data>
   <data name="TextCreatePreview" xml:space="preserve">
-    <value>Create Preview</value>
+    <value>Napravi Pregled</value>
   </data>
 </root>

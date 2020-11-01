@@ -40,6 +40,7 @@ namespace livelywpf.Helpers
             dispatcherTimer.Tick += new EventHandler(TimerFunc);
             dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 1000);
             dispatcherTimer.Start();
+            StartService();
         }
 
         public void StartService()

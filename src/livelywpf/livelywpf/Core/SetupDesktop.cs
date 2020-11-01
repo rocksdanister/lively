@@ -37,9 +37,14 @@ namespace livelywpf
 
         #region core
 
+        public static IntPtr GetWorkerW()
+        {
+            return workerw;
+        }
+
         public static void SetWallpaper(LibraryModel wp, LivelyScreen targetDisplay)
         {
-            Logger.Info("Core: Setting Wallpaper=>" + wp.Title);
+            Logger.Info("Core: Setting Wallpaper=>" + wp.FilePath);
             if (SystemParameters.HighContrast)
             {
                 Logger.Error("Failed to setup workers, high contrast mode!");
@@ -124,12 +129,12 @@ namespace livelywpf
                 return;
             }
 
-            if(wp.LivelyInfo.Type == WallpaperType.web 
+            if (wp.LivelyInfo.Type == WallpaperType.web 
                 || wp.LivelyInfo.Type == WallpaperType.webaudio 
                 || wp.LivelyInfo.Type == WallpaperType.url)
             {
 
-                if(Program.SettingsVM.Settings.WebBrowser == LivelyWebBrowser.cef)
+                if (Program.SettingsVM.Settings.WebBrowser == LivelyWebBrowser.cef)
                 {
                     wp.ItemStartup = true;
                     var item = new WebProcess(wp.FilePath, wp, targetDisplay);
@@ -137,7 +142,7 @@ namespace livelywpf
                     wallpapersPending.Add(item);
                     item.Show();
                 }
-                else if(Program.SettingsVM.Settings.WebBrowser == LivelyWebBrowser.webview2)
+                else if (Program.SettingsVM.Settings.WebBrowser == LivelyWebBrowser.webview2)
                 {
                     wp.ItemStartup = true;
                     var item = new WebEdge(wp.FilePath, wp, targetDisplay);
@@ -146,7 +151,7 @@ namespace livelywpf
                     item.Show();
                 }
             }
-            else if(wp.LivelyInfo.Type == WallpaperType.app
+            else if (wp.LivelyInfo.Type == WallpaperType.app
                 || wp.LivelyInfo.Type == WallpaperType.godot
                 || wp.LivelyInfo.Type == WallpaperType.unity)
             {
@@ -164,10 +169,10 @@ namespace livelywpf
                 wallpapersPending.Add(item);
                 item.Show();
             }
-            else if(wp.LivelyInfo.Type == WallpaperType.video)
+            else if (wp.LivelyInfo.Type == WallpaperType.video)
             {
                 //How many videoplayers? Yes.
-                if(Program.SettingsVM.Settings.VideoPlayer == LivelyMediaPlayer.libmpv)
+                if (Program.SettingsVM.Settings.VideoPlayer == LivelyMediaPlayer.libmpv)
                 {
                     wp.ItemStartup = true;
                     var item = new VideoPlayerMPV(wp.FilePath, wp, 
@@ -176,7 +181,7 @@ namespace livelywpf
                     wallpapersPending.Add(item);
                     item.Show();
                 }
-                else if(Program.SettingsVM.Settings.VideoPlayer == LivelyMediaPlayer.libmpvExt)
+                else if (Program.SettingsVM.Settings.VideoPlayer == LivelyMediaPlayer.libmpvExt)
                 {
                     wp.ItemStartup = true;
                     var item = new VideoPlayerMPVExt(wp.FilePath, wp, targetDisplay, 
@@ -185,7 +190,7 @@ namespace livelywpf
                     wallpapersPending.Add(item);
                     item.Show();
                 }
-                else if(Program.SettingsVM.Settings.VideoPlayer == LivelyMediaPlayer.libvlc)
+                else if (Program.SettingsVM.Settings.VideoPlayer == LivelyMediaPlayer.libvlc)
                 {
                     wp.ItemStartup = true;
                     var item = new VideoPlayerVLC(wp.FilePath, wp, targetDisplay);
@@ -193,7 +198,7 @@ namespace livelywpf
                     wallpapersPending.Add(item);
                     item.Show();
                 }
-                else if(Program.SettingsVM.Settings.VideoPlayer == LivelyMediaPlayer.libvlcExt)
+                else if (Program.SettingsVM.Settings.VideoPlayer == LivelyMediaPlayer.libvlcExt)
                 {
                     wp.ItemStartup = true;
                     var item = new VideoPlayerVLCExt(wp.FilePath, wp, targetDisplay);
@@ -201,7 +206,7 @@ namespace livelywpf
                     wallpapersPending.Add(item);
                     item.Show();
                 }
-                else if(Program.SettingsVM.Settings.VideoPlayer == LivelyMediaPlayer.wmf)
+                else if (Program.SettingsVM.Settings.VideoPlayer == LivelyMediaPlayer.wmf)
                 {
                     var item = new VideoPlayerWPF(wp.FilePath, wp, 
                         targetDisplay, Program.SettingsVM.Settings.WallpaperScaling);
@@ -210,9 +215,9 @@ namespace livelywpf
                     item.Show();
                 }
             }
-            else if(wp.LivelyInfo.Type == WallpaperType.videostream)
+            else if (wp.LivelyInfo.Type == WallpaperType.videostream)
             {
-                if(Program.SettingsVM.Settings.StreamVideoPlayer == LivelyMediaPlayer.libmpvExt)
+                if (Program.SettingsVM.Settings.StreamVideoPlayer == LivelyMediaPlayer.libmpvExt)
                 {
                     wp.ItemStartup = true;
                     var item = new VideoPlayerMPVExt(wp.FilePath, wp, targetDisplay, 
@@ -221,7 +226,7 @@ namespace livelywpf
                     wallpapersPending.Add(item);
                     item.Show();
                 }
-                else if(Program.SettingsVM.Settings.StreamVideoPlayer == LivelyMediaPlayer.libvlcExt)
+                else if (Program.SettingsVM.Settings.StreamVideoPlayer == LivelyMediaPlayer.libvlcExt)
                 {
                     wp.ItemStartup = true;
                     var item = new VideoPlayerVLC(wp.FilePath, wp, targetDisplay);
@@ -230,7 +235,7 @@ namespace livelywpf
                     item.Show();
                 }
             }
-            else if(wp.LivelyInfo.Type == WallpaperType.gif || wp.LivelyInfo.Type == WallpaperType.picture)
+            else if (wp.LivelyInfo.Type == WallpaperType.gif || wp.LivelyInfo.Type == WallpaperType.picture)
             {
                 var item = new GIFPlayerUWP(wp.FilePath, wp, 
                     targetDisplay, Program.SettingsVM.Settings.WallpaperScaling);

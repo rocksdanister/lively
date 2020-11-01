@@ -134,8 +134,7 @@ namespace livelywpf.Views
             }
 
             if (Program.SettingsVM.Settings.AutoDetectOnlineStreams &&
-                 Program.SettingsVM.Settings.StreamVideoPlayer == LivelyMediaPlayer.libmpvExt ?
-                 libMPVStreams.CheckStream(uri) : libVLCStreams.CheckStream(uri))
+                 libMPVStreams.CheckStream(uri))
             {
                 Program.LibraryVM.AddWallpaper(uri.ToString(),
                     WallpaperType.videostream,

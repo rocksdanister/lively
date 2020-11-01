@@ -66,7 +66,6 @@ namespace livelywpf
         private void Player_MediaError(object sender, EventArgs e)
         {
             Logger.Error("libMPV: Playback Failure=>" + e.ToString());
-            MessageBox.Show(Properties.Resources.LivelyExceptionMediaPlayback);
         }
 
         private void MediaPlayer_Loaded(object sender, RoutedEventArgs e)

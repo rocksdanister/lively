@@ -1,4 +1,5 @@
-﻿//using Microsoft.Web.WebView2.Wpf;
+﻿using Microsoft.Web.WebView2.Core;
+using Mpv.NET.Player;
 using Newtonsoft.Json;
 using System;
 using System.IO;
@@ -6,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Interop;
+//using Microsoft.Web.WebView2.Wpf;
 
 namespace livelywpf
 {
@@ -29,22 +31,47 @@ namespace livelywpf
             InitWebView();
         }
 
+        //TODO:
+        //link checking
+        //cross-origin request fix for disk files.
+        //custom cache path.
         private async void InitWebView()
         {
-            await webView.EnsureCoreWebView2Async();
-            //only after await, null otherwise.
-            webView.CoreWebView2.ProcessFailed += CoreWebView2_ProcessFailed;
+            try
+            {
+                await webView.EnsureCoreWebView2Async();
+                //only after await, null otherwise.
+                webView.CoreWebView2.ProcessFailed += CoreWebView2_ProcessFailed;
 
-            //TODO:
-            //link checking
-            //cross-origin request fix for disk files.
-            if (wallpaperType == WallpaperType.url && htmlPath.Contains("shadertoy.com/view"))
-            {
-                webView.CoreWebView2.NavigateToString(ShadertoyURLtoEmbedLink(htmlPath));
+                if(wallpaperType == WallpaperType.url)
+                {
+                    string ytVideoId = "test";
+                    if (htmlPath.Contains("shadertoy.com/view"))
+                    {
+                        webView.CoreWebView2.NavigateToString(ShadertoyURLtoEmbedLink(htmlPath));
+                    }
+                    else if ((ytVideoId = Helpers.libMPVStreams.GetYouTubeVideoIdFromUrl(htmlPath)) != "")
+                    {
+                        //open fullscreen embed player with loop enabled.
+                        webView.CoreWebView2.Navigate("https://www.youtube.com/embed/" + ytVideoId + 
+                            "?version=3&rel=0&autoplay=1&loop=1&controls=0&playlist="+ytVideoId);
+                    }
+                    else
+                    {
+                        webView.CoreWebView2.Navigate(htmlPath);
+                    }
+                    Logger.Debug("YTVIDID:" + ytVideoId);
+                }
+                else
+                {
+                    webView.CoreWebView2.Navigate(htmlPath);
+                }
             }
-            else
+            catch(Exception e)
             {
-                webView.CoreWebView2.Navigate(htmlPath);
+                Logger.Error("Webview2: fail=>" + e.ToString());
+                //To avoid blinding white color.
+                webView.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -279,10 +306,7 @@ namespace livelywpf
                     }.Uri;
                     shadertoylink = uri.ToString();
                 }
-                catch
-                {
-                    
-                }
+                catch { }
             }
 
             shadertoylink = shadertoylink.Replace("view/", "embed/");

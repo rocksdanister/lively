@@ -24,7 +24,7 @@ namespace livelywpf
             if (Settings == null)
             {
                 Settings = new SettingsModel();
-                SettingsJSON.SaveConfig(Path.Combine(Program.AppDataDir, "Settings.json"), Settings);
+                UpdateConfigFile();
             }
 
             //lang-codes: https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-lcid/a9eac961-e77d-41a6-90a5-ce1a8b0cdb9c
@@ -42,6 +42,7 @@ namespace livelywpf
                 new LanguagesModel("عربى(ar-AE)", new string[]{"ar"}),
                 new LanguagesModel("Française(fr)", new string[]{"fr"}),
                 new LanguagesModel("Deutsche(de)", new string[]{"de"}),
+                new LanguagesModel("język polski(pl)", new string[]{"pl", "pl-PL"}),
                 new LanguagesModel("Português(pt)", new string[]{"pt"}),
                 new LanguagesModel("Português(pt-BR)", new string[]{"pt-BR"}),
                 new LanguagesModel("Filipino(fil)", new string[]{"fil", "fil-PH"}),

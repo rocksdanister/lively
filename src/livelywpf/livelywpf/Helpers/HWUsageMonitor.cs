@@ -100,9 +100,9 @@ namespace livelywpf.Helpers
                         Logger.Info("PerfCounter: Stopped");
                         break;
                     }
-                    catch (Exception ex)
+                    catch 
                     {
-                        Logger.Error("PerfCounter: Timer fail=>" + ex.Message);
+                        //Logger.Error("PerfCounter: Timer fail=>" + ex.Message);
                     }
                     HWMonitor?.Invoke(this, perfData);
                 }

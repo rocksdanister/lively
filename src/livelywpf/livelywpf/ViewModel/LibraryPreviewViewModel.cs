@@ -41,8 +41,11 @@ namespace livelywpf
 
                 try
                 {
-                    //wallpaper.GetProcess().Refresh();
-                    Title = wallpaper.GetProcess().MainWindowTitle;
+                    if(wallpaper.GetProcess() != null)
+                    {
+                        //wallpaper.GetProcess().Refresh();
+                        Title = wallpaper.GetProcess().MainWindowTitle;
+                    }
                 }
                 catch { }
 

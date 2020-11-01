@@ -19,7 +19,8 @@ namespace livelywpf.Views
         public AboutView()
         {
             InitializeComponent();
-            appVersionText.Text = "v" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            appVersionText.Text = "v" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() + 
+                (Program.IsTestBuild == true? "b":string.Empty);
             try
             {
                 //attribution document.

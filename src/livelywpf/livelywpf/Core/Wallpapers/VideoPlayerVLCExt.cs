@@ -148,7 +148,7 @@ namespace livelywpf.Core
                     string msg = null;
                     try
                     {
-                        msg = "libVLCPlayer Handle:" + e.Data;
+                        msg = e.Data;
                         IntPtr handle = new IntPtr();
                         handle = new IntPtr(Convert.ToInt32(e.Data.Substring(4), 10));
                         if (IntPtr.Equals(handle, IntPtr.Zero))//unlikely.

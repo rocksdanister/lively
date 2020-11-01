@@ -145,7 +145,6 @@ namespace livelywpf.Core
             {
                 if (e.Data.Contains("HWND"))
                 {
-                    Logger.Info("MPV:" + e.Data);
                     bool status = true;
                     Exception error = null;
                     string msg = null;

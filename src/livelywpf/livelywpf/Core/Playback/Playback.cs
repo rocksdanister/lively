@@ -123,7 +123,7 @@ namespace livelywpf.Core
             }
             catch
             {
-                Logger.Info("Getting processname failure, resuming playback!");
+                //Logger.Info("Getting processname failure, resuming playback!");
                 //ignore - admin process etc
                 PlayWallpapers();
                 return;

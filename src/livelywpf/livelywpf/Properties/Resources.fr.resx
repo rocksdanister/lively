@@ -704,7 +704,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Processus en cours...</value>
   </data>
   <data name="TextTitle" xml:space="preserve">
-    <value>Title</value>
+    <value>Titre</value>
   </data>
   <data name="TextDescription" xml:space="preserve">
     <value>Description</value>
@@ -713,9 +713,9 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>OK</value>
   </data>
   <data name="TextCancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Annuler</value>
   </data>
   <data name="TextCreatePreview" xml:space="preserve">
-    <value>Create Preview</value>
+    <value>Créer un Preview</value>
   </data>  
 </root>

@@ -170,6 +170,7 @@ namespace livelywpf.Core
                 }
                 catch(InvalidOperationException e2)
                 {
+                    //No GUI, program failed to enter idle state.
                     WindowInitialized?.Invoke(this, new WindowInitializedArgs() { 
                         Success = false,
                         Error = e2,
@@ -203,19 +204,11 @@ namespace livelywpf.Core
                 return IntPtr.Zero;
             }
 
-            try
+            Proc.Refresh();
+            //waiting for program messageloop to be ready (GUI is not guaranteed to be ready.)
+            while (Proc.WaitForInputIdle(-1) != true)
             {
-                Proc.Refresh();
-                //waiting for program messageloop to be ready (GUI is not guaranteed to be ready.)
-                while (Proc.WaitForInputIdle(-1) != true) 
-                {
-                    ctsProcessWait.Token.ThrowIfCancellationRequested();
-                }
-            }
-            catch (InvalidOperationException)
-            {
-                //No GUI, program failed to enter idle state.
-                throw new OperationCanceledException();
+                ctsProcessWait.Token.ThrowIfCancellationRequested();
             }
 
             IntPtr wHWND = IntPtr.Zero;
@@ -283,7 +276,7 @@ namespace livelywpf.Core
             }
             else
             {
-                Proc.Refresh();
+                proc.Refresh();
                 //Issue(.net core) MainWindowHandle zero: https://github.com/dotnet/runtime/issues/32690
                 return proc.MainWindowHandle;
             }
@@ -373,7 +366,7 @@ namespace livelywpf.Core
 
         public void Resume()
         {
-            throw new NotImplementedException();
+
         }
 
         public void SetVolume(int volume)
