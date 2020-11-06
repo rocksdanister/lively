@@ -436,7 +436,6 @@ namespace livelywpf
 
                     WallpaperRestart(WallpaperType.videostream);
                     WallpaperRestart(WallpaperType.video);
-                    WallpaperRestart(WallpaperType.video);
                     WallpaperRestart(WallpaperType.gif);
                     WallpaperRestart(WallpaperType.picture);
                 }
@@ -495,6 +494,7 @@ namespace livelywpf
                 {
                     Settings.StreamQuality = (StreamQualitySuggestion)_selectedWallpaperStreamQualityIndex;
                     UpdateConfigFile();
+
                     WallpaperRestart(WallpaperType.videostream);
                 }
             }
@@ -516,6 +516,7 @@ namespace livelywpf
                 {
                     Settings.WebBrowser = (LivelyWebBrowser)_selectedWebBrowserIndex;
                     UpdateConfigFile();
+
                     WallpaperRestart(WallpaperType.web);
                     WallpaperRestart(WallpaperType.webaudio);
                     WallpaperRestart(WallpaperType.url);

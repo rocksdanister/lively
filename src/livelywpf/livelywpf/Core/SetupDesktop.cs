@@ -44,7 +44,7 @@ namespace livelywpf
 
         public static void SetWallpaper(LibraryModel wp, LivelyScreen targetDisplay)
         {
-            Logger.Info("Core: Setting Wallpaper=>" + wp.FilePath);
+            Logger.Info("Core: Setting Wallpaper=>" + wp.Title + " " + wp.FilePath);
             if (SystemParameters.HighContrast)
             {
                 Logger.Error("Failed to setup workers, high contrast mode!");
@@ -217,19 +217,21 @@ namespace livelywpf
             }
             else if (wp.LivelyInfo.Type == WallpaperType.videostream)
             {
-                if (Program.SettingsVM.Settings.StreamVideoPlayer == LivelyMediaPlayer.libmpvExt)
+                if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "libMPVPlayer", "lib", "youtube-dl.exe")))
                 {
                     wp.ItemStartup = true;
-                    var item = new VideoPlayerMPVExt(wp.FilePath, wp, targetDisplay, 
+                    var item = new VideoPlayerMPVExt(wp.FilePath, wp, targetDisplay,
                         Program.SettingsVM.Settings.WallpaperScaling, Program.SettingsVM.Settings.StreamQuality);
                     item.WindowInitialized += SetupDesktop_WallpaperInitialized;
                     wallpapersPending.Add(item);
                     item.Show();
                 }
-                else if (Program.SettingsVM.Settings.StreamVideoPlayer == LivelyMediaPlayer.libvlcExt)
+                else
                 {
+                    Logger.Info("Core: yt-dl not found, using cef browser instead.");
+                    //note: wallpaper type will be videostream, don't forget..
                     wp.ItemStartup = true;
-                    var item = new VideoPlayerVLC(wp.FilePath, wp, targetDisplay);
+                    var item = new WebProcess(wp.FilePath, wp, targetDisplay);
                     item.WindowInitialized += SetupDesktop_WallpaperInitialized;
                     wallpapersPending.Add(item);
                     item.Show();
@@ -583,7 +585,7 @@ namespace livelywpf
                     var width = System.Windows.Forms.SystemInformation.VirtualScreen.Width;
                     var height = System.Windows.Forms.SystemInformation.VirtualScreen.Height;
                     Logger.Info("System parameters changed: Screen Param(Span)=>" + width + " " + height);
-                    NativeMethods.SetWindowPos(Wallpapers[0].GetHWND(), 1, 0, 0, width, height, 0 | 0x0010);   
+                    //NativeMethods.SetWindowPos(Wallpapers[0].GetHWND(), 1, 0, 0, width, height, 0 | 0x0010);   
                     Wallpapers[0].SetScreen(ScreenHelper.GetPrimaryScreen());
                 }
             }
@@ -595,12 +597,14 @@ namespace livelywpf
                     if ((i = Wallpapers.FindIndex(x => ScreenHelper.ScreenCompare(item, x.GetScreen(), DisplayIdentificationMode.screenClass))) != -1)
                     {
                         Logger.Info("System parameters changed: Screen Param old/new -> " + Wallpapers[i].GetScreen().Bounds + "/" + item.Bounds);
+                        /*
                         NativeMethods.RECT prct = new NativeMethods.RECT();
                         NativeMethods.MapWindowPoints(Wallpapers[i].GetHWND(), workerw, ref prct, 2);
                         if (!NativeMethods.SetWindowPos(Wallpapers[i].GetHWND(), 1, prct.Left, prct.Top, (item.Bounds.Width), (item.Bounds.Height), 0 | 0x0010))
                         {
                             NLogger.LogWin32Error("setwindowpos(3) fail UpdateWallpaperRect()=>");
-                        }                        
+                        }       
+                        */
                         Wallpapers[i].SetScreen(item);                 
                     }
                 }

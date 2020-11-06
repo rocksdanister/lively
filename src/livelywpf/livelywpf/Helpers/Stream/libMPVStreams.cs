@@ -13,8 +13,6 @@ namespace livelywpf.Helpers
         public static bool CheckStream(Uri uri)
         {
             bool status = false;
-            var mpvLibPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "libMPVPlayer", "lib");
-
             string host;
             string url;
             try
@@ -34,11 +32,11 @@ namespace livelywpf.Helpers
                 case "www.youtu.be":
                 case "www.youtube.com":
                     if (GetYouTubeVideoIdFromUrl(uri, false) != "")
-                        status = File.Exists(Path.Combine(mpvLibPath, "youtube-dl.exe"));
+                        status = true;
                     break;
                 case "www.bilibili.com":
                     if (url.Contains("bilibili.com/video/"))
-                        status = File.Exists(Path.Combine(mpvLibPath, "youtube-dl.exe"));
+                        status = true;
                     break;
             }
             return status;

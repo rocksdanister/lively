@@ -5,7 +5,6 @@ using System.Windows.Interop;
 using Windows.Foundation.Metadata;
 using Windows.UI.Xaml.Media.Imaging;
 
-
 namespace livelywpf
 {
     /// <summary>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Windows;
 using System.Windows.Interop;
 using livelywpf.Core;
@@ -114,10 +115,23 @@ namespace livelywpf.Views
             }
             else if (wp.LivelyInfo.Type == WallpaperType.videostream)
             {
-                wp.ItemStartup = true;
-                var item = new VideoPlayerVLC(wp.FilePath, wp, targetDisplay);
-                item.WindowInitialized += SetupDesktop_WallpaperInitialized;
-                item.Show();
+                if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "libMPVPlayer", "lib", "youtube-dl.exe")))
+                {
+                    wp.ItemStartup = true;
+                    var item = new VideoPlayerMPVExt(wp.FilePath, wp, targetDisplay,
+                        Program.SettingsVM.Settings.WallpaperScaling, Program.SettingsVM.Settings.StreamQuality);
+                    item.WindowInitialized += SetupDesktop_WallpaperInitialized;
+                    item.Show();
+                }
+                else
+                {
+                    Logger.Info("Wallpaper Preview: yt-dl not found, using cef browser instead.");
+                    //note: wallpaper type will be videostream, don't forget..
+                    wp.ItemStartup = true;
+                    var item = new WebProcess(wp.FilePath, wp, targetDisplay);
+                    item.WindowInitialized += SetupDesktop_WallpaperInitialized;
+                    item.Show();
+                }
             }
             else if (wp.LivelyInfo.Type == WallpaperType.gif || wp.LivelyInfo.Type == WallpaperType.picture)
             {

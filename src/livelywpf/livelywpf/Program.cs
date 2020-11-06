@@ -108,24 +108,19 @@ namespace livelywpf
 
             try
             {
-                Octokit.Release gitRelease;
-                if (IsTestBuild)
-                {
-                    gitRelease = await UpdaterGithub.GetLatestRelease("lively-beta", "rocksdanister", 45000);
-                }
-                else
-                {
-                    gitRelease = await UpdaterGithub.GetLatestRelease("lively", "rocksdanister", 45000);
-                }
+                var userName = "rocksdanister";
+                var repositoryName = IsTestBuild ? "lively-beta" : "lively";
+                var fetchDelay = IsTestBuild ? 30000 : 45000;
 
-                int result = UpdaterGithub.CompareAssemblyVersion(gitRelease);
+                var gitRelease = await UpdaterGithub.GetLatestRelease(repositoryName, userName, fetchDelay);
+                var result = UpdaterGithub.CompareAssemblyVersion(gitRelease);
                 if (result > 0)
                 {
                     try
                     {
                         //download asset format: lively_setup_x86_full_vXXXX.exe, XXXX - 4 digit version no.
-                        var gitUrl = await UpdaterGithub.GetAssetUrl("lively_setup_x86_full",
-                            gitRelease, "lively", "rocksdanister");
+                        var gitUrl = await UpdaterGithub.GetAssetUrl("lively_setup_x86_full", 
+                            gitRelease, repositoryName, userName);
 
                         //changelog text
                         StringBuilder sb = new StringBuilder(gitRelease.Body);

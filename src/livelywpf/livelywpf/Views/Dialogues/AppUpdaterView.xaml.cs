@@ -20,13 +20,13 @@ namespace livelywpf.Views
         private string fileName;
         string savePath = "";
 
-        public AppUpdaterView(Uri fileUrl, string changelogText)
+        public AppUpdaterView(Uri fileUri, string changelogText)
         {
             InitializeComponent();
-            if(fileUrl != null)
+            if(fileUri != null)
             {
-                this.fileName = fileUrl.Segments.Last();
-                this.fileUrl = fileUrl;
+                this.fileName = fileUri.Segments.Last();
+                this.fileUrl = fileUri;
                 changelog.Document.Blocks.Add(new Paragraph(new Run(changelogText)));
             }
             else
