@@ -53,8 +53,9 @@ namespace livelywpf.Core
             }
 
             StringBuilder cmdArgs = new StringBuilder();
-            cmdArgs.Append("--url " + "\"" + path + "\"" + " --display " + "\"" + display + "\"");
-            cmdArgs.Append(model.LivelyInfo.Type == WallpaperType.url || model.LivelyInfo.Type == WallpaperType.videostream ? " --type online" : " --type local" + " --property " + "\"" + LivelyPropertyCopy + "\"");
+            cmdArgs.Append("--url " + "\"" + path + "\"" + " --display " + "\"" + display + "\"" + " --volume " + Program.SettingsVM.Settings.AudioVolumeGlobal);
+            cmdArgs.Append(model.LivelyInfo.Type == WallpaperType.url || model.LivelyInfo.Type == WallpaperType.videostream ? " --type online" : " --type local" + 
+                " --property " + "\"" + LivelyPropertyCopy + "\"");
             //Fail to send empty string as arg; "debug" is set as optional variable in cmdline parser library.
             if (!string.IsNullOrWhiteSpace(Program.SettingsVM.Settings.WebDebugPort))
             {

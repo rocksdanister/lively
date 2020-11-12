@@ -121,7 +121,7 @@
     <value>Wybierz plik lub określ adres strony aby ustawić jako tapetę.</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
-    <value>Ustaw zachowanie się tapet podczas odtwarzania na podstawie uruchomionych aplikacji</value>
+    <value>Ustaw reguły odtwarzania tapet dla poszczególnych aplikacji</value>
   </data>
   <data name="DescriptionCancelQuestion" xml:space="preserve">
     <value>Na pewno przerwać?</value>
@@ -224,10 +224,10 @@ Jeśli ciągle nie działa,  uruchom ponownie Lively / system Windows.
     <value>Usuń tapetę</value>
   </data>
   <data name="TextDisplayPauseRuleAllScreen" xml:space="preserve">
-    <value>Wszystkie wyświetlacze</value>
+    <value>Wszystkie ekrany</value>
   </data>
   <data name="TextDisplayPauseRulePerScreen" xml:space="preserve">
-    <value>Na jeden wyświetlacz</value>
+    <value>Jeden ekran</value>
   </data>
   <data name="TextDownload" xml:space="preserve">
     <value>Pobierz</value>
@@ -260,7 +260,7 @@ Jeśli ciągle nie działa,  uruchom ponownie Lively / system Windows.
     <value>Więcej tapet...</value>
   </data>
   <data name="TextMouseInteractOnDesktop" xml:space="preserve">
-    <value>Działania myszy kiedy aplikacja ma skupienie</value>
+    <value>Zachowanie myszy kiedy aplikacja ma skupienie</value>
   </data>
   <data name="TextNext" xml:space="preserve">
     <value>Next</value>
@@ -296,7 +296,7 @@ Jeśli ciągle nie działa,  uruchom ponownie Lively / system Windows.
     <value>Usuń</value>
   </data>
   <data name="TextRule" xml:space="preserve">
-    <value>Zasada</value>
+    <value>Reguła</value>
   </data>
   <data name="TextScreen" xml:space="preserve">
     <value>Ekran</value>
@@ -335,7 +335,7 @@ Jeśli ciągle nie działa,  uruchom ponownie Lively / system Windows.
     <value>Bez nagłowka</value>
   </data>
   <data name="TextUILite" xml:space="preserve">
-    <value>Jasny</value>
+    <value>Uproszczony</value>
   </data>
   <data name="TextUINormal" xml:space="preserve">
     <value>Normalny</value>
@@ -362,7 +362,7 @@ Jeśli ciągle nie działa,  uruchom ponownie Lively / system Windows.
     <value>Duplikuj samą tapetę</value>
   </data>
   <data name="TextWallpaperLayoutSpan" xml:space="preserve">
-    <value>Przez wiele wyświetlaczy</value>
+    <value>Przez wiele ekranów</value>
   </data>
   <data name="TextWallpaperType" xml:space="preserve">
     <value>Rodzaj</value>
@@ -386,7 +386,7 @@ Jeśli ciągle nie działa,  uruchom ponownie Lively / system Windows.
     <value>Ustaw wszystkie obsługiwane typy plików dla tapety.</value>
   </data>
   <data name="TipAddWallpaperURL" xml:space="preserve">
-    <value>Ustaw strone wprowadzonego adresu jako tapeta.</value>
+    <value>Ustaw strone internetową z powyższego adresu jako tapeta.</value>
   </data>
   <data name="TipAppFocus" xml:space="preserve">
     <value>Ustaw co robić kiedy aplikacja ma skupienie.</value>
@@ -398,18 +398,18 @@ Jeśli ciągle nie działa,  uruchom ponownie Lively / system Windows.
     <value>Ustaw rożne reguły odtwarzania dla uruchomionych aplikacji.</value>
   </data>
   <data name="TipAppTheme" xml:space="preserve">
-    <value>Lively przyjmuje ustawienia kompozycji systemu, aby zmienić wygląd idź do</value>
+    <value>Lively dostosuje się do kompozycji systemu, aby zmienić wygląd przejdź do</value>
   </data>
   <data name="TipBatteryPower" xml:space="preserve">
     <value>(Tylko dla systemów pracujących na baterii) Zmień odtwarzanie kiedy odłączono źródło zasilania.</value>
   </data>
   <data name="TipBrowserDebuggingPort" xml:space="preserve">
     <value>Wprowadź port dla debugowania tapet internetowych, aby zastosować zmiany wymagane jest ponowne uruchomienie przeglądarki.
-Kiedy gotowe przejdź pod adres http://localhost:numerportu aby uzyskać dostęp do konsoli dewelopera.</value>
+Następnie przejdź pod adres http://localhost:numerportu aby uzyskać dostęp do konsoli dewelopera.</value>
   </data>
   <data name="TipDisplayPauseRule" xml:space="preserve">
-    <value>Per: Zatrzymaj tapetę tylko na ekranie z aplikacją w trybie skupienia/pełnego ekranu.
-All: Zatrzymaj tapetę na wszystjich ekranach jeśli jakakolwiek aplikacja ma skupienie.</value>
+    <value>Jeden: Zatrzymaj tapetę tylko na ekranie z aplikacją w trybie skupienia/pełnego ekranu.
+Wszystkie: Zatrzymaj tapetę na wszystkich ekranach jeśli jakakolwiek aplikacja ma skupienie.</value>
   </data>
   <data name="TipHideSysTray" xml:space="preserve">
     <value>Widoczność ikony zasobnika systemowego, ikona będzie ukryta podczas pracy lively.</value>
@@ -421,8 +421,8 @@ All: Zatrzymaj tapetę na wszystjich ekranach jeśli jakakolwiek aplikacja ma sk
     <value>Zakończ ustawianie aby kontunuować.</value>
   </data>
   <data name="TipPauseAlgorithm" xml:space="preserve">
-    <value>Tło: Lekkie obciążenie, sprawdza tlko pojedyńczy proces znajdujący się w tle aby określić sposób odtwarzania tapety.
-Wszystkie procesy: Cięższy, Skanuje wszystkie procesy aby określić sposób odtwarzania.</value>
+    <value>Tło: Lekkie obciążenie, sprawdza tylko pojedyńczy proces znajdujący się w tle aby określić sposób odtwarzania tapety.
+Wszystkie procesy: Cięższy, skanuje wszystkie procesy aby określić sposób odtwarzania.</value>
   </data>
   <data name="TipStreamWallpaperDetect" xml:space="preserve">
     <value>Jeśli wykryto obsługiwany strumień wideo zamiast ładować stronę internetową użyj odtwarzacza.</value>
@@ -434,7 +434,7 @@ Wszystkie procesy: Cięższy, Skanuje wszystkie procesy aby określić sposób o
     <value>Rozmiar kafli tapety w Bibliotece.</value>
   </data>
   <data name="TipUIMode" xml:space="preserve">
-    <value>Dla słabszych systemów wybierz tryb Lite.</value>
+    <value>Dla słabszych systemów wybierz tryb Uproszczony.</value>
   </data>
   <data name="TipVideoPlayer" xml:space="preserve">
     <value>Wybierz odtwarzacz dla tapety wideo.</value>
@@ -474,7 +474,7 @@ Edge jest przeglądarką wbudowaną w windows 10.</value>
     <value>Tapeta Lively</value>
   </data>
   <data name="TitleAppRules" xml:space="preserve">
-    <value>Zasady aplikacji</value>
+    <value>Reguły aplikacji</value>
   </data>
   <data name="TitleAppTheme" xml:space="preserve">
     <value>Schemat</value>
@@ -498,7 +498,7 @@ Edge jest przeglądarką wbudowaną w windows 10.</value>
     <value>Potwierdź usunięcie</value>
   </data>
   <data name="TitleDisplayPauseRule" xml:space="preserve">
-    <value>Wyświetl zasady wstrzymania</value>
+    <value>Wyświetl reguły wstrzymania</value>
   </data>
   <data name="TitleEnterUrl" xml:space="preserve">
     <value>Wprowadź URL</value>
@@ -576,7 +576,7 @@ Edge jest przeglądarką wbudowaną w windows 10.</value>
     <value>Tapeta</value>
   </data>
   <data name="TitleWallpaperDir" xml:space="preserve">
-    <value>Katalog tapety</value>
+    <value>Folder tapet</value>
   </data>
   <data name="TitleWallpaperInput" xml:space="preserve">
     <value>Dane wejściowe tapety</value>
@@ -618,7 +618,7 @@ Edge jest przeglądarką wbudowaną w windows 10.</value>
     <value>Dostosuj</value>
   </data>
   <data name="DescriptionScreenLayout" xml:space="preserve">
-    <value>Zamknij wyświetlacz</value>
+    <value>Zamknij ekran</value>
   </data>
   <data name="TextWallpaperLayoutPerScreen" xml:space="preserve">
     <value>Tylko wybrany ekran</value>
@@ -665,13 +665,13 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Głośność główna</value>
   </data>
   <data name="TextWallpaperFitFill" xml:space="preserve">
-    <value>Fill</value>
+    <value>Wypełnij</value>
   </data>
   <data name="TextWallpaperFitNone" xml:space="preserve">
-    <value>None</value>
+    <value>Bez dopasowania</value>
   </data>
   <data name="TextWallpaperFitUniform" xml:space="preserve">
-    <value>Uniform</value>
+    <value>Równomierne</value>
   </data>
   <data name="TextWallpaperFitUniformToFill" xml:space="preserve">
     <value>Wypełnij równomiernie</value>
