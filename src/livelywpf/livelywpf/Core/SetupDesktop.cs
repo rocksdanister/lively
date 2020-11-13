@@ -21,12 +21,12 @@ namespace livelywpf
 
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private static readonly List<LivelyScreen> screenList = ScreenHelper.GetScreen();
-        static IntPtr progman, workerw;
+        private static IntPtr progman, workerw;
         private static bool _isInitialized = false;
         private static Playback processMonitor;
-        public static List<IWallpaper> Wallpapers = new List<IWallpaper>();
         private static readonly List<IWallpaper> wallpapersPending = new List<IWallpaper>();
         public static event EventHandler WallpaperChanged;
+        public static List<IWallpaper> Wallpapers { get; } = new List<IWallpaper>();
 
         static SetupDesktop()
         {

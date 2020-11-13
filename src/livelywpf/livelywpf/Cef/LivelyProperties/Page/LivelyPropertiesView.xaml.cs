@@ -22,16 +22,15 @@ namespace livelywpf.Cef
     /// </summary>
     public partial class LivelyPropertiesView : Page
     {
-
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        readonly string livelyPropertyPath;
-        readonly LibraryModel wallpaperData;
-        readonly LivelyScreen screen;
-        JObject livelyPropertyData;
+        private readonly string livelyPropertyPath;
+        private readonly LibraryModel wallpaperData;
+        private readonly LivelyScreen screen;
+        private JObject livelyPropertyData;
 
         //UI
-        readonly Thickness margin = new Thickness(0, 10, 0, 0);
-        readonly double maxWidth = 200;
+        private readonly Thickness margin = new Thickness(0, 10, 0, 0);
+        private readonly double maxWidth = 200;
 
         public LivelyPropertiesView(LibraryModel data, string livelyPropertyPath, LivelyScreen screen)
         {

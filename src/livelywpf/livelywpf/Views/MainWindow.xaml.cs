@@ -25,7 +25,7 @@ namespace livelywpf
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static bool _isExit = false;
+        public static bool IsExit { get; set; } = false;
         private NavigationView navView;
         private Windows.UI.Xaml.Controls.NavigationViewItem debugMenu;
         public MainWindow()
@@ -149,7 +149,7 @@ namespace livelywpf
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (!_isExit)
+            if (!IsExit)
             {
                 e.Cancel = true;
                 ContentFrame.Content = null;

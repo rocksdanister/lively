@@ -14,15 +14,15 @@ namespace livelywpf
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private static readonly Mutex mutex = new Mutex(false, "LIVELY:DESKTOPWALLPAPERSYSTEM");
         //Loaded from Settings.json (User configurable.)
-        public static string WallpaperDir;
-        public static readonly string AppDataDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Lively Wallpaper");
-        public static readonly bool IsMSIX = false;//new DesktopBridge.Helpers().IsRunningAsUwp();
-        public static readonly bool IsTestBuild = false;
+        public static string WallpaperDir { get; set; }
+        public static string AppDataDir { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Lively Wallpaper");
+        public static bool IsMSIX { get; } = false; //new DesktopBridge.Helpers().IsRunningAsUwp();
+        public static bool IsTestBuild { get; } = false;
 
         //todo: use singleton or something instead?
-        public static SettingsViewModel SettingsVM;
-        public static ApplicationRulesViewModel AppRulesVM;
-        public static LibraryViewModel LibraryVM;
+        public static SettingsViewModel SettingsVM { get; set; }
+        public static ApplicationRulesViewModel AppRulesVM { get; set; }
+        public static LibraryViewModel LibraryVM { get; set; }
 
         #endregion //init
 
@@ -240,7 +240,7 @@ namespace livelywpf
 
         public static void ExitApplication()
         {
-            MainWindow._isExit = true;
+            MainWindow.IsExit = true;
             SetupDesktop.ShutDown();
             if (sysTray != null)
             {

@@ -232,6 +232,17 @@ namespace libMPVPlayer
                                 SetVolume(value);
                             }
                         }
+                        else if (Contains(text, "lively:customise", StringComparison.OrdinalIgnoreCase))
+                        {
+                            try
+                            {
+                                LivelyPropertiesMsg(text);
+                            }
+                            catch
+                            {
+                                //todo: logging.
+                            }
+                        }
                     }
                 });
             }
@@ -243,6 +254,98 @@ namespace libMPVPlayer
             {
                 Application.Current.Shutdown();
             }
+        }
+
+        private void LivelyPropertiesMsg(string val)
+        {
+            // TODO: 
+            // Having trouble passing double without decimal to SetPropertyDouble
+            // Load from json file for initial start.
+            // Implement restore.
+            // Test and see if what all Lively controls are required based on available options: https://mpv.io/manual/master/
+            // Maybe block some commands? like a blacklist
+
+            var msg = val.Split(' ');
+            if (msg.Length < 4)
+                return;
+
+            string uiElementType = msg[1];
+            if (uiElementType.Equals("dropdown", StringComparison.OrdinalIgnoreCase))
+            {
+                if (int.TryParse(msg[3], out int value))
+                {
+                    player.API.SetPropertyString(msg[2], msg[3]);
+                }
+            }
+            else if (uiElementType.Equals("slider", StringComparison.OrdinalIgnoreCase))
+            {
+                if (double.TryParse(msg[3], out double value))
+                {
+                    if(player != null)
+                    {
+                        player.API.SetPropertyString(msg[2], msg[3]);
+                    }
+                }
+            }
+            else if (uiElementType.Equals("checkbox", StringComparison.OrdinalIgnoreCase))
+            {
+                if (bool.TryParse(msg[3], out bool value))
+                {
+                    player.API.SetPropertyString(msg[2], msg[3]);
+                }
+            }
+            else if (uiElementType.Equals("textbox", StringComparison.OrdinalIgnoreCase))
+            {
+                var sIndex = val.IndexOf("\"") + 1;
+                var lIndex = val.LastIndexOf("\"") - 1;
+                player.API.SetPropertyString(msg[2], val.Substring(sIndex, lIndex - sIndex + 1));
+            }
+            /*
+            //I don't think these control is needed.
+            else if (uiElementType.Equals("color", StringComparison.OrdinalIgnoreCase))
+            {
+                player.API.SetPropertyString(msg[2], msg[3]);
+            }
+            else if (uiElementType.Equals("button", StringComparison.OrdinalIgnoreCase))
+            {
+                if (msg[2].Equals("lively_default_settings_reload", StringComparison.OrdinalIgnoreCase))
+                {
+                    try
+                    {
+                        //load new file.
+                        WidgetData.LoadLivelyProperties(livelyPropertyPath);
+                        //restore new property values.
+                        RestoreLivelyPropertySettings();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString(), "Lively Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    Form1.chromeBrowser.ExecuteScriptAsync("livelyPropertyListener", msg[2], true);
+                }
+            }
+            else if (uiElementType.Equals("folderDropdown", StringComparison.OrdinalIgnoreCase))
+            {
+                var sIndex = val.IndexOf("\"") + 1;
+                var lIndex = val.LastIndexOf("\"") - 1;
+                var filePath = Path.Combine(Path.GetDirectoryName(htmlPath), val.Substring(sIndex, lIndex - sIndex + 1));
+                if (File.Exists(filePath))
+                {
+                    Form1.chromeBrowser.ExecuteScriptAsync("livelyPropertyListener",
+                        msg[2],
+                        val.Substring(sIndex, lIndex - sIndex + 1));
+                }
+                else
+                {
+                    Form1.chromeBrowser.ExecuteScriptAsync("livelyPropertyListener",
+                        msg[2],
+                        null); //or custom msg
+                }
+            }
+            */
         }
 
         #region helpers

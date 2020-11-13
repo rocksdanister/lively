@@ -16,11 +16,47 @@ namespace livelywpf.Core
         LibraryModel Model { get; set; }
         LivelyScreen Display { get; set; }
         private bool Initialized { get; set; }
+        string LivelyPropertyCopy { get; set; }
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
 
         public VideoPlayerMPVExt(string path, LibraryModel model, LivelyScreen display, 
             WallpaperScaler scaler = WallpaperScaler.fill, StreamQualitySuggestion streamQuality = StreamQualitySuggestion.Highest)
         {
+            // TODO: 
+            // Create a default livelyproperties.json if not found.
+
+            LivelyPropertyCopy = null;
+            if (model.LivelyPropertyPath != null)
+            {
+                //customisable wallpaper, livelyproperty.json is present.
+                var dataFolder = Path.Combine(Program.WallpaperDir, "SaveData", "wpdata");
+                try
+                {
+                    //extract last digits of the Screen class DeviceName, eg: \\.\DISPLAY4 -> 4
+                    var screenNumber = display.DeviceNumber;
+                    if (screenNumber != null)
+                    {
+                        //Create a directory with the wp foldername in SaveData/wpdata/, copy livelyproperties.json into this.
+                        //Further modifications are done to the copy file.
+                        var wpdataFolder = Path.Combine(dataFolder, new DirectoryInfo(model.LivelyInfoFolderPath).Name, screenNumber);
+                        Directory.CreateDirectory(wpdataFolder);
+
+                        LivelyPropertyCopy = Path.Combine(wpdataFolder, "LivelyProperties.json");
+                        if (!File.Exists(LivelyPropertyCopy))
+                            File.Copy(model.LivelyPropertyPath, LivelyPropertyCopy);
+
+                    }
+                    else
+                    {
+                        //todo: fallback, use the original file (restore feature disabled.)
+                    }
+                }
+                catch
+                {
+                    //todo: fallback, use the original file (restore feature disabled.)
+                }
+            }
+
             ProcessStartInfo start = new ProcessStartInfo
             {
                 Arguments = "--path " + "\"" + path + "\"" + " --stream " + (int)streamQuality + 
@@ -192,7 +228,7 @@ namespace livelywpf.Core
 
         public string GetLivelyPropertyCopyPath()
         {
-            return null;
+            return LivelyPropertyCopy;
         }
 
         public void SetScreen(LivelyScreen display)

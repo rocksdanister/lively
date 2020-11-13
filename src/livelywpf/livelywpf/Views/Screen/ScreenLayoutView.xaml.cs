@@ -17,7 +17,7 @@ namespace livelywpf.Views
     /// </summary>
     public partial class ScreenLayoutView : Window
     {
-        readonly List<ScreenLabelView> screenLabels = new List<ScreenLabelView>();
+        private readonly List<ScreenLabelView> screenLabels = new List<ScreenLabelView>();
         public ScreenLayoutView()
         {
             InitializeComponent();

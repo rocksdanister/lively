@@ -35,7 +35,7 @@ namespace livelywpf
 
         private System.Windows.Forms.ToolStripMenuItem pauseTrayBtn;
         private System.Windows.Forms.ToolStripMenuItem customiseWallpaperBtn;
-        public System.Windows.Forms.ToolStripMenuItem UpdateTrayBtn { get; set; }
+        public System.Windows.Forms.ToolStripMenuItem UpdateTrayBtn { get; private set; }
         private void CreateContextMenu()
         {
             _notifyIcon.ContextMenuStrip = new System.Windows.Forms.ContextMenuStrip

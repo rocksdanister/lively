@@ -57,7 +57,7 @@ namespace livelywpf
                 {
                     CreateWallpaperDir();
                 }
-                catch(Exception ie)
+                catch (Exception ie)
                 {
                     Logger.Error("Wallpaper Directory creation failed, Exiting:" + ie.ToString());
                     MessageBox.Show(ie.Message, "Error: Failed to create wallpaper folder", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -81,7 +81,7 @@ namespace livelywpf
             }
             catch (CultureNotFoundException)
             {
-                Logger.Error("Localisation:Culture not found:" + Program.SettingsVM.Settings.Language);
+                Logger.Error("Localisation: Culture not found=>" + Program.SettingsVM.Settings.Language);
                 System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en");
             }
             Program.AppRulesVM = new ApplicationRulesViewModel();

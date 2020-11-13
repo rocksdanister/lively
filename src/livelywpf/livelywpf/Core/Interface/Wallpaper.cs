@@ -99,7 +99,7 @@ namespace livelywpf.Core
         event EventHandler<WindowInitializedArgs> WindowInitialized;
     }
 
-    public class WindowInitializedArgs
+    public class WindowInitializedArgs : EventArgs
     {
         /// <summary>
         /// True if wallpaper window is ready.
