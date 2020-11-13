@@ -183,24 +183,24 @@ namespace libVLCPlayer
                     while (true) 
                     {
                         string text = await Console.In.ReadLineAsync();
-                        if (String.IsNullOrEmpty(text))
+                        if (string.IsNullOrEmpty(text))
                         {
                             //When the redirected stream is closed, a null line is sent to the event handler. 
                             break;
                         }
-                        else if (String.Equals(text, "lively:vid-pause", StringComparison.OrdinalIgnoreCase))
+                        else if (text.Equals("lively:vid-pause", StringComparison.OrdinalIgnoreCase))
                         {
                             PausePlayer();
                         }
-                        else if (String.Equals(text, "lively:vid-play", StringComparison.OrdinalIgnoreCase))
+                        else if (text.Equals("lively:vid-play", StringComparison.OrdinalIgnoreCase))
                         {
                             PlayMedia();
                         }
-                        else if (String.Equals(text, "lively:terminate", StringComparison.OrdinalIgnoreCase))
+                        else if (text.Equals("lively:terminate", StringComparison.OrdinalIgnoreCase))
                         {
                             break;
                         }
-                        else if (Contains(text, "lively:vid-volume", StringComparison.OrdinalIgnoreCase))
+                        else if (text.Contains("lively:vid-volume", StringComparison.OrdinalIgnoreCase))
                         {
                             var msg = text.Split(' ');
                             if (msg.Length < 2)
@@ -244,26 +244,6 @@ namespace libVLCPlayer
             else
                 return new IntPtr(SetWindowLong32(hWnd, nIndex, dwNewLong.ToInt32()));
 
-        }
-
-        /// <summary>
-        /// String Contains method with StringComparison property.
-        /// </summary>
-        /// <param name="str"></param>
-        /// <param name="substring"></param>
-        /// <param name="comp"></param>
-        /// <returns></returns>
-        private static bool Contains(String str, String substring,
-                                    StringComparison comp)
-        {
-            if (substring == null | str == null)
-                throw new ArgumentNullException("string",
-                                             "substring/string cannot be null.");
-            else if (!Enum.IsDefined(typeof(StringComparison), comp))
-                throw new ArgumentException("comp is not a member of StringComparison",
-                                         "comp");
-
-            return str.IndexOf(substring, comp) >= 0;
         }
 
         #endregion //helpers

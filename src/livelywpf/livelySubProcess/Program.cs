@@ -78,11 +78,11 @@ namespace livelySubProcess
                     while (true) // Loop runs only once per line received
                     {
                         string text = await Console.In.ReadLineAsync();
-                        if (String.Equals(text, "lively:clear", StringComparison.OrdinalIgnoreCase))
+                        if (text.Equals("lively:clear", StringComparison.OrdinalIgnoreCase))
                         {
                             wpItems.Clear();
                         }
-                        else if (Contains(text, "lively:add-pgm", StringComparison.OrdinalIgnoreCase))
+                        else if (text.Contains("lively:add-pgm", StringComparison.OrdinalIgnoreCase))
                         {
                             var msg = text.Split(' ');
                             if (int.TryParse(msg[1], out int value))
@@ -90,7 +90,7 @@ namespace livelySubProcess
                                 wpItems.Add(value);
                             }
                         }  
-                        else if(Contains(text, "lively:rmv-pgm", StringComparison.OrdinalIgnoreCase))
+                        else if(text.Contains("lively:rmv-pgm", StringComparison.OrdinalIgnoreCase))
                         {
                             var msg = text.Split(' ');
                             if (int.TryParse(msg[1], out int value))
@@ -102,26 +102,6 @@ namespace livelySubProcess
                 });
             }
             catch { }
-        }
-
-        /// <summary>
-        /// String Contains method with StringComparison property.
-        /// </summary>
-        /// <param name="str"></param>
-        /// <param name="substring"></param>
-        /// <param name="comp"></param>
-        /// <returns></returns>
-        public static bool Contains(String str, String substring,
-                                    StringComparison comp)
-        {
-            if (substring == null | str == null)
-                throw new ArgumentNullException("string",
-                                             "substring/string cannot be null.");
-            else if (!Enum.IsDefined(typeof(StringComparison), comp))
-                throw new ArgumentException("comp is not a member of StringComparison",
-                                         "comp");
-
-            return str.IndexOf(substring, comp) >= 0;
         }
     }
 }

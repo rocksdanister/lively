@@ -9,6 +9,7 @@ using System.Windows.Controls;
 using System.Windows.Interop;
 using CommandLine;
 using Mpv.NET.Player;
+using Newtonsoft.Json.Linq;
 
 namespace libMPVPlayer
 {
@@ -19,6 +20,9 @@ namespace libMPVPlayer
     public partial class MainWindow : Window
     {
         private MpvPlayer player;
+        private string livelyPropertiesPath;
+        private JObject livelyPropertiesData;
+
         public MainWindow(string[] args)
         {
             InitializeComponent();
@@ -52,6 +56,12 @@ namespace libMPVPlayer
             Required = false,
             HelpText = "App data directory")]
             public string AppDataDir { get; set; }
+
+            [Option("property",
+            Required = false,
+            Default = null,
+            HelpText = "LivelyProperties.info filepath (SaveData/wpdata).")]
+            public string Properties { get; set; }
         }
 
         private void RunOptions(Options opts)
@@ -107,6 +117,18 @@ namespace libMPVPlayer
                             break;
                     }
                 }
+
+                try
+                {
+                    livelyPropertiesPath = opts.Properties;
+                    livelyPropertiesData = LoadLivelyProperties(livelyPropertiesPath);
+                    SetLivelyProperty(livelyPropertiesData);
+                }
+                catch (Exception ie)
+                {
+                    Console.WriteLine("Error restoring livelyproperty:" + ie.Message);
+                }
+
                 //stream/file.
                 player.Load(opts.FilePath);
                 player.Resume();
@@ -204,24 +226,24 @@ namespace libMPVPlayer
                     while (true)
                     {
                         string text = await Console.In.ReadLineAsync();
-                        if(String.IsNullOrEmpty(text))
+                        if(string.IsNullOrEmpty(text))
                         {
                             //When the redirected stream is closed, a null line is sent to the event handler. 
                             break;
                         }
-                        else if (String.Equals(text, "lively:vid-pause", StringComparison.OrdinalIgnoreCase))
+                        else if (text.Equals("lively:vid-pause", StringComparison.OrdinalIgnoreCase))
                         {
                             PausePlayer();
                         }
-                        else if (String.Equals(text, "lively:vid-play", StringComparison.OrdinalIgnoreCase))
+                        else if (text.Equals("lively:vid-play", StringComparison.OrdinalIgnoreCase))
                         {
                             PlayMedia();
                         }
-                        else if (String.Equals(text, "lively:terminate", StringComparison.OrdinalIgnoreCase))
+                        else if (text.Equals("lively:terminate", StringComparison.OrdinalIgnoreCase))
                         {
                             break;
                         }
-                        else if (Contains(text, "lively:vid-volume", StringComparison.OrdinalIgnoreCase))
+                        else if (text.Contains("lively:vid-volume", StringComparison.OrdinalIgnoreCase))
                         {
                             var msg = text.Split(' ');
                             if (msg.Length < 2)
@@ -232,23 +254,27 @@ namespace libMPVPlayer
                                 SetVolume(value);
                             }
                         }
-                        else if (Contains(text, "lively:customise", StringComparison.OrdinalIgnoreCase))
+                        else if (text.Contains("lively:customise", StringComparison.OrdinalIgnoreCase))
                         {
                             try
                             {
-                                LivelyPropertiesMsg(text);
+                                var msg = text.Split(' ');
+                                if (msg.Length < 4)
+                                    continue;
+
+                                SetLivelyProperty(msg[1], msg[2], msg[3]);
                             }
-                            catch
+                            catch(Exception ex1)
                             {
-                                //todo: logging.
+                                Console.WriteLine(ex1.Message);
                             }
                         }
                     }
                 });
             }
-            catch(Exception e)
+            catch(Exception ex2)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine(ex2.Message);
             }
             finally
             {
@@ -256,99 +282,83 @@ namespace libMPVPlayer
             }
         }
 
-        private void LivelyPropertiesMsg(string val)
+        private void SetLivelyProperty(string uiElement, string objectName, string msg )
         {
             // TODO: 
             // Having trouble passing double without decimal to SetPropertyDouble
-            // Load from json file for initial start.
-            // Implement restore.
             // Test and see if what all Lively controls are required based on available options: https://mpv.io/manual/master/
             // Maybe block some commands? like a blacklist
 
-            var msg = val.Split(' ');
-            if (msg.Length < 4)
-                return;
+            if (uiElement.Equals("dropdown", StringComparison.OrdinalIgnoreCase))
+            {
+                if (int.TryParse(msg, out int value))
+                {
+                    //value string in items array is passed instead of index like in cef livelyproperties.
+                    player.API.SetPropertyString(objectName, (string)livelyPropertiesData[objectName]["items"][value]);
+                }
+            }
+            else if (uiElement.Equals("slider", StringComparison.OrdinalIgnoreCase))
+            {
+                if (double.TryParse(msg, out double value))
+                {
+                    player.API.SetPropertyString(objectName, msg);
+                }
+            }
+            else if (uiElement.Equals("checkbox", StringComparison.OrdinalIgnoreCase))
+            {
+                if (bool.TryParse(msg, out bool value))
+                {
+                    player.API.SetPropertyString(objectName, value? "yes" : "no");
+                }
+            }
+            else if (uiElement.Equals("button", StringComparison.OrdinalIgnoreCase))
+            {
+                //restore button press.
+                if (objectName.Equals("lively_default_settings_reload", StringComparison.OrdinalIgnoreCase))
+                {
+                    //load new file.
+                    livelyPropertiesData = LoadLivelyProperties(livelyPropertiesPath);
+                    //restore new property values.
+                    SetLivelyProperty(livelyPropertiesData);
+                }
+                else
+                {
+                    //unused
+                }
+            }
+        }
 
-            string uiElementType = msg[1];
-            if (uiElementType.Equals("dropdown", StringComparison.OrdinalIgnoreCase))
+        private void SetLivelyProperty(JObject livelyProperty)
+        {
+            foreach (var item in livelyProperty)
             {
-                if (int.TryParse(msg[3], out int value))
+                string uiElement = item.Value["type"].ToString();
+                if (!uiElement.Equals("button", StringComparison.OrdinalIgnoreCase) && !uiElement.Equals("label", StringComparison.OrdinalIgnoreCase))
                 {
-                    player.API.SetPropertyString(msg[2], msg[3]);
-                }
-            }
-            else if (uiElementType.Equals("slider", StringComparison.OrdinalIgnoreCase))
-            {
-                if (double.TryParse(msg[3], out double value))
-                {
-                    if(player != null)
+                    if (uiElement.Equals("slider", StringComparison.OrdinalIgnoreCase))
                     {
-                        player.API.SetPropertyString(msg[2], msg[3]);
+                        player.API.SetPropertyString(item.Key, (string)item.Value["value"]);
+                    }
+                    else if(uiElement.Equals("checkbox", StringComparison.OrdinalIgnoreCase))
+                    {
+                        player.API.SetPropertyString(item.Key, ((bool)item.Value["value"]) ? "yes" : "no");
+                    }
+                    else if (uiElement.Equals("dropdown", StringComparison.OrdinalIgnoreCase))
+                    {
+                        //value string in items array is passed instead of index like in cef livelyproperties.
+                        player.API.SetPropertyString(item.Key, (string)item.Value["items"][(int)item.Value["value"]]);
                     }
                 }
             }
-            else if (uiElementType.Equals("checkbox", StringComparison.OrdinalIgnoreCase))
-            {
-                if (bool.TryParse(msg[3], out bool value))
-                {
-                    player.API.SetPropertyString(msg[2], msg[3]);
-                }
-            }
-            else if (uiElementType.Equals("textbox", StringComparison.OrdinalIgnoreCase))
-            {
-                var sIndex = val.IndexOf("\"") + 1;
-                var lIndex = val.LastIndexOf("\"") - 1;
-                player.API.SetPropertyString(msg[2], val.Substring(sIndex, lIndex - sIndex + 1));
-            }
-            /*
-            //I don't think these control is needed.
-            else if (uiElementType.Equals("color", StringComparison.OrdinalIgnoreCase))
-            {
-                player.API.SetPropertyString(msg[2], msg[3]);
-            }
-            else if (uiElementType.Equals("button", StringComparison.OrdinalIgnoreCase))
-            {
-                if (msg[2].Equals("lively_default_settings_reload", StringComparison.OrdinalIgnoreCase))
-                {
-                    try
-                    {
-                        //load new file.
-                        WidgetData.LoadLivelyProperties(livelyPropertyPath);
-                        //restore new property values.
-                        RestoreLivelyPropertySettings();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString(), "Lively Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                else
-                {
-                    Form1.chromeBrowser.ExecuteScriptAsync("livelyPropertyListener", msg[2], true);
-                }
-            }
-            else if (uiElementType.Equals("folderDropdown", StringComparison.OrdinalIgnoreCase))
-            {
-                var sIndex = val.IndexOf("\"") + 1;
-                var lIndex = val.LastIndexOf("\"") - 1;
-                var filePath = Path.Combine(Path.GetDirectoryName(htmlPath), val.Substring(sIndex, lIndex - sIndex + 1));
-                if (File.Exists(filePath))
-                {
-                    Form1.chromeBrowser.ExecuteScriptAsync("livelyPropertyListener",
-                        msg[2],
-                        val.Substring(sIndex, lIndex - sIndex + 1));
-                }
-                else
-                {
-                    Form1.chromeBrowser.ExecuteScriptAsync("livelyPropertyListener",
-                        msg[2],
-                        null); //or custom msg
-                }
-            }
-            */
         }
 
         #region helpers
+
+        public static JObject LoadLivelyProperties(string path)
+        {
+            var json = File.ReadAllText(path);
+            return JObject.Parse(json);
+        }
 
         [DllImport("user32.dll", EntryPoint = "SetWindowLong")]
         public static extern int SetWindowLong32(HandleRef hWnd, int nIndex, int dwNewLong);
@@ -368,26 +378,6 @@ namespace libMPVPlayer
             else
                 return new IntPtr(SetWindowLong32(hWnd, nIndex, dwNewLong.ToInt32()));
 
-        }
-
-        /// <summary>
-        /// String Contains method with StringComparison property.
-        /// </summary>
-        /// <param name="str"></param>
-        /// <param name="substring"></param>
-        /// <param name="comp"></param>
-        /// <returns></returns>
-        private static bool Contains(String str, String substring,
-                                    StringComparison comp)
-        {
-            if (substring == null | str == null)
-                throw new ArgumentNullException("string",
-                                             "substring/string cannot be null.");
-            else if (!Enum.IsDefined(typeof(StringComparison), comp))
-                throw new ArgumentException("comp is not a member of StringComparison",
-                                         "comp");
-
-            return str.IndexOf(substring, comp) >= 0;
         }
 
         #endregion //helpers

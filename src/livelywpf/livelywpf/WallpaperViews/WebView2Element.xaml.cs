@@ -96,7 +96,7 @@ namespace livelywpf
 
         public void SendMessage(string msg)
         {
-            if (String.Equals(msg, "lively:reload", StringComparison.OrdinalIgnoreCase))
+            if (msg.Equals("lively:reload", StringComparison.OrdinalIgnoreCase))
             {
                 try
                 {
