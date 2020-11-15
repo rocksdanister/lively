@@ -51,6 +51,11 @@ namespace livelywpf
                             player.API.SetPropertyString("panscan", "1.0");
                             break;
                     }
+                    if (Path.GetExtension(filePath).Equals(".gif", StringComparison.OrdinalIgnoreCase))
+                    {
+                        //integer scaling.
+                        player.API.SetPropertyString("scale", "nearest");
+                    }
                     //Enable Windows screensaver
                     player.API.SetPropertyString("stop-screensaver", "no");
                 }

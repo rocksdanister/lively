@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -262,7 +262,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>GIF</value>
   </data>
   <data name="TextGo" xml:space="preserve">
-    <value>GO</value>
+    <value>開始吧</value>
   </data>
   <data name="TextHelpTranslate" xml:space="preserve">
     <value>幫助翻譯Lively。</value>
@@ -271,7 +271,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>安裝</value>
   </data>
   <data name="TextKeyboard" xml:space="preserve">
-    <value>Keyboard</value>
+    <value>鍵盤</value>
   </data>
   <data name="TextmoreInfo" xml:space="preserve">
     <value>資訊</value>
@@ -292,10 +292,10 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>沒有</value>
   </data>
   <data name="TextOff" xml:space="preserve">
-    <value>OFF</value>
+    <value>關閉</value>
   </data>
   <data name="TextOn" xml:space="preserve">
-    <value>ON</value>
+    <value>開啟</value>
   </data>
   <data name="TextOnline" xml:space="preserve">
     <value>在線網頁 (Online)</value>
@@ -316,7 +316,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Kill</value>
   </data>
   <data name="TextPerformanceNone" xml:space="preserve">
-    <value>Nothing</value>
+    <value>無</value>
   </data>
   <data name="TextPerformancePause" xml:space="preserve">
     <value>暫停</value>
@@ -352,7 +352,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>支持</value>
   </data>
   <data name="TextTags" xml:space="preserve">
-    <value>Tags</value>
+    <value>標籤</value>
   </data>
   <data name="TextTileSizeLarge" xml:space="preserve">
     <value>大</value>
@@ -364,13 +364,13 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>小</value>
   </data>
   <data name="TextUIHeadless" xml:space="preserve">
-    <value>Headless</value>
+    <value>無介面模式</value>
   </data>
   <data name="TextUILite" xml:space="preserve">
-    <value>Lite</value>
+    <value>輕盈</value>
   </data>
   <data name="TextUINormal" xml:space="preserve">
-    <value>Normal</value>
+    <value>正常</value>
   </data>
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>有更新可用！</value>
@@ -406,7 +406,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>網站</value>
   </data>
   <data name="TextWebStream" xml:space="preserve">
-    <value>Web Stream</value>
+    <value>網頁影片</value>
   </data>
   <data name="TextWelcome" xml:space="preserve">
     <value>歡迎</value>
@@ -436,18 +436,18 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Lively 適應系統主題設置，更改外觀。</value>
   </data>
   <data name="TipBatteryPower" xml:space="preserve">
-    <value>(For battery operated systems only) Change playback when AC power is disconnected.</value>
+    <value>（僅適用於充電設備）斷開交電源後，更改播放行為。</value>
   </data>
   <data name="TipBrowserDebuggingPort" xml:space="preserve">
-    <value>Enter the port for debugging webpage wallpapers, browser restart is required for changes to take effect.
-When ready navigate to http://localhost:portnumber to access developer console.</value>
+    <value>輸入除錯用網頁牆紙的埠號，需要重新啟動瀏覽器才能使更改生效。
+準備就緒後，前往    http://localhost:埠號    以開啟開發人員控制台。</value>
   </data>
   <data name="TipDisplayPauseRule" xml:space="preserve">
-    <value>Per: Pause wallpaper only on the screen in which application is focused/fullscreen.
-All: Pause wallpaper on all screen(s) if any application is focused/fullscreen.</value>
+    <value>分別：僅在應用程序處於 焦點/全屏 狀態的屏幕上暫停動態桌布。
+全部：如果任何應用程序已 聚焦/全屏 ，則在所有屏幕上暫停動態桌布。</value>
   </data>
   <data name="TipHideSysTray" xml:space="preserve">
-    <value>System-tray icon visibility, lively will continue to run with the icon hidden.</value>
+    <value>開啟系統小圖示圖標，lively將在隱藏圖標的情況下繼續運行。</value>
   </data>
   <data name="TipLanguage" xml:space="preserve">
     <value>將Lively重新啟動以應用新語言。</value>
@@ -456,8 +456,8 @@ All: Pause wallpaper on all screen(s) if any application is focused/fullscreen.<
     <value>完成設置以繼續。</value>
   </data>
   <data name="TipPauseAlgorithm" xml:space="preserve">
-    <value>Foreground: Lightweight, only checks the single process that is in foreground to determine wallpaper playback behaviour.
-All Process: Heavier, Scans all the process to determine playback behaviour.</value>
+    <value>前景處理程序：輕量級，僅檢查前景中的單個處理程序來確定牆紙播放行為。
+所有處理程序：重量級，掃描所有處理程序以確定播放行為。</value>
   </data>
   <data name="TipStreamWallpaperDetect" xml:space="preserve">
     <value>如果檢測到受支持的視頻流(video stream)鏈接，請使用視頻播放器，而不要加載網頁。</value>
@@ -487,11 +487,11 @@ All Process: Heavier, Scans all the process to determine playback behaviour.</va
     <value>當桌面未聚焦時，暫停牆紙播放。</value>
   </data>
   <data name="TipWebBrowserDiskCache" xml:space="preserve">
-    <value>Store temporary files on disk instead of memory, settings gets restored when browser is restarted.</value>
+    <value>將暫存檔案存在儲存空間上而不是記憶體上，重新啟動瀏覽器後將恢復原設置。</value>
   </data>
   <data name="TipWebBrowserEngine" xml:space="preserve">
-    <value>CEF(Chromium Embedded Framework) is a lightweight chromium engine.
-Edge is the built in webview of windows 10.</value>
+    <value>CEF(Chromium Embedded Framework) 是個輕量級的 chromium 引擎。Edge是Windows 10的內置網頁顯示器。
+</value>
   </data>
   <data name="TipWindowsStartup" xml:space="preserve">
     <value>Lively需要在後台運行以播放牆紙。</value>
@@ -530,7 +530,7 @@ Edge is the built in webview of windows 10.</value>
     <value>瀏覽視頻，gif，網頁...文件設置為背景</value>
   </data>
   <data name="TitleBrowserDebuggingPort" xml:space="preserve">
-    <value>Debugging Port</value>
+    <value>除錯用埠號</value>
   </data>
   <data name="TitleCommunity" xml:space="preserve">
     <value>社區</value>
@@ -539,7 +539,7 @@ Edge is the built in webview of windows 10.</value>
     <value>確認刪除?</value>
   </data>
   <data name="TitleDisplayPauseRule" xml:space="preserve">
-    <value>播放器暫停規則</value>
+    <value>動態桌布播放器暫停規則</value>
   </data>
   <data name="TitleDocumentation" xml:space="preserve">
     <value>文檔</value>
@@ -554,7 +554,7 @@ Edge is the built in webview of windows 10.</value>
     <value>幫助</value>
   </data>
   <data name="TitleHideSysTray" xml:space="preserve">
-    <value>System-tray Icon</value>
+    <value>系統隱藏小圖示</value>
   </data>
   <data name="TitleInteraction" xml:space="preserve">
     <value>互動</value>
@@ -566,7 +566,7 @@ Edge is the built in webview of windows 10.</value>
     <value>資料庫</value>
   </data>
   <data name="TitleLivelySetup" xml:space="preserve">
-    <value>Lively Setup</value>
+    <value>Lively 初始化</value>
   </data>
   <data name="TitleMisc" xml:space="preserve">
     <value>雜項</value>
@@ -599,16 +599,16 @@ Edge is the built in webview of windows 10.</value>
     <value>設定</value>
   </data>
   <data name="TitleStreamWallpaper" xml:space="preserve">
-    <value>Stream</value>
+    <value>串流</value>
   </data>
   <data name="TitleStreamWallpaperDetect" xml:space="preserve">
-    <value>Detect Streams</value>
+    <value>檢測串流</value>
   </data>
   <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
     <value>影片質量</value>
   </data>
   <data name="TitleTileSize" xml:space="preserve">
-    <value>Tile Size</value>
+    <value>預覽大小</value>
   </data>
   <data name="TitleUIMode" xml:space="preserve">
     <value>用戶界面</value>
@@ -623,7 +623,7 @@ Edge is the built in webview of windows 10.</value>
     <value>背景目錄</value>
   </data>
   <data name="TitleWallpaperDirMoveExisting" xml:space="preserve">
-    <value>將現有牆紙移動到新文件夾</value>
+    <value>將現有動態桌布移動到新文件夾</value>
   </data>
   <data name="TitleWallpaperInput" xml:space="preserve">
     <value>背景輸入</value>
@@ -641,7 +641,7 @@ Edge is the built in webview of windows 10.</value>
     <value>網頁瀏覽器</value>
   </data>
   <data name="TitleWebBrowserDiskCache" xml:space="preserve">
-    <value>Disk cache</value>
+    <value>記憶體暫存</value>
   </data>
   <data name="TitleWebBrowserEngine" xml:space="preserve">
     <value>引擎</value>
@@ -653,69 +653,75 @@ Edge is the built in webview of windows 10.</value>
     <value>開機啟動</value>
   </data>
   <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
-    <value>Are you sure you want to delete this wallpaper from the Library?</value>
+    <value>確定要從資料庫刪除動態桌布?</value>
   </data>
   <data name="TipAudioMaster" xml:space="preserve">
-    <value>Volume level of all wallpapers.</value>
+    <value>動態桌布的音量大小</value>
   </data>
   <data name="TitleAudioMaster" xml:space="preserve">
-    <value>Master Volume</value>
+    <value>主音量大小</value>
   </data>
   <data name="TextWallpaperFitFill" xml:space="preserve">
-    <value>Fill</value>
+    <value>填滿</value>
   </data>
   <data name="TextWallpaperFitNone" xml:space="preserve">
-    <value>None</value>
+    <value>無</value>
   </data>
   <data name="TextWallpaperFitUniform" xml:space="preserve">
-    <value>Uniform</value>
+    <value>均勻</value>
   </data>
   <data name="TextWallpaperFitUniformToFill" xml:space="preserve">
-    <value>Uniform Fill</value>
+    <value>均勻填滿</value>
   </data>
   <data name="TipWallpaperFit" xml:space="preserve">
-    <value>Wallpaper scaling algorithm.</value>
+    <value>背景縮放算法</value>
   </data>
   <data name="TitleWallpaperFit" xml:space="preserve">
-    <value>Choose a fit</value>
+    <value>選擇縮放大小</value>
   </data>
   <data name="TextPreviewWallpaper" xml:space="preserve">
-    <value>Preview Wallpaper</value>
+    <value>預覽動態桌布</value>
   </data>
   <data name="TextAllFiles" xml:space="preserve">
-    <value>All Files</value>
+    <value>所有檔案</value>
   </data>
   <data name="TitleDebug" xml:space="preserve">
-    <value>Debug</value>
+    <value>除錯</value>
   </data>
   <data name="TipDebug" xml:space="preserve">
-    <value>Show developer menu</value>
+    <value>顯示開發者選單</value>
   </data>
   <data name="TextFileNotFound" xml:space="preserve">
-    <value>File not found</value>
+    <value>找不到檔案</value>
   </data>
   <data name="TextPicture" xml:space="preserve">
-    <value>Picture</value>
+    <value>圖片</value>
   </data>
   <data name="TextUnsupportedFile" xml:space="preserve">
-    <value>File format not supported</value>
+    <value>不支援的檔案格式</value>
   </data>
   <data name="TextProcessingWallpaper" xml:space="preserve">
-    <value>Processing</value>
-  </data>  
+    <value>處理中</value>
+  </data>
   <data name="TextTitle" xml:space="preserve">
-    <value>Title</value>
+    <value>標題</value>
   </data>
   <data name="TextDescription" xml:space="preserve">
-    <value>Description</value>
+    <value>簡介</value>
   </data>
   <data name="TextOK" xml:space="preserve">
-    <value>OK</value>
+    <value>確定</value>
   </data>
   <data name="TextCancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>取消</value>
   </data>
   <data name="TextCreatePreview" xml:space="preserve">
-    <value>Create Preview</value>
-  </data>  
+    <value>創建預覽</value>
+  </data>
+  <data name="TitleGifPlayer" xml:space="preserve">
+    <value>Gif Player</value>
+  </data>
+  <data name="TipGifPlayer" xml:space="preserve">
+    <value>Select the player used for gif wallpaper.</value>
+  </data>
 </root>

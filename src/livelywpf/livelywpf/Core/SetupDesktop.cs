@@ -237,9 +237,29 @@ namespace livelywpf
                     item.Show();
                 }
             }
-            else if (wp.LivelyInfo.Type == WallpaperType.gif || wp.LivelyInfo.Type == WallpaperType.picture)
+            else if (wp.LivelyInfo.Type == WallpaperType.gif)
             {
-                var item = new GIFPlayerUWP(wp.FilePath, wp, 
+                if(Program.SettingsVM.Settings.GifPlayer == LivelyGifPlayer.win10Img)
+                {
+                    var item = new GIFPlayerUWP(wp.FilePath, wp,
+                        targetDisplay, Program.SettingsVM.Settings.WallpaperScaling);
+                    item.WindowInitialized += SetupDesktop_WallpaperInitialized;
+                    wallpapersPending.Add(item);
+                    item.Show();
+                }
+                else if(Program.SettingsVM.Settings.GifPlayer == LivelyGifPlayer.libmpvExt)
+                {
+                    wp.ItemStartup = true;
+                    var item = new VideoPlayerMPVExt(wp.FilePath, wp, targetDisplay,
+                        Program.SettingsVM.Settings.WallpaperScaling);
+                    item.WindowInitialized += SetupDesktop_WallpaperInitialized;
+                    wallpapersPending.Add(item);
+                    item.Show();
+                }
+            }
+            else if(wp.LivelyInfo.Type == WallpaperType.picture)
+            {
+                var item = new GIFPlayerUWP(wp.FilePath, wp,
                     targetDisplay, Program.SettingsVM.Settings.WallpaperScaling);
                 item.WindowInitialized += SetupDesktop_WallpaperInitialized;
                 wallpapersPending.Add(item);

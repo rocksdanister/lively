@@ -137,6 +137,12 @@ namespace livelywpf
         libmpvExt
     }
 
+    public enum LivelyGifPlayer
+    {
+        win10Img,
+        libmpvExt
+    }
+
     public enum LivelyWebBrowser
     {
         cef,

@@ -503,6 +503,9 @@ When ready navigate to http://localhost:portnumber to access developer console.<
     <value>Per: Pause wallpaper only on the screen in which application is focused/fullscreen.
 All: Pause wallpaper on all screen(s) if any application is focused/fullscreen.</value>
   </data>
+  <data name="TipGifPlayer" xml:space="preserve">
+    <value>Select the player used for gif wallpaper.</value>
+  </data>
   <data name="TipHideSysTray" xml:space="preserve">
     <value>System-tray icon visibility, lively will continue to run with the icon hidden.</value>
   </data>
@@ -615,6 +618,9 @@ Edge is the built in webview of windows 10.</value>
   </data>
   <data name="TitleGeneral" xml:space="preserve">
     <value>General</value>
+  </data>
+  <data name="TitleGifPlayer" xml:space="preserve">
+    <value>Gif Player</value>
   </data>
   <data name="TitleHelp" xml:space="preserve">
     <value>Help</value>

@@ -288,6 +288,9 @@ namespace livelywpf
                 LibraryItems.Remove(selection);
                 try
                 {
+                    if (string.IsNullOrEmpty(selection.LivelyInfoFolderPath))
+                        return;
+
                     //Delete LivelyProperties.json backup folder.
                     string[] wpdataDir = Directory.GetDirectories(Path.Combine(Program.WallpaperDir, "SaveData", "wpdata"));
                     var wpFolderName = new System.IO.DirectoryInfo(selection.LivelyInfoFolderPath).Name;

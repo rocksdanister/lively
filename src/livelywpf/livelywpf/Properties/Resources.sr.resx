@@ -704,4 +704,10 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
   <data name="TextCreatePreview" xml:space="preserve">
     <value>Napravi Pregled</value>
   </data>
+  <data name="TitleGifPlayer" xml:space="preserve">
+    <value>Gif Player</value>
+  </data>
+  <data name="TipGifPlayer" xml:space="preserve">
+    <value>Select the player used for gif wallpaper.</value>
+  </data>
 </root>

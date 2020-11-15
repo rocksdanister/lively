@@ -722,5 +722,11 @@ Edgeはwindows 10に組み込まれているWebビューです。</value>
   </data>
   <data name="TextCreatePreview" xml:space="preserve">
     <value>Create Preview</value>
+  </data>
+  <data name="TitleGifPlayer" xml:space="preserve">
+    <value>Gif Player</value>
+  </data>
+  <data name="TipGifPlayer" xml:space="preserve">
+    <value>Select the player used for gif wallpaper.</value>
   </data>    
 </root>

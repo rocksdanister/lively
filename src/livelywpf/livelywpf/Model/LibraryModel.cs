@@ -127,10 +127,21 @@ namespace livelywpf
                 //Use animated gif if exists.
                 ImagePath = File.Exists(PreviewClipPath) ? PreviewClipPath : ThumbnailPath;
             }
-            else if(Program.SettingsVM.Settings.LivelyGUIRendering == LivelyGUIState.lite)
+            else if (Program.SettingsVM.Settings.LivelyGUIRendering == LivelyGUIState.lite)
             {
                 ImagePath = ThumbnailPath;
             }
+
+            if (data.Type == livelywpf.WallpaperType.video)
+            {
+                //No user made livelyproperties file if missing, using default for video.
+                if(LivelyPropertyPath == null)
+                {
+                    LivelyPropertyPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, 
+                        "plugins", "libMPVPlayer", "api", "LivelyProperties.json");
+                }
+            }
+
             ItemStartup = false;
         }
 

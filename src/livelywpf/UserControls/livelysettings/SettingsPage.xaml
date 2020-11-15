@@ -146,6 +146,13 @@
                             </ComboBox>
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipVideoPlayer}"/>
 
+                            <TextBlock FontSize="20" Margin="0, 10, 0, 0" Text="GIF"/>
+                            <ComboBox Header="{x:Bind UIText.TitleGifPlayer}" Margin="0,10,0,0" MinWidth="200" SelectedIndex="{Binding SelectedGifPlayerIndex, Mode=TwoWay}">
+                                <ComboBoxItem>Win10</ComboBoxItem>
+                                <ComboBoxItem>libMPV(External)</ComboBoxItem>
+                            </ComboBox>
+                            <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipGifPlayer}"/>
+
                             <TextBlock FontSize="20" Margin="0, 10, 0, 0" Text="{x:Bind UIText.TitleWallpaperStream}"/>
                             <ComboBox Header="{x:Bind UIText.TitleWallpaperStreamQuality}" Margin="0,10,0,0" MinWidth="200" SelectedIndex="{Binding SelectedWallpaperStreamQualityIndex, Mode=TwoWay}">
                                 <ComboBoxItem>144p</ComboBoxItem>

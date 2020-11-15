@@ -1173,6 +1173,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select the player used for gif wallpaper..
+        /// </summary>
+        public static string TipGifPlayer {
+            get {
+                return ResourceManager.GetString("TipGifPlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to System-tray icon visibility, lively will continue to run with the icon hidden..
         /// </summary>
         public static string TipHideSysTray {
@@ -1504,6 +1513,15 @@ namespace livelywpf.Properties {
         public static string TitleGeneral {
             get {
                 return ResourceManager.GetString("TitleGeneral", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gif Player.
+        /// </summary>
+        public static string TitleGifPlayer {
+            get {
+                return ResourceManager.GetString("TitleGifPlayer", resourceCulture);
             }
         }
         

@@ -116,17 +116,26 @@ namespace libMPVPlayer
                             player.API.SetPropertyString("keepaspect", "no");
                             break;
                     }
+                    if (Path.GetExtension(opts.FilePath).Equals(".gif", StringComparison.OrdinalIgnoreCase))
+                    {
+                        //integer scaling.
+                        Console.WriteLine("Gif detected, switching to integer scaler.");
+                        player.API.SetPropertyString("scale", "nearest");
+                    }
                 }
 
                 try
                 {
-                    livelyPropertiesPath = opts.Properties;
-                    livelyPropertiesData = LoadLivelyProperties(livelyPropertiesPath);
-                    SetLivelyProperty(livelyPropertiesData);
+                    if(!string.IsNullOrEmpty(opts.Properties))
+                    {
+                        livelyPropertiesPath = opts.Properties;
+                        livelyPropertiesData = LoadLivelyProperties(livelyPropertiesPath);
+                        SetLivelyProperty(livelyPropertiesData);
+                    }
                 }
                 catch (Exception ie)
                 {
-                    Console.WriteLine("Error restoring livelyproperty:" + ie.Message);
+                    Console.WriteLine("Error restoring livelyproperty=>" + ie.Message);
                 }
 
                 //stream/file.

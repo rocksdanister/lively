@@ -221,22 +221,18 @@ namespace livelywpf.Cef
                 AddUIElement(obj);
             }
 
-            //restore button disabled for wp outside lively folder.
-            if (!wallpaperData.LivelyInfo.IsAbsolutePath)
+            //restore-default btn.
+            var defaultBtn = new Button
             {
-                //restore-default btn.
-                var defaultBtn = new Button
-                {
-                    Name = "defaultBtn",
-                    Content = "Restore Default",
-                    MaxWidth = maxWidth,
-                    MinWidth = maxWidth,
-                    HorizontalAlignment = HorizontalAlignment.Left,
-                    Margin = margin
-                };
-                defaultBtn.Click += DefaultBtn_Click;
-                AddUIElement(defaultBtn);
-            }
+                Name = "defaultBtn",
+                Content = "Restore Default",
+                MaxWidth = maxWidth,
+                MinWidth = maxWidth,
+                HorizontalAlignment = HorizontalAlignment.Left,
+                Margin = margin
+            };
+            defaultBtn.Click += DefaultBtn_Click;
+            AddUIElement(defaultBtn);
         }
 
         private void AddUIElement(dynamic obj)

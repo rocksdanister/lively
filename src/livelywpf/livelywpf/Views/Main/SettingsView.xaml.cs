@@ -86,6 +86,8 @@ namespace livelywpf.Views
                     TitleVideo = Properties.Resources.TitleVideo,
                     TitleVideoPlayer = Properties.Resources.TileVideoPlayer,
                     TipVideoPlayer = Properties.Resources.TipVideoPlayer,
+                    TitleGifPlayer = Properties.Resources.TitleGifPlayer,
+                    TipGifPlayer = Properties.Resources.TipGifPlayer,
                     TitleWebBrowser = Properties.Resources.TitleWebBrowser,
                     TitleBrowserEngine = Properties.Resources.TitleWebBrowserEngine,
                     TipBrowserEngine = Properties.Resources.TipWebBrowserEngine,

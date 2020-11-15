@@ -82,6 +82,8 @@ namespace livelysettings
         public string TitleVideo { get; set; }
         public string TitleVideoPlayer { get; set; }
         public string TipVideoPlayer { get; set; }
+        public string TitleGifPlayer { get; set; }
+        public string TipGifPlayer { get; set; }
         public string TitleWebBrowser { get; set; }
         public string TitleBrowserEngine { get; set; }
         public string TipBrowserEngine { get; set; }

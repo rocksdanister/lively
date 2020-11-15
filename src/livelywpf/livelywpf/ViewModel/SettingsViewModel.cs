@@ -77,6 +77,7 @@ namespace livelywpf
             SelectedDisplayPauseRuleIndex = (int)Settings.DisplayPauseSettings;
             SelectedPauseAlgorithmIndex = (int)Settings.ProcessMonitorAlgorithm;
             SelectedVideoPlayerIndex = (int)Settings.VideoPlayer;
+            SelectedGifPlayerIndex = (int)Settings.GifPlayer;
             SelectedWallpaperStreamQualityIndex = (int)Settings.StreamQuality;
             SelectedLivelyUIModeIndex = (int)Settings.LivelyGUIRendering;
             SelectedWallpaperInputMode = (int)Settings.InputForward;
@@ -478,6 +479,27 @@ namespace livelywpf
                     UpdateConfigFile();
                     //VideoPlayerSwitch((LivelyMediaPlayer)_selectedVideoPlayerIndex);
                     WallpaperRestart(WallpaperType.video);
+                }
+            }
+        }
+
+        private int _selectedGifPlayerIndex;
+        public int SelectedGifPlayerIndex
+        {
+            get
+            {
+                return _selectedGifPlayerIndex;
+            }
+            set
+            {
+                _selectedGifPlayerIndex = value;
+                OnPropertyChanged("SelectedGifPlayerIndex");
+
+                if (Settings.GifPlayer != (LivelyGifPlayer)_selectedGifPlayerIndex)
+                {
+                    Settings.GifPlayer = (LivelyGifPlayer)_selectedGifPlayerIndex;
+                    UpdateConfigFile();
+                    WallpaperRestart(WallpaperType.gif);
                 }
             }
         }
