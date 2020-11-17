@@ -21,7 +21,6 @@ Turn Video & GIF Files, Emulators, HTML, Web address & Shaders, Games into Windo
 Just drag & drop files, webpages to set as wallpaper..
 
 #### Join Discussions:
-* <a href="https://discord.gg/TwwtBCm">Discord group</a>
 * <a href="https://www.reddit.com/r/LivelyWallpaper/">Reddit</a>
 
 Lively is still in development, if you encounter bugs create a github Issue along with <a href="https://github.com/rocksdanister/lively/wiki/Common-Problems"> log file</a>
