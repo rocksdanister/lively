@@ -48,13 +48,18 @@ namespace livelywpf.Cef
             try
             {
                 this.livelyPropertyData = LivelyPropertiesJSON.LoadLivelyProperties(livelyPropertyPath);
-                //Path.Combine(Path.GetDirectoryName(wallpaperData.FilePath), "LivelyProperties.json"));
                 GenerateUIElements();
             }
-            catch (Exception e)
+            catch (NullReferenceException e1)
             {
-                Logger.Error(e.ToString());
-                Task.Run(() => (MessageBox.Show(e.ToString())));
+                Logger.Error(e1.ToString());
+                Task.Run(() => (MessageBox.Show("Customisation not supported/LivelyProperty file not found.\n" +
+                           "For videos only libMPV(External) player is currently supported.", Properties.Resources.TitleAppName)));
+            }
+            catch (Exception e2)
+            {
+                Logger.Error(e2.ToString());
+                Task.Run(() => (MessageBox.Show(e2.ToString(), Properties.Resources.TitleAppName)));
             }
         }
 
@@ -523,16 +528,34 @@ namespace livelywpf.Cef
             SetupDesktop.SendMessageWallpaper(screen, message);
         }
 
-        private void ReloadMenuValues()
-        {
-
-        }
-
         private bool RestoreOriginalPropertyFile()
         {
             bool status = false;
             try
             {
+                // TODO:
+                // Use DirectoryWatcher instead.
+                if (wallpaperData.LivelyInfo.Type == WallpaperType.video)
+                {
+                    var lpp = Path.Combine(wallpaperData.LivelyInfoFolderPath, "LivelyProperties.json");
+                    var dlpp = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
+                                "plugins", "libMPVPlayer", "api", "LivelyProperties.json");
+                    if (File.Exists(lpp))
+                    {
+                        if (!string.Equals(wallpaperData.LivelyPropertyPath, lpp, StringComparison.OrdinalIgnoreCase))
+                        {
+                            wallpaperData.LivelyPropertyPath = lpp;
+                        }
+                    }
+                    else
+                    {
+                        if (!string.Equals(wallpaperData.LivelyPropertyPath, dlpp, StringComparison.OrdinalIgnoreCase))
+                        {
+                            wallpaperData.LivelyPropertyPath = dlpp;
+                        }
+                    }
+                }
+
                 File.Copy(wallpaperData.LivelyPropertyPath, livelyPropertyPath, true);
                 status = true;
             }

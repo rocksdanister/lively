@@ -38,11 +38,13 @@
                     Reddit
                 </Hyperlink>
                 </TextBlock>
+                <!--"
                 <TextBlock ToolTip="https://discord.gg/TwwtBCm">           
                 <Hyperlink Foreground="Gray" NavigateUri="https://discord.gg/TwwtBCm" RequestNavigate="Hyperlink_RequestNavigate">
                     Discord
                 </Hyperlink>
                 </TextBlock>
+                -->
                 <TextBlock ToolTip="https://www.deviantart.com/livelywallpaper/gallery/">           
                 <Hyperlink Foreground="Gray" NavigateUri="https://www.deviantart.com/livelywallpaper/gallery/" RequestNavigate="Hyperlink_RequestNavigate">
                     DeviantArt

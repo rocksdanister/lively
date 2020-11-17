@@ -6,6 +6,8 @@ using System.Text;
 
 namespace livelywpf
 {
+    // TODO:
+    // Use generics for all json save and read fn.
     class ApplicationRulesJSON
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
