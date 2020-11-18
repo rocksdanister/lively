@@ -212,6 +212,28 @@
                     </ScrollViewer>
                 </Grid>
             </PivotItem>
+
+            <PivotItem Header="{x:Bind UIText.TitleLauncher}">
+                <Grid>
+                    <ScrollViewer Margin="0, 0, 15, 0">
+                        <StackPanel Margin="0, 10, 0, 0">
+
+                            <StackPanel Orientation="Horizontal" Margin="0, 10, 0, 5">
+                                <TextBlock Text="{x:Bind UIText.TitleShortcut1}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Button MaxWidth="450" MinWidth="450" MinHeight="35" Style="{StaticResource ButtonRevealStyle}"
+                                    HorizontalContentAlignment="Left" Content="{Binding ShortcutPath1}"
+                                    Command="{Binding ShortcutChangeCommand}" />
+                                <Button Margin="5, 0, 0 ,0" MinWidth="45" MinHeight="35" Style="{StaticResource ButtonRevealStyle}" Command="{Binding OpenWallpaperDirectory}">
+                                    <SymbolIcon Symbol="OpenLocal" />
+                                </Button>
+                            </StackPanel>
+
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </PivotItem>
         </Pivot>
         
     </Grid>

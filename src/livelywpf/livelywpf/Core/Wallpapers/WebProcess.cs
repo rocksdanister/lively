@@ -78,6 +78,12 @@ namespace livelywpf.Core
                 cmdArgs.Append(" " + model.LivelyInfo.Arguments);
             }
 
+            //Launcher -- todo add global check + multiple shortcuts ( maybe comma delimited ) // check potential security issue
+            if (!string.IsNullOrWhiteSpace(Program.SettingsVM.ShortcutPath1))
+            {
+                cmdArgs.Append($" --launcher \"{Program.SettingsVM.ShortcutPath1}\"");
+            }
+
             ProcessStartInfo start = new ProcessStartInfo
             {
                 Arguments = cmdArgs.ToString(),

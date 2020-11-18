@@ -111,7 +111,10 @@ namespace livelywpf.Views
                     TitleSysTrayIconHide = Properties.Resources.TitleHideSysTray,
                     TipSysTrayIconHide = Properties.Resources.TipHideSysTray,
                     TitleDebug = Properties.Resources.TitleDebug,
-                    TipDebug = Properties.Resources.TipDebug
+                    TipDebug = Properties.Resources.TipDebug,
+                    //launcher -- add resource files todo
+                    TitleLauncher = "Launcher",
+                    TitleShortcut1 = "App Launcher App 1"
                 };               
             }
         }

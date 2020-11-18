@@ -109,6 +109,10 @@ namespace livelysettings
         public string TipSysTrayIconHide { get; set; }
         public string TitleDebug { get; set; }
         public string TipDebug { get; set; }
+
+        //Launcher
+        public string TitleLauncher { get; set; }
+        public string TitleShortcut1 { get; set; }
     }
 
     public sealed partial class SettingsPage : UserControl
