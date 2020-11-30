@@ -31,6 +31,7 @@ namespace livelywpf
         public MainWindow()
         {
             InitializeComponent();
+            SetupDesktop.WallpaperChanged += SetupDesktop_WallpaperChanged;
         }
 
         #region navigation
@@ -178,56 +179,23 @@ namespace livelywpf
 
         #region wallpaper statusbar
 
-        TextBlock wallpaperStatusText;
-        private void ScreenLayoutBar_ChildChanged(object sender, EventArgs e)
-        {
-            WindowsXamlHost windowsXamlHost = (WindowsXamlHost)sender;
-            var btn = (Windows.UI.Xaml.Controls.Button)windowsXamlHost.Child;
-            if (btn != null)
-            {
-                var toolTip = new ToolTip
-                {
-                    Content = Properties.Resources.TitleScreenLayout
-                };
-                ToolTipService.SetToolTip(btn, toolTip);
-
-                var stackPanel = new StackPanel
-                {
-                    Orientation = Orientation.Horizontal,
-                };
-                stackPanel.Children.Add(new FontIcon()
-                {
-                    FontFamily = new Windows.UI.Xaml.Media.FontFamily("Segoe MDL2 Assets"),
-                    //Foreground = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 255, 255, 255)),
-                    Glyph = "\uE7F4"
-                });
-                wallpaperStatusText = new TextBlock()
-                {
-                    Text = SetupDesktop.Wallpapers.Count.ToString(),
-                    FontSize = 16,
-                    //Foreground = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 255, 255, 255)),
-                    Margin = new Windows.UI.Xaml.Thickness(5, -3.5, 0, 0)
-                };
-                stackPanel.Children.Add(wallpaperStatusText);
-
-                //btn.Background = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 25, 25, 25));
-                btn.Content = stackPanel;
-                btn.Click += Btn_Click;
-                SetupDesktop.WallpaperChanged += SetupDesktop_WallpaperChanged;
-            }
-        }
-
         private void SetupDesktop_WallpaperChanged(object sender, EventArgs e)
         {
-            _ = this.Dispatcher.BeginInvoke(new Action(() => { wallpaperStatusText.Text = SetupDesktop.Wallpapers.Count.ToString(); }));
+            _ = this.Dispatcher.BeginInvoke(new Action(() => {
+                if (!Program.SettingsVM.Settings.ControlPanelOpened &&
+                    App.AppWindow != null &&
+                    App.AppWindow.WindowState != WindowState.Minimized &&
+                    App.AppWindow.Visibility == Visibility.Visible)
+                {
+                    ModernWpf.Controls.Primitives.FlyoutBase.ShowAttachedFlyout(statusBtn);
+                    Program.SettingsVM.Settings.ControlPanelOpened = true;
+                    Program.SettingsVM.UpdateConfigFile();
+                }
+                wallpaperStatusText.Text = SetupDesktop.Wallpapers.Count.ToString();
+            }));
         }
 
         ScreenLayoutView layoutWindow = null;
-        private void Btn_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            ShowControlPanelDialog();
-        }
-
         public void ShowControlPanelDialog()
         {
             if (layoutWindow == null)
@@ -253,6 +221,11 @@ namespace livelywpf
         {
             layoutWindow = null;
             this.Activate();
+        }
+
+        private void statusBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ShowControlPanelDialog();
         }
 
         #endregion //wallpaper statusbar

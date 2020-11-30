@@ -12,10 +12,12 @@
         xmlns:p = "clr-namespace:livelywpf.Properties"                
         mc:Ignorable="d"
         Height="740" Width="1200"
+        MinWidth="650" MinHeight="390"
         Title="{x:Static p:Resources.TitleAppName}"
         Closing="Window_Closing"        
         IsVisibleChanged="Window_IsVisibleChanged"
         BorderBrush="{DynamicResource SystemControlHighlightAltListAccentHighBrush}">
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="50" />
@@ -29,8 +31,18 @@
 
         <!-- title area-->
         <TextBlock Grid.Column="1" Grid.Row="0" FontSize="12.25" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10, -10, 0, 0" Text="{x:Static p:Resources.TitleAppName}" />
-        <xamlHost:WindowsXamlHost x:Name="ScreenLayoutBar" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0, 0, 150, 0" 
-                                 MinHeight="33" MaxHeight="33" MinWidth="75" InitialTypeName="Windows.UI.Xaml.Controls.Button" ChildChanged="ScreenLayoutBar_ChildChanged" />
+        <Button x:Name="statusBtn" Grid.Column="1" Grid.Row="0" WindowChrome.IsHitTestVisibleInChrome="True" HorizontalAlignment="Right" VerticalAlignment="Top"
+                Margin="0, 0, 150, 0" MinWidth="75" MinHeight="33" MaxHeight="33" Click="statusBtn_Click" >
+            <StackPanel Orientation="Horizontal">
+                <ui:FontIcon Glyph="&#xE7F4;" Margin="0,2,5,0"/>
+                <TextBlock x:Name="wallpaperStatusText" Text="0"/>
+            </StackPanel>
+            <ui:FlyoutBase.AttachedFlyout>
+                <ui:Flyout>
+                    <TextBlock Text="{x:Static p:Resources.TextControlPanelOpen}" />
+                </ui:Flyout>
+            </ui:FlyoutBase.AttachedFlyout>
+        </Button>
         
         <!-- content -->
         <xamlHost:WindowsXamlHost Grid.Column="0" Grid.RowSpan="2" x:Name="MyNavView" InitialTypeName="Windows.UI.Xaml.Controls.NavigationView" ChildChanged="MyNavView_ChildChanged"/>

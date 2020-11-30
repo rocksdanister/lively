@@ -18,7 +18,7 @@ namespace livelywpf
                 AppRules = new ObservableCollection<ApplicationRulesModel>
                 {
                     //default parameters.
-                    new ApplicationRulesModel("Photoshop", AppRulesEnum.pause),
+                    //new ApplicationRulesModel("Photoshop", AppRulesEnum.pause),
                     new ApplicationRulesModel("Discord", AppRulesEnum.ignore)
                 };
                 UpdateDiskFile();

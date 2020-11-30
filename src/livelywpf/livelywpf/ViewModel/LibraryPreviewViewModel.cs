@@ -110,6 +110,7 @@ namespace livelywpf
             set
             {
                 _author = value;
+                libData.Author = _author;
                 libData.LivelyInfo.Author = _author;
                 OnPropertyChanged("Author");
             }

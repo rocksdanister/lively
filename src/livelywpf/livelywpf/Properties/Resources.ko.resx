@@ -728,5 +728,18 @@ Edge는 Windows 10의 내장 웹뷰입니다.</value>
   </data>
   <data name="TipGifPlayer" xml:space="preserve">
     <value>Select the player used for gif wallpaper.</value>
+  </data>
+  <data name="TextFeatureMissing" xml:space="preserve">
+    <value>Some features are not available in this version of Lively.</value>
+  </data>
+    <data name="TextControlPanelOpen" xml:space="preserve">
+    <value>Click here to manage wallpapers.</value>
+  </data>
+    <data name="TextStoreReview" xml:space="preserve">
+    <value>Do you enjoy using Lively? Leave a review :)</value>
+  </data>
+  <data name="TitleStore" xml:space="preserve">
+    <value>Store</value>
+    <comment>For different version of Lively, example: Microsoft Store</comment>
   </data>    
 </root>

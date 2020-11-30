@@ -551,7 +551,7 @@ Edge - встроенный в Windows 10 WebView.</value>
     <value>При работе от аккумулятора</value>
   </data>
   <data name="TitleBrowseFile" xml:space="preserve">
-    <value>Выберите видео, gif, веб-страницу... чтобы установить как обои</value>
+    <value>Выберите видео, GIF, веб-страницу... чтобы установить как обои</value>
   </data>
   <data name="TitleBrowserDebuggingPort" xml:space="preserve">
     <value>Порт отладки</value>
@@ -709,7 +709,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Обработка</value>
   </data>
   <data name="TextTitle" xml:space="preserve">
-    <value>Title</value>
+    <value>Название</value>
   </data>
   <data name="TextDescription" xml:space="preserve">
     <value>Описание</value>
@@ -724,9 +724,22 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Создать предпросмотр</value>
   </data>
   <data name="TitleGifPlayer" xml:space="preserve">
-    <value>Gif Player</value>
+    <value>GIF-плеер</value>
   </data>
   <data name="TipGifPlayer" xml:space="preserve">
-    <value>Select the player used for gif wallpaper.</value>
-  </data>  
+    <value>Выберите плеер для воспроизведения GIF обоев.</value>
+  </data>
+  <data name="TextFeatureMissing" xml:space="preserve">
+    <value>Some features are not available in this version of Lively.</value>
+  </data>
+  <data name="TextControlPanelOpen" xml:space="preserve">
+    <value>Click here to manage wallpapers.</value>
+  </data>
+  <data name="TextStoreReview" xml:space="preserve">
+    <value>Do you enjoy using Lively? Leave a review :)</value>
+  </data>
+  <data name="TitleStore" xml:space="preserve">
+    <value>Store</value>
+    <comment>For different version of Lively, example: Microsoft Store</comment>
+  </data>
 </root>

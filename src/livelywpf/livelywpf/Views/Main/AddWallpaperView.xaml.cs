@@ -159,17 +159,8 @@ namespace livelywpf.Views
 
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
         {
-            try
-            {
-                var ps = new ProcessStartInfo(e.Uri.AbsoluteUri)
-                {
-                    UseShellExecute = true,
-                    Verb = "open"
-                };
-                Process.Start(ps);
-            }
-            catch { }
             e.Handled = true;
+            Helpers.LinkHandler.OpenBrowser(e.Uri);
         }
 
         Windows.UI.Xaml.Controls.Image img;

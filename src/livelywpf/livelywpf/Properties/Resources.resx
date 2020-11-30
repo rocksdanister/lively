@@ -240,6 +240,9 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="TextCompleted" xml:space="preserve">
     <value>Completed!</value>
   </data>
+  <data name="TextControlPanelOpen" xml:space="preserve">
+    <value>Click here to manage wallpapers.</value>
+  </data>
   <data name="TextConvertVideo" xml:space="preserve">
     <value>Convert to Video</value>
   </data>
@@ -275,6 +278,9 @@ If still not working, close &amp; start Lively again/restart windows.
   </data>
   <data name="TextExportWallpaperZip" xml:space="preserve">
     <value>Export lively .zip</value>
+  </data>
+  <data name="TextFeatureMissing" xml:space="preserve">
+    <value>Some features are not available in this version of Lively.</value>
   </data>
   <data name="TextFileNotFound" xml:space="preserve">
     <value>File not found</value>
@@ -380,6 +386,9 @@ If still not working, close &amp; start Lively again/restart windows.
   </data>
   <data name="TextStop" xml:space="preserve">
     <value>Stop</value>
+  </data>
+  <data name="TextStoreReview" xml:space="preserve">
+    <value>Do you enjoy using Lively? Leave a review :)</value>
   </data>
   <data name="TextSupport" xml:space="preserve">
     <value>Support</value>
@@ -669,6 +678,10 @@ Edge is the built in webview of windows 10.</value>
   </data>
   <data name="TitleSettings" xml:space="preserve">
     <value>Settings</value>
+  </data>
+  <data name="TitleStore" xml:space="preserve">
+    <value>Store</value>
+    <comment>For different version of Lively, example: Microsoft Store</comment>
   </data>
   <data name="TitleStreamWallpaper" xml:space="preserve">
     <value>Stream</value>

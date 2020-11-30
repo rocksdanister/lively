@@ -91,7 +91,10 @@ namespace livelywpf
 
             AppWindow = new MainWindow();
             //uwp root app needs window to show.. is it possible to skip?
+            //relaunch existing instance lively is using wndproc so that also requires this.
             AppWindow.Show();
+            //Package app otherwise bugging out when initialized in settings vm.
+            SetupDesktop.WallpaperInputForward(Program.SettingsVM.Settings.InputForward);
             if (Program.SettingsVM.Settings.IsRestart)
             {
                 Program.SettingsVM.Settings.IsRestart = false;

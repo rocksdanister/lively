@@ -26,6 +26,7 @@ namespace livelywpf
         /// </summary>
         public bool WaterMarkTile { get; set; }
         public bool IsFirstRun { get; set; }
+        public bool ControlPanelOpened { get; set; }
         public AppRulesEnum AppFocusPause { get; set; }
 
         public AppRulesEnum AppFullscreenPause { get; set; }
@@ -89,15 +90,20 @@ namespace livelywpf
         /// {Unused currently.}
         /// </summary>
         public bool TestBuild { get; set; }
+        /// <summary>
+        /// Not used currently.
+        /// </summary>
+        public AppTheme ApplicationTheme { get; set; }
 
         public SettingsModel()
         {
-            SavedURL = "https://www.shadertoy.com/view/MsKcRh";
+            SavedURL = "https://www.youtube.com/watch?v=aqz-KE-bpKQ";
             ProcessMonitorAlgorithm = ProcessMonitorAlgorithm.foreground;
             WallpaperArrangement = WallpaperArrangement.per;
             AppVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
             Startup = false;
             IsFirstRun = true;
+            ControlPanelOpened = false;
             AppFocusPause = AppRulesEnum.ignore;
             AppFullscreenPause = AppRulesEnum.pause;
             BatteryPause = AppRulesEnum.ignore;
@@ -109,7 +115,7 @@ namespace livelywpf
             WallpaperWaitTime = 20000; // 20sec
             ProcessTimerInterval = 500; //reduce to 250 for quicker response.
             Language = CultureInfo.CurrentCulture.Name;
-            StreamQuality = StreamQualitySuggestion.Highest;
+            StreamQuality = StreamQualitySuggestion.High;
             GenerateTile = true;
             LivelyZipGenerate = false;
             WaterMarkTile = true;
@@ -129,19 +135,19 @@ namespace livelywpf
             TileSize = 1;
             DisplayIdentification = DisplayIdentificationMode.screenLayout;
             SelectedDisplay = ScreenHelper.GetPrimaryScreen();
-            LivelyGUIRendering = LivelyGUIState.lite;
-            //Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Lively Wallpaper");
-            WallpaperDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Lively Wallpaper", "Library");
+            LivelyGUIRendering = LivelyGUIState.normal;
+            WallpaperDir = Path.Combine(Program.AppDataDir, "Library");
             WallpaperDirMoveExistingWallpaperNewDir = false;
             SysTrayIcon = true;
             WebDebugPort = string.Empty;
             AutoDetectOnlineStreams = true;
             WallpaperBundleVersion = -1;
-            AudioVolumeGlobal = 50;
+            AudioVolumeGlobal = 75;
             WallpaperScaling = WallpaperScaler.fill;
             CefDiskCache = false;
             DebugMenu = false;
             TestBuild = false;
+            ApplicationTheme = AppTheme.Dark;
         }
     }
 }

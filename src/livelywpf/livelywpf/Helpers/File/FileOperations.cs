@@ -21,6 +21,13 @@ namespace livelywpf
         {
             try
             {
+                //bug, disabled for now.
+                if (Program.IsMSIX)
+                {
+                    _ = LaunchFolder(path);
+                    return;
+                }
+
                 ProcessStartInfo startInfo = new ProcessStartInfo
                 {
                     FileName = "explorer.exe"
@@ -43,6 +50,24 @@ namespace livelywpf
             {
                 Logger.Error(e.Message + "\n" + e.StackTrace);
             }
+        }
+
+        private static async Task LaunchFolder(string path)
+        {
+            var packagePath = path;
+            var localFolder = Windows.Storage.ApplicationData.Current.LocalCacheFolder.Path;
+            var packageAppData = Path.Combine(localFolder, "Local", "Lively Wallpaper");
+            if (path.Length > Program.AppDataDir.Count() + 1)
+            {
+                var tmp = Path.Combine(packageAppData, path.Remove(0, Program.AppDataDir.Count() + 1));
+                if (File.Exists(tmp) || Directory.Exists(tmp))
+                {
+                    packagePath = tmp;
+                }
+            }
+
+            var folder = await Windows.Storage.StorageFolder.GetFolderFromPathAsync(Path.GetDirectoryName(packagePath));
+            await Windows.System.Launcher.LaunchFolderAsync(folder);
         }
 
         /// <summary>

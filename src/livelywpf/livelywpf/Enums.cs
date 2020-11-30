@@ -160,4 +160,11 @@ namespace livelywpf
         uniformFill
     }
 
+    public enum AppTheme
+    {
+        Auto,
+        Light,
+        Dark,
+    }
+
 }

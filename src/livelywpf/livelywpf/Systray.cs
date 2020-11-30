@@ -74,7 +74,8 @@ namespace livelywpf
                 _notifyIcon.ContextMenuStrip.Items.Add(UpdateTrayBtn);
 
                 _notifyIcon.ContextMenuStrip.Items.Add(new Helpers.CustomContextMenu.StripSeparatorCustom().stripSeparator);
-                _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextSupport, Properties.Icons.icons8_heart_48).Click += (s, e) => OpenExternal("https://ko-fi.com/rocksdanister");
+                _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextSupport, Properties.Icons.icons8_heart_48).Click += (s, e) =>
+                                                                                Helpers.LinkHandler.OpenBrowser("https://ko-fi.com/rocksdanister");
             }
 
             //_notifyIcon.ContextMenuStrip.Items.Add("-");
@@ -189,20 +190,6 @@ namespace livelywpf
             {
                 _notifyIcon.Visible = visibility;
             }
-        }
-
-        private void OpenExternal(string url)
-        {
-            try
-            {
-                var ps = new ProcessStartInfo(url)
-                {
-                    UseShellExecute = true,
-                    Verb = "open"
-                };
-                Process.Start(ps);
-            }
-            catch { }
         }
 
         public void Dispose()

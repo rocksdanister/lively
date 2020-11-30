@@ -133,7 +133,7 @@ namespace livelywpf.Core
             {
                 if (String.IsNullOrEmpty(fProcess.ProcessName) || fHandle.Equals(IntPtr.Zero))
                 {
-                    Logger.Info("Getting processname failure/handle null, resuming playback!");
+                    //Logger.Info("Getting processname failure/handle null, resuming playback!");
                     PlayWallpapers();
                     return;
                 }

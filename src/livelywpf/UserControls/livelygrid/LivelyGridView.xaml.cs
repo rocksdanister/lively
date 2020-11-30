@@ -143,6 +143,5 @@ namespace livelygrid
         }
 
         #endregion //drag and drop
-
     }
 }

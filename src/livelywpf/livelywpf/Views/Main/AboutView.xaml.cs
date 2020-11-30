@@ -38,18 +38,9 @@ namespace livelywpf.Views
         {
             e.Handled = true;
             var result = await ShowNavigateDialogue(this, e.Uri);
-            if(result == ContentDialogResult.Primary)
+            if (result == ContentDialogResult.Primary)
             {
-                try
-                {
-                    var ps = new ProcessStartInfo(e.Uri.AbsoluteUri)
-                    {
-                        UseShellExecute = true,
-                        Verb = "open"
-                    };
-                    Process.Start(ps);
-                }
-                catch { }
+                Helpers.LinkHandler.OpenBrowser(e.Uri);
             }
         }
 

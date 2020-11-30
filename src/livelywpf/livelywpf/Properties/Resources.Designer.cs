@@ -388,6 +388,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Click here to manage wallpapers..
+        /// </summary>
+        public static string TextControlPanelOpen {
+            get {
+                return ResourceManager.GetString("TextControlPanelOpen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Convert to Video.
         /// </summary>
         public static string TextConvertVideo {
@@ -492,6 +501,15 @@ namespace livelywpf.Properties {
         public static string TextExportWallpaperZip {
             get {
                 return ResourceManager.GetString("TextExportWallpaperZip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Some features are not available in this version of Lively..
+        /// </summary>
+        public static string TextFeatureMissing {
+            get {
+                return ResourceManager.GetString("TextFeatureMissing", resourceCulture);
             }
         }
         
@@ -807,6 +825,15 @@ namespace livelywpf.Properties {
         public static string TextStop {
             get {
                 return ResourceManager.GetString("TextStop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you enjoy using Lively? Leave a review :).
+        /// </summary>
+        public static string TextStoreReview {
+            get {
+                return ResourceManager.GetString("TextStoreReview", resourceCulture);
             }
         }
         
@@ -1666,6 +1693,15 @@ namespace livelywpf.Properties {
         public static string TitleSettings {
             get {
                 return ResourceManager.GetString("TitleSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Store.
+        /// </summary>
+        public static string TitleStore {
+            get {
+                return ResourceManager.GetString("TitleStore", resourceCulture);
             }
         }
         

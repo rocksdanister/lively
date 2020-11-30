@@ -723,9 +723,22 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
     <value>Cipta Previu</value>
   </data>
   <data name="TitleGifPlayer" xml:space="preserve">
-    <value>Gif Player</value>
+    <value>Pemain Gif</value>
   </data>
   <data name="TipGifPlayer" xml:space="preserve">
-    <value>Select the player used for gif wallpaper.</value>
-  </data>    
+    <value>Memilih pemain yang digunakan untuk wallpaper gif.</value>
+  </data>
+  <data name="TextFeatureMissing" xml:space="preserve">
+    <value>Some features are not available in this version of Lively.</value>
+  </data>
+  <data name="TextControlPanelOpen" xml:space="preserve">
+    <value>Click here to manage wallpapers.</value>
+  </data>
+  <data name="TextStoreReview" xml:space="preserve">
+    <value>Do you enjoy using Lively? Leave a review :)</value>
+  </data>
+  <data name="TitleStore" xml:space="preserve">
+    <value>Store</value>
+    <comment>For different version of Lively, example: Microsoft Store</comment>
+  </data>
 </root>
