@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Net;
-using System.ServiceModel.Description;
-using System.Text;
-using System.Windows;
-using Windows.Web.UI.Interop;
 
 namespace livelywpf
 {

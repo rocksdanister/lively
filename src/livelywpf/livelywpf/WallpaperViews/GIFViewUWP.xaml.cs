@@ -1,5 +1,4 @@
-﻿using Microsoft.Toolkit.Wpf.UI.XamlHost;
-using System;
+﻿using System;
 using System.Windows;
 using System.Windows.Interop;
 using Windows.Foundation.Metadata;
@@ -32,31 +31,6 @@ namespace livelywpf
             //this hides the window from taskbar and also fixes crash when win10 taskview is launched. 
             this.ShowInTaskbar = false;
             this.ShowInTaskbar = true;
-        }
-
-        private void ImageUWP_ChildChanged(object sender, EventArgs e)
-        {
-            WindowsXamlHost windowsXamlHost = (WindowsXamlHost)sender;
-
-            Windows.UI.Xaml.Controls.Image imgElement =
-                (Windows.UI.Xaml.Controls.Image)windowsXamlHost.Child;
-
-            if (imgElement != null)
-            {
-                BitMapImg = new Windows.UI.Xaml.Media.Imaging.BitmapImage();
-                BitMapImg.ImageFailed += BitMapImg_ImageFailed;
-                imgElement.Stretch = (Windows.UI.Xaml.Media.Stretch)stretch;
-                try
-                {
-                    BitMapImg.UriSource = new Uri(FilePath);
-                }
-                catch(Exception ex)
-                {
-                    Logger.Error(ex.ToString());
-                    return;
-                }
-                imgElement.Source = BitMapImg;
-            }
         }
 
         private void BitMapImg_ImageFailed(object sender, Windows.UI.Xaml.ExceptionRoutedEventArgs e)

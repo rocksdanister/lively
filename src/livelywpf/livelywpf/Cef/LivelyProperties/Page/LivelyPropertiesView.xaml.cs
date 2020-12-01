@@ -1,5 +1,4 @@
 ﻿using livelywpf.Core;
-using Microsoft.Toolkit.Wpf.UI.XamlHost;
 using Newtonsoft.Json.Linq;
 using NLog;
 using System;
@@ -85,16 +84,33 @@ namespace livelywpf.Cef
                 string uiElementType = item.Value["type"].ToString();
                 if (uiElementType.Equals("slider", StringComparison.OrdinalIgnoreCase))
                 {
-                    WindowsXamlHost xamlSlider = new WindowsXamlHost()
+                    var xamlSlider = new Slider()
                     {
                         Name = item.Key,
                         MaxWidth = maxWidth,
                         MinWidth = maxWidth,
-                        InitialTypeName = "Windows.UI.Xaml.Controls.Slider",
                         HorizontalAlignment = HorizontalAlignment.Left,
-                        Margin = margin
+                        Margin = margin,
+                        Minimum = (double)item.Value["min"],
+                        Maximum = (double)item.Value["max"],
+                        Value = (double)item.Value["value"],
+                        AutoToolTipPlacement = System.Windows.Controls.Primitives.AutoToolTipPlacement.TopLeft,
                     };
-                    xamlSlider.ChildChanged += XamlSlider_ChildChanged;
+                    if (item.Value["step"] != null)
+                    {
+                        if (!String.IsNullOrWhiteSpace(item.Value["step"].ToString()))
+                        {
+                            xamlSlider.TickFrequency = (double)item.Value["step"];
+                            xamlSlider.AutoToolTipPrecision = 2;
+                        }
+                    }
+                    else
+                    {
+                        xamlSlider.TickFrequency = 1;
+                        xamlSlider.IsSnapToTickEnabled = true;
+                        xamlSlider.TickPlacement = System.Windows.Controls.Primitives.TickPlacement.None;
+                    }
+                    xamlSlider.ValueChanged += XamlSlider_ValueChanged;
                     obj = xamlSlider;
                 }
                 else if (uiElementType.Equals("textbox", StringComparison.OrdinalIgnoreCase))
@@ -162,32 +178,45 @@ namespace livelywpf.Cef
                 }
                 else if (uiElementType.Equals("dropdown", StringComparison.OrdinalIgnoreCase))
                 {
-
-                    WindowsXamlHost xamlCmbBox = new WindowsXamlHost()
+                    var cmbBox = new ComboBox()
                     {
                         Name = item.Key,
                         MaxWidth = maxWidth,
-                        MinWidth = maxWidth,
-                        InitialTypeName = "Windows.UI.Xaml.Controls.ComboBox",       
+                        MinWidth = maxWidth,       
                         HorizontalAlignment = HorizontalAlignment.Left,
-                        Margin = margin
+                        Margin = margin,
+                        SelectedIndex = (int)item.Value["value"],
+
                     };
-                    xamlCmbBox.ChildChanged += XmlCmbBox_ChildChanged;                  
-                    obj = xamlCmbBox;
+                    foreach (var dropItem in item.Value["items"])
+                    {
+                        cmbBox.Items.Add(dropItem);
+                    }
+                    cmbBox.SelectionChanged += XamlCmbBox_SelectionChanged;             
+                    obj = cmbBox;
                 }
                 else if (uiElementType.Equals("folderDropdown", StringComparison.OrdinalIgnoreCase))
                 {
-                    WindowsXamlHost xamlFolderCmbBox = new WindowsXamlHost()
+                    var cmbBox = new ComboBox
                     {
                         Name = item.Key,
                         MaxWidth = maxWidth,
                         MinWidth = maxWidth,
-                        InitialTypeName = "Windows.UI.Xaml.Controls.ComboBox",
                         HorizontalAlignment = HorizontalAlignment.Left,
                         Margin = margin
                     };
-                    xamlFolderCmbBox.ChildChanged += XamlFolderCmbBox_ChildChanged;
-                    obj = xamlFolderCmbBox;
+                    //filter syntax: "*.jpg|*.png"
+                    var files = GetFileNames(Path.Combine(Path.GetDirectoryName(wallpaperData.FilePath), item.Value["folder"].ToString()),
+                                                item.Value["filter"].ToString(),
+                                                SearchOption.TopDirectoryOnly);
+
+                    foreach (var file in files)
+                    {
+                        cmbBox.Items.Add(file);
+                    }
+                    cmbBox.SelectedIndex = Array.FindIndex(files, x => x.Contains(item.Value["value"].ToString())); //returns -1 if not found, none selected.
+                    cmbBox.SelectionChanged += XamlFolderCmbBox_SelectionChanged;
+                    obj = cmbBox;
                 }
                 else if (uiElementType.Equals("label", StringComparison.OrdinalIgnoreCase))
                 {
@@ -249,54 +278,14 @@ namespace livelywpf.Cef
 
         #region slider
 
-        private void XamlSlider_ChildChanged(object sender, EventArgs e)
+        private void XamlSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             try
             {
-                var xml = (WindowsXamlHost)sender;
-                var slider = (Windows.UI.Xaml.Controls.Slider)xml.Child;
-
-                if (slider != null)
-                {
-                    foreach (var item in livelyPropertyData)
-                    {
-                        string uiElementType = item.Value["type"].ToString();
-                        if (uiElementType.Equals("slider", StringComparison.OrdinalIgnoreCase))
-                        {
-                            if (xml.Name.Equals(item.Key, StringComparison.OrdinalIgnoreCase))
-                            {
-                                slider.Name = item.Key;
-                                slider.Minimum = (double)item.Value["min"];
-                                slider.Maximum = (double)item.Value["max"];
-                                slider.Value = (double)item.Value["value"];
-                                if (item.Value["step"] != null)
-                                {
-                                    if (!String.IsNullOrWhiteSpace(item.Value["step"].ToString()))
-                                    {
-                                        slider.StepFrequency = (double)item.Value["step"];
-                                    }
-                                }
-                                slider.ValueChanged += Slider_ValueChanged;
-                                break;
-                            }
-                        }
-                    }
-                }
-            }
-            catch(Exception ex)
-            {
-                Logger.Error(ex.ToString());
-            }
-        }
-
-        private void Slider_ValueChanged(object sender, Windows.UI.Xaml.Controls.Primitives.RangeBaseValueChangedEventArgs e)
-        {
-            try
-            {
-                var item = (Windows.UI.Xaml.Controls.Slider)sender;
-
+                var item = (Slider)sender;
                 WallpaperSendMsg("lively:customise slider " + item.Name + " " + item.Value);
                 livelyPropertyData[item.Name]["value"] = item.Value;
+                Debug.WriteLine("lively:customise slider " + item.Name + " " + item.Value);
                 UpdatePropertyFile();
             }
             catch { }
@@ -306,51 +295,11 @@ namespace livelywpf.Cef
 
         #region dropdown
 
-        private void XamlFolderCmbBox_ChildChanged(object sender, EventArgs e)
+        private void XamlFolderCmbBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
             {
-                var xml = (WindowsXamlHost)sender;
-                var cmbBox = (Windows.UI.Xaml.Controls.ComboBox)xml.Child;
-
-                if (cmbBox != null)
-                {
-                    foreach (var item in livelyPropertyData)
-                    {
-                        string uiElementType = item.Value["type"].ToString();
-                        if (uiElementType.Equals("folderDropdown", StringComparison.OrdinalIgnoreCase))
-                        {
-                            if (xml.Name.Equals(item.Key, StringComparison.OrdinalIgnoreCase))
-                            {
-                                cmbBox.Name = item.Key;
-                                //filter syntax: "*.jpg|*.png"
-                                var files = GetFileNames(Path.Combine(Path.GetDirectoryName(wallpaperData.FilePath), item.Value["folder"].ToString()),
-                                                            item.Value["filter"].ToString(),
-                                                            SearchOption.TopDirectoryOnly);
-
-                                foreach (var file in files)
-                                {
-                                    cmbBox.Items.Add(file);
-                                }
-                                cmbBox.SelectedIndex = Array.FindIndex(files, x => x.Contains(item.Value["value"].ToString())); //returns -1 if not found, none selected.
-                                cmbBox.SelectionChanged += CmbBox_SelectionChanged1;
-                                break;
-                            }
-                        }
-                    }
-                }
-            }
-            catch(Exception ex)
-            {
-                Logger.Error(ex.ToString());
-            }
-        }
-
-        private void CmbBox_SelectionChanged1(object sender, Windows.UI.Xaml.Controls.SelectionChangedEventArgs e)
-        {
-            try
-            {
-                var item = (Windows.UI.Xaml.Controls.ComboBox)sender;
+                var item = (ComboBox)sender;
                 var filePath = Path.Combine(livelyPropertyData[item.Name]["folder"].ToString(), item.SelectedItem.ToString()); //filename is unique.
                 WallpaperSendMsg("lively:customise folderDropdown " + item.Name + " " + "\"" + filePath + "\"");
                 livelyPropertyData[item.Name]["value"] = item.SelectedItem.ToString();
@@ -359,39 +308,11 @@ namespace livelywpf.Cef
             catch { }
         }
 
-        private void XmlCmbBox_ChildChanged(object sender, EventArgs e)
-        {
-            var xml = (WindowsXamlHost)sender;
-            var cmbBox = (Windows.UI.Xaml.Controls.ComboBox)xml.Child;
-
-            if (cmbBox != null)
-            {
-                foreach (var item in livelyPropertyData)
-                {
-                    string uiElementType = item.Value["type"].ToString();
-                    if (uiElementType.Equals("dropdown", StringComparison.OrdinalIgnoreCase))
-                    {
-                        if (xml.Name.Equals(item.Key, StringComparison.OrdinalIgnoreCase))
-                        {
-                            cmbBox.Name = item.Key;
-                            foreach (var dropItem in item.Value["items"])
-                            {
-                                cmbBox.Items.Add(dropItem);
-                            }
-                            cmbBox.SelectedIndex = (int)item.Value["value"];
-                            cmbBox.SelectionChanged += CmbBox_SelectionChanged;
-                            break;
-                        }
-                    }
-                }                    
-            }
-        }
-
-        private void CmbBox_SelectionChanged(object sender, Windows.UI.Xaml.Controls.SelectionChangedEventArgs e)
+        private void XamlCmbBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
             {
-                var item = (Windows.UI.Xaml.Controls.ComboBox)sender;
+                var item = (ComboBox)sender;
                 //Form1.chromeBrowser.ExecuteScriptAsync("livelyPropertyListener", item.Name, item.SelectedIndex);
                 WallpaperSendMsg("lively:customise dropdown " + item.Name + " " + item.SelectedIndex);
                 livelyPropertyData[item.Name]["value"] = item.SelectedIndex;

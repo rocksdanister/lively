@@ -39,7 +39,7 @@ namespace livelywpf
             {
                 //full filepath is stored in Livelyinfo.json metadata file.
                 FilePath = data.FileName;
-                
+
                 //This is to keep backward compatibility with older wallpaper files.
                 //When I originally made the property all the paths where made absolute, not just wallpaper path.
                 //But previewgif and thumb are always inside the temporary lively created folder.
@@ -67,7 +67,7 @@ namespace livelywpf
                 {
                     LivelyPropertyPath = Path.Combine(Directory.GetParent(data.FileName).ToString(), "LivelyProperties.json");
                 }
-                catch 
+                catch
                 {
                     LivelyPropertyPath = null;
                 }
@@ -75,7 +75,7 @@ namespace livelywpf
             else
             {
                 //Only relative path is stored, this will be inside "Lively Wallpaper" folder.
-                if (data.Type == livelywpf.WallpaperType.url 
+                if (data.Type == livelywpf.WallpaperType.url
                 || data.Type == livelywpf.WallpaperType.videostream)
                 {
                     //no file.
@@ -96,7 +96,7 @@ namespace livelywpf
                     {
                         LivelyPropertyPath = Path.Combine(folderPath, "LivelyProperties.json");
                     }
-                    catch 
+                    catch
                     {
                         LivelyPropertyPath = null;
                     }
@@ -135,9 +135,9 @@ namespace livelywpf
             if (data.Type == livelywpf.WallpaperType.video)
             {
                 //No user made livelyproperties file if missing, using default for video.
-                if(LivelyPropertyPath == null)
+                if (LivelyPropertyPath == null)
                 {
-                    LivelyPropertyPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, 
+                    LivelyPropertyPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
                         "plugins", "libMPVPlayer", "api", "LivelyProperties.json");
                 }
             }
@@ -176,7 +176,7 @@ namespace livelywpf
             get { return _filePath; }
             set
             {
-                if (LivelyInfo.Type == livelywpf.WallpaperType.url 
+                if (LivelyInfo.Type == livelywpf.WallpaperType.url
                 || LivelyInfo.Type == livelywpf.WallpaperType.videostream)
                 {
                     _filePath = value;
@@ -206,7 +206,7 @@ namespace livelywpf
             get
             {
                 return _title;
-            }   
+            }
             set
             {
                 _title = value;

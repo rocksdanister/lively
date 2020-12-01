@@ -1,5 +1,4 @@
-﻿using Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -22,17 +21,6 @@ namespace livelywpf
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         public MediaElementUWP(string path, int playSpeed)
         {
-            InitializeComponent();
-            this.Loaded += Window_Loaded;
-
-            //https://github.com/windows-toolkit/Microsoft.Toolkit.Win32/issues/106  :'(
-            Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT.MediaPlayer mediaPlayer = new Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT.MediaPlayer(new Windows.Media.Playback.MediaPlayer());
-            mediaPlayer.Source = MediaSource.CreateFromUri(new Uri(path));
-            mediaPlayer.AutoPlay = true;
-            mediaPlayer.IsLoopingEnabled = true;
-
-            mePlayer.Stretch = Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT.Stretch.Fill;
-            mePlayer.SetMediaPlayer(mediaPlayer);
 
         }
 

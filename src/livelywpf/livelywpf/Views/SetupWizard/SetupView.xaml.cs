@@ -26,7 +26,7 @@ namespace livelywpf.Views.SetupWizard
             new PageWelcome(),
             new PageStartup(),
             //new PageDirectory(),
-            new PageUI(),
+            //new PageUI(),
             new PageFinal() 
         };
 
@@ -39,13 +39,35 @@ namespace livelywpf.Views.SetupWizard
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             index++;
-            if ((index + 1) == pages.Count)
+            if(Program.IsMSIX)
             {
-                NextBtn.IsEnabled = false;
-                NextBtn.Visibility = Visibility.Collapsed;
-                //_isClosable = true;
+                if((index + 1) == pages.Count)
+                {
+                    NextBtn.Content = Properties.Resources.TextOK;
+                }
+
+                if ((index) == pages.Count)
+                {
+                    //final page.
+                    Program.ShowMainWindow();
+                    //ExitWindow(); //ShowMainWindow() calls it.
+                }
+                else
+                {
+                    ContentFrame.Navigate(pages[index], new EntranceNavigationTransitionInfo());
+                }
             }
-            ContentFrame.Navigate(pages[index], new EntranceNavigationTransitionInfo());
+            else
+            {
+                if ((index + 1) == pages.Count)
+                {
+                    NextBtn.IsEnabled = false;
+                    NextBtn.Visibility = Visibility.Collapsed;
+                    //_isClosable = true;
+                }
+                ContentFrame.Navigate(pages[index], new EntranceNavigationTransitionInfo());
+            }
+
         }
 
         public void ExitWindow()

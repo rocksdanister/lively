@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Windows;
 
+
 namespace livelywpf
 {
     public class Program
@@ -16,8 +17,7 @@ namespace livelywpf
         //Loaded from Settings.json (User configurable.)
         public static string WallpaperDir { get; set; }
         public static string AppDataDir { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Lively Wallpaper");
-        public static bool IsMSIX { get; } = false; //new DesktopBridge.Helpers().IsRunningAsUwp();
-        public static bool IsTestBuild { get; } = false;
+        public static bool IsMSIX { get; } = new DesktopBridge.Helpers().IsRunningAsUwp();
 
         //todo: use singleton or something instead?
         public static SettingsViewModel SettingsVM { get; set; }
@@ -54,17 +54,11 @@ namespace livelywpf
 
             try
             {
-                //XAML Islands, uwp entry app.
-                //See App.xaml.cs for wpf app startup override fn.
-                using (var uwp = new rootuwp.App())
-                {
-                    //uwp.RequestedTheme = Windows.UI.Xaml.ApplicationTheme.Light;
-                    livelywpf.App app = new livelywpf.App();
-                    app.InitializeComponent();
-                    app.Startup += App_Startup;
-                    app.SessionEnding += App_SessionEnding;
-                    app.Run();
-                }
+                livelywpf.App app = new livelywpf.App();
+                app.InitializeComponent();
+                app.Startup += App_Startup;
+                app.SessionEnding += App_SessionEnding;
+                app.Run();
             }
             finally
             {
@@ -77,6 +71,7 @@ namespace livelywpf
         private static void App_Startup(object sender, StartupEventArgs e)
         {
             sysTray = new Systray(SettingsVM.IsSysTrayIconVisible);
+            ApplicationThemeChange(Program.SettingsVM.Settings.ApplicationTheme);
             AppUpdater();
 
             if (Program.SettingsVM.Settings.IsFirstRun)
@@ -94,6 +89,23 @@ namespace livelywpf
             LibraryVM.RestoreWallpaperFromSave();
         }
 
+        public static void ApplicationThemeChange(AppTheme theme)
+        {
+            switch (theme)
+            {
+                case AppTheme.Auto:
+                    break;
+                case AppTheme.Light:
+                    ModernWpf.ThemeManager.Current.ApplicationTheme = ModernWpf.ApplicationTheme.Light;
+                    break;
+                case AppTheme.Dark:
+                    ModernWpf.ThemeManager.Current.ApplicationTheme = ModernWpf.ApplicationTheme.Dark;
+                    break;
+                default:
+                    break;
+            }
+        }
+
         #endregion //app entry
 
         #region app updater
@@ -109,8 +121,8 @@ namespace livelywpf
             try
             {
                 var userName = "rocksdanister";
-                var repositoryName = IsTestBuild ? "lively-beta" : "lively";
-                var fetchDelay = IsTestBuild ? 30000 : 45000;
+                var repositoryName = "lively-wpf";
+                var fetchDelay = 45000;
 
                 var gitRelease = await UpdaterGithub.GetLatestRelease(repositoryName, userName, fetchDelay);
                 var result = UpdaterGithub.CompareAssemblyVersion(gitRelease);
@@ -119,7 +131,7 @@ namespace livelywpf
                     try
                     {
                         //download asset format: lively_setup_x86_full_vXXXX.exe, XXXX - 4 digit version no.
-                        var gitUrl = await UpdaterGithub.GetAssetUrl("lively_setup_x86_full", 
+                        var gitUrl = await UpdaterGithub.GetAssetUrl("lively_setup_x86_wpf_full", 
                             gitRelease, repositoryName, userName);
 
                         //changelog text

@@ -37,7 +37,7 @@
                 <Label Content="{x:Static p:Resources.TextWebsite}" />
                 <TextBox Name="textboxContact" Text="{Binding Url, Mode=TwoWay}" TextWrapping="NoWrap" MaxHeight="20" Height="20"  Margin="10,5,25,0" />
 
-                <CheckBox x:Name="chkBoxCreatePreview" Content="{x:Static p:Resources.TextCreatePreview}" Margin="10,10,0,0" IsChecked="{Binding Path=GifCheck, Mode=TwoWay}"/>
+                <CheckBox IsEnabled="False" x:Name="chkBoxCreatePreview" Content="{x:Static p:Resources.TextCreatePreview}" Margin="10,10,0,0" IsChecked="{Binding Path=GifCheck, Mode=TwoWay}"/>
                 <CheckBox x:Name="chkBoxCreateZip" Content="{x:Static p:Resources.TextExportWallpaperZip}" Margin="10,10,0,0" IsChecked="{Binding Path=ZipCheck, Mode=TwoWay}"/>
                 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0, 0, 10, 0">

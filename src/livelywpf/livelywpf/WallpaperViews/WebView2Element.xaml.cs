@@ -1,5 +1,4 @@
 ﻿using Microsoft.Web.WebView2.Core;
-using Mpv.NET.Player;
 using Newtonsoft.Json;
 using System;
 using System.IO;
@@ -43,7 +42,7 @@ namespace livelywpf
                 //only after await, null otherwise.
                 webView.CoreWebView2.ProcessFailed += CoreWebView2_ProcessFailed;
 
-                if(wallpaperType == WallpaperType.url)
+                if (wallpaperType == WallpaperType.url)
                 {
                     string ytVideoId = "test";
                     if (htmlPath.Contains("shadertoy.com/view"))
@@ -53,8 +52,8 @@ namespace livelywpf
                     else if ((ytVideoId = Helpers.libMPVStreams.GetYouTubeVideoIdFromUrl(htmlPath)) != "")
                     {
                         //open fullscreen embed player with loop enabled.
-                        webView.CoreWebView2.Navigate("https://www.youtube.com/embed/" + ytVideoId + 
-                            "?version=3&rel=0&autoplay=1&loop=1&controls=0&playlist="+ytVideoId);
+                        webView.CoreWebView2.Navigate("https://www.youtube.com/embed/" + ytVideoId +
+                            "?version=3&rel=0&autoplay=1&loop=1&controls=0&playlist=" + ytVideoId);
                     }
                     else
                     {
@@ -67,7 +66,7 @@ namespace livelywpf
                     webView.CoreWebView2.Navigate(htmlPath);
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Logger.Error("Webview2: fail=>" + e.ToString());
                 //To avoid blinding white color.
@@ -84,12 +83,12 @@ namespace livelywpf
             this.ShowInTaskbar = true;
         }
 
-        private void webView_NavigationCompleted(object sender, Microsoft.Web.WebView2.Core.CoreWebView2NavigationCompletedEventArgs e)
+        private void webView_NavigationCompleted(object sender, CoreWebView2NavigationCompletedEventArgs e)
         {
             RestoreLivelyProperties(livelyPropertyPath);
         }
 
-        private void CoreWebView2_ProcessFailed(object sender, Microsoft.Web.WebView2.Core.CoreWebView2ProcessFailedEventArgs e)
+        private void CoreWebView2_ProcessFailed(object sender, CoreWebView2ProcessFailedEventArgs e)
         {
             Logger.Error("Webview2: fail=>" + e.ToString());
         }
@@ -102,7 +101,7 @@ namespace livelywpf
                 {
                     webView.Reload();
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     Logger.Error("Webview2: reload error=>" + e.Message);
                 }
@@ -113,7 +112,7 @@ namespace livelywpf
                 {
                     LivelyPropertiesMsg(msg);
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     Logger.Error("Webview2: lively property error=>" + e.Message);
                 }
@@ -128,7 +127,7 @@ namespace livelywpf
                 {
                     webView.Dispose();
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     Logger.Error("Webview2: Dispose error=>" + ex.Message);
                 }

@@ -77,7 +77,7 @@ namespace livelywpf
         /// </summary>
         public string WebDebugPort { get; set; }
         public int WallpaperBundleVersion { get; set; }
-        public StreamQualitySuggestion StreamQuality {get; set;}
+        public StreamQualitySuggestion StreamQuality { get; set; }
         /// <summary>
         /// 0 - 100 sound level, affects every wallpaper type.
         /// </summary>
@@ -90,10 +90,7 @@ namespace livelywpf
         /// {Unused currently.}
         /// </summary>
         public bool TestBuild { get; set; }
-        /// <summary>
-        /// Not used currently.
-        /// </summary>
-        public AppTheme ApplicationTheme { get; set; }
+        public AppTheme ApplicationTheme {get; set;}
 
         public SettingsModel()
         {
@@ -101,7 +98,7 @@ namespace livelywpf
             ProcessMonitorAlgorithm = ProcessMonitorAlgorithm.foreground;
             WallpaperArrangement = WallpaperArrangement.per;
             AppVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            Startup = false;
+            Startup = true;
             IsFirstRun = true;
             ControlPanelOpened = false;
             AppFocusPause = AppRulesEnum.ignore;
@@ -110,7 +107,7 @@ namespace livelywpf
             VideoPlayer = LivelyMediaPlayer.libmpvExt;
             StreamVideoPlayer = LivelyMediaPlayer.libmpvExt;
             WebBrowser = LivelyWebBrowser.cef;
-            GifPlayer = LivelyGifPlayer.win10Img;
+            GifPlayer = LivelyGifPlayer.libmpvExt;
 
             WallpaperWaitTime = 20000; // 20sec
             ProcessTimerInterval = 500; //reduce to 250 for quicker response.
@@ -124,7 +121,7 @@ namespace livelywpf
             //media scaling
             ScalerVideo = System.Windows.Media.Stretch.Fill;
             ScalerGif = System.Windows.Media.Stretch.Fill;
-            GifCapture = true;
+            GifCapture = false;
 
             SafeShutdown = true;
             IsRestart = false;
@@ -135,7 +132,7 @@ namespace livelywpf
             TileSize = 1;
             DisplayIdentification = DisplayIdentificationMode.screenLayout;
             SelectedDisplay = ScreenHelper.GetPrimaryScreen();
-            LivelyGUIRendering = LivelyGUIState.normal;
+            LivelyGUIRendering = LivelyGUIState.lite;
             WallpaperDir = Path.Combine(Program.AppDataDir, "Library");
             WallpaperDirMoveExistingWallpaperNewDir = false;
             SysTrayIcon = true;

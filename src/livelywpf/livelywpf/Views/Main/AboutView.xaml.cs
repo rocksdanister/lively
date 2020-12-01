@@ -20,7 +20,7 @@ namespace livelywpf.Views
         {
             InitializeComponent();
             appVersionText.Text = "v" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() + 
-                (Program.IsTestBuild == true? "b":string.Empty);
+                (Program.IsMSIX == true? " " + Properties.Resources.TitleStore : " wpf");
             try
             {
                 //attribution document.
@@ -38,7 +38,7 @@ namespace livelywpf.Views
         {
             e.Handled = true;
             var result = await ShowNavigateDialogue(this, e.Uri);
-            if (result == ContentDialogResult.Primary)
+            if(result == ContentDialogResult.Primary)
             {
                 Helpers.LinkHandler.OpenBrowser(e.Uri);
             }

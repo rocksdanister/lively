@@ -1,16 +1,11 @@
 ﻿using livelywpf.Helpers;
+using ModernWpf.Controls;
+using ModernWpf.Controls.Primitives;
 using System;
-using System.Diagnostics;
 using System.IO;
-using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Forms;
-using System.Windows.Interop;
 using Windows.ApplicationModel.DataTransfer;
-using Windows.Foundation.Metadata;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
 
 namespace livelywpf.Views
 {
@@ -20,7 +15,7 @@ namespace livelywpf.Views
     public partial class LibraryView : System.Windows.Controls.Page
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        livelygrid.LivelyGridView LivelyGridControl { get; set; }
+        private LibraryModel selectedTile;
 
         public LibraryView()
         {
@@ -29,32 +24,19 @@ namespace livelywpf.Views
             this.DataContext = Program.LibraryVM; 
         }
 
-        private void LivelyGridView_ChildChanged(object sender, EventArgs e)
+        private void GridControl_PreviewMouseRightButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            // Hook up x:Bind source.
-            global::Microsoft.Toolkit.Wpf.UI.XamlHost.WindowsXamlHost windowsXamlHost =
-                sender as global::Microsoft.Toolkit.Wpf.UI.XamlHost.WindowsXamlHost;
-            LivelyGridControl = windowsXamlHost.GetUwpInternalObject() as global::livelygrid.LivelyGridView;
+            e.Handled = true;
+            var a = ((FrameworkElement)e.OriginalSource).DataContext;
+            selectedTile = (LibraryModel)a;
+            customiseWallpaper.IsEnabled = selectedTile.LivelyPropertyPath != null;
+        }
 
-            if (LivelyGridControl != null)
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            if (selectedTile != null)
             {
-                //Don't know if there is an easier way to chang UserControl language, tried setting framework language to no effect.
-                //todo: find better way to do this.
-                LivelyGridControl.UIText = new livelygrid.LocalizeTextGridView()
-                {
-                    TextAddWallpaper = Properties.Resources.TitleAddWallpaper,
-                    TextConvertVideo = Properties.Resources.TextConvertVideo,
-                    TextCustomise = Properties.Resources.TextCustomiseWallpaper,
-                    TextDelete = Properties.Resources.TextDeleteWallpaper,
-                    TextExportZip = Properties.Resources.TextExportWallpaperZip,
-                    TextInformation = Properties.Resources.TitleAbout,
-                    TextSetWallpaper = Properties.Resources.TextSetWallpaper,
-                    TextShowDisk = Properties.Resources.TextShowOnDisk,
-                    TextPreviewWallpaper = Properties.Resources.TextPreviewWallpaper
-                };
-                LivelyGridControl.GridElementSize((livelygrid.GridSize)Program.SettingsVM.SelectedTileSizeIndex);
-                LivelyGridControl.ContextMenuClick += LivelyGridControl_ContextMenuClick;
-                LivelyGridControl.FileDroppedEvent += LivelyGridControl_FileDroppedEvent;
+                LivelyGridControl_ContextMenuClick(sender, selectedTile);
             }
         }
 
@@ -66,220 +48,101 @@ namespace livelywpf.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void LivelyGridControl_ContextMenuClick(object sender, object e)
+        private async void LivelyGridControl_ContextMenuClick(object sender, LibraryModel obj)
         {
-            var s = sender as MenuFlyoutItem;
-            LibraryModel obj;
-            try
+            var s = sender as MenuItem;
+            switch (s.Name)
             {
-                obj = (LibraryModel)e;
+                case "previewWallpaper":
+                    var prev = new WallpaperPreviewWindow(obj)
+                    {
+                        WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner,
+                        Owner = App.AppWindow
+                    };
+                    prev.Show();
+                    break;
+                case "showOnDisk":
+                    Program.LibraryVM.WallpaperShowOnDisk(obj);
+                    break;
+                case "setWallpaper":
+                    Program.LibraryVM.WallpaperSet(obj);
+                    break;
+                case "exportWallpaper":
+                    string savePath = "";
+                    var saveFileDialog1 = new Microsoft.Win32.SaveFileDialog()
+                    {
+                        Title = "Select location to save the file",
+                        Filter = "Lively/zip file|*.zip",
+                        FileName = obj.Title,
+                    };
+                    if (saveFileDialog1.ShowDialog() == true)
+                    {
+                        savePath = saveFileDialog1.FileName;
+                    }
+                    if (String.IsNullOrEmpty(savePath))
+                    {
+                        break;
+                    }
+                    Program.LibraryVM.WallpaperExport(obj, savePath);
+                    break;
+                case "deleteWallpaper":
+                    var result = await Helpers.DialogService.ShowConfirmationDialog(
+                        (obj.LivelyInfo.IsAbsolutePath ?
+                            Properties.Resources.DescriptionDeleteConfirmationLibrary : Properties.Resources.DescriptionDeleteConfirmation),
+                        obj.Title + " by " + obj.LivelyInfo.Author,
+                        Properties.Resources.TextYes,
+                        Properties.Resources.TextNo);
+
+                    if (result == ContentDialogResult.Primary)
+                    {
+                        Program.LibraryVM.WallpaperDelete(obj);
+                    }
+                    break;
+                case "customiseWallpaper":
+                    var details = Program.LibraryVM.GetLivelyPropertyDetails(obj);
+                    var customiseFrame = new ModernWpf.Controls.Frame()
+                    {
+                        Margin = new Thickness(25, 0, 50, 25)
+                    };
+                    customiseFrame.Navigate(new Cef.LivelyPropertiesView(obj, details.Item1, details.Item2));
+                    ScrollViewer scv = new ScrollViewer()
+                    {
+                        VerticalScrollBarVisibility = ScrollBarVisibility.Auto,
+                        HorizontalScrollBarVisibility = ScrollBarVisibility.Auto,
+                        Margin = new Thickness(0, 5, 0, 0)
+                    };
+                    scv.Content = customiseFrame;
+                    await Helpers.DialogService.ShowConfirmationDialog(obj.Title,
+                        scv,
+                        Properties.Resources.TextClose);
+                    break;
+                case "convertVideo":
+                    Program.LibraryVM.WallpaperVideoConvert(obj);
+                    break;
+                case "moreInformation":
+                    var aboutView = new LibraryAboutView
+                    {
+                        DataContext = obj
+                    };
+                    var aboutFrame = new ModernWpf.Controls.Frame();
+                    aboutFrame.Navigate(aboutView);
+                    await Helpers.DialogService.ShowConfirmationDialog(
+                        obj.Title,
+                        aboutFrame,
+                        Properties.Resources.TextClose);
+                    break;
             }
-            catch { return; }
-
-            await this.Dispatcher.InvokeAsync(new Action(async () => {
-                switch (s.Name)
-                {
-                    case "previewWallpaper":
-                        var prev = new WallpaperPreviewWindow((LibraryModel)e)
-                        {
-                            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner,
-                            Owner = App.AppWindow
-                        };
-                        prev.Show();
-                        break;
-                    case "showOnDisk":
-                        Program.LibraryVM.WallpaperShowOnDisk(e);
-                        break;
-                    case "setWallpaper":
-                        Program.LibraryVM.WallpaperSet(e);
-                        break;
-                    case "exportWallpaper":
-                        string savePath = "";
-                        var saveFileDialog1 = new Microsoft.Win32.SaveFileDialog()
-                        {
-                            Title = "Select location to save the file",
-                            Filter = "Lively/zip file|*.zip",
-                            FileName = ((LibraryModel)e).Title,
-                        };
-                        if (saveFileDialog1.ShowDialog() == true)
-                        {
-                            savePath = saveFileDialog1.FileName;
-                        }
-                        if (String.IsNullOrEmpty(savePath))
-                        {
-                            break;
-                        }
-                        Program.LibraryVM.WallpaperExport(e, savePath);
-                        break;
-                    case "deleteWallpaper":
-                        var result = await Helpers.DialogService.ShowConfirmationDialog(
-                            ((LibraryModel)e).LivelyInfo.IsAbsolutePath ?
-                                Properties.Resources.DescriptionDeleteConfirmationLibrary : Properties.Resources.DescriptionDeleteConfirmation,
-                            ((LibraryModel)e).Title + " by " + ((LibraryModel)e).LivelyInfo.Author,
-                            ((UIElement)sender).XamlRoot,
-                            Properties.Resources.TextYes,
-                            Properties.Resources.TextNo);
-
-                        if (result == ContentDialogResult.Primary)
-                        {
-                            Program.LibraryVM.WallpaperDelete(e);
-                        }
-                        break;
-                    case "customiseWallpaper":
-                        //In app customise dialogue; 
-                        //Can't use contentdialogue since the window object is not uwp.
-                        //modernwpf contentdialogue does not have xamlroot so can't draw over livelygrid.
-                        LivelyGridControl.DimBackground(true);
-                        var details = Program.LibraryVM.GetLivelyPropertyDetails(e);
-                        var overlay =
-                            new Cef.LivelyPropertiesWindow(obj, details.Item1, details.Item2)
-                            {
-                                Owner = App.AppWindow,
-                                WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner,
-                                Width = 350,//App.AppWindow.Width / 3.0,
-                                Height = App.AppWindow.Height / 1.5,
-                                Title = obj.Title
-                            };
-                        overlay.ShowDialog();
-                        LivelyGridControl.DimBackground(false);
-                        break;
-                    case "convertVideo":
-                        Program.LibraryVM.WallpaperVideoConvert(obj);
-                        break;
-                    case "moreInformation":
-                        var infoView = new livelygrid.InfoPage
-                        {
-                            DataContext = ((LibraryModel)e),
-                            UIText = new livelygrid.LocalizeTextInfoPage()
-                            {
-                                Author = Properties.Resources.TextAuthor,
-                                Website = Properties.Resources.TextWebsite,
-                                Type = Properties.Resources.TextWallpaperType,
-                            }
-                        };
-                        await Helpers.DialogService.ShowConfirmationDialog(
-                            ((LibraryModel)e).Title,
-                            infoView,
-                            ((UIElement)sender).XamlRoot,
-                            Properties.Resources.TextClose);
-                        break;
-                }
-            }));
-        }
-
-        private async void LivelyGridControl_FileDroppedEvent(object sender, Windows.UI.Xaml.DragEventArgs e)
-        {
-            await this.Dispatcher.InvokeAsync(new Action(async () => {
-                if (e.DataView.Contains(StandardDataFormats.WebLink))
-                {
-                    var uri = await e.DataView.GetWebLinkAsync();
-                    Logger.Info("Dropped url=>" + uri.ToString());
-                    if (Program.SettingsVM.Settings.AutoDetectOnlineStreams &&
-                        libMPVStreams.CheckStream(uri))
-                    {
-                        Program.LibraryVM.AddWallpaper(uri.ToString(),
-                            WallpaperType.videostream,
-                            LibraryTileType.processing,
-                            Program.SettingsVM.Settings.SelectedDisplay);
-                    }
-                    else
-                    {
-                        Program.LibraryVM.AddWallpaper(uri.ToString(),
-                            WallpaperType.url,
-                            LibraryTileType.processing,
-                            Program.SettingsVM.Settings.SelectedDisplay);
-                    }
-                }
-                else if (e.DataView.Contains(StandardDataFormats.StorageItems))
-                {
-                    var items = await e.DataView.GetStorageItemsAsync();
-                    if (items.Count > 0)
-                    {
-                        //selecting first file only.
-                        var item = items[0].Path;
-                        Logger.Info("Dropped file=>" + item);
-                        try
-                        {
-                            if (String.IsNullOrWhiteSpace(Path.GetExtension(item)))
-                                return;
-                        }
-                        catch (ArgumentException)
-                        {
-                            Logger.Info("Invalid character, skipping dropped file=>" + item);
-                            return;
-                        }
-
-                        WallpaperType type;
-                        if((type = FileFilter.GetLivelyFileType(item)) != (WallpaperType)(-1))
-                        {
-                            if(type == WallpaperType.app || 
-                                type == WallpaperType.unity || 
-                                type == WallpaperType.unityaudio ||
-                                type == WallpaperType.godot)
-                            {
-                                //Show warning before proceeding.
-                                var result = await Helpers.DialogService.ShowConfirmationDialog(
-                                     Properties.Resources.TitlePleaseWait,
-                                     Properties.Resources.DescriptionExternalAppWarning,
-                                     ((UIElement)sender).XamlRoot,
-                                     Properties.Resources.TextYes,
-                                     Properties.Resources.TextNo);
-
-                                if (result == ContentDialogResult.Primary)
-                                {
-                                    Program.LibraryVM.AddWallpaper(item,
-                                        WallpaperType.app,
-                                        LibraryTileType.processing,
-                                        Program.SettingsVM.Settings.SelectedDisplay);
-                                }
-                            }
-                            else if(type == (WallpaperType)100)
-                            {
-                                //lively wallpaper .zip
-                                //todo: Show warning if program (.exe) wallpaper.
-                                if(ZipExtract.CheckLivelyZip(item))
-                                {
-                                    Program.LibraryVM.WallpaperInstall(item, false);
-                                }
-                                else
-                                {
-                                    await Helpers.DialogService.ShowConfirmationDialog(
-                                      Properties.Resources.TextError,
-                                      Properties.Resources.LivelyExceptionNotLivelyZip,
-                                      ((UIElement)sender).XamlRoot,
-                                      Properties.Resources.TextClose);
-                                }
-                            }
-                            else
-                            {
-                                Program.LibraryVM.AddWallpaper(item,
-                                  type,
-                                  LibraryTileType.processing,
-                                  Program.SettingsVM.Settings.SelectedDisplay);
-                            }
-                        }
-                        else
-                        {
-                            await Helpers.DialogService.ShowConfirmationDialog(
-                              Properties.Resources.TextError,
-                              Properties.Resources.TextUnsupportedFile +" (" + Path.GetExtension(item) + ")",
-                              ((UIElement)sender).XamlRoot,
-                              Properties.Resources.TextClose);
-                        }
-                    }
-                }
-            }));
         }
 
         private void Page_Unloaded(object sender, System.Windows.RoutedEventArgs e)
         {
-            if (LivelyGridControl != null)
-            {
-                LivelyGridControl.ContextMenuClick -= LivelyGridControl_ContextMenuClick;
-                LivelyGridControl.FileDroppedEvent -= LivelyGridControl_FileDroppedEvent;
-                //stop rendering previews... this should be automatic(?), but its not for some reason.
-                LivelyGridControl.GridElementSize(livelygrid.GridSize.NoPreview);
-            }
+
+        }
+
+        private void GridControl_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            //keyboard disable.
+            e.Handled = true;
         }
     }
 }

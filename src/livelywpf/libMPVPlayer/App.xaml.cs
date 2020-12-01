@@ -20,7 +20,6 @@ namespace libMPVPlayer
             SetupUnhandledExceptionLogging();
             wnd.Show();
         }
-
         private void App_SessionEnding(object sender, SessionEndingCancelEventArgs e)
         {
             if (e.ReasonSessionEnding == ReasonSessionEnding.Shutdown || e.ReasonSessionEnding == ReasonSessionEnding.Logoff)

@@ -5,32 +5,24 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
     <UseWindowsForms>true</UseWindowsForms>
-    <ApplicationManifest>app.manifest</ApplicationManifest>
-    <Platforms>AnyCPU;x64;x86</Platforms>
-    <StartupObject>livelywpf.Program</StartupObject>
     <ApplicationIcon>appicon.ico</ApplicationIcon>
-    <Version>1.0.0</Version>
-    <AssemblyVersion>1.1.5.0</AssemblyVersion>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <StartupObject>livelywpf.Program</StartupObject>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <AssemblyVersion>1.0.5.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Resources\appicon_96.png" />
+    <None Remove="Resources\drag_drop_animation.png" />
     <None Remove="Resources\icons8-helping-hand-96.png" />
     <None Remove="Resources\tutorial_systray.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="DesktopBridge.Helpers" Version="1.2.2" />
     <PackageReference Include="LibVLCSharp.WPF" Version="3.4.9" />
-    <PackageReference Include="Magick.NET-Q16-x86" Version="7.22.2.2" />
-    <PackageReference Include="Microsoft.Toolkit.Wpf.UI.Controls" Version="6.1.2" />
-    <PackageReference Include="Microsoft.Toolkit.Wpf.UI.XamlHost" Version="6.1.2" />
-    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.674-prerelease" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.664.37" />
     <PackageReference Include="Microsoft.Windows.Compatibility" Version="5.0.0" />
-    <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.19041.1" />
     <PackageReference Include="ModernWpfUI" Version="0.9.2" />
     <PackageReference Include="Mpv.NET" Version="1.1.1" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
@@ -42,15 +34,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\rootuwp\rootuwp.csproj" />
-    <ProjectReference Include="..\UserControls\livelycefproperties\livelycefproperties.csproj" />
-    <ProjectReference Include="..\UserControls\livelygrid\livelygrid.csproj" />
-    <ProjectReference Include="..\UserControls\livelyscreenlayout\livelyscreenlayout.csproj" />
-    <ProjectReference Include="..\UserControls\livelysettings\livelysettings.csproj" />
+    <Folder Include="plugins\" />
+    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Resources\appicon_96.png" />
+    <Resource Include="Resources\drag_drop_animation.png" />
     <Resource Include="Resources\icons8-helping-hand-96.png" />
     <Resource Include="Resources\tutorial_systray.png" />
   </ItemGroup>
@@ -77,13 +67,10 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="Properties\Resources.zh.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Docs\drag_drop_animation.gif">
+    <None Update="bundle\0.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Docs\license.rtf">
@@ -92,7 +79,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Update="Microsoft.VCRTForwarders.140" Version="1.0.7" />
+    <Content Include="plugins\**">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

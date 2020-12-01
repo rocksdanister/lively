@@ -1,7 +1,0 @@
-﻿<xaml:XamlApplication
-    x:Class="rootuwp.App"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:xaml="using:Microsoft.Toolkit.Win32.UI.XamlHost"
-    xmlns:local="using:rootuwp">
-</xaml:XamlApplication>

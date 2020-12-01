@@ -1,4 +1,4 @@
-﻿using ImageMagick;
+﻿//using ImageMagick;
 using livelywpf.Core;
 using System;
 using System.Globalization;
@@ -157,7 +157,7 @@ namespace livelywpf.Views
 
             double progress = 0;
             //preview clip (animated gif file).
-            if (Program.SettingsVM.Settings.GifCapture && wallpaperType != WallpaperType.picture)
+            if (false)//Program.SettingsVM.Settings.GifCapture && wallpaperType != WallpaperType.picture)
             {
                 //generate screen capture images.
                 for (int i = 0; i < gifTotalFrames; i++)
@@ -200,8 +200,11 @@ namespace livelywpf.Views
             CaptureProgress?.Invoke(this, 100);
         }
 
+
         private void CreateGif(string saveDirectory)
         {
+            throw new NotImplementedException();
+            /*
             using (MagickImageCollection collection = new MagickImageCollection())
             {
                 for (int i = 0; i < gifTotalFrames; i++)
@@ -222,6 +225,7 @@ namespace livelywpf.Views
 
                 collection.Write(Path.Combine(saveDirectory, "lively_p.gif"));
             }
+            */
         }
 
         #region interface methods

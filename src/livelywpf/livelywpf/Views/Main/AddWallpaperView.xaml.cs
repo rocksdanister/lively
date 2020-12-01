@@ -1,5 +1,4 @@
 ﻿using livelywpf.Helpers;
-using Microsoft.Toolkit.Wpf.UI.XamlHost;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -22,7 +21,7 @@ namespace livelywpf.Views
             fileDialogFilter = FileFilter.GetLivelySupportedFileDialogFilter(true);
         }
 
-        private void FileBtn_Click(object sender, RoutedEventArgs e)
+        private async void FileBtn_Click(object sender, RoutedEventArgs e)
         {
             Microsoft.Win32.OpenFileDialog openFileDlg = new Microsoft.Win32.OpenFileDialog
             {
@@ -50,9 +49,10 @@ namespace livelywpf.Views
                             }
                             else
                             {
-                                System.Windows.MessageBox.Show(
-                                   Properties.Resources.LivelyExceptionNotLivelyZip,
-                                   Properties.Resources.TextError);
+                                await Helpers.DialogService.ShowConfirmationDialog(
+                                    Properties.Resources.TextError,
+                                    Properties.Resources.LivelyExceptionNotLivelyZip,
+                                    Properties.Resources.TextOK);
                                 return;
                             }
                         }
@@ -66,9 +66,10 @@ namespace livelywpf.Views
                     }
                     else
                     {
-                        System.Windows.MessageBox.Show(
+                        await Helpers.DialogService.ShowConfirmationDialog(
+                            Properties.Resources.TextError,
                             Properties.Resources.TextUnsupportedFile + " (" + Path.GetExtension(openFileDlg.FileName) + ")",
-                            Properties.Resources.TextError);
+                            Properties.Resources.TextOK);
                         return;
                     }
                 }
@@ -82,9 +83,10 @@ namespace livelywpf.Views
                         }
                         else
                         {
-                            System.Windows.MessageBox.Show(
-                               Properties.Resources.LivelyExceptionNotLivelyZip,
-                               Properties.Resources.TextError);
+                            await Helpers.DialogService.ShowConfirmationDialog(
+                                Properties.Resources.TextError,
+                                Properties.Resources.LivelyExceptionNotLivelyZip,
+                                Properties.Resources.TextOK);
                             return;
                         }
                     }
@@ -97,8 +99,6 @@ namespace livelywpf.Views
                     }
                 }
 
-                //fix, xalmhost element takes time to disappear.
-                PreviewGif.Visibility = Visibility.Collapsed;
                 App.AppWindow.NavViewNavigate("library");
             }
         }
@@ -152,8 +152,6 @@ namespace livelywpf.Views
             Program.SettingsVM.Settings.SavedURL = UrlText.Text;
             Program.SettingsVM.UpdateConfigFile();
 
-            //fix, xalmhost element takes time to disappear.
-            PreviewGif.Visibility = Visibility.Collapsed;
             App.AppWindow.NavViewNavigate("library");
         }
 
@@ -163,33 +161,9 @@ namespace livelywpf.Views
             Helpers.LinkHandler.OpenBrowser(e.Uri);
         }
 
-        Windows.UI.Xaml.Controls.Image img;
-        private void PreviewGif_ChildChanged(object sender, EventArgs e)
-        {
-            WindowsXamlHost windowsXamlHost = (WindowsXamlHost)sender;
-            img = (Windows.UI.Xaml.Controls.Image)windowsXamlHost.Child;
-            if (img != null)
-            {
-                var imgPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Docs", "drag_drop_animation.gif");
-                if(File.Exists(imgPath))
-                {
-                    var bmi = new Windows.UI.Xaml.Media.Imaging.BitmapImage(new Uri(imgPath))
-                    {
-                        DecodePixelWidth = 384,
-                        DecodePixelHeight = 216
-                    };
-                    img.Source = bmi;
-                }
-            }
-        }
-
         private void Page_Unloaded(object sender, RoutedEventArgs e)
         {
-            //Still rendering otherwise?!
-            if (img != null)
-            {
-                img.Source = null;
-            }
+
         }
     }
 }

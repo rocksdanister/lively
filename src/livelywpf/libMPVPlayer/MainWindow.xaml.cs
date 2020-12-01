@@ -1,15 +1,14 @@
-﻿using System;
+﻿using CommandLine;
+using Mpv.NET.Player;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-//using System.Windows.Forms;
 using System.Windows.Interop;
-using CommandLine;
-using Mpv.NET.Player;
-using Newtonsoft.Json.Linq;
 
 namespace libMPVPlayer
 {
@@ -22,7 +21,6 @@ namespace libMPVPlayer
         private MpvPlayer player;
         private string livelyPropertiesPath;
         private JObject livelyPropertiesData;
-
         public MainWindow(string[] args)
         {
             InitializeComponent();
@@ -71,7 +69,7 @@ namespace libMPVPlayer
                 player = new MpvPlayer(PlayerHost.Handle)
                 {
                     Loop = true,
-                    Volume = 0,          
+                    Volume = 0,
                 };
                 player.MediaError += Player_MediaError1;
                 if (File.Exists(Path.Combine(opts.AppDataDir, "mpv", "mpv.conf")))
@@ -126,7 +124,7 @@ namespace libMPVPlayer
 
                 try
                 {
-                    if(!string.IsNullOrEmpty(opts.Properties))
+                    if (!string.IsNullOrEmpty(opts.Properties))
                     {
                         livelyPropertiesPath = opts.Properties;
                         livelyPropertiesData = LoadLivelyProperties(livelyPropertiesPath);
@@ -184,7 +182,7 @@ namespace libMPVPlayer
 
         public void PausePlayer()
         {
-            if(player != null)
+            if (player != null)
             {
                 player.Pause();
             }
@@ -235,7 +233,7 @@ namespace libMPVPlayer
                     while (true)
                     {
                         string text = await Console.In.ReadLineAsync();
-                        if(string.IsNullOrEmpty(text))
+                        if (string.IsNullOrEmpty(text))
                         {
                             //When the redirected stream is closed, a null line is sent to the event handler. 
                             break;
@@ -252,7 +250,7 @@ namespace libMPVPlayer
                         {
                             break;
                         }
-                        else if (text.Contains("lively:vid-volume", StringComparison.OrdinalIgnoreCase))
+                        else if (Contains(text, "lively:vid-volume", StringComparison.OrdinalIgnoreCase))
                         {
                             var msg = text.Split(' ');
                             if (msg.Length < 2)
@@ -263,7 +261,7 @@ namespace libMPVPlayer
                                 SetVolume(value);
                             }
                         }
-                        else if (text.Contains("lively:customise", StringComparison.OrdinalIgnoreCase))
+                        else if (Contains(text, "lively:customise", StringComparison.OrdinalIgnoreCase))
                         {
                             try
                             {
@@ -273,7 +271,7 @@ namespace libMPVPlayer
 
                                 SetLivelyProperty(msg[1], msg[2], msg[3]);
                             }
-                            catch(Exception ex1)
+                            catch (Exception ex1)
                             {
                                 Console.WriteLine(ex1.Message);
                             }
@@ -281,7 +279,7 @@ namespace libMPVPlayer
                     }
                 });
             }
-            catch(Exception ex2)
+            catch (Exception ex2)
             {
                 Console.WriteLine(ex2.Message);
             }
@@ -291,7 +289,7 @@ namespace libMPVPlayer
             }
         }
 
-        private void SetLivelyProperty(string uiElement, string objectName, string msg )
+        private void SetLivelyProperty(string uiElement, string objectName, string msg)
         {
             // TODO: 
             // Having trouble passing double without decimal to SetPropertyDouble
@@ -317,7 +315,7 @@ namespace libMPVPlayer
             {
                 if (bool.TryParse(msg, out bool value))
                 {
-                    player.API.SetPropertyString(objectName, value? "yes" : "no");
+                    player.API.SetPropertyString(objectName, value ? "yes" : "no");
                 }
             }
             else if (uiElement.Equals("button", StringComparison.OrdinalIgnoreCase))
@@ -348,7 +346,7 @@ namespace libMPVPlayer
                     {
                         player.API.SetPropertyString(item.Key, (string)item.Value["value"]);
                     }
-                    else if(uiElement.Equals("checkbox", StringComparison.OrdinalIgnoreCase))
+                    else if (uiElement.Equals("checkbox", StringComparison.OrdinalIgnoreCase))
                     {
                         player.API.SetPropertyString(item.Key, ((bool)item.Value["value"]) ? "yes" : "no");
                     }
@@ -388,6 +386,27 @@ namespace libMPVPlayer
                 return new IntPtr(SetWindowLong32(hWnd, nIndex, dwNewLong.ToInt32()));
 
         }
+
+        /// <summary>
+        /// String Contains method with StringComparison property.
+        /// </summary>
+        /// <param name="str"></param>
+        /// <param name="substring"></param>
+        /// <param name="comp"></param>
+        /// <returns></returns>
+        public static bool Contains(String str, String substring,
+                                    StringComparison comp)
+        {
+            if (substring == null | str == null)
+                throw new ArgumentNullException("string",
+                                             "substring/string cannot be null.");
+            else if (!Enum.IsDefined(typeof(StringComparison), comp))
+                throw new ArgumentException("comp is not a member of StringComparison",
+                                         "comp");
+
+            return str.IndexOf(substring, comp) >= 0;
+        }
+
 
         #endregion //helpers
     }

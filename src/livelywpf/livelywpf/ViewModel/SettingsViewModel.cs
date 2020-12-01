@@ -59,14 +59,30 @@ namespace livelywpf
             };
             SelectedLanguageItem = SearchSupportedLanguage(Settings.Language);
 
-            //Ignoring the Settings.json savefile value, only checking the windows registry and user action on the ui.
-            //todo: Use https://docs.microsoft.com/en-us/uwp/api/windows.applicationmodel.startuptask?view=winrt-19041
-            IsStartup = WindowsStartup.CheckStartupRegistry() == 1 || WindowsStartup.CheckStartupRegistry() == -1;
+            if(Program.IsMSIX)
+            {
+                WindowsStartup.StartupWin10(Settings.Startup);
+                IsStartup = Settings.Startup;
+            }
+            else
+            {
+                //Ignoring the Settings.json savefile value, only checking the windows registry and user action on the ui.
+                IsStartup = WindowsStartup.CheckStartupRegistry() == 1 || WindowsStartup.CheckStartupRegistry() == -1;
+            }
 
-            if(ScreenHelper.GetScreen().FindIndex(x => ScreenHelper.ScreenCompare(x, Settings.SelectedDisplay, DisplayIdentificationMode.screenLayout)) == -1)
+            if (ScreenHelper.GetScreen().FindIndex(x => ScreenHelper.ScreenCompare(x, Settings.SelectedDisplay, DisplayIdentificationMode.screenLayout)) == -1)
             {
                 //Previous screen missing, use current primary screen.
                 Settings.SelectedDisplay = ScreenHelper.GetPrimaryScreen();
+                UpdateConfigFile();
+            }
+
+            //restrictions
+            if (Settings.GifPlayer == LivelyGifPlayer.win10Img || Settings.LivelyGUIRendering == LivelyGUIState.normal || Settings.GifCapture == true)
+            {
+                Settings.GifPlayer = LivelyGifPlayer.libmpvExt;
+                Settings.LivelyGUIRendering = LivelyGUIState.lite;
+                Settings.GifCapture = false;
                 UpdateConfigFile();
             }
 
@@ -92,6 +108,7 @@ namespace livelywpf
             CefDiskCache = Settings.CefDiskCache;
             IsDebugMenuVisible = Settings.DebugMenu;
             SelectedWebBrowserIndex = (int)Settings.WebBrowser;
+            SelectedAppThemeIndex = (int)Settings.ApplicationTheme;
         }
 
         private SettingsModel _settings;
@@ -126,7 +143,14 @@ namespace livelywpf
             {
                 _isStartup = value;
                 OnPropertyChanged("IsStartup");
-                WindowsStartup.SetStartupRegistry(value);
+                if (Program.IsMSIX)
+                {
+                    WindowsStartup.StartupWin10(_isStartup);
+                }
+                else
+                {
+                    WindowsStartup.SetStartupRegistry(_isStartup);
+                }
             }
         }
 
@@ -238,7 +262,7 @@ namespace livelywpf
                 if (_wallpaperDirectoryChangeCommand == null)
                 {
                     _wallpaperDirectoryChangeCommand = new RelayCommand(
-                        param => WallpaperDirectoryChange(), param => !WallpapeDirectoryChanging
+                        param => WallpaperDirectoryChange(), param => !Program.IsMSIX && !WallpapeDirectoryChanging
                         );
                 }
                 return _wallpaperDirectoryChangeCommand;
@@ -285,6 +309,29 @@ namespace livelywpf
                         );
                 }
                 return _openWallpaperDirectory;
+            }
+        }
+
+        private int _selectedAppThemeIndex;
+        public int SelectedAppThemeIndex
+        {
+            get
+            {
+                return _selectedAppThemeIndex;
+            }
+            set
+            {
+                _selectedAppThemeIndex = value;
+                OnPropertyChanged("SelectedAppThemeIndex");
+
+                //prevent running on startup etc.
+                if (Settings.ApplicationTheme != (AppTheme)value)
+                {
+                    Settings.ApplicationTheme = (AppTheme)value;
+                    UpdateConfigFile();
+
+                    Program.ApplicationThemeChange(Settings.ApplicationTheme);
+                }
             }
         }
 

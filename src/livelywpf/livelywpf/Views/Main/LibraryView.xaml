@@ -3,23 +3,51 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:livelywpf.Views"
       xmlns:ui="http://schemas.modernwpf.com/2019"
       xmlns:p = "clr-namespace:livelywpf.Properties"  
-      xmlns:xamlHost="clr-namespace:Microsoft.Toolkit.Wpf.UI.XamlHost;assembly=Microsoft.Toolkit.Wpf.UI.XamlHost"
+      xmlns:helper = "clr-namespace:livelywpf.Helpers"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="{x:Static p:Resources.TitleLibrary}" Unloaded="Page_Unloaded">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="10*"/>
-            <ColumnDefinition Width="0.25*"/>
-        </Grid.ColumnDefinitions>
 
-        <!-- backspace key not working with native suggestbox :/ -->
-        <!--<xamlHost:WindowsXamlHost Grid.Column="0" InitialTypeName="Windows.UI.Xaml.Controls.AutoSuggestBox" Margin="0,0,10,0" Width="250" VerticalAlignment="Top" HorizontalAlignment="Right"/>-->
+<Page.Resources>
+    <helper:ImageConverter x:Key="ImageConverter"/>
+    <DataTemplate x:Name="Normal" x:Key="Normal">
+        <Grid Width="272" Height="153" AutomationProperties.Name="{Binding Title}">
+            <Image Stretch="UniformToFill" Source="{Binding ThumbnailPath, Converter={StaticResource ImageConverter}}"/>
+            <ui:ProgressRing Height="25" Width="25" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5" IsActive="{Binding ItemStartup}"/>
+            <StackPanel Orientation="Vertical" Height="60" VerticalAlignment="Bottom" Background="{DynamicResource SystemControlBackgroundAltMediumBrush}">
+                <TextBlock Margin="5,0,0,0" Text="{Binding Title}"/>
+                 <TextBlock Margin="5,0,0,0" TextWrapping="Wrap" FontSize="12.5" Text="{Binding Desc}" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}"/>
+            </StackPanel>
+        </Grid>
+    </DataTemplate>
+</Page.Resources>
 
-        <!--<ui:AutoSuggestBox Name="LibSuggestBox" Grid.Column="0" Width="225" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0, 15, 5, 0" Text="{Binding SearchText, Mode=TwoWay}"/>-->
-        <xamlHost:WindowsXamlHost Name="LivelyGrid" Grid.Column="0" InitialTypeName="livelygrid.LivelyGridView" ChildChanged="LivelyGridView_ChildChanged" Margin="0, 15, 0, 0" />
-    </Grid>
+<Grid>
+
+    <ui:GridView HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="GridControl" ItemsSource= "{Binding LibraryItems}" ItemTemplate="{StaticResource Normal}" 
+                  SelectedItem="{Binding SelectedItem, Mode=TwoWay}" PreviewMouseRightButtonDown="GridControl_PreviewMouseRightButtonDown" PreviewKeyDown="GridControl_PreviewKeyDown" >
+
+        <ui:ContextFlyoutService.ContextFlyout>
+            <ui:MenuFlyout>
+                <MenuItem Header="{x:Static p:Resources.TitleAbout}" Click="MenuItem_Click" Name="moreInformation"/>
+                <MenuItem Header="{x:Static p:Resources.TextSetWallpaper}" Click="MenuItem_Click" Name="setWallpaper"/>
+                <MenuItem Header="{x:Static p:Resources.TextPreviewWallpaper}" Click="MenuItem_Click" Name="previewWallpaper"/>
+                <MenuItem Header="{x:Static p:Resources.TextCustomiseWallpaper}" Click="MenuItem_Click" Name="customiseWallpaper"/>
+                <MenuItem Header="{x:Static p:Resources.TextShowOnDisk}" Click="MenuItem_Click" Name="showOnDisk"/>
+                <MenuItem Header="{x:Static p:Resources.TextExportWallpaperZip}" Click="MenuItem_Click" Name="exportWallpaper"/>
+                <MenuItem Header="{x:Static p:Resources.TextConvertVideo}" Click="MenuItem_Click" IsEnabled="False" Name="convertVideo"/>
+                <MenuItem Header="{x:Static p:Resources.TextDeleteWallpaper}" Click="MenuItem_Click" Name="deleteWallpaper"/>
+            </ui:MenuFlyout>
+        </ui:ContextFlyoutService.ContextFlyout>
+
+        <ui:GridView.ItemsPanel>
+            <ItemsPanelTemplate>
+                <WrapPanel Name="GridWrap" />
+            </ItemsPanelTemplate>
+        </ui:GridView.ItemsPanel>
+    </ui:GridView>
+
+</Grid>
 </Page>

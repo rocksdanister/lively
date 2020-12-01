@@ -1,10 +1,9 @@
-﻿using System;
+﻿using ModernWpf.Controls;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using Windows.Foundation.Metadata;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
+using System.Windows.Controls;
 
 namespace livelywpf.Helpers
 {
@@ -14,10 +13,10 @@ namespace livelywpf.Helpers
     public static class DialogService
     {
         //todo: Find a way to avoid passing XamlRoot.
-        public static async Task<ContentDialogResult> ShowConfirmationDialog(string title, string message, XamlRoot xamlRoot,
+        public static async Task<ContentDialogResult> ShowConfirmationDialog(string title, string message,
             string primaryBtnText, string secondaryBtnText = null, ContentDialogButton defaultBtn = ContentDialogButton.Secondary )
         {
-            var tb = new Windows.UI.Xaml.Controls.TextBlock{ Text = message };
+            var tb = new TextBlock{ Text = message };
             ContentDialog dialog = new ContentDialog
             {
                 Title = title,
@@ -33,13 +32,6 @@ namespace livelywpf.Helpers
                 result = ContentDialogResult.Secondary;
             }
 
-            // Use this code to associate the dialog to the appropriate AppWindow by setting
-            // the dialog's XamlRoot to the same XamlRoot as an element that is already present in the AppWindow.
-            if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 8))
-            {
-                dialog.XamlRoot = xamlRoot;
-            }
-
             try
             {
                 //If another dialog already open.
@@ -49,7 +41,7 @@ namespace livelywpf.Helpers
             return result;
         }
 
-        public static async Task<ContentDialogResult> ShowConfirmationDialog(string title, object body, XamlRoot xamlRoot,
+        public static async Task<ContentDialogResult> ShowConfirmationDialog(string title, object body,
          string primaryBtnText, string secondaryBtnText = null, ContentDialogButton defaultBtn = ContentDialogButton.Secondary)
         {
             ContentDialog dialog = new ContentDialog
@@ -65,13 +57,6 @@ namespace livelywpf.Helpers
                 dialog.SecondaryButtonText = secondaryBtnText;
                 dialog.DefaultButton = defaultBtn;
                 result = ContentDialogResult.Secondary;
-            }
-
-            // Use this code to associate the dialog to the appropriate AppWindow by setting
-            // the dialog's XamlRoot to the same XamlRoot as an element that is already present in the AppWindow.
-            if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 8))
-            {
-                dialog.XamlRoot = xamlRoot;
             }
 
             try

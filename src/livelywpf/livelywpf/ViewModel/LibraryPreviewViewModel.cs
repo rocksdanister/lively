@@ -261,6 +261,8 @@ namespace livelywpf
             libData.ImagePath = null;
             libData.ImagePath = path;
             libData.LivelyInfo.Thumbnail = path;
+            libData.ThumbnailPath = null;
+            //libData.ImageBmp = null;
             libData.ThumbnailPath = path;
         }
 

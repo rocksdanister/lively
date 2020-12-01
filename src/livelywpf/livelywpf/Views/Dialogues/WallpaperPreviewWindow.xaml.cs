@@ -135,7 +135,7 @@ namespace livelywpf.Views
             }
             else if (wp.LivelyInfo.Type == WallpaperType.gif || wp.LivelyInfo.Type == WallpaperType.picture)
             {
-                var item = new GIFPlayerUWP(wp.FilePath, wp,
+                var item = new VideoPlayerMPVExt(wp.FilePath, wp,
                     targetDisplay, Program.SettingsVM.Settings.WallpaperScaling);
                 item.WindowInitialized += SetupDesktop_WallpaperInitialized;
                 item.Show();

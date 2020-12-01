@@ -159,11 +159,13 @@ namespace livelywpf
                 if (Program.IsMSIX)
                 {
                     Logger.Info("Core: Skipping program wallpaper on MSIX package.");
+                    //MessageBox.Show("Program wallpapers not supported on this version of Lively", Properties.Resources.TextError);
                     System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
                     {
+                        _ = Helpers.DialogService.ShowConfirmationDialog(Properties.Resources.TextError, 
+                            Properties.Resources.TextFeatureMissing, Properties.Resources.TextOK);
                         Program.LibraryVM.WallpaperDelete(wp);
                     }));
-                    MessageBox.Show(Properties.Resources.TextFeatureMissing, Properties.Resources.TextError);
                     return;
                 }
 
@@ -242,30 +244,11 @@ namespace livelywpf
                     item.Show();
                 }
             }
-            else if (wp.LivelyInfo.Type == WallpaperType.gif)
+            else if (wp.LivelyInfo.Type == WallpaperType.gif || wp.LivelyInfo.Type == WallpaperType.picture)
             {
-                if(Program.SettingsVM.Settings.GifPlayer == LivelyGifPlayer.win10Img)
-                {
-                    var item = new GIFPlayerUWP(wp.FilePath, wp,
-                        targetDisplay, Program.SettingsVM.Settings.WallpaperScaling);
-                    item.WindowInitialized += SetupDesktop_WallpaperInitialized;
-                    wallpapersPending.Add(item);
-                    item.Show();
-                }
-                else if(Program.SettingsVM.Settings.GifPlayer == LivelyGifPlayer.libmpvExt)
-                {
-                    wp.ItemStartup = true;
-                    var item = new VideoPlayerMPVExt(wp.FilePath, wp, targetDisplay,
-                        Program.SettingsVM.Settings.WallpaperScaling);
-                    item.WindowInitialized += SetupDesktop_WallpaperInitialized;
-                    wallpapersPending.Add(item);
-                    item.Show();
-                }
-            }
-            else if(wp.LivelyInfo.Type == WallpaperType.picture)
-            {
-                var item = new GIFPlayerUWP(wp.FilePath, wp,
-                    targetDisplay, Program.SettingsVM.Settings.WallpaperScaling);
+                wp.ItemStartup = true;
+                var item = new VideoPlayerMPVExt(wp.FilePath, wp, targetDisplay,
+                    Program.SettingsVM.Settings.WallpaperScaling);
                 item.WindowInitialized += SetupDesktop_WallpaperInitialized;
                 wallpapersPending.Add(item);
                 item.Show();
@@ -297,6 +280,7 @@ namespace livelywpf
                     //preview and create gif and thumbnail for user dropped file.
                     if (wallpaper.GetWallpaperData().DataType == LibraryTileType.processing)
                     {
+                        /*
                         //quitting running wallpaper before gif capture for low-end systemss.
                         if (Program.SettingsVM.Settings.LivelyGUIRendering == LivelyGUIState.lite)
                         {
@@ -313,6 +297,7 @@ namespace livelywpf
                                     break;
                             }
                         }
+                        */
 
                         await ShowPreviewDialogSTAThread(wallpaper);
                         if (!File.Exists(Path.Combine(wallpaper.GetWallpaperData().LivelyInfoFolderPath, "LivelyInfo.json")))

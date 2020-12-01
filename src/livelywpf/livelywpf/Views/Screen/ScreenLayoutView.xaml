@@ -8,8 +8,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:livelywpf.Views"
-        xmlns:xamlHost="clr-namespace:Microsoft.Toolkit.Wpf.UI.XamlHost;assembly=Microsoft.Toolkit.Wpf.UI.XamlHost"
-        xmlns:p = "clr-namespace:livelywpf.Properties"       
+        xmlns:p = "clr-namespace:livelywpf.Properties"    
+        xmlns:helper = "clr-namespace:livelywpf.Helpers"
         mc:Ignorable="d" 
         WindowStyle="ToolWindow"
         d:DesignHeight="600" d:DesignWidth="600"
@@ -17,6 +17,11 @@
         Height="600" Width="600" MinWidth="600" MinHeight="600"
         BorderBrush="{DynamicResource SystemControlHighlightAltListAccentHighBrush}"
         Closing="Window_Closing">
+    
+    <Window.Resources>
+        <helper:ImageConverter x:Key="ImageConverter"/>
+    </Window.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -24,9 +29,28 @@
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0" Text="{x:Static p:Resources.DescriptionScreenLayout}" Margin="15, 5, 0, 0" />
-        <xamlHost:WindowsXamlHost Grid.Row="0" x:Name="ScreenLayoutControl" InitialTypeName="livelyscreenlayout.ScreenLayoutView" 
-                                  ChildChanged="ScreenLayoutControl_ChildChanged" Margin="15, 30 ,15, 10"/>
-
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0" Margin="15, 30 ,15, 10" 
+              Background="{DynamicResource SystemControlBackgroundBaseLowBrush}">
+            <ui:GridView HorizontalAlignment="Center" VerticalAlignment="Center"
+                     ItemsSource= "{Binding ScreenItems}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+                <ui:GridView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Width="192" Height="108" Background="{DynamicResource SystemControlBackgroundBaseLowBrush}" >
+                            <Image Source="{Binding ScreenImagePath, Converter={StaticResource ImageConverter}}" Stretch="UniformToFill" Opacity="0.5"/>
+                            <Viewbox Width="192" Height="108">
+                                <TextBlock Text="{Binding ScreenTitle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Viewbox>
+                        </Grid>
+                    </DataTemplate>
+                </ui:GridView.ItemTemplate>
+                <ui:GridView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Name="GridWrap" Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ui:GridView.ItemsPanel>
+            </ui:GridView>
+        </Grid>
+    
         <StackPanel Grid.Row="1" HorizontalAlignment="Left" Margin="15, 5, 5, 5" MinWidth="400">
             <TextBlock Text="{x:Static p:Resources.TitleWallpaperLayout}" FontSize="15"/>
             <ui:RadioButtons VerticalAlignment="Top" SelectedIndex="{Binding SelectedWallpaperLayout, Mode=TwoWay}">

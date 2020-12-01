@@ -2,13 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace livelywpf.Views
 {
@@ -25,19 +18,6 @@ namespace livelywpf.Views
             CreateLabelWindows();
 
             //SetupDesktop.WallpaperChanged += SetupDesktop_WallpaperChanged;
-        }
-
-        private void ScreenLayoutControl_ChildChanged(object sender, EventArgs e)
-        {
-            // Hook up x:Bind source.
-            global::Microsoft.Toolkit.Wpf.UI.XamlHost.WindowsXamlHost windowsXamlHost =
-                sender as global::Microsoft.Toolkit.Wpf.UI.XamlHost.WindowsXamlHost;
-            var control = windowsXamlHost.GetUwpInternalObject() as global::livelyscreenlayout.ScreenLayoutView;
-
-            if (control != null)
-            {
-
-            }
         }
 
         private void SetupDesktop_WallpaperChanged(object sender, EventArgs e)

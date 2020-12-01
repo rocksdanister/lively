@@ -1,22 +1,14 @@
-﻿using livelywpf.Views;
-using Microsoft.Toolkit.Wpf.UI.XamlHost;
-//using ModernWpf.Controls;
+﻿using livelywpf.Helpers;
+using livelywpf.Views;
+using ModernWpf.Controls;
+using ModernWpf.Controls.Primitives;
 using ModernWpf.Media.Animation;
 using NLog;
-using Octokit;
 using System;
-using System.Diagnostics;
+using System.IO;
 using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Forms.Design.Behavior;
 using System.Windows.Interop;
-using System.Windows.Threading;
-using Windows.Networking.NetworkOperators;
-using Windows.UI.Core;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media;
 
 namespace livelywpf
 {
@@ -26,50 +18,24 @@ namespace livelywpf
     public partial class MainWindow : Window
     {
         public static bool IsExit { get; set; } = false;
-        private NavigationView navView;
-        private Windows.UI.Xaml.Controls.NavigationViewItem debugMenu;
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+
         public MainWindow()
         {
             InitializeComponent();
+            NavViewNavigate("library");
             SetupDesktop.WallpaperChanged += SetupDesktop_WallpaperChanged;
+            //Program.SettingsVM.DebugMenuVisibilityChange += SettingsVM_DebugMenuVisibilityChange;
+            //debugMenu.Visibility = Program.SettingsVM.Settings.DebugMenu ? Visibility.Visible : Visibility.Collapsed;
+            this.DataContext = Program.SettingsVM;
         }
 
         #region navigation
 
-        private void MyNavView_ChildChanged(object sender, EventArgs e)
+        private void MyNavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
-            WindowsXamlHost windowsXamlHost = (WindowsXamlHost)sender;
-            navView = (Windows.UI.Xaml.Controls.NavigationView)windowsXamlHost.Child;
-            if (navView != null)
-            {
-                navView.OpenPaneLength = 50;
-                navView.IsPaneToggleButtonVisible = false;
-                navView.IsBackEnabled = false;
-                navView.IsBackButtonVisible = NavigationViewBackButtonVisible.Collapsed;
-                navView.PaneDisplayMode = NavigationViewPaneDisplayMode.LeftCompact;
-                navView.MenuItems.Add(CreateMenu(Properties.Resources.TitleLibrary, "library", "\uE8F1"));
-                navView.MenuItems.Add(CreateMenu(Properties.Resources.TitleAddWallpaper, "add", "\uE710"));
-                navView.MenuItems.Add(CreateMenu(Properties.Resources.TitleHelp, "help", "\uE897"));
-                navView.MenuItems.Add(CreateMenu(Properties.Resources.TitleAbout, "about", "\uE90A"));
-                navView.MenuItems.Add(debugMenu = CreateMenu(Properties.Resources.TitleDebug, "debug", "\uEBE8", Program.SettingsVM.Settings.DebugMenu));
-                Program.SettingsVM.DebugMenuVisibilityChange += SettingsVM_DebugMenuVisibilityChange;
-                navView.ItemInvoked += NavView_ItemInvoked;
-                NavViewNavigate("library");
-            }
-        }
-
-        private void SettingsVM_DebugMenuVisibilityChange(object sender, bool visibility)
-        {
-            if(debugMenu != null)
-            {
-                debugMenu.Visibility = visibility ? Windows.UI.Xaml.Visibility.Visible : Windows.UI.Xaml.Visibility.Collapsed;
-            }
-        }
-
-        private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
-        {
-            Windows.UI.Xaml.Controls.NavigationView navView =
-                (Windows.UI.Xaml.Controls.NavigationView)sender;
+            var navView =
+           (ModernWpf.Controls.NavigationView)sender;
 
             if (args.IsSettingsInvoked)
             {
@@ -84,11 +50,15 @@ namespace livelywpf
 
         public void NavViewNavigate(string tag)
         {
-            if (navView != null)
+            foreach (var x in MyNavView.MenuItems)
             {
-                navView.SelectedItem = navView.MenuItems.First(x => ((NavigationViewItem)x).Tag.ToString() == tag);
-                NavigatePage(tag);
+                if (((NavigationViewItem)x).Tag.ToString() == tag)
+                {
+                    MyNavView.SelectedItem = x;
+                    break;
+                }
             }
+            NavigatePage(tag);
         }
 
         private void NavigatePage(string tag)
@@ -111,36 +81,8 @@ namespace livelywpf
                     ContentFrame.Navigate(typeof(livelywpf.Views.DebugView), new Uri("Views/DebugView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
                     break;
                 default:
-                    ContentFrame.Navigate(typeof(livelywpf.Views.LibraryView), new Uri("Views/LibraryView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo()); 
+                    ContentFrame.Navigate(typeof(livelywpf.Views.LibraryView), new Uri("Views/LibraryView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
                     break;
-            }
-        }
-
-        //Glyph code: https://docs.microsoft.com/en-us/windows/uwp/design/style/segoe-ui-symbol-font
-        private Windows.UI.Xaml.Controls.NavigationViewItem CreateMenu(string menuName, string tag, string glyph, bool visibility = true)
-        {
-            Windows.UI.Xaml.Controls.NavigationViewItem item = new NavigationViewItem
-            {
-                Name = menuName,
-                Content = menuName,
-                Tag = tag,
-                Icon = new FontIcon()
-                {
-                    FontFamily = new Windows.UI.Xaml.Media.FontFamily("Segoe MDL2 Assets"),
-                    Glyph = glyph
-                },
-                Visibility = visibility ? Windows.UI.Xaml.Visibility.Visible : Windows.UI.Xaml.Visibility.Collapsed,
-            };
-            return item;
-        }
-
-        private void ContentFrame_Navigating(object sender, System.Windows.Navigation.NavigatingCancelEventArgs e)
-        {
-            //fix: https://github.com/rocksdanister/lively/issues/114
-            //When backspace is pressed while focused on frame hosting uwp usercontrol textbox, the key is passed to frame also.
-            if (e.NavigationMode == System.Windows.Navigation.NavigationMode.Back)
-            {
-                e.Cancel = true;
             }
         }
 
@@ -153,7 +95,7 @@ namespace livelywpf
             if (!IsExit)
             {
                 e.Cancel = true;
-                ContentFrame.Content = null;
+                //ContentFrame.Content = null;
                 this.Hide();
                 GC.Collect();
             }
@@ -163,35 +105,23 @@ namespace livelywpf
             }
         }
 
-        private void Window_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            if(navView != null && (bool)e.NewValue)
-            {
-                if(ContentFrame.Content == null)
-                {
-                    navView.SelectedItem = navView.MenuItems.ElementAt(0);
-                    ContentFrame.Navigate(typeof(livelywpf.Views.LibraryView), new Uri("Views/LibraryView.xaml", UriKind.Relative), new SuppressNavigationTransitionInfo());
-                }
-            }
-        }
-
         #endregion //window mdmnt
 
         #region wallpaper statusbar
-
+    
         private void SetupDesktop_WallpaperChanged(object sender, EventArgs e)
         {
             _ = this.Dispatcher.BeginInvoke(new Action(() => {
-                if (!Program.SettingsVM.Settings.ControlPanelOpened &&
+                if(!Program.SettingsVM.Settings.ControlPanelOpened &&
                     App.AppWindow != null &&
                     App.AppWindow.WindowState != WindowState.Minimized &&
                     App.AppWindow.Visibility == Visibility.Visible)
                 {
-                    ModernWpf.Controls.Primitives.FlyoutBase.ShowAttachedFlyout(statusBtn);
+                    FlyoutBase.ShowAttachedFlyout(statusBtn); 
                     Program.SettingsVM.Settings.ControlPanelOpened = true;
                     Program.SettingsVM.UpdateConfigFile();
                 }
-                wallpaperStatusText.Text = SetupDesktop.Wallpapers.Count.ToString();
+                wallpaperStatusText.Text = SetupDesktop.Wallpapers.Count.ToString(); 
             }));
         }
 
@@ -223,12 +153,113 @@ namespace livelywpf
             this.Activate();
         }
 
-        private void statusBtn_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             ShowControlPanelDialog();
+
         }
 
         #endregion //wallpaper statusbar
+
+        #region file drop
+
+        private async void Window_Drop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(System.Windows.DataFormats.FileDrop))
+            {
+                string[] droppedFiles = e.Data.GetData(System.Windows.DataFormats.FileDrop, true) as string[];
+                if ((null == droppedFiles) || (!droppedFiles.Any()))
+                    return;
+                Logger.Info("Dropped File, Selecting first file:" + droppedFiles[0]);
+
+                if (string.IsNullOrWhiteSpace(Path.GetExtension(droppedFiles[0])))
+                    return;
+
+                WallpaperType type;
+                if ((type = FileFilter.GetLivelyFileType(droppedFiles[0])) != (WallpaperType)(-1))
+                {
+                    if (type == (WallpaperType)100)
+                    {
+                        //lively .zip is not a wallpaper type.
+                        if (ZipExtract.CheckLivelyZip(droppedFiles[0]))
+                        {
+                            Program.LibraryVM.WallpaperInstall(droppedFiles[0], false);
+                        }
+                        else
+                        {
+                            await DialogService.ShowConfirmationDialog(Properties.Resources.TextError,
+                                Properties.Resources.LivelyExceptionNotLivelyZip,
+                                Properties.Resources.TextOK);
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        Program.LibraryVM.AddWallpaper(droppedFiles[0],
+                            type,
+                            LibraryTileType.processing,
+                            Program.SettingsVM.Settings.SelectedDisplay);
+                    }
+                }
+                else
+                {
+                    await DialogService.ShowConfirmationDialog(Properties.Resources.TextError,
+                        Properties.Resources.TextUnsupportedFile + " (" + Path.GetExtension(droppedFiles[0]) + ")",
+                        Properties.Resources.TextOK);
+                    return;
+                }
+
+            }
+            else if (e.Data.GetDataPresent(System.Windows.DataFormats.Text))
+            {
+                string droppedText = (string)e.Data.GetData(System.Windows.DataFormats.Text, true);
+                Logger.Info("Dropped Text:" + droppedText);
+                if (string.IsNullOrWhiteSpace(droppedText))
+                    return;
+
+                Uri uri;
+                try
+                {
+                    uri = new Uri(droppedText);
+                }
+                catch (UriFormatException)
+                {
+                    try
+                    {
+                        //if user did not input https/http assume https connection.
+                        uri = new UriBuilder(droppedText)
+                        {
+                            Scheme = "https",
+                            Port = -1,
+                        }.Uri;
+                    }
+                    catch
+                    {
+                        return;
+                    }
+                }
+
+                if (Program.SettingsVM.Settings.AutoDetectOnlineStreams &&
+                    libMPVStreams.CheckStream(uri))
+                {
+                    Program.LibraryVM.AddWallpaper(uri.ToString(),
+                        WallpaperType.videostream,
+                        LibraryTileType.processing,
+                        Program.SettingsVM.Settings.SelectedDisplay);
+                }
+                else
+                {
+                    Program.LibraryVM.AddWallpaper(uri.ToString(),
+                        WallpaperType.url,
+                        LibraryTileType.processing,
+                        Program.SettingsVM.Settings.SelectedDisplay);
+                }
+
+            }
+            App.AppWindow.NavViewNavigate("library");
+        }
+
+        #endregion //file drop
 
         #region window msg
 
