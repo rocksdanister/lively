@@ -87,16 +87,15 @@ Help translate lively to other languages: <a href="https://github.com/rocksdanis
 **_I'm not officially affiliated with Unity technologies, godot, shadertoy;_**
 ## Download
 ##### Latest version: v1.1.5.0 (Windows 10 1903 or above)[What's new?](https://github.com/rocksdanister/lively/releases/tag/v1.1.5.0)
-- [`Download Lively Wallpaper`][direct-full-win32] 
+- [`Installer`][direct-full-win32] 
      
 [direct-full-win32]: https://github.com/rocksdanister/lively/releases/download/v1.1.5.0/lively_setup_x86_full_v1150.exe
 
 **Installer will give Smartscreen warning, [discussion.](https://github.com/rocksdanister/lively/issues/9)**
 
-Certain antivirus software heuristics algorithm will detect lively as a virus, this is a false positive
-**lively is fully [opensource](https://en.wikipedia.org/wiki/Free_and_open-source_software), you are free to inspect the code.**
+<a href='//www.microsoft.com/store/apps/9ntm2qc6qws7?cid=storebadge&ocid=badge'><img src='https://developer.microsoft.com/store/badges/images/English_get-it-from-MS.png' alt='English badge' width="142px" height="52px"/></a>
 
-[Having trouble? ](https://github.com/rocksdanister/lively/wiki/Common-Problems)
+[Which version do I download?](https://github.com/rocksdanister/lively/wiki/Differences-Between-Distributions)
 ## Issues
 See github [issues.](https://github.com/rocksdanister/lively/issues)
 
