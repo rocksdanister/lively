@@ -27,9 +27,17 @@ namespace livelywpf.Views
         private void GridControl_PreviewMouseRightButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             e.Handled = true;
-            var a = ((FrameworkElement)e.OriginalSource).DataContext;
-            selectedTile = (LibraryModel)a;
-            customiseWallpaper.IsEnabled = selectedTile.LivelyPropertyPath != null;
+            try
+            {
+                var a = ((FrameworkElement)e.OriginalSource).DataContext;
+                selectedTile = (LibraryModel)a;
+                customiseWallpaper.IsEnabled = selectedTile.LivelyPropertyPath != null;
+            }
+            catch
+            {
+                selectedTile = null;
+                customiseWallpaper.IsEnabled = false;
+            }
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -112,7 +120,8 @@ namespace livelywpf.Views
                         Margin = new Thickness(0, 5, 0, 0)
                     };
                     scv.Content = customiseFrame;
-                    await Helpers.DialogService.ShowConfirmationDialog(obj.Title,
+                    await Helpers.DialogService.ShowConfirmationDialog(
+                        obj.Title.Length > 30 ? obj.Title.Substring(0, 30) : obj.Title,
                         scv,
                         Properties.Resources.TextClose);
                     break;
@@ -127,7 +136,7 @@ namespace livelywpf.Views
                     var aboutFrame = new ModernWpf.Controls.Frame();
                     aboutFrame.Navigate(aboutView);
                     await Helpers.DialogService.ShowConfirmationDialog(
-                        obj.Title,
+                        obj.Title.Length > 30 ? obj.Title.Substring(0, 30) : obj.Title,
                         aboutFrame,
                         Properties.Resources.TextClose);
                     break;
