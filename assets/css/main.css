@@ -172,7 +172,7 @@ input, select, textarea {
 	}
 
 	p {
-		margin: 0 0 2em 0;
+		margin: 0 0 1em 0;
 	}
 
 	h1, h2, h3, h4, h5, h6 {
@@ -2662,7 +2662,7 @@ input, select, textarea {
 
 	ul {
 		list-style: disc;
-		margin: 0 0 2em 0;
+		margin: 0 0 1em 0;
 		padding-left: 1em;
 	}
 
@@ -2701,6 +2701,25 @@ input, select, textarea {
 
 /* Actions */
 
+	.DownloadBtn{
+		background-color: #000000;
+		border: 1px solid white !important;
+		color: white !important;
+		padding: 0px 20.55px;
+		text-align: center;
+		text-decoration: none;
+		font-size: 1rem;
+		font-family: Segoe UI;
+		cursor: pointer;
+		border-radius: 0;
+	}
+		.DownloadBtn .fas{
+			font-size: 2.5rem;
+			position: relative;
+			top: .5rem;
+			right: .5rem;
+		}
+
 	ul.actions {
 		display: -moz-flex;
 		display: -webkit-flex;
@@ -2710,6 +2729,7 @@ input, select, textarea {
 		list-style: none;
 		margin-left: -1em;
 		padding-left: 0;
+		flex-wrap: wrap;
 	}
 
 		ul.actions li {
