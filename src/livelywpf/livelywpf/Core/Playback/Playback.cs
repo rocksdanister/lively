@@ -1,4 +1,5 @@
 ﻿using livelywpf.Helpers;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,7 +31,9 @@ namespace livelywpf.Core
         };
         private static IntPtr workerWOrig, progman;
         public static PlaybackState PlaybackState { get; set; }
+        //public event EventHandler<PlaybackState> PlaybackStateChanged;
         private readonly DispatcherTimer dispatcherTimer = new DispatcherTimer();
+        private bool _isLockScreen, _isRemoteSession;
 
         public Playback()
         {
@@ -40,11 +43,13 @@ namespace livelywpf.Core
         public void Start()
         {
             dispatcherTimer.Start();
+            SystemEvents.SessionSwitch += SystemEvents_SessionSwitch;
         }
 
         public void Stop()
         {
             dispatcherTimer.Stop();
+            SystemEvents.SessionSwitch -= SystemEvents_SessionSwitch;
         }
 
         private void Initialize()
@@ -71,6 +76,30 @@ namespace livelywpf.Core
             dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, Program.SettingsVM.Settings.ProcessTimerInterval);
         }
 
+        private void SystemEvents_SessionSwitch(object sender, SessionSwitchEventArgs e)
+        {
+            if (e.Reason == SessionSwitchReason.RemoteConnect )
+            {
+                _isRemoteSession = true;
+                Logger.Info("Remote Desktop Session started!");
+            }
+            else if (e.Reason == SessionSwitchReason.RemoteDisconnect)
+            {
+                _isRemoteSession = false;
+                Logger.Info("Remote Desktop Session ended!");
+            }
+            else if (e.Reason == SessionSwitchReason.SessionLock)
+            {
+                _isLockScreen = true;
+                Logger.Info("Lockscreen Session started!");
+            }
+            else if (e.Reason == SessionSwitchReason.SessionUnlock)
+            {
+                _isLockScreen = false;
+                Logger.Info("Lockscreen Session ended!");
+            }
+        }
+
         private void ProcessMonitor(object sender, EventArgs e)
         {
             if (PlaybackState == PlaybackState.paused)
@@ -78,7 +107,12 @@ namespace livelywpf.Core
                 PauseWallpapers();
                 return;
             }
-            else if(Program.SettingsVM.Settings.BatteryPause == AppRulesEnum.pause)
+            else if (_isRemoteSession || _isLockScreen)
+            {
+                PauseWallpapers();
+                return;
+            }
+            else if (Program.SettingsVM.Settings.BatteryPause == AppRulesEnum.pause)
             {
                 if (System.Windows.Forms.SystemInformation.PowerStatus.PowerLineStatus == System.Windows.Forms.PowerLineStatus.Offline)
                 {
