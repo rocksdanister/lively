@@ -43,6 +43,13 @@ namespace livelywpf.Core
         public void Start()
         {
             dispatcherTimer.Start();
+            //Check if already in remote session before subscribing.
+            _isRemoteSession = System.Windows.Forms.SystemInformation.TerminalServerSession;
+            if (_isRemoteSession)
+            {
+                Logger.Info("Already in Remote Desktop Session!");
+            }
+            //todo: _isLockScreen also requires this check.
             SystemEvents.SessionSwitch += SystemEvents_SessionSwitch;
         }
 

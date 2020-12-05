@@ -35,7 +35,7 @@ Help translate lively to other languages: <a href="https://github.com/rocksdanis
 
 <a href="https://visualdon.uk/project/eternal-light/">Eternal Light</a> by VISUALDON
 * Powered by mpv and vlc player.
-* Play .mp4, mkv, webm, avi, mov etc 
+* Customize videos with filters.
 * Hardware Acceleration support.
 #### Webpages
 <img src="/resources/wallpaper_html.gif" width="600" height="338"/>
