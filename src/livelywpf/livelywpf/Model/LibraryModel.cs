@@ -132,7 +132,7 @@ namespace livelywpf
                 ImagePath = ThumbnailPath;
             }
 
-            if (data.Type == livelywpf.WallpaperType.video)
+            if (data.Type == livelywpf.WallpaperType.video || data.Type == livelywpf.WallpaperType.videostream)
             {
                 //No user made livelyproperties file if missing, using default for video.
                 if(LivelyPropertyPath == null)

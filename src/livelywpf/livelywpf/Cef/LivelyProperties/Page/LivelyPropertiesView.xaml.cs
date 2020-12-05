@@ -535,7 +535,8 @@ namespace livelywpf.Cef
             {
                 // TODO:
                 // Use DirectoryWatcher instead.
-                if (wallpaperData.LivelyInfo.Type == WallpaperType.video)
+                if (wallpaperData.LivelyInfo.Type == WallpaperType.video || 
+                    wallpaperData.LivelyInfo.Type == WallpaperType.videostream)
                 {
                     var lpp = Path.Combine(wallpaperData.LivelyInfoFolderPath, "LivelyProperties.json");
                     var dlpp = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
