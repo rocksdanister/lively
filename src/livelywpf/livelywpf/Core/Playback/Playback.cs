@@ -49,6 +49,7 @@ namespace livelywpf.Core
         public void Stop()
         {
             dispatcherTimer.Stop();
+            _isLockScreen = _isRemoteSession = false;
             SystemEvents.SessionSwitch -= SystemEvents_SessionSwitch;
         }
 
