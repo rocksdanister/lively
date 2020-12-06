@@ -137,7 +137,7 @@ namespace livelywpf.Views
                                 Owner = App.AppWindow,
                                 WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner,
                                 Width = 350,//App.AppWindow.Width / 3.0,
-                                Height = App.AppWindow.Height / 1.5,
+                                Height = App.AppWindow.Height / 1.25,
                                 Title = obj.Title
                             };
                         overlay.ShowDialog();

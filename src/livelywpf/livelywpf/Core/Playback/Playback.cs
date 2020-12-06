@@ -42,15 +42,19 @@ namespace livelywpf.Core
 
         public void Start()
         {
-            dispatcherTimer.Start();
-            //Check if already in remote session before subscribing.
+            // Check if already in remote/lockscreen session.
             _isRemoteSession = System.Windows.Forms.SystemInformation.TerminalServerSession;
             if (_isRemoteSession)
             {
-                Logger.Info("Already in Remote Desktop Session!");
+                Logger.Info("Remote Desktop Session already started!");
             }
-            //todo: _isLockScreen also requires this check.
+            _isLockScreen = IsSystemLocked();
+            if (_isLockScreen)
+            {
+                Logger.Info("Lockscreen Session already started!");
+            }
             SystemEvents.SessionSwitch += SystemEvents_SessionSwitch;
+            dispatcherTimer.Start();
         }
 
         public void Stop()
@@ -431,6 +435,27 @@ namespace livelywpf.Core
                 return true;
             else
                 return false;
+        }
+
+        /// <summary>
+        /// Checks if LockApp is foreground program.
+        /// <para>Could not find a better way to do this quickly,
+        /// Lockscreen class is "Windows.UI.Core.CoreWindow" which is used by other windows UI elements.</para>
+        /// This should be enough for just checking before subscribing to the Lock/Unlocked windows event.
+        /// </summary>
+        /// <returns>True if lockscreen is active.</returns>
+        private bool IsSystemLocked()
+        {
+            bool result = false;
+            var fHandle = NativeMethods.GetForegroundWindow();
+            try
+            {
+                NativeMethods.GetWindowThreadProcessId(fHandle, out int processID);
+                var fProcess = Process.GetProcessById(processID);
+                result = fProcess.ProcessName.Equals("LockApp", StringComparison.OrdinalIgnoreCase);
+            }
+            catch { }
+            return result;
         }
 
         /// <summary>
