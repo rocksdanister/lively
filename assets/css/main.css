@@ -234,6 +234,10 @@ input, select, textarea {
 	h6 {
 		font-size: 0.6em;
 	}
+	span.tooltip{
+		cursor: pointer;
+		border-bottom: dotted 1px rgba(255, 255, 255, 0.35);
+	}
 
 	@media screen and (max-width: 736px) {
 
