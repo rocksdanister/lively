@@ -112,14 +112,23 @@ namespace livelywpf.Views
                         Program.LibraryVM.WallpaperExport(e, savePath);
                         break;
                     case "deleteWallpaper":
+                        var deleteView = new livelygrid.InfoPage
+                        {
+                            DataContext = ((LibraryModel)e),
+                            UIText = new livelygrid.LocalizeTextInfoPage()
+                            {
+                                Author = Properties.Resources.TextAuthor,
+                                Website = Properties.Resources.TextWebsite,
+                                Type = Properties.Resources.TextWallpaperType,
+                            }
+                        };
                         var result = await Helpers.DialogService.ShowConfirmationDialog(
                             ((LibraryModel)e).LivelyInfo.IsAbsolutePath ?
                                 Properties.Resources.DescriptionDeleteConfirmationLibrary : Properties.Resources.DescriptionDeleteConfirmation,
-                            ((LibraryModel)e).Title + " by " + ((LibraryModel)e).LivelyInfo.Author,
+                            deleteView,
                             ((UIElement)sender).XamlRoot,
                             Properties.Resources.TextYes,
                             Properties.Resources.TextNo);
-
                         if (result == ContentDialogResult.Primary)
                         {
                             Program.LibraryVM.WallpaperDelete(e);
@@ -137,8 +146,8 @@ namespace livelywpf.Views
                                 Owner = App.AppWindow,
                                 WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner,
                                 Width = 350,//App.AppWindow.Width / 3.0,
-                                Height = App.AppWindow.Height / 1.25,
-                                Title = obj.Title
+                                Height = App.AppWindow.Height / 1.2,
+                                Title = obj.Title.Length > 40 ? obj.Title.Substring(0, 40) + "..." : obj.Title
                             };
                         overlay.ShowDialog();
                         LivelyGridControl.DimBackground(false);

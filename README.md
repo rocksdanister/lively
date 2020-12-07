@@ -1,6 +1,9 @@
 # Lively Wallpaper
 [![GitHub release](https://img.shields.io/github/release/rocksdanister/lively/all.svg)](https://github.com/rocksdanister/lively/releases)
 [![Github all releases](https://img.shields.io/github/downloads/rocksdanister/lively/total.svg)](https://github.com/rocksdanister/lively/releases)
+[![GitHub stars](https://img.shields.io/github/stars/rocksdanister/lively.svg)](https://github.com/rocksdanister/lively/stargazers)
+[![Documentation](https://img.shields.io/badge/Docs-WIP-red.svg)](https://github.com/rocksdanister/lively/wiki)
+[![Issues](https://img.shields.io/github/issues/rocksdanister/lively.svg)](https://github.com/rocksdanister/lively/issues)
 
 ## Contents
 - [About](#about)

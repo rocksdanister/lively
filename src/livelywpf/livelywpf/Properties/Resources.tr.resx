@@ -703,37 +703,37 @@ Edge ise windows 10 için geçerli web gösterim motorudur.</value>
     <value>Başlangıçta çalıştır</value>
   </data>
   <data name="TextTitle" xml:space="preserve">
-    <value>Title</value>
+    <value>Başlık</value>
   </data>
   <data name="TextDescription" xml:space="preserve">
-    <value>Description</value>
+    <value>Açıklama</value>
   </data>
   <data name="TextOK" xml:space="preserve">
-    <value>OK</value>
+    <value>Tamam</value>
   </data>
   <data name="TextCancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>İptal</value>
   </data>
   <data name="TextCreatePreview" xml:space="preserve">
-    <value>Create Preview</value>
+    <value>Önizleme oluştur</value>
   </data>
   <data name="TitleGifPlayer" xml:space="preserve">
-    <value>Gif Player</value>
+    <value>Gif Oynatıcı</value>
   </data>
   <data name="TipGifPlayer" xml:space="preserve">
-    <value>Select the player used for gif wallpaper.</value>
+    <value>Gif duvar kağıdı için kullanılacak oynatıcıyı seçin</value>
   </data>
     <data name="TextFeatureMissing" xml:space="preserve">
-    <value>Some features are not available in this version of Lively.</value>
+    <value>Bazı özellikler Lively'nin şu anki sürümünde mevcut değil.</value>
   </data>
     <data name="TextControlPanelOpen" xml:space="preserve">
-    <value>Click here to manage wallpapers.</value>
+    <value>Duvar kağıtlarını yönetmek için tıklayın.</value>
   </data>
     <data name="TextStoreReview" xml:space="preserve">
-    <value>Do you enjoy using Lively? Leave a review :)</value>
+    <value>Lively kullanmaktan memnun musunuz? Lütfen yorum bırakın :)</value>
   </data>
   <data name="TitleStore" xml:space="preserve">
-    <value>Store</value>
-    <comment>For different version of Lively, example: Microsoft Store</comment>
+    <value>Market</value>
+    <comment>Lively'nin farklı bir sürümü için, örnek: Microsoft Store</comment>
   </data>  
 </root>
