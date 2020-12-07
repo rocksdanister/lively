@@ -4,6 +4,7 @@ using System.Reflection;
 using System.Text;
 using System.IO;
 using Windows.ApplicationModel;
+using System.Threading.Tasks;
 
 namespace livelywpf
 {
@@ -137,6 +138,33 @@ namespace livelywpf
                     }
                     break;
             }
+        }
+
+        /// <summary>
+        /// Check startup state (desktopbridge.)
+        /// </summary>
+        /// <returns>0: disabled, -1: disabled by policy/user, 1: enabled</returns>
+        public async static Task<int> StartupCheck()
+        {
+            var result = 0;
+            StartupTask startupTask = await StartupTask.GetAsync("AppStartup");
+            switch (startupTask.State)
+            {
+                case StartupTaskState.Disabled:
+                    result = 0;
+                    break;
+                case StartupTaskState.DisabledByUser:
+                    // Task is disabled and user must enable it manually.
+                    result = -1;
+                    break;
+                case StartupTaskState.DisabledByPolicy:
+                    result = -1;
+                    break;
+                case StartupTaskState.Enabled:
+                    result = 1;
+                    break;
+            }
+            return result;
         }
     }
 }

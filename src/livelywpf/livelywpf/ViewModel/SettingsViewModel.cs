@@ -35,7 +35,7 @@ namespace livelywpf
                 new LanguagesModel("中文(zh-CN)", new string[]{"zh", "zh-Hans","zh-CN","zh-SG"}),
                 new LanguagesModel("繁體中文(zh-Hant)", new string[]{ "zh-HK", "zh-MO", "zh-TW"}),
                 new LanguagesModel("한국어(ko-KR)", new string[]{"ko", "ko-KR","ko-KP"}),
-                new LanguagesModel("Pусский(ru)", new string[]{"ru", "ru-BY", "ru-KZ", "ru-KG", "ru-MD", "ru-RU","ru-UA"}), 
+                new LanguagesModel("Pусский(ru)", new string[]{"ru", "ru-BY", "ru-KZ", "ru-KG", "ru-MD", "ru-RU","ru-UA"}),
                 new LanguagesModel("Українська(uk)", new string[]{"uk", "uk-UA"}),
                 new LanguagesModel("Español(es)", new string[]{"es"}),
                 new LanguagesModel("Italian(it)", new string[]{"it", "it-IT", "it-SM","it-CH","it-VA"}),
@@ -59,7 +59,7 @@ namespace livelywpf
             };
             SelectedLanguageItem = SearchSupportedLanguage(Settings.Language);
 
-            if(Program.IsMSIX)
+            if (Program.IsMSIX)
             {
                 WindowsStartup.StartupWin10(Settings.Startup);
                 IsStartup = Settings.Startup;
@@ -78,11 +78,15 @@ namespace livelywpf
             }
 
             //restrictions
-            if (Settings.GifPlayer == LivelyGifPlayer.win10Img || Settings.LivelyGUIRendering == LivelyGUIState.normal || Settings.GifCapture == true)
+            if (Settings.GifPlayer == LivelyGifPlayer.win10Img
+                || Settings.LivelyGUIRendering == LivelyGUIState.normal
+                || Settings.GifCapture == true
+                || Settings.VideoPlayer != LivelyMediaPlayer.libmpvExt)
             {
                 Settings.GifPlayer = LivelyGifPlayer.libmpvExt;
                 Settings.LivelyGUIRendering = LivelyGUIState.lite;
                 Settings.GifCapture = false;
+                Settings.VideoPlayer = LivelyMediaPlayer.libmpvExt;
                 UpdateConfigFile();
             }
 
@@ -146,6 +150,11 @@ namespace livelywpf
                 if (Program.IsMSIX)
                 {
                     WindowsStartup.StartupWin10(_isStartup);
+                    if(Settings.Startup != _isStartup)
+                    {
+                        Settings.Startup = _isStartup;
+                        UpdateConfigFile();
+                    }
                 }
                 else
                 {

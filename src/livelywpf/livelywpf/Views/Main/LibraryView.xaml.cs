@@ -94,13 +94,18 @@ namespace livelywpf.Views
                     Program.LibraryVM.WallpaperExport(obj, savePath);
                     break;
                 case "deleteWallpaper":
+                    var deleteView = new LibraryAboutView
+                    {
+                        DataContext = obj
+                    };
+                    var deleteFrame = new ModernWpf.Controls.Frame();
+                    deleteFrame.Navigate(deleteView);
                     var result = await Helpers.DialogService.ShowConfirmationDialog(
                         (obj.LivelyInfo.IsAbsolutePath ?
                             Properties.Resources.DescriptionDeleteConfirmationLibrary : Properties.Resources.DescriptionDeleteConfirmation),
-                        obj.Title + " by " + obj.LivelyInfo.Author,
+                        deleteFrame,
                         Properties.Resources.TextYes,
                         Properties.Resources.TextNo);
-
                     if (result == ContentDialogResult.Primary)
                     {
                         Program.LibraryVM.WallpaperDelete(obj);
@@ -110,18 +115,19 @@ namespace livelywpf.Views
                     var details = Program.LibraryVM.GetLivelyPropertyDetails(obj);
                     var customiseFrame = new ModernWpf.Controls.Frame()
                     {
-                        Margin = new Thickness(25, 0, 50, 25)
+                        Margin = new Thickness(25, 0, 25, 25)
                     };
                     customiseFrame.Navigate(new Cef.LivelyPropertiesView(obj, details.Item1, details.Item2));
                     ScrollViewer scv = new ScrollViewer()
                     {
                         VerticalScrollBarVisibility = ScrollBarVisibility.Auto,
                         HorizontalScrollBarVisibility = ScrollBarVisibility.Auto,
-                        Margin = new Thickness(0, 5, 0, 0)
+                        Margin = new Thickness(0, 5, 0, 0),
+                        HorizontalAlignment = HorizontalAlignment.Center
                     };
                     scv.Content = customiseFrame;
                     await Helpers.DialogService.ShowConfirmationDialog(
-                        obj.Title.Length > 30 ? obj.Title.Substring(0, 30) : obj.Title,
+                        obj.Title.Length > 35 ? obj.Title.Substring(0, 35) + "..." : obj.Title,
                         scv,
                         Properties.Resources.TextClose);
                     break;
@@ -136,7 +142,7 @@ namespace livelywpf.Views
                     var aboutFrame = new ModernWpf.Controls.Frame();
                     aboutFrame.Navigate(aboutView);
                     await Helpers.DialogService.ShowConfirmationDialog(
-                        obj.Title.Length > 30 ? obj.Title.Substring(0, 30) : obj.Title,
+                        obj.Title,
                         aboutFrame,
                         Properties.Resources.TextClose);
                     break;

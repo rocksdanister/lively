@@ -1,4 +1,5 @@
 ﻿using livelywpf.Helpers;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,7 +31,9 @@ namespace livelywpf.Core
         };
         private static IntPtr workerWOrig, progman;
         public static PlaybackState PlaybackState { get; set; }
+        //public event EventHandler<PlaybackState> PlaybackStateChanged;
         private readonly DispatcherTimer dispatcherTimer = new DispatcherTimer();
+        private bool _isLockScreen, _isRemoteSession;
 
         public Playback()
         {
@@ -39,12 +42,26 @@ namespace livelywpf.Core
 
         public void Start()
         {
+            // Check if already in remote/lockscreen session.
+            _isRemoteSession = System.Windows.Forms.SystemInformation.TerminalServerSession;
+            if (_isRemoteSession)
+            {
+                Logger.Info("Remote Desktop Session already started!");
+            }
+            _isLockScreen = IsSystemLocked();
+            if (_isLockScreen)
+            {
+                Logger.Info("Lockscreen Session already started!");
+            }
+            SystemEvents.SessionSwitch += SystemEvents_SessionSwitch;
             dispatcherTimer.Start();
         }
 
         public void Stop()
         {
             dispatcherTimer.Stop();
+            _isLockScreen = _isRemoteSession = false;
+            SystemEvents.SessionSwitch -= SystemEvents_SessionSwitch;
         }
 
         private void Initialize()
@@ -71,6 +88,30 @@ namespace livelywpf.Core
             dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, Program.SettingsVM.Settings.ProcessTimerInterval);
         }
 
+        private void SystemEvents_SessionSwitch(object sender, SessionSwitchEventArgs e)
+        {
+            if (e.Reason == SessionSwitchReason.RemoteConnect)
+            {
+                _isRemoteSession = true;
+                Logger.Info("Remote Desktop Session started!");
+            }
+            else if (e.Reason == SessionSwitchReason.RemoteDisconnect)
+            {
+                _isRemoteSession = false;
+                Logger.Info("Remote Desktop Session ended!");
+            }
+            else if (e.Reason == SessionSwitchReason.SessionLock)
+            {
+                _isLockScreen = true;
+                Logger.Info("Lockscreen Session started!");
+            }
+            else if (e.Reason == SessionSwitchReason.SessionUnlock)
+            {
+                _isLockScreen = false;
+                Logger.Info("Lockscreen Session ended!");
+            }
+        }
+
         private void ProcessMonitor(object sender, EventArgs e)
         {
             if (PlaybackState == PlaybackState.paused)
@@ -78,7 +119,12 @@ namespace livelywpf.Core
                 PauseWallpapers();
                 return;
             }
-            else if(Program.SettingsVM.Settings.BatteryPause == AppRulesEnum.pause)
+            else if (_isRemoteSession || _isLockScreen)
+            {
+                PauseWallpapers();
+                return;
+            }
+            else if (Program.SettingsVM.Settings.BatteryPause == AppRulesEnum.pause)
             {
                 if (System.Windows.Forms.SystemInformation.PowerStatus.PowerLineStatus == System.Windows.Forms.PowerLineStatus.Offline)
                 {
@@ -194,7 +240,7 @@ namespace livelywpf.Core
                                 PlayWallpapers();
                         }
                     }
-                    else 
+                    else
                     {
                         //multiscreen wp pause algorithm, for per-monitor pause rule.
                         LivelyScreen focusedScreen;
@@ -266,7 +312,7 @@ namespace livelywpf.Core
 
         private static void PauseWallpapers()
         {
-            SetupDesktop.Wallpapers.ForEach(x => 
+            SetupDesktop.Wallpapers.ForEach(x =>
             {
                 x.Pause();
             });
@@ -284,7 +330,7 @@ namespace livelywpf.Core
         {
             SetupDesktop.Wallpapers.ForEach(x =>
             {
-                if(ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.screenLayout))
+                if (ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.screenLayout))
                     x.Pause();
             });
         }
@@ -345,13 +391,14 @@ namespace livelywpf.Core
                 NativeMethods.GetWindowRect(hWnd, out appBounds);
                 screenBounds = System.Windows.Forms.Screen.FromHandle(hWnd).Bounds;
                 //If foreground app 95% working-area( -taskbar of monitor)
-                if ((appBounds.Bottom - appBounds.Top) >= screenBounds.Height * .95f && (appBounds.Right - appBounds.Left) >= screenBounds.Width * .95f) 
+                if ((appBounds.Bottom - appBounds.Top) >= screenBounds.Height * .95f && (appBounds.Right - appBounds.Left) >= screenBounds.Width * .95f)
                     return true;
                 else
                     return false;
             }
-            catch { 
-                return false; 
+            catch
+            {
+                return false;
             }
         }
 
@@ -389,6 +436,27 @@ namespace livelywpf.Core
                 return true;
             else
                 return false;
+        }
+
+        /// <summary>
+        /// Checks if LockApp is foreground program.
+        /// <para>Could not find a better way to do this quickly,
+        /// Lockscreen class is "Windows.UI.Core.CoreWindow" which is used by other windows UI elements.</para>
+        /// This should be enough for just checking before subscribing to the Lock/Unlocked windows event.
+        /// </summary>
+        /// <returns>True if lockscreen is active.</returns>
+        private bool IsSystemLocked()
+        {
+            bool result = false;
+            var fHandle = NativeMethods.GetForegroundWindow();
+            try
+            {
+                NativeMethods.GetWindowThreadProcessId(fHandle, out int processID);
+                var fProcess = Process.GetProcessById(processID);
+                result = fProcess.ProcessName.Equals("LockApp", StringComparison.OrdinalIgnoreCase);
+            }
+            catch { }
+            return result;
         }
 
         /// <summary>
