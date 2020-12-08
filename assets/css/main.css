@@ -2700,24 +2700,31 @@ input, select, textarea {
 		}
 
 /* Actions */
-
-	.DownloadBtn{
-		background-color: #000000;
-		border: 1px solid white !important;
-		color: white !important;
-		padding: 0px 20.55px;
-		text-align: center;
-		text-decoration: none;
-		font-size: 1rem;
-		font-family: Segoe UI;
-		cursor: pointer;
-		border-radius: 0;
-	}
+	.DownloadBtn {
+		max-width: 213px;
+		width: 213px;
+		min-width: 213px;	
+	}	
+		.DownloadBtn > a{
+			background-color: #000000;
+			border: 1px solid white !important;
+			color: white !important;
+			padding: 0px 20.55px;
+			text-align: center;
+			text-decoration: none;
+			font-size: 1rem;
+			font-family: Segoe UI;
+			cursor: pointer;
+			border-radius: 0;
+		}
 		.DownloadBtn .fas{
 			font-size: 2.5rem;
 			position: relative;
 			top: .5rem;
 			right: .5rem;
+		}
+		.DownloadBtn span{
+			position: relative;	
 		}
 
 	ul.actions {

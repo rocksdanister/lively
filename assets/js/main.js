@@ -195,7 +195,10 @@ window.onload=e=>{
 }
 
 window.onresize=e=>{
-    posSpinner();
+	posSpinner();
+	document.querySelector('.vanta-canvas').style.width=window.innerWidth+"px";
+	document.querySelector('.vanta-canvas').style.right=0;
+	document.querySelector('.vanta-canvas').style.left="";
 }
 
 function posSpinner(){
