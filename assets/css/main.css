@@ -2701,30 +2701,38 @@ input, select, textarea {
 
 /* Actions */
 	.DownloadBtn {
-		max-width: 213px;
-		width: 213px;
-		min-width: 213px;	
+		max-width: 235px;
+		width: 235px;
+		min-width: 235px;	
 	}	
 		.DownloadBtn > a{
 			background-color: #000000;
 			border: 1px solid white !important;
 			color: white !important;
-			padding: 0px 20.55px;
+			padding: 0;
 			text-align: center;
 			text-decoration: none;
 			font-size: 1rem;
 			font-family: Segoe UI;
 			cursor: pointer;
 			border-radius: 0;
+			width: calc(235px - 1.3rem);
 		}
 		.DownloadBtn .fas{
 			font-size: 2.5rem;
 			position: relative;
-			top: .5rem;
+			top: -1.5rem;
 			right: .5rem;
 		}
 		.DownloadBtn span{
-			position: relative;	
+			position: relative;
+			max-width: 13ch;
+			width: 13ch;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			min-width: 13ch;
+			display: inline-block;	
 		}
 
 	ul.actions {
