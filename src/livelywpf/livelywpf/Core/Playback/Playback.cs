@@ -26,6 +26,8 @@ namespace livelywpf.Core
             //taskbar
             "Shell_TrayWnd",
             "Shell_SecondaryTrayWnd",
+            //systray notifyicon expand
+            "NotifyIconOverflowWindow",
             //rainmeter widgets
             "RainmeterMeterWindow"
         };
