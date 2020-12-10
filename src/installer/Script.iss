@@ -61,7 +61,7 @@ Name: "windowsstartup";Description: "{cm:RunAtStartup}"
 
 [Registry]
 ;current user only
-Root: HKCU; Subkey: "Software\Microsoft\Windows\CurrentVersion\Run"; ValueType: string; ValueName: "livelywpf"; ValueData: "{app}\livelywpf.exe"; Flags: uninsdeletekey; Tasks:windowsstartup
+Root: HKCU; Subkey: "Software\Microsoft\Windows\CurrentVersion\Run"; ValueType: string; ValueName: "livelywpf"; ValueData: """{app}\livelywpf.exe"""; Flags: uninsdeletekey; Tasks:windowsstartup
 
 ;[UninstallDelete]
 
