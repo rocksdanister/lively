@@ -20,6 +20,14 @@ namespace livelywpf.Helpers
         /// Free memory.
         /// </summary>
         public float RAM { get; set; }
+        /// <summary>
+        /// Network download Bytes/Sec
+        /// </summary>
+        public float NetDown { get; set; }
+        /// <summary>
+        /// Network upload Bytes/Sec
+        /// </summary>
+        public float NetUp { get; set; }
     }
 
     // Todo:
@@ -37,6 +45,8 @@ namespace livelywpf.Helpers
         //counter variables
         private PerformanceCounter cpuCounter = null;
         private PerformanceCounter ramCounter = null;
+        private PerformanceCounter netDownCounter = null;
+        private PerformanceCounter netUpCounter = null;
 
         public static HWUsageMonitor Instance
         {
@@ -71,6 +81,17 @@ namespace livelywpf.Helpers
 
                 ramCounter = new PerformanceCounter
                     ("Memory", "Available MBytes");
+
+                var netCards = GetNetworkCards();
+                if(netCards.Length != 0)
+                {
+                    //only considering the first card for now.
+                    netDownCounter = new PerformanceCounter("Network Interface",
+                                   "Bytes Received/sec", netCards[0]);
+
+                    netUpCounter = new PerformanceCounter("Network Interface",
+                                   "Bytes Sent/sec", netCards[0]);
+                }
             }
             catch (Exception ex)
             {
@@ -88,9 +109,11 @@ namespace livelywpf.Helpers
                     try
                     {
                         ctsHwMonitor.Token.ThrowIfCancellationRequested();
-                        perfData.CPU = perfData.GPU = perfData.RAM = 0;
+                        perfData.CPU = perfData.GPU = perfData.RAM = perfData.NetUp = perfData.NetDown = 0;
                         perfData.CPU = cpuCounter.NextValue();
                         perfData.RAM = ramCounter.NextValue();
+                        perfData.NetDown = netDownCounter != null ? netDownCounter.NextValue() : 0f;
+                        perfData.NetUp = netUpCounter != null ? netUpCounter.NextValue() : 0f;
                         //min 1sec wait required since some timers use pervious value for calculation.
                         //ref: https://docs.microsoft.com/en-us/archive/blogs/bclteam/how-to-read-performance-counters-ryan-byington
                         perfData.GPU = await GetGPUUsage();
@@ -108,6 +131,8 @@ namespace livelywpf.Helpers
                 }
             });
         }
+
+        #region public helpers
 
         public static async Task<float> GetCPUUsage()
         {
@@ -167,9 +192,7 @@ namespace livelywpf.Helpers
                 {
                     _ = x.NextValue();
                 });
-
                 await Task.Delay(1000);
-
                 gpuCounters.ForEach(x =>
                 {
                     result += x.NextValue();
@@ -182,5 +205,39 @@ namespace livelywpf.Helpers
                 return 0f;
             }
         }
+
+        public static async Task<Tuple<float, float>> GetNetworkUsage(string networkCard)
+        {
+            try
+            {
+                var netDown = new PerformanceCounter("Network Interface",
+                                                   "Bytes Received/sec", networkCard);
+                var netUp = new PerformanceCounter("Network Interface",
+                                                        "Bytes Sent/sec", networkCard);
+                _ = netDown.NextValue();
+                _ = netUp.NextValue();
+                await Task.Delay(1000);
+                return Tuple.Create(netDown.NextValue(), netUp.NextValue());
+            }
+            catch 
+            {
+                return new Tuple<float, float>(0f, 0f);
+            }
+        }
+
+        public static string[] GetNetworkCards()
+        {
+            try
+            {
+                var category = new PerformanceCounterCategory("Network Interface");
+                return category.GetInstanceNames();
+            }
+            catch
+            {
+                return new string[] {};
+            }
+        }
+
+        #endregion // public regions
     }
 }
