@@ -131,7 +131,7 @@ begin
   begin
     // query user to confirm deletion; if user chose "Yes", then...
     if SuppressibleMsgBox(ExpandConstant('{cm:DeleteEverythigMsgBox}')+ ' ' + ExpandConstant('{localappdata}\Lively Wallpaper') + ' ?',
-      mbConfirmation, MB_YESNO, IDNO) = IDYES
+      mbConfirmation, MB_YESNO, IDYES) = IDYES
     then
       // deletion confirmed by user.
       begin
@@ -219,8 +219,8 @@ var
   ErrorCode: Integer;
 begin
   if CheckForMutexes('LIVELY:DESKTOPWALLPAPERSYSTEM') and
-     (MsgBox('Application is running, do you want to close it?',
-             mbConfirmation, MB_OKCANCEL) = IDOK) then
+     (SuppressibleMsgBox('Application is running, do you want to close it?',
+             mbConfirmation, MB_OKCANCEL, IDOK) = IDOK) then
   begin
     ShellExec('open','taskkill.exe','/f /im {#MyAppExeName}','',SW_HIDE,ewWaitUntilTerminated,ErrorCode);
   end;
