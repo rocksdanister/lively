@@ -79,10 +79,10 @@ Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
 Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
 
 [Run]
-Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall 
+Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall; Check: AutoLaunch 
 ;skipifsilent
-Filename: "{tmp}\VC_redist.x86.exe"; Check: VCRedistNeedsInstall; StatusMsg: Installing Visual Studio Runtime Libraries...
-Filename: "{tmp}\windowsdesktop-runtime-3.1.9-win-x86.exe"; Check: NetCoreNeedsInstall('3.1.7') and NetCoreNeedsInstall('3.1.8') and NetCoreNeedsInstall('3.1.9');  StatusMsg: Installing .Net Core 3.1...
+Filename: "{tmp}\VC_redist.x86.exe"; Check: VCRedistNeedsInstall and DependencyInstall; StatusMsg: Installing Visual Studio Runtime Libraries...
+Filename: "{tmp}\windowsdesktop-runtime-3.1.9-win-x86.exe"; Check: NetCoreNeedsInstall('3.1.7') and NetCoreNeedsInstall('3.1.8') and NetCoreNeedsInstall('3.1.9') and DependencyInstall;  StatusMsg: Installing .Net Core 3.1...
 
 [Code]
 var
@@ -241,4 +241,27 @@ begin
   // Example: 'Microsoft.NETCore.App', 'Microsoft.AspNetCore.App', 'Microsoft.WindowsDesktop.App'
   netcoreRuntime := 'Microsoft.WindowsDesktop.App'
 	Result := not(Exec(ExpandConstant('{tmp}{\}') + 'netcorecheck.exe', netcoreRuntime + ' ' + version, '', SW_HIDE, ewWaitUntilTerminated, resultCode) and (resultCode = 0));
+end;
+
+function CmdLineParamNotExists(const Value: string): Boolean;
+var
+  I: Integer;  
+begin
+  Result := True;
+  for I := 1 to ParamCount do
+    if CompareText(ParamStr(I), Value) = 0 then
+    begin
+      Result := False;
+      Exit;
+    end;
+end;
+
+function DependencyInstall(): Boolean;
+begin
+  Result := CmdLineParamNotExists('/NODEPENDENCIES');
+end;
+
+function AutoLaunch(): Boolean;
+begin
+ Result := CmdLineParamNotExists('/NOAUTOLAUNCH');
 end;
