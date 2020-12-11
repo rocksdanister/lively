@@ -131,7 +131,7 @@ begin
   begin
     // query user to confirm deletion; if user chose "Yes", then...
     if SuppressibleMsgBox(ExpandConstant('{cm:DeleteEverythigMsgBox}')+ ' ' + ExpandConstant('{localappdata}\Lively Wallpaper') + ' ?',
-      mbConfirmation, MB_YESNO, IDYES) = IDYES
+      mbConfirmation, MB_YESNO, IDNO) = IDYES
     then
       // deletion confirmed by user.
       begin
