@@ -8,7 +8,11 @@ assignees: ''
 ---
 
 **Before proceeding**
-Check the [Wiki](https://github.com/rocksdanister/lively/wiki) and [Issues](https://github.com/rocksdanister/lively/issues?q=is%3Aopen+is%3Aissue) to see if your problem is already addressed.
+Check the Wiki:
+https://github.com/rocksdanister/lively/wiki 
+and Issues:
+https://github.com/rocksdanister/lively/issues?q=is%3Aopen+is%3Aissue
+to see if your problem is already addressed.
 
 **Describe the bug**
 A clear and concise description of what the bug is.
@@ -34,4 +38,4 @@ If applicable, add screenshots/video to help explain your problem.
 Add any other context about the problem here.
 
 **Log file**
-Share the log file(s) from Local Appdata folder C:\Users\<UserName>\AppData\Local\Lively Wallpaper\logs
+Share the log file(s) from Local Appdata folder `C:\Users\<UserName>\AppData\Local\Lively Wallpaper\logs`
