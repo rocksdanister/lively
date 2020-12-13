@@ -9,31 +9,41 @@ namespace livelywpf.Helpers
     public class HWUsageMonitorEventArgs : EventArgs
     {
         /// <summary>
+        /// Primary cpu name.
+        /// </summary>
+        public string NameCpu { get; set; }
+        /// <summary>
+        /// Primary gpu name.
+        /// </summary>
+        public string NameGpu { get; set; }
+        /// <summary>
         /// Cpu usage % similar to taskmanager (Processor Time.)
         /// </summary>
-        public float CPU { get; set; }
+        public float CurrentCpu { get; set; }
         /// <summary>
         /// Gpu usage % similar to taskmanager (GPU 3D Engine.)
         /// </summary>
-        public float GPU  { get; set; }
+        public float CurrentGpu3D { get; set; }
         /// <summary>
-        /// Free memory.
+        /// Free memory in Megabytes.
         /// </summary>
-        public float RAM { get; set; }
+        public float CurrentRamAvail { get; set; }
         /// <summary>
-        /// Network download Bytes/Sec
+        /// Network download speed (Bytes/Sec)
         /// </summary>
-        public float NetDown { get; set; }
+        public float CurrentNetDown { get; set; }
         /// <summary>
-        /// Network upload Bytes/Sec
+        /// Network upload speed (Bytes/Sec)
         /// </summary>
-        public float NetUp { get; set; }
+        public float CurrentNetUp { get; set; }
+        /// <summary>
+        /// Full system ram amount (MegaBytes)
+        /// </summary>
+        public long TotalRam { get; set; }
     }
 
     // Todo:
-    // Make start and stop service
-    // Add more hardware - network down & up..
-    // Add hardware model name (i5 4670k, gtx 1080..) to HWUsageMonitorEventArgs
+    // Add more hardware.
     // Optimise idle usage, maybe shut it down when fullscreen app running?
     public sealed class HWUsageMonitor
     {
@@ -41,6 +51,7 @@ namespace livelywpf.Helpers
         private static readonly HWUsageMonitor instance = new HWUsageMonitor();
         public event EventHandler<HWUsageMonitorEventArgs> HWMonitor = delegate { };
         private CancellationTokenSource ctsHwMonitor;
+        private readonly HWUsageMonitorEventArgs perfData = new HWUsageMonitorEventArgs();
 
         //counter variables
         private PerformanceCounter cpuCounter = null;
@@ -59,23 +70,35 @@ namespace livelywpf.Helpers
         private HWUsageMonitor()
         {
             InitCounters();
-            HWMonitorService();
         }
 
         public void StartService()
         {
-            throw new NotImplementedException();
+            if(ctsHwMonitor == null)
+            {
+                ctsHwMonitor = new CancellationTokenSource();
+                HWMonitorService();
+            }
         }
 
         public void StopService()
         {
-            throw new NotImplementedException();
+            if(ctsHwMonitor != null)
+            {
+                ctsHwMonitor.Cancel();
+            }
         }
 
         private void InitCounters()
         {
             try
             {
+                //hw info
+                perfData.NameCpu = SystemInfo.GetCpu()[0];
+                perfData.NameGpu = SystemInfo.GetGpu()[0];
+                perfData.TotalRam = SystemInfo.GetTotalInstalledMemory();
+
+                //counters
                 cpuCounter = new PerformanceCounter
                     ("Processor", "% Processor Time", "_Total");
 
@@ -101,7 +124,6 @@ namespace livelywpf.Helpers
 
         private async void HWMonitorService()
         {
-            HWUsageMonitorEventArgs perfData = new HWUsageMonitorEventArgs();
             await Task.Run(async () =>
             {
                 while(true)
@@ -109,18 +131,20 @@ namespace livelywpf.Helpers
                     try
                     {
                         ctsHwMonitor.Token.ThrowIfCancellationRequested();
-                        perfData.CPU = perfData.GPU = perfData.RAM = perfData.NetUp = perfData.NetDown = 0;
-                        perfData.CPU = cpuCounter.NextValue();
-                        perfData.RAM = ramCounter.NextValue();
-                        perfData.NetDown = netDownCounter != null ? netDownCounter.NextValue() : 0f;
-                        perfData.NetUp = netUpCounter != null ? netUpCounter.NextValue() : 0f;
+                        perfData.CurrentCpu = perfData.CurrentGpu3D = perfData.CurrentRamAvail = perfData.CurrentNetUp = perfData.CurrentNetDown = 0;
+                        perfData.CurrentCpu = cpuCounter.NextValue();
+                        perfData.CurrentRamAvail = ramCounter.NextValue();
+                        perfData.CurrentNetDown = netDownCounter != null ? netDownCounter.NextValue() : 0f;
+                        perfData.CurrentNetUp = netUpCounter != null ? netUpCounter.NextValue() : 0f;
                         //min 1sec wait required since some timers use pervious value for calculation.
                         //ref: https://docs.microsoft.com/en-us/archive/blogs/bclteam/how-to-read-performance-counters-ryan-byington
-                        perfData.GPU = await GetGPUUsage();
+                        perfData.CurrentGpu3D = await GetGPUUsage();
                     }
                     catch (OperationCanceledException)
                     {
-                        Logger.Info("PerfCounter: Stopped");
+                        Logger.Info("PerfCounter: Cancelled");
+                        ctsHwMonitor.Dispose();
+                        ctsHwMonitor = null;
                         break;
                     }
                     catch 

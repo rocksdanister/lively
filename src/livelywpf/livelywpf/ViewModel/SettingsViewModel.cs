@@ -56,6 +56,7 @@ namespace livelywpf
                 new LanguagesModel("Türkçe(tr)", new string[]{ "tr", "tr-CY", "tr-TR"}),
                 new LanguagesModel("Cрпски језик(sr)", new string[]{ "sr", "sr-Latn", "sr-Latn-BA", "sr-Latn-ME", "sr-Latn-RS", "sr-Latn-CS" }),
                 new LanguagesModel("Српска ћирилица(sr-Cyrl)", new string[]{ "sr-Cyrl", "sr-Cyrl-BA", "sr-Cyrl-ME", "sr-Cyrl-RS", "sr-Cyrl-CS" }),
+                new LanguagesModel("Ελληνικά(el-GR)", new string[]{ "el", "el-GR", "el-CY" }),
             };
             SelectedLanguageItem = SearchSupportedLanguage(Settings.Language);
 

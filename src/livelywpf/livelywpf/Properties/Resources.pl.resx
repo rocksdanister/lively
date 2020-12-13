@@ -728,16 +728,16 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Wybierz odtwarzacz dla tapet typu gif.</value>
   </data>
   <data name="TextFeatureMissing" xml:space="preserve">
-    <value>Some features are not available in this version of Lively.</value>
+    <value>Niektóre funkcje w tej wersji Lively są niedostępne.</value>
   </data>
   <data name="TextControlPanelOpen" xml:space="preserve">
-    <value>Click here to manage wallpapers.</value>
+    <value>Kliknij tutaj aby zarządzać tapetami.</value>
   </data>
   <data name="TextStoreReview" xml:space="preserve">
-    <value>Do you enjoy using Lively? Leave a review :)</value>
+    <value>Lubisz używać Lively? Zostaw recenzję :)</value>
   </data>
   <data name="TitleStore" xml:space="preserve">
-    <value>Store</value>
-    <comment>For different version of Lively, example: Microsoft Store</comment>
+    <value>Sklep</value>
+    <comment>Do różnych wersji Lively, przykład: Microsoft Store</comment>
   </data>
 </root>

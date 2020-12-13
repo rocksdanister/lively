@@ -200,7 +200,7 @@ namespace livelywpf.Core
                 });
             }
             Proc.OutputDataReceived -= Proc_OutputDataReceived;
-            Proc.Close();
+            Proc.Dispose();
             SetupDesktop.RefreshDesktop();
         }
 
@@ -284,7 +284,7 @@ namespace livelywpf.Core
             try
             {
                 Proc.Kill();
-                Proc.Close();
+                Proc.Dispose();
             }
             catch { }
             SetupDesktop.RefreshDesktop();

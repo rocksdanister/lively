@@ -26,7 +26,7 @@ namespace livelywpf.Core
             //taskbar
             "Shell_TrayWnd",
             "Shell_SecondaryTrayWnd",
-            //systray notifyicon expand
+            //systray notifyicon expanded popup
             "NotifyIconOverflowWindow",
             //rainmeter widgets
             "RainmeterMeterWindow"
@@ -150,7 +150,7 @@ namespace livelywpf.Core
             const int maxChars = 256;
             StringBuilder className = new StringBuilder(maxChars);
             var fHandle = NativeMethods.GetForegroundWindow();
-            Process fProcess;
+            //Process fProcess;
             if (NativeMethods.GetClassName((int)fHandle, className, maxChars) > 0)
             {
                 string cName = className.ToString();
@@ -167,54 +167,55 @@ namespace livelywpf.Core
             try
             {
                 NativeMethods.GetWindowThreadProcessId(fHandle, out int processID);
-                fProcess = Process.GetProcessById(processID);
+                using (Process fProcess = Process.GetProcessById(processID))
+                {
+                    if (String.IsNullOrEmpty(fProcess.ProcessName) || fHandle.Equals(IntPtr.Zero))
+                    {
+                        //process with no name, possibly overlay or some other service pgm; resume playback.
+                        PlayWallpapers();
+                        return;
+                    }
+
+                    if (fProcess.ProcessName.Equals("livelywpf", StringComparison.OrdinalIgnoreCase) ||
+                        fProcess.ProcessName.Equals("livelycefsharp", StringComparison.OrdinalIgnoreCase) ||
+                        fProcess.ProcessName.Equals("libvlcplayer", StringComparison.OrdinalIgnoreCase) ||
+                        fProcess.ProcessName.Equals("libmpvplayer", StringComparison.OrdinalIgnoreCase))
+                    {
+                        PlayWallpapers();
+                        SetWallpapersVoume(Program.SettingsVM.Settings.AudioVolumeGlobal);
+                        return;
+                    }
+
+                    //looping through custom rules for user defined apps.
+                    for (int i = 0; i < Program.AppRulesVM.AppRules.Count; i++)
+                    {
+                        var item = Program.AppRulesVM.AppRules[i];
+                        if (String.Equals(item.AppName, fProcess.ProcessName, StringComparison.OrdinalIgnoreCase))
+                        {
+                            if (item.Rule == AppRulesEnum.ignore)
+                            {
+                                PlayWallpapers();
+                                SetWallpapersVoume(Program.SettingsVM.Settings.AudioVolumeGlobal);
+                                return;
+                            }
+                            else if (item.Rule == AppRulesEnum.pause)
+                            {
+                                PauseWallpapers();
+                                return;
+                            }
+                        }
+                    }
+                }
             }
             catch
             {
-                //Logger.Info("Getting processname failure, resuming playback!");
-                //ignore - admin process etc
+                //failed to get process info.. maybe remote process; resume playback.
                 PlayWallpapers();
                 return;
             }
 
             try
             {
-                if (String.IsNullOrEmpty(fProcess.ProcessName) || fHandle.Equals(IntPtr.Zero))
-                {
-                    //Logger.Info("Getting processname failure/handle null, resuming playback!");
-                    PlayWallpapers();
-                    return;
-                }
-
-                if (fProcess.ProcessName.Equals("livelywpf", StringComparison.OrdinalIgnoreCase) ||
-                    fProcess.ProcessName.Equals("livelycefsharp", StringComparison.OrdinalIgnoreCase) ||
-                    fProcess.ProcessName.Equals("libvlcplayer", StringComparison.OrdinalIgnoreCase) ||
-                    fProcess.ProcessName.Equals("libmpvplayer", StringComparison.OrdinalIgnoreCase))
-                {
-                    PlayWallpapers();
-                    SetWallpapersVoume(Program.SettingsVM.Settings.AudioVolumeGlobal);
-                    return;
-                }
-
-                //looping through custom rules for user defined apps.
-                for (int i = 0; i < Program.AppRulesVM.AppRules.Count; i++)
-                {
-                    var item = Program.AppRulesVM.AppRules[i];
-                    if (String.Equals(item.AppName, fProcess.ProcessName, StringComparison.OrdinalIgnoreCase))
-                    {
-                        if (item.Rule == AppRulesEnum.ignore)
-                        {
-                            PlayWallpapers();
-                            SetWallpapersVoume(Program.SettingsVM.Settings.AudioVolumeGlobal);
-                            return;
-                        }
-                        else if (item.Rule == AppRulesEnum.pause)
-                        {
-                            PauseWallpapers();
-                            return;
-                        }
-                    }
-                }
 
                 if (!(fHandle.Equals(NativeMethods.GetDesktopWindow()) || fHandle.Equals(NativeMethods.GetShellWindow())))
                 {
@@ -371,21 +372,6 @@ namespace livelywpf.Core
         /// <returns>True if window dimensions are greater.</returns>
         private static bool IsZoomedCustom(IntPtr hWnd)
         {
-            /*
-            try
-            {
-                NativeMethods.GetWindowThreadProcessId(hWnd, out processID);
-                currProcess = Process.GetProcessById(processID);
-            }
-            catch
-            {
-
-                Debug.WriteLine("getting processname failure, skipping isZoomedCustom()");
-                //ignore, admin process etc
-                return false;
-            }
-            */
-
             try
             {
                 System.Drawing.Rectangle screenBounds;
@@ -453,8 +439,10 @@ namespace livelywpf.Core
             try
             {
                 NativeMethods.GetWindowThreadProcessId(fHandle, out int processID);
-                var fProcess = Process.GetProcessById(processID);
-                result = fProcess.ProcessName.Equals("LockApp", StringComparison.OrdinalIgnoreCase);
+                using(Process fProcess = Process.GetProcessById(processID))
+                {
+                    result = fProcess.ProcessName.Equals("LockApp", StringComparison.OrdinalIgnoreCase);
+                }
             }
             catch { }
             return result;
@@ -467,18 +455,7 @@ namespace livelywpf.Core
         public static bool IsDesktop()
         {
             IntPtr hWnd = NativeMethods.GetForegroundWindow();
-            if (IntPtr.Equals(hWnd, workerWOrig))
-            {
-                return true;
-            }
-            else if (IntPtr.Equals(hWnd, progman))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return (IntPtr.Equals(hWnd, workerWOrig) || IntPtr.Equals(hWnd, progman));
         }
     }
 }

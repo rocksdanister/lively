@@ -188,7 +188,7 @@ namespace livelywpf.Core
 
         private void Proc_Exited(object sender, EventArgs e)
         {
-            Proc.Close();
+            Proc.Dispose();
             SetupDesktop.RefreshDesktop();
         }
 
@@ -358,7 +358,7 @@ namespace livelywpf.Core
             try
             {
                 Proc.Kill();
-                Proc.Close();
+                Proc.Dispose();
             }
             catch { }
             SetupDesktop.RefreshDesktop();
@@ -371,7 +371,11 @@ namespace livelywpf.Core
 
         public void SetVolume(int volume)
         {
-            
+            try
+            {
+                VolumeMixer.SetApplicationVolume(Proc.Id, volume);
+            }
+            catch { }
         }
     }
 }
