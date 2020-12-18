@@ -28,7 +28,7 @@ namespace livelywpf
         public bool IsFirstRun { get; set; }
         public bool ControlPanelOpened { get; set; }
         public AppRulesEnum AppFocusPause { get; set; }
-
+        public AppRulesEnum AppMaximizedPause { get; set; }
         public AppRulesEnum AppFullscreenPause { get; set; }
         public AppRulesEnum BatteryPause { get; set; }
 
@@ -105,6 +105,7 @@ namespace livelywpf
             IsFirstRun = true;
             ControlPanelOpened = false;
             AppFocusPause = AppRulesEnum.ignore;
+            AppMaximizedPause = AppRulesEnum.ignore;
             AppFullscreenPause = AppRulesEnum.pause;
             BatteryPause = AppRulesEnum.ignore;
             VideoPlayer = LivelyMediaPlayer.libmpvExt;

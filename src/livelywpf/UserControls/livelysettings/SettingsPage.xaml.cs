@@ -51,6 +51,8 @@ namespace livelysettings
         public string TitleWallpaperPlayback { get; set; }
         public string TitlePerfAppFullScreen { get; set; }
         public string TipPerfAppFullScreen { get; set; }
+        public string TitlePerfAppMaximized { get; set; }
+        public string TipPerfAppMaximized { get; set; }
         public string TitlePerfAppFocused { get; set; }
         public string TipPerfAppFocused { get; set; }
         public string TitlePerfBattery { get; set; }

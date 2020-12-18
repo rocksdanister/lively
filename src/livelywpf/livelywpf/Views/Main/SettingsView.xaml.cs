@@ -55,6 +55,8 @@ namespace livelywpf.Views
                     TitleWallpaperPlayback = Properties.Resources.TitleWallpaperPlayback,
                     TitlePerfAppFullScreen = Properties.Resources.TitleAppFullScreen,
                     TipPerfAppFullScreen = Properties.Resources.TipAppFullScreen,
+                    TitlePerfAppMaximized = Properties.Resources.TitleAppMaximized,
+                    TipPerfAppMaximized = Properties.Resources.TipAppMaximized,
                     TitlePerfAppFocused = Properties.Resources.TitleAppFocus,
                     TipPerfAppFocused = Properties.Resources.TipAppFocus,
                     TitlePerfBattery = Properties.Resources.TitleBatteryPower,

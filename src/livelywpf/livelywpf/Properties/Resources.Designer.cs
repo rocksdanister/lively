@@ -1135,6 +1135,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Set what to do when a window is maximized or fullscreen.
+        /// </summary>
+        public static string TipAppMaximized {
+            get {
+                return ResourceManager.GetString("TipAppMaximized", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Set different wallpaper playback rules based on running application..
         /// </summary>
         public static string TipAppRules {
@@ -1396,6 +1405,15 @@ namespace livelywpf.Properties {
         public static string TitleAppFullScreen {
             get {
                 return ResourceManager.GetString("TitleAppFullScreen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Applications Maximized.
+        /// </summary>
+        public static string TitleAppMaximized {
+            get {
+                return ResourceManager.GetString("TitleAppMaximized", resourceCulture);
             }
         }
         

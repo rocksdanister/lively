@@ -73,6 +73,7 @@ namespace livelywpf
 
             SelectedTileSizeIndex = Settings.TileSize;
             SelectedAppFullScreenIndex = (int)Settings.AppFullscreenPause;
+            SelectedAppMaximizedIndex = (int)Settings.AppMaximizedPause;
             SelectedAppFocusIndex = (int)Settings.AppFocusPause;
             SelectedBatteryPowerIndex = (int)Settings.BatteryPause;
             SelectedDisplayPauseRuleIndex = (int)Settings.DisplayPauseSettings;
@@ -333,6 +334,26 @@ namespace livelywpf
                 if(Settings.AppFullscreenPause != (AppRulesEnum)_selectedAppFullScreenIndex)
                 {
                     Settings.AppFullscreenPause = (AppRulesEnum)_selectedAppFullScreenIndex;
+                    UpdateConfigFile();
+                }
+            }
+        }
+
+        private int _selectedAppMaximizedIndex;
+        public int SelectedAppMaximizedIndex
+        {
+            get
+            {
+                return _selectedAppMaximizedIndex;
+            }
+            set
+            {
+                _selectedAppMaximizedIndex = value;
+                OnPropertyChanged("SelectedAppMaximizedIndex");
+
+                if (Settings.AppMaximizedPause != (AppRulesEnum)_selectedAppMaximizedIndex)
+                {
+                    Settings.AppMaximizedPause = (AppRulesEnum)_selectedAppMaximizedIndex;
                     UpdateConfigFile();
                 }
             }

@@ -100,6 +100,8 @@ namespace livelywpf.Core
             }
             catch { }
             */
+
+            ProcessSuspend.SuspendAllThreads(this);
         }
 
         public void Play()
@@ -114,6 +116,7 @@ namespace livelywpf.Core
             }
             catch { }
             */
+            ProcessSuspend.ResumeAllThreads(this);
         }
 
         public void SetHWND(IntPtr hwnd)

@@ -520,7 +520,7 @@ Alle processen: Heavier, Scant alle processen om afspeelmogelijkheden te bepalen
     <value>Audio</value>
   </data>
   <data name="TitleAudioMaster" xml:space="preserve">
-    <value>Master Volume</value>
+    <value>Hoofd Volume</value>
   </data>
   <data name="TitleAudioPlayOnScreen" xml:space="preserve">
     <value>Speel audio af op scherm</value>
@@ -655,22 +655,22 @@ Alle processen: Heavier, Scant alle processen om afspeelmogelijkheden te bepalen
     <value>Met Windows opstarten</value>
   </data>
   <data name="TextWallpaperFitFill" xml:space="preserve">
-    <value>Fill</value>
+    <value>Vullen</value>
   </data>
   <data name="TextWallpaperFitNone" xml:space="preserve">
-    <value>None</value>
+    <value>Geen</value>
   </data>
   <data name="TextWallpaperFitUniform" xml:space="preserve">
     <value>Uniform</value>
   </data>
   <data name="TextWallpaperFitUniformToFill" xml:space="preserve">
-    <value>Uniform Fill</value>
+    <value>Uniform Vullen</value>
   </data>
   <data name="TipWallpaperFit" xml:space="preserve">
-    <value>Wallpaper scaling algorithm.</value>
+    <value>Wallpaper schaalings algoritme.</value>
   </data>
   <data name="TitleWallpaperFit" xml:space="preserve">
-    <value>Choose a fit</value>
+    <value>Kies een pasvorm</value>
   </data>
   <data name="TextPreviewWallpaper" xml:space="preserve">
     <value>Preview Wallpaper</value>
@@ -685,22 +685,22 @@ Alle processen: Heavier, Scant alle processen om afspeelmogelijkheden te bepalen
     <value>Show developer menu</value>
   </data>
   <data name="TextFileNotFound" xml:space="preserve">
-    <value>File not found</value>
+    <value>Bestand niet gevonden</value>
   </data>
   <data name="TextPicture" xml:space="preserve">
     <value>Picture</value>
   </data>
   <data name="TextUnsupportedFile" xml:space="preserve">
-    <value>File format not supported</value>
+    <value>Bestand wordt niet ondersteund</value>
   </data>
   <data name="TextProcessingWallpaper" xml:space="preserve">
     <value>Processing</value>
-  </data> 
+  </data>
   <data name="TextTitle" xml:space="preserve">
     <value>Title</value>
   </data>
   <data name="TextDescription" xml:space="preserve">
-    <value>Description</value>
+    <value>Beschrijving</value>
   </data>
   <data name="TextOK" xml:space="preserve">
     <value>OK</value>
@@ -709,7 +709,7 @@ Alle processen: Heavier, Scant alle processen om afspeelmogelijkheden te bepalen
     <value>Cancel</value>
   </data>
   <data name="TextCreatePreview" xml:space="preserve">
-    <value>Create Preview</value>
+    <value>Voorbeeld Genereren</value>
   </data>
   <data name="TitleGifPlayer" xml:space="preserve">
     <value>Gif Player</value>
@@ -718,16 +718,22 @@ Alle processen: Heavier, Scant alle processen om afspeelmogelijkheden te bepalen
     <value>Select the player used for gif wallpaper.</value>
   </data>
   <data name="TextFeatureMissing" xml:space="preserve">
-    <value>Some features are not available in this version of Lively.</value>
+    <value>Sommige functies zijn niet beschikbaar in deze Lively versie</value>
   </data>
-    <data name="TextControlPanelOpen" xml:space="preserve">
-    <value>Click here to manage wallpapers.</value>
+  <data name="TextControlPanelOpen" xml:space="preserve">
+    <value>Klik hier om u achtergronden te beheren.</value>
   </data>
-    <data name="TextStoreReview" xml:space="preserve">
-    <value>Do you enjoy using Lively? Leave a review :)</value>
+  <data name="TextStoreReview" xml:space="preserve">
+    <value>Bevalt Lively? Laat een review achter :)</value>
   </data>
   <data name="TitleStore" xml:space="preserve">
     <value>Store</value>
     <comment>For different version of Lively, example: Microsoft Store</comment>
-  </data>   
+  </data>
+  <data name="TipAppMaximized" xml:space="preserve">
+    <value>Stel in wat u wilt doen wanneer een applicatie venster is gemaximalizeerd.</value>
+  </data>
+  <data name="TitleAppMaximized" xml:space="preserve">
+    <value>Toepassingen gemaximalizeerd</value>
+  </data>
 </root>

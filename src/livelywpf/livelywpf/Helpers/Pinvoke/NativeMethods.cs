@@ -1431,6 +1431,16 @@ namespace livelywpf
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool IsZoomed(IntPtr hWnd);
 
+        public static bool IsForegroundFullScreen(IntPtr hWnd) {
+            GetWindowRect(hWnd, out RECT rect);
+            foreach (var screen in System.Windows.Forms.Screen.AllScreens) {
+                if (screen.Bounds.Width == (rect.Right - rect.Left) && screen.Bounds.Height == (rect.Bottom - rect.Top)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         [Flags]
         public enum SetWindowPosFlags : int
         {

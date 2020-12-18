@@ -81,6 +81,13 @@
                             </ComboBox>
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipPerfAppFullScreen}"/>
 
+                            <ComboBox Header="{x:Bind UIText.TitlePerfAppMaximized}" Margin="0,10,0,0" MinWidth="200" SelectedIndex="{Binding SelectedAppMaximizedIndex, Mode=TwoWay}">
+                                <ComboBoxItem Content="{x:Bind UIText.TextPerfPause}"/>
+                                <ComboBoxItem Content="{x:Bind UIText.TextPerfNone}"/>
+                                <ComboBoxItem IsEnabled="False" Content="{x:Bind UIText.TextPerfKill}"/>
+                            </ComboBox>
+                            <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipPerfAppMaximized}"/>
+                            
                             <ComboBox Header="{x:Bind UIText.TitlePerfAppFocused}" Margin="0,10,0,0" MinWidth="200" SelectedIndex="{Binding SelectedAppFocusIndex, Mode=TwoWay}">
                                 <ComboBoxItem Content="{x:Bind UIText.TextPerfPause}"/>
                                 <ComboBoxItem Content="{x:Bind UIText.TextPerfNone}"/>

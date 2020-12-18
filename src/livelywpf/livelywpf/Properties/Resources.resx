@@ -489,6 +489,9 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="TipAppFullScreen" xml:space="preserve">
     <value>Set what to do when fullscreen games/applications are running.</value>
   </data>
+  <data name="TipAppMaximized" xml:space="preserve">
+    <value>Set what to do when a window is maximized or fullscreen</value>
+  </data>
   <data name="TipAppRules" xml:space="preserve">
     <value>Set different wallpaper playback rules based on running application.</value>
   </data>
@@ -579,6 +582,9 @@ Edge is the built in webview of windows 10.</value>
   </data>
   <data name="TitleAppFullScreen" xml:space="preserve">
     <value>Applications Fullscreen</value>
+  </data>
+  <data name="TitleAppMaximized" xml:space="preserve">
+    <value>Applications Maximized</value>
   </data>
   <data name="TitleAppName" xml:space="preserve">
     <value>Lively Wallpaper</value>
