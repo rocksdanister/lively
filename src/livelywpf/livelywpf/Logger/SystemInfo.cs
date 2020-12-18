@@ -45,15 +45,7 @@ namespace livelywpf
                     }
                 }
             }
-            catch (Exception e)
-            {
-                result.Add(e.Message);
-            }
-
-            if (result.Count == 0)
-            {
-                result.Add("Nil");
-            }
+            catch { }
             return result;
         }
 
@@ -90,15 +82,7 @@ namespace livelywpf
                     }
                 }
             }
-            catch (Exception e)
-            {
-                result.Add(e.Message);
-            }
-
-            if (result.Count == 0)
-            {
-                result.Add("Nil");
-            }
+            catch { }
             return result;
         }
 

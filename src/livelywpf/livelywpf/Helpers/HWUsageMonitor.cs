@@ -19,6 +19,10 @@ namespace livelywpf.Helpers
         /// <summary>
         /// Cpu usage % similar to taskmanager (Processor Time.)
         /// </summary>
+        public string NameNetCard { get; set; }
+        /// <summary>
+        /// Current total cpu usage %.
+        /// </summary>
         public float CurrentCpu { get; set; }
         /// <summary>
         /// Gpu usage % similar to taskmanager (GPU 3D Engine.)
@@ -42,16 +46,13 @@ namespace livelywpf.Helpers
         public long TotalRam { get; set; }
     }
 
-    // Todo:
-    // Add more hardware.
-    // Optimise idle usage, maybe shut it down when fullscreen app running?
     public sealed class HWUsageMonitor
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private static readonly HWUsageMonitor instance = new HWUsageMonitor();
         public event EventHandler<HWUsageMonitorEventArgs> HWMonitor = delegate { };
-        private CancellationTokenSource ctsHwMonitor;
         private readonly HWUsageMonitorEventArgs perfData = new HWUsageMonitorEventArgs();
+        private CancellationTokenSource ctsHwMonitor;
 
         //counter variables
         private PerformanceCounter cpuCounter = null;
@@ -74,16 +75,20 @@ namespace livelywpf.Helpers
 
         public void StartService()
         {
-            if(ctsHwMonitor == null)
+            if (ctsHwMonitor == null)
             {
                 ctsHwMonitor = new CancellationTokenSource();
                 HWMonitorService();
             }
         }
 
+        /// <summary>
+        /// todo: incomplete, not thread safe.
+        /// Once stopped, cannot start again.
+        /// </summary>
         public void StopService()
         {
-            if(ctsHwMonitor != null)
+            if (ctsHwMonitor != null)
             {
                 ctsHwMonitor.Cancel();
             }
@@ -94,8 +99,9 @@ namespace livelywpf.Helpers
             try
             {
                 //hw info
-                perfData.NameCpu = SystemInfo.GetCpu()[0];
-                perfData.NameGpu = SystemInfo.GetGpu()[0];
+                perfData.NameCpu = SystemInfo.GetCpu().Count != 0 ? SystemInfo.GetCpu()[0] : null;
+                perfData.NameGpu = SystemInfo.GetGpu().Count != 0 ? SystemInfo.GetGpu()[0] : null;
+                perfData.NameNetCard = GetNetworkCards().Count != 0 ? GetNetworkCards()[0] : null;
                 perfData.TotalRam = SystemInfo.GetTotalInstalledMemory();
 
                 //counters
@@ -105,55 +111,64 @@ namespace livelywpf.Helpers
                 ramCounter = new PerformanceCounter
                     ("Memory", "Available MBytes");
 
-                var netCards = GetNetworkCards();
-                if(netCards.Length != 0)
+                if (perfData.NameNetCard != null)
                 {
                     //only considering the first card for now.
                     netDownCounter = new PerformanceCounter("Network Interface",
-                                   "Bytes Received/sec", netCards[0]);
+                                   "Bytes Received/sec", perfData.NameNetCard);
 
                     netUpCounter = new PerformanceCounter("Network Interface",
-                                   "Bytes Sent/sec", netCards[0]);
+                                   "Bytes Sent/sec", perfData.NameNetCard);
                 }
             }
             catch (Exception ex)
             {
-                Logger.Error("PerfCounter: Init fail=>" + ex.Message);
+                Logger.Info("PerfCounter: Init fail=>" + ex.Message);
             }
         }
 
         private async void HWMonitorService()
         {
-            await Task.Run(async () =>
+            try
             {
-                while(true)
+                await Task.Run(async () =>
                 {
-                    try
+                    while (true)
                     {
-                        ctsHwMonitor.Token.ThrowIfCancellationRequested();
-                        perfData.CurrentCpu = perfData.CurrentGpu3D = perfData.CurrentRamAvail = perfData.CurrentNetUp = perfData.CurrentNetDown = 0;
-                        perfData.CurrentCpu = cpuCounter.NextValue();
-                        perfData.CurrentRamAvail = ramCounter.NextValue();
-                        perfData.CurrentNetDown = netDownCounter != null ? netDownCounter.NextValue() : 0f;
-                        perfData.CurrentNetUp = netUpCounter != null ? netUpCounter.NextValue() : 0f;
-                        //min 1sec wait required since some timers use pervious value for calculation.
-                        //ref: https://docs.microsoft.com/en-us/archive/blogs/bclteam/how-to-read-performance-counters-ryan-byington
-                        perfData.CurrentGpu3D = await GetGPUUsage();
+                        try
+                        {
+                            ctsHwMonitor.Token.ThrowIfCancellationRequested();
+                            perfData.CurrentCpu = perfData.CurrentGpu3D = perfData.CurrentRamAvail = perfData.CurrentNetUp = perfData.CurrentNetDown = 0;
+                            perfData.CurrentCpu = cpuCounter.NextValue();
+                            perfData.CurrentRamAvail = ramCounter.NextValue();
+                            perfData.CurrentNetDown = netDownCounter != null ? netDownCounter.NextValue() : 0f;
+                            perfData.CurrentNetUp = netUpCounter != null ? netUpCounter.NextValue() : 0f;
+                            //min 1sec wait required since some timers use pervious value for calculation.
+                            //ref: https://docs.microsoft.com/en-us/archive/blogs/bclteam/how-to-read-performance-counters-ryan-byington
+                            perfData.CurrentGpu3D = await GetGPUUsage();
+                        }
+                        catch (OperationCanceledException)
+                        {
+                            Logger.Info("PerfCounter: Stopped");
+                            ctsHwMonitor.Dispose();
+                            //ctsHwMonitor = null;
+                            break;
+                        }
+                        catch
+                        {
+                            //todo: log error.
+                        }
+                        HWMonitor?.Invoke(this, perfData);
                     }
-                    catch (OperationCanceledException)
-                    {
-                        Logger.Info("PerfCounter: Cancelled");
-                        ctsHwMonitor.Dispose();
-                        ctsHwMonitor = null;
-                        break;
-                    }
-                    catch 
-                    {
-                        //Logger.Error("PerfCounter: Timer fail=>" + ex.Message);
-                    }
-                    HWMonitor?.Invoke(this, perfData);
-                }
-            });
+                });
+            }
+            finally
+            {
+                cpuCounter?.Dispose();
+                ramCounter?.Dispose();
+                netDownCounter?.Dispose();
+                netUpCounter?.Dispose();
+            }
         }
 
         #region public helpers
@@ -162,11 +177,13 @@ namespace livelywpf.Helpers
         {
             try
             {
-                PerformanceCounter cpuCounter =
-                    new PerformanceCounter("Processor", "% Processor Time", "_Total");
-                _ = cpuCounter.NextValue();
-                await Task.Delay(1000);
-                return cpuCounter.NextValue();
+                using (PerformanceCounter cpuCounter =
+                    new PerformanceCounter("Processor", "% Processor Time", "_Total"))
+                {
+                    _ = cpuCounter.NextValue();
+                    await Task.Delay(1000);
+                    return cpuCounter.NextValue();
+                }
             }
             catch
             {
@@ -178,9 +195,11 @@ namespace livelywpf.Helpers
         {
             try
             {
-                PerformanceCounter memCounter =
-                    new PerformanceCounter("Memory", "Available MBytes");
-                return memCounter.NextValue();
+                using (PerformanceCounter memCounter =
+                    new PerformanceCounter("Memory", "Available MBytes"))
+                {
+                    return memCounter.NextValue();
+                }
             }
             catch
             {
@@ -191,12 +210,12 @@ namespace livelywpf.Helpers
         //ref: https://stackoverflow.com/questions/56830434/c-sharp-get-total-usage-of-gpu-in-percentage
         public static async Task<float> GetGPUUsage()
         {
+            var gpuCounters = new List<PerformanceCounter>();
+            var result = 0f;
             try
             {
                 var category = new PerformanceCounterCategory("GPU Engine");
                 var counterNames = category.GetInstanceNames();
-                var gpuCounters = new List<PerformanceCounter>();
-                var result = 0f;
 
                 foreach (string counterName in counterNames)
                 {
@@ -221,45 +240,54 @@ namespace livelywpf.Helpers
                 {
                     result += x.NextValue();
                 });
-
-                return result;
             }
             catch
             {
-                return 0f;
+                result = 0f;
             }
+            finally
+            {
+                gpuCounters.ForEach(x =>
+                {
+                    x?.Dispose();
+                });
+            }
+            return result;
         }
 
         public static async Task<Tuple<float, float>> GetNetworkUsage(string networkCard)
         {
             try
             {
-                var netDown = new PerformanceCounter("Network Interface",
-                                                   "Bytes Received/sec", networkCard);
-                var netUp = new PerformanceCounter("Network Interface",
-                                                        "Bytes Sent/sec", networkCard);
-                _ = netDown.NextValue();
-                _ = netUp.NextValue();
-                await Task.Delay(1000);
-                return Tuple.Create(netDown.NextValue(), netUp.NextValue());
-            }
-            catch 
-            {
-                return new Tuple<float, float>(0f, 0f);
-            }
-        }
-
-        public static string[] GetNetworkCards()
-        {
-            try
-            {
-                var category = new PerformanceCounterCategory("Network Interface");
-                return category.GetInstanceNames();
+                using (var netDown = new PerformanceCounter("Network Interface",
+                                                   "Bytes Received/sec", networkCard))
+                {
+                    using (var netUp = new PerformanceCounter("Network Interface",
+                                                        "Bytes Sent/sec", networkCard))
+                    {
+                        _ = netDown.NextValue();
+                        _ = netUp.NextValue();
+                        await Task.Delay(1000);
+                        return Tuple.Create(netDown.NextValue(), netUp.NextValue());
+                    }
+                }
             }
             catch
             {
-                return new string[] {};
+                return Tuple.Create(0f, 0f);
             }
+        }
+
+        public static List<string> GetNetworkCards()
+        {
+            var result = new List<string>();
+            try
+            {
+                var category = new PerformanceCounterCategory("Network Interface");
+                result.AddRange(category.GetInstanceNames());
+            }
+            catch { }
+            return result;
         }
 
         #endregion // public regions

@@ -73,7 +73,7 @@ namespace livelywpf.Core
                 cmdArgs.Append(" --audio true");
             }
 
-            if (!String.IsNullOrWhiteSpace(model.LivelyInfo.Arguments))
+            if (!string.IsNullOrWhiteSpace(model.LivelyInfo.Arguments))
             {
                 cmdArgs.Append(" " + model.LivelyInfo.Arguments);
             }

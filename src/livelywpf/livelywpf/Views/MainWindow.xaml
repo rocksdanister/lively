@@ -12,7 +12,7 @@
         xmlns:p = "clr-namespace:livelywpf.Properties"                
         mc:Ignorable="d"
         Height="740" Width="1200"
-        MinWidth="650" MinHeight="390"
+        MinWidth="915" MinHeight="545"
         Title="{x:Static p:Resources.TitleAppName}"
         Closing="Window_Closing"        
         IsVisibleChanged="Window_IsVisibleChanged"
