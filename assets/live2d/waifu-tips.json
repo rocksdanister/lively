@@ -1,0 +1,68 @@
+{
+	"mouseover": [{
+		"selector": "#waifu #live2d",
+		"text": ["What are you doing, take your hand away~~", "Mouse...the mouse is in the wrong place!", "What are you doing?", "Meow meow?", "Get awayy (ノ≧∇≦)ノ", "Indecent! Help!", "In this case, I will only use force!", "I'm going to be angry", "Don't move!", "Really...really shameless!" , "Hentai!"]
+	}, {
+		"selector": "#waifu-tool .fa-comment",
+		"text": ["Guess what I am going to say?", "I have heard a lot of life experience from the Frog Prince."]
+	}, {
+		"selector": "#waifu-tool .fa-paper-plane",
+		"text": ["Do you want to play airplane war?", "This button says 'Don't click'. ", "Why, do you want to come and play a game with me? ", "I heard that you can dance this way! "]
+	}, {
+		"selector": "#waifu-tool .fa-user-circle",
+		"text": ["Are you not in love with me anymore, ohhhh~", "Want to see my sisters?", "Want to see my sister?", "Do you want to switch the Kanban girl?"]
+	}, {
+		"selector": "#waifu-tool .fa-street-view",
+		"text": ["Do you like changing to PLAY? ", "What do you want to play this time? ", "Cross dress! ", "Let's see what happens next!"]
+	}, {
+		"selector": "#waifu-tool .fa-camera-retro",
+		"text": ["Are you taking pictures of me? One, two, three~eggplant~", "Or, let's take a group photo! ", "Just keep smiling~"]
+	}, {
+		"selector": "#waifu-tool .fa-info-circle",
+		"text": ["Want to know more about me? ", "Want to see where I am from?", "What do you want to know about me?"]
+	}, {
+		"selector": "#waifu-tool .fa-times",
+		"text": ["Is it time to say goodbye? ", "Woo QAQ", "Don't abandon me...", "Shall we meet again...", "Hmph, you will regret it!"]
+	}, {
+		"selector": ".menu-item-home a",
+		"text": ["点击前往首页，想回到上一页可以使用浏览器的后退功能哦。", "点它就可以回到首页啦！", "回首页看看吧。"]
+	}, {
+		"selector": ".DownloadBtn",
+		"text": "Download from GitHub?<br/>Adventurous arent we?"
+	}, {
+		"selector": ".actions > li:nth-child(3) > a > img",
+		"text": "Download from MS Store?<br/>Great Choice!"
+	}],
+	"click": [{
+		"selector": "#waifu #live2d",
+		"text": ["Yes... I accidentally bumped into it...", "What is Lolicon? ", "Did you see my little bear? ", "If you touch it again, I will call the police! ⌇●﹏●⌇", "There is a pervert here who has been touching me (ó﹏ò｡)", "Don't touch me, I will tell my wife to hit you! ", "Why move me! Be careful I will bite you! ", "Don't touch me, there is nothing to touch!"]
+	}],
+	"seasons": [{
+		"date": "01/01",
+		"text": "<span>New Year’s Day</span>, the new year has begun again, happy {year}~"
+	}, {
+		"date": "02/14",
+		"text": "It’s <span>Valentine’s Day</span>, {year} is the year I found you~"
+	}, {
+		"date": "03/08",
+		"text": "Today is <span>International Women's Day</span>!"
+	}, {
+		"date": "03/12",
+		"text": "Today is <span>Arbor Day</span>, we must protect the environment!"
+	}, {
+		"date": "04/01",
+		"text": "Let me tell you a secret~<span>Today is April Fool's Day, don't be fooled~</span>"
+	}, {
+		"date": "05/01",
+		"text": "Today is <span>Labor Day</span>, have you planned where to go for the holiday?"
+	}, {
+		"date": "06/01",
+		"text": "It’s <span>Children’s Day</span>. The happy time is always short. What if it never grows up..."
+	}, {
+		"date": "09/10",
+		"text": "<span>Teacher’s Day</span>, please say hello to the teachers in school~"
+	}, {
+		"date": "12/20-12/31",
+		"text": "These days are <span>Christmas</span>, the owner must have gone shopping again~"
+	}]
+}
