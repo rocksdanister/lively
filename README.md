@@ -9,7 +9,7 @@
 - [About](#about)
 - [Features](#features)
 - [Download](#download)
-- [Issues](#issues)
+- [Problems](#problems)
 - [Contributing](#contributing)
 - [Support](#support)
 - [License](#license)
@@ -99,16 +99,13 @@ Help translate lively to other languages: <a href="https://github.com/rocksdanis
 <a href='//www.microsoft.com/store/apps/9ntm2qc6qws7?cid=storebadge&ocid=badge'><img src='https://developer.microsoft.com/store/badges/images/English_get-it-from-MS.png' alt='English badge' width="142px" height="52px"/></a>
 
 [Which version do I download?](https://github.com/rocksdanister/lively/wiki/Differences-Between-Distributions)
-## Issues
+## Problems
 See github [issues.](https://github.com/rocksdanister/lively/issues)
 
 ## Contributing
-Code contributions are welcome, check [guidelines](https://github.com/rocksdanister/lively/wiki) for making pull request.
+Code contributions are welcome, check [guidelines](https://github.com/rocksdanister/lively/wiki/Contributing-Guidelines) for instructions.
 
-Help translate lively to other languages: <a href="https://github.com/rocksdanister/lively-translations">Translation Files</a>
-
-##### Related Projects
-https://github.com/rocksdanister/lively-cef
+Help translate lively to other <a href="https://github.com/rocksdanister/lively-translations">languages.</a>
 
 ## Support
 You can always help development by buying me a cup of coffee(paypal):

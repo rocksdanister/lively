@@ -10,7 +10,7 @@
         xmlns:p = "clr-namespace:livelywpf.Properties"                
         mc:Ignorable="d"
         ResizeMode="CanResize"
-        WindowStyle="ToolWindow"
+        WindowStyle="SingleBorderWindow"
         BorderBrush="{DynamicResource SystemControlHighlightAltListAccentHighBrush}"   
         Title="{x:Static p:Resources.TextPreviewWallpaper}"
         Height="720" Width="1280"

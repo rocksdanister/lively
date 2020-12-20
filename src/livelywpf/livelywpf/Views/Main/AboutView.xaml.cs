@@ -25,7 +25,9 @@ namespace livelywpf.Views
             {
                 //attribution document.
                 TextRange textRange = new TextRange(licenseDocument.ContentStart, licenseDocument.ContentEnd);
-                using (FileStream fileStream = File.Open(Path.Combine(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Docs", "license.rtf")), FileMode.Open, FileAccess.Read, FileShare.Read))
+                using (FileStream fileStream = 
+                    File.Open(Path.Combine(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Docs", "license.rtf")), 
+                    FileMode.Open, FileAccess.Read, FileShare.Read))
                 {
                     textRange.Load(fileStream, System.Windows.DataFormats.Rtf);
                 }

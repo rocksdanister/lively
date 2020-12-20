@@ -17,7 +17,7 @@ namespace livelywpf.Core
     public class Playback
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        readonly String[] windowsClassDefaults = new string[]
+        readonly string[] windowsClassDefaults = new string[]
         {
             //startmeu, taskview, action center etc
             "Windows.UI.Core.CoreWindow",
@@ -182,7 +182,7 @@ namespace livelywpf.Core
                         fProcess.ProcessName.Equals("libmpvplayer", StringComparison.OrdinalIgnoreCase))
                     {
                         PlayWallpapers();
-                        SetWallpapersVoume(Program.SettingsVM.Settings.AudioVolumeGlobal);
+                        SetWallpaperVolume(Program.SettingsVM.Settings.AudioVolumeGlobal);
                         return;
                     }
 
@@ -195,7 +195,7 @@ namespace livelywpf.Core
                             if (item.Rule == AppRulesEnum.ignore)
                             {
                                 PlayWallpapers();
-                                SetWallpapersVoume(Program.SettingsVM.Settings.AudioVolumeGlobal);
+                                SetWallpaperVolume(Program.SettingsVM.Settings.AudioVolumeGlobal);
                                 return;
                             }
                             else if (item.Rule == AppRulesEnum.pause)
@@ -270,7 +270,7 @@ namespace livelywpf.Core
                         {
                             //win10 and win7 desktop foreground while lively is running.
                             PlayWallpaper(focusedScreen);
-                            SetWallpaperVoume(Program.SettingsVM.Settings.AudioVolumeGlobal, focusedScreen);
+                            SetWallpaperVolume(Program.SettingsVM.Settings.AudioVolumeGlobal, focusedScreen);
                         }
                         else if (Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span)
                         {
@@ -307,7 +307,7 @@ namespace livelywpf.Core
                                 PlayWallpaper(focusedScreen);
                         }
                     }
-                    SetWallpapersVoume(Program.SettingsVM.Settings.AudioVolumeGlobal);
+                    SetWallpaperVolume(Program.SettingsVM.Settings.AudioVolumeGlobal);
                 }
             }
             catch { }
@@ -347,7 +347,7 @@ namespace livelywpf.Core
             });
         }
 
-        private static void SetWallpapersVoume(int volume)
+        private static void SetWallpaperVolume(int volume)
         {
             SetupDesktop.Wallpapers.ForEach(x =>
             {
@@ -355,7 +355,7 @@ namespace livelywpf.Core
             });
         }
 
-        private static void SetWallpaperVoume(int volume, LivelyScreen display)
+        private static void SetWallpaperVolume(int volume, LivelyScreen display)
         {
             SetupDesktop.Wallpapers.ForEach(x =>
             {

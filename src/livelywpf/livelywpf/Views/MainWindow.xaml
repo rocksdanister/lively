@@ -32,7 +32,7 @@
         <!-- title area-->
         <TextBlock Grid.Column="1" Grid.Row="0" FontSize="12.25" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10, -10, 0, 0" Text="{x:Static p:Resources.TitleAppName}" />
         <Button x:Name="statusBtn" Grid.Column="1" Grid.Row="0" WindowChrome.IsHitTestVisibleInChrome="True" HorizontalAlignment="Right" VerticalAlignment="Top"
-                Margin="0, 0, 150, 0" MinWidth="75" MinHeight="33" MaxHeight="33" Click="statusBtn_Click" >
+                Margin="0, 0, 150, 0" MinWidth="75" MinHeight="33" MaxHeight="33" Click="statusBtn_Click" ToolTip="{x:Static p:Resources.TitleScreenLayout}">
             <StackPanel Orientation="Horizontal">
                 <ui:FontIcon Glyph="&#xE7F4;" Margin="0,2,5,0"/>
                 <TextBlock x:Name="wallpaperStatusText" Text="0"/>
