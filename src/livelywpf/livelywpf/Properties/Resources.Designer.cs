@@ -198,6 +198,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your Windows N/KN version will require the download of additional codecs to support video playback in wallpapers..
+        /// </summary>
+        public static string DescriptionWindowsNCodecInstall {
+            get {
+                return ResourceManager.GetString("DescriptionWindowsNCodecInstall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed to update; try downloading the installer from:
         ///https://github.com/rocksdanister/lively/releases.
         /// </summary>

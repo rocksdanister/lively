@@ -164,6 +164,9 @@ Only continue if this application comes from a trusted source.</value>
   <data name="DescriptionWelcomeWizard" xml:space="preserve">
     <value>This wizard will get you started on setting up Lively.</value>
   </data>
+  <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
+    <value>Your Windows N/KN version will require the download of additional codecs to support video playback in wallpapers.</value>
+  </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
     <value>Failed to update; try downloading the installer from:
 https://github.com/rocksdanister/lively/releases</value>

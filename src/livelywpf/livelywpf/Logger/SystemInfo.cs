@@ -106,6 +106,27 @@ namespace livelywpf
             }
         }
 
+        public static bool CheckWindowsNorKN()
+        {
+            var result = false;
+            try
+            {
+                var sku = 0;
+                using (ManagementObjectSearcher myOperativeSystemObject = new ManagementObjectSearcher("select * from Win32_OperatingSystem"))
+                {
+                    foreach (ManagementObject obj in myOperativeSystemObject.Get())
+                    {
+                        sku = int.Parse(obj["OperatingSystemSKU"].ToString());
+                        break;
+                    }
+                    //ref: https://docs.microsoft.com/en-us/windows/win32/api/sysinfoapi/nf-sysinfoapi-getproductinfo
+                    result = (sku == 5 || sku == 16 || sku == 26 || sku == 27 || sku == 28 || sku == 49 || sku == 47 || sku == 84);
+                }
+            }
+            catch { }
+            return result;
+        }
+
         [DllImport("kernel32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
         static extern bool GetPhysicallyInstalledSystemMemory(out long TotalMemoryInKilobytes);

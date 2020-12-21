@@ -33,6 +33,10 @@ namespace livelywpf.Views.SetupWizard
         public SetupView()
         {
             InitializeComponent();
+            if (SystemInfo.CheckWindowsNorKN())
+            {
+                pages.Insert(pages.Count - 1, new PageWindowsN());
+            }
             ContentFrame.Navigate(pages[index], new EntranceNavigationTransitionInfo());
         }
 

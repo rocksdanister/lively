@@ -741,5 +741,8 @@ Edge는 Windows 10의 내장 웹뷰입니다.</value>
   <data name="TitleStore" xml:space="preserve">
     <value>Store</value>
     <comment>For different version of Lively, example: Microsoft Store</comment>
+  </data>
+  <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
+    <value>Your Windows N/KN version will require the download of additional codecs to support video playback in wallpapers.</value>
   </data>    
 </root>

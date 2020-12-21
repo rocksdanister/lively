@@ -740,4 +740,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Sklep</value>
     <comment>Do różnych wersji Lively, przykład: Microsoft Store</comment>
   </data>
+  <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
+    <value>Your Windows N/KN version will require the download of additional codecs to support video playback in wallpapers.</value>
+  </data>
 </root>

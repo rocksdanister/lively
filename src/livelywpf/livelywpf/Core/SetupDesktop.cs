@@ -603,6 +603,8 @@ namespace livelywpf
 
         private static void UpdateWallpaperRect()
         {
+            var currState = Playback.PlaybackState;
+            Playback.PlaybackState = PlaybackState.paused;
             if (ScreenHelper.IsMultiScreen() && Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span)
             {
                 if(Wallpapers.Count != 0)
@@ -610,7 +612,7 @@ namespace livelywpf
                     var width = System.Windows.Forms.SystemInformation.VirtualScreen.Width;
                     var height = System.Windows.Forms.SystemInformation.VirtualScreen.Height;
                     Logger.Info("System parameters changed: Screen Param(Span)=>" + width + " " + height);
-                    //NativeMethods.SetWindowPos(Wallpapers[0].GetHWND(), 1, 0, 0, width, height, 0 | 0x0010);   
+                    NativeMethods.SetWindowPos(Wallpapers[0].GetHWND(), 1, 0, 0, width, height, 0 | 0x0010);   
                     Wallpapers[0].SetScreen(ScreenHelper.GetPrimaryScreen());
                 }
             }
@@ -621,20 +623,28 @@ namespace livelywpf
                 {
                     if ((i = Wallpapers.FindIndex(x => ScreenHelper.ScreenCompare(item, x.GetScreen(), DisplayIdentificationMode.screenClass))) != -1)
                     {
+                        Wallpapers[i].Play();
                         Logger.Info("System parameters changed: Screen Param old/new -> " + Wallpapers[i].GetScreen().Bounds + "/" + item.Bounds);
-                        /*
+                        //buggy when primary screen is not leftmost, need to figure out why.
                         NativeMethods.RECT prct = new NativeMethods.RECT();
                         NativeMethods.MapWindowPoints(Wallpapers[i].GetHWND(), workerw, ref prct, 2);
                         if (!NativeMethods.SetWindowPos(Wallpapers[i].GetHWND(), 1, prct.Left, prct.Top, (item.Bounds.Width), (item.Bounds.Height), 0 | 0x0010))
                         {
                             NLogger.LogWin32Error("setwindowpos(3) fail UpdateWallpaperRect()=>");
-                        }       
+                        }
+                        /*
+                        NativeMethods.POINT pts = new NativeMethods.POINT() { X = (int)item.Bounds.Left, Y = (int)item.Bounds.Top };
+                        if (NativeMethods.ScreenToClient(workerw, ref pts))
+                        {
+                            NativeMethods.SetWindowPos(Wallpapers[i].GetHWND(), 1, pts.X, pts.Y, (int)item.Bounds.Width, (int)item.Bounds.Height, 0 | 0x0010);
+                        }
                         */
                         Wallpapers[i].SetScreen(item);                 
                     }
                 }
             }
             RefreshDesktop();
+            Playback.PlaybackState = currState;
         }
 
         private static Process livelySubProcess;
