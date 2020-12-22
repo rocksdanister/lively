@@ -242,10 +242,7 @@ namespace livelywpf
         {
             MainWindow.IsExit = true;
             SetupDesktop.ShutDown();
-            if (sysTray != null)
-            {
-                sysTray.Dispose();
-            }
+            sysTray?.Dispose();
             System.Windows.Application.Current.Shutdown();
         }
 

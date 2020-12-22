@@ -719,25 +719,25 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Créer un Preview</value>
   </data>
   <data name="TitleGifPlayer" xml:space="preserve">
-    <value>Gif Player</value>
+    <value>Lecteur de Gif</value>
   </data>
   <data name="TipGifPlayer" xml:space="preserve">
-    <value>Select the player used for gif wallpaper.</value>
+    <value>Selectionner le lecteur utilisé pour le fond d'écran gif</value>
   </data>
   <data name="TextFeatureMissing" xml:space="preserve">
-    <value>Some features are not available in this version of Lively.</value>
+    <value>Des fonctionnalités ne sont pas disponibles dans cette version de Lively.</value>
   </data>
     <data name="TextControlPanelOpen" xml:space="preserve">
-    <value>Click here to manage wallpapers.</value>
+    <value>Cliquer ici pour gérer les fonds d'écran.</value>
   </data>
     <data name="TextStoreReview" xml:space="preserve">
-    <value>Do you enjoy using Lively? Leave a review :)</value>
+    <value>Vous aimez Lively? Laissez un commentaire :)</value>
   </data>
   <data name="TitleStore" xml:space="preserve">
-    <value>Store</value>
-    <comment>For different version of Lively, example: Microsoft Store</comment>
+    <value>Magasin</value>
+    <comment>Pour une version différente de Lively, exemple : Microsoft Store</comment>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
     <value>Your Windows N/KN version will require the download of additional codecs to support video playback in wallpapers.</value>
-  </data>  
+  </data>    
 </root>

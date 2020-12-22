@@ -120,7 +120,7 @@ namespace livelywpf
                         break;
                     }
                     //ref: https://docs.microsoft.com/en-us/windows/win32/api/sysinfoapi/nf-sysinfoapi-getproductinfo
-                    result = (sku == 5 || sku == 16 || sku == 26 || sku == 27 || sku == 28 || sku == 49 || sku == 47 || sku == 84);
+                    result = (sku == 5 || sku == 16 || sku == 26 || sku == 27 || sku == 28 || sku == 47 || sku == 49 || sku == 84 || sku == 122 || sku == 162);
                 }
             }
             catch { }

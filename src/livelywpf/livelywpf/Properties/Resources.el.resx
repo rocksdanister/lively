@@ -741,6 +741,6 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Εκκίνηση με τα Windows</value>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>Your Windows N/KN version will require the download of additional codecs to support video playback in wallpapers.</value>
+    <value>Η έκδοση των Windows N/KN θα απαιτήσει τη λήψη πρόσθετων κωδικοποιητών για την υποστήριξη της αναπαραγωγής βίντεο σε ταπετσαρίες.</value>
   </data>
 </root>

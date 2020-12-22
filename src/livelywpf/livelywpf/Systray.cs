@@ -14,7 +14,7 @@ namespace livelywpf
 {
     class Systray : IDisposable
     {
-        private System.Windows.Forms.NotifyIcon _notifyIcon = new System.Windows.Forms.NotifyIcon();
+        private readonly System.Windows.Forms.NotifyIcon _notifyIcon = new System.Windows.Forms.NotifyIcon();
         public Systray(bool visibility = true)
         {
             //NotifyIcon Fix: https://stackoverflow.com/questions/28833702/wpf-notifyicon-crash-on-first-run-the-root-visual-of-a-visualtarget-cannot-hav/29116917
@@ -35,6 +35,8 @@ namespace livelywpf
 
         private System.Windows.Forms.ToolStripMenuItem pauseTrayBtn;
         private System.Windows.Forms.ToolStripMenuItem customiseWallpaperBtn;
+        private bool disposedValue;
+
         public System.Windows.Forms.ToolStripMenuItem UpdateTrayBtn { get; private set; }
         private void CreateContextMenu()
         {
@@ -192,12 +194,36 @@ namespace livelywpf
             }
         }
 
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    Program.SettingsVM.TrayIconVisibilityChange -= SettingsVM_TrayIconVisibilityChange;
+                    _notifyIcon.Visible = false;
+                    _notifyIcon?.Icon.Dispose();
+                    _notifyIcon?.Dispose();
+                }
+
+                // TODO: free unmanaged resources (unmanaged objects) and override finalizer
+                // TODO: set large fields to null
+                disposedValue = true;
+            }
+        }
+
+        // // TODO: override finalizer only if 'Dispose(bool disposing)' has code to free unmanaged resources
+        // ~Systray()
+        // {
+        //     // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+        //     Dispose(disposing: false);
+        // }
+
         public void Dispose()
         {
-            Program.SettingsVM.TrayIconVisibilityChange -= SettingsVM_TrayIconVisibilityChange;
-            _notifyIcon.Visible = false;
-            _notifyIcon.Icon.Dispose();
-            _notifyIcon.Dispose();
+            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
         }
     }
 }

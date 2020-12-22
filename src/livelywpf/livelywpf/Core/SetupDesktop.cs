@@ -603,8 +603,7 @@ namespace livelywpf
 
         private static void UpdateWallpaperRect()
         {
-            var currState = Playback.PlaybackState;
-            Playback.PlaybackState = PlaybackState.paused;
+            processMonitor?.Stop();
             if (ScreenHelper.IsMultiScreen() && Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span)
             {
                 if(Wallpapers.Count != 0)
@@ -625,18 +624,21 @@ namespace livelywpf
                     {
                         Wallpapers[i].Play();
                         Logger.Info("System parameters changed: Screen Param old/new -> " + Wallpapers[i].GetScreen().Bounds + "/" + item.Bounds);
-                        //buggy when primary screen is not leftmost, need to figure out why.
-                        NativeMethods.RECT prct = new NativeMethods.RECT();
-                        NativeMethods.MapWindowPoints(Wallpapers[i].GetHWND(), workerw, ref prct, 2);
-                        if (!NativeMethods.SetWindowPos(Wallpapers[i].GetHWND(), 1, prct.Left, prct.Top, (item.Bounds.Width), (item.Bounds.Height), 0 | 0x0010))
+                        //Getting wrong value for position from mapwindowpoints, only wallpaper size is changed for now.
+                        //NativeMethods.RECT prct = new NativeMethods.RECT() { Left = item.Bounds.X, Top = item.Bounds.Y };
+                        //NativeMethods.MapWindowPoints(IntPtr.Zero, workerw, ref prct, 2);
+                        //Logger.Debug("PRCT-> " + prct.Left + " " + prct.Top);
+                        if (!NativeMethods.SetWindowPos(Wallpapers[i].GetHWND(), 1, 0, 0, (item.Bounds.Width), (item.Bounds.Height), 0 | 0x0010 | 0x0002))
                         {
                             NLogger.LogWin32Error("setwindowpos(3) fail UpdateWallpaperRect()=>");
                         }
                         /*
-                        NativeMethods.POINT pts = new NativeMethods.POINT() { X = (int)item.Bounds.Left, Y = (int)item.Bounds.Top };
+                        //alternative approach, does not work in mirrored mode.
+                        NativeMethods.POINT pts = new NativeMethods.POINT() { X = item.Bounds.X, Y = item.Bounds.Y };
                         if (NativeMethods.ScreenToClient(workerw, ref pts))
                         {
-                            NativeMethods.SetWindowPos(Wallpapers[i].GetHWND(), 1, pts.X, pts.Y, (int)item.Bounds.Width, (int)item.Bounds.Height, 0 | 0x0010);
+                            Logger.Debug("PTS-> " + pts.X + " " + pts.Y);
+                            NativeMethods.SetWindowPos(Wallpapers[i].GetHWND(), 1, pts.X, pts.Y, item.Bounds.Width, item.Bounds.Height, 0 | 0x0010);
                         }
                         */
                         Wallpapers[i].SetScreen(item);                 
@@ -644,7 +646,7 @@ namespace livelywpf
                 }
             }
             RefreshDesktop();
-            Playback.PlaybackState = currState;
+            processMonitor?.Start();
         }
 
         private static Process livelySubProcess;
@@ -689,11 +691,17 @@ namespace livelywpf
             SystemEvents.DisplaySettingsChanged -= SystemEvents_DisplaySettingsChanged;
             if (_isInitialized)
             {
-                WallpaperChanged -= SetupDesktop_WallpaperChanged;
-                processMonitor.Stop();
-                //CloseAllWallpapersWithoutEvent();
-                TerminateAllWallpapers(false);
-                RefreshDesktop();
+                try
+                {
+                    WallpaperChanged -= SetupDesktop_WallpaperChanged;
+                    processMonitor?.Dispose();
+                    TerminateAllWallpapers(false);
+                    RefreshDesktop();
+                }
+                catch (Exception e)
+                {
+                    Logger.Error("Failed to shutdown core->" + e.ToString());
+                }
             }
         }
 

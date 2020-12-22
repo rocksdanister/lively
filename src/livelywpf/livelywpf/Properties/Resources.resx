@@ -303,6 +303,9 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="TextKeyboard" xml:space="preserve">
     <value>Keyboard</value>
   </data>
+  <data name="TextLicense" xml:space="preserve">
+    <value>License</value>
+  </data>
   <data name="TextmoreInfo" xml:space="preserve">
     <value>Information</value>
   </data>
@@ -359,6 +362,9 @@ If still not working, close &amp; start Lively again/restart windows.
   </data>
   <data name="TextPreviewWallpaper" xml:space="preserve">
     <value>Preview Wallpaper</value>
+  </data>
+  <data name="TextPrivacyPolicy" xml:space="preserve">
+    <value>Privacy Policy</value>
   </data>
   <data name="TextProcessingWallpaper" xml:space="preserve">
     <value>Processing</value>

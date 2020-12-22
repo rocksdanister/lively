@@ -86,6 +86,9 @@
     <None Update="Docs\drag_drop_animation.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Docs\gpl.rtf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Docs\license.rtf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

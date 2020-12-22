@@ -14,7 +14,7 @@ namespace livelywpf.Core
     /// <summary>
     /// System monitor logic to pause/unpause wallpaper playback.
     /// </summary>
-    public class Playback
+    public class Playback : IDisposable
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         readonly string[] windowsClassDefaults = new string[]
@@ -36,34 +36,11 @@ namespace livelywpf.Core
         //public event EventHandler<PlaybackState> PlaybackStateChanged;
         private readonly DispatcherTimer dispatcherTimer = new DispatcherTimer();
         private bool _isLockScreen, _isRemoteSession;
+        private bool disposedValue;
 
         public Playback()
         {
             Initialize();
-        }
-
-        public void Start()
-        {
-            // Check if already in remote/lockscreen session.
-            _isRemoteSession = System.Windows.Forms.SystemInformation.TerminalServerSession;
-            if (_isRemoteSession)
-            {
-                Logger.Info("Remote Desktop Session already started!");
-            }
-            _isLockScreen = IsSystemLocked();
-            if (_isLockScreen)
-            {
-                Logger.Info("Lockscreen Session already started!");
-            }
-            SystemEvents.SessionSwitch += SystemEvents_SessionSwitch;
-            dispatcherTimer.Start();
-        }
-
-        public void Stop()
-        {
-            dispatcherTimer.Stop();
-            _isLockScreen = _isRemoteSession = false;
-            SystemEvents.SessionSwitch -= SystemEvents_SessionSwitch;
         }
 
         private void Initialize()
@@ -82,6 +59,19 @@ namespace livelywpf.Core
 
             InitializeTimer();
             PlaybackState = PlaybackState.play;
+
+            // Check if already in remote/lockscreen session.
+            _isRemoteSession = System.Windows.Forms.SystemInformation.TerminalServerSession;
+            if (_isRemoteSession)
+            {
+                Logger.Info("Remote Desktop Session already started!");
+            }
+            _isLockScreen = IsSystemLocked();
+            if (_isLockScreen)
+            {
+                Logger.Info("Lockscreen Session already started!");
+            }
+            SystemEvents.SessionSwitch += SystemEvents_SessionSwitch;
         }
 
         private void InitializeTimer()
@@ -112,6 +102,15 @@ namespace livelywpf.Core
                 _isLockScreen = false;
                 Logger.Info("Lockscreen Session ended!");
             }
+        }
+        public void Start()
+        {
+            dispatcherTimer.Start();
+        }
+
+        public void Stop()
+        {
+            dispatcherTimer.Stop();
         }
 
         private void ProcessMonitor(object sender, EventArgs e)
@@ -456,6 +455,36 @@ namespace livelywpf.Core
         {
             IntPtr hWnd = NativeMethods.GetForegroundWindow();
             return (IntPtr.Equals(hWnd, workerWOrig) || IntPtr.Equals(hWnd, progman));
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    // dispose managed state (managed objects)
+                    dispatcherTimer.Stop();
+                    SystemEvents.SessionSwitch -= SystemEvents_SessionSwitch;
+                }
+
+                // TODO: free unmanaged resources (unmanaged objects) and override finalizer
+                // TODO: set large fields to null
+                disposedValue = true;
+            }
+        }
+
+        // // TODO: override finalizer only if 'Dispose(bool disposing)' has code to free unmanaged resources
+        // ~Playback()
+        // {
+        //     // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+        //     Dispose(disposing: false);
+        // }
+
+        public void Dispose()
+        {
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
         }
     }
 }
