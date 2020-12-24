@@ -742,5 +742,11 @@ https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
     <value>Your Windows N/KN version will require the download of additional codecs to support video playback in wallpapers.</value>
+  </data>
+  <data name="TextLicense" xml:space="preserve">
+    <value>License</value>
+  </data>
+  <data name="TextPrivacyPolicy" xml:space="preserve">
+    <value>Privacy Policy</value>
   </data> 
 </root>

@@ -743,4 +743,10 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
     <value>Η έκδοση των Windows N/KN θα απαιτήσει τη λήψη πρόσθετων κωδικοποιητών για την υποστήριξη της αναπαραγωγής βίντεο σε ταπετσαρίες.</value>
   </data>
+  <data name="TextLicense" xml:space="preserve">
+    <value>License</value>
+  </data>
+  <data name="TextPrivacyPolicy" xml:space="preserve">
+    <value>Privacy Policy</value>
+  </data>
 </root>

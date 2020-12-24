@@ -25,12 +25,12 @@ namespace livelywpf.Views
 
         private void btnLicense_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            ShowDocDialog(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Docs", "gpl.rtf"));
+            ShowDocDialog(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Docs", "license.rtf"));
         }
 
         private void btnAttribution_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            ShowDocDialog(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Docs", "license.rtf"));
+            ShowDocDialog(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Docs", "attribution.rtf"));
         }
 
         private void ShowDocDialog(string docPath)

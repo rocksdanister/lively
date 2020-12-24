@@ -29,13 +29,15 @@
                     <TextBlock Margin="0, 10, 0, 0" Text="{x:Static p:Resources.TitleEnterUrl}"/>
                     <StackPanel Orientation="Horizontal" Margin="0, 5, 0, 0">
                         <TextBox x:Name="UrlText" MinWidth="500" MaxWidth="500"/>
-                        <Button x:Name="UrlBtn" Click="UrlBtn_Click" Margin="10, 0, 0, 0" Content="{x:Static p:Resources.TextGo}"/>
+                        <Button x:Name="UrlBtn" Click="UrlBtn_Click" Margin="10, 0, 0, 0">
+                            <ui:FontIcon Glyph="&#xE72A;" Margin="0,2,5,0"/>
+                        </Button>
                     </StackPanel>
                     <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="Gray" 
                             Text="{x:Static p:Resources.TipAddWallpaperURL}"/>
 
                     <TextBlock Margin="0, 10, 0, 0" ToolTip="https://www.reddit.com/r/LivelyWallpaper/">           
-                    <Hyperlink FontSize="15" Foreground="Gray" NavigateUri="https://www.reddit.com/r/LivelyWallpaper/" RequestNavigate="Hyperlink_RequestNavigate">
+                    <Hyperlink FontSize="15" Foreground="{DynamicResource SystemControlHighlightAltListAccentHighBrush}" NavigateUri="https://www.reddit.com/r/LivelyWallpaper/" RequestNavigate="Hyperlink_RequestNavigate">
                         <TextBlock Text="{x:Static p:Resources.TextMoreWallpapers}"/>
                     </Hyperlink>
                 </TextBlock>

@@ -744,5 +744,11 @@ Edgeはwindows 10に組み込まれているWebビューです。</value>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
     <value>Your Windows N/KN version will require the download of additional codecs to support video playback in wallpapers.</value>
+  </data>
+  <data name="TextLicense" xml:space="preserve">
+    <value>ライセンス</value>
+  </data>
+  <data name="TextPrivacyPolicy" xml:space="preserve">
+    <value>個人情報保護方針</value>
   </data>    
 </root>

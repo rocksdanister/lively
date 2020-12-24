@@ -744,5 +744,11 @@ Edge는 Windows 10의 내장 웹뷰입니다.</value>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
     <value>Your Windows N/KN version will require the download of additional codecs to support video playback in wallpapers.</value>
+  </data>
+  <data name="TextLicense" xml:space="preserve">
+    <value>특허</value>
+  </data>
+  <data name="TextPrivacyPolicy" xml:space="preserve">
+    <value>개인 정보 정책</value>
   </data>    
 </root>
