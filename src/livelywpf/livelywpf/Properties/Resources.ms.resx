@@ -729,25 +729,25 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
     <value>Memilih pemain yang digunakan untuk wallpaper gif.</value>
   </data>
   <data name="TextFeatureMissing" xml:space="preserve">
-    <value>Some features are not available in this version of Lively.</value>
+    <value>Sesetengah ciri tidak ada didalam versi Lively ini.</value>
   </data>
   <data name="TextControlPanelOpen" xml:space="preserve">
-    <value>Click here to manage wallpapers.</value>
+    <value>Klik sini untuk menguruskan wallpaper.</value>
   </data>
   <data name="TextStoreReview" xml:space="preserve">
-    <value>Do you enjoy using Lively? Leave a review :)</value>
+    <value>Adakah anda berpuas hati dengan Lively? Sila tinggalkan ulasan :)</value>
   </data>
   <data name="TitleStore" xml:space="preserve">
     <value>Store</value>
-    <comment>For different version of Lively, example: Microsoft Store</comment>
+    <comment>Untuk versi Lively yang lain-lain, contohnya : Microsoft Store</comment>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>Your Windows N/KN version will require the download of additional codecs to support video playback in wallpapers.</value>
+    <value>Windows versi N/KN anda memerlukan muat turun pengekod penyahkod (codec) tambahan bagi menyokong main semula video didalam wallpaper.</value>
   </data>
   <data name="TextLicense" xml:space="preserve">
-    <value>License</value>
+    <value>Lesen</value>
   </data>
   <data name="TextPrivacyPolicy" xml:space="preserve">
-    <value>Privacy Policy</value>
+    <value>Polisi Privasi</value>
   </data>
 </root>

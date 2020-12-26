@@ -217,7 +217,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Εφαρμογή</value>
   </data>
   <data name="TextAttribution" xml:space="preserve">
-    <value>Απόδοση</value>
+    <value>Περί</value>
   </data>
   <data name="TextAuthor" xml:space="preserve">
     <value>Συντάκτης</value>
@@ -400,7 +400,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Μεγάλο</value>
   </data>
   <data name="TextTileSizeNormal" xml:space="preserve">
-    <value>Νορμάλ</value>
+    <value>Κανονικό</value>
   </data>
   <data name="TextTileSizeSmall" xml:space="preserve">
     <value>Μικρό</value>
@@ -415,7 +415,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Ελαφρύ</value>
   </data>
   <data name="TextUINormal" xml:space="preserve">
-    <value>Νορμάλ</value>
+    <value>Κανονικό</value>
   </data>
   <data name="TextUnsupportedFile" xml:space="preserve">
     <value>Η μορφή αρχείου δεν υποστηρίζεται</value>

@@ -611,7 +611,7 @@ namespace livelywpf
                 {
                     if (Wallpapers.Count != 0)
                     {
-                        //Wallpapers[i].Play();
+                        Wallpapers[0].Play();
                         var width = System.Windows.Forms.SystemInformation.VirtualScreen.Width;
                         var height = System.Windows.Forms.SystemInformation.VirtualScreen.Height;
                         Logger.Info("System parameters changed: Screen Param(Span)=>" + width + " " + height);
@@ -627,7 +627,7 @@ namespace livelywpf
                     {
                         if ((i = Wallpapers.FindIndex(x => ScreenHelper.ScreenCompare(item, x.GetScreen(), DisplayIdentificationMode.screenClass))) != -1)
                         {
-                            //Wallpapers[i].Play();
+                            Wallpapers[i].Play();
                             Logger.Info("System parameters changed: Screen Param old/new -> " + Wallpapers[i].GetScreen().Bounds + "/" + item.Bounds);
                             //For play/pause, setting the new metadata.
                             Wallpapers[i].SetScreen(item);
