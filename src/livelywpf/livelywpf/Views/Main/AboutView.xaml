@@ -22,43 +22,52 @@
     </Page.Resources>
 
     <Grid>
-        
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        
-        <StackPanel Orientation="Horizontal" Grid.Row="0" VerticalAlignment="Center" Margin="25, 0, 0, 0">
-            <TextBlock Text="{x:Static p:Resources.TitleAppName}" FontSize="25" Margin="0, 0, 5, 0" FontWeight="Medium"/>
-            <!-- animated lively icon -->
-            <Image x:Name="livelyIcon" Source="pack://application:,,,/Resources/appicon_96.png" Width="50" Height="50" Margin="0, 0, 5, 0">
-                <Image.RenderTransform>
-                    <RotateTransform CenterX="25" CenterY="25" />
-                </Image.RenderTransform>
-                <Image.Style>
-                    <Style>
-                        <Style.Triggers>
-                            <Trigger Property="Image.IsVisible" Value="True">
-                                <Trigger.EnterActions>
-                                    <BeginStoryboard Storyboard="{StaticResource fidgetSpinner}">
-                                    </BeginStoryboard>
-                                </Trigger.EnterActions>
-                            </Trigger>
+        <ScrollViewer>
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-10, -125, 0, 0">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{x:Static p:Resources.TitleAppName}" FontSize="35" Margin="0, 0, 5, 0" FontWeight="Medium"/>
+                    <!-- animated lively icon -->
+                    <Image x:Name="livelyIcon" Source="pack://application:,,,/Resources/appicon_96.png" Width="75" Height="75" Margin="0, 0, 5, 0">
+                        <Image.RenderTransform>
+                            <RotateTransform CenterX="37.5" CenterY="37.5" />
+                        </Image.RenderTransform>
+                        <Image.Style>
+                            <Style>
+                                <Style.Triggers>
+                                    <Trigger Property="Image.IsVisible" Value="True">
+                                        <Trigger.EnterActions>
+                                            <BeginStoryboard Storyboard="{StaticResource fidgetSpinner}">
+                                            </BeginStoryboard>
+                                        </Trigger.EnterActions>
+                                    </Trigger>
 
-                        </Style.Triggers>
-                    </Style>
-                </Image.Style>
-            </Image>
-            <StackPanel Margin="0, 5, 0, 0">
-                <TextBlock x:Name="appVersionText" Text="v1.0.0.0" FontSize="15" Margin="0, 0, 5, 0" VerticalAlignment="Center"/>
-                <TextBlock Text="by Rocksdanister" FontSize="15" Margin="25, 0, 5, 0" VerticalAlignment="Bottom"/>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+                    <StackPanel Margin="0, 5, 0, 0">
+                        <TextBlock x:Name="appVersionText" Text="v1.0.0.0" FontSize="15" Margin="0, 0, 5, 0" VerticalAlignment="Center"/>
+                        <TextBlock Margin="20, 0, 0, 0">           
+                            <Hyperlink Foreground="{DynamicResource SystemControlHighlightAltListAccentHighBrush}" NavigateUri="https://github.com/rocksdanister" 
+                                        ToolTipService.ToolTip="https://github.com/rocksdanister" 
+                                        RequestNavigate="Hyperlink_RequestNavigate">
+                                <TextBlock Text="Rocksdanister"/>
+                            </Hyperlink>
+                        </TextBlock>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0, 25, 0, 0">
+                    <Button x:Name="btnLicense" Content="{x:Static p:Resources.TextLicense}" 
+                                MinWidth="200" MaxWidth="200" Margin="0, 0, 0, 10" Click="btnLicense_Click"/>
+                    <Button x:Name="btnAttribution" Content="{x:Static p:Resources.TextAttribution}" 
+                                MinWidth="200" MaxWidth="200" Margin="0, 0, 0, 10" Click="btnAttribution_Click"/>
+                    <!--
+                    <Button x:Name="btnPrivacyPolicy" Content="{x:Static p:Resources.TextPrivacyPolicy}" 
+                            MinWidth="200" MaxWidth="200" Margin="0, 0, 0, 10" Click="btnPrivacyPolicy_Click"/>
+                    -->
+                </StackPanel>
             </StackPanel>
-        </StackPanel>
-
-        <FlowDocumentScrollViewer Name="licenseFlowDocumentViewer" VerticalScrollBarVisibility="Visible" Foreground="Black" Grid.Row="1" Margin="25, 50, 50, 50">
-            <FlowDocument Name="licenseDocument" Hyperlink.RequestNavigate="licenseDocument_RequestNavigate" Background="WhiteSmoke" >
-            </FlowDocument>
-        </FlowDocumentScrollViewer>
-
+        </ScrollViewer>
     </Grid>
 </Page>

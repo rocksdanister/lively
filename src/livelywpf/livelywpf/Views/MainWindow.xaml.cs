@@ -156,7 +156,6 @@ namespace livelywpf
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             ShowControlPanelDialog();
-
         }
 
         #endregion //wallpaper statusbar
@@ -276,6 +275,16 @@ namespace livelywpf
             {
                 Program.ShowMainWindow();   
             }
+
+            if (msg == (uint)NativeMethods.WM.QUERYENDSESSION)
+            {
+                _ = NativeMethods.RegisterApplicationRestart(
+                    null,
+                    (int)NativeMethods.RestartFlags.RESTART_NO_CRASH |
+                    (int)NativeMethods.RestartFlags.RESTART_NO_HANG |
+                    (int)NativeMethods.RestartFlags.RESTART_NO_REBOOT);
+            }
+
             return IntPtr.Zero;
         }
 

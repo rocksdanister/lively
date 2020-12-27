@@ -73,7 +73,7 @@ namespace livelywpf.Core
                 cmdArgs.Append(" --audio true");
             }
 
-            if (!String.IsNullOrWhiteSpace(model.LivelyInfo.Arguments))
+            if (!string.IsNullOrWhiteSpace(model.LivelyInfo.Arguments))
             {
                 cmdArgs.Append(" " + model.LivelyInfo.Arguments);
             }
@@ -152,15 +152,42 @@ namespace livelywpf.Core
         public void Pause()
         {
             //minimize browser.
-            NativeMethods.ShowWindow(HWND, 6);
+            NativeMethods.ShowWindow(HWND, (uint)NativeMethods.SHOWWINDOW.SW_SHOWMINNOACTIVE);
             //SendMessage("lively-playback pause");
         }
 
         public void Play()
         {
-            NativeMethods.ShowWindow(HWND, 1); //normal
-            NativeMethods.ShowWindow(HWND, 5); //show
+            NativeMethods.ShowWindow(HWND, (uint)NativeMethods.SHOWWINDOW.SW_SHOWNOACTIVATE);
             //SendMessage("lively-playback play");
+            //WallpaperRectFix();
+        }
+
+        private void WallpaperRectFix()
+        {
+            if (VerifyWindowRect(GetHWND(), GetScreen()))
+            {
+                Logger.Info("Correcting wp rect!");
+                if (!NativeMethods.SetWindowPos(GetHWND(), 1, 0, 0, GetScreen().Bounds.Width, GetScreen().Bounds.Height, 0 | 0x0010 | 0x0002))
+                {
+                    //todo: log
+                }
+            }
+        }
+
+        private static bool VerifyWindowRect(IntPtr hWnd, LivelyScreen screen)
+        {
+            try
+            {
+                System.Drawing.Rectangle screenBounds;
+                NativeMethods.GetWindowRect(hWnd, out NativeMethods.RECT appBounds);
+                screenBounds = System.Windows.Forms.Screen.FromHandle(hWnd).Bounds;
+                return ((appBounds.Bottom - appBounds.Top) != screen.Bounds.Height || (appBounds.Right - appBounds.Left) != screen.Bounds.Width);
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         public void SetHWND(IntPtr hwnd)
@@ -200,7 +227,7 @@ namespace livelywpf.Core
                 });
             }
             Proc.OutputDataReceived -= Proc_OutputDataReceived;
-            Proc.Close();
+            Proc.Dispose();
             SetupDesktop.RefreshDesktop();
         }
 
@@ -284,7 +311,7 @@ namespace livelywpf.Core
             try
             {
                 Proc.Kill();
-                Proc.Close();
+                Proc.Dispose();
             }
             catch { }
             SetupDesktop.RefreshDesktop();

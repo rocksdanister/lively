@@ -19,42 +19,37 @@ namespace livelywpf.Views
         public AboutView()
         {
             InitializeComponent();
-            appVersionText.Text = "v" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() + 
-                (Program.IsMSIX == true? " " + Properties.Resources.TitleStore : " wpf");
-            try
-            {
-                //attribution document.
-                TextRange textRange = new TextRange(licenseDocument.ContentStart, licenseDocument.ContentEnd);
-                using (FileStream fileStream = File.Open(Path.Combine(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Docs", "license.rtf")), FileMode.Open, FileAccess.Read, FileShare.Read))
-                {
-                    textRange.Load(fileStream, System.Windows.DataFormats.Rtf);
-                }
-                licenseFlowDocumentViewer.Document = licenseDocument;
-            }
-            catch { }
+            appVersionText.Text = "v" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() +
+                (Program.IsMSIX == true ? " " + Properties.Resources.TitleStore : " wpf");
         }
 
-        private async void licenseDocument_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+        private void btnLicense_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            ShowDocDialog(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Docs", "license.rtf"));
+        }
+
+        private void btnAttribution_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            ShowDocDialog(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Docs", "attribution.rtf"));
+        }
+
+        private void ShowDocDialog(string docPath)
+        {
+            var item = new DocView(docPath)
+            {
+                Owner = App.AppWindow,
+                WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner,
+                Title = Properties.Resources.TitleDocumentation,
+                Width = App.AppWindow.Width / 1.2,
+                Height = App.AppWindow.Height / 1.2,
+            };
+            item.ShowDialog();
+        }
+
+        private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
         {
             e.Handled = true;
-            var result = await ShowNavigateDialogue(this, e.Uri);
-            if(result == ContentDialogResult.Primary)
-            {
-                Helpers.LinkHandler.OpenBrowser(e.Uri);
-            }
-        }
-
-        private async Task<ContentDialogResult> ShowNavigateDialogue(object sender, Uri arg)
-        {
-            ContentDialog confirmDialog = new ContentDialog
-            {
-                Title = "Do you wish to navigate to external website?",
-                Content = arg.ToString(),
-                PrimaryButtonText = Properties.Resources.TextYes,
-                SecondaryButtonText = Properties.Resources.TextNo,
-                DefaultButton = ContentDialogButton.Secondary
-            };
-            return await confirmDialog.ShowAsync();
+            Helpers.LinkHandler.OpenBrowser(e.Uri);
         }
     }
 }

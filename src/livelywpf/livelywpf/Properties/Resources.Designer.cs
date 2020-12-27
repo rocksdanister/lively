@@ -198,6 +198,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your Windows N/KN version will require the download of additional codecs to support video playback in wallpapers..
+        /// </summary>
+        public static string DescriptionWindowsNCodecInstall {
+            get {
+                return ResourceManager.GetString("DescriptionWindowsNCodecInstall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed to update; try downloading the installer from:
         ///https://github.com/rocksdanister/lively/releases.
         /// </summary>
@@ -568,6 +577,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to License.
+        /// </summary>
+        public static string TextLicense {
+            get {
+                return ResourceManager.GetString("TextLicense", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Information.
         /// </summary>
         public static string TextmoreInfo {
@@ -735,6 +753,15 @@ namespace livelywpf.Properties {
         public static string TextPreviewWallpaper {
             get {
                 return ResourceManager.GetString("TextPreviewWallpaper", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Privacy Policy.
+        /// </summary>
+        public static string TextPrivacyPolicy {
+            get {
+                return ResourceManager.GetString("TextPrivacyPolicy", resourceCulture);
             }
         }
         

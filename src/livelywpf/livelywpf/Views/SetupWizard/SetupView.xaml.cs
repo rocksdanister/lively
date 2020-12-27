@@ -33,12 +33,17 @@ namespace livelywpf.Views.SetupWizard
         public SetupView()
         {
             InitializeComponent();
+            if (SystemInfo.CheckWindowsNorKN())
+            {
+                pages.Insert(pages.Count - 1, new PageWindowsN());
+            }
             ContentFrame.Navigate(pages[index], new EntranceNavigationTransitionInfo());
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             index++;
+            //Finish button is visible for Store app.
             if(Program.IsMSIX)
             {
                 if((index + 1) == pages.Count)

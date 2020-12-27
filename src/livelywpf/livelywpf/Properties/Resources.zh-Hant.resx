@@ -727,14 +727,23 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextFeatureMissing" xml:space="preserve">
     <value>Some features are not available in this version of Lively.</value>
   </data>
-    <data name="TextControlPanelOpen" xml:space="preserve">
-    <value>Click here to manage wallpapers.</value>
+  <data name="TextControlPanelOpen" xml:space="preserve">
+    <value>單擊此處管理壁紙。</value>
   </data>
-    <data name="TextStoreReview" xml:space="preserve">
+  <data name="TextStoreReview" xml:space="preserve">
     <value>Do you enjoy using Lively? Leave a review :)</value>
   </data>
   <data name="TitleStore" xml:space="preserve">
     <value>Store</value>
     <comment>For different version of Lively, example: Microsoft Store</comment>
+  </data>
+  <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
+    <value>Your Windows N/KN version will require the download of additional codecs to support video playback in wallpapers.</value>
+  </data>
+  <data name="TextLicense" xml:space="preserve">
+    <value>執照</value>
+  </data>
+  <data name="TextPrivacyPolicy" xml:space="preserve">
+    <value>隱私政策</value>
   </data>
 </root>

@@ -14,6 +14,26 @@ namespace livelywpf
     {
         public const int BM_CLICK = 0x00F5; //left-click
 
+        #region life cycle
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        public static extern int RegisterApplicationRestart([MarshalAs(UnmanagedType.LPWStr)] string commandLineArgs, int Flags);
+
+        [Flags]
+        public enum RestartFlags
+        {
+            NONE = 0, // No restart restrictions
+            /// <summary>
+            /// Do not restart if process terminates due to unhandled exception
+            /// </summary>
+            RESTART_NO_CRASH = 1,
+            RESTART_NO_HANG = 2, // Do not restart if process terminates due to application not responding
+            RESTART_NO_PATCH = 4, // Do not restart if process terminates due to installation of update
+            RESTART_NO_REBOOT = 8 // Do not restart if process terminates due to computer restart as result of an update
+        }
+
+        #endregion // life cycle
+
         #region single instance
 
         public const int HWND_BROADCAST = 0xffff;
@@ -33,6 +53,25 @@ namespace livelywpf
         public static extern int GetClassName(int hWnd, StringBuilder lpClassName, int nMaxCount);
 
         #region windows message
+
+        public enum SHOWWINDOW : uint
+        {
+            SW_HIDE = 0,
+            SW_SHOWNORMAL = 1,
+            SW_NORMAL = 1,
+            SW_SHOWMINIMIZED = 2,
+            SW_SHOWMAXIMIZED = 3,
+            SW_MAXIMIZE = 3,
+            SW_SHOWNOACTIVATE = 4,
+            SW_SHOW = 5,
+            SW_MINIMIZE = 6,
+            SW_SHOWMINNOACTIVE = 7,
+            SW_SHOWNA = 8,
+            SW_RESTORE = 9,
+            SW_SHOWDEFAULT = 10,
+            SW_FORCEMINIMIZE = 11,
+            SW_MAX = 11,
+        }
 
         [DllImport("User32.dll", EntryPoint = "PostMessageW", CallingConvention = CallingConvention.Winapi
         , CharSet = CharSet.Unicode)]

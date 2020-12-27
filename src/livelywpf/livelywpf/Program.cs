@@ -246,7 +246,7 @@ namespace livelywpf
 
         public static void RestartApplication()
         {
-            Process.Start(Path.ChangeExtension(System.Reflection.Assembly.GetExecutingAssembly().Location, ".exe"));
+            Process.Start(System.Reflection.Assembly.GetExecutingAssembly().Location);
             ExitApplication();
         }
 
@@ -254,10 +254,7 @@ namespace livelywpf
         {
             MainWindow.IsExit = true;
             SetupDesktop.ShutDown();
-            if (sysTray != null)
-            {
-                sysTray.Dispose();
-            }
+            sysTray?.Dispose();
             System.Windows.Application.Current.Shutdown();
         }
 

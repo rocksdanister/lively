@@ -11,56 +11,57 @@
       Title="{x:Static p:Resources.TitleHelp}">
 
     <Grid>
-        <StackPanel>
+        <ScrollViewer>
             <StackPanel>
-                <TextBlock Text="{x:Static p:Resources.TitleHelp}" FontWeight="Bold" Margin="10, 10, 0, 0"/>
-                <Image Source="pack://application:,,,/Resources/icons8-helping-hand-96.png" Width="96" Height="96" Margin="10, 15, 0, 0" HorizontalAlignment="Left"/>
-            </StackPanel>
+                <StackPanel>
+                    <TextBlock Text="{x:Static p:Resources.TitleHelp}" FontWeight="Bold" Margin="10, 10, 0, 0"/>
+                    <Image Source="pack://application:,,,/Resources/icons8-helping-hand-96.png" Width="96" Height="96" Margin="10, 15, 0, 0" HorizontalAlignment="Left"/>
+                </StackPanel>
 
-            <StackPanel Margin="10, 10, 0, 0">
-                <TextBlock FontSize="15" Text="{x:Static p:Resources.TextWebsite}" />
-                <TextBlock>           
-                <Hyperlink Foreground="Gray" NavigateUri="https://rocksdanister.github.io/lively/" RequestNavigate="Hyperlink_RequestNavigate">
+                <StackPanel Margin="10, 10, 0, 0">
+                    <TextBlock FontSize="15" Text="{x:Static p:Resources.TextWebsite}" />
+                    <TextBlock>           
+                <Hyperlink Foreground="{DynamicResource SystemControlHighlightAltListAccentHighBrush}" NavigateUri="https://rocksdanister.github.io/lively/" RequestNavigate="Hyperlink_RequestNavigate">
                     https://rocksdanister.github.io/lively/
                 </Hyperlink>
-                </TextBlock>
+                    </TextBlock>
 
-                <TextBlock FontSize="15" Text="{x:Static p:Resources.TitleDocumentation}" Margin="0, 10, 0, 0"/>
-                <TextBlock>           
-                <Hyperlink Foreground="Gray" NavigateUri="https://github.com/rocksdanister/lively/wiki" RequestNavigate="Hyperlink_RequestNavigate">
+                    <TextBlock FontSize="15" Text="{x:Static p:Resources.TitleDocumentation}" Margin="0, 10, 0, 0"/>
+                    <TextBlock>           
+                <Hyperlink Foreground="{DynamicResource SystemControlHighlightAltListAccentHighBrush}" NavigateUri="https://github.com/rocksdanister/lively/wiki" RequestNavigate="Hyperlink_RequestNavigate">
                     https://github.com/rocksdanister/lively/wiki
                 </Hyperlink>
-                </TextBlock>
+                    </TextBlock>
 
-                <TextBlock FontSize="15" Text="{x:Static p:Resources.TitleCommunity}" Margin="0, 10, 0, 0"/>
-                <TextBlock ToolTip="https://www.reddit.com/r/LivelyWallpaper/">           
-                <Hyperlink Foreground="Gray" NavigateUri="https://www.reddit.com/r/LivelyWallpaper/" RequestNavigate="Hyperlink_RequestNavigate">
+                    <TextBlock FontSize="15" Text="{x:Static p:Resources.TitleCommunity}" Margin="0, 10, 0, 0"/>
+                    <TextBlock ToolTip="https://www.reddit.com/r/LivelyWallpaper/">           
+                <Hyperlink Foreground="{DynamicResource SystemControlHighlightAltListAccentHighBrush}" NavigateUri="https://www.reddit.com/r/LivelyWallpaper/" RequestNavigate="Hyperlink_RequestNavigate">
                     Reddit
                 </Hyperlink>
-                </TextBlock>
-                <!--"
+                    </TextBlock>
+                    <!--"
                 <TextBlock ToolTip="https://discord.gg/TwwtBCm">           
                 <Hyperlink Foreground="Gray" NavigateUri="https://discord.gg/TwwtBCm" RequestNavigate="Hyperlink_RequestNavigate">
                     Discord
                 </Hyperlink>
                 </TextBlock>
                 -->
-                <TextBlock ToolTip="https://www.deviantart.com/livelywallpaper/gallery/">           
-                <Hyperlink Foreground="Gray" NavigateUri="https://www.deviantart.com/livelywallpaper/gallery/" RequestNavigate="Hyperlink_RequestNavigate">
+                    <TextBlock ToolTip="https://www.deviantart.com/livelywallpaper/gallery/">           
+                <Hyperlink Foreground="{DynamicResource SystemControlHighlightAltListAccentHighBrush}" NavigateUri="https://www.deviantart.com/livelywallpaper/gallery/" RequestNavigate="Hyperlink_RequestNavigate">
                     DeviantArt
                 </Hyperlink>
-                </TextBlock>
+                    </TextBlock>
 
-                <StackPanel x:Name="storePanel">
-                    <TextBlock FontSize="15" Text="{x:Static p:Resources.TitleStore}" Margin="0, 10, 0, 0"/>
-                    <TextBlock ToolTip="Windows Store">          
-                        <Hyperlink Foreground="Gray" NavigateUri="ms-windows-store://review/?ProductId=9NTM2QC6QWS7" RequestNavigate="Hyperlink_RequestNavigate">
+                    <StackPanel x:Name="storePanel">
+                        <TextBlock FontSize="15" Text="{x:Static p:Resources.TitleStore}" Margin="0, 10, 0, 0"/>
+                        <TextBlock ToolTip="Windows Store">          
+                        <Hyperlink Foreground="{DynamicResource SystemControlHighlightAltListAccentHighBrush}" NavigateUri="ms-windows-store://review/?ProductId=9NTM2QC6QWS7" RequestNavigate="Hyperlink_RequestNavigate">
                             <TextBlock Text="{x:Static p:Resources.TextStoreReview}"/>
                         </Hyperlink>
                     </TextBlock>
+                    </StackPanel>
                 </StackPanel>
-                
             </StackPanel>
-        </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>

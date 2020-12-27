@@ -586,40 +586,62 @@ namespace livelywpf
             }
         }
 
+        // Only wp size is being updated, position change is disabled due to incorrect value in some monitor configurations.
         private static void UpdateWallpaperRect()
         {
-            if (ScreenHelper.IsMultiScreen() && Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span)
+            try
             {
-                if(Wallpapers.Count != 0)
+                processMonitor?.Stop();
+                if (ScreenHelper.IsMultiScreen() && Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span)
                 {
-                    var width = System.Windows.Forms.SystemInformation.VirtualScreen.Width;
-                    var height = System.Windows.Forms.SystemInformation.VirtualScreen.Height;
-                    Logger.Info("System parameters changed: Screen Param(Span)=>" + width + " " + height);
-                    //NativeMethods.SetWindowPos(Wallpapers[0].GetHWND(), 1, 0, 0, width, height, 0 | 0x0010);   
-                    Wallpapers[0].SetScreen(ScreenHelper.GetPrimaryScreen());
-                }
-            }
-            else
-            {
-                int i;
-                foreach (var item in ScreenHelper.GetScreen())
-                {
-                    if ((i = Wallpapers.FindIndex(x => ScreenHelper.ScreenCompare(item, x.GetScreen(), DisplayIdentificationMode.screenClass))) != -1)
+                    if (Wallpapers.Count != 0)
                     {
-                        Logger.Info("System parameters changed: Screen Param old/new -> " + Wallpapers[i].GetScreen().Bounds + "/" + item.Bounds);
-                        /*
-                        NativeMethods.RECT prct = new NativeMethods.RECT();
-                        NativeMethods.MapWindowPoints(Wallpapers[i].GetHWND(), workerw, ref prct, 2);
-                        if (!NativeMethods.SetWindowPos(Wallpapers[i].GetHWND(), 1, prct.Left, prct.Top, (item.Bounds.Width), (item.Bounds.Height), 0 | 0x0010))
-                        {
-                            NLogger.LogWin32Error("setwindowpos(3) fail UpdateWallpaperRect()=>");
-                        }       
-                        */
-                        Wallpapers[i].SetScreen(item);                 
+                        Wallpapers[0].Play();
+                        var width = System.Windows.Forms.SystemInformation.VirtualScreen.Width;
+                        var height = System.Windows.Forms.SystemInformation.VirtualScreen.Height;
+                        Logger.Info("System parameters changed: Screen Param(Span)=>" + width + " " + height);
+                        //For play/pause, setting the new metadata.
+                        Wallpapers[0].SetScreen(ScreenHelper.GetPrimaryScreen());
+                        NativeMethods.SetWindowPos(Wallpapers[0].GetHWND(), 1, 0, 0, width, height, 0 | 0x0010 | 0x0002);
                     }
                 }
+                else
+                {
+                    int i;
+                    foreach (var item in ScreenHelper.GetScreen())
+                    {
+                        if ((i = Wallpapers.FindIndex(x => ScreenHelper.ScreenCompare(item, x.GetScreen(), DisplayIdentificationMode.screenClass))) != -1)
+                        {
+                            Wallpapers[i].Play();
+                            Logger.Info("System parameters changed: Screen Param old/new -> " + Wallpapers[i].GetScreen().Bounds + "/" + item.Bounds);
+                            //For play/pause, setting the new metadata.
+                            Wallpapers[i].SetScreen(item);
+                            //Getting wrong value for position from mapwindowpoints, only wallpaper size is changed for now.
+                            //NativeMethods.RECT prct = new NativeMethods.RECT() { Left = item.Bounds.X, Top = item.Bounds.Y };
+                            //NativeMethods.MapWindowPoints(IntPtr.Zero, workerw, ref prct, 2);
+                            //Logger.Debug("PRCT-> " + prct.Left + " " + prct.Top);
+                            if (!NativeMethods.SetWindowPos(Wallpapers[i].GetHWND(), 1, 0, 0, (item.Bounds.Width), (item.Bounds.Height), 0 | 0x0010 | 0x0002))
+                            {
+                                NLogger.LogWin32Error("setwindowpos(3) fail UpdateWallpaperRect()=>");
+                            }
+                            /*
+                            //alternative approach, does not work in mirrored mode.
+                            NativeMethods.POINT pts = new NativeMethods.POINT() { X = item.Bounds.X, Y = item.Bounds.Y };
+                            if (NativeMethods.ScreenToClient(workerw, ref pts))
+                            {
+                                Logger.Debug("PTS-> " + pts.X + " " + pts.Y);
+                                NativeMethods.SetWindowPos(Wallpapers[i].GetHWND(), 1, pts.X, pts.Y, item.Bounds.Width, item.Bounds.Height, 0 | 0x0010);
+                            }
+                            */
+                        }
+                    }
+                }
+                RefreshDesktop();
             }
-            RefreshDesktop();
+            finally
+            {
+                processMonitor?.Start();
+            }
         }
 
         private static Process livelySubProcess;
@@ -664,11 +686,17 @@ namespace livelywpf
             SystemEvents.DisplaySettingsChanged -= SystemEvents_DisplaySettingsChanged;
             if (_isInitialized)
             {
-                WallpaperChanged -= SetupDesktop_WallpaperChanged;
-                processMonitor.Stop();
-                //CloseAllWallpapersWithoutEvent();
-                TerminateAllWallpapers(false);
-                RefreshDesktop();
+                try
+                {
+                    WallpaperChanged -= SetupDesktop_WallpaperChanged;
+                    processMonitor?.Dispose();
+                    TerminateAllWallpapers(false);
+                    RefreshDesktop();
+                }
+                catch (Exception e)
+                {
+                    Logger.Error("Failed to shutdown core->" + e.ToString());
+                }
             }
         }
 

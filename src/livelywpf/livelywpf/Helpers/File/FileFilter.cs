@@ -17,7 +17,7 @@ namespace livelywpf.Helpers
                     ".mkv", ".mov", ".mp4", ".mp4v", ".mpeg4",
                     ".mpg", ".webm", ".ogm", ".ogv", ".ogx" }),
             new FileData(WallpaperType.picture, new string[] {".jpg", ".jpeg", ".png", 
-                    ".bmp", ".tif", ".tiff" }),
+                    ".bmp", ".tif", ".tiff", ".webp" }),
             new FileData(WallpaperType.gif, new string[]{".gif" }),
             new FileData(WallpaperType.web, new string[]{".html" }),
             new FileData(WallpaperType.webaudio, new string[]{".html" }),

@@ -14,10 +14,10 @@ namespace livelywpf.Core
     /// <summary>
     /// System monitor logic to pause/unpause wallpaper playback.
     /// </summary>
-    public class Playback
+    public class Playback : IDisposable
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        readonly String[] windowsClassDefaults = new string[]
+        readonly string[] windowsClassDefaults = new string[]
         {
             //startmeu, taskview, action center etc
             "Windows.UI.Core.CoreWindow",
@@ -26,6 +26,8 @@ namespace livelywpf.Core
             //taskbar
             "Shell_TrayWnd",
             "Shell_SecondaryTrayWnd",
+            //systray notifyicon expanded popup
+            "NotifyIconOverflowWindow",
             //rainmeter widgets
             "RainmeterMeterWindow"
         };
@@ -34,34 +36,11 @@ namespace livelywpf.Core
         //public event EventHandler<PlaybackState> PlaybackStateChanged;
         private readonly DispatcherTimer dispatcherTimer = new DispatcherTimer();
         private bool _isLockScreen, _isRemoteSession;
+        private bool disposedValue;
 
         public Playback()
         {
             Initialize();
-        }
-
-        public void Start()
-        {
-            // Check if already in remote/lockscreen session.
-            _isRemoteSession = System.Windows.Forms.SystemInformation.TerminalServerSession;
-            if (_isRemoteSession)
-            {
-                Logger.Info("Remote Desktop Session already started!");
-            }
-            _isLockScreen = IsSystemLocked();
-            if (_isLockScreen)
-            {
-                Logger.Info("Lockscreen Session already started!");
-            }
-            SystemEvents.SessionSwitch += SystemEvents_SessionSwitch;
-            dispatcherTimer.Start();
-        }
-
-        public void Stop()
-        {
-            dispatcherTimer.Stop();
-            _isLockScreen = _isRemoteSession = false;
-            SystemEvents.SessionSwitch -= SystemEvents_SessionSwitch;
         }
 
         private void Initialize()
@@ -80,6 +59,19 @@ namespace livelywpf.Core
 
             InitializeTimer();
             PlaybackState = PlaybackState.play;
+
+            // Check if already in remote/lockscreen session.
+            _isRemoteSession = System.Windows.Forms.SystemInformation.TerminalServerSession;
+            if (_isRemoteSession)
+            {
+                Logger.Info("Remote Desktop Session already started!");
+            }
+            _isLockScreen = IsSystemLocked();
+            if (_isLockScreen)
+            {
+                Logger.Info("Lockscreen Session already started!");
+            }
+            SystemEvents.SessionSwitch += SystemEvents_SessionSwitch;
         }
 
         private void InitializeTimer()
@@ -90,7 +82,7 @@ namespace livelywpf.Core
 
         private void SystemEvents_SessionSwitch(object sender, SessionSwitchEventArgs e)
         {
-            if (e.Reason == SessionSwitchReason.RemoteConnect)
+            if (e.Reason == SessionSwitchReason.RemoteConnect )
             {
                 _isRemoteSession = true;
                 Logger.Info("Remote Desktop Session started!");
@@ -110,6 +102,15 @@ namespace livelywpf.Core
                 _isLockScreen = false;
                 Logger.Info("Lockscreen Session ended!");
             }
+        }
+        public void Start()
+        {
+            dispatcherTimer.Start();
+        }
+
+        public void Stop()
+        {
+            dispatcherTimer.Stop();
         }
 
         private void ProcessMonitor(object sender, EventArgs e)
@@ -148,7 +149,7 @@ namespace livelywpf.Core
             const int maxChars = 256;
             StringBuilder className = new StringBuilder(maxChars);
             var fHandle = NativeMethods.GetForegroundWindow();
-            Process fProcess;
+            //Process fProcess;
             if (NativeMethods.GetClassName((int)fHandle, className, maxChars) > 0)
             {
                 string cName = className.ToString();
@@ -165,54 +166,55 @@ namespace livelywpf.Core
             try
             {
                 NativeMethods.GetWindowThreadProcessId(fHandle, out int processID);
-                fProcess = Process.GetProcessById(processID);
+                using (Process fProcess = Process.GetProcessById(processID))
+                {
+                    if (String.IsNullOrEmpty(fProcess.ProcessName) || fHandle.Equals(IntPtr.Zero))
+                    {
+                        //process with no name, possibly overlay or some other service pgm; resume playback.
+                        PlayWallpapers();
+                        return;
+                    }
+
+                    if (fProcess.ProcessName.Equals("livelywpf", StringComparison.OrdinalIgnoreCase) ||
+                        fProcess.ProcessName.Equals("livelycefsharp", StringComparison.OrdinalIgnoreCase) ||
+                        fProcess.ProcessName.Equals("libvlcplayer", StringComparison.OrdinalIgnoreCase) ||
+                        fProcess.ProcessName.Equals("libmpvplayer", StringComparison.OrdinalIgnoreCase))
+                    {
+                        PlayWallpapers();
+                        SetWallpaperVolume(Program.SettingsVM.Settings.AudioVolumeGlobal);
+                        return;
+                    }
+
+                    //looping through custom rules for user defined apps.
+                    for (int i = 0; i < Program.AppRulesVM.AppRules.Count; i++)
+                    {
+                        var item = Program.AppRulesVM.AppRules[i];
+                        if (String.Equals(item.AppName, fProcess.ProcessName, StringComparison.OrdinalIgnoreCase))
+                        {
+                            if (item.Rule == AppRulesEnum.ignore)
+                            {
+                                PlayWallpapers();
+                                SetWallpaperVolume(Program.SettingsVM.Settings.AudioVolumeGlobal);
+                                return;
+                            }
+                            else if (item.Rule == AppRulesEnum.pause)
+                            {
+                                PauseWallpapers();
+                                return;
+                            }
+                        }
+                    }
+                }
             }
             catch
             {
-                //Logger.Info("Getting processname failure, resuming playback!");
-                //ignore - admin process etc
+                //failed to get process info.. maybe remote process; resume playback.
                 PlayWallpapers();
                 return;
             }
 
             try
             {
-                if (String.IsNullOrEmpty(fProcess.ProcessName) || fHandle.Equals(IntPtr.Zero))
-                {
-                    //Logger.Info("Getting processname failure/handle null, resuming playback!");
-                    PlayWallpapers();
-                    return;
-                }
-
-                if (fProcess.ProcessName.Equals("livelywpf", StringComparison.OrdinalIgnoreCase) ||
-                    fProcess.ProcessName.Equals("livelycefsharp", StringComparison.OrdinalIgnoreCase) ||
-                    fProcess.ProcessName.Equals("libvlcplayer", StringComparison.OrdinalIgnoreCase) ||
-                    fProcess.ProcessName.Equals("libmpvplayer", StringComparison.OrdinalIgnoreCase))
-                {
-                    PlayWallpapers();
-                    SetWallpapersVoume(Program.SettingsVM.Settings.AudioVolumeGlobal);
-                    return;
-                }
-
-                //looping through custom rules for user defined apps.
-                for (int i = 0; i < Program.AppRulesVM.AppRules.Count; i++)
-                {
-                    var item = Program.AppRulesVM.AppRules[i];
-                    if (String.Equals(item.AppName, fProcess.ProcessName, StringComparison.OrdinalIgnoreCase))
-                    {
-                        if (item.Rule == AppRulesEnum.ignore)
-                        {
-                            PlayWallpapers();
-                            SetWallpapersVoume(Program.SettingsVM.Settings.AudioVolumeGlobal);
-                            return;
-                        }
-                        else if (item.Rule == AppRulesEnum.pause)
-                        {
-                            PauseWallpapers();
-                            return;
-                        }
-                    }
-                }
 
                 if (!(fHandle.Equals(NativeMethods.GetDesktopWindow()) || fHandle.Equals(NativeMethods.GetShellWindow())))
                 {
@@ -240,7 +242,7 @@ namespace livelywpf.Core
                                 PlayWallpapers();
                         }
                     }
-                    else
+                    else 
                     {
                         //multiscreen wp pause algorithm, for per-monitor pause rule.
                         LivelyScreen focusedScreen;
@@ -267,7 +269,7 @@ namespace livelywpf.Core
                         {
                             //win10 and win7 desktop foreground while lively is running.
                             PlayWallpaper(focusedScreen);
-                            SetWallpaperVoume(Program.SettingsVM.Settings.AudioVolumeGlobal, focusedScreen);
+                            SetWallpaperVolume(Program.SettingsVM.Settings.AudioVolumeGlobal, focusedScreen);
                         }
                         else if (Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span)
                         {
@@ -304,7 +306,7 @@ namespace livelywpf.Core
                                 PlayWallpaper(focusedScreen);
                         }
                     }
-                    SetWallpapersVoume(Program.SettingsVM.Settings.AudioVolumeGlobal);
+                    SetWallpaperVolume(Program.SettingsVM.Settings.AudioVolumeGlobal);
                 }
             }
             catch { }
@@ -312,7 +314,7 @@ namespace livelywpf.Core
 
         private static void PauseWallpapers()
         {
-            SetupDesktop.Wallpapers.ForEach(x =>
+            SetupDesktop.Wallpapers.ForEach(x => 
             {
                 x.Pause();
             });
@@ -330,7 +332,7 @@ namespace livelywpf.Core
         {
             SetupDesktop.Wallpapers.ForEach(x =>
             {
-                if (ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.screenLayout))
+                if(ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.screenLayout))
                     x.Pause();
             });
         }
@@ -344,7 +346,7 @@ namespace livelywpf.Core
             });
         }
 
-        private static void SetWallpapersVoume(int volume)
+        private static void SetWallpaperVolume(int volume)
         {
             SetupDesktop.Wallpapers.ForEach(x =>
             {
@@ -352,7 +354,7 @@ namespace livelywpf.Core
             });
         }
 
-        private static void SetWallpaperVoume(int volume, LivelyScreen display)
+        private static void SetWallpaperVolume(int volume, LivelyScreen display)
         {
             SetupDesktop.Wallpapers.ForEach(x =>
             {
@@ -369,21 +371,6 @@ namespace livelywpf.Core
         /// <returns>True if window dimensions are greater.</returns>
         private static bool IsZoomedCustom(IntPtr hWnd)
         {
-            /*
-            try
-            {
-                NativeMethods.GetWindowThreadProcessId(hWnd, out processID);
-                currProcess = Process.GetProcessById(processID);
-            }
-            catch
-            {
-
-                Debug.WriteLine("getting processname failure, skipping isZoomedCustom()");
-                //ignore, admin process etc
-                return false;
-            }
-            */
-
             try
             {
                 System.Drawing.Rectangle screenBounds;
@@ -391,14 +378,13 @@ namespace livelywpf.Core
                 NativeMethods.GetWindowRect(hWnd, out appBounds);
                 screenBounds = System.Windows.Forms.Screen.FromHandle(hWnd).Bounds;
                 //If foreground app 95% working-area( -taskbar of monitor)
-                if ((appBounds.Bottom - appBounds.Top) >= screenBounds.Height * .95f && (appBounds.Right - appBounds.Left) >= screenBounds.Width * .95f)
+                if ((appBounds.Bottom - appBounds.Top) >= screenBounds.Height * .95f && (appBounds.Right - appBounds.Left) >= screenBounds.Width * .95f) 
                     return true;
                 else
                     return false;
             }
-            catch
-            {
-                return false;
+            catch { 
+                return false; 
             }
         }
 
@@ -452,8 +438,10 @@ namespace livelywpf.Core
             try
             {
                 NativeMethods.GetWindowThreadProcessId(fHandle, out int processID);
-                var fProcess = Process.GetProcessById(processID);
-                result = fProcess.ProcessName.Equals("LockApp", StringComparison.OrdinalIgnoreCase);
+                using(Process fProcess = Process.GetProcessById(processID))
+                {
+                    result = fProcess.ProcessName.Equals("LockApp", StringComparison.OrdinalIgnoreCase);
+                }
             }
             catch { }
             return result;
@@ -466,18 +454,37 @@ namespace livelywpf.Core
         public static bool IsDesktop()
         {
             IntPtr hWnd = NativeMethods.GetForegroundWindow();
-            if (IntPtr.Equals(hWnd, workerWOrig))
+            return (IntPtr.Equals(hWnd, workerWOrig) || IntPtr.Equals(hWnd, progman));
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
             {
-                return true;
+                if (disposing)
+                {
+                    // dispose managed state (managed objects)
+                    dispatcherTimer.Stop();
+                    SystemEvents.SessionSwitch -= SystemEvents_SessionSwitch;
+                }
+
+                // TODO: free unmanaged resources (unmanaged objects) and override finalizer
+                // TODO: set large fields to null
+                disposedValue = true;
             }
-            else if (IntPtr.Equals(hWnd, progman))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+        }
+
+        // // TODO: override finalizer only if 'Dispose(bool disposing)' has code to free unmanaged resources
+        // ~Playback()
+        // {
+        //     // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+        //     Dispose(disposing: false);
+        // }
+
+        public void Dispose()
+        {
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
         }
     }
 }

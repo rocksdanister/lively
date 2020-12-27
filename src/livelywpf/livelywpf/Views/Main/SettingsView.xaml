@@ -12,12 +12,12 @@
       Title="{x:Static p:Resources.TitleSettings}">
     
     <Grid>
-        <TabControl>
+        <TabControl Style="{StaticResource TabControlPivotStyle}">
             <TabItem Header="{x:Static p:Resources.TitleGeneral}" >
                 <Grid>
                     <ScrollViewer Margin="0, 0, 15, 0">
                         <StackPanel Margin="0, 10, 0, 0">
-                            <ui:ToggleSwitch IsOn="{Binding IsStartup, Mode=TwoWay}" Header="{x:Static p:Resources.TitleWindowsStartup}"/>
+                            <ui:ToggleSwitch OffContent="{x:Static p:Resources.TextOff}" OnContent="{x:Static p:Resources.TextOn}" IsOn="{Binding IsStartup, Mode=TwoWay}" Header="{x:Static p:Resources.TitleWindowsStartup}"/>
                             <TextBlock Margin="0,5,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}" 
                                        Text="{x:Static p:Resources.TipWindowsStartup}"/>
 
@@ -30,7 +30,7 @@
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}" 
                                        Text="{x:Static p:Resources.TipLanguage}"/>
                             <TextBlock Margin="0, 0, 0, 0">           
-                                <Hyperlink Foreground="Gray" NavigateUri="https://github.com/rocksdanister/lively-translations" 
+                                <Hyperlink Foreground="{DynamicResource SystemControlHighlightAltListAccentHighBrush}" NavigateUri="https://github.com/rocksdanister/lively-translations" 
                                            ToolTipService.ToolTip="https://github.com/rocksdanister/lively-translations" RequestNavigate="Hyperlink_RequestNavigate">
                                     <TextBlock Text="{x:Static p:Resources.TextHelpTranslate}"/>
                                 </Hyperlink>
@@ -85,7 +85,7 @@
                             <TextBlock Margin="0, 10, 0, 0" TextWrapping="Wrap" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}" 
                                        Text="{x:Static p:Resources.TextFeatureMissing}"/>
                             <TextBlock Margin="0, 0, 0, 0">           
-                                <Hyperlink Foreground="Gray" NavigateUri="https://github.com/rocksdanister/lively/wiki/Differences-Between-Distributions" 
+                                <Hyperlink Foreground="{DynamicResource SystemControlHighlightAltListAccentHighBrush}" NavigateUri="https://github.com/rocksdanister/lively/wiki/Differences-Between-Distributions" 
                                            ToolTipService.ToolTip="https://github.com/rocksdanister/lively/wiki/Differences-Between-Distributions" 
                                            RequestNavigate="Hyperlink_RequestNavigate">
                                     <TextBlock Text="Learn more."/>
@@ -269,11 +269,11 @@
                 <Grid>
                     <ScrollViewer>
                         <StackPanel>
-                            <ui:ToggleSwitch IsOn="{Binding IsSysTrayIconVisible, Mode=TwoWay}" Header="{x:Static p:Resources.TitleHideSysTray}" Margin="0, 10, 0, 0"/>
+                            <ui:ToggleSwitch OffContent="{x:Static p:Resources.TextOff}" OnContent="{x:Static p:Resources.TextOn}" IsOn="{Binding IsSysTrayIconVisible, Mode=TwoWay}" Header="{x:Static p:Resources.TitleHideSysTray}" Margin="0, 10, 0, 0"/>
                             <TextBlock Margin="0, 10, 0, 0" FontSize="12" TextWrapping="Wrap" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}" 
                                        Text="{x:Static p:Resources.TipHideSysTray}"/>
 
-                            <ui:ToggleSwitch Margin="0,10,0,0" IsOn="{Binding IsDebugMenuVisible, Mode=TwoWay}" Header="{x:Static p:Resources.TitleDebug}"/>
+                            <ui:ToggleSwitch Margin="0,10,0,0" OffContent="{x:Static p:Resources.TextOff}" OnContent="{x:Static p:Resources.TextOn}" IsOn="{Binding IsDebugMenuVisible, Mode=TwoWay}" Header="{x:Static p:Resources.TitleDebug}"/>
                             <TextBlock Margin="0, 10, 0, 0" FontSize="12" TextWrapping="Wrap" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}" 
                                        Text="{x:Static p:Resources.TipDebug}"/>
                         </StackPanel>
