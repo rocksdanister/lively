@@ -89,6 +89,7 @@ namespace livelywpf
             WallpaperDirectory = Settings.WallpaperDir;
             MoveExistingWallpaperNewDir = Settings.WallpaperDirMoveExistingWallpaperNewDir;
             GlobalWallpaperVolume = Settings.AudioVolumeGlobal;
+            IsAudioOnlyOnDesktop = Settings.AudioOnlyOnDesktop;
             SelectedWallpaperScalingIndex = (int)Settings.WallpaperScaling;
             CefDiskCache = Settings.CefDiskCache;
             IsDebugMenuVisible = Settings.DebugMenu;
@@ -501,6 +502,7 @@ namespace livelywpf
                     Settings.GifPlayer = (LivelyGifPlayer)_selectedGifPlayerIndex;
                     UpdateConfigFile();
                     WallpaperRestart(WallpaperType.gif);
+                    WallpaperRestart(WallpaperType.picture);
                 }
             }
         }
@@ -629,6 +631,25 @@ namespace livelywpf
                     UpdateConfigFile();
                 }
                 OnPropertyChanged("GlobalWallpaperVolume");
+            }
+        }
+
+        private bool _isAudioOnlyOnDesktop;
+        public bool IsAudioOnlyOnDesktop
+        {
+            get
+            {
+                return _isAudioOnlyOnDesktop;
+            }
+            set
+            {
+                _isAudioOnlyOnDesktop = value;
+                if (Settings.AudioOnlyOnDesktop != _isAudioOnlyOnDesktop)
+                {
+                    Settings.AudioOnlyOnDesktop = _isAudioOnlyOnDesktop;
+                    UpdateConfigFile();
+                }
+                OnPropertyChanged("IsAudioOnlyOnDesktop");              
             }
         }
 

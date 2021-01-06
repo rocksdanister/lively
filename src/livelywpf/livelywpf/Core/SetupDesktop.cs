@@ -242,9 +242,10 @@ namespace livelywpf
                     item.Show();
                 }
             }
-            else if (wp.LivelyInfo.Type == WallpaperType.gif)
+            else if (wp.LivelyInfo.Type == WallpaperType.gif || wp.LivelyInfo.Type == WallpaperType.picture)
             {
-                if(Program.SettingsVM.Settings.GifPlayer == LivelyGifPlayer.win10Img)
+                //gif player setting is also used for static picture wp.
+                if (Program.SettingsVM.Settings.GifPlayer == LivelyGifPlayer.win10Img)
                 {
                     var item = new GIFPlayerUWP(wp.FilePath, wp,
                         targetDisplay, Program.SettingsVM.Settings.WallpaperScaling);
@@ -252,7 +253,7 @@ namespace livelywpf
                     wallpapersPending.Add(item);
                     item.Show();
                 }
-                else if(Program.SettingsVM.Settings.GifPlayer == LivelyGifPlayer.libmpvExt)
+                else if (Program.SettingsVM.Settings.GifPlayer == LivelyGifPlayer.libmpvExt)
                 {
                     wp.ItemStartup = true;
                     var item = new VideoPlayerMPVExt(wp.FilePath, wp, targetDisplay,
@@ -261,14 +262,6 @@ namespace livelywpf
                     wallpapersPending.Add(item);
                     item.Show();
                 }
-            }
-            else if(wp.LivelyInfo.Type == WallpaperType.picture)
-            {
-                var item = new GIFPlayerUWP(wp.FilePath, wp,
-                    targetDisplay, Program.SettingsVM.Settings.WallpaperScaling);
-                item.WindowInitialized += SetupDesktop_WallpaperInitialized;
-                wallpapersPending.Add(item);
-                item.Show();
             }
         }
 

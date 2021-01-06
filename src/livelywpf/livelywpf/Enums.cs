@@ -32,6 +32,10 @@ namespace livelywpf
         videostream,
         [Description("Static picture")]
         picture,
+        /*
+        [Description("Animated sequence HEIC file")]
+        heic
+        */
     }
 
     public enum AudioPauseAlgorithm

@@ -19,6 +19,7 @@ namespace livelywpf.Helpers
             new FileData(WallpaperType.picture, new string[] {".jpg", ".jpeg", ".png", 
                     ".bmp", ".tif", ".tiff", ".webp" }),
             new FileData(WallpaperType.gif, new string[]{".gif" }),
+            //new FileData(WallpaperType.heic, new string[] {".heic" }),//, ".heics", ".heif", ".heifs" }),
             new FileData(WallpaperType.web, new string[]{".html" }),
             new FileData(WallpaperType.webaudio, new string[]{".html" }),
             new FileData(WallpaperType.app, new string[]{".exe" }),
@@ -45,6 +46,7 @@ namespace livelywpf.Helpers
                 WallpaperType.gif => Properties.Resources.TextGIF,
                 WallpaperType.videostream => Properties.Resources.TextWebStream,
                 WallpaperType.picture => Properties.Resources.TextPicture,
+                //WallpaperType.heic => "HEIC",
                 (WallpaperType)(100) => Properties.Resources.TitleAppName,
                 _ => Properties.Resources.TextError,
             };

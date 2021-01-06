@@ -15,6 +15,11 @@ namespace livelywpf
     class Systray : IDisposable
     {
         private readonly System.Windows.Forms.NotifyIcon _notifyIcon = new System.Windows.Forms.NotifyIcon();
+        private System.Windows.Forms.ToolStripMenuItem pauseTrayBtn;
+        private System.Windows.Forms.ToolStripMenuItem customiseWallpaperBtn;
+        public System.Windows.Forms.ToolStripMenuItem UpdateTrayBtn { get; private set; }
+        private bool disposedValue;
+
         public Systray(bool visibility = true)
         {
             //NotifyIcon Fix: https://stackoverflow.com/questions/28833702/wpf-notifyicon-crash-on-first-run-the-root-visual-of-a-visualtarget-cannot-hav/29116917
@@ -33,11 +38,6 @@ namespace livelywpf
             SetupDesktop.WallpaperChanged += SetupDesktop_WallpaperChanged;
         }
 
-        private System.Windows.Forms.ToolStripMenuItem pauseTrayBtn;
-        private System.Windows.Forms.ToolStripMenuItem customiseWallpaperBtn;
-        private bool disposedValue;
-
-        public System.Windows.Forms.ToolStripMenuItem UpdateTrayBtn { get; private set; }
         private void CreateContextMenu()
         {
             _notifyIcon.ContextMenuStrip = new System.Windows.Forms.ContextMenuStrip

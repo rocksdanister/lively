@@ -191,5 +191,12 @@ namespace livelywpf.Views
                 }
             }
         }
+
+        /*
+        private void recordBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        */
     }
 }
