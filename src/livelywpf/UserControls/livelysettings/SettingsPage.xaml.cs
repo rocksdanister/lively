@@ -103,6 +103,7 @@ namespace livelysettings
         public string TitleAudio { get; set; }
         public string TitleMasterAudio { get; set; }
         public string TipMasterAudio { get; set; }
+        public string TitleAudioDesktop { get; set; }
 
         //Misc
         public string TitleSysTrayIconHide { get; set; }

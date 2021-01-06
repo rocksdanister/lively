@@ -750,5 +750,8 @@ Edge는 Windows 10의 내장 웹뷰입니다.</value>
   </data>
   <data name="TextPrivacyPolicy" xml:space="preserve">
     <value>개인 정보 정책</value>
+  </data>
+  <data name="TitleAudioDesktopOnly" xml:space="preserve">
+    <value>Play audio only when desktop is focused</value>
   </data>    
 </root>

@@ -748,5 +748,8 @@ Edge är den inbyggda webbvisningen av Windows 10.</value>
   </data>
   <data name="TextPrivacyPolicy" xml:space="preserve">
     <value>Privacy Policy</value>
+  </data>
+  <data name="TitleAudioDesktopOnly" xml:space="preserve">
+    <value>Play audio only when desktop is focused</value>
   </data>  
 </root>

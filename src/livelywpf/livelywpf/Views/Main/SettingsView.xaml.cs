@@ -107,6 +107,7 @@ namespace livelywpf.Views
                     TitleAudio = Properties.Resources.TitleAudio,
                     TitleMasterAudio = Properties.Resources.TitleAudioMaster,
                     TipMasterAudio = Properties.Resources.TipAudioMaster,
+                    TitleAudioDesktop = Properties.Resources.TitleAudioDesktopOnly,
                     //misc
                     TitleSysTrayIconHide = Properties.Resources.TitleHideSysTray,
                     TipSysTrayIconHide = Properties.Resources.TipHideSysTray,

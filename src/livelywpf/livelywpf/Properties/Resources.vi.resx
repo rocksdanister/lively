@@ -750,5 +750,8 @@ Edge là webview được tích hợp sẵn của windows 10.</value>
   </data>
   <data name="TextPrivacyPolicy" xml:space="preserve">
     <value>Privacy Policy</value>
-  </data>  
+  </data> 
+  <data name="TitleAudioDesktopOnly" xml:space="preserve">
+    <value>Play audio only when desktop is focused</value>
+  </data> 
 </root>

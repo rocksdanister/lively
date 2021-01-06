@@ -746,5 +746,8 @@ https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="TextPrivacyPolicy" xml:space="preserve">
     <value>Privacy Policy</value>
+  </data>
+  <data name="TitleAudioDesktopOnly" xml:space="preserve">
+    <value>Play audio only when desktop is focused</value>
   </data> 
 </root>
