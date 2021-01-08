@@ -1,7 +1,10 @@
 ﻿using System;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Interop;
+using System.Windows.Media;
+using System.Windows.Threading;
 using livelywpf.Core;
 
 namespace livelywpf.Views
@@ -12,9 +15,19 @@ namespace livelywpf.Views
     public partial class WallpaperPreviewWindow : Window
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+        //wallpaper loader.
         private readonly LibraryModel wallpaperData;
         private IWallpaper wallpaper = null;
         private bool _initializedWallpaper = false;
+
+        //video capture
+        private DispatcherTimer dispatcherTimer;
+        private bool _recording = false;
+        private Helpers.IScreenRecorder recorder;
+        private int elapsedTime;
+
+        #region wallpaper loader
+
         public WallpaperPreviewWindow(LibraryModel wp)
         {
             InitializeComponent();
@@ -32,6 +45,7 @@ namespace livelywpf.Views
                 {
                     NativeMethods.SetWindowPos(wallpaper.GetHWND(), 1, pts.X, pts.Y, (int)item.Width, (int)item.Height, 0 | 0x0010);
                 }
+                resolutionText.Text = item.Width + "x" + item.Height;
             }
         }
 
@@ -42,7 +56,7 @@ namespace livelywpf.Views
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if(!_initializedWallpaper)
+            if(!_initializedWallpaper || _recording)
             {
                 e.Cancel = true;
                 return;
@@ -192,11 +206,111 @@ namespace livelywpf.Views
             }
         }
 
-        /*
+        #endregion //wallpaper loader
+
+        #region video capture
+
+        //todo: INCOMPLETE: error/capture failure handling, auto library import after capture etc..
         private void recordBtn_Click(object sender, RoutedEventArgs e)
         {
+            if(!_recording)
+            {
+                _recording = true;
+                var item = WindowOperations.GetAbsolutePlacement(PreviewBorder, true);
+                recorder = new Helpers.ScreenRecorderDesktopDuplication();
+                recorder.Initialize(Path.Combine(@"J:\Test", "test.mp4"), item, 60, 8000 * 1000, false, false);
+                recorder.RecorderStatus += Recorder_RecorderStatus;
+                recorder.StartRecording();
+               
+                if(dispatcherTimer == null)
+                {
+                    dispatcherTimer = new DispatcherTimer
+                    {
+                        Interval = new TimeSpan(0, 0, 0, 0, 1000)
+                    };
+                    dispatcherTimer.Tick += DispatcherTimer_Tick;
+                }
+                elapsedTime = 0;
+                dispatcherTimer.Start();
 
+                //ui refresh.
+                //todo: mvvm rewrite.
+                recordBtn.ToolTip = null;
+                recordStatusText.Text = "0:00";
+                recordStatusGlyph.Foreground = new SolidColorBrush(Colors.Red);
+            }
+            else
+            {
+                _recording = false;
+                dispatcherTimer?.Stop();
+                recorder?.StopRecording();
+
+                //ui refresh.
+                recordStatusText.Text = Properties.Resources.TextStart;
+                recordBtn.ToolTip = Properties.Resources.DescriptionRecordStart;
+                recordStatusGlyph.Foreground = new SolidColorBrush(Colors.Gray);
+            }
         }
-        */
+
+        private void DispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            elapsedTime++;
+            var span = TimeSpan.FromSeconds(elapsedTime);
+            var time = string.Format("{0}:{1:00}",
+                                (int)span.TotalMinutes,
+                                span.Seconds);
+            recordStatusText.Text = time;
+        }
+
+        private void Recorder_RecorderStatus(object sender, Helpers.ScreenRecorderStatus e)
+        {
+            switch (e)
+            {
+                case Helpers.ScreenRecorderStatus.idle:
+                    break;
+                case Helpers.ScreenRecorderStatus.paused:
+                    break;
+                case Helpers.ScreenRecorderStatus.fail:
+                    break;
+                case Helpers.ScreenRecorderStatus.recording:
+                    break;
+                case Helpers.ScreenRecorderStatus.finishing:
+                    break;
+                case Helpers.ScreenRecorderStatus.success:
+                    break;
+            }
+            Logger.Info("Record status:" + e);
+        }
+
+        private bool GetIsScreenRecording()
+        {
+            return _recording;
+        }
+
+        #endregion //video capture
+
+        #region window move/resize lock
+
+        protected override void OnSourceInitialized(EventArgs e)
+        {
+            base.OnSourceInitialized(e);
+            var source = PresentationSource.FromVisual(this) as HwndSource;
+            source.AddHook(WndProc);
+        }
+
+        //prevent window resize and move during recording.
+        //ref: https://stackoverflow.com/questions/3419909/how-do-i-lock-a-wpf-window-so-it-can-not-be-moved-resized-minimized-maximized
+        public IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        {
+            if (msg == (int)NativeMethods.WM.WINDOWPOSCHANGING && GetIsScreenRecording())
+            {
+                var wp = Marshal.PtrToStructure<NativeMethods.WINDOWPOS>(lParam);
+                wp.flags |= (int)NativeMethods.SetWindowPosFlags.SWP_NOMOVE | (int)NativeMethods.SetWindowPosFlags.SWP_NOSIZE;
+                Marshal.StructureToPtr(wp, lParam, false);
+            }
+            return IntPtr.Zero;
+        }
+
+        #endregion //window move/resize lock
     }
 }

@@ -1,0 +1,3 @@
+https://github.com/sskodje/ScreenRecorderLib
+Nuget package is causing some issue with xaml island, during build uwp usercontrol binaries are being copied to livelywpf source folder.
+Loading the x86 dll instead of package for now, look into it and report issue.

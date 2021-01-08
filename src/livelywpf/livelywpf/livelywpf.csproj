@@ -50,6 +50,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="ScreenRecorderLib">
+      <HintPath>DLL\ScreenRecorderLib.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Resources\appicon_96.png" />
     <Resource Include="Resources\icons8-helping-hand-96.png" />
     <Resource Include="Resources\tutorial_systray.png" />

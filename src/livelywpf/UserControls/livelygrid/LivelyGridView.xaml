@@ -73,7 +73,7 @@
                     <MenuFlyoutItem x:Name="customiseWallpaper" Text="{x:Bind UIText.TextCustomise}" Click="contextMenu_Click"/>
                     <MenuFlyoutItem x:Name="showOnDisk" Text="{x:Bind UIText.TextShowDisk}" Click="contextMenu_Click"/>
                     <MenuFlyoutItem x:Name="exportWallpaper" Text="{x:Bind UIText.TextExportZip}" Click="contextMenu_Click"/>
-                    <MenuFlyoutItem x:Name="convertVideo" Text="{x:Bind UIText.TextConvertVideo}" Click="contextMenu_Click" IsEnabled="False"/>
+                    <MenuFlyoutItem x:Name="convertVideo" Text="{x:Bind UIText.TextConvertVideo}" Click="contextMenu_Click" Visibility="Collapsed" IsEnabled="False"/>
                     <MenuFlyoutItem x:Name="deleteWallpaper" Text="{x:Bind UIText.TextDelete}" Click="contextMenu_Click"/>
                 </MenuFlyout.Items>
             </MenuFlyout>

@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DescriptionAddWallpaper" xml:space="preserve">
-    <value>Duvar kağıdı olarak ayarlamak için dosya seçin veya internet sitesi URL'si girin</value>
+    <value>Duvar kağıdı olarak ayarlamak için dosya seçin veya URL girin</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
     <value>Duvar kağıdı davranışı çalışan uygulamaya göre belirlendi.</value>
@@ -141,7 +141,7 @@ Kötü niyetli uygulamalar sisteminize ciddi zararlar verebilir.
 Eğer güvenilir bir kaynak olduğuna inanıyorsanız devam edin.</value>
   </data>
   <data name="DescriptionMinimizedTray" xml:space="preserve">
-    <value>Lively durum çubuğuna küçültüldü, lively ikonuna sağ tıklayarak devam edin.</value>
+    <value>Lively durum çubuğuna küçültüldü, Lively ikonuna sağ tıklayarak devam edin.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
     <value>Ayarların geçerli olması için Lively'yi yeniden başlatın.</value>
@@ -200,7 +200,7 @@ Daha önce çalışan duvar kağıdını geri yüklemek ister misiniz?</value>
     <value>Görünüşe göre Lively çalışmak için bazı ayarlara ihtiyaç duyuyor:  
 1. Win + R tuşlarına birlikte basarak Çalıştır'ı açın
 2. SystemPropertiesPerformance.exe yazın ve çalıştırın.
-3. "Animate controls and elements inside windows" yazılı düğmeyi işaretleyin &amp; Tamam.
+3. "Denetim ve öğe animasyonlarını pencere içinde göster" yazılı düğmeyi işaretleyin &amp; Tamam.
 4. Uygula ve Tamam diyerek pencereyi kapatın.</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
@@ -213,7 +213,7 @@ Daha önce çalışan duvar kağıdını geri yüklemek ister misiniz?</value>
     <value>Uygulama</value>
   </data>
   <data name="TextAttribution" xml:space="preserve">
-    <value>Özellik</value>
+    <value>İlişkilendirmeler</value>
   </data>
   <data name="TextAuthor" xml:space="preserve">
     <value>Yazar</value>
@@ -321,10 +321,10 @@ Daha önce çalışan duvar kağıdını geri yüklemek ister misiniz?</value>
     <value>Duvar Kağıdını durdur</value>
   </data>
   <data name="TextPerformanceKill" xml:space="preserve">
-    <value>Durdur</value>
+    <value>Sonlandır</value>
   </data>
   <data name="TextPerformanceNone" xml:space="preserve">
-    <value>Hiçbir şey</value>
+    <value>Oynatmaya devam et</value>
   </data>
   <data name="TextPerformancePause" xml:space="preserve">
     <value>Durdur</value>
@@ -414,7 +414,7 @@ Daha önce çalışan duvar kağıdını geri yüklemek ister misiniz?</value>
     <value>Doldur</value>
   </data>
   <data name="TextWallpaperFitNone" xml:space="preserve">
-    <value>Hiç</value>
+    <value>Sığdırma yok</value>
   </data>
   <data name="TextWallpaperFitUniform" xml:space="preserve">
     <value>Aynı</value>
@@ -462,7 +462,7 @@ Daha önce çalışan duvar kağıdını geri yüklemek ister misiniz?</value>
     <value>Tam ekran uygulamalar çalışırken davranışı seçin.</value>
   </data>
   <data name="TipAppRules" xml:space="preserve">
-    <value>Çalışan uygulamalar için değişik çalma kuralları seçin</value>
+    <value>Çalışan uygulamalar için özel kurallar belirleyin.</value>
   </data>
   <data name="TipAppTheme" xml:space="preserve">
     <value>Lively sistem temasına adapte olur, değiştirmek için</value>
@@ -482,7 +482,7 @@ Hazır olduğunuzda http://localhost:port adresinden geliştirici konsoluna ula�
   </data>
   <data name="TipDisplayPauseRule" xml:space="preserve">
     <value>Tek: Uygulamanın odaklandığı ekrandaki duvar kağıdının oynatmasını durdurur.
-Hepsi: Uygulamaya odaklanılırsa bütün ekranlardaki duvar kağıtlarının oynatılması durdurulur. </value>
+Tüm ekranlar: Uygulamaya odaklanılırsa bütün ekranlardaki duvar kağıtlarının oynatılması durdurulur. </value>
   </data>
   <data name="TipHideSysTray" xml:space="preserve">
     <value>Durum çubuğu görünürlüğü, Lively görünmez olarak arkaplanda çalışmaya devam edecek</value>
@@ -586,7 +586,7 @@ Edge ise windows 10 için geçerli web gösterim motorudur.</value>
     <value>Silmeyi onayla</value>
   </data>
   <data name="TitleDisplayPauseRule" xml:space="preserve">
-    <value>Durdurma Kuralını Görüntüle</value>
+    <value>Durdurma Kuralı</value>
   </data>
   <data name="TitleDocumentation" xml:space="preserve">
     <value>Dokümantasyon</value>
@@ -622,7 +622,7 @@ Edge ise windows 10 için geçerli web gösterim motorudur.</value>
     <value>Sustur</value>
   </data>
   <data name="TitlePauseAlgo" xml:space="preserve">
-    <value>Algoritmayı Durdur</value>
+    <value>Durdurma Algoritması</value>
   </data>
   <data name="TitlePerformance" xml:space="preserve">
     <value>Performans</value>
@@ -737,13 +737,13 @@ Edge ise windows 10 için geçerli web gösterim motorudur.</value>
     <comment>Lively'nin farklı bir sürümü için, örnek: Microsoft Store</comment>
   </data> 
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>Your Windows N/KN version will require the download of additional codecs to support video playback in wallpapers.</value>
+    <value>Windows N/KN versiyonunuzda video duvar kağıtlarının oynatılabilmesi için ek çözümleyicilerin indirilmesi gerekiyor.</value>
   </data>
   <data name="TextLicense" xml:space="preserve">
-    <value>License</value>
+    <value>Lisans</value>
   </data>
   <data name="TextPrivacyPolicy" xml:space="preserve">
-    <value>Privacy Policy</value>
+    <value>Gizlilik Politikası</value>
   </data>
   <data name="TitleAudioDesktopOnly" xml:space="preserve">
     <value>Play audio only when desktop is focused</value>

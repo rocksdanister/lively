@@ -103,6 +103,7 @@ namespace livelywpf.Core
                 Logger.Info("Lockscreen Session ended!");
             }
         }
+
         public void Start()
         {
             dispatcherTimer.Start();
