@@ -213,15 +213,45 @@ namespace livelywpf.Views
         //todo: INCOMPLETE: error/capture failure handling, auto library import after capture etc..
         private void recordBtn_Click(object sender, RoutedEventArgs e)
         {
-            if(!_recording)
+            if (!_recording)
             {
-                _recording = true;
+                //save dialog
+                string savePath = "";
+                var saveFileDialog1 = new Microsoft.Win32.SaveFileDialog()
+                {
+                    Title = "Select location to save the file",
+                    Filter = Properties.Resources.TextVideo + "|*.mp4",
+                    //title ending with '.' can have diff extension (example: parallax.js)
+                    FileName = Path.ChangeExtension(wallpaperData.Title, ".mp4"),
+                };
+                if (saveFileDialog1.ShowDialog() == true)
+                {
+                    savePath = saveFileDialog1.FileName;
+                }
+                if (string.IsNullOrEmpty(savePath))
+                {
+                    return;
+                }
+                //overwrite existing file.
+                if (File.Exists(savePath))
+                {
+                    try
+                    {
+                        File.Delete(savePath);
+                    }
+                    catch(Exception ex)
+                    {
+                        Logger.Error("Record status:Failed to delete existing file=>" + ex.Message);
+                        return;
+                    }
+                }
+
+                //recorder initialization
                 var item = WindowOperations.GetAbsolutePlacement(PreviewBorder, true);
                 recorder = new Helpers.ScreenRecorderDesktopDuplication();
-                recorder.Initialize(Path.Combine(@"J:\Test", "test.mp4"), item, 60, 8000 * 1000, false, false);
+                recorder.Initialize(savePath, item, 60, 8000 * 1000, false, false);
                 recorder.RecorderStatus += Recorder_RecorderStatus;
-                recorder.StartRecording();
-               
+                //recording timer.
                 if(dispatcherTimer == null)
                 {
                     dispatcherTimer = new DispatcherTimer
@@ -230,26 +260,39 @@ namespace livelywpf.Views
                     };
                     dispatcherTimer.Tick += DispatcherTimer_Tick;
                 }
-                elapsedTime = 0;
-                dispatcherTimer.Start();
-
-                //ui refresh.
-                //todo: mvvm rewrite.
-                recordBtn.ToolTip = null;
-                recordStatusText.Text = "0:00";
-                recordStatusGlyph.Foreground = new SolidColorBrush(Colors.Red);
+                StartRecording();
             }
             else
             {
-                _recording = false;
-                dispatcherTimer?.Stop();
-                recorder?.StopRecording();
-
-                //ui refresh.
-                recordStatusText.Text = Properties.Resources.TextStart;
-                recordBtn.ToolTip = Properties.Resources.DescriptionRecordStart;
-                recordStatusGlyph.Foreground = new SolidColorBrush(Colors.Gray);
+                StopRecording();
             }
+        }
+        
+        private void StartRecording()
+        {
+
+            elapsedTime = 0;
+            _recording = true;
+            dispatcherTimer?.Start();
+            recorder?.StartRecording();
+
+            //ui refresh.
+            //todo: mvvm rewrite.
+            recordBtn.ToolTip = null;
+            recordStatusText.Text = "0:00";
+            recordStatusGlyph.Foreground = new SolidColorBrush(Colors.Red);
+        }
+
+        private void StopRecording()
+        {
+            _recording = false;
+            dispatcherTimer?.Stop();
+            recorder?.StopRecording();
+
+            //ui refresh
+            recordStatusText.Text = Properties.Resources.TextStart;
+            recordBtn.ToolTip = Properties.Resources.DescriptionRecordStart;
+            recordStatusGlyph.Foreground = new SolidColorBrush(Colors.Gray);
         }
 
         private void DispatcherTimer_Tick(object sender, EventArgs e)
@@ -271,6 +314,9 @@ namespace livelywpf.Views
                 case Helpers.ScreenRecorderStatus.paused:
                     break;
                 case Helpers.ScreenRecorderStatus.fail:
+                    _ = this.Dispatcher.BeginInvoke(new Action(() => {
+                        StopRecording();
+                    }));
                     break;
                 case Helpers.ScreenRecorderStatus.recording:
                     break;

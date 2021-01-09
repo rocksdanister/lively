@@ -20,7 +20,7 @@ namespace livelywpf.Helpers
             libVLC = new LibVLC();
             mediaPlayer = new MediaPlayer(libVLC);
             media = new Media(libVLC, "screen://", FromType.FromLocation);
-            //When using non 16:9 resolutions capture is producing corrupted file?!
+            //IMP: When using non 16:9 resolutions capture is producing corrupted file?!
             media.AddOption(":screen-left=" + (int)rect.Left);
             media.AddOption(":screen-top=" + (int)rect.Top);
             media.AddOption(":screen-width=" + (int)rect.Width);

@@ -750,6 +750,6 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Πολιτική Απορρήτου</value>
   </data>
   <data name="TitleAudioDesktopOnly" xml:space="preserve">
-    <value>Play audio only when desktop is focused</value>
+    <value>Αναπαραγωγή ήχου μόνο όταν η επιφάνεια εργασίας είναι εστιασμένη</value>
   </data>
 </root>
