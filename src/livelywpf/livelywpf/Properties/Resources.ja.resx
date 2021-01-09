@@ -750,5 +750,8 @@ Edgeはwindows 10に組み込まれているWebビューです。</value>
   </data>
   <data name="TextPrivacyPolicy" xml:space="preserve">
     <value>個人情報保護方針</value>
+  </data>
+  <data name="TitleAudioDesktopOnly" xml:space="preserve">
+    <value>Play audio only when desktop is focused</value>
   </data>    
 </root>

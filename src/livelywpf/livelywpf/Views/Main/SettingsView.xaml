@@ -66,7 +66,7 @@
                                     <ui:SymbolIcon Symbol="OpenLocal" />
                                 </Button>
                             </StackPanel>
-                            <CheckBox Content="{x:Static p:Resources.TitleWallpaperDirMoveExisting}" IsChecked="{Binding MoveExistingWallpaperNewDir, Mode=TwoWay}"/>
+                            <CheckBox IsEnabled="False" Content="{x:Static p:Resources.TitleWallpaperDirMoveExisting}" IsChecked="{Binding MoveExistingWallpaperNewDir, Mode=TwoWay}"/>
                             <TextBlock Margin="0, 10, 0, 0" FontSize="12" TextWrapping="Wrap" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}" 
                                        Text="{x:Static p:Resources.TipWallpaperDir}"/>
 
@@ -173,7 +173,7 @@
                                 <ComboBoxItem Content="{x:Static p:Resources.TextMouse}"/>
                                 <ComboBoxItem IsEnabled="False" Content="{x:Static p:Resources.TextKeyboard}"/>
                             </ComboBox>
-                            <CheckBox Content="{x:Static p:Resources.TextMouseInteractOnDesktop}" IsChecked="{Binding MouseMoveOnDesktop, Mode=TwoWay}"/>
+                            <CheckBox Margin="0, 10, 0, 0" Content="{x:Static p:Resources.TextMouseInteractOnDesktop}" IsChecked="{Binding MouseMoveOnDesktop, Mode=TwoWay}"/>
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}" 
                                        Text="{x:Static p:Resources.TipWallpaperInput}"/>
 
@@ -258,8 +258,9 @@
                             <TextBlock FontSize="20" Margin="0, 10, 0, 0" Text="{x:Static p:Resources.TitleAudioMaster}"/>
                             <Slider MaxWidth="250" Width="250" Maximum="100" Minimum="0" HorizontalAlignment="Left"
                                     AutoToolTipPlacement="TopLeft" Value="{Binding GlobalWallpaperVolume, Mode=TwoWay}"/>
-                            <TextBlock Margin="0, 10, 0, 0" FontSize="12" TextWrapping="Wrap" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}" 
+                            <TextBlock Margin="0, 5, 0, 0" FontSize="12" TextWrapping="Wrap" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}" 
                                        Text="{x:Static p:Resources.TipAudioMaster}"/>
+                            <CheckBox Content="{x:Static p:Resources.TitleAudioDesktopOnly}" Margin="0, 10, 0, 0" IsChecked="{Binding IsAudioOnlyOnDesktop, Mode=TwoWay}"/>
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>

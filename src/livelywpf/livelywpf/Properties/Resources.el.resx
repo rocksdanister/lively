@@ -749,4 +749,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextPrivacyPolicy" xml:space="preserve">
     <value>Πολιτική Απορρήτου</value>
   </data>
+  <data name="TitleAudioDesktopOnly" xml:space="preserve">
+    <value>Αναπαραγωγή ήχου μόνο όταν η επιφάνεια εργασίας είναι εστιασμένη</value>
+  </data>
 </root>

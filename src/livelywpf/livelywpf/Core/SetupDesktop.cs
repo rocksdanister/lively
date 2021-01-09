@@ -319,7 +319,7 @@ namespace livelywpf
                     else if (wallpaper.GetWallpaperData().DataType == LibraryTileType.videoConvert)
                     {
                         //converting existing library item into video wallpaper using libVLC.
-                        await ShowVLCScreenCaptureDialogSTAThread(wallpaper);
+                        //await ShowVLCScreenCaptureDialogSTAThread(wallpaper);
                         wallpaper.Close();
                         RefreshDesktop();
                         return; //exit
@@ -720,36 +720,6 @@ namespace livelywpf
                             previewWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
                         }
                         previewWindow.ShowDialog();
-                    }));
-                    tcs.SetResult(null);
-                }
-                catch (Exception e)
-                {
-                    tcs.SetException(e);
-                    Logger.Error(e.ToString());
-                }
-            });
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
-            return tcs.Task;
-        }
-
-        public static Task ShowVLCScreenCaptureDialogSTAThread(IWallpaper wp)
-        {
-            var tcs = new TaskCompletionSource<object>();
-            var thread = new Thread(() =>
-            {
-                try
-                {
-                    System.Windows.Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, new ThreadStart(delegate
-                    {
-                        var vlcCaptureWindow = new VLCWallpaperRecordWindow(wp);
-                        if (App.AppWindow != null)
-                        {
-                            vlcCaptureWindow.Owner = App.AppWindow;
-                            vlcCaptureWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-                        }
-                        vlcCaptureWindow.ShowDialog();
                     }));
                     tcs.SetResult(null);
                 }

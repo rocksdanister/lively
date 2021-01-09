@@ -22,14 +22,26 @@ namespace livelywpf
         [Flags]
         public enum RestartFlags
         {
-            NONE = 0, // No restart restrictions
+            /// <summary>
+            /// No restart restrictions
+            /// </summary>
+            NONE = 0, 
             /// <summary>
             /// Do not restart if process terminates due to unhandled exception
             /// </summary>
             RESTART_NO_CRASH = 1,
-            RESTART_NO_HANG = 2, // Do not restart if process terminates due to application not responding
-            RESTART_NO_PATCH = 4, // Do not restart if process terminates due to installation of update
-            RESTART_NO_REBOOT = 8 // Do not restart if process terminates due to computer restart as result of an update
+            /// <summary>
+            /// Do not restart if process terminates due to application not responding
+            /// </summary>
+            RESTART_NO_HANG = 2,
+            /// <summary>
+            /// Do not restart if process terminates due to installation of update
+            /// </summary>
+            RESTART_NO_PATCH = 4,
+            /// <summary>
+            /// Do not restart if process terminates due to computer restart as result of an update
+            /// </summary>
+            RESTART_NO_REBOOT = 8
         }
 
         #endregion // life cycle
@@ -1408,6 +1420,18 @@ namespace livelywpf
         #endregion pause
 
         #region ScreenResolution
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct WINDOWPOS
+        {
+            public IntPtr hwnd;
+            public IntPtr hwndInsertAfter;
+            public int x;
+            public int y;
+            public int cx;
+            public int cy;
+            public int flags;
+        }
 
         public const int MONITOR_DEFAULTTONULL = 0;
         public const int MONITOR_DEFAULTTOPRIMARY = 1;

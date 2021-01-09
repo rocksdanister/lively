@@ -16,9 +16,9 @@
             <StackPanel x:Name="AddPanel" VerticalAlignment="Top" Margin="10, 0, 0, 0" HorizontalAlignment="Left">
                 <TextBlock FontSize="12" Text="{x:Static p:Resources.TitleWallpaper}" FontWeight="Bold"/>
 
-                <Image Source="pack://application:,,,/Resources/drag_drop_animation.png"  HorizontalAlignment="Left"
-                          Width="384" Height="216" Margin="0, 10, 0, 0"/>
-                <TextBlock FontSize="12" Margin="25, 5, 0, 0" Text="{x:Static p:Resources.DescriptionDragDropFIle}"/>
+                <Image Source="pack://application:,,,/Resources/icons8-cursor-in-window-100.png"  HorizontalAlignment="Left"
+                          Width="100" Height="100" Margin="0, 10, 0, 0"/>
+                <TextBlock FontSize="12" Margin="0, 5, 0, 0" Text="{x:Static p:Resources.DescriptionDragDropFIle}"/>
 
                 <!--
                 <MediaElement LoadedBehavior="Play" Stretch="Fill" Source="pack://application:,,,/Resources/drag_drop_animation.gif" 

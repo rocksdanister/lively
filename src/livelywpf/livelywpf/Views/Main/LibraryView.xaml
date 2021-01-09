@@ -37,7 +37,7 @@
                 <MenuItem Header="{x:Static p:Resources.TextCustomiseWallpaper}" Click="MenuItem_Click" Name="customiseWallpaper"/>
                 <MenuItem Header="{x:Static p:Resources.TextShowOnDisk}" Click="MenuItem_Click" Name="showOnDisk"/>
                 <MenuItem Header="{x:Static p:Resources.TextExportWallpaperZip}" Click="MenuItem_Click" Name="exportWallpaper"/>
-                <MenuItem Header="{x:Static p:Resources.TextConvertVideo}" Click="MenuItem_Click" IsEnabled="False" Name="convertVideo"/>
+                <MenuItem Header="{x:Static p:Resources.TextConvertVideo}" Click="MenuItem_Click" IsEnabled="False" Visibility="Collapsed" Name="convertVideo"/>
                 <MenuItem Header="{x:Static p:Resources.TextDeleteWallpaper}" Click="MenuItem_Click" Name="deleteWallpaper"/>
             </ui:MenuFlyout>
         </ui:ContextFlyoutService.ContextFlyout>

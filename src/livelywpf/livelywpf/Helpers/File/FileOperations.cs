@@ -61,7 +61,7 @@ namespace livelywpf
             if (path.Length > Program.AppDataDir.Count() + 1)
             {
                 var tmp = Path.Combine(packageAppData, path.Remove(0, Program.AppDataDir.Count() + 1));
-                if(File.Exists(tmp) || Directory.Exists(tmp))
+                if (File.Exists(tmp) || Directory.Exists(tmp))
                 {
                     packagePath = tmp;
                 }
@@ -70,7 +70,6 @@ namespace livelywpf
             var folder = await Windows.Storage.StorageFolder.GetFolderFromPathAsync(Path.GetDirectoryName(packagePath));
             await Windows.System.Launcher.LaunchFolderAsync(folder);
         }
-
 
         /// <summary>
         /// Deletes file and folder contents of a directory (parent directory remains).

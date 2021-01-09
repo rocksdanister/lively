@@ -747,5 +747,8 @@ Semua proses: Lebih berat, memindai semua proses untuk menentukan tingkah laku p
   </data>
   <data name="TextPrivacyPolicy" xml:space="preserve">
     <value>Privacy Policy</value>
+  </data>
+  <data name="TitleAudioDesktopOnly" xml:space="preserve">
+    <value>Play audio only when desktop is focused</value>
   </data>  
 </root>

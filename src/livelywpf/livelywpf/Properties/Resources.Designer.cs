@@ -1463,6 +1463,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Play audio only when desktop is focused.
+        /// </summary>
+        public static string TitleAudioDesktopOnly {
+            get {
+                return ResourceManager.GetString("TitleAudioDesktopOnly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Master Volume.
         /// </summary>
         public static string TitleAudioMaster {

@@ -246,7 +246,7 @@ namespace livelywpf
 
         public static void RestartApplication()
         {
-            Process.Start(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            Process.Start(Path.ChangeExtension(System.Reflection.Assembly.GetExecutingAssembly().Location, ".exe"));
             ExitApplication();
         }
 

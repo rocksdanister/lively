@@ -78,8 +78,8 @@ namespace livelywpf
                 UpdateConfigFile();
             }
 
-            //restrictions
-            if (Settings.GifPlayer == LivelyGifPlayer.win10Img
+            //Restrictions on wpf only version of Lively.
+            if (Settings.GifPlayer != LivelyGifPlayer.libmpvExt
                 || Settings.LivelyGUIRendering == LivelyGUIState.normal
                 || Settings.GifCapture == true
                 || Settings.VideoPlayer != LivelyMediaPlayer.libmpvExt)
@@ -88,7 +88,7 @@ namespace livelywpf
                 Settings.LivelyGUIRendering = LivelyGUIState.lite;
                 Settings.GifCapture = false;
                 Settings.VideoPlayer = LivelyMediaPlayer.libmpvExt;
-                UpdateConfigFile();
+                //UpdateConfigFile();
             }
 
             SelectedTileSizeIndex = Settings.TileSize;
@@ -109,6 +109,7 @@ namespace livelywpf
             WallpaperDirectory = Settings.WallpaperDir;
             MoveExistingWallpaperNewDir = Settings.WallpaperDirMoveExistingWallpaperNewDir;
             GlobalWallpaperVolume = Settings.AudioVolumeGlobal;
+            IsAudioOnlyOnDesktop = Settings.AudioOnlyOnDesktop;
             SelectedWallpaperScalingIndex = (int)Settings.WallpaperScaling;
             CefDiskCache = Settings.CefDiskCache;
             IsDebugMenuVisible = Settings.DebugMenu;
@@ -557,6 +558,7 @@ namespace livelywpf
                     Settings.GifPlayer = (LivelyGifPlayer)_selectedGifPlayerIndex;
                     UpdateConfigFile();
                     WallpaperRestart(WallpaperType.gif);
+                    WallpaperRestart(WallpaperType.picture);
                 }
             }
         }
@@ -685,6 +687,25 @@ namespace livelywpf
                     UpdateConfigFile();
                 }
                 OnPropertyChanged("GlobalWallpaperVolume");
+            }
+        }
+
+        private bool _isAudioOnlyOnDesktop;
+        public bool IsAudioOnlyOnDesktop
+        {
+            get
+            {
+                return _isAudioOnlyOnDesktop;
+            }
+            set
+            {
+                _isAudioOnlyOnDesktop = value;
+                if (Settings.AudioOnlyOnDesktop != _isAudioOnlyOnDesktop)
+                {
+                    Settings.AudioOnlyOnDesktop = _isAudioOnlyOnDesktop;
+                    UpdateConfigFile();
+                }
+                OnPropertyChanged("IsAudioOnlyOnDesktop");
             }
         }
 

@@ -183,9 +183,16 @@ namespace livelywpf
             await Task.Run(() =>
             {
                 try
-                {           
-                    if(selection.LivelyInfo.Type == WallpaperType.videostream 
-                    || selection.LivelyInfo.Type == WallpaperType.url)
+                {   
+                    //title ending with '.' can have diff extension (example: parallax.js) or
+                    //user made a custom filename with diff extension.
+                    if (Path.GetExtension(saveFile) != ".zip")
+                    {
+                        saveFile += ".zip";
+                    }
+
+                    if (selection.LivelyInfo.Type == WallpaperType.videostream 
+                        || selection.LivelyInfo.Type == WallpaperType.url)
                     {
                         //no wallpaper file on disk, only wallpaper metadata.
                         var tmpDir = Path.Combine(Program.AppDataDir, "temp");

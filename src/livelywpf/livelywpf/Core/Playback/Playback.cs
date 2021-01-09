@@ -103,6 +103,7 @@ namespace livelywpf.Core
                 Logger.Info("Lockscreen Session ended!");
             }
         }
+
         public void Start()
         {
             dispatcherTimer.Start();
@@ -146,6 +147,7 @@ namespace livelywpf.Core
 
         private void ForegroundAppMonitor()
         {
+            bool isDesktop = false;
             const int maxChars = 256;
             StringBuilder className = new StringBuilder(maxChars);
             var fHandle = NativeMethods.GetForegroundWindow();
@@ -158,6 +160,7 @@ namespace livelywpf.Core
                     if (String.Equals(item, cName, StringComparison.OrdinalIgnoreCase))
                     {
                         PlayWallpapers();
+                        SetWallpaperVolume(Program.SettingsVM.Settings.AudioVolumeGlobal);
                         return;
                     }
                 }
@@ -194,7 +197,7 @@ namespace livelywpf.Core
                             if (item.Rule == AppRulesEnum.ignore)
                             {
                                 PlayWallpapers();
-                                SetWallpaperVolume(Program.SettingsVM.Settings.AudioVolumeGlobal);
+                                SetWallpaperVolume(Program.SettingsVM.Settings.AudioOnlyOnDesktop ? 0 : Program.SettingsVM.Settings.AudioVolumeGlobal);
                                 return;
                             }
                             else if (item.Rule == AppRulesEnum.pause)
@@ -215,7 +218,6 @@ namespace livelywpf.Core
 
             try
             {
-
                 if (!(fHandle.Equals(NativeMethods.GetDesktopWindow()) || fHandle.Equals(NativeMethods.GetShellWindow())))
                 {
                     if (!ScreenHelper.IsMultiScreen() || Program.SettingsVM.Settings.DisplayPauseSettings == DisplayPauseEnum.all)
@@ -223,23 +225,32 @@ namespace livelywpf.Core
                         if (IntPtr.Equals(fHandle, workerWOrig) || IntPtr.Equals(fHandle, progman))
                         {
                             //win10 and win7 desktop foreground while lively is running.
+                            isDesktop = true;
                             PlayWallpapers();
                         }
                         else if (NativeMethods.IsZoomed(fHandle) || IsZoomedCustom(fHandle))
                         {
                             //maximised window or window covering whole screen.
                             if (Program.SettingsVM.Settings.AppFullscreenPause == AppRulesEnum.ignore)
+                            {
                                 PlayWallpapers();
+                            }
                             else
+                            {
                                 PauseWallpapers();
+                            }
                         }
                         else
                         {
                             //window is just in focus, not covering screen.
                             if (Program.SettingsVM.Settings.AppFocusPause == AppRulesEnum.pause)
+                            {
                                 PauseWallpapers();
+                            }
                             else
+                            {
                                 PlayWallpapers();
+                            }
                         }
                     }
                     else 
@@ -268,8 +279,8 @@ namespace livelywpf.Core
                         if (IntPtr.Equals(fHandle, workerWOrig) || IntPtr.Equals(fHandle, progman))
                         {
                             //win10 and win7 desktop foreground while lively is running.
+                            isDesktop = true;
                             PlayWallpaper(focusedScreen);
-                            SetWallpaperVolume(Program.SettingsVM.Settings.AudioVolumeGlobal, focusedScreen);
                         }
                         else if (Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span)
                         {
@@ -293,20 +304,36 @@ namespace livelywpf.Core
                         {
                             //maximised window or window covering whole screen.
                             if (Program.SettingsVM.Settings.AppFullscreenPause == AppRulesEnum.ignore)
+                            {
                                 PlayWallpaper(focusedScreen);
+                            }
                             else
+                            {
                                 PauseWallpaper(focusedScreen);
+                            }
                         }
                         else
                         {
                             //window is just in focus, not covering screen.
                             if (Program.SettingsVM.Settings.AppFocusPause == AppRulesEnum.pause)
+                            {
                                 PauseWallpaper(focusedScreen);
+                            }
                             else
+                            {
                                 PlayWallpaper(focusedScreen);
+                            }
                         }
                     }
-                    SetWallpaperVolume(Program.SettingsVM.Settings.AudioVolumeGlobal);
+
+                    if (isDesktop)
+                    {
+                        SetWallpaperVolume(Program.SettingsVM.Settings.AudioVolumeGlobal);
+                    }
+                    else
+                    {
+                        SetWallpaperVolume(Program.SettingsVM.Settings.AudioOnlyOnDesktop ? 0 : Program.SettingsVM.Settings.AudioVolumeGlobal);
+                    }
                 }
             }
             catch { }

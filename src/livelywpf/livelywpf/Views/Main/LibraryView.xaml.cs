@@ -81,7 +81,8 @@ namespace livelywpf.Views
                     {
                         Title = "Select location to save the file",
                         Filter = "Lively/zip file|*.zip",
-                        FileName = obj.Title,
+                        //title ending with '.' can have diff extension (example: parallax.js)
+                        FileName = Path.ChangeExtension(obj.Title, ".zip"),
                     };
                     if (saveFileDialog1.ShowDialog() == true)
                     {
