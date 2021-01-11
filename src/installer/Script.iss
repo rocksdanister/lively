@@ -2,7 +2,7 @@
 ; https://jrsoftware.org/isinfo.php
 
 #define MyAppName "Lively Wallpaper"
-#define MyAppVersion "1.1.6.0"
+#define MyAppVersion "1.1.8.0"
 #define MyAppPublisher "rocksdanister"
 #define MyAppURL "https://github.com/rocksdanister/lively"
 #define MyAppExeName "livelywpf.exe"
@@ -108,6 +108,7 @@ type
 
 { Visual C++ 2019 v14, the included installer is a bundle consisting of older vers }
 VC_2019_REDIST_X86_MIN = '{2E72FA1F-BADB-4337-B8AE-F7C17EC57D1D}';
+VC_2019_REDIST_X86_142829515_MIN = '{CAA58D4B-E030-422E-8012-904C3371E68F}';
 
 function MsiQueryProductState(szProduct: string): INSTALLSTATE; 
   external 'MsiQueryProductState{#AW}@msi.dll stdcall';

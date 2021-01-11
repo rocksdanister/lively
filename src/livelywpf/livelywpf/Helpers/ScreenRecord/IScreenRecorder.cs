@@ -17,7 +17,6 @@ namespace livelywpf.Helpers
 
     public interface IScreenRecorder
     {
-
         /// <summary>
         /// Initialize video capture instance.
         /// </summary>

@@ -248,7 +248,7 @@ namespace livelywpf.Views
 
                 //recorder initialization
                 var item = WindowOperations.GetAbsolutePlacement(PreviewBorder, true);
-                recorder = new Helpers.ScreenRecorderDesktopDuplication();
+                recorder = new Helpers.ScreenRecorderlibScreen();
                 recorder.Initialize(savePath, item, 60, 8000 * 1000, false, false);
                 recorder.RecorderStatus += Recorder_RecorderStatus;
                 //recording timer.
