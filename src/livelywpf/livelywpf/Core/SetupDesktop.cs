@@ -963,31 +963,13 @@ namespace livelywpf
         /// <param name="mode">mouse, keyboard + mouse, off</param>
         public static void WallpaperInputForward(InputForwardMode mode)
         {
-            if(mode == InputForwardMode.off)
+            InputForwardWindow?.Close();
+            if (mode != InputForwardMode.off)
             {
-                if (InputForwardWindow != null)
-                {
-                    InputForwardWindow.Close();
-                    InputForwardWindow = null;
-                }
+                InputForwardWindow = new RawInputDX(mode);
+                InputForwardWindow.Show();
             }
-            else
-            {
-                if (InputForwardWindow == null)
-                {
-                    InputForwardWindow = new RawInputDX(mode);
-                    InputForwardWindow.Show();
-                }
-                else
-                {
-                    if(mode != InputForwardWindow.InputMode)
-                    {
-                        InputForwardWindow.Close();
-                        InputForwardWindow = null;
-                        WallpaperInputForward(mode);
-                    }
-                }
-            }
+            Logger.Info("Core: Wallpaper input setup=> " + mode);
         }
 
         #endregion //helper functions

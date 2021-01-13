@@ -227,7 +227,7 @@ Si cela ne fonctionne toujours pas, fermer &amp; relancer Lively / redémarrer W
     <value>Par affichage</value>
   </data>
   <data name="TextDownload" xml:space="preserve">
-    <value>Téléchargé</value>
+    <value>Télécharger</value>
   </data>
   <data name="TextError" xml:space="preserve">
     <value>Erreur</value>
@@ -744,9 +744,9 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>License</value>
   </data>
   <data name="TextPrivacyPolicy" xml:space="preserve">
-    <value>Privacy Policy</value>
+    <value>Politique de confidentialité</value>
   </data>
   <data name="TitleAudioDesktopOnly" xml:space="preserve">
-    <value>Play audio only when desktop is focused</value>
+    <value>Lire l'audio uniquement lorsque le bureau est ouvert</value>
   </data>    
 </root>

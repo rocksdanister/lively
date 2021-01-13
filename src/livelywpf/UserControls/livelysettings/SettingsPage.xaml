@@ -132,7 +132,7 @@
                             <ComboBox Header="{x:Bind UIText.TitleWallpaperInput}" Margin="0,10,0,0" MinWidth="200" SelectedIndex="{Binding SelectedWallpaperInputMode, Mode=TwoWay}">
                                 <ComboBoxItem Content="{x:Bind UIText.TextWallpaperInputOff}"/>
                                 <ComboBoxItem Content="{x:Bind UIText.TextWallpaperInputMouse}"/>
-                                <ComboBoxItem IsEnabled="False" Content="{x:Bind UIText.TextWallpaperInputKeyboard}"/>
+                                <ComboBoxItem Content="{x:Bind UIText.TextWallpaperInputKeyboard}"/>
                             </ComboBox>
                             <CheckBox Margin="0, 10, 0, 0" Content="{x:Bind UIText.TitleMouseOnDesktop}" IsChecked="{Binding MouseMoveOnDesktop, Mode=TwoWay}"/>
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipWallpaperInput}"/>

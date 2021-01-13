@@ -31,15 +31,21 @@ namespace livelywpf.Core
             var windowInteropHelper = new WindowInteropHelper(this);
             var hwnd = windowInteropHelper.Handle;
 
-            if (InputMode == InputForwardMode.mouse)
+            switch (InputMode)
             {
-                //ExInputSink flag makes it work even when not in foreground, similar to global hook.. but asynchronous, no complications and no AV false detection!
-                RawInputDevice.RegisterDevice(HidUsageAndPage.Mouse,
-                    RawInputDeviceFlags.ExInputSink, hwnd);
-            }
-            else if(InputMode == InputForwardMode.mousekeyboard)
-            {
-                throw new NotImplementedException();
+                case InputForwardMode.off:
+                    break;
+                case InputForwardMode.mouse:
+                    //ExInputSink flag makes it work even when not in foreground, similar to global hook.. but asynchronous, no complications and no AV false detection!
+                    RawInputDevice.RegisterDevice(HidUsageAndPage.Mouse,
+                        RawInputDeviceFlags.ExInputSink, hwnd);
+                    break;
+                case InputForwardMode.mousekeyboard:
+                    RawInputDevice.RegisterDevice(HidUsageAndPage.Mouse,
+                        RawInputDeviceFlags.ExInputSink, hwnd);
+                    RawInputDevice.RegisterDevice(HidUsageAndPage.Keyboard,
+                        RawInputDeviceFlags.ExInputSink, hwnd);
+                    break;
             }
 
             HwndSource source = HwndSource.FromHwnd(hwnd);
@@ -48,18 +54,24 @@ namespace livelywpf.Core
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (InputMode == InputForwardMode.mouse)
+            switch (InputMode)
             {
-                RawInputDevice.UnregisterDevice(HidUsageAndPage.Mouse);
+                case InputForwardMode.off:
+                    break;
+                case InputForwardMode.mouse:
+                    RawInputDevice.UnregisterDevice(HidUsageAndPage.Mouse);
+                    break;
+                case InputForwardMode.mousekeyboard:
+                    RawInputDevice.UnregisterDevice(HidUsageAndPage.Mouse);
+                    RawInputDevice.UnregisterDevice(HidUsageAndPage.Keyboard);
+                    break;
             }
         }
 
         protected IntPtr Hook(IntPtr hwnd, int msg, IntPtr wparam, IntPtr lparam, ref bool handled)
         {
-            const int WM_INPUT = 0x00FF;
-
             // You can read inputs by processing the WM_INPUT message.
-            if (msg == WM_INPUT)
+            if (msg == (int)NativeMethods.WM.INPUT)
             {
                 // Create an RawInputData from the handle stored in lParam.
                 var data = RawInputData.FromHandle(lparam);
@@ -78,23 +90,24 @@ namespace livelywpf.Core
                         switch (mouse.Mouse.Buttons)
                         {
                             case Linearstar.Windows.RawInput.Native.RawMouseButtonFlags.LeftButtonDown:
-                                MouseLBtnDownSimulate(M.X, M.Y);
+                                ForwardMessageMouse(M.X, M.Y, (int)NativeMethods.WM.LBUTTONDOWN, (IntPtr)0x0001);
                                 break;
                             case Linearstar.Windows.RawInput.Native.RawMouseButtonFlags.LeftButtonUp:
-                                MouseLBtnUpSimulate(M.X, M.Y);
+                                ForwardMessageMouse(M.X, M.Y, (int)NativeMethods.WM.LBUTTONUP, (IntPtr)0x0001);
                                 break;
                             case Linearstar.Windows.RawInput.Native.RawMouseButtonFlags.RightButtonDown:
-                                //issue: click being skipped.
-                                //SetupDesktop.MouseRBtnDownSimulate(M.X, M.Y);
+                                //issue: click being skipped; desktop already has its own rightclick contextmenu.
+                                //ForwardMessage(M.X, M.Y, (int)NativeMethods.WM.RBUTTONDOWN, (IntPtr)0x0002);
                                 break;
                             case Linearstar.Windows.RawInput.Native.RawMouseButtonFlags.RightButtonUp:
                                 //issue: click being skipped; desktop already has its own rightclick contextmenu.
-                                //SetupDesktop.MouseRBtnUpSimulate(M.X, M.Y);
+                                //ForwardMessage(M.X, M.Y, (int)NativeMethods.WM.RBUTTONUP, (IntPtr)0x0002);
                                 break;
                             case Linearstar.Windows.RawInput.Native.RawMouseButtonFlags.None:
-                                MouseMoveSimulate(M.X, M.Y);
+                                ForwardMessageMouse(M.X, M.Y, (int)NativeMethods.WM.MOUSEMOVE, (IntPtr)0x0020);
                                 break;
                             case Linearstar.Windows.RawInput.Native.RawMouseButtonFlags.MouseWheel:
+                                //Disabled, not tested yet.
                                 /*
                                 https://github.com/ivarboms/game-engine/blob/master/Input/RawInput.cpp
                                 Mouse wheel deltas are represented as multiples of 120.
@@ -107,7 +120,6 @@ namespace livelywpf.Core
                                 More info: http://social.msdn.microsoft.com/forums/en-US/gametechnologiesgeneral/thread/1deb5f7e-95ee-40ac-84db-58d636f601c7/
                                 */
 
-                                //Disabled, not tested yet.
                                 /*
                                 // One wheel notch is represented as this delta (WHEEL_DELTA).
                                 const float oneNotch = 120;
@@ -123,45 +135,78 @@ namespace livelywpf.Core
                                 break;
                         }
                         break;
+                    case RawInputKeyboardData keyboard:
+                        switch (keyboard.Keyboard.Flags)
+                        {
+                            case Linearstar.Windows.RawInput.Native.RawKeyboardFlags.Down:
+                                ForwardMessageKeyboard((int)NativeMethods.WM.KEYDOWN, (IntPtr)keyboard.Keyboard.VirutalKey);
+                                break;
+                            case Linearstar.Windows.RawInput.Native.RawKeyboardFlags.Up:
+                                //ForwardMessageKeyboard((int)NativeMethods.WM.KEYUP, (IntPtr)keyboard.Keyboard.VirutalKey);
+                                break;
+                            case Linearstar.Windows.RawInput.Native.RawKeyboardFlags.LeftKey:
+                                break;
+                            case Linearstar.Windows.RawInput.Native.RawKeyboardFlags.RightKey:
+                                break;
+                        }
+                        System.Diagnostics.Debug.WriteLine(keyboard.Keyboard);
+                        break;
                 }
             }
             return IntPtr.Zero;
         }
 
-        public static void MouseMoveSimulate(int x, int y)
+        /// <summary>
+        /// Forwards the keyboard message to the required wallpaper window based on given cursor location.<br/>
+        /// Skips if desktop is not focused.
+        /// </summary>
+        /// <param name="msg">key press msg</param>
+        /// <param name="wParam">Virtual-Key code</param>
+        private static void ForwardMessageKeyboard(int msg, IntPtr wParam)
         {
-            ForwardMessage(x, y, (int)NativeMethods.WM.MOUSEMOVE, (IntPtr)0x0020);
-        }
-
-        public static void MouseLBtnDownSimulate(int x, int y)
-        {
-            ForwardMessage(x, y, (int)NativeMethods.WM.LBUTTONDOWN, (IntPtr)0x0001);
-        }
-
-        public static void MouseLBtnUpSimulate(int x, int y)
-        {
-            ForwardMessage(x, y, (int)NativeMethods.WM.LBUTTONUP, (IntPtr)0x0001);
-        }
-
-        public static void MouseRBtnDownSimulate(int x, int y)
-        {
-            ForwardMessage(x, y, (int)NativeMethods.WM.RBUTTONDOWN, (IntPtr)0x0002);
-        }
-
-        public static void MouseRBtnUpSimulate(int x, int y)
-        {
-            ForwardMessage(x, y, (int)NativeMethods.WM.RBUTTONUP, (IntPtr)0x0002);
+            try
+            {
+                if (Playback.IsDesktop())
+                {
+                    //Detect active wp based on cursor pos.
+                    //Better way to do this?
+                    var display = Screen.FromPoint(new System.Drawing.Point(
+                        System.Windows.Forms.Control.MousePosition.X, System.Windows.Forms.Control.MousePosition.Y));
+                    SetupDesktop.Wallpapers.ForEach(wallpaper =>
+                    {
+                        if (IsInputAllowed(wallpaper.GetWallpaperType()))
+                        {
+                            if (ScreenHelper.ScreenCompare(display, wallpaper.GetScreen(), DisplayIdentificationMode.screenLayout) ||
+                                    Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span)
+                            {
+                                //TODO: provide lParam (check docs of wm-keydown and up), weirdly enough most keys works without it.
+                                //Problems: 
+                                //Some keys don't work - arrow keys..
+                                //Repeated key input when keyUp msg is sent.
+                                //Ref:
+                                //https://docs.microsoft.com/en-us/windows/win32/inputdev/wm-keydown
+                                //https://docs.microsoft.com/en-us/windows/win32/inputdev/wm-keyup
+                                NativeMethods.PostMessageW(wallpaper.GetHWND(), msg, wParam, IntPtr.Zero);
+                            }
+                        }
+                    });
+                }
+            }
+            catch (Exception e)
+            {
+                Logger.Error("Input Forwarding Error:" + e.Message);
+            }
         }
 
         /// <summary>
-        /// Forwards the message to the required wallpaper window based on given cursor location.
+        /// Forwards the mouse message to the required wallpaper window based on given cursor location.<br/>
         /// Skips if apps are in foreground.
         /// </summary>
         /// <param name="x">Cursor pos x</param>
         /// <param name="y">Cursor pos y</param>
-        /// <param name="msg">window message</param>
+        /// <param name="msg">mouse message</param>
         /// <param name="wParam">additional msg parameter</param>
-        private static void ForwardMessage(int x, int y, int msg, IntPtr wParam)
+        private static void ForwardMessageMouse(int x, int y, int msg, IntPtr wParam)
         {
             //Don't forward when not on desktop.
             if (!Playback.IsDesktop())
@@ -176,18 +221,11 @@ namespace livelywpf.Core
             {
                 var display = Screen.FromPoint(new System.Drawing.Point(x, y));
                 var mouse = CalculateMousePos(x, y, display);
-
-                SetupDesktop.Wallpapers.ForEach(x =>
+                SetupDesktop.Wallpapers.ForEach(wallpaper =>
                 {
-                    if (x.GetWallpaperType() == WallpaperType.web ||
-                        x.GetWallpaperType() == WallpaperType.webaudio ||
-                        x.GetWallpaperType() == WallpaperType.app ||
-                        x.GetWallpaperType() == WallpaperType.url ||
-                        x.GetWallpaperType() == WallpaperType.bizhawk ||
-                        x.GetWallpaperType() == WallpaperType.unity ||
-                        x.GetWallpaperType() == WallpaperType.godot)
+                    if (IsInputAllowed(wallpaper.GetWallpaperType()))
                     {
-                        if (ScreenHelper.ScreenCompare(display, x.GetScreen(), DisplayIdentificationMode.screenLayout) ||
+                        if (ScreenHelper.ScreenCompare(display, wallpaper.GetScreen(), DisplayIdentificationMode.screenLayout) ||
                             Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span)
                         {
                             //The low-order word specifies the x-coordinate of the cursor, the high-order word specifies the y-coordinate of the cursor.
@@ -195,7 +233,7 @@ namespace livelywpf.Core
                             uint lParam = Convert.ToUInt32(mouse.Y);
                             lParam <<= 16;
                             lParam |= Convert.ToUInt32(mouse.X);
-                            NativeMethods.PostMessageW(x.GetHWND(), msg, wParam, (IntPtr)lParam);
+                            NativeMethods.PostMessageW(wallpaper.GetHWND(), msg, wParam, (IntPtr)lParam);
                         }
                     }
                 });
@@ -229,6 +267,51 @@ namespace livelywpf.Core
                 }
             }
             return new Point(x, y);
+        }
+
+        private static bool IsInputAllowed(WallpaperType type)
+        {
+            bool result = false;
+            switch (type)
+            {
+                case WallpaperType.app:
+                    result = true;
+                    break;
+                case WallpaperType.web:
+                    result = true;
+                    break;
+                case WallpaperType.webaudio:
+                    result = true;
+                    break;
+                case WallpaperType.url:
+                    result = true;
+                    break;
+                case WallpaperType.bizhawk:
+                    result = true;
+                    break;
+                case WallpaperType.unity:
+                    result = true;
+                    break;
+                case WallpaperType.godot:
+                    result = true;
+                    break;
+                case WallpaperType.video:
+                    result = false;
+                    break;
+                case WallpaperType.gif:
+                    result = false;
+                    break;
+                case WallpaperType.unityaudio:
+                    result = true;
+                    break;
+                case WallpaperType.videostream:
+                    result = false;
+                    break;
+                case WallpaperType.picture:
+                    result = false;
+                    break;
+            }
+            return result;
         }
     }
 }
