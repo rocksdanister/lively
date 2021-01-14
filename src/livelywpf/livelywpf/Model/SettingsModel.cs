@@ -19,7 +19,6 @@ namespace livelywpf
         /// Add user opened wallpapers to library.
         /// </summary>
         public bool GenerateTile { get; set; }
-
         public bool LivelyZipGenerate { get; set; }
         /// <summary>
         /// Show wallpaper info icon topright of library tile.
@@ -31,7 +30,6 @@ namespace livelywpf
 
         public AppRulesEnum AppFullscreenPause { get; set; }
         public AppRulesEnum BatteryPause { get; set; }
-
         public DisplayPauseEnum DisplayPauseSettings { get; set; }
         public ProcessMonitorAlgorithm ProcessMonitorAlgorithm { get; set; }
         /// <summary>
@@ -88,9 +86,9 @@ namespace livelywpf
         public bool DebugMenu { get; set; }
         /// <summary>
         /// Fetch beta lively release updates from lively-beta repository.
-        /// {Unused currently.}
         /// </summary>
         public bool TestBuild { get; set; }
+        public bool DetectRemoteDesktop { get; set; }
         /// <summary>
         /// Not used currently.
         /// </summary>
@@ -150,6 +148,7 @@ namespace livelywpf
             DebugMenu = false;
             TestBuild = false;
             ApplicationTheme = AppTheme.Dark;
+            DetectRemoteDesktop = true;
         }
     }
 }

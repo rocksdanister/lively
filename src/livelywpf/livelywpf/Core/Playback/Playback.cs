@@ -121,7 +121,7 @@ namespace livelywpf.Core
                 PauseWallpapers();
                 return;
             }
-            else if (_isRemoteSession || _isLockScreen)
+            else if ((_isRemoteSession && Program.SettingsVM.Settings.DetectRemoteDesktop) || _isLockScreen)
             {
                 PauseWallpapers();
                 return;
