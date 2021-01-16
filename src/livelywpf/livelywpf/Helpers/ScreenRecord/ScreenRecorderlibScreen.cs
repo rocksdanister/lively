@@ -21,7 +21,7 @@ namespace livelywpf.Helpers
                 RecorderMode = RecorderMode.Video,
                 //If throttling is disabled, out of memory exceptions may eventually crash the program,
                 //depending on encoder settings and system specifications.
-                IsThrottlingDisabled = true,
+                IsThrottlingDisabled = false,
                 //Hardware encoding is enabled by default.
                 IsHardwareEncodingEnabled = true,
                 //Low latency mode provides faster encoding, but can reduce quality.

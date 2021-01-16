@@ -213,7 +213,15 @@ namespace livelywpf
                             File.Copy(selection.PreviewClipPath, Path.Combine(tmpDir, Path.GetFileName(selection.PreviewClipPath)));
                             info.Preview = Path.GetFileName(selection.PreviewClipPath);
                         }
-                        LivelyInfoJSON.SaveWallpaperMetaData(info, Path.Combine(tmpDir, "LivelyInfo.json"));
+
+                        try
+                        {
+                            Helpers.JsonStorage<LivelyInfoModel>.StoreData(Path.Combine(tmpDir, "LivelyInfo.json"), info);
+                        }
+                        catch (Exception e)
+                        {
+                            Logger.Error(e.ToString());
+                        }
 
                         ZipCreate.CreateZip(saveFile, new List<string>() { tmpDir });
                     }
@@ -251,7 +259,15 @@ namespace livelywpf
                             File.Copy(selection.PreviewClipPath, Path.Combine(tmpDir, Path.GetFileName(selection.PreviewClipPath)));
                             info.Preview = Path.GetFileName(selection.PreviewClipPath);
                         }
-                        LivelyInfoJSON.SaveWallpaperMetaData(info, Path.Combine(tmpDir, "LivelyInfo.json"));
+
+                        try
+                        {
+                            Helpers.JsonStorage<LivelyInfoModel>.StoreData(Path.Combine(tmpDir, "LivelyInfo.json"), info);
+                        }
+                        catch (Exception e)
+                        {
+                            Logger.Error(e.ToString());
+                        }
 
                         List<string> metaData = new List<string>();
                         metaData.AddRange(Directory.GetFiles(tmpDir, "*.*", SearchOption.TopDirectoryOnly));
@@ -457,7 +473,16 @@ namespace livelywpf
         {
             if (File.Exists(Path.Combine(folderPath, "LivelyInfo.json")))
             {
-                LivelyInfoModel info = LivelyInfoJSON.LoadWallpaperMetaData(Path.Combine(folderPath, "LivelyInfo.json"));
+                LivelyInfoModel info = null;
+                try
+                {
+                    info = Helpers.JsonStorage<LivelyInfoModel>.LoadData(Path.Combine(folderPath, "LivelyInfo.json"));
+                }
+                catch (Exception e)
+                {
+                    Logger.Error(e.ToString());
+                }
+
                 if (info != null)
                 {
                     if (info.Type == WallpaperType.videostream || info.Type == WallpaperType.url)
@@ -627,14 +652,18 @@ namespace livelywpf
 
         public void RestoreWallpaperFromSave()
         {
-            //todo: remove the missing wallpaper from the save file etc..
-            var wallpaperLayout = WallpaperLayoutJSON.LoadWallpaperLayout(Path.Combine(Program.AppDataDir, "WallpaperLayout.json"));
-            if (wallpaperLayout == null)
+            List<WallpaperLayoutModel> wallpaperLayout = null;
+            try
             {
+                wallpaperLayout = Helpers.JsonStorage<List<WallpaperLayoutModel>>.LoadData(Path.Combine(Program.AppDataDir, "WallpaperLayout.json"));
+            }
+            catch (Exception e)
+            {
+                Logger.Error(e.ToString());
                 return;
             }
 
-            if(Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span ||
+            if (Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span ||
                 Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.duplicate)
             {
                 if(wallpaperLayout.Count != 0)

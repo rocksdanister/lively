@@ -20,9 +20,13 @@ namespace livelywpf
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         public SettingsViewModel()
         {
-            Settings = SettingsJSON.LoadConfig(Path.Combine(Program.AppDataDir, "Settings.json"));
-            if (Settings == null)
+            try
             {
+                Settings = Helpers.JsonStorage<SettingsModel>.LoadData(Path.Combine(Program.AppDataDir, "Settings.json"));
+            }
+            catch (Exception e)
+            {
+                Logger.Error(e.ToString());
                 Settings = new SettingsModel();
                 UpdateConfigFile();
             }
@@ -112,7 +116,14 @@ namespace livelywpf
 
         public void UpdateConfigFile()
         {
-            SettingsJSON.SaveConfig(Path.Combine(Program.AppDataDir, "Settings.json"), Settings);
+            try
+            {
+                Helpers.JsonStorage<SettingsModel>.StoreData(Path.Combine(Program.AppDataDir, "Settings.json"), Settings);
+            }
+            catch (Exception e)
+            {
+                Logger.Error(e.ToString());
+            }
         }
 
         #region general

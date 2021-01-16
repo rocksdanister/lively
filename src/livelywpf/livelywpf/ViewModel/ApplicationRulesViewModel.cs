@@ -9,25 +9,25 @@ namespace livelywpf
 {
     public class ApplicationRulesViewModel : ObservableObject
     {
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private bool itemSelected = false;
         public ApplicationRulesViewModel()
         {
-            var list = ApplicationRulesJSON.LoadAppRules(Path.Combine(Program.AppDataDir, "AppRules.json"));
-            if (list == null)
+            try
             {
+                var list = Helpers.JsonStorage<List<ApplicationRulesModel>>.LoadData(Path.Combine(Program.AppDataDir, "AppRules.json"));
+                AppRules = new ObservableCollection<ApplicationRulesModel>(list);
+            }
+            catch (Exception e)
+            {
+                Logger.Error(e.ToString());
                 AppRules = new ObservableCollection<ApplicationRulesModel>
                 {
-                    //default parameters.
-                    //new ApplicationRulesModel("Photoshop", AppRulesEnum.pause),
+                    //defaults.
                     new ApplicationRulesModel("Discord", AppRulesEnum.ignore)
                 };
                 UpdateDiskFile();
             }
-            else
-            {
-                AppRules = new ObservableCollection<ApplicationRulesModel>(list);
-            }
-
         }
 
         private ObservableCollection<ApplicationRulesModel> _appRules;
@@ -144,7 +144,14 @@ namespace livelywpf
 
         public void UpdateDiskFile()
         {
-            ApplicationRulesJSON.SaveAppRules(AppRules.ToList(), Path.Combine(Program.AppDataDir, "AppRules.json"));
+            try
+            {
+                Helpers.JsonStorage<List<ApplicationRulesModel>>.StoreData(Path.Combine(Program.AppDataDir, "AppRules.json"), AppRules.ToList());
+            }
+            catch (Exception e)
+            {
+                Logger.Error(e.ToString());
+            }
         }
     }
 }

@@ -508,9 +508,14 @@ namespace livelywpf
                 }
             }
 
-            WallpaperLayoutJSON.SaveWallpaperLayout(
-                  layout,
-                  Path.Combine(Program.AppDataDir, "WallpaperLayout.json"));
+            try
+            {
+                Helpers.JsonStorage<List<WallpaperLayoutModel>>.StoreData(Path.Combine(Program.AppDataDir, "WallpaperLayout.json"), layout);
+            }
+            catch (Exception e)
+            {
+                Logger.Error(e.ToString());
+            }
         }
 
         private static void SystemEvents_DisplaySettingsChanged(object sender, EventArgs e)
