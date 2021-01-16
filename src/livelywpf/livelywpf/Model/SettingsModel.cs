@@ -91,6 +91,7 @@ namespace livelywpf
         /// {Unused currently.}
         /// </summary>
         public bool TestBuild { get; set; }
+        public bool DetectRemoteDesktop { get; set; }
         public AppTheme ApplicationTheme {get; set;}
 
         public SettingsModel()
@@ -147,6 +148,7 @@ namespace livelywpf
             DebugMenu = false;
             TestBuild = false;
             ApplicationTheme = AppTheme.Dark;
+            DetectRemoteDesktop = true;
         }
     }
 }

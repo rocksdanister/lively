@@ -746,6 +746,6 @@ Edge ise windows 10 için geçerli web gösterim motorudur.</value>
     <value>Gizlilik Politikası</value>
   </data>
   <data name="TitleAudioDesktopOnly" xml:space="preserve">
-    <value>Play audio only when desktop is focused</value>
+    <value>Sesi sadece masaüstü odaktayken oynat</value>
   </data> 
 </root>
