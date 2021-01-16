@@ -9,6 +9,7 @@
 - [About](#about)
 - [Features](#features)
 - [Download](#download)
+- [Chocolatey](#chocolatey)
 - [Problems](#problems)
 - [Contributing](#contributing)
 - [Support](#support)
@@ -99,6 +100,23 @@ Help translate lively to other languages: <a href="https://github.com/rocksdanis
 <a href='//www.microsoft.com/store/apps/9ntm2qc6qws7?cid=storebadge&ocid=badge'><img src='https://developer.microsoft.com/store/badges/images/English_get-it-from-MS.png' alt='English badge' width="142px" height="52px"/></a>
 
 [Which version do I download?](https://github.com/rocksdanister/lively/wiki/Differences-Between-Distributions)
+
+## Chocolatey
+
+Download and upgrade lively from [Chocolatey](https://chocolatey.org). If you have any issues when installing/upgrading the package please go to the [package page](https://chocolatey.org/packages/lively) and follow the [Chocolatey triage process](https://chocolatey.org/docs/package-triage-process)
+
+To install lively, run the following command from the command line / PowerShell:
+
+```powershell
+choco install lively
+```
+
+To upgrade lively, run the following command from the command line / PowerShell:
+
+```powershell
+choco upgrade lively
+```
+
 ## Problems
 See github [issues.](https://github.com/rocksdanister/lively/issues)
 
