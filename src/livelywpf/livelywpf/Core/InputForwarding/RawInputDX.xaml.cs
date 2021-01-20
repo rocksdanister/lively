@@ -13,16 +13,16 @@ namespace livelywpf.Core
     /// </summary>
     public partial class RawInputDX : Window
     {
+        #region setup
+
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         public InputForwardMode InputMode { get; private set; }
         public RawInputDX(InputForwardMode inputMode)
         {
             InitializeComponent();
-            //Starting a hidden window outside screen region.
-            //todo: Other wrappers such as SharpDX:https://github.com/sharpdx/SharpDX does not require a window, could not get it to work properly globally.. investigate.
+            //Starting a hidden window outside screen region, rawinput receives msg through WndProc
             this.WindowStartupLocation = WindowStartupLocation.Manual;
             this.Left = -99999;
-            SourceInitialized += Window_SourceInitialized;
             this.InputMode = inputMode;
         }
 
@@ -34,6 +34,7 @@ namespace livelywpf.Core
             switch (InputMode)
             {
                 case InputForwardMode.off:
+                    this.Close();
                     break;
                 case InputForwardMode.mouse:
                     //ExInputSink flag makes it work even when not in foreground, similar to global hook.. but asynchronous, no complications and no AV false detection!
@@ -68,6 +69,10 @@ namespace livelywpf.Core
             }
         }
 
+        #endregion //setup
+
+        #region input forward
+
         protected IntPtr Hook(IntPtr hwnd, int msg, IntPtr wparam, IntPtr lparam, ref bool handled)
         {
             // You can read inputs by processing the WM_INPUT message.
@@ -76,7 +81,7 @@ namespace livelywpf.Core
                 // Create an RawInputData from the handle stored in lParam.
                 var data = RawInputData.FromHandle(lparam);
 
-                // You can identify the source device using Header.DeviceHandle or just Device.
+                //You can identify the source device using Header.DeviceHandle or just Device.
                 //var sourceDeviceHandle = data.Header.DeviceHandle;
                 //var sourceDevice = data.Device;
 
@@ -136,20 +141,9 @@ namespace livelywpf.Core
                         }
                         break;
                     case RawInputKeyboardData keyboard:
-                        switch (keyboard.Keyboard.Flags)
-                        {
-                            case Linearstar.Windows.RawInput.Native.RawKeyboardFlags.Down:
-                                ForwardMessageKeyboard((int)NativeMethods.WM.KEYDOWN, (IntPtr)keyboard.Keyboard.VirutalKey);
-                                break;
-                            case Linearstar.Windows.RawInput.Native.RawKeyboardFlags.Up:
-                                //ForwardMessageKeyboard((int)NativeMethods.WM.KEYUP, (IntPtr)keyboard.Keyboard.VirutalKey);
-                                break;
-                            case Linearstar.Windows.RawInput.Native.RawKeyboardFlags.LeftKey:
-                                break;
-                            case Linearstar.Windows.RawInput.Native.RawKeyboardFlags.RightKey:
-                                break;
-                        }
-                        System.Diagnostics.Debug.WriteLine(keyboard.Keyboard);
+                        ForwardMessageKeyboard((int)keyboard.Keyboard.WindowMessage, 
+                            (IntPtr)keyboard.Keyboard.VirutalKey, keyboard.Keyboard.ScanCode,
+                            (keyboard.Keyboard.Flags != Linearstar.Windows.RawInput.Native.RawKeyboardFlags.Up));
                         break;
                 }
             }
@@ -160,16 +154,18 @@ namespace livelywpf.Core
         /// Forwards the keyboard message to the required wallpaper window based on given cursor location.<br/>
         /// Skips if desktop is not focused.
         /// </summary>
-        /// <param name="msg">key press msg</param>
-        /// <param name="wParam">Virtual-Key code</param>
-        private static void ForwardMessageKeyboard(int msg, IntPtr wParam)
+        /// <param name="msg">key press msg.</param>
+        /// <param name="wParam">Virtual-Key code.</param>
+        /// <param name="scanCode">OEM code of the key.</param>
+        /// <param name="isPressed">Key is pressed.</param>
+        private static void ForwardMessageKeyboard(int msg, IntPtr wParam, int scanCode, bool isPressed)
         {
             try
             {
+                //Don't forward when not on desktop.
                 if (Playback.IsDesktop())
                 {
-                    //Detect active wp based on cursor pos.
-                    //Better way to do this?
+                    //Detect active wp based on cursor pos, better way to do this?
                     var display = Screen.FromPoint(new System.Drawing.Point(
                         System.Windows.Forms.Control.MousePosition.X, System.Windows.Forms.Control.MousePosition.Y));
                     SetupDesktop.Wallpapers.ForEach(wallpaper =>
@@ -179,14 +175,19 @@ namespace livelywpf.Core
                             if (ScreenHelper.ScreenCompare(display, wallpaper.GetScreen(), DisplayIdentificationMode.screenLayout) ||
                                     Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span)
                             {
-                                //TODO: provide lParam (check docs of wm-keydown and up), weirdly enough most keys works without it.
-                                //Problems: 
-                                //Some keys don't work - arrow keys..
-                                //Repeated key input when keyUp msg is sent.
-                                //Ref:
+                                //ref:
                                 //https://docs.microsoft.com/en-us/windows/win32/inputdev/wm-keydown
                                 //https://docs.microsoft.com/en-us/windows/win32/inputdev/wm-keyup
-                                NativeMethods.PostMessageW(wallpaper.GetHWND(), msg, wParam, IntPtr.Zero);
+                                uint lParam = 1u; //press
+                                lParam |= (uint)scanCode << 16; //oem code
+                                lParam |= 1u << 24; //extended key
+                                lParam |= 0u << 29; //context code; Note: Alt key combos wont't work
+                                /* Same as:
+                                 * lParam = isPressed ? (lParam |= 0u << 30) : (lParam |= 1u << 30); //prev key state
+                                 * lParam = isPressed ? (lParam |= 0u << 31) : (lParam |= 1u << 31); //transition state
+                                 */
+                                lParam = isPressed ? lParam : (lParam |= 3u << 30); 
+                                NativeMethods.PostMessageW(wallpaper.GetHWND(), msg, wParam, (UIntPtr)lParam);
                             }
                         }
                     });
@@ -194,7 +195,7 @@ namespace livelywpf.Core
             }
             catch (Exception e)
             {
-                Logger.Error("Input Forwarding Error:" + e.Message);
+                Logger.Error("Keyboard Forwarding Error:" + e.Message);
             }
         }
 
@@ -233,16 +234,20 @@ namespace livelywpf.Core
                             uint lParam = Convert.ToUInt32(mouse.Y);
                             lParam <<= 16;
                             lParam |= Convert.ToUInt32(mouse.X);
-                            NativeMethods.PostMessageW(wallpaper.GetHWND(), msg, wParam, (IntPtr)lParam);
+                            NativeMethods.PostMessageW(wallpaper.GetHWND(), msg, wParam, (UIntPtr)lParam);
                         }
                     }
                 });
             }
             catch (Exception e)
             {
-                Logger.Error("Input Forwarding Error:" + e.Message);
+                Logger.Error("Mouse Forwarding Error:" + e.Message);
             }
         }
+
+        #endregion //input forward
+
+        #region helpers
 
         /// <summary>
         /// Converts global mouse cursor position value to per display localised value.
@@ -271,47 +276,24 @@ namespace livelywpf.Core
 
         private static bool IsInputAllowed(WallpaperType type)
         {
-            bool result = false;
-            switch (type)
+            return type switch
             {
-                case WallpaperType.app:
-                    result = true;
-                    break;
-                case WallpaperType.web:
-                    result = true;
-                    break;
-                case WallpaperType.webaudio:
-                    result = true;
-                    break;
-                case WallpaperType.url:
-                    result = true;
-                    break;
-                case WallpaperType.bizhawk:
-                    result = true;
-                    break;
-                case WallpaperType.unity:
-                    result = true;
-                    break;
-                case WallpaperType.godot:
-                    result = true;
-                    break;
-                case WallpaperType.video:
-                    result = false;
-                    break;
-                case WallpaperType.gif:
-                    result = false;
-                    break;
-                case WallpaperType.unityaudio:
-                    result = true;
-                    break;
-                case WallpaperType.videostream:
-                    result = false;
-                    break;
-                case WallpaperType.picture:
-                    result = false;
-                    break;
-            }
-            return result;
+                WallpaperType.app => true,
+                WallpaperType.web => true,
+                WallpaperType.webaudio => true,
+                WallpaperType.url => true,
+                WallpaperType.bizhawk => true,
+                WallpaperType.unity => true,
+                WallpaperType.godot => true,
+                WallpaperType.video => false,
+                WallpaperType.gif => false,
+                WallpaperType.unityaudio => true,
+                WallpaperType.videostream => false,
+                WallpaperType.picture => false,
+                _ => false,
+            };
         }
+
+        #endregion //helpers
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace livelywpf.Helpers
 {
-    public enum ShedulerEventType
+    public enum SchedulerEventType
     {
         [Description("Time based wallpaper.")]
         time,
@@ -15,17 +15,22 @@ namespace livelywpf.Helpers
         acpi
     }
 
-    interface IScheduler
+    public interface IScheduler
     {
         /// <summary>
         /// Event type.
         /// </summary>
         /// <returns></returns>
-        public ShedulerEventType GetEventType();
+        SchedulerEventType GetEventType();
         /// <summary>
         /// Check if event is ready to fire.
         /// </summary>
         /// <returns></returns>
-        public bool IsReady();
+        bool IsReady();
+        /// <summary>
+        /// Livelynfo.json path.
+        /// </summary>
+        /// <returns></returns>
+        string GetWallpaperPath();
     }
 }

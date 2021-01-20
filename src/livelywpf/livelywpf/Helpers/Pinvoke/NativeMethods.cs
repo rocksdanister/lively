@@ -57,6 +57,9 @@ namespace livelywpf
         , CharSet = CharSet.Unicode)]
         public extern static IntPtr PostMessageW(IntPtr hWnd, Int32 Msg, IntPtr wParam, IntPtr lParam);
 
+        [DllImport("User32.dll", EntryPoint = "PostMessageW", CallingConvention = CallingConvention.Winapi, CharSet = CharSet.Unicode)]
+        public extern static IntPtr PostMessageW(IntPtr hWnd, Int32 Msg, IntPtr wParam, UIntPtr lParam);
+
         /// <summary>
         /// Windows Messages
         /// Defined in winuser.h from Windows SDK v6.1

@@ -15,14 +15,7 @@ namespace livelywpf.Helpers
                 var tmp = (T)serializer.Deserialize(file, typeof(T));
 
                 //if file is corrupted, json can return null.
-                if (tmp == null)
-                {
-                    throw new ArgumentNullException("json null/corrupt");
-                }
-                else
-                {
-                    return tmp;
-                }
+                return (tmp != null ? tmp : throw new ArgumentNullException("json null/corrupt"));
             }
         }
 
