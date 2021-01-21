@@ -471,6 +471,16 @@ namespace livelywpf
                     Settings.InputForward = (InputForwardMode)_selectedWallpaperInputMode;
                     UpdateConfigFile();
                 }
+
+                //todo: show msg to user desc whats happening.
+                if (Settings.InputForward == InputForwardMode.mousekeyboard)
+                {
+                    Helpers.DesktopUtil.SetDesktopIconVisibility(false);
+                }
+                else
+                {
+                    Helpers.DesktopUtil.SetDesktopIconVisibility(Program.DesktopIconVisibilityDefault);
+                }
             }
         }
 

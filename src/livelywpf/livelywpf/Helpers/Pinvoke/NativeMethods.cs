@@ -1759,6 +1759,179 @@ namespace livelywpf
             /// </summary>
             GW_ENABLEDPOPUP = 6
         }
+
+        #region shell
+
+        [DllImport("shell32.dll")]
+        public static extern void SHGetSetSettings(ref SHELLSTATE lpss, SSF dwMask, bool bSet);
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct SHELLSTATE
+        {
+            public uint flags_1;
+            public uint dwWin95Unused;
+            public uint uWin95Unused;
+            public int lParamSort;
+            public int iSortDirection;
+            public uint version;
+            public uint uNotUsed;
+            public uint flags_2;
+
+            public bool fShowAllObjects
+            {
+                get { return (flags_1 & 0x00000001u) == 0x00000001u; }
+                set { if (value) { flags_1 |= 0x00000001u; } else { flags_1 &= ~0x00000001u; } }
+            }
+            public bool fShowExtensions
+            {
+                get { return (flags_1 & 0x00000002u) == 0x00000002u; }
+                set { if (value) { flags_1 |= 0x00000002u; } else { flags_1 &= ~0x00000002u; } }
+            }
+            public bool fNoConfirmRecycle
+            {
+                get { return (flags_1 & 0x00000004u) == 0x00000004u; }
+                set { if (value) { flags_1 |= 0x00000004u; } else { flags_1 &= ~0x00000004u; } }
+            }
+            public bool fShowSysFiles
+            {
+                get { return (flags_1 & 0x00000008u) == 0x00000008u; }
+                set { if (value) { flags_1 |= 0x00000008u; } else { flags_1 &= ~0x00000008u; } }
+            }
+            public bool fShowCompColor
+            {
+                get { return (flags_1 & 0x00000010u) == 0x00000010u; }
+                set { if (value) { flags_1 |= 0x00000010u; } else { flags_1 &= ~0x00000010u; } }
+            }
+            public bool fDoubleClickInWebView
+            {
+                get { return (flags_1 & 0x00000020u) == 0x00000020u; }
+                set { if (value) { flags_1 |= 0x00000020u; } else { flags_1 &= ~0x00000020u; } }
+            }
+            public bool fDesktopHTML
+            {
+                get { return (flags_1 & 0x00000040u) == 0x00000040u; }
+                set { if (value) { flags_1 |= 0x00000040u; } else { flags_1 &= ~0x00000040u; } }
+            }
+            public bool fWin95Classic
+            {
+                get { return (flags_1 & 0x00000080u) == 0x00000080u; }
+                set { if (value) { flags_1 |= 0x00000080u; } else { flags_1 &= ~0x00000080u; } }
+            }
+            public bool fDontPrettyPath
+            {
+                get { return (flags_1 & 0x00000100u) == 0x00000100u; }
+                set { if (value) { flags_1 |= 0x00000100u; } else { flags_1 &= ~0x00000100u; } }
+            }
+            public bool fShowAttribCol
+            {
+                get { return (flags_1 & 0x00000200u) == 0x00000200u; }
+                set { if (value) { flags_1 |= 0x00000200u; } else { flags_1 &= ~0x00000200u; } }
+            }
+            public bool fMapNetDrvBtn
+            {
+                get { return (flags_1 & 0x00000400u) == 0x00000400u; }
+                set { if (value) { flags_1 |= 0x00000400u; } else { flags_1 &= ~0x00000400u; } }
+            }
+            public bool fShowInfoTip
+            {
+                get { return (flags_1 & 0x00000800u) == 0x00000800u; }
+                set { if (value) { flags_1 |= 0x00000800u; } else { flags_1 &= ~0x00000800u; } }
+            }
+            public bool fHideIcons
+            {
+                get { return (flags_1 & 0x00001000u) == 0x00001000u; }
+                set { if (value) { flags_1 |= 0x00001000u; } else { flags_1 &= ~0x00001000u; } }
+            }
+            public bool fWebView
+            {
+                get { return (flags_1 & 0x00002000u) == 0x00002000u; }
+                set { if (value) { flags_1 |= 0x00002000u; } else { flags_1 &= ~0x00002000u; } }
+            }
+            public bool fFilter
+            {
+                get { return (flags_1 & 0x00004000u) == 0x00004000u; }
+                set { if (value) { flags_1 |= 0x00004000u; } else { flags_1 &= ~0x00004000u; } }
+            }
+            public bool fShowSuperHidden
+            {
+                get { return (flags_1 & 0x00008000u) == 0x00008000u; }
+                set { if (value) { flags_1 |= 0x00008000u; } else { flags_1 &= ~0x00008000u; } }
+            }
+            public bool fNoNetCrawling
+            {
+                get { return (flags_1 & 0x00010000u) == 0x00010000u; }
+                set { if (value) { flags_1 |= 0x00010000u; } else { flags_1 &= ~0x00010000u; } }
+            }
+
+            public bool fSepProcess
+            {
+                get { return (flags_2 & 0x00000001u) == 0x00000001u; }
+                set { if (value) { flags_2 |= 0x00000001u; } else { flags_2 &= ~0x00000001u; } }
+            }
+            public bool fStartPanelOn
+            {
+                get { return (flags_2 & 0x00000002u) == 0x00000002u; }
+                set { if (value) { flags_2 |= 0x00000002u; } else { flags_2 &= ~0x00000002u; } }
+            }
+            public bool fShowStartPage
+            {
+                get { return (flags_2 & 0x00000004u) == 0x00000004u; }
+                set { if (value) { flags_2 |= 0x00000004u; } else { flags_2 &= ~0x00000004u; } }
+            }
+            public bool fAutoCheckSelect
+            {
+                get { return (flags_2 & 0x00000008u) == 0x00000008u; }
+                set { if (value) { flags_2 |= 0x00000008u; } else { flags_2 &= ~0x00000008u; } }
+            }
+            public bool fIconsOnly
+            {
+                get { return (flags_2 & 0x00000010u) == 0x00000010u; }
+                set { if (value) { flags_2 |= 0x00000010u; } else { flags_2 &= ~0x00000010u; } }
+            }
+            public bool fShowTypeOverlay
+            {
+                get { return (flags_2 & 0x00000020u) == 0x00000020u; }
+                set { if (value) { flags_2 |= 0x00000020u; } else { flags_2 &= ~0x00000020u; } }
+            }
+            public bool fShowStatusBar
+            {
+                get { return (flags_2 & 0x00000040u) == 0x00000040u; }
+                set { if (value) { flags_2 |= 0x00000040u; } else { flags_2 &= ~0x00000040u; } }
+            }
+        }
+        [Flags]
+        public enum SSF : uint
+        {
+            SSF_SHOWALLOBJECTS = 0x00000001,
+            SSF_SHOWEXTENSIONS = 0x00000002,
+            SSF_HIDDENFILEEXTS = 0x00000004,
+            SSF_SERVERADMINUI = 0x00000004,
+            SSF_SHOWCOMPCOLOR = 0x00000008,
+            SSF_SORTCOLUMNS = 0x00000010,
+            SSF_SHOWSYSFILES = 0x00000020,
+            SSF_DOUBLECLICKINWEBVIEW = 0x00000080,
+            SSF_SHOWATTRIBCOL = 0x00000100,
+            SSF_DESKTOPHTML = 0x00000200,
+            SSF_WIN95CLASSIC = 0x00000400,
+            SSF_DONTPRETTYPATH = 0x00000800,
+            SSF_MAPNETDRVBUTTON = 0x00001000,
+            SSF_SHOWINFOTIP = 0x00002000,
+            SSF_HIDEICONS = 0x00004000,
+            SSF_NOCONFIRMRECYCLE = 0x00008000,
+            SSF_FILTER = 0x00010000,
+            SSF_WEBVIEW = 0x00020000,
+            SSF_SHOWSUPERHIDDEN = 0x00040000,
+            SSF_SEPPROCESS = 0x00080000,
+            SSF_NONETCRAWLING = 0x00100000,
+            SSF_STARTPANELON = 0x00200000,
+            SSF_SHOWSTARTPAGE = 0x00400000,
+            SSF_AUTOCHECKSELECT = 0x00800000,
+            SSF_ICONSONLY = 0x01000000,
+            SSF_SHOWTYPEOVERLAY = 0x02000000,
+            SSF_SHOWSTATUSBAR = 0x04000000
+        }
+
+        #endregion //shell
     }
 #pragma warning restore CA1707, CA1401, CA1712
 

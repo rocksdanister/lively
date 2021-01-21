@@ -104,4 +104,8 @@
     <PackageReference Update="Microsoft.VCRTForwarders.140" Version="1.0.7" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Helpers\IPC\" />
+  </ItemGroup>
+
 </Project>
