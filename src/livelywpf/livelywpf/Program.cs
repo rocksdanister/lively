@@ -4,6 +4,7 @@ using System.IO;
 using System.Text;
 using System.Threading;
 using System.Windows;
+using System.Linq;
 
 namespace livelywpf
 {
@@ -12,7 +13,8 @@ namespace livelywpf
         #region init
 
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private static readonly Mutex mutex = new Mutex(false, "LIVELY:DESKTOPWALLPAPERSYSTEM");
+        private static readonly string uniqueAppName = "LIVELY:DESKTOPWALLPAPERSYSTEM";
+        private static readonly Mutex mutex = new Mutex(false, uniqueAppName);
         //Loaded from Settings.json (User configurable.)
         public static string WallpaperDir { get; set; }
         public static string AppDataDir { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Lively Wallpaper");
@@ -33,23 +35,51 @@ namespace livelywpf
         {
             try
             {
-                // wait a few seconds in case livelywpf instance is just shutting down..
+                //wait a few seconds in case livelywpf instance is just shutting down..
                 if (!mutex.WaitOne(TimeSpan.FromSeconds(1), false))
                 {
-                    // ref: https://stackoverflow.com/questions/19147/what-is-the-correct-way-to-create-a-single-instance-wpf-application
-                    // send our registered Win32 message to make the currently running lively instance to bring to foreground.
-                    // todo: ditch this once ipc server is ready?
-                    NativeMethods.PostMessage(
-                        (IntPtr)NativeMethods.HWND_BROADCAST,
-                        NativeMethods.WM_SHOWLIVELY,
-                        IntPtr.Zero,
-                        IntPtr.Zero);
+                    try
+                    {
+                        //skipping first element - application path.
+                        var args = Environment.GetCommandLineArgs().Skip(1).ToArray();
+                        if (args.Length != 0)
+                        {
+                            Helpers.PipeClient.SendMessage(uniqueAppName, args);
+                        }
+                        else
+                        {
+                            //user opened application.
+                            Helpers.PipeClient.SendMessage(uniqueAppName, new string[] { "--showApp", "true" });
+                        }
+                    }
+                    catch
+                    {
+                        //fallback, Send our registered Win32 message to make the currently running lively instance to bring to foreground.
+                        //registration of WM_SHOWLIVELY done at NativeMethods.cs file.
+                        //ref: https://stackoverflow.com/questions/19147/what-is-the-correct-way-to-create-a-single-instance-wpf-application
+                        NativeMethods.PostMessage(
+                            (IntPtr)NativeMethods.HWND_BROADCAST,
+                            NativeMethods.WM_SHOWLIVELY,
+                            IntPtr.Zero,
+                            IntPtr.Zero);
+                    }
                     return;
                 }
             }
             catch (AbandonedMutexException e)
             {
+                //unexpected app termination.
                 System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            try
+            {
+                var server = new Helpers.PipeServer(uniqueAppName);
+                server.MessageReceived += Server_MessageReceived1;
+            }
+            catch 
+            {
+                //todo
             }
 
             try
@@ -70,6 +100,11 @@ namespace livelywpf
             {
                 mutex.ReleaseMutex();
             }
+        }
+
+        private static void Server_MessageReceived1(object sender, string[] msg)
+        {
+            Cmd.CommandHandler.ParseArgs(msg);
         }
 
         private static Systray sysTray;

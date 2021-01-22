@@ -1932,6 +1932,9 @@ namespace livelywpf
         }
 
         #endregion //shell
+
+        [DllImport("kernel32.dll", CharSet = CharSet.Auto)]
+        public static extern System.IntPtr GetCommandLine();
     }
 #pragma warning restore CA1707, CA1401, CA1712
 

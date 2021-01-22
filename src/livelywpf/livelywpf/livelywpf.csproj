@@ -106,7 +106,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Helpers\IPC\" />
     <Folder Include="ScreenSaver\" />
   </ItemGroup>
 
