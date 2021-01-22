@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="CommandLineParser" Version="2.8.0" />
     <PackageReference Include="LibVLCSharp.WPF" Version="3.4.9" />
     <PackageReference Include="Magick.NET-Q16-x86" Version="7.22.3" />
     <PackageReference Include="Microsoft.Toolkit.Wpf.UI.Controls" Version="6.1.2" />
@@ -106,6 +107,7 @@
 
   <ItemGroup>
     <Folder Include="Helpers\IPC\" />
+    <Folder Include="ScreenSaver\" />
   </ItemGroup>
 
 </Project>

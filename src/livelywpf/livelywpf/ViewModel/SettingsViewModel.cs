@@ -479,7 +479,7 @@ namespace livelywpf
                 }
                 else
                 {
-                    Helpers.DesktopUtil.SetDesktopIconVisibility(Program.DesktopIconVisibilityDefault);
+                    Helpers.DesktopUtil.SetDesktopIconVisibility(Helpers.DesktopUtil.DesktopIconVisibilityDefault);
                 }
             }
         }

@@ -23,11 +23,6 @@ namespace livelywpf
         public static SettingsViewModel SettingsVM { get; set; }
         public static ApplicationRulesViewModel AppRulesVM { get; set; }
         public static LibraryViewModel LibraryVM { get; set; }
-        /// <summary>
-        /// Initial system desktop icon visibility settings.<br>
-        /// Issue: does not update if user changes setting.</br>
-        /// </summary>
-        public static bool DesktopIconVisibilityDefault { get; } = Helpers.DesktopUtil.GetDesktopIconVisibility();
 
         #endregion //init
 

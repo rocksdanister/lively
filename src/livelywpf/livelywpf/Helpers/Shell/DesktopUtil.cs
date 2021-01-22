@@ -4,8 +4,19 @@ using System.Text;
 
 namespace livelywpf.Helpers
 {
-    public class DesktopUtil
+    public static class DesktopUtil
     {
+        /// <summary>
+        /// Initial system desktop icon visibility settings.<br>
+        /// Issue: does not update if user changes setting.</br>
+        /// </summary>
+        public static bool DesktopIconVisibilityDefault { get; }
+
+        static DesktopUtil()
+        {
+            DesktopIconVisibilityDefault = GetDesktopIconVisibility();
+        }
+
         public static bool GetDesktopIconVisibility()
         {
             NativeMethods.SHELLSTATE state = new NativeMethods.SHELLSTATE();
