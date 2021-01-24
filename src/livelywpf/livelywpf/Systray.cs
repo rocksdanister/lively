@@ -36,6 +36,7 @@ namespace livelywpf
             _notifyIcon.Visible = visibility;
             Program.SettingsVM.TrayIconVisibilityChange += SettingsVM_TrayIconVisibilityChange;
             SetupDesktop.WallpaperChanged += SetupDesktop_WallpaperChanged;
+            Playback.PlaybackStateChanged += Playback_PlaybackStateChanged;
         }
 
         private void CreateContextMenu()
@@ -65,7 +66,7 @@ namespace livelywpf
             customiseWallpaperBtn.Click += CustomiseWallpaper;
             _notifyIcon.ContextMenuStrip.Items.Add(customiseWallpaperBtn);
 
-            if(!Program.IsMSIX)
+            if (!Program.IsMSIX)
             {
                 _notifyIcon.ContextMenuStrip.Items.Add(new Helpers.CustomContextMenu.StripSeparatorCustom().stripSeparator);
                 UpdateTrayBtn = new System.Windows.Forms.ToolStripMenuItem(Properties.Resources.TextUpdateChecking, null)
@@ -152,25 +153,22 @@ namespace livelywpf
             else
             {
                 //if more than one customisable wallpaper running, open control panel.
-                if (App.AppWindow != null)
-                {
-                    App.AppWindow.ShowControlPanelDialog();
-                }
+                App.AppWindow?.ShowControlPanelDialog();
             }
         }
 
-        public void ToggleWallpaperPlaybackState()
+        private void Playback_PlaybackStateChanged(object sender, PlaybackState e)
         {
-            if (Playback.PlaybackState == PlaybackState.play)
+            //I'm not sure?
+            System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
             {
-                Playback.PlaybackState = PlaybackState.paused;
-                pauseTrayBtn.Checked = true;
-            }
-            else
-            {
-                Playback.PlaybackState = PlaybackState.play;
-                pauseTrayBtn.Checked = false;
-            }
+                pauseTrayBtn.Checked = (e == PlaybackState.paused);
+            }));
+        }
+
+        private void ToggleWallpaperPlaybackState()
+        {
+            Playback.WallpaperPlaybackState = (Playback.WallpaperPlaybackState == PlaybackState.play) ? Playback.WallpaperPlaybackState = PlaybackState.paused : PlaybackState.play;
         }
 
         private void SetupDesktop_WallpaperChanged(object sender, EventArgs e)
@@ -201,6 +199,7 @@ namespace livelywpf
                 if (disposing)
                 {
                     Program.SettingsVM.TrayIconVisibilityChange -= SettingsVM_TrayIconVisibilityChange;
+                    Playback.PlaybackStateChanged -= Playback_PlaybackStateChanged;
                     _notifyIcon.Visible = false;
                     _notifyIcon?.Icon.Dispose();
                     _notifyIcon?.Dispose();

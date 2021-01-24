@@ -148,14 +148,23 @@ namespace livelywpf
 
         #region window mgmnt
 
+        /// <summary>
+        /// Makes content frame null and GC call.<br>
+        /// Xaml Island gif image playback not pausing fix.</br>
+        /// </summary>
+        public void HideWindow()
+        {
+            ContentFrame.Content = null;
+            this.Hide();
+            GC.Collect();
+        }
+
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (!IsExit)
             {
                 e.Cancel = true;
-                ContentFrame.Content = null;
-                this.Hide();
-                GC.Collect();
+                HideWindow();
             }
             else
             {
@@ -165,9 +174,9 @@ namespace livelywpf
 
         private void Window_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            if(navView != null && (bool)e.NewValue)
+            if (navView != null && (bool)e.NewValue)
             {
-                if(ContentFrame.Content == null)
+                if (ContentFrame.Content == null)
                 {
                     navView.SelectedItem = navView.MenuItems.ElementAt(0);
                     ContentFrame.Navigate(typeof(livelywpf.Views.LibraryView), new Uri("Views/LibraryView.xaml", UriKind.Relative), new SuppressNavigationTransitionInfo());

@@ -8,10 +8,11 @@ namespace livelywpf.Helpers
 {
     class PipeServer
     {
-        public static string MsgDelimiter { get; } = ", ";
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         public event EventHandler<string[]> MessageReceived;
+        public static string MsgDelimiter { get; } = "^_^";
 
-        public PipeServer(string channelName, bool biDirection = false)
+        public PipeServer(string channelName)//, bool biDirection = false)
         {
             CreateRemoteService(channelName);
         }
@@ -25,6 +26,7 @@ namespace livelywpf.Helpers
                     await pipeServer.WaitForConnectionAsync().ConfigureAwait(false);
                     var reader = new StreamReader(pipeServer);
                     var rawArgs = await reader.ReadToEndAsync();
+                    Logger.Info(rawArgs);
                     MessageReceived?.Invoke(this, rawArgs.Split(MsgDelimiter));
                     pipeServer.Disconnect();
                 }

@@ -32,8 +32,17 @@ namespace livelywpf.Core
             "RainmeterMeterWindow"
         };
         private static IntPtr workerWOrig, progman;
-        public static PlaybackState PlaybackState { get; set; }
-        //public event EventHandler<PlaybackState> PlaybackStateChanged;
+        private static PlaybackState _wallpaperPlaybackState;
+        public static PlaybackState WallpaperPlaybackState
+        {
+            get { return _wallpaperPlaybackState;  }
+            set
+            {
+                _wallpaperPlaybackState = value;
+                PlaybackStateChanged?.Invoke(null, _wallpaperPlaybackState);
+            }
+        }
+        public static event EventHandler<PlaybackState> PlaybackStateChanged;
         private readonly DispatcherTimer dispatcherTimer = new DispatcherTimer();
         private bool _isLockScreen, _isRemoteSession;
         private bool disposedValue;
@@ -58,7 +67,7 @@ namespace livelywpf.Core
             }
 
             InitializeTimer();
-            PlaybackState = PlaybackState.play;
+            WallpaperPlaybackState = PlaybackState.play;
 
             // Check if already in remote/lockscreen session.
             _isRemoteSession = System.Windows.Forms.SystemInformation.TerminalServerSession;
@@ -116,7 +125,7 @@ namespace livelywpf.Core
 
         private void ProcessMonitor(object sender, EventArgs e)
         {
-            if (PlaybackState == PlaybackState.paused)
+            if (WallpaperPlaybackState == PlaybackState.paused)
             {
                 PauseWallpapers();
                 return;

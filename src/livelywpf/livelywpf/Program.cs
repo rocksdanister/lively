@@ -40,7 +40,7 @@ namespace livelywpf
                 {
                     try
                     {
-                        //skipping first element - application path.
+                        //skipping first element (application path.)
                         var args = Environment.GetCommandLineArgs().Skip(1).ToArray();
                         if (args.Length != 0)
                         {
@@ -127,6 +127,12 @@ namespace livelywpf
             //Example: UWP gifplayer is started before the rest and closed.
             //This fixes that issue since the xamlhost UI elements are started in AppWindow.Show()
             LibraryVM.RestoreWallpaperFromSave();
+
+            //first element is not application path, unlike Environment.GetCommandLineArgs().
+            if (e.Args.Length > 0)
+            {
+                Cmd.CommandHandler.ParseArgs(e.Args);
+            }
         }
 
         #endregion //app entry

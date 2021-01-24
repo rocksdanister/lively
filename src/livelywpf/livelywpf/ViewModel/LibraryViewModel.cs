@@ -666,7 +666,7 @@ namespace livelywpf
             if (Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span ||
                 Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.duplicate)
             {
-                if(wallpaperLayout.Count != 0)
+                if (wallpaperLayout.Count != 0)
                 {
                     var libraryItem = LibraryItems.FirstOrDefault(x => x.LivelyInfoFolderPath.Equals(wallpaperLayout[0].LivelyInfoPath));
                     WallpaperSet(libraryItem, ScreenHelper.GetPrimaryScreen());
