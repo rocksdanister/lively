@@ -49,6 +49,34 @@ namespace livelywpf.Helpers
             return result;
         }
 
+        public static async Task<string> ShowTextInputDialog(string title, XamlRoot xamlRoot, string primaryBtnText)
+        {
+            var tb = new Windows.UI.Xaml.Controls.TextBox();
+            string result = null;
+            ContentDialog dialog = new ContentDialog
+            {
+                Title = title,
+                Content = tb,
+                PrimaryButtonText = primaryBtnText,
+            };
+
+            // Use this code to associate the dialog to the appropriate AppWindow by setting
+            // the dialog's XamlRoot to the same XamlRoot as an element that is already present in the AppWindow.
+            if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 8))
+            {
+                dialog.XamlRoot = xamlRoot;
+            }
+
+            try
+            {
+                //If another dialog already open.
+                ContentDialogResult dResult = await dialog.ShowAsync();
+                result = tb.Text;
+            }
+            catch { }
+            return result;
+        }
+
         public static async Task<ContentDialogResult> ShowConfirmationDialog(string title, object body, XamlRoot xamlRoot,
          string primaryBtnText, string secondaryBtnText = null, ContentDialogButton defaultBtn = ContentDialogButton.Secondary)
         {

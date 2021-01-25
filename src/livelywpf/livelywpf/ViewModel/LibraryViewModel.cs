@@ -383,7 +383,7 @@ namespace livelywpf
 
         #region helpers
 
-        public void AddWallpaper(string path, WallpaperType wpType, LibraryTileType dataType, LivelyScreen screen)
+        public void AddWallpaper(string path, WallpaperType wpType, LibraryTileType dataType, LivelyScreen screen, string cmdArgs = null)
         {
             var dir = Path.Combine(Program.WallpaperDir, "SaveData", "wptmp", Path.GetRandomFileName());
             if (dataType == LibraryTileType.processing)
@@ -405,7 +405,8 @@ namespace livelywpf
                     IsAbsolutePath = true,
                     FileName = path,
                     Preview = null,
-                    Thumbnail = null
+                    Thumbnail = null,
+                    Arguments = cmdArgs
                 };
                 var model = new LibraryModel(data, dir, LibraryTileType.processing);
                 LibraryItems.Insert(0, model);

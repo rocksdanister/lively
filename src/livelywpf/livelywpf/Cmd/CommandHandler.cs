@@ -26,11 +26,7 @@ namespace livelywpf.Cmd
             Required = false,
             HelpText = "Desktop icons visibility (true/false).")]
             public bool? ShowIcons { get; set; }
-        }
 
-        [Verb("control", HelpText = "Wallpaper control.")]
-        class ControlOptions
-        {
             [Option("volume",
             Required = false,
             HelpText = "Wallpaper audio level (0-100).")]
@@ -40,13 +36,8 @@ namespace livelywpf.Cmd
             Required = false,
             HelpText = "Wallpaper playback state (true/false).")]
             public bool? Play { get; set; }
-
-            [Option("closewp",
-            Required = false,
-            HelpText = "Close wallpaper on the given monitor id, if -1 all wallpapers are closed.")]
-            public int? Close { get; set; }
         }
-
+        
         [Verb("setwp", HelpText = "Apply wallpaper.")]
         class SetWallpaperOptions
         {
@@ -61,7 +52,7 @@ namespace livelywpf.Cmd
             public int? Monitor { get; set; }
         }
 
-        [Verb("cuzwp", HelpText = "Customise wallpaper property.")]
+        [Verb("setprop", HelpText = "Customise wallpaper.")]
         class CustomiseWallpaperOptions
         {
             [Option("property",
@@ -75,15 +66,47 @@ namespace livelywpf.Cmd
             public int? Monitor { get; set; }
         }
 
+        [Verb("closewp", HelpText = "Close wallpaper.")]
+        class CloseWallpaperOptions
+        {
+            [Option("monitor",
+            Required = true,
+            HelpText = "Index of the monitor to close wallpaper, if -1 all running wallpapers are closed.")]
+            public int? Monitor { get; set; }
+        }
+
         public static void ParseArgs(string[] args)
         {
-            _ = CommandLine.Parser.Default.ParseArguments<ControlOptions, SetWallpaperOptions, AppOptions, CustomiseWallpaperOptions>(args)
+            _ = CommandLine.Parser.Default.ParseArguments<AppOptions, SetWallpaperOptions, CustomiseWallpaperOptions, CloseWallpaperOptions>(args)
                 .MapResult(
                     (AppOptions opts) => RunAppOptions(opts),
-                    (ControlOptions opts) => RunControlOptions(opts),
+                    (CloseWallpaperOptions opts) => RunCloseWallpaperOptions(opts),
                     (SetWallpaperOptions opts) => RunSetWallpaperOptions(opts),
                     (CustomiseWallpaperOptions opts) => RunCustomiseWallpaperOptions(opts),
                     errs => HandleParseError(errs));
+        }
+
+        private static int RunCloseWallpaperOptions(CloseWallpaperOptions opts)
+        {
+            if (opts.Monitor != null)
+            {
+                var id = (int)opts.Monitor;
+                if (id == -1 ||
+                    Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.duplicate ||
+                    Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span)
+                {
+                    SetupDesktop.CloseAllWallpapers();
+                }
+                else
+                {
+                    var screen = ScreenHelper.GetScreen().FirstOrDefault(x => x.DeviceNumber == (id).ToString());
+                    if (screen != null)
+                    {
+                        SetupDesktop.CloseWallpaper(screen);
+                    }
+                }
+            }
+            return 0;
         }
 
         private static int RunAppOptions(AppOptions opts)
@@ -107,11 +130,7 @@ namespace livelywpf.Cmd
             {
                 Helpers.DesktopUtil.SetDesktopIconVisibility((bool)opts.ShowIcons);
             }
-            return 0;
-        }
 
-        private static int RunControlOptions(ControlOptions opts)
-        {
             if (opts.Volume != null)
             {
                 System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
@@ -126,25 +145,6 @@ namespace livelywpf.Cmd
                 {
                     Core.Playback.WallpaperPlaybackState = (bool)opts.Play ? PlaybackState.play : PlaybackState.paused;
                 }));
-            }
-
-            if (opts.Close != null)
-            {
-                var id = (int)opts.Close;
-                if (id == -1 || 
-                    Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.duplicate ||
-                    Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span)
-                {
-                    SetupDesktop.CloseAllWallpapers();
-                }
-                else
-                {
-                    var screen = ScreenHelper.GetScreen().FirstOrDefault(x => x.DeviceNumber == (id).ToString());
-                    if (screen != null)
-                    {
-                        SetupDesktop.CloseWallpaper(screen);
-                    }
-                }
             }
             return 0;
         }
@@ -173,7 +173,6 @@ namespace livelywpf.Cmd
                     //todo: load wallpaper file(video, website etc..) -> create quick thumbnail without user input -> set as wallpaper.
                     //related: https://github.com/rocksdanister/lively/issues/273 (Batch wallpaper import.) 
                 }
-
             }
             return 0;
         }

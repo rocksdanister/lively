@@ -237,6 +237,13 @@ namespace livelywpf.Views
 
                                 if (result == ContentDialogResult.Primary)
                                 {
+                                    /*
+                                    var cmdArgs = await Helpers.DialogService.ShowTextInputDialog(
+                                        "Command line arguments", 
+                                        ((UIElement)sender).XamlRoot, 
+                                        Properties.Resources.TextOK);
+                                    */
+
                                     Program.LibraryVM.AddWallpaper(item,
                                         WallpaperType.app,
                                         LibraryTileType.processing,

@@ -51,7 +51,8 @@ namespace livelywpf.Views
         private bool _processing = false;
         private string thumbnailPathTemp;
         private WallpaperType wallpaperType;
-        readonly DispatcherTimer dispatcherTimer = new DispatcherTimer();
+        readonly DispatcherTimer gifCaptureTimer = new DispatcherTimer();
+        readonly DispatcherTimer appRectCorrectionTimer = new DispatcherTimer();
         readonly int gifAnimationDelay = (int)Math.Round((1f / 15f * 1000f)); //in milliseconds
         readonly int gifSaveAnimationDelay = (int)Math.Round((1f / 90f) * 1000f);
         readonly int gifTotalFrames = 60;
@@ -75,6 +76,19 @@ namespace livelywpf.Views
             //attach wp hwnd to border ui element.
             WindowOperations.SetProgramToFramework(this, HWND, PreviewBorder);
             WallpaperAttached?.Invoke(this, null);
+
+            //Fix does not work..
+            /*
+            if (wallpaperType == WallpaperType.app ||
+                wallpaperType == WallpaperType.unity ||
+                wallpaperType == WallpaperType.unityaudio ||
+                wallpaperType == WallpaperType.godot)
+            {
+                appRectCorrectionTimer.Interval = new TimeSpan(0, 0, 0, 0, 100);
+                appRectCorrectionTimer.Tick += AppRectCorrectionTimer_Tick;
+                appRectCorrectionTimer.Start();
+            }
+            */
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -85,12 +99,18 @@ namespace livelywpf.Views
                 return;
             }
 
-            if (dispatcherTimer != null)
-            {
-                dispatcherTimer.Stop();
-            }
+            gifCaptureTimer?.Stop();
+            appRectCorrectionTimer?.Stop();
             //detach wallpaper window from this dialogue.
             WindowOperations.SetParentSafe(HWND, IntPtr.Zero);
+        }
+
+        private void AppRectCorrectionTimer_Tick(object sender, EventArgs e)
+        {
+            if (!NativeMethods.SetWindowPos(HWND, 1, 0, 0, (int)PreviewBorder.Width, (int)PreviewBorder.Height, 0x0010 | 0x0002))
+            {
+                NLogger.LogWin32Error("setwindowpos(1) fail AppRectCorrectionTimer_Tick(),");
+            }
         }
 
         private void CaptureLoop(object sender, EventArgs e)
@@ -106,7 +126,7 @@ namespace livelywpf.Views
                 }
                 catch
                 {
-                    dispatcherTimer.Stop();
+                    gifCaptureTimer.Stop();
                 }
             }
 
@@ -127,9 +147,9 @@ namespace livelywpf.Views
 
         private async void CapturePreview(string saveDirectory)
         {
-            if (dispatcherTimer != null)
+            if (gifCaptureTimer != null)
             {
-                dispatcherTimer.Stop();
+                gifCaptureTimer.Stop();
             }
             _processing = true;
             taskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Normal;
@@ -240,9 +260,9 @@ namespace livelywpf.Views
         {
             thumbnailPathTemp = savePath;
             //capture thumbnail every few seconds while user is shown wallpaper metadata preview.
-            dispatcherTimer.Tick += new EventHandler(CaptureLoop);
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 3000);
-            dispatcherTimer.Start();
+            gifCaptureTimer.Tick += new EventHandler(CaptureLoop);
+            gifCaptureTimer.Interval = new TimeSpan(0, 0, 0, 0, 3000);
+            gifCaptureTimer.Start();
         }
 
         #endregion
