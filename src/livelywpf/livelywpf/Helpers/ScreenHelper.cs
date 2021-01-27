@@ -100,28 +100,6 @@ namespace livelywpf
             return screenStatus;
         }
 
-        public static bool ScreenCompare(Screen screen1, Screen screen2, DisplayIdentificationMode mode)
-        {
-            bool screenStatus = false;
-            switch (mode)
-            {
-                case DisplayIdentificationMode.screenClass:
-                    if (screen1 == screen2)
-                    {
-                        screenStatus = true;
-                    }
-                    break;
-                case DisplayIdentificationMode.screenLayout:
-                    //ignoring DeviceName which can change during driver update, windows restart etc..
-                    if (screen1.Bounds == screen2.Bounds)
-                    {
-                        screenStatus = true;
-                    }
-                    break;
-            }
-            return screenStatus;
-        }
-
         public static bool ScreenCompare(Screen screen1, LivelyScreen screen2, DisplayIdentificationMode mode)
         {
             bool screenStatus = false;

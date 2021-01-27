@@ -121,7 +121,8 @@ namespace livelywpf
     public enum DisplayIdentificationMode
     {
         screenClass,
-        screenLayout
+        screenLayout,
+        hwnd
     }
 
     public enum PlaybackState

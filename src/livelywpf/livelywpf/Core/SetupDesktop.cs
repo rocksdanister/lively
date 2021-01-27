@@ -20,7 +20,7 @@ namespace livelywpf
         #region init
 
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private static readonly List<LivelyScreen> screenList = ScreenHelper.GetScreen();
+        private static readonly List<LivelyScreen> screenList;// = ScreenHelper.GetScreen();
         private static IntPtr progman, workerw;
         private static bool _isInitialized = false;
         private static Playback processMonitor;
@@ -30,6 +30,7 @@ namespace livelywpf
 
         static SetupDesktop()
         {
+            screenList = ScreenHelper.GetScreen();
             SystemEvents.DisplaySettingsChanged += SystemEvents_DisplaySettingsChanged;
         }
 
@@ -519,6 +520,11 @@ namespace livelywpf
         }
 
         private static void SystemEvents_DisplaySettingsChanged(object sender, EventArgs e)
+        {
+            RefreshWallpaper();
+        }
+
+        private static void RefreshWallpaper()
         {
             try
             {
