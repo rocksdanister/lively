@@ -40,6 +40,9 @@ namespace livelywpf
             //clear temp files if any.
             FileOperations.EmptyDirectory(Path.Combine(Program.AppDataDir, "temp"));
 
+            //Initialize before viewmodel and main window.
+            ScreenHelper.Initialize();
+
             #region vm init
 
             Program.SettingsVM = new SettingsViewModel();

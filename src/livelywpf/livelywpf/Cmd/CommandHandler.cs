@@ -155,33 +155,32 @@ namespace livelywpf.Cmd
             {
                 if (Directory.Exists(opts.File))
                 {
-                    //Folder containing LivelyInfo.json file.
                     System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
                     {
+                        //Folder containing LivelyInfo.json file.
                         Core.LivelyScreen screen = opts.Monitor != null ?
-                            ScreenHelper.GetScreen().FirstOrDefault(x => x.DeviceNumber == ((int)opts.Monitor).ToString()) : ScreenHelper.GetPrimaryScreen();
+                         ScreenHelper.GetScreen().FirstOrDefault(x => x.DeviceNumber == ((int)opts.Monitor).ToString()) : ScreenHelper.GetPrimaryScreen();
 
                         var libraryItem = Program.LibraryVM.LibraryItems.FirstOrDefault(x => x.LivelyInfoFolderPath.Equals(opts.File));
                         if (libraryItem != null && screen != null)
                         {
-                            Program.LibraryVM.WallpaperSet(libraryItem, screen);
+                            SetupDesktop.SetWallpaper(libraryItem, screen);
                         }
                     }));
                 }
                 else if (File.Exists(opts.File))
                 {
-                    //File path, outside of Lively folder.
-                    //todo: If not present in library -> load wallpaper file(video, website etc..) -> create quick thumbnail without user input -> set as wallpaper.
-                    //related: https://github.com/rocksdanister/lively/issues/273 (Batch wallpaper import.) 
                     System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
                     {
+                        //File path, outside of Lively folder.
+                        //todo: If not present in library -> load wallpaper file(video, website etc..) -> create quick thumbnail without user input -> set as wallpaper.
+                        //related: https://github.com/rocksdanister/lively/issues/273 (Batch wallpaper import.) 
                         Core.LivelyScreen screen = opts.Monitor != null ?
-                            ScreenHelper.GetScreen().FirstOrDefault(x => x.DeviceNumber == ((int)opts.Monitor).ToString()) : ScreenHelper.GetPrimaryScreen();
-
+                                         ScreenHelper.GetScreen().FirstOrDefault(x => x.DeviceNumber == ((int)opts.Monitor).ToString()) : ScreenHelper.GetPrimaryScreen();
                         var libraryItem = Program.LibraryVM.LibraryItems.FirstOrDefault(x => x.FilePath.Equals(opts.File));
                         if (libraryItem != null && screen != null)
                         {
-                            Program.LibraryVM.WallpaperSet(libraryItem, screen);
+                            SetupDesktop.SetWallpaper(libraryItem, screen);
                         }
                     }));
                 }
@@ -200,7 +199,7 @@ namespace livelywpf.Cmd
                 {
                     try
                     {
-                        var wp = SetupDesktop.Wallpapers.Find(x => ScreenHelper.ScreenCompare(x.GetScreen(), screen, DisplayIdentificationMode.screenLayout));
+                        var wp = SetupDesktop.Wallpapers.Find(x => ScreenHelper.ScreenCompare(x.GetScreen(), screen, DisplayIdentificationMode.deviceId));
                         //delimiter
                         var tmp = opts.Param.Split("=");
                         string name = tmp[0], val = tmp[1], ctype = null;

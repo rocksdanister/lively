@@ -68,8 +68,10 @@ namespace livelywpf
             //todo: Use https://docs.microsoft.com/en-us/uwp/api/windows.applicationmodel.startuptask?view=winrt-19041
             IsStartup = WindowsStartup.CheckStartupRegistry() == 1 || WindowsStartup.CheckStartupRegistry() == -1;
 
-            if(ScreenHelper.GetScreen().FindIndex(x => ScreenHelper.ScreenCompare(x, Settings.SelectedDisplay, DisplayIdentificationMode.screenLayout)) == -1)
+            Debug.WriteLine(">>SCREEN DATA:" + Settings.SelectedDisplay.DeviceId + " " + Settings.SelectedDisplay.DeviceName);
+            if (ScreenHelper.GetScreen().FindIndex(x => ScreenHelper.ScreenCompare(x, Settings.SelectedDisplay, DisplayIdentificationMode.deviceId)) == -1)
             {
+                Debug.WriteLine(">>SCREEN DOES NOT EXIST RESETTING.");
                 //Previous screen missing, use current primary screen.
                 Settings.SelectedDisplay = ScreenHelper.GetPrimaryScreen();
                 UpdateConfigFile();
@@ -747,7 +749,7 @@ namespace livelywpf
             SetupDesktop.TerminateWallpaper(type);
             foreach (var item in prevWallpapers)
             {
-                Program.LibraryVM.WallpaperSet(item.GetWallpaperData(), item.GetScreen());
+                SetupDesktop.SetWallpaper(item.GetWallpaperData(), item.GetScreen());
                 if (Settings.WallpaperArrangement == WallpaperArrangement.span 
                     || Settings.WallpaperArrangement == WallpaperArrangement.duplicate)
                 {

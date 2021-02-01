@@ -27,6 +27,7 @@
     <PackageReference Include="CommandLineParser" Version="2.8.0" />
     <PackageReference Include="LibVLCSharp.WPF" Version="3.4.9" />
     <PackageReference Include="Magick.NET-Q16-x86" Version="7.22.3" />
+    <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.0.0-preview4" />
     <PackageReference Include="Microsoft.Toolkit.Wpf.UI.Controls" Version="6.1.2" />
     <PackageReference Include="Microsoft.Toolkit.Wpf.UI.XamlHost" Version="6.1.2" />
     <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.721-prerelease" />

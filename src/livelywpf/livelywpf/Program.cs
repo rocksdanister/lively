@@ -126,7 +126,7 @@ namespace livelywpf
             //If the first xamlhost element is closed, the rest of the host controls crashes/closes (?)-
             //Example: UWP gifplayer is started before the rest and closed.
             //This fixes that issue since the xamlhost UI elements are started in AppWindow.Show()
-            LibraryVM.RestoreWallpaperFromSave();
+            SetupDesktop.RestoreWallpaperFromSave();
 
             //first element is not application path, unlike Environment.GetCommandLineArgs().
             if (e.Args.Length > 0)

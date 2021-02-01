@@ -132,7 +132,7 @@ namespace livelywpf
             MouseInputMovAlways = true;
 
             TileSize = 1;
-            DisplayIdentification = DisplayIdentificationMode.screenLayout;
+            DisplayIdentification = DisplayIdentificationMode.deviceId;
             SelectedDisplay = ScreenHelper.GetPrimaryScreen();
             LivelyGUIRendering = LivelyGUIState.normal;
             WallpaperDir = Path.Combine(Program.AppDataDir, "Library");

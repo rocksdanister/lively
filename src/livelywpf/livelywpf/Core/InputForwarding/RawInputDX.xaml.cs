@@ -166,13 +166,13 @@ namespace livelywpf.Core
                 if (Playback.IsDesktop())
                 {
                     //Detect active wp based on cursor pos, better way to do this?
-                    var display = Screen.FromPoint(new System.Drawing.Point(
-                        System.Windows.Forms.Control.MousePosition.X, System.Windows.Forms.Control.MousePosition.Y));
+                    var display = new LivelyScreen(DisplayManager.Instance.GetDisplayMonitorFromPoint(new System.Windows.Point(
+                        System.Windows.Forms.Control.MousePosition.X, System.Windows.Forms.Control.MousePosition.Y)));
                     SetupDesktop.Wallpapers.ForEach(wallpaper =>
                     {
                         if (IsInputAllowed(wallpaper.GetWallpaperType()))
                         {
-                            if (ScreenHelper.ScreenCompare(display, wallpaper.GetScreen(), DisplayIdentificationMode.screenLayout) ||
+                            if (ScreenHelper.ScreenCompare(display, wallpaper.GetScreen(), DisplayIdentificationMode.deviceId) ||
                                     Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span)
                             {
                                 //ref:
@@ -220,13 +220,13 @@ namespace livelywpf.Core
 
             try
             {
-                var display = Screen.FromPoint(new System.Drawing.Point(x, y));
+                var display = new LivelyScreen(DisplayManager.Instance.GetDisplayMonitorFromPoint(new System.Windows.Point(x, y)));
                 var mouse = CalculateMousePos(x, y, display);
                 SetupDesktop.Wallpapers.ForEach(wallpaper =>
                 {
                     if (IsInputAllowed(wallpaper.GetWallpaperType()))
                     {
-                        if (ScreenHelper.ScreenCompare(display, wallpaper.GetScreen(), DisplayIdentificationMode.screenLayout) ||
+                        if (ScreenHelper.ScreenCompare(display, wallpaper.GetScreen(), DisplayIdentificationMode.deviceId) ||
                             Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span)
                         {
                             //The low-order word specifies the x-coordinate of the cursor, the high-order word specifies the y-coordinate of the cursor.
@@ -256,7 +256,7 @@ namespace livelywpf.Core
         /// <param name="y">Cursor pos y</param>
         /// <param name="display">Target display device</param>
         /// <returns>Localised cursor value</returns>
-        private static Point CalculateMousePos(int x, int y, Screen display)
+        private static Point CalculateMousePos(int x, int y, LivelyScreen display)
         {
             if (ScreenHelper.IsMultiScreen())
             {

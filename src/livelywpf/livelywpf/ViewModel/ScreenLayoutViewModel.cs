@@ -53,7 +53,7 @@ namespace livelywpf
                     OnPropertyChanged("SelectedItem");
                     CanCloseWallpaper();
                     CanCustomiseWallpaper();
-                    if (!ScreenHelper.ScreenCompare(value.Screen, Program.SettingsVM.Settings.SelectedDisplay, DisplayIdentificationMode.screenLayout))
+                    if (!ScreenHelper.ScreenCompare(value.Screen, Program.SettingsVM.Settings.SelectedDisplay, DisplayIdentificationMode.deviceId))
                     {
                         Program.SettingsVM.Settings.SelectedDisplay = value.Screen;
                         Program.SettingsVM.UpdateConfigFile();
@@ -126,7 +126,7 @@ namespace livelywpf
             {
                 SetupDesktop.Wallpapers.ForEach(x =>
                 {
-                    if (ScreenHelper.ScreenCompare(x.GetScreen(), SelectedItem.Screen, DisplayIdentificationMode.screenLayout))
+                    if (ScreenHelper.ScreenCompare(x.GetScreen(), SelectedItem.Screen, DisplayIdentificationMode.deviceId))
                     {
                         result = true;
                     }
@@ -158,7 +158,7 @@ namespace livelywpf
             {
                 foreach (var x in SetupDesktop.Wallpapers)
                 {
-                    if (ScreenHelper.ScreenCompare(x.GetScreen(), selection.Screen, DisplayIdentificationMode.screenLayout))
+                    if (ScreenHelper.ScreenCompare(x.GetScreen(), selection.Screen, DisplayIdentificationMode.deviceId))
                     {
                         if (selection.LivelyPropertyPath != null)
                         {
@@ -214,7 +214,7 @@ namespace livelywpf
                     string livelyPropertyFilePath = null;
                     SetupDesktop.Wallpapers.ForEach(x =>
                     {
-                        if (ScreenHelper.ScreenCompare(item, x.GetScreen(), DisplayIdentificationMode.screenLayout))
+                        if (ScreenHelper.ScreenCompare(item, x.GetScreen(), DisplayIdentificationMode.deviceId))
                         {
                             imgPath = x.GetWallpaperData().ThumbnailPath;
                             livelyPropertyFilePath = x.GetLivelyPropertyCopyPath();
@@ -233,7 +233,7 @@ namespace livelywpf
 
             foreach (var item in ScreenItems)
             {
-                if (ScreenHelper.ScreenCompare(item.Screen, Program.SettingsVM.Settings.SelectedDisplay, DisplayIdentificationMode.screenLayout))
+                if (ScreenHelper.ScreenCompare(item.Screen, Program.SettingsVM.Settings.SelectedDisplay, DisplayIdentificationMode.deviceId))
                 {
                     SelectedItem = item;
                     break;
@@ -241,13 +241,14 @@ namespace livelywpf
             }
         }
 
+        /*
         private void UpdateWallpaper(WallpaperArrangement previous, WallpaperArrangement current)
         {
             var wallpapers = SetupDesktop.Wallpapers.ToList();
             SetupDesktop.CloseAllWallpapers();
             if (previous == WallpaperArrangement.per && current == WallpaperArrangement.span)
             {
-                int i = wallpapers.FindIndex(x => ScreenHelper.ScreenCompare(x.GetScreen(), SelectedItem.Screen, DisplayIdentificationMode.screenLayout));
+                int i = wallpapers.FindIndex(x => ScreenHelper.ScreenCompare(x.GetScreen(), SelectedItem.Screen, DisplayIdentificationMode.deviceId));
                 if(i != -1)
                 {                  
                     Program.LibraryVM.WallpaperSet(wallpapers[i].GetWallpaperData(), wallpapers[i].GetScreen());
@@ -262,7 +263,7 @@ namespace livelywpf
             }   
             else if(previous == WallpaperArrangement.per && current == WallpaperArrangement.duplicate)
             {
-                int i = wallpapers.FindIndex(x => ScreenHelper.ScreenCompare(x.GetScreen(), SelectedItem.Screen, DisplayIdentificationMode.screenLayout));
+                int i = wallpapers.FindIndex(x => ScreenHelper.ScreenCompare(x.GetScreen(), SelectedItem.Screen, DisplayIdentificationMode.deviceId));
                 if (i != -1)
                 {
                     Program.LibraryVM.WallpaperSet(wallpapers[i].GetWallpaperData(), wallpapers[i].GetScreen());
@@ -291,6 +292,7 @@ namespace livelywpf
             }
             wallpapers.Clear();
         }
+        */
 
         #endregion //helpers
     }

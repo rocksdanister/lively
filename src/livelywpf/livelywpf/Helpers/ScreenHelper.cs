@@ -9,65 +9,39 @@ namespace livelywpf
 {
     public static class ScreenHelper
     {
+        static ScreenHelper()
+        {
+            //DisplayManager.Initialize();
+        }
+
+        public static void Initialize()
+        {
+            DisplayManager.Initialize();
+        }
+
         public static bool IsMultiScreen()
         {
-            return Screen.AllScreens.Count() > 1;
+            return DisplayManager.Instance.DisplayMonitors.Count > 1;
         }
 
         public static int ScreenCount()
         {
-            return Screen.AllScreens.Count();
+            return DisplayManager.Instance.DisplayMonitors.Count;
         }
 
         public static List<LivelyScreen> GetScreen()
         {
-            //todo optimise
             var result = new List<LivelyScreen>();
-            foreach (var item in Screen.AllScreens)
+            foreach (var item in DisplayManager.Instance.DisplayMonitors)
             {
                 result.Add(new LivelyScreen(item));
             }
             return result;
         }
 
-        public static Screen[] GetScreenWinform()
-        {
-            return Screen.AllScreens;
-        }
-
         public static LivelyScreen GetPrimaryScreen()
         {
-            return new LivelyScreen(Screen.PrimaryScreen);
-        }
-
-        public static bool ScreenExists(Screen screen, DisplayIdentificationMode mode)
-        {
-            bool screenStatus = false;
-            switch (mode)
-            {
-                case DisplayIdentificationMode.screenClass:
-                    foreach (var item in Screen.AllScreens)
-                    {
-                        if(screen.Equals(item))
-                        {
-                            screenStatus = true;
-                            break;
-                        }
-                    }
-                    break;
-                case DisplayIdentificationMode.screenLayout:
-                    //ignoring DeviceName which can change during driver update, windows restart etc..
-                    foreach (var item in Screen.AllScreens)
-                    {
-                        if(item.Bounds == screen.Bounds)
-                        {
-                            screenStatus = true;
-                            break;
-                        }
-                    }
-                    break;
-            }
-            return screenStatus;
+            return new LivelyScreen(DisplayManager.Instance.PrimaryDisplayMonitor);
         }
 
         public static bool ScreenExists(LivelyScreen screen, DisplayIdentificationMode mode)
@@ -75,7 +49,7 @@ namespace livelywpf
             bool screenStatus = false;
             switch (mode)
             {
-                case DisplayIdentificationMode.screenClass:
+                case DisplayIdentificationMode.deviceName:
                     foreach (var item in Screen.AllScreens)
                     {
                         if (item.DeviceName == screen.DeviceName)
@@ -85,38 +59,12 @@ namespace livelywpf
                         }
                     }
                     break;
-                case DisplayIdentificationMode.screenLayout:
+                case DisplayIdentificationMode.deviceId:
                     //ignoring DeviceName which can change during driver update, windows restart etc..
-                    foreach (var item in Screen.AllScreens)
-                    {
-                        if (item.Bounds == screen.Bounds)
-                        {
-                            screenStatus = true;
-                            break;
-                        }
-                    }
-                    break;
-            }
-            return screenStatus;
-        }
-
-        public static bool ScreenCompare(Screen screen1, LivelyScreen screen2, DisplayIdentificationMode mode)
-        {
-            bool screenStatus = false;
-            switch (mode)
-            {
-                case DisplayIdentificationMode.screenClass:
-                    if (screen1.DeviceName == screen2.DeviceName)
-                    {
-                        screenStatus = true;
-                    }
+                    screenStatus = GetScreen().FirstOrDefault(x => x.DeviceId == screen.DeviceId) != null;
                     break;
                 case DisplayIdentificationMode.screenLayout:
-                    //ignoring DeviceName which can change during driver update, windows restart etc..
-                    if (screen1.Bounds == screen2.Bounds)
-                    {
-                        screenStatus = true;
-                    }
+                    screenStatus = GetScreen().FirstOrDefault(x => x.Bounds == screen.Bounds) != null;
                     break;
             }
             return screenStatus;
@@ -127,61 +75,39 @@ namespace livelywpf
             bool screenStatus = false;
             switch (mode)
             {
-                case DisplayIdentificationMode.screenClass:
-                    if (screen1.DeviceName == screen2.DeviceName)
-                    {
-                        screenStatus = true;
-                    }
+                case DisplayIdentificationMode.deviceName:
+                    screenStatus = (screen1.DeviceName == screen2.DeviceName);
+                    break;
+                case DisplayIdentificationMode.deviceId:
+                    screenStatus = (screen1.DeviceId == screen2.DeviceId);
                     break;
                 case DisplayIdentificationMode.screenLayout:
-                    //ignoring DeviceName which can change during driver update, windows restart etc..
-                    if (screen1.Bounds == screen2.Bounds)
-                    {
-                        screenStatus = true;
-                    }
+                    screenStatus = (screen1.Bounds == screen2.Bounds);
                     break;
             }
             return screenStatus;
         }
 
-        public static Screen GetScreenWinform(string DeviceName, Rectangle Bounds, Rectangle WorkingArea, DisplayIdentificationMode mode)
-        {
-            foreach (var item in GetScreenWinform())
-            {
-                switch (mode)
-                {
-                    case DisplayIdentificationMode.screenClass:
-                        if (item.DeviceName.Equals(DeviceName))
-                        {
-                            return item;
-                        }
-                        break;
-                    case DisplayIdentificationMode.screenLayout:
-                        //ignoring DeviceName which can change during driver update, windows restart etc..
-                        if (item.Bounds == Bounds)
-                        {
-                            return item;
-                        }
-                        break;
-                }
-            }
-            return null;
-        }
-
-        public static LivelyScreen GetScreen(string DeviceName, Rectangle Bounds, Rectangle WorkingArea, DisplayIdentificationMode mode)
+        public static LivelyScreen GetScreen(string DeviceId, string DeviceName, Rectangle Bounds, Rectangle WorkingArea, DisplayIdentificationMode mode)
         {
             foreach (var item in GetScreen())
             {
                 switch (mode)
                 {
-                    case DisplayIdentificationMode.screenClass:
-                        if (item.DeviceName.Equals(DeviceName))
+                    case DisplayIdentificationMode.deviceName:
+                        if (item.DeviceName == DeviceName)
+                        {
+                            return item;
+                        }
+                        break;
+                    case DisplayIdentificationMode.deviceId:
+                        //ignoring DeviceName which can change during driver update, windows restart etc..
+                        if (item.DeviceId == DeviceId)
                         {
                             return item;
                         }
                         break;
                     case DisplayIdentificationMode.screenLayout:
-                        //ignoring DeviceName which can change during driver update, windows restart etc..
                         if (item.Bounds == Bounds)
                         {
                             return item;

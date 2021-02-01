@@ -272,7 +272,7 @@ namespace livelywpf.Core
                             //this is a limitation of this algorithm since only one window can be foreground!
                             foreach (var item in ScreenHelper.GetScreen())
                             {
-                                if (!ScreenHelper.ScreenCompare(item, focusedScreen, DisplayIdentificationMode.screenLayout))
+                                if (!ScreenHelper.ScreenCompare(item, focusedScreen, DisplayIdentificationMode.deviceId))
                                 {
                                     PlayWallpaper(item);
                                     //SetWallpaperVoume(0, item);
@@ -368,7 +368,7 @@ namespace livelywpf.Core
         {
             SetupDesktop.Wallpapers.ForEach(x =>
             {
-                if(ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.screenLayout))
+                if(ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.deviceId))
                     x.Pause();
             });
         }
@@ -377,7 +377,7 @@ namespace livelywpf.Core
         {
             SetupDesktop.Wallpapers.ForEach(x =>
             {
-                if (ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.screenLayout))
+                if (ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.deviceId))
                     x.Play();
             });
         }
@@ -394,7 +394,7 @@ namespace livelywpf.Core
         {
             SetupDesktop.Wallpapers.ForEach(x =>
             {
-                if (ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.screenLayout))
+                if (ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.deviceId))
                 {
                     x.SetVolume(volume);
                 }
@@ -433,8 +433,7 @@ namespace livelywpf.Core
         {
             try
             {
-                var screen = System.Windows.Forms.Screen.FromHandle(handle);
-                return new LivelyScreen(screen);
+                return new LivelyScreen(DisplayManager.Instance.GetDisplayMonitorFromHWnd(handle));
             }
             catch
             {
