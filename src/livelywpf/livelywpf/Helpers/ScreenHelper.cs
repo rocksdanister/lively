@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -9,6 +10,8 @@ namespace livelywpf
 {
     public static class ScreenHelper
     {
+        public static event EventHandler DisplayUpdated;
+
         static ScreenHelper()
         {
             //DisplayManager.Initialize();
@@ -17,6 +20,12 @@ namespace livelywpf
         public static void Initialize()
         {
             DisplayManager.Initialize();
+            DisplayManager.Instance.DisplayUpdated += Instance_DisplayUpdated;
+        }
+
+        private static void Instance_DisplayUpdated(object sender, System.EventArgs e)
+        {
+            DisplayUpdated?.Invoke(null, EventArgs.Empty);
         }
 
         public static bool IsMultiScreen()
@@ -31,12 +40,12 @@ namespace livelywpf
 
         public static List<LivelyScreen> GetScreen()
         {
-            var result = new List<LivelyScreen>();
+            var screenList = new List<LivelyScreen>();
             foreach (var item in DisplayManager.Instance.DisplayMonitors)
             {
-                result.Add(new LivelyScreen(item));
+                screenList.Add(new LivelyScreen(item));
             }
-            return result;
+            return screenList;
         }
 
         public static LivelyScreen GetPrimaryScreen()

@@ -75,12 +75,14 @@ namespace livelywpf
             {
                 _selectedWallpaperLayout = value;
                 OnPropertyChanged("SelectedWallpaperLayout");
-                if (Program.SettingsVM.Settings.WallpaperArrangement != (WallpaperArrangement)_selectedWallpaperLayout)
+
+                if (Program.SettingsVM.Settings.WallpaperArrangement != (WallpaperArrangement)_selectedWallpaperLayout && value != -1)
                 {
+                    var prevArrangement = Program.SettingsVM.Settings.WallpaperArrangement;
                     Program.SettingsVM.Settings.WallpaperArrangement = (WallpaperArrangement)_selectedWallpaperLayout;
                     Program.SettingsVM.UpdateConfigFile();
-                    SetupDesktop.CloseAllWallpapers();
-                    //UpdateWallpaper(previous, (WallpaperArrangement)_selectedWallpaperLayout);
+                    //SetupDesktop.CloseAllWallpapers();
+                    UpdateWallpaper(prevArrangement, Program.SettingsVM.Settings.WallpaperArrangement);
                 }
             }
         }
@@ -241,58 +243,28 @@ namespace livelywpf
             }
         }
 
-        /*
-        private void UpdateWallpaper(WallpaperArrangement previous, WallpaperArrangement current)
+        private void UpdateWallpaper(WallpaperArrangement prev, WallpaperArrangement curr)
         {
             var wallpapers = SetupDesktop.Wallpapers.ToList();
             SetupDesktop.CloseAllWallpapers();
-            if (previous == WallpaperArrangement.per && current == WallpaperArrangement.span)
+            if (wallpapers.Count != 0)
             {
-                int i = wallpapers.FindIndex(x => ScreenHelper.ScreenCompare(x.GetScreen(), SelectedItem.Screen, DisplayIdentificationMode.deviceId));
-                if(i != -1)
-                {                  
-                    Program.LibraryVM.WallpaperSet(wallpapers[i].GetWallpaperData(), wallpapers[i].GetScreen());
-                }
-            }
-            else if(previous == WallpaperArrangement.span && current == WallpaperArrangement.per)
-            {
-                if(wallpapers.Count != 0)
+                if ( (prev == WallpaperArrangement.per && curr == WallpaperArrangement.span) || (prev == WallpaperArrangement.per && curr == WallpaperArrangement.duplicate))
                 {
-                    Program.LibraryVM.WallpaperSet(wallpapers[0].GetWallpaperData(), wallpapers[0].GetScreen());
+                    var wp = wallpapers.FirstOrDefault(x => ScreenHelper.ScreenCompare(x.GetScreen(), SelectedItem.Screen, DisplayIdentificationMode.deviceId)) ?? wallpapers[0];
+                    SetupDesktop.SetWallpaper(wp.GetWallpaperData(), ScreenHelper.GetPrimaryScreen());
                 }
-            }   
-            else if(previous == WallpaperArrangement.per && current == WallpaperArrangement.duplicate)
-            {
-                int i = wallpapers.FindIndex(x => ScreenHelper.ScreenCompare(x.GetScreen(), SelectedItem.Screen, DisplayIdentificationMode.deviceId));
-                if (i != -1)
+                else if ((prev == WallpaperArrangement.span && curr == WallpaperArrangement.per) || (prev == WallpaperArrangement.duplicate && curr == WallpaperArrangement.per))
                 {
-                    Program.LibraryVM.WallpaperSet(wallpapers[i].GetWallpaperData(), wallpapers[i].GetScreen());
+                    SetupDesktop.SetWallpaper(wallpapers[0].GetWallpaperData(), SelectedItem.Screen);
                 }
-            }
-            else if (previous == WallpaperArrangement.duplicate && current == WallpaperArrangement.per)
-            {
-                if (wallpapers.Count != 0)
+                else if ((prev == WallpaperArrangement.span && curr == WallpaperArrangement.duplicate) || (prev == WallpaperArrangement.duplicate && curr == WallpaperArrangement.span))
                 {
-                    Program.LibraryVM.WallpaperSet(wallpapers[0].GetWallpaperData(), SelectedItem.Screen);
-                }
-            }
-            else if (previous == WallpaperArrangement.span && current == WallpaperArrangement.duplicate)
-            {
-                if (wallpapers.Count != 0)
-                {
-                    Program.LibraryVM.WallpaperSet(wallpapers[0].GetWallpaperData(), wallpapers[0].GetScreen());
-                }
-            }
-            else if (previous == WallpaperArrangement.duplicate && current == WallpaperArrangement.span)
-            {
-                if (wallpapers.Count != 0)
-                {
-                    Program.LibraryVM.WallpaperSet(wallpapers[0].GetWallpaperData(), wallpapers[0].GetScreen());
+                    SetupDesktop.SetWallpaper(wallpapers[0].GetWallpaperData(), ScreenHelper.GetPrimaryScreen());
                 }
             }
             wallpapers.Clear();
         }
-        */
 
         #endregion //helpers
     }
