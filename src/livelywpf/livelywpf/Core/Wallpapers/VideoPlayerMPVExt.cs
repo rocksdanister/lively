@@ -66,7 +66,7 @@ namespace livelywpf.Core
                 RedirectStandardOutput = true,
                 RedirectStandardError = true,
                 UseShellExecute = false,
-                WorkingDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "libMPVPlayer")
+                WorkingDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "libMPVPlayer"),
             };
 
             Process videoPlayerProc = new Process

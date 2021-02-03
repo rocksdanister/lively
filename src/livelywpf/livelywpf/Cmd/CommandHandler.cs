@@ -111,9 +111,9 @@ namespace livelywpf.Cmd
 
         private static int RunAppOptions(AppOptions opts)
         {
-            if (opts.ShowApp != null)
+            System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
             {
-                System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
+                if (opts.ShowApp != null)
                 {
                     if ((bool)opts.ShowApp)
                     {
@@ -123,28 +123,23 @@ namespace livelywpf.Cmd
                     {
                         App.AppWindow?.HideWindow();
                     }
-                }));
-            }
+                }
+
+                if (opts.Volume != null)
+                {
+                    Program.SettingsVM.GlobalWallpaperVolume = Clamp((int)opts.Volume, 0, 100);
+                }
+
+                if (opts.Play != null)
+                {
+                    Core.Playback.WallpaperPlaybackState = (bool)opts.Play ? PlaybackState.play : PlaybackState.paused;
+                }
+
+            }));
 
             if (opts.ShowIcons != null)
             {
                 Helpers.DesktopUtil.SetDesktopIconVisibility((bool)opts.ShowIcons);
-            }
-
-            if (opts.Volume != null)
-            {
-                System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
-                {
-                    Program.SettingsVM.GlobalWallpaperVolume = Clamp((int)opts.Volume, 0, 100);
-                }));
-            }
-
-            if (opts.Play != null)
-            {
-                System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
-                {
-                    Core.Playback.WallpaperPlaybackState = (bool)opts.Play ? PlaybackState.play : PlaybackState.paused;
-                }));
             }
             return 0;
         }
@@ -153,37 +148,34 @@ namespace livelywpf.Cmd
         {
             if (opts.File != null)
             {
-                if (Directory.Exists(opts.File))
+
+                System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
                 {
-                    System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
+                    if (Directory.Exists(opts.File))
                     {
                         //Folder containing LivelyInfo.json file.
                         Core.LivelyScreen screen = opts.Monitor != null ?
-                         ScreenHelper.GetScreen().FirstOrDefault(x => x.DeviceNumber == ((int)opts.Monitor).ToString()) : ScreenHelper.GetPrimaryScreen();
-
-                        var libraryItem = Program.LibraryVM.LibraryItems.FirstOrDefault(x => x.LivelyInfoFolderPath.Equals(opts.File));
+                            ScreenHelper.GetScreen().FirstOrDefault(x => x.DeviceNumber == ((int)opts.Monitor).ToString()) : ScreenHelper.GetPrimaryScreen();
+                        var libraryItem = Program.LibraryVM.LibraryItems.FirstOrDefault(x => x.LivelyInfoFolderPath != null && x.LivelyInfoFolderPath.Equals(opts.File));
                         if (libraryItem != null && screen != null)
                         {
                             SetupDesktop.SetWallpaper(libraryItem, screen);
                         }
-                    }));
-                }
-                else if (File.Exists(opts.File))
-                {
-                    System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
+                    }
+                    else if (File.Exists(opts.File))
                     {
                         //File path, outside of Lively folder.
                         //todo: If not present in library -> load wallpaper file(video, website etc..) -> create quick thumbnail without user input -> set as wallpaper.
                         //related: https://github.com/rocksdanister/lively/issues/273 (Batch wallpaper import.) 
                         Core.LivelyScreen screen = opts.Monitor != null ?
-                                         ScreenHelper.GetScreen().FirstOrDefault(x => x.DeviceNumber == ((int)opts.Monitor).ToString()) : ScreenHelper.GetPrimaryScreen();
-                        var libraryItem = Program.LibraryVM.LibraryItems.FirstOrDefault(x => x.FilePath.Equals(opts.File));
+                            ScreenHelper.GetScreen().FirstOrDefault(x => x.DeviceNumber == ((int)opts.Monitor).ToString()) : ScreenHelper.GetPrimaryScreen();
+                        var libraryItem = Program.LibraryVM.LibraryItems.FirstOrDefault(x => x.FilePath != null && x.FilePath.Equals(opts.File));
                         if (libraryItem != null && screen != null)
                         {
                             SetupDesktop.SetWallpaper(libraryItem, screen);
                         }
-                    }));
-                }
+                    }
+                }));
             }
             return 0;
         }

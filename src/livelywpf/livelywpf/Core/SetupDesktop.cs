@@ -419,7 +419,7 @@ namespace livelywpf
         /// </summary>
         /// <param name="handle">window handle of process to add as wallpaper</param>
         /// <param name="display">displaystring of display to sent wp to.</param>
-        private static void SetWallpaperPerScreen(IntPtr handle, LivelyScreen targetDisplay, bool focus = true)
+        private static void SetWallpaperPerScreen(IntPtr handle, LivelyScreen targetDisplay)
         {
             NativeMethods.RECT prct = new NativeMethods.RECT();
             NativeMethods.POINT topLeft;
@@ -441,10 +441,7 @@ namespace livelywpf
                 NLogger.LogWin32Error("setwindowpos(3) fail addwallpaper(),");
             }
 
-            if(focus)
-            {
-                SetFocus(true);
-            }
+            SetFocusMainApp();
             RefreshDesktop();
 
             //logging.
@@ -459,7 +456,7 @@ namespace livelywpf
         /// <summary>
         /// Spans wp across all screens.
         /// </summary>
-        private static void SetWallpaperSpanScreen(IntPtr handle, bool focus = true)
+        private static void SetWallpaperSpanScreen(IntPtr handle)
         {
             NativeMethods.RECT prct = new NativeMethods.RECT();
             //get spawned workerw rectangle data.
@@ -473,10 +470,7 @@ namespace livelywpf
                 NLogger.LogWin32Error("setwindowpos fail SpanWallpaper(),");
             }
 
-            if (focus)
-            {
-                SetFocus(true);
-            }
+            SetFocusMainApp();
             RefreshDesktop();
         }
 
@@ -1015,19 +1009,20 @@ namespace livelywpf
         /// <summary>
         /// Focus fix, otherwise when new applicaitons launch fullscreen wont giveup window handle once SetParent() is called.
         /// </summary>
-        private static void SetFocus(bool focusLively = true)
+        private static void SetFocusMainApp()
         {
-            System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
-            {
+            _ = System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
+              {
                 //change focus from the started window//application.
-                NativeMethods.SetForegroundWindow(progman);
-                NativeMethods.SetFocus(progman);
+                //NativeMethods.SetForegroundWindow(progman);
+                //NativeMethods.SetFocus(progman);
 
-                if(App.AppWindow != null)
-                {
-                    App.AppWindow.Activate();
-                }
-            }));
+                if (App.AppWindow?.Visibility != Visibility.Hidden)
+                  {
+                      Logger.Debug("MainWindow visible => Setting focus.");
+                      App.AppWindow?.Activate();
+                  }
+              }));
         }
 
         /// <summary>
