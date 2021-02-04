@@ -449,14 +449,11 @@ namespace livelywpf.Core
         /// <returns></returns>
         private bool IsZoomedSpan(IntPtr hWnd)
         {
-            NativeMethods.RECT appBounds;
-            NativeMethods.GetWindowRect(hWnd, out appBounds);
+            NativeMethods.GetWindowRect(hWnd, out NativeMethods.RECT appBounds);
+            var screenArea = ScreenHelper.GetVirtualScreenBounds();
             // If foreground app 95% working-area( - taskbar of monitor)
-            if ((appBounds.Bottom - appBounds.Top) >= System.Windows.Forms.SystemInformation.VirtualScreen.Height * .95f &&
-               (appBounds.Right - appBounds.Left) >= System.Windows.Forms.SystemInformation.VirtualScreen.Width * .95f)
-                return true;
-            else
-                return false;
+            return ((appBounds.Bottom - appBounds.Top) >= screenArea.Height * .95f &&
+               (appBounds.Right - appBounds.Left) >= screenArea.Width * .95f);
         }
 
         /// <summary>

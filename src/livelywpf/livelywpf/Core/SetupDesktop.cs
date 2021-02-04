@@ -701,7 +701,6 @@ namespace livelywpf
             }));
         }
 
-        // Only wp size is being updated, position change is disabled due to incorrect value in some monitor configurations.
         private static void UpdateWallpaperRect()
         {
             try
@@ -712,12 +711,11 @@ namespace livelywpf
                     if (Wallpapers.Count != 0)
                     {
                         Wallpapers[0].Play();
-                        var width = System.Windows.Forms.SystemInformation.VirtualScreen.Width;
-                        var height = System.Windows.Forms.SystemInformation.VirtualScreen.Height;
-                        Logger.Info("System parameters changed: Screen Param(Span)=>" + width + " " + height);
+                        var screenArea = ScreenHelper.GetVirtualScreenBounds();
+                        Logger.Info("System parameters changed: Screen Param(Span)=>" + screenArea.Width + " " + screenArea.Height);
                         //For play/pause, setting the new metadata.
                         Wallpapers[0].SetScreen(ScreenHelper.GetPrimaryScreen());
-                        NativeMethods.SetWindowPos(Wallpapers[0].GetHWND(), 1, 0, 0, width, height, 0 | 0x0010 | 0x0002);
+                        NativeMethods.SetWindowPos(Wallpapers[0].GetHWND(), 1, 0, 0, screenArea.Width, screenArea.Height, 0 | 0x0010);
                     }
                 }
                 else
@@ -731,23 +729,18 @@ namespace livelywpf
                             Logger.Info("System parameters changed: Screen Param old/new -> " + Wallpapers[i].GetScreen().Bounds + "/" + item.Bounds);
                             //For play/pause, setting the new metadata.
                             Wallpapers[i].SetScreen(item);
-                            //Getting wrong value for position from mapwindowpoints, only wallpaper size is changed for now.
-                            //NativeMethods.RECT prct = new NativeMethods.RECT() { Left = item.Bounds.X, Top = item.Bounds.Y };
-                            //NativeMethods.MapWindowPoints(IntPtr.Zero, workerw, ref prct, 2);
-                            //Logger.Debug("PRCT-> " + prct.Left + " " + prct.Top);
-                            if (!NativeMethods.SetWindowPos(Wallpapers[i].GetHWND(), 1, 0, 0, (item.Bounds.Width), (item.Bounds.Height), 0 | 0x0010 | 0x0002))
+
+                            var screenArea = ScreenHelper.GetVirtualScreenBounds();
+                            if (!NativeMethods.SetWindowPos(Wallpapers[i].GetHWND(),
+                                                            1,
+                                                            (item.Bounds.X - screenArea.Location.X),
+                                                            (item.Bounds.Y - screenArea.Location.Y),
+                                                            (item.Bounds.Width),
+                                                            (item.Bounds.Height),
+                                                            0 | 0x0010))
                             {
                                 NLogger.LogWin32Error("setwindowpos(3) fail UpdateWallpaperRect()=>");
                             }
-                            /*
-                            //alternative approach, does not work in mirrored mode.
-                            NativeMethods.POINT pts = new NativeMethods.POINT() { X = item.Bounds.X, Y = item.Bounds.Y };
-                            if (NativeMethods.ScreenToClient(workerw, ref pts))
-                            {
-                                Logger.Debug("PTS-> " + pts.X + " " + pts.Y);
-                                NativeMethods.SetWindowPos(Wallpapers[i].GetHWND(), 1, pts.X, pts.Y, item.Bounds.Width, item.Bounds.Height, 0 | 0x0010);
-                            }
-                            */
                         }
                     }
                 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.Drawing;
 using Newtonsoft.Json;
 using System.Windows;
@@ -39,11 +38,11 @@ namespace livelywpf.Core
             this.DeviceName = Display.DeviceName;
             this.DeviceNumber = Display.Index.ToString();
             this.BitsPerPixel = 0;
-            this.Bounds = RectToRectangle(Display.Bounds);
-            this.WorkingArea = RectToRectangle(Display.WorkingArea);
+            this.Bounds = ScreenHelper.RectToRectangle(Display.Bounds);
+            this.WorkingArea = ScreenHelper.RectToRectangle(Display.WorkingArea);
         }
 
-        public LivelyScreen(Screen Display)
+        public LivelyScreen(System.Windows.Forms.Screen Display)
         {
             //Screen class does not have DeviceId.
             this.DeviceId = ScreenHelper.GetScreen().FirstOrDefault(x => x.DeviceName == Display.DeviceName)?.DeviceId;
@@ -52,11 +51,6 @@ namespace livelywpf.Core
             this.BitsPerPixel = Display.BitsPerPixel;
             this.Bounds = Display.Bounds;
             this.WorkingArea = Display.WorkingArea;
-        }
-
-        Rectangle RectToRectangle(Rect rect)
-        {
-            return new Rectangle() { Width = (int)rect.Width, Height = (int)rect.Height, X = (int)rect.X, Y = (int)rect.Y };
         }
 
     }

@@ -127,6 +127,23 @@ namespace livelywpf
             return null;
         }
 
+        public static Rectangle GetVirtualScreenBounds()
+        {
+            return RectToRectangle(DisplayManager.Instance.VirtualScreenBounds);
+        }
+
+        public static Rectangle RectToRectangle(System.Windows.Rect rect)
+        {
+            return new Rectangle((int)rect.X, (int)rect.Y, (int)rect.Width, (int)rect.Height);
+        }
+
+        public static LivelyScreen GetScreenFromPoint(Point pt)
+        {
+            return new LivelyScreen(
+                DisplayManager.Instance.GetDisplayMonitorFromPoint(
+                    new System.Windows.Point(pt.X, pt.Y)));
+        }
+
         /// <summary>
         /// Extract last digits of the Screen class DeviceName(WinForm Screen class DeviceName only.), eg: \\.\DISPLAY4 -> 4
         /// </summary>

@@ -97,7 +97,7 @@ namespace livelywpf
             if (ScreenHelper.IsMultiScreen())
             {
                 //Finding screen in which cursor is present.
-                var screen = Screen.FromPoint(Cursor.Position);
+                var screen = ScreenHelper.GetScreenFromPoint(Cursor.Position);
 
                 var mousePos = Cursor.Position;
                 //Converting global cursor pos. to given screen pos.

@@ -262,8 +262,9 @@ namespace livelywpf.Core
             {
                 if (Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span)
                 {
-                    x -= SystemInformation.VirtualScreen.Location.X;
-                    y -= SystemInformation.VirtualScreen.Location.Y;
+                    var screenArea = ScreenHelper.GetVirtualScreenBounds();
+                    x -= screenArea.Location.X;
+                    y -= screenArea.Location.Y;
                 }
                 else //per-display or duplicate mode.
                 {
