@@ -148,7 +148,7 @@ namespace livelywpf.Cmd
         {
             if (opts.File != null)
             {
-
+                //todo: Rewrite fn in libraryvm
                 System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
                 {
                     if (Directory.Exists(opts.File))

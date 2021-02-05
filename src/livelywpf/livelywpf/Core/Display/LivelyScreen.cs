@@ -32,26 +32,35 @@ namespace livelywpf.Core
             this.WorkingArea = WorkingArea;
         }
 
-        public LivelyScreen(DisplayMonitor Display)
+        public LivelyScreen(DisplayMonitor display)
         {
-            this.DeviceId = Display.DeviceId;
-            this.DeviceName = Display.DeviceName;
-            this.DeviceNumber = Display.Index.ToString();
+            this.DeviceId = display.DeviceId;
+            this.DeviceName = display.DeviceName;
+            this.DeviceNumber = display.Index.ToString();
             this.BitsPerPixel = 0;
-            this.Bounds = ScreenHelper.RectToRectangle(Display.Bounds);
-            this.WorkingArea = ScreenHelper.RectToRectangle(Display.WorkingArea);
+            this.Bounds = ScreenHelper.RectToRectangle(display.Bounds);
+            this.WorkingArea = ScreenHelper.RectToRectangle(display.WorkingArea);
         }
 
-        public LivelyScreen(System.Windows.Forms.Screen Display)
+        public LivelyScreen(LivelyScreen display)
+        {
+            this.DeviceId = display.DeviceId;
+            this.DeviceName = display.DeviceName;
+            this.DeviceNumber = display.DeviceNumber;
+            this.BitsPerPixel = 0;
+            this.Bounds = display.Bounds;
+            this.WorkingArea = display.WorkingArea;
+        }
+
+        public LivelyScreen(System.Windows.Forms.Screen display)
         {
             //Screen class does not have DeviceId.
-            this.DeviceId = ScreenHelper.GetScreen().FirstOrDefault(x => x.DeviceName == Display.DeviceName)?.DeviceId;
-            this.DeviceName = Display.DeviceName;
-            this.DeviceNumber = ScreenHelper.GetScreenNumber(Display.DeviceName);
-            this.BitsPerPixel = Display.BitsPerPixel;
-            this.Bounds = Display.Bounds;
-            this.WorkingArea = Display.WorkingArea;
+            this.DeviceId = ScreenHelper.GetScreen().FirstOrDefault(x => x.DeviceName == display.DeviceName)?.DeviceId;
+            this.DeviceName = display.DeviceName;
+            this.DeviceNumber = ScreenHelper.GetScreenNumber(display.DeviceName);
+            this.BitsPerPixel = display.BitsPerPixel;
+            this.Bounds = display.Bounds;
+            this.WorkingArea = display.WorkingArea;
         }
-
     }
 }

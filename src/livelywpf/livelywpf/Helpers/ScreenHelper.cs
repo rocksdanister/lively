@@ -11,6 +11,7 @@ namespace livelywpf
     public static class ScreenHelper
     {
         public static event EventHandler DisplayUpdated;
+        private static readonly List<LivelyScreen> displayMonitors = new List<LivelyScreen>();
 
         static ScreenHelper()
         {
@@ -20,12 +21,19 @@ namespace livelywpf
         public static void Initialize()
         {
             DisplayManager.Initialize();
+            UpdateDisplayList();
             DisplayManager.Instance.DisplayUpdated += Instance_DisplayUpdated;
         }
 
         private static void Instance_DisplayUpdated(object sender, System.EventArgs e)
         {
+            UpdateDisplayList();
             DisplayUpdated?.Invoke(null, EventArgs.Empty);
+        }
+
+        public static List<LivelyScreen> GetScreen()
+        {
+            return displayMonitors;
         }
 
         public static bool IsMultiScreen()
@@ -36,16 +44,6 @@ namespace livelywpf
         public static int ScreenCount()
         {
             return DisplayManager.Instance.DisplayMonitors.Count;
-        }
-
-        public static List<LivelyScreen> GetScreen()
-        {
-            var screenList = new List<LivelyScreen>();
-            foreach (var item in DisplayManager.Instance.DisplayMonitors)
-            {
-                screenList.Add(new LivelyScreen(item));
-            }
-            return screenList;
         }
 
         public static LivelyScreen GetPrimaryScreen()
@@ -135,6 +133,13 @@ namespace livelywpf
         public static Rectangle RectToRectangle(System.Windows.Rect rect)
         {
             return new Rectangle((int)rect.X, (int)rect.Y, (int)rect.Width, (int)rect.Height);
+        }
+
+        private static void UpdateDisplayList()
+        {
+            displayMonitors.Clear();
+            DisplayManager.Instance.DisplayMonitors.ToList().ForEach(
+                screen => displayMonitors.Add(new LivelyScreen(screen)));
         }
 
         public static LivelyScreen GetScreenFromPoint(Point pt)

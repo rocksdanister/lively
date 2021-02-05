@@ -68,10 +68,8 @@ namespace livelywpf
             //todo: Use https://docs.microsoft.com/en-us/uwp/api/windows.applicationmodel.startuptask?view=winrt-19041
             IsStartup = WindowsStartup.CheckStartupRegistry() == 1 || WindowsStartup.CheckStartupRegistry() == -1;
 
-            Debug.WriteLine(">>SCREEN DATA:" + Settings.SelectedDisplay.DeviceId + " " + Settings.SelectedDisplay.DeviceName);
             if (ScreenHelper.GetScreen().FindIndex(x => ScreenHelper.ScreenCompare(x, Settings.SelectedDisplay, DisplayIdentificationMode.deviceId)) == -1)
             {
-                Debug.WriteLine(">>SCREEN DOES NOT EXIST RESETTING.");
                 //Previous screen missing, use current primary screen.
                 Settings.SelectedDisplay = ScreenHelper.GetPrimaryScreen();
                 UpdateConfigFile();
