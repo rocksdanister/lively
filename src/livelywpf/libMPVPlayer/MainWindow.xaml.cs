@@ -27,8 +27,8 @@ namespace libMPVPlayer
         {
             InitializeComponent();
             CommandLine.Parser.Default.ParseArguments<Options>(args)
-            .WithParsed(RunOptions)
-            .WithNotParsed(HandleParseError);
+                .WithParsed(RunOptions)
+                .WithNotParsed(HandleParseError);
         }
 
         #region cmdline

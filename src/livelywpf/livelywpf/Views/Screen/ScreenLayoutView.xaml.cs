@@ -18,13 +18,14 @@ namespace livelywpf.Views
     public partial class ScreenLayoutView : Window
     {
         private readonly List<ScreenLabelView> screenLabels = new List<ScreenLabelView>();
+
         public ScreenLayoutView()
         {
             InitializeComponent();
             this.DataContext = new ScreenLayoutViewModel();
             CreateLabelWindows();
 
-            //SetupDesktop.WallpaperChanged += SetupDesktop_WallpaperChanged;
+            ScreenHelper.DisplayUpdated += ScreenHelper_DisplayUpdated;
         }
 
         private void ScreenLayoutControl_ChildChanged(object sender, EventArgs e)
@@ -40,8 +41,10 @@ namespace livelywpf.Views
             }
         }
 
-        private void SetupDesktop_WallpaperChanged(object sender, EventArgs e)
+        private void ScreenHelper_DisplayUpdated(object sender, EventArgs e)
         {
+            //Windows will move the label window if property change.
+            //This is a lazy fix if display disconnect/reconnect.
             this.Dispatcher.BeginInvoke(new Action(() => {
                 CloseLabelWindows();
                 CreateLabelWindows();
@@ -50,29 +53,27 @@ namespace livelywpf.Views
 
         private void CreateLabelWindows()
         {
-            if(ScreenHelper.IsMultiScreen())
+            var screens = ScreenHelper.GetScreen();
+            if (screens.Count > 1)
             {
-                foreach (var item in ScreenHelper.GetScreen())
+                screens.ForEach(screen =>
                 {
-                    ScreenLabelView lbl = new ScreenLabelView(item.DeviceNumber, item.Bounds.Left + 10, item.Bounds.Top + 10);
-                    lbl.Show();
-                    screenLabels.Add(lbl);
-                }
+                    var labelWindow = new ScreenLabelView(screen.DeviceNumber, screen.Bounds.Left + 10, screen.Bounds.Top + 10);
+                    labelWindow.Show();
+                    screenLabels.Add(labelWindow);
+                });
             }
         }
 
         private void CloseLabelWindows()
         {
-            foreach (var item in screenLabels)
-            {
-                item.Close();
-            }
+            screenLabels.ForEach(x => x.Close());
             screenLabels.Clear();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            //SetupDesktop.WallpaperChanged -= SetupDesktop_WallpaperChanged;
+            ScreenHelper.DisplayUpdated -= ScreenHelper_DisplayUpdated;
             CloseLabelWindows();
         }
     }

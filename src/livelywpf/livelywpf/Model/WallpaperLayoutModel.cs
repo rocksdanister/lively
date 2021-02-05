@@ -19,9 +19,9 @@ namespace livelywpf
         public string LivelyInfoPath { get; set; }
 
         [JsonConstructor]
-        public WallpaperLayoutModel(string DeviceName, int BitsPerPixel, Rectangle Bounds, Rectangle WorkingArea, string livelyInfoPath) 
+        public WallpaperLayoutModel(string DeviceId, string DeviceName, int BitsPerPixel, Rectangle Bounds, Rectangle WorkingArea, string livelyInfoPath) 
         {
-            LivelyScreen = new LivelyScreen(DeviceName, BitsPerPixel, Bounds, WorkingArea);
+            LivelyScreen = new LivelyScreen(DeviceId, DeviceName, BitsPerPixel, Bounds, WorkingArea);
             this.LivelyInfoPath = livelyInfoPath;
         }
 

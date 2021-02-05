@@ -254,6 +254,9 @@ namespace livelywpf
             {
                 Program.ShowMainWindow();   
             }
+            //todo: bind it better.
+            _= Core.DisplayManager.Instance?.OnWndProc(hwnd, (uint)msg, wParam, lParam);
+
             return IntPtr.Zero;
         }
 
