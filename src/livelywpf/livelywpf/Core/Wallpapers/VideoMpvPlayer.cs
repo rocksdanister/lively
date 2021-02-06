@@ -28,7 +28,7 @@ namespace livelywpf.Core
         private readonly CancellationTokenSource ctsProcessWait = new CancellationTokenSource();
         private Task processWaitTask;
         private readonly int timeOut;
-        private string ipsServerName;
+        private readonly string ipcServerName;
         JObject livelyPropertiesData;
         string LivelyPropertyCopy { get; set; }
 
@@ -82,9 +82,28 @@ namespace livelywpf.Core
                 _ => "--keepaspect=no",
             };
 
-            ipsServerName = "mpvsocket" + Path.GetRandomFileName();
-            string cmdArgs = "--force-window=yes --loop-file --keep-open --hwdec=auto --stop-screensaver=no --geometry=-9999:0 " + scalerArg + " " +
-                @"--input-ipc-server=\\.\pipe\" + ipsServerName + " " + "\"" + path + "\"";
+            ipcServerName = "mpvsocket" + Path.GetRandomFileName();
+            string cmdArgs = 
+                //always create gui window
+                "--force-window=yes " +
+                //alternative: --loop-file=inf
+                "--loop-file " +
+                //do not close after media end
+                "--keep-open " +
+                //gpu decode preferred
+                "--hwdec=auto " + 
+                //allow screensaver
+                "--stop-screensaver=no " +
+                //open window at (-9999,0)
+                "--geometry=-9999:0 " + 
+                //alternative: --input-ipc-server=\\.\pipe\
+                "--input-ipc-server=" + ipcServerName + 
+                //integer scaler for sharpness
+                (model.LivelyInfo.Type == WallpaperType.gif ? " --scale=nearest " : " ") + 
+                //stretch algorithm
+                scalerArg + " " +
+                //file, stream path
+                "\"" + path + "\"";
 
             ProcessStartInfo start = new ProcessStartInfo
             {               
@@ -183,7 +202,7 @@ namespace livelywpf.Core
 
                 if (msg != null)
                 {
-                    Helpers.PipeClient.SendMessage(ipsServerName, new string[] { msg });
+                    Helpers.PipeClient.SendMessage(ipcServerName, new string[] { msg });
                 }
             }
             catch { }
@@ -265,7 +284,7 @@ namespace livelywpf.Core
 
                         if (msg != null)
                         {
-                            Helpers.PipeClient.SendMessage(ipsServerName, new string[] { msg });
+                            Helpers.PipeClient.SendMessage(ipcServerName, new string[] { msg });
                         }
                     }
                 }
@@ -276,7 +295,7 @@ namespace livelywpf.Core
             }
         }
 
-        private static string GetMpvJsonPropertyString(string commandName, params object[] parameters)
+        private string GetMpvJsonPropertyString(string commandName, params object[] parameters)
         {
             var script = new StringBuilder();
             script.Append("{\"");

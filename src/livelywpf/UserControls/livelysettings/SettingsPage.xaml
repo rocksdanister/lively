@@ -144,6 +144,7 @@
                                 <ComboBoxItem>libVLC(External)</ComboBoxItem>
                                 <ComboBoxItem>libMPV</ComboBoxItem>
                                 <ComboBoxItem>libMPV(External)</ComboBoxItem>
+                                <ComboBoxItem>mpv</ComboBoxItem>
                             </ComboBox>
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipVideoPlayer}"/>
 

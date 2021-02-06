@@ -194,7 +194,16 @@ namespace livelywpf
             else if (wallpaper.LivelyInfo.Type == WallpaperType.video)
             {
                 //How many videoplayers? Yes.
-                if (Program.SettingsVM.Settings.VideoPlayer == LivelyMediaPlayer.libmpv)
+                if (Program.SettingsVM.Settings.VideoPlayer == LivelyMediaPlayer.mpv)
+                {
+                    wallpaper.ItemStartup = true;
+                    var item = new VideoMpvPlayer(wallpaper.FilePath, wallpaper, target,
+                        Program.SettingsVM.Settings.WallpaperScaling);
+                    item.WindowInitialized += SetupDesktop_WallpaperInitialized;
+                    wallpapersPending.Add(item);
+                    item.Show();
+                }
+                else if (Program.SettingsVM.Settings.VideoPlayer == LivelyMediaPlayer.libmpv)
                 {
                     wallpaper.ItemStartup = true;
                     var item = new VideoPlayerMPV(wallpaper.FilePath, wallpaper, 
