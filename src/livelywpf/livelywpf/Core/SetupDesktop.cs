@@ -146,148 +146,109 @@ namespace livelywpf
                 return;
             }
 
-            if (wallpaper.LivelyInfo.Type == WallpaperType.web 
-                || wallpaper.LivelyInfo.Type == WallpaperType.webaudio 
-                || wallpaper.LivelyInfo.Type == WallpaperType.url)
+            IWallpaper wpInstance = null;
+            switch (wallpaper.LivelyInfo.Type)
             {
-
-                if (Program.SettingsVM.Settings.WebBrowser == LivelyWebBrowser.cef)
-                {
-                    wallpaper.ItemStartup = true;
-                    var item = new WebProcess(wallpaper.FilePath, wallpaper, target);
-                    item.WindowInitialized += SetupDesktop_WallpaperInitialized;
-                    wallpapersPending.Add(item);
-                    item.Show();
-                }
-                else if (Program.SettingsVM.Settings.WebBrowser == LivelyWebBrowser.webview2)
-                {
-                    wallpaper.ItemStartup = true;
-                    var item = new WebEdge(wallpaper.FilePath, wallpaper, target);
-                    item.WindowInitialized += SetupDesktop_WallpaperInitialized;
-                    wallpapersPending.Add(item);
-                    item.Show();
-                }
-            }
-            else if (wallpaper.LivelyInfo.Type == WallpaperType.app
-                || wallpaper.LivelyInfo.Type == WallpaperType.godot
-                || wallpaper.LivelyInfo.Type == WallpaperType.unity)
-            {
-
-                if (Program.IsMSIX)
-                {
-                    Logger.Info("Core: Skipping program wallpaper on MSIX package.");
-                    System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
+                case WallpaperType.web:
+                case WallpaperType.webaudio:
+                case WallpaperType.url:
+                    switch (Program.SettingsVM.Settings.WebBrowser)
                     {
-                        Program.LibraryVM.WallpaperDelete(wallpaper);
-                    }));
-                    MessageBox.Show(Properties.Resources.TextFeatureMissing, Properties.Resources.TextError);
-                    return;
-                }
+                        case LivelyWebBrowser.cef:
+                            wpInstance = new WebProcess(wallpaper.FilePath, wallpaper, target);
+                            break;
+                        case LivelyWebBrowser.webview2:
+                            wpInstance = new WebEdge(wallpaper.FilePath, wallpaper, target);
+                            break;
+                    }
+                    break;
+                case WallpaperType.video:
+                    //How many videoplayers you need? Yes.
+                    //todo: Seriously though, depreciate some of them!
+                    switch (Program.SettingsVM.Settings.VideoPlayer)
+                    {
+                        case LivelyMediaPlayer.wmf:
+                            wpInstance = new VideoPlayerWPF(wallpaper.FilePath, wallpaper,
+                                target, Program.SettingsVM.Settings.WallpaperScaling);
+                            break;
+                        case LivelyMediaPlayer.libvlc:
+                            wpInstance = new VideoPlayerVLC(wallpaper.FilePath, wallpaper, target);
+                            break;
+                        case LivelyMediaPlayer.libvlcExt:
+                            wpInstance = new VideoPlayerVLCExt(wallpaper.FilePath, wallpaper, target);
+                            break;
+                        case LivelyMediaPlayer.libmpv:
+                            wpInstance = new VideoPlayerMPV(wallpaper.FilePath, wallpaper,
+                                target, Program.SettingsVM.Settings.WallpaperScaling);
+                            break;
+                        case LivelyMediaPlayer.libmpvExt:
+                            wpInstance = new VideoPlayerMPVExt(wallpaper.FilePath, wallpaper, target,
+                                Program.SettingsVM.Settings.WallpaperScaling);
+                            break;
+                        case LivelyMediaPlayer.mpv:
+                            wpInstance = new VideoMpvPlayer(wallpaper.FilePath, wallpaper, target,
+                                Program.SettingsVM.Settings.WallpaperScaling);
+                            break;
+                    }
+                    break;
+                case WallpaperType.gif:
+                case WallpaperType.picture:
+                    switch (Program.SettingsVM.Settings.GifPlayer)
+                    {
+                        case LivelyGifPlayer.win10Img:
+                            wpInstance = new GIFPlayerUWP(wallpaper.FilePath, wallpaper,
+                                target, Program.SettingsVM.Settings.WallpaperScaling);
+                            break;
+                        case LivelyGifPlayer.libmpvExt:
+                            wpInstance = new VideoPlayerMPVExt(wallpaper.FilePath, wallpaper, target,
+                                Program.SettingsVM.Settings.WallpaperScaling);
+                            break;
+                    }
+                    break;
+                case WallpaperType.app:
+                case WallpaperType.bizhawk:
+                case WallpaperType.unity:
+                case WallpaperType.unityaudio:
+                case WallpaperType.godot:
+                    if (Program.IsMSIX)
+                    {
+                        Logger.Info("Core: Skipping program wallpaper on MSIX package.");
+                        System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
+                        {
+                            Program.LibraryVM.WallpaperDelete(wallpaper);
+                        }));
+                        MessageBox.Show(Properties.Resources.TextFeatureMissing, Properties.Resources.TextError);
+                    }
+                    else
+                    {
+                        wpInstance = new ExtPrograms(wallpaper.FilePath, wallpaper, target,
+                            Program.SettingsVM.Settings.WallpaperWaitTime);
+                    }
+                    break;
+                case WallpaperType.videostream:
+                    if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "libMPVPlayer", "lib", "youtube-dl.exe")))
+                    {
+                        wpInstance = new VideoPlayerMPVExt(wallpaper.FilePath, wallpaper, target,
+                            Program.SettingsVM.Settings.WallpaperScaling, Program.SettingsVM.Settings.StreamQuality);
+                    }
+                    else
+                    {
+                        Logger.Info("Core: yt-dl not found, using cef browser instead.");
+                        //note: wallpaper type will be videostream, don't forget..
+                        wpInstance = new WebProcess(wallpaper.FilePath, wallpaper, target);
+                    }
+                    break;
+            }
 
-                wallpaper.ItemStartup = true;
-                var item = new ExtPrograms(wallpaper.FilePath, wallpaper, target, 
-                    Program.SettingsVM.Settings.WallpaperWaitTime);
-                item.WindowInitialized += SetupDesktop_WallpaperInitialized;
-                wallpapersPending.Add(item);
-                item.Show();
-            }
-            else if (wallpaper.LivelyInfo.Type == WallpaperType.video)
+            if (wpInstance != null)
             {
-                //How many videoplayers? Yes.
-                if (Program.SettingsVM.Settings.VideoPlayer == LivelyMediaPlayer.mpv)
+                System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
                 {
                     wallpaper.ItemStartup = true;
-                    var item = new VideoMpvPlayer(wallpaper.FilePath, wallpaper, target,
-                        Program.SettingsVM.Settings.WallpaperScaling);
-                    item.WindowInitialized += SetupDesktop_WallpaperInitialized;
-                    wallpapersPending.Add(item);
-                    item.Show();
-                }
-                else if (Program.SettingsVM.Settings.VideoPlayer == LivelyMediaPlayer.libmpv)
-                {
-                    wallpaper.ItemStartup = true;
-                    var item = new VideoPlayerMPV(wallpaper.FilePath, wallpaper, 
-                        target, Program.SettingsVM.Settings.WallpaperScaling);
-                    item.WindowInitialized += SetupDesktop_WallpaperInitialized;
-                    wallpapersPending.Add(item);
-                    item.Show();
-                }
-                else if (Program.SettingsVM.Settings.VideoPlayer == LivelyMediaPlayer.libmpvExt)
-                {
-                    wallpaper.ItemStartup = true;
-                    var item = new VideoPlayerMPVExt(wallpaper.FilePath, wallpaper, target,
-                        Program.SettingsVM.Settings.WallpaperScaling);
-                    item.WindowInitialized += SetupDesktop_WallpaperInitialized;
-                    wallpapersPending.Add(item);
-                    item.Show();
-                }
-                else if (Program.SettingsVM.Settings.VideoPlayer == LivelyMediaPlayer.libvlc)
-                {
-                    wallpaper.ItemStartup = true;
-                    var item = new VideoPlayerVLC(wallpaper.FilePath, wallpaper, target);
-                    item.WindowInitialized += SetupDesktop_WallpaperInitialized;
-                    wallpapersPending.Add(item);
-                    item.Show();
-                }
-                else if (Program.SettingsVM.Settings.VideoPlayer == LivelyMediaPlayer.libvlcExt)
-                {
-                    wallpaper.ItemStartup = true;
-                    var item = new VideoPlayerVLCExt(wallpaper.FilePath, wallpaper, target);
-                    item.WindowInitialized += SetupDesktop_WallpaperInitialized;
-                    wallpapersPending.Add(item);
-                    item.Show();
-                }
-                else if (Program.SettingsVM.Settings.VideoPlayer == LivelyMediaPlayer.wmf)
-                {
-                    var item = new VideoPlayerWPF(wallpaper.FilePath, wallpaper, 
-                        target, Program.SettingsVM.Settings.WallpaperScaling);
-                    item.WindowInitialized += SetupDesktop_WallpaperInitialized;
-                    wallpapersPending.Add(item);
-                    item.Show();
-                }
-            }
-            else if (wallpaper.LivelyInfo.Type == WallpaperType.videostream)
-            {
-                if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "libMPVPlayer", "lib", "youtube-dl.exe")))
-                {
-                    wallpaper.ItemStartup = true;
-                    var item = new VideoPlayerMPVExt(wallpaper.FilePath, wallpaper, target,
-                        Program.SettingsVM.Settings.WallpaperScaling, Program.SettingsVM.Settings.StreamQuality);
-                    item.WindowInitialized += SetupDesktop_WallpaperInitialized;
-                    wallpapersPending.Add(item);
-                    item.Show();
-                }
-                else
-                {
-                    Logger.Info("Core: yt-dl not found, using cef browser instead.");
-                    //note: wallpaper type will be videostream, don't forget..
-                    wallpaper.ItemStartup = true;
-                    var item = new WebProcess(wallpaper.FilePath, wallpaper, target);
-                    item.WindowInitialized += SetupDesktop_WallpaperInitialized;
-                    wallpapersPending.Add(item);
-                    item.Show();
-                }
-            }
-            else if (wallpaper.LivelyInfo.Type == WallpaperType.gif || wallpaper.LivelyInfo.Type == WallpaperType.picture)
-            {
-                //gif player setting is also used for static picture wp.
-                if (Program.SettingsVM.Settings.GifPlayer == LivelyGifPlayer.win10Img)
-                {
-                    var item = new GIFPlayerUWP(wallpaper.FilePath, wallpaper,
-                        target, Program.SettingsVM.Settings.WallpaperScaling);
-                    item.WindowInitialized += SetupDesktop_WallpaperInitialized;
-                    wallpapersPending.Add(item);
-                    item.Show();
-                }
-                else if (Program.SettingsVM.Settings.GifPlayer == LivelyGifPlayer.libmpvExt)
-                {
-                    wallpaper.ItemStartup = true;
-                    var item = new VideoPlayerMPVExt(wallpaper.FilePath, wallpaper, target,
-                        Program.SettingsVM.Settings.WallpaperScaling);
-                    item.WindowInitialized += SetupDesktop_WallpaperInitialized;
-                    wallpapersPending.Add(item);
-                    item.Show();
-                }
+                }));
+                wpInstance.WindowInitialized += SetupDesktop_WallpaperInitialized;
+                wallpapersPending.Add(wpInstance);
+                wpInstance.Show();
             }
         }
 
@@ -379,7 +340,7 @@ namespace livelywpf
                             case WallpaperArrangement.duplicate:
                                 CloseWallpaper(wallpaper.GetScreen(), false);
                                 //Recursion..
-                                await SetWallpaperDuplicateScreen(wallpaper);
+                                SetWallpaperDuplicateScreen(wallpaper);
                                 break;
                         }
                     }
@@ -484,7 +445,7 @@ namespace livelywpf
             RefreshDesktop();
         }
 
-        private static async Task SetWallpaperDuplicateScreen(IWallpaper wallpaper)
+        private static void SetWallpaperDuplicateScreen(IWallpaper wallpaper)
         {
             SetWallpaperPerScreen(wallpaper.GetHWND(), wallpaper.GetScreen());
 
@@ -495,10 +456,7 @@ namespace livelywpf
             if (remainingScreens.Count != 0)
             {
                 Logger.Info("Sending/Queuing wallpaper(Duplicate)=>" + remainingScreens[0].DeviceName + " " + remainingScreens[0].Bounds);
-                await System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
-                {
-                    SetWallpaper(wallpaper.GetWallpaperData(), remainingScreens[0]);
-                }));
+                SetWallpaper(wallpaper.GetWallpaperData(), remainingScreens[0]);
             }
         }
 
