@@ -22,9 +22,6 @@ namespace livelywpf.Core
         public VideoPlayerMPVExt(string path, LibraryModel model, LivelyScreen display, 
             WallpaperScaler scaler = WallpaperScaler.fill, StreamQualitySuggestion streamQuality = StreamQualitySuggestion.Highest)
         {
-            // TODO: 
-            // Create a default livelyproperties.json if not found.
-
             LivelyPropertyCopy = null;
             if (model.LivelyPropertyPath != null)
             {

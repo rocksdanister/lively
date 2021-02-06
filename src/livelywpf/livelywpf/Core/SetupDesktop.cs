@@ -206,7 +206,7 @@ namespace livelywpf
                 else if (Program.SettingsVM.Settings.VideoPlayer == LivelyMediaPlayer.libmpvExt)
                 {
                     wallpaper.ItemStartup = true;
-                    var item = new VideoPlayerMPVExt(wallpaper.FilePath, wallpaper, target, 
+                    var item = new VideoPlayerMPVExt(wallpaper.FilePath, wallpaper, target,
                         Program.SettingsVM.Settings.WallpaperScaling);
                     item.WindowInitialized += SetupDesktop_WallpaperInitialized;
                     wallpapersPending.Add(item);
