@@ -116,7 +116,6 @@ namespace livelywpf
 
             WallpaperWaitTime = 20000; // 20sec
             ProcessTimerInterval = 500; //reduce to 250 for quicker response.
-            Language = CultureInfo.CurrentCulture.Name;
             StreamQuality = StreamQualitySuggestion.High;
             GenerateTile = true;
             LivelyZipGenerate = false;
@@ -152,6 +151,15 @@ namespace livelywpf
             TestBuild = false;
             ApplicationTheme = AppTheme.Dark;
             DetectRemoteDesktop = true;
+
+            try
+            {
+                Language = CultureInfo.CurrentCulture.Name;
+            }
+            catch (ArgumentNullException)
+            {
+                Language = "en";
+            }
         }
     }
 }
