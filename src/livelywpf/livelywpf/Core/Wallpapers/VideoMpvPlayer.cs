@@ -24,7 +24,6 @@ namespace livelywpf.Core
         Process Proc { get; set; }
         LibraryModel Model { get; set; }
         LivelyScreen Display { get; set; }
-        public UInt32 SuspendCnt { get; set; }
         private readonly CancellationTokenSource ctsProcessWait = new CancellationTokenSource();
         private Task processWaitTask;
         private readonly int timeOut;
@@ -32,7 +31,6 @@ namespace livelywpf.Core
         JObject livelyPropertiesData;
         string LivelyPropertyCopy { get; set; }
 
-        //todo: yt-dl support.
         public VideoMpvPlayer(string path, LibraryModel model, LivelyScreen display,
             WallpaperScaler scaler = WallpaperScaler.fill, StreamQualitySuggestion streamQuality = StreamQualitySuggestion.Highest)
         {
@@ -84,24 +82,25 @@ namespace livelywpf.Core
 
             ipcServerName = "mpvsocket" + Path.GetRandomFileName();
             string cmdArgs = 
-                //always create gui window
-                "--force-window=yes " +
+                "--volume=0 " +
                 //alternative: --loop-file=inf
                 "--loop-file " +
                 //do not close after media end
                 "--keep-open " +
-                //gpu decode preferred
-                "--hwdec=auto " + 
+                //always create gui window
+                "--force-window=yes " +
+                //open window at (-9999,0)
+                "--geometry=-9999:0 " +
                 //allow screensaver
                 "--stop-screensaver=no " +
-                //open window at (-9999,0)
-                "--geometry=-9999:0 " + 
                 //alternative: --input-ipc-server=\\.\pipe\
                 "--input-ipc-server=" + ipcServerName + " " +
                 //stretch algorithm
                 scalerArg + " " +
                 //integer scaler for sharpness
-                (model.LivelyInfo.Type == WallpaperType.gif ? "--scale=nearest " : " ") + 
+                (model.LivelyInfo.Type == WallpaperType.gif ? "--scale=nearest " : " ") +
+                //gpu decode preference
+                (Program.SettingsVM.Settings.VideoPlayerHwAccel ? "--hwdec=auto " : "--hwdec=no ") +
                 //file, stream path
                 (model.LivelyInfo.Type == WallpaperType.videostream ? Helpers.StreamHelper.YoutubeDLMpvArgGenerate(streamQuality, path) : "\"" + path + "\"");
 
@@ -122,7 +121,6 @@ namespace livelywpf.Core
             this.Model = model;
             this.Display = display;
             this.timeOut = 20000;
-            SuspendCnt = 0;
         }
 
         public async void Close()

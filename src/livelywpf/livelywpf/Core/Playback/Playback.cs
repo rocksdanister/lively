@@ -46,6 +46,7 @@ namespace livelywpf.Core
         private readonly DispatcherTimer dispatcherTimer = new DispatcherTimer();
         private bool _isLockScreen, _isRemoteSession;
         private bool disposedValue;
+        private int livelyPid = 0;
 
         public Playback()
         {
@@ -68,6 +69,18 @@ namespace livelywpf.Core
 
             InitializeTimer();
             WallpaperPlaybackState = PlaybackState.play;
+
+            try
+            {
+                using (Process process = Process.GetCurrentProcess())
+                {
+                    livelyPid = process.Id;
+                }
+            }
+            catch (Exception e)
+            {
+                Logger.Error("Failed to retrieve Lively Pid:" + e.Message);
+            }
 
             // Check if already in remote/lockscreen session.
             _isRemoteSession = System.Windows.Forms.SystemInformation.TerminalServerSession;
@@ -187,10 +200,7 @@ namespace livelywpf.Core
                         return;
                     }
 
-                    if (fProcess.ProcessName.Equals("livelywpf", StringComparison.OrdinalIgnoreCase) ||
-                        fProcess.ProcessName.Equals("livelycefsharp", StringComparison.OrdinalIgnoreCase) ||
-                        fProcess.ProcessName.Equals("libvlcplayer", StringComparison.OrdinalIgnoreCase) ||
-                        fProcess.ProcessName.Equals("libmpvplayer", StringComparison.OrdinalIgnoreCase))
+                    if (fProcess.Id == livelyPid || IsLivelyPlugin(fProcess.Id))
                     {
                         PlayWallpapers();
                         SetWallpaperVolume(Program.SettingsVM.Settings.AudioVolumeGlobal);
@@ -399,6 +409,11 @@ namespace livelywpf.Core
                     x.SetVolume(volume);
                 }
             });
+        }
+
+        private static bool IsLivelyPlugin(int pid)
+        {
+            return SetupDesktop.Wallpapers.Exists(x => x.GetProcess() != null && x.GetProcess().Id == pid);
         }
 
         /// <summary>

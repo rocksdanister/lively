@@ -68,7 +68,7 @@ namespace livelywpf
             if (defaultLanguage == null)
             {
                 defaultLanguage = LanguageItems[0];
-                Settings.Language = defaultLanguage.Codes[0];
+                Settings.Language = defaultLanguage.Codes[0]; //en
                 UpdateConfigFile();
             }
             try
@@ -77,7 +77,7 @@ namespace livelywpf
             }
             catch (Exception e)
             {
-                Logger.Error("Settings locale fail:" + e.Message);
+                Logger.Error("Setting locale fail:" + e.Message);
             }
             SelectedLanguageItem = defaultLanguage;
 
@@ -85,12 +85,8 @@ namespace livelywpf
             //todo: Use https://docs.microsoft.com/en-us/uwp/api/windows.applicationmodel.startuptask?view=winrt-19041
             IsStartup = WindowsStartup.CheckStartupRegistry() == 1 || WindowsStartup.CheckStartupRegistry() == -1;
 
-            if (ScreenHelper.GetScreen().FindIndex(x => ScreenHelper.ScreenCompare(x, Settings.SelectedDisplay, DisplayIdentificationMode.deviceId)) == -1)
-            {
-                //Previous screen missing, use current primary screen.
-                Settings.SelectedDisplay = ScreenHelper.GetPrimaryScreen();
-                UpdateConfigFile();
-            }
+            Settings.SelectedDisplay = ScreenHelper.GetScreen(Settings.SelectedDisplay.DeviceId, Settings.SelectedDisplay.DeviceName,
+                        Settings.SelectedDisplay.Bounds, Settings.SelectedDisplay.WorkingArea, DisplayIdentificationMode.deviceId) ?? ScreenHelper.GetPrimaryScreen();
 
             SelectedTileSizeIndex = Settings.TileSize;
             SelectedAppFullScreenIndex = (int)Settings.AppFullscreenPause;

@@ -24,7 +24,7 @@ namespace livelywpf.Core
         public LivelyScreen(string DeviceId, string DeviceName, int BitsPerPixel, Rectangle Bounds, Rectangle WorkingArea)
         {
             //Backward compatibility: lively < v1.1.9 does not have DeviceId.
-            this.DeviceId = DeviceId ?? (ScreenHelper.GetScreen().FirstOrDefault(x => x.Bounds == Bounds)?.DeviceId);
+            this.DeviceId = DeviceId ?? (ScreenHelper.GetScreen().FirstOrDefault(x => x.Bounds == Bounds)?.DeviceId); 
             this.DeviceName = DeviceName;
             this.DeviceNumber = ScreenHelper.GetScreenNumber(DeviceName);
             this.BitsPerPixel = BitsPerPixel;

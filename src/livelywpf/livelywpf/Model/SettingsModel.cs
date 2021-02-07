@@ -60,6 +60,10 @@ namespace livelywpf
         public int TileSize { get; set; }
         public DisplayIdentificationMode DisplayIdentification { get; set; }
         public LivelyMediaPlayer VideoPlayer { get; set; }
+        /// <summary>
+        /// Video gpu decode
+        /// </summary>
+        public bool VideoPlayerHwAccel { get; set; }
         public LivelyGifPlayer GifPlayer { get; set; }
         public LivelyWebBrowser WebBrowser { get; set; }
         public bool GifCapture { get; set; }
@@ -106,6 +110,7 @@ namespace livelywpf
             AppFullscreenPause = AppRulesEnum.pause;
             BatteryPause = AppRulesEnum.ignore;
             VideoPlayer = LivelyMediaPlayer.mpv;
+            VideoPlayerHwAccel = true;
             WebBrowser = LivelyWebBrowser.cef;
             GifPlayer = LivelyGifPlayer.win10Img;
 
