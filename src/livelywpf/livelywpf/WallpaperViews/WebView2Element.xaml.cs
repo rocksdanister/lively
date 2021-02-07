@@ -1,13 +1,10 @@
-﻿using Microsoft.Web.WebView2.Core;
-using Mpv.NET.Player;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Interop;
-//using Microsoft.Web.WebView2.Wpf;
 
 namespace livelywpf
 {
@@ -50,7 +47,7 @@ namespace livelywpf
                     {
                         webView.CoreWebView2.NavigateToString(ShadertoyURLtoEmbedLink(htmlPath));
                     }
-                    else if ((ytVideoId = Helpers.libMPVStreams.GetYouTubeVideoIdFromUrl(htmlPath)) != "")
+                    else if ((ytVideoId = Helpers.StreamHelper.GetYouTubeVideoIdFromUrl(htmlPath)) != "")
                     {
                         //open fullscreen embed player with loop enabled.
                         webView.CoreWebView2.Navigate("https://www.youtube.com/embed/" + ytVideoId + 

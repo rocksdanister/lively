@@ -122,23 +122,20 @@ namespace livelywpf
             }
 
             LivelyInfoFolderPath = folderPath;
-            if (Program.SettingsVM.Settings.LivelyGUIRendering == LivelyGUIState.normal)
-            {
-                //Use animated gif if exists.
-                ImagePath = File.Exists(PreviewClipPath) ? PreviewClipPath : ThumbnailPath;
-            }
-            else if (Program.SettingsVM.Settings.LivelyGUIRendering == LivelyGUIState.lite)
-            {
-                ImagePath = ThumbnailPath;
-            }
+            //Use animated gif if exists.
+            ImagePath = Program.SettingsVM.Settings.LivelyGUIRendering == LivelyGUIState.normal ? 
+                (File.Exists(PreviewClipPath) ? PreviewClipPath : ThumbnailPath) : ThumbnailPath;
 
-            if (data.Type == livelywpf.WallpaperType.video || data.Type == livelywpf.WallpaperType.videostream)
+            if (data.Type == livelywpf.WallpaperType.video || 
+                data.Type == livelywpf.WallpaperType.videostream || 
+                data.Type == livelywpf.WallpaperType.gif || 
+                data.Type == livelywpf.WallpaperType.picture)
             {
                 //No user made livelyproperties file if missing, using default for video.
                 if(LivelyPropertyPath == null)
                 {
-                    LivelyPropertyPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, 
-                        "plugins", "libMPVPlayer", "api", "LivelyProperties.json");
+                    LivelyPropertyPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
+                        "plugins", "mpv", "api", "LivelyProperties.json");
                 }
             }
 

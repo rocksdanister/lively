@@ -97,13 +97,13 @@ namespace livelywpf.Core
                 //open window at (-9999,0)
                 "--geometry=-9999:0 " + 
                 //alternative: --input-ipc-server=\\.\pipe\
-                "--input-ipc-server=" + ipcServerName + 
-                //integer scaler for sharpness
-                (model.LivelyInfo.Type == WallpaperType.gif ? " --scale=nearest " : " ") + 
+                "--input-ipc-server=" + ipcServerName + " " +
                 //stretch algorithm
                 scalerArg + " " +
+                //integer scaler for sharpness
+                (model.LivelyInfo.Type == WallpaperType.gif ? "--scale=nearest " : " ") + 
                 //file, stream path
-                "\"" + path + "\"";
+                (model.LivelyInfo.Type == WallpaperType.videostream ? Helpers.StreamHelper.YoutubeDLMpvArgGenerate(streamQuality, path) : "\"" + path + "\"");
 
             ProcessStartInfo start = new ProcessStartInfo
             {               

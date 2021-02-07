@@ -77,16 +77,6 @@ namespace livelywpf
                 Program.SettingsVM.UpdateConfigFile();
             }
 
-            try
-            {
-                //"Wallpaper Type" string of libraryitems are localized, so set locale before library vm init.
-                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(Program.SettingsVM.Settings.Language);
-            }
-            catch (CultureNotFoundException)
-            {
-                Logger.Error("Localisation: Culture not found=>" + Program.SettingsVM.Settings.Language);
-                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en");
-            }
             Program.AppRulesVM = new ApplicationRulesViewModel();
             Program.LibraryVM = new LibraryViewModel();
 

@@ -136,8 +136,10 @@ namespace livelywpf
     public enum LivelyMediaPlayer
     {
         wmf,
+        //depreciated
         libvlc,
         libvlcExt,
+        //depreciated
         libmpv,
         libmpvExt,
         mpv
@@ -146,7 +148,8 @@ namespace livelywpf
     public enum LivelyGifPlayer
     {
         win10Img,
-        libmpvExt
+        libmpvExt,
+        mpv
     }
 
     public enum LivelyWebBrowser

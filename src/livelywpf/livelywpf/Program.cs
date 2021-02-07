@@ -273,9 +273,12 @@ namespace livelywpf
             }
         }
 
+        [Obsolete("Not working!")]
         public static void RestartApplication()
         {
-            Process.Start(Path.ChangeExtension(System.Reflection.Assembly.GetExecutingAssembly().Location, ".exe"));
+            var appPath = Path.ChangeExtension(System.Reflection.Assembly.GetExecutingAssembly().Location, ".exe");
+            Logger.Info("Restarting application:" + appPath);
+            Process.Start(appPath);
             ExitApplication();
         }
 

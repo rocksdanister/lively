@@ -50,16 +50,10 @@ namespace livelywpf.Cef
                 this.livelyPropertyCopyData = LivelyPropertiesJSON.LoadLivelyProperties(livelyPropertyPath);
                 GenerateUIElements();
             }
-            catch (NullReferenceException e1)
+            catch (Exception e)
             {
-                Logger.Error(e1.ToString());
-                Task.Run(() => (MessageBox.Show("Customisation not supported/LivelyProperty file not found.\n" +
-                           "For videos only libMPV(External) player is currently supported.", Properties.Resources.TitleAppName)));
-            }
-            catch (Exception e2)
-            {
-                Logger.Error(e2.ToString());
-                Task.Run(() => (MessageBox.Show(e2.ToString(), Properties.Resources.TitleAppName)));
+                Logger.Error(e.ToString());
+                Task.Run(() => (MessageBox.Show(e.ToString(), Properties.Resources.TitleAppName)));
             }
         }
 
@@ -67,12 +61,34 @@ namespace livelywpf.Cef
 
         private void GenerateUIElements()
         {
-            if (livelyPropertyCopyData.Count == 0)
+            if (livelyPropertyCopyData == null)
+            {
+                var msg = "Property file not found!";
+                if (wallpaperData.LivelyInfo.Type == WallpaperType.video ||
+                    wallpaperData.LivelyInfo.Type == WallpaperType.videostream ||
+                    wallpaperData.LivelyInfo.Type == WallpaperType.gif ||
+                    wallpaperData.LivelyInfo.Type == WallpaperType.picture)
+                {
+                    msg += "\nMpv player is required...";
+                }
+                    //Empty..
+                    AddUIElement(new TextBlock
+                {
+                    Text = msg,
+                    Background = Brushes.Red,
+                        Foreground = Brushes.Yellow,
+                        HorizontalAlignment = HorizontalAlignment.Left,
+                    Margin = new Thickness(0, 50, 0, 0)
+                });
+                return;
+            }
+            else if (livelyPropertyCopyData.Count == 0)
             {
                 //Empty..
                 AddUIElement(new TextBlock
                 {
                     Text = "El Psy Congroo",
+                    Foreground = Brushes.Yellow,
                     HorizontalAlignment = HorizontalAlignment.Left,
                     Margin = margin
                 });
@@ -541,12 +557,14 @@ namespace livelywpf.Cef
             {
                 // TODO:
                 // Use DirectoryWatcher instead.
-                if (wallpaperData.LivelyInfo.Type == WallpaperType.video || 
-                    wallpaperData.LivelyInfo.Type == WallpaperType.videostream)
+                if (wallpaperData.LivelyInfo.Type == WallpaperType.video ||
+                    wallpaperData.LivelyInfo.Type == WallpaperType.videostream || 
+                    wallpaperData.LivelyInfo.Type == WallpaperType.gif || 
+                    wallpaperData.LivelyInfo.Type == WallpaperType.picture)
                 {
                     var lpp = Path.Combine(wallpaperData.LivelyInfoFolderPath, "LivelyProperties.json");
                     var dlpp = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
-                                "plugins", "libMPVPlayer", "api", "LivelyProperties.json");
+                                "plugins", "mpv", "api", "LivelyProperties.json");
                     if (File.Exists(lpp))
                     {
                         if (!string.Equals(wallpaperData.LivelyPropertyPath, lpp, StringComparison.OrdinalIgnoreCase))

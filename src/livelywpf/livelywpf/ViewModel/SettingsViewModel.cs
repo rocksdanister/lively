@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -62,7 +63,23 @@ namespace livelywpf
                 new LanguagesModel("Српска ћирилица(sr-Cyrl)", new string[]{ "sr-Cyrl", "sr-Cyrl-BA", "sr-Cyrl-ME", "sr-Cyrl-RS", "sr-Cyrl-CS" }),
                 new LanguagesModel("Ελληνικά(el)", new string[]{ "el", "el-GR", "el-CY" }),
             };
-            SelectedLanguageItem = SearchSupportedLanguage(Settings.Language);
+
+            var defaultLanguage = SearchSupportedLanguage(Settings.Language);
+            if (defaultLanguage == null)
+            {
+                defaultLanguage = LanguageItems[0];
+                Settings.Language = defaultLanguage.Codes[0];
+                UpdateConfigFile();
+            }
+            try
+            {
+                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(Settings.Language);
+            }
+            catch (Exception e)
+            {
+                Logger.Error("Settings locale fail:" + e.Message);
+            }
+            SelectedLanguageItem = defaultLanguage;
 
             //Ignoring the Settings.json savefile value, only checking the windows registry and user action on the ui.
             //todo: Use https://docs.microsoft.com/en-us/uwp/api/windows.applicationmodel.startuptask?view=winrt-19041
@@ -167,23 +184,14 @@ namespace livelywpf
             }
             set
             {
-                if(LanguageItems.Contains(value))
-                {
-                    _selectedLanguageItem = value;
-                }
-                else
-                {
-                    //en-US
-                    _selectedLanguageItem = LanguageItems[0];
-                }
+                _selectedLanguageItem = value;
                 OnPropertyChanged("SelectedLanguageItem");
-
-                if(_selectedLanguageItem.Codes.FirstOrDefault(x => x == Settings.Language) == null)
+                if (_selectedLanguageItem.Codes.FirstOrDefault(x => x == Settings.Language) == null)
                 {
-                    Settings.IsRestart = true;
+                    //Settings.IsRestart = true;
                     Settings.Language = _selectedLanguageItem.Codes[0];
                     UpdateConfigFile();
-                    Program.RestartApplication();
+                    //Program.RestartApplication();
                 }    
             }
         }
@@ -493,10 +501,10 @@ namespace livelywpf
             }
             set
             {
-                _selectedVideoPlayerIndex = value;
+                _selectedVideoPlayerIndex = CheckVideoPluginExists((LivelyMediaPlayer)value) ? value : (int)LivelyMediaPlayer.mpv;
                 OnPropertyChanged("SelectedVideoPlayerIndex");
 
-                if(Settings.VideoPlayer != (LivelyMediaPlayer)_selectedVideoPlayerIndex)
+                if (Settings.VideoPlayer != (LivelyMediaPlayer)_selectedVideoPlayerIndex)
                 {
                     Settings.VideoPlayer = (LivelyMediaPlayer)_selectedVideoPlayerIndex;
                     UpdateConfigFile();
@@ -515,7 +523,7 @@ namespace livelywpf
             }
             set
             {
-                _selectedGifPlayerIndex = value;
+                _selectedGifPlayerIndex = CheckGifPluginExists((LivelyGifPlayer)value) ? value : (int)LivelyGifPlayer.win10Img;
                 OnPropertyChanged("SelectedGifPlayerIndex");
 
                 if (Settings.GifPlayer != (LivelyGifPlayer)_selectedGifPlayerIndex)
@@ -721,6 +729,31 @@ namespace livelywpf
 
         #region helper fns
 
+        private static bool CheckVideoPluginExists(LivelyMediaPlayer mp)
+        {
+            return mp switch
+            {
+                LivelyMediaPlayer.wmf => true,
+                LivelyMediaPlayer.libvlc => false, //depreciated
+                LivelyMediaPlayer.libmpv => false, //depreciated
+                LivelyMediaPlayer.libvlcExt => File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "libVLCPlayer", "libVLCPlayer.exe")),
+                LivelyMediaPlayer.libmpvExt => File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "libMPVPlayer", "libMPVPlayer.exe")),
+                LivelyMediaPlayer.mpv => File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "mpv", "mpv.exe")), 
+                _ => false,
+            };
+        }
+
+        private static bool CheckGifPluginExists(LivelyGifPlayer gp)
+        {
+            return gp switch
+            {
+                LivelyGifPlayer.win10Img => true,
+                LivelyGifPlayer.libmpvExt => File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "libMPVPlayer", "libMPVPlayer.exe")),
+                LivelyGifPlayer.mpv => File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "mpv", "mpv.exe")),
+                _ => false,
+            };
+        }
+
         /// <summary>
         /// Checks LanguageItems and see if language with the given code exists.
         /// </summary>
@@ -728,6 +761,7 @@ namespace livelywpf
         /// <returns>Languagemodel if found; null otherwise.</returns>
         private LanguagesModel SearchSupportedLanguage(string langCode)
         {
+            //return LanguageItems.FirstOrDefault(lang => lang.Codes.Contains(langCode));
             foreach (var lang in LanguageItems)
             {
                 foreach (var code in lang.Codes)

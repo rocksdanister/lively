@@ -164,7 +164,6 @@ namespace livelywpf
                     break;
                 case WallpaperType.video:
                     //How many videoplayers you need? Yes.
-                    //todo: Seriously though, depreciate some of them!
                     switch (Program.SettingsVM.Settings.VideoPlayer)
                     {
                         case LivelyMediaPlayer.wmf:
@@ -172,14 +171,15 @@ namespace livelywpf
                                 target, Program.SettingsVM.Settings.WallpaperScaling);
                             break;
                         case LivelyMediaPlayer.libvlc:
-                            wpInstance = new VideoPlayerVLC(wallpaper.FilePath, wallpaper, target);
+                            //depreciated
+                            Logger.Info("Core: skipping wallpaper, libvlc depreciated player selected.");
+                            break;
+                        case LivelyMediaPlayer.libmpv:
+                            //depreciated
+                            Logger.Info("Core: skipping wallpaper, libmpv depreciated player selected.");
                             break;
                         case LivelyMediaPlayer.libvlcExt:
                             wpInstance = new VideoPlayerVLCExt(wallpaper.FilePath, wallpaper, target);
-                            break;
-                        case LivelyMediaPlayer.libmpv:
-                            wpInstance = new VideoPlayerMPV(wallpaper.FilePath, wallpaper,
-                                target, Program.SettingsVM.Settings.WallpaperScaling);
                             break;
                         case LivelyMediaPlayer.libmpvExt:
                             wpInstance = new VideoPlayerMPVExt(wallpaper.FilePath, wallpaper, target,
@@ -201,6 +201,10 @@ namespace livelywpf
                             break;
                         case LivelyGifPlayer.libmpvExt:
                             wpInstance = new VideoPlayerMPVExt(wallpaper.FilePath, wallpaper, target,
+                                Program.SettingsVM.Settings.WallpaperScaling);
+                            break;
+                        case LivelyGifPlayer.mpv:
+                            wpInstance = new VideoMpvPlayer(wallpaper.FilePath, wallpaper, target,
                                 Program.SettingsVM.Settings.WallpaperScaling);
                             break;
                     }
@@ -226,10 +230,10 @@ namespace livelywpf
                     }
                     break;
                 case WallpaperType.videostream:
-                    if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "libMPVPlayer", "lib", "youtube-dl.exe")))
+                    if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "mpv", "youtube-dl.exe")))
                     {
-                        wpInstance = new VideoPlayerMPVExt(wallpaper.FilePath, wallpaper, target,
-                            Program.SettingsVM.Settings.WallpaperScaling, Program.SettingsVM.Settings.StreamQuality);
+                        wpInstance = new VideoMpvPlayer(wallpaper.FilePath, wallpaper, target,
+                               Program.SettingsVM.Settings.WallpaperScaling, Program.SettingsVM.Settings.StreamQuality);
                     }
                     else
                     {
