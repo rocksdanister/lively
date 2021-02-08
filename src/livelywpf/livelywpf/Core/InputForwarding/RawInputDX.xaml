@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:livelywpf.Core"
         mc:Ignorable="d"
         Title="RawInputDX" Height="450" Width="800"
-        ShowInTaskbar="False" Closing="Window_Closing" Visibility="Hidden">
+        ShowInTaskbar="False" Closing="Window_Closing" SourceInitialized="Window_SourceInitialized" Visibility="Hidden">
     <Grid>
         
     </Grid>

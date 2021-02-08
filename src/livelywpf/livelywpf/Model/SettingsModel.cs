@@ -62,7 +62,10 @@ namespace livelywpf
         public int TileSize { get; set; }
         public DisplayIdentificationMode DisplayIdentification { get; set; }
         public LivelyMediaPlayer VideoPlayer { get; set; }
-        public LivelyMediaPlayer StreamVideoPlayer { get; set; }
+        /// <summary>
+        /// Video gpu decode
+        /// </summary>
+        public bool VideoPlayerHwAccel { get; set; }
         public LivelyGifPlayer GifPlayer { get; set; }
         public LivelyWebBrowser WebBrowser { get; set; }
         public bool GifCapture { get; set; }
@@ -106,14 +109,13 @@ namespace livelywpf
             AppFocusPause = AppRulesEnum.ignore;
             AppFullscreenPause = AppRulesEnum.pause;
             BatteryPause = AppRulesEnum.ignore;
-            VideoPlayer = LivelyMediaPlayer.libmpvExt;
-            StreamVideoPlayer = LivelyMediaPlayer.libmpvExt;
+            VideoPlayer = LivelyMediaPlayer.mpv;
+            VideoPlayerHwAccel = true;
             WebBrowser = LivelyWebBrowser.cef;
-            GifPlayer = LivelyGifPlayer.libmpvExt;
+            GifPlayer = LivelyGifPlayer.mpv;
 
             WallpaperWaitTime = 20000; // 20sec
             ProcessTimerInterval = 500; //reduce to 250 for quicker response.
-            Language = CultureInfo.CurrentCulture.Name;
             StreamQuality = StreamQualitySuggestion.High;
             GenerateTile = true;
             LivelyZipGenerate = false;
@@ -132,7 +134,7 @@ namespace livelywpf
             MouseInputMovAlways = true;
 
             TileSize = 1;
-            DisplayIdentification = DisplayIdentificationMode.screenLayout;
+            DisplayIdentification = DisplayIdentificationMode.deviceId;
             SelectedDisplay = ScreenHelper.GetPrimaryScreen();
             LivelyGUIRendering = LivelyGUIState.lite;
             WallpaperDir = Path.Combine(Program.AppDataDir, "Library");
@@ -149,6 +151,15 @@ namespace livelywpf
             TestBuild = false;
             ApplicationTheme = AppTheme.Dark;
             DetectRemoteDesktop = true;
+
+            try
+            {
+                Language = CultureInfo.CurrentCulture.Name;
+            }
+            catch (ArgumentNullException)
+            {
+                Language = "en";
+            }
         }
     }
 }

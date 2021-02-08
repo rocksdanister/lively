@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace livelywpf
+namespace livelywpf.Helpers
 {
-    class WallpaperLayoutViewModel
+    class SchedulerService 
     {
 
     }

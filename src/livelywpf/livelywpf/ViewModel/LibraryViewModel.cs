@@ -87,36 +87,32 @@ namespace livelywpf
             set
             {
                 if (value != null)
-                {                    
-                    bool found = false;
-                    foreach (var item in SetupDesktop.Wallpapers)
+                {
+                    var wp = SetupDesktop.Wallpapers.FindAll(x => x.GetWallpaperData() == value);
+                    if (wp.Count > 0)
                     {
-                        if (item.GetWallpaperData() == value)
+                        switch (Program.SettingsVM.Settings.WallpaperArrangement)
                         {
-                            if (Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span)
-                            {
-                                found = true;
-                                break;
-                            }
-                            else if(Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.per)
-                            {
-                                if (ScreenHelper.ScreenCompare(item.GetScreen(), 
-                                        Program.SettingsVM.Settings.SelectedDisplay,
-                                        DisplayIdentificationMode.screenLayout))
+                            case WallpaperArrangement.per:
+                                if (!wp.Exists(x => ScreenHelper.ScreenCompare(x.GetScreen(),
+                                       Program.SettingsVM.Settings.SelectedDisplay,
+                                       DisplayIdentificationMode.deviceId)))
                                 {
-                                    found = true;
-                                    break;
+                                    SetupDesktop.SetWallpaper(value, Program.SettingsVM.Settings.SelectedDisplay);
                                 }
-                            }
-                            else if(Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.duplicate)
-                            {
-                                found = true;
                                 break;
-                            }
+                            case WallpaperArrangement.span:
+                                //Wallpaper already set!
+                                break;
+                            case WallpaperArrangement.duplicate:
+                                //Wallpaper already set!
+                                break;
                         }
                     }
-                    if (!found)
-                        WallpaperSet(value);
+                    else
+                    {
+                        SetupDesktop.SetWallpaper(value, Program.SettingsVM.Settings.SelectedDisplay);
+                    }
                 }
                 _selectedItem = value;
                 OnPropertyChanged("SelectedItem");
@@ -126,40 +122,6 @@ namespace livelywpf
         #endregion //collections
 
         #region wallpaper operations
-
-        public bool WallpaperSet(object obj, LivelyScreen targetDisplay = null)
-        {
-            var selection = (LibraryModel)obj;
-            bool fileExists;
-            //wallpaper file is outside lively folder, always check.
-            if (selection.LivelyInfo.IsAbsolutePath)
-            {
-                if (selection.LivelyInfo.Type == WallpaperType.url ||
-                    selection.LivelyInfo.Type == WallpaperType.videostream)
-                {
-                    fileExists = true;
-                }
-                else
-                {
-                    fileExists = File.Exists(selection.FilePath);
-                }
-            }
-            else
-            { 
-                fileExists = selection.FilePath != null;
-            }
-
-            if (!fileExists)
-            {
-                MessageBox.Show(Properties.Resources.TextFileNotFound, Properties.Resources.TextError);
-                return false;
-            }
-            if (targetDisplay == null)
-                SetupDesktop.SetWallpaper(selection, Program.SettingsVM.Settings.SelectedDisplay);
-            else
-                SetupDesktop.SetWallpaper(selection, targetDisplay);
-            return true;
-        }
 
         public void WallpaperShowOnDisk(object obj)
         {
@@ -183,7 +145,7 @@ namespace livelywpf
             await Task.Run(() =>
             {
                 try
-                {   
+                {
                     //title ending with '.' can have diff extension (example: parallax.js) or
                     //user made a custom filename with diff extension.
                     if (Path.GetExtension(saveFile) != ".zip")
@@ -213,7 +175,15 @@ namespace livelywpf
                             File.Copy(selection.PreviewClipPath, Path.Combine(tmpDir, Path.GetFileName(selection.PreviewClipPath)));
                             info.Preview = Path.GetFileName(selection.PreviewClipPath);
                         }
-                        LivelyInfoJSON.SaveWallpaperMetaData(info, Path.Combine(tmpDir, "LivelyInfo.json"));
+
+                        try
+                        {
+                            Helpers.JsonStorage<LivelyInfoModel>.StoreData(Path.Combine(tmpDir, "LivelyInfo.json"), info);
+                        }
+                        catch (Exception e)
+                        {
+                            Logger.Error(e.ToString());
+                        }
 
                         ZipCreate.CreateZip(saveFile, new List<string>() { tmpDir });
                     }
@@ -251,7 +221,15 @@ namespace livelywpf
                             File.Copy(selection.PreviewClipPath, Path.Combine(tmpDir, Path.GetFileName(selection.PreviewClipPath)));
                             info.Preview = Path.GetFileName(selection.PreviewClipPath);
                         }
-                        LivelyInfoJSON.SaveWallpaperMetaData(info, Path.Combine(tmpDir, "LivelyInfo.json"));
+
+                        try
+                        {
+                            Helpers.JsonStorage<LivelyInfoModel>.StoreData(Path.Combine(tmpDir, "LivelyInfo.json"), info);
+                        }
+                        catch (Exception e)
+                        {
+                            Logger.Error(e.ToString());
+                        }
 
                         List<string> metaData = new List<string>();
                         metaData.AddRange(Directory.GetFiles(tmpDir, "*.*", SearchOption.TopDirectoryOnly));
@@ -348,8 +326,7 @@ namespace livelywpf
         {
             var selection = (LibraryModel)obj;
             var model = new LibraryModel(selection.LivelyInfo, selection.LivelyInfoFolderPath, LibraryTileType.videoConvert);
-            //SetupDesktop.SetWallpaper(model, Screen.PrimaryScreen);
-            WallpaperSet(model);
+            SetupDesktop.SetWallpaper(model, Program.SettingsVM.Settings.SelectedDisplay);
         }
 
         #endregion //wallpaper operations
@@ -367,7 +344,7 @@ namespace livelywpf
 
         #region helpers
 
-        public void AddWallpaper(string path, WallpaperType wpType, LibraryTileType dataType, LivelyScreen screen)
+        public void AddWallpaper(string path, WallpaperType wpType, LibraryTileType dataType, LivelyScreen screen, string cmdArgs = null)
         {
             var dir = Path.Combine(Program.WallpaperDir, "SaveData", "wptmp", Path.GetRandomFileName());
             if (dataType == LibraryTileType.processing)
@@ -389,12 +366,12 @@ namespace livelywpf
                     IsAbsolutePath = true,
                     FileName = path,
                     Preview = null,
-                    Thumbnail = null
+                    Thumbnail = null,
+                    Arguments = cmdArgs
                 };
                 var model = new LibraryModel(data, dir, LibraryTileType.processing);
                 LibraryItems.Insert(0, model);
-                //SetupDesktop.SetWallpaper(model, screen);
-                WallpaperSet(model, screen);
+                SetupDesktop.SetWallpaper(model, screen);
             }
         }
 
@@ -457,7 +434,16 @@ namespace livelywpf
         {
             if (File.Exists(Path.Combine(folderPath, "LivelyInfo.json")))
             {
-                LivelyInfoModel info = LivelyInfoJSON.LoadWallpaperMetaData(Path.Combine(folderPath, "LivelyInfo.json"));
+                LivelyInfoModel info = null;
+                try
+                {
+                    info = Helpers.JsonStorage<LivelyInfoModel>.LoadData(Path.Combine(folderPath, "LivelyInfo.json"));
+                }
+                catch (Exception e)
+                {
+                    Logger.Error(e.ToString());
+                }
+
                 if (info != null)
                 {
                     if (info.Type == WallpaperType.videostream || info.Type == WallpaperType.url)
@@ -560,7 +546,7 @@ namespace livelywpf
             else
             {
                 //more than one screen; if selected display, sendpath otherwise send the first one found.
-                int index = items.FindIndex(x => ScreenHelper.ScreenCompare(Program.SettingsVM.Settings.SelectedDisplay, x.GetScreen(), DisplayIdentificationMode.screenLayout));
+                int index = items.FindIndex(x => ScreenHelper.ScreenCompare(Program.SettingsVM.Settings.SelectedDisplay, x.GetScreen(), DisplayIdentificationMode.deviceId));
                 livelyPropertyCopy = index == -1 ? items[0].GetLivelyPropertyCopyPath() : items[index].GetLivelyPropertyCopyPath();
                 screen = index == -1 ? items[0].GetScreen() : items[index].GetScreen();
             }
@@ -599,63 +585,14 @@ namespace livelywpf
 
         public void SetupDesktop_WallpaperChanged(object sender, EventArgs e)
         {
-            bool found = false;
-            foreach (var item in SetupDesktop.Wallpapers)
+            System.Windows.Application.Current.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background,
+            new System.Threading.ThreadStart(delegate
             {
-                if (ScreenHelper.ScreenCompare(item.GetScreen(), Program.SettingsVM.Settings.SelectedDisplay, DisplayIdentificationMode.screenLayout) ||
-                    Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span)
-                {
-                    System.Windows.Application.Current.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background,
-                        new System.Threading.ThreadStart(delegate
-                        {
-                            SelectedItem = item.GetWallpaperData();
-                        }));
-                    found = true;
-                    break;
-                }
-            }
-
-            if (!found)
-            {
-                System.Windows.Application.Current.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background,
-                   new System.Threading.ThreadStart(delegate
-                   {
-                       SelectedItem = null;
-                   }));
-            }
-        }
-
-        public void RestoreWallpaperFromSave()
-        {
-            //todo: remove the missing wallpaper from the save file etc..
-            var wallpaperLayout = WallpaperLayoutJSON.LoadWallpaperLayout(Path.Combine(Program.AppDataDir, "WallpaperLayout.json"));
-            if (wallpaperLayout == null)
-            {
-                return;
-            }
-
-            if(Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span ||
-                Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.duplicate)
-            {
-                if(wallpaperLayout.Count != 0)
-                {
-                    var libraryItem = LibraryItems.FirstOrDefault(x => x.LivelyInfoFolderPath.Equals(wallpaperLayout[0].LivelyInfoPath));
-                    WallpaperSet(libraryItem, ScreenHelper.GetPrimaryScreen());
-                }
-            }
-            else
-            {
-                foreach (var layout in wallpaperLayout)
-                {
-                    var libraryItem = LibraryItems.FirstOrDefault(x => x.LivelyInfoFolderPath.Equals(layout.LivelyInfoPath));
-                    var screen = ScreenHelper.GetScreen(layout.LivelyScreen.DeviceName, layout.LivelyScreen.Bounds, layout.LivelyScreen.WorkingArea, DisplayIdentificationMode.screenLayout);
-                    if (libraryItem != null && screen != null)
-                    {
-                        Logger.Info("Restoring Wallpaper: " + libraryItem.Title + " " + libraryItem.LivelyInfoFolderPath);
-                        WallpaperSet(libraryItem, screen);
-                    }
-                }
-            }
+                SelectedItem = Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span && SetupDesktop.Wallpapers.Count > 0 ? 
+                    SetupDesktop.Wallpapers[0].GetWallpaperData() :
+                    SetupDesktop.Wallpapers.FirstOrDefault(wp => ScreenHelper.ScreenCompare(
+                        wp.GetScreen(), Program.SettingsVM.Settings.SelectedDisplay, DisplayIdentificationMode.deviceId))?.GetWallpaperData();
+            }));
         }
 
         #endregion //setupdesktop

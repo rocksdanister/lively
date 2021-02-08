@@ -25,7 +25,7 @@ namespace livelywpf.Cef
         private readonly string livelyPropertyPath;
         private readonly LibraryModel wallpaperData;
         private readonly LivelyScreen screen;
-        private JObject livelyPropertyData;
+        private JObject livelyPropertyCopyData;
 
         //UI
         private readonly Thickness margin = new Thickness(0, 10, 0, 0);
@@ -46,19 +46,13 @@ namespace livelywpf.Cef
         {
             try
             {
-                this.livelyPropertyData = LivelyPropertiesJSON.LoadLivelyProperties(livelyPropertyPath);
+                this.livelyPropertyCopyData = LivelyPropertiesJSON.LoadLivelyProperties(livelyPropertyPath);
                 GenerateUIElements();
             }
-            catch (NullReferenceException e1)
+            catch (Exception e)
             {
-                Logger.Error(e1.ToString());
-                Task.Run(() => (MessageBox.Show("Customisation not supported/LivelyProperty file not found.\n" +
-                           "For videos only libMPV(External) player is currently supported.", Properties.Resources.TitleAppName)));
-            }
-            catch (Exception e2)
-            {
-                Logger.Error(e2.ToString());
-                Task.Run(() => (MessageBox.Show(e2.ToString(), Properties.Resources.TitleAppName)));
+                Logger.Error(e.ToString());
+                _= Task.Run(() => (MessageBox.Show(e.ToString(), Properties.Resources.TitleAppName)));
             }
         }
 
@@ -66,12 +60,34 @@ namespace livelywpf.Cef
 
         private void GenerateUIElements()
         {
-            if (livelyPropertyData.Count == 0)
+            if (livelyPropertyCopyData == null)
+            {
+                var msg = "Property file not found!";
+                if (wallpaperData.LivelyInfo.Type == WallpaperType.video ||
+                    wallpaperData.LivelyInfo.Type == WallpaperType.videostream ||
+                    wallpaperData.LivelyInfo.Type == WallpaperType.gif ||
+                    wallpaperData.LivelyInfo.Type == WallpaperType.picture)
+                {
+                    msg += "\nMpv player is required...";
+                }
+                //Empty..
+                AddUIElement(new TextBlock
+                {
+                    Text = msg,
+                    Background = Brushes.Red,
+                    Foreground = Brushes.Yellow,
+                    HorizontalAlignment = HorizontalAlignment.Left,
+                    Margin = new Thickness(0, 50, 0, 0)
+                });
+                return;
+            }
+            else if (livelyPropertyCopyData.Count == 0)
             {
                 //Empty..
                 AddUIElement(new TextBlock
                 {
                     Text = "El Psy Congroo",
+                    Foreground = Brushes.Yellow,
                     HorizontalAlignment = HorizontalAlignment.Left,
                     Margin = margin
                 });
@@ -79,7 +95,7 @@ namespace livelywpf.Cef
             }
 
             dynamic obj = null;
-            foreach (var item in livelyPropertyData)
+            foreach (var item in livelyPropertyCopyData)
             {
                 string uiElementType = item.Value["type"].ToString();
                 if (uiElementType.Equals("slider", StringComparison.OrdinalIgnoreCase))
@@ -284,7 +300,7 @@ namespace livelywpf.Cef
             {
                 var item = (Slider)sender;
                 WallpaperSendMsg("lively:customise slider " + item.Name + " " + item.Value);
-                livelyPropertyData[item.Name]["value"] = item.Value;
+                livelyPropertyCopyData[item.Name]["value"] = item.Value;
                 Debug.WriteLine("lively:customise slider " + item.Name + " " + item.Value);
                 UpdatePropertyFile();
             }
@@ -300,9 +316,9 @@ namespace livelywpf.Cef
             try
             {
                 var item = (ComboBox)sender;
-                var filePath = Path.Combine(livelyPropertyData[item.Name]["folder"].ToString(), item.SelectedItem.ToString()); //filename is unique.
+                var filePath = Path.Combine(livelyPropertyCopyData[item.Name]["folder"].ToString(), item.SelectedItem.ToString()); //filename is unique.
                 WallpaperSendMsg("lively:customise folderDropdown " + item.Name + " " + "\"" + filePath + "\"");
-                livelyPropertyData[item.Name]["value"] = item.SelectedItem.ToString();
+                livelyPropertyCopyData[item.Name]["value"] = item.SelectedItem.ToString();
                 UpdatePropertyFile();
             }
             catch { }
@@ -315,7 +331,7 @@ namespace livelywpf.Cef
                 var item = (ComboBox)sender;
                 //Form1.chromeBrowser.ExecuteScriptAsync("livelyPropertyListener", item.Name, item.SelectedIndex);
                 WallpaperSendMsg("lively:customise dropdown " + item.Name + " " + item.SelectedIndex);
-                livelyPropertyData[item.Name]["value"] = item.SelectedIndex;
+                livelyPropertyCopyData[item.Name]["value"] = item.SelectedIndex;
                 UpdatePropertyFile();
             }
             catch { }
@@ -359,7 +375,7 @@ namespace livelywpf.Cef
                     item.Fill = new SolidColorBrush(Color.FromArgb(colorDialog.Color.A, colorDialog.Color.R, colorDialog.Color.G, colorDialog.Color.B));
                     //Form1.chromeBrowser.ExecuteScriptAsync("livelyPropertyListener", item.Name, ToHexValue(colorDialog.Color));
                     WallpaperSendMsg("lively:customise color " + item.Name + " " + ToHexValue(colorDialog.Color));
-                    livelyPropertyData[item.Name]["value"] = ToHexValue(colorDialog.Color);
+                    livelyPropertyCopyData[item.Name]["value"] = ToHexValue(colorDialog.Color);
                     UpdatePropertyFile();
                 }
             }
@@ -380,7 +396,7 @@ namespace livelywpf.Cef
 
         private void DefaultBtn_Click(object sender, EventArgs e)
         {
-            if (RestoreOriginalPropertyFile())
+            if (RestoreOriginalPropertyFile(wallpaperData, livelyPropertyPath))
             {
                 uiPanel.Children.Clear();
                 LoadUI();
@@ -411,7 +427,7 @@ namespace livelywpf.Cef
                 //Form1.chromeBrowser.ExecuteScriptAsync("livelyPropertyListener", item.Name, item.Checked);
                 WallpaperSendMsg("lively:customise checkbox " + item.Name + " " + (item.IsChecked == true));
                 Debug.WriteLine("lively:customise " + item.Name + " " + (item.IsChecked == true));
-                livelyPropertyData[item.Name]["value"] = item.IsChecked == true;
+                livelyPropertyCopyData[item.Name]["value"] = item.IsChecked == true;
                 UpdatePropertyFile();
             }
             catch { }
@@ -429,7 +445,7 @@ namespace livelywpf.Cef
                 //Form1.chromeBrowser.ExecuteScriptAsync("livelyPropertyListener", item.Name, item.Text);
                 WallpaperSendMsg("lively:customise textbox " + item.Name + " " + "\"" + item.Text + "\"");
                 Debug.WriteLine("lively:customise textbox " + item.Name + " " + "\"" + item.Text + "\"");
-                livelyPropertyData[item.Name]["value"] = item.Text;
+                livelyPropertyCopyData[item.Name]["value"] = item.Text;
                 UpdatePropertyFile();
             }
             catch { }
@@ -441,7 +457,7 @@ namespace livelywpf.Cef
 
         private void UpdatePropertyFile()
         {
-            Cef.LivelyPropertiesJSON.SaveLivelyProperties(livelyPropertyPath, livelyPropertyData);
+            Cef.LivelyPropertiesJSON.SaveLivelyProperties(livelyPropertyPath, livelyPropertyCopyData);
         }
 
         private void WallpaperSendMsg(string message)
@@ -449,18 +465,27 @@ namespace livelywpf.Cef
             SetupDesktop.SendMessageWallpaper(screen, message);
         }
 
-        private bool RestoreOriginalPropertyFile()
+        /// <summary>
+        /// Copies LivelyProperties.json from root to the per monitor file.
+        /// </summary>
+        /// <param name="wallpaperData">Wallpaper info.</param>
+        /// <param name="livelyPropertyCopyPath">Modified LivelyProperties.json path.</param>
+        /// <returns></returns>
+        public static bool RestoreOriginalPropertyFile(LibraryModel wallpaperData, string livelyPropertyCopyPath)
         {
             bool status = false;
             try
             {
                 // TODO:
                 // Use DirectoryWatcher instead.
-                if (wallpaperData.LivelyInfo.Type == WallpaperType.video || wallpaperData.LivelyInfo.Type == livelywpf.WallpaperType.videostream)
+                if (wallpaperData.LivelyInfo.Type == WallpaperType.video ||
+                    wallpaperData.LivelyInfo.Type == WallpaperType.videostream ||
+                    wallpaperData.LivelyInfo.Type == WallpaperType.gif ||
+                    wallpaperData.LivelyInfo.Type == WallpaperType.picture)
                 {
                     var lpp = Path.Combine(wallpaperData.LivelyInfoFolderPath, "LivelyProperties.json");
                     var dlpp = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
-                                "plugins", "libMPVPlayer", "api", "LivelyProperties.json");
+                                "plugins", "mpv", "api", "LivelyProperties.json");
                     if (File.Exists(lpp))
                     {
                         if (!string.Equals(wallpaperData.LivelyPropertyPath, lpp, StringComparison.OrdinalIgnoreCase))
@@ -477,10 +502,10 @@ namespace livelywpf.Cef
                     }
                 }
 
-                File.Copy(wallpaperData.LivelyPropertyPath, livelyPropertyPath, true);
+                File.Copy(wallpaperData.LivelyPropertyPath, livelyPropertyCopyPath, true);
                 status = true;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Logger.Error(e.ToString());
             }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Windows;
@@ -13,7 +14,8 @@ namespace livelywpf
         #region init
 
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private static readonly Mutex mutex = new Mutex(false, "LIVELY:DESKTOPWALLPAPERSYSTEM");
+        private static readonly string uniqueAppName = "LIVELY:DESKTOPWALLPAPERSYSTEM";
+        private static readonly Mutex mutex = new Mutex(false, uniqueAppName);
         //Loaded from Settings.json (User configurable.)
         public static string WallpaperDir { get; set; }
         public static string AppDataDir { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Lively Wallpaper");
@@ -33,23 +35,51 @@ namespace livelywpf
         {
             try
             {
-                // wait a few seconds in case livelywpf instance is just shutting down..
+                //wait a few seconds in case livelywpf instance is just shutting down..
                 if (!mutex.WaitOne(TimeSpan.FromSeconds(1), false))
                 {
-                    // ref: https://stackoverflow.com/questions/19147/what-is-the-correct-way-to-create-a-single-instance-wpf-application
-                    // send our registered Win32 message to make the currently running lively instance to bring to foreground.
-                    // todo: ditch this once ipc server is ready?
-                    NativeMethods.PostMessage(
-                        (IntPtr)NativeMethods.HWND_BROADCAST,
-                        NativeMethods.WM_SHOWLIVELY,
-                        IntPtr.Zero,
-                        IntPtr.Zero);
+                    try
+                    {
+                        //skipping first element (application path.)
+                        var args = Environment.GetCommandLineArgs().Skip(1).ToArray();
+                        if (args.Length != 0)
+                        {
+                            Helpers.PipeClient.SendMessage(uniqueAppName, args);
+                        }
+                        else
+                        {
+                            //user opened application.
+                            Helpers.PipeClient.SendMessage(uniqueAppName, new string[] { "--showApp", "true" });
+                        }
+                    }
+                    catch
+                    {
+                        //fallback, Send our registered Win32 message to make the currently running lively instance to bring to foreground.
+                        //registration of WM_SHOWLIVELY done at NativeMethods.cs file.
+                        //ref: https://stackoverflow.com/questions/19147/what-is-the-correct-way-to-create-a-single-instance-wpf-application
+                        NativeMethods.PostMessage(
+                            (IntPtr)NativeMethods.HWND_BROADCAST,
+                            NativeMethods.WM_SHOWLIVELY,
+                            IntPtr.Zero,
+                            IntPtr.Zero);
+                    }
                     return;
                 }
             }
             catch (AbandonedMutexException e)
             {
+                //unexpected app termination.
                 System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            try
+            {
+                var server = new Helpers.PipeServer(uniqueAppName);
+                server.MessageReceived += Server_MessageReceived1;
+            }
+            catch
+            {
+                //todo
             }
 
             try
@@ -64,6 +94,11 @@ namespace livelywpf
             {
                 mutex.ReleaseMutex();
             }
+        }
+
+        private static void Server_MessageReceived1(object sender, string[] msg)
+        {
+            Cmd.CommandHandler.ParseArgs(msg);
         }
 
         private static Systray sysTray;
@@ -86,7 +121,13 @@ namespace livelywpf
             //If the first xamlhost element is closed, the rest of the host controls crashes/closes (?)-
             //Example: UWP gifplayer is started before the rest and closed.
             //This fixes that issue since the xamlhost UI elements are started in AppWindow.Show()
-            LibraryVM.RestoreWallpaperFromSave();
+            SetupDesktop.RestoreWallpaperFromSave();
+
+            //first element is not application path, unlike Environment.GetCommandLineArgs().
+            if (e.Args.Length > 0)
+            {
+                Cmd.CommandHandler.ParseArgs(e.Args);
+            }
         }
 
         public static void ApplicationThemeChange(AppTheme theme)
@@ -244,10 +285,12 @@ namespace livelywpf
             }
         }
 
+        [Obsolete("Not working!")]
         public static void RestartApplication()
         {
-            Process.Start(Path.ChangeExtension(System.Reflection.Assembly.GetExecutingAssembly().Location, ".exe"));
-            ExitApplication();
+            var appPath = Path.ChangeExtension(System.Reflection.Assembly.GetExecutingAssembly().Location, ".exe");
+            Logger.Info("Restarting application:" + appPath);
+            Process.Start(appPath);
         }
 
         public static void ExitApplication()

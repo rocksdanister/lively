@@ -51,7 +51,7 @@ namespace livelywpf.Views
         private bool _processing = false;
         private string thumbnailPathTemp;
         private WallpaperType wallpaperType;
-        readonly DispatcherTimer dispatcherTimer = new DispatcherTimer();
+        readonly DispatcherTimer gifCaptureTimer = new DispatcherTimer();
         readonly int gifAnimationDelay = (int)Math.Round((1f / 15f * 1000f)); //in milliseconds
         readonly int gifSaveAnimationDelay = (int)Math.Round((1f / 90f) * 1000f);
         readonly int gifTotalFrames = 60;
@@ -85,10 +85,7 @@ namespace livelywpf.Views
                 return;
             }
 
-            if (dispatcherTimer != null)
-            {
-                dispatcherTimer.Stop();
-            }
+            gifCaptureTimer?.Stop();
             //detach wallpaper window from this dialogue.
             WindowOperations.SetParentSafe(HWND, IntPtr.Zero);
         }
@@ -106,7 +103,7 @@ namespace livelywpf.Views
                 }
                 catch
                 {
-                    dispatcherTimer.Stop();
+                    gifCaptureTimer.Stop();
                 }
             }
 
@@ -127,9 +124,9 @@ namespace livelywpf.Views
 
         private async void CapturePreview(string saveDirectory)
         {
-            if (dispatcherTimer != null)
+            if (gifCaptureTimer != null)
             {
-                dispatcherTimer.Stop();
+                gifCaptureTimer.Stop();
             }
             _processing = true;
             taskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Normal;
@@ -244,9 +241,9 @@ namespace livelywpf.Views
         {
             thumbnailPathTemp = savePath;
             //capture thumbnail every few seconds while user is shown wallpaper metadata preview.
-            dispatcherTimer.Tick += new EventHandler(CaptureLoop);
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 3000);
-            dispatcherTimer.Start();
+            gifCaptureTimer.Tick += new EventHandler(CaptureLoop);
+            gifCaptureTimer.Interval = new TimeSpan(0, 0, 0, 0, 3000);
+            gifCaptureTimer.Start();
         }
 
         #endregion

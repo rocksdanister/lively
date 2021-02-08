@@ -24,7 +24,7 @@ namespace livelywpf
             {
                 try
                 {
-                    key.SetValue(curAssembly.GetName().Name, "\"" + curAssembly.Location + "\"");
+                    key.SetValue(curAssembly.GetName().Name, "\"" + Path.ChangeExtension(curAssembly.Location, ".exe") + "\"");
                 }
                 catch (Exception ex)
                 {
@@ -78,12 +78,12 @@ namespace livelywpf
         {
             int status;
             var startupKey = GetStartupRegistry();
-            if (String.IsNullOrEmpty(startupKey))
+            if (string.IsNullOrEmpty(startupKey))
             {
                 //no key value.
                 status = 0;
             }
-            else if (string.Equals(startupKey, "\"" + Assembly.GetExecutingAssembly().Location + "\"", StringComparison.Ordinal))
+            else if (string.Equals(startupKey, "\"" + Path.ChangeExtension(Assembly.GetExecutingAssembly().Location, ".exe") + "\"", StringComparison.Ordinal))
             {
                 //everything is ok.
                 status = 1;

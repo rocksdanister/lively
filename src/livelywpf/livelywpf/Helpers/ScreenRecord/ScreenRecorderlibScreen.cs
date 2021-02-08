@@ -4,14 +4,14 @@ using System.Windows;
 
 namespace livelywpf.Helpers
 {
-    class ScreenRecorderDesktopDuplication : IScreenRecorder
+    //todo: make the configuration for video encoding external json file.
+    class ScreenRecorderlibScreen : IScreenRecorder
     {
         private string filePath;
         private Recorder _rec;
         private RecorderOptions options;
         public event EventHandler<ScreenRecorderStatus> RecorderStatus;
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-
 
         public void Initialize(string filePath, Rect rect, int fps, int bitrate, bool isAudio, bool isMousePointer)
         {

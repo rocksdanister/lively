@@ -22,9 +22,6 @@ namespace livelywpf.Core
         public VideoPlayerMPVExt(string path, LibraryModel model, LivelyScreen display, 
             WallpaperScaler scaler = WallpaperScaler.fill, StreamQualitySuggestion streamQuality = StreamQualitySuggestion.Highest)
         {
-            // TODO: 
-            // Create a default livelyproperties.json if not found.
-
             LivelyPropertyCopy = null;
             if (model.LivelyPropertyPath != null)
             {
@@ -66,7 +63,7 @@ namespace livelywpf.Core
                 RedirectStandardOutput = true,
                 RedirectStandardError = true,
                 UseShellExecute = false,
-                WorkingDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "libMPVPlayer")
+                WorkingDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "libMPVPlayer"),
             };
 
             Process videoPlayerProc = new Process
@@ -170,7 +167,7 @@ namespace livelywpf.Core
                 });
             }
             Proc.OutputDataReceived -= Proc_OutputDataReceived;
-            Proc.Close();
+            Proc.Dispose();
             SetupDesktop.RefreshDesktop();
         }
 
@@ -241,7 +238,7 @@ namespace livelywpf.Core
             try
             {
                 Proc.Kill();
-                Proc.Close();
+                Proc.Dispose();
             }
             catch { }
             SetupDesktop.RefreshDesktop();

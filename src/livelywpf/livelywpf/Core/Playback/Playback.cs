@@ -32,11 +32,21 @@ namespace livelywpf.Core
             "RainmeterMeterWindow"
         };
         private static IntPtr workerWOrig, progman;
-        public static PlaybackState PlaybackState { get; set; }
-        //public event EventHandler<PlaybackState> PlaybackStateChanged;
+        private static PlaybackState _wallpaperPlaybackState;
+        public static PlaybackState WallpaperPlaybackState
+        {
+            get { return _wallpaperPlaybackState;  }
+            set
+            {
+                _wallpaperPlaybackState = value;
+                PlaybackStateChanged?.Invoke(null, _wallpaperPlaybackState);
+            }
+        }
+        public static event EventHandler<PlaybackState> PlaybackStateChanged;
         private readonly DispatcherTimer dispatcherTimer = new DispatcherTimer();
         private bool _isLockScreen, _isRemoteSession;
         private bool disposedValue;
+        private int livelyPid = 0;
 
         public Playback()
         {
@@ -58,7 +68,19 @@ namespace livelywpf.Core
             }
 
             InitializeTimer();
-            PlaybackState = PlaybackState.play;
+            WallpaperPlaybackState = PlaybackState.play;
+
+            try
+            {
+                using (Process process = Process.GetCurrentProcess())
+                {
+                    livelyPid = process.Id;
+                }
+            }
+            catch (Exception e)
+            {
+                Logger.Error("Failed to retrieve Lively Pid:" + e.Message);
+            }
 
             // Check if already in remote/lockscreen session.
             _isRemoteSession = System.Windows.Forms.SystemInformation.TerminalServerSession;
@@ -116,7 +138,7 @@ namespace livelywpf.Core
 
         private void ProcessMonitor(object sender, EventArgs e)
         {
-            if (PlaybackState == PlaybackState.paused)
+            if (WallpaperPlaybackState == PlaybackState.paused)
             {
                 PauseWallpapers();
                 return;
@@ -178,10 +200,7 @@ namespace livelywpf.Core
                         return;
                     }
 
-                    if (fProcess.ProcessName.Equals("livelywpf", StringComparison.OrdinalIgnoreCase) ||
-                        fProcess.ProcessName.Equals("livelycefsharp", StringComparison.OrdinalIgnoreCase) ||
-                        fProcess.ProcessName.Equals("libvlcplayer", StringComparison.OrdinalIgnoreCase) ||
-                        fProcess.ProcessName.Equals("libmpvplayer", StringComparison.OrdinalIgnoreCase))
+                    if (fProcess.Id == livelyPid || IsLivelyPlugin(fProcess.Id))
                     {
                         PlayWallpapers();
                         SetWallpaperVolume(Program.SettingsVM.Settings.AudioVolumeGlobal);
@@ -263,7 +282,7 @@ namespace livelywpf.Core
                             //this is a limitation of this algorithm since only one window can be foreground!
                             foreach (var item in ScreenHelper.GetScreen())
                             {
-                                if (!ScreenHelper.ScreenCompare(item, focusedScreen, DisplayIdentificationMode.screenLayout))
+                                if (!ScreenHelper.ScreenCompare(item, focusedScreen, DisplayIdentificationMode.deviceId))
                                 {
                                     PlayWallpaper(item);
                                     //SetWallpaperVoume(0, item);
@@ -359,7 +378,7 @@ namespace livelywpf.Core
         {
             SetupDesktop.Wallpapers.ForEach(x =>
             {
-                if(ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.screenLayout))
+                if(ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.deviceId))
                     x.Pause();
             });
         }
@@ -368,7 +387,7 @@ namespace livelywpf.Core
         {
             SetupDesktop.Wallpapers.ForEach(x =>
             {
-                if (ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.screenLayout))
+                if (ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.deviceId))
                     x.Play();
             });
         }
@@ -385,11 +404,16 @@ namespace livelywpf.Core
         {
             SetupDesktop.Wallpapers.ForEach(x =>
             {
-                if (ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.screenLayout))
+                if (ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.deviceId))
                 {
                     x.SetVolume(volume);
                 }
             });
+        }
+
+        private static bool IsLivelyPlugin(int pid)
+        {
+            return SetupDesktop.Wallpapers.Exists(x => x.GetProcess() != null && x.GetProcess().Id == pid);
         }
 
         /// <summary>
@@ -424,8 +448,7 @@ namespace livelywpf.Core
         {
             try
             {
-                var screen = System.Windows.Forms.Screen.FromHandle(handle);
-                return new LivelyScreen(screen);
+                return new LivelyScreen(DisplayManager.Instance.GetDisplayMonitorFromHWnd(handle));
             }
             catch
             {
@@ -441,14 +464,11 @@ namespace livelywpf.Core
         /// <returns></returns>
         private bool IsZoomedSpan(IntPtr hWnd)
         {
-            NativeMethods.RECT appBounds;
-            NativeMethods.GetWindowRect(hWnd, out appBounds);
+            NativeMethods.GetWindowRect(hWnd, out NativeMethods.RECT appBounds);
+            var screenArea = ScreenHelper.GetVirtualScreenBounds();
             // If foreground app 95% working-area( - taskbar of monitor)
-            if ((appBounds.Bottom - appBounds.Top) >= System.Windows.Forms.SystemInformation.VirtualScreen.Height * .95f &&
-               (appBounds.Right - appBounds.Left) >= System.Windows.Forms.SystemInformation.VirtualScreen.Width * .95f)
-                return true;
-            else
-                return false;
+            return ((appBounds.Bottom - appBounds.Top) >= screenArea.Height * .95f &&
+               (appBounds.Right - appBounds.Left) >= screenArea.Width * .95f);
         }
 
         /// <summary>

@@ -16,6 +16,7 @@ namespace livelywpf
 {
     class LibraryPreviewViewModel : ObservableObject
     {
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         readonly private LibraryModel libData;
         readonly ILibraryPreview Winstance;
         public LibraryPreviewViewModel( ILibraryPreview wInterface, IWallpaper wallpaper)
@@ -191,7 +192,14 @@ namespace livelywpf
             if (CurrentProgress == 100)
             {
                 libData.DataType = LibraryTileType.ready;
-                LivelyInfoJSON.SaveWallpaperMetaData(libData.LivelyInfo, Path.Combine(libData.LivelyInfoFolderPath, "LivelyInfo.json"));
+                try
+                {
+                    Helpers.JsonStorage<LivelyInfoModel>.StoreData(Path.Combine(libData.LivelyInfoFolderPath, "LivelyInfo.json"), libData.LivelyInfo);
+                }
+                catch (Exception e)
+                {
+                    Logger.Error(e.ToString());
+                }
                 Program.LibraryVM.SortLibraryItem(libData);
 
                 if (Program.SettingsVM.Settings.LivelyZipGenerate)

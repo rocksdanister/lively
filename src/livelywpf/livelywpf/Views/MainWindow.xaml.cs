@@ -90,14 +90,23 @@ namespace livelywpf
 
         #region window mgmnt
 
+        /// <summary>
+        /// Makes content frame null and GC call.<br>
+        /// Xaml Island gif image playback not pausing fix.</br>
+        /// </summary>
+        public void HideWindow()
+        {
+            ContentFrame.Content = null;
+            this.Hide();
+            GC.Collect();
+        }
+
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (!IsExit)
             {
                 e.Cancel = true;
-                //ContentFrame.Content = null;
-                this.Hide();
-                GC.Collect();
+                HideWindow();
             }
             else
             {
@@ -108,7 +117,7 @@ namespace livelywpf
         #endregion //window mdmnt
 
         #region wallpaper statusbar
-    
+
         private void SetupDesktop_WallpaperChanged(object sender, EventArgs e)
         {
             _ = this.Dispatcher.BeginInvoke(new Action(() => {
@@ -239,7 +248,7 @@ namespace livelywpf
                 }
 
                 if (Program.SettingsVM.Settings.AutoDetectOnlineStreams &&
-                    libMPVStreams.CheckStream(uri))
+                    StreamHelper.IsSupportedUri(uri))
                 {
                     Program.LibraryVM.AddWallpaper(uri.ToString(),
                         WallpaperType.videostream,
@@ -275,6 +284,8 @@ namespace livelywpf
             {
                 Program.ShowMainWindow();   
             }
+            //todo: bind it better.
+            _ = Core.DisplayManager.Instance?.OnWndProc(hwnd, (uint)msg, wParam, lParam);
 
             if (msg == (uint)NativeMethods.WM.QUERYENDSESSION)
             {

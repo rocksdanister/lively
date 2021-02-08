@@ -1,9 +1,7 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using livelywpf.Core;
@@ -12,65 +10,45 @@ namespace livelywpf
 {
     public static class ScreenHelper
     {
-        public static bool IsMultiScreen()
+        public static event EventHandler DisplayUpdated;
+        private static readonly List<LivelyScreen> displayMonitors = new List<LivelyScreen>();
+
+        static ScreenHelper()
         {
-            return Screen.AllScreens.Count() > 1;
+            //DisplayManager.Initialize();
         }
 
-        public static int ScreenCount()
+        public static void Initialize()
         {
-            return Screen.AllScreens.Count();
+            DisplayManager.Initialize();
+            UpdateDisplayList();
+            DisplayManager.Instance.DisplayUpdated += Instance_DisplayUpdated;
+        }
+
+        private static void Instance_DisplayUpdated(object sender, System.EventArgs e)
+        {
+            UpdateDisplayList();
+            DisplayUpdated?.Invoke(null, EventArgs.Empty);
         }
 
         public static List<LivelyScreen> GetScreen()
         {
-            //todo optimise
-            var result = new List<LivelyScreen>();
-            foreach (var item in Screen.AllScreens)
-            {
-                result.Add(new LivelyScreen(item));
-            }
-            return result;
+            return displayMonitors;
         }
 
-        public static Screen[] GetScreenWinform()
+        public static bool IsMultiScreen()
         {
-            return Screen.AllScreens;
+            return DisplayManager.Instance.DisplayMonitors.Count > 1;
+        }
+
+        public static int ScreenCount()
+        {
+            return DisplayManager.Instance.DisplayMonitors.Count;
         }
 
         public static LivelyScreen GetPrimaryScreen()
         {
-            return new LivelyScreen(Screen.PrimaryScreen);
-        }
-
-        public static bool ScreenExists(Screen screen, DisplayIdentificationMode mode)
-        {
-            bool screenStatus = false;
-            switch (mode)
-            {
-                case DisplayIdentificationMode.screenClass:
-                    foreach (var item in Screen.AllScreens)
-                    {
-                        if(screen.Equals(item))
-                        {
-                            screenStatus = true;
-                            break;
-                        }
-                    }
-                    break;
-                case DisplayIdentificationMode.screenLayout:
-                    //ignoring DeviceName which can change during driver update, windows restart etc..
-                    foreach (var item in Screen.AllScreens)
-                    {
-                        if(item.Bounds == screen.Bounds)
-                        {
-                            screenStatus = true;
-                            break;
-                        }
-                    }
-                    break;
-            }
-            return screenStatus;
+            return new LivelyScreen(DisplayManager.Instance.PrimaryDisplayMonitor);
         }
 
         public static bool ScreenExists(LivelyScreen screen, DisplayIdentificationMode mode)
@@ -78,7 +56,7 @@ namespace livelywpf
             bool screenStatus = false;
             switch (mode)
             {
-                case DisplayIdentificationMode.screenClass:
+                case DisplayIdentificationMode.deviceName:
                     foreach (var item in Screen.AllScreens)
                     {
                         if (item.DeviceName == screen.DeviceName)
@@ -88,60 +66,12 @@ namespace livelywpf
                         }
                     }
                     break;
-                case DisplayIdentificationMode.screenLayout:
+                case DisplayIdentificationMode.deviceId:
                     //ignoring DeviceName which can change during driver update, windows restart etc..
-                    foreach (var item in Screen.AllScreens)
-                    {
-                        if (item.Bounds == screen.Bounds)
-                        {
-                            screenStatus = true;
-                            break;
-                        }
-                    }
-                    break;
-            }
-            return screenStatus;
-        }
-
-        public static bool ScreenCompare(Screen screen1, Screen screen2, DisplayIdentificationMode mode)
-        {
-            bool screenStatus = false;
-            switch (mode)
-            {
-                case DisplayIdentificationMode.screenClass:
-                    if (screen1 == screen2)
-                    {
-                        screenStatus = true;
-                    }
+                    screenStatus = GetScreen().FirstOrDefault(x => x.DeviceId == screen.DeviceId) != null;
                     break;
                 case DisplayIdentificationMode.screenLayout:
-                    //ignoring DeviceName which can change during driver update, windows restart etc..
-                    if (screen1.Bounds == screen2.Bounds)
-                    {
-                        screenStatus = true;
-                    }
-                    break;
-            }
-            return screenStatus;
-        }
-
-        public static bool ScreenCompare(Screen screen1, LivelyScreen screen2, DisplayIdentificationMode mode)
-        {
-            bool screenStatus = false;
-            switch (mode)
-            {
-                case DisplayIdentificationMode.screenClass:
-                    if (screen1.DeviceName == screen2.DeviceName)
-                    {
-                        screenStatus = true;
-                    }
-                    break;
-                case DisplayIdentificationMode.screenLayout:
-                    //ignoring DeviceName which can change during driver update, windows restart etc..
-                    if (screen1.Bounds == screen2.Bounds)
-                    {
-                        screenStatus = true;
-                    }
+                    screenStatus = GetScreen().FirstOrDefault(x => x.Bounds == screen.Bounds) != null;
                     break;
             }
             return screenStatus;
@@ -152,37 +82,39 @@ namespace livelywpf
             bool screenStatus = false;
             switch (mode)
             {
-                case DisplayIdentificationMode.screenClass:
-                    if (screen1.DeviceName == screen2.DeviceName)
-                    {
-                        screenStatus = true;
-                    }
+                case DisplayIdentificationMode.deviceName:
+                    screenStatus = (screen1.DeviceName == screen2.DeviceName);
+                    break;
+                case DisplayIdentificationMode.deviceId:
+                    screenStatus = (screen1.DeviceId == screen2.DeviceId);
                     break;
                 case DisplayIdentificationMode.screenLayout:
-                    //ignoring DeviceName which can change during driver update, windows restart etc..
-                    if (screen1.Bounds == screen2.Bounds)
-                    {
-                        screenStatus = true;
-                    }
+                    screenStatus = (screen1.Bounds == screen2.Bounds);
                     break;
             }
             return screenStatus;
         }
 
-        public static Screen GetScreenWinform(string DeviceName, Rectangle Bounds, Rectangle WorkingArea, DisplayIdentificationMode mode)
+        public static LivelyScreen GetScreen(string DeviceId, string DeviceName, Rectangle Bounds, Rectangle WorkingArea, DisplayIdentificationMode mode)
         {
-            foreach (var item in GetScreenWinform())
+            foreach (var item in GetScreen())
             {
                 switch (mode)
                 {
-                    case DisplayIdentificationMode.screenClass:
-                        if (item.DeviceName.Equals(DeviceName))
+                    case DisplayIdentificationMode.deviceName:
+                        if (item.DeviceName == DeviceName)
+                        {
+                            return item;
+                        }
+                        break;
+                    case DisplayIdentificationMode.deviceId:
+                        //ignoring DeviceName which can change during driver update, windows restart etc..
+                        if (item.DeviceId == DeviceId)
                         {
                             return item;
                         }
                         break;
                     case DisplayIdentificationMode.screenLayout:
-                        //ignoring DeviceName which can change during driver update, windows restart etc..
                         if (item.Bounds == Bounds)
                         {
                             return item;
@@ -193,28 +125,28 @@ namespace livelywpf
             return null;
         }
 
-        public static LivelyScreen GetScreen(string DeviceName, Rectangle Bounds, Rectangle WorkingArea, DisplayIdentificationMode mode)
+        public static Rectangle GetVirtualScreenBounds()
         {
-            foreach (var item in GetScreen())
-            {
-                switch (mode)
-                {
-                    case DisplayIdentificationMode.screenClass:
-                        if (item.DeviceName.Equals(DeviceName))
-                        {
-                            return item;
-                        }
-                        break;
-                    case DisplayIdentificationMode.screenLayout:
-                        //ignoring DeviceName which can change during driver update, windows restart etc..
-                        if (item.Bounds == Bounds)
-                        {
-                            return item;
-                        }
-                        break;
-                }
-            }
-            return null;
+            return RectToRectangle(DisplayManager.Instance.VirtualScreenBounds);
+        }
+
+        public static Rectangle RectToRectangle(System.Windows.Rect rect)
+        {
+            return new Rectangle((int)rect.X, (int)rect.Y, (int)rect.Width, (int)rect.Height);
+        }
+
+        private static void UpdateDisplayList()
+        {
+            displayMonitors.Clear();
+            DisplayManager.Instance.DisplayMonitors.ToList().ForEach(
+                screen => displayMonitors.Add(new LivelyScreen(screen)));
+        }
+
+        public static LivelyScreen GetScreenFromPoint(Point pt)
+        {
+            return new LivelyScreen(
+                DisplayManager.Instance.GetDisplayMonitorFromPoint(
+                    new System.Windows.Point(pt.X, pt.Y)));
         }
 
         /// <summary>

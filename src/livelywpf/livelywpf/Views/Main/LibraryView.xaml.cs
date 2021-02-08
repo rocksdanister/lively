@@ -73,7 +73,7 @@ namespace livelywpf.Views
                     Program.LibraryVM.WallpaperShowOnDisk(obj);
                     break;
                 case "setWallpaper":
-                    Program.LibraryVM.WallpaperSet(obj);
+                    SetupDesktop.SetWallpaper(obj, Program.SettingsVM.Settings.SelectedDisplay);
                     break;
                 case "exportWallpaper":
                     string savePath = "";

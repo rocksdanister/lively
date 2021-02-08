@@ -62,14 +62,14 @@ namespace livelywpf.Views
                 return;
             }
 
-            if(wallpaper != null)
+            if (wallpaper != null)
             {
                 //detach wallpaper window from this dialogue.
                 WindowOperations.SetParentSafe(wallpaper.GetHWND(), IntPtr.Zero);
                 try
                 {
                     //temporary..till webprocess async close is ready.
-                    if(wallpaper.GetWallpaperType() == WallpaperType.url)
+                    if (wallpaper.GetWallpaperType() == WallpaperType.url)
                     {
                         var Proc = wallpaper.GetProcess();
                         Proc.Refresh();
@@ -93,66 +93,57 @@ namespace livelywpf.Views
 
         private void LoadWallpaper(LibraryModel wp)
         {
-            var targetDisplay = Program.SettingsVM.Settings.SelectedDisplay;
-            if (wp.LivelyInfo.Type == WallpaperType.web
-                || wp.LivelyInfo.Type == WallpaperType.webaudio
-                || wp.LivelyInfo.Type == WallpaperType.url)
+            var target = Program.SettingsVM.Settings.SelectedDisplay;
+            IWallpaper wpInstance = null;
+            switch (wp.LivelyInfo.Type)
             {
-                wp.ItemStartup = true;
-                var item = new WebProcess(wp.FilePath, wp, targetDisplay);
-                item.WindowInitialized += SetupDesktop_WallpaperInitialized;
-                item.Show();
+                case WallpaperType.web:
+                case WallpaperType.webaudio:
+                case WallpaperType.url:
+                    wpInstance = new WebProcess(wp.FilePath, wp, target);
+                    break;
+                case WallpaperType.gif:
+                case WallpaperType.picture:
+                case WallpaperType.video:
+                    wpInstance = new VideoMpvPlayer(wp.FilePath, wp, target,
+                        Program.SettingsVM.Settings.WallpaperScaling);
+                    break;
+                case WallpaperType.videostream:
+                    if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "mpv", "youtube-dl.exe")))
+                    {
+                        wpInstance = new VideoMpvPlayer(wp.FilePath, wp, target,
+                            Program.SettingsVM.Settings.WallpaperScaling, Program.SettingsVM.Settings.StreamQuality);
+                    }
+                    else
+                    {
+                        Logger.Info("Core: yt-dl not found, using cef browser instead.");
+                        //note: wallpaper type will be videostream, don't forget..
+                        wpInstance = new WebProcess(wp.FilePath, wp, target);
+                    }
+                    break;
+                case WallpaperType.app:
+                case WallpaperType.bizhawk:
+                case WallpaperType.unity:
+                case WallpaperType.unityaudio:
+                case WallpaperType.godot:
+                    if (Program.IsMSIX)
+                    {
+                        Logger.Info("WallpaperPreview: Skipping program wallpaper on MSIX package.");
+                        MessageBox.Show(Properties.Resources.TextFeatureMissing, Properties.Resources.TextError);
+                    }
+                    else
+                    {
+                        wpInstance = new ExtPrograms(wp.FilePath, wp, target,
+                            Program.SettingsVM.Settings.WallpaperWaitTime);
+                    }
+                    break;
             }
-            else if (wp.LivelyInfo.Type == WallpaperType.app
-                || wp.LivelyInfo.Type == WallpaperType.godot
-                || wp.LivelyInfo.Type == WallpaperType.unity)
-            {
-                if (Program.IsMSIX)
-                {
-                    Logger.Info("WallpaperPreview: Skipping program wallpaper on MSIX package.");
-                    return;
-                }
 
-                wp.ItemStartup = true;
-                var item = new ExtPrograms(wp.FilePath, wp, targetDisplay, 
-                    Program.SettingsVM.Settings.WallpaperWaitTime);
-                item.WindowInitialized += SetupDesktop_WallpaperInitialized;
-                item.Show();
-            }
-            else if (wp.LivelyInfo.Type == WallpaperType.video)
+            if (wpInstance != null)
             {
                 wp.ItemStartup = true;
-                var item = new VideoPlayerMPVExt(wp.FilePath, wp, targetDisplay,
-                    Program.SettingsVM.Settings.WallpaperScaling);
-                item.WindowInitialized += SetupDesktop_WallpaperInitialized;
-                item.Show();
-            }
-            else if (wp.LivelyInfo.Type == WallpaperType.videostream)
-            {
-                if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "libMPVPlayer", "lib", "youtube-dl.exe")))
-                {
-                    wp.ItemStartup = true;
-                    var item = new VideoPlayerMPVExt(wp.FilePath, wp, targetDisplay,
-                        Program.SettingsVM.Settings.WallpaperScaling, Program.SettingsVM.Settings.StreamQuality);
-                    item.WindowInitialized += SetupDesktop_WallpaperInitialized;
-                    item.Show();
-                }
-                else
-                {
-                    Logger.Info("Wallpaper Preview: yt-dl not found, using cef browser instead.");
-                    //note: wallpaper type will be videostream, don't forget..
-                    wp.ItemStartup = true;
-                    var item = new WebProcess(wp.FilePath, wp, targetDisplay);
-                    item.WindowInitialized += SetupDesktop_WallpaperInitialized;
-                    item.Show();
-                }
-            }
-            else if (wp.LivelyInfo.Type == WallpaperType.gif || wp.LivelyInfo.Type == WallpaperType.picture)
-            {
-                var item = new VideoPlayerMPVExt(wp.FilePath, wp,
-                    targetDisplay, Program.SettingsVM.Settings.WallpaperScaling);
-                item.WindowInitialized += SetupDesktop_WallpaperInitialized;
-                item.Show();
+                wpInstance.WindowInitialized += SetupDesktop_WallpaperInitialized;
+                wpInstance.Show();
             }
         }
 
@@ -248,7 +239,7 @@ namespace livelywpf.Views
 
                 //recorder initialization
                 var item = WindowOperations.GetAbsolutePlacement(PreviewBorder, true);
-                recorder = new Helpers.ScreenRecorderDesktopDuplication();
+                recorder = new Helpers.ScreenRecorderlibScreen();
                 recorder.Initialize(savePath, item, 60, 8000 * 1000, false, false);
                 recorder.RecorderStatus += Recorder_RecorderStatus;
                 //recording timer.

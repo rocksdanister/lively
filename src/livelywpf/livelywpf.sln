@@ -9,6 +9,8 @@ Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "livelywpf.Package", "lively
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "libMPVPlayer", "libMPVPlayer\libMPVPlayer.csproj", "{07FDE579-3EB4-4AE6-A9E6-4099A9378587}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "livelySubProcess", "livelySubProcess\livelySubProcess.csproj", "{6921DF11-3AC7-4BB7-BB23-56CF4991E55E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,26 @@ Global
 		{07FDE579-3EB4-4AE6-A9E6-4099A9378587}.Release|x64.Build.0 = Release|Any CPU
 		{07FDE579-3EB4-4AE6-A9E6-4099A9378587}.Release|x86.ActiveCfg = Release|x86
 		{07FDE579-3EB4-4AE6-A9E6-4099A9378587}.Release|x86.Build.0 = Release|x86
+		{6921DF11-3AC7-4BB7-BB23-56CF4991E55E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6921DF11-3AC7-4BB7-BB23-56CF4991E55E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6921DF11-3AC7-4BB7-BB23-56CF4991E55E}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{6921DF11-3AC7-4BB7-BB23-56CF4991E55E}.Debug|ARM.Build.0 = Debug|Any CPU
+		{6921DF11-3AC7-4BB7-BB23-56CF4991E55E}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{6921DF11-3AC7-4BB7-BB23-56CF4991E55E}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{6921DF11-3AC7-4BB7-BB23-56CF4991E55E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6921DF11-3AC7-4BB7-BB23-56CF4991E55E}.Debug|x64.Build.0 = Debug|Any CPU
+		{6921DF11-3AC7-4BB7-BB23-56CF4991E55E}.Debug|x86.ActiveCfg = Debug|x86
+		{6921DF11-3AC7-4BB7-BB23-56CF4991E55E}.Debug|x86.Build.0 = Debug|x86
+		{6921DF11-3AC7-4BB7-BB23-56CF4991E55E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6921DF11-3AC7-4BB7-BB23-56CF4991E55E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6921DF11-3AC7-4BB7-BB23-56CF4991E55E}.Release|ARM.ActiveCfg = Release|Any CPU
+		{6921DF11-3AC7-4BB7-BB23-56CF4991E55E}.Release|ARM.Build.0 = Release|Any CPU
+		{6921DF11-3AC7-4BB7-BB23-56CF4991E55E}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{6921DF11-3AC7-4BB7-BB23-56CF4991E55E}.Release|ARM64.Build.0 = Release|Any CPU
+		{6921DF11-3AC7-4BB7-BB23-56CF4991E55E}.Release|x64.ActiveCfg = Release|Any CPU
+		{6921DF11-3AC7-4BB7-BB23-56CF4991E55E}.Release|x64.Build.0 = Release|Any CPU
+		{6921DF11-3AC7-4BB7-BB23-56CF4991E55E}.Release|x86.ActiveCfg = Release|x86
+		{6921DF11-3AC7-4BB7-BB23-56CF4991E55E}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

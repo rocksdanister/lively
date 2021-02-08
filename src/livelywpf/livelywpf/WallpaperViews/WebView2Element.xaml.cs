@@ -49,7 +49,7 @@ namespace livelywpf
                     {
                         webView.CoreWebView2.NavigateToString(ShadertoyURLtoEmbedLink(htmlPath));
                     }
-                    else if ((ytVideoId = Helpers.libMPVStreams.GetYouTubeVideoIdFromUrl(htmlPath)) != "")
+                    else if ((ytVideoId = Helpers.StreamHelper.GetYouTubeVideoIdFromUrl(htmlPath)) != "")
                     {
                         //open fullscreen embed player with loop enabled.
                         webView.CoreWebView2.Navigate("https://www.youtube.com/embed/" + ytVideoId +

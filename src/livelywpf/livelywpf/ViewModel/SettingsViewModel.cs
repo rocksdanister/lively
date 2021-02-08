@@ -20,9 +20,13 @@ namespace livelywpf
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         public SettingsViewModel()
         {
-            Settings = SettingsJSON.LoadConfig(Path.Combine(Program.AppDataDir, "Settings.json"));
-            if (Settings == null)
+            try
             {
+                Settings = Helpers.JsonStorage<SettingsModel>.LoadData(Path.Combine(Program.AppDataDir, "Settings.json"));
+            }
+            catch (Exception e)
+            {
+                Logger.Error(e.ToString());
                 Settings = new SettingsModel();
                 UpdateConfigFile();
             }
@@ -58,7 +62,23 @@ namespace livelywpf
                 new LanguagesModel("Српска ћирилица(sr-Cyrl)", new string[]{ "sr-Cyrl", "sr-Cyrl-BA", "sr-Cyrl-ME", "sr-Cyrl-RS", "sr-Cyrl-CS" }),
                 new LanguagesModel("Ελληνικά(el)", new string[]{ "el", "el-GR", "el-CY" }),
             };
-            SelectedLanguageItem = SearchSupportedLanguage(Settings.Language);
+
+            var defaultLanguage = SearchSupportedLanguage(Settings.Language);
+            if (defaultLanguage == null)
+            {
+                defaultLanguage = LanguageItems[0];
+                Settings.Language = defaultLanguage.Codes[0]; //en
+                UpdateConfigFile();
+            }
+            try
+            {
+                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(Settings.Language);
+            }
+            catch (Exception e)
+            {
+                Logger.Error("Setting locale fail:" + e.Message);
+            }
+            SelectedLanguageItem = defaultLanguage;
 
             if (Program.IsMSIX)
             {
@@ -71,23 +91,14 @@ namespace livelywpf
                 IsStartup = WindowsStartup.CheckStartupRegistry() == 1 || WindowsStartup.CheckStartupRegistry() == -1;
             }
 
-            if (ScreenHelper.GetScreen().FindIndex(x => ScreenHelper.ScreenCompare(x, Settings.SelectedDisplay, DisplayIdentificationMode.screenLayout)) == -1)
-            {
-                //Previous screen missing, use current primary screen.
-                Settings.SelectedDisplay = ScreenHelper.GetPrimaryScreen();
-                UpdateConfigFile();
-            }
+            Settings.SelectedDisplay = ScreenHelper.GetScreen(Settings.SelectedDisplay.DeviceId, Settings.SelectedDisplay.DeviceName,
+                        Settings.SelectedDisplay.Bounds, Settings.SelectedDisplay.WorkingArea, DisplayIdentificationMode.deviceId) ?? ScreenHelper.GetPrimaryScreen();
 
             //Restrictions on wpf only version of Lively.
-            if (Settings.GifPlayer != LivelyGifPlayer.libmpvExt
-                || Settings.LivelyGUIRendering == LivelyGUIState.normal
-                || Settings.GifCapture == true
-                || Settings.VideoPlayer != LivelyMediaPlayer.libmpvExt)
+            if (Settings.LivelyGUIRendering == LivelyGUIState.normal || Settings.GifCapture == true)
             {
-                Settings.GifPlayer = LivelyGifPlayer.libmpvExt;
                 Settings.LivelyGUIRendering = LivelyGUIState.lite;
                 Settings.GifCapture = false;
-                Settings.VideoPlayer = LivelyMediaPlayer.libmpvExt;
                 //UpdateConfigFile();
             }
 
@@ -133,7 +144,14 @@ namespace livelywpf
 
         public void UpdateConfigFile()
         {
-            SettingsJSON.SaveConfig(Path.Combine(Program.AppDataDir, "Settings.json"), Settings);
+            try
+            {
+                Helpers.JsonStorage<SettingsModel>.StoreData(Path.Combine(Program.AppDataDir, "Settings.json"), Settings);
+            }
+            catch (Exception e)
+            {
+                Logger.Error(e.ToString());
+            }
         }
 
         #region general
@@ -189,24 +207,15 @@ namespace livelywpf
             }
             set
             {
-                if(LanguageItems.Contains(value))
-                {
-                    _selectedLanguageItem = value;
-                }
-                else
-                {
-                    //en-US
-                    _selectedLanguageItem = LanguageItems[0];
-                }
+                _selectedLanguageItem = value;
                 OnPropertyChanged("SelectedLanguageItem");
-
-                if(_selectedLanguageItem.Codes.FirstOrDefault(x => x == Settings.Language) == null)
+                if (_selectedLanguageItem.Codes.FirstOrDefault(x => x == Settings.Language) == null)
                 {
-                    Settings.IsRestart = true;
+                    //Settings.IsRestart = true;
                     Settings.Language = _selectedLanguageItem.Codes[0];
                     UpdateConfigFile();
-                    Program.RestartApplication();
-                }    
+                    //Program.RestartApplication();
+                }
             }
         }
 
@@ -516,6 +525,16 @@ namespace livelywpf
                     Settings.InputForward = (InputForwardMode)_selectedWallpaperInputMode;
                     UpdateConfigFile();
                 }
+
+                //todo: show msg to user desc whats happening.
+                if (Settings.InputForward == InputForwardMode.mousekeyboard)
+                {
+                    Helpers.DesktopUtil.SetDesktopIconVisibility(false);
+                }
+                else
+                {
+                    Helpers.DesktopUtil.SetDesktopIconVisibility(Helpers.DesktopUtil.DesktopIconVisibilityDefault);
+                }
             }
         }
 
@@ -528,10 +547,10 @@ namespace livelywpf
             }
             set
             {
-                _selectedVideoPlayerIndex = value;
+                _selectedVideoPlayerIndex = CheckVideoPluginExists((LivelyMediaPlayer)value) ? value : (int)LivelyMediaPlayer.mpv;
                 OnPropertyChanged("SelectedVideoPlayerIndex");
 
-                if(Settings.VideoPlayer != (LivelyMediaPlayer)_selectedVideoPlayerIndex)
+                if (Settings.VideoPlayer != (LivelyMediaPlayer)_selectedVideoPlayerIndex)
                 {
                     Settings.VideoPlayer = (LivelyMediaPlayer)_selectedVideoPlayerIndex;
                     UpdateConfigFile();
@@ -550,7 +569,7 @@ namespace livelywpf
             }
             set
             {
-                _selectedGifPlayerIndex = value;
+                _selectedGifPlayerIndex = CheckGifPluginExists((LivelyGifPlayer)value) ? value : (int)LivelyGifPlayer.mpv;
                 OnPropertyChanged("SelectedGifPlayerIndex");
 
                 if (Settings.GifPlayer != (LivelyGifPlayer)_selectedGifPlayerIndex)
@@ -756,6 +775,31 @@ namespace livelywpf
 
         #region helper fns
 
+        private static bool CheckVideoPluginExists(LivelyMediaPlayer mp)
+        {
+            return mp switch
+            {
+                LivelyMediaPlayer.wmf => true,
+                LivelyMediaPlayer.libvlc => false, //depreciated
+                LivelyMediaPlayer.libmpv => false, //depreciated
+                LivelyMediaPlayer.libvlcExt => File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "libVLCPlayer", "libVLCPlayer.exe")),
+                LivelyMediaPlayer.libmpvExt => File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "libMPVPlayer", "libMPVPlayer.exe")),
+                LivelyMediaPlayer.mpv => File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "mpv", "mpv.exe")),
+                _ => false,
+            };
+        }
+
+        private static bool CheckGifPluginExists(LivelyGifPlayer gp)
+        {
+            return gp switch
+            {
+                LivelyGifPlayer.win10Img => false, //xaml island
+                LivelyGifPlayer.libmpvExt => File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "libMPVPlayer", "libMPVPlayer.exe")),
+                LivelyGifPlayer.mpv => File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "mpv", "mpv.exe")),
+                _ => false,
+            };
+        }
+
         /// <summary>
         /// Checks LanguageItems and see if language with the given code exists.
         /// </summary>
@@ -763,6 +807,7 @@ namespace livelywpf
         /// <returns>Languagemodel if found; null otherwise.</returns>
         private LanguagesModel SearchSupportedLanguage(string langCode)
         {
+            //return LanguageItems.FirstOrDefault(lang => lang.Codes.Contains(langCode));
             foreach (var lang in LanguageItems)
             {
                 foreach (var code in lang.Codes)
@@ -782,8 +827,8 @@ namespace livelywpf
             SetupDesktop.TerminateWallpaper(type);
             foreach (var item in prevWallpapers)
             {
-                Program.LibraryVM.WallpaperSet(item.GetWallpaperData(), item.GetScreen());
-                if (Settings.WallpaperArrangement == WallpaperArrangement.span 
+                SetupDesktop.SetWallpaper(item.GetWallpaperData(), item.GetScreen());
+                if (Settings.WallpaperArrangement == WallpaperArrangement.span
                     || Settings.WallpaperArrangement == WallpaperArrangement.duplicate)
                 {
                     break;

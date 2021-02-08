@@ -8,9 +8,9 @@ using System.Web;
 
 namespace livelywpf.Helpers
 {
-    public static class libMPVStreams
+    public static class StreamHelper
     {
-        public static bool CheckStream(Uri uri)
+        public static bool IsSupportedUri(Uri uri)
         {
             bool status = false;
             string host;
@@ -127,34 +127,23 @@ namespace livelywpf.Helpers
         /// <summary>
         /// Returns commandline argument for youtube-dl + mpv player.
         /// </summary>
-        public static string YoutubeDLArgGenerate(StreamQualitySuggestion qualitySuggestion, string link)
+        public static string YoutubeDLMpvArgGenerate(StreamQualitySuggestion qualitySuggestion, string link)
         {
-            string quality = null;
-            switch (qualitySuggestion)
-            {
-                case StreamQualitySuggestion.Lowest:
-                    quality = " --ytdl-format bestvideo[height<=480]+bestaudio/best[height<=144]";
-                    break;
-                case StreamQualitySuggestion.Low:
-                    quality = " --ytdl-format bestvideo[height<=480]+bestaudio/best[height<=240]";
-                    break;
-                case StreamQualitySuggestion.LowMedium:
-                    quality = " --ytdl-format bestvideo[height<=480]+bestaudio/best[height<=360]";
-                    break;
-                case StreamQualitySuggestion.Medium:
-                    quality = " --ytdl-format bestvideo[height<=480]+bestaudio/best[height<=480]";
-                    break;
-                case StreamQualitySuggestion.MediumHigh:
-                    quality = " --ytdl-format bestvideo[height<=720]+bestaudio/best[height<=720]";
-                    break;
-                case StreamQualitySuggestion.High:
-                    quality = " --ytdl-format bestvideo[height<=1080]+bestaudio/best[height<=1080]";
-                    break;
-                case StreamQualitySuggestion.Highest:
-                    quality = String.Empty;
-                    break;
-            }
-            return "\"" + link + "\"" + " --force-window=yes --loop-file --keep-open --hwdec=yes --no-keepaspect" + quality;
+            StringBuilder sb = new StringBuilder();
+            sb.Append(link);
+            sb.Append(qualitySuggestion switch
+                {
+                    StreamQualitySuggestion.Lowest => " --ytdl-format=bestvideo[height<=144]+bestaudio/best",
+                    StreamQualitySuggestion.Low => " --ytdl-format=bestvideo[height<=240]+bestaudio/best",
+                    StreamQualitySuggestion.LowMedium => " --ytdl-format=bestvideo[height<=360]+bestaudio/best",
+                    StreamQualitySuggestion.Medium => " --ytdl-format=bestvideo[height<=480]+bestaudio/best",
+                    StreamQualitySuggestion.MediumHigh => " --ytdl-format=bestvideo[height<=720]+bestaudio/best",
+                    StreamQualitySuggestion.High => " --ytdl-format=bestvideo[height<=1080]+bestaudio/best",
+                    StreamQualitySuggestion.Highest => " --ytdl-format=bestvideo+bestaudio/best",
+                    _ => string.Empty,
+                }
+            );
+            return sb.ToString();
         }
     }
 }

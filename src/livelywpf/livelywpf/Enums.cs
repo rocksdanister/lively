@@ -32,6 +32,10 @@ namespace livelywpf
         videostream,
         [Description("Static picture")]
         picture,
+        /*
+        [Description("Animated sequence HEIC file")]
+        heic
+        */
     }
 
     public enum AudioPauseAlgorithm
@@ -116,7 +120,8 @@ namespace livelywpf
 
     public enum DisplayIdentificationMode
     {
-        screenClass,
+        deviceName,
+        deviceId,
         screenLayout
     }
 
@@ -131,16 +136,20 @@ namespace livelywpf
     public enum LivelyMediaPlayer
     {
         wmf,
+        //depreciated
         libvlc,
         libvlcExt,
+        //depreciated
         libmpv,
-        libmpvExt
+        libmpvExt,
+        mpv
     }
 
     public enum LivelyGifPlayer
     {
         win10Img,
-        libmpvExt
+        libmpvExt,
+        mpv
     }
 
     public enum LivelyWebBrowser
