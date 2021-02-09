@@ -225,6 +225,7 @@ namespace livelywpf
                             {
                                 Program.LibraryVM.WallpaperDelete(wallpaper);
                             }
+                            WallpaperChanged?.Invoke(null, null);
                         }));
                     }
                     else
@@ -277,11 +278,6 @@ namespace livelywpf
                 }));
                 if (e.Success)
                 {
-                    if (wallpaper.GetProcess() != null)
-                    {
-                        SendMsgLivelySubProcess("lively:add-pgm " + wallpaper.GetProcess().Id);
-                    }
-
                     //preview and create gif and thumbnail for user dropped file.
                     if (wallpaper.GetWallpaperData().DataType == LibraryTileType.processing)
                     {
@@ -328,7 +324,7 @@ namespace livelywpf
                         return; //exit
                     }
 
-                    if(!ScreenHelper.IsMultiScreen())
+                    if (!ScreenHelper.IsMultiScreen())
                     {
                         TerminateAllWallpapers(false);
                         SetWallpaperPerScreen(wallpaper.GetHWND(), wallpaper.GetScreen());
@@ -353,9 +349,14 @@ namespace livelywpf
                         }
                     }
                     //Reload webpage, fix if the webpage code is not subscribed to window size changed event.
-                    if(reloadRequired)
+                    if (reloadRequired)
                     {
                         wallpaper.SendMessage("lively:reload");
+                    }
+
+                    if (wallpaper.GetProcess() != null)
+                    {
+                        SendMsgLivelySubProcess("lively:add-pgm " + wallpaper.GetProcess().Id);
                     }
 
                     Wallpapers.Add(wallpaper);
@@ -363,7 +364,7 @@ namespace livelywpf
                 }
                 else
                 {
-                    if(e.Error != null)
+                    if (e.Error != null)
                     {
                         Logger.Error("Core: Failed to launch wallpaper=>" + e.Msg + "\n" + e.Error.ToString());
                     }

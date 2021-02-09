@@ -106,8 +106,8 @@ namespace livelywpf
         public static void BorderlessWinStyle(IntPtr handle)
         {
             // Get window styles
-            var styleCurrentWindowStandard = NativeMethods.GetWindowLongPtr(handle, (-16));
-            var styleCurrentWindowExtended = NativeMethods.GetWindowLongPtr(handle, (-20));
+            var styleCurrentWindowStandard = NativeMethods.GetWindowLongPtr(handle, (int)NativeMethods.GWL.GWL_STYLE);
+            var styleCurrentWindowExtended = NativeMethods.GetWindowLongPtr(handle, (int)NativeMethods.GWL.GWL_EXSTYLE);
 
             // Compute new styles (XOR of the inverse of all the bits to filter)
             var styleNewWindowStandard =
@@ -135,8 +135,8 @@ namespace livelywpf
                 );
 
             // update window styles
-            NativeMethods.SetWindowLongPtr(new HandleRef(null, handle), (-16), (IntPtr)styleNewWindowStandard);
-            NativeMethods.SetWindowLongPtr(new HandleRef(null, handle), (-20), (IntPtr)styleNewWindowExtended);
+            NativeMethods.SetWindowLongPtr(new HandleRef(null, handle), (int)NativeMethods.GWL.GWL_STYLE, (IntPtr)styleNewWindowStandard);
+            NativeMethods.SetWindowLongPtr(new HandleRef(null, handle), (int)NativeMethods.GWL.GWL_EXSTYLE, (IntPtr)styleNewWindowExtended);
 
             // remove the menu and menuitems and force a redraw
             var menuHandle = NativeMethods.GetMenu(handle);
@@ -158,16 +158,20 @@ namespace livelywpf
         /// <param name="handle">window handle</param>
         public static void RemoveWindowFromTaskbar(IntPtr handle)
         {
-            var styleNewWindowExtended =
-                   (Int64)NativeMethods.WindowStyles.WS_EX_NOACTIVATE
-                   | (Int64)NativeMethods.WindowStyles.WS_EX_TOOLWINDOW;
+            var styleCurrentWindowExtended = NativeMethods.GetWindowLongPtr(handle, (int)NativeMethods.GWL.GWL_EXSTYLE);
+
+            var styleNewWindowExtended = styleCurrentWindowExtended.ToInt64() |
+                   (Int64)NativeMethods.WindowStyles.WS_EX_NOACTIVATE |
+                   (Int64)NativeMethods.WindowStyles.WS_EX_TOOLWINDOW;
 
             // update window styles
-            NativeMethods.SetWindowLongPtr(new HandleRef(null, handle), (-20), (IntPtr)styleNewWindowExtended);
+            //https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-setwindowlongptra
+            //Certain window data is cached, so changes you make using SetWindowLongPtr will not take effect until you call the SetWindowPos function?
+            NativeMethods.ShowWindow(handle, (int)NativeMethods.SHOWWINDOW.SW_HIDE);
+            NativeMethods.SetWindowLongPtr(new HandleRef(null, handle), (int)NativeMethods.GWL.GWL_EXSTYLE, (IntPtr)styleNewWindowExtended);
+            NativeMethods.ShowWindow(handle, (int)NativeMethods.SHOWWINDOW.SW_SHOW);
         }
 
-        public const int GWL_EXSTYLE = -20;
-        public const int WS_EX_LAYERED = 0x80000;
         public const int LWA_ALPHA = 0x2;
         public const int LWA_COLORKEY = 0x1;
 
@@ -182,7 +186,7 @@ namespace livelywpf
                 styleCurrentWindowExtended.ToInt64() ^
                 NativeMethods.WindowStyles.WS_EX_LAYERED;
 
-            NativeMethods.SetWindowLongPtr(new HandleRef(null, Handle), GWL_EXSTYLE, (IntPtr)styleNewWindowExtended);
+            NativeMethods.SetWindowLongPtr(new HandleRef(null, Handle), (int)NativeMethods.GWL.GWL_EXSTYLE, (IntPtr)styleNewWindowExtended);
             NativeMethods.SetLayeredWindowAttributes(Handle, 0, 128, LWA_ALPHA);
         }
     }
