@@ -53,7 +53,7 @@ namespace livelywpf.Cef
             catch (Exception e)
             {
                 Logger.Error(e.ToString());
-                Task.Run(() => (MessageBox.Show(e.ToString(), Properties.Resources.TitleAppName)));
+                _= Task.Run(() => (MessageBox.Show(e.ToString(), Properties.Resources.TitleAppName)));
             }
         }
 

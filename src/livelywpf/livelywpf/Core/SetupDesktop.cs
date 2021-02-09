@@ -219,9 +219,12 @@ namespace livelywpf
                         Logger.Info("Core: Skipping program wallpaper on MSIX package.");
                         System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
                         {
-                            Program.LibraryVM.WallpaperDelete(wallpaper);
+                            if (wallpaper.DataType == LibraryTileType.processing)
+                            {
+                                Program.LibraryVM.WallpaperDelete(wallpaper);
+                            }
                         }));
-                        MessageBox.Show(Properties.Resources.TextFeatureMissing, Properties.Resources.TextError);
+                        _= Task.Run(() => (MessageBox.Show(Properties.Resources.TextFeatureMissing, Properties.Resources.TextError)));
                     }
                     else
                     {
