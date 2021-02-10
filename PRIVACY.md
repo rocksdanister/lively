@@ -1,4 +1,6 @@
-**Privacy Policy**
+# Privacy Policy
+
+**Content of the privacy policy**
 
 This application doesn’t:
 
