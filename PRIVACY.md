@@ -43,4 +43,4 @@ If you have questions about this application, please [fill an issue on GitHub](h
 
 **Footnotes**
 
-Instructions on retrieving local logfile [can be found here.](https://github.com/rocksdanister/lively/wiki/Common-Problems)
+Instructions on retrieving local log file [can be found here.](https://github.com/rocksdanister/lively/wiki/Common-Problems)
