@@ -12,7 +12,7 @@ For proper operation, this application might collect the following data:
 -   The class of opened windows;
 -   The name of the processes that have open windows.
 
-This data is treated for proper function of the application and never sent online.  A local log file is created on the host system, It is used for voluntary and optional submission to the developer to help diagnose an issue and not uploaded anywhere.
+This data is treated for proper function of the application and never sent online. A local log file is created on the host system, it is used for voluntary and optional submission to the developer to help diagnose an issue and not uploaded anywhere.
 
 **Microsoft Store users only**
 
@@ -42,4 +42,5 @@ Last updated 2021-02-10
 If you have questions about this application, please [fill an issue on GitHub](https://github.com/rocksdanister/lively/issues/new).
 
 **Footnotes**
+
 Instructions on retrieving local logfile [can be found here.](https://github.com/rocksdanister/lively/wiki/Common-Problems)
