@@ -223,6 +223,7 @@ namespace livelywpf
                             {
                                 Program.LibraryVM.WallpaperDelete(wallpaper);
                             }
+                            WallpaperChanged?.Invoke(null, null);
                         }));
                         _= Task.Run(() => (MessageBox.Show(Properties.Resources.TextFeatureMissing, Properties.Resources.TextError)));
                     }
@@ -315,6 +316,7 @@ namespace livelywpf
                     }
                     else if (wallpaper.GetWallpaperData().DataType == LibraryTileType.videoConvert)
                     {
+                        //todo: depreciated, remove code.
                         //converting existing library item into video wallpaper using libVLC.
                         //await ShowVLCScreenCaptureDialogSTAThread(wallpaper);
                         wallpaper.Close();
