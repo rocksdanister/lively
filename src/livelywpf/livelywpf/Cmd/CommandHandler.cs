@@ -242,8 +242,12 @@ namespace livelywpf.Cmd
                                     SetupDesktop.SendMessageWallpaper(screen, "lively:customise " + ctype + " " + name + " " + int.Parse(val));
                                     lp[name]["value"] = int.Parse(val);
                                 }
-                                else if (ctype.Equals("folderDropdown", StringComparison.OrdinalIgnoreCase) ||
-                                         ctype.Equals("textbox", StringComparison.OrdinalIgnoreCase))
+                                else if (ctype.Equals("folderDropdown", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    SetupDesktop.SendMessageWallpaper(screen, "lively:customise " + ctype + " " + name + " " + "\"" + val + "\"");
+                                    lp[name]["value"] = Path.GetFileName(val);
+                                }
+                                else if (ctype.Equals("textbox", StringComparison.OrdinalIgnoreCase))
                                 {
                                     SetupDesktop.SendMessageWallpaper(screen, "lively:customise " + ctype + " " + name + " " + "\"" + val + "\"");
                                     lp[name]["value"] = val;
