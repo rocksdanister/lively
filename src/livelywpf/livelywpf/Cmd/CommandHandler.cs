@@ -75,14 +75,35 @@ namespace livelywpf.Cmd
             public int? Monitor { get; set; }
         }
 
+        [Verb("screensaver", HelpText = "Screen saver control.")]
+        class ScreenSaverOptions
+        {
+            [Option("preview",
+            Required = false,
+            HelpText = "Show the ss in the ss selection dialog box, number represents the handle to the parent's window.")]
+            public int? Preview { get; set; }
+
+            [Option("configure",
+            Required = false,
+            HelpText = "Show the ss configuration dialog box.")]
+            public int? Configure { get; set; }
+
+
+            [Option("show",
+            Required = false,
+            HelpText = "Show the ss full-screen, false cancels running ss.")]
+            public bool? Show { get; set; }
+        }
+
         public static void ParseArgs(string[] args)
         {
-            _ = CommandLine.Parser.Default.ParseArguments<AppOptions, SetWallpaperOptions, CustomiseWallpaperOptions, CloseWallpaperOptions>(args)
+            _ = CommandLine.Parser.Default.ParseArguments<AppOptions, SetWallpaperOptions, CustomiseWallpaperOptions, CloseWallpaperOptions, ScreenSaverOptions>(args)
                 .MapResult(
                     (AppOptions opts) => RunAppOptions(opts),
                     (CloseWallpaperOptions opts) => RunCloseWallpaperOptions(opts),
                     (SetWallpaperOptions opts) => RunSetWallpaperOptions(opts),
                     (CustomiseWallpaperOptions opts) => RunCustomiseWallpaperOptions(opts),
+                    (ScreenSaverOptions opts) => RunScreenSaverOptions(opts),
                     errs => HandleParseError(errs));
         }
 
@@ -265,6 +286,37 @@ namespace livelywpf.Cmd
                     }
                     catch { }
                 }
+            }
+            return 0;
+        }
+
+        private static int RunScreenSaverOptions(ScreenSaverOptions opts)
+        {
+            if (opts.Show != null)
+            {
+                if (opts.Show == true)
+                {
+                    Helpers.ScreenSaverService.Instance.StartService();
+                }
+                else
+                {
+                    Helpers.ScreenSaverService.Instance.StopService();
+                }
+            }
+
+            if (opts.Configure != null)
+            {
+                //todo
+            }
+
+            if (opts.Preview != null)
+            {
+                System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
+                {
+                    //todo: attach to preview window based.
+                    var prev = new Views.ScreenSaverPreview();
+                    prev.Show();
+                }));
             }
             return 0;
         }

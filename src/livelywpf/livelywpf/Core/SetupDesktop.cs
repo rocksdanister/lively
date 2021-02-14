@@ -438,9 +438,8 @@ namespace livelywpf
         /// </summary>
         private static void SetWallpaperSpanScreen(IntPtr handle)
         {
-            NativeMethods.RECT prct = new NativeMethods.RECT();
             //get spawned workerw rectangle data.
-            NativeMethods.GetWindowRect(workerw, out prct);
+            NativeMethods.GetWindowRect(workerw, out NativeMethods.RECT prct);
             SetParentWorkerW(handle);
 
             //fill wp into the whole workerw area.
