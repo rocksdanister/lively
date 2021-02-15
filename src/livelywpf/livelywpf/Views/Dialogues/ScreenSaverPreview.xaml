@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:livelywpf.Views"
         mc:Ignorable="d"
-        Title="ScreenSaverPreview" Height="300" Width="300">
+        Background="Black"
+        Title="ScreenSaverPreview" Height="108" Width="156">
 
     <Window.Resources>
         <Storyboard  x:Key="fidgetSpinner">
@@ -20,9 +21,9 @@
     
     <Grid>
         <!-- animated lively icon -->
-        <Image x:Name="livelyIcon" Source="pack://application:,,,/Resources/appicon_96.png" Width="200" Height="200" Margin="0, 0, 5, 0">
+        <Image x:Name="livelyIcon" Source="pack://application:,,,/Resources/appicon_96.png" Width="70" Height="70" Margin="0, 0, 5, 0">
             <Image.RenderTransform>
-                <RotateTransform CenterX="100" CenterY="100" />
+                <RotateTransform CenterX="35" CenterY="35" />
             </Image.RenderTransform>
             <Image.Style>
                 <Style>

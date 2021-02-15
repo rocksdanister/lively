@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Windows.Threading;
 using CommandLine;
@@ -304,20 +303,18 @@ namespace livelywpf.Cmd
                 }
             }
 
-            if (opts.Configure != null)
+            System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
             {
-                //todo
-            }
-
-            if (opts.Preview != null)
-            {
-                System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
+                if (opts.Configure != null)
                 {
-                    //todo: attach to preview window based.
-                    var prev = new Views.ScreenSaverPreview();
-                    prev.Show();
-                }));
-            }
+                    App.AppWindow?.ShowControlPanelDialog();
+                }
+
+                if (opts.Preview != null)
+                {
+                    Helpers.ScreenSaverService.CreateScreenSaverPreview(new IntPtr((int)opts.Preview));
+                }
+            }));
             return 0;
         }
 

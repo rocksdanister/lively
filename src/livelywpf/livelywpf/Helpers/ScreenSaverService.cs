@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Text;
 using System.Timers;
 using System.Drawing;
+using System.Windows.Interop;
+using System.Runtime.InteropServices;
+using System.ComponentModel;
 
 namespace livelywpf.Helpers
 {
     public sealed class ScreenSaverService
     {
-        private bool isRunning;
+        private static bool isRunning;
         Point mousePosOriginal;
         private readonly Timer _timer = new Timer();
         private static readonly ScreenSaverService instance = new ScreenSaverService();
@@ -28,11 +31,11 @@ namespace livelywpf.Helpers
 
         private void Initialize()
         {
-            _timer.Elapsed += MouseTimer_Elapsed;
+            _timer.Elapsed += InputCheckTimer;
             _timer.Interval = 250;
         }
 
-        private void MouseTimer_Elapsed(object sender, ElapsedEventArgs e)
+        private void InputCheckTimer(object sender, ElapsedEventArgs e)
         {
             //Don't want to make a mouse hook... quick soln.
             var mousePosCurr = System.Windows.Forms.Control.MousePosition;
@@ -45,7 +48,7 @@ namespace livelywpf.Helpers
 
         public void StartService()
         {
-            if (!isRunning)
+            if (!isRunning && SetupDesktop.Wallpapers.Count != 0)
             {
                 isRunning = true;
                 ShowScreenSavers();
@@ -130,5 +133,65 @@ namespace livelywpf.Helpers
             }
             SetupDesktop.RefreshDesktop();
         }
+
+        /// <summary>
+        /// Attaches screensaver preview to preview region. <br>
+        /// (To be run in UI thread.)</br>
+        /// </summary>
+        /// <param name="hwnd"></param>
+        public static void CreateScreenSaverPreview(IntPtr hwnd)
+        {
+            if (isRunning)
+                return;
+
+            var preview = new Views.ScreenSaverPreview
+            {
+                ShowActivated = false,
+                ResizeMode = System.Windows.ResizeMode.NoResize,
+                WindowStyle = System.Windows.WindowStyle.None,
+                WindowStartupLocation = System.Windows.WindowStartupLocation.Manual,
+                Left = -9999,
+            };
+            preview.Show();
+            var previewHandle = new WindowInteropHelper(preview).Handle;
+            //Set child of target.
+            WindowOperations.SetParentSafe(previewHandle, hwnd);
+            //Make this a child window so it will close when the parent dialog closes.
+            NativeMethods.SetWindowLongPtr(new System.Runtime.InteropServices.HandleRef(null, previewHandle),
+                (int)NativeMethods.GWL.GWL_STYLE,
+                new IntPtr(NativeMethods.GetWindowLong(previewHandle, (int)NativeMethods.GWL.GWL_STYLE) | NativeMethods.WindowStyles.WS_CHILD));
+            //Get size of target.
+            NativeMethods.GetClientRect(hwnd, out NativeMethods.RECT prct);
+            //Update preview size and position.
+            if (!NativeMethods.SetWindowPos(previewHandle, 1, 0, 0, prct.Right - prct.Left, prct.Bottom - prct.Top, 0 | 0x0010))
+            {
+                NLogger.LogWin32Error("setwindowpos fail Preview Screensaver,");
+            }
+        }
+
+        #region helpers
+
+        // Fails after 50 days..
+        static uint GetLastInputTime()
+        {
+            NativeMethods.LASTINPUTINFO lastInputInfo = new NativeMethods.LASTINPUTINFO();
+            lastInputInfo.cbSize = (uint)Marshal.SizeOf(lastInputInfo);
+            lastInputInfo.dwTime = 0;
+
+            uint envTicks = (uint)Environment.TickCount;
+
+            if (NativeMethods.GetLastInputInfo(ref lastInputInfo))
+            {
+                uint lastInputTick = lastInputInfo.dwTime;
+
+                return (envTicks - lastInputTick);
+            }
+            else
+            {
+                throw new Win32Exception();
+            }
+        }
+
+        #endregion //helpers
     }
 }
