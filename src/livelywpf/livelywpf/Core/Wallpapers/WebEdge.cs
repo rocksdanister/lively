@@ -106,11 +106,6 @@ namespace livelywpf.Core
 
         }
 
-        public void Resume()
-        {
-
-        }
-
         public void SendMessage(string msg)
         {
             if(Player != null)
@@ -166,6 +161,11 @@ namespace livelywpf.Core
         public void Terminate()
         {
             Close();
+        }
+
+        public void SetPlaybackPos(int pos)
+        {
+            //todo: reload if 0
         }
     }
 }

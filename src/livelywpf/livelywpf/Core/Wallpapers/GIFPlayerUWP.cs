@@ -110,14 +110,14 @@ namespace livelywpf.Core
             Close();
         }
 
-        public void Resume()
-        {
-            //throw new NotImplementedException();
-        }
-
         public void SetVolume(int volume)
         {
             //gif has no sound.
+        }
+
+        public void SetPlaybackPos(int pos)
+        {
+            
         }
     }
 }

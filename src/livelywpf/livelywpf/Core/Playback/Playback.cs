@@ -378,8 +378,10 @@ namespace livelywpf.Core
         {
             SetupDesktop.Wallpapers.ForEach(x =>
             {
-                if(ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.deviceId))
+                if (ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.deviceId))
+                {
                     x.Pause();
+                }
             });
         }
 

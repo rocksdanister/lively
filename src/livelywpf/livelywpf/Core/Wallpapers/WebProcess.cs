@@ -365,5 +365,13 @@ namespace livelywpf.Core
             catch (ArgumentException)
             { /* process already exited */ }
         }
+
+        public void SetPlaybackPos(int pos)
+        {
+            if (pos == 0)
+            {
+                SendMessage("lively:reload");
+            }
+        }
     }
 }

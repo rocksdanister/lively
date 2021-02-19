@@ -66,27 +66,25 @@ namespace livelywpf
 
         public void Play()
         {
-            BitMapImg.Play();
+            if (ApiInformation.IsPropertyPresent("Windows.UI.Xaml.Media.Imaging.BitmapImage", "IsPlaying") && 
+                !BitMapImg.IsPlaying)
+            {
+                BitMapImg.Play();
+            }
         }
 
-        /// <summary>
-        /// Will appear dark!
-        /// </summary>
         public void Stop()
         {
-            if (ApiInformation.IsPropertyPresent("Windows.UI.Xaml.Media.Imaging.BitmapImage", "IsPlaying")
-             && BitMapImg.IsPlaying == true)
+            if (ApiInformation.IsPropertyPresent("Windows.UI.Xaml.Media.Imaging.BitmapImage", "IsPlaying") && 
+                BitMapImg.IsPlaying)
             {
                 BitMapImg.Stop();
             }
         }
 
-        /// <summary>
-        /// todo: adjust playbackrate or show static picture.
-        /// </summary>
         public void Pause()
         {
-            //throw new NotImplementedException();
+            Stop();
         }
     }
 }

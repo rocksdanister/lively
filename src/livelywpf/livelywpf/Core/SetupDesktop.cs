@@ -466,6 +466,14 @@ namespace livelywpf
                 Logger.Info("Sending/Queuing wallpaper(Duplicate)=>" + remainingScreens[0].DeviceName + " " + remainingScreens[0].Bounds);
                 SetWallpaper(wallpaper.GetWallpaperData(), remainingScreens[0]);
             }
+            else
+            {
+                Logger.Info("Attempting to synchronize wallpaper position (duplicate.)");
+                Wallpapers.ForEach(wp =>
+                {
+                    wp.SetPlaybackPos(0);
+                });
+            }
         }
 
         #endregion //wallpaper add

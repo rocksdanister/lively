@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Interop;
@@ -186,7 +187,7 @@ namespace livelywpf.Core
                                  * lParam = isPressed ? (lParam |= 0u << 30) : (lParam |= 1u << 30); //prev key state
                                  * lParam = isPressed ? (lParam |= 0u << 31) : (lParam |= 1u << 31); //transition state
                                  */
-                                lParam = isPressed ? lParam : (lParam |= 3u << 30); 
+                                lParam = isPressed ? lParam : (lParam |= 3u << 30);
                                 NativeMethods.PostMessageW(wallpaper.GetHWND(), msg, wParam, (UIntPtr)lParam);
                             }
                         }

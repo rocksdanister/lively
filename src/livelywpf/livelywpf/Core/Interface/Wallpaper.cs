@@ -45,10 +45,6 @@ namespace livelywpf.Core
         /// </summary>
         void Pause();
         /// <summary>
-        /// Resume wallpaper playback.
-        /// </summary>
-        void Resume();
-        /// <summary>
         /// Start/resume wallpaper playback.
         /// </summary>
         void Play();
@@ -92,6 +88,12 @@ namespace livelywpf.Core
         /// </summary>
         /// <param name="volume">Range 0 - 100</param>
         void SetVolume(int volume);
+        /// <summary>
+        /// Sets wallpaper position in timeline. <br>
+        /// Only value 0 works for non-video wallpapers.</br>
+        /// </summary>
+        /// <param name="pos">%, Range 0 -100</param>
+        void SetPlaybackPos(int pos);
         /// <summary>
         /// Fires after Show() method is called.
         /// Check success status to check if wallpaper ready/failed.

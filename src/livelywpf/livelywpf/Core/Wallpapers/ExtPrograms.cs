@@ -364,11 +364,6 @@ namespace livelywpf.Core
             SetupDesktop.RefreshDesktop();
         }
 
-        public void Resume()
-        {
-
-        }
-
         public void SetVolume(int volume)
         {
             try
@@ -376,6 +371,11 @@ namespace livelywpf.Core
                 VolumeMixer.SetApplicationVolume(Proc.Id, volume);
             }
             catch { }
+        }
+
+        public void SetPlaybackPos(int pos)
+        {
+            //todo
         }
     }
 }

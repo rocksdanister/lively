@@ -58,7 +58,7 @@ namespace livelywpf.Core
         }
         public void Close()
         {
-            System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
+            System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
             {
                 Player.Close();
             }));
@@ -105,14 +105,14 @@ namespace livelywpf.Core
             Close();
         }
 
-        public void Resume()
-        {
-            //throw new NotImplementedException();
-        }
-
         public void SetVolume(int volume)
         {
             Player.SetVolume(volume);
+        }
+
+        public void SetPlaybackPos(int pos)
+        {
+
         }
     }
 }

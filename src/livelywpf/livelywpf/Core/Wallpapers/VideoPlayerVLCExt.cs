@@ -214,14 +214,14 @@ namespace livelywpf.Core
             SetupDesktop.RefreshDesktop();
         }
 
-        public void Resume()
-        {
-            //throw new NotImplementedException();
-        }
-
         public void SetVolume(int volume)
         {
             SendMessage("lively:vid-volume " + volume);
+        }
+
+        public void SetPlaybackPos(int pos)
+        {
+            //todo
         }
     }
 }
