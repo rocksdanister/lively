@@ -11,9 +11,9 @@ namespace livelywpf.Helpers
 {
     public sealed class ScreenSaverService
     {
-        private static bool isRunning;
         Point mousePosOriginal;
         private readonly Timer _timer = new Timer();
+        public static bool IsRunning { get; private set; }
         private static readonly ScreenSaverService instance = new ScreenSaverService();
 
         public static ScreenSaverService Instance
@@ -48,9 +48,9 @@ namespace livelywpf.Helpers
 
         public void StartService()
         {
-            if (!isRunning && SetupDesktop.Wallpapers.Count != 0)
+            if (!IsRunning && SetupDesktop.Wallpapers.Count != 0)
             {
-                isRunning = true;
+                IsRunning = true;
                 ShowScreenSavers();
                 mousePosOriginal = System.Windows.Forms.Control.MousePosition;
                 _timer.Start();
@@ -59,9 +59,9 @@ namespace livelywpf.Helpers
 
         public void StopService()
         {
-            if (isRunning)
+            if (IsRunning)
             {
-                isRunning = false;
+                IsRunning = false;
                 _timer.Stop();
                 HideScreenSavers();
             }
@@ -141,7 +141,7 @@ namespace livelywpf.Helpers
         /// <param name="hwnd"></param>
         public static void CreateScreenSaverPreview(IntPtr hwnd)
         {
-            if (isRunning)
+            if (IsRunning)
                 return;
 
             var preview = new Views.ScreenSaverPreview
