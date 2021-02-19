@@ -199,7 +199,10 @@ namespace livelywpf.Core
 
         public void SetPlaybackPos(int pos)
         {
-            //todo
+            if (GetWallpaperType() != WallpaperType.picture)
+            {
+                SendMessage("{\"command\":[\"seek\"," + pos + ",\"absolute-percent\"]}\n");
+            }
         }
 
         public void SendMessage(string msg)
