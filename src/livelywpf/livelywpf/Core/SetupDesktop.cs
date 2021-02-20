@@ -438,9 +438,8 @@ namespace livelywpf
         /// </summary>
         private static void SetWallpaperSpanScreen(IntPtr handle)
         {
-            NativeMethods.RECT prct = new NativeMethods.RECT();
             //get spawned workerw rectangle data.
-            NativeMethods.GetWindowRect(workerw, out prct);
+            NativeMethods.GetWindowRect(workerw, out NativeMethods.RECT prct);
             SetParentWorkerW(handle);
 
             //fill wp into the whole workerw area.
@@ -466,6 +465,14 @@ namespace livelywpf
             {
                 Logger.Info("Sending/Queuing wallpaper(Duplicate)=>" + remainingScreens[0].DeviceName + " " + remainingScreens[0].Bounds);
                 SetWallpaper(wallpaper.GetWallpaperData(), remainingScreens[0]);
+            }
+            else
+            {
+                Logger.Info("Attempting to synchronize wallpaper position (duplicate.)");
+                Wallpapers.ForEach(wp =>
+                {
+                    wp.SetPlaybackPos(0);
+                });
             }
         }
 
@@ -517,6 +524,7 @@ namespace livelywpf
         {
             Logger.Info("System parameters changed: Screen Event=>");
             ScreenHelper.GetScreen().ForEach(x => Logger.Info(x.DeviceName + " " + x.Bounds));
+            Helpers.ScreenSaverService.Instance.StopService();
             RefreshWallpaper();
             RestoreDisconnectedWallpapers();
         }

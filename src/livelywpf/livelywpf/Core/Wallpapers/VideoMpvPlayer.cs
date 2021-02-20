@@ -28,6 +28,7 @@ namespace livelywpf.Core
         private Task processWaitTask;
         private readonly int timeOut;
         private readonly string ipcServerName;
+        private bool isVideoDisabled;
         JObject livelyPropertiesData;
         string LivelyPropertyCopy { get; set; }
 
@@ -166,14 +167,29 @@ namespace livelywpf.Core
             return Model.LivelyInfo.Type;
         }
 
+        public void Play()
+        {
+            if (isVideoDisabled)
+            {
+                isVideoDisabled = false;
+                //is this always the correct channel for main video?
+                SendMessage("{\"command\":[\"set_property\",\"vid\",1]}\n");
+            }
+            SendMessage("{\"command\":[\"set_property\",\"pause\",false]}\n");
+        }
+
         public void Pause()
         {
             SendMessage("{\"command\":[\"set_property\",\"pause\",true]}\n");
         }
 
-        public void Play()
+        public void Stop()
         {
-            SendMessage("{\"command\":[\"set_property\",\"pause\",false]}\n");
+            isVideoDisabled = true;
+            //video=no disable video but audio can still be played,
+            //which is useful for 'play audio only' option in the future.
+            SendMessage("{\"command\":[\"set_property\",\"vid\",\"no\"]}\n");
+            Pause();
         }
 
         public void SetVolume(int volume)
@@ -181,9 +197,12 @@ namespace livelywpf.Core
             SendMessage("{\"command\":[\"set_property\",\"volume\"," + volume + "]}\n");
         }
 
-        public void Resume()
+        public void SetPlaybackPos(int pos)
         {
-
+            if (GetWallpaperType() != WallpaperType.picture)
+            {
+                SendMessage("{\"command\":[\"seek\"," + pos + ",\"absolute-percent\"]}\n");
+            }
         }
 
         public void SendMessage(string msg)
@@ -501,11 +520,6 @@ namespace livelywpf.Core
         }
 
         #endregion process task
-
-        public void Stop()
-        {
-
-        }
 
         public void Terminate()
         {

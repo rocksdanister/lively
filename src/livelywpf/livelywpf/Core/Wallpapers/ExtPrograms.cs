@@ -377,5 +377,10 @@ namespace livelywpf.Core
             }
             catch { }
         }
+
+        public void SetPlaybackPos(int pos)
+        {
+            //todo
+        }
     }
 }

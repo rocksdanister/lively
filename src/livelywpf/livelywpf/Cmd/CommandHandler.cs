@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Windows.Threading;
 using CommandLine;
@@ -75,14 +74,35 @@ namespace livelywpf.Cmd
             public int? Monitor { get; set; }
         }
 
+        [Verb("screensaver", HelpText = "Screen saver control.")]
+        class ScreenSaverOptions
+        {
+            [Option("preview",
+            Required = false,
+            HelpText = "Show the ss in the ss selection dialog box, number represents the handle to the parent's window.")]
+            public int? Preview { get; set; }
+
+            [Option("configure",
+            Required = false,
+            HelpText = "Show the ss configuration dialog box.")]
+            public int? Configure { get; set; }
+
+
+            [Option("show",
+            Required = false,
+            HelpText = "Show the ss full-screen, false cancels running ss.")]
+            public bool? Show { get; set; }
+        }
+
         public static void ParseArgs(string[] args)
         {
-            _ = CommandLine.Parser.Default.ParseArguments<AppOptions, SetWallpaperOptions, CustomiseWallpaperOptions, CloseWallpaperOptions>(args)
+            _ = CommandLine.Parser.Default.ParseArguments<AppOptions, SetWallpaperOptions, CustomiseWallpaperOptions, CloseWallpaperOptions, ScreenSaverOptions>(args)
                 .MapResult(
                     (AppOptions opts) => RunAppOptions(opts),
                     (CloseWallpaperOptions opts) => RunCloseWallpaperOptions(opts),
                     (SetWallpaperOptions opts) => RunSetWallpaperOptions(opts),
                     (CustomiseWallpaperOptions opts) => RunCustomiseWallpaperOptions(opts),
+                    (ScreenSaverOptions opts) => RunScreenSaverOptions(opts),
                     errs => HandleParseError(errs));
         }
 
@@ -242,8 +262,12 @@ namespace livelywpf.Cmd
                                     SetupDesktop.SendMessageWallpaper(screen, "lively:customise " + ctype + " " + name + " " + int.Parse(val));
                                     lp[name]["value"] = int.Parse(val);
                                 }
-                                else if (ctype.Equals("folderDropdown", StringComparison.OrdinalIgnoreCase) ||
-                                         ctype.Equals("textbox", StringComparison.OrdinalIgnoreCase))
+                                else if (ctype.Equals("folderDropdown", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    SetupDesktop.SendMessageWallpaper(screen, "lively:customise " + ctype + " " + name + " " + "\"" + val + "\"");
+                                    lp[name]["value"] = Path.GetFileName(val);
+                                }
+                                else if (ctype.Equals("textbox", StringComparison.OrdinalIgnoreCase))
                                 {
                                     SetupDesktop.SendMessageWallpaper(screen, "lively:customise " + ctype + " " + name + " " + "\"" + val + "\"");
                                     lp[name]["value"] = val;
@@ -262,6 +286,35 @@ namespace livelywpf.Cmd
                     catch { }
                 }
             }
+            return 0;
+        }
+
+        private static int RunScreenSaverOptions(ScreenSaverOptions opts)
+        {
+            if (opts.Show != null)
+            {
+                if (opts.Show == true)
+                {
+                    Helpers.ScreenSaverService.Instance.StartService();
+                }
+                else
+                {
+                    Helpers.ScreenSaverService.Instance.StopService();
+                }
+            }
+
+            System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
+            {
+                if (opts.Configure != null)
+                {
+                    App.AppWindow?.ShowControlPanelDialog();
+                }
+
+                if (opts.Preview != null)
+                {
+                    Helpers.ScreenSaverService.CreateScreenSaverPreview(new IntPtr((int)opts.Preview));
+                }
+            }));
             return 0;
         }
 

@@ -164,6 +164,9 @@
   <data name="DescriptionWelcomeWizard" xml:space="preserve">
     <value>이 마법사는 Lively 설정을 시작합니다.</value>
   </data>
+  <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
+    <value>Windows N/KN 버전은 배경 화면의 비디오를 재생하기 위해 추가 코덱을 다운로드해야 합니다.</value>
+  </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
     <value>업데이트 실패됨. 다음 링크에서 설치 파일을 내려받으세요:
 https://github.com/rocksdanister/lively/releases</value>
@@ -197,13 +200,11 @@ https://github.com/rocksdanister/lively/wiki</value>
 이전에 실행한 배경 화면을 복원하시겠습니까?</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
-    <value>Lively가 작동하려면 다음의 설정이 요구됩니다:  
-1. 이 PC(내 컴퓨터) 열기
-2. 빈 영역에서 마우스 오른쪽 버튼 클릭
-3. 속성 선택
-4. 고급 시스템 설정 선택
-5. 성능 항목에서 '설정' 선택
-6. '창의 제어 및 요소에 애니메이션'에 체크하고 적용을 누르세요.
+    <value>Lively가 작동하려면 몇 가지 설정이 필요한 것 같습니다.  
+1. 실행을 열기 위해 Win + R 키 누릅니다.
+2. 실행에 SystemPropertiesPerformance.exe를 입력하고 "확인"을 눌러 성능 옵션을 엽니다.
+3. "창의 제어 및 요소에 애니메이션 효과 주기"에 활성화/체크(이미 체크된 경우, 체크 해제했다가 다시 체크) &amp; 적용합니다.
+4. "적용"을 누른 다음 "확인"을 눌러 창을 닫습니다.
 
 Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp;amp; 적용.
 그래도 작동하지 않을 경우, Lively를 종료 후 재실행한 다음 Windows를 다시 시작해 주세요.
@@ -211,6 +212,9 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp;amp; 적용.
   </data>
   <data name="TextAdd" xml:space="preserve">
     <value>추가</value>
+  </data>
+  <data name="TextAllFiles" xml:space="preserve">
+    <value>모든 파일</value>
   </data>
   <data name="TextApplication" xml:space="preserve">
     <value>응용 프로그램</value>
@@ -227,6 +231,9 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp;amp; 적용.
   <data name="TextBrowse" xml:space="preserve">
     <value>찾아보기</value>
   </data>
+  <data name="TextCancel" xml:space="preserve">
+    <value>취소</value>
+  </data>
   <data name="TextClose" xml:space="preserve">
     <value>닫기</value>
   </data>
@@ -236,8 +243,14 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp;amp; 적용.
   <data name="TextCompleted" xml:space="preserve">
     <value>완료됨!</value>
   </data>
+  <data name="TextControlPanelOpen" xml:space="preserve">
+    <value>배경 화면을 관리하려면 여기를 누르세요.</value>
+  </data>
   <data name="TextConvertVideo" xml:space="preserve">
     <value>비디오로 변환</value>
+  </data>
+  <data name="TextCreatePreview" xml:space="preserve">
+    <value>미리보기 만들기</value>
   </data>
   <data name="TextCustomise" xml:space="preserve">
     <value>사용자 정의</value>
@@ -247,6 +260,9 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp;amp; 적용.
   </data>
   <data name="TextDeleteWallpaper" xml:space="preserve">
     <value>배경 화면 삭제</value>
+  </data>
+  <data name="TextDescription" xml:space="preserve">
+    <value>설명</value>
   </data>
   <data name="TextDisplayPauseRuleAllScreen" xml:space="preserve">
     <value>모든 화면</value>
@@ -266,6 +282,12 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp;amp; 적용.
   <data name="TextExportWallpaperZip" xml:space="preserve">
     <value>Zip 파일로 저장</value>
   </data>
+  <data name="TextFeatureMissing" xml:space="preserve">
+    <value>이 버전의 Lively에서는 일부 기능을 사용할 수 없습니다.</value>
+  </data>
+  <data name="TextFileNotFound" xml:space="preserve">
+    <value>파일이 없습니다.</value>
+  </data>
   <data name="TextGIF" xml:space="preserve">
     <value>GIF 애니메이션</value>
   </data>
@@ -280,6 +302,9 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp;amp; 적용.
   </data>
   <data name="TextKeyboard" xml:space="preserve">
     <value>키보드</value>
+  </data>
+  <data name="TextLicense" xml:space="preserve">
+    <value>라이센스</value>
   </data>
   <data name="TextmoreInfo" xml:space="preserve">
     <value>정보</value>
@@ -301,6 +326,9 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp;amp; 적용.
   </data>
   <data name="TextOff" xml:space="preserve">
     <value>꺼짐</value>
+  </data>
+  <data name="TextOK" xml:space="preserve">
+    <value>확인</value>
   </data>
   <data name="TextOn" xml:space="preserve">
     <value>켜짐</value>
@@ -329,8 +357,17 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp;amp; 적용.
   <data name="TextPerformancePause" xml:space="preserve">
     <value>일시 중지</value>
   </data>
+  <data name="TextPicture" xml:space="preserve">
+    <value>사진</value>
+  </data>
   <data name="TextPreviewWallpaper" xml:space="preserve">
     <value>배경 화면 미리보기</value>
+  </data>
+  <data name="TextPrivacyPolicy" xml:space="preserve">
+    <value>개인정보 보호정책</value>
+  </data>
+  <data name="TextProcessingWallpaper" xml:space="preserve">
+    <value>처리 중</value>
   </data>
   <data name="TextRemove" xml:space="preserve">
     <value>제거</value>
@@ -359,6 +396,9 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp;amp; 적용.
   <data name="TextStop" xml:space="preserve">
     <value>중지</value>
   </data>
+  <data name="TextStoreReview" xml:space="preserve">
+    <value>Lively를 즐겨 사용하세요? 리뷰를 남겨주세요. ^O^</value>
+  </data>
   <data name="TextSupport" xml:space="preserve">
     <value>기부하기</value>
   </data>
@@ -374,6 +414,9 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp;amp; 적용.
   <data name="TextTileSizeSmall" xml:space="preserve">
     <value>작게</value>
   </data>
+  <data name="TextTitle" xml:space="preserve">
+    <value>제목</value>
+  </data>
   <data name="TextUIHeadless" xml:space="preserve">
     <value>헤드리스</value>
   </data>
@@ -382,6 +425,9 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp;amp; 적용.
   </data>
   <data name="TextUINormal" xml:space="preserve">
     <value>일반</value>
+  </data>
+  <data name="TextUnsupportedFile" xml:space="preserve">
+    <value>지원되지 않는 파일 형식</value>
   </data>
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>업데이트 사용 가능!</value>
@@ -468,9 +514,15 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp;amp; 적용.
     <value>웹페이지 배경 화면 디버깅을 위한 포트 번호를 입력합니다. 변경 내용을 적용하려면 브라우저를 다시 시작해야 합니다.
 포트 번호 지정하고 http://localhost:portnumber로 이동하여 개발자 콘솔에 액세스하세요.</value>
   </data>
+  <data name="TipDebug" xml:space="preserve">
+    <value>개발자 메뉴 표시</value>
+  </data>
   <data name="TipDisplayPauseRule" xml:space="preserve">
     <value>개별: 응용 프로그램이 포커싱/전체 화면인 화면에서만 배경 화면을 일시 중지합니다.
 모두: 응용 프로그램이 포커싱/전체 화면일 때 모든 화면에서 배경 화면을 일시 중지합니다.</value>
+  </data>
+  <data name="TipGifPlayer" xml:space="preserve">
+    <value>GIF 배경 화면에 사용할 플레이어를 선택합니다.</value>
   </data>
   <data name="TipHideSysTray" xml:space="preserve">
     <value>시스템 트레이 아이콘 표시 여부를 선택합니다. 아이콘이 숨겨진 상태에서도 계속 실행됩니다.</value>
@@ -549,6 +601,9 @@ Edge는 Windows 10의 내장 웹뷰입니다.</value>
   <data name="TitleAudio" xml:space="preserve">
     <value>오디오</value>
   </data>
+  <data name="TitleAudioDesktopOnly" xml:space="preserve">
+    <value>바탕 화면에 초점이 맞춰진 경우에만 오디오 재생</value>
+  </data>
   <data name="TitleAudioMaster" xml:space="preserve">
     <value>마스터 볼륨</value>
   </data>
@@ -567,6 +622,9 @@ Edge는 Windows 10의 내장 웹뷰입니다.</value>
   <data name="TitleCommunity" xml:space="preserve">
     <value>커뮤니티</value>
   </data>
+  <data name="TitleDebug" xml:space="preserve">
+    <value>디버그</value>
+  </data>
   <data name="TitleDeleteConfirmation" xml:space="preserve">
     <value>삭제 확인</value>
   </data>
@@ -581,6 +639,9 @@ Edge는 Windows 10의 내장 웹뷰입니다.</value>
   </data>
   <data name="TitleGeneral" xml:space="preserve">
     <value>일반</value>
+  </data>
+  <data name="TitleGifPlayer" xml:space="preserve">
+    <value>GIF 플레이어</value>
   </data>
   <data name="TitleHelp" xml:space="preserve">
     <value>도움말</value>
@@ -629,6 +690,10 @@ Edge는 Windows 10의 내장 웹뷰입니다.</value>
   </data>
   <data name="TitleSettings" xml:space="preserve">
     <value>설정</value>
+  </data>
+  <data name="TitleStore" xml:space="preserve">
+    <value>MS 스토어</value>
+    <comment>다른 버전의 Lively의 경우 예:Microsoft Store</comment>
   </data>
   <data name="TitleStreamWallpaper" xml:space="preserve">
     <value>스트림</value>
@@ -687,71 +752,4 @@ Edge는 Windows 10의 내장 웹뷰입니다.</value>
   <data name="TitleWindowsStartup" xml:space="preserve">
     <value>Windows 시작 시 실행</value>
   </data>
-  <data name="TextAllFiles" xml:space="preserve">
-    <value>모든 파일</value>
-  </data>
-  <data name="TitleDebug" xml:space="preserve">
-    <value>디버그</value>
-  </data>
-  <data name="TipDebug" xml:space="preserve">
-    <value>개발자 메뉴 표시</value>
-  </data>
-  <data name="TextFileNotFound" xml:space="preserve">
-    <value>파일을 찾을 수 없습니다.</value>
-  </data>
-  <data name="TextPicture" xml:space="preserve">
-    <value>사진</value>
-  </data>
-  <data name="TextUnsupportedFile" xml:space="preserve">
-    <value>지원하지 않는 파일 형식입니다.</value>
-  </data>
-  <data name="TextProcessingWallpaper" xml:space="preserve">
-    <value>처리 중</value>
-  </data>
-  <data name="TextTitle" xml:space="preserve">
-    <value>제목</value>
-  </data>
-  <data name="TextDescription" xml:space="preserve">
-    <value>설명</value>
-  </data>
-  <data name="TextOK" xml:space="preserve">
-    <value>확인</value>
-  </data>
-  <data name="TextCancel" xml:space="preserve">
-    <value>취소</value>
-  </data>
-  <data name="TextCreatePreview" xml:space="preserve">
-    <value>미리보기 만들기</value>
-  </data>
-  <data name="TitleGifPlayer" xml:space="preserve">
-    <value>Gif Player</value>
-  </data>
-  <data name="TipGifPlayer" xml:space="preserve">
-    <value>Select the player used for gif wallpaper.</value>
-  </data>
-  <data name="TextFeatureMissing" xml:space="preserve">
-    <value>Some features are not available in this version of Lively.</value>
-  </data>
-    <data name="TextControlPanelOpen" xml:space="preserve">
-    <value>Click here to manage wallpapers.</value>
-  </data>
-    <data name="TextStoreReview" xml:space="preserve">
-    <value>Do you enjoy using Lively? Leave a review :)</value>
-  </data>
-  <data name="TitleStore" xml:space="preserve">
-    <value>Store</value>
-    <comment>For different version of Lively, example: Microsoft Store</comment>
-  </data>
-  <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>Your Windows N/KN version will require the download of additional codecs to support video playback in wallpapers.</value>
-  </data>
-  <data name="TextLicense" xml:space="preserve">
-    <value>특허</value>
-  </data>
-  <data name="TextPrivacyPolicy" xml:space="preserve">
-    <value>개인 정보 정책</value>
-  </data>
-  <data name="TitleAudioDesktopOnly" xml:space="preserve">
-    <value>Play audio only when desktop is focused</value>
-  </data>    
 </root>
