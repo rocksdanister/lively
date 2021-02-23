@@ -112,7 +112,7 @@ namespace livelywpf
             VideoPlayer = LivelyMediaPlayer.mpv;
             VideoPlayerHwAccel = true;
             WebBrowser = LivelyWebBrowser.cef;
-            GifPlayer = LivelyGifPlayer.win10Img;
+            GifPlayer = LivelyGifPlayer.mpv;
 
             WallpaperWaitTime = 20000; // 20sec
             ProcessTimerInterval = 500; //reduce to 250 for quicker response.
