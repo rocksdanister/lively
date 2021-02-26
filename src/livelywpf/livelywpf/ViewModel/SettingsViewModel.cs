@@ -46,7 +46,7 @@ namespace livelywpf
                 new LanguagesModel("Italian(it)", new string[]{"it", "it-IT", "it-SM","it-CH","it-VA"}),
                 new LanguagesModel("عربى(ar-AE)", new string[]{"ar"}),
                 new LanguagesModel("Française(fr)", new string[]{"fr"}),
-                new LanguagesModel("Deutsche(de)", new string[]{"de"}),
+                new LanguagesModel("Deutsch(de)", new string[]{"de"}),
                 new LanguagesModel("język polski(pl)", new string[]{"pl", "pl-PL"}),
                 new LanguagesModel("Português(pt)", new string[]{"pt"}),
                 new LanguagesModel("Português(pt-BR)", new string[]{"pt-BR"}),

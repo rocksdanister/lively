@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -308,7 +308,7 @@ Wenn es immer noch nicht funktioniert, schließen  &amp; starte Lively neu oder 
     <value>Als Hintergrund festlegen</value>
   </data>
   <data name="TextShowOnDisk" xml:space="preserve">
-    <value>Auf Festplatte anzeiegen</value>
+    <value>Auf Festplatte anzeigen</value>
   </data>
   <data name="TextSource" xml:space="preserve">
     <value>Quelle</value>
@@ -725,31 +725,31 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Gif Player</value>
   </data>
   <data name="TipGifPlayer" xml:space="preserve">
-    <value>Select the player used for gif wallpaper.</value>
+    <value>Wähle den Player für Gif Hintergründe</value>
   </data>
   <data name="TextFeatureMissing" xml:space="preserve">
-    <value>Some features are not available in this version of Lively.</value>
+    <value>Einige Funktionen sind in dieser Version von Lively nicht verfügbar</value>
   </data>
-    <data name="TextControlPanelOpen" xml:space="preserve">
-    <value>Click here to manage wallpapers.</value>
+  <data name="TextControlPanelOpen" xml:space="preserve">
+    <value>Klicke hier, um Hintergründe zu organisieren</value>
   </data>
-    <data name="TextStoreReview" xml:space="preserve">
-    <value>Do you enjoy using Lively? Leave a review :)</value>
+  <data name="TextStoreReview" xml:space="preserve">
+    <value>Benutzt du Lively gerne? Gib uns eine Bewertung :)</value>
   </data>
   <data name="TitleStore" xml:space="preserve">
     <value>Store</value>
     <comment>For different version of Lively, example: Microsoft Store</comment>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>Your Windows N/KN version will require the download of additional codecs to support video playback in wallpapers.</value>
+    <value>Deine Windows N/KN Version benötig das Herunterladen weiterer Codecs um Video Playback in Hintergründen zu unterstützen.</value>
   </data>
   <data name="TextLicense" xml:space="preserve">
-    <value>License</value>
+    <value>Lizenz</value>
   </data>
   <data name="TextPrivacyPolicy" xml:space="preserve">
-    <value>Privacy Policy</value>
+    <value>Datenschutz-Bestimmungen</value>
   </data>
   <data name="TitleAudioDesktopOnly" xml:space="preserve">
-    <value>Play audio only when desktop is focused</value>
+    <value>Spiele Audio nur, wenn der Desktop fokussiert ist.</value>
   </data>
 </root>

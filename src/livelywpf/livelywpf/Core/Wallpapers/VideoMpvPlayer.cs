@@ -219,7 +219,7 @@ namespace livelywpf.Core
 
                 if (msg != null)
                 {
-                    Helpers.PipeClient.SendMessage(ipcServerName, new string[] { msg });
+                    Helpers.PipeClient.SendMessage(ipcServerName, msg);
                 }
             }
             catch { }
@@ -301,7 +301,7 @@ namespace livelywpf.Core
 
                         if (msg != null)
                         {
-                            Helpers.PipeClient.SendMessage(ipcServerName, new string[] { msg });
+                            Helpers.PipeClient.SendMessage(ipcServerName, msg);
                         }
                     }
                 }
