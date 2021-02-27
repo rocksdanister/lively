@@ -112,7 +112,7 @@ namespace livelywpf.Views
                     if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "mpv", "youtube-dl.exe")))
                     {
                         wpInstance = new VideoMpvPlayer(wp.FilePath, wp, target,
-                            Program.SettingsVM.Settings.WallpaperScaling, Program.SettingsVM.Settings.StreamQuality);
+                            Program.SettingsVM.Settings.WallpaperScaling, Program.SettingsVM.Settings.StreamQuality, true);
                     }
                     else
                     {
