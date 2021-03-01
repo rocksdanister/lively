@@ -200,7 +200,7 @@ https://github.com/rocksdanister/lively/wiki</value>
 Do you wish to restore previously running wallpapers?</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
-    <value>It looks like some settings needs to be set to make Lively work:  
+    <value>It looks like some settings need to be set to make Lively work:  
 1. Press the Win + R keys to open Run, 
 2. Type SystemPropertiesPerformance.exe into Run, click on "OK" to open Performance Options.
 3. Enable/Check "Animate controls and elements inside windows" (If already checked, then uncheck and check) &amp; Apply.

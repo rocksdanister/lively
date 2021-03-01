@@ -281,7 +281,7 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to It looks like some settings needs to be set to make Lively work:  
+        ///   Looks up a localized string similar to It looks like some settings need to be set to make Lively work:  
         ///1. Press the Win + R keys to open Run, 
         ///2. Type SystemPropertiesPerformance.exe into Run, click on &quot;OK&quot; to open Performance Options.
         ///3. Enable/Check &quot;Animate controls and elements inside windows&quot; (If already checked, then uncheck and check) &amp; Apply.
@@ -289,7 +289,7 @@ namespace livelywpf.Properties {
         ///
         ///If Windows 7 just set - Adjust for best appearance &amp;amp; Apply.
         ///If still not working, close &amp; start Lively again/restart windows.
-        ///(D [rest of string was truncated]&quot;;.
+        ///(Do [rest of string was truncated]&quot;;.
         /// </summary>
         public static string LivelyExceptionWorkerWSetupFail {
             get {

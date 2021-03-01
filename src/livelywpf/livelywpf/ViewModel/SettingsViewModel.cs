@@ -45,7 +45,7 @@ namespace livelywpf
                 new LanguagesModel("Italian(it)", new string[]{"it", "it-IT", "it-SM","it-CH","it-VA"}),
                 new LanguagesModel("عربى(ar-AE)", new string[]{"ar"}),
                 new LanguagesModel("Française(fr)", new string[]{"fr"}),
-                new LanguagesModel("Deutsche(de)", new string[]{"de"}),
+                new LanguagesModel("Deutsch(de)", new string[]{"de"}),
                 new LanguagesModel("język polski(pl)", new string[]{"pl", "pl-PL"}),
                 new LanguagesModel("Português(pt)", new string[]{"pt"}),
                 new LanguagesModel("Português(pt-BR)", new string[]{"pt-BR"}),
@@ -61,6 +61,7 @@ namespace livelywpf
                 new LanguagesModel("Cрпски језик(sr)", new string[]{ "sr", "sr-Latn", "sr-Latn-BA", "sr-Latn-ME", "sr-Latn-RS", "sr-Latn-CS" }),
                 new LanguagesModel("Српска ћирилица(sr-Cyrl)", new string[]{ "sr-Cyrl", "sr-Cyrl-BA", "sr-Cyrl-ME", "sr-Cyrl-RS", "sr-Cyrl-CS" }),
                 new LanguagesModel("Ελληνικά(el)", new string[]{ "el", "el-GR", "el-CY" }),
+                new LanguagesModel("हिन्दी(hi)", new string[]{ "hi", "hi-IN"}),
             };
 
             var defaultLanguage = SearchSupportedLanguage(Settings.Language);

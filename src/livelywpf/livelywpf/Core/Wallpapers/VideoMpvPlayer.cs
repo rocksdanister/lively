@@ -33,7 +33,7 @@ namespace livelywpf.Core
         string LivelyPropertyCopy { get; set; }
 
         public VideoMpvPlayer(string path, LibraryModel model, LivelyScreen display,
-            WallpaperScaler scaler = WallpaperScaler.fill, StreamQualitySuggestion streamQuality = StreamQualitySuggestion.Highest)
+            WallpaperScaler scaler = WallpaperScaler.fill, StreamQualitySuggestion streamQuality = StreamQualitySuggestion.Highest, bool onScreenControl = false)
         {
             LivelyPropertyCopy = null;
             if (model.LivelyPropertyPath != null)
@@ -82,7 +82,7 @@ namespace livelywpf.Core
             };
 
             ipcServerName = "mpvsocket" + Path.GetRandomFileName();
-            string cmdArgs = 
+            string cmdArgs =
                 "--volume=0 " +
                 //alternative: --loop-file=inf
                 "--loop-file " +
@@ -98,6 +98,8 @@ namespace livelywpf.Core
                 "--input-ipc-server=" + ipcServerName + " " +
                 //stretch algorithm
                 scalerArg + " " +
+                //on-screen-controller visibility
+                (!onScreenControl ? "--no-osc " : " ") +
                 //integer scaler for sharpness
                 (model.LivelyInfo.Type == WallpaperType.gif ? "--scale=nearest " : " ") +
                 //gpu decode preference
@@ -219,7 +221,7 @@ namespace livelywpf.Core
 
                 if (msg != null)
                 {
-                    Helpers.PipeClient.SendMessage(ipcServerName, new string[] { msg });
+                    Helpers.PipeClient.SendMessage(ipcServerName, msg);
                 }
             }
             catch { }
@@ -301,7 +303,7 @@ namespace livelywpf.Core
 
                         if (msg != null)
                         {
-                            Helpers.PipeClient.SendMessage(ipcServerName, new string[] { msg });
+                            Helpers.PipeClient.SendMessage(ipcServerName, msg);
                         }
                     }
                 }
