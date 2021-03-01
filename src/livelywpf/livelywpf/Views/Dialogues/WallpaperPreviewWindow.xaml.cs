@@ -106,7 +106,7 @@ namespace livelywpf.Views
                 case WallpaperType.picture:
                 case WallpaperType.video:
                     wpInstance = new VideoMpvPlayer(wp.FilePath, wp, target,
-                        Program.SettingsVM.Settings.WallpaperScaling);
+                        Program.SettingsVM.Settings.WallpaperScaling, Program.SettingsVM.Settings.StreamQuality, true);
                     break;
                 case WallpaperType.videostream:
                     if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "mpv", "youtube-dl.exe")))

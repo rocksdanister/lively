@@ -59,9 +59,10 @@ namespace livelywpf
                 new LanguagesModel("Tiếng Việt(vi)", new string[]{"vi", "vi-VN"}),
                 new LanguagesModel("Català(ca)", new string[]{ "ca", "ca-AD", "ca-FR", "ca-IT", "ca-ES"}),
                 new LanguagesModel("Türkçe(tr)", new string[]{ "tr", "tr-CY", "tr-TR"}),
-                new LanguagesModel("Cрпски језик(sr)", new string[]{ "sr", "sr-Latn", "sr-Latn-BA", "sr-Latn-ME", "sr-Latn-RS", "sr-Latn-CS" }),
-                new LanguagesModel("Српска ћирилица(sr-Cyrl)", new string[]{ "sr-Cyrl", "sr-Cyrl-BA", "sr-Cyrl-ME", "sr-Cyrl-RS", "sr-Cyrl-CS" }),
-                new LanguagesModel("Ελληνικά(el)", new string[]{ "el", "el-GR", "el-CY" }),
+                new LanguagesModel("Cрпски језик(sr)", new string[]{ "sr", "sr-Latn", "sr-Latn-BA", "sr-Latn-ME", "sr-Latn-RS", "sr-Latn-CS"}),
+                new LanguagesModel("Српска ћирилица(sr-Cyrl)", new string[]{ "sr-Cyrl", "sr-Cyrl-BA", "sr-Cyrl-ME", "sr-Cyrl-RS", "sr-Cyrl-CS"}),
+                new LanguagesModel("Ελληνικά(el)", new string[]{ "el", "el-GR", "el-CY"}),
+                new LanguagesModel("हिन्दी(hi)", new string[]{ "hi", "hi-IN"}),
             };
 
             var defaultLanguage = SearchSupportedLanguage(Settings.Language);

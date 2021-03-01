@@ -90,30 +90,48 @@ namespace livelywpf.Core
 
         public void Pause()
         {
-            //Disabled, need further testing.
-            /*
-            try
+            if (Proc != null)
             {
-                ProcessSuspend.SuspendAllThreads(this);
-                //thread buggy noise otherwise?!
-                VolumeMixer.SetApplicationMute(Proc.Id, true);
+                //method 0, issue: does not work with every pgm
+                //NativeMethods.DebugActiveProcess((uint)Proc.Id);
+
+                //method 1, issue: resume taking time ?!
+                //NativeMethods.NtSuspendProcess(Proc.Handle);
+
+                //method 2, issue: deadlock/thread issue
+                /*
+                try
+                {
+                    ProcessSuspend.SuspendAllThreads(this);
+                    //thread buggy noise otherwise?!
+                    VolumeMixer.SetApplicationMute(Proc.Id, true);
+                }
+                catch { }
+                */
             }
-            catch { }
-            */
         }
 
         public void Play()
         {
-            //Disabled, need further testing.
-            /*
-            try
+            if (Proc != null)
             {
-                ProcessSuspend.ResumeAllThreads(this);
-                //thread buggy noise otherwise?!
-                VolumeMixer.SetApplicationMute(Proc.Id, false);
+                //method 0, issue: does not work with every pgm
+                //NativeMethods.DebugActiveProcessStop((uint)Proc.Id);
+
+                //method 1, issue: resume taking time ?!
+                //NativeMethods.NtResumeProcess(Proc.Handle);
+
+                //method 2, issue: deadlock/thread issue
+                /*
+                try
+                {
+                    ProcessSuspend.ResumeAllThreads(this);
+                    //thread buggy noise otherwise?!
+                    VolumeMixer.SetApplicationMute(Proc.Id, false);
+                }
+                catch { }
+                */
             }
-            catch { }
-            */
         }
 
         public void SetHWND(IntPtr hwnd)

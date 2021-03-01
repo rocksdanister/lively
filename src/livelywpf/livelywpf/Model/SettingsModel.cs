@@ -64,6 +64,9 @@ namespace livelywpf
         /// Video gpu decode
         /// </summary>
         public bool VideoPlayerHwAccel { get; set; }
+        /// <summary>
+        /// Gif and picture wallpaper player.
+        /// </summary>
         public LivelyGifPlayer GifPlayer { get; set; }
         public LivelyWebBrowser WebBrowser { get; set; }
         public bool GifCapture { get; set; }
@@ -112,7 +115,7 @@ namespace livelywpf
             VideoPlayer = LivelyMediaPlayer.mpv;
             VideoPlayerHwAccel = true;
             WebBrowser = LivelyWebBrowser.cef;
-            GifPlayer = LivelyGifPlayer.mpv;
+            GifPlayer = LivelyGifPlayer.win10Img;
 
             WallpaperWaitTime = 20000; // 20sec
             ProcessTimerInterval = 500; //reduce to 250 for quicker response.

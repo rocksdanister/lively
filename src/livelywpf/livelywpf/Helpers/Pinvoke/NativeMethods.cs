@@ -13,6 +13,24 @@ namespace livelywpf
 #pragma warning disable CA1707, CA1401, CA1712
     public static class NativeMethods
     {
+        #region undocumented 
+
+        //undocumented, may get removed/changed in the future.
+
+        [DllImport("ntdll.dll", PreserveSig = false)]
+        public static extern void NtSuspendProcess(IntPtr processHandle);
+
+        [DllImport("ntdll.dll", PreserveSig = false, SetLastError = true)]
+        public static extern void NtResumeProcess(IntPtr processHandle);
+
+        #endregion //undocumented
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        public static extern bool DebugActiveProcess(uint dwProcessId);
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        public static extern bool DebugActiveProcessStop(uint dwProcessId);
+
         public const int BM_CLICK = 0x00F5; //left-click
 
         [DllImport("user32.dll")]

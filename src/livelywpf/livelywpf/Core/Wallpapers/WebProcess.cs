@@ -158,6 +158,7 @@ namespace livelywpf.Core
 
         public void Play()
         {
+            //show minimized browser.
             NativeMethods.ShowWindow(HWND, (uint)NativeMethods.SHOWWINDOW.SW_SHOWNOACTIVATE);
             //SendMessage("lively-playback play");
             //WallpaperRectFix();
