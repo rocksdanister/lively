@@ -112,4 +112,18 @@
     <Content Remove="C:\Users\rocks\.nuget\packages\microsoft.web.webview2\1.0.781-prerelease\build\\..\runtimes\win-x86\native\WebView2Loader.dll" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="bundle\" />
+    <Folder Include="plugins\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="plugins\**">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bundle\**">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

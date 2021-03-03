@@ -141,7 +141,8 @@ namespace livelywpf.Helpers
         /// <param name="hwnd"></param>
         public static void CreateScreenSaverPreview(IntPtr hwnd)
         {
-            if (IsRunning)
+            //Issue: Multiple display setup with diff dpi - making the window child affects LivelyScreen offset values.
+            if (IsRunning || ScreenHelper.IsMultiScreen())
                 return;
 
             var preview = new Views.ScreenSaverPreview
@@ -157,7 +158,7 @@ namespace livelywpf.Helpers
             //Set child of target.
             WindowOperations.SetParentSafe(previewHandle, hwnd);
             //Make this a child window so it will close when the parent dialog closes.
-            NativeMethods.SetWindowLongPtr(new System.Runtime.InteropServices.HandleRef(null, previewHandle),
+            NativeMethods.SetWindowLongPtr(new HandleRef(null, previewHandle),
                 (int)NativeMethods.GWL.GWL_STYLE,
                 new IntPtr(NativeMethods.GetWindowLong(previewHandle, (int)NativeMethods.GWL.GWL_STYLE) | NativeMethods.WindowStyles.WS_CHILD));
             //Get size of target.
