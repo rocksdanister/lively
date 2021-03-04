@@ -524,7 +524,7 @@ namespace livelywpf
         {
             Logger.Info("System parameters changed: Screen Event=>");
             ScreenHelper.GetScreen().ForEach(x => Logger.Info(x.DeviceName + " " + x.Bounds));
-            Helpers.ScreenSaverService.Instance.StopService();
+            Helpers.ScreenSaverService.Instance.Stop();
             RefreshWallpaper();
             RestoreDisconnectedWallpapers();
         }
@@ -1045,18 +1045,18 @@ namespace livelywpf
             }
         }
 
-        private static RawInputDX InputForwardWindow = null;
+        private static RawInputDX inputForwardWindow = null;
         /// <summary>
         /// Forward input from desktop to wallpapers.
         /// </summary>
         /// <param name="mode">mouse, keyboard + mouse, off</param>
         public static void WallpaperInputForward(InputForwardMode mode)
         {
-            InputForwardWindow?.Close();
+            inputForwardWindow?.Close();
             if (mode != InputForwardMode.off)
             {
-                InputForwardWindow = new RawInputDX(mode);
-                InputForwardWindow.Show();
+                inputForwardWindow = new RawInputDX(mode);
+                inputForwardWindow.Show();
             }
             Logger.Info("Core: Wallpaper input setup=> " + mode);
         }

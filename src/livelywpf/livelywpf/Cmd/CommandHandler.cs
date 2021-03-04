@@ -295,11 +295,11 @@ namespace livelywpf.Cmd
             {
                 if (opts.Show == true)
                 {
-                    Helpers.ScreenSaverService.Instance.StartService();
+                    Helpers.ScreenSaverService.Instance.Start();
                 }
                 else
                 {
-                    Helpers.ScreenSaverService.Instance.StopService();
+                    Helpers.ScreenSaverService.Instance.Stop();
                 }
             }
 
@@ -312,7 +312,7 @@ namespace livelywpf.Cmd
 
                 if (opts.Preview != null)
                 {
-                    Helpers.ScreenSaverService.CreateScreenSaverPreview(new IntPtr((int)opts.Preview));
+                    Helpers.ScreenSaverService.Instance.CreatePreview(new IntPtr((int)opts.Preview));
                 }
             }));
             return 0;
