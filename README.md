@@ -78,7 +78,7 @@ Help translate lively to other languages: <a href="https://github.com/rocksdanis
 - Windows 10 fluent design, lively appearance adapts to system theme settings.
 - Efficient, its a native .net core application.
 - Fully opensource & free; no blackmagic, no features behind paywall.
-- Supports settings wallpapers as windows screensavers.
+- Supports windows screensaver.
 #### Performance:
  * Wallpaper playback pauses when fullscreen application/games run on the machine (~0% cpu, gpu usage). 
  * Set wallpaper playback rules based on running foreground application.
@@ -90,10 +90,10 @@ Help translate lively to other languages: <a href="https://github.com/rocksdanis
 
 **_I'm not officially affiliated with Unity technologies, godot, shadertoy;_**
 ## Download
-##### Latest version: v1.2.0.0 (Windows 10 1903 or above)[What's new?](https://github.com/rocksdanister/lively/releases/tag/v1.2.0.0)
+##### Latest version: v1.2.0.2 (Windows 10 1903 or above)[What's new?](https://github.com/rocksdanister/lively/releases/tag/v1.2.0.2)
 - [`Installer`][direct-full-win32] 
      
-[direct-full-win32]: https://github.com/rocksdanister/lively/releases/download/v1.2.0.0/lively_setup_x86_full_v1200.exe
+[direct-full-win32]: https://github.com/rocksdanister/lively/releases/download/v1.2.0.2/lively_setup_x86_full_v1202.exe
 
 **Installer will give Smartscreen warning, [discussion.](https://github.com/rocksdanister/lively/issues/9)**
 
