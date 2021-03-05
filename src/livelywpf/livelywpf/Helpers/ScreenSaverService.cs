@@ -13,7 +13,7 @@ namespace livelywpf.Helpers
     {
         Point mousePosOriginal;
         private readonly Timer _timer = new Timer();
-        public static bool IsRunning { get; private set; }
+        public bool IsRunning { get; private set; } = false;
         private static readonly ScreenSaverService instance = new ScreenSaverService();
 
         public static ScreenSaverService Instance
@@ -42,11 +42,11 @@ namespace livelywpf.Helpers
             if (Math.Abs(mousePosOriginal.X - mousePosCurr.X) > 25
                 || Math.Abs(mousePosOriginal.Y - mousePosCurr.Y) > 25)
             {
-                StopService();
+                Stop();
             }
         }
 
-        public void StartService()
+        public void Start()
         {
             if (!IsRunning && SetupDesktop.Wallpapers.Count != 0)
             {
@@ -57,7 +57,7 @@ namespace livelywpf.Helpers
             }
         }
 
-        public void StopService()
+        public void Stop()
         {
             if (IsRunning)
             {
@@ -139,9 +139,10 @@ namespace livelywpf.Helpers
         /// (To be run in UI thread.)</br>
         /// </summary>
         /// <param name="hwnd"></param>
-        public static void CreateScreenSaverPreview(IntPtr hwnd)
+        public void CreatePreview(IntPtr hwnd)
         {
-            if (IsRunning)
+            //Issue: Multiple display setup with diff dpi - making the window child affects LivelyScreen offset values.
+            if (IsRunning || ScreenHelper.IsMultiScreen())
                 return;
 
             var preview = new Views.ScreenSaverPreview
@@ -157,7 +158,7 @@ namespace livelywpf.Helpers
             //Set child of target.
             WindowOperations.SetParentSafe(previewHandle, hwnd);
             //Make this a child window so it will close when the parent dialog closes.
-            NativeMethods.SetWindowLongPtr(new System.Runtime.InteropServices.HandleRef(null, previewHandle),
+            NativeMethods.SetWindowLongPtr(new HandleRef(null, previewHandle),
                 (int)NativeMethods.GWL.GWL_STYLE,
                 new IntPtr(NativeMethods.GetWindowLong(previewHandle, (int)NativeMethods.GWL.GWL_STYLE) | NativeMethods.WindowStyles.WS_CHILD));
             //Get size of target.

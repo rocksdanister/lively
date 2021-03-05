@@ -8,7 +8,7 @@
     <ApplicationIcon>appicon.ico</ApplicationIcon>
     <StartupObject>livelywpf.Program</StartupObject>
     <ApplicationManifest>app.manifest</ApplicationManifest>
-    <AssemblyVersion>1.2.0.0</AssemblyVersion>
+    <AssemblyVersion>1.2.0.2</AssemblyVersion>
     <Platforms>AnyCPU;x86</Platforms>
   </PropertyGroup>
 
@@ -54,6 +54,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="bundle\" />
     <Folder Include="plugins\" />
     <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
@@ -92,9 +93,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="bundle\0.zip">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Update="Docs\attribution.rtf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -105,6 +103,9 @@
 
   <ItemGroup>
     <Content Include="plugins\**">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bundle\**">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

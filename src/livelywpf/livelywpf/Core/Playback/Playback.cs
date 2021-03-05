@@ -138,12 +138,14 @@ namespace livelywpf.Core
 
         private void ProcessMonitor(object sender, EventArgs e)
         {
-            if (WallpaperPlaybackState == PlaybackState.paused)
+            if (ScreenSaverService.Instance.IsRunning)
             {
-                PauseWallpapers();
+                PlayWallpapers();
+                SetWallpaperVolume(Program.SettingsVM.Settings.AudioVolumeGlobal);
                 return;
             }
-            else if ((_isRemoteSession && Program.SettingsVM.Settings.DetectRemoteDesktop) || _isLockScreen)
+            else if (WallpaperPlaybackState == PlaybackState.paused ||
+                 _isLockScreen || (_isRemoteSession && Program.SettingsVM.Settings.DetectRemoteDesktop))
             {
                 PauseWallpapers();
                 return;
