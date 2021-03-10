@@ -102,5 +102,56 @@ namespace livelywpf
                 Logger.Error(msg + " HRESULT:" + err);
             }
         }
+
+        public static void ExtractLogFiles()
+        {
+            var savePath = string.Empty;
+            var saveFileDialog1 = new Microsoft.Win32.SaveFileDialog()
+            {
+                Title = "Select location to save the file",
+                Filter = "Compressed archive|*.zip",
+                FileName = "lively_log.zip",
+            };
+            if (saveFileDialog1.ShowDialog() == true)
+            {
+                savePath = saveFileDialog1.FileName;
+            }
+
+            if (!string.IsNullOrEmpty(savePath))
+            {
+                try
+                {
+                    var files = new List<string>();
+                    var logFolder = Path.Combine(Program.AppDataDir, "logs");
+                    if (Directory.Exists(logFolder))
+                    {
+                        files.AddRange(Directory.GetFiles(logFolder, "*.*", SearchOption.TopDirectoryOnly));
+                    }
+
+                    var settingsFile = Path.Combine(Program.AppDataDir, "Settings.json");
+                    if (File.Exists(settingsFile))
+                    {
+                        files.Add(settingsFile);
+                    }
+
+                    var layoutFile = Path.Combine(Program.AppDataDir, "WallpaperLayout.json");
+                    if (File.Exists(layoutFile))
+                    {
+                        files.Add(layoutFile);
+                    }
+
+                    if (files.Count != 0)
+                    {
+                        ZipCreate.CreateZip(savePath,
+                            new List<ZipCreate.FileData>() { 
+                                new ZipCreate.FileData() { ParentDirectory = Program.AppDataDir, Files = files } });
+                    }
+                }
+                catch (Exception e)
+                {
+                    Logger.Error(e.ToString());
+                }
+            }
+        }
     }
 }

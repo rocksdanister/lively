@@ -147,6 +147,7 @@
                                 <ComboBoxItem>mpv</ComboBoxItem>
                             </ComboBox>
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipVideoPlayer}"/>
+                            <CheckBox  Margin="0,10,0,0" Content="GPU Decode" IsChecked="{Binding VideoPlayerHWDecode, Mode=TwoWay}"/>
 
                             <TextBlock FontSize="20" Margin="0, 10, 0, 0" Text="GIF"/>
                             <ComboBox Header="{x:Bind UIText.TitleGifPlayer}" Margin="0,10,0,0" MinWidth="200" SelectedIndex="{Binding SelectedGifPlayerIndex, Mode=TwoWay}">
@@ -219,6 +220,10 @@
                             <ToggleSwitch Margin="0,10,0,0" IsOn="{Binding IsDebugMenuVisible, Mode=TwoWay}" Header="{x:Bind UIText.TitleDebug}"
                                           OffContent="{x:Bind UIText.TextOff}" OnContent="{x:Bind UIText.TextOn}"/>
                             <TextBlock Margin="0, 10, 0, 0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipDebug}"/>
+
+                            <Button Margin="0, 10, 0, 0" Style="{StaticResource ButtonRevealStyle}" Content="Extract Log" Command="{Binding ExtractLogCommand}" />
+                            <TextBlock Margin="0, 10, 0, 0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="Create a copy of logfiles."/>
+
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>
