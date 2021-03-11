@@ -1208,7 +1208,7 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Show developer menu.
+        ///   Looks up a localized string similar to Show developer menu..
         /// </summary>
         public static string TipDebug {
             get {
@@ -1223,6 +1223,15 @@ namespace livelywpf.Properties {
         public static string TipDisplayPauseRule {
             get {
                 return ResourceManager.GetString("TipDisplayPauseRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create log report file..
+        /// </summary>
+        public static string TipExportLogs {
+            get {
+                return ResourceManager.GetString("TipExportLogs", resourceCulture);
             }
         }
         
@@ -1305,6 +1314,15 @@ namespace livelywpf.Properties {
         public static string TipUIMode {
             get {
                 return ResourceManager.GetString("TipUIMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use hardware acceleration when possible..
+        /// </summary>
+        public static string TipVideoHardwareDecode {
+            get {
+                return ResourceManager.GetString("TipVideoHardwareDecode", resourceCulture);
             }
         }
         
@@ -1571,6 +1589,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Export Log.
+        /// </summary>
+        public static string TitleExportLogs {
+            get {
+                return ResourceManager.GetString("TitleExportLogs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to General.
         /// </summary>
         public static string TitleGeneral {
@@ -1792,6 +1819,15 @@ namespace livelywpf.Properties {
         public static string TitleVideo {
             get {
                 return ResourceManager.GetString("TitleVideo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GPU Decode.
+        /// </summary>
+        public static string TitleVideoHardwareDecode {
+            get {
+                return ResourceManager.GetString("TitleVideoHardwareDecode", resourceCulture);
             }
         }
         

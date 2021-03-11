@@ -103,7 +103,7 @@ namespace livelywpf.Core
                 //integer scaler for sharpness
                 (model.LivelyInfo.Type == WallpaperType.gif ? "--scale=nearest " : " ") +
                 //gpu decode preference
-                (Program.SettingsVM.Settings.VideoPlayerHwAccel ? "--hwdec=auto " : "--hwdec=no ") +
+                (Program.SettingsVM.Settings.VideoPlayerHwAccel ? "--hwdec=auto-safe " : "--hwdec=no ") +
                 //file, stream path
                 (model.LivelyInfo.Type == WallpaperType.videostream ? Helpers.StreamHelper.YoutubeDLMpvArgGenerate(streamQuality, path) : "\"" + path + "\"");
 

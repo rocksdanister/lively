@@ -173,7 +173,7 @@
                                 <ComboBoxItem Content="{x:Static p:Resources.TextMouse}"/>
                                 <ComboBoxItem Content="{x:Static p:Resources.TextKeyboard}"/>
                             </ComboBox>
-                            <CheckBox Margin="0, 10, 0, 0" Content="{x:Static p:Resources.TextMouseInteractOnDesktop}" IsChecked="{Binding MouseMoveOnDesktop, Mode=TwoWay}"/>
+                            <CheckBox Margin="0,5,0,0" Content="{x:Static p:Resources.TextMouseInteractOnDesktop}" IsChecked="{Binding MouseMoveOnDesktop, Mode=TwoWay}"/>
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}" 
                                        Text="{x:Static p:Resources.TipWallpaperInput}"/>
 
@@ -189,6 +189,8 @@
                             </ComboBox>
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}" 
                                        Text="{x:Static p:Resources.TipVideoPlayer}"/>
+                            <CheckBox  Margin="0,5,0,0" Content="{x:Static p:Resources.TitleVideoHardwareDecode}" IsChecked="{Binding VideoPlayerHWDecode, Mode=TwoWay}"/>
+                            <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}" Text="{x:Static p:Resources.TipVideoHardwareDecode}"/>
 
                             <TextBlock FontSize="20" Margin="0, 10, 0, 0" Text="GIF"/>
                             <TextBlock Text="{x:Static p:Resources.TitleGifPlayer}" Margin="0,10,0,0"/>
@@ -214,7 +216,7 @@
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}" 
                                        Text="{x:Static p:Resources.TipStreamWallpaperVideoQuality}"/>
 
-                            <CheckBox  Margin="0,10,0,0" Content="{x:Static p:Resources.TitleStreamWallpaperDetect}" IsChecked="{Binding DetectStreamWallpaper, Mode=TwoWay}"/>
+                            <CheckBox  Margin="0,5,0,0" Content="{x:Static p:Resources.TitleStreamWallpaperDetect}" IsChecked="{Binding DetectStreamWallpaper, Mode=TwoWay}"/>
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}" 
                                        Text="{x:Static p:Resources.TipStreamWallpaperDetect}"/>
 
@@ -227,7 +229,7 @@
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}" 
                                        Text="{x:Static p:Resources.TipWebBrowserEngine}"/>
 
-                            <CheckBox Content="{x:Static p:Resources.TitleWebBrowserDiskCache}" Margin="0, 5, 0, 0" IsChecked="{Binding CefDiskCache, Mode=TwoWay}"/>
+                            <CheckBox Content="{x:Static p:Resources.TitleWebBrowserDiskCache}" Margin="0,5,0,0" IsChecked="{Binding CefDiskCache, Mode=TwoWay}"/>
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}" 
                                        Text="{x:Static p:Resources.TipWebBrowserDiskCache}"/>
 
@@ -262,7 +264,7 @@
                                     AutoToolTipPlacement="TopLeft" Value="{Binding GlobalWallpaperVolume, Mode=TwoWay}"/>
                             <TextBlock Margin="0, 5, 0, 0" FontSize="12" TextWrapping="Wrap" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}" 
                                        Text="{x:Static p:Resources.TipAudioMaster}"/>
-                            <CheckBox Content="{x:Static p:Resources.TitleAudioDesktopOnly}" Margin="0, 10, 0, 0" IsChecked="{Binding IsAudioOnlyOnDesktop, Mode=TwoWay}"/>
+                            <CheckBox Content="{x:Static p:Resources.TitleAudioDesktopOnly}" Margin="0,5,0,0" IsChecked="{Binding IsAudioOnlyOnDesktop, Mode=TwoWay}"/>
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>
@@ -279,6 +281,10 @@
                             <ui:ToggleSwitch Margin="0,10,0,0" OffContent="{x:Static p:Resources.TextOff}" OnContent="{x:Static p:Resources.TextOn}" IsOn="{Binding IsDebugMenuVisible, Mode=TwoWay}" Header="{x:Static p:Resources.TitleDebug}"/>
                             <TextBlock Margin="0, 10, 0, 0" FontSize="12" TextWrapping="Wrap" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}" 
                                        Text="{x:Static p:Resources.TipDebug}"/>
+
+                            <Button Margin="0, 10, 0, 0" Content="{x:Static p:Resources.TitleExportLogs}" Command="{Binding ExtractLogCommand}" />
+                            <TextBlock Margin="0, 10, 0, 0" FontSize="12" TextWrapping="Wrap" Text="{x:Static p:Resources.TipExportLogs}"/>
+                            
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>

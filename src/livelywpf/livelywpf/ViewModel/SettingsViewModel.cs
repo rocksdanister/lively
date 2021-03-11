@@ -110,6 +110,7 @@ namespace livelywpf
             SelectedDisplayPauseRuleIndex = (int)Settings.DisplayPauseSettings;
             SelectedPauseAlgorithmIndex = (int)Settings.ProcessMonitorAlgorithm;
             SelectedVideoPlayerIndex = (int)Settings.VideoPlayer;
+            VideoPlayerHWDecode = Settings.VideoPlayerHwAccel;
             SelectedGifPlayerIndex = (int)Settings.GifPlayer;
             SelectedWallpaperStreamQualityIndex = (int)Settings.StreamQuality;
             SelectedLivelyUIModeIndex = (int)Settings.LivelyGUIRendering;
@@ -561,6 +562,24 @@ namespace livelywpf
             }
         }
 
+        private bool _videoPlayerHWDecode;
+        public bool VideoPlayerHWDecode
+        {
+            get { return _videoPlayerHWDecode; }
+            set
+            {
+                _videoPlayerHWDecode = value;
+                if (Settings.VideoPlayerHwAccel != _videoPlayerHWDecode)
+                {
+                    Settings.VideoPlayerHwAccel = _videoPlayerHWDecode;
+                    UpdateConfigFile();
+                    WallpaperRestart(WallpaperType.video);
+                    WallpaperRestart(WallpaperType.videostream);
+                }
+                OnPropertyChanged("DetectStreamWallpaper");
+            }
+        }
+
         private int _selectedGifPlayerIndex;
         public int SelectedGifPlayerIndex
         {
@@ -769,6 +788,21 @@ namespace livelywpf
                     Settings.DebugMenu = _isDebugMenuVisible;
                     UpdateConfigFile();
                 }
+            }
+        }
+
+        private RelayCommand _extractLogCommand;
+        public RelayCommand ExtractLogCommand
+        {
+            get
+            {
+                if (_extractLogCommand == null)
+                {
+                    _extractLogCommand = new RelayCommand(
+                            param => NLogger.ExtractLogFiles()
+                        );
+                }
+                return _extractLogCommand;
             }
         }
 
