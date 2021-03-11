@@ -525,8 +525,6 @@ namespace livelywpf
                     UpdateConfigFile();
                     WallpaperRestart(WallpaperType.video);
                     WallpaperRestart(WallpaperType.videostream);
-                    //won't make a diff if mpv is not the selected gifplayer.
-                    WallpaperRestart(WallpaperType.gif);
                 }
                 OnPropertyChanged("DetectStreamWallpaper");
             }

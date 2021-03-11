@@ -134,7 +134,7 @@
                                 <ComboBoxItem Content="{x:Bind UIText.TextWallpaperInputMouse}"/>
                                 <ComboBoxItem Content="{x:Bind UIText.TextWallpaperInputKeyboard}"/>
                             </ComboBox>
-                            <CheckBox Margin="0, 10, 0, 0" Content="{x:Bind UIText.TitleMouseOnDesktop}" IsChecked="{Binding MouseMoveOnDesktop, Mode=TwoWay}"/>
+                            <CheckBox Margin="0,5,0,0" Content="{x:Bind UIText.TitleMouseOnDesktop}" IsChecked="{Binding MouseMoveOnDesktop, Mode=TwoWay}"/>
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipWallpaperInput}"/>
 
                             <TextBlock FontSize="20" Margin="0, 10, 0, 0" Text="{x:Bind UIText.TitleVideo}"/>
@@ -147,7 +147,8 @@
                                 <ComboBoxItem>mpv</ComboBoxItem>
                             </ComboBox>
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipVideoPlayer}"/>
-                            <CheckBox  Margin="0,10,0,0" Content="GPU Decode" IsChecked="{Binding VideoPlayerHWDecode, Mode=TwoWay}"/>
+                            <CheckBox  Margin="0,5,0,0" Content="{x:Bind UIText.TitleGpuDecode}" IsChecked="{Binding VideoPlayerHWDecode, Mode=TwoWay}"/>
+                            <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipGpuDecode}"/>
 
                             <TextBlock FontSize="20" Margin="0, 10, 0, 0" Text="GIF"/>
                             <ComboBox Header="{x:Bind UIText.TitleGifPlayer}" Margin="0,10,0,0" MinWidth="200" SelectedIndex="{Binding SelectedGifPlayerIndex, Mode=TwoWay}">
@@ -169,7 +170,7 @@
                             </ComboBox>
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipWallpaperStreamQuality}"/>
 
-                            <CheckBox  Margin="0,10,0,0" Content="{x:Bind UIText.TitleDetectWallpaperStream}" IsChecked="{Binding DetectStreamWallpaper, Mode=TwoWay}"/>
+                            <CheckBox  Margin="0,5,0,0" Content="{x:Bind UIText.TitleDetectWallpaperStream}" IsChecked="{Binding DetectStreamWallpaper, Mode=TwoWay}"/>
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipDetectWallpaperStream}"/>
                             
                             <TextBlock FontSize="20" Margin="0, 10, 0, 0" Text="{x:Bind UIText.TitleWebBrowser}"/>
@@ -199,7 +200,7 @@
                             <Slider MaxWidth="250" Width="250" Maximum="100" Minimum="0" HorizontalAlignment="Left" Value="{Binding GlobalWallpaperVolume, Mode=TwoWay}"/>
                             <TextBlock Margin="0, 5, 0, 0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipMasterAudio}"/>
 
-                            <CheckBox Content="{x:Bind UIText.TitleAudioDesktop}" Margin="0, 10, 0, 0" IsChecked="{Binding IsAudioOnlyOnDesktop, Mode=TwoWay}"/>
+                            <CheckBox Content="{x:Bind UIText.TitleAudioDesktop}" Margin="0, 5, 0, 0" IsChecked="{Binding IsAudioOnlyOnDesktop, Mode=TwoWay}"/>
                             <!--
                             <ToggleSwitch IsOn="{Binding IsAudioOnlyOnDesktop, Mode=TwoWay}" Margin="0, 10, 0, 0" Header="Desktop Audio"
                                           OffContent="{x:Bind UIText.TextOff}" OnContent="{x:Bind UIText.TextOn}"/>
@@ -221,8 +222,8 @@
                                           OffContent="{x:Bind UIText.TextOff}" OnContent="{x:Bind UIText.TextOn}"/>
                             <TextBlock Margin="0, 10, 0, 0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipDebug}"/>
 
-                            <Button Margin="0, 10, 0, 0" Style="{StaticResource ButtonRevealStyle}" Content="Extract Log" Command="{Binding ExtractLogCommand}" />
-                            <TextBlock Margin="0, 10, 0, 0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="Create a copy of logfiles."/>
+                            <Button Margin="0, 10, 0, 0" Style="{StaticResource ButtonRevealStyle}" Content="{x:Bind UIText.TitleExportLog}" Command="{Binding ExtractLogCommand}" />
+                            <TextBlock Margin="0, 10, 0, 0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipExportLog}"/>
 
                         </StackPanel>
                     </ScrollViewer>

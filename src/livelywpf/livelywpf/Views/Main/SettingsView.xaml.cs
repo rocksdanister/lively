@@ -103,6 +103,8 @@ namespace livelywpf.Views
                     TextWallpaperInputOff = Properties.Resources.TextOff,
                     TextWallpaperInputKeyboard = Properties.Resources.TextKeyboard,
                     TextWallpaperInputMouse = Properties.Resources.TextMouse,
+                    TitleGpuDecode = Properties.Resources.TitleVideoHardwareDecode,
+                    TipGpuDecode = Properties.Resources.TipVideoHardwareDecode,
                     //audio
                     TitleAudio = Properties.Resources.TitleAudio,
                     TitleMasterAudio = Properties.Resources.TitleAudioMaster,
@@ -113,6 +115,8 @@ namespace livelywpf.Views
                     TipSysTrayIconHide = Properties.Resources.TipHideSysTray,
                     TitleDebug = Properties.Resources.TitleDebug,
                     TipDebug = Properties.Resources.TipDebug,
+                    TitleExportLog = Properties.Resources.TitleExportLogs,
+                    TipExportLog = Properties.Resources.TipExportLogs,
                     //button localization
                     TextOn = Properties.Resources.TextOn,
                     TextOff = Properties.Resources.TextOff,

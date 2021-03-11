@@ -99,6 +99,8 @@ namespace livelysettings
         public string TextWallpaperInputOff { get; set; }
         public string TextWallpaperInputMouse { get; set; }
         public string TextWallpaperInputKeyboard { get; set; }
+        public string TitleGpuDecode { get; set; }
+        public string TipGpuDecode { get; set; }
         //Audio
         public string TitleAudio { get; set; }
         public string TitleMasterAudio { get; set; }
@@ -110,6 +112,8 @@ namespace livelysettings
         public string TipSysTrayIconHide { get; set; }
         public string TitleDebug { get; set; }
         public string TipDebug { get; set; }
+        public string TitleExportLog { get; set; }
+        public string TipExportLog { get; set; }
 
         //Button localization
         public string TextOn { get; set; }

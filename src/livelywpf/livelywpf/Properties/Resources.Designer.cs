@@ -281,7 +281,7 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to It looks like some settings needs to be set to make Lively work:  
+        ///   Looks up a localized string similar to It looks like some settings need to be set to make Lively work:  
         ///1. Press the Win + R keys to open Run, 
         ///2. Type SystemPropertiesPerformance.exe into Run, click on &quot;OK&quot; to open Performance Options.
         ///3. Enable/Check &quot;Animate controls and elements inside windows&quot; (If already checked, then uncheck and check) &amp; Apply.
@@ -289,7 +289,7 @@ namespace livelywpf.Properties {
         ///
         ///If Windows 7 just set - Adjust for best appearance &amp;amp; Apply.
         ///If still not working, close &amp; start Lively again/restart windows.
-        ///(D [rest of string was truncated]&quot;;.
+        ///(Do [rest of string was truncated]&quot;;.
         /// </summary>
         public static string LivelyExceptionWorkerWSetupFail {
             get {
@@ -1208,7 +1208,7 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Show developer menu.
+        ///   Looks up a localized string similar to Show developer menu..
         /// </summary>
         public static string TipDebug {
             get {
@@ -1223,6 +1223,15 @@ namespace livelywpf.Properties {
         public static string TipDisplayPauseRule {
             get {
                 return ResourceManager.GetString("TipDisplayPauseRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create log report file..
+        /// </summary>
+        public static string TipExportLogs {
+            get {
+                return ResourceManager.GetString("TipExportLogs", resourceCulture);
             }
         }
         
@@ -1305,6 +1314,15 @@ namespace livelywpf.Properties {
         public static string TipUIMode {
             get {
                 return ResourceManager.GetString("TipUIMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use hardware acceleration when possible..
+        /// </summary>
+        public static string TipVideoHardwareDecode {
+            get {
+                return ResourceManager.GetString("TipVideoHardwareDecode", resourceCulture);
             }
         }
         
@@ -1571,6 +1589,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Export Log.
+        /// </summary>
+        public static string TitleExportLogs {
+            get {
+                return ResourceManager.GetString("TitleExportLogs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to General.
         /// </summary>
         public static string TitleGeneral {
@@ -1792,6 +1819,15 @@ namespace livelywpf.Properties {
         public static string TitleVideo {
             get {
                 return ResourceManager.GetString("TitleVideo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GPU Decode.
+        /// </summary>
+        public static string TitleVideoHardwareDecode {
+            get {
+                return ResourceManager.GetString("TitleVideoHardwareDecode", resourceCulture);
             }
         }
         
