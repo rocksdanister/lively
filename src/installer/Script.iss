@@ -2,7 +2,7 @@
 ; https://jrsoftware.org/isinfo.php
 
 #define MyAppName "Lively Wallpaper"
-#define MyAppVersion "1.2.0.0"
+#define MyAppVersion "1.2.0.4"
 #define MyAppPublisher "rocksdanister"
 #define MyAppURL "https://github.com/rocksdanister/lively"
 #define MyAppExeName "livelywpf.exe"
@@ -47,6 +47,10 @@ AppMutex=LIVELY:DESKTOPWALLPAPERSYSTEM
 ;https://jrsoftware.org/ishelp/index.php?topic=winvernotes
 ;Win10 1903 or above
 MinVersion=10.0.18362
+WizardSmallImageFile=Theme\wizard_small.bmp
+WizardImageFile=Theme\wizard_large.bmp
+;Default is hide the welcome page, ms guidelines
+DisableWelcomePage=no
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"; LicenseFile: "License\License.txt";
@@ -81,8 +85,8 @@ Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: de
 [Run]
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall; Check: AutoLaunch 
 ;skipifsilent
-Filename: "{tmp}\VC_redist.x86.exe"; Check: VCRedistNeedsInstall and DependencyInstall; StatusMsg: Installing Visual Studio Runtime Libraries...
-Filename: "{tmp}\windowsdesktop-runtime-3.1.12-win-x86.exe"; Check: NetCoreNeedsInstall('3.1.7') and NetCoreNeedsInstall('3.1.8') and NetCoreNeedsInstall('3.1.9') and NetCoreNeedsInstall('3.1.10') and NetCoreNeedsInstall('3.1.11') and NetCoreNeedsInstall('3.1.12') and DependencyInstall;  StatusMsg: Installing .Net Core 3.1...
+Filename: "{tmp}\VC_redist.x86.exe"; Parameters: /install /quiet /norestart; Check: VCRedistNeedsInstall and DependencyInstall; StatusMsg: Installing Visual C++ Redistributable...
+Filename: "{tmp}\windowsdesktop-runtime-3.1.12-win-x86.exe"; Parameters: /install /quiet /norestart; Check: NetCoreNeedsInstall('3.1.7') and NetCoreNeedsInstall('3.1.8') and NetCoreNeedsInstall('3.1.9') and NetCoreNeedsInstall('3.1.10') and NetCoreNeedsInstall('3.1.11') and NetCoreNeedsInstall('3.1.12') and DependencyInstall;  StatusMsg: Installing .Net Core 3.1...
 
 [Code]
 var
