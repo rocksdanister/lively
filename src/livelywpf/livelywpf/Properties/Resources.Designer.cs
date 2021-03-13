@@ -1589,7 +1589,7 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Export Log.
+        ///   Looks up a localized string similar to Log File.
         /// </summary>
         public static string TitleExportLogs {
             get {
@@ -1670,7 +1670,7 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Miscellaneous.
+        ///   Looks up a localized string similar to Misc..
         /// </summary>
         public static string TitleMisc {
             get {
@@ -1720,6 +1720,15 @@ namespace livelywpf.Properties {
         public static string TitlePleaseWait {
             get {
                 return ResourceManager.GetString("TitlePleaseWait", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Report Bug.
+        /// </summary>
+        public static string TitleReportBug {
+            get {
+                return ResourceManager.GetString("TitleReportBug", resourceCulture);
             }
         }
         
