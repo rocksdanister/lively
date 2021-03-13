@@ -71,7 +71,7 @@ Root: HKCU; Subkey: "Software\Microsoft\Windows\CurrentVersion\Run"; ValueType: 
 
 [Files]
 Source: "VC\VC_redist.x86.exe"; DestDir: {tmp}; Flags: deleteafterinstall
-Source: "dotnetcore\windowsdesktop-runtime-3.1.12-win-x86.exe"; DestDir: {tmp}; Flags: deleteafterinstall
+Source: "dotnetcore\windowsdesktop-runtime-3.1.13-win-x86.exe"; DestDir: {tmp}; Flags: deleteafterinstall
 Source: "dotnetcore\netcorecheck.exe"; DestDir: {tmp}; Flags: deleteafterinstall
 
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
@@ -86,7 +86,8 @@ Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: de
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall; Check: AutoLaunch 
 ;skipifsilent
 Filename: "{tmp}\VC_redist.x86.exe"; Parameters: /install /quiet /norestart; Check: VCRedistNeedsInstall and DependencyInstall; StatusMsg: Installing Visual C++ Redistributable...
-Filename: "{tmp}\windowsdesktop-runtime-3.1.12-win-x86.exe"; Parameters: /install /quiet /norestart; Check: NetCoreNeedsInstall('3.1.7') and NetCoreNeedsInstall('3.1.8') and NetCoreNeedsInstall('3.1.9') and NetCoreNeedsInstall('3.1.10') and NetCoreNeedsInstall('3.1.11') and NetCoreNeedsInstall('3.1.12') and DependencyInstall;  StatusMsg: Installing .Net Core 3.1...
+;todo:write loop for Check
+Filename: "{tmp}\windowsdesktop-runtime-3.1.13-win-x86.exe"; Parameters: /install /quiet /norestart; Check: NetCoreNeedsInstall('3.1.7') and NetCoreNeedsInstall('3.1.8') and NetCoreNeedsInstall('3.1.9') and NetCoreNeedsInstall('3.1.10') and NetCoreNeedsInstall('3.1.11') and NetCoreNeedsInstall('3.1.12') and NetCoreNeedsInstall('3.1.13') and DependencyInstall;  StatusMsg: Installing .Net Core 3.1...
 
 [Code]
 var
