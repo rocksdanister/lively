@@ -1,0 +1,3 @@
+Default wallpaper package file(s) goes here.
+Bundle filenames should be: 0.zip, 1.zip...
+

@@ -1,0 +1,11 @@
+Wallpaper player plugins goes here.
+
+mpv player:
+https://mpv.io/installation/
+
+browser:
+https://github.com/rocksdanister/lively-cef
+
+libMPV and libVLC:
+https://github.com/rocksdanister/lively/tree/dev-v1.0-fluent-netcore/src/livelywpf/libMPVPlayer
+https://github.com/rocksdanister/lively/tree/dev-v1.0-fluent-netcore/src/livelywpf/libVLCPlayer

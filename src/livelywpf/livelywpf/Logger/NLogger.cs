@@ -110,7 +110,7 @@ namespace livelywpf
             {
                 Title = "Select location to save the file",
                 Filter = "Compressed archive|*.zip",
-                FileName = "lively_log.zip",
+                FileName = "lively_log_" + DateTime.Now.ToString("yyyyMMdd_HHmmss", CultureInfo.InvariantCulture) + ".zip",
             };
             if (saveFileDialog1.ShowDialog() == true)
             {

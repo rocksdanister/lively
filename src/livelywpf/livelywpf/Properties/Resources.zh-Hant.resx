@@ -719,22 +719,22 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>創建預覽</value>
   </data>
   <data name="TitleGifPlayer" xml:space="preserve">
-    <value>Gif Player</value>
+    <value>Gif播放器</value>
   </data>
   <data name="TipGifPlayer" xml:space="preserve">
-    <value>Select the player used for gif wallpaper.</value>
+    <value>選擇用於gif牆紙的播放器。</value>
   </data>
   <data name="TextFeatureMissing" xml:space="preserve">
-    <value>Some features are not available in this version of Lively.</value>
+    <value>此版本不提供某些功能。</value>
   </data>
   <data name="TextControlPanelOpen" xml:space="preserve">
     <value>單擊此處管理壁紙。</value>
   </data>
   <data name="TextStoreReview" xml:space="preserve">
-    <value>Do you enjoy using Lively? Leave a review :)</value>
+    <value>您喜歡使用Lively嗎？留下評論:)</value>
   </data>
   <data name="TitleStore" xml:space="preserve">
-    <value>Store</value>
+    <value>店鋪</value>
     <comment>For different version of Lively, example: Microsoft Store</comment>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
@@ -747,6 +747,21 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>隱私政策</value>
   </data>
   <data name="TitleAudioDesktopOnly" xml:space="preserve">
-    <value>Play audio only when desktop is focused</value>
+    <value>僅在桌面集中時播放音頻</value>
+  </data>
+  <data name="TipExportLogs" xml:space="preserve">
+    <value>創建日誌報告文件。</value>
+  </data>
+  <data name="TitleExportLogs" xml:space="preserve">
+    <value>日誌文件</value>
+  </data>
+  <data name="TitleReportBug" xml:space="preserve">
+    <value>報告軟件缺陷</value>
+  </data>
+  <data name="TitleVideoHardwareDecode" xml:space="preserve">
+    <value>使用gpu</value>
+  </data>
+  <data name="TipVideoHardwareDecode" xml:space="preserve">
+    <value>盡可能使用硬件加速。</value>
   </data>
 </root>
