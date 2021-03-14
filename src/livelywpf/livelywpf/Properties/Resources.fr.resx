@@ -754,4 +754,19 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TitleAudioDesktopOnly" xml:space="preserve">
     <value>Lire l'audio uniquement lorsque le bureau est au premier plan</value>
   </data>
+  <data name="TipExportLogs" xml:space="preserve">
+    <value>Create log report file.</value>
+  </data>
+  <data name="TitleExportLogs" xml:space="preserve">
+    <value>Log File</value>
+  </data>
+  <data name="TitleReportBug" xml:space="preserve">
+    <value>Report Bug</value>
+  </data>
+  <data name="TitleVideoHardwareDecode" xml:space="preserve">
+    <value>GPU Decode</value>
+  </data>
+  <data name="TipVideoHardwareDecode" xml:space="preserve">
+    <value>Use hardware acceleration when possible.</value>
+  </data>
 </root>
