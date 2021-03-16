@@ -1,3 +1,5 @@
+
+
 # Lively Wallpaper
 [![GitHub release](https://img.shields.io/github/release/rocksdanister/lively/all.svg)](https://github.com/rocksdanister/lively/releases)
 [![Github all releases](https://img.shields.io/github/downloads/rocksdanister/lively/total.svg)](https://github.com/rocksdanister/lively/releases)
@@ -26,11 +28,6 @@ Just drag & drop files, webpages to set as wallpaper..
 #### Join Discussions:
 * <a href="https://www.reddit.com/r/LivelyWallpaper/">Reddit</a>
 
-Lively is still in development, if you encounter bugs create a github Issue along with <a href="https://github.com/rocksdanister/lively/wiki/Common-Problems"> log file</a>
-
-Help translate lively to other languages: <a href="https://github.com/rocksdanister/lively-translations">Translation Files</a>
-
-<a href="https://github.com/rocksdanister/lively/wiki">Lively Documentation</a>
 ## Features
 *Wait a sec, preview gif clips take some time to load.*
 #### Video
@@ -39,7 +36,7 @@ Help translate lively to other languages: <a href="https://github.com/rocksdanis
 <a href="https://visualdon.uk/project/eternal-light/">Eternal Light</a> by VISUALDON
 * Powered by mpv and vlc player.
 * Customize videos with filters.
-* Hardware Acceleration support.
+* Hardware Acceleration supported.
 #### Webpages
 <img src="/resources/wallpaper_html.gif" width="600" height="338"/>
 
@@ -64,29 +61,41 @@ Help translate lively to other languages: <a href="https://github.com/rocksdanis
 
 <a href="https://giphy.com/gifs/nyan-cat-sIIhZliB2McAo"> Nyan cat</a>
 * Make Memes/Cinemagraphs as wallpaper ... 
-#### Retro Game Emulators
+#### Games & Applications
 <img src="/resources/wallpaper_emulator.gif" width="600" height="338"/>
 
-* Coming soon
-#### Games & Applications
 * Can set Unity, Godot games and any application as wallpaper.
 * Dynamic audio visualisers, 3D scenes..
+#### Screen Savers
+<img src="/resources/screen_saver" width="600" height="338"/>
+
+* Lively supports screen saver mode.
+* Multiple monitor supported.
+* Any wallpaper can be used as screensaver.
+* [Learn more..](https://github.com/rocksdanister/lively/wiki/Screen-Saver)
+#### Automation
+<img src="/resources/cmd_rm.gif" width="600" height="338"/>
+
+* Lively can be controlled with command line arguments from terminal.
+* Can be paired with third party scripting software like AutoHotkey.
+* [Learn more..](https://github.com/rocksdanister/lively/wiki/Command-Line-Controls)
 #### & more:
-- Easy to use, Just drag'n'drop media files & webpages into lively window to set it as wallpaper.
+- Easy to use; Just drag'n'drop media files & webpages into lively window to set it as wallpaper.
 - Hardware accelerated video playback, powered by mpv player.
 - Interactive webgl wallpapers, powered by lightweight chromium engine Cef.
-- Windows 10 fluent design, lively appearance adapts to system theme settings.
-- Efficient, its a native .net core application.
+- Windows 10 fluent design, native windows theme.
+- Efficient, Lively is a native .net core application.
 - Fully opensource & free; no blackmagic, no features behind paywall.
-- Supports windows screensaver.
+- Supports converting any wallpaper to video via screen recording.
 #### Performance:
  * Wallpaper playback pauses when fullscreen application/games run on the machine (~0% cpu, gpu usage). 
  * Set wallpaper playback rules based on running foreground application.
 #### Multiple monitor support:
-- Full Multiple monitor support.
+- Supports any number of monitors.
+- Wallpaper adjusts automatically to monitor settings change.
 - Span single wallpaper across all screens.
-- Duplicate same wallpaper all screens.
-- Different wallpaper per screens.
+- Duplicate same wallpaper across all screens.
+- HiDPI and Ultrawide resolutions supported.
 
 **_I'm not officially affiliated with Unity technologies, godot, shadertoy;_**
 ## Download
@@ -95,7 +104,7 @@ Help translate lively to other languages: <a href="https://github.com/rocksdanis
      
 [direct-full-win32]: https://github.com/rocksdanister/lively/releases/download/v1.2.0.4/lively_setup_x86_full_v1204.exe
 
-**Installer will give Smartscreen warning, [discussion.](https://github.com/rocksdanister/lively/issues/9)**
+Installer will give Smartscreen warning, [discussion.](https://github.com/rocksdanister/lively/issues/9)
 
 <a href='//www.microsoft.com/store/apps/9ntm2qc6qws7?cid=storebadge&ocid=badge'><img src='https://developer.microsoft.com/store/badges/images/English_get-it-from-MS.png' alt='English badge' width="142px" height="52px"/></a>
 
@@ -104,8 +113,11 @@ Help translate lively to other languages: <a href="https://github.com/rocksdanis
 See github [issues.](https://github.com/rocksdanister/lively/issues)
 
 ## Contributing
-Code contributions are welcome, check [guidelines](https://github.com/rocksdanister/lively/wiki/Contributing-Guidelines) for instructions.
 
+### Coding
+Pull requests are welcome, check [guidelines](https://github.com/rocksdanister/lively/wiki/Contributing-Guidelines) for further instructions.
+
+#### Translation
 Help translate lively to other <a href="https://github.com/rocksdanister/lively-translations">languages.</a>
 
 ## Support
@@ -114,5 +126,3 @@ You can always help development by buying me a cup of coffee(paypal):
 
 ## License
 Lively v1.0 onwards is licensed under GPL-3.
-
-Previous version is licensed under MS-PL, see v0.9.6.0 branch for working builds.
