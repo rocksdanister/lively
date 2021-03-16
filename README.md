@@ -1,6 +1,7 @@
 
 
 
+
 # Lively Wallpaper
 [![GitHub release](https://img.shields.io/github/release/rocksdanister/lively/all.svg)](https://github.com/rocksdanister/lively/releases)
 [![Github all releases](https://img.shields.io/github/downloads/rocksdanister/lively/total.svg)](https://github.com/rocksdanister/lively/releases)
@@ -86,7 +87,7 @@ Just drag & drop files, webpages to set as wallpaper..
 * Powerful set of API for developers to create interactive wallpapers.
 * Get system information, audio graph, music information..
 * [Learn more..](https://github.com/rocksdanister/lively/wiki/API)
-#### & more:
+#### & more
 - Easy to use; Just drag'n'drop media files & webpages into lively window to set it as wallpaper.
 - Hardware accelerated video playback, powered by mpv player.
 - Interactive webgl wallpapers, powered by lightweight chromium engine Cef.
@@ -94,10 +95,12 @@ Just drag & drop files, webpages to set as wallpaper..
 - Efficient, Lively is a native .net core application.
 - Fully opensource & free; no blackmagic, no features behind paywall.
 - Supports converting any wallpaper to video via screen recording.
-#### Performance:
+#### Performance
  * Wallpaper playback pauses when fullscreen application/games run on the machine (~0% cpu, gpu usage). 
  * Set wallpaper playback rules based on running foreground application.
-#### Multiple monitor support:
+ * Can be set to pause wallpaper when running on battery power (laptops.)
+ * Wallpaper automatically pauses when running remote desktop session.
+#### Multiple displays
 - Supports any number of monitors.
 - Wallpaper adjusts automatically to monitor settings change.
 - Span single wallpaper across all screens.
