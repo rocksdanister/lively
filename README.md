@@ -1,5 +1,6 @@
 
 
+
 # Lively Wallpaper
 [![GitHub release](https://img.shields.io/github/release/rocksdanister/lively/all.svg)](https://github.com/rocksdanister/lively/releases)
 [![Github all releases](https://img.shields.io/github/downloads/rocksdanister/lively/total.svg)](https://github.com/rocksdanister/lively/releases)
@@ -42,9 +43,8 @@ Just drag & drop files, webpages to set as wallpaper..
 
 <a href="http://louie.co.nz/25th_hour/"> 25th Hour</a> by Loius Coyle
 * Load HTML file or web address as wallpaper.
-* Runs webgl, javascript .. basically anything that works on chrome.
-* Audio Reactive Wallpaper support, create wallpapers that react to <a href="https://github.com/rocksdanister/lively/wiki/Web-Guide-II-:-System-Audio-Data">system audio</a>
-* Customisation support, <a href="https://github.com/rocksdanister/lively/wiki/Web-Guide-IV-:-Interaction">documentation.</a>
+* Runs webgl, javascript.. basically anything that works on chrome.
+* Audio Reactive Wallpaper support.
 #### Video Streams
 <img src="/resources/wallpaper_yt.gif" width="600" height="338"/>
 
@@ -55,6 +55,7 @@ Just drag & drop files, webpages to set as wallpaper..
 
 <a href="https://www.shadertoy.com/view/ltffzl">Heartfelt </a> by BigWIngs
 * Run GLSL shaders in browser.
+* Custom shader renderer (coming soon.)
 * Shadertoy.com urls are supported as wallpaper.
 #### GIFs
 <img src="/resources/wallpaper_gif.gif" width="600" height="338"/>
@@ -79,6 +80,12 @@ Just drag & drop files, webpages to set as wallpaper..
 * Lively can be controlled with command line arguments from terminal.
 * Can be paired with third party scripting software like AutoHotkey.
 * [Learn more..](https://github.com/rocksdanister/lively/wiki/Command-Line-Controls)
+#### Lively API
+<img src="/resources/hw_api.gif" width="600" height="338"/>
+
+* Powerful set of API for developers to create interactive wallpapers.
+* Get system information, audio graph, music information..
+* [Learn more..](https://github.com/rocksdanister/lively/wiki/API)
 #### & more:
 - Easy to use; Just drag'n'drop media files & webpages into lively window to set it as wallpaper.
 - Hardware accelerated video playback, powered by mpv player.
