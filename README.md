@@ -67,7 +67,7 @@ Just drag & drop files, webpages to set as wallpaper..
 * Can set Unity, Godot games and any application as wallpaper.
 * Dynamic audio visualisers, 3D scenes..
 #### Screen Savers
-<img src="/resources/screen_saver" width="600" height="338"/>
+<img src="/resources/screen_saver.gif" width="600" height="338"/>
 
 * Lively supports screen saver mode.
 * Multiple monitor supported.
