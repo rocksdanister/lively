@@ -9,7 +9,7 @@ assignees: ''
 
 **Before proceeding**
 Check the Wiki:
-https://github.com/rocksdanister/lively/wiki 
+https://github.com/rocksdanister/lively/wiki/Common-Problems
 and Issues:
 https://github.com/rocksdanister/lively/issues?q=is%3Aopen+is%3Aissue
 to see if your problem is already addressed.
@@ -37,5 +37,8 @@ If applicable, add screenshots/video to help explain your problem.
 **Additional context**
 Add any other context about the problem here.
 
-**Log file**
-Share the log file(s) from Local Appdata folder `C:\Users\<UserName>\AppData\Local\Lively Wallpaper\logs`
+**Log file (Important)**
+Share the diagnostic files by:
+Open Lively settings (Gear icon) -> Misc. -> Log File
+or 
+Navigate to Appdata folder `C:\Users\<UserName>\AppData\Local\Lively Wallpaper\logs`
