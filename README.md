@@ -114,7 +114,7 @@ See github [issues.](https://github.com/rocksdanister/lively/issues)
 
 ## Contributing
 
-### Coding
+#### Coding
 Pull requests are welcome, check [guidelines](https://github.com/rocksdanister/lively/wiki/Contributing-Guidelines) for further instructions.
 
 #### Translation
