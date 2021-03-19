@@ -80,39 +80,40 @@ namespace livelywpf.Core
                 WallpaperScaler.uniformFill => "--panscan=1.0",
                 _ => "--keepaspect=no",
             };
-
             ipcServerName = "mpvsocket" + Path.GetRandomFileName();
-            string cmdArgs =
-                "--volume=0 " +
-                //alternative: --loop-file=inf
-                "--loop-file " +
-                //do not close after media end
-                "--keep-open " +
-                //always create gui window
-                "--force-window=yes " +
-                //open window at (-9999,0)
-                "--geometry=-9999:0 " +
-                //allow screensaver
-                "--stop-screensaver=no " +
-                //alternative: --input-ipc-server=\\.\pipe\
-                "--input-ipc-server=" + ipcServerName + " " +
-                //stretch algorithm
-                scalerArg + " " +
-                //on-screen-controller visibility
-                (!onScreenControl ? "--no-osc " : " ") +
-                //integer scaler for sharpness
-                (model.LivelyInfo.Type == WallpaperType.gif ? "--scale=nearest " : " ") +
-                //gpu decode preference
-                (Program.SettingsVM.Settings.VideoPlayerHwAccel ? "--hwdec=auto-safe " : "--hwdec=no ") +
-                //file, stream path
-                (model.LivelyInfo.Type == WallpaperType.videostream ? Helpers.StreamHelper.YoutubeDLMpvArgGenerate(streamQuality, path) : "\"" + path + "\"");
+
+            StringBuilder cmdArgs = new StringBuilder();
+            //startup volume will be 0.
+            cmdArgs.Append("--volume=0 ");
+            //alternative: --loop-file=inf
+            cmdArgs.Append("--loop-file ");
+            //do not close after media end
+            cmdArgs.Append("--keep-open ");
+            //always create gui window
+            cmdArgs.Append("--force-window=yes ");
+            //open window at (-9999,0)
+            cmdArgs.Append("--geometry=-9999:0 ");
+            //allow windows screensaver
+            cmdArgs.Append("--stop-screensaver=no ");
+            //video stretch algorithm
+            cmdArgs.Append(scalerArg + " ");
+            //on-screen-controller visibility
+            cmdArgs.Append(!onScreenControl ? "--no-osc " : " ");
+            //alternative: --input-ipc-server=\\.\pipe\
+            cmdArgs.Append("--input-ipc-server=" + ipcServerName + " ");
+            //integer scaler for sharpness
+            cmdArgs.Append(model.LivelyInfo.Type == WallpaperType.gif ? "--scale=nearest " : " ");
+            //gpu decode preference
+            cmdArgs.Append(Program.SettingsVM.Settings.VideoPlayerHwAccel ? "--hwdec=auto-safe " : "--hwdec=no ");
+            //file or online video stream path
+            cmdArgs.Append(model.LivelyInfo.Type == WallpaperType.videostream ? Helpers.StreamHelper.YoutubeDLMpvArgGenerate(streamQuality, path) : "\"" + path + "\"");
 
             ProcessStartInfo start = new ProcessStartInfo
             {               
                 FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "mpv", "mpv.exe"),
                 UseShellExecute = false,
                 WorkingDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "mpv"),
-                Arguments = cmdArgs,
+                Arguments = cmdArgs.ToString(),
             };
 
             Process proc = new Process()

@@ -27,6 +27,7 @@ namespace livelywpf.Helpers
         /// <param name="isAudio">Capture audio.</param>
         /// <param name="isMousePointer">Capture mouse cursor.</param>
         void Initialize(string filePath, Rect rect, int fps, int bitrate, bool isAudio, bool isMousePointer);
+        void Initialize(string filePath, IntPtr hwnd, int fps, int bitrate, bool isAudio, bool isMousePointer);
         /// <summary>
         /// Start video capture.
         /// </summary>

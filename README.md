@@ -32,13 +32,14 @@ Just drag & drop files, webpages to set as wallpaper..
 
 ## Features
 *Wait a sec, preview gif clips take some time to load.*
-#### Video
+#### Videos / GIFs
 <img src="/resources/wallpaper_video.gif" width="600" height="338"/>
 
 <a href="https://visualdon.uk/project/eternal-light/">Eternal Light</a> by VISUALDON
 * Powered by mpv and vlc player.
 * Customize videos with filters.
 * Hardware Acceleration supported.
+* Supports integer scaler for sharp image.
 #### Webpages
 <img src="/resources/wallpaper_html.gif" width="600" height="338"/>
 
@@ -58,11 +59,6 @@ Just drag & drop files, webpages to set as wallpaper..
 * Run GLSL shaders in browser.
 * Custom shader renderer (coming soon.)
 * Shadertoy.com urls are supported as wallpaper.
-#### GIFs
-<img src="/resources/wallpaper_gif.gif" width="600" height="338"/>
-
-<a href="https://giphy.com/gifs/nyan-cat-sIIhZliB2McAo"> Nyan cat</a>
-* Make Memes/Cinemagraphs as wallpaper ... 
 #### Games & Applications
 <img src="/resources/wallpaper_emulator.gif" width="600" height="338"/>
 
@@ -71,9 +67,9 @@ Just drag & drop files, webpages to set as wallpaper..
 #### Screen Savers
 <img src="/resources/screen_saver.gif" width="600" height="338"/>
 
-* Lively supports screen saver mode.
-* Multiple monitor supported.
+* Lively supports Windows screensaver.
 * Any wallpaper can be used as screensaver.
+* Multiple monitor supported.
 * [Learn more..](https://github.com/rocksdanister/lively/wiki/Screen-Saver)
 #### Automation
 <img src="/resources/cmd_rm.gif" width="600" height="338"/>

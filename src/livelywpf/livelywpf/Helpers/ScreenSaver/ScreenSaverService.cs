@@ -84,7 +84,7 @@ namespace livelywpf.Helpers
                     Program.SettingsVM.Settings.WallpaperArrangement != WallpaperArrangement.span ? item.GetScreen().Bounds.Top : 0, 
                     0, 
                     0,
-                    0 | 0x0001)) 
+                    0x0001)) 
                 {
                     NLogger.LogWin32Error("setwindowpos(1) fail ShowScreenSavers(),");
                 }
@@ -104,7 +104,7 @@ namespace livelywpf.Helpers
                     NativeMethods.GetWindowRect(SetupDesktop.GetWorkerW(), out NativeMethods.RECT prct);
                     WindowOperations.SetParentSafe(SetupDesktop.Wallpapers[0].GetHWND(), SetupDesktop.GetWorkerW());
                     //fill wp into the whole workerw area.
-                    if (!NativeMethods.SetWindowPos(SetupDesktop.Wallpapers[0].GetHWND(), 1, 0, 0, prct.Right - prct.Left, prct.Bottom - prct.Top, 0 | 0x0010))
+                    if (!NativeMethods.SetWindowPos(SetupDesktop.Wallpapers[0].GetHWND(), 1, 0, 0, prct.Right - prct.Left, prct.Bottom - prct.Top, 0x0010))
                     {
                         NLogger.LogWin32Error("setwindowpos fail HideScreenSavers(),");
                     }
@@ -115,7 +115,7 @@ namespace livelywpf.Helpers
                 foreach (var item in SetupDesktop.Wallpapers)
                 {
                     //update position & size incase window is moved.
-                    if (!NativeMethods.SetWindowPos(item.GetHWND(), 1, item.GetScreen().Bounds.Left, item.GetScreen().Bounds.Top, item.GetScreen().Bounds.Width, item.GetScreen().Bounds.Height, 0 | 0x0010))
+                    if (!NativeMethods.SetWindowPos(item.GetHWND(), 1, item.GetScreen().Bounds.Left, item.GetScreen().Bounds.Top, item.GetScreen().Bounds.Width, item.GetScreen().Bounds.Height, 0x0010))
                     {
                         NLogger.LogWin32Error("setwindowpos(1) fail HideScreenSavers(),");
                     }
@@ -125,7 +125,7 @@ namespace livelywpf.Helpers
                     //re-attach wallpaper to desktop.
                     WindowOperations.SetParentSafe(item.GetHWND(), SetupDesktop.GetWorkerW());
                     //update position & size on desktop workerw.
-                    if (!NativeMethods.SetWindowPos(item.GetHWND(), 1, prct.Left, prct.Top, item.GetScreen().Bounds.Width, item.GetScreen().Bounds.Height, 0 | 0x0010))
+                    if (!NativeMethods.SetWindowPos(item.GetHWND(), 1, prct.Left, prct.Top, item.GetScreen().Bounds.Width, item.GetScreen().Bounds.Height, 0x0010))
                     {
                         NLogger.LogWin32Error("setwindowpos(2) fail HideScreenSavers(),");
                     }
@@ -164,7 +164,7 @@ namespace livelywpf.Helpers
             //Get size of target.
             NativeMethods.GetClientRect(hwnd, out NativeMethods.RECT prct);
             //Update preview size and position.
-            if (!NativeMethods.SetWindowPos(previewHandle, 1, 0, 0, prct.Right - prct.Left, prct.Bottom - prct.Top, 0 | 0x0010))
+            if (!NativeMethods.SetWindowPos(previewHandle, 1, 0, 0, prct.Right - prct.Left, prct.Bottom - prct.Top, 0x0010))
             {
                 NLogger.LogWin32Error("setwindowpos fail Preview Screensaver,");
             }

@@ -207,7 +207,7 @@ namespace livelywpf.Views
             if (!_recording)
             {
                 //save dialog
-                string savePath = "";
+                string savePath = string.Empty;
                 var saveFileDialog1 = new Microsoft.Win32.SaveFileDialog()
                 {
                     Title = "Select location to save the file",
@@ -241,6 +241,7 @@ namespace livelywpf.Views
                 var item = WindowOperations.GetAbsolutePlacement(PreviewBorder, true);
                 recorder = new Helpers.ScreenRecorderlibScreen();
                 recorder.Initialize(savePath, item, 60, 8000 * 1000, false, false);
+                //recorder.Initialize(savePath, new WindowInteropHelper(this).Handle, 60, 8000 * 1000, false, false);
                 recorder.RecorderStatus += Recorder_RecorderStatus;
                 //recording timer.
                 if(dispatcherTimer == null)

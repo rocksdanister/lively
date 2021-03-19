@@ -5,6 +5,7 @@ using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Linq;
+using System.Diagnostics;
 
 namespace livelywpf
 {
@@ -139,6 +140,17 @@ namespace livelywpf
                     {
                         files.Add(layoutFile);
                     }
+
+                    /*
+                    var procFile = Path.Combine(Program.AppDataDir, "temp", "process.txt");
+                    var procList = new List<string>();
+                    foreach (var item in Process.GetProcesses())
+                    {
+                        procList.Add(item.ProcessName);
+                    }
+                    File.WriteAllLines(procFile, procList);
+                    files.Add(procFile);
+                    */
 
                     if (files.Count != 0)
                     {
