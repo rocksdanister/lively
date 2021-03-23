@@ -184,6 +184,10 @@ namespace livelywpf
                             wpInstance = new VideoMpvPlayer(wallpaper.FilePath, wallpaper, target,
                                 Program.SettingsVM.Settings.WallpaperScaling);
                             break;
+                        case LivelyMediaPlayer.vlc:
+                            wpInstance = new VideoVlcPlayer(wallpaper.FilePath, wallpaper, target,
+                                Program.SettingsVM.Settings.WallpaperScaling);
+                            break;
                     }
                     break;
                 case WallpaperType.gif:

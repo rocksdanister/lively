@@ -168,7 +168,7 @@ namespace livelywpf.Views
                             }
                         };
                         await Helpers.DialogService.ShowConfirmationDialog(
-                            ((LibraryModel)e).Title,
+                            Properties.Resources.TitleAbout,
                             infoView,
                             ((UIElement)sender).XamlRoot,
                             Properties.Resources.TextClose);
