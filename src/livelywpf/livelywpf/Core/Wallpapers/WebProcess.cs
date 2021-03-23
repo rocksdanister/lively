@@ -10,17 +10,17 @@ namespace livelywpf.Core
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         //todo: Check this library out https://github.com/Tyrrrz/CliWrap
-        IntPtr HWND { get; set; }
-        Process Proc { get; set; }
-        LibraryModel Model { get; set; }
-        LivelyScreen Display { get; set; }
-        string LivelyPropertyCopy { get; set; }
-        private bool Initialized { get; set; }
+        private IntPtr hwnd;
+        private readonly Process _process;
+        private readonly LibraryModel model;
+        private LivelyScreen display;
+        private readonly string livelyPropertyCopyPath;
+        private bool _initialized;
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
 
         public WebProcess(string path, LibraryModel model, LivelyScreen display)
         {
-            LivelyPropertyCopy = null;
+            livelyPropertyCopyPath = null;
             if (model.LivelyPropertyPath != null)
             {
                 //customisable wallpaper, livelyproperty.json is present.
@@ -36,9 +36,9 @@ namespace livelywpf.Core
                         var wpdataFolder = Path.Combine(dataFolder, new DirectoryInfo(model.LivelyInfoFolderPath).Name, screenNumber);
                         Directory.CreateDirectory(wpdataFolder);
 
-                        LivelyPropertyCopy = Path.Combine(wpdataFolder, "LivelyProperties.json");
-                        if (!File.Exists(LivelyPropertyCopy))
-                            File.Copy(model.LivelyPropertyPath, LivelyPropertyCopy);
+                        livelyPropertyCopyPath = Path.Combine(wpdataFolder, "LivelyProperties.json");
+                        if (!File.Exists(livelyPropertyCopyPath))
+                            File.Copy(model.LivelyPropertyPath, livelyPropertyCopyPath);
                     }
                     else
                     {
@@ -54,7 +54,7 @@ namespace livelywpf.Core
             StringBuilder cmdArgs = new StringBuilder();
             cmdArgs.Append(" --url " + "\"" + path + "\"");
             cmdArgs.Append(" --display " + "\"" + display + "\"");
-            cmdArgs.Append(" --property " + "\"" + LivelyPropertyCopy + "\"");
+            cmdArgs.Append(" --property " + "\"" + livelyPropertyCopyPath + "\"");
             cmdArgs.Append(" --volume " + Program.SettingsVM.Settings.AudioVolumeGlobal);
             cmdArgs.Append(" --geometry " + display.Bounds.Width + "x" + display.Bounds.Height);
             cmdArgs.Append(model.LivelyInfo.Type == WallpaperType.webaudio ? " --audio true" : " --audio false");
@@ -79,11 +79,10 @@ namespace livelywpf.Core
                 StartInfo = start,
                 EnableRaisingEvents = true
             };
-            //webProcess.OutputDataReceived += WebProcess_OutputDataReceived;
 
-            this.Proc = webProcess;
-            this.Model = model;
-            this.Display = display;
+            this._process = webProcess;
+            this.model = model;
+            this.display = display;
         }
 
         public void Close()
@@ -110,40 +109,40 @@ namespace livelywpf.Core
 
         public IntPtr GetHWND()
         {
-            return HWND;
+            return hwnd;
         }
 
         public Process GetProcess()
         {
-            return Proc;
+            return _process;
         }
 
         public LivelyScreen GetScreen()
         {
-            return Display;
+            return display;
         }
 
         public LibraryModel GetWallpaperData()
         {
-            return Model;
+            return model;
         }
 
         public WallpaperType GetWallpaperType()
         {
-            return Model.LivelyInfo.Type;
+            return model.LivelyInfo.Type;
         }
 
         public void Pause()
         {
             //minimize browser.
-            NativeMethods.ShowWindow(HWND, (uint)NativeMethods.SHOWWINDOW.SW_SHOWMINNOACTIVE);
+            NativeMethods.ShowWindow(GetHWND(), (uint)NativeMethods.SHOWWINDOW.SW_SHOWMINNOACTIVE);
             //SendMessage("lively-playback pause");
         }
 
         public void Play()
         {
             //show minimized browser.
-            NativeMethods.ShowWindow(HWND, (uint)NativeMethods.SHOWWINDOW.SW_SHOWNOACTIVATE);
+            NativeMethods.ShowWindow(GetHWND(), (uint)NativeMethods.SHOWWINDOW.SW_SHOWNOACTIVATE);
             //SendMessage("lively-playback play");
             //WallpaperRectFix();
         }
@@ -177,19 +176,19 @@ namespace livelywpf.Core
 
         public void SetHWND(IntPtr hwnd)
         {
-            this.HWND = hwnd;
+            this.hwnd = hwnd;
         }
 
         public void Show()
         {
-            if (Proc != null)
+            if (_process != null)
             {
                 try
                 {
-                    Proc.Exited += Proc_Exited;
-                    Proc.OutputDataReceived += Proc_OutputDataReceived;
-                    Proc.Start();
-                    Proc.BeginOutputReadLine();
+                    _process.Exited += Proc_Exited;
+                    _process.OutputDataReceived += Proc_OutputDataReceived;
+                    _process.Start();
+                    _process.BeginOutputReadLine();
                 }
                 catch (Exception e)
                 {
@@ -201,7 +200,7 @@ namespace livelywpf.Core
 
         private void Proc_Exited(object sender, EventArgs e)
         {
-            if (!Initialized)
+            if (!_initialized)
             {
                 //Exited with no error and without even firing OutputDataReceived; probably some external factor.
                 WindowInitialized?.Invoke(this, new WindowInitializedArgs()
@@ -211,8 +210,8 @@ namespace livelywpf.Core
                     Msg = "Process exited before giving HWND."
                 });
             }
-            Proc.OutputDataReceived -= Proc_OutputDataReceived;
-            Proc.Dispose();
+            _process.OutputDataReceived -= Proc_OutputDataReceived;
+            _process.Dispose();
             SetupDesktop.RefreshDesktop();
         }
 
@@ -253,11 +252,11 @@ namespace livelywpf.Core
                     }
                     finally
                     {
-                        if (!Initialized)
+                        if (!_initialized)
                         {
                             WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = status, Error = error, Msg = msg });
                         }
-                        Initialized = true;
+                        _initialized = true;
                     }
                 }
                 Logger.Info("CEF:" + e.Data);
@@ -271,11 +270,11 @@ namespace livelywpf.Core
 
         public void SendMessage(string msg)
         {
-            if (Proc != null)
+            if (_process != null)
             {
                 try
                 {
-                    Proc.StandardInput.WriteLine(msg);
+                    _process.StandardInput.WriteLine(msg);
                 }
                 catch { }
             }
@@ -283,20 +282,20 @@ namespace livelywpf.Core
 
         public string GetLivelyPropertyCopyPath()
         {
-            return LivelyPropertyCopy;
+            return livelyPropertyCopyPath;
         }
 
         public void SetScreen(LivelyScreen display)
         {
-            this.Display = display;
+            this.display = display;
         }
 
         public void Terminate()
         {
             try
             {
-                Proc.Kill();
-                Proc.Dispose();
+                _process.Kill();
+                _process.Dispose();
             }
             catch { }
             SetupDesktop.RefreshDesktop();

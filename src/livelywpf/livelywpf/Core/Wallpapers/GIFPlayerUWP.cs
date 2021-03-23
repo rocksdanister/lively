@@ -8,30 +8,30 @@ namespace livelywpf.Core
 {
     public class GIFPlayerUWP : IWallpaper
     {
-        IntPtr HWND { get; set; }
-        GIFViewUWP Player { get; set; }
-        LibraryModel Model { get; set; }
-        LivelyScreen Display { get; set; }
+        private IntPtr hwnd;
+        private readonly GIFViewUWP player;
+        private readonly LibraryModel model;
+        private LivelyScreen display;
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
 
         public GIFPlayerUWP(string filePath, LibraryModel model, LivelyScreen display, WallpaperScaler scaler = WallpaperScaler.fill)
         {
-            Player = new GIFViewUWP(filePath, scaler);
-            this.Model = model;
-            this.Display = display;
+            player = new GIFViewUWP(filePath, scaler);
+            this.model = model;
+            this.display = display;
         }
 
         public void Close()
         {
             System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
             {
-                Player.Close();
+                player.Close();
             }));
         }
 
         public IntPtr GetHWND()
         {
-            return HWND;
+            return hwnd;
         }
 
         public string GetLivelyPropertyCopyPath()
@@ -46,27 +46,27 @@ namespace livelywpf.Core
 
         public LivelyScreen GetScreen()
         {
-            return Display;
+            return display;
         }
 
         public LibraryModel GetWallpaperData()
         {
-            return Model;
+            return model;
         }
 
         public WallpaperType GetWallpaperType()
         {
-            return Model.LivelyInfo.Type;
+            return model.LivelyInfo.Type;
         }
 
         public void Pause()
         {
-            Player.Stop();
+            player.Stop();
         }
 
         public void Play()
         {
-            Player.Play();
+            player.Play();
         }
 
         public void SendMessage(string msg)
@@ -76,21 +76,21 @@ namespace livelywpf.Core
 
         public void SetHWND(IntPtr hwnd)
         {
-            this.HWND = hwnd;
+            this.hwnd = hwnd;
         }
 
         public void SetScreen(LivelyScreen display)
         {
-            this.Display = display;
+            this.display = display;
         }
 
         public void Show()
         {
-            if(Player != null)
+            if(player != null)
             {
-                Player.Closed += Player_Closed;
-                Player.Show();
-                HWND = new WindowInteropHelper(Player).Handle;
+                player.Closed += Player_Closed;
+                player.Show();
+                hwnd = new WindowInteropHelper(player).Handle;
                 WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = true, Error = null });
             }
         }
@@ -102,7 +102,7 @@ namespace livelywpf.Core
 
         public void Stop()
         {
-            Player.Stop();
+            player.Stop();
         }
 
         public void Terminate()

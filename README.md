@@ -29,6 +29,7 @@ Just drag & drop files, webpages to set as wallpaper..
 
 #### Join Discussions:
 * <a href="https://www.reddit.com/r/LivelyWallpaper/">Reddit</a>
+* <a href="https://github.com/rocksdanister/lively/discussions/">Github</a>
 
 ## Features
 *Wait a sec, preview gif clips take some time to load.*

@@ -11,15 +11,11 @@ namespace livelywpf.Core
     public class VideoPlayerVLCExt : IWallpaper
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        IntPtr HWND { get; set; }
-        Process Proc { get; set; }
-        LibraryModel Model { get; set; }
-        LivelyScreen Display { get; set; }
-        /// <summary>
-        /// copy of LivelyProperties.json file used to modify for current running screen.
-        /// </summary>
-        //string LivelyPropertyCopy { get; set; }
-        private bool Initialized { get; set; }
+        private IntPtr hwnd;
+        private readonly Process _process;
+        private readonly LibraryModel model;
+        private LivelyScreen display;
+        private bool _initialized;
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
 
         public VideoPlayerVLCExt(string path, LibraryModel model, LivelyScreen display)
@@ -35,24 +31,23 @@ namespace livelywpf.Core
                 WorkingDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "libVLCPlayer")
             };
 
-            Process videoPlayerProc = new Process
+            Process _process = new Process
             {
                 StartInfo = start,
                 EnableRaisingEvents = true
             };
-            //webProcess.OutputDataReceived += WebProcess_OutputDataReceived;
 
-            this.Proc = videoPlayerProc;
-            this.Model = model;
-            this.Display = display;
+            this._process = _process;
+            this.model = model;
+            this.display = display;
         }
 
         public void Close()
         {
             try
             {
-                Proc.Refresh();
-                Proc.StandardInput.WriteLine("lively:terminate");
+                _process.Refresh();
+                _process.StandardInput.WriteLine("lively:terminate");
             }
             catch
             {
@@ -62,27 +57,27 @@ namespace livelywpf.Core
 
         public IntPtr GetHWND()
         {
-            return HWND;
+            return hwnd;
         }
 
         public Process GetProcess()
         {
-            return Proc;
+            return _process;
         }
 
         public LivelyScreen GetScreen()
         {
-            return Display;
+            return display;
         }
 
         public LibraryModel GetWallpaperData()
         {
-            return Model;
+            return model;
         }
 
         public WallpaperType GetWallpaperType()
         {
-            return Model.LivelyInfo.Type;
+            return model.LivelyInfo.Type;
         }
 
         public void Pause()
@@ -97,19 +92,19 @@ namespace livelywpf.Core
 
         public void SetHWND(IntPtr hwnd)
         {
-            this.HWND = hwnd;
+            this.hwnd = hwnd;
         }
 
         public void Show()
         {
-            if (Proc != null)
+            if (_process != null)
             {
                 try
                 {
-                    Proc.Exited += Proc_Exited;
-                    Proc.OutputDataReceived += Proc_OutputDataReceived;
-                    Proc.Start();
-                    Proc.BeginOutputReadLine();
+                    _process.Exited += Proc_Exited;
+                    _process.OutputDataReceived += Proc_OutputDataReceived;
+                    _process.Start();
+                    _process.BeginOutputReadLine();
                 }
                 catch (Exception e)
                 {
@@ -121,7 +116,7 @@ namespace livelywpf.Core
 
         private void Proc_Exited(object sender, EventArgs e)
         {
-            if (!Initialized)
+            if (!_initialized)
             {
                 //Exited with no error and without even firing OutputDataReceived; probably some external factor.
                 WindowInitialized?.Invoke(this, new WindowInitializedArgs()
@@ -131,8 +126,8 @@ namespace livelywpf.Core
                     Msg = "Process exited before giving HWND."
                 });
             }
-            Proc.OutputDataReceived -= Proc_OutputDataReceived;
-            Proc.Dispose();
+            _process.OutputDataReceived -= Proc_OutputDataReceived;
+            _process.Dispose();
             SetupDesktop.RefreshDesktop();
         }
 
@@ -164,12 +159,12 @@ namespace livelywpf.Core
                     }
                     finally
                     {
-                        if (!Initialized)
+                        if (!_initialized)
                         {
                             WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = status, Error = error, Msg = msg });
                         }
                         //First run sent msg will be window handle.
-                        Initialized = true;
+                        _initialized = true;
                     }
                 }
                 Logger.Info("libVLC(Ext):" + e.Data);
@@ -183,11 +178,11 @@ namespace livelywpf.Core
 
         public void SendMessage(string msg)
         {
-            if (Proc != null)
+            if (_process != null)
             {
                 try
                 {
-                    Proc.StandardInput.WriteLine(msg);
+                    _process.StandardInput.WriteLine(msg);
                 }
                 catch { }
             }
@@ -200,15 +195,15 @@ namespace livelywpf.Core
 
         public void SetScreen(LivelyScreen display)
         {
-            this.Display = display;
+            this.display = display;
         }
 
         public void Terminate()
         {
             try
             {
-                Proc.Kill();
-                Proc.Dispose();
+                _process.Kill();
+                _process.Dispose();
             }
             catch { }
             SetupDesktop.RefreshDesktop();

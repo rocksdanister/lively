@@ -11,7 +11,7 @@
     <Grid>
         <StackPanel>
             <!--<Image Margin="0, 5, 0, 0" Width="272" Height="153" HorizontalAlignment="Center" Source="{Binding ThumbnailPath}" Stretch="UniformToFill"/>-->
-            <TextBlock Margin="0, 5, 0, 0" Text="{Binding Title}"/>
+            <TextBlock Margin="0, 0, 0, 0" Text="{Binding Title}"/>
             <TextBlock Margin="0, 5, 0, 0" TextWrapping="Wrap" Text="{Binding Desc}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
             <TextBlock Margin="0, 5, 0, 0" Text="{x:Bind UIText.Type}"/>
             <TextBlock Margin="0, 5, 0, 0" Text="{Binding WallpaperType}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
