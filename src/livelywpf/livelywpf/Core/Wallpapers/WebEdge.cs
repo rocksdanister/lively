@@ -114,11 +114,6 @@ namespace livelywpf.Core
             }
         }
 
-        public void SetHWND(IntPtr hwnd)
-        {
-            this.HWND = hwnd;
-        }
-
         public void SetScreen(LivelyScreen display)
         {
             this.Display = display;

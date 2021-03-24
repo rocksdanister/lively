@@ -28,7 +28,7 @@ namespace livelywpf.Core
         private Task processWaitTask;
         private readonly int timeOut;
         private readonly string ipcServerName;
-        private bool isVideoDisabled;
+        private bool _isVideoStopped;
         private JObject livelyPropertiesData;
         private readonly string livelyPropertyCopyPath;
 
@@ -172,9 +172,9 @@ namespace livelywpf.Core
 
         public void Play()
         {
-            if (isVideoDisabled)
+            if (_isVideoStopped)
             {
-                isVideoDisabled = false;
+                _isVideoStopped = false;
                 //is this always the correct channel for main video?
                 SendMessage("{\"command\":[\"set_property\",\"vid\",1]}\n");
             }
@@ -188,7 +188,7 @@ namespace livelywpf.Core
 
         public void Stop()
         {
-            isVideoDisabled = true;
+            _isVideoStopped = true;
             //video=no disable video but audio can still be played,
             //which is useful for 'play audio only' option in the future.
             SendMessage("{\"command\":[\"set_property\",\"vid\",\"no\"]}\n");
@@ -331,11 +331,6 @@ namespace livelywpf.Core
             }
             script.Append("]}\n");
             return script.ToString();
-        }
-
-        public void SetHWND(IntPtr hwnd)
-        {
-            this.hwnd = hwnd;
         }
 
         public void SetScreen(LivelyScreen display)

@@ -26,12 +26,6 @@ namespace livelywpf.Core
         /// <returns></returns>
         IntPtr GetHWND();
         /// <summary>
-        /// Set window handle.
-        /// This is only metadata, have no effect on actual handle.
-        /// </summary>
-        /// <param name="hwnd">HWND</param>
-        void SetHWND(IntPtr hwnd);
-        /// <summary>
         /// Get process information.
         /// </summary>
         /// <returns>null if not a program wallpaper.</returns>
@@ -67,8 +61,8 @@ namespace livelywpf.Core
         /// <returns></returns>
         LivelyScreen GetScreen();
         /// <summary>
-        /// Set display device in which wallpaper is currently running.
-        /// This is only metadata, have no effect on actual wallpaper position.
+        /// Set display device in which wallpaper is currently running.<para>
+        /// Only metadata, have no effect on actual wallpaper size/position.</para>
         /// </summary>
         /// <param name="display"></param>
         void SetScreen(LivelyScreen display);

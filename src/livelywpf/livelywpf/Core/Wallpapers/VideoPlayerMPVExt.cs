@@ -125,11 +125,6 @@ namespace livelywpf.Core
             SendMessage("lively:vid-play");
         }
 
-        public void SetHWND(IntPtr hwnd)
-        {
-            this.hwnd = hwnd;
-        }
-
         public void Stop()
         {
             
@@ -190,7 +185,7 @@ namespace livelywpf.Core
                         {
                             status = false;
                         }
-                        SetHWND(handle);
+                        hwnd = handle;
                     }
                     catch (Exception ex)
                     {

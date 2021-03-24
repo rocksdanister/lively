@@ -28,34 +28,37 @@ namespace livelywpf.Core
         {
             return WallpaperType.video;
         }
+
         public LibraryModel GetWallpaperData()
         {
             return model;
         }
+
         public IntPtr GetHWND()
         {
             return hwnd;
         }
-        public void SetHWND(IntPtr hwnd)
-        {
-            this.hwnd = hwnd;
-        }
+
         public Process GetProcess()
         {
             return null;
         }
+
         public void Play()
         {
             player.PlayMedia();
         }
+
         public void Pause()
         {
             player.PausePlayer();
         }
+
         public void Stop()
         {
             player.StopPlayer();
         }
+
         public void Close()
         {
             System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate

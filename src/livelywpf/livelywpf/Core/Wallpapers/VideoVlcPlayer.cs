@@ -25,25 +25,41 @@ namespace livelywpf.Core
 
         public VideoVlcPlayer(string path, LibraryModel model, LivelyScreen display, WallpaperScaler scaler = WallpaperScaler.fill)
         {
-            //todo: hw accel, scaler, streaming flag..
-            string cmdArgs =
-                //hide menus and controls.
-                "--qt-minimal-view " +
-                //prevent player window resizing to video size.
-                "--no-qt-video-autoresize " +
-                //do not create system-tray icon.
-                "--no-qt-system-tray " +
-                //allow screensaver
-                "--no-disable-screensaver " +
-                //file path
-                "\"" + path + "\"";
+            var scalerArg = scaler switch
+            {
+                WallpaperScaler.none => "--no-autoscale ",
+                WallpaperScaler.fill => "--aspect-ratio=" + display.Bounds.Width + ":" + display.Bounds.Height,
+                WallpaperScaler.uniform => "--autoscale",
+                WallpaperScaler.uniformFill => "--crop=" + display.Bounds.Width + ":" + display.Bounds.Height,
+                _ => "--autoscale",
+            };
+
+            StringBuilder cmdArgs = new StringBuilder();
+            //--no-video-title.
+            cmdArgs.Append("--no-osd ");
+            //video stretch algorithm.
+            cmdArgs.Append(scalerArg + " ");
+            //hide menus and controls.
+            cmdArgs.Append("--qt-minimal-view ");
+            //do not create system-tray icon.
+            cmdArgs.Append("--no-qt-system-tray ");
+            //prevent player window resizing to video size.
+            cmdArgs.Append("--no-qt-video-autoresize ");
+            //allow screensaver.
+            cmdArgs.Append("--no-disable-screensaver ");
+            //open window at (-9999,0), not working without: --no-embedded-video
+            cmdArgs.Append("--video-x=-9999 --video-y=0 ");
+            //gpu decode preference.
+            cmdArgs.Append(Program.SettingsVM.Settings.VideoPlayerHwAccel ? "--avcodec-hw=any " : "--avcodec-hw=none ");
+            //media file path.
+            cmdArgs.Append("\"" + path + "\"");
 
             ProcessStartInfo start = new ProcessStartInfo
             {
                 FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "vlc", "vlc.exe"),
                 UseShellExecute = false,
                 WorkingDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "vlc"),
-                Arguments = cmdArgs,
+                Arguments = cmdArgs.ToString(),
             };
 
             Process _process = new Process()
@@ -113,11 +129,6 @@ namespace livelywpf.Core
         public void SendMessage(string msg)
         {
             //todo
-        }
-
-        public void SetHWND(IntPtr hwnd)
-        {
-            this.hwnd = hwnd;
         }
 
         public void SetPlaybackPos(int pos)

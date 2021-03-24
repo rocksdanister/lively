@@ -134,11 +134,6 @@ namespace livelywpf.Core
             }
         }
 
-        public void SetHWND(IntPtr hwnd)
-        {
-            this.hwnd = hwnd;
-        }
-
         public void Stop()
         {
             

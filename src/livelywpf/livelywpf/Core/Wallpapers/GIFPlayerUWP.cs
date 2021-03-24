@@ -74,11 +74,6 @@ namespace livelywpf.Core
             //throw new NotImplementedException();
         }
 
-        public void SetHWND(IntPtr hwnd)
-        {
-            this.hwnd = hwnd;
-        }
-
         public void SetScreen(LivelyScreen display)
         {
             this.display = display;
