@@ -74,6 +74,20 @@ namespace livelywpf.Cmd
             public int? Monitor { get; set; }
         }
 
+        [Verb("seekwp", HelpText = "Set wallpaper playback position.")]
+        class SeekWallpaperOptions
+        {
+            [Option("percent",
+            Required = true,
+            HelpText = "Seek percentage.")]
+            public int Percent { get; set; }
+
+            [Option("monitor",
+            Required = false,
+            HelpText = "Index of the monitor to load the wallpaper on (optional).")]
+            public int? Monitor { get; set; }
+        }
+
         [Verb("screensaver", HelpText = "Screen saver control.")]
         class ScreenSaverOptions
         {
@@ -96,37 +110,15 @@ namespace livelywpf.Cmd
 
         public static void ParseArgs(string[] args)
         {
-            _ = CommandLine.Parser.Default.ParseArguments<AppOptions, SetWallpaperOptions, CustomiseWallpaperOptions, CloseWallpaperOptions, ScreenSaverOptions>(args)
+            _ = CommandLine.Parser.Default.ParseArguments<AppOptions, SetWallpaperOptions, CustomiseWallpaperOptions, CloseWallpaperOptions, ScreenSaverOptions, SeekWallpaperOptions>(args)
                 .MapResult(
                     (AppOptions opts) => RunAppOptions(opts),
-                    (CloseWallpaperOptions opts) => RunCloseWallpaperOptions(opts),
                     (SetWallpaperOptions opts) => RunSetWallpaperOptions(opts),
+                    (CloseWallpaperOptions opts) => RunCloseWallpaperOptions(opts),
+                    (SeekWallpaperOptions opts) => RunSeekWallpaperOptions(opts),
                     (CustomiseWallpaperOptions opts) => RunCustomiseWallpaperOptions(opts),
                     (ScreenSaverOptions opts) => RunScreenSaverOptions(opts),
                     errs => HandleParseError(errs));
-        }
-
-        private static int RunCloseWallpaperOptions(CloseWallpaperOptions opts)
-        {
-            if (opts.Monitor != null)
-            {
-                var id = (int)opts.Monitor;
-                if (id == -1 ||
-                    Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.duplicate ||
-                    Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span)
-                {
-                    SetupDesktop.CloseAllWallpapers();
-                }
-                else
-                {
-                    var screen = ScreenHelper.GetScreen().FirstOrDefault(x => x.DeviceNumber == (id).ToString());
-                    if (screen != null)
-                    {
-                        SetupDesktop.CloseWallpaper(screen);
-                    }
-                }
-            }
-            return 0;
         }
 
         private static int RunAppOptions(AppOptions opts)
@@ -196,6 +188,41 @@ namespace livelywpf.Cmd
                         }
                     }
                 }));
+            }
+            return 0;
+        }
+
+        private static int RunCloseWallpaperOptions(CloseWallpaperOptions opts)
+        {
+            if (opts.Monitor != null)
+            {
+                var id = (int)opts.Monitor;
+                if (id == -1 ||
+                    Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.duplicate ||
+                    Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span)
+                {
+                    SetupDesktop.CloseAllWallpapers();
+                }
+                else
+                {
+                    var screen = ScreenHelper.GetScreen().FirstOrDefault(x => x.DeviceNumber == (id).ToString());
+                    if (screen != null)
+                    {
+                        SetupDesktop.CloseWallpaper(screen);
+                    }
+                }
+            }
+            return 0;
+        }
+
+        private static int RunSeekWallpaperOptions(SeekWallpaperOptions opts)
+        {
+            Core.LivelyScreen screen = opts.Monitor != null ?
+                ScreenHelper.GetScreen().FirstOrDefault(x => x.DeviceNumber == ((int)opts.Monitor).ToString()) : ScreenHelper.GetPrimaryScreen();
+            var wp = SetupDesktop.Wallpapers.Find(x => ScreenHelper.ScreenCompare(x.GetScreen(), screen, DisplayIdentificationMode.deviceId));
+            if (wp != null)
+            {
+                wp.SetPlaybackPos(Clamp(opts.Percent, 0, 100));
             }
             return 0;
         }
