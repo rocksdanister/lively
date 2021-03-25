@@ -200,7 +200,7 @@ namespace livelywpf.Core
             SendMessage("{\"command\":[\"set_property\",\"volume\"," + volume + "]}\n");
         }
 
-        public void SetPlaybackPos(int pos)
+        public void SetPlaybackPos(float pos)
         {
             if (GetWallpaperType() != WallpaperType.picture)
             {

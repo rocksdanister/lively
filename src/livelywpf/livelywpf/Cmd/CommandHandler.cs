@@ -80,7 +80,7 @@ namespace livelywpf.Cmd
             [Option("percent",
             Required = true,
             HelpText = "Seek percentage.")]
-            public int Percent { get; set; }
+            public float Percent { get; set; }
 
             [Option("monitor",
             Required = false,
@@ -219,10 +219,13 @@ namespace livelywpf.Cmd
         {
             Core.LivelyScreen screen = opts.Monitor != null ?
                 ScreenHelper.GetScreen().FirstOrDefault(x => x.DeviceNumber == ((int)opts.Monitor).ToString()) : ScreenHelper.GetPrimaryScreen();
-            var wp = SetupDesktop.Wallpapers.Find(x => ScreenHelper.ScreenCompare(x.GetScreen(), screen, DisplayIdentificationMode.deviceId));
-            if (wp != null)
+            if (screen != null)
             {
-                wp.SetPlaybackPos(Clamp(opts.Percent, 0, 100));
+                var wp = SetupDesktop.Wallpapers.Find(x => ScreenHelper.ScreenCompare(x.GetScreen(), screen, DisplayIdentificationMode.deviceId));
+                if (wp != null)
+                {
+                    wp.SetPlaybackPos(Clamp(opts.Percent, 0, 100));
+                }
             }
             return 0;
         }

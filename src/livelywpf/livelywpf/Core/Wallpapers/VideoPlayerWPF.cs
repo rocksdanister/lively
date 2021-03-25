@@ -113,7 +113,7 @@ namespace livelywpf.Core
             player.SetVolume(volume);
         }
 
-        public void SetPlaybackPos(int pos)
+        public void SetPlaybackPos(float pos)
         {
             //todo
         }

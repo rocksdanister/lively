@@ -33,6 +33,10 @@
                             <ui:FontIcon Glyph="&#xE72A;" Margin="0,2,5,0"/>
                         </Button>
                     </StackPanel>
+                    <StackPanel x:Name="UrlStreamPanel" Orientation="Horizontal" Margin="0, 5, 0, 0">
+                        <TextBox x:Name="UrlTextStream" MinWidth="500" MaxWidth="500"/>
+                        <Button x:Name="UrlBtnStream" Content="Stream(Debug)" Click="UrlBtn_Click_Stream" Margin="10, 0, 0, 0"/>
+                    </StackPanel>
                     <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="Gray" 
                             Text="{x:Static p:Resources.TipAddWallpaperURL}"/>
 

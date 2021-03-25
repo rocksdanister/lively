@@ -345,7 +345,7 @@ namespace livelywpf.Core
             { /* process already exited */ }
         }
 
-        public void SetPlaybackPos(int pos)
+        public void SetPlaybackPos(float pos)
         {
             if (pos == 0)
             {

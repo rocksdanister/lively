@@ -38,6 +38,11 @@ namespace livelywpf.Helpers
                     if (url.Contains("bilibili.com/video/"))
                         status = true;
                     break;
+                case "twitch.tv":
+                case "www.twitch.tv":
+                    if (url.Length != "https://www.twitch.tv/".Length)
+                        status = true;
+                    break;
             }
             return status;
         }

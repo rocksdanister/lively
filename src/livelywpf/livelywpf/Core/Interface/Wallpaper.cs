@@ -87,7 +87,7 @@ namespace livelywpf.Core
         /// Only value 0 works for non-video wallpapers.</br>
         /// </summary>
         /// <param name="pos">Range 0 - 100</param>
-        void SetPlaybackPos(int pos);
+        void SetPlaybackPos(float pos);
         /// <summary>
         /// Fires after Show() method is called.
         /// Check success status to check if wallpaper ready/failed.

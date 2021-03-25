@@ -50,5 +50,36 @@ namespace livelywpf.Helpers
             }
             catch { }
         }
+
+        public static Uri SanitizeUrl(string address)
+        {
+            if (string.IsNullOrWhiteSpace(address))
+            {
+                throw new ArgumentException();
+            }
+
+            Uri uri;
+            try
+            {
+                uri = new Uri(address);
+            }
+            catch (UriFormatException)
+            {
+                try
+                {
+                    //if user did not input https/http assume https connection.
+                    uri = new UriBuilder(address)
+                    {
+                        Scheme = "https",
+                        Port = -1,
+                    }.Uri;
+                }
+                catch (Exception e)
+                {
+                    throw e;
+                }
+            }
+            return uri;
+        }
     }
 }
