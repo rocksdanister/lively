@@ -49,6 +49,29 @@ namespace livelyCmdUtility
             public int? Monitor { get; set; }
         }
 
+        [Verb("closewp", HelpText = "Close wallpaper.")]
+        class CloseWallpaperOptions
+        {
+            [Option("monitor",
+            Required = true,
+            HelpText = "Index of the monitor to close wallpaper, if -1 all running wallpapers are closed.")]
+            public int? Monitor { get; set; }
+        }
+
+        [Verb("seekwp", HelpText = "Set wallpaper playback position.")]
+        class SeekWallpaperOptions
+        {
+            [Option("percent",
+            Required = true,
+            HelpText = "Seek percentage.")]
+            public float Percent { get; set; }
+
+            [Option("monitor",
+            Required = false,
+            HelpText = "Index of the monitor to load the wallpaper on (optional).")]
+            public int? Monitor { get; set; }
+        }
+
         [Verb("setprop", HelpText = "Customise wallpaper.")]
         class CustomiseWallpaperOptions
         {
@@ -63,24 +86,37 @@ namespace livelyCmdUtility
             public int? Monitor { get; set; }
         }
 
-        [Verb("closewp", HelpText = "Close wallpaper.")]
-        class CloseWallpaperOptions
+        [Verb("screensaver", HelpText = "Screen saver control.")]
+        class ScreenSaverOptions
         {
-            [Option("monitor",
-            Required = true,
-            HelpText = "Index of the monitor to close wallpaper, if -1 all running wallpapers are closed.")]
-            public int? Monitor { get; set; }
+            [Option("preview",
+            Required = false,
+            HelpText = "Show the ss in the ss selection dialog box, number represents the handle to the parent's window.")]
+            public int? Preview { get; set; }
+
+            [Option("configure",
+            Required = false,
+            HelpText = "Show the ss configuration dialog box.")]
+            public int? Configure { get; set; }
+
+
+            [Option("show",
+            Required = false,
+            HelpText = "Show the ss full-screen, false cancels running ss.")]
+            public bool? Show { get; set; }
         }
 
         static void Main(string[] args)
         {
-            _ = CommandLine.Parser.Default.ParseArguments<AppOptions, SetWallpaperOptions, CustomiseWallpaperOptions, CloseWallpaperOptions>(args)
-                .MapResult(
-                    (AppOptions opts) => RunAppOptions(opts),
-                    (CloseWallpaperOptions opts) => RunCloseWallpaperOptions(opts),
-                    (SetWallpaperOptions opts) => RunSetWallpaperOptions(opts),
-                    (CustomiseWallpaperOptions opts) => RunCustomiseWallpaperOptions(opts),
-                    errs => HandleParseError(errs));
+            _ = CommandLine.Parser.Default.ParseArguments<AppOptions, SetWallpaperOptions, CustomiseWallpaperOptions, CloseWallpaperOptions, ScreenSaverOptions, SeekWallpaperOptions>(args)
+                 .MapResult(
+                     (AppOptions opts) => RunAppOptions(opts),
+                     (SetWallpaperOptions opts) => RunSetWallpaperOptions(opts),
+                     (CloseWallpaperOptions opts) => RunCloseWallpaperOptions(opts),
+                     (SeekWallpaperOptions opts) => RunSeekWallpaperOptions(opts),
+                     (CustomiseWallpaperOptions opts) => RunCustomiseWallpaperOptions(opts),
+                     (ScreenSaverOptions opts) => RunScreenSaverOptions(opts),
+                     errs => HandleParseError(errs));
 
             try
             {
@@ -88,16 +124,26 @@ namespace livelyCmdUtility
             }
             catch (Exception e)
             {
-                //Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Failed to communicate with Lively process (Lively currently not running?): " + e.Message + "\n");
-            }
-            finally
-            {
-                //Console.ResetColor();
+                Console.WriteLine("Failed to communicate with Lively process (Lively not running?): " + e.Message);
             }
         }
 
+        private static object RunAppOptions(AppOptions opts)
+        {
+            return 0;
+        }
+
+        private static object RunSetWallpaperOptions(SetWallpaperOptions opts)
+        {
+            return 0;
+        }
+
         private static object RunCloseWallpaperOptions(CloseWallpaperOptions opts)
+        {
+            return 0;
+        }
+
+        private static int RunSeekWallpaperOptions(SeekWallpaperOptions opts)
         {
             return 0;
         }
@@ -107,24 +153,12 @@ namespace livelyCmdUtility
             return 0;
         }
 
+        private static int RunScreenSaverOptions(ScreenSaverOptions opts)
+        {
+            return 0;
+        }
+
         private static object HandleParseError(IEnumerable<Error> errs)
-        {
-            /*
-            foreach (var item in errs)
-            {
-                Console.WriteLine(item.ToString());
-            }
-            Console.ReadKey();
-            */
-            return 0;
-        }
-
-        private static object RunSetWallpaperOptions(SetWallpaperOptions opts)
-        {
-            return 0;
-        }
-
-        private static object RunAppOptions(AppOptions opts)
         {
             return 0;
         }

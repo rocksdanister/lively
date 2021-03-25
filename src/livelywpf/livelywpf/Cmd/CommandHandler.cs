@@ -51,20 +51,6 @@ namespace livelywpf.Cmd
             public int? Monitor { get; set; }
         }
 
-        [Verb("setprop", HelpText = "Customise wallpaper.")]
-        class CustomiseWallpaperOptions
-        {
-            [Option("property",
-            Required = true,
-            HelpText = "syntax: keyvalue=value")]
-            public string Param { get; set; }
-
-            [Option("monitor",
-            Required = false,
-            HelpText = "Index of the monitor to apply the wallpaper customisation.")]
-            public int? Monitor { get; set; }
-        }
-
         [Verb("closewp", HelpText = "Close wallpaper.")]
         class CloseWallpaperOptions
         {
@@ -85,6 +71,20 @@ namespace livelywpf.Cmd
             [Option("monitor",
             Required = false,
             HelpText = "Index of the monitor to load the wallpaper on (optional).")]
+            public int? Monitor { get; set; }
+        }
+
+        [Verb("setprop", HelpText = "Customise wallpaper.")]
+        class CustomiseWallpaperOptions
+        {
+            [Option("property",
+            Required = true,
+            HelpText = "syntax: keyvalue=value")]
+            public string Param { get; set; }
+
+            [Option("monitor",
+            Required = false,
+            HelpText = "Index of the monitor to apply the wallpaper customisation.")]
             public int? Monitor { get; set; }
         }
 
