@@ -212,7 +212,6 @@ namespace livelywpf.Views
                     }
                     catch { }
                 }
-
             }
 
             _processing = false;

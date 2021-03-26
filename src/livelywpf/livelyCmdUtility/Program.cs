@@ -89,17 +89,6 @@ namespace livelyCmdUtility
         [Verb("screensaver", HelpText = "Screen saver control.")]
         class ScreenSaverOptions
         {
-            [Option("preview",
-            Required = false,
-            HelpText = "Show the ss in the ss selection dialog box, number represents the handle to the parent's window.")]
-            public int? Preview { get; set; }
-
-            [Option("configure",
-            Required = false,
-            HelpText = "Show the ss configuration dialog box.")]
-            public int? Configure { get; set; }
-
-
             [Option("show",
             Required = false,
             HelpText = "Show the ss full-screen, false cancels running ss.")]
@@ -143,7 +132,7 @@ namespace livelyCmdUtility
             return 0;
         }
 
-        private static int RunSeekWallpaperOptions(SeekWallpaperOptions opts)
+        private static object RunSeekWallpaperOptions(SeekWallpaperOptions opts)
         {
             return 0;
         }
@@ -153,7 +142,7 @@ namespace livelyCmdUtility
             return 0;
         }
 
-        private static int RunScreenSaverOptions(ScreenSaverOptions opts)
+        private static object RunScreenSaverOptions(ScreenSaverOptions opts)
         {
             return 0;
         }

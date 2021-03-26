@@ -89,10 +89,14 @@ namespace livelywpf.Core
             cmdArgs.Append("--loop-file ");
             //do not close after media end
             cmdArgs.Append("--keep-open ");
-            //always create gui window
-            cmdArgs.Append("--force-window=yes ");
             //open window at (-9999,0)
             cmdArgs.Append("--geometry=-9999:0 ");
+            //always create gui window
+            cmdArgs.Append("--force-window=yes ");
+            //Don't move the window when clicking
+            cmdArgs.Append("--no-window-dragging ");
+            //Don't hide cursor after sometime.
+            cmdArgs.Append("--cursor-autohide=no ");
             //allow windows screensaver
             cmdArgs.Append("--stop-screensaver=no ");
             //video stretch algorithm

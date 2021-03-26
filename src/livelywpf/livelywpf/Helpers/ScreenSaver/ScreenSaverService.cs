@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Timers;
@@ -15,6 +15,7 @@ namespace livelywpf.Helpers
         private readonly Timer _timer = new Timer();
         public bool IsRunning { get; private set; } = false;
         private static readonly ScreenSaverService instance = new ScreenSaverService();
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
         public static ScreenSaverService Instance
         {
@@ -50,10 +51,11 @@ namespace livelywpf.Helpers
         {
             if (!IsRunning && SetupDesktop.Wallpapers.Count != 0)
             {
+                Logger.Info("Starting ss service..");
                 IsRunning = true;
                 ShowScreenSavers();
                 mousePosOriginal = System.Windows.Forms.Control.MousePosition;
-                _timer.Start();
+                _timer.Start();            
             }
         }
 
@@ -61,6 +63,7 @@ namespace livelywpf.Helpers
         {
             if (IsRunning)
             {
+                Logger.Info("Stopping ss service..");
                 IsRunning = false;
                 _timer.Stop();
                 HideScreenSavers();
@@ -143,8 +146,29 @@ namespace livelywpf.Helpers
         {
             //Issue: Multiple display setup with diff dpi - making the window child affects LivelyScreen offset values.
             if (IsRunning || ScreenHelper.IsMultiScreen())
+            {
                 return;
+            }
 
+            //Verify if the hwnd is screensaver demo area.
+            const int maxChars = 256;
+            StringBuilder className = new StringBuilder(maxChars);
+            if (NativeMethods.GetClassName(hwnd, className, maxChars) > 0)
+            {
+                string cName = className.ToString();
+                if (!string.Equals(cName, "SSDemoParent", StringComparison.OrdinalIgnoreCase))
+                {
+                    Logger.Info("Skipping ss preview, wrong hwnd class:" + cName);
+                    return;
+                }
+            }
+            else
+            {
+                Logger.Info("Skipping ss preview, failed to get hwnd class.");
+                return;
+            }
+
+            Logger.Info("Showing ss preview..");
             var preview = new Views.ScreenSaverPreview
             {
                 ShowActivated = false,
