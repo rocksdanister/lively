@@ -185,7 +185,7 @@ namespace livelywpf.Views
                     var uri = await e.DataView.GetWebLinkAsync();
                     Logger.Info("Dropped url=>" + uri.ToString());
                     if (Program.SettingsVM.Settings.AutoDetectOnlineStreams &&
-                        StreamHelper.IsSupportedUri(uri))
+                        StreamHelper.IsSupportedStream(uri))
                     {
                         Program.LibraryVM.AddWallpaper(uri.ToString(),
                             WallpaperType.videostream,

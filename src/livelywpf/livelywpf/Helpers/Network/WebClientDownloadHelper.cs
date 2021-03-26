@@ -9,24 +9,8 @@ using Windows.Web.UI.Interop;
 
 namespace livelywpf
 {
-    class DownloadEventArgs : EventArgs
-    {
-        /// <summary>
-        /// Total size of file in megabytes.
-        /// </summary>
-        public double TotalSize { get; set; }
-        /// <summary>
-        /// Currently downloaded file size in megabytes.
-        /// </summary>
-        public double DownloadedSize { get; set; }
-        /// <summary>
-        /// Download progress.
-        /// </summary>
-        public double Percentage { get; set; }
-    }
-
     [Obsolete("Cannot cancel in-progress download: https://github.com/dotnet/runtime/issues/31479")]
-    class DownloadHelper : IDisposable
+    class WebClientDownloadHelper : IDownloadHelper
     {
         private WebClient webClient;
         public event EventHandler<DownloadEventArgs> DownloadProgressChanged;
@@ -61,7 +45,7 @@ namespace livelywpf
             {
                 DownloadFileCompleted?.Invoke(this, true);
             }
-            else if(e.Cancelled)
+            else if (e.Cancelled)
             {
                 webClient.Dispose();
             }
@@ -76,7 +60,7 @@ namespace livelywpf
             return (bytes / 1024f) / 1024f;
         }
 
-        public void Dispose()
+        public void Cancel()
         {
             if (webClient != null)
             {

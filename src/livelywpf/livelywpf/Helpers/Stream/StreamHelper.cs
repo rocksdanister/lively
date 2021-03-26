@@ -10,14 +10,14 @@ namespace livelywpf.Helpers
 {
     public static class StreamHelper
     {
-        public static bool IsSupportedUri(Uri uri)
+        public static bool IsSupportedStream(Uri uri)
         {
             bool status = false;
             string host;
             string url;
             try
             {
-                url = uri.ToString();
+                url = uri.AbsoluteUri;
                 host = uri.Host;
             }
             catch

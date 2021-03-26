@@ -116,18 +116,18 @@ namespace livelywpf.Views
                 return;
             }
 
-            UrlText.Text = uri.ToString();
+            UrlText.Text = uri.OriginalString;
             if (Program.SettingsVM.Settings.AutoDetectOnlineStreams &&
-                 StreamHelper.IsSupportedUri(uri))
+                 StreamHelper.IsSupportedStream(uri))
             {
-                Program.LibraryVM.AddWallpaper(uri.ToString(),
+                Program.LibraryVM.AddWallpaper(uri.OriginalString,
                     WallpaperType.videostream,
                     LibraryTileType.processing,
                     Program.SettingsVM.Settings.SelectedDisplay);
             }
             else
             {
-                Program.LibraryVM.AddWallpaper(uri.ToString(),
+                Program.LibraryVM.AddWallpaper(uri.OriginalString,
                     WallpaperType.url,
                     LibraryTileType.processing,
                     Program.SettingsVM.Settings.SelectedDisplay);
@@ -153,8 +153,8 @@ namespace livelywpf.Views
                 return;
             }
 
-            UrlTextStream.Text = uri.ToString();
-            Program.LibraryVM.AddWallpaper(uri.ToString(),
+            UrlTextStream.Text = uri.OriginalString;
+            Program.LibraryVM.AddWallpaper(uri.OriginalString,
                   WallpaperType.videostream,
                   LibraryTileType.processing,
                   Program.SettingsVM.Settings.SelectedDisplay);

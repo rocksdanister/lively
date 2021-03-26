@@ -55,7 +55,7 @@ namespace livelywpf.Helpers
                 IsRunning = true;
                 ShowScreenSavers();
                 mousePosOriginal = System.Windows.Forms.Control.MousePosition;
-                _timer.Start();            
+                _timer.Start();
             }
         }
 

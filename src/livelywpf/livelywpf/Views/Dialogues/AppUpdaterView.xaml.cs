@@ -13,7 +13,7 @@ namespace livelywpf.Views
     /// </summary>
     public partial class AppUpdaterView : Window
     {
-        private DownloadHelper download;
+        private IDownloadHelper download;
         private readonly Uri fileUrl;
         private bool _forceClose = false;
         private bool downloadComplete = false;
@@ -39,29 +39,31 @@ namespace livelywpf.Views
 
         private void UpdateDownload_DownloadProgressChanged(object sender, DownloadEventArgs e)
         {
-            progressBar.Value = e.Percentage;
-            taskbarItemInfo.ProgressValue = e.Percentage/100f;
-            sizeTxt.Text = e.DownloadedSize + "/" + e.TotalSize + " MB";
+            _ = this.Dispatcher.BeginInvoke(new Action(() => {
+                progressBar.Value = e.Percentage;
+                taskbarItemInfo.ProgressValue = e.Percentage / 100f;
+                sizeTxt.Text = e.DownloadedSize + "/" + e.TotalSize + " MB";
+            }));
         }
 
         private void UpdateDownload_DownloadFileCompleted(object sender, bool success)
         {
-            if(success)
-            {
-                //success
-                downloadComplete = true;
-                downloadBtn.IsEnabled = true;
-                downloadBtn.Content = Properties.Resources.TextInstall;
-                taskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
-            }
-            else
-            {
-                taskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Error;
-                changelog.Document.Blocks.Clear();
-                changelog.Document.Blocks.Add(new Paragraph(new Run(Properties.Resources.LivelyExceptionAppUpdateFail)));
-                _forceClose = true;
-                //this.Close();
-            }
+            _ = this.Dispatcher.BeginInvoke(new Action(() => {
+                if (success)
+                {
+                    downloadComplete = true;
+                    downloadBtn.IsEnabled = true;
+                    downloadBtn.Content = Properties.Resources.TextInstall;
+                    taskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
+                }
+                else
+                {
+                    taskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Error;
+                    changelog.Document.Blocks.Clear();
+                    changelog.Document.Blocks.Add(new Paragraph(new Run(Properties.Resources.LivelyExceptionAppUpdateFail)));
+                    _forceClose = true;
+                }
+            }));
         }
 
         private void Download_Button_Click(object sender, RoutedEventArgs e)
@@ -100,7 +102,7 @@ namespace livelywpf.Views
 
                 try
                 {
-                    download = new DownloadHelper();
+                    download = new MultiDownloadHelper();
                     download.DownloadFile(fileUrl, savePath);
                     download.DownloadFileCompleted += UpdateDownload_DownloadFileCompleted;
                     download.DownloadProgressChanged += UpdateDownload_DownloadProgressChanged;
@@ -142,7 +144,7 @@ namespace livelywpf.Views
                 {
                     download.DownloadFileCompleted -= UpdateDownload_DownloadFileCompleted;
                     download.DownloadProgressChanged -= UpdateDownload_DownloadProgressChanged;
-                    download.Dispose();
+                    download.Cancel();
                 }
             }
         }

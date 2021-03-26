@@ -57,7 +57,8 @@ namespace livelywpf.Core
             cmdArgs.Append(" --property " + "\"" + livelyPropertyCopyPath + "\"");
             cmdArgs.Append(" --volume " + Program.SettingsVM.Settings.AudioVolumeGlobal);
             cmdArgs.Append(" --geometry " + display.Bounds.Width + "x" + display.Bounds.Height);
-            cmdArgs.Append(model.LivelyInfo.Type == WallpaperType.webaudio ? " --audio true" : " --audio false");
+            //--audio false Issue: https://github.com/commandlineparser/commandline/issues/702
+            cmdArgs.Append(model.LivelyInfo.Type == WallpaperType.webaudio ? " --audio true" : " ");
             cmdArgs.Append(!string.IsNullOrWhiteSpace(model.LivelyInfo.Arguments) ? " " + model.LivelyInfo.Arguments : " ");
             cmdArgs.Append(!string.IsNullOrWhiteSpace(Program.SettingsVM.Settings.WebDebugPort) ? " --debug " + Program.SettingsVM.Settings.WebDebugPort : " ");
             cmdArgs.Append(model.LivelyInfo.Type == WallpaperType.url || model.LivelyInfo.Type == WallpaperType.videostream ? " --type online" : " --type local");
