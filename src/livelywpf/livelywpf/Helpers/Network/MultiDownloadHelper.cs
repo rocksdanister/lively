@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel;
 
-namespace livelywpf
+namespace livelywpf.NetWork
 {
     class MultiDownloadHelper : IDownloadHelper
     {
         private readonly DownloadService downloader;
         public event EventHandler<bool> DownloadFileCompleted;
-        public event EventHandler<DownloadEventArgs> DownloadProgressChanged;
+        public event EventHandler<DownloadProgressEventArgs> DownloadProgressChanged;
+        public event EventHandler<DownloadEventArgs> DownloadStarted;
 
         public MultiDownloadHelper()
         {
@@ -19,7 +20,7 @@ namespace livelywpf
             {
                 BufferBlockSize = 10240, // usually, hosts support max to 8000 bytes, default values is 8000
                 ChunkCount = 8, // file parts to download, default value is 1
-                //MaximumBytesPerSecond = 1024 * 1024 * 100, // download speed limited to 100MB/s
+                //MaximumBytesPerSecond = 1024 * 1024 * 1, // download speed limit
                 MaxTryAgainOnFailover = int.MaxValue, // the maximum number of times to fail
                 OnTheFlyDownload = false, // caching in-memory or not? default values is true
                 ParallelDownload = true, // download parts of file as parallel or not. Default value is false
@@ -28,7 +29,7 @@ namespace livelywpf
             };
 
             downloader = new DownloadService(downloadOpt);
-            downloader.DownloadStarted += OnDownloadStarted;
+            downloader.DownloadStarted += Downloader_DownloadStarted;
             // Provide any information about chunker downloads, like progress percentage per chunk, speed, total received bytes and received bytes array to live streaming.
             downloader.ChunkDownloadProgressChanged += OnChunkDownloadProgressChanged;
             // Provide any information about download progress, like progress percentage of sum of chunks, total speed, average speed, total received bytes and received bytes array to live streaming.
@@ -42,22 +43,24 @@ namespace livelywpf
             await downloader.DownloadFileTaskAsync(url.AbsoluteUri, filePath);
         }
 
-        private void OnDownloadStarted(object sender, DownloadStartedEventArgs e)
+        private void Downloader_DownloadStarted(object sender, DownloadStartedEventArgs e)
         {
-            //todo
+            DownloadStarted?.Invoke(this,
+                    new DownloadEventArgs()
+                    {
+                        TotalSize = Math.Truncate(ByteToMegabyte(e.TotalBytesToReceive)),
+                        FileName = e.FileName
+                    }
+                );
         }
 
         private void OnDownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
-            double bytesIn = e.ReceivedBytesSize;
-            double totalBytes = e.TotalBytesToReceive;
-            double percentage = bytesIn / totalBytes * 100;
-
-            DownloadEventArgs args = new DownloadEventArgs()
+            DownloadProgressEventArgs args = new DownloadProgressEventArgs()
             {
-                TotalSize = Math.Truncate(ByteToMegabyte(totalBytes)),
-                DownloadedSize = Math.Truncate(ByteToMegabyte(bytesIn)),
-                Percentage = Math.Truncate(percentage),
+                TotalSize = Math.Truncate(ByteToMegabyte(e.TotalBytesToReceive)),
+                DownloadedSize = Math.Truncate(ByteToMegabyte(e.ReceivedBytesSize)),
+                Percentage = e.ProgressPercentage,
             };
             DownloadProgressChanged?.Invoke(this, args);
         }
@@ -69,17 +72,17 @@ namespace livelywpf
 
         private void OnDownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
         {
-            if (e.Error == null)
+            if (e.Cancelled)
             {
-                DownloadFileCompleted?.Invoke(this, true);
+                //user cancelled
             }
-            else if (e.Cancelled)
+            else if (e.Error != null)
             {
-                Cancel();
+                DownloadFileCompleted?.Invoke(this, false);
             }
             else
             {
-                DownloadFileCompleted?.Invoke(this, false);
+                DownloadFileCompleted?.Invoke(this, true);
             }
         }
 

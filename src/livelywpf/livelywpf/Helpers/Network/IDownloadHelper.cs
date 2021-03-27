@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace livelywpf
+namespace livelywpf.NetWork
 {
-    public class DownloadEventArgs : EventArgs
+    public class DownloadProgressEventArgs : EventArgs
     {
         /// <summary>
         /// Total size of file in megabytes.
@@ -18,10 +18,23 @@ namespace livelywpf
         public double Percentage { get; set; }
     }
 
+    public class DownloadEventArgs : EventArgs
+    {
+        /// <summary>
+        /// Total size of file in megabytes.
+        /// </summary>
+        public double TotalSize { get; set; }
+        /// <summary>
+        /// Name of the file.
+        /// </summary>
+        public string FileName { get; set; }
+    }
+
     interface IDownloadHelper
     {
         event EventHandler<bool> DownloadFileCompleted;
-        event EventHandler<DownloadEventArgs> DownloadProgressChanged;
+        event EventHandler<DownloadProgressEventArgs> DownloadProgressChanged;
+        event EventHandler<DownloadEventArgs> DownloadStarted;
 
         void DownloadFile(Uri url, string filePath);
         void Cancel();

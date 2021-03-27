@@ -7,14 +7,17 @@ using System.Text;
 using System.Windows;
 using Windows.Web.UI.Interop;
 
-namespace livelywpf
+namespace livelywpf.NetWork
 {
     [Obsolete("Cannot cancel in-progress download: https://github.com/dotnet/runtime/issues/31479")]
     class WebClientDownloadHelper : IDownloadHelper
     {
         private WebClient webClient;
-        public event EventHandler<DownloadEventArgs> DownloadProgressChanged;
+        public event EventHandler<DownloadProgressEventArgs> DownloadProgressChanged;
         public event EventHandler<bool> DownloadFileCompleted;
+        public event EventHandler<DownloadEventArgs> DownloadStarted;
+        private bool _initialized = false;
+        private string fileName;
 
         public void DownloadFile(Uri url, string filePath)
         {
@@ -22,19 +25,27 @@ namespace livelywpf
             webClient.DownloadProgressChanged += Client_DownloadProgressChanged;
             webClient.DownloadFileCompleted += Client_DownloadFileCompleted;
             webClient.DownloadFileAsync(url, filePath);
+            fileName = System.IO.Path.GetFileName(filePath);
         }
 
         private void Client_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
-            double bytesIn = e.BytesReceived;
-            double totalBytes = e.TotalBytesToReceive;
-            double percentage = bytesIn / totalBytes * 100;
-
-            DownloadEventArgs args = new DownloadEventArgs()
+            if(!_initialized)
             {
-                TotalSize = Math.Truncate(ByteToMegabyte(totalBytes)),
-                DownloadedSize = Math.Truncate(ByteToMegabyte(bytesIn)),
-                Percentage = Math.Truncate(percentage),
+                _initialized = true;
+                DownloadStarted?.Invoke(this, 
+                    new DownloadEventArgs() { 
+                        TotalSize = Math.Truncate(ByteToMegabyte(e.TotalBytesToReceive)), 
+                        FileName = fileName
+                    }
+                );
+            }
+
+            DownloadProgressEventArgs args = new DownloadProgressEventArgs()
+            {
+                TotalSize = Math.Truncate(ByteToMegabyte(e.TotalBytesToReceive)),
+                DownloadedSize = Math.Truncate(ByteToMegabyte(e.BytesReceived)),
+                Percentage = e.ProgressPercentage,
             };
             DownloadProgressChanged?.Invoke(this, args);
         }
@@ -47,7 +58,7 @@ namespace livelywpf
             }
             else if (e.Cancelled)
             {
-                webClient.Dispose();
+                //user cancelled
             }
             else
             {

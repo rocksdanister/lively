@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Documents;
+using livelywpf.NetWork;
 
 namespace livelywpf.Views
 {
@@ -17,15 +18,15 @@ namespace livelywpf.Views
         private readonly Uri fileUrl;
         private bool _forceClose = false;
         private bool downloadComplete = false;
-        private string fileName;
-        string savePath = "";
+        private readonly string suggestedFileName;
+        string savePath = string.Empty;
 
         public AppUpdaterView(Uri fileUri, string changelogText)
         {
             InitializeComponent();
             if(fileUri != null)
             {
-                this.fileName = fileUri.Segments.Last();
+                this.suggestedFileName = fileUri.Segments.Last();
                 this.fileUrl = fileUri;
                 changelog.Document.Blocks.Add(new Paragraph(new Run(changelogText)));
             }
@@ -37,12 +38,19 @@ namespace livelywpf.Views
             }
         }
 
-        private void UpdateDownload_DownloadProgressChanged(object sender, DownloadEventArgs e)
+        private void Download_DownloadStarted(object sender, DownloadEventArgs e)
+        {
+            _ = this.Dispatcher.BeginInvoke(new Action(() => {
+                totalSizeTxt.Text = "/" + e.TotalSize + " MB";
+            }));
+        }
+
+        private void UpdateDownload_DownloadProgressChanged(object sender, DownloadProgressEventArgs e)
         {
             _ = this.Dispatcher.BeginInvoke(new Action(() => {
                 progressBar.Value = e.Percentage;
                 taskbarItemInfo.ProgressValue = e.Percentage / 100f;
-                sizeTxt.Text = e.DownloadedSize + "/" + e.TotalSize + " MB";
+                sizeTxt.Text = e.DownloadedSize.ToString();
             }));
         }
 
@@ -89,7 +97,7 @@ namespace livelywpf.Views
                 {
                     Title = "Select location to save the file",
                     Filter = "Executable|*.exe",
-                    FileName = fileName,
+                    FileName = suggestedFileName,
                 };
                 if (saveFileDialog1.ShowDialog() == true)
                 {
@@ -106,6 +114,7 @@ namespace livelywpf.Views
                     download.DownloadFile(fileUrl, savePath);
                     download.DownloadFileCompleted += UpdateDownload_DownloadFileCompleted;
                     download.DownloadProgressChanged += UpdateDownload_DownloadProgressChanged;
+                    download.DownloadStarted += Download_DownloadStarted;
                     taskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Normal;
                 }
                 catch
@@ -114,7 +123,6 @@ namespace livelywpf.Views
                     changelog.Document.Blocks.Clear();
                     changelog.Document.Blocks.Add(new Paragraph(new Run(Properties.Resources.LivelyExceptionAppUpdateFail)));
                     _forceClose = true;
-                    //this.Close();
                 }
             }
         }
@@ -129,7 +137,7 @@ namespace livelywpf.Views
                     Title = Properties.Resources.TitlePleaseWait,
                     Content = Properties.Resources.DescriptionCancelQuestion,
                     PrimaryButtonText = Properties.Resources.TextYes,
-                    SecondaryButtonText = Properties.Resources.TextNo,
+                    SecondaryButtonText = Properties.Resources.TextNo,      
                 };
                 ContentDialogResult result = await cancelDownload.ShowAsync();
                 if (result == ContentDialogResult.Primary)
