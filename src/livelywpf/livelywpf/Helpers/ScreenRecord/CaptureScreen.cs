@@ -1,9 +1,12 @@
-﻿using System;
+﻿using ImageMagick;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media.Imaging;
@@ -29,29 +32,17 @@ namespace livelywpf
                 {
                     bmpGraphics.CopyFromScreen(x, y, 0, 0, screenBmp.Size);
                     screenBmp.Save(Path.Combine(savePath, fileName), ImageFormat.Jpeg);
-                    /*
-                    IntPtr hBitmap = screenBmp.GetHbitmap();
-                    try
-                    {
-                        var bmSrc = Imaging.CreateBitmapSourceFromHBitmap(
-                            hBitmap,
-                            IntPtr.Zero,
-                            Int32Rect.Empty,
-                            BitmapSizeOptions.FromEmptyOptions());
-
-                        using (var fileStream = new FileStream(Path.Combine(savePath, fileName), FileMode.Create))
-                        {
-                            BitmapEncoder encoder = new JpegBitmapEncoder();
-                            encoder.Frames.Add(BitmapFrame.Create(bmSrc));
-                            encoder.Save(fileStream);
-                        }
-                    }
-                    finally
-                    {
-                        NativeMethods.DeleteObject(hBitmap);
-                    }
-                    */
                 }
+            }
+        }
+
+        public static Bitmap CopyScreen(int x, int y, int width, int height)
+        {
+            var screenBmp = new Bitmap(width, height, PixelFormat.Format32bppArgb);
+            using (var bmpGraphics = Graphics.FromImage(screenBmp))
+            {
+                bmpGraphics.CopyFromScreen(x, y, 0, 0, screenBmp.Size);
+                return screenBmp;
             }
         }
 
@@ -98,5 +89,62 @@ namespace livelywpf
             }
             return result;
         }
+        
+        public static async Task CaptureGif(string savePath, int x, int y, int width, int height, int captureDelay, int animeDelay, int totalFrames, IProgress<int> progress)
+        {
+            var miArray = new MagickImage[totalFrames];
+            for (int i = 0; i < totalFrames; i++)
+            {
+                using(var bmp = CopyScreen(x, y, width, height))
+                {
+                    miArray[i] = ToMagickImage(bmp);
+                }
+                await Task.Delay(captureDelay);
+                progress.Report((i * 100 / totalFrames));
+            }
+
+            using (MagickImageCollection collection = new MagickImageCollection())
+            {
+                for (int i = 0; i < totalFrames; i++)
+                {
+                    collection.Add(miArray[i]);
+                    collection[i].AnimationDelay = animeDelay;
+                }
+
+                // Optionally reduce colors
+                QuantizeSettings settings = new QuantizeSettings
+                {
+                    Colors = 256,
+                };
+                collection.Quantize(settings);
+
+                // Optionally optimize the images (images should have the same size).
+                collection.Optimize();
+
+                collection.Write(savePath);
+            }
+
+            foreach (var mi in miArray)
+            {
+                mi.Dispose();
+            }
+        }
+
+        #region helpers
+
+        public static MagickImage ToMagickImage(Bitmap bmp)
+        {
+            MagickImage img = null;
+            MagickFactory f = new MagickFactory();
+            using (MemoryStream ms = new MemoryStream())
+            {
+                bmp.Save(ms, ImageFormat.Bmp);
+                ms.Position = 0;
+                img = new MagickImage(f.Image.Create(ms));
+            }
+            return img;
+        }
+
+        #endregion //helpers
     }
 }

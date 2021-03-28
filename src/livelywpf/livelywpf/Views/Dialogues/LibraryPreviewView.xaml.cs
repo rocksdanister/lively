@@ -179,6 +179,18 @@ namespace livelywpf.Views
             //preview clip (animated gif file).
             if (Program.SettingsVM.Settings.GifCapture && wallpaperType != WallpaperType.picture)
             {
+                previewPanelPos = WindowOperations.GetAbsolutePlacement(PreviewBorder, true);
+                await CaptureScreen.CaptureGif(Path.Combine(saveDirectory, "lively_p.gif"),
+                    (int)previewPanelPos.Left,
+                    (int)previewPanelPos.Top,
+                    (int)previewPanelPos.Width,
+                    (int)previewPanelPos.Height,
+                    gifAnimationDelay,
+                    gifSaveAnimationDelay,
+                    gifTotalFrames,
+                    new Progress<int>(percent => CaptureProgress?.Invoke(this, percent)));
+                PreviewUpdated?.Invoke(this, Path.Combine(saveDirectory, "lively_p.gif"));
+                /*
                 //generate screen capture images.
                 for (int i = 0; i < gifTotalFrames; i++)
                 {
@@ -212,6 +224,7 @@ namespace livelywpf.Views
                     }
                     catch { }
                 }
+                */
             }
 
             _processing = false;
