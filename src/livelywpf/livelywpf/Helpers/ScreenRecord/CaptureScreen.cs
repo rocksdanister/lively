@@ -132,17 +132,17 @@ namespace livelywpf
 
         #region helpers
 
+        //ref: https://github.com/dlemstra/Magick.NET/issues/543
         public static MagickImage ToMagickImage(Bitmap bmp)
         {
-            MagickImage img = null;
-            MagickFactory f = new MagickFactory();
+            MagickImage mi = new MagickImage();
             using (MemoryStream ms = new MemoryStream())
             {
                 bmp.Save(ms, ImageFormat.Bmp);
                 ms.Position = 0;
-                img = new MagickImage(f.Image.Create(ms));
+                mi.Read(ms);
             }
-            return img;
+            return mi;
         }
 
         #endregion //helpers

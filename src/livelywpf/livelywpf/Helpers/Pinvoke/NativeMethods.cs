@@ -1471,6 +1471,7 @@ namespace livelywpf
      int flags);
 
 
+        public static UInt32 SPIF_SENDWININICHANGE = 0x02;
         public static UInt32 SPI_SETDESKWALLPAPER = 20;
         public static UInt32 SPIF_UPDATEINIFILE = 0x1;
         public static UInt32 SPI_SETCLIENTAREAANIMATION = 0x1043;

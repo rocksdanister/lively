@@ -109,6 +109,11 @@ namespace livelywpf.Core
             cmdArgs.Append(model.LivelyInfo.Type == WallpaperType.gif ? "--scale=nearest " : " ");
             //gpu decode preference
             cmdArgs.Append(Program.SettingsVM.Settings.VideoPlayerHwAccel ? "--hwdec=auto-safe " : "--hwdec=no ");
+            /*
+            //Screenshot location, important read: https://mpv.io/manual/master/#pseudo-gui-mode
+            //Example: SendMessage("{\"command\":[\"screenshot\",\"video\"]}\n");
+            cmdArgs.Append("--screenshot-template=" + "\"" + Path.Combine(Program.AppDataDir, "screenshots", display.DeviceNumber ?? "device_err") + "\" ");
+            */
             //file or online video stream path
             cmdArgs.Append(model.LivelyInfo.Type == WallpaperType.videostream ? Helpers.StreamHelper.YoutubeDLMpvArgGenerate(streamQuality, path) : "\"" + path + "\"");
 
@@ -122,6 +127,7 @@ namespace livelywpf.Core
 
             Process _process = new Process()
             {
+                EnableRaisingEvents = true,
                 StartInfo = start,
             };
 
@@ -409,7 +415,7 @@ namespace livelywpf.Core
 
         private void Proc_Exited(object sender, EventArgs e)
         {
-            _process.Dispose();
+            _process?.Dispose();
             SetupDesktop.RefreshDesktop();
         }
 
@@ -528,7 +534,6 @@ namespace livelywpf.Core
             try
             {
                 _process.Kill();
-                _process.Dispose();
             }
             catch { }
             SetupDesktop.RefreshDesktop();

@@ -45,6 +45,7 @@ namespace livelywpf.Core
 
             Process _process = new Process()
             {
+                EnableRaisingEvents = true,
                 StartInfo = start,
             };
 
@@ -201,7 +202,7 @@ namespace livelywpf.Core
 
         private void Proc_Exited(object sender, EventArgs e)
         {
-            _process.Dispose();
+            _process?.Dispose();
             SetupDesktop.RefreshDesktop();
         }
 
@@ -371,7 +372,6 @@ namespace livelywpf.Core
             try
             {
                 _process.Kill();
-                _process.Dispose();
             }
             catch { }
             SetupDesktop.RefreshDesktop();
