@@ -50,13 +50,13 @@ namespace livelywpf.Views
     {
         private bool _processing = false;
         private string thumbnailPathTemp;
-        private WallpaperType wallpaperType;
+        private readonly WallpaperType wallpaperType;
+        private readonly IntPtr wallpaperHwnd;
         readonly DispatcherTimer gifCaptureTimer = new DispatcherTimer();
-        readonly DispatcherTimer appRectCorrectionTimer = new DispatcherTimer();
-        readonly int gifAnimationDelay = (int)Math.Round((1f / 15f * 1000f)); //in milliseconds
-        readonly int gifSaveAnimationDelay = (int)Math.Round((1f / 90f) * 1000f);
+        //Good values: 1. 30c,120s 2. 15c, 90s
+        readonly int gifAnimationDelay = 1000 * 1 / 30 ; //in milliseconds (1/fps)
+        readonly int gifSaveAnimationDelay = 1000 * 1 / 120;
         readonly int gifTotalFrames = 60;
-        private readonly IntPtr HWND;
         public event EventHandler<string> ThumbnailUpdated;
         public event EventHandler<string> PreviewUpdated;
         public event EventHandler<double> CaptureProgress;
@@ -66,7 +66,7 @@ namespace livelywpf.Views
         {
             LibraryPreviewViewModel vm = new LibraryPreviewViewModel(this, wp);
             this.DataContext = vm;
-            HWND = wp.GetHWND();
+            wallpaperHwnd = wp.GetHWND();
             wallpaperType = wp.GetWallpaperType();
             InitializeComponent();
         }
@@ -74,21 +74,8 @@ namespace livelywpf.Views
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             //attach wp hwnd to border ui element.
-            WindowOperations.SetProgramToFramework(this, HWND, PreviewBorder);
+            WindowOperations.SetProgramToFramework(this, wallpaperHwnd, PreviewBorder);
             WallpaperAttached?.Invoke(this, null);
-
-            //Fix does not work..
-            /*
-            if (wallpaperType == WallpaperType.app ||
-                wallpaperType == WallpaperType.unity ||
-                wallpaperType == WallpaperType.unityaudio ||
-                wallpaperType == WallpaperType.godot)
-            {
-                appRectCorrectionTimer.Interval = new TimeSpan(0, 0, 0, 0, 100);
-                appRectCorrectionTimer.Tick += AppRectCorrectionTimer_Tick;
-                appRectCorrectionTimer.Start();
-            }
-            */
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -100,17 +87,8 @@ namespace livelywpf.Views
             }
 
             gifCaptureTimer?.Stop();
-            appRectCorrectionTimer?.Stop();
             //detach wallpaper window from this dialogue.
-            WindowOperations.SetParentSafe(HWND, IntPtr.Zero);
-        }
-
-        private void AppRectCorrectionTimer_Tick(object sender, EventArgs e)
-        {
-            if (!NativeMethods.SetWindowPos(HWND, 1, 0, 0, (int)PreviewBorder.Width, (int)PreviewBorder.Height, 0x0010 | 0x0002))
-            {
-                NLogger.LogWin32Error("setwindowpos(1) fail AppRectCorrectionTimer_Tick(),");
-            }
+            WindowOperations.SetParentSafe(wallpaperHwnd, IntPtr.Zero);
         }
 
         private void CaptureLoop(object sender, EventArgs e)
@@ -175,7 +153,6 @@ namespace livelywpf.Views
                (int)previewPanelSize.Height);
             ThumbnailUpdated?.Invoke(this, Path.Combine(saveDirectory, "lively_t.jpg"));
 
-            double progress = 0;
             //preview clip (animated gif file).
             if (Program.SettingsVM.Settings.GifCapture && wallpaperType != WallpaperType.picture)
             {
@@ -188,72 +165,11 @@ namespace livelywpf.Views
                     gifAnimationDelay,
                     gifSaveAnimationDelay,
                     gifTotalFrames,
-                    new Progress<int>(percent => CaptureProgress?.Invoke(this, percent)));
+                    new Progress<int>(percent => CaptureProgress?.Invoke(this, percent - 1)));
                 PreviewUpdated?.Invoke(this, Path.Combine(saveDirectory, "lively_p.gif"));
-                /*
-                //generate screen capture images.
-                for (int i = 0; i < gifTotalFrames; i++)
-                {
-                    //updating the position incase window is moved.
-                    previewPanelPos = WindowOperations.GetAbsolutePlacement(PreviewBorder, true);
-                    CaptureScreen.CopyScreen(
-                                saveDirectory,
-                                i.ToString(CultureInfo.InvariantCulture) + ".jpg",
-                                (int)previewPanelPos.Left,
-                                (int)previewPanelPos.Top,
-                                (int)previewPanelSize.Width,
-                                (int)previewPanelSize.Height);
-
-                    await Task.Delay(gifAnimationDelay);
-                    //upto 99% 
-                    progress = ((i + 1f) / (gifTotalFrames + 1f))*100f;
-                    taskbarItemInfo.ProgressValue = progress/100f;
-                    CaptureProgress?.Invoke(this, progress);
-                }
-
-                //create animated gif from captured images.
-                await Task.Run(() => CreateGif(saveDirectory));
-                PreviewUpdated?.Invoke(this, Path.Combine(saveDirectory, "lively_p.gif"));
-
-                //deleting the capture frames.
-                for (int i = 0; i < gifTotalFrames; i++)
-                {
-                    try
-                    {
-                        File.Delete(saveDirectory + "\\" + i.ToString(CultureInfo.InvariantCulture) + ".jpg");
-                    }
-                    catch { }
-                }
-                */
             }
-
             _processing = false;
-            taskbarItemInfo.ProgressValue = 100f;
             CaptureProgress?.Invoke(this, 100);
-        }
-
-        private void CreateGif(string saveDirectory)
-        {
-            using (MagickImageCollection collection = new MagickImageCollection())
-            {
-                for (int i = 0; i < gifTotalFrames; i++)
-                {
-                    collection.Add(saveDirectory + "\\" + i.ToString(CultureInfo.InvariantCulture) + ".jpg");
-                    collection[i].AnimationDelay = gifSaveAnimationDelay;
-                }
-
-                // Optionally reduce colors
-                QuantizeSettings settings = new QuantizeSettings
-                {
-                    Colors = 256,
-                };
-                collection.Quantize(settings);
-
-                // Optionally optimize the images (images should have the same size).
-                collection.Optimize();
-
-                collection.Write(Path.Combine(saveDirectory, "lively_p.gif"));
-            }
         }
 
         #region interface methods

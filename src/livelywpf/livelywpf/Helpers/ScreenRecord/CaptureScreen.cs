@@ -90,7 +90,21 @@ namespace livelywpf
             return result;
         }
         
-        public static async Task CaptureGif(string savePath, int x, int y, int width, int height, int captureDelay, int animeDelay, int totalFrames, IProgress<int> progress)
+        /// <summary>
+        /// Screen capture and create animated gif.
+        /// </summary>
+        /// <param name="savePath">File location</param>
+        /// <param name="x">capture x offset</param>
+        /// <param name="y">capture y offset</param>
+        /// <param name="width">capture width</param>
+        /// <param name="height">capture height</param>
+        /// <param name="captureDelay">delay between capture frames</param>
+        /// <param name="animeDelay">delay between saved frames</param>
+        /// <param name="totalFrames">total number of frames to capture</param>
+        /// <param name="progress">current progress</param>
+        /// <returns></returns>
+        public static async Task CaptureGif(string savePath, int x, int y, int width, int height, 
+            int captureDelay, int animeDelay, int totalFrames, IProgress<int> progress)
         {
             var miArray = new MagickImage[totalFrames];
             for (int i = 0; i < totalFrames; i++)
@@ -100,7 +114,7 @@ namespace livelywpf
                     miArray[i] = ToMagickImage(bmp);
                 }
                 await Task.Delay(captureDelay);
-                progress.Report((i * 100 / totalFrames));
+                progress.Report((i + 1) * 100 / totalFrames);
             }
 
             using (MagickImageCollection collection = new MagickImageCollection())
