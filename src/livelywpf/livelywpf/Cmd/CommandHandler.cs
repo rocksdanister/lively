@@ -226,11 +226,11 @@ namespace livelywpf.Cmd
                 {
                     if (opts.Param != null)
                     {
-                        if (opts.Param.StartsWith("+") && opts.Param.Length > 1)
+                        if ((opts.Param.StartsWith('+') || opts.Param.StartsWith('-')))
                         {
-                            if (float.TryParse(opts.Param[1..], out float val))
+                            if (float.TryParse(opts.Param, out float val))
                             {
-                                wp.SetPlaybackPos(Clamp(val, 0, 100), Core.PlaybackPosType.relativePercent);
+                                wp.SetPlaybackPos(Clamp(val, -100, 100), Core.PlaybackPosType.relativePercent);
                             }
                         }
                         else
