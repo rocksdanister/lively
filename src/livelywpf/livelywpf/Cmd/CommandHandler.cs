@@ -63,15 +63,10 @@ namespace livelywpf.Cmd
         [Verb("seekwp", HelpText = "Set wallpaper playback position.")]
         class SeekWallpaperOptions
         {
-            [Option("percent",
-            Required = false,
-            HelpText = "Seek to given percentage.")]
-            public float? Percent { get; set; }
-
-            [Option("relative",
-            Required = false,
+            [Option("value",
+            Required = true,
             HelpText = "Seek percentage from current position.")]
-            public float? Relative { get; set; }
+            public string Param { get; set; }
 
             [Option("monitor",
             Required = false,
@@ -229,13 +224,22 @@ namespace livelywpf.Cmd
                 var wp = SetupDesktop.Wallpapers.Find(x => ScreenHelper.ScreenCompare(x.GetScreen(), screen, DisplayIdentificationMode.deviceId));
                 if (wp != null)
                 {
-                    if (opts.Percent != null)
+                    if (opts.Param != null)
                     {
-                        wp.SetPlaybackPos(Clamp((float)opts.Percent, 0, 100), Core.PlaybackPosType.absolutePercent);
-                    }
-                    else if (opts.Relative != null)
-                    {
-                        wp.SetPlaybackPos(Clamp((float)opts.Relative, 0, 100), Core.PlaybackPosType.relativePercent);
+                        if (opts.Param.StartsWith("+") && opts.Param.Length > 1)
+                        {
+                            if (float.TryParse(opts.Param[1..], out float val))
+                            {
+                                wp.SetPlaybackPos(Clamp(val, 0, 100), Core.PlaybackPosType.relativePercent);
+                            }
+                        }
+                        else
+                        {
+                            if (float.TryParse(opts.Param, out float val))
+                            {
+                                wp.SetPlaybackPos(Clamp(val, 0, 100), Core.PlaybackPosType.absolutePercent);
+                            }
+                        }
                     }
                 }
             }

@@ -61,10 +61,10 @@ namespace livelyCmdUtility
         [Verb("seekwp", HelpText = "Set wallpaper playback position.")]
         class SeekWallpaperOptions
         {
-            [Option("percent",
+            [Option("value",
             Required = true,
-            HelpText = "Seek percentage.")]
-            public float Percent { get; set; }
+            HelpText = "Seek percentage from current position.")]
+            public string Param { get; set; }
 
             [Option("monitor",
             Required = false,
