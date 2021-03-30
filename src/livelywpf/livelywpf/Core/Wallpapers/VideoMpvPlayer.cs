@@ -210,11 +210,19 @@ namespace livelywpf.Core
             SendMessage("{\"command\":[\"set_property\",\"volume\"," + volume + "]}\n");
         }
 
-        public void SetPlaybackPos(float pos)
+        public void SetPlaybackPos(float pos, PlaybackPosType type)
         {
             if (GetWallpaperType() != WallpaperType.picture)
             {
-                SendMessage("{\"command\":[\"seek\"," + pos + ",\"absolute-percent\"]}\n");
+                switch (type)
+                {
+                    case PlaybackPosType.absolutePercent:
+                        SendMessage("{\"command\":[\"seek\"," + pos + ",\"absolute-percent\"]}\n");
+                        break;
+                    case PlaybackPosType.relativePercent:
+                        SendMessage("{\"command\":[\"seek\"," + pos + ",\"relative-percent\"]}\n");
+                        break;
+                }
             }
         }
 

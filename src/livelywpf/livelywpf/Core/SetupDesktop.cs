@@ -467,7 +467,7 @@ namespace livelywpf
                 Logger.Info("Attempting to synchronize wallpaper position (duplicate.)");
                 Wallpapers.ForEach(wp =>
                 {
-                    wp.SetPlaybackPos(0);
+                    wp.SetPlaybackPos(0, PlaybackPosType.absolutePercent);
                 });
             }
         }

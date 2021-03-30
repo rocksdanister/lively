@@ -110,7 +110,7 @@ namespace livelywpf.Core
             //gif has no sound.
         }
 
-        public void SetPlaybackPos(float pos)
+        public void SetPlaybackPos(float pos, PlaybackPosType type)
         {
             //todo
         }

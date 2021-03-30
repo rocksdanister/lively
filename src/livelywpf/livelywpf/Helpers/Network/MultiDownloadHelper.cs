@@ -21,7 +21,7 @@ namespace livelywpf.NetWork
                 BufferBlockSize = 10240, // usually, hosts support max to 8000 bytes, default values is 8000
                 ChunkCount = 8, // file parts to download, default value is 1
                 //MaximumBytesPerSecond = 1024 * 1024 * 1, // download speed limit
-                MaxTryAgainOnFailover = int.MaxValue, // the maximum number of times to fail
+                MaxTryAgainOnFailover = 100, // the maximum number of times to fail
                 OnTheFlyDownload = false, // caching in-memory or not? default values is true
                 ParallelDownload = true, // download parts of file as parallel or not. Default value is false
                 //TempDirectory = "", // Set the temp path for buffering chunk files, the default path is Path.GetTempPath()
@@ -94,6 +94,7 @@ namespace livelywpf.NetWork
         public void Cancel()
         {
             downloader?.CancelAsync();
+            downloader?.Dispose();
         }
     }
 }

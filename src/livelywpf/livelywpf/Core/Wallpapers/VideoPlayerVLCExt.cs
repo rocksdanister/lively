@@ -208,7 +208,7 @@ namespace livelywpf.Core
             SendMessage("lively:vid-volume " + volume);
         }
 
-        public void SetPlaybackPos(float pos)
+        public void SetPlaybackPos(float pos, PlaybackPosType type)
         {
             //todo
         }

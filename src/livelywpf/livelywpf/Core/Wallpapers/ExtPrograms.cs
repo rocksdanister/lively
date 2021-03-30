@@ -386,7 +386,7 @@ namespace livelywpf.Core
             catch { }
         }
 
-        public void SetPlaybackPos(float pos)
+        public void SetPlaybackPos(float pos, PlaybackPosType type)
         {
             //todo
         }

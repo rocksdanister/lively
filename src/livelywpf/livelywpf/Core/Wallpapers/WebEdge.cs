@@ -158,7 +158,7 @@ namespace livelywpf.Core
             Close();
         }
 
-        public void SetPlaybackPos(float pos)
+        public void SetPlaybackPos(float pos, PlaybackPosType type)
         {
             //todo: reload if 0
         }

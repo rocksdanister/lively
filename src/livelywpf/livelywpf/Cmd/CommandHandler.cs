@@ -64,9 +64,14 @@ namespace livelywpf.Cmd
         class SeekWallpaperOptions
         {
             [Option("percent",
-            Required = true,
-            HelpText = "Seek percentage.")]
-            public float Percent { get; set; }
+            Required = false,
+            HelpText = "Seek to given percentage.")]
+            public float? Percent { get; set; }
+
+            [Option("relative",
+            Required = false,
+            HelpText = "Seek percentage from current position.")]
+            public float? Relative { get; set; }
 
             [Option("monitor",
             Required = false,
@@ -224,7 +229,14 @@ namespace livelywpf.Cmd
                 var wp = SetupDesktop.Wallpapers.Find(x => ScreenHelper.ScreenCompare(x.GetScreen(), screen, DisplayIdentificationMode.deviceId));
                 if (wp != null)
                 {
-                    wp.SetPlaybackPos(Clamp(opts.Percent, 0, 100));
+                    if (opts.Percent != null)
+                    {
+                        wp.SetPlaybackPos(Clamp((float)opts.Percent, 0, 100), Core.PlaybackPosType.absolutePercent);
+                    }
+                    else if (opts.Relative != null)
+                    {
+                        wp.SetPlaybackPos(Clamp((float)opts.Relative, 0, 100), Core.PlaybackPosType.relativePercent);
+                    }
                 }
             }
             return 0;

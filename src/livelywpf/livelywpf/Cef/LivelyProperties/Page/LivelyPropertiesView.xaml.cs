@@ -541,7 +541,21 @@ namespace livelywpf.Cef
 
         private void WallpaperSendMsg(string message)
         {
-            SetupDesktop.SendMessageWallpaper(screen, message);
+            switch (Program.SettingsVM.Settings.WallpaperArrangement)
+            {
+                case WallpaperArrangement.per:
+                    SetupDesktop.SendMessageWallpaper(screen, message);
+                    break;
+                case WallpaperArrangement.span:
+                    SetupDesktop.SendMessageWallpaper(screen, message);
+                    break;
+                case WallpaperArrangement.duplicate:
+                    SetupDesktop.SendMessageWallpaper(wallpaperData, message);
+                    break;
+                default:
+                    SetupDesktop.SendMessageWallpaper(screen, message);
+                    break;
+            }
         }
 
         /// <summary>

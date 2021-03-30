@@ -138,9 +138,9 @@ namespace livelywpf
                 collection.Write(savePath);
             }
 
-            foreach (var mi in miArray)
+            for (int i = 0; i < totalFrames; i++)
             {
-                mi.Dispose();
+                miArray[i].Dispose();
             }
         }
 

@@ -345,9 +345,9 @@ namespace livelywpf.Core
             { /* process already exited */ }
         }
 
-        public void SetPlaybackPos(float pos)
+        public void SetPlaybackPos(float pos, PlaybackPosType type)
         {
-            if (pos == 0)
+            if (pos == 0 && type != PlaybackPosType.relativePercent)
             {
                 SendMessage("lively:reload");
             }

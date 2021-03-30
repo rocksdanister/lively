@@ -132,7 +132,7 @@ namespace livelywpf.Core
             //todo
         }
 
-        public void SetPlaybackPos(float pos)
+        public void SetPlaybackPos(float pos, PlaybackPosType type)
         {
             //todo
         }
