@@ -208,9 +208,8 @@ namespace livelywpf
                                     livelyPropertyFilePath = x.GetLivelyPropertyCopyPath();
                                 }
                             });
-                            unsortedScreenItems.Add((Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.duplicate ?
-                                new ScreenLayoutModel(item, imgPath, livelyPropertyFilePath, item.DeviceNumber + '"') :
-                                new ScreenLayoutModel(item, imgPath, livelyPropertyFilePath, item.DeviceNumber)));
+                            unsortedScreenItems.Add(
+                                new ScreenLayoutModel(item, imgPath, livelyPropertyFilePath, item.DeviceNumber));
                         }
 
                         foreach (var item in unsortedScreenItems.OrderBy(x => x.Screen.Bounds.X).ToList())
@@ -220,7 +219,6 @@ namespace livelywpf
                     }
                     break;
                 case WallpaperArrangement.span:
-                case WallpaperArrangement.duplicate:
                     {
                         if (SetupDesktop.Wallpapers.Count == 0)
                         {
@@ -229,8 +227,22 @@ namespace livelywpf
                         else
                         {
                             var x = SetupDesktop.Wallpapers[0];
-                            ScreenItems.Add(new ScreenLayoutModel(Program.SettingsVM.Settings.SelectedDisplay, 
+                            ScreenItems.Add(new ScreenLayoutModel(Program.SettingsVM.Settings.SelectedDisplay,
                                 x.GetWallpaperData().ThumbnailPath, x.GetLivelyPropertyCopyPath(), "---"));
+                        }
+                    }
+                    break;
+                case WallpaperArrangement.duplicate:
+                    {
+                        if (SetupDesktop.Wallpapers.Count == 0)
+                        {
+                            ScreenItems.Add(new ScreenLayoutModel(Program.SettingsVM.Settings.SelectedDisplay, null, null, "\""));
+                        }
+                        else
+                        {
+                            var x = SetupDesktop.Wallpapers[0];
+                            ScreenItems.Add(new ScreenLayoutModel(Program.SettingsVM.Settings.SelectedDisplay, 
+                                x.GetWallpaperData().ThumbnailPath, x.GetLivelyPropertyCopyPath(), "\""));
                         }
                     }
                     break;

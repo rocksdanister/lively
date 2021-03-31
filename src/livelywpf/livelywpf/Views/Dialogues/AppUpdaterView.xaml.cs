@@ -19,7 +19,7 @@ namespace livelywpf.Views
         private bool _forceClose = false;
         private bool downloadComplete = false;
         private readonly string suggestedFileName;
-        string savePath = string.Empty;
+        private string savePath = string.Empty;
 
         public AppUpdaterView(Uri fileUri, string changelogText)
         {
@@ -110,7 +110,7 @@ namespace livelywpf.Views
 
                 try
                 {
-                    download = new MultiDownloadHelper();
+                    download = new WebClientDownloadHelper();
                     download.DownloadFile(fileUrl, savePath);
                     download.DownloadFileCompleted += UpdateDownload_DownloadFileCompleted;
                     download.DownloadProgressChanged += UpdateDownload_DownloadProgressChanged;
