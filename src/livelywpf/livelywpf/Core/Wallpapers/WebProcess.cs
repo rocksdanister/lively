@@ -33,12 +33,26 @@ namespace livelywpf.Core
                     {
                         //Create a directory with the wp foldername in SaveData/wpdata/, copy livelyproperties.json into this.
                         //Further modifications are done to the copy file.
-                        var wpdataFolder = Path.Combine(dataFolder, new DirectoryInfo(model.LivelyInfoFolderPath).Name, screenNumber);
+                        string wpdataFolder = null;
+                        switch (Program.SettingsVM.Settings.WallpaperArrangement)
+                        {
+                            case WallpaperArrangement.per:
+                                wpdataFolder = Path.Combine(dataFolder, new DirectoryInfo(model.LivelyInfoFolderPath).Name, screenNumber);
+                                break;
+                            case WallpaperArrangement.span:
+                                wpdataFolder = Path.Combine(dataFolder, new DirectoryInfo(model.LivelyInfoFolderPath).Name, "span");
+                                break;
+                            case WallpaperArrangement.duplicate:
+                                wpdataFolder = Path.Combine(dataFolder, new DirectoryInfo(model.LivelyInfoFolderPath).Name, "duplicate");
+                                break;
+                        }
                         Directory.CreateDirectory(wpdataFolder);
-
+                        //copy the original file if not found..
                         livelyPropertyCopyPath = Path.Combine(wpdataFolder, "LivelyProperties.json");
                         if (!File.Exists(livelyPropertyCopyPath))
+                        {
                             File.Copy(model.LivelyPropertyPath, livelyPropertyCopyPath);
+                        }
                     }
                     else
                     {

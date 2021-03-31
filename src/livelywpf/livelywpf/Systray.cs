@@ -144,19 +144,31 @@ namespace livelywpf
         private void CustomiseWallpaper(object sender, EventArgs e)
         {
             var items = SetupDesktop.Wallpapers.FindAll(x => x.GetWallpaperData().LivelyPropertyPath != null);
-            if (items.Count == 1)
+            if (items.Count == 0)
+            {
+                //not possible, menu should be disabled.
+                //nothing..
+            }
+            else if (items.Count == 1)
             {
                 //quick wallpaper customise tray widget.
-                var settingsWidget = new Cef.LivelyPropertiesTrayWidget(
-                    items[0].GetWallpaperData(),
-                    items[0].GetLivelyPropertyCopyPath(),
-                    items[0].GetScreen());
+                var settingsWidget = new Cef.LivelyPropertiesTrayWidget(items[0].GetWallpaperData());
                 settingsWidget.Show();
             }
-            else
+            else if (items.Count > 1 )
             {
-                //if more than one customisable wallpaper running, open control panel.
-                App.AppWindow?.ShowControlPanelDialog();
+                switch (Program.SettingsVM.Settings.WallpaperArrangement)
+                {
+                    case WallpaperArrangement.per:
+                        //multiple different wallpapers.. open control panel.
+                        App.AppWindow?.ShowControlPanelDialog();
+                        break;
+                    case WallpaperArrangement.span:
+                    case WallpaperArrangement.duplicate:
+                        var settingsWidget = new Cef.LivelyPropertiesTrayWidget(items[0].GetWallpaperData());
+                        settingsWidget.Show();
+                        break;
+                }
             }
         }
 

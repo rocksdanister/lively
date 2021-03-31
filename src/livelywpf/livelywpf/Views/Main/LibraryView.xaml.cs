@@ -140,9 +140,8 @@ namespace livelywpf.Views
                         //Can't use contentdialogue since the window object is not uwp.
                         //modernwpf contentdialogue does not have xamlroot so can't draw over livelygrid.
                         LivelyGridControl.DimBackground(true);
-                        var details = Program.LibraryVM.GetLivelyPropertyDetails(e);
                         var overlay =
-                            new Cef.LivelyPropertiesWindow(obj, details.Item1, details.Item2)
+                            new Cef.LivelyPropertiesWindow(obj)
                             {
                                 Owner = App.AppWindow,
                                 WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner,

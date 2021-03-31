@@ -10,10 +10,10 @@ namespace livelywpf.Cef
     /// </summary>
     public partial class LivelyPropertiesWindow : Window
     {
-        public LivelyPropertiesWindow(LibraryModel data, string livelyPropertyPath, LivelyScreen screen)
+        public LivelyPropertiesWindow(LibraryModel model)
         {
             InitializeComponent();
-            ContentFrame.Navigate(new Cef.LivelyPropertiesView(data, livelyPropertyPath, screen), new SuppressNavigationTransitionInfo());
+            ContentFrame.Navigate(new Cef.LivelyPropertiesView(model), new SuppressNavigationTransitionInfo());
         }
     }
 }
