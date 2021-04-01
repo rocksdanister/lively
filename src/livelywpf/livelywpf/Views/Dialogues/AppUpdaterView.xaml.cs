@@ -14,6 +14,7 @@ namespace livelywpf.Views
     /// </summary>
     public partial class AppUpdaterView : Window
     {
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private IDownloadHelper download;
         private readonly Uri fileUrl;
         private bool _forceClose = false;
@@ -86,8 +87,9 @@ namespace livelywpf.Views
                     //inno installer will auto retry, waiting for application exit.
                     Program.ExitApplication();
                 }
-                catch
+                catch (Exception ex)
                 {
+                    Logger.Error(ex.ToString());
                     MessageBox.Show(Properties.Resources.LivelyExceptionAppUpdateFail, Properties.Resources.TextError);
                 }
             }
@@ -110,15 +112,16 @@ namespace livelywpf.Views
 
                 try
                 {
-                    download = new WebClientDownloadHelper();
+                    download = new MultiDownloadHelper();
                     download.DownloadFile(fileUrl, savePath);
                     download.DownloadFileCompleted += UpdateDownload_DownloadFileCompleted;
                     download.DownloadProgressChanged += UpdateDownload_DownloadProgressChanged;
                     download.DownloadStarted += Download_DownloadStarted;
                     taskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Normal;
                 }
-                catch
+                catch (Exception ex)
                 {
+                    Logger.Error(ex.ToString());
                     taskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Error;
                     changelog.Document.Blocks.Clear();
                     changelog.Document.Blocks.Add(new Paragraph(new Run(Properties.Resources.LivelyExceptionAppUpdateFail)));

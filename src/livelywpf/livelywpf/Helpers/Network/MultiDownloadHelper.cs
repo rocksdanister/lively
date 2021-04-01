@@ -18,12 +18,12 @@ namespace livelywpf.NetWork
             //CPU can get toasty.. should rate limit to 100MB/s ?
             var downloadOpt = new DownloadConfiguration()
             {
-                BufferBlockSize = 10240, // usually, hosts support max to 8000 bytes, default values is 8000
-                ChunkCount = 8, // file parts to download, default value is 1
+                BufferBlockSize = 8000, // usually, hosts support max to 8000 bytes, default values is 8000
+                ChunkCount = 1, // file parts to download, default value is 1
                 //MaximumBytesPerSecond = 1024 * 1024 * 1, // download speed limit
                 MaxTryAgainOnFailover = 100, // the maximum number of times to fail
                 OnTheFlyDownload = false, // caching in-memory or not? default values is true
-                ParallelDownload = true, // download parts of file as parallel or not. Default value is false
+                ParallelDownload = false, // download parts of file as parallel or not. Default value is false
                 //TempDirectory = "", // Set the temp path for buffering chunk files, the default path is Path.GetTempPath()
                 Timeout = 1000, // timeout (millisecond) per stream block reader, default values is 1000
             };
