@@ -250,6 +250,7 @@ namespace livelywpf.Cmd
         {
             if (opts.Param != null)
             {
+                //use primary screen if none found..
                 Core.LivelyScreen screen = opts.Monitor != null ?
                     ScreenHelper.GetScreen().FirstOrDefault(x => x.DeviceNumber == ((int)opts.Monitor).ToString()) : ScreenHelper.GetPrimaryScreen();
 
@@ -258,6 +259,10 @@ namespace livelywpf.Cmd
                     try
                     {
                         var wp = SetupDesktop.Wallpapers.Find(x => ScreenHelper.ScreenCompare(x.GetScreen(), screen, DisplayIdentificationMode.deviceId));
+                        //only for running wallpaper instance unlike gui property..
+                        if (wp == null)
+                            return 0;
+
                         //delimiter
                         var tmp = opts.Param.Split("=");
                         string name = tmp[0], val = tmp[1], ctype = null;
@@ -274,6 +279,7 @@ namespace livelywpf.Cmd
                             }
                         }
 
+                        string msg = null;
                         ctype = (ctype == null && name.Equals("lively_default_settings_reload", StringComparison.OrdinalIgnoreCase)) ? "button" : ctype;
                         if (ctype != null)
                         {
@@ -283,53 +289,77 @@ namespace livelywpf.Cmd
                                 {
                                     if (Cef.LivelyPropertiesView.RestoreOriginalPropertyFile(wp.GetWallpaperData(), wp.GetLivelyPropertyCopyPath()))
                                     {
-                                        SetupDesktop.SendMessageWallpaper(screen, "lively:customise button lively_default_settings_reload 1");
+                                        msg = "lively:customise button lively_default_settings_reload 1";
                                     }
                                 }
                                 else
                                 {
-                                    SetupDesktop.SendMessageWallpaper(screen, "lively:customise " + ctype + " " + name + " " + val);
+                                    msg = "lively:customise " + ctype + " " + name + " " + val;
                                 }
                             }
                             else
                             {
                                 if (ctype.Equals("checkbox", StringComparison.OrdinalIgnoreCase))
                                 {
-                                    SetupDesktop.SendMessageWallpaper(screen, "lively:customise " + ctype + " " + name + " " + (val == "true"));
+                                    msg = "lively:customise " + ctype + " " + name + " " + (val == "true");
                                     lp[name]["value"] = (val == "true");
                                 }
                                 else if (ctype.Equals("slider", StringComparison.OrdinalIgnoreCase))
                                 {
-                                    SetupDesktop.SendMessageWallpaper(screen, "lively:customise " + ctype + " " + name + " " + double.Parse(val));
-                                    lp[name]["value"] = double.Parse(val);
+                                    var sliderValue = val.StartsWith("++") || val.StartsWith("--") ? 
+                                        (double)lp[name]["value"] + double.Parse(val[1..]) : double.Parse(val);
+                                    sliderValue = Clamp(sliderValue, (double)lp[name]["min"], (double)lp[name]["max"]);
+
+                                    msg = "lively:customise " + ctype + " " + name + " " + sliderValue;
+                                    lp[name]["value"] = sliderValue;
                                 }
                                 else if (ctype.Equals("dropdown", StringComparison.OrdinalIgnoreCase))
                                 {
-                                    SetupDesktop.SendMessageWallpaper(screen, "lively:customise " + ctype + " " + name + " " + int.Parse(val));
-                                    lp[name]["value"] = int.Parse(val);
+                                    var selectedIndex = val.StartsWith("++") || val.StartsWith("--") ?
+                                        (int)lp[name]["value"] + int.Parse(val[1..]) : int.Parse(val);
+                                    selectedIndex = Clamp(selectedIndex, 0, lp[name]["items"].Count() - 1);
+
+                                    msg = "lively:customise " + ctype + " " + name + " " + selectedIndex;
+                                    lp[name]["value"] = selectedIndex;
                                 }
                                 else if (ctype.Equals("folderDropdown", StringComparison.OrdinalIgnoreCase))
                                 {
-                                    SetupDesktop.SendMessageWallpaper(screen, "lively:customise " + ctype + " " + name + " " + "\"" + val + "\"");
+                                    msg = "lively:customise " + ctype + " " + name + " " + "\"" + val + "\"";
                                     lp[name]["value"] = Path.GetFileName(val);
                                 }
                                 else if (ctype.Equals("textbox", StringComparison.OrdinalIgnoreCase))
                                 {
-                                    SetupDesktop.SendMessageWallpaper(screen, "lively:customise " + ctype + " " + name + " " + "\"" + val + "\"");
+                                    msg = "lively:customise " + ctype + " " + name + " " + "\"" + val + "\"";
                                     lp[name]["value"] = val;
                                 }
                                 else if (ctype.Equals("color", StringComparison.OrdinalIgnoreCase))
                                 {
-                                    SetupDesktop.SendMessageWallpaper(screen, "lively:customise " + ctype + " " + name + " " + val);
+                                    msg = "lively:customise " + ctype + " " + name + " " + val;
                                     lp[name]["value"] = val;
                                 }
 
-                                //Saving changes to copy file.
                                 Cef.LivelyPropertiesJSON.SaveLivelyProperties(wp.GetLivelyPropertyCopyPath(), lp);
+                            }
+
+                            if (msg != null)
+                            {
+                                switch (Program.SettingsVM.Settings.WallpaperArrangement)
+                                {
+                                    case WallpaperArrangement.per:
+                                        SetupDesktop.SendMessageWallpaper(screen, msg);
+                                        break;
+                                    case WallpaperArrangement.span:
+                                    case WallpaperArrangement.duplicate:
+                                        SetupDesktop.SendMessageWallpaper(wp.GetWallpaperData(), msg);
+                                        break;
+                                }
                             }
                         }
                     }
-                    catch { }
+                    catch (Exception ex)
+                    {
+                        Logger.Error(ex.ToString());
+                    }
                 }
             }
             return 0;

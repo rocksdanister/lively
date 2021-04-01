@@ -40,7 +40,7 @@ namespace livelywpf.Cef
             wallpaperData = model;
             try
             {
-                var wpInfo = GetLivelyPropertyDetails(model);
+                var wpInfo = GetLivelyPropertyDetails(model, Program.SettingsVM.Settings.WallpaperArrangement);
                 this.livelyPropertyCopyPath = wpInfo.Item1;
                 this.screen = wpInfo.Item2;
             }
@@ -615,11 +615,11 @@ namespace livelywpf.Cef
         }
 
         /// <summary>
-        /// Get LivelyProperties.json copy filepath and corresponding screen logic based on running wallpapers.
+        /// Get LivelyProperties.json copy filepath and corresponding screen logic.
         /// </summary>
         /// <param name="obj">LibraryModel object</param>
         /// <returns></returns>
-        public Tuple<string, LivelyScreen> GetLivelyPropertyDetails(LibraryModel obj)
+        public static Tuple<string, LivelyScreen> GetLivelyPropertyDetails(LibraryModel obj, WallpaperArrangement arrangement)
         {
             if (obj.LivelyPropertyPath == null)
             {
@@ -641,7 +641,7 @@ namespace livelywpf.Cef
                         //Create a directory with the wp foldername in SaveData/wpdata/, copy livelyproperties.json into this.
                         //Further modifications are done to the copy file.
                         string wpdataFolder = null;
-                        switch (Program.SettingsVM.Settings.WallpaperArrangement)
+                        switch (arrangement)
                         {
                             case WallpaperArrangement.per:
                                 wpdataFolder = Path.Combine(dataFolder, new DirectoryInfo(obj.LivelyInfoFolderPath).Name, screen.DeviceNumber);
@@ -680,7 +680,7 @@ namespace livelywpf.Cef
             }
             else
             {
-                switch (Program.SettingsVM.Settings.WallpaperArrangement)
+                switch (arrangement)
                 {
                     case WallpaperArrangement.per:
                         {
