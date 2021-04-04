@@ -213,7 +213,7 @@ namespace livelywpf.Core
                     for (int i = 0; i < Program.AppRulesVM.AppRules.Count; i++)
                     {
                         var item = Program.AppRulesVM.AppRules[i];
-                        if (String.Equals(item.AppName, fProcess.ProcessName, StringComparison.OrdinalIgnoreCase))
+                        if (String.Equals(item.AppName, fProcess.ProcessName, StringComparison.Ordinal))
                         {
                             if (item.Rule == AppRulesEnum.ignore)
                             {
