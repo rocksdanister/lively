@@ -84,26 +84,6 @@
             </GridView.ItemsPanel>
         </GridView>
 
-        <!--
-        <CommandBar>
-            <AppBarToggleButton Icon="Shuffle" Label="Shuffle" />
-            <AppBarToggleButton Icon="RepeatAll" Label="Repeat" />
-            <AppBarSeparator/>
-            <AppBarButton Icon="Back" Label="Back" />
-            <AppBarButton Icon="Stop" Label="Stop" />
-            <AppBarButton Icon="Play" Label="Play" />
-            <AppBarButton Icon="Forward" Label="Forward" />
-
-            <CommandBar.SecondaryCommands>
-                <AppBarButton Label="Like" />
-                <AppBarButton Label="Dislike" />
-            </CommandBar.SecondaryCommands>
-
-            <CommandBar.Content>
-                <TextBlock Text="Now playing..." Margin="12,14"/>
-            </CommandBar.Content>
-        </CommandBar>
-        -->
         <RelativePanel x:Name="DimOverlay"  Background="{ThemeResource SystemAltMediumColor}" Visibility="Collapsed"/>
         <RelativePanel x:Name="AddFilePanel" Background="{ThemeResource SystemAltMediumColor}" Visibility="Collapsed">
             <SymbolIcon x:Name="AddSymbol" Symbol="Add" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" 

@@ -34,11 +34,12 @@ namespace livelywpf
             {
                 LibraryItems.Add(item);
             }
+            //Unused for now, several issues need fixing.
+            //LibraryItemsFiltered = new ObservableCollection<LibraryModel>(LibraryItems);
 
             SetupDesktop.WallpaperChanged += SetupDesktop_WallpaperChanged;
             Program.SettingsVM.LivelyGUIStateChanged += SettingsVM_LivelyGUIStateChanged;
             Program.SettingsVM.LivelyWallpaperDirChange += SettingsVM_LivelyWallpaperDirChange;
-            //RestoreWallpaperFromSave();
 
             //ref: https://github.com/microsoft/microsoft-ui-xaml/issues/911
             //SetWallpaperItemClicked = new RelayCommand(WallpaperSet);
@@ -60,9 +61,18 @@ namespace livelywpf
             }
         }
 
-        public ICollectionView LibraryItemsFiltered
+        private ObservableCollection<LibraryModel> _libraryItemsFiltered;
+        public ObservableCollection<LibraryModel> LibraryItemsFiltered
         {
-            get { return CollectionViewSource.GetDefaultView(LibraryItems); }
+            get { return _libraryItemsFiltered; }
+            set
+            {
+                if (value != _libraryItemsFiltered)
+                {
+                    _libraryItemsFiltered = value;
+                    OnPropertyChanged("LibraryItemsFiltered");
+                }
+            }
         }
 
         private string _searchText;
@@ -385,15 +395,6 @@ namespace livelywpf
             }
         }
 
-        public void FilterCollection(string str)
-        {
-            if (String.IsNullOrEmpty(str))
-                LibraryItemsFiltered.Filter = null;
-
-            LibraryItemsFiltered.Filter = i => (((LibraryModel)i).LivelyInfo.Title.IndexOf(str, StringComparison.OrdinalIgnoreCase)) > -1;
-            LibraryItemsFiltered.Refresh();
-        }
-
         /// <summary>
         /// Load wallpapers from the given parent folder(), only top directory is scanned.
         /// </summary>
@@ -491,6 +492,35 @@ namespace livelywpf
             var binarySearchIndex = BinarySearch(LibraryItems, item.Title);
             //LibraryItems.Move(LibraryItems.IndexOf(item), binarySearchIndex);
             LibraryItems.Insert(binarySearchIndex, item);
+        }
+
+        //ref: https://docs.microsoft.com/en-us/windows/uwp/design/controls-and-patterns/listview-filtering
+        private void FilterCollection(string str)
+        {
+            /*In order for the ListView to animate in the most intuitive way when adding and subtracting items, 
+            it's important to remove and add items to the ListView's ItemsSource collection itself*/
+            var tmpFilter = LibraryItems.Where(item => item.LivelyInfo.Title.Contains(str, StringComparison.OrdinalIgnoreCase)).ToList();
+            // First, remove any objects in LibraryItemsFiltered that are not in tmpFilter
+            for (int i = 0; i < LibraryItemsFiltered.Count; i++)
+            {
+                var item = LibraryItemsFiltered[i];
+                if (!tmpFilter.Contains(item))
+                {
+                    LibraryItemsFiltered.Remove(item);
+                }
+            }
+
+            /* Next, add back any objects that are included in tmpFilter and may 
+            not currently be in LibraryItemsFiltered (in case of a backspace) */
+            for (int i = 0; i < tmpFilter.Count; i++)
+            {
+                var item = tmpFilter[i];
+                if (!LibraryItemsFiltered.Contains(item))
+                {
+                    var index = BinarySearch(LibraryItemsFiltered, item.Title);
+                    LibraryItemsFiltered.Insert(index, item);
+                }
+            }
         }
 
         private int BinarySearch(ObservableCollection<LibraryModel> item, string x)
