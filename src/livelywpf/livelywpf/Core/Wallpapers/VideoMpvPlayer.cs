@@ -18,7 +18,7 @@ namespace livelywpf.Core
     /// </summary>
     public class VideoMpvPlayer : IWallpaper
     {
-        //private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
         private IntPtr hwnd;
         private readonly Process _process;
@@ -131,9 +131,12 @@ namespace livelywpf.Core
             cmdArgs.Append(model.LivelyInfo.Type == WallpaperType.videostream ? Helpers.StreamHelper.YoutubeDLMpvArgGenerate(streamQuality, path) : "\"" + path + "\"");
 
             ProcessStartInfo start = new ProcessStartInfo
-            {               
+            {
                 FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "mpv", "mpv.exe"),
                 UseShellExecute = false,
+                RedirectStandardError = false,
+                RedirectStandardInput = false,
+                RedirectStandardOutput = true,
                 WorkingDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "mpv"),
                 Arguments = cmdArgs.ToString(),
             };
@@ -376,7 +379,9 @@ namespace livelywpf.Core
                 try
                 {
                     _process.Exited += Proc_Exited;
+                    _process.OutputDataReceived += Proc_OutputDataReceived;
                     _process.Start();
+                    _process.BeginOutputReadLine();
                     processWaitTask = Task.Run(() => hwnd = WaitForProcesWindow().Result, ctsProcessWait.Token);
                     await processWaitTask;
                     if (hwnd.Equals(IntPtr.Zero))
@@ -434,8 +439,14 @@ namespace livelywpf.Core
             }
         }
 
+        private void Proc_OutputDataReceived(object sender, DataReceivedEventArgs e)
+        {
+            Logger.Info("Mpv:" + e.Data);
+        }
+
         private void Proc_Exited(object sender, EventArgs e)
         {
+            _process.OutputDataReceived -= Proc_OutputDataReceived;
             _process?.Dispose();
             SetupDesktop.RefreshDesktop();
         }
