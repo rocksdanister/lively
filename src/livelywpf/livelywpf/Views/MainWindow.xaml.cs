@@ -25,9 +25,11 @@ namespace livelywpf
     /// </summary>
     public partial class MainWindow : Window
     {
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+        private Windows.UI.Xaml.Controls.NavigationViewItem debugMenu;
         public static bool IsExit { get; set; } = false;
         private NavigationView navView;
-        private Windows.UI.Xaml.Controls.NavigationViewItem debugMenu;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -248,13 +250,21 @@ namespace livelywpf
             source.AddHook(WndProc);
         }
 
+        //todo: maybe create separate window to handle all window messages globally?
         private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
             if (msg == NativeMethods.WM_SHOWLIVELY)
             {
+                Logger.Info("WM_SHOWLIVELY msg received.");
                 Program.ShowMainWindow();   
             }
-            //todo: bind it better.
+            else if (msg == NativeMethods.WM_TASKBARCREATED)
+            {
+                //explorer crash detection, new taskbar is created everytime explorer is started..
+                Logger.Info("Taskbar Created, re-applying wallpaper.");
+                SetupDesktop.ResetWorkerW();
+            }
+            //screen message processing...
             _= Core.DisplayManager.Instance?.OnWndProc(hwnd, (uint)msg, wParam, lParam);
 
             return IntPtr.Zero;

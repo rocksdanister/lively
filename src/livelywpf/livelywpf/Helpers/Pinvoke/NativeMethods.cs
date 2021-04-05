@@ -13,6 +13,13 @@ namespace livelywpf
 #pragma warning disable CA1707, CA1401, CA1712
     public static class NativeMethods
     {
+        #region WM_Register
+
+        public static readonly int WM_SHOWLIVELY = RegisterWindowMessage("WM_SHOWLIVELYMAINWINDOW");
+        public static readonly int WM_TASKBARCREATED = NativeMethods.RegisterWindowMessage("TaskbarCreated");
+
+        #endregion //WM_Register
+
         #region undocumented 
 
         //undocumented, may get removed/changed in the future.
@@ -179,7 +186,7 @@ namespace livelywpf
         #region single instance
 
         public const int HWND_BROADCAST = 0xffff;
-        public static readonly int WM_SHOWLIVELY = RegisterWindowMessage("WM_SHOWLIVELYMAINWINDOW");
+
         [DllImport("user32")]
         public static extern bool PostMessage(IntPtr hwnd, int msg, IntPtr wparam, IntPtr lparam);
         [DllImport("user32")]

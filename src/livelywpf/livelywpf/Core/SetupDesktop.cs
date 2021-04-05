@@ -31,6 +31,7 @@ namespace livelywpf
         static SetupDesktop()
         {
             ScreenHelper.DisplayUpdated += DisplaySettingsChanged_Hwnd;
+            WallpaperChanged += SetupDesktop_WallpaperChanged;
         }
 
         #endregion //init
@@ -109,11 +110,7 @@ namespace livelywpf
                     _isInitialized = true;
                     processMonitor = new Playback();
                     processMonitor.Start();
-                    WallpaperChanged += SetupDesktop_WallpaperChanged;
-                    if(!Program.IsMSIX)
-                    {
-                        StartLivelySubProcess();
-                    }
+                    StartLivelySubProcess();
                 }
             }
 
@@ -389,6 +386,22 @@ namespace livelywpf
             {
                 semaphoreSlimWallpaperInitLock.Release();
             }
+        }
+
+        /// <summary>
+        /// In the event of explorer crash, re-create workerw and re-apply wallpaper.
+        /// </summary>
+        public static void ResetWorkerW()
+        {
+            _isInitialized = false;
+            processMonitor?.Dispose();
+            var prevWallpapers = SetupDesktop.Wallpapers.ToList();
+            SetupDesktop.TerminateAllWallpapers();
+            foreach (var item in prevWallpapers)
+            {
+                SetupDesktop.SetWallpaper(item.GetWallpaperData(), item.GetScreen());
+            }
+            prevWallpapers.Clear();
         }
 
         public static IntPtr GetWorkerW()
@@ -738,6 +751,9 @@ namespace livelywpf
         private static Process livelySubProcess;
         private static void StartLivelySubProcess()
         {
+            if (livelySubProcess != null)
+                return;
+
             try
             {
                 ProcessStartInfo start = new ProcessStartInfo()
@@ -776,11 +792,11 @@ namespace livelywpf
         public static void ShutDown()
         {
             ScreenHelper.DisplayUpdated -= DisplaySettingsChanged_Hwnd;
+            WallpaperChanged -= SetupDesktop_WallpaperChanged;
             if (_isInitialized)
             {
                 try
                 {
-                    WallpaperChanged -= SetupDesktop_WallpaperChanged;
                     processMonitor?.Dispose();
                     TerminateAllWallpapers(false);
                     RefreshDesktop();

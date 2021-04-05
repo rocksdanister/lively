@@ -137,7 +137,7 @@ namespace livelywpf.Core
         }
 
         private void ProcessMonitor(object sender, EventArgs e)
-        {   
+        {
             if (ScreenSaverService.Instance.IsRunning)
             {
                 PlayWallpapers();
@@ -517,6 +517,8 @@ namespace livelywpf.Core
                     // dispose managed state (managed objects)
                     dispatcherTimer.Stop();
                     SystemEvents.SessionSwitch -= SystemEvents_SessionSwitch;
+                    // static variables reset..
+                    progman = workerWOrig = IntPtr.Zero;
                 }
 
                 // TODO: free unmanaged resources (unmanaged objects) and override finalizer
