@@ -17,6 +17,8 @@ namespace livelywpf.Core
         private readonly string livelyPropertyCopyPath;
         private bool _initialized;
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
+        private static int globalCount;
+        private readonly int uniqueId;
 
         public WebProcess(string path, LibraryModel model, LivelyScreen display)
         {
@@ -98,6 +100,9 @@ namespace livelywpf.Core
             this._process = webProcess;
             this.model = model;
             this.display = display;
+
+            //for logging purpose
+            uniqueId = globalCount++;
         }
 
         public void Close()
@@ -228,7 +233,7 @@ namespace livelywpf.Core
         private void Proc_OutputDataReceived(object sender, DataReceivedEventArgs e)
         {
             //When the redirected stream is closed, a null line is sent to the event handler.
-            if (!String.IsNullOrEmpty(e.Data))
+            if (!string.IsNullOrEmpty(e.Data))
             {
                 if (e.Data.Contains("HWND"))
                 {
@@ -269,7 +274,7 @@ namespace livelywpf.Core
                         _initialized = true;
                     }
                 }
-                Logger.Info("CEF:" + e.Data);
+                Logger.Info("CEF" + uniqueId + ":" + e.Data);
             }
         }
 

@@ -6,14 +6,14 @@
     xmlns:local="using:rootuwp">
     <Application.Resources>
         <ResourceDictionary>
-            <AcrylicBrush x:Key="NavigationViewDefaultPaneBackground"
-                  BackgroundSource="Backdrop" FallbackColor="{ThemeResource SystemAccentColorDark2}" TintColor="{ThemeResource SystemAccentColorDark1}" TintOpacity="0.5"/>
-            <AcrylicBrush x:Key="NavigationViewExpandedPaneBackground"
-                  BackgroundSource="HostBackdrop" FallbackColor="{ThemeResource SystemAccentColorDark2}" TintColor="{ThemeResource SystemAccentColorDark1}" TintOpacity="0.7"/>
             <!--
-            <SolidColorBrush x:Key="NavigationViewDefaultPaneBackground" Color="{ThemeResource SystemAccentColorDark1}" Opacity="0.5"/>
-            <SolidColorBrush x:Key="NavigationViewExpandedPaneBackground" Color="{ThemeResource SystemAccentColorDark1}" Opacity="0.7"/>
+            <AcrylicBrush x:Key="NavigationViewDefaultPaneBackground"
+                  BackgroundSource="Backdrop" FallbackColor="{ThemeResource SystemAccentColor}" TintColor="{ThemeResource SystemAccentColor}" TintOpacity="0.5" Opacity="0.7"/>
+            <AcrylicBrush x:Key="NavigationViewExpandedPaneBackground"
+                  BackgroundSource="HostBackdrop" FallbackColor="{ThemeResource SystemAccentColor}" TintColor="{ThemeResource SystemAccentColor}" TintOpacity="0.7"/>
             -->
+            <SolidColorBrush x:Key="NavigationViewDefaultPaneBackground" Color="{ThemeResource SystemAccentColor}" Opacity="0.5"/>
+            <SolidColorBrush x:Key="NavigationViewExpandedPaneBackground" Color="{ThemeResource SystemAccentColor}" Opacity="0.5"/>
         </ResourceDictionary>
     </Application.Resources>
 </xaml:XamlApplication>

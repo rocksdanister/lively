@@ -261,7 +261,7 @@ namespace livelywpf
             else if (msg == NativeMethods.WM_TASKBARCREATED)
             {
                 //explorer crash detection, new taskbar is created everytime explorer is started..
-                Logger.Info("Taskbar Created, re-applying wallpaper.");
+                Logger.Info("WM_TASKBARCREATED: New Taskbar Created.");
                 SetupDesktop.ResetWorkerW();
             }
             //screen message processing...

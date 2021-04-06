@@ -31,6 +31,8 @@ namespace livelywpf.Core
         private bool _isVideoStopped;
         private JObject livelyPropertiesData;
         private readonly string livelyPropertyCopyPath;
+        private static int globalCount;
+        private readonly int uniqueId;
 
         public VideoMpvPlayer(string path, LibraryModel model, LivelyScreen display,
             WallpaperScaler scaler = WallpaperScaler.fill, StreamQualitySuggestion streamQuality = StreamQualitySuggestion.Highest, bool onScreenControl = false)
@@ -151,6 +153,9 @@ namespace livelywpf.Core
             this.model = model;
             this.display = display;
             this.timeOut = 20000;
+
+            //for logging purpose
+            uniqueId = globalCount++;
         }
 
         public async void Close()
@@ -441,7 +446,10 @@ namespace livelywpf.Core
 
         private void Proc_OutputDataReceived(object sender, DataReceivedEventArgs e)
         {
-            Logger.Info("Mpv:" + e.Data);
+            if (!string.IsNullOrEmpty(e.Data))
+            {
+                Logger.Info("Mpv" + uniqueId + ":" + e.Data);
+            }
         }
 
         private void Proc_Exited(object sender, EventArgs e)

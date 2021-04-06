@@ -393,6 +393,7 @@ namespace livelywpf
         /// </summary>
         public static void ResetWorkerW()
         {
+            Logger.Info("Core: Restarting workerw and restoring wallpapers..");
             _isInitialized = false;
             processMonitor?.Dispose();
             var prevWallpapers = SetupDesktop.Wallpapers.ToList();

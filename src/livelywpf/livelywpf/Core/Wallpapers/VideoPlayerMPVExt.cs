@@ -18,6 +18,8 @@ namespace livelywpf.Core
         private bool _initialized;
         private readonly string livelyPropertyCopyPath;
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
+        private static int globalCount;
+        private readonly int uniqueId;
 
         public VideoPlayerMPVExt(string path, LibraryModel model, LivelyScreen display, 
             WallpaperScaler scaler = WallpaperScaler.fill, StreamQualitySuggestion streamQuality = StreamQualitySuggestion.Highest)
@@ -75,6 +77,9 @@ namespace livelywpf.Core
             this._process = videoPlayerProc;
             this.model = model;
             this.display = display;
+
+            //for logging purpose
+            uniqueId = globalCount++;
         }
 
         public void Close()
@@ -202,7 +207,7 @@ namespace livelywpf.Core
                         _initialized = true;
                     }
                 }
-                Logger.Info("libMPV(Ext):" + e.Data);
+                Logger.Info("libMPV" + uniqueId + ":" + e.Data);
             }
         }
 
