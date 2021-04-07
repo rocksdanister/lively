@@ -40,7 +40,7 @@ namespace livelywpf.Cef
             wallpaperData = model;
             try
             {
-                var wpInfo = GetLivelyPropertyDetails(model, Program.SettingsVM.Settings.WallpaperArrangement);
+                var wpInfo = GetLivelyPropertyDetails(model, Program.SettingsVM.Settings.WallpaperArrangement, Program.SettingsVM.Settings.SelectedDisplay);
                 this.livelyPropertyCopyPath = wpInfo.Item1;
                 this.screen = wpInfo.Item2;
             }
@@ -619,7 +619,7 @@ namespace livelywpf.Cef
         /// </summary>
         /// <param name="obj">LibraryModel object</param>
         /// <returns></returns>
-        public static Tuple<string, LivelyScreen> GetLivelyPropertyDetails(LibraryModel obj, WallpaperArrangement arrangement)
+        public static Tuple<string, LivelyScreen> GetLivelyPropertyDetails(LibraryModel obj, WallpaperArrangement arrangement, LivelyScreen selectedScreen)
         {
             if (obj.LivelyPropertyPath == null)
             {
@@ -633,8 +633,7 @@ namespace livelywpf.Cef
             {
                 try
                 {
-                    //wallpaper not running, give the path for primaryscreen.
-                    screen = ScreenHelper.GetPrimaryScreen();
+                    screen = selectedScreen;
                     var dataFolder = Path.Combine(Program.WallpaperDir, "SaveData", "wpdata");
                     if (screen.DeviceNumber != null)
                     {
@@ -685,7 +684,7 @@ namespace livelywpf.Cef
                     case WallpaperArrangement.per:
                         {
                             //more than one screen; if selected display, sendpath otherwise send the first one found.
-                            int index = items.FindIndex(x => ScreenHelper.ScreenCompare(Program.SettingsVM.Settings.SelectedDisplay, x.GetScreen(), DisplayIdentificationMode.deviceId));
+                            int index = items.FindIndex(x => ScreenHelper.ScreenCompare(selectedScreen, x.GetScreen(), DisplayIdentificationMode.deviceId));
                             livelyPropertyCopy = index != -1 ? items[index].GetLivelyPropertyCopyPath() : items[0].GetLivelyPropertyCopyPath();
                             screen = index != -1 ? items[index].GetScreen() : items[0].GetScreen();
                         }

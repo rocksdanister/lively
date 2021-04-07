@@ -156,20 +156,12 @@ namespace livelywpf
 
         private void CustomiseWallpaper(ScreenLayoutModel selection)
         {
-            if (SelectedItem != null)
+            //only for running wallpapers..
+            var items = SetupDesktop.Wallpapers.FindAll(x => x.GetWallpaperData().LivelyPropertyPath != null);
+            if (items.Count > 0)
             {
-                foreach (var x in SetupDesktop.Wallpapers)
-                {
-                    if (ScreenHelper.ScreenCompare(x.GetScreen(), selection.Screen, DisplayIdentificationMode.deviceId))
-                    {
-                        if (selection.LivelyPropertyPath != null)
-                        {
-                            var settingsWidget = new Cef.LivelyPropertiesTrayWidget(x.GetWallpaperData());
-                            settingsWidget.Show();
-                        }
-                        break;
-                    }
-                }
+                var settingsWidget = new Cef.LivelyPropertiesTrayWidget(items[0].GetWallpaperData());
+                settingsWidget.Show();
             }
         }
 

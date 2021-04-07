@@ -65,7 +65,7 @@ namespace livelywpf.Cmd
         {
             [Option("value",
             Required = true,
-            HelpText = "Seek percentage from current position.")]
+            HelpText = "Seek percentage, optionally add +/- to seek from current position.")]
             public string Param { get; set; }
 
             [Option("monitor",

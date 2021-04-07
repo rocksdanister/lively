@@ -186,14 +186,14 @@ namespace livelywpf.Views
                     if (Program.SettingsVM.Settings.AutoDetectOnlineStreams &&
                         StreamHelper.IsSupportedStream(uri))
                     {
-                        Program.LibraryVM.AddWallpaper(uri.ToString(),
+                        Program.LibraryVM.AddWallpaper(uri.OriginalString,
                             WallpaperType.videostream,
                             LibraryTileType.processing,
                             Program.SettingsVM.Settings.SelectedDisplay);
                     }
                     else
                     {
-                        Program.LibraryVM.AddWallpaper(uri.ToString(),
+                        Program.LibraryVM.AddWallpaper(uri.OriginalString,
                             WallpaperType.url,
                             LibraryTileType.processing,
                             Program.SettingsVM.Settings.SelectedDisplay);
