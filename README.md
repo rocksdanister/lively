@@ -108,6 +108,7 @@ Just drag & drop files, webpages to set as wallpaper..
 ## Download
 ##### Latest version: v1.3.0.0 (Windows 10 1903 or above)[What's new?](https://github.com/rocksdanister/lively/releases/tag/v1.3.0.0)
 - [`Installer`][direct-full-win32] 
+
 SHA256: 5af4dc01b43ac4aad331d788ff918d8f8eb855f9bc84cf638a670318d1585846
      
 [direct-full-win32]: https://github.com/rocksdanister/lively/releases/download/v1.3.0.0/lively_setup_x86_full_v1300.exe
