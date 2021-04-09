@@ -107,40 +107,45 @@ namespace livelywpf
             int captureDelay, int animeDelay, int totalFrames, IProgress<int> progress)
         {
             var miArray = new MagickImage[totalFrames];
-            for (int i = 0; i < totalFrames; i++)
-            {
-                using(var bmp = CopyScreen(x, y, width, height))
-                {
-                    miArray[i] = ToMagickImage(bmp);
-                }
-                await Task.Delay(captureDelay);
-                progress.Report((i + 1) * 100 / totalFrames);
-            }
-
-            using (MagickImageCollection collection = new MagickImageCollection())
+            try
             {
                 for (int i = 0; i < totalFrames; i++)
                 {
-                    collection.Add(miArray[i]);
-                    collection[i].AnimationDelay = animeDelay;
+                    using (var bmp = CopyScreen(x, y, width, height))
+                    {
+                        miArray[i] = ToMagickImage(bmp);
+                    }
+                    await Task.Delay(captureDelay);
+                    progress.Report((i + 1) * 100 / totalFrames);
                 }
 
-                // Optionally reduce colors
-                QuantizeSettings settings = new QuantizeSettings
+                using (MagickImageCollection collection = new MagickImageCollection())
                 {
-                    Colors = 256,
-                };
-                collection.Quantize(settings);
+                    for (int i = 0; i < totalFrames; i++)
+                    {
+                        collection.Add(miArray[i]);
+                        collection[i].AnimationDelay = animeDelay;
+                    }
 
-                // Optionally optimize the images (images should have the same size).
-                collection.Optimize();
+                    // Optionally reduce colors
+                    QuantizeSettings settings = new QuantizeSettings
+                    {
+                        Colors = 256,
+                    };
+                    collection.Quantize(settings);
 
-                collection.Write(savePath);
+                    // Optionally optimize the images (images should have the same size).
+                    collection.Optimize();
+                    // Save image to disk.
+                    collection.Write(savePath);
+                }
             }
-
-            for (int i = 0; i < totalFrames; i++)
+            finally
             {
-                miArray[i].Dispose();
+                for (int i = 0; i < totalFrames; i++)
+                {
+                    miArray[i]?.Dispose();
+                }
             }
         }
 
