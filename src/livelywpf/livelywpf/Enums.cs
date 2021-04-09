@@ -142,7 +142,8 @@ namespace livelywpf
         //depreciated
         libmpv,
         libmpvExt,
-        mpv
+        mpv,
+        vlc
     }
 
     public enum LivelyGifPlayer

@@ -12,7 +12,7 @@ namespace livelywpf.Cef
     public partial class LivelyPropertiesTrayWidget : Window
     {
         //readonly int xPos = 0, yPos = 0, width = 250, height = 250;
-        public LivelyPropertiesTrayWidget(LibraryModel data, string livelyPropertyPath, LivelyScreen screen)
+        public LivelyPropertiesTrayWidget(LibraryModel model)
         {
             InitializeComponent();
 
@@ -21,7 +21,7 @@ namespace livelywpf.Cef
             this.Height = (int)(SystemParameters.WorkArea.Height / 1.1f);
             this.Top = SystemParameters.WorkArea.Bottom - this.Height - 10;
             this.Left = SystemParameters.WorkArea.Right - this.Width - 5;
-            this.Title = data.Title;
+            this.Title = model.Title;
 
             //top-right location
             //this.width = (int)this.Width;
@@ -29,7 +29,7 @@ namespace livelywpf.Cef
             //xPos = screen.Bounds.Right - this.width - 100;
             //yPos = screen.Bounds.Bottom - this.height - 10;
 
-            ContentFrame.Navigate(new Cef.LivelyPropertiesView(data, livelyPropertyPath, screen), new SuppressNavigationTransitionInfo());
+            ContentFrame.Navigate(new Cef.LivelyPropertiesView(model), new SuppressNavigationTransitionInfo());
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

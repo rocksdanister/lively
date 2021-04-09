@@ -10,14 +10,14 @@ namespace livelywpf.Helpers
 {
     public static class StreamHelper
     {
-        public static bool IsSupportedUri(Uri uri)
+        public static bool IsSupportedStream(Uri uri)
         {
             bool status = false;
             string host;
             string url;
             try
             {
-                url = uri.ToString();
+                url = uri.AbsoluteUri;
                 host = uri.Host;
             }
             catch
@@ -36,6 +36,11 @@ namespace livelywpf.Helpers
                     break;
                 case "www.bilibili.com":
                     if (url.Contains("bilibili.com/video/"))
+                        status = true;
+                    break;
+                case "twitch.tv":
+                case "www.twitch.tv":
+                    if (url.Length != "https://www.twitch.tv/".Length)
                         status = true;
                     break;
             }

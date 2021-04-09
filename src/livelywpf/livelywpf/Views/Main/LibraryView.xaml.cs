@@ -113,12 +113,11 @@ namespace livelywpf.Views
                     }
                     break;
                 case "customiseWallpaper":
-                    var details = Program.LibraryVM.GetLivelyPropertyDetails(obj);
                     var customiseFrame = new ModernWpf.Controls.Frame()
                     {
                         Margin = new Thickness(25, 0, 25, 25)
                     };
-                    customiseFrame.Navigate(new Cef.LivelyPropertiesView(obj, details.Item1, details.Item2));
+                    customiseFrame.Navigate(new Cef.LivelyPropertiesView(obj));
                     ScrollViewer scv = new ScrollViewer()
                     {
                         VerticalScrollBarVisibility = ScrollBarVisibility.Auto,
@@ -143,7 +142,7 @@ namespace livelywpf.Views
                     var aboutFrame = new ModernWpf.Controls.Frame();
                     aboutFrame.Navigate(aboutView);
                     await Helpers.DialogService.ShowConfirmationDialog(
-                        obj.Title,
+                        Properties.Resources.TitleAbout,
                         aboutFrame,
                         Properties.Resources.TextClose);
                     break;

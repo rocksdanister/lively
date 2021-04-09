@@ -20,22 +20,24 @@ namespace livelywpf.Core
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
-        IntPtr HWND { get; set; }
-        Process Proc { get; set; }
-        LibraryModel Model { get; set; }
-        LivelyScreen Display { get; set; }
+        private IntPtr hwnd;
+        private readonly Process _process;
+        private readonly LibraryModel model;
+        private LivelyScreen display;
         private readonly CancellationTokenSource ctsProcessWait = new CancellationTokenSource();
         private Task processWaitTask;
         private readonly int timeOut;
         private readonly string ipcServerName;
-        private bool isVideoDisabled;
-        JObject livelyPropertiesData;
-        string LivelyPropertyCopy { get; set; }
+        private bool _isVideoStopped;
+        private JObject livelyPropertiesData;
+        private readonly string livelyPropertyCopyPath;
+        private static int globalCount;
+        private readonly int uniqueId;
 
         public VideoMpvPlayer(string path, LibraryModel model, LivelyScreen display,
             WallpaperScaler scaler = WallpaperScaler.fill, StreamQualitySuggestion streamQuality = StreamQualitySuggestion.Highest, bool onScreenControl = false)
         {
-            LivelyPropertyCopy = null;
+            livelyPropertyCopyPath = null;
             if (model.LivelyPropertyPath != null)
             {
                 //customisable wallpaper, livelyproperty.json is present.
@@ -48,13 +50,26 @@ namespace livelywpf.Core
                     {
                         //Create a directory with the wp foldername in SaveData/wpdata/, copy livelyproperties.json into this.
                         //Further modifications are done to the copy file.
-                        var wpdataFolder = Path.Combine(dataFolder, new DirectoryInfo(model.LivelyInfoFolderPath).Name, screenNumber);
+                        string wpdataFolder = null;
+                        switch (Program.SettingsVM.Settings.WallpaperArrangement)
+                        {
+                            case WallpaperArrangement.per:
+                                wpdataFolder = Path.Combine(dataFolder, new DirectoryInfo(model.LivelyInfoFolderPath).Name, screenNumber);
+                                break;
+                            case WallpaperArrangement.span:
+                                wpdataFolder = Path.Combine(dataFolder, new DirectoryInfo(model.LivelyInfoFolderPath).Name, "span");
+                                break;
+                            case WallpaperArrangement.duplicate:
+                                wpdataFolder = Path.Combine(dataFolder, new DirectoryInfo(model.LivelyInfoFolderPath).Name, "duplicate");
+                                break;
+                        }
                         Directory.CreateDirectory(wpdataFolder);
-
-                        LivelyPropertyCopy = Path.Combine(wpdataFolder, "LivelyProperties.json");
-                        if (!File.Exists(LivelyPropertyCopy))
-                            File.Copy(model.LivelyPropertyPath, LivelyPropertyCopy);
-
+                        //copy the original file if not found..
+                        livelyPropertyCopyPath = Path.Combine(wpdataFolder, "LivelyProperties.json");
+                        if (!File.Exists(livelyPropertyCopyPath))
+                        {
+                            File.Copy(model.LivelyPropertyPath, livelyPropertyCopyPath);
+                        }
                     }
                     else
                     {
@@ -67,9 +82,9 @@ namespace livelywpf.Core
                 }
             }
 
-            if (LivelyPropertyCopy != null)
+            if (livelyPropertyCopyPath != null)
             {
-                livelyPropertiesData = Cef.LivelyPropertiesJSON.LoadLivelyProperties(LivelyPropertyCopy);
+                livelyPropertiesData = Cef.LivelyPropertiesJSON.LoadLivelyProperties(livelyPropertyCopyPath);
             }
 
             var scalerArg = scaler switch
@@ -80,50 +95,67 @@ namespace livelywpf.Core
                 WallpaperScaler.uniformFill => "--panscan=1.0",
                 _ => "--keepaspect=no",
             };
-
             ipcServerName = "mpvsocket" + Path.GetRandomFileName();
-            string cmdArgs =
-                "--volume=0 " +
-                //alternative: --loop-file=inf
-                "--loop-file " +
-                //do not close after media end
-                "--keep-open " +
-                //always create gui window
-                "--force-window=yes " +
-                //open window at (-9999,0)
-                "--geometry=-9999:0 " +
-                //allow screensaver
-                "--stop-screensaver=no " +
-                //alternative: --input-ipc-server=\\.\pipe\
-                "--input-ipc-server=" + ipcServerName + " " +
-                //stretch algorithm
-                scalerArg + " " +
-                //on-screen-controller visibility
-                (!onScreenControl ? "--no-osc " : " ") +
-                //integer scaler for sharpness
-                (model.LivelyInfo.Type == WallpaperType.gif ? "--scale=nearest " : " ") +
-                //gpu decode preference
-                (Program.SettingsVM.Settings.VideoPlayerHwAccel ? "--hwdec=auto-safe " : "--hwdec=no ") +
-                //file, stream path
-                (model.LivelyInfo.Type == WallpaperType.videostream ? Helpers.StreamHelper.YoutubeDLMpvArgGenerate(streamQuality, path) : "\"" + path + "\"");
+
+            StringBuilder cmdArgs = new StringBuilder();
+            //startup volume will be 0.
+            cmdArgs.Append("--volume=0 ");
+            //alternative: --loop-file=inf
+            cmdArgs.Append("--loop-file ");
+            //do not close after media end
+            cmdArgs.Append("--keep-open ");
+            //open window at (-9999,0)
+            cmdArgs.Append("--geometry=-9999:0 ");
+            //always create gui window
+            cmdArgs.Append("--force-window=yes ");
+            //Don't move the window when clicking
+            cmdArgs.Append("--no-window-dragging ");
+            //Don't hide cursor after sometime.
+            cmdArgs.Append("--cursor-autohide=no ");
+            //allow windows screensaver
+            cmdArgs.Append("--stop-screensaver=no ");
+            //video stretch algorithm
+            cmdArgs.Append(scalerArg + " ");
+            //on-screen-controller visibility
+            cmdArgs.Append(!onScreenControl ? "--no-osc " : " ");
+            //alternative: --input-ipc-server=\\.\pipe\
+            cmdArgs.Append("--input-ipc-server=" + ipcServerName + " ");
+            //integer scaler for sharpness
+            cmdArgs.Append(model.LivelyInfo.Type == WallpaperType.gif ? "--scale=nearest " : " ");
+            //gpu decode preference
+            cmdArgs.Append(Program.SettingsVM.Settings.VideoPlayerHwAccel ? "--hwdec=auto-safe " : "--hwdec=no ");
+            /*
+            //Screenshot location, important read: https://mpv.io/manual/master/#pseudo-gui-mode
+            //Example: SendMessage("{\"command\":[\"screenshot\",\"video\"]}\n");
+            cmdArgs.Append("--screenshot-template=" + "\"" + Path.Combine(Program.AppDataDir, "screenshots", display.DeviceNumber ?? "device_err") + "\" ");
+            */
+            //file or online video stream path
+            cmdArgs.Append(model.LivelyInfo.Type == WallpaperType.videostream ? Helpers.StreamHelper.YoutubeDLMpvArgGenerate(streamQuality, path) : "\"" + path + "\"");
 
             ProcessStartInfo start = new ProcessStartInfo
-            {               
+            {
                 FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "mpv", "mpv.exe"),
                 UseShellExecute = false,
+                RedirectStandardError = false,
+                RedirectStandardInput = false,
+                RedirectStandardOutput = true,
                 WorkingDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "mpv"),
-                Arguments = cmdArgs,
+                Arguments = cmdArgs.ToString(),
             };
 
-            Process proc = new Process()
+            Process _process = new Process()
             {
+                EnableRaisingEvents = true,
                 StartInfo = start,
             };
 
-            this.Proc = proc;
-            this.Model = model;
-            this.Display = display;
+            this._process = _process;
+            this.model = model;
+            this.display = display;
             this.timeOut = 20000;
+
+            //for logging purpose
+            uniqueId = globalCount++;
         }
 
         public async void Close()
@@ -141,39 +173,39 @@ namespace livelywpf.Core
 
         public IntPtr GetHWND()
         {
-            return HWND;
+            return hwnd;
         }
 
         public string GetLivelyPropertyCopyPath()
         {
-            return LivelyPropertyCopy;
+            return livelyPropertyCopyPath;
         }
 
         public Process GetProcess()
         {
-            return Proc;
+            return _process;
         }
 
         public LivelyScreen GetScreen()
         {
-            return Display;
+            return display;
         }
 
         public LibraryModel GetWallpaperData()
         {
-            return Model;
+            return model;
         }
 
         public WallpaperType GetWallpaperType()
         {
-            return Model.LivelyInfo.Type;
+            return model.LivelyInfo.Type;
         }
 
         public void Play()
         {
-            if (isVideoDisabled)
+            if (_isVideoStopped)
             {
-                isVideoDisabled = false;
+                _isVideoStopped = false;
                 //is this always the correct channel for main video?
                 SendMessage("{\"command\":[\"set_property\",\"vid\",1]}\n");
             }
@@ -187,7 +219,7 @@ namespace livelywpf.Core
 
         public void Stop()
         {
-            isVideoDisabled = true;
+            _isVideoStopped = true;
             //video=no disable video but audio can still be played,
             //which is useful for 'play audio only' option in the future.
             SendMessage("{\"command\":[\"set_property\",\"vid\",\"no\"]}\n");
@@ -199,11 +231,19 @@ namespace livelywpf.Core
             SendMessage("{\"command\":[\"set_property\",\"volume\"," + volume + "]}\n");
         }
 
-        public void SetPlaybackPos(int pos)
+        public void SetPlaybackPos(float pos, PlaybackPosType type)
         {
             if (GetWallpaperType() != WallpaperType.picture)
             {
-                SendMessage("{\"command\":[\"seek\"," + pos + ",\"absolute-percent\"]}\n");
+                switch (type)
+                {
+                    case PlaybackPosType.absolutePercent:
+                        SendMessage("{\"command\":[\"seek\"," + pos + ",\"absolute-percent\"]}\n");
+                        break;
+                    case PlaybackPosType.relativePercent:
+                        SendMessage("{\"command\":[\"seek\"," + pos + ",\"relative-percent\"]}\n");
+                        break;
+                }
             }
         }
 
@@ -332,27 +372,24 @@ namespace livelywpf.Core
             return script.ToString();
         }
 
-        public void SetHWND(IntPtr hwnd)
-        {
-            this.HWND = hwnd;
-        }
-
         public void SetScreen(LivelyScreen display)
         {
-            this.Display = display;
+            this.display = display;
         }
 
         public async void Show()
         {
-            if (Proc != null)
+            if (_process != null)
             {
                 try
                 {
-                    Proc.Exited += Proc_Exited;
-                    Proc.Start();
-                    processWaitTask = Task.Run(() => HWND = WaitForProcesWindow().Result, ctsProcessWait.Token);
+                    _process.Exited += Proc_Exited;
+                    _process.OutputDataReceived += Proc_OutputDataReceived;
+                    _process.Start();
+                    _process.BeginOutputReadLine();
+                    processWaitTask = Task.Run(() => hwnd = WaitForProcesWindow().Result, ctsProcessWait.Token);
                     await processWaitTask;
-                    if (HWND.Equals(IntPtr.Zero))
+                    if (hwnd.Equals(IntPtr.Zero))
                     {
                         WindowInitialized?.Invoke(this, new WindowInitializedArgs()
                         {
@@ -363,8 +400,8 @@ namespace livelywpf.Core
                     }
                     else
                     {
-                        WindowOperations.BorderlessWinStyle(HWND);
-                        WindowOperations.RemoveWindowFromTaskbar(HWND);
+                        WindowOperations.BorderlessWinStyle(hwnd);
+                        WindowOperations.RemoveWindowFromTaskbar(hwnd);
                         //Program ready!
                         WindowInitialized?.Invoke(this, new WindowInitializedArgs()
                         {
@@ -407,9 +444,18 @@ namespace livelywpf.Core
             }
         }
 
+        private void Proc_OutputDataReceived(object sender, DataReceivedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(e.Data))
+            {
+                Logger.Info("Mpv" + uniqueId + ":" + e.Data);
+            }
+        }
+
         private void Proc_Exited(object sender, EventArgs e)
         {
-            Proc.Dispose();
+            _process.OutputDataReceived -= Proc_OutputDataReceived;
+            _process?.Dispose();
             SetupDesktop.RefreshDesktop();
         }
 
@@ -420,24 +466,24 @@ namespace livelywpf.Core
         /// </summary>
         private async Task<IntPtr> WaitForProcesWindow()
         {
-            if (Proc == null)
+            if (_process == null)
             {
                 return IntPtr.Zero;
             }
 
-            Proc.Refresh();
+            _process.Refresh();
             //waiting for program messageloop to be ready (GUI is not guaranteed to be ready.)
-            while (Proc.WaitForInputIdle(-1) != true)
+            while (_process.WaitForInputIdle(-1) != true)
             {
                 ctsProcessWait.Token.ThrowIfCancellationRequested();
             }
 
             IntPtr wHWND = IntPtr.Zero;
             //Find process window.
-            for (int i = 0; i < timeOut && Proc.HasExited == false; i++)
+            for (int i = 0; i < timeOut && _process.HasExited == false; i++)
             {
                 ctsProcessWait.Token.ThrowIfCancellationRequested();
-                if (!IntPtr.Equals((wHWND = GetProcessWindow(Proc, true)), IntPtr.Zero))
+                if (!IntPtr.Equals((wHWND = GetProcessWindow(_process, true)), IntPtr.Zero))
                     break;
                 await Task.Delay(1);
             }
@@ -452,7 +498,7 @@ namespace livelywpf.Core
         /// <returns></returns>
         private IntPtr GetProcessWindow(Process proc, bool win32Search = false)
         {
-            if (Proc == null)
+            if (_process == null)
                 return IntPtr.Zero;
 
             if (win32Search)
@@ -527,8 +573,7 @@ namespace livelywpf.Core
         {
             try
             {
-                Proc.Kill();
-                Proc.Dispose();
+                _process.Kill();
             }
             catch { }
             SetupDesktop.RefreshDesktop();

@@ -1,46 +1,65 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace livelywpf.Core
 {
-    public class ExtPrograms : IWallpaper
+    //Ref: 
+    //https://github.com/rocksdanister/lively/discussions/342
+    //https://wiki.videolan.org/documentation:modules/rc/
+    public class VideoVlcPlayer : IWallpaper
     {
+        //private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+        public event EventHandler<WindowInitializedArgs> WindowInitialized;
         private IntPtr hwnd;
         private readonly Process _process;
         private readonly LibraryModel model;
         private LivelyScreen display;
-        public UInt32 SuspendCnt { get; set; }
-        public event EventHandler<WindowInitializedArgs> WindowInitialized;
         private readonly CancellationTokenSource ctsProcessWait = new CancellationTokenSource();
         private Task processWaitTask;
         private readonly int timeOut;
 
-        /// <summary>
-        /// Launch Program(.exe) Unity, godot.. as wallpaper.
-        /// </summary>
-        /// <param name="path">Path to program exe</param>
-        /// <param name="model">Wallpaper data</param>
-        /// <param name="display">Screen metadata</param>
-        /// <param name="timeOut">Time to wait for program to be ready(in milliseconds)</param>
-        public ExtPrograms(string path, LibraryModel model, LivelyScreen display, int timeOut = 20000)
+        public VideoVlcPlayer(string path, LibraryModel model, LivelyScreen display, WallpaperScaler scaler = WallpaperScaler.fill)
         {
-            // Unity flags
-            //-popupwindow removes from taskbar
-            //-fullscreen disable fullscreen mode if set during compilation (lively is handling resizing window instead).
-            //Alternative flags:
-            //Unity attaches to workerw by itself; Problem: Process window handle is returning zero.
-            //"-parentHWND " + workerw.ToString();// + " -popupwindow" + " -;
-            //cmdArgs = "-popupwindow -screen-fullscreen 0";
-            string cmdArgs = model.LivelyInfo.Arguments;
+            var scalerArg = scaler switch
+            {
+                WallpaperScaler.none => "--no-autoscale ",
+                WallpaperScaler.fill => "--aspect-ratio=" + display.Bounds.Width + ":" + display.Bounds.Height,
+                WallpaperScaler.uniform => "--autoscale",
+                WallpaperScaler.uniformFill => "--crop=" + display.Bounds.Width + ":" + display.Bounds.Height,
+                _ => "--autoscale",
+            };
+
+            StringBuilder cmdArgs = new StringBuilder();
+            //--no-video-title.
+            cmdArgs.Append("--no-osd ");
+            //video stretch algorithm.
+            cmdArgs.Append(scalerArg + " ");
+            //hide menus and controls.
+            cmdArgs.Append("--qt-minimal-view ");
+            //do not create system-tray icon.
+            cmdArgs.Append("--no-qt-system-tray ");
+            //prevent player window resizing to video size.
+            cmdArgs.Append("--no-qt-video-autoresize ");
+            //allow screensaver.
+            cmdArgs.Append("--no-disable-screensaver ");
+            //open window at (-9999,0), not working without: --no-embedded-video
+            cmdArgs.Append("--video-x=-9999 --video-y=0 ");
+            //gpu decode preference.
+            cmdArgs.Append(Program.SettingsVM.Settings.VideoPlayerHwAccel ? "--avcodec-hw=any " : "--avcodec-hw=none ");
+            //media file path.
+            cmdArgs.Append("\"" + path + "\"");
 
             ProcessStartInfo start = new ProcessStartInfo
             {
-                FileName = path,
+                FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "vlc", "vlc.exe"),
                 UseShellExecute = false,
-                WorkingDirectory = System.IO.Path.GetDirectoryName(path),
-                Arguments = cmdArgs,
+                WorkingDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "vlc"),
+                Arguments = cmdArgs.ToString(),
             };
 
             Process _process = new Process()
@@ -52,14 +71,13 @@ namespace livelywpf.Core
             this._process = _process;
             this.model = model;
             this.display = display;
-            this.timeOut = timeOut;
-            SuspendCnt = 0;
+            this.timeOut = 20000;
         }
 
         public async void Close()
         {
             TaskProcessWaitCancel();
-            while(!IsProcessWaitDone())
+            while (!IsProcessWaitDone())
             {
                 await Task.Delay(1);
             }
@@ -74,9 +92,19 @@ namespace livelywpf.Core
             return hwnd;
         }
 
+        public string GetLivelyPropertyCopyPath()
+        {
+            return null;
+        }
+
         public Process GetProcess()
         {
             return _process;
+        }
+
+        public LivelyScreen GetScreen()
+        {
+            return display;
         }
 
         public LibraryModel GetWallpaperData()
@@ -91,58 +119,32 @@ namespace livelywpf.Core
 
         public void Pause()
         {
-            if (_process != null)
-            {
-                //method 0, issue: does not work with every pgm
-                //NativeMethods.DebugActiveProcess((uint)Proc.Id);
-
-                //method 1, issue: resume taking time ?!
-                //NativeMethods.NtSuspendProcess(Proc.Handle);
-
-                //method 2, issue: deadlock/thread issue
-                /*
-                try
-                {
-                    ProcessSuspend.SuspendAllThreads(this);
-                    //thread buggy noise otherwise?!
-                    VolumeMixer.SetApplicationMute(Proc.Id, true);
-                }
-                catch { }
-                */
-            }
+            //todo
         }
 
         public void Play()
         {
-            if (_process != null)
-            {
-                //method 0, issue: does not work with every pgm
-                //NativeMethods.DebugActiveProcessStop((uint)Proc.Id);
-
-                //method 1, issue: resume taking time ?!
-                //NativeMethods.NtResumeProcess(Proc.Handle);
-
-                //method 2, issue: deadlock/thread issue
-                /*
-                try
-                {
-                    ProcessSuspend.ResumeAllThreads(this);
-                    //thread buggy noise otherwise?!
-                    VolumeMixer.SetApplicationMute(Proc.Id, false);
-                }
-                catch { }
-                */
-            }
+            //todo
         }
 
-        public void Stop()
+        public void SendMessage(string msg)
         {
-            
+            //todo
         }
 
-        public LivelyScreen GetScreen()
+        public void SetPlaybackPos(float pos, PlaybackPosType type)
         {
-            return display;
+            //todo
+        }
+
+        public void SetScreen(LivelyScreen display)
+        {
+            this.display = display;
+        }
+
+        public void SetVolume(int volume)
+        {
+            //todo
         }
 
         public async void Show()
@@ -155,7 +157,7 @@ namespace livelywpf.Core
                     _process.Start();
                     processWaitTask = Task.Run(() => hwnd = WaitForProcesWindow().Result, ctsProcessWait.Token);
                     await processWaitTask;
-                    if(hwnd.Equals(IntPtr.Zero))
+                    if (hwnd.Equals(IntPtr.Zero))
                     {
                         WindowInitialized?.Invoke(this, new WindowInitializedArgs()
                         {
@@ -169,33 +171,42 @@ namespace livelywpf.Core
                         WindowOperations.BorderlessWinStyle(hwnd);
                         WindowOperations.RemoveWindowFromTaskbar(hwnd);
                         //Program ready!
-                        WindowInitialized?.Invoke(this, new WindowInitializedArgs() { 
-                            Success = true, 
-                            Error = null, 
-                            Msg = null });
+                        WindowInitialized?.Invoke(this, new WindowInitializedArgs()
+                        {
+                            Success = true,
+                            Error = null,
+                            Msg = null
+                        });
+                        //todo: Restore livelyproperties.json settings here..
                     }
                 }
-                catch(OperationCanceledException e1)
+                catch (OperationCanceledException e1)
                 {
-                    WindowInitialized?.Invoke(this, new WindowInitializedArgs() { 
-                        Success = false, 
-                        Error = e1, 
-                        Msg = "Program wallpaper terminated early/user cancel." });
+                    WindowInitialized?.Invoke(this, new WindowInitializedArgs()
+                    {
+                        Success = false,
+                        Error = e1,
+                        Msg = "Program wallpaper terminated early/user cancel."
+                    });
                 }
-                catch(InvalidOperationException e2)
+                catch (InvalidOperationException e2)
                 {
                     //No GUI, program failed to enter idle state.
-                    WindowInitialized?.Invoke(this, new WindowInitializedArgs() { 
+                    WindowInitialized?.Invoke(this, new WindowInitializedArgs()
+                    {
                         Success = false,
                         Error = e2,
-                        Msg = "Program wallpaper crashed/closed already!" });
+                        Msg = "Program wallpaper crashed/closed already!"
+                    });
                 }
                 catch (Exception e3)
                 {
-                    WindowInitialized?.Invoke(this, new WindowInitializedArgs() { 
+                    WindowInitialized?.Invoke(this, new WindowInitializedArgs()
+                    {
                         Success = false,
                         Error = e3,
-                        Msg = ":(" });
+                        Msg = ":("
+                    });
                 }
             }
         }
@@ -226,20 +237,6 @@ namespace livelywpf.Core
             }
 
             IntPtr wHWND = IntPtr.Zero;
-            if (GetWallpaperType() == WallpaperType.godot)
-            {
-                for (int i = 0; i < timeOut && _process.HasExited == false; i++)
-                {
-                    ctsProcessWait.Token.ThrowIfCancellationRequested();
-                    //todo: verify pid of window.
-                    wHWND = NativeMethods.FindWindowEx(IntPtr.Zero, IntPtr.Zero, "Engine", null);
-                    if (!IntPtr.Equals(wHWND, IntPtr.Zero))
-                        break;
-                    await Task.Delay(1);
-                }
-                return wHWND;
-            }
-
             //Find process window.
             for (int i = 0; i < timeOut && _process.HasExited == false; i++)
             {
@@ -247,28 +244,6 @@ namespace livelywpf.Core
                 if (!IntPtr.Equals((wHWND = GetProcessWindow(_process, true)), IntPtr.Zero))
                     break;
                 await Task.Delay(1);
-            }
-
-            //Player settings dialog of Unity (if exists.)
-            IntPtr cHWND = NativeMethods.FindWindowEx(wHWND, IntPtr.Zero, "Button", "Play!");
-            if (!IntPtr.Equals(cHWND, IntPtr.Zero))
-            {
-                //Simulate Play! button click. (Unity config window)
-                NativeMethods.SendMessage(cHWND, NativeMethods.BM_CLICK, IntPtr.Zero, IntPtr.Zero);
-                //Refreshing..
-                wHWND = IntPtr.Zero;
-                await Task.Delay(1);
-
-                //Search for Unity main Window.
-                for (int i = 0; i < timeOut && _process.HasExited == false; i++)
-                {
-                    ctsProcessWait.Token.ThrowIfCancellationRequested();
-                    if (!IntPtr.Equals((wHWND = GetProcessWindow(_process, true)), IntPtr.Zero))
-                    {
-                        break;
-                    }
-                    await Task.Delay(1);
-                }
             }
             return wHWND;
         }
@@ -281,10 +256,10 @@ namespace livelywpf.Core
         /// <returns></returns>
         private IntPtr GetProcessWindow(Process proc, bool win32Search = false)
         {
-            if (_process == null)
+            if (this._process == null)
                 return IntPtr.Zero;
 
-            if(win32Search)
+            if (win32Search)
             {
                 return FindWindowByProcessId(proc.Id);
             }
@@ -338,7 +313,7 @@ namespace livelywpf.Core
             var task = processWaitTask;
             if (task != null)
             {
-                if((task.IsCompleted == false
+                if ((task.IsCompleted == false
                 || task.Status == TaskStatus.Running
                 || task.Status == TaskStatus.WaitingToRun
                 || task.Status == TaskStatus.WaitingForActivation))
@@ -352,19 +327,10 @@ namespace livelywpf.Core
 
         #endregion process task
 
-        public void SendMessage(string msg)
-        {
 
-        }
-
-        public string GetLivelyPropertyCopyPath()
+        public void Stop()
         {
-            return null;
-        }
-
-        public void SetScreen(LivelyScreen display)
-        {
-            this.display = display;
+            //todo
         }
 
         public void Terminate()
@@ -375,20 +341,6 @@ namespace livelywpf.Core
             }
             catch { }
             SetupDesktop.RefreshDesktop();
-        }
-
-        public void SetVolume(int volume)
-        {
-            try
-            {
-                VolumeMixer.SetApplicationVolume(_process.Id, volume);
-            }
-            catch { }
-        }
-
-        public void SetPlaybackPos(float pos, PlaybackPosType type)
-        {
-            //todo
         }
     }
 }

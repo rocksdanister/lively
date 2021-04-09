@@ -25,8 +25,6 @@ namespace livelywpf
             InitializeComponent();
             NavViewNavigate("library");
             SetupDesktop.WallpaperChanged += SetupDesktop_WallpaperChanged;
-            //Program.SettingsVM.DebugMenuVisibilityChange += SettingsVM_DebugMenuVisibilityChange;
-            //debugMenu.Visibility = Program.SettingsVM.Settings.DebugMenu ? Visibility.Visible : Visibility.Collapsed;
             this.DataContext = Program.SettingsVM;
         }
 
@@ -174,7 +172,7 @@ namespace livelywpf
         {
             if (e.Data.GetDataPresent(System.Windows.DataFormats.FileDrop))
             {
-                string[] droppedFiles = e.Data.GetData(System.Windows.DataFormats.FileDrop, true) as string[];
+                var droppedFiles = e.Data.GetData(System.Windows.DataFormats.FileDrop, true) as string[];
                 if ((null == droppedFiles) || (!droppedFiles.Any()))
                     return;
                 Logger.Info("Dropped File, Selecting first file:" + droppedFiles[0]);
@@ -227,36 +225,24 @@ namespace livelywpf
                 Uri uri;
                 try
                 {
-                    uri = new Uri(droppedText);
+                    uri = Helpers.LinkHandler.SanitizeUrl(droppedText);
                 }
-                catch (UriFormatException)
+                catch
                 {
-                    try
-                    {
-                        //if user did not input https/http assume https connection.
-                        uri = new UriBuilder(droppedText)
-                        {
-                            Scheme = "https",
-                            Port = -1,
-                        }.Uri;
-                    }
-                    catch
-                    {
-                        return;
-                    }
+                    return;
                 }
 
                 if (Program.SettingsVM.Settings.AutoDetectOnlineStreams &&
-                    StreamHelper.IsSupportedUri(uri))
+                    StreamHelper.IsSupportedStream(uri))
                 {
-                    Program.LibraryVM.AddWallpaper(uri.ToString(),
+                    Program.LibraryVM.AddWallpaper(uri.OriginalString,
                         WallpaperType.videostream,
                         LibraryTileType.processing,
                         Program.SettingsVM.Settings.SelectedDisplay);
                 }
                 else
                 {
-                    Program.LibraryVM.AddWallpaper(uri.ToString(),
+                    Program.LibraryVM.AddWallpaper(uri.OriginalString,
                         WallpaperType.url,
                         LibraryTileType.processing,
                         Program.SettingsVM.Settings.SelectedDisplay);
@@ -277,16 +263,20 @@ namespace livelywpf
             source.AddHook(WndProc);
         }
 
+        //todo: maybe create separate window to handle all window messages globally?
         private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
             if (msg == NativeMethods.WM_SHOWLIVELY)
             {
                 Program.ShowMainWindow();   
             }
-            //todo: bind it better.
-            _ = Core.DisplayManager.Instance?.OnWndProc(hwnd, (uint)msg, wParam, lParam);
-
-            if (msg == (uint)NativeMethods.WM.QUERYENDSESSION)
+            else if (msg == NativeMethods.WM_TASKBARCREATED)
+            {
+                //explorer crash detection, new taskbar is created everytime explorer is started..
+                Logger.Info("WM_TASKBARCREATED: New taskbar created.");
+                SetupDesktop.ResetWorkerW();
+            }
+            else if (msg == (uint)NativeMethods.WM.QUERYENDSESSION)
             {
                 _ = NativeMethods.RegisterApplicationRestart(
                     null,
@@ -294,6 +284,8 @@ namespace livelywpf
                     (int)NativeMethods.RestartFlags.RESTART_NO_HANG |
                     (int)NativeMethods.RestartFlags.RESTART_NO_REBOOT);
             }
+            //screen message processing...
+            _ = Core.DisplayManager.Instance?.OnWndProc(hwnd, (uint)msg, wParam, lParam);
 
             return IntPtr.Zero;
         }

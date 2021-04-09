@@ -207,13 +207,14 @@ namespace livelywpf.Views
             if (!_recording)
             {
                 //save dialog
-                string savePath = "";
+                string savePath = string.Empty;
+                var prevBorder = WindowOperations.GetAbsolutePlacement(PreviewBorder, true);
                 var saveFileDialog1 = new Microsoft.Win32.SaveFileDialog()
                 {
                     Title = "Select location to save the file",
                     Filter = Properties.Resources.TextVideo + "|*.mp4",
                     //title ending with '.' can have diff extension (example: parallax.js)
-                    FileName = Path.ChangeExtension(wallpaperData.Title, ".mp4"),
+                    FileName = Path.GetFileNameWithoutExtension(wallpaperData.Title) + "_" + prevBorder.Width + "x" + prevBorder.Height,
                 };
                 if (saveFileDialog1.ShowDialog() == true)
                 {
@@ -238,9 +239,8 @@ namespace livelywpf.Views
                 }
 
                 //recorder initialization
-                var item = WindowOperations.GetAbsolutePlacement(PreviewBorder, true);
                 recorder = new Helpers.ScreenRecorderlibScreen();
-                recorder.Initialize(savePath, item, 60, 8000 * 1000, false, false);
+                recorder.Initialize(savePath, prevBorder, 60, 8000 * 1000, false, false);
                 recorder.RecorderStatus += Recorder_RecorderStatus;
                 //recording timer.
                 if(dispatcherTimer == null)

@@ -26,12 +26,6 @@ namespace livelywpf.Core
         /// <returns></returns>
         IntPtr GetHWND();
         /// <summary>
-        /// Set window handle.
-        /// This is only metadata, have no effect on actual handle.
-        /// </summary>
-        /// <param name="hwnd">HWND</param>
-        void SetHWND(IntPtr hwnd);
-        /// <summary>
         /// Get process information.
         /// </summary>
         /// <returns>null if not a program wallpaper.</returns>
@@ -67,8 +61,8 @@ namespace livelywpf.Core
         /// <returns></returns>
         LivelyScreen GetScreen();
         /// <summary>
-        /// Set display device in which wallpaper is currently running.
-        /// This is only metadata, have no effect on actual wallpaper position.
+        /// Set display device in which wallpaper is currently running.<para>
+        /// Only metadata, have no effect on actual wallpaper size/position.</para>
         /// </summary>
         /// <param name="display"></param>
         void SetScreen(LivelyScreen display);
@@ -93,12 +87,18 @@ namespace livelywpf.Core
         /// Only value 0 works for non-video wallpapers.</br>
         /// </summary>
         /// <param name="pos">Range 0 - 100</param>
-        void SetPlaybackPos(int pos);
+        void SetPlaybackPos(float pos, PlaybackPosType type);
         /// <summary>
         /// Fires after Show() method is called.
         /// Check success status to check if wallpaper ready/failed.
         /// </summary>
         event EventHandler<WindowInitializedArgs> WindowInitialized;
+    }
+
+    public enum PlaybackPosType
+    {
+        absolutePercent, 
+        relativePercent
     }
 
     public class WindowInitializedArgs : EventArgs

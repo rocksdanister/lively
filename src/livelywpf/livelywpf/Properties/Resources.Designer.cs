@@ -289,7 +289,7 @@ namespace livelywpf.Properties {
         ///
         ///If Windows 7 just set - Adjust for best appearance &amp;amp; Apply.
         ///If still not working, close &amp; start Lively again/restart windows.
-        ///(Do [rest of string was truncated]&quot;;.
+        ///(Does not w [rest of string was truncated]&quot;;.
         /// </summary>
         public static string LivelyExceptionWorkerWSetupFail {
             get {

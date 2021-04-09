@@ -11,71 +11,74 @@ namespace livelywpf.Core
     /// </summary>
     public class VideoPlayerWPF : IWallpaper
     {
-        IntPtr HWND { get; set; }
-        MediaElementWPF Player { get; set; }
-        LibraryModel Model { get; set; }
-        LivelyScreen Display { get; set; }
+        private IntPtr hwnd;
+        private readonly MediaElementWPF player;
+        private readonly LibraryModel model;
+        private LivelyScreen display;
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
 
         public VideoPlayerWPF(string filePath, LibraryModel model, LivelyScreen display, WallpaperScaler scaler = WallpaperScaler.fill)
         {
-            Player = new MediaElementWPF(filePath, scaler);
-            this.Model = model;
-            this.Display = display;
+            player = new MediaElementWPF(filePath, scaler);
+            this.model = model;
+            this.display = display;
         }
 
         public WallpaperType GetWallpaperType()
         {
             return WallpaperType.video;
         }
+
         public LibraryModel GetWallpaperData()
         {
-            return Model;
+            return model;
         }
+
         public IntPtr GetHWND()
         {
-            return HWND;
+            return hwnd;
         }
-        public void SetHWND(IntPtr hwnd)
-        {
-            this.HWND = hwnd;
-        }
+
         public Process GetProcess()
         {
             return null;
         }
+
         public void Play()
         {
-            Player.PlayMedia();
+            player.PlayMedia();
         }
+
         public void Pause()
         {
-            Player.PausePlayer();
+            player.PausePlayer();
         }
+
         public void Stop()
         {
-            Player.StopPlayer();
+            player.StopPlayer();
         }
+
         public void Close()
         {
-            System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
+            System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
             {
-                Player.Close();
+                player.Close();
             }));
         }
 
         public LivelyScreen GetScreen()
         {
-            return Display;
+            return display;
         }
 
         public void Show()
         {
-            if(Player != null)
+            if(player != null)
             {
-                Player.Closed += Player_Closed;
-                Player.Show();
-                HWND = new WindowInteropHelper(Player).Handle;
+                player.Closed += Player_Closed;
+                player.Show();
+                hwnd = new WindowInteropHelper(player).Handle;
                 WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = true, Error = null });
             }
         }
@@ -87,7 +90,7 @@ namespace livelywpf.Core
 
         public void SendMessage(string msg)
         {
-            //throw new NotImplementedException();
+            //todo
         }
 
         public string GetLivelyPropertyCopyPath()
@@ -97,7 +100,7 @@ namespace livelywpf.Core
 
         public void SetScreen(LivelyScreen display)
         {
-            this.Display = display;
+            this.display = display;
         }
 
         public void Terminate()
@@ -105,17 +108,12 @@ namespace livelywpf.Core
             Close();
         }
 
-        public void Resume()
-        {
-            //throw new NotImplementedException();
-        }
-
         public void SetVolume(int volume)
         {
-            Player.SetVolume(volume);
+            player.SetVolume(volume);
         }
 
-        public void SetPlaybackPos(int pos)
+        public void SetPlaybackPos(float pos, PlaybackPosType type)
         {
             //todo
         }

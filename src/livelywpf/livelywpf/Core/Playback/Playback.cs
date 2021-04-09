@@ -213,7 +213,7 @@ namespace livelywpf.Core
                     for (int i = 0; i < Program.AppRulesVM.AppRules.Count; i++)
                     {
                         var item = Program.AppRulesVM.AppRules[i];
-                        if (String.Equals(item.AppName, fProcess.ProcessName, StringComparison.OrdinalIgnoreCase))
+                        if (String.Equals(item.AppName, fProcess.ProcessName, StringComparison.Ordinal))
                         {
                             if (item.Rule == AppRulesEnum.ignore)
                             {
@@ -380,8 +380,10 @@ namespace livelywpf.Core
         {
             SetupDesktop.Wallpapers.ForEach(x =>
             {
-                if(ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.deviceId))
+                if (ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.deviceId))
+                {
                     x.Pause();
+                }
             });
         }
 
@@ -515,6 +517,8 @@ namespace livelywpf.Core
                     // dispose managed state (managed objects)
                     dispatcherTimer.Stop();
                     SystemEvents.SessionSwitch -= SystemEvents_SessionSwitch;
+                    // static variables reset..
+                    progman = workerWOrig = IntPtr.Zero;
                 }
 
                 // TODO: free unmanaged resources (unmanaged objects) and override finalizer

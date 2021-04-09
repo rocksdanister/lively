@@ -106,22 +106,12 @@ namespace livelywpf.Core
 
         }
 
-        public void Resume()
-        {
-
-        }
-
         public void SendMessage(string msg)
         {
             if(Player != null)
             {
                 Player.SendMessage(msg);
             }
-        }
-
-        public void SetHWND(IntPtr hwnd)
-        {
-            this.HWND = hwnd;
         }
 
         public void SetScreen(LivelyScreen display)
@@ -168,9 +158,9 @@ namespace livelywpf.Core
             Close();
         }
 
-        public void SetPlaybackPos(int pos)
+        public void SetPlaybackPos(float pos, PlaybackPosType type)
         {
-            //todo
+            //todo: reload if 0
         }
     }
 }

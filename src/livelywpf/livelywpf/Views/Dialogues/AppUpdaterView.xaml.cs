@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Documents;
+using livelywpf.NetWork;
 
 namespace livelywpf.Views
 {
@@ -13,19 +14,20 @@ namespace livelywpf.Views
     /// </summary>
     public partial class AppUpdaterView : Window
     {
-        private DownloadHelper download;
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+        private IDownloadHelper download;
         private readonly Uri fileUrl;
         private bool _forceClose = false;
         private bool downloadComplete = false;
-        private string fileName;
-        string savePath = "";
+        private readonly string suggestedFileName;
+        private string savePath = string.Empty;
 
         public AppUpdaterView(Uri fileUri, string changelogText)
         {
             InitializeComponent();
-            if(fileUri != null)
+            if (fileUri != null)
             {
-                this.fileName = fileUri.Segments.Last();
+                this.suggestedFileName = fileUri.Segments.Last();
                 this.fileUrl = fileUri;
                 changelog.Document.Blocks.Add(new Paragraph(new Run(changelogText)));
             }
@@ -37,31 +39,40 @@ namespace livelywpf.Views
             }
         }
 
-        private void UpdateDownload_DownloadProgressChanged(object sender, DownloadEventArgs e)
+        private void Download_DownloadStarted(object sender, DownloadEventArgs e)
         {
-            progressBar.Value = e.Percentage;
-            taskbarItemInfo.ProgressValue = e.Percentage/100f;
-            sizeTxt.Text = e.DownloadedSize + "/" + e.TotalSize + " MB";
+            _ = this.Dispatcher.BeginInvoke(new Action(() => {
+                totalSizeTxt.Text = "/" + e.TotalSize + " MB";
+            }));
+        }
+
+        private void UpdateDownload_DownloadProgressChanged(object sender, DownloadProgressEventArgs e)
+        {
+            _ = this.Dispatcher.BeginInvoke(new Action(() => {
+                progressBar.Value = e.Percentage;
+                taskbarItemInfo.ProgressValue = e.Percentage / 100f;
+                sizeTxt.Text = e.DownloadedSize.ToString();
+            }));
         }
 
         private void UpdateDownload_DownloadFileCompleted(object sender, bool success)
         {
-            if(success)
-            {
-                //success
-                downloadComplete = true;
-                downloadBtn.IsEnabled = true;
-                downloadBtn.Content = Properties.Resources.TextInstall;
-                taskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
-            }
-            else
-            {
-                taskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Error;
-                changelog.Document.Blocks.Clear();
-                changelog.Document.Blocks.Add(new Paragraph(new Run(Properties.Resources.LivelyExceptionAppUpdateFail)));
-                _forceClose = true;
-                //this.Close();
-            }
+            _ = this.Dispatcher.BeginInvoke(new Action(() => {
+                if (success)
+                {
+                    downloadComplete = true;
+                    downloadBtn.IsEnabled = true;
+                    downloadBtn.Content = Properties.Resources.TextInstall;
+                    taskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
+                }
+                else
+                {
+                    taskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Error;
+                    changelog.Document.Blocks.Clear();
+                    changelog.Document.Blocks.Add(new Paragraph(new Run(Properties.Resources.LivelyExceptionAppUpdateFail)));
+                    _forceClose = true;
+                }
+            }));
         }
 
         private void Download_Button_Click(object sender, RoutedEventArgs e)
@@ -76,8 +87,9 @@ namespace livelywpf.Views
                     //inno installer will auto retry, waiting for application exit.
                     Program.ExitApplication();
                 }
-                catch
+                catch (Exception ex)
                 {
+                    Logger.Error(ex.ToString());
                     MessageBox.Show(Properties.Resources.LivelyExceptionAppUpdateFail, Properties.Resources.TextError);
                 }
             }
@@ -87,7 +99,7 @@ namespace livelywpf.Views
                 {
                     Title = "Select location to save the file",
                     Filter = "Executable|*.exe",
-                    FileName = fileName,
+                    FileName = suggestedFileName,
                 };
                 if (saveFileDialog1.ShowDialog() == true)
                 {
@@ -100,19 +112,20 @@ namespace livelywpf.Views
 
                 try
                 {
-                    download = new DownloadHelper();
+                    download = new MultiDownloadHelper();
                     download.DownloadFile(fileUrl, savePath);
                     download.DownloadFileCompleted += UpdateDownload_DownloadFileCompleted;
                     download.DownloadProgressChanged += UpdateDownload_DownloadProgressChanged;
+                    download.DownloadStarted += Download_DownloadStarted;
                     taskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Normal;
                 }
-                catch
+                catch (Exception ex)
                 {
+                    Logger.Error(ex.ToString());
                     taskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Error;
                     changelog.Document.Blocks.Clear();
                     changelog.Document.Blocks.Add(new Paragraph(new Run(Properties.Resources.LivelyExceptionAppUpdateFail)));
                     _forceClose = true;
-                    //this.Close();
                 }
             }
         }
@@ -142,7 +155,7 @@ namespace livelywpf.Views
                 {
                     download.DownloadFileCompleted -= UpdateDownload_DownloadFileCompleted;
                     download.DownloadProgressChanged -= UpdateDownload_DownloadProgressChanged;
-                    download.Dispose();
+                    download.Cancel();
                 }
             }
         }

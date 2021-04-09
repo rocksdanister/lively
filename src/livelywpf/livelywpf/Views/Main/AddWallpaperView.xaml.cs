@@ -19,6 +19,7 @@ namespace livelywpf.Views
             InitializeComponent();
             UrlText.Text = Program.SettingsVM.Settings.SavedURL;
             fileDialogFilter = FileFilter.GetLivelySupportedFileDialogFilter(true);
+            UrlStreamPanel.Visibility = Program.SettingsVM.Settings.DebugMenu ? Visibility.Visible : Visibility.Collapsed;
         }
 
         private async void FileBtn_Click(object sender, RoutedEventArgs e)
@@ -105,45 +106,28 @@ namespace livelywpf.Views
 
         private void UrlBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(UrlText.Text))
+            Uri uri;
+            try
+            {
+                uri = Helpers.LinkHandler.SanitizeUrl(UrlText.Text);
+            }
+            catch
             {
                 return;
             }
 
-            Uri uri;
-            try
-            {
-                uri = new Uri(UrlText.Text);
-            }
-            catch (UriFormatException)
-            {
-                try
-                {
-                    //if user did not input https/http assume https connection.
-                    uri = new UriBuilder(UrlText.Text)
-                    {
-                        Scheme = "https",
-                        Port = -1,
-                    }.Uri;
-                    UrlText.Text = uri.ToString();
-                }
-                catch
-                {
-                    return;
-                }
-            }
-
+            UrlText.Text = uri.OriginalString;
             if (Program.SettingsVM.Settings.AutoDetectOnlineStreams &&
-                 StreamHelper.IsSupportedUri(uri))
+                 StreamHelper.IsSupportedStream(uri))
             {
-                Program.LibraryVM.AddWallpaper(uri.ToString(),
+                Program.LibraryVM.AddWallpaper(uri.OriginalString,
                     WallpaperType.videostream,
                     LibraryTileType.processing,
                     Program.SettingsVM.Settings.SelectedDisplay);
             }
             else
             {
-                Program.LibraryVM.AddWallpaper(uri.ToString(),
+                Program.LibraryVM.AddWallpaper(uri.OriginalString,
                     WallpaperType.url,
                     LibraryTileType.processing,
                     Program.SettingsVM.Settings.SelectedDisplay);
@@ -151,6 +135,27 @@ namespace livelywpf.Views
 
             Program.SettingsVM.Settings.SavedURL = UrlText.Text;
             Program.SettingsVM.UpdateConfigFile();
+
+            App.AppWindow.NavViewNavigate("library");
+        }
+
+        private void UrlBtn_Click_Stream(object sender, RoutedEventArgs e)
+        {
+            Uri uri;
+            try
+            {
+                uri = Helpers.LinkHandler.SanitizeUrl(UrlTextStream.Text);
+            }
+            catch
+            {
+                return;
+            }
+
+            UrlTextStream.Text = uri.OriginalString;
+            Program.LibraryVM.AddWallpaper(uri.OriginalString,
+                  WallpaperType.videostream,
+                  LibraryTileType.processing,
+                  Program.SettingsVM.Settings.SelectedDisplay);
 
             App.AppWindow.NavViewNavigate("library");
         }

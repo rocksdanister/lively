@@ -7,15 +7,20 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:p = "clr-namespace:livelywpf.Properties"   
+        xmlns:p = "clr-namespace:livelywpf.Properties"
+        xmlns:helper = "clr-namespace:livelywpf.Helpers"
         mc:Ignorable="d"
         ResizeMode="NoResize"
         Title="{x:Static p:Resources.TitleLibrary}" Width="410" Height="710"
         Loaded="Window_Loaded"
         Closing="Window_Closing"
         BorderBrush="{DynamicResource SystemControlHighlightAltListAccentHighBrush}">
+    <Window.Resources>
+        <helper:TaskbarProgressConverter x:Key="TaskbarProgressConverter"/>
+    </Window.Resources>
+
     <Window.TaskbarItemInfo>
-        <TaskbarItemInfo x:Name="taskbarItemInfo" ProgressState="None"/>
+        <TaskbarItemInfo x:Name="taskbarItemInfo" ProgressState="None" ProgressValue="{Binding CurrentProgress, Mode=OneWay, Converter={StaticResource TaskbarProgressConverter}}"/>
     </Window.TaskbarItemInfo>
     <Grid>
         <!-- wallpaper window will be placed here! -->

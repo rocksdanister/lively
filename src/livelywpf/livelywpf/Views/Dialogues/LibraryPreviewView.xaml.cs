@@ -133,6 +133,8 @@ namespace livelywpf.Views
             Rect previewPanelPos = WindowOperations.GetAbsolutePlacement(PreviewBorder, true);
             Size previewPanelSize = WindowOperations.GetElementPixelSize(PreviewBorder);
 
+            //no gif capture wpf only version..
+            CaptureProgress?.Invoke(this, 50);
             //wait before capturing thumbnail..incase wallpaper is not loaded yet.
             await Task.Delay(100);
             try
@@ -151,46 +153,6 @@ namespace livelywpf.Views
                (int)previewPanelSize.Width,
                (int)previewPanelSize.Height);
             ThumbnailUpdated?.Invoke(this, Path.Combine(saveDirectory, "lively_t.jpg"));
-
-            double progress = 0;
-            //preview clip (animated gif file).
-            if (false)//Program.SettingsVM.Settings.GifCapture && wallpaperType != WallpaperType.picture)
-            {
-                //generate screen capture images.
-                for (int i = 0; i < gifTotalFrames; i++)
-                {
-                    //updating the position incase window is moved.
-                    previewPanelPos = WindowOperations.GetAbsolutePlacement(PreviewBorder, true);
-                    CaptureScreen.CopyScreen(
-                                saveDirectory,
-                                i.ToString(CultureInfo.InvariantCulture) + ".jpg",
-                                (int)previewPanelPos.Left,
-                                (int)previewPanelPos.Top,
-                                (int)previewPanelSize.Width,
-                                (int)previewPanelSize.Height);
-
-                    await Task.Delay(gifAnimationDelay);
-                    //upto 99% 
-                    progress = ((i + 1f) / (gifTotalFrames + 1f))*100f;
-                    taskbarItemInfo.ProgressValue = progress/100f;
-                    CaptureProgress?.Invoke(this, progress);
-                }
-
-                //create animated gif from captured images.
-                await Task.Run(() => CreateGif(saveDirectory));
-                PreviewUpdated?.Invoke(this, Path.Combine(saveDirectory, "lively_p.gif"));
-
-                //deleting the capture frames.
-                for (int i = 0; i < gifTotalFrames; i++)
-                {
-                    try
-                    {
-                        File.Delete(saveDirectory + "\\" + i.ToString(CultureInfo.InvariantCulture) + ".jpg");
-                    }
-                    catch { }
-                }
-
-            }
 
             _processing = false;
             taskbarItemInfo.ProgressValue = 100f;

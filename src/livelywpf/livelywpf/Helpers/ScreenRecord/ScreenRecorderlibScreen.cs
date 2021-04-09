@@ -55,6 +55,20 @@ namespace livelywpf.Helpers
             };
         }
 
+        public void Initialize(string filePath, IntPtr hwnd, int fps, int bitrate, bool isAudio, bool isMousePointer)
+        {
+            this.filePath = filePath;
+            options = new RecorderOptions
+            {
+                RecorderMode = RecorderMode.Video,
+                RecorderApi = RecorderApi.WindowsGraphicsCapture,
+                DisplayOptions = new DisplayOptions
+                {
+                    WindowHandle = hwnd
+                },
+            };
+        }
+
         public void StartRecording()
         {
             _rec = Recorder.CreateRecorder(options);

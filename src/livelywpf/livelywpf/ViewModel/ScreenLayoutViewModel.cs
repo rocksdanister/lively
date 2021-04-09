@@ -156,24 +156,12 @@ namespace livelywpf
 
         private void CustomiseWallpaper(ScreenLayoutModel selection)
         {
-            if (SelectedItem != null)
+            //only for running wallpapers..
+            var items = SetupDesktop.Wallpapers.FindAll(x => x.GetWallpaperData().LivelyPropertyPath != null);
+            if (items.Count > 0)
             {
-                foreach (var x in SetupDesktop.Wallpapers)
-                {
-                    if (ScreenHelper.ScreenCompare(x.GetScreen(), selection.Screen, DisplayIdentificationMode.deviceId))
-                    {
-                        if (selection.LivelyPropertyPath != null)
-                        {
-                            var settingsWidget = new Cef.LivelyPropertiesTrayWidget(
-                               x.GetWallpaperData(),
-                               selection.LivelyPropertyPath,
-                               selection.Screen
-                               );
-                            settingsWidget.Show();
-                        }
-                        break;
-                    }
-                }
+                var settingsWidget = new Cef.LivelyPropertiesTrayWidget(items[0].GetWallpaperData());
+                settingsWidget.Show();
             }
         }
 
@@ -195,42 +183,61 @@ namespace livelywpf
         private void UpdateLayout()
         {
             ScreenItems.Clear();
-            if (Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span)
+            switch (Program.SettingsVM.Settings.WallpaperArrangement)
             {
-                if (SetupDesktop.Wallpapers.Count == 0)
-                {
-                    ScreenItems.Add(new ScreenLayoutModel(Program.SettingsVM.Settings.SelectedDisplay, null, null, "---"));
-                }
-                else
-                {
-                    var x = SetupDesktop.Wallpapers[0];
-                    ScreenItems.Add(new ScreenLayoutModel(x.GetScreen(), x.GetWallpaperData().ThumbnailPath, x.GetLivelyPropertyCopyPath(), "---"));
-                }
-            }
-            else
-            {
-                var unsortedScreenItems = new List<ScreenLayoutModel>();
-                foreach (var item in ScreenHelper.GetScreen())
-                {
-                    string imgPath = null;
-                    string livelyPropertyFilePath = null;
-                    SetupDesktop.Wallpapers.ForEach(x =>
+                case WallpaperArrangement.per:
                     {
-                        if (ScreenHelper.ScreenCompare(item, x.GetScreen(), DisplayIdentificationMode.deviceId))
+                        var unsortedScreenItems = new List<ScreenLayoutModel>();
+                        foreach (var item in ScreenHelper.GetScreen())
                         {
-                            imgPath = x.GetWallpaperData().ThumbnailPath;
-                            livelyPropertyFilePath = x.GetLivelyPropertyCopyPath();
+                            string imgPath = null;
+                            string livelyPropertyFilePath = null;
+                            SetupDesktop.Wallpapers.ForEach(x =>
+                            {
+                                if (ScreenHelper.ScreenCompare(item, x.GetScreen(), DisplayIdentificationMode.deviceId))
+                                {
+                                    imgPath = x.GetWallpaperData().ThumbnailPath;
+                                    livelyPropertyFilePath = x.GetLivelyPropertyCopyPath();
+                                }
+                            });
+                            unsortedScreenItems.Add(
+                                new ScreenLayoutModel(item, imgPath, livelyPropertyFilePath, item.DeviceNumber));
                         }
-                    });
-                    unsortedScreenItems.Add((Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.duplicate ?
-                        new ScreenLayoutModel(item, imgPath, livelyPropertyFilePath, item.DeviceNumber + '"') :
-                        new ScreenLayoutModel(item, imgPath, livelyPropertyFilePath, item.DeviceNumber)));
-                }
 
-                foreach (var item in unsortedScreenItems.OrderBy(x => x.Screen.Bounds.X).ToList())
-                {
-                    ScreenItems.Add(item);
-                }
+                        foreach (var item in unsortedScreenItems.OrderBy(x => x.Screen.Bounds.X).ToList())
+                        {
+                            ScreenItems.Add(item);
+                        }
+                    }
+                    break;
+                case WallpaperArrangement.span:
+                    {
+                        if (SetupDesktop.Wallpapers.Count == 0)
+                        {
+                            ScreenItems.Add(new ScreenLayoutModel(Program.SettingsVM.Settings.SelectedDisplay, null, null, "---"));
+                        }
+                        else
+                        {
+                            var x = SetupDesktop.Wallpapers[0];
+                            ScreenItems.Add(new ScreenLayoutModel(Program.SettingsVM.Settings.SelectedDisplay,
+                                x.GetWallpaperData().ThumbnailPath, x.GetLivelyPropertyCopyPath(), "---"));
+                        }
+                    }
+                    break;
+                case WallpaperArrangement.duplicate:
+                    {
+                        if (SetupDesktop.Wallpapers.Count == 0)
+                        {
+                            ScreenItems.Add(new ScreenLayoutModel(Program.SettingsVM.Settings.SelectedDisplay, null, null, "\""));
+                        }
+                        else
+                        {
+                            var x = SetupDesktop.Wallpapers[0];
+                            ScreenItems.Add(new ScreenLayoutModel(Program.SettingsVM.Settings.SelectedDisplay,
+                                x.GetWallpaperData().ThumbnailPath, x.GetLivelyPropertyCopyPath(), "\""));
+                        }
+                    }
+                    break;
             }
 
             foreach (var item in ScreenItems)

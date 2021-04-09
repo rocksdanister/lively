@@ -186,6 +186,7 @@
                                 <ComboBoxItem Visibility="Collapsed">libMPV</ComboBoxItem>
                                 <ComboBoxItem>libMPV(External)</ComboBoxItem>
                                 <ComboBoxItem>mpv</ComboBoxItem>
+                                <ComboBoxItem>vlc</ComboBoxItem>
                             </ComboBox>
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}" 
                                        Text="{x:Static p:Resources.TipVideoPlayer}"/>
