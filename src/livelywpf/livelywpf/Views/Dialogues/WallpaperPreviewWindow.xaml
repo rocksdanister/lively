@@ -32,7 +32,7 @@
             </StackPanel>
             <ui:FlyoutBase.AttachedFlyout>
                 <ui:Flyout>
-                    <TextBlock Text="{x:Static p:Resources.TextControlPanelOpen}" />
+                    <TextBlock Text="Please stop before proceeding."/>
                 </ui:Flyout>
             </ui:FlyoutBase.AttachedFlyout>
         </Button>

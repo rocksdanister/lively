@@ -116,24 +116,23 @@ namespace livelywpf
 
             //Creating copy of display.
             var target = new LivelyScreen(display);
-
-            //Screen check.
-            if (ScreenHelper.ScreenExists(target, DisplayIdentificationMode.deviceId) &&
-                wallpapersPending.FindIndex(x => ScreenHelper.ScreenCompare(x.GetScreen(), target, DisplayIdentificationMode.deviceId)) != -1)
+            if (!ScreenHelper.ScreenExists(target, DisplayIdentificationMode.deviceId))
             {
-                Logger.Info("Core: Skipping, wallpaper already queued/screen not found=>" + target.DeviceName);
+                Logger.Info("Core: Skipping, screen not found=>" + target.DeviceName);
                 return;
             }
-
-            //Check for wallpapers outside Lively folder.
-            var fileCheck = wallpaper.LivelyInfo.IsAbsolutePath ?
-                wallpaper.LivelyInfo.Type == WallpaperType.url || wallpaper.LivelyInfo.Type == WallpaperType.videostream || File.Exists(wallpaper.FilePath) :
-                wallpaper.FilePath != null;
-
-            if (!fileCheck)
+            else if (wallpapersPending.Exists(x => ScreenHelper.ScreenCompare(x.GetScreen(), target, DisplayIdentificationMode.deviceId)))
             {
-                _= Task.Run(() => MessageBox.Show(Properties.Resources.TextFileNotFound, Properties.Resources.TextError +" "+ Properties.Resources.TitleAppName));
-                Logger.Info("Core: Skipping, File not found");
+                Logger.Info("Core: Skipping, wallpaper already queued!");
+                return;
+            }
+            else if (!(wallpaper.LivelyInfo.IsAbsolutePath ?
+                wallpaper.LivelyInfo.Type == WallpaperType.url || wallpaper.LivelyInfo.Type == WallpaperType.videostream || File.Exists(wallpaper.FilePath) :
+                wallpaper.FilePath != null))
+            {
+                //Only checking for wallpapers outside Lively folder.
+                _ = Task.Run(() => MessageBox.Show(Properties.Resources.TextFileNotFound, Properties.Resources.TextError + " " + Properties.Resources.TitleAppName));
+                Logger.Info("Core: Skipping, File not found!");
                 WallpaperChanged?.Invoke(null, null);
                 return;
             }
@@ -213,7 +212,7 @@ namespace livelywpf
                     if (Program.IsMSIX)
                     {
                         Logger.Info("Core: Skipping program wallpaper on MSIX package.");
-                        System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
+                        _= System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
                         {
                             if (wallpaper.DataType == LibraryTileType.processing)
                             {
@@ -246,7 +245,7 @@ namespace livelywpf
 
             if (wpInstance != null)
             {
-                System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
+                _= System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
                 {
                     wallpaper.ItemStartup = true;
                 }));
@@ -274,7 +273,8 @@ namespace livelywpf
                 if (e.Success)
                 {
                     //preview and create gif and thumbnail for user dropped file.
-                    if (wallpaper.GetWallpaperData().DataType == LibraryTileType.processing)
+                    if (wallpaper.GetWallpaperData().DataType == LibraryTileType.processing 
+                        || wallpaper.GetWallpaperData().DataType == LibraryTileType.cmdImport)
                     {
                         //quitting running wallpaper before gif capture for low-end systemss.
                         if (Program.SettingsVM.Settings.LivelyGUIRendering == LivelyGUIState.lite)

@@ -55,7 +55,7 @@ namespace livelywpf.Helpers
 
         /// <summary>
         /// Identify Lively wallpaper type from file information.
-        ///  If more than one wallpapertype has same extension, first result is selected.
+        /// <br>If more than one wallpapertype has same extension, first result is selected.</br>
         /// </summary>
         /// <param name="filePath">Path to file.</param>
         /// <returns>-1 if not supported, 100 if Lively .zip</returns>

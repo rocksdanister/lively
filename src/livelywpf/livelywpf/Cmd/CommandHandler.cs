@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading;
 using System.Windows.Threading;
 using CommandLine;
+using livelywpf.Helpers;
 using Newtonsoft.Json.Linq;
 
 namespace livelywpf.Cmd
@@ -182,9 +183,42 @@ namespace livelywpf.Cmd
                         Core.LivelyScreen screen = opts.Monitor != null ?
                             ScreenHelper.GetScreen().FirstOrDefault(x => x.DeviceNumber == ((int)opts.Monitor).ToString()) : ScreenHelper.GetPrimaryScreen();
                         var libraryItem = Program.LibraryVM.LibraryItems.FirstOrDefault(x => x.FilePath != null && x.FilePath.Equals(opts.File));
-                        if (libraryItem != null && screen != null)
+                        if (screen != null)
                         {
-                            SetupDesktop.SetWallpaper(libraryItem, screen);
+                            if (libraryItem != null)
+                            {
+                                SetupDesktop.SetWallpaper(libraryItem, screen);
+                            }
+                            else
+                            {
+                                WallpaperType type;
+                                Logger.Info("Wallpaper not found in library, importing as new file.");
+                                if ((type = FileFilter.GetLivelyFileType(opts.File)) != (WallpaperType)(-1))
+                                {
+                                    if (type == WallpaperType.app ||
+                                        type == WallpaperType.unity ||
+                                        type == WallpaperType.unityaudio ||
+                                        type == WallpaperType.godot)
+                                    {
+                                        Logger.Info("App type wallpaper import is disabled for cmd control.");
+                                    }
+                                    else if (type == (WallpaperType)100)
+                                    {
+                                        Logger.Info("Lively .zip type wallpaper import is disabled for cmd control.");
+                                    }
+                                    else
+                                    {
+                                        Program.LibraryVM.AddWallpaper(opts.File,
+                                          type,
+                                          LibraryTileType.cmdImport,
+                                          Program.SettingsVM.Settings.SelectedDisplay);
+                                    }
+                                }
+                                else
+                                {
+                                    Logger.Info("Wallpaper format not supported.");
+                                }
+                            }
                         }
                     }
                 }));

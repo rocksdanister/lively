@@ -154,6 +154,7 @@ namespace livelywpf
                 _gifCheck = value;
                 Program.SettingsVM.Settings.GifCapture = _gifCheck;
                 Program.SettingsVM.UpdateConfigFile();
+                OnPropertyChanged("GifCheck");
             }
         }
 
@@ -166,6 +167,7 @@ namespace livelywpf
                 _zipCheck = value;
                 Program.SettingsVM.Settings.LivelyZipGenerate = _zipCheck;
                 Program.SettingsVM.UpdateConfigFile();
+                OnPropertyChanged("ZipCheck");
             }
         }
 
@@ -175,7 +177,14 @@ namespace livelywpf
 
         private void WInstance_WallpaperAttached(object sender, EventArgs e)
         {
-            Winstance.StartThumbnailCaptureLoop(libData.LivelyInfoFolderPath);
+            if (libData.DataType == LibraryTileType.cmdImport)
+            {
+                Winstance.StartCapture(libData.LivelyInfoFolderPath);
+            }
+            else
+            {
+                Winstance.StartThumbnailCaptureLoop(libData.LivelyInfoFolderPath);
+            }
         }
 
         private bool _canCancelOperation = true;

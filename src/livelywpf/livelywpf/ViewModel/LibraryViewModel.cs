@@ -357,7 +357,7 @@ namespace livelywpf
         public void AddWallpaper(string path, WallpaperType wpType, LibraryTileType dataType, LivelyScreen screen, string cmdArgs = null)
         {
             var dir = Path.Combine(Program.WallpaperDir, "SaveData", "wptmp", Path.GetRandomFileName());
-            if (dataType == LibraryTileType.processing)
+            if (dataType == LibraryTileType.processing || dataType == LibraryTileType.cmdImport)
             {
                 //Preview gif and thumbnail to be captured..
                 //Create a tile at index 0, updates value realtime.
@@ -379,7 +379,7 @@ namespace livelywpf
                     Thumbnail = null,
                     Arguments = cmdArgs
                 };
-                var model = new LibraryModel(data, dir, LibraryTileType.processing);
+                var model = new LibraryModel(data, dir, dataType);
                 LibraryItems.Insert(0, model);
                 SetupDesktop.SetWallpaper(model, screen);
             }

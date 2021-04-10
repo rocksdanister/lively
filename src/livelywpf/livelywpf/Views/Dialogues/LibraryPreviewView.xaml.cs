@@ -52,7 +52,7 @@ namespace livelywpf.Views
         private string thumbnailPathTemp;
         private readonly WallpaperType wallpaperType;
         private readonly IntPtr wallpaperHwnd;
-        readonly DispatcherTimer gifCaptureTimer = new DispatcherTimer();
+        readonly DispatcherTimer thumbnailCaptureTimer = new DispatcherTimer();
         //Good values: 1. 30c,120s 2. 15c, 90s
         readonly int gifAnimationDelay = 1000 * 1 / 30 ; //in milliseconds (1/fps)
         readonly int gifSaveAnimationDelay = 1000 * 1 / 120;
@@ -86,7 +86,7 @@ namespace livelywpf.Views
                 return;
             }
 
-            gifCaptureTimer?.Stop();
+            thumbnailCaptureTimer?.Stop();
             //detach wallpaper window from this dialogue.
             WindowOperations.SetParentSafe(wallpaperHwnd, IntPtr.Zero);
         }
@@ -104,7 +104,7 @@ namespace livelywpf.Views
                 }
                 catch
                 {
-                    gifCaptureTimer.Stop();
+                    thumbnailCaptureTimer.Stop();
                 }
             }
 
@@ -125,11 +125,8 @@ namespace livelywpf.Views
 
         private async void CapturePreview(string saveDirectory)
         {
-            if (gifCaptureTimer != null)
-            {
-                gifCaptureTimer.Stop();
-            }
             _processing = true;
+            thumbnailCaptureTimer?.Stop();
             taskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Normal;
             Rect previewPanelPos = WindowOperations.GetAbsolutePlacement(PreviewBorder, true);
             Size previewPanelSize = WindowOperations.GetElementPixelSize(PreviewBorder);
@@ -188,9 +185,9 @@ namespace livelywpf.Views
         {
             thumbnailPathTemp = savePath;
             //capture thumbnail every few seconds while user is shown wallpaper metadata preview.
-            gifCaptureTimer.Tick += new EventHandler(CaptureLoop);
-            gifCaptureTimer.Interval = new TimeSpan(0, 0, 0, 0, 3000);
-            gifCaptureTimer.Start();
+            thumbnailCaptureTimer.Tick += new EventHandler(CaptureLoop);
+            thumbnailCaptureTimer.Interval = new TimeSpan(0, 0, 0, 0, 3000);
+            thumbnailCaptureTimer.Start();
         }
 
         #endregion
