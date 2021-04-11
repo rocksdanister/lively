@@ -70,6 +70,7 @@ namespace livelywpf
         public LivelyGifPlayer GifPlayer { get; set; }
         public LivelyWebBrowser WebBrowser { get; set; }
         public bool GifCapture { get; set; }
+        public bool MultiFileAutoImport { get; set; }
         public livelywpf.Core.LivelyScreen SelectedDisplay { get; set; }
         public LivelyGUIState LivelyGUIRendering { get; set; }
         public string WallpaperDir { get; set; }
@@ -129,6 +130,7 @@ namespace livelywpf
             ScalerVideo = System.Windows.Media.Stretch.Fill;
             ScalerGif = System.Windows.Media.Stretch.Fill;
             GifCapture = true;
+            MultiFileAutoImport = true;
 
             SafeShutdown = true;
             IsRestart = false;

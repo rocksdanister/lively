@@ -307,7 +307,7 @@ namespace livelywpf
         }
 
         static readonly SemaphoreSlim semaphoreSlimInstallLock = new SemaphoreSlim(1, 1);
-        public async void WallpaperInstall(string livelyZipPath, bool verifyLivelyZip = true)
+        public async Task WallpaperInstall(string livelyZipPath, bool verifyLivelyZip = true)
         {
             await semaphoreSlimInstallLock.WaitAsync();
             string installDir = null;

@@ -1,7 +1,9 @@
 ﻿using livelywpf.Helpers;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Forms;
@@ -202,9 +204,8 @@ namespace livelywpf.Views
                 else if (e.DataView.Contains(StandardDataFormats.StorageItems))
                 {
                     var items = await e.DataView.GetStorageItemsAsync();
-                    if (items.Count > 0)
+                    if (items.Count == 1)
                     {
-                        //selecting first file only.
                         var item = items[0].Path;
                         Logger.Info("Dropped file=>" + item);
                         try
@@ -219,10 +220,10 @@ namespace livelywpf.Views
                         }
 
                         WallpaperType type;
-                        if((type = FileFilter.GetLivelyFileType(item)) != (WallpaperType)(-1))
+                        if ((type = FileFilter.GetLivelyFileType(item)) != (WallpaperType)(-1))
                         {
-                            if(type == WallpaperType.app || 
-                                type == WallpaperType.unity || 
+                            if (type == WallpaperType.app ||
+                                type == WallpaperType.unity ||
                                 type == WallpaperType.unityaudio ||
                                 type == WallpaperType.godot)
                             {
@@ -249,13 +250,13 @@ namespace livelywpf.Views
                                         Program.SettingsVM.Settings.SelectedDisplay);
                                 }
                             }
-                            else if(type == (WallpaperType)100)
+                            else if (type == (WallpaperType)100)
                             {
                                 //lively wallpaper .zip
                                 //todo: Show warning if program (.exe) wallpaper.
-                                if(ZipExtract.CheckLivelyZip(item))
+                                if (ZipExtract.CheckLivelyZip(item))
                                 {
-                                    Program.LibraryVM.WallpaperInstall(item, false);
+                                    _ = Program.LibraryVM.WallpaperInstall(item, false);
                                 }
                                 else
                                 {
@@ -278,10 +279,21 @@ namespace livelywpf.Views
                         {
                             await Helpers.DialogService.ShowConfirmationDialog(
                               Properties.Resources.TextError,
-                              Properties.Resources.TextUnsupportedFile +" (" + Path.GetExtension(item) + ")",
+                              Properties.Resources.TextUnsupportedFile + " (" + Path.GetExtension(item) + ")",
                               ((UIElement)sender).XamlRoot,
                               Properties.Resources.TextClose);
                         }
+                    }
+                    else if (items.Count > 1)
+                    {
+                        var miw = new MultiWallpaperImport(items.Select(x => x.Path).ToList())
+                        {
+                            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner,
+                            Owner = App.AppWindow,
+                            Width = App.AppWindow.Width,
+                            Height = App.AppWindow.Height,
+                        };
+                        miw.ShowDialog();
                     }
                 }
             }));

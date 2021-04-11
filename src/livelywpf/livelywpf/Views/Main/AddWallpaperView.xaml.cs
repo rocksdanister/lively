@@ -47,7 +47,7 @@ namespace livelywpf.Views
                             //lively .zip is not a wallpaper type.
                             if (ZipExtract.CheckLivelyZip(openFileDlg.FileName))
                             {
-                                Program.LibraryVM.WallpaperInstall(openFileDlg.FileName, false);
+                                _ = Program.LibraryVM.WallpaperInstall(openFileDlg.FileName, false);
                             }
                             else
                             {
@@ -79,7 +79,7 @@ namespace livelywpf.Views
                     {
                         if(ZipExtract.CheckLivelyZip(openFileDlg.FileName))
                         {
-                            Program.LibraryVM.WallpaperInstall(openFileDlg.FileName, false);
+                            _ = Program.LibraryVM.WallpaperInstall(openFileDlg.FileName, false);
                         }
                         else
                         {

@@ -152,8 +152,11 @@ namespace livelywpf
             set
             {
                 _gifCheck = value;
-                Program.SettingsVM.Settings.GifCapture = _gifCheck;
-                Program.SettingsVM.UpdateConfigFile();
+                if (_gifCheck != Program.SettingsVM.Settings.GifCapture)
+                {
+                    Program.SettingsVM.Settings.GifCapture = _gifCheck;
+                    Program.SettingsVM.UpdateConfigFile();
+                }
                 OnPropertyChanged("GifCheck");
             }
         }
@@ -165,8 +168,11 @@ namespace livelywpf
             set
             {
                 _zipCheck = value;
-                Program.SettingsVM.Settings.LivelyZipGenerate = _zipCheck;
-                Program.SettingsVM.UpdateConfigFile();
+                if (_zipCheck != Program.SettingsVM.Settings.LivelyZipGenerate)
+                {
+                    Program.SettingsVM.Settings.LivelyZipGenerate = _zipCheck;
+                    Program.SettingsVM.UpdateConfigFile();
+                }
                 OnPropertyChanged("ZipCheck");
             }
         }

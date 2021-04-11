@@ -143,12 +143,7 @@ namespace livelywpf
 
                     /*
                     var procFile = Path.Combine(Program.AppDataDir, "temp", "process.txt");
-                    var procList = new List<string>();
-                    foreach (var item in Process.GetProcesses())
-                    {
-                        procList.Add(item.ProcessName);
-                    }
-                    File.WriteAllLines(procFile, procList);
+                    File.WriteAllLines(procFile, Process.GetProcesses().Select(x => x.ProcessName));
                     files.Add(procFile);
                     */
 

@@ -1,0 +1,45 @@
+﻿<Window x:Class="livelywpf.Views.MultiWallpaperImport"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        ui:WindowHelper.UseModernWindowStyle="True"
+        ui:TitleBar.ExtendViewIntoTitleBar="False"
+        ui:ThemeManager.IsThemeAware="True"     
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:livelywpf.Views"
+        xmlns:p = "clr-namespace:livelywpf.Properties"  
+        mc:Ignorable="d"
+        Closing="Window_Closing"
+        Title="{x:Static p:Resources.TitleAddWallpaper}" Height="450" Width="600"
+        BorderBrush="{DynamicResource SystemControlHighlightAltListAccentHighBrush}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="160" />
+        </Grid.RowDefinitions>
+
+        <ListView x:Name="listView" SelectionMode="Single" Grid.Row="0" Margin="10"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                  BorderBrush="{DynamicResource SystemControlForegroundBaseLowBrush}" BorderThickness="1"
+                  ItemsSource="{Binding ListItems}" SelectedItem="{Binding SelectedItem, UpdateSourceTrigger=PropertyChanged}" 
+                  Style="{StaticResource {x:Static GridView.GridViewStyleKey}}">
+            <!-- style required for modernwpf gridview listview -->
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Header="{x:Static p:Resources.TextTitle}" DisplayMemberBinding="{Binding FileName, Mode=OneWay}"/>
+                        <GridViewColumn Header="{x:Static p:Resources.TextWallpaperType}" DisplayMemberBinding="{Binding LocalizedType, Mode=OneWay}"/>
+                        <GridViewColumn Header="*" DisplayMemberBinding="{Binding Path, Mode=OneWay}"/>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <StackPanel Grid.Row="1" Margin="10">
+            <CheckBox Content="Auto Import" IsChecked="{Binding Path=AutoImportCheck, Mode=TwoWay}" Margin="0, 5, 0, 0"/>
+            <CheckBox Content="{x:Static p:Resources.TextCreatePreview}" IsChecked="{Binding Path=GifCheck, Mode=TwoWay}" Margin="0, 5, 0, 0"/>
+            <ui:ProgressBar Value="{Binding Progress, UpdateSourceTrigger=PropertyChanged}" Minimum="0" Maximum="100" Margin="0, 5, 0, 0"/>
+            <Button Margin="10" HorizontalAlignment="Center" MinWidth="150" Command="{Binding BtnCommand}" Content="{x:Static p:Resources.TextStart}"/>
+        </StackPanel>
+    </Grid>
+</Window>
