@@ -41,6 +41,7 @@ namespace livelygrid
         public string TextDelete { get; set; }
         public string TextAddWallpaper { get; set; }
         public string TextPreviewWallpaper { get; set; }
+        public string TextEditWallpaper { get; set; }
     }
 
     public sealed partial class LivelyGridView : UserControl

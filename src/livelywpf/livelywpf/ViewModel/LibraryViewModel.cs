@@ -395,6 +395,16 @@ namespace livelywpf
             }
         }
 
+        public void EditWallpaper(LibraryModel obj)
+        {
+            //Kill wp if running..
+            SetupDesktop.TerminateWallpaper(obj);
+            LibraryItems.Remove(obj);
+            obj.DataType = LibraryTileType.edit;
+            LibraryItems.Insert(0, obj);
+            SetupDesktop.SetWallpaper(obj, ScreenHelper.GetPrimaryScreen());
+        }
+
         /// <summary>
         /// Load wallpapers from the given parent folder(), only top directory is scanned.
         /// </summary>

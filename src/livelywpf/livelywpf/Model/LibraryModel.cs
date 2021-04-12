@@ -20,7 +20,8 @@ namespace livelywpf
         downloading,
         [Description("Ready to be used")]
         ready,
-        cmdImport
+        cmdImport,
+        edit
     }
 
     [Serializable]

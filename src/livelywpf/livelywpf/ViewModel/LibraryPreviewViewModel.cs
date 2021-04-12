@@ -28,47 +28,59 @@ namespace livelywpf
             Winstance.WallpaperAttached += WInstance_WallpaperAttached;
 
             libData = wallpaper.GetWallpaperData();
-            if(libData.LivelyInfo.Type == WallpaperType.videostream)
+            if (libData.DataType == LibraryTileType.edit)
             {
-                Url = libData.FilePath;
-                Title = GetLastSegmentUrl(libData.FilePath);
-            }
-            else if (libData.LivelyInfo.Type == WallpaperType.url
-            || libData.LivelyInfo.Type == WallpaperType.web
-            || libData.LivelyInfo.Type == WallpaperType.webaudio)
-            {
-                if (libData.LivelyInfo.Type == WallpaperType.url)
-                    Url = libData.FilePath;
-
-                try
-                {
-                    if(wallpaper.GetProcess() != null)
-                    {
-                        //wallpaper.GetProcess().Refresh();
-                        Title = wallpaper.GetProcess().MainWindowTitle;
-                    }
-                }
-                catch { }
-
-                if (String.IsNullOrWhiteSpace(Title))
-                {
-                    Title = GetLastSegmentUrl(libData.FilePath);
-                }
+                //use existing data for editing already imported wallpaper..
+                Title = libData.LivelyInfo.Title;
+                Desc = libData.LivelyInfo.Desc;
+                Url = libData.LivelyInfo.Contact;
+                Author = libData.LivelyInfo.Author;          
             }
             else
             {
-                try
+                //guess data based on filename, window title etc..
+                if (libData.LivelyInfo.Type == WallpaperType.videostream)
                 {
-                    Title = Path.GetFileNameWithoutExtension(libData.FilePath);
+                    Url = libData.FilePath;
+                    Title = GetLastSegmentUrl(libData.FilePath);
                 }
-                catch (ArgumentException)
+                else if (libData.LivelyInfo.Type == WallpaperType.url
+                || libData.LivelyInfo.Type == WallpaperType.web
+                || libData.LivelyInfo.Type == WallpaperType.webaudio)
                 {
-                    Title = libData.FilePath;
-                }
+                    if (libData.LivelyInfo.Type == WallpaperType.url)
+                        Url = libData.FilePath;
 
-                if (String.IsNullOrWhiteSpace(Title))
+                    try
+                    {
+                        if (wallpaper.GetProcess() != null)
+                        {
+                            //wallpaper.GetProcess().Refresh();
+                            Title = wallpaper.GetProcess().MainWindowTitle;
+                        }
+                    }
+                    catch { }
+
+                    if (String.IsNullOrWhiteSpace(Title))
+                    {
+                        Title = GetLastSegmentUrl(libData.FilePath);
+                    }
+                }
+                else
                 {
-                    Title = libData.FilePath;
+                    try
+                    {
+                        Title = Path.GetFileNameWithoutExtension(libData.FilePath);
+                    }
+                    catch (ArgumentException)
+                    {
+                        Title = libData.FilePath;
+                    }
+
+                    if (String.IsNullOrWhiteSpace(Title))
+                    {
+                        Title = libData.FilePath;
+                    }
                 }
             }
 

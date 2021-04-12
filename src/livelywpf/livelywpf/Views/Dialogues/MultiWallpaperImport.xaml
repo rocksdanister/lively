@@ -10,7 +10,6 @@
         xmlns:local="clr-namespace:livelywpf.Views"
         xmlns:p = "clr-namespace:livelywpf.Properties"  
         mc:Ignorable="d"
-        Closing="Window_Closing"
         Title="{x:Static p:Resources.TitleAddWallpaper}" Height="450" Width="600"
         BorderBrush="{DynamicResource SystemControlHighlightAltListAccentHighBrush}">
     <Grid>
@@ -19,27 +18,30 @@
             <RowDefinition Height="160" />
         </Grid.RowDefinitions>
 
+        <TextBlock Visibility="Collapsed" x:Name="waitText" Foreground="{DynamicResource SystemControlHighlightAltListAccentHighBrush}" 
+                   Text="{x:Static p:Resources.TitlePleaseWait}" FontSize="25" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"/>
         <ListView x:Name="listView" SelectionMode="Single" Grid.Row="0" Margin="10"
-                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                  ScrollViewer.HorizontalScrollBarVisibility="Auto"
                   BorderBrush="{DynamicResource SystemControlForegroundBaseLowBrush}" BorderThickness="1"
-                  ItemsSource="{Binding ListItems}" SelectedItem="{Binding SelectedItem, UpdateSourceTrigger=PropertyChanged}" 
+                  ItemsSource="{Binding ListItems}" SelectedItem="{Binding SelectedItem, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" 
                   Style="{StaticResource {x:Static GridView.GridViewStyleKey}}">
             <!-- style required for modernwpf gridview listview -->
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
-                        <GridViewColumn Header="{x:Static p:Resources.TextTitle}" DisplayMemberBinding="{Binding FileName, Mode=OneWay}"/>
-                        <GridViewColumn Header="{x:Static p:Resources.TextWallpaperType}" DisplayMemberBinding="{Binding LocalizedType, Mode=OneWay}"/>
-                        <GridViewColumn Header="*" DisplayMemberBinding="{Binding Path, Mode=OneWay}"/>
+                        <GridViewColumn Header="#" DisplayMemberBinding="{Binding Id}"/>
+                        <GridViewColumn Header="{x:Static p:Resources.TextTitle}" DisplayMemberBinding="{Binding FileName}"/>
+                        <GridViewColumn Header="{x:Static p:Resources.TextWallpaperType}" DisplayMemberBinding="{Binding LocalizedType}"/>
+                        <GridViewColumn Header="{x:Static p:Resources.TitleLocation}" DisplayMemberBinding="{Binding Path}"/>
                     </GridView.Columns>
                 </GridView>
             </ListView.View>
         </ListView>
-        <StackPanel Grid.Row="1" Margin="10">
-            <CheckBox Content="Auto Import" IsChecked="{Binding Path=AutoImportCheck, Mode=TwoWay}" Margin="0, 5, 0, 0"/>
+        <StackPanel Grid.Row="1" Margin="10, 0, 10, 0" VerticalAlignment="Bottom">
             <CheckBox Content="{x:Static p:Resources.TextCreatePreview}" IsChecked="{Binding Path=GifCheck, Mode=TwoWay}" Margin="0, 5, 0, 0"/>
-            <ui:ProgressBar Value="{Binding Progress, UpdateSourceTrigger=PropertyChanged}" Minimum="0" Maximum="100" Margin="0, 5, 0, 0"/>
+            <CheckBox Content="{x:Static p:Resources.TitleSkipConfirm}" IsChecked="{Binding Path=AutoImportCheck, Mode=TwoWay}" Margin="0, 5, 0, 0"/>
             <Button Margin="10" HorizontalAlignment="Center" MinWidth="150" Command="{Binding BtnCommand}" Content="{x:Static p:Resources.TextStart}"/>
+            <ui:ProgressBar Value="{Binding Progress, UpdateSourceTrigger=PropertyChanged}" Minimum="0" Maximum="100" Margin="5"/>
         </StackPanel>
     </Grid>
 </Window>

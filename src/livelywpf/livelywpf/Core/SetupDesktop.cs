@@ -273,8 +273,9 @@ namespace livelywpf
                 if (e.Success)
                 {
                     //preview and create gif and thumbnail for user dropped file.
-                    if (wallpaper.GetWallpaperData().DataType == LibraryTileType.processing 
-                        || wallpaper.GetWallpaperData().DataType == LibraryTileType.cmdImport)
+                    if (wallpaper.GetWallpaperData().DataType == LibraryTileType.processing || 
+                        wallpaper.GetWallpaperData().DataType == LibraryTileType.cmdImport ||
+                        wallpaper.GetWallpaperData().DataType == LibraryTileType.edit)
                     {
                         //quitting running wallpaper before gif capture for low-end systemss.
                         if (Program.SettingsVM.Settings.LivelyGUIRendering == LivelyGUIState.lite)

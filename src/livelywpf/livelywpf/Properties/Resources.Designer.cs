@@ -144,6 +144,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please stop before proceeding..
+        /// </summary>
+        public static string DescriptionPleaseStop {
+            get {
+                return ResourceManager.GetString("DescriptionPleaseStop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Press to begin recording..
         /// </summary>
         public static string DescriptionRecordStart {
@@ -442,7 +451,7 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Delete Wallpaper.
+        ///   Looks up a localized string similar to Delete.
         /// </summary>
         public static string TextDeleteWallpaper {
             get {
@@ -483,6 +492,15 @@ namespace livelywpf.Properties {
         public static string TextDownload {
             get {
                 return ResourceManager.GetString("TextDownload", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit.
+        /// </summary>
+        public static string TextEditWallpaper {
+            get {
+                return ResourceManager.GetString("TextEditWallpaper", resourceCulture);
             }
         }
         
@@ -748,7 +766,7 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Preview Wallpaper.
+        ///   Looks up a localized string similar to Preview.
         /// </summary>
         public static string TextPreviewWallpaper {
             get {
@@ -1670,6 +1688,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Location.
+        /// </summary>
+        public static string TitleLocation {
+            get {
+                return ResourceManager.GetString("TitleLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Misc..
         /// </summary>
         public static string TitleMisc {
@@ -1765,6 +1792,15 @@ namespace livelywpf.Properties {
         public static string TitleSettings {
             get {
                 return ResourceManager.GetString("TitleSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skip Confirmation.
+        /// </summary>
+        public static string TitleSkipConfirm {
+            get {
+                return ResourceManager.GetString("TitleSkipConfirm", resourceCulture);
             }
         }
         

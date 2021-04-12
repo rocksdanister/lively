@@ -46,13 +46,14 @@ namespace livelywpf.Views
                 {
                     TextAddWallpaper = Properties.Resources.TitleAddWallpaper,
                     TextConvertVideo = Properties.Resources.TextConvertVideo,
-                    TextCustomise = Properties.Resources.TextCustomiseWallpaper,
+                    TextCustomise = Properties.Resources.TextCustomise,
                     TextDelete = Properties.Resources.TextDeleteWallpaper,
                     TextExportZip = Properties.Resources.TextExportWallpaperZip,
                     TextInformation = Properties.Resources.TitleAbout,
                     TextSetWallpaper = Properties.Resources.TextSetWallpaper,
                     TextShowDisk = Properties.Resources.TextShowOnDisk,
-                    TextPreviewWallpaper = Properties.Resources.TextPreviewWallpaper
+                    TextPreviewWallpaper = Properties.Resources.TextPreviewWallpaper,
+                    TextEditWallpaper = Properties.Resources.TextEditWallpaper,
                 };
                 LivelyGridControl.GridElementSize((livelygrid.GridSize)Program.SettingsVM.SelectedTileSizeIndex);
                 LivelyGridControl.ContextMenuClick += LivelyGridControl_ContextMenuClick;
@@ -156,6 +157,9 @@ namespace livelywpf.Views
                         break;
                     case "convertVideo":
                         Program.LibraryVM.WallpaperVideoConvert(obj);
+                        break;
+                    case "editWallpaper":
+                        Program.LibraryVM.EditWallpaper(obj);
                         break;
                     case "moreInformation":
                         var infoView = new livelygrid.InfoPage
@@ -290,8 +294,8 @@ namespace livelywpf.Views
                         {
                             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner,
                             Owner = App.AppWindow,
-                            Width = App.AppWindow.Width,
-                            Height = App.AppWindow.Height,
+                            Width = App.AppWindow.Width/1.3,
+                            Height = App.AppWindow.Height/1.3,
                         };
                         miw.ShowDialog();
                     }

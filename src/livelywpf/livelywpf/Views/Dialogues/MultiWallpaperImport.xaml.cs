@@ -16,20 +16,10 @@ namespace livelywpf.Views
         public MultiWallpaperImport(List<string> paths)
         {
             InitializeComponent();
-            if (Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.duplicate)
-            {
-                //multi import is not supported for duplicate layout..
-                SetupDesktop.TerminateAllWallpapers();
-                Program.SettingsVM.Settings.WallpaperArrangement = WallpaperArrangement.per;
-                Program.SettingsVM.UpdateConfigFile();
-            }
+            //view model
             var vm = new MultiWallpaperImportViewModel(paths);
             this.DataContext = vm;
-        }
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            SetupDesktop.TerminateAllWallpapers();
+            this.Closing += vm.OnWindowClosing;
         }
     }
 }

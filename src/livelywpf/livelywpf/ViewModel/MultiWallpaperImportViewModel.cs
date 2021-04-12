@@ -5,19 +5,33 @@ using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq;
+using System.ComponentModel;
+using System.Threading;
 
 namespace livelywpf 
 {
     class MultiWallpaperImportViewModel : ObservableObject
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+        private readonly CancellationTokenSource cancellationTokenSrc = new CancellationTokenSource();
+        private readonly WallpaperArrangement prevArrangement;
         private LibraryTileType importFlag;
         private readonly int totalItems = 0;
         private bool _isRunning = false;
 
         public MultiWallpaperImportViewModel(List<string> paths)
         {
-            paths = paths.OrderByDescending(x => System.IO.Path.GetExtension(x) == ".zip").ToList();
+            SetupDesktop.TerminateAllWallpapers();
+            prevArrangement = Program.SettingsVM.Settings.WallpaperArrangement;
+            if (Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.duplicate)
+            {
+                //multi import is not supported for duplicate layout..
+                Program.SettingsVM.Settings.WallpaperArrangement = WallpaperArrangement.per;
+            }
+
+            int id = 1;
+            //display all Lively zip files first since its the first items to get processed..
+            paths = paths.OrderByDescending(x => System.IO.Path.GetExtension(x).Equals(".zip", StringComparison.OrdinalIgnoreCase)).ToList();
             for (int i = 0; i < paths.Count; i++)
             {
                 var type = FileFilter.GetLivelyFileType(paths[i]);
@@ -27,7 +41,7 @@ namespace livelywpf
                     {
                         if (ZipExtract.CheckLivelyZip(paths[i]))
                         {
-                            ListItems.Add(new MultiWallpaperImportModel(paths[i], type));
+                            ListItems.Add(new MultiWallpaperImportModel(paths[i], type, id++));
                         }
                         else
                         {
@@ -36,7 +50,7 @@ namespace livelywpf
                     }
                     else
                     {
-                        ListItems.Add(new MultiWallpaperImportModel(paths[i], type));
+                        ListItems.Add(new MultiWallpaperImportModel(paths[i], type, id++));
                     }
                 }
                 else
@@ -135,22 +149,32 @@ namespace livelywpf
                 if (_btnCommand == null)
                 {
                     _btnCommand = new RelayCommand(
-                        param => UserAction(), param => !_isRunning);
+                        param => _= UserAction(), param => !_isRunning);
                 }
                 return _btnCommand;
             }
         }
 
         //todo: make it cancellable.
-        private void UserAction()
+        private async Task UserAction()
         {
             _isRunning = true;
             importFlag = AutoImportCheck ? LibraryTileType.cmdImport : LibraryTileType.processing;
             BtnCommand.RaiseCanExecuteChanged();
-            _ = Start();
+
+            try
+            {
+                await WallpaperInstallZip(cancellationTokenSrc.Token);
+                SelectedItem = null;
+                SetWallpaper();
+            }
+            catch (OperationCanceledException)
+            {
+                Logger.Info("Wallpaper import cancelled by user.");
+            }
         }
 
-        private async Task Start()
+        private async Task WallpaperInstallZip(CancellationToken cancellationToken)
         {
             //start by extracting all Lively .zip files.
             var zipItems = ListItems.Where(x => x.Type == (WallpaperType)100).ToList();
@@ -159,10 +183,10 @@ namespace livelywpf
                 SelectedItem = zipItems[i];
                 await Program.LibraryVM.WallpaperInstall(zipItems[i].Path, false);
                 ListItems.Remove(zipItems[i]);
-                Progress = 100 * (totalItems - ListItems.Count) / totalItems; 
+                Progress = 100 * (totalItems - ListItems.Count) / totalItems;
+
+                cancellationToken.ThrowIfCancellationRequested();
             }
-            SelectedItem = null;
-            SetWallpaper();
         }
 
         private void SetupDesktop_WallpaperChanged(object sender, EventArgs e)
@@ -191,6 +215,24 @@ namespace livelywpf
                     importFlag,
                     Program.SettingsVM.Settings.SelectedDisplay);
                 Progress = 100 * (totalItems - ListItems.Count) / totalItems;
+            }
+        }
+
+        public void OnWindowClosing(object sender, CancelEventArgs e)
+        {
+            if (_isRunning)
+            {
+                cancellationTokenSrc.Cancel();
+            }
+            SetupDesktop.WallpaperChanged -= SetupDesktop_WallpaperChanged;
+
+            //closing currently set latest wallpaper if any..
+            SetupDesktop.TerminateAllWallpapers();
+            //restoring previous wallpaper arrangement settings..
+            if (Program.SettingsVM.Settings.WallpaperArrangement != prevArrangement)
+            {
+                Program.SettingsVM.Settings.WallpaperArrangement = prevArrangement;
+                Program.SettingsVM.UpdateConfigFile();
             }
         }
     }
