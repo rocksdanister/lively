@@ -2,6 +2,7 @@
 using livelywpf.Views;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -17,8 +18,11 @@ namespace livelywpf
     class LibraryPreviewViewModel : ObservableObject
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        readonly private LibraryModel libData;
-        readonly ILibraryPreview Winstance;
+        private readonly LibraryModel libData;
+        private readonly ILibraryPreview Winstance;
+        private readonly LivelyInfoModel livelyInfoCopy;
+        private readonly string thumbnailPathCopy;
+
         public LibraryPreviewViewModel( ILibraryPreview wInterface, IWallpaper wallpaper)
         {
             Winstance = wInterface;
@@ -30,11 +34,28 @@ namespace livelywpf
             libData = wallpaper.GetWallpaperData();
             if (libData.DataType == LibraryTileType.edit)
             {
+                //taking backup to restore original data if user cancel..
+                livelyInfoCopy = new LivelyInfoModel(libData.LivelyInfo);
+                //capture loop is disabled for now..
+                //thumbnailPathCopy = libData.ThumbnailPath;
+                //if (libData.ThumbnailPath != null)
+                //{
+                //    try
+                //    {
+                //        File.Copy(libData.ThumbnailPath, 
+                //            Path.Combine(Program.AppDataDir, "temp", Path.GetFileName(libData.ThumbnailPath)));
+                //    }
+                //    catch (Exception e)
+                //    {
+                //        Logger.Error(e.ToString());
+                //    }
+                //}
+
                 //use existing data for editing already imported wallpaper..
                 Title = libData.LivelyInfo.Title;
                 Desc = libData.LivelyInfo.Desc;
                 Url = libData.LivelyInfo.Contact;
-                Author = libData.LivelyInfo.Author;          
+                Author = libData.LivelyInfo.Author;
             }
             else
             {
@@ -189,6 +210,11 @@ namespace livelywpf
             }
         }
 
+        public void OnWindowClosing(object sender, CancelEventArgs e)
+        {
+            CleanUp();
+        }
+
         #endregion ui
 
         #region interface methods
@@ -198,6 +224,10 @@ namespace livelywpf
             if (libData.DataType == LibraryTileType.cmdImport)
             {
                 Winstance.StartCapture(libData.LivelyInfoFolderPath);
+            }
+            else if (libData.DataType == LibraryTileType.edit)
+            {
+                //no thumbnail capture timer..
             }
             else
             {
@@ -218,39 +248,6 @@ namespace livelywpf
             CurrentProgress = value;
             if (CurrentProgress == 100)
             {
-                libData.DataType = LibraryTileType.ready;
-                try
-                {
-                    Helpers.JsonStorage<LivelyInfoModel>.StoreData(Path.Combine(libData.LivelyInfoFolderPath, "LivelyInfo.json"), libData.LivelyInfo);
-                }
-                catch (Exception e)
-                {
-                    Logger.Error(e.ToString());
-                }
-                Program.LibraryVM.SortLibraryItem(libData);
-                if (Program.SettingsVM.Settings.LivelyZipGenerate)
-                {
-                    string savePath = "";
-                    var saveFileDialog1 = new Microsoft.Win32.SaveFileDialog()
-                    {
-                        Title = "Select location to save the file",
-                        Filter = "Lively/zip file|*.zip",
-                        //title ending with '.' can have diff extension (example: parallax.js)
-                        FileName = Path.ChangeExtension(libData.Title, ".zip"),
-                    };
-                    if (saveFileDialog1.ShowDialog() == true)
-                    {
-                        savePath = saveFileDialog1.FileName;
-                    }
-                    if (!String.IsNullOrEmpty(savePath))
-                    {
-                        Program.LibraryVM.WallpaperExport(libData, savePath);
-                    }
-                }
-                Winstance.CaptureProgress -= WInstance_CaptureProgress;
-                Winstance.PreviewUpdated -= WInstance_PreviewUpdated;
-                Winstance.ThumbnailUpdated -= WInstance_ThumbnailUpdated;
-                Winstance.WallpaperAttached -= WInstance_WallpaperAttached;
                 Winstance.Exit();
             }
         }
@@ -308,6 +305,102 @@ namespace livelywpf
             }
             libData.LivelyInfo.Preview = path;
             libData.PreviewClipPath = path;
+        }
+
+        private void CleanUp()
+        {
+            if (CurrentProgress == 100)
+            {
+                //user pressed ok..
+                try
+                {
+                    Helpers.JsonStorage<LivelyInfoModel>.StoreData(
+                        Path.Combine(libData.LivelyInfoFolderPath, "LivelyInfo.json"), libData.LivelyInfo);
+                }
+                catch (Exception e)
+                {
+                    Logger.Error(e.ToString());
+                }
+
+                //Use animated gif if possible, if user checked create no preview but preview already exists..
+                if (libData.DataType == LibraryTileType.edit)
+                {
+                    libData.ImagePath = null;
+                    libData.ImagePath = Program.SettingsVM.Settings.LivelyGUIRendering == LivelyGUIState.normal ?
+                        (File.Exists(libData.PreviewClipPath) ? libData.PreviewClipPath : libData.ThumbnailPath) : libData.ThumbnailPath;
+                }
+
+                //change from pos 0..
+                libData.DataType = LibraryTileType.ready;
+                Program.LibraryVM.SortLibraryItem(libData);
+            }
+            else
+            {
+                //user close or 'x' btn press..
+                if (libData.DataType == LibraryTileType.edit)
+                {
+                    //if (thumbnailPathCopy != null)
+                    //{
+                    //    try
+                    //    {
+                    //        File.Delete(libData.LivelyInfo.Thumbnail);
+                    //        //temp -> wp folder..
+                    //        File.Copy(thumbnailPathCopy, libData.ThumbnailPath, true);
+
+                    //        libData.LivelyInfo.Thumbnail = libData.ThumbnailPath;
+                    //        libData.ThumbnailPath = libData.ThumbnailPath;
+
+                    //        libData.ImagePath = null;
+                    //        //Use animated gif if exists.
+                    //        libData.ImagePath = Program.SettingsVM.Settings.LivelyGUIRendering == LivelyGUIState.normal ?
+                    //            (File.Exists(libData.PreviewClipPath) ? libData.PreviewClipPath : libData.ThumbnailPath) : libData.ThumbnailPath;
+                    //    }
+                    //    catch(Exception e)
+                    //    {
+                    //        Logger.Error(e.ToString());
+                    //    }
+                    //}
+
+                    //restore previous data..
+                    Title = livelyInfoCopy.Title;
+                    Desc = livelyInfoCopy.Desc;
+                    Author = livelyInfoCopy.Author;
+                    Url = livelyInfoCopy.Contact;
+
+                    //change from pos 0..
+                    libData.DataType = LibraryTileType.ready;
+                    Program.LibraryVM.SortLibraryItem(libData);
+                }
+                else
+                {
+                    //nothing, core will terminate and delete the wp folder when LivelyInfo.json not found..
+                }
+            }
+
+            if (Program.SettingsVM.Settings.LivelyZipGenerate)
+            {
+                string savePath = "";
+                var saveFileDialog1 = new Microsoft.Win32.SaveFileDialog()
+                {
+                    Title = "Select location to save the file",
+                    Filter = "Lively/zip file|*.zip",
+                    //title ending with '.' can have diff extension (example: parallax.js)
+                    FileName = Path.ChangeExtension(libData.Title, ".zip"),
+                };
+                if (saveFileDialog1.ShowDialog() == true)
+                {
+                    savePath = saveFileDialog1.FileName;
+                }
+                if (!String.IsNullOrEmpty(savePath))
+                {
+                    Program.LibraryVM.WallpaperExport(libData, savePath);
+                }
+            }
+
+            Winstance.CaptureProgress -= WInstance_CaptureProgress;
+            Winstance.PreviewUpdated -= WInstance_PreviewUpdated;
+            Winstance.ThumbnailUpdated -= WInstance_ThumbnailUpdated;
+            Winstance.WallpaperAttached -= WInstance_WallpaperAttached;
         }
 
         #endregion interface methods

@@ -277,8 +277,9 @@ namespace livelywpf
                         wallpaper.GetWallpaperData().DataType == LibraryTileType.cmdImport ||
                         wallpaper.GetWallpaperData().DataType == LibraryTileType.edit)
                     {
+                        var isEdit = wallpaper.GetWallpaperData().DataType == LibraryTileType.edit;
                         //quitting running wallpaper before gif capture for low-end systemss.
-                        if (Program.SettingsVM.Settings.LivelyGUIRendering == LivelyGUIState.lite)
+                        if (Program.SettingsVM.Settings.LivelyGUIRendering == LivelyGUIState.lite && !isEdit)
                         {
                             switch (Program.SettingsVM.Settings.WallpaperArrangement)
                             {
@@ -305,6 +306,14 @@ namespace livelywpf
                                 Program.LibraryVM.WallpaperDelete(wallpaper.GetWallpaperData());
                             }));
                             return; //exit
+                        }
+                        else
+                        {
+                            if (isEdit)
+                            {
+                                wallpaper.Terminate();
+                                return;
+                            }
                         }
 
                         reloadRequired = wallpaper.GetWallpaperType() == WallpaperType.web ||
