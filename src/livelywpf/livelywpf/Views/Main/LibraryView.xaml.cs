@@ -223,84 +223,92 @@ namespace livelywpf.Views
                             return;
                         }
 
-                        WallpaperType type;
-                        if ((type = FileFilter.GetLivelyFileType(item)) != (WallpaperType)(-1))
+                        WallpaperType type = FileFilter.GetLivelyFileType(item);
+                        switch (type)
                         {
-                            switch (type)
-                            {
-                                case WallpaperType.web:
-                                case WallpaperType.webaudio:
-                                case WallpaperType.url:
-                                case WallpaperType.video:
-                                case WallpaperType.gif:
-                                case WallpaperType.videostream:
-                                case WallpaperType.picture:
-                                    {
-                                        Program.LibraryVM.AddWallpaper(item,
-                                            type,
-                                            LibraryTileType.processing,
-                                            Program.SettingsVM.Settings.SelectedDisplay);
-                                    }
-                                    break;
-                                case WallpaperType.app:
-                                case WallpaperType.bizhawk:
-                                case WallpaperType.unity:
-                                case WallpaperType.godot:
-                                case WallpaperType.unityaudio:
-                                    {
-                                        //Show warning before proceeding..
-                                        var result = await Helpers.DialogService.ShowConfirmationDialog(
-                                             Properties.Resources.TitlePleaseWait,
-                                             Properties.Resources.DescriptionExternalAppWarning,
-                                             ((UIElement)sender).XamlRoot,
-                                             Properties.Resources.TextYes,
-                                             Properties.Resources.TextNo);
+                            case WallpaperType.web:
+                            case WallpaperType.webaudio:
+                            case WallpaperType.url:
+                            case WallpaperType.video:
+                            case WallpaperType.gif:
+                            case WallpaperType.videostream:
+                            case WallpaperType.picture:
+                                {
+                                    Program.LibraryVM.AddWallpaper(item,
+                                        type,
+                                        LibraryTileType.processing,
+                                        Program.SettingsVM.Settings.SelectedDisplay);
+                                }
+                                break;
+                            case WallpaperType.app:
+                            case WallpaperType.bizhawk:
+                            case WallpaperType.unity:
+                            case WallpaperType.godot:
+                            case WallpaperType.unityaudio:
+                                {
+                                    //Show warning before proceeding..
+                                    var result = await Helpers.DialogService.ShowConfirmationDialog(
+                                         Properties.Resources.TitlePleaseWait,
+                                         Properties.Resources.DescriptionExternalAppWarning,
+                                         ((UIElement)sender).XamlRoot,
+                                         Properties.Resources.TextYes,
+                                         Properties.Resources.TextNo);
 
-                                        if (result == ContentDialogResult.Primary)
+                                    if (result == ContentDialogResult.Primary)
+                                    {
+                                        //xaml island textbox input issue..
+                                        //ref: https://github.com/microsoft/microsoft-ui-xaml/issues/3804
+                                        //var cmdArgs = await Helpers.DialogService.ShowTextInputDialog(
+                                        //    "Command line arguments",
+                                        //    ((UIElement)sender).XamlRoot,
+                                        //    Properties.Resources.TextOK);
+
+                                        var w = new TextInputDialog("Enter optional commandline arguments:", Properties.Resources.TitlePleaseWait)
+                                        { 
+                                            Owner = App.AppWindow,
+                                            Width = 350,
+                                            Height = 200
+                                        };
+                                        if (w.ShowDialog() == true)
                                         {
-
-                                            //xaml island tb focusing issue..
-                                            //var cmdArgs = await Helpers.DialogService.ShowTextInputDialog(
-                                            //    "Command line arguments", 
-                                            //    ((UIElement)sender).XamlRoot, 
-                                            //    Properties.Resources.TextOK);
-
                                             Program.LibraryVM.AddWallpaper(item,
                                                 WallpaperType.app,
                                                 LibraryTileType.processing,
-                                                Program.SettingsVM.Settings.SelectedDisplay);
+                                                Program.SettingsVM.Settings.SelectedDisplay,
+                                                string.IsNullOrWhiteSpace(w.Result) ? null : w.Result);
                                         }
                                     }
-                                    break;
-                                case (WallpaperType)100:
+                                }
+                                break;
+                            case (WallpaperType)100:
+                                {
+                                    //lively wallpaper .zip
+                                    if (ZipExtract.CheckLivelyZip(item))
                                     {
-                                        //lively wallpaper .zip
-                                        if (ZipExtract.CheckLivelyZip(item))
-                                        {
-                                            _ = Program.LibraryVM.WallpaperInstall(item, false);
-                                        }
-                                        else
-                                        {
-                                            await Helpers.DialogService.ShowConfirmationDialog(
-                                              Properties.Resources.TextError,
-                                              Properties.Resources.LivelyExceptionNotLivelyZip,
-                                              ((UIElement)sender).XamlRoot,
-                                              Properties.Resources.TextClose);
-                                        }
+                                        _ = Program.LibraryVM.WallpaperInstall(item, false);
                                     }
-                                    break;
-                                default:
-                                    Logger.Info("Wallpaper format not recognised.");
-                                    break;
-                            }
-                        }
-                        else
-                        {
-                            await Helpers.DialogService.ShowConfirmationDialog(
-                              Properties.Resources.TextError,
-                              Properties.Resources.TextUnsupportedFile + " (" + Path.GetExtension(item) + ")",
-                              ((UIElement)sender).XamlRoot,
-                              Properties.Resources.TextClose);
+                                    else
+                                    {
+                                        await Helpers.DialogService.ShowConfirmationDialog(
+                                          Properties.Resources.TextError,
+                                          Properties.Resources.LivelyExceptionNotLivelyZip,
+                                          ((UIElement)sender).XamlRoot,
+                                          Properties.Resources.TextClose);
+                                    }
+                                }
+                                break;
+                            case (WallpaperType)(-1):
+                                {
+                                    await Helpers.DialogService.ShowConfirmationDialog(
+                                        Properties.Resources.TextError,
+                                        Properties.Resources.TextUnsupportedFile + " (" + Path.GetExtension(item) + ")",
+                                        ((UIElement)sender).XamlRoot,
+                                        Properties.Resources.TextClose);
+                                }
+                                break;
+                            default:
+                                Logger.Info("No wallpaper type recognised.");
+                                break;
                         }
                     }
                     else if (items.Count > 1)

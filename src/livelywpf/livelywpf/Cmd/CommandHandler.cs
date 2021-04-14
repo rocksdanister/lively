@@ -188,42 +188,38 @@ namespace livelywpf.Cmd
                             }
                             else
                             {
-                                WallpaperType type;
                                 Logger.Info("Wallpaper not found in library, importing as new file.");
-                                if ((type = FileFilter.GetLivelyFileType(opts.File)) != (WallpaperType)(-1))
+                                WallpaperType type = FileFilter.GetLivelyFileType(opts.File);
+                                switch (type)
                                 {
-                                    switch (type)
-                                    {
-                                        case WallpaperType.web:
-                                        case WallpaperType.webaudio:
-                                        case WallpaperType.url:
-                                        case WallpaperType.video:
-                                        case WallpaperType.gif:
-                                        case WallpaperType.videostream:
-                                        case WallpaperType.picture:
-                                            Program.LibraryVM.AddWallpaper(opts.File,
-                                                type,
-                                                LibraryTileType.cmdImport,
-                                                Program.SettingsVM.Settings.SelectedDisplay);
-                                            break;
-                                        case WallpaperType.app:
-                                        case WallpaperType.bizhawk:
-                                        case WallpaperType.unity:
-                                        case WallpaperType.godot:
-                                        case WallpaperType.unityaudio:
-                                            Logger.Info("App type wallpaper import is disabled for cmd control.");
-                                            break;
-                                        case (WallpaperType)100:
-                                            Logger.Info("Lively .zip type wallpaper import is disabled for cmd control.");
-                                            break;
-                                        default:
-                                            Logger.Info("Wallpaper format not recognised.");
-                                            break;
-                                    }
-                                }
-                                else
-                                {
-                                    Logger.Info("Wallpaper format not supported.");
+                                    case WallpaperType.web:
+                                    case WallpaperType.webaudio:
+                                    case WallpaperType.url:
+                                    case WallpaperType.video:
+                                    case WallpaperType.gif:
+                                    case WallpaperType.videostream:
+                                    case WallpaperType.picture:
+                                        Program.LibraryVM.AddWallpaper(opts.File,
+                                            type,
+                                            LibraryTileType.cmdImport,
+                                            Program.SettingsVM.Settings.SelectedDisplay);
+                                        break;
+                                    case WallpaperType.app:
+                                    case WallpaperType.bizhawk:
+                                    case WallpaperType.unity:
+                                    case WallpaperType.godot:
+                                    case WallpaperType.unityaudio:
+                                        Logger.Info("App type wallpaper import is disabled for cmd control.");
+                                        break;
+                                    case (WallpaperType)100:
+                                        Logger.Info("Lively .zip type wallpaper import is disabled for cmd control.");
+                                        break;
+                                    case (WallpaperType)(-1):
+                                        Logger.Info("Wallpaper format not supported.");
+                                        break;
+                                    default:
+                                        Logger.Info("No wallpaper type recognised.");
+                                        break;
                                 }
                             }
                         }
