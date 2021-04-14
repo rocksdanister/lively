@@ -75,9 +75,9 @@ namespace livelywpf.Views
                 }
                 else
                 {
-                    if(FileFilter.LivelySupportedFormats[openFileDlg.FilterIndex - 2].Type == (WallpaperType)100)
+                    if (FileFilter.LivelySupportedFormats[openFileDlg.FilterIndex - 2].Type == (WallpaperType)100)
                     {
-                        if(ZipExtract.CheckLivelyZip(openFileDlg.FileName))
+                        if (ZipExtract.CheckLivelyZip(openFileDlg.FileName))
                         {
                             _ = Program.LibraryVM.WallpaperInstall(openFileDlg.FileName, false);
                         }

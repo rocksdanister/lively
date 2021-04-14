@@ -389,7 +389,7 @@ namespace livelywpf
                 {
                     //failed to show wp window..
                     Logger.Error("Core: Failed to launch wallpaper=>" + e.Msg + "\n" + e.Error?.ToString());
-                    wallpaper?.Terminate();
+                    wallpaper.Terminate();
                     WallpaperChanged?.Invoke(null, null);
                     if (App.AppWindow?.Visibility != Visibility.Hidden)
                     {

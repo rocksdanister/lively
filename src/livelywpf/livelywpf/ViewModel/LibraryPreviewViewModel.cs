@@ -56,6 +56,9 @@ namespace livelywpf
                 Desc = libData.LivelyInfo.Desc;
                 Url = libData.LivelyInfo.Contact;
                 Author = libData.LivelyInfo.Author;
+
+                //consistency..
+                libData.ImagePath = libData.ThumbnailPath;
             }
             else
             {
@@ -323,14 +326,6 @@ namespace livelywpf
                     Logger.Error(e.ToString());
                 }
 
-                //Use animated gif if possible, if user checked create no preview but preview already exists..
-                if (libData.DataType == LibraryTileType.edit)
-                {
-                    libData.ImagePath = null;
-                    libData.ImagePath = Program.SettingsVM.Settings.LivelyGUIRendering == LivelyGUIState.normal ?
-                        (File.Exists(libData.PreviewClipPath) ? libData.PreviewClipPath : libData.ThumbnailPath) : libData.ThumbnailPath;
-                }
-
                 //change from pos 0..
                 libData.DataType = LibraryTileType.ready;
                 Program.LibraryVM.SortLibraryItem(libData);
@@ -376,6 +371,14 @@ namespace livelywpf
                 {
                     //nothing, core will terminate and delete the wp folder when LivelyInfo.json not found..
                 }
+            }
+
+            //Use animated gif if possible, if user checked create no preview but preview already exists..
+            if (libData.DataType == LibraryTileType.edit)
+            {
+                libData.ImagePath = null;
+                libData.ImagePath = Program.SettingsVM.Settings.LivelyGUIRendering == LivelyGUIState.normal ?
+                    (File.Exists(libData.PreviewClipPath) ? libData.PreviewClipPath : libData.ThumbnailPath) : libData.ThumbnailPath;
             }
 
             if (Program.SettingsVM.Settings.LivelyZipGenerate)

@@ -226,57 +226,72 @@ namespace livelywpf.Views
                         WallpaperType type;
                         if ((type = FileFilter.GetLivelyFileType(item)) != (WallpaperType)(-1))
                         {
-                            if (type == WallpaperType.app ||
-                                type == WallpaperType.unity ||
-                                type == WallpaperType.unityaudio ||
-                                type == WallpaperType.godot)
+                            switch (type)
                             {
-                                //Show warning before proceeding.
-                                var result = await Helpers.DialogService.ShowConfirmationDialog(
-                                     Properties.Resources.TitlePleaseWait,
-                                     Properties.Resources.DescriptionExternalAppWarning,
-                                     ((UIElement)sender).XamlRoot,
-                                     Properties.Resources.TextYes,
-                                     Properties.Resources.TextNo);
+                                case WallpaperType.web:
+                                case WallpaperType.webaudio:
+                                case WallpaperType.url:
+                                case WallpaperType.video:
+                                case WallpaperType.gif:
+                                case WallpaperType.videostream:
+                                case WallpaperType.picture:
+                                    {
+                                        Program.LibraryVM.AddWallpaper(item,
+                                            type,
+                                            LibraryTileType.processing,
+                                            Program.SettingsVM.Settings.SelectedDisplay);
+                                    }
+                                    break;
+                                case WallpaperType.app:
+                                case WallpaperType.bizhawk:
+                                case WallpaperType.unity:
+                                case WallpaperType.godot:
+                                case WallpaperType.unityaudio:
+                                    {
+                                        //Show warning before proceeding..
+                                        var result = await Helpers.DialogService.ShowConfirmationDialog(
+                                             Properties.Resources.TitlePleaseWait,
+                                             Properties.Resources.DescriptionExternalAppWarning,
+                                             ((UIElement)sender).XamlRoot,
+                                             Properties.Resources.TextYes,
+                                             Properties.Resources.TextNo);
 
-                                if (result == ContentDialogResult.Primary)
-                                {
-                                    /*
-                                    var cmdArgs = await Helpers.DialogService.ShowTextInputDialog(
-                                        "Command line arguments", 
-                                        ((UIElement)sender).XamlRoot, 
-                                        Properties.Resources.TextOK);
-                                    */
+                                        if (result == ContentDialogResult.Primary)
+                                        {
 
-                                    Program.LibraryVM.AddWallpaper(item,
-                                        WallpaperType.app,
-                                        LibraryTileType.processing,
-                                        Program.SettingsVM.Settings.SelectedDisplay);
-                                }
-                            }
-                            else if (type == (WallpaperType)100)
-                            {
-                                //lively wallpaper .zip
-                                //todo: Show warning if program (.exe) wallpaper.
-                                if (ZipExtract.CheckLivelyZip(item))
-                                {
-                                    _ = Program.LibraryVM.WallpaperInstall(item, false);
-                                }
-                                else
-                                {
-                                    await Helpers.DialogService.ShowConfirmationDialog(
-                                      Properties.Resources.TextError,
-                                      Properties.Resources.LivelyExceptionNotLivelyZip,
-                                      ((UIElement)sender).XamlRoot,
-                                      Properties.Resources.TextClose);
-                                }
-                            }
-                            else
-                            {
-                                Program.LibraryVM.AddWallpaper(item,
-                                  type,
-                                  LibraryTileType.processing,
-                                  Program.SettingsVM.Settings.SelectedDisplay);
+                                            //xaml island tb focusing issue..
+                                            //var cmdArgs = await Helpers.DialogService.ShowTextInputDialog(
+                                            //    "Command line arguments", 
+                                            //    ((UIElement)sender).XamlRoot, 
+                                            //    Properties.Resources.TextOK);
+
+                                            Program.LibraryVM.AddWallpaper(item,
+                                                WallpaperType.app,
+                                                LibraryTileType.processing,
+                                                Program.SettingsVM.Settings.SelectedDisplay);
+                                        }
+                                    }
+                                    break;
+                                case (WallpaperType)100:
+                                    {
+                                        //lively wallpaper .zip
+                                        if (ZipExtract.CheckLivelyZip(item))
+                                        {
+                                            _ = Program.LibraryVM.WallpaperInstall(item, false);
+                                        }
+                                        else
+                                        {
+                                            await Helpers.DialogService.ShowConfirmationDialog(
+                                              Properties.Resources.TextError,
+                                              Properties.Resources.LivelyExceptionNotLivelyZip,
+                                              ((UIElement)sender).XamlRoot,
+                                              Properties.Resources.TextClose);
+                                        }
+                                    }
+                                    break;
+                                default:
+                                    Logger.Info("Wallpaper format not recognised.");
+                                    break;
                             }
                         }
                         else
