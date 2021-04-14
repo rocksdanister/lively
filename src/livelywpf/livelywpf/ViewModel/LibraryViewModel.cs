@@ -357,7 +357,9 @@ namespace livelywpf
         public void AddWallpaper(string path, WallpaperType wpType, LibraryTileType dataType, LivelyScreen screen, string cmdArgs = null)
         {
             var dir = Path.Combine(Program.WallpaperDir, "SaveData", "wptmp", Path.GetRandomFileName());
-            if (dataType == LibraryTileType.processing || dataType == LibraryTileType.cmdImport)
+            if (dataType == LibraryTileType.processing || 
+                dataType == LibraryTileType.cmdImport ||
+                dataType == LibraryTileType.multiImport)
             {
                 //Preview gif and thumbnail to be captured..
                 //Create a tile at index 0, updates value realtime.

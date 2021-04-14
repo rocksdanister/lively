@@ -272,63 +272,80 @@ namespace livelywpf
                 }));
                 if (e.Success)
                 {
-                    //preview and create gif and thumbnail for user dropped file.
-                    if (wallpaper.GetWallpaperData().DataType == LibraryTileType.processing || 
-                        wallpaper.GetWallpaperData().DataType == LibraryTileType.cmdImport ||
-                        wallpaper.GetWallpaperData().DataType == LibraryTileType.edit)
+                    switch (wallpaper.GetWallpaperData().DataType)
                     {
-                        var isEdit = wallpaper.GetWallpaperData().DataType == LibraryTileType.edit;
-                        //quitting running wallpaper before gif capture for low-end systemss.
-                        if (Program.SettingsVM.Settings.LivelyGUIRendering == LivelyGUIState.lite && !isEdit)
-                        {
-                            switch (Program.SettingsVM.Settings.WallpaperArrangement)
+                        case LibraryTileType.processing:
+                        case LibraryTileType.cmdImport:
+                        case LibraryTileType.multiImport:
+                        case LibraryTileType.edit:
+                            //backup..once processed is done, becomes ready.
+                            var type = wallpaper.GetWallpaperData().DataType;
+                            if (Program.SettingsVM.Settings.LivelyGUIRendering == LivelyGUIState.lite &&
+                                type != LibraryTileType.edit && 
+                                type != LibraryTileType.multiImport)
                             {
-                                case WallpaperArrangement.per:
-                                    CloseWallpaper(wallpaper.GetScreen(), false);
-                                    break;
-                                case WallpaperArrangement.span:
-                                    CloseAllWallpapers(false);
-                                    break;
-                                case WallpaperArrangement.duplicate:
-                                    CloseAllWallpapers(false);
-                                    break;
+                                //quitting running wallpaper before gif capture for low-end systemss.
+                                switch (Program.SettingsVM.Settings.WallpaperArrangement)
+                                {
+                                    case WallpaperArrangement.per:
+                                        CloseWallpaper(wallpaper.GetScreen(), false);
+                                        break;
+                                    case WallpaperArrangement.span:
+                                        CloseAllWallpapers(false);
+                                        break;
+                                    case WallpaperArrangement.duplicate:
+                                        CloseAllWallpapers(false);
+                                        break;
+                                }
                             }
-                        }
 
-                        await ShowPreviewDialogSTAThread(wallpaper);
-                        if (!File.Exists(Path.Combine(wallpaper.GetWallpaperData().LivelyInfoFolderPath, "LivelyInfo.json")))
-                        {
-                            //user cancelled/fail!
+                            await ShowPreviewDialogSTAThread(wallpaper);
+                            if (!File.Exists(Path.Combine(wallpaper.GetWallpaperData().LivelyInfoFolderPath, "LivelyInfo.json")))
+                            {
+                                //user cancelled/fail!
+                                wallpaper.Terminate();
+                                RefreshDesktop();
+                                await System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
+                                {
+                                    Program.LibraryVM.WallpaperDelete(wallpaper.GetWallpaperData());
+                                }));
+                                return; //exit
+                            }
+                            else
+                            {
+                                if (type == LibraryTileType.edit)
+                                {
+                                    wallpaper.Terminate();
+                                    return;
+                                }
+                                else if (type == LibraryTileType.multiImport)
+                                {
+                                    wallpaper.Terminate();
+                                    //todo: do it better..
+                                    WallpaperChanged?.Invoke(null, null);
+                                    return;
+                                }
+                            }
+                            break;
+                        case LibraryTileType.installing:
+                            break;
+                        case LibraryTileType.downloading:
+                            break;
+                        case LibraryTileType.ready:
+                            break;
+                        case LibraryTileType.videoConvert:
+                            //depreciated, currently unused.
                             wallpaper.Terminate();
                             RefreshDesktop();
-                            await System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
-                            {
-                                Program.LibraryVM.WallpaperDelete(wallpaper.GetWallpaperData());
-                            }));
-                            return; //exit
-                        }
-                        else
-                        {
-                            if (isEdit)
-                            {
-                                wallpaper.Terminate();
-                                return;
-                            }
-                        }
+                            return;
+                        default:
+                            break;
+                    }
 
-                        reloadRequired = wallpaper.GetWallpaperType() == WallpaperType.web ||
-                            wallpaper.GetWallpaperType() == WallpaperType.webaudio ||
-                            wallpaper.GetWallpaperType() == WallpaperType.url;
-                    }
-                    else if (wallpaper.GetWallpaperData().DataType == LibraryTileType.videoConvert)
-                    {
-                        //todo: depreciated, remove code.
-                        //converting existing library item into video wallpaper using libVLC.
-                        //await ShowVLCScreenCaptureDialogSTAThread(wallpaper);
-                        wallpaper.Close();
-                        RefreshDesktop();
-                        return; //exit
-                    }
+                    //reload wp, fix if the webpage code is not subscribed to js window size changed event.
+                    reloadRequired = wallpaper.GetWallpaperType() == WallpaperType.web ||
+                        wallpaper.GetWallpaperType() == WallpaperType.webaudio ||
+                        wallpaper.GetWallpaperType() == WallpaperType.url;
 
                     if (!ScreenHelper.IsMultiScreen())
                     {
@@ -354,7 +371,7 @@ namespace livelywpf
                                 break;
                         }
                     }
-                    //Reload webpage, fix if the webpage code is not subscribed to window size changed event.
+
                     if (reloadRequired)
                     {
                         wallpaper.SendMessage("lively:reload");
@@ -370,26 +387,28 @@ namespace livelywpf
                 }
                 else
                 {
-                    if (e.Error != null)
-                    {
-                        Logger.Error("Core: Failed to launch wallpaper=>" + e.Msg + "\n" + e.Error.ToString());
-                    }
-                    else
-                    {
-                        Logger.Error("Core: Failed to launch wallpaper=>(No Exception thrown)" + e.Msg);
-                    }
-                    wallpaper.Terminate();
+                    //failed to show wp window..
+                    Logger.Error("Core: Failed to launch wallpaper=>" + e.Msg + "\n" + e.Error?.ToString());
+                    wallpaper?.Terminate();
                     WallpaperChanged?.Invoke(null, null);
-                    MessageBox.Show(Properties.Resources.LivelyExceptionGeneral, Properties.Resources.TextError);
+                    if (App.AppWindow?.Visibility != Visibility.Hidden)
+                    {
+                        MessageBox.Show(Properties.Resources.LivelyExceptionGeneral, Properties.Resources.TextError);
+                    }
+
+                    if (!File.Exists(Path.Combine(wallpaper.GetWallpaperData().LivelyInfoFolderPath, "LivelyInfo.json")))
+                    {
+                        await System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
+                        {
+                            Program.LibraryVM.WallpaperDelete(wallpaper.GetWallpaperData());
+                        }));
+                    }
                 }
             }
             catch (Exception ex)
             {
                 Logger.Error("Core: Failed processing wallpaper=>" + ex.ToString());
-                if (wallpaper != null)
-                {
-                    wallpaper.Terminate();
-                }
+                wallpaper?.Terminate();
                 WallpaperChanged?.Invoke(null, null);
             }
             finally
@@ -406,13 +425,15 @@ namespace livelywpf
             Logger.Info("Core: Restarting workerw and restoring wallpapers..");
             _isInitialized = false;
             processMonitor?.Dispose();
-            var prevWallpapers = SetupDesktop.Wallpapers.ToList();
-            SetupDesktop.TerminateAllWallpapers();
-            foreach (var item in prevWallpapers)
+            var prevWp = Wallpapers.ToList();
+            TerminateAllWallpapers();
+            foreach (var item in prevWp)
             {
-                SetupDesktop.SetWallpaper(item.GetWallpaperData(), item.GetScreen());
+                SetWallpaper(item.GetWallpaperData(), item.GetScreen());
+                if (Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.duplicate)
+                    break;
             }
-            prevWallpapers.Clear();
+            prevWp.Clear();
         }
 
         public static IntPtr GetWorkerW()

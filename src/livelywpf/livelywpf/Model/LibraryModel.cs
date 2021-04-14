@@ -21,6 +21,7 @@ namespace livelywpf
         [Description("Ready to be used")]
         ready,
         cmdImport,
+        multiImport,
         edit
     }
 

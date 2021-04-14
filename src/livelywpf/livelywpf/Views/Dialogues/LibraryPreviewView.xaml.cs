@@ -136,8 +136,9 @@ namespace livelywpf.Views
             await Task.Delay(100);
             try
             {
-                //delete CaptureLoop() thumbnail if any.
+                //try deleting existing files if any..
                 File.Delete(Path.Combine(saveDirectory, "lively_t.jpg"));
+                File.Delete(Path.Combine(saveDirectory, "lively_p.gif"));
             }
             catch { }
 

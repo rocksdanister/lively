@@ -14,21 +14,12 @@ namespace livelywpf
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private readonly CancellationTokenSource cancellationTokenSrc = new CancellationTokenSource();
-        private readonly WallpaperArrangement prevArrangement;
         private LibraryTileType importFlag;
         private readonly int totalItems = 0;
         private bool _isRunning = false;
 
         public MultiWallpaperImportViewModel(List<string> paths)
         {
-            SetupDesktop.TerminateAllWallpapers();
-            prevArrangement = Program.SettingsVM.Settings.WallpaperArrangement;
-            if (Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.duplicate)
-            {
-                //multi import is not supported for duplicate layout..
-                Program.SettingsVM.Settings.WallpaperArrangement = WallpaperArrangement.per;
-            }
-
             int id = 1;
             //display all Lively zip files first since its the first items to get processed..
             paths = paths.OrderByDescending(x => System.IO.Path.GetExtension(x).Equals(".zip", StringComparison.OrdinalIgnoreCase)).ToList();
@@ -159,7 +150,7 @@ namespace livelywpf
         private async Task UserAction()
         {
             _isRunning = true;
-            importFlag = AutoImportCheck ? LibraryTileType.cmdImport : LibraryTileType.processing;
+            importFlag = AutoImportCheck ? LibraryTileType.multiImport : LibraryTileType.processing;
             BtnCommand.RaiseCanExecuteChanged();
 
             try
@@ -204,7 +195,6 @@ namespace livelywpf
                     if (ListItems.Count == 0)
                     {
                         Progress = 100f;
-                        SetupDesktop.TerminateAllWallpapers();
                         return;
                     }
                 }
@@ -225,15 +215,6 @@ namespace livelywpf
                 cancellationTokenSrc.Cancel();
             }
             SetupDesktop.WallpaperChanged -= SetupDesktop_WallpaperChanged;
-
-            //closing currently set latest wallpaper if any..
-            SetupDesktop.TerminateAllWallpapers();
-            //restoring previous wallpaper arrangement settings..
-            if (Program.SettingsVM.Settings.WallpaperArrangement != prevArrangement)
-            {
-                Program.SettingsVM.Settings.WallpaperArrangement = prevArrangement;
-                Program.SettingsVM.UpdateConfigFile();
-            }
         }
     }
 }

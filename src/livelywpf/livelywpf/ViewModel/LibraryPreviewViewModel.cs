@@ -21,7 +21,7 @@ namespace livelywpf
         private readonly LibraryModel libData;
         private readonly ILibraryPreview Winstance;
         private readonly LivelyInfoModel livelyInfoCopy;
-        private readonly string thumbnailPathCopy;
+        //private readonly string thumbnailPathCopy;
 
         public LibraryPreviewViewModel( ILibraryPreview wInterface, IWallpaper wallpaper)
         {
@@ -221,7 +221,8 @@ namespace livelywpf
 
         private void WInstance_WallpaperAttached(object sender, EventArgs e)
         {
-            if (libData.DataType == LibraryTileType.cmdImport)
+            if (libData.DataType == LibraryTileType.cmdImport || 
+                libData.DataType == LibraryTileType.multiImport)
             {
                 Winstance.StartCapture(libData.LivelyInfoFolderPath);
             }
@@ -292,7 +293,7 @@ namespace livelywpf
         {
             libData.ImagePath = null;
             libData.ImagePath = path;
-            libData.LivelyInfo.Thumbnail = path;
+            libData.LivelyInfo.Thumbnail = libData.LivelyInfo.IsAbsolutePath ? path : Path.GetFileName(path);
             libData.ThumbnailPath = path;
         }
 
@@ -303,7 +304,7 @@ namespace livelywpf
                 libData.ImagePath = null;
                 libData.ImagePath = path;
             }
-            libData.LivelyInfo.Preview = path;
+            libData.LivelyInfo.Preview = libData.LivelyInfo.IsAbsolutePath ?  path : Path.GetFileName(path);
             libData.PreviewClipPath = path;
         }
 
@@ -311,7 +312,7 @@ namespace livelywpf
         {
             if (CurrentProgress == 100)
             {
-                //user pressed ok..
+                //user pressed ok..everything went well :)
                 try
                 {
                     Helpers.JsonStorage<LivelyInfoModel>.StoreData(
