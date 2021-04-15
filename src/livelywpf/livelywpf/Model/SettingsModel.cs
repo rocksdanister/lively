@@ -107,7 +107,7 @@ namespace livelywpf
             ProcessMonitorAlgorithm = ProcessMonitorAlgorithm.foreground;
             WallpaperArrangement = WallpaperArrangement.per;
             AppVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            Startup = false;
+            Startup = true;
             IsFirstRun = true;
             ControlPanelOpened = false;
             AppFocusPause = AppRulesEnum.ignore;

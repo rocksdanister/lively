@@ -82,9 +82,16 @@ namespace livelywpf
             }
             SelectedLanguageItem = defaultLanguage;
 
-            //Ignoring the Settings.json savefile value, only checking the windows registry and user action on the ui.
-            //todo: Use https://docs.microsoft.com/en-us/uwp/api/windows.applicationmodel.startuptask?view=winrt-19041
-            IsStartup = WindowsStartup.CheckStartupRegistry() == 1 || WindowsStartup.CheckStartupRegistry() == -1;
+            if (Program.IsMSIX)
+            {
+                _= WindowsStartup.StartupWin10(Settings.Startup);
+                IsStartup = Settings.Startup;
+            }
+            else
+            {
+                //Ignoring the Settings.json savefile value, only checking the windows registry and user action on the ui.
+                IsStartup = WindowsStartup.CheckStartupRegistry() == 1 || WindowsStartup.CheckStartupRegistry() == -1;
+            }
 
             Settings.SelectedDisplay = ScreenHelper.GetScreen(Settings.SelectedDisplay.DeviceId, Settings.SelectedDisplay.DeviceName,
                         Settings.SelectedDisplay.Bounds, Settings.SelectedDisplay.WorkingArea, DisplayIdentificationMode.deviceId) ?? ScreenHelper.GetPrimaryScreen();
@@ -113,6 +120,7 @@ namespace livelywpf
             CefDiskCache = Settings.CefDiskCache;
             IsDebugMenuVisible = Settings.DebugMenu;
             SelectedWebBrowserIndex = (int)Settings.WebBrowser;
+            SelectedAppThemeIndex = (int)Settings.ApplicationTheme;
         }
 
         private SettingsModel _settings;
@@ -154,7 +162,19 @@ namespace livelywpf
             {
                 _isStartup = value;
                 OnPropertyChanged("IsStartup");
-                WindowsStartup.SetStartupRegistry(value);
+                if (Program.IsMSIX)
+                {
+                    _= WindowsStartup.StartupWin10(_isStartup);
+                    if (Settings.Startup != _isStartup)
+                    {
+                        Settings.Startup = _isStartup;
+                        UpdateConfigFile();
+                    }
+                }
+                else
+                {
+                    WindowsStartup.SetStartupRegistry(_isStartup);
+                }
             }
         }
 
@@ -257,7 +277,7 @@ namespace livelywpf
                 if (_wallpaperDirectoryChangeCommand == null)
                 {
                     _wallpaperDirectoryChangeCommand = new RelayCommand(
-                        param => WallpaperDirectoryChange(), param => !WallpapeDirectoryChanging
+                        param => WallpaperDirectoryChange(), param => !Program.IsMSIX && !WallpapeDirectoryChanging
                         );
                 }
                 return _wallpaperDirectoryChangeCommand;
@@ -304,6 +324,29 @@ namespace livelywpf
                         );
                 }
                 return _openWallpaperDirectory;
+            }
+        }
+
+        private int _selectedAppThemeIndex;
+        public int SelectedAppThemeIndex
+        {
+            get
+            {
+                return _selectedAppThemeIndex;
+            }
+            set
+            {
+                _selectedAppThemeIndex = value;
+                OnPropertyChanged("SelectedAppThemeIndex");
+
+                //prevent running on startup etc.
+                if (Settings.ApplicationTheme != (AppTheme)value)
+                {
+                    Settings.ApplicationTheme = (AppTheme)value;
+                    UpdateConfigFile();
+
+                    //Program.ApplicationThemeChange(Settings.ApplicationTheme);
+                }
             }
         }
 

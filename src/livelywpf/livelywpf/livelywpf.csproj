@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <PackageReference Include="CommandLineParser" Version="2.8.0" />
+    <PackageReference Include="DesktopBridge.Helpers" Version="1.2.2" />
     <PackageReference Include="Downloader" Version="2.2.8" />
     <PackageReference Include="Magick.NET-Q16-x86" Version="7.23.3" />
     <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.0.1" />

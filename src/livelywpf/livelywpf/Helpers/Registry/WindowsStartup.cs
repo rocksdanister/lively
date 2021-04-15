@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 using System.IO;
+using Windows.ApplicationModel;
+using System.Threading.Tasks;
+using System.Windows;
 
 namespace livelywpf
 {
@@ -92,6 +95,75 @@ namespace livelywpf
                 status = -1;
             }
             return status;
+        }
+
+        //ref: https://docs.microsoft.com/en-us/uwp/api/windows.applicationmodel.startuptask?view=winrt-19041
+        public async static Task StartupWin10(bool setStartup = false)
+        {
+            // Pass the task ID you specified in the appxmanifest file
+            StartupTask startupTask = await StartupTask.GetAsync("AppStartup");
+            switch (startupTask.State)
+            {
+                case StartupTaskState.Disabled:
+                    Logger.Info("Startup is disabled");
+                    // Task is disabled but can be enabled.
+                    // ensure that you are on a UI thread when you call RequestEnableAsync()
+                    if (setStartup)
+                    {
+                        StartupTaskState newState = await startupTask.RequestEnableAsync();
+                        Logger.Info("Request to enable startup " + newState);
+                    }
+                    break;
+                case StartupTaskState.DisabledByUser:
+                    // Task is disabled and user must enable it manually.
+                    if (setStartup)
+                    {
+                        await Task.Run(() => MessageBox.Show("You have disabled this app's ability to run " +
+                            "as soon as you sign in, but if you change your mind, " +
+                            "you can enable this in the Startup tab in Task Manager.", 
+                            Properties.Resources.TextError, 
+                            MessageBoxButton.OK));
+                    }
+                    break;
+                case StartupTaskState.DisabledByPolicy:
+                    Logger.Error("Startup disabled by group policy, or not supported on this device");
+                    break;
+                case StartupTaskState.Enabled:
+                    Logger.Info("Startup is enabled.");
+                    if (!setStartup)
+                    {
+                        startupTask.Disable();
+                        Logger.Info("Request to disable startup");
+                    }
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// Check startup state (desktopbridge.)
+        /// </summary>
+        /// <returns>0: disabled, -1: disabled by policy/user, 1: enabled</returns>
+        public async static Task<int> StartupCheck()
+        {
+            var result = 0;
+            StartupTask startupTask = await StartupTask.GetAsync("AppStartup");
+            switch (startupTask.State)
+            {
+                case StartupTaskState.Disabled:
+                    result = 0;
+                    break;
+                case StartupTaskState.DisabledByUser:
+                    // Task is disabled and user must enable it manually.
+                    result = -1;
+                    break;
+                case StartupTaskState.DisabledByPolicy:
+                    result = -1;
+                    break;
+                case StartupTaskState.Enabled:
+                    result = 1;
+                    break;
+            }
+            return result;
         }
     }
 }

@@ -155,6 +155,38 @@ namespace livelywpf
 
         #endregion //gdi
 
+        #region life cycle
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        public static extern int RegisterApplicationRestart([MarshalAs(UnmanagedType.LPWStr)] string commandLineArgs, int Flags);
+
+        [Flags]
+        public enum RestartFlags
+        {
+            /// <summary>
+            /// No restart restrictions
+            /// </summary>
+            NONE = 0,
+            /// <summary>
+            /// Do not restart if process terminates due to unhandled exception
+            /// </summary>
+            RESTART_NO_CRASH = 1,
+            /// <summary>
+            /// Do not restart if process terminates due to application not responding
+            /// </summary>
+            RESTART_NO_HANG = 2,
+            /// <summary>
+            /// Do not restart if process terminates due to installation of update
+            /// </summary>
+            RESTART_NO_PATCH = 4,
+            /// <summary>
+            /// Do not restart if process terminates due to computer restart as result of an update
+            /// </summary>
+            RESTART_NO_REBOOT = 8
+        }
+
+        #endregion // life cycle
+
         [DllImport("user32.dll")]
         public static extern IntPtr GetWindowDC(IntPtr hWnd);
 

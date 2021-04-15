@@ -75,12 +75,11 @@ namespace livelywpf
                 };
                 UpdateTrayBtn.Click += (s, e) => Program.ShowUpdateDialog();
                 _notifyIcon.ContextMenuStrip.Items.Add(UpdateTrayBtn);
-                _notifyIcon.ContextMenuStrip.Items.Add(new Helpers.CustomContextMenu.StripSeparatorCustom().stripSeparator);
-                _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextSupport, Properties.Icons.icons8_heart_48).Click += (s, e) =>
-                                                                Helpers.LinkHandler.OpenBrowser("https://ko-fi.com/rocksdanister");
-
             }
 
+            _notifyIcon.ContextMenuStrip.Items.Add(new Helpers.CustomContextMenu.StripSeparatorCustom().stripSeparator);
+            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextSupport, Properties.Icons.icons8_heart_48).Click += (s, e) =>
+                            Helpers.LinkHandler.OpenBrowser("https://ko-fi.com/rocksdanister");
             _notifyIcon.ContextMenuStrip.Items.Add(new Helpers.CustomContextMenu.StripSeparatorCustom().stripSeparator);
             _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TitleReportBug, Properties.Icons.icons8_bug_50).Click += (s, e) =>
                             Helpers.LinkHandler.OpenBrowser("https://github.com/rocksdanister/lively/wiki/Common-Problems");
@@ -155,7 +154,7 @@ namespace livelywpf
                 var settingsWidget = new Cef.LivelyPropertiesTrayWidget(items[0].GetWallpaperData());
                 settingsWidget.Show();
             }
-            else if (items.Count > 1 )
+            else if (items.Count > 1)
             {
                 switch (Program.SettingsVM.Settings.WallpaperArrangement)
                 {

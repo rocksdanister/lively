@@ -20,7 +20,7 @@ namespace livelywpf.Views
         {
             InitializeComponent();
             appVersionText.Text = "v" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() + 
-                (Program.IsTestBuild == true? "b":string.Empty);
+                (Program.IsTestBuild ? "b": (Program.IsMSIX ? Properties.Resources.TitleStore : string.Empty));
         }
 
         private void btnLicense_Click(object sender, System.Windows.RoutedEventArgs e)

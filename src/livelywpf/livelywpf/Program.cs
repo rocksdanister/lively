@@ -18,7 +18,7 @@ namespace livelywpf
         //Loaded from Settings.json (User configurable.)
         public static string WallpaperDir { get; set; }
         public static string AppDataDir { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Lively Wallpaper");
-        public static bool IsMSIX { get; } = false; //new DesktopBridge.Helpers().IsRunningAsUwp();
+        public static bool IsMSIX { get; } = new DesktopBridge.Helpers().IsRunningAsUwp();
         public static bool IsTestBuild { get; } = false;
 
         //todo: use singleton or something instead?
@@ -133,6 +133,24 @@ namespace livelywpf
             {
                 Cmd.CommandHandler.ParseArgs(e.Args);
             }
+        }
+
+        public static void ApplicationThemeChange(AppTheme theme)
+        {
+            throw new NotImplementedException("xaml island theme/auto incomplete.");
+            //switch (theme)
+            //{
+            //    case AppTheme.Auto:
+            //        break;
+            //    case AppTheme.Light:
+            //        ModernWpf.ThemeManager.Current.ApplicationTheme = ModernWpf.ApplicationTheme.Light;
+            //        break;
+            //    case AppTheme.Dark:
+            //        ModernWpf.ThemeManager.Current.ApplicationTheme = ModernWpf.ApplicationTheme.Dark;
+            //        break;
+            //    default:
+            //        break;
+            //}
         }
 
         #endregion //app entry

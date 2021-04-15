@@ -264,8 +264,16 @@ namespace livelywpf
                 Logger.Info("WM_TASKBARCREATED: New taskbar created.");
                 SetupDesktop.ResetWorkerW();
             }
+            else if (msg == (uint)NativeMethods.WM.QUERYENDSESSION && Program.IsMSIX)
+            {
+                _ = NativeMethods.RegisterApplicationRestart(
+                    null,
+                    (int)NativeMethods.RestartFlags.RESTART_NO_CRASH |
+                    (int)NativeMethods.RestartFlags.RESTART_NO_HANG |
+                    (int)NativeMethods.RestartFlags.RESTART_NO_REBOOT);
+            }
             //screen message processing...
-            _= Core.DisplayManager.Instance?.OnWndProc(hwnd, (uint)msg, wParam, lParam);
+            _ = Core.DisplayManager.Instance?.OnWndProc(hwnd, (uint)msg, wParam, lParam);
 
             return IntPtr.Zero;
         }
