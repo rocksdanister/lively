@@ -17,8 +17,8 @@
             <Label x:Name="lblQtn" Content="Message"/>
             <TextBox x:Name="txtBox" Margin="0,5,0,0"/>
             <WrapPanel Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="0,15,0,0">
-                <Button Content="OK" Click="Button_Click" IsDefault="True" MinWidth="60" Margin="0,0,10,0"/>
-                <Button Content="Cancel" IsCancel="True" MinWidth="60"/>
+                <Button x:Name="primaryBtn" Content="OK" Click="Button_Click" IsDefault="True" MinWidth="75" Margin="0,0,10,0"/>
+                <Button x:Name="secondaryBtn" Content="Cancel" IsCancel="True" MinWidth="75"/>
             </WrapPanel>
         </StackPanel>
     </Grid>

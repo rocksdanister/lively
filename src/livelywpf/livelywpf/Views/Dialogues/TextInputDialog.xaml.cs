@@ -22,11 +22,13 @@ namespace livelywpf.Views
             get { return txtBox.Text; }
         }
 
-        public TextInputDialog(string msg, string title)
+        public TextInputDialog(string msg, string title, string primaryBtnText = "Ok", string secondaryBtnText = "Cancel")
         {
             InitializeComponent();
             lblQtn.Content = msg;
             this.Title = title;
+            this.primaryBtn.Content = primaryBtnText;
+            this.secondaryBtn.Content = secondaryBtnText;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

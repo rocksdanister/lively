@@ -738,7 +738,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <comment>For different version of Lively, example: Microsoft Store</comment>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>Your Windows N/KN version will require the download of additional codecs to support video playback in wallpapers.</value>
+    <value>您的Windows N / KN版本將需要下載其他編解碼器，以支持牆紙中的視頻播放。</value>
   </data>
   <data name="TextLicense" xml:space="preserve">
     <value>執照</value>
@@ -764,4 +764,19 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TipVideoHardwareDecode" xml:space="preserve">
     <value>盡可能使用硬件加速。</value>
   </data>
+  <data name="DescriptionPleaseStop" xml:space="preserve">
+  <value>請先停止操作，然後再繼續。</value>
+</data>
+<data name="TextEditWallpaper" xml:space="preserve">
+  <value>編輯</value>
+</data>
+<data name="TitleLocation" xml:space="preserve">
+  <value>地點</value>
+</data>
+<data name="TitleSkipConfirm" xml:space="preserve">
+  <value>跳過確認</value>
+</data>
+<data name="TextWallpaperCommandlineArgs" xml:space="preserve">
+  <value>輸入可選的命令行參數</value>
+</data>
 </root>

@@ -263,7 +263,10 @@ namespace livelywpf.Views
                                         //    ((UIElement)sender).XamlRoot,
                                         //    Properties.Resources.TextOK);
 
-                                        var w = new TextInputDialog("Enter optional commandline arguments:", Properties.Resources.TitlePleaseWait)
+                                        var w = new TextInputDialog(Properties.Resources.TextWallpaperCommandlineArgs, 
+                                            Properties.Resources.TitlePleaseWait,
+                                            Properties.Resources.TextOK,
+                                            Properties.Resources.TextCancel)
                                         { 
                                             Owner = App.AppWindow,
                                             Width = 350,

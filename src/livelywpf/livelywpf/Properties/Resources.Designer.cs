@@ -1027,6 +1027,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enter optional commandline arguments.
+        /// </summary>
+        public static string TextWallpaperCommandlineArgs {
+            get {
+                return ResourceManager.GetString("TextWallpaperCommandlineArgs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fill.
         /// </summary>
         public static string TextWallpaperFitFill {

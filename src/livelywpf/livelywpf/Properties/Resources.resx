@@ -453,6 +453,9 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="TextVideo" xml:space="preserve">
     <value>Video</value>
   </data>
+  <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
+    <value>Enter optional commandline arguments</value>
+  </data>
   <data name="TextWallpaperFitFill" xml:space="preserve">
     <value>Fill</value>
   </data>
