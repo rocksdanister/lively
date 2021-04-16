@@ -140,28 +140,47 @@ namespace livelywpf
                 if (_btnCommand == null)
                 {
                     _btnCommand = new RelayCommand(
-                        param => _= UserAction(), param => !_isRunning);
+                        param => _= UserAction());
                 }
                 return _btnCommand;
             }
         }
 
-        //todo: make it cancellable.
+        private string _btnText;
+        public string BtnText
+        {
+            get { return _btnText ??= Properties.Resources.TextStart; }
+            set
+            {
+                _btnText = value;
+                OnPropertyChanged("BtnText");
+            }
+        }
+
         private async Task UserAction()
         {
-            _isRunning = true;
-            importFlag = AutoImportCheck ? LibraryTileType.multiImport : LibraryTileType.processing;
-            BtnCommand.RaiseCanExecuteChanged();
+            if (!_isRunning)
+            {
+                _isRunning = true;
+                importFlag = AutoImportCheck ? LibraryTileType.multiImport : LibraryTileType.processing;
+                //BtnCommand.RaiseCanExecuteChanged();
+                BtnText = Properties.Resources.TextStop;
 
-            try
-            {
-                await WallpaperInstallZip(cancellationTokenSrc.Token);
-                SelectedItem = null;
-                SetWallpaper();
+                try
+                {
+                    await WallpaperInstallZip(cancellationTokenSrc.Token);
+                    SelectedItem = null;
+                    SetWallpaper();
+                }
+                catch (OperationCanceledException)
+                {
+                    Logger.Info("Wallpaper import cancelled by user.");
+                }
             }
-            catch (OperationCanceledException)
+            else
             {
-                Logger.Info("Wallpaper import cancelled by user.");
+                cancellationTokenSrc.Cancel();
+                CloseAction();
             }
         }
 
@@ -195,9 +214,13 @@ namespace livelywpf
                     if (ListItems.Count == 0)
                     {
                         Progress = 100f;
+                        CloseAction();
                         return;
                     }
                 }
+
+                if (!_isRunning)
+                    return;
 
                 SelectedItem = ListItems[0];
                 Program.LibraryVM.AddWallpaper(SelectedItem.Path,
@@ -216,5 +239,7 @@ namespace livelywpf
             }
             SetupDesktop.WallpaperChanged -= SetupDesktop_WallpaperChanged;
         }
+
+        public Action CloseAction { get; set; }
     }
 }

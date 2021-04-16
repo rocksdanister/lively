@@ -318,9 +318,12 @@ namespace livelywpf.Views
                     {
                         var miw = new MultiWallpaperImport(items.Select(x => x.Path).ToList())
                         {
-                            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner,
+                            //This dialog on right-topmost like position and librarypreview window left-topmost.
+                            WindowStartupLocation = System.Windows.WindowStartupLocation.Manual,
+                            Left = App.AppWindow.Left + App.AppWindow.Width - (App.AppWindow.Width/1.5),
+                            Top = App.AppWindow.Top + (App.AppWindow.Height/15),
                             Owner = App.AppWindow,
-                            Width = App.AppWindow.Width/1.3,
+                            Width = App.AppWindow.Width/1.5,
                             Height = App.AppWindow.Height/1.3,
                         };
                         miw.ShowDialog();

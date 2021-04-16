@@ -281,7 +281,7 @@ namespace livelywpf
                             //backup..once processed is done, becomes ready.
                             var type = wallpaper.GetWallpaperData().DataType;
                             if (Program.SettingsVM.Settings.LivelyGUIRendering == LivelyGUIState.lite &&
-                                type != LibraryTileType.edit && 
+                                type != LibraryTileType.edit &&
                                 type != LibraryTileType.multiImport)
                             {
                                 //quitting running wallpaper before gif capture for low-end systemss.
@@ -299,7 +299,34 @@ namespace livelywpf
                                 }
                             }
 
-                            await ShowPreviewDialogSTAThread(wallpaper);
+                            var pWindow = new LibraryPreviewView(wallpaper);
+                            if (type == LibraryTileType.multiImport)
+                            {
+                                pWindow.Topmost = true;
+                                if (App.AppWindow != null)
+                                {
+                                    pWindow.Left = App.AppWindow.Left;
+                                    pWindow.Top = App.AppWindow.Top;
+                                    pWindow.WindowStartupLocation = WindowStartupLocation.Manual;
+                                }
+                                await WindowOperations.ShowWindowAsync(pWindow);
+                            }
+                            else if (type == LibraryTileType.cmdImport)
+                            {
+                                pWindow.Topmost = true;
+                                pWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                                await WindowOperations.ShowWindowAsync(pWindow);
+                            }
+                            else
+                            {
+                                if (App.AppWindow != null)
+                                {
+                                    pWindow.Owner = App.AppWindow;
+                                    pWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                                }
+                                await WindowOperations.ShowWindowDialogAsync(pWindow);
+                            }
+
                             if (!File.Exists(Path.Combine(wallpaper.GetWallpaperData().LivelyInfoFolderPath, "LivelyInfo.json")))
                             {
                                 //user cancelled/fail!
@@ -841,40 +868,6 @@ namespace livelywpf
         }
 
         #endregion //core
-
-        #region threads
-
-        public static Task ShowPreviewDialogSTAThread(IWallpaper wp)
-        {
-            var tcs = new TaskCompletionSource<object>();
-            var thread = new Thread(() =>
-            {
-                try
-                {
-                    System.Windows.Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, new ThreadStart(delegate
-                    {
-                        var previewWindow = new LibraryPreviewView(wp);
-                        if (App.AppWindow != null)
-                        {
-                            previewWindow.Owner = App.AppWindow;
-                            previewWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-                        }
-                        previewWindow.ShowDialog();
-                    }));
-                    tcs.SetResult(null);
-                }
-                catch (Exception e)
-                {
-                    tcs.SetException(e);
-                    Logger.Error(e.ToString());
-                }
-            });
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
-            return tcs.Task;
-        }
-
-        #endregion threads
 
         #region wallpaper operations
 

@@ -769,18 +769,18 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
     <value>Guna 'Hardware Acceleration' jika mampu.</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
-  <value>Please stop before proceeding.</value>
+  <value>Sila berhenti sebelum meneruskan.</value>
 </data>
 <data name="TextEditWallpaper" xml:space="preserve">
-  <value>Edit</value>
+  <value>Ubahsuai</value>
 </data>
 <data name="TitleLocation" xml:space="preserve">
-  <value>Location</value>
+  <value>Lokasi</value>
 </data>
 <data name="TitleSkipConfirm" xml:space="preserve">
-  <value>Skip Confirmation</value>
+  <value>Skip pengesahan</value>
 </data>
 <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-  <value>Enter optional commandline arguments</value>
+  <value>Masukkan argumen baris perintah</value>
 </data>
 </root>

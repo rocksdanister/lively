@@ -66,7 +66,7 @@ namespace livelywpf.Views
         {
             LibraryPreviewViewModel vm = new LibraryPreviewViewModel(this, wp);
             this.DataContext = vm;
-            this.Closing += vm.OnWindowClosing;
+            this.Closed += vm.OnWindowClosed;
             wallpaperHwnd = wp.GetHWND();
             wallpaperType = wp.GetWallpaperType();
             InitializeComponent();

@@ -16,10 +16,11 @@ namespace livelywpf.Views
         public MultiWallpaperImport(List<string> paths)
         {
             InitializeComponent();
-            //view model
             var vm = new MultiWallpaperImportViewModel(paths);
             this.DataContext = vm;
             this.Closing += vm.OnWindowClosing;
+            if (vm.CloseAction == null)
+                vm.CloseAction = new Action(this.Close);
         }
     }
 }

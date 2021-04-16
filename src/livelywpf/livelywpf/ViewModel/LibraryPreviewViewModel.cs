@@ -213,7 +213,7 @@ namespace livelywpf
             }
         }
 
-        public void OnWindowClosing(object sender, CancelEventArgs e)
+        public void OnWindowClosed(object sender, EventArgs e)
         {
             CleanUp();
         }
