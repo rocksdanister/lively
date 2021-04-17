@@ -175,45 +175,110 @@ namespace livelywpf
                 var droppedFiles = e.Data.GetData(System.Windows.DataFormats.FileDrop, true) as string[];
                 if ((null == droppedFiles) || (!droppedFiles.Any()))
                     return;
-                Logger.Info("Dropped File, Selecting first file:" + droppedFiles[0]);
 
-                if (string.IsNullOrWhiteSpace(Path.GetExtension(droppedFiles[0])))
-                    return;
-
-                WallpaperType type;
-                if ((type = FileFilter.GetLivelyFileType(droppedFiles[0])) != (WallpaperType)(-1))
+                if (droppedFiles.Count() == 1)
                 {
-                    if (type == (WallpaperType)100)
+                    var item = droppedFiles[0];
+                    Logger.Info("Dropped File, Selecting first file:" + item);
+                    try
                     {
-                        //lively .zip is not a wallpaper type.
-                        if (ZipExtract.CheckLivelyZip(droppedFiles[0]))
-                        {
-                            Program.LibraryVM.WallpaperInstall(droppedFiles[0], false);
-                        }
-                        else
-                        {
-                            await DialogService.ShowConfirmationDialog(Properties.Resources.TextError,
-                                Properties.Resources.LivelyExceptionNotLivelyZip,
-                                Properties.Resources.TextOK);
+                        if (string.IsNullOrWhiteSpace(Path.GetExtension(item)))
                             return;
-                        }
                     }
-                    else
+                    catch (ArgumentException)
                     {
-                        Program.LibraryVM.AddWallpaper(droppedFiles[0],
-                            type,
-                            LibraryTileType.processing,
-                            Program.SettingsVM.Settings.SelectedDisplay);
+                        Logger.Info("Invalid character, skipping dropped file.");
+                        return;
+                    }
+
+                    WallpaperType type = FileFilter.GetLivelyFileType(item);
+                    switch (type)
+                    {
+                        case WallpaperType.web:
+                        case WallpaperType.webaudio:
+                        case WallpaperType.url:
+                        case WallpaperType.video:
+                        case WallpaperType.gif:
+                        case WallpaperType.videostream:
+                        case WallpaperType.picture:
+                            {
+                                Program.LibraryVM.AddWallpaper(item,
+                                    type,
+                                    LibraryTileType.processing,
+                                    Program.SettingsVM.Settings.SelectedDisplay);
+                            }
+                            break;
+                        case WallpaperType.app:
+                        case WallpaperType.bizhawk:
+                        case WallpaperType.unity:
+                        case WallpaperType.godot:
+                        case WallpaperType.unityaudio:
+                            {
+                                //Show warning before proceeding..
+                                var result = await Helpers.DialogService.ShowConfirmationDialog(
+                                     Properties.Resources.TitlePleaseWait,
+                                     Properties.Resources.DescriptionExternalAppWarning,
+                                     Properties.Resources.TextYes,
+                                     Properties.Resources.TextNo);
+
+                                if (result == ContentDialogResult.Primary)
+                                {
+                                    var txtInput = await Helpers.DialogService.ShowTextInputDialog(
+                                        Properties.Resources.TextWallpaperCommandlineArgs,
+                                        Properties.Resources.TextOK);
+
+                                    Program.LibraryVM.AddWallpaper(item,
+                                        WallpaperType.app,
+                                        LibraryTileType.processing,
+                                        Program.SettingsVM.Settings.SelectedDisplay,
+                                        string.IsNullOrWhiteSpace(txtInput) ? null : txtInput);
+                                }
+                            }
+                            break;
+                        case (WallpaperType)100:
+                            {
+                                //lively wallpaper .zip
+                                if (ZipExtract.CheckLivelyZip(item))
+                                {
+                                    _ = Program.LibraryVM.WallpaperInstall(item, false);
+                                }
+                                else
+                                {
+                                    await DialogService.ShowConfirmationDialog(Properties.Resources.TextError,
+                                        Properties.Resources.LivelyExceptionNotLivelyZip,
+                                        Properties.Resources.TextOK);
+                                }
+                            }
+                            break;
+                        case (WallpaperType)(-1):
+                            {
+                                await Helpers.DialogService.ShowConfirmationDialog(
+                                    Properties.Resources.TextError,
+                                    Properties.Resources.TextUnsupportedFile + " (" + Path.GetExtension(item) + ")",
+                                    Properties.Resources.TextClose);
+                            }
+                            break;
+                        default:
+                            Logger.Info("No wallpaper type recognised.");
+                            break;
                     }
                 }
-                else
+                else if (droppedFiles.Count() > 1)
                 {
-                    await DialogService.ShowConfirmationDialog(Properties.Resources.TextError,
-                        Properties.Resources.TextUnsupportedFile + " (" + Path.GetExtension(droppedFiles[0]) + ")",
-                        Properties.Resources.TextOK);
-                    return;
+                    var miw = new MultiWallpaperImport(droppedFiles.ToList())
+                    {
+                        //This dialog on right-topmost like position and librarypreview window left-topmost.
+                        WindowStartupLocation = System.Windows.WindowStartupLocation.Manual,
+                        Left = App.AppWindow.Left + App.AppWindow.Width - (App.AppWindow.Width / 1.5),
+                        Top = App.AppWindow.Top + (App.AppWindow.Height / 15),
+                        Owner = App.AppWindow,
+                        Width = App.AppWindow.Width / 1.5,
+                        Height = App.AppWindow.Height / 1.3,
+                    };
+                    //hanging file explorer..
+                    //miw.ShowDialog();
+                    miw.Show();
                 }
-
             }
             else if (e.Data.GetDataPresent(System.Windows.DataFormats.Text))
             {
@@ -268,6 +333,7 @@ namespace livelywpf
         {
             if (msg == NativeMethods.WM_SHOWLIVELY)
             {
+                Logger.Info("WM_SHOWLIVELY msg received.");
                 Program.ShowMainWindow();   
             }
             else if (msg == NativeMethods.WM_TASKBARCREATED)
@@ -276,7 +342,7 @@ namespace livelywpf
                 Logger.Info("WM_TASKBARCREATED: New taskbar created.");
                 SetupDesktop.ResetWorkerW();
             }
-            else if (msg == (uint)NativeMethods.WM.QUERYENDSESSION)
+            else if (msg == (uint)NativeMethods.WM.QUERYENDSESSION && Program.IsMSIX)
             {
                 _ = NativeMethods.RegisterApplicationRestart(
                     null,

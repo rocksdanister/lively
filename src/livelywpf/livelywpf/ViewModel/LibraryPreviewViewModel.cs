@@ -2,6 +2,7 @@
 using livelywpf.Views;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -17,8 +18,11 @@ namespace livelywpf
     class LibraryPreviewViewModel : ObservableObject
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        readonly private LibraryModel libData;
-        readonly ILibraryPreview Winstance;
+        private readonly LibraryModel libData;
+        private readonly ILibraryPreview Winstance;
+        private readonly LivelyInfoModel livelyInfoCopy;
+        //private readonly string thumbnailPathCopy;
+
         public LibraryPreviewViewModel( ILibraryPreview wInterface, IWallpaper wallpaper)
         {
             Winstance = wInterface;
@@ -28,47 +32,79 @@ namespace livelywpf
             Winstance.WallpaperAttached += WInstance_WallpaperAttached;
 
             libData = wallpaper.GetWallpaperData();
-            if(libData.LivelyInfo.Type == WallpaperType.videostream)
+            if (libData.DataType == LibraryTileType.edit)
             {
-                Url = libData.FilePath;
-                Title = GetLastSegmentUrl(libData.FilePath);
-            }
-            else if (libData.LivelyInfo.Type == WallpaperType.url
-            || libData.LivelyInfo.Type == WallpaperType.web
-            || libData.LivelyInfo.Type == WallpaperType.webaudio)
-            {
-                if (libData.LivelyInfo.Type == WallpaperType.url)
-                    Url = libData.FilePath;
+                //taking backup to restore original data if user cancel..
+                livelyInfoCopy = new LivelyInfoModel(libData.LivelyInfo);
+                //capture loop is disabled for now..
+                //thumbnailPathCopy = libData.ThumbnailPath;
+                //if (libData.ThumbnailPath != null)
+                //{
+                //    try
+                //    {
+                //        File.Copy(libData.ThumbnailPath, 
+                //            Path.Combine(Program.AppDataDir, "temp", Path.GetFileName(libData.ThumbnailPath)));
+                //    }
+                //    catch (Exception e)
+                //    {
+                //        Logger.Error(e.ToString());
+                //    }
+                //}
 
-                try
-                {
-                    if(wallpaper.GetProcess() != null)
-                    {
-                        //wallpaper.GetProcess().Refresh();
-                        Title = wallpaper.GetProcess().MainWindowTitle;
-                    }
-                }
-                catch { }
+                //use existing data for editing already imported wallpaper..
+                Title = libData.LivelyInfo.Title;
+                Desc = libData.LivelyInfo.Desc;
+                Url = libData.LivelyInfo.Contact;
+                Author = libData.LivelyInfo.Author;
 
-                if (String.IsNullOrWhiteSpace(Title))
-                {
-                    Title = GetLastSegmentUrl(libData.FilePath);
-                }
+                //consistency..
+                libData.ImagePath = libData.ThumbnailPath;
             }
             else
             {
-                try
+                //guess data based on filename, window title etc..
+                if (libData.LivelyInfo.Type == WallpaperType.videostream)
                 {
-                    Title = Path.GetFileNameWithoutExtension(libData.FilePath);
+                    Url = libData.FilePath;
+                    Title = GetLastSegmentUrl(libData.FilePath);
                 }
-                catch (ArgumentException)
+                else if (libData.LivelyInfo.Type == WallpaperType.url
+                || libData.LivelyInfo.Type == WallpaperType.web
+                || libData.LivelyInfo.Type == WallpaperType.webaudio)
                 {
-                    Title = libData.FilePath;
-                }
+                    if (libData.LivelyInfo.Type == WallpaperType.url)
+                        Url = libData.FilePath;
 
-                if (String.IsNullOrWhiteSpace(Title))
+                    try
+                    {
+                        if (wallpaper.GetProcess() != null)
+                        {
+                            //wallpaper.GetProcess().Refresh();
+                            Title = wallpaper.GetProcess().MainWindowTitle;
+                        }
+                    }
+                    catch { }
+
+                    if (String.IsNullOrWhiteSpace(Title))
+                    {
+                        Title = GetLastSegmentUrl(libData.FilePath);
+                    }
+                }
+                else
                 {
-                    Title = libData.FilePath;
+                    try
+                    {
+                        Title = Path.GetFileNameWithoutExtension(libData.FilePath);
+                    }
+                    catch (ArgumentException)
+                    {
+                        Title = libData.FilePath;
+                    }
+
+                    if (String.IsNullOrWhiteSpace(Title))
+                    {
+                        Title = libData.FilePath;
+                    }
                 }
             }
 
@@ -152,8 +188,12 @@ namespace livelywpf
             set
             {
                 _gifCheck = value;
-                Program.SettingsVM.Settings.GifCapture = _gifCheck;
-                Program.SettingsVM.UpdateConfigFile();
+                if (_gifCheck != Program.SettingsVM.Settings.GifCapture)
+                {
+                    Program.SettingsVM.Settings.GifCapture = _gifCheck;
+                    Program.SettingsVM.UpdateConfigFile();
+                }
+                OnPropertyChanged("GifCheck");
             }
         }
 
@@ -164,9 +204,18 @@ namespace livelywpf
             set
             {
                 _zipCheck = value;
-                Program.SettingsVM.Settings.LivelyZipGenerate = _zipCheck;
-                Program.SettingsVM.UpdateConfigFile();
+                if (_zipCheck != Program.SettingsVM.Settings.LivelyZipGenerate)
+                {
+                    Program.SettingsVM.Settings.LivelyZipGenerate = _zipCheck;
+                    Program.SettingsVM.UpdateConfigFile();
+                }
+                OnPropertyChanged("ZipCheck");
             }
+        }
+
+        public void OnWindowClosed(object sender, EventArgs e)
+        {
+            CleanUp();
         }
 
         #endregion ui
@@ -175,7 +224,19 @@ namespace livelywpf
 
         private void WInstance_WallpaperAttached(object sender, EventArgs e)
         {
-            Winstance.StartThumbnailCaptureLoop(libData.LivelyInfoFolderPath);
+            if (libData.DataType == LibraryTileType.cmdImport || 
+                libData.DataType == LibraryTileType.multiImport)
+            {
+                Winstance.StartCapture(libData.LivelyInfoFolderPath);
+            }
+            else if (libData.DataType == LibraryTileType.edit)
+            {
+                //no thumbnail capture timer..
+            }
+            else
+            {
+                Winstance.StartThumbnailCaptureLoop(libData.LivelyInfoFolderPath);
+            }
         }
 
         private bool _canCancelOperation = true;
@@ -191,40 +252,6 @@ namespace livelywpf
             CurrentProgress = value;
             if (CurrentProgress == 100)
             {
-                libData.DataType = LibraryTileType.ready;
-                try
-                {
-                    Helpers.JsonStorage<LivelyInfoModel>.StoreData(Path.Combine(libData.LivelyInfoFolderPath, "LivelyInfo.json"), libData.LivelyInfo);
-                }
-                catch (Exception e)
-                {
-                    Logger.Error(e.ToString());
-                }
-                Program.LibraryVM.SortLibraryItem(libData);
-
-                if (Program.SettingsVM.Settings.LivelyZipGenerate)
-                {
-                    string savePath = "";
-                    var saveFileDialog1 = new Microsoft.Win32.SaveFileDialog()
-                    {
-                        Title = "Select location to save the file",
-                        Filter = "Lively/zip file|*.zip",
-                        //title ending with '.' can have diff extension (example: parallax.js)
-                        FileName = Path.ChangeExtension(libData.Title, ".zip"),
-                    };
-                    if (saveFileDialog1.ShowDialog() == true)
-                    {
-                        savePath = saveFileDialog1.FileName;
-                    }
-                    if (!String.IsNullOrEmpty(savePath))
-                    {
-                        Program.LibraryVM.WallpaperExport(libData, savePath);
-                    }
-                }
-                Winstance.CaptureProgress -= WInstance_CaptureProgress;
-                Winstance.PreviewUpdated -= WInstance_PreviewUpdated;
-                Winstance.ThumbnailUpdated -= WInstance_ThumbnailUpdated;
-                Winstance.WallpaperAttached -= WInstance_WallpaperAttached;
                 Winstance.Exit();
             }
         }
@@ -269,9 +296,7 @@ namespace livelywpf
         {
             libData.ImagePath = null;
             libData.ImagePath = path;
-            libData.LivelyInfo.Thumbnail = path;
-            libData.ThumbnailPath = null;
-            //libData.ImageBmp = null;
+            libData.LivelyInfo.Thumbnail = libData.LivelyInfo.IsAbsolutePath ? path : Path.GetFileName(path);
             libData.ThumbnailPath = path;
         }
 
@@ -282,8 +307,104 @@ namespace livelywpf
                 libData.ImagePath = null;
                 libData.ImagePath = path;
             }
-            libData.LivelyInfo.Preview = path;
+            libData.LivelyInfo.Preview = libData.LivelyInfo.IsAbsolutePath ?  path : Path.GetFileName(path);
             libData.PreviewClipPath = path;
+        }
+
+        private void CleanUp()
+        {
+            if (CurrentProgress == 100)
+            {
+                //user pressed ok..everything went well :)
+                try
+                {
+                    Helpers.JsonStorage<LivelyInfoModel>.StoreData(
+                        Path.Combine(libData.LivelyInfoFolderPath, "LivelyInfo.json"), libData.LivelyInfo);
+                }
+                catch (Exception e)
+                {
+                    Logger.Error(e.ToString());
+                }
+
+                //change from pos 0..
+                libData.DataType = LibraryTileType.ready;
+                Program.LibraryVM.SortLibraryItem(libData);
+            }
+            else
+            {
+                //user close or 'x' btn press..
+                if (libData.DataType == LibraryTileType.edit)
+                {
+                    //if (thumbnailPathCopy != null)
+                    //{
+                    //    try
+                    //    {
+                    //        File.Delete(libData.LivelyInfo.Thumbnail);
+                    //        //temp -> wp folder..
+                    //        File.Copy(thumbnailPathCopy, libData.ThumbnailPath, true);
+
+                    //        libData.LivelyInfo.Thumbnail = libData.ThumbnailPath;
+                    //        libData.ThumbnailPath = libData.ThumbnailPath;
+
+                    //        libData.ImagePath = null;
+                    //        //Use animated gif if exists.
+                    //        libData.ImagePath = Program.SettingsVM.Settings.LivelyGUIRendering == LivelyGUIState.normal ?
+                    //            (File.Exists(libData.PreviewClipPath) ? libData.PreviewClipPath : libData.ThumbnailPath) : libData.ThumbnailPath;
+                    //    }
+                    //    catch(Exception e)
+                    //    {
+                    //        Logger.Error(e.ToString());
+                    //    }
+                    //}
+
+                    //restore previous data..
+                    Title = livelyInfoCopy.Title;
+                    Desc = livelyInfoCopy.Desc;
+                    Author = livelyInfoCopy.Author;
+                    Url = livelyInfoCopy.Contact;
+
+                    //change from pos 0..
+                    libData.DataType = LibraryTileType.ready;
+                    Program.LibraryVM.SortLibraryItem(libData);
+                }
+                else
+                {
+                    //nothing, core will terminate and delete the wp folder when LivelyInfo.json not found..
+                }
+            }
+
+            //Use animated gif if possible, if user checked create no preview but preview already exists..
+            if (libData.DataType == LibraryTileType.edit)
+            {
+                libData.ImagePath = null;
+                libData.ImagePath = Program.SettingsVM.Settings.LivelyGUIRendering == LivelyGUIState.normal ?
+                    (File.Exists(libData.PreviewClipPath) ? libData.PreviewClipPath : libData.ThumbnailPath) : libData.ThumbnailPath;
+            }
+
+            if (Program.SettingsVM.Settings.LivelyZipGenerate)
+            {
+                string savePath = "";
+                var saveFileDialog1 = new Microsoft.Win32.SaveFileDialog()
+                {
+                    Title = "Select location to save the file",
+                    Filter = "Lively/zip file|*.zip",
+                    //title ending with '.' can have diff extension (example: parallax.js)
+                    FileName = Path.ChangeExtension(libData.Title, ".zip"),
+                };
+                if (saveFileDialog1.ShowDialog() == true)
+                {
+                    savePath = saveFileDialog1.FileName;
+                }
+                if (!String.IsNullOrEmpty(savePath))
+                {
+                    Program.LibraryVM.WallpaperExport(libData, savePath);
+                }
+            }
+
+            Winstance.CaptureProgress -= WInstance_CaptureProgress;
+            Winstance.PreviewUpdated -= WInstance_PreviewUpdated;
+            Winstance.ThumbnailUpdated -= WInstance_ThumbnailUpdated;
+            Winstance.WallpaperAttached -= WInstance_WallpaperAttached;
         }
 
         #endregion interface methods

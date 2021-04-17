@@ -162,7 +162,7 @@ namespace livelywpf
             try
             {
                 var userName = "rocksdanister";
-                var repositoryName = "lively-wpf";
+                var repositoryName = "lively";
                 var fetchDelay = 45000;
 
                 var gitRelease = await UpdaterGithub.GetLatestRelease(repositoryName, userName, fetchDelay);

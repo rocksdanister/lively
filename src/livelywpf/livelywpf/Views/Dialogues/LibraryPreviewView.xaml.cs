@@ -50,10 +50,11 @@ namespace livelywpf.Views
     {
         private bool _processing = false;
         private string thumbnailPathTemp;
-        private WallpaperType wallpaperType;
-        readonly DispatcherTimer gifCaptureTimer = new DispatcherTimer();
-        readonly int gifAnimationDelay = (int)Math.Round((1f / 15f * 1000f)); //in milliseconds
-        readonly int gifSaveAnimationDelay = (int)Math.Round((1f / 90f) * 1000f);
+        private readonly WallpaperType wallpaperType;
+        readonly DispatcherTimer thumbnailCaptureTimer = new DispatcherTimer();
+        //Good values: 1. 30c,120s 2. 15c, 90s
+        readonly int gifAnimationDelay = 1000 * 1 / 30; //in milliseconds (1/fps)
+        readonly int gifSaveAnimationDelay = 1000 * 1 / 120;
         readonly int gifTotalFrames = 60;
         private readonly IntPtr HWND;
         public event EventHandler<string> ThumbnailUpdated;
@@ -65,6 +66,7 @@ namespace livelywpf.Views
         {
             LibraryPreviewViewModel vm = new LibraryPreviewViewModel(this, wp);
             this.DataContext = vm;
+            this.Closed += vm.OnWindowClosed;
             HWND = wp.GetHWND();
             wallpaperType = wp.GetWallpaperType();
             InitializeComponent();
@@ -85,7 +87,7 @@ namespace livelywpf.Views
                 return;
             }
 
-            gifCaptureTimer?.Stop();
+            thumbnailCaptureTimer?.Stop();
             //detach wallpaper window from this dialogue.
             WindowOperations.SetParentSafe(HWND, IntPtr.Zero);
         }
@@ -103,7 +105,7 @@ namespace livelywpf.Views
                 }
                 catch
                 {
-                    gifCaptureTimer.Stop();
+                    thumbnailCaptureTimer.Stop();
                 }
             }
 
@@ -124,11 +126,8 @@ namespace livelywpf.Views
 
         private async void CapturePreview(string saveDirectory)
         {
-            if (gifCaptureTimer != null)
-            {
-                gifCaptureTimer.Stop();
-            }
             _processing = true;
+            thumbnailCaptureTimer?.Stop();
             taskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Normal;
             Rect previewPanelPos = WindowOperations.GetAbsolutePlacement(PreviewBorder, true);
             Size previewPanelSize = WindowOperations.GetElementPixelSize(PreviewBorder);
@@ -139,8 +138,9 @@ namespace livelywpf.Views
             await Task.Delay(100);
             try
             {
-                //delete CaptureLoop() thumbnail if any.
+                //try deleting existing files if any..
                 File.Delete(Path.Combine(saveDirectory, "lively_t.jpg"));
+                File.Delete(Path.Combine(saveDirectory, "lively_p.gif"));
             }
             catch { }
 
@@ -203,9 +203,9 @@ namespace livelywpf.Views
         {
             thumbnailPathTemp = savePath;
             //capture thumbnail every few seconds while user is shown wallpaper metadata preview.
-            gifCaptureTimer.Tick += new EventHandler(CaptureLoop);
-            gifCaptureTimer.Interval = new TimeSpan(0, 0, 0, 0, 3000);
-            gifCaptureTimer.Start();
+            thumbnailCaptureTimer.Tick += new EventHandler(CaptureLoop);
+            thumbnailCaptureTimer.Interval = new TimeSpan(0, 0, 0, 0, 3000);
+            thumbnailCaptureTimer.Start();
         }
 
         #endregion

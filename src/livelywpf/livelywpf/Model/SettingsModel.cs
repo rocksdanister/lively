@@ -69,6 +69,7 @@ namespace livelywpf
         public LivelyGifPlayer GifPlayer { get; set; }
         public LivelyWebBrowser WebBrowser { get; set; }
         public bool GifCapture { get; set; }
+        public bool MultiFileAutoImport { get; set; }
         public livelywpf.Core.LivelyScreen SelectedDisplay { get; set; }
         public LivelyGUIState LivelyGUIRendering { get; set; }
         public string WallpaperDir { get; set; }
@@ -113,6 +114,7 @@ namespace livelywpf
             VideoPlayerHwAccel = true;
             WebBrowser = LivelyWebBrowser.cef;
             GifPlayer = LivelyGifPlayer.mpv;
+            MultiFileAutoImport = true;
 
             WallpaperWaitTime = 20000; // 20sec
             ProcessTimerInterval = 500; //reduce to 250 for quicker response.

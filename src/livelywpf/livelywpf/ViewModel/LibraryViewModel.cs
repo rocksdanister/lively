@@ -297,7 +297,7 @@ namespace livelywpf
         }
 
         static readonly SemaphoreSlim semaphoreSlimInstallLock = new SemaphoreSlim(1, 1);
-        public async void WallpaperInstall(string livelyZipPath, bool verifyLivelyZip = true)
+        public async Task WallpaperInstall(string livelyZipPath, bool verifyLivelyZip = true)
         {
             await semaphoreSlimInstallLock.WaitAsync();
             string installDir = null;
@@ -347,7 +347,9 @@ namespace livelywpf
         public void AddWallpaper(string path, WallpaperType wpType, LibraryTileType dataType, LivelyScreen screen, string cmdArgs = null)
         {
             var dir = Path.Combine(Program.WallpaperDir, "SaveData", "wptmp", Path.GetRandomFileName());
-            if (dataType == LibraryTileType.processing)
+            if (dataType == LibraryTileType.processing ||
+                dataType == LibraryTileType.cmdImport ||
+                dataType == LibraryTileType.multiImport)
             {
                 //Preview gif and thumbnail to be captured..
                 //Create a tile at index 0, updates value realtime.
@@ -369,7 +371,7 @@ namespace livelywpf
                     Thumbnail = null,
                     Arguments = cmdArgs
                 };
-                var model = new LibraryModel(data, dir, LibraryTileType.processing);
+                var model = new LibraryModel(data, dir, dataType);
                 LibraryItems.Insert(0, model);
                 SetupDesktop.SetWallpaper(model, screen);
             }
@@ -383,6 +385,16 @@ namespace livelywpf
                 var binarySearchIndex = BinarySearch(LibraryItems, libItem.Title);
                 LibraryItems.Insert(binarySearchIndex, libItem);
             }
+        }
+
+        public void EditWallpaper(LibraryModel obj)
+        {
+            //Kill wp if running..
+            SetupDesktop.TerminateWallpaper(obj);
+            LibraryItems.Remove(obj);
+            obj.DataType = LibraryTileType.edit;
+            LibraryItems.Insert(0, obj);
+            SetupDesktop.SetWallpaper(obj, ScreenHelper.GetPrimaryScreen());
         }
 
         public void FilterCollection(string str)

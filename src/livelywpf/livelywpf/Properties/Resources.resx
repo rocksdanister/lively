@@ -146,6 +146,9 @@ Only continue if this application comes from a trusted source.</value>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
     <value>Please restart Lively for settings to take effect.</value>
   </data>
+  <data name="DescriptionPleaseStop" xml:space="preserve">
+    <value>Please stop before proceeding.</value>
+  </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
     <value>Press to begin recording.</value>
   </data>
@@ -259,7 +262,7 @@ If still not working, close &amp; start Lively again/restart windows.
     <value>Customise Wallpaper</value>
   </data>
   <data name="TextDeleteWallpaper" xml:space="preserve">
-    <value>Delete Wallpaper</value>
+    <value>Delete</value>
   </data>
   <data name="TextDescription" xml:space="preserve">
     <value>Description</value>
@@ -272,6 +275,9 @@ If still not working, close &amp; start Lively again/restart windows.
   </data>
   <data name="TextDownload" xml:space="preserve">
     <value>Download</value>
+  </data>
+  <data name="TextEditWallpaper" xml:space="preserve">
+    <value>Edit</value>
   </data>
   <data name="TextError" xml:space="preserve">
     <value>Error</value>
@@ -361,7 +367,7 @@ If still not working, close &amp; start Lively again/restart windows.
     <value>Picture</value>
   </data>
   <data name="TextPreviewWallpaper" xml:space="preserve">
-    <value>Preview Wallpaper</value>
+    <value>Preview</value>
   </data>
   <data name="TextPrivacyPolicy" xml:space="preserve">
     <value>Privacy Policy</value>
@@ -446,6 +452,9 @@ If still not working, close &amp; start Lively again/restart windows.
   </data>
   <data name="TextVideo" xml:space="preserve">
     <value>Video</value>
+  </data>
+  <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
+    <value>Enter optional commandline arguments</value>
   </data>
   <data name="TextWallpaperFitFill" xml:space="preserve">
     <value>Fill</value>
@@ -670,6 +679,9 @@ Edge is the built in webview of windows 10.</value>
   <data name="TitleLivelySetup" xml:space="preserve">
     <value>Lively Setup</value>
   </data>
+  <data name="TitleLocation" xml:space="preserve">
+    <value>Location</value>
+  </data>
   <data name="TitleMisc" xml:space="preserve">
     <value>Misc.</value>
   </data>
@@ -702,6 +714,9 @@ Edge is the built in webview of windows 10.</value>
   </data>
   <data name="TitleSettings" xml:space="preserve">
     <value>Settings</value>
+  </data>
+  <data name="TitleSkipConfirm" xml:space="preserve">
+    <value>Skip Confirmation</value>
   </data>
   <data name="TitleStore" xml:space="preserve">
     <value>Store</value>

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -118,670 +118,664 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DescriptionAddWallpaper" xml:space="preserve">
-    <value>ファイルを選択するか、ウェブサイトのURLを指定して壁紙として設定します。</value>
+    <value>یک فایل یا آدرس وبسایت انتخاب کنید تا پس زمینه تنظیم شود.</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
-    <value>実行中のアプリケーションに基づく壁紙の再生動作です。</value>
+    <value>تنظیم رفتار پس زمینه بر اساس برنامه در حال اجرا.</value>
   </data>
   <data name="DescriptionCancelQuestion" xml:space="preserve">
-    <value>本当にキャンセルしますか？</value>
+    <value>آیا از لغو کردن مطمئنید؟</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
-    <value>ディスクからこの壁紙を永久に削除しますか？</value>
+    <value>آیا از حذف کردن کامل این پس زمینه از دیسک مطمئنید؟</value>
   </data>
   <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
-    <value>この壁紙をライブラリから削除してもよろしいですか？</value>
+    <value>آیا از حذف کردن این پس زمینه از کتابخانه مطمئنید؟</value>
   </data>
   <data name="DescriptionDragDropFIle" xml:space="preserve">
-    <value>ライブラリにファイルをドラッグ＆ドロップしてください。</value>
+    <value>به آسانی فایل ها را با کشیدن و رها کردن وارد کتابخانه کنید.</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
-    <value>壁紙として外部アプリケーションを開いています。
-悪意のあるアプリケーションは、マルウェアやウイルスをホストし、システムに害を及ぼす可能性があります。
-このアプリケーションが信頼できるソースから来ている場合のみ続行してください。</value>
+    <value>شما دارید یک برنامه خارجی را به عنوان پس زمینه باز میکنید. برنامه های مخرب میتوانند حاوی بد افزار یا ویروس باشند و میتوانند به سیستم شما آسیب بزنند. تنها در صورنی ادامه دهید که این برنامه از منبع قابل اعتماد آمده باشد.</value>
   </data>
   <data name="DescriptionMinimizedTray" xml:space="preserve">
-    <value>活気がシステムトレイに最小化されているので、活気のアイコンを右クリックして続行します。</value>
+    <value>لایولی کوچک شده و به سیستم تری انتقال یافته، برای ادامه آیکون لایولی را راست کلیک کنید.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
-    <value>設定を有効にするために、Livelyを再起動してください。</value>
+    <value>لطفا لایولی را دوباره اجرا کنید تا تنظیمات اعمال شود.</value>
+  </data>
+  <data name="DescriptionPleaseStop" xml:space="preserve">
+    <value>لطفا قبل از ادامه دست نگه دارید.</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
-    <value>押して録画を開始します。</value>
+    <value>برای شروع ضبط فشار دهيد.</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
-    <value>前の壁紙を復元中、お待ちください...</value>
+    <value>در حال بازيابي کاغذ ديواري پيشين، لطفا صبر کنيد.</value>
   </data>
   <data name="DescriptionScreenLayout" xml:space="preserve">
-    <value>表示を選択</value>
+    <value>يک صفحه را انتخاب کنيد.</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
-    <value>新バージョンのソフトが登場しました！</value>
+    <value>يک نسخه جديد از برنامه موجود است!</value>
   </data>
   <data name="DescriptionWebpageLoad" xml:space="preserve">
-    <value>ウェブサイトのURLを入力してください、shadertoy.comのシェーダーリンクがサポートされています。</value>
+    <value>آدرس وبسايت را وارد کنيد تا بارگذاري شود، از شِيدر هم پشتيباني ميشود. (shadertoy.com)</value>
   </data>
   <data name="DescriptionWelcomeWizard" xml:space="preserve">
-    <value>このウィザードを使って、Livelyの設定を開始します。</value>
+    <value>اين پنجره به تنظيم کردن لايولي کمکتان ميکند.</value>
+  </data>
+  <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
+    <value>براي اجراي ويديو در پس زمينه نسخه ويندوز شما نيازمند دانلود چند برنامه است.</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
-    <value>アップデートに失敗しました。
+    <value>آپديت با مشکل مواجه شد، لظفا نسخه آخر را از اينجا دانلود کنيد:
 https://github.com/rocksdanister/lively/releases</value>
   </data>
   <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
-    <value>破損した壁紙ファイルは、再ダウンロードしてみてください。</value>
+    <value>فايل کاغذ ديواري آسيب ديده، لطفا دوباره دانلود کنيد.</value>
   </data>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
-    <value>おっと... 何かが間違っているようです :(
-このエラーをより良く理解し、問題を解決するために、ログファイルを開発者と共有してください。
-ログファイルの共有方法は以下の通りです。
+    <value> 
+ظاهرا چيزي با مشکل برخورد :(
+براي درک بهتر اين مشکل و درست کردن آن فايل گزارش را به برنامه نويس يه اشتراک بگذاريد.
+راهنمايي براي به اشتراک گذاشتن فايل گذارش :
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
-    <value>Windowsのハイコントラストモードが有効な状態では、Livelyが正常に動作しません。
-ハイコントラストモードを無効にして、もう一度試してみてください。</value>
+    <value>لايولي تا زمانيکه High Contrast mode فعال است نميتونه درست عمل کنه!
+لطفا آنرا غيرفعال کنيد سپس دوباره تلاش کنيد.</value>
   </data>
   <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
-    <value>メディア再生に失敗しました。
-livelyの設定でビデオプレイヤーを変更してみてください。
+    <value>اجراي رسانه با مشکل مواجه شد :(
+با عوض کردن پخش کننده ويديو در تنظيمات دوباره تلاش کنيد.
 
-このエラーを理解し、問題を解決するために、ログファイルを開発者と共有してください。
-ログファイルの共有方法：
+براي درک بهتر اين مشکل و درست کردن آن فايل گزارش را به برنامه نويس يه اشتراک بگذاريد.
+راهنمايي براي به اشتراک گذاشتن فايل گذارش :
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
-    <value>Livelyの壁紙ファイルではありません。</value>
+    <value>فايل کاغذ ديواري لايولي نيست.</value>
   </data>
   <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
-    <value>Livelyが正常に閉じられず、セーフモードで起動していました。
-以前実行していた壁紙を復元しますか？</value>
+    <value>لايولي کامل خارج نشد، در حال اجرا در حالت امن.
+آيا ميخواهيد کاغذ ديواري قبلي در حال اجرا را بگردانيد؟</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
-    <value>Livelyを動作させるためには、いくつかの設定が必要なようです。 
-1. 1.このPC(マイコンピュータ)を開きます。
-2. 空の領域を右クリックします。
-3. プロパティを選択します。
-4. システムの詳細設定を選択します。
-5. パフォーマンス」タブで「設定」を選択します。
-6. 6. ウィンドウ内のコントロールと要素のアニメーションを有効にし、適用します。
-
-Windows 7の場合は、単に設定 - 最適な外観に調整 &amp;amp; 適用します。
-それでも動作しない場合は、閉じて、もう一度Livelyを起動するか、Windowsを再起動してください。
-(一部のインサイダーのWindows 10ビルドでは動作しません)</value>
+    <value>ظاهرا چند تنظيمات بايد تغيير کنند تا لايولي کار کند:
+1. دکمه هاي Win + R بزنيد تا Run اجرا شود.
+2. SystemPropertiesPerformance.exe را در Run تايپ کنيد و Ok را بزنيد.
+3. "Animate controls and elements inside windows" را فعال کنيد، (اگر فعال است، يکبار غيرفعال و دوباره فعال کنيد) و Apply را بزنيد.
+4. دکمه Apply را بزنيد و سپس Ok را انتخاب کنيد.
+ 
+اگر ويندوز 7 داريد، Adjust for best appearance را انتخاب کنيد و سپس Apply کنيد.
+اگر هنوز کار نميکند، لايولي را يکبار باز و بسته کنيد و يا ويندوز را ري استارت کنيد.
+(در بعضي از نسخه هاي اينسايدر ويندوز کار نميکند)</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
-    <value>追加</value>
-  </data>
-  <data name="TextApplication" xml:space="preserve">
-    <value>アプリケーション</value>
-  </data>
-  <data name="TextAttribution" xml:space="preserve">
-    <value>属性</value>
-  </data>
-  <data name="TextAuthor" xml:space="preserve">
-    <value>著者</value>
-  </data>
-  <data name="TextBack" xml:space="preserve">
-    <value>戻る</value>
-  </data>
-  <data name="TextBrowse" xml:space="preserve">
-    <value>閲覧</value>
-  </data>
-  <data name="TextClose" xml:space="preserve">
-    <value>閉じる</value>
-  </data>
-  <data name="TextCloseWallpapers" xml:space="preserve">
-    <value>壁紙を閉じる</value>
-  </data>
-  <data name="TextCompleted" xml:space="preserve">
-    <value>完成！</value>
-  </data>
-  <data name="TextConvertVideo" xml:space="preserve">
-    <value>ビデオに変換する</value>
-  </data>
-  <data name="TextCustomise" xml:space="preserve">
-    <value>カスタマイズ</value>
-  </data>
-  <data name="TextCustomiseWallpaper" xml:space="preserve">
-    <value>壁紙をカスタマイズする</value>
-  </data>
-  <data name="TextDeleteWallpaper" xml:space="preserve">
-    <value>削除</value>
-  </data>
-  <data name="TextDisplayPauseRuleAllScreen" xml:space="preserve">
-    <value>全画面</value>
-  </data>
-  <data name="TextDisplayPauseRulePerScreen" xml:space="preserve">
-    <value>1画面当たり</value>
-  </data>
-  <data name="TextDownload" xml:space="preserve">
-    <value>ダウンロード</value>
-  </data>
-  <data name="TextError" xml:space="preserve">
-    <value>エラー</value>
-  </data>
-  <data name="TextExit" xml:space="preserve">
-    <value>終了</value>
-  </data>
-  <data name="TextExportWallpaperZip" xml:space="preserve">
-    <value>Lively .zipを出力する</value>
-  </data>
-  <data name="TextGIF" xml:space="preserve">
-    <value>アニメーションGIF</value>
-  </data>
-  <data name="TextGo" xml:space="preserve">
-    <value>GO</value>
-  </data>
-  <data name="TextHelpTranslate" xml:space="preserve">
-    <value>Livelyの翻訳を手伝ってください。</value>
-  </data>
-  <data name="TextInstall" xml:space="preserve">
-    <value>インストール</value>
-  </data>
-  <data name="TextKeyboard" xml:space="preserve">
-    <value>キーボード</value>
-  </data>
-  <data name="TextmoreInfo" xml:space="preserve">
-    <value>情報のご案内</value>
-  </data>
-  <data name="TextMoreWallpapers" xml:space="preserve">
-    <value>他の壁紙を見る</value>
-  </data>
-  <data name="TextMouse" xml:space="preserve">
-    <value>マウス</value>
-  </data>
-  <data name="TextMouseInteractOnDesktop" xml:space="preserve">
-    <value>アプリケーションに焦点を当てた場合のマウスの相互作用を設定します。</value>
-  </data>
-  <data name="TextNext" xml:space="preserve">
-    <value>次へ</value>
-  </data>
-  <data name="TextNo" xml:space="preserve">
-    <value>いいえ</value>
-  </data>
-  <data name="TextOff" xml:space="preserve">
-    <value>オフ</value>
-  </data>
-  <data name="TextOn" xml:space="preserve">
-    <value>オン</value>
-  </data>
-  <data name="TextOnline" xml:space="preserve">
-    <value>オンライン</value>
-  </data>
-  <data name="TextOpenLively" xml:space="preserve">
-    <value>Livelyを開く</value>
-  </data>
-  <data name="TextPauseAlgoAllProcess" xml:space="preserve">
-    <value>すべてのプロセス</value>
-  </data>
-  <data name="TextPauseAlgoForegroundProcess" xml:space="preserve">
-    <value>前景のプロセス</value>
-  </data>
-  <data name="TextPauseWallpapers" xml:space="preserve">
-    <value>壁紙を一時停止する</value>
-  </data>
-  <data name="TextPerformanceKill" xml:space="preserve">
-    <value>停止</value>
-  </data>
-  <data name="TextPerformanceNone" xml:space="preserve">
-    <value>何もしない</value>
-  </data>
-  <data name="TextPerformancePause" xml:space="preserve">
-    <value>一時停止</value>
-  </data>
-  <data name="TextRemove" xml:space="preserve">
-    <value>削除</value>
-  </data>
-  <data name="TextRule" xml:space="preserve">
-    <value>ルール</value>
-  </data>
-  <data name="TextScreen" xml:space="preserve">
-    <value>画面</value>
-  </data>
-  <data name="TextSearch" xml:space="preserve">
-    <value>検索</value>
-  </data>
-  <data name="TextSetWallpaper" xml:space="preserve">
-    <value>壁紙として設定する</value>
-  </data>
-  <data name="TextShowOnDisk" xml:space="preserve">
-    <value>ファイルの場所を開く</value>
-  </data>
-  <data name="TextSource" xml:space="preserve">
-    <value>ソース</value>
-  </data>
-  <data name="TextStart" xml:space="preserve">
-    <value>スタート</value>
-  </data>
-  <data name="TextStop" xml:space="preserve">
-    <value>停止</value>
-  </data>
-  <data name="TextSupport" xml:space="preserve">
-    <value>サポート</value>
-  </data>
-  <data name="TextTags" xml:space="preserve">
-    <value>タグ</value>
-  </data>
-  <data name="TextTileSizeLarge" xml:space="preserve">
-    <value>大</value>
-  </data>
-  <data name="TextTileSizeNormal" xml:space="preserve">
-    <value>中</value>
-  </data>
-  <data name="TextTileSizeSmall" xml:space="preserve">
-    <value>小</value>
-  </data>
-  <data name="TextUIHeadless" xml:space="preserve">
-    <value>ヘッドレス</value>
-  </data>
-  <data name="TextUILite" xml:space="preserve">
-    <value>ライト</value>
-  </data>
-  <data name="TextUINormal" xml:space="preserve">
-    <value>通常</value>
-  </data>
-  <data name="TextUpdateAvailable" xml:space="preserve">
-    <value>アップデートが可能です。</value>
-  </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
-    <value>アップデートの確認します。</value>
-  </data>
-  <data name="TextupdateCheckFail" xml:space="preserve">
-    <value>アップデートの確認失敗しました。</value>
-  </data>
-  <data name="TextUpdateChecking" xml:space="preserve">
-    <value>アップデートの確認中。。。</value>
-  </data>
-  <data name="TextUpdateUptodate" xml:space="preserve">
-    <value>最新のものを使用しています。</value>
-  </data>
-  <data name="TextVideo" xml:space="preserve">
-    <value>ビデオ</value>
-  </data>
-  <data name="TextWallpaperFitFill" xml:space="preserve">
-    <value>フィル</value>
-  </data>
-  <data name="TextWallpaperFitNone" xml:space="preserve">
-    <value>なし</value>
-  </data>
-  <data name="TextWallpaperFitUniform" xml:space="preserve">
-    <value>ユニフォーム</value>
-  </data>
-  <data name="TextWallpaperFitUniformToFill" xml:space="preserve">
-    <value>ユニフォームフィル</value>
-  </data>
-  <data name="TextWallpaperLayoutDuplicate" xml:space="preserve">
-    <value>同じ壁紙を複製する</value>
-  </data>
-  <data name="TextWallpaperLayoutPerScreen" xml:space="preserve">
-    <value>選択した画面のみ</value>
-  </data>
-  <data name="TextWallpaperLayoutSpan" xml:space="preserve">
-    <value>画面をまたいでのスパン</value>
-  </data>
-  <data name="TextWallpaperType" xml:space="preserve">
-    <value>タイプ</value>
-  </data>
-  <data name="TextWebsite" xml:space="preserve">
-    <value>ウェブサイト</value>
-  </data>
-  <data name="TextWebStream" xml:space="preserve">
-    <value>ウェブストリーム</value>
-  </data>
-  <data name="TextWelcome" xml:space="preserve">
-    <value>ようこそ</value>
-  </data>
-  <data name="TextYes" xml:space="preserve">
-    <value>はい</value>
-  </data>
-  <data name="TileVideoPlayer" xml:space="preserve">
-    <value>ビデオプレーヤー</value>
-  </data>
-  <data name="TipAddWallpaperFileBrowse" xml:space="preserve">
-    <value>サポートされているすべてのファイルタイプを壁紙として設定します。</value>
-  </data>
-  <data name="TipAddWallpaperURL" xml:space="preserve">
-    <value>入力したURLのWebページを壁紙に設定します。</value>
-  </data>
-  <data name="TipAppFocus" xml:space="preserve">
-    <value>任意のアプリケーションがフォーカスされている時のモードです。</value>
-  </data>
-  <data name="TipAppFullScreen" xml:space="preserve">
-    <value>フルスクリーンのゲーム/アプリケーションが実行されている時のモードです。</value>
-  </data>
-  <data name="TipAppRules" xml:space="preserve">
-    <value>実行中のアプリケーションに基づいて異なる壁紙の再生ルールを設定します。</value>
-  </data>
-  <data name="TipAppTheme" xml:space="preserve">
-    <value>システムテーマの設定に適応し、外観を変更するには goto</value>
-  </data>
-  <data name="TipAudioMaster" xml:space="preserve">
-    <value>すべての壁紙の音量レベルです。</value>
-  </data>
-  <data name="TipBatteryPower" xml:space="preserve">
-    <value>(電池駆動の場合のみ）AC電源を切った状態で再生ルールを変更します。</value>
-  </data>
-  <data name="TipBrowserDebuggingPort" xml:space="preserve">
-    <value>ウェブページの壁紙をデバッグするためのポートを入力してください。
-準備ができたら http://localhost:portnumber にアクセスして開発者コンソールにアクセスしてください。</value>
-  </data>
-  <data name="TipDisplayPauseRule" xml:space="preserve">
-    <value>全画面: アプリケーションがフォーカスされている/フルスクリーンの画面でのみ壁紙を一時停止します。
-すべて: アプリケーションがフォーカス/フルスクリーンの場合、すべての画面で壁紙を一時停止します。</value>
-  </data>
-  <data name="TipHideSysTray" xml:space="preserve">
-    <value>システムトレイのアイコンを表示すると、Livelyはアイコンが隠された状態で実行され続けます。</value>
-  </data>
-  <data name="TipLanguage" xml:space="preserve">
-    <value>賑やかに新しい言語を適用するために再始動します。</value>
-  </data>
-  <data name="TipLivelySetupOnClose" xml:space="preserve">
-    <value>設定を終了して続行します。</value>
-  </data>
-  <data name="TipPauseAlgorithm" xml:space="preserve">
-    <value>フォアグラウンドプロセス：軽量で、壁紙の再生動作を決定するためにフォアグラウンドにある単一のプロセスのみをチェックします。
-すべてのプロセス：重く、すべてのプロセスをスキャンして再生動作を判断します。</value>
-  </data>
-  <data name="TipStreamWallpaperDetect" xml:space="preserve">
-    <value>サポートされているビデオストリームリンクが検出された場合は、ウェブページを読み込む代わりにビデオプレーヤーを使用してください。</value>
-  </data>
-  <data name="TipStreamWallpaperVideoQuality" xml:space="preserve">
-    <value>オンラインストリームにビデオ品質を選択します。</value>
-  </data>
-  <data name="TipTileSize" xml:space="preserve">
-    <value>ライブラリーの壁紙タイルのサイズ。</value>
-  </data>
-  <data name="TipUIMode" xml:space="preserve">
-    <value>ローエンドシステムの場合は、Lite モードを選択します。</value>
-  </data>
-  <data name="TipVideoPlayer" xml:space="preserve">
-    <value>動画の壁紙に使用するプレーヤーを選択します。</value>
-  </data>
-  <data name="TipWallpaperDir" xml:space="preserve">
-    <value>壁紙ファイルを保存するためのパスです。</value>
-  </data>
-  <data name="TipWallpaperFit" xml:space="preserve">
-    <value>壁紙のスケーリングアルゴリズムです。</value>
-  </data>
-  <data name="TipWallpaperInput" xml:space="preserve">
-    <value>壁紙との相互作用の方法を選択します。</value>
-  </data>
-  <data name="TipWallpaperLayout" xml:space="preserve">
-    <value>接続されたディスプレイデバイスに壁紙を貼る方法です。</value>
-  </data>
-  <data name="TipWallpaperPlayback" xml:space="preserve">
-    <value>デスクトップにフォーカスが合っていない場合、壁紙の再生を一時停止します。</value>
-  </data>
-  <data name="TipWebBrowserDiskCache" xml:space="preserve">
-    <value>一時ファイルをメモリではなくディスクに保存し、ブラウザの再起動時に設定を復元します。</value>
-  </data>
-  <data name="TipWebBrowserEngine" xml:space="preserve">
-    <value>CEF(Chromium Embedded Framework)は軽量なクロムエンジンです。
-Edgeはwindows 10に組み込まれているWebビューです。</value>
-  </data>
-  <data name="TipWindowsStartup" xml:space="preserve">
-    <value>Livelyは壁紙再生のためにバックグラウンドで実行する必要があります。</value>
-  </data>
-  <data name="TitleAbout" xml:space="preserve">
-    <value>情報</value>
-  </data>
-  <data name="TitleAddWallpaper" xml:space="preserve">
-    <value>壁紙の追加</value>
-  </data>
-  <data name="TitleAppFocus" xml:space="preserve">
-    <value>アプリケーションフォーカス</value>
-  </data>
-  <data name="TitleAppFullScreen" xml:space="preserve">
-    <value>アプリケーション フルスクリーン</value>
-  </data>
-  <data name="TitleAppName" xml:space="preserve">
-    <value>Lively壁紙</value>
-  </data>
-  <data name="TitleAppRules" xml:space="preserve">
-    <value>アプリケーションのルール</value>
-  </data>
-  <data name="TitleAppTheme" xml:space="preserve">
-    <value>テーマ</value>
-  </data>
-  <data name="TitleAudio" xml:space="preserve">
-    <value>音声</value>
-  </data>
-  <data name="TitleAudioMaster" xml:space="preserve">
-    <value>マスターボリューム</value>
-  </data>
-  <data name="TitleAudioPlayOnScreen" xml:space="preserve">
-    <value>画面上でオーディオを再生します。</value>
-  </data>
-  <data name="TitleBatteryPower" xml:space="preserve">
-    <value>バッテリ電源オン時</value>
-  </data>
-  <data name="TitleBrowseFile" xml:space="preserve">
-    <value>ビデオ、GIF、ウェブページ...壁紙として設定するファイルを参照します。</value>
-  </data>
-  <data name="TitleBrowserDebuggingPort" xml:space="preserve">
-    <value>デバッグポート</value>
-  </data>
-  <data name="TitleCommunity" xml:space="preserve">
-    <value>コミュニティ</value>
-  </data>
-  <data name="TitleDeleteConfirmation" xml:space="preserve">
-    <value>削除の確認</value>
-  </data>
-  <data name="TitleDisplayPauseRule" xml:space="preserve">
-    <value>表示の一時停止ルール</value>
-  </data>
-  <data name="TitleDocumentation" xml:space="preserve">
-    <value>ドキュメンテーション</value>
-  </data>
-  <data name="TitleEnterUrl" xml:space="preserve">
-    <value>URLを入力してください。</value>
-  </data>
-  <data name="TitleGeneral" xml:space="preserve">
-    <value>一般</value>
-  </data>
-  <data name="TitleHelp" xml:space="preserve">
-    <value>ヘルプ</value>
-  </data>
-  <data name="TitleHideSysTray" xml:space="preserve">
-    <value>システムトレイアイコン</value>
-  </data>
-  <data name="TitleInteraction" xml:space="preserve">
-    <value>インタラクション</value>
-  </data>
-  <data name="TitleLanguage" xml:space="preserve">
-    <value>言語</value>
-  </data>
-  <data name="TitleLibrary" xml:space="preserve">
-    <value>ライブラリー</value>
-  </data>
-  <data name="TitleLivelySetup" xml:space="preserve">
-    <value>Lively セットアップ</value>
-  </data>
-  <data name="TitleMisc" xml:space="preserve">
-    <value>その他</value>
-  </data>
-  <data name="TitleMute" xml:space="preserve">
-    <value>ミュート</value>
-  </data>
-  <data name="TitlePauseAlgo" xml:space="preserve">
-    <value>一時停止アルゴリズム</value>
-  </data>
-  <data name="TitlePerformance" xml:space="preserve">
-    <value>パフォーマンス</value>
-  </data>
-  <data name="TitlePlaylist" xml:space="preserve">
-    <value>プレイリスト</value>
-  </data>
-  <data name="TitlePleaseWait" xml:space="preserve">
-    <value>お待ちください。</value>
-  </data>
-  <data name="TitleScalingFit" xml:space="preserve">
-    <value>スケーリング/フィット</value>
-  </data>
-  <data name="TitleScreenLayout" xml:space="preserve">
-    <value>コントロールパネル</value>
-  </data>
-  <data name="TitleSelectFile" xml:space="preserve">
-    <value>ファイルを選択</value>
-  </data>
-  <data name="TitleSettings" xml:space="preserve">
-    <value>設定</value>
-  </data>
-  <data name="TitleStreamWallpaper" xml:space="preserve">
-    <value>ストリーム壁紙</value>
-  </data>
-  <data name="TitleStreamWallpaperDetect" xml:space="preserve">
-    <value>ストリームの検出</value>
-  </data>
-  <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
-    <value>ビデオ画質</value>
-  </data>
-  <data name="TitleTileSize" xml:space="preserve">
-    <value>タイルのサイズ</value>
-  </data>
-  <data name="TitleUIMode" xml:space="preserve">
-    <value>ユーザーインターフェース</value>
-  </data>
-  <data name="TitleVideo" xml:space="preserve">
-    <value>ビデオ</value>
-  </data>
-  <data name="TitleWallpaper" xml:space="preserve">
-    <value>壁紙</value>
-  </data>
-  <data name="TitleWallpaperDir" xml:space="preserve">
-    <value>壁紙ディレクトリ</value>
-  </data>
-  <data name="TitleWallpaperDirMoveExisting" xml:space="preserve">
-    <value>既存の壁紙を新しいフォルダに移動します。</value>
-  </data>
-  <data name="TitleWallpaperFit" xml:space="preserve">
-    <value>フィット感を選ぶ</value>
-  </data>
-  <data name="TitleWallpaperInput" xml:space="preserve">
-    <value>壁紙入力</value>
-  </data>
-  <data name="TitleWallpaperLayout" xml:space="preserve">
-    <value>配置方法</value>
-  </data>
-  <data name="TitleWallpaperPlayback" xml:space="preserve">
-    <value>壁紙再生</value>
-  </data>
-  <data name="TitleWarning" xml:space="preserve">
-    <value>警告</value>
-  </data>
-  <data name="TitleWebBrowser" xml:space="preserve">
-    <value>ウェブブラウザ</value>
-  </data>
-  <data name="TitleWebBrowserDiskCache" xml:space="preserve">
-    <value>ディスクキャッシュ</value>
-  </data>
-  <data name="TitleWebBrowserEngine" xml:space="preserve">
-    <value>エンジン</value>
-  </data>
-  <data name="TitleWebpageLoad" xml:space="preserve">
-    <value>ウェブページの読み込み</value>
-  </data>
-  <data name="TitleWindowsStartup" xml:space="preserve">
-    <value>ウィンドウズ起動時に同時に起動します。</value>
-  </data>
-  <data name="TextPreviewWallpaper" xml:space="preserve">
-    <value>Preview Wallpaper</value>
+    <value>اضافه</value>
   </data>
   <data name="TextAllFiles" xml:space="preserve">
-    <value>All Files</value>
+    <value>همه فايل ها</value>
   </data>
-  <data name="TitleDebug" xml:space="preserve">
-    <value>Debug</value>
+  <data name="TextApplication" xml:space="preserve">
+    <value>برنامه</value>
   </data>
-  <data name="TipDebug" xml:space="preserve">
-    <value>Show developer menu</value>
+  <data name="TextAttribution" xml:space="preserve">
+    <value>صفات</value>
   </data>
-  <data name="TextFileNotFound" xml:space="preserve">
-    <value>File not found</value>
+  <data name="TextAuthor" xml:space="preserve">
+    <value>سازنده</value>
   </data>
-  <data name="TextPicture" xml:space="preserve">
-    <value>Picture</value>
+  <data name="TextBack" xml:space="preserve">
+    <value>برگشت</value>
   </data>
-  <data name="TextUnsupportedFile" xml:space="preserve">
-    <value>File format not supported</value>
-  </data>
-  <data name="TextProcessingWallpaper" xml:space="preserve">
-    <value>Processing</value>
-  </data>
-  <data name="TextTitle" xml:space="preserve">
-    <value>Title</value>
-  </data>
-  <data name="TextDescription" xml:space="preserve">
-    <value>Description</value>
-  </data>
-  <data name="TextOK" xml:space="preserve">
-    <value>OK</value>
+  <data name="TextBrowse" xml:space="preserve">
+    <value>مرور فايل ها</value>
   </data>
   <data name="TextCancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>لغو</value>
+  </data>
+  <data name="TextClose" xml:space="preserve">
+    <value>بستن</value>
+  </data>
+  <data name="TextCloseWallpapers" xml:space="preserve">
+    <value>بستن کاغذ ديواري ها</value>
+  </data>
+  <data name="TextCompleted" xml:space="preserve">
+    <value>تمام شد!</value>
+  </data>
+  <data name="TextControlPanelOpen" xml:space="preserve">
+    <value>اينجا کليک کنيد تا کاغذ ديواري ها را مديريت کنيد.</value>
+  </data>
+  <data name="TextConvertVideo" xml:space="preserve">
+    <value>تبديل به ويديو</value>
   </data>
   <data name="TextCreatePreview" xml:space="preserve">
-    <value>Create Preview</value>
+    <value>ساختن پيش نمايش</value>
   </data>
-  <data name="TitleGifPlayer" xml:space="preserve">
-    <value>Gif Player</value>
+  <data name="TextCustomise" xml:space="preserve">
+    <value>شخصي سازي</value>
   </data>
-  <data name="TipGifPlayer" xml:space="preserve">
-    <value>Select the player used for gif wallpaper.</value>
+  <data name="TextCustomiseWallpaper" xml:space="preserve">
+    <value>شخصي سازي کاغذ ديواري</value>
+  </data>
+  <data name="TextDeleteWallpaper" xml:space="preserve">
+    <value>حذف</value>
+  </data>
+  <data name="TextDescription" xml:space="preserve">
+    <value>توضيحات</value>
+  </data>
+  <data name="TextDisplayPauseRuleAllScreen" xml:space="preserve">
+    <value>کل صفحه</value>
+  </data>
+  <data name="TextDisplayPauseRulePerScreen" xml:space="preserve">
+    <value>برای هر صفحه</value>
+  </data>
+  <data name="TextDownload" xml:space="preserve">
+    <value>دانلود</value>
+  </data>
+  <data name="TextEditWallpaper" xml:space="preserve">
+    <value>ویرایش</value>
+  </data>
+  <data name="TextError" xml:space="preserve">
+    <value>خطا</value>
+  </data>
+  <data name="TextExit" xml:space="preserve">
+    <value>خروج</value>
+  </data>
+  <data name="TextExportWallpaperZip" xml:space="preserve">
+    <value>استخراج فایل zip لایولی</value>
   </data>
   <data name="TextFeatureMissing" xml:space="preserve">
-    <value>Some features are not available in this version of Lively.</value>
+    <value>بعضي از قابليت ها در اين نسخه از لايولي وجود ندارد.</value>
   </data>
-    <data name="TextControlPanelOpen" xml:space="preserve">
-    <value>Click here to manage wallpapers.</value>
+  <data name="TextFileNotFound" xml:space="preserve">
+    <value>فايل پيدا نشد.</value>
   </data>
-    <data name="TextStoreReview" xml:space="preserve">
-    <value>Do you enjoy using Lively? Leave a review :)</value>
+  <data name="TextGIF" xml:space="preserve">
+    <value>گيف محرک</value>
   </data>
-  <data name="TitleStore" xml:space="preserve">
-    <value>Store</value>
-    <comment>For different version of Lively, example: Microsoft Store</comment>
+  <data name="TextGo" xml:space="preserve">
+    <value>برو</value>
   </data>
-  <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>Your Windows N/KN version will require the download of additional codecs to support video playback in wallpapers.</value>
+  <data name="TextHelpTranslate" xml:space="preserve">
+    <value>به ترجمه لايولي کمک کنيد.</value>
+  </data>
+  <data name="TextInstall" xml:space="preserve">
+    <value>نصب</value>
+  </data>
+  <data name="TextKeyboard" xml:space="preserve">
+    <value>کيبورد</value>
   </data>
   <data name="TextLicense" xml:space="preserve">
-    <value>ライセンス</value>
+    <value>جواز</value>
+  </data>
+  <data name="TextmoreInfo" xml:space="preserve">
+    <value>اطلاعات</value>
+  </data>
+  <data name="TextMoreWallpapers" xml:space="preserve">
+    <value>پس زمینه های بیشتر</value>
+  </data>
+  <data name="TextMouse" xml:space="preserve">
+    <value>ماوس</value>
+  </data>
+  <data name="TextMouseInteractOnDesktop" xml:space="preserve">
+    <value>انجام اثر متقابل وقتی تمرکز روی دسکتاپ است</value>
+  </data>
+  <data name="TextNext" xml:space="preserve">
+    <value>بعدی</value>
+  </data>
+  <data name="TextNo" xml:space="preserve">
+    <value>خیر</value>
+  </data>
+  <data name="TextOff" xml:space="preserve">
+    <value>خاموش</value>
+  </data>
+  <data name="TextOK" xml:space="preserve">
+    <value>تایید</value>
+  </data>
+  <data name="TextOn" xml:space="preserve">
+    <value>روشن</value>
+  </data>
+  <data name="TextOnline" xml:space="preserve">
+    <value>آنلاین</value>
+  </data>
+  <data name="TextOpenLively" xml:space="preserve">
+    <value>باز کردن لایولی</value>
+  </data>
+  <data name="TextPauseAlgoAllProcess" xml:space="preserve">
+    <value>همه ی پردازش ها</value>
+  </data>
+  <data name="TextPauseAlgoForegroundProcess" xml:space="preserve">
+    <value>پردازش های پشت صحنه</value>
+  </data>
+  <data name="TextPauseWallpapers" xml:space="preserve">
+    <value>توقف پس زمینه ها</value>
+  </data>
+  <data name="TextPerformanceKill" xml:space="preserve">
+    <value>توقف  اجباری</value>
+  </data>
+  <data name="TextPerformanceNone" xml:space="preserve">
+    <value>هیج</value>
+  </data>
+  <data name="TextPerformancePause" xml:space="preserve">
+    <value>توقف</value>
+  </data>
+  <data name="TextPicture" xml:space="preserve">
+    <value>عکس</value>
+  </data>
+  <data name="TextPreviewWallpaper" xml:space="preserve">
+    <value>پیش نمایش</value>
   </data>
   <data name="TextPrivacyPolicy" xml:space="preserve">
-    <value>個人情報保護方針</value>
+    <value>سیاست حریم خصوصی</value>
   </data>
-  <data name="TitleAudioDesktopOnly" xml:space="preserve">
-    <value>Play audio only when desktop is focused</value>
+  <data name="TextProcessingWallpaper" xml:space="preserve">
+    <value>در حال پردازش</value>
+  </data>
+  <data name="TextRemove" xml:space="preserve">
+    <value>پاک کردن</value>
+  </data>
+  <data name="TextRule" xml:space="preserve">
+    <value>قانون</value>
+  </data>
+  <data name="TextScreen" xml:space="preserve">
+    <value>صفحه</value>
+  </data>
+  <data name="TextSearch" xml:space="preserve">
+    <value>جستوجو</value>
+  </data>
+  <data name="TextSetWallpaper" xml:space="preserve">
+    <value>تنظیم به عنوان پس زمینه</value>
+  </data>
+  <data name="TextShowOnDisk" xml:space="preserve">
+    <value>باز کردن مکان فایل</value>
+  </data>
+  <data name="TextSource" xml:space="preserve">
+    <value>منبع</value>
+  </data>
+  <data name="TextStart" xml:space="preserve">
+    <value>شروع</value>
+  </data>
+  <data name="TextStop" xml:space="preserve">
+    <value>پایان</value>
+  </data>
+  <data name="TextStoreReview" xml:space="preserve">
+    <value>آيا از لايولي خوشتون اومده؟ يک نظر بذاريد :)</value>
+  </data>
+  <data name="TextSupport" xml:space="preserve">
+    <value>پشتیبانی</value>
+  </data>
+  <data name="TextTags" xml:space="preserve">
+    <value>برچسب ها</value>
+  </data>
+  <data name="TextTileSizeLarge" xml:space="preserve">
+    <value>بزرگ</value>
+  </data>
+  <data name="TextTileSizeNormal" xml:space="preserve">
+    <value>عادی</value>
+  </data>
+  <data name="TextTileSizeSmall" xml:space="preserve">
+    <value>کوچک</value>
+  </data>
+  <data name="TextTitle" xml:space="preserve">
+    <value>عنوان</value>
+  </data>
+  <data name="TextUIHeadless" xml:space="preserve">
+    <value>بدون سر</value>
+  </data>
+  <data name="TextUILite" xml:space="preserve">
+    <value>سبک</value>
+  </data>
+  <data name="TextUINormal" xml:space="preserve">
+    <value>عادی</value>
+  </data>
+  <data name="TextUnsupportedFile" xml:space="preserve">
+    <value>فرمت فایل قابل پشتیبانی نیست</value>
+  </data>
+  <data name="TextUpdateAvailable" xml:space="preserve">
+    <value>نسخه جدید موجود است!</value>
+  </data>
+  <data name="TextUpdateCheck" xml:space="preserve">
+    <value>بررسی برای نسخه جدید</value>
+  </data>
+  <data name="TextupdateCheckFail" xml:space="preserve">
+    
+  <value>بررسی برای نسخه جدید با مشکل مواجه شد</value></data>
+  <data name="TextUpdateChecking" xml:space="preserve">
+    <value>در حال بررسی برای نسخه جدید</value>
+  </data>
+  <data name="TextUpdateUptodate" xml:space="preserve">
+    <value>برنامه مطابق آخرین نسخه است</value>
+  </data>
+  <data name="TextVideo" xml:space="preserve">
+    <value>ویدیو</value>
+  </data>
+  <data name="TextWallpaperFitFill" xml:space="preserve">
+    <value>پر کردن</value>
+  </data>
+  <data name="TextWallpaperFitNone" xml:space="preserve">
+    <value>هیج</value>
+  </data>
+  <data name="TextWallpaperFitUniform" xml:space="preserve">
+    <value>پر کردن بالا و پایین</value>
+  </data>
+  <data name="TextWallpaperFitUniformToFill" xml:space="preserve">
+    <value>پر کردن مساوی</value>
+  </data>
+  <data name="TextWallpaperLayoutDuplicate" xml:space="preserve">
+    <value>تکثیر کردن پس زمینه مشابه</value>
+  </data>
+  <data name="TextWallpaperLayoutPerScreen" xml:space="preserve">
+    <value>فقط صفحه انتخاب شده</value>
+  </data>
+  <data name="TextWallpaperLayoutSpan" xml:space="preserve">
+    <value>پوشش همه ی صفحات</value>
+  </data>
+  <data name="TextWallpaperType" xml:space="preserve">
+    <value>نوع</value>
+  </data>
+  <data name="TextWebsite" xml:space="preserve">
+    <value>وبسایت</value>
+  </data>
+  <data name="TextWebStream" xml:space="preserve">
+    <value>پخش تحت وب</value>
+  </data>
+  <data name="TextWelcome" xml:space="preserve">
+    <value>خوش آمدید</value>
+  </data>
+  <data name="TextYes" xml:space="preserve">
+    <value>بله</value>
+  </data>
+  <data name="TileVideoPlayer" xml:space="preserve">
+    <value>پخش کننده ویدیو</value>
+  </data>
+  <data name="TipAddWallpaperFileBrowse" xml:space="preserve">
+    <value>تنظيم همه ي فرمت هاي پشتيباني شده به عنوان کاغذ ديواري.</value>
+  </data>
+  <data name="TipAddWallpaperURL" xml:space="preserve">
+    <value>تنظيم صفحه وبِ آدرس وارد شده به عنوان کاغذ ديواري.</value>
+  </data>
+  <data name="TipAppFocus" xml:space="preserve">
+    <value>تنظیم کنید که هر برنامه متمرکز شده چه کاری انجام دهد.</value>
+  </data>
+  <data name="TipAppFullScreen" xml:space="preserve">
+    <value>تنظیم کنید که هنگام اجرای بازیها / برنامه های تمام صفحه چه کاری انجام شود.</value>
+  </data>
+  <data name="TipAppRules" xml:space="preserve">
+    <value>قوانین مختلف پخش تصویر زمینه را بر اساس برنامه های در حال اجرا تنظیم کنید.</value>
+  </data>
+  <data name="TipAppTheme" xml:space="preserve">
+    <value>لايولي با تغييرات تنظيمات تم سيستم خودش را وفق ميدهد، براي تغيير ظاهر به اينجا برويد.</value>
+  </data>
+  <data name="TipAudioMaster" xml:space="preserve">
+    <value>میزان صدای همه پس زمینه ها</value>
+  </data>
+  <data name="TipBatteryPower" xml:space="preserve">
+    <value>(فقط برای سیستم هایی که با باتری کار می کنند) هنگام قطع برق AC ، پخش را تغییر دهید.</value>
+  </data>
+  <data name="TipBrowserDebuggingPort" xml:space="preserve">
+    <value>Enter the port for debugging webpage wallpapers, browser restart is required for changes to take effect.
+When ready navigate to http://localhost:portnumber to access developer console.</value>
+  </data>
+  <data name="TipDebug" xml:space="preserve">
+    <value>نشان دادن منو سازنده</value>
+  </data>
+  <data name="TipDisplayPauseRule" xml:space="preserve">
+    <value>Per: مکث تصویر زمینه فقط در صفحه ای که برنامه در آن متمرکز / تمام صفحه است.
+All: مکث تصوير زمينه در همه ي صفحه(ها) اگر هر برنامه اي متمرکز / تمام صفحه است.</value>
   </data>
   <data name="TipExportLogs" xml:space="preserve">
-    <value>Create log report file.</value>
+    <value>ساختن فايل گزارش.</value>
+  </data>
+  <data name="TipGifPlayer" xml:space="preserve">
+    <value>انتخاب پخش کننده استفاده شده براي تصوير زمينه گيف.</value>
+  </data>
+  <data name="TipHideSysTray" xml:space="preserve">
+    <value>نشان دادن آيکون در سيستم تري، لايولي با نبود آيکون همچنان روشن ميماند.</value>
+  </data>
+  <data name="TipLanguage" xml:space="preserve">
+    <value>براي اعمال زبان جديد لايولي دوباره اجرا ميشود.</value>
+  </data>
+  <data name="TipLivelySetupOnClose" xml:space="preserve">
+    <value>براي ادامه مقدمه چینی را کامل کنيد.</value>
+  </data>
+  <data name="TipPauseAlgorithm" xml:space="preserve">
+    <value>پس زمینه: سبک ، فقط فرایند واحدی را که در پس زمینه است بررسی می کند تا رفتار پخش تصویر زمینه را تعیین کند.
+همه ي پردازش ها: سنگین تر ، برای تعیین رفتار پخش ، تمام پردازش را اسکن می کند.</value>
+  </data>
+  <data name="TipStreamWallpaperDetect" xml:space="preserve">
+    <value>در صورت شناسایی لينک ویدیوی پشتیبانی شده، به جای بارگیری صفحه وب، از پخش کننده ویدیو استفاده کند.</value>
+  </data>
+  <data name="TipStreamWallpaperVideoQuality" xml:space="preserve">
+    <value>کيفيت مورد نظر براي پخش آنلاين ويديو را انتخاب کنيد.</value>
+  </data>
+  <data name="TipTileSize" xml:space="preserve">
+    <value>اندازه کاشي هاي پس زمینه در کتابخانه.</value>
+  </data>
+  <data name="TipUIMode" xml:space="preserve">
+    <value>براي سيستم هاي ضعيف حالت سبک را انتخاب کنيد.</value>
+  </data>
+  <data name="TipVideoHardwareDecode" xml:space="preserve">
+    <value>در صورت امکان از شتاب سخت افزاری استفاده کند.</value>
+  </data>
+  <data name="TipVideoPlayer" xml:space="preserve">
+    <value>پخش کننده ويديو استفاده شده براي پيش زمينه ويديويي راانتخاب کنيد.</value>
+  </data>
+  <data name="TipWallpaperDir" xml:space="preserve">
+    <value>مسير انتخاب شده براي ذخيره فايل هاي پيش زمينه.</value>
+  </data>
+  <data name="TipWallpaperFit" xml:space="preserve">
+    <value>الگوريتم افزايش مقياس پس زمينه.</value>
+  </data>
+  <data name="TipWallpaperInput" xml:space="preserve">
+    <value>روش هاي انجام عمل روي پس زمينه را انتخاب کنيد.</value>
+  </data>
+  <data name="TipWallpaperLayout" xml:space="preserve">
+    <value>چگونه پس زمينه بر مانيتور هاي متصل نمايش داده ميشود.</value>
+  </data>
+  <data name="TipWallpaperPlayback" xml:space="preserve">
+    <value>در صورت از دست رفتن تمرکز از دسکتاپ پخش پس زمينه را متوقف کند.</value>
+  </data>
+  <data name="TipWebBrowserDiskCache" xml:space="preserve">
+    <value>فايل هاي موقت را به جاي دخيره روي رم، روي حافظه اصلي ذخيره کند. زمانيکه مرورگر دوباره اجرا ميشود تنظيمات بر ميگردد.</value>
+  </data>
+  <data name="TipWebBrowserEngine" xml:space="preserve">
+    <value>CEF(Chromium Embedded Framework) is a lightweight chromium engine.
+Edge is the built in webview of windows 10.</value>
+  </data>
+  <data name="TipWindowsStartup" xml:space="preserve">
+    <value>لايولي بايد در پشت صحنه فعاليت بکند تا پس زمينه اجرا شود.</value>
+  </data>
+  <data name="TitleAbout" xml:space="preserve">
+    <value>درباره برنامه</value>
+  </data>
+  <data name="TitleAddWallpaper" xml:space="preserve">
+    <value>اضافه کردن پس زمینه</value>
+  </data>
+  <data name="TitleAppFocus" xml:space="preserve">
+    <value>برنامه های تحت تمرکز</value>
+  </data>
+  <data name="TitleAppFullScreen" xml:space="preserve">
+    <value>برنامه های تمام صفحه</value>
+  </data>
+  <data name="TitleAppName" xml:space="preserve">
+    <value>پس زمینه لایولی</value>
+  </data>
+  <data name="TitleAppRules" xml:space="preserve">
+    <value>قوانین برنامه ها</value>
+  </data>
+  <data name="TitleAppTheme" xml:space="preserve">
+    <value>تم</value>
+  </data>
+  <data name="TitleAudio" xml:space="preserve">
+    <value>صدا</value>
+  </data>
+  <data name="TitleAudioDesktopOnly" xml:space="preserve">
+    <value>پخش صدا وقتي دسکتاپ تحت تمرکز است.</value>
+  </data>
+  <data name="TitleAudioMaster" xml:space="preserve">
+    <value>صدای اصلی</value>
+  </data>
+  <data name="TitleAudioPlayOnScreen" xml:space="preserve">
+    <value>پخش صدا روی صفحه</value>
+  </data>
+  <data name="TitleBatteryPower" xml:space="preserve">
+    <value>وقتی که دخیره باطری فعال است</value>
+  </data>
+  <data name="TitleBrowseFile" xml:space="preserve">
+    <value>مرور فايل ها براي پيدا کردن ويديو، گيف، صفحه وب و... براي تنظيم به عنوان پس زمينه</value>
+  </data>
+  <data name="TitleBrowserDebuggingPort" xml:space="preserve">
+    <value>درگاه اشکال زدایی</value>
+  </data>
+  <data name="TitleCommunity" xml:space="preserve">
+    <value>انجمن</value>
+  </data>
+  <data name="TitleDebug" xml:space="preserve">
+    <value>اشکال زدایی</value>
+  </data>
+  <data name="TitleDeleteConfirmation" xml:space="preserve">
+    <value>تایید حذف</value>
+  </data>
+  <data name="TitleDisplayPauseRule" xml:space="preserve">
+    <value>نشان دادن قوانين مکث کردن</value>
+  </data>
+  <data name="TitleDocumentation" xml:space="preserve">
+    <value>مدارک (اطلاعات بيشتر)</value>
+  </data>
+  <data name="TitleEnterUrl" xml:space="preserve">
+    <value>وارد کردن آدرس سایت</value>
   </data>
   <data name="TitleExportLogs" xml:space="preserve">
-    <value>Log File</value>
+    <value>فایل گذارش</value>
+  </data>
+  <data name="TitleGeneral" xml:space="preserve">
+    <value>عمومی</value>
+  </data>
+  <data name="TitleGifPlayer" xml:space="preserve">
+    <value>پخش کننده گیف</value>
+  </data>
+  <data name="TitleHelp" xml:space="preserve">
+    <value>کمک</value>
+  </data>
+  <data name="TitleHideSysTray" xml:space="preserve">
+    <value>آیکون سیستم تری</value>
+  </data>
+  <data name="TitleInteraction" xml:space="preserve">
+    <value>اثر متقابل</value>
+  </data>
+  <data name="TitleLanguage" xml:space="preserve">
+    <value>زبان</value>
+  </data>
+  <data name="TitleLibrary" xml:space="preserve">
+    <value>کتابخانه</value>
+  </data>
+  <data name="TitleLivelySetup" xml:space="preserve">
+    <value>تنظیم لایولی</value>
+  </data>
+  <data name="TitleLocation" xml:space="preserve">
+    <value>مکان</value>
+  </data>
+  <data name="TitleMisc" xml:space="preserve">
+    <value>غیره</value>
+  </data>
+  <data name="TitleMute" xml:space="preserve">
+    <value>صامت کردن</value>
+  </data>
+  <data name="TitlePauseAlgo" xml:space="preserve">
+    <value>توقف الگو</value>
+  </data>
+  <data name="TitlePerformance" xml:space="preserve">
+    <value>کارایی</value>
+  </data>
+  <data name="TitlePlaylist" xml:space="preserve">
+    <value>لیست پخش</value>
+  </data>
+  <data name="TitlePleaseWait" xml:space="preserve">
+    <value>لطفا صبر کنید</value>
   </data>
   <data name="TitleReportBug" xml:space="preserve">
     <value>Report Bug</value>
   </data>
+  <data name="TitleScalingFit" xml:space="preserve">
+    <value>مقیاس/پر کردن</value>
+  </data>
+  <data name="TitleScreenLayout" xml:space="preserve">
+    <value>صفحه کنترل</value>
+  </data>
+  <data name="TitleSelectFile" xml:space="preserve">
+    <value>انتخاب فایل</value>
+  </data>
+  <data name="TitleSettings" xml:space="preserve">
+    <value>تنظیمات</value>
+  </data>
+  <data name="TitleSkipConfirm" xml:space="preserve">
+    <value>رد کردن تاییدیه</value>
+  </data>
+  <data name="TitleStore" xml:space="preserve">
+    <value>فروشگاه</value>
+    <comment>For different version of Lively, example: Microsoft Store</comment>
+  </data>
+  <data name="TitleStreamWallpaper" xml:space="preserve">
+    <value>پخش آنلاین</value>
+  </data>
+  <data name="TitleStreamWallpaperDetect" xml:space="preserve">
+    <value>تشخیص پخش های آنلاین</value>
+  </data>
+  <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
+    <value>کیفیت ویدیو</value>
+  </data>
+  <data name="TitleTileSize" xml:space="preserve">
+    <value>اندازه کاشی</value>
+  </data>
+  <data name="TitleUIMode" xml:space="preserve">
+    <value>رابط کاربر</value>
+  </data>
+  <data name="TitleVideo" xml:space="preserve">
+    <value>ویدیو</value>
+  </data>
   <data name="TitleVideoHardwareDecode" xml:space="preserve">
-    <value>GPU Decode</value>
+    <value>رمزگشایی GPU</value>
   </data>
-  <data name="TipVideoHardwareDecode" xml:space="preserve">
-    <value>Use hardware acceleration when possible.</value>
+  <data name="TitleWallpaper" xml:space="preserve">
+    <value>پس زمینه</value>
   </data>
-  <data name="DescriptionPleaseStop" xml:space="preserve">
-  <value>Please stop before proceeding.</value>
-</data>
-<data name="TextEditWallpaper" xml:space="preserve">
-  <value>Edit</value>
-</data>
-<data name="TitleLocation" xml:space="preserve">
-  <value>Location</value>
-</data>
-<data name="TitleSkipConfirm" xml:space="preserve">
-  <value>Skip Confirmation</value>
-</data>
-<data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-  <value>Enter optional commandline arguments</value>
-</data>    
+  <data name="TitleWallpaperDir" xml:space="preserve">
+    <value>مسیر پس زمینه</value>
+  </data>
+  <data name="TitleWallpaperDirMoveExisting" xml:space="preserve">
+    <value>انتقال پس زمينه هاي موجود به پوشه جديد</value>
+  </data>
+  <data name="TitleWallpaperFit" xml:space="preserve">
+    <value>انتخاب روش پر کردن</value>
+  </data>
+  <data name="TitleWallpaperInput" xml:space="preserve">
+    <value>ورودی پس زمينه</value>
+  </data>
+  <data name="TitleWallpaperLayout" xml:space="preserve">
+    <value>روش قرار دادن</value>
+  </data>
+  <data name="TitleWallpaperPlayback" xml:space="preserve">
+    <value>پخش پس زمینه</value>
+  </data>
+  <data name="TitleWarning" xml:space="preserve">
+    <value>اخطار</value>
+  </data>
+  <data name="TitleWebBrowser" xml:space="preserve">
+    <value>مرورگر وب</value>
+  </data>
+  <data name="TitleWebBrowserDiskCache" xml:space="preserve">
+    <value>حافظه نهان</value>
+  </data>
+  <data name="TitleWebBrowserEngine" xml:space="preserve">
+    <value>موتور</value>
+  </data>
+  <data name="TitleWebpageLoad" xml:space="preserve">
+    <value>بارگیری صفحه وب</value>
+  </data>
+  <data name="TitleWindowsStartup" xml:space="preserve">
+    <value>روشن شدن با ویندوز</value>
+  </data>
 </root>

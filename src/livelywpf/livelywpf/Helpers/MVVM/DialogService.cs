@@ -67,5 +67,27 @@ namespace livelywpf.Helpers
             catch { }
             return result;
         }
+
+
+        public static async Task<string> ShowTextInputDialog(string title, string primaryBtnText)
+        {
+            var tb = new TextBox();
+            string result = null;
+            ContentDialog dialog = new ContentDialog
+            {
+                Title = title,
+                Content = tb,
+                PrimaryButtonText = primaryBtnText,
+            };
+
+            try
+            {
+                //If another dialog already open.
+                ContentDialogResult dResult = await dialog.ShowAsync();
+                result = tb.Text;
+            }
+            catch { }
+            return result;
+        }
     }
 }

@@ -144,6 +144,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please stop before proceeding..
+        /// </summary>
+        public static string DescriptionPleaseStop {
+            get {
+                return ResourceManager.GetString("DescriptionPleaseStop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Press to begin recording..
         /// </summary>
         public static string DescriptionRecordStart {
@@ -289,7 +298,7 @@ namespace livelywpf.Properties {
         ///
         ///If Windows 7 just set - Adjust for best appearance &amp;amp; Apply.
         ///If still not working, close &amp; start Lively again/restart windows.
-        ///(Does not w [rest of string was truncated]&quot;;.
+        ///(Do [rest of string was truncated]&quot;;.
         /// </summary>
         public static string LivelyExceptionWorkerWSetupFail {
             get {
@@ -442,7 +451,7 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Delete Wallpaper.
+        ///   Looks up a localized string similar to Delete.
         /// </summary>
         public static string TextDeleteWallpaper {
             get {
@@ -483,6 +492,15 @@ namespace livelywpf.Properties {
         public static string TextDownload {
             get {
                 return ResourceManager.GetString("TextDownload", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit.
+        /// </summary>
+        public static string TextEditWallpaper {
+            get {
+                return ResourceManager.GetString("TextEditWallpaper", resourceCulture);
             }
         }
         
@@ -748,7 +766,7 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Preview Wallpaper.
+        ///   Looks up a localized string similar to Preview.
         /// </summary>
         public static string TextPreviewWallpaper {
             get {
@@ -1005,6 +1023,15 @@ namespace livelywpf.Properties {
         public static string TextVideo {
             get {
                 return ResourceManager.GetString("TextVideo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter optional commandline arguments.
+        /// </summary>
+        public static string TextWallpaperCommandlineArgs {
+            get {
+                return ResourceManager.GetString("TextWallpaperCommandlineArgs", resourceCulture);
             }
         }
         
@@ -1670,6 +1697,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Location.
+        /// </summary>
+        public static string TitleLocation {
+            get {
+                return ResourceManager.GetString("TitleLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Misc..
         /// </summary>
         public static string TitleMisc {
@@ -1765,6 +1801,15 @@ namespace livelywpf.Properties {
         public static string TitleSettings {
             get {
                 return ResourceManager.GetString("TitleSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skip Confirmation.
+        /// </summary>
+        public static string TitleSkipConfirm {
+            get {
+                return ResourceManager.GetString("TitleSkipConfirm", resourceCulture);
             }
         }
         

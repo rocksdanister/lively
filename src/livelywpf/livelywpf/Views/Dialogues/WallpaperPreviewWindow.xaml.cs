@@ -59,6 +59,7 @@ namespace livelywpf.Views
             if(!_initializedWallpaper || _recording)
             {
                 e.Cancel = true;
+                ModernWpf.Controls.Primitives.FlyoutBase.ShowAttachedFlyout(recordBtn);
                 return;
             }
 

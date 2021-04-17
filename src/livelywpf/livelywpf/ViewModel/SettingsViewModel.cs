@@ -44,6 +44,7 @@ namespace livelywpf
                 new LanguagesModel("Español(es)", new string[]{"es"}),
                 new LanguagesModel("Italian(it)", new string[]{"it", "it-IT", "it-SM","it-CH","it-VA"}),
                 new LanguagesModel("عربى(ar-AE)", new string[]{"ar"}),
+                new LanguagesModel("فارسی(fa-IR)", new string[]{ "fa-IR"}),
                 new LanguagesModel("Française(fr)", new string[]{"fr"}),
                 new LanguagesModel("Deutsch(de)", new string[]{"de"}),
                 new LanguagesModel("język polski(pl)", new string[]{"pl", "pl-PL"}),
@@ -83,7 +84,7 @@ namespace livelywpf
 
             if (Program.IsMSIX)
             {
-                WindowsStartup.StartupWin10(Settings.Startup);
+                _= WindowsStartup.StartupWin10(Settings.Startup);
                 IsStartup = Settings.Startup;
             }
             else
@@ -171,7 +172,7 @@ namespace livelywpf
                 OnPropertyChanged("IsStartup");
                 if (Program.IsMSIX)
                 {
-                    WindowsStartup.StartupWin10(_isStartup);
+                    _= WindowsStartup.StartupWin10(_isStartup);
                     if(Settings.Startup != _isStartup)
                     {
                         Settings.Startup = _isStartup;

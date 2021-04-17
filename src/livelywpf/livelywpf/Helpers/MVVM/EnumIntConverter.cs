@@ -6,7 +6,7 @@ using System.Windows.Data;
 namespace livelywpf.Helpers
 {
     //ref: https://stackoverflow.com/questions/20707160/data-binding-int-property-to-enum-in-wpf
-    public class EnumConverter : IValueConverter
+    public class EnumIntConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter,
                        System.Globalization.CultureInfo culture)

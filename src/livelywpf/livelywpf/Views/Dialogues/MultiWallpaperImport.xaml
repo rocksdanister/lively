@@ -1,0 +1,48 @@
+﻿<Window x:Class="livelywpf.Views.MultiWallpaperImport"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        ui:WindowHelper.UseModernWindowStyle="True"
+        ui:TitleBar.ExtendViewIntoTitleBar="False"
+        ui:ThemeManager.IsThemeAware="True"     
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:livelywpf.Views"
+        xmlns:p = "clr-namespace:livelywpf.Properties"  
+        mc:Ignorable="d"
+        Title="{x:Static p:Resources.TitleAddWallpaper}" Height="450" Width="600"
+        BorderBrush="{DynamicResource SystemControlHighlightAltListAccentHighBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="130" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Visibility="Collapsed" x:Name="waitText" Foreground="{DynamicResource SystemControlHighlightAltListAccentHighBrush}" 
+                   Text="{x:Static p:Resources.TitlePleaseWait}" FontSize="25" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"/>
+        <ListView x:Name="listView" SelectionMode="Single" Grid.Row="0" Margin="10"
+                  ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                  BorderBrush="{DynamicResource SystemControlForegroundBaseLowBrush}" BorderThickness="1"
+                  ItemsSource="{Binding ListItems}" SelectedItem="{Binding SelectedItem, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" 
+                  Style="{StaticResource {x:Static GridView.GridViewStyleKey}}">
+            <!-- style required for modernwpf gridview listview -->
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Header="#" DisplayMemberBinding="{Binding Id}"/>
+                        <GridViewColumn Header="{x:Static p:Resources.TextTitle}" DisplayMemberBinding="{Binding FileName}"/>
+                        <GridViewColumn Header="{x:Static p:Resources.TextWallpaperType}" DisplayMemberBinding="{Binding LocalizedType}"/>
+                        <GridViewColumn Header="{x:Static p:Resources.TitleLocation}" DisplayMemberBinding="{Binding Path}"/>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <StackPanel Grid.Row="1" Margin="10, 0, 10, 0" VerticalAlignment="Bottom">
+            <CheckBox Content="{x:Static p:Resources.TextCreatePreview}" IsEnabled="False" IsChecked="{Binding Path=GifCheck, Mode=TwoWay}" Margin="0, 5, 0, 0"/>
+            <CheckBox Visibility="Collapsed" Content="{x:Static p:Resources.TitleSkipConfirm}" IsChecked="{Binding Path=AutoImportCheck, Mode=TwoWay}" Margin="0, 5, 0, 0"/>
+            <ToggleButton Margin="10" HorizontalAlignment="Center" MinWidth="150" MinHeight="25" Content="{Binding BtnText}" Command="{Binding BtnCommand}"/>
+            <ui:ProgressBar Value="{Binding Progress, UpdateSourceTrigger=PropertyChanged}" Minimum="0" Maximum="100" Margin="5"/>
+        </StackPanel>
+    </Grid>
+</Window>

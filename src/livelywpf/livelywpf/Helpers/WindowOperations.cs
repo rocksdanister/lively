@@ -3,16 +3,67 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media;
+using System.Windows.Threading;
 
 namespace livelywpf
 {
     public static class WindowOperations
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+
+        public static Task ShowWindowAsync(Window window)
+        {
+            var tcs = new TaskCompletionSource<object>();
+            var thread = new Thread(() =>
+            {
+                try
+                {
+                    System.Windows.Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, new ThreadStart(delegate
+                    {
+                        window.Closed += (s, a) => tcs.SetResult(null);
+                        window.Show();
+                        window.Focus();
+                    }));
+                }
+                catch (Exception e)
+                {
+                    tcs.SetException(e);
+                    Logger.Error(e.ToString());
+                }
+            });
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+            return tcs.Task;
+        }
+
+        public static Task ShowWindowDialogAsync(Window window)
+        {
+            var tcs = new TaskCompletionSource<object>();
+            var thread = new Thread(() =>
+            {
+                try
+                {
+                    System.Windows.Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, new ThreadStart(delegate
+                    {
+                        window.ShowDialog();
+                        tcs.SetResult(null);
+                    }));
+                }
+                catch (Exception e)
+                {
+                    tcs.SetException(e);
+                    Logger.Error(e.ToString());
+                }
+            });
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+            return tcs.Task;
+        }
 
         //https://stackoverflow.com/questions/386731/get-absolute-position-of-element-within-the-window-in-wpf
         /// <summary>

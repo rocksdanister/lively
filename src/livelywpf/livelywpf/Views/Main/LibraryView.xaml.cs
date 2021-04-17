@@ -134,6 +134,9 @@ namespace livelywpf.Views
                 case "convertVideo":
                     Program.LibraryVM.WallpaperVideoConvert(obj);
                     break;
+                case "editWallpaper":
+                    Program.LibraryVM.EditWallpaper(obj);
+                    break;
                 case "moreInformation":
                     var aboutView = new LibraryAboutView
                     {

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading;
 using System.Windows.Threading;
 using CommandLine;
+using livelywpf.Helpers;
 using Newtonsoft.Json.Linq;
 
 namespace livelywpf.Cmd
@@ -176,15 +177,51 @@ namespace livelywpf.Cmd
                     }
                     else if (File.Exists(opts.File))
                     {
-                        //File path, outside of Lively folder.
-                        //todo: If not present in library -> load wallpaper file(video, website etc..) -> create quick thumbnail without user input -> set as wallpaper.
-                        //related: https://github.com/rocksdanister/lively/issues/273 (Batch wallpaper import.) 
                         Core.LivelyScreen screen = opts.Monitor != null ?
-                            ScreenHelper.GetScreen().FirstOrDefault(x => x.DeviceNumber == ((int)opts.Monitor).ToString()) : ScreenHelper.GetPrimaryScreen();
+                  ScreenHelper.GetScreen().FirstOrDefault(x => x.DeviceNumber == ((int)opts.Monitor).ToString()) : ScreenHelper.GetPrimaryScreen();
                         var libraryItem = Program.LibraryVM.LibraryItems.FirstOrDefault(x => x.FilePath != null && x.FilePath.Equals(opts.File));
-                        if (libraryItem != null && screen != null)
+                        if (screen != null)
                         {
-                            SetupDesktop.SetWallpaper(libraryItem, screen);
+                            if (libraryItem != null)
+                            {
+                                SetupDesktop.SetWallpaper(libraryItem, screen);
+                            }
+                            else
+                            {
+                                Logger.Info("Wallpaper not found in library, importing as new file.");
+                                WallpaperType type = FileFilter.GetLivelyFileType(opts.File);
+                                switch (type)
+                                {
+                                    case WallpaperType.web:
+                                    case WallpaperType.webaudio:
+                                    case WallpaperType.url:
+                                    case WallpaperType.video:
+                                    case WallpaperType.gif:
+                                    case WallpaperType.videostream:
+                                    case WallpaperType.picture:
+                                        Program.LibraryVM.AddWallpaper(opts.File,
+                                            type,
+                                            LibraryTileType.cmdImport,
+                                            Program.SettingsVM.Settings.SelectedDisplay);
+                                        break;
+                                    case WallpaperType.app:
+                                    case WallpaperType.bizhawk:
+                                    case WallpaperType.unity:
+                                    case WallpaperType.godot:
+                                    case WallpaperType.unityaudio:
+                                        Logger.Info("App type wallpaper import is disabled for cmd control.");
+                                        break;
+                                    case (WallpaperType)100:
+                                        Logger.Info("Lively .zip type wallpaper import is disabled for cmd control.");
+                                        break;
+                                    case (WallpaperType)(-1):
+                                        Logger.Info("Wallpaper format not supported.");
+                                        break;
+                                    default:
+                                        Logger.Info("No wallpaper type recognised.");
+                                        break;
+                                }
+                            }
                         }
                     }
                 }));

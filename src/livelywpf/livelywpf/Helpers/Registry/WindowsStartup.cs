@@ -97,8 +97,7 @@ namespace livelywpf
         }
 
         //ref: https://docs.microsoft.com/en-us/uwp/api/windows.applicationmodel.startuptask?view=winrt-19041
-        //todo: refactor and change location of this fn.
-        public async static void StartupWin10(bool setStartup = false)
+        public async static Task StartupWin10(bool setStartup = false)
         {
             // Pass the task ID you specified in the appxmanifest file
             StartupTask startupTask = await StartupTask.GetAsync("AppStartup"); 
