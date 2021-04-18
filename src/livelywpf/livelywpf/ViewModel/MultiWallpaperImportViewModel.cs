@@ -179,7 +179,6 @@ namespace livelywpf
             }
             else
             {
-                cancellationTokenSrc.Cancel();
                 CloseAction();
             }
         }

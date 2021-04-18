@@ -106,6 +106,13 @@ namespace livelywpf
                         Title = libData.FilePath;
                     }
                 }
+
+                if (libData.DataType == LibraryTileType.cmdImport ||
+                    libData.DataType == LibraryTileType.multiImport)
+                {
+                    //skip black-transition/intro clip of video clips if any..
+                    wallpaper.SetPlaybackPos(35, PlaybackPosType.absolutePercent);
+                }
             }
 
             GifCheck = Program.SettingsVM.Settings.GifCapture;
