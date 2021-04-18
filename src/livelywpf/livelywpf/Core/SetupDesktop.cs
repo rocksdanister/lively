@@ -300,33 +300,56 @@ namespace livelywpf
                                 }
                             }
 
-                            var pWindow = new LibraryPreviewView(wallpaper);
-                            if (type == LibraryTileType.multiImport)
+                            var tcs = new TaskCompletionSource<object>();
+                            var thread = new Thread(() =>
                             {
-                                pWindow.Topmost = true;
-                                if (App.AppWindow != null)
+                                try
                                 {
-                                    pWindow.Left = App.AppWindow.Left;
-                                    pWindow.Top = App.AppWindow.Top;
-                                    pWindow.WindowStartupLocation = WindowStartupLocation.Manual;
+                                    System.Windows.Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, new ThreadStart(delegate
+                                    {
+                                        var pWindow = new LibraryPreviewView(wallpaper);
+                                        if (type == LibraryTileType.multiImport)
+                                        {
+                                            pWindow.Topmost = true;
+                                            pWindow.ShowActivated = true;
+                                            if (App.AppWindow != null)
+                                            {
+                                                pWindow.Left = App.AppWindow.Left;
+                                                pWindow.Top = App.AppWindow.Top;
+                                                pWindow.WindowStartupLocation = WindowStartupLocation.Manual;
+                                            }
+                                            pWindow.Closed += (s, a) => tcs.SetResult(null);
+                                            pWindow.Show();
+                                        }
+                                        else if (type == LibraryTileType.cmdImport)
+                                        {
+                                            pWindow.Topmost = true;
+                                            pWindow.ShowActivated = true;
+                                            pWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                                            pWindow.Closed += (s, a) => tcs.SetResult(null);
+                                            pWindow.Show();
+                                        }
+                                        else
+                                        {
+                                            if (App.AppWindow != null)
+                                            {
+                                                pWindow.Owner = App.AppWindow;
+                                                pWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                                            }
+                                            pWindow.ShowDialog();
+                                            tcs.SetResult(null);
+                                        }
+                                    }));
                                 }
-                                await WindowOperations.ShowWindowAsync(pWindow);
-                            }
-                            else if (type == LibraryTileType.cmdImport)
-                            {
-                                pWindow.Topmost = true;
-                                pWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-                                await WindowOperations.ShowWindowAsync(pWindow);
-                            }
-                            else
-                            {
-                                if (App.AppWindow != null)
+                                catch (Exception e)
                                 {
-                                    pWindow.Owner = App.AppWindow;
-                                    pWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                                    tcs.SetException(e);
+                                    Logger.Error(e.ToString());
                                 }
-                                await WindowOperations.ShowWindowDialogAsync(pWindow);
-                            }
+                            });
+                            thread.SetApartmentState(ApartmentState.STA);
+                            thread.Start();
+                            await tcs.Task;
 
                             if (!File.Exists(Path.Combine(wallpaper.GetWallpaperData().LivelyInfoFolderPath, "LivelyInfo.json")))
                             {

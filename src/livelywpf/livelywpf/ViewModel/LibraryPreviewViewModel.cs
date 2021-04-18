@@ -21,7 +21,7 @@ namespace livelywpf
         private readonly LibraryModel libData;
         private readonly ILibraryPreview Winstance;
         private readonly LivelyInfoModel livelyInfoCopy;
-        //private readonly string thumbnailPathCopy;
+        private readonly string thumbnailOriginalPath;
 
         public LibraryPreviewViewModel( ILibraryPreview wInterface, IWallpaper wallpaper)
         {
@@ -36,20 +36,7 @@ namespace livelywpf
             {
                 //taking backup to restore original data if user cancel..
                 livelyInfoCopy = new LivelyInfoModel(libData.LivelyInfo);
-                //capture loop is disabled for now..
-                //thumbnailPathCopy = libData.ThumbnailPath;
-                //if (libData.ThumbnailPath != null)
-                //{
-                //    try
-                //    {
-                //        File.Copy(libData.ThumbnailPath, 
-                //            Path.Combine(Program.AppDataDir, "temp", Path.GetFileName(libData.ThumbnailPath)));
-                //    }
-                //    catch (Exception e)
-                //    {
-                //        Logger.Error(e.ToString());
-                //    }
-                //}
+                thumbnailOriginalPath = libData.ThumbnailPath;
 
                 //use existing data for editing already imported wallpaper..
                 Title = libData.LivelyInfo.Title;
@@ -105,6 +92,13 @@ namespace livelywpf
                     {
                         Title = libData.FilePath;
                     }
+                }
+
+                if (libData.DataType == LibraryTileType.cmdImport ||
+                    libData.DataType == LibraryTileType.multiImport)
+                {
+                    //skip black-transition/intro clip of video clips if any..
+                    wallpaper.SetPlaybackPos(35, PlaybackPosType.absolutePercent);
                 }
             }
 
@@ -229,10 +223,6 @@ namespace livelywpf
             {
                 Winstance.StartCapture(libData.LivelyInfoFolderPath);
             }
-            else if (libData.DataType == LibraryTileType.edit)
-            {
-                //no thumbnail capture timer..
-            }
             else
             {
                 Winstance.StartThumbnailCaptureLoop(libData.LivelyInfoFolderPath);
@@ -264,7 +254,7 @@ namespace livelywpf
                 if (_captureCommand == null)
                 {
                     _captureCommand = new RelayCommand(
-                        param => Winstance.StartCapture(libData.LivelyInfoFolderPath), param => _canCancelOperation);
+                        param => UserActionStart(), param => _canCancelOperation);
                 }
                 return _captureCommand;
             }
@@ -272,6 +262,28 @@ namespace livelywpf
             {
                 _captureCommand = value;
             }
+        }
+
+        private void UserActionStart()
+        {
+            if (libData.DataType == LibraryTileType.edit)
+            {
+                try
+                {
+                    //deleting existing file(s) if any..
+                    File.Delete(thumbnailOriginalPath);
+                    File.Delete(libData.PreviewClipPath);
+                }
+                catch { }
+
+                //resetting..
+                libData.ImagePath = null;
+                libData.ThumbnailPath = null;
+                libData.LivelyInfo.Thumbnail = null;
+                libData.PreviewClipPath = null;
+                libData.LivelyInfo.Preview = null;
+            }
+            Winstance.StartCapture(libData.LivelyInfoFolderPath);
         }
 
         private RelayCommand _cancelCommand;
@@ -335,33 +347,19 @@ namespace livelywpf
                 //user close or 'x' btn press..
                 if (libData.DataType == LibraryTileType.edit)
                 {
-                    //if (thumbnailPathCopy != null)
-                    //{
-                    //    try
-                    //    {
-                    //        File.Delete(libData.LivelyInfo.Thumbnail);
-                    //        //temp -> wp folder..
-                    //        File.Copy(thumbnailPathCopy, libData.ThumbnailPath, true);
-
-                    //        libData.LivelyInfo.Thumbnail = libData.ThumbnailPath;
-                    //        libData.ThumbnailPath = libData.ThumbnailPath;
-
-                    //        libData.ImagePath = null;
-                    //        //Use animated gif if exists.
-                    //        libData.ImagePath = Program.SettingsVM.Settings.LivelyGUIRendering == LivelyGUIState.normal ?
-                    //            (File.Exists(libData.PreviewClipPath) ? libData.PreviewClipPath : libData.ThumbnailPath) : libData.ThumbnailPath;
-                    //    }
-                    //    catch(Exception e)
-                    //    {
-                    //        Logger.Error(e.ToString());
-                    //    }
-                    //}
-
                     //restore previous data..
                     Title = livelyInfoCopy.Title;
                     Desc = livelyInfoCopy.Desc;
                     Author = livelyInfoCopy.Author;
                     Url = livelyInfoCopy.Contact;
+
+                    //restoring original thumbnail img..
+                    libData.ThumbnailPath = thumbnailOriginalPath;
+                    libData.LivelyInfo.Thumbnail = libData.LivelyInfo.IsAbsolutePath ? thumbnailOriginalPath : Path.GetFileName(thumbnailOriginalPath);
+                    //restore tile img..
+                    libData.ImagePath = null;
+                    libData.ImagePath = Program.SettingsVM.Settings.LivelyGUIRendering == LivelyGUIState.normal ?
+                        (File.Exists(libData.PreviewClipPath) ? libData.PreviewClipPath : libData.ThumbnailPath) : libData.ThumbnailPath;
 
                     //change from pos 0..
                     libData.DataType = LibraryTileType.ready;
@@ -371,14 +369,6 @@ namespace livelywpf
                 {
                     //nothing, core will terminate and delete the wp folder when LivelyInfo.json not found..
                 }
-            }
-
-            //Use animated gif if possible, if user checked create no preview but preview already exists..
-            if (libData.DataType == LibraryTileType.edit)
-            {
-                libData.ImagePath = null;
-                libData.ImagePath = Program.SettingsVM.Settings.LivelyGUIRendering == LivelyGUIState.normal ?
-                    (File.Exists(libData.PreviewClipPath) ? libData.PreviewClipPath : libData.ThumbnailPath) : libData.ThumbnailPath;
             }
 
             if (Program.SettingsVM.Settings.LivelyZipGenerate)

@@ -26,7 +26,13 @@
         <!-- wallpaper window will be placed here! -->
         <Border x:Name="PreviewBorder" BorderBrush="Black" BorderThickness="1" Visibility="Hidden"
                 HorizontalAlignment="Left" Margin="8, 5, 0, 0" VerticalAlignment="Top" 
-                Width="384" Height="216" OpacityMask="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+                Width="384" Height="216" OpacityMask="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
+            <ui:FlyoutBase.AttachedFlyout>
+                <ui:Flyout>
+                    <TextBlock Text="{x:Static p:Resources.TitlePleaseWait}"/>
+                </ui:Flyout>
+            </ui:FlyoutBase.AttachedFlyout>
+        </Border>
 
         <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="10, 225, 10, 0">
             <StackPanel>

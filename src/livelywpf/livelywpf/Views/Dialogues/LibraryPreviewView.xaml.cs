@@ -3,8 +3,10 @@ using livelywpf.Core;
 using System;
 using System.Globalization;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Interop;
 using System.Windows.Threading;
 
 namespace livelywpf.Views
@@ -84,24 +86,34 @@ namespace livelywpf.Views
             if(_processing)
             {
                 e.Cancel = true;
+                ModernWpf.Controls.Primitives.FlyoutBase.ShowAttachedFlyout(PreviewBorder);
                 return;
             }
 
             thumbnailCaptureTimer?.Stop();
+            try
+            {
+                //deleting temporary thumbnail file if any..
+                File.Delete(tmpThumbCaptureLoopPath);
+            }
+            catch { }
+
             //detach wallpaper window from this dialogue.
             WindowOperations.SetParentSafe(HWND, IntPtr.Zero);
         }
 
+        private string tmpThumbCaptureLoopPath;
         private void CaptureLoop(object sender, EventArgs e)
         {
-            if (File.Exists(Path.Combine(thumbnailPathTemp, "lively_t.jpg")))
+            var currThumbPath = Path.Combine(thumbnailPathTemp, Path.ChangeExtension(Path.GetRandomFileName(), ".jpg"));
+            if (File.Exists(tmpThumbCaptureLoopPath))
             {
                 if (wallpaperType == WallpaperType.picture)
                     return;
 
                 try
                 {
-                    File.Delete(Path.Combine(thumbnailPathTemp, "lively_t.jpg"));
+                    File.Delete(tmpThumbCaptureLoopPath);
                 }
                 catch
                 {
@@ -114,14 +126,14 @@ namespace livelywpf.Views
 
             //thumbnail capture
             CaptureScreen.CopyScreen(
-               thumbnailPathTemp,
-               "lively_t.jpg",
+                currThumbPath,
                (int)previewPanelPos.Left,
                (int)previewPanelPos.Top,
                (int)previewPanelSize.Width,
                (int)previewPanelSize.Height);
 
-            ThumbnailUpdated?.Invoke(this, Path.Combine(thumbnailPathTemp, "lively_t.jpg"));
+            ThumbnailUpdated?.Invoke(this, currThumbPath);
+            tmpThumbCaptureLoopPath = currThumbPath;
         }
 
         private async void CapturePreview(string saveDirectory)
@@ -136,55 +148,20 @@ namespace livelywpf.Views
             CaptureProgress?.Invoke(this, 50);
             //wait before capturing thumbnail..incase wallpaper is not loaded yet.
             await Task.Delay(100);
-            try
-            {
-                //try deleting existing files if any..
-                File.Delete(Path.Combine(saveDirectory, "lively_t.jpg"));
-                File.Delete(Path.Combine(saveDirectory, "lively_p.gif"));
-            }
-            catch { }
 
+            var thumbFilePath = Path.Combine(saveDirectory, Path.ChangeExtension(Path.GetRandomFileName(), ".jpg"));
             //final thumbnail capture..
             CaptureScreen.CopyScreen(
-               saveDirectory,
-               "lively_t.jpg",
+               thumbFilePath,
                (int)previewPanelPos.Left,
                (int)previewPanelPos.Top,
                (int)previewPanelSize.Width,
                (int)previewPanelSize.Height);
-            ThumbnailUpdated?.Invoke(this, Path.Combine(saveDirectory, "lively_t.jpg"));
+            ThumbnailUpdated?.Invoke(this, thumbFilePath);
 
             _processing = false;
             taskbarItemInfo.ProgressValue = 100f;
             CaptureProgress?.Invoke(this, 100);
-        }
-
-
-        private void CreateGif(string saveDirectory)
-        {
-            throw new NotImplementedException();
-            /*
-            using (MagickImageCollection collection = new MagickImageCollection())
-            {
-                for (int i = 0; i < gifTotalFrames; i++)
-                {
-                    collection.Add(saveDirectory + "\\" + i.ToString(CultureInfo.InvariantCulture) + ".jpg");
-                    collection[i].AnimationDelay = gifSaveAnimationDelay;
-                }
-
-                // Optionally reduce colors
-                QuantizeSettings settings = new QuantizeSettings
-                {
-                    Colors = 256,
-                };
-                collection.Quantize(settings);
-
-                // Optionally optimize the images (images should have the same size).
-                collection.Optimize();
-
-                collection.Write(Path.Combine(saveDirectory, "lively_p.gif"));
-            }
-            */
         }
 
         #region interface methods
@@ -208,6 +185,30 @@ namespace livelywpf.Views
             thumbnailCaptureTimer.Start();
         }
 
-        #endregion
+        #endregion //interface methods
+
+        #region window move/resize lock
+
+        protected override void OnSourceInitialized(EventArgs e)
+        {
+            base.OnSourceInitialized(e);
+            var source = PresentationSource.FromVisual(this) as HwndSource;
+            source.AddHook(WndProc);
+        }
+
+        //prevent window resize and move during recording.
+        //ref: https://stackoverflow.com/questions/3419909/how-do-i-lock-a-wpf-window-so-it-can-not-be-moved-resized-minimized-maximized
+        public IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        {
+            if (msg == (int)NativeMethods.WM.WINDOWPOSCHANGING && _processing)
+            {
+                var wp = Marshal.PtrToStructure<NativeMethods.WINDOWPOS>(lParam);
+                wp.flags |= (int)NativeMethods.SetWindowPosFlags.SWP_NOMOVE | (int)NativeMethods.SetWindowPosFlags.SWP_NOSIZE;
+                Marshal.StructureToPtr(wp, lParam, false);
+            }
+            return IntPtr.Zero;
+        }
+
+        #endregion //window move/resize lock
     }
 }
