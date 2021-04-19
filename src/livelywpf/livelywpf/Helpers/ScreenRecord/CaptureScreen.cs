@@ -105,21 +105,21 @@ namespace livelywpf
         public static async Task CaptureGif(string savePath, int x, int y, int width, int height, 
             int captureDelay, int animeDelay, int totalFrames, IProgress<int> progress)
         {
-            var miArray = new MagickImage[totalFrames];
-            try
+            await Task.Run(async () =>
             {
-                for (int i = 0; i < totalFrames; i++)
+                var miArray = new MagickImage[totalFrames];
+                try
                 {
-                    using (var bmp = CopyScreen(x, y, width, height))
+                    for (int i = 0; i < totalFrames; i++)
                     {
-                        miArray[i] = ToMagickImage(bmp);
+                        using (var bmp = CopyScreen(x, y, width, height))
+                        {
+                            miArray[i] = ToMagickImage(bmp);
+                        }
+                        await Task.Delay(captureDelay);
+                        progress.Report((i + 1) * 100 / totalFrames);
                     }
-                    await Task.Delay(captureDelay);
-                    progress.Report((i + 1) * 100 / totalFrames);
-                }
 
-                await Task.Run(() =>
-                {
                     using (MagickImageCollection collection = new MagickImageCollection())
                     {
                         for (int i = 0; i < totalFrames; i++)
@@ -140,15 +140,15 @@ namespace livelywpf
                         // Save image to disk.
                         collection.Write(savePath);
                     }
-                });
-            }
-            finally
-            {
-                for (int i = 0; i < totalFrames; i++)
-                {
-                    miArray[i]?.Dispose();
                 }
-            }
+                finally
+                {
+                    for (int i = 0; i < totalFrames; i++)
+                    {
+                        miArray[i]?.Dispose();
+                    }
+                }
+            });
         }
 
         #region helpers

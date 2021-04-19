@@ -9,7 +9,6 @@ namespace livelywpf.Core
     public sealed class WatchdogProcess
     {
         private Process livelySubProcess;
-        public bool IsRunning { get; private set; } = false;
         private static readonly WatchdogProcess instance = new WatchdogProcess();
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
@@ -28,7 +27,7 @@ namespace livelywpf.Core
 
         public void Start()
         {
-            if (IsRunning)
+            if (livelySubProcess != null)
                 return;
 
             try
@@ -48,41 +47,40 @@ namespace livelywpf.Core
                     StartInfo = start,
                 };
                 livelySubProcess.Start();
-                IsRunning = true;
             }
             catch (Exception e)
             {
-                Logger.Error("Failed to start watchdog process:" + e.Message);
+                Logger.Error("Failed to start watchdog service:" + e.Message);
             }
         }
 
         public void Add(int pid)
         {
-            Logger.Info("Adding pgm:" + pid);
+            Logger.Info("Watchdog: Adding program=>" + pid);
             SendMessage("lively:add-pgm " + pid);
         }
 
         public void Remove(int pid)
         {
-            Logger.Info("Removing pgm:" + pid);
+            Logger.Info("Watchdog: Removing program=>" + pid);
             SendMessage("lively:rmv-pgm " + pid);
         }
 
         public void Clear()
         {
-            Logger.Info("Cleared pgm..");
+            Logger.Info("Watchdog: Cleared program(s)..");
             SendMessage("lively:clear");
         }
 
         private void SendMessage(string text)
         {
-            if (IsRunning)
+            try
             {
-                try
-                {
-                    livelySubProcess.StandardInput.WriteLine(text);
-                }
-                catch { }
+                livelySubProcess.StandardInput.WriteLine(text);
+            }
+            catch (Exception e)
+            {
+                Logger.Error("Failed to communicate with watchdog service:" + e.Message);
             }
         }
     }
