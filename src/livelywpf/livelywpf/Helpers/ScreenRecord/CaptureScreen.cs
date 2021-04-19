@@ -118,26 +118,29 @@ namespace livelywpf
                     progress.Report((i + 1) * 100 / totalFrames);
                 }
 
-                using (MagickImageCollection collection = new MagickImageCollection())
+                await Task.Run(() =>
                 {
-                    for (int i = 0; i < totalFrames; i++)
+                    using (MagickImageCollection collection = new MagickImageCollection())
                     {
-                        collection.Add(miArray[i]);
-                        collection[i].AnimationDelay = animeDelay;
+                        for (int i = 0; i < totalFrames; i++)
+                        {
+                            collection.Add(miArray[i]);
+                            collection[i].AnimationDelay = animeDelay;
+                        }
+
+                        // Optionally reduce colors
+                        QuantizeSettings settings = new QuantizeSettings
+                        {
+                            Colors = 256,
+                        };
+                        collection.Quantize(settings);
+
+                        // Optionally optimize the images (images should have the same size).
+                        collection.Optimize();
+                        // Save image to disk.
+                        collection.Write(savePath);
                     }
-
-                    // Optionally reduce colors
-                    QuantizeSettings settings = new QuantizeSettings
-                    {
-                        Colors = 256,
-                    };
-                    collection.Quantize(settings);
-
-                    // Optionally optimize the images (images should have the same size).
-                    collection.Optimize();
-                    // Save image to disk.
-                    collection.Write(savePath);
-                }
+                });
             }
             finally
             {

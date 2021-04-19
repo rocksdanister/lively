@@ -853,18 +853,22 @@ namespace livelywpf
 
         private void WallpaperRestart(WallpaperType type)
         {
+            Logger.Info("Restarting wallpaper:" + type);
             var prevWallpapers = SetupDesktop.Wallpapers.FindAll(x => x.GetWallpaperType() == type).ToList();
-            SetupDesktop.TerminateWallpaper(type);
-            foreach (var item in prevWallpapers)
+            if (prevWallpapers.Count > 0)
             {
-                SetupDesktop.SetWallpaper(item.GetWallpaperData(), item.GetScreen());
-                if (Settings.WallpaperArrangement == WallpaperArrangement.span 
-                    || Settings.WallpaperArrangement == WallpaperArrangement.duplicate)
+                SetupDesktop.TerminateWallpaper(type);
+                foreach (var item in prevWallpapers)
                 {
-                    break;
+                    SetupDesktop.SetWallpaper(item.GetWallpaperData(), item.GetScreen());
+                    if (Settings.WallpaperArrangement == WallpaperArrangement.span
+                        || Settings.WallpaperArrangement == WallpaperArrangement.duplicate)
+                    {
+                        break;
+                    }
                 }
+                prevWallpapers.Clear();
             }
-            prevWallpapers.Clear();
         }
 
         public event EventHandler<string> LivelyWallpaperDirChange;

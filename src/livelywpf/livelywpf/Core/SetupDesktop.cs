@@ -110,7 +110,7 @@ namespace livelywpf
                     _isInitialized = true;
                     processMonitor = new Playback();
                     processMonitor.Start();
-                    StartLivelySubProcess();
+                    WatchdogProcess.Instance.Start();
                 }
             }
 
@@ -429,7 +429,7 @@ namespace livelywpf
 
                     if (wallpaper.GetProcess() != null)
                     {
-                        SendMsgLivelySubProcess("lively:add-pgm " + wallpaper.GetProcess().Id);
+                        WatchdogProcess.Instance.Add(wallpaper.GetProcess().Id);
                     }
 
                     Wallpapers.Add(wallpaper);
@@ -475,15 +475,18 @@ namespace livelywpf
             Logger.Info("Core: Restarting workerw and restoring wallpapers..");
             _isInitialized = false;
             processMonitor?.Dispose();
-            var prevWp = Wallpapers.ToList();
-            TerminateAllWallpapers();
-            foreach (var item in prevWp)
+            if (Wallpapers.Count > 0)
             {
-                SetWallpaper(item.GetWallpaperData(), item.GetScreen());
-                if (Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.duplicate)
-                    break;
+                var prevWallpapers = Wallpapers.ToList();
+                TerminateAllWallpapers();
+                foreach (var item in prevWallpapers)
+                {
+                    SetWallpaper(item.GetWallpaperData(), item.GetScreen());
+                    if (Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.duplicate)
+                        break;
+                }
+                prevWallpapers.Clear();
             }
-            prevWp.Clear();
         }
 
         public static IntPtr GetWorkerW()
@@ -830,47 +833,6 @@ namespace livelywpf
             }));
         }
 
-        private static Process livelySubProcess;
-        private static void StartLivelySubProcess()
-        {
-            if (livelySubProcess != null)
-                return;
-
-            try
-            {
-                ProcessStartInfo start = new ProcessStartInfo()
-                {
-                    Arguments = Process.GetCurrentProcess().Id.ToString(System.Globalization.CultureInfo.InvariantCulture),
-                    FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "subproc", "livelySubProcess.exe"),
-                    RedirectStandardInput = true,
-                    //RedirectStandardOutput = true,
-                    UseShellExecute = false,
-                };
-
-                livelySubProcess = new Process
-                {
-                    StartInfo = start,
-                };
-                livelySubProcess.Start();
-            }
-            catch (Exception e)
-            {
-                Logger.Error("subProcess start fail:" + e.Message);
-            }
-        }
-
-        private static void SendMsgLivelySubProcess(string text)
-        {
-            if(livelySubProcess != null)
-            {
-                try
-                {
-                    livelySubProcess.StandardInput.WriteLine(text);
-                }
-                catch { }
-            }
-        }
-
         public static void ShutDown()
         {
             ScreenHelper.DisplayUpdated -= DisplaySettingsChanged_Hwnd;
@@ -894,39 +856,23 @@ namespace livelywpf
 
         #region wallpaper operations
 
-        private static void CloseAllWallpapers(bool fireEvent)
-        {
-            Wallpapers.ForEach(x => x.Close());
-            Wallpapers.Clear();
-            SendMsgLivelySubProcess("lively:clear");
-            if (fireEvent)
-            {
-                WallpaperChanged?.Invoke(null, null);
-            }
-        }
-
         public static void CloseAllWallpapers()
         {
             CloseAllWallpapers(true);
         }
 
-        private static void CloseWallpaper(LivelyScreen display, bool fireEvent)
+        private static void CloseAllWallpapers(bool fireEvent)
         {
-            Wallpapers.ForEach(x =>
+            if (Wallpapers.Count > 0)
             {
-                if (ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.deviceId))
+                Wallpapers.ForEach(x => x.Close());
+                Wallpapers.Clear();
+                WatchdogProcess.Instance.Clear();
+
+                if (fireEvent)
                 {
-                    if (x.GetProcess() != null)
-                    {
-                        SendMsgLivelySubProcess("lively:rmv-pgm " + x.GetProcess().Id);
-                    }
-                    x.Close();
+                    WallpaperChanged?.Invoke(null, null);
                 }
-            });
-            Wallpapers.RemoveAll(x => ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.deviceId));
-            if (fireEvent)
-            {
-                WallpaperChanged?.Invoke(null, null);
             }
         }
 
@@ -935,39 +881,42 @@ namespace livelywpf
             CloseWallpaper(display, true);
         }
 
-        public static void TerminateWallpaper(WallpaperType type)
+        private static void CloseWallpaper(LivelyScreen display, bool fireEvent)
         {
-            Wallpapers.ForEach(x => 
-            { 
-                if (x.GetWallpaperType() == type)
+            var tmp = Wallpapers.FindAll(x => ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.deviceId));
+            if (tmp.Count > 0)
+            {
+                tmp.ForEach(x =>
                 {
                     if (x.GetProcess() != null)
                     {
-                        SendMsgLivelySubProcess("lively:rmv-pgm " + x.GetProcess().Id);
+                        WatchdogProcess.Instance.Remove(x.GetProcess().Id);
                     }
-                    x.Terminate();
-                }         
-            });
-            Wallpapers.RemoveAll(x => x.GetWallpaperType() == type);
-            WallpaperChanged?.Invoke(null, null);
+                    x.Close();
+                });
+                Wallpapers.RemoveAll(x => tmp.Contains(x));
+
+                if (fireEvent)
+                {
+                    WallpaperChanged?.Invoke(null, null);
+                }
+            }
         }
 
-        private static void TerminateWallpaper(LivelyScreen display, bool fireEvent)
+        public static void TerminateWallpaper(WallpaperType type)
         {
-            Wallpapers.ForEach(x =>
+            var tmp = Wallpapers.FindAll(x => x.GetWallpaperType() == type);
+            if (tmp.Count > 0)
             {
-                if (ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.deviceId))
+                tmp.ForEach(x =>
                 {
                     if (x.GetProcess() != null)
                     {
-                        SendMsgLivelySubProcess("lively:rmv-pgm " + x.GetProcess().Id);
+                        WatchdogProcess.Instance.Remove(x.GetProcess().Id);
                     }
                     x.Terminate();
-                }
-            });
-            Wallpapers.RemoveAll(x => ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.deviceId));
-            if (fireEvent)
-            {
+                });
+                Wallpapers.RemoveAll(x => tmp.Contains(x));
                 WallpaperChanged?.Invoke(null, null);
             }
         }
@@ -977,6 +926,28 @@ namespace livelywpf
             TerminateWallpaper(display, true);
         }
 
+        private static void TerminateWallpaper(LivelyScreen display, bool fireEvent)
+        {
+            var tmp = Wallpapers.FindAll(x => ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.deviceId));
+            if (tmp.Count > 0)
+            {
+                tmp.ForEach(x =>
+                {
+                    if (x.GetProcess() != null)
+                    {
+                        WatchdogProcess.Instance.Remove(x.GetProcess().Id);
+                    }
+                    x.Terminate();
+                });
+                Wallpapers.RemoveAll(x => tmp.Contains(x));
+
+                if (fireEvent)
+                {
+                    WallpaperChanged?.Invoke(null, null);
+                }
+            }
+        }
+
         public static void TerminateWallpaper(LibraryModel wp)
         {
             TerminateWallpaper(wp, true);
@@ -984,38 +955,44 @@ namespace livelywpf
 
         private static void TerminateWallpaper(LibraryModel wp, bool fireEvent)
         {
-            Wallpapers.ForEach(x =>
+            var tmp = Wallpapers.FindAll(x => x.GetWallpaperData() == wp);
+            if (tmp.Count > 0)
             {
-                if (x.GetWallpaperData() == wp)
+                tmp.ForEach(x =>
                 {
                     if (x.GetProcess() != null)
                     {
-                        SendMsgLivelySubProcess("lively:rmv-pgm " + x.GetProcess().Id);
+                        WatchdogProcess.Instance.Remove(x.GetProcess().Id);
                     }
                     x.Terminate();
-                }
-            });
-            Wallpapers.RemoveAll(x => x.GetWallpaperData() == wp);
-            if (fireEvent)
-            {
-                WallpaperChanged?.Invoke(null, null);
-            }
-        }
+                });
+                Wallpapers.RemoveAll(x => tmp.Contains(x));
 
-        private static void TerminateAllWallpapers(bool fireEvent)
-        {
-            Wallpapers.ForEach(x => x.Terminate());
-            Wallpapers.Clear();
-            SendMsgLivelySubProcess("lively:clear");
-            if (fireEvent)
-            {
-                WallpaperChanged?.Invoke(null, null);
+                if (fireEvent)
+                {
+                    WallpaperChanged?.Invoke(null, null);
+                }
             }
         }
 
         public static void TerminateAllWallpapers()
         {
             TerminateAllWallpapers(true);
+        }
+
+        private static void TerminateAllWallpapers(bool fireEvent)
+        {
+            if (Wallpapers.Count > 0)
+            {
+                Wallpapers.ForEach(x => x.Terminate());
+                Wallpapers.Clear();
+                WatchdogProcess.Instance.Clear();
+
+                if (fireEvent)
+                {
+                    WallpaperChanged?.Invoke(null, null);
+                }
+            }
         }
 
         /// <summary>
