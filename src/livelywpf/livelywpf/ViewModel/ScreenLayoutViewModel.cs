@@ -160,8 +160,23 @@ namespace livelywpf
             var items = SetupDesktop.Wallpapers.FindAll(x => x.GetWallpaperData().LivelyPropertyPath != null);
             if (items.Count > 0)
             {
-                var settingsWidget = new Cef.LivelyPropertiesTrayWidget(items[0].GetWallpaperData());
-                settingsWidget.Show();
+                LibraryModel obj = null;
+                switch (Program.SettingsVM.Settings.WallpaperArrangement)
+                {
+                    case WallpaperArrangement.per:
+                        obj = items.Find(x => 
+                            ScreenHelper.ScreenCompare(x.GetScreen(), selection.Screen, DisplayIdentificationMode.deviceId))?.GetWallpaperData();
+                        break;
+                    case WallpaperArrangement.span:
+                    case WallpaperArrangement.duplicate:
+                        obj = items[0].GetWallpaperData();
+                        break;                
+                }
+                if (obj != null)
+                {
+                    var settingsWidget = new Cef.LivelyPropertiesTrayWidget(obj);
+                    settingsWidget.Show();
+                }
             }
         }
 
