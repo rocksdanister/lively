@@ -563,6 +563,7 @@ namespace livelywpf
             set
             {
                 _videoPlayerHWDecode = value;
+                OnPropertyChanged("VideoPlayerHWDecode");
                 if (Settings.VideoPlayerHwAccel != _videoPlayerHWDecode)
                 {
                     Settings.VideoPlayerHwAccel = _videoPlayerHWDecode;
@@ -572,7 +573,6 @@ namespace livelywpf
                     //if mpv player is also set as gif player..
                     WallpaperRestart(WallpaperType.gif);
                 }
-                OnPropertyChanged("DetectStreamWallpaper");
             }
         }
 
@@ -587,7 +587,6 @@ namespace livelywpf
             {
                 _selectedGifPlayerIndex = CheckGifPluginExists((LivelyGifPlayer)value) ? value : (int)LivelyGifPlayer.win10Img;
                 OnPropertyChanged("SelectedGifPlayerIndex");
-
                 if (Settings.GifPlayer != (LivelyGifPlayer)_selectedGifPlayerIndex)
                 {
                     Settings.GifPlayer = (LivelyGifPlayer)_selectedGifPlayerIndex;

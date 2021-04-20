@@ -284,7 +284,6 @@ namespace livelywpf
                 {
                     SetupDesktop.SetWallpaper(wallpapers[0].GetWallpaperData(), ScreenHelper.GetPrimaryScreen());
                 }
-                wallpapers.Clear();
             }
             else
             {

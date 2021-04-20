@@ -1019,6 +1019,26 @@ namespace livelywpf
             });
         }
 
+        public static void SeekWallpaper(LibraryModel wp, float seek, PlaybackPosType type)
+        {
+            Wallpapers.ForEach(x =>
+            {
+                if (x.GetWallpaperData() == wp)
+                {
+                    x.SetPlaybackPos(seek, type);
+                }
+            });
+        }
+
+        public static void SeekWallpaper(LivelyScreen display, float seek, PlaybackPosType type)
+        {
+            Wallpapers.ForEach(x =>
+            {
+                if (ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.deviceId))
+                    x.SetPlaybackPos(seek, type);
+            });
+        }
+
         #endregion //wallpaper operations
 
         #region helper functons
