@@ -569,6 +569,8 @@ namespace livelywpf
                     UpdateConfigFile();
                     WallpaperRestart(WallpaperType.video);
                     WallpaperRestart(WallpaperType.videostream);
+                    //if mpv player is also set as gif player..
+                    WallpaperRestart(WallpaperType.gif);
                 }
                 OnPropertyChanged("DetectStreamWallpaper");
             }
@@ -854,11 +856,11 @@ namespace livelywpf
         private void WallpaperRestart(WallpaperType type)
         {
             Logger.Info("Restarting wallpaper:" + type);
-            var prevWallpapers = SetupDesktop.Wallpapers.FindAll(x => x.GetWallpaperType() == type).ToList();
-            if (prevWallpapers.Count > 0)
+            var originalWallpapers = SetupDesktop.Wallpapers.FindAll(x => x.GetWallpaperType() == type);
+            if (originalWallpapers.Count > 0)
             {
                 SetupDesktop.TerminateWallpaper(type);
-                foreach (var item in prevWallpapers)
+                foreach (var item in originalWallpapers)
                 {
                     SetupDesktop.SetWallpaper(item.GetWallpaperData(), item.GetScreen());
                     if (Settings.WallpaperArrangement == WallpaperArrangement.span
@@ -867,7 +869,6 @@ namespace livelywpf
                         break;
                     }
                 }
-                prevWallpapers.Clear();
             }
         }
 

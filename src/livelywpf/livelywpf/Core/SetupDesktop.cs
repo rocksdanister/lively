@@ -477,15 +477,14 @@ namespace livelywpf
             processMonitor?.Dispose();
             if (Wallpapers.Count > 0)
             {
-                var prevWallpapers = Wallpapers.ToList();
+                var originalWallpapers = Wallpapers.ToList();
                 TerminateAllWallpapers();
-                foreach (var item in prevWallpapers)
+                foreach (var item in originalWallpapers)
                 {
                     SetWallpaper(item.GetWallpaperData(), item.GetScreen());
                     if (Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.duplicate)
                         break;
                 }
-                prevWallpapers.Clear();
             }
         }
 

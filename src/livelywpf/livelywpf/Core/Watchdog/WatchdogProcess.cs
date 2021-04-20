@@ -30,22 +30,22 @@ namespace livelywpf.Core
             if (livelySubProcess != null)
                 return;
 
+            Logger.Info("Starting watchdog service..");
+            ProcessStartInfo start = new ProcessStartInfo()
+            {
+                Arguments = Process.GetCurrentProcess().Id.ToString(System.Globalization.CultureInfo.InvariantCulture),
+                FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "subproc", "livelySubProcess.exe"),
+                RedirectStandardInput = true,
+                //RedirectStandardOutput = true,
+                UseShellExecute = false,
+            };
+            livelySubProcess = new Process
+            {
+                StartInfo = start,
+            };
+
             try
             {
-                Logger.Info("Starting watchdog service..");
-                ProcessStartInfo start = new ProcessStartInfo()
-                {
-                    Arguments = Process.GetCurrentProcess().Id.ToString(System.Globalization.CultureInfo.InvariantCulture),
-                    FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "subproc", "livelySubProcess.exe"),
-                    RedirectStandardInput = true,
-                    //RedirectStandardOutput = true,
-                    UseShellExecute = false,
-                };
-
-                livelySubProcess = new Process
-                {
-                    StartInfo = start,
-                };
                 livelySubProcess.Start();
             }
             catch (Exception e)
@@ -56,19 +56,19 @@ namespace livelywpf.Core
 
         public void Add(int pid)
         {
-            Logger.Info("Watchdog: Adding program=>" + pid);
+            Logger.Info("Adding program to watchdog:" + pid);
             SendMessage("lively:add-pgm " + pid);
         }
 
         public void Remove(int pid)
         {
-            Logger.Info("Watchdog: Removing program=>" + pid);
+            Logger.Info("Removing program to watchdog:" + pid);
             SendMessage("lively:rmv-pgm " + pid);
         }
 
         public void Clear()
         {
-            Logger.Info("Watchdog: Cleared program(s)..");
+            Logger.Info("Cleared watchdog program(s)..");
             SendMessage("lively:clear");
         }
 
