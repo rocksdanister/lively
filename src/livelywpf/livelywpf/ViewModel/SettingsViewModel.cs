@@ -570,14 +570,16 @@ namespace livelywpf
             set
             {
                 _videoPlayerHWDecode = value;
+                OnPropertyChanged("VideoPlayerHWDecode");
                 if (Settings.VideoPlayerHwAccel != _videoPlayerHWDecode)
                 {
                     Settings.VideoPlayerHwAccel = _videoPlayerHWDecode;
                     UpdateConfigFile();
                     WallpaperRestart(WallpaperType.video);
                     WallpaperRestart(WallpaperType.videostream);
+                    //if mpv player is also set as gif player..
+                    WallpaperRestart(WallpaperType.gif);
                 }
-                OnPropertyChanged("DetectStreamWallpaper");
             }
         }
 
@@ -592,7 +594,6 @@ namespace livelywpf
             {
                 _selectedGifPlayerIndex = CheckGifPluginExists((LivelyGifPlayer)value) ? value : (int)LivelyGifPlayer.mpv;
                 OnPropertyChanged("SelectedGifPlayerIndex");
-
                 if (Settings.GifPlayer != (LivelyGifPlayer)_selectedGifPlayerIndex)
                 {
                     Settings.GifPlayer = (LivelyGifPlayer)_selectedGifPlayerIndex;
@@ -615,7 +616,6 @@ namespace livelywpf
                 {
                     Settings.StreamQuality = (StreamQualitySuggestion)_selectedWallpaperStreamQualityIndex;
                     UpdateConfigFile();
-
                     WallpaperRestart(WallpaperType.videostream);
                 }
             }
@@ -860,18 +860,21 @@ namespace livelywpf
 
         private void WallpaperRestart(WallpaperType type)
         {
-            var prevWallpapers = SetupDesktop.Wallpapers.FindAll(x => x.GetWallpaperType() == type).ToList();
-            SetupDesktop.TerminateWallpaper(type);
-            foreach (var item in prevWallpapers)
+            Logger.Info("Restarting wallpaper:" + type);
+            var originalWallpapers = SetupDesktop.Wallpapers.FindAll(x => x.GetWallpaperType() == type);
+            if (originalWallpapers.Count > 0)
             {
-                SetupDesktop.SetWallpaper(item.GetWallpaperData(), item.GetScreen());
-                if (Settings.WallpaperArrangement == WallpaperArrangement.span
-                    || Settings.WallpaperArrangement == WallpaperArrangement.duplicate)
+                SetupDesktop.TerminateWallpaper(type);
+                foreach (var item in originalWallpapers)
                 {
-                    break;
+                    SetupDesktop.SetWallpaper(item.GetWallpaperData(), item.GetScreen());
+                    if (Settings.WallpaperArrangement == WallpaperArrangement.span ||
+                        Settings.WallpaperArrangement == WallpaperArrangement.duplicate)
+                    {
+                        break;
+                    }
                 }
             }
-            prevWallpapers.Clear();
         }
 
         public event EventHandler<string> LivelyWallpaperDirChange;

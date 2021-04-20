@@ -267,20 +267,34 @@ namespace livelywpf.Cmd
                         {
                             if (float.TryParse(opts.Param, out float val))
                             {
-                                wp.SetPlaybackPos(Clamp(val, -100, 100), Core.PlaybackPosType.relativePercent);
+                                SeekWallpaper(Clamp(val, -100, 100), Core.PlaybackPosType.relativePercent, screen, wp.GetWallpaperData());
                             }
                         }
                         else
                         {
                             if (float.TryParse(opts.Param, out float val))
                             {
-                                wp.SetPlaybackPos(Clamp(val, 0, 100), Core.PlaybackPosType.absolutePercent);
+                                SeekWallpaper(Clamp(val, 0, 100), Core.PlaybackPosType.absolutePercent, screen, wp.GetWallpaperData());
                             }
                         }
                     }
                 }
             }
             return 0;
+        }
+
+        private static void SeekWallpaper(float seek, Core.PlaybackPosType type, Core.LivelyScreen screen, LibraryModel wp)
+        {
+            switch (Program.SettingsVM.Settings.WallpaperArrangement)
+            {
+                case WallpaperArrangement.per:
+                    SetupDesktop.SeekWallpaper(screen, seek, type);
+                    break;
+                case WallpaperArrangement.span:
+                case WallpaperArrangement.duplicate:
+                    SetupDesktop.SeekWallpaper(wp, seek, type);
+                    break;
+            }
         }
 
         private static int RunCustomiseWallpaperOptions(CustomiseWallpaperOptions opts)

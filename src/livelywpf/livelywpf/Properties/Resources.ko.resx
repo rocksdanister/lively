@@ -397,7 +397,7 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp;amp; 적용.
     <value>중지</value>
   </data>
   <data name="TextStoreReview" xml:space="preserve">
-    <value>Lively를 즐겨 사용하세요? 리뷰를 남겨주세요. ^O^</value>
+    <value>Lively가 맘에 드시나요? 리뷰를 남겨주세요. ^O^</value>
   </data>
   <data name="TextSupport" xml:space="preserve">
     <value>기부하기</value>
@@ -768,18 +768,18 @@ Edge는 Windows 10의 내장 웹뷰입니다.</value>
     <value>하드웨어 가속 가능 시 사용하기</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
-  <value>Please stop before proceeding.</value>
+  <value>계속하기 전에 중지하세요.</value>
 </data>
 <data name="TextEditWallpaper" xml:space="preserve">
-  <value>Edit</value>
+  <value>편집</value>
 </data>
 <data name="TitleLocation" xml:space="preserve">
-  <value>Location</value>
+  <value>위치</value>
 </data>
 <data name="TitleSkipConfirm" xml:space="preserve">
-  <value>Skip Confirmation</value>
+  <value>확인 건너뛰기</value>
 </data>
 <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-  <value>Enter optional commandline arguments</value>
+  <value>선택적 명령줄 인수 입력</value>
 </data>
 </root>

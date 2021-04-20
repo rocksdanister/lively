@@ -160,8 +160,23 @@ namespace livelywpf
             var items = SetupDesktop.Wallpapers.FindAll(x => x.GetWallpaperData().LivelyPropertyPath != null);
             if (items.Count > 0)
             {
-                var settingsWidget = new Cef.LivelyPropertiesTrayWidget(items[0].GetWallpaperData());
-                settingsWidget.Show();
+                LibraryModel obj = null;
+                switch (Program.SettingsVM.Settings.WallpaperArrangement)
+                {
+                    case WallpaperArrangement.per:
+                        obj = items.Find(x => 
+                            ScreenHelper.ScreenCompare(x.GetScreen(), selection.Screen, DisplayIdentificationMode.deviceId))?.GetWallpaperData();
+                        break;
+                    case WallpaperArrangement.span:
+                    case WallpaperArrangement.duplicate:
+                        obj = items[0].GetWallpaperData();
+                        break;                
+                }
+                if (obj != null)
+                {
+                    var settingsWidget = new Cef.LivelyPropertiesTrayWidget(obj);
+                    settingsWidget.Show();
+                }
             }
         }
 
@@ -233,7 +248,7 @@ namespace livelywpf
                         else
                         {
                             var x = SetupDesktop.Wallpapers[0];
-                            ScreenItems.Add(new ScreenLayoutModel(Program.SettingsVM.Settings.SelectedDisplay,
+                            ScreenItems.Add(new ScreenLayoutModel(Program.SettingsVM.Settings.SelectedDisplay, 
                                 x.GetWallpaperData().ThumbnailPath, x.GetLivelyPropertyCopyPath(), "\""));
                         }
                     }
@@ -252,11 +267,11 @@ namespace livelywpf
 
         private void UpdateWallpaper(WallpaperArrangement prev, WallpaperArrangement curr)
         {
-            var wallpapers = SetupDesktop.Wallpapers.ToList();
-            SetupDesktop.CloseAllWallpapers();
-            if (wallpapers.Count != 0)
+            if (SetupDesktop.Wallpapers.Count > 0)
             {
-                if ( (prev == WallpaperArrangement.per && curr == WallpaperArrangement.span) || (prev == WallpaperArrangement.per && curr == WallpaperArrangement.duplicate))
+                var wallpapers = SetupDesktop.Wallpapers.ToList();
+                SetupDesktop.CloseAllWallpapers();
+                if ((prev == WallpaperArrangement.per && curr == WallpaperArrangement.span) || (prev == WallpaperArrangement.per && curr == WallpaperArrangement.duplicate))
                 {
                     var wp = wallpapers.FirstOrDefault(x => ScreenHelper.ScreenCompare(x.GetScreen(), SelectedItem.Screen, DisplayIdentificationMode.deviceId)) ?? wallpapers[0];
                     SetupDesktop.SetWallpaper(wp.GetWallpaperData(), ScreenHelper.GetPrimaryScreen());
@@ -270,7 +285,10 @@ namespace livelywpf
                     SetupDesktop.SetWallpaper(wallpapers[0].GetWallpaperData(), ScreenHelper.GetPrimaryScreen());
                 }
             }
-            wallpapers.Clear();
+            else
+            {
+                UpdateLayout();
+            }
         }
 
         #endregion //helpers
