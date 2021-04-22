@@ -425,7 +425,7 @@ namespace livelywpf
 
                     if (reloadRequired)
                     {
-                        wallpaper.SendMessage("lively:reload");
+                        wallpaper.SetPlaybackPos(0, PlaybackPosType.absolutePercent);
                     }
 
                     if (wallpaper.GetProcess() != null)
@@ -562,11 +562,25 @@ namespace livelywpf
             }
             else
             {
-                Logger.Info("Attempting to synchronize wallpaper position (duplicate.)");
-                Wallpapers.ForEach(wp =>
+                Logger.Info("Synchronizing wallpaper (duplicate.)");
+                var mpvFix = (wallpaper.GetWallpaperType() == WallpaperType.video || wallpaper.GetWallpaperType() == WallpaperType.videostream) &&
+                    Program.SettingsVM.Settings.VideoPlayer == LivelyMediaPlayer.mpv;
+                Wallpapers.ForEach(x =>
                 {
-                    wp.SetPlaybackPos(0, PlaybackPosType.absolutePercent);
+                    if (mpvFix)
+                    {
+                        //{mpv player}
+                        //todo: make a general IWallpaper interface method for track change.
+                        //disable audio track of everything except the latest `wallpaper` (not added to Wallpaper list yet..)
+                        Logger.Info("Disabling audio track on screen {0} (duplicate.)", x.GetScreen().DeviceName);
+                        x.SendMessage("{\"command\":[\"set_property\",\"aid\",\"no\"]}\n");
+                    }
+                    x.SetPlaybackPos(0, PlaybackPosType.absolutePercent);
                 });
+                if (mpvFix)
+                {
+                    wallpaper.SetPlaybackPos(0, PlaybackPosType.absolutePercent);
+                }
             }
         }
 
@@ -1058,7 +1072,6 @@ namespace livelywpf
 
                 if (App.AppWindow?.Visibility != Visibility.Hidden)
                   {
-                      Logger.Debug("MainWindow visible => Setting focus.");
                       App.AppWindow?.Activate();
                   }
               }));

@@ -241,7 +241,9 @@ namespace livelywpf.Core
             {
                 if (!(fHandle.Equals(NativeMethods.GetDesktopWindow()) || fHandle.Equals(NativeMethods.GetShellWindow())))
                 {
-                    if (!ScreenHelper.IsMultiScreen() || Program.SettingsVM.Settings.DisplayPauseSettings == DisplayPauseEnum.all)
+                    if (!ScreenHelper.IsMultiScreen() || 
+                        Program.SettingsVM.Settings.DisplayPauseSettings == DisplayPauseEnum.all)
+                        //Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.duplicate)
                     {
                         if (IntPtr.Equals(fHandle, workerWOrig) || IntPtr.Equals(fHandle, progman))
                         {

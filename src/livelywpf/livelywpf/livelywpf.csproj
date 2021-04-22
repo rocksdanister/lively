@@ -8,7 +8,7 @@
     <ApplicationIcon>appicon.ico</ApplicationIcon>
     <StartupObject>livelywpf.Program</StartupObject>
     <ApplicationManifest>app.manifest</ApplicationManifest>
-    <AssemblyVersion>1.4.0.0</AssemblyVersion>
+    <AssemblyVersion>1.4.0.2</AssemblyVersion>
     <Platforms>AnyCPU;x86</Platforms>
   </PropertyGroup>
 
@@ -42,7 +42,7 @@
     <PackageReference Include="DesktopBridge.Helpers" Version="1.2.2" />
     <PackageReference Include="Downloader" Version="2.2.8" />
     <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.0.1" />
-    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.774.44" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.818.41" />
     <PackageReference Include="Microsoft.Windows.Compatibility" Version="5.0.2" />
     <PackageReference Include="ModernWpfUI" Version="0.9.4" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
