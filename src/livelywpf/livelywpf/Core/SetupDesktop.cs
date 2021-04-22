@@ -578,6 +578,7 @@ namespace livelywpf
                 });
                 if (mpvFix)
                 {
+                    //in theory this is not needed since its the latest - it should stay sync with the rest..
                     wallpaper.SetPlaybackPos(0, PlaybackPosType.absolutePercent);
                 }
             }
