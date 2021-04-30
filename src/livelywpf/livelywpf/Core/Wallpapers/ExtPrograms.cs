@@ -390,5 +390,10 @@ namespace livelywpf.Core
         {
             //todo
         }
+
+        public Task ScreenCapture(string filePath)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

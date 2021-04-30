@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows.Threading;
 
 namespace livelywpf.Core
@@ -251,6 +252,11 @@ namespace livelywpf.Core
         public void SetPlaybackPos(float pos, PlaybackPosType type)
         {
             //todo
+        }
+
+        public async Task ScreenCapture(string filePath)
+        {
+            throw new NotImplementedException();
         }
     }
 }

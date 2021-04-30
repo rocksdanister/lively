@@ -119,6 +119,7 @@ namespace livelywpf
             IsAudioOnlyOnDesktop = Settings.AudioOnlyOnDesktop;
             SelectedWallpaperScalingIndex = (int)Settings.WallpaperScaling;
             CefDiskCache = Settings.CefDiskCache;
+            IsLockScreenAutoWallpaper = Settings.LockScreenAutoWallpaper;
             IsDebugMenuVisible = Settings.DebugMenu;
             SelectedWebBrowserIndex = (int)Settings.WebBrowser;
             SelectedAppThemeIndex = (int)Settings.ApplicationTheme;
@@ -743,7 +744,30 @@ namespace livelywpf
             }
         }
 
-        #endregion audio
+        #endregion //audio
+
+        #region system
+
+        private bool _isLockScreenAutoWallpaper;
+        public bool IsLockScreenAutoWallpaper
+        {
+            get
+            {
+                return _isLockScreenAutoWallpaper;
+            }
+            set
+            {
+                _isLockScreenAutoWallpaper = value;
+                if (Settings.LockScreenAutoWallpaper != _isLockScreenAutoWallpaper)
+                {
+                    Settings.LockScreenAutoWallpaper = _isLockScreenAutoWallpaper;
+                    UpdateConfigFile();
+                }
+                OnPropertyChanged("IsLockScreenAutoWallpaper");
+            }
+        }
+
+        #endregion //system
 
         #region misc
 

@@ -211,6 +211,20 @@
                 </Grid>
             </PivotItem>
 
+            <PivotItem Header="System">
+                <Grid>
+                    <ScrollViewer>
+                        <StackPanel>
+                            <ToggleSwitch IsOn="{Binding IsLockScreenAutoWallpaper, Mode=TwoWay}" Header="Lockscreen Wallpaper"
+                                          OffContent="{x:Bind UIText.TextOff}" OnContent="{x:Bind UIText.TextOn}"/>
+                            <TextBlock Margin="0, 10, 0, 0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="Set a picture of animated wallpaper on lockscreen."/>
+
+
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </PivotItem>
+
             <PivotItem Header="{x:Bind UIText.TitleMisc}">
                 <Grid>
                     <ScrollViewer>

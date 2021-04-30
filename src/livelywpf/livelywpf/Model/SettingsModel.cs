@@ -100,6 +100,10 @@ namespace livelywpf
         /// Not used currently.
         /// </summary>
         public AppTheme ApplicationTheme { get; set; }
+        /// <summary>
+        /// Set screen capture of wallpaper as lockscreen image.
+        /// </summary>
+        public bool LockScreenAutoWallpaper { get; set; }
 
         public SettingsModel()
         {
@@ -156,6 +160,7 @@ namespace livelywpf
             TestBuild = false;
             ApplicationTheme = AppTheme.Dark;
             DetectRemoteDesktop = true;
+            LockScreenAutoWallpaper = false;
 
             try
             {

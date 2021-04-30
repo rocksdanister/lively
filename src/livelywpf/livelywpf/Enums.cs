@@ -176,5 +176,4 @@ namespace livelywpf
         Light,
         Dark,
     }
-
 }

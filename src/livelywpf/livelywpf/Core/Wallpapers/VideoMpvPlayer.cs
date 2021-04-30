@@ -124,11 +124,8 @@ namespace livelywpf.Core
             cmdArgs.Append(model.LivelyInfo.Type == WallpaperType.gif ? "--scale=nearest " : " ");
             //gpu decode preference
             cmdArgs.Append(Program.SettingsVM.Settings.VideoPlayerHwAccel ? "--hwdec=auto-safe " : "--hwdec=no ");
-            /*
-            //Screenshot location, important read: https://mpv.io/manual/master/#pseudo-gui-mode
-            //Example: SendMessage("{\"command\":[\"screenshot\",\"video\"]}\n");
-            cmdArgs.Append("--screenshot-template=" + "\"" + Path.Combine(Program.AppDataDir, "screenshots", display.DeviceNumber ?? "device_err") + "\" ");
-            */
+            //screenshot location, important read: https://mpv.io/manual/master/#pseudo-gui-mode
+            cmdArgs.Append("--screenshot-template=" + "\"" + Path.Combine(Program.AppDataDir, "temp", ipcServerName) + "\" --screenshot-format=jpg ");
             //file or online video stream path
             cmdArgs.Append(model.LivelyInfo.Type == WallpaperType.videostream ? Helpers.StreamHelper.YoutubeDLMpvArgGenerate(streamQuality, path) : "\"" + path + "\"");
 
@@ -245,6 +242,29 @@ namespace livelywpf.Core
                         break;
                 }
             }
+        }
+
+        public async Task ScreenCapture(string filePath)
+        {
+            var tcs = new TaskCompletionSource<bool>();
+            var imgPath = Path.Combine(Program.AppDataDir, "temp", ipcServerName + ".jpg");
+            //monitor ../temp directory for screenshot, mpv only outputs messages before capturing screenshot..
+            using FileSystemWatcher watcher = new FileSystemWatcher();
+            watcher.Path = Path.Combine(Program.AppDataDir, "temp");
+            watcher.NotifyFilter = NotifyFilters.LastWrite;
+            watcher.Filter = "*.jpg";
+            watcher.Changed += (s, e) => {
+                if (Path.GetFileName(e.FullPath) == Path.GetFileName(imgPath) && e.ChangeType == WatcherChangeTypes.Changed)
+                {
+                    //I was unable to set screenshot template via ipc :/
+                    File.Move(imgPath, Path.GetExtension(filePath) != ".jpg" ? filePath + ".jpg" : filePath, true);
+                    tcs.SetResult(true);
+                }
+            };
+            watcher.EnableRaisingEvents = true;
+            //request mpv to take screenshot..
+            SendMessage("{\"command\":[\"screenshot\",\"video\"]}\n");
+            await tcs.Task;
         }
 
         public void SendMessage(string msg)

@@ -342,5 +342,10 @@ namespace livelywpf.Core
             catch { }
             SetupDesktop.RefreshDesktop();
         }
+
+        public Task ScreenCapture(string filePath)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -432,6 +432,20 @@ namespace livelywpf
                         WatchdogProcess.Instance.Add(wallpaper.GetProcess().Id);
                     }
 
+                    if (Program.SettingsVM.Settings.LockScreenAutoWallpaper)
+                    {
+                        try
+                        {
+                            var imgPath = Path.Combine(Program.AppDataDir, "temp", Path.GetRandomFileName() + ".jpg");
+                            await wallpaper.ScreenCapture(imgPath);
+                            await Helpers.WindowsPersonalize.SetLockScreenWallpaper(imgPath);
+                        }
+                        catch (Exception ie1)
+                        {
+                            Logger.Error("Failed to set lockscreen wallpaper:" + ie1.Message);
+                        }
+                    }
+
                     Wallpapers.Add(wallpaper);
                     WallpaperChanged?.Invoke(null, null);
                 }
