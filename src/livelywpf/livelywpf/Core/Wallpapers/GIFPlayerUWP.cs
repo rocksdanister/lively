@@ -1,5 +1,7 @@
-﻿using System;
+﻿using ImageMagick;
+using System;
 using System.Diagnostics;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Interop;
@@ -80,6 +82,22 @@ namespace livelywpf.Core
             this.display = display;
         }
 
+        public async Task ScreenCapture(string filePath)
+        {
+            await Task.Run(() =>
+            {
+                //read first frame of gif image
+                using var image = new MagickImage(GetWallpaperData().FilePath);
+                if (image.Width < 1920)
+                {
+                    //if the image is too small then resize to min: 1080p using integer scaling for sharpness.
+                    image.FilterType = FilterType.Point;
+                    image.Thumbnail(new Percentage(100 * 1920 / image.Width));
+                }
+                image.Write(Path.GetExtension(filePath) != ".jpg" ? filePath + ".jpg" : filePath);
+            });
+        }
+
         public void Show()
         {
             if(player != null)
@@ -114,11 +132,6 @@ namespace livelywpf.Core
         public void SetPlaybackPos(float pos, PlaybackPosType type)
         {
             //todo
-        }
-
-        public Task ScreenCapture(string filePath)
-        {
-            throw new NotImplementedException();
         }
     }
 }

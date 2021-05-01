@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using ImageMagick;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -246,25 +247,43 @@ namespace livelywpf.Core
 
         public async Task ScreenCapture(string filePath)
         {
-            var tcs = new TaskCompletionSource<bool>();
-            var imgPath = Path.Combine(Program.AppDataDir, "temp", ipcServerName + ".jpg");
-            //monitor ../temp directory for screenshot, mpv only outputs messages before capturing screenshot..
-            using FileSystemWatcher watcher = new FileSystemWatcher();
-            watcher.Path = Path.Combine(Program.AppDataDir, "temp");
-            watcher.NotifyFilter = NotifyFilters.LastWrite;
-            watcher.Filter = "*.jpg";
-            watcher.Changed += (s, e) => {
-                if (Path.GetFileName(e.FullPath) == Path.GetFileName(imgPath) && e.ChangeType == WatcherChangeTypes.Changed)
+            if (GetWallpaperType() == WallpaperType.gif)
+            {
+                await Task.Run(() =>
                 {
-                    //I was unable to set screenshot template via ipc :/
-                    File.Move(imgPath, Path.GetExtension(filePath) != ".jpg" ? filePath + ".jpg" : filePath, true);
-                    tcs.SetResult(true);
-                }
-            };
-            watcher.EnableRaisingEvents = true;
-            //request mpv to take screenshot..
-            SendMessage("{\"command\":[\"screenshot\",\"video\"]}\n");
-            await tcs.Task;
+                    //read first frame of gif image
+                    using var image = new MagickImage(GetWallpaperData().FilePath);
+                    if (image.Width < 1920)
+                    {
+                        //if the image is too small then resize to min: 1080p using integer scaling for sharpness.
+                        image.FilterType = FilterType.Point;
+                        image.Thumbnail(new Percentage(100 * 1920 / image.Width));
+                    }
+                    image.Write(Path.GetExtension(filePath) != ".jpg" ? filePath + ".jpg" : filePath);
+                });
+            }
+            else
+            {
+                var tcs = new TaskCompletionSource<bool>();
+                var imgPath = Path.Combine(Program.AppDataDir, "temp", ipcServerName + ".jpg");
+                //monitor ../temp directory for screenshot, mpv only outputs messages before capturing screenshot..
+                using FileSystemWatcher watcher = new FileSystemWatcher();
+                watcher.Path = Path.Combine(Program.AppDataDir, "temp");
+                watcher.NotifyFilter = NotifyFilters.LastWrite;
+                watcher.Filter = "*.jpg";
+                watcher.Changed += (s, e) => {
+                    if (Path.GetFileName(e.FullPath) == Path.GetFileName(imgPath) && e.ChangeType == WatcherChangeTypes.Changed)
+                    {
+                        //I was unable to set screenshot template via ipc :/
+                        File.Move(imgPath, Path.GetExtension(filePath) != ".jpg" ? filePath + ".jpg" : filePath, true);
+                        tcs.SetResult(true);
+                    }
+                };
+                watcher.EnableRaisingEvents = true;
+                //request mpv to take screenshot..
+                SendMessage("{\"command\":[\"screenshot\",\"video\"]}\n");
+                await tcs.Task;
+            }
         }
 
         public void SendMessage(string msg)

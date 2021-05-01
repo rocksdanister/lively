@@ -432,7 +432,10 @@ namespace livelywpf
                         WatchdogProcess.Instance.Add(wallpaper.GetProcess().Id);
                     }
 
-                    if (Program.SettingsVM.Settings.LockScreenAutoWallpaper)
+                    if (Program.SettingsVM.Settings.LockScreenAutoWallpaper &&
+                        (!ScreenHelper.IsMultiScreen() || 
+                        Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span || 
+                        ScreenHelper.ScreenCompare(wallpaper.GetScreen(), ScreenHelper.GetPrimaryScreen(), DisplayIdentificationMode.deviceId)))
                     {
                         try
                         {
