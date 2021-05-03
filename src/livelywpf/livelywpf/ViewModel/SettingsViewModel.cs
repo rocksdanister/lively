@@ -120,6 +120,8 @@ namespace livelywpf
             SelectedWallpaperScalingIndex = (int)Settings.WallpaperScaling;
             CefDiskCache = Settings.CefDiskCache;
             IsLockScreenAutoWallpaper = Settings.LockScreenAutoWallpaper;
+            IsTransparentTaskbar = Settings.TransparentTaskbar;
+            IsDesktopAutoWallpaper = Settings.DesktopAutoWallpaper;
             IsDebugMenuVisible = Settings.DebugMenu;
             SelectedWebBrowserIndex = (int)Settings.WebBrowser;
             SelectedAppThemeIndex = (int)Settings.ApplicationTheme;
@@ -764,6 +766,44 @@ namespace livelywpf
                     UpdateConfigFile();
                 }
                 OnPropertyChanged("IsLockScreenAutoWallpaper");
+            }
+        }
+
+        private bool _isDesktopAutoWallpaper;
+        public bool IsDesktopAutoWallpaper
+        {
+            get
+            {
+                return _isDesktopAutoWallpaper;
+            }
+            set
+            {
+                _isDesktopAutoWallpaper = value;
+                if (Settings.DesktopAutoWallpaper != _isDesktopAutoWallpaper)
+                {
+                    Settings.DesktopAutoWallpaper = _isDesktopAutoWallpaper;
+                    UpdateConfigFile();
+                }
+                OnPropertyChanged("IsDesktopAutoWallpaper");
+            }
+        }
+
+        private bool _istransparentTaskbar;
+        public bool IsTransparentTaskbar
+        {
+            get
+            {
+                return _istransparentTaskbar;
+            }
+            set
+            {
+                _istransparentTaskbar = value;
+                if (Settings.TransparentTaskbar != _istransparentTaskbar)
+                {
+                    Settings.TransparentTaskbar = _istransparentTaskbar;
+                    UpdateConfigFile();
+                }
+                OnPropertyChanged("IsTransparentTaskbar");
             }
         }
 

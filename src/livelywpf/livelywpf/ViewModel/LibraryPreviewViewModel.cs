@@ -216,11 +216,13 @@ namespace livelywpf
 
         #region interface methods
 
-        private void WInstance_WallpaperAttached(object sender, EventArgs e)
+        private async void WInstance_WallpaperAttached(object sender, EventArgs e)
         {
             if (libData.DataType == LibraryTileType.cmdImport || 
                 libData.DataType == LibraryTileType.multiImport)
             {
+                //warm up time/seek delay artifact fix for mpv..
+                await Task.Delay(500);
                 Winstance.StartCapture(libData.LivelyInfoFolderPath);
             }
             else

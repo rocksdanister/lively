@@ -432,20 +432,29 @@ namespace livelywpf
                         WatchdogProcess.Instance.Add(wallpaper.GetProcess().Id);
                     }
 
-                    if (Program.SettingsVM.Settings.LockScreenAutoWallpaper &&
-                        (!ScreenHelper.IsMultiScreen() || 
-                        Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span || 
-                        ScreenHelper.ScreenCompare(wallpaper.GetScreen(), ScreenHelper.GetPrimaryScreen(), DisplayIdentificationMode.deviceId)))
+                    //always capture screenshot if desktop wallpaper is checked, for lockscreen only capture if the wallpaper screen is primary/single-display system.
+                    if (Program.SettingsVM.Settings.DesktopAutoWallpaper || (Program.SettingsVM.Settings.LockScreenAutoWallpaper && (!ScreenHelper.IsMultiScreen() || 
+                        Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span || ScreenHelper.ScreenCompare(wallpaper.GetScreen(), ScreenHelper.GetPrimaryScreen(), DisplayIdentificationMode.deviceId))))
                     {
                         try
                         {
                             var imgPath = Path.Combine(Program.AppDataDir, "temp", Path.GetRandomFileName() + ".jpg");
                             await wallpaper.ScreenCapture(imgPath);
-                            await Helpers.WindowsPersonalize.SetLockScreenWallpaper(imgPath);
+
+                            if (Program.SettingsVM.Settings.LockScreenAutoWallpaper)
+                            {
+                                await Helpers.WindowsPersonalize.SetLockScreenWallpaper(imgPath);
+                            }
+
+                            if (Program.SettingsVM.Settings.DesktopAutoWallpaper)
+                            {
+                                var desktop = (Helpers.IDesktopWallpaper)new Helpers.DesktopWallpaperClass();
+                                desktop.SetWallpaper(wallpaper.GetScreen().DeviceId, imgPath);
+                            }
                         }
                         catch (Exception ie1)
                         {
-                            Logger.Error("Failed to set lockscreen wallpaper:" + ie1.Message);
+                            Logger.Error("Failed to set lockscreen/desktop wallpaper:" + ie1.Message);
                         }
                     }
 

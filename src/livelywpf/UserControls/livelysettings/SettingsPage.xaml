@@ -215,11 +215,21 @@
                 <Grid>
                     <ScrollViewer>
                         <StackPanel>
-                            <ToggleSwitch IsOn="{Binding IsLockScreenAutoWallpaper, Mode=TwoWay}" Header="Lockscreen Wallpaper"
+                            <ToggleSwitch Margin="0, 10, 0, 0" IsOn="{Binding IsLockScreenAutoWallpaper, Mode=TwoWay}" Header="Lockscreen wallpaper"
                                           OffContent="{x:Bind UIText.TextOff}" OnContent="{x:Bind UIText.TextOn}"/>
                             <TextBlock Margin="0, 10, 0, 0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="Set a picture of animated wallpaper on lockscreen."/>
 
+                            <ToggleSwitch Margin="0, 10, 0, 0" IsOn="{Binding IsDesktopAutoWallpaper, Mode=TwoWay}" Header="Desktop wallpaper"
+                                          OffContent="{x:Bind UIText.TextOff}" OnContent="{x:Bind UIText.TextOn}"/>
+                            <TextBlock Margin="0, 10, 0, 0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="Set a picture of animated wallpaper on desktop."/>
 
+                            <ToggleSwitch IsEnabled="False" Margin="0, 10, 0, 0" IsOn="{Binding IsTransparentTaskbar, Mode=TwoWay}" Header="Accent color"
+                                          OffContent="{x:Bind UIText.TextOff}" OnContent="{x:Bind UIText.TextOn}"/>
+                            <TextBlock Margin="0, 10, 0, 0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="Change system accent color based on animated wallpaper."/>
+
+                            <ToggleSwitch IsEnabled="False" Margin="0, 10, 0, 0" IsOn="{Binding IsTransparentTaskbar, Mode=TwoWay}" Header="Translucent taskbar"
+                                          OffContent="{x:Bind UIText.TextOff}" OnContent="{x:Bind UIText.TextOn}"/>
+                            <TextBlock Margin="0, 10, 0, 0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="Change system taskbar appearance."/>
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>
@@ -229,7 +239,7 @@
                 <Grid>
                     <ScrollViewer>
                         <StackPanel>
-                            <ToggleSwitch IsOn="{Binding IsSysTrayIconVisible, Mode=TwoWay}" Header="{x:Bind UIText.TitleSysTrayIconHide}"
+                            <ToggleSwitch Margin="0, 10, 0, 0" IsOn="{Binding IsSysTrayIconVisible, Mode=TwoWay}" Header="{x:Bind UIText.TitleSysTrayIconHide}"
                                           OffContent="{x:Bind UIText.TextOff}" OnContent="{x:Bind UIText.TextOn}"/>
                             <TextBlock Margin="0, 10, 0, 0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipSysTrayIconHide}"/>
 

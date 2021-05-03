@@ -104,6 +104,11 @@ namespace livelywpf
         /// Set screen capture of wallpaper as lockscreen image.
         /// </summary>
         public bool LockScreenAutoWallpaper { get; set; }
+        public bool TransparentTaskbar { get; set; }
+        /// <summary>
+        /// Set screen capture of wallpaper as desktop image.
+        /// </summary>
+        public bool DesktopAutoWallpaper { get; set; }
 
         public SettingsModel()
         {
@@ -161,6 +166,8 @@ namespace livelywpf
             ApplicationTheme = AppTheme.Dark;
             DetectRemoteDesktop = true;
             LockScreenAutoWallpaper = false;
+            TransparentTaskbar = false;
+            DesktopAutoWallpaper = false;
 
             try
             {
