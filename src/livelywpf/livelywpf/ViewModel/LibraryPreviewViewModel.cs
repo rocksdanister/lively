@@ -222,7 +222,7 @@ namespace livelywpf
                 libData.DataType == LibraryTileType.multiImport)
             {
                 //warm up time/seek delay artifact fix for mpv..
-                await Task.Delay(500);
+                await Task.Delay(1000);
                 Winstance.StartCapture(libData.LivelyInfoFolderPath);
             }
             else

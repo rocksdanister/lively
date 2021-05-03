@@ -187,6 +187,9 @@ namespace livelywpf.Views
 
         public void StartCapture(string savePath)
         {
+            if (_processing)
+                return;
+
             CapturePreview(savePath);
         }
 

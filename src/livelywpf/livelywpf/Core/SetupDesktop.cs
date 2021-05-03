@@ -449,7 +449,25 @@ namespace livelywpf
                             if (Program.SettingsVM.Settings.DesktopAutoWallpaper)
                             {
                                 var desktop = (Helpers.IDesktopWallpaper)new Helpers.DesktopWallpaperClass();
-                                desktop.SetWallpaper(wallpaper.GetScreen().DeviceId, imgPath);
+                                Helpers.DesktopWallpaperPosition scaler = Helpers.DesktopWallpaperPosition.Fill;
+                                switch (Program.SettingsVM.Settings.WallpaperScaling)
+                                {
+                                    case WallpaperScaler.none:
+                                        scaler = Helpers.DesktopWallpaperPosition.Center;
+                                        break;
+                                    case WallpaperScaler.fill:
+                                        scaler = Helpers.DesktopWallpaperPosition.Stretch;
+                                        break;
+                                    case WallpaperScaler.uniform:
+                                        scaler = Helpers.DesktopWallpaperPosition.Fit;
+                                        break;
+                                    case WallpaperScaler.uniformFill:
+                                        //not exaclty the same, lively's uniform fill pivot is topleft whereas for windows its center.
+                                        scaler = Helpers.DesktopWallpaperPosition.Fill;
+                                        break;
+                                }
+                                desktop.SetPosition(Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span ? Helpers.DesktopWallpaperPosition.Span : scaler);
+                                desktop.SetWallpaper(Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span ? null : wallpaper.GetScreen().DeviceId, imgPath);
                             }
                         }
                         catch (Exception ie1)
