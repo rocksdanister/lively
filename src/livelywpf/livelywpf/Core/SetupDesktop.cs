@@ -432,20 +432,25 @@ namespace livelywpf
                         WatchdogProcess.Instance.Add(wallpaper.GetProcess().Id);
                     }
 
-                    //always capture screenshot if desktop wallpaper is checked, for lockscreen only capture if the wallpaper screen is primary/single-display system.
-                    if (Program.SettingsVM.Settings.DesktopAutoWallpaper || (Program.SettingsVM.Settings.LockScreenAutoWallpaper && (!ScreenHelper.IsMultiScreen() || 
-                        Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span || ScreenHelper.ScreenCompare(wallpaper.GetScreen(), ScreenHelper.GetPrimaryScreen(), DisplayIdentificationMode.deviceId))))
+                    var thumbRequiredLockscreen = Program.SettingsVM.Settings.LockScreenAutoWallpaper && 
+                        (!ScreenHelper.IsMultiScreen() || Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span || ScreenHelper.ScreenCompare(wallpaper.GetScreen(), ScreenHelper.GetPrimaryScreen(), DisplayIdentificationMode.deviceId));
+                    var thumbRequiredAvgColor = (Program.SettingsVM.Settings.SystemTaskbarTheme == TaskbarTheme.wallpaper || Program.SettingsVM.Settings.SystemTaskbarTheme == TaskbarTheme.wallpaperFluent) &&
+                        (!ScreenHelper.IsMultiScreen() || Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span || ScreenHelper.ScreenCompare(wallpaper.GetScreen(), ScreenHelper.GetPrimaryScreen(), DisplayIdentificationMode.deviceId));
+                    //always capture screenshot if desktop wallpaper is checked, otherwise only capture if the wallpaper screen is primary/single-display system and user enabled lockscreen/taskbar color.
+                    if (Program.SettingsVM.Settings.DesktopAutoWallpaper || thumbRequiredAvgColor || thumbRequiredLockscreen)
                     {
                         try
                         {
                             var imgPath = Path.Combine(Program.AppDataDir, "temp", Path.GetRandomFileName() + ".jpg");
                             await wallpaper.ScreenCapture(imgPath);
 
+                            //set lockscreen picture wallpaper..
                             if (Program.SettingsVM.Settings.LockScreenAutoWallpaper)
                             {
                                 await Helpers.WindowsPersonalize.SetLockScreenWallpaper(imgPath);
                             }
 
+                            //set desktop picture wallpaper..
                             if (Program.SettingsVM.Settings.DesktopAutoWallpaper)
                             {
                                 var desktop = (Helpers.IDesktopWallpaper)new Helpers.DesktopWallpaperClass();
@@ -468,6 +473,12 @@ namespace livelywpf
                                 }
                                 desktop.SetPosition(Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span ? Helpers.DesktopWallpaperPosition.Span : scaler);
                                 desktop.SetWallpaper(Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span ? null : wallpaper.GetScreen().DeviceId, imgPath);
+                            }
+
+                            //set accent color of taskbar..
+                            if (thumbRequiredAvgColor)
+                            {
+                                Helpers.TransparentTaskbar.Instance.SetAccentColor(Helpers.TransparentTaskbar.GetAverageColor(imgPath));
                             }
                         }
                         catch (Exception ie1)

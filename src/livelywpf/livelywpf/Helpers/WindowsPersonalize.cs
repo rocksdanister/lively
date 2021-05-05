@@ -64,27 +64,7 @@ namespace livelywpf.Helpers
             throw new NotImplementedException();
         }
 
-        #region helpers
-
-        /// <summary>
-        /// Quickly computes the average color of image file.
-        /// </summary>
-        /// <param name="imgPath">Image file path.</param>
-        /// <returns></returns>
-        public static Color GetAverageColor(string imgPath)
-        {
-            //avg of colors by resizing to 1x1..
-            using var image = new MagickImage(imgPath);
-            //same as resize with box filter, Sample(1,1) was unreliable although faster..
-            image.Scale(1, 1);
-
-            //take the new pixel..
-            using var pixels = image.GetPixels();
-            var color = pixels.GetPixel(0, 0).ToColor();
-
-            //ImageMagick color range is 0 - 65535.
-            return Color.FromArgb(255 * color.R / 65535, 255 * color.G / 65535, 255 * color.B / 65535);
-        }
+        #region enums
 
         public enum SystemTheme
         {
@@ -98,6 +78,6 @@ namespace livelywpf.Helpers
             system
         }
 
-        #endregion //helpers
+        #endregion //enums
     }
 }

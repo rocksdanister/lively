@@ -245,6 +245,7 @@ namespace livelywpf.Core
             }
         }
 
+        //todo: cancel/timeout after x amt of time.
         public async Task ScreenCapture(string filePath)
         {
             if (GetWallpaperType() == WallpaperType.gif)

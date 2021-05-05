@@ -176,4 +176,25 @@ namespace livelywpf
         Light,
         Dark,
     }
+
+    /// <summary>
+    /// System taskbar theme
+    /// </summary>
+    public enum TaskbarTheme
+    {
+        [Description("Transparency off.")]
+        none,
+        [Description("Fully transparent.")]
+        clear,
+        [Description("Blurred.")]
+        blur,
+        [Description("Fluent design.")]
+        fluent,
+        [Description("User defined color.")]
+        color,
+        [Description("Live wallpaper color avg.")]
+        wallpaper,
+        [Description("Live wallpaper color avg fluet style.")]
+        wallpaperFluent,
+    }
 }

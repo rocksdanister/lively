@@ -305,6 +305,7 @@ namespace livelywpf
             MainWindow.IsExit = true;
             SetupDesktop.ShutDown();
             sysTray?.Dispose();
+            Helpers.TransparentTaskbar.Instance.Stop();
             System.Windows.Application.Current.Shutdown();
         }
 

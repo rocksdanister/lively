@@ -120,7 +120,7 @@ namespace livelywpf
             SelectedWallpaperScalingIndex = (int)Settings.WallpaperScaling;
             CefDiskCache = Settings.CefDiskCache;
             IsLockScreenAutoWallpaper = Settings.LockScreenAutoWallpaper;
-            IsTransparentTaskbar = Settings.TransparentTaskbar;
+            SelectedTaskbarThemeIndex = (int)Settings.SystemTaskbarTheme;
             IsDesktopAutoWallpaper = Settings.DesktopAutoWallpaper;
             IsDebugMenuVisible = Settings.DebugMenu;
             SelectedWebBrowserIndex = (int)Settings.WebBrowser;
@@ -788,22 +788,40 @@ namespace livelywpf
             }
         }
 
-        private bool _istransparentTaskbar;
-        public bool IsTransparentTaskbar
+        private bool _taskbarThemingInitialized = false;
+        private int _selectedTaskbarThemeIndex;
+        public int SelectedTaskbarThemeIndex
         {
             get
             {
-                return _istransparentTaskbar;
+                return _selectedTaskbarThemeIndex;
             }
             set
             {
-                _istransparentTaskbar = value;
-                if (Settings.TransparentTaskbar != _istransparentTaskbar)
+                _selectedTaskbarThemeIndex = value;
+                if (Settings.SystemTaskbarTheme != (TaskbarTheme)_selectedTaskbarThemeIndex)
                 {
-                    Settings.TransparentTaskbar = _istransparentTaskbar;
+                    Settings.SystemTaskbarTheme = (TaskbarTheme)_selectedTaskbarThemeIndex;
                     UpdateConfigFile();
                 }
-                OnPropertyChanged("IsTransparentTaskbar");
+                if (!_taskbarThemingInitialized)
+                {
+                    if (Settings.SystemTaskbarTheme == TaskbarTheme.none)
+                    {
+                        //nothing to do..
+                    }
+                    else
+                    {
+                        Helpers.TransparentTaskbar.Instance.SetTheme(Settings.SystemTaskbarTheme);
+                        Helpers.TransparentTaskbar.Instance.Start();
+                        _taskbarThemingInitialized = true;
+                    }
+                }
+                else
+                {
+                    Helpers.TransparentTaskbar.Instance.SetTheme(Settings.SystemTaskbarTheme);
+                }
+                OnPropertyChanged("SelectedTaskbarThemeIndex");
             }
         }
 
