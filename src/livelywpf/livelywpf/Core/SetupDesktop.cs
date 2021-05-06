@@ -445,9 +445,15 @@ namespace livelywpf
                             await wallpaper.ScreenCapture(imgPath);
 
                             //set lockscreen picture wallpaper..
-                            if (Program.SettingsVM.Settings.LockScreenAutoWallpaper)
+                            if (thumbRequiredLockscreen)
                             {
                                 await Helpers.WindowsPersonalize.SetLockScreenWallpaper(imgPath);
+                            }
+
+                            //set accent color of taskbar..
+                            if (thumbRequiredAvgColor)
+                            {
+                                Helpers.TransparentTaskbar.Instance.SetAccentColor(Helpers.TransparentTaskbar.GetAverageColor(imgPath));
                             }
 
                             //set desktop picture wallpaper..
@@ -473,12 +479,6 @@ namespace livelywpf
                                 }
                                 desktop.SetPosition(Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span ? Helpers.DesktopWallpaperPosition.Span : scaler);
                                 desktop.SetWallpaper(Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span ? null : wallpaper.GetScreen().DeviceId, imgPath);
-                            }
-
-                            //set accent color of taskbar..
-                            if (thumbRequiredAvgColor)
-                            {
-                                Helpers.TransparentTaskbar.Instance.SetAccentColor(Helpers.TransparentTaskbar.GetAverageColor(imgPath));
                             }
                         }
                         catch (Exception ie1)

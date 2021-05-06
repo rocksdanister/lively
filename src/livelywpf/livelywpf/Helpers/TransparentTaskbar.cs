@@ -1,16 +1,12 @@
 ﻿using ImageMagick;
-using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Diagnostics;
+using System.Collections.Generic;
+using System.Threading;
 
 namespace livelywpf.Helpers
 {
@@ -25,6 +21,9 @@ namespace livelywpf.Helpers
         private static readonly TransparentTaskbar instance = new TransparentTaskbar();
         private AccentPolicy accentPolicy = new AccentPolicy();
         private Color accentColor = Color.FromArgb(0, 0, 0);
+        private readonly static IDictionary<string, string> incompatiblePrograms = new Dictionary<string, string>() { 
+            {"TranslucentTB", "344635E9-9AE4-4E60-B128-D53E25AB70A7"},
+        };
 
         public static TransparentTaskbar Instance
         {
@@ -169,6 +168,26 @@ namespace livelywpf.Helpers
 
         #region helpers
 
+        public static string CheckIncompatibleProgramsRunning()
+        {
+            foreach (var item in incompatiblePrograms)
+            {
+                Mutex mutex = null;
+                try
+                {
+                    if (Mutex.TryOpenExisting(item.Value, out mutex))
+                    {
+                        return item.Key;
+                    }
+                }
+                finally
+                {
+                    mutex?.Dispose();
+                }
+            }
+            return null;
+        }
+
         /// <summary>
         /// Quickly computes the average color of image file.
         /// </summary>
@@ -217,7 +236,7 @@ namespace livelywpf.Helpers
             ACCENT_ENABLE_GRADIENT = 1,
             ACCENT_ENABLE_TRANSPARENTGRADIENT = 2,
             ACCENT_ENABLE_BLURBEHIND = 3,
-            ACCENT_ENABLE_FLUENT = 4
+            ACCENT_ENABLE_FLUENT = 4 //don't like alpha = 0
         }
 
         [StructLayout(LayoutKind.Sequential)]
@@ -225,7 +244,7 @@ namespace livelywpf.Helpers
         {
             public AccentState AccentState;
             public int AccentFlags;
-            public uint GradientColor;
+            public uint GradientColor; //AABBGGRR
             public int AnimationId;
         }
 

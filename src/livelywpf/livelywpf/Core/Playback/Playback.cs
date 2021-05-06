@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows;
 //using System.Windows.Forms;
 using System.Windows.Threading;
+using System.Linq;
 
 namespace livelywpf.Core
 {
@@ -142,91 +143,83 @@ namespace livelywpf.Core
             {
                 PlayWallpapers();
                 SetWallpaperVolume(Program.SettingsVM.Settings.AudioVolumeGlobal);
-                return;
             }
-            else if (WallpaperPlaybackState == PlaybackState.paused ||
-                 _isLockScreen || (_isRemoteSession && Program.SettingsVM.Settings.DetectRemoteDesktop))
+            else if (WallpaperPlaybackState == PlaybackState.paused || _isLockScreen || 
+                (_isRemoteSession && Program.SettingsVM.Settings.DetectRemoteDesktop))
             {
                 PauseWallpapers();
-                return;
             }
-            else if (Program.SettingsVM.Settings.BatteryPause == AppRulesEnum.pause)
+            else if (Program.SettingsVM.Settings.BatteryPause == AppRulesEnum.pause && 
+                System.Windows.Forms.SystemInformation.PowerStatus.PowerLineStatus == System.Windows.Forms.PowerLineStatus.Offline)
             {
-                if (System.Windows.Forms.SystemInformation.PowerStatus.PowerLineStatus == System.Windows.Forms.PowerLineStatus.Offline)
-                {
-                    PauseWallpapers();
-                    return;
-                }
-            }
-
-            if (Program.SettingsVM.Settings.ProcessMonitorAlgorithm == ProcessMonitorAlgorithm.foreground)
-            {
-                ForegroundAppMonitor();
+                PauseWallpapers();
             }
             else
             {
-                throw new NotImplementedException();
+                switch (Program.SettingsVM.Settings.ProcessMonitorAlgorithm)
+                {
+                    case ProcessMonitorAlgorithm.foreground:
+                        ForegroundAppMonitor();
+                        break;
+                    case ProcessMonitorAlgorithm.all:
+                        //todo
+                        break;
+                }
             }
         }
 
         private void ForegroundAppMonitor()
         {
-            bool isDesktop = false;
-            const int maxChars = 256;
-            StringBuilder className = new StringBuilder(maxChars);
+            var isDesktop = false;
             var fHandle = NativeMethods.GetForegroundWindow();
-            //Process fProcess;
-            if (NativeMethods.GetClassName((int)fHandle, className, maxChars) > 0)
+
+            if (IsWhitelistedClasses(fHandle))
             {
-                string cName = className.ToString();
-                foreach (var item in windowsClassDefaults)
-                {
-                    if (String.Equals(item, cName, StringComparison.OrdinalIgnoreCase))
-                    {
-                        PlayWallpapers();
-                        SetWallpaperVolume(Program.SettingsVM.Settings.AudioVolumeGlobal);
-                        return;
-                    }
-                }
+                PlayWallpapers();
+                SetWallpaperVolume(Program.SettingsVM.Settings.AudioVolumeGlobal);
+                return;
             }
 
             try
             {
                 NativeMethods.GetWindowThreadProcessId(fHandle, out int processID);
-                using (Process fProcess = Process.GetProcessById(processID))
+                using Process fProcess = Process.GetProcessById(processID);
+
+                //process with no name, possibly overlay or some other service pgm; resume playback.
+                if (string.IsNullOrEmpty(fProcess.ProcessName) || fHandle.Equals(IntPtr.Zero))
                 {
-                    if (String.IsNullOrEmpty(fProcess.ProcessName) || fHandle.Equals(IntPtr.Zero))
-                    {
-                        //process with no name, possibly overlay or some other service pgm; resume playback.
-                        PlayWallpapers();
-                        return;
-                    }
+                    PlayWallpapers();
+                    return;
+                }
 
-                    if (fProcess.Id == livelyPid || IsLivelyPlugin(fProcess.Id))
-                    {
-                        PlayWallpapers();
-                        SetWallpaperVolume(Program.SettingsVM.Settings.AudioVolumeGlobal);
-                        return;
-                    }
+                //is it Lively or its plugins..
+                if (fProcess.Id == livelyPid || IsLivelyPlugin(fProcess.Id))
+                {
+                    PlayWallpapers();
+                    SetWallpaperVolume(Program.SettingsVM.Settings.AudioVolumeGlobal);
+                    return;
+                }
 
-                    //looping through custom rules for user defined apps.
-                    for (int i = 0; i < Program.AppRulesVM.AppRules.Count; i++)
+                //looping through custom rules for user defined apps..
+                for (int i = 0; i < Program.AppRulesVM.AppRules.Count; i++)
+                {
+                    var item = Program.AppRulesVM.AppRules[i];
+                    if (string.Equals(item.AppName, fProcess.ProcessName, StringComparison.Ordinal))
                     {
-                        var item = Program.AppRulesVM.AppRules[i];
-                        if (String.Equals(item.AppName, fProcess.ProcessName, StringComparison.Ordinal))
+                        switch (item.Rule)
                         {
-                            if (item.Rule == AppRulesEnum.ignore)
-                            {
+                            case AppRulesEnum.pause:
+                                PauseWallpapers();
+                                break;
+                            case AppRulesEnum.ignore:
                                 PlayWallpapers();
                                 SetWallpaperVolume(Program.SettingsVM.Settings.AudioOnlyOnDesktop ? 0 : Program.SettingsVM.Settings.AudioVolumeGlobal);
-                                return;
-                            }
-                            else if (item.Rule == AppRulesEnum.pause)
-                            {
-                                PauseWallpapers();
-                                return;
-                            }
+                                break;
+                            case AppRulesEnum.kill:
+                                //todo
+                                break;
                         }
+                        return;
                     }
                 }
             }
@@ -286,7 +279,8 @@ namespace livelywpf.Core
                             //this is a limitation of this algorithm since only one window can be foreground!
                             foreach (var item in ScreenHelper.GetScreen())
                             {
-                                if (!ScreenHelper.ScreenCompare(item, focusedScreen, DisplayIdentificationMode.deviceId))
+                                if (!ScreenHelper.ScreenCompare(item, focusedScreen, DisplayIdentificationMode.deviceId) &&
+                                    Program.SettingsVM.Settings.WallpaperArrangement != WallpaperArrangement.span)
                                 {
                                     PlayWallpaper(item);
                                     //SetWallpaperVoume(0, item);
@@ -309,17 +303,17 @@ namespace livelywpf.Core
                         {
                             if (IsZoomedSpan(fHandle))
                             {
-                                PauseWallpaper(ScreenHelper.GetPrimaryScreen());
+                                PauseWallpapers();
                             }
                             else //window is not greater >90%
                             {
                                 if (Program.SettingsVM.Settings.AppFocusPause == AppRulesEnum.pause)
                                 {
-                                    PauseWallpaper(ScreenHelper.GetPrimaryScreen());
+                                    PauseWallpapers();
                                 }
                                 else
                                 {
-                                    PlayWallpaper(ScreenHelper.GetPrimaryScreen());
+                                    PlayWallpapers();
                                 }
                             }
                         }
@@ -360,6 +354,18 @@ namespace livelywpf.Core
                 }
             }
             catch { }
+        }
+
+        private bool IsWhitelistedClasses(IntPtr hwnd)
+        {
+            const int maxChars = 256;
+            StringBuilder className = new StringBuilder(maxChars);
+            if (NativeMethods.GetClassName((int)hwnd, className, maxChars) > 0)
+            {
+                string cName = className.ToString();
+                return windowsClassDefaults.Any(x => x.Equals(cName, StringComparison.Ordinal));
+            }
+            return false;
         }
 
         private static void PauseWallpapers()

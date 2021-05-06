@@ -799,27 +799,37 @@ namespace livelywpf
             set
             {
                 _selectedTaskbarThemeIndex = value;
-                if (Settings.SystemTaskbarTheme != (TaskbarTheme)_selectedTaskbarThemeIndex)
-                {
-                    Settings.SystemTaskbarTheme = (TaskbarTheme)_selectedTaskbarThemeIndex;
-                    UpdateConfigFile();
-                }
                 if (!_taskbarThemingInitialized)
                 {
-                    if (Settings.SystemTaskbarTheme == TaskbarTheme.none)
+                    if ((TaskbarTheme)_selectedTaskbarThemeIndex == TaskbarTheme.none)
                     {
                         //nothing to do..
                     }
                     else
                     {
-                        Helpers.TransparentTaskbar.Instance.SetTheme(Settings.SystemTaskbarTheme);
-                        Helpers.TransparentTaskbar.Instance.Start();
-                        _taskbarThemingInitialized = true;
+                        string pgm = null;
+                        if ((pgm = Helpers.TransparentTaskbar.CheckIncompatibleProgramsRunning()) == null)
+                        {
+                            Helpers.TransparentTaskbar.Instance.SetTheme((TaskbarTheme)_selectedTaskbarThemeIndex);
+                            Helpers.TransparentTaskbar.Instance.Start();
+                            _taskbarThemingInitialized = true;
+                        }
+                        else
+                        {
+                            _selectedTaskbarThemeIndex = (int)TaskbarTheme.none;
+                            _ = Task.Run(() => System.Windows.MessageBox.Show("Incompatible program found, taskbar theming disabled.\n\n" + pgm, Properties.Resources.TitleAppName));
+                        }
                     }
                 }
                 else
                 {
-                    Helpers.TransparentTaskbar.Instance.SetTheme(Settings.SystemTaskbarTheme);
+                    Helpers.TransparentTaskbar.Instance.SetTheme((TaskbarTheme)_selectedTaskbarThemeIndex);
+                }
+                //save the data..
+                if (Settings.SystemTaskbarTheme != (TaskbarTheme)_selectedTaskbarThemeIndex)
+                {
+                    Settings.SystemTaskbarTheme = (TaskbarTheme)_selectedTaskbarThemeIndex;
+                    UpdateConfigFile();
                 }
                 OnPropertyChanged("SelectedTaskbarThemeIndex");
             }
