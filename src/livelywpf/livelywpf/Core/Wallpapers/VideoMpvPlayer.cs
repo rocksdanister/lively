@@ -94,6 +94,7 @@ namespace livelywpf.Core
                 WallpaperScaler.fill => "--keepaspect=no",
                 WallpaperScaler.uniform => "--keepaspect=yes",
                 WallpaperScaler.uniformFill => "--panscan=1.0",
+                //WallpaperScaler.auto => "--keepaspect-window=no",
                 _ => "--keepaspect=no",
             };
             ipcServerName = "mpvsocket" + Path.GetRandomFileName();

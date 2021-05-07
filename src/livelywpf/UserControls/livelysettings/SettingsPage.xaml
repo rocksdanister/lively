@@ -124,7 +124,8 @@
                                 <ComboBoxItem Content="{x:Bind UIText.TextWallpaperFitNone}"/>
                                 <ComboBoxItem Content="{x:Bind UIText.TextWallpaperFitFill}"/>
                                 <ComboBoxItem Content="{x:Bind UIText.TextWallpaperFitUniform}"/>
-                                <ComboBoxItem Content="{x:Bind UIText.TextWallpaperFitUniformFill}"/> 
+                                <ComboBoxItem Content="{x:Bind UIText.TextWallpaperFitUniformFill}"/>
+                                <ComboBoxItem Content="Auto" Visibility="Collapsed"/>
                             </ComboBox>
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipWallpaperFit}"/>
 
@@ -215,25 +216,24 @@
                 <Grid>
                     <ScrollViewer>
                         <StackPanel>
-                            <ToggleSwitch Margin="0, 10, 0, 0" IsOn="{Binding IsLockScreenAutoWallpaper, Mode=TwoWay}" Header="Lockscreen wallpaper"
+                            <ToggleSwitch Margin="0, 10, 0, 0" IsOn="{Binding IsLockScreenAutoWallpaper, Mode=TwoWay}" Header="{x:Bind UIText.TitleLockscreenPicture}"
                                           OffContent="{x:Bind UIText.TextOff}" OnContent="{x:Bind UIText.TextOn}"/>
-                            <TextBlock Margin="0, 10, 0, 0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="Set a picture of animated wallpaper on lockscreen."/>
+                            <TextBlock Margin="0, 10, 0, 0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipLockscreenPicture}"/>
 
-                            <ToggleSwitch Margin="0, 10, 0, 0" IsOn="{Binding IsDesktopAutoWallpaper, Mode=TwoWay}" Header="Desktop wallpaper"
+                            <ToggleSwitch Margin="0, 10, 0, 0" IsOn="{Binding IsDesktopAutoWallpaper, Mode=TwoWay}" Header="{x:Bind UIText.TitleDesktopPicture}"
                                           OffContent="{x:Bind UIText.TextOff}" OnContent="{x:Bind UIText.TextOn}"/>
-                            <TextBlock Margin="0, 10, 0, 0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="Set a picture of animated wallpaper on desktop."/>
+                            <TextBlock Margin="0, 10, 0, 0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipDesktopPicture}"/>
 
-                            <ComboBox Margin="0,10,0,0" MinWidth="150" SelectedIndex="{Binding SelectedTaskbarThemeIndex, Mode=TwoWay}" Header="Taskbar Theme" >
-                                <ComboBoxItem Content="Off"/>
-                                <ComboBoxItem Content="Clear"/>
-                                <ComboBoxItem Content="Blur"/>
-                                <ComboBoxItem Content="Fluent"/>
-                                <ComboBoxItem Content="Color" Visibility="Collapsed"/>
-                                <ComboBoxItem Content="Wallpaper"/>
-                                <ComboBoxItem Content="Wallpaper Fluent"/>
+                            <ComboBox Margin="0,10,0,0" MinWidth="150" SelectedIndex="{Binding SelectedTaskbarThemeIndex, Mode=TwoWay}" Header="{x:Bind UIText.TitleTaskbarTheme}" >
+                                <ComboBoxItem Content="{x:Bind UIText.TextOff}"/>
+                                <ComboBoxItem Content="{x:Bind UIText.TextTaskbarThemeClear}"/>
+                                <ComboBoxItem Content="{x:Bind UIText.TextTaskbarThemeBlur}"/>
+                                <ComboBoxItem Content="{x:Bind UIText.TextTaskbarThemeFluent}"/>
+                                <ComboBoxItem Content="{x:Bind UIText.TextTaskbarThemeColor}" Visibility="Collapsed"/>
+                                <ComboBoxItem Content="{x:Bind UIText.TextTaskbarThemeWallpaper}"/>
+                                <ComboBoxItem Content="{x:Bind UIText.TextTaskbarThemeWallpaperFluent}"/>
                             </ComboBox>
-                            <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="Change system taskbar appearance."/>
-                            
+                            <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipTaskbarTheme}"/>
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>

@@ -20,7 +20,7 @@ namespace livelywpf.Core
 
         public VideoPlayerWPF(string filePath, LibraryModel model, LivelyScreen display, WallpaperScaler scaler = WallpaperScaler.fill)
         {
-            player = new MediaElementWPF(filePath, scaler);
+            player = new MediaElementWPF(filePath, scaler == WallpaperScaler.auto ? WallpaperScaler.uniform : scaler);
             this.model = model;
             this.display = display;
         }

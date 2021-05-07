@@ -808,7 +808,7 @@ namespace livelywpf
                     else
                     {
                         string pgm = null;
-                        if ((pgm = Helpers.TransparentTaskbar.CheckIncompatibleProgramsRunning()) == null)
+                        if ((pgm = Helpers.TransparentTaskbar.CheckIncompatiblePrograms()) == null)
                         {
                             Helpers.TransparentTaskbar.Instance.SetTheme((TaskbarTheme)_selectedTaskbarThemeIndex);
                             Helpers.TransparentTaskbar.Instance.Start();
@@ -817,7 +817,8 @@ namespace livelywpf
                         else
                         {
                             _selectedTaskbarThemeIndex = (int)TaskbarTheme.none;
-                            _ = Task.Run(() => System.Windows.MessageBox.Show("Incompatible program found, taskbar theming disabled.\n\n" + pgm, Properties.Resources.TitleAppName));
+                            _ = Task.Run(() => 
+                                    System.Windows.MessageBox.Show(Properties.Resources.DescIncompatibleTaskbarTheme + "\n\n" + pgm, Properties.Resources.TitleAppName));
                         }
                     }
                 }

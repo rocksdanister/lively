@@ -106,7 +106,19 @@ namespace livelysettings
         public string TitleMasterAudio { get; set; }
         public string TipMasterAudio { get; set; }
         public string TitleAudioDesktop { get; set; }
-
+        //System
+        public string TitleDesktopPicture { get; set; }
+        public string TipDesktopPicture { get; set; }
+        public string TitleLockscreenPicture { get; set; }
+        public string TipLockscreenPicture { get; set; }
+        public string TitleTaskbarTheme { get; set; }
+        public string TipTaskbarTheme { get; set; }
+        public string TextTaskbarThemeClear { get; set; }
+        public string TextTaskbarThemeBlur { get; set; }
+        public string TextTaskbarThemeFluent { get; set; }
+        public string TextTaskbarThemeColor { get; set; }
+        public string TextTaskbarThemeWallpaper { get; set; }
+        public string TextTaskbarThemeWallpaperFluent { get; set; }
         //Misc
         public string TitleSysTrayIconHide { get; set; }
         public string TipSysTrayIconHide { get; set; }

@@ -14,7 +14,6 @@ namespace livelywpf.Helpers
     //https://gist.github.com/riverar/fd6525579d6bbafc6e48
     public sealed class TransparentTaskbar
     {
-        IntPtr mTaskbar, sTaskbar;
         public bool IsRunning { get; private set; } = false;
         private TaskbarTheme taskbarTheme = TaskbarTheme.none;
         private readonly System.Timers.Timer _timer = new System.Timers.Timer();
@@ -35,21 +34,13 @@ namespace livelywpf.Helpers
 
         private TransparentTaskbar()
         {
-            Initialize();
-        }
-
-        private void Initialize()
-        {
-            mTaskbar = NativeMethods.FindWindow("Shell_TrayWnd", null);
-            sTaskbar = NativeMethods.FindWindow("Shell_SecondaryTrayWnd", null);
-
             _timer.Interval = 500;
             _timer.Elapsed += Timer_Elapsed;
         }
 
         public void Start()
         {
-            if (Program.IsMSIX || IsRunning)
+            if (IsRunning)
                 return;
 
             _timer.Start();
@@ -62,26 +53,15 @@ namespace livelywpf.Helpers
             {
                 _timer.Stop();
                 ResetTaskbar();
-                IsRunning = false;
-                
-            }
-        }
-
-        public void Reset()
-        {
-            _timer.Stop();
-            mTaskbar = NativeMethods.FindWindow("Shell_TrayWnd", null);
-            sTaskbar = NativeMethods.FindWindow("Shell_SecondaryTrayWnd", null);
-            if (IsRunning)
-            {
-                _timer.Start();
+                IsRunning = false;                
             }
         }
 
         public void SetTheme(TaskbarTheme theme)
         {
             _timer.Stop();
-            switch (theme)
+            taskbarTheme = theme;
+            switch (taskbarTheme)
             {
                 case TaskbarTheme.none:
                     //accent.AccentState = AccentState.ACCENT_DISABLED;
@@ -110,7 +90,6 @@ namespace livelywpf.Helpers
                     accentPolicy.AccentState = AccentState.ACCENT_ENABLE_FLUENT;
                     break;
             }
-            taskbarTheme = theme;
             if (IsRunning)
             {
                 ResetTaskbar();
@@ -148,10 +127,9 @@ namespace livelywpf.Helpers
                     Data = accentPtr
                 };
 
-                SetWindowCompositionAttribute(mTaskbar, ref data);
-                if (!sTaskbar.Equals(IntPtr.Zero))
+                foreach (var taskbar in GetTaskbars())
                 {
-                    SetWindowCompositionAttribute(sTaskbar, ref data);
+                    SetWindowCompositionAttribute(taskbar, ref data);
                 }
             }
             finally
@@ -160,15 +138,38 @@ namespace livelywpf.Helpers
             }
         }
 
-        private void ResetTaskbar()
-        {
-            NativeMethods.SendMessage(mTaskbar, (int)NativeMethods.WM.DWMCOMPOSITIONCHANGED, IntPtr.Zero, IntPtr.Zero);
-            NativeMethods.SendMessage(sTaskbar, (int)NativeMethods.WM.DWMCOMPOSITIONCHANGED, IntPtr.Zero, IntPtr.Zero);
-        }
-
         #region helpers
 
-        public static string CheckIncompatibleProgramsRunning()
+        private List<IntPtr> GetTaskbars()
+        {
+            IntPtr taskbar;
+            var taskbars = new List<IntPtr>(2);
+            //main taskbar..
+            if ((taskbar = NativeMethods.FindWindow("Shell_TrayWnd", null)) != IntPtr.Zero)
+            {
+                taskbars.Add(taskbar);
+            }
+            //secondary taskbar(s)..
+            if ((taskbar = NativeMethods.FindWindow("Shell_SecondaryTrayWnd", null)) != IntPtr.Zero)
+            {
+                taskbars.Add(taskbar);
+                while ((taskbar = NativeMethods.FindWindowEx(IntPtr.Zero, taskbar, "Shell_SecondaryTrayWnd", IntPtr.Zero)) != IntPtr.Zero)
+                {
+                    taskbars.Add(taskbar);
+                }
+            }
+            return taskbars;
+        }
+
+        private void ResetTaskbar()
+        {
+            foreach (var taskbar in GetTaskbars())
+            {
+                NativeMethods.SendMessage(taskbar, (int)NativeMethods.WM.DWMCOMPOSITIONCHANGED, IntPtr.Zero, IntPtr.Zero);
+            }
+        }
+
+        public static string CheckIncompatiblePrograms()
         {
             foreach (var item in incompatiblePrograms)
             {

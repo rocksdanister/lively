@@ -764,18 +764,18 @@ Edge ise windows 10 için geçerli web gösterim motorudur.</value>
     <value>Mümkün olduğunda donanım hızlandırmayı kullan.</value>
   </data> 
   <data name="DescriptionPleaseStop" xml:space="preserve">
-  <value>Please stop before proceeding.</value>
+  <value>Lütfen devam etmeden önce biraz bekleyin.</value>
 </data>
 <data name="TextEditWallpaper" xml:space="preserve">
-  <value>Edit</value>
+  <value>Düzenle</value>
 </data>
 <data name="TitleLocation" xml:space="preserve">
-  <value>Location</value>
+  <value>Konum</value>
 </data>
 <data name="TitleSkipConfirm" xml:space="preserve">
-  <value>Skip Confirmation</value>
+  <value>Onaylamayı geç</value>
 </data>
 <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-  <value>Enter optional commandline arguments</value>
+  <value>İsteğe bağlı komut satırı argümanlarını girin</value>
 </data>
 </root>

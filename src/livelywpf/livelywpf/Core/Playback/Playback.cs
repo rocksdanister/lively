@@ -18,7 +18,7 @@ namespace livelywpf.Core
     public class Playback : IDisposable
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        readonly string[] windowsClassDefaults = new string[]
+        readonly string[] classWhiteList = new string[]
         {
             //startmeu, taskview, action center etc
             "Windows.UI.Core.CoreWindow",
@@ -279,8 +279,8 @@ namespace livelywpf.Core
                             //this is a limitation of this algorithm since only one window can be foreground!
                             foreach (var item in ScreenHelper.GetScreen())
                             {
-                                if (!ScreenHelper.ScreenCompare(item, focusedScreen, DisplayIdentificationMode.deviceId) &&
-                                    Program.SettingsVM.Settings.WallpaperArrangement != WallpaperArrangement.span)
+                                if (Program.SettingsVM.Settings.WallpaperArrangement != WallpaperArrangement.span && 
+                                    !ScreenHelper.ScreenCompare(item, focusedScreen, DisplayIdentificationMode.deviceId))
                                 {
                                     PlayWallpaper(item);
                                     //SetWallpaperVoume(0, item);
@@ -363,7 +363,7 @@ namespace livelywpf.Core
             if (NativeMethods.GetClassName((int)hwnd, className, maxChars) > 0)
             {
                 string cName = className.ToString();
-                return windowsClassDefaults.Any(x => x.Equals(cName, StringComparison.Ordinal));
+                return classWhiteList.Any(x => x.Equals(cName, StringComparison.Ordinal));
             }
             return false;
         }

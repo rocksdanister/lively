@@ -167,7 +167,8 @@ namespace livelywpf
         none,
         fill,
         uniform,
-        uniformFill
+        uniformFill,
+        auto
     }
 
     public enum AppTheme
@@ -182,7 +183,7 @@ namespace livelywpf
     /// </summary>
     public enum TaskbarTheme
     {
-        [Description("Transparency off.")]
+        [Description("System default.")]
         none,
         [Description("Fully transparent.")]
         clear,

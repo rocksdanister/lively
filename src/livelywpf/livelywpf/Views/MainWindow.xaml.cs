@@ -262,7 +262,6 @@ namespace livelywpf
             {
                 //explorer crash detection, new taskbar is created everytime explorer is started..
                 Logger.Info("WM_TASKBARCREATED: New taskbar created.");
-                Helpers.TransparentTaskbar.Instance.Reset();
                 SetupDesktop.ResetWorkerW();
             }
             else if (msg == (uint)NativeMethods.WM.QUERYENDSESSION && Program.IsMSIX)

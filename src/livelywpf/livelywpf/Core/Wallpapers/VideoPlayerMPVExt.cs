@@ -57,6 +57,7 @@ namespace livelywpf.Core
                 }
             }
 
+            scaler = scaler == WallpaperScaler.auto ? WallpaperScaler.uniform : scaler;
             ProcessStartInfo start = new ProcessStartInfo
             {
                 Arguments = "--path " + "\"" + path + "\"" + " --stream " + (int)streamQuality + 

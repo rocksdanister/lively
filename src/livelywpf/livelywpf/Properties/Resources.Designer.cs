@@ -61,6 +61,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Incompatible program found, taskbar theming disabled..
+        /// </summary>
+        public static string DescIncompatibleTaskbarTheme {
+            get {
+                return ResourceManager.GetString("DescIncompatibleTaskbarTheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select a file or specify a website url to set as a wallpaper..
         /// </summary>
         public static string DescriptionAddWallpaper {
@@ -901,6 +910,60 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Blur.
+        /// </summary>
+        public static string TextTaskbarThemeBlur {
+            get {
+                return ResourceManager.GetString("TextTaskbarThemeBlur", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clear.
+        /// </summary>
+        public static string TextTaskbarThemeClear {
+            get {
+                return ResourceManager.GetString("TextTaskbarThemeClear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Color.
+        /// </summary>
+        public static string TextTaskbarThemeColor {
+            get {
+                return ResourceManager.GetString("TextTaskbarThemeColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fluent.
+        /// </summary>
+        public static string TextTaskbarThemeFluent {
+            get {
+                return ResourceManager.GetString("TextTaskbarThemeFluent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wallpaper.
+        /// </summary>
+        public static string TextTaskbarThemeWallpaper {
+            get {
+                return ResourceManager.GetString("TextTaskbarThemeWallpaper", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wallpaper Fluent.
+        /// </summary>
+        public static string TextTaskbarThemeWallpaperFluent {
+            get {
+                return ResourceManager.GetString("TextTaskbarThemeWallpaperFluent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Large.
         /// </summary>
         public static string TextTileSizeLarge {
@@ -1244,6 +1307,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Set a picture of animated wallpaper as desktop wallpaper..
+        /// </summary>
+        public static string TipDesktopPicture {
+            get {
+                return ResourceManager.GetString("TipDesktopPicture", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Per: Pause wallpaper only on the screen in which application is focused/fullscreen.
         ///All: Pause wallpaper on all screen(s) if any application is focused/fullscreen..
         /// </summary>
@@ -1299,6 +1371,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Set a picture of animated wallpaper as lockscreen wallpaper..
+        /// </summary>
+        public static string TipLockscreenPicture {
+            get {
+                return ResourceManager.GetString("TipLockscreenPicture", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Foreground: Lightweight, only checks the single process that is in foreground to determine wallpaper playback behaviour.
         ///All Process: Heavier, Scans all the process to determine playback behaviour..
         /// </summary>
@@ -1323,6 +1404,15 @@ namespace livelywpf.Properties {
         public static string TipStreamWallpaperVideoQuality {
             get {
                 return ResourceManager.GetString("TipStreamWallpaperVideoQuality", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change system taskbar appearance..
+        /// </summary>
+        public static string TipTaskbarTheme {
+            get {
+                return ResourceManager.GetString("TipTaskbarTheme", resourceCulture);
             }
         }
         
@@ -1589,6 +1679,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Desktop Picture.
+        /// </summary>
+        public static string TitleDesktopPicture {
+            get {
+                return ResourceManager.GetString("TitleDesktopPicture", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Display Pause Rule.
         /// </summary>
         public static string TitleDisplayPauseRule {
@@ -1706,7 +1805,16 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Misc..
+        ///   Looks up a localized string similar to Lockscreen Picture.
+        /// </summary>
+        public static string TitleLockscreenPicture {
+            get {
+                return ResourceManager.GetString("TitleLockscreenPicture", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Misc.
         /// </summary>
         public static string TitleMisc {
             get {
@@ -1846,6 +1954,15 @@ namespace livelywpf.Properties {
         public static string TitleStreamWallpaperVideoQuality {
             get {
                 return ResourceManager.GetString("TitleStreamWallpaperVideoQuality", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Taskbar Theme.
+        /// </summary>
+        public static string TitleTaskbarTheme {
+            get {
+                return ResourceManager.GetString("TitleTaskbarTheme", resourceCulture);
             }
         }
         

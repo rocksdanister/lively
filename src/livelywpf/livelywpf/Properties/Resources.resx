@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
+    <value>Incompatible program found, taskbar theming disabled.</value>
+  </data>
   <data name="DescriptionAddWallpaper" xml:space="preserve">
     <value>Select a file or specify a website url to set as a wallpaper.</value>
   </data>
@@ -411,6 +414,24 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="TextTags" xml:space="preserve">
     <value>Tags</value>
   </data>
+  <data name="TextTaskbarThemeBlur" xml:space="preserve">
+    <value>Blur</value>
+  </data>
+  <data name="TextTaskbarThemeClear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="TextTaskbarThemeColor" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="TextTaskbarThemeFluent" xml:space="preserve">
+    <value>Fluent</value>
+  </data>
+  <data name="TextTaskbarThemeWallpaper" xml:space="preserve">
+    <value>Wallpaper</value>
+  </data>
+  <data name="TextTaskbarThemeWallpaperFluent" xml:space="preserve">
+    <value>Wallpaper Fluent</value>
+  </data>
   <data name="TextTileSizeLarge" xml:space="preserve">
     <value>Large</value>
   </data>
@@ -526,6 +547,9 @@ When ready navigate to http://localhost:portnumber to access developer console.<
   <data name="TipDebug" xml:space="preserve">
     <value>Show developer menu.</value>
   </data>
+  <data name="TipDesktopPicture" xml:space="preserve">
+    <value>Set a picture of animated wallpaper as desktop wallpaper.</value>
+  </data>
   <data name="TipDisplayPauseRule" xml:space="preserve">
     <value>Per: Pause wallpaper only on the screen in which application is focused/fullscreen.
 All: Pause wallpaper on all screen(s) if any application is focused/fullscreen.</value>
@@ -545,6 +569,9 @@ All: Pause wallpaper on all screen(s) if any application is focused/fullscreen.<
   <data name="TipLivelySetupOnClose" xml:space="preserve">
     <value>Finish the setup to continue.</value>
   </data>
+  <data name="TipLockscreenPicture" xml:space="preserve">
+    <value>Set a picture of animated wallpaper as lockscreen wallpaper.</value>
+  </data>
   <data name="TipPauseAlgorithm" xml:space="preserve">
     <value>Foreground: Lightweight, only checks the single process that is in foreground to determine wallpaper playback behaviour.
 All Process: Heavier, Scans all the process to determine playback behaviour.</value>
@@ -554,6 +581,9 @@ All Process: Heavier, Scans all the process to determine playback behaviour.</va
   </data>
   <data name="TipStreamWallpaperVideoQuality" xml:space="preserve">
     <value>Select the desired video quality for online streams.</value>
+  </data>
+  <data name="TipTaskbarTheme" xml:space="preserve">
+    <value>Change system taskbar appearance.</value>
   </data>
   <data name="TipTileSize" xml:space="preserve">
     <value>Size of the wallpaper tiles in Library.</value>
@@ -643,6 +673,9 @@ Edge is the built in webview of windows 10.</value>
   <data name="TitleDeleteConfirmation" xml:space="preserve">
     <value>Confirm Deletion</value>
   </data>
+  <data name="TitleDesktopPicture" xml:space="preserve">
+    <value>Desktop Picture</value>
+  </data>
   <data name="TitleDisplayPauseRule" xml:space="preserve">
     <value>Display Pause Rule</value>
   </data>
@@ -682,8 +715,11 @@ Edge is the built in webview of windows 10.</value>
   <data name="TitleLocation" xml:space="preserve">
     <value>Location</value>
   </data>
+  <data name="TitleLockscreenPicture" xml:space="preserve">
+    <value>Lockscreen Picture</value>
+  </data>
   <data name="TitleMisc" xml:space="preserve">
-    <value>Misc.</value>
+    <value>Misc</value>
   </data>
   <data name="TitleMute" xml:space="preserve">
     <value>Mute</value>
@@ -730,6 +766,9 @@ Edge is the built in webview of windows 10.</value>
   </data>
   <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
     <value>Video Quality</value>
+  </data>
+  <data name="TitleTaskbarTheme" xml:space="preserve">
+    <value>Taskbar Theme</value>
   </data>
   <data name="TitleTileSize" xml:space="preserve">
     <value>Tile Size</value>

@@ -19,7 +19,7 @@ namespace livelywpf.Core
 
         public GIFPlayerUWP(string filePath, LibraryModel model, LivelyScreen display, WallpaperScaler scaler = WallpaperScaler.fill)
         {
-            player = new GIFViewUWP(filePath, scaler);
+            player = new GIFViewUWP(filePath, scaler == WallpaperScaler.auto ? WallpaperScaler.uniform : scaler);
             this.model = model;
             this.display = display;
         }
@@ -100,7 +100,7 @@ namespace livelywpf.Core
 
         public void Show()
         {
-            if(player != null)
+            if (player != null)
             {
                 player.Closed += Player_Closed;
                 player.Show();

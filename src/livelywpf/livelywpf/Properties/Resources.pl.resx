@@ -768,18 +768,18 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Jeśli możliwe użyj przyśpieszenia sprzętowego.</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
-  <value>Please stop before proceeding.</value>
+  <value>Zatrzymaj się proszę zanim przejdziesz dalej.</value>
 </data>
 <data name="TextEditWallpaper" xml:space="preserve">
-  <value>Edit</value>
+  <value>Edytuj</value>
 </data>
 <data name="TitleLocation" xml:space="preserve">
-  <value>Location</value>
+  <value>Położenie</value>
 </data>
 <data name="TitleSkipConfirm" xml:space="preserve">
-  <value>Skip Confirmation</value>
+  <value>Pomiń potwierdzenie</value>
 </data>
 <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-  <value>Enter optional commandline arguments</value>
+  <value>Wprowadź opcjonalne argumenty linii poleceń.</value>
 </data>
 </root>
