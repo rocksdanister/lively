@@ -818,7 +818,7 @@ namespace livelywpf
                         {
                             _selectedTaskbarThemeIndex = (int)TaskbarTheme.none;
                             _ = Task.Run(() => 
-                                    System.Windows.MessageBox.Show(Properties.Resources.DescIncompatibleTaskbarTheme + "\n\n" + pgm, Properties.Resources.TitleAppName));
+                                    System.Windows.MessageBox.Show(Properties.Resources.DescIncompatibleTaskbarTheme + "\n\n" + pgm, Properties.Resources.TitleAppName, MessageBoxButton.OK, MessageBoxImage.Information));
                         }
                     }
                 }

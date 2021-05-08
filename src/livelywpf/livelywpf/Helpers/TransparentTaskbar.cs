@@ -22,6 +22,7 @@ namespace livelywpf.Helpers
         private Color accentColor = Color.FromArgb(0, 0, 0);
         private readonly static IDictionary<string, string> incompatiblePrograms = new Dictionary<string, string>() { 
             {"TranslucentTB", "344635E9-9AE4-4E60-B128-D53E25AB70A7"},
+            {"TaskbarX", null}, //don't have mutex
         };
 
         public static TransparentTaskbar Instance
@@ -173,17 +174,36 @@ namespace livelywpf.Helpers
         {
             foreach (var item in incompatiblePrograms)
             {
-                Mutex mutex = null;
-                try
+                if (item.Value != null)
                 {
-                    if (Mutex.TryOpenExisting(item.Value, out mutex))
+                    try
                     {
-                        return item.Key;
+                        Mutex mutex = null;
+                        try
+                        {
+                            if (Mutex.TryOpenExisting(item.Value, out mutex))
+                            {
+                                return item.Key;
+                            }
+                        }
+                        finally
+                        {
+                            mutex?.Dispose();
+                        }
                     }
+                    catch { } //skipping
                 }
-                finally
+                else
                 {
-                    mutex?.Dispose();
+                    try
+                    {
+                        var proc = Process.GetProcessesByName(item.Key);
+                        if (proc.Count() != 0)
+                        {
+                            return item.Key;
+                        }
+                    }
+                    catch { } //skipping
                 }
             }
             return null;

@@ -173,7 +173,7 @@ namespace livelywpf.Core
             var isDesktop = false;
             var fHandle = NativeMethods.GetForegroundWindow();
 
-            if (IsWhitelistedClasses(fHandle))
+            if (IsWhitelistedClass(fHandle))
             {
                 PlayWallpapers();
                 SetWallpaperVolume(Program.SettingsVM.Settings.AudioVolumeGlobal);
@@ -356,7 +356,7 @@ namespace livelywpf.Core
             catch { }
         }
 
-        private bool IsWhitelistedClasses(IntPtr hwnd)
+        private bool IsWhitelistedClass(IntPtr hwnd)
         {
             const int maxChars = 256;
             StringBuilder className = new StringBuilder(maxChars);
