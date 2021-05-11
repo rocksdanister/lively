@@ -44,7 +44,7 @@ namespace livelywpf
             if (SystemParameters.HighContrast)
             {
                 Logger.Error("Failed to setup workers, high contrast mode!");
-                MessageBox.Show(Properties.Resources.LivelyExceptionHighContrastMode, Properties.Resources.TextError);
+                MessageBox.Show(Properties.Resources.LivelyExceptionHighContrastMode, Properties.Resources.TextError, MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 return;
             }
             else if (!_isInitialized)
@@ -100,7 +100,7 @@ namespace livelywpf
                 {
                     //todo: set the settings through code using SystemParametersInfo() or something?
                     Logger.Error("Core: Failed to setup wallpaper, WorkerW handle null!");
-                    System.Windows.MessageBox.Show(Properties.Resources.LivelyExceptionWorkerWSetupFail, Properties.Resources.TextError);
+                    MessageBox.Show(Properties.Resources.LivelyExceptionWorkerWSetupFail, Properties.Resources.TextError, MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     WallpaperChanged?.Invoke(null, null);
                     return;
                 }
@@ -131,7 +131,7 @@ namespace livelywpf
                 wallpaper.FilePath != null))
             {
                 //Only checking for wallpapers outside Lively folder.
-                _ = Task.Run(() => MessageBox.Show(Properties.Resources.TextFileNotFound, Properties.Resources.TextError + " " + Properties.Resources.TitleAppName));
+                _ = Task.Run(() => MessageBox.Show(Properties.Resources.TextFileNotFound, Properties.Resources.TextError + " " + Properties.Resources.TitleAppName, MessageBoxButton.OK, MessageBoxImage.Information));
                 Logger.Info("Core: Skipping, File not found!");
                 WallpaperChanged?.Invoke(null, null);
                 return;
@@ -220,7 +220,7 @@ namespace livelywpf
                             }
                             WallpaperChanged?.Invoke(null, null);
                         }));
-                        _= Task.Run(() => (MessageBox.Show(Properties.Resources.TextFeatureMissing, Properties.Resources.TextError)));
+                        _= Task.Run(() => (MessageBox.Show(Properties.Resources.TextFeatureMissing, Properties.Resources.TitleAppName, MessageBoxButton.OK, MessageBoxImage.Information)));
                     }
                     else
                     {
@@ -444,41 +444,50 @@ namespace livelywpf
                             var imgPath = Path.Combine(Program.AppDataDir, "temp", Path.GetRandomFileName() + ".jpg");
                             await wallpaper.ScreenCapture(imgPath);
 
-                            //set lockscreen picture wallpaper..
-                            if (thumbRequiredLockscreen)
-                            {
-                                await Helpers.WindowsPersonalize.SetLockScreenWallpaper(imgPath);
-                            }
-
                             //set accent color of taskbar..
                             if (thumbRequiredAvgColor)
                             {
                                 Helpers.TransparentTaskbar.Instance.SetAccentColor(Helpers.TransparentTaskbar.GetAverageColor(imgPath));
                             }
 
+                            //set lockscreen picture wallpaper..
+                            if (thumbRequiredLockscreen)
+                            {
+                                await Helpers.WindowsPersonalize.SetLockScreenWallpaper(imgPath);
+                            }
+
                             //set desktop picture wallpaper..
                             if (Program.SettingsVM.Settings.DesktopAutoWallpaper)
                             {
-                                var desktop = (Helpers.IDesktopWallpaper)new Helpers.DesktopWallpaperClass();
-                                Helpers.DesktopWallpaperPosition scaler = Helpers.DesktopWallpaperPosition.Fill;
-                                switch (Program.SettingsVM.Settings.WallpaperScaling)
+                                if (ScreenHelper.IsMultiScreen())
                                 {
-                                    case WallpaperScaler.none:
-                                        scaler = Helpers.DesktopWallpaperPosition.Center;
-                                        break;
-                                    case WallpaperScaler.fill:
-                                        scaler = Helpers.DesktopWallpaperPosition.Stretch;
-                                        break;
-                                    case WallpaperScaler.uniform:
-                                        scaler = Helpers.DesktopWallpaperPosition.Fit;
-                                        break;
-                                    case WallpaperScaler.uniformFill:
-                                        //not exaclty the same, lively's uniform fill pivot is topleft whereas for windows its center.
-                                        scaler = Helpers.DesktopWallpaperPosition.Fill;
-                                        break;
+                                    //Has transition animation..
+                                    var desktop = (Helpers.IDesktopWallpaper)new Helpers.DesktopWallpaperClass();
+                                    Helpers.DesktopWallpaperPosition scaler = Helpers.DesktopWallpaperPosition.Fill;
+                                    switch (Program.SettingsVM.Settings.WallpaperScaling)
+                                    {
+                                        case WallpaperScaler.none:
+                                            scaler = Helpers.DesktopWallpaperPosition.Center;
+                                            break;
+                                        case WallpaperScaler.fill:
+                                            scaler = Helpers.DesktopWallpaperPosition.Stretch;
+                                            break;
+                                        case WallpaperScaler.uniform:
+                                            scaler = Helpers.DesktopWallpaperPosition.Fit;
+                                            break;
+                                        case WallpaperScaler.uniformFill:
+                                            //not exaclty the same, lively's uniform fill pivot is topleft whereas for windows its center.
+                                            scaler = Helpers.DesktopWallpaperPosition.Fill;
+                                            break;
+                                    }
+                                    desktop.SetPosition(Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span ? Helpers.DesktopWallpaperPosition.Span : scaler);
+                                    desktop.SetWallpaper(Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span ? null : wallpaper.GetScreen().DeviceId, imgPath);
                                 }
-                                desktop.SetPosition(Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span ? Helpers.DesktopWallpaperPosition.Span : scaler);
-                                desktop.SetWallpaper(Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span ? null : wallpaper.GetScreen().DeviceId, imgPath);
+                                else
+                                {
+                                    //No transition animation..
+                                    NativeMethods.SystemParametersInfo(NativeMethods.SPI_SETDESKWALLPAPER, 0, imgPath, NativeMethods.SPIF_UPDATEINIFILE | NativeMethods.SPIF_SENDWININICHANGE);
+                                }
                             }
                         }
                         catch (Exception ie1)
@@ -498,7 +507,7 @@ namespace livelywpf
                     WallpaperChanged?.Invoke(null, null);
                     if (App.AppWindow?.Visibility != Visibility.Hidden)
                     {
-                        MessageBox.Show(Properties.Resources.LivelyExceptionGeneral, Properties.Resources.TextError);
+                        MessageBox.Show(Properties.Resources.LivelyExceptionGeneral, Properties.Resources.TitleAppName, MessageBoxButton.OK, MessageBoxImage.Error);
                     }
 
                     if (!File.Exists(Path.Combine(wallpaper.GetWallpaperData().LivelyInfoFolderPath, "LivelyInfo.json")))

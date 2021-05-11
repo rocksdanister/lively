@@ -153,6 +153,12 @@ namespace livelywpf
         mpv
     }
 
+    public enum LivelyPicturePlayer
+    {
+        win10Img,
+        picture
+    }
+
     public enum LivelyWebBrowser
     {
         cef,

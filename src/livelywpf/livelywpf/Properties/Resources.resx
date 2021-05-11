@@ -300,11 +300,14 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="TextGIF" xml:space="preserve">
     <value>Animated GIF</value>
   </data>
+  <data name="TextGitHubStar" xml:space="preserve">
+    <value>Show some love by leaving a star</value>
+  </data>
   <data name="TextGo" xml:space="preserve">
     <value>GO</value>
   </data>
   <data name="TextHelpTranslate" xml:space="preserve">
-    <value>Help translate Lively.</value>
+    <value>Help translate</value>
   </data>
   <data name="TextInstall" xml:space="preserve">
     <value>Install</value>
@@ -753,6 +756,9 @@ Edge is the built in webview of windows 10.</value>
   </data>
   <data name="TitleSkipConfirm" xml:space="preserve">
     <value>Skip Confirmation</value>
+  </data>
+  <data name="TitleSourceCode" xml:space="preserve">
+    <value>Source Code</value>
   </data>
   <data name="TitleStore" xml:space="preserve">
     <value>Store</value>

@@ -15,11 +15,12 @@ namespace livelywpf.Helpers
     public sealed class TransparentTaskbar
     {
         public bool IsRunning { get; private set; } = false;
+        private Color accentColor = WindowsPersonalize.GetAccentColor();
         private TaskbarTheme taskbarTheme = TaskbarTheme.none;
+        private AccentPolicy accentPolicy = new AccentPolicy();
         private readonly System.Timers.Timer _timer = new System.Timers.Timer();
         private static readonly TransparentTaskbar instance = new TransparentTaskbar();
-        private AccentPolicy accentPolicy = new AccentPolicy();
-        private Color accentColor = Color.FromArgb(0, 0, 0);
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private readonly static IDictionary<string, string> incompatiblePrograms = new Dictionary<string, string>() { 
             {"TranslucentTB", "344635E9-9AE4-4E60-B128-D53E25AB70A7"},
             {"TaskbarX", null}, //don't have mutex
@@ -46,6 +47,7 @@ namespace livelywpf.Helpers
 
             _timer.Start();
             IsRunning = true;
+            Logger.Info("Taskbar theme service started.");
         }
 
         public void Stop()
@@ -54,7 +56,8 @@ namespace livelywpf.Helpers
             {
                 _timer.Stop();
                 ResetTaskbar();
-                IsRunning = false;                
+                IsRunning = false;
+                Logger.Info("Taskbar theme service stopped.");
             }
         }
 
@@ -62,6 +65,7 @@ namespace livelywpf.Helpers
         {
             _timer.Stop();
             taskbarTheme = theme;
+            Logger.Info("Taskbar theme change: " + theme);
             switch (taskbarTheme)
             {
                 case TaskbarTheme.none:
@@ -114,28 +118,38 @@ namespace livelywpf.Helpers
             if (theme == TaskbarTheme.none)
                 return;
 
-            var accentPtr = IntPtr.Zero;
-            try
+            var taskbars = GetTaskbars();
+            if (taskbars.Count != 0)
             {
-                var accentStructSize = Marshal.SizeOf(accentPolicy);
-                accentPtr = Marshal.AllocHGlobal(accentStructSize);
-                Marshal.StructureToPtr(accentPolicy, accentPtr, false);
-                
-                var data = new WindowCompositionAttributeData
+                var accentPtr = IntPtr.Zero;
+                try
                 {
-                    Attribute = WindowCompositionAttribute.WCA_ACCENT_POLICY,
-                    SizeOfData = accentStructSize,
-                    Data = accentPtr
-                };
+                    var accentStructSize = Marshal.SizeOf(accentPolicy);
+                    accentPtr = Marshal.AllocHGlobal(accentStructSize);
+                    Marshal.StructureToPtr(accentPolicy, accentPtr, false);
+                    var data = new WindowCompositionAttributeData
+                    {
+                        Attribute = WindowCompositionAttribute.WCA_ACCENT_POLICY,
+                        SizeOfData = accentStructSize,
+                        Data = accentPtr
+                    };
 
-                foreach (var taskbar in GetTaskbars())
-                {
-                    SetWindowCompositionAttribute(taskbar, ref data);
+                    foreach (var taskbar in taskbars)
+                    {
+                        SetWindowCompositionAttribute(taskbar, ref data);
+                    }
                 }
-            }
-            finally
-            {
-                Marshal.FreeHGlobal(accentPtr);
+                catch (Exception e)
+                {
+                    Logger.Error(e.ToString());
+                    Stop();
+                }
+                finally
+                {
+                    //not required for this structure..
+                    //Marshal.DestroyStructure(accentPtr, typeof(AccentPolicy));
+                    Marshal.FreeHGlobal(accentPtr);
+                }
             }
         }
 
@@ -216,17 +230,24 @@ namespace livelywpf.Helpers
         /// <returns></returns>
         public static Color GetAverageColor(string imgPath)
         {
-            //avg of colors by resizing to 1x1..
-            using var image = new MagickImage(imgPath);
-            //same as resize with box filter, Sample(1,1) was unreliable although faster..
-            image.Scale(1, 1);
+            try
+            {
+                //avg of colors by resizing to 1x1..
+                using var image = new MagickImage(imgPath);
+                //same as resize with box filter, Sample(1,1) was unreliable although faster..
+                image.Scale(1, 1);
 
-            //take the new pixel..
-            using var pixels = image.GetPixels();
-            var color = pixels.GetPixel(0, 0).ToColor();
+                //take the new pixel..
+                using var pixels = image.GetPixels();
+                var color = pixels.GetPixel(0, 0).ToColor();
 
-            //ImageMagick color range is 0 - 65535.
-            return Color.FromArgb(255 * color.R / 65535, 255 * color.G / 65535, 255 * color.B / 65535);
+                //ImageMagick color range is 0 - 65535.
+                return Color.FromArgb(255 * color.R / 65535, 255 * color.G / 65535, 255 * color.B / 65535);
+            }
+            catch
+            {
+                return Color.FromArgb(0, 0, 0);
+            }
         }
 
         #endregion //helpers

@@ -15,9 +15,14 @@ namespace livelywpf.Helpers
     {
         public static Color GetAccentColor()
         {
-            var uiSettings = new UISettings();
-            var accentColor = uiSettings.GetColorValue(UIColorType.Accent);
-            return Color.FromArgb(accentColor.A, accentColor.R, accentColor.G, accentColor.B);
+            var color = Color.FromArgb(0, 0, 0);
+            if (Windows.Foundation.Metadata.ApiInformation.IsMethodPresent("Windows.UI.ViewManagement.UISettings", "GetColorValue"))
+            {
+                var uiSettings = new UISettings();
+                var accentColor = uiSettings.GetColorValue(UIColorType.Accent);
+                color = Color.FromArgb(accentColor.A, accentColor.R, accentColor.G, accentColor.B);
+            }
+            return color;
         }
 
         public static void SetAccentColor(Color color)
@@ -32,8 +37,11 @@ namespace livelywpf.Helpers
 
         public static async Task SetLockScreenWallpaper(string imgPath)
         {
-            var file = await Windows.Storage.StorageFile.GetFileFromPathAsync(imgPath);
-            await Windows.System.UserProfile.LockScreen.SetImageFileAsync(file);
+            if (Windows.System.UserProfile.UserProfilePersonalizationSettings.IsSupported())
+            {
+                var file = await Windows.Storage.StorageFile.GetFileFromPathAsync(imgPath);
+                await Windows.System.UserProfile.LockScreen.SetImageFileAsync(file);
+            }
         }
 
 
@@ -52,6 +60,11 @@ namespace livelywpf.Helpers
                 result = await Windows.System.UserProfile.UserProfilePersonalizationSettings.Current.TrySetWallpaperImageAsync(file);
             }
             return result;
+        }
+
+        public static void SetDesktopWallpaperWinApi(string imgPath)
+        {
+
         }
 
         public static void SetSystemTheme(SystemTheme theme, SystemThemeType type)

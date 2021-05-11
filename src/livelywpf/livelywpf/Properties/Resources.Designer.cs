@@ -568,6 +568,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Show some love by leaving a star.
+        /// </summary>
+        public static string TextGitHubStar {
+            get {
+                return ResourceManager.GetString("TextGitHubStar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to GO.
         /// </summary>
         public static string TextGo {
@@ -577,7 +586,7 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Help translate Lively..
+        ///   Looks up a localized string similar to Help translate.
         /// </summary>
         public static string TextHelpTranslate {
             get {
@@ -1918,6 +1927,15 @@ namespace livelywpf.Properties {
         public static string TitleSkipConfirm {
             get {
                 return ResourceManager.GetString("TitleSkipConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Source Code.
+        /// </summary>
+        public static string TitleSourceCode {
+            get {
+                return ResourceManager.GetString("TitleSourceCode", resourceCulture);
             }
         }
         

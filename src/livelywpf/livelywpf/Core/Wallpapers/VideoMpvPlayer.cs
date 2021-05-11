@@ -246,7 +246,6 @@ namespace livelywpf.Core
             }
         }
 
-        //todo: cancel/timeout after x amt of time.
         public async Task ScreenCapture(string filePath)
         {
             if (GetWallpaperType() == WallpaperType.gif)
@@ -268,12 +267,13 @@ namespace livelywpf.Core
             {
                 var tcs = new TaskCompletionSource<bool>();
                 var imgPath = Path.Combine(Program.AppDataDir, "temp", ipcServerName + ".jpg");
-                //monitor ../temp directory for screenshot, mpv only outputs messages before capturing screenshot..
-                using FileSystemWatcher watcher = new FileSystemWatcher();
+                //monitor directory for screenshot, mpv only outputs message before capturing screenshot..
+                using var watcher = new FileSystemWatcher();
                 watcher.Path = Path.Combine(Program.AppDataDir, "temp");
                 watcher.NotifyFilter = NotifyFilters.LastWrite;
                 watcher.Filter = "*.jpg";
-                watcher.Changed += (s, e) => {
+                watcher.Changed += (s, e) =>
+                {
                     if (Path.GetFileName(e.FullPath) == Path.GetFileName(imgPath) && e.ChangeType == WatcherChangeTypes.Changed)
                     {
                         //I was unable to set screenshot template via ipc :/
@@ -282,6 +282,17 @@ namespace livelywpf.Core
                     }
                 };
                 watcher.EnableRaisingEvents = true;
+                //timeout, cancel after interval..
+                using var timer = new System.Windows.Forms.Timer()
+                {
+                    Enabled = true,
+                    Interval = 10000, //10sec
+                };
+                timer.Tick += (s, e) =>
+                {
+                    //time elapsed..
+                    tcs.SetResult(false);
+                };
                 //request mpv to take screenshot..
                 SendMessage("{\"command\":[\"screenshot\",\"video\"]}\n");
                 await tcs.Task;
