@@ -84,6 +84,12 @@ Just drag & drop files, webpages to set as wallpaper..
 * Powerful set of API for developers to create interactive wallpapers.
 * Get system information, audio graph, music information..
 * [Learn more..](https://github.com/rocksdanister/lively/wiki/API)
+#### Taskbar customization
+<img src="/resources/taskbar_theme.gif" width="600" height="338"/>
+
+* Several system taskbar theme : Clear, Blur, Fluent..
+* Can adapt taskbar color based on live wallpaper color.
+* [Learn more..](https://github.com/rocksdanister/lively/wiki/Taskbar)
 #### & more
 - Easy to use; Just drag'n'drop media files & webpages into lively window to set it as wallpaper.
 - Hardware accelerated video playback, powered by mpv player.
