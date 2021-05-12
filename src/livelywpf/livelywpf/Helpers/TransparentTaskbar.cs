@@ -1,7 +1,6 @@
 ﻿using ImageMagick;
 using System;
 using System.Drawing;
-using System.Drawing.Imaging;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
@@ -15,7 +14,7 @@ namespace livelywpf.Helpers
     public sealed class TransparentTaskbar
     {
         public bool IsRunning { get; private set; } = false;
-        private Color accentColor = WindowsPersonalize.GetAccentColor();
+        private Color accentColor = Color.FromArgb(0, 0, 0);
         private TaskbarTheme taskbarTheme = TaskbarTheme.none;
         private AccentPolicy accentPolicy = new AccentPolicy();
         private readonly System.Timers.Timer _timer = new System.Timers.Timer();
@@ -230,24 +229,17 @@ namespace livelywpf.Helpers
         /// <returns></returns>
         public static Color GetAverageColor(string imgPath)
         {
-            try
-            {
-                //avg of colors by resizing to 1x1..
-                using var image = new MagickImage(imgPath);
-                //same as resize with box filter, Sample(1,1) was unreliable although faster..
-                image.Scale(1, 1);
+            //avg of colors by resizing to 1x1..
+            using var image = new MagickImage(imgPath);
+            //same as resize with box filter, Sample(1,1) was unreliable although faster..
+            image.Scale(1, 1);
 
-                //take the new pixel..
-                using var pixels = image.GetPixels();
-                var color = pixels.GetPixel(0, 0).ToColor();
+            //take the new pixel..
+            using var pixels = image.GetPixels();
+            var color = pixels.GetPixel(0, 0).ToColor();
 
-                //ImageMagick color range is 0 - 65535.
-                return Color.FromArgb(255 * color.R / 65535, 255 * color.G / 65535, 255 * color.B / 65535);
-            }
-            catch
-            {
-                return Color.FromArgb(0, 0, 0);
-            }
+            //ImageMagick color range is 0 - 65535.
+            return Color.FromArgb(255 * color.R / 65535, 255 * color.G / 65535, 255 * color.B / 65535);
         }
 
         #endregion //helpers

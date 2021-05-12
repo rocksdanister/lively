@@ -441,19 +441,26 @@ namespace livelywpf
                     {
                         try
                         {
+                            //capture frame from wallpaper..
                             var imgPath = Path.Combine(Program.AppDataDir, "temp", Path.GetRandomFileName() + ".jpg");
                             await wallpaper.ScreenCapture(imgPath);
+                            if (!File.Exists(imgPath))
+                            {
+                                throw new FileNotFoundException();
+                            }
 
                             //set accent color of taskbar..
                             if (thumbRequiredAvgColor)
                             {
-                                Helpers.TransparentTaskbar.Instance.SetAccentColor(Helpers.TransparentTaskbar.GetAverageColor(imgPath));
-                            }
-
-                            //set lockscreen picture wallpaper..
-                            if (thumbRequiredLockscreen)
-                            {
-                                await Helpers.WindowsPersonalize.SetLockScreenWallpaper(imgPath);
+                                try
+                                {
+                                    var color = await Task.Run(() => Helpers.TransparentTaskbar.GetAverageColor(imgPath));
+                                    Helpers.TransparentTaskbar.Instance.SetAccentColor(color);
+                                }
+                                catch (Exception ie1)
+                                {
+                                    Logger.Error("Failed to set taskbar accent:" + ie1.Message);
+                                }
                             }
 
                             //set desktop picture wallpaper..
@@ -489,10 +496,16 @@ namespace livelywpf
                                     NativeMethods.SystemParametersInfo(NativeMethods.SPI_SETDESKWALLPAPER, 0, imgPath, NativeMethods.SPIF_UPDATEINIFILE | NativeMethods.SPIF_SENDWININICHANGE);
                                 }
                             }
+
+                            //set lockscreen picture wallpaper..
+                            if (thumbRequiredLockscreen)
+                            {
+                                await Helpers.WindowsPersonalize.SetLockScreenWallpaper(imgPath);
+                            }
                         }
-                        catch (Exception ie1)
+                        catch (Exception ie2)
                         {
-                            Logger.Error("Failed to set lockscreen/desktop wallpaper:" + ie1.Message);
+                            Logger.Error("Failed to set lockscreen/desktop wallpaper:" + ie2.Message);
                         }
                     }
 
