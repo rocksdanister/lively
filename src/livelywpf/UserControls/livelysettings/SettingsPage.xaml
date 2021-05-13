@@ -212,7 +212,7 @@
                 </Grid>
             </PivotItem>
 
-            <PivotItem Header="System">
+            <PivotItem Header="{x:Bind UIText.TitleSystem}">
                 <Grid>
                     <ScrollViewer>
                         <StackPanel>

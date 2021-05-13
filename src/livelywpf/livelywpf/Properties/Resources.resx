@@ -301,7 +301,7 @@ If still not working, close &amp; start Lively again/restart windows.
     <value>Animated GIF</value>
   </data>
   <data name="TextGitHubStar" xml:space="preserve">
-    <value>Show some love by leaving a star</value>
+    <value>Show some love by dropping a star</value>
   </data>
   <data name="TextGo" xml:space="preserve">
     <value>GO</value>
@@ -772,6 +772,9 @@ Edge is the built in webview of windows 10.</value>
   </data>
   <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
     <value>Video Quality</value>
+  </data>
+  <data name="TitleSystem" xml:space="preserve">
+    <value>System</value>
   </data>
   <data name="TitleTaskbarTheme" xml:space="preserve">
     <value>Taskbar Theme</value>

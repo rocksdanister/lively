@@ -568,7 +568,7 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Show some love by leaving a star.
+        ///   Looks up a localized string similar to Show some love by dropping a star.
         /// </summary>
         public static string TextGitHubStar {
             get {
@@ -1972,6 +1972,15 @@ namespace livelywpf.Properties {
         public static string TitleStreamWallpaperVideoQuality {
             get {
                 return ResourceManager.GetString("TitleStreamWallpaperVideoQuality", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to System.
+        /// </summary>
+        public static string TitleSystem {
+            get {
+                return ResourceManager.GetString("TitleSystem", resourceCulture);
             }
         }
         

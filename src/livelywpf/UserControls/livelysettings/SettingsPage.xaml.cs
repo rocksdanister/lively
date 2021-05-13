@@ -107,6 +107,7 @@ namespace livelysettings
         public string TipMasterAudio { get; set; }
         public string TitleAudioDesktop { get; set; }
         //System
+        public string TitleSystem { get; set; }
         public string TitleDesktopPicture { get; set; }
         public string TipDesktopPicture { get; set; }
         public string TitleLockscreenPicture { get; set; }
