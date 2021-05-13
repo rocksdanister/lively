@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using livelywpf.Model;
 
@@ -88,6 +89,12 @@ namespace livelywpf.Core
         /// </summary>
         /// <param name="pos">Range 0 - 100</param>
         void SetPlaybackPos(float pos, PlaybackPosType type);
+        /// <summary>
+        /// Capture wallpaper view and save as image (.jpg)
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
+        Task ScreenCapture(string filePath);
         /// <summary>
         /// Fires after Show() method is called.
         /// Check success status to check if wallpaper ready/failed.

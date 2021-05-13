@@ -153,6 +153,12 @@ namespace livelywpf
         mpv
     }
 
+    public enum LivelyPicturePlayer
+    {
+        win10Img,
+        picture
+    }
+
     public enum LivelyWebBrowser
     {
         cef,
@@ -167,7 +173,8 @@ namespace livelywpf
         none,
         fill,
         uniform,
-        uniformFill
+        uniformFill,
+        auto
     }
 
     public enum AppTheme
@@ -177,4 +184,24 @@ namespace livelywpf
         Dark,
     }
 
+    /// <summary>
+    /// System taskbar theme
+    /// </summary>
+    public enum TaskbarTheme
+    {
+        [Description("System default.")]
+        none,
+        [Description("Fully transparent.")]
+        clear,
+        [Description("Blurred.")]
+        blur,
+        [Description("Fluent design.")]
+        fluent,
+        [Description("User defined color.")]
+        color,
+        [Description("Live wallpaper color avg.")]
+        wallpaper,
+        [Description("Live wallpaper color avg fluet style.")]
+        wallpaperFluent,
+    }
 }

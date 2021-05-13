@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Interop;
 using System.Windows.Threading;
 
@@ -19,7 +20,7 @@ namespace livelywpf.Core
 
         public VideoPlayerWPF(string filePath, LibraryModel model, LivelyScreen display, WallpaperScaler scaler = WallpaperScaler.fill)
         {
-            player = new MediaElementWPF(filePath, scaler);
+            player = new MediaElementWPF(filePath, scaler == WallpaperScaler.auto ? WallpaperScaler.uniform : scaler);
             this.model = model;
             this.display = display;
         }
@@ -116,6 +117,11 @@ namespace livelywpf.Core
         public void SetPlaybackPos(float pos, PlaybackPosType type)
         {
             //todo
+        }
+
+        public Task ScreenCapture(string filePath)
+        {
+            throw new NotImplementedException();
         }
     }
 }

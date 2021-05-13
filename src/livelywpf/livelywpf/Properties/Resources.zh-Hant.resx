@@ -779,4 +779,52 @@ https://github.com/rocksdanister/lively/wiki</value>
 <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
   <value>輸入可選的命令行參數</value>
 </data>
+  <data name="TextGitHubStar" xml:space="preserve">
+    <value>通過放下一顆星星來表達愛意</value>
+  </data>
+  <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
+    <value>找到不兼容的程序，任務欄主題已禁用。</value>
+  </data>
+  <data name="TitleTaskbarTheme" xml:space="preserve">
+    <value>任務欄主題</value>
+  </data>
+  <data name="TitleLockscreenPicture" xml:space="preserve">
+    <value>鎖屏圖片</value>
+  </data>
+  <data name="TitleDesktopPicture" xml:space="preserve">
+    <value>桌面圖片</value>
+  </data>
+  <data name="TipLockscreenPicture" xml:space="preserve">
+    <value>將動畫牆紙的圖片設置為鎖屏牆紙。</value>
+  </data>
+  <data name="TipDesktopPicture" xml:space="preserve">
+    <value>將動畫牆紙的圖片設置為桌面牆紙。</value>
+  </data>
+  <data name="TipTaskbarTheme" xml:space="preserve">
+    <value>更改系統任務欄外觀。</value>
+  </data>
+  <data name="TextTaskbarThemeBlur" xml:space="preserve">
+    <value>模糊</value>
+  </data>
+  <data name="TextTaskbarThemeClear" xml:space="preserve">
+    <value>清除</value>
+  </data>
+  <data name="TextTaskbarThemeColor" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="TextTaskbarThemeFluent" xml:space="preserve">
+    <value>流利</value>
+  </data>
+  <data name="TextTaskbarThemeWallpaper" xml:space="preserve">
+    <value>牆紙</value>
+  </data>
+  <data name="TextTaskbarThemeWallpaperFluent" xml:space="preserve">
+    <value>牆紙流利</value>
+  </data>
+  <data name="TitleSystem" xml:space="preserve">
+    <value>系統</value>
+  </data>
+  <data name="TitleSourceCode" xml:space="preserve">
+    <value>源代碼</value>
+  </data>
 </root>

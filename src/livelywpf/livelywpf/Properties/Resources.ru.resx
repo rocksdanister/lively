@@ -739,49 +739,97 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Вам нравится пользоваться Lively? Оставьте отзыв :)</value>
   </data>
   <data name="TitleStore" xml:space="preserve">
-    <value>Store</value>
+    <value>Магазин</value>
     <comment>For different version of Lively, example: Microsoft Store</comment>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>Your Windows N/KN version will require the download of additional codecs to support video playback in wallpapers.</value>
+    <value>Ваша версия Windows N/KN потребует загрузки дополнительных кодеков для поддержки воспроизведения видео в обоях.</value>
   </data>
   <data name="TextLicense" xml:space="preserve">
-    <value>License</value>
+    <value>Лицензия</value>
   </data>
   <data name="TextPrivacyPolicy" xml:space="preserve">
-    <value>Privacy Policy</value>
+    <value>Политика конфиденциальности</value>
   </data>
   <data name="TitleAudioDesktopOnly" xml:space="preserve">
-    <value>Play audio only when desktop is focused</value>
+    <value>Воспроизведение звука только при фокусировке рабочего стола</value>
   </data>
   <data name="TipExportLogs" xml:space="preserve">
-    <value>Create log report file.</value>
+    <value>Создайте файл отчета журнала.</value>
   </data>
   <data name="TitleExportLogs" xml:space="preserve">
-    <value>Log File</value>
+    <value>Файл журнала</value>
   </data>
   <data name="TitleReportBug" xml:space="preserve">
-    <value>Report Bug</value>
+    <value>Сообщить об ошибке</value>
   </data>
   <data name="TitleVideoHardwareDecode" xml:space="preserve">
-    <value>GPU Decode</value>
+    <value>Декодирование GPU</value>
   </data>
   <data name="TipVideoHardwareDecode" xml:space="preserve">
-    <value>Use hardware acceleration when possible.</value>
+    <value>Используйте аппаратное ускорение, когда это возможно.</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
-  <value>Please stop before proceeding.</value>
+  <value>Пожалуйста, остановитесь, прежде чем продолжить.</value>
 </data>
 <data name="TextEditWallpaper" xml:space="preserve">
-  <value>Edit</value>
+  <value>Редактировать</value>
 </data>
 <data name="TitleLocation" xml:space="preserve">
-  <value>Location</value>
+  <value>Местонахождение</value>
 </data>
 <data name="TitleSkipConfirm" xml:space="preserve">
-  <value>Skip Confirmation</value>
+  <value>Пропустить подтверждение</value>
 </data>
 <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-  <value>Enter optional commandline arguments</value>
+  <value>Введите необязательные аргументы командной строки</value>
 </data>
+  <data name="TextGitHubStar" xml:space="preserve">
+    <value>Покажите свою любовь, бросив звезду</value>
+  </data>
+  <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
+    <value>Найдена несовместимая программа, тематизация панели задач отключена.</value>
+  </data>
+  <data name="TitleTaskbarTheme" xml:space="preserve">
+    <value>Тема панели задач</value>
+  </data>
+  <data name="TitleLockscreenPicture" xml:space="preserve">
+    <value>Изображение на экране блокировки</value>
+  </data>
+  <data name="TitleDesktopPicture" xml:space="preserve">
+    <value>Изображение на рабочем столе</value>
+  </data>
+  <data name="TipLockscreenPicture" xml:space="preserve">
+    <value>Установите изображение анимированных обоев в качестве обоев экрана блокировки.</value>
+  </data>
+  <data name="TipDesktopPicture" xml:space="preserve">
+    <value>Установите картинку анимированных обоев в качестве обоев рабочего стола.</value>
+  </data>
+  <data name="TipTaskbarTheme" xml:space="preserve">
+    <value>Изменение внешнего вида панели задач системы.</value>
+  </data>
+  <data name="TextTaskbarThemeBlur" xml:space="preserve">
+    <value>Пятно</value>
+  </data>
+  <data name="TextTaskbarThemeClear" xml:space="preserve">
+    <value>Очистить</value>
+  </data>
+  <data name="TextTaskbarThemeColor" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="TextTaskbarThemeFluent" xml:space="preserve">
+    <value>Акрил</value>
+  </data>
+  <data name="TextTaskbarThemeWallpaper" xml:space="preserve">
+    <value>Обои</value>
+  </data>
+  <data name="TextTaskbarThemeWallpaperFluent" xml:space="preserve">
+    <value>Обои акриловые</value>
+  </data>
+  <data name="TitleSourceCode" xml:space="preserve">
+    <value>Исходный код</value>
+  </data>
+  <data name="TitleSystem" xml:space="preserve">
+    <value>Система</value>
+  </data>
 </root>

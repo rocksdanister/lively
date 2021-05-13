@@ -97,6 +97,15 @@ namespace livelywpf
         public bool TestBuild { get; set; }
         public bool DetectRemoteDesktop { get; set; }
         public AppTheme ApplicationTheme {get; set;}
+        /// <summary>
+        /// Set screen capture of wallpaper as lockscreen image.
+        /// </summary>
+        public bool LockScreenAutoWallpaper { get; set; }
+        /// <summary>
+        /// Set screen capture of wallpaper as desktop image.
+        /// </summary>
+        public bool DesktopAutoWallpaper { get; set; }
+        public TaskbarTheme SystemTaskbarTheme { get; set; }
 
         public SettingsModel()
         {
@@ -153,6 +162,9 @@ namespace livelywpf
             TestBuild = false;
             ApplicationTheme = AppTheme.Dark;
             DetectRemoteDesktop = true;
+            LockScreenAutoWallpaper = false;
+            DesktopAutoWallpaper = false;
+            SystemTaskbarTheme = TaskbarTheme.none;
 
             try
             {

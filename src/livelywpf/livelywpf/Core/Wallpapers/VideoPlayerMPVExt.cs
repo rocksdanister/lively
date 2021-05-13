@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows.Threading;
 
 namespace livelywpf.Core
@@ -56,6 +57,7 @@ namespace livelywpf.Core
                 }
             }
 
+            scaler = scaler == WallpaperScaler.auto ? WallpaperScaler.uniform : scaler;
             ProcessStartInfo start = new ProcessStartInfo
             {
                 Arguments = "--path " + "\"" + path + "\"" + " --stream " + (int)streamQuality + 
@@ -251,6 +253,11 @@ namespace livelywpf.Core
         public void SetPlaybackPos(float pos, PlaybackPosType type)
         {
             //todo
+        }
+
+        public async Task ScreenCapture(string filePath)
+        {
+            throw new NotImplementedException();
         }
     }
 }

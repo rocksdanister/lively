@@ -13,7 +13,7 @@
     
     <Grid>
         <TabControl Style="{StaticResource TabControlPivotStyle}">
-            <TabItem Header="{x:Static p:Resources.TitleGeneral}" >
+            <TabItem Header="{x:Static p:Resources.TitleGeneral}">
                 <Grid>
                     <ScrollViewer Margin="0, 0, 15, 0">
                         <StackPanel Margin="0, 10, 0, 0">
@@ -266,6 +266,34 @@
                             <TextBlock Margin="0, 5, 0, 0" FontSize="12" TextWrapping="Wrap" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}" 
                                        Text="{x:Static p:Resources.TipAudioMaster}"/>
                             <CheckBox Content="{x:Static p:Resources.TitleAudioDesktopOnly}" Margin="0,5,0,0" IsChecked="{Binding IsAudioOnlyOnDesktop, Mode=TwoWay}"/>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="{x:Static p:Resources.TitleSystem}">
+                <Grid>
+                    <ScrollViewer>
+                        <StackPanel>
+                            <ui:ToggleSwitch Margin="0, 10, 0, 0" IsOn="{Binding IsLockScreenAutoWallpaper, Mode=TwoWay}" Header="{x:Static p:Resources.TitleLockscreenPicture}"
+                                          OffContent="{x:Static p:Resources.TextOff}" OnContent="{x:Static p:Resources.TextOn}"/>
+                            <TextBlock Margin="0, 10, 0, 0" FontSize="12" TextWrapping="Wrap" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}" Text="{x:Static p:Resources.TipLockscreenPicture}"/>
+
+                            <ui:ToggleSwitch IsEnabled="False" Margin="0, 10, 0, 0" IsOn="{Binding IsDesktopAutoWallpaper, Mode=TwoWay}" Header="{x:Static p:Resources.TitleDesktopPicture}"
+                                          OffContent="{x:Static p:Resources.TextOff}" OnContent="{x:Static p:Resources.TextOn}"/>
+                            <TextBlock Margin="0, 10, 0, 0" FontSize="12" TextWrapping="Wrap" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}" Text="{x:Static p:Resources.TipDesktopPicture}"/>
+                            
+                            <TextBlock Text="{x:Static p:Resources.TitleTaskbarTheme}" Margin="0,10,0,0"/>
+                            <ComboBox Margin="0,5,0,0" MinWidth="150" SelectedIndex="{Binding SelectedTaskbarThemeIndex, Mode=TwoWay}">
+                                <ComboBoxItem Content="{x:Static p:Resources.TextOff}"/>
+                                <ComboBoxItem Content="{x:Static p:Resources.TextTaskbarThemeClear}"/>
+                                <ComboBoxItem Content="{x:Static p:Resources.TextTaskbarThemeBlur}"/>
+                                <ComboBoxItem Content="{x:Static p:Resources.TextTaskbarThemeFluent}"/>
+                                <ComboBoxItem Content="{x:Static p:Resources.TextTaskbarThemeColor}" Visibility="Collapsed"/>
+                                <ComboBoxItem Content="{x:Static p:Resources.TextTaskbarThemeWallpaper}"/>
+                                <ComboBoxItem Content="{x:Static p:Resources.TextTaskbarThemeWallpaperFluent}"/>
+                            </ComboBox>
+                            <TextBlock Margin="0,10,0,0" FontSize="12" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}" TextWrapping="Wrap" Text="{x:Static p:Resources.TipTaskbarTheme}"/>
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>

@@ -52,6 +52,13 @@
                 </Hyperlink>
                     </TextBlock>
 
+                    <TextBlock FontSize="15" Text="{x:Static p:Resources.TitleSourceCode}" Margin="0, 10, 0, 0"/>
+                    <TextBlock>           
+                    <Hyperlink ToolTip="https://github.com/rocksdanister/lively/" Foreground="{DynamicResource SystemControlHighlightAltListAccentHighBrush}" NavigateUri="https://github.com/rocksdanister/lively/" RequestNavigate="Hyperlink_RequestNavigate">
+                        <TextBlock Text="{x:Static p:Resources.TextGitHubStar}"/>
+                    </Hyperlink>
+                    </TextBlock>
+
                     <StackPanel x:Name="storePanel">
                         <TextBlock FontSize="15" Text="{x:Static p:Resources.TitleStore}" Margin="0, 10, 0, 0"/>
                         <TextBlock ToolTip="Windows Store">          

@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Management;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace livelywpf.Core
 {
@@ -370,6 +371,11 @@ namespace livelywpf.Core
             {
                 SendMessage("lively:reload");
             }
+        }
+
+        public Task ScreenCapture(string filePath)
+        {
+            throw new NotImplementedException();
         }
     }
 }

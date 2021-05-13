@@ -126,6 +126,9 @@ namespace livelywpf
             IsAudioOnlyOnDesktop = Settings.AudioOnlyOnDesktop;
             SelectedWallpaperScalingIndex = (int)Settings.WallpaperScaling;
             CefDiskCache = Settings.CefDiskCache;
+            IsLockScreenAutoWallpaper = Settings.LockScreenAutoWallpaper;
+            SelectedTaskbarThemeIndex = (int)Settings.SystemTaskbarTheme;
+            IsDesktopAutoWallpaper = Settings.DesktopAutoWallpaper;
             IsDebugMenuVisible = Settings.DebugMenu;
             SelectedWebBrowserIndex = (int)Settings.WebBrowser;
             SelectedAppThemeIndex = (int)Settings.ApplicationTheme;
@@ -750,6 +753,96 @@ namespace livelywpf
         }
 
         #endregion audio
+
+        #region system
+
+        private bool _isLockScreenAutoWallpaper;
+        public bool IsLockScreenAutoWallpaper
+        {
+            get
+            {
+                return _isLockScreenAutoWallpaper;
+            }
+            set
+            {
+                _isLockScreenAutoWallpaper = value;
+                if (Settings.LockScreenAutoWallpaper != _isLockScreenAutoWallpaper)
+                {
+                    Settings.LockScreenAutoWallpaper = _isLockScreenAutoWallpaper;
+                    UpdateConfigFile();
+                }
+                OnPropertyChanged("IsLockScreenAutoWallpaper");
+            }
+        }
+
+        private bool _isDesktopAutoWallpaper;
+        public bool IsDesktopAutoWallpaper
+        {
+            get
+            {
+                return _isDesktopAutoWallpaper;
+            }
+            set
+            {
+                _isDesktopAutoWallpaper = value;
+                if (Settings.DesktopAutoWallpaper != _isDesktopAutoWallpaper)
+                {
+                    Settings.DesktopAutoWallpaper = _isDesktopAutoWallpaper;
+                    UpdateConfigFile();
+                }
+                OnPropertyChanged("IsDesktopAutoWallpaper");
+            }
+        }
+
+        private bool _taskbarThemingInitialized = false;
+        private int _selectedTaskbarThemeIndex;
+        public int SelectedTaskbarThemeIndex
+        {
+            get
+            {
+                return _selectedTaskbarThemeIndex;
+            }
+            set
+            {
+                _selectedTaskbarThemeIndex = value;
+                if (!_taskbarThemingInitialized)
+                {
+                    if ((TaskbarTheme)_selectedTaskbarThemeIndex == TaskbarTheme.none)
+                    {
+                        //nothing to do..
+                    }
+                    else
+                    {
+                        string pgm = null;
+                        if ((pgm = Helpers.TransparentTaskbar.CheckIncompatiblePrograms()) == null)
+                        {
+                            Helpers.TransparentTaskbar.Instance.SetTheme((TaskbarTheme)_selectedTaskbarThemeIndex);
+                            Helpers.TransparentTaskbar.Instance.Start();
+                            _taskbarThemingInitialized = true;
+                        }
+                        else
+                        {
+                            _selectedTaskbarThemeIndex = (int)TaskbarTheme.none;
+                            _ = Task.Run(() =>
+                                    System.Windows.MessageBox.Show(Properties.Resources.DescIncompatibleTaskbarTheme + "\n\n" + pgm, Properties.Resources.TitleAppName, MessageBoxButton.OK, MessageBoxImage.Information));
+                        }
+                    }
+                }
+                else
+                {
+                    Helpers.TransparentTaskbar.Instance.SetTheme((TaskbarTheme)_selectedTaskbarThemeIndex);
+                }
+                //save the data..
+                if (Settings.SystemTaskbarTheme != (TaskbarTheme)_selectedTaskbarThemeIndex)
+                {
+                    Settings.SystemTaskbarTheme = (TaskbarTheme)_selectedTaskbarThemeIndex;
+                    UpdateConfigFile();
+                }
+                OnPropertyChanged("SelectedTaskbarThemeIndex");
+            }
+        }
+
+        #endregion //system
 
         #region misc
 

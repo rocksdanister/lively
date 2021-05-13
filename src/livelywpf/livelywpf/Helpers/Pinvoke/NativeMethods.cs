@@ -13,7 +13,6 @@ namespace livelywpf
 #pragma warning disable CA1707, CA1401, CA1712
     public static class NativeMethods
     {
-
         #region WM_Register
 
         public static readonly int WM_SHOWLIVELY = RegisterWindowMessage("WM_SHOWLIVELYMAINWINDOW");
@@ -1363,6 +1362,7 @@ namespace livelywpf
      int flags);
 
 
+        public static UInt32 SPIF_SENDWININICHANGE = 0x02;
         public static UInt32 SPI_SETDESKWALLPAPER = 20;
         public static UInt32 SPIF_UPDATEINIFILE = 0x1;
         public static UInt32 SPI_SETCLIENTAREAANIMATION = 0x1043;
