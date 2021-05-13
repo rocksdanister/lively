@@ -2,7 +2,7 @@
 ; https://jrsoftware.org/isinfo.php
 
 #define MyAppName "Lively Wallpaper"
-#define MyAppVersion "1.2.0.4"
+#define MyAppVersion "1.5.0.0"
 #define MyAppPublisher "rocksdanister"
 #define MyAppURL "https://github.com/rocksdanister/lively"
 #define MyAppExeName "livelywpf.exe"
@@ -51,6 +51,7 @@ WizardSmallImageFile=Theme\wizard_small.bmp
 WizardImageFile=Theme\wizard_large.bmp
 ;Default is hide the welcome page, ms guidelines
 DisableWelcomePage=no
+UninstallDisplayIcon={app}\{#MyAppExeName}
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"; LicenseFile: "License\License.txt";
@@ -71,7 +72,7 @@ Root: HKCU; Subkey: "Software\Microsoft\Windows\CurrentVersion\Run"; ValueType: 
 
 [Files]
 Source: "VC\VC_redist.x86.exe"; DestDir: {tmp}; Flags: deleteafterinstall
-Source: "dotnetcore\windowsdesktop-runtime-3.1.13-win-x86.exe"; DestDir: {tmp}; Flags: deleteafterinstall
+Source: "dotnetcore\windowsdesktop-runtime-3.1.14-win-x86.exe"; DestDir: {tmp}; Flags: deleteafterinstall
 Source: "dotnetcore\netcorecheck.exe"; DestDir: {tmp}; Flags: deleteafterinstall
 
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
@@ -87,7 +88,7 @@ Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChang
 ;skipifsilent
 Filename: "{tmp}\VC_redist.x86.exe"; Parameters: /install /quiet /norestart; Check: VCRedistNeedsInstall and DependencyInstall; StatusMsg: Installing Visual C++ Redistributable...
 ;todo:write loop for Check
-Filename: "{tmp}\windowsdesktop-runtime-3.1.13-win-x86.exe"; Parameters: /install /quiet /norestart; Check: NetCoreNeedsInstall('3.1.7') and NetCoreNeedsInstall('3.1.8') and NetCoreNeedsInstall('3.1.9') and NetCoreNeedsInstall('3.1.10') and NetCoreNeedsInstall('3.1.11') and NetCoreNeedsInstall('3.1.12') and NetCoreNeedsInstall('3.1.13') and DependencyInstall;  StatusMsg: Installing .Net Core 3.1...
+Filename: "{tmp}\windowsdesktop-runtime-3.1.14-win-x86.exe"; Parameters: /install /quiet /norestart; Check: NetCoreNeedsInstall('3.1.7') and NetCoreNeedsInstall('3.1.8') and NetCoreNeedsInstall('3.1.9') and NetCoreNeedsInstall('3.1.10') and NetCoreNeedsInstall('3.1.11') and NetCoreNeedsInstall('3.1.12') and NetCoreNeedsInstall('3.1.13') and NetCoreNeedsInstall('3.1.14') and DependencyInstall;  StatusMsg: Installing .Net Core 3.1...
 
 [Code]
 var

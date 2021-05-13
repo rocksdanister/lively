@@ -1,7 +1,3 @@
-
-
-
-
 # Lively Wallpaper
 [![GitHub release](https://img.shields.io/github/release/rocksdanister/lively/all.svg)](https://github.com/rocksdanister/lively/releases)
 [![Github all releases](https://img.shields.io/github/downloads/rocksdanister/lively/total.svg)](https://github.com/rocksdanister/lively/releases)
@@ -84,7 +80,7 @@ Just drag & drop files, webpages to set as wallpaper..
 * Powerful set of API for developers to create interactive wallpapers.
 * Get system information, audio graph, music information..
 * [Learn more..](https://github.com/rocksdanister/lively/wiki/API)
-#### Taskbar customization
+#### Taskbar Customization
 <img src="/resources/taskbar_theme.gif" width="600" height="338"/>
 
 * Several system taskbar theme : Clear, Blur, Fluent..
@@ -112,12 +108,12 @@ Just drag & drop files, webpages to set as wallpaper..
 
 **_I'm not officially affiliated with Unity technologies, godot, shadertoy;_**
 ## Download
-##### Latest version: v1.4.0.0 (Windows 10 1903 or above)[What's new?](https://github.com/rocksdanister/lively/releases/tag/v1.4.0.0)
+##### Latest version: v1.5.0.0 (Windows 10 1903 or above)[What's new?](https://github.com/rocksdanister/lively/releases/tag/v1.5.0.0)
 - [`Installer`][direct-full-win32] 
 
-SHA256: b07779164a9aa4803d270e67450de7e529e84a5ca37968900e82a204fa1d1d4f
+SHA256: 88e06ffce63c9588478875b29ab49f40324187f227e0fc1491d4969a3c96a158
      
-[direct-full-win32]: https://github.com/rocksdanister/lively/releases/download/v1.4.0.0/lively_setup_x86_full_v1400.exe
+[direct-full-win32]: https://github.com/rocksdanister/lively/releases/download/v1.5.0.0/lively_setup_x86_full_v1500.exe
 
 Installer will give Smartscreen warning, [discussion.](https://github.com/rocksdanister/lively/issues/9)
 
