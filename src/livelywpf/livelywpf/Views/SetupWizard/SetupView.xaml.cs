@@ -20,13 +20,14 @@ namespace livelywpf.Views.SetupWizard
     /// </summary>
     public partial class SetupView : Window
     {
-        int index = 0;
-        bool _isClosable = false;
-        readonly List<object> pages = new List<object>() { 
+        private int index = 0;
+        private bool _isClosable = false;
+        private readonly List<object> pages = new List<object>() { 
             new PageWelcome(),
             new PageStartup(),
             //new PageDirectory(),
             new PageUI(),
+            new PageTaskbar(),
             new PageFinal() 
         };
 
@@ -37,12 +38,23 @@ namespace livelywpf.Views.SetupWizard
             {
                 pages.Insert(pages.Count - 1, new PageWindowsN());
             }
-            ContentFrame.Navigate(pages[index], new EntranceNavigationTransitionInfo());
+
+            var pageWait = new PagePleaseWait();
+            pageWait.ProcessCompleted += (s, e) =>
+            {
+                NavigateNext();
+                NextBtn.Visibility = Visibility.Visible;
+            };
+            ContentFrame.Navigate(pageWait, new SuppressNavigationTransitionInfo());
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            index++;
+            NavigateNext();
+        }
+
+        private void NavigateNext()
+        {
             if (Program.IsMSIX)
             {
                 //Finish button is visible for Store app.
@@ -55,7 +67,7 @@ namespace livelywpf.Views.SetupWizard
                 {
                     //final page.
                     Program.ShowMainWindow();
-                    //ExitWindow(); //ShowMainWindow() calls it.
+                    //ExitWindow(); //ShowMainWindow() calls it its visible.
                 }
                 else
                 {
@@ -66,12 +78,12 @@ namespace livelywpf.Views.SetupWizard
             {
                 if ((index + 1) == pages.Count)
                 {
-                    NextBtn.IsEnabled = false;
                     NextBtn.Visibility = Visibility.Collapsed;
                     //_isClosable = true;
                 }
                 ContentFrame.Navigate(pages[index], new EntranceNavigationTransitionInfo());
             }
+            index++;
         }
 
         public void ExitWindow()

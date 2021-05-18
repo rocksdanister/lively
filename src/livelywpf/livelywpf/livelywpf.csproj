@@ -10,7 +10,7 @@
     <StartupObject>livelywpf.Program</StartupObject>
     <ApplicationIcon>appicon.ico</ApplicationIcon>
     <Version>1.0.0</Version>
-    <AssemblyVersion>1.5.0.0</AssemblyVersion>
+    <AssemblyVersion>1.5.0.1</AssemblyVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
@@ -27,8 +27,8 @@
     <PackageReference Include="CommandLineParser" Version="2.8.0" />
     <PackageReference Include="DesktopBridge.Helpers" Version="1.2.2" />
     <PackageReference Include="Downloader" Version="2.2.8" />
-    <PackageReference Include="Magick.NET-Q16-x86" Version="7.23.4" />
-    <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.0.1" />
+    <PackageReference Include="Magick.NET-Q16-x86" Version="7.24.0" />
+    <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.0.2" />
     <PackageReference Include="Microsoft.Toolkit.Wpf.UI.Controls" Version="6.1.2" />
     <PackageReference Include="Microsoft.Toolkit.Wpf.UI.XamlHost" Version="6.1.2" />
     <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.824-prerelease" />
@@ -36,11 +36,11 @@
     <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.19041.1" />
     <PackageReference Include="ModernWpfUI" Version="0.9.4" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="NLog" Version="4.7.9" />
+    <PackageReference Include="NLog" Version="4.7.10" />
     <PackageReference Include="Octokit" Version="0.50.0" />
-    <PackageReference Include="RawInput.Sharp" Version="0.0.3" />
+    <PackageReference Include="RawInput.Sharp" Version="0.0.4" />
     <PackageReference Include="Sentinel.NLogViewer" Version="1.3.3" />
-    <PackageReference Include="SharpZipLib" Version="1.3.1" />
+    <PackageReference Include="SharpZipLib" Version="1.3.2" />
   </ItemGroup>
 
   <ItemGroup>

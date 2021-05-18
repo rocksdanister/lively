@@ -612,6 +612,19 @@ namespace livelywpf
             }
         }
 
+        //todo: do it automatically using filesystem watcher..
+        /// <summary>
+        /// Rescans wallpaper directory and update library.
+        /// </summary>
+        public void WallpaperDirectoryUpdate()
+        {
+            LibraryItems.Clear();
+            foreach (var item in ScanWallpaperFolders(wallpaperScanFolders))
+            {
+                LibraryItems.Add(item);
+            }
+        }
+
         #endregion //settings changed
     }
 }

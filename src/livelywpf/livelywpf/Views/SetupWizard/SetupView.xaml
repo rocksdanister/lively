@@ -22,7 +22,7 @@
         </Grid.RowDefinitions>
 
         <ui:Frame x:Name="ContentFrame" Grid.Row="0" Margin="25, 25, 25, 5"/>
-        <Button x:Name="NextBtn" Grid.Row="1" HorizontalAlignment="Right" Margin="0, 0, 30, 0" MinWidth="125" Content="{x:Static p:Resources.TextNext}" Click="Button_Click">
+        <Button x:Name="NextBtn" Visibility="Collapsed" Grid.Row="1" HorizontalAlignment="Right" Margin="0, 0, 30, 0" MinWidth="125" Content="{x:Static p:Resources.TextNext}" Click="Button_Click">
             <ui:FlyoutBase.AttachedFlyout>
                 <ui:Flyout>
                     <TextBlock Text="{x:Static p:Resources.TipLivelySetupOnClose}"  />

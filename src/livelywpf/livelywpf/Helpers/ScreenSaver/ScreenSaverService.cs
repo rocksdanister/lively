@@ -12,7 +12,8 @@ namespace livelywpf.Helpers
     public sealed class ScreenSaverService
     {
         Point mousePosOriginal;
-        private readonly Timer _timer = new Timer();
+        private readonly Timer _inputTimer = new Timer();
+        private readonly Timer _idleTimer = new Timer();
         public bool IsRunning { get; private set; } = false;
         private static readonly ScreenSaverService instance = new ScreenSaverService();
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
@@ -32,8 +33,8 @@ namespace livelywpf.Helpers
 
         private void Initialize()
         {
-            _timer.Elapsed += InputCheckTimer;
-            _timer.Interval = 250;
+            _inputTimer.Elapsed += InputCheckTimer;
+            _inputTimer.Interval = 250;
         }
 
         private void InputCheckTimer(object sender, ElapsedEventArgs e)
@@ -55,7 +56,7 @@ namespace livelywpf.Helpers
                 IsRunning = true;
                 ShowScreenSavers();
                 mousePosOriginal = System.Windows.Forms.Control.MousePosition;
-                _timer.Start();
+                _inputTimer.Start();
             }
         }
 
@@ -65,7 +66,7 @@ namespace livelywpf.Helpers
             {
                 Logger.Info("Stopping ss service..");
                 IsRunning = false;
-                _timer.Stop();
+                _inputTimer.Stop();
                 HideScreenSavers();
             }
         }
@@ -196,7 +197,7 @@ namespace livelywpf.Helpers
 
         #region helpers
 
-        // Fails after 50 days..
+        // Fails after 50 days (uint limit.)
         static uint GetLastInputTime()
         {
             NativeMethods.LASTINPUTINFO lastInputInfo = new NativeMethods.LASTINPUTINFO();

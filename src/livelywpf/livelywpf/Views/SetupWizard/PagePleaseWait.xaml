@@ -1,4 +1,4 @@
-﻿<Page x:Class="livelywpf.Views.SetupWizard.PageStartup"
+﻿<Page x:Class="livelywpf.Views.SetupWizard.PagePleaseWait"
       xmlns:ui="http://schemas.modernwpf.com/2019"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -8,13 +8,12 @@
       xmlns:p = "clr-namespace:livelywpf.Properties"   
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="PageStartup">
+      Title="PagePleaseWait">
 
     <Grid>
         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center">
-            <TextBlock Text="{x:Static p:Resources.TitleWindowsStartup}" FontSize="20"/>
-            <ui:ToggleSwitch IsOn="{Binding IsStartup, Mode=TwoWay}"/>
-            <TextBlock Margin="0,10,0,0" FontSize="12" Foreground="Gray" TextWrapping="Wrap" Text="{x:Static p:Resources.TipWindowsStartup}"/>
+            <ui:ProgressRing HorizontalAlignment="Left" IsActive="True" Margin="10" Width="50" Height="50"/>
+            <TextBlock Text="{x:Static p:Resources.TitlePleaseWait}" FontSize="20"/>
         </StackPanel>
     </Grid>
 </Page>
