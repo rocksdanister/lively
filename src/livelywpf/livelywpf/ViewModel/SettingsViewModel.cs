@@ -125,6 +125,7 @@ namespace livelywpf
             IsDebugMenuVisible = Settings.DebugMenu;
             SelectedWebBrowserIndex = (int)Settings.WebBrowser;
             SelectedAppThemeIndex = (int)Settings.ApplicationTheme;
+            SelectedScreensaverWaitIndex = (int)Settings.ScreensaverIdleWait;
         }
 
         private SettingsModel _settings;
@@ -833,6 +834,50 @@ namespace livelywpf
                     UpdateConfigFile();
                 }
                 OnPropertyChanged("SelectedTaskbarThemeIndex");
+            }
+        }
+
+        private int _selectedScreensaverWaitIndex;
+        public int SelectedScreensaverWaitIndex
+        {
+            get
+            {
+                return _selectedScreensaverWaitIndex;
+            }
+            set
+            {
+                _selectedScreensaverWaitIndex = value;
+                uint idleTime = (ScreensaverIdleTime)_selectedScreensaverWaitIndex switch
+                {
+                    ScreensaverIdleTime.none => 0,
+                    ScreensaverIdleTime.min1 => 60000,
+                    ScreensaverIdleTime.min2 => 120000,
+                    ScreensaverIdleTime.min3 => 180000,
+                    ScreensaverIdleTime.min5 => 300000,
+                    ScreensaverIdleTime.min10 => 600000,
+                    ScreensaverIdleTime.min15 => 900000,
+                    ScreensaverIdleTime.min20 => 1200000,
+                    ScreensaverIdleTime.min25 => 1500000,
+                    ScreensaverIdleTime.min30 => 1800000,
+                    ScreensaverIdleTime.min45 => 2700000,
+                    ScreensaverIdleTime.min60 => 3600000,
+                    _ => 300000,
+                };
+                if (idleTime != 0)
+                {
+                    Helpers.ScreenSaverService.Instance.StartIdleTimer(idleTime);
+                }
+                else
+                {
+                    Helpers.ScreenSaverService.Instance.StopIdleTimer();
+                }
+                //save the data..
+                if (Settings.ScreensaverIdleWait !=  (ScreensaverIdleTime)_selectedScreensaverWaitIndex)
+                {
+                    Settings.ScreensaverIdleWait = (ScreensaverIdleTime)_selectedScreensaverWaitIndex;
+                    UpdateConfigFile();
+                }
+                OnPropertyChanged("SelectedScreensaverWaitIndex");
             }
         }
 

@@ -71,7 +71,7 @@ namespace livelywpf
             if (!Program.SettingsVM.Settings.AppVersion.Equals(Assembly.GetExecutingAssembly().GetName().Version.ToString(), StringComparison.OrdinalIgnoreCase))
             {
                 //todo: show changelog window here..
-                Program.SettingsVM.Settings.WallpaperBundleVersion = ExtractWallpaperBundle();
+                Program.SettingsVM.Settings.WallpaperBundleVersion = ExtractWallpaperBundle(Program.SettingsVM.Settings.WallpaperBundleVersion);
                 Program.SettingsVM.Settings.AppVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
                 Program.SettingsVM.UpdateConfigFile();
             }
@@ -102,10 +102,10 @@ namespace livelywpf
         /// <summary>
         /// Extract default wallpapers and incremental if any.
         /// </summary>
-        public static int ExtractWallpaperBundle()
+        public static int ExtractWallpaperBundle(int currentBundleVer)
         {
             //Lively stores the last extracted bundle filename, extraction proceeds from next file onwards.
-            int maxExtracted = Program.SettingsVM.Settings.WallpaperBundleVersion;
+            int maxExtracted = currentBundleVer;
             try
             {
                 //wallpaper bundles filenames are 0.zip, 1.zip ...

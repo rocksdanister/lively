@@ -124,6 +124,9 @@ namespace livelywpf.Views
                     TextTaskbarThemeFluent = Properties.Resources.TextTaskbarThemeFluent,
                     TextTaskbarThemeWallpaper = Properties.Resources.TextTaskbarThemeWallpaper,
                     TextTaskbarThemeWallpaperFluent = Properties.Resources.TextTaskbarThemeWallpaperFluent,
+                    TitleScreensaver = Properties.Resources.TitleScreensaver,
+                    TipScreensaver = Properties.Resources.TipScreensaver,
+                    TextMinutes = Properties.Resources.TextMinutes,
                     //misc
                     TitleSysTrayIconHide = Properties.Resources.TitleHideSysTray,
                     TipSysTrayIconHide = Properties.Resources.TipHideSysTray,

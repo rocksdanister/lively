@@ -120,6 +120,9 @@ namespace livelysettings
         public string TextTaskbarThemeColor { get; set; }
         public string TextTaskbarThemeWallpaper { get; set; }
         public string TextTaskbarThemeWallpaperFluent { get; set; }
+        public string TitleScreensaver { get; set; }
+        public string TipScreensaver { get; set; }
+        public string TextMinutes { get; set; }
         //Misc
         public string TitleSysTrayIconHide { get; set; }
         public string TipSysTrayIconHide { get; set; }

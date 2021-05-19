@@ -1,17 +1,9 @@
-﻿using ModernWpf;
-using ModernWpf.Controls.Primitives;
+﻿using ModernWpf.Controls.Primitives;
 using ModernWpf.Media.Animation;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace livelywpf.Views.SetupWizard
 {
@@ -34,18 +26,27 @@ namespace livelywpf.Views.SetupWizard
         public SetupView()
         {
             InitializeComponent();
+            Initialize();
+        }
+
+        private async void Initialize()
+        {
+            //extraction of default wallpaper.
+            Program.SettingsVM.Settings.WallpaperBundleVersion = await Task.Run(() => 
+                App.ExtractWallpaperBundle(Program.SettingsVM.Settings.WallpaperBundleVersion));
+            Program.SettingsVM.UpdateConfigFile();
+            Program.LibraryVM.WallpaperDirectoryUpdate();
+
+            //windows codec install page.
             if (SystemInfo.CheckWindowsNorKN())
             {
                 pages.Insert(pages.Count - 1, new PageWindowsN());
             }
 
-            var pageWait = new PagePleaseWait();
-            pageWait.ProcessCompleted += (s, e) =>
-            {
-                NavigateNext();
-                NextBtn.Visibility = Visibility.Visible;
-            };
-            ContentFrame.Navigate(pageWait, new SuppressNavigationTransitionInfo());
+            //setup pages..
+            pleaseWaitPanel.Visibility = Visibility.Collapsed;
+            nextBtn.Visibility = Visibility.Visible;
+            NavigateNext();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -60,7 +61,7 @@ namespace livelywpf.Views.SetupWizard
                 //Finish button is visible for Store app.
                 if ((index + 1) == pages.Count)
                 {
-                    NextBtn.Content = Properties.Resources.TextOK;
+                    nextBtn.Content = Properties.Resources.TextOK;
                 }
 
                 if ((index) == pages.Count)
@@ -71,17 +72,17 @@ namespace livelywpf.Views.SetupWizard
                 }
                 else
                 {
-                    ContentFrame.Navigate(pages[index], new EntranceNavigationTransitionInfo());
+                    contentFrame.Navigate(pages[index], new EntranceNavigationTransitionInfo());
                 }
             }
             else
             {
                 if ((index + 1) == pages.Count)
                 {
-                    NextBtn.Visibility = Visibility.Collapsed;
+                    nextBtn.Visibility = Visibility.Collapsed;
                     //_isClosable = true;
                 }
-                ContentFrame.Navigate(pages[index], new EntranceNavigationTransitionInfo());
+                contentFrame.Navigate(pages[index], new EntranceNavigationTransitionInfo());
             }
             index++;
         }
@@ -97,7 +98,7 @@ namespace livelywpf.Views.SetupWizard
             if (!_isClosable)
             {
                 e.Cancel = true;
-                FlyoutBase.ShowAttachedFlyout((FrameworkElement)NextBtn);
+                FlyoutBase.ShowAttachedFlyout((FrameworkElement)nextBtn);
             }
         }
     }

@@ -11,7 +11,8 @@ namespace livelywpf.Helpers
 {
     public sealed class ScreenSaverService
     {
-        Point mousePosOriginal;
+        private Point mousePosOriginal;
+        private uint idleWaitTime = 500000;
         private readonly Timer _inputTimer = new Timer();
         private readonly Timer _idleTimer = new Timer();
         public bool IsRunning { get; private set; } = false;
@@ -35,6 +36,9 @@ namespace livelywpf.Helpers
         {
             _inputTimer.Elapsed += InputCheckTimer;
             _inputTimer.Interval = 250;
+
+            _idleTimer.Elapsed += IdleCheckTimer;
+            _idleTimer.Interval = 30000;
         }
 
         private void InputCheckTimer(object sender, ElapsedEventArgs e)
@@ -48,11 +52,32 @@ namespace livelywpf.Helpers
             }
         }
 
+        private void IdleCheckTimer(object sender, ElapsedEventArgs e)
+        {
+            if (GetLastInputTime() >= idleWaitTime)
+            {
+                Start();
+            }
+        }
+
+        public void StartIdleTimer(uint idleTime)
+        {
+            Logger.Info("Starting screensaver idle wait {0}ms..", idleTime);
+            idleWaitTime = idleTime;
+            _idleTimer.Start();
+        }
+
+        public void StopIdleTimer()
+        {
+            Logger.Info("Stopping screensaver idle wait..");
+            _idleTimer.Stop();
+        }
+
         public void Start()
         {
             if (!IsRunning && SetupDesktop.Wallpapers.Count != 0)
             {
-                Logger.Info("Starting ss service..");
+                Logger.Info("Starting screensaver..");
                 IsRunning = true;
                 ShowScreenSavers();
                 mousePosOriginal = System.Windows.Forms.Control.MousePosition;
@@ -64,7 +89,7 @@ namespace livelywpf.Helpers
         {
             if (IsRunning)
             {
-                Logger.Info("Stopping ss service..");
+                Logger.Info("Stopping screensaver..");
                 IsRunning = false;
                 _inputTimer.Stop();
                 HideScreenSavers();

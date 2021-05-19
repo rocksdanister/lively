@@ -318,6 +318,9 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="TextLicense" xml:space="preserve">
     <value>License</value>
   </data>
+  <data name="TextMinutes" xml:space="preserve">
+    <value>Minutes</value>
+  </data>
   <data name="TextmoreInfo" xml:space="preserve">
     <value>Information</value>
   </data>
@@ -579,6 +582,9 @@ All: Pause wallpaper on all screen(s) if any application is focused/fullscreen.<
     <value>Foreground: Lightweight, only checks the single process that is in foreground to determine wallpaper playback behaviour.
 All Process: Heavier, Scans all the process to determine playback behaviour.</value>
   </data>
+  <data name="TipScreensaver" xml:space="preserve">
+    <value>After the selected inactivity period use the current wallpaper as your screensaver.</value>
+  </data>
   <data name="TipStreamWallpaperDetect" xml:space="preserve">
     <value>If supported video stream link is detected use the video player instead of loading the webpage.</value>
   </data>
@@ -747,6 +753,9 @@ Edge is the built in webview of windows 10.</value>
   </data>
   <data name="TitleScreenLayout" xml:space="preserve">
     <value>Control Panel</value>
+  </data>
+  <data name="TitleScreensaver" xml:space="preserve">
+    <value>Screensaver</value>
   </data>
   <data name="TitleSelectFile" xml:space="preserve">
     <value>Select File</value>

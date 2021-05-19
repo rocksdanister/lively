@@ -622,6 +622,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Minutes.
+        /// </summary>
+        public static string TextMinutes {
+            get {
+                return ResourceManager.GetString("TextMinutes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Information.
         /// </summary>
         public static string TextmoreInfo {
@@ -1399,6 +1408,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to After the selected inactivity period use the current wallpaper as your screensaver..
+        /// </summary>
+        public static string TipScreensaver {
+            get {
+                return ResourceManager.GetString("TipScreensaver", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to If supported video stream link is detected use the video player instead of loading the webpage..
         /// </summary>
         public static string TipStreamWallpaperDetect {
@@ -1900,6 +1918,15 @@ namespace livelywpf.Properties {
         public static string TitleScreenLayout {
             get {
                 return ResourceManager.GetString("TitleScreenLayout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Screensaver.
+        /// </summary>
+        public static string TitleScreensaver {
+            get {
+                return ResourceManager.GetString("TitleScreensaver", resourceCulture);
             }
         }
         
