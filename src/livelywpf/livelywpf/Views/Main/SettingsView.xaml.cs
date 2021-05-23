@@ -127,6 +127,7 @@ namespace livelywpf.Views
                     TitleScreensaver = Properties.Resources.TitleScreensaver,
                     TipScreensaver = Properties.Resources.TipScreensaver,
                     TextMinutes = Properties.Resources.TextMinutes,
+                    TextHours = Properties.Resources.TextHours,
                     //misc
                     TitleSysTrayIconHide = Properties.Resources.TitleHideSysTray,
                     TipSysTrayIconHide = Properties.Resources.TipHideSysTray,

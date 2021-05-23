@@ -197,7 +197,8 @@ namespace livelywpf
         min25,
         min30,
         min45,
-        min60
+        min60,
+        min120
     }
 
     /// <summary>

@@ -15,7 +15,7 @@ namespace livelywpf.Helpers
     {
         //todo: Find a way to avoid passing XamlRoot.
         public static async Task<ContentDialogResult> ShowConfirmationDialog(string title, string message, XamlRoot xamlRoot,
-            string primaryBtnText, string secondaryBtnText = null, ContentDialogButton defaultBtn = ContentDialogButton.Secondary )
+            string primaryBtnText, string secondaryBtnText = null, ContentDialogButton defaultBtn = ContentDialogButton.Primary)
         {
             var tb = new Windows.UI.Xaml.Controls.TextBlock{ Text = message };
             ContentDialog dialog = new ContentDialog
@@ -29,9 +29,8 @@ namespace livelywpf.Helpers
             if (!string.IsNullOrEmpty(secondaryBtnText))
             {
                 dialog.SecondaryButtonText = secondaryBtnText;
-                dialog.DefaultButton = defaultBtn;
-                result = ContentDialogResult.Secondary;
             }
+            dialog.DefaultButton = defaultBtn;
 
             // Use this code to associate the dialog to the appropriate AppWindow by setting
             // the dialog's XamlRoot to the same XamlRoot as an element that is already present in the AppWindow.
@@ -78,7 +77,7 @@ namespace livelywpf.Helpers
         }
 
         public static async Task<ContentDialogResult> ShowConfirmationDialog(string title, object body, XamlRoot xamlRoot,
-         string primaryBtnText, string secondaryBtnText = null, ContentDialogButton defaultBtn = ContentDialogButton.Secondary)
+         string primaryBtnText, string secondaryBtnText = null, ContentDialogButton defaultBtn = ContentDialogButton.Primary)
         {
             ContentDialog dialog = new ContentDialog
             {
@@ -91,9 +90,8 @@ namespace livelywpf.Helpers
             if (!string.IsNullOrEmpty(secondaryBtnText))
             {
                 dialog.SecondaryButtonText = secondaryBtnText;
-                dialog.DefaultButton = defaultBtn;
-                result = ContentDialogResult.Secondary;
             }
+            dialog.DefaultButton = defaultBtn;
 
             // Use this code to associate the dialog to the appropriate AppWindow by setting
             // the dialog's XamlRoot to the same XamlRoot as an element that is already present in the AppWindow.

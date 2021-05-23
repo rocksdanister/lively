@@ -237,17 +237,78 @@
 
                             <ComboBox Margin="0,10,0,0" MinWidth="150" SelectedIndex="{Binding SelectedScreensaverWaitIndex, Mode=TwoWay}" Header="{x:Bind UIText.TitleScreensaver}" >
                                 <ComboBoxItem Content="{x:Bind UIText.TextOff}"/>
-                                <ComboBoxItem Content="1m"/>
-                                <ComboBoxItem Content="2m"/>
-                                <ComboBoxItem Content="3m"/>
-                                <ComboBoxItem Content="5m"/>
-                                <ComboBoxItem Content="10m"/>
-                                <ComboBoxItem Content="15m"/>
-                                <ComboBoxItem Content="20m"/>
-                                <ComboBoxItem Content="25m"/>
-                                <ComboBoxItem Content="30m"/>
-                                <ComboBoxItem Content="45m"/>
-                                <ComboBoxItem Content="60m"/>
+                                <ComboBoxItem>
+                                    <TextBlock>
+                                      <Run Text="1 "/>
+                                      <Run Text="{x:Bind UIText.TextMinutes}"/>
+                                    </TextBlock>
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <TextBlock>
+                                      <Run Text="2 "/>
+                                      <Run Text="{x:Bind UIText.TextMinutes}"/>
+                                    </TextBlock>
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <TextBlock>
+                                      <Run Text="3 "/>
+                                      <Run Text="{x:Bind UIText.TextMinutes}"/>
+                                    </TextBlock>
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <TextBlock>
+                                      <Run Text="5 "/>
+                                      <Run Text="{x:Bind UIText.TextMinutes}"/>
+                                    </TextBlock>
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <TextBlock>
+                                      <Run Text="10 "/>
+                                      <Run Text="{x:Bind UIText.TextMinutes}"/>
+                                    </TextBlock>
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <TextBlock>
+                                      <Run Text="15 "/>
+                                      <Run Text="{x:Bind UIText.TextMinutes}"/>
+                                    </TextBlock>
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <TextBlock>
+                                      <Run Text="20 "/>
+                                      <Run Text="{x:Bind UIText.TextMinutes}"/>
+                                    </TextBlock>
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <TextBlock>
+                                      <Run Text="25 "/>
+                                      <Run Text="{x:Bind UIText.TextMinutes}"/>
+                                    </TextBlock>
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <TextBlock>
+                                      <Run Text="30 "/>
+                                      <Run Text="{x:Bind UIText.TextMinutes}"/>
+                                    </TextBlock>
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <TextBlock>
+                                      <Run Text="45 "/>
+                                      <Run Text="{x:Bind UIText.TextMinutes}"/>
+                                    </TextBlock>
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <TextBlock>
+                                      <Run Text="1 "/>
+                                      <Run Text="{x:Bind UIText.TextHours}"/>
+                                    </TextBlock>
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <TextBlock>
+                                      <Run Text="2 "/>
+                                      <Run Text="{x:Bind UIText.TextHours}"/>
+                                    </TextBlock>
+                                </ComboBoxItem>
                             </ComboBox>
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipScreensaver}"/>
                         </StackPanel>

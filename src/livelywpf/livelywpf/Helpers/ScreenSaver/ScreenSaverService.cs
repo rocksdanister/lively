@@ -12,7 +12,7 @@ namespace livelywpf.Helpers
     public sealed class ScreenSaverService
     {
         private Point mousePosOriginal;
-        private uint idleWaitTime = 500000;
+        private uint idleWaitTime = 300000;
         private readonly Timer _inputTimer = new Timer();
         private readonly Timer _idleTimer = new Timer();
         public bool IsRunning { get; private set; } = false;
@@ -54,23 +54,41 @@ namespace livelywpf.Helpers
 
         private void IdleCheckTimer(object sender, ElapsedEventArgs e)
         {
-            if (GetLastInputTime() >= idleWaitTime)
+            try
             {
-                Start();
+                if (GetLastInputTime() >= idleWaitTime)
+                {
+                    Start();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.ToString());
+                StopIdleTimer();
             }
         }
 
         public void StartIdleTimer(uint idleTime)
         {
-            Logger.Info("Starting screensaver idle wait {0}ms..", idleTime);
-            idleWaitTime = idleTime;
-            _idleTimer.Start();
+            if (idleTime == 0)
+            {
+                StopIdleTimer();
+            }
+            else
+            {
+                Logger.Info("Starting screensaver idle wait {0}ms..", idleTime);
+                idleWaitTime = idleTime;
+                _idleTimer.Start();
+            }
         }
 
         public void StopIdleTimer()
         {
-            Logger.Info("Stopping screensaver idle wait..");
-            _idleTimer.Stop();
+            if (_idleTimer.Enabled)
+            {
+                Logger.Info("Stopping screensaver idle wait..");
+                _idleTimer.Stop();
+            }
         }
 
         public void Start()

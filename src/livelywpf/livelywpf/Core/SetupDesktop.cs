@@ -23,10 +23,10 @@ namespace livelywpf
         private static IntPtr progman, workerw;
         private static bool _isInitialized = false;
         private static Playback processMonitor;
-        private static readonly List<IWallpaper> wallpapersPending = new List<IWallpaper>();
+        private static readonly List<IWallpaper> wallpapersPending = new List<IWallpaper>(2);
         private static readonly List<WallpaperLayoutModel> wallpapersDisconnected = new List<WallpaperLayoutModel>();
+        public static List<IWallpaper> Wallpapers { get; } = new List<IWallpaper>(2);
         public static event EventHandler WallpaperChanged;
-        public static List<IWallpaper> Wallpapers { get; } = new List<IWallpaper>();
 
         static SetupDesktop()
         {

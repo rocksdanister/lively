@@ -18,7 +18,7 @@
             <TextBlock Margin="0, 5, 0, 0" Text="{x:Bind UIText.Author}"/>
             <TextBlock Margin="0, 5, 0, 0" Text="{Binding Author}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
             <TextBlock Margin="0, 5, 0, 0" Text="{x:Bind UIText.Website}"/>
-            <HyperlinkButton Margin="0, 0, 0, 0" Content="{Binding SrcWebsite}" NavigateUri="{Binding SrcWebsite}"/>
+            <HyperlinkButton Margin="0, 0, 0, 0" Content="{Binding SrcWebsite}" NavigateUri="{Binding SrcWebsite}" IsTabStop="False"/>
         </StackPanel>
     </Grid>
 </Page>

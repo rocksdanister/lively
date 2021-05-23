@@ -163,15 +163,15 @@ namespace livelywpf.Views
                 var previewFilePath = Path.Combine(saveDirectory, Path.ChangeExtension(Path.GetRandomFileName(), ".gif"));
                 previewPanelPos = WindowOperations.GetAbsolutePlacement(PreviewBorder, true);
                 await CaptureScreen.CaptureGif(
-                    previewFilePath,
-                    (int)previewPanelPos.Left,
-                    (int)previewPanelPos.Top,
-                    (int)previewPanelPos.Width,
-                    (int)previewPanelPos.Height,
-                    gifAnimationDelay,
-                    gifSaveAnimationDelay,
-                    gifTotalFrames,
-                    new Progress<int>(percent => CaptureProgress?.Invoke(this, percent - 1)));
+                       previewFilePath,
+                       (int)previewPanelPos.Left,
+                       (int)previewPanelPos.Top,
+                       (int)previewPanelPos.Width,
+                       (int)previewPanelPos.Height,
+                       gifAnimationDelay,
+                       gifSaveAnimationDelay,
+                       gifTotalFrames,
+                       new Progress<int>(percent => CaptureProgress?.Invoke(this, percent - 1)));
                 PreviewUpdated?.Invoke(this, previewFilePath);
             }
             _processing = false;

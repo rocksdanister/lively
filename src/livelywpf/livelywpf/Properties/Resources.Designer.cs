@@ -595,6 +595,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to hours.
+        /// </summary>
+        public static string TextHours {
+            get {
+                return ResourceManager.GetString("TextHours", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Install.
         /// </summary>
         public static string TextInstall {
@@ -622,7 +631,7 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Minutes.
+        ///   Looks up a localized string similar to minutes.
         /// </summary>
         public static string TextMinutes {
             get {

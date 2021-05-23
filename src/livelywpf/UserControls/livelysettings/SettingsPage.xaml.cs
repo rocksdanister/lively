@@ -123,6 +123,7 @@ namespace livelysettings
         public string TitleScreensaver { get; set; }
         public string TipScreensaver { get; set; }
         public string TextMinutes { get; set; }
+        public string TextHours { get; set; }
         //Misc
         public string TitleSysTrayIconHide { get; set; }
         public string TipSysTrayIconHide { get; set; }

@@ -195,6 +195,8 @@ namespace livelywpf.Cmd
                                     case WallpaperType.web:
                                     case WallpaperType.webaudio:
                                     case WallpaperType.url:
+                                        Logger.Info("Web type wallpaper import is disabled for cmd control.");
+                                        break;
                                     case WallpaperType.video:
                                     case WallpaperType.gif:
                                     case WallpaperType.videostream:
@@ -258,7 +260,7 @@ namespace livelywpf.Cmd
                 ScreenHelper.GetScreen().FirstOrDefault(x => x.DeviceNumber == ((int)opts.Monitor).ToString()) : ScreenHelper.GetPrimaryScreen();
             if (screen != null)
             {
-                var wp = SetupDesktop.Wallpapers.Find(x => ScreenHelper.ScreenCompare(x.GetScreen(), screen, DisplayIdentificationMode.deviceId));
+                var wp = SetupDesktop.Wallpapers.Find(x => x.GetScreen().Equals(screen));
                 if (wp != null)
                 {
                     if (opts.Param != null)
@@ -309,7 +311,7 @@ namespace livelywpf.Cmd
                 {
                     try
                     {
-                        var wp = SetupDesktop.Wallpapers.Find(x => ScreenHelper.ScreenCompare(x.GetScreen(), screen, DisplayIdentificationMode.deviceId));
+                        var wp = SetupDesktop.Wallpapers.Find(x => x.GetScreen().Equals(screen));
                         //only for running wallpaper instance unlike gui property..
                         if (wp == null)
                             return 0;

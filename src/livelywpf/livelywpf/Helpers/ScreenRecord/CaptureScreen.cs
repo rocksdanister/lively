@@ -166,6 +166,27 @@ namespace livelywpf
             return mi;
         }
 
+        public static void ResizeAnimatedGif(string srcFile, string destFile, int width, int height)
+        {
+            // Read from file
+            using (var collection = new MagickImageCollection(srcFile))
+            {
+                // This will remove the optimization and change the image to how it looks at that point
+                // during the animation. More info here: http://www.imagemagick.org/Usage/anim_basics/#coalesce
+                collection.Coalesce();
+
+                // Resize each image in the collection to a width of 200. When zero is specified for the height
+                // the height will be calculated with the aspect ratio.
+                foreach (var image in collection)
+                {
+                    image.Resize(width, height);
+                }
+
+                // Save the result
+                collection.Write(destFile);
+            }
+        }
+
         #endregion //helpers
     }
 }

@@ -39,14 +39,21 @@ namespace livelywpf.Helpers
             _timer.Elapsed += Timer_Elapsed;
         }
 
-        public void Start()
+        public void Start(TaskbarTheme theme)
         {
-            if (IsRunning)
-                return;
-
-            _timer.Start();
-            IsRunning = true;
-            Logger.Info("Taskbar theme service started.");
+            if (theme == TaskbarTheme.none)
+            {
+                Stop();
+            }
+            else
+            {
+                _timer.Stop();
+                SetTheme(theme);
+                ResetTaskbar();
+                _timer.Start();
+                IsRunning = true;
+                Logger.Info("Taskbar theme service started.");
+            }
         }
 
         public void Stop()
@@ -60,11 +67,10 @@ namespace livelywpf.Helpers
             }
         }
 
-        public void SetTheme(TaskbarTheme theme)
+        private void SetTheme(TaskbarTheme theme)
         {
-            _timer.Stop();
             taskbarTheme = theme;
-            Logger.Info("Taskbar theme change: " + theme);
+            Logger.Info("Taskbar theme: {0}", theme);
             switch (taskbarTheme)
             {
                 case TaskbarTheme.none:
@@ -94,17 +100,12 @@ namespace livelywpf.Helpers
                     accentPolicy.AccentState = AccentState.ACCENT_ENABLE_FLUENT;
                     break;
             }
-            if (IsRunning)
-            {
-                ResetTaskbar();
-                _timer.Start();
-            }
         }
 
         public void SetAccentColor(Color color)
         {
             accentColor = color;
-            SetTheme(taskbarTheme);
+            Start(taskbarTheme);
         }
 
         private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
@@ -115,7 +116,9 @@ namespace livelywpf.Helpers
         private void SetTaskbarTransparent(TaskbarTheme theme)
         {
             if (theme == TaskbarTheme.none)
+            {
                 return;
+            }
 
             var taskbars = GetTaskbars();
             if (taskbars.Count != 0)

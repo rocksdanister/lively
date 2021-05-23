@@ -173,10 +173,10 @@ namespace livelywpf
 
         private void Playback_PlaybackStateChanged(object sender, PlaybackState e)
         {
-            //I'm not sure?
             System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
             {
                 pauseTrayBtn.Checked = (e == PlaybackState.paused);
+                _notifyIcon.Icon = (e == PlaybackState.paused) ? Properties.Icons.appicon_gray : Properties.Icons.appicon;
             }));
         }
 
