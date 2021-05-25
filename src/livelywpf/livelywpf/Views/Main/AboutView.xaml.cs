@@ -5,6 +5,7 @@ using System.Drawing.Text;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Documents;
 using System.Windows.Threading;
 using Page = System.Windows.Controls.Page;
@@ -37,12 +38,19 @@ namespace livelywpf.Views
         {
             var item = new DocView(docPath)
             {
-                Owner = App.AppWindow,
-                WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner,
                 Title = Properties.Resources.TitleDocumentation,
-                Width = App.AppWindow.Width / 1.2,
-                Height = App.AppWindow.Height / 1.2,
             };
+            if (App.AppWindow.IsVisible)
+            {
+                item.Owner = App.AppWindow;
+                item.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner;
+                item.Width = App.AppWindow.Width / 1.2;
+                item.Height = App.AppWindow.Height / 1.2;
+            }
+            else
+            {
+                item.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+            }
             item.ShowDialog();
         }
 

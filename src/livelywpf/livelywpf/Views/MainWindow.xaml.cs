@@ -33,7 +33,9 @@ namespace livelywpf
         public MainWindow()
         {
             InitializeComponent();
+            wallpaperStatusText.Text = SetupDesktop.Wallpapers.Count.ToString();
             SetupDesktop.WallpaperChanged += SetupDesktop_WallpaperChanged;
+            Logger.Debug("MainWindow ctor initialized..");
         }
 
         #region navigation
@@ -193,14 +195,19 @@ namespace livelywpf
         private void SetupDesktop_WallpaperChanged(object sender, EventArgs e)
         {
             _ = this.Dispatcher.BeginInvoke(new Action(() => {
+                //teaching tip - control panel.
                 if (!Program.SettingsVM.Settings.ControlPanelOpened &&
-                    App.AppWindow != null &&
-                    App.AppWindow.WindowState != WindowState.Minimized &&
-                    App.AppWindow.Visibility == Visibility.Visible)
+                    this.WindowState != WindowState.Minimized &&
+                    this.Visibility == Visibility.Visible)
                 {
                     ModernWpf.Controls.Primitives.FlyoutBase.ShowAttachedFlyout(statusBtn);
                     Program.SettingsVM.Settings.ControlPanelOpened = true;
                     Program.SettingsVM.UpdateConfigFile();
+                }
+                //wallpaper focus steal fix.
+                if (this.IsVisible && layoutWindow?.Visibility != Visibility.Visible)
+                {
+                    this.Activate();
                 }
                 wallpaperStatusText.Text = SetupDesktop.Wallpapers.Count.ToString();
             }));
@@ -211,13 +218,18 @@ namespace livelywpf
         {
             if (layoutWindow == null)
             {
-                layoutWindow = new ScreenLayoutView()
+                layoutWindow = new ScreenLayoutView();
+                if (App.AppWindow.IsVisible)
                 {
-                    Owner = App.AppWindow,
-                    WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner,
-                    Width = App.AppWindow.Width / 1.5,
-                    Height = App.AppWindow.Height / 1.5,
-                };
+                    layoutWindow.Owner = App.AppWindow;
+                    layoutWindow.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner;
+                    layoutWindow.Width = App.AppWindow.Width / 1.5;
+                    layoutWindow.Height = App.AppWindow.Height / 1.5;
+                }
+                else
+                {
+                    layoutWindow.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+                }
                 layoutWindow.Closed += LayoutWindow_Closed;
                 layoutWindow.Show();
             }
@@ -225,7 +237,6 @@ namespace livelywpf
             {
                 layoutWindow.Activate();
             }
-
         }
 
         private void LayoutWindow_Closed(object sender, EventArgs e)
@@ -240,44 +251,5 @@ namespace livelywpf
         }
 
         #endregion //wallpaper statusbar
-
-        #region window msg
-
-        protected override void OnSourceInitialized(EventArgs e)
-        {
-            base.OnSourceInitialized(e);
-            var source = PresentationSource.FromVisual(this) as HwndSource;
-            source.AddHook(WndProc);
-        }
-
-        //todo: maybe create separate window to handle all window messages globally?
-        private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
-        {
-            if (msg == NativeMethods.WM_SHOWLIVELY)
-            {
-                Logger.Info("WM_SHOWLIVELY msg received.");
-                Program.ShowMainWindow();   
-            }
-            else if (msg == NativeMethods.WM_TASKBARCREATED)
-            {
-                //explorer crash detection, new taskbar is created everytime explorer is started..
-                Logger.Info("WM_TASKBARCREATED: New taskbar created.");
-                SetupDesktop.ResetWorkerW();
-            }
-            else if (msg == (uint)NativeMethods.WM.QUERYENDSESSION && Program.IsMSIX)
-            {
-                _ = NativeMethods.RegisterApplicationRestart(
-                    null,
-                    (int)NativeMethods.RestartFlags.RESTART_NO_CRASH |
-                    (int)NativeMethods.RestartFlags.RESTART_NO_HANG |
-                    (int)NativeMethods.RestartFlags.RESTART_NO_REBOOT);
-            }
-            //screen message processing...
-            _ = Core.DisplayManager.Instance?.OnWndProc(hwnd, (uint)msg, wParam, lParam);
-
-            return IntPtr.Zero;
-        }
-
-        #endregion //window msg
     }
 }

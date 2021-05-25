@@ -159,7 +159,7 @@ namespace livelywpf
 
         private static Uri gitUpdateUri;
         private static string gitUpdatChangelog;
-        private static bool _showUpdateDialog = false;
+        private static bool showUpdateDialog = false;
         private static async void AppUpdater()
         {
             if (IsMSIX)
@@ -195,7 +195,7 @@ namespace livelywpf
                         }
                         else
                         {
-                            _showUpdateDialog = true;
+                            showUpdateDialog = true;
                             sysTray.ShowBalloonNotification(4000,
                                 Properties.Resources.TitleAppName,
                                 Properties.Resources.DescriptionUpdateAvailable);
@@ -230,7 +230,7 @@ namespace livelywpf
         private static Views.AppUpdaterView updateWindow = null;
         public static void ShowUpdateDialog()
         {
-            _showUpdateDialog = false;
+            showUpdateDialog = false;
             if (updateWindow == null)
             {
                 updateWindow = new Views.AppUpdaterView(gitUpdateUri, gitUpdatChangelog);
@@ -270,24 +270,21 @@ namespace livelywpf
 
         public static void ShowMainWindow()
         {
-            if (App.AppWindow != null)
+            //Exit firstrun setupwizard.
+            if (setupWizard != null)
             {
-                //Exit firstrun setupwizard.
-                if (setupWizard != null)
-                {
-                    SettingsVM.Settings.IsFirstRun = false;
-                    SettingsVM.UpdateConfigFile();
-                    setupWizard.ExitWindow();
-                    setupWizard = null;
-                }
+                SettingsVM.Settings.IsFirstRun = false;
+                SettingsVM.UpdateConfigFile();
+                setupWizard.ExitWindow();
+                setupWizard = null;
+            }
 
-                App.AppWindow.Show();
-                App.AppWindow.WindowState = App.AppWindow.WindowState != WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
+            App.AppWindow?.Show();
+            App.AppWindow.WindowState = App.AppWindow?.WindowState != WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
 
-                if (_showUpdateDialog)
-                {
-                    ShowUpdateDialog();
-                }
+            if (showUpdateDialog)
+            {
+                ShowUpdateDialog();
             }
         }
 

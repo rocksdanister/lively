@@ -376,11 +376,16 @@ namespace livelywpf
         
         private void ShowApplicationRulesWindow()
         {
-            ApplicationRulesView app = new ApplicationRulesView
+            ApplicationRulesView app = new ApplicationRulesView();
+            if (App.AppWindow.IsVisible)
             {
-                WindowStartupLocation = WindowStartupLocation.CenterOwner,
-                Owner = App.AppWindow,
-            };
+                app.Owner = App.AppWindow;
+                app.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            }
+            else
+            {
+                app.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            }
             app.ShowDialog();
         }
 

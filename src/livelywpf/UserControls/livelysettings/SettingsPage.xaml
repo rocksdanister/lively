@@ -104,7 +104,8 @@
 
                             <ComboBox Header="{x:Bind UIText.TitlePauseAlgorithm}" Margin="0,10,0,0" MinWidth="200" SelectedIndex="{Binding SelectedPauseAlgorithmIndex, Mode=TwoWay}">
                                 <ComboBoxItem Content="{x:Bind UIText.TextPauseAlgorithmForeground}"/>
-                                <ComboBoxItem Content="{x:Bind UIText.TextPauseAlgorithmAll}" IsEnabled="False"/> 
+                                <ComboBoxItem Content="{x:Bind UIText.TextPauseAlgorithmAll}" IsEnabled="False"/>
+                                <ComboBoxItem Content="Game Mode"/>
                             </ComboBox>
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipPauseAlgorithm}"/>
 

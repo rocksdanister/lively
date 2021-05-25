@@ -67,7 +67,8 @@ namespace livelywpf
     public enum ProcessMonitorAlgorithm
     {
         foreground,
-        all
+        all,
+        gamemode
     }
 
     /// <summary>

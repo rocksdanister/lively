@@ -56,7 +56,7 @@ namespace livelywpf.Helpers
         {
             try
             {
-                if (GetLastInputTime() >= idleWaitTime)
+                if (GetLastInputTime() >= idleWaitTime && !IsExclusiveFullScreenAppRunning())
                 {
                     Start();
                 }
@@ -64,7 +64,7 @@ namespace livelywpf.Helpers
             catch (Exception ex)
             {
                 Logger.Error(ex.ToString());
-                StopIdleTimer();
+                //StopIdleTimer();
             }
         }
 
@@ -257,7 +257,28 @@ namespace livelywpf.Helpers
             }
             else
             {
-                throw new Win32Exception();
+                throw new Win32Exception("GetLastInputTime fail.");
+            }
+        }
+
+        static bool IsExclusiveFullScreenAppRunning()
+        {
+            if (NativeMethods.SHQueryUserNotificationState(out NativeMethods.QUERY_USER_NOTIFICATION_STATE state) == 0)
+            {
+                return state switch
+                {
+                    NativeMethods.QUERY_USER_NOTIFICATION_STATE.QUNS_NOT_PRESENT => false,
+                    NativeMethods.QUERY_USER_NOTIFICATION_STATE.QUNS_BUSY => false,
+                    NativeMethods.QUERY_USER_NOTIFICATION_STATE.QUNS_PRESENTATION_MODE => false,
+                    NativeMethods.QUERY_USER_NOTIFICATION_STATE.QUNS_ACCEPTS_NOTIFICATIONS => false,
+                    NativeMethods.QUERY_USER_NOTIFICATION_STATE.QUNS_QUIET_TIME => false,
+                    NativeMethods.QUERY_USER_NOTIFICATION_STATE.QUNS_RUNNING_D3D_FULL_SCREEN => true,
+                    _ => false,
+                };
+            }
+            else
+            {
+                throw new Win32Exception("SHQueryUserNotificationState fail.");
             }
         }
 

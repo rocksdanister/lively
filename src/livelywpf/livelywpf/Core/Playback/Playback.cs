@@ -164,8 +164,36 @@ namespace livelywpf.Core
                     case ProcessMonitorAlgorithm.all:
                         //todo
                         break;
+                    case ProcessMonitorAlgorithm.gamemode:
+                        GameModeAppMonitor();
+                        break;
                 }
             }
+        }
+
+        private void GameModeAppMonitor()
+        {
+            if (NativeMethods.SHQueryUserNotificationState(out NativeMethods.QUERY_USER_NOTIFICATION_STATE state) == 0)
+            {
+                switch (state)
+                {
+                    case NativeMethods.QUERY_USER_NOTIFICATION_STATE.QUNS_NOT_PRESENT:
+                        break;
+                    case NativeMethods.QUERY_USER_NOTIFICATION_STATE.QUNS_BUSY:
+                        break;
+                    case NativeMethods.QUERY_USER_NOTIFICATION_STATE.QUNS_PRESENTATION_MODE:
+                        break;
+                    case NativeMethods.QUERY_USER_NOTIFICATION_STATE.QUNS_ACCEPTS_NOTIFICATIONS:
+                        break;
+                    case NativeMethods.QUERY_USER_NOTIFICATION_STATE.QUNS_QUIET_TIME:
+                        break;
+                    case NativeMethods.QUERY_USER_NOTIFICATION_STATE.QUNS_RUNNING_D3D_FULL_SCREEN:
+                        PauseWallpapers();
+                        return;
+                }
+            }
+            PlayWallpapers();
+            SetWallpaperVolume(Program.SettingsVM.Settings.AudioVolumeGlobal);
         }
 
         private void ForegroundAppMonitor()

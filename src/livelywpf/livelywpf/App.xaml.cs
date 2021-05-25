@@ -14,7 +14,12 @@ namespace livelywpf
     public partial class App : Application
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        public static MainWindow AppWindow { get; private set; }
+        private static MainWindow _appWindow;
+        public static MainWindow AppWindow
+        {
+            get => _appWindow ??= new MainWindow();
+        }
+
         protected override void OnStartup(StartupEventArgs e)
         {
             try
@@ -81,20 +86,16 @@ namespace livelywpf
 
             #endregion //vm init
 
-            AppWindow = new MainWindow();
-            //uwp root app needs window to show.. is it possible to skip?
-            //relaunch existing instance lively is using wndproc so that also requires this.
-            AppWindow.Show();
+            Application.Current.MainWindow = AppWindow;
+            WndProcMsgWindow wndproc = new WndProcMsgWindow();
+            wndproc.Show();
             //Package app otherwise bugging out when initialized in settings vm.
             SetupDesktop.WallpaperInputForward(Program.SettingsVM.Settings.InputForward);
             if (Program.SettingsVM.Settings.IsRestart)
             {
                 Program.SettingsVM.Settings.IsRestart = false;
                 Program.SettingsVM.UpdateConfigFile();
-            }
-            else
-            {
-                AppWindow.Hide();
+                AppWindow?.Show();
             }
             base.OnStartup(e);
         }

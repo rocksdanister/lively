@@ -134,7 +134,10 @@ namespace livelywpf.Cmd
                     }
                     else
                     {
-                        App.AppWindow?.HideWindow();
+                        if (App.AppWindow.IsVisible)
+                        {
+                            App.AppWindow?.HideWindow();
+                        }
                     }
                 }
 

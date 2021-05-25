@@ -311,7 +311,7 @@ namespace livelywpf
                                         {
                                             pWindow.Topmost = true;
                                             pWindow.ShowActivated = true;
-                                            if (App.AppWindow != null)
+                                            if (App.AppWindow.IsVisible)
                                             {
                                                 pWindow.Left = App.AppWindow.Left;
                                                 pWindow.Top = App.AppWindow.Top;
@@ -330,7 +330,7 @@ namespace livelywpf
                                         }
                                         else
                                         {
-                                            if (App.AppWindow != null)
+                                            if (App.AppWindow.IsVisible)
                                             {
                                                 pWindow.Owner = App.AppWindow;
                                                 pWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
@@ -518,7 +518,7 @@ namespace livelywpf
                     Logger.Error("Core: Failed to launch wallpaper=>" + e.Msg + "\n" + e.Error?.ToString());
                     wallpaper.Terminate();
                     WallpaperChanged?.Invoke(null, null);
-                    if (App.AppWindow?.Visibility != Visibility.Hidden)
+                    if (App.AppWindow.IsVisible)
                     {
                         MessageBox.Show(Properties.Resources.LivelyExceptionGeneral, Properties.Resources.TitleAppName, MessageBoxButton.OK, MessageBoxImage.Error);
                     }
@@ -595,7 +595,7 @@ namespace livelywpf
                 NLogger.LogWin32Error("setwindowpos(3) fail addwallpaper(),");
             }
 
-            SetFocusMainApp();
+            //SetFocusMainApp();
             RefreshDesktop();
         }
 
@@ -615,7 +615,7 @@ namespace livelywpf
                 NLogger.LogWin32Error("setwindowpos fail SpanWallpaper(),");
             }
 
-            SetFocusMainApp();
+            //SetFocusMainApp();
             RefreshDesktop();
         }
 
@@ -1135,6 +1135,7 @@ namespace livelywpf
 
         #region helper functons
 
+        [Obsolete("Mainwindow handles this instead.")]
         /// <summary>
         /// Focus fix, otherwise when new applicaitons launch fullscreen wont giveup window handle once SetParent() is called.
         /// </summary>
@@ -1146,7 +1147,7 @@ namespace livelywpf
                 //NativeMethods.SetForegroundWindow(progman);
                 //NativeMethods.SetFocus(progman);
 
-                if (App.AppWindow?.Visibility != Visibility.Hidden)
+                if (App.AppWindow.IsVisible)
                 {
                     App.AppWindow?.Activate();
                 }
