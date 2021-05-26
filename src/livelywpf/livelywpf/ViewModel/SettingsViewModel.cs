@@ -382,10 +382,6 @@ namespace livelywpf
                 app.Owner = App.AppWindow;
                 app.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             }
-            else
-            {
-                app.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            }
             app.ShowDialog();
         }
 

@@ -87,6 +87,9 @@ namespace livelywpf
             #endregion //vm init
 
             Application.Current.MainWindow = AppWindow;
+            //Creates an empty xaml island control as a temp fix for closing issue; also receives window msg..
+            //Issue: https://github.com/microsoft/microsoft-ui-xaml/issues/3482
+            //Steps to reproduce: Start gif wallpaper using uwp control -> restart lively -> close restored gif wallpaper -> library gridview stops.
             WndProcMsgWindow wndproc = new WndProcMsgWindow();
             wndproc.Show();
             //Package app otherwise bugging out when initialized in settings vm.

@@ -95,11 +95,13 @@ namespace livelywpf.Views
             }
             else
             {
+                /*
                 var saveFileDialog1 = new Microsoft.Win32.SaveFileDialog()
                 {
                     Title = "Select location to save the file",
                     Filter = "Executable|*.exe",
                     FileName = suggestedFileName,
+                    InitialDirectory = Path.Combine(Program.AppDataDir, "temp"),
                 };
                 if (saveFileDialog1.ShowDialog() == true)
                 {
@@ -109,10 +111,11 @@ namespace livelywpf.Views
                 {
                     return;
                 }
-
+                */
                 try
                 {
                     download = new MultiDownloadHelper();
+                    savePath = Path.Combine(Program.AppDataDir, "temp", suggestedFileName);
                     download.DownloadFile(fileUrl, savePath);
                     download.DownloadFileCompleted += UpdateDownload_DownloadFileCompleted;
                     download.DownloadProgressChanged += UpdateDownload_DownloadProgressChanged;

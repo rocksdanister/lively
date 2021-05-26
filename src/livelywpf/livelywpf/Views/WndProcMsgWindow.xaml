@@ -4,10 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:livelywpf"
+        xmlns:xamlHost="clr-namespace:Microsoft.Toolkit.Wpf.UI.XamlHost;assembly=Microsoft.Toolkit.Wpf.UI.XamlHost"
         mc:Ignorable="d"
         Title="Lively WndProc Listener" Height="450" Width="800"
         ShowInTaskbar="False" Visibility="Hidden">
     <Grid>
-        
+        <!-- xaml island closing issue workaround -->
+        <xamlHost:WindowsXamlHost/>
     </Grid>
 </Window>
