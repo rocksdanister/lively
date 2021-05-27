@@ -12,6 +12,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using YoutubeExplode;
 
 namespace livelywpf
 {
@@ -54,6 +55,10 @@ namespace livelywpf
                 {
                     Url = libData.FilePath;
                     Title = GetLastSegmentUrl(libData.FilePath);
+                    if (Program.SettingsVM.Settings.ExtractStreamMetaData)
+                    {
+                        _ = SetYtMetadata(libData.FilePath);
+                    }
                 }
                 else if (libData.LivelyInfo.Type == WallpaperType.url
                 || libData.LivelyInfo.Type == WallpaperType.web
@@ -104,6 +109,32 @@ namespace livelywpf
 
             GifCheck = Program.SettingsVM.Settings.GifCapture;
             ZipCheck = Program.SettingsVM.Settings.LivelyZipGenerate;
+        }
+
+        private async Task SetYtMetadata(string url)
+        {
+            try
+            {
+                //Yt Library also checks, this is not required..
+                if (!Helpers.StreamHelper.IsYoutubeUrl(url))
+                    return;
+
+                IsUserEditable = false;
+                var youtube = new YoutubeClient();
+                var video = await youtube.Videos.GetAsync(url);
+                //set data
+                Title = video.Title;
+                Desc = video.Description;
+                Author = video.Author.Title;
+            }
+            catch (Exception e)
+            {
+                Logger.Error(e.ToString());
+            }
+            finally
+            {
+                IsUserEditable = true;
+            }
         }
 
         #region data
@@ -163,6 +194,17 @@ namespace livelywpf
         #endregion data
 
         #region ui 
+
+        private bool _isUserEditable = true;
+        public bool IsUserEditable
+        {
+            get { return _isUserEditable; } 
+            set
+            {
+                _isUserEditable = value;
+                OnPropertyChanged("IsUserEditable");
+            }
+        }
 
         private double _currentProgress;
         public double CurrentProgress

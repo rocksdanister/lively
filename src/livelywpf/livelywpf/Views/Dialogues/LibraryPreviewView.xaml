@@ -17,6 +17,7 @@
         BorderBrush="{DynamicResource SystemControlHighlightAltListAccentHighBrush}">
     <Window.Resources>
         <helper:TaskbarProgressConverter x:Key="TaskbarProgressConverter"/>
+        <helper:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
     </Window.Resources>
     
     <Window.TaskbarItemInfo>
@@ -36,27 +37,32 @@
 
         <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="10, 225, 10, 0">
             <StackPanel>
-                <Label Content="{x:Static p:Resources.TextTitle}" Margin="0, 10, 0, 0" />
-                <TextBox MaxLength="30" Name="textboxTitle" Margin ="10,5,25,10" Text="{Binding Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <Label Content="{x:Static p:Resources.TextTitle}" Margin="0, 10, 0, 0"/>
+                <TextBox Name="textboxTitle" Margin ="10, 5, 25, 10" MaxHeight="20" Height="20"
+                         Text="{Binding Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding IsUserEditable}"/>
 
                 <Label Content="{x:Static p:Resources.TextDescription}" />
-                <TextBox MaxLength="250" Name="textboxDesc" Text="{Binding Desc, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True" TextWrapping="Wrap" Height="81" Margin="10,5,25,10" />
+                <TextBox Name="textboxDesc" Text="{Binding Desc, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                         AcceptsReturn="True" TextWrapping="Wrap" Height="81" MaxHeight="81" Margin="10, 5, 25, 10" IsEnabled="{Binding IsUserEditable}"/>
 
                 <Label Content="{x:Static p:Resources.TextAuthor}" />
-                <TextBox MaxLength="50" Name="textboxAuthor" Text="{Binding Author, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextWrapping="WrapWithOverflow" Margin="10,5,25,10" />
+                <TextBox Name="textboxAuthor" Text="{Binding Author, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                         MaxHeight="20" Height="20" Margin="10, 5, 25, 10" IsEnabled="{Binding IsUserEditable}"/>
 
                 <Label Content="{x:Static p:Resources.TextWebsite}" />
-                <TextBox Name="textboxContact" Text="{Binding Url, Mode=TwoWay}" TextWrapping="NoWrap" MaxHeight="20" Height="20"  Margin="10,5,25,0" />
+                <TextBox Name="textboxContact" Text="{Binding Url, Mode=TwoWay}" MaxHeight="20" Height="20" Margin="10, 5, 25, 0" IsEnabled="{Binding IsUserEditable}"/>
 
                 <CheckBox x:Name="chkBoxCreatePreview" Content="{x:Static p:Resources.TextCreatePreview}" Margin="10,10,0,0" IsChecked="{Binding Path=GifCheck, Mode=TwoWay}"/>
                 <CheckBox x:Name="chkBoxCreateZip" Content="{x:Static p:Resources.TextExportWallpaperZip}" Margin="10,10,0,0" IsChecked="{Binding Path=ZipCheck, Mode=TwoWay}"/>
                 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0, 0, 10, 0">
+                    <ui:ProgressRing IsActive="{Binding IsUserEditable, Converter={StaticResource InverseBooleanConverter}}" Margin="0, 0, 10, 0" />
                     <Button x:Name="CancelBtn" Content="{x:Static p:Resources.TextClose}" MinWidth="100" Margin="0, 0, 10, 0" Command="{Binding CancelCommand}"/>
-                    <Button x:Name="OkBtn" Content="{x:Static p:Resources.TextOK}" MinWidth="100" Command="{Binding CaptureCommand}" Background="{DynamicResource SystemControlHighlightAltListAccentHighBrush}"/>
+                    <Button x:Name="OkBtn" Content="{x:Static p:Resources.TextOK}" MinWidth="100" Command="{Binding CaptureCommand}" 
+                            Background="{DynamicResource SystemControlHighlightAltListAccentHighBrush}" IsEnabled="{Binding IsUserEditable}"/>
                 </StackPanel>
                 
-                <ui:ProgressBar Name="gifProgressBar" Value="{Binding CurrentProgress, Mode=OneWay}" VerticalAlignment="Bottom" Margin="0, 15, 0, 0" />
+                <ui:ProgressBar Name="gifProgressBar" Value="{Binding CurrentProgress, Mode=OneWay}" VerticalAlignment="Bottom" Margin="0, 15, 0, 0"/>
             </StackPanel>
         </ScrollViewer>
         

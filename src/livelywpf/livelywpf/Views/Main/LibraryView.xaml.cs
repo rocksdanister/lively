@@ -6,7 +6,6 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Controls;
-using System.Windows.Forms;
 using System.Windows.Interop;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation.Metadata;
@@ -124,7 +123,7 @@ namespace livelywpf.Views
                                 Author = Properties.Resources.TextAuthor,
                                 Website = Properties.Resources.TextWebsite,
                                 Type = Properties.Resources.TextWallpaperType,
-                            }
+                            },
                         };
                         var result = await Helpers.DialogService.ShowConfirmationDialog(
                             ((LibraryModel)e).LivelyInfo.IsAbsolutePath ?
@@ -170,13 +169,13 @@ namespace livelywpf.Views
                                 Author = Properties.Resources.TextAuthor,
                                 Website = Properties.Resources.TextWebsite,
                                 Type = Properties.Resources.TextWallpaperType,
-                            }
+                            },
                         };
                         await Helpers.DialogService.ShowConfirmationDialog(
                             Properties.Resources.TitleAbout,
                             infoView,
                             ((UIElement)sender).XamlRoot,
-                            Properties.Resources.TextClose);
+                            Properties.Resources.TextOK);
                         break;
                 }
             }));

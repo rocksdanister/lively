@@ -94,9 +94,11 @@ namespace livelywpf.Helpers
             }
         }
 
+        public static bool IsYoutubeUrl(string url) => (GetYouTubeVideoIdFromUrl(url) != "");
+
         private static string GetYouTubeVideoIdFromUrl(Uri uri, bool checkHost = true)
         {
-            if(checkHost)
+            if (checkHost)
             {
                 string host = uri.Host;
                 string[] youTubeHosts = { "www.youtube.com", "youtube.com", "youtu.be", "www.youtu.be" };
@@ -130,7 +132,7 @@ namespace livelywpf.Helpers
         }
 
         /// <summary>
-        /// Returns commandline argument for youtube-dl + mpv player.
+        /// Commandline argument for youtube-dl + mpv player.
         /// </summary>
         public static string YoutubeDLMpvArgGenerate(StreamQualitySuggestion qualitySuggestion, string link)
         {

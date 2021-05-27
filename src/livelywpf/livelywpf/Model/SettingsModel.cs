@@ -77,6 +77,7 @@ namespace livelywpf
         public bool WallpaperDirMoveExistingWallpaperNewDir { get; set; }
         public bool SysTrayIcon { get; set; }
         public bool AutoDetectOnlineStreams { get; set; }
+        public bool ExtractStreamMetaData { get; set; }
         /// <summary>
         /// Cefsharp debug port.
         /// </summary>
@@ -157,6 +158,7 @@ namespace livelywpf
             SysTrayIcon = true;
             WebDebugPort = string.Empty;
             AutoDetectOnlineStreams = true;
+            ExtractStreamMetaData = true;
             WallpaperBundleVersion = -1;
             AudioVolumeGlobal = 75;
             AudioOnlyOnDesktop = true;

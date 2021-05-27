@@ -9,16 +9,18 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <StackPanel>
-            <!--<Image Margin="0, 5, 0, 0" Width="272" Height="153" HorizontalAlignment="Center" Source="{Binding ThumbnailPath}" Stretch="UniformToFill"/>-->
-            <TextBlock Margin="0, 0, 0, 0" Text="{Binding Title}"/>
-            <TextBlock Margin="0, 5, 0, 0" TextWrapping="Wrap" Text="{Binding Desc}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
-            <TextBlock Margin="0, 5, 0, 0" Text="{x:Bind UIText.Type}"/>
-            <TextBlock Margin="0, 5, 0, 0" Text="{Binding WallpaperType}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
-            <TextBlock Margin="0, 5, 0, 0" Text="{x:Bind UIText.Author}"/>
-            <TextBlock Margin="0, 5, 0, 0" Text="{Binding Author}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
-            <TextBlock Margin="0, 5, 0, 0" Text="{x:Bind UIText.Website}"/>
-            <HyperlinkButton Margin="0, 0, 0, 0" Content="{Binding SrcWebsite}" NavigateUri="{Binding SrcWebsite}" IsTabStop="False"/>
-        </StackPanel>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" HorizontalAlignment="Left">
+            <StackPanel MaxWidth="475">
+                <!--<Image Margin="0, 5, 0, 0" Width="272" Height="153" HorizontalAlignment="Center" Source="{Binding ThumbnailPath}" Stretch="UniformToFill"/>-->
+                <TextBlock Margin="0, 0, 0, 0" Text="{Binding Title}"/>
+                <TextBlock Margin="0, 5, 0, 0" TextWrapping="WrapWholeWords" Text="{Binding Desc}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                <TextBlock Margin="0, 5, 0, 0" Text="{x:Bind UIText.Type}"/>
+                <TextBlock Margin="0, 5, 0, 0" Text="{Binding WallpaperType}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                <TextBlock Margin="0, 5, 0, 0" Text="{x:Bind UIText.Author}"/>
+                <TextBlock Margin="0, 5, 0, 0" Text="{Binding Author}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                <TextBlock Margin="0, 5, 0, 0" Text="{x:Bind UIText.Website}"/>
+                <HyperlinkButton Margin="0, 0, 0, 0" Content="{Binding LivelyInfo.Contact}" NavigateUri="{Binding SrcWebsite}" IsTabStop="False"/>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>
