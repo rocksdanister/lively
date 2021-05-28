@@ -68,6 +68,7 @@ namespace livelysettings
         public string TextDisplayPauseRuleAll { get; set; }
         public string TextPauseAlgorithmForeground { get; set; }
         public string TextPauseAlgorithmAll { get; set; }
+        public string TextLearnMore { get; set; }
         //wallpaper
         public string TitleWallpaperFit { get; set; }
         public string TipWallpaperFit { get; set; }

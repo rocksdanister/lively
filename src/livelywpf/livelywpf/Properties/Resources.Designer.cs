@@ -622,6 +622,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Learn more.
+        /// </summary>
+        public static string TextLearnMore {
+            get {
+                return ResourceManager.GetString("TextLearnMore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to License.
         /// </summary>
         public static string TextLicense {
@@ -1306,7 +1315,7 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to (For battery operated systems only) Change playback when AC power is disconnected..
+        ///   Looks up a localized string similar to Change playback when AC power is disconnected (battery operated systems only.).
         /// </summary>
         public static string TipBatteryPower {
             get {
@@ -1343,8 +1352,7 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Per: Pause wallpaper only on the screen in which application is focused/fullscreen.
-        ///All: Pause wallpaper on all screen(s) if any application is focused/fullscreen..
+        ///   Looks up a localized string similar to Choose whether to pause wallpaper on all screens or only the relevant screen in which application is focused/fullscreen..
         /// </summary>
         public static string TipDisplayPauseRule {
             get {
@@ -1407,8 +1415,7 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Foreground: Lightweight, only checks the single process that is in foreground to determine wallpaper playback behaviour.
-        ///All Process: Heavier, Scans all the process to determine playback behaviour..
+        ///   Looks up a localized string similar to Wallpaper pause algorithm..
         /// </summary>
         public static string TipPauseAlgorithm {
             get {

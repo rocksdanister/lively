@@ -136,7 +136,7 @@
     <value>確定要從資料庫刪除此桌布嗎？</value>
   </data>
   <data name="DescriptionDragDropFIle" xml:space="preserve">
-    <value>將檔案拖放到資料庫中。</value>
+    <value>將檔案拖放至資料庫中。</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
     <value>你正在開啟一個外部應用程式作為桌布。
@@ -144,7 +144,7 @@
 請只在你信任此應用程式的來源時繼續。</value>
   </data>
   <data name="DescriptionMinimizedTray" xml:space="preserve">
-    <value>Lively 已最小化到系統工具列，右鍵點擊 Lively 的圖示以存取更多選項。</value>
+    <value>Lively 已最小化至系統工具列，右鍵點擊 Lively 的圖示以存取更多選項。</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
     <value>請重新啟動 Lively 以使設定生效。</value>
@@ -301,7 +301,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>動態 GIF</value>
   </data>
   <data name="TextGitHubStar" xml:space="preserve">
-    <value>給予 Star 來顯示你對本軟體的喜愛</value>
+    <value>給予 Star 來顯示你對本軟體的喜愛吧</value>
   </data>
   <data name="TextGo" xml:space="preserve">
     <value>開始</value>
@@ -328,13 +328,13 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>滑鼠</value>
   </data>
   <data name="TextMouseInteractOnDesktop" xml:space="preserve">
-    <value>當聚焦在程式上的滑鼠的互動</value>
+    <value>當應用程式取得焦點時仍啟用桌布滑鼠互動</value>
   </data>
   <data name="TextNext" xml:space="preserve">
     <value>繼續</value>
   </data>
   <data name="TextNo" xml:space="preserve">
-    <value>不</value>
+    <value>取消</value>
   </data>
   <data name="TextOff" xml:space="preserve">
     <value>關閉</value>
@@ -349,7 +349,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>線上</value>
   </data>
   <data name="TextOpenLively" xml:space="preserve">
-    <value>啟用 Lively</value>
+    <value>開啟 Lively</value>
   </data>
   <data name="TextPauseAlgoAllProcess" xml:space="preserve">
     <value>所有處理程序</value>
@@ -403,7 +403,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>來源</value>
   </data>
   <data name="TextStart" xml:space="preserve">
-    <value>啟動</value>
+    <value>開始</value>
   </data>
   <data name="TextStop" xml:space="preserve">
     <value>結束</value>
@@ -412,7 +412,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>你享受使用 Lively 嗎？請留下評論 :)</value>
   </data>
   <data name="TextSupport" xml:space="preserve">
-    <value>支援</value>
+    <value>支持</value>
   </data>
   <data name="TextTags" xml:space="preserve">
     <value>標籤</value>
@@ -421,7 +421,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>模糊</value>
   </data>
   <data name="TextTaskbarThemeClear" xml:space="preserve">
-    <value>清晰</value>
+    <value>去除</value>
   </data>
   <data name="TextTaskbarThemeColor" xml:space="preserve">
     <value>顏色</value>
@@ -433,7 +433,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>桌布</value>
   </data>
   <data name="TextTaskbarThemeWallpaperFluent" xml:space="preserve">
-    <value>桌布平滑</value>
+    <value>平滑(桌布取色)</value>
   </data>
   <data name="TextTileSizeLarge" xml:space="preserve">
     <value>大</value>
@@ -487,13 +487,13 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>無</value>
   </data>
   <data name="TextWallpaperFitUniform" xml:space="preserve">
-    <value>統一化</value>
+    <value>統一</value>
   </data>
   <data name="TextWallpaperFitUniformToFill" xml:space="preserve">
-    <value>統一化填滿</value>
+    <value>統一並填滿</value>
   </data>
   <data name="TextWallpaperLayoutDuplicate" xml:space="preserve">
-    <value>複製相同的桌布</value>
+    <value>複製相同桌布</value>
   </data>
   <data name="TextWallpaperLayoutPerScreen" xml:space="preserve">
     <value>僅選定的螢幕</value>
@@ -514,48 +514,48 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>歡迎</value>
   </data>
   <data name="TextYes" xml:space="preserve">
-    <value>是</value>
+    <value>確定</value>
   </data>
   <data name="TileVideoPlayer" xml:space="preserve">
     <value>影片播放器</value>
   </data>
   <data name="TipAddWallpaperFileBrowse" xml:space="preserve">
-    <value>將所有支援的檔案類型設定為桌布。</value>
+    <value>將所有支援類型的檔案設定為桌布。</value>
   </data>
   <data name="TipAddWallpaperURL" xml:space="preserve">
     <value>將您輸入 URL 對應的網頁設定為桌布。</value>
   </data>
   <data name="TipAppFocus" xml:space="preserve">
-    <value>設定在其他應用程式運作時執行的操作。</value>
+    <value>設定在其他應用程式取得焦點時執行的操作。</value>
   </data>
   <data name="TipAppFullScreen" xml:space="preserve">
     <value>設定在運作全螢幕遊戲/應用程式時執行的操作。</value>
   </data>
   <data name="TipAppRules" xml:space="preserve">
-    <value>根據運作的應用程式設定不同的桌布。</value>
+    <value>根據運作的應用程式設定不同的桌布播放規則。</value>
   </data>
   <data name="TipAppTheme" xml:space="preserve">
-    <value>Lively 跟隨系統主題設定，要更改外觀請至</value>
+    <value>Lively 跟隨系統主題設定，要改變外觀請至</value>
   </data>
   <data name="TipAudioMaster" xml:space="preserve">
     <value>桌布音量等級。</value>
   </data>
   <data name="TipBatteryPower" xml:space="preserve">
-    <value>(僅適用於可充電裝置) 斷開交流電源後，變更播放行為。</value>
+    <value>(僅適用於可充電裝置) 變更斷開交流電源後的播放行為。</value>
   </data>
   <data name="TipBrowserDebuggingPort" xml:space="preserve">
-    <value>輸入用於除錯網頁桌布的連接埠，需要重新啟動瀏覽器以使更改生效。
+    <value>輸入用於除錯網頁桌布的連接埠，需要重新啟動瀏覽器以使改動生效。
 準備就緒後，前往 http://localhost:埠號 以開啟開發人員控制台。</value>
   </data>
   <data name="TipDebug" xml:space="preserve">
     <value>顯示開發人員選單。</value>
   </data>
   <data name="TipDesktopPicture" xml:space="preserve">
-    <value>設定動態桌布的一個畫面作為桌面桌布。</value>
+    <value>設定動態桌布的一個畫面作為桌面背景。</value>
   </data>
   <data name="TipDisplayPauseRule" xml:space="preserve">
     <value>獨立：僅在有應用程式處於 焦點/全螢幕 狀態的螢幕上暫停動態桌布。
-所有：如果任何應用程式已進入 焦點/螢幕 模式，則在所有螢幕上暫停動態桌布。</value>
+所有：如果任何應用程式已進入 焦點/全螢幕 模式，則在所有螢幕上暫停動態桌布。</value>
   </data>
   <data name="TipExportLogs" xml:space="preserve">
     <value>建立日誌回報檔。</value>
@@ -564,7 +564,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>選取用於 GIF 桌布的播放器。</value>
   </data>
   <data name="TipHideSysTray" xml:space="preserve">
-    <value>系統列圖示的可見性，Lively 將在隱藏圖示的情況下繼續運作。</value>
+    <value>系統工具列中圖示的可見性，Lively 將在隱藏圖示的情況下繼續運作。</value>
   </data>
   <data name="TipLanguage" xml:space="preserve">
     <value>將 Lively 重新啟動以套用新語言。</value>
@@ -573,11 +573,11 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>完成初始設定以繼續。</value>
   </data>
   <data name="TipLockscreenPicture" xml:space="preserve">
-    <value>設定動態桌布的一個畫面作為鎖定螢幕桌布。</value>
+    <value>設定動態桌布的一個畫面作為鎖定螢幕背景。</value>
   </data>
   <data name="TipPauseAlgorithm" xml:space="preserve">
     <value>前景處理程序：更輕量，僅偵測前景中的單個處理程序來確定桌布播放行為。
-所有處理程序：更大負載，掃描所有處理程序以確定播放行為。</value>
+所有處理程序：更多負載，掃描所有處理程序以確定播放行為。</value>
   </data>
   <data name="TipStreamWallpaperDetect" xml:space="preserve">
     <value>如果偵測到受支援的影片串流連結，將使用影片播放器，而不是載入網頁。</value>
@@ -592,7 +592,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>資料庫中桌布磚塊的大小。</value>
   </data>
   <data name="TipUIMode" xml:space="preserve">
-    <value>對於低階作業系統，請選擇精簡模式。</value>
+    <value>對於低階裝置，請選擇簡易模式。</value>
   </data>
   <data name="TipVideoHardwareDecode" xml:space="preserve">
     <value>當可能時使用硬體加速。</value>
@@ -601,7 +601,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>選取用於播放影片桌布的播放器。</value>
   </data>
   <data name="TipWallpaperDir" xml:space="preserve">
-    <value>儲存桌布的位址。</value>
+    <value>儲存桌布的位置。</value>
   </data>
   <data name="TipWallpaperFit" xml:space="preserve">
     <value>桌布縮放演算法。</value>
@@ -610,13 +610,13 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>選取與桌布互動的方式。</value>
   </data>
   <data name="TipWallpaperLayout" xml:space="preserve">
-    <value>如何將桌布套用於連結的顯示裝置。</value>
+    <value>選擇將如何套用桌布至連結的顯示裝置。</value>
   </data>
   <data name="TipWallpaperPlayback" xml:space="preserve">
     <value>當桌面不是焦點時，暫停桌布播放。</value>
   </data>
   <data name="TipWebBrowserDiskCache" xml:space="preserve">
-    <value>將暫存檔案儲存在磁碟中而不是記憶體中，重新啟動瀏覽器後將恢復設定。</value>
+    <value>將暫存檔案儲存在磁碟而不是記憶體中，重新啟動瀏覽器後將恢復設定。</value>
   </data>
   <data name="TipWebBrowserEngine" xml:space="preserve">
     <value>CEF(Chromium Embedded Framework) 是個輕量級的 Chromium 引擎。
@@ -638,7 +638,7 @@ Edge 是 Windows 10 的內建網頁渲染器。</value>
     <value>全螢幕應用程式</value>
   </data>
   <data name="TitleAppName" xml:space="preserve">
-    <value>Lively 桌布</value>
+    <value>Lively 動態桌布</value>
   </data>
   <data name="TitleAppRules" xml:space="preserve">
     <value>應用程式規則</value>
@@ -798,7 +798,7 @@ Edge 是 Windows 10 的內建網頁渲染器。</value>
     <value>桌布目錄</value>
   </data>
   <data name="TitleWallpaperDirMoveExisting" xml:space="preserve">
-    <value>將現有動態桌布移動到新資料夾</value>
+    <value>將現有動態桌布移動至新資料夾</value>
   </data>
   <data name="TitleWallpaperFit" xml:space="preserve">
     <value>選取一種適合方案</value>
@@ -829,5 +829,20 @@ Edge 是 Windows 10 的內建網頁渲染器。</value>
   </data>
   <data name="TitleWindowsStartup" xml:space="preserve">
     <value>隨 Windows 開機啟動</value>
+  </data>
+    <data name="TitleScreensaver" xml:space="preserve">
+    <value>Screensaver</value>
+  </data>
+  <data name="TipScreensaver" xml:space="preserve">
+    <value>After the selected inactivity period use the current wallpaper as your screensaver.</value>
+  </data>
+    <data name="TextHours" xml:space="preserve">
+    <value>hours</value>
+  </data>
+  <data name="TextMinutes" xml:space="preserve">
+    <value>minutes</value>
+  </data>
+  <data name="TextLearnMore" xml:space="preserve">
+    <value>Learn more</value>
   </data>
 </root>

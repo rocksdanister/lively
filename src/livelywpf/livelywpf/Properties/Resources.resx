@@ -318,6 +318,9 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="TextKeyboard" xml:space="preserve">
     <value>Keyboard</value>
   </data>
+  <data name="TextLearnMore" xml:space="preserve">
+    <value>Learn more</value>
+  </data>
   <data name="TextLicense" xml:space="preserve">
     <value>License</value>
   </data>
@@ -547,7 +550,7 @@ If still not working, close &amp; start Lively again/restart windows.
     <value>Volume level of all wallpapers.</value>
   </data>
   <data name="TipBatteryPower" xml:space="preserve">
-    <value>(For battery operated systems only) Change playback when AC power is disconnected.</value>
+    <value>Change playback when AC power is disconnected (battery operated systems only.)</value>
   </data>
   <data name="TipBrowserDebuggingPort" xml:space="preserve">
     <value>Enter the port for debugging webpage wallpapers, browser restart is required for changes to take effect.
@@ -560,8 +563,7 @@ When ready navigate to http://localhost:portnumber to access developer console.<
     <value>Set a picture of animated wallpaper as desktop wallpaper.</value>
   </data>
   <data name="TipDisplayPauseRule" xml:space="preserve">
-    <value>Per: Pause wallpaper only on the screen in which application is focused/fullscreen.
-All: Pause wallpaper on all screen(s) if any application is focused/fullscreen.</value>
+    <value>Choose whether to pause wallpaper on all screens or only the relevant screen in which application is focused/fullscreen.</value>
   </data>
   <data name="TipExportLogs" xml:space="preserve">
     <value>Create log report file.</value>
@@ -582,8 +584,7 @@ All: Pause wallpaper on all screen(s) if any application is focused/fullscreen.<
     <value>Set a picture of animated wallpaper as lockscreen wallpaper.</value>
   </data>
   <data name="TipPauseAlgorithm" xml:space="preserve">
-    <value>Foreground: Lightweight, only checks the single process that is in foreground to determine wallpaper playback behaviour.
-All Process: Heavier, Scans all the process to determine playback behaviour.</value>
+    <value>Wallpaper pause algorithm.</value>
   </data>
   <data name="TipScreensaver" xml:space="preserve">
     <value>After the selected inactivity period use the current wallpaper as your screensaver.</value>

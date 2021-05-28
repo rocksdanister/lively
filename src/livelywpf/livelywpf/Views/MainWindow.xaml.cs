@@ -64,7 +64,7 @@ namespace livelywpf
 
         private void SettingsVM_DebugMenuVisibilityChange(object sender, bool visibility)
         {
-            if(debugMenu != null)
+            if (debugMenu != null)
             {
                 debugMenu.Visibility = visibility ? Windows.UI.Xaml.Visibility.Visible : Windows.UI.Xaml.Visibility.Collapsed;
             }

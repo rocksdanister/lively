@@ -31,7 +31,7 @@ namespace livelywpf.NetWork
             downloader = new DownloadService(downloadOpt);
             downloader.DownloadStarted += Downloader_DownloadStarted;
             // Provide any information about chunker downloads, like progress percentage per chunk, speed, total received bytes and received bytes array to live streaming.
-            downloader.ChunkDownloadProgressChanged += OnChunkDownloadProgressChanged;
+            // downloader.ChunkDownloadProgressChanged += OnChunkDownloadProgressChanged;
             // Provide any information about download progress, like progress percentage of sum of chunks, total speed, average speed, total received bytes and received bytes array to live streaming.
             downloader.DownloadProgressChanged += OnDownloadProgressChanged;
             // Download completed event that can include occurred errors or cancelled or download completed successfully.
@@ -63,11 +63,6 @@ namespace livelywpf.NetWork
                 Percentage = e.ProgressPercentage,
             };
             DownloadProgressChanged?.Invoke(this, args);
-        }
-
-        private void OnChunkDownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-            //todo
         }
 
         private void OnDownloadFileCompleted(object sender, AsyncCompletedEventArgs e)

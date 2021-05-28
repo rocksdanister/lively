@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -71,10 +72,33 @@ namespace livelywpf
         }
 
         /// <summary>
+        /// Replaces invalid filename characters with "_" character.
+        /// </summary>
+        /// <param name="filename">Filename.</param>
+        /// <returns>Valid filename</returns>
+        public static string GetSafeFilename(string filename)
+        {
+            return string.Join("_", filename.Split(Path.GetInvalidFileNameChars()));
+        }
+
+        /// <summary>
+        /// Calculates file checksum.
+        /// </summary>
+        /// <param name="filePath">Path of file.</param>
+        /// <returns>SHA256 checksum.</returns>
+        public static string GetChecksumSHA256(string filePath)
+        {
+            using SHA256 sha256 = SHA256.Create();
+            using var stream = File.OpenRead(filePath);
+            var hash = sha256.ComputeHash(stream);
+            return BitConverter.ToString(hash).Replace("-", "").ToLowerInvariant();
+        }
+
+        /// <summary>
         /// Deletes file and folder contents of a directory (parent directory remains).
         /// </summary>
         /// <param name="directory"></param>
-        /// <returns>true if succes, false otherwise.</returns>
+        /// <returns>True if deletion completed succesfully.</returns>
         public static bool EmptyDirectory(string directory)
         {
             var status = true;
@@ -106,7 +130,7 @@ namespace livelywpf
         /// <param name="folderPath"></param>
         /// <param name="initialDelay"></param>
         /// <param name="retryDelay"></param>
-        /// <returns>true if succes, false otherwise.</returns>
+        /// <returns>True if deletion completed succesfully.</returns>
         public static async Task<bool> DeleteDirectoryAsync(string folderPath, int initialDelay = 1000, int retryDelay = 4000)
         {
             bool status = true;
@@ -119,7 +143,7 @@ namespace livelywpf
                 }
                 catch (Exception ex)
                 {
-                    Logger.Error("Folder Delete Failure: " + ex.Message + "\n" + "Retrying..");
+                    Logger.Error("Folder Delete Failure {0}.\nRetrying..", ex.Message);
                     await Task.Delay(retryDelay);
                     try
                     {
@@ -127,7 +151,7 @@ namespace livelywpf
                     }
                     catch (Exception ie)
                     {
-                        Logger.Error("(Retry)Folder Delete Failure: " + ie.Message);
+                        Logger.Error("(Retry)Folder Delete Failure: {0}", ie.Message);
                         status = false;
                     }
                 }
@@ -137,7 +161,7 @@ namespace livelywpf
 
         //ref: https://docs.microsoft.com/en-us/dotnet/standard/io/how-to-copy-directories
         /// <summary>
-        /// Synchronous directory copy operation.
+        /// Directory copy operation.
         /// </summary>
         /// <param name="sourceDirName"></param>
         /// <param name="destDirName"></param>

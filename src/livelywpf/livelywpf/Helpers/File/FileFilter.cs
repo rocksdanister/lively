@@ -35,12 +35,12 @@ namespace livelywpf.Helpers
             string localisedText = type switch
             {
                 WallpaperType.app => Properties.Resources.TextApplication,
-                WallpaperType.unity => Properties.Resources.TextApplication + " Unity",
-                WallpaperType.godot => Properties.Resources.TextApplication + " Godot",
-                WallpaperType.unityaudio => Properties.Resources.TextApplication + " Unity " + Properties.Resources.TitleAudio,
-                WallpaperType.bizhawk => Properties.Resources.TextApplication + " Bizhawk",
+                WallpaperType.unity => "Unity",
+                WallpaperType.godot => "Godot",
+                WallpaperType.unityaudio => "Unity",
+                WallpaperType.bizhawk => "Bizhawk",
                 WallpaperType.web => Properties.Resources.TextWebsite,
-                WallpaperType.webaudio => Properties.Resources.TextWebsite + " " + Properties.Resources.TitleAudio,
+                WallpaperType.webaudio => Properties.Resources.TextWebsite,
                 WallpaperType.url => Properties.Resources.TextOnline,
                 WallpaperType.video => Properties.Resources.TextVideo,
                 WallpaperType.gif => Properties.Resources.TextGIF,

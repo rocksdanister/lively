@@ -167,89 +167,103 @@ namespace livelywpf
                         || selection.LivelyInfo.Type == WallpaperType.url)
                     {
                         //no wallpaper file on disk, only wallpaper metadata.
-                        var tmpDir = Path.Combine(Program.AppDataDir, "temp");
-                        FileOperations.EmptyDirectory(tmpDir);
-                        LivelyInfoModel info = new LivelyInfoModel(selection.LivelyInfo)
-                        {
-                            IsAbsolutePath = false
-                        };
-
-                        //..changing absolute filepaths to relative, FileName is not modified since its url.
-                        if (selection.ThumbnailPath != null)
-                        {
-                            File.Copy(selection.ThumbnailPath, Path.Combine(tmpDir, Path.GetFileName(selection.ThumbnailPath)));
-                            info.Thumbnail = Path.GetFileName(selection.ThumbnailPath);
-                        }
-                        if (selection.PreviewClipPath != null)
-                        {
-                            File.Copy(selection.PreviewClipPath, Path.Combine(tmpDir, Path.GetFileName(selection.PreviewClipPath)));
-                            info.Preview = Path.GetFileName(selection.PreviewClipPath);
-                        }
-
+                        var tmpDir = Path.Combine(Program.AppDataDir, "temp", Path.GetRandomFileName());
                         try
                         {
-                            Helpers.JsonStorage<LivelyInfoModel>.StoreData(Path.Combine(tmpDir, "LivelyInfo.json"), info);
-                        }
-                        catch (Exception e)
-                        {
-                            Logger.Error(e.ToString());
-                        }
+                            Directory.CreateDirectory(tmpDir);
+                            LivelyInfoModel info = new LivelyInfoModel(selection.LivelyInfo)
+                            {
+                                IsAbsolutePath = false
+                            };
 
-                        ZipCreate.CreateZip(saveFile, new List<string>() { tmpDir });
+                            //..changing absolute filepaths to relative, FileName is not modified since its url.
+                            if (selection.ThumbnailPath != null)
+                            {
+                                File.Copy(selection.ThumbnailPath, Path.Combine(tmpDir, Path.GetFileName(selection.ThumbnailPath)));
+                                info.Thumbnail = Path.GetFileName(selection.ThumbnailPath);
+                            }
+                            if (selection.PreviewClipPath != null)
+                            {
+                                File.Copy(selection.PreviewClipPath, Path.Combine(tmpDir, Path.GetFileName(selection.PreviewClipPath)));
+                                info.Preview = Path.GetFileName(selection.PreviewClipPath);
+                            }
+
+                            try
+                            {
+                                Helpers.JsonStorage<LivelyInfoModel>.StoreData(Path.Combine(tmpDir, "LivelyInfo.json"), info);
+                            }
+                            catch (Exception e)
+                            {
+                                Logger.Error(e.ToString());
+                            }
+
+                            ZipCreate.CreateZip(saveFile, new List<string>() { tmpDir });
+                        }
+                        finally
+                        {
+                            _ = FileOperations.DeleteDirectoryAsync(tmpDir, 1000, 2000);
+                        }
                     }
                     else if(selection.LivelyInfo.IsAbsolutePath)
                     {
                         //livelyinfo.json only contains the absolute filepath of the file; file is in different location.
-                        List<string> files = new List<string>();
-                        if (selection.LivelyInfo.Type == WallpaperType.video ||
-                        selection.LivelyInfo.Type == WallpaperType.gif ||
-                        selection.LivelyInfo.Type == WallpaperType.picture)
-                        {
-                            files.Add(selection.FilePath);
-                        }
-                        else
-                        {
-                            files.AddRange(Directory.GetFiles(Directory.GetParent(selection.FilePath).ToString(), "*.*", SearchOption.AllDirectories));
-                        }
-
-                        var tmpDir = Path.Combine(Program.AppDataDir, "temp");
-                        FileOperations.EmptyDirectory(tmpDir);
-                        LivelyInfoModel info = new LivelyInfoModel(selection.LivelyInfo)
-                        {
-                            IsAbsolutePath = false
-                        };
-                        info.FileName = Path.GetFileName(info.FileName);
-
-                        //..changing absolute filepaths to relative.
-                        if (selection.ThumbnailPath != null)
-                        {
-                            File.Copy(selection.ThumbnailPath, Path.Combine(tmpDir, Path.GetFileName(selection.ThumbnailPath)));
-                            info.Thumbnail = Path.GetFileName(selection.ThumbnailPath);
-                        }
-                        if (selection.PreviewClipPath != null)
-                        {
-                            File.Copy(selection.PreviewClipPath, Path.Combine(tmpDir, Path.GetFileName(selection.PreviewClipPath)));
-                            info.Preview = Path.GetFileName(selection.PreviewClipPath);
-                        }
-
+                        var tmpDir = Path.Combine(Program.AppDataDir, "temp", Path.GetRandomFileName());
                         try
                         {
-                            Helpers.JsonStorage<LivelyInfoModel>.StoreData(Path.Combine(tmpDir, "LivelyInfo.json"), info);
-                        }
-                        catch (Exception e)
-                        {
-                            Logger.Error(e.ToString());
-                        }
+                            Directory.CreateDirectory(tmpDir);
+                            List<string> files = new List<string>();
+                            if (selection.LivelyInfo.Type == WallpaperType.video ||
+                            selection.LivelyInfo.Type == WallpaperType.gif ||
+                            selection.LivelyInfo.Type == WallpaperType.picture)
+                            {
+                                files.Add(selection.FilePath);
+                            }
+                            else
+                            {
+                                files.AddRange(Directory.GetFiles(Directory.GetParent(selection.FilePath).ToString(), "*.*", SearchOption.AllDirectories));
+                            }
 
-                        List<string> metaData = new List<string>();
-                        metaData.AddRange(Directory.GetFiles(tmpDir, "*.*", SearchOption.TopDirectoryOnly));
-                        var fileData = new List<ZipCreate.FileData>
+                            LivelyInfoModel info = new LivelyInfoModel(selection.LivelyInfo)
+                            {
+                                IsAbsolutePath = false
+                            };
+                            info.FileName = Path.GetFileName(info.FileName);
+
+                            //..changing absolute filepaths to relative.
+                            if (selection.ThumbnailPath != null)
+                            {
+                                File.Copy(selection.ThumbnailPath, Path.Combine(tmpDir, Path.GetFileName(selection.ThumbnailPath)));
+                                info.Thumbnail = Path.GetFileName(selection.ThumbnailPath);
+                            }
+                            if (selection.PreviewClipPath != null)
+                            {
+                                File.Copy(selection.PreviewClipPath, Path.Combine(tmpDir, Path.GetFileName(selection.PreviewClipPath)));
+                                info.Preview = Path.GetFileName(selection.PreviewClipPath);
+                            }
+
+                            try
+                            {
+                                Helpers.JsonStorage<LivelyInfoModel>.StoreData(Path.Combine(tmpDir, "LivelyInfo.json"), info);
+                            }
+                            catch (Exception e)
+                            {
+                                Logger.Error(e.ToString());
+                            }
+
+                            List<string> metaData = new List<string>();
+                            metaData.AddRange(Directory.GetFiles(tmpDir, "*.*", SearchOption.TopDirectoryOnly));
+                            var fileData = new List<ZipCreate.FileData>
+                            {
+                                new ZipCreate.FileData() { Files = metaData, ParentDirectory = tmpDir },
+                                new ZipCreate.FileData() { Files = files, ParentDirectory = Directory.GetParent(selection.FilePath).ToString() }
+                            };
+
+                            ZipCreate.CreateZip(saveFile, fileData);
+                        }
+                        finally
                         {
-                            new ZipCreate.FileData() { Files = metaData, ParentDirectory = tmpDir },
-                            new ZipCreate.FileData() { Files = files, ParentDirectory = Directory.GetParent(selection.FilePath).ToString() }
-                        };
-         
-                        ZipCreate.CreateZip(saveFile, fileData);
+                            _ = FileOperations.DeleteDirectoryAsync(tmpDir, 1000, 2000);
+                        }
                     }
                     else 
                     {
