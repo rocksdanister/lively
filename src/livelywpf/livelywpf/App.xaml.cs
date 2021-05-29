@@ -170,18 +170,7 @@ namespace livelywpf
             }
             finally
             {
-                LogConfigFile();
-                Logger.Error(message + "\n" + exception.ToString());
-            }
-        }
-
-        private bool _configLogged = false;
-        private void LogConfigFile()
-        {
-            if(!_configLogged)
-            {
-                Logger.Info("Saved config file=>\n" + NLogger.PropertyList(Program.SettingsVM.Settings));
-                _configLogged = true;
+                Logger.Error("{0}\n{1}", message, exception.ToString());
             }
         }
     }

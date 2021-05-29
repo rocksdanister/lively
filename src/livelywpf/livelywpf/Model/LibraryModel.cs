@@ -31,11 +31,11 @@ namespace livelywpf
         public LibraryModel(LivelyInfoModel data, string folderPath, LibraryTileType tileType = LibraryTileType.ready)
         {
             DataType = tileType;
+            WallpaperType = FileFilter.GetLocalisedWallpaperTypeString(data.Type);
             LivelyInfo = new LivelyInfoModel(data);
             Title = data.Title;
             Desc = data.Desc;
             Author = data.Author;
-            WallpaperType = FileFilter.GetLocalisedWallpaperTypeText(data.Type);
             SrcWebsite = GetUri(data.Contact, "https");
 
             if (data.IsAbsolutePath)
@@ -209,7 +209,7 @@ namespace livelywpf
             }   
             set
             {
-                _title = (value?.Length > 100 ? value.Substring(0, 100) : value) ?? "---";
+                _title = string.IsNullOrWhiteSpace(value) ? "---" : (value.Length > 100 ? value.Substring(0, 100) : value); 
                 OnPropertyChanged("Title");
             }
         }
@@ -223,7 +223,7 @@ namespace livelywpf
             }
             set
             {
-                _author = (value?.Length > 100 ? value.Substring(0, 100) : value) ?? "---";
+                _author = string.IsNullOrWhiteSpace(value) ? "---" : (value.Length > 100 ? value.Substring(0, 100) : value);
                 OnPropertyChanged("Author");
             }
         }
@@ -237,7 +237,7 @@ namespace livelywpf
             }
             set
             {
-                _desc = (value?.Length > 5000 ? value.Substring(0, 5000) : value) ?? "---";
+                _desc = string.IsNullOrWhiteSpace(value) ? WallpaperType : (value.Length > 5000 ? value.Substring(0, 5000) : value);
                 OnPropertyChanged("Desc");
             }
         }

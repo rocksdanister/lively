@@ -16,7 +16,7 @@ namespace livelywpf
             this.Path = path;
             this.FileName = System.IO.Path.GetFileName(path);
             this.Type = type;
-            this.LocalizedType = FileFilter.GetLocalisedWallpaperTypeText(type);
+            this.LocalizedType = FileFilter.GetLocalisedWallpaperTypeString(type);
             this.Id = id;
         }
     }

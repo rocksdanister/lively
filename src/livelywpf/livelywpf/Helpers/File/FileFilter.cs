@@ -30,7 +30,7 @@ namespace livelywpf.Helpers
             new FileData((WallpaperType)(100),  new string[]{".zip" })
         };
 
-        public static string GetLocalisedWallpaperTypeText(WallpaperType type)
+        public static string GetLocalisedWallpaperTypeString(WallpaperType type)
         {
             string localisedText = type switch
             {
@@ -41,9 +41,9 @@ namespace livelywpf.Helpers
                 WallpaperType.bizhawk => "Bizhawk",
                 WallpaperType.web => Properties.Resources.TextWebsite,
                 WallpaperType.webaudio => Properties.Resources.TextWebsite,
-                WallpaperType.url => Properties.Resources.TextOnline,
+                WallpaperType.url => Properties.Resources.TextWebsite,
                 WallpaperType.video => Properties.Resources.TextVideo,
-                WallpaperType.gif => Properties.Resources.TextGIF,
+                WallpaperType.gif => "Gif",
                 WallpaperType.videostream => Properties.Resources.TextWebStream,
                 WallpaperType.picture => Properties.Resources.TextPicture,
                 //WallpaperType.heic => "HEIC",
@@ -82,7 +82,7 @@ namespace livelywpf.Helpers
             }
             foreach (var item in LivelySupportedFormats)
             {
-                filterString.Append(GetLocalisedWallpaperTypeText(item.Type));
+                filterString.Append(GetLocalisedWallpaperTypeString(item.Type));
                 filterString.Append("|");
                 foreach (var extension in item.Extentions)
                 {
