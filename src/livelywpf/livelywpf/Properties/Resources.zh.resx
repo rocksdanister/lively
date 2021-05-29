@@ -833,18 +833,18 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>系统</value>
   </data>
     <data name="TitleScreensaver" xml:space="preserve">
-    <value>Screensaver</value>
+    <value>屏幕保护</value>
   </data>
   <data name="TipScreensaver" xml:space="preserve">
-    <value>After the selected inactivity period use the current wallpaper as your screensaver.</value>
+    <value>在选定的非活动期后，使用当前的墙纸作为你的屏保。</value>
   </data>
     <data name="TextHours" xml:space="preserve">
-    <value>hours</value>
+    <value>小时</value>
   </data>
   <data name="TextMinutes" xml:space="preserve">
-    <value>minutes</value>
+    <value>分钟</value>
   </data>
   <data name="TextLearnMore" xml:space="preserve">
-    <value>Learn more</value>
+    <value>学到更多</value>
   </data>
 </root>

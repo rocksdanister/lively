@@ -145,7 +145,7 @@ namespace livelywpf
             get { return _title; }
             set
             {
-                _title = value;
+                _title = (value?.Length > 100 ? value.Substring(0, 100) : value);
                 libData.Title = _title;
                 libData.LivelyInfo.Title = _title;
                 OnPropertyChanged("Title");
@@ -158,7 +158,7 @@ namespace livelywpf
             get { return _desc; }
             set
             {
-                _desc = value;
+                _desc = (value?.Length > 5000 ? value.Substring(0, 5000) : value);
                 libData.Desc = _desc;
                 libData.LivelyInfo.Desc = _desc;
                 OnPropertyChanged("Desc");
@@ -171,7 +171,7 @@ namespace livelywpf
             get { return _author; }
             set
             {
-                _author = value;
+                _author = (value?.Length > 100 ? value.Substring(0, 100) : value);
                 libData.Author = _author;
                 libData.LivelyInfo.Author = _author;
                 OnPropertyChanged("Author");

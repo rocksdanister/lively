@@ -10,7 +10,7 @@
 
     <Grid>
         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" HorizontalAlignment="Left">
-            <StackPanel MaxWidth="475">
+            <StackPanel MaxWidth="475" Margin="0, 0, 10, 0">
                 <!--<Image Margin="0, 5, 0, 0" Width="272" Height="153" HorizontalAlignment="Center" Source="{Binding ThumbnailPath}" Stretch="UniformToFill"/>-->
                 <TextBlock Margin="0, 0, 0, 0" Text="{Binding Title}"/>
                 <TextBlock Margin="0, 5, 0, 0" TextWrapping="WrapWholeWords" Text="{Binding Desc}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>

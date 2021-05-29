@@ -835,15 +835,15 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
     <value>Screensaver</value>
   </data>
   <data name="TipScreensaver" xml:space="preserve">
-    <value>After the selected inactivity period use the current wallpaper as your screensaver.</value>
+    <value>Setelah jangka masa tidak aktif berlalu gunakan wallpaper kini sebagai screensaver.</value>
   </data>
     <data name="TextHours" xml:space="preserve">
-    <value>hours</value>
+    <value>jam</value>
   </data>
   <data name="TextMinutes" xml:space="preserve">
-    <value>minutes</value>
+    <value>minit</value>
   </data>
   <data name="TextLearnMore" xml:space="preserve">
-    <value>Learn more</value>
+    <value>Ketahui lebih lanjut</value>
   </data>
 </root>

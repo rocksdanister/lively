@@ -401,28 +401,26 @@ Wenn es immer noch nicht funktioniert, schließen &amp; starten Sie Lively oder 
     <value>Lively passt die Einstellungen des Systemthemas an, um das Aussehen zu ändern</value>
   </data>
   <data name="TipBatteryPower" xml:space="preserve">
-    <value>(Nur für batteriebetriebene Systeme) Wiedergabe wechseln, wenn die Stromversorgung unterbrochen wird.</value>
+    <value>Wiedergabe wechseln, wenn die Stromversorgung unterbrochen wird. (nur für batteriebetriebene Systeme) </value>
   </data>
   <data name="TipBrowserDebuggingPort" xml:space="preserve">
     <value>Geben Sie den Port für das Debugging von Webseiten-Hintergründen ein. Ein Neustart des Browsers ist erforderlich, damit die Änderungen wirksam werden.
 Wenn Sie bereit sind, navigieren Sie zu http://localhost:portnumber, um auf die Entwicklerkonsole zuzugreifen.</value>
   </data>
   <data name="TipDisplayPauseRule" xml:space="preserve">
-    <value>Pro: Hintergrund nur auf dem Bildschirm anhalten, in dem die Anwendung fokussiert oder im Vollbildmodus ist.
-Alle: Hintergrund auf allen Bildschirmen anhalten, wenn eine Anwendung fokussiert oder im Vollbildmodus ist.</value>
+    <value>Auswählen ob der Hintergrund auf allen oder nur auf dem Bildschirmen angehalten werden soll, auf dem die Anwendung fokussiert oder im Vollbildmodus ist.</value>
   </data>
   <data name="TipHideSysTray" xml:space="preserve">
     <value>Sichtbarkeit des Symbols in der Taskleiste. Lively wird auch bei ausgeblendetem Symbol ausgeführt.</value>
   </data>
   <data name="TipLanguage" xml:space="preserve">
-    <value>Lively wird neustarten um die ausgewählte Sprache anzuwenden.</value>
+    <value>Lively muss neu gestartet werden, um die ausgewählte Sprache anzuwenden.</value>
   </data>
   <data name="TipLivelySetupOnClose" xml:space="preserve">
     <value>Beenden Sie die Einrichtung um fortzufahren.</value>
   </data>
   <data name="TipPauseAlgorithm" xml:space="preserve">
-    <value>Im Vordergrund: Es wird nur der einzelne im Vordergrund befindliche Prozess geprüft, um das Wiedergabeverhalten des Hintergrunds zu bestimmen.
-Alle Prozesse: Es werden alle Prozesse geprüft, um das Wiedergabeverhalten zu bestimmen.</value>
+    <value>Pause-Algorithmus für Hintergrund</value>
   </data>
   <data name="TipStreamWallpaperDetect" xml:space="preserve">
     <value>Wenn ein unterstützter Video-Stream-Link erkannt wird, verwenden Sie den Videoplayer, anstatt die Webseite zu laden.</value>
@@ -489,7 +487,7 @@ Edge ist die eingebaute Webansicht von Windows 10.</value>
     <value>Im Akkubetrieb</value>
   </data>
   <data name="TitleBrowseFile" xml:space="preserve">
-    <value>Nach Video, Gif, Webseite suchen.. um als Hintergrund festzulegen</value>
+    <value>Nach Video, Gif, Webseite suchen... um als Hintergrund festzulegen</value>
   </data>
   <data name="TitleBrowserDebuggingPort" xml:space="preserve">
     <value>Debugging-Port</value>
@@ -531,7 +529,7 @@ Edge ist die eingebaute Webansicht von Windows 10.</value>
     <value>Stumm</value>
   </data>
   <data name="TitlePauseAlgo" xml:space="preserve">
-    <value>Pausen-Algorithmus</value>
+    <value>Pause-Algorithmus</value>
   </data>
   <data name="TitlePerformance" xml:space="preserve">
     <value>Leistung</value>
@@ -609,7 +607,7 @@ Edge ist die eingebaute Webansicht von Windows 10.</value>
     <value>Bitte starten Sie Lively neu, damit die Einstellungen wirksam werden.</value>
   </data>
   <data name="TextSupport" xml:space="preserve">
-    <value>Unterstützung</value>
+    <value>Unterstützen / Spenden</value>
   </data>
   <data name="TextClose" xml:space="preserve">
     <value>Schließen</value>
@@ -738,7 +736,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="TitleStore" xml:space="preserve">
     <value>Store</value>
-    <comment>For different version of Lively, example: Microsoft Store</comment>
+    <comment>Für andere Versionen von Lively. Beispiel: Microsoft Store</comment>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
     <value>Ihre Windows N/KN Version benötigt für das Abspielen von Videos in Hintergründen weitere Codecs, die heruntergeladen werden müssen.</value>
@@ -830,19 +828,19 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TitleSourceCode" xml:space="preserve">
     <value>Quelltext</value>
   </data>
-    <data name="TitleScreensaver" xml:space="preserve">
-    <value>Screensaver</value>
+  <data name="TitleScreensaver" xml:space="preserve">
+    <value>Bildschirmschoner</value>
   </data>
   <data name="TipScreensaver" xml:space="preserve">
-    <value>After the selected inactivity period use the current wallpaper as your screensaver.</value>
+    <value>Bei Inaktivität wird nach der festgelegten Zeit der aktuelle Hinergrund als Bildschirmschoner verwendet.</value>
   </data>
-    <data name="TextHours" xml:space="preserve">
-    <value>hours</value>
+  <data name="TextHours" xml:space="preserve">
+    <value>Stunden</value>
   </data>
   <data name="TextMinutes" xml:space="preserve">
-    <value>minutes</value>
+    <value>Minuten</value>
   </data>
   <data name="TextLearnMore" xml:space="preserve">
-    <value>Learn more</value>
+    <value>Mehr erfahren</value>
   </data>
 </root>

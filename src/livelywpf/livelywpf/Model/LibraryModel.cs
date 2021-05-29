@@ -209,7 +209,7 @@ namespace livelywpf
             }   
             set
             {
-                _title = value;
+                _title = (value?.Length > 100 ? value.Substring(0, 100) : value) ?? "---";
                 OnPropertyChanged("Title");
             }
         }
@@ -223,7 +223,7 @@ namespace livelywpf
             }
             set
             {
-                _author = string.IsNullOrWhiteSpace(value) ? "---" : value;
+                _author = (value?.Length > 100 ? value.Substring(0, 100) : value) ?? "---";
                 OnPropertyChanged("Author");
             }
         }
@@ -237,7 +237,7 @@ namespace livelywpf
             }
             set
             {
-                _desc = string.IsNullOrWhiteSpace(value) ? "---" : value;
+                _desc = (value?.Length > 5000 ? value.Substring(0, 5000) : value) ?? "---";
                 OnPropertyChanged("Desc");
             }
         }

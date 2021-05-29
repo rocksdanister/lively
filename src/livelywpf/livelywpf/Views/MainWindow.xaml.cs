@@ -205,7 +205,7 @@ namespace livelywpf
                     Program.SettingsVM.UpdateConfigFile();
                 }
                 //wallpaper focus steal fix.
-                if (this.IsVisible && layoutWindow?.Visibility != Visibility.Visible)
+                if (this.IsVisible && (layoutWindow == null || layoutWindow.Visibility != Visibility.Visible))
                 {
                     this.Activate();
                 }

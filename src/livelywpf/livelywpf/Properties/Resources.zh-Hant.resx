@@ -340,7 +340,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>關閉</value>
   </data>
   <data name="TextOK" xml:space="preserve">
-    <value>是</value>
+    <value>確定</value>
   </data>
   <data name="TextOn" xml:space="preserve">
     <value>開啟</value>
@@ -831,18 +831,18 @@ Edge 是 Windows 10 的內建網頁渲染器。</value>
     <value>隨 Windows 開機啟動</value>
   </data>
     <data name="TitleScreensaver" xml:space="preserve">
-    <value>Screensaver</value>
+    <value>螢幕保護程式</value>
   </data>
   <data name="TipScreensaver" xml:space="preserve">
-    <value>After the selected inactivity period use the current wallpaper as your screensaver.</value>
+    <value>在選定的非活動時長後設定當前桌布為你的螢幕保護程式。</value>
   </data>
     <data name="TextHours" xml:space="preserve">
-    <value>hours</value>
+    <value>小時</value>
   </data>
   <data name="TextMinutes" xml:space="preserve">
-    <value>minutes</value>
+    <value>分鐘</value>
   </data>
   <data name="TextLearnMore" xml:space="preserve">
-    <value>Learn more</value>
+    <value>了解更多</value>
   </data>
 </root>

@@ -827,18 +827,18 @@ Edge ise windows 10 için geçerli web gösterim motorudur.</value>
     <value>Kaynak Kodu</value>
   </data>
     <data name="TitleScreensaver" xml:space="preserve">
-    <value>Screensaver</value>
+    <value>Kilit Ekranı</value>
   </data>
   <data name="TipScreensaver" xml:space="preserve">
-    <value>After the selected inactivity period use the current wallpaper as your screensaver.</value>
+    <value>Seçilen inaktivite süresinden sonra kullanılan duvar kağıdını kilit ekranı olarak ayarla.</value>
   </data>
     <data name="TextHours" xml:space="preserve">
-    <value>hours</value>
+    <value>saat</value>
   </data>
   <data name="TextMinutes" xml:space="preserve">
-    <value>minutes</value>
+    <value>dakika</value>
   </data>
   <data name="TextLearnMore" xml:space="preserve">
-    <value>Learn more</value>
+    <value>Daha fazla bilgi</value>
   </data>
 </root>
