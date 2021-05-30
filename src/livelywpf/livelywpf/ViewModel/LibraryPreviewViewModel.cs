@@ -61,26 +61,13 @@ namespace livelywpf
                     }
                 }
                 else if (libData.LivelyInfo.Type == WallpaperType.url
-                || libData.LivelyInfo.Type == WallpaperType.web
-                || libData.LivelyInfo.Type == WallpaperType.webaudio)
+                    || libData.LivelyInfo.Type == WallpaperType.web
+                    || libData.LivelyInfo.Type == WallpaperType.webaudio)
                 {
                     if (libData.LivelyInfo.Type == WallpaperType.url)
                         Url = libData.FilePath;
 
-                    try
-                    {
-                        if (wallpaper.GetProcess() != null)
-                        {
-                            //wallpaper.GetProcess().Refresh();
-                            Title = wallpaper.GetProcess().MainWindowTitle;
-                        }
-                    }
-                    catch { }
-
-                    if (String.IsNullOrWhiteSpace(Title))
-                    {
-                        Title = GetLastSegmentUrl(libData.FilePath);
-                    }
+                    Title = GetLastSegmentUrl(libData.FilePath);
                 }
                 else
                 {
@@ -115,7 +102,7 @@ namespace livelywpf
         {
             try
             {
-                //Yt Library also checks, this is not required..
+                //Library also checks, this is not required..
                 if (!Helpers.StreamHelper.IsYoutubeUrl(url))
                     return;
 
@@ -447,23 +434,16 @@ namespace livelywpf
 
         private string GetLastSegmentUrl(string url)
         {
-            string result;
             try
             {
-                Uri uri = new Uri(url);
-                result = uri.Segments.Last();
-                //for some urls, output will be: /
-                if (result.Equals("/", StringComparison.OrdinalIgnoreCase) || result.Equals("//", StringComparison.OrdinalIgnoreCase))
-                {
-                    result = url.Replace(@"https://www.", "");
-                }
-                result = result.Replace("/", "");
+                var uri = new Uri(url);
+                var segment = uri.Segments.Last();
+                return (segment == "/" || segment == "//") ? uri.Host.Replace("www.", string.Empty) : segment.Replace("/", string.Empty);
             }
             catch
             {
-                result = url;
+                return url;
             }
-            return result;
         }
 
         #endregion helpers

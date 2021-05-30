@@ -234,13 +234,14 @@ namespace livelywpf.Core
         {
             if (GetWallpaperType() != WallpaperType.picture)
             {
+                var posStr = JsonConvert.SerializeObject(pos);
                 switch (type)
                 {
                     case PlaybackPosType.absolutePercent:
-                        SendMessage("{\"command\":[\"seek\"," + pos + ",\"absolute-percent\"]}\n");
+                        SendMessage("{\"command\":[\"seek\"," + posStr + ",\"absolute-percent\"]}\n");
                         break;
                     case PlaybackPosType.relativePercent:
-                        SendMessage("{\"command\":[\"seek\"," + pos + ",\"relative-percent\"]}\n");
+                        SendMessage("{\"command\":[\"seek\"," + posStr + ",\"relative-percent\"]}\n");
                         break;
                 }
             }
