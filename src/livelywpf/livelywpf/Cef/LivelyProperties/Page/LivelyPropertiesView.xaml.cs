@@ -1,13 +1,12 @@
 ﻿using livelywpf.Core;
 using Microsoft.Toolkit.Wpf.UI.XamlHost;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using NLog;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -322,7 +321,7 @@ namespace livelywpf.Cef
             {
                 var item = (Windows.UI.Xaml.Controls.Slider)sender;
 
-                WallpaperSendMsg("lively:customise slider " + item.Name + " " + item.Value);
+                WallpaperSendMsg("lively:customise slider " + item.Name + " " + JsonConvert.SerializeObject(item.Value));
                 livelyPropertyCopyData[item.Name]["value"] = item.Value;
                 UpdatePropertyFile();
             }
@@ -419,8 +418,7 @@ namespace livelywpf.Cef
             try
             {
                 var item = (Windows.UI.Xaml.Controls.ComboBox)sender;
-                //Form1.chromeBrowser.ExecuteScriptAsync("livelyPropertyListener", item.Name, item.SelectedIndex);
-                WallpaperSendMsg("lively:customise dropdown " + item.Name + " " + item.SelectedIndex);
+                WallpaperSendMsg("lively:customise dropdown " + item.Name + " " + JsonConvert.SerializeObject(item.SelectedIndex));
                 livelyPropertyCopyData[item.Name]["value"] = item.SelectedIndex;
                 UpdatePropertyFile();
             }
@@ -463,7 +461,6 @@ namespace livelywpf.Cef
                 if (colorDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     item.Fill = new SolidColorBrush(Color.FromArgb(colorDialog.Color.A, colorDialog.Color.R, colorDialog.Color.G, colorDialog.Color.B));
-                    //Form1.chromeBrowser.ExecuteScriptAsync("livelyPropertyListener", item.Name, ToHexValue(colorDialog.Color));
                     WallpaperSendMsg("lively:customise color " + item.Name + " " + ToHexValue(colorDialog.Color));
                     livelyPropertyCopyData[item.Name]["value"] = ToHexValue(colorDialog.Color);
                     UpdatePropertyFile();
@@ -499,8 +496,7 @@ namespace livelywpf.Cef
             try
             {
                 var item = (Button)sender;
-                //Form1.chromeBrowser.ExecuteScriptAsync("livelyPropertyListener", item.Name, true);
-                WallpaperSendMsg("lively:customise button " + item.Name + " " + true);
+                WallpaperSendMsg("lively:customise button " + item.Name + " " + JsonConvert.SerializeObject(true));
             }
             catch { }
         }
@@ -514,9 +510,7 @@ namespace livelywpf.Cef
             try
             {
                 var item = (CheckBox)sender;
-                //Form1.chromeBrowser.ExecuteScriptAsync("livelyPropertyListener", item.Name, item.Checked);
-                WallpaperSendMsg("lively:customise checkbox " + item.Name + " " + (item.IsChecked == true));
-                Debug.WriteLine("lively:customise " + item.Name + " " + (item.IsChecked == true));
+                WallpaperSendMsg("lively:customise checkbox " + item.Name + " " + JsonConvert.SerializeObject((item.IsChecked == true)));
                 livelyPropertyCopyData[item.Name]["value"] = item.IsChecked == true;
                 UpdatePropertyFile();
             }
@@ -532,9 +526,7 @@ namespace livelywpf.Cef
             try
             {
                 var item = (TextBox)sender;
-                //Form1.chromeBrowser.ExecuteScriptAsync("livelyPropertyListener", item.Name, item.Text);
                 WallpaperSendMsg("lively:customise textbox " + item.Name + " " + "\"" + item.Text + "\"");
-                Debug.WriteLine("lively:customise textbox " + item.Name + " " + "\"" + item.Text + "\"");
                 livelyPropertyCopyData[item.Name]["value"] = item.Text;
                 UpdatePropertyFile();
             }

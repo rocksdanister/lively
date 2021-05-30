@@ -6,6 +6,7 @@ using System.Threading;
 using System.Windows.Threading;
 using CommandLine;
 using livelywpf.Helpers;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace livelywpf.Cmd
@@ -366,7 +367,7 @@ namespace livelywpf.Cmd
                                         (double)lp[name]["value"] + double.Parse(val[1..]) : double.Parse(val);
                                     sliderValue = Clamp(sliderValue, (double)lp[name]["min"], (double)lp[name]["max"]);
 
-                                    msg = "lively:customise " + ctype + " " + name + " " + sliderValue;
+                                    msg = "lively:customise " + ctype + " " + name + " " + JsonConvert.SerializeObject(sliderValue);
                                     lp[name]["value"] = sliderValue;
                                 }
                                 else if (ctype.Equals("dropdown", StringComparison.OrdinalIgnoreCase))
@@ -375,7 +376,7 @@ namespace livelywpf.Cmd
                                         (int)lp[name]["value"] + int.Parse(val[1..]) : int.Parse(val);
                                     selectedIndex = Clamp(selectedIndex, 0, lp[name]["items"].Count() - 1);
 
-                                    msg = "lively:customise " + ctype + " " + name + " " + selectedIndex;
+                                    msg = "lively:customise " + ctype + " " + name + " " + JsonConvert.SerializeObject(selectedIndex);
                                     lp[name]["value"] = selectedIndex;
                                 }
                                 else if (ctype.Equals("folderDropdown", StringComparison.OrdinalIgnoreCase))
