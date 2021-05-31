@@ -705,13 +705,22 @@ namespace livelywpf
             wallpapersDisconnected.Clear();
         }
 
-        private static void DisplaySettingsChanged_Hwnd(object sender, EventArgs e)
+        static readonly SemaphoreSlim semaphoreSlimDisplaySettingsChangedLock = new SemaphoreSlim(1, 1);
+        private static async void DisplaySettingsChanged_Hwnd(object sender, EventArgs e)
         {
-            Logger.Info("System parameters changed: Screen Event=>");
-            ScreenHelper.GetScreen().ForEach(x => Logger.Info(x.DeviceName + " " + x.Bounds));
-            Helpers.ScreenSaverService.Instance.Stop();
-            RefreshWallpaper();
-            RestoreDisconnectedWallpapers();
+            await semaphoreSlimDisplaySettingsChangedLock.WaitAsync();
+            try
+            {
+                Logger.Info("System parameters changed: Screen Event ->");
+                ScreenHelper.GetScreen().ForEach(x => Logger.Info("{0} {1}", x.DeviceName, x.Bounds));
+                Helpers.ScreenSaverService.Instance.Stop();
+                RefreshWallpaper();
+                await RestoreDisconnectedWallpapers();
+            }
+            finally
+            {
+                semaphoreSlimDisplaySettingsChangedLock.Release();
+            }
         }
 
         private static void RefreshWallpaper()
@@ -741,6 +750,7 @@ namespace livelywpf
                                 Logger.Info("System parameters changed: Disconnected Screen -> " + x.GetScreen().DeviceName + " " + x.GetScreen().Bounds);
                                 x.Close();
                             });
+
                             var newOrphans = orphanWallpapers.FindAll(
                                 oldOrphan => wallpapersDisconnected.Find(
                                     newOrphan => ScreenHelper.ScreenCompare(newOrphan.LivelyScreen, oldOrphan.GetScreen(), DisplayIdentificationMode.deviceId)) == null);
@@ -831,7 +841,7 @@ namespace livelywpf
             }
         }
 
-        private static void RestoreDisconnectedWallpapers()
+        private static async Task RestoreDisconnectedWallpapers()
         {
             try
             {
@@ -841,8 +851,7 @@ namespace livelywpf
                         //Finding screens for previously removed wallpaper if screen reconnected..
                         var wallpapersToRestore = wallpapersDisconnected.FindAll(wallpaper => ScreenHelper.GetScreen().FirstOrDefault(
                             screen => ScreenHelper.ScreenCompare(wallpaper.LivelyScreen, screen, DisplayIdentificationMode.deviceId)) != null);
-                        RestoreWallpaper(wallpapersToRestore);
-                        wallpapersDisconnected.RemoveAll(x => wallpapersToRestore.Contains(x));
+                        await RestoreWallpaper(wallpapersToRestore);
                         break;
                     case WallpaperArrangement.span:
                         //UpdateWallpaperRect() should handle it normally.
@@ -869,19 +878,17 @@ namespace livelywpf
             }
         }
 
-        public static void RestoreWallpaperFromSave()
+        public static async Task RestoreWallpaperFromLayout(string wallpaperLayoutPath)
         {
             try
             {
-                List<WallpaperLayoutModel> wallpaperLayout = null;
-                wallpaperLayout = Helpers.JsonStorage<List<WallpaperLayoutModel>>.LoadData(Path.Combine(Program.AppDataDir, "WallpaperLayout.json"));
+                var wallpaperLayout = Helpers.JsonStorage<List<WallpaperLayoutModel>>.LoadData(wallpaperLayoutPath);
                 if (Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span ||
                     Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.duplicate)
                 {
                     if (wallpaperLayout.Count != 0)
                     {
-                        //todo: Rewrite fn in libraryvm
-                        System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
+                        await System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
                         {
                             var libraryItem = Program.LibraryVM.LibraryItems.FirstOrDefault(x => x.LivelyInfoFolderPath.Equals(wallpaperLayout[0].LivelyInfoPath));
                             if (libraryItem != null)
@@ -893,7 +900,7 @@ namespace livelywpf
                 }
                 else if (Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.per)
                 {
-                    RestoreWallpaper(wallpaperLayout);
+                    await RestoreWallpaper(wallpaperLayout);
                 }
             }
             catch (Exception e)
@@ -902,25 +909,36 @@ namespace livelywpf
             }
         }
 
-        //todo: Rewrite fn in libraryvm
-        private static void RestoreWallpaper(List<WallpaperLayoutModel> wallpaperLayout)
+        private static async Task RestoreWallpaper(List<WallpaperLayoutModel> wallpaperLayout)
         {
-            System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
+            await System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
             {
-                var restoredLayoutes = new List<WallpaperLayoutModel>();
                 foreach (var layout in wallpaperLayout)
                 {
                     var libraryItem = Program.LibraryVM.LibraryItems.FirstOrDefault(x => x.LivelyInfoFolderPath.Equals(layout.LivelyInfoPath));
                     var screen = ScreenHelper.GetScreen(layout.LivelyScreen.DeviceId, layout.LivelyScreen.DeviceName,
                         layout.LivelyScreen.Bounds, layout.LivelyScreen.WorkingArea, DisplayIdentificationMode.deviceId);
-                    if (libraryItem != null && screen != null)
+                    if (libraryItem == null)
                     {
-                        Logger.Info("Core: Restoring Wallpaper: " + libraryItem.Title + " " + libraryItem.LivelyInfoFolderPath);
+                        Logger.Info("Wallpaper missing in library, skipping restoration of {0}.", layout.LivelyInfoPath);
+                        wallpapersDisconnected.Remove(layout);
+                    }
+                    else if (screen == null)
+                    {
+                        Logger.Info("Screen missing, skipping restoration {0} {1}.", layout.LivelyInfoPath, layout.LivelyScreen.DeviceName);
+                        if (!wallpapersDisconnected.Contains(layout))
+                        {
+                            Logger.Info("Wallpaper queued to disconnected screenlist {0} {1}.", layout.LivelyInfoPath, layout.LivelyScreen.DeviceName);
+                            wallpapersDisconnected.Add(new WallpaperLayoutModel(layout.LivelyScreen, layout.LivelyInfoPath));
+                        }
+                    }
+                    else
+                    {
+                        Logger.Info("Restoring wallpaper {0} {1}", libraryItem.Title, libraryItem.LivelyInfoFolderPath);
                         SetupDesktop.SetWallpaper(libraryItem, screen);
-                        restoredLayoutes.Add(layout);
+                        wallpapersDisconnected.Remove(layout);
                     }
                 }
-                wallpaperLayout.RemoveAll(x => restoredLayoutes.Contains(x));
             }));
         }
 
