@@ -123,7 +123,7 @@ namespace livelywpf
                 setupWizard.Show();
             }
 
-            _= SetupDesktop.RestoreWallpaperFromLayout(Path.Combine(Program.AppDataDir, "WallpaperLayout.json"));
+            _ = SetupDesktop.RestoreWallpaperFromLayout(Path.Combine(Program.AppDataDir, "WallpaperLayout.json"));
 
             //first element is not application path, unlike Environment.GetCommandLineArgs().
             if (e.Args.Length > 0)

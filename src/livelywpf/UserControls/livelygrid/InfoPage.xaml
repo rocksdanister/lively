@@ -12,14 +12,14 @@
         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" HorizontalAlignment="Left">
             <StackPanel MaxWidth="475" Margin="0, 0, 10, 0">
                 <!--<Image Margin="0, 5, 0, 0" Width="272" Height="153" HorizontalAlignment="Center" Source="{Binding ThumbnailPath}" Stretch="UniformToFill"/>-->
-                <TextBlock Margin="0, 0, 0, 0" Text="{Binding Title}"/>
-                <TextBlock Margin="0, 5, 0, 0" TextWrapping="WrapWholeWords" Text="{Binding Desc}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                <TextBlock Margin="0, 0, 0, 0" Text="{Binding Title}" TextWrapping="Wrap"/>
+                <TextBlock Margin="0, 5, 0, 0" Text="{Binding Desc}" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
                 <TextBlock Margin="0, 5, 0, 0" Text="{x:Bind UIText.Type}"/>
-                <TextBlock Margin="0, 5, 0, 0" Text="{Binding WallpaperType}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                <TextBlock Margin="0, 5, 0, 0" Text="{Binding WallpaperType}" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
                 <TextBlock Margin="0, 5, 0, 0" Text="{x:Bind UIText.Author}"/>
-                <TextBlock Margin="0, 5, 0, 0" Text="{Binding Author}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                <TextBlock Margin="0, 5, 0, 0" Text="{Binding Author}" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
                 <TextBlock Margin="0, 5, 0, 0" Text="{x:Bind UIText.Website}"/>
-                <HyperlinkButton Margin="0, 0, 0, 0" Content="{Binding LivelyInfo.Contact}" NavigateUri="{Binding SrcWebsite}" IsTabStop="False"/>
+                <HyperlinkButton Margin="0, 0, 0, 0" Content="{Binding LivelyInfo.Contact}" ToolTipService.ToolTip="{Binding SrcWebsite.OriginalString}" NavigateUri="{Binding SrcWebsite}" IsTabStop="False"/>
             </StackPanel>
         </ScrollViewer>
     </Grid>
