@@ -42,7 +42,7 @@
                          Text="{Binding Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding IsUserEditable}"/>
 
                 <Label Content="{x:Static p:Resources.TextDescription}" />
-                <TextBox Name="textboxDesc" Text="{Binding Desc, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                <TextBox Name="textboxDesc" Text="{Binding Desc, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalScrollBarVisibility="Auto" Padding="10, 10, 15, 10"
                          AcceptsReturn="True" TextWrapping="Wrap" Height="81" MaxHeight="81" Margin="10, 5, 25, 10" IsEnabled="{Binding IsUserEditable}"/>
 
                 <Label Content="{x:Static p:Resources.TextAuthor}" />

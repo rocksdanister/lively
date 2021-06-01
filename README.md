@@ -48,7 +48,8 @@ Just drag & drop files, webpages to set as wallpaper..
 <img src="/resources/wallpaper_yt.gif" width="600" height="338"/>
 
 * Just drag & drop stream links.
-* Video quality is adjustable in settings.
+* Adjustable video quality.
+* Autofills wallpaper data.
 #### Shaders
 <img src="/resources/wallpaper_shadertoy.gif" width="600" height="338"/>
 
@@ -108,12 +109,12 @@ Just drag & drop files, webpages to set as wallpaper..
 
 **_I'm not officially affiliated with Unity technologies, godot, shadertoy;_**
 ## Download
-##### Latest version: v1.5.0.0 (Windows 10 1903 or above)[What's new?](https://github.com/rocksdanister/lively/releases/tag/v1.5.0.0)
+##### Latest version: v1.6.0.0 (Windows 10 1903 or above)[What's new?](https://github.com/rocksdanister/lively/releases/tag/v1.6.0.0)
 - [`Installer`][direct-full-win32] 
 
-SHA256: 88e06ffce63c9588478875b29ab49f40324187f227e0fc1491d4969a3c96a158
+SHA256: 522bd24b41b3cb8c6c8732da04cb6b2fd13b98b159a1ced21ea98d8bce1ba8b5
      
-[direct-full-win32]: https://github.com/rocksdanister/lively/releases/download/v1.5.0.0/lively_setup_x86_full_v1500.exe
+[direct-full-win32]: https://github.com/rocksdanister/lively/releases/download/v1.6.0.0/lively_setup_x86_full_v1600.exe
 
 Installer will give Smartscreen warning, [discussion.](https://github.com/rocksdanister/lively/issues/9)
 
