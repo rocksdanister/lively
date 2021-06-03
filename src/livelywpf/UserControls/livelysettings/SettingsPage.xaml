@@ -109,7 +109,7 @@
                             </ComboBox>
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipPauseAlgorithm}"/>
                             <HyperlinkButton Margin="0, 0, 0, 0" FontSize="12" Content="{x:Bind UIText.TextLearnMore}" 
-                                             NavigateUri="https://github.com/rocksdanister/lively/wiki/Pause-Algorithm" ToolTipService.ToolTip="https://github.com/rocksdanister/lively/wiki/Pause-Algorithm"/>
+                                             NavigateUri="https://github.com/rocksdanister/lively/wiki/Performance" ToolTipService.ToolTip="https://github.com/rocksdanister/lively/wiki/Performance"/>
 
                             <Button Margin="0, 10, 0, 0" Style="{StaticResource ButtonRevealStyle}" Content="{x:Bind UIText.TitleAppRules}" Command="{Binding ApplicationRulesCommand}" />
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipAppRules}"/>

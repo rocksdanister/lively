@@ -109,12 +109,12 @@ Just drag & drop files, webpages to set as wallpaper..
 
 **_I'm not officially affiliated with Unity technologies, godot, shadertoy;_**
 ## Download
-##### Latest version: v1.6.0.0 (Windows 10 1903 or above)[What's new?](https://github.com/rocksdanister/lively/releases/tag/v1.6.0.0)
+##### Latest version: v1.6.0.2 (Windows 10 1903 or above)[What's new?](https://github.com/rocksdanister/lively/releases/tag/v1.6.0.2)
 - [`Installer`][direct-full-win32] 
 
-SHA256: 522bd24b41b3cb8c6c8732da04cb6b2fd13b98b159a1ced21ea98d8bce1ba8b5
+SHA256: 112f8c2587d97e57096705336ace649fe3e12e0f25b010bcc3f625a072fb9420
      
-[direct-full-win32]: https://github.com/rocksdanister/lively/releases/download/v1.6.0.0/lively_setup_x86_full_v1600.exe
+[direct-full-win32]: https://github.com/rocksdanister/lively/releases/download/v1.6.0.2/lively_setup_x86_full_v1602.exe
 
 Installer will give Smartscreen warning, [discussion.](https://github.com/rocksdanister/lively/issues/9)
 
