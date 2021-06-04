@@ -14,7 +14,11 @@ namespace livelywpf
     public partial class App : Application
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        public static MainWindow AppWindow { get; private set; }
+        private static MainWindow _appWindow;
+        public static MainWindow AppWindow
+        {
+            get => _appWindow ??= new MainWindow();
+        }
         protected override void OnStartup(StartupEventArgs e)
         {
             try
@@ -67,11 +71,11 @@ namespace livelywpf
                 }
             }
 
-            //previous installed appversion is different from current instance.
-            if (!Program.SettingsVM.Settings.AppVersion.Equals(Assembly.GetExecutingAssembly().GetName().Version.ToString(), StringComparison.OrdinalIgnoreCase)
-                || Program.SettingsVM.Settings.IsFirstRun)
+            //previous installed appversion is different from current instance..
+            if (!Program.SettingsVM.Settings.AppVersion.Equals(Assembly.GetExecutingAssembly().GetName().Version.ToString(), StringComparison.OrdinalIgnoreCase))
             {
-                Program.SettingsVM.Settings.WallpaperBundleVersion = ExtractWallpaperBundle();
+                //todo: show changelog window here..
+                Program.SettingsVM.Settings.WallpaperBundleVersion = ExtractWallpaperBundle(Program.SettingsVM.Settings.WallpaperBundleVersion);
                 Program.SettingsVM.Settings.AppVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
                 Program.SettingsVM.UpdateConfigFile();
             }
@@ -81,18 +85,16 @@ namespace livelywpf
 
             #endregion //vm init
 
-            AppWindow = new MainWindow();
-            AppWindow.Show();
+            Application.Current.MainWindow = AppWindow;
+            WndProcMsgWindow wndproc = new WndProcMsgWindow();
+            wndproc.Show();
             //Package app otherwise bugging out when initialized in settings vm.
             SetupDesktop.WallpaperInputForward(Program.SettingsVM.Settings.InputForward);
             if (Program.SettingsVM.Settings.IsRestart)
             {
                 Program.SettingsVM.Settings.IsRestart = false;
                 Program.SettingsVM.UpdateConfigFile();
-            }
-            else
-            {
-                AppWindow.Hide();
+                AppWindow?.Show();
             }
             base.OnStartup(e);
         }
@@ -100,11 +102,10 @@ namespace livelywpf
         /// <summary>
         /// Extract default wallpapers and incremental if any.
         /// </summary>
-        private int ExtractWallpaperBundle()
+        public static int ExtractWallpaperBundle(int currentBundleVer)
         {
-            //todo: Add a "please wait" page in SetupWizard to indicate extraction in progress.
             //Lively stores the last extracted bundle filename, extraction proceeds from next file onwards.
-            int maxExtracted = Program.SettingsVM.Settings.WallpaperBundleVersion;
+            int maxExtracted = currentBundleVer;
             try
             {
                 //wallpaper bundles filenames are 0.zip, 1.zip ...
@@ -114,7 +115,7 @@ namespace livelywpf
 
                 foreach (var item in sortedBundles)
                 {
-                    if(int.TryParse(Path.GetFileNameWithoutExtension(item), out int val))
+                    if (int.TryParse(Path.GetFileNameWithoutExtension(item), out int val))
                     {
                         if (val > maxExtracted)
                         {
@@ -125,7 +126,7 @@ namespace livelywpf
                     }
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Logger.Error("Base Wallpaper Extract Fail:" + e.ToString());
             }
@@ -165,18 +166,7 @@ namespace livelywpf
             }
             finally
             {
-                LogConfigFile();
-                Logger.Error(message + "\n" + exception.ToString());
-            }
-        }
-
-        private bool _configLogged = false;
-        private void LogConfigFile()
-        {
-            if(!_configLogged)
-            {
-                Logger.Info("Saved config file=>\n" + NLogger.PropertyList(Program.SettingsVM.Settings));
-                _configLogged = true;
+                Logger.Error("{0}\n{1}", message, exception.ToString());
             }
         }
     }

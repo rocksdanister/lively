@@ -1,4 +1,5 @@
 ﻿using livelywpf.Core;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using NLog;
 using System;
@@ -125,6 +126,7 @@ namespace livelywpf.Cef
                         {
                             xamlSlider.TickFrequency = (double)item.Value["step"];
                             xamlSlider.AutoToolTipPrecision = 2;
+                            xamlSlider.IsSnapToTickEnabled = true;
                         }
                     }
                     else
@@ -306,9 +308,8 @@ namespace livelywpf.Cef
             try
             {
                 var item = (Slider)sender;
-                WallpaperSendMsg("lively:customise slider " + item.Name + " " + item.Value);
+                WallpaperSendMsg("lively:customise slider " + item.Name + " " + JsonConvert.SerializeObject(item.Value));
                 livelyPropertyCopyData[item.Name]["value"] = item.Value;
-                Debug.WriteLine("lively:customise slider " + item.Name + " " + item.Value);
                 UpdatePropertyFile();
             }
             catch { }
@@ -336,8 +337,7 @@ namespace livelywpf.Cef
             try
             {
                 var item = (ComboBox)sender;
-                //Form1.chromeBrowser.ExecuteScriptAsync("livelyPropertyListener", item.Name, item.SelectedIndex);
-                WallpaperSendMsg("lively:customise dropdown " + item.Name + " " + item.SelectedIndex);
+                WallpaperSendMsg("lively:customise dropdown " + item.Name + " " + JsonConvert.SerializeObject(item.SelectedIndex));
                 livelyPropertyCopyData[item.Name]["value"] = item.SelectedIndex;
                 UpdatePropertyFile();
             }
@@ -416,8 +416,7 @@ namespace livelywpf.Cef
             try
             {
                 var item = (Button)sender;
-                //Form1.chromeBrowser.ExecuteScriptAsync("livelyPropertyListener", item.Name, true);
-                WallpaperSendMsg("lively:customise button " + item.Name + " " + true);
+                WallpaperSendMsg("lively:customise button " + item.Name + " " + JsonConvert.SerializeObject(true));
             }
             catch { }
         }
@@ -431,9 +430,7 @@ namespace livelywpf.Cef
             try
             {
                 var item = (CheckBox)sender;
-                //Form1.chromeBrowser.ExecuteScriptAsync("livelyPropertyListener", item.Name, item.Checked);
-                WallpaperSendMsg("lively:customise checkbox " + item.Name + " " + (item.IsChecked == true));
-                Debug.WriteLine("lively:customise " + item.Name + " " + (item.IsChecked == true));
+                WallpaperSendMsg("lively:customise checkbox " + item.Name + " " + JsonConvert.SerializeObject((item.IsChecked == true)));
                 livelyPropertyCopyData[item.Name]["value"] = item.IsChecked == true;
                 UpdatePropertyFile();
             }
@@ -451,7 +448,6 @@ namespace livelywpf.Cef
                 var item = (TextBox)sender;
                 //Form1.chromeBrowser.ExecuteScriptAsync("livelyPropertyListener", item.Name, item.Text);
                 WallpaperSendMsg("lively:customise textbox " + item.Name + " " + "\"" + item.Text + "\"");
-                Debug.WriteLine("lively:customise textbox " + item.Name + " " + "\"" + item.Text + "\"");
                 livelyPropertyCopyData[item.Name]["value"] = item.Text;
                 UpdatePropertyFile();
             }

@@ -18,7 +18,7 @@
             <ui:ProgressRing Height="25" Width="25" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5" IsActive="{Binding ItemStartup}"/>
             <StackPanel Orientation="Vertical" Height="60" VerticalAlignment="Bottom" Background="{DynamicResource SystemControlBackgroundAltMediumBrush}">
                 <TextBlock Margin="5,0,0,0" Text="{Binding Title}"/>
-                 <TextBlock Margin="5,0,0,0" TextWrapping="Wrap" FontSize="12.5" Text="{Binding Desc}" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}"/>
+                 <TextBlock Margin="5,0,0,0" TextWrapping="Wrap" Padding="0, 1, 0, 0" FontSize="13" Text="{Binding Desc}" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}"/>
             </StackPanel>
         </Grid>
     </DataTemplate>
@@ -34,7 +34,7 @@
                 <MenuItem Header="{x:Static p:Resources.TitleAbout}" Click="MenuItem_Click" Name="moreInformation"/>
                 <MenuItem Header="{x:Static p:Resources.TextSetWallpaper}" Click="MenuItem_Click" Name="setWallpaper"/>
                 <MenuItem Header="{x:Static p:Resources.TextPreviewWallpaper}" Click="MenuItem_Click" Name="previewWallpaper"/>
-                <MenuItem Header="{x:Static p:Resources.TextCustomiseWallpaper}" Click="MenuItem_Click" Name="customiseWallpaper"/>
+                <MenuItem Header="{x:Static p:Resources.TextCustomise}" Click="MenuItem_Click" Name="customiseWallpaper"/>
                 <MenuItem Header="{x:Static p:Resources.TextShowOnDisk}" Click="MenuItem_Click" Name="showOnDisk"/>
                 <MenuItem Header="{x:Static p:Resources.TextExportWallpaperZip}" Click="MenuItem_Click" Name="exportWallpaper"/>
                 <MenuItem Header="{x:Static p:Resources.TextConvertVideo}" Click="MenuItem_Click" IsEnabled="False" Visibility="Collapsed" Name="convertVideo"/>

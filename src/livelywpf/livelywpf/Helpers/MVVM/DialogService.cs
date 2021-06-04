@@ -14,7 +14,7 @@ namespace livelywpf.Helpers
     {
         //todo: Find a way to avoid passing XamlRoot.
         public static async Task<ContentDialogResult> ShowConfirmationDialog(string title, string message,
-            string primaryBtnText, string secondaryBtnText = null, ContentDialogButton defaultBtn = ContentDialogButton.Secondary )
+            string primaryBtnText, string secondaryBtnText = null, ContentDialogButton defaultBtn = ContentDialogButton.Primary)
         {
             var tb = new TextBlock{ Text = message };
             ContentDialog dialog = new ContentDialog
@@ -28,9 +28,8 @@ namespace livelywpf.Helpers
             if (!string.IsNullOrEmpty(secondaryBtnText))
             {
                 dialog.SecondaryButtonText = secondaryBtnText;
-                dialog.DefaultButton = defaultBtn;
-                result = ContentDialogResult.Secondary;
             }
+            dialog.DefaultButton = defaultBtn;
 
             try
             {
@@ -42,7 +41,7 @@ namespace livelywpf.Helpers
         }
 
         public static async Task<ContentDialogResult> ShowConfirmationDialog(string title, object body,
-         string primaryBtnText, string secondaryBtnText = null, ContentDialogButton defaultBtn = ContentDialogButton.Secondary)
+         string primaryBtnText, string secondaryBtnText = null, ContentDialogButton defaultBtn = ContentDialogButton.Primary)
         {
             ContentDialog dialog = new ContentDialog
             {
@@ -55,9 +54,8 @@ namespace livelywpf.Helpers
             if (!string.IsNullOrEmpty(secondaryBtnText))
             {
                 dialog.SecondaryButtonText = secondaryBtnText;
-                dialog.DefaultButton = defaultBtn;
-                result = ContentDialogResult.Secondary;
             }
+            dialog.DefaultButton = defaultBtn;
 
             try
             {

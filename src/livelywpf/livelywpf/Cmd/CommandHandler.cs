@@ -6,6 +6,7 @@ using System.Threading;
 using System.Windows.Threading;
 using CommandLine;
 using livelywpf.Helpers;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace livelywpf.Cmd
@@ -134,7 +135,10 @@ namespace livelywpf.Cmd
                     }
                     else
                     {
-                        App.AppWindow?.HideWindow();
+                        if (App.AppWindow.IsVisible)
+                        {
+                            App.AppWindow?.HideWindow();
+                        }
                     }
                 }
 
@@ -178,7 +182,7 @@ namespace livelywpf.Cmd
                     else if (File.Exists(opts.File))
                     {
                         Core.LivelyScreen screen = opts.Monitor != null ?
-                  ScreenHelper.GetScreen().FirstOrDefault(x => x.DeviceNumber == ((int)opts.Monitor).ToString()) : ScreenHelper.GetPrimaryScreen();
+                            ScreenHelper.GetScreen().FirstOrDefault(x => x.DeviceNumber == ((int)opts.Monitor).ToString()) : ScreenHelper.GetPrimaryScreen();
                         var libraryItem = Program.LibraryVM.LibraryItems.FirstOrDefault(x => x.FilePath != null && x.FilePath.Equals(opts.File));
                         if (screen != null)
                         {
@@ -195,6 +199,8 @@ namespace livelywpf.Cmd
                                     case WallpaperType.web:
                                     case WallpaperType.webaudio:
                                     case WallpaperType.url:
+                                        Logger.Info("Web type wallpaper import is disabled for cmd control.");
+                                        break;
                                     case WallpaperType.video:
                                     case WallpaperType.gif:
                                     case WallpaperType.videostream:
@@ -258,7 +264,7 @@ namespace livelywpf.Cmd
                 ScreenHelper.GetScreen().FirstOrDefault(x => x.DeviceNumber == ((int)opts.Monitor).ToString()) : ScreenHelper.GetPrimaryScreen();
             if (screen != null)
             {
-                var wp = SetupDesktop.Wallpapers.Find(x => ScreenHelper.ScreenCompare(x.GetScreen(), screen, DisplayIdentificationMode.deviceId));
+                var wp = SetupDesktop.Wallpapers.Find(x => x.GetScreen().Equals(screen));
                 if (wp != null)
                 {
                     if (opts.Param != null)
@@ -309,7 +315,7 @@ namespace livelywpf.Cmd
                 {
                     try
                     {
-                        var wp = SetupDesktop.Wallpapers.Find(x => ScreenHelper.ScreenCompare(x.GetScreen(), screen, DisplayIdentificationMode.deviceId));
+                        var wp = SetupDesktop.Wallpapers.Find(x => x.GetScreen().Equals(screen));
                         //only for running wallpaper instance unlike gui property..
                         if (wp == null)
                             return 0;
@@ -361,7 +367,7 @@ namespace livelywpf.Cmd
                                         (double)lp[name]["value"] + double.Parse(val[1..]) : double.Parse(val);
                                     sliderValue = Clamp(sliderValue, (double)lp[name]["min"], (double)lp[name]["max"]);
 
-                                    msg = "lively:customise " + ctype + " " + name + " " + sliderValue;
+                                    msg = "lively:customise " + ctype + " " + name + " " + JsonConvert.SerializeObject(sliderValue);
                                     lp[name]["value"] = sliderValue;
                                 }
                                 else if (ctype.Equals("dropdown", StringComparison.OrdinalIgnoreCase))
@@ -370,7 +376,7 @@ namespace livelywpf.Cmd
                                         (int)lp[name]["value"] + int.Parse(val[1..]) : int.Parse(val);
                                     selectedIndex = Clamp(selectedIndex, 0, lp[name]["items"].Count() - 1);
 
-                                    msg = "lively:customise " + ctype + " " + name + " " + selectedIndex;
+                                    msg = "lively:customise " + ctype + " " + name + " " + JsonConvert.SerializeObject(selectedIndex);
                                     lp[name]["value"] = selectedIndex;
                                 }
                                 else if (ctype.Equals("folderDropdown", StringComparison.OrdinalIgnoreCase))

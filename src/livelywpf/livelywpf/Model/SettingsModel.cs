@@ -76,6 +76,7 @@ namespace livelywpf
         public bool WallpaperDirMoveExistingWallpaperNewDir { get; set; }
         public bool SysTrayIcon { get; set; }
         public bool AutoDetectOnlineStreams { get; set; }
+        public bool ExtractStreamMetaData { get; set; }
         /// <summary>
         /// Cefsharp debug port.
         /// </summary>
@@ -106,6 +107,7 @@ namespace livelywpf
         /// </summary>
         public bool DesktopAutoWallpaper { get; set; }
         public TaskbarTheme SystemTaskbarTheme { get; set; }
+        public ScreensaverIdleTime ScreensaverIdleWait { get; set; }
 
         public SettingsModel()
         {
@@ -153,6 +155,7 @@ namespace livelywpf
             SysTrayIcon = true;
             WebDebugPort = string.Empty;
             AutoDetectOnlineStreams = true;
+            ExtractStreamMetaData = true;
             WallpaperBundleVersion = -1;
             AudioVolumeGlobal = 75;
             AudioOnlyOnDesktop = true;
@@ -165,6 +168,7 @@ namespace livelywpf
             LockScreenAutoWallpaper = false;
             DesktopAutoWallpaper = false;
             SystemTaskbarTheme = TaskbarTheme.none;
+            ScreensaverIdleWait = ScreensaverIdleTime.none;
 
             try
             {

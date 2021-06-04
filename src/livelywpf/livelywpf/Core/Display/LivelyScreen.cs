@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Drawing;
 using Newtonsoft.Json;
-using System.Windows;
 using System.Linq;
 
 namespace livelywpf.Core
@@ -11,7 +10,7 @@ namespace livelywpf.Core
     /// So that in the future when I remove/change winform library only this and ScreenHelper.cs file require modification.
     /// </summary>
     [Serializable]
-    public class LivelyScreen
+    public class LivelyScreen : IEquatable<LivelyScreen>
     {
         public string DeviceId { get; set; }
         public string DeviceName { get; set; }
@@ -61,6 +60,11 @@ namespace livelywpf.Core
             this.BitsPerPixel = display.BitsPerPixel;
             this.Bounds = display.Bounds;
             this.WorkingArea = display.WorkingArea;
+        }
+
+        public bool Equals(LivelyScreen other)
+        {
+            return other.DeviceId == this.DeviceId;
         }
     }
 }

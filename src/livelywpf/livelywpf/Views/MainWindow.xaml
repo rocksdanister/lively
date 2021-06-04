@@ -25,7 +25,7 @@
 
         <TextBlock FontSize="12.25" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="55, 10, 0, 0" Text="{x:Static p:Resources.TitleAppName}"/>
         <Button x:Name="statusBtn" WindowChrome.IsHitTestVisibleInChrome="True" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,150,0" 
-                MinWidth="75" MinHeight="33" MaxHeight="33" Click="Button_Click" ToolTip="{x:Static p:Resources.TitleScreenLayout}" >
+                MinWidth="75" MinHeight="33" MaxHeight="33" Click="statusBtn_Click" ToolTip="{x:Static p:Resources.TitleScreenLayout}" >
             <StackPanel Orientation="Horizontal">
                 <ui:FontIcon Glyph="&#xE7F4;" Margin="0,2,5,0"/>
                 <TextBlock x:Name="wallpaperStatusText" Text="0"/>

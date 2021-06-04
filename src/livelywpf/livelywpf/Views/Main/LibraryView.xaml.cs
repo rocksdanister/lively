@@ -147,7 +147,7 @@ namespace livelywpf.Views
                     await Helpers.DialogService.ShowConfirmationDialog(
                         Properties.Resources.TitleAbout,
                         aboutFrame,
-                        Properties.Resources.TextClose);
+                        Properties.Resources.TextOK);
                     break;
             }
         }

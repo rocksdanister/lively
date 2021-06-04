@@ -301,7 +301,7 @@ If still not working, close &amp; start Lively again/restart windows.
     <value>Animated GIF</value>
   </data>
   <data name="TextGitHubStar" xml:space="preserve">
-    <value>Show some love by dropping a star!</value>
+    <value>Show some love by dropping a star</value>
   </data>
   <data name="TextGo" xml:space="preserve">
     <value>GO</value>
@@ -309,14 +309,23 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="TextHelpTranslate" xml:space="preserve">
     <value>Help translate</value>
   </data>
+  <data name="TextHours" xml:space="preserve">
+    <value>hours</value>
+  </data>
   <data name="TextInstall" xml:space="preserve">
     <value>Install</value>
   </data>
   <data name="TextKeyboard" xml:space="preserve">
     <value>Keyboard</value>
   </data>
+  <data name="TextLearnMore" xml:space="preserve">
+    <value>Learn more</value>
+  </data>
   <data name="TextLicense" xml:space="preserve">
     <value>License</value>
+  </data>
+  <data name="TextMinutes" xml:space="preserve">
+    <value>minutes</value>
   </data>
   <data name="TextmoreInfo" xml:space="preserve">
     <value>Information</value>
@@ -541,7 +550,7 @@ If still not working, close &amp; start Lively again/restart windows.
     <value>Volume level of all wallpapers.</value>
   </data>
   <data name="TipBatteryPower" xml:space="preserve">
-    <value>(For battery operated systems only) Change playback when AC power is disconnected.</value>
+    <value>Change playback when AC power is disconnected (battery operated systems only.)</value>
   </data>
   <data name="TipBrowserDebuggingPort" xml:space="preserve">
     <value>Enter the port for debugging webpage wallpapers, browser restart is required for changes to take effect.
@@ -554,8 +563,7 @@ When ready navigate to http://localhost:portnumber to access developer console.<
     <value>Set a picture of animated wallpaper as desktop wallpaper.</value>
   </data>
   <data name="TipDisplayPauseRule" xml:space="preserve">
-    <value>Per: Pause wallpaper only on the screen in which application is focused/fullscreen.
-All: Pause wallpaper on all screen(s) if any application is focused/fullscreen.</value>
+    <value>Choose whether to pause wallpaper on all screens or only the relevant screen in which application is focused/fullscreen.</value>
   </data>
   <data name="TipExportLogs" xml:space="preserve">
     <value>Create log report file.</value>
@@ -576,8 +584,10 @@ All: Pause wallpaper on all screen(s) if any application is focused/fullscreen.<
     <value>Set a picture of animated wallpaper as lockscreen wallpaper.</value>
   </data>
   <data name="TipPauseAlgorithm" xml:space="preserve">
-    <value>Foreground: Lightweight, only checks the single process that is in foreground to determine wallpaper playback behaviour.
-All Process: Heavier, Scans all the process to determine playback behaviour.</value>
+    <value>Wallpaper pause algorithm.</value>
+  </data>
+  <data name="TipScreensaver" xml:space="preserve">
+    <value>After the selected inactivity period use the current wallpaper as your screensaver.</value>
   </data>
   <data name="TipStreamWallpaperDetect" xml:space="preserve">
     <value>If supported video stream link is detected use the video player instead of loading the webpage.</value>
@@ -747,6 +757,9 @@ Edge is the built in webview of windows 10.</value>
   </data>
   <data name="TitleScreenLayout" xml:space="preserve">
     <value>Control Panel</value>
+  </data>
+  <data name="TitleScreensaver" xml:space="preserve">
+    <value>Screensaver</value>
   </data>
   <data name="TitleSelectFile" xml:space="preserve">
     <value>Select File</value>

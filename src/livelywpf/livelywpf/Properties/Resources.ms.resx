@@ -573,7 +573,7 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
     <value>Setup Lively</value>
   </data>
   <data name="TitleMisc" xml:space="preserve">
-    <value>Pelbagai</value>
+    <value>Lain-lain</value>
   </data>
   <data name="TitleMute" xml:space="preserve">
     <value>Senyap</value>
@@ -711,7 +711,7 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
     <value>Judul</value>
   </data>
   <data name="TextDescription" xml:space="preserve">
-    <value>Deskripsi</value>
+    <value>Penerangan</value>
   </data>
   <data name="TextOK" xml:space="preserve">
     <value>OK</value>
@@ -742,7 +742,7 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
     <comment>Untuk versi Lively yang lain-lain, contohnya : Microsoft Store</comment>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>Windows versi N/KN anda memerlukan muat turun pengekod penyahkod (codec) tambahan bagi menyokong main semula video didalam wallpaper.</value>
+    <value>Bagi Windows versi N/KN muat turun pengekod penyahkod (codec) tambahan adalah diperlukan untuk menyokong main semula video didalam wallpaper.</value>
   </data>
   <data name="TextLicense" xml:space="preserve">
     <value>Lesen</value>
@@ -766,7 +766,7 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
     <value>Nyahkod menggunakan GPU</value>
   </data>
   <data name="TipVideoHardwareDecode" xml:space="preserve">
-    <value>Guna 'Hardware Acceleration' jika mampu.</value>
+    <value>Gunakan 'Hardware Acceleration' jika mampu.</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
   <value>Sila berhenti sebelum meneruskan.</value>
@@ -784,51 +784,66 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
   <value>Masukkan argumen baris perintah</value>
 </data>
   <data name="TextGitHubStar" xml:space="preserve">
-    <value>Show some love by dropping a star</value>
+    <value>Letakkan bintang di Lively jika anda menyukai program ini</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
-    <value>Incompatible program found, taskbar theming disabled.</value>
+    <value>Tema taskbar dinyahaktifkan kerana terjumpa program yang tidak serasi.</value>
   </data>
   <data name="TitleTaskbarTheme" xml:space="preserve">
-    <value>Taskbar Theme</value>
+    <value>Tema Taskbar</value>
   </data>
   <data name="TitleLockscreenPicture" xml:space="preserve">
-    <value>Lockscreen Picture</value>
+    <value>Gambar Skrin Kekunci</value>
   </data>
   <data name="TitleDesktopPicture" xml:space="preserve">
-    <value>Desktop Picture</value>
+    <value>Gambar Desktop</value>
   </data>
   <data name="TipLockscreenPicture" xml:space="preserve">
-    <value>Set a picture of animated wallpaper as lockscreen wallpaper.</value>
+    <value>Setkan gambar wallpaper beranimasi sebagai wallpaper skrin kekunci.</value>
   </data>
   <data name="TipDesktopPicture" xml:space="preserve">
-    <value>Set a picture of animated wallpaper as desktop wallpaper.</value>
+    <value>Setkan gambar wallpaper beranimasi sebagai wallpaper desktop.</value>
   </data>
   <data name="TipTaskbarTheme" xml:space="preserve">
-    <value>Change system taskbar appearance.</value>
+    <value>Ubah penampilan taskbar sistem.</value>
   </data>
   <data name="TextTaskbarThemeBlur" xml:space="preserve">
-    <value>Blur</value>
+    <value>Kabur</value>
   </data>
   <data name="TextTaskbarThemeClear" xml:space="preserve">
-    <value>Clear</value>
+    <value>Jelas</value>
   </data>
   <data name="TextTaskbarThemeColor" xml:space="preserve">
-    <value>Color</value>
+    <value>Warna</value>
   </data>
   <data name="TextTaskbarThemeFluent" xml:space="preserve">
-    <value>Fluent</value>
+    <value>Lancar</value>
   </data>
   <data name="TextTaskbarThemeWallpaper" xml:space="preserve">
     <value>Wallpaper</value>
   </data>
   <data name="TextTaskbarThemeWallpaperFluent" xml:space="preserve">
-    <value>Wallpaper Fluent</value>
+    <value>Wallpaper Lancar</value>
   </data>
   <data name="TitleSystem" xml:space="preserve">
-    <value>System</value>
+    <value>Sistem</value>
   </data>
   <data name="TitleSourceCode" xml:space="preserve">
-    <value>Source Code</value>
+    <value>Kod Sumber</value>
+  </data>
+    <data name="TitleScreensaver" xml:space="preserve">
+    <value>Screensaver</value>
+  </data>
+  <data name="TipScreensaver" xml:space="preserve">
+    <value>Setelah jangka masa tidak aktif berlalu gunakan wallpaper kini sebagai screensaver.</value>
+  </data>
+    <data name="TextHours" xml:space="preserve">
+    <value>jam</value>
+  </data>
+  <data name="TextMinutes" xml:space="preserve">
+    <value>minit</value>
+  </data>
+  <data name="TextLearnMore" xml:space="preserve">
+    <value>Ketahui lebih lanjut</value>
   </data>
 </root>

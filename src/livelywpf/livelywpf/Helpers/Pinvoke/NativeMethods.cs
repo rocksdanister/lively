@@ -13,6 +13,20 @@ namespace livelywpf
 #pragma warning disable CA1707, CA1401, CA1712
     public static class NativeMethods
     {
+        public enum QUERY_USER_NOTIFICATION_STATE
+        {
+            QUNS_NOT_PRESENT = 1,
+            QUNS_BUSY = 2,
+            QUNS_RUNNING_D3D_FULL_SCREEN = 3,
+            QUNS_PRESENTATION_MODE = 4,
+            QUNS_ACCEPTS_NOTIFICATIONS = 5,
+            QUNS_QUIET_TIME = 6
+        };
+
+
+        [DllImport("shell32.dll")]
+        public static extern int SHQueryUserNotificationState(out QUERY_USER_NOTIFICATION_STATE pquns);
+
         #region WM_Register
 
         public static readonly int WM_SHOWLIVELY = RegisterWindowMessage("WM_SHOWLIVELYMAINWINDOW");

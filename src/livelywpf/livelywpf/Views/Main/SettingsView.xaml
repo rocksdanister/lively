@@ -88,7 +88,7 @@
                                 <Hyperlink Foreground="{DynamicResource SystemControlHighlightAltListAccentHighBrush}" NavigateUri="https://github.com/rocksdanister/lively/wiki/Differences-Between-Distributions" 
                                            ToolTipService.ToolTip="https://github.com/rocksdanister/lively/wiki/Differences-Between-Distributions" 
                                            RequestNavigate="Hyperlink_RequestNavigate">
-                                    <TextBlock Text="Learn more."/>
+                                    <TextBlock Text="{x:Static p:Resources.TextLearnMore}"/>
                                 </Hyperlink>
                             </TextBlock>
 
@@ -141,9 +141,17 @@
                             <ComboBox Margin="0,5,0,0" MinWidth="200" SelectedIndex="{Binding SelectedPauseAlgorithmIndex, Mode=TwoWay}">
                                 <ComboBoxItem Content="{x:Static p:Resources.TextPauseAlgoForegroundProcess}"/>
                                 <ComboBoxItem Content="{x:Static p:Resources.TextPauseAlgoAllProcess}" IsEnabled="False"/>
+                                <ComboBoxItem Content="Game Mode" Visibility="Collapsed"/>
                             </ComboBox>
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}" 
                                        Text="{x:Static p:Resources.TipPauseAlgorithm}"/>
+                            <TextBlock Margin="0, 0, 0, 0">           
+                                <Hyperlink Foreground="{DynamicResource SystemControlHighlightAltListAccentHighBrush}" NavigateUri="https://github.com/rocksdanister/lively/wiki/Performance" 
+                                           ToolTipService.ToolTip="https://github.com/rocksdanister/lively/wiki/Performance" 
+                                           RequestNavigate="Hyperlink_RequestNavigate">
+                                    <TextBlock Text="{x:Static p:Resources.TextLearnMore}"/>
+                                </Hyperlink>
+                            </TextBlock>
 
                             <Button Margin="0, 10, 0, 0" Content="{x:Static p:Resources.TitleAppRules}" Command="{Binding ApplicationRulesCommand}" />
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}" 
@@ -294,6 +302,84 @@
                                 <ComboBoxItem Content="{x:Static p:Resources.TextTaskbarThemeWallpaperFluent}"/>
                             </ComboBox>
                             <TextBlock Margin="0,10,0,0" FontSize="12" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}" TextWrapping="Wrap" Text="{x:Static p:Resources.TipTaskbarTheme}"/>
+
+                            <TextBlock Text="{x:Static p:Resources.TitleScreensaver}" Margin="0,10,0,0"/>
+                            <ComboBox Margin="0,5,0,0" MinWidth="150" MaxWidth="150" SelectedIndex="{Binding SelectedScreensaverWaitIndex, Mode=TwoWay}">
+                                <ComboBoxItem Content="{x:Static p:Resources.TextOff}"/>
+                                <ComboBoxItem>
+                                    <TextBlock>
+                                      <Run Text="1 "/>
+                                      <Run Text="{x:Static p:Resources.TextMinutes}"/>
+                                    </TextBlock>
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <TextBlock>
+                                      <Run Text="2 "/>
+                                      <Run Text="{x:Static p:Resources.TextMinutes}"/>
+                                    </TextBlock>
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <TextBlock>
+                                      <Run Text="3 "/>
+                                      <Run Text="{x:Static p:Resources.TextMinutes}"/>
+                                    </TextBlock>
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <TextBlock>
+                                      <Run Text="5 "/>
+                                      <Run Text="{x:Static p:Resources.TextMinutes}"/>
+                                    </TextBlock>
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <TextBlock>
+                                      <Run Text="10 "/>
+                                      <Run Text="{x:Static p:Resources.TextMinutes}"/>
+                                    </TextBlock>
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <TextBlock>
+                                      <Run Text="15 "/>
+                                      <Run Text="{x:Static p:Resources.TextMinutes}"/>
+                                    </TextBlock>
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <TextBlock>
+                                      <Run Text="20 "/>
+                                      <Run Text="{x:Static p:Resources.TextMinutes}"/>
+                                    </TextBlock>
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <TextBlock>
+                                      <Run Text="25 "/>
+                                      <Run Text="{x:Static p:Resources.TextMinutes}"/>
+                                    </TextBlock>
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <TextBlock>
+                                      <Run Text="30 "/>
+                                      <Run Text="{x:Static p:Resources.TextMinutes}"/>
+                                    </TextBlock>
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <TextBlock>
+                                      <Run Text="45 "/>
+                                      <Run Text="{x:Static p:Resources.TextMinutes}"/>
+                                    </TextBlock>
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <TextBlock>
+                                      <Run Text="1 "/>
+                                      <Run Text="{x:Static p:Resources.TextHours}"/>
+                                    </TextBlock>
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <TextBlock>
+                                      <Run Text="2 "/>
+                                      <Run Text="{x:Static p:Resources.TextHours}"/>
+                                    </TextBlock>
+                                </ComboBoxItem>
+                            </ComboBox>
+                            <TextBlock Margin="0,10,0,0" FontSize="12" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}" TextWrapping="Wrap" Text="{x:Static p:Resources.TipScreensaver}"/>
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>

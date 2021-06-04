@@ -25,7 +25,7 @@ namespace livelywpf.Views
         public AppUpdaterView(Uri fileUri, string changelogText)
         {
             InitializeComponent();
-            if (fileUri != null)
+            if(fileUri != null)
             {
                 this.suggestedFileName = fileUri.Segments.Last();
                 this.fileUrl = fileUri;
@@ -95,11 +95,13 @@ namespace livelywpf.Views
             }
             else
             {
+                /*
                 var saveFileDialog1 = new Microsoft.Win32.SaveFileDialog()
                 {
                     Title = "Select location to save the file",
                     Filter = "Executable|*.exe",
                     FileName = suggestedFileName,
+                    InitialDirectory = Path.Combine(Program.AppDataDir, "temp"),
                 };
                 if (saveFileDialog1.ShowDialog() == true)
                 {
@@ -109,10 +111,11 @@ namespace livelywpf.Views
                 {
                     return;
                 }
-
+                */
                 try
                 {
                     download = new MultiDownloadHelper();
+                    savePath = Path.Combine(Program.AppDataDir, "temp", suggestedFileName);
                     download.DownloadFile(fileUrl, savePath);
                     download.DownloadFileCompleted += UpdateDownload_DownloadFileCompleted;
                     download.DownloadProgressChanged += UpdateDownload_DownloadProgressChanged;
@@ -140,7 +143,7 @@ namespace livelywpf.Views
                     Title = Properties.Resources.TitlePleaseWait,
                     Content = Properties.Resources.DescriptionCancelQuestion,
                     PrimaryButtonText = Properties.Resources.TextYes,
-                    SecondaryButtonText = Properties.Resources.TextNo,
+                    SecondaryButtonText = Properties.Resources.TextNo,      
                 };
                 ContentDialogResult result = await cancelDownload.ShowAsync();
                 if (result == ContentDialogResult.Primary)

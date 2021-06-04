@@ -132,6 +132,7 @@ namespace livelywpf
             IsDebugMenuVisible = Settings.DebugMenu;
             SelectedWebBrowserIndex = (int)Settings.WebBrowser;
             SelectedAppThemeIndex = (int)Settings.ApplicationTheme;
+            SelectedScreensaverWaitIndex = (int)Settings.ScreensaverIdleWait;
         }
 
         private SettingsModel _settings;
@@ -382,11 +383,12 @@ namespace livelywpf
         
         private void ShowApplicationRulesWindow()
         {
-            ApplicationRulesView app = new ApplicationRulesView
+            ApplicationRulesView app = new ApplicationRulesView();
+            if (App.AppWindow.IsVisible)
             {
-                WindowStartupLocation = WindowStartupLocation.CenterOwner,
-                Owner = App.AppWindow,
-            };
+                app.Owner = App.AppWindow;
+                app.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            }
             app.ShowDialog();
         }
 
@@ -794,7 +796,8 @@ namespace livelywpf
             }
         }
 
-        private bool _taskbarThemingInitialized = false;
+
+        private bool taskbarThemeInit = false;
         private int _selectedTaskbarThemeIndex;
         public int SelectedTaskbarThemeIndex
         {
@@ -805,32 +808,28 @@ namespace livelywpf
             set
             {
                 _selectedTaskbarThemeIndex = value;
-                if (!_taskbarThemingInitialized)
+                if (!taskbarThemeInit)
                 {
-                    if ((TaskbarTheme)_selectedTaskbarThemeIndex == TaskbarTheme.none)
-                    {
-                        //nothing to do..
-                    }
-                    else
+                    if ((TaskbarTheme)_selectedTaskbarThemeIndex != TaskbarTheme.none)
                     {
                         string pgm = null;
                         if ((pgm = Helpers.TransparentTaskbar.CheckIncompatiblePrograms()) == null)
                         {
-                            Helpers.TransparentTaskbar.Instance.SetTheme((TaskbarTheme)_selectedTaskbarThemeIndex);
-                            Helpers.TransparentTaskbar.Instance.Start();
-                            _taskbarThemingInitialized = true;
+                            Helpers.TransparentTaskbar.Instance.Start((TaskbarTheme)_selectedTaskbarThemeIndex);
+                            taskbarThemeInit = true;
                         }
                         else
                         {
                             _selectedTaskbarThemeIndex = (int)TaskbarTheme.none;
                             _ = Task.Run(() =>
-                                    System.Windows.MessageBox.Show(Properties.Resources.DescIncompatibleTaskbarTheme + "\n\n" + pgm, Properties.Resources.TitleAppName, MessageBoxButton.OK, MessageBoxImage.Information));
+                                    System.Windows.MessageBox.Show(Properties.Resources.DescIncompatibleTaskbarTheme + "\n\n" + pgm,
+                                        Properties.Resources.TitleAppName, MessageBoxButton.OK, MessageBoxImage.Information));
                         }
                     }
                 }
                 else
                 {
-                    Helpers.TransparentTaskbar.Instance.SetTheme((TaskbarTheme)_selectedTaskbarThemeIndex);
+                    Helpers.TransparentTaskbar.Instance.Start((TaskbarTheme)_selectedTaskbarThemeIndex);
                 }
                 //save the data..
                 if (Settings.SystemTaskbarTheme != (TaskbarTheme)_selectedTaskbarThemeIndex)
@@ -839,6 +838,57 @@ namespace livelywpf
                     UpdateConfigFile();
                 }
                 OnPropertyChanged("SelectedTaskbarThemeIndex");
+            }
+        }
+
+        //avoiding initialization of singleton when possible..
+        private bool idleScreensaverInit = false;
+        private int _selectedScreensaverWaitIndex;
+        public int SelectedScreensaverWaitIndex
+        {
+            get
+            {
+                return _selectedScreensaverWaitIndex;
+            }
+            set
+            {
+                _selectedScreensaverWaitIndex = value;
+                uint idleTime = (ScreensaverIdleTime)_selectedScreensaverWaitIndex switch
+                {
+                    ScreensaverIdleTime.none => 0,
+                    ScreensaverIdleTime.min1 => 60000,
+                    ScreensaverIdleTime.min2 => 120000,
+                    ScreensaverIdleTime.min3 => 180000,
+                    ScreensaverIdleTime.min5 => 300000,
+                    ScreensaverIdleTime.min10 => 600000,
+                    ScreensaverIdleTime.min15 => 900000,
+                    ScreensaverIdleTime.min20 => 1200000,
+                    ScreensaverIdleTime.min25 => 1500000,
+                    ScreensaverIdleTime.min30 => 1800000,
+                    ScreensaverIdleTime.min45 => 2700000,
+                    ScreensaverIdleTime.min60 => 3600000,
+                    ScreensaverIdleTime.min120 => 7200000,
+                    _ => 300000,
+                };
+                if (idleTime != 0)
+                {
+                    idleScreensaverInit = true;
+                    Helpers.ScreenSaverService.Instance.StartIdleTimer(idleTime);
+                }
+                else
+                {
+                    if (idleScreensaverInit)
+                    {
+                        Helpers.ScreenSaverService.Instance.StopIdleTimer();
+                    }
+                }
+                //save the data..
+                if (Settings.ScreensaverIdleWait != (ScreensaverIdleTime)_selectedScreensaverWaitIndex)
+                {
+                    Settings.ScreensaverIdleWait = (ScreensaverIdleTime)_selectedScreensaverWaitIndex;
+                    UpdateConfigFile();
+                }
+                OnPropertyChanged("SelectedScreensaverWaitIndex");
             }
         }
 

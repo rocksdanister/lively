@@ -12,6 +12,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using YoutubeExplode;
 
 namespace livelywpf
 {
@@ -54,28 +55,19 @@ namespace livelywpf
                 {
                     Url = libData.FilePath;
                     Title = GetLastSegmentUrl(libData.FilePath);
+                    if (Program.SettingsVM.Settings.ExtractStreamMetaData)
+                    {
+                        _ = SetYtMetadata(libData.FilePath);
+                    }
                 }
                 else if (libData.LivelyInfo.Type == WallpaperType.url
-                || libData.LivelyInfo.Type == WallpaperType.web
-                || libData.LivelyInfo.Type == WallpaperType.webaudio)
+                    || libData.LivelyInfo.Type == WallpaperType.web
+                    || libData.LivelyInfo.Type == WallpaperType.webaudio)
                 {
                     if (libData.LivelyInfo.Type == WallpaperType.url)
                         Url = libData.FilePath;
 
-                    try
-                    {
-                        if (wallpaper.GetProcess() != null)
-                        {
-                            //wallpaper.GetProcess().Refresh();
-                            Title = wallpaper.GetProcess().MainWindowTitle;
-                        }
-                    }
-                    catch { }
-
-                    if (String.IsNullOrWhiteSpace(Title))
-                    {
-                        Title = GetLastSegmentUrl(libData.FilePath);
-                    }
+                    Title = GetLastSegmentUrl(libData.FilePath);
                 }
                 else
                 {
@@ -106,6 +98,32 @@ namespace livelywpf
             ZipCheck = Program.SettingsVM.Settings.LivelyZipGenerate;
         }
 
+        private async Task SetYtMetadata(string url)
+        {
+            try
+            {
+                //Library also checks, this is not required..
+                if (!Helpers.StreamHelper.IsYoutubeUrl(url))
+                    return;
+
+                IsUserEditable = false;
+                var youtube = new YoutubeClient();
+                var video = await youtube.Videos.GetAsync(url);
+                //set data
+                Title = video.Title;
+                Desc = video.Description;
+                Author = video.Author.Title;
+            }
+            catch (Exception e)
+            {
+                Logger.Error(e.ToString());
+            }
+            finally
+            {
+                IsUserEditable = true;
+            }
+        }
+
         #region data
 
         private string _title;
@@ -114,7 +132,7 @@ namespace livelywpf
             get { return _title; }
             set
             {
-                _title = value;
+                _title = (value?.Length > 100 ? value.Substring(0, 100) : value);
                 libData.Title = _title;
                 libData.LivelyInfo.Title = _title;
                 OnPropertyChanged("Title");
@@ -127,7 +145,7 @@ namespace livelywpf
             get { return _desc; }
             set
             {
-                _desc = value;
+                _desc = (value?.Length > 5000 ? value.Substring(0, 5000) : value);
                 libData.Desc = _desc;
                 libData.LivelyInfo.Desc = _desc;
                 OnPropertyChanged("Desc");
@@ -140,7 +158,7 @@ namespace livelywpf
             get { return _author; }
             set
             {
-                _author = value;
+                _author = (value?.Length > 100 ? value.Substring(0, 100) : value);
                 libData.Author = _author;
                 libData.LivelyInfo.Author = _author;
                 OnPropertyChanged("Author");
@@ -163,6 +181,17 @@ namespace livelywpf
         #endregion data
 
         #region ui 
+
+        private bool _isUserEditable = true;
+        public bool IsUserEditable
+        {
+            get { return _isUserEditable; } 
+            set
+            {
+                _isUserEditable = value;
+                OnPropertyChanged("IsUserEditable");
+            }
+        }
 
         private double _currentProgress;
         public double CurrentProgress
@@ -405,23 +434,16 @@ namespace livelywpf
 
         private string GetLastSegmentUrl(string url)
         {
-            string result;
             try
             {
-                Uri uri = new Uri(url);
-                result = uri.Segments.Last();
-                //for some urls, output will be: /
-                if (result.Equals("/", StringComparison.OrdinalIgnoreCase) || result.Equals("//", StringComparison.OrdinalIgnoreCase))
-                {
-                    result = url.Replace(@"https://www.", "");
-                }
-                result = result.Replace("/", "");
+                var uri = new Uri(url);
+                var segment = uri.Segments.Last();
+                return (segment == "/" || segment == "//") ? uri.Host.Replace("www.", string.Empty) : segment.Replace("/", string.Empty);
             }
             catch
             {
-                result = url;
+                return url;
             }
-            return result;
         }
 
         #endregion helpers

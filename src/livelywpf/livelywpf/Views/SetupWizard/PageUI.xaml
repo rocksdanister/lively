@@ -14,7 +14,7 @@
         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center">
             <TextBlock Text="{x:Static p:Resources.TitleUIMode}" FontSize="20"/> 
             <ui:RadioButtons VerticalAlignment="Top" MinWidth="155" SelectedIndex="{Binding SelectedLivelyUIModeIndex, Mode=TwoWay}">
-                <RadioButton IsEnabled="False" Content="{x:Static p:Resources.TextUINormal}"/>
+                <RadioButton Content="{x:Static p:Resources.TextUINormal}"/>
                 <RadioButton Content="{x:Static p:Resources.TextUILite}"/>
                 <RadioButton IsEnabled="False" Content="{x:Static p:Resources.TextUIHeadless}"/> 
             </ui:RadioButtons>

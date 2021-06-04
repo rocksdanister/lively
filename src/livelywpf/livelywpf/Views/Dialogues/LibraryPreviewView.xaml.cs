@@ -1,4 +1,4 @@
-﻿//using ImageMagick;
+﻿using ImageMagick;
 using livelywpf.Core;
 using System;
 using System.Globalization;
@@ -53,12 +53,12 @@ namespace livelywpf.Views
         private bool _processing = false;
         private string thumbnailPathTemp;
         private readonly WallpaperType wallpaperType;
+        private readonly IntPtr wallpaperHwnd;
         readonly DispatcherTimer thumbnailCaptureTimer = new DispatcherTimer();
         //Good values: 1. 30c,120s 2. 15c, 90s
-        readonly int gifAnimationDelay = 1000 * 1 / 30; //in milliseconds (1/fps)
+        readonly int gifAnimationDelay = 1000 * 1 / 30 ; //in milliseconds (1/fps)
         readonly int gifSaveAnimationDelay = 1000 * 1 / 120;
         readonly int gifTotalFrames = 60;
-        private readonly IntPtr HWND;
         public event EventHandler<string> ThumbnailUpdated;
         public event EventHandler<string> PreviewUpdated;
         public event EventHandler<double> CaptureProgress;
@@ -69,7 +69,7 @@ namespace livelywpf.Views
             LibraryPreviewViewModel vm = new LibraryPreviewViewModel(this, wp);
             this.DataContext = vm;
             this.Closed += vm.OnWindowClosed;
-            HWND = wp.GetHWND();
+            wallpaperHwnd = wp.GetHWND();
             wallpaperType = wp.GetWallpaperType();
             InitializeComponent();
         }
@@ -77,13 +77,13 @@ namespace livelywpf.Views
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             //attach wp hwnd to border ui element.
-            WindowOperations.SetProgramToFramework(this, HWND, PreviewBorder);
+            WindowOperations.SetProgramToFramework(this, wallpaperHwnd, PreviewBorder);
             WallpaperAttached?.Invoke(this, null);
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if(_processing)
+            if (_processing)
             {
                 e.Cancel = true;
                 ModernWpf.Controls.Primitives.FlyoutBase.ShowAttachedFlyout(PreviewBorder);
@@ -99,7 +99,7 @@ namespace livelywpf.Views
             catch { }
 
             //detach wallpaper window from this dialogue.
-            WindowOperations.SetParentSafe(HWND, IntPtr.Zero);
+            WindowOperations.SetParentSafe(wallpaperHwnd, IntPtr.Zero);
         }
 
         private string tmpThumbCaptureLoopPath;
@@ -144,8 +144,6 @@ namespace livelywpf.Views
             Rect previewPanelPos = WindowOperations.GetAbsolutePlacement(PreviewBorder, true);
             Size previewPanelSize = WindowOperations.GetElementPixelSize(PreviewBorder);
 
-            //no gif capture wpf only version..
-            CaptureProgress?.Invoke(this, 50);
             //wait before capturing thumbnail..incase wallpaper is not loaded yet.
             await Task.Delay(100);
 
@@ -158,6 +156,26 @@ namespace livelywpf.Views
                (int)previewPanelSize.Width,
                (int)previewPanelSize.Height);
             ThumbnailUpdated?.Invoke(this, thumbFilePath);
+
+            /*
+            //preview clip (animated gif file).
+            if (Program.SettingsVM.Settings.GifCapture && wallpaperType != WallpaperType.picture)
+            {
+                var previewFilePath = Path.Combine(saveDirectory, Path.ChangeExtension(Path.GetRandomFileName(), ".gif"));
+                previewPanelPos = WindowOperations.GetAbsolutePlacement(PreviewBorder, true);
+                await CaptureScreen.CaptureGif(
+                       previewFilePath,
+                       (int)previewPanelPos.Left,
+                       (int)previewPanelPos.Top,
+                       (int)previewPanelPos.Width,
+                       (int)previewPanelPos.Height,
+                       gifAnimationDelay,
+                       gifSaveAnimationDelay,
+                       gifTotalFrames,
+                       new Progress<int>(percent => CaptureProgress?.Invoke(this, percent - 1)));
+                PreviewUpdated?.Invoke(this, previewFilePath);
+            }
+            */
 
             _processing = false;
             taskbarItemInfo.ProgressValue = 100f;
@@ -173,6 +191,9 @@ namespace livelywpf.Views
 
         public void StartCapture(string savePath)
         {
+            if (_processing)
+                return;
+
             CapturePreview(savePath);
         }
 

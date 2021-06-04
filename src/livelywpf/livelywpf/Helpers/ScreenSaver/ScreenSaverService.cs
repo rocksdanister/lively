@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Timers;
@@ -11,10 +11,13 @@ namespace livelywpf.Helpers
 {
     public sealed class ScreenSaverService
     {
-        Point mousePosOriginal;
-        private readonly Timer _timer = new Timer();
+        private Point mousePosOriginal;
+        private uint idleWaitTime = 300000;
+        private readonly Timer _inputTimer = new Timer();
+        private readonly Timer _idleTimer = new Timer();
         public bool IsRunning { get; private set; } = false;
         private static readonly ScreenSaverService instance = new ScreenSaverService();
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
         public static ScreenSaverService Instance
         {
@@ -31,8 +34,11 @@ namespace livelywpf.Helpers
 
         private void Initialize()
         {
-            _timer.Elapsed += InputCheckTimer;
-            _timer.Interval = 250;
+            _inputTimer.Elapsed += InputCheckTimer;
+            _inputTimer.Interval = 250;
+
+            _idleTimer.Elapsed += IdleCheckTimer;
+            _idleTimer.Interval = 30000;
         }
 
         private void InputCheckTimer(object sender, ElapsedEventArgs e)
@@ -46,14 +52,54 @@ namespace livelywpf.Helpers
             }
         }
 
+        private void IdleCheckTimer(object sender, ElapsedEventArgs e)
+        {
+            try
+            {
+                if (GetLastInputTime() >= idleWaitTime && !IsExclusiveFullScreenAppRunning())
+                {
+                    Start();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.ToString());
+                //StopIdleTimer();
+            }
+        }
+
+        public void StartIdleTimer(uint idleTime)
+        {
+            if (idleTime == 0)
+            {
+                StopIdleTimer();
+            }
+            else
+            {
+                Logger.Info("Starting screensaver idle wait {0}ms..", idleTime);
+                idleWaitTime = idleTime;
+                _idleTimer.Start();
+            }
+        }
+
+        public void StopIdleTimer()
+        {
+            if (_idleTimer.Enabled)
+            {
+                Logger.Info("Stopping screensaver idle wait..");
+                _idleTimer.Stop();
+            }
+        }
+
         public void Start()
         {
             if (!IsRunning && SetupDesktop.Wallpapers.Count != 0)
             {
+                Logger.Info("Starting screensaver..");
                 IsRunning = true;
                 ShowScreenSavers();
                 mousePosOriginal = System.Windows.Forms.Control.MousePosition;
-                _timer.Start();
+                _inputTimer.Start();
             }
         }
 
@@ -61,8 +107,9 @@ namespace livelywpf.Helpers
         {
             if (IsRunning)
             {
+                Logger.Info("Stopping screensaver..");
                 IsRunning = false;
-                _timer.Stop();
+                _inputTimer.Stop();
                 HideScreenSavers();
             }
         }
@@ -84,7 +131,7 @@ namespace livelywpf.Helpers
                     Program.SettingsVM.Settings.WallpaperArrangement != WallpaperArrangement.span ? item.GetScreen().Bounds.Top : 0, 
                     0, 
                     0,
-                    0 | 0x0001)) 
+                    0x0001)) 
                 {
                     NLogger.LogWin32Error("setwindowpos(1) fail ShowScreenSavers(),");
                 }
@@ -104,7 +151,7 @@ namespace livelywpf.Helpers
                     NativeMethods.GetWindowRect(SetupDesktop.GetWorkerW(), out NativeMethods.RECT prct);
                     WindowOperations.SetParentSafe(SetupDesktop.Wallpapers[0].GetHWND(), SetupDesktop.GetWorkerW());
                     //fill wp into the whole workerw area.
-                    if (!NativeMethods.SetWindowPos(SetupDesktop.Wallpapers[0].GetHWND(), 1, 0, 0, prct.Right - prct.Left, prct.Bottom - prct.Top, 0 | 0x0010))
+                    if (!NativeMethods.SetWindowPos(SetupDesktop.Wallpapers[0].GetHWND(), 1, 0, 0, prct.Right - prct.Left, prct.Bottom - prct.Top, 0x0010))
                     {
                         NLogger.LogWin32Error("setwindowpos fail HideScreenSavers(),");
                     }
@@ -115,7 +162,7 @@ namespace livelywpf.Helpers
                 foreach (var item in SetupDesktop.Wallpapers)
                 {
                     //update position & size incase window is moved.
-                    if (!NativeMethods.SetWindowPos(item.GetHWND(), 1, item.GetScreen().Bounds.Left, item.GetScreen().Bounds.Top, item.GetScreen().Bounds.Width, item.GetScreen().Bounds.Height, 0 | 0x0010))
+                    if (!NativeMethods.SetWindowPos(item.GetHWND(), 1, item.GetScreen().Bounds.Left, item.GetScreen().Bounds.Top, item.GetScreen().Bounds.Width, item.GetScreen().Bounds.Height, 0x0010))
                     {
                         NLogger.LogWin32Error("setwindowpos(1) fail HideScreenSavers(),");
                     }
@@ -125,7 +172,7 @@ namespace livelywpf.Helpers
                     //re-attach wallpaper to desktop.
                     WindowOperations.SetParentSafe(item.GetHWND(), SetupDesktop.GetWorkerW());
                     //update position & size on desktop workerw.
-                    if (!NativeMethods.SetWindowPos(item.GetHWND(), 1, prct.Left, prct.Top, item.GetScreen().Bounds.Width, item.GetScreen().Bounds.Height, 0 | 0x0010))
+                    if (!NativeMethods.SetWindowPos(item.GetHWND(), 1, prct.Left, prct.Top, item.GetScreen().Bounds.Width, item.GetScreen().Bounds.Height, 0x0010))
                     {
                         NLogger.LogWin32Error("setwindowpos(2) fail HideScreenSavers(),");
                     }
@@ -143,8 +190,29 @@ namespace livelywpf.Helpers
         {
             //Issue: Multiple display setup with diff dpi - making the window child affects LivelyScreen offset values.
             if (IsRunning || ScreenHelper.IsMultiScreen())
+            {
                 return;
+            }
 
+            //Verify if the hwnd is screensaver demo area.
+            const int maxChars = 256;
+            StringBuilder className = new StringBuilder(maxChars);
+            if (NativeMethods.GetClassName(hwnd, className, maxChars) > 0)
+            {
+                string cName = className.ToString();
+                if (!string.Equals(cName, "SSDemoParent", StringComparison.OrdinalIgnoreCase))
+                {
+                    Logger.Info("Skipping ss preview, wrong hwnd class:" + cName);
+                    return;
+                }
+            }
+            else
+            {
+                Logger.Info("Skipping ss preview, failed to get hwnd class.");
+                return;
+            }
+
+            Logger.Info("Showing ss preview..");
             var preview = new Views.ScreenSaverPreview
             {
                 ShowActivated = false,
@@ -164,7 +232,7 @@ namespace livelywpf.Helpers
             //Get size of target.
             NativeMethods.GetClientRect(hwnd, out NativeMethods.RECT prct);
             //Update preview size and position.
-            if (!NativeMethods.SetWindowPos(previewHandle, 1, 0, 0, prct.Right - prct.Left, prct.Bottom - prct.Top, 0 | 0x0010))
+            if (!NativeMethods.SetWindowPos(previewHandle, 1, 0, 0, prct.Right - prct.Left, prct.Bottom - prct.Top, 0x0010))
             {
                 NLogger.LogWin32Error("setwindowpos fail Preview Screensaver,");
             }
@@ -172,7 +240,7 @@ namespace livelywpf.Helpers
 
         #region helpers
 
-        // Fails after 50 days..
+        // Fails after 50 days (uint limit.)
         static uint GetLastInputTime()
         {
             NativeMethods.LASTINPUTINFO lastInputInfo = new NativeMethods.LASTINPUTINFO();
@@ -189,7 +257,28 @@ namespace livelywpf.Helpers
             }
             else
             {
-                throw new Win32Exception();
+                throw new Win32Exception("GetLastInputTime fail.");
+            }
+        }
+
+        static bool IsExclusiveFullScreenAppRunning()
+        {
+            if (NativeMethods.SHQueryUserNotificationState(out NativeMethods.QUERY_USER_NOTIFICATION_STATE state) == 0)
+            {
+                return state switch
+                {
+                    NativeMethods.QUERY_USER_NOTIFICATION_STATE.QUNS_NOT_PRESENT => false,
+                    NativeMethods.QUERY_USER_NOTIFICATION_STATE.QUNS_BUSY => false,
+                    NativeMethods.QUERY_USER_NOTIFICATION_STATE.QUNS_PRESENTATION_MODE => false,
+                    NativeMethods.QUERY_USER_NOTIFICATION_STATE.QUNS_ACCEPTS_NOTIFICATIONS => false,
+                    NativeMethods.QUERY_USER_NOTIFICATION_STATE.QUNS_QUIET_TIME => false,
+                    NativeMethods.QUERY_USER_NOTIFICATION_STATE.QUNS_RUNNING_D3D_FULL_SCREEN => true,
+                    _ => false,
+                };
+            }
+            else
+            {
+                throw new Win32Exception("SHQueryUserNotificationState fail.");
             }
         }
 

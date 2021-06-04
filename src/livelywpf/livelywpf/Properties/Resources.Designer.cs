@@ -568,7 +568,7 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Show some love by dropping a star!.
+        ///   Looks up a localized string similar to Show some love by dropping a star.
         /// </summary>
         public static string TextGitHubStar {
             get {
@@ -595,6 +595,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to hours.
+        /// </summary>
+        public static string TextHours {
+            get {
+                return ResourceManager.GetString("TextHours", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Install.
         /// </summary>
         public static string TextInstall {
@@ -613,11 +622,29 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Learn more.
+        /// </summary>
+        public static string TextLearnMore {
+            get {
+                return ResourceManager.GetString("TextLearnMore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to License.
         /// </summary>
         public static string TextLicense {
             get {
                 return ResourceManager.GetString("TextLicense", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to minutes.
+        /// </summary>
+        public static string TextMinutes {
+            get {
+                return ResourceManager.GetString("TextMinutes", resourceCulture);
             }
         }
         
@@ -1288,7 +1315,7 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to (For battery operated systems only) Change playback when AC power is disconnected..
+        ///   Looks up a localized string similar to Change playback when AC power is disconnected (battery operated systems only.).
         /// </summary>
         public static string TipBatteryPower {
             get {
@@ -1325,8 +1352,7 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Per: Pause wallpaper only on the screen in which application is focused/fullscreen.
-        ///All: Pause wallpaper on all screen(s) if any application is focused/fullscreen..
+        ///   Looks up a localized string similar to Choose whether to pause wallpaper on all screens or only the relevant screen in which application is focused/fullscreen..
         /// </summary>
         public static string TipDisplayPauseRule {
             get {
@@ -1389,12 +1415,20 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Foreground: Lightweight, only checks the single process that is in foreground to determine wallpaper playback behaviour.
-        ///All Process: Heavier, Scans all the process to determine playback behaviour..
+        ///   Looks up a localized string similar to Wallpaper pause algorithm..
         /// </summary>
         public static string TipPauseAlgorithm {
             get {
                 return ResourceManager.GetString("TipPauseAlgorithm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to After the selected inactivity period use the current wallpaper as your screensaver..
+        /// </summary>
+        public static string TipScreensaver {
+            get {
+                return ResourceManager.GetString("TipScreensaver", resourceCulture);
             }
         }
         
@@ -1900,6 +1934,15 @@ namespace livelywpf.Properties {
         public static string TitleScreenLayout {
             get {
                 return ResourceManager.GetString("TitleScreenLayout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Screensaver.
+        /// </summary>
+        public static string TitleScreensaver {
+            get {
+                return ResourceManager.GetString("TitleScreensaver", resourceCulture);
             }
         }
         

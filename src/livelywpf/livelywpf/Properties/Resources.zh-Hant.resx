@@ -117,98 +117,116 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
+    <value>偵測到不相容軟體，工具列主題已禁用。</value>
+  </data>
   <data name="DescriptionAddWallpaper" xml:space="preserve">
-    <value>選擇一個文件或指定的網站設置為背景。</value>
+    <value>選取一個檔案或指定一個網站以設定為桌布。</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
-    <value>根據正在運行的應用程序來設置背景的播放行為。</value>
+    <value>根據正在運作的應用程式設定桌布的播放行為。</value>
   </data>
   <data name="DescriptionCancelQuestion" xml:space="preserve">
-    <value>你確定要取消嗎?</value>
+    <value>確定要取消嗎？</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
-    <value>您確定要從磁盤上永久刪除背景嗎？</value>
+    <value>確定要從磁碟上永久刪除桌布嗎？</value>
+  </data>
+  <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
+    <value>確定要從資料庫刪除此桌布嗎？</value>
   </data>
   <data name="DescriptionDragDropFIle" xml:space="preserve">
-    <value>將文件拖放到資料庫中。</value>
+    <value>將檔案拖放至資料庫中。</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
-    <value>請注意!您正在準備把一個外部應用程序作為背景。 惡意應用程序可能會注入木馬、病毒..這將損害您的系統。                                                                                   僅當你信任此應用程序時，才可繼續。</value>
+    <value>你正在開啟一個外部應用程式作為桌布。
+有害應用程式可能包含綑綁軟體，病毒.. 而且損壞你的作業系統。
+請只在你信任此應用程式的來源時繼續。</value>
   </data>
   <data name="DescriptionMinimizedTray" xml:space="preserve">
-    <value>Lively已被最小化到系統托盤，右鍵單擊 Lively的圖標以獲取更多選項。</value>
+    <value>Lively 已最小化至系統工具列，右鍵點擊 Lively 的圖示以存取更多選項。</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
-    <value>請重新啟動Lively，以使設置生效。</value>
+    <value>請重新啟動 Lively 以使設定生效。</value>
+  </data>
+  <data name="DescriptionPleaseStop" xml:space="preserve">
+    <value>繼續操作前請停止桌布。</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
-    <value>按下以開始錄影。</value>
+    <value>按下以開始錄製影片。</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
-    <value>正在恢復先前的背景，請稍候...</value>
+    <value>正在恢復之前的桌布，請稍候...</value>
   </data>
   <data name="DescriptionScreenLayout" xml:space="preserve">
-    <value>選擇背景</value>
+    <value>選取桌布</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
-    <value>有新版本可用！</value>
+    <value>有新版本的軟體可用！</value>
   </data>
   <data name="DescriptionWebpageLoad" xml:space="preserve">
-    <value>輸入網站鏈接進行加載，支持shadertoy.com著色器鏈</value>
+    <value>輸入網站連結以載入，支援來自 shadertoy.com 的著色器連結</value>
   </data>
   <data name="DescriptionWelcomeWizard" xml:space="preserve">
-    <value>我將幫助您開始設置Lively。</value>
+    <value>我將幫助您開始設定 Lively。</value>
+  </data>
+  <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
+    <value>你的 Windows N/KN 版本將需要下載附加解碼元件以支援桌布的影片播放。</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
-    <value>更新失敗。請嘗試從以下位置下載安裝程序： https://github.com/rocksdanister/lively/releases</value>
+    <value>更新失敗；請嘗試從以下位址下載安裝程式： 
+https://github.com/rocksdanister/lively/releases</value>
   </data>
   <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
-    <value>背景文件已損壞，請嘗試重新下載。</value>
+    <value>桌布檔案已損毀，請嘗試重新下載。</value>
   </data>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
-    <value>糟糕...好像出了點問題:(
-為了更好地理解此錯誤並解決問題，請與開發人員共享日誌文件。
-共享日誌文件的說明：
+    <value>糟糕...好像出了點問題 :(
+為了更好地理解此錯誤並解決問題，請與開發人員分享日誌檔。
+分享日誌檔的說明：
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
-    <value>啟用Windows高對比度(Windows High Contrast)模式後，Lively無法正常工作！
-請禁用高對比度模式，然後重試。</value>
+    <value>啟用 Windows 高對比 (Windows High Contrast) 模式時 Lively 將無法正常工作！
+請禁用高對比模式然後重試。</value>
   </data>
   <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
     <value>媒體播放失敗:(
-請嘗試在lively的設置中更改視頻播放器。
+請嘗試在 Lively 的設定中變更影片播放程式。
 
-為了更好地理解此錯誤並解決問題，請與開發人員共享日誌文件。
-共享日誌文件的說明：
+為了更好地理解此錯誤並解決問題，請與開發人員分享日誌檔。
+分享日誌檔的說明：
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
-    <value>不是Lively的背景文件。</value>
+    <value>非 Lively 桌布檔案。</value>
   </data>
   <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
-    <value>Lively沒有被正確關閉, 正在以安全模式啟動
-您是否要還原以前運行的壁紙?</value>
+    <value>Lively 之前沒有被正確關閉，正在以安全模式啟動。
+您是否要還原之前運作的動態桌布？</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
-    <value>看起來需要進行一些設置才能使Lively工作：-
-1. 打開此電腦（我的電腦）
-2. 右鍵單擊空白區域
-3. 選擇"屬性"
-4. 選擇 "高級系統設置"
-5. 在 "性能" 選項中，選擇 "設置"
-6. 啟用 "窗口內的動畫控件和元素"-應用。
+    <value>看起來需要進行一些設定才能使 Lively 正常工作：
+1. 按 Win + R 鍵以開啟執行，
+2. 輸入 SystemPropertiesPerformance.exe，點擊 "確定" 以開啟效能選項。
+3. 啟用/選定 "在視窗內部以動畫方式顯示控制項和元素" (如果已經選定，請反選然後再次選定) 並套用。
+4. 點擊 "套用" 然後點擊 "確定" 以關閉視窗。
 
-如果是 Windows7 系統只需設置 - "調整為最近外觀"然後應用。</value>
+如果是 Windows 7 作業系統只需設定 - "調整成最佳外觀" 然後套用。
+如果仍無法正常工作， 請關閉並重新啟動 Lively / Windows。
+(在部分 Windows 10 預覽版構建中無法正常工作)</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
-    <value>添加</value>
+    <value>新增</value>
+  </data>
+  <data name="TextAllFiles" xml:space="preserve">
+    <value>全部檔案</value>
   </data>
   <data name="TextApplication" xml:space="preserve">
-    <value>應用程序</value>
+    <value>應用程式</value>
   </data>
   <data name="TextAttribution" xml:space="preserve">
-    <value>屬性</value>
+    <value>內容</value>
   </data>
   <data name="TextAuthor" xml:space="preserve">
     <value>作者</value>
@@ -219,35 +237,50 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextBrowse" xml:space="preserve">
     <value>瀏覽</value>
   </data>
+  <data name="TextCancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
   <data name="TextClose" xml:space="preserve">
     <value>關閉</value>
   </data>
   <data name="TextCloseWallpapers" xml:space="preserve">
-    <value>關閉背景</value>
+    <value>關閉桌布</value>
   </data>
   <data name="TextCompleted" xml:space="preserve">
-    <value>完成了！</value>
+    <value>已完成！</value>
+  </data>
+  <data name="TextControlPanelOpen" xml:space="preserve">
+    <value>點擊此處以管理桌布。</value>
   </data>
   <data name="TextConvertVideo" xml:space="preserve">
     <value>轉換為影片</value>
   </data>
+  <data name="TextCreatePreview" xml:space="preserve">
+    <value>建立預覽</value>
+  </data>
   <data name="TextCustomise" xml:space="preserve">
-    <value>自定義</value>
+    <value>自訂</value>
   </data>
   <data name="TextCustomiseWallpaper" xml:space="preserve">
-    <value>自定義背景</value>
+    <value>自訂桌布</value>
   </data>
   <data name="TextDeleteWallpaper" xml:space="preserve">
-    <value>刪除背景</value>
+    <value>刪除</value>
+  </data>
+  <data name="TextDescription" xml:space="preserve">
+    <value>描述</value>
   </data>
   <data name="TextDisplayPauseRuleAllScreen" xml:space="preserve">
-    <value>全螢幕</value>
+    <value>所有螢幕設定</value>
   </data>
   <data name="TextDisplayPauseRulePerScreen" xml:space="preserve">
-    <value>單獨</value>
+    <value>螢幕獨立設定</value>
   </data>
   <data name="TextDownload" xml:space="preserve">
     <value>下載</value>
+  </data>
+  <data name="TextEditWallpaper" xml:space="preserve">
+    <value>編輯</value>
   </data>
   <data name="TextError" xml:space="preserve">
     <value>錯誤</value>
@@ -256,16 +289,25 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>退出</value>
   </data>
   <data name="TextExportWallpaperZip" xml:space="preserve">
-    <value>輸出 lively .zip</value>
+    <value>匯出 Lively .zip</value>
+  </data>
+  <data name="TextFeatureMissing" xml:space="preserve">
+    <value>一些功能在此版本 Lively 中不可用。</value>
+  </data>
+  <data name="TextFileNotFound" xml:space="preserve">
+    <value>找不到檔案</value>
   </data>
   <data name="TextGIF" xml:space="preserve">
-    <value>GIF</value>
+    <value>動態 GIF</value>
+  </data>
+  <data name="TextGitHubStar" xml:space="preserve">
+    <value>給予 Star 來顯示你對本軟體的喜愛吧</value>
   </data>
   <data name="TextGo" xml:space="preserve">
-    <value>開始吧</value>
+    <value>開始</value>
   </data>
   <data name="TextHelpTranslate" xml:space="preserve">
-    <value>幫助翻譯Lively。</value>
+    <value>幫助翻譯 Lively</value>
   </data>
   <data name="TextInstall" xml:space="preserve">
     <value>安裝</value>
@@ -273,53 +315,71 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextKeyboard" xml:space="preserve">
     <value>鍵盤</value>
   </data>
+  <data name="TextLicense" xml:space="preserve">
+    <value>授權</value>
+  </data>
   <data name="TextmoreInfo" xml:space="preserve">
     <value>資訊</value>
   </data>
   <data name="TextMoreWallpapers" xml:space="preserve">
-    <value>更多背景</value>
+    <value>更多桌布</value>
   </data>
   <data name="TextMouse" xml:space="preserve">
     <value>滑鼠</value>
   </data>
   <data name="TextMouseInteractOnDesktop" xml:space="preserve">
-    <value>當聚焦在程式上的滑鼠的互動</value>
+    <value>當應用程式取得焦點時仍啟用桌布滑鼠互動</value>
   </data>
   <data name="TextNext" xml:space="preserve">
     <value>繼續</value>
   </data>
   <data name="TextNo" xml:space="preserve">
-    <value>沒有</value>
+    <value>取消</value>
   </data>
   <data name="TextOff" xml:space="preserve">
     <value>關閉</value>
+  </data>
+  <data name="TextOK" xml:space="preserve">
+    <value>確定</value>
   </data>
   <data name="TextOn" xml:space="preserve">
     <value>開啟</value>
   </data>
   <data name="TextOnline" xml:space="preserve">
-    <value>在線網頁 (Online)</value>
+    <value>線上</value>
   </data>
   <data name="TextOpenLively" xml:space="preserve">
-    <value>開啟Lively</value>
+    <value>開啟 Lively</value>
   </data>
   <data name="TextPauseAlgoAllProcess" xml:space="preserve">
-    <value>所有程序</value>
+    <value>所有處理程序</value>
   </data>
   <data name="TextPauseAlgoForegroundProcess" xml:space="preserve">
-    <value>前台處理 </value>
+    <value>前景處理程序</value>
   </data>
   <data name="TextPauseWallpapers" xml:space="preserve">
-    <value>暫停背景</value>
+    <value>暫停桌布</value>
   </data>
   <data name="TextPerformanceKill" xml:space="preserve">
-    <value>Kill</value>
+    <value>終止</value>
   </data>
   <data name="TextPerformanceNone" xml:space="preserve">
     <value>無</value>
   </data>
   <data name="TextPerformancePause" xml:space="preserve">
     <value>暫停</value>
+  </data>
+  <data name="TextPicture" xml:space="preserve">
+    <value>圖片</value>
+  </data>
+  <data name="TextPreviewWallpaper" xml:space="preserve">
+    <value>預覽</value>
+  </data>
+  <data name="TextPrivacyPolicy" xml:space="preserve">
+    <value>隱私政策</value>
+  </data>
+  <data name="TextProcessingWallpaper" xml:space="preserve">
+    <value>處理中</value>
   </data>
   <data name="TextRemove" xml:space="preserve">
     <value>移除</value>
@@ -334,10 +394,10 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>搜尋</value>
   </data>
   <data name="TextSetWallpaper" xml:space="preserve">
-    <value>設置為背景</value>
+    <value>設定為桌布</value>
   </data>
   <data name="TextShowOnDisk" xml:space="preserve">
-    <value>打開文件所在位置</value>
+    <value>開啟檔案位置</value>
   </data>
   <data name="TextSource" xml:space="preserve">
     <value>來源</value>
@@ -348,11 +408,32 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextStop" xml:space="preserve">
     <value>結束</value>
   </data>
+  <data name="TextStoreReview" xml:space="preserve">
+    <value>你享受使用 Lively 嗎？請留下評論 :)</value>
+  </data>
   <data name="TextSupport" xml:space="preserve">
     <value>支持</value>
   </data>
   <data name="TextTags" xml:space="preserve">
     <value>標籤</value>
+  </data>
+  <data name="TextTaskbarThemeBlur" xml:space="preserve">
+    <value>模糊</value>
+  </data>
+  <data name="TextTaskbarThemeClear" xml:space="preserve">
+    <value>去除</value>
+  </data>
+  <data name="TextTaskbarThemeColor" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="TextTaskbarThemeFluent" xml:space="preserve">
+    <value>平滑</value>
+  </data>
+  <data name="TextTaskbarThemeWallpaper" xml:space="preserve">
+    <value>桌布</value>
+  </data>
+  <data name="TextTaskbarThemeWallpaperFluent" xml:space="preserve">
+    <value>平滑(桌布取色)</value>
   </data>
   <data name="TextTileSizeLarge" xml:space="preserve">
     <value>大</value>
@@ -363,41 +444,62 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextTileSizeSmall" xml:space="preserve">
     <value>小</value>
   </data>
+  <data name="TextTitle" xml:space="preserve">
+    <value>標題</value>
+  </data>
   <data name="TextUIHeadless" xml:space="preserve">
     <value>無介面模式</value>
   </data>
   <data name="TextUILite" xml:space="preserve">
-    <value>輕盈</value>
+    <value>簡易</value>
   </data>
   <data name="TextUINormal" xml:space="preserve">
     <value>正常</value>
+  </data>
+  <data name="TextUnsupportedFile" xml:space="preserve">
+    <value>不支援的檔案格式</value>
   </data>
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>有更新可用！</value>
   </data>
   <data name="TextUpdateCheck" xml:space="preserve">
-    <value>檢查更新</value>
+    <value>偵測更新</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
-    <value>無法檢查軟件更新</value>
+    <value>偵測軟體更新失敗</value>
   </data>
   <data name="TextUpdateChecking" xml:space="preserve">
-    <value>檢查更新</value>
+    <value>偵測更新</value>
   </data>
   <data name="TextUpdateUptodate" xml:space="preserve">
-    <value>已是最新版本</value>
+    <value>軟體已是最新版本！</value>
   </data>
   <data name="TextVideo" xml:space="preserve">
     <value>影片</value>
   </data>
+  <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
+    <value>輸入可選命令列引數</value>
+  </data>
+  <data name="TextWallpaperFitFill" xml:space="preserve">
+    <value>填滿</value>
+  </data>
+  <data name="TextWallpaperFitNone" xml:space="preserve">
+    <value>無</value>
+  </data>
+  <data name="TextWallpaperFitUniform" xml:space="preserve">
+    <value>統一</value>
+  </data>
+  <data name="TextWallpaperFitUniformToFill" xml:space="preserve">
+    <value>統一並填滿</value>
+  </data>
   <data name="TextWallpaperLayoutDuplicate" xml:space="preserve">
-    <value>複製相同的背景</value>
+    <value>複製相同桌布</value>
   </data>
   <data name="TextWallpaperLayoutPerScreen" xml:space="preserve">
-    <value>僅選定的屏幕</value>
+    <value>僅選定的螢幕</value>
   </data>
   <data name="TextWallpaperLayoutSpan" xml:space="preserve">
-    <value>跨顯示器</value>
+    <value>跨顯示器延伸</value>
   </data>
   <data name="TextWallpaperType" xml:space="preserve">
     <value>類型</value>
@@ -406,113 +508,140 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>網站</value>
   </data>
   <data name="TextWebStream" xml:space="preserve">
-    <value>網頁影片</value>
+    <value>網頁串流</value>
   </data>
   <data name="TextWelcome" xml:space="preserve">
     <value>歡迎</value>
   </data>
   <data name="TextYes" xml:space="preserve">
-    <value>是</value>
+    <value>確定</value>
   </data>
   <data name="TileVideoPlayer" xml:space="preserve">
     <value>影片播放器</value>
   </data>
   <data name="TipAddWallpaperFileBrowse" xml:space="preserve">
-    <value>將所有支持的文件類型設置為背景。</value>
+    <value>將所有支援類型的檔案設定為桌布。</value>
   </data>
   <data name="TipAddWallpaperURL" xml:space="preserve">
-    <value>將您輸入在URL的網頁設置為背景。</value>
+    <value>將您輸入 URL 對應的網頁設定為桌布。</value>
   </data>
   <data name="TipAppFocus" xml:space="preserve">
-    <value>設置在其他程式運行時的操作。</value>
+    <value>設定在其他應用程式取得焦點時執行的操作。</value>
   </data>
   <data name="TipAppFullScreen" xml:space="preserve">
-    <value>設置在運行全屏遊戲/應用程序時的操作。</value>
+    <value>設定在運作全螢幕遊戲/應用程式時執行的操作。</value>
   </data>
   <data name="TipAppRules" xml:space="preserve">
-    <value>根據運行的應用程序設置不同的背景播放。</value>
+    <value>根據運作的應用程式設定不同的桌布播放規則。</value>
   </data>
   <data name="TipAppTheme" xml:space="preserve">
-    <value>Lively 適應系統主題設置，更改外觀。</value>
+    <value>Lively 跟隨系統主題設定，要改變外觀請至</value>
+  </data>
+  <data name="TipAudioMaster" xml:space="preserve">
+    <value>桌布音量等級。</value>
   </data>
   <data name="TipBatteryPower" xml:space="preserve">
-    <value>（僅適用於充電設備）斷開交電源後，更改播放行為。</value>
+    <value>(僅適用於可充電裝置) 變更斷開交流電源後的播放行為。</value>
   </data>
   <data name="TipBrowserDebuggingPort" xml:space="preserve">
-    <value>輸入除錯用網頁牆紙的埠號，需要重新啟動瀏覽器才能使更改生效。
-準備就緒後，前往    http://localhost:埠號    以開啟開發人員控制台。</value>
+    <value>輸入用於除錯網頁桌布的連接埠，需要重新啟動瀏覽器以使改動生效。
+準備就緒後，前往 http://localhost:埠號 以開啟開發人員控制台。</value>
+  </data>
+  <data name="TipDebug" xml:space="preserve">
+    <value>顯示開發人員選單。</value>
+  </data>
+  <data name="TipDesktopPicture" xml:space="preserve">
+    <value>設定動態桌布的一個畫面作為桌面背景。</value>
   </data>
   <data name="TipDisplayPauseRule" xml:space="preserve">
-    <value>分別：僅在應用程序處於 焦點/全屏 狀態的屏幕上暫停動態桌布。
-全部：如果任何應用程序已 聚焦/全屏 ，則在所有屏幕上暫停動態桌布。</value>
+    <value>獨立：僅在有應用程式處於 焦點/全螢幕 狀態的螢幕上暫停動態桌布。
+所有：如果任何應用程式已進入 焦點/全螢幕 模式，則在所有螢幕上暫停動態桌布。</value>
+  </data>
+  <data name="TipExportLogs" xml:space="preserve">
+    <value>建立日誌回報檔。</value>
+  </data>
+  <data name="TipGifPlayer" xml:space="preserve">
+    <value>選取用於 GIF 桌布的播放器。</value>
   </data>
   <data name="TipHideSysTray" xml:space="preserve">
-    <value>開啟系統小圖示圖標，lively將在隱藏圖標的情況下繼續運行。</value>
+    <value>系統工具列中圖示的可見性，Lively 將在隱藏圖示的情況下繼續運作。</value>
   </data>
   <data name="TipLanguage" xml:space="preserve">
-    <value>將Lively重新啟動以應用新語言。</value>
+    <value>將 Lively 重新啟動以套用新語言。</value>
   </data>
   <data name="TipLivelySetupOnClose" xml:space="preserve">
-    <value>完成設置以繼續。</value>
+    <value>完成初始設定以繼續。</value>
+  </data>
+  <data name="TipLockscreenPicture" xml:space="preserve">
+    <value>設定動態桌布的一個畫面作為鎖定螢幕背景。</value>
   </data>
   <data name="TipPauseAlgorithm" xml:space="preserve">
-    <value>前景處理程序：輕量級，僅檢查前景中的單個處理程序來確定牆紙播放行為。
-所有處理程序：重量級，掃描所有處理程序以確定播放行為。</value>
+    <value>前景處理程序：更輕量，僅偵測前景中的單個處理程序來確定桌布播放行為。
+所有處理程序：更多負載，掃描所有處理程序以確定播放行為。</value>
   </data>
   <data name="TipStreamWallpaperDetect" xml:space="preserve">
-    <value>如果檢測到受支持的視頻流(video stream)鏈接，請使用視頻播放器，而不要加載網頁。</value>
+    <value>如果偵測到受支援的影片串流連結，將使用影片播放器，而不是載入網頁。</value>
   </data>
   <data name="TipStreamWallpaperVideoQuality" xml:space="preserve">
-    <value>選擇你想要的線上視頻品質。</value>
+    <value>選取你想要的線上影片品質。</value>
+  </data>
+  <data name="TipTaskbarTheme" xml:space="preserve">
+    <value>改變系統工作列外觀。</value>
   </data>
   <data name="TipTileSize" xml:space="preserve">
-    <value>预览背景的大小。</value>
+    <value>資料庫中桌布磚塊的大小。</value>
   </data>
   <data name="TipUIMode" xml:space="preserve">
-    <value>對於低端系統，請選擇精簡模式。</value>
+    <value>對於低階裝置，請選擇簡易模式。</value>
+  </data>
+  <data name="TipVideoHardwareDecode" xml:space="preserve">
+    <value>當可能時使用硬體加速。</value>
   </data>
   <data name="TipVideoPlayer" xml:space="preserve">
-    <value>選擇用於背景的影片播放器。</value>
+    <value>選取用於播放影片桌布的播放器。</value>
   </data>
   <data name="TipWallpaperDir" xml:space="preserve">
-    <value>儲存背景的路徑</value>
+    <value>儲存桌布的位置。</value>
+  </data>
+  <data name="TipWallpaperFit" xml:space="preserve">
+    <value>桌布縮放演算法。</value>
   </data>
   <data name="TipWallpaperInput" xml:space="preserve">
-    <value>選擇與背景互動的方式</value>
+    <value>選取與桌布互動的方式。</value>
   </data>
   <data name="TipWallpaperLayout" xml:space="preserve">
-    <value>如何將背景應用於連接的顯示設備。</value>
+    <value>選擇將如何套用桌布至連結的顯示裝置。</value>
   </data>
   <data name="TipWallpaperPlayback" xml:space="preserve">
-    <value>當桌面未聚焦時，暫停牆紙播放。</value>
+    <value>當桌面不是焦點時，暫停桌布播放。</value>
   </data>
   <data name="TipWebBrowserDiskCache" xml:space="preserve">
-    <value>將暫存檔案存在儲存空間上而不是記憶體上，重新啟動瀏覽器後將恢復原設置。</value>
+    <value>將暫存檔案儲存在磁碟而不是記憶體中，重新啟動瀏覽器後將恢復設定。</value>
   </data>
   <data name="TipWebBrowserEngine" xml:space="preserve">
-    <value>CEF(Chromium Embedded Framework) 是個輕量級的 chromium 引擎。Edge是Windows 10的內置網頁顯示器。
-</value>
+    <value>CEF(Chromium Embedded Framework) 是個輕量級的 Chromium 引擎。
+Edge 是 Windows 10 的內建網頁渲染器。</value>
   </data>
   <data name="TipWindowsStartup" xml:space="preserve">
-    <value>Lively需要在後台運行以播放牆紙。</value>
+    <value>Lively需要在背景運作以播放桌布。</value>
   </data>
   <data name="TitleAbout" xml:space="preserve">
     <value>關於</value>
   </data>
   <data name="TitleAddWallpaper" xml:space="preserve">
-    <value>添加牆紙</value>
+    <value>新增桌布</value>
   </data>
   <data name="TitleAppFocus" xml:space="preserve">
-    <value>其他應用程序獲得焦點</value>
+    <value>焦點應用程式</value>
   </data>
   <data name="TitleAppFullScreen" xml:space="preserve">
-    <value>其他應用程序全螢幕時</value>
+    <value>全螢幕應用程式</value>
   </data>
   <data name="TitleAppName" xml:space="preserve">
-    <value>Lively背景</value>
+    <value>Lively 動態桌布</value>
   </data>
   <data name="TitleAppRules" xml:space="preserve">
-    <value>應用配置</value>
+    <value>應用程式規則</value>
   </data>
   <data name="TitleAppTheme" xml:space="preserve">
     <value>主題</value>
@@ -520,41 +649,59 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TitleAudio" xml:space="preserve">
     <value>音訊</value>
   </data>
+  <data name="TitleAudioDesktopOnly" xml:space="preserve">
+    <value>僅在桌面為焦點時播放音訊</value>
+  </data>
+  <data name="TitleAudioMaster" xml:space="preserve">
+    <value>主音量</value>
+  </data>
   <data name="TitleAudioPlayOnScreen" xml:space="preserve">
-    <value>在屏幕上播放音頻</value>
+    <value>在螢幕上播放音訊</value>
   </data>
   <data name="TitleBatteryPower" xml:space="preserve">
     <value>電池供電時</value>
   </data>
   <data name="TitleBrowseFile" xml:space="preserve">
-    <value>瀏覽視頻，gif，網頁...文件設置為背景</value>
+    <value>瀏覽影片，GIF，網頁...檔案設定為桌布</value>
   </data>
   <data name="TitleBrowserDebuggingPort" xml:space="preserve">
-    <value>除錯用埠號</value>
+    <value>除錯連接埠</value>
   </data>
   <data name="TitleCommunity" xml:space="preserve">
-    <value>社區</value>
+    <value>社群</value>
+  </data>
+  <data name="TitleDebug" xml:space="preserve">
+    <value>除錯</value>
   </data>
   <data name="TitleDeleteConfirmation" xml:space="preserve">
-    <value>確認刪除?</value>
+    <value>確認刪除</value>
+  </data>
+  <data name="TitleDesktopPicture" xml:space="preserve">
+    <value>桌面圖片</value>
   </data>
   <data name="TitleDisplayPauseRule" xml:space="preserve">
-    <value>動態桌布播放器暫停規則</value>
+    <value>顯示暫停規則</value>
   </data>
   <data name="TitleDocumentation" xml:space="preserve">
-    <value>文檔</value>
+    <value>文件</value>
   </data>
   <data name="TitleEnterUrl" xml:space="preserve">
-    <value>輸入網址</value>
+    <value>輸入 URL</value>
+  </data>
+  <data name="TitleExportLogs" xml:space="preserve">
+    <value>日誌檔</value>
   </data>
   <data name="TitleGeneral" xml:space="preserve">
-    <value>常規</value>
+    <value>一般</value>
+  </data>
+  <data name="TitleGifPlayer" xml:space="preserve">
+    <value>GIF 播放器</value>
   </data>
   <data name="TitleHelp" xml:space="preserve">
     <value>幫助</value>
   </data>
   <data name="TitleHideSysTray" xml:space="preserve">
-    <value>系統隱藏小圖示</value>
+    <value>工具列圖示</value>
   </data>
   <data name="TitleInteraction" xml:space="preserve">
     <value>互動</value>
@@ -566,7 +713,13 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>資料庫</value>
   </data>
   <data name="TitleLivelySetup" xml:space="preserve">
-    <value>Lively 初始化</value>
+    <value>Lively 初始設定</value>
+  </data>
+  <data name="TitleLocation" xml:space="preserve">
+    <value>位置</value>
+  </data>
+  <data name="TitleLockscreenPicture" xml:space="preserve">
+    <value>鎖定螢幕圖片</value>
   </data>
   <data name="TitleMisc" xml:space="preserve">
     <value>雜項</value>
@@ -575,10 +728,10 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>靜音</value>
   </data>
   <data name="TitlePauseAlgo" xml:space="preserve">
-    <value>暫停運作</value>
+    <value>暫停演算法</value>
   </data>
   <data name="TitlePerformance" xml:space="preserve">
-    <value>性能</value>
+    <value>效能</value>
   </data>
   <data name="TitlePlaylist" xml:space="preserve">
     <value>播放清單</value>
@@ -586,53 +739,78 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TitlePleaseWait" xml:space="preserve">
     <value>請稍候</value>
   </data>
+  <data name="TitleReportBug" xml:space="preserve">
+    <value>回報 Bug</value>
+  </data>
   <data name="TitleScalingFit" xml:space="preserve">
     <value>縮放/適合</value>
   </data>
   <data name="TitleScreenLayout" xml:space="preserve">
-    <value>控制面板</value>
+    <value>控制台</value>
   </data>
   <data name="TitleSelectFile" xml:space="preserve">
-    <value>選擇文件</value>
+    <value>選取檔案</value>
   </data>
   <data name="TitleSettings" xml:space="preserve">
     <value>設定</value>
+  </data>
+  <data name="TitleSkipConfirm" xml:space="preserve">
+    <value>跳過確認</value>
+  </data>
+  <data name="TitleSourceCode" xml:space="preserve">
+    <value>原始碼</value>
+  </data>
+  <data name="TitleStore" xml:space="preserve">
+    <value>商店</value>
+    <comment>對於不同版本的 Lively，例如：Microsoft Store</comment>
   </data>
   <data name="TitleStreamWallpaper" xml:space="preserve">
     <value>串流</value>
   </data>
   <data name="TitleStreamWallpaperDetect" xml:space="preserve">
-    <value>檢測串流</value>
+    <value>偵測串流</value>
   </data>
   <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
-    <value>影片質量</value>
+    <value>影片品質</value>
+  </data>
+  <data name="TitleSystem" xml:space="preserve">
+    <value>作業系統</value>
+  </data>
+  <data name="TitleTaskbarTheme" xml:space="preserve">
+    <value>工具列主題</value>
   </data>
   <data name="TitleTileSize" xml:space="preserve">
     <value>預覽大小</value>
   </data>
   <data name="TitleUIMode" xml:space="preserve">
-    <value>用戶界面</value>
+    <value>使用者介面</value>
   </data>
   <data name="TitleVideo" xml:space="preserve">
     <value>影片</value>
   </data>
+  <data name="TitleVideoHardwareDecode" xml:space="preserve">
+    <value>GPU 解碼</value>
+  </data>
   <data name="TitleWallpaper" xml:space="preserve">
-    <value>背景</value>
+    <value>桌布</value>
   </data>
   <data name="TitleWallpaperDir" xml:space="preserve">
-    <value>背景目錄</value>
+    <value>桌布目錄</value>
   </data>
   <data name="TitleWallpaperDirMoveExisting" xml:space="preserve">
-    <value>將現有動態桌布移動到新文件夾</value>
+    <value>將現有動態桌布移動至新資料夾</value>
+  </data>
+  <data name="TitleWallpaperFit" xml:space="preserve">
+    <value>選取一種適合方案</value>
   </data>
   <data name="TitleWallpaperInput" xml:space="preserve">
-    <value>背景輸入</value>
+    <value>桌布輸入</value>
   </data>
   <data name="TitleWallpaperLayout" xml:space="preserve">
     <value>放置方式</value>
   </data>
   <data name="TitleWallpaperPlayback" xml:space="preserve">
-    <value>背景播放</value>
+    <value>桌布播放</value>
   </data>
   <data name="TitleWarning" xml:space="preserve">
     <value>警告</value>
@@ -641,7 +819,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>網頁瀏覽器</value>
   </data>
   <data name="TitleWebBrowserDiskCache" xml:space="preserve">
-    <value>記憶體暫存</value>
+    <value>磁碟暫存</value>
   </data>
   <data name="TitleWebBrowserEngine" xml:space="preserve">
     <value>引擎</value>
@@ -650,181 +828,21 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>載入網頁</value>
   </data>
   <data name="TitleWindowsStartup" xml:space="preserve">
-    <value>開機啟動</value>
+    <value>隨 Windows 開機啟動</value>
   </data>
-  <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
-    <value>確定要從資料庫刪除動態桌布?</value>
+    <data name="TitleScreensaver" xml:space="preserve">
+    <value>螢幕保護程式</value>
   </data>
-  <data name="TipAudioMaster" xml:space="preserve">
-    <value>動態桌布的音量大小</value>
+  <data name="TipScreensaver" xml:space="preserve">
+    <value>在選定的非活動時長後設定當前桌布為你的螢幕保護程式。</value>
   </data>
-  <data name="TitleAudioMaster" xml:space="preserve">
-    <value>主音量大小</value>
+    <data name="TextHours" xml:space="preserve">
+    <value>小時</value>
   </data>
-  <data name="TextWallpaperFitFill" xml:space="preserve">
-    <value>填滿</value>
+  <data name="TextMinutes" xml:space="preserve">
+    <value>分鐘</value>
   </data>
-  <data name="TextWallpaperFitNone" xml:space="preserve">
-    <value>無</value>
-  </data>
-  <data name="TextWallpaperFitUniform" xml:space="preserve">
-    <value>均勻</value>
-  </data>
-  <data name="TextWallpaperFitUniformToFill" xml:space="preserve">
-    <value>均勻填滿</value>
-  </data>
-  <data name="TipWallpaperFit" xml:space="preserve">
-    <value>背景縮放算法</value>
-  </data>
-  <data name="TitleWallpaperFit" xml:space="preserve">
-    <value>選擇縮放大小</value>
-  </data>
-  <data name="TextPreviewWallpaper" xml:space="preserve">
-    <value>預覽動態桌布</value>
-  </data>
-  <data name="TextAllFiles" xml:space="preserve">
-    <value>所有檔案</value>
-  </data>
-  <data name="TitleDebug" xml:space="preserve">
-    <value>除錯</value>
-  </data>
-  <data name="TipDebug" xml:space="preserve">
-    <value>顯示開發者選單</value>
-  </data>
-  <data name="TextFileNotFound" xml:space="preserve">
-    <value>找不到檔案</value>
-  </data>
-  <data name="TextPicture" xml:space="preserve">
-    <value>圖片</value>
-  </data>
-  <data name="TextUnsupportedFile" xml:space="preserve">
-    <value>不支援的檔案格式</value>
-  </data>
-  <data name="TextProcessingWallpaper" xml:space="preserve">
-    <value>處理中</value>
-  </data>
-  <data name="TextTitle" xml:space="preserve">
-    <value>標題</value>
-  </data>
-  <data name="TextDescription" xml:space="preserve">
-    <value>簡介</value>
-  </data>
-  <data name="TextOK" xml:space="preserve">
-    <value>確定</value>
-  </data>
-  <data name="TextCancel" xml:space="preserve">
-    <value>取消</value>
-  </data>
-  <data name="TextCreatePreview" xml:space="preserve">
-    <value>創建預覽</value>
-  </data>
-  <data name="TitleGifPlayer" xml:space="preserve">
-    <value>Gif播放器</value>
-  </data>
-  <data name="TipGifPlayer" xml:space="preserve">
-    <value>選擇用於gif牆紙的播放器。</value>
-  </data>
-  <data name="TextFeatureMissing" xml:space="preserve">
-    <value>此版本不提供某些功能。</value>
-  </data>
-  <data name="TextControlPanelOpen" xml:space="preserve">
-    <value>單擊此處管理壁紙。</value>
-  </data>
-  <data name="TextStoreReview" xml:space="preserve">
-    <value>您喜歡使用Lively嗎？留下評論:)</value>
-  </data>
-  <data name="TitleStore" xml:space="preserve">
-    <value>店鋪</value>
-    <comment>For different version of Lively, example: Microsoft Store</comment>
-  </data>
-  <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>您的Windows N / KN版本將需要下載其他編解碼器，以支持牆紙中的視頻播放。</value>
-  </data>
-  <data name="TextLicense" xml:space="preserve">
-    <value>執照</value>
-  </data>
-  <data name="TextPrivacyPolicy" xml:space="preserve">
-    <value>隱私政策</value>
-  </data>
-  <data name="TitleAudioDesktopOnly" xml:space="preserve">
-    <value>僅在桌面集中時播放音頻</value>
-  </data>
-  <data name="TipExportLogs" xml:space="preserve">
-    <value>創建日誌報告文件。</value>
-  </data>
-  <data name="TitleExportLogs" xml:space="preserve">
-    <value>日誌文件</value>
-  </data>
-  <data name="TitleReportBug" xml:space="preserve">
-    <value>報告軟件缺陷</value>
-  </data>
-  <data name="TitleVideoHardwareDecode" xml:space="preserve">
-    <value>使用gpu</value>
-  </data>
-  <data name="TipVideoHardwareDecode" xml:space="preserve">
-    <value>盡可能使用硬件加速。</value>
-  </data>
-  <data name="DescriptionPleaseStop" xml:space="preserve">
-  <value>請先停止操作，然後再繼續。</value>
-</data>
-<data name="TextEditWallpaper" xml:space="preserve">
-  <value>編輯</value>
-</data>
-<data name="TitleLocation" xml:space="preserve">
-  <value>地點</value>
-</data>
-<data name="TitleSkipConfirm" xml:space="preserve">
-  <value>跳過確認</value>
-</data>
-<data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-  <value>輸入可選的命令行參數</value>
-</data>
-  <data name="TextGitHubStar" xml:space="preserve">
-    <value>通過放下一顆星星來表達愛意</value>
-  </data>
-  <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
-    <value>找到不兼容的程序，任務欄主題已禁用。</value>
-  </data>
-  <data name="TitleTaskbarTheme" xml:space="preserve">
-    <value>任務欄主題</value>
-  </data>
-  <data name="TitleLockscreenPicture" xml:space="preserve">
-    <value>鎖屏圖片</value>
-  </data>
-  <data name="TitleDesktopPicture" xml:space="preserve">
-    <value>桌面圖片</value>
-  </data>
-  <data name="TipLockscreenPicture" xml:space="preserve">
-    <value>將動畫牆紙的圖片設置為鎖屏牆紙。</value>
-  </data>
-  <data name="TipDesktopPicture" xml:space="preserve">
-    <value>將動畫牆紙的圖片設置為桌面牆紙。</value>
-  </data>
-  <data name="TipTaskbarTheme" xml:space="preserve">
-    <value>更改系統任務欄外觀。</value>
-  </data>
-  <data name="TextTaskbarThemeBlur" xml:space="preserve">
-    <value>模糊</value>
-  </data>
-  <data name="TextTaskbarThemeClear" xml:space="preserve">
-    <value>清除</value>
-  </data>
-  <data name="TextTaskbarThemeColor" xml:space="preserve">
-    <value>顏色</value>
-  </data>
-  <data name="TextTaskbarThemeFluent" xml:space="preserve">
-    <value>流利</value>
-  </data>
-  <data name="TextTaskbarThemeWallpaper" xml:space="preserve">
-    <value>牆紙</value>
-  </data>
-  <data name="TextTaskbarThemeWallpaperFluent" xml:space="preserve">
-    <value>牆紙流利</value>
-  </data>
-  <data name="TitleSystem" xml:space="preserve">
-    <value>系統</value>
-  </data>
-  <data name="TitleSourceCode" xml:space="preserve">
-    <value>源代碼</value>
+  <data name="TextLearnMore" xml:space="preserve">
+    <value>了解更多</value>
   </data>
 </root>
