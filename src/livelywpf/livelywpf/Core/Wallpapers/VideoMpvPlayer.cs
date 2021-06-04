@@ -4,6 +4,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Threading;
@@ -331,7 +332,7 @@ namespace livelywpf.Core
             string result = null;
             if (uiElement.Equals("dropdown", StringComparison.OrdinalIgnoreCase))
             {
-                if (int.TryParse(msg, out int value))
+                if (int.TryParse(msg, NumberStyles.Any, CultureInfo.InvariantCulture, out int value))
                 {
                     //value string in items array is passed instead of index like in cef livelyproperties.
                     result = GetMpvJsonPropertyString("command", "set_property", objectName, (string)livelyPropertiesData[objectName]["items"][value]);
@@ -339,7 +340,7 @@ namespace livelywpf.Core
             }
             else if (uiElement.Equals("slider", StringComparison.OrdinalIgnoreCase))
             {
-                if (double.TryParse(msg, out double value))
+                if (double.TryParse(msg, NumberStyles.Any, CultureInfo.InvariantCulture, out double value))
                 {
                     result = GetMpvJsonPropertyString("command", "set_property", objectName, msg);
                 }

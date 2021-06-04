@@ -320,8 +320,7 @@ namespace livelywpf.Cef
             try
             {
                 var item = (Windows.UI.Xaml.Controls.Slider)sender;
-
-                WallpaperSendMsg("lively:customise slider " + item.Name + " " + JsonConvert.SerializeObject(item.Value));
+                WallpaperSendMsg("lively:customise slider " + item.Name + " " + ((item.StepFrequency % 1) != 0 ? JsonConvert.SerializeObject(item.Value) : JsonConvert.SerializeObject(Convert.ToInt32(item.Value))));
                 livelyPropertyCopyData[item.Name]["value"] = item.Value;
                 UpdatePropertyFile();
             }
