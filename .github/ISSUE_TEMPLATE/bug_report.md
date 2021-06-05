@@ -7,12 +7,15 @@ assignees: ''
 
 ---
 
-**Before proceeding**
-Check the Wiki:
+<!-- 
+I ACKNOWLEDGE THE FOLLOWING BEFORE PROCEEDING:
+1. Issue may be deleted if it is not following the template
+2. Only post one issue per one bug report
+3. Try not to make duplicates issues, do a quick search before posting
+4. Add a title that describes the issue clearly
+5. Check the wiki to see if the question is already answered:
 https://github.com/rocksdanister/lively/wiki/Common-Problems
-and Issues:
-https://github.com/rocksdanister/lively/issues?q=is%3Aopen+is%3Aissue
-to see if your problem is already addressed.
+--->
 
 **Describe the bug**
 A clear and concise description of what the bug is.
