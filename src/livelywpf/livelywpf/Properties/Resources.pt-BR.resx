@@ -304,7 +304,7 @@ Se ainda não funcionar, abra o Lively novamente ou reinicie o Windows.
     <value>Teclado</value>
   </data>
   <data name="TextLicense" xml:space="preserve">
-    <value>Licensa</value>
+    <value>Licença</value>
   </data>
   <data name="TextMoreWallpapers" xml:space="preserve">
     <value>Mais Planos de Fundo...</value>
@@ -753,96 +753,96 @@ O Edge é a webview embutida do Windows 10.</value>
     <value>Iniciar com o Windows</value>
   </data>
   <data name="TipExportLogs" xml:space="preserve">
-    <value>Create log report file.</value>
+    <value>Criar arquivo de log para reportar.</value>
   </data>
   <data name="TitleExportLogs" xml:space="preserve">
-    <value>Log File</value>
+    <value>Arquivo de log</value>
   </data>
   <data name="TitleReportBug" xml:space="preserve">
-    <value>Report Bug</value>
+    <value>Reportar Bug</value>
   </data>
   <data name="TitleVideoHardwareDecode" xml:space="preserve">
-    <value>GPU Decode</value>
+    <value>Decodificação via GPU</value>
   </data>
   <data name="TipVideoHardwareDecode" xml:space="preserve">
-    <value>Use hardware acceleration when possible.</value>
+    <value>Usar aceleração de hardware quando possível.</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
-  <value>Please stop before proceeding.</value>
+  <value>Por favor pare antes de continuar.</value>
 </data>
 <data name="TextEditWallpaper" xml:space="preserve">
-  <value>Edit</value>
+  <value>Editar</value>
 </data>
 <data name="TitleLocation" xml:space="preserve">
-  <value>Location</value>
+  <value>Localização</value>
 </data>
 <data name="TitleSkipConfirm" xml:space="preserve">
-  <value>Skip Confirmation</value>
+  <value>Pular Confirmação</value>
 </data>
 <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-  <value>Enter optional commandline arguments</value>
+  <value>Insira argumentos da linha de comando opcionais</value>
 </data>
   <data name="TextGitHubStar" xml:space="preserve">
-    <value>Show some love by dropping a star</value>
+    <value>Mostre seu apoio dando uma estrela</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
-    <value>Incompatible program found, taskbar theming disabled.</value>
+    <value>Programa incompatível encontrado, estilo da barra de tarefas desativado.</value>
   </data>
   <data name="TitleTaskbarTheme" xml:space="preserve">
-    <value>Taskbar Theme</value>
+    <value>Tema da Barra de Tarefas</value>
   </data>
   <data name="TitleLockscreenPicture" xml:space="preserve">
-    <value>Lockscreen Picture</value>
+    <value>Imagem da Tela de Bloqueio</value>
   </data>
   <data name="TitleDesktopPicture" xml:space="preserve">
-    <value>Desktop Picture</value>
+    <value>Imagem da Área de Trabalho</value>
   </data>
   <data name="TipLockscreenPicture" xml:space="preserve">
-    <value>Set a picture of animated wallpaper as lockscreen wallpaper.</value>
+    <value>Definir uma imagem do papel de parede animado como papel de parede da tela de bloqueio.</value>
   </data>
   <data name="TipDesktopPicture" xml:space="preserve">
-    <value>Set a picture of animated wallpaper as desktop wallpaper.</value>
+    <value>Definir uma imagem do papel de parede animado como papel de parede da área de trabalho.</value>
   </data>
   <data name="TipTaskbarTheme" xml:space="preserve">
-    <value>Change system taskbar appearance.</value>
+    <value>Alterar a aparência da barra de tarefas do sistema.</value>
   </data>
   <data name="TextTaskbarThemeBlur" xml:space="preserve">
-    <value>Blur</value>
+    <value>Desfoque</value>
   </data>
   <data name="TextTaskbarThemeClear" xml:space="preserve">
-    <value>Clear</value>
+    <value>Limpo</value>
   </data>
   <data name="TextTaskbarThemeColor" xml:space="preserve">
-    <value>Color</value>
+    <value>Cor</value>
   </data>
   <data name="TextTaskbarThemeFluent" xml:space="preserve">
-    <value>Fluent</value>
+    <value>Fluente</value>
   </data>
   <data name="TextTaskbarThemeWallpaper" xml:space="preserve">
-    <value>Wallpaper</value>
+    <value>Papel de Parede</value>
   </data>
   <data name="TextTaskbarThemeWallpaperFluent" xml:space="preserve">
-    <value>Wallpaper Fluent</value>
+    <value>Papel de Parede Fluente</value>
   </data>
   <data name="TitleSystem" xml:space="preserve">
-    <value>System</value>
+    <value>Sistema</value>
   </data>
   <data name="TitleSourceCode" xml:space="preserve">
-    <value>Source Code</value>
+    <value>Código Fonte</value>
   </data>
     <data name="TitleScreensaver" xml:space="preserve">
-    <value>Screensaver</value>
+    <value>Protetor de Tela</value>
   </data>
   <data name="TipScreensaver" xml:space="preserve">
-    <value>After the selected inactivity period use the current wallpaper as your screensaver.</value>
+    <value>Após o tempo de inatividade selecionado, usar o papel de parede atual como seu protetor de tela.</value>
   </data>
     <data name="TextHours" xml:space="preserve">
-    <value>hours</value>
+    <value>horas</value>
   </data>
   <data name="TextMinutes" xml:space="preserve">
-    <value>minutes</value>
+    <value>minutos</value>
   </data>
   <data name="TextLearnMore" xml:space="preserve">
-    <value>Learn more</value>
+    <value>Saiba mais</value>
   </data>
 </root>
