@@ -292,7 +292,6 @@ namespace livelywpf.Core
             {
                 try
                 {
-                    Logger.Debug("Sending msg:" + msg);
                     _process.StandardInput.WriteLine(msg);
                 }
                 catch { }

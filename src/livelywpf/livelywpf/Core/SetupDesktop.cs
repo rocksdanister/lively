@@ -1105,27 +1105,19 @@ namespace livelywpf
             }
         }
 
-        /// <summary>
-        /// Note: If more than one instance of same wallpaper running, will send message to both.
-        /// </summary>
-        /// <param name="wp"></param>
-        /// <param name="msg"></param>
-        public static void SendMessageWallpaper(LibraryModel wp, IpcMessage msg)
+        public static void SendMessageWallpaper(IpcMessage msg)
         {
             Wallpapers.ForEach(x =>
             {
-                if (x.GetWallpaperData() == wp)
-                {
-                    x.SendMessage(msg);
-                }
+                x.SendMessage(msg);
             });
         }
 
-        public static void SendMessageWallpaper(LivelyScreen display, IpcMessage msg)
+        public static void SendMessageWallpaper(LivelyScreen display, LibraryModel wp, IpcMessage msg)
         {
             Wallpapers.ForEach(x =>
             {
-                if (ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.deviceId))
+                if (ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.deviceId) && wp == x.GetWallpaperData())
                     x.SendMessage(msg);
             });
         }

@@ -321,8 +321,7 @@ namespace livelywpf.Cef
             try
             {
                 var item = (Windows.UI.Xaml.Controls.Slider)sender;
-                //WallpaperSendMsg("lively:customise slider " + item.Name + " " + ((item.StepFrequency % 1) != 0 ? JsonConvert.SerializeObject(item.Value) : JsonConvert.SerializeObject(Convert.ToInt32(item.Value))));
-                SetupDesktop.Wallpapers[0].SendMessage(new LivelySlider() { Name = item.Name, Value = item.Value, Step = item.StepFrequency });
+                WallpaperSendMsg(new LivelySlider() { Name = item.Name, Value = item.Value, Step = item.StepFrequency });
                 livelyPropertyCopyData[item.Name]["value"] = item.Value;
                 UpdatePropertyFile();
             }
@@ -548,11 +547,11 @@ namespace livelywpf.Cef
             switch (Program.SettingsVM.Settings.WallpaperArrangement)
             {
                 case WallpaperArrangement.per:
-                    SetupDesktop.SendMessageWallpaper(screen, msg);
+                    SetupDesktop.SendMessageWallpaper(screen, wallpaperData, msg);
                     break;
                 case WallpaperArrangement.span:
                 case WallpaperArrangement.duplicate:
-                    SetupDesktop.SendMessageWallpaper(wallpaperData, msg);
+                    SetupDesktop.SendMessageWallpaper(msg);
                     break;
             }
         }

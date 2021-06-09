@@ -404,11 +404,11 @@ namespace livelywpf.Cmd
                                 switch (Program.SettingsVM.Settings.WallpaperArrangement)
                                 {
                                     case WallpaperArrangement.per:
-                                        SetupDesktop.SendMessageWallpaper(screen, msg);
+                                        SetupDesktop.SendMessageWallpaper(screen, wp.GetWallpaperData(), msg);
                                         break;
                                     case WallpaperArrangement.span:
                                     case WallpaperArrangement.duplicate:
-                                        SetupDesktop.SendMessageWallpaper(wp.GetWallpaperData(), msg);
+                                        SetupDesktop.SendMessageWallpaper(msg);
                                         break;
                                 }
                             }
