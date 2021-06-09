@@ -1,4 +1,5 @@
 ﻿using livelywpf.Core;
+using livelywpf.Core.API;
 using livelywpf.Views;
 using Microsoft.Win32;
 using System;
@@ -1109,7 +1110,7 @@ namespace livelywpf
         /// </summary>
         /// <param name="wp"></param>
         /// <param name="msg"></param>
-        public static void SendMessageWallpaper(LibraryModel wp, string msg)
+        public static void SendMessageWallpaper(LibraryModel wp, IpcMessage msg)
         {
             Wallpapers.ForEach(x =>
             {
@@ -1120,7 +1121,7 @@ namespace livelywpf
             });
         }
 
-        public static void SendMessageWallpaper(LivelyScreen display, string msg)
+        public static void SendMessageWallpaper(LivelyScreen display, IpcMessage msg)
         {
             Wallpapers.ForEach(x =>
             {

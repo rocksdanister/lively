@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading;
 using System.Windows.Threading;
 using CommandLine;
+using livelywpf.Core.API;
 using livelywpf.Helpers;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -336,7 +337,7 @@ namespace livelywpf.Cmd
                             }
                         }
 
-                        string msg = null;
+                        IpcMessage msg = null;
                         ctype = (ctype == null && name.Equals("lively_default_settings_reload", StringComparison.OrdinalIgnoreCase)) ? "button" : ctype;
                         if (ctype != null)
                         {
@@ -346,19 +347,19 @@ namespace livelywpf.Cmd
                                 {
                                     if (Cef.LivelyPropertiesView.RestoreOriginalPropertyFile(wp.GetWallpaperData(), wp.GetLivelyPropertyCopyPath()))
                                     {
-                                        msg = "lively:customise button lively_default_settings_reload 1";
+                                        msg = new LivelyButton() { Name = "lively_default_settings_reload", IsDefault = true };
                                     }
                                 }
                                 else
                                 {
-                                    msg = "lively:customise " + ctype + " " + name + " " + val;
+                                    msg = new LivelyButton() { Name = name };
                                 }
                             }
                             else
                             {
                                 if (ctype.Equals("checkbox", StringComparison.OrdinalIgnoreCase))
                                 {
-                                    msg = "lively:customise " + ctype + " " + name + " " + (val == "true");
+                                    msg = new LivelyCheckbox() { Name = name, Value = (val == "true") };
                                     lp[name]["value"] = (val == "true");
                                 }
                                 else if (ctype.Equals("slider", StringComparison.OrdinalIgnoreCase))
@@ -367,7 +368,7 @@ namespace livelywpf.Cmd
                                         (double)lp[name]["value"] + double.Parse(val[1..]) : double.Parse(val);
                                     sliderValue = Clamp(sliderValue, (double)lp[name]["min"], (double)lp[name]["max"]);
 
-                                    msg = "lively:customise " + ctype + " " + name + " " + JsonConvert.SerializeObject(sliderValue);
+                                    msg = new LivelySlider() { Name = name, Value = sliderValue };
                                     lp[name]["value"] = sliderValue;
                                 }
                                 else if (ctype.Equals("dropdown", StringComparison.OrdinalIgnoreCase))
@@ -376,22 +377,22 @@ namespace livelywpf.Cmd
                                         (int)lp[name]["value"] + int.Parse(val[1..]) : int.Parse(val);
                                     selectedIndex = Clamp(selectedIndex, 0, lp[name]["items"].Count() - 1);
 
-                                    msg = "lively:customise " + ctype + " " + name + " " + JsonConvert.SerializeObject(selectedIndex);
+                                    msg = new LivelyDropdown() { Name = name, Value = selectedIndex };
                                     lp[name]["value"] = selectedIndex;
                                 }
                                 else if (ctype.Equals("folderDropdown", StringComparison.OrdinalIgnoreCase))
                                 {
-                                    msg = "lively:customise " + ctype + " " + name + " " + "\"" + val + "\"";
+                                    msg = new LivelyFolderDropdown() { Name = name, Value = val };
                                     lp[name]["value"] = Path.GetFileName(val);
                                 }
                                 else if (ctype.Equals("textbox", StringComparison.OrdinalIgnoreCase))
                                 {
-                                    msg = "lively:customise " + ctype + " " + name + " " + "\"" + val + "\"";
+                                    msg = new LivelyTextBox() { Name = name, Value = val };
                                     lp[name]["value"] = val;
                                 }
                                 else if (ctype.Equals("color", StringComparison.OrdinalIgnoreCase))
                                 {
-                                    msg = "lively:customise " + ctype + " " + name + " " + val;
+                                    msg = new LivelyColorPicker() { Name = name, Value = val };
                                     lp[name]["value"] = val;
                                 }
 

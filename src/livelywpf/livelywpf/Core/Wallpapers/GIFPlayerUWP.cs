@@ -1,4 +1,5 @@
 ﻿using ImageMagick;
+using livelywpf.Core.API;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -130,6 +131,11 @@ namespace livelywpf.Core
         }
 
         public void SetPlaybackPos(float pos, PlaybackPosType type)
+        {
+            //todo
+        }
+
+        public void SendMessage(IpcMessage obj)
         {
             //todo
         }

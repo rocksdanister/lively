@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using livelywpf.Core.API;
 using livelywpf.Model;
 
 namespace livelywpf.Core
@@ -72,6 +73,11 @@ namespace livelywpf.Core
         /// </summary>
         /// <param name="msg"></param>
         void SendMessage(string msg);
+        /// <summary>
+        /// Send ipc message to program wallpaper.
+        /// </summary>
+        /// <param name="msg"></param>
+        void SendMessage(IpcMessage obj);
         /// <summary>
         /// Get location of LivelyProperties.json copy file in Savedata/wpdata.
         /// This will be a copy of the original file (different screens will have different copy.)

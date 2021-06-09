@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using livelywpf.Core.API;
 using livelywpf.Helpers;
 
 namespace livelywpf.Core
@@ -130,6 +131,11 @@ namespace livelywpf.Core
         {
             //restoring original wallpaper.
             desktop.SetWallpaper(display.DeviceId ,systemWallpaperPath);
+        }
+
+        public void SendMessage(IpcMessage obj)
+        {
+            //todo
         }
     }
 }
