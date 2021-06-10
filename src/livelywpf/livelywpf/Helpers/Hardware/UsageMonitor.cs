@@ -46,10 +46,10 @@ namespace livelywpf.Helpers
         public long TotalRam { get; set; }
     }
 
-    public sealed class HWUsageMonitor
+    public sealed class UsageMonitor
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private static readonly HWUsageMonitor instance = new HWUsageMonitor();
+        private static readonly UsageMonitor instance = new UsageMonitor();
         public event EventHandler<HWUsageMonitorEventArgs> HWMonitor = delegate { };
         private readonly HWUsageMonitorEventArgs perfData = new HWUsageMonitorEventArgs();
         private CancellationTokenSource ctsHwMonitor;
@@ -60,7 +60,7 @@ namespace livelywpf.Helpers
         private PerformanceCounter netDownCounter = null;
         private PerformanceCounter netUpCounter = null;
 
-        public static HWUsageMonitor Instance
+        public static UsageMonitor Instance
         {
             get
             {
@@ -68,7 +68,7 @@ namespace livelywpf.Helpers
             }
         }
 
-        private HWUsageMonitor()
+        private UsageMonitor()
         {
             InitCounters();
         }

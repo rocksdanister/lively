@@ -50,11 +50,11 @@ namespace livelywpf
 
         public void NavViewNavigate(string tag)
         {
-            foreach (var x in MyNavView.MenuItems)
+            foreach (var x in navView.MenuItems)
             {
                 if (((NavigationViewItem)x).Tag.ToString() == tag)
                 {
-                    MyNavView.SelectedItem = x;
+                    navView.SelectedItem = x;
                     break;
                 }
             }

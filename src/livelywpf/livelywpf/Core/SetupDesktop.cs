@@ -1,4 +1,5 @@
 ﻿using livelywpf.Core;
+using livelywpf.Core.API;
 using livelywpf.Views;
 using Microsoft.Win32;
 using System;
@@ -25,8 +26,8 @@ namespace livelywpf
         private static Playback processMonitor;
         private static readonly List<IWallpaper> wallpapersPending = new List<IWallpaper>(2);
         private static readonly List<WallpaperLayoutModel> wallpapersDisconnected = new List<WallpaperLayoutModel>();
-        public static event EventHandler WallpaperChanged;
         public static List<IWallpaper> Wallpapers { get; } = new List<IWallpaper>(2);
+        public static event EventHandler WallpaperChanged;
 
         static SetupDesktop()
         {
@@ -211,8 +212,7 @@ namespace livelywpf
                     if (Program.IsMSIX)
                     {
                         Logger.Info("Core: Skipping program wallpaper on MSIX package.");
-                        //MessageBox.Show("Program wallpapers not supported on this version of Lively", Properties.Resources.TextError);
-                        System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
+                        _= System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
                         {
                             _ = Helpers.DialogService.ShowConfirmationDialog(Properties.Resources.TextError,
                                 Properties.Resources.TextFeatureMissing, Properties.Resources.TextOK);
@@ -246,7 +246,7 @@ namespace livelywpf
 
             if (wpInstance != null)
             {
-                System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
+                _= System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
                 {
                     wallpaper.ItemStartup = true;
                 }));
@@ -464,12 +464,6 @@ namespace livelywpf
                                 }
                             }
 
-                            //set lockscreen picture wallpaper..
-                            if (thumbRequiredLockscreen)
-                            {
-                                await Helpers.WindowsPersonalize.SetLockScreenWallpaper(imgPath);
-                            }
-
                             //set desktop picture wallpaper..
                             //msix: virtualised path issue..
                             if (Program.SettingsVM.Settings.DesktopAutoWallpaper && !Program.IsMSIX)
@@ -504,6 +498,12 @@ namespace livelywpf
                                     NativeMethods.SystemParametersInfo(NativeMethods.SPI_SETDESKWALLPAPER, 0, imgPath, NativeMethods.SPIF_UPDATEINIFILE | NativeMethods.SPIF_SENDWININICHANGE);
                                 }
                             }
+
+                            //set lockscreen picture wallpaper..
+                            if (thumbRequiredLockscreen)
+                            {
+                                await Helpers.WindowsPersonalize.SetLockScreenWallpaper(imgPath);
+                            }
                         }
                         catch (Exception ie2)
                         {
@@ -520,9 +520,9 @@ namespace livelywpf
                     Logger.Error("Core: Failed to launch wallpaper=>" + e.Msg + "\n" + e.Error?.ToString());
                     wallpaper.Terminate();
                     WallpaperChanged?.Invoke(null, null);
-                    if (App.AppWindow?.Visibility != Visibility.Hidden)
+                    if (App.AppWindow.IsVisible)
                     {
-                        MessageBox.Show(Properties.Resources.LivelyExceptionGeneral, Properties.Resources.TextError);
+                        MessageBox.Show(Properties.Resources.LivelyExceptionGeneral, Properties.Resources.TitleAppName, MessageBoxButton.OK, MessageBoxImage.Error);
                     }
 
                     if (!File.Exists(Path.Combine(wallpaper.GetWallpaperData().LivelyInfoFolderPath, "LivelyInfo.json")))
@@ -657,6 +657,7 @@ namespace livelywpf
                 });
                 if (mpvFix)
                 {
+                    //in theory this is not needed since its the latest - it should stay sync with the rest..
                     wallpaper.SetPlaybackPos(0, PlaybackPosType.absolutePercent);
                 }
             }
@@ -1105,27 +1106,19 @@ namespace livelywpf
             }
         }
 
-        /// <summary>
-        /// Note: If more than one instance of same wallpaper running, will send message to both.
-        /// </summary>
-        /// <param name="wp"></param>
-        /// <param name="msg"></param>
-        public static void SendMessageWallpaper(LibraryModel wp, string msg)
+        public static void SendMessageWallpaper(IpcMessage msg)
         {
             Wallpapers.ForEach(x =>
             {
-                if (x.GetWallpaperData() == wp)
-                {
-                    x.SendMessage(msg);
-                }
+                x.SendMessage(msg);
             });
         }
 
-        public static void SendMessageWallpaper(LivelyScreen display, string msg)
+        public static void SendMessageWallpaper(LivelyScreen display, LibraryModel wp, IpcMessage msg)
         {
             Wallpapers.ForEach(x =>
             {
-                if (ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.deviceId))
+                if (ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.deviceId) && wp == x.GetWallpaperData())
                     x.SendMessage(msg);
             });
         }

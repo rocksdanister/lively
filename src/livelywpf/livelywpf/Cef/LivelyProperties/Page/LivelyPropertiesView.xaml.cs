@@ -1,4 +1,5 @@
 ﻿using livelywpf.Core;
+using livelywpf.Core.API;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using NLog;
@@ -308,7 +309,7 @@ namespace livelywpf.Cef
             try
             {
                 var item = (Slider)sender;
-                WallpaperSendMsg("lively:customise slider " + item.Name + " " + ((item.TickFrequency % 1) != 0 ? JsonConvert.SerializeObject(item.Value) : JsonConvert.SerializeObject(Convert.ToInt32(item.Value))));
+                WallpaperSendMsg(new LivelySlider() { Name = item.Name, Value = item.Value, Step = item.TickFrequency });
                 livelyPropertyCopyData[item.Name]["value"] = item.Value;
                 UpdatePropertyFile();
             }
@@ -325,7 +326,7 @@ namespace livelywpf.Cef
             {
                 var item = (ComboBox)sender;
                 var filePath = Path.Combine(livelyPropertyCopyData[item.Name]["folder"].ToString(), item.SelectedItem.ToString()); //filename is unique.
-                WallpaperSendMsg("lively:customise folderDropdown " + item.Name + " " + "\"" + filePath + "\"");
+                WallpaperSendMsg(new LivelyFolderDropdown() { Name = item.Name, Value = filePath });
                 livelyPropertyCopyData[item.Name]["value"] = item.SelectedItem.ToString();
                 UpdatePropertyFile();
             }
@@ -337,7 +338,7 @@ namespace livelywpf.Cef
             try
             {
                 var item = (ComboBox)sender;
-                WallpaperSendMsg("lively:customise dropdown " + item.Name + " " + JsonConvert.SerializeObject(item.SelectedIndex));
+                WallpaperSendMsg(new LivelyDropdown() { Name = item.Name, Value = item.SelectedIndex });
                 livelyPropertyCopyData[item.Name]["value"] = item.SelectedIndex;
                 UpdatePropertyFile();
             }
@@ -380,8 +381,7 @@ namespace livelywpf.Cef
                 if (colorDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     item.Fill = new SolidColorBrush(Color.FromArgb(colorDialog.Color.A, colorDialog.Color.R, colorDialog.Color.G, colorDialog.Color.B));
-                    //Form1.chromeBrowser.ExecuteScriptAsync("livelyPropertyListener", item.Name, ToHexValue(colorDialog.Color));
-                    WallpaperSendMsg("lively:customise color " + item.Name + " " + ToHexValue(colorDialog.Color));
+                    WallpaperSendMsg(new LivelyColorPicker() { Name = item.Name, Value = ToHexValue(colorDialog.Color) });
                     livelyPropertyCopyData[item.Name]["value"] = ToHexValue(colorDialog.Color);
                     UpdatePropertyFile();
                 }
@@ -407,7 +407,7 @@ namespace livelywpf.Cef
             {
                 uiPanel.Children.Clear();
                 LoadUI();
-                WallpaperSendMsg("lively:customise button lively_default_settings_reload 1");
+                WallpaperSendMsg(new LivelyButton() { Name = "lively_default_settings_reload", IsDefault = true });
             }
         }
 
@@ -416,7 +416,7 @@ namespace livelywpf.Cef
             try
             {
                 var item = (Button)sender;
-                WallpaperSendMsg("lively:customise button " + item.Name + " " + JsonConvert.SerializeObject(true));
+                WallpaperSendMsg(new LivelyButton() { Name = item.Name });
             }
             catch { }
         }
@@ -430,7 +430,7 @@ namespace livelywpf.Cef
             try
             {
                 var item = (CheckBox)sender;
-                WallpaperSendMsg("lively:customise checkbox " + item.Name + " " + JsonConvert.SerializeObject((item.IsChecked == true)));
+                WallpaperSendMsg(new LivelyCheckbox() { Name = item.Name, Value = (item.IsChecked == true) });
                 livelyPropertyCopyData[item.Name]["value"] = item.IsChecked == true;
                 UpdatePropertyFile();
             }
@@ -446,8 +446,7 @@ namespace livelywpf.Cef
             try
             {
                 var item = (TextBox)sender;
-                //Form1.chromeBrowser.ExecuteScriptAsync("livelyPropertyListener", item.Name, item.Text);
-                WallpaperSendMsg("lively:customise textbox " + item.Name + " " + "\"" + item.Text + "\"");
+                WallpaperSendMsg(new LivelyTextBox() { Name = item.Name, Value = item.Text });
                 livelyPropertyCopyData[item.Name]["value"] = item.Text;
                 UpdatePropertyFile();
             }
@@ -463,20 +462,19 @@ namespace livelywpf.Cef
             Cef.LivelyPropertiesJSON.SaveLivelyProperties(livelyPropertyCopyPath, livelyPropertyCopyData);
         }
 
-        private void WallpaperSendMsg(string message)
+        private void WallpaperSendMsg(IpcMessage msg)
         {
             switch (Program.SettingsVM.Settings.WallpaperArrangement)
             {
                 case WallpaperArrangement.per:
-                    SetupDesktop.SendMessageWallpaper(screen, message);
+                    SetupDesktop.SendMessageWallpaper(screen, wallpaperData, msg);
                     break;
                 case WallpaperArrangement.span:
                 case WallpaperArrangement.duplicate:
-                    SetupDesktop.SendMessageWallpaper(wallpaperData, message);
+                    SetupDesktop.SendMessageWallpaper(msg);
                     break;
             }
         }
-
 
         /// <summary>
         /// Copies LivelyProperties.json from root to the per monitor file.

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using livelywpf.Core.API;
+using Newtonsoft.Json;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Management;
@@ -275,7 +277,7 @@ namespace livelywpf.Core
                         _initialized = true;
                     }
                 }
-                Logger.Info("CEF" + uniqueId + ":" + e.Data);
+                Logger.Info("Cef{0}:{1}", uniqueId, e.Data);
             }
         }
 
@@ -294,6 +296,11 @@ namespace livelywpf.Core
                 }
                 catch { }
             }
+        }
+
+        public void SendMessage(IpcMessage obj)
+        {
+            SendMessage(JsonConvert.SerializeObject(obj));
         }
 
         public string GetLivelyPropertyCopyPath()
@@ -369,7 +376,7 @@ namespace livelywpf.Core
         {
             if (pos == 0 && type != PlaybackPosType.relativePercent)
             {
-                SendMessage("lively:reload");
+                SendMessage(new LivelyReloadCmd());
             }
         }
 

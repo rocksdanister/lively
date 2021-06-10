@@ -1,4 +1,5 @@
 ﻿using ImageMagick;
+using livelywpf.Core.API;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -13,13 +14,22 @@ using System.Threading.Tasks;
 namespace livelywpf.Core
 {
     /// <summary>
-    /// Original mpv videoplayer application.
+    /// Mpv videoplayer application.
     /// <br>References:</br>
     /// <br> https://github.com/mpv-player/mpv/blob/master/DOCS/man/ipc.rst </br>
     /// <br> https://mpv.io/manual/master/  </br>
     /// </summary>
     public class VideoMpvPlayer : IWallpaper
     {
+        /// <summary>
+        /// Mpv player json ipc command.
+        /// </summary>
+        private class MpvCommand
+        {
+            [JsonProperty("command")]
+            public List<object> Command { get; } = new List<object>();
+        }
+
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
         private IntPtr hwnd;
@@ -301,76 +311,7 @@ namespace livelywpf.Core
             }
         }
 
-        public void SendMessage(string msg)
-        {
-            try
-            {
-                if (msg.Contains("lively:customise", StringComparison.OrdinalIgnoreCase))
-                {
-                    var lpMsg = msg.Split(' ');
-                    if (lpMsg.Length < 4)
-                        return;
-                    msg = GetLivelyProperty(lpMsg[1], lpMsg[2], lpMsg[3]);
-                }
-
-                if (msg != null)
-                {
-                    Helpers.PipeClient.SendMessage(ipcServerName, msg);
-                }
-            }
-            catch { }
-        }
-
-
-        private string GetLivelyProperty(string uiElement, string objectName, string msg)
-        {
-            // TODO: 
-            // Having trouble passing double without decimal to SetPropertyDouble
-            // Test and see if what all Lively controls are required based on available options: https://mpv.io/manual/master/
-            // Maybe block some commands? like a blacklist
-
-            string result = null;
-            if (uiElement.Equals("dropdown", StringComparison.OrdinalIgnoreCase))
-            {
-                if (int.TryParse(msg, NumberStyles.Any, CultureInfo.InvariantCulture, out int value))
-                {
-                    //value string in items array is passed instead of index like in cef livelyproperties.
-                    result = GetMpvJsonPropertyString("command", "set_property", objectName, (string)livelyPropertiesData[objectName]["items"][value]);
-                }
-            }
-            else if (uiElement.Equals("slider", StringComparison.OrdinalIgnoreCase))
-            {
-                if (double.TryParse(msg, NumberStyles.Any, CultureInfo.InvariantCulture, out double value))
-                {
-                    result = GetMpvJsonPropertyString("command", "set_property", objectName, msg);
-                }
-            }
-            else if (uiElement.Equals("checkbox", StringComparison.OrdinalIgnoreCase))
-            {
-                if (bool.TryParse(msg, out bool value))
-                {
-                    result = GetMpvJsonPropertyString("command", "set_property", objectName, value);
-                }
-            }
-            else if (uiElement.Equals("button", StringComparison.OrdinalIgnoreCase))
-            {
-                //restore button press.
-                if (objectName.Equals("lively_default_settings_reload", StringComparison.OrdinalIgnoreCase))
-                {
-                    //load new file.
-                    livelyPropertiesData = Cef.LivelyPropertiesJSON.LoadLivelyProperties(GetLivelyPropertyCopyPath());
-                    //restore new property values.
-                    SetLivelyProperty(livelyPropertiesData);
-                }
-                else
-                {
-                    //unused
-                }
-            }
-            return result;
-        }
-
-        private void SetLivelyProperty(JObject livelyProperty)
+        private void SetPlaybackProperties(JObject livelyProperty)
         {
             try
             {
@@ -383,16 +324,11 @@ namespace livelywpf.Core
                         msg = null;
                         if (uiElement.Equals("slider", StringComparison.OrdinalIgnoreCase))
                         {
-                            msg = GetMpvJsonPropertyString("command", "set_property", item.Key, (string)item.Value["value"]);
+                            msg = GetMpvCommand("set_property", item.Key, (string)item.Value["value"]);
                         }
                         else if (uiElement.Equals("checkbox", StringComparison.OrdinalIgnoreCase))
                         {
-                            msg = GetMpvJsonPropertyString("command", "set_property", item.Key, (bool)item.Value["value"]);
-                        }
-                        else if (uiElement.Equals("dropdown", StringComparison.OrdinalIgnoreCase))
-                        {
-                            //value string in items array is passed instead of index like in cef livelyproperties.
-                            msg = GetMpvJsonPropertyString("command", "set_property", item.Key, (string)item.Value["items"][(int)item.Value["value"]]);
+                            msg = GetMpvCommand("set_property", item.Key, (bool)item.Value["value"]);
                         }
 
                         if (msg != null)
@@ -406,24 +342,6 @@ namespace livelywpf.Core
             { 
                 //todo
             }
-        }
-
-        private string GetMpvJsonPropertyString(string commandName, params object[] parameters)
-        {
-            var script = new StringBuilder();
-            script.Append("{\"");
-            script.Append(commandName);
-            script.Append("\":[");
-            for (int i = 0; i < parameters.Length; i++)
-            {
-                script.Append(JsonConvert.SerializeObject(parameters[i]));
-                if (i < parameters.Length - 1)
-                {
-                    script.Append(", ");
-                }
-            }
-            script.Append("]}\n");
-            return script.ToString();
         }
 
         public void SetScreen(LivelyScreen display)
@@ -464,7 +382,7 @@ namespace livelywpf.Core
                             Msg = null
                         });
                         //Restore livelyproperties.json settings
-                        SetLivelyProperty(livelyPropertiesData);
+                        SetPlaybackProperties(livelyPropertiesData);
                     }
                 }
                 catch (OperationCanceledException e1)
@@ -502,7 +420,7 @@ namespace livelywpf.Core
         {
             if (!string.IsNullOrEmpty(e.Data))
             {
-                Logger.Info("Mpv" + uniqueId + ":" + e.Data);
+                Logger.Info("Mpv{0}:{1}", uniqueId, e.Data);
             }
         }
 
@@ -632,5 +550,126 @@ namespace livelywpf.Core
             catch { }
             SetupDesktop.RefreshDesktop();
         }
+
+        public void SendMessage(string msg)
+        {
+            try
+            {
+                Helpers.PipeClient.SendMessage(ipcServerName, msg);
+            }
+            catch { }
+        }
+
+        public void SendMessage(IpcMessage obj)
+        {
+            // TODO: 
+            // Test and see if what all Lively controls are required based on available options: https://mpv.io/manual/master/
+            // Maybe block some commands? like a blacklist
+            try
+            {
+                string msg = null;
+                switch (obj.Type)
+                {
+                    case MessageType.lp_slider:
+                        var sl = (LivelySlider)obj;
+                        if ((sl.Step % 1) != 0)
+                        {
+                            msg = GetMpvCommand("set_property", sl.Name, sl.Value);
+                        }
+                        else
+                        {
+                            //mpv is strongly typed; sending decimal value for integer commands fails..
+                            msg = GetMpvCommand("set_property", sl.Name, Convert.ToInt32(sl.Value));
+                        }
+                        break;
+                    case MessageType.lp_chekbox:
+                        var chk = (LivelyCheckbox)obj;
+                        msg = GetMpvCommand("set_property", chk.Name, chk.Value);
+                        break;
+                    case MessageType.lp_button:
+                        var btn = (LivelyButton)obj;
+                        if (btn.IsDefault)
+                        {
+                            //load new file.
+                            livelyPropertiesData = Cef.LivelyPropertiesJSON.LoadLivelyProperties(GetLivelyPropertyCopyPath());
+                            //restore new property values.
+                            SetPlaybackProperties(livelyPropertiesData);
+                        }
+                        else { } //unused
+                        break;
+                    case MessageType.lp_dropdown:
+                        //todo
+                        break;
+                    case MessageType.lp_textbox:
+                        //todo
+                        break;
+                    case MessageType.lp_cpicker:
+                        //todo
+                        break;
+                    case MessageType.lp_fdropdown:
+                        //todo
+                        break;
+                }
+
+                if (msg != null)
+                {
+                    SendMessage(msg);
+                }
+            }
+            catch (OverflowException)
+            {
+                Logger.Error("Mpv{0}: Slider double -> int overlow", uniqueId); 
+            }
+            catch { }
+        }
+
+        #region mpv util
+
+        /*                                      - 1 iteration -
+         *|        Method     |     Mean |     Error |    StdDev |  Gen 0   | Gen 1 | Gen 2 | Allocated |
+         *|------------------:|---------:|----------:|----------:|---------:|------:|------:|----------:|
+         *| GetMpvCommand     | 1.493 us | 0.0085 us | 0.0080 us | 0.5741   |     - |     - |      2 KB |
+         *| GetMpvCommandStrb | 1.551 us | 0.0148 us | 0.0138 us | 1.7033   |     - |     - |      5 KB |
+         *                                      - 100 iteration -
+         *|        Method     |     Mean |   Error   |  StdDev   |    Gen 0 |Gen 1  | Gen 2 | Allocated |
+         *|------------------:|---------:|----------:|----------:|---------:|------:|------:|----------:|
+         *| GetMpvCommand     | 188.4 μs | 0.51 μs   | 0.48 μs   |  61.2793 |   -   |     - |    188 KB |
+         *| GetMpvCommandStrb | 163.2 μs | 2.15 μs   | 2.01 μs   | 101.8066 |   -   |     - |    312 KB |
+         */
+
+        /// <summary>
+        /// Creates serialized mpv ipc json string.
+        /// </summary>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        private string GetMpvCommand(params object[] parameters)
+        {
+            var obj = new MpvCommand();
+            obj.Command.AddRange(parameters);
+            return JsonConvert.SerializeObject(obj) + Environment.NewLine;
+        }
+
+        /// <summary>
+        /// Creates serialized mpv ipc json string.
+        /// </summary>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        private string GetMpvCommandStrb(params object[] parameters)
+        {
+            var script = new StringBuilder();
+            script.Append("{\"command\":[");
+            for (int i = 0; i < parameters.Length; i++)
+            {
+                script.Append(JsonConvert.SerializeObject(parameters[i]));
+                if (i < parameters.Length - 1)
+                {
+                    script.Append(", ");
+                }
+            }
+            script.Append("]}\n");
+            return script.ToString();
+        }
+
+        #endregion //mpv util
     }
 }

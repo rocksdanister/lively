@@ -38,7 +38,6 @@ namespace livelywpf
             SetupDesktop.WallpaperChanged += SetupDesktop_WallpaperChanged;
             Program.SettingsVM.LivelyGUIStateChanged += SettingsVM_LivelyGUIStateChanged;
             Program.SettingsVM.LivelyWallpaperDirChange += SettingsVM_LivelyWallpaperDirChange;
-            //RestoreWallpaperFromSave();
 
             //ref: https://github.com/microsoft/microsoft-ui-xaml/issues/911
             //SetWallpaperItemClicked = new RelayCommand(WallpaperSet);

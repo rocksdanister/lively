@@ -37,7 +37,7 @@
             </ui:FlyoutBase.AttachedFlyout>
         </Button>
 
-        <ui:NavigationView x:Name="MyNavView" ItemInvoked="MyNavView_ItemInvoked" IsBackButtonVisible="Collapsed"
+        <ui:NavigationView x:Name="navView" ItemInvoked="MyNavView_ItemInvoked" IsBackButtonVisible="Collapsed"
                             IsBackEnabled="False" IsPaneToggleButtonVisible="False" IsPaneOpen="False">
             <!--
             <ui:NavigationView.Resources>

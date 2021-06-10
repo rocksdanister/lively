@@ -1,4 +1,5 @@
-﻿using System;
+﻿using livelywpf.Core.API;
+using System;
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
@@ -122,6 +123,11 @@ namespace livelywpf.Core
         public Task ScreenCapture(string filePath)
         {
             throw new NotImplementedException();
+        }
+
+        public void SendMessage(IpcMessage obj)
+        {
+            //todo
         }
     }
 }

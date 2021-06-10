@@ -436,7 +436,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>图库中壁纸预览的大小。</value>
   </data>
   <data name="TipUIMode" xml:space="preserve">
-    <value>低端系统建议使用精简 (Lite) 模式。</value>
+    <value>低配电脑建议使用精简 (Lite) 模式。</value>
   </data>
   <data name="TipVideoPlayer" xml:space="preserve">
     <value>选择壁纸使用的视频播放器。</value>
@@ -727,7 +727,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Gif播放器</value>
   </data>
   <data name="TipGifPlayer" xml:space="preserve">
-    <value>Select the player used for gif wallpaper.</value>
+    <value>选择GIF使用的图片播放器</value>
   </data>
   <data name="TextFeatureMissing" xml:space="preserve">
     <value>此版本不提供某些功能。</value>
@@ -739,20 +739,20 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>您喜欢使用Lively吗？留下评论:)</value>
   </data>
   <data name="TitleStore" xml:space="preserve">
-    <value>店铺</value>
+    <value>微软商店版</value>
     <comment>For different version of Lively, example: Microsoft Store</comment>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>您的Windows N / KN版本将需要下载其他编解码器，以支持墙纸中的视频播放。</value>
+    <value>您的Windows N / KN版本将需要下载其他编解码器，以支持壁纸中的视频播放。</value>
   </data>
   <data name="TextLicense" xml:space="preserve">
-    <value>执照</value>
+    <value>许可</value>
   </data>
   <data name="TextPrivacyPolicy" xml:space="preserve">
-    <value>隱私政策</value>
+    <value>隐私政策</value>
   </data>
   <data name="TitleAudioDesktopOnly" xml:space="preserve">
-    <value>仅在桌面集中时播放音频</value>
+    <value>仅在桌面聚焦时播放音频</value>
   </data>
   <data name="TipExportLogs" xml:space="preserve">
     <value>创建日志报告文件。</value>
@@ -809,7 +809,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>改变系统任务栏的外观。</value>
   </data>
   <data name="TextTaskbarThemeBlur" xml:space="preserve">
-    <value>模糊不清</value>
+    <value>模糊</value>
   </data>
   <data name="TextTaskbarThemeClear" xml:space="preserve">
     <value>清楚</value>
@@ -818,13 +818,13 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>颜色</value>
   </data>
   <data name="TextTaskbarThemeFluent" xml:space="preserve">
-    <value>丙烯酸</value>
+    <value>高斯模糊</value>
   </data>
   <data name="TextTaskbarThemeWallpaper" xml:space="preserve">
-    <value>墙纸</value>
+    <value>壁纸色半透明</value>
   </data>
   <data name="TextTaskbarThemeWallpaperFluent" xml:space="preserve">
-    <value>墙纸丙烯酸</value>
+    <value>壁纸色高斯模糊</value>
   </data>
   <data name="TitleSourceCode" xml:space="preserve">
     <value>源代码</value>
@@ -845,6 +845,6 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>分钟</value>
   </data>
   <data name="TextLearnMore" xml:space="preserve">
-    <value>学到更多</value>
+    <value>更多说明</value>
   </data>
 </root>
