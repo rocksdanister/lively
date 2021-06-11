@@ -13,11 +13,11 @@ using System.Windows.Shapes;
 namespace livelywpf.Views
 {
     /// <summary>
-    /// Interaction logic for ScreenSaverPreview.xaml
+    /// Interaction logic for ScreensaverBlank.xaml
     /// </summary>
-    public partial class ScreensaverPreview : Window
+    public partial class ScreensaverBlank : Window
     {
-        public ScreensaverPreview()
+        public ScreensaverBlank()
         {
             InitializeComponent();
         }

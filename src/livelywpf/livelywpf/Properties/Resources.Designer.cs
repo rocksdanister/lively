@@ -70,6 +70,19 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Most modern LCD and LED displays do not suffer from burn-in issue and therefore any wallpaper can be used as screensaver.
+        ///
+        ///For OLED, Plasma or CRT displays which are susceptibe to burn-in it is advised to use wallpaper with regular motion and an overall dark theme which is supposed to mitigate burn-in but this feature is untested and its effectiveness cannot be guaranteed.
+        ///
+        ///The main purpose of Lively&apos;s screensavers is to add another layer of customization to your pc, use screensavers as burn-in protecti [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string DescOledScreensaverNotice {
+            get {
+                return ResourceManager.GetString("DescOledScreensaverNotice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select a file or specify a website url to set as a wallpaper..
         /// </summary>
         public static string DescriptionAddWallpaper {

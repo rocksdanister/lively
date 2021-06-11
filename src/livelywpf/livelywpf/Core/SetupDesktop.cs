@@ -714,7 +714,7 @@ namespace livelywpf
             {
                 Logger.Info("System parameters changed: Screen Event ->");
                 ScreenHelper.GetScreen().ForEach(x => Logger.Info("{0} {1}", x.DeviceName, x.Bounds));
-                Helpers.ScreenSaverService.Instance.Stop();
+                Helpers.ScreensaverService.Instance.Stop();
                 RefreshWallpaper();
                 await RestoreDisconnectedWallpapers();
             }

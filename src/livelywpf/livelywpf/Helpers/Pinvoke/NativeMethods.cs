@@ -13,6 +13,10 @@ namespace livelywpf
 #pragma warning disable CA1707, CA1401, CA1712
     public static class NativeMethods
     {
+
+        [DllImport("User32.dll")]
+        public static extern bool SetCursorPos(int X, int Y);
+
         public enum QUERY_USER_NOTIFICATION_STATE
         {
             QUNS_NOT_PRESENT = 1,

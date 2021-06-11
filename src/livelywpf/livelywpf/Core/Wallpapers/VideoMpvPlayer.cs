@@ -238,7 +238,7 @@ namespace livelywpf.Core
 
         public void SetVolume(int volume)
         {
-            SendMessage("{\"command\":[\"set_property\",\"volume\"," + volume + "]}\n");
+            SendMessage("{\"command\":[\"set_property\",\"volume\"," + JsonConvert.SerializeObject(volume) + "]}\n");
         }
 
         public void SetPlaybackPos(float pos, PlaybackPosType type)

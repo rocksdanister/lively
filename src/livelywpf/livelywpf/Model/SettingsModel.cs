@@ -111,6 +111,7 @@ namespace livelywpf
         public bool DesktopAutoWallpaper { get; set; }
         public TaskbarTheme SystemTaskbarTheme { get; set; }
         public ScreensaverIdleTime ScreensaverIdleWait { get; set; }
+        public bool ScreensaverOledWarning { get; set; }
 
         public SettingsModel()
         {
@@ -172,6 +173,7 @@ namespace livelywpf
             DesktopAutoWallpaper = false;
             SystemTaskbarTheme = TaskbarTheme.none;
             ScreensaverIdleWait = ScreensaverIdleTime.none;
+            ScreensaverOledWarning = false;
 
             try
             {

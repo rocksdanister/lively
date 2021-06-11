@@ -16,7 +16,8 @@ namespace livelywpf.Helpers
         public bool IsRunning { get; private set; } = false;
         private Color accentColor = Color.FromArgb(0, 0, 0);
         private TaskbarTheme taskbarTheme = TaskbarTheme.none;
-        private AccentPolicy accentPolicy = new AccentPolicy();
+        private AccentPolicy accentPolicyRegular = new AccentPolicy();
+        //private AccentPolicy accentPolicyMaximised = new AccentPolicy();
         private readonly System.Timers.Timer _timer = new System.Timers.Timer();
         private static readonly TransparentTaskbar instance = new TransparentTaskbar();
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
@@ -77,27 +78,27 @@ namespace livelywpf.Helpers
                     //accent.AccentState = AccentState.ACCENT_DISABLED;
                     break;
                 case TaskbarTheme.clear:
-                    accentPolicy.GradientColor = 16777215; //00FFFFFF
-                    accentPolicy.AccentState = AccentState.ACCENT_ENABLE_TRANSPARENTGRADIENT;
+                    accentPolicyRegular.GradientColor = 16777215; //00FFFFFF
+                    accentPolicyRegular.AccentState = AccentState.ACCENT_ENABLE_TRANSPARENTGRADIENT;
                     break;
                 case TaskbarTheme.blur:
-                    accentPolicy.GradientColor = 0;
-                    accentPolicy.AccentState = AccentState.ACCENT_ENABLE_BLURBEHIND;
+                    accentPolicyRegular.GradientColor = 0;
+                    accentPolicyRegular.AccentState = AccentState.ACCENT_ENABLE_BLURBEHIND;
                     break;
                 case TaskbarTheme.color:
                     //todo
                     break;
                 case TaskbarTheme.fluent:
-                    accentPolicy.GradientColor = 167772160; //A000000
-                    accentPolicy.AccentState = AccentState.ACCENT_ENABLE_FLUENT;
+                    accentPolicyRegular.GradientColor = 167772160; //A000000
+                    accentPolicyRegular.AccentState = AccentState.ACCENT_ENABLE_FLUENT;
                     break;
                 case TaskbarTheme.wallpaper:
-                    accentPolicy.GradientColor = Convert.ToUInt32(string.Format("{0:X2}{1:X2}{2:X2}{3:X2}", 200, accentColor.B, accentColor.G, accentColor.R), 16);
-                    accentPolicy.AccentState = AccentState.ACCENT_ENABLE_TRANSPARENTGRADIENT;
+                    accentPolicyRegular.GradientColor = Convert.ToUInt32(string.Format("{0:X2}{1:X2}{2:X2}{3:X2}", 200, accentColor.B, accentColor.G, accentColor.R), 16);
+                    accentPolicyRegular.AccentState = AccentState.ACCENT_ENABLE_TRANSPARENTGRADIENT;
                     break;
                 case TaskbarTheme.wallpaperFluent:
-                    accentPolicy.GradientColor = Convert.ToUInt32(string.Format("{0:X2}{1:X2}{2:X2}{3:X2}", 125, accentColor.B, accentColor.G, accentColor.R), 16);
-                    accentPolicy.AccentState = AccentState.ACCENT_ENABLE_FLUENT;
+                    accentPolicyRegular.GradientColor = Convert.ToUInt32(string.Format("{0:X2}{1:X2}{2:X2}{3:X2}", 125, accentColor.B, accentColor.G, accentColor.R), 16);
+                    accentPolicyRegular.AccentState = AccentState.ACCENT_ENABLE_FLUENT;
                     break;
             }
         }
@@ -126,9 +127,9 @@ namespace livelywpf.Helpers
                 var accentPtr = IntPtr.Zero;
                 try
                 {
-                    var accentStructSize = Marshal.SizeOf(accentPolicy);
+                    var accentStructSize = Marshal.SizeOf(accentPolicyRegular);
                     accentPtr = Marshal.AllocHGlobal(accentStructSize);
-                    Marshal.StructureToPtr(accentPolicy, accentPtr, false);
+                    Marshal.StructureToPtr(accentPolicyRegular, accentPtr, false);
                     var data = new WindowCompositionAttributeData
                     {
                         Attribute = WindowCompositionAttribute.WCA_ACCENT_POLICY,

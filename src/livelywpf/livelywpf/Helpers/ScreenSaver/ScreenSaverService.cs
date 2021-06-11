@@ -2,24 +2,31 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Timers;
-using System.Drawing;
 using System.Windows.Interop;
 using System.Runtime.InteropServices;
 using System.ComponentModel;
+using livelywpf.Views;
+using System.Windows;
+using System.Windows.Threading;
+using System.Threading;
+using Point = System.Drawing.Point;
+using Timer = System.Timers.Timer;
+using System.Windows.Input;
 
 namespace livelywpf.Helpers
 {
-    public sealed class ScreenSaverService
+    public sealed class ScreensaverService
     {
         private Point mousePosOriginal;
         private uint idleWaitTime = 300000;
         private readonly Timer _inputTimer = new Timer();
         private readonly Timer _idleTimer = new Timer();
         public bool IsRunning { get; private set; } = false;
-        private static readonly ScreenSaverService instance = new ScreenSaverService();
+        private static readonly ScreensaverService instance = new ScreensaverService();
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+        private readonly List<ScreensaverBlank> blankWindows = new List<ScreensaverBlank>();
 
-        public static ScreenSaverService Instance
+        public static ScreensaverService Instance
         {
             get
             {
@@ -27,7 +34,7 @@ namespace livelywpf.Helpers
             }
         }
 
-        private ScreenSaverService()
+        private ScreensaverService()
         {
             Initialize();   
         }
@@ -93,11 +100,14 @@ namespace livelywpf.Helpers
 
         public void Start()
         {
-            if (!IsRunning && SetupDesktop.Wallpapers.Count != 0)
+            if (!IsRunning)
             {
+                //moving cursor outisde screen..
+                NativeMethods.SetCursorPos(int.MaxValue, 0);
                 Logger.Info("Starting screensaver..");
                 IsRunning = true;
-                ShowScreenSavers();
+                ShowScreensavers();
+                ShowBlankScreensavers();
                 mousePosOriginal = System.Windows.Forms.Control.MousePosition;
                 _inputTimer.Start();
             }
@@ -110,14 +120,15 @@ namespace livelywpf.Helpers
                 Logger.Info("Stopping screensaver..");
                 IsRunning = false;
                 _inputTimer.Stop();
-                HideScreenSavers();
+                HideScreensavers();
+                CloseBlankScreensavers();
             }
         }
 
         /// <summary>
         /// Detaches wallpapers from desktop workerw.
         /// </summary>
-        private void ShowScreenSavers()
+        private void ShowScreensavers()
         {
             foreach (var item in SetupDesktop.Wallpapers)
             {
@@ -141,7 +152,7 @@ namespace livelywpf.Helpers
         /// <summary>
         /// Re-attaches wallpapers to desktop workerw.
         /// </summary>
-        private void HideScreenSavers()
+        private void HideScreensavers()
         {
             if (Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span)
             {
@@ -181,6 +192,38 @@ namespace livelywpf.Helpers
             SetupDesktop.RefreshDesktop();
         }
 
+        private void ShowBlankScreensavers()
+        {
+            Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, new ThreadStart(delegate
+            {
+                var freeScreens = ScreenHelper.GetScreen().FindAll(
+                    x => !SetupDesktop.Wallpapers.Exists(y => y.GetScreen().Equals(x)));
+
+                foreach (var item in freeScreens)
+                {
+                    var bWindow = new ScreensaverBlank
+                    {
+                        Left = item.Bounds.Left,
+                        Top = item.Bounds.Top,
+                        WindowState = WindowState.Maximized,
+                        WindowStyle = WindowStyle.None,
+                        Topmost = true,
+                    };
+                    bWindow.Show();
+                    blankWindows.Add(bWindow);
+                }
+            }));
+        }
+
+        private void CloseBlankScreensavers()
+        {
+            Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, new ThreadStart(delegate
+            {
+                blankWindows.ForEach(x => x.Close());
+                blankWindows.Clear();
+            }));
+        }
+
         /// <summary>
         /// Attaches screensaver preview to preview region. <br>
         /// (To be run in UI thread.)</br>
@@ -213,7 +256,7 @@ namespace livelywpf.Helpers
             }
 
             Logger.Info("Showing ss preview..");
-            var preview = new Views.ScreenSaverPreview
+            var preview = new ScreensaverPreview
             {
                 ShowActivated = false,
                 ResizeMode = System.Windows.ResizeMode.NoResize,

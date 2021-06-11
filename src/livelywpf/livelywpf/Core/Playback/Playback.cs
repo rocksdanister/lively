@@ -139,7 +139,7 @@ namespace livelywpf.Core
 
         private void ProcessMonitor(object sender, EventArgs e)
         {
-            if (ScreenSaverService.Instance.IsRunning)
+            if (ScreensaverService.Instance.IsRunning)
             {
                 PlayWallpapers();
                 SetWallpaperVolume(Program.SettingsVM.Settings.AudioVolumeGlobal);

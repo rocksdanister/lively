@@ -866,18 +866,25 @@ namespace livelywpf
                 if (idleTime != 0)
                 {
                     idleScreensaverInit = true;
-                    Helpers.ScreenSaverService.Instance.StartIdleTimer(idleTime);
+                    Helpers.ScreensaverService.Instance.StartIdleTimer(idleTime);
                 }
                 else
                 {
                     if (idleScreensaverInit)
                     {
-                        Helpers.ScreenSaverService.Instance.StopIdleTimer();
+                        Helpers.ScreensaverService.Instance.StopIdleTimer();
                     }
                 }
                 //save the data..
                 if (Settings.ScreensaverIdleWait !=  (ScreensaverIdleTime)_selectedScreensaverWaitIndex)
                 {
+                    if (!Settings.ScreensaverOledWarning)
+                    {
+                        _ = Task.Run(() =>
+                               System.Windows.MessageBox.Show(Properties.Resources.DescOledScreensaverNotice,
+                                   Properties.Resources.TitleAppName, MessageBoxButton.OK, MessageBoxImage.Information));
+                        Settings.ScreensaverOledWarning = true;
+                    }
                     Settings.ScreensaverIdleWait = (ScreensaverIdleTime)_selectedScreensaverWaitIndex;
                     UpdateConfigFile();
                 }
