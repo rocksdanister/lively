@@ -141,7 +141,7 @@ namespace livelywpf.Views
                         //In app customise dialogue; 
                         //Can't use contentdialogue since the window object is not uwp.
                         //modernwpf contentdialogue does not have xamlroot so can't draw over livelygrid.
-                        LivelyGridControl.DimBackground(true);
+                        LivelyGridControl?.DimBackground(true);
                         var overlay =
                             new Cef.LivelyPropertiesWindow(obj)
                             {
@@ -152,7 +152,7 @@ namespace livelywpf.Views
                                 Title = obj.Title.Length > 40 ? obj.Title.Substring(0, 40) + "..." : obj.Title
                             };
                         overlay.ShowDialog();
-                        LivelyGridControl.DimBackground(false);
+                        LivelyGridControl?.DimBackground(false);
                         break;
                     case "convertVideo":
                         Program.LibraryVM.WallpaperVideoConvert(obj);

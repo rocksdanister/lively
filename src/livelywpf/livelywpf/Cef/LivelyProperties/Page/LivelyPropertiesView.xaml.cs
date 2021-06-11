@@ -451,26 +451,34 @@ namespace livelywpf.Cef
             {
                 var item = (Rectangle)sender;
                 var fill = ((SolidColorBrush)item.Fill).Color;
-                //wpf has no native color picker :(
-                var colorDialog = new System.Windows.Forms.ColorDialog()
+                var cpicker = new Views.ColorDialog(new Windows.UI.Color() { A = fill.A, R = fill.R, G = fill.G, B = fill.B });
+                if (App.AppWindow.IsVisible)
                 {
-                    AllowFullOpen = true,
-                    Color = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(fill.A, fill.R, fill.G, fill.B)).Color
-                };
+                    cpicker.Owner = App.AppWindow;
+                    cpicker.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                }
+                else
+                {
+                    //spawn close to cursor..
+                    var cursor = System.Windows.Forms.Cursor.Position;
+                    var screen = ScreenHelper.GetScreenFromPoint(cursor);
+                    cpicker.WindowStartupLocation = WindowStartupLocation.Manual;
+                    cpicker.Top = (cursor.Y + cpicker.Height) > screen.Bounds.Bottom ? cursor.Y - cpicker.Height : cursor.Y;
+                    cpicker.Left = (cursor.X + cpicker.Width) > screen.Bounds.Right ? cursor.X - cpicker.Width : cursor.X;
+                }
 
-                if (colorDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                if (cpicker.ShowDialog() == true)
                 {
-                    item.Fill = new SolidColorBrush(Color.FromArgb(colorDialog.Color.A, colorDialog.Color.R, colorDialog.Color.G, colorDialog.Color.B));
-                    WallpaperSendMsg(new LivelyColorPicker() { Name = item.Name, Value = ToHexValue(colorDialog.Color) });
-                    livelyPropertyCopyData[item.Name]["value"] = ToHexValue(colorDialog.Color);
+                    item.Fill = new SolidColorBrush(Color.FromArgb(cpicker.CColor.A, cpicker.CColor.R, cpicker.CColor.G, cpicker.CColor.B));
+                    WallpaperSendMsg(new LivelyColorPicker() { Name = item.Name, Value = ToHexValue(cpicker.CColor) });
+                    livelyPropertyCopyData[item.Name]["value"] = ToHexValue(cpicker.CColor);
                     UpdatePropertyFile();
                 }
             }
             catch { }
-
         }
 
-        private static string ToHexValue(System.Drawing.Color color)
+        private static string ToHexValue(Windows.UI.Color color)
         {
             return "#" + color.R.ToString("X2") +
                          color.G.ToString("X2") +
