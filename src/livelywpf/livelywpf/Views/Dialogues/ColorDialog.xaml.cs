@@ -1,7 +1,12 @@
 ﻿using System;
+using H.Hooks;
+using System.Linq;
 using System.Windows;
-using Color = Windows.UI.Color;
+using System.Windows.Media;
 using Microsoft.Toolkit.Wpf.UI.XamlHost;
+using ColorUwp = Windows.UI.Color;
+using ColorMedia = System.Windows.Media.Color;
+using CursorForm = System.Windows.Forms.Cursor;
 
 namespace livelywpf.Views
 {
@@ -10,28 +15,35 @@ namespace livelywpf.Views
     /// </summary>
     public partial class ColorDialog : Window
     {
-        public Color CColor { get; private set; }
+        private bool _colorPickerMode;
+        private readonly LowLevelMouseHook mouseHook;
+        public ColorUwp CurrentColor { get; private set; }
+        private Windows.UI.Xaml.Controls.ColorPicker picker;
 
-        public ColorDialog(Color defaultColor)
+        public ColorDialog(ColorUwp defaultColor)
         {
             InitializeComponent();
-            CColor = defaultColor;
+            CurrentColor = defaultColor;
+            mouseHook ??= new LowLevelMouseHook() { GenerateMouseMoveEvents = true, Handling = true };
+            mouseHook.Move += MouseHook_Move;
+            mouseHook.Down += MouseHook_Down;
+            mouseHook.Start();
         }
 
         private void Cpicker_ChildChanged(object sender, EventArgs e)
         {
             WindowsXamlHost windowsXamlHost = (WindowsXamlHost)sender;
-            var picker = (Windows.UI.Xaml.Controls.ColorPicker)windowsXamlHost.Child;
+            picker = (Windows.UI.Xaml.Controls.ColorPicker)windowsXamlHost.Child;
             if (picker != null)
             {
                 picker.ColorChanged += CPicker_ColorChanged;
-                picker.Color = CColor;
+                picker.Color = CurrentColor;
             }
         }
 
         private void CPicker_ColorChanged(Windows.UI.Xaml.Controls.ColorPicker sender, Windows.UI.Xaml.Controls.ColorChangedEventArgs args)
         {
-            CColor = args.NewColor;
+            CurrentColor = args.NewColor;
         }
 
         private void Ok_Button_Click(object sender, RoutedEventArgs e)
@@ -43,6 +55,88 @@ namespace livelywpf.Views
         private void Cancel_Button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void AccentBtn_Click(object sender, RoutedEventArgs e)
+        {
+            picker.Color = Helpers.WindowsPersonalize.GetAccentColorUwp();
+        }
+
+        private void PickerBtn_Click(object sender, RoutedEventArgs e)
+        {
+            _colorPickerMode = !_colorPickerMode;
+            if (_colorPickerMode)
+            {
+                ctt.IsOpen = true;
+                pickerBtn.IsEnabled = false;
+                var mousePos = CursorForm.Position;
+                UpdateToolTip(mousePos.X, mousePos.Y);
+            }
+        }
+
+        private void MouseHook_Move(object sender, H.Hooks.MouseEventArgs e)
+        {
+            if (_colorPickerMode)
+            {
+                UpdateToolTip(e.Position.X, e.Position.Y);
+            }
+        }
+
+        private void MouseHook_Down(object sender, H.Hooks.MouseEventArgs e)
+        {
+            if (_colorPickerMode)
+            {
+                e.IsHandled = true;
+                _colorPickerMode = false;
+                var color = GetColorAt(e.Position.X, e.Position.Y);
+                this.Dispatcher.Invoke(new Action(() => {
+                    ctt.IsOpen = false;
+                    pickerBtn.IsEnabled = true;
+                    if (e.Keys.Values.Contains(Key.MouseLeft))
+                    {
+                        picker.Color = new ColorUwp()
+                        {
+                            R = color.R,
+                            G = color.G,
+                            B = color.B,
+                            A = color.A,
+                        };
+                    }
+                }));
+            }
+        }
+
+        private void UpdateToolTip(int x, int y)
+        {
+            var color = GetColorAt(x, y);
+            _= this.Dispatcher.BeginInvoke(new Action(() => {
+                ctt.HorizontalOffset = x + 15;
+                ctt.VerticalOffset = y + 15;
+                cttColor.Fill = new SolidColorBrush(color);
+                cttText.Text = $"({color.R}, {color.G}, {color.B})";
+            }));
+        }
+
+        public static ColorMedia GetColorAt(int x, int y)
+        {
+            IntPtr desk = NativeMethods.GetDesktopWindow();
+            IntPtr dc = NativeMethods.GetWindowDC(desk);
+            try
+            {
+                int a = (int)NativeMethods.GetPixel(dc, x, y);
+                return ColorMedia.FromArgb(255, (byte)((a >> 0) & 0xff), (byte)((a >> 8) & 0xff), (byte)((a >> 16) & 0xff));
+            }
+            finally
+            {
+                NativeMethods.ReleaseDC(desk, dc);
+            }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            mouseHook.Move -= MouseHook_Move;
+            mouseHook.Down -= MouseHook_Down;
+            mouseHook?.Dispose();
         }
     }
 }

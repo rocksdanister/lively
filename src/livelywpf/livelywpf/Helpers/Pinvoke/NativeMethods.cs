@@ -117,7 +117,6 @@ namespace livelywpf
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool BitBlt([In] IntPtr hdc, int nXDest, int nYDest, int nWidth, int nHeight, [In] IntPtr hdcSrc, int nXSrc, int nYSrc, TernaryRasterOperations dwRop);
 
-
         /// <summary>
         ///        Creates a bitmap compatible with the device that is associated with the specified device context.
         /// </summary>
@@ -170,6 +169,9 @@ namespace livelywpf
 
         [DllImport("gdi32.dll")]
         public static extern int GetDeviceCaps(IntPtr hdc, int nIndex);
+
+        [DllImport("gdi32.dll", SetLastError = true)]
+        public static extern uint GetPixel(IntPtr dc, int x, int y);
 
         #endregion //gdi
 

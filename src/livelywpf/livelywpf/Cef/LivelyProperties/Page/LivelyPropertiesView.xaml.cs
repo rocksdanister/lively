@@ -469,9 +469,9 @@ namespace livelywpf.Cef
 
                 if (cpicker.ShowDialog() == true)
                 {
-                    item.Fill = new SolidColorBrush(Color.FromArgb(cpicker.CColor.A, cpicker.CColor.R, cpicker.CColor.G, cpicker.CColor.B));
-                    WallpaperSendMsg(new LivelyColorPicker() { Name = item.Name, Value = ToHexValue(cpicker.CColor) });
-                    livelyPropertyCopyData[item.Name]["value"] = ToHexValue(cpicker.CColor);
+                    item.Fill = new SolidColorBrush(Color.FromArgb(cpicker.CurrentColor.A, cpicker.CurrentColor.R, cpicker.CurrentColor.G, cpicker.CurrentColor.B));
+                    WallpaperSendMsg(new LivelyColorPicker() { Name = item.Name, Value = ToHexValue(cpicker.CurrentColor) });
+                    livelyPropertyCopyData[item.Name]["value"] = ToHexValue(cpicker.CurrentColor);
                     UpdatePropertyFile();
                 }
             }

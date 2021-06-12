@@ -57,7 +57,7 @@
                 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0, 0, 10, 0">
                     <ui:ProgressRing IsActive="{Binding IsUserEditable, Converter={StaticResource InverseBooleanConverter}}" Margin="0, 0, 10, 0" />
-                    <Button x:Name="CancelBtn" Content="{x:Static p:Resources.TextClose}" MinWidth="100" Margin="0, 0, 10, 0" Command="{Binding CancelCommand}"/>
+                    <Button x:Name="CancelBtn" Content="{x:Static p:Resources.TextCancel}" MinWidth="100" Margin="0, 0, 10, 0" Command="{Binding CancelCommand}"/>
                     <Button x:Name="OkBtn" Content="{x:Static p:Resources.TextOK}" MinWidth="100" Command="{Binding CaptureCommand}" 
                             Background="{DynamicResource SystemControlHighlightAltListAccentHighBrush}" IsEnabled="{Binding IsUserEditable}"/>
                 </StackPanel>
