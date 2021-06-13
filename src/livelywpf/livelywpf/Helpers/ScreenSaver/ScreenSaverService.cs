@@ -9,17 +9,18 @@ using livelywpf.Views;
 using System.Windows;
 using System.Windows.Threading;
 using System.Threading;
-using Point = System.Drawing.Point;
 using Timer = System.Timers.Timer;
-using System.Windows.Input;
+using H.Hooks;
 
 namespace livelywpf.Helpers
 {
     public sealed class ScreensaverService
     {
-        private Point mousePosOriginal;
+        #region init
+
         private uint idleWaitTime = 300000;
-        private readonly Timer _inputTimer = new Timer();
+        private readonly LowLevelMouseHook mouseHook;
+        private readonly LowLevelKeyboardHook keyboardHook;
         private readonly Timer _idleTimer = new Timer();
         public bool IsRunning { get; private set; } = false;
         private static readonly ScreensaverService instance = new ScreensaverService();
@@ -36,42 +37,43 @@ namespace livelywpf.Helpers
 
         private ScreensaverService()
         {
-            Initialize();   
-        }
-
-        private void Initialize()
-        {
-            _inputTimer.Elapsed += InputCheckTimer;
-            _inputTimer.Interval = 250;
-
             _idleTimer.Elapsed += IdleCheckTimer;
             _idleTimer.Interval = 30000;
+
+            mouseHook ??= new LowLevelMouseHook() { GenerateMouseMoveEvents = true };
+            keyboardHook ??= new LowLevelKeyboardHook();
+            mouseHook.Down += (s, e) => Stop();
+            mouseHook.Move += (s, e) => Stop();
+            keyboardHook.Down += (s, e) => Stop();
         }
 
-        private void InputCheckTimer(object sender, ElapsedEventArgs e)
+        #endregion //init
+
+        #region public
+
+        public void Start()
         {
-            //Don't want to make a mouse hook... quick soln.
-            var mousePosCurr = System.Windows.Forms.Control.MousePosition;
-            if (Math.Abs(mousePosOriginal.X - mousePosCurr.X) > 25
-                || Math.Abs(mousePosOriginal.Y - mousePosCurr.Y) > 25)
+            if (!IsRunning)
             {
-                Stop();
+                //moving cursor outisde screen..
+                NativeMethods.SetCursorPos(int.MaxValue, 0);
+                Logger.Info("Starting screensaver..");
+                IsRunning = true;
+                ShowScreensavers();
+                ShowBlankScreensavers();
+                StartInputListener();
             }
         }
 
-        private void IdleCheckTimer(object sender, ElapsedEventArgs e)
+        public void Stop()
         {
-            try
+            if (IsRunning)
             {
-                if (GetLastInputTime() >= idleWaitTime && !IsExclusiveFullScreenAppRunning())
-                {
-                    Start();
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex.ToString());
-                //StopIdleTimer();
+                Logger.Info("Stopping screensaver..");
+                IsRunning = false;
+                StopInputListener();
+                HideScreensavers();
+                CloseBlankScreensavers();
             }
         }
 
@@ -98,32 +100,66 @@ namespace livelywpf.Helpers
             }
         }
 
-        public void Start()
+        /// <summary>
+        /// Attaches screensaver preview to preview region. <br>
+        /// (To be run in UI thread.)</br>
+        /// </summary>
+        /// <param name="hwnd"></param>
+        public void CreatePreview(IntPtr hwnd)
         {
-            if (!IsRunning)
+            //Issue: Multiple display setup with diff dpi - making the window child affects LivelyScreen offset values.
+            if (IsRunning || ScreenHelper.IsMultiScreen())
             {
-                //moving cursor outisde screen..
-                NativeMethods.SetCursorPos(int.MaxValue, 0);
-                Logger.Info("Starting screensaver..");
-                IsRunning = true;
-                ShowScreensavers();
-                ShowBlankScreensavers();
-                mousePosOriginal = System.Windows.Forms.Control.MousePosition;
-                _inputTimer.Start();
+                return;
+            }
+
+            //Verify if the hwnd is screensaver demo area.
+            const int maxChars = 256;
+            StringBuilder className = new StringBuilder(maxChars);
+            if (NativeMethods.GetClassName(hwnd, className, maxChars) > 0)
+            {
+                string cName = className.ToString();
+                if (!string.Equals(cName, "SSDemoParent", StringComparison.OrdinalIgnoreCase))
+                {
+                    Logger.Info("Skipping ss preview, wrong hwnd class {0}.", cName);
+                    return;
+                }
+            }
+            else
+            {
+                Logger.Info("Skipping ss preview, failed to get hwnd class.");
+                return;
+            }
+
+            Logger.Info("Showing ss preview..");
+            var preview = new ScreensaverPreview
+            {
+                ShowActivated = false,
+                ResizeMode = System.Windows.ResizeMode.NoResize,
+                WindowStyle = System.Windows.WindowStyle.None,
+                WindowStartupLocation = System.Windows.WindowStartupLocation.Manual,
+                Left = -9999,
+            };
+            preview.Show();
+            var previewHandle = new WindowInteropHelper(preview).Handle;
+            //Set child of target.
+            WindowOperations.SetParentSafe(previewHandle, hwnd);
+            //Make this a child window so it will close when the parent dialog closes.
+            NativeMethods.SetWindowLongPtr(new HandleRef(null, previewHandle),
+                (int)NativeMethods.GWL.GWL_STYLE,
+                new IntPtr(NativeMethods.GetWindowLong(previewHandle, (int)NativeMethods.GWL.GWL_STYLE) | NativeMethods.WindowStyles.WS_CHILD));
+            //Get size of target.
+            NativeMethods.GetClientRect(hwnd, out NativeMethods.RECT prct);
+            //Update preview size and position.
+            if (!NativeMethods.SetWindowPos(previewHandle, 1, 0, 0, prct.Right - prct.Left, prct.Bottom - prct.Top, 0x0010))
+            {
+                NLogger.LogWin32Error("Setwindowpos fail Preview Screensaver,");
             }
         }
 
-        public void Stop()
-        {
-            if (IsRunning)
-            {
-                Logger.Info("Stopping screensaver..");
-                IsRunning = false;
-                _inputTimer.Stop();
-                HideScreensavers();
-                CloseBlankScreensavers();
-            }
-        }
+        #endregion //public
+
+        #region screensavers
 
         /// <summary>
         /// Detaches wallpapers from desktop workerw.
@@ -136,13 +172,13 @@ namespace livelywpf.Helpers
                 WindowOperations.SetParentSafe(item.GetHWND(), IntPtr.Zero);
                 //show on the currently running screen, not changing size.
                 if (!NativeMethods.SetWindowPos(
-                    item.GetHWND(), 
+                    item.GetHWND(),
                     -1, //topmost
-                    Program.SettingsVM.Settings.WallpaperArrangement != WallpaperArrangement.span ? item.GetScreen().Bounds.Left : 0, 
-                    Program.SettingsVM.Settings.WallpaperArrangement != WallpaperArrangement.span ? item.GetScreen().Bounds.Top : 0, 
-                    0, 
+                    Program.SettingsVM.Settings.WallpaperArrangement != WallpaperArrangement.span ? item.GetScreen().Bounds.Left : 0,
+                    Program.SettingsVM.Settings.WallpaperArrangement != WallpaperArrangement.span ? item.GetScreen().Bounds.Top : 0,
                     0,
-                    0x0001)) 
+                    0,
+                    0x0001))
                 {
                     NLogger.LogWin32Error("setwindowpos(1) fail ShowScreenSavers(),");
                 }
@@ -224,67 +260,48 @@ namespace livelywpf.Helpers
             }));
         }
 
-        /// <summary>
-        /// Attaches screensaver preview to preview region. <br>
-        /// (To be run in UI thread.)</br>
-        /// </summary>
-        /// <param name="hwnd"></param>
-        public void CreatePreview(IntPtr hwnd)
-        {
-            //Issue: Multiple display setup with diff dpi - making the window child affects LivelyScreen offset values.
-            if (IsRunning || ScreenHelper.IsMultiScreen())
-            {
-                return;
-            }
+        #endregion //screensavers
 
-            //Verify if the hwnd is screensaver demo area.
-            const int maxChars = 256;
-            StringBuilder className = new StringBuilder(maxChars);
-            if (NativeMethods.GetClassName(hwnd, className, maxChars) > 0)
+        #region idle check
+
+        private void IdleCheckTimer(object sender, ElapsedEventArgs e)
+        {
+            try
             {
-                string cName = className.ToString();
-                if (!string.Equals(cName, "SSDemoParent", StringComparison.OrdinalIgnoreCase))
+                if (GetLastInputTime() >= idleWaitTime && !IsExclusiveFullScreenAppRunning())
                 {
-                    Logger.Info("Skipping ss preview, wrong hwnd class:" + cName);
-                    return;
+                    Start();
                 }
             }
-            else
+            catch (Exception ex)
             {
-                Logger.Info("Skipping ss preview, failed to get hwnd class.");
-                return;
-            }
-
-            Logger.Info("Showing ss preview..");
-            var preview = new ScreensaverPreview
-            {
-                ShowActivated = false,
-                ResizeMode = System.Windows.ResizeMode.NoResize,
-                WindowStyle = System.Windows.WindowStyle.None,
-                WindowStartupLocation = System.Windows.WindowStartupLocation.Manual,
-                Left = -9999,
-            };
-            preview.Show();
-            var previewHandle = new WindowInteropHelper(preview).Handle;
-            //Set child of target.
-            WindowOperations.SetParentSafe(previewHandle, hwnd);
-            //Make this a child window so it will close when the parent dialog closes.
-            NativeMethods.SetWindowLongPtr(new HandleRef(null, previewHandle),
-                (int)NativeMethods.GWL.GWL_STYLE,
-                new IntPtr(NativeMethods.GetWindowLong(previewHandle, (int)NativeMethods.GWL.GWL_STYLE) | NativeMethods.WindowStyles.WS_CHILD));
-            //Get size of target.
-            NativeMethods.GetClientRect(hwnd, out NativeMethods.RECT prct);
-            //Update preview size and position.
-            if (!NativeMethods.SetWindowPos(previewHandle, 1, 0, 0, prct.Right - prct.Left, prct.Bottom - prct.Top, 0x0010))
-            {
-                NLogger.LogWin32Error("setwindowpos fail Preview Screensaver,");
+                Logger.Error(ex.ToString());
+                //StopIdleTimer();
             }
         }
+
+        #endregion //idle check
+
+        #region hooks
+
+        private void StartInputListener()
+        {
+            mouseHook.Start();
+            keyboardHook.Start();
+        }
+
+        private void StopInputListener()
+        {
+            mouseHook.Stop();
+            keyboardHook.Stop();
+        }
+
+        #endregion //hooks
 
         #region helpers
 
         // Fails after 50 days (uint limit.)
-        static uint GetLastInputTime()
+        private static uint GetLastInputTime()
         {
             NativeMethods.LASTINPUTINFO lastInputInfo = new NativeMethods.LASTINPUTINFO();
             lastInputInfo.cbSize = (uint)Marshal.SizeOf(lastInputInfo);
@@ -304,7 +321,7 @@ namespace livelywpf.Helpers
             }
         }
 
-        static bool IsExclusiveFullScreenAppRunning()
+        private static bool IsExclusiveFullScreenAppRunning()
         {
             if (NativeMethods.SHQueryUserNotificationState(out NativeMethods.QUERY_USER_NOTIFICATION_STATE state) == 0)
             {

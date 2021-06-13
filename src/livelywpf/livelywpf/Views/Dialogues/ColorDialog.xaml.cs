@@ -27,7 +27,6 @@ namespace livelywpf.Views
             mouseHook ??= new LowLevelMouseHook() { GenerateMouseMoveEvents = true, Handling = true };
             mouseHook.Move += MouseHook_Move;
             mouseHook.Down += MouseHook_Down;
-            mouseHook.Start();
         }
 
         private void Cpicker_ChildChanged(object sender, EventArgs e)
@@ -71,6 +70,11 @@ namespace livelywpf.Views
                 pickerBtn.IsEnabled = false;
                 var mousePos = CursorForm.Position;
                 UpdateToolTip(mousePos.X, mousePos.Y);
+            }
+
+            if (!mouseHook.IsStarted)
+            {
+                mouseHook.Start();
             }
         }
 

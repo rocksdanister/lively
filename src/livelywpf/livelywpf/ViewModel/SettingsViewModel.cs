@@ -834,8 +834,6 @@ namespace livelywpf
             }
         }
 
-        //avoiding initialization of singleton when possible..
-        private bool idleScreensaverInit = false;
         private int _selectedScreensaverWaitIndex;
         public int SelectedScreensaverWaitIndex
         {
@@ -865,15 +863,11 @@ namespace livelywpf
                 };
                 if (idleTime != 0)
                 {
-                    idleScreensaverInit = true;
                     Helpers.ScreensaverService.Instance.StartIdleTimer(idleTime);
                 }
                 else
                 {
-                    if (idleScreensaverInit)
-                    {
-                        Helpers.ScreensaverService.Instance.StopIdleTimer();
-                    }
+                    Helpers.ScreensaverService.Instance.StopIdleTimer();
                 }
                 //save the data..
                 if (Settings.ScreensaverIdleWait !=  (ScreensaverIdleTime)_selectedScreensaverWaitIndex)

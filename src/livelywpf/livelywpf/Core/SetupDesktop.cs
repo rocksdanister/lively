@@ -289,13 +289,13 @@ namespace livelywpf
                                 switch (Program.SettingsVM.Settings.WallpaperArrangement)
                                 {
                                     case WallpaperArrangement.per:
-                                        CloseWallpaper(wallpaper.GetScreen(), false);
+                                        CloseWallpaper(wallpaper.GetScreen());
                                         break;
                                     case WallpaperArrangement.span:
-                                        CloseAllWallpapers(false);
+                                        CloseAllWallpapers();
                                         break;
                                     case WallpaperArrangement.duplicate:
-                                        CloseAllWallpapers(false);
+                                        CloseAllWallpapers();
                                         break;
                                 }
                             }
