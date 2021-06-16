@@ -173,7 +173,10 @@ namespace livelywpf.Core
 
         public void SetPlaybackPos(float pos, PlaybackPosType type)
         {
-            //todo: reload if 0
+            if (pos == 0 && type != PlaybackPosType.relativePercent)
+            {
+                SendMessage(new LivelyReloadCmd());
+            }
         }
 
         public Task ScreenCapture(string filePath)
@@ -183,7 +186,7 @@ namespace livelywpf.Core
 
         public void SendMessage(IpcMessage obj)
         {
-            SendMessage(JsonConvert.SerializeObject(obj));
+            Player?.MessageProcess(obj);
         }
     }
 }

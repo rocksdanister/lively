@@ -91,11 +91,10 @@ namespace livelywpf
             Logger.Error("Webview2 Fail: {0}", e.ToString());
         }
 
-        public void MessageProcess(string msg)
+        public void MessageProcess(IpcMessage obj)
         {
             try
             {
-                var obj = JsonConvert.DeserializeObject<IpcMessage>(msg, new JsonSerializerSettings() { Converters = { new IpcMessageConverter() } });
                 switch (obj.Type)
                 {
                     case MessageType.cmd_reload:
@@ -161,6 +160,9 @@ namespace livelywpf
                 Logger.Error("Error processing msg: {0}", ex.Message);
             }
         }
+
+        public void MessageProcess(string msg) => 
+            MessageProcess(JsonConvert.DeserializeObject<IpcMessage>(msg, new JsonSerializerSettings() { Converters = { new IpcMessageConverter() }}));
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
