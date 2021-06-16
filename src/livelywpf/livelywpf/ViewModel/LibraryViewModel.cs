@@ -1,22 +1,11 @@
-﻿using ICSharpCode.SharpZipLib.Zip;
-using Octokit;
-using System;
-using System.CodeDom;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Data;
-using System.Windows.Input;
 using livelywpf.Core;
-using System.Windows;
-using System.Runtime.CompilerServices;
 using System.Threading;
-//using System.Windows.Forms;
 
 namespace livelywpf
 {

@@ -1,4 +1,5 @@
 ﻿using livelywpf.Core.API;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -19,11 +20,11 @@ namespace livelywpf.Core
         WebView2Element Player { get; set; }
         LibraryModel Model { get; set; }
         LivelyScreen Display { get; set; }
-        string LivelyPropertyCopy { get; set; }
+        private readonly string livelyPropertyCopyPath;
 
         public WebEdge(string path, LibraryModel model, LivelyScreen display)
         {
-            LivelyPropertyCopy = null;
+            livelyPropertyCopyPath = null;
             if (model.LivelyPropertyPath != null)
             {
                 //customisable wallpaper, livelyproperty.json is present.
@@ -36,13 +37,26 @@ namespace livelywpf.Core
                     {
                         //Create a directory with the wp foldername in SaveData/wpdata/, copy livelyproperties.json into this.
                         //Further modifications are done to the copy file.
-                        var wpdataFolder = Path.Combine(dataFolder, new DirectoryInfo(model.LivelyInfoFolderPath).Name, screenNumber);
+                        string wpdataFolder = null;
+                        switch (Program.SettingsVM.Settings.WallpaperArrangement)
+                        {
+                            case WallpaperArrangement.per:
+                                wpdataFolder = Path.Combine(dataFolder, new DirectoryInfo(model.LivelyInfoFolderPath).Name, screenNumber);
+                                break;
+                            case WallpaperArrangement.span:
+                                wpdataFolder = Path.Combine(dataFolder, new DirectoryInfo(model.LivelyInfoFolderPath).Name, "span");
+                                break;
+                            case WallpaperArrangement.duplicate:
+                                wpdataFolder = Path.Combine(dataFolder, new DirectoryInfo(model.LivelyInfoFolderPath).Name, "duplicate");
+                                break;
+                        }
                         Directory.CreateDirectory(wpdataFolder);
-
-                        LivelyPropertyCopy = Path.Combine(wpdataFolder, "LivelyProperties.json");
-                        if (!File.Exists(LivelyPropertyCopy))
-                            File.Copy(model.LivelyPropertyPath, LivelyPropertyCopy);
-
+                        //copy the original file if not found..
+                        livelyPropertyCopyPath = Path.Combine(wpdataFolder, "LivelyProperties.json");
+                        if (!File.Exists(livelyPropertyCopyPath))
+                        {
+                            File.Copy(model.LivelyPropertyPath, livelyPropertyCopyPath);
+                        }
                     }
                     else
                     {
@@ -55,14 +69,14 @@ namespace livelywpf.Core
                 }
             }
 
-            Player = new WebView2Element(path, model.LivelyInfo.Type, LivelyPropertyCopy);
+            Player = new WebView2Element(path, model.LivelyInfo.Type, livelyPropertyCopyPath);
             this.Model = model;
             this.Display = display;
         }
 
         public void Close()
         {
-            System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
+            System.Windows.Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, new ThreadStart(delegate
             {
                 Player.Close();
             }));
@@ -75,7 +89,7 @@ namespace livelywpf.Core
 
         public string GetLivelyPropertyCopyPath()
         {
-            return LivelyPropertyCopy;
+            return livelyPropertyCopyPath;
         }
 
         public Process GetProcess()
@@ -110,10 +124,7 @@ namespace livelywpf.Core
 
         public void SendMessage(string msg)
         {
-            if(Player != null)
-            {
-                Player.SendMessage(msg);
-            }
+            Player?.MessageProcess(msg);
         }
 
         public void SetScreen(LivelyScreen display)
@@ -172,7 +183,7 @@ namespace livelywpf.Core
 
         public void SendMessage(IpcMessage obj)
         {
-            //todo
+            SendMessage(JsonConvert.SerializeObject(obj));
         }
     }
 }
