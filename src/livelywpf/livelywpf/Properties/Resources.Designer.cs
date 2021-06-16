@@ -608,7 +608,7 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to hours.
+        ///   Looks up a localized string similar to hour(s).
         /// </summary>
         public static string TextHours {
             get {
@@ -653,7 +653,7 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to minutes.
+        ///   Looks up a localized string similar to minute(s).
         /// </summary>
         public static string TextMinutes {
             get {

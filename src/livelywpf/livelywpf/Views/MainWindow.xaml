@@ -17,7 +17,6 @@
         Closing="Window_Closing"        
         IsVisibleChanged="Window_IsVisibleChanged"
         BorderBrush="{DynamicResource SystemControlHighlightAltListAccentHighBrush}">
-    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="50" />

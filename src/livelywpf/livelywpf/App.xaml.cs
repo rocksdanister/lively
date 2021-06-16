@@ -93,7 +93,7 @@ namespace livelywpf
             WndProcMsgWindow wndproc = new WndProcMsgWindow();
             wndproc.Show();
             //Package app otherwise bugging out when initialized in settings vm.
-            SetupDesktop.WallpaperInputForward(Program.SettingsVM.Settings.InputForward);
+            SetupDesktop.SetupInputHooks();
             if (Program.SettingsVM.Settings.IsRestart)
             {
                 Program.SettingsVM.Settings.IsRestart = false;

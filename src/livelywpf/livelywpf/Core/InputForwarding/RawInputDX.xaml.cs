@@ -8,6 +8,37 @@ using Linearstar.Windows.RawInput;
 
 namespace livelywpf.Core
 {
+    public enum RawInputMouseBtn
+    {
+        left,
+        right
+    }
+
+    public class MouseRawArgs : EventArgs
+    {
+        public int X { get; }
+        public int Y { get; }
+        public MouseRawArgs(int x, int y)
+        {
+            X = x;
+            Y = y;
+        }
+    }
+
+    public class MouseClickRawArgs : MouseRawArgs
+    {
+        public RawInputMouseBtn Button { get; }
+        public MouseClickRawArgs(int x, int y, RawInputMouseBtn btn) : base(x, y)
+        {
+            Button = btn;
+        }
+    }
+
+    public class KeyboardClickRawArgs : EventArgs
+    {
+        //todo
+    }
+
     /// <summary>
     /// Mouseinput retrival and forwarding to wallpaper using DirectX RawInput.
     /// ref: https://docs.microsoft.com/en-us/windows/win32/inputdev/raw-input
@@ -18,13 +49,20 @@ namespace livelywpf.Core
 
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         public InputForwardMode InputMode { get; private set; }
-        public RawInputDX(InputForwardMode inputMode)
+        //public events
+        public event EventHandler<MouseRawArgs> MouseMoveRaw;
+        public event EventHandler<MouseClickRawArgs> MouseDownRaw;
+        public event EventHandler<MouseClickRawArgs> MouseUpRaw;
+        public event EventHandler<KeyboardClickRawArgs> KeyboardClickRaw;
+        //public event EventHandler<KeyboardClickRawArgs> KeyboardUpRaw;
+
+        public RawInputDX()
         {
             InitializeComponent();
             //Starting a hidden window outside screen region, rawinput receives msg through WndProc
             this.WindowStartupLocation = WindowStartupLocation.Manual;
             this.Left = -99999;
-            this.InputMode = inputMode;
+            this.InputMode = InputForwardMode.mousekeyboard;
         }
 
         private void Window_SourceInitialized(object sender, EventArgs e)
@@ -97,20 +135,25 @@ namespace livelywpf.Core
                         {
                             case Linearstar.Windows.RawInput.Native.RawMouseButtonFlags.LeftButtonDown:
                                 ForwardMessageMouse(M.X, M.Y, (int)NativeMethods.WM.LBUTTONDOWN, (IntPtr)0x0001);
+                                MouseDownRaw?.Invoke(this, new MouseClickRawArgs(M.X, M.Y, RawInputMouseBtn.left));
                                 break;
                             case Linearstar.Windows.RawInput.Native.RawMouseButtonFlags.LeftButtonUp:
                                 ForwardMessageMouse(M.X, M.Y, (int)NativeMethods.WM.LBUTTONUP, (IntPtr)0x0001);
+                                MouseUpRaw?.Invoke(this, new MouseClickRawArgs(M.X, M.Y, RawInputMouseBtn.left));
                                 break;
                             case Linearstar.Windows.RawInput.Native.RawMouseButtonFlags.RightButtonDown:
                                 //issue: click being skipped; desktop already has its own rightclick contextmenu.
                                 //ForwardMessage(M.X, M.Y, (int)NativeMethods.WM.RBUTTONDOWN, (IntPtr)0x0002);
+                                MouseDownRaw?.Invoke(this, new MouseClickRawArgs(M.X, M.Y, RawInputMouseBtn.right));
                                 break;
                             case Linearstar.Windows.RawInput.Native.RawMouseButtonFlags.RightButtonUp:
                                 //issue: click being skipped; desktop already has its own rightclick contextmenu.
                                 //ForwardMessage(M.X, M.Y, (int)NativeMethods.WM.RBUTTONUP, (IntPtr)0x0002);
+                                MouseUpRaw?.Invoke(this, new MouseClickRawArgs(M.X, M.Y, RawInputMouseBtn.right));
                                 break;
                             case Linearstar.Windows.RawInput.Native.RawMouseButtonFlags.None:
                                 ForwardMessageMouse(M.X, M.Y, (int)NativeMethods.WM.MOUSEMOVE, (IntPtr)0x0020);
+                                MouseMoveRaw?.Invoke(this, new MouseRawArgs(M.X, M.Y));
                                 break;
                             case Linearstar.Windows.RawInput.Native.RawMouseButtonFlags.MouseWheel:
                                 //Disabled, not tested yet.
@@ -145,6 +188,7 @@ namespace livelywpf.Core
                         ForwardMessageKeyboard((int)keyboard.Keyboard.WindowMessage, 
                             (IntPtr)keyboard.Keyboard.VirutalKey, keyboard.Keyboard.ScanCode,
                             (keyboard.Keyboard.Flags != Linearstar.Windows.RawInput.Native.RawKeyboardFlags.Up));
+                        KeyboardClickRaw?.Invoke(this, new KeyboardClickRawArgs());
                         break;
                 }
             }
@@ -164,7 +208,7 @@ namespace livelywpf.Core
             try
             {
                 //Don't forward when not on desktop.
-                if (Playback.IsDesktop())
+                if (Program.SettingsVM.Settings.InputForward == InputForwardMode.mousekeyboard && Playback.IsDesktop())
                 {
                     //Detect active wp based on cursor pos, better way to do this?
                     var display = new LivelyScreen(DisplayManager.Instance.GetDisplayMonitorFromPoint(new System.Windows.Point(
@@ -210,8 +254,11 @@ namespace livelywpf.Core
         /// <param name="wParam">additional msg parameter</param>
         private static void ForwardMessageMouse(int x, int y, int msg, IntPtr wParam)
         {
-            //Don't forward when not on desktop.
-            if (!Playback.IsDesktop())
+            if (Program.SettingsVM.Settings.InputForward == InputForwardMode.off)
+            {
+                return;
+            }
+            else if (!Playback.IsDesktop()) //Don't forward when not on desktop.
             {
                 if (msg != (int)NativeMethods.WM.MOUSEMOVE || !Program.SettingsVM.Settings.MouseInputMovAlways)
                 {

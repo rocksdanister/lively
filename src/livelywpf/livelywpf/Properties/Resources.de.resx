@@ -843,4 +843,11 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextLearnMore" xml:space="preserve">
     <value>Mehr erfahren</value>
   </data>
+  <data name="DescOledScreensaverNotice" xml:space="preserve">
+    <value>Die meisten modernen LCD- und LED-Bildschirme haben keine Probleme mit dem Einbrennen von Bildern, so dass jeder Hintergrund als Bildschirmschoner verwendet werden kann.
+
+Bei OLED-, Plasma- und CRT-Bildschirmen kann es zu Einbrenneffekten kommen. Es wird daher empfohlen einen Hintergrund mit konstanten Bewegungen und ein insgesamt dunkles Thema zu verwenden, um das Einbrennen zu mildern. Da diese Funktioni jedoch nicht getestet ist, kann ihre Effektivität nicht gewährleistet werden.
+
+Der Hauptzweck von Lively's Bildschirmschonern ist das hinzufügen einer weiteren Schicht zu benutzerdefinierten Gestaltung des Computers. Die Verwendung des Bildschirmschoners als Schutz gegen Einbrennen geschieht auf eigene Gefahr!</value>
+  </data>
 </root>

@@ -160,13 +160,15 @@ namespace livelywpf.Cef
                         Name = item.Key,
                         Fill = (SolidColorBrush)new BrushConverter().ConvertFromString(item.Value["value"].ToString()),
                         Stroke = new SolidColorBrush(Color.FromRgb(200, 200 ,200)),
-                        StrokeThickness = 0.5,
+                        StrokeThickness = 0.25,
                         MinWidth = maxWidth,
                         MaxWidth = maxWidth,
                         MaxHeight = 15,
                         MinHeight = 15,
                         HorizontalAlignment = HorizontalAlignment.Left,
-                        Margin = margin
+                        Margin = margin,
+                        RadiusX = 5,
+                        RadiusY = 5,
                     };
                     pb.MouseUp += Rectangle_Click;
                     obj = pb;

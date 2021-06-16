@@ -11,6 +11,7 @@ using System.Windows.Threading;
 using System.Threading;
 using Timer = System.Timers.Timer;
 using H.Hooks;
+using Point = System.Drawing.Point;
 
 namespace livelywpf.Helpers
 {
@@ -19,9 +20,7 @@ namespace livelywpf.Helpers
         #region init
 
         private uint idleWaitTime = 300000;
-        private readonly LowLevelMouseHook mouseHook;
-        private readonly LowLevelKeyboardHook keyboardHook;
-        private readonly Timer _idleTimer = new Timer();
+        private readonly Timer idleTimer = new Timer();
         public bool IsRunning { get; private set; } = false;
         private static readonly ScreensaverService instance = new ScreensaverService();
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
@@ -37,14 +36,8 @@ namespace livelywpf.Helpers
 
         private ScreensaverService()
         {
-            _idleTimer.Elapsed += IdleCheckTimer;
-            _idleTimer.Interval = 30000;
-
-            mouseHook ??= new LowLevelMouseHook() { GenerateMouseMoveEvents = true };
-            keyboardHook ??= new LowLevelKeyboardHook();
-            mouseHook.Down += (s, e) => Stop();
-            mouseHook.Move += (s, e) => Stop();
-            keyboardHook.Down += (s, e) => Stop();
+            idleTimer.Elapsed += IdleCheckTimer;
+            idleTimer.Interval = 30000;
         }
 
         #endregion //init
@@ -56,7 +49,7 @@ namespace livelywpf.Helpers
             if (!IsRunning)
             {
                 //moving cursor outisde screen..
-                NativeMethods.SetCursorPos(int.MaxValue, 0);
+                _ = NativeMethods.SetCursorPos(int.MaxValue, 0);
                 Logger.Info("Starting screensaver..");
                 IsRunning = true;
                 ShowScreensavers();
@@ -87,16 +80,16 @@ namespace livelywpf.Helpers
             {
                 Logger.Info("Starting screensaver idle wait {0}ms..", idleTime);
                 idleWaitTime = idleTime;
-                _idleTimer.Start();
+                idleTimer.Start();
             }
         }
 
         public void StopIdleTimer()
         {
-            if (_idleTimer.Enabled)
+            if (idleTimer.Enabled)
             {
                 Logger.Info("Stopping screensaver idle wait..");
-                _idleTimer.Stop();
+                idleTimer.Stop();
             }
         }
 
@@ -230,39 +223,45 @@ namespace livelywpf.Helpers
 
         private void ShowBlankScreensavers()
         {
-            Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, new ThreadStart(delegate
+            if (!Program.SettingsVM.Settings.ScreensaverEmptyScreenShowBlack ||
+                (Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span && SetupDesktop.Wallpapers.Count > 0))
             {
-                var freeScreens = ScreenHelper.GetScreen().FindAll(
-                    x => !SetupDesktop.Wallpapers.Exists(y => y.GetScreen().Equals(x)));
+                return;
+            }
 
-                foreach (var item in freeScreens)
-                {
-                    var bWindow = new ScreensaverBlank
-                    {
-                        Left = item.Bounds.Left,
-                        Top = item.Bounds.Top,
-                        WindowState = WindowState.Maximized,
-                        WindowStyle = WindowStyle.None,
-                        Topmost = true,
-                    };
-                    bWindow.Show();
-                    blankWindows.Add(bWindow);
-                }
-            }));
+            _ = Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, new ThreadStart(delegate
+              {
+                  var freeScreens = ScreenHelper.GetScreen().FindAll(
+                      x => !SetupDesktop.Wallpapers.Exists(y => y.GetScreen().Equals(x)));
+
+                  foreach (var item in freeScreens)
+                  {
+                      var bWindow = new ScreensaverBlank
+                      {
+                          Left = item.Bounds.Left,
+                          Top = item.Bounds.Top,
+                          WindowState = WindowState.Maximized,
+                          WindowStyle = WindowStyle.None,
+                          Topmost = true,
+                      };
+                      bWindow.Show();
+                      blankWindows.Add(bWindow);
+                  }
+              }));
         }
 
         private void CloseBlankScreensavers()
         {
-            Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, new ThreadStart(delegate
-            {
-                blankWindows.ForEach(x => x.Close());
-                blankWindows.Clear();
-            }));
+            _ = Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, new ThreadStart(delegate
+              {
+                  blankWindows.ForEach(x => x.Close());
+                  blankWindows.Clear();
+              }));
         }
 
         #endregion //screensavers
 
-        #region idle check
+        #region input checks
 
         private void IdleCheckTimer(object sender, ElapsedEventArgs e)
         {
@@ -280,23 +279,36 @@ namespace livelywpf.Helpers
             }
         }
 
-        #endregion //idle check
-
-        #region hooks
-
         private void StartInputListener()
         {
-            mouseHook.Start();
-            keyboardHook.Start();
+            SetupDesktop.RawInputHook.MouseMoveRaw += RawInputHook_MouseMoveRaw;
+            SetupDesktop.RawInputHook.MouseDownRaw += RawInputHook_MouseDownRaw;
+            SetupDesktop.RawInputHook.KeyboardClickRaw += RawInputHook_KeyboardClickRaw;
         }
 
         private void StopInputListener()
         {
-            mouseHook.Stop();
-            keyboardHook.Stop();
+            SetupDesktop.RawInputHook.MouseMoveRaw -= RawInputHook_MouseMoveRaw;
+            SetupDesktop.RawInputHook.MouseDownRaw -= RawInputHook_MouseDownRaw;
+            SetupDesktop.RawInputHook.KeyboardClickRaw -= RawInputHook_KeyboardClickRaw;
         }
 
-        #endregion //hooks
+        private void RawInputHook_KeyboardClickRaw(object sender, Core.KeyboardClickRawArgs e)
+        {
+            Stop();
+        }
+
+        private void RawInputHook_MouseDownRaw(object sender, Core.MouseClickRawArgs e)
+        {
+            Stop();
+        }
+
+        private void RawInputHook_MouseMoveRaw(object sender, Core.MouseRawArgs e)
+        {
+            Stop();
+        }
+
+        #endregion //input checks
 
         #region helpers
 

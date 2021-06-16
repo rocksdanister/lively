@@ -117,6 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="DescOledScreensaverNotice" xml:space="preserve">
+    <value>Kebanyakan skrin LCD dan LED yang moden tidak mengalami isu 'burn-in' dan justeru sebarang wallpaper boleh dijadikan sebagai screensaver.
+      
+      Bagi skrin OLED, Plasma atau CRT yang mudah mengalami isu 'burn-in' ini, anda digalakkan mengguna wallpaper yang mempunyai pergerakan yang lazim dan tema yang gelap secara keseluruhan untuk mengurangkan kesan isu ini, tetapi cara mitigasi ini tidak pernah diuji dan keberkesanannya tidak mampu dijamin.
+
+      Tujuan utama screensaver Lively adalah untuk menambah satu lagi lapisan penyesuaian bagi PC anda. Gunakan screensaver sebagai pelindung 'burn-in' atas risiko anda sendiri!</value>
+  </data>
   <data name="DescriptionAddWallpaper" xml:space="preserve">
     <value>Pilih fail atau tentukan laman sesawang URL sebagai wallpaper.</value>
   </data>

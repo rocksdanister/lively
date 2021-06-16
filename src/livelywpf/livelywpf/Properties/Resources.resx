@@ -317,7 +317,7 @@ If still not working, close &amp; start Lively again/restart windows.
     <value>Help translate</value>
   </data>
   <data name="TextHours" xml:space="preserve">
-    <value>hours</value>
+    <value>hour(s)</value>
   </data>
   <data name="TextInstall" xml:space="preserve">
     <value>Install</value>
@@ -332,7 +332,7 @@ If still not working, close &amp; start Lively again/restart windows.
     <value>License</value>
   </data>
   <data name="TextMinutes" xml:space="preserve">
-    <value>minutes</value>
+    <value>minute(s)</value>
   </data>
   <data name="TextmoreInfo" xml:space="preserve">
     <value>Information</value>

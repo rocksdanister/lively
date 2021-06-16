@@ -522,7 +522,6 @@ namespace livelywpf
 
                 if (Settings.InputForward != (InputForwardMode)_selectedWallpaperInputMode)
                 {
-                    SetupDesktop.WallpaperInputForward((InputForwardMode)_selectedWallpaperInputMode);
                     Settings.InputForward = (InputForwardMode)_selectedWallpaperInputMode;
                     UpdateConfigFile();
                 }

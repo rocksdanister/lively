@@ -1204,20 +1204,20 @@ namespace livelywpf
             }
         }
 
-        private static RawInputDX inputForwardWindow = null;
+        private static RawInputDX rawInputHook;
+        public static RawInputDX RawInputHook
+        {
+            get => rawInputHook ??= new RawInputDX();
+        }
+
         /// <summary>
-        /// Forward input from desktop to wallpapers.
+        /// Forward input from desktop to wallpapers.<para>
+        /// Uses rawinput, call from UI thread.</para>
         /// </summary>
         /// <param name="mode">mouse, keyboard + mouse, off</param>
-        public static void WallpaperInputForward(InputForwardMode mode)
+        public static void SetupInputHooks()
         {
-            inputForwardWindow?.Close();
-            if (mode != InputForwardMode.off)
-            {
-                inputForwardWindow = new RawInputDX(mode);
-                inputForwardWindow.Show();
-            }
-            Logger.Info("Core: Wallpaper input setup=> " + mode);
+            RawInputHook.Show();
         }
 
         #endregion //helper functions
