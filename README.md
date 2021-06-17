@@ -118,6 +118,7 @@ SHA256: 706f9e7176e1db242b79583aeeedcd3bad199e7d05da29775a678891601c0238
 
 Installer will give Smartscreen warning, [discussion.](https://github.com/rocksdanister/lively/issues/9)
 
+##### Old version: v1.5.0.0
 <a href='//www.microsoft.com/store/apps/9ntm2qc6qws7?cid=storebadge&ocid=badge'><img src='https://developer.microsoft.com/store/badges/images/English_get-it-from-MS.png' alt='English badge' width="142px" height="52px"/></a>
 
 [Which version do I download?](https://github.com/rocksdanister/lively/wiki/Differences-Between-Distributions)
