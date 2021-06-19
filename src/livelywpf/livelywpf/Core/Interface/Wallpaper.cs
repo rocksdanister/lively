@@ -28,6 +28,11 @@ namespace livelywpf.Core
         /// <returns></returns>
         IntPtr GetHWND();
         /// <summary>
+        /// Get handle to input window.
+        /// </summary>
+        /// <returns></returns>
+        IntPtr GetHWNDInput();
+        /// <summary>
         /// Get process information.
         /// </summary>
         /// <returns>null if not a program wallpaper.</returns>

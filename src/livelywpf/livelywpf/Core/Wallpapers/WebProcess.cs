@@ -82,7 +82,10 @@ namespace livelywpf.Core
             cmdArgs.Append(!string.IsNullOrWhiteSpace(Program.SettingsVM.Settings.WebDebugPort) ? " --debug " + Program.SettingsVM.Settings.WebDebugPort : " ");
             cmdArgs.Append(model.LivelyInfo.Type == WallpaperType.url || model.LivelyInfo.Type == WallpaperType.videostream ? " --type online" : " --type local");
             cmdArgs.Append(Program.SettingsVM.Settings.CefDiskCache && model.LivelyInfo.Type == WallpaperType.url ? " --cache " + "\"" + Path.Combine(Program.AppDataDir, "Cef", "cache", display.DeviceNumber) + "\"" : " ");
-
+#if DEBUG
+            cmdArgs.Append(" --verbose-log true"); 
+#endif
+            
             ProcessStartInfo start = new ProcessStartInfo
             {
                 Arguments = cmdArgs.ToString(),
@@ -131,6 +134,11 @@ namespace livelywpf.Core
         }
 
         public IntPtr GetHWND()
+        {
+            return hwnd;
+        }
+
+        public IntPtr GetHWNDInput()
         {
             return hwnd;
         }

@@ -38,6 +38,11 @@ namespace livelywpf.Core
             return hwnd;
         }
 
+        public IntPtr GetHWNDInput()
+        {
+            return IntPtr.Zero;
+        }
+
         public string GetLivelyPropertyCopyPath()
         {
             return null;

@@ -16,10 +16,10 @@ namespace livelywpf.Core
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
-        IntPtr HWND { get; set; }
-        WebView2Element Player { get; set; }
-        LibraryModel Model { get; set; }
-        LivelyScreen Display { get; set; }
+        private IntPtr hwnd, hwndInput;
+        private readonly WebView2Element player;
+        private readonly LibraryModel model;
+        private LivelyScreen display;
         private readonly string livelyPropertyCopyPath;
 
         public WebEdge(string path, LibraryModel model, LivelyScreen display)
@@ -69,22 +69,27 @@ namespace livelywpf.Core
                 }
             }
 
-            Player = new WebView2Element(path, model.LivelyInfo.Type, livelyPropertyCopyPath);
-            this.Model = model;
-            this.Display = display;
+            player = new WebView2Element(path, model.LivelyInfo.Type, livelyPropertyCopyPath);
+            this.model = model;
+            this.display = display;
         }
 
         public void Close()
         {
             System.Windows.Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, new ThreadStart(delegate
             {
-                Player.Close();
+                player.Close();
             }));
         }
 
         public IntPtr GetHWND()
         {
-            return HWND;
+            return hwnd;
+        }
+
+        public IntPtr GetHWNDInput()
+        {
+            return hwndInput;
         }
 
         public string GetLivelyPropertyCopyPath()
@@ -99,37 +104,39 @@ namespace livelywpf.Core
 
         public LivelyScreen GetScreen()
         {
-            return Display;
+            return display;
         }
 
         public LibraryModel GetWallpaperData()
         {
-            return Model;
+            return model;
         }
 
         public WallpaperType GetWallpaperType()
         {
-            return Model.LivelyInfo.Type;
+            return model.LivelyInfo.Type;
         }
 
         public void Pause()
         {
-
+            //minimize browser.
+            NativeMethods.ShowWindow(GetHWND(), (uint)NativeMethods.SHOWWINDOW.SW_SHOWMINNOACTIVE);
         }
 
         public void Play()
         {
-
+            //show minimized browser.
+            NativeMethods.ShowWindow(GetHWND(), (uint)NativeMethods.SHOWWINDOW.SW_SHOWNOACTIVATE);
         }
 
         public void SendMessage(string msg)
         {
-            Player?.MessageProcess(msg);
+            player?.MessageProcess(msg);
         }
 
         public void SetScreen(LivelyScreen display)
         {
-            this.Display = display;
+            this.display = display;
         }
 
         public void SetVolume(int volume)
@@ -137,23 +144,37 @@ namespace livelywpf.Core
 
         }
 
-        public void Show()
+        public async void Show()
         {
-            if (Player != null)
+            if (player != null)
             {
-                Player.Closed += Player_Closed;
-                Player.Show();
-                HWND = new WindowInteropHelper(Player).Handle;
-                //Logger.Debug("WEBVIEW2: old HWND=>" + HWND);
-                //Player.webView.CoreWebView2Ready += WebView_CoreWebView2Ready;
-                WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = true, Error = null });
-            }
-        }
+                player.Closed += Player_Closed;
+                player.Show();
+                //visible window..
+                this.hwnd = new WindowInteropHelper(player).Handle;
 
-        private void WebView_CoreWebView2Ready(object sender, EventArgs e)
-        {
-            Logger.Debug("WEBVIEW2: new HWND=>" + Player.webView.Handle);   
-            //SetHWND(Player.webView.Handle);
+                try
+                {
+                    var tmpHwnd = await player.InitializeWebView();
+                    //input window..
+                    var parentHwnd = NativeMethods.FindWindowEx(tmpHwnd, IntPtr.Zero, "Chrome_WidgetWin_0", null);
+                    if (!parentHwnd.Equals(IntPtr.Zero))
+                    {
+                        this.hwndInput = NativeMethods.FindWindowEx(parentHwnd, IntPtr.Zero, "Chrome_WidgetWin_1", null);
+                    }
+
+                    if (this.hwndInput.Equals(IntPtr.Zero))
+                    {
+                        throw new Exception("Input handle null.");
+                    }
+                    //everything ready..
+                    WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = true, Error = null });
+                }
+                catch (Exception e)
+                {
+                    WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = false, Error = e, Msg = "Failed to init webview." });
+                }
+            }
         }
 
         private void Player_Closed(object sender, EventArgs e)
@@ -186,7 +207,7 @@ namespace livelywpf.Core
 
         public void SendMessage(IpcMessage obj)
         {
-            Player?.MessageProcess(obj);
+            player?.MessageProcess(obj);
         }
     }
 }

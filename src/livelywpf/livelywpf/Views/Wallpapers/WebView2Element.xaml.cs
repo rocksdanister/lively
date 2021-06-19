@@ -1,4 +1,5 @@
 ﻿using livelywpf.Core.API;
+using Microsoft.Web.WebView2.Core;
 using Newtonsoft.Json;
 using System;
 using System.IO;
@@ -23,53 +24,44 @@ namespace livelywpf
         public WebView2Element(string path, WallpaperType type, string livelyPropertyPath)
         {
             InitializeComponent();
+            this.Loaded += WebView2Element_Loaded;
             this.htmlPath = path;
             this.livelyPropertyPath = livelyPropertyPath;
             this.wallpaperType = type;
-            InitWebView();
         }
 
         //TODO:
-        //link checking
         //cross-origin request fix for disk files.
         //custom cache path.
-        private async void InitWebView()
+        public async Task<IntPtr> InitializeWebView()
         {
-            try
-            {
-                await webView.EnsureCoreWebView2Async();
-                //only after await, null otherwise.
-                webView.CoreWebView2.ProcessFailed += CoreWebView2_ProcessFailed;
+            await webView.EnsureCoreWebView2Async();
+            webView.CoreWebView2.ProcessFailed += CoreWebView2_ProcessFailed;
 
-                if (wallpaperType == WallpaperType.url)
+            if (wallpaperType == WallpaperType.url)
+            {
+                string tmp = null;
+                if (TryParseShadertoy(htmlPath, ref tmp))
                 {
-                    string tmp = null;
-                    if (TryParseShadertoy(htmlPath, ref tmp))
-                    {
-                        webView.CoreWebView2.NavigateToString(tmp);
-                    }
-                    else if ((tmp = Helpers.StreamHelper.GetYouTubeVideoIdFromUrl(htmlPath)) != "")
-                    {
-                        //open fullscreen embed player with loop enabled.
-                        webView.CoreWebView2.Navigate("https://www.youtube.com/embed/" + tmp + 
-                            "?version=3&rel=0&autoplay=1&loop=1&controls=0&playlist="+tmp);
-                    }
-                    else
-                    {
-                        webView.CoreWebView2.Navigate(htmlPath);
-                    }
+                    webView.CoreWebView2.NavigateToString(tmp);
+                }
+                else if ((tmp = Helpers.StreamHelper.GetYouTubeVideoIdFromUrl(htmlPath)) != "")
+                {
+                    //open fullscreen embed player with loop enabled.
+                    webView.CoreWebView2.Navigate("https://www.youtube.com/embed/" + tmp +
+                        "?version=3&rel=0&autoplay=1&loop=1&controls=0&playlist=" + tmp);
                 }
                 else
                 {
                     webView.CoreWebView2.Navigate(htmlPath);
                 }
             }
-            catch(Exception e)
+            else
             {
-                Logger.Error("Webview2 Init fail: {0}" + e.ToString());
-                //To avoid blinding white color.
-                webView.Visibility = Visibility.Collapsed;
+                //webView.CoreWebView2.SetVirtualHostNameToFolderMapping("lively_test", Path.GetDirectoryName(htmlPath), CoreWebView2HostResourceAccessKind.Allow);
+                webView.CoreWebView2.Navigate(htmlPath);
             }
+            return webView.Handle;
         }
 
         private void WebView2Element_Loaded(object sender, RoutedEventArgs e)
@@ -83,7 +75,7 @@ namespace livelywpf
 
         private void webView_NavigationCompleted(object sender, Microsoft.Web.WebView2.Core.CoreWebView2NavigationCompletedEventArgs e)
         {
-            RestoreLivelyProperties();
+            RestoreLivelyProperties(livelyPropertyPath);
         }
 
         private void CoreWebView2_ProcessFailed(object sender, Microsoft.Web.WebView2.Core.CoreWebView2ProcessFailedEventArgs e)
@@ -98,7 +90,7 @@ namespace livelywpf
                 switch (obj.Type)
                 {
                     case MessageType.cmd_reload:
-                        webView.Reload();
+                        webView?.Reload();
                         break;
                     case MessageType.lp_slider:
                         var sl = (LivelySlider)obj;
@@ -140,7 +132,7 @@ namespace livelywpf
                         var btn = (LivelyButton)obj;
                         if (btn.IsDefault)
                         {
-                            RestoreLivelyProperties();
+                            RestoreLivelyProperties(livelyPropertyPath);
                         }
                         else
                         {
@@ -157,7 +149,7 @@ namespace livelywpf
             }
             catch (Exception ex)
             {
-                Logger.Error("Error processing msg: {0}", ex.Message);
+                Logger.Error("Error processing msg: {0}", ex.ToString());
             }
         }
 
@@ -196,14 +188,14 @@ namespace livelywpf
             return await webView.ExecuteScriptAsync(script.ToString());
         }
 
-        private void RestoreLivelyProperties()
+        private void RestoreLivelyProperties(string path)
         {
             try
             {
-                if (livelyPropertyPath == null)
+                if (path == null)
                     return;
 
-                foreach (var item in Cef.LivelyPropertiesJSON.LoadLivelyProperties(livelyPropertyPath))
+                foreach (var item in Cef.LivelyPropertiesJSON.LoadLivelyProperties(path))
                 {
                     string uiElementType = item.Value["type"].ToString();
                     if (!uiElementType.Equals("button", StringComparison.OrdinalIgnoreCase) && !uiElementType.Equals("label", StringComparison.OrdinalIgnoreCase))

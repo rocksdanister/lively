@@ -232,7 +232,7 @@ namespace livelywpf.Core
                                  * lParam = isPressed ? (lParam |= 0u << 31) : (lParam |= 1u << 31); //transition state
                                  */
                                 lParam = isPressed ? lParam : (lParam |= 3u << 30);
-                                NativeMethods.PostMessageW(wallpaper.GetHWND(), msg, wParam, (UIntPtr)lParam);
+                                NativeMethods.PostMessageW(wallpaper.GetHWNDInput(), msg, wParam, (UIntPtr)lParam);
                             }
                         }
                     });
@@ -282,7 +282,7 @@ namespace livelywpf.Core
                             uint lParam = Convert.ToUInt32(mouse.Y);
                             lParam <<= 16;
                             lParam |= Convert.ToUInt32(mouse.X);
-                            NativeMethods.PostMessageW(wallpaper.GetHWND(), msg, wParam, (UIntPtr)lParam);
+                            NativeMethods.PostMessageW(wallpaper.GetHWNDInput(), msg, wParam, (UIntPtr)lParam);
                         }
                     }
                 });

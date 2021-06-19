@@ -75,6 +75,11 @@ namespace livelywpf.Core
             return hwnd;
         }
 
+        public IntPtr GetHWNDInput()
+        {
+            return hwnd;
+        }
+
         public Process GetProcess()
         {
             return _process;
