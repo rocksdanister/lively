@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Imaging;
 using System.Text;
 
 namespace livelywpf.Core.API
@@ -8,6 +9,7 @@ namespace livelywpf.Core.API
     {
         cmd_reload,
         cmd_close,
+        cmd_screenshot,
         lsp_perfcntr,
         lsp_nowplaying,
         lp_slider,
@@ -41,6 +43,16 @@ namespace livelywpf.Core.API
     public class LivelyReloadCmd : IpcMessage
     {
         public LivelyReloadCmd() : base(MessageType.cmd_reload)
+        {
+        }
+    }
+
+    [Serializable]
+    public class LivelyScreenshotCmd : IpcMessage
+    {
+        public string FilePath { get; set; }
+        public ImageFormat Format { get; set; }
+        public LivelyScreenshotCmd() : base(MessageType.cmd_screenshot)
         {
         }
     }

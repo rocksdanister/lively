@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Diagnostics;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Management;
 using System.Text;
@@ -388,9 +389,36 @@ namespace livelywpf.Core
             }
         }
 
-        public Task ScreenCapture(string filePath)
+        public async Task ScreenCapture(string filePath)
         {
-            throw new NotImplementedException();
+            var tcs = new TaskCompletionSource<bool>();
+            _process.OutputDataReceived += OutputDataReceived;
+            void OutputDataReceived(object sender, DataReceivedEventArgs e)
+            {
+                //Format: Lively_Screenshot <success_bool> <filename_string>
+                if (e.Data.Contains("Lively_Screenshot"))
+                {
+                    var items = e.Data.Split(" ");
+                    var success = (bool)JsonConvert.DeserializeObject(items[1]);
+                    var fileName = (string)JsonConvert.DeserializeObject(items[2]);
+                    if (success && fileName == Path.GetFileName(filePath))
+                    {
+                        tcs.SetResult(true);
+                    }
+                    else
+                    {
+                        tcs.SetResult(false);
+                    }
+                }
+            }
+            //request screenshot
+            SendMessage(new LivelyScreenshotCmd()
+            {
+                FilePath = Path.GetExtension(filePath) != ".jpg" ? filePath + ".jpg" : filePath,
+                Format = ImageFormat.Jpeg
+            });
+            await tcs.Task;
+            _process.OutputDataReceived -= OutputDataReceived;
         }
     }
 }
