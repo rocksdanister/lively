@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Text;
 using System.Threading;
@@ -200,9 +201,9 @@ namespace livelywpf.Core
             }
         }
 
-        public Task ScreenCapture(string filePath)
+        public async Task ScreenCapture(string filePath)
         {
-            throw new NotImplementedException();
+            await player?.CaptureScreenshot(Path.GetExtension(filePath) != ".jpg" ? filePath + ".jpg" : filePath, ImageFormat.Jpeg);
         }
 
         public void SendMessage(IpcMessage obj)

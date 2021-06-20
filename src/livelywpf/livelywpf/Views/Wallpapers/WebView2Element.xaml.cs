@@ -1,7 +1,10 @@
 ﻿using livelywpf.Core.API;
 using Microsoft.Web.WebView2.Core;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
@@ -261,6 +264,28 @@ namespace livelywpf
                     left: 0; z-index; -1; pointer-events: none;  } </style> </head> <body> <iframe width=""640"" height=""360"" frameborder=""0"" 
                     src=" + url + @"?gui=false&t=10&paused=false&muted=true""></iframe> </body></html>";
             return true;
+        }
+
+        //ref: https://github.com/MicrosoftEdge/WebView2Feedback/issues/529
+        public async Task CaptureScreenshot(string filePath, ImageFormat format)
+        {
+            string r3 = await webView.CoreWebView2.CallDevToolsProtocolMethodAsync("Page.captureScreenshot", "{}");
+            JObject o3 = JObject.Parse(r3);
+            JToken data = o3["data"];
+            string data_str = data.ToString();
+
+            using Image image = Base64ToImage(data_str);
+            image.Save(filePath, format);
+        }
+
+        public Image Base64ToImage(string base64String)
+        {
+            // Convert base 64 string to byte[]
+            byte[] imageBytes = Convert.FromBase64String(base64String);
+            // Convert byte[] to Image
+            using var ms = new MemoryStream(imageBytes, 0, imageBytes.Length);
+            Image image = Image.FromStream(ms, true);
+            return image;
         }
 
         #endregion //helpers
