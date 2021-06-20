@@ -392,33 +392,39 @@ namespace livelywpf.Core
         public async Task ScreenCapture(string filePath)
         {
             var tcs = new TaskCompletionSource<bool>();
-            _process.OutputDataReceived += OutputDataReceived;
             void OutputDataReceived(object sender, DataReceivedEventArgs e)
             {
-                //Format: Lively_Screenshot <success_bool> <filename_string>
-                if (e.Data.Contains("Lively_Screenshot"))
+                if (string.IsNullOrEmpty(e.Data))
+                {
+                    tcs.SetResult(false);
+                }
+                else if (e.Data.Contains("Lively_Screenshot"))
                 {
                     var items = e.Data.Split(" ");
+                    //Format: Lively_Screenshot <success_bool> <filename_string>
                     var success = (bool)JsonConvert.DeserializeObject(items[1]);
                     var fileName = (string)JsonConvert.DeserializeObject(items[2]);
-                    if (success && fileName == Path.GetFileName(filePath))
+                    if (fileName == Path.GetFileName(filePath))
                     {
-                        tcs.SetResult(true);
-                    }
-                    else
-                    {
-                        tcs.SetResult(false);
+                        tcs.SetResult(success);
                     }
                 }
             }
-            //request screenshot
-            SendMessage(new LivelyScreenshotCmd()
+
+            try
             {
-                FilePath = Path.GetExtension(filePath) != ".jpg" ? filePath + ".jpg" : filePath,
-                Format = ImageFormat.Jpeg
-            });
-            await tcs.Task;
-            _process.OutputDataReceived -= OutputDataReceived;
+                _process.OutputDataReceived += OutputDataReceived;
+                SendMessage(new LivelyScreenshotCmd() 
+                { 
+                    FilePath = Path.GetExtension(filePath) != ".jpg" ? filePath + ".jpg" : filePath,
+                    Format = ImageFormat.Jpeg
+                });
+                await tcs.Task;
+            }
+            finally
+            {
+                _process.OutputDataReceived -= OutputDataReceived;
+            }
         }
     }
 }
