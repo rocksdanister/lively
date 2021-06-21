@@ -1,6 +1,8 @@
 ﻿using livelywpf.Core.API;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing.Imaging;
 using System.IO;
@@ -247,46 +249,47 @@ namespace livelywpf.Core
             //When the redirected stream is closed, a null line is sent to the event handler.
             if (!string.IsNullOrEmpty(e.Data))
             {
-                if (e.Data.Contains("HWND"))
+                if (!_initialized)
                 {
-                    bool status = true;
-                    Exception error = null;
-                    string msg = null;
-                    try
+                    var obj = JsonConvert.DeserializeObject<IpcMessage>(e.Data, new JsonSerializerSettings() { Converters = { new IpcMessageConverter() } });
+                    if (obj.Type == MessageType.msg_hwnd)
                     {
-                        msg = e.Data;
-                        var handle = new IntPtr(Convert.ToInt32(e.Data.Substring(4), 10));
-                        //note-handle: WindowsForms10.Window.8.app.0.141b42a_r9_ad1
+                        bool status = true;
+                        Exception error = null;
+                        string msg = null;
+                        try
+                        {
+                            msg = e.Data;
+                            var handle = new IntPtr(((LivelyMessageHwnd)obj).Hwnd);
+                            //note-handle: WindowsForms10.Window.8.app.0.141b42a_r9_ad1
 
-                        //hidin other windows, no longer required since I'm doing it in cefsharp pgm itself.
-                        NativeMethods.ShowWindow(GetProcess().MainWindowHandle, 0);
+                            //hidin other windows, no longer required since I'm doing it in cefsharp pgm itself.
+                            NativeMethods.ShowWindow(GetProcess().MainWindowHandle, 0);
 
-                        //WARNING:- If you put the whole cefsharp window, workerw crashes and refuses to start again on next startup!!, this is a workaround.
-                        handle = NativeMethods.FindWindowEx(handle, IntPtr.Zero, "Chrome_WidgetWin_0", null);
-                        //cefRenderWidget = StaticPinvoke.FindWindowEx(handle, IntPtr.Zero, "Chrome_RenderWidgetHostHWND", null);
-                        //cefIntermediate = StaticPinvoke.FindWindowEx(handle, IntPtr.Zero, "Intermediate D3D Window", null);
+                            //WARNING:- If you put the whole cefsharp window, workerw crashes and refuses to start again on next startup!!, this is a workaround.
+                            handle = NativeMethods.FindWindowEx(handle, IntPtr.Zero, "Chrome_WidgetWin_0", null);
+                            //cefRenderWidget = StaticPinvoke.FindWindowEx(handle, IntPtr.Zero, "Chrome_RenderWidgetHostHWND", null);
+                            //cefIntermediate = StaticPinvoke.FindWindowEx(handle, IntPtr.Zero, "Intermediate D3D Window", null);
 
-                        if (IntPtr.Equals(handle, IntPtr.Zero))//unlikely.
+                            if (IntPtr.Equals(handle, IntPtr.Zero))//unlikely.
+                            {
+                                status = false;
+                            }
+                            hwnd = handle;
+                        }
+                        catch (Exception ex)
                         {
                             status = false;
+                            error = ex;
                         }
-                        hwnd = handle;
-                    }
-                    catch (Exception ex)
-                    {
-                        status = false;
-                        error = ex;
-                    }
-                    finally
-                    {
-                        if (!_initialized)
+                        finally
                         {
+                            _initialized = true;
                             WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = status, Error = error, Msg = msg });
                         }
-                        _initialized = true;
                     }
                 }
-                Logger.Info("Cef{0}:{1}", uniqueId, e.Data);
+                Logger.Info($"Cef{uniqueId}:{e.Data}");
             }
         }
 
@@ -396,17 +399,19 @@ namespace livelywpf.Core
             {
                 if (string.IsNullOrEmpty(e.Data))
                 {
+                    //process exiting..
                     tcs.SetResult(false);
                 }
-                else if (e.Data.Contains("Lively_Screenshot"))
+                else
                 {
-                    var items = e.Data.Split(" ");
-                    //Format: Lively_Screenshot <success_bool> <filename_string>
-                    var success = (bool)JsonConvert.DeserializeObject(items[1]);
-                    var fileName = (string)JsonConvert.DeserializeObject(items[2]);
-                    if (fileName == Path.GetFileName(filePath))
+                    var obj = JsonConvert.DeserializeObject<IpcMessage>(e.Data, new JsonSerializerSettings() { Converters = { new IpcMessageConverter() } });
+                    if (obj.Type == MessageType.msg_screenshot)
                     {
-                        tcs.SetResult(success);
+                        var msg = (LivelyMessageScreenshot)obj;
+                        if (msg.FileName == Path.GetFileName(filePath))
+                        {
+                            tcs.SetResult(msg.Success);
+                        }
                     }
                 }
             }

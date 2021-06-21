@@ -28,6 +28,9 @@ namespace livelywpf.Core.API
                 MessageType.lp_button => jo.ToObject<LivelyButton>(serializer),
                 MessageType.lp_cpicker => jo.ToObject<LivelyColorPicker>(serializer),
                 MessageType.lp_chekbox => jo.ToObject<LivelyCheckbox>(serializer),
+                MessageType.msg_console => jo.ToObject<LivelyMessageConsole>(serializer),
+                MessageType.msg_hwnd => jo.ToObject<LivelyMessageHwnd>(serializer),
+                MessageType.msg_screenshot => jo.ToObject<LivelyMessageScreenshot>(serializer),
                 _ => null,
              };
         }

@@ -146,8 +146,6 @@ namespace livelywpf
                         break;
                     case MessageType.lsp_nowplaying:
                         break;
-                    case MessageType.cmd_close:
-                        break;
                 }
             }
             catch (Exception ex)
@@ -273,9 +271,21 @@ namespace livelywpf
             JObject o3 = JObject.Parse(r3);
             JToken data = o3["data"];
             string data_str = data.ToString();
+            // Convert base 64 string to byte[]
+            byte[] imageBytes = Convert.FromBase64String(data_str);
 
-            using Image image = Base64ToImage(data_str);
-            image.Save(filePath, format);
+            if (format == ImageFormat.Png)
+            {
+                // Default is png
+                File.WriteAllBytes(filePath, imageBytes);
+            }
+            else
+            {
+                // Convert byte[] to Image
+                using MemoryStream ms = new MemoryStream(imageBytes, 0, imageBytes.Length);
+                using Image image = Image.FromStream(ms, true);
+                image.Save(filePath, format);
+            }
         }
 
         public Image Base64ToImage(string base64String)
@@ -283,7 +293,7 @@ namespace livelywpf
             // Convert base 64 string to byte[]
             byte[] imageBytes = Convert.FromBase64String(base64String);
             // Convert byte[] to Image
-            using var ms = new MemoryStream(imageBytes, 0, imageBytes.Length);
+            using MemoryStream ms = new MemoryStream(imageBytes, 0, imageBytes.Length);
             Image image = Image.FromStream(ms, true);
             return image;
         }
