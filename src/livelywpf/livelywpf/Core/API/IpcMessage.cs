@@ -10,6 +10,7 @@ namespace livelywpf.Core.API
     {
         msg_hwnd,
         msg_console,
+        msg_wploaded,
         msg_screenshot,
         cmd_reload,
         cmd_close,
@@ -76,6 +77,15 @@ namespace livelywpf.Core.API
         public string FileName { get; set; }
         public bool Success { get; set; }
         public LivelyMessageScreenshot() : base(MessageType.msg_screenshot)
+        {
+        }
+    }
+
+    [Serializable]
+    public class LivelyMessageWallpaperLoaded : IpcMessage
+    {
+        public bool Success { get; set; }
+        public LivelyMessageWallpaperLoaded() : base(MessageType.msg_wploaded)
         {
         }
     }

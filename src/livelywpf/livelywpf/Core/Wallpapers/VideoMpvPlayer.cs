@@ -45,6 +45,7 @@ namespace livelywpf.Core
         private readonly string livelyPropertyCopyPath;
         private static int globalCount;
         private readonly int uniqueId;
+        private bool isLoaded;
 
         public VideoMpvPlayer(string path, LibraryModel model, LivelyScreen display,
             WallpaperScaler scaler = WallpaperScaler.fill, StreamQualitySuggestion streamQuality = StreamQualitySuggestion.Highest, bool onScreenControl = false)
@@ -388,6 +389,10 @@ namespace livelywpf.Core
                         });
                         //Restore livelyproperties.json settings
                         SetPlaybackProperties(livelyPropertiesData);
+                        //Wait a bit for properties to apply.
+                        //Todo: check ipc mgs and do this properly.
+                        await Task.Delay(69);
+                        isLoaded = true;
                     }
                 }
                 catch (OperationCanceledException e1)
@@ -626,6 +631,11 @@ namespace livelywpf.Core
                 Logger.Error("Mpv{0}: Slider double -> int overlow", uniqueId); 
             }
             catch { }
+        }
+
+        public bool IsLoaded()
+        {
+            return isLoaded;
         }
 
         #region mpv util

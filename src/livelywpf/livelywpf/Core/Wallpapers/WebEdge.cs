@@ -1,7 +1,6 @@
 ﻿using livelywpf.Core.API;
 using System;
 using System.Diagnostics;
-using System.Drawing.Imaging;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -19,6 +18,7 @@ namespace livelywpf.Core
         private readonly LibraryModel model;
         private LivelyScreen display;
         private readonly string livelyPropertyCopyPath;
+        private bool isLoaded;
 
         public WebEdge(string path, LibraryModel model, LivelyScreen display)
         {
@@ -146,6 +146,7 @@ namespace livelywpf.Core
         {
             if (player != null)
             {
+                player.LivelyPropertiesInitialized += Player_LivelyPropertiesInitialized;
                 player.Closed += Player_Closed;
                 player.Show();
                 //visible window..
@@ -182,6 +183,12 @@ namespace livelywpf.Core
             }
         }
 
+        private void Player_LivelyPropertiesInitialized(object sender, EventArgs e)
+        {
+            isLoaded = true;
+            player.LivelyPropertiesInitialized -= Player_LivelyPropertiesInitialized;
+        }
+
         private void Player_Closed(object sender, EventArgs e)
         {
             SetupDesktop.RefreshDesktop();
@@ -213,6 +220,11 @@ namespace livelywpf.Core
         public void SendMessage(IpcMessage obj)
         {
             player?.MessageProcess(obj);
+        }
+
+        public bool IsLoaded()
+        {
+            return isLoaded;
         }
     }
 }

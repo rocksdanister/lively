@@ -442,6 +442,19 @@ namespace livelywpf
                     {
                         try
                         {
+                            int maxIterations = 50;
+                            //upto ~5sec wait for wallpaper to get ready..
+                            for (int i = 1; i <= maxIterations; i++)
+                            {
+                                if (i == maxIterations)
+                                    throw new Exception("Taking too long to initialize.");
+
+                                if (wallpaper.IsLoaded())
+                                    break;
+
+                                await Task.Delay(100);
+                            }
+
                             //capture frame from wallpaper..
                             var imgPath = Path.Combine(Program.AppDataDir, "temp", Path.GetRandomFileName() + ".jpg");
                             await wallpaper.ScreenCapture(imgPath);
@@ -506,7 +519,7 @@ namespace livelywpf
                         }
                         catch (Exception ie2)
                         {
-                            Logger.Error("Failed to set lockscreen/desktop wallpaper:" + ie2.Message);
+                            Logger.Error($"Failed to set lockscreen/desktop wallpaper: {ie2.Message}");
                         }
                     }
 

@@ -142,5 +142,11 @@ namespace livelywpf.Core
         {
             //todo
         }
+
+        public bool IsLoaded()
+        {
+            //nothing to load..
+            return true;
+        }
     }
 }

@@ -284,5 +284,10 @@ namespace livelywpf.Core
         {
             SendMessage(JsonConvert.SerializeObject(obj));
         }
+
+        public bool IsLoaded()
+        {
+            return GetHWND() != IntPtr.Zero;
+        }
     }
 }

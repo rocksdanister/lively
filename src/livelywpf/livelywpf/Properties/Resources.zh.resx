@@ -268,7 +268,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>下一步</value>
   </data>
   <data name="TextNo" xml:space="preserve">
-    <value>没有</value>
+    <value>否</value>
   </data>
   <data name="TextOnline" xml:space="preserve">
     <value>在线网页 (Online)</value>
@@ -770,20 +770,20 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>尽可能使用硬件加速。</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
-  <value>请先停止，然后再继续。</value>
-</data>
-<data name="TextEditWallpaper" xml:space="preserve">
-  <value>编辑</value>
-</data>
-<data name="TitleLocation" xml:space="preserve">
-  <value>地点</value>
-</data>
-<data name="TitleSkipConfirm" xml:space="preserve">
-  <value>跳过确认</value>
-</data>
-<data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-  <value>输入可选的命令行参数</value>
-</data>
+    <value>请先停止，然后再继续。</value>
+  </data>
+  <data name="TextEditWallpaper" xml:space="preserve">
+    <value>编辑</value>
+  </data>
+  <data name="TitleLocation" xml:space="preserve">
+    <value>地点</value>
+  </data>
+  <data name="TitleSkipConfirm" xml:space="preserve">
+    <value>跳过确认</value>
+  </data>
+  <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
+    <value>输入可选的命令行参数</value>
+  </data>
   <data name="TextGitHubStar" xml:space="preserve">
     <value>通过投下一颗星来表达爱意</value>
   </data>
@@ -832,13 +832,13 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TitleSystem" xml:space="preserve">
     <value>系统</value>
   </data>
-    <data name="TitleScreensaver" xml:space="preserve">
+  <data name="TitleScreensaver" xml:space="preserve">
     <value>屏幕保护</value>
   </data>
   <data name="TipScreensaver" xml:space="preserve">
     <value>在选定的非活动期后，使用当前的墙纸作为你的屏保。</value>
   </data>
-    <data name="TextHours" xml:space="preserve">
+  <data name="TextHours" xml:space="preserve">
     <value>小时</value>
   </data>
   <data name="TextMinutes" xml:space="preserve">

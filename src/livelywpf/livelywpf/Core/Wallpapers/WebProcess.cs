@@ -25,6 +25,7 @@ namespace livelywpf.Core
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
         private static int globalCount;
         private readonly int uniqueId;
+        private bool isLoaded;
 
         public WebProcess(string path, LibraryModel model, LivelyScreen display)
         {
@@ -250,7 +251,7 @@ namespace livelywpf.Core
             if (!string.IsNullOrEmpty(e.Data))
             {
                 Logger.Info($"Cef{uniqueId}:{e.Data}");
-                if (!_initialized)
+                if (!_initialized || !isLoaded)
                 {
                     IpcMessage obj;
                     try
@@ -298,6 +299,10 @@ namespace livelywpf.Core
                             _initialized = true;
                             WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = status, Error = error, Msg = msg });
                         }
+                    }
+                    else if (obj.Type == MessageType.msg_wploaded)
+                    {
+                        isLoaded = ((LivelyMessageWallpaperLoaded)obj).Success;
                     }
                 }
             }
@@ -441,6 +446,11 @@ namespace livelywpf.Core
             {
                 _process.OutputDataReceived -= OutputDataReceived;
             }
+        }
+
+        public bool IsLoaded()
+        {
+            return isLoaded;
         }
     }
 }

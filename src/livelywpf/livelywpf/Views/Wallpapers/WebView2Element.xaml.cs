@@ -23,6 +23,7 @@ namespace livelywpf
         private readonly string livelyPropertyPath;
         private readonly WallpaperType wallpaperType;
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+        public event EventHandler LivelyPropertiesInitialized;
 
         public WebView2Element(string path, WallpaperType type, string livelyPropertyPath)
         {
@@ -76,9 +77,10 @@ namespace livelywpf
             this.ShowInTaskbar = true;
         }
 
-        private void webView_NavigationCompleted(object sender, Microsoft.Web.WebView2.Core.CoreWebView2NavigationCompletedEventArgs e)
+        private async void webView_NavigationCompleted(object sender, Microsoft.Web.WebView2.Core.CoreWebView2NavigationCompletedEventArgs e)
         {
-            RestoreLivelyProperties(livelyPropertyPath);
+            await RestoreLivelyProperties(livelyPropertyPath);
+            LivelyPropertiesInitialized?.Invoke(this, EventArgs.Empty);
         }
 
         private void CoreWebView2_ProcessFailed(object sender, Microsoft.Web.WebView2.Core.CoreWebView2ProcessFailedEventArgs e)
@@ -135,7 +137,7 @@ namespace livelywpf
                         var btn = (LivelyButton)obj;
                         if (btn.IsDefault)
                         {
-                            RestoreLivelyProperties(livelyPropertyPath);
+                            _= RestoreLivelyProperties(livelyPropertyPath);
                         }
                         else
                         {
@@ -189,7 +191,7 @@ namespace livelywpf
             return await webView.ExecuteScriptAsync(script.ToString());
         }
 
-        private void RestoreLivelyProperties(string path)
+        private async Task RestoreLivelyProperties(string path)
         {
             try
             {
@@ -204,31 +206,31 @@ namespace livelywpf
                         if (uiElementType.Equals("slider", StringComparison.OrdinalIgnoreCase) ||
                             uiElementType.Equals("dropdown", StringComparison.OrdinalIgnoreCase))
                         {
-                            _ = ExecuteScriptFunctionAsync("livelyPropertyListener", item.Key, (int)item.Value["value"]);
+                            await ExecuteScriptFunctionAsync("livelyPropertyListener", item.Key, (int)item.Value["value"]);
                         }
                         else if (uiElementType.Equals("folderDropdown", StringComparison.OrdinalIgnoreCase))
                         {
                             var filePath = Path.Combine(Path.GetDirectoryName(htmlPath), item.Value["folder"].ToString(), item.Value["value"].ToString());
                             if (File.Exists(filePath))
                             {
-                                _ = ExecuteScriptFunctionAsync("livelyPropertyListener",
+                                await ExecuteScriptFunctionAsync("livelyPropertyListener",
                                 item.Key,
                                 Path.Combine(item.Value["folder"].ToString(), item.Value["value"].ToString()));
                             }
                             else
                             {
-                                _ = ExecuteScriptFunctionAsync("livelyPropertyListener",
+                                await ExecuteScriptFunctionAsync("livelyPropertyListener",
                                 item.Key,
                                 null); //or custom msg
                             }
                         }
                         else if (uiElementType.Equals("checkbox", StringComparison.OrdinalIgnoreCase))
                         {
-                            _ = ExecuteScriptFunctionAsync("livelyPropertyListener", item.Key, (bool)item.Value["value"]);
+                            await ExecuteScriptFunctionAsync("livelyPropertyListener", item.Key, (bool)item.Value["value"]);
                         }
                         else if (uiElementType.Equals("color", StringComparison.OrdinalIgnoreCase) || uiElementType.Equals("textbox", StringComparison.OrdinalIgnoreCase))
                         {
-                            _ = ExecuteScriptFunctionAsync("livelyPropertyListener", item.Key, (string)item.Value["value"]);
+                            await ExecuteScriptFunctionAsync("livelyPropertyListener", item.Key, (string)item.Value["value"]);
                         }
                     }
                 }

@@ -358,5 +358,10 @@ namespace livelywpf.Core
         {
             //todo
         }
+
+        public bool IsLoaded()
+        {
+            return GetHWND() != IntPtr.Zero;
+        }
     }
 }

@@ -134,5 +134,10 @@ namespace livelywpf.Core
         {
             //todo
         }
+
+        public bool IsLoaded()
+        {
+            return player?.IsActive == true;
+        }
     }
 }
