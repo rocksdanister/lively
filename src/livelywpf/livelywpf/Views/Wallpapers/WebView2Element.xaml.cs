@@ -265,26 +265,41 @@ namespace livelywpf
         }
 
         //ref: https://github.com/MicrosoftEdge/WebView2Feedback/issues/529
-        public async Task CaptureScreenshot(string filePath, ImageFormat format)
+        public async Task CaptureScreenshot(string filePath, ScreenshotFormat format)
         {
-            string r3 = await webView.CoreWebView2.CallDevToolsProtocolMethodAsync("Page.captureScreenshot", "{}");
+            var param = format switch
+            {
+                ScreenshotFormat.jpeg => "{\"format\":\"jpeg\"}",
+                ScreenshotFormat.webp => "{\"format\":\"webp\"}",
+                ScreenshotFormat.png => "{}", // Default
+                ScreenshotFormat.bmp => "{}", // Not supported by cef
+                _ => "{}", 
+            };
+            string r3 = await webView.CoreWebView2.CallDevToolsProtocolMethodAsync("Page.captureScreenshot", param);
             JObject o3 = JObject.Parse(r3);
             JToken data = o3["data"];
             string data_str = data.ToString();
             // Convert base 64 string to byte[]
             byte[] imageBytes = Convert.FromBase64String(data_str);
 
-            if (format == ImageFormat.Png)
+            switch (format)
             {
-                // Default is png
-                File.WriteAllBytes(filePath, imageBytes);
-            }
-            else
-            {
-                // Convert byte[] to Image
-                using MemoryStream ms = new MemoryStream(imageBytes, 0, imageBytes.Length);
-                using Image image = Image.FromStream(ms, true);
-                image.Save(filePath, format);
+                case ScreenshotFormat.jpeg:
+                case ScreenshotFormat.png:
+                case ScreenshotFormat.webp:
+                    {
+                        // Write to disk
+                        File.WriteAllBytes(filePath, imageBytes);
+                    }
+                    break;
+                case ScreenshotFormat.bmp:
+                    {
+                        // Convert byte[] to Image
+                        using MemoryStream ms = new MemoryStream(imageBytes, 0, imageBytes.Length);
+                        using Image image = Image.FromStream(ms, true);
+                        image.Save(filePath, ImageFormat.Bmp);
+                    }
+                    break;
             }
         }
 

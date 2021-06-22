@@ -249,9 +249,20 @@ namespace livelywpf.Core
             //When the redirected stream is closed, a null line is sent to the event handler.
             if (!string.IsNullOrEmpty(e.Data))
             {
+                Logger.Info($"Cef{uniqueId}:{e.Data}");
                 if (!_initialized)
                 {
-                    var obj = JsonConvert.DeserializeObject<IpcMessage>(e.Data, new JsonSerializerSettings() { Converters = { new IpcMessageConverter() } });
+                    IpcMessage obj;
+                    try
+                    {
+                        obj = JsonConvert.DeserializeObject<IpcMessage>(e.Data, new JsonSerializerSettings() { Converters = { new IpcMessageConverter() } });
+                    }
+                    catch (Exception ex)
+                    {
+                        Logger.Error($"Ipcmessage parse error: {ex.Message}");
+                        return;
+                    }
+
                     if (obj.Type == MessageType.msg_hwnd)
                     {
                         bool status = true;
@@ -277,10 +288,10 @@ namespace livelywpf.Core
                             }
                             hwnd = handle;
                         }
-                        catch (Exception ex)
+                        catch (Exception ie)
                         {
                             status = false;
-                            error = ex;
+                            error = ie;
                         }
                         finally
                         {
@@ -289,7 +300,6 @@ namespace livelywpf.Core
                         }
                     }
                 }
-                Logger.Info($"Cef{uniqueId}:{e.Data}");
             }
         }
 
@@ -300,13 +310,13 @@ namespace livelywpf.Core
 
         public void SendMessage(string msg)
         {
-            if (_process != null)
+            try
             {
-                try
-                {
-                    _process.StandardInput.WriteLine(msg);
-                }
-                catch { }
+                _process?.StandardInput.WriteLine(msg);
+            }
+            catch (Exception e)
+            {
+                Logger.Error($"Stdin write fail: {e.Message}");
             }
         }
 
@@ -422,7 +432,8 @@ namespace livelywpf.Core
                 SendMessage(new LivelyScreenshotCmd() 
                 { 
                     FilePath = Path.GetExtension(filePath) != ".jpg" ? filePath + ".jpg" : filePath,
-                    Format = ImageFormat.Jpeg
+                    Format = ScreenshotFormat.jpeg,
+                    Delay = 0 //unused
                 });
                 await tcs.Task;
             }

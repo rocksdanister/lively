@@ -2,7 +2,6 @@
 using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
-using System.Drawing.Imaging;
 using System.Text;
 
 namespace livelywpf.Core.API
@@ -31,6 +30,14 @@ namespace livelywpf.Core.API
         log,
         error,
         console
+    }
+
+    public enum ScreenshotFormat
+    {
+        jpeg,
+        png,
+        webp,
+        bmp
     }
 
     [Serializable]
@@ -92,8 +99,9 @@ namespace livelywpf.Core.API
     [Serializable]
     public class LivelyScreenshotCmd : IpcMessage
     {
+        public ScreenshotFormat Format { get; set; }
         public string FilePath { get; set; }
-        public ImageFormat Format { get; set; }
+        public uint Delay { get; set; }
         public LivelyScreenshotCmd() : base(MessageType.cmd_screenshot)
         {
         }

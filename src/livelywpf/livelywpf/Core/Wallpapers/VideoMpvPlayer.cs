@@ -310,7 +310,7 @@ namespace livelywpf.Core
                     //time elapsed..
                     tcs.SetResult(false);
                 };
-                //request mpv to take screenshot..
+                //request mpv to take screenshot (default is jpg)..
                 SendMessage("{\"command\":[\"screenshot\",\"video\"]}\n");
                 await tcs.Task;
             }

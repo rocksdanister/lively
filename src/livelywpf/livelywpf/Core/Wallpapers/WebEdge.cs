@@ -1,11 +1,8 @@
 ﻿using livelywpf.Core.API;
-using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Interop;
@@ -154,6 +151,9 @@ namespace livelywpf.Core
                 //visible window..
                 this.hwnd = new WindowInteropHelper(player).Handle;
 
+                bool status = true;
+                Exception error = null;
+                string message = null;
                 try
                 {
                     var tmpHwnd = await player.InitializeWebView();
@@ -168,12 +168,16 @@ namespace livelywpf.Core
                     {
                         throw new Exception("Input handle null.");
                     }
-                    //everything ready..
-                    WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = true, Error = null });
                 }
                 catch (Exception e)
                 {
-                    WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = false, Error = e, Msg = "Failed to init webview." });
+                    error = e;
+                    status = false;
+                    message = "WebView initialization fail.";
+                }
+                finally
+                {
+                    WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = status, Error = error, Msg = message });
                 }
             }
         }
@@ -203,7 +207,7 @@ namespace livelywpf.Core
 
         public async Task ScreenCapture(string filePath)
         {
-            await player?.CaptureScreenshot(Path.GetExtension(filePath) != ".jpg" ? filePath + ".jpg" : filePath, ImageFormat.Jpeg);
+            await player?.CaptureScreenshot(Path.GetExtension(filePath) != ".jpg" ? filePath + ".jpg" : filePath, ScreenshotFormat.jpeg);
         }
 
         public void SendMessage(IpcMessage obj)
