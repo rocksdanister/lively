@@ -158,7 +158,7 @@
                             <TextBlock FontSize="20" Margin="0, 10, 0, 0" Text="GIF"/>
                             <ComboBox Header="{x:Bind UIText.TitleGifPlayer}" Margin="0,10,0,0" MinWidth="200" SelectedIndex="{Binding SelectedGifPlayerIndex, Mode=TwoWay}">
                                 <ComboBoxItem>Win10</ComboBoxItem>
-                                <ComboBoxItem>libMPV(External)</ComboBoxItem>
+                                <ComboBoxItem Visibility="Collapsed">libMPV(External)</ComboBoxItem>
                                 <ComboBoxItem>mpv</ComboBoxItem>
                             </ComboBox>
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipGifPlayer}"/>

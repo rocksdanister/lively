@@ -114,8 +114,10 @@ namespace livelywpf.Views
         {
             var color = GetColorAt(x, y);
             _= this.Dispatcher.BeginInvoke(new Action(() => {
-                ctt.HorizontalOffset = x + 15;
-                ctt.VerticalOffset = y + 15;
+                var dpi = VisualTreeHelper.GetDpi(ctt).DpiScaleX;
+                dpi = dpi != 0f ? dpi : 1.0f;
+                ctt.HorizontalOffset = (x + 15) / dpi;
+                ctt.VerticalOffset = (y + 15) / dpi;
                 cttColor.Fill = new SolidColorBrush(color);
                 cttText.Text = $"({color.R}, {color.G}, {color.B})";
             }));
