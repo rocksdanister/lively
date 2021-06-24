@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Interop;
+using System.Windows.Media.Imaging;
 
 namespace livelywpf
 {
@@ -80,12 +81,21 @@ namespace livelywpf
         private async void webView_NavigationCompleted(object sender, Microsoft.Web.WebView2.Core.CoreWebView2NavigationCompletedEventArgs e)
         {
             await RestoreLivelyProperties(livelyPropertyPath);
+            await SetWallpaperPreviewImage();
             LivelyPropertiesInitialized?.Invoke(this, EventArgs.Empty);
         }
 
         private void CoreWebView2_ProcessFailed(object sender, Microsoft.Web.WebView2.Core.CoreWebView2ProcessFailedEventArgs e)
         {
             Logger.Error("Webview2 Fail: {0}", e.ToString());
+        }
+
+        private async Task SetWallpaperPreviewImage()
+        {
+            var base64String = await CaptureScreenshot(ScreenshotFormat.png);
+            var bi = Base64ToBitmapImage(base64String);
+            //setting as image, when browser hwnd minimized it will show.
+            picView.Source = bi;
         }
 
         public void MessageProcess(IpcMessage obj)
@@ -137,7 +147,7 @@ namespace livelywpf
                         var btn = (LivelyButton)obj;
                         if (btn.IsDefault)
                         {
-                            _= RestoreLivelyProperties(livelyPropertyPath);
+                            _ = RestoreLivelyProperties(livelyPropertyPath);
                         }
                         else
                         {
@@ -156,8 +166,8 @@ namespace livelywpf
             }
         }
 
-        public void MessageProcess(string msg) => 
-            MessageProcess(JsonConvert.DeserializeObject<IpcMessage>(msg, new JsonSerializerSettings() { Converters = { new IpcMessageConverter() }}));
+        public void MessageProcess(string msg) =>
+            MessageProcess(JsonConvert.DeserializeObject<IpcMessage>(msg, new JsonSerializerSettings() { Converters = { new IpcMessageConverter() } }));
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
@@ -269,21 +279,8 @@ namespace livelywpf
         //ref: https://github.com/MicrosoftEdge/WebView2Feedback/issues/529
         public async Task CaptureScreenshot(string filePath, ScreenshotFormat format)
         {
-            var param = format switch
-            {
-                ScreenshotFormat.jpeg => "{\"format\":\"jpeg\"}",
-                ScreenshotFormat.webp => "{\"format\":\"webp\"}",
-                ScreenshotFormat.png => "{}", // Default
-                ScreenshotFormat.bmp => "{}", // Not supported by cef
-                _ => "{}", 
-            };
-            string r3 = await webView.CoreWebView2.CallDevToolsProtocolMethodAsync("Page.captureScreenshot", param);
-            JObject o3 = JObject.Parse(r3);
-            JToken data = o3["data"];
-            string data_str = data.ToString();
-            // Convert base 64 string to byte[]
-            byte[] imageBytes = Convert.FromBase64String(data_str);
-
+            var base64String = await CaptureScreenshot(format);
+            var imageBytes = Convert.FromBase64String(base64String);
             switch (format)
             {
                 case ScreenshotFormat.jpeg:
@@ -305,6 +302,22 @@ namespace livelywpf
             }
         }
 
+        private async Task<string> CaptureScreenshot(ScreenshotFormat format)
+        {
+            var param = format switch
+            {
+                ScreenshotFormat.jpeg => "{\"format\":\"jpeg\"}",
+                ScreenshotFormat.webp => "{\"format\":\"webp\"}",
+                ScreenshotFormat.png => "{}", // Default
+                ScreenshotFormat.bmp => "{}", // Not supported by cef
+                _ => "{}",
+            };
+            string r3 = await webView.CoreWebView2.CallDevToolsProtocolMethodAsync("Page.captureScreenshot", param);
+            JObject o3 = JObject.Parse(r3);
+            JToken data = o3["data"];
+            return data.ToString();
+        }
+
         public Image Base64ToImage(string base64String)
         {
             // Convert base 64 string to byte[]
@@ -313,6 +326,20 @@ namespace livelywpf
             using MemoryStream ms = new MemoryStream(imageBytes, 0, imageBytes.Length);
             Image image = Image.FromStream(ms, true);
             return image;
+        }
+
+        public BitmapImage Base64ToBitmapImage(string base64String)
+        {
+            // Convert base 64 string to byte[]
+            byte[] imageBytes = Convert.FromBase64String(base64String);
+            BitmapImage bi = new BitmapImage();
+            using MemoryStream ms = new MemoryStream(imageBytes);
+            bi.BeginInit();
+            bi.CacheOption = BitmapCacheOption.OnLoad;
+            //bi.DecodePixelWidth = 1280;
+            bi.StreamSource = ms;
+            bi.EndInit();
+            return bi;
         }
 
         #endregion //helpers

@@ -470,9 +470,8 @@ namespace livelywpf.Cef
                             CheckPathExists = true,
                             Multiselect = true,
                         };
-                        openFileDlg.Filter = string.Format($"{lp.Value["text"]}|{lp.Value["filter"].ToString().Replace("|", ";")}");
-                        var result = openFileDlg.ShowDialog();
-                        if (result == true)
+                        openFileDlg.Filter = $"{lp.Value["text"]}|{lp.Value["filter"].ToString().Replace("|", ";")}";
+                        if (openFileDlg.ShowDialog() == true)
                         {
                             var destFiles = new List<string>();
                             var destFolder = Path.Combine(Path.GetDirectoryName(wallpaperData.FilePath), lp.Value["folder"].ToString());

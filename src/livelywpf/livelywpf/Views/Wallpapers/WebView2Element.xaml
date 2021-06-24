@@ -14,7 +14,8 @@
         Title="WebView2Element" Height="450" Width="800"
         Closing="Window_Closing">
 
-    <DockPanel>
+    <Grid>
         <wv2:WebView2 Name="webView" NavigationCompleted="webView_NavigationCompleted"/>
-    </DockPanel>
+        <Image x:Name="picView" Stretch="Fill"/>
+    </Grid>
 </Window>
