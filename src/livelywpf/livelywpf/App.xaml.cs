@@ -130,7 +130,7 @@ namespace livelywpf
                     }
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Logger.Error("Base Wallpaper Extract Fail:" + e.ToString());
             }

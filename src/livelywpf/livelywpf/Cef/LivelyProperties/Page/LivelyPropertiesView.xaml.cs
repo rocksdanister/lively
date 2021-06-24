@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -65,10 +66,6 @@ namespace livelywpf.Cef
                 _= Task.Run(() => (MessageBox.Show(e.ToString(), Properties.Resources.TitleAppName)));
             }
         }
-
-        #endregion //init
-
-        #region ui generation
 
         private void GenerateUIElements()
         {
@@ -253,6 +250,21 @@ namespace livelywpf.Cef
                 }
 
                 AddUIElement(obj);
+                //File browser for folderdropdown.
+                if (uiElementType.Equals("folderDropdown", StringComparison.OrdinalIgnoreCase))
+                {
+                    var folderDropDownOpenFileBtn = new Button()
+                    {
+                        Tag = item.Key,
+                        Content = Properties.Resources.TextBrowse,
+                        HorizontalAlignment = HorizontalAlignment.Left,
+                        MaxWidth = maxWidth,
+                        MinWidth = maxWidth,
+                        Margin = new Thickness(0, 5, 0, 0),
+                    };
+                    folderDropDownOpenFileBtn.Click += FolderDropDownOpenFileBtn_Click;
+                    AddUIElement(folderDropDownOpenFileBtn);
+                }
             }
 
             //restore-default btn.
@@ -274,7 +286,7 @@ namespace livelywpf.Cef
             uiPanel.Children.Add(obj);
         }
 
-        #endregion //ui generation
+        #endregion //init
 
         #region slider
 
@@ -427,6 +439,76 @@ namespace livelywpf.Cef
             catch { }
         }
 
+        private void FolderDropDownOpenFileBtn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var btn = sender as Button;
+                //find the folderdropdown control..
+                Windows.UI.Xaml.Controls.ComboBox cmbBox = null;
+                foreach (object element in uiPanel.Children)
+                {
+                    if ((element as FrameworkElement).Name == btn.Tag.ToString())
+                    {
+                        var xamlHost = (WindowsXamlHost)element;
+                        cmbBox = (Windows.UI.Xaml.Controls.ComboBox)xamlHost.Child;
+                        break;
+                    }
+                }
+                if (cmbBox == null)
+                    return;
+
+                foreach (var lp in livelyPropertyCopyData)
+                {
+                    string uiElementType = lp.Value["type"].ToString();
+                    if (uiElementType.Equals("folderDropdown", StringComparison.OrdinalIgnoreCase) && btn.Tag.ToString() == lp.Key)
+                    {
+                        Microsoft.Win32.OpenFileDialog openFileDlg = new Microsoft.Win32.OpenFileDialog
+                        {
+                            Title = Properties.Resources.TitleAddWallpaper,
+                            CheckFileExists = true,
+                            CheckPathExists = true,
+                            Multiselect = true,
+                        };
+                        openFileDlg.Filter = string.Format($"{lp.Value["text"]}|{lp.Value["filter"].ToString().Replace("|", ";")}");
+                        var result = openFileDlg.ShowDialog();
+                        if (result == true)
+                        {
+                            var destFiles = new List<string>();
+                            var destFolder = Path.Combine(Path.GetDirectoryName(wallpaperData.FilePath), lp.Value["folder"].ToString());
+                            //copy the new file over..
+                            foreach (var srcFile in openFileDlg.FileNames)
+                            {
+                                var destFile = Path.Combine(destFolder, Path.GetFileName(srcFile));
+                                if (!File.Exists(destFile))
+                                {
+                                    File.Copy(srcFile, destFile);
+                                }
+                                else
+                                {
+                                    destFile = FileOperations.NextAvailableFilename(destFile);
+                                    File.Copy(srcFile, destFile);
+                                }
+                                destFiles.Add(Path.GetFileName(destFile));
+                            }
+                            destFiles.Sort();
+                            //add copied files to bottom of dropdown..
+                            foreach (var file in destFiles)
+                            {
+                                cmbBox.Items.Add(file);
+                            }
+                        }
+                        break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.ToString());
+                _ = MessageBox.Show(ex.Message, Properties.Resources.TextError);
+            }
+        }
+
         private static string[] GetFileNames(string path, string searchPattern, SearchOption searchOption)
         {
             string[] searchPatterns = searchPattern.Split('|');
@@ -436,6 +518,7 @@ namespace livelywpf.Cef
             files.Sort();
 
             List<string> tmp = new List<string>();
+            //tmp.AddRange(files.Select(x => Path.GetFileName(x)));
             foreach (var item in files)
             {
                 tmp.Add(Path.GetFileName(item));
