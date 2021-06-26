@@ -847,4 +847,11 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextLearnMore" xml:space="preserve">
     <value>更多说明</value>
   </data>
+  <data name="DescOledScreensaverNotice" xml:space="preserve">
+    <value>大多数现代 LCD 和 LED 显示器都不会出现老化问题，因此任何墙纸都可以用作屏幕保护程序。
+
+对于容易老化的 OLED、等离子或 CRT 显示器，建议使用有规律运动的墙纸和整体深色主题，以减轻老化，但此功能未经测试，无法保证其有效性。
+
+Lively 屏幕保护程序的主要目的是为您的电脑添加另一层自定义，使用屏幕保护程序作为老化保护，风险自负！</value>
+  </data>
 </root>

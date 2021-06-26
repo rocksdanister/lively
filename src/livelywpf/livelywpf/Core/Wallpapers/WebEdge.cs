@@ -13,7 +13,7 @@ namespace livelywpf.Core
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
-        private IntPtr hwnd, hwndInput;
+        private IntPtr hwndWindow, hwndWebView;
         private readonly WebView2Element player;
         private readonly LibraryModel model;
         private LivelyScreen display;
@@ -80,16 +80,6 @@ namespace livelywpf.Core
             }));
         }
 
-        public IntPtr GetHWND()
-        {
-            return hwnd;
-        }
-
-        public IntPtr GetHWNDInput()
-        {
-            return hwndInput;
-        }
-
         public string GetLivelyPropertyCopyPath()
         {
             return livelyPropertyCopyPath;
@@ -115,16 +105,26 @@ namespace livelywpf.Core
             return model.LivelyInfo.Type;
         }
 
+        public IntPtr GetHWND()
+        {
+            return hwndWindow;
+        }
+
+        public IntPtr GetHWNDInput()
+        {
+            return hwndWebView;
+        }
+
         public void Pause()
         {
             //minimize browser.
-            NativeMethods.ShowWindow(GetHWND(), (uint)NativeMethods.SHOWWINDOW.SW_SHOWMINNOACTIVE);
+            NativeMethods.ShowWindow(hwndWebView, (uint)NativeMethods.SHOWWINDOW.SW_SHOWMINNOACTIVE);
         }
 
         public void Play()
         {
             //show minimized browser.
-            NativeMethods.ShowWindow(GetHWND(), (uint)NativeMethods.SHOWWINDOW.SW_SHOWNOACTIVATE);
+            NativeMethods.ShowWindow(hwndWebView, (uint)NativeMethods.SHOWWINDOW.SW_SHOWNOACTIVATE);
         }
 
         public void SendMessage(string msg)
@@ -139,7 +139,7 @@ namespace livelywpf.Core
 
         public void SetVolume(int volume)
         {
-
+            //todo
         }
 
         public async void Show()
@@ -150,7 +150,7 @@ namespace livelywpf.Core
                 player.Closed += Player_Closed;
                 player.Show();
                 //visible window..
-                this.hwnd = new WindowInteropHelper(player).Handle;
+                this.hwndWindow = new WindowInteropHelper(player).Handle;
 
                 bool status = true;
                 Exception error = null;
@@ -162,12 +162,12 @@ namespace livelywpf.Core
                     var parentHwnd = NativeMethods.FindWindowEx(tmpHwnd, IntPtr.Zero, "Chrome_WidgetWin_0", null);
                     if (!parentHwnd.Equals(IntPtr.Zero))
                     {
-                        this.hwndInput = NativeMethods.FindWindowEx(parentHwnd, IntPtr.Zero, "Chrome_WidgetWin_1", null);
+                        this.hwndWebView = NativeMethods.FindWindowEx(parentHwnd, IntPtr.Zero, "Chrome_WidgetWin_1", null);
                     }
 
-                    if (this.hwndInput.Equals(IntPtr.Zero))
+                    if (this.hwndWebView.Equals(IntPtr.Zero))
                     {
-                        throw new Exception("Input handle null.");
+                        throw new Exception("Webview input handle not found.");
                     }
                 }
                 catch (Exception e)

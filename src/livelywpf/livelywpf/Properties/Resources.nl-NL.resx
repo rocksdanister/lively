@@ -835,4 +835,11 @@ Alle processen: Heavier, Scant alle processen om afspeelmogelijkheden te bepalen
   <data name="TextLearnMore" xml:space="preserve">
     <value>Learn more</value>
   </data>
+    <data name="DescOledScreensaverNotice" xml:space="preserve">
+    <value>Most modern LCD and LED displays do not suffer from burn-in issue and therefore any wallpaper can be used as screensaver.
+
+For OLED, Plasma or CRT displays which are susceptibe to burn-in it is advised to use wallpaper with regular motion and an overall dark theme which is supposed to mitigate burn-in but this feature is untested and its effectiveness cannot be guaranteed.
+
+The main purpose of Lively's screensavers is to add another layer of customization to your pc, use screensavers as burn-in protection at your own risk!</value>
+  </data>
 </root>

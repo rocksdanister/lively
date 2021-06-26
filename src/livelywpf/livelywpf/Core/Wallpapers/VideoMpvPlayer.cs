@@ -122,12 +122,14 @@ namespace livelywpf.Core
             cmdArgs.Append("--geometry=-9999:0 ");
             //always create gui window
             cmdArgs.Append("--force-window=yes ");
-            //Don't move the window when clicking
+            //don't move the window when clicking
             cmdArgs.Append("--no-window-dragging ");
-            //Don't hide cursor after sometime.
+            //don't hide cursor after sometime.
             cmdArgs.Append("--cursor-autohide=no ");
             //allow windows screensaver
             cmdArgs.Append("--stop-screensaver=no ");
+            //disable mpv default (built-in) key bindings
+            cmdArgs.Append("--input-default-bindings=no ");
             //video stretch algorithm
             cmdArgs.Append(scalerArg + " ");
             //on-screen-controller visibility

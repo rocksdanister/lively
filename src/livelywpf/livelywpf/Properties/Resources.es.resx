@@ -845,4 +845,11 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextLearnMore" xml:space="preserve">
     <value>Learn more</value>
   </data>
+    <data name="DescOledScreensaverNotice" xml:space="preserve">
+    <value>La mayoría de pantallas modernas LCD y LED no sufren de quemado de pantalla, y por esa razón cualquier fondo de pantallas puede ser usado como salva pantallas.
+
+Para pantallas OLED, Plasma o CRT que son susceptibles ha quemado y retención de imagen es recomendado el uso de salva pantallas con movimiento continuo, y que tenga un tema relativamente oscuro que ayuden a mitigar el quemado de la pantalla, pero la eficacia de este método no ah sido comprobado y no puede ser garantizado.
+
+El objetivo principal del salva pantallas en Lively es ofrecer más posibilidades para personalizar tu PC. Usa el salva pantallas para proteger contra el quemado de pantalla bajo tu propio riesgo.</value>
+  </data>
 </root>
