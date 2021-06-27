@@ -109,7 +109,7 @@ namespace livelyCmdUtility
 
             try
             {
-                livelywpf.Helpers.PipeClient.SendMessage("LIVELY:DESKTOPWALLPAPERSYSTEM", args);
+                livelywpf.Helpers.PipeClient.SendMessage($"LIVELY:DESKTOPWALLPAPERSYSTEM{Environment.UserName}", args);
             }
             catch (Exception e)
             {

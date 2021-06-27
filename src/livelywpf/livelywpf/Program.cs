@@ -14,6 +14,7 @@ namespace livelywpf
 
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private static readonly string uniqueAppName = "LIVELY:DESKTOPWALLPAPERSYSTEM";
+        private static readonly string pipeServerName = $"{uniqueAppName}{Environment.UserName}";
         private static readonly Mutex mutex = new Mutex(false, uniqueAppName);
         //Loaded from Settings.json (User configurable.)
         public static string WallpaperDir { get; set; }
@@ -42,15 +43,7 @@ namespace livelywpf
                     {
                         //skipping first element (application path.)
                         var args = Environment.GetCommandLineArgs().Skip(1).ToArray();
-                        if (args.Length != 0)
-                        {
-                            Helpers.PipeClient.SendMessage(uniqueAppName, args);
-                        }
-                        else
-                        {
-                            //user opened application.
-                            Helpers.PipeClient.SendMessage(uniqueAppName, new string[] { "--showApp", "true" });
-                        }
+                        Helpers.PipeClient.SendMessage(pipeServerName, args.Length != 0 ? args : new string[] { "--showApp", "true" });
                     }
                     catch
                     {
@@ -74,12 +67,12 @@ namespace livelywpf
 
             try
             {
-                var server = new Helpers.PipeServer(uniqueAppName);
+                var server = new Helpers.PipeServer(pipeServerName);
                 server.MessageReceived += Server_MessageReceived1;
             }
-            catch 
+            catch (Exception e)
             {
-                //todo
+                MessageBox.Show($"Failed to create ipc server: {e.Message}", "Lively Wallpaper");
             }
 
             try

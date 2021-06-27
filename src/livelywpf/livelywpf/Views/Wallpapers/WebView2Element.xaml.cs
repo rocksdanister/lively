@@ -36,11 +36,12 @@ namespace livelywpf
         }
 
         //TODO:
-        //cross-origin request fix for disk files.
-        //custom cache path.
+        //cross-origin request soln when ready.
         public async Task<IntPtr> InitializeWebView()
         {
-            await webView.EnsureCoreWebView2Async();
+            //Ref: https://docs.microsoft.com/en-us/microsoft-edge/webview2/concepts/user-data-folder
+            var env = await CoreWebView2Environment.CreateAsync(null, Path.Combine(Program.AppDataDir, "WebView2"));
+            await webView.EnsureCoreWebView2Async(env);
             webView.CoreWebView2.ProcessFailed += CoreWebView2_ProcessFailed;
 
             if (wallpaperType == WallpaperType.url)

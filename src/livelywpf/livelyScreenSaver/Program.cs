@@ -49,7 +49,7 @@ namespace livelyScreenSaver
             {
                 if (msg != null)
                 {
-                    livelywpf.Helpers.PipeClient.SendMessage("LIVELY:DESKTOPWALLPAPERSYSTEM", msg);
+                    livelywpf.Helpers.PipeClient.SendMessage($"LIVELY:DESKTOPWALLPAPERSYSTEM{Environment.UserName}", msg);
                 }
             }
             catch { }
