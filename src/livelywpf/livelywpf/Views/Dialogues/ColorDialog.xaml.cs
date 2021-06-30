@@ -119,7 +119,7 @@ namespace livelywpf.Views
                 ctt.HorizontalOffset = (x + 15) / dpi;
                 ctt.VerticalOffset = (y + 15) / dpi;
                 cttColor.Fill = new SolidColorBrush(color);
-                cttText.Text = $"({color.R}, {color.G}, {color.B})";
+                cttText.Text = $"rgb({color.R}, {color.G}, {color.B})";
             }));
         }
 

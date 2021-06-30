@@ -11,6 +11,9 @@ namespace livelyCmdUtility
 {   
     class Program
     {
+        private static readonly string uniqueAppName = "LIVELY:DESKTOPWALLPAPERSYSTEM";
+        private static readonly string pipeServerName = uniqueAppName + Environment.UserName;
+
         [Verb("app", isDefault: true, HelpText = "Application controls.")]
         class AppOptions
         {
@@ -109,11 +112,11 @@ namespace livelyCmdUtility
 
             try
             {
-                livelywpf.Helpers.PipeClient.SendMessage($"LIVELY:DESKTOPWALLPAPERSYSTEM{Environment.UserName}", args);
+                livelywpf.Helpers.PipeClient.SendMessage(pipeServerName, args);
             }
             catch (Exception e)
             {
-                Console.WriteLine("Failed to communicate with Lively process (Lively not running?): " + e.Message);
+                Console.WriteLine($"Error: {e.Message}");
             }
         }
 

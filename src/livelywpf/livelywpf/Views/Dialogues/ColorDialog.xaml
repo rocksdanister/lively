@@ -32,9 +32,9 @@
             <Button Name="pickerBtn" Click="PickerBtn_Click" ToolTipService.IsEnabled="False" MinWidth="50" Margin="0, 0, 5, 0">
                 <ui:FontIcon Glyph="&#xEF3C;"/>
                 <Button.ToolTip>
-                    <ToolTip x:Name="ctt" MinWidth="125" MinHeight="25" Placement="Absolute">
+                    <ToolTip x:Name="ctt" MinWidth="125" MinHeight="30" Placement="Absolute">
                         <StackPanel Orientation="Horizontal">
-                            <Rectangle x:Name="cttColor" VerticalAlignment="Center" Width="25" Height="25" Margin="1, 1, 5, 1"/>
+                            <Rectangle x:Name="cttColor" VerticalAlignment="Center" Width="30" Height="30" RadiusX="5" RadiusY="5" Margin="1, 1, 5, 1"/>
                             <TextBlock x:Name="cttText" VerticalAlignment="Center"/>
                         </StackPanel>
                     </ToolTip>

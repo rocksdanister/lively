@@ -28,7 +28,7 @@
     <PackageReference Include="DesktopBridge.Helpers" Version="1.2.2" />
     <PackageReference Include="Downloader" Version="2.2.8" />
     <PackageReference Include="H.Hooks" Version="1.4.6" />
-    <PackageReference Include="Magick.NET-Q16-x86" Version="7.24.1" />
+    <PackageReference Include="Magick.NET-Q16-x86" Version="8.0.0" />
     <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.0.2" />
     <PackageReference Include="Microsoft.Toolkit.Wpf.UI.Controls" Version="6.1.2" />
     <PackageReference Include="Microsoft.Toolkit.Wpf.UI.XamlHost" Version="6.1.2" />

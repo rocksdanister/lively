@@ -14,7 +14,7 @@ namespace livelywpf
 
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private static readonly string uniqueAppName = "LIVELY:DESKTOPWALLPAPERSYSTEM";
-        private static readonly string pipeServerName = $"{uniqueAppName}{Environment.UserName}";
+        private static readonly string pipeServerName = uniqueAppName + Environment.UserName;
         private static readonly Mutex mutex = new Mutex(false, uniqueAppName);
         //Loaded from Settings.json (User configurable.)
         public static string WallpaperDir { get; set; }

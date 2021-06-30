@@ -835,10 +835,10 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Bei Inaktivität wird nach der festgelegten Zeit der aktuelle Hinergrund als Bildschirmschoner verwendet.</value>
   </data>
   <data name="TextHours" xml:space="preserve">
-    <value>Stunden</value>
+    <value>Stunde(n)</value>
   </data>
   <data name="TextMinutes" xml:space="preserve">
-    <value>Minuten</value>
+    <value>Minute(n)</value>
   </data>
   <data name="TextLearnMore" xml:space="preserve">
     <value>Mehr erfahren</value>

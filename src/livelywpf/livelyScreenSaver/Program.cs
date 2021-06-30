@@ -4,6 +4,9 @@ namespace livelyScreenSaver
 {
     class Program
     {
+        private static readonly string uniqueAppName = "LIVELY:DESKTOPWALLPAPERSYSTEM";
+        private static readonly string pipeServerName = uniqueAppName + Environment.UserName;
+
         static void Main(string[] args)
         {
             string[] msg = null;
@@ -49,7 +52,7 @@ namespace livelyScreenSaver
             {
                 if (msg != null)
                 {
-                    livelywpf.Helpers.PipeClient.SendMessage($"LIVELY:DESKTOPWALLPAPERSYSTEM{Environment.UserName}", msg);
+                    livelywpf.Helpers.PipeClient.SendMessage(pipeServerName, msg);
                 }
             }
             catch { }
