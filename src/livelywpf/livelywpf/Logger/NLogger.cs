@@ -6,12 +6,13 @@ using System.IO;
 using System.Text;
 using System.Linq;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace livelywpf
 {
     public class NLogger
     {
-        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         private static bool _isInitialized = false;
         public static void SetupNLog()
         {
@@ -34,7 +35,7 @@ namespace livelywpf
             config.AddRule(LogLevel.Debug, LogLevel.Fatal, logfile);
 
             // Apply config           
-            NLog.LogManager.Configuration = config;
+            LogManager.Configuration = config;
             _isInitialized = true;
         }
 
@@ -75,26 +76,19 @@ namespace livelywpf
 
         public static void LogHardwareInfo()
         {
-            if(!_isInitialized)
-            {
+            if (!_isInitialized)
                 SetupNLog();
-            }
 
-            Logger.Info(
-                "\n" + "Lively v" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() +
-                " " + CultureInfo.CurrentCulture.Name +
-                " 64Bit:" + Environment.Is64BitProcess + " MSIX:" + Program.IsMSIX +
-                "\n" + SystemInfo.GetOSInfo() +
-                SystemInfo.GetCPUInfo() +
-                SystemInfo.GetGPUInfo());
+            var arch = Environment.Is64BitProcess ? "x86" : "x64";
+            var container = Program.IsMSIX ? "desktop-bridge" : "desktop-native";
+            Logger.Info($"\nLively v{Assembly.GetExecutingAssembly().GetName().Version} {arch} {container} {CultureInfo.CurrentCulture.Name}" +
+                $"\n{SystemInfo.GetOSInfo()}\n{SystemInfo.GetCpuInfo()}\n{SystemInfo.GetGpuInfo()}\n");
         }
 
         public static void LogWin32Error(string msg = null)
         {
             if (!_isInitialized)
-            {
                 SetupNLog();
-            }
 
             //todo: throw equivalent win32 exception.
             int err = System.Runtime.InteropServices.Marshal.GetLastWin32Error();

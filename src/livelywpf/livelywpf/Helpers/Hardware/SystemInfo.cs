@@ -12,19 +12,17 @@ namespace livelywpf
     /// </summary>
     public static class SystemInfo
     {
-        public static string GetGPUInfo()
+        public static string GetGpuInfo()
         {
             try
             {
-                using (ManagementObjectSearcher myVideoObject = new ManagementObjectSearcher("select * from Win32_VideoController"))
+                using ManagementObjectSearcher myVideoObject = new ManagementObjectSearcher("select * from Win32_VideoController");
+                var sb = new StringBuilder();
+                foreach (ManagementObject obj in myVideoObject.Get())
                 {
-                    var sb = new StringBuilder();
-                    foreach (ManagementObject obj in myVideoObject.Get())
-                    {
-                        sb.AppendLine("GPU: " + obj["Name"]);
-                    }
-                    return sb.ToString();
+                    sb.AppendLine("GPU: " + obj["Name"]);
                 }
+                return sb.ToString().TrimEnd();
             }
             catch (Exception e)
             {
@@ -37,36 +35,25 @@ namespace livelywpf
             var result = new List<string>();
             try
             {
-                using (ManagementObjectSearcher myVideoObject = new ManagementObjectSearcher("select * from Win32_VideoController"))
+                using ManagementObjectSearcher myVideoObject = new ManagementObjectSearcher("select * from Win32_VideoController");
+                foreach (ManagementObject obj in myVideoObject.Get())
                 {
-                    foreach (ManagementObject obj in myVideoObject.Get())
-                    {
-                        result.Add(obj["Name"].ToString());
-                    }
+                    result.Add(obj["Name"].ToString());
                 }
             }
             catch { }
             return result;
         }
 
-        public static string GetCPUInfo()
+        public static string GetCpuInfo()
         {
-            try
+            var sb = new StringBuilder();
+            var gpu = GetCpu();
+            foreach (var item in gpu)
             {
-                using (ManagementObjectSearcher myProcessorObject = new ManagementObjectSearcher("select * from Win32_Processor"))
-                {
-                    var sb = new StringBuilder();
-                    foreach (ManagementObject obj in myProcessorObject.Get())
-                    {
-                        sb.AppendLine("CPU: " + obj["Name"]);
-                    }
-                    return sb.ToString();
-                }
+                sb.AppendLine("CPU: " + item);
             }
-            catch (Exception e)
-            {
-                return "CPU: " + e.Message;
-            }
+            return sb.ToString().TrimEnd();
         }
 
         public static List<string> GetCpu()
@@ -74,12 +61,10 @@ namespace livelywpf
             var result = new List<string>();
             try
             {
-                using (ManagementObjectSearcher myProcessorObject = new ManagementObjectSearcher("select * from Win32_Processor"))
+                using ManagementObjectSearcher myProcessorObject = new ManagementObjectSearcher("select * from Win32_Processor");
+                foreach (ManagementObject obj in myProcessorObject.Get())
                 {
-                    foreach (ManagementObject obj in myProcessorObject.Get())
-                    {
-                        result.Add(obj["Name"].ToString());
-                    }
+                    result.Add(obj["Name"].ToString());
                 }
             }
             catch { }
@@ -90,15 +75,13 @@ namespace livelywpf
         {
             try
             {
-                using (ManagementObjectSearcher myOperativeSystemObject = new ManagementObjectSearcher("select * from Win32_OperatingSystem"))
+                using ManagementObjectSearcher myOperativeSystemObject = new ManagementObjectSearcher("select * from Win32_OperatingSystem");
+                var sb = new StringBuilder();
+                foreach (ManagementObject obj in myOperativeSystemObject.Get())
                 {
-                    var sb = new StringBuilder();
-                    foreach (ManagementObject obj in myOperativeSystemObject.Get())
-                    {
-                        sb.AppendLine("OS: " + obj["Caption"] + " " + obj["Version"]);
-                    }
-                    return sb.ToString();
+                    sb.AppendLine("OS: " + obj["Caption"] + " " + obj["Version"]);
                 }
+                return sb.ToString().TrimEnd();
             }
             catch (Exception e)
             {
@@ -112,16 +95,14 @@ namespace livelywpf
             try
             {
                 var sku = 0;
-                using (ManagementObjectSearcher myOperativeSystemObject = new ManagementObjectSearcher("select * from Win32_OperatingSystem"))
+                using ManagementObjectSearcher myOperativeSystemObject = new ManagementObjectSearcher("select * from Win32_OperatingSystem");
+                foreach (ManagementObject obj in myOperativeSystemObject.Get())
                 {
-                    foreach (ManagementObject obj in myOperativeSystemObject.Get())
-                    {
-                        sku = int.Parse(obj["OperatingSystemSKU"].ToString());
-                        break;
-                    }
-                    //ref: https://docs.microsoft.com/en-us/windows/win32/api/sysinfoapi/nf-sysinfoapi-getproductinfo
-                    result = (sku == 5 || sku == 16 || sku == 26 || sku == 27 || sku == 28 || sku == 47 || sku == 49 || sku == 84 || sku == 122 || sku == 162);
+                    sku = int.Parse(obj["OperatingSystemSKU"].ToString());
+                    break;
                 }
+                //ref: https://docs.microsoft.com/en-us/windows/win32/api/sysinfoapi/nf-sysinfoapi-getproductinfo
+                result = (sku == 5 || sku == 16 || sku == 26 || sku == 27 || sku == 28 || sku == 47 || sku == 49 || sku == 84 || sku == 122 || sku == 162);
             }
             catch { }
             return result;

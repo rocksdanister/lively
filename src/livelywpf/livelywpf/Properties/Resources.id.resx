@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -295,7 +295,7 @@ Jika masih tidak berfungsi, tutup dan mulai ulang Lively/Windows.
     <value>Tetikus</value>
   </data>
   <data name="TextMouseInteractOnDesktop" xml:space="preserve">
-    <value>Interaksi tetikus ketika aplikasi sedang dalam keadaan fokus</value>
+    <value>Interaksi mouse ketika aplikasi sedang dalam keadaan fokus</value>
   </data>
   <data name="TextNext" xml:space="preserve">
     <value>Selanjutnya</value>
@@ -706,113 +706,113 @@ Semua proses: Lebih berat, memindai semua proses untuk menentukan tingkah laku p
     <value>Mulai bersama Windows</value>
   </data>
   <data name="TextTitle" xml:space="preserve">
-    <value>Title</value>
+    <value>Judul</value>
   </data>
   <data name="TextDescription" xml:space="preserve">
-    <value>Description</value>
+    <value>Deskripsi</value>
   </data>
   <data name="TextOK" xml:space="preserve">
     <value>OK</value>
   </data>
   <data name="TextCancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Batal</value>
   </data>
   <data name="TextCreatePreview" xml:space="preserve">
-    <value>Create Preview</value>
+    <value>Buat Preview</value>
   </data>
   <data name="TitleGifPlayer" xml:space="preserve">
-    <value>Gif Player</value>
+    <value>Pemutar GIF</value>
   </data>
   <data name="TipGifPlayer" xml:space="preserve">
-    <value>Select the player used for gif wallpaper.</value>
+    <value>Pilih pemutar untuk wallpaper gif</value>
   </data>
   <data name="TextFeatureMissing" xml:space="preserve">
-    <value>Some features are not available in this version of Lively.</value>
+    <value>Beberapa fitur tidak tersedia di versi Lively ini</value>
   </data>
-    <data name="TextControlPanelOpen" xml:space="preserve">
-    <value>Click here to manage wallpapers.</value>
+  <data name="TextControlPanelOpen" xml:space="preserve">
+    <value>Klik disini untuk mengatur wallpaper</value>
   </data>
-    <data name="TextStoreReview" xml:space="preserve">
-    <value>Do you enjoy using Lively? Leave a review :)</value>
+  <data name="TextStoreReview" xml:space="preserve">
+    <value>Suka Lively ? Tinggalkan sebuah ulasan :)</value>
   </data>
   <data name="TitleStore" xml:space="preserve">
     <value>Store</value>
     <comment>For different version of Lively, example: Microsoft Store</comment>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>Your Windows N/KN version will require the download of additional codecs to support video playback in wallpapers.</value>
+    <value>Versi Windows N/KN kamu membutuhkan codec tambahan untuk mendukung pemutaran video di wallpaper</value>
   </data>
   <data name="TextLicense" xml:space="preserve">
-    <value>License</value>
+    <value>Lisensi</value>
   </data>
   <data name="TextPrivacyPolicy" xml:space="preserve">
-    <value>Privacy Policy</value>
+    <value>Kebijakan Privasi</value>
   </data>
   <data name="TitleAudioDesktopOnly" xml:space="preserve">
-    <value>Play audio only when desktop is focused</value>
+    <value>Hanya putar audio ketika fokus ke desktop</value>
   </data>
   <data name="TipExportLogs" xml:space="preserve">
-    <value>Create log report file.</value>
+    <value>Buat file laporan log.</value>
   </data>
   <data name="TitleExportLogs" xml:space="preserve">
-    <value>Log File</value>
+    <value>File log</value>
   </data>
   <data name="TitleReportBug" xml:space="preserve">
-    <value>Report Bug</value>
+    <value>Laporkan Masalah</value>
   </data>
   <data name="TitleVideoHardwareDecode" xml:space="preserve">
-    <value>GPU Decode</value>
+    <value>Decode GPU</value>
   </data>
   <data name="TipVideoHardwareDecode" xml:space="preserve">
-    <value>Use hardware acceleration when possible.</value>
+    <value>Gunakan akselerasi hardware jika mungkin</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
-  <value>Please stop before proceeding.</value>
+  <value>Harap berhenti sebelum melanjutkan.</value>
 </data>
-<data name="TextEditWallpaper" xml:space="preserve">
+  <data name="TextEditWallpaper" xml:space="preserve">
   <value>Edit</value>
 </data>
-<data name="TitleLocation" xml:space="preserve">
-  <value>Location</value>
+  <data name="TitleLocation" xml:space="preserve">
+  <value>Lokasi</value>
 </data>
-<data name="TitleSkipConfirm" xml:space="preserve">
-  <value>Skip Confirmation</value>
+  <data name="TitleSkipConfirm" xml:space="preserve">
+  <value>Lewati Konfirmasi</value>
 </data>
-<data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-  <value>Enter optional commandline arguments</value>
-</data>  
+  <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
+  <value>Masukkan argumen commandline opsional</value>
+</data>
   <data name="TextGitHubStar" xml:space="preserve">
-    <value>Show some love by dropping a star</value>
+    <value>Tujukkan cinta dengan memberi bintang</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
-    <value>Incompatible program found, taskbar theming disabled.</value>
+    <value>Program yang tidak kompatibel ditemukan, tema taskbar dinonaktifkan.</value>
   </data>
   <data name="TitleTaskbarTheme" xml:space="preserve">
-    <value>Taskbar Theme</value>
+    <value>Tema Taskbar</value>
   </data>
   <data name="TitleLockscreenPicture" xml:space="preserve">
-    <value>Lockscreen Picture</value>
+    <value>Gambar Lockscreen</value>
   </data>
   <data name="TitleDesktopPicture" xml:space="preserve">
-    <value>Desktop Picture</value>
+    <value>Gambar Desktop</value>
   </data>
   <data name="TipLockscreenPicture" xml:space="preserve">
-    <value>Set a picture of animated wallpaper as lockscreen wallpaper.</value>
+    <value>Atur gambar wallpaper animasi sebagai wallpaper layar kunci.</value>
   </data>
   <data name="TipDesktopPicture" xml:space="preserve">
-    <value>Set a picture of animated wallpaper as desktop wallpaper.</value>
+    <value>Atur gambar wallpaper animasi sebagai wallpaper desktop.</value>
   </data>
   <data name="TipTaskbarTheme" xml:space="preserve">
-    <value>Change system taskbar appearance.</value>
+    <value>Ubah tampilan taskbar sistem.</value>
   </data>
   <data name="TextTaskbarThemeBlur" xml:space="preserve">
-    <value>Blur</value>
+    <value>Kabur</value>
   </data>
   <data name="TextTaskbarThemeClear" xml:space="preserve">
-    <value>Clear</value>
+    <value>Hapus</value>
   </data>
   <data name="TextTaskbarThemeColor" xml:space="preserve">
-    <value>Color</value>
+    <value>Warna</value>
   </data>
   <data name="TextTaskbarThemeFluent" xml:space="preserve">
     <value>Fluent</value>
@@ -824,31 +824,31 @@ Semua proses: Lebih berat, memindai semua proses untuk menentukan tingkah laku p
     <value>Wallpaper Fluent</value>
   </data>
   <data name="TitleSystem" xml:space="preserve">
-    <value>System</value>
+    <value>Sistem</value>
   </data>
   <data name="TitleSourceCode" xml:space="preserve">
-    <value>Source Code</value>
+    <value>Kode sumber</value>
   </data>
-    <data name="TitleScreensaver" xml:space="preserve">
+  <data name="TitleScreensaver" xml:space="preserve">
     <value>Screensaver</value>
   </data>
   <data name="TipScreensaver" xml:space="preserve">
-    <value>After the selected inactivity period use the current wallpaper as your screensaver.</value>
+    <value>Setelah periode tidakaktif yang telah dipilah, gunakan wallpaper saat ini sebagai screensaver anda.</value>
   </data>
-    <data name="TextHours" xml:space="preserve">
-    <value>hours</value>
+  <data name="TextHours" xml:space="preserve">
+    <value>jam</value>
   </data>
   <data name="TextMinutes" xml:space="preserve">
-    <value>minutes</value>
+    <value>menit</value>
   </data>
   <data name="TextLearnMore" xml:space="preserve">
-    <value>Learn more</value>
+    <value>Pelajari Lebih Lanjut</value>
   </data>
-    <data name="DescOledScreensaverNotice" xml:space="preserve">
-    <value>Most modern LCD and LED displays do not suffer from burn-in issue and therefore any wallpaper can be used as screensaver.
+  <data name="DescOledScreensaverNotice" xml:space="preserve">
+    <value>Sebagian besar layar LCD dan LED modern tidak mengalami masalah burn-in dan oleh karena itu wallpaper apa pun dapat digunakan sebagai screensaver.
 
-For OLED, Plasma or CRT displays which are susceptibe to burn-in it is advised to use wallpaper with regular motion and an overall dark theme which is supposed to mitigate burn-in but this feature is untested and its effectiveness cannot be guaranteed.
+Untuk tampilan OLED, Plasma, atau CRT yang rentan mengalami masalah burn-in, disarankan untuk menggunakan wallpaper dengan gerakan reguler dan tema gelap keseluruhan yang seharusnya mengurangi burn-in tetapi fitur ini belum teruji dan efektivitasnya tidak dapat dijamin.
 
-The main purpose of Lively's screensavers is to add another layer of customization to your pc, use screensavers as burn-in protection at your own risk!</value>
+Tujuan utama screensaver Lively adalah untuk menambahkan bagian kostumisasi lain ke komputer Anda, gunakan screensaver sebagai perlindungan burn-in dengan risiko Anda sendiri!</value>
   </data>
 </root>

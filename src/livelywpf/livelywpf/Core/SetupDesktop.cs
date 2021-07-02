@@ -42,14 +42,13 @@ namespace livelywpf
         public static void SetWallpaper(LibraryModel wallpaper, LivelyScreen display)
         {
             Logger.Info("Core: Setting Wallpaper=>" + wallpaper.Title + " " + wallpaper.FilePath);
-            if (SystemParameters.HighContrast)
+            if (!_isInitialized)
             {
-                Logger.Error("Failed to setup workers, high contrast mode!");
-                MessageBox.Show(Properties.Resources.LivelyExceptionHighContrastMode, Properties.Resources.TextError, MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                return;
-            }
-            else if (!_isInitialized)
-            {
+                if (SystemParameters.HighContrast)
+                {
+                    Logger.Info("Core: Highcontrast mode detected, some functionalities of Lively may not work properly.");
+                }
+
                 // Fetch the Progman window
                 progman = NativeMethods.FindWindow("Progman", null);
 
@@ -60,8 +59,8 @@ namespace livelywpf
                 // happens.
                 NativeMethods.SendMessageTimeout(progman,
                                        0x052C,
-                                       new IntPtr(0),
-                                       IntPtr.Zero,
+                                       new IntPtr(0xD),
+                                       new IntPtr(0x1),
                                        NativeMethods.SendMessageTimeoutFlags.SMTO_NORMAL,
                                        1000,
                                        out result);
@@ -99,7 +98,6 @@ namespace livelywpf
 
                 if (IntPtr.Equals(workerw, IntPtr.Zero) || workerw == null)
                 {
-                    //todo: set the settings through code using SystemParametersInfo() or something?
                     Logger.Error("Core: Failed to setup wallpaper, WorkerW handle null!");
                     MessageBox.Show(Properties.Resources.LivelyExceptionWorkerWSetupFail, Properties.Resources.TextError, MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     WallpaperChanged?.Invoke(null, null);
@@ -107,7 +105,7 @@ namespace livelywpf
                 }
                 else
                 {
-                    Logger.Info("Core Initialized");
+                    Logger.Info("Core: Initialized");
                     _isInitialized = true;
                     processMonitor = new Playback();
                     processMonitor.Start();
