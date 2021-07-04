@@ -432,7 +432,7 @@ namespace livelywpf.Core
         {
             if (!string.IsNullOrEmpty(e.Data))
             {
-                Logger.Info("Mpv{0}:{1}", uniqueId, e.Data);
+                Logger.Info($"Mpv{uniqueId}: {e.Data}");
             }
         }
 

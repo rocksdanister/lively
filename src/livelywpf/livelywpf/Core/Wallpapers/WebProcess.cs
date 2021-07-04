@@ -250,7 +250,7 @@ namespace livelywpf.Core
             //When the redirected stream is closed, a null line is sent to the event handler.
             if (!string.IsNullOrEmpty(e.Data))
             {
-                Logger.Info($"Cef{uniqueId}:{e.Data}");
+                Logger.Info($"Cef{uniqueId}: {e.Data}");
                 if (!_initialized || !isLoaded)
                 {
                     IpcMessage obj;

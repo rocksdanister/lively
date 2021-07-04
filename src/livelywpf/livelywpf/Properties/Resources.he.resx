@@ -1,0 +1,856 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
+    <value>נמצאה תוכנית לא תואמת, נושא שורת המשימות מושבת.</value>
+  </data>
+  <data name="DescOledScreensaverNotice" xml:space="preserve">
+    <value>מרבית צגי ה- LCD וה- LED המודרניים אינם סובלים מבעיות צריבה ולכן כל טפט יכול לשמש כשומר מסך.
+
+עבור מסכי OLED, פלזמה או CRT הרגישים לצריבה מומלץ להשתמש בטפטים עם תנועה קבועה ועם נושא כהה כולל אשר אמור למתן צריבה אך תכונה זו אינה נבדקה ולא ניתן להבטיח את יעילותה.
+
+המטרה העיקרית של שומרי המסך של Lively היא להוסיף שכבת התאמה אישית נוספת למחשב האישי שלך, השתמש בשומרי מסך כהגנה על צריבה על אחריותך בלבד!</value>
+  </data>
+  <data name="DescriptionAddWallpaper" xml:space="preserve">
+    <value>בחר קובץ או ציין כתובת אתר להגדרה כטפט.</value>
+  </data>
+  <data name="DescriptionAppRules" xml:space="preserve">
+    <value>התנהגות השמעת טפטים בהתבסס על הפעלת אפליקציה.</value>
+  </data>
+  <data name="DescriptionCancelQuestion" xml:space="preserve">
+    <value>אתה בטוח שברצונך לבטל?</value>
+  </data>
+  <data name="DescriptionDeleteConfirmation" xml:space="preserve">
+    <value>האם אתה בטוח שברצונך למחוק טפט זה לצמיתות מהדיסק?</value>
+  </data>
+  <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
+    <value>האם אתה בטוח שברצונך למחוק טפט זה מהספרייה?</value>
+  </data>
+  <data name="DescriptionDragDropFIle" xml:space="preserve">
+    <value>פשוט גרור ושחרר קבצים לספרייה.</value>
+  </data>
+  <data name="DescriptionExternalAppWarning" xml:space="preserve">
+    <value>אתה פותח יישום חיצוני כטפט.
+תוכניות זדוניות ווירוסים עשויים להיות כלולים ביישומים זדוניים .. ולהזיק למערכת שלכם.
+המשך רק אם יישום זה מגיע ממקור מהימן.</value>
+  </data>
+  <data name="DescriptionMinimizedTray" xml:space="preserve">
+    <value>Lively ממוזערת למגש המערכת, לחץ לחצן ימני על הסמל כדי להמשיך.</value>
+  </data>
+  <data name="DescriptionPleaseRestartLively" xml:space="preserve">
+    <value>אנא הפעל מחדש את Lively כדי שההגדרות ייכנסו לתוקף.</value>
+  </data>
+  <data name="DescriptionPleaseStop" xml:space="preserve">
+    <value>אנא הפסיקו לפני שתמשיכו.</value>
+  </data>
+  <data name="DescriptionRecordStart" xml:space="preserve">
+    <value>לחץ כאן כדי להתחיל בהקלטה.</value>
+  </data>
+  <data name="DescriptionRestoringWallpaper" xml:space="preserve">
+    <value>משחזר כעת טפט/ים קודם/ים, אנא המתן...</value>
+  </data>
+  <data name="DescriptionScreenLayout" xml:space="preserve">
+    <value>בחר תצוגה</value>
+  </data>
+  <data name="DescriptionUpdateAvailable" xml:space="preserve">
+    <value>גרסה חדשה של תוכנה זמינה!</value>
+  </data>
+  <data name="DescriptionWebpageLoad" xml:space="preserve">
+    <value>הקלד קישור לאתר לטעינה, נתמכים קישורי shader של shadertoy.com</value>
+  </data>
+  <data name="DescriptionWelcomeWizard" xml:space="preserve">
+    <value>אשף זה יתחיל בהגדרת Lively.</value>
+  </data>
+  <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
+    <value>גרסת Windows N / KN שלך תדרוש הורדת קודקים נוספים כדי לתמוך בהפעלת וידאו ברקעים.</value>
+  </data>
+  <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
+    <value>העדכון נכשל; נסה להוריד את תוכנית ההתקנה מ:
+https://github.com/rocksdanister/lively/releases</value>
+  </data>
+  <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
+    <value>קובץ טפט פגום, נסה להוריד מחדש.</value>
+  </data>
+  <data name="LivelyExceptionGeneral" xml:space="preserve">
+    <value>אופס ... נראה שמשהו השתבש :(
+על מנת להבין טוב יותר את השגיאה ולתקן את הבעיה, שתף את קובץ היומן עם המפתח.
+הוראות לשיתוף קובץ יומן רישום:
+https://github.com/rocksdanister/lively/wiki
+</value>
+  </data>
+  <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
+    <value>Lively לא יכולה לעבוד כראוי כאשר מצב ניגודיות גבוהה של Windows מופעל!
+השבת את מצב הניגודיות הגבוהה ונסה שוב.
+</value>
+  </data>
+  <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
+    <value>הפעלת המדיה נכשלה :(
+נסה לשנות את נגן הוידאו בהגדרות של Lively.
+
+על מנת להבין טוב יותר את השגיאה ולתקן את הבעיה, שתף את קובץ היומן עם המפתח.
+הוראות לשיתוף קובץ יומן רישום:
+https://github.com/rocksdanister/lively/wiki
+</value>
+  </data>
+  <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
+    <value>לא קובץ טפט של Lively</value>
+  </data>
+  <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
+    <value>Lively לא נסגר כראוי, מתחיל במצב בטוח.
+האם ברצונך לשחזר טפטים שפעלו בעבר?</value>
+  </data>
+  <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
+    <value>נראה כי יש להגדיר כמה הגדרות בכדי לגרום ל- Lively לעבוד:
+1. לחץ על מקשי Win + R כדי לפתוח את Run,
+2. הקלד SystemPropertiesPerformance.exe ב- Run, לחץ על "אישור" כדי לפתוח אפשרויות ביצועים
+3. הפעל / סמן "הנפש בקרים ואלמנטים בתוך חלונות" (אם האפשרות כבר מסומנת, בטל את הסימון ובדוק) והחל.
+4. לחץ על "החל" ואז לחץ על "אישור" כדי לסגור את החלון.
+
+אם משתמשים ב- Windows 7 פשוט הגדר – "התאם למראה הטוב ביותר" ו amp; אשר.
+אם עדיין לא עובד, סגור והתחל את Lively שוב / הפעל מחדש את Windows.
+(לא עובד בחלק מגרסאות הניסיון של Windows 10)
+</value>
+  </data>
+  <data name="TextAdd" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="TextAllFiles" xml:space="preserve">
+    <value>כל הקבצים</value>
+  </data>
+  <data name="TextApplication" xml:space="preserve">
+    <value>יישום</value>
+  </data>
+  <data name="TextAttribution" xml:space="preserve">
+    <value>שיוך</value>
+  </data>
+  <data name="TextAuthor" xml:space="preserve">
+    <value>סופר</value>
+  </data>
+  <data name="TextBack" xml:space="preserve">
+    <value>אחורה</value>
+  </data>
+  <data name="TextBrowse" xml:space="preserve">
+    <value>דפדף</value>
+  </data>
+  <data name="TextCancel" xml:space="preserve">
+    <value>ביטול</value>
+  </data>
+  <data name="TextClose" xml:space="preserve">
+    <value>סגור</value>
+  </data>
+  <data name="TextCloseWallpapers" xml:space="preserve">
+    <value>סגור טפטים</value>
+  </data>
+  <data name="TextCompleted" xml:space="preserve">
+    <value>הושלם!</value>
+  </data>
+  <data name="TextControlPanelOpen" xml:space="preserve">
+    <value>לחץ כאן לניהול טפטים</value>
+  </data>
+  <data name="TextConvertVideo" xml:space="preserve">
+    <value>המר לוידאו</value>
+  </data>
+  <data name="TextCreatePreview" xml:space="preserve">
+    <value>צור תצוגה מקדימה</value>
+  </data>
+  <data name="TextCustomise" xml:space="preserve">
+    <value>התאם אישית</value>
+  </data>
+  <data name="TextCustomiseWallpaper" xml:space="preserve">
+    <value>התאם אישית טפט</value>
+  </data>
+  <data name="TextDeleteWallpaper" xml:space="preserve">
+    <value>מחק</value>
+  </data>
+  <data name="TextDescription" xml:space="preserve">
+    <value>תיאור</value>
+  </data>
+  <data name="TextDisplayPauseRuleAllScreen" xml:space="preserve">
+    <value>כל המסך</value>
+  </data>
+  <data name="TextDisplayPauseRulePerScreen" xml:space="preserve">
+    <value>לכל מסך</value>
+  </data>
+  <data name="TextDownload" xml:space="preserve">
+    <value>הורד</value>
+  </data>
+  <data name="TextEditWallpaper" xml:space="preserve">
+    <value>ערוך</value>
+  </data>
+  <data name="TextError" xml:space="preserve">
+    <value>שגיאה</value>
+  </data>
+  <data name="TextExit" xml:space="preserve">
+    <value>צא</value>
+  </data>
+  <data name="TextExportWallpaperZip" xml:space="preserve">
+    <value>יצא lively.zip</value>
+  </data>
+  <data name="TextFeatureMissing" xml:space="preserve">
+    <value>חלק מהתכונות אינן זמינות בגרסה זו של Lively.</value>
+  </data>
+  <data name="TextFileNotFound" xml:space="preserve">
+    <value>הקובץ לא נמצא</value>
+  </data>
+  <data name="TextGIF" xml:space="preserve">
+    <value>GIF מונפש</value>
+  </data>
+  <data name="TextGitHubStar" xml:space="preserve">
+    <value>הראה קצת אהבה בכך שתדרג אותנו</value>
+  </data>
+  <data name="TextGo" xml:space="preserve">
+    <value>המשך</value>
+  </data>
+  <data name="TextHelpTranslate" xml:space="preserve">
+    <value>עזור לתרגם</value>
+  </data>
+  <data name="TextHours" xml:space="preserve">
+    <value>שעה/שעות</value>
+  </data>
+  <data name="TextInstall" xml:space="preserve">
+    <value>התקן</value>
+  </data>
+  <data name="TextKeyboard" xml:space="preserve">
+    <value>מקלדת</value>
+  </data>
+  <data name="TextLearnMore" xml:space="preserve">
+    <value>למד עוד</value>
+  </data>
+  <data name="TextLicense" xml:space="preserve">
+    <value>רישיון</value>
+  </data>
+  <data name="TextMinutes" xml:space="preserve">
+    <value>דקה/דקות</value>
+  </data>
+  <data name="TextmoreInfo" xml:space="preserve">
+    <value>מידע</value>
+  </data>
+  <data name="TextMoreWallpapers" xml:space="preserve">
+    <value>רקעים נוספים</value>
+  </data>
+  <data name="TextMouse" xml:space="preserve">
+    <value>עכבר</value>
+  </data>
+  <data name="TextMouseInteractOnDesktop" xml:space="preserve">
+    <value>אינטראקציה של עכבר כיישום ממוקד</value>
+  </data>
+  <data name="TextNext" xml:space="preserve">
+    <value>הבא</value>
+  </data>
+  <data name="TextNo" xml:space="preserve">
+    <value>לא</value>
+  </data>
+  <data name="TextOff" xml:space="preserve">
+    <value>כבוי</value>
+  </data>
+  <data name="TextOK" xml:space="preserve">
+    <value>אישור</value>
+  </data>
+  <data name="TextOn" xml:space="preserve">
+    <value>מופעל</value>
+  </data>
+  <data name="TextOnline" xml:space="preserve">
+    <value>אונליין</value>
+  </data>
+  <data name="TextOpenLively" xml:space="preserve">
+    <value>פתח את Lively</value>
+  </data>
+  <data name="TextPauseAlgoAllProcess" xml:space="preserve">
+    <value>כל התהליך</value>
+  </data>
+  <data name="TextPauseAlgoForegroundProcess" xml:space="preserve">
+    <value>תהליך קדמה</value>
+  </data>
+  <data name="TextPauseWallpapers" xml:space="preserve">
+    <value>השהה טפטים</value>
+  </data>
+  <data name="TextPerformanceKill" xml:space="preserve">
+    <value>חסל</value>
+  </data>
+  <data name="TextPerformanceNone" xml:space="preserve">
+    <value>כלום</value>
+  </data>
+  <data name="TextPerformancePause" xml:space="preserve">
+    <value>הפסק</value>
+  </data>
+  <data name="TextPicture" xml:space="preserve">
+    <value>תמונה</value>
+  </data>
+  <data name="TextPreviewWallpaper" xml:space="preserve">
+    <value>תצוגה מקדימה</value>
+  </data>
+  <data name="TextPrivacyPolicy" xml:space="preserve">
+    <value>מדיניות פרטיות</value>
+  </data>
+  <data name="TextProcessingWallpaper" xml:space="preserve">
+    <value>מעבד</value>
+  </data>
+  <data name="TextRemove" xml:space="preserve">
+    <value>הסר</value>
+  </data>
+  <data name="TextRule" xml:space="preserve">
+    <value>כלל</value>
+  </data>
+  <data name="TextScreen" xml:space="preserve">
+    <value>מסך</value>
+  </data>
+  <data name="TextSearch" xml:space="preserve">
+    <value>חפש</value>
+  </data>
+  <data name="TextSetWallpaper" xml:space="preserve">
+    <value>קבע כטפט</value>
+  </data>
+  <data name="TextShowOnDisk" xml:space="preserve">
+    <value>פתח מיקום קובץ</value>
+  </data>
+  <data name="TextSource" xml:space="preserve">
+    <value>מקור</value>
+  </data>
+  <data name="TextStart" xml:space="preserve">
+    <value>הפעל</value>
+  </data>
+  <data name="TextStop" xml:space="preserve">
+    <value>הפסק</value>
+  </data>
+  <data name="TextStoreReview" xml:space="preserve">
+    <value>האם אתם נהנים להשתמש ב- Lively? השאירו ביקורת :)</value>
+  </data>
+  <data name="TextSupport" xml:space="preserve">
+    <value>תמיכה</value>
+  </data>
+  <data name="TextTags" xml:space="preserve">
+    <value>תגיות</value>
+  </data>
+  <data name="TextTaskbarThemeBlur" xml:space="preserve">
+    <value>טשטוש</value>
+  </data>
+  <data name="TextTaskbarThemeClear" xml:space="preserve">
+    <value>פנה</value>
+  </data>
+  <data name="TextTaskbarThemeColor" xml:space="preserve">
+    <value>צבע</value>
+  </data>
+  <data name="TextTaskbarThemeFluent" xml:space="preserve">
+    <value>שוטף</value>
+  </data>
+  <data name="TextTaskbarThemeWallpaper" xml:space="preserve">
+    <value>טפט</value>
+  </data>
+  <data name="TextTaskbarThemeWallpaperFluent" xml:space="preserve">
+    <value>טפט שוטף</value>
+  </data>
+  <data name="TextTileSizeLarge" xml:space="preserve">
+    <value>גדול</value>
+  </data>
+  <data name="TextTileSizeNormal" xml:space="preserve">
+    <value>רגיל</value>
+  </data>
+  <data name="TextTileSizeSmall" xml:space="preserve">
+    <value>קטן</value>
+  </data>
+  <data name="TextTitle" xml:space="preserve">
+    <value>כותרת</value>
+  </data>
+  <data name="TextUIHeadless" xml:space="preserve">
+    <value>חסר ראש</value>
+  </data>
+  <data name="TextUILite" xml:space="preserve">
+    <value>לייט</value>
+  </data>
+  <data name="TextUINormal" xml:space="preserve">
+    <value>רגיל</value>
+  </data>
+  <data name="TextUnsupportedFile" xml:space="preserve">
+    <value>פורמט הקובץ אינו נתמך</value>
+  </data>
+  <data name="TextUpdateAvailable" xml:space="preserve">
+    <value>עדכון זמין!</value>
+  </data>
+  <data name="TextUpdateCheck" xml:space="preserve">
+    <value>בדוק עדכונים</value>
+  </data>
+  <data name="TextupdateCheckFail" xml:space="preserve">
+    <value>נכשל לבדוק עבור עדכון תוכנה</value>
+  </data>
+  <data name="TextUpdateChecking" xml:space="preserve">
+    <value>בודק עבור עדכונים</value>
+  </data>
+  <data name="TextUpdateUptodate" xml:space="preserve">
+    <value>התוכנה מעודכנת!</value>
+  </data>
+  <data name="TextVideo" xml:space="preserve">
+    <value>וידאו</value>
+  </data>
+  <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
+    <value>הזן ארגומנטים אופציונליים בשורת הפקודה</value>
+  </data>
+  <data name="TextWallpaperFitFill" xml:space="preserve">
+    <value>מלא</value>
+  </data>
+  <data name="TextWallpaperFitNone" xml:space="preserve">
+    <value>ללא</value>
+  </data>
+  <data name="TextWallpaperFitUniform" xml:space="preserve">
+    <value>אחיד</value>
+  </data>
+  <data name="TextWallpaperFitUniformToFill" xml:space="preserve">
+    <value>מילוי אחיד</value>
+  </data>
+  <data name="TextWallpaperLayoutDuplicate" xml:space="preserve">
+    <value>שכפל את אותו הטפט</value>
+  </data>
+  <data name="TextWallpaperLayoutPerScreen" xml:space="preserve">
+    <value>המסך הנבחר בלבד</value>
+  </data>
+  <data name="TextWallpaperLayoutSpan" xml:space="preserve">
+    <value>השתרע על פני מסכים</value>
+  </data>
+  <data name="TextWallpaperType" xml:space="preserve">
+    <value>סוג</value>
+  </data>
+  <data name="TextWebsite" xml:space="preserve">
+    <value>אתר אינטרנט</value>
+  </data>
+  <data name="TextWebStream" xml:space="preserve">
+    <value>זרם אינטרנט</value>
+  </data>
+  <data name="TextWelcome" xml:space="preserve">
+    <value>ברוך הבא</value>
+  </data>
+  <data name="TextYes" xml:space="preserve">
+    <value>כן</value>
+  </data>
+  <data name="TileVideoPlayer" xml:space="preserve">
+    <value>נגן וידאו</value>
+  </data>
+  <data name="TipAddWallpaperFileBrowse" xml:space="preserve">
+    <value>הגדר את כל סוגי הקבצים הנתמכים כטפט.</value>
+  </data>
+  <data name="TipAddWallpaperURL" xml:space="preserve">
+    <value>הגדר את דף האינטרנט של כתובת ה-URL שהזנת כטפט.</value>
+  </data>
+  <data name="TipAppFocus" xml:space="preserve">
+    <value>הגדר מה לעשות כאשר יישום כלשהו נמצא בפוקוס.</value>
+  </data>
+  <data name="TipAppFullScreen" xml:space="preserve">
+    <value>הגדר מה לעשות כאשר משחקים / יישומים במסך מלא פועלים.</value>
+  </data>
+  <data name="TipAppRules" xml:space="preserve">
+    <value>הגדר כללי השמעת טפטים שונים בהתבסס על הפעלת יישום.</value>
+  </data>
+  <data name="TipAppTheme" xml:space="preserve">
+    <value>Lively מסתגל להגדרות נושא המערכת, כדי לשנות את המראה גש ל</value>
+  </data>
+  <data name="TipAudioMaster" xml:space="preserve">
+    <value>רמת עוצמת הקול של כל הטפטים.</value>
+  </data>
+  <data name="TipBatteryPower" xml:space="preserve">
+    <value>שנה את ההפעלה כאשר המחשב מנותק מהחשמל (מערכות המופעלות באמצעות סוללות בלבד)</value>
+  </data>
+  <data name="TipBrowserDebuggingPort" xml:space="preserve">
+    <value>הכנס את הפורט לניפוי באגים של טפטים של דפי אינטרנט, דרושה הפעלה מחדש של הדפדפן כדי שהשינויים ייכנסו לתוקף. כשתהיה מוכן נווט אל http://localhost:portnumber לגישה למסוף המפתחים.</value>
+  </data>
+  <data name="TipDebug" xml:space="preserve">
+    <value>הצג תפריט מפתח.</value>
+  </data>
+  <data name="TipDesktopPicture" xml:space="preserve">
+    <value>הגדר תמונה של טפט מונפש כטפט שולחן עבודה.</value>
+  </data>
+  <data name="TipDisplayPauseRule" xml:space="preserve">
+    <value>בחר אם להשהות טפט בכל המסכים או רק למסך הרלוונטי שבו היישום ממוקד / מסך מלא.</value>
+  </data>
+  <data name="TipExportLogs" xml:space="preserve">
+    <value>צור קובץ דוח. (קובץ log)</value>
+  </data>
+  <data name="TipGifPlayer" xml:space="preserve">
+    <value>בחר את הנגן המשמש לטפט gif.</value>
+  </data>
+  <data name="TipHideSysTray" xml:space="preserve">
+    <value>נראות סמל מגש המערכת, Lively תמשיך לפעול כשהסמל מוסתר.</value>
+  </data>
+  <data name="TipLanguage" xml:space="preserve">
+    <value>Lively תופעל מחדש כדי להחיל את השפה החדשה</value>
+  </data>
+  <data name="TipLivelySetupOnClose" xml:space="preserve">
+    <value>סיים את ההתקנה כדי להמשיך.</value>
+  </data>
+  <data name="TipLockscreenPicture" xml:space="preserve">
+    <value>הגדר תמונה של טפט מונפש כטפט מסך נעילה.</value>
+  </data>
+  <data name="TipPauseAlgorithm" xml:space="preserve">
+    <value>אלגוריתם השהיית טפטים.</value>
+  </data>
+  <data name="TipScreensaver" xml:space="preserve">
+    <value>לאחר תקופת חוסר הפעילות שנבחרה השתמש בטפט הנוכחי כשומר המסך שלך.</value>
+  </data>
+  <data name="TipStreamWallpaperDetect" xml:space="preserve">
+    <value>אם מתגלה קישור זרם וידאו נתמך השתמש בנגן הווידיאו במקום לטעון את דף האינטרנט.</value>
+  </data>
+  <data name="TipStreamWallpaperVideoQuality" xml:space="preserve">
+    <value>בחר את איכות הווידאו הרצויה לזרמים מקוונים.</value>
+  </data>
+  <data name="TipTaskbarTheme" xml:space="preserve">
+    <value>שנה את מראה שורת המשימות במערכת.</value>
+  </data>
+  <data name="TipTileSize" xml:space="preserve">
+    <value>גודל מברשת הטפט בספרייה</value>
+  </data>
+  <data name="TipUIMode" xml:space="preserve">
+    <value>עבור מערכות נמוכות בחר מצב לייט.</value>
+  </data>
+  <data name="TipVideoHardwareDecode" xml:space="preserve">
+    <value>השתמש בהאצת חומרה במידת האפשר.</value>
+  </data>
+  <data name="TipVideoPlayer" xml:space="preserve">
+    <value>בחר את הנגן המשמש לטפט וידאו.</value>
+  </data>
+  <data name="TipWallpaperDir" xml:space="preserve">
+    <value>נתיב המשמש לאחסון קבצי טפט.</value>
+  </data>
+  <data name="TipWallpaperFit" xml:space="preserve">
+    <value>אלגוריתם קנה המידה של טפטים.</value>
+  </data>
+  <data name="TipWallpaperInput" xml:space="preserve">
+    <value>בחר דרכים להשפיע על טפט.</value>
+  </data>
+  <data name="TipWallpaperLayout" xml:space="preserve">
+    <value>כיצד מוחל טפט על מכשירי תצוגה מחוברים.</value>
+  </data>
+  <data name="TipWallpaperPlayback" xml:space="preserve">
+    <value>השהה את השמעת הטפטים כאשר שולחן העבודה אינו ממוקד.</value>
+  </data>
+  <data name="TipWebBrowserDiskCache" xml:space="preserve">
+    <value>אחסן קבצים זמניים בדיסק במקום בזיכרון, ההגדרות משוחזרות כאשר הדפדפן מופעל מחדש.</value>
+  </data>
+  <data name="TipWebBrowserEngine" xml:space="preserve">
+    <value>CEF(Chromium Embedded Framework) הוא מנוע chromium קל משקל.
+Edge הוא תצוגת האינטרנט המובנית של Windows 10.</value>
+  </data>
+  <data name="TipWindowsStartup" xml:space="preserve">
+    <value>Lively צריכה לפעול ברקע להפעלת טפטים</value>
+  </data>
+  <data name="TitleAbout" xml:space="preserve">
+    <value>אודות</value>
+  </data>
+  <data name="TitleAddWallpaper" xml:space="preserve">
+    <value>הוסף טפט</value>
+  </data>
+  <data name="TitleAppFocus" xml:space="preserve">
+    <value>יישומים ממוקדים</value>
+  </data>
+  <data name="TitleAppFullScreen" xml:space="preserve">
+    <value>יישומים במסך מלא</value>
+  </data>
+  <data name="TitleAppName" xml:space="preserve">
+    <value>Lively Wallpaper</value>
+  </data>
+  <data name="TitleAppRules" xml:space="preserve">
+    <value>כללי אפליקציה</value>
+  </data>
+  <data name="TitleAppTheme" xml:space="preserve">
+    <value>נושא</value>
+  </data>
+  <data name="TitleAudio" xml:space="preserve">
+    <value>אודיו</value>
+  </data>
+  <data name="TitleAudioDesktopOnly" xml:space="preserve">
+    <value>הפעל אודיו רק כששולחן העבודה ממוקד</value>
+  </data>
+  <data name="TitleAudioMaster" xml:space="preserve">
+    <value>ווליום ראשי</value>
+  </data>
+  <data name="TitleAudioPlayOnScreen" xml:space="preserve">
+    <value>הפעל אודיו על המסך</value>
+  </data>
+  <data name="TitleBatteryPower" xml:space="preserve">
+    <value>כשפועל על סוללה</value>
+  </data>
+  <data name="TitleBrowseFile" xml:space="preserve">
+    <value>חפש קובץ וידאו, gif, דף אינטרנט ... להגדרה כטפט</value>
+  </data>
+  <data name="TitleBrowserDebuggingPort" xml:space="preserve">
+    <value>איתור באגים</value>
+  </data>
+  <data name="TitleCommunity" xml:space="preserve">
+    <value>קהילה</value>
+  </data>
+  <data name="TitleDebug" xml:space="preserve">
+    <value>ניפוי</value>
+  </data>
+  <data name="TitleDeleteConfirmation" xml:space="preserve">
+    <value>אשר מחיקה</value>
+  </data>
+  <data name="TitleDesktopPicture" xml:space="preserve">
+    <value>תמונת שולחן העבודה</value>
+  </data>
+  <data name="TitleDisplayPauseRule" xml:space="preserve">
+    <value>כלל השהיית תצוגה</value>
+  </data>
+  <data name="TitleDocumentation" xml:space="preserve">
+    <value>תיעוד</value>
+  </data>
+  <data name="TitleEnterUrl" xml:space="preserve">
+    <value>הקלד כתובת URL</value>
+  </data>
+  <data name="TitleExportLogs" xml:space="preserve">
+    <value>קובץ Log</value>
+  </data>
+  <data name="TitleGeneral" xml:space="preserve">
+    <value>כללי</value>
+  </data>
+  <data name="TitleGifPlayer" xml:space="preserve">
+    <value>נגן Gif</value>
+  </data>
+  <data name="TitleHelp" xml:space="preserve">
+    <value>עזרה</value>
+  </data>
+  <data name="TitleHideSysTray" xml:space="preserve">
+    <value>סמל מגש המערכת</value>
+  </data>
+  <data name="TitleInteraction" xml:space="preserve">
+    <value>אינטראקציה</value>
+  </data>
+  <data name="TitleLanguage" xml:space="preserve">
+    <value>שפה</value>
+  </data>
+  <data name="TitleLibrary" xml:space="preserve">
+    <value>ספרייה</value>
+  </data>
+  <data name="TitleLivelySetup" xml:space="preserve">
+    <value>הגדרת Lively</value>
+  </data>
+  <data name="TitleLocation" xml:space="preserve">
+    <value>מיקום</value>
+  </data>
+  <data name="TitleLockscreenPicture" xml:space="preserve">
+    <value>תמונת מסך נעילה</value>
+  </data>
+  <data name="TitleMisc" xml:space="preserve">
+    <value>שונות</value>
+  </data>
+  <data name="TitleMute" xml:space="preserve">
+    <value>השתק</value>
+  </data>
+  <data name="TitlePauseAlgo" xml:space="preserve">
+    <value>השהה אלגוריתם</value>
+  </data>
+  <data name="TitlePerformance" xml:space="preserve">
+    <value>ביצועים</value>
+  </data>
+  <data name="TitlePlaylist" xml:space="preserve">
+    <value>פלייליסט</value>
+  </data>
+  <data name="TitlePleaseWait" xml:space="preserve">
+    <value>אנא המתן</value>
+  </data>
+  <data name="TitleReportBug" xml:space="preserve">
+    <value>דווח על באג</value>
+  </data>
+  <data name="TitleScalingFit" xml:space="preserve">
+    <value>קנה מידה/התאמה</value>
+  </data>
+  <data name="TitleScreenLayout" xml:space="preserve">
+    <value>לוח הבקרה</value>
+  </data>
+  <data name="TitleScreensaver" xml:space="preserve">
+    <value>שומר מסך</value>
+  </data>
+  <data name="TitleSelectFile" xml:space="preserve">
+    <value>בחר קובץ</value>
+  </data>
+  <data name="TitleSettings" xml:space="preserve">
+    <value>הגדרות</value>
+  </data>
+  <data name="TitleSkipConfirm" xml:space="preserve">
+    <value>דלג על אישור</value>
+  </data>
+  <data name="TitleSourceCode" xml:space="preserve">
+    <value>קוד מקור</value>
+  </data>
+  <data name="TitleStore" xml:space="preserve">
+    <value>חנות</value>
+    <comment>For different version of Lively, example: Microsoft Store</comment>
+  </data>
+  <data name="TitleStreamWallpaper" xml:space="preserve">
+    <value>זרם</value>
+  </data>
+  <data name="TitleStreamWallpaperDetect" xml:space="preserve">
+    <value>זהה זרם</value>
+  </data>
+  <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
+    <value>איכות וידאו</value>
+  </data>
+  <data name="TitleSystem" xml:space="preserve">
+    <value>מערכת</value>
+  </data>
+  <data name="TitleTaskbarTheme" xml:space="preserve">
+    <value>נושא שורת המשימות</value>
+  </data>
+  <data name="TitleTileSize" xml:space="preserve">
+    <value>גודל מברשת</value>
+  </data>
+  <data name="TitleUIMode" xml:space="preserve">
+    <value>ממשק משתמש</value>
+  </data>
+  <data name="TitleVideo" xml:space="preserve">
+    <value>וידאו</value>
+  </data>
+  <data name="TitleVideoHardwareDecode" xml:space="preserve">
+    <value>פענוח GPU</value>
+  </data>
+  <data name="TitleWallpaper" xml:space="preserve">
+    <value>טפט</value>
+  </data>
+  <data name="TitleWallpaperDir" xml:space="preserve">
+    <value>מיקום הטפט</value>
+  </data>
+  <data name="TitleWallpaperDirMoveExisting" xml:space="preserve">
+    <value>העבר טפטים קיימים לתיקייה חדשה</value>
+  </data>
+  <data name="TitleWallpaperFit" xml:space="preserve">
+    <value>בחר התאמה</value>
+  </data>
+  <data name="TitleWallpaperInput" xml:space="preserve">
+    <value>קלט טפט</value>
+  </data>
+  <data name="TitleWallpaperLayout" xml:space="preserve">
+    <value>שיטת החלפה</value>
+  </data>
+  <data name="TitleWallpaperPlayback" xml:space="preserve">
+    <value>השמעת טפטים</value>
+  </data>
+  <data name="TitleWarning" xml:space="preserve">
+    <value>אזהרה</value>
+  </data>
+  <data name="TitleWebBrowser" xml:space="preserve">
+    <value>דפדפן אינטרנט</value>
+  </data>
+  <data name="TitleWebBrowserDiskCache" xml:space="preserve">
+    <value>מטמון דיסק</value>
+  </data>
+  <data name="TitleWebBrowserEngine" xml:space="preserve">
+    <value>מנוע</value>
+  </data>
+  <data name="TitleWebpageLoad" xml:space="preserve">
+    <value>פתח את עמוד האינטרנט</value>
+  </data>
+  <data name="TitleWindowsStartup" xml:space="preserve">
+    <value>התחל עם ווינדוס</value>
+  </data>
+</root>

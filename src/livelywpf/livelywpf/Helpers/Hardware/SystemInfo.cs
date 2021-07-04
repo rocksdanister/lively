@@ -47,13 +47,20 @@ namespace livelywpf
 
         public static string GetCpuInfo()
         {
-            var sb = new StringBuilder();
-            var gpu = GetCpu();
-            foreach (var item in gpu)
+            try
             {
-                sb.AppendLine("CPU: " + item);
+                using ManagementObjectSearcher myProcessorObject = new ManagementObjectSearcher("select * from Win32_Processor");
+                var sb = new StringBuilder();
+                foreach (ManagementObject obj in myProcessorObject.Get())
+                {
+                    sb.AppendLine("CPU: " + obj["Name"]);
+                }
+                return sb.ToString().TrimEnd();
             }
-            return sb.ToString().TrimEnd();
+            catch (Exception e)
+            {
+                return "CPU: " + e.Message;
+            }
         }
 
         public static List<string> GetCpu()

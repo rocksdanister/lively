@@ -78,6 +78,8 @@ namespace livelywpf.Views
         {
             //attach wp hwnd to border ui element.
             WindowOperations.SetProgramToFramework(this, wallpaperHwnd, PreviewBorder);
+            //refocus window to allow keyboard input.
+            this.Activate();
             WallpaperAttached?.Invoke(this, null);
         }
 
