@@ -113,6 +113,7 @@ namespace livelywpf
         public ScreensaverIdleTime ScreensaverIdleWait { get; set; }
         public bool ScreensaverOledWarning { get; set; }
         public bool ScreensaverEmptyScreenShowBlack { get; set; }
+        public bool ScreensaverLockOnResume { get; set; }
 
         public SettingsModel()
         {
@@ -176,6 +177,7 @@ namespace livelywpf
             ScreensaverIdleWait = ScreensaverIdleTime.none;
             ScreensaverOledWarning = false;
             ScreensaverEmptyScreenShowBlack = true;
+            ScreensaverLockOnResume = false;
 
             try
             {

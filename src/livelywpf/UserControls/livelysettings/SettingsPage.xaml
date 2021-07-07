@@ -106,7 +106,7 @@
                             <ComboBox Header="{x:Bind UIText.TitlePauseAlgorithm}" Margin="0,10,0,0" MinWidth="200" SelectedIndex="{Binding SelectedPauseAlgorithmIndex, Mode=TwoWay}">
                                 <ComboBoxItem Content="{x:Bind UIText.TextPauseAlgorithmForeground}"/>
                                 <ComboBoxItem Content="{x:Bind UIText.TextPauseAlgorithmAll}" IsEnabled="False"/>
-                                <ComboBoxItem Content="Game Mode" Visibility="Collapsed"/>
+                                <ComboBoxItem Content="{x:Bind UIText.TextPauseAlgorithmExclusiveMode}"/>
                             </ComboBox>
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipPauseAlgorithm}"/>
                             <HyperlinkButton Margin="0, 0, 0, 0" FontSize="12" Content="{x:Bind UIText.TextLearnMore}" 
@@ -258,6 +258,7 @@
                                 <TextBlock Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TextMinutes}" Margin="5, 20, 0, 0" VerticalAlignment="Center"/>
                             </StackPanel>
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipScreensaver}"/>
+                            <CheckBox Content="{x:Bind UIText.TitleScreensaverLockOnResume}" Margin="0, 5, 0, 0" IsChecked="{Binding IsScreensaverLockOnResume, Mode=TwoWay}"/>
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>

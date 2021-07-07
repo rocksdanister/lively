@@ -68,6 +68,7 @@ namespace livelysettings
         public string TextDisplayPauseRuleAll { get; set; }
         public string TextPauseAlgorithmForeground { get; set; }
         public string TextPauseAlgorithmAll { get; set; }
+        public string TextPauseAlgorithmExclusiveMode { get; set; }
         public string TextLearnMore { get; set; }
         //wallpaper
         public string TitleWallpaperFit { get; set; }
@@ -114,6 +115,7 @@ namespace livelysettings
         public string TitleLockscreenPicture { get; set; }
         public string TipLockscreenPicture { get; set; }
         public string TitleTaskbarTheme { get; set; }
+        public string TitleScreensaverLockOnResume { get; set; }
         public string TipTaskbarTheme { get; set; }
         public string TextTaskbarThemeClear { get; set; }
         public string TextTaskbarThemeBlur { get; set; }

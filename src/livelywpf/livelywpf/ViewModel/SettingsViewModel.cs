@@ -127,6 +127,7 @@ namespace livelywpf
             SelectedWebBrowserIndex = (int)Settings.WebBrowser;
             SelectedAppThemeIndex = (int)Settings.ApplicationTheme;
             SelectedScreensaverWaitIndex = (int)Settings.ScreensaverIdleWait;
+            IsScreensaverLockOnResume = Settings.ScreensaverLockOnResume;
         }
 
         private SettingsModel _settings;
@@ -883,6 +884,25 @@ namespace livelywpf
                     UpdateConfigFile();
                 }
                 OnPropertyChanged("SelectedScreensaverWaitIndex");
+            }
+        }
+
+        private bool _isScreensaverLockOnResume;
+        public bool IsScreensaverLockOnResume
+        {
+            get 
+            { 
+                return _isScreensaverLockOnResume;
+            }
+            set
+            {
+                _isScreensaverLockOnResume = value;
+                if (Settings.ScreensaverLockOnResume != _isScreensaverLockOnResume)
+                {
+                    Settings.ScreensaverLockOnResume = _isScreensaverLockOnResume;
+                    UpdateConfigFile();
+                }
+                OnPropertyChanged("IsScreensaverLockOnResume");
             }
         }
 

@@ -14,6 +14,10 @@ namespace livelywpf
     public static class NativeMethods
     {
 
+        [DllImport("user32.dll", SetLastError = true)]
+        public static extern bool LockWorkStation();
+
+
         [DllImport("User32.dll")]
         public static extern bool SetCursorPos(int X, int Y);
 

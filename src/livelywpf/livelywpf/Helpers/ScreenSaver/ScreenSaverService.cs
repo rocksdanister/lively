@@ -67,6 +67,19 @@ namespace livelywpf.Helpers
                 StopInputListener();
                 HideScreensavers();
                 CloseBlankScreensavers();
+
+                if (Program.SettingsVM.Settings.ScreensaverLockOnResume)
+                {
+                    try
+                    {
+                        //async..
+                        LockWorkStationSafe();
+                    }
+                    catch (Win32Exception e)
+                    {
+                        Logger.Error("Failed to lock pc: " + e.Message);
+                    }
+                }
             }
         }
 
@@ -311,6 +324,14 @@ namespace livelywpf.Helpers
         #endregion //input checks
 
         #region helpers
+
+        private static void LockWorkStationSafe()
+        {
+            if (!NativeMethods.LockWorkStation())
+            {
+                throw new Win32Exception(Marshal.GetLastWin32Error());
+            }
+        }
 
         // Fails after 50 days (uint limit.)
         private static uint GetLastInputTime()

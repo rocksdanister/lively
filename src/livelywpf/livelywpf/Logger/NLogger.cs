@@ -90,11 +90,10 @@ namespace livelywpf
             if (!_isInitialized)
                 SetupNLog();
 
-            //todo: throw equivalent win32 exception.
             int err = System.Runtime.InteropServices.Marshal.GetLastWin32Error();
             if (err != 0)
             {
-                Logger.Error(msg + " HRESULT:" + err);
+                Logger.Error($"{msg} HRESULT: {err}");
             }
         }
 

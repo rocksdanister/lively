@@ -370,6 +370,9 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="TextPauseAlgoAllProcess" xml:space="preserve">
     <value>All Process</value>
   </data>
+  <data name="TextPauseAlgoExclusiveMode" xml:space="preserve">
+    <value>Direct3D</value>
+  </data>
   <data name="TextPauseAlgoForegroundProcess" xml:space="preserve">
     <value>Foreground Process</value>
   </data>
@@ -767,6 +770,9 @@ Edge is the built in webview of windows 10.</value>
   </data>
   <data name="TitleScreensaver" xml:space="preserve">
     <value>Screensaver</value>
+  </data>
+  <data name="TitleScreensaverLockOnResume" xml:space="preserve">
+    <value>On resume, display logon screen</value>
   </data>
   <data name="TitleSelectFile" xml:space="preserve">
     <value>Select File</value>

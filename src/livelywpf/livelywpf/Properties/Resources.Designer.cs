@@ -770,6 +770,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Direct3D.
+        /// </summary>
+        public static string TextPauseAlgoExclusiveMode {
+            get {
+                return ResourceManager.GetString("TextPauseAlgoExclusiveMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Foreground Process.
         /// </summary>
         public static string TextPauseAlgoForegroundProcess {
@@ -1956,6 +1965,15 @@ namespace livelywpf.Properties {
         public static string TitleScreensaver {
             get {
                 return ResourceManager.GetString("TitleScreensaver", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to On resume, display logon screen.
+        /// </summary>
+        public static string TitleScreensaverLockOnResume {
+            get {
+                return ResourceManager.GetString("TitleScreensaverLockOnResume", resourceCulture);
             }
         }
         
