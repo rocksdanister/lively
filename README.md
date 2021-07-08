@@ -1,3 +1,4 @@
+
 # Lively Wallpaper
 [![GitHub release](https://img.shields.io/github/release/rocksdanister/lively/all.svg)](https://github.com/rocksdanister/lively/releases)
 [![Github all releases](https://img.shields.io/github/downloads/rocksdanister/lively/total.svg)](https://github.com/rocksdanister/lively/releases)
@@ -17,11 +18,11 @@
 ## About
 <img src="/resources/main_preview.gif" width="600" height="338"/>
 
-Turn Video & GIF Files, Emulators, HTML, Web address & Shaders, Games into Windows desktop wallpaper or screensavers; **Wallpapers will completely pause playback( 0% cpu & gpu usage) when fullscreen application/games are running.**
+Lively is the only animated desktop wallpaper application that you will need.
 
 <img src="/resources/main_dragdrop.gif" width="600" height="338"/>
 
-Just drag & drop files, webpages to set as wallpaper..
+Its super easy.. barely an inconvenice, just drag & drop the files or webpages to set as wallpaper.
 
 #### Join Discussions:
 * <a href="https://www.reddit.com/r/LivelyWallpaper/">Reddit</a>
@@ -33,7 +34,7 @@ Just drag & drop files, webpages to set as wallpaper..
 <img src="/resources/wallpaper_video.gif" width="600" height="338"/>
 
 <a href="https://visualdon.uk/project/eternal-light/">Eternal Light</a> by VISUALDON
-* Powered by mpv and vlc player.
+* Powered by mpv / vlc player.
 * Customize videos with filters.
 * Hardware Acceleration supported.
 * Supports integer scaler for sharp image.
@@ -60,9 +61,10 @@ Just drag & drop files, webpages to set as wallpaper..
 #### Games & Applications
 <img src="/resources/wallpaper_emulator.gif" width="600" height="338"/>
 
-* Can set Unity, Godot games and any application as wallpaper.
-* Dynamic audio visualisers, 3D scenes..
-#### Screen Savers
+* Support Unity, Godot games as wallpaper.
+* Limited support for gui applications as wallpaper.
+* [Learn more..](https://github.com/rocksdanister/lively/wiki/Application-Wallpaper)
+#### Screensavers
 <img src="/resources/screen_saver.gif" width="600" height="338"/>
 
 * Lively supports Windows screensaver.
