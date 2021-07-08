@@ -22,7 +22,7 @@ Lively is the only animated desktop wallpaper application that you will need.
 
 <img src="/resources/main_dragdrop.gif" width="600" height="338"/>
 
-Its super easy.. barely an inconvenice, just drag & drop the files or webpages to set as wallpaper.
+Its super easy.. barely an inconvenience, just drag & drop the files or webpages to set as wallpaper.
 
 #### Join Discussions:
 * <a href="https://www.reddit.com/r/LivelyWallpaper/">Reddit</a>
