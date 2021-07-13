@@ -6,6 +6,7 @@ using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Threading;
 using livelywpf.Core;
+using livelywpf.Core.API;
 
 namespace livelywpf.Views
 {
@@ -69,20 +70,19 @@ namespace livelywpf.Views
                 WindowOperations.SetParentSafe(wallpaper.GetHWND(), IntPtr.Zero);
                 try
                 {
-                    //temporary..till webprocess async close is ready.
-                    if (wallpaper.GetWallpaperType() == WallpaperType.url)
+                    var proc = wallpaper.GetProcess();
+                    if (wallpaper.GetWallpaperType() == WallpaperType.url && proc != null)
                     {
-                        var Proc = wallpaper.GetProcess();
-                        Proc.Refresh();
-                        Proc.StandardInput.WriteLine("lively:terminate");
-                        if (!Proc.WaitForExit(4000))
+                        wallpaper.SendMessage(new LivelyCloseCmd());
+                        proc.Refresh();
+                        if (!proc.WaitForExit(4000))
                         {
                             wallpaper.Terminate();
                         }
                     }
                     else
                     {
-                        wallpaper.Close();
+                        wallpaper.Terminate();
                     }
                 }
                 catch

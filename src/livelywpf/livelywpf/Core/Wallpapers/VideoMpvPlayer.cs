@@ -112,8 +112,10 @@ namespace livelywpf.Core
             ipcServerName = "mpvsocket" + Path.GetRandomFileName();
 
             StringBuilder cmdArgs = new StringBuilder();
-            //startup volume will be 0.
+            //startup volume will be 0
             cmdArgs.Append("--volume=0 ");
+            //disable window decorations
+            //cmdArgs.Append("--no-border ");
             //alternative: --loop-file=inf
             cmdArgs.Append("--loop-file ");
             //do not close after media end
