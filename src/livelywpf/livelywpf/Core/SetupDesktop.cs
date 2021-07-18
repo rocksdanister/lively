@@ -596,7 +596,7 @@ namespace livelywpf
             //Position the wp fullscreen to corresponding display.
             if (!NativeMethods.SetWindowPos(handle, 1, targetDisplay.Bounds.X, targetDisplay.Bounds.Y, (targetDisplay.Bounds.Width), (targetDisplay.Bounds.Height), 0x0010))
             {
-                NLogger.LogWin32Error("setwindowpos(2) fail AddWallpaper(),");
+                NLogger.LogWin32Error("Failed to set perscreen wallpaper(1)");
             }
 
             NativeMethods.MapWindowPoints(handle, workerw, ref prct, 2);
@@ -604,7 +604,7 @@ namespace livelywpf
             //Position the wp window relative to the new parent window(workerw).
             if (!NativeMethods.SetWindowPos(handle, 1, prct.Left, prct.Top, (targetDisplay.Bounds.Width), (targetDisplay.Bounds.Height), 0x0010))
             {
-                NLogger.LogWin32Error("setwindowpos(3) fail addwallpaper(),");
+                NLogger.LogWin32Error("Failed to set perscreen wallpaper(2)");
             }
 
             //SetFocusMainApp();
@@ -624,7 +624,7 @@ namespace livelywpf
             Logger.Info($"Sending wallpaper(Span): ({prct.Left}, {prct.Top}, {prct.Right - prct.Left}, {prct.Bottom - prct.Top}).");
             if (!NativeMethods.SetWindowPos(handle, 1, 0, 0, prct.Right - prct.Left, prct.Bottom - prct.Top, 0x0010))
             {
-                NLogger.LogWin32Error("setwindowpos fail SpanWallpaper(),");
+                NLogger.LogWin32Error("Failed to set span wallpaper");
             }
 
             //SetFocusMainApp();
@@ -840,7 +840,7 @@ namespace livelywpf
                                                             (screen.Bounds.Height),
                                                             0x0010))
                             {
-                                NLogger.LogWin32Error("setwindowpos(3) fail UpdateWallpaperRect()=>");
+                                NLogger.LogWin32Error("Failed to update wallpaper rect");
                             }
                         }
                     }
@@ -1181,7 +1181,7 @@ namespace livelywpf
                 IntPtr ret = NativeMethods.SetParent(windowHandle, progman);
                 if (ret.Equals(IntPtr.Zero))
                 {
-                    NLogger.LogWin32Error("failed to set parent(win7),");
+                    NLogger.LogWin32Error("Failed to set window parent(win7)");
                 }
                 //workerw is assumed as progman in win7, this is untested with all fn's: addwallpaper(), wp pause, resize events.. (I don't have win7 system with me).
                 workerw = progman;
@@ -1191,7 +1191,7 @@ namespace livelywpf
                 IntPtr ret = NativeMethods.SetParent(windowHandle, workerw);
                 if (ret.Equals(IntPtr.Zero))
                 {
-                    NLogger.LogWin32Error("failed to set parent,");
+                    NLogger.LogWin32Error("Failed to set window parent");
                 }
             }
         }

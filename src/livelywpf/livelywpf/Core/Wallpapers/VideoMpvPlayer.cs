@@ -644,16 +644,11 @@ namespace livelywpf.Core
 
         #region mpv util
 
-        /*                                      - 1 iteration -
+        /*                                      - BenchmarkDotNet -
          *|        Method     |     Mean |     Error |    StdDev |  Gen 0   | Gen 1 | Gen 2 | Allocated |
          *|------------------:|---------:|----------:|----------:|---------:|------:|------:|----------:|
          *| GetMpvCommand     | 1.493 us | 0.0085 us | 0.0080 us | 0.5741   |     - |     - |      2 KB |
          *| GetMpvCommandStrb | 1.551 us | 0.0148 us | 0.0138 us | 1.7033   |     - |     - |      5 KB |
-         *                                      - 100 iteration -
-         *|        Method     |     Mean |   Error   |  StdDev   |    Gen 0 |Gen 1  | Gen 2 | Allocated |
-         *|------------------:|---------:|----------:|----------:|---------:|------:|------:|----------:|
-         *| GetMpvCommand     | 188.4 μs | 0.51 μs   | 0.48 μs   |  61.2793 |   -   |     - |    188 KB |
-         *| GetMpvCommandStrb | 163.2 μs | 2.15 μs   | 2.01 μs   | 101.8066 |   -   |     - |    312 KB |
          */
 
         /// <summary>

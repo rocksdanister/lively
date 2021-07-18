@@ -7,6 +7,8 @@ using System.Text;
 using System.Linq;
 using System.Diagnostics;
 using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Runtime.CompilerServices;
 
 namespace livelywpf
 {
@@ -77,7 +79,9 @@ namespace livelywpf
         public static void LogHardwareInfo()
         {
             if (!_isInitialized)
+            {
                 SetupNLog();
+            }
 
             var arch = Environment.Is64BitProcess ? "x86" : "x64";
             var container = Program.IsMSIX ? "desktop-bridge" : "desktop-native";
@@ -85,15 +89,20 @@ namespace livelywpf
                 $"\n{SystemInfo.GetOSInfo()}\n{SystemInfo.GetCpuInfo()}\n{SystemInfo.GetGpuInfo()}\n");
         }
 
-        public static void LogWin32Error(string msg = null)
+        public static void LogWin32Error(string message, 
+            [CallerMemberName] string memberName = "",
+            [CallerFilePath] string fileName = "",
+            [CallerLineNumber] int lineNumber = 0)
         {
             if (!_isInitialized)
+            {
                 SetupNLog();
+            }
 
-            int err = System.Runtime.InteropServices.Marshal.GetLastWin32Error();
+            int err = Marshal.GetLastWin32Error();
             if (err != 0)
             {
-                Logger.Error($"{msg} HRESULT: {err}");
+                Logger.Error($"HRESULT: {err}, {message} at\n{fileName} ({lineNumber})\n{memberName}");
             }
         }
 

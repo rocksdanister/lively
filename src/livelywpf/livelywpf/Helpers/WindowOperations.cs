@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -124,7 +125,7 @@ namespace livelywpf
 
             if (!NativeMethods.SetWindowPos(pgmHandle, 1, (int)reviewPanel.Left, (int)reviewPanel.Top, (int)reviewPanel.Width, (int)reviewPanel.Height, 0 | 0x0010))
             {
-                NLogger.LogWin32Error("setwindowpos(1) fail MapWallpaperToWindow(),");
+                NLogger.LogWin32Error("Failed to set window as parent to framework(1)");
             }
 
             //ScreentoClient is no longer used, this supports windows mirrored mode also, calculate new relative position of window w.r.t parent.
@@ -135,7 +136,7 @@ namespace livelywpf
             //Position the wp window relative to the new parent window(workerw).
             if (!NativeMethods.SetWindowPos(pgmHandle, 1, prct.Left, prct.Top, (int)reviewPanel.Width, (int)reviewPanel.Height, 0 | 0x0010))
             {
-                NLogger.LogWin32Error("setwindowpos(2) fail MapWallpaperToWindow(),");
+                NLogger.LogWin32Error("Failed to set window as parent to framework(2)");
             }
         }
 
@@ -144,16 +145,16 @@ namespace livelywpf
             IntPtr ret = NativeMethods.SetParent(child, parent);
             if (ret.Equals(IntPtr.Zero))
             {
-                NLogger.LogWin32Error("failed to set custom parent,");
+                NLogger.LogWin32Error("Failed to set window parent");
             }
         }
 
         /// <summary>
-        /// Removes window border & some menuitems. Won't remove everything in apps with custom UI system.
-        /// Flags Credit: https://github.com/Codeusa/Borderless-Gaming
-        /// If there is an issue with me using the flags just let me know I will remove it.
+        /// Removes window border and some menuitems. Won't remove everything in apps with custom UI system.<para>
+        /// Ref: https://github.com/Codeusa/Borderless-Gaming
+        /// </para>
         /// </summary>
-        /// <param name="handle">window handle</param>
+        /// <param name="handle">Window handle</param>
         public static void BorderlessWinStyle(IntPtr handle)
         {
             // Get window styles
@@ -186,8 +187,15 @@ namespace livelywpf
                 );
 
             // update window styles
-            NativeMethods.SetWindowLongPtr(new HandleRef(null, handle), (int)NativeMethods.GWL.GWL_STYLE, (IntPtr)styleNewWindowStandard);
-            NativeMethods.SetWindowLongPtr(new HandleRef(null, handle), (int)NativeMethods.GWL.GWL_EXSTYLE, (IntPtr)styleNewWindowExtended);
+            if (NativeMethods.SetWindowLongPtr(new HandleRef(null, handle), (int)NativeMethods.GWL.GWL_STYLE, (IntPtr)styleNewWindowStandard) == IntPtr.Zero)
+            {
+                NLogger.LogWin32Error("Failed to modify window style(1)");
+            }
+
+            if (NativeMethods.SetWindowLongPtr(new HandleRef(null, handle), (int)NativeMethods.GWL.GWL_EXSTYLE, (IntPtr)styleNewWindowExtended) == IntPtr.Zero)
+            {
+                NLogger.LogWin32Error("Failed to modify window style(2)");
+            }
 
             // remove the menu and menuitems and force a redraw
             var menuHandle = NativeMethods.GetMenu(handle);
@@ -215,11 +223,14 @@ namespace livelywpf
                    (Int64)NativeMethods.WindowStyles.WS_EX_NOACTIVATE |
                    (Int64)NativeMethods.WindowStyles.WS_EX_TOOLWINDOW;
 
-            // update window styles
+            //update window styles
             //https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-setwindowlongptra
             //Certain window data is cached, so changes you make using SetWindowLongPtr will not take effect until you call the SetWindowPos function?
             NativeMethods.ShowWindow(handle, (int)NativeMethods.SHOWWINDOW.SW_HIDE);
-            NativeMethods.SetWindowLongPtr(new HandleRef(null, handle), (int)NativeMethods.GWL.GWL_EXSTYLE, (IntPtr)styleNewWindowExtended);
+            if (NativeMethods.SetWindowLongPtr(new HandleRef(null, handle), (int)NativeMethods.GWL.GWL_EXSTYLE, (IntPtr)styleNewWindowExtended) == IntPtr.Zero)
+            {
+                NLogger.LogWin32Error("Failed to modify window style");
+            }
             NativeMethods.ShowWindow(handle, (int)NativeMethods.SHOWWINDOW.SW_SHOW);
         }
 
