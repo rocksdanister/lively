@@ -837,19 +837,19 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Po upływie wskazanego czasu bezczynności, użyj obecnie wybranej tapety jako wygaszacza ekranu.</value>
   </data>
     <data name="TextHours" xml:space="preserve">
-    <value>hours</value>
+    <value>godziny</value>
   </data>
   <data name="TextMinutes" xml:space="preserve">
-    <value>minutes</value>
+    <value>minuty</value>
   </data>
   <data name="TextLearnMore" xml:space="preserve">
     <value>Dowiedz się więcej</value>
   </data>
     <data name="DescOledScreensaverNotice" xml:space="preserve">
-    <value>Most modern LCD and LED displays do not suffer from burn-in issue and therefore any wallpaper can be used as screensaver.
+    <value>Większość nowoczesnych wyświetlaczy LCD i LED nie ma problemów z wypalaniem, dlatego jako wygaszacza ekranu można używać każdej tapety.
 
-For OLED, Plasma or CRT displays which are susceptibe to burn-in it is advised to use wallpaper with regular motion and an overall dark theme which is supposed to mitigate burn-in but this feature is untested and its effectiveness cannot be guaranteed.
+Dla wyświetlaczy typu OLED, Plasma lub CRT które są podatbe na efekt wypalania zaleca się używanie ruchomej tapety w ogólnie ciemnych kolorach, co powinno zmiejszyć efekt wypalenia, ale jest sposobem niepotwierdzonym i niekoniecznie skutecznym.
 
-The main purpose of Lively's screensavers is to add another layer of customization to your pc, use screensavers as burn-in protection at your own risk!</value>
+Głównym celem wygaszacza ekranu Lively jest dodanie kolejenej warstwy personalizacji do Twojego pc, używaj wygaszacza jako zabezpieczenia przed wypaleniem na własne ryzyko!</value>
   </data>
 </root>

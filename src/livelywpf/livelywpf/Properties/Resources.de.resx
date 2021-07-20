@@ -277,6 +277,9 @@ Wenn es immer noch nicht funktioniert, schließen &amp; starten Sie Lively oder 
   <data name="TextPauseAlgoAllProcess" xml:space="preserve">
     <value>Alle Prozesse</value>
   </data>
+  <data name="TextPauseAlgoExclusiveMode" xml:space="preserve">
+    <value>Direct3D</value>
+  </data>
   <data name="TextPauseAlgoForegroundProcess" xml:space="preserve">
     <value>Vordergrundprozess</value>
   </data>
@@ -830,6 +833,9 @@ https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="TitleScreensaver" xml:space="preserve">
     <value>Bildschirmschoner</value>
+  </data>
+  <data name="TitleScreensaverLockOnResume" xml:space="preserve">
+    <value>Beim Fortsetzen den Anmeldebildschirm anzeigen</value>
   </data>
   <data name="TipScreensaver" xml:space="preserve">
     <value>Bei Inaktivität wird nach der festgelegten Zeit der aktuelle Hinergrund als Bildschirmschoner verwendet.</value>

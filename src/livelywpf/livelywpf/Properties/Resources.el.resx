@@ -846,10 +846,10 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Μάθε περισσότερα</value>
   </data>
     <data name="DescOledScreensaverNotice" xml:space="preserve">
-    <value>Most modern LCD and LED displays do not suffer from burn-in issue and therefore any wallpaper can be used as screensaver.
+    <value>Οι περισσότερες σύγχρονες οθόνες LCD και LED δεν υποφέρουν από πρόβλημα burn-in και επομένως οποιαδήποτε ταπετσαρία μπορεί να χρησιμοποιηθεί ως προφύλαξη οθόνης.
 
-For OLED, Plasma or CRT displays which are susceptibe to burn-in it is advised to use wallpaper with regular motion and an overall dark theme which is supposed to mitigate burn-in but this feature is untested and its effectiveness cannot be guaranteed.
+Για οθόνες OLED, Plasma ή CRT που είναι ευαίσθητες στο burn-in, συνιστάται να χρησιμοποιείτε ταπετσαρία με κανονική κίνηση και ένα συνολικό σκοτεινό θέμα που υποτίθεται ότι μετριάζει το burn-in, αλλά αυτή η δυνατότητα δεν έχει δοκιμαστεί και η αποτελεσματικότητά της δεν είναι εγγυημένη.
 
-The main purpose of Lively's screensavers is to add another layer of customization to your pc, use screensavers as burn-in protection at your own risk!</value>
+Ο κύριος σκοπός της προφύλαξης οθόνης του Lively είναι να προσθέσετε ένα άλλο επίπεδο προσαρμογής στον υπολογιστή σας, χρησιμοποιήσετε την προφύλαξη οθόνης ως προστασία από burn-in με δική σας ευθύνη!</value>
   </data>
 </root>

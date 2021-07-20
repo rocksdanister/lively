@@ -842,10 +842,10 @@ Edge ise windows 10 için geçerli web gösterim motorudur.</value>
     <value>Daha fazla bilgi</value>
   </data>
     <data name="DescOledScreensaverNotice" xml:space="preserve">
-    <value>Most modern LCD and LED displays do not suffer from burn-in issue and therefore any wallpaper can be used as screensaver.
+    <value>Birçok modern LCD ve LED monitörler ekran yanmasına dayanıklı olduğundan herhangi bir duvar kağıdı kilit ekranında kullanılabilir.
 
-For OLED, Plasma or CRT displays which are susceptibe to burn-in it is advised to use wallpaper with regular motion and an overall dark theme which is supposed to mitigate burn-in but this feature is untested and its effectiveness cannot be guaranteed.
+OLED, Plasma ve CRT monitörler ise ekran yanması sorununa karşı dayanıksız olduğundan bu monitörlerde yanmayı engellemek için düzenli hareketleri olan koyu duvar kağıtlarının kullanılması önerilmektedir. Ancak bu öneri test edilmemiştir ve yanmaya karşı etkili olduğu garanti edilmemektedir.
 
-The main purpose of Lively's screensavers is to add another layer of customization to your pc, use screensavers as burn-in protection at your own risk!</value>
+Lively'nin kilit ekranı özelliği, bilgisayarınızı daha da kişiselleştirmenizi sağlamak amacıyla tasarlanmıştır. Ekran yanmasına karşı kilit ekranında harketli duvar kağıtlarının kullanılması kullanıcının sorumluluğundadır.</value>
   </data>
 </root>

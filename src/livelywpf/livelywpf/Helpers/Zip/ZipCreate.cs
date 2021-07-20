@@ -16,15 +16,10 @@ namespace livelywpf
         }
 
         /// <summary>
-        /// Create zip from the list of folder(s).
-        /// Example:
-        /// List<string> folders = new List<string>();
-        /// folders.Add("K:\\ziptest\\folder1");
-        /// folders.Add("K:\\ziptest\\folder2");
-        /// CreateZip("K:\\ziptest\\testzip.zip", folders);
+        /// Create a zip file from the list of folder(s).
         /// </summary>
-        /// <param name="outPathname">Output zip filepath./</param>
-        /// <param name="folders">Input folder(s) path(s).</param>
+        /// <param name="outPathname">Destination .zip filepath./</param>
+        /// <param name="folders">Source folder path(s).</param>
         public static void CreateZip(string outPathname, List<string> folders)
         {
             using (FileStream fsOut = File.Create(outPathname))
@@ -79,21 +74,31 @@ namespace livelywpf
         }
 
         /// <summary>
-        /// Create zip from the list of files.
-        /// Example:
-        /// List<string> files1 = new List<string>() {"K:\\ziptest\\info\\f1.txt", "K:\\ziptest\\info\\subfolder\\f2.txt" };
-        /// 
-        /// List<string> files2 = new List<string>();
-        /// files2.AddRange(Directory.GetFiles("K:\\ziptest\\folder\\", "*.*", SearchOption.AllDirectories));
-        /// 
-        /// List<ZipOperations.FileData> filesList = new List<ZipOperations.FileData>();
-        /// filesList.Add(new ZipOperations.FileData() { files = files1, parentDirectory = "K:\\ziptest\\info" });
-        /// filesList.Add(new ZipOperations.FileData() { files = files2, parentDirectory = "K:\\ziptest\\folder" });
-        /// 
-        /// ZipOperations.CreateZip("K:\\ziptest\\testzip.zip", filesList);
+        /// Create zip from the list of file(s).
         /// </summary>
-        /// <param name="outPathname"></param>
-        /// <param name="fileData"></param>
+        /// <example>
+        /// How to use:
+        /// <code>
+        /// class TestClass
+        /// {
+        ///     static int Main()
+        ///     {
+        ///         var filesList = new List<ZipOperations.FileData>();
+        ///         
+        ///         var files1 = new List<string>() {"K:\\ziptest\\info\\f1.txt", "K:\\ziptest\\info\\subfolder\\f2.txt"};
+        ///         filesList.Add(new ZipOperations.FileData() { files = files1, parentDirectory = "K:\\ziptest\\info"});
+        /// 
+        ///         var files2 = new List<string>();
+        ///         files2.AddRange(Directory.GetFiles("K:\\ziptest\\folder\\", "*.*", SearchOption.AllDirectories));
+        ///         filesList.Add(new ZipOperations.FileData() { files = files2, parentDirectory = "K:\\ziptest\\folder"});
+        ///
+        ///         ZipOperations.CreateZip("K:\\ziptest\\test.zip", filesList);
+        ///     }
+        /// }
+        /// </code>
+        /// </example>
+        /// <param name="outPathname">Destination .zip filepath.</param>
+        /// <param name="fileData">List of file(s) and its corresponding parent directory.</param>
         public static void CreateZip(string outPathname, List<FileData> fileData)
         {
             using (FileStream fsOut = File.Create(outPathname))
@@ -111,7 +116,6 @@ namespace livelywpf
                         var file = item.Files[j];
                         var fi = new FileInfo(file);
 
-                        //Debug.WriteLine(item + " " + folderOffset );
                         // Make the name in zip based on the folder
                         var entryName = file.Substring(folderOffset);
 
