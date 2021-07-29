@@ -43,6 +43,7 @@ namespace livelywpf
                 new LanguagesModel("Pусский(ru)", new string[]{"ru", "ru-BY", "ru-KZ", "ru-KG", "ru-MD", "ru-RU","ru-UA"}), 
                 new LanguagesModel("Українська(uk)", new string[]{"uk", "uk-UA"}),
                 new LanguagesModel("Español(es)", new string[]{"es"}),
+                new LanguagesModel("Español(es-MX)", new string[]{"es-MX"}),
                 new LanguagesModel("Italian(it)", new string[]{"it", "it-IT", "it-SM","it-CH","it-VA"}),
                 new LanguagesModel("عربى(ar-AE)", new string[]{"ar"}),
                 new LanguagesModel("فارسی(fa-IR)", new string[]{"fa-IR"}),

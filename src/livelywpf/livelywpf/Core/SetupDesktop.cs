@@ -1116,11 +1116,14 @@ namespace livelywpf
             }
         }
 
-        public static void SendMessageWallpaper(IpcMessage msg)
+        public static void SendMessageWallpaper(LibraryModel wp, IpcMessage msg)
         {
             Wallpapers.ForEach(x =>
             {
-                x.SendMessage(msg);
+                if (x.GetWallpaperData() == wp)
+                {
+                    x.SendMessage(msg);
+                }
             });
         }
 

@@ -28,11 +28,11 @@
     <PackageReference Include="DesktopBridge.Helpers" Version="1.2.2" />
     <PackageReference Include="Downloader" Version="2.2.8" />
     <PackageReference Include="H.Hooks" Version="1.4.9" />
-    <PackageReference Include="Magick.NET-Q16-x86" Version="8.0.1" />
+    <PackageReference Include="Magick.NET-Q16-x86" Version="8.1.0" />
     <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.0.2" />
     <PackageReference Include="Microsoft.Toolkit.Wpf.UI.Controls" Version="6.1.2" />
     <PackageReference Include="Microsoft.Toolkit.Wpf.UI.XamlHost" Version="6.1.2" />
-    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.864.35" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.902.49" />
     <PackageReference Include="Microsoft.Windows.Compatibility" Version="5.0.2" />
     <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.19041.1" />
     <PackageReference Include="ModernWpfUI" Version="0.9.4" />
@@ -42,7 +42,7 @@
     <PackageReference Include="RawInput.Sharp" Version="0.0.4" />
     <PackageReference Include="Sentinel.NLogViewer" Version="1.3.3" />
     <PackageReference Include="SharpZipLib" Version="1.3.2" />
-    <PackageReference Include="YoutubeExplode" Version="6.0.4" />
+    <PackageReference Include="YoutubeExplode" Version="6.0.5" />
   </ItemGroup>
 
   <ItemGroup>

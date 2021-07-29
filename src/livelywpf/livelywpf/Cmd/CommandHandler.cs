@@ -408,7 +408,7 @@ namespace livelywpf.Cmd
                                         break;
                                     case WallpaperArrangement.span:
                                     case WallpaperArrangement.duplicate:
-                                        SetupDesktop.SendMessageWallpaper(msg);
+                                        SetupDesktop.SendMessageWallpaper(wp.GetWallpaperData(), msg);
                                         break;
                                 }
                             }

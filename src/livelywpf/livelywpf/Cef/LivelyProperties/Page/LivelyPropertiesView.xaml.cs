@@ -643,7 +643,7 @@ namespace livelywpf.Cef
                     break;
                 case WallpaperArrangement.span:
                 case WallpaperArrangement.duplicate:
-                    SetupDesktop.SendMessageWallpaper(msg);
+                    SetupDesktop.SendMessageWallpaper(wallpaperData, msg);
                     break;
             }
         }
