@@ -247,6 +247,9 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="TextCancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="TextChangeWallpaper" xml:space="preserve">
+    <value>Change Wallpapers</value>
+  </data>
   <data name="TextClose" xml:space="preserve">
     <value>Close</value>
   </data>

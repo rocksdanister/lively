@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Windows.Controls;
@@ -15,9 +16,9 @@ namespace livelywpf
     class Systray : IDisposable
     {
         private readonly System.Windows.Forms.NotifyIcon _notifyIcon = new System.Windows.Forms.NotifyIcon();
-        private System.Windows.Forms.ToolStripMenuItem pauseTrayBtn;
-        private System.Windows.Forms.ToolStripMenuItem customiseWallpaperBtn;
+        private System.Windows.Forms.ToolStripMenuItem pauseTrayBtn, customiseWallpaperBtn;
         public System.Windows.Forms.ToolStripMenuItem UpdateTrayBtn { get; private set; }
+        private static Random rnd = new Random();
         private bool disposedValue;
 
         public Systray(bool visibility = true)
@@ -65,6 +66,7 @@ namespace livelywpf
             };
             customiseWallpaperBtn.Click += CustomiseWallpaper;
             _notifyIcon.ContextMenuStrip.Items.Add(customiseWallpaperBtn);
+            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextChangeWallpaper, null).Click += (s, e) => SetNextWallpaper();
 
             if (!Program.IsMSIX)
             {
@@ -168,6 +170,59 @@ namespace livelywpf
                         settingsWidget.Show();
                         break;
                 }
+            }
+        }
+
+        /// <summary>
+        /// Sets next library item as wallpaper.<para>
+        /// Selection is random if no wallpaper is running.</para>
+        /// </summary>
+        private void SetNextWallpaper()
+        {
+            if (Program.LibraryVM.LibraryItems.Count == 0)
+            {
+                return;
+            }
+
+            switch (Program.SettingsVM.Settings.WallpaperArrangement)
+            {
+                case WallpaperArrangement.per:
+                    {
+                        if (SetupDesktop.Wallpapers.Count == 0)
+                        {
+                            foreach (var screen in ScreenHelper.GetScreen())
+                            {
+                                SetupDesktop.SetWallpaper(Program.LibraryVM.LibraryItems[rnd.Next(Program.LibraryVM.LibraryItems.Count)], screen);
+                            }
+                        }
+                        else
+                        {
+                            var wallpapers = SetupDesktop.Wallpapers.ToList();
+                            foreach (var wp in wallpapers)
+                            {
+                                var index = Program.LibraryVM.LibraryItems.IndexOf(wp.GetWallpaperData());
+                                if (index != -1)
+                                {
+                                    index = (index + 1) != Program.LibraryVM.LibraryItems.Count ? (index + 1) : 0;
+                                    SetupDesktop.SetWallpaper(Program.LibraryVM.LibraryItems[index], wp.GetScreen());
+                                }
+                            }
+                        }
+                    }
+                    break;
+                case WallpaperArrangement.span:
+                case WallpaperArrangement.duplicate:
+                    {
+                        var wallpaper = SetupDesktop.Wallpapers.Count != 0 ?
+                             SetupDesktop.Wallpapers[0].GetWallpaperData() : Program.LibraryVM.LibraryItems[rnd.Next(Program.LibraryVM.LibraryItems.Count)];
+                        var index = Program.LibraryVM.LibraryItems.IndexOf(wallpaper);
+                        if (index != -1)
+                        {
+                            index = (index + 1) != Program.LibraryVM.LibraryItems.Count ? (index + 1) : 0;
+                            SetupDesktop.SetWallpaper(Program.LibraryVM.LibraryItems[index], ScreenHelper.GetPrimaryScreen());
+                        }
+                    }
+                    break;
             }
         }
 
