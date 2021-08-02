@@ -222,4 +222,13 @@ namespace livelywpf
         [Description("Live wallpaper color avg fluet style.")]
         wallpaperFluent,
     }
+    
+    public enum AppUpdateStatus
+    {
+        uptodate,
+        available,
+        invalid,
+        notchecked,
+        error,
+    }
 }

@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading;
 using System.Windows;
 using System.Linq;
+using livelywpf.Helpers;
+using System.Windows.Threading;
 
 namespace livelywpf
 {
@@ -105,7 +107,10 @@ namespace livelywpf
         private static void App_Startup(object sender, StartupEventArgs e)
         {
             sysTray = new Systray(SettingsVM.IsSysTrayIconVisible);
-            AppUpdater();
+
+            AppUpdaterService.Instance.UpdateChecked += AppUpdateChecked;
+            _ = AppUpdaterService.Instance.CheckUpdate();
+            AppUpdaterService.Instance.StartUpdateTimer();
 
             if (Program.SettingsVM.Settings.IsFirstRun)
             {
@@ -147,83 +152,29 @@ namespace livelywpf
 
         #region app updater
 
-        private static Uri gitUpdateUri;
-        private static string gitUpdatChangelog;
-        private static bool showUpdateDialog = false;
-        private static async void AppUpdater()
+        private static void AppUpdateChecked(object sender, AppUpdaterEventArgs e)
         {
-            if (IsMSIX)
-                return;
-
-            try
+            _ = Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
             {
-                var userName = "rocksdanister";
-                var repositoryName = IsTestBuild ? "lively-beta" : "lively";
-                var fetchDelay = IsTestBuild ? 30000 : 45000;
-
-                var gitRelease = await UpdaterGithub.GetLatestRelease(repositoryName, userName, fetchDelay);
-                var result = UpdaterGithub.CompareAssemblyVersion(gitRelease);
-                if (result > 0)
+                updateNotify = e.UpdateStatus == AppUpdateStatus.available;
+                if (updateNotify)
                 {
-                    try
-                    {
-                        //download asset format: lively_setup_x86_full_vXXXX.exe, XXXX - 4 digit version no.
-                        var gitUrl = await UpdaterGithub.GetAssetUrl("lively_setup_x86_full", 
-                            gitRelease, repositoryName, userName);
-
-                        //changelog text
-                        StringBuilder sb = new StringBuilder(gitRelease.Body);
-                        //formatting git text.
-                        sb.Replace("#", "").Replace("\t", "  ");
-                        gitUpdatChangelog = sb.ToString();
-                        sb.Clear();
-                        gitUpdateUri = new Uri(gitUrl);
-
-                        if (App.AppWindow.IsVisible)
-                        {
-                            ShowUpdateDialog();
-                        }
-                        else
-                        {
-                            showUpdateDialog = true;
-                            sysTray.ShowBalloonNotification(4000,
-                                Properties.Resources.TitleAppName,
-                                Properties.Resources.DescriptionUpdateAvailable);
-                        }
-                    }
-                    catch (Exception e)
-                    {
-                        Logger.Error("Error retriving asseturl for update: " + e.Message);
-                    }
-                    sysTray.UpdateTrayBtn.Text = Properties.Resources.TextUpdateAvailable;
-                    sysTray.UpdateTrayBtn.Enabled = true;
+                    sysTray.ShowBalloonNotification(4000,
+                        Properties.Resources.TitleAppName,
+                        Properties.Resources.DescriptionUpdateAvailable);
                 }
-                else if (result < 0)
-                {
-                    //beta release.
-                    sysTray.UpdateTrayBtn.Text = ">_<'";
-                }
-                else
-                {
-                    //up-to-date
-                    sysTray.UpdateTrayBtn.Text = Properties.Resources.TextUpdateUptodate;
-                }
-            }
-            catch (Exception e)
-            {
-                Logger.Error("Git update check fail:" + e.Message);
-                sysTray.UpdateTrayBtn.Text = Properties.Resources.TextupdateCheckFail;
-                sysTray.UpdateTrayBtn.Enabled = true;
-            }
+                sysTray.SetUpdateMenu(e.UpdateStatus);
+            }));
         }
 
+        private static bool updateNotify = false;
         private static Views.AppUpdaterView updateWindow = null;
-        public static void ShowUpdateDialog()
+        public static void AppUpdateDialog(Uri uri, string changelog)
         {
-            showUpdateDialog = false;
+            updateNotify = false;
             if (updateWindow == null)
             {
-                updateWindow = new Views.AppUpdaterView(gitUpdateUri, gitUpdatChangelog);
+                updateWindow = new Views.AppUpdaterView(uri, changelog);
                 if (App.AppWindow.IsVisible)
                 {
                     updateWindow.Owner = App.AppWindow;
@@ -272,9 +223,9 @@ namespace livelywpf
             App.AppWindow?.Show();
             App.AppWindow.WindowState = App.AppWindow?.WindowState != WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
 
-            if (showUpdateDialog)
+            if (updateNotify)
             {
-                ShowUpdateDialog();
+                AppUpdateDialog(AppUpdaterService.Instance.GetUri(), AppUpdaterService.Instance.GetChangelog());
             }
         }
 

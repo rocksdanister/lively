@@ -15,16 +15,15 @@ namespace livelywpf
 {
     class Systray : IDisposable
     {
-        private readonly System.Windows.Forms.NotifyIcon _notifyIcon = new System.Windows.Forms.NotifyIcon();
-        private System.Windows.Forms.ToolStripMenuItem pauseTrayBtn, customiseWallpaperBtn;
-        public System.Windows.Forms.ToolStripMenuItem UpdateTrayBtn { get; private set; }
-        private static Random rnd = new Random();
+        private readonly NotifyIcon _notifyIcon = new NotifyIcon();
+        private ToolStripMenuItem pauseTrayBtn, customiseWallpaperBtn, updateTrayBtn;
+        private static readonly Random rnd = new Random();
         private bool disposedValue;
 
         public Systray(bool visibility = true)
         {
             //NotifyIcon Fix: https://stackoverflow.com/questions/28833702/wpf-notifyicon-crash-on-first-run-the-root-visual-of-a-visualtarget-cannot-hav/29116917
-            //Rarely I get this error "The root Visual of a VisualTarget cannot have a parent..", hard to pinpoint not knowing how to recreate the error.
+            //Error: "The root Visual of a VisualTarget cannot have a parent.."
             System.Windows.Controls.ToolTip tt = new System.Windows.Controls.ToolTip();
             tt.IsOpen = true;
             tt.IsOpen = false;
@@ -42,7 +41,7 @@ namespace livelywpf
 
         private void CreateContextMenu()
         {
-            _notifyIcon.ContextMenuStrip = new System.Windows.Forms.ContextMenuStrip
+            _notifyIcon.ContextMenuStrip = new ContextMenuStrip
             {
                 ForeColor = Color.AliceBlue,
                 Padding = new Padding(0),
@@ -56,11 +55,11 @@ namespace livelywpf
 
             _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextCloseWallpapers, null).Click += (s, e) => SetupDesktop.TerminateAllWallpapers();
 
-            pauseTrayBtn = new System.Windows.Forms.ToolStripMenuItem(Properties.Resources.TextPauseWallpapers, Properties.Icons.icons8_pause_52);
+            pauseTrayBtn = new ToolStripMenuItem(Properties.Resources.TextPauseWallpapers, Properties.Icons.icons8_pause_52);
             pauseTrayBtn.Click += (s, e) => ToggleWallpaperPlaybackState();
             _notifyIcon.ContextMenuStrip.Items.Add(pauseTrayBtn);
 
-            customiseWallpaperBtn = new System.Windows.Forms.ToolStripMenuItem(Properties.Resources.TextCustomiseWallpaper, null)
+            customiseWallpaperBtn = new ToolStripMenuItem(Properties.Resources.TextCustomiseWallpaper, null)
             {
                 Enabled = false
             };
@@ -71,12 +70,12 @@ namespace livelywpf
             if (!Program.IsMSIX)
             {
                 _notifyIcon.ContextMenuStrip.Items.Add(new Helpers.CustomContextMenu.StripSeparatorCustom().stripSeparator);
-                UpdateTrayBtn = new System.Windows.Forms.ToolStripMenuItem(Properties.Resources.TextUpdateChecking, null)
+                updateTrayBtn = new ToolStripMenuItem(Properties.Resources.TextUpdateChecking, null)
                 {
                     Enabled = false
                 };
-                UpdateTrayBtn.Click += (s, e) => Program.ShowUpdateDialog();
-                _notifyIcon.ContextMenuStrip.Items.Add(UpdateTrayBtn);
+                updateTrayBtn.Click += (s, e) => Program.AppUpdateDialog(Helpers.AppUpdaterService.Instance.GetUri(), Helpers.AppUpdaterService.Instance.GetChangelog());
+                _notifyIcon.ContextMenuStrip.Items.Add(updateTrayBtn);
             }
 
             _notifyIcon.ContextMenuStrip.Items.Add(new Helpers.CustomContextMenu.StripSeparatorCustom().stripSeparator);
@@ -91,7 +90,7 @@ namespace livelywpf
         }
 
         /// <summary>
-        /// Fix for when menu opens to the nearest screen instead of the screen in which cursor is located.
+        /// Fix for traymenu opening to the nearest screen instead of the screen in which cursor is located.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -140,6 +139,32 @@ namespace livelywpf
         public void ShowBalloonNotification(int timeout, string title, string msg)
         {
             _notifyIcon.ShowBalloonTip(timeout, title, msg, ToolTipIcon.None);
+        }
+
+        public void SetUpdateMenu(AppUpdateStatus status)
+        {
+            switch (status)
+            {
+                case AppUpdateStatus.uptodate:
+                    updateTrayBtn.Enabled = false;
+                    updateTrayBtn.Text = Properties.Resources.TextUpdateUptodate;
+                    break;
+                case AppUpdateStatus.available:
+                    updateTrayBtn.Enabled = true;
+                    updateTrayBtn.Text = Properties.Resources.TextUpdateAvailable;
+                    break;
+                case AppUpdateStatus.invalid:
+                    updateTrayBtn.Enabled = false;
+                    updateTrayBtn.Text = ">_<";
+                    break;
+                case AppUpdateStatus.notchecked:
+                    updateTrayBtn.Enabled = false;
+                    break;
+                case AppUpdateStatus.error:
+                    updateTrayBtn.Enabled = true;
+                    updateTrayBtn.Text = Properties.Resources.TextupdateCheckFail;
+                    break;
+            }
         }
 
         private void CustomiseWallpaper(object sender, EventArgs e)

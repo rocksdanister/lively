@@ -8,6 +8,7 @@
       xmlns:p = "clr-namespace:livelywpf.Properties"                
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
+      Unloaded="Page_Unloaded"
       Title="AboutView">
 
     <Page.Resources>
@@ -23,7 +24,7 @@
 
     <Grid>
         <ScrollViewer>
-            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-10, -125, 0, 0">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="{x:Static p:Resources.TitleAppName}" FontSize="35" Margin="0, 0, 5, 0" FontWeight="Medium"/>
                     <!-- animated lively icon -->
@@ -62,11 +63,14 @@
                                 MinWidth="200" MaxWidth="200" Margin="0, 0, 0, 10" Click="btnLicense_Click"/>
                     <Button x:Name="btnAttribution" Content="{x:Static p:Resources.TextAttribution}" 
                                 MinWidth="200" MaxWidth="200" Margin="0, 0, 0, 10" Click="btnAttribution_Click"/>
-                    <!--
                     <Button x:Name="btnPrivacyPolicy" Content="{x:Static p:Resources.TextPrivacyPolicy}" 
                             MinWidth="200" MaxWidth="200" Margin="0, 0, 0, 10" Click="btnPrivacyPolicy_Click"/>
-                    -->
                 </StackPanel>
+
+                <TextBlock Text="Updates" FontSize="20" Margin="0, 25, 5, 0" TextAlignment="Center"/>
+                <TextBlock x:Name="txtBoxUpdateStatus" Text="Update available: v1.9.9.9" Margin="0, 5, 5, 0" TextAlignment="Center"/>
+                <TextBlock x:Name="txtboxUpdateDate" Text="Last checked: 01-08-2021 08:38:08 PM" Margin="0, 5, 5, 0" TextAlignment="Center"/>
+                <Button x:Name="btnUpdate" Content="{x:Static p:Resources.TextUpdateCheck}" Margin="0, 5, 0, 0" HorizontalAlignment="Center" Click="btnUpdate_Click"/>
             </StackPanel>
         </ScrollViewer>
     </Grid>

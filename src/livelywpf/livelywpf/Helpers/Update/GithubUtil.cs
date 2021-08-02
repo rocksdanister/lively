@@ -6,9 +6,9 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace livelywpf
+namespace livelywpf.Helpers
 {
-    public static class UpdaterGithub
+    public static class GithubUtil
     {
         /// <summary>
         /// After given delay retrieve github release asset download url.
@@ -60,6 +60,11 @@ namespace livelywpf
             //var requiredAssets = allAssets.Single(x => x.Name.Equals(assetName, StringComparison.OrdinalIgnoreCase));
             var requiredAsset = allAssets.First(x => Contains(x.Name, assetNameSubstring, StringComparison.OrdinalIgnoreCase));
             return requiredAsset.BrowserDownloadUrl;
+        }
+
+        public static Version GetVersion(Release release)
+        {
+            return new Version(Regex.Replace(release.TagName, "[A-Za-z ]", ""));
         }
 
         /// <summary>
