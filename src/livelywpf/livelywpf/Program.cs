@@ -110,7 +110,7 @@ namespace livelywpf
 
             AppUpdaterService.Instance.UpdateChecked += AppUpdateChecked;
             _ = AppUpdaterService.Instance.CheckUpdate();
-            AppUpdaterService.Instance.StartUpdateTimer();
+            AppUpdaterService.Instance.Start();
 
             if (Program.SettingsVM.Settings.IsFirstRun)
             {
@@ -152,22 +152,30 @@ namespace livelywpf
 
         #region app updater
 
+        //number of times to notify user about update.
+        private static int updateNotifyAmt = 1;
+        private static bool updateNotify = false;
+
         private static void AppUpdateChecked(object sender, AppUpdaterEventArgs e)
         {
             _ = Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
             {
-                updateNotify = e.UpdateStatus == AppUpdateStatus.available;
-                if (updateNotify)
+                if (e.UpdateStatus == AppUpdateStatus.available)
                 {
-                    sysTray.ShowBalloonNotification(4000,
-                        Properties.Resources.TitleAppName,
-                        Properties.Resources.DescriptionUpdateAvailable);
+                    if (updateNotifyAmt > 0)
+                    {
+                        updateNotifyAmt--;
+                        updateNotify = true;
+                        sysTray.ShowBalloonNotification(4000,
+                            Properties.Resources.TitleAppName,
+                            Properties.Resources.DescriptionUpdateAvailable);
+                    }
                 }
                 sysTray.SetUpdateMenu(e.UpdateStatus);
+                Logger.Info("AppUpdate status: " + e.UpdateStatus);
             }));
         }
 
-        private static bool updateNotify = false;
         private static Views.AppUpdaterView updateWindow = null;
         public static void AppUpdateDialog(Uri uri, string changelog)
         {

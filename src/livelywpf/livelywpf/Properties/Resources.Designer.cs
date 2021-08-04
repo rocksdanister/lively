@@ -644,6 +644,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Last checked.
+        /// </summary>
+        public static string TextLastChecked {
+            get {
+                return ResourceManager.GetString("TextLastChecked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Learn more.
         /// </summary>
         public static string TextLearnMore {
@@ -2091,6 +2100,15 @@ namespace livelywpf.Properties {
         public static string TitleUIMode {
             get {
                 return ResourceManager.GetString("TitleUIMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updates.
+        /// </summary>
+        public static string TitleUpdates {
+            get {
+                return ResourceManager.GetString("TitleUpdates", resourceCulture);
             }
         }
         

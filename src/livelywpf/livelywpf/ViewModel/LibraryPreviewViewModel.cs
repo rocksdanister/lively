@@ -372,6 +372,25 @@ namespace livelywpf
                 //change from pos 0..
                 libData.DataType = LibraryTileType.ready;
                 Program.LibraryVM.SortLibraryItem(libData);
+
+                //create lively .zip..
+                if (Program.SettingsVM.Settings.LivelyZipGenerate)
+                {
+                    var saveFileDialog = new Microsoft.Win32.SaveFileDialog()
+                    {
+                        Title = Properties.Resources.TitleLocation,
+                        Filter = "Lively.zip|*.zip",
+                        //title ending with '.' can have diff extension (example: parallax.js)
+                        FileName = Path.ChangeExtension(libData.Title, ".zip"),
+                    };
+                    if (saveFileDialog.ShowDialog() == true)
+                    {
+                        if (!string.IsNullOrEmpty(saveFileDialog.FileName))
+                        {
+                            Program.LibraryVM.WallpaperExport(libData, saveFileDialog.FileName);
+                        }
+                    }    
+                }
             }
             else
             {
@@ -399,26 +418,6 @@ namespace livelywpf
                 else
                 {
                     //nothing, core will terminate and delete the wp folder when LivelyInfo.json not found..
-                }
-            }
-
-            if (Program.SettingsVM.Settings.LivelyZipGenerate)
-            {
-                string savePath = "";
-                var saveFileDialog1 = new Microsoft.Win32.SaveFileDialog()
-                {
-                    Title = "Select location to save the file",
-                    Filter = "Lively/zip file|*.zip",
-                    //title ending with '.' can have diff extension (example: parallax.js)
-                    FileName = Path.ChangeExtension(libData.Title, ".zip"),
-                };
-                if (saveFileDialog1.ShowDialog() == true)
-                {
-                    savePath = saveFileDialog1.FileName;
-                }
-                if (!String.IsNullOrEmpty(savePath))
-                {
-                    Program.LibraryVM.WallpaperExport(libData, savePath);
                 }
             }
 

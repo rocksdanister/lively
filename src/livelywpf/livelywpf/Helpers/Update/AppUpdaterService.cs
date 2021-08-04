@@ -28,8 +28,8 @@ namespace livelywpf.Helpers
         private static readonly AppUpdaterService instance = new AppUpdaterService();
 
         //in milliseconds
-        private readonly int fetchDelayError = 30 * 60 * 1000;
-        private readonly int fetchDelayRepeat = 24 * 60 * 60 * 1000; 
+        private readonly int fetchDelayError = 30 * 60 * 1000; //30min
+        private readonly int fetchDelayRepeat = 12 * 60 * 60 * 1000; //12hr
 
         //public
         public AppUpdateStatus Status { get; private set; } = AppUpdateStatus.notchecked;
@@ -56,12 +56,18 @@ namespace livelywpf.Helpers
             retryTimer.Interval = 5 * 60 * 1000;
         }
 
-        public void StartUpdateTimer()
+        /// <summary>
+        /// Check for updates periodically.
+        /// </summary>
+        public void Start()
         {
             retryTimer.Start();
         }
 
-        public void StopUpdateTimer()
+        /// <summary>
+        /// Stops periodic updates check.
+        /// </summary>
+        public void Stop()
         {
             if (retryTimer.Enabled)
             {

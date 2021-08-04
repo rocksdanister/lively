@@ -8,7 +8,6 @@
       xmlns:p = "clr-namespace:livelywpf.Properties"                
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Unloaded="Page_Unloaded"
       Title="AboutView">
 
     <Page.Resources>
@@ -47,7 +46,7 @@
                         </Image.Style>
                     </Image>
                     <StackPanel Margin="0, 5, 0, 0">
-                        <TextBlock x:Name="appVersionText" Text="v1.0.0.0" FontSize="15" Margin="0, 0, 5, 0" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding AppVersionText}" FontSize="15" Margin="0, 0, 5, 0" VerticalAlignment="Center"/>
                         <TextBlock Margin="20, 0, 0, 0">           
                             <Hyperlink Foreground="{DynamicResource SystemControlHighlightAltListAccentHighBrush}" NavigateUri="https://github.com/rocksdanister" 
                                         ToolTipService.ToolTip="https://github.com/rocksdanister" 
@@ -59,18 +58,20 @@
                 </StackPanel>
 
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0, 25, 0, 0">
-                    <Button x:Name="btnLicense" Content="{x:Static p:Resources.TextLicense}" 
-                                MinWidth="200" MaxWidth="200" Margin="0, 0, 0, 10" Click="btnLicense_Click"/>
-                    <Button x:Name="btnAttribution" Content="{x:Static p:Resources.TextAttribution}" 
-                                MinWidth="200" MaxWidth="200" Margin="0, 0, 0, 10" Click="btnAttribution_Click"/>
-                    <Button x:Name="btnPrivacyPolicy" Content="{x:Static p:Resources.TextPrivacyPolicy}" 
-                            MinWidth="200" MaxWidth="200" Margin="0, 0, 0, 10" Click="btnPrivacyPolicy_Click"/>
+                    <Button Content="{x:Static p:Resources.TextLicense}" 
+                                MinWidth="200" MaxWidth="200" Margin="0, 0, 0, 10" Command="{Binding LicenseDocCommand}"/>
+                    <Button Content="{x:Static p:Resources.TextAttribution}" 
+                                MinWidth="200" MaxWidth="200" Margin="0, 0, 0, 10" Command="{Binding AttribDocCommand}"/>
+                    <Button Content="{x:Static p:Resources.TextPrivacyPolicy}" 
+                            MinWidth="200" MaxWidth="200" Margin="0, 0, 0, 10" Command="{Binding PrivacyDocCommand}" 
+                            ToolTip="https://github.com/rocksdanister/lively/blob/dev-v1.0-fluent-netcore/PRIVACY.md"/>
                 </StackPanel>
 
-                <TextBlock Text="Updates" FontSize="20" Margin="0, 25, 5, 0" TextAlignment="Center"/>
-                <TextBlock x:Name="txtBoxUpdateStatus" Text="Update available: v1.9.9.9" Margin="0, 5, 5, 0" TextAlignment="Center"/>
-                <TextBlock x:Name="txtboxUpdateDate" Text="Last checked: 01-08-2021 08:38:08 PM" Margin="0, 5, 5, 0" TextAlignment="Center"/>
-                <Button x:Name="btnUpdate" Content="{x:Static p:Resources.TextUpdateCheck}" Margin="0, 5, 0, 0" HorizontalAlignment="Center" Click="btnUpdate_Click"/>
+                <TextBlock Text="{x:Static p:Resources.TitleUpdates}" FontSize="20" Margin="0, 25, 5, 0" TextAlignment="Center"/>
+                <TextBlock Text="{Binding UpdateStatusText}" Margin="0, 5, 5, 0" TextAlignment="Center"/>
+                <TextBlock Text="{Binding UpdateDateText}" Margin="0, 5, 5, 0" TextAlignment="Center"/>
+                <Button MinWidth="200" Margin="0, 5, 0, 0" HorizontalAlignment="Center" Content="{Binding UpdateCommandText}"
+                        Command="{Binding UpdateAppCommand}"/>
             </StackPanel>
         </ScrollViewer>
     </Grid>

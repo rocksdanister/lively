@@ -328,6 +328,9 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="TextKeyboard" xml:space="preserve">
     <value>Keyboard</value>
   </data>
+  <data name="TextLastChecked" xml:space="preserve">
+    <value>Last checked</value>
+  </data>
   <data name="TextLearnMore" xml:space="preserve">
     <value>Learn more</value>
   </data>
@@ -813,6 +816,9 @@ Edge is the built in webview of windows 10.</value>
   </data>
   <data name="TitleUIMode" xml:space="preserve">
     <value>User Interface</value>
+  </data>
+  <data name="TitleUpdates" xml:space="preserve">
+    <value>Updates</value>
   </data>
   <data name="TitleVideo" xml:space="preserve">
     <value>Video</value>

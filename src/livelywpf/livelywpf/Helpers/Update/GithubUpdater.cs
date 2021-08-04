@@ -19,7 +19,6 @@ namespace livelywpf.Helpers
             {
                 var userName = "rocksdanister";
                 var repositoryName = Program.IsTestBuild ? "lively-beta" : "lively";
-                var fetchDelay = Program.IsTestBuild ? 30000 : 45000;
 
                 var gitRelease = await GithubUtil.GetLatestRelease(repositoryName, userName, 0);
                 var gitVerCompare = GithubUtil.CompareAssemblyVersion(gitRelease);
@@ -34,11 +33,10 @@ namespace livelywpf.Helpers
                             gitRelease, repositoryName, userName);
 
                         //changelog text
-                        StringBuilder sb = new StringBuilder(gitRelease.Body);
+                        var sb = new StringBuilder(gitRelease.Body);
                         //formatting git text.
                         sb.Replace("#", "").Replace("\t", "  ");
                         gitUpdatChangelog = sb.ToString();
-                        sb.Clear();
                         gitUpdateUri = new Uri(gitUrl);
                     }
                     catch (Exception e)
