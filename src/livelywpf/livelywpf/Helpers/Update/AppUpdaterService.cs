@@ -87,11 +87,12 @@ namespace livelywpf.Helpers
         {
             if (Program.IsMSIX)
             {
+                //msix already has built-in updater.
                 return AppUpdateStatus.notchecked;
             }
 
             await Task.Delay(fetchDelay);
-            Status = await updater.CheckUpdate();
+            Status = await updater.CheckUpdate(Program.IsTestBuild);
             LastCheckTime = DateTime.Now;
             LastCheckVersion = updater.GetVersion();
             UpdateChecked?.Invoke(this, new AppUpdaterEventArgs(Status, LastCheckVersion, LastCheckTime, GetUri()));

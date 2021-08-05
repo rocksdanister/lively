@@ -12,13 +12,13 @@ namespace livelywpf.Helpers
         private string gitUpdatChangelog;
         private readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
-        public async Task<AppUpdateStatus> CheckUpdate()
+        public async Task<AppUpdateStatus> CheckUpdate(bool isBeta)
         {
             AppUpdateStatus status = AppUpdateStatus.error;
             try
             {
                 var userName = "rocksdanister";
-                var repositoryName = Program.IsTestBuild ? "lively-beta" : "lively";
+                var repositoryName = isBeta ? "lively-beta" : "lively";
 
                 var gitRelease = await GithubUtil.GetLatestRelease(repositoryName, userName, 0);
                 var gitVerCompare = GithubUtil.CompareAssemblyVersion(gitRelease);

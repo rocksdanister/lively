@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -16,24 +17,12 @@ namespace livelywpf
 
         public AboutViewModel()
         {
-            AppVersionText = "v" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() +
-                (Program.IsTestBuild ? "b" : (Program.IsMSIX ? Properties.Resources.TitleStore : string.Empty));
-
             MenuUpdate(AppUpdaterService.Instance.Status, AppUpdaterService.Instance.LastCheckTime, AppUpdaterService.Instance.LastCheckVersion);
-
             AppUpdaterService.Instance.UpdateChecked += AppUpdateChecked;
         }
 
-        private string _appVersionText;
-        public string AppVersionText
-        {
-            get { return _appVersionText; }
-            set
-            {
-                _appVersionText = value;
-                OnPropertyChanged("AppVersionText");
-            }
-        }
+        public string AppVersionText => "v" + Assembly.GetExecutingAssembly().GetName().Version.ToString() +
+                (Program.IsTestBuild ? "b" : (Program.IsMSIX ? Properties.Resources.TitleStore : string.Empty));
 
         private string _updateStatusText;
         public string UpdateStatusText

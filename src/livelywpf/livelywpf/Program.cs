@@ -172,7 +172,7 @@ namespace livelywpf
                     }
                 }
                 sysTray.SetUpdateMenu(e.UpdateStatus);
-                Logger.Info("AppUpdate status: " + e.UpdateStatus);
+                Logger.Info($"AppUpdate status: {e.UpdateStatus}");
             }));
         }
 
