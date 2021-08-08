@@ -7,9 +7,6 @@ namespace livelywpf.Helpers
 {
     interface IAppUpdater
     {
-        Task<AppUpdateStatus> CheckUpdate(bool isBeta);
-        string GetChangelog();
-        Uri GetUri();
-        Version GetVersion();
+        Task<(Uri, Version, string)> GetLatestRelease(bool isBeta);
     }
 }

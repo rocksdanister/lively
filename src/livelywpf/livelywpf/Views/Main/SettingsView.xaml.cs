@@ -19,12 +19,12 @@ namespace livelywpf.Views
             // Hook up x:Bind source.
             global::Microsoft.Toolkit.Wpf.UI.XamlHost.WindowsXamlHost windowsXamlHost =
                 sender as global::Microsoft.Toolkit.Wpf.UI.XamlHost.WindowsXamlHost;
-            global::livelysettings.SettingsPage userControl =
-                windowsXamlHost.GetUwpInternalObject() as global::livelysettings.SettingsPage;
+            global::livelyPages.SettingsPage userControl =
+                windowsXamlHost.GetUwpInternalObject() as global::livelyPages.SettingsPage;
 
             if (userControl != null)
             {
-                userControl.UIText = new livelysettings.LocalizeText()
+                userControl.UIText = new livelyPages.SettingsPage.LocalizeText()
                 {
                     TitleGeneral = Properties.Resources.TitleGeneral,
                     TitleMisc = Properties.Resources.TitleMisc,
@@ -138,6 +138,7 @@ namespace livelywpf.Views
                     TipDebug = Properties.Resources.TipDebug,
                     TitleExportLog = Properties.Resources.TitleExportLogs,
                     TipExportLog = Properties.Resources.TipExportLogs,
+                    TipSwitchBranch = "Change software release type.",
                     //button localization
                     TextOn = Properties.Resources.TextOn,
                     TextOff = Properties.Resources.TextOff,

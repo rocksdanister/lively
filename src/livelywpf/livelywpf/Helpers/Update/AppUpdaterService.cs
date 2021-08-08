@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Timer = System.Timers.Timer;
@@ -8,18 +9,20 @@ namespace livelywpf.Helpers
 {
     public class AppUpdaterEventArgs : EventArgs
     {
-        public AppUpdaterEventArgs(AppUpdateStatus updateStatus, Version updateVersion, DateTime updateDate, Uri updateUri)
+        public AppUpdaterEventArgs(AppUpdateStatus updateStatus, Version updateVersion, DateTime updateDate, Uri updateUri, string changeLog)
         {
             UpdateStatus = updateStatus;
             UpdateVersion = updateVersion;
             UpdateUri = updateUri;
             UpdateDate = updateDate;
+            ChangeLog = changeLog;
         }
 
         public AppUpdateStatus UpdateStatus { get; }
         public Version UpdateVersion { get; }
         public Uri UpdateUri { get; }
         public DateTime UpdateDate { get; }
+        public string ChangeLog { get; }
     }
 
     public sealed class AppUpdaterService
@@ -35,10 +38,13 @@ namespace livelywpf.Helpers
         public AppUpdateStatus Status { get; private set; } = AppUpdateStatus.notchecked;
         public DateTime LastCheckTime { get; private set; } = DateTime.MinValue;
         public Version LastCheckVersion { get; private set; } = new Version(0, 0, 0, 0);
+        public string LastCheckChangelog { get; private set; }
+        public Uri LastCheckUri { get; private set; }
         public event EventHandler<AppUpdaterEventArgs> UpdateChecked;
 
         private readonly IAppUpdater updater;
         private readonly Timer retryTimer = new Timer();
+        private readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
         public static AppUpdaterService Instance
         {
@@ -91,22 +97,54 @@ namespace livelywpf.Helpers
                 return AppUpdateStatus.notchecked;
             }
 
-            await Task.Delay(fetchDelay);
-            Status = await updater.CheckUpdate(Program.IsTestBuild);
+            try
+            {
+                await Task.Delay(fetchDelay);
+                (Uri, Version, string) data = await GetLatestRelease(Program.IsTestBuild);
+                int verCompare = CompareAssemblyVersion(data.Item2);
+                if (verCompare > 0)
+                {
+                    //update available.
+                    Status = AppUpdateStatus.available;
+                }
+                else if (verCompare < 0)
+                {
+                    //beta release.
+                    Status = AppUpdateStatus.invalid;
+                }
+                else
+                {
+                    //up-to-date.
+                    Status = AppUpdateStatus.uptodate;
+                }
+                LastCheckUri = data.Item1;
+                LastCheckVersion = data.Item2;
+                LastCheckChangelog = data.Item3;
+            }
+            catch (Exception e)
+            {
+                Logger.Error("Update fetch error:" + e.ToString());
+                Status = AppUpdateStatus.error;
+            }
             LastCheckTime = DateTime.Now;
-            LastCheckVersion = updater.GetVersion();
-            UpdateChecked?.Invoke(this, new AppUpdaterEventArgs(Status, LastCheckVersion, LastCheckTime, GetUri()));
+
+            UpdateChecked?.Invoke(this, new AppUpdaterEventArgs(Status, LastCheckVersion, LastCheckTime, LastCheckUri, LastCheckChangelog));
             return Status;
         }
 
-        public string GetChangelog()
+        public async Task<(Uri, Version, string)> GetLatestRelease(bool isBeta)
         {
-            return updater.GetChangelog();
+            return await updater.GetLatestRelease(isBeta);
         }
 
-        public Uri GetUri()
+        #region helpers
+
+        public static int CompareAssemblyVersion(Version version)
         {
-            return updater.GetUri();
+            var appVersion = new Version(Assembly.GetExecutingAssembly().GetName().Version.ToString());
+            return version.CompareTo(appVersion);
         }
+
+        #endregion //helpers
     }
 }

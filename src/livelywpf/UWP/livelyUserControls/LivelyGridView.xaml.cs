@@ -20,39 +20,18 @@ using Windows.UI.Xaml.Navigation;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
-namespace livelygrid
+namespace livelyUserControls
 {
-    public enum GridSize
-    {
-        Small,
-        Normal,
-        Large,
-        NoPreview
-    }
-
-    public class LocalizeTextGridView
-    {
-        public string TextInformation { get; set; }
-        public string TextSetWallpaper { get; set; }
-        public string TextShowDisk { get; set; }
-        public string TextCustomise { get; set; }
-        public string TextConvertVideo { get; set; }
-        public string TextExportZip { get; set; }
-        public string TextDelete { get; set; }
-        public string TextAddWallpaper { get; set; }
-        public string TextPreviewWallpaper { get; set; }
-        public string TextEditWallpaper { get; set; }
-    }
-
     public sealed partial class LivelyGridView : UserControl
     {
-        public LocalizeTextGridView UIText { get; set; }
+        public LocalizeText UIText { get; set; }
         private Object selectedTile;
         /// <summary>
         /// Fires when flyoutmenu is clicked, object is datacontext.
         /// </summary>
         public event EventHandler<object> ContextMenuClick;
         public event EventHandler<DragEventArgs> FileDroppedEvent;
+
         public LivelyGridView()
         {
             this.InitializeComponent();
@@ -144,5 +123,27 @@ namespace livelygrid
         }
 
         #endregion //drag and drop
+
+        public enum GridSize
+        {
+            Small,
+            Normal,
+            Large,
+            NoPreview
+        }
+
+        public class LocalizeText
+        {
+            public string TextInformation { get; set; }
+            public string TextSetWallpaper { get; set; }
+            public string TextShowDisk { get; set; }
+            public string TextCustomise { get; set; }
+            public string TextConvertVideo { get; set; }
+            public string TextExportZip { get; set; }
+            public string TextDelete { get; set; }
+            public string TextAddWallpaper { get; set; }
+            public string TextPreviewWallpaper { get; set; }
+            public string TextEditWallpaper { get; set; }
+        }
     }
 }

@@ -3,6 +3,7 @@ using System;
 using System.Windows;
 using System.Windows.Interop;
 using livelywpf.Core;
+using System.Windows.Input;
 
 namespace livelywpf.Cef 
 {
@@ -15,6 +16,7 @@ namespace livelywpf.Cef
         public LivelyPropertiesTrayWidget(LibraryModel model)
         {
             InitializeComponent();
+            PreviewKeyDown += (s, e) => { if (e.Key == Key.Escape) this.Close(); };
 
             //top-right location.
             this.WindowStartupLocation = WindowStartupLocation.Manual;

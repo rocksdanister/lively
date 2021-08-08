@@ -119,7 +119,7 @@ namespace livelywpf
         {
             if (updateAvailable)
             {
-                Program.AppUpdateDialog(AppUpdaterService.Instance.GetUri(), AppUpdaterService.Instance.GetChangelog());
+                Program.AppUpdateDialog(AppUpdaterService.Instance.LastCheckUri, AppUpdaterService.Instance.LastCheckChangelog);
             }
             else
             {
@@ -127,7 +127,7 @@ namespace livelywpf
                 {
                     canUpdateAppCommand = false;
                     _updateAppCommand.RaiseCanExecuteChanged();
-                    await AppUpdaterService.Instance.CheckUpdate(0);
+                    _ = await AppUpdaterService.Instance.CheckUpdate(0);
                     MenuUpdate(AppUpdaterService.Instance.Status, AppUpdaterService.Instance.LastCheckTime, AppUpdaterService.Instance.LastCheckVersion);
                 }
                 finally
@@ -171,7 +171,7 @@ namespace livelywpf
                     UpdateStatusText = Properties.Resources.TextupdateCheckFail;
                     break;
             }
-            UpdateDateText = $"{Properties.Resources.TextLastChecked}: {date}";
+            UpdateDateText = date == DateTime.MinValue ? $"{Properties.Resources.TextLastChecked}: ---" : $"{Properties.Resources.TextLastChecked}: {date}";
             UpdateCommandText = updateAvailable ? Properties.Resources.TextDownload : Properties.Resources.TextUpdateCheck;
         }
 

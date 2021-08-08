@@ -6,6 +6,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Threading;
 
@@ -71,7 +72,9 @@ namespace livelywpf.Views
             this.Closed += vm.OnWindowClosed;
             wallpaperHwnd = wp.GetHWND();
             wallpaperType = wp.GetWallpaperType();
+
             InitializeComponent();
+            PreviewKeyDown += (s, e) => { if (e.Key == Key.Escape) this.Close(); };
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

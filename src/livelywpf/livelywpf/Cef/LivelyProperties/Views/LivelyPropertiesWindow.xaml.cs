@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Interop;
 using livelywpf.Core;
 using ModernWpf.Media.Animation;
@@ -15,6 +16,7 @@ namespace livelywpf.Cef
         public LivelyPropertiesWindow(LibraryModel model)
         {
             InitializeComponent();
+            PreviewKeyDown += (s, e) => { if (e.Key == Key.Escape) this.Close(); };
             ContentFrame.Navigate(new Cef.LivelyPropertiesView(model), new SuppressNavigationTransitionInfo());
         }
 

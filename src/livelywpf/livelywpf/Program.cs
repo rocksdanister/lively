@@ -233,7 +233,7 @@ namespace livelywpf
 
             if (updateNotify)
             {
-                AppUpdateDialog(AppUpdaterService.Instance.GetUri(), AppUpdaterService.Instance.GetChangelog());
+                AppUpdateDialog(AppUpdaterService.Instance.LastCheckUri, AppUpdaterService.Instance.LastCheckChangelog);
             }
         }
 

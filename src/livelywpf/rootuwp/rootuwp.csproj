@@ -154,21 +154,13 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\UserControls\livelycefproperties\livelycefproperties.csproj">
-      <Project>{6b6d94ce-4723-44b2-b831-69dc9f6166f9}</Project>
-      <Name>livelycefproperties</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\UserControls\livelygrid\livelygrid.csproj">
+    <ProjectReference Include="..\UWP\livelyUserControls\livelyUserControls.csproj">
       <Project>{baeb3ff9-8189-4179-9f70-ea4b76049570}</Project>
-      <Name>livelygrid</Name>
+      <Name>livelyUserControls</Name>
     </ProjectReference>
-    <ProjectReference Include="..\UserControls\livelyscreenlayout\livelyscreenlayout.csproj">
-      <Project>{4086ae73-d21e-4783-832c-72052905c5f8}</Project>
-      <Name>livelyscreenlayout</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\UserControls\livelysettings\livelysettings.csproj">
+    <ProjectReference Include="..\UWP\livelyPages\livelyPages.csproj">
       <Project>{7b67937a-6988-4246-b5d7-eb4a5685a2df}</Project>
-      <Name>livelysettings</Name>
+      <Name>livelyPages</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

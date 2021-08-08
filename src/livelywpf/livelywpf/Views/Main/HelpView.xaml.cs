@@ -22,13 +22,36 @@ namespace livelywpf.Views
         public HelpView()
         {
             InitializeComponent();
-            storePanel.Visibility = Program.IsMSIX ? Visibility.Visible : Visibility.Collapsed;
+            this.DataContext = new HelpViewModel();
+            //storePanel.Visibility = Program.IsMSIX ? Visibility.Visible : Visibility.Collapsed;
         }
 
-        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        private void HelpPageHost_ChildChanged(object sender, EventArgs e)
         {
-            e.Handled = true;
-            Helpers.LinkHandler.OpenBrowser(e.Uri);
+            // Hook up x:Bind source.
+            global::Microsoft.Toolkit.Wpf.UI.XamlHost.WindowsXamlHost windowsXamlHost =
+                sender as global::Microsoft.Toolkit.Wpf.UI.XamlHost.WindowsXamlHost;
+            global::livelyPages.HelpPage userControl =
+                windowsXamlHost.GetUwpInternalObject() as global::livelyPages.HelpPage;
+
+            if (userControl != null)
+            {
+                userControl.UIText = new livelyPages.HelpPage.LocalizeText()
+                {
+                    TitleWebsite = Properties.Resources.TextWebsite,
+                    TitleCommunity = Properties.Resources.TitleCommunity,
+                    TitleDocumentation = Properties.Resources.TitleDocumentation,
+                    TitleReportBug = Properties.Resources.TitleReportBug,
+                    TitleSourceCode = Properties.Resources.TitleSourceCode,
+                    DescWebsite = Properties.Resources.DescOfficialWebpage,
+                    DescReportBug = Properties.Resources.DescReportBug,
+                    DescSourceCode = Properties.Resources.TextGitHubStar,
+                    TitleSupport = Properties.Resources.TextSupport,
+                    DescSupport = Properties.Resources.DescSupperDev,
+                    DescCommunity = Properties.Resources.DescCommunity,
+                    DescDocumentation = Properties.Resources.DescDocumentation,
+                };
+            }
         }
     }
 }

@@ -24,7 +24,7 @@
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0" Text="{x:Static p:Resources.DescriptionScreenLayout}" Margin="15, 5, 0, 0" />
-        <xamlHost:WindowsXamlHost Grid.Row="0" x:Name="ScreenLayoutControl" InitialTypeName="livelyscreenlayout.ScreenLayoutView" 
+        <xamlHost:WindowsXamlHost Grid.Row="0" x:Name="ScreenLayoutControl" InitialTypeName="livelyUserControls.ScreenLayoutView" 
                                   ChildChanged="ScreenLayoutControl_ChildChanged" Margin="15, 30 ,15, 10"/>
 
         <StackPanel Grid.Row="1" HorizontalAlignment="Left" Margin="15, 5, 5, 5" MinWidth="400">

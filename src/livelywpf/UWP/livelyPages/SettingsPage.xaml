@@ -1,8 +1,7 @@
 ﻿<UserControl
-    x:Class="livelysettings.SettingsPage"
+    x:Class="livelyPages.SettingsPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:livelysettings"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
@@ -276,9 +275,11 @@
                                           OffContent="{x:Bind UIText.TextOff}" OnContent="{x:Bind UIText.TextOn}"/>
                             <TextBlock Margin="0, 10, 0, 0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipDebug}"/>
 
-                            <Button Margin="0, 10, 0, 0" Style="{StaticResource ButtonRevealStyle}" Content="{x:Bind UIText.TitleExportLog}" Command="{Binding ExtractLogCommand}" />
+                            <Button Margin="0, 10, 0, 0" Style="{StaticResource ButtonRevealStyle}" Content="{x:Bind UIText.TitleExportLog}" Command="{Binding ExtractLogCommand}"/>
                             <TextBlock Margin="0, 10, 0, 0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipExportLog}"/>
 
+                            <Button Margin="0, 10, 0, 0" Style="{StaticResource ButtonRevealStyle}" Content="{Binding SwitchBranchText}" Command="{Binding SwitchBranchCommand}"/>
+                            <TextBlock Margin="0, 10, 0, 0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipSwitchBranch}"/>
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>

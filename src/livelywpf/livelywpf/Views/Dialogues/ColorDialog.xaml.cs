@@ -23,6 +23,7 @@ namespace livelywpf.Views
         public ColorDialog(ColorUwp defaultColor)
         {
             InitializeComponent();
+            PreviewKeyDown += (s, e) => { if (e.Key == System.Windows.Input.Key.Escape) this.Close(); };
             CurrentColor = defaultColor;
             mouseHook ??= new LowLevelMouseHook() { GenerateMouseMoveEvents = true, Handling = true };
             mouseHook.Move += MouseHook_Move;
@@ -143,6 +144,7 @@ namespace livelywpf.Views
             mouseHook.Move -= MouseHook_Move;
             mouseHook.Down -= MouseHook_Down;
             mouseHook?.Dispose();
+            ctt.IsOpen = false;
         }
     }
 }

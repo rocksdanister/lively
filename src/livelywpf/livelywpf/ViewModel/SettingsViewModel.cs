@@ -40,7 +40,7 @@ namespace livelywpf
                 new LanguagesModel("中文(zh-CN)", new string[]{"zh", "zh-Hans","zh-CN","zh-SG"}),
                 new LanguagesModel("繁體中文(zh-Hant)", new string[]{ "zh-HK", "zh-MO", "zh-TW"}),
                 new LanguagesModel("한국어(ko-KR)", new string[]{"ko", "ko-KR","ko-KP"}),
-                new LanguagesModel("Pусский(ru)", new string[]{"ru", "ru-BY", "ru-KZ", "ru-KG", "ru-MD", "ru-RU","ru-UA"}), 
+                new LanguagesModel("Pусский(ru)", new string[]{"ru", "ru-BY", "ru-KZ", "ru-KG", "ru-MD", "ru-RU","ru-UA"}),
                 new LanguagesModel("Українська(uk)", new string[]{"uk", "uk-UA"}),
                 new LanguagesModel("Español(es)", new string[]{"es"}),
                 new LanguagesModel("Español(es-MX)", new string[]{"es-MX"}),
@@ -87,7 +87,7 @@ namespace livelywpf
 
             if (Program.IsMSIX)
             {
-                _= WindowsStartup.StartupWin10(Settings.Startup);
+                _ = WindowsStartup.StartupWin10(Settings.Startup);
                 IsStartup = Settings.Startup;
             }
             else
@@ -172,7 +172,7 @@ namespace livelywpf
                 OnPropertyChanged("IsStartup");
                 if (Program.IsMSIX)
                 {
-                    _= WindowsStartup.StartupWin10(_isStartup);
+                    _ = WindowsStartup.StartupWin10(_isStartup);
                     if (Settings.Startup != _isStartup)
                     {
                         Settings.Startup = _isStartup;
@@ -218,7 +218,7 @@ namespace livelywpf
                     Settings.Language = _selectedLanguageItem.Codes[0];
                     UpdateConfigFile();
                     //Program.RestartApplication();
-                }    
+                }
             }
         }
 
@@ -234,7 +234,7 @@ namespace livelywpf
                 _selectedTileSizeIndex = value;
                 OnPropertyChanged("SelectedTileSizeIndex");
 
-                if(Settings.TileSize != _selectedTileSizeIndex)
+                if (Settings.TileSize != _selectedTileSizeIndex)
                 {
                     Settings.TileSize = _selectedTileSizeIndex;
                     UpdateConfigFile();
@@ -376,7 +376,7 @@ namespace livelywpf
                 return _applicationRulesCommand;
             }
         }
-        
+
         private void ShowApplicationRulesWindow()
         {
             ApplicationRulesView app = new ApplicationRulesView();
@@ -400,7 +400,7 @@ namespace livelywpf
                 _selectedAppFullScreenIndex = value;
                 OnPropertyChanged("SelectedAppFullScreenIndex");
 
-                if(Settings.AppFullscreenPause != (AppRulesEnum)_selectedAppFullScreenIndex)
+                if (Settings.AppFullscreenPause != (AppRulesEnum)_selectedAppFullScreenIndex)
                 {
                     Settings.AppFullscreenPause = (AppRulesEnum)_selectedAppFullScreenIndex;
                     UpdateConfigFile();
@@ -420,7 +420,7 @@ namespace livelywpf
                 _selectedAppFocusIndex = value;
                 OnPropertyChanged("SelectedAppFocusIndex");
 
-                if(Settings.AppFocusPause != (AppRulesEnum)_selectedAppFocusIndex)
+                if (Settings.AppFocusPause != (AppRulesEnum)_selectedAppFocusIndex)
                 {
                     Settings.AppFocusPause = (AppRulesEnum)_selectedAppFocusIndex;
                     UpdateConfigFile();
@@ -440,7 +440,7 @@ namespace livelywpf
                 _selectedBatteryPowerIndex = value;
                 OnPropertyChanged("SelectedBatteryPowerIndex");
 
-                if(Settings.BatteryPause != (AppRulesEnum)_selectedBatteryPowerIndex)
+                if (Settings.BatteryPause != (AppRulesEnum)_selectedBatteryPowerIndex)
                 {
                     Settings.BatteryPause = (AppRulesEnum)_selectedBatteryPowerIndex;
                     UpdateConfigFile();
@@ -460,7 +460,7 @@ namespace livelywpf
                 _selectedDisplayPauseRuleIndex = value;
                 OnPropertyChanged("SelectedDisplayPauseRuleIndex");
 
-                if(Settings.DisplayPauseSettings != (DisplayPauseEnum)_selectedDisplayPauseRuleIndex)
+                if (Settings.DisplayPauseSettings != (DisplayPauseEnum)_selectedDisplayPauseRuleIndex)
                 {
                     Settings.DisplayPauseSettings = (DisplayPauseEnum)_selectedDisplayPauseRuleIndex;
                     UpdateConfigFile();
@@ -480,7 +480,7 @@ namespace livelywpf
                 _selectedPauseAlgorithmIndex = value;
                 OnPropertyChanged("SelectedPauseAlgorithmIndex");
 
-                if(Settings.ProcessMonitorAlgorithm != (ProcessMonitorAlgorithm)_selectedPauseAlgorithmIndex)
+                if (Settings.ProcessMonitorAlgorithm != (ProcessMonitorAlgorithm)_selectedPauseAlgorithmIndex)
                 {
                     Settings.ProcessMonitorAlgorithm = (ProcessMonitorAlgorithm)_selectedPauseAlgorithmIndex;
                     UpdateConfigFile();
@@ -612,7 +612,7 @@ namespace livelywpf
             {
                 _selectedWallpaperStreamQualityIndex = value;
                 OnPropertyChanged("SelectedWallpaperStreamQualityIndex");
-                if(Settings.StreamQuality != (StreamQualitySuggestion)_selectedWallpaperStreamQualityIndex)
+                if (Settings.StreamQuality != (StreamQualitySuggestion)_selectedWallpaperStreamQualityIndex)
                 {
                     Settings.StreamQuality = (StreamQualitySuggestion)_selectedWallpaperStreamQualityIndex;
                     UpdateConfigFile();
@@ -670,7 +670,7 @@ namespace livelywpf
             set
             {
                 _webDebuggingPort = value;
-                if(Settings.WebDebugPort != _webDebuggingPort)
+                if (Settings.WebDebugPort != _webDebuggingPort)
                 {
                     Settings.WebDebugPort = _webDebuggingPort;
                     UpdateConfigFile();
@@ -686,7 +686,7 @@ namespace livelywpf
             set
             {
                 _cefDiskCache = value;
-                if(Settings.CefDiskCache != _cefDiskCache)
+                if (Settings.CefDiskCache != _cefDiskCache)
                 {
                     Settings.CefDiskCache = _cefDiskCache;
                     UpdateConfigFile();
@@ -702,7 +702,7 @@ namespace livelywpf
             set
             {
                 _detectStreamWallpaper = value;
-                if(Settings.AutoDetectOnlineStreams != _detectStreamWallpaper)
+                if (Settings.AutoDetectOnlineStreams != _detectStreamWallpaper)
                 {
                     Settings.AutoDetectOnlineStreams = _detectStreamWallpaper;
                     UpdateConfigFile();
@@ -746,7 +746,7 @@ namespace livelywpf
                     Settings.AudioOnlyOnDesktop = _isAudioOnlyOnDesktop;
                     UpdateConfigFile();
                 }
-                OnPropertyChanged("IsAudioOnlyOnDesktop");              
+                OnPropertyChanged("IsAudioOnlyOnDesktop");
             }
         }
 
@@ -817,7 +817,7 @@ namespace livelywpf
                         {
                             _selectedTaskbarThemeIndex = (int)TaskbarTheme.none;
                             _ = Task.Run(() =>
-                                    System.Windows.MessageBox.Show(Properties.Resources.DescIncompatibleTaskbarTheme + "\n\n" + pgm, 
+                                    System.Windows.MessageBox.Show(Properties.Resources.DescIncompatibleTaskbarTheme + "\n\n" + pgm,
                                         Properties.Resources.TitleAppName, MessageBoxButton.OK, MessageBoxImage.Information));
                         }
                     }
@@ -872,7 +872,7 @@ namespace livelywpf
                     Helpers.ScreensaverService.Instance.StopIdleTimer();
                 }
                 //save the data..
-                if (Settings.ScreensaverIdleWait !=  (ScreensaverIdleTime)_selectedScreensaverWaitIndex)
+                if (Settings.ScreensaverIdleWait != (ScreensaverIdleTime)_selectedScreensaverWaitIndex)
                 {
                     if (!Settings.ScreensaverOledWarning)
                     {
@@ -891,8 +891,8 @@ namespace livelywpf
         private bool _isScreensaverLockOnResume;
         public bool IsScreensaverLockOnResume
         {
-            get 
-            { 
+            get
+            {
                 return _isScreensaverLockOnResume;
             }
             set
@@ -962,6 +962,52 @@ namespace livelywpf
                         );
                 }
                 return _extractLogCommand;
+            }
+        }
+
+        public string SwitchBranchText => Program.IsTestBuild ? Properties.Resources.TextSwitchBranchOfficial : Properties.Resources.TextSwitchBranchDev;
+
+        private bool canSwitchBranchCommand = true;
+        private RelayCommand _switchBranchCommand;
+        public RelayCommand SwitchBranchCommand
+        {
+            get
+            {
+                if (_switchBranchCommand == null)
+                {
+                    _switchBranchCommand = new RelayCommand(
+                            param => _ = BranchSwitchDialog(),
+                            param => canSwitchBranchCommand
+                        );
+                }
+                return _switchBranchCommand;
+            }
+        }
+
+        private async Task BranchSwitchDialog()
+        {
+            try
+            {
+                canSwitchBranchCommand = false;
+                SwitchBranchCommand.RaiseCanExecuteChanged();
+                (Uri, Version, string) item = await Helpers.AppUpdaterService.Instance.GetLatestRelease(!Program.IsTestBuild);
+                var msg = Program.IsTestBuild ?
+                    item.Item3 : $"!! {Properties.Resources.TitleWarning} !!\n{Properties.Resources.DescSwitchBranchBetaWarning}\n\n{Properties.Resources.TitleChangelog}\n{item.Item3}";
+                var updateWindow = new AppUpdaterView(item.Item1, msg)
+                {
+                    Owner = App.AppWindow,
+                    WindowStartupLocation = WindowStartupLocation.CenterOwner
+                };
+                updateWindow.ShowDialog();
+            }
+            catch (Exception e)
+            {
+                Logger.Error(e.ToString());
+            }
+            finally
+            {
+                canSwitchBranchCommand = true;
+                SwitchBranchCommand.RaiseCanExecuteChanged();
             }
         }
 

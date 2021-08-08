@@ -59,13 +59,13 @@ namespace livelywpf
             pauseTrayBtn.Click += (s, e) => ToggleWallpaperPlaybackState();
             _notifyIcon.ContextMenuStrip.Items.Add(pauseTrayBtn);
 
+            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextChangeWallpaper, null).Click += (s, e) => SetNextWallpaper();
             customiseWallpaperBtn = new ToolStripMenuItem(Properties.Resources.TextCustomiseWallpaper, null)
             {
                 Enabled = false
             };
             customiseWallpaperBtn.Click += CustomiseWallpaper;
             _notifyIcon.ContextMenuStrip.Items.Add(customiseWallpaperBtn);
-            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextChangeWallpaper, null).Click += (s, e) => SetNextWallpaper();
 
             if (!Program.IsMSIX)
             {
@@ -74,7 +74,7 @@ namespace livelywpf
                 {
                     Enabled = false
                 };
-                updateTrayBtn.Click += (s, e) => Program.AppUpdateDialog(Helpers.AppUpdaterService.Instance.GetUri(), Helpers.AppUpdaterService.Instance.GetChangelog());
+                updateTrayBtn.Click += (s, e) => Program.AppUpdateDialog(Helpers.AppUpdaterService.Instance.LastCheckUri, Helpers.AppUpdaterService.Instance.LastCheckChangelog);
                 _notifyIcon.ContextMenuStrip.Items.Add(updateTrayBtn);
             }
 

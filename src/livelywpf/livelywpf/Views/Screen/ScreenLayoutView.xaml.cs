@@ -25,7 +25,7 @@ namespace livelywpf.Views
             // Hook up x:Bind source.
             global::Microsoft.Toolkit.Wpf.UI.XamlHost.WindowsXamlHost windowsXamlHost =
                 sender as global::Microsoft.Toolkit.Wpf.UI.XamlHost.WindowsXamlHost;
-            var control = windowsXamlHost.GetUwpInternalObject() as global::livelyscreenlayout.ScreenLayoutView;
+            var control = windowsXamlHost.GetUwpInternalObject() as global::livelyUserControls.ScreenLayoutView;
 
             if (control != null)
             {

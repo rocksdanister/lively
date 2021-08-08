@@ -61,11 +61,38 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Online discussion forum.
+        /// </summary>
+        public static string DescCommunity {
+            get {
+                return ResourceManager.GetString("DescCommunity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to API documentation and help.
+        /// </summary>
+        public static string DescDocumentation {
+            get {
+                return ResourceManager.GetString("DescDocumentation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Incompatible program found, taskbar theming disabled..
         /// </summary>
         public static string DescIncompatibleTaskbarTheme {
             get {
                 return ResourceManager.GetString("DescIncompatibleTaskbarTheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Official webpage of Lively Wallpaper.
+        /// </summary>
+        public static string DescOfficialWebpage {
+            get {
+                return ResourceManager.GetString("DescOfficialWebpage", resourceCulture);
             }
         }
         
@@ -79,6 +106,15 @@ namespace livelywpf.Properties {
         public static string DescOledScreensaverNotice {
             get {
                 return ResourceManager.GetString("DescOledScreensaverNotice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Report a problem with the software.
+        /// </summary>
+        public static string DescReportBug {
+            get {
+                return ResourceManager.GetString("DescReportBug", resourceCulture);
             }
         }
         
@@ -234,6 +270,25 @@ namespace livelywpf.Properties {
         public static string DescriptionWindowsNCodecInstall {
             get {
                 return ResourceManager.GetString("DescriptionWindowsNCodecInstall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show support by buying the developer coffee.
+        /// </summary>
+        public static string DescSupperDev {
+            get {
+                return ResourceManager.GetString("DescSupperDev", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are about to change to beta (developer) build of Lively.
+        ///Updates will be frequent and may contain bugs!.
+        /// </summary>
+        public static string DescSwitchBranchBetaWarning {
+            get {
+                return ResourceManager.GetString("DescSwitchBranchBetaWarning", resourceCulture);
             }
         }
         
@@ -977,6 +1032,24 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Switch to beta (Dev channel).
+        /// </summary>
+        public static string TextSwitchBranchDev {
+            get {
+                return ResourceManager.GetString("TextSwitchBranchDev", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Switch to stable (Default channel).
+        /// </summary>
+        public static string TextSwitchBranchOfficial {
+            get {
+                return ResourceManager.GetString("TextSwitchBranchOfficial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tags.
         /// </summary>
         public static string TextTags {
@@ -1491,6 +1564,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Change software release from beta to stable or vice versa..
+        /// </summary>
+        public static string TipSwitchSoftwareBranch {
+            get {
+                return ResourceManager.GetString("TipSwitchSoftwareBranch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change system taskbar appearance..
         /// </summary>
         public static string TipTaskbarTheme {
@@ -1731,6 +1813,15 @@ namespace livelywpf.Properties {
         public static string TitleBrowserDebuggingPort {
             get {
                 return ResourceManager.GetString("TitleBrowserDebuggingPort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Changelog.
+        /// </summary>
+        public static string TitleChangelog {
+            get {
+                return ResourceManager.GetString("TitleChangelog", resourceCulture);
             }
         }
         

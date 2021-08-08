@@ -21,7 +21,7 @@ namespace livelywpf.Views
     public partial class LibraryView : System.Windows.Controls.Page
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        livelygrid.LivelyGridView LivelyGridControl { get; set; }
+        livelyUserControls.LivelyGridView LivelyGridControl { get; set; }
 
         public LibraryView()
         {
@@ -35,13 +35,13 @@ namespace livelywpf.Views
             // Hook up x:Bind source.
             global::Microsoft.Toolkit.Wpf.UI.XamlHost.WindowsXamlHost windowsXamlHost =
                 sender as global::Microsoft.Toolkit.Wpf.UI.XamlHost.WindowsXamlHost;
-            LivelyGridControl = windowsXamlHost.GetUwpInternalObject() as global::livelygrid.LivelyGridView;
+            LivelyGridControl = windowsXamlHost.GetUwpInternalObject() as global::livelyUserControls.LivelyGridView;
 
             if (LivelyGridControl != null)
             {
                 //Don't know if there is an easier way to chang UserControl language, tried setting framework language to no effect.
                 //todo: find better way to do this.
-                LivelyGridControl.UIText = new livelygrid.LocalizeTextGridView()
+                LivelyGridControl.UIText = new livelyUserControls.LivelyGridView.LocalizeText()
                 {
                     TextAddWallpaper = Properties.Resources.TitleAddWallpaper,
                     TextConvertVideo = Properties.Resources.TextConvertVideo,
@@ -54,7 +54,7 @@ namespace livelywpf.Views
                     TextPreviewWallpaper = Properties.Resources.TextPreviewWallpaper,
                     TextEditWallpaper = Properties.Resources.TextEditWallpaper,
                 };
-                LivelyGridControl.GridElementSize((livelygrid.GridSize)Program.SettingsVM.SelectedTileSizeIndex);
+                LivelyGridControl.GridElementSize((livelyUserControls.LivelyGridView.GridSize)Program.SettingsVM.SelectedTileSizeIndex);
                 LivelyGridControl.ContextMenuClick += LivelyGridControl_ContextMenuClick;
                 LivelyGridControl.FileDroppedEvent += LivelyGridControl_FileDroppedEvent;
             }
@@ -115,10 +115,10 @@ namespace livelywpf.Views
                         Program.LibraryVM.WallpaperExport(e, savePath);
                         break;
                     case "deleteWallpaper":
-                        var deleteView = new livelygrid.InfoPage
+                        var deleteView = new livelyUserControls.InfoPage
                         {
                             DataContext = ((LibraryModel)e),
-                            UIText = new livelygrid.LocalizeTextInfoPage()
+                            UIText = new livelyUserControls.InfoPage.LocalizeText()
                             {
                                 Author = Properties.Resources.TextAuthor,
                                 Website = Properties.Resources.TextWebsite,
@@ -161,10 +161,10 @@ namespace livelywpf.Views
                         Program.LibraryVM.EditWallpaper(obj);
                         break;
                     case "moreInformation":
-                        var infoView = new livelygrid.InfoPage
+                        var infoView = new livelyUserControls.InfoPage
                         {
                             DataContext = ((LibraryModel)e),
-                            UIText = new livelygrid.LocalizeTextInfoPage()
+                            UIText = new livelyUserControls.InfoPage.LocalizeText()
                             {
                                 Author = Properties.Resources.TextAuthor,
                                 Website = Properties.Resources.TextWebsite,
@@ -338,7 +338,7 @@ namespace livelywpf.Views
                 LivelyGridControl.ContextMenuClick -= LivelyGridControl_ContextMenuClick;
                 LivelyGridControl.FileDroppedEvent -= LivelyGridControl_FileDroppedEvent;
                 //stop rendering previews... this should be automatic(?), but its not for some reason.
-                LivelyGridControl.GridElementSize(livelygrid.GridSize.NoPreview);
+                LivelyGridControl.GridElementSize(livelyUserControls.LivelyGridView.GridSize.NoPreview);
             }
         }
     }
