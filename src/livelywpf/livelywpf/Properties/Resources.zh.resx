@@ -854,4 +854,50 @@ https://github.com/rocksdanister/lively/wiki</value>
 
 Lively 屏幕保护程序的主要目的是为您的电脑添加另一层自定义，使用屏幕保护程序作为老化保护，风险自负！</value>
   </data>
+  <data name="TextChangeWallpaper" xml:space="preserve">
+    <value>更换壁纸</value>
+  </data>
+  <data name="TextLastChecked" xml:space="preserve">
+    <value>上次检查</value>
+  </data>
+  <data name="TitleUpdates" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="DescCommunity" xml:space="preserve">
+    <value>在线论坛</value>
+  </data>
+  <data name="DescDocumentation" xml:space="preserve">
+    <value>API 文档和帮助</value>
+  </data>
+  <data name="DescOfficialWebpage" xml:space="preserve">
+    <value>官方网页</value>
+  </data>
+  <data name="DescReportBug" xml:space="preserve">
+    <value>报告软件问题</value>
+  </data>
+  <data name="DescSupperDev" xml:space="preserve">
+    <value>通过购买开发者咖啡来表示支持</value>
+  </data>
+  <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
+    <value>您即将更改为该软件的测试版（开发人员）版本。
+更新会很频繁，并且可能包含错误！</value>
+  </data>
+  <data name="TextSwitchBranchDev" xml:space="preserve">
+    <value>切换到测试版（开发频道）</value>
+  </data>
+  <data name="TextSwitchBranchOfficial" xml:space="preserve">
+    <value>切换到稳定（默认频道）</value>
+  </data>
+  <data name="TipSwitchSoftwareBranch" xml:space="preserve">
+    <value>将软件版本从测试版更改为稳定版，反之亦然。</value>
+  </data>
+  <data name="TitleChangelog" xml:space="preserve">
+    <value>变更日志</value>
+  </data> 
+  <data name="TextPauseAlgoExclusiveMode" xml:space="preserve">
+    <value>直接3D</value>
+  </data>
+  <data name="TitleScreensaverLockOnResume" xml:space="preserve">
+    <value>在恢复，显示登录界面</value>
+  </data> 
 </root>

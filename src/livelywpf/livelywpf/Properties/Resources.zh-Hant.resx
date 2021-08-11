@@ -852,4 +852,50 @@ Edge 是 Windows 10 的內建網頁渲染器。</value>
 
 Lively 動態桌布的螢幕保護程式主要用於為您的電腦新增另一層客製化可能性，使用螢幕保護程式作為老化保護手段請自行承擔風險！</value>
   </data>
+  <data name="TextChangeWallpaper" xml:space="preserve">
+    <value>更換壁紙</value>
+  </data>
+  <data name="TextLastChecked" xml:space="preserve">
+    <value>上次檢查</value>
+  </data>
+  <data name="TitleUpdates" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="DescCommunity" xml:space="preserve">
+    <value>在線論壇</value>
+  </data>
+  <data name="DescDocumentation" xml:space="preserve">
+    <value>API 文檔和幫助</value>
+  </data>
+  <data name="DescOfficialWebpage" xml:space="preserve">
+    <value>官方網頁</value>
+  </data>
+  <data name="DescReportBug" xml:space="preserve">
+    <value>報告軟件問題</value>
+  </data>
+  <data name="DescSupperDev" xml:space="preserve">
+    <value>通過購買開發者咖啡來表示支持</value>
+  </data>
+  <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
+    <value>您即將更改為 beta（開發人員）版本。
+更新會很頻繁，並且可能包含錯誤！</value>
+  </data>
+  <data name="TextSwitchBranchDev" xml:space="preserve">
+    <value>切換到測試版（開發頻道）</value>
+  </data>
+  <data name="TextSwitchBranchOfficial" xml:space="preserve">
+    <value>切換到穩定（默認頻道）</value>
+  </data>
+  <data name="TipSwitchSoftwareBranch" xml:space="preserve">
+    <value>將軟件版本從測試版更改為穩定版，反之亦然。</value>
+  </data>
+  <data name="TitleChangelog" xml:space="preserve">
+    <value>變更日誌</value>
+  </data>
+  <data name="TextPauseAlgoExclusiveMode" xml:space="preserve">
+    <value>直接3D</value>
+  </data>
+  <data name="TitleScreensaverLockOnResume" xml:space="preserve">
+    <value>在恢復，顯示登錄界面</value>
+  </data>    
 </root>

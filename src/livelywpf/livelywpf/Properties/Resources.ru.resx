@@ -833,19 +833,19 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Система</value>
   </data>
     <data name="TitleScreensaver" xml:space="preserve">
-    <value>Screensaver</value>
+    <value>Хранитель экрана</value>
   </data>
   <data name="TipScreensaver" xml:space="preserve">
-    <value>After the selected inactivity period use the current wallpaper as your screensaver.</value>
+    <value>По истечении выбранного периода бездействия используйте текущие обои в качестве заставки.</value>
   </data>
     <data name="TextHours" xml:space="preserve">
-    <value>hours</value>
+    <value>часы</value>
   </data>
   <data name="TextMinutes" xml:space="preserve">
-    <value>minutes</value>
+    <value>минут</value>
   </data>
   <data name="TextLearnMore" xml:space="preserve">
-    <value>Learn more</value>
+    <value>Выучить больше</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
     <value>Большинство современных ЖК-дисплеев и светодиодных экранов не подвержены выгоранию, поэтому в качестве заставки можно использовать любые обои.
@@ -854,4 +854,50 @@ https://github.com/rocksdanister/lively/wiki</value>
 
 Основная цель заставок Lively - добавить еще один уровень настройки на ваш компьютер, использовать заставки в качестве защиты от выгорания на свой страх и риск!</value>
   </data>
+  <data name="TextChangeWallpaper" xml:space="preserve">
+    <value>Изменить обои</value>
+  </data>
+  <data name="TextLastChecked" xml:space="preserve">
+    <value>Последний раз проверено</value>
+  </data>
+  <data name="TitleUpdates" xml:space="preserve">
+    <value>Обновления</value>
+  </data>
+  <data name="DescCommunity" xml:space="preserve">
+    <value>Интернет-форум для обсуждения</value>
+  </data>
+  <data name="DescDocumentation" xml:space="preserve">
+    <value>Документация и справка по API</value>
+  </data>
+  <data name="DescOfficialWebpage" xml:space="preserve">
+    <value>Официальная страница Lively Wallpaper</value>
+  </data>
+  <data name="DescReportBug" xml:space="preserve">
+    <value>Сообщить о проблеме с программным обеспечением</value>
+  </data>
+  <data name="DescSupperDev" xml:space="preserve">
+    <value>Окажите поддержку, купив кофе разработчика</value>
+  </data>
+  <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
+    <value>Вы собираетесь перейти на бета-версию (для разработчиков) Lively.
+Обновления будут частыми и могут содержать ошибки!</value>
+  </data>
+  <data name="TextSwitchBranchDev" xml:space="preserve">
+    <value>Перейти на бета-версию (канал разработчиков)</value>
+  </data>
+  <data name="TextSwitchBranchOfficial" xml:space="preserve">
+    <value>Перейти на стабильный (канал по умолчанию)</value>
+  </data>
+  <data name="TipSwitchSoftwareBranch" xml:space="preserve">
+    <value>Измените версию программного обеспечения с бета-версии на стабильную или наоборот.</value>
+  </data>
+  <data name="TitleChangelog" xml:space="preserve">
+    <value>Журнал изменений</value>
+  </data>
+  <data name="TextPauseAlgoExclusiveMode" xml:space="preserve">
+    <value>Direct3D</value>
+  </data>
+  <data name="TitleScreensaverLockOnResume" xml:space="preserve">
+    <value>На резюме, экран входа в систему</value>
+  </data>    
 </root>

@@ -431,6 +431,9 @@ Wenn Sie bereit sind, navigieren Sie zu http://localhost:portnumber, um auf die 
   <data name="TipStreamWallpaperVideoQuality" xml:space="preserve">
     <value>Wählen Sie die gewünschte Videoqualität für Online-Streams aus.</value>
   </data>
+  <data name="TipSwitchSoftwareBranch" xml:space="preserve">
+    <value>Ändern von Beta zu Final Version und wieder zurück.</value>
+  </data>
   <data name="TipTileSize" xml:space="preserve">
     <value>Größe der Hintergrund-Kacheln in der Bibliothek.</value>
   </data>
@@ -494,6 +497,9 @@ Edge ist die eingebaute Webansicht von Windows 10.</value>
   </data>
   <data name="TitleBrowserDebuggingPort" xml:space="preserve">
     <value>Debugging-Port</value>
+  </data>
+  <data name="TitleChangelog" xml:space="preserve">
+    <value>Änderungen</value>
   </data>
   <data name="TitleDeleteConfirmation" xml:space="preserve">
     <value>Löschen bestätigen</value>
@@ -570,6 +576,9 @@ Edge ist die eingebaute Webansicht von Windows 10.</value>
   <data name="TitleUIMode" xml:space="preserve">
     <value>Benutzeroberfläche</value>
   </data>
+  <data name="TitleUpdates" xml:space="preserve">
+    <value>Aktualisierungen</value>
+  </data>
   <data name="TitleVideo" xml:space="preserve">
     <value>Video</value>
   </data>
@@ -610,7 +619,13 @@ Edge ist die eingebaute Webansicht von Windows 10.</value>
     <value>Bitte starten Sie Lively neu, damit die Einstellungen wirksam werden.</value>
   </data>
   <data name="TextSupport" xml:space="preserve">
-    <value>Unterstützen / Spenden</value>
+    <value>Unterstützen</value>
+  </data>
+  <data name="TextSwitchBranchDev" xml:space="preserve">
+    <value>Zu Beta wechseln (Entwicklerkanal)</value>
+  </data>
+  <data name="TextSwitchBranchOfficial" xml:space="preserve">
+    <value>Zu Final wechseln (Standardkanal)</value>
   </data>
   <data name="TextClose" xml:space="preserve">
     <value>Schließen</value>
@@ -649,6 +664,9 @@ https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="TextKeyboard" xml:space="preserve">
     <value>Tastatur</value>
+  </data>
+  <data name="TextLastChecked" xml:space="preserve">
+    <value>Zuletzt geprüft</value>
   </data>
   <data name="TitleDocumentation" xml:space="preserve">
     <value>Dokumentation</value>
@@ -719,6 +737,9 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextCancel" xml:space="preserve">
     <value>Abbrechen</value>
   </data>
+  <data name="TextChangeWallpaper" xml:space="preserve">
+    <value>Hintergründe ändern</value>
+  </data>
   <data name="TextCreatePreview" xml:space="preserve">
     <value>Vorschau erstellen</value>
   </data>
@@ -743,6 +764,13 @@ https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
     <value>Ihre Windows N/KN Version benötigt für das Abspielen von Videos in Hintergründen weitere Codecs, die heruntergeladen werden müssen.</value>
+  </data>
+    <data name="DescSupperDev" xml:space="preserve">
+    <value>Unterstützung zeigen und dem Entwickler einen Kaffee kaufen</value>
+  </data>
+  <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
+    <value>Sie sind dabei zur Beta (Entwickler) Version von Lively zu wechseln.
+Aktualisierungen finden häufiger statt und können Fehler enthalten!</value>
   </data>
   <data name="TextLicense" xml:space="preserve">
     <value>Lizenz</value>
@@ -786,8 +814,17 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextGitHubStar" xml:space="preserve">
     <value>Ein wenig Anerkennung zeigen und einen Stern da lassen.</value>
   </data>
+  <data name="DescCommunity" xml:space="preserve">
+    <value>Online-Diskussionsforum</value>
+  </data>
+  <data name="DescDocumentation" xml:space="preserve">
+    <value>API-Dokumentation und Hilfe</value>
+  </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
     <value>Nicht geeignetes Programm gefunden. Taskleisten-Gestaltung deaktiviert.</value>
+  </data>
+  <data name="DescReportBug" xml:space="preserve">
+    <value>Ein Problem mit der Software melden</value>
   </data>
   <data name="TitleTaskbarTheme" xml:space="preserve">
     <value>Taskleisten-Thema</value>
