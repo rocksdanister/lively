@@ -138,7 +138,7 @@ namespace livelywpf.Views
                     TipDebug = Properties.Resources.TipDebug,
                     TitleExportLog = Properties.Resources.TitleExportLogs,
                     TipExportLog = Properties.Resources.TipExportLogs,
-                    TipSwitchBranch = "Change software release type.",
+                    TipSwitchBranch = Properties.Resources.TipSwitchSoftwareBranch,
                     //button localization
                     TextOn = Properties.Resources.TextOn,
                     TextOff = Properties.Resources.TextOff,
