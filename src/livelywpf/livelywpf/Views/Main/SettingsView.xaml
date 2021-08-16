@@ -10,7 +10,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="{x:Static p:Resources.TitleSettings}">
-    
+
     <Grid>
         <TabControl Style="{StaticResource TabControlPivotStyle}">
             <TabItem Header="{x:Static p:Resources.TitleGeneral}">
@@ -141,7 +141,7 @@
                             <ComboBox Margin="0,5,0,0" MinWidth="200" SelectedIndex="{Binding SelectedPauseAlgorithmIndex, Mode=TwoWay}">
                                 <ComboBoxItem Content="{x:Static p:Resources.TextPauseAlgoForegroundProcess}"/>
                                 <ComboBoxItem Content="{x:Static p:Resources.TextPauseAlgoAllProcess}" IsEnabled="False"/>
-                                <ComboBoxItem Content="Game Mode" Visibility="Collapsed"/>
+                                <ComboBoxItem Content="{x:Static p:Resources.TextPauseAlgoExclusiveMode}"/>
                             </ComboBox>
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}" 
                                        Text="{x:Static p:Resources.TipPauseAlgorithm}"/>
@@ -205,7 +205,7 @@
                             <TextBlock Text="{x:Static p:Resources.TitleGifPlayer}" Margin="0,10,0,0"/>
                             <ComboBox Margin="0,5,0,0" MinWidth="200" SelectedIndex="{Binding SelectedGifPlayerIndex, Mode=TwoWay}">
                                 <ComboBoxItem Visibility="Collapsed">Win10</ComboBoxItem>
-                                <ComboBoxItem>libMPV(External)</ComboBoxItem>
+                                <ComboBoxItem Visibility="Collapsed">libMPV(External)</ComboBoxItem>
                                 <ComboBoxItem>mpv</ComboBoxItem>
                             </ComboBox>
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}" 
@@ -290,7 +290,7 @@
                             <ui:ToggleSwitch IsEnabled="False" Margin="0, 10, 0, 0" IsOn="{Binding IsDesktopAutoWallpaper, Mode=TwoWay}" Header="{x:Static p:Resources.TitleDesktopPicture}"
                                           OffContent="{x:Static p:Resources.TextOff}" OnContent="{x:Static p:Resources.TextOn}"/>
                             <TextBlock Margin="0, 10, 0, 0" FontSize="12" TextWrapping="Wrap" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}" Text="{x:Static p:Resources.TipDesktopPicture}"/>
-                            
+
                             <TextBlock Text="{x:Static p:Resources.TitleTaskbarTheme}" Margin="0,10,0,0"/>
                             <ComboBox Margin="0,5,0,0" MinWidth="150" SelectedIndex="{Binding SelectedTaskbarThemeIndex, Mode=TwoWay}">
                                 <ComboBoxItem Content="{x:Static p:Resources.TextOff}"/>
@@ -323,6 +323,7 @@
                                 <TextBlock Text="{x:Static p:Resources.TextMinutes}" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}" VerticalAlignment="Center" Margin="5, 0, 0, 0"/>
                             </StackPanel>
                             <TextBlock Margin="0,10,0,0" FontSize="12" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}" TextWrapping="Wrap" Text="{x:Static p:Resources.TipScreensaver}"/>
+                            <CheckBox Content="{x:Static p:Resources.TitleScreensaverLockOnResume}" Margin="0,5,0,0" IsChecked="{Binding IsScreensaverLockOnResume, Mode=TwoWay}"/>
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>
@@ -342,7 +343,9 @@
 
                             <Button Margin="0, 10, 0, 0" Content="{x:Static p:Resources.TitleExportLogs}" Command="{Binding ExtractLogCommand}" />
                             <TextBlock Margin="0, 10, 0, 0" FontSize="12" TextWrapping="Wrap" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}" Text="{x:Static p:Resources.TipExportLogs}"/>
-                            
+
+                            <Button Margin="0, 10, 0, 0" Content="{Binding SwitchBranchText}" Command="{Binding SwitchBranchCommand}"/>
+                            <TextBlock Margin="0, 10, 0, 0" FontSize="12" TextWrapping="Wrap" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}" Text="{x:Static p:Resources.TipSwitchSoftwareBranch}"/>
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>

@@ -34,8 +34,7 @@ namespace livelywpf
 
         private void MyNavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
-            var navView =
-           (ModernWpf.Controls.NavigationView)sender;
+            var navView = (ModernWpf.Controls.NavigationView)sender;
 
             if (args.IsSettingsInvoked)
             {
@@ -329,5 +328,44 @@ namespace livelywpf
         }
 
         #endregion //file drop
+
+        #region window msg
+
+        protected override void OnSourceInitialized(EventArgs e)
+        {
+            base.OnSourceInitialized(e);
+            var source = PresentationSource.FromVisual(this) as HwndSource;
+            source.AddHook(WndProc);
+        }
+
+        //todo: maybe create separate window to handle all window messages globally?
+        private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        {
+            if (msg == NativeMethods.WM_SHOWLIVELY)
+            {
+                Logger.Info("WM_SHOWLIVELY msg received.");
+                Program.ShowMainWindow();
+            }
+            else if (msg == NativeMethods.WM_TASKBARCREATED)
+            {
+                //explorer crash detection, new taskbar is created everytime explorer is started..
+                Logger.Info("WM_TASKBARCREATED: New taskbar created.");
+                SetupDesktop.ResetWorkerW();
+            }
+            else if (msg == (uint)NativeMethods.WM.QUERYENDSESSION && Program.IsMSIX)
+            {
+                _ = NativeMethods.RegisterApplicationRestart(
+                    null,
+                    (int)NativeMethods.RestartFlags.RESTART_NO_CRASH |
+                    (int)NativeMethods.RestartFlags.RESTART_NO_HANG |
+                    (int)NativeMethods.RestartFlags.RESTART_NO_REBOOT);
+            }
+            //screen message processing...
+            _ = Core.DisplayManager.Instance?.OnWndProc(hwnd, (uint)msg, wParam, lParam);
+
+            return IntPtr.Zero;
+        }
+
+        #endregion //window msg
     }
 }

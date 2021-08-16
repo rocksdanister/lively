@@ -21,7 +21,7 @@ namespace livelywpf.Views
         {
             InitializeComponent();
             //uwp control also gets binded..
-            this.DataContext = Program.LibraryVM; 
+            this.DataContext = Program.LibraryVM;
         }
 
         private void GridControl_PreviewMouseRightButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)

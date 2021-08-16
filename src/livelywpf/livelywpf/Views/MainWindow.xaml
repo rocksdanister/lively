@@ -20,7 +20,7 @@
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
     </Window.Resources>
-    
+
     <Grid>
 
         <TextBlock FontSize="12.25" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="55, 10, 0, 0" Text="{x:Static p:Resources.TitleAppName}"/>
@@ -54,8 +54,8 @@
                 <ui:NavigationViewItem Icon="Emoji2" Content="{x:Static p:Resources.TitleDebug}" Tag="debug" Visibility="{Binding Path=IsDebugMenuVisible, Converter={StaticResource BoolToVis}}"/>
             </ui:NavigationView.MenuItems>
         </ui:NavigationView>
-        
+
         <ui:Frame x:Name="ContentFrame"  Margin="55, 65, 5, 5" />
-        
+
     </Grid>
 </Window>

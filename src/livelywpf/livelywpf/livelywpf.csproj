@@ -5,34 +5,20 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
     <UseWindowsForms>true</UseWindowsForms>
-    <ApplicationIcon>appicon.ico</ApplicationIcon>
-    <StartupObject>livelywpf.Program</StartupObject>
     <ApplicationManifest>app.manifest</ApplicationManifest>
-    <AssemblyVersion>1.6.0.6</AssemblyVersion>
-    <Platforms>AnyCPU;x86</Platforms>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <PlatformTarget>x86</PlatformTarget>
+    <Platforms>AnyCPU;x64;x86</Platforms>
+    <StartupObject>livelywpf.Program</StartupObject>
+    <ApplicationIcon>appicon.ico</ApplicationIcon>
+    <Version>1.0.0</Version>
+    <AssemblyVersion>1.7.0.4</AssemblyVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
-    <PlatformTarget>x86</PlatformTarget>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <PlatformTarget>x86</PlatformTarget>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
-    <PlatformTarget>x86</PlatformTarget>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Resources\appicon_96.png" />
-    <None Remove="Resources\drag_drop_animation.gif" />
-    <None Remove="Resources\drag_drop_animation.png" />
-    <None Remove="Resources\icons8-cursor-in-window-100.png" />
     <None Remove="Resources\icons8-helping-hand-96.png" />
     <None Remove="Resources\tutorial_systray.png" />
   </ItemGroup>
@@ -40,32 +26,27 @@
   <ItemGroup>
     <PackageReference Include="CommandLineParser" Version="2.8.0" />
     <PackageReference Include="DesktopBridge.Helpers" Version="1.2.2" />
-    <PackageReference Include="Downloader" Version="2.2.8" />
-    <PackageReference Include="Magick.NET-Q16-x86" Version="7.24.1" />
+    <PackageReference Include="Downloader" Version="2.2.9" />
+    <PackageReference Include="H.Hooks" Version="1.4.9" />
+    <PackageReference Include="Magick.NET-Q16-x86" Version="8.2.1" />
     <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.0.2" />
-    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.864.35" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.902.49" />
     <PackageReference Include="Microsoft.Windows.Compatibility" Version="5.0.2" />
+    <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.19041.1" />
     <PackageReference Include="ModernWpfUI" Version="0.9.4" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="NLog" Version="4.7.10" />
     <PackageReference Include="Octokit" Version="0.50.0" />
+    <PackageReference Include="PixiEditor.ColorPicker" Version="3.1.0" />
     <PackageReference Include="RawInput.Sharp" Version="0.0.4" />
     <PackageReference Include="ScreenRecorderLib" Version="3.1.1" />
     <PackageReference Include="Sentinel.NLogViewer" Version="1.3.3" />
     <PackageReference Include="SharpZipLib" Version="1.3.2" />
-    <PackageReference Include="YoutubeExplode" Version="6.0.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="bundle\" />
-    <Folder Include="plugins\" />
+    <PackageReference Include="YoutubeExplode" Version="6.0.5" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Resources\appicon_96.png" />
-    <Resource Include="Resources\drag_drop_animation.gif" />
-    <Resource Include="Resources\drag_drop_animation.png" />
-    <Resource Include="Resources\icons8-cursor-in-window-100.png" />
     <Resource Include="Resources\icons8-helping-hand-96.png" />
     <Resource Include="Resources\tutorial_systray.png" />
   </ItemGroup>
@@ -92,15 +73,38 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resources.zh.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Docs\attribution.rtf">
+    <None Update="Docs\drag_drop_animation.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Docs\license.rtf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Docs\attribution.rtf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="Microsoft.VCRTForwarders.140" Version="1.0.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="C:\Users\rocks\.nuget\packages\microsoft.web.webview2\1.0.781-prerelease\build\\..\runtimes\win-x86\native\WebView2Loader.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="C:\Users\rocks\.nuget\packages\microsoft.web.webview2\1.0.781-prerelease\build\\..\runtimes\win-x86\native\WebView2Loader.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="bundle\" />
+    <Folder Include="plugins\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -110,13 +114,6 @@
     <Content Include="bundle\**">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Remove="Properties\PublishProfiles\**" />
-    <EmbeddedResource Remove="Properties\PublishProfiles\**" />
-    <None Remove="Properties\PublishProfiles\**" />
-    <Page Remove="Properties\PublishProfiles\**" />
   </ItemGroup>
 
 </Project>

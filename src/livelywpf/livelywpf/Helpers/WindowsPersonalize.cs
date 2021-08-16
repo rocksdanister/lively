@@ -25,6 +25,17 @@ namespace livelywpf.Helpers
             return color;
         }
 
+        public static Windows.UI.Color GetAccentColorUwp()
+        {
+            var color = new Windows.UI.Color();
+            if (Windows.Foundation.Metadata.ApiInformation.IsMethodPresent("Windows.UI.ViewManagement.UISettings", "GetColorValue"))
+            {
+                var uiSettings = new UISettings();
+                color = uiSettings.GetColorValue(UIColorType.Accent);
+            }
+            return color;
+        }
+
         public static void SetAccentColor(Color color)
         {
             throw new NotImplementedException();

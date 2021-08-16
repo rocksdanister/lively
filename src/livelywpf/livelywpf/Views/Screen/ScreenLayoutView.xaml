@@ -17,11 +17,11 @@
         Height="600" Width="600" MinWidth="600" MinHeight="600"
         BorderBrush="{DynamicResource SystemControlHighlightAltListAccentHighBrush}"
         Closing="Window_Closing">
-    
+
     <Window.Resources>
         <helper:ImageConverter x:Key="ImageConverter"/>
     </Window.Resources>
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />

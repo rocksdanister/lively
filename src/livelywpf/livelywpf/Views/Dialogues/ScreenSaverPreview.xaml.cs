@@ -15,9 +15,9 @@ namespace livelywpf.Views
     /// <summary>
     /// Interaction logic for ScreenSaverPreview.xaml
     /// </summary>
-    public partial class ScreenSaverPreview : Window
+    public partial class ScreensaverPreview : Window
     {
-        public ScreenSaverPreview()
+        public ScreensaverPreview()
         {
             InitializeComponent();
         }

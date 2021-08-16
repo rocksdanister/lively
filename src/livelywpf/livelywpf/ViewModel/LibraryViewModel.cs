@@ -1,22 +1,11 @@
-﻿using ICSharpCode.SharpZipLib.Zip;
-using Octokit;
-using System;
-using System.CodeDom;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Data;
-using System.Windows.Input;
 using livelywpf.Core;
-using System.Windows;
-using System.Runtime.CompilerServices;
 using System.Threading;
-//using System.Windows.Forms;
 
 namespace livelywpf
 {
@@ -34,6 +23,8 @@ namespace livelywpf
             {
                 LibraryItems.Add(item);
             }
+            //Unused for now, several issues need fixing.
+            //LibraryItemsFiltered = new ObservableCollection<LibraryModel>(LibraryItems);
 
             SetupDesktop.WallpaperChanged += SetupDesktop_WallpaperChanged;
             Program.SettingsVM.LivelyGUIStateChanged += SettingsVM_LivelyGUIStateChanged;
@@ -59,9 +50,18 @@ namespace livelywpf
             }
         }
 
-        public ICollectionView LibraryItemsFiltered
+        private ObservableCollection<LibraryModel> _libraryItemsFiltered;
+        public ObservableCollection<LibraryModel> LibraryItemsFiltered
         {
-            get { return CollectionViewSource.GetDefaultView(LibraryItems); }
+            get { return _libraryItemsFiltered; }
+            set
+            {
+                if (value != _libraryItemsFiltered)
+                {
+                    _libraryItemsFiltered = value;
+                    OnPropertyChanged("LibraryItemsFiltered");
+                }
+            }
         }
 
         private string _searchText;
@@ -152,7 +152,7 @@ namespace livelywpf
                         saveFile += ".zip";
                     }
 
-                    if (selection.LivelyInfo.Type == WallpaperType.videostream
+                    if (selection.LivelyInfo.Type == WallpaperType.videostream 
                         || selection.LivelyInfo.Type == WallpaperType.url)
                     {
                         //no wallpaper file on disk, only wallpaper metadata.
@@ -193,7 +193,7 @@ namespace livelywpf
                             _ = FileOperations.DeleteDirectoryAsync(tmpDir, 1000, 2000);
                         }
                     }
-                    else if (selection.LivelyInfo.IsAbsolutePath)
+                    else if(selection.LivelyInfo.IsAbsolutePath)
                     {
                         //livelyinfo.json only contains the absolute filepath of the file; file is in different location.
                         var tmpDir = Path.Combine(Program.AppDataDir, "temp", Path.GetRandomFileName());
@@ -254,7 +254,7 @@ namespace livelywpf
                             _ = FileOperations.DeleteDirectoryAsync(tmpDir, 1000, 2000);
                         }
                     }
-                    else
+                    else 
                     {
                         //installed lively wallpaper.
                         ZipCreate.CreateZip(saveFile, new List<string>() { Path.GetDirectoryName(selection.FilePath) });
@@ -360,7 +360,7 @@ namespace livelywpf
         public void AddWallpaper(string path, WallpaperType wpType, LibraryTileType dataType, LivelyScreen screen, string cmdArgs = null)
         {
             var dir = Path.Combine(Program.WallpaperDir, "SaveData", "wptmp", Path.GetRandomFileName());
-            if (dataType == LibraryTileType.processing ||
+            if (dataType == LibraryTileType.processing || 
                 dataType == LibraryTileType.cmdImport ||
                 dataType == LibraryTileType.multiImport)
             {
@@ -408,15 +408,6 @@ namespace livelywpf
             obj.DataType = LibraryTileType.edit;
             LibraryItems.Insert(0, obj);
             SetupDesktop.SetWallpaper(obj, ScreenHelper.GetPrimaryScreen());
-        }
-
-        public void FilterCollection(string str)
-        {
-            if (String.IsNullOrEmpty(str))
-                LibraryItemsFiltered.Filter = null;
-
-            LibraryItemsFiltered.Filter = i => (((LibraryModel)i).LivelyInfo.Title.IndexOf(str, StringComparison.OrdinalIgnoreCase)) > -1;
-            LibraryItemsFiltered.Refresh();
         }
 
         /// <summary>
@@ -516,6 +507,35 @@ namespace livelywpf
             var binarySearchIndex = BinarySearch(LibraryItems, item.Title);
             //LibraryItems.Move(LibraryItems.IndexOf(item), binarySearchIndex);
             LibraryItems.Insert(binarySearchIndex, item);
+        }
+
+        //ref: https://docs.microsoft.com/en-us/windows/uwp/design/controls-and-patterns/listview-filtering
+        private void FilterCollection(string str)
+        {
+            /*In order for the ListView to animate in the most intuitive way when adding and subtracting items, 
+            it's important to remove and add items to the ListView's ItemsSource collection itself*/
+            var tmpFilter = LibraryItems.Where(item => item.LivelyInfo.Title.Contains(str, StringComparison.OrdinalIgnoreCase)).ToList();
+            // First, remove any objects in LibraryItemsFiltered that are not in tmpFilter
+            for (int i = 0; i < LibraryItemsFiltered.Count; i++)
+            {
+                var item = LibraryItemsFiltered[i];
+                if (!tmpFilter.Contains(item))
+                {
+                    LibraryItemsFiltered.Remove(item);
+                }
+            }
+
+            /* Next, add back any objects that are included in tmpFilter and may 
+            not currently be in LibraryItemsFiltered (in case of a backspace) */
+            for (int i = 0; i < tmpFilter.Count; i++)
+            {
+                var item = tmpFilter[i];
+                if (!LibraryItemsFiltered.Contains(item))
+                {
+                    var index = BinarySearch(LibraryItemsFiltered, item.Title);
+                    LibraryItemsFiltered.Insert(index, item);
+                }
+            }
         }
 
         private int BinarySearch(ObservableCollection<LibraryModel> item, string x)

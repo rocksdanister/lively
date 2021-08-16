@@ -1,0 +1,48 @@
+﻿<Window x:Class="livelywpf.Views.ColorDialog"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        ui:WindowHelper.UseModernWindowStyle="True"
+        ui:ThemeManager.IsThemeAware="True"  
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:colorpicker="clr-namespace:ColorPicker;assembly=ColorPicker"
+        xmlns:local="clr-namespace:livelywpf.Views"
+        xmlns:p = "clr-namespace:livelywpf.Properties"   
+        mc:Ignorable="d"
+        WindowStyle="ToolWindow"
+        ResizeMode="NoResize"
+        Closing="Window_Closing"
+        Title="{x:Static p:Resources.TextTaskbarThemeColor}" Height="500" Width="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+
+        <colorpicker:SquarePicker Grid.Row="0" x:Name="Cpicker" Margin="5" ColorChanged="Cpicker_ColorChanged"/>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="1" Margin="0, 0, 25, 5" MaxHeight="35">
+            <Button Content="{x:Static p:Resources.TextCancel}" MinWidth="100" MaxWidth="100" Margin="0, 0, 5, 0" IsDefault="True" Click="Cancel_Button_Click"/>
+            <Button Content="{x:Static p:Resources.TextOK}" MinWidth="100" MaxWidth="100" Click="Ok_Button_Click"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Row="1" Margin="28, 0, 0, 5" MaxHeight="35">
+            <Button Name="pickerBtn" Click="PickerBtn_Click" ToolTipService.IsEnabled="False" MinWidth="50" Margin="0, 0, 5, 0">
+                <ui:FontIcon Glyph="&#xEF3C;"/>
+                <Button.ToolTip>
+                    <ToolTip x:Name="ctt" MinWidth="125" MinHeight="30" Placement="Absolute">
+                        <StackPanel Orientation="Horizontal">
+                            <Rectangle x:Name="cttColor" VerticalAlignment="Center" Width="30" Height="30" RadiusX="5" RadiusY="5" Margin="1, 1, 5, 1"/>
+                            <TextBlock x:Name="cttText" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ToolTip>
+                </Button.ToolTip>
+            </Button>
+            <Button Name="accentBtn" Click="AccentBtn_Click" MinWidth="50">
+                <ui:FontIcon Glyph="&#xE790;"/>
+            </Button>
+        </StackPanel>
+
+    </Grid>
+</Window>

@@ -52,7 +52,7 @@ namespace livelywpf.Views
                 Content = arg.ToString(),
                 PrimaryButtonText = Properties.Resources.TextYes,
                 SecondaryButtonText = Properties.Resources.TextNo,
-                DefaultButton = ContentDialogButton.Secondary
+                DefaultButton = ContentDialogButton.Primary,
             };
             return await confirmDialog.ShowAsync();
         }

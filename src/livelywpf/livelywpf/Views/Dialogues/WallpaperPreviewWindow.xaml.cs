@@ -6,6 +6,7 @@ using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Threading;
 using livelywpf.Core;
+using livelywpf.Core.API;
 
 namespace livelywpf.Views
 {
@@ -69,20 +70,19 @@ namespace livelywpf.Views
                 WindowOperations.SetParentSafe(wallpaper.GetHWND(), IntPtr.Zero);
                 try
                 {
-                    //temporary..till webprocess async close is ready.
-                    if (wallpaper.GetWallpaperType() == WallpaperType.url)
+                    var proc = wallpaper.GetProcess();
+                    if (wallpaper.GetWallpaperType() == WallpaperType.url && proc != null)
                     {
-                        var Proc = wallpaper.GetProcess();
-                        Proc.Refresh();
-                        Proc.StandardInput.WriteLine("lively:terminate");
-                        if (!Proc.WaitForExit(4000))
+                        wallpaper.SendMessage(new LivelyCloseCmd());
+                        proc.Refresh();
+                        if (!proc.WaitForExit(4000))
                         {
                             wallpaper.Terminate();
                         }
                     }
                     else
                     {
-                        wallpaper.Close();
+                        wallpaper.Terminate();
                     }
                 }
                 catch
@@ -107,13 +107,13 @@ namespace livelywpf.Views
                 case WallpaperType.picture:
                 case WallpaperType.video:
                     wpInstance = new VideoMpvPlayer(wp.FilePath, wp, target,
-                        Program.SettingsVM.Settings.WallpaperScaling, Program.SettingsVM.Settings.StreamQuality, true);
+                        WallpaperScaler.fill, Program.SettingsVM.Settings.StreamQuality, true);
                     break;
                 case WallpaperType.videostream:
                     if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "mpv", "youtube-dl.exe")))
                     {
                         wpInstance = new VideoMpvPlayer(wp.FilePath, wp, target,
-                            Program.SettingsVM.Settings.WallpaperScaling, Program.SettingsVM.Settings.StreamQuality, true);
+                            WallpaperScaler.fill, Program.SettingsVM.Settings.StreamQuality, true);
                     }
                     else
                     {
@@ -242,6 +242,7 @@ namespace livelywpf.Views
                 //recorder initialization
                 recorder = new Helpers.ScreenRecorderlibScreen();
                 recorder.Initialize(savePath, prevBorder, 60, 8000 * 1000, false, false);
+                //recorder.Initialize(savePath, new WindowInteropHelper(this).Handle, 60, 8000 * 1000, false, false);
                 recorder.RecorderStatus += Recorder_RecorderStatus;
                 //recording timer.
                 if(dispatcherTimer == null)

@@ -75,6 +75,11 @@ namespace livelywpf.Core
             return hwnd;
         }
 
+        public IntPtr GetHWNDInput()
+        {
+            return hwnd;
+        }
+
         public Process GetProcess()
         {
             return _process;
@@ -400,6 +405,11 @@ namespace livelywpf.Core
         public void SendMessage(IpcMessage obj)
         {
             //todo
+        }
+
+        public bool IsLoaded()
+        {
+            return GetHWND() != IntPtr.Zero;
         }
     }
 }

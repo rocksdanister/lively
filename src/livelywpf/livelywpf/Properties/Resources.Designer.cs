@@ -61,11 +61,60 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Online discussion forum.
+        /// </summary>
+        public static string DescCommunity {
+            get {
+                return ResourceManager.GetString("DescCommunity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to API documentation and help.
+        /// </summary>
+        public static string DescDocumentation {
+            get {
+                return ResourceManager.GetString("DescDocumentation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Incompatible program found, taskbar theming disabled..
         /// </summary>
         public static string DescIncompatibleTaskbarTheme {
             get {
                 return ResourceManager.GetString("DescIncompatibleTaskbarTheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Official webpage of Lively Wallpaper.
+        /// </summary>
+        public static string DescOfficialWebpage {
+            get {
+                return ResourceManager.GetString("DescOfficialWebpage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Most modern LCD and LED displays do not suffer from burn-in issue and therefore any wallpaper can be used as screensaver.
+        ///
+        ///For OLED, Plasma or CRT displays which are susceptibe to burn-in it is advised to use wallpaper with regular motion and an overall dark theme which is supposed to mitigate burn-in but this feature is untested and its effectiveness cannot be guaranteed.
+        ///
+        ///The main purpose of Lively&apos;s screensavers is to add another layer of customization to your pc, use screensavers as burn-in protecti [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string DescOledScreensaverNotice {
+            get {
+                return ResourceManager.GetString("DescOledScreensaverNotice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Report a problem with the software.
+        /// </summary>
+        public static string DescReportBug {
+            get {
+                return ResourceManager.GetString("DescReportBug", resourceCulture);
             }
         }
         
@@ -221,6 +270,25 @@ namespace livelywpf.Properties {
         public static string DescriptionWindowsNCodecInstall {
             get {
                 return ResourceManager.GetString("DescriptionWindowsNCodecInstall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show support by buying the developer coffee.
+        /// </summary>
+        public static string DescSupperDev {
+            get {
+                return ResourceManager.GetString("DescSupperDev", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are about to change to beta (developer) build of Lively.
+        ///Updates will be frequent and may contain bugs!.
+        /// </summary>
+        public static string DescSwitchBranchBetaWarning {
+            get {
+                return ResourceManager.GetString("DescSwitchBranchBetaWarning", resourceCulture);
             }
         }
         
@@ -384,6 +452,15 @@ namespace livelywpf.Properties {
         public static string TextCancel {
             get {
                 return ResourceManager.GetString("TextCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change Wallpapers.
+        /// </summary>
+        public static string TextChangeWallpaper {
+            get {
+                return ResourceManager.GetString("TextChangeWallpaper", resourceCulture);
             }
         }
         
@@ -595,7 +672,7 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to hours.
+        ///   Looks up a localized string similar to hour(s).
         /// </summary>
         public static string TextHours {
             get {
@@ -622,6 +699,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Last checked.
+        /// </summary>
+        public static string TextLastChecked {
+            get {
+                return ResourceManager.GetString("TextLastChecked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Learn more.
         /// </summary>
         public static string TextLearnMore {
@@ -640,7 +726,7 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to minutes.
+        ///   Looks up a localized string similar to minute(s).
         /// </summary>
         public static string TextMinutes {
             get {
@@ -753,6 +839,15 @@ namespace livelywpf.Properties {
         public static string TextPauseAlgoAllProcess {
             get {
                 return ResourceManager.GetString("TextPauseAlgoAllProcess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Direct3D.
+        /// </summary>
+        public static string TextPauseAlgoExclusiveMode {
+            get {
+                return ResourceManager.GetString("TextPauseAlgoExclusiveMode", resourceCulture);
             }
         }
         
@@ -933,6 +1028,24 @@ namespace livelywpf.Properties {
         public static string TextSupport {
             get {
                 return ResourceManager.GetString("TextSupport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Switch to beta (Dev channel).
+        /// </summary>
+        public static string TextSwitchBranchDev {
+            get {
+                return ResourceManager.GetString("TextSwitchBranchDev", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Switch to stable (Default channel).
+        /// </summary>
+        public static string TextSwitchBranchOfficial {
+            get {
+                return ResourceManager.GetString("TextSwitchBranchOfficial", resourceCulture);
             }
         }
         
@@ -1451,6 +1564,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Change software release from beta to stable or vice versa..
+        /// </summary>
+        public static string TipSwitchSoftwareBranch {
+            get {
+                return ResourceManager.GetString("TipSwitchSoftwareBranch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change system taskbar appearance..
         /// </summary>
         public static string TipTaskbarTheme {
@@ -1691,6 +1813,15 @@ namespace livelywpf.Properties {
         public static string TitleBrowserDebuggingPort {
             get {
                 return ResourceManager.GetString("TitleBrowserDebuggingPort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Changelog.
+        /// </summary>
+        public static string TitleChangelog {
+            get {
+                return ResourceManager.GetString("TitleChangelog", resourceCulture);
             }
         }
         
@@ -1947,6 +2078,15 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to On resume, display logon screen.
+        /// </summary>
+        public static string TitleScreensaverLockOnResume {
+            get {
+                return ResourceManager.GetString("TitleScreensaverLockOnResume", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select File.
         /// </summary>
         public static string TitleSelectFile {
@@ -2051,6 +2191,15 @@ namespace livelywpf.Properties {
         public static string TitleUIMode {
             get {
                 return ResourceManager.GetString("TitleUIMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updates.
+        /// </summary>
+        public static string TitleUpdates {
+            get {
+                return ResourceManager.GetString("TitleUpdates", resourceCulture);
             }
         }
         

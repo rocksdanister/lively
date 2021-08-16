@@ -1,7 +1,10 @@
 ﻿using livelywpf.Core.API;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Management;
 using System.Text;
@@ -22,6 +25,7 @@ namespace livelywpf.Core
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
         private static int globalCount;
         private readonly int uniqueId;
+        private bool isLoaded;
 
         public WebProcess(string path, LibraryModel model, LivelyScreen display)
         {
@@ -82,7 +86,10 @@ namespace livelywpf.Core
             cmdArgs.Append(!string.IsNullOrWhiteSpace(Program.SettingsVM.Settings.WebDebugPort) ? " --debug " + Program.SettingsVM.Settings.WebDebugPort : " ");
             cmdArgs.Append(model.LivelyInfo.Type == WallpaperType.url || model.LivelyInfo.Type == WallpaperType.videostream ? " --type online" : " --type local");
             cmdArgs.Append(Program.SettingsVM.Settings.CefDiskCache && model.LivelyInfo.Type == WallpaperType.url ? " --cache " + "\"" + Path.Combine(Program.AppDataDir, "Cef", "cache", display.DeviceNumber) + "\"" : " ");
-
+#if DEBUG
+            cmdArgs.Append(" --verbose-log true"); 
+#endif
+            
             ProcessStartInfo start = new ProcessStartInfo
             {
                 Arguments = cmdArgs.ToString(),
@@ -131,6 +138,11 @@ namespace livelywpf.Core
         }
 
         public IntPtr GetHWND()
+        {
+            return hwnd;
+        }
+
+        public IntPtr GetHWNDInput()
         {
             return hwnd;
         }
@@ -238,46 +250,61 @@ namespace livelywpf.Core
             //When the redirected stream is closed, a null line is sent to the event handler.
             if (!string.IsNullOrEmpty(e.Data))
             {
-                if (e.Data.Contains("HWND"))
+                Logger.Info($"Cef{uniqueId}: {e.Data}");
+                if (!_initialized || !isLoaded)
                 {
-                    bool status = true;
-                    Exception error = null;
-                    string msg = null;
+                    IpcMessage obj;
                     try
                     {
-                        msg = e.Data;
-                        var handle = new IntPtr(Convert.ToInt32(e.Data.Substring(4), 10));
-                        //note-handle: WindowsForms10.Window.8.app.0.141b42a_r9_ad1
-
-                        //hidin other windows, no longer required since I'm doing it in cefsharp pgm itself.
-                        NativeMethods.ShowWindow(GetProcess().MainWindowHandle, 0);
-
-                        //WARNING:- If you put the whole cefsharp window, workerw crashes and refuses to start again on next startup!!, this is a workaround.
-                        handle = NativeMethods.FindWindowEx(handle, IntPtr.Zero, "Chrome_WidgetWin_0", null);
-                        //cefRenderWidget = StaticPinvoke.FindWindowEx(handle, IntPtr.Zero, "Chrome_RenderWidgetHostHWND", null);
-                        //cefIntermediate = StaticPinvoke.FindWindowEx(handle, IntPtr.Zero, "Intermediate D3D Window", null);
-
-                        if (IntPtr.Equals(handle, IntPtr.Zero))//unlikely.
-                        {
-                            status = false;
-                        }
-                        hwnd = handle;
+                        obj = JsonConvert.DeserializeObject<IpcMessage>(e.Data, new JsonSerializerSettings() { Converters = { new IpcMessageConverter() } });
                     }
                     catch (Exception ex)
                     {
-                        status = false;
-                        error = ex;
+                        Logger.Error($"Ipcmessage parse error: {ex.Message}");
+                        return;
                     }
-                    finally
+
+                    if (obj.Type == MessageType.msg_hwnd)
                     {
-                        if (!_initialized)
+                        bool status = true;
+                        Exception error = null;
+                        string msg = null;
+                        try
                         {
+                            msg = e.Data;
+                            var handle = new IntPtr(((LivelyMessageHwnd)obj).Hwnd);
+                            //note-handle: WindowsForms10.Window.8.app.0.141b42a_r9_ad1
+
+                            //hidin other windows, no longer required since I'm doing it in cefsharp pgm itself.
+                            NativeMethods.ShowWindow(GetProcess().MainWindowHandle, 0);
+
+                            //WARNING:- If you put the whole cefsharp window, workerw crashes and refuses to start again on next startup!!, this is a workaround.
+                            handle = NativeMethods.FindWindowEx(handle, IntPtr.Zero, "Chrome_WidgetWin_0", null);
+                            //cefRenderWidget = StaticPinvoke.FindWindowEx(handle, IntPtr.Zero, "Chrome_RenderWidgetHostHWND", null);
+                            //cefIntermediate = StaticPinvoke.FindWindowEx(handle, IntPtr.Zero, "Intermediate D3D Window", null);
+
+                            if (IntPtr.Equals(handle, IntPtr.Zero))//unlikely.
+                            {
+                                status = false;
+                            }
+                            hwnd = handle;
+                        }
+                        catch (Exception ie)
+                        {
+                            status = false;
+                            error = ie;
+                        }
+                        finally
+                        {
+                            _initialized = true;
                             WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = status, Error = error, Msg = msg });
                         }
-                        _initialized = true;
+                    }
+                    else if (obj.Type == MessageType.msg_wploaded)
+                    {
+                        isLoaded = ((LivelyMessageWallpaperLoaded)obj).Success;
                     }
                 }
-                Logger.Info("Cef{0}:{1}", uniqueId, e.Data);
             }
         }
 
@@ -288,13 +315,13 @@ namespace livelywpf.Core
 
         public void SendMessage(string msg)
         {
-            if (_process != null)
+            try
             {
-                try
-                {
-                    _process.StandardInput.WriteLine(msg);
-                }
-                catch { }
+                _process?.StandardInput.WriteLine(msg);
+            }
+            catch (Exception e)
+            {
+                Logger.Error($"Stdin write fail: {e.Message}");
             }
         }
 
@@ -380,9 +407,50 @@ namespace livelywpf.Core
             }
         }
 
-        public Task ScreenCapture(string filePath)
+        public async Task ScreenCapture(string filePath)
         {
-            throw new NotImplementedException();
+            var tcs = new TaskCompletionSource<bool>();
+            void OutputDataReceived(object sender, DataReceivedEventArgs e)
+            {
+                if (string.IsNullOrEmpty(e.Data))
+                {
+                    //process exiting..
+                    tcs.SetResult(false);
+                }
+                else
+                {
+                    var obj = JsonConvert.DeserializeObject<IpcMessage>(e.Data, new JsonSerializerSettings() { Converters = { new IpcMessageConverter() } });
+                    if (obj.Type == MessageType.msg_screenshot)
+                    {
+                        var msg = (LivelyMessageScreenshot)obj;
+                        if (msg.FileName == Path.GetFileName(filePath))
+                        {
+                            tcs.SetResult(msg.Success);
+                        }
+                    }
+                }
+            }
+
+            try
+            {
+                _process.OutputDataReceived += OutputDataReceived;
+                SendMessage(new LivelyScreenshotCmd() 
+                { 
+                    FilePath = Path.GetExtension(filePath) != ".jpg" ? filePath + ".jpg" : filePath,
+                    Format = ScreenshotFormat.jpeg,
+                    Delay = 0 //unused
+                });
+                await tcs.Task;
+            }
+            finally
+            {
+                _process.OutputDataReceived -= OutputDataReceived;
+            }
+        }
+
+        public bool IsLoaded()
+        {
+            return isLoaded;
         }
     }
 }

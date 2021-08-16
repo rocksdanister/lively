@@ -13,13 +13,11 @@ namespace livelywpf
     {
 
         /// <summary>
-        /// Extract zip file to given path.
-        /// Example:
-        /// ZipExtract("K:\\ziptest\\Fluids_v2.zip", "K:\\ziptest\\extracted", true);
+        /// Extract zip file to given output directory.
         /// </summary>
-        /// <param name="archivePath">Input zip path.</param>
-        /// <param name="outFolder">Output folder path.</param>
-        /// <param name="livelyFileCheck">Verify if LivelyInfo.json is present.</param>
+        /// <param name="archivePath">Source .zip path.</param>
+        /// <param name="outFolder">Destination directory.</param>
+        /// <param name="livelyFileCheck">Verify whether the archive is lively wallpaper format, throws Exception if not.</param>
         public static void ZipExtractFile(string archivePath, string outFolder, bool livelyFileCheck)
         {
             using (Stream fsInput = File.OpenRead(archivePath))
@@ -76,7 +74,6 @@ namespace livelywpf
 
         /// <summary>
         /// Verify whether the archive is lively wallpaper format.
-        /// Returns false if corrupted zip.
         /// </summary>
         /// <param name="archivePath">Path to .zip file.</param>
         /// <returns></returns>

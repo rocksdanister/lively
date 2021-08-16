@@ -1,12 +1,4 @@
-﻿using ModernWpf.Controls;
-using System;
-using System.Diagnostics;
-using System.Drawing.Text;
-using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Documents;
-using System.Windows.Threading;
+﻿using livelywpf.Helpers;
 using Page = System.Windows.Controls.Page;
 
 namespace livelywpf.Views
@@ -19,44 +11,15 @@ namespace livelywpf.Views
         public AboutView()
         {
             InitializeComponent();
-            appVersionText.Text = "v" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() +
-                (Program.IsMSIX == true ? " " + Properties.Resources.TitleStore : " wpf");
-        }
-
-        private void btnLicense_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            ShowDocDialog(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Docs", "license.rtf"));
-        }
-
-        private void btnAttribution_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            ShowDocDialog(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Docs", "attribution.rtf"));
-        }
-
-        private void ShowDocDialog(string docPath)
-        {
-            var item = new DocView(docPath)
-            {
-                Title = Properties.Resources.TitleDocumentation,
-            };
-            if (App.AppWindow.IsVisible)
-            {
-                item.Owner = App.AppWindow;
-                item.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner;
-                item.Width = App.AppWindow.Width / 1.2;
-                item.Height = App.AppWindow.Height / 1.2;
-            }
-            else
-            {
-                item.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
-            }
-            item.ShowDialog();
+            var vm = new AboutViewModel();
+            this.DataContext = vm;
+            this.Unloaded += vm.OnViewClosing;
         }
 
         private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
         {
             e.Handled = true;
-            Helpers.LinkHandler.OpenBrowser(e.Uri);
+            LinkHandler.OpenBrowser(e.Uri);
         }
     }
 }

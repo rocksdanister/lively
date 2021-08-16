@@ -52,13 +52,13 @@
                 <Label Content="{x:Static p:Resources.TextWebsite}" />
                 <TextBox Name="textboxContact" Text="{Binding Url, Mode=TwoWay}" MaxHeight="20" Height="20" Margin="10, 5, 25, 0" IsEnabled="{Binding IsUserEditable}"/>
 
-                <CheckBox x:Name="chkBoxCreatePreview" IsEnabled="False" Content="{x:Static p:Resources.TextCreatePreview}" Margin="10,10,0,0" IsChecked="{Binding Path=GifCheck, Mode=TwoWay}"/>
+                <CheckBox x:Name="chkBoxCreatePreview" Content="{x:Static p:Resources.TextCreatePreview}" Margin="10,10,0,0" IsChecked="{Binding Path=GifCheck, Mode=TwoWay}"/>
                 <CheckBox x:Name="chkBoxCreateZip" Content="{x:Static p:Resources.TextExportWallpaperZip}" Margin="10,10,0,0" IsChecked="{Binding Path=ZipCheck, Mode=TwoWay}"/>
                 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0, 0, 10, 0">
                     <ui:ProgressRing IsActive="{Binding IsUserEditable, Converter={StaticResource InverseBooleanConverter}}" Margin="0, 0, 10, 0" />
-                    <Button x:Name="CancelBtn" Content="{x:Static p:Resources.TextClose}" MinWidth="100" Margin="0, 0, 10, 0" Command="{Binding CancelCommand}"/>
-                    <Button x:Name="OkBtn" Content="{x:Static p:Resources.TextOK}" MinWidth="100" Command="{Binding CaptureCommand}" 
+                    <Button x:Name="CancelBtn" Content="{x:Static p:Resources.TextCancel}" MinWidth="100" Margin="0, 0, 10, 0" Command="{Binding CancelCommand}"/>
+                    <Button x:Name="OkBtn" IsDefault="True" Content="{x:Static p:Resources.TextOK}" MinWidth="100" Command="{Binding CaptureCommand}" 
                             Background="{DynamicResource SystemControlHighlightAltListAccentHighBrush}" IsEnabled="{Binding IsUserEditable}"/>
                 </StackPanel>
                 

@@ -1,9 +1,7 @@
 ﻿using livelywpf.Core.API;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Interop;
@@ -15,15 +13,16 @@ namespace livelywpf.Core
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
-        IntPtr HWND { get; set; }
-        WebView2Element Player { get; set; }
-        LibraryModel Model { get; set; }
-        LivelyScreen Display { get; set; }
-        string LivelyPropertyCopy { get; set; }
+        private IntPtr hwndWindow, hwndWebView;
+        private readonly WebView2Element player;
+        private readonly LibraryModel model;
+        private LivelyScreen display;
+        private readonly string livelyPropertyCopyPath;
+        private bool isLoaded;
 
         public WebEdge(string path, LibraryModel model, LivelyScreen display)
         {
-            LivelyPropertyCopy = null;
+            livelyPropertyCopyPath = null;
             if (model.LivelyPropertyPath != null)
             {
                 //customisable wallpaper, livelyproperty.json is present.
@@ -36,13 +35,26 @@ namespace livelywpf.Core
                     {
                         //Create a directory with the wp foldername in SaveData/wpdata/, copy livelyproperties.json into this.
                         //Further modifications are done to the copy file.
-                        var wpdataFolder = Path.Combine(dataFolder, new DirectoryInfo(model.LivelyInfoFolderPath).Name, screenNumber);
+                        string wpdataFolder = null;
+                        switch (Program.SettingsVM.Settings.WallpaperArrangement)
+                        {
+                            case WallpaperArrangement.per:
+                                wpdataFolder = Path.Combine(dataFolder, new DirectoryInfo(model.LivelyInfoFolderPath).Name, screenNumber);
+                                break;
+                            case WallpaperArrangement.span:
+                                wpdataFolder = Path.Combine(dataFolder, new DirectoryInfo(model.LivelyInfoFolderPath).Name, "span");
+                                break;
+                            case WallpaperArrangement.duplicate:
+                                wpdataFolder = Path.Combine(dataFolder, new DirectoryInfo(model.LivelyInfoFolderPath).Name, "duplicate");
+                                break;
+                        }
                         Directory.CreateDirectory(wpdataFolder);
-
-                        LivelyPropertyCopy = Path.Combine(wpdataFolder, "LivelyProperties.json");
-                        if (!File.Exists(LivelyPropertyCopy))
-                            File.Copy(model.LivelyPropertyPath, LivelyPropertyCopy);
-
+                        //copy the original file if not found..
+                        livelyPropertyCopyPath = Path.Combine(wpdataFolder, "LivelyProperties.json");
+                        if (!File.Exists(livelyPropertyCopyPath))
+                        {
+                            File.Copy(model.LivelyPropertyPath, livelyPropertyCopyPath);
+                        }
                     }
                     else
                     {
@@ -55,27 +67,22 @@ namespace livelywpf.Core
                 }
             }
 
-            Player = new WebView2Element(path, model.LivelyInfo.Type, LivelyPropertyCopy);
-            this.Model = model;
-            this.Display = display;
+            player = new WebView2Element(path, model.LivelyInfo.Type, livelyPropertyCopyPath);
+            this.model = model;
+            this.display = display;
         }
 
         public void Close()
         {
-            System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
+            System.Windows.Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, new ThreadStart(delegate
             {
-                Player.Close();
+                player.Close();
             }));
-        }
-
-        public IntPtr GetHWND()
-        {
-            return HWND;
         }
 
         public string GetLivelyPropertyCopyPath()
         {
-            return LivelyPropertyCopy;
+            return livelyPropertyCopyPath;
         }
 
         public Process GetProcess()
@@ -85,64 +92,101 @@ namespace livelywpf.Core
 
         public LivelyScreen GetScreen()
         {
-            return Display;
+            return display;
         }
 
         public LibraryModel GetWallpaperData()
         {
-            return Model;
+            return model;
         }
 
         public WallpaperType GetWallpaperType()
         {
-            return Model.LivelyInfo.Type;
+            return model.LivelyInfo.Type;
+        }
+
+        public IntPtr GetHWND()
+        {
+            return hwndWindow;
+        }
+
+        public IntPtr GetHWNDInput()
+        {
+            return hwndWebView;
         }
 
         public void Pause()
         {
-
+            //minimize browser.
+            NativeMethods.ShowWindow(hwndWebView, (uint)NativeMethods.SHOWWINDOW.SW_SHOWMINNOACTIVE);
         }
 
         public void Play()
         {
-
+            //show minimized browser.
+            NativeMethods.ShowWindow(hwndWebView, (uint)NativeMethods.SHOWWINDOW.SW_SHOWNOACTIVATE);
         }
 
         public void SendMessage(string msg)
         {
-            if(Player != null)
-            {
-                Player.SendMessage(msg);
-            }
+            player?.MessageProcess(msg);
         }
 
         public void SetScreen(LivelyScreen display)
         {
-            this.Display = display;
+            this.display = display;
         }
 
         public void SetVolume(int volume)
         {
-
+            //todo
         }
 
-        public void Show()
+        public async void Show()
         {
-            if (Player != null)
+            if (player != null)
             {
-                Player.Closed += Player_Closed;
-                Player.Show();
-                HWND = new WindowInteropHelper(Player).Handle;
-                //Logger.Debug("WEBVIEW2: old HWND=>" + HWND);
-                //Player.webView.CoreWebView2Ready += WebView_CoreWebView2Ready;
-                WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = true, Error = null });
+                player.LivelyPropertiesInitialized += Player_LivelyPropertiesInitialized;
+                player.Closed += Player_Closed;
+                player.Show();
+                //visible window..
+                this.hwndWindow = new WindowInteropHelper(player).Handle;
+
+                bool status = true;
+                Exception error = null;
+                string message = null;
+                try
+                {
+                    var tmpHwnd = await player.InitializeWebView();
+                    //input window..
+                    var parentHwnd = NativeMethods.FindWindowEx(tmpHwnd, IntPtr.Zero, "Chrome_WidgetWin_0", null);
+                    if (!parentHwnd.Equals(IntPtr.Zero))
+                    {
+                        this.hwndWebView = NativeMethods.FindWindowEx(parentHwnd, IntPtr.Zero, "Chrome_WidgetWin_1", null);
+                    }
+
+                    if (this.hwndWebView.Equals(IntPtr.Zero))
+                    {
+                        throw new Exception("Webview input handle not found.");
+                    }
+                }
+                catch (Exception e)
+                {
+                    error = e;
+                    status = false;
+                    message = "WebView initialization fail.";
+                }
+                finally
+                {
+                    WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = status, Error = error, Msg = message });
+                }
             }
         }
 
-        private void WebView_CoreWebView2Ready(object sender, EventArgs e)
+        private void Player_LivelyPropertiesInitialized(object sender, EventArgs e)
         {
-            Logger.Debug("WEBVIEW2: new HWND=>" + Player.webView.Handle);   
-            //SetHWND(Player.webView.Handle);
+            isLoaded = true;
+            player.LivelyPropertiesInitialized -= Player_LivelyPropertiesInitialized;
         }
 
         private void Player_Closed(object sender, EventArgs e)
@@ -162,17 +206,25 @@ namespace livelywpf.Core
 
         public void SetPlaybackPos(float pos, PlaybackPosType type)
         {
-            //todo: reload if 0
+            if (pos == 0 && type != PlaybackPosType.relativePercent)
+            {
+                SendMessage(new LivelyReloadCmd());
+            }
         }
 
-        public Task ScreenCapture(string filePath)
+        public async Task ScreenCapture(string filePath)
         {
-            throw new NotImplementedException();
+            await player?.CaptureScreenshot(Path.GetExtension(filePath) != ".jpg" ? filePath + ".jpg" : filePath, ScreenshotFormat.jpeg);
         }
 
         public void SendMessage(IpcMessage obj)
         {
-            //todo
+            player?.MessageProcess(obj);
+        }
+
+        public bool IsLoaded()
+        {
+            return isLoaded;
         }
     }
 }

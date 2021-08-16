@@ -206,10 +206,10 @@ namespace livelywpf
             get
             {
                 return _title;
-            }
+            }   
             set
             {
-                _title = string.IsNullOrWhiteSpace(value) ? "---" : (value.Length > 100 ? value.Substring(0, 100) : value);
+                _title = string.IsNullOrWhiteSpace(value) ? "---" : (value.Length > 100 ? value.Substring(0, 100) : value); 
                 OnPropertyChanged("Title");
             }
         }

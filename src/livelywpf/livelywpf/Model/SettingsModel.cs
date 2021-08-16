@@ -19,7 +19,6 @@ namespace livelywpf
         /// Add user opened wallpapers to library.
         /// </summary>
         public bool GenerateTile { get; set; }
-
         public bool LivelyZipGenerate { get; set; }
         /// <summary>
         /// Show wallpaper info icon topright of library tile.
@@ -31,7 +30,6 @@ namespace livelywpf
 
         public AppRulesEnum AppFullscreenPause { get; set; }
         public AppRulesEnum BatteryPause { get; set; }
-
         public DisplayPauseEnum DisplayPauseSettings { get; set; }
         public ProcessMonitorAlgorithm ProcessMonitorAlgorithm { get; set; }
         /// <summary>
@@ -66,6 +64,9 @@ namespace livelywpf
         /// Video gpu decode
         /// </summary>
         public bool VideoPlayerHwAccel { get; set; }
+        /// <summary>
+        /// Gif and picture wallpaper player.
+        /// </summary>
         public LivelyGifPlayer GifPlayer { get; set; }
         public LivelyWebBrowser WebBrowser { get; set; }
         public bool GifCapture { get; set; }
@@ -82,7 +83,7 @@ namespace livelywpf
         /// </summary>
         public string WebDebugPort { get; set; }
         public int WallpaperBundleVersion { get; set; }
-        public StreamQualitySuggestion StreamQuality { get; set; }
+        public StreamQualitySuggestion StreamQuality {get; set;}
         /// <summary>
         /// 0 - 100 sound level, affects every wallpaper type.
         /// </summary>
@@ -93,11 +94,13 @@ namespace livelywpf
         public bool DebugMenu { get; set; }
         /// <summary>
         /// Fetch beta lively release updates from lively-beta repository.
-        /// {Unused currently.}
         /// </summary>
         public bool TestBuild { get; set; }
         public bool DetectRemoteDesktop { get; set; }
-        public AppTheme ApplicationTheme {get; set;}
+        /// <summary>
+        /// Not used currently.
+        /// </summary>
+        public AppTheme ApplicationTheme { get; set; }
         /// <summary>
         /// Set screen capture of wallpaper as lockscreen image.
         /// </summary>
@@ -108,6 +111,9 @@ namespace livelywpf
         public bool DesktopAutoWallpaper { get; set; }
         public TaskbarTheme SystemTaskbarTheme { get; set; }
         public ScreensaverIdleTime ScreensaverIdleWait { get; set; }
+        public bool ScreensaverOledWarning { get; set; }
+        public bool ScreensaverEmptyScreenShowBlack { get; set; }
+        public bool ScreensaverLockOnResume { get; set; }
 
         public SettingsModel()
         {
@@ -125,7 +131,6 @@ namespace livelywpf
             VideoPlayerHwAccel = true;
             WebBrowser = LivelyWebBrowser.cef;
             GifPlayer = LivelyGifPlayer.mpv;
-            MultiFileAutoImport = true;
 
             WallpaperWaitTime = 20000; // 20sec
             ProcessTimerInterval = 500; //reduce to 250 for quicker response.
@@ -139,6 +144,7 @@ namespace livelywpf
             ScalerVideo = System.Windows.Media.Stretch.Fill;
             ScalerGif = System.Windows.Media.Stretch.Fill;
             GifCapture = false;
+            MultiFileAutoImport = true;
 
             SafeShutdown = true;
             IsRestart = false;
@@ -169,6 +175,9 @@ namespace livelywpf
             DesktopAutoWallpaper = false;
             SystemTaskbarTheme = TaskbarTheme.none;
             ScreensaverIdleWait = ScreensaverIdleTime.none;
+            ScreensaverOledWarning = false;
+            ScreensaverEmptyScreenShowBlack = true;
+            ScreensaverLockOnResume = false;
 
             try
             {

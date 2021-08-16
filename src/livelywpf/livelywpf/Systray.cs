@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Windows.Controls;
@@ -14,16 +15,15 @@ namespace livelywpf
 {
     class Systray : IDisposable
     {
-        private readonly System.Windows.Forms.NotifyIcon _notifyIcon = new System.Windows.Forms.NotifyIcon();
-        private System.Windows.Forms.ToolStripMenuItem pauseTrayBtn;
-        private System.Windows.Forms.ToolStripMenuItem customiseWallpaperBtn;
-        public System.Windows.Forms.ToolStripMenuItem UpdateTrayBtn { get; private set; }
+        private readonly NotifyIcon _notifyIcon = new NotifyIcon();
+        private ToolStripMenuItem pauseTrayBtn, customiseWallpaperBtn, updateTrayBtn;
+        private static readonly Random rnd = new Random();
         private bool disposedValue;
 
         public Systray(bool visibility = true)
         {
             //NotifyIcon Fix: https://stackoverflow.com/questions/28833702/wpf-notifyicon-crash-on-first-run-the-root-visual-of-a-visualtarget-cannot-hav/29116917
-            //Rarely I get this error "The root Visual of a VisualTarget cannot have a parent..", hard to pinpoint not knowing how to recreate the error.
+            //Error: "The root Visual of a VisualTarget cannot have a parent.."
             System.Windows.Controls.ToolTip tt = new System.Windows.Controls.ToolTip();
             tt.IsOpen = true;
             tt.IsOpen = false;
@@ -41,7 +41,7 @@ namespace livelywpf
 
         private void CreateContextMenu()
         {
-            _notifyIcon.ContextMenuStrip = new System.Windows.Forms.ContextMenuStrip
+            _notifyIcon.ContextMenuStrip = new ContextMenuStrip
             {
                 ForeColor = Color.AliceBlue,
                 Padding = new Padding(0),
@@ -55,11 +55,12 @@ namespace livelywpf
 
             _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextCloseWallpapers, null).Click += (s, e) => SetupDesktop.TerminateAllWallpapers();
 
-            pauseTrayBtn = new System.Windows.Forms.ToolStripMenuItem(Properties.Resources.TextPauseWallpapers, Properties.Icons.icons8_pause_52);
+            pauseTrayBtn = new ToolStripMenuItem(Properties.Resources.TextPauseWallpapers, Properties.Icons.icons8_pause_52);
             pauseTrayBtn.Click += (s, e) => ToggleWallpaperPlaybackState();
             _notifyIcon.ContextMenuStrip.Items.Add(pauseTrayBtn);
 
-            customiseWallpaperBtn = new System.Windows.Forms.ToolStripMenuItem(Properties.Resources.TextCustomiseWallpaper, null)
+            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextChangeWallpaper, null).Click += (s, e) => SetNextWallpaper();
+            customiseWallpaperBtn = new ToolStripMenuItem(Properties.Resources.TextCustomiseWallpaper, null)
             {
                 Enabled = false
             };
@@ -69,17 +70,17 @@ namespace livelywpf
             if (!Program.IsMSIX)
             {
                 _notifyIcon.ContextMenuStrip.Items.Add(new Helpers.CustomContextMenu.StripSeparatorCustom().stripSeparator);
-                UpdateTrayBtn = new System.Windows.Forms.ToolStripMenuItem(Properties.Resources.TextUpdateChecking, null)
+                updateTrayBtn = new ToolStripMenuItem(Properties.Resources.TextUpdateChecking, null)
                 {
                     Enabled = false
                 };
-                UpdateTrayBtn.Click += (s, e) => Program.ShowUpdateDialog();
-                _notifyIcon.ContextMenuStrip.Items.Add(UpdateTrayBtn);
+                updateTrayBtn.Click += (s, e) => Program.AppUpdateDialog(Helpers.AppUpdaterService.Instance.LastCheckUri, Helpers.AppUpdaterService.Instance.LastCheckChangelog);
+                _notifyIcon.ContextMenuStrip.Items.Add(updateTrayBtn);
             }
 
             _notifyIcon.ContextMenuStrip.Items.Add(new Helpers.CustomContextMenu.StripSeparatorCustom().stripSeparator);
             _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextSupport, Properties.Icons.icons8_heart_48).Click += (s, e) =>
-                            Helpers.LinkHandler.OpenBrowser("https://ko-fi.com/rocksdanister");                            
+                            Helpers.LinkHandler.OpenBrowser("https://ko-fi.com/rocksdanister");
             _notifyIcon.ContextMenuStrip.Items.Add(new Helpers.CustomContextMenu.StripSeparatorCustom().stripSeparator);
             _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TitleReportBug, Properties.Icons.icons8_bug_50).Click += (s, e) =>
                             Helpers.LinkHandler.OpenBrowser("https://github.com/rocksdanister/lively/wiki/Common-Problems");
@@ -89,7 +90,7 @@ namespace livelywpf
         }
 
         /// <summary>
-        /// Fix for when menu opens to the nearest screen instead of the screen in which cursor is located.
+        /// Fix for traymenu opening to the nearest screen instead of the screen in which cursor is located.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -140,6 +141,32 @@ namespace livelywpf
             _notifyIcon.ShowBalloonTip(timeout, title, msg, ToolTipIcon.None);
         }
 
+        public void SetUpdateMenu(AppUpdateStatus status)
+        {
+            switch (status)
+            {
+                case AppUpdateStatus.uptodate:
+                    updateTrayBtn.Enabled = false;
+                    updateTrayBtn.Text = Properties.Resources.TextUpdateUptodate;
+                    break;
+                case AppUpdateStatus.available:
+                    updateTrayBtn.Enabled = true;
+                    updateTrayBtn.Text = Properties.Resources.TextUpdateAvailable;
+                    break;
+                case AppUpdateStatus.invalid:
+                    updateTrayBtn.Enabled = false;
+                    updateTrayBtn.Text = ">_<";
+                    break;
+                case AppUpdateStatus.notchecked:
+                    updateTrayBtn.Enabled = false;
+                    break;
+                case AppUpdateStatus.error:
+                    updateTrayBtn.Enabled = true;
+                    updateTrayBtn.Text = Properties.Resources.TextupdateCheckFail;
+                    break;
+            }
+        }
+
         private void CustomiseWallpaper(object sender, EventArgs e)
         {
             var items = SetupDesktop.Wallpapers.FindAll(x => x.GetWallpaperData().LivelyPropertyPath != null);
@@ -168,6 +195,59 @@ namespace livelywpf
                         settingsWidget.Show();
                         break;
                 }
+            }
+        }
+
+        /// <summary>
+        /// Sets next library item as wallpaper.<para>
+        /// Selection is random if no wallpaper is running.</para>
+        /// </summary>
+        private void SetNextWallpaper()
+        {
+            if (Program.LibraryVM.LibraryItems.Count == 0)
+            {
+                return;
+            }
+
+            switch (Program.SettingsVM.Settings.WallpaperArrangement)
+            {
+                case WallpaperArrangement.per:
+                    {
+                        if (SetupDesktop.Wallpapers.Count == 0)
+                        {
+                            foreach (var screen in ScreenHelper.GetScreen())
+                            {
+                                SetupDesktop.SetWallpaper(Program.LibraryVM.LibraryItems[rnd.Next(Program.LibraryVM.LibraryItems.Count)], screen);
+                            }
+                        }
+                        else
+                        {
+                            var wallpapers = SetupDesktop.Wallpapers.ToList();
+                            foreach (var wp in wallpapers)
+                            {
+                                var index = Program.LibraryVM.LibraryItems.IndexOf(wp.GetWallpaperData());
+                                if (index != -1)
+                                {
+                                    index = (index + 1) != Program.LibraryVM.LibraryItems.Count ? (index + 1) : 0;
+                                    SetupDesktop.SetWallpaper(Program.LibraryVM.LibraryItems[index], wp.GetScreen());
+                                }
+                            }
+                        }
+                    }
+                    break;
+                case WallpaperArrangement.span:
+                case WallpaperArrangement.duplicate:
+                    {
+                        var wallpaper = SetupDesktop.Wallpapers.Count != 0 ?
+                             SetupDesktop.Wallpapers[0].GetWallpaperData() : Program.LibraryVM.LibraryItems[rnd.Next(Program.LibraryVM.LibraryItems.Count)];
+                        var index = Program.LibraryVM.LibraryItems.IndexOf(wallpaper);
+                        if (index != -1)
+                        {
+                            index = (index + 1) != Program.LibraryVM.LibraryItems.Count ? (index + 1) : 0;
+                            SetupDesktop.SetWallpaper(Program.LibraryVM.LibraryItems[index], ScreenHelper.GetPrimaryScreen());
+                        }
+                    }
+                    break;
             }
         }
 

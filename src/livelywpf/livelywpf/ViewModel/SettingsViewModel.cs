@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -42,27 +43,29 @@ namespace livelywpf
                 new LanguagesModel("Pусский(ru)", new string[]{"ru", "ru-BY", "ru-KZ", "ru-KG", "ru-MD", "ru-RU","ru-UA"}),
                 new LanguagesModel("Українська(uk)", new string[]{"uk", "uk-UA"}),
                 new LanguagesModel("Español(es)", new string[]{"es"}),
+                new LanguagesModel("Español(es-MX)", new string[]{"es-MX"}),
                 new LanguagesModel("Italian(it)", new string[]{"it", "it-IT", "it-SM","it-CH","it-VA"}),
                 new LanguagesModel("عربى(ar-AE)", new string[]{"ar"}),
-                new LanguagesModel("فارسی(fa-IR)", new string[]{ "fa-IR"}),
+                new LanguagesModel("فارسی(fa-IR)", new string[]{"fa-IR"}),
+                new LanguagesModel("עִברִית(he-IL)", new string[]{"he", "he-IL"}),
                 new LanguagesModel("Française(fr)", new string[]{"fr"}),
                 new LanguagesModel("Deutsch(de)", new string[]{"de"}),
                 new LanguagesModel("język polski(pl)", new string[]{"pl", "pl-PL"}),
                 new LanguagesModel("Português(pt)", new string[]{"pt"}),
                 new LanguagesModel("Português(pt-BR)", new string[]{"pt-BR"}),
                 new LanguagesModel("Filipino(fil)", new string[]{"fil", "fil-PH"}),
-                new LanguagesModel("Bahasa Indonesia(id)", new string[]{ "id", "id-ID"}),
+                new LanguagesModel("Bahasa Indonesia(id)", new string[]{"id", "id-ID"}),
                 new LanguagesModel("Magyar(hu)", new string[]{"hu", "hu-HU"}),
                 new LanguagesModel("Svenska(sv)", new string[]{"sv","sv-AX", "sv-FI", "sv-SE"}),
                 new LanguagesModel("Bahasa Melayu(ms)", new string[]{"ms", "ms-BN", "ms-MY"}),
                 new LanguagesModel("Nederlands(nl-NL)", new string[]{"nl-NL"}),
                 new LanguagesModel("Tiếng Việt(vi)", new string[]{"vi", "vi-VN"}),
-                new LanguagesModel("Català(ca)", new string[]{ "ca", "ca-AD", "ca-FR", "ca-IT", "ca-ES"}),
-                new LanguagesModel("Türkçe(tr)", new string[]{ "tr", "tr-CY", "tr-TR"}),
-                new LanguagesModel("Cрпски језик(sr)", new string[]{ "sr", "sr-Latn", "sr-Latn-BA", "sr-Latn-ME", "sr-Latn-RS", "sr-Latn-CS" }),
-                new LanguagesModel("Српска ћирилица(sr-Cyrl)", new string[]{ "sr-Cyrl", "sr-Cyrl-BA", "sr-Cyrl-ME", "sr-Cyrl-RS", "sr-Cyrl-CS" }),
-                new LanguagesModel("Ελληνικά(el)", new string[]{ "el", "el-GR", "el-CY" }),
-                new LanguagesModel("हिन्दी(hi)", new string[]{ "hi", "hi-IN"}),
+                new LanguagesModel("Català(ca)", new string[]{"ca", "ca-AD", "ca-FR", "ca-IT", "ca-ES"}),
+                new LanguagesModel("Türkçe(tr)", new string[]{"tr", "tr-CY", "tr-TR"}),
+                new LanguagesModel("Cрпски језик(sr)", new string[]{"sr", "sr-Latn", "sr-Latn-BA", "sr-Latn-ME", "sr-Latn-RS", "sr-Latn-CS"}),
+                new LanguagesModel("Српска ћирилица(sr-Cyrl)", new string[]{"sr-Cyrl", "sr-Cyrl-BA", "sr-Cyrl-ME", "sr-Cyrl-RS", "sr-Cyrl-CS"}),
+                new LanguagesModel("Ελληνικά(el)", new string[]{"el", "el-GR", "el-CY"}),
+                new LanguagesModel("हिन्दी(hi)", new string[]{"hi", "hi-IN"}),
             };
 
             var defaultLanguage = SearchSupportedLanguage(Settings.Language);
@@ -84,7 +87,7 @@ namespace livelywpf
 
             if (Program.IsMSIX)
             {
-                _= WindowsStartup.StartupWin10(Settings.Startup);
+                _ = WindowsStartup.StartupWin10(Settings.Startup);
                 IsStartup = Settings.Startup;
             }
             else
@@ -97,10 +100,10 @@ namespace livelywpf
                         Settings.SelectedDisplay.Bounds, Settings.SelectedDisplay.WorkingArea, DisplayIdentificationMode.deviceId) ?? ScreenHelper.GetPrimaryScreen();
 
             //Restrictions on wpf only version of Lively.
-            if (Settings.LivelyGUIRendering == LivelyGUIState.normal || Settings.GifCapture == true)
+            if (Settings.LivelyGUIRendering == LivelyGUIState.normal)
             {
                 Settings.LivelyGUIRendering = LivelyGUIState.lite;
-                Settings.GifCapture = false;
+                //Settings.GifCapture = false;
                 //UpdateConfigFile();
             }
 
@@ -133,6 +136,7 @@ namespace livelywpf
             SelectedWebBrowserIndex = (int)Settings.WebBrowser;
             SelectedAppThemeIndex = (int)Settings.ApplicationTheme;
             SelectedScreensaverWaitIndex = (int)Settings.ScreensaverIdleWait;
+            IsScreensaverLockOnResume = Settings.ScreensaverLockOnResume;
         }
 
         private SettingsModel _settings;
@@ -176,8 +180,8 @@ namespace livelywpf
                 OnPropertyChanged("IsStartup");
                 if (Program.IsMSIX)
                 {
-                    _= WindowsStartup.StartupWin10(_isStartup);
-                    if(Settings.Startup != _isStartup)
+                    _ = WindowsStartup.StartupWin10(_isStartup);
+                    if (Settings.Startup != _isStartup)
                     {
                         Settings.Startup = _isStartup;
                         UpdateConfigFile();
@@ -238,7 +242,7 @@ namespace livelywpf
                 _selectedTileSizeIndex = value;
                 OnPropertyChanged("SelectedTileSizeIndex");
 
-                if(Settings.TileSize != _selectedTileSizeIndex)
+                if (Settings.TileSize != _selectedTileSizeIndex)
                 {
                     Settings.TileSize = _selectedTileSizeIndex;
                     UpdateConfigFile();
@@ -380,7 +384,7 @@ namespace livelywpf
                 return _applicationRulesCommand;
             }
         }
-        
+
         private void ShowApplicationRulesWindow()
         {
             ApplicationRulesView app = new ApplicationRulesView();
@@ -404,7 +408,7 @@ namespace livelywpf
                 _selectedAppFullScreenIndex = value;
                 OnPropertyChanged("SelectedAppFullScreenIndex");
 
-                if(Settings.AppFullscreenPause != (AppRulesEnum)_selectedAppFullScreenIndex)
+                if (Settings.AppFullscreenPause != (AppRulesEnum)_selectedAppFullScreenIndex)
                 {
                     Settings.AppFullscreenPause = (AppRulesEnum)_selectedAppFullScreenIndex;
                     UpdateConfigFile();
@@ -424,7 +428,7 @@ namespace livelywpf
                 _selectedAppFocusIndex = value;
                 OnPropertyChanged("SelectedAppFocusIndex");
 
-                if(Settings.AppFocusPause != (AppRulesEnum)_selectedAppFocusIndex)
+                if (Settings.AppFocusPause != (AppRulesEnum)_selectedAppFocusIndex)
                 {
                     Settings.AppFocusPause = (AppRulesEnum)_selectedAppFocusIndex;
                     UpdateConfigFile();
@@ -444,7 +448,7 @@ namespace livelywpf
                 _selectedBatteryPowerIndex = value;
                 OnPropertyChanged("SelectedBatteryPowerIndex");
 
-                if(Settings.BatteryPause != (AppRulesEnum)_selectedBatteryPowerIndex)
+                if (Settings.BatteryPause != (AppRulesEnum)_selectedBatteryPowerIndex)
                 {
                     Settings.BatteryPause = (AppRulesEnum)_selectedBatteryPowerIndex;
                     UpdateConfigFile();
@@ -464,7 +468,7 @@ namespace livelywpf
                 _selectedDisplayPauseRuleIndex = value;
                 OnPropertyChanged("SelectedDisplayPauseRuleIndex");
 
-                if(Settings.DisplayPauseSettings != (DisplayPauseEnum)_selectedDisplayPauseRuleIndex)
+                if (Settings.DisplayPauseSettings != (DisplayPauseEnum)_selectedDisplayPauseRuleIndex)
                 {
                     Settings.DisplayPauseSettings = (DisplayPauseEnum)_selectedDisplayPauseRuleIndex;
                     UpdateConfigFile();
@@ -484,7 +488,7 @@ namespace livelywpf
                 _selectedPauseAlgorithmIndex = value;
                 OnPropertyChanged("SelectedPauseAlgorithmIndex");
 
-                if(Settings.ProcessMonitorAlgorithm != (ProcessMonitorAlgorithm)_selectedPauseAlgorithmIndex)
+                if (Settings.ProcessMonitorAlgorithm != (ProcessMonitorAlgorithm)_selectedPauseAlgorithmIndex)
                 {
                     Settings.ProcessMonitorAlgorithm = (ProcessMonitorAlgorithm)_selectedPauseAlgorithmIndex;
                     UpdateConfigFile();
@@ -529,7 +533,6 @@ namespace livelywpf
 
                 if (Settings.InputForward != (InputForwardMode)_selectedWallpaperInputMode)
                 {
-                    SetupDesktop.WallpaperInputForward((InputForwardMode)_selectedWallpaperInputMode);
                     Settings.InputForward = (InputForwardMode)_selectedWallpaperInputMode;
                     UpdateConfigFile();
                 }
@@ -617,10 +620,11 @@ namespace livelywpf
             {
                 _selectedWallpaperStreamQualityIndex = value;
                 OnPropertyChanged("SelectedWallpaperStreamQualityIndex");
-                if(Settings.StreamQuality != (StreamQualitySuggestion)_selectedWallpaperStreamQualityIndex)
+                if (Settings.StreamQuality != (StreamQualitySuggestion)_selectedWallpaperStreamQualityIndex)
                 {
                     Settings.StreamQuality = (StreamQualitySuggestion)_selectedWallpaperStreamQualityIndex;
                     UpdateConfigFile();
+
                     WallpaperRestart(WallpaperType.videostream);
                 }
             }
@@ -674,7 +678,7 @@ namespace livelywpf
             set
             {
                 _webDebuggingPort = value;
-                if(Settings.WebDebugPort != _webDebuggingPort)
+                if (Settings.WebDebugPort != _webDebuggingPort)
                 {
                     Settings.WebDebugPort = _webDebuggingPort;
                     UpdateConfigFile();
@@ -690,7 +694,7 @@ namespace livelywpf
             set
             {
                 _cefDiskCache = value;
-                if(Settings.CefDiskCache != _cefDiskCache)
+                if (Settings.CefDiskCache != _cefDiskCache)
                 {
                     Settings.CefDiskCache = _cefDiskCache;
                     UpdateConfigFile();
@@ -706,7 +710,7 @@ namespace livelywpf
             set
             {
                 _detectStreamWallpaper = value;
-                if(Settings.AutoDetectOnlineStreams != _detectStreamWallpaper)
+                if (Settings.AutoDetectOnlineStreams != _detectStreamWallpaper)
                 {
                     Settings.AutoDetectOnlineStreams = _detectStreamWallpaper;
                     UpdateConfigFile();
@@ -754,7 +758,7 @@ namespace livelywpf
             }
         }
 
-        #endregion audio
+        #endregion //audio
 
         #region system
 
@@ -795,7 +799,6 @@ namespace livelywpf
                 OnPropertyChanged("IsDesktopAutoWallpaper");
             }
         }
-
 
         private bool taskbarThemeInit = false;
         private int _selectedTaskbarThemeIndex;
@@ -841,8 +844,6 @@ namespace livelywpf
             }
         }
 
-        //avoiding initialization of singleton when possible..
-        private bool idleScreensaverInit = false;
         private int _selectedScreensaverWaitIndex;
         public int SelectedScreensaverWaitIndex
         {
@@ -872,23 +873,45 @@ namespace livelywpf
                 };
                 if (idleTime != 0)
                 {
-                    idleScreensaverInit = true;
-                    Helpers.ScreenSaverService.Instance.StartIdleTimer(idleTime);
+                    Helpers.ScreensaverService.Instance.StartIdleTimer(idleTime);
                 }
                 else
                 {
-                    if (idleScreensaverInit)
-                    {
-                        Helpers.ScreenSaverService.Instance.StopIdleTimer();
-                    }
+                    Helpers.ScreensaverService.Instance.StopIdleTimer();
                 }
                 //save the data..
                 if (Settings.ScreensaverIdleWait != (ScreensaverIdleTime)_selectedScreensaverWaitIndex)
                 {
+                    if (!Settings.ScreensaverOledWarning)
+                    {
+                        _ = Task.Run(() =>
+                               System.Windows.MessageBox.Show(Properties.Resources.DescOledScreensaverNotice,
+                                   Properties.Resources.TitleAppName, MessageBoxButton.OK, MessageBoxImage.Information));
+                        Settings.ScreensaverOledWarning = true;
+                    }
                     Settings.ScreensaverIdleWait = (ScreensaverIdleTime)_selectedScreensaverWaitIndex;
                     UpdateConfigFile();
                 }
                 OnPropertyChanged("SelectedScreensaverWaitIndex");
+            }
+        }
+
+        private bool _isScreensaverLockOnResume;
+        public bool IsScreensaverLockOnResume
+        {
+            get
+            {
+                return _isScreensaverLockOnResume;
+            }
+            set
+            {
+                _isScreensaverLockOnResume = value;
+                if (Settings.ScreensaverLockOnResume != _isScreensaverLockOnResume)
+                {
+                    Settings.ScreensaverLockOnResume = _isScreensaverLockOnResume;
+                    UpdateConfigFile();
+                }
+                OnPropertyChanged("IsScreensaverLockOnResume");
             }
         }
 
@@ -950,6 +973,52 @@ namespace livelywpf
             }
         }
 
+        public string SwitchBranchText => Program.IsTestBuild ? Properties.Resources.TextSwitchBranchOfficial : Properties.Resources.TextSwitchBranchDev;
+
+        private bool canSwitchBranchCommand = !Program.IsMSIX;
+        private RelayCommand _switchBranchCommand;
+        public RelayCommand SwitchBranchCommand
+        {
+            get
+            {
+                if (_switchBranchCommand == null)
+                {
+                    _switchBranchCommand = new RelayCommand(
+                            param => _ = BranchSwitchDialog(),
+                            param => canSwitchBranchCommand
+                        );
+                }
+                return _switchBranchCommand;
+            }
+        }
+
+        private async Task BranchSwitchDialog()
+        {
+            try
+            {
+                canSwitchBranchCommand = false;
+                SwitchBranchCommand.RaiseCanExecuteChanged();
+                (Uri, Version, string) item = await Helpers.AppUpdaterService.Instance.GetLatestRelease(!Program.IsTestBuild);
+                var msg = Program.IsTestBuild ?
+                    item.Item3 : $"!! {Properties.Resources.TitleWarning} !!\n{Properties.Resources.DescSwitchBranchBetaWarning}\n\n{Properties.Resources.TitleChangelog}\n{item.Item3}";
+                var updateWindow = new AppUpdaterView(item.Item1, msg)
+                {
+                    Owner = App.AppWindow,
+                    WindowStartupLocation = WindowStartupLocation.CenterOwner
+                };
+                updateWindow.ShowDialog();
+            }
+            catch (Exception e)
+            {
+                Logger.Error(e.ToString());
+            }
+            finally
+            {
+                canSwitchBranchCommand = true;
+                SwitchBranchCommand.RaiseCanExecuteChanged();
+            }
+        }
+
         #endregion //misc
 
         #region helper fns
@@ -963,7 +1032,7 @@ namespace livelywpf
                 LivelyMediaPlayer.libmpv => false, //depreciated
                 LivelyMediaPlayer.libvlcExt => File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "libVLCPlayer", "libVLCPlayer.exe")),
                 LivelyMediaPlayer.libmpvExt => File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "libMPVPlayer", "libMPVPlayer.exe")),
-                LivelyMediaPlayer.mpv => File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "mpv", "mpv.exe")),
+                LivelyMediaPlayer.mpv => File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "mpv", "mpv.exe")), 
                 LivelyMediaPlayer.vlc => File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "vlc", "vlc.exe")),
                 _ => false,
             };
@@ -1011,8 +1080,8 @@ namespace livelywpf
                 foreach (var item in originalWallpapers)
                 {
                     SetupDesktop.SetWallpaper(item.GetWallpaperData(), item.GetScreen());
-                    if (Settings.WallpaperArrangement == WallpaperArrangement.span ||
-                        Settings.WallpaperArrangement == WallpaperArrangement.duplicate)
+                    if (Settings.WallpaperArrangement == WallpaperArrangement.span
+                        || Settings.WallpaperArrangement == WallpaperArrangement.duplicate)
                     {
                         break;
                     }

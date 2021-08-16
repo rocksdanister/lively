@@ -13,6 +13,11 @@ namespace livelywpf.Core
     public interface IWallpaper
     {
         /// <summary>
+        /// Wallpaper loading complete status (includes LivelyProperties restoration.)
+        /// </summary>
+        /// <returns></returns>
+        bool IsLoaded();
+        /// <summary>
         /// Get lively wallpaper type.
         /// </summary>
         /// <returns></returns>
@@ -27,6 +32,11 @@ namespace livelywpf.Core
         /// </summary>
         /// <returns></returns>
         IntPtr GetHWND();
+        /// <summary>
+        /// Get handle to input window.
+        /// </summary>
+        /// <returns></returns>
+        IntPtr GetHWNDInput();
         /// <summary>
         /// Get process information.
         /// </summary>

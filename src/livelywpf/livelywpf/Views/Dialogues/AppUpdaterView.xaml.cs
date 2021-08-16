@@ -25,7 +25,7 @@ namespace livelywpf.Views
         public AppUpdaterView(Uri fileUri, string changelogText)
         {
             InitializeComponent();
-            if(fileUri != null)
+            if (fileUri != null)
             {
                 this.suggestedFileName = fileUri.Segments.Last();
                 this.fileUrl = fileUri;

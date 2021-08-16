@@ -20,11 +20,15 @@ namespace livelywpf.Core
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         readonly string[] classWhiteList = new string[]
         {
-            //startmeu, taskview, action center etc
+            //startmeu, taskview (win10), action center etc
             "Windows.UI.Core.CoreWindow",
-            // alt+tab screen (win10)
+            //alt+tab screen (win10)
             "MultitaskingViewFrame",
-            //taskbar
+            //taskview (win11)
+            "XamlExplorerHostIslandWindow",
+            //widget window (win11)
+            "WindowsDashboard",
+            //taskbar(s)
             "Shell_TrayWnd",
             "Shell_SecondaryTrayWnd",
             //systray notifyicon expanded popup
@@ -139,7 +143,7 @@ namespace livelywpf.Core
 
         private void ProcessMonitor(object sender, EventArgs e)
         {
-            if (ScreenSaverService.Instance.IsRunning)
+            if (ScreensaverService.Instance.IsRunning)
             {
                 PlayWallpapers();
                 SetWallpaperVolume(Program.SettingsVM.Settings.AudioVolumeGlobal);
@@ -178,13 +182,9 @@ namespace livelywpf.Core
                 switch (state)
                 {
                     case NativeMethods.QUERY_USER_NOTIFICATION_STATE.QUNS_NOT_PRESENT:
-                        break;
                     case NativeMethods.QUERY_USER_NOTIFICATION_STATE.QUNS_BUSY:
-                        break;
                     case NativeMethods.QUERY_USER_NOTIFICATION_STATE.QUNS_PRESENTATION_MODE:
-                        break;
                     case NativeMethods.QUERY_USER_NOTIFICATION_STATE.QUNS_ACCEPTS_NOTIFICATIONS:
-                        break;
                     case NativeMethods.QUERY_USER_NOTIFICATION_STATE.QUNS_QUIET_TIME:
                         break;
                     case NativeMethods.QUERY_USER_NOTIFICATION_STATE.QUNS_RUNNING_D3D_FULL_SCREEN:
@@ -384,16 +384,18 @@ namespace livelywpf.Core
             catch { }
         }
 
+        private string GetClassName(IntPtr hwnd)
+        {
+            const int maxChars = 256;
+            StringBuilder className = new StringBuilder(maxChars);
+            return NativeMethods.GetClassName((int)hwnd, className, maxChars) > 0 ? className.ToString() : string.Empty;
+        }
+
         private bool IsWhitelistedClass(IntPtr hwnd)
         {
             const int maxChars = 256;
             StringBuilder className = new StringBuilder(maxChars);
-            if (NativeMethods.GetClassName((int)hwnd, className, maxChars) > 0)
-            {
-                string cName = className.ToString();
-                return classWhiteList.Any(x => x.Equals(cName, StringComparison.Ordinal));
-            }
-            return false;
+            return NativeMethods.GetClassName((int)hwnd, className, maxChars) > 0 && classWhiteList.Any(x => x.Equals(className.ToString(), StringComparison.Ordinal));
         }
 
         private static void PauseWallpapers()

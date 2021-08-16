@@ -251,7 +251,7 @@ namespace livelywpf.Core
             return result;
         }
 
-        private static string GetDefaultDisplayDeviceId() => NativeMethods.GetSystemMetrics((int)NativeMethods.SystemMetric.SM_REMOTESESSION) == 0 ?
+        private static string GetDefaultDisplayDeviceId() => NativeMethods.GetSystemMetrics((int)NativeMethods.SystemMetric.SM_REMOTESESSION) != 0 ?
                     "\\\\?\\DISPLAY#REMOTEDISPLAY#" : "\\\\?\\DISPLAY#LOCALDISPLAY#";
 
         private static Rect GetVirtualScreenBounds()

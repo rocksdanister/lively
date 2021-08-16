@@ -1,12 +1,16 @@
-﻿using Microsoft.Web.WebView2.Core;
+﻿using livelywpf.Core.API;
+using Microsoft.Web.WebView2.Core;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Interop;
-//using Microsoft.Web.WebView2.Wpf;
+using System.Windows.Media.Imaging;
 
 namespace livelywpf
 {
@@ -20,58 +24,50 @@ namespace livelywpf
         private readonly string livelyPropertyPath;
         private readonly WallpaperType wallpaperType;
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+        public event EventHandler LivelyPropertiesInitialized;
 
         public WebView2Element(string path, WallpaperType type, string livelyPropertyPath)
         {
             InitializeComponent();
+            this.Loaded += WebView2Element_Loaded;
             this.htmlPath = path;
             this.livelyPropertyPath = livelyPropertyPath;
             this.wallpaperType = type;
-            InitWebView();
         }
 
         //TODO:
-        //link checking
-        //cross-origin request fix for disk files.
-        //custom cache path.
-        private async void InitWebView()
+        //cross-origin request soln when ready.
+        public async Task<IntPtr> InitializeWebView()
         {
-            try
-            {
-                await webView.EnsureCoreWebView2Async();
-                //only after await, null otherwise.
-                webView.CoreWebView2.ProcessFailed += CoreWebView2_ProcessFailed;
+            //Ref: https://docs.microsoft.com/en-us/microsoft-edge/webview2/concepts/user-data-folder
+            var env = await CoreWebView2Environment.CreateAsync(null, Path.Combine(Program.AppDataDir, "WebView2"));
+            await webView.EnsureCoreWebView2Async(env);
+            webView.CoreWebView2.ProcessFailed += CoreWebView2_ProcessFailed;
 
-                if (wallpaperType == WallpaperType.url)
+            if (wallpaperType == WallpaperType.url)
+            {
+                string tmp = null;
+                if (TryParseShadertoy(htmlPath, ref tmp))
                 {
-                    string ytVideoId = "test";
-                    if (htmlPath.Contains("shadertoy.com/view"))
-                    {
-                        webView.CoreWebView2.NavigateToString(ShadertoyURLtoEmbedLink(htmlPath));
-                    }
-                    else if ((ytVideoId = Helpers.StreamHelper.GetYouTubeVideoIdFromUrl(htmlPath)) != "")
-                    {
-                        //open fullscreen embed player with loop enabled.
-                        webView.CoreWebView2.Navigate("https://www.youtube.com/embed/" + ytVideoId +
-                            "?version=3&rel=0&autoplay=1&loop=1&controls=0&playlist=" + ytVideoId);
-                    }
-                    else
-                    {
-                        webView.CoreWebView2.Navigate(htmlPath);
-                    }
-                    Logger.Debug("YTVIDID:" + ytVideoId);
+                    webView.CoreWebView2.NavigateToString(tmp);
+                }
+                else if ((tmp = Helpers.StreamHelper.GetYouTubeVideoIdFromUrl(htmlPath)) != "")
+                {
+                    //open fullscreen embed player with loop enabled.
+                    webView.CoreWebView2.Navigate("https://www.youtube.com/embed/" + tmp +
+                        "?version=3&rel=0&autoplay=1&loop=1&controls=0&playlist=" + tmp);
                 }
                 else
                 {
                     webView.CoreWebView2.Navigate(htmlPath);
                 }
             }
-            catch (Exception e)
+            else
             {
-                Logger.Error("Webview2: fail=>" + e.ToString());
-                //To avoid blinding white color.
-                webView.Visibility = Visibility.Collapsed;
+                //webView.CoreWebView2.SetVirtualHostNameToFolderMapping("lively_test", Path.GetDirectoryName(htmlPath), CoreWebView2HostResourceAccessKind.Allow);
+                webView.CoreWebView2.Navigate(htmlPath);
             }
+            return webView.Handle;
         }
 
         private void WebView2Element_Loaded(object sender, RoutedEventArgs e)
@@ -83,54 +79,106 @@ namespace livelywpf
             this.ShowInTaskbar = true;
         }
 
-        private void webView_NavigationCompleted(object sender, CoreWebView2NavigationCompletedEventArgs e)
+        private async void webView_NavigationCompleted(object sender, Microsoft.Web.WebView2.Core.CoreWebView2NavigationCompletedEventArgs e)
         {
-            RestoreLivelyProperties(livelyPropertyPath);
+            await RestoreLivelyProperties(livelyPropertyPath);
+            await SetWallpaperPreviewImage();
+            LivelyPropertiesInitialized?.Invoke(this, EventArgs.Empty);
         }
 
-        private void CoreWebView2_ProcessFailed(object sender, CoreWebView2ProcessFailedEventArgs e)
+        private void CoreWebView2_ProcessFailed(object sender, Microsoft.Web.WebView2.Core.CoreWebView2ProcessFailedEventArgs e)
         {
-            Logger.Error("Webview2: fail=>" + e.ToString());
+            Logger.Error("Webview2 Fail: {0}", e.ToString());
         }
 
-        public void SendMessage(string msg)
+        private async Task SetWallpaperPreviewImage()
         {
-            if (msg.Equals("lively:reload", StringComparison.OrdinalIgnoreCase))
+            var base64String = await CaptureScreenshot(ScreenshotFormat.png);
+            var bi = Base64ToBitmapImage(base64String);
+            //setting as image, when browser hwnd minimized it will show.
+            picView.Source = bi;
+        }
+
+        public void MessageProcess(IpcMessage obj)
+        {
+            try
             {
-                try
+                switch (obj.Type)
                 {
-                    webView.Reload();
-                }
-                catch (Exception e)
-                {
-                    Logger.Error("Webview2: reload error=>" + e.Message);
+                    case MessageType.cmd_reload:
+                        webView?.Reload();
+                        break;
+                    case MessageType.lp_slider:
+                        var sl = (LivelySlider)obj;
+                        _ = ExecuteScriptFunctionAsync("livelyPropertyListener", sl.Name, sl.Value);
+                        break;
+                    case MessageType.lp_textbox:
+                        var tb = (LivelyTextBox)obj;
+                        _ = ExecuteScriptFunctionAsync("livelyPropertyListener", tb.Name, tb.Value);
+                        break;
+                    case MessageType.lp_dropdown:
+                        var dd = (LivelyDropdown)obj;
+                        _ = ExecuteScriptFunctionAsync("livelyPropertyListener", dd.Name, dd.Value);
+                        break;
+                    case MessageType.lp_cpicker:
+                        var cp = (LivelyColorPicker)obj;
+                        _ = ExecuteScriptFunctionAsync("livelyPropertyListener", cp.Name, cp.Value);
+                        break;
+                    case MessageType.lp_chekbox:
+                        var cb = (LivelyCheckbox)obj;
+                        _ = ExecuteScriptFunctionAsync("livelyPropertyListener", cb.Name, cb.Value);
+                        break;
+                    case MessageType.lp_fdropdown:
+                        var fd = (LivelyFolderDropdown)obj;
+                        var filePath = Path.Combine(Path.GetDirectoryName(htmlPath), fd.Value);
+                        if (File.Exists(filePath))
+                        {
+                            _ = ExecuteScriptFunctionAsync("livelyPropertyListener",
+                            fd.Name,
+                            fd.Value);
+                        }
+                        else
+                        {
+                            _ = ExecuteScriptFunctionAsync("livelyPropertyListener",
+                            fd.Name,
+                            null); //or custom msg
+                        }
+                        break;
+                    case MessageType.lp_button:
+                        var btn = (LivelyButton)obj;
+                        if (btn.IsDefault)
+                        {
+                            _ = RestoreLivelyProperties(livelyPropertyPath);
+                        }
+                        else
+                        {
+                            _ = ExecuteScriptFunctionAsync("livelyPropertyListener", btn.Name, true);
+                        }
+                        break;
+                    case MessageType.lsp_perfcntr:
+                        break;
+                    case MessageType.lsp_nowplaying:
+                        break;
                 }
             }
-            else if (msg.Contains("lively:customise", StringComparison.OrdinalIgnoreCase))
+            catch (Exception ex)
             {
-                try
-                {
-                    LivelyPropertiesMsg(msg);
-                }
-                catch (Exception e)
-                {
-                    Logger.Error("Webview2: lively property error=>" + e.Message);
-                }
+                Logger.Error("Error processing msg: {0}", ex.ToString());
             }
         }
+
+        public void MessageProcess(string msg) =>
+            MessageProcess(JsonConvert.DeserializeObject<IpcMessage>(msg, new JsonSerializerSettings() { Converters = { new IpcMessageConverter() } }));
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (webView != null)
+            try
             {
-                try
-                {
-                    webView.Dispose();
-                }
-                catch (Exception ex)
-                {
-                    Logger.Error("Webview2: Dispose error=>" + ex.Message);
-                }
+                webView?.Dispose();
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("Dispose Fail: {0}", ex.Message);
             }
         }
 
@@ -154,14 +202,14 @@ namespace livelywpf
             return await webView.ExecuteScriptAsync(script.ToString());
         }
 
-        private void RestoreLivelyProperties(string propertyPath)
+        private async Task RestoreLivelyProperties(string path)
         {
             try
             {
-                if (propertyPath == null)
+                if (path == null)
                     return;
 
-                foreach (var item in Cef.LivelyPropertiesJSON.LoadLivelyProperties(propertyPath))
+                foreach (var item in Cef.LivelyPropertiesJSON.LoadLivelyProperties(path))
                 {
                     string uiElementType = item.Value["type"].ToString();
                     if (!uiElementType.Equals("button", StringComparison.OrdinalIgnoreCase) && !uiElementType.Equals("label", StringComparison.OrdinalIgnoreCase))
@@ -169,152 +217,130 @@ namespace livelywpf
                         if (uiElementType.Equals("slider", StringComparison.OrdinalIgnoreCase) ||
                             uiElementType.Equals("dropdown", StringComparison.OrdinalIgnoreCase))
                         {
-                            _ = ExecuteScriptFunctionAsync("livelyPropertyListener", item.Key, (int)item.Value["value"]);
+                            await ExecuteScriptFunctionAsync("livelyPropertyListener", item.Key, (int)item.Value["value"]);
                         }
                         else if (uiElementType.Equals("folderDropdown", StringComparison.OrdinalIgnoreCase))
                         {
                             var filePath = Path.Combine(Path.GetDirectoryName(htmlPath), item.Value["folder"].ToString(), item.Value["value"].ToString());
                             if (File.Exists(filePath))
                             {
-                                _ = ExecuteScriptFunctionAsync("livelyPropertyListener",
+                                await ExecuteScriptFunctionAsync("livelyPropertyListener",
                                 item.Key,
                                 Path.Combine(item.Value["folder"].ToString(), item.Value["value"].ToString()));
                             }
                             else
                             {
-                                _ = ExecuteScriptFunctionAsync("livelyPropertyListener",
+                                await ExecuteScriptFunctionAsync("livelyPropertyListener",
                                 item.Key,
                                 null); //or custom msg
                             }
                         }
                         else if (uiElementType.Equals("checkbox", StringComparison.OrdinalIgnoreCase))
                         {
-                            _ = ExecuteScriptFunctionAsync("livelyPropertyListener", item.Key, (bool)item.Value["value"]);
+                            await ExecuteScriptFunctionAsync("livelyPropertyListener", item.Key, (bool)item.Value["value"]);
                         }
                         else if (uiElementType.Equals("color", StringComparison.OrdinalIgnoreCase) || uiElementType.Equals("textbox", StringComparison.OrdinalIgnoreCase))
                         {
-                            _ = ExecuteScriptFunctionAsync("livelyPropertyListener", item.Key, (string)item.Value["value"]);
+                            await ExecuteScriptFunctionAsync("livelyPropertyListener", item.Key, (string)item.Value["value"]);
                         }
                     }
                 }
             }
             catch (Exception e)
             {
-                Logger.Error("Webview2: lively property restore error=>" + e.Message);
+                Logger.Error("Property restore error: {0}", e.Message);
             }
         }
 
-        /// <summary>
-        /// Re-using cefsharp ipc msg code.
-        /// ref: https://github.com/rocksdanister/lively/wiki/Web-Guide-IV-:-Interaction
-        /// </summary>
-        /// <param name="val"></param>
-        private void LivelyPropertiesMsg(string val)
-        {
-            var msg = val.Split(' ');
-            if (msg.Length < 4)
-                return;
 
-            string uiElementType = msg[1];
-            if (uiElementType.Equals("dropdown", StringComparison.OrdinalIgnoreCase))
-            {
-                if (int.TryParse(msg[3], out int value))
-                {
-                    _ = ExecuteScriptFunctionAsync("livelyPropertyListener", msg[2], value);
-                }
-            }
-            else if (uiElementType.Equals("slider", StringComparison.OrdinalIgnoreCase))
-            {
-                //MessageBox.Show(msg[3] + " " + double.TryParse(msg[3], out double test));
-                if (double.TryParse(msg[3], out double value))
-                {
-                    _ = ExecuteScriptFunctionAsync("livelyPropertyListener", msg[2], value);
-                }
-            }
-            else if (uiElementType.Equals("folderDropdown", StringComparison.OrdinalIgnoreCase))
-            {
-                var sIndex = val.IndexOf("\"") + 1;
-                var lIndex = val.LastIndexOf("\"") - 1;
-                var filePath = Path.Combine(Path.GetDirectoryName(htmlPath), val.Substring(sIndex, lIndex - sIndex + 1));
-                if (File.Exists(filePath))
-                {
-                    _ = ExecuteScriptFunctionAsync("livelyPropertyListener",
-                    msg[2],
-                    val.Substring(sIndex, lIndex - sIndex + 1));
-                }
-                else
-                {
-                    _ = ExecuteScriptFunctionAsync("livelyPropertyListener",
-                    msg[2],
-                    null); //or custom msg
-                }
-            }
-            else if (uiElementType.Equals("checkbox", StringComparison.OrdinalIgnoreCase))
-            {
-                if (bool.TryParse(msg[3], out bool value))
-                {
-                    _ = ExecuteScriptFunctionAsync("livelyPropertyListener", msg[2], value);
-                }
-            }
-            else if (uiElementType.Equals("color", StringComparison.OrdinalIgnoreCase))
-            {
-                _ = ExecuteScriptFunctionAsync("livelyPropertyListener", msg[2], msg[3]);
-            }
-            else if (uiElementType.Equals("textbox", StringComparison.OrdinalIgnoreCase))
-            {
-                var sIndex = val.IndexOf("\"") + 1;
-                var lIndex = val.LastIndexOf("\"") - 1;
-                _ = ExecuteScriptFunctionAsync("livelyPropertyListener",
-                    msg[2],
-                    val.Substring(sIndex, lIndex - sIndex + 1));
-            }
-            else if (uiElementType.Equals("button", StringComparison.OrdinalIgnoreCase))
-            {
-                if (msg[2].Equals("lively_default_settings_reload", StringComparison.OrdinalIgnoreCase))
-                {
-                    RestoreLivelyProperties(livelyPropertyPath);
-                }
-                else
-                {
-                    _ = ExecuteScriptFunctionAsync("livelyPropertyListener", msg[2], true);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Converts shadertoy.com url to embed link: fullscreen, muted audio.
-        /// </summary>
-        /// <param name="shadertoylink"></param>
-        /// <returns>shadertoy embed url</returns>
-        private string ShadertoyURLtoEmbedLink(string shadertoylink)
+        private bool TryParseShadertoy(string url, ref string html)
         {
-            Uri uri;
+            if (!url.Contains("shadertoy.com/view"))
+            {
+                return false;
+            }
+
             try
             {
-                uri = new Uri(shadertoylink);
+                _ = Helpers.LinkHandler.SanitizeUrl(url);
             }
-            catch (UriFormatException)
+            catch
             {
-                try
-                {
-                    //if user did not input https/http assume https connection.
-                    uri = new UriBuilder(shadertoylink)
-                    {
-                        Scheme = "https",
-                        Port = -1,
-                    }.Uri;
-                    shadertoylink = uri.ToString();
-                }
-                catch { }
+                return false;
             }
 
-            shadertoylink = shadertoylink.Replace("view/", "embed/");
-
-            string text = @"<!DOCTYPE html><html lang=""en"" dir=""ltr""> <head> <meta charset=""utf - 8""> 
+            url = url.Replace("view/", "embed/");
+            html = @"<!DOCTYPE html><html lang=""en"" dir=""ltr""> <head> <meta charset=""utf - 8""> 
                     <title>Digital Brain</title> <style media=""screen""> iframe { position: fixed; width: 100%; height: 100%; top: 0; right: 0; bottom: 0;
                     left: 0; z-index; -1; pointer-events: none;  } </style> </head> <body> <iframe width=""640"" height=""360"" frameborder=""0"" 
-                    src=" + shadertoylink + @"?gui=false&t=10&paused=false&muted=true""></iframe> </body></html>";
-            return text;
+                    src=" + url + @"?gui=false&t=10&paused=false&muted=true""></iframe> </body></html>";
+            return true;
+        }
+
+        //ref: https://github.com/MicrosoftEdge/WebView2Feedback/issues/529
+        public async Task CaptureScreenshot(string filePath, ScreenshotFormat format)
+        {
+            var base64String = await CaptureScreenshot(format);
+            var imageBytes = Convert.FromBase64String(base64String);
+            switch (format)
+            {
+                case ScreenshotFormat.jpeg:
+                case ScreenshotFormat.png:
+                case ScreenshotFormat.webp:
+                    {
+                        // Write to disk
+                        File.WriteAllBytes(filePath, imageBytes);
+                    }
+                    break;
+                case ScreenshotFormat.bmp:
+                    {
+                        // Convert byte[] to Image
+                        using MemoryStream ms = new MemoryStream(imageBytes, 0, imageBytes.Length);
+                        using Image image = Image.FromStream(ms, true);
+                        image.Save(filePath, ImageFormat.Bmp);
+                    }
+                    break;
+            }
+        }
+
+        private async Task<string> CaptureScreenshot(ScreenshotFormat format)
+        {
+            var param = format switch
+            {
+                ScreenshotFormat.jpeg => "{\"format\":\"jpeg\"}",
+                ScreenshotFormat.webp => "{\"format\":\"webp\"}",
+                ScreenshotFormat.png => "{}", // Default
+                ScreenshotFormat.bmp => "{}", // Not supported by cef
+                _ => "{}",
+            };
+            string r3 = await webView.CoreWebView2.CallDevToolsProtocolMethodAsync("Page.captureScreenshot", param);
+            JObject o3 = JObject.Parse(r3);
+            JToken data = o3["data"];
+            return data.ToString();
+        }
+
+        public Image Base64ToImage(string base64String)
+        {
+            // Convert base 64 string to byte[]
+            byte[] imageBytes = Convert.FromBase64String(base64String);
+            // Convert byte[] to Image
+            using MemoryStream ms = new MemoryStream(imageBytes, 0, imageBytes.Length);
+            Image image = Image.FromStream(ms, true);
+            return image;
+        }
+
+        public BitmapImage Base64ToBitmapImage(string base64String)
+        {
+            // Convert base 64 string to byte[]
+            byte[] imageBytes = Convert.FromBase64String(base64String);
+            BitmapImage bi = new BitmapImage();
+            using MemoryStream ms = new MemoryStream(imageBytes);
+            bi.BeginInit();
+            bi.CacheOption = BitmapCacheOption.OnLoad;
+            //bi.DecodePixelWidth = 1280;
+            bi.StreamSource = ms;
+            bi.EndInit();
+            return bi;
         }
 
         #endregion //helpers

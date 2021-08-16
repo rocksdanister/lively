@@ -30,7 +30,7 @@ namespace livelywpf.Core
             if (livelySubProcess != null)
                 return;
 
-            Logger.Info("Starting watchdog service..");
+            Logger.Info("Starting watchdog service...");
             ProcessStartInfo start = new ProcessStartInfo()
             {
                 Arguments = Process.GetCurrentProcess().Id.ToString(System.Globalization.CultureInfo.InvariantCulture),
@@ -50,19 +50,19 @@ namespace livelywpf.Core
             }
             catch (Exception e)
             {
-                Logger.Error("Failed to start watchdog service:" + e.Message);
+                Logger.Error("Failed to start watchdog service: " + e.Message);
             }
         }
 
         public void Add(int pid)
         {
-            Logger.Info("Adding program to watchdog:" + pid);
+            Logger.Info("Adding program to watchdog: " + pid);
             SendMessage("lively:add-pgm " + pid);
         }
 
         public void Remove(int pid)
         {
-            Logger.Info("Removing program to watchdog:" + pid);
+            Logger.Info("Removing program to watchdog: " + pid);
             SendMessage("lively:rmv-pgm " + pid);
         }
 
@@ -80,7 +80,7 @@ namespace livelywpf.Core
             }
             catch (Exception e)
             {
-                Logger.Error("Failed to communicate with watchdog service:" + e.Message);
+                Logger.Error("Failed to communicate with watchdog service: " + e.Message);
             }
         }
     }

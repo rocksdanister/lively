@@ -5,6 +5,7 @@ using System.Text;
 using System.IO;
 using Windows.ApplicationModel;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace livelywpf
 {
@@ -100,7 +101,7 @@ namespace livelywpf
         public async static Task StartupWin10(bool setStartup = false)
         {
             // Pass the task ID you specified in the appxmanifest file
-            StartupTask startupTask = await StartupTask.GetAsync("AppStartup"); 
+            StartupTask startupTask = await StartupTask.GetAsync("AppStartup");
             switch (startupTask.State)
             {
                 case StartupTaskState.Disabled:
@@ -115,14 +116,13 @@ namespace livelywpf
                     break;
                 case StartupTaskState.DisabledByUser:
                     // Task is disabled and user must enable it manually.
-                    if(setStartup)
+                    if (setStartup)
                     {
-                        await Helpers.DialogService.ShowConfirmationDialog(
-                            Properties.Resources.TextError,
-                            "You have disabled this app's ability to run " +
+                        await Task.Run(() => MessageBox.Show("You have disabled this app's ability to run " +
                             "as soon as you sign in, but if you change your mind, " +
-                            "you can enable this in the Startup tab in Task Manager.",
-                            Properties.Resources.TextOK);
+                            "you can enable this in the Startup tab in Task Manager.", 
+                            Properties.Resources.TextError, 
+                            MessageBoxButton.OK));
                     }
                     break;
                 case StartupTaskState.DisabledByPolicy:
@@ -130,7 +130,7 @@ namespace livelywpf
                     break;
                 case StartupTaskState.Enabled:
                     Logger.Info("Startup is enabled.");
-                    if(!setStartup)
+                    if (!setStartup)
                     {
                         startupTask.Disable();
                         Logger.Info("Request to disable startup");

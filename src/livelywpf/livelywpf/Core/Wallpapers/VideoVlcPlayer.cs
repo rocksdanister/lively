@@ -93,6 +93,11 @@ namespace livelywpf.Core
             return hwnd;
         }
 
+        public IntPtr GetHWNDInput()
+        {
+            return IntPtr.Zero;
+        }
+
         public string GetLivelyPropertyCopyPath()
         {
             return null;
@@ -352,6 +357,11 @@ namespace livelywpf.Core
         public void SendMessage(IpcMessage obj)
         {
             //todo
+        }
+
+        public bool IsLoaded()
+        {
+            return GetHWND() != IntPtr.Zero;
         }
     }
 }

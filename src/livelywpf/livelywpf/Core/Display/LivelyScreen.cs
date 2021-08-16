@@ -6,8 +6,8 @@ using System.Linq;
 namespace livelywpf.Core
 {
     /// <summary>
-    /// Currently very similar to winform screen class, the idea is to abstract it...
-    /// So that in the future when I remove/change winform library only this and ScreenHelper.cs file require modification.
+    /// Abstraction of display device. <para>
+    /// </para>Check <seealso cref="ScreenHelper"/> for more information.
     /// </summary>
     [Serializable]
     public class LivelyScreen : IEquatable<LivelyScreen>
@@ -22,7 +22,7 @@ namespace livelywpf.Core
         [JsonConstructor]
         public LivelyScreen(string DeviceId, string DeviceName, int BitsPerPixel, Rectangle Bounds, Rectangle WorkingArea)
         {
-            //Backward compatibility: lively < v1.1.9 does not have DeviceId.
+            //Backward compatibility: lively < v1.1.9 does not have DeviceId since it is using winform screenclass.
             this.DeviceId = DeviceId ?? (ScreenHelper.GetScreen().FirstOrDefault(x => x.Bounds == Bounds)?.DeviceId); 
             this.DeviceName = DeviceName;
             this.DeviceNumber = ScreenHelper.GetScreenNumber(DeviceName);
@@ -53,7 +53,7 @@ namespace livelywpf.Core
 
         public LivelyScreen(System.Windows.Forms.Screen display)
         {
-            //Screen class does not have DeviceId.
+            //Winform screenclass does not have DeviceId.
             this.DeviceId = ScreenHelper.GetScreen().FirstOrDefault(x => x.Bounds == Bounds)?.DeviceId;
             this.DeviceName = display.DeviceName;
             this.DeviceNumber = ScreenHelper.GetScreenNumber(display.DeviceName);

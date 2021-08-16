@@ -13,7 +13,7 @@
     <Grid>
         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center">
             <TextBlock Text="{x:Static p:Resources.TitleTaskbarTheme}" FontSize="20"/>
-            <ComboBox Margin="0,5,0,0" MinWidth="150" SelectedIndex="{Binding SelectedTaskbarThemeIndex, Mode=TwoWay}">
+            <ComboBox Margin="0,5,0,0" MinWidth="150" SelectedIndex="{Binding SelectedTaskbarThemeIndex, Mode=TwoWay}" >
                 <ComboBoxItem Content="{x:Static p:Resources.TextOff}"/>
                 <ComboBoxItem Content="{x:Static p:Resources.TextTaskbarThemeClear}"/>
                 <ComboBoxItem Content="{x:Static p:Resources.TextTaskbarThemeBlur}"/>

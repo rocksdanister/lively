@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Windows;
-
+using System.Linq;
+using livelywpf.Helpers;
+using System.Windows.Threading;
 
 namespace livelywpf
 {
@@ -15,11 +16,13 @@ namespace livelywpf
 
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private static readonly string uniqueAppName = "LIVELY:DESKTOPWALLPAPERSYSTEM";
+        private static readonly string pipeServerName = uniqueAppName + Environment.UserName;
         private static readonly Mutex mutex = new Mutex(false, uniqueAppName);
         //Loaded from Settings.json (User configurable.)
         public static string WallpaperDir { get; set; }
         public static string AppDataDir { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Lively Wallpaper");
         public static bool IsMSIX { get; } = new DesktopBridge.Helpers().IsRunningAsUwp();
+        public static bool IsTestBuild { get; } = false;
 
         //todo: use singleton or something instead?
         public static SettingsViewModel SettingsVM { get; set; }
@@ -42,15 +45,7 @@ namespace livelywpf
                     {
                         //skipping first element (application path.)
                         var args = Environment.GetCommandLineArgs().Skip(1).ToArray();
-                        if (args.Length != 0)
-                        {
-                            Helpers.PipeClient.SendMessage(uniqueAppName, args);
-                        }
-                        else
-                        {
-                            //user opened application.
-                            Helpers.PipeClient.SendMessage(uniqueAppName, new string[] { "--showApp", "true" });
-                        }
+                        Helpers.PipeClient.SendMessage(pipeServerName, args.Length != 0 ? args : new string[] { "--showApp", "true" });
                     }
                     catch
                     {
@@ -74,12 +69,12 @@ namespace livelywpf
 
             try
             {
-                var server = new Helpers.PipeServer(uniqueAppName);
+                var server = new Helpers.PipeServer(pipeServerName);
                 server.MessageReceived += Server_MessageReceived1;
             }
-            catch
+            catch (Exception e)
             {
-                //todo
+                MessageBox.Show($"Failed to create ipc server: {e.Message}", "Lively Wallpaper");
             }
 
             try
@@ -106,8 +101,10 @@ namespace livelywpf
         private static void App_Startup(object sender, StartupEventArgs e)
         {
             sysTray = new Systray(SettingsVM.IsSysTrayIconVisible);
-            ApplicationThemeChange(Program.SettingsVM.Settings.ApplicationTheme);
-            AppUpdater();
+
+            AppUpdaterService.Instance.UpdateChecked += AppUpdateChecked;
+            _ = AppUpdaterService.Instance.CheckUpdate();
+            AppUpdaterService.Instance.Start();
 
             if (Program.SettingsVM.Settings.IsFirstRun)
             {
@@ -148,83 +145,37 @@ namespace livelywpf
 
         #region app updater
 
-        private static Uri gitUpdateUri;
-        private static string gitUpdatChangelog;
-        private static bool showUpdateDialog = false;
-        private static async void AppUpdater()
+        //number of times to notify user about update.
+        private static int updateNotifyAmt = 1;
+        private static bool updateNotify = false;
+
+        private static void AppUpdateChecked(object sender, AppUpdaterEventArgs e)
         {
-            if (IsMSIX)
-                return;
-
-            try
+            _ = Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
             {
-                var userName = "rocksdanister";
-                var repositoryName = "lively";
-                var fetchDelay = 45000;
-
-                var gitRelease = await UpdaterGithub.GetLatestRelease(repositoryName, userName, fetchDelay);
-                var result = UpdaterGithub.CompareAssemblyVersion(gitRelease);
-                if (result > 0)
+                if (e.UpdateStatus == AppUpdateStatus.available)
                 {
-                    try
+                    if (updateNotifyAmt > 0)
                     {
-                        //download asset format: lively_setup_x86_full_vXXXX.exe, XXXX - 4 digit version no.
-                        var gitUrl = await UpdaterGithub.GetAssetUrl("lively_setup_x86_wpf_full", 
-                            gitRelease, repositoryName, userName);
-
-                        //changelog text
-                        StringBuilder sb = new StringBuilder(gitRelease.Body);
-                        //formatting git text.
-                        sb.Replace("#", "").Replace("\t", "  ");
-                        gitUpdatChangelog = sb.ToString();
-                        sb.Clear();
-                        gitUpdateUri = new Uri(gitUrl);
-
-                        if (App.AppWindow.IsVisible)
-                        {
-                            ShowUpdateDialog();
-                        }
-                        else
-                        {
-                            showUpdateDialog = true;
-                            sysTray.ShowBalloonNotification(4000,
-                                Properties.Resources.TitleAppName,
-                                Properties.Resources.DescriptionUpdateAvailable);
-                        }
+                        updateNotifyAmt--;
+                        updateNotify = true;
+                        sysTray.ShowBalloonNotification(4000,
+                            Properties.Resources.TitleAppName,
+                            Properties.Resources.DescriptionUpdateAvailable);
                     }
-                    catch (Exception e)
-                    {
-                        Logger.Error("Error retriving asseturl for update: " + e.Message);
-                    }
-                    sysTray.UpdateTrayBtn.Text = Properties.Resources.TextUpdateAvailable;
-                    sysTray.UpdateTrayBtn.Enabled = true;
                 }
-                else if (result < 0)
-                {
-                    //beta release.
-                    sysTray.UpdateTrayBtn.Text = ">_<'";
-                }
-                else
-                {
-                    //up-to-date
-                    sysTray.UpdateTrayBtn.Text = Properties.Resources.TextUpdateUptodate;
-                }
-            }
-            catch (Exception e)
-            {
-                Logger.Error("Git update check fail:" + e.Message);
-                sysTray.UpdateTrayBtn.Text = Properties.Resources.TextupdateCheckFail;
-                sysTray.UpdateTrayBtn.Enabled = true;
-            }
+                sysTray.SetUpdateMenu(e.UpdateStatus);
+                Logger.Info($"AppUpdate status: {e.UpdateStatus}");
+            }));
         }
 
         private static Views.AppUpdaterView updateWindow = null;
-        public static void ShowUpdateDialog()
+        public static void AppUpdateDialog(Uri uri, string changelog)
         {
-            showUpdateDialog = false;
+            updateNotify = false;
             if (updateWindow == null)
             {
-                updateWindow = new Views.AppUpdaterView(gitUpdateUri, gitUpdatChangelog);
+                updateWindow = new Views.AppUpdaterView(uri, changelog);
                 if (App.AppWindow.IsVisible)
                 {
                     updateWindow.Owner = App.AppWindow;
@@ -273,9 +224,9 @@ namespace livelywpf
             App.AppWindow?.Show();
             App.AppWindow.WindowState = App.AppWindow?.WindowState != WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
 
-            if (showUpdateDialog)
+            if (updateNotify)
             {
-                ShowUpdateDialog();
+                AppUpdateDialog(AppUpdaterService.Instance.LastCheckUri, AppUpdaterService.Instance.LastCheckChangelog);
             }
         }
 

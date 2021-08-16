@@ -45,6 +45,7 @@ namespace livelywpf.Core
         private readonly string livelyPropertyCopyPath;
         private static int globalCount;
         private readonly int uniqueId;
+        private bool isLoaded;
 
         public VideoMpvPlayer(string path, LibraryModel model, LivelyScreen display,
             WallpaperScaler scaler = WallpaperScaler.fill, StreamQualitySuggestion streamQuality = StreamQualitySuggestion.Highest, bool onScreenControl = false)
@@ -111,8 +112,10 @@ namespace livelywpf.Core
             ipcServerName = "mpvsocket" + Path.GetRandomFileName();
 
             StringBuilder cmdArgs = new StringBuilder();
-            //startup volume will be 0.
+            //startup volume will be 0
             cmdArgs.Append("--volume=0 ");
+            //disable window decorations
+            //cmdArgs.Append("--no-border ");
             //alternative: --loop-file=inf
             cmdArgs.Append("--loop-file ");
             //do not close after media end
@@ -121,12 +124,14 @@ namespace livelywpf.Core
             cmdArgs.Append("--geometry=-9999:0 ");
             //always create gui window
             cmdArgs.Append("--force-window=yes ");
-            //Don't move the window when clicking
+            //don't move the window when clicking
             cmdArgs.Append("--no-window-dragging ");
-            //Don't hide cursor after sometime.
+            //don't hide cursor after sometime.
             cmdArgs.Append("--cursor-autohide=no ");
             //allow windows screensaver
             cmdArgs.Append("--stop-screensaver=no ");
+            //disable mpv default (built-in) key bindings
+            cmdArgs.Append("--input-default-bindings=no ");
             //video stretch algorithm
             cmdArgs.Append(scalerArg + " ");
             //on-screen-controller visibility
@@ -186,6 +191,11 @@ namespace livelywpf.Core
             return hwnd;
         }
 
+        public IntPtr GetHWNDInput()
+        {
+            return IntPtr.Zero;
+        }
+
         public string GetLivelyPropertyCopyPath()
         {
             return livelyPropertyCopyPath;
@@ -238,7 +248,7 @@ namespace livelywpf.Core
 
         public void SetVolume(int volume)
         {
-            SendMessage("{\"command\":[\"set_property\",\"volume\"," + volume + "]}\n");
+            SendMessage("{\"command\":[\"set_property\",\"volume\"," + JsonConvert.SerializeObject(volume) + "]}\n");
         }
 
         public void SetPlaybackPos(float pos, PlaybackPosType type)
@@ -305,7 +315,7 @@ namespace livelywpf.Core
                     //time elapsed..
                     tcs.SetResult(false);
                 };
-                //request mpv to take screenshot..
+                //request mpv to take screenshot (default is jpg)..
                 SendMessage("{\"command\":[\"screenshot\",\"video\"]}\n");
                 await tcs.Task;
             }
@@ -383,6 +393,10 @@ namespace livelywpf.Core
                         });
                         //Restore livelyproperties.json settings
                         SetPlaybackProperties(livelyPropertiesData);
+                        //Wait a bit for properties to apply.
+                        //Todo: check ipc mgs and do this properly.
+                        await Task.Delay(69);
+                        isLoaded = true;
                     }
                 }
                 catch (OperationCanceledException e1)
@@ -420,7 +434,7 @@ namespace livelywpf.Core
         {
             if (!string.IsNullOrEmpty(e.Data))
             {
-                Logger.Info("Mpv{0}:{1}", uniqueId, e.Data);
+                Logger.Info($"Mpv{uniqueId}: {e.Data}");
             }
         }
 
@@ -623,18 +637,18 @@ namespace livelywpf.Core
             catch { }
         }
 
+        public bool IsLoaded()
+        {
+            return isLoaded;
+        }
+
         #region mpv util
 
-        /*                                      - 1 iteration -
+        /*                                      - BenchmarkDotNet -
          *|        Method     |     Mean |     Error |    StdDev |  Gen 0   | Gen 1 | Gen 2 | Allocated |
          *|------------------:|---------:|----------:|----------:|---------:|------:|------:|----------:|
          *| GetMpvCommand     | 1.493 us | 0.0085 us | 0.0080 us | 0.5741   |     - |     - |      2 KB |
          *| GetMpvCommandStrb | 1.551 us | 0.0148 us | 0.0138 us | 1.7033   |     - |     - |      5 KB |
-         *                                      - 100 iteration -
-         *|        Method     |     Mean |   Error   |  StdDev   |    Gen 0 |Gen 1  | Gen 2 | Allocated |
-         *|------------------:|---------:|----------:|----------:|---------:|------:|------:|----------:|
-         *| GetMpvCommand     | 188.4 μs | 0.51 μs   | 0.48 μs   |  61.2793 |   -   |     - |    188 KB |
-         *| GetMpvCommandStrb | 163.2 μs | 2.15 μs   | 2.01 μs   | 101.8066 |   -   |     - |    312 KB |
          */
 
         /// <summary>

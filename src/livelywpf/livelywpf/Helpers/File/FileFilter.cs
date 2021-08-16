@@ -40,7 +40,7 @@ namespace livelywpf.Helpers
                 WallpaperType.unityaudio => "Unity",
                 WallpaperType.bizhawk => "Bizhawk",
                 WallpaperType.web => Properties.Resources.TextWebsite,
-                WallpaperType.webaudio => Properties.Resources.TextWebsite,
+                WallpaperType.webaudio => Properties.Resources.TitleAudio,
                 WallpaperType.url => Properties.Resources.TextWebsite,
                 WallpaperType.video => Properties.Resources.TextVideo,
                 WallpaperType.gif => "Gif",

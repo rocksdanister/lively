@@ -117,8 +117,27 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="DescCommunity" xml:space="preserve">
+    <value>Online discussion forum</value>
+  </data>
+  <data name="DescDocumentation" xml:space="preserve">
+    <value>API documentation and help</value>
+  </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
     <value>Incompatible program found, taskbar theming disabled.</value>
+  </data>
+  <data name="DescOfficialWebpage" xml:space="preserve">
+    <value>Official webpage of Lively Wallpaper</value>
+  </data>
+  <data name="DescOledScreensaverNotice" xml:space="preserve">
+    <value>Most modern LCD and LED displays do not suffer from burn-in issue and therefore any wallpaper can be used as screensaver.
+
+For OLED, Plasma or CRT displays which are susceptibe to burn-in it is advised to use wallpaper with regular motion and an overall dark theme which is supposed to mitigate burn-in but this feature is untested and its effectiveness cannot be guaranteed.
+
+The main purpose of Lively's screensavers is to add another layer of customization to your pc, use screensavers as burn-in protection at your own risk!</value>
+  </data>
+  <data name="DescReportBug" xml:space="preserve">
+    <value>Report a problem with the software</value>
   </data>
   <data name="DescriptionAddWallpaper" xml:space="preserve">
     <value>Select a file or specify a website url to set as a wallpaper.</value>
@@ -172,6 +191,13 @@ Only continue if this application comes from a trusted source.</value>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
     <value>Your Windows N/KN version will require the download of additional codecs to support video playback in wallpapers.</value>
+  </data>
+  <data name="DescSupperDev" xml:space="preserve">
+    <value>Show support by buying the developer coffee</value>
+  </data>
+  <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
+    <value>You are about to change to beta (developer) build of Lively.
+Updates will be frequent and may contain bugs!</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
     <value>Failed to update; try downloading the installer from:
@@ -239,6 +265,9 @@ If still not working, close &amp; start Lively again/restart windows.
   </data>
   <data name="TextCancel" xml:space="preserve">
     <value>Cancel</value>
+  </data>
+  <data name="TextChangeWallpaper" xml:space="preserve">
+    <value>Change Wallpapers</value>
   </data>
   <data name="TextClose" xml:space="preserve">
     <value>Close</value>
@@ -310,13 +339,16 @@ If still not working, close &amp; start Lively again/restart windows.
     <value>Help translate</value>
   </data>
   <data name="TextHours" xml:space="preserve">
-    <value>hours</value>
+    <value>hour(s)</value>
   </data>
   <data name="TextInstall" xml:space="preserve">
     <value>Install</value>
   </data>
   <data name="TextKeyboard" xml:space="preserve">
     <value>Keyboard</value>
+  </data>
+  <data name="TextLastChecked" xml:space="preserve">
+    <value>Last checked</value>
   </data>
   <data name="TextLearnMore" xml:space="preserve">
     <value>Learn more</value>
@@ -325,7 +357,7 @@ If still not working, close &amp; start Lively again/restart windows.
     <value>License</value>
   </data>
   <data name="TextMinutes" xml:space="preserve">
-    <value>minutes</value>
+    <value>minute(s)</value>
   </data>
   <data name="TextmoreInfo" xml:space="preserve">
     <value>Information</value>
@@ -362,6 +394,9 @@ If still not working, close &amp; start Lively again/restart windows.
   </data>
   <data name="TextPauseAlgoAllProcess" xml:space="preserve">
     <value>All Process</value>
+  </data>
+  <data name="TextPauseAlgoExclusiveMode" xml:space="preserve">
+    <value>Direct3D</value>
   </data>
   <data name="TextPauseAlgoForegroundProcess" xml:space="preserve">
     <value>Foreground Process</value>
@@ -422,6 +457,12 @@ If still not working, close &amp; start Lively again/restart windows.
   </data>
   <data name="TextSupport" xml:space="preserve">
     <value>Support</value>
+  </data>
+  <data name="TextSwitchBranchDev" xml:space="preserve">
+    <value>Switch to beta (Dev channel)</value>
+  </data>
+  <data name="TextSwitchBranchOfficial" xml:space="preserve">
+    <value>Switch to stable (Default channel)</value>
   </data>
   <data name="TextTags" xml:space="preserve">
     <value>Tags</value>
@@ -595,6 +636,9 @@ When ready navigate to http://localhost:portnumber to access developer console.<
   <data name="TipStreamWallpaperVideoQuality" xml:space="preserve">
     <value>Select the desired video quality for online streams.</value>
   </data>
+  <data name="TipSwitchSoftwareBranch" xml:space="preserve">
+    <value>Change software release from beta to stable or vice versa.</value>
+  </data>
   <data name="TipTaskbarTheme" xml:space="preserve">
     <value>Change system taskbar appearance.</value>
   </data>
@@ -676,6 +720,9 @@ Edge is the built in webview of windows 10.</value>
   </data>
   <data name="TitleBrowserDebuggingPort" xml:space="preserve">
     <value>Debugging Port</value>
+  </data>
+  <data name="TitleChangelog" xml:space="preserve">
+    <value>Changelog</value>
   </data>
   <data name="TitleCommunity" xml:space="preserve">
     <value>Community</value>
@@ -761,6 +808,9 @@ Edge is the built in webview of windows 10.</value>
   <data name="TitleScreensaver" xml:space="preserve">
     <value>Screensaver</value>
   </data>
+  <data name="TitleScreensaverLockOnResume" xml:space="preserve">
+    <value>On resume, display logon screen</value>
+  </data>
   <data name="TitleSelectFile" xml:space="preserve">
     <value>Select File</value>
   </data>
@@ -797,6 +847,9 @@ Edge is the built in webview of windows 10.</value>
   </data>
   <data name="TitleUIMode" xml:space="preserve">
     <value>User Interface</value>
+  </data>
+  <data name="TitleUpdates" xml:space="preserve">
+    <value>Updates</value>
   </data>
   <data name="TitleVideo" xml:space="preserve">
     <value>Video</value>

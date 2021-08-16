@@ -6,6 +6,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Threading;
 
@@ -71,13 +72,17 @@ namespace livelywpf.Views
             this.Closed += vm.OnWindowClosed;
             wallpaperHwnd = wp.GetHWND();
             wallpaperType = wp.GetWallpaperType();
+
             InitializeComponent();
+            PreviewKeyDown += (s, e) => { if (e.Key == Key.Escape) this.Close(); };
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             //attach wp hwnd to border ui element.
             WindowOperations.SetProgramToFramework(this, wallpaperHwnd, PreviewBorder);
+            //refocus window to allow keyboard input.
+            this.Activate();
             WallpaperAttached?.Invoke(this, null);
         }
 
@@ -157,7 +162,6 @@ namespace livelywpf.Views
                (int)previewPanelSize.Height);
             ThumbnailUpdated?.Invoke(this, thumbFilePath);
 
-            /*
             //preview clip (animated gif file).
             if (Program.SettingsVM.Settings.GifCapture && wallpaperType != WallpaperType.picture)
             {
@@ -175,10 +179,7 @@ namespace livelywpf.Views
                        new Progress<int>(percent => CaptureProgress?.Invoke(this, percent - 1)));
                 PreviewUpdated?.Invoke(this, previewFilePath);
             }
-            */
-
             _processing = false;
-            taskbarItemInfo.ProgressValue = 100f;
             CaptureProgress?.Invoke(this, 100);
         }
 

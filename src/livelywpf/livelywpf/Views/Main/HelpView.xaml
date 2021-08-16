@@ -10,64 +10,86 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="{x:Static p:Resources.TitleHelp}">
 
+    <Page.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+    </Page.Resources>
+
     <Grid>
-        <ScrollViewer>
+        <!-- minwidth is required, otherwise the performance tab is empty on first time select?.-->
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
             <StackPanel>
-                <StackPanel>
-                    <TextBlock Text="{x:Static p:Resources.TitleHelp}" FontWeight="Bold" Margin="10, 10, 0, 0"/>
-                    <Image Source="pack://application:,,,/Resources/icons8-helping-hand-96.png" Width="96" Height="96" Margin="10, 15, 0, 0" HorizontalAlignment="Left"/>
-                </StackPanel>
+                <TextBlock Text="Help" FontSize="12" FontWeight="Bold" Margin="10"/>
 
-                <StackPanel Margin="10, 10, 0, 0">
-                    <TextBlock FontSize="15" Text="{x:Static p:Resources.TextWebsite}" />
-                    <TextBlock>           
-                <Hyperlink Foreground="{DynamicResource SystemControlHighlightAltListAccentHighBrush}" NavigateUri="https://rocksdanister.github.io/lively/" RequestNavigate="Hyperlink_RequestNavigate">
-                    https://rocksdanister.github.io/lively/
-                </Hyperlink>
-                    </TextBlock>
-
-                    <TextBlock FontSize="15" Text="{x:Static p:Resources.TitleDocumentation}" Margin="0, 10, 0, 0"/>
-                    <TextBlock>           
-                <Hyperlink Foreground="{DynamicResource SystemControlHighlightAltListAccentHighBrush}" NavigateUri="https://github.com/rocksdanister/lively/wiki" RequestNavigate="Hyperlink_RequestNavigate">
-                    https://github.com/rocksdanister/lively/wiki
-                </Hyperlink>
-                    </TextBlock>
-
-                    <TextBlock FontSize="15" Text="{x:Static p:Resources.TitleCommunity}" Margin="0, 10, 0, 0"/>
-                    <TextBlock ToolTip="https://www.reddit.com/r/LivelyWallpaper/">           
-                <Hyperlink Foreground="{DynamicResource SystemControlHighlightAltListAccentHighBrush}" NavigateUri="https://www.reddit.com/r/LivelyWallpaper/" RequestNavigate="Hyperlink_RequestNavigate">
-                    Reddit
-                </Hyperlink>
-                    </TextBlock>
-                    <!--"
-                <TextBlock ToolTip="https://discord.gg/TwwtBCm">           
-                <Hyperlink Foreground="Gray" NavigateUri="https://discord.gg/TwwtBCm" RequestNavigate="Hyperlink_RequestNavigate">
-                    Discord
-                </Hyperlink>
-                </TextBlock>
-                -->
-                    <TextBlock ToolTip="https://www.deviantart.com/livelywallpaper/gallery/">           
-                <Hyperlink Foreground="{DynamicResource SystemControlHighlightAltListAccentHighBrush}" NavigateUri="https://www.deviantart.com/livelywallpaper/gallery/" RequestNavigate="Hyperlink_RequestNavigate">
-                    DeviantArt
-                </Hyperlink>
-                    </TextBlock>
-
-                    <TextBlock FontSize="15" Text="{x:Static p:Resources.TitleSourceCode}" Margin="0, 10, 0, 0"/>
-                    <TextBlock>           
-                    <Hyperlink ToolTip="https://github.com/rocksdanister/lively/" Foreground="{DynamicResource SystemControlHighlightAltListAccentHighBrush}" NavigateUri="https://github.com/rocksdanister/lively/" RequestNavigate="Hyperlink_RequestNavigate">
-                        <TextBlock Text="{x:Static p:Resources.TextGitHubStar}"/>
-                    </Hyperlink>
-                    </TextBlock>
-
-                    <StackPanel x:Name="storePanel">
-                        <TextBlock FontSize="15" Text="{x:Static p:Resources.TitleStore}" Margin="0, 10, 0, 0"/>
-                        <TextBlock ToolTip="Windows Store">          
-                        <Hyperlink Foreground="{DynamicResource SystemControlHighlightAltListAccentHighBrush}" NavigateUri="ms-windows-store://review/?ProductId=9NTM2QC6QWS7" RequestNavigate="Hyperlink_RequestNavigate">
-                            <TextBlock Text="{x:Static p:Resources.TextStoreReview}"/>
-                        </Hyperlink>
-                    </TextBlock>
+                <Button BorderThickness="0" Background="Transparent" MinWidth="450" MaxWidth="450" MinHeight="50" HorizontalContentAlignment="Left" Command="{Binding WebsiteCommand}">
+                    <StackPanel Orientation="Horizontal">
+                        <ui:FontIcon Glyph="&#xEB41;" Margin="10" FontSize="25" Foreground="{DynamicResource SystemControlHighlightAltListAccentHighBrush}"/>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" MaxWidth="450">
+                            <TextBlock Text="{x:Static p:Resources.TextWebsite}"/>
+                            <TextBlock Text="{x:Static p:Resources.DescOfficialWebpage}" FontSize="12" TextWrapping="Wrap" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}"/>
+                        </StackPanel>
                     </StackPanel>
-                </StackPanel>
+                </Button>
+
+                <Button BorderThickness="0" Background="Transparent" MinWidth="450" MaxWidth="450" MinHeight="50" HorizontalContentAlignment="Left" Command="{Binding DocumentationCommand}">
+                    <StackPanel Orientation="Horizontal">
+                        <ui:FontIcon Glyph="&#xE736;" Margin="10" FontSize="25" Foreground="{DynamicResource SystemControlHighlightAltListAccentHighBrush}"/>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" MaxWidth="450">
+                            <TextBlock Text="{x:Static p:Resources.TitleDocumentation}"/>
+                            <TextBlock Text="{x:Static p:Resources.DescDocumentation}" FontSize="12" TextWrapping="Wrap" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Button>
+
+                <Button BorderThickness="0" Background="Transparent" MinWidth="450" MaxWidth="450" MinHeight="50" HorizontalContentAlignment="Left" Command="{Binding CommunityCommand}">
+                    <StackPanel Orientation="Horizontal">
+                        <ui:FontIcon Glyph="&#xEC27;" Margin="10" FontSize="25" Foreground="{DynamicResource SystemControlHighlightAltListAccentHighBrush}"/>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" MaxWidth="450">
+                            <TextBlock Text="{x:Static p:Resources.TitleCommunity}"/>
+                            <TextBlock Text="{x:Static p:Resources.DescCommunity}" FontSize="12" TextWrapping="Wrap" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Button>
+
+                <Button BorderThickness="0" Background="Transparent" MinWidth="450" MaxWidth="450" MinHeight="50" HorizontalContentAlignment="Left" Command="{Binding BugReportCommand}">
+                    <StackPanel Orientation="Horizontal">
+                        <ui:FontIcon Glyph="&#xEBE8;" Margin="10" FontSize="25" Foreground="{DynamicResource SystemControlHighlightAltListAccentHighBrush}"/>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" MaxWidth="450">
+                            <TextBlock Text="{x:Static p:Resources.TitleReportBug}"/>
+                            <TextBlock Text="{x:Static p:Resources.DescReportBug}" FontSize="12" TextWrapping="Wrap" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Button>
+
+                <Button BorderThickness="0" Background="Transparent" MinWidth="450" MaxWidth="450" MinHeight="50" HorizontalContentAlignment="Left" Command="{Binding SourceCodeCommand}">
+                    <StackPanel Orientation="Horizontal">
+                        <ui:FontIcon Glyph="&#xE716;" Margin="10" FontSize="25" Foreground="{DynamicResource SystemControlHighlightAltListAccentHighBrush}"/>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" MaxWidth="450">
+                            <TextBlock Text="{x:Static p:Resources.TitleSourceCode}"/>
+                            <TextBlock Text="{x:Static p:Resources.TextGitHubStar}" FontSize="12" TextWrapping="Wrap" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Button>
+
+                <Button BorderThickness="0" Background="Transparent" MinWidth="450" MaxWidth="450" MinHeight="50" HorizontalContentAlignment="Left" Command="{Binding SupportCommand}">
+                    <StackPanel Orientation="Horizontal">
+                        <ui:FontIcon Glyph="&#xEB68;" Margin="10" FontSize="25" Foreground="{DynamicResource SystemControlHighlightAltListAccentHighBrush}"/>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" MaxWidth="450">
+                            <TextBlock Text="{x:Static p:Resources.TextSupport}"/>
+                            <TextBlock Text="{x:Static p:Resources.DescSupperDev}" FontSize="12" TextWrapping="Wrap" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Button>
+
+                <Button BorderThickness="0" Background="Transparent" MinWidth="450" MaxWidth="450" MinHeight="50" HorizontalContentAlignment="Left" Command="{Binding MSReviewCommand}" 
+                        Visibility="{Binding Path=IsWinStore, Converter={StaticResource BoolToVis}}">
+                    <StackPanel Orientation="Horizontal">
+                        <ui:FontIcon Glyph="&#xEB51;" Margin="10" FontSize="25" Foreground="{DynamicResource SystemControlHighlightAltListAccentHighBrush}"/>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" MaxWidth="450">
+                            <TextBlock Text="{x:Static p:Resources.TitleStore}"/>
+                            <TextBlock Text="{x:Static p:Resources.TextStoreReview}" FontSize="12" TextWrapping="Wrap" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Button>
             </StackPanel>
         </ScrollViewer>
     </Grid>

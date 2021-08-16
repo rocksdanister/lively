@@ -19,6 +19,7 @@ namespace livelywpf
         {
             get => _appWindow ??= new MainWindow();
         }
+
         protected override void OnStartup(StartupEventArgs e)
         {
             try
@@ -85,11 +86,15 @@ namespace livelywpf
 
             #endregion //vm init
 
-            Application.Current.MainWindow = AppWindow;
-            WndProcMsgWindow wndproc = new WndProcMsgWindow();
-            wndproc.Show();
+            //Have to show window, otherwise issue: https://github.com/rocksdanister/lively/issues/540
+            //Only problem with wpf/store version of Lively.
+            //WndProc message is also handled here.
+            InitializeMainWindowHidden();
+            //Not used, See above.
+            //WndProcMsgWindow wndproc = new WndProcMsgWindow();
+            //wndproc.Show();
             //Package app otherwise bugging out when initialized in settings vm.
-            SetupDesktop.WallpaperInputForward(Program.SettingsVM.Settings.InputForward);
+            SetupDesktop.SetupInputHooks();
             if (Program.SettingsVM.Settings.IsRestart)
             {
                 Program.SettingsVM.Settings.IsRestart = false;
@@ -97,6 +102,21 @@ namespace livelywpf
                 AppWindow?.Show();
             }
             base.OnStartup(e);
+        }
+
+        private void InitializeMainWindowHidden()
+        {
+            var minWidth = AppWindow.MinWidth;
+            var minHeight = AppWindow.MinHeight;
+            var width = AppWindow.Width;
+            var height = AppWindow.Height;
+            AppWindow.MinHeight = AppWindow.MinWidth = AppWindow.Width = AppWindow.Height = 1;
+            AppWindow?.Show();
+            AppWindow?.Hide();
+            AppWindow.MinWidth = minWidth;
+            AppWindow.MinHeight = minHeight;
+            AppWindow.Width = width;
+            AppWindow.Height = height;
         }
 
         /// <summary>
@@ -115,7 +135,7 @@ namespace livelywpf
 
                 foreach (var item in sortedBundles)
                 {
-                    if (int.TryParse(Path.GetFileNameWithoutExtension(item), out int val))
+                    if(int.TryParse(Path.GetFileNameWithoutExtension(item), out int val))
                     {
                         if (val > maxExtracted)
                         {

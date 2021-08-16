@@ -39,7 +39,7 @@
             </ListView.View>
         </ListView>
         <StackPanel Grid.Row="1" Margin="10, 0, 10, 0" VerticalAlignment="Bottom">
-            <CheckBox Content="{x:Static p:Resources.TextCreatePreview}" IsEnabled="False" IsChecked="{Binding Path=GifCheck, Mode=TwoWay}" Margin="0, 5, 0, 0"/>
+            <CheckBox Content="{x:Static p:Resources.TextCreatePreview}" IsChecked="{Binding Path=GifCheck, Mode=TwoWay}" Margin="0, 5, 0, 0"/>
             <CheckBox Visibility="Collapsed" Content="{x:Static p:Resources.TitleSkipConfirm}" IsChecked="{Binding Path=AutoImportCheck, Mode=TwoWay}" Margin="0, 5, 0, 0"/>
             <ToggleButton Margin="10" HorizontalAlignment="Center" MinWidth="150" MinHeight="25" Content="{Binding BtnText}" Command="{Binding BtnCommand}"/>
             <ui:ProgressBar Value="{Binding Progress, UpdateSourceTrigger=PropertyChanged}" Minimum="0" Maximum="100" Margin="5"/>

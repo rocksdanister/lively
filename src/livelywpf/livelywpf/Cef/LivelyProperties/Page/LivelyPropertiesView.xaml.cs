@@ -61,7 +61,7 @@ namespace livelywpf.Cef
             catch (Exception e)
             {
                 Logger.Error(e.ToString());
-                _= Task.Run(() => (MessageBox.Show(e.ToString(), Properties.Resources.TitleAppName)));
+                _ = Task.Run(() => (MessageBox.Show(e.ToString(), Properties.Resources.TitleAppName)));
             }
         }
 
@@ -174,14 +174,16 @@ namespace livelywpf.Cef
                     {
                         Name = item.Key,
                         Fill = (SolidColorBrush)new BrushConverter().ConvertFromString(item.Value["value"].ToString()),
-                        Stroke = new SolidColorBrush(Color.FromRgb(200, 200 ,200)),
-                        StrokeThickness = 0.5,
+                        Stroke = new SolidColorBrush(Color.FromRgb(200, 200, 200)),
+                        StrokeThickness = 0.25,
                         MinWidth = maxWidth,
                         MaxWidth = maxWidth,
                         MaxHeight = 15,
                         MinHeight = 15,
                         HorizontalAlignment = HorizontalAlignment.Left,
-                        Margin = margin
+                        Margin = margin,
+                        RadiusX = 5,
+                        RadiusY = 5,
                     };
                     pb.MouseUp += Rectangle_Click;
                     obj = pb;
@@ -208,7 +210,7 @@ namespace livelywpf.Cef
                     {
                         Name = item.Key,
                         MaxWidth = maxWidth,
-                        MinWidth = maxWidth,       
+                        MinWidth = maxWidth,
                         HorizontalAlignment = HorizontalAlignment.Left,
                         Margin = margin,
                         SelectedIndex = (int)item.Value["value"],
@@ -218,7 +220,7 @@ namespace livelywpf.Cef
                     {
                         cmbBox.Items.Add(dropItem);
                     }
-                    cmbBox.SelectionChanged += XamlCmbBox_SelectionChanged;             
+                    cmbBox.SelectionChanged += XamlCmbBox_SelectionChanged;
                     obj = cmbBox;
                 }
                 else if (uiElementType.Equals("folderDropdown", StringComparison.OrdinalIgnoreCase))
@@ -279,6 +281,21 @@ namespace livelywpf.Cef
                 }
 
                 AddUIElement(obj);
+                //File browser for folderdropdown.
+                if (uiElementType.Equals("folderDropdown", StringComparison.OrdinalIgnoreCase))
+                {
+                    var folderDropDownOpenFileBtn = new Button()
+                    {
+                        Tag = item.Key,
+                        Content = Properties.Resources.TextBrowse,
+                        HorizontalAlignment = HorizontalAlignment.Left,
+                        MaxWidth = maxWidth,
+                        MinWidth = maxWidth,
+                        Margin = new Thickness(0, 5, 0, 0),
+                    };
+                    folderDropDownOpenFileBtn.Click += FolderDropDownOpenFileBtn_Click;
+                    AddUIElement(folderDropDownOpenFileBtn);
+                }
             }
 
             //restore-default btn.
@@ -345,6 +362,76 @@ namespace livelywpf.Cef
             catch { }
         }
 
+        private void FolderDropDownOpenFileBtn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var btn = sender as Button;
+                //find the folderdropdown control..
+                ComboBox cmbBox = null;
+                foreach (object element in uiPanel.Children)
+                {
+                    if ((element as FrameworkElement).Name == btn.Tag.ToString())
+                    {
+                        cmbBox = (ComboBox)element;
+                        break;
+                    }
+                }
+                if (cmbBox == null)
+                {
+                    return;
+                }
+
+                foreach (var lp in livelyPropertyCopyData)
+                {
+                    string uiElementType = lp.Value["type"].ToString();
+                    if (uiElementType.Equals("folderDropdown", StringComparison.OrdinalIgnoreCase) && btn.Tag.ToString() == lp.Key)
+                    {
+                        Microsoft.Win32.OpenFileDialog openFileDlg = new Microsoft.Win32.OpenFileDialog
+                        {
+                            Title = Properties.Resources.TitleAddWallpaper,
+                            CheckFileExists = true,
+                            CheckPathExists = true,
+                            Multiselect = true,
+                        };
+                        openFileDlg.Filter = $"{lp.Value["text"]}|{lp.Value["filter"].ToString().Replace("|", ";")}";
+                        if (openFileDlg.ShowDialog() == true)
+                        {
+                            var destFiles = new List<string>();
+                            var destFolder = Path.Combine(Path.GetDirectoryName(wallpaperData.FilePath), lp.Value["folder"].ToString());
+                            //copy the new file over..
+                            foreach (var srcFile in openFileDlg.FileNames)
+                            {
+                                var destFile = Path.Combine(destFolder, Path.GetFileName(srcFile));
+                                if (!File.Exists(destFile))
+                                {
+                                    File.Copy(srcFile, destFile);
+                                }
+                                else
+                                {
+                                    destFile = FileOperations.NextAvailableFilename(destFile);
+                                    File.Copy(srcFile, destFile);
+                                }
+                                destFiles.Add(Path.GetFileName(destFile));
+                            }
+                            destFiles.Sort();
+                            //add copied files to bottom of dropdown..
+                            foreach (var file in destFiles)
+                            {
+                                cmbBox.Items.Add(file);
+                            }
+                        }
+                        break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.ToString());
+                _ = MessageBox.Show(ex.Message, Properties.Resources.TextError);
+            }
+        }
+
         private static string[] GetFileNames(string path, string searchPattern, SearchOption searchOption)
         {
             string[] searchPatterns = searchPattern.Split('|');
@@ -371,6 +458,37 @@ namespace livelywpf.Cef
             {
                 var item = (Rectangle)sender;
                 var fill = ((SolidColorBrush)item.Fill).Color;
+                var cpicker = new Views.ColorDialog(new Color() { A = fill.A, R = fill.R, G = fill.G, B = fill.B });
+                if (App.AppWindow.IsVisible)
+                {
+                    cpicker.Owner = App.AppWindow;
+                    cpicker.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                }
+                else
+                {
+                    //spawn close to cursor..
+                    var cursor = System.Windows.Forms.Cursor.Position;
+                    var screen = ScreenHelper.GetScreenFromPoint(cursor);
+                    cpicker.WindowStartupLocation = WindowStartupLocation.Manual;
+                    cpicker.Top = (cursor.Y + cpicker.Height) > screen.Bounds.Bottom ? cursor.Y - cpicker.Height : cursor.Y;
+                    cpicker.Left = (cursor.X + cpicker.Width) > screen.Bounds.Right ? cursor.X - cpicker.Width : cursor.X;
+                }
+
+                if (cpicker.ShowDialog() == true)
+                {
+                    item.Fill = new SolidColorBrush(Color.FromArgb(cpicker.CurrentColor.A, cpicker.CurrentColor.R, cpicker.CurrentColor.G, cpicker.CurrentColor.B));
+                    WallpaperSendMsg(new LivelyColorPicker() { Name = item.Name, Value = ToHexValue(cpicker.CurrentColor) });
+                    livelyPropertyCopyData[item.Name]["value"] = ToHexValue(cpicker.CurrentColor);
+                    UpdatePropertyFile();
+                }
+            }
+            catch { }
+
+            /*
+            try
+            {
+                var item = (Rectangle)sender;
+                var fill = ((SolidColorBrush)item.Fill).Color;
                 //wpf has no native color picker :(
                 var colorDialog = new System.Windows.Forms.ColorDialog()
                 {
@@ -387,10 +505,17 @@ namespace livelywpf.Cef
                 }
             }
             catch { }
-
+            */
         }
 
         private static string ToHexValue(System.Drawing.Color color)
+        {
+            return "#" + color.R.ToString("X2") +
+                         color.G.ToString("X2") +
+                         color.B.ToString("X2");
+        }
+
+        private static string ToHexValue(System.Windows.Media.Color color)
         {
             return "#" + color.R.ToString("X2") +
                          color.G.ToString("X2") +
@@ -471,7 +596,7 @@ namespace livelywpf.Cef
                     break;
                 case WallpaperArrangement.span:
                 case WallpaperArrangement.duplicate:
-                    SetupDesktop.SendMessageWallpaper(msg);
+                    SetupDesktop.SendMessageWallpaper(wallpaperData, msg);
                     break;
             }
         }
