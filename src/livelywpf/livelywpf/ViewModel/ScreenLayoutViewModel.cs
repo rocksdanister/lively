@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using livelywpf.Model;
@@ -194,6 +195,11 @@ namespace livelywpf
         #endregion //commands
 
         #region helpers
+
+        public void OnWindowClosing(object sender, CancelEventArgs e)
+        {
+            SetupDesktop.WallpaperChanged -= SetupDesktop_WallpaperChanged;
+        }
 
         private void UpdateLayout()
         {

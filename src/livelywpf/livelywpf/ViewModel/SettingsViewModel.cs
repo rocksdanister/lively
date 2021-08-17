@@ -967,7 +967,7 @@ namespace livelywpf
 
         public string SwitchBranchText => Program.IsTestBuild ? Properties.Resources.TextSwitchBranchOfficial : Properties.Resources.TextSwitchBranchDev;
 
-        private bool canSwitchBranchCommand = true;
+        private bool canSwitchBranchCommand = !Program.IsMSIX;
         private RelayCommand _switchBranchCommand;
         public RelayCommand SwitchBranchCommand
         {

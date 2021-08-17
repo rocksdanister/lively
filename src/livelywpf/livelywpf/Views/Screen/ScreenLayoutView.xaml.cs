@@ -14,7 +14,9 @@ namespace livelywpf.Views
         public ScreenLayoutView()
         {
             InitializeComponent();
-            this.DataContext = new ScreenLayoutViewModel();
+            var vm = new ScreenLayoutViewModel();
+            this.DataContext = vm;
+            this.Closing += vm.OnWindowClosing;
             CreateLabelWindows();
 
             ScreenHelper.DisplayUpdated += ScreenHelper_DisplayUpdated;

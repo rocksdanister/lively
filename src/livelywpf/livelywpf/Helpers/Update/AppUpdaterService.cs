@@ -67,7 +67,10 @@ namespace livelywpf.Helpers
         /// </summary>
         public void Start()
         {
-            retryTimer.Start();
+            if (!Program.IsMSIX)
+            {
+                retryTimer.Start();
+            }
         }
 
         /// <summary>

@@ -22,7 +22,7 @@ namespace livelywpf
         }
 
         public string AppVersionText => "v" + Assembly.GetExecutingAssembly().GetName().Version.ToString() +
-                (Program.IsTestBuild ? "b" : (Program.IsMSIX ? Properties.Resources.TitleStore : string.Empty));
+                (Program.IsTestBuild ? "b" : (Program.IsMSIX ? " " + Properties.Resources.TitleStore : string.Empty));
 
         private string _updateStatusText;
         public string UpdateStatusText
