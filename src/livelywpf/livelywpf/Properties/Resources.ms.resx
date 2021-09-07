@@ -854,49 +854,49 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
     <value>Ketahui lebih lanjut</value>
   </data>
   <data name="TextChangeWallpaper" xml:space="preserve">
-    <value>Change Wallpapers</value>
+    <value>Tukar Wallpaper</value>
   </data>
   <data name="TextLastChecked" xml:space="preserve">
-    <value>Last checked</value>
+    <value>Semakan terakhir</value>
   </data>
   <data name="TitleUpdates" xml:space="preserve">
-    <value>Updates</value>
+    <value>Kemaskini</value>
   </data>
   <data name="DescCommunity" xml:space="preserve">
-    <value>Online discussion forum</value>
+    <value>Forum perbincangan atas talian</value>
   </data>
   <data name="DescDocumentation" xml:space="preserve">
-    <value>API documentation and help</value>
+    <value>Dokumentasi API dan bantuan</value>
   </data>
   <data name="DescOfficialWebpage" xml:space="preserve">
-    <value>Official webpage of Lively Wallpaper</value>
+    <value>Laman web rasmi Lively Wallpaper</value>
   </data>
   <data name="DescReportBug" xml:space="preserve">
-    <value>Report a problem with the software</value>
+    <value>Laporkan masalah dengan software</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
-    <value>Show support by buying the developer coffee</value>
+    <value>Tunjukkan sokongan anda dengan membelikan developer secawan kopi</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
-    <value>You are about to change to beta (developer) build of Lively.
-Updates will be frequent and may contain bugs!</value>
+    <value>Anda akan menukar versi binaan Lively ke beta.
+      Kemaskini akan menjadi lebih kerap, tetapi mungkin mengandungi pepijat!</value>
   </data>
   <data name="TextSwitchBranchDev" xml:space="preserve">
-    <value>Switch to beta (Dev channel)</value>
+    <value>Tukar ke beta (Saluran Developer)</value>
   </data>
   <data name="TextSwitchBranchOfficial" xml:space="preserve">
-    <value>Switch to stable (Default channel)</value>
+    <value>Tukar ke stabil (Saluran Piawai)</value>
   </data>
   <data name="TipSwitchSoftwareBranch" xml:space="preserve">
-    <value>Change software release from beta to stable or vice versa.</value>
+    <value>Tukar binaan software daripade beta ke piawai dan sebaliknya</value>
   </data>
   <data name="TitleChangelog" xml:space="preserve">
-    <value>Changelog</value>
+    <value>Log Perubahan</value>
   </data>
   <data name="TextPauseAlgoExclusiveMode" xml:space="preserve">
     <value>Direct3D</value>
   </data>
   <data name="TitleScreensaverLockOnResume" xml:space="preserve">
-    <value>On resume, display logon screen</value>
+    <value>Paparkan skrin log masuk ketika menyambung semula</value>
   </data>    
 </root>

@@ -96,6 +96,9 @@ namespace livelywpf
                 IsStartup = WindowsStartup.CheckStartupRegistry() == 1 || WindowsStartup.CheckStartupRegistry() == -1;
             }
 
+            //Restrictions..
+            Settings.LockScreenAutoWallpaper = false;
+
             Settings.SelectedDisplay = ScreenHelper.GetScreen(Settings.SelectedDisplay.DeviceId, Settings.SelectedDisplay.DeviceName,
                         Settings.SelectedDisplay.Bounds, Settings.SelectedDisplay.WorkingArea, DisplayIdentificationMode.deviceId) ?? ScreenHelper.GetPrimaryScreen();
 
@@ -121,7 +124,7 @@ namespace livelywpf
             IsAudioOnlyOnDesktop = Settings.AudioOnlyOnDesktop;
             SelectedWallpaperScalingIndex = (int)Settings.WallpaperScaling;
             CefDiskCache = Settings.CefDiskCache;
-            IsLockScreenAutoWallpaper = Settings.LockScreenAutoWallpaper;
+            //IsLockScreenAutoWallpaper = Settings.LockScreenAutoWallpaper;
             SelectedTaskbarThemeIndex = (int)Settings.SystemTaskbarTheme;
             IsDesktopAutoWallpaper = Settings.DesktopAutoWallpaper;
             IsDebugMenuVisible = Settings.DebugMenu;
@@ -754,6 +757,7 @@ namespace livelywpf
 
         #region system
 
+        /*
         private bool _isLockScreenAutoWallpaper;
         public bool IsLockScreenAutoWallpaper
         {
@@ -772,6 +776,7 @@ namespace livelywpf
                 OnPropertyChanged("IsLockScreenAutoWallpaper");
             }
         }
+        */
 
         private bool _isDesktopAutoWallpaper;
         public bool IsDesktopAutoWallpaper

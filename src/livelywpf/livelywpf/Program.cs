@@ -22,6 +22,7 @@ namespace livelywpf
         public static string WallpaperDir { get; set; }
         public static string AppDataDir { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Lively Wallpaper");
         public static bool IsMSIX { get; } = new DesktopBridge.Helpers().IsRunningAsUwp();
+        //todo: make compile time flag.
         public static bool IsTestBuild { get; } = false;
 
         //todo: use singleton or something instead?

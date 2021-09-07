@@ -431,7 +431,7 @@ namespace livelywpf
                         WatchdogProcess.Instance.Add(wallpaper.GetProcess().Id);
                     }
 
-                    var thumbRequiredLockscreen = Program.SettingsVM.Settings.LockScreenAutoWallpaper && 
+                    var thumbRequiredLockscreen = Program.SettingsVM.Settings.LockScreenAutoWallpaper &&
                         (!ScreenHelper.IsMultiScreen() || Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span || ScreenHelper.ScreenCompare(wallpaper.GetScreen(), ScreenHelper.GetPrimaryScreen(), DisplayIdentificationMode.deviceId));
                     var thumbRequiredAvgColor = (Program.SettingsVM.Settings.SystemTaskbarTheme == TaskbarTheme.wallpaper || Program.SettingsVM.Settings.SystemTaskbarTheme == TaskbarTheme.wallpaperFluent) &&
                         (!ScreenHelper.IsMultiScreen() || Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span || ScreenHelper.ScreenCompare(wallpaper.GetScreen(), ScreenHelper.GetPrimaryScreen(), DisplayIdentificationMode.deviceId));

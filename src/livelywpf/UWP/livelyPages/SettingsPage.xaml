@@ -219,9 +219,11 @@
                 <Grid>
                     <ScrollViewer>
                         <StackPanel>
+                            <!--
                             <ToggleSwitch Margin="0, 10, 0, 0" IsOn="{Binding IsLockScreenAutoWallpaper, Mode=TwoWay}" Header="{x:Bind UIText.TitleLockscreenPicture}"
                                           OffContent="{x:Bind UIText.TextOff}" OnContent="{x:Bind UIText.TextOn}"/>
                             <TextBlock Margin="0, 10, 0, 0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipLockscreenPicture}"/>
+                            -->
 
                             <ToggleSwitch Margin="0, 10, 0, 0" IsOn="{Binding IsDesktopAutoWallpaper, Mode=TwoWay}" Header="{x:Bind UIText.TitleDesktopPicture}"
                                           OffContent="{x:Bind UIText.TextOff}" OnContent="{x:Bind UIText.TextOn}"/>

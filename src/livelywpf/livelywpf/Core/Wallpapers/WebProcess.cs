@@ -16,7 +16,7 @@ namespace livelywpf.Core
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         //todo: Check this library out https://github.com/Tyrrrz/CliWrap
-        private IntPtr hwnd;
+        private IntPtr hwndWebView, hwndWindow;
         private readonly Process _process;
         private readonly LibraryModel model;
         private LivelyScreen display;
@@ -139,12 +139,12 @@ namespace livelywpf.Core
 
         public IntPtr GetHWND()
         {
-            return hwnd;
+            return hwndWindow;
         }
 
         public IntPtr GetHWNDInput()
         {
-            return hwnd;
+            return hwndWebView;
         }
 
         public Process GetProcess()
@@ -274,20 +274,18 @@ namespace livelywpf.Core
                             msg = e.Data;
                             var handle = new IntPtr(((LivelyMessageHwnd)obj).Hwnd);
                             //note-handle: WindowsForms10.Window.8.app.0.141b42a_r9_ad1
-
-                            //hidin other windows, no longer required since I'm doing it in cefsharp pgm itself.
-                            NativeMethods.ShowWindow(GetProcess().MainWindowHandle, 0);
-
-                            //WARNING:- If you put the whole cefsharp window, workerw crashes and refuses to start again on next startup!!, this is a workaround.
-                            handle = NativeMethods.FindWindowEx(handle, IntPtr.Zero, "Chrome_WidgetWin_0", null);
+                            hwndWebView = NativeMethods.FindWindowEx(handle, IntPtr.Zero, "Chrome_WidgetWin_0", null);
                             //cefRenderWidget = StaticPinvoke.FindWindowEx(handle, IntPtr.Zero, "Chrome_RenderWidgetHostHWND", null);
                             //cefIntermediate = StaticPinvoke.FindWindowEx(handle, IntPtr.Zero, "Intermediate D3D Window", null);
+                            hwndWindow = FindWindowByProcessId(GetProcess().Id);
 
-                            if (IntPtr.Equals(handle, IntPtr.Zero))//unlikely.
+                            if (IntPtr.Equals(hwndWebView, IntPtr.Zero) || IntPtr.Equals(hwndWindow, IntPtr.Zero))
                             {
-                                status = false;
+                                throw new Exception("Webview input/window handle NULL.");
                             }
-                            hwnd = handle;
+
+                            //TaskView crash fix..
+                            WindowOperations.RemoveWindowFromTaskbar(hwndWindow);
                         }
                         catch (Exception ie)
                         {
@@ -306,6 +304,27 @@ namespace livelywpf.Core
                     }
                 }
             }
+        }
+
+        private IntPtr FindWindowByProcessId(int pid)
+        {
+            IntPtr HWND = IntPtr.Zero;
+            NativeMethods.EnumWindows(new NativeMethods.EnumWindowsProc((tophandle, topparamhandle) =>
+            {
+                _ = NativeMethods.GetWindowThreadProcessId(tophandle, out int cur_pid);
+                if (cur_pid == pid)
+                {
+                    if (NativeMethods.IsWindowVisible(tophandle))
+                    {
+                        HWND = tophandle;
+                        return false;
+                    }
+                }
+
+                return true;
+            }), IntPtr.Zero);
+
+            return HWND;
         }
 
         public void Stop()
