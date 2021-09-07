@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -205,7 +205,7 @@ Se non funziona ancora, chiudi &amp; riavvia Lively / riavvia windows.</value>
     <value>Indietro</value>
   </data>
   <data name="TextBrowse" xml:space="preserve">
-    <value>Browse</value>
+    <value>Esplora</value>
   </data>
   <data name="TextCloseWallpapers" xml:space="preserve">
     <value>Chiudi Wallpaper</value>
@@ -670,7 +670,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Riempi</value>
   </data>
   <data name="TextWallpaperFitNone" xml:space="preserve">
-    <value>None</value>
+    <value>Niente</value>
   </data>
   <data name="TextWallpaperFitUniform" xml:space="preserve">
     <value>Uniforme </value>
@@ -729,175 +729,172 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TipGifPlayer" xml:space="preserve">
     <value>Seleziona il Riproduttore per i gif.</value>
   </data>
-   <data name="TextFeatureMissing" xml:space="preserve">
-    <value>Some features are not available in this version of Lively.</value>
+  <data name="TextFeatureMissing" xml:space="preserve">
+    <value>Alcune funzionalità di Lively non sono disponibili in questa versione</value>
   </data>
-    <data name="TextControlPanelOpen" xml:space="preserve">
-    <value>Click here to manage wallpapers.</value>
+  <data name="TextControlPanelOpen" xml:space="preserve">
+    <value>Clicca per gestire i wallpaper</value>
   </data>
-    <data name="TextStoreReview" xml:space="preserve">
-    <value>Do you enjoy using Lively? Leave a review :)</value>
+  <data name="TextStoreReview" xml:space="preserve">
+    <value>Ti piace Lively ? Lascia un recensione</value>
   </data>
   <data name="TitleStore" xml:space="preserve">
-    <value>Store</value>
+    <value>Microsoft Store</value>
     <comment>For different version of Lively, example: Microsoft Store</comment>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>Your Windows N/KN version will require the download of additional codecs to support video playback in wallpapers.</value>
+    <value>La tua versione di Windows N/KN richiede più codecs per riprodurre dei video come sfondo.</value>
   </data>
   <data name="TextLicense" xml:space="preserve">
-    <value>License</value>
+    <value>Licenza</value>
   </data>
   <data name="TextPrivacyPolicy" xml:space="preserve">
     <value>Privacy Policy</value>
   </data>
   <data name="TitleAudioDesktopOnly" xml:space="preserve">
-    <value>Play audio only when desktop is focused</value>
+    <value>Riproduci l'audio solo quando il desktop è in primo piano</value>
   </data>
   <data name="TipExportLogs" xml:space="preserve">
-    <value>Create log report file.</value>
+    <value>Crea un log di segnalazione</value>
   </data>
   <data name="TitleExportLogs" xml:space="preserve">
-    <value>Log File</value>
+    <value>File di Log</value>
   </data>
   <data name="TitleReportBug" xml:space="preserve">
-    <value>Report Bug</value>
+    <value>Segnala un bug</value>
   </data>
   <data name="TitleVideoHardwareDecode" xml:space="preserve">
     <value>GPU Decode</value>
   </data>
   <data name="TipVideoHardwareDecode" xml:space="preserve">
-    <value>Use hardware acceleration when possible.</value>
+    <value>Usa l'acceleranzione hardware quando possibile</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
-  <value>Please stop before proceeding.</value>
+  <value>Si prega di fermasi prima di procedere</value>
 </data>
-<data name="TextEditWallpaper" xml:space="preserve">
-  <value>Edit</value>
+  <data name="TextEditWallpaper" xml:space="preserve">
+  <value>Modifica</value>
 </data>
-<data name="TitleLocation" xml:space="preserve">
-  <value>Location</value>
+  <data name="TitleLocation" xml:space="preserve">
+  <value>Posizione</value>
 </data>
-<data name="TitleSkipConfirm" xml:space="preserve">
-  <value>Skip Confirmation</value>
+  <data name="TitleSkipConfirm" xml:space="preserve">
+  <value>Salta la conferma</value>
 </data>
-<data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-  <value>Enter optional commandline arguments</value>
+  <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
+  <value>Inserisci ulteriori argomenti alla commandline</value>
 </data>
   <data name="TextGitHubStar" xml:space="preserve">
-    <value>Show some love by dropping a star</value>
+    <value>Mostra un po' di affetto lasciando una stella su GitHub!</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
-    <value>Incompatible program found, taskbar theming disabled.</value>
+    <value>Programma incompatibile trovato. Disabilitato il tema della taskbar</value>
   </data>
   <data name="TitleTaskbarTheme" xml:space="preserve">
-    <value>Taskbar Theme</value>
+    <value>TemaTaskbar</value>
   </data>
   <data name="TitleLockscreenPicture" xml:space="preserve">
-    <value>Lockscreen Picture</value>
+    <value>Immagine di blocco</value>
   </data>
   <data name="TitleDesktopPicture" xml:space="preserve">
-    <value>Desktop Picture</value>
+    <value>Immagine Desktop</value>
   </data>
   <data name="TipLockscreenPicture" xml:space="preserve">
-    <value>Set a picture of animated wallpaper as lockscreen wallpaper.</value>
+    <value>Imposta un fotogramma dello sfondo animato come sfondo della schermata di blocco.</value>
   </data>
   <data name="TipDesktopPicture" xml:space="preserve">
-    <value>Set a picture of animated wallpaper as desktop wallpaper.</value>
+    <value>Imposta un fotogramma dello sfondo animato come sfondo del desktop</value>
   </data>
   <data name="TipTaskbarTheme" xml:space="preserve">
-    <value>Change system taskbar appearance.</value>
+    <value>Cambia l'apparenza della taskbar</value>
   </data>
   <data name="TextTaskbarThemeBlur" xml:space="preserve">
-    <value>Blur</value>
+    <value>Sfocato</value>
   </data>
   <data name="TextTaskbarThemeClear" xml:space="preserve">
-    <value>Clear</value>
+    <value>Pulito / Trasparente</value>
   </data>
   <data name="TextTaskbarThemeColor" xml:space="preserve">
-    <value>Color</value>
+    <value>Colore</value>
   </data>
   <data name="TextTaskbarThemeFluent" xml:space="preserve">
-    <value>Fluent</value>
+    <value>Fluente</value>
   </data>
   <data name="TextTaskbarThemeWallpaper" xml:space="preserve">
     <value>Wallpaper</value>
   </data>
   <data name="TextTaskbarThemeWallpaperFluent" xml:space="preserve">
-    <value>Wallpaper Fluent</value>
+    <value>Wallpaper Fluente</value>
   </data>
   <data name="TitleSystem" xml:space="preserve">
-    <value>System</value>
+    <value>Sistema</value>
   </data>
   <data name="TitleSourceCode" xml:space="preserve">
-    <value>Source Code</value>
+    <value>Codice Sorgente</value>
   </data>
-    <data name="TitleScreensaver" xml:space="preserve">
+  <data name="TitleScreensaver" xml:space="preserve">
     <value>Screensaver</value>
   </data>
   <data name="TipScreensaver" xml:space="preserve">
-    <value>After the selected inactivity period use the current wallpaper as your screensaver.</value>
+    <value>Dopo un periodo di tempo determinato dall'utente, usa il wallpaper come screensaver</value>
   </data>
-    <data name="TextHours" xml:space="preserve">
-    <value>hours</value>
+  <data name="TextHours" xml:space="preserve">
+    <value>ore</value>
   </data>
   <data name="TextMinutes" xml:space="preserve">
-    <value>minutes</value>
+    <value>minuti</value>
   </data>
   <data name="TextLearnMore" xml:space="preserve">
-    <value>Learn more</value>
+    <value>Impara di più</value>
   </data>
-    <data name="DescOledScreensaverNotice" xml:space="preserve">
-    <value>Most modern LCD and LED displays do not suffer from burn-in issue and therefore any wallpaper can be used as screensaver.
-
-For OLED, Plasma or CRT displays which are susceptibe to burn-in it is advised to use wallpaper with regular motion and an overall dark theme which is supposed to mitigate burn-in but this feature is untested and its effectiveness cannot be guaranteed.
-
-The main purpose of Lively's screensavers is to add another layer of customization to your pc, use screensavers as burn-in protection at your own risk!</value>
+  <data name="DescOledScreensaverNotice" xml:space="preserve">
+    <value>La maggior parte dei display LCD e LED moderni non soffre di problemi di burn-in e quindi qualsiasi sfondo può essere utilizzato come salvaschermo.
+Per i display OLED, Plasma o CRT che sono suscettibili al burn-in, si consiglia di utilizzare uno sfondo con movimento regolare e un tema scuro generale che dovrebbe mitigare il burn-in, ma questa funzione non è testata e la sua efficacia non può essere garantita.
+Lo scopo principale degli screensaver di Lively è aggiungere un altro livello di personalizzazione al tuo pc, usa gli screensaver come protezione burn-in a tuo rischio e pericolo!</value>
   </data>
   <data name="TextChangeWallpaper" xml:space="preserve">
-    <value>Change Wallpapers</value>
+    <value>Cambia Wallpaper</value>
   </data>
   <data name="TextLastChecked" xml:space="preserve">
-    <value>Last checked</value>
+    <value>Ultimo Controllo</value>
   </data>
   <data name="TitleUpdates" xml:space="preserve">
-    <value>Updates</value>
+    <value>Aggiornamenti</value>
   </data>
   <data name="DescCommunity" xml:space="preserve">
-    <value>Online discussion forum</value>
+    <value>Forum online</value>
   </data>
   <data name="DescDocumentation" xml:space="preserve">
-    <value>API documentation and help</value>
+    <value>Documentazione API e Aiuto</value>
   </data>
   <data name="DescOfficialWebpage" xml:space="preserve">
-    <value>Official webpage of Lively Wallpaper</value>
+    <value>Sito internet ufficiale di Lively</value>
   </data>
   <data name="DescReportBug" xml:space="preserve">
-    <value>Report a problem with the software</value>
+    <value>Segnala un poblema col software</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
-    <value>Show support by buying the developer coffee</value>
+    <value>Mostra supporto comprando un caffe' allo sviluppatore</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
-    <value>You are about to change to beta (developer) build of Lively.
-Updates will be frequent and may contain bugs!</value>
+    <value>Stai per aggiornare Lively alla versione Sviluppatore (Beta). Questa verisione contiene più funzioni ma anche più bug</value>
   </data>
   <data name="TextSwitchBranchDev" xml:space="preserve">
-    <value>Switch to beta (Dev channel)</value>
+    <value>Vai alla versione beta (Sviluppatori)</value>
   </data>
   <data name="TextSwitchBranchOfficial" xml:space="preserve">
-    <value>Switch to stable (Default channel)</value>
+    <value>Vai alla versione stabile</value>
   </data>
   <data name="TipSwitchSoftwareBranch" xml:space="preserve">
-    <value>Change software release from beta to stable or vice versa.</value>
+    <value>Cambia la versione del software da beta a stabile o viceversa. </value>
   </data>
   <data name="TitleChangelog" xml:space="preserve">
-    <value>Changelog</value>
+    <value>Novità</value>
   </data>
   <data name="TextPauseAlgoExclusiveMode" xml:space="preserve">
     <value>Direct3D</value>
   </data>
   <data name="TitleScreensaverLockOnResume" xml:space="preserve">
-    <value>On resume, display logon screen</value>
-  </data>    
+    <value>Nella uscita dalla sospensione, visualizza la schermata di accesso</value>
+  </data>
 </root>
