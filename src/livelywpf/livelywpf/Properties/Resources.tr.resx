@@ -849,49 +849,49 @@ OLED, Plasma ve CRT monitörler ise ekran yanması sorununa karşı dayanıksız
 Lively'nin kilit ekranı özelliği, bilgisayarınızı daha da kişiselleştirmenizi sağlamak amacıyla tasarlanmıştır. Ekran yanmasına karşı kilit ekranında harketli duvar kağıtlarının kullanılması kullanıcının sorumluluğundadır.</value>
   </data>
   <data name="TextChangeWallpaper" xml:space="preserve">
-    <value>Change Wallpapers</value>
+    <value>Duvar Kağıdını değiştir</value>
   </data>
   <data name="TextLastChecked" xml:space="preserve">
-    <value>Last checked</value>
+    <value>Son kontrol</value>
   </data>
   <data name="TitleUpdates" xml:space="preserve">
-    <value>Updates</value>
+    <value>Güncellemeler</value>
   </data>
   <data name="DescCommunity" xml:space="preserve">
-    <value>Online discussion forum</value>
+    <value>Online tartışma forumu</value>
   </data>
   <data name="DescDocumentation" xml:space="preserve">
-    <value>API documentation and help</value>
+    <value>API dökümantasyonu ve destek</value>
   </data>
   <data name="DescOfficialWebpage" xml:space="preserve">
-    <value>Official webpage of Lively Wallpaper</value>
+    <value>Lively Wallpaper Resmi İnternet Sitesi</value>
   </data>
   <data name="DescReportBug" xml:space="preserve">
-    <value>Report a problem with the software</value>
+    <value>Sorun bildir</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
-    <value>Show support by buying the developer coffee</value>
+    <value>Bağışta bulunarak yazılımı destekle!</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
-    <value>You are about to change to beta (developer) build of Lively.
-Updates will be frequent and may contain bugs!</value>
+    <value>Lively'nin beta sürümüne geçmek üzeresiniz.
+Beta sürümünde hatalar bulunabilir ve sıklıkla güncellemeler yapılabilir!</value>
   </data>
   <data name="TextSwitchBranchDev" xml:space="preserve">
-    <value>Switch to beta (Dev channel)</value>
+    <value>Beta sürümüne geç (Geliştirici)</value>
   </data>
   <data name="TextSwitchBranchOfficial" xml:space="preserve">
-    <value>Switch to stable (Default channel)</value>
+    <value>Kararlı sürümü kullan</value>
   </data>
   <data name="TipSwitchSoftwareBranch" xml:space="preserve">
-    <value>Change software release from beta to stable or vice versa.</value>
+    <value>Kararlı ve Beta sürüm arasında geçiş yap</value>
   </data>
   <data name="TitleChangelog" xml:space="preserve">
-    <value>Changelog</value>
+    <value>Yenilikler</value>
   </data>
   <data name="TextPauseAlgoExclusiveMode" xml:space="preserve">
     <value>Direct3D</value>
   </data>
   <data name="TitleScreensaverLockOnResume" xml:space="preserve">
-    <value>On resume, display logon screen</value>
+    <value>Ekran koruyucu devreye girdiğinde bilgisayarı kilitle</value>
   </data>    
 </root>

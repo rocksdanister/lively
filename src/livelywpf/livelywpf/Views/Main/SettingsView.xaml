@@ -283,9 +283,11 @@
                 <Grid>
                     <ScrollViewer>
                         <StackPanel>
+                            <!--
                             <ui:ToggleSwitch Margin="0, 10, 0, 0" IsOn="{Binding IsLockScreenAutoWallpaper, Mode=TwoWay}" Header="{x:Static p:Resources.TitleLockscreenPicture}"
                                           OffContent="{x:Static p:Resources.TextOff}" OnContent="{x:Static p:Resources.TextOn}"/>
                             <TextBlock Margin="0, 10, 0, 0" FontSize="12" TextWrapping="Wrap" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}" Text="{x:Static p:Resources.TipLockscreenPicture}"/>
+                            -->
 
                             <ui:ToggleSwitch IsEnabled="False" Margin="0, 10, 0, 0" IsOn="{Binding IsDesktopAutoWallpaper, Mode=TwoWay}" Header="{x:Static p:Resources.TitleDesktopPicture}"
                                           OffContent="{x:Static p:Resources.TextOff}" OnContent="{x:Static p:Resources.TextOn}"/>

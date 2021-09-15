@@ -110,6 +110,7 @@ namespace livelywpf.Core
                 _ => "--keepaspect=no",
             };
             ipcServerName = "mpvsocket" + Path.GetRandomFileName();
+            var configDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "mpv", "portable_config");
 
             StringBuilder cmdArgs = new StringBuilder();
             //startup volume will be 0
@@ -142,6 +143,8 @@ namespace livelywpf.Core
             cmdArgs.Append(model.LivelyInfo.Type == WallpaperType.gif ? "--scale=nearest " : " ");
             //gpu decode preference
             cmdArgs.Append(Program.SettingsVM.Settings.VideoPlayerHwAccel ? "--hwdec=auto-safe " : "--hwdec=no ");
+            //avoid global config file %APPDATA%\mpv\mpv.conf
+            cmdArgs.Append(Directory.Exists(configDir) ? "--config-dir=" + "\"" + configDir + "\" " : "--no-config ");
             //screenshot location, important read: https://mpv.io/manual/master/#pseudo-gui-mode
             cmdArgs.Append("--screenshot-template=" + "\"" + Path.Combine(Program.AppDataDir, "temp", ipcServerName) + "\" --screenshot-format=jpg ");
             //file or online video stream path
