@@ -2,7 +2,7 @@
 ; https://jrsoftware.org/isinfo.php
 
 #define MyAppName "Lively Wallpaper"
-#define MyAppVersion "1.7.0.4"
+#define MyAppVersion "1.7.1.9"
 #define MyAppPublisher "rocksdanister"
 #define MyAppURL "https://github.com/rocksdanister/lively"
 #define MyAppExeName "livelywpf.exe"
@@ -72,7 +72,7 @@ Root: HKCU; Subkey: "Software\Microsoft\Windows\CurrentVersion\Run"; ValueType: 
 
 [Files]
 Source: "VC\VC_redist.x86.exe"; DestDir: {tmp}; Flags: deleteafterinstall
-Source: "dotnetcore\windowsdesktop-runtime-3.1.18-win-x86.exe"; DestDir: {tmp}; Flags: deleteafterinstall
+Source: "dotnetcore\windowsdesktop-runtime-3.1.19-win-x86.exe"; DestDir: {tmp}; Flags: deleteafterinstall
 Source: "dotnetcore\netcorecheck.exe"; DestDir: {tmp}; Flags: deleteafterinstall
 
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
@@ -88,7 +88,7 @@ Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChang
 ;skipifsilent
 Filename: "{tmp}\VC_redist.x86.exe"; Parameters: /install /quiet /norestart; Check: VCRedistNeedsInstall and DependencyInstall; StatusMsg: Installing Visual C++ Redistributable...
 ;todo:write loop for Check
-Filename: "{tmp}\windowsdesktop-runtime-3.1.18-win-x86.exe"; Parameters: /install /quiet /norestart; Check: NetCoreNeedsInstall('3.1.18') and DependencyInstall;  StatusMsg: Installing .Net Core 3.1.18...
+Filename: "{tmp}\windowsdesktop-runtime-3.1.19-win-x86.exe"; Parameters: /install /quiet /norestart; Check: NetCoreNeedsInstall('3.1.19') and DependencyInstall;  StatusMsg: Installing .Net Core 3.1.19...
 
 [Code]
 var
