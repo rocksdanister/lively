@@ -46,7 +46,7 @@ namespace livelywpf
             {
                 if (SystemParameters.HighContrast)
                 {
-                    Logger.Info("Highcontrast mode detected, some functionalities of Lively may not work properly.");
+                    Logger.Info("!!Highcontrast mode detected, some functionalities may not work properly!!");
                 }
 
                 // Fetch the Progman window
@@ -964,6 +964,9 @@ namespace livelywpf
                     processMonitor?.Dispose();
                     TerminateAllWallpapers(false);
                     RefreshDesktop();
+
+                    //not required.. (need to restart if used.)
+                    //NativeMethods.SendMessage(workerw, (int)NativeMethods.WM.CLOSE, IntPtr.Zero, IntPtr.Zero);
                 }
                 catch (Exception e)
                 {
@@ -1177,15 +1180,16 @@ namespace livelywpf
             //Legacy, Windows 7
             if (System.Environment.OSVersion.Version.Major == 6 && System.Environment.OSVersion.Version.Minor == 1)
             {
-                if (!workerw.Equals(progman)) //this should fix the win7 wp disappearing issue.
+                if (!workerw.Equals(progman)) //this should fix the win7 wallpaper disappearing issue.
                     NativeMethods.ShowWindow(workerw, (uint)0);
 
                 IntPtr ret = NativeMethods.SetParent(windowHandle, progman);
                 if (ret.Equals(IntPtr.Zero))
                 {
-                    NLogger.LogWin32Error("Failed to set window parent(win7)");
+                    NLogger.LogWin32Error("Failed to set window parent");
+                    throw new Exception("Failed to set window parent.");
                 }
-                //workerw is assumed as progman in win7, this is untested with all fn's: addwallpaper(), wp pause, resize events.. (I don't have win7 system with me).
+                //workerw is assumed as progman in win7, this is untested with all fn's: addwallpaper(), wp pause, resize events.. 
                 workerw = progman;
             }
             else
@@ -1194,6 +1198,7 @@ namespace livelywpf
                 if (ret.Equals(IntPtr.Zero))
                 {
                     NLogger.LogWin32Error("Failed to set window parent");
+                    throw new Exception("Failed to set window parent.");
                 }
             }
         }

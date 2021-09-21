@@ -170,14 +170,14 @@ namespace livelywpf.Core
         public void Pause()
         {
             //minimize browser.
-            NativeMethods.ShowWindow(GetHWND(), (uint)NativeMethods.SHOWWINDOW.SW_SHOWMINNOACTIVE);
+            NativeMethods.ShowWindow(hwndWebView, (uint)NativeMethods.SHOWWINDOW.SW_SHOWMINNOACTIVE);
             //SendMessage("lively-playback pause");
         }
 
         public void Play()
         {
             //show minimized browser.
-            NativeMethods.ShowWindow(GetHWND(), (uint)NativeMethods.SHOWWINDOW.SW_SHOWNOACTIVATE);
+            NativeMethods.ShowWindow(hwndWebView, (uint)NativeMethods.SHOWWINDOW.SW_SHOWNOACTIVATE);
             //SendMessage("lively-playback play");
             //WallpaperRectFix();
         }
@@ -281,7 +281,7 @@ namespace livelywpf.Core
 
                             if (IntPtr.Equals(hwndWebView, IntPtr.Zero) || IntPtr.Equals(hwndWindow, IntPtr.Zero))
                             {
-                                throw new Exception("Webview input/window handle NULL.");
+                                throw new Exception("Browser input/window handle NULL.");
                             }
 
                             //TaskView crash fix..
