@@ -30,7 +30,8 @@ namespace livelywpf
 
         public AppRulesEnum AppFullscreenPause { get; set; }
         public AppRulesEnum BatteryPause { get; set; }
-        public bool DetectPowerSaveMode { get; set; }
+        public AppRulesEnum RemoteDesktopPause { get; set; }
+        public AppRulesEnum PowerSaveModePause { get; set; }
         public DisplayPauseEnum DisplayPauseSettings { get; set; }
         public ProcessMonitorAlgorithm ProcessMonitorAlgorithm { get; set; }
         /// <summary>
@@ -97,7 +98,6 @@ namespace livelywpf
         /// Fetch beta lively release updates from lively-beta repository.
         /// </summary>
         public bool TestBuild { get; set; }
-        public bool DetectRemoteDesktop { get; set; }
         /// <summary>
         /// Not used currently.
         /// </summary>
@@ -171,8 +171,8 @@ namespace livelywpf
             DebugMenu = false;
             TestBuild = false;
             ApplicationTheme = AppTheme.Dark;
-            DetectRemoteDesktop = true;
-            DetectPowerSaveMode = false;
+            RemoteDesktopPause = AppRulesEnum.pause;
+            PowerSaveModePause = AppRulesEnum.ignore;
             LockScreenAutoWallpaper = false;
             DesktopAutoWallpaper = false;
             SystemTaskbarTheme = TaskbarTheme.none;

@@ -106,6 +106,8 @@ namespace livelywpf
             SelectedAppFullScreenIndex = (int)Settings.AppFullscreenPause;
             SelectedAppFocusIndex = (int)Settings.AppFocusPause;
             SelectedBatteryPowerIndex = (int)Settings.BatteryPause;
+            SelectedRemoteDestopPowerIndex = (int)Settings.RemoteDesktopPause;
+            SelectedPowerSaveModeIndex = (int)Settings.PowerSaveModePause;
             SelectedDisplayPauseRuleIndex = (int)Settings.DisplayPauseSettings;
             SelectedPauseAlgorithmIndex = (int)Settings.ProcessMonitorAlgorithm;
             SelectedVideoPlayerIndex = (int)Settings.VideoPlayer;
@@ -446,6 +448,46 @@ namespace livelywpf
                 if (Settings.BatteryPause != (AppRulesEnum)_selectedBatteryPowerIndex)
                 {
                     Settings.BatteryPause = (AppRulesEnum)_selectedBatteryPowerIndex;
+                    UpdateConfigFile();
+                }
+            }
+        }
+
+        private int _selectedPowerSaveModeIndex;
+        public int SelectedPowerSaveModeIndex
+        {
+            get
+            {
+                return _selectedPowerSaveModeIndex;
+            }
+            set
+            {
+                _selectedPowerSaveModeIndex = value;
+                OnPropertyChanged();
+
+                if (Settings.PowerSaveModePause != (AppRulesEnum)_selectedPowerSaveModeIndex)
+                {
+                    Settings.PowerSaveModePause = (AppRulesEnum)_selectedPowerSaveModeIndex;
+                    UpdateConfigFile();
+                }
+            }
+        }
+
+        private int _selectedRemoteDestopPowerIndex;
+        public int SelectedRemoteDestopPowerIndex
+        {
+            get
+            {
+                return _selectedRemoteDestopPowerIndex;
+            }
+            set
+            {
+                _selectedRemoteDestopPowerIndex = value;
+                OnPropertyChanged();
+
+                if (Settings.RemoteDesktopPause != (AppRulesEnum)_selectedRemoteDestopPowerIndex)
+                {
+                    Settings.RemoteDesktopPause = (AppRulesEnum)_selectedRemoteDestopPowerIndex;
                     UpdateConfigFile();
                 }
             }

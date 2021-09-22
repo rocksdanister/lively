@@ -1439,7 +1439,7 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Change playback when AC power is disconnected (battery operated systems only.).
+        ///   Looks up a localized string similar to Change playback when AC power is disconnected..
         /// </summary>
         public static string TipBatteryPower {
             get {
@@ -1544,6 +1544,24 @@ namespace livelywpf.Properties {
         public static string TipPauseAlgorithm {
             get {
                 return ResourceManager.GetString("TipPauseAlgorithm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change playback when Windows Power Saving Mode is enabled..
+        /// </summary>
+        public static string TipPowerSavingModePower {
+            get {
+                return ResourceManager.GetString("TipPowerSavingModePower", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change playback when running a Remote Desktop session..
+        /// </summary>
+        public static string TipRemoteDesktopPower {
+            get {
+                return ResourceManager.GetString("TipRemoteDesktopPower", resourceCulture);
             }
         }
         
@@ -2049,6 +2067,24 @@ namespace livelywpf.Properties {
         public static string TitlePleaseWait {
             get {
                 return ResourceManager.GetString("TitlePleaseWait", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When on Battery Saver.
+        /// </summary>
+        public static string TitlePowerSavingModePower {
+            get {
+                return ResourceManager.GetString("TitlePowerSavingModePower", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When on Remote Desktop.
+        /// </summary>
+        public static string TitleRemoteDesktopPower {
+            get {
+                return ResourceManager.GetString("TitleRemoteDesktopPower", resourceCulture);
             }
         }
         

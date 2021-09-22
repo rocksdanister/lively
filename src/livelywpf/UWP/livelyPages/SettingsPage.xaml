@@ -96,6 +96,20 @@
                             </ComboBox>
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipPerfBattery}"/>
 
+                            <ComboBox Header="{x:Bind UIText.TitlePowerSavePauseRule}" Margin="0,10,0,0" MinWidth="200" SelectedIndex="{Binding SelectedPowerSaveModeIndex, Mode=TwoWay}">
+                                <ComboBoxItem Content="{x:Bind UIText.TextPerfPause}"/>
+                                <ComboBoxItem Content="{x:Bind UIText.TextPerfNone}"/>
+                                <ComboBoxItem IsEnabled="False" Content="{x:Bind UIText.TextPerfKill}"/>
+                            </ComboBox>
+                            <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipPowerSavePauseRule}"/>
+
+                            <ComboBox Header="{x:Bind UIText.TitleRemoteDesktopPauseRule}" Margin="0,10,0,0" MinWidth="200" SelectedIndex="{Binding SelectedRemoteDestopPowerIndex, Mode=TwoWay}">
+                                <ComboBoxItem Content="{x:Bind UIText.TextPerfPause}"/>
+                                <ComboBoxItem Content="{x:Bind UIText.TextPerfNone}"/>
+                                <ComboBoxItem IsEnabled="False" Content="{x:Bind UIText.TextPerfKill}"/>
+                            </ComboBox>
+                            <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" Text="{x:Bind UIText.TipRemoteDesktopPauseRule}"/>
+
                             <ComboBox Header="{x:Bind UIText.TitleDisplayPauseRule}" Margin="0,10,0,0" MinWidth="200" SelectedIndex="{Binding SelectedDisplayPauseRuleIndex, Mode=TwoWay}">
                                 <ComboBoxItem Content="{x:Bind UIText.TextDisplayPauseRulePer}"/>
                                 <ComboBoxItem Content="{x:Bind UIText.TextDisplayPauseRuleAll}"/>

@@ -8,28 +8,32 @@ namespace livelywpf.Helpers.Hardware
     //ref:
     //https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-getsystempowerstatus
     //https://docs.microsoft.com/en-us/windows/win32/api/winbase/ns-winbase-system_power_status
-    class BatteryChecker
+    public class BatteryChecker
     {
         public BatteryChecker()
         {
             // Nothing
         }
 
-        public static SystemPowerStatus GetSystemPowerStatus()
+        public static bool GetSystemPowerStatus(ref SystemPowerStatus sps)
         {
-            SystemPowerStatus sps = new SystemPowerStatus();
-            GetSystemPowerStatus(sps);
-            return sps;
+            sps = new SystemPowerStatus();
+            return GetSystemPowerStatus(sps);
         }
 
-        public static SystemStatusFlag GetSystemStatus()
+        public static SystemStatusFlag GetBatterySaverStatus()
         {
-            SystemPowerStatus sps = new SystemPowerStatus();
-            GetSystemPowerStatus(sps);
-            return sps._SystemStatusFlag;
+            var sps = new SystemPowerStatus();
+            return GetSystemPowerStatus(sps) ? sps._SystemStatusFlag : SystemStatusFlag.Off;
         }
 
-        public static bool IsBatterySavingMode => GetSystemStatus() == SystemStatusFlag.On;
+        public static ACLineStatus GetACPowerStatus()
+        {
+            var sps = new SystemPowerStatus();
+            return GetSystemPowerStatus(sps) ? sps._ACLineStatus : ACLineStatus.Online;
+        }
+
+        public static bool IsBatterySavingMode => GetBatterySaverStatus() == SystemStatusFlag.On;
 
         #region pinvoke
 
@@ -38,8 +42,8 @@ namespace livelywpf.Helpers.Hardware
 
         public enum ACLineStatus : byte
         {
-            Offline = 0, 
-            Online = 1, 
+            Offline = 0,
+            Online = 1,
             Unknown = 255
         }
 

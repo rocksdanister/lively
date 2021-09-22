@@ -71,6 +71,10 @@ namespace livelyPages
             public string TipPerfBattery { get; set; }
             public string TitleDisplayPauseRule { get; set; }
             public string TipDisplayPauseRule { get; set; }
+            public string TitlePowerSavePauseRule { get; set; }
+            public string TipPowerSavePauseRule { get; set; }
+            public string TitleRemoteDesktopPauseRule { get; set; }
+            public string TipRemoteDesktopPauseRule { get; set; }
             public string TitlePauseAlgorithm { get; set; }
             public string TipPauseAlgorithm { get; set; }
             public string TitleAppRules { get; set; }

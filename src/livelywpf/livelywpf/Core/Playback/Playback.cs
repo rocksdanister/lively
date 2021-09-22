@@ -149,18 +149,18 @@ namespace livelywpf.Core
                 PlayWallpapers();
                 SetWallpaperVolume(Program.SettingsVM.Settings.AudioVolumeGlobal);
             }
-            else if (WallpaperPlaybackState == PlaybackState.paused || _isLockScreen || 
-                (_isRemoteSession && Program.SettingsVM.Settings.DetectRemoteDesktop))
+            else if (WallpaperPlaybackState == PlaybackState.paused || _isLockScreen ||
+                (_isRemoteSession && Program.SettingsVM.Settings.RemoteDesktopPause == AppRulesEnum.pause))
             {
                 PauseWallpapers();
             }
-            else if (Program.SettingsVM.Settings.BatteryPause == AppRulesEnum.pause && 
-                BatteryChecker.GetSystemPowerStatus()._ACLineStatus == BatteryChecker.ACLineStatus.Offline)
+            else if (Program.SettingsVM.Settings.BatteryPause == AppRulesEnum.pause &&
+                BatteryChecker.GetACPowerStatus() == BatteryChecker.ACLineStatus.Offline)
             {
                 PauseWallpapers();
             }
-            else if (Program.SettingsVM.Settings.DetectPowerSaveMode &&
-                BatteryChecker.GetSystemPowerStatus()._SystemStatusFlag == BatteryChecker.SystemStatusFlag.On)
+            else if (Program.SettingsVM.Settings.PowerSaveModePause == AppRulesEnum.pause &&
+                BatteryChecker.GetBatterySaverStatus() == BatteryChecker.SystemStatusFlag.On)
             {
                 PauseWallpapers();
             }
