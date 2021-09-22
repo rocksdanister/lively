@@ -30,6 +30,7 @@ namespace livelywpf
 
         public AppRulesEnum AppFullscreenPause { get; set; }
         public AppRulesEnum BatteryPause { get; set; }
+        public bool DetectPowerSaveMode { get; set; }
         public DisplayPauseEnum DisplayPauseSettings { get; set; }
         public ProcessMonitorAlgorithm ProcessMonitorAlgorithm { get; set; }
         /// <summary>
@@ -171,6 +172,7 @@ namespace livelywpf
             TestBuild = false;
             ApplicationTheme = AppTheme.Dark;
             DetectRemoteDesktop = true;
+            DetectPowerSaveMode = false;
             LockScreenAutoWallpaper = false;
             DesktopAutoWallpaper = false;
             SystemTaskbarTheme = TaskbarTheme.none;

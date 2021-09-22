@@ -9,6 +9,7 @@ using System.Windows;
 //using System.Windows.Forms;
 using System.Windows.Threading;
 using System.Linq;
+using livelywpf.Helpers.Hardware;
 
 namespace livelywpf.Core
 {
@@ -154,7 +155,12 @@ namespace livelywpf.Core
                 PauseWallpapers();
             }
             else if (Program.SettingsVM.Settings.BatteryPause == AppRulesEnum.pause && 
-                System.Windows.Forms.SystemInformation.PowerStatus.PowerLineStatus == System.Windows.Forms.PowerLineStatus.Offline)
+                BatteryChecker.GetSystemPowerStatus()._ACLineStatus == BatteryChecker.ACLineStatus.Offline)
+            {
+                PauseWallpapers();
+            }
+            else if (Program.SettingsVM.Settings.DetectPowerSaveMode &&
+                BatteryChecker.GetSystemPowerStatus()._SystemStatusFlag == BatteryChecker.SystemStatusFlag.On)
             {
                 PauseWallpapers();
             }
