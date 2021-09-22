@@ -24,7 +24,7 @@ namespace livelywpf
             set
             {
                 _appName = value;
-                OnPropertyChanged("AppName");
+                OnPropertyChanged();
             }
         }
 
@@ -45,7 +45,7 @@ namespace livelywpf
                     AppRulesEnum.kill => Properties.Resources.TextPerformanceKill,
                     _ => Properties.Resources.TextPerformanceNone,
                 };
-                OnPropertyChanged("Rule");
+                OnPropertyChanged();
             }
         }
 
@@ -60,7 +60,7 @@ namespace livelywpf
             set
             {
                 _ruleText = value;
-                OnPropertyChanged("RuleText");
+                OnPropertyChanged();
             }
         }
     }

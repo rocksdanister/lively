@@ -37,7 +37,7 @@ namespace livelywpf
                 if (value != _screenItems)
                 {
                     _screenItems = value;
-                    OnPropertyChanged("ScreenItems");
+                    OnPropertyChanged();
                 }
             }
         }
@@ -51,7 +51,7 @@ namespace livelywpf
                 if (value != null)
                 {
                     _selectedItem = value;
-                    OnPropertyChanged("SelectedItem");
+                    OnPropertyChanged();
                     CanCloseWallpaper();
                     CanCustomiseWallpaper();
                     if (!ScreenHelper.ScreenCompare(value.Screen, Program.SettingsVM.Settings.SelectedDisplay, DisplayIdentificationMode.deviceId))
@@ -75,7 +75,7 @@ namespace livelywpf
             set
             {
                 _selectedWallpaperLayout = value;
-                OnPropertyChanged("SelectedWallpaperLayout");
+                OnPropertyChanged();
 
                 if (Program.SettingsVM.Settings.WallpaperArrangement != (WallpaperArrangement)_selectedWallpaperLayout && value != -1)
                 {

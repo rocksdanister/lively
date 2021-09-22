@@ -41,7 +41,7 @@ namespace livelywpf
             set
             {
                 _appRules = value;
-                OnPropertyChanged("AppRules");
+                OnPropertyChanged();
             }
         }
 
@@ -58,7 +58,7 @@ namespace livelywpf
                 {
                     SelectedAppRuleProperty = (int)_selectedItem.Rule;
                 }
-                OnPropertyChanged("SelectedItem");
+                OnPropertyChanged();
             }
         }
 
@@ -74,7 +74,7 @@ namespace livelywpf
                 {
                     SelectedItem.Rule = (AppRulesEnum)_selectedAppRuleProperty;
                 }
-                OnPropertyChanged("SelectedAppRuleProperty");
+                OnPropertyChanged();
             }
         }
             

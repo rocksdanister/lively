@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,6 +20,7 @@ namespace livelywpf
     public partial class WndProcMsgWindow : Window
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+        private DateTime prevCrashTime = DateTime.MinValue;
 
         public WndProcMsgWindow()
         {
@@ -46,7 +48,21 @@ namespace livelywpf
             {
                 //explorer crash detection, new taskbar is created everytime explorer is started..
                 Logger.Info("WM_TASKBARCREATED: New taskbar created.");
-                SetupDesktop.ResetWorkerW();
+                if ((DateTime.Now - prevCrashTime).TotalSeconds > 30)
+                {
+                    SetupDesktop.ResetWorkerW();
+                }
+                else
+                {
+                    //todo: move this to core.
+                    Logger.Warn("Explorer restarted multiple times in the last 30s.");
+                    _ = Task.Run(() => MessageBox.Show(Properties.Resources.DescExplorerCrash, 
+                        $"{Properties.Resources.TitleAppName} - {Properties.Resources.TextError}", 
+                        MessageBoxButton.OK, MessageBoxImage.Error));
+                    SetupDesktop.TerminateAllWallpapers();
+                    SetupDesktop.ResetWorkerW();
+                }
+                prevCrashTime = DateTime.Now;
             }
             else if (msg == (uint)NativeMethods.WM.QUERYENDSESSION && Program.IsMSIX)
             {

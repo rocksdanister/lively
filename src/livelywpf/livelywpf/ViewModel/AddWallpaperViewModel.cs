@@ -24,7 +24,7 @@ namespace livelywpf
             set
             {
                 _webUrlText = value;
-                OnPropertyChanged("WebUrlText");
+                OnPropertyChanged();
             }
         }
 
@@ -37,7 +37,7 @@ namespace livelywpf
             set
             {
                 _streamUrlText = value;
-                OnPropertyChanged("StreamUrlText");
+                OnPropertyChanged();
             }
         }
 

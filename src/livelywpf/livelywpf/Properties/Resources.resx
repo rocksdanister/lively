@@ -123,6 +123,11 @@
   <data name="DescDocumentation" xml:space="preserve">
     <value>API documentation and help</value>
   </data>
+  <data name="DescExplorerCrash" xml:space="preserve">
+    <value>Lively has encountered a fatal error.
+
+Windows Explorer restarted twice in the last 30 seconds! This may be a conflict between Lively and other desktop customization software or Windows. To avoid further issues, all wallpapers are terminated.</value>
+  </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
     <value>Incompatible program found, taskbar theming disabled.</value>
   </data>

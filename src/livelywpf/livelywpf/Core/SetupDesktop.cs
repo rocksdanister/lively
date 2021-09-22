@@ -46,7 +46,7 @@ namespace livelywpf
             {
                 if (SystemParameters.HighContrast)
                 {
-                    Logger.Info("!!Highcontrast mode detected, some functionalities may not work properly!!");
+                    Logger.Warn("Highcontrast mode detected, some functionalities may not work properly!");
                 }
 
                 // Fetch the Progman window
@@ -561,7 +561,7 @@ namespace livelywpf
         /// </summary>
         public static void ResetWorkerW()
         {
-            Logger.Info("Restarting workerw and restoring wallpapers..");
+            Logger.Info("Restarting wallpaper service..");
             _isInitialized = false;
             processMonitor?.Dispose();
             if (Wallpapers.Count > 0)

@@ -22,7 +22,7 @@ namespace livelywpf.Model
             set
             {
                 _screen = value;
-                OnPropertyChanged("Screen");
+                OnPropertyChanged();
             }
         }
 
@@ -33,7 +33,7 @@ namespace livelywpf.Model
             set
             {
                 _screenImagePath = value;
-                OnPropertyChanged("ScreenImagePath");
+                OnPropertyChanged();
             }
         }
 
@@ -44,7 +44,7 @@ namespace livelywpf.Model
             set
             {
                 _livelyPropertyPath = value;
-                OnPropertyChanged("LivelyPropertyPath");
+                OnPropertyChanged();
             }
         }
 
@@ -55,7 +55,7 @@ namespace livelywpf.Model
             set
             {
                 _screenTitle = value;
-                OnPropertyChanged("ScreenTitle");
+                OnPropertyChanged();
             }
         }
     }

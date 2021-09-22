@@ -79,6 +79,17 @@ namespace livelywpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Lively has encountered a fatal error.
+        ///
+        ///Windows Explorer restarted twice in the last 30 seconds! This may be a conflict between Lively and other desktop customization software or Windows. To avoid further issues, all wallpapers are terminated..
+        /// </summary>
+        public static string DescExplorerCrash {
+            get {
+                return ResourceManager.GetString("DescExplorerCrash", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Incompatible program found, taskbar theming disabled..
         /// </summary>
         public static string DescIncompatibleTaskbarTheme {
