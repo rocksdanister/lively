@@ -155,7 +155,7 @@ namespace livelywpf
             set
             {
                 _livelyInfo = value;
-                OnPropertyChanged("LivelyInfo");
+                OnPropertyChanged();
             }
         }
 
@@ -166,7 +166,7 @@ namespace livelywpf
             set
             {
                 _dataType = value;
-                OnPropertyChanged("DataType");
+                OnPropertyChanged();
             }
         }
 
@@ -185,7 +185,7 @@ namespace livelywpf
                 {
                     _filePath = File.Exists(value) ? value : null;
                 }
-                OnPropertyChanged("FilePath");
+                OnPropertyChanged();
             }
         }
 
@@ -196,7 +196,7 @@ namespace livelywpf
             set
             {
                 _livelyInfoFolderPath = value;
-                OnPropertyChanged("LivelyInfoFolderPath");
+                OnPropertyChanged();
             }
         }
 
@@ -210,7 +210,7 @@ namespace livelywpf
             set
             {
                 _title = string.IsNullOrWhiteSpace(value) ? "---" : (value.Length > 100 ? value.Substring(0, 100) : value); 
-                OnPropertyChanged("Title");
+                OnPropertyChanged();
             }
         }
 
@@ -224,7 +224,7 @@ namespace livelywpf
             set
             {
                 _author = string.IsNullOrWhiteSpace(value) ? "---" : (value.Length > 100 ? value.Substring(0, 100) : value);
-                OnPropertyChanged("Author");
+                OnPropertyChanged();
             }
         }
 
@@ -238,7 +238,7 @@ namespace livelywpf
             set
             {
                 _desc = string.IsNullOrWhiteSpace(value) ? WallpaperType : (value.Length > 5000 ? value.Substring(0, 5000) : value);
-                OnPropertyChanged("Desc");
+                OnPropertyChanged();
             }
         }
 
@@ -252,7 +252,7 @@ namespace livelywpf
             set
             {
                 _imagePath = value;
-                OnPropertyChanged("ImagePath");
+                OnPropertyChanged();
             }
         }
 
@@ -266,7 +266,7 @@ namespace livelywpf
             set
             {
                 _previewClipPath = File.Exists(value) ? value : null;
-                OnPropertyChanged("PreviewClipPath");
+                OnPropertyChanged();
             }
         }
 
@@ -280,7 +280,7 @@ namespace livelywpf
             set
             {
                 _thumbnailPath = File.Exists(value) ? value : null;
-                OnPropertyChanged("ThumbnailPath");
+                OnPropertyChanged();
             }
         }
 
@@ -294,7 +294,7 @@ namespace livelywpf
             set
             {
                 _srcWebsite = value;
-                OnPropertyChanged("SrcWebsite");
+                OnPropertyChanged();
             }
         }
 
@@ -311,7 +311,7 @@ namespace livelywpf
             set
             {
                 _wallpaperType = value;
-                OnPropertyChanged("WallpaperType");
+                OnPropertyChanged();
             }
         }
 
@@ -325,7 +325,7 @@ namespace livelywpf
             set
             {
                 _livelyPropertyPath = File.Exists(value) ? value : null;
-                OnPropertyChanged("LivelyPropertyPath");
+                OnPropertyChanged();
             }
         }
 
@@ -336,7 +336,7 @@ namespace livelywpf
             set
             {
                 _itemStartup = value;
-                OnPropertyChanged("ItemStartup");
+                OnPropertyChanged();
             }
         }
 

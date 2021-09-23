@@ -66,7 +66,7 @@ namespace livelywpf
                 if (value != _listItems)
                 {
                     _listItems = value;
-                    OnPropertyChanged("ListItems");
+                    OnPropertyChanged();
                 }
             }
         }
@@ -80,7 +80,7 @@ namespace livelywpf
                 if (value != _selectedItem)
                 {
                     _selectedItem = value;
-                    OnPropertyChanged("SelectedItem");
+                    OnPropertyChanged();
                 }
             }
         }
@@ -97,7 +97,7 @@ namespace livelywpf
                     Program.SettingsVM.Settings.GifCapture = _gifCheck;
                     Program.SettingsVM.UpdateConfigFile();
                 }
-                OnPropertyChanged("GifCheck");
+                OnPropertyChanged();
             }
         }
 
@@ -113,7 +113,7 @@ namespace livelywpf
                     Program.SettingsVM.Settings.MultiFileAutoImport = _autoImportCheck;
                     Program.SettingsVM.UpdateConfigFile();
                 }
-                OnPropertyChanged("AutoImportCheck");
+                OnPropertyChanged();
             }
         }
 
@@ -127,7 +127,7 @@ namespace livelywpf
                 if (value != _progress)
                 {
                     _progress = value;
-                    OnPropertyChanged("Progress");
+                    OnPropertyChanged();
                 }
             }
         }
@@ -153,7 +153,7 @@ namespace livelywpf
             set
             {
                 _btnText = value;
-                OnPropertyChanged("BtnText");
+                OnPropertyChanged();
             }
         }
 

@@ -9,6 +9,7 @@ using System.Windows;
 //using System.Windows.Forms;
 using System.Windows.Threading;
 using System.Linq;
+using livelywpf.Helpers.Hardware;
 
 namespace livelywpf.Core
 {
@@ -149,12 +150,17 @@ namespace livelywpf.Core
                 SetWallpaperVolume(Program.SettingsVM.Settings.AudioVolumeGlobal);
             }
             else if (WallpaperPlaybackState == PlaybackState.paused || _isLockScreen || 
-                (_isRemoteSession && Program.SettingsVM.Settings.DetectRemoteDesktop))
+                (_isRemoteSession && Program.SettingsVM.Settings.RemoteDesktopPause == AppRulesEnum.pause))
             {
                 PauseWallpapers();
             }
-            else if (Program.SettingsVM.Settings.BatteryPause == AppRulesEnum.pause && 
-                System.Windows.Forms.SystemInformation.PowerStatus.PowerLineStatus == System.Windows.Forms.PowerLineStatus.Offline)
+            else if (Program.SettingsVM.Settings.BatteryPause == AppRulesEnum.pause &&
+                BatteryChecker.GetACPowerStatus() == BatteryChecker.ACLineStatus.Offline)
+            {
+                PauseWallpapers();
+            }
+            else if (Program.SettingsVM.Settings.PowerSaveModePause == AppRulesEnum.pause &&
+             BatteryChecker.GetBatterySaverStatus() == BatteryChecker.SystemStatusFlag.On)
             {
                 PauseWallpapers();
             }

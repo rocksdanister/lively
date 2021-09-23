@@ -114,6 +114,8 @@ namespace livelywpf
             SelectedAppFullScreenIndex = (int)Settings.AppFullscreenPause;
             SelectedAppFocusIndex = (int)Settings.AppFocusPause;
             SelectedBatteryPowerIndex = (int)Settings.BatteryPause;
+            SelectedRemoteDestopPowerIndex = (int)Settings.RemoteDesktopPause;
+            SelectedPowerSaveModeIndex = (int)Settings.PowerSaveModePause;
             SelectedDisplayPauseRuleIndex = (int)Settings.DisplayPauseSettings;
             SelectedPauseAlgorithmIndex = (int)Settings.ProcessMonitorAlgorithm;
             SelectedVideoPlayerIndex = (int)Settings.VideoPlayer;
@@ -152,7 +154,7 @@ namespace livelywpf
             set
             {
                 _settings = value;
-                OnPropertyChanged("Settings");
+                OnPropertyChanged();
             }
         }
 
@@ -180,7 +182,7 @@ namespace livelywpf
             set
             {
                 _isStartup = value;
-                OnPropertyChanged("IsStartup");
+                OnPropertyChanged();
                 if (Program.IsMSIX)
                 {
                     _ = WindowsStartup.StartupWin10(_isStartup);
@@ -208,7 +210,7 @@ namespace livelywpf
             {
 
                 _languageItems = value;
-                OnPropertyChanged("LanguageItems");
+                OnPropertyChanged();
             }
         }
 
@@ -222,7 +224,7 @@ namespace livelywpf
             set
             {
                 _selectedLanguageItem = value;
-                OnPropertyChanged("SelectedLanguageItem");
+                OnPropertyChanged();
                 if (_selectedLanguageItem.Codes.FirstOrDefault(x => x == Settings.Language) == null)
                 {
                     //Settings.IsRestart = true;
@@ -243,7 +245,7 @@ namespace livelywpf
             set
             {
                 _selectedTileSizeIndex = value;
-                OnPropertyChanged("SelectedTileSizeIndex");
+                OnPropertyChanged();
 
                 if (Settings.TileSize != _selectedTileSizeIndex)
                 {
@@ -264,7 +266,7 @@ namespace livelywpf
             set
             {
                 _selectedLivelyUIModeIndex = value;
-                OnPropertyChanged("SelectedLivelyUIModeIndex");
+                OnPropertyChanged();
 
                 //prevent running on startup etc.
                 if (Settings.LivelyGUIRendering != (LivelyGUIState)value)
@@ -284,7 +286,7 @@ namespace livelywpf
             set
             {
                 _wallpaperDirectory = value;
-                OnPropertyChanged("WallpaperDirectory");
+                OnPropertyChanged();
             }
         }
 
@@ -310,7 +312,7 @@ namespace livelywpf
             set
             {
                 _wallpapeDirectoryChanging = value;
-                OnPropertyChanged("WallpapeDirectoryChanging");
+                OnPropertyChanged();
             }
         }
 
@@ -321,7 +323,7 @@ namespace livelywpf
             set
             {
                 _moveExistingWallpaperNewDir = value;
-                OnPropertyChanged("MoveExistingWallpaperNewDir");
+                OnPropertyChanged();
 
                 if (Settings.WallpaperDirMoveExistingWallpaperNewDir != _moveExistingWallpaperNewDir)
                 {
@@ -356,7 +358,7 @@ namespace livelywpf
             set
             {
                 _selectedAppThemeIndex = value;
-                OnPropertyChanged("SelectedAppThemeIndex");
+                OnPropertyChanged();
 
                 //prevent running on startup etc.
                 if (Settings.ApplicationTheme != (AppTheme)value)
@@ -409,7 +411,7 @@ namespace livelywpf
             set
             {
                 _selectedAppFullScreenIndex = value;
-                OnPropertyChanged("SelectedAppFullScreenIndex");
+                OnPropertyChanged();
 
                 if (Settings.AppFullscreenPause != (AppRulesEnum)_selectedAppFullScreenIndex)
                 {
@@ -429,7 +431,7 @@ namespace livelywpf
             set
             {
                 _selectedAppFocusIndex = value;
-                OnPropertyChanged("SelectedAppFocusIndex");
+                OnPropertyChanged();
 
                 if (Settings.AppFocusPause != (AppRulesEnum)_selectedAppFocusIndex)
                 {
@@ -449,11 +451,51 @@ namespace livelywpf
             set
             {
                 _selectedBatteryPowerIndex = value;
-                OnPropertyChanged("SelectedBatteryPowerIndex");
+                OnPropertyChanged();
 
                 if (Settings.BatteryPause != (AppRulesEnum)_selectedBatteryPowerIndex)
                 {
                     Settings.BatteryPause = (AppRulesEnum)_selectedBatteryPowerIndex;
+                    UpdateConfigFile();
+                }
+            }
+        }
+
+        private int _selectedPowerSaveModeIndex;
+        public int SelectedPowerSaveModeIndex
+        {
+            get
+            {
+                return _selectedPowerSaveModeIndex;
+            }
+            set
+            {
+                _selectedPowerSaveModeIndex = value;
+                OnPropertyChanged();
+
+                if (Settings.PowerSaveModePause != (AppRulesEnum)_selectedPowerSaveModeIndex)
+                {
+                    Settings.PowerSaveModePause = (AppRulesEnum)_selectedPowerSaveModeIndex;
+                    UpdateConfigFile();
+                }
+            }
+        }
+
+        private int _selectedRemoteDestopPowerIndex;
+        public int SelectedRemoteDestopPowerIndex
+        {
+            get
+            {
+                return _selectedRemoteDestopPowerIndex;
+            }
+            set
+            {
+                _selectedRemoteDestopPowerIndex = value;
+                OnPropertyChanged();
+
+                if (Settings.RemoteDesktopPause != (AppRulesEnum)_selectedRemoteDestopPowerIndex)
+                {
+                    Settings.RemoteDesktopPause = (AppRulesEnum)_selectedRemoteDestopPowerIndex;
                     UpdateConfigFile();
                 }
             }
@@ -469,7 +511,7 @@ namespace livelywpf
             set
             {
                 _selectedDisplayPauseRuleIndex = value;
-                OnPropertyChanged("SelectedDisplayPauseRuleIndex");
+                OnPropertyChanged();
 
                 if (Settings.DisplayPauseSettings != (DisplayPauseEnum)_selectedDisplayPauseRuleIndex)
                 {
@@ -489,7 +531,7 @@ namespace livelywpf
             set
             {
                 _selectedPauseAlgorithmIndex = value;
-                OnPropertyChanged("SelectedPauseAlgorithmIndex");
+                OnPropertyChanged();
 
                 if (Settings.ProcessMonitorAlgorithm != (ProcessMonitorAlgorithm)_selectedPauseAlgorithmIndex)
                 {
@@ -510,7 +552,7 @@ namespace livelywpf
             set
             {
                 _selectedWallpaperScalingIndex = value;
-                OnPropertyChanged("SelectedWallpaperScalingIndex");
+                OnPropertyChanged();
 
                 if (Settings.WallpaperScaling != (WallpaperScaler)_selectedWallpaperScalingIndex)
                 {
@@ -532,7 +574,7 @@ namespace livelywpf
             set
             {
                 _selectedWallpaperInputMode = value;
-                OnPropertyChanged("SelectedWallpaperInputMode");
+                OnPropertyChanged();
 
                 if (Settings.InputForward != (InputForwardMode)_selectedWallpaperInputMode)
                 {
@@ -562,7 +604,7 @@ namespace livelywpf
             set
             {
                 _selectedVideoPlayerIndex = CheckVideoPluginExists((LivelyMediaPlayer)value) ? value : (int)LivelyMediaPlayer.mpv;
-                OnPropertyChanged("SelectedVideoPlayerIndex");
+                OnPropertyChanged();
 
                 if (Settings.VideoPlayer != (LivelyMediaPlayer)_selectedVideoPlayerIndex)
                 {
@@ -581,7 +623,7 @@ namespace livelywpf
             set
             {
                 _videoPlayerHWDecode = value;
-                OnPropertyChanged("VideoPlayerHWDecode");
+                OnPropertyChanged();
                 if (Settings.VideoPlayerHwAccel != _videoPlayerHWDecode)
                 {
                     Settings.VideoPlayerHwAccel = _videoPlayerHWDecode;
@@ -604,7 +646,7 @@ namespace livelywpf
             set
             {
                 _selectedGifPlayerIndex = CheckGifPluginExists((LivelyGifPlayer)value) ? value : (int)LivelyGifPlayer.mpv;
-                OnPropertyChanged("SelectedGifPlayerIndex");
+                OnPropertyChanged();
                 if (Settings.GifPlayer != (LivelyGifPlayer)_selectedGifPlayerIndex)
                 {
                     Settings.GifPlayer = (LivelyGifPlayer)_selectedGifPlayerIndex;
@@ -622,7 +664,7 @@ namespace livelywpf
             set
             {
                 _selectedWallpaperStreamQualityIndex = value;
-                OnPropertyChanged("SelectedWallpaperStreamQualityIndex");
+                OnPropertyChanged();
                 if (Settings.StreamQuality != (StreamQualitySuggestion)_selectedWallpaperStreamQualityIndex)
                 {
                     Settings.StreamQuality = (StreamQualitySuggestion)_selectedWallpaperStreamQualityIndex;
@@ -643,7 +685,7 @@ namespace livelywpf
             set
             {
                 _selectedWebBrowserIndex = value;
-                OnPropertyChanged("SelectedWebBrowserIndex");
+                OnPropertyChanged();
 
                 if (Settings.WebBrowser != (LivelyWebBrowser)_selectedWebBrowserIndex)
                 {
@@ -664,7 +706,7 @@ namespace livelywpf
             set
             {
                 _mouseMoveOnDesktop = value;
-                OnPropertyChanged("MouseMoveOnDesktop");
+                OnPropertyChanged();
 
                 if (Settings.MouseInputMovAlways != _mouseMoveOnDesktop)
                 {
@@ -686,7 +728,7 @@ namespace livelywpf
                     Settings.WebDebugPort = _webDebuggingPort;
                     UpdateConfigFile();
                 }
-                OnPropertyChanged("WebDebuggingPort");
+                OnPropertyChanged();
             }
         }
 
@@ -702,7 +744,7 @@ namespace livelywpf
                     Settings.CefDiskCache = _cefDiskCache;
                     UpdateConfigFile();
                 }
-                OnPropertyChanged("CefDiskCache");
+                OnPropertyChanged();
             }
         }
 
@@ -718,7 +760,7 @@ namespace livelywpf
                     Settings.AutoDetectOnlineStreams = _detectStreamWallpaper;
                     UpdateConfigFile();
                 }
-                OnPropertyChanged("DetectStreamWallpaper");
+                OnPropertyChanged();
             }
         }
 
@@ -738,7 +780,7 @@ namespace livelywpf
                     Settings.AudioVolumeGlobal = _globalWallpaperVolume;
                     UpdateConfigFile();
                 }
-                OnPropertyChanged("GlobalWallpaperVolume");
+                OnPropertyChanged();
             }
         }
 
@@ -757,7 +799,7 @@ namespace livelywpf
                     Settings.AudioOnlyOnDesktop = _isAudioOnlyOnDesktop;
                     UpdateConfigFile();
                 }
-                OnPropertyChanged("IsAudioOnlyOnDesktop");
+                OnPropertyChanged();
             }
         }
 
@@ -781,7 +823,7 @@ namespace livelywpf
                     Settings.LockScreenAutoWallpaper = _isLockScreenAutoWallpaper;
                     UpdateConfigFile();
                 }
-                OnPropertyChanged("IsLockScreenAutoWallpaper");
+                OnPropertyChanged();
             }
         }
         */
@@ -801,7 +843,7 @@ namespace livelywpf
                     Settings.DesktopAutoWallpaper = _isDesktopAutoWallpaper;
                     UpdateConfigFile();
                 }
-                OnPropertyChanged("IsDesktopAutoWallpaper");
+                OnPropertyChanged();
             }
         }
 
@@ -845,7 +887,7 @@ namespace livelywpf
                     Settings.SystemTaskbarTheme = (TaskbarTheme)_selectedTaskbarThemeIndex;
                     UpdateConfigFile();
                 }
-                OnPropertyChanged("SelectedTaskbarThemeIndex");
+                OnPropertyChanged();
             }
         }
 
@@ -897,7 +939,7 @@ namespace livelywpf
                     Settings.ScreensaverIdleWait = (ScreensaverIdleTime)_selectedScreensaverWaitIndex;
                     UpdateConfigFile();
                 }
-                OnPropertyChanged("SelectedScreensaverWaitIndex");
+                OnPropertyChanged();
             }
         }
 
@@ -916,7 +958,7 @@ namespace livelywpf
                     Settings.ScreensaverLockOnResume = _isScreensaverLockOnResume;
                     UpdateConfigFile();
                 }
-                OnPropertyChanged("IsScreensaverLockOnResume");
+                OnPropertyChanged();
             }
         }
 
@@ -935,7 +977,7 @@ namespace livelywpf
             set
             {
                 _isSysTrayIconVisible = value;
-                OnPropertyChanged("IsSysTrayIconVisible");
+                OnPropertyChanged();
                 TrayIconVisibilityChange?.Invoke(null, _isSysTrayIconVisible);
                 if (Settings.SysTrayIcon != _isSysTrayIconVisible)
                 {
@@ -953,7 +995,7 @@ namespace livelywpf
             set
             {
                 _isDebugMenuVisible = value;
-                OnPropertyChanged("IsDebugMenuVisible");
+                OnPropertyChanged();
                 if (Settings.DebugMenu != _isDebugMenuVisible)
                 {
                     DebugMenuVisibilityChange?.Invoke(null, _isDebugMenuVisible);

@@ -45,7 +45,7 @@ namespace livelywpf
                 if (value != _libraryItems)
                 {
                     _libraryItems = value;
-                    OnPropertyChanged("LibraryItems");
+                    OnPropertyChanged();
                 }
             }
         }
@@ -59,7 +59,7 @@ namespace livelywpf
                 if (value != _libraryItemsFiltered)
                 {
                     _libraryItemsFiltered = value;
-                    OnPropertyChanged("LibraryItemsFiltered");
+                    OnPropertyChanged();
                 }
             }
         }
@@ -72,7 +72,7 @@ namespace livelywpf
             {   
                 _searchText = value;
                 FilterCollection(_searchText);
-                OnPropertyChanged("SearchText");
+                OnPropertyChanged();
             }
         }
 
@@ -114,7 +114,7 @@ namespace livelywpf
                     }
                 }
                 _selectedItem = value;
-                OnPropertyChanged("SelectedItem");
+                OnPropertyChanged();
             }
         }
 

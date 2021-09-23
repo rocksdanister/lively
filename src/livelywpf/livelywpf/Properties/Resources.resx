@@ -123,6 +123,11 @@
   <data name="DescDocumentation" xml:space="preserve">
     <value>API documentation and help</value>
   </data>
+  <data name="DescExplorerCrash" xml:space="preserve">
+    <value>Lively has encountered a fatal error.
+
+Windows Explorer restarted twice in the last 30 seconds! This may be a conflict between Lively and other desktop customization software or Windows. To avoid further issues, all wallpapers are terminated.</value>
+  </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
     <value>Incompatible program found, taskbar theming disabled.</value>
   </data>
@@ -591,7 +596,7 @@ If still not working, close &amp; start Lively again/restart windows.
     <value>Volume level of all wallpapers.</value>
   </data>
   <data name="TipBatteryPower" xml:space="preserve">
-    <value>Change playback when AC power is disconnected (battery operated systems only.)</value>
+    <value>Change playback when AC power is disconnected.</value>
   </data>
   <data name="TipBrowserDebuggingPort" xml:space="preserve">
     <value>Enter the port for debugging webpage wallpapers, browser restart is required for changes to take effect.
@@ -626,6 +631,12 @@ When ready navigate to http://localhost:portnumber to access developer console.<
   </data>
   <data name="TipPauseAlgorithm" xml:space="preserve">
     <value>Wallpaper pause algorithm.</value>
+  </data>
+  <data name="TipPowerSavingModePower" xml:space="preserve">
+    <value>Change playback when Windows Power Saving Mode is enabled.</value>
+  </data>
+  <data name="TipRemoteDesktopPower" xml:space="preserve">
+    <value>Change playback when running a Remote Desktop session.</value>
   </data>
   <data name="TipScreensaver" xml:space="preserve">
     <value>After the selected inactivity period use the current wallpaper as your screensaver.</value>
@@ -795,6 +806,12 @@ Edge is the built in webview of windows 10.</value>
   </data>
   <data name="TitlePleaseWait" xml:space="preserve">
     <value>Please Wait</value>
+  </data>
+  <data name="TitlePowerSavingModePower" xml:space="preserve">
+    <value>When on Battery Saver</value>
+  </data>
+  <data name="TitleRemoteDesktopPower" xml:space="preserve">
+    <value>When on Remote Desktop</value>
   </data>
   <data name="TitleReportBug" xml:space="preserve">
     <value>Report Bug</value>

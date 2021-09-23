@@ -31,7 +31,7 @@ namespace livelywpf
             set
             {
                 _updateStatusText = value;
-                OnPropertyChanged("UpdateStatusText");
+                OnPropertyChanged();
             }
         }
 
@@ -42,7 +42,7 @@ namespace livelywpf
             set
             {
                 _updateDateText = value;
-                OnPropertyChanged("UpdateDateText");
+                OnPropertyChanged();
             }
         }
 
@@ -53,7 +53,7 @@ namespace livelywpf
             set
             {
                 _updateCommandText = value;
-                OnPropertyChanged("UpdateCommandText");
+                OnPropertyChanged();
             }
         }
 

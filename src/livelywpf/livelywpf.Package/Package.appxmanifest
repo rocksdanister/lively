@@ -10,7 +10,7 @@
   <Identity
     Name="12030rocksdanister.LivelyWallpaper"
     Publisher="CN=D80CB9E2-21E6-4D9B-8533-660C768F3C5B"
-    Version="1.0.69.0" />
+    Version="1.0.70.0" />
 
   <Properties>
     <DisplayName>Lively Wallpaper</DisplayName>

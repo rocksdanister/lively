@@ -135,7 +135,7 @@ namespace livelywpf
                 _title = (value?.Length > 100 ? value.Substring(0, 100) : value);
                 libData.Title = _title;
                 libData.LivelyInfo.Title = _title;
-                OnPropertyChanged("Title");
+                OnPropertyChanged();
             }
         }
 
@@ -148,7 +148,7 @@ namespace livelywpf
                 _desc = (value?.Length > 5000 ? value.Substring(0, 5000) : value);
                 libData.Desc = _desc;
                 libData.LivelyInfo.Desc = _desc;
-                OnPropertyChanged("Desc");
+                OnPropertyChanged();
             }
         }
 
@@ -161,7 +161,7 @@ namespace livelywpf
                 _author = (value?.Length > 100 ? value.Substring(0, 100) : value);
                 libData.Author = _author;
                 libData.LivelyInfo.Author = _author;
-                OnPropertyChanged("Author");
+                OnPropertyChanged();
             }
         }
 
@@ -174,7 +174,7 @@ namespace livelywpf
                 _url = value;
                 libData.SrcWebsite = libData.GetUri(_url, "https");
                 libData.LivelyInfo.Contact = _url;
-                OnPropertyChanged("Url");
+                OnPropertyChanged();
             }
         }
 
@@ -189,7 +189,7 @@ namespace livelywpf
             set
             {
                 _isUserEditable = value;
-                OnPropertyChanged("IsUserEditable");
+                OnPropertyChanged();
             }
         }
 
@@ -200,7 +200,7 @@ namespace livelywpf
             set
             {
                 _currentProgress = value;
-                OnPropertyChanged("CurrentProgress");
+                OnPropertyChanged();
             }
         }
 
@@ -216,7 +216,7 @@ namespace livelywpf
                     Program.SettingsVM.Settings.GifCapture = _gifCheck;
                     Program.SettingsVM.UpdateConfigFile();
                 }
-                OnPropertyChanged("GifCheck");
+                OnPropertyChanged();
             }
         }
 
@@ -232,7 +232,7 @@ namespace livelywpf
                     Program.SettingsVM.Settings.LivelyZipGenerate = _zipCheck;
                     Program.SettingsVM.UpdateConfigFile();
                 }
-                OnPropertyChanged("ZipCheck");
+                OnPropertyChanged();
             }
         }
 

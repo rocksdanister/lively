@@ -129,6 +129,24 @@
                             <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}" 
                                        Text="{x:Static p:Resources.TipBatteryPower}"/>
 
+                            <TextBlock Text="{x:Static p:Resources.TitlePowerSavingModePower}" Margin="0,10,0,0"/>
+                            <ComboBox Margin="0,5,0,0" MinWidth="200" SelectedIndex="{Binding SelectedPowerSaveModeIndex, Mode=TwoWay}">
+                                <ComboBoxItem Content="{x:Static p:Resources.TextPerformancePause}"/>
+                                <ComboBoxItem Content="{x:Static p:Resources.TextPerformanceNone}"/>
+                                <ComboBoxItem IsEnabled="False" Content="{x:Static p:Resources.TextPerformanceKill}"/>
+                            </ComboBox>
+                            <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}" 
+                                       Text="{x:Static p:Resources.TipPowerSavingModePower}"/>
+
+                            <TextBlock Text="{x:Static p:Resources.TitleRemoteDesktopPower}" Margin="0,10,0,0"/>
+                            <ComboBox Margin="0,5,0,0" MinWidth="200" SelectedIndex="{Binding SelectedRemoteDestopPowerIndex, Mode=TwoWay}">
+                                <ComboBoxItem Content="{x:Static p:Resources.TextPerformancePause}"/>
+                                <ComboBoxItem Content="{x:Static p:Resources.TextPerformanceNone}"/>
+                                <ComboBoxItem IsEnabled="False" Content="{x:Static p:Resources.TextPerformanceKill}"/>
+                            </ComboBox>
+                            <TextBlock Margin="0,10,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}" 
+                                       Text="{x:Static p:Resources.TipRemoteDesktopPower}"/>
+
                             <TextBlock Text="{x:Static p:Resources.TitleDisplayPauseRule}" Margin="0,10,0,0"/>
                             <ComboBox Margin="0,5,0,0" MinWidth="200" SelectedIndex="{Binding SelectedDisplayPauseRuleIndex, Mode=TwoWay}">
                                 <ComboBoxItem Content="{x:Static p:Resources.TextDisplayPauseRulePerScreen}"/>
