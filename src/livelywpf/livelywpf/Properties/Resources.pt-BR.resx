@@ -846,48 +846,48 @@ O Edge é a webview embutida do Windows 10.</value>
     <value>Saiba mais</value>
   </data>
     <data name="DescOledScreensaverNotice" xml:space="preserve">
-    <value>Most modern LCD and LED displays do not suffer from burn-in issue and therefore any wallpaper can be used as screensaver.
+    <value>A maioria dos displays LCD e LED não sofrem de burn-in e portanto qualquer plano de fundo pode ser usado como protetor de tela.
 
-For OLED, Plasma or CRT displays which are susceptibe to burn-in it is advised to use wallpaper with regular motion and an overall dark theme which is supposed to mitigate burn-in but this feature is untested and its effectiveness cannot be guaranteed.
+Para displays OLED, Plasma ou CRT que estão sujeitos a burn-in, é recomendável usar um plano de fundo com movimento regular e aparência escura no geral, que deve reduzir o burn-in mas esta função não foi testada e sua efetividade não pode ser garantida.
 
-The main purpose of Lively's screensavers is to add another layer of customization to your pc, use screensavers as burn-in protection at your own risk!</value>
+O foco principal dos protetores de tela do Lively é adicionar mais uma camada de customização em seu PC, use protetores de tela como prevenção ao burn-in por sua conta e risco!</value>
   </data>
   <data name="TextChangeWallpaper" xml:space="preserve">
-    <value>Change Wallpapers</value>
+    <value>Alterar planos de fundo</value>
   </data>
   <data name="TextLastChecked" xml:space="preserve">
-    <value>Last checked</value>
+    <value>Última verificação</value>
   </data>
   <data name="TitleUpdates" xml:space="preserve">
-    <value>Updates</value>
+    <value>Atualizações</value>
   </data>
   <data name="DescCommunity" xml:space="preserve">
-    <value>Online discussion forum</value>
+    <value>Fórum de discussão online</value>
   </data>
   <data name="DescDocumentation" xml:space="preserve">
-    <value>API documentation and help</value>
+    <value>Documentação do API e ajuda</value>
   </data>
   <data name="DescOfficialWebpage" xml:space="preserve">
-    <value>Official webpage of Lively Wallpaper</value>
+    <value>Site oficial do Lively Wallpaper</value>
   </data>
   <data name="DescReportBug" xml:space="preserve">
-    <value>Report a problem with the software</value>
+    <value>Reporte um problema com o software</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
-    <value>Show support by buying the developer coffee</value>
+    <value>Mostre seu apoio comprando um café para o desenvolvedor</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
-    <value>You are about to change to beta (developer) build of Lively.
-Updates will be frequent and may contain bugs!</value>
+    <value>Você está prestes a mudar para a compilação beta (desenvolvedor) do Lively.
+Atualizações serão frequentes e podem ter bugs!</value>
   </data>
   <data name="TextSwitchBranchDev" xml:space="preserve">
-    <value>Switch to beta (Dev channel)</value>
+    <value>Mudar para o beta (Canal Dev)</value>
   </data>
   <data name="TextSwitchBranchOfficial" xml:space="preserve">
-    <value>Switch to stable (Default channel)</value>
+    <value>Mudar para estável (Canal Padrão)</value>
   </data>
   <data name="TipSwitchSoftwareBranch" xml:space="preserve">
-    <value>Change software release from beta to stable or vice versa.</value>
+    <value>Alterar a versão do software do beta para o estável ou vice-versa.</value>
   </data>
   <data name="TitleChangelog" xml:space="preserve">
     <value>Changelog</value>
@@ -896,6 +896,23 @@ Updates will be frequent and may contain bugs!</value>
     <value>Direct3D</value>
   </data>
   <data name="TitleScreensaverLockOnResume" xml:space="preserve">
-    <value>On resume, display logon screen</value>
-  </data>    
+    <value>Ao retornar, exibir tela de logon</value>
+  </data>
+  <data name="TipPowerSavingModePower" xml:space="preserve">
+    <value>Mudar reprodução quando o modo de economia de bateria do Windows estiver ativo.</value>
+  </data>
+  <data name="TitlePowerSavingModePower" xml:space="preserve">
+    <value>Quando estiver na Economia de Bateria</value>
+  </data>
+  <data name="TipRemoteDesktopPower" xml:space="preserve">
+    <value>Mudar reprodução quando estiver em uma sessão da Área de Trabalho Remota.</value>
+  </data>
+  <data name="TitleRemoteDesktopPower" xml:space="preserve">
+    <value>Quando estiver na Área de Trabalho Remota</value>
+  </data>
+  <data name="DescExplorerCrash" xml:space="preserve">
+    <value>Lively encontrou um erro fatal.
+
+O Explorador do Windows reiniciou duas vezes nos últimos 30 segundos! Isso pode ser um conflito entre o Lively e outro software de customização ou o Windows. Para evitar maiores problemas, todos os planos de fundo foram encerrados.</value>
+  </data>
 </root>

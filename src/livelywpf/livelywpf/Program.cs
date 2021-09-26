@@ -101,7 +101,7 @@ namespace livelywpf
         private static void App_Startup(object sender, StartupEventArgs e)
         {
             sysTray = new Systray(SettingsVM.IsSysTrayIconVisible);
-
+            ApplicationThemeChange(Program.SettingsVM.Settings.ApplicationTheme);
             AppUpdaterService.Instance.UpdateChecked += AppUpdateChecked;
             _ = AppUpdaterService.Instance.CheckUpdate();
             AppUpdaterService.Instance.Start();

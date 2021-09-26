@@ -404,7 +404,7 @@ Wenn es immer noch nicht funktioniert, schließen &amp; starten Sie Lively oder 
     <value>Lively passt die Einstellungen des Systemthemas an, um das Aussehen zu ändern</value>
   </data>
   <data name="TipBatteryPower" xml:space="preserve">
-    <value>Wiedergabe wechseln, wenn die Stromversorgung unterbrochen wird. (nur für batteriebetriebene Systeme) </value>
+    <value>Wiedergabe wechseln, wenn die Stromversorgung unterbrochen wird.</value>
   </data>
   <data name="TipBrowserDebuggingPort" xml:space="preserve">
     <value>Geben Sie den Port für das Debugging von Webseiten-Hintergründen ein. Ein Neustart des Browsers ist erforderlich, damit die Änderungen wirksam werden.
@@ -424,6 +424,12 @@ Wenn Sie bereit sind, navigieren Sie zu http://localhost:portnumber, um auf die 
   </data>
   <data name="TipPauseAlgorithm" xml:space="preserve">
     <value>Pause-Algorithmus für Hintergrund</value>
+  </data>
+  <data name="TipPowerSavingModePower" xml:space="preserve">
+    <value>Wiedergabe ändern, wenn der Energiesparmodus aktiviert ist.</value>
+  </data>
+  <data name="TipRemoteDesktopPower" xml:space="preserve">
+    <value>Wiedergabe ändern, wenn eine Remotedesktopsitzung ausgeführt wird.</value>
   </data>
   <data name="TipStreamWallpaperDetect" xml:space="preserve">
     <value>Wenn ein unterstützter Video-Stream-Link erkannt wird, verwenden Sie den Videoplayer, anstatt die Webseite zu laden.</value>
@@ -548,6 +554,12 @@ Edge ist die eingebaute Webansicht von Windows 10.</value>
   </data>
   <data name="TitlePleaseWait" xml:space="preserve">
     <value>Bitte warten</value>
+  </data>
+  <data name="TitlePowerSavingModePower" xml:space="preserve">
+    <value>Wenn auf Energie sparen</value>
+  </data>
+  <data name="TitleRemoteDesktopPower" xml:space="preserve">
+    <value>Wenn auf Remotedesktop</value>
   </data>
   <data name="TitleScalingFit" xml:space="preserve">
     <value>Skalierung/Anpassung</value>
@@ -819,6 +831,11 @@ Aktualisierungen finden häufiger statt und können Fehler enthalten!</value>
   </data>
   <data name="DescDocumentation" xml:space="preserve">
     <value>API-Dokumentation und Hilfe</value>
+  </data>
+  <data name="DescExplorerCrash" xml:space="preserve">
+    <value>Lively hat einen schwerwiegenden Fehler festgestellt.
+
+Windows Explorer wurde in den letzten 30 Sekunden zwei Mal neu gestartet! Dies kann durch einen Konflikt von Lively mit anderer Software zur Desktopanpassung oder von Windows hervorgerufen sein. Um weitere Probleme zu vermeiden, werden alle Hintergründe beendet.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
     <value>Nicht geeignetes Programm gefunden. Taskleisten-Gestaltung deaktiviert.</value>
