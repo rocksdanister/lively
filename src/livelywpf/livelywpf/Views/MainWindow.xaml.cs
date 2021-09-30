@@ -18,8 +18,10 @@ namespace livelywpf
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static bool IsExit { get; set; } = false;
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+        private DateTime prevCrashTime = DateTime.MinValue;
+        private int prevExplorerPid = GetTaskbarExplorerPid();
+        public static bool IsExit { get; set; } = false;
 
         public MainWindow()
         {
@@ -339,8 +341,6 @@ namespace livelywpf
             source.AddHook(WndProc);
         }
 
-        private DateTime prevCrashTime = DateTime.MinValue;
-
         private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
             if (msg == NativeMethods.WM_SHOWLIVELY)
@@ -350,23 +350,29 @@ namespace livelywpf
             }
             else if (msg == NativeMethods.WM_TASKBARCREATED)
             {
-                //explorer crash detection, new taskbar is created everytime explorer is started..
                 Logger.Info("WM_TASKBARCREATED: New taskbar created.");
-                if ((DateTime.Now - prevCrashTime).TotalSeconds > 30)
+                int newExplorerPid = GetTaskbarExplorerPid();
+                if (prevExplorerPid != newExplorerPid)
                 {
-                    SetupDesktop.ResetWorkerW();
+                    //Explorer crash detection..
+                    Logger.Info($"Explorer crashed: {prevExplorerPid} != {newExplorerPid}");
+                    if ((DateTime.Now - prevCrashTime).TotalSeconds > 30)
+                    {
+                        SetupDesktop.ResetWorkerW();
+                    }
+                    else
+                    {
+                        //todo: move this to core.
+                        Logger.Warn("Explorer restarted multiple times in the last 30s.");
+                        _ = Task.Run(() => MessageBox.Show(Properties.Resources.DescExplorerCrash,
+                                $"{Properties.Resources.TitleAppName} - {Properties.Resources.TextError}",
+                                MessageBoxButton.OK, MessageBoxImage.Error));
+                        SetupDesktop.TerminateAllWallpapers();
+                        SetupDesktop.ResetWorkerW();
+                    }
+                    prevCrashTime = DateTime.Now;
+                    prevExplorerPid = newExplorerPid;
                 }
-                else
-                {
-                    //todo: move this to core.
-                    Logger.Warn("Explorer restarted multiple times in the last 30s.");
-                    _ = Task.Run(() => MessageBox.Show(Properties.Resources.DescExplorerCrash,
-                        $"{Properties.Resources.TitleAppName} - {Properties.Resources.TextError}",
-                        MessageBoxButton.OK, MessageBoxImage.Error));
-                    SetupDesktop.TerminateAllWallpapers();
-                    SetupDesktop.ResetWorkerW();
-                }
-                prevCrashTime = DateTime.Now;
             }
             else if (msg == (uint)NativeMethods.WM.QUERYENDSESSION && Program.IsMSIX)
             {
@@ -383,5 +389,15 @@ namespace livelywpf
         }
 
         #endregion //window msg
+
+        #region helpers
+
+        private static int GetTaskbarExplorerPid()
+        {
+            _ = NativeMethods.GetWindowThreadProcessId(NativeMethods.FindWindow("Shell_TrayWnd", null), out int pid);
+            return pid;
+        }
+
+        #endregion //helpers
     }
 }

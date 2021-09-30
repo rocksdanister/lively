@@ -10,22 +10,24 @@
       Title="LibraryAboutView">
 
     <Grid>
-        <StackPanel>
-            <TextBlock Margin="0, 0, 0, 0" Text="{Binding Title}"/>
-            <TextBlock Margin="0, 5, 0, 0" TextWrapping="Wrap" Text="{Binding Desc}" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}"/>
-            <TextBlock Margin="0, 5, 0, 0" Text="{x:Static p:Resources.TextWallpaperType}"/>
-            <TextBlock Margin="0, 5, 0, 0" Text="{Binding WallpaperType}" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}"/>
-            <TextBlock Margin="0, 5, 0, 0" Text="{x:Static p:Resources.TextAuthor}"/>
-            <TextBlock Margin="0, 5, 0, 0" Text="{Binding Author}" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}"/>
-            <TextBlock Margin="0, 5, 0, 0" Text="{x:Static p:Resources.TextSource}"/>
-            <!--<Hyperlink Margin="0, 0, 0, 0" Content="{Binding SrcWebsite}" NavigateUri="{Binding SrcWebsite}"/>-->
-            <TextBlock Margin="0, 5, 0, 0">
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" HorizontalAlignment="Left">
+            <StackPanel MaxWidth="475" Margin="0, 0, 10, 0">
+                <TextBlock Margin="0, 0, 0, 0" Text="{Binding Title}"/>
+                <TextBlock Margin="0, 5, 0, 0" TextWrapping="Wrap" Text="{Binding Desc}" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}"/>
+                <TextBlock Margin="0, 5, 0, 0" Text="{x:Static p:Resources.TextWallpaperType}"/>
+                <TextBlock Margin="0, 5, 0, 0" Text="{Binding WallpaperType}" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}"/>
+                <TextBlock Margin="0, 5, 0, 0" Text="{x:Static p:Resources.TextAuthor}"/>
+                <TextBlock Margin="0, 5, 0, 0" Text="{Binding Author}" Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}"/>
+                <TextBlock Margin="0, 5, 0, 0" Text="{x:Static p:Resources.TextSource}"/>
+                <!--<Hyperlink Margin="0, 0, 0, 0" Content="{Binding SrcWebsite}" NavigateUri="{Binding SrcWebsite}"/>-->
+                <TextBlock Margin="0, 5, 0, 0">
             <Hyperlink NavigateUri="{Binding SrcWebsite}" RequestNavigate="Hyperlink_RequestNavigate">
                 <Hyperlink.Inlines>
                     <Run Text="{Binding SrcWebsite}"/>
                 </Hyperlink.Inlines>
             </Hyperlink>
-            </TextBlock>
-        </StackPanel>
+                </TextBlock>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>
