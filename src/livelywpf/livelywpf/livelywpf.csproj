@@ -29,8 +29,8 @@
     <PackageReference Include="Downloader" Version="2.2.9" />
     <PackageReference Include="H.Hooks" Version="1.4.9" />
     <PackageReference Include="Magick.NET-Q16-x86" Version="8.3.2" />
-    <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.0.2" />
-    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.961.33" />
+    <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.0" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.992.28" />
     <PackageReference Include="Microsoft.Windows.Compatibility" Version="5.0.2" />
     <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.19041.1" />
     <PackageReference Include="ModernWpfUI" Version="0.9.4" />
