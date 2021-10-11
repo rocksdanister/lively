@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using livelywpf.Helpers;
+using livelywpf.Helpers.MVVM;
 
 namespace livelywpf
 {

@@ -1,15 +1,14 @@
 ﻿using livelywpf.Core;
+using livelywpf.Helpers;
+using livelywpf.Helpers.UI;
+using livelywpf.Helpers.Updater;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Windows.Threading;
+using livelywpf.Model;
 
 namespace livelywpf
 {
@@ -50,7 +49,7 @@ namespace livelywpf
             };
             _notifyIcon.ContextMenuStrip.Opening += ContextMenuStrip_Opening;
 
-            _notifyIcon.ContextMenuStrip.Renderer = new Helpers.CustomContextMenu.RendererDark();
+            _notifyIcon.ContextMenuStrip.Renderer = new CustomContextMenu.RendererDark();
             _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextOpenLively, Properties.Icons.icons8_home_64).Click += (s, e) => Program.ShowMainWindow();
 
             _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextCloseWallpapers, null).Click += (s, e) => SetupDesktop.TerminateAllWallpapers();
@@ -69,23 +68,23 @@ namespace livelywpf
 
             if (!Program.IsMSIX)
             {
-                _notifyIcon.ContextMenuStrip.Items.Add(new Helpers.CustomContextMenu.StripSeparatorCustom().stripSeparator);
+                _notifyIcon.ContextMenuStrip.Items.Add(new CustomContextMenu.StripSeparatorCustom().stripSeparator);
                 updateTrayBtn = new ToolStripMenuItem(Properties.Resources.TextUpdateChecking, null)
                 {
                     Enabled = false
                 };
-                updateTrayBtn.Click += (s, e) => Program.AppUpdateDialog(Helpers.AppUpdaterService.Instance.LastCheckUri, Helpers.AppUpdaterService.Instance.LastCheckChangelog);
+                updateTrayBtn.Click += (s, e) => Program.AppUpdateDialog(AppUpdaterService.Instance.LastCheckUri, AppUpdaterService.Instance.LastCheckChangelog);
                 _notifyIcon.ContextMenuStrip.Items.Add(updateTrayBtn);
             }
 
-            _notifyIcon.ContextMenuStrip.Items.Add(new Helpers.CustomContextMenu.StripSeparatorCustom().stripSeparator);
+            _notifyIcon.ContextMenuStrip.Items.Add(new CustomContextMenu.StripSeparatorCustom().stripSeparator);
             _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextSupport, Properties.Icons.icons8_heart_48).Click += (s, e) =>
                             Helpers.LinkHandler.OpenBrowser("https://ko-fi.com/rocksdanister");
-            _notifyIcon.ContextMenuStrip.Items.Add(new Helpers.CustomContextMenu.StripSeparatorCustom().stripSeparator);
+            _notifyIcon.ContextMenuStrip.Items.Add(new CustomContextMenu.StripSeparatorCustom().stripSeparator);
             _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TitleReportBug, Properties.Icons.icons8_bug_50).Click += (s, e) =>
                             Helpers.LinkHandler.OpenBrowser("https://github.com/rocksdanister/lively/wiki/Common-Problems");
 
-            _notifyIcon.ContextMenuStrip.Items.Add(new Helpers.CustomContextMenu.StripSeparatorCustom().stripSeparator);
+            _notifyIcon.ContextMenuStrip.Items.Add(new CustomContextMenu.StripSeparatorCustom().stripSeparator);
             _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextExit, Properties.Icons.icons8_delete_52).Click += (s, e) => Program.ExitApplication();
         }
 

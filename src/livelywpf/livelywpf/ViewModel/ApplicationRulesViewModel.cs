@@ -1,4 +1,7 @@
-﻿using System;
+﻿using livelywpf.Helpers.MVVM;
+using livelywpf.Helpers.Storage;
+using livelywpf.Model;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -16,7 +19,7 @@ namespace livelywpf
         {
             try
             {
-                var list = Helpers.JsonStorage<List<ApplicationRulesModel>>.LoadData(Path.Combine(Program.AppDataDir, "AppRules.json"));
+                var list = JsonStorage<List<ApplicationRulesModel>>.LoadData(Path.Combine(Program.AppDataDir, "AppRules.json"));
                 AppRules = new ObservableCollection<ApplicationRulesModel>(list);
             }
             catch (Exception e)
@@ -147,7 +150,7 @@ namespace livelywpf
         {
             try
             {
-                Helpers.JsonStorage<List<ApplicationRulesModel>>.StoreData(Path.Combine(Program.AppDataDir, "AppRules.json"), AppRules.ToList());
+                JsonStorage<List<ApplicationRulesModel>>.StoreData(Path.Combine(Program.AppDataDir, "AppRules.json"), AppRules.ToList());
             }
             catch (Exception e)
             {

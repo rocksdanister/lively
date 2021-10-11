@@ -1,18 +1,15 @@
 ﻿using livelywpf.Core;
+using livelywpf.Helpers.MVVM;
+using livelywpf.Helpers.NetStream;
+using livelywpf.Helpers.Storage;
 using livelywpf.Views;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Management;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Input;
 using YoutubeExplode;
+using livelywpf.Model;
 
 namespace livelywpf
 {
@@ -103,7 +100,7 @@ namespace livelywpf
             try
             {
                 //Library also checks, this is not required..
-                if (!Helpers.StreamHelper.IsYoutubeUrl(url))
+                if (!StreamHelper.IsYoutubeUrl(url))
                     return;
 
                 IsUserEditable = false;
@@ -361,7 +358,7 @@ namespace livelywpf
                 //user pressed ok..everything went well :)
                 try
                 {
-                    Helpers.JsonStorage<LivelyInfoModel>.StoreData(
+                    JsonStorage<LivelyInfoModel>.StoreData(
                         Path.Combine(libData.LivelyInfoFolderPath, "LivelyInfo.json"), libData.LivelyInfo);
                 }
                 catch (Exception e)

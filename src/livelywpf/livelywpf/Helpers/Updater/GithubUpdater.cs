@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace livelywpf.Helpers
+namespace livelywpf.Helpers.Updater
 {
     class GithubUpdater : IAppUpdater
     {

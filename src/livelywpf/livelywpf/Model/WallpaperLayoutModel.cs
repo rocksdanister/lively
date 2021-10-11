@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 using livelywpf.Model;
 using livelywpf.Core;
 
-namespace livelywpf
+namespace livelywpf.Model
 {
     /// <summary>
     /// Wallpaper arragement on display.

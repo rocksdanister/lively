@@ -1,9 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using livelywpf.Helpers.MVVM;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace livelywpf
+namespace livelywpf.Model
 {
     [Serializable]
     public class ApplicationRulesModel : ObservableObject

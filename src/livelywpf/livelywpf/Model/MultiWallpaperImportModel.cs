@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using livelywpf.Helpers;
+using livelywpf.Helpers.Files;
 
-namespace livelywpf
+namespace livelywpf.Model
 {
     class MultiWallpaperImportModel
     {

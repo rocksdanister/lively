@@ -7,8 +7,13 @@ using System.Windows.Threading;
 using CommandLine;
 using livelywpf.Core.API;
 using livelywpf.Helpers;
+using livelywpf.Helpers.Files;
+using livelywpf.Helpers.Screensaver;
+using livelywpf.Helpers.Shell;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using livelywpf.Model;
+using livelywpf.Core;
 
 namespace livelywpf.Cmd
 {
@@ -157,7 +162,7 @@ namespace livelywpf.Cmd
 
             if (opts.ShowIcons != null)
             {
-                Helpers.DesktopUtil.SetDesktopIconVisibility((bool)opts.ShowIcons);
+                DesktopUtil.SetDesktopIconVisibility((bool)opts.ShowIcons);
             }
             return 0;
         }
@@ -429,11 +434,11 @@ namespace livelywpf.Cmd
             {
                 if (opts.Show == true)
                 {
-                    Helpers.ScreensaverService.Instance.Start();
+                    ScreensaverService.Instance.Start();
                 }
                 else
                 {
-                    Helpers.ScreensaverService.Instance.Stop();
+                    ScreensaverService.Instance.Stop();
                 }
             }
 
@@ -446,7 +451,7 @@ namespace livelywpf.Cmd
 
                 if (opts.Preview != null)
                 {
-                    Helpers.ScreensaverService.Instance.CreatePreview(new IntPtr((int)opts.Preview));
+                    ScreensaverService.Instance.CreatePreview(new IntPtr((int)opts.Preview));
                 }
             }));
             return 0;

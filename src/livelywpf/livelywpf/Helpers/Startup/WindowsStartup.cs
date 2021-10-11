@@ -7,7 +7,7 @@ using Windows.ApplicationModel;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace livelywpf
+namespace livelywpf.Helpers.Startup
 {
     public static class WindowsStartup
     {

@@ -1,5 +1,8 @@
 ﻿using ImageMagick;
 using livelywpf.Core;
+using livelywpf.Helpers;
+using livelywpf.Helpers.Pinvoke;
+using livelywpf.Helpers.ScreenRecord;
 using System;
 using System.Globalization;
 using System.IO;

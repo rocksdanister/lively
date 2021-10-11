@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace livelywpf
+namespace livelywpf.Model
 {
     [Serializable]
     public class LanguagesModel

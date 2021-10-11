@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace livelywpf.Helpers
+namespace livelywpf.Helpers.Hardware
 {
     public class HWUsageMonitorEventArgs : EventArgs
     {

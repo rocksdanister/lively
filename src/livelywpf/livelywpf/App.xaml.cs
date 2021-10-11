@@ -5,6 +5,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Reflection;
+using livelywpf.Helpers.Files;
+using livelywpf.Helpers.Archive;
+using livelywpf.Helpers;
+using livelywpf.Core;
 
 namespace livelywpf
 {

@@ -1,14 +1,15 @@
 ﻿using livelywpf.Core.API;
+using livelywpf.Helpers;
+using livelywpf.Helpers.Pinvoke;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Drawing.Imaging;
 using System.IO;
 using System.Management;
 using System.Text;
 using System.Threading.Tasks;
+using livelywpf.Model;
 
 namespace livelywpf.Core
 {

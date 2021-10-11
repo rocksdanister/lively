@@ -1,20 +1,21 @@
 ﻿using livelywpf.Core;
 using livelywpf.Core.API;
+using livelywpf.Helpers;
+using livelywpf.Helpers.Pinvoke;
+using livelywpf.Helpers.Screensaver;
+using livelywpf.Helpers.Storage;
 using livelywpf.Views;
-using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Interop;
 using System.Windows.Threading;
-using Windows.ApplicationModel.Wallet.System;
+using livelywpf.Model;
 
-namespace livelywpf
+namespace livelywpf.Core
 {
     public static class SetupDesktop
     {
@@ -704,7 +705,7 @@ namespace livelywpf
 
             try
             {
-                Helpers.JsonStorage<List<WallpaperLayoutModel>>.StoreData(Path.Combine(Program.AppDataDir, "WallpaperLayout.json"), layout);
+                JsonStorage<List<WallpaperLayoutModel>>.StoreData(Path.Combine(Program.AppDataDir, "WallpaperLayout.json"), layout);
             }
             catch (Exception e)
             {
@@ -725,7 +726,7 @@ namespace livelywpf
             {
                 Logger.Info("Display settings changed, screen(s):");
                 ScreenHelper.GetScreen().ForEach(x => Logger.Info(x.DeviceName + " " + x.Bounds));
-                Helpers.ScreensaverService.Instance.Stop();
+                ScreensaverService.Instance.Stop();
                 RefreshWallpaper();
                 await RestoreDisconnectedWallpapers();
             }
@@ -894,7 +895,7 @@ namespace livelywpf
         {
             try
             {
-                var wallpaperLayout = Helpers.JsonStorage<List<WallpaperLayoutModel>>.LoadData(wallpaperLayoutPath);
+                var wallpaperLayout = JsonStorage<List<WallpaperLayoutModel>>.LoadData(wallpaperLayoutPath);
                 if (Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span ||
                     Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.duplicate)
                 {

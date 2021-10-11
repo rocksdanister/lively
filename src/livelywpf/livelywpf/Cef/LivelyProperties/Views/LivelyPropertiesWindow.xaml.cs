@@ -4,7 +4,9 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Interop;
 using livelywpf.Core;
+using livelywpf.Helpers.Pinvoke;
 using ModernWpf.Media.Animation;
+using livelywpf.Model;
 
 namespace livelywpf.Cef
 {

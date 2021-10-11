@@ -1,6 +1,6 @@
-﻿using ModernWpf.Controls.Primitives;
+﻿using livelywpf.Helpers.Hardware;
+using ModernWpf.Controls.Primitives;
 using ModernWpf.Media.Animation;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows;
@@ -14,7 +14,7 @@ namespace livelywpf.Views.SetupWizard
     {
         private int index = 0;
         private bool _isClosable = false;
-        private readonly List<object> pages = new List<object>() { 
+        private readonly List<object> pages = new List<object>() {
             new PageWelcome(),
             new PageStartup(),
             //new PageDirectory(),

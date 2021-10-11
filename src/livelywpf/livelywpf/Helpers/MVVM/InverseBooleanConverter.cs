@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Data;
 
-namespace livelywpf.Helpers
+namespace livelywpf.Helpers.MVVM
 {
     class InverseBooleanConverter : IValueConverter
     {

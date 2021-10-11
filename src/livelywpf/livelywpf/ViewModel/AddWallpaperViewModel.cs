@@ -1,10 +1,15 @@
 ﻿using livelywpf.Helpers;
+using livelywpf.Helpers.Archive;
+using livelywpf.Helpers.Files;
+using livelywpf.Helpers.MVVM;
+using livelywpf.Helpers.NetStream;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using livelywpf.Model;
 
 namespace livelywpf
 {

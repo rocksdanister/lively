@@ -1,4 +1,4 @@
-﻿namespace livelywpf.Helpers
+﻿namespace livelywpf.Helpers.Files
 {
     public class FileData
     {

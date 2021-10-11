@@ -13,8 +13,10 @@ using Timer = System.Timers.Timer;
 using H.Hooks;
 using Point = System.Drawing.Point;
 using System.Diagnostics;
+using livelywpf.Helpers.Pinvoke;
+using livelywpf.Core;
 
-namespace livelywpf.Helpers
+namespace livelywpf.Helpers.Screensaver
 {
     public sealed class ScreensaverService
     {

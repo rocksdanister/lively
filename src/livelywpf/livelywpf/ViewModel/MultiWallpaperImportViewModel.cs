@@ -7,6 +7,11 @@ using System.Threading.Tasks;
 using System.Linq;
 using System.ComponentModel;
 using System.Threading;
+using livelywpf.Helpers.Files;
+using livelywpf.Helpers.MVVM;
+using livelywpf.Helpers.Archive;
+using livelywpf.Model;
+using livelywpf.Core;
 
 namespace livelywpf 
 {

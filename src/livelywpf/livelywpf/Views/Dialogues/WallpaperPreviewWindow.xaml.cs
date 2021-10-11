@@ -7,6 +7,10 @@ using System.Windows.Media;
 using System.Windows.Threading;
 using livelywpf.Core;
 using livelywpf.Core.API;
+using livelywpf.Helpers;
+using livelywpf.Helpers.Pinvoke;
+using livelywpf.Helpers.ScreenRecord;
+using livelywpf.Model;
 
 namespace livelywpf.Views
 {
@@ -24,7 +28,7 @@ namespace livelywpf.Views
         //video capture
         private DispatcherTimer dispatcherTimer;
         private bool _recording = false;
-        private Helpers.IScreenRecorder recorder;
+        private IScreenRecorder recorder;
         private int elapsedTime;
 
         #region wallpaper loader
@@ -240,7 +244,7 @@ namespace livelywpf.Views
                 }
 
                 //recorder initialization
-                recorder = new Helpers.ScreenRecorderlibScreen();
+                recorder = new ScreenRecorderlibScreen();
                 recorder.Initialize(savePath, prevBorder, 60, 8000 * 1000, false, false);
                 //recorder.Initialize(savePath, new WindowInteropHelper(this).Handle, 60, 8000 * 1000, false, false);
                 recorder.RecorderStatus += Recorder_RecorderStatus;
@@ -298,24 +302,24 @@ namespace livelywpf.Views
             recordStatusText.Text = time;
         }
 
-        private void Recorder_RecorderStatus(object sender, Helpers.ScreenRecorderStatus e)
+        private void Recorder_RecorderStatus(object sender, ScreenRecorderStatus e)
         {
             switch (e)
             {
-                case Helpers.ScreenRecorderStatus.idle:
+                case ScreenRecorderStatus.idle:
                     break;
-                case Helpers.ScreenRecorderStatus.paused:
+                case ScreenRecorderStatus.paused:
                     break;
-                case Helpers.ScreenRecorderStatus.fail:
+                case ScreenRecorderStatus.fail:
                     _ = this.Dispatcher.BeginInvoke(new Action(() => {
                         StopRecording();
                     }));
                     break;
-                case Helpers.ScreenRecorderStatus.recording:
+                case ScreenRecorderStatus.recording:
                     break;
-                case Helpers.ScreenRecorderStatus.finishing:
+                case ScreenRecorderStatus.finishing:
                     break;
-                case Helpers.ScreenRecorderStatus.success:
+                case ScreenRecorderStatus.success:
                     break;
             }
             Logger.Info("Record status:" + e);

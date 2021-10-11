@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using livelywpf.Core.API;
 using livelywpf.Helpers;
+using livelywpf.Model;
 
 namespace livelywpf.Core
 {

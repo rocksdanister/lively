@@ -10,6 +10,8 @@ using System.Windows;
 using System.Windows.Threading;
 using System.Linq;
 using livelywpf.Helpers.Hardware;
+using livelywpf.Helpers.Pinvoke;
+using livelywpf.Helpers.Screensaver;
 
 namespace livelywpf.Core
 {

@@ -1,11 +1,11 @@
-﻿using ModernWpf.Controls;
+﻿using livelywpf.Helpers.NetWork;
+using ModernWpf.Controls;
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Documents;
-using livelywpf.NetWork;
 
 namespace livelywpf.Views
 {

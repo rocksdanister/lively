@@ -1,4 +1,6 @@
 ﻿using livelywpf.Core.API;
+using livelywpf.Helpers;
+using livelywpf.Helpers.NetStream;
 using Microsoft.Web.WebView2.Core;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -51,7 +53,7 @@ namespace livelywpf
                 {
                     webView.CoreWebView2.NavigateToString(tmp);
                 }
-                else if ((tmp = Helpers.StreamHelper.GetYouTubeVideoIdFromUrl(htmlPath)) != "")
+                else if ((tmp = StreamHelper.GetYouTubeVideoIdFromUrl(htmlPath)) != "")
                 {
                     //open fullscreen embed player with loop enabled.
                     webView.CoreWebView2.Navigate("https://www.youtube.com/embed/" + tmp +

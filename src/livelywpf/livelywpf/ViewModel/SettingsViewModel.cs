@@ -1,6 +1,13 @@
 ﻿using livelywpf.Core;
+using livelywpf.Helpers;
+using livelywpf.Helpers.Files;
+using livelywpf.Helpers.MVVM;
+using livelywpf.Helpers.Screensaver;
+using livelywpf.Helpers.Shell;
+using livelywpf.Helpers.Startup;
+using livelywpf.Helpers.Storage;
+using livelywpf.Helpers.Updater;
 using livelywpf.Views;
-using Octokit;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,7 +19,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
-using System.Windows.Input;
+using livelywpf.Model;
 
 namespace livelywpf
 {
@@ -23,7 +30,7 @@ namespace livelywpf
         {
             try
             {
-                Settings = Helpers.JsonStorage<SettingsModel>.LoadData(Path.Combine(Program.AppDataDir, "Settings.json"));
+                Settings = JsonStorage<SettingsModel>.LoadData(Path.Combine(Program.AppDataDir, "Settings.json"));
             }
             catch (Exception e)
             {
@@ -136,25 +143,13 @@ namespace livelywpf
             IsScreensaverLockOnResume = Settings.ScreensaverLockOnResume;
         }
 
-        private SettingsModel _settings;
-        public SettingsModel Settings
-        {
-            get
-            {
-                return _settings;
-            }
-            set
-            {
-                _settings = value;
-                OnPropertyChanged();
-            }
-        }
+        public SettingsModel Settings { get; set; }
 
         public void UpdateConfigFile()
         {
             try
             {
-                Helpers.JsonStorage<SettingsModel>.StoreData(Path.Combine(Program.AppDataDir, "Settings.json"), Settings);
+                JsonStorage<SettingsModel>.StoreData(Path.Combine(Program.AppDataDir, "Settings.json"), Settings);
             }
             catch (Exception e)
             {
@@ -577,11 +572,11 @@ namespace livelywpf
                 //todo: show msg to user desc whats happening.
                 if (Settings.InputForward == InputForwardMode.mousekeyboard)
                 {
-                    Helpers.DesktopUtil.SetDesktopIconVisibility(false);
+                    DesktopUtil.SetDesktopIconVisibility(false);
                 }
                 else
                 {
-                    Helpers.DesktopUtil.SetDesktopIconVisibility(Helpers.DesktopUtil.DesktopIconVisibilityDefault);
+                    DesktopUtil.SetDesktopIconVisibility(DesktopUtil.DesktopIconVisibilityDefault);
                 }
             }
         }
@@ -912,11 +907,11 @@ namespace livelywpf
                 };
                 if (idleTime != 0)
                 {
-                    Helpers.ScreensaverService.Instance.StartIdleTimer(idleTime);
+                    ScreensaverService.Instance.StartIdleTimer(idleTime);
                 }
                 else
                 {
-                    Helpers.ScreensaverService.Instance.StopIdleTimer();
+                    ScreensaverService.Instance.StopIdleTimer();
                 }
                 //save the data..
                 if (Settings.ScreensaverIdleWait != (ScreensaverIdleTime)_selectedScreensaverWaitIndex)
@@ -1037,7 +1032,7 @@ namespace livelywpf
             {
                 canSwitchBranchCommand = false;
                 SwitchBranchCommand.RaiseCanExecuteChanged();
-                (Uri, Version, string) item = await Helpers.AppUpdaterService.Instance.GetLatestRelease(!Program.IsTestBuild);
+                (Uri, Version, string) item = await AppUpdaterService.Instance.GetLatestRelease(!Program.IsTestBuild);
                 var msg = Program.IsTestBuild ?
                     item.Item3 : $"!! {Properties.Resources.TitleWarning} !!\n{Properties.Resources.DescSwitchBranchBetaWarning}\n\n{Properties.Resources.TitleChangelog}\n{item.Item3}";
                 var updateWindow = new AppUpdaterView(item.Item1, msg)

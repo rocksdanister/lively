@@ -1,8 +1,9 @@
-﻿using System;
+﻿using livelywpf.Helpers.Pinvoke;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace livelywpf.Helpers
+namespace livelywpf.Helpers.Shell
 {
     public static class DesktopUtil
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 
-namespace livelywpf.Helpers
+namespace livelywpf.Helpers.Scheduler
 {
     public enum SchedulerEventType
     {

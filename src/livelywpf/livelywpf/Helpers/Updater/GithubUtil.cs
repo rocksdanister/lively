@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace livelywpf.Helpers
+namespace livelywpf.Helpers.Updater
 {
     public static class GithubUtil
     {

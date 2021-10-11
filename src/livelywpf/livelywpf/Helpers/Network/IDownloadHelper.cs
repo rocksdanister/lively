@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace livelywpf.NetWork
+namespace livelywpf.Helpers.NetWork
 {
     public class DownloadProgressEventArgs : EventArgs
     {

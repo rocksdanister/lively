@@ -1,4 +1,6 @@
 ﻿using livelywpf.Helpers;
+using livelywpf.Helpers.Files;
+using livelywpf.Helpers.MVVM;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +10,7 @@ using System.Security.Cryptography;
 using System.Text;
 using Windows.Storage.Provider;
 
-namespace livelywpf
+namespace livelywpf.Model
 {
     public enum LibraryTileType
     {

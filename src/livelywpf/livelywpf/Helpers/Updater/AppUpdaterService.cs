@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Timer = System.Timers.Timer;
 
-namespace livelywpf.Helpers
+namespace livelywpf.Helpers.Updater
 {
     public class AppUpdaterEventArgs : EventArgs
     {

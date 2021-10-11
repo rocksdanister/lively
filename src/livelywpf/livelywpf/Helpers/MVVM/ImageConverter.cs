@@ -5,7 +5,7 @@ using System.Text;
 using System.Windows.Data;
 using System.Windows.Media.Imaging;
 
-namespace livelywpf.Helpers
+namespace livelywpf.Helpers.MVVM
 {
     class ImageConverter : IValueConverter
     {

@@ -7,6 +7,10 @@ using System.Windows;
 using System.Linq;
 using livelywpf.Helpers;
 using System.Windows.Threading;
+using livelywpf.Helpers.IPC;
+using livelywpf.Helpers.Updater;
+using livelywpf.Helpers.Pinvoke;
+using livelywpf.Core;
 
 namespace livelywpf
 {
@@ -46,7 +50,7 @@ namespace livelywpf
                     {
                         //skipping first element (application path.)
                         var args = Environment.GetCommandLineArgs().Skip(1).ToArray();
-                        Helpers.PipeClient.SendMessage(pipeServerName, args.Length != 0 ? args : new string[] { "--showApp", "true" });
+                        PipeClient.SendMessage(pipeServerName, args.Length != 0 ? args : new string[] { "--showApp", "true" });
                     }
                     catch
                     {
@@ -70,7 +74,7 @@ namespace livelywpf
 
             try
             {
-                var server = new Helpers.PipeServer(pipeServerName);
+                var server = new PipeServer(pipeServerName);
                 server.MessageReceived += Server_MessageReceived1;
             }
             catch (Exception e)

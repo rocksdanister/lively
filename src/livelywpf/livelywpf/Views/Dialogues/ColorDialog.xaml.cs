@@ -7,6 +7,7 @@ using Microsoft.Toolkit.Wpf.UI.XamlHost;
 using ColorUwp = Windows.UI.Color;
 using ColorMedia = System.Windows.Media.Color;
 using CursorForm = System.Windows.Forms.Cursor;
+using livelywpf.Helpers.Pinvoke;
 
 namespace livelywpf.Views
 {

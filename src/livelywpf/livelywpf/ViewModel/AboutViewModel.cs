@@ -1,4 +1,6 @@
 ﻿using livelywpf.Helpers;
+using livelywpf.Helpers.MVVM;
+using livelywpf.Helpers.Updater;
 using System;
 using System.Collections.Generic;
 using System.IO;

@@ -9,6 +9,8 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
+using livelywpf.Helpers.Hardware;
+using livelywpf.Helpers.Archive;
 
 namespace livelywpf
 {

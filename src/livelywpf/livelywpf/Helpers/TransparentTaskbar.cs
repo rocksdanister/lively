@@ -6,6 +6,7 @@ using System.Runtime.InteropServices;
 using System.Diagnostics;
 using System.Collections.Generic;
 using System.Threading;
+using livelywpf.Helpers.Pinvoke;
 
 namespace livelywpf.Helpers
 {

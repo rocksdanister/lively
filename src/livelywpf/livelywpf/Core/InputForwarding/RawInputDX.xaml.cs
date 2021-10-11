@@ -5,6 +5,8 @@ using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Interop;
 using Linearstar.Windows.RawInput;
+using livelywpf.Helpers;
+using livelywpf.Helpers.Pinvoke;
 
 namespace livelywpf.Core
 {

@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
 
-namespace livelywpf.Helpers
+namespace livelywpf.Helpers.NetStream
 {
     public static class StreamHelper
     {

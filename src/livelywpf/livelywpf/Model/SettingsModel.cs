@@ -1,16 +1,14 @@
-﻿using livelywpf.Model;
+﻿using livelywpf.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using System.Text;
-using System.Windows.Forms;
 
-namespace livelywpf
+namespace livelywpf.Model
 {
 
     [Serializable]
-    public class SettingsModel : ObservableObject
+    public class SettingsModel
     {
         public string AppVersion { get; set; }
         public string Language { get; set; }

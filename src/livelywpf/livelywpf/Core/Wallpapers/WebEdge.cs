@@ -1,4 +1,5 @@
 ﻿using livelywpf.Core.API;
+using livelywpf.Helpers.Pinvoke;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -6,6 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Interop;
 using System.Windows.Threading;
+using livelywpf.Model;
 
 namespace livelywpf.Core
 {

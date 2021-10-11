@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace livelywpf
+namespace livelywpf.Helpers.Files
 {
     public static class FileOperations
     {

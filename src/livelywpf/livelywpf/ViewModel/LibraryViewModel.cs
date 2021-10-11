@@ -6,6 +6,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using livelywpf.Core;
 using System.Threading;
+using livelywpf.Helpers.Files;
+using livelywpf.Helpers.MVVM;
+using livelywpf.Helpers.Storage;
+using livelywpf.Helpers.Archive;
+using livelywpf.Helpers;
+using livelywpf.Model;
 
 namespace livelywpf
 {
@@ -179,7 +185,7 @@ namespace livelywpf
 
                             try
                             {
-                                Helpers.JsonStorage<LivelyInfoModel>.StoreData(Path.Combine(tmpDir, "LivelyInfo.json"), info);
+                                JsonStorage<LivelyInfoModel>.StoreData(Path.Combine(tmpDir, "LivelyInfo.json"), info);
                             }
                             catch (Exception e)
                             {
@@ -232,7 +238,7 @@ namespace livelywpf
 
                             try
                             {
-                                Helpers.JsonStorage<LivelyInfoModel>.StoreData(Path.Combine(tmpDir, "LivelyInfo.json"), info);
+                                JsonStorage<LivelyInfoModel>.StoreData(Path.Combine(tmpDir, "LivelyInfo.json"), info);
                             }
                             catch (Exception e)
                             {
@@ -453,7 +459,7 @@ namespace livelywpf
                 LivelyInfoModel info = null;
                 try
                 {
-                    info = Helpers.JsonStorage<LivelyInfoModel>.LoadData(Path.Combine(folderPath, "LivelyInfo.json"));
+                    info = JsonStorage<LivelyInfoModel>.LoadData(Path.Combine(folderPath, "LivelyInfo.json"));
                 }
                 catch (Exception e)
                 {

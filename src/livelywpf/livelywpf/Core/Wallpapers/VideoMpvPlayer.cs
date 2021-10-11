@@ -1,15 +1,19 @@
 ﻿using ImageMagick;
 using livelywpf.Core.API;
+using livelywpf.Helpers;
+using livelywpf.Helpers.IPC;
+using livelywpf.Helpers.NetStream;
+using livelywpf.Helpers.Pinvoke;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using livelywpf.Model;
 
 namespace livelywpf.Core
 {
@@ -148,7 +152,7 @@ namespace livelywpf.Core
             //screenshot location, important read: https://mpv.io/manual/master/#pseudo-gui-mode
             cmdArgs.Append("--screenshot-template=" + "\"" + Path.Combine(Program.AppDataDir, "temp", ipcServerName) + "\" --screenshot-format=jpg ");
             //file or online video stream path
-            cmdArgs.Append(model.LivelyInfo.Type == WallpaperType.videostream ? Helpers.StreamHelper.YoutubeDLMpvArgGenerate(streamQuality, path) : "\"" + path + "\"");
+            cmdArgs.Append(model.LivelyInfo.Type == WallpaperType.videostream ? StreamHelper.YoutubeDLMpvArgGenerate(streamQuality, path) : "\"" + path + "\"");
 
             ProcessStartInfo start = new ProcessStartInfo
             {
@@ -346,7 +350,7 @@ namespace livelywpf.Core
 
                         if (msg != null)
                         {
-                            Helpers.PipeClient.SendMessage(ipcServerName, msg);
+                            PipeClient.SendMessage(ipcServerName, msg);
                         }
                     }
                 }
@@ -572,7 +576,7 @@ namespace livelywpf.Core
         {
             try
             {
-                Helpers.PipeClient.SendMessage(ipcServerName, msg);
+                PipeClient.SendMessage(ipcServerName, msg);
             }
             catch { }
         }

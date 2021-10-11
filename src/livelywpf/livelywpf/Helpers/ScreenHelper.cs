@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using livelywpf.Core;
 
-namespace livelywpf
+namespace livelywpf.Helpers
 {
     public static class ScreenHelper
     {

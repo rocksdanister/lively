@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Xps.Serialization;
 using livelywpf.Core;
+using livelywpf.Helpers.MVVM;
 
 namespace livelywpf.Model
 {

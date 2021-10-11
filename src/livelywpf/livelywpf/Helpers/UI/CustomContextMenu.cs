@@ -5,7 +5,7 @@ using System.Drawing.Drawing2D;
 using System.Text;
 using System.Windows.Forms;
 
-namespace livelywpf.Helpers
+namespace livelywpf.Helpers.UI
 {
     //System-tray menu custom style.
     //ref:

@@ -1,4 +1,5 @@
-﻿using livelywpf.Views;
+﻿using livelywpf.Core;
+using livelywpf.Views;
 using Microsoft.Toolkit.Wpf.UI.XamlHost;
 //using ModernWpf.Controls;
 using ModernWpf.Media.Animation;

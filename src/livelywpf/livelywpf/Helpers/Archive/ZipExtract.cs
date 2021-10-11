@@ -7,7 +7,7 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace livelywpf
+namespace livelywpf.Helpers.Archive
 {
     public static class ZipExtract
     {
