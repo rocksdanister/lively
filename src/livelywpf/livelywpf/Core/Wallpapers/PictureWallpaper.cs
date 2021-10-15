@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using livelywpf.Core.API;
 using livelywpf.Helpers;
-using livelywpf.Model;
+using livelywpf.Models;
 
-namespace livelywpf.Core
+namespace livelywpf.Core.Wallpapers
 {
     //incomplete
     class PictureWallpaper : IWallpaper

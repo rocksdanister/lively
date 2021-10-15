@@ -12,8 +12,9 @@ using livelywpf.Helpers.Screensaver;
 using livelywpf.Helpers.Shell;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using livelywpf.Model;
+using livelywpf.Models;
 using livelywpf.Core;
+using livelywpf.Core.Suspend;
 
 namespace livelywpf.Cmd
 {
@@ -155,7 +156,7 @@ namespace livelywpf.Cmd
 
                 if (opts.Play != null)
                 {
-                    Core.Playback.WallpaperPlaybackState = (bool)opts.Play ? PlaybackState.play : PlaybackState.paused;
+                    Playback.WallpaperPlaybackState = (bool)opts.Play ? PlaybackState.play : PlaybackState.paused;
                 }
 
             }));

@@ -425,7 +425,7 @@ Wszystkie: Zatrzymaj tapetę na wszystkich ekranach jeśli jakakolwiek aplikacja
 Wszystkie procesy: Większe obciążenie procesora, skanuje wszystkie procesy aby określić sposób odtwarzania tapety.</value>
   </data>
   <data name="TipStreamWallpaperDetect" xml:space="preserve">
-    <value>Jeśli wykryto obsługiwany strumień wideo zamiast ładować stronę internetową użyj odtwarzacza.</value>
+    <value>Jeśli wykryto obsługiwany strumień wideo, zamiast ładować stronę internetową użyj odtwarzacza.</value>
   </data>
   <data name="TipStreamWallpaperVideoQuality" xml:space="preserve">
     <value>Wybierz żądaną jakość wideo dla strumieniowania online.</value>
@@ -783,10 +783,10 @@ https://github.com/rocksdanister/lively/wiki</value>
   <value>Wprowadź opcjonalne argumenty linii poleceń.</value>
 </data>
   <data name="TextGitHubStar" xml:space="preserve">
-    <value>Show some love by dropping a star</value>
+    <value>Okaż wsparcie dla projektu, dając gwiazdkę</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
-    <value>Incompatible program found, taskbar theming disabled.</value>
+    <value>Znaleziono niekompatybilny program, motywy paska zadań zostały wyłączone.</value>
   </data>
   <data name="TitleTaskbarTheme" xml:space="preserve">
     <value>Motyw paska zadań</value>
@@ -853,49 +853,49 @@ Dla wyświetlaczy typu OLED, Plasma lub CRT które są podatbe na efekt wypalani
 Głównym celem wygaszacza ekranu Lively jest dodanie kolejenej warstwy personalizacji do Twojego pc, używaj wygaszacza jako zabezpieczenia przed wypaleniem na własne ryzyko!</value>
   </data>
   <data name="TextChangeWallpaper" xml:space="preserve">
-    <value>Change Wallpapers</value>
+    <value>Zmień tapety</value>
   </data>
   <data name="TextLastChecked" xml:space="preserve">
-    <value>Last checked</value>
+    <value>Ostatnio sprawdzane</value>
   </data>
   <data name="TitleUpdates" xml:space="preserve">
-    <value>Updates</value>
+    <value>Aktualizacje</value>
   </data>
   <data name="DescCommunity" xml:space="preserve">
-    <value>Online discussion forum</value>
+    <value>Forum dyskusyjne</value>
   </data>
   <data name="DescDocumentation" xml:space="preserve">
-    <value>API documentation and help</value>
+    <value>Dokumentacja API i pomoc</value>
   </data>
   <data name="DescOfficialWebpage" xml:space="preserve">
-    <value>Official webpage of Lively Wallpaper</value>
+    <value>Oficjalna strona Lively Wallpaper</value>
   </data>
   <data name="DescReportBug" xml:space="preserve">
-    <value>Report a problem with the software</value>
+    <value>Zgłoś problem z oprogramowaniem</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
-    <value>Show support by buying the developer coffee</value>
+    <value>Okaż wsparcie deweloperowi, kupując mu kawę</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
-    <value>You are about to change to beta (developer) build of Lively.
-Updates will be frequent and may contain bugs!</value>
+    <value>Masz zamiar zmienić wersję Lively do wersji beta (deweloperskiej)
+Aktualizacje będą częste i mogą zawierać błędy!</value>
   </data>
   <data name="TextSwitchBranchDev" xml:space="preserve">
-    <value>Switch to beta (Dev channel)</value>
+    <value>Zmień do wersji beta (kanał Dev)</value>
   </data>
   <data name="TextSwitchBranchOfficial" xml:space="preserve">
-    <value>Switch to stable (Default channel)</value>
+    <value>Zmień do wersji stabilnej(domyślny kanał)</value>
   </data>
   <data name="TipSwitchSoftwareBranch" xml:space="preserve">
-    <value>Change software release from beta to stable or vice versa.</value>
+    <value>Zmiana wydania oprogramowanie z wersji beta na stabilną lub odwrotnie.</value>
   </data>
   <data name="TitleChangelog" xml:space="preserve">
-    <value>Changelog</value>
+    <value>Dziennik zmian</value>
   </data>
   <data name="TextPauseAlgoExclusiveMode" xml:space="preserve">
     <value>Direct3D</value>
   </data>
   <data name="TitleScreensaverLockOnResume" xml:space="preserve">
-    <value>On resume, display logon screen</value>
+    <value>Po wznowieniu wyświetl ekran logowania</value>
   </data>    
 </root>

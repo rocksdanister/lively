@@ -14,7 +14,7 @@ using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media.Imaging;
 
-namespace livelywpf
+namespace livelywpf.Views.Wallpapers
 {
     /// <summary>
     /// Interaction logic for WebView2Element.xaml

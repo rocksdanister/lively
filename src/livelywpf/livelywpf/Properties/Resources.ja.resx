@@ -117,6 +117,33 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="DescCommunity" xml:space="preserve">
+    <value>オンラインのディスカッションフォーラム</value>
+  </data>
+  <data name="DescDocumentation" xml:space="preserve">
+    <value>APIのドキュメントとヘルプ</value>
+  </data>
+  <data name="DescExplorerCrash" xml:space="preserve">
+    <value>Livelyで致命的なエラーが発生しました。
+
+エクスプローラーは30秒以内に2回再起動しました！ これはLivelyと他のデスクトップカスタマイズソフトウェアまたはWindowsとの間で競合している可能性があります。 さらなる問題を避けるために全ての壁紙を終了します</value>
+  </data>
+  <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
+    <value>互換性のないプログラムが見つかりました。タスクバーのテーマは無効になります。</value>
+  </data>
+  <data name="DescOfficialWebpage" xml:space="preserve">
+    <value>Lively Wallpaper の公式Webサイト</value>
+  </data>
+  <data name="DescOledScreensaverNotice" xml:space="preserve">
+    <value>最近の液晶ディスプレイやLEDディスプレイのほとんどは画面の焼き付きがないため、どんな壁紙でもスクリーンセーバーとして使用できます。
+
+焼き付きの影響を受けやすい有機ELやプラズマ、ブラウン管のディスプレイでは焼き付きを軽減するために動きのある壁紙や全体的に暗いテーマを使用することをお勧めしますが、この機能は検証されておらず、その効果は保証されていません。
+
+Livelyのスクリーンセーバーの主な目的はあなたのPCのカスタマイズをより深めることであり、焼き付きの保護のために使用するのは自己責任です！</value>
+  </data>
+  <data name="DescReportBug" xml:space="preserve">
+    <value>ソフトウェアの不具合を報告する</value>
+  </data>
   <data name="DescriptionAddWallpaper" xml:space="preserve">
     <value>ファイルを選択するか、ウェブサイトのURLを指定して壁紙として設定します。</value>
   </data>
@@ -141,10 +168,13 @@
 このアプリケーションが信頼できるソースから来ている場合のみ続行してください。</value>
   </data>
   <data name="DescriptionMinimizedTray" xml:space="preserve">
-    <value>活気がシステムトレイに最小化されているので、活気のアイコンを右クリックして続行します。</value>
+    <value>Livelyはシステムトレイに最小化されています。Livelyのアイコンを右クリックして続行します。</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
-    <value>設定を有効にするために、Livelyを再起動してください。</value>
+    <value>設定を反映させるためには、Livelyを再起動してください。</value>
+  </data>
+  <data name="DescriptionPleaseStop" xml:space="preserve">
+    <value>続行する前に停止してください。</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
     <value>押して録画を開始します。</value>
@@ -153,79 +183,96 @@
     <value>前の壁紙を復元中、お待ちください...</value>
   </data>
   <data name="DescriptionScreenLayout" xml:space="preserve">
-    <value>表示を選択</value>
+    <value>ディスプレイの選択</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
-    <value>新バージョンのソフトが登場しました！</value>
+    <value>新しいバージョンのソフトウェアが利用可能です！</value>
   </data>
   <data name="DescriptionWebpageLoad" xml:space="preserve">
-    <value>ウェブサイトのURLを入力してください、shadertoy.comのシェーダーリンクがサポートされています。</value>
+    <value>ロードするウェブサイトのリンクを入力してください。shadertoy.comのシェーダーリンクがサポートされています</value>
   </data>
   <data name="DescriptionWelcomeWizard" xml:space="preserve">
-    <value>このウィザードを使って、Livelyの設定を開始します。</value>
+    <value>このウィザードではLivelyのセットアップを開始します。</value>
+  </data>
+  <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
+    <value>お使いのWindows N/KN エディションでは、壁紙での動画再生をサポートするために追加のコーデックをダウンロードする必要があります。</value>
+  </data>
+  <data name="DescSupperDev" xml:space="preserve">
+    <value>開発者にコーヒーを買ってサポートする</value>
+  </data>
+  <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
+    <value>Livelyのベータ（開発者）版に変更しようとしています。
+アップデートが頻繁に行われ、バグを含む可能性があります！</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
-    <value>アップデートに失敗しました。
+    <value>アップデートに失敗しました。 下のサイトからインストーラーをダウンロードしてください。:
 https://github.com/rocksdanister/lively/releases</value>
   </data>
   <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
-    <value>破損した壁紙ファイルは、再ダウンロードしてみてください。</value>
+    <value>壁紙のファイルが破損しています。再ダウンロードをしてください。</value>
   </data>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
-    <value>おっと... 何かが間違っているようです :(
-このエラーをより良く理解し、問題を解決するために、ログファイルを開発者と共有してください。
-ログファイルの共有方法は以下の通りです。
+    <value>おっと... 何かがうまくいかなかったようです :(
+このエラーを理解し問題を解決するために、ログファイルを開発者に共有してください。
+ログファイルを共有するための手順:
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
-    <value>Windowsのハイコントラストモードが有効な状態では、Livelyが正常に動作しません。
-ハイコントラストモードを無効にして、もう一度試してみてください。</value>
+    <value>Windowsのハイコントラストモードが有効な状態では、Livelyが正常に動作しません！
+ハイコントラストモードを無効にしてから再度お試しください。</value>
   </data>
   <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
-    <value>メディア再生に失敗しました。
-livelyの設定でビデオプレイヤーを変更してみてください。
+    <value>メディアの再生に失敗しました。 :(
+Livelyの設定から動画プレイヤーを変更してみてください。
 
-このエラーを理解し、問題を解決するために、ログファイルを開発者と共有してください。
-ログファイルの共有方法：
+このエラーを理解し問題を解決するために、ログファイルを開発者に共有してください。
+ログファイルを共有するための手順:
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
     <value>Livelyの壁紙ファイルではありません。</value>
   </data>
   <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
-    <value>Livelyが正常に閉じられず、セーフモードで起動していました。
-以前実行していた壁紙を復元しますか？</value>
+    <value>Livelyが適切に閉じられず、セーフモードで起動しました。
+以前に実行した壁紙を復元しますか？</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
-    <value>Livelyを動作させるためには、いくつかの設定が必要なようです。 
-1. 1.このPC(マイコンピュータ)を開きます。
-2. 空の領域を右クリックします。
-3. プロパティを選択します。
-4. システムの詳細設定を選択します。
-5. パフォーマンス」タブで「設定」を選択します。
-6. 6. ウィンドウ内のコントロールと要素のアニメーションを有効にし、適用します。
+    <value>Livelyを動作させるためには、いくつかの設定が必要なようです。  
+1.  Win + R を押して"ファイル名を指定して実行"を開きます, 
+2. SystemPropertiesPerformance.exe と入力して"OK"を押し、パフォーマンス オプションを開きます.
+3. "Windows 内のアニメーション コントロールと要素" の項目にチェックを入れて（既にチェックがついている場合は、一度チェックを外してからもう一度チェックを入れます）有効にします。
+4. "適用"をクリックしたら"OK"を押してウインドウを閉じます。
 
-Windows 7の場合は、単に設定 - 最適な外観に調整 &amp;amp; 適用します。
-それでも動作しない場合は、閉じて、もう一度Livelyを起動するか、Windowsを再起動してください。
-(一部のインサイダーのWindows 10ビルドでは動作しません)</value>
+Windows 7 の場合は、"パフォーマンスを優先する"を選択するだけです。
+それでも動作しない場合は、Livelyを再起動するか、Windowsを再起動してください。
+(一部のWindows 10 Insider ビルドでは動作しません)</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
     <value>追加</value>
+  </data>
+  <data name="TextAllFiles" xml:space="preserve">
+    <value>すべてのファイル</value>
   </data>
   <data name="TextApplication" xml:space="preserve">
     <value>アプリケーション</value>
   </data>
   <data name="TextAttribution" xml:space="preserve">
-    <value>属性</value>
+    <value>帰属</value>
   </data>
   <data name="TextAuthor" xml:space="preserve">
-    <value>著者</value>
+    <value>作者</value>
   </data>
   <data name="TextBack" xml:space="preserve">
     <value>戻る</value>
   </data>
   <data name="TextBrowse" xml:space="preserve">
-    <value>閲覧</value>
+    <value>参照</value>
+  </data>
+  <data name="TextCancel" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="TextChangeWallpaper" xml:space="preserve">
+    <value>壁紙を変更</value>
   </data>
   <data name="TextClose" xml:space="preserve">
     <value>閉じる</value>
@@ -236,26 +283,38 @@ Windows 7の場合は、単に設定 - 最適な外観に調整 &amp;amp; 適用
   <data name="TextCompleted" xml:space="preserve">
     <value>完成！</value>
   </data>
+  <data name="TextControlPanelOpen" xml:space="preserve">
+    <value>クリックで壁紙の管理へ</value>
+  </data>
   <data name="TextConvertVideo" xml:space="preserve">
-    <value>ビデオに変換する</value>
+    <value>動画に変換</value>
+  </data>
+  <data name="TextCreatePreview" xml:space="preserve">
+    <value>プレビューの作成</value>
   </data>
   <data name="TextCustomise" xml:space="preserve">
     <value>カスタマイズ</value>
   </data>
   <data name="TextCustomiseWallpaper" xml:space="preserve">
-    <value>壁紙をカスタマイズする</value>
+    <value>壁紙のカスタマイズ</value>
   </data>
   <data name="TextDeleteWallpaper" xml:space="preserve">
     <value>削除</value>
+  </data>
+  <data name="TextDescription" xml:space="preserve">
+    <value>説明</value>
   </data>
   <data name="TextDisplayPauseRuleAllScreen" xml:space="preserve">
     <value>全画面</value>
   </data>
   <data name="TextDisplayPauseRulePerScreen" xml:space="preserve">
-    <value>1画面当たり</value>
+    <value>１画面当たり</value>
   </data>
   <data name="TextDownload" xml:space="preserve">
     <value>ダウンロード</value>
+  </data>
+  <data name="TextEditWallpaper" xml:space="preserve">
+    <value>編集</value>
   </data>
   <data name="TextError" xml:space="preserve">
     <value>エラー</value>
@@ -264,10 +323,19 @@ Windows 7の場合は、単に設定 - 最適な外観に調整 &amp;amp; 適用
     <value>終了</value>
   </data>
   <data name="TextExportWallpaperZip" xml:space="preserve">
-    <value>Lively .zipを出力する</value>
+    <value>lively.zip を出力する</value>
+  </data>
+  <data name="TextFeatureMissing" xml:space="preserve">
+    <value>このバージョンのLivelyでは利用できない機能があります。</value>
+  </data>
+  <data name="TextFileNotFound" xml:space="preserve">
+    <value>ファイルが存在しません</value>
   </data>
   <data name="TextGIF" xml:space="preserve">
     <value>アニメーションGIF</value>
+  </data>
+  <data name="TextGitHubStar" xml:space="preserve">
+    <value>Starをあげてソフトウェアへの愛を伝える</value>
   </data>
   <data name="TextGo" xml:space="preserve">
     <value>GO</value>
@@ -275,14 +343,29 @@ Windows 7の場合は、単に設定 - 最適な外観に調整 &amp;amp; 適用
   <data name="TextHelpTranslate" xml:space="preserve">
     <value>Livelyの翻訳を手伝ってください。</value>
   </data>
+  <data name="TextHours" xml:space="preserve">
+    <value>時間</value>
+  </data>
   <data name="TextInstall" xml:space="preserve">
     <value>インストール</value>
   </data>
   <data name="TextKeyboard" xml:space="preserve">
     <value>キーボード</value>
   </data>
+  <data name="TextLastChecked" xml:space="preserve">
+    <value>最終チェック</value>
+  </data>
+  <data name="TextLearnMore" xml:space="preserve">
+    <value>もっと詳しく</value>
+  </data>
+  <data name="TextLicense" xml:space="preserve">
+    <value>ライセンス</value>
+  </data>
+  <data name="TextMinutes" xml:space="preserve">
+    <value>分</value>
+  </data>
   <data name="TextmoreInfo" xml:space="preserve">
-    <value>情報のご案内</value>
+    <value>インフォメーション</value>
   </data>
   <data name="TextMoreWallpapers" xml:space="preserve">
     <value>他の壁紙を見る</value>
@@ -291,7 +374,7 @@ Windows 7の場合は、単に設定 - 最適な外観に調整 &amp;amp; 適用
     <value>マウス</value>
   </data>
   <data name="TextMouseInteractOnDesktop" xml:space="preserve">
-    <value>アプリケーションに焦点を当てた場合のマウスの相互作用を設定します。</value>
+    <value>アプリケーションにフォーカスしたときにマウスのインタラクションを有効にする</value>
   </data>
   <data name="TextNext" xml:space="preserve">
     <value>次へ</value>
@@ -301,6 +384,9 @@ Windows 7の場合は、単に設定 - 最適な外観に調整 &amp;amp; 適用
   </data>
   <data name="TextOff" xml:space="preserve">
     <value>オフ</value>
+  </data>
+  <data name="TextOK" xml:space="preserve">
+    <value>OK</value>
   </data>
   <data name="TextOn" xml:space="preserve">
     <value>オン</value>
@@ -314,8 +400,11 @@ Windows 7の場合は、単に設定 - 最適な外観に調整 &amp;amp; 適用
   <data name="TextPauseAlgoAllProcess" xml:space="preserve">
     <value>すべてのプロセス</value>
   </data>
+  <data name="TextPauseAlgoExclusiveMode" xml:space="preserve">
+    <value>Direct3D</value>
+  </data>
   <data name="TextPauseAlgoForegroundProcess" xml:space="preserve">
-    <value>前景のプロセス</value>
+    <value>フォアグラウンドプロセス</value>
   </data>
   <data name="TextPauseWallpapers" xml:space="preserve">
     <value>壁紙を一時停止する</value>
@@ -328,6 +417,18 @@ Windows 7の場合は、単に設定 - 最適な外観に調整 &amp;amp; 適用
   </data>
   <data name="TextPerformancePause" xml:space="preserve">
     <value>一時停止</value>
+  </data>
+  <data name="TextPicture" xml:space="preserve">
+    <value>画像</value>
+  </data>
+  <data name="TextPreviewWallpaper" xml:space="preserve">
+    <value>プレビュー</value>
+  </data>
+  <data name="TextPrivacyPolicy" xml:space="preserve">
+    <value>個人情報保護方針</value>
+  </data>
+  <data name="TextProcessingWallpaper" xml:space="preserve">
+    <value>処理</value>
   </data>
   <data name="TextRemove" xml:space="preserve">
     <value>削除</value>
@@ -354,13 +455,40 @@ Windows 7の場合は、単に設定 - 最適な外観に調整 &amp;amp; 適用
     <value>スタート</value>
   </data>
   <data name="TextStop" xml:space="preserve">
-    <value>停止</value>
+    <value>ストップ</value>
+  </data>
+  <data name="TextStoreReview" xml:space="preserve">
+    <value>Livelyの使用を楽しんでいますか？ コメントをください :)</value>
   </data>
   <data name="TextSupport" xml:space="preserve">
     <value>サポート</value>
   </data>
+  <data name="TextSwitchBranchDev" xml:space="preserve">
+    <value>ベータ版に切り替える（Devチャンネル）</value>
+  </data>
+  <data name="TextSwitchBranchOfficial" xml:space="preserve">
+    <value>安定版に切り替える（Defaultチャンネル）</value>
+  </data>
   <data name="TextTags" xml:space="preserve">
     <value>タグ</value>
+  </data>
+  <data name="TextTaskbarThemeBlur" xml:space="preserve">
+    <value>ぼかし</value>
+  </data>
+  <data name="TextTaskbarThemeClear" xml:space="preserve">
+    <value>透明</value>
+  </data>
+  <data name="TextTaskbarThemeColor" xml:space="preserve">
+    <value>カラー</value>
+  </data>
+  <data name="TextTaskbarThemeFluent" xml:space="preserve">
+    <value>なめらか</value>
+  </data>
+  <data name="TextTaskbarThemeWallpaper" xml:space="preserve">
+    <value>壁紙の色</value>
+  </data>
+  <data name="TextTaskbarThemeWallpaperFluent" xml:space="preserve">
+    <value>壁紙の色（なめらか）</value>
   </data>
   <data name="TextTileSizeLarge" xml:space="preserve">
     <value>大</value>
@@ -371,6 +499,9 @@ Windows 7の場合は、単に設定 - 最適な外観に調整 &amp;amp; 適用
   <data name="TextTileSizeSmall" xml:space="preserve">
     <value>小</value>
   </data>
+  <data name="TextTitle" xml:space="preserve">
+    <value>タイトル</value>
+  </data>
   <data name="TextUIHeadless" xml:space="preserve">
     <value>ヘッドレス</value>
   </data>
@@ -380,35 +511,41 @@ Windows 7の場合は、単に設定 - 最適な外観に調整 &amp;amp; 適用
   <data name="TextUINormal" xml:space="preserve">
     <value>通常</value>
   </data>
+  <data name="TextUnsupportedFile" xml:space="preserve">
+    <value>対応していないファイル形式</value>
+  </data>
   <data name="TextUpdateAvailable" xml:space="preserve">
-    <value>アップデートが可能です。</value>
+    <value>アップデートが利用可能です！</value>
   </data>
   <data name="TextUpdateCheck" xml:space="preserve">
-    <value>アップデートの確認します。</value>
+    <value>アップデートを確認</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
-    <value>アップデートの確認失敗しました。</value>
+    <value>アップデートの確認に失敗しました</value>
   </data>
   <data name="TextUpdateChecking" xml:space="preserve">
-    <value>アップデートの確認中。。。</value>
+    <value>アップデートの確認中</value>
   </data>
   <data name="TextUpdateUptodate" xml:space="preserve">
-    <value>最新のものを使用しています。</value>
+    <value>ソフトウェアは最新の状態です！</value>
   </data>
   <data name="TextVideo" xml:space="preserve">
-    <value>ビデオ</value>
+    <value>動画</value>
+  </data>
+  <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
+    <value>任意のコマンドライン引数を入力</value>
   </data>
   <data name="TextWallpaperFitFill" xml:space="preserve">
-    <value>フィル</value>
+    <value>埋める</value>
   </data>
   <data name="TextWallpaperFitNone" xml:space="preserve">
     <value>なし</value>
   </data>
   <data name="TextWallpaperFitUniform" xml:space="preserve">
-    <value>ユニフォーム</value>
+    <value>均一</value>
   </data>
   <data name="TextWallpaperFitUniformToFill" xml:space="preserve">
-    <value>ユニフォームフィル</value>
+    <value>均一に埋める</value>
   </data>
   <data name="TextWallpaperLayoutDuplicate" xml:space="preserve">
     <value>同じ壁紙を複製する</value>
@@ -417,16 +554,16 @@ Windows 7の場合は、単に設定 - 最適な外観に調整 &amp;amp; 適用
     <value>選択した画面のみ</value>
   </data>
   <data name="TextWallpaperLayoutSpan" xml:space="preserve">
-    <value>画面をまたいでのスパン</value>
+    <value>画面をまたいで伸ばす</value>
   </data>
   <data name="TextWallpaperType" xml:space="preserve">
     <value>タイプ</value>
   </data>
   <data name="TextWebsite" xml:space="preserve">
-    <value>ウェブサイト</value>
+    <value>Webサイト</value>
   </data>
   <data name="TextWebStream" xml:space="preserve">
-    <value>ウェブストリーム</value>
+    <value>Webストリーミング</value>
   </data>
   <data name="TextWelcome" xml:space="preserve">
     <value>ようこそ</value>
@@ -435,92 +572,123 @@ Windows 7の場合は、単に設定 - 最適な外観に調整 &amp;amp; 適用
     <value>はい</value>
   </data>
   <data name="TileVideoPlayer" xml:space="preserve">
-    <value>ビデオプレーヤー</value>
+    <value>ビデオプレイヤー</value>
   </data>
   <data name="TipAddWallpaperFileBrowse" xml:space="preserve">
-    <value>サポートされているすべてのファイルタイプを壁紙として設定します。</value>
+    <value>サポートされているすべてのファイル形式を壁紙として設定します。</value>
   </data>
   <data name="TipAddWallpaperURL" xml:space="preserve">
     <value>入力したURLのWebページを壁紙に設定します。</value>
   </data>
   <data name="TipAppFocus" xml:space="preserve">
-    <value>任意のアプリケーションがフォーカスされている時のモードです。</value>
+    <value>任意のアプリケーションがフォーカスされているときの動作を変更します。</value>
   </data>
   <data name="TipAppFullScreen" xml:space="preserve">
-    <value>フルスクリーンのゲーム/アプリケーションが実行されている時のモードです。</value>
+    <value>フルスクリーンのゲーム/アプリケーションが実行されている時の動作を変更します。</value>
   </data>
   <data name="TipAppRules" xml:space="preserve">
-    <value>実行中のアプリケーションに基づいて異なる壁紙の再生ルールを設定します。</value>
+    <value>実行中のアプリケーションに応じて、異なる壁紙の再生ルールを設定します。</value>
   </data>
   <data name="TipAppTheme" xml:space="preserve">
-    <value>システムテーマの設定に適応し、外観を変更するには goto</value>
+    <value>Livelyをシステムのテーマ設定に適応して、外観を変更する</value>
   </data>
   <data name="TipAudioMaster" xml:space="preserve">
-    <value>すべての壁紙の音量レベルです。</value>
+    <value>すべての壁紙の音量です。</value>
   </data>
   <data name="TipBatteryPower" xml:space="preserve">
-    <value>(電池駆動の場合のみ）AC電源を切った状態で再生ルールを変更します。</value>
+    <value>AC電源を切った状態での動作を変更します。</value>
   </data>
   <data name="TipBrowserDebuggingPort" xml:space="preserve">
-    <value>ウェブページの壁紙をデバッグするためのポートを入力してください。
-準備ができたら http://localhost:portnumber にアクセスして開発者コンソールにアクセスしてください。</value>
+    <value>ウェブページの壁紙をデバッグするためのポートを入力してください。 変更を有効にするには、ブラウザの再起動が必要です。
+準備ができたら http://localhost:portnumber に移動して開発者コンソールにアクセスしてください。</value>
+  </data>
+  <data name="TipDebug" xml:space="preserve">
+    <value>開発者メニューを表示します</value>
+  </data>
+  <data name="TipDesktopPicture" xml:space="preserve">
+    <value>アニメーション壁紙の画像をデスクトップの壁紙として設定します。</value>
   </data>
   <data name="TipDisplayPauseRule" xml:space="preserve">
-    <value>全画面: アプリケーションがフォーカスされている/フルスクリーンの画面でのみ壁紙を一時停止します。
-すべて: アプリケーションがフォーカス/フルスクリーンの場合、すべての画面で壁紙を一時停止します。</value>
+    <value>全ての画面で壁紙を一時停止するか、アプリケーションがフォーカスされている/全画面になっている画面のみ壁紙を停止するか選択します。</value>
+  </data>
+  <data name="TipExportLogs" xml:space="preserve">
+    <value>ログレポートファイルを作成します。</value>
+  </data>
+  <data name="TipGifPlayer" xml:space="preserve">
+    <value>Gifの壁紙に使用するプレイヤーを選択します。</value>
   </data>
   <data name="TipHideSysTray" xml:space="preserve">
-    <value>システムトレイのアイコンを表示すると、Livelyはアイコンが隠された状態で実行され続けます。</value>
+    <value>システムトレイのアイコンが表示されるようになり、Livelyはアイコンが隠された状態で実行し続けます。</value>
   </data>
   <data name="TipLanguage" xml:space="preserve">
-    <value>賑やかに新しい言語を適用するために再始動します。</value>
+    <value>新しい言語を適用するためには、Livelyを再起動します。</value>
   </data>
   <data name="TipLivelySetupOnClose" xml:space="preserve">
-    <value>設定を終了して続行します。</value>
+    <value>セットアップを終了して続行します。</value>
+  </data>
+  <data name="TipLockscreenPicture" xml:space="preserve">
+    <value>アニメーション壁紙の画像をロックスクリーンの壁紙に設定します。</value>
   </data>
   <data name="TipPauseAlgorithm" xml:space="preserve">
-    <value>フォアグラウンドプロセス：軽量で、壁紙の再生動作を決定するためにフォアグラウンドにある単一のプロセスのみをチェックします。
-すべてのプロセス：重く、すべてのプロセスをスキャンして再生動作を判断します。</value>
+    <value>壁紙の一時停止アルゴリズム</value>
+  </data>
+  <data name="TipPowerSavingModePower" xml:space="preserve">
+    <value>Windowsの省電力モードが有効になっているときの動作を変更します。</value>
+  </data>
+  <data name="TipRemoteDesktopPower" xml:space="preserve">
+    <value>リモート デスクトップが有効になっているときの動作を変更します。</value>
+  </data>
+  <data name="TipScreensaver" xml:space="preserve">
+    <value>選択した時間経過したら、現在の壁紙をスクリーンセーバーとして使用します。</value>
   </data>
   <data name="TipStreamWallpaperDetect" xml:space="preserve">
-    <value>サポートされているビデオストリームリンクが検出された場合は、ウェブページを読み込む代わりにビデオプレーヤーを使用してください。</value>
+    <value>サポートされているストリームのリンクが検出された場合、Webページを読み込む代わりにビデオプレイヤーを使用します。</value>
   </data>
   <data name="TipStreamWallpaperVideoQuality" xml:space="preserve">
-    <value>オンラインストリームにビデオ品質を選択します。</value>
+    <value>オンラインストリームで使用する動画の画質を選択します。</value>
+  </data>
+  <data name="TipSwitchSoftwareBranch" xml:space="preserve">
+    <value>ソフトウェアのバージョンをベータ版から安定板に、またはその逆に変更します。</value>
+  </data>
+  <data name="TipTaskbarTheme" xml:space="preserve">
+    <value>タスクバーの外観を変更します。</value>
   </data>
   <data name="TipTileSize" xml:space="preserve">
-    <value>ライブラリーの壁紙タイルのサイズ。</value>
+    <value>ライブラリに表示される壁紙のタイルサイズです。</value>
   </data>
   <data name="TipUIMode" xml:space="preserve">
-    <value>ローエンドシステムの場合は、Lite モードを選択します。</value>
+    <value>ローエンドのシステムでは、ライトモードを選択してください。</value>
+  </data>
+  <data name="TipVideoHardwareDecode" xml:space="preserve">
+    <value>使用可能であればハードウェアアクセラレーションを使用します。</value>
   </data>
   <data name="TipVideoPlayer" xml:space="preserve">
-    <value>動画の壁紙に使用するプレーヤーを選択します。</value>
+    <value>動画の壁紙に使用するプレイヤーを選択します。</value>
   </data>
   <data name="TipWallpaperDir" xml:space="preserve">
-    <value>壁紙ファイルを保存するためのパスです。</value>
+    <value>壁紙のファイルを保存するためのパスです。</value>
   </data>
   <data name="TipWallpaperFit" xml:space="preserve">
     <value>壁紙のスケーリングアルゴリズムです。</value>
   </data>
   <data name="TipWallpaperInput" xml:space="preserve">
-    <value>壁紙との相互作用の方法を選択します。</value>
+    <value>壁紙へのインタラクトの方法を選択します。</value>
   </data>
   <data name="TipWallpaperLayout" xml:space="preserve">
-    <value>接続されたディスプレイデバイスに壁紙を貼る方法です。</value>
+    <value>接続されたディスプレイに壁紙を配置する方法です。</value>
   </data>
   <data name="TipWallpaperPlayback" xml:space="preserve">
-    <value>デスクトップにフォーカスが合っていない場合、壁紙の再生を一時停止します。</value>
+    <value>デスクトップがフォーカスされていない場合、壁紙の再生を一時停止します。</value>
   </data>
   <data name="TipWebBrowserDiskCache" xml:space="preserve">
-    <value>一時ファイルをメモリではなくディスクに保存し、ブラウザの再起動時に設定を復元します。</value>
+    <value>一時ファイルをメモリではなくディスクに保存し、ブラウザの再起動時に設定が復元されます。</value>
   </data>
   <data name="TipWebBrowserEngine" xml:space="preserve">
-    <value>CEF(Chromium Embedded Framework)は軽量なクロムエンジンです。
-Edgeはwindows 10に組み込まれているWebビューです。</value>
+    <value>CEF(Chromium Embedded Framework)は、軽量のChromiumエンジンです。
+Edgeは、Windows 10に内蔵されたWebViewです。</value>
   </data>
   <data name="TipWindowsStartup" xml:space="preserve">
-    <value>Livelyは壁紙再生のためにバックグラウンドで実行する必要があります。</value>
+    <value>壁紙を再生するためには、Livelyをバックグラウンドで動作させる必要があります。</value>
   </data>
   <data name="TitleAbout" xml:space="preserve">
     <value>情報</value>
@@ -529,13 +697,13 @@ Edgeはwindows 10に組み込まれているWebビューです。</value>
     <value>壁紙の追加</value>
   </data>
   <data name="TitleAppFocus" xml:space="preserve">
-    <value>アプリケーションフォーカス</value>
+    <value>アプリケーションのフォーカス</value>
   </data>
   <data name="TitleAppFullScreen" xml:space="preserve">
-    <value>アプリケーション フルスクリーン</value>
+    <value>アプリケーションのフルスクリーン</value>
   </data>
   <data name="TitleAppName" xml:space="preserve">
-    <value>Lively壁紙</value>
+    <value>Lively Wallpaper</value>
   </data>
   <data name="TitleAppRules" xml:space="preserve">
     <value>アプリケーションのルール</value>
@@ -546,38 +714,56 @@ Edgeはwindows 10に組み込まれているWebビューです。</value>
   <data name="TitleAudio" xml:space="preserve">
     <value>音声</value>
   </data>
+  <data name="TitleAudioDesktopOnly" xml:space="preserve">
+    <value>デスクトップがフォーカスされているときのみ音声を再生</value>
+  </data>
   <data name="TitleAudioMaster" xml:space="preserve">
     <value>マスターボリューム</value>
   </data>
   <data name="TitleAudioPlayOnScreen" xml:space="preserve">
-    <value>画面上でオーディオを再生します。</value>
+    <value>画面上で音声を再生します。</value>
   </data>
   <data name="TitleBatteryPower" xml:space="preserve">
-    <value>バッテリ電源オン時</value>
+    <value>バッテリー駆動時</value>
   </data>
   <data name="TitleBrowseFile" xml:space="preserve">
-    <value>ビデオ、GIF、ウェブページ...壁紙として設定するファイルを参照します。</value>
+    <value>動画、GIF、Webページなど壁紙として設定するファイルを参照します。</value>
   </data>
   <data name="TitleBrowserDebuggingPort" xml:space="preserve">
-    <value>デバッグポート</value>
+    <value>デバッグ用ポート</value>
+  </data>
+  <data name="TitleChangelog" xml:space="preserve">
+    <value>変更履歴</value>
   </data>
   <data name="TitleCommunity" xml:space="preserve">
     <value>コミュニティ</value>
   </data>
+  <data name="TitleDebug" xml:space="preserve">
+    <value>デバッグ</value>
+  </data>
   <data name="TitleDeleteConfirmation" xml:space="preserve">
     <value>削除の確認</value>
+  </data>
+  <data name="TitleDesktopPicture" xml:space="preserve">
+    <value>デスクトップの画像</value>
   </data>
   <data name="TitleDisplayPauseRule" xml:space="preserve">
     <value>表示の一時停止ルール</value>
   </data>
   <data name="TitleDocumentation" xml:space="preserve">
-    <value>ドキュメンテーション</value>
+    <value>ドキュメント</value>
   </data>
   <data name="TitleEnterUrl" xml:space="preserve">
     <value>URLを入力してください。</value>
   </data>
+  <data name="TitleExportLogs" xml:space="preserve">
+    <value>ログファイル</value>
+  </data>
   <data name="TitleGeneral" xml:space="preserve">
     <value>一般</value>
+  </data>
+  <data name="TitleGifPlayer" xml:space="preserve">
+    <value>Gif プレイヤー</value>
   </data>
   <data name="TitleHelp" xml:space="preserve">
     <value>ヘルプ</value>
@@ -597,6 +783,12 @@ Edgeはwindows 10に組み込まれているWebビューです。</value>
   <data name="TitleLivelySetup" xml:space="preserve">
     <value>Lively セットアップ</value>
   </data>
+  <data name="TitleLocation" xml:space="preserve">
+    <value>場所</value>
+  </data>
+  <data name="TitleLockscreenPicture" xml:space="preserve">
+    <value>ロック画面の画像</value>
+  </data>
   <data name="TitleMisc" xml:space="preserve">
     <value>その他</value>
   </data>
@@ -604,7 +796,7 @@ Edgeはwindows 10に組み込まれているWebビューです。</value>
     <value>ミュート</value>
   </data>
   <data name="TitlePauseAlgo" xml:space="preserve">
-    <value>一時停止アルゴリズム</value>
+    <value>アルゴリズムの一時停止</value>
   </data>
   <data name="TitlePerformance" xml:space="preserve">
     <value>パフォーマンス</value>
@@ -613,13 +805,28 @@ Edgeはwindows 10に組み込まれているWebビューです。</value>
     <value>プレイリスト</value>
   </data>
   <data name="TitlePleaseWait" xml:space="preserve">
-    <value>お待ちください。</value>
+    <value>お待ちください</value>
+  </data>
+  <data name="TitlePowerSavingModePower" xml:space="preserve">
+    <value>省電力モード有効時</value>
+  </data>
+  <data name="TitleRemoteDesktopPower" xml:space="preserve">
+    <value>リモート デスクトップ有効時</value>
+  </data>
+  <data name="TitleReportBug" xml:space="preserve">
+    <value>バグを報告</value>
   </data>
   <data name="TitleScalingFit" xml:space="preserve">
     <value>スケーリング/フィット</value>
   </data>
   <data name="TitleScreenLayout" xml:space="preserve">
-    <value>コントロールパネル</value>
+    <value>コントロール パネル</value>
+  </data>
+  <data name="TitleScreensaver" xml:space="preserve">
+    <value>スクリーンセーバー</value>
+  </data>
+  <data name="TitleScreensaverLockOnResume" xml:space="preserve">
+    <value>レジューム時、ログオン画面の表示</value>
   </data>
   <data name="TitleSelectFile" xml:space="preserve">
     <value>ファイルを選択</value>
@@ -627,50 +834,72 @@ Edgeはwindows 10に組み込まれているWebビューです。</value>
   <data name="TitleSettings" xml:space="preserve">
     <value>設定</value>
   </data>
+  <data name="TitleSkipConfirm" xml:space="preserve">
+    <value>スキップの確認</value>
+  </data>
+  <data name="TitleSourceCode" xml:space="preserve">
+    <value>ソースコード</value>
+  </data>
+  <data name="TitleStore" xml:space="preserve">
+    <value>Microsoft ストア</value>
+    <comment>For different version of Lively, example: Microsoft Store</comment>
+  </data>
   <data name="TitleStreamWallpaper" xml:space="preserve">
-    <value>ストリーム壁紙</value>
+    <value>ストリーム</value>
   </data>
   <data name="TitleStreamWallpaperDetect" xml:space="preserve">
     <value>ストリームの検出</value>
   </data>
   <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
-    <value>ビデオ画質</value>
+    <value>動画の画質</value>
+  </data>
+  <data name="TitleSystem" xml:space="preserve">
+    <value>システム</value>
+  </data>
+  <data name="TitleTaskbarTheme" xml:space="preserve">
+    <value>タスクバーのテーマ</value>
   </data>
   <data name="TitleTileSize" xml:space="preserve">
     <value>タイルのサイズ</value>
   </data>
   <data name="TitleUIMode" xml:space="preserve">
-    <value>ユーザーインターフェース</value>
+    <value>ユーザー インターフェース</value>
+  </data>
+  <data name="TitleUpdates" xml:space="preserve">
+    <value>アップデート</value>
   </data>
   <data name="TitleVideo" xml:space="preserve">
-    <value>ビデオ</value>
+    <value>動画</value>
+  </data>
+  <data name="TitleVideoHardwareDecode" xml:space="preserve">
+    <value>GPU デコード</value>
   </data>
   <data name="TitleWallpaper" xml:space="preserve">
     <value>壁紙</value>
   </data>
   <data name="TitleWallpaperDir" xml:space="preserve">
-    <value>壁紙ディレクトリ</value>
+    <value>壁紙のディレクトリ</value>
   </data>
   <data name="TitleWallpaperDirMoveExisting" xml:space="preserve">
-    <value>既存の壁紙を新しいフォルダに移動します。</value>
+    <value>既存の壁紙を新しいフォルダに移動</value>
   </data>
   <data name="TitleWallpaperFit" xml:space="preserve">
-    <value>フィット感を選ぶ</value>
+    <value>フィットの方法を選択</value>
   </data>
   <data name="TitleWallpaperInput" xml:space="preserve">
-    <value>壁紙入力</value>
+    <value>壁紙の入力</value>
   </data>
   <data name="TitleWallpaperLayout" xml:space="preserve">
     <value>配置方法</value>
   </data>
   <data name="TitleWallpaperPlayback" xml:space="preserve">
-    <value>壁紙再生</value>
+    <value>壁紙の再生</value>
   </data>
   <data name="TitleWarning" xml:space="preserve">
     <value>警告</value>
   </data>
   <data name="TitleWebBrowser" xml:space="preserve">
-    <value>ウェブブラウザ</value>
+    <value>Web ブラウザー</value>
   </data>
   <data name="TitleWebBrowserDiskCache" xml:space="preserve">
     <value>ディスクキャッシュ</value>
@@ -679,225 +908,9 @@ Edgeはwindows 10に組み込まれているWebビューです。</value>
     <value>エンジン</value>
   </data>
   <data name="TitleWebpageLoad" xml:space="preserve">
-    <value>ウェブページの読み込み</value>
+    <value>Webページの読み込み</value>
   </data>
   <data name="TitleWindowsStartup" xml:space="preserve">
-    <value>ウィンドウズ起動時に同時に起動します。</value>
+    <value>Windows起動時にLivelyを起動</value>
   </data>
-  <data name="TextPreviewWallpaper" xml:space="preserve">
-    <value>Preview Wallpaper</value>
-  </data>
-  <data name="TextAllFiles" xml:space="preserve">
-    <value>All Files</value>
-  </data>
-  <data name="TitleDebug" xml:space="preserve">
-    <value>Debug</value>
-  </data>
-  <data name="TipDebug" xml:space="preserve">
-    <value>Show developer menu</value>
-  </data>
-  <data name="TextFileNotFound" xml:space="preserve">
-    <value>File not found</value>
-  </data>
-  <data name="TextPicture" xml:space="preserve">
-    <value>Picture</value>
-  </data>
-  <data name="TextUnsupportedFile" xml:space="preserve">
-    <value>File format not supported</value>
-  </data>
-  <data name="TextProcessingWallpaper" xml:space="preserve">
-    <value>Processing</value>
-  </data>
-  <data name="TextTitle" xml:space="preserve">
-    <value>Title</value>
-  </data>
-  <data name="TextDescription" xml:space="preserve">
-    <value>Description</value>
-  </data>
-  <data name="TextOK" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="TextCancel" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
-  <data name="TextCreatePreview" xml:space="preserve">
-    <value>Create Preview</value>
-  </data>
-  <data name="TitleGifPlayer" xml:space="preserve">
-    <value>Gif Player</value>
-  </data>
-  <data name="TipGifPlayer" xml:space="preserve">
-    <value>Select the player used for gif wallpaper.</value>
-  </data>
-  <data name="TextFeatureMissing" xml:space="preserve">
-    <value>Some features are not available in this version of Lively.</value>
-  </data>
-    <data name="TextControlPanelOpen" xml:space="preserve">
-    <value>Click here to manage wallpapers.</value>
-  </data>
-    <data name="TextStoreReview" xml:space="preserve">
-    <value>Do you enjoy using Lively? Leave a review :)</value>
-  </data>
-  <data name="TitleStore" xml:space="preserve">
-    <value>Store</value>
-    <comment>For different version of Lively, example: Microsoft Store</comment>
-  </data>
-  <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>Your Windows N/KN version will require the download of additional codecs to support video playback in wallpapers.</value>
-  </data>
-  <data name="TextLicense" xml:space="preserve">
-    <value>ライセンス</value>
-  </data>
-  <data name="TextPrivacyPolicy" xml:space="preserve">
-    <value>個人情報保護方針</value>
-  </data>
-  <data name="TitleAudioDesktopOnly" xml:space="preserve">
-    <value>Play audio only when desktop is focused</value>
-  </data>
-  <data name="TipExportLogs" xml:space="preserve">
-    <value>Create log report file.</value>
-  </data>
-  <data name="TitleExportLogs" xml:space="preserve">
-    <value>Log File</value>
-  </data>
-  <data name="TitleReportBug" xml:space="preserve">
-    <value>Report Bug</value>
-  </data>
-  <data name="TitleVideoHardwareDecode" xml:space="preserve">
-    <value>GPU Decode</value>
-  </data>
-  <data name="TipVideoHardwareDecode" xml:space="preserve">
-    <value>Use hardware acceleration when possible.</value>
-  </data>
-  <data name="DescriptionPleaseStop" xml:space="preserve">
-  <value>Please stop before proceeding.</value>
-</data>
-<data name="TextEditWallpaper" xml:space="preserve">
-  <value>Edit</value>
-</data>
-<data name="TitleLocation" xml:space="preserve">
-  <value>Location</value>
-</data>
-<data name="TitleSkipConfirm" xml:space="preserve">
-  <value>Skip Confirmation</value>
-</data>
-<data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-  <value>Enter optional commandline arguments</value>
-</data>  
-  <data name="TextGitHubStar" xml:space="preserve">
-    <value>Show some love by dropping a star</value>
-  </data>
-  <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
-    <value>Incompatible program found, taskbar theming disabled.</value>
-  </data>
-  <data name="TitleTaskbarTheme" xml:space="preserve">
-    <value>Taskbar Theme</value>
-  </data>
-  <data name="TitleLockscreenPicture" xml:space="preserve">
-    <value>Lockscreen Picture</value>
-  </data>
-  <data name="TitleDesktopPicture" xml:space="preserve">
-    <value>Desktop Picture</value>
-  </data>
-  <data name="TipLockscreenPicture" xml:space="preserve">
-    <value>Set a picture of animated wallpaper as lockscreen wallpaper.</value>
-  </data>
-  <data name="TipDesktopPicture" xml:space="preserve">
-    <value>Set a picture of animated wallpaper as desktop wallpaper.</value>
-  </data>
-  <data name="TipTaskbarTheme" xml:space="preserve">
-    <value>Change system taskbar appearance.</value>
-  </data>
-  <data name="TextTaskbarThemeBlur" xml:space="preserve">
-    <value>Blur</value>
-  </data>
-  <data name="TextTaskbarThemeClear" xml:space="preserve">
-    <value>Clear</value>
-  </data>
-  <data name="TextTaskbarThemeColor" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="TextTaskbarThemeFluent" xml:space="preserve">
-    <value>Fluent</value>
-  </data>
-  <data name="TextTaskbarThemeWallpaper" xml:space="preserve">
-    <value>Wallpaper</value>
-  </data>
-  <data name="TextTaskbarThemeWallpaperFluent" xml:space="preserve">
-    <value>Wallpaper Fluent</value>
-  </data>
-  <data name="TitleSystem" xml:space="preserve">
-    <value>System</value>
-  </data>
-  <data name="TitleSourceCode" xml:space="preserve">
-    <value>Source Code</value>
-  </data>
-    <data name="TitleScreensaver" xml:space="preserve">
-    <value>Screensaver</value>
-  </data>
-  <data name="TipScreensaver" xml:space="preserve">
-    <value>After the selected inactivity period use the current wallpaper as your screensaver.</value>
-  </data>
-    <data name="TextHours" xml:space="preserve">
-    <value>hours</value>
-  </data>
-  <data name="TextMinutes" xml:space="preserve">
-    <value>minutes</value>
-  </data>
-  <data name="TextLearnMore" xml:space="preserve">
-    <value>Learn more</value>
-  </data>
-    <data name="DescOledScreensaverNotice" xml:space="preserve">
-    <value>Most modern LCD and LED displays do not suffer from burn-in issue and therefore any wallpaper can be used as screensaver.
-
-For OLED, Plasma or CRT displays which are susceptibe to burn-in it is advised to use wallpaper with regular motion and an overall dark theme which is supposed to mitigate burn-in but this feature is untested and its effectiveness cannot be guaranteed.
-
-The main purpose of Lively's screensavers is to add another layer of customization to your pc, use screensavers as burn-in protection at your own risk!</value>
-  </data>
-  <data name="TextChangeWallpaper" xml:space="preserve">
-    <value>Change Wallpapers</value>
-  </data>
-  <data name="TextLastChecked" xml:space="preserve">
-    <value>Last checked</value>
-  </data>
-  <data name="TitleUpdates" xml:space="preserve">
-    <value>Updates</value>
-  </data>
-  <data name="DescCommunity" xml:space="preserve">
-    <value>Online discussion forum</value>
-  </data>
-  <data name="DescDocumentation" xml:space="preserve">
-    <value>API documentation and help</value>
-  </data>
-  <data name="DescOfficialWebpage" xml:space="preserve">
-    <value>Official webpage of Lively Wallpaper</value>
-  </data>
-  <data name="DescReportBug" xml:space="preserve">
-    <value>Report a problem with the software</value>
-  </data>
-  <data name="DescSupperDev" xml:space="preserve">
-    <value>Show support by buying the developer coffee</value>
-  </data>
-  <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
-    <value>You are about to change to beta (developer) build of Lively.
-Updates will be frequent and may contain bugs!</value>
-  </data>
-  <data name="TextSwitchBranchDev" xml:space="preserve">
-    <value>Switch to beta (Dev channel)</value>
-  </data>
-  <data name="TextSwitchBranchOfficial" xml:space="preserve">
-    <value>Switch to stable (Default channel)</value>
-  </data>
-  <data name="TipSwitchSoftwareBranch" xml:space="preserve">
-    <value>Change software release from beta to stable or vice versa.</value>
-  </data>
-  <data name="TitleChangelog" xml:space="preserve">
-    <value>Changelog</value>
-  </data>
-  <data name="TextPauseAlgoExclusiveMode" xml:space="preserve">
-    <value>Direct3D</value>
-  </data>
-  <data name="TitleScreensaverLockOnResume" xml:space="preserve">
-    <value>On resume, display logon screen</value>
-  </data>    
 </root>

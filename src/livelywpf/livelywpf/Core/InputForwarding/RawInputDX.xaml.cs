@@ -5,10 +5,11 @@ using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Interop;
 using Linearstar.Windows.RawInput;
+using livelywpf.Core.Suspend;
 using livelywpf.Helpers;
 using livelywpf.Helpers.Pinvoke;
 
-namespace livelywpf.Core
+namespace livelywpf.Core.InputForwarding
 {
     public enum RawInputMouseBtn
     {

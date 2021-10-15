@@ -13,7 +13,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
-using livelywpf.Model;
+using livelywpf.Models;
 using Path = System.IO.Path;
 
 namespace livelywpf.Cef
@@ -535,7 +535,7 @@ namespace livelywpf.Cef
             {
                 var item = (Rectangle)sender;
                 var fill = ((SolidColorBrush)item.Fill).Color;
-                var cpicker = new Views.ColorDialog(new Windows.UI.Color() { A = fill.A, R = fill.R, G = fill.G, B = fill.B });
+                var cpicker = new Views.Dialogues.ColorDialog(new Windows.UI.Color() { A = fill.A, R = fill.R, G = fill.G, B = fill.B });
                 if (App.AppWindow.IsVisible)
                 {
                     cpicker.Owner = App.AppWindow;

@@ -7,12 +7,13 @@ using System.Windows.Media;
 using System.Windows.Threading;
 using livelywpf.Core;
 using livelywpf.Core.API;
+using livelywpf.Core.Wallpapers;
 using livelywpf.Helpers;
 using livelywpf.Helpers.Pinvoke;
 using livelywpf.Helpers.ScreenRecord;
-using livelywpf.Model;
+using livelywpf.Models;
 
-namespace livelywpf.Views
+namespace livelywpf.Views.Dialogues
 {
     /// <summary>
     /// Interaction logic for WallpaperPreviewWindow.xaml

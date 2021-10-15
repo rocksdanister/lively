@@ -9,7 +9,7 @@ using ColorMedia = System.Windows.Media.Color;
 using CursorForm = System.Windows.Forms.Cursor;
 using livelywpf.Helpers.Pinvoke;
 
-namespace livelywpf.Views
+namespace livelywpf.Views.Dialogues
 {
     /// <summary>
     /// Interaction logic for ColorDialog.xaml

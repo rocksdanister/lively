@@ -8,9 +8,9 @@ using System.IO;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using livelywpf.Model;
+using livelywpf.Models;
 
-namespace livelywpf.Core
+namespace livelywpf.Core.Wallpapers
 {
     //Ref: 
     //https://github.com/rocksdanister/lively/discussions/342

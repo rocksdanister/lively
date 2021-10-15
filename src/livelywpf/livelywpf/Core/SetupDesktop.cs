@@ -1,10 +1,8 @@
-﻿using livelywpf.Core;
-using livelywpf.Core.API;
+﻿using livelywpf.Core.API;
 using livelywpf.Helpers;
 using livelywpf.Helpers.Pinvoke;
 using livelywpf.Helpers.Screensaver;
 using livelywpf.Helpers.Storage;
-using livelywpf.Views;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,7 +11,12 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
-using livelywpf.Model;
+using livelywpf.Models;
+using livelywpf.Views.Dialogues;
+using livelywpf.Core.Suspend;
+using livelywpf.Core.Watchdog;
+using livelywpf.Core.Wallpapers;
+using livelywpf.Core.InputForwarding;
 
 namespace livelywpf.Core
 {

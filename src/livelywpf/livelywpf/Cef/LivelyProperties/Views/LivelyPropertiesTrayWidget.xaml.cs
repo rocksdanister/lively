@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Interop;
 using livelywpf.Core;
 using System.Windows.Input;
-using livelywpf.Model;
+using livelywpf.Models;
 
 namespace livelywpf.Cef 
 {

@@ -1,4 +1,4 @@
-﻿<Window x:Class="livelywpf.Views.WallpaperPreviewWindow"
+﻿<Window x:Class="livelywpf.Views.Dialogues.WallpaperPreviewWindow"
         xmlns:ui="http://schemas.modernwpf.com/2019"
         ui:WindowHelper.UseModernWindowStyle="True"
         ui:ThemeManager.IsThemeAware="True"  

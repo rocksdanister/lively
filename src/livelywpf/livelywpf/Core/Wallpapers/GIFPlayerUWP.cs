@@ -7,9 +7,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Interop;
 using System.Windows.Threading;
-using livelywpf.Model;
+using livelywpf.Models;
+using livelywpf.Views.Wallpapers;
 
-namespace livelywpf.Core
+namespace livelywpf.Core.Wallpapers
 {
     public class GIFPlayerUWP : IWallpaper
     {

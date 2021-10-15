@@ -5,9 +5,10 @@ using System;
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
-using livelywpf.Model;
+using livelywpf.Models;
+using livelywpf.Core.Suspend;
 
-namespace livelywpf.Core
+namespace livelywpf.Core.Wallpapers
 {
     public class ExtPrograms : IWallpaper
     {

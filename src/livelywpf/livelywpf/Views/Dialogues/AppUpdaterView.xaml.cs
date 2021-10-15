@@ -7,7 +7,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Documents;
 
-namespace livelywpf.Views
+namespace livelywpf.Views.Dialogues
 {
     /// <summary>
     /// Interaction logic for AppUpdaterView.xaml

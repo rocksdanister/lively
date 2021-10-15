@@ -8,7 +8,8 @@ using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Threading;
-using livelywpf.Model;
+using livelywpf.Models;
+using livelywpf.Core.Suspend;
 
 namespace livelywpf
 {

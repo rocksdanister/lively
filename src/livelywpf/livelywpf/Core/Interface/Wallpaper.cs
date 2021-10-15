@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Threading.Tasks;
 using livelywpf.Core.API;
-using livelywpf.Model;
+using livelywpf.Models;
 
 namespace livelywpf.Core
 {

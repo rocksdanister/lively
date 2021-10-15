@@ -9,9 +9,10 @@ using System.IO;
 using System.Management;
 using System.Text;
 using System.Threading.Tasks;
-using livelywpf.Model;
+using livelywpf.Models;
+using livelywpf.Core.Suspend;
 
-namespace livelywpf.Core
+namespace livelywpf.Core.Wallpapers
 {
     public class WebProcess : IWallpaper
     {

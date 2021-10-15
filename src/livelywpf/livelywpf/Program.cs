@@ -11,6 +11,9 @@ using livelywpf.Helpers.IPC;
 using livelywpf.Helpers.Updater;
 using livelywpf.Helpers.Pinvoke;
 using livelywpf.Core;
+using livelywpf.Views;
+using livelywpf.Views.Dialogues;
+using livelywpf.ViewModels;
 
 namespace livelywpf
 {
@@ -181,13 +184,13 @@ namespace livelywpf
             }));
         }
 
-        private static Views.AppUpdaterView updateWindow = null;
+        private static AppUpdaterView updateWindow = null;
         public static void AppUpdateDialog(Uri uri, string changelog)
         {
             updateNotify = false;
             if (updateWindow == null)
             {
-                updateWindow = new Views.AppUpdaterView(uri, changelog);
+                updateWindow = new AppUpdaterView(uri, changelog);
                 if (App.AppWindow.IsVisible)
                 {
                     updateWindow.Owner = App.AppWindow;

@@ -6,7 +6,7 @@ using System.Windows.Interop;
 using livelywpf.Core;
 using livelywpf.Helpers.Pinvoke;
 using ModernWpf.Media.Animation;
-using livelywpf.Model;
+using livelywpf.Models;
 
 namespace livelywpf.Cef
 {

@@ -15,6 +15,8 @@ using Point = System.Drawing.Point;
 using System.Diagnostics;
 using livelywpf.Helpers.Pinvoke;
 using livelywpf.Core;
+using livelywpf.Views.Dialogues;
+using livelywpf.Core.InputForwarding;
 
 namespace livelywpf.Helpers.Screensaver
 {
@@ -309,17 +311,17 @@ namespace livelywpf.Helpers.Screensaver
             SetupDesktop.RawInputHook.KeyboardClickRaw -= RawInputHook_KeyboardClickRaw;
         }
 
-        private void RawInputHook_KeyboardClickRaw(object sender, Core.KeyboardClickRawArgs e)
+        private void RawInputHook_KeyboardClickRaw(object sender, KeyboardClickRawArgs e)
         {
             Stop();
         }
 
-        private void RawInputHook_MouseDownRaw(object sender, Core.MouseClickRawArgs e)
+        private void RawInputHook_MouseDownRaw(object sender, MouseClickRawArgs e)
         {
             Stop();
         }
 
-        private void RawInputHook_MouseMoveRaw(object sender, Core.MouseRawArgs e)
+        private void RawInputHook_MouseMoveRaw(object sender, MouseRawArgs e)
         {
             Stop();
         }

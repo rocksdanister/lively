@@ -3,6 +3,7 @@ using livelywpf.Core;
 using livelywpf.Helpers;
 using livelywpf.Helpers.Pinvoke;
 using livelywpf.Helpers.ScreenRecord;
+using livelywpf.ViewModels;
 using System;
 using System.Globalization;
 using System.IO;
@@ -13,7 +14,7 @@ using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Threading;
 
-namespace livelywpf.Views
+namespace livelywpf.Views.Dialogues
 {
     public interface ILibraryPreview
     {

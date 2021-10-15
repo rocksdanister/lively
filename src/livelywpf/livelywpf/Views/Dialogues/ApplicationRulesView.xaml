@@ -1,4 +1,4 @@
-﻿<Window x:Class="livelywpf.Views.ApplicationRulesView"
+﻿<Window x:Class="livelywpf.Views.Dialogues.ApplicationRulesView"
         xmlns:ui="http://schemas.modernwpf.com/2019"
         ui:WindowHelper.UseModernWindowStyle="True"
         ui:TitleBar.ExtendViewIntoTitleBar="False"

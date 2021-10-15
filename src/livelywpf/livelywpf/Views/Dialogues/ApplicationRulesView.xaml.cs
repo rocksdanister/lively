@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace livelywpf.Views
+namespace livelywpf.Views.Dialogues
 {
     /// <summary>
     /// Interaction logic for ApplicationRulesView.xaml

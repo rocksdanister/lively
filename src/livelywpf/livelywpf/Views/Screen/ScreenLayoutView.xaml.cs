@@ -1,9 +1,10 @@
 ﻿using livelywpf.Helpers;
+using livelywpf.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Windows;
 
-namespace livelywpf.Views
+namespace livelywpf.Views.Screen
 {
     /// <summary>
     /// Interaction logic for ScreenLayoutView.xaml

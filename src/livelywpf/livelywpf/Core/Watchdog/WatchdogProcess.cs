@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Text;
 
-namespace livelywpf.Core
+namespace livelywpf.Core.Watchdog
 {
     public sealed class WatchdogProcess
     {

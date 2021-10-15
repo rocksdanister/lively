@@ -1,5 +1,6 @@
 ﻿using livelywpf.Core;
 using livelywpf.Views;
+using livelywpf.Views.Pages;
 using Microsoft.Toolkit.Wpf.UI.XamlHost;
 //using ModernWpf.Controls;
 using ModernWpf.Media.Animation;
@@ -19,7 +20,7 @@ using Windows.UI.Core;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 
-namespace livelywpf
+namespace livelywpf.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -78,7 +79,7 @@ namespace livelywpf
 
             if (args.IsSettingsInvoked)
             {
-                ContentFrame.Navigate(typeof(livelywpf.Views.SettingsView), new Uri("Views/SettingsView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
+                ContentFrame.Navigate(typeof(SettingsView), new Uri("Views/SettingsView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
             }
             else if (args.InvokedItemContainer != null)
             {
@@ -101,22 +102,22 @@ namespace livelywpf
             switch (tag)
             {
                 case "library":
-                    ContentFrame.Navigate(typeof(livelywpf.Views.LibraryView), new Uri("Views/LibraryView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
+                    ContentFrame.Navigate(typeof(LibraryView), new Uri("Views/LibraryView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
                     break;
                 case "add":
-                    ContentFrame.Navigate(typeof(livelywpf.Views.AddWallpaperView), new Uri("Views/AddWallpaperView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
+                    ContentFrame.Navigate(typeof(AddWallpaperView), new Uri("Views/AddWallpaperView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
                     break;
                 case "about":
-                    ContentFrame.Navigate(typeof(livelywpf.Views.AboutView), new Uri("Views/AboutView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
+                    ContentFrame.Navigate(typeof(AboutView), new Uri("Views/AboutView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
                     break;
                 case "help":
-                    ContentFrame.Navigate(typeof(livelywpf.Views.HelpView), new Uri("Views/HelpView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
+                    ContentFrame.Navigate(typeof(HelpView), new Uri("Views/HelpView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
                     break;
                 case "debug":
-                    ContentFrame.Navigate(typeof(livelywpf.Views.DebugView), new Uri("Views/DebugView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
+                    ContentFrame.Navigate(typeof(DebugView), new Uri("Views/DebugView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
                     break;
                 default:
-                    ContentFrame.Navigate(typeof(livelywpf.Views.LibraryView), new Uri("Views/LibraryView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo()); 
+                    ContentFrame.Navigate(typeof(LibraryView), new Uri("Views/LibraryView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo()); 
                     break;
             }
         }
@@ -184,7 +185,7 @@ namespace livelywpf
                 if (ContentFrame.Content == null)
                 {
                     navView.SelectedItem = navView.MenuItems.ElementAt(0);
-                    ContentFrame.Navigate(typeof(livelywpf.Views.LibraryView), new Uri("Views/LibraryView.xaml", UriKind.Relative), new SuppressNavigationTransitionInfo());
+                    ContentFrame.Navigate(typeof(LibraryView), new Uri("Views/LibraryView.xaml", UriKind.Relative), new SuppressNavigationTransitionInfo());
                 }
             }
         }
@@ -214,12 +215,12 @@ namespace livelywpf
             }));
         }
 
-        ScreenLayoutView layoutWindow = null;
+        private Screen.ScreenLayoutView layoutWindow = null;
         public void ShowControlPanelDialog()
         {
             if (layoutWindow == null)
             {
-                layoutWindow = new ScreenLayoutView();
+                layoutWindow = new Screen.ScreenLayoutView();
                 if (App.AppWindow.IsVisible)
                 {
                     layoutWindow.Owner = App.AppWindow;

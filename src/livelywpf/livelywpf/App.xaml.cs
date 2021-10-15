@@ -9,6 +9,8 @@ using livelywpf.Helpers.Files;
 using livelywpf.Helpers.Archive;
 using livelywpf.Helpers;
 using livelywpf.Core;
+using livelywpf.Views;
+using livelywpf.ViewModels;
 
 namespace livelywpf
 {
