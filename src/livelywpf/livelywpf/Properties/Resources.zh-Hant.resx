@@ -135,11 +135,11 @@ Windows 檔案總管在最近30秒內重新啟動了兩次！這也許是 Lively
     <value>Lively 動態桌布官方網站</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
-    <value>大多數現代 LCD 和 LED 顯示器都不會出現老化問題，因此任何桌布都可以用作螢幕保護程式。
+    <value>大多數現代 LCD 和 LED 顯示器都不會出現殘影問題，因此任何桌布都可以用作螢幕保護程式。
 
-對於容易老化的 OLED、電漿或 CRT 顯示器，建議使用有規律運動的動態桌布和深色整體主題，以減輕殘影；但此功能未經測試，無法保證其有效性。
+對於容易出現殘影的 OLED、電漿或 CRT 顯示器，建議使用有規律運動的動態桌布和深色整體主題，以減輕殘影；但此功能未經測試，無法保證其有效性。
 
-Lively 動態桌布的螢幕保護程式主要用於為您的電腦新增另一層客製化可能性，使用螢幕保護程式作為老化保護手段請自行承擔風險！</value>
+Lively 動態桌布的螢幕保護程式主要用於為您的電腦新增另一層客製化可能性，使用螢幕保護程式作為殘影保護手段請自行承擔風險！</value>
   </data>
   <data name="DescReportBug" xml:space="preserve">
     <value>回報軟體問題</value>
@@ -168,7 +168,7 @@ Lively 動態桌布的螢幕保護程式主要用於為您的電腦新增另一�
 請僅在你信任此應用程式的來源時繼續。</value>
   </data>
   <data name="DescriptionMinimizedTray" xml:space="preserve">
-    <value>Lively 已最小化至系統匣，右鍵點擊 Lively 動態桌布的圖示以存取更多選項。</value>
+    <value>Lively 已最小化至系統匣，右鍵點選 Lively 動態桌布的圖示以存取更多選項。</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
     <value>請重新啟動 Lively 動態桌布以使設定生效。</value>
@@ -177,7 +177,7 @@ Lively 動態桌布的螢幕保護程式主要用於為您的電腦新增另一�
     <value>繼續操作前請停止桌布。</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
-    <value>按下以開始錄製影片。</value>
+    <value>點按以開始錄製影片。</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
     <value>正在恢復之前的桌布，請稍候...</value>
@@ -195,7 +195,7 @@ Lively 動態桌布的螢幕保護程式主要用於為您的電腦新增另一�
     <value>此精靈將幫助你開始設定 Lively 動態桌布。</value>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>你的 Windows N/KN 版本將需要下載附加解碼元件以支援桌布的影片播放。</value>
+    <value>你的 Windows N/KN 版本將需要下載附加解碼元件以支援桌布的影片播放作業。</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
     <value>為開發人員購買咖啡以示支持</value>
@@ -222,10 +222,10 @@ https://github.com/rocksdanister/lively/wiki</value>
 請禁用高對比模式然後重試。</value>
   </data>
   <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
-    <value>媒體播放失敗:(
-請嘗試在 Lively 的設定中變更影片播放程式。
+    <value>媒體播放作業失敗:(
+請嘗試在 Lively 動態桌布的設定中變更影片播放器。
 
-為了更好地理解此錯誤並解決問題，請與開發人員分享日誌檔。
+為了更好地理解這個錯誤並解決問題，請與開發人員分享日誌檔。
 分享日誌檔的說明：
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
@@ -233,19 +233,19 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>非 Lively 桌布檔案。</value>
   </data>
   <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
-    <value>Lively 之前沒有被正確關閉，正在以安全模式啟動。
+    <value>Lively 動態桌布之前沒有被正常關閉，因此正在以安全模式啟動。
 您是否要還原之前運作的動態桌布？</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
     <value>看起來需要進行一些設定才能使 Lively 動態桌布正常工作：
-1. 按 Win + R 快速鍵以開啟「執行」，
+1. 點按 Win + R 快速鍵開啟「執行」，
 2. 輸入「SystemPropertiesPerformance.exe」，點選「確定」以開啟「效能選項」。
 3. 啟用/選定「在視窗內部以動畫方式顯示控制項和元素」(如果已經選定，請反選然後再次選定) 並套用。
-4. 點選「套用」然後點按「確定」以關閉視窗。
+4. 點選「套用」然後點按「確定」關閉視窗。
 
-如果是 Windows 7 作業系統只需設定 - "調整成最佳外觀" 然後套用。
+如果是 Windows 7 只需設定 -「調整成最佳外觀」並套用。
 如果仍無法正常工作， 請關閉並重新啟動 Lively / Windows。
-(在部分 Windows 10 預覽人員組建中無法正常工作)</value>
+(在部分 Windows 10 測試人員組建中無法正常工作)</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
     <value>新增</value>
@@ -257,7 +257,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>應用程式</value>
   </data>
   <data name="TextAttribution" xml:space="preserve">
-    <value>內容</value>
+    <value>屬性</value>
   </data>
   <data name="TextAuthor" xml:space="preserve">
     <value>作者</value>
@@ -305,7 +305,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>描述</value>
   </data>
   <data name="TextDisplayPauseRuleAllScreen" xml:space="preserve">
-    <value>所有螢幕設定</value>
+    <value>螢幕統一設定</value>
   </data>
   <data name="TextDisplayPauseRulePerScreen" xml:space="preserve">
     <value>螢幕獨立設定</value>
@@ -335,7 +335,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>GIF 動畫</value>
   </data>
   <data name="TextGitHubStar" xml:space="preserve">
-    <value>給予 Star 以顯示你對本軟體的喜愛</value>
+    <value>給予 Star 以展示你對本軟體的喜愛</value>
   </data>
   <data name="TextGo" xml:space="preserve">
     <value>開始</value>
@@ -374,7 +374,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>滑鼠</value>
   </data>
   <data name="TextMouseInteractOnDesktop" xml:space="preserve">
-    <value>當應用程式取得焦點時仍啟用桌布滑鼠互動</value>
+    <value>當應用程式取得焦點時仍啟用滑鼠互動</value>
   </data>
   <data name="TextNext" xml:space="preserve">
     <value>繼續</value>
@@ -458,7 +458,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>停止</value>
   </data>
   <data name="TextStoreReview" xml:space="preserve">
-    <value>你享受使用 Lively 動態桌布嗎？請留下評論 :)</value>
+    <value>你是否享受使用 Lively 動態桌布？請留下評論 :)</value>
   </data>
   <data name="TextSupport" xml:space="preserve">
     <value>支援開發</value>
@@ -521,7 +521,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>偵測更新</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
-    <value>偵測軟體更新失敗</value>
+    <value>無法偵測軟體更新</value>
   </data>
   <data name="TextUpdateChecking" xml:space="preserve">
     <value>偵測更新</value>
@@ -590,7 +590,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>根據運作的應用程式設定不同的桌布播放規則。</value>
   </data>
   <data name="TipAppTheme" xml:space="preserve">
-    <value>Lively 跟隨系統主題設定，要改變外觀請至</value>
+    <value>Lively 動態桌布跟隨系統主題設定，要改變外觀請至</value>
   </data>
   <data name="TipAudioMaster" xml:space="preserve">
     <value>桌布音量等級。</value>
@@ -600,7 +600,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="TipBrowserDebuggingPort" xml:space="preserve">
     <value>輸入用於除錯網頁桌布的連接埠，需要重新啟動瀏覽器以使改動生效。
-準備就緒後，前往 http://localhost:埠號 以開啟開發人員控制台。</value>
+準備就緒後，請前往 http://localhost:埠號 開啟開發人員控制台。</value>
   </data>
   <data name="TipDebug" xml:space="preserve">
     <value>顯示開發人員選單。</value>
@@ -618,7 +618,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>選取用於 GIF 桌布的播放器。</value>
   </data>
   <data name="TipHideSysTray" xml:space="preserve">
-    <value>系統工具列中圖示的可見性，Lively 動態桌布將在隱藏圖示的情況下繼續運作。</value>
+    <value>系統匣中圖示的可見性，Lively 動態桌布在隱藏圖示的情況下將繼續運作。</value>
   </data>
   <data name="TipLanguage" xml:space="preserve">
     <value>將 Lively 動態桌布重新啟動以套用新語言。</value>
@@ -630,7 +630,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>設定動態桌布的一個畫面作為鎖定螢幕背景。</value>
   </data>
   <data name="TipPauseAlgorithm" xml:space="preserve">
-    <value>桌布暫停演算法。</value>
+    <value>暫停桌布的演算法。</value>
   </data>
   <data name="TipPowerSavingModePower" xml:space="preserve">
     <value>當 Windows 省電模式啟用時變更播放行為。</value>
@@ -645,10 +645,10 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>如果偵測到受支援的影片串流連結，將使用影片播放器，而不是載入網頁。</value>
   </data>
   <data name="TipStreamWallpaperVideoQuality" xml:space="preserve">
-    <value>選取你想要的線上影片品質。</value>
+    <value>選擇你想要的線上影片品質。</value>
   </data>
   <data name="TipSwitchSoftwareBranch" xml:space="preserve">
-    <value>將軟體版本從 Beta 版更改為穩定版，或是相反。</value>
+    <value>將軟體版本從 Beta 版變更為穩定版，或是相反。</value>
   </data>
   <data name="TipTaskbarTheme" xml:space="preserve">
     <value>改變系統工作列外觀。</value>
@@ -672,23 +672,23 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>桌布縮放演算法。</value>
   </data>
   <data name="TipWallpaperInput" xml:space="preserve">
-    <value>選取與桌布互動的方式。</value>
+    <value>選擇與桌布互動的方式。</value>
   </data>
   <data name="TipWallpaperLayout" xml:space="preserve">
     <value>選擇將如何套用桌布至連結的顯示裝置。</value>
   </data>
   <data name="TipWallpaperPlayback" xml:space="preserve">
-    <value>當桌面不是焦點時，暫停桌布播放。</value>
+    <value>當桌面不是焦點時，暫停桌布播放作業。</value>
   </data>
   <data name="TipWebBrowserDiskCache" xml:space="preserve">
-    <value>將暫存檔案儲存在磁碟而不是記憶體中，重新啟動瀏覽器後將恢復設定。</value>
+    <value>將暫存檔案儲存在磁碟而不是記憶體中，重新啟動瀏覽器後將恢復初始設定。</value>
   </data>
   <data name="TipWebBrowserEngine" xml:space="preserve">
     <value>CEF(Chromium Embedded Framework) 是個輕量級的 Chromium 引擎。
-Edge 是 Windows 10 的內建網頁渲染器。</value>
+Edge 是 Windows 10 的內建網頁繪製元件 (Webview)。</value>
   </data>
   <data name="TipWindowsStartup" xml:space="preserve">
-    <value>Lively需要在背景運作以播放桌布。</value>
+    <value>Lively 動態桌布需要在背景運作以進行桌布播放作業。</value>
   </data>
   <data name="TitleAbout" xml:space="preserve">
     <value>關於</value>
@@ -724,13 +724,13 @@ Edge 是 Windows 10 的內建網頁渲染器。</value>
     <value>在螢幕上播放音訊</value>
   </data>
   <data name="TitleBatteryPower" xml:space="preserve">
-    <value>電池供電時</value>
+    <value>當處於電池供電</value>
   </data>
   <data name="TitleBrowseFile" xml:space="preserve">
-    <value>瀏覽影片，GIF，網頁...檔案設定為桌布</value>
+    <value>瀏覽影片，GIF，網頁等檔案以設定為桌布</value>
   </data>
   <data name="TitleBrowserDebuggingPort" xml:space="preserve">
-    <value>除錯埠</value>
+    <value>除錯連接埠</value>
   </data>
   <data name="TitleChangelog" xml:space="preserve">
     <value>更新日誌</value>
@@ -748,7 +748,7 @@ Edge 是 Windows 10 的內建網頁渲染器。</value>
     <value>桌面圖片</value>
   </data>
   <data name="TitleDisplayPauseRule" xml:space="preserve">
-    <value>顯示暫停規則</value>
+    <value>顯示幕暫停規則</value>
   </data>
   <data name="TitleDocumentation" xml:space="preserve">
     <value>文件</value>
@@ -769,7 +769,7 @@ Edge 是 Windows 10 的內建網頁渲染器。</value>
     <value>幫助</value>
   </data>
   <data name="TitleHideSysTray" xml:space="preserve">
-    <value>工具列圖示</value>
+    <value>系統匣圖示</value>
   </data>
   <data name="TitleInteraction" xml:space="preserve">
     <value>互動</value>
@@ -893,7 +893,7 @@ Edge 是 Windows 10 的內建網頁渲染器。</value>
     <value>放置方式</value>
   </data>
   <data name="TitleWallpaperPlayback" xml:space="preserve">
-    <value>桌布播放</value>
+    <value>桌布播放行為</value>
   </data>
   <data name="TitleWarning" xml:space="preserve">
     <value>警告</value>
@@ -911,6 +911,6 @@ Edge 是 Windows 10 的內建網頁渲染器。</value>
     <value>載入網頁</value>
   </data>
   <data name="TitleWindowsStartup" xml:space="preserve">
-    <value>隨 Windows 啟動</value>
+    <value>隨 Windows 開機啟動</value>
   </data>
 </root>
