@@ -236,7 +236,15 @@ namespace livelywpf
                     {
                         Logger.Info("Yt-dl not found, using fallback browser instead.");
                         //note: wallpaper type will be videostream, don't forget..
-                        wpInstance = new WebProcess(wallpaper.FilePath, wallpaper, target);
+                        switch (Program.SettingsVM.Settings.WebBrowser)
+                        {
+                            case LivelyWebBrowser.cef:
+                                wpInstance = new WebProcess(wallpaper.FilePath, wallpaper, target);
+                                break;
+                            case LivelyWebBrowser.webview2:
+                                wpInstance = new WebEdge(wallpaper.FilePath, wallpaper, target);
+                                break;
+                        }
                     }
                     break;
             }

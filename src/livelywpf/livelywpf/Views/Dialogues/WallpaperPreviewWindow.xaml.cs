@@ -119,7 +119,15 @@ namespace livelywpf.Views
                     {
                         Logger.Info("Core: yt-dl not found, using cef browser instead.");
                         //note: wallpaper type will be videostream, don't forget..
-                        wpInstance = new WebProcess(wp.FilePath, wp, target);
+                        switch (Program.SettingsVM.Settings.WebBrowser)
+                        {
+                            case LivelyWebBrowser.cef:
+                                wpInstance = new WebProcess(wp.FilePath, wp, target);
+                                break;
+                            case LivelyWebBrowser.webview2:
+                                wpInstance = new WebEdge(wp.FilePath, wp, target);
+                                break;
+                        }
                     }
                     break;
                 case WallpaperType.app:

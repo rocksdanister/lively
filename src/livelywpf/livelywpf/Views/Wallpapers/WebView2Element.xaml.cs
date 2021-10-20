@@ -40,11 +40,15 @@ namespace livelywpf
         public async Task<IntPtr> InitializeWebView()
         {
             //Ref: https://docs.microsoft.com/en-us/microsoft-edge/webview2/concepts/user-data-folder
-            var env = await CoreWebView2Environment.CreateAsync(null, Path.Combine(Program.AppDataDir, "WebView2"));
+            var opts = new CoreWebView2EnvironmentOptions() { 
+                AdditionalBrowserArguments = "--autoplay-policy=no-user-gesture-required " +
+                    (Program.SettingsVM.GlobalWallpaperVolume == 0 ? "--mute-audio=true" : " ")
+            };
+            var env = await CoreWebView2Environment.CreateAsync(null, Path.Combine(Program.AppDataDir, "WebView2"), opts);
             await webView.EnsureCoreWebView2Async(env);
             webView.CoreWebView2.ProcessFailed += CoreWebView2_ProcessFailed;
 
-            if (wallpaperType == WallpaperType.url)
+            if (wallpaperType == WallpaperType.url || wallpaperType == WallpaperType.videostream)
             {
                 string tmp = null;
                 if (TryParseShadertoy(htmlPath, ref tmp))
