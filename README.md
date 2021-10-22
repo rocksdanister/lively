@@ -114,7 +114,7 @@ Its super easy.. barely an inconvenience, just drag & drop the files or webpages
 ##### Latest version: v1.7.2.6 (Windows 10 1903 or above)[What's new?](https://github.com/rocksdanister/lively/releases/tag/v1.7.2.6)
 - [`Installer`][direct-full-win32] 
 
-SHA256: 50430734d74e657e211c4829e382097c7b1f4994fac990e22d57fa6bb2a669fb
+SHA256: 8bf189dc5a0cdab5db905cbff4907d796d416f50df82eaedbc7e2c20e1a38cc2
      
 [direct-full-win32]: https://github.com/rocksdanister/lively/releases/download/v1.7.2.6/lively_setup_x86_full_v1726.exe
 
