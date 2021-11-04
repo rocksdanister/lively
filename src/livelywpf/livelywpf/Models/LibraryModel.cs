@@ -24,7 +24,7 @@ namespace livelywpf.Models
     }
 
     [Serializable]
-    public class LibraryModel : ObservableObject
+    public class LibraryModel : ObservableObject, ILibraryModel
     {
         public LibraryModel(LivelyInfoModel data, string folderPath, LibraryTileType tileType = LibraryTileType.ready)
         {
@@ -40,7 +40,7 @@ namespace livelywpf.Models
             {
                 //full filepath is stored in Livelyinfo.json metadata file.
                 FilePath = data.FileName;
-                
+
                 //This is to keep backward compatibility with older wallpaper files.
                 //When I originally made the property all the paths where made absolute, not just wallpaper path.
                 //But previewgif and thumb are always inside the temporary lively created folder.
@@ -68,7 +68,7 @@ namespace livelywpf.Models
                 {
                     LivelyPropertyPath = Path.Combine(Directory.GetParent(data.FileName).ToString(), "LivelyProperties.json");
                 }
-                catch 
+                catch
                 {
                     LivelyPropertyPath = null;
                 }
@@ -76,7 +76,7 @@ namespace livelywpf.Models
             else
             {
                 //Only relative path is stored, this will be inside "Lively Wallpaper" folder.
-                if (data.Type == livelywpf.WallpaperType.url 
+                if (data.Type == livelywpf.WallpaperType.url
                 || data.Type == livelywpf.WallpaperType.videostream)
                 {
                     //no file.
@@ -97,7 +97,7 @@ namespace livelywpf.Models
                     {
                         LivelyPropertyPath = Path.Combine(folderPath, "LivelyProperties.json");
                     }
-                    catch 
+                    catch
                     {
                         LivelyPropertyPath = null;
                     }
@@ -124,16 +124,16 @@ namespace livelywpf.Models
 
             LivelyInfoFolderPath = folderPath;
             //Use animated gif if exists.
-            ImagePath = Program.SettingsVM.Settings.LivelyGUIRendering == LivelyGUIState.normal ? 
+            ImagePath = Program.SettingsVM.Settings.LivelyGUIRendering == LivelyGUIState.normal ?
                 (File.Exists(PreviewClipPath) ? PreviewClipPath : ThumbnailPath) : ThumbnailPath;
 
-            if (data.Type == livelywpf.WallpaperType.video || 
-                data.Type == livelywpf.WallpaperType.videostream || 
-                data.Type == livelywpf.WallpaperType.gif || 
+            if (data.Type == livelywpf.WallpaperType.video ||
+                data.Type == livelywpf.WallpaperType.videostream ||
+                data.Type == livelywpf.WallpaperType.gif ||
                 data.Type == livelywpf.WallpaperType.picture)
             {
                 //No user made livelyproperties file if missing, using default for video.
-                if(LivelyPropertyPath == null)
+                if (LivelyPropertyPath == null)
                 {
                     LivelyPropertyPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
                         "plugins", "mpv", "api", "LivelyProperties.json");
@@ -174,7 +174,7 @@ namespace livelywpf.Models
             get { return _filePath; }
             set
             {
-                if (LivelyInfo.Type == livelywpf.WallpaperType.url 
+                if (LivelyInfo.Type == livelywpf.WallpaperType.url
                 || LivelyInfo.Type == livelywpf.WallpaperType.videostream)
                 {
                     _filePath = value;
@@ -204,10 +204,10 @@ namespace livelywpf.Models
             get
             {
                 return _title;
-            }   
+            }
             set
             {
-                _title = string.IsNullOrWhiteSpace(value) ? "---" : (value.Length > 100 ? value.Substring(0, 100) : value); 
+                _title = string.IsNullOrWhiteSpace(value) ? "---" : (value.Length > 100 ? value.Substring(0, 100) : value);
                 OnPropertyChanged();
             }
         }

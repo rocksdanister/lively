@@ -31,7 +31,7 @@ namespace livelywpf.ViewModels
         {
             try
             {
-                Settings = JsonStorage<SettingsModel>.LoadData(Path.Combine(Program.AppDataDir, "Settings.json"));
+                Settings = JsonStorage<SettingsModel>.LoadData(Constants.CommonPaths.UserSettingsPath);
             }
             catch (Exception e)
             {
@@ -150,7 +150,7 @@ namespace livelywpf.ViewModels
         {
             try
             {
-                JsonStorage<SettingsModel>.StoreData(Path.Combine(Program.AppDataDir, "Settings.json"), Settings);
+                JsonStorage<SettingsModel>.StoreData(Constants.CommonPaths.UserSettingsPath, Settings);
             }
             catch (Exception e)
             {

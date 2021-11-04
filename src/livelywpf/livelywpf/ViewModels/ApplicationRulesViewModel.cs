@@ -19,7 +19,7 @@ namespace livelywpf.ViewModels
         {
             try
             {
-                var list = JsonStorage<List<ApplicationRulesModel>>.LoadData(Path.Combine(Program.AppDataDir, "AppRules.json"));
+                var list = JsonStorage<List<ApplicationRulesModel>>.LoadData(Constants.CommonPaths.AppRulesPath);
                 AppRules = new ObservableCollection<ApplicationRulesModel>(list);
             }
             catch (Exception e)
@@ -150,7 +150,7 @@ namespace livelywpf.ViewModels
         {
             try
             {
-                JsonStorage<List<ApplicationRulesModel>>.StoreData(Path.Combine(Program.AppDataDir, "AppRules.json"), AppRules.ToList());
+                JsonStorage<List<ApplicationRulesModel>>.StoreData(Constants.CommonPaths.AppRulesPath, AppRules.ToList());
             }
             catch (Exception e)
             {

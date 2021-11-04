@@ -13,7 +13,7 @@ using livelywpf.Core.Suspend;
 
 namespace livelywpf
 {
-    class Systray : IDisposable
+    public class Systray : IDisposable
     {
         private readonly NotifyIcon _notifyIcon = new NotifyIcon();
         private ToolStripMenuItem pauseTrayBtn, customiseWallpaperBtn, updateTrayBtn;

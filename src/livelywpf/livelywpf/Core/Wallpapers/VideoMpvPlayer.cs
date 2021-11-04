@@ -150,7 +150,7 @@ namespace livelywpf.Core.Wallpapers
             //avoid global config file %APPDATA%\mpv\mpv.conf
             cmdArgs.Append(Directory.Exists(configDir) ? "--config-dir=" + "\"" + configDir + "\" " : "--no-config ");
             //screenshot location, important read: https://mpv.io/manual/master/#pseudo-gui-mode
-            cmdArgs.Append("--screenshot-template=" + "\"" + Path.Combine(Program.AppDataDir, "temp", ipcServerName) + "\" --screenshot-format=jpg ");
+            cmdArgs.Append("--screenshot-template=" + "\"" + Path.Combine(Constants.CommonPaths.TempDir, ipcServerName) + "\" --screenshot-format=jpg ");
             //file or online video stream path
             cmdArgs.Append(model.LivelyInfo.Type == WallpaperType.videostream ? StreamHelper.YoutubeDLMpvArgGenerate(streamQuality, path) : "\"" + path + "\"");
 
@@ -295,10 +295,10 @@ namespace livelywpf.Core.Wallpapers
             else
             {
                 var tcs = new TaskCompletionSource<bool>();
-                var imgPath = Path.Combine(Program.AppDataDir, "temp", ipcServerName + ".jpg");
+                var imgPath = Path.Combine(Constants.CommonPaths.TempDir, ipcServerName + ".jpg");
                 //monitor directory for screenshot, mpv only outputs message before capturing screenshot..
                 using var watcher = new FileSystemWatcher();
-                watcher.Path = Path.Combine(Program.AppDataDir, "temp");
+                watcher.Path = Constants.CommonPaths.TempDir;
                 watcher.NotifyFilter = NotifyFilters.LastWrite;
                 watcher.Filter = "*.jpg";
                 watcher.Changed += (s, e) =>

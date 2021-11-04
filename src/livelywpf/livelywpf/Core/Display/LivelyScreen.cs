@@ -11,7 +11,7 @@ namespace livelywpf.Core
     /// </para>Check <seealso cref="ScreenHelper"/> for more information.
     /// </summary>
     [Serializable]
-    public class LivelyScreen : IEquatable<LivelyScreen>
+    public class LivelyScreen : IEquatable<LivelyScreen>, ILivelyScreen
     {
         public string DeviceId { get; set; }
         public string DeviceName { get; set; }
@@ -24,7 +24,7 @@ namespace livelywpf.Core
         public LivelyScreen(string DeviceId, string DeviceName, int BitsPerPixel, Rectangle Bounds, Rectangle WorkingArea)
         {
             //Backward compatibility: lively < v1.1.9 does not have DeviceId since it is using winform screenclass.
-            this.DeviceId = DeviceId ?? (ScreenHelper.GetScreen().FirstOrDefault(x => x.Bounds == Bounds)?.DeviceId); 
+            this.DeviceId = DeviceId ?? (ScreenHelper.GetScreen().FirstOrDefault(x => x.Bounds == Bounds)?.DeviceId);
             this.DeviceName = DeviceName;
             this.DeviceNumber = ScreenHelper.GetScreenNumber(DeviceName);
             this.BitsPerPixel = BitsPerPixel;

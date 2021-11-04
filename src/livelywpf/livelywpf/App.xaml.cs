@@ -11,6 +11,7 @@ using livelywpf.Helpers;
 using livelywpf.Core;
 using livelywpf.Views;
 using livelywpf.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace livelywpf
 {
@@ -20,10 +21,50 @@ namespace livelywpf
     public partial class App : Application
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+
+        private readonly IServiceProvider _serviceProvider;
+        /// <summary>
+        /// Gets the <see cref="IServiceProvider"/> instance for the current application instance.
+        /// </summary>
+        public static IServiceProvider Services
+        {
+            get
+            {
+                IServiceProvider serviceProvider = ((App)Current)._serviceProvider;
+                return serviceProvider ?? throw new InvalidOperationException("The service provider is not initialized");
+            }
+        }
+
         private static MainWindow _appWindow;
         public static MainWindow AppWindow
         {
             get => _appWindow ??= new MainWindow();
+        }
+
+        public App()
+        {
+            //OnStartup() -> App() -> Startup event.
+            _serviceProvider = ConfigureServices();
+        }
+
+        private IServiceProvider ConfigureServices()
+        {
+            var provider = new ServiceCollection()
+                /*
+                .AddSingleton<MainWindow>()
+                .AddSingleton<IAppUpdaterService, GithubUpdaterService>()
+                .AddTransient<Factories.IApplicationRulesFactory, Factories.ApplicationRulesFactory>()
+                .AddLogging(loggingBuilder =>
+                {
+                    // configure Logging with NLog
+                    loggingBuilder.ClearProviders();
+                    loggingBuilder.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
+                    loggingBuilder.AddNLog("Nlog.config");
+                })
+                */
+                .BuildServiceProvider();
+
+            return provider;
         }
 
         protected override void OnStartup(StartupEventArgs e)
@@ -31,10 +72,10 @@ namespace livelywpf
             try
             {
                 //create directories if not exist, eg: C:\Users\<User>\AppData\Local
-                Directory.CreateDirectory(Program.AppDataDir);
-                Directory.CreateDirectory(Path.Combine(Program.AppDataDir, "logs"));
-                Directory.CreateDirectory(Path.Combine(Program.AppDataDir, "temp"));
-                Directory.CreateDirectory(Path.Combine(Program.AppDataDir, "Cef"));
+                Directory.CreateDirectory(Constants.CommonPaths.AppDataDir);
+                Directory.CreateDirectory(Constants.CommonPaths.LogDir);
+                Directory.CreateDirectory(Constants.CommonPaths.TempDir);
+                Directory.CreateDirectory(Constants.CommonPaths.TempCefDir);
             }
             catch (Exception ex)
             {
@@ -48,7 +89,7 @@ namespace livelywpf
             NLogger.LogHardwareInfo();
 
             //clear temp files if any.
-            FileOperations.EmptyDirectory(Path.Combine(Program.AppDataDir, "temp"));
+            FileOperations.EmptyDirectory(Constants.CommonPaths.TempDir);
 
             //Initialize before viewmodel and main window.
             ScreenHelper.Initialize();

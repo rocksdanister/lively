@@ -458,7 +458,7 @@ namespace livelywpf.Core
                             }
 
                             //capture frame from wallpaper..
-                            var imgPath = Path.Combine(Program.AppDataDir, "temp", Path.GetRandomFileName() + ".jpg");
+                            var imgPath = Path.Combine(Constants.CommonPaths.TempDir, Path.GetRandomFileName() + ".jpg");
                             await wallpaper.ScreenCapture(imgPath);
                             if (!File.Exists(imgPath))
                             {
@@ -708,7 +708,7 @@ namespace livelywpf.Core
 
             try
             {
-                JsonStorage<List<WallpaperLayoutModel>>.StoreData(Path.Combine(Program.AppDataDir, "WallpaperLayout.json"), layout);
+                JsonStorage<List<WallpaperLayoutModel>>.StoreData(Constants.CommonPaths.WallpaperLayoutPath, layout);
             }
             catch (Exception e)
             {

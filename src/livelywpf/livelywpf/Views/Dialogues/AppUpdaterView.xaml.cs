@@ -115,7 +115,7 @@ namespace livelywpf.Views.Dialogues
                 try
                 {
                     download = new MultiDownloadHelper();
-                    savePath = Path.Combine(Program.AppDataDir, "temp", suggestedFileName);
+                    savePath = Path.Combine(Constants.CommonPaths.TempDir, suggestedFileName);
                     download.DownloadFile(fileUrl, savePath);
                     download.DownloadFileCompleted += UpdateDownload_DownloadFileCompleted;
                     download.DownloadProgressChanged += UpdateDownload_DownloadProgressChanged;

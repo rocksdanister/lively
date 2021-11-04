@@ -154,7 +154,7 @@ namespace livelywpf.Models
             DisplayIdentification = DisplayIdentificationMode.deviceId;
             SelectedDisplay = ScreenHelper.GetPrimaryScreen();
             LivelyGUIRendering = LivelyGUIState.normal;
-            WallpaperDir = Path.Combine(Program.AppDataDir, "Library");
+            WallpaperDir = Path.Combine(Constants.CommonPaths.AppDataDir, "Library");
             WallpaperDirMoveExistingWallpaperNewDir = false;
             SysTrayIcon = true;
             WebDebugPort = string.Empty;

@@ -18,7 +18,7 @@ namespace livelywpf.ViewModels
     public class LibraryViewModel : ObservableObject
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private List<string> wallpaperScanFolders = new List<string>() {
+        private readonly List<string> wallpaperScanFolders = new List<string>() {
                 Path.Combine(Program.WallpaperDir, "wallpapers"),
                 Path.Combine(Program.WallpaperDir, "SaveData", "wptmp")
             };
@@ -162,7 +162,7 @@ namespace livelywpf.ViewModels
                         || selection.LivelyInfo.Type == WallpaperType.url)
                     {
                         //no wallpaper file on disk, only wallpaper metadata.
-                        var tmpDir = Path.Combine(Program.AppDataDir, "temp", Path.GetRandomFileName());
+                        var tmpDir = Path.Combine(Constants.CommonPaths.TempDir, Path.GetRandomFileName());
                         try
                         {
                             Directory.CreateDirectory(tmpDir);
@@ -202,7 +202,7 @@ namespace livelywpf.ViewModels
                     else if(selection.LivelyInfo.IsAbsolutePath)
                     {
                         //livelyinfo.json only contains the absolute filepath of the file; file is in different location.
-                        var tmpDir = Path.Combine(Program.AppDataDir, "temp", Path.GetRandomFileName());
+                        var tmpDir = Path.Combine(Constants.CommonPaths.TempDir, Path.GetRandomFileName());
                         try
                         {
                             Directory.CreateDirectory(tmpDir);

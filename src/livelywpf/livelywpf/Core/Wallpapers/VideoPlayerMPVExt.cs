@@ -76,7 +76,7 @@ namespace livelywpf.Core.Wallpapers
             ProcessStartInfo start = new ProcessStartInfo
             {
                 Arguments = "--path " + "\"" + path + "\"" + " --stream " + (int)streamQuality + 
-                        " --stretch " + (int)scaler + " --datadir " + "\"" + Program.AppDataDir + "\"" + " --property " + "\"" + livelyPropertyCopyPath + "\"",
+                        " --stretch " + (int)scaler + " --datadir " + "\"" + Constants.CommonPaths.AppDataDir + "\"" + " --property " + "\"" + livelyPropertyCopyPath + "\"",
                 FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "libMPVPlayer", "libMPVPlayer.exe"),
                 RedirectStandardInput = true,
                 RedirectStandardOutput = true,

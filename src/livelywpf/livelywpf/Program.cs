@@ -19,15 +19,12 @@ namespace livelywpf
 {
     public class Program
     {
-        #region init
-
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private static readonly string uniqueAppName = "LIVELY:DESKTOPWALLPAPERSYSTEM";
-        private static readonly string pipeServerName = uniqueAppName + Environment.UserName;
-        private static readonly Mutex mutex = new Mutex(false, uniqueAppName);
+        //private static readonly string uniqueAppName = "LIVELY:DESKTOPWALLPAPERSYSTEM";
+        //private static readonly string pipeServerName = uniqueAppName + Environment.UserName;
+        private static readonly Mutex mutex = new Mutex(false, Constants.SingleInstance.UniqueAppName);
         //Loaded from Settings.json (User configurable.)
         public static string WallpaperDir { get; set; }
-        public static string AppDataDir { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Lively Wallpaper");
         public static bool IsMSIX { get; } = new DesktopBridge.Helpers().IsRunningAsUwp();
         //todo: make compile time flag.
         public static bool IsTestBuild { get; } = false;
@@ -36,8 +33,6 @@ namespace livelywpf
         public static SettingsViewModel SettingsVM { get; set; }
         public static ApplicationRulesViewModel AppRulesVM { get; set; }
         public static LibraryViewModel LibraryVM { get; set; }
-
-        #endregion //init
 
         #region app entry
 
@@ -53,7 +48,7 @@ namespace livelywpf
                     {
                         //skipping first element (application path.)
                         var args = Environment.GetCommandLineArgs().Skip(1).ToArray();
-                        PipeClient.SendMessage(pipeServerName, args.Length != 0 ? args : new string[] { "--showApp", "true" });
+                        PipeClient.SendMessage(Constants.SingleInstance.PipeServerName, args.Length != 0 ? args : new string[] { "--showApp", "true" });
                     }
                     catch
                     {
@@ -77,7 +72,7 @@ namespace livelywpf
 
             try
             {
-                var server = new PipeServer(pipeServerName);
+                var server = new PipeServer(Constants.SingleInstance.PipeServerName);
                 server.MessageReceived += Server_MessageReceived1;
             }
             catch (Exception e)
@@ -129,7 +124,7 @@ namespace livelywpf
                 setupWizard.Show();
             }
 
-            _ = SetupDesktop.RestoreWallpaperFromLayout(Path.Combine(Program.AppDataDir, "WallpaperLayout.json"));
+            _ = SetupDesktop.RestoreWallpaperFromLayout(Constants.CommonPaths.WallpaperLayoutPath);
 
             //first element is not application path, unlike Environment.GetCommandLineArgs().
             if (e.Args.Length > 0)

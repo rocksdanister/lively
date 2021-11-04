@@ -42,7 +42,7 @@ namespace livelywpf.Views.Wallpapers
         public async Task<IntPtr> InitializeWebView()
         {
             //Ref: https://docs.microsoft.com/en-us/microsoft-edge/webview2/concepts/user-data-folder
-            var env = await CoreWebView2Environment.CreateAsync(null, Path.Combine(Program.AppDataDir, "WebView2"));
+            var env = await CoreWebView2Environment.CreateAsync(null, Constants.CommonPaths.TempWebView2Dir);
             await webView.EnsureCoreWebView2Async(env);
             webView.CoreWebView2.ProcessFailed += CoreWebView2_ProcessFailed;
 
