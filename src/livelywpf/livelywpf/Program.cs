@@ -31,7 +31,7 @@ namespace livelywpf
 
         //todo: use singleton or something instead?
         public static SettingsViewModel SettingsVM { get; set; }
-        public static ApplicationRulesViewModel AppRulesVM { get; set; }
+        //public static ApplicationRulesViewModel AppRulesVM { get; set; }
         public static LibraryViewModel LibraryVM { get; set; }
 
         #region app entry

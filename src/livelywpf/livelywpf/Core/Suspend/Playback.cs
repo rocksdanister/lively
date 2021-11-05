@@ -12,6 +12,8 @@ using System.Linq;
 using livelywpf.Helpers.Hardware;
 using livelywpf.Helpers.Pinvoke;
 using livelywpf.Helpers.Screensaver;
+using livelywpf.Services;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace livelywpf.Core.Suspend
 {
@@ -20,6 +22,7 @@ namespace livelywpf.Core.Suspend
     /// </summary>
     public class Playback : IDisposable
     {
+        IUserSettingsService userSettings;
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         readonly string[] classWhiteList = new string[]
         {
@@ -59,6 +62,9 @@ namespace livelywpf.Core.Suspend
         public Playback()
         {
             Initialize();
+
+            //todo DI
+            userSettings = App.Services.GetRequiredService<IUserSettingsService>();
         }
 
         private void Initialize()
@@ -237,9 +243,9 @@ namespace livelywpf.Core.Suspend
                 }
 
                 //looping through custom rules for user defined apps..
-                for (int i = 0; i < Program.AppRulesVM.AppRules.Count; i++)
+                for (int i = 0; i < userSettings.AppRules.Count; i++)
                 {
-                    var item = Program.AppRulesVM.AppRules[i];
+                    var item = userSettings.AppRules[i];
                     if (string.Equals(item.AppName, fProcess.ProcessName, StringComparison.Ordinal))
                     {
                         switch (item.Rule)

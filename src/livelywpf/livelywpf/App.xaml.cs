@@ -12,6 +12,7 @@ using livelywpf.Core;
 using livelywpf.Views;
 using livelywpf.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
+using livelywpf.Services;
 
 namespace livelywpf
 {
@@ -38,20 +39,30 @@ namespace livelywpf
         private static MainWindow _appWindow;
         public static MainWindow AppWindow
         {
-            get => _appWindow ??= new MainWindow();
+            get => _appWindow ??= App.Services.GetRequiredService<MainWindow>();
         }
 
         public App()
         {
-            //OnStartup() -> App() -> Startup event.
+            //App() -> OnStartup() -> App.Startup event.
             _serviceProvider = ConfigureServices();
         }
 
         private IServiceProvider ConfigureServices()
         {
             var provider = new ServiceCollection()
-                /*
+                //singleton
                 .AddSingleton<MainWindow>()
+                .AddSingleton<IUserSettingsService, UserSettingsService>()
+                .AddSingleton<SettingsViewModel>() //can be made transient once usersettings is separated.
+                .AddSingleton<LibraryViewModel>()
+                //transient
+                .AddTransient<ApplicationRulesViewModel>()
+                .AddTransient<AboutViewModel>()
+                .AddTransient<AddWallpaperViewModel>()
+                .AddTransient<HelpViewModel>()
+                .AddTransient<ScreenLayoutViewModel>()
+                /*
                 .AddSingleton<IAppUpdaterService, GithubUpdaterService>()
                 .AddTransient<Factories.IApplicationRulesFactory, Factories.ApplicationRulesFactory>()
                 .AddLogging(loggingBuilder =>
@@ -96,7 +107,7 @@ namespace livelywpf
 
             #region vm init
 
-            Program.SettingsVM = new SettingsViewModel();
+            Program.SettingsVM = App.Services.GetRequiredService<SettingsViewModel>();
             Program.WallpaperDir = Program.SettingsVM.Settings.WallpaperDir;
             try
             {
@@ -128,8 +139,8 @@ namespace livelywpf
                 Program.SettingsVM.UpdateConfigFile();
             }
 
-            Program.AppRulesVM = new ApplicationRulesViewModel();
-            Program.LibraryVM = new LibraryViewModel();
+            //Program.AppRulesVM = App.Services.GetRequiredService<ApplicationRulesViewModel>();
+            Program.LibraryVM = App.Services.GetRequiredService<LibraryViewModel>();
 
             #endregion //vm init
 
@@ -147,6 +158,7 @@ namespace livelywpf
                 Program.SettingsVM.UpdateConfigFile();
                 AppWindow?.Show();
             }
+
             base.OnStartup(e);
         }
 

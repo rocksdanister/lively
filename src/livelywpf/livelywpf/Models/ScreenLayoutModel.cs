@@ -3,7 +3,7 @@ using livelywpf.Helpers.MVVM;
 
 namespace livelywpf.Models
 {
-    public class ScreenLayoutModel : ObservableObject
+    public class ScreenLayoutModel : ObservableObject, IScreenLayoutModel
     {
         public ScreenLayoutModel(LivelyScreen screen, string screenImagePath, string livelypropertyFilePath, string screenTitle)
         {

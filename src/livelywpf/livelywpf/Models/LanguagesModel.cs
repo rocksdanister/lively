@@ -3,7 +3,7 @@
 namespace livelywpf.Models
 {
     [Serializable]
-    public class LanguagesModel
+    public class LanguagesModel : ILanguagesModel
     {
         public string Language { get; set; }
         public string[] Codes { get; set; }

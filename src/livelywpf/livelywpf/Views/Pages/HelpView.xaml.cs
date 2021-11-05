@@ -1,4 +1,5 @@
 ﻿using livelywpf.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -23,7 +24,7 @@ namespace livelywpf.Views.Pages
         public HelpView()
         {
             InitializeComponent();
-            this.DataContext = new HelpViewModel();
+            this.DataContext = App.Services.GetRequiredService<HelpViewModel>();
             //storePanel.Visibility = Program.IsMSIX ? Visibility.Visible : Visibility.Collapsed;
         }
 

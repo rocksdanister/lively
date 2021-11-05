@@ -5,7 +5,7 @@ using System;
 namespace livelywpf.Models
 {
     [Serializable]
-    public class ApplicationRulesModel : ObservableObject
+    public class ApplicationRulesModel : ObservableObject, IApplicationRulesModel
     {
         public ApplicationRulesModel(string appName, AppRulesEnum rule)
         {

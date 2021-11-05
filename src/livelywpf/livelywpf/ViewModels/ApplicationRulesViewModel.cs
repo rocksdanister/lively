@@ -1,6 +1,7 @@
 ﻿using livelywpf.Helpers.MVVM;
 using livelywpf.Helpers.Storage;
 using livelywpf.Models;
+using livelywpf.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,29 +14,17 @@ namespace livelywpf.ViewModels
 {
     public class ApplicationRulesViewModel : ObservableObject
     {
+        readonly IUserSettingsService userSettings;
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private bool itemSelected = false;
-        public ApplicationRulesViewModel()
+        public ApplicationRulesViewModel(IUserSettingsService userSettings)
         {
-            try
-            {
-                var list = JsonStorage<List<ApplicationRulesModel>>.LoadData(Constants.CommonPaths.AppRulesPath);
-                AppRules = new ObservableCollection<ApplicationRulesModel>(list);
-            }
-            catch (Exception e)
-            {
-                Logger.Error(e.ToString());
-                AppRules = new ObservableCollection<ApplicationRulesModel>
-                {
-                    //defaults.
-                    new ApplicationRulesModel("Discord", AppRulesEnum.ignore)
-                };
-                UpdateDiskFile();
-            }
+            this.userSettings = userSettings;
+            AppRules = new ObservableCollection<IApplicationRulesModel>(userSettings.AppRules);
         }
 
-        private ObservableCollection<ApplicationRulesModel> _appRules;
-        public ObservableCollection<ApplicationRulesModel> AppRules
+        private ObservableCollection<IApplicationRulesModel> _appRules;
+        public ObservableCollection<IApplicationRulesModel> AppRules
         {
             get
             {
@@ -48,8 +37,8 @@ namespace livelywpf.ViewModels
             }
         }
 
-        private ApplicationRulesModel _selectedItem;
-        public ApplicationRulesModel SelectedItem
+        private IApplicationRulesModel _selectedItem;
+        public IApplicationRulesModel SelectedItem
         {
             get { return _selectedItem; }
             set
@@ -132,7 +121,9 @@ namespace livelywpf.ViewModels
                         }
                     }
 
-                    AppRules.Add(new ApplicationRulesModel(fileName, AppRulesEnum.pause));
+                    var rule = new ApplicationRulesModel(fileName, AppRulesEnum.pause);
+                    userSettings.AppRules.Add(rule);
+                    AppRules.Add(rule);
                 }
                 catch (Exception e)
                 {
@@ -143,19 +134,13 @@ namespace livelywpf.ViewModels
 
         private void RemoveProgram()
         {
+            userSettings.AppRules.Remove(SelectedItem);
             AppRules.Remove(SelectedItem);
         }
 
         public void UpdateDiskFile()
         {
-            try
-            {
-                JsonStorage<List<ApplicationRulesModel>>.StoreData(Constants.CommonPaths.AppRulesPath, AppRules.ToList());
-            }
-            catch (Exception e)
-            {
-                Logger.Error(e.ToString());
-            }
+            userSettings.Save<List<IApplicationRulesModel>>();
         }
 
         public void OnWindowClosing(object sender, CancelEventArgs e)

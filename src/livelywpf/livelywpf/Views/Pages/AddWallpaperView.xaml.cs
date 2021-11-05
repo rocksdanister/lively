@@ -1,5 +1,6 @@
 ﻿using livelywpf.Helpers;
 using livelywpf.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Toolkit.Wpf.UI.XamlHost;
 using System;
 using System.Diagnostics;
@@ -18,7 +19,7 @@ namespace livelywpf.Views.Pages
         public AddWallpaperView()
         {
             InitializeComponent();
-            this.DataContext = new AddWallpaperViewModel();
+            this.DataContext = App.Services.GetRequiredService<AddWallpaperViewModel>();
         }
 
         private Windows.UI.Xaml.Controls.Image img;

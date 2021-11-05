@@ -7,7 +7,7 @@ namespace livelywpf.Models
 {
 
     [Serializable]
-    public class SettingsModel
+    public class SettingsModel : ISettingsModel
     {
         public string AppVersion { get; set; }
         public string Language { get; set; }
@@ -82,7 +82,7 @@ namespace livelywpf.Models
         /// </summary>
         public string WebDebugPort { get; set; }
         public int WallpaperBundleVersion { get; set; }
-        public StreamQualitySuggestion StreamQuality {get; set;}
+        public StreamQualitySuggestion StreamQuality { get; set; }
         /// <summary>
         /// 0 - 100 sound level, affects every wallpaper type.
         /// </summary>

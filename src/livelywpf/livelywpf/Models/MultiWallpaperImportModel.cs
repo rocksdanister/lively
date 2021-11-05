@@ -2,7 +2,7 @@
 
 namespace livelywpf.Models
 {
-    class MultiWallpaperImportModel
+    class MultiWallpaperImportModel : IMultiWallpaperImportModel
     {
         public int Id { get; set; }
         public string Path { get; set; }

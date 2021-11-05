@@ -1,5 +1,6 @@
 ﻿using livelywpf.Helpers;
 using livelywpf.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
 using Page = System.Windows.Controls.Page;
 
 namespace livelywpf.Views.Pages
@@ -12,7 +13,7 @@ namespace livelywpf.Views.Pages
         public AboutView()
         {
             InitializeComponent();
-            var vm = new AboutViewModel();
+            var vm = App.Services.GetRequiredService<AboutViewModel>();
             this.DataContext = vm;
             this.Unloaded += vm.OnViewClosing;
         }

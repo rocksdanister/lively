@@ -12,13 +12,13 @@ namespace livelywpf.Models
     /// Wallpaper arragement on display.
     /// </summary>
     [Serializable]
-    public class WallpaperLayoutModel
+    public class WallpaperLayoutModel : IWallpaperLayoutModel
     {
         public LivelyScreen LivelyScreen { get; set; }
         public string LivelyInfoPath { get; set; }
 
         [JsonConstructor]
-        public WallpaperLayoutModel(string DeviceId, string DeviceName, int BitsPerPixel, Rectangle Bounds, Rectangle WorkingArea, string livelyInfoPath) 
+        public WallpaperLayoutModel(string DeviceId, string DeviceName, int BitsPerPixel, Rectangle Bounds, Rectangle WorkingArea, string livelyInfoPath)
         {
             LivelyScreen = new LivelyScreen(DeviceId, DeviceName, BitsPerPixel, Bounds, WorkingArea);
             this.LivelyInfoPath = livelyInfoPath;
