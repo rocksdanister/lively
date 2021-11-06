@@ -432,7 +432,7 @@ namespace livelywpf.Core.Suspend
         {
             SetupDesktop.Wallpapers.ForEach(x =>
             {
-                if (ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.deviceId))
+                if (ScreenHelper.ScreenCompare(x.Screen, display, DisplayIdentificationMode.deviceId))
                 {
                     x.Pause();
                 }
@@ -443,7 +443,7 @@ namespace livelywpf.Core.Suspend
         {
             SetupDesktop.Wallpapers.ForEach(x =>
             {
-                if (ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.deviceId))
+                if (ScreenHelper.ScreenCompare(x.Screen, display, DisplayIdentificationMode.deviceId))
                     x.Play();
             });
         }
@@ -460,7 +460,7 @@ namespace livelywpf.Core.Suspend
         {
             SetupDesktop.Wallpapers.ForEach(x =>
             {
-                if (ScreenHelper.ScreenCompare(x.GetScreen(), display, DisplayIdentificationMode.deviceId))
+                if (ScreenHelper.ScreenCompare(x.Screen, display, DisplayIdentificationMode.deviceId))
                 {
                     x.SetVolume(volume);
                 }
@@ -469,7 +469,7 @@ namespace livelywpf.Core.Suspend
 
         private static bool IsLivelyPlugin(int pid)
         {
-            return SetupDesktop.Wallpapers.Exists(x => x.GetProcess() != null && x.GetProcess().Id == pid);
+            return SetupDesktop.Wallpapers.Exists(x => x.Proc != null && x.Proc.Id == pid);
         }
 
         /// <summary>

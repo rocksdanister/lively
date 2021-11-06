@@ -18,14 +18,28 @@ namespace livelywpf.Core.Wallpapers
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
         private IntPtr hwndWindow, hwndWebView;
         private readonly WebView2Element player;
-        private readonly LibraryModel model;
-        private LivelyScreen display;
-        private readonly string livelyPropertyCopyPath;
-        private bool isLoaded;
+        private readonly ILibraryModel model;
+        private ILivelyScreen display;
+
+        public bool IsLoaded { get; private set; } = false;
+
+        public WallpaperType Category => model.LivelyInfo.Type;
+
+        public ILibraryModel Model => model;
+
+        public IntPtr Handle => hwndWindow;
+
+        public IntPtr InputHandle => hwndWebView;
+
+        public Process Proc => null;
+
+        public ILivelyScreen Screen { get => display; set => display = value; }
+
+        public string LivelyPropertyCopyPath { get; }
 
         public WebEdge(string path, LibraryModel model, LivelyScreen display)
         {
-            livelyPropertyCopyPath = null;
+            LivelyPropertyCopyPath = null;
             if (model.LivelyPropertyPath != null)
             {
                 //customisable wallpaper, livelyproperty.json is present.
@@ -53,10 +67,10 @@ namespace livelywpf.Core.Wallpapers
                         }
                         Directory.CreateDirectory(wpdataFolder);
                         //copy the original file if not found..
-                        livelyPropertyCopyPath = Path.Combine(wpdataFolder, "LivelyProperties.json");
-                        if (!File.Exists(livelyPropertyCopyPath))
+                        LivelyPropertyCopyPath = Path.Combine(wpdataFolder, "LivelyProperties.json");
+                        if (!File.Exists(LivelyPropertyCopyPath))
                         {
-                            File.Copy(model.LivelyPropertyPath, livelyPropertyCopyPath);
+                            File.Copy(model.LivelyPropertyPath, LivelyPropertyCopyPath);
                         }
                     }
                     else
@@ -70,7 +84,7 @@ namespace livelywpf.Core.Wallpapers
                 }
             }
 
-            player = new WebView2Element(path, model.LivelyInfo.Type, livelyPropertyCopyPath);
+            player = new WebView2Element(path, model.LivelyInfo.Type, LivelyPropertyCopyPath);
             this.model = model;
             this.display = display;
         }
@@ -81,41 +95,6 @@ namespace livelywpf.Core.Wallpapers
             {
                 player.Close();
             }));
-        }
-
-        public string GetLivelyPropertyCopyPath()
-        {
-            return livelyPropertyCopyPath;
-        }
-
-        public Process GetProcess()
-        {
-            return null;
-        }
-
-        public LivelyScreen GetScreen()
-        {
-            return display;
-        }
-
-        public LibraryModel GetWallpaperData()
-        {
-            return model;
-        }
-
-        public WallpaperType GetWallpaperType()
-        {
-            return model.LivelyInfo.Type;
-        }
-
-        public IntPtr GetHWND()
-        {
-            return hwndWindow;
-        }
-
-        public IntPtr GetHWNDInput()
-        {
-            return hwndWebView;
         }
 
         public void Pause()
@@ -133,11 +112,6 @@ namespace livelywpf.Core.Wallpapers
         public void SendMessage(string msg)
         {
             player?.MessageProcess(msg);
-        }
-
-        public void SetScreen(LivelyScreen display)
-        {
-            this.display = display;
         }
 
         public void SetVolume(int volume)
@@ -188,7 +162,7 @@ namespace livelywpf.Core.Wallpapers
 
         private void Player_LivelyPropertiesInitialized(object sender, EventArgs e)
         {
-            isLoaded = true;
+            IsLoaded = true;
             player.LivelyPropertiesInitialized -= Player_LivelyPropertiesInitialized;
         }
 
@@ -223,11 +197,6 @@ namespace livelywpf.Core.Wallpapers
         public void SendMessage(IpcMessage obj)
         {
             player?.MessageProcess(obj);
-        }
-
-        public bool IsLoaded()
-        {
-            return isLoaded;
         }
     }
 }

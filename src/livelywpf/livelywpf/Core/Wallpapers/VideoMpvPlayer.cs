@@ -38,23 +38,37 @@ namespace livelywpf.Core.Wallpapers
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
         private IntPtr hwnd;
         private readonly Process _process;
-        private readonly LibraryModel model;
-        private LivelyScreen display;
+        private readonly ILibraryModel model;
+        private ILivelyScreen display;
         private readonly CancellationTokenSource ctsProcessWait = new CancellationTokenSource();
         private Task processWaitTask;
         private readonly int timeOut;
         private readonly string ipcServerName;
         private bool _isVideoStopped;
         private JObject livelyPropertiesData;
-        private readonly string livelyPropertyCopyPath;
         private static int globalCount;
         private readonly int uniqueId;
-        private bool isLoaded;
+
+        public string LivelyPropertyCopyPath { get; }
+
+        public bool IsLoaded { get; private set; } = false;
+
+        public Process Proc => _process;
+
+        public WallpaperType Category => model.LivelyInfo.Type;
+
+        public ILibraryModel Model => model;
+
+        public IntPtr Handle => hwnd;
+
+        public IntPtr InputHandle => IntPtr.Zero;
+
+        public ILivelyScreen Screen { get => display; set => display = value; }
 
         public VideoMpvPlayer(string path, LibraryModel model, LivelyScreen display,
             WallpaperScaler scaler = WallpaperScaler.fill, StreamQualitySuggestion streamQuality = StreamQualitySuggestion.Highest, bool onScreenControl = false)
         {
-            livelyPropertyCopyPath = null;
+            LivelyPropertyCopyPath = null;
             if (model.LivelyPropertyPath != null)
             {
                 //customisable wallpaper, livelyproperty.json is present.
@@ -82,10 +96,10 @@ namespace livelywpf.Core.Wallpapers
                         }
                         Directory.CreateDirectory(wpdataFolder);
                         //copy the original file if not found..
-                        livelyPropertyCopyPath = Path.Combine(wpdataFolder, "LivelyProperties.json");
-                        if (!File.Exists(livelyPropertyCopyPath))
+                        LivelyPropertyCopyPath = Path.Combine(wpdataFolder, "LivelyProperties.json");
+                        if (!File.Exists(LivelyPropertyCopyPath))
                         {
-                            File.Copy(model.LivelyPropertyPath, livelyPropertyCopyPath);
+                            File.Copy(model.LivelyPropertyPath, LivelyPropertyCopyPath);
                         }
                     }
                     else
@@ -99,9 +113,9 @@ namespace livelywpf.Core.Wallpapers
                 }
             }
 
-            if (livelyPropertyCopyPath != null)
+            if (LivelyPropertyCopyPath != null)
             {
-                livelyPropertiesData = Cef.LivelyPropertiesJSON.LoadLivelyProperties(livelyPropertyCopyPath);
+                livelyPropertiesData = Cef.LivelyPropertiesJSON.LoadLivelyProperties(LivelyPropertyCopyPath);
             }
 
             var scalerArg = scaler switch
@@ -193,41 +207,6 @@ namespace livelywpf.Core.Wallpapers
             Terminate();
         }
 
-        public IntPtr GetHWND()
-        {
-            return hwnd;
-        }
-
-        public IntPtr GetHWNDInput()
-        {
-            return IntPtr.Zero;
-        }
-
-        public string GetLivelyPropertyCopyPath()
-        {
-            return livelyPropertyCopyPath;
-        }
-
-        public Process GetProcess()
-        {
-            return _process;
-        }
-
-        public LivelyScreen GetScreen()
-        {
-            return display;
-        }
-
-        public LibraryModel GetWallpaperData()
-        {
-            return model;
-        }
-
-        public WallpaperType GetWallpaperType()
-        {
-            return model.LivelyInfo.Type;
-        }
-
         public void Play()
         {
             if (_isVideoStopped)
@@ -260,7 +239,7 @@ namespace livelywpf.Core.Wallpapers
 
         public void SetPlaybackPos(float pos, PlaybackPosType type)
         {
-            if (GetWallpaperType() != WallpaperType.picture)
+            if (Category != WallpaperType.picture)
             {
                 var posStr = JsonConvert.SerializeObject(pos);
                 switch (type)
@@ -277,12 +256,12 @@ namespace livelywpf.Core.Wallpapers
 
         public async Task ScreenCapture(string filePath)
         {
-            if (GetWallpaperType() == WallpaperType.gif)
+            if (Category == WallpaperType.gif)
             {
                 await Task.Run(() =>
                 {
                     //read first frame of gif image
-                    using var image = new MagickImage(GetWallpaperData().FilePath);
+                    using var image = new MagickImage(Model.FilePath);
                     if (image.Width < 1920)
                     {
                         //if the image is too small then resize to min: 1080p using integer scaling for sharpness.
@@ -361,11 +340,6 @@ namespace livelywpf.Core.Wallpapers
             }
         }
 
-        public void SetScreen(LivelyScreen display)
-        {
-            this.display = display;
-        }
-
         public async void Show()
         {
             if (_process != null)
@@ -403,7 +377,7 @@ namespace livelywpf.Core.Wallpapers
                         //Wait a bit for properties to apply.
                         //Todo: check ipc mgs and do this properly.
                         await Task.Delay(69);
-                        isLoaded = true;
+                        IsLoaded = true;
                     }
                 }
                 catch (OperationCanceledException e1)
@@ -612,7 +586,7 @@ namespace livelywpf.Core.Wallpapers
                         if (btn.IsDefault)
                         {
                             //load new file.
-                            livelyPropertiesData = Cef.LivelyPropertiesJSON.LoadLivelyProperties(GetLivelyPropertyCopyPath());
+                            livelyPropertiesData = Cef.LivelyPropertiesJSON.LoadLivelyProperties(LivelyPropertyCopyPath);
                             //restore new property values.
                             SetPlaybackProperties(livelyPropertiesData);
                         }
@@ -642,11 +616,6 @@ namespace livelywpf.Core.Wallpapers
                 Logger.Error("Mpv{0}: Slider double -> int overlow", uniqueId); 
             }
             catch { }
-        }
-
-        public bool IsLoaded()
-        {
-            return isLoaded;
         }
 
         #region mpv util

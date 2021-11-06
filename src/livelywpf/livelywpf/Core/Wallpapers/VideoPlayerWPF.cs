@@ -17,8 +17,25 @@ namespace livelywpf.Core.Wallpapers
     {
         private IntPtr hwnd;
         private readonly MediaElementWPF player;
-        private readonly LibraryModel model;
-        private LivelyScreen display;
+        private readonly ILibraryModel model;
+        private ILivelyScreen display;
+
+        public bool IsLoaded => player?.IsActive == true;
+
+        public WallpaperType Category => model.LivelyInfo.Type;
+
+        public ILibraryModel Model => model;
+
+        public IntPtr Handle => hwnd;
+
+        public IntPtr InputHandle => IntPtr.Zero;
+
+        public Process Proc => null;
+
+        public ILivelyScreen Screen { get => display; set => display = value; }
+
+        public string LivelyPropertyCopyPath => null;
+
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
 
         public VideoPlayerWPF(string filePath, LibraryModel model, LivelyScreen display, WallpaperScaler scaler = WallpaperScaler.fill)
@@ -26,31 +43,6 @@ namespace livelywpf.Core.Wallpapers
             player = new MediaElementWPF(filePath, scaler == WallpaperScaler.auto ? WallpaperScaler.uniform : scaler);
             this.model = model;
             this.display = display;
-        }
-
-        public WallpaperType GetWallpaperType()
-        {
-            return WallpaperType.video;
-        }
-
-        public LibraryModel GetWallpaperData()
-        {
-            return model;
-        }
-
-        public IntPtr GetHWND()
-        {
-            return hwnd;
-        }
-
-        public IntPtr GetHWNDInput()
-        {
-            return IntPtr.Zero;
-        }
-
-        public Process GetProcess()
-        {
-            return null;
         }
 
         public void Play()
@@ -76,11 +68,6 @@ namespace livelywpf.Core.Wallpapers
             }));
         }
 
-        public LivelyScreen GetScreen()
-        {
-            return display;
-        }
-
         public void Show()
         {
             if(player != null)
@@ -100,16 +87,6 @@ namespace livelywpf.Core.Wallpapers
         public void SendMessage(string msg)
         {
             //todo
-        }
-
-        public string GetLivelyPropertyCopyPath()
-        {
-            return null;
-        }
-
-        public void SetScreen(LivelyScreen display)
-        {
-            this.display = display;
         }
 
         public void Terminate()
@@ -135,11 +112,6 @@ namespace livelywpf.Core.Wallpapers
         public void SendMessage(IpcMessage obj)
         {
             //todo
-        }
-
-        public bool IsLoaded()
-        {
-            return player?.IsActive == true;
         }
     }
 }

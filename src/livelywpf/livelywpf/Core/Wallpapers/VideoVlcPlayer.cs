@@ -21,11 +21,27 @@ namespace livelywpf.Core.Wallpapers
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
         private IntPtr hwnd;
         private readonly Process _process;
-        private readonly LibraryModel model;
-        private LivelyScreen display;
+        private readonly ILibraryModel model;
+        private ILivelyScreen display;
         private readonly CancellationTokenSource ctsProcessWait = new CancellationTokenSource();
         private Task processWaitTask;
         private readonly int timeOut;
+
+        public bool IsLoaded => hwnd != IntPtr.Zero;
+
+        public WallpaperType Category => model.LivelyInfo.Type;
+
+        public ILibraryModel Model => model;
+
+        public IntPtr Handle => hwnd;
+
+        public IntPtr InputHandle => IntPtr.Zero;
+
+        public Process Proc => _process;
+
+        public ILivelyScreen Screen { get => display; set => display = value; }
+
+        public string LivelyPropertyCopyPath => null;
 
         public VideoVlcPlayer(string path, LibraryModel model, LivelyScreen display, WallpaperScaler scaler = WallpaperScaler.fill)
         {
@@ -91,36 +107,6 @@ namespace livelywpf.Core.Wallpapers
             Terminate();
         }
 
-        public IntPtr GetHWND()
-        {
-            return hwnd;
-        }
-
-        public IntPtr GetHWNDInput()
-        {
-            return IntPtr.Zero;
-        }
-
-        public string GetLivelyPropertyCopyPath()
-        {
-            return null;
-        }
-
-        public Process GetProcess()
-        {
-            return _process;
-        }
-
-        public LivelyScreen GetScreen()
-        {
-            return display;
-        }
-
-        public LibraryModel GetWallpaperData()
-        {
-            return model;
-        }
-
         public WallpaperType GetWallpaperType()
         {
             return model.LivelyInfo.Type;
@@ -144,11 +130,6 @@ namespace livelywpf.Core.Wallpapers
         public void SetPlaybackPos(float pos, PlaybackPosType type)
         {
             //todo
-        }
-
-        public void SetScreen(LivelyScreen display)
-        {
-            this.display = display;
         }
 
         public void SetVolume(int volume)
@@ -360,11 +341,6 @@ namespace livelywpf.Core.Wallpapers
         public void SendMessage(IpcMessage obj)
         {
             //todo
-        }
-
-        public bool IsLoaded()
-        {
-            return GetHWND() != IntPtr.Zero;
         }
     }
 }

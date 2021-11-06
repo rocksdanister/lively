@@ -16,9 +16,25 @@ namespace livelywpf.Core.Wallpapers
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
         private DesktopWallpaperPosition desktopScaler;
         private IDesktopWallpaper desktop;
-        private readonly LibraryModel model;
+        private readonly ILibraryModel model;
         private string systemWallpaperPath;
-        private LivelyScreen display;
+        private ILivelyScreen display;
+
+        public bool IsLoaded => true;
+
+        public WallpaperType Category => WallpaperType.picture;
+
+        public ILibraryModel Model => model;
+
+        public IntPtr Handle => IntPtr.Zero;
+
+        public IntPtr InputHandle => IntPtr.Zero;
+
+        public Process Proc => null;
+
+        public ILivelyScreen Screen { get => display; set => display = value; }
+
+        public string LivelyPropertyCopyPath => null;
 
         public PictureWallpaper(string filePath, LibraryModel model, LivelyScreen display, WallpaperScaler scaler = WallpaperScaler.fill)
         {
@@ -49,41 +65,6 @@ namespace livelywpf.Core.Wallpapers
         public void Close()
         {
             Terminate();
-        }
-
-        public IntPtr GetHWND()
-        {
-            return IntPtr.Zero;
-        }
-
-        public IntPtr GetHWNDInput()
-        {
-            return IntPtr.Zero;
-        }
-
-        public string GetLivelyPropertyCopyPath()
-        {
-            return null;
-        }
-
-        public Process GetProcess()
-        {
-            return null;
-        }
-
-        public LivelyScreen GetScreen()
-        {
-            return display;
-        }
-
-        public LibraryModel GetWallpaperData()
-        {
-            return model;
-        }
-
-        public WallpaperType GetWallpaperType()
-        {
-            return WallpaperType.picture;
         }
 
         public void Pause()
@@ -142,12 +123,6 @@ namespace livelywpf.Core.Wallpapers
         public void SendMessage(IpcMessage obj)
         {
             //todo
-        }
-
-        public bool IsLoaded()
-        {
-            //nothing to load..
-            return true;
         }
     }
 }

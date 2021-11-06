@@ -16,18 +16,33 @@ namespace livelywpf.Core.Wallpapers
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private IntPtr hwnd;
         private readonly Process _process;
-        private readonly LibraryModel model;
-        private LivelyScreen display;
+        private readonly ILibraryModel model;
+        private ILivelyScreen display;
         private bool _initialized;
-        private readonly string livelyPropertyCopyPath;
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
         private static int globalCount;
         private readonly int uniqueId;
 
+        public bool IsLoaded => hwnd != IntPtr.Zero;
+
+        public WallpaperType Category => model.LivelyInfo.Type;
+
+        public ILibraryModel Model => model;
+
+        public IntPtr Handle => hwnd;
+
+        public IntPtr InputHandle => IntPtr.Zero;
+
+        public Process Proc => _process;
+
+        public ILivelyScreen Screen { get => display; set => display = value; }
+
+        public string LivelyPropertyCopyPath { get; }
+
         public VideoPlayerMPVExt(string path, LibraryModel model, LivelyScreen display, 
             WallpaperScaler scaler = WallpaperScaler.fill, StreamQualitySuggestion streamQuality = StreamQualitySuggestion.Highest)
         {
-            livelyPropertyCopyPath = null;
+            LivelyPropertyCopyPath = null;
             if (model.LivelyPropertyPath != null)
             {
                 //customisable wallpaper, livelyproperty.json is present.
@@ -55,10 +70,10 @@ namespace livelywpf.Core.Wallpapers
                         }
                         Directory.CreateDirectory(wpdataFolder);
                         //copy the original file if not found..
-                        livelyPropertyCopyPath = Path.Combine(wpdataFolder, "LivelyProperties.json");
-                        if (!File.Exists(livelyPropertyCopyPath))
+                        LivelyPropertyCopyPath = Path.Combine(wpdataFolder, "LivelyProperties.json");
+                        if (!File.Exists(LivelyPropertyCopyPath))
                         {
-                            File.Copy(model.LivelyPropertyPath, livelyPropertyCopyPath);
+                            File.Copy(model.LivelyPropertyPath, LivelyPropertyCopyPath);
                         }
                     }
                     else
@@ -76,7 +91,7 @@ namespace livelywpf.Core.Wallpapers
             ProcessStartInfo start = new ProcessStartInfo
             {
                 Arguments = "--path " + "\"" + path + "\"" + " --stream " + (int)streamQuality + 
-                        " --stretch " + (int)scaler + " --datadir " + "\"" + Constants.CommonPaths.AppDataDir + "\"" + " --property " + "\"" + livelyPropertyCopyPath + "\"",
+                        " --stretch " + (int)scaler + " --datadir " + "\"" + Constants.CommonPaths.AppDataDir + "\"" + " --property " + "\"" + LivelyPropertyCopyPath + "\"",
                 FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "libMPVPlayer", "libMPVPlayer.exe"),
                 RedirectStandardInput = true,
                 RedirectStandardOutput = true,
@@ -110,36 +125,6 @@ namespace livelywpf.Core.Wallpapers
             {
                 Terminate();
             }
-        }
-
-        public IntPtr GetHWND()
-        {
-            return hwnd;
-        }
-
-        public IntPtr GetHWNDInput()
-        {
-            return IntPtr.Zero;
-        }
-
-        public Process GetProcess()
-        {
-            return _process;
-        }
-
-        public LivelyScreen GetScreen()
-        {
-            return display;
-        }
-
-        public LibraryModel GetWallpaperData()
-        {
-            return model;
-        }
-
-        public WallpaperType GetWallpaperType()
-        {
-            return model.LivelyInfo.Type;
         }
 
         public void Pause()
@@ -245,11 +230,6 @@ namespace livelywpf.Core.Wallpapers
             }
         }
 
-        public string GetLivelyPropertyCopyPath()
-        {
-            return livelyPropertyCopyPath;
-        }
-
         public void SetScreen(LivelyScreen display)
         {
             this.display = display;
@@ -283,11 +263,6 @@ namespace livelywpf.Core.Wallpapers
         public void SendMessage(IpcMessage obj)
         {
             SendMessage(JsonConvert.SerializeObject(obj));
-        }
-
-        public bool IsLoaded()
-        {
-            return GetHWND() != IntPtr.Zero;
         }
     }
 }

@@ -12,32 +12,32 @@ namespace livelywpf.Core
         /// Wallpaper loading complete status (includes LivelyProperties restoration.)
         /// </summary>
         /// <returns></returns>
-        bool IsLoaded();
+        bool IsLoaded { get; }
         /// <summary>
         /// Get lively wallpaper type.
         /// </summary>
         /// <returns></returns>
-        WallpaperType GetWallpaperType();
+        WallpaperType Category { get; }
         /// <summary>
         /// Get wallpaper metadata.
         /// </summary>
         /// <returns></returns>
-        LibraryModel GetWallpaperData();
+        ILibraryModel Model { get; }
         /// <summary>
         /// Get window handle.
         /// </summary>
         /// <returns></returns>
-        IntPtr GetHWND();
+        IntPtr Handle { get; }
         /// <summary>
         /// Get handle to input window.
         /// </summary>
         /// <returns></returns>
-        IntPtr GetHWNDInput();
+        IntPtr InputHandle { get; }
         /// <summary>
         /// Get process information.
         /// </summary>
         /// <returns>null if not a program wallpaper.</returns>
-        Process GetProcess();
+        Process Proc { get; }
         /// <summary>
         /// Start wallpaper.
         /// </summary>
@@ -67,13 +67,7 @@ namespace livelywpf.Core
         /// Get display device in which wallpaper is currently running.
         /// </summary>
         /// <returns></returns>
-        LivelyScreen GetScreen();
-        /// <summary>
-        /// Set display device in which wallpaper is currently running.<para>
-        /// Only metadata, have no effect on actual wallpaper size/position.</para>
-        /// </summary>
-        /// <param name="display"></param>
-        void SetScreen(LivelyScreen display);
+        ILivelyScreen Screen { get; set; }
         /// <summary>
         /// Send ipc message to program wallpaper.
         /// </summary>
@@ -89,7 +83,7 @@ namespace livelywpf.Core
         /// This will be a copy of the original file (different screens will have different copy.)
         /// </summary>
         /// <returns>null if no file.</returns>
-        string GetLivelyPropertyCopyPath();
+        string LivelyPropertyCopyPath { get; }
         /// <summary>
         /// Set wallpaper volume.
         /// </summary>

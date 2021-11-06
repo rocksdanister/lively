@@ -14,9 +14,26 @@ namespace livelywpf.Core.Wallpapers
     {
         private IntPtr hwnd;
         private readonly Process _process;
-        private readonly LibraryModel model;
-        private LivelyScreen display;
+        private readonly ILibraryModel model;
+        private ILivelyScreen display;
         public UInt32 SuspendCnt { get; set; }
+
+        public bool IsLoaded => hwnd != IntPtr.Zero;
+
+        public WallpaperType Category => model.LivelyInfo.Type;
+
+        public ILibraryModel Model => model;
+
+        public IntPtr Handle => hwnd;
+
+        public IntPtr InputHandle => hwnd;
+
+        public Process Proc => _process;
+
+        public ILivelyScreen Screen { get => display; set => display = value; }
+
+        public string LivelyPropertyCopyPath => null;
+
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
         private readonly CancellationTokenSource ctsProcessWait = new CancellationTokenSource();
         private Task processWaitTask;
@@ -74,31 +91,6 @@ namespace livelywpf.Core.Wallpapers
             Terminate();
         }
 
-        public IntPtr GetHWND()
-        {
-            return hwnd;
-        }
-
-        public IntPtr GetHWNDInput()
-        {
-            return hwnd;
-        }
-
-        public Process GetProcess()
-        {
-            return _process;
-        }
-
-        public LibraryModel GetWallpaperData()
-        {
-            return model;
-        }
-
-        public WallpaperType GetWallpaperType()
-        {
-            return model.LivelyInfo.Type;
-        }
-
         public void Pause()
         {
             if (_process != null)
@@ -148,11 +140,6 @@ namespace livelywpf.Core.Wallpapers
         public void Stop()
         {
             
-        }
-
-        public LivelyScreen GetScreen()
-        {
-            return display;
         }
 
         public async void Show()
@@ -236,7 +223,7 @@ namespace livelywpf.Core.Wallpapers
             }
 
             IntPtr wHWND = IntPtr.Zero;
-            if (GetWallpaperType() == WallpaperType.godot)
+            if (Category == WallpaperType.godot)
             {
                 for (int i = 0; i < timeOut && _process.HasExited == false; i++)
                 {
@@ -367,16 +354,6 @@ namespace livelywpf.Core.Wallpapers
 
         }
 
-        public string GetLivelyPropertyCopyPath()
-        {
-            return null;
-        }
-
-        public void SetScreen(LivelyScreen display)
-        {
-            this.display = display;
-        }
-
         public void Terminate()
         {
             try
@@ -409,11 +386,6 @@ namespace livelywpf.Core.Wallpapers
         public void SendMessage(IpcMessage obj)
         {
             //todo
-        }
-
-        public bool IsLoaded()
-        {
-            return GetHWND() != IntPtr.Zero;
         }
     }
 }
