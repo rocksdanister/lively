@@ -39,7 +39,7 @@ namespace livelywpf.Core.Wallpapers
 
         public string LivelyPropertyCopyPath { get; }
 
-        public VideoPlayerMPVExt(string path, LibraryModel model, LivelyScreen display, 
+        public VideoPlayerMPVExt(string path, ILibraryModel model, ILivelyScreen display, 
             WallpaperScaler scaler = WallpaperScaler.fill, StreamQualitySuggestion streamQuality = StreamQualitySuggestion.Highest)
         {
             LivelyPropertyCopyPath = null;

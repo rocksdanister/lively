@@ -37,7 +37,7 @@ namespace livelywpf.Core.Wallpapers
 
         public string LivelyPropertyCopyPath { get; }
 
-        public WebEdge(string path, LibraryModel model, LivelyScreen display)
+        public WebEdge(string path, ILibraryModel model, ILivelyScreen display)
         {
             LivelyPropertyCopyPath = null;
             if (model.LivelyPropertyPath != null)

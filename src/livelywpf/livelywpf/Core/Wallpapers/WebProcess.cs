@@ -43,7 +43,7 @@ namespace livelywpf.Core.Wallpapers
 
         public string LivelyPropertyCopyPath { get; }
 
-        public WebProcess(string path, LibraryModel model, LivelyScreen display)
+        public WebProcess(string path, ILibraryModel model, ILivelyScreen display)
         {
             LivelyPropertyCopyPath = null;
             if (model.LivelyPropertyPath != null)

@@ -113,7 +113,6 @@
 
   <ItemGroup>
     <Folder Include="bundle\" />
-    <Folder Include="Factories\" />
     <Folder Include="plugins\" />
   </ItemGroup>
 

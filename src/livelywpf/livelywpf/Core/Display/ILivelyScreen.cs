@@ -1,8 +1,9 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 
 namespace livelywpf.Core
 {
-    public interface ILivelyScreen
+    public interface ILivelyScreen : IEquatable<ILivelyScreen>
     {
         int BitsPerPixel { get; set; }
         Rectangle Bounds { get; set; }

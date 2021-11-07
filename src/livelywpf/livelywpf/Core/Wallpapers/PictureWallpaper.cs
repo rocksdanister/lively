@@ -36,7 +36,7 @@ namespace livelywpf.Core.Wallpapers
 
         public string LivelyPropertyCopyPath => null;
 
-        public PictureWallpaper(string filePath, LibraryModel model, LivelyScreen display, WallpaperScaler scaler = WallpaperScaler.fill)
+        public PictureWallpaper(string filePath, ILibraryModel model, ILivelyScreen display, WallpaperScaler scaler = WallpaperScaler.fill)
         {
             //Has transition animation..
             desktop = (IDesktopWallpaper)new Helpers.DesktopWallpaperClass();

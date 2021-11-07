@@ -38,7 +38,7 @@ namespace livelywpf.Core.Wallpapers
 
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
 
-        public VideoPlayerWPF(string filePath, LibraryModel model, LivelyScreen display, WallpaperScaler scaler = WallpaperScaler.fill)
+        public VideoPlayerWPF(string filePath, ILibraryModel model, ILivelyScreen display, WallpaperScaler scaler = WallpaperScaler.fill)
         {
             player = new MediaElementWPF(filePath, scaler == WallpaperScaler.auto ? WallpaperScaler.uniform : scaler);
             this.model = model;

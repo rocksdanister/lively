@@ -13,6 +13,7 @@ using livelywpf.Views;
 using livelywpf.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using livelywpf.Services;
+using livelywpf.Factories;
 
 namespace livelywpf
 {
@@ -56,6 +57,7 @@ namespace livelywpf
                 .AddSingleton<IUserSettingsService, UserSettingsService>()
                 .AddSingleton<SettingsViewModel>() //can be made transient once usersettings is separated.
                 .AddSingleton<LibraryViewModel>()
+                .AddSingleton<IDesktopCore, WinDesktopCore>()
                 //transient
                 .AddTransient<ApplicationRulesViewModel>()
                 .AddTransient<AboutViewModel>()

@@ -43,7 +43,7 @@ namespace livelywpf.Core.Wallpapers
 
         public string LivelyPropertyCopyPath => null;
 
-        public VideoVlcPlayer(string path, LibraryModel model, LivelyScreen display, WallpaperScaler scaler = WallpaperScaler.fill)
+        public VideoVlcPlayer(string path, ILibraryModel model, ILivelyScreen display, WallpaperScaler scaler = WallpaperScaler.fill)
         {
             var scalerArg = scaler switch
             {

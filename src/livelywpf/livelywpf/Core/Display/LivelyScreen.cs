@@ -3,6 +3,7 @@ using System.Drawing;
 using Newtonsoft.Json;
 using System.Linq;
 using livelywpf.Helpers;
+using System.Diagnostics.CodeAnalysis;
 
 namespace livelywpf.Core
 {
@@ -11,7 +12,7 @@ namespace livelywpf.Core
     /// </para>Check <seealso cref="ScreenHelper"/> for more information.
     /// </summary>
     [Serializable]
-    public class LivelyScreen : IEquatable<LivelyScreen>, ILivelyScreen
+    public class LivelyScreen : ILivelyScreen
     {
         public string DeviceId { get; set; }
         public string DeviceName { get; set; }
@@ -63,7 +64,7 @@ namespace livelywpf.Core
             this.WorkingArea = display.WorkingArea;
         }
 
-        public bool Equals(LivelyScreen other)
+        public bool Equals(ILivelyScreen other)
         {
             return other.DeviceId == this.DeviceId;
         }

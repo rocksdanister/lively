@@ -37,7 +37,7 @@ namespace livelywpf.Core.Wallpapers
 
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
 
-        public GIFPlayerUWP(string filePath, LibraryModel model, LivelyScreen display, WallpaperScaler scaler = WallpaperScaler.fill)
+        public GIFPlayerUWP(string filePath, ILibraryModel model, ILivelyScreen display, WallpaperScaler scaler = WallpaperScaler.fill)
         {
             player = new GIFViewUWP(filePath, scaler == WallpaperScaler.auto ? WallpaperScaler.uniform : scaler);
             this.model = model;

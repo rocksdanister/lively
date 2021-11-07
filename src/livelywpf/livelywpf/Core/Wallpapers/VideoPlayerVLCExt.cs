@@ -37,7 +37,7 @@ namespace livelywpf.Core.Wallpapers
 
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
 
-        public VideoPlayerVLCExt(string path, LibraryModel model, LivelyScreen display)
+        public VideoPlayerVLCExt(string path, ILibraryModel model, ILivelyScreen display)
         {
             ProcessStartInfo start = new ProcessStartInfo
             {

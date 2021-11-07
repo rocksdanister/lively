@@ -46,7 +46,7 @@ namespace livelywpf.Core.Wallpapers
         /// <param name="model">Wallpaper data</param>
         /// <param name="display">Screen metadata</param>
         /// <param name="timeOut">Time to wait for program to be ready(in milliseconds)</param>
-        public ExtPrograms(string path, LibraryModel model, LivelyScreen display, int timeOut = 20000)
+        public ExtPrograms(string path, ILibraryModel model, ILivelyScreen display, int timeOut = 20000)
         {
             // Unity flags
             //-popupwindow removes from taskbar

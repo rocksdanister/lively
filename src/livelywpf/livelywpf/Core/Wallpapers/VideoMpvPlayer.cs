@@ -65,7 +65,7 @@ namespace livelywpf.Core.Wallpapers
 
         public ILivelyScreen Screen { get => display; set => display = value; }
 
-        public VideoMpvPlayer(string path, LibraryModel model, LivelyScreen display,
+        public VideoMpvPlayer(string path, ILibraryModel model, ILivelyScreen display,
             WallpaperScaler scaler = WallpaperScaler.fill, StreamQualitySuggestion streamQuality = StreamQualitySuggestion.Highest, bool onScreenControl = false)
         {
             LivelyPropertyCopyPath = null;
