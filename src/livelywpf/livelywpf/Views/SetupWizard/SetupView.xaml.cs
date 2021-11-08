@@ -1,4 +1,8 @@
 ﻿using livelywpf.Helpers.Hardware;
+using livelywpf.Models;
+using livelywpf.Services;
+using livelywpf.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
 using ModernWpf.Controls.Primitives;
 using ModernWpf.Media.Animation;
 using System.Collections.Generic;
@@ -22,9 +26,11 @@ namespace livelywpf.Views.SetupWizard
             new PageTaskbar(),
             new PageFinal() 
         };
+        private readonly IUserSettingsService userSettings;
 
-        public SetupView()
+        public SetupView(IUserSettingsService userSettings)
         {
+            this.userSettings = userSettings;
             InitializeComponent();
             Initialize();
         }
@@ -32,10 +38,10 @@ namespace livelywpf.Views.SetupWizard
         private async void Initialize()
         {
             //extraction of default wallpaper.
-            Program.SettingsVM.Settings.WallpaperBundleVersion = await Task.Run(() => 
-                App.ExtractWallpaperBundle(Program.SettingsVM.Settings.WallpaperBundleVersion));
-            Program.SettingsVM.UpdateConfigFile();
-            Program.LibraryVM.WallpaperDirectoryUpdate();
+            userSettings.Settings.WallpaperBundleVersion = await Task.Run(() =>
+                App.ExtractWallpaperBundle(userSettings.Settings.WallpaperBundleVersion));
+            userSettings.Save<ISettingsModel>();
+            App.Services.GetRequiredService<LibraryViewModel>().WallpaperDirectoryUpdate();
 
             //windows codec install page.
             if (SystemInfo.CheckWindowsNorKN())

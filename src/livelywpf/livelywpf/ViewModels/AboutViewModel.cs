@@ -1,6 +1,6 @@
 ﻿using livelywpf.Helpers;
 using livelywpf.Helpers.MVVM;
-using livelywpf.Helpers.Updater;
+using livelywpf.Services;
 using livelywpf.Views.Dialogues;
 using System;
 using System.Collections.Generic;
@@ -17,11 +17,14 @@ namespace livelywpf.ViewModels
     public class AboutViewModel : ObservableObject
     {
         private bool updateAvailable = false;
+        private readonly IAppUpdaterService appUpdater;
 
-        public AboutViewModel()
+        public AboutViewModel(IAppUpdaterService appUpdater)
         {
-            MenuUpdate(AppUpdaterService.Instance.Status, AppUpdaterService.Instance.LastCheckTime, AppUpdaterService.Instance.LastCheckVersion);
-            AppUpdaterService.Instance.UpdateChecked += AppUpdateChecked;
+            this.appUpdater = appUpdater;
+
+            MenuUpdate(appUpdater.Status, appUpdater.LastCheckTime, appUpdater.LastCheckVersion);
+            appUpdater.UpdateChecked += AppUpdateChecked;
         }
 
         public string AppVersionText => "v" + Assembly.GetExecutingAssembly().GetName().Version.ToString() +
@@ -122,7 +125,7 @@ namespace livelywpf.ViewModels
         {
             if (updateAvailable)
             {
-                Program.AppUpdateDialog(AppUpdaterService.Instance.LastCheckUri, AppUpdaterService.Instance.LastCheckChangelog);
+                Program.AppUpdateDialog(appUpdater.LastCheckUri, appUpdater.LastCheckChangelog);
             }
             else
             {
@@ -130,8 +133,8 @@ namespace livelywpf.ViewModels
                 {
                     canUpdateAppCommand = false;
                     _updateAppCommand.RaiseCanExecuteChanged();
-                    _ = await AppUpdaterService.Instance.CheckUpdate(0);
-                    MenuUpdate(AppUpdaterService.Instance.Status, AppUpdaterService.Instance.LastCheckTime, AppUpdaterService.Instance.LastCheckVersion);
+                    _ = await appUpdater.CheckUpdate(0);
+                    MenuUpdate(appUpdater.Status, appUpdater.LastCheckTime, appUpdater.LastCheckVersion);
                 }
                 finally
                 {
@@ -200,7 +203,7 @@ namespace livelywpf.ViewModels
 
         public void OnViewClosing(object sender, RoutedEventArgs e)
         {
-            AppUpdaterService.Instance.UpdateChecked -= AppUpdateChecked;
+            appUpdater.UpdateChecked -= AppUpdateChecked;
         }
     }
 }

@@ -12,6 +12,8 @@ using livelywpf.Helpers.Storage;
 using livelywpf.Helpers.Archive;
 using livelywpf.Helpers;
 using livelywpf.Models;
+using livelywpf.Services;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace livelywpf.ViewModels
 {
@@ -22,9 +24,16 @@ namespace livelywpf.ViewModels
                 Path.Combine(Program.WallpaperDir, "wallpapers"),
                 Path.Combine(Program.WallpaperDir, "SaveData", "wptmp")
             };
+        private readonly IDesktopCore desktopCore;
+        private readonly IUserSettingsService userSettings;
+        private readonly SettingsViewModel settingsVm;
 
-        public LibraryViewModel()
+        public LibraryViewModel(IUserSettingsService userSettings, IDesktopCore desktopCore, SettingsViewModel settingsVm)
         {
+            this.userSettings = userSettings;
+            this.desktopCore = desktopCore;
+            this.settingsVm = settingsVm;
+
             foreach (var item in ScanWallpaperFolders(wallpaperScanFolders))
             {
                 LibraryItems.Add(item);
@@ -32,9 +41,9 @@ namespace livelywpf.ViewModels
             //Unused for now, several issues need fixing.
             //LibraryItemsFiltered = new ObservableCollection<LibraryModel>(LibraryItems);
 
-            SetupDesktop.WallpaperChanged += SetupDesktop_WallpaperChanged;
-            Program.SettingsVM.LivelyGUIStateChanged += SettingsVM_LivelyGUIStateChanged;
-            Program.SettingsVM.LivelyWallpaperDirChange += SettingsVM_LivelyWallpaperDirChange;
+            desktopCore.WallpaperChanged += SetupDesktop_WallpaperChanged;
+            settingsVm.LivelyGUIStateChanged += SettingsVM_LivelyGUIStateChanged;
+            settingsVm.LivelyWallpaperDirChange += SettingsVM_LivelyWallpaperDirChange;
 
             //ref: https://github.com/microsoft/microsoft-ui-xaml/issues/911
             //SetWallpaperItemClicked = new RelayCommand(WallpaperSet);
@@ -93,17 +102,15 @@ namespace livelywpf.ViewModels
             {
                 if (value != null)
                 {
-                    var wp = SetupDesktop.Wallpapers.FindAll(x => x.GetWallpaperData() == value);
-                    if (wp.Count > 0)
+                    var wp = desktopCore.Wallpapers.Where(x => x.Model == value);
+                    if (wp.Count() > 0)
                     {
-                        switch (Program.SettingsVM.Settings.WallpaperArrangement)
+                        switch (userSettings.Settings.WallpaperArrangement)
                         {
                             case WallpaperArrangement.per:
-                                if (!wp.Exists(x => ScreenHelper.ScreenCompare(x.GetScreen(),
-                                       Program.SettingsVM.Settings.SelectedDisplay,
-                                       DisplayIdentificationMode.deviceId)))
+                                if (!wp.Any(x => userSettings.Settings.SelectedDisplay.Equals(x.Screen)))
                                 {
-                                    SetupDesktop.SetWallpaper(value, Program.SettingsVM.Settings.SelectedDisplay);
+                                    desktopCore.SetWallpaper(value, userSettings.Settings.SelectedDisplay);
                                 }
                                 break;
                             case WallpaperArrangement.span:
@@ -116,7 +123,7 @@ namespace livelywpf.ViewModels
                     }
                     else
                     {
-                        SetupDesktop.SetWallpaper(value, Program.SettingsVM.Settings.SelectedDisplay);
+                        desktopCore.SetWallpaper(value, userSettings.Settings.SelectedDisplay);
                     }
                 }
                 _selectedItem = value;
@@ -278,7 +285,7 @@ namespace livelywpf.ViewModels
         {
             var selection = (LibraryModel)obj;
             //close if running.
-            SetupDesktop.TerminateWallpaper(selection);
+            desktopCore.CloseWallpaper(selection, true);
             //delete wp folder.      
             var success = await FileOperations.DeleteDirectoryAsync(selection.LivelyInfoFolderPath, 1000, 4000);
 
@@ -344,8 +351,8 @@ namespace livelywpf.ViewModels
         public void WallpaperVideoConvert(object obj)
         {
             var selection = (LibraryModel)obj;
-            var model = new LibraryModel(selection.LivelyInfo, selection.LivelyInfoFolderPath, LibraryTileType.videoConvert);
-            SetupDesktop.SetWallpaper(model, Program.SettingsVM.Settings.SelectedDisplay);
+            var model = new LibraryModel(selection.LivelyInfo, selection.LivelyInfoFolderPath, LibraryTileType.videoConvert, userSettings.Settings.LivelyGUIRendering == LivelyGUIState.normal);
+            desktopCore.SetWallpaper(model, userSettings.Settings.SelectedDisplay);
         }
 
         #endregion //wallpaper operations
@@ -390,9 +397,9 @@ namespace livelywpf.ViewModels
                     Thumbnail = null,
                     Arguments = cmdArgs
                 };
-                var model = new LibraryModel(data, dir, dataType);
+                var model = new LibraryModel(data, dir, dataType, userSettings.Settings.LivelyGUIRendering == LivelyGUIState.normal);
                 LibraryItems.Insert(0, model);
-                SetupDesktop.SetWallpaper(model, screen);
+                desktopCore.SetWallpaper(model, screen);
             }
         }
 
@@ -409,11 +416,11 @@ namespace livelywpf.ViewModels
         public void EditWallpaper(LibraryModel obj)
         {
             //Kill wp if running..
-            SetupDesktop.TerminateWallpaper(obj);
+            desktopCore.CloseWallpaper(obj, true);
             LibraryItems.Remove(obj);
             obj.DataType = LibraryTileType.edit;
             LibraryItems.Insert(0, obj);
-            SetupDesktop.SetWallpaper(obj, ScreenHelper.GetPrimaryScreen());
+            desktopCore.SetWallpaper(obj, ScreenHelper.GetPrimaryScreen());
         }
 
         /// <summary>
@@ -472,7 +479,7 @@ namespace livelywpf.ViewModels
                     {
                         //online content, no file.
                         Logger.Info("Loading Wallpaper (no-file):- " + info.FileName + " " + info.Type);
-                        return new LibraryModel(info, folderPath);
+                        return new LibraryModel(info, folderPath, LibraryTileType.ready, userSettings.Settings.LivelyGUIRendering == LivelyGUIState.normal);
                     }
                     else
                     {
@@ -484,7 +491,7 @@ namespace livelywpf.ViewModels
                         {
                             Logger.Info("Loading Wallpaper(relative):- " + Path.Combine(folderPath, info.FileName) + " " + info.Type);
                         }
-                        return new LibraryModel(info, folderPath);
+                        return new LibraryModel(info, folderPath, LibraryTileType.ready, userSettings.Settings.LivelyGUIRendering == LivelyGUIState.normal);
                     }
                 }
             }
@@ -579,10 +586,9 @@ namespace livelywpf.ViewModels
             System.Windows.Application.Current.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background,
             new System.Threading.ThreadStart(delegate
             {
-                SelectedItem = Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span && SetupDesktop.Wallpapers.Count > 0 ? 
-                    SetupDesktop.Wallpapers[0].GetWallpaperData() :
-                    SetupDesktop.Wallpapers.FirstOrDefault(wp => ScreenHelper.ScreenCompare(
-                        wp.GetScreen(), Program.SettingsVM.Settings.SelectedDisplay, DisplayIdentificationMode.deviceId))?.GetWallpaperData();
+                SelectedItem = (LibraryModel)(userSettings.Settings.WallpaperArrangement == WallpaperArrangement.span && desktopCore.Wallpapers.Count > 0 ?
+                    desktopCore.Wallpapers[0].Model :
+                    desktopCore.Wallpapers.FirstOrDefault(wp => userSettings.Settings.SelectedDisplay.Equals(wp.Screen))?.Model);
             }));
         }
 

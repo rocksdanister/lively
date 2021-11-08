@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using livelywpf.Models;
+using livelywpf.Helpers.Shell;
 
 namespace livelywpf.Core.Wallpapers
 {
@@ -117,7 +118,7 @@ namespace livelywpf.Core.Wallpapers
             }
             _process.OutputDataReceived -= Proc_OutputDataReceived;
             _process?.Dispose();
-            SetupDesktop.RefreshDesktop();
+            DesktopUtil.RefreshDesktop();
         }
 
         private void Proc_OutputDataReceived(object sender, DataReceivedEventArgs e)
@@ -189,7 +190,7 @@ namespace livelywpf.Core.Wallpapers
                 _process.Kill();
             }
             catch { }
-            SetupDesktop.RefreshDesktop();
+            DesktopUtil.RefreshDesktop();
         }
 
         public void SetVolume(int volume)

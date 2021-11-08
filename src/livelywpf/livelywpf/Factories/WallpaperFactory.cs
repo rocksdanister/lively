@@ -11,6 +11,129 @@ namespace livelywpf.Factories
 {
     public class WallpaperFactory : IWallpaperFactory
     {
+        public IWallpaper CreateWallpaper(ILibraryModel obj, ILivelyScreen display, IUserSettingsService userSettings, bool isPreview = false)
+        {
+            ILivelyPropertyFactory pf = new LivelyPropertyFactory();
+            switch (obj.LivelyInfo.Type)
+            {
+                case WallpaperType.web:
+                case WallpaperType.webaudio:
+                case WallpaperType.url:
+                    switch (userSettings.Settings.WebBrowser)
+                    {
+                        case LivelyWebBrowser.cef:
+
+                            return new WebProcess(obj.FilePath,
+                                obj,
+                                display,
+                                pf.CreateLivelyPropertyFolder(obj, display, userSettings.Settings.WallpaperArrangement),
+                                userSettings.Settings.WebDebugPort,
+                                userSettings.Settings.CefDiskCache,
+                                userSettings.Settings.AudioVolumeGlobal);
+                        case LivelyWebBrowser.webview2:
+                            return new WebEdge(obj.FilePath, obj, display, pf.CreateLivelyPropertyFolder(obj, display, userSettings.Settings.WallpaperArrangement));
+                    }
+                    break;
+                case WallpaperType.video:
+                    //How many videoplayers you need? Yes.
+                    switch (userSettings.Settings.VideoPlayer)
+                    {
+                        case LivelyMediaPlayer.wmf:
+                            return new VideoPlayerWPF(obj.FilePath, obj,
+                                display, userSettings.Settings.WallpaperScaling);
+                        case LivelyMediaPlayer.libvlc:
+                            //depreciated
+                            throw new DepreciatedException("libvlc depreciated player selected.");
+                        case LivelyMediaPlayer.libmpv:
+                            //depreciated
+                            throw new DepreciatedException("libmpv depreciated player selected.");
+                        case LivelyMediaPlayer.libvlcExt:
+                            return new VideoPlayerVLCExt(obj.FilePath, obj, display);
+                        case LivelyMediaPlayer.libmpvExt:
+                            return new VideoPlayerMPVExt(obj.FilePath, 
+                                obj, 
+                                display, 
+                                pf.CreateLivelyPropertyFolder(obj, display, userSettings.Settings.WallpaperArrangement), 
+                                userSettings.Settings.WallpaperScaling);
+                         case LivelyMediaPlayer.mpv:
+                            return new VideoMpvPlayer(obj.FilePath, obj, display, pf.CreateLivelyPropertyFolder(obj, 
+                                display, 
+                                userSettings.Settings.WallpaperArrangement),
+                                userSettings.Settings.WallpaperScaling, 
+                                userSettings.Settings.VideoPlayerHwAccel, 
+                                isPreview);
+                        case LivelyMediaPlayer.vlc:
+                            return new VideoVlcPlayer(obj.FilePath, 
+                                obj, 
+                                display,
+                                userSettings.Settings.WallpaperScaling, 
+                                userSettings.Settings.VideoPlayerHwAccel);
+                    }
+                    break;
+                case WallpaperType.gif:
+                case WallpaperType.picture:
+                    switch (userSettings.Settings.GifPlayer)
+                    {
+                        case LivelyGifPlayer.win10Img:
+                            return new GIFPlayerUWP(obj.FilePath, obj,
+                                display, userSettings.Settings.WallpaperScaling);
+                        case LivelyGifPlayer.libmpvExt:
+                            return new VideoPlayerMPVExt(obj.FilePath, 
+                                obj, 
+                                display, 
+                                pf.CreateLivelyPropertyFolder(obj, display, userSettings.Settings.WallpaperArrangement),
+                                userSettings.Settings.WallpaperScaling);
+                        case LivelyGifPlayer.mpv:
+                            return new VideoMpvPlayer(obj.FilePath,
+                                obj,
+                                display,
+                                pf.CreateLivelyPropertyFolder(obj, display, userSettings.Settings.WallpaperArrangement),
+                                userSettings.Settings.WallpaperScaling, 
+                                userSettings.Settings.VideoPlayerHwAccel, 
+                                isPreview);
+                    }
+                    break;
+                case WallpaperType.app:
+                case WallpaperType.bizhawk:
+                case WallpaperType.unity:
+                case WallpaperType.unityaudio:
+                case WallpaperType.godot:
+                    if (Constants.ApplicationType.IsMSIX)
+                    {
+                        throw new MsixNotAllowedException("Program wallpaper on MSIX package not allowed.");
+                    }
+                    else
+                    {
+                        return new ExtPrograms(obj.FilePath, obj, display,
+                            userSettings.Settings.WallpaperWaitTime);
+                    }
+                case WallpaperType.videostream:
+                    if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "mpv", "youtube-dl.exe")))
+                    {
+                        return new VideoMpvPlayer(obj.FilePath, 
+                            obj,
+                            display,
+                            pf.CreateLivelyPropertyFolder(obj, display, userSettings.Settings.WallpaperArrangement),
+                            userSettings.Settings.WallpaperScaling, userSettings.Settings.VideoPlayerHwAccel,
+                            isPreview, userSettings.Settings.StreamQuality);
+                    }
+                    else
+                    {
+                        //note: wallpaper type will be videostream, don't forget..
+                        return new WebProcess(obj.FilePath,
+                            obj,
+                            display,
+                            pf.CreateLivelyPropertyFolder(obj, display, userSettings.Settings.WallpaperArrangement),
+                            userSettings.Settings.WebDebugPort,
+                            userSettings.Settings.CefDiskCache,
+                            userSettings.Settings.AudioVolumeGlobal);
+                    }
+            }
+            throw new PluginNotFoundException("Wallpaper player not found.");
+        }
+
+        #region exceptions
+
         public class MsixNotAllowedException : Exception
         {
             public MsixNotAllowedException()
@@ -45,102 +168,23 @@ namespace livelywpf.Factories
             }
         }
 
-        public IWallpaper CreateWallpaper(ILibraryModel obj, ILivelyScreen display, IUserSettingsService userSettings)
+        public class PluginNotFoundException : Exception
         {
-            IWallpaper instanceWallpaper = null;
-            switch (obj.LivelyInfo.Type)
+            public PluginNotFoundException()
             {
-                case WallpaperType.web:
-                case WallpaperType.webaudio:
-                case WallpaperType.url:
-                    switch (Program.SettingsVM.Settings.WebBrowser)
-                    {
-                        case LivelyWebBrowser.cef:
-                            instanceWallpaper = new WebProcess(obj.FilePath, obj, display);
-                            break;
-                        case LivelyWebBrowser.webview2:
-                            instanceWallpaper = new WebEdge(obj.FilePath, obj, display);
-                            break;
-                    }
-                    break;
-                case WallpaperType.video:
-                    //How many videoplayers you need? Yes.
-                    switch (Program.SettingsVM.Settings.VideoPlayer)
-                    {
-                        case LivelyMediaPlayer.wmf:
-                            instanceWallpaper = new VideoPlayerWPF(obj.FilePath, obj,
-                                display, Program.SettingsVM.Settings.WallpaperScaling);
-                            break;
-                        case LivelyMediaPlayer.libvlc:
-                            //depreciated
-                            throw new DepreciatedException("libvlc depreciated player selected.");
-                        case LivelyMediaPlayer.libmpv:
-                            //depreciated
-                            throw new DepreciatedException("libmpv depreciated player selected.");
-                        case LivelyMediaPlayer.libvlcExt:
-                            instanceWallpaper = new VideoPlayerVLCExt(obj.FilePath, obj, display);
-                            break;
-                        case LivelyMediaPlayer.libmpvExt:
-                            instanceWallpaper = new VideoPlayerMPVExt(obj.FilePath, obj, display,
-                                Program.SettingsVM.Settings.WallpaperScaling);
-                            break;
-                        case LivelyMediaPlayer.mpv:
-                            instanceWallpaper = new VideoMpvPlayer(obj.FilePath, obj, display,
-                                Program.SettingsVM.Settings.WallpaperScaling);
-                            break;
-                        case LivelyMediaPlayer.vlc:
-                            instanceWallpaper = new VideoVlcPlayer(obj.FilePath, obj, display,
-                                Program.SettingsVM.Settings.WallpaperScaling);
-                            break;
-                    }
-                    break;
-                case WallpaperType.gif:
-                case WallpaperType.picture:
-                    switch (Program.SettingsVM.Settings.GifPlayer)
-                    {
-                        case LivelyGifPlayer.win10Img:
-                            instanceWallpaper = new GIFPlayerUWP(obj.FilePath, obj,
-                                display, Program.SettingsVM.Settings.WallpaperScaling);
-                            break;
-                        case LivelyGifPlayer.libmpvExt:
-                            instanceWallpaper = new VideoPlayerMPVExt(obj.FilePath, obj, display,
-                                Program.SettingsVM.Settings.WallpaperScaling);
-                            break;
-                        case LivelyGifPlayer.mpv:
-                            instanceWallpaper = new VideoMpvPlayer(obj.FilePath, obj, display,
-                                Program.SettingsVM.Settings.WallpaperScaling);
-                            break;
-                    }
-                    break;
-                case WallpaperType.app:
-                case WallpaperType.bizhawk:
-                case WallpaperType.unity:
-                case WallpaperType.unityaudio:
-                case WallpaperType.godot:
-                    if (Constants.ApplicationType.IsMSIX)
-                    {
-                        throw new MsixNotAllowedException("Program wallpaper on MSIX package not allowed.");
-                    }
-                    else
-                    {
-                        instanceWallpaper = new ExtPrograms(obj.FilePath, obj, display,
-                            Program.SettingsVM.Settings.WallpaperWaitTime);
-                    }
-                    break;
-                case WallpaperType.videostream:
-                    if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "mpv", "youtube-dl.exe")))
-                    {
-                        instanceWallpaper = new VideoMpvPlayer(obj.FilePath, obj, display,
-                               Program.SettingsVM.Settings.WallpaperScaling, Program.SettingsVM.Settings.StreamQuality);
-                    }
-                    else
-                    {
-                        //note: wallpaper type will be videostream, don't forget..
-                        instanceWallpaper = new WebProcess(obj.FilePath, obj, display);
-                    }
-                    break;
             }
-            return instanceWallpaper;
+
+            public PluginNotFoundException(string message)
+                : base(message)
+            {
+            }
+
+            public PluginNotFoundException(string message, Exception inner)
+                : base(message, inner)
+            {
+            }
         }
+
+        #endregion //exceptions
     }
 }

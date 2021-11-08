@@ -14,6 +14,12 @@ using livelywpf.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using livelywpf.Services;
 using livelywpf.Factories;
+using livelywpf.Models;
+using livelywpf.Views.SetupWizard;
+using livelywpf.Helpers.ScreenRecord;
+using livelywpf.Cmd;
+using livelywpf.Core.InputForwarding;
+using livelywpf.Core.Suspend;
 
 namespace livelywpf
 {
@@ -55,15 +61,23 @@ namespace livelywpf
                 //singleton
                 .AddSingleton<MainWindow>()
                 .AddSingleton<IUserSettingsService, UserSettingsService>()
-                .AddSingleton<SettingsViewModel>() //can be made transient once usersettings is separated.
-                .AddSingleton<LibraryViewModel>()
                 .AddSingleton<IDesktopCore, WinDesktopCore>()
+                .AddSingleton<IScreensaverService, ScreensaverService>()
+                .AddSingleton<IPlayback, Playback>()
+                .AddSingleton<IAppUpdaterService, GithubUpdaterService>()
+                .AddSingleton<ISystray, Systray>()
+                .AddSingleton<RawInputDX>()
+                .AddSingleton<SettingsViewModel>() //some init stuff like locale, startup etc happening.. todo: remove?
+                .AddSingleton<LibraryViewModel>()
                 //transient
+                .AddTransient<SetupView>()
                 .AddTransient<ApplicationRulesViewModel>()
-                .AddTransient<AboutViewModel>()
                 .AddTransient<AddWallpaperViewModel>()
+                .AddTransient<AboutViewModel>()
                 .AddTransient<HelpViewModel>()
                 .AddTransient<ScreenLayoutViewModel>()
+                .AddTransient<IScreenRecorder, ScreenRecorderlibScreen>()
+                .AddTransient<ICommandHandler, CommandHandler>()
                 /*
                 .AddSingleton<IAppUpdaterService, GithubUpdaterService>()
                 .AddTransient<Factories.IApplicationRulesFactory, Factories.ApplicationRulesFactory>()
@@ -109,8 +123,8 @@ namespace livelywpf
 
             #region vm init
 
-            Program.SettingsVM = App.Services.GetRequiredService<SettingsViewModel>();
-            Program.WallpaperDir = Program.SettingsVM.Settings.WallpaperDir;
+            var userSettings = App.Services.GetRequiredService<IUserSettingsService>();
+            Program.WallpaperDir = userSettings.Settings.WallpaperDir;
             try
             {
                 CreateWallpaperDir();
@@ -118,8 +132,8 @@ namespace livelywpf
             catch (Exception ex)
             {
                 Logger.Error("Wallpaper Directory creation fail, falling back to default directory:" + ex.ToString());
-                Program.SettingsVM.Settings.WallpaperDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Lively Wallpaper", "Library");
-                Program.SettingsVM.UpdateConfigFile();
+                userSettings.Settings.WallpaperDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Lively Wallpaper", "Library");
+                userSettings.Save<ISettingsModel>();
                 try
                 {
                     CreateWallpaperDir();
@@ -132,17 +146,14 @@ namespace livelywpf
                 }
             }
 
-            //previous installed appversion is different from current instance..
-            if (!Program.SettingsVM.Settings.AppVersion.Equals(Assembly.GetExecutingAssembly().GetName().Version.ToString(), StringComparison.OrdinalIgnoreCase))
+            //previous installed appversion is different from current instance..    
+            if (!userSettings.Settings.AppVersion.Equals(Assembly.GetExecutingAssembly().GetName().Version.ToString(), StringComparison.OrdinalIgnoreCase))
             {
                 //todo: show changelog window here..
-                Program.SettingsVM.Settings.WallpaperBundleVersion = ExtractWallpaperBundle(Program.SettingsVM.Settings.WallpaperBundleVersion);
-                Program.SettingsVM.Settings.AppVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-                Program.SettingsVM.UpdateConfigFile();
+                userSettings.Settings.WallpaperBundleVersion = ExtractWallpaperBundle(userSettings.Settings.WallpaperBundleVersion);
+                userSettings.Settings.AppVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+                userSettings.Save<ISettingsModel>();
             }
-
-            //Program.AppRulesVM = App.Services.GetRequiredService<ApplicationRulesViewModel>();
-            Program.LibraryVM = App.Services.GetRequiredService<LibraryViewModel>();
 
             #endregion //vm init
 
@@ -153,11 +164,12 @@ namespace livelywpf
             WndProcMsgWindow wndproc = new WndProcMsgWindow();
             wndproc.Show();
             //Package app otherwise bugging out when initialized in settings vm.
-            SetupDesktop.SetupInputHooks();
-            if (Program.SettingsVM.Settings.IsRestart)
+            //SetupDesktop.SetupInputHooks();
+            App.Services.GetRequiredService<RawInputDX>().Show();
+            if (userSettings.Settings.IsRestart)
             {
-                Program.SettingsVM.Settings.IsRestart = false;
-                Program.SettingsVM.UpdateConfigFile();
+                userSettings.Settings.IsRestart = false;
+                userSettings.Save<ISettingsModel>();
                 AppWindow?.Show();
             }
 

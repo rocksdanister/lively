@@ -8,22 +8,23 @@ using CommandLine;
 using livelywpf.Core.API;
 using livelywpf.Helpers;
 using livelywpf.Helpers.Files;
-using livelywpf.Helpers.Screensaver;
 using livelywpf.Helpers.Shell;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using livelywpf.Models;
 using livelywpf.Core;
 using livelywpf.Core.Suspend;
+using livelywpf.Services;
+using livelywpf.ViewModels;
 
 namespace livelywpf.Cmd
 {
-    class CommandHandler
+    public class CommandHandler : ICommandHandler
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
-        [Verb("app", isDefault:true, HelpText = "Application controls.")]
-        class AppOptions
+        [Verb("app", isDefault: true, HelpText = "Application controls.")]
+        private class AppOptions
         {
             [Option("showApp",
             Required = false,
@@ -45,9 +46,9 @@ namespace livelywpf.Cmd
             HelpText = "Wallpaper playback state (true/false).")]
             public bool? Play { get; set; }
         }
-        
+
         [Verb("setwp", HelpText = "Apply wallpaper.")]
-        class SetWallpaperOptions
+        private class SetWallpaperOptions
         {
             [Option("file",
             Required = true,
@@ -61,7 +62,7 @@ namespace livelywpf.Cmd
         }
 
         [Verb("closewp", HelpText = "Close wallpaper.")]
-        class CloseWallpaperOptions
+        private class CloseWallpaperOptions
         {
             [Option("monitor",
             Required = true,
@@ -70,7 +71,7 @@ namespace livelywpf.Cmd
         }
 
         [Verb("seekwp", HelpText = "Set wallpaper playback position.")]
-        class SeekWallpaperOptions
+        private class SeekWallpaperOptions
         {
             [Option("value",
             Required = true,
@@ -84,7 +85,7 @@ namespace livelywpf.Cmd
         }
 
         [Verb("setprop", HelpText = "Customise wallpaper.")]
-        class CustomiseWallpaperOptions
+        private class CustomiseWallpaperOptions
         {
             [Option("property",
             Required = true,
@@ -98,7 +99,7 @@ namespace livelywpf.Cmd
         }
 
         [Verb("screensaver", HelpText = "Screen saver control.")]
-        class ScreenSaverOptions
+        private class ScreenSaverOptions
         {
             [Option("preview",
             Required = false,
@@ -117,7 +118,24 @@ namespace livelywpf.Cmd
             public bool? Show { get; set; }
         }
 
-        public static void ParseArgs(string[] args)
+        private readonly IUserSettingsService userSettings;
+        private readonly IDesktopCore desktopCore;
+        private readonly IScreensaverService screenSaver;
+        private readonly IPlayback playbackMonitor;
+        private readonly LibraryViewModel libraryVm;
+        private readonly SettingsViewModel settingsVm;
+
+        public CommandHandler(IUserSettingsService userSettings, IDesktopCore desktopCore, IScreensaverService screenSaver, IPlayback playbackMonitor, LibraryViewModel libraryVm, SettingsViewModel settingsVm)
+        {
+            this.userSettings = userSettings;
+            this.desktopCore = desktopCore;
+            this.screenSaver = screenSaver;
+            this.playbackMonitor = playbackMonitor;
+            this.libraryVm = libraryVm;
+            this.settingsVm = settingsVm;
+        }
+
+        public void ParseArgs(string[] args)
         {
             _ = CommandLine.Parser.Default.ParseArguments<AppOptions, SetWallpaperOptions, CustomiseWallpaperOptions, CloseWallpaperOptions, ScreenSaverOptions, SeekWallpaperOptions>(args)
                 .MapResult(
@@ -130,7 +148,7 @@ namespace livelywpf.Cmd
                     errs => HandleParseError(errs));
         }
 
-        private static int RunAppOptions(AppOptions opts)
+        private int RunAppOptions(AppOptions opts)
         {
             System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
             {
@@ -151,12 +169,12 @@ namespace livelywpf.Cmd
 
                 if (opts.Volume != null)
                 {
-                    Program.SettingsVM.GlobalWallpaperVolume = Clamp((int)opts.Volume, 0, 100);
+                    settingsVm.GlobalWallpaperVolume = Clamp((int)opts.Volume, 0, 100);
                 }
 
                 if (opts.Play != null)
                 {
-                    Playback.WallpaperPlaybackState = (bool)opts.Play ? PlaybackState.play : PlaybackState.paused;
+                    playbackMonitor.WallpaperPlayback = (bool)opts.Play ? PlaybackState.play : PlaybackState.paused;
                 }
 
             }));
@@ -168,7 +186,7 @@ namespace livelywpf.Cmd
             return 0;
         }
 
-        private static int RunSetWallpaperOptions(SetWallpaperOptions opts)
+        private int RunSetWallpaperOptions(SetWallpaperOptions opts)
         {
             if (opts.File != null)
             {
@@ -178,24 +196,24 @@ namespace livelywpf.Cmd
                     if (Directory.Exists(opts.File))
                     {
                         //Folder containing LivelyInfo.json file.
-                        Core.LivelyScreen screen = opts.Monitor != null ?
-                            ScreenHelper.GetScreen().FirstOrDefault(x => x.DeviceNumber == ((int)opts.Monitor).ToString()) : ScreenHelper.GetPrimaryScreen();
-                        var libraryItem = Program.LibraryVM.LibraryItems.FirstOrDefault(x => x.LivelyInfoFolderPath != null && x.LivelyInfoFolderPath.Equals(opts.File));
+                        Core.LivelyScreen screen = (LivelyScreen)(opts.Monitor != null ?
+                            ScreenHelper.GetScreen().FirstOrDefault(x => x.DeviceNumber == ((int)opts.Monitor).ToString()) : ScreenHelper.GetPrimaryScreen());
+                        var libraryItem = libraryVm.LibraryItems.FirstOrDefault(x => x.LivelyInfoFolderPath != null && x.LivelyInfoFolderPath.Equals(opts.File));
                         if (libraryItem != null && screen != null)
                         {
-                            SetupDesktop.SetWallpaper(libraryItem, screen);
+                            desktopCore.SetWallpaper(libraryItem, screen);
                         }
                     }
                     else if (File.Exists(opts.File))
                     {
-                        Core.LivelyScreen screen = opts.Monitor != null ?
-                            ScreenHelper.GetScreen().FirstOrDefault(x => x.DeviceNumber == ((int)opts.Monitor).ToString()) : ScreenHelper.GetPrimaryScreen();
-                        var libraryItem = Program.LibraryVM.LibraryItems.FirstOrDefault(x => x.FilePath != null && x.FilePath.Equals(opts.File));
+                        Core.LivelyScreen screen = (LivelyScreen)(opts.Monitor != null ?
+                            ScreenHelper.GetScreen().FirstOrDefault(x => x.DeviceNumber == ((int)opts.Monitor).ToString()) : ScreenHelper.GetPrimaryScreen());
+                        var libraryItem = libraryVm.LibraryItems.FirstOrDefault(x => x.FilePath != null && x.FilePath.Equals(opts.File));
                         if (screen != null)
                         {
                             if (libraryItem != null)
                             {
-                                SetupDesktop.SetWallpaper(libraryItem, screen);
+                                desktopCore.SetWallpaper(libraryItem, screen);
                             }
                             else
                             {
@@ -212,10 +230,10 @@ namespace livelywpf.Cmd
                                     case WallpaperType.gif:
                                     case WallpaperType.videostream:
                                     case WallpaperType.picture:
-                                        Program.LibraryVM.AddWallpaper(opts.File,
+                                        libraryVm.AddWallpaper(opts.File,
                                             type,
                                             LibraryTileType.cmdImport,
-                                            Program.SettingsVM.Settings.SelectedDisplay);
+                                            userSettings.Settings.SelectedDisplay);
                                         break;
                                     case WallpaperType.app:
                                     case WallpaperType.bizhawk:
@@ -242,36 +260,36 @@ namespace livelywpf.Cmd
             return 0;
         }
 
-        private static int RunCloseWallpaperOptions(CloseWallpaperOptions opts)
+        private int RunCloseWallpaperOptions(CloseWallpaperOptions opts)
         {
             if (opts.Monitor != null)
             {
                 var id = (int)opts.Monitor;
                 if (id == -1 ||
-                    Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.duplicate ||
-                    Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span)
+                    userSettings.Settings.WallpaperArrangement == WallpaperArrangement.duplicate ||
+                    userSettings.Settings.WallpaperArrangement == WallpaperArrangement.span)
                 {
-                    SetupDesktop.CloseAllWallpapers();
+                    desktopCore.CloseAllWallpapers();
                 }
                 else
                 {
                     var screen = ScreenHelper.GetScreen().FirstOrDefault(x => x.DeviceNumber == (id).ToString());
                     if (screen != null)
                     {
-                        SetupDesktop.CloseWallpaper(screen);
+                        desktopCore.CloseWallpaper(screen);
                     }
                 }
             }
             return 0;
         }
 
-        private static int RunSeekWallpaperOptions(SeekWallpaperOptions opts)
+        private int RunSeekWallpaperOptions(SeekWallpaperOptions opts)
         {
-            Core.LivelyScreen screen = opts.Monitor != null ?
-                ScreenHelper.GetScreen().FirstOrDefault(x => x.DeviceNumber == ((int)opts.Monitor).ToString()) : ScreenHelper.GetPrimaryScreen();
+            Core.LivelyScreen screen = (LivelyScreen)(opts.Monitor != null ?
+                ScreenHelper.GetScreen().FirstOrDefault(x => x.DeviceNumber == ((int)opts.Monitor).ToString()) : ScreenHelper.GetPrimaryScreen());
             if (screen != null)
             {
-                var wp = SetupDesktop.Wallpapers.Find(x => x.GetScreen().Equals(screen));
+                var wp = desktopCore.Wallpapers.FirstOrDefault(x => x.Screen.Equals(screen));
                 if (wp != null)
                 {
                     if (opts.Param != null)
@@ -280,14 +298,14 @@ namespace livelywpf.Cmd
                         {
                             if (float.TryParse(opts.Param, out float val))
                             {
-                                SeekWallpaper(Clamp(val, -100, 100), Core.PlaybackPosType.relativePercent, screen, wp.GetWallpaperData());
+                                SeekWallpaper(Clamp(val, -100, 100), Core.PlaybackPosType.relativePercent, screen, wp.Model);
                             }
                         }
                         else
                         {
                             if (float.TryParse(opts.Param, out float val))
                             {
-                                SeekWallpaper(Clamp(val, 0, 100), Core.PlaybackPosType.absolutePercent, screen, wp.GetWallpaperData());
+                                SeekWallpaper(Clamp(val, 0, 100), Core.PlaybackPosType.absolutePercent, screen, wp.Model);
                             }
                         }
                     }
@@ -296,33 +314,33 @@ namespace livelywpf.Cmd
             return 0;
         }
 
-        private static void SeekWallpaper(float seek, Core.PlaybackPosType type, Core.LivelyScreen screen, LibraryModel wp)
+        private void SeekWallpaper(float seek, Core.PlaybackPosType type, ILivelyScreen screen, ILibraryModel wp)
         {
-            switch (Program.SettingsVM.Settings.WallpaperArrangement)
+            switch (userSettings.Settings.WallpaperArrangement)
             {
                 case WallpaperArrangement.per:
-                    SetupDesktop.SeekWallpaper(screen, seek, type);
+                    desktopCore.SeekWallpaper(screen, seek, type);
                     break;
                 case WallpaperArrangement.span:
                 case WallpaperArrangement.duplicate:
-                    SetupDesktop.SeekWallpaper(wp, seek, type);
+                    desktopCore.SeekWallpaper(wp, seek, type);
                     break;
             }
         }
 
-        private static int RunCustomiseWallpaperOptions(CustomiseWallpaperOptions opts)
+        private int RunCustomiseWallpaperOptions(CustomiseWallpaperOptions opts)
         {
             if (opts.Param != null)
             {
                 //use primary screen if none found..
-                Core.LivelyScreen screen = opts.Monitor != null ?
-                    ScreenHelper.GetScreen().FirstOrDefault(x => x.DeviceNumber == ((int)opts.Monitor).ToString()) : ScreenHelper.GetPrimaryScreen();
+                Core.LivelyScreen screen = (LivelyScreen)(opts.Monitor != null ?
+                    ScreenHelper.GetScreen().FirstOrDefault(x => x.DeviceNumber == ((int)opts.Monitor).ToString()) : ScreenHelper.GetPrimaryScreen());
 
                 if (screen != null)
                 {
                     try
                     {
-                        var wp = SetupDesktop.Wallpapers.Find(x => x.GetScreen().Equals(screen));
+                        var wp = desktopCore.Wallpapers.FirstOrDefault(x => x.Screen.Equals(screen));
                         //only for running wallpaper instance unlike gui property..
                         if (wp == null)
                             return 0;
@@ -330,7 +348,7 @@ namespace livelywpf.Cmd
                         //delimiter
                         var tmp = opts.Param.Split("=");
                         string name = tmp[0], val = tmp[1], ctype = null;
-                        var lp = JObject.Parse(File.ReadAllText(wp.GetLivelyPropertyCopyPath()));
+                        var lp = JObject.Parse(File.ReadAllText(wp.LivelyPropertyCopyPath));
                         foreach (var item in lp)
                         {
                             //Searching for the given control in the json file.
@@ -351,7 +369,7 @@ namespace livelywpf.Cmd
                             {
                                 if (name.Equals("lively_default_settings_reload", StringComparison.OrdinalIgnoreCase))
                                 {
-                                    if (Cef.LivelyPropertiesView.RestoreOriginalPropertyFile(wp.GetWallpaperData(), wp.GetLivelyPropertyCopyPath()))
+                                    if (Cef.LivelyPropertiesView.RestoreOriginalPropertyFile((LibraryModel)wp.Model, wp.LivelyPropertyCopyPath))
                                     {
                                         msg = new LivelyButton() { Name = "lively_default_settings_reload", IsDefault = true };
                                     }
@@ -370,7 +388,7 @@ namespace livelywpf.Cmd
                                 }
                                 else if (ctype.Equals("slider", StringComparison.OrdinalIgnoreCase))
                                 {
-                                    var sliderValue = val.StartsWith("++") || val.StartsWith("--") ? 
+                                    var sliderValue = val.StartsWith("++") || val.StartsWith("--") ?
                                         (double)lp[name]["value"] + double.Parse(val[1..]) : double.Parse(val);
                                     sliderValue = Clamp(sliderValue, (double)lp[name]["min"], (double)lp[name]["max"]);
 
@@ -402,19 +420,19 @@ namespace livelywpf.Cmd
                                     lp[name]["value"] = val;
                                 }
 
-                                Cef.LivelyPropertiesJSON.SaveLivelyProperties(wp.GetLivelyPropertyCopyPath(), lp);
+                                Cef.LivelyPropertiesJSON.SaveLivelyProperties(wp.LivelyPropertyCopyPath, lp);
                             }
 
                             if (msg != null)
                             {
-                                switch (Program.SettingsVM.Settings.WallpaperArrangement)
+                                switch (userSettings.Settings.WallpaperArrangement)
                                 {
                                     case WallpaperArrangement.per:
-                                        SetupDesktop.SendMessageWallpaper(screen, wp.GetWallpaperData(), msg);
+                                        desktopCore.SendMessageWallpaper(screen, (LibraryModel)wp.Model, msg);
                                         break;
                                     case WallpaperArrangement.span:
                                     case WallpaperArrangement.duplicate:
-                                        SetupDesktop.SendMessageWallpaper(wp.GetWallpaperData(), msg);
+                                        desktopCore.SendMessageWallpaper(wp.Model, msg);
                                         break;
                                 }
                             }
@@ -429,17 +447,17 @@ namespace livelywpf.Cmd
             return 0;
         }
 
-        private static int RunScreenSaverOptions(ScreenSaverOptions opts)
+        private int RunScreenSaverOptions(ScreenSaverOptions opts)
         {
             if (opts.Show != null)
             {
                 if (opts.Show == true)
                 {
-                    ScreensaverService.Instance.Start();
+                    screenSaver.Start();
                 }
                 else
                 {
-                    ScreensaverService.Instance.Stop();
+                    screenSaver.Stop();
                 }
             }
 
@@ -452,13 +470,13 @@ namespace livelywpf.Cmd
 
                 if (opts.Preview != null)
                 {
-                    ScreensaverService.Instance.CreatePreview(new IntPtr((int)opts.Preview));
+                    screenSaver.CreatePreview(new IntPtr((int)opts.Preview));
                 }
             }));
             return 0;
         }
 
-        private static int HandleParseError(IEnumerable<Error> errs)
+        private int HandleParseError(IEnumerable<Error> errs)
         {
             foreach (var item in errs)
             {

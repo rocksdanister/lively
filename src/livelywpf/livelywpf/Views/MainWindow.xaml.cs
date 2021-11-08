@@ -1,4 +1,6 @@
 ﻿using livelywpf.Core;
+using livelywpf.Models;
+using livelywpf.Services;
 using livelywpf.Views;
 using livelywpf.Views.Pages;
 using Microsoft.Toolkit.Wpf.UI.XamlHost;
@@ -31,12 +33,16 @@ namespace livelywpf.Views
         private Windows.UI.Xaml.Controls.NavigationViewItem debugMenu;
         public static bool IsExit { get; set; } = false;
         private NavigationView navView;
+        private readonly IDesktopCore desktopCore;
+        private readonly IUserSettingsService userSettings;
 
-        public MainWindow()
+        public MainWindow(IUserSettingsService userSettings, IDesktopCore desktopCore)
         {
             InitializeComponent();
-            wallpaperStatusText.Text = SetupDesktop.Wallpapers.Count.ToString();
-            SetupDesktop.WallpaperChanged += SetupDesktop_WallpaperChanged;
+            this.desktopCore = desktopCore;
+            this.userSettings = userSettings;
+            wallpaperStatusText.Text = desktopCore.Wallpapers.Count.ToString();
+            desktopCore.WallpaperChanged += SetupDesktop_WallpaperChanged;
             Logger.Debug("MainWindow ctor initialized..");
         }
 
@@ -57,8 +63,8 @@ namespace livelywpf.Views
                 navView.MenuItems.Add(CreateMenu(Properties.Resources.TitleAddWallpaper, "add", "\uE710"));
                 navView.MenuItems.Add(CreateMenu(Properties.Resources.TitleHelp, "help", "\uE897"));
                 navView.MenuItems.Add(CreateMenu(Properties.Resources.TitleAbout, "about", "\uE90A"));
-                navView.MenuItems.Add(debugMenu = CreateMenu(Properties.Resources.TitleDebug, "debug", "\uEBE8", Program.SettingsVM.Settings.DebugMenu));
-                Program.SettingsVM.DebugMenuVisibilityChange += SettingsVM_DebugMenuVisibilityChange;
+                //navView.MenuItems.Add(debugMenu = CreateMenu(Properties.Resources.TitleDebug, "debug", "\uEBE8", Program.SettingsVM.Settings.DebugMenu));
+                //Program.SettingsVM.DebugMenuVisibilityChange += SettingsVM_DebugMenuVisibilityChange;
                 navView.ItemInvoked += NavView_ItemInvoked;
                 NavViewNavigate("library");
             }
@@ -198,20 +204,20 @@ namespace livelywpf.Views
         {
             _ = this.Dispatcher.BeginInvoke(new Action(() => {
                 //teaching tip - control panel.
-                if (!Program.SettingsVM.Settings.ControlPanelOpened &&
+                if (!userSettings.Settings.ControlPanelOpened &&
                     this.WindowState != WindowState.Minimized &&
                     this.Visibility == Visibility.Visible)
                 {
                     ModernWpf.Controls.Primitives.FlyoutBase.ShowAttachedFlyout(statusBtn);
-                    Program.SettingsVM.Settings.ControlPanelOpened = true;
-                    Program.SettingsVM.UpdateConfigFile();
+                    userSettings.Settings.ControlPanelOpened = true;
+                    userSettings.Save<ISettingsModel>();
                 }
                 //wallpaper focus steal fix.
                 if (this.IsVisible && (layoutWindow == null || layoutWindow.Visibility != Visibility.Visible))
                 {
                     this.Activate();
                 }
-                wallpaperStatusText.Text = SetupDesktop.Wallpapers.Count.ToString();
+                wallpaperStatusText.Text = desktopCore.Wallpapers.Count.ToString();
             }));
         }
 

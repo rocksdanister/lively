@@ -64,5 +64,14 @@ namespace livelywpf.Helpers.Shell
             }
             return hShellViewWin;
         }
+
+        /// <summary>
+        /// Force redraw desktop - clears wallpaper persisting on screen even after close.
+        /// </summary>
+        public static void RefreshDesktop()
+        {
+            //todo: Find a better way to do this?
+            NativeMethods.SystemParametersInfo(NativeMethods.SPI_SETDESKWALLPAPER, 0, null, NativeMethods.SPIF_UPDATEINIFILE);
+        }
     }
 }

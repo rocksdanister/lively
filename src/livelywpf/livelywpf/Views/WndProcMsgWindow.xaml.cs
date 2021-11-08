@@ -1,5 +1,6 @@
 ﻿using livelywpf.Core;
 using livelywpf.Helpers.Pinvoke;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -53,11 +54,12 @@ namespace livelywpf.Views
                 int newExplorerPid = GetTaskbarExplorerPid();
                 if (prevExplorerPid != newExplorerPid)
                 {
+                    var desktopCore = App.Services.GetRequiredService<IDesktopCore>();
                     //Explorer crash detection, dpi change also sends WM_TASKBARCREATED..
                     Logger.Info($"Explorer crashed, pid mismatch: {prevExplorerPid} != {newExplorerPid}");
                     if ((DateTime.Now - prevCrashTime).TotalSeconds > 30)
                     {
-                        SetupDesktop.ResetWorkerW();
+                        desktopCore.ResetWallpaper();
                     }
                     else
                     {
@@ -66,8 +68,8 @@ namespace livelywpf.Views
                         _ = Task.Run(() => MessageBox.Show(Properties.Resources.DescExplorerCrash,
                                 $"{Properties.Resources.TitleAppName} - {Properties.Resources.TextError}",
                                 MessageBoxButton.OK, MessageBoxImage.Error));
-                        SetupDesktop.TerminateAllWallpapers();
-                        SetupDesktop.ResetWorkerW();
+                        desktopCore.CloseAllWallpapers(true);
+                        desktopCore.ResetWallpaper();
                     }
                     prevCrashTime = DateTime.Now;
                     prevExplorerPid = newExplorerPid;

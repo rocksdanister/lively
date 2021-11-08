@@ -4,20 +4,17 @@ using livelywpf.Helpers.Files;
 using livelywpf.Helpers.MVVM;
 using livelywpf.Helpers.NetStream;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-using System.Windows.Interop;
 using Windows.ApplicationModel.DataTransfer;
-using Windows.Foundation.Metadata;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using livelywpf.Models;
 using livelywpf.Core;
 using livelywpf.Views.Dialogues;
+using Microsoft.Extensions.DependencyInjection;
+using livelywpf.ViewModels;
+using livelywpf.Services;
 
 namespace livelywpf.Views.Pages
 {
@@ -28,12 +25,19 @@ namespace livelywpf.Views.Pages
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         livelyUserControls.LivelyGridView LivelyGridControl { get; set; }
+        private readonly LibraryViewModel libraryVm;
+        private readonly IUserSettingsService userSettings;
+        private readonly IDesktopCore desktopCore;
 
         public LibraryView()
         {
+            libraryVm = App.Services.GetRequiredService<LibraryViewModel>();
+            userSettings = App.Services.GetRequiredService<IUserSettingsService>();
+            desktopCore = App.Services.GetRequiredService<IDesktopCore>();
+
             InitializeComponent();
             //uwp control also gets binded..
-            this.DataContext = Program.LibraryVM; 
+            this.DataContext = libraryVm;
         }
 
         private void LivelyGridView_ChildChanged(object sender, EventArgs e)
@@ -60,7 +64,7 @@ namespace livelywpf.Views.Pages
                     TextPreviewWallpaper = Properties.Resources.TextPreviewWallpaper,
                     TextEditWallpaper = Properties.Resources.TextEditWallpaper,
                 };
-                LivelyGridControl.GridElementSize((livelyUserControls.LivelyGridView.GridSize)Program.SettingsVM.SelectedTileSizeIndex);
+                LivelyGridControl.GridElementSize((livelyUserControls.LivelyGridView.GridSize)userSettings.Settings.TileSize);
                 LivelyGridControl.ContextMenuClick += LivelyGridControl_ContextMenuClick;
                 LivelyGridControl.FileDroppedEvent += LivelyGridControl_FileDroppedEvent;
             }
@@ -96,10 +100,10 @@ namespace livelywpf.Views.Pages
                         prev.Show();
                         break;
                     case "showOnDisk":
-                        Program.LibraryVM.WallpaperShowOnDisk(e);
+                        libraryVm.WallpaperShowOnDisk(e);
                         break;
                     case "setWallpaper":
-                        SetupDesktop.SetWallpaper((LibraryModel)e, Program.SettingsVM.Settings.SelectedDisplay);
+                        desktopCore.SetWallpaper((LibraryModel)e, userSettings.Settings.SelectedDisplay);
                         break;
                     case "exportWallpaper":
                         string savePath = "";
@@ -118,7 +122,7 @@ namespace livelywpf.Views.Pages
                         {
                             break;
                         }
-                        Program.LibraryVM.WallpaperExport(e, savePath);
+                        libraryVm.WallpaperExport(e, savePath);
                         break;
                     case "deleteWallpaper":
                         var deleteView = new livelyUserControls.InfoPage
@@ -140,7 +144,7 @@ namespace livelywpf.Views.Pages
                             Properties.Resources.TextNo);
                         if (result == ContentDialogResult.Primary)
                         {
-                            Program.LibraryVM.WallpaperDelete(e);
+                            libraryVm.WallpaperDelete(e);
                         }
                         break;
                     case "customiseWallpaper":
@@ -161,10 +165,10 @@ namespace livelywpf.Views.Pages
                         LivelyGridControl?.DimBackground(false);
                         break;
                     case "convertVideo":
-                        Program.LibraryVM.WallpaperVideoConvert(obj);
+                        libraryVm.WallpaperVideoConvert(obj);
                         break;
                     case "editWallpaper":
-                        Program.LibraryVM.EditWallpaper(obj);
+                        libraryVm.EditWallpaper(obj);
                         break;
                     case "moreInformation":
                         var infoView = new livelyUserControls.InfoPage
@@ -194,20 +198,20 @@ namespace livelywpf.Views.Pages
                 {
                     var uri = await e.DataView.GetWebLinkAsync();
                     Logger.Info("Dropped url=>" + uri.ToString());
-                    if (Program.SettingsVM.Settings.AutoDetectOnlineStreams &&
+                    if (userSettings.Settings.AutoDetectOnlineStreams &&
                         StreamHelper.IsSupportedStream(uri))
                     {
-                        Program.LibraryVM.AddWallpaper(uri.OriginalString,
+                        libraryVm.AddWallpaper(uri.OriginalString,
                             WallpaperType.videostream,
                             LibraryTileType.processing,
-                            Program.SettingsVM.Settings.SelectedDisplay);
+                            userSettings.Settings.SelectedDisplay);
                     }
                     else
                     {
-                        Program.LibraryVM.AddWallpaper(uri.OriginalString,
+                        libraryVm.AddWallpaper(uri.OriginalString,
                             WallpaperType.url,
                             LibraryTileType.processing,
-                            Program.SettingsVM.Settings.SelectedDisplay);
+                            userSettings.Settings.SelectedDisplay);
                     }
                 }
                 else if (e.DataView.Contains(StandardDataFormats.StorageItems))
@@ -239,10 +243,10 @@ namespace livelywpf.Views.Pages
                             case WallpaperType.videostream:
                             case WallpaperType.picture:
                                 {
-                                    Program.LibraryVM.AddWallpaper(item,
+                                    libraryVm.AddWallpaper(item,
                                         type,
                                         LibraryTileType.processing,
-                                        Program.SettingsVM.Settings.SelectedDisplay);
+                                        userSettings.Settings.SelectedDisplay);
                                 }
                                 break;
                             case WallpaperType.app:
@@ -279,10 +283,10 @@ namespace livelywpf.Views.Pages
                                         };
                                         if (w.ShowDialog() == true)
                                         {
-                                            Program.LibraryVM.AddWallpaper(item,
+                                            libraryVm.AddWallpaper(item,
                                                 WallpaperType.app,
                                                 LibraryTileType.processing,
-                                                Program.SettingsVM.Settings.SelectedDisplay,
+                                                userSettings.Settings.SelectedDisplay,
                                                 string.IsNullOrWhiteSpace(w.Result) ? null : w.Result);
                                         }
                                     }
@@ -293,7 +297,7 @@ namespace livelywpf.Views.Pages
                                     //lively wallpaper .zip
                                     if (ZipExtract.CheckLivelyZip(item))
                                     {
-                                        _ = Program.LibraryVM.WallpaperInstall(item, false);
+                                        _ = libraryVm.WallpaperInstall(item, false);
                                     }
                                     else
                                     {

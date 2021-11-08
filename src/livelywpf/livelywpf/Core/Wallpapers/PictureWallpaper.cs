@@ -36,8 +36,12 @@ namespace livelywpf.Core.Wallpapers
 
         public string LivelyPropertyCopyPath => null;
 
-        public PictureWallpaper(string filePath, ILibraryModel model, ILivelyScreen display, WallpaperScaler scaler = WallpaperScaler.fill)
+        private readonly WallpaperArrangement arrangement;
+
+        public PictureWallpaper(string filePath, ILibraryModel model, ILivelyScreen display, WallpaperArrangement arrangement, WallpaperScaler scaler = WallpaperScaler.fill)
         {
+            this.arrangement = arrangement;
+
             //Has transition animation..
             desktop = (IDesktopWallpaper)new Helpers.DesktopWallpaperClass();
             systemWallpaperPath = desktop.GetWallpaper(display.DeviceId);
@@ -105,8 +109,8 @@ namespace livelywpf.Core.Wallpapers
         public void Show()
         {
             //desktop.Enable();
-            desktop.SetPosition(Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span ? Helpers.DesktopWallpaperPosition.Span : desktopScaler);
-            desktop.SetWallpaper(Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span ? null : display.DeviceId, model.FilePath);
+            desktop.SetPosition(arrangement == WallpaperArrangement.span ? Helpers.DesktopWallpaperPosition.Span : desktopScaler);
+            desktop.SetWallpaper(arrangement == WallpaperArrangement.span ? null : display.DeviceId, model.FilePath);
         }
 
         public void Stop()

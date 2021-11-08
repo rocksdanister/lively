@@ -13,7 +13,7 @@ namespace livelywpf.Core.Suspend
         {
             try
             {
-                foreach (ProcessThread thread in obj.GetProcess().Threads)
+                foreach (ProcessThread thread in obj.Proc.Threads)
                 {
                     var pOpenThread = NativeMethods.OpenThread(NativeMethods.ThreadAccess.SUSPEND_RESUME, false, (uint)thread.Id);
                     if (pOpenThread == IntPtr.Zero)
@@ -44,7 +44,7 @@ namespace livelywpf.Core.Suspend
         {
             try
             {
-                foreach (ProcessThread thread in obj.GetProcess().Threads)
+                foreach (ProcessThread thread in obj.Proc.Threads)
                 {
                     var pOpenThread = NativeMethods.OpenThread(NativeMethods.ThreadAccess.SUSPEND_RESUME, false, (uint)thread.Id);
                     if (pOpenThread == IntPtr.Zero)

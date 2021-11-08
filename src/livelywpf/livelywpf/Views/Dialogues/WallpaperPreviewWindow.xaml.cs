@@ -8,10 +8,13 @@ using System.Windows.Threading;
 using livelywpf.Core;
 using livelywpf.Core.API;
 using livelywpf.Core.Wallpapers;
+using livelywpf.Factories;
 using livelywpf.Helpers;
 using livelywpf.Helpers.Pinvoke;
 using livelywpf.Helpers.ScreenRecord;
 using livelywpf.Models;
+using livelywpf.Services;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace livelywpf.Views.Dialogues
 {
@@ -22,34 +25,41 @@ namespace livelywpf.Views.Dialogues
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         //wallpaper loader.
-        private readonly LibraryModel wallpaperData;
+        private readonly ILibraryModel wallpaperData;
         private IWallpaper wallpaper = null;
         private bool _initializedWallpaper = false;
 
         //video capture
         private DispatcherTimer dispatcherTimer;
         private bool _recording = false;
-        private IScreenRecorder recorder;
         private int elapsedTime;
+
+        private readonly IWallpaperFactory wallpaperFactory;
+        private readonly IUserSettingsService userSettings;
+        private readonly IScreenRecorder recorder;
 
         #region wallpaper loader
 
-        public WallpaperPreviewWindow(LibraryModel wp)
+        public WallpaperPreviewWindow(ILibraryModel model)
         {
+            userSettings = App.Services.GetRequiredService<IUserSettingsService>();
+            recorder = App.Services.GetRequiredService<IScreenRecorder>();
+            wallpaperFactory = new WallpaperFactory();
+            this.wallpaperData = model;
+
             InitializeComponent();
             this.SizeChanged += WallpaperPreviewWindow_SizeChanged;
-            this.wallpaperData = wp;
         }
 
         private void WallpaperPreviewWindow_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            if(wallpaper != null)
+            if (wallpaper != null)
             {
                 var item = WindowOperations.GetAbsolutePlacement(PreviewBorder, true);
                 NativeMethods.POINT pts = new NativeMethods.POINT() { X = (int)item.Left, Y = (int)item.Top };
                 if (NativeMethods.ScreenToClient(new WindowInteropHelper(this).Handle, ref pts))
                 {
-                    NativeMethods.SetWindowPos(wallpaper.GetHWND(), 1, pts.X, pts.Y, (int)item.Width, (int)item.Height, 0 | 0x0010);
+                    NativeMethods.SetWindowPos(wallpaper.Handle, 1, pts.X, pts.Y, (int)item.Width, (int)item.Height, 0 | 0x0010);
                 }
                 resolutionText.Text = item.Width + "x" + item.Height;
             }
@@ -62,7 +72,7 @@ namespace livelywpf.Views.Dialogues
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if(!_initializedWallpaper || _recording)
+            if (!_initializedWallpaper || _recording)
             {
                 e.Cancel = true;
                 ModernWpf.Controls.Primitives.FlyoutBase.ShowAttachedFlyout(recordBtn);
@@ -72,11 +82,11 @@ namespace livelywpf.Views.Dialogues
             if (wallpaper != null)
             {
                 //detach wallpaper window from this dialogue.
-                WindowOperations.SetParentSafe(wallpaper.GetHWND(), IntPtr.Zero);
+                WindowOperations.SetParentSafe(wallpaper.Handle, IntPtr.Zero);
                 try
                 {
-                    var proc = wallpaper.GetProcess();
-                    if (wallpaper.GetWallpaperType() == WallpaperType.url && proc != null)
+                    var proc = wallpaper.Proc;
+                    if (wallpaper.Category == WallpaperType.url && proc != null)
                     {
                         wallpaper.SendMessage(new LivelyCloseCmd());
                         proc.Refresh();
@@ -97,71 +107,30 @@ namespace livelywpf.Views.Dialogues
             }
         }
 
-        private void LoadWallpaper(LibraryModel wp)
+        private void LoadWallpaper(ILibraryModel model)
         {
-            var target = Program.SettingsVM.Settings.SelectedDisplay;
-            IWallpaper wpInstance = null;
-            switch (wp.LivelyInfo.Type)
+            try
             {
-                case WallpaperType.web:
-                case WallpaperType.webaudio:
-                case WallpaperType.url:
-                    wpInstance = new WebProcess(wp.FilePath, wp, target);
-                    break;
-                case WallpaperType.gif:
-                case WallpaperType.picture:
-                case WallpaperType.video:
-                    wpInstance = new VideoMpvPlayer(wp.FilePath, wp, target,
-                        WallpaperScaler.fill, Program.SettingsVM.Settings.StreamQuality, true);
-                    break;
-                case WallpaperType.videostream:
-                    if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "mpv", "youtube-dl.exe")))
-                    {
-                        wpInstance = new VideoMpvPlayer(wp.FilePath, wp, target,
-                            WallpaperScaler.fill, Program.SettingsVM.Settings.StreamQuality, true);
-                    }
-                    else
-                    {
-                        Logger.Info("Core: yt-dl not found, using cef browser instead.");
-                        //note: wallpaper type will be videostream, don't forget..
-                        wpInstance = new WebProcess(wp.FilePath, wp, target);
-                    }
-                    break;
-                case WallpaperType.app:
-                case WallpaperType.bizhawk:
-                case WallpaperType.unity:
-                case WallpaperType.unityaudio:
-                case WallpaperType.godot:
-                    if (Program.IsMSIX)
-                    {
-                        Logger.Info("WallpaperPreview: Skipping program wallpaper on MSIX package.");
-                        MessageBox.Show(Properties.Resources.TextFeatureMissing, Properties.Resources.TextError);
-                    }
-                    else
-                    {
-                        wpInstance = new ExtPrograms(wp.FilePath, wp, target,
-                            Program.SettingsVM.Settings.WallpaperWaitTime);
-                    }
-                    break;
+                IWallpaper instance = wallpaperFactory.CreateWallpaper(model, userSettings.Settings.SelectedDisplay, userSettings, true);
+                model.ItemStartup = true;
+                instance.WindowInitialized += WallpaperInitialized;
+                instance.Show();
             }
-
-            if (wpInstance != null)
+            catch (Exception e)
             {
-                wp.ItemStartup = true;
-                wpInstance.WindowInitialized += SetupDesktop_WallpaperInitialized;
-                wpInstance.Show();
+                Logger.Error(e.ToString());
             }
         }
 
-        private void SetupDesktop_WallpaperInitialized(object sender, WindowInitializedArgs e)
+        private void WallpaperInitialized(object sender, WindowInitializedArgs e)
         {
             try
             {
                 _initializedWallpaper = true;
                 wallpaper = (IWallpaper)sender;
-                wallpaper.WindowInitialized -= SetupDesktop_WallpaperInitialized;
+                wallpaper.WindowInitialized -= WallpaperInitialized;
                 _ = this.Dispatcher.BeginInvoke(new Action(() => {
-                    wallpaper.GetWallpaperData().ItemStartup = false;
+                    wallpaper.Model.ItemStartup = false;
                     ProgressRing.IsActive = false;
                 }));
 
@@ -169,7 +138,7 @@ namespace livelywpf.Views.Dialogues
                 {
                     _ = this.Dispatcher.BeginInvoke(new Action(() => {       
                         //attach wp hwnd to border ui element.
-                        WindowOperations.SetProgramToFramework(this, wallpaper.GetHWND(), PreviewBorder);
+                        WindowOperations.SetProgramToFramework(this, wallpaper.Handle, PreviewBorder);
                         //fix for wallpaper overlapping window bordere in high dpi screens.
                         this.Width += 1;
                     }));
@@ -245,12 +214,11 @@ namespace livelywpf.Views.Dialogues
                 }
 
                 //recorder initialization
-                recorder = new ScreenRecorderlibScreen();
                 recorder.Initialize(savePath, prevBorder, 60, 8000 * 1000, false, false);
                 //recorder.Initialize(savePath, new WindowInteropHelper(this).Handle, 60, 8000 * 1000, false, false);
                 recorder.RecorderStatus += Recorder_RecorderStatus;
                 //recording timer.
-                if(dispatcherTimer == null)
+                if (dispatcherTimer == null)
                 {
                     dispatcherTimer = new DispatcherTimer
                     {

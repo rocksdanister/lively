@@ -1,13 +1,17 @@
 ﻿using livelywpf.Core.API;
 using livelywpf.Models;
+using System;
 using System.Collections.ObjectModel;
 
 namespace livelywpf.Core
 {
     public interface IDesktopCore
     {
+        IntPtr DesktopWorkerW { get; }
+        /// <summary>
+        /// Running wallpapers.
+        /// </summary>
         ReadOnlyCollection<IWallpaper> Wallpapers { get; }
-
         void CloseAllWallpapers(bool terminate = false);
         void CloseWallpaper(ILibraryModel wp, bool terminate = false);
         void CloseWallpaper(ILivelyScreen display, bool terminate = false);
@@ -17,8 +21,17 @@ namespace livelywpf.Core
         void SeekWallpaper(ILibraryModel wp, float seek, PlaybackPosType type);
         void SeekWallpaper(ILivelyScreen display, float seek, PlaybackPosType type);
         void SendMessageWallpaper(ILibraryModel wp, IpcMessage msg);
-        void SendMessageWallpaper(ILivelyScreen display, LibraryModel wp, IpcMessage msg);
+        void SendMessageWallpaper(ILivelyScreen display, ILibraryModel wp, IpcMessage msg);
         void SetWallpaper(ILibraryModel wallpaper, ILivelyScreen display);
         void ShutDown();
+
+        /// <summary>
+        /// Wallpaper set/removed.
+        /// </summary>
+        public event EventHandler WallpaperChanged;
+        /// <summary>
+        /// Wallpaper core services restarted.
+        /// </summary>
+        public event EventHandler WallpaperReset;
     }
 }

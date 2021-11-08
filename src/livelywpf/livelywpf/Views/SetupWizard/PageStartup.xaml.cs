@@ -1,4 +1,6 @@
-﻿using System;
+﻿using livelywpf.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -21,7 +23,7 @@ namespace livelywpf.Views.SetupWizard
         public PageStartup()
         {
             InitializeComponent();
-            this.DataContext = Program.SettingsVM;
+            this.DataContext = App.Services.GetRequiredService<SettingsViewModel>();
         }
     }
 }

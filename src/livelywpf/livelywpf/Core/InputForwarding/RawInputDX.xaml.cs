@@ -8,6 +8,7 @@ using Linearstar.Windows.RawInput;
 using livelywpf.Core.Suspend;
 using livelywpf.Helpers;
 using livelywpf.Helpers.Pinvoke;
+using livelywpf.Services;
 
 namespace livelywpf.Core.InputForwarding
 {
@@ -51,6 +52,7 @@ namespace livelywpf.Core.InputForwarding
         #region setup
 
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+        IntPtr progman, workerWOrig;
         public InputForwardMode InputMode { get; private set; }
         //public events
         public event EventHandler<MouseRawArgs> MouseMoveRaw;
@@ -59,13 +61,35 @@ namespace livelywpf.Core.InputForwarding
         public event EventHandler<KeyboardClickRawArgs> KeyboardClickRaw;
         //public event EventHandler<KeyboardClickRawArgs> KeyboardUpRaw;
 
-        public RawInputDX()
+        private readonly IUserSettingsService userSettings;
+        private readonly IDesktopCore desktopCore;
+
+        public RawInputDX(IUserSettingsService userSettings, IDesktopCore desktopCore)
         {
+            this.userSettings = userSettings;
+            this.desktopCore = desktopCore;
+
             InitializeComponent();
             //Starting a hidden window outside screen region, rawinput receives msg through WndProc
             this.WindowStartupLocation = WindowStartupLocation.Manual;
             this.Left = -99999;
             this.InputMode = InputForwardMode.mousekeyboard;
+            desktopCore.WallpaperReset += (s, e) => FindDesktopHandles();
+        }
+
+        private void FindDesktopHandles()
+        {
+            progman = NativeMethods.FindWindow("Progman", null);
+            var folderView = NativeMethods.FindWindowEx(progman, IntPtr.Zero, "SHELLDLL_DefView", null);
+            if (folderView == IntPtr.Zero)
+            {
+                //If the desktop isn't under Progman, cycle through the WorkerW handles and find the correct one
+                do
+                {
+                    workerWOrig = NativeMethods.FindWindowEx(NativeMethods.GetDesktopWindow(), workerWOrig, "WorkerW", null);
+                    folderView = NativeMethods.FindWindowEx(workerWOrig, IntPtr.Zero, "SHELLDLL_DefView", null);
+                } while (folderView == IntPtr.Zero && workerWOrig != IntPtr.Zero);
+            }
         }
 
         private void Window_SourceInitialized(object sender, EventArgs e)
@@ -206,22 +230,22 @@ namespace livelywpf.Core.InputForwarding
         /// <param name="wParam">Virtual-Key code.</param>
         /// <param name="scanCode">OEM code of the key.</param>
         /// <param name="isPressed">Key is pressed.</param>
-        private static void ForwardMessageKeyboard(int msg, IntPtr wParam, int scanCode, bool isPressed)
+        private void ForwardMessageKeyboard(int msg, IntPtr wParam, int scanCode, bool isPressed)
         {
             try
             {
                 //Don't forward when not on desktop.
-                if (Program.SettingsVM.Settings.InputForward == InputForwardMode.mousekeyboard && Playback.IsDesktop())
+                if (userSettings.Settings.InputForward == InputForwardMode.mousekeyboard && IsDesktop())
                 {
                     //Detect active wp based on cursor pos, better way to do this?
                     var display = new LivelyScreen(DisplayManager.Instance.GetDisplayMonitorFromPoint(new System.Windows.Point(
                         System.Windows.Forms.Control.MousePosition.X, System.Windows.Forms.Control.MousePosition.Y)));
-                    SetupDesktop.Wallpapers.ForEach(wallpaper =>
+                    foreach (var wallpaper in desktopCore.Wallpapers)
                     {
-                        if (IsInputAllowed(wallpaper.GetWallpaperType()))
+                        if (IsInputAllowed(wallpaper.Category))
                         {
-                            if (ScreenHelper.ScreenCompare(display, wallpaper.GetScreen(), DisplayIdentificationMode.deviceId) ||
-                                    Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span)
+                            if (ScreenHelper.ScreenCompare(display, wallpaper.Screen, DisplayIdentificationMode.deviceId) ||
+                                    userSettings.Settings.WallpaperArrangement == WallpaperArrangement.span)
                             {
                                 //ref:
                                 //https://docs.microsoft.com/en-us/windows/win32/inputdev/wm-keydown
@@ -235,10 +259,10 @@ namespace livelywpf.Core.InputForwarding
                                  * lParam = isPressed ? (lParam |= 0u << 31) : (lParam |= 1u << 31); //transition state
                                  */
                                 lParam = isPressed ? lParam : (lParam |= 3u << 30);
-                                NativeMethods.PostMessageW(wallpaper.GetHWNDInput(), msg, wParam, (UIntPtr)lParam);
+                                NativeMethods.PostMessageW(wallpaper.InputHandle, msg, wParam, (UIntPtr)lParam);
                             }
                         }
-                    });
+                    }
                 }
             }
             catch (Exception e)
@@ -255,15 +279,15 @@ namespace livelywpf.Core.InputForwarding
         /// <param name="y">Cursor pos y</param>
         /// <param name="msg">mouse message</param>
         /// <param name="wParam">additional msg parameter</param>
-        private static void ForwardMessageMouse(int x, int y, int msg, IntPtr wParam)
+        private void ForwardMessageMouse(int x, int y, int msg, IntPtr wParam)
         {
-            if (Program.SettingsVM.Settings.InputForward == InputForwardMode.off)
+            if (userSettings.Settings.InputForward == InputForwardMode.off)
             {
                 return;
             }
-            else if (!Playback.IsDesktop()) //Don't forward when not on desktop.
+            else if (!IsDesktop()) //Don't forward when not on desktop.
             {
-                if (msg != (int)NativeMethods.WM.MOUSEMOVE || !Program.SettingsVM.Settings.MouseInputMovAlways)
+                if (msg != (int)NativeMethods.WM.MOUSEMOVE || !userSettings.Settings.MouseInputMovAlways)
                 {
                     return;
                 }
@@ -272,23 +296,23 @@ namespace livelywpf.Core.InputForwarding
             try
             {
                 var display = new LivelyScreen(DisplayManager.Instance.GetDisplayMonitorFromPoint(new System.Windows.Point(x, y)));
-                var mouse = CalculateMousePos(x, y, display);
-                SetupDesktop.Wallpapers.ForEach(wallpaper =>
+                var mouse = CalculateMousePos(x, y, display, userSettings.Settings.WallpaperArrangement);
+                foreach (var wallpaper in desktopCore.Wallpapers)
                 {
-                    if (IsInputAllowed(wallpaper.GetWallpaperType()))
+                    if (IsInputAllowed(wallpaper.Category))
                     {
-                        if (ScreenHelper.ScreenCompare(display, wallpaper.GetScreen(), DisplayIdentificationMode.deviceId) ||
-                            Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span)
+                        if (ScreenHelper.ScreenCompare(display, wallpaper.Screen, DisplayIdentificationMode.deviceId) ||
+                            userSettings.Settings.WallpaperArrangement == WallpaperArrangement.span)
                         {
                             //The low-order word specifies the x-coordinate of the cursor, the high-order word specifies the y-coordinate of the cursor.
                             //ref: https://docs.microsoft.com/en-us/windows/win32/inputdev/wm-mousemove
                             uint lParam = Convert.ToUInt32(mouse.Y);
                             lParam <<= 16;
                             lParam |= Convert.ToUInt32(mouse.X);
-                            NativeMethods.PostMessageW(wallpaper.GetHWNDInput(), msg, wParam, (UIntPtr)lParam);
+                            NativeMethods.PostMessageW(wallpaper.InputHandle, msg, wParam, (UIntPtr)lParam);
                         }
                     }
-                });
+                }
             }
             catch (Exception e)
             {
@@ -307,11 +331,11 @@ namespace livelywpf.Core.InputForwarding
         /// <param name="y">Cursor pos y</param>
         /// <param name="display">Target display device</param>
         /// <returns>Localised cursor value</returns>
-        private static Point CalculateMousePos(int x, int y, LivelyScreen display)
+        private static Point CalculateMousePos(int x, int y, ILivelyScreen display, WallpaperArrangement arrangement)
         {
             if (ScreenHelper.IsMultiScreen())
             {
-                if (Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span)
+                if (arrangement == WallpaperArrangement.span)
                 {
                     var screenArea = ScreenHelper.GetVirtualScreenBounds();
                     x -= screenArea.Location.X;
@@ -326,9 +350,9 @@ namespace livelywpf.Core.InputForwarding
             return new Point(x, y);
         }
 
-        private static bool IsInputAllowed(WallpaperType type)
+        private static bool IsInputAllowed(WallpaperType category)
         {
-            return type switch
+            return category switch
             {
                 WallpaperType.app => true,
                 WallpaperType.web => true,
@@ -344,6 +368,16 @@ namespace livelywpf.Core.InputForwarding
                 WallpaperType.picture => false,
                 _ => false,
             };
+        }
+
+        /// <summary>
+        /// Is foreground live-wallpaper desktop.
+        /// </summary>
+        /// <returns></returns>
+        private bool IsDesktop()
+        {
+            IntPtr hWnd = NativeMethods.GetForegroundWindow();
+            return (IntPtr.Equals(hWnd, workerWOrig) || IntPtr.Equals(hWnd, progman));
         }
 
         #endregion //helpers

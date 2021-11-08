@@ -26,7 +26,7 @@ namespace livelywpf.Models
     [Serializable]
     public class LibraryModel : ObservableObject, ILibraryModel
     {
-        public LibraryModel(LivelyInfoModel data, string folderPath, LibraryTileType tileType = LibraryTileType.ready)
+        public LibraryModel(LivelyInfoModel data, string folderPath, LibraryTileType tileType = LibraryTileType.ready, bool preferPreviewGif = false)
         {
             DataType = tileType;
             WallpaperType = FileFilter.GetLocalisedWallpaperTypeString(data.Type);
@@ -34,7 +34,14 @@ namespace livelywpf.Models
             Title = data.Title;
             Desc = data.Desc;
             Author = data.Author;
-            SrcWebsite = GetUri(data.Contact, "https");
+            try
+            {
+                SrcWebsite = LinkHandler.SanitizeUrl(data.Contact);
+            }
+            catch
+            {
+                SrcWebsite = null;
+            }
 
             if (data.IsAbsolutePath)
             {
@@ -124,7 +131,7 @@ namespace livelywpf.Models
 
             LivelyInfoFolderPath = folderPath;
             //Use animated gif if exists.
-            ImagePath = Program.SettingsVM.Settings.LivelyGUIRendering == LivelyGUIState.normal ?
+            ImagePath = preferPreviewGif ?
                 (File.Exists(PreviewClipPath) ? PreviewClipPath : ThumbnailPath) : ThumbnailPath;
 
             if (data.Type == livelywpf.WallpaperType.video ||
@@ -337,29 +344,5 @@ namespace livelywpf.Models
                 OnPropertyChanged();
             }
         }
-
-        #region helpers
-
-        public Uri GetUri(string s, string scheme)
-        {
-            try
-            {
-                return new UriBuilder(s)
-                {
-                    Scheme = scheme,
-                    Port = -1,
-                }.Uri;
-            }
-            catch (ArgumentNullException)
-            {
-                return null;
-            }
-            catch (UriFormatException)
-            {
-                return null;
-            }
-        }
-
-        #endregion helpers
     }
 }

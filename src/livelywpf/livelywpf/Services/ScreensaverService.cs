@@ -17,30 +17,33 @@ using livelywpf.Helpers.Pinvoke;
 using livelywpf.Core;
 using livelywpf.Views.Dialogues;
 using livelywpf.Core.InputForwarding;
+using livelywpf.Services;
+using System.Linq;
+using livelywpf.Helpers.Shell;
+using livelywpf.Helpers;
 
-namespace livelywpf.Helpers.Screensaver
+namespace livelywpf.Services
 {
-    public sealed class ScreensaverService
+    public class ScreensaverService : IScreensaverService
     {
         #region init
 
         private uint idleWaitTime = 300000;
         private readonly Timer idleTimer = new Timer();
         public bool IsRunning { get; private set; } = false;
-        private static readonly ScreensaverService instance = new ScreensaverService();
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private readonly List<ScreensaverBlank> blankWindows = new List<ScreensaverBlank>();
 
-        public static ScreensaverService Instance
-        {
-            get
-            {
-                return instance;
-            }
-        }
+        private readonly IUserSettingsService userSettings;
+        private readonly IDesktopCore desktopCore;
+        private readonly RawInputDX rawInput;
 
-        private ScreensaverService()
+        public ScreensaverService(IUserSettingsService userSettings, IDesktopCore desktopCore, RawInputDX rawInput)
         {
+            this.userSettings = userSettings;
+            this.desktopCore = desktopCore;
+            this.rawInput = rawInput;
+
             idleTimer.Elapsed += IdleCheckTimer;
             idleTimer.Interval = 30000;
         }
@@ -73,7 +76,7 @@ namespace livelywpf.Helpers.Screensaver
                 HideScreensavers();
                 CloseBlankScreensavers();
 
-                if (Program.SettingsVM.Settings.ScreensaverLockOnResume)
+                if (userSettings.Settings.ScreensaverLockOnResume)
                 {
                     try
                     {
@@ -177,16 +180,16 @@ namespace livelywpf.Helpers.Screensaver
         /// </summary>
         private void ShowScreensavers()
         {
-            foreach (var item in SetupDesktop.Wallpapers)
+            foreach (var item in desktopCore.Wallpapers)
             {
                 //detach wallpaper.
-                WindowOperations.SetParentSafe(item.GetHWND(), IntPtr.Zero);
+                WindowOperations.SetParentSafe(item.Handle, IntPtr.Zero);
                 //show on the currently running screen, not changing size.
                 if (!NativeMethods.SetWindowPos(
-                    item.GetHWND(),
+                    item.Handle,
                     -1, //topmost
-                    Program.SettingsVM.Settings.WallpaperArrangement != WallpaperArrangement.span ? item.GetScreen().Bounds.Left : 0,
-                    Program.SettingsVM.Settings.WallpaperArrangement != WallpaperArrangement.span ? item.GetScreen().Bounds.Top : 0,
+                    userSettings.Settings.WallpaperArrangement != WallpaperArrangement.span ? item.Screen.Bounds.Left : 0,
+                    userSettings.Settings.WallpaperArrangement != WallpaperArrangement.span ? item.Screen.Bounds.Top : 0,
                     0,
                     0,
                     0x0001))
@@ -201,15 +204,15 @@ namespace livelywpf.Helpers.Screensaver
         /// </summary>
         private void HideScreensavers()
         {
-            if (Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span)
+            if (userSettings.Settings.WallpaperArrangement == WallpaperArrangement.span)
             {
-                if (SetupDesktop.Wallpapers.Count > 0)
+                if (desktopCore.Wallpapers.Count > 0)
                 {
                     //get spawned workerw rectangle data.
-                    NativeMethods.GetWindowRect(SetupDesktop.GetWorkerW(), out NativeMethods.RECT prct);
-                    WindowOperations.SetParentSafe(SetupDesktop.Wallpapers[0].GetHWND(), SetupDesktop.GetWorkerW());
+                    NativeMethods.GetWindowRect(desktopCore.DesktopWorkerW, out NativeMethods.RECT prct);
+                    WindowOperations.SetParentSafe(desktopCore.Wallpapers[0].Handle, desktopCore.DesktopWorkerW);
                     //fill wp into the whole workerw area.
-                    if (!NativeMethods.SetWindowPos(SetupDesktop.Wallpapers[0].GetHWND(), 1, 0, 0, prct.Right - prct.Left, prct.Bottom - prct.Top, 0x0010))
+                    if (!NativeMethods.SetWindowPos(desktopCore.Wallpapers[0].Handle, 1, 0, 0, prct.Right - prct.Left, prct.Bottom - prct.Top, 0x0010))
                     {
                         NLogger.LogWin32Error("Failed to hide screensaver(1)");
                     }
@@ -217,32 +220,32 @@ namespace livelywpf.Helpers.Screensaver
             }
             else
             {
-                foreach (var item in SetupDesktop.Wallpapers)
+                foreach (var item in desktopCore.Wallpapers)
                 {
                     //update position & size incase window is moved.
-                    if (!NativeMethods.SetWindowPos(item.GetHWND(), 1, item.GetScreen().Bounds.Left, item.GetScreen().Bounds.Top, item.GetScreen().Bounds.Width, item.GetScreen().Bounds.Height, 0x0010))
+                    if (!NativeMethods.SetWindowPos(item.Handle, 1, item.Screen.Bounds.Left, item.Screen.Bounds.Top, item.Screen.Bounds.Width, item.Screen.Bounds.Height, 0x0010))
                     {
                         NLogger.LogWin32Error("Failed to hide screensaver(2)");
                     }
                     //re-calcuate position on desktop workerw.
                     NativeMethods.RECT prct = new NativeMethods.RECT();
-                    NativeMethods.MapWindowPoints(item.GetHWND(), SetupDesktop.GetWorkerW(), ref prct, 2);
+                    NativeMethods.MapWindowPoints(item.Handle, desktopCore.DesktopWorkerW, ref prct, 2);
                     //re-attach wallpaper to desktop.
-                    WindowOperations.SetParentSafe(item.GetHWND(), SetupDesktop.GetWorkerW());
+                    WindowOperations.SetParentSafe(item.Handle, desktopCore.DesktopWorkerW);
                     //update position & size on desktop workerw.
-                    if (!NativeMethods.SetWindowPos(item.GetHWND(), 1, prct.Left, prct.Top, item.GetScreen().Bounds.Width, item.GetScreen().Bounds.Height, 0x0010))
+                    if (!NativeMethods.SetWindowPos(item.Handle, 1, prct.Left, prct.Top, item.Screen.Bounds.Width, item.Screen.Bounds.Height, 0x0010))
                     {
                         NLogger.LogWin32Error("Failed to hide screensaver(3)");
                     }
                 }
             }
-            SetupDesktop.RefreshDesktop();
+            DesktopUtil.RefreshDesktop();
         }
 
         private void ShowBlankScreensavers()
         {
-            if (!Program.SettingsVM.Settings.ScreensaverEmptyScreenShowBlack ||
-                (Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span && SetupDesktop.Wallpapers.Count > 0))
+            if (!userSettings.Settings.ScreensaverEmptyScreenShowBlack ||
+                (userSettings.Settings.WallpaperArrangement == WallpaperArrangement.span && desktopCore.Wallpapers.Count > 0))
             {
                 return;
             }
@@ -250,7 +253,7 @@ namespace livelywpf.Helpers.Screensaver
             _ = Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, new ThreadStart(delegate
               {
                   var freeScreens = ScreenHelper.GetScreen().FindAll(
-                      x => !SetupDesktop.Wallpapers.Exists(y => y.GetScreen().Equals(x)));
+                      x => !desktopCore.Wallpapers.Any(y => y.Screen.Equals(x)));
 
                   foreach (var item in freeScreens)
                   {
@@ -299,16 +302,16 @@ namespace livelywpf.Helpers.Screensaver
 
         private void StartInputListener()
         {
-            SetupDesktop.RawInputHook.MouseMoveRaw += RawInputHook_MouseMoveRaw;
-            SetupDesktop.RawInputHook.MouseDownRaw += RawInputHook_MouseDownRaw;
-            SetupDesktop.RawInputHook.KeyboardClickRaw += RawInputHook_KeyboardClickRaw;
+            rawInput.MouseMoveRaw += RawInputHook_MouseMoveRaw;
+            rawInput.MouseDownRaw += RawInputHook_MouseDownRaw;
+            rawInput.KeyboardClickRaw += RawInputHook_KeyboardClickRaw;
         }
 
         private void StopInputListener()
         {
-            SetupDesktop.RawInputHook.MouseMoveRaw -= RawInputHook_MouseMoveRaw;
-            SetupDesktop.RawInputHook.MouseDownRaw -= RawInputHook_MouseDownRaw;
-            SetupDesktop.RawInputHook.KeyboardClickRaw -= RawInputHook_KeyboardClickRaw;
+            rawInput.MouseMoveRaw -= RawInputHook_MouseMoveRaw;
+            rawInput.MouseDownRaw -= RawInputHook_MouseDownRaw;
+            rawInput.KeyboardClickRaw -= RawInputHook_KeyboardClickRaw;
         }
 
         private void RawInputHook_KeyboardClickRaw(object sender, KeyboardClickRawArgs e)

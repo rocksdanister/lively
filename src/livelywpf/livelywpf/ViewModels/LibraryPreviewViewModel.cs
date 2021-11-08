@@ -11,26 +11,35 @@ using System.Windows;
 using YoutubeExplode;
 using livelywpf.Models;
 using livelywpf.Views.Dialogues;
+using livelywpf.Services;
+using Microsoft.Extensions.DependencyInjection;
+using livelywpf.Helpers;
 
 namespace livelywpf.ViewModels
 {
     class LibraryPreviewViewModel : ObservableObject
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private readonly LibraryModel libData;
+        private readonly ILibraryModel libData;
         private readonly ILibraryPreview Winstance;
-        private readonly LivelyInfoModel livelyInfoCopy;
+        private readonly ILivelyInfoModel livelyInfoCopy;
         private readonly string thumbnailOriginalPath;
 
-        public LibraryPreviewViewModel( ILibraryPreview wInterface, IWallpaper wallpaper)
+        private readonly IUserSettingsService userSettings;
+        private readonly LibraryViewModel libraryVm;
+
+        public LibraryPreviewViewModel(ILibraryPreview wInterface, IWallpaper wallpaper)
         {
+            this.userSettings = App.Services.GetRequiredService<IUserSettingsService>();
+            this.libraryVm = App.Services.GetRequiredService<LibraryViewModel>();
+
             Winstance = wInterface;
             Winstance.CaptureProgress += WInstance_CaptureProgress;
             Winstance.PreviewUpdated += WInstance_PreviewUpdated;
             Winstance.ThumbnailUpdated += WInstance_ThumbnailUpdated;
             Winstance.WallpaperAttached += WInstance_WallpaperAttached;
 
-            libData = wallpaper.GetWallpaperData();
+            libData = wallpaper.Model;
             if (libData.DataType == LibraryTileType.edit)
             {
                 //taking backup to restore original data if user cancel..
@@ -53,7 +62,7 @@ namespace livelywpf.ViewModels
                 {
                     Url = libData.FilePath;
                     Title = GetLastSegmentUrl(libData.FilePath);
-                    if (Program.SettingsVM.Settings.ExtractStreamMetaData)
+                    if (userSettings.Settings.ExtractStreamMetaData)
                     {
                         _ = SetYtMetadata(libData.FilePath);
                     }
@@ -92,8 +101,8 @@ namespace livelywpf.ViewModels
                 }
             }
 
-            GifCheck = Program.SettingsVM.Settings.GifCapture;
-            ZipCheck = Program.SettingsVM.Settings.LivelyZipGenerate;
+            GifCheck = userSettings.Settings.GifCapture;
+            ZipCheck = userSettings.Settings.LivelyZipGenerate;
         }
 
         private async Task SetYtMetadata(string url)
@@ -170,7 +179,14 @@ namespace livelywpf.ViewModels
             set
             {
                 _url = value;
-                libData.SrcWebsite = libData.GetUri(_url, "https");
+                try
+                {
+                    libData.SrcWebsite = LinkHandler.SanitizeUrl(_url);
+                }
+                catch
+                {
+                    libData.SrcWebsite = null;
+                }
                 libData.LivelyInfo.Contact = _url;
                 OnPropertyChanged();
             }
@@ -209,10 +225,10 @@ namespace livelywpf.ViewModels
             set
             {
                 _gifCheck = value;
-                if (_gifCheck != Program.SettingsVM.Settings.GifCapture)
+                if (_gifCheck != userSettings.Settings.GifCapture)
                 {
-                    Program.SettingsVM.Settings.GifCapture = _gifCheck;
-                    Program.SettingsVM.UpdateConfigFile();
+                    userSettings.Settings.GifCapture = _gifCheck;
+                    userSettings.Save<ISettingsModel>();
                 }
                 OnPropertyChanged();
             }
@@ -225,10 +241,10 @@ namespace livelywpf.ViewModels
             set
             {
                 _zipCheck = value;
-                if (_zipCheck != Program.SettingsVM.Settings.LivelyZipGenerate)
+                if (_zipCheck != userSettings.Settings.LivelyZipGenerate)
                 {
-                    Program.SettingsVM.Settings.LivelyZipGenerate = _zipCheck;
-                    Program.SettingsVM.UpdateConfigFile();
+                    userSettings.Settings.LivelyZipGenerate = _zipCheck;
+                    userSettings.Save<ISettingsModel>();
                 }
                 OnPropertyChanged();
             }
@@ -343,7 +359,7 @@ namespace livelywpf.ViewModels
 
         private void WInstance_PreviewUpdated(object sender, string path)
         {
-            if (Program.SettingsVM.Settings.LivelyGUIRendering != LivelyGUIState.lite)
+            if (userSettings.Settings.LivelyGUIRendering != LivelyGUIState.lite)
             {
                 libData.ImagePath = null;
                 libData.ImagePath = path;
@@ -369,10 +385,10 @@ namespace livelywpf.ViewModels
 
                 //change from pos 0..
                 libData.DataType = LibraryTileType.ready;
-                Program.LibraryVM.SortLibraryItem(libData);
+                libraryVm.SortLibraryItem((LibraryModel)libData);
 
                 //create lively .zip..
-                if (Program.SettingsVM.Settings.LivelyZipGenerate)
+                if (userSettings.Settings.LivelyZipGenerate)
                 {
                     var saveFileDialog = new Microsoft.Win32.SaveFileDialog()
                     {
@@ -385,7 +401,7 @@ namespace livelywpf.ViewModels
                     {
                         if (!string.IsNullOrEmpty(saveFileDialog.FileName))
                         {
-                            Program.LibraryVM.WallpaperExport(libData, saveFileDialog.FileName);
+                            libraryVm.WallpaperExport(libData, saveFileDialog.FileName);
                         }
                     }    
                 }
@@ -406,12 +422,12 @@ namespace livelywpf.ViewModels
                     libData.LivelyInfo.Thumbnail = libData.LivelyInfo.IsAbsolutePath ? thumbnailOriginalPath : Path.GetFileName(thumbnailOriginalPath);
                     //restore tile img..
                     libData.ImagePath = null;
-                    libData.ImagePath = Program.SettingsVM.Settings.LivelyGUIRendering == LivelyGUIState.normal ?
+                    libData.ImagePath = userSettings.Settings.LivelyGUIRendering == LivelyGUIState.normal ?
                         (File.Exists(libData.PreviewClipPath) ? libData.PreviewClipPath : libData.ThumbnailPath) : libData.ThumbnailPath;
 
                     //change from pos 0..
                     libData.DataType = LibraryTileType.ready;
-                    Program.LibraryVM.SortLibraryItem(libData);
+                    libraryVm.SortLibraryItem((LibraryModel)libData);
                 }
                 else
                 {

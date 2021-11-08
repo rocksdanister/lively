@@ -7,6 +7,7 @@ using System.Windows.Interop;
 using System.Windows.Threading;
 using livelywpf.Models;
 using livelywpf.Views.Wallpapers;
+using livelywpf.Helpers.Shell;
 
 namespace livelywpf.Core.Wallpapers
 {
@@ -81,7 +82,7 @@ namespace livelywpf.Core.Wallpapers
 
         private void Player_Closed(object sender, EventArgs e)
         {
-            SetupDesktop.RefreshDesktop();
+            DesktopUtil.RefreshDesktop();
         }
 
         public void SendMessage(string msg)

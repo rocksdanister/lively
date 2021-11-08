@@ -1,4 +1,5 @@
-﻿using livelywpf.Helpers;
+﻿using livelywpf.Core;
+using livelywpf.Helpers;
 using System;
 using System.Globalization;
 using System.IO;
@@ -152,7 +153,7 @@ namespace livelywpf.Models
 
             TileSize = 1;
             DisplayIdentification = DisplayIdentificationMode.deviceId;
-            SelectedDisplay = ScreenHelper.GetPrimaryScreen();
+            SelectedDisplay = (LivelyScreen)ScreenHelper.GetPrimaryScreen();
             LivelyGUIRendering = LivelyGUIState.normal;
             WallpaperDir = Path.Combine(Constants.CommonPaths.AppDataDir, "Library");
             WallpaperDirMoveExistingWallpaperNewDir = false;

@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
-using System.Text;
 using System.Threading;
 using System.Windows;
 using System.Linq;
-using livelywpf.Helpers;
 using System.Windows.Threading;
 using livelywpf.Helpers.IPC;
-using livelywpf.Helpers.Updater;
 using livelywpf.Helpers.Pinvoke;
 using livelywpf.Core;
 using livelywpf.Views;
 using livelywpf.Views.Dialogues;
-using livelywpf.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
+using livelywpf.Services;
+using livelywpf.Models;
+using livelywpf.Views.SetupWizard;
+using livelywpf.Cmd;
 
 namespace livelywpf
 {
@@ -28,11 +29,6 @@ namespace livelywpf
         public static bool IsMSIX { get; } = new DesktopBridge.Helpers().IsRunningAsUwp();
         //todo: make compile time flag.
         public static bool IsTestBuild { get; } = false;
-
-        //todo: use singleton or something instead?
-        public static SettingsViewModel SettingsVM { get; set; }
-        //public static ApplicationRulesViewModel AppRulesVM { get; set; }
-        public static LibraryViewModel LibraryVM { get; set; }
 
         #region app entry
 
@@ -102,34 +98,34 @@ namespace livelywpf
 
         private static void Server_MessageReceived1(object sender, string[] msg)
         {
-            Cmd.CommandHandler.ParseArgs(msg);
+            App.Services.GetRequiredService<ICommandHandler>().ParseArgs(msg);
         }
 
-        private static Systray sysTray;
+
         private static Views.SetupWizard.SetupView setupWizard = null;
         private static void App_Startup(object sender, StartupEventArgs e)
         {
-            sysTray = new Systray(SettingsVM.IsSysTrayIconVisible);
+            var userSettings = App.Services.GetRequiredService<IUserSettingsService>();
+            var appUpdater = App.Services.GetRequiredService<IAppUpdaterService>();
+            var sysTray = App.Services.GetRequiredService<ISystray>();
 
-            AppUpdaterService.Instance.UpdateChecked += AppUpdateChecked;
-            _ = AppUpdaterService.Instance.CheckUpdate();
-            AppUpdaterService.Instance.Start();
+            appUpdater.UpdateChecked += AppUpdateChecked;
+            _ = appUpdater.CheckUpdate();
+            appUpdater.Start();
 
-            if (Program.SettingsVM.Settings.IsFirstRun)
+            if (userSettings.Settings.IsFirstRun)
             {
-                setupWizard = new Views.SetupWizard.SetupView()
-                {
-                    WindowStartupLocation = WindowStartupLocation.CenterScreen
-                };
+                setupWizard = App.Services.GetRequiredService<SetupView>();
+                setupWizard.WindowStartupLocation = WindowStartupLocation.CenterScreen;
                 setupWizard.Show();
             }
 
-            _ = SetupDesktop.RestoreWallpaperFromLayout(Constants.CommonPaths.WallpaperLayoutPath);
+            App.Services.GetRequiredService<IDesktopCore>().RestoreWallpaper();
 
             //first element is not application path, unlike Environment.GetCommandLineArgs().
             if (e.Args.Length > 0)
             {
-                Cmd.CommandHandler.ParseArgs(e.Args);
+                App.Services.GetRequiredService<ICommandHandler>().ParseArgs(e.Args);
             }
         }
 
@@ -161,6 +157,7 @@ namespace livelywpf
 
         private static void AppUpdateChecked(object sender, AppUpdaterEventArgs e)
         {
+            var sysTray = App.Services.GetRequiredService<ISystray>();
             _ = Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
             {
                 if (e.UpdateStatus == AppUpdateStatus.available)
@@ -169,12 +166,11 @@ namespace livelywpf
                     {
                         updateNotifyAmt--;
                         updateNotify = true;
-                        sysTray.ShowBalloonNotification(4000,
+                        sysTray?.ShowBalloonNotification(4000,
                             Properties.Resources.TitleAppName,
                             Properties.Resources.DescriptionUpdateAvailable);
                     }
                 }
-                sysTray.SetUpdateMenu(e.UpdateStatus);
                 Logger.Info($"AppUpdate status: {e.UpdateStatus}");
             }));
         }
@@ -225,8 +221,9 @@ namespace livelywpf
             //Exit firstrun setupwizard.
             if (setupWizard != null)
             {
-                SettingsVM.Settings.IsFirstRun = false;
-                SettingsVM.UpdateConfigFile();
+                var userSettings = App.Services.GetRequiredService<IUserSettingsService>();
+                userSettings.Settings.IsFirstRun = false;
+                userSettings.Save<ISettingsModel>();
                 setupWizard.ExitWindow();
                 setupWizard = null;
             }
@@ -236,7 +233,8 @@ namespace livelywpf
 
             if (updateNotify)
             {
-                AppUpdateDialog(AppUpdaterService.Instance.LastCheckUri, AppUpdaterService.Instance.LastCheckChangelog);
+                var appUpdater = App.Services.GetRequiredService<IAppUpdaterService>();
+                AppUpdateDialog(appUpdater.LastCheckUri, appUpdater.LastCheckChangelog);
             }
         }
 
@@ -252,8 +250,8 @@ namespace livelywpf
         public static void ExitApplication()
         {
             MainWindow.IsExit = true;
-            SetupDesktop.ShutDown();
-            sysTray?.Dispose();
+            App.Services.GetRequiredService<IDesktopCore>().ShutDown();
+            //sysTray?.Dispose(); //ioc will handle it.
             Helpers.TransparentTaskbar.Instance.Stop();
             System.Windows.Application.Current.Shutdown();
         }

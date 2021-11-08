@@ -7,6 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using livelywpf.Models;
 using livelywpf.Core.Suspend;
+using livelywpf.Helpers.Shell;
 
 namespace livelywpf.Core.Wallpapers
 {
@@ -200,7 +201,7 @@ namespace livelywpf.Core.Wallpapers
         private void Proc_Exited(object sender, EventArgs e)
         {
             _process?.Dispose();
-            SetupDesktop.RefreshDesktop();
+            DesktopUtil.RefreshDesktop();
         }
 
         #region process task
@@ -361,7 +362,7 @@ namespace livelywpf.Core.Wallpapers
                 _process.Kill();
             }
             catch { }
-            SetupDesktop.RefreshDesktop();
+            DesktopUtil.RefreshDesktop();
         }
 
         public void SetVolume(int volume)

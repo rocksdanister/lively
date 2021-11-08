@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using livelywpf.Models;
+using livelywpf.Helpers.Shell;
 
 namespace livelywpf.Core.Wallpapers
 {
@@ -43,7 +44,7 @@ namespace livelywpf.Core.Wallpapers
 
         public string LivelyPropertyCopyPath => null;
 
-        public VideoVlcPlayer(string path, ILibraryModel model, ILivelyScreen display, WallpaperScaler scaler = WallpaperScaler.fill)
+        public VideoVlcPlayer(string path, ILibraryModel model, ILivelyScreen display, WallpaperScaler scaler = WallpaperScaler.fill, bool hwAccel = true)
         {
             var scalerArg = scaler switch
             {
@@ -70,7 +71,7 @@ namespace livelywpf.Core.Wallpapers
             //open window at (-9999,0), not working without: --no-embedded-video
             cmdArgs.Append("--video-x=-9999 --video-y=0 ");
             //gpu decode preference.
-            cmdArgs.Append(Program.SettingsVM.Settings.VideoPlayerHwAccel ? "--avcodec-hw=any " : "--avcodec-hw=none ");
+            cmdArgs.Append(hwAccel ? "--avcodec-hw=any " : "--avcodec-hw=none ");
             //media file path.
             cmdArgs.Append("\"" + path + "\"");
 
@@ -204,7 +205,7 @@ namespace livelywpf.Core.Wallpapers
         private void Proc_Exited(object sender, EventArgs e)
         {
             _process?.Dispose();
-            SetupDesktop.RefreshDesktop();
+            DesktopUtil.RefreshDesktop();
         }
 
         #region process task
@@ -330,7 +331,7 @@ namespace livelywpf.Core.Wallpapers
                 _process.Kill();
             }
             catch { }
-            SetupDesktop.RefreshDesktop();
+            DesktopUtil.RefreshDesktop();
         }
 
         public Task ScreenCapture(string filePath)

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using livelywpf.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace livelywpf.Views.Pages
 {
@@ -11,7 +13,7 @@ namespace livelywpf.Views.Pages
         {
             InitializeComponent();
             //SettingsViewModel vm = new SettingsViewModel();
-            this.DataContext = Program.SettingsVM;
+            this.DataContext = App.Services.GetRequiredService<SettingsViewModel>();
         }
 
         private void SettingsPageHost_ChildChanged(object sender, EventArgs e)

@@ -1,35 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using livelywpf.Helpers;
+using System;
+using System.Diagnostics;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Timer = System.Timers.Timer;
 
-namespace livelywpf.Helpers.Updater
+namespace livelywpf.Services
 {
-    public class AppUpdaterEventArgs : EventArgs
+    public sealed class GithubUpdaterService : IAppUpdaterService
     {
-        public AppUpdaterEventArgs(AppUpdateStatus updateStatus, Version updateVersion, DateTime updateDate, Uri updateUri, string changeLog)
-        {
-            UpdateStatus = updateStatus;
-            UpdateVersion = updateVersion;
-            UpdateUri = updateUri;
-            UpdateDate = updateDate;
-            ChangeLog = changeLog;
-        }
-
-        public AppUpdateStatus UpdateStatus { get; }
-        public Version UpdateVersion { get; }
-        public Uri UpdateUri { get; }
-        public DateTime UpdateDate { get; }
-        public string ChangeLog { get; }
-    }
-
-    public sealed class AppUpdaterService
-    {
-        //singleton
-        private static readonly AppUpdaterService instance = new AppUpdaterService();
-
         //in milliseconds
         private readonly int fetchDelayError = 30 * 60 * 1000; //30min
         private readonly int fetchDelayRepeat = 12 * 60 * 60 * 1000; //12hr
@@ -41,22 +21,10 @@ namespace livelywpf.Helpers.Updater
         public string LastCheckChangelog { get; private set; }
         public Uri LastCheckUri { get; private set; }
         public event EventHandler<AppUpdaterEventArgs> UpdateChecked;
-
-        private readonly IAppUpdater updater;
         private readonly Timer retryTimer = new Timer();
-        private readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
-        public static AppUpdaterService Instance
+        public GithubUpdaterService()
         {
-            get
-            {
-                return instance;
-            }
-        }
-
-        private AppUpdaterService()
-        {
-            updater = new GithubUpdater();
             retryTimer.Elapsed += RetryTimer_Elapsed;
             //giving the retry delay is not reliable since it will reset if system sleeps/suspends.
             retryTimer.Interval = 5 * 60 * 1000;
@@ -67,10 +35,7 @@ namespace livelywpf.Helpers.Updater
         /// </summary>
         public void Start()
         {
-            if (!Program.IsMSIX)
-            {
-                retryTimer.Start();
-            }
+            retryTimer.Start();
         }
 
         /// <summary>
@@ -94,7 +59,7 @@ namespace livelywpf.Helpers.Updater
 
         public async Task<AppUpdateStatus> CheckUpdate(int fetchDelay = 45 * 1000)
         {
-            if (Program.IsMSIX)
+            if (Constants.ApplicationType.IsMSIX)
             {
                 //msix already has built-in updater.
                 return AppUpdateStatus.notchecked;
@@ -103,7 +68,7 @@ namespace livelywpf.Helpers.Updater
             try
             {
                 await Task.Delay(fetchDelay);
-                (Uri, Version, string) data = await GetLatestRelease(Program.IsTestBuild);
+                (Uri, Version, string) data = await GetLatestRelease(false);
                 int verCompare = CompareAssemblyVersion(data.Item2);
                 if (verCompare > 0)
                 {
@@ -126,7 +91,7 @@ namespace livelywpf.Helpers.Updater
             }
             catch (Exception e)
             {
-                Logger.Error("Update fetch error:" + e.ToString());
+                Debug.WriteLine("Update fetch error:" + e.ToString());
                 Status = AppUpdateStatus.error;
             }
             LastCheckTime = DateTime.Now;
@@ -137,7 +102,22 @@ namespace livelywpf.Helpers.Updater
 
         public async Task<(Uri, Version, string)> GetLatestRelease(bool isBeta)
         {
-            return await updater.GetLatestRelease(isBeta);
+            var userName = "rocksdanister";
+            var repositoryName = isBeta ? "lively-beta" : "lively";
+            var gitRelease = await GithubUtil.GetLatestRelease(repositoryName, userName, 0);
+            Version version = GithubUtil.GetVersion(gitRelease);
+
+            //download asset format: lively_setup_x86_full_vXXXX.exe, XXXX - 4 digit version no.
+            var gitUrl = await GithubUtil.GetAssetUrl("lively_setup_x86_full",
+                gitRelease, repositoryName, userName);
+            Uri uri = new Uri(gitUrl);
+
+            //changelog text and formatting
+            var sb = new StringBuilder(gitRelease.Body);
+            sb.Replace("#", "").Replace("\t", "  ");
+            string changelog = sb.ToString();
+
+            return (uri, version, changelog);
         }
 
         #region helpers

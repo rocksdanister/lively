@@ -11,15 +11,22 @@ using System.Linq;
 using System.Text;
 using livelywpf.Models;
 using livelywpf.Views.Dialogues;
+using livelywpf.Services;
 
 namespace livelywpf.ViewModels
 {
     public class AddWallpaperViewModel : ObservableObject
     {
         private readonly string fileDialogFilter;
-        public AddWallpaperViewModel()
+        private readonly IUserSettingsService userSettings;
+        private readonly LibraryViewModel libraryVm;
+
+        public AddWallpaperViewModel(IUserSettingsService userSettings, LibraryViewModel libraryVm)
         {
-            WebUrlText = Program.SettingsVM.Settings.SavedURL;
+            this.userSettings = userSettings;
+            this.libraryVm = libraryVm;
+
+            WebUrlText = userSettings.Settings.SavedURL;
             fileDialogFilter = FileFilter.GetLivelySupportedFileDialogFilter(true);
         }
 
@@ -34,7 +41,7 @@ namespace livelywpf.ViewModels
             }
         }
 
-        public bool IsStreamUrlTextVisible => Program.SettingsVM.Settings.DebugMenu;
+        public bool IsStreamUrlTextVisible => userSettings.Settings.DebugMenu;
 
         private string _streamUrlText;
         public string StreamUrlText
@@ -74,24 +81,24 @@ namespace livelywpf.ViewModels
             }
 
             WebUrlText = uri.OriginalString;
-            if (Program.SettingsVM.Settings.AutoDetectOnlineStreams &&
+            if (userSettings.Settings.AutoDetectOnlineStreams &&
                  StreamHelper.IsSupportedStream(uri))
             {
-                Program.LibraryVM.AddWallpaper(uri.OriginalString,
+                libraryVm.AddWallpaper(uri.OriginalString,
                     WallpaperType.videostream,
                     LibraryTileType.processing,
-                    Program.SettingsVM.Settings.SelectedDisplay);
+                    userSettings.Settings.SelectedDisplay);
             }
             else
             {
-                Program.LibraryVM.AddWallpaper(uri.OriginalString,
+                libraryVm.AddWallpaper(uri.OriginalString,
                     WallpaperType.url,
                     LibraryTileType.processing,
-                    Program.SettingsVM.Settings.SelectedDisplay);
+                    userSettings.Settings.SelectedDisplay);
             }
 
-            Program.SettingsVM.Settings.SavedURL = WebUrlText;
-            Program.SettingsVM.UpdateConfigFile();
+            userSettings.Settings.SavedURL = WebUrlText;
+            userSettings.Save<ISettingsModel>();
 
             App.AppWindow.NavViewNavigate("library");
         }
@@ -123,10 +130,10 @@ namespace livelywpf.ViewModels
             }
 
             StreamUrlText = uri.OriginalString;
-            Program.LibraryVM.AddWallpaper(uri.OriginalString,
+            libraryVm.AddWallpaper(uri.OriginalString,
                   WallpaperType.videostream,
                   LibraryTileType.processing,
-                  Program.SettingsVM.Settings.SelectedDisplay);
+                  userSettings.Settings.SelectedDisplay);
 
             App.AppWindow.NavViewNavigate("library");
         }
@@ -183,7 +190,7 @@ namespace livelywpf.ViewModels
                             //lively .zip is not a wallpaper type.
                             if (ZipExtract.CheckLivelyZip(openFileDlg.FileName))
                             {
-                                _ = Program.LibraryVM.WallpaperInstall(openFileDlg.FileName, false);
+                                _ = libraryVm.WallpaperInstall(openFileDlg.FileName, false);
                             }
                             else
                             {
@@ -195,10 +202,10 @@ namespace livelywpf.ViewModels
                         }
                         else
                         {
-                            Program.LibraryVM.AddWallpaper(openFileDlg.FileName,
+                            libraryVm.AddWallpaper(openFileDlg.FileName,
                                 type,
                                 LibraryTileType.processing,
-                                Program.SettingsVM.Settings.SelectedDisplay);
+                                userSettings.Settings.SelectedDisplay);
                         }
                     }
                     else
@@ -220,7 +227,7 @@ namespace livelywpf.ViewModels
                     {
                         if (ZipExtract.CheckLivelyZip(openFileDlg.FileName))
                         {
-                            _ = Program.LibraryVM.WallpaperInstall(openFileDlg.FileName, false);
+                            _ = libraryVm.WallpaperInstall(openFileDlg.FileName, false);
                         }
                         else
                         {
@@ -232,10 +239,10 @@ namespace livelywpf.ViewModels
                     }
                     else
                     {
-                        Program.LibraryVM.AddWallpaper(openFileDlg.FileName,
+                        libraryVm.AddWallpaper(openFileDlg.FileName,
                             FileFilter.LivelySupportedFormats[openFileDlg.FilterIndex - 2].Type,
                             LibraryTileType.processing,
-                            Program.SettingsVM.Settings.SelectedDisplay);
+                            userSettings.Settings.SelectedDisplay);
                     }
                 }
                 App.AppWindow.NavViewNavigate("library");

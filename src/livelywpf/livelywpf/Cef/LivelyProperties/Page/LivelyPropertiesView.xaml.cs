@@ -15,6 +15,9 @@ using System.Windows.Media;
 using System.Windows.Shapes;
 using livelywpf.Models;
 using Path = System.IO.Path;
+using Microsoft.Extensions.DependencyInjection;
+using livelywpf.Services;
+using System.Linq;
 
 namespace livelywpf.Cef
 {
@@ -27,21 +30,27 @@ namespace livelywpf.Cef
 
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private readonly string livelyPropertyCopyPath;
-        private readonly LibraryModel wallpaperData;
-        private readonly LivelyScreen screen;
+        private readonly ILibraryModel wallpaperData;
+        private readonly ILivelyScreen screen;
         private JObject livelyPropertyCopyData;
 
         //UI
         private readonly Thickness margin = new Thickness(0, 10, 0, 0);
         private readonly double maxWidth = 200;
 
-        public LivelyPropertiesView(LibraryModel model)
+        private readonly IUserSettingsService userSettings;
+        private readonly IDesktopCore desktopCore;
+
+        public LivelyPropertiesView(ILibraryModel model)
         {
+            userSettings = App.Services.GetRequiredService<IUserSettingsService>();
+            desktopCore = App.Services.GetRequiredService<IDesktopCore>();
+
             InitializeComponent();
             wallpaperData = model;
             try
             {
-                var wpInfo = GetLivelyPropertyDetails(model, Program.SettingsVM.Settings.WallpaperArrangement, Program.SettingsVM.Settings.SelectedDisplay);
+                var wpInfo = GetLivelyPropertyDetails(model, userSettings.Settings.WallpaperArrangement, userSettings.Settings.SelectedDisplay);
                 this.livelyPropertyCopyPath = wpInfo.Item1;
                 this.screen = wpInfo.Item2;
             }
@@ -636,14 +645,14 @@ namespace livelywpf.Cef
 
         private void WallpaperSendMsg(IpcMessage msg)
         {
-            switch (Program.SettingsVM.Settings.WallpaperArrangement)
+            switch (userSettings.Settings.WallpaperArrangement)
             {
                 case WallpaperArrangement.per:
-                    SetupDesktop.SendMessageWallpaper(screen, wallpaperData, msg);
+                    desktopCore.SendMessageWallpaper(screen, wallpaperData, msg);
                     break;
                 case WallpaperArrangement.span:
                 case WallpaperArrangement.duplicate:
-                    SetupDesktop.SendMessageWallpaper(wallpaperData, msg);
+                    desktopCore.SendMessageWallpaper(wallpaperData, msg);
                     break;
             }
         }
@@ -654,7 +663,7 @@ namespace livelywpf.Cef
         /// <param name="wallpaperData">Wallpaper info.</param>
         /// <param name="livelyPropertyCopyPath">Modified LivelyProperties.json path.</param>
         /// <returns></returns>
-        public static bool RestoreOriginalPropertyFile(LibraryModel wallpaperData, string livelyPropertyCopyPath)
+        public static bool RestoreOriginalPropertyFile(ILibraryModel wallpaperData, string livelyPropertyCopyPath)
         {
             bool status = false;
             try
@@ -703,7 +712,7 @@ namespace livelywpf.Cef
         /// </summary>
         /// <param name="obj">LibraryModel object</param>
         /// <returns></returns>
-        public static Tuple<string, LivelyScreen> GetLivelyPropertyDetails(LibraryModel obj, WallpaperArrangement arrangement, LivelyScreen selectedScreen)
+        public Tuple<string, ILivelyScreen> GetLivelyPropertyDetails(ILibraryModel obj, WallpaperArrangement arrangement, ILivelyScreen selectedScreen)
         {
             if (obj.LivelyPropertyPath == null)
             {
@@ -711,8 +720,8 @@ namespace livelywpf.Cef
             }
 
             string livelyPropertyCopy = string.Empty;
-            LivelyScreen screen = null;
-            var items = SetupDesktop.Wallpapers.FindAll(x => x.GetWallpaperData() == obj);
+            ILivelyScreen screen = null;
+            var items = desktopCore.Wallpapers.ToList().FindAll(x => x.Model == obj);
             if (items.Count == 0)
             {
                 try
@@ -758,8 +767,8 @@ namespace livelywpf.Cef
             else if (items.Count == 1)
             {
                 //send regardless of selected display, if wallpaper is running on non-selected display - its modified instead.
-                livelyPropertyCopy = items[0].GetLivelyPropertyCopyPath();
-                screen = items[0].GetScreen();
+                livelyPropertyCopy = items[0].LivelyPropertyCopyPath;
+                screen = items[0].Screen;
             }
             else
             {
@@ -768,21 +777,21 @@ namespace livelywpf.Cef
                     case WallpaperArrangement.per:
                         {
                             //more than one screen; if selected display, sendpath otherwise send the first one found.
-                            int index = items.FindIndex(x => ScreenHelper.ScreenCompare(selectedScreen, x.GetScreen(), DisplayIdentificationMode.deviceId));
-                            livelyPropertyCopy = index != -1 ? items[index].GetLivelyPropertyCopyPath() : items[0].GetLivelyPropertyCopyPath();
-                            screen = index != -1 ? items[index].GetScreen() : items[0].GetScreen();
+                            int index = items.FindIndex(x => ScreenHelper.ScreenCompare(selectedScreen, x.Screen, DisplayIdentificationMode.deviceId));
+                            livelyPropertyCopy = index != -1 ? items[index].LivelyPropertyCopyPath : items[0].LivelyPropertyCopyPath;
+                            screen = index != -1 ? items[index].Screen : items[0].Screen;
                         }
                         break;
                     case WallpaperArrangement.span:
                     case WallpaperArrangement.duplicate:
                         {
-                            livelyPropertyCopy = items[0].GetLivelyPropertyCopyPath();
-                            screen = items[0].GetScreen();
+                            livelyPropertyCopy = items[0].LivelyPropertyCopyPath;
+                            screen = items[0].Screen;
                         }
                         break;
                 }
             }
-            return new Tuple<string, LivelyScreen>(livelyPropertyCopy, screen);
+            return new Tuple<string, ILivelyScreen>(livelyPropertyCopy, screen);
         }
 
         #endregion //helpers

@@ -12,6 +12,8 @@ using livelywpf.Helpers.MVVM;
 using livelywpf.Helpers.Archive;
 using livelywpf.Models;
 using livelywpf.Core;
+using livelywpf.Services;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace livelywpf.ViewModels
 {
@@ -23,8 +25,16 @@ namespace livelywpf.ViewModels
         private readonly int totalItems = 0;
         private bool _isRunning = false;
 
+        private readonly IUserSettingsService userSettings;
+        private readonly LibraryViewModel libraryVm;
+        private readonly IDesktopCore desktopCore;
+
         public MultiWallpaperImportViewModel(List<string> paths)
         {
+            userSettings = App.Services.GetRequiredService<IUserSettingsService>();
+            desktopCore = App.Services.GetRequiredService<IDesktopCore>();
+            libraryVm = App.Services.GetRequiredService<LibraryViewModel>();
+
             int id = 1;
             //display all Lively zip files first since its the first items to get processed..
             paths = paths.OrderByDescending(x => System.IO.Path.GetExtension(x).Equals(".zip", StringComparison.OrdinalIgnoreCase)).ToList();
@@ -55,11 +65,11 @@ namespace livelywpf.ViewModels
                 }
             }
 
-            GifCheck = Program.SettingsVM.Settings.GifCapture;
-            AutoImportCheck = Program.SettingsVM.Settings.MultiFileAutoImport;
+            GifCheck = userSettings.Settings.GifCapture;
+            AutoImportCheck = userSettings.Settings.MultiFileAutoImport;
             totalItems = ListItems.Count;
 
-            SetupDesktop.WallpaperChanged += SetupDesktop_WallpaperChanged;
+            desktopCore.WallpaperChanged += SetupDesktop_WallpaperChanged;
         }
 
         private ObservableCollection<MultiWallpaperImportModel> _listItems = new ObservableCollection<MultiWallpaperImportModel>();
@@ -97,10 +107,10 @@ namespace livelywpf.ViewModels
             set
             {
                 _gifCheck = value;
-                if (_gifCheck != Program.SettingsVM.Settings.GifCapture)
+                if (_gifCheck != userSettings.Settings.GifCapture)
                 {
-                    Program.SettingsVM.Settings.GifCapture = _gifCheck;
-                    Program.SettingsVM.UpdateConfigFile();
+                    userSettings.Settings.GifCapture = _gifCheck;
+                    userSettings.Save<ISettingsModel>();
                 }
                 OnPropertyChanged();
             }
@@ -113,10 +123,10 @@ namespace livelywpf.ViewModels
             set
             {
                 _autoImportCheck = value;
-                if (_autoImportCheck != Program.SettingsVM.Settings.MultiFileAutoImport)
+                if (_autoImportCheck != userSettings.Settings.MultiFileAutoImport)
                 {
-                    Program.SettingsVM.Settings.MultiFileAutoImport = _autoImportCheck;
-                    Program.SettingsVM.UpdateConfigFile();
+                    userSettings.Settings.MultiFileAutoImport = _autoImportCheck;
+                    userSettings.Save<ISettingsModel>();
                 }
                 OnPropertyChanged();
             }
@@ -195,7 +205,7 @@ namespace livelywpf.ViewModels
             for (int i = 0; i < zipItems.Count; i++)
             {
                 SelectedItem = zipItems[i];
-                await Program.LibraryVM.WallpaperInstall(zipItems[i].Path, false);
+                await libraryVm.WallpaperInstall(zipItems[i].Path, false);
                 ListItems.Remove(zipItems[i]);
                 Progress = 100 * (totalItems - ListItems.Count) / totalItems;
 
@@ -227,10 +237,10 @@ namespace livelywpf.ViewModels
                     return;
 
                 SelectedItem = ListItems[0];
-                Program.LibraryVM.AddWallpaper(SelectedItem.Path,
+                libraryVm.AddWallpaper(SelectedItem.Path,
                     SelectedItem.Type,
                     importFlag,
-                    Program.SettingsVM.Settings.SelectedDisplay);
+                    userSettings.Settings.SelectedDisplay);
                 Progress = 100 * (totalItems - ListItems.Count) / totalItems;
             }
         }
@@ -241,7 +251,7 @@ namespace livelywpf.ViewModels
             {
                 cancellationTokenSrc.Cancel();
             }
-            SetupDesktop.WallpaperChanged -= SetupDesktop_WallpaperChanged;
+            desktopCore.WallpaperChanged -= SetupDesktop_WallpaperChanged;
         }
 
         public Action CloseAction { get; set; }

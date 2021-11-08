@@ -2,11 +2,9 @@
 using livelywpf.Helpers;
 using livelywpf.Helpers.Files;
 using livelywpf.Helpers.MVVM;
-using livelywpf.Helpers.Screensaver;
 using livelywpf.Helpers.Shell;
 using livelywpf.Helpers.Startup;
 using livelywpf.Helpers.Storage;
-using livelywpf.Helpers.Updater;
 using livelywpf.Views;
 using System;
 using System.Collections.Generic;
@@ -21,24 +19,24 @@ using System.Windows;
 using System.Windows.Forms;
 using livelywpf.Models;
 using livelywpf.Views.Dialogues;
+using livelywpf.Services;
 
 namespace livelywpf.ViewModels
 {
     public class SettingsViewModel : ObservableObject
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        public SettingsViewModel()
+        private readonly IUserSettingsService userSettings;
+        private readonly IDesktopCore desktopCore;
+        private readonly IScreensaverService screenSaver;
+        private readonly IAppUpdaterService appUpdater;
+
+        public SettingsViewModel(IUserSettingsService userSettings, IDesktopCore desktopCore, IScreensaverService screenSaver, IAppUpdaterService appUpdater)
         {
-            try
-            {
-                Settings = JsonStorage<SettingsModel>.LoadData(Constants.CommonPaths.UserSettingsPath);
-            }
-            catch (Exception e)
-            {
-                Logger.Error(e.ToString());
-                Settings = new SettingsModel();
-                UpdateConfigFile();
-            }
+            this.userSettings = userSettings;
+            this.desktopCore = desktopCore;
+            this.screenSaver = screenSaver;
+            this.appUpdater = appUpdater;
 
             //lang-codes: https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-lcid/a9eac961-e77d-41a6-90a5-ce1a8b0cdb9c
             LanguageItems = new ObservableCollection<LanguagesModel>()
@@ -76,16 +74,16 @@ namespace livelywpf.ViewModels
                 new LanguagesModel("हिन्दी(hi)", new string[]{"hi", "hi-IN"}),
             };
 
-            var defaultLanguage = SearchSupportedLanguage(Settings.Language);
+            var defaultLanguage = SearchSupportedLanguage(userSettings.Settings.Language);
             if (defaultLanguage == null)
             {
                 defaultLanguage = LanguageItems[0];
-                Settings.Language = defaultLanguage.Codes[0]; //en
+                userSettings.Settings.Language = defaultLanguage.Codes[0]; //en
                 UpdateConfigFile();
             }
             try
             {
-                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(Settings.Language);
+                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(userSettings.Settings.Language);
             }
             catch (Exception e)
             {
@@ -93,10 +91,10 @@ namespace livelywpf.ViewModels
             }
             SelectedLanguageItem = defaultLanguage;
 
-            if (Program.IsMSIX)
+            if (Constants.ApplicationType.IsMSIX)
             {
-                _ = WindowsStartup.StartupWin10(Settings.Startup);
-                IsStartup = Settings.Startup;
+                _ = WindowsStartup.StartupWin10(userSettings.Settings.Startup);
+                IsStartup = userSettings.Settings.Startup;
             }
             else
             {
@@ -105,57 +103,48 @@ namespace livelywpf.ViewModels
             }
 
             //Restrictions..
-            Settings.LockScreenAutoWallpaper = false;
+            userSettings.Settings.LockScreenAutoWallpaper = false;
 
-            Settings.SelectedDisplay = ScreenHelper.GetScreen(Settings.SelectedDisplay.DeviceId, Settings.SelectedDisplay.DeviceName,
-                        Settings.SelectedDisplay.Bounds, Settings.SelectedDisplay.WorkingArea, DisplayIdentificationMode.deviceId) ?? ScreenHelper.GetPrimaryScreen();
+            userSettings.Settings.SelectedDisplay = (LivelyScreen)(ScreenHelper.GetScreen(userSettings.Settings.SelectedDisplay.DeviceId, userSettings.Settings.SelectedDisplay.DeviceName,
+                        userSettings.Settings.SelectedDisplay.Bounds, userSettings.Settings.SelectedDisplay.WorkingArea, DisplayIdentificationMode.deviceId) ?? ScreenHelper.GetPrimaryScreen());
 
-            SelectedTileSizeIndex = Settings.TileSize;
-            SelectedAppFullScreenIndex = (int)Settings.AppFullscreenPause;
-            SelectedAppFocusIndex = (int)Settings.AppFocusPause;
-            SelectedBatteryPowerIndex = (int)Settings.BatteryPause;
-            SelectedRemoteDestopPowerIndex = (int)Settings.RemoteDesktopPause;
-            SelectedPowerSaveModeIndex = (int)Settings.PowerSaveModePause;
-            SelectedDisplayPauseRuleIndex = (int)Settings.DisplayPauseSettings;
-            SelectedPauseAlgorithmIndex = (int)Settings.ProcessMonitorAlgorithm;
-            SelectedVideoPlayerIndex = (int)Settings.VideoPlayer;
-            VideoPlayerHWDecode = Settings.VideoPlayerHwAccel;
-            SelectedGifPlayerIndex = (int)Settings.GifPlayer;
-            SelectedWallpaperStreamQualityIndex = (int)Settings.StreamQuality;
-            SelectedLivelyUIModeIndex = (int)Settings.LivelyGUIRendering;
-            SelectedWallpaperInputMode = (int)Settings.InputForward;
-            MouseMoveOnDesktop = Settings.MouseInputMovAlways;
-            IsSysTrayIconVisible = Settings.SysTrayIcon;
-            WebDebuggingPort = Settings.WebDebugPort;
-            DetectStreamWallpaper = Settings.AutoDetectOnlineStreams;
-            WallpaperDirectory = Settings.WallpaperDir;
-            MoveExistingWallpaperNewDir = Settings.WallpaperDirMoveExistingWallpaperNewDir;
-            GlobalWallpaperVolume = Settings.AudioVolumeGlobal;
-            IsAudioOnlyOnDesktop = Settings.AudioOnlyOnDesktop;
-            SelectedWallpaperScalingIndex = (int)Settings.WallpaperScaling;
-            CefDiskCache = Settings.CefDiskCache;
-            //IsLockScreenAutoWallpaper = Settings.LockScreenAutoWallpaper;
-            SelectedTaskbarThemeIndex = (int)Settings.SystemTaskbarTheme;
-            IsDesktopAutoWallpaper = Settings.DesktopAutoWallpaper;
-            IsDebugMenuVisible = Settings.DebugMenu;
-            SelectedWebBrowserIndex = (int)Settings.WebBrowser;
-            SelectedAppThemeIndex = (int)Settings.ApplicationTheme;
-            SelectedScreensaverWaitIndex = (int)Settings.ScreensaverIdleWait;
-            IsScreensaverLockOnResume = Settings.ScreensaverLockOnResume;
+            SelectedTileSizeIndex = userSettings.Settings.TileSize;
+            SelectedAppFullScreenIndex = (int)userSettings.Settings.AppFullscreenPause;
+            SelectedAppFocusIndex = (int)userSettings.Settings.AppFocusPause;
+            SelectedBatteryPowerIndex = (int)userSettings.Settings.BatteryPause;
+            SelectedRemoteDestopPowerIndex = (int)userSettings.Settings.RemoteDesktopPause;
+            SelectedPowerSaveModeIndex = (int)userSettings.Settings.PowerSaveModePause;
+            SelectedDisplayPauseRuleIndex = (int)userSettings.Settings.DisplayPauseSettings;
+            SelectedPauseAlgorithmIndex = (int)userSettings.Settings.ProcessMonitorAlgorithm;
+            SelectedVideoPlayerIndex = (int)userSettings.Settings.VideoPlayer;
+            VideoPlayerHWDecode = userSettings.Settings.VideoPlayerHwAccel;
+            SelectedGifPlayerIndex = (int)userSettings.Settings.GifPlayer;
+            SelectedWallpaperStreamQualityIndex = (int)userSettings.Settings.StreamQuality;
+            SelectedLivelyUIModeIndex = (int)userSettings.Settings.LivelyGUIRendering;
+            SelectedWallpaperInputMode = (int)userSettings.Settings.InputForward;
+            MouseMoveOnDesktop = userSettings.Settings.MouseInputMovAlways;
+            IsSysTrayIconVisible = userSettings.Settings.SysTrayIcon;
+            WebDebuggingPort = userSettings.Settings.WebDebugPort;
+            DetectStreamWallpaper = userSettings.Settings.AutoDetectOnlineStreams;
+            WallpaperDirectory = userSettings.Settings.WallpaperDir;
+            MoveExistingWallpaperNewDir = userSettings.Settings.WallpaperDirMoveExistingWallpaperNewDir;
+            GlobalWallpaperVolume = userSettings.Settings.AudioVolumeGlobal;
+            IsAudioOnlyOnDesktop = userSettings.Settings.AudioOnlyOnDesktop;
+            SelectedWallpaperScalingIndex = (int)userSettings.Settings.WallpaperScaling;
+            CefDiskCache = userSettings.Settings.CefDiskCache;
+            //IsLockScreenAutoWallpaper = userSettings.Settings.LockScreenAutoWallpaper;
+            SelectedTaskbarThemeIndex = (int)userSettings.Settings.SystemTaskbarTheme;
+            IsDesktopAutoWallpaper = userSettings.Settings.DesktopAutoWallpaper;
+            IsDebugMenuVisible = userSettings.Settings.DebugMenu;
+            SelectedWebBrowserIndex = (int)userSettings.Settings.WebBrowser;
+            SelectedAppThemeIndex = (int)userSettings.Settings.ApplicationTheme;
+            SelectedScreensaverWaitIndex = (int)userSettings.Settings.ScreensaverIdleWait;
+            IsScreensaverLockOnResume = userSettings.Settings.ScreensaverLockOnResume;
         }
-
-        public SettingsModel Settings { get; set; }
 
         public void UpdateConfigFile()
         {
-            try
-            {
-                JsonStorage<SettingsModel>.StoreData(Constants.CommonPaths.UserSettingsPath, Settings);
-            }
-            catch (Exception e)
-            {
-                Logger.Error(e.ToString());
-            }
+            userSettings.Save<ISettingsModel>();
         }
 
         #region general
@@ -174,9 +163,9 @@ namespace livelywpf.ViewModels
                 if (Program.IsMSIX)
                 {
                     _ = WindowsStartup.StartupWin10(_isStartup);
-                    if (Settings.Startup != _isStartup)
+                    if (userSettings.Settings.Startup != _isStartup)
                     {
-                        Settings.Startup = _isStartup;
+                        userSettings.Settings.Startup = _isStartup;
                         UpdateConfigFile();
                     }
                 }
@@ -213,10 +202,10 @@ namespace livelywpf.ViewModels
             {
                 _selectedLanguageItem = value;
                 OnPropertyChanged();
-                if (_selectedLanguageItem.Codes.FirstOrDefault(x => x == Settings.Language) == null)
+                if (_selectedLanguageItem.Codes.FirstOrDefault(x => x == userSettings.Settings.Language) == null)
                 {
                     //Settings.IsRestart = true;
-                    Settings.Language = _selectedLanguageItem.Codes[0];
+                    userSettings.Settings.Language = _selectedLanguageItem.Codes[0];
                     UpdateConfigFile();
                     //Program.RestartApplication();
                 }
@@ -235,9 +224,9 @@ namespace livelywpf.ViewModels
                 _selectedTileSizeIndex = value;
                 OnPropertyChanged();
 
-                if (Settings.TileSize != _selectedTileSizeIndex)
+                if (userSettings.Settings.TileSize != _selectedTileSizeIndex)
                 {
-                    Settings.TileSize = _selectedTileSizeIndex;
+                    userSettings.Settings.TileSize = _selectedTileSizeIndex;
                     UpdateConfigFile();
                 }
             }
@@ -257,9 +246,9 @@ namespace livelywpf.ViewModels
                 OnPropertyChanged();
 
                 //prevent running on startup etc.
-                if (Settings.LivelyGUIRendering != (LivelyGUIState)value)
+                if (userSettings.Settings.LivelyGUIRendering != (LivelyGUIState)value)
                 {
-                    Settings.LivelyGUIRendering = (LivelyGUIState)value;
+                    userSettings.Settings.LivelyGUIRendering = (LivelyGUIState)value;
                     UpdateConfigFile();
 
                     LivelyGUIStateChanged?.Invoke(null, (LivelyGUIState)value);
@@ -313,9 +302,9 @@ namespace livelywpf.ViewModels
                 _moveExistingWallpaperNewDir = value;
                 OnPropertyChanged();
 
-                if (Settings.WallpaperDirMoveExistingWallpaperNewDir != _moveExistingWallpaperNewDir)
+                if (userSettings.Settings.WallpaperDirMoveExistingWallpaperNewDir != _moveExistingWallpaperNewDir)
                 {
-                    Settings.WallpaperDirMoveExistingWallpaperNewDir = _moveExistingWallpaperNewDir;
+                    userSettings.Settings.WallpaperDirMoveExistingWallpaperNewDir = _moveExistingWallpaperNewDir;
                     UpdateConfigFile();
                 }
             }
@@ -329,7 +318,7 @@ namespace livelywpf.ViewModels
                 if (_openWallpaperDirectory == null)
                 {
                     _openWallpaperDirectory = new RelayCommand(
-                            param => FileOperations.OpenFolder(Settings.WallpaperDir)
+                            param => FileOperations.OpenFolder(userSettings.Settings.WallpaperDir)
                         );
                 }
                 return _openWallpaperDirectory;
@@ -349,9 +338,9 @@ namespace livelywpf.ViewModels
                 OnPropertyChanged();
 
                 //prevent running on startup etc.
-                if (Settings.ApplicationTheme != (AppTheme)value)
+                if (userSettings.Settings.ApplicationTheme != (AppTheme)value)
                 {
-                    Settings.ApplicationTheme = (AppTheme)value;
+                    userSettings.Settings.ApplicationTheme = (AppTheme)value;
                     UpdateConfigFile();
 
                     //Program.ApplicationThemeChange(Settings.ApplicationTheme);
@@ -401,9 +390,9 @@ namespace livelywpf.ViewModels
                 _selectedAppFullScreenIndex = value;
                 OnPropertyChanged();
 
-                if (Settings.AppFullscreenPause != (AppRulesEnum)_selectedAppFullScreenIndex)
+                if (userSettings.Settings.AppFullscreenPause != (AppRulesEnum)_selectedAppFullScreenIndex)
                 {
-                    Settings.AppFullscreenPause = (AppRulesEnum)_selectedAppFullScreenIndex;
+                    userSettings.Settings.AppFullscreenPause = (AppRulesEnum)_selectedAppFullScreenIndex;
                     UpdateConfigFile();
                 }
             }
@@ -421,9 +410,9 @@ namespace livelywpf.ViewModels
                 _selectedAppFocusIndex = value;
                 OnPropertyChanged();
 
-                if (Settings.AppFocusPause != (AppRulesEnum)_selectedAppFocusIndex)
+                if (userSettings.Settings.AppFocusPause != (AppRulesEnum)_selectedAppFocusIndex)
                 {
-                    Settings.AppFocusPause = (AppRulesEnum)_selectedAppFocusIndex;
+                    userSettings.Settings.AppFocusPause = (AppRulesEnum)_selectedAppFocusIndex;
                     UpdateConfigFile();
                 }
             }
@@ -441,9 +430,9 @@ namespace livelywpf.ViewModels
                 _selectedBatteryPowerIndex = value;
                 OnPropertyChanged();
 
-                if (Settings.BatteryPause != (AppRulesEnum)_selectedBatteryPowerIndex)
+                if (userSettings.Settings.BatteryPause != (AppRulesEnum)_selectedBatteryPowerIndex)
                 {
-                    Settings.BatteryPause = (AppRulesEnum)_selectedBatteryPowerIndex;
+                    userSettings.Settings.BatteryPause = (AppRulesEnum)_selectedBatteryPowerIndex;
                     UpdateConfigFile();
                 }
             }
@@ -461,9 +450,9 @@ namespace livelywpf.ViewModels
                 _selectedPowerSaveModeIndex = value;
                 OnPropertyChanged();
 
-                if (Settings.PowerSaveModePause != (AppRulesEnum)_selectedPowerSaveModeIndex)
+                if (userSettings.Settings.PowerSaveModePause != (AppRulesEnum)_selectedPowerSaveModeIndex)
                 {
-                    Settings.PowerSaveModePause = (AppRulesEnum)_selectedPowerSaveModeIndex;
+                    userSettings.Settings.PowerSaveModePause = (AppRulesEnum)_selectedPowerSaveModeIndex;
                     UpdateConfigFile();
                 }
             }
@@ -481,9 +470,9 @@ namespace livelywpf.ViewModels
                 _selectedRemoteDestopPowerIndex = value;
                 OnPropertyChanged();
 
-                if (Settings.RemoteDesktopPause != (AppRulesEnum)_selectedRemoteDestopPowerIndex)
+                if (userSettings.Settings.RemoteDesktopPause != (AppRulesEnum)_selectedRemoteDestopPowerIndex)
                 {
-                    Settings.RemoteDesktopPause = (AppRulesEnum)_selectedRemoteDestopPowerIndex;
+                    userSettings.Settings.RemoteDesktopPause = (AppRulesEnum)_selectedRemoteDestopPowerIndex;
                     UpdateConfigFile();
                 }
             }
@@ -501,9 +490,9 @@ namespace livelywpf.ViewModels
                 _selectedDisplayPauseRuleIndex = value;
                 OnPropertyChanged();
 
-                if (Settings.DisplayPauseSettings != (DisplayPauseEnum)_selectedDisplayPauseRuleIndex)
+                if (userSettings.Settings.DisplayPauseSettings != (DisplayPauseEnum)_selectedDisplayPauseRuleIndex)
                 {
-                    Settings.DisplayPauseSettings = (DisplayPauseEnum)_selectedDisplayPauseRuleIndex;
+                    userSettings.Settings.DisplayPauseSettings = (DisplayPauseEnum)_selectedDisplayPauseRuleIndex;
                     UpdateConfigFile();
                 }
             }
@@ -521,9 +510,9 @@ namespace livelywpf.ViewModels
                 _selectedPauseAlgorithmIndex = value;
                 OnPropertyChanged();
 
-                if (Settings.ProcessMonitorAlgorithm != (ProcessMonitorAlgorithm)_selectedPauseAlgorithmIndex)
+                if (userSettings.Settings.ProcessMonitorAlgorithm != (ProcessMonitorAlgorithm)_selectedPauseAlgorithmIndex)
                 {
-                    Settings.ProcessMonitorAlgorithm = (ProcessMonitorAlgorithm)_selectedPauseAlgorithmIndex;
+                    userSettings.Settings.ProcessMonitorAlgorithm = (ProcessMonitorAlgorithm)_selectedPauseAlgorithmIndex;
                     UpdateConfigFile();
                 }
             }
@@ -542,9 +531,9 @@ namespace livelywpf.ViewModels
                 _selectedWallpaperScalingIndex = value;
                 OnPropertyChanged();
 
-                if (Settings.WallpaperScaling != (WallpaperScaler)_selectedWallpaperScalingIndex)
+                if (userSettings.Settings.WallpaperScaling != (WallpaperScaler)_selectedWallpaperScalingIndex)
                 {
-                    Settings.WallpaperScaling = (WallpaperScaler)_selectedWallpaperScalingIndex;
+                    userSettings.Settings.WallpaperScaling = (WallpaperScaler)_selectedWallpaperScalingIndex;
                     UpdateConfigFile();
 
                     WallpaperRestart(WallpaperType.videostream);
@@ -564,14 +553,14 @@ namespace livelywpf.ViewModels
                 _selectedWallpaperInputMode = value;
                 OnPropertyChanged();
 
-                if (Settings.InputForward != (InputForwardMode)_selectedWallpaperInputMode)
+                if (userSettings.Settings.InputForward != (InputForwardMode)_selectedWallpaperInputMode)
                 {
-                    Settings.InputForward = (InputForwardMode)_selectedWallpaperInputMode;
+                    userSettings.Settings.InputForward = (InputForwardMode)_selectedWallpaperInputMode;
                     UpdateConfigFile();
                 }
 
                 //todo: show msg to user desc whats happening.
-                if (Settings.InputForward == InputForwardMode.mousekeyboard)
+                if (userSettings.Settings.InputForward == InputForwardMode.mousekeyboard)
                 {
                     DesktopUtil.SetDesktopIconVisibility(false);
                 }
@@ -594,9 +583,9 @@ namespace livelywpf.ViewModels
                 _selectedVideoPlayerIndex = CheckVideoPluginExists((LivelyMediaPlayer)value) ? value : (int)LivelyMediaPlayer.mpv;
                 OnPropertyChanged();
 
-                if (Settings.VideoPlayer != (LivelyMediaPlayer)_selectedVideoPlayerIndex)
+                if (userSettings.Settings.VideoPlayer != (LivelyMediaPlayer)_selectedVideoPlayerIndex)
                 {
-                    Settings.VideoPlayer = (LivelyMediaPlayer)_selectedVideoPlayerIndex;
+                    userSettings.Settings.VideoPlayer = (LivelyMediaPlayer)_selectedVideoPlayerIndex;
                     UpdateConfigFile();
                     //VideoPlayerSwitch((LivelyMediaPlayer)_selectedVideoPlayerIndex);
                     WallpaperRestart(WallpaperType.video);
@@ -612,9 +601,9 @@ namespace livelywpf.ViewModels
             {
                 _videoPlayerHWDecode = value;
                 OnPropertyChanged();
-                if (Settings.VideoPlayerHwAccel != _videoPlayerHWDecode)
+                if (userSettings.Settings.VideoPlayerHwAccel != _videoPlayerHWDecode)
                 {
-                    Settings.VideoPlayerHwAccel = _videoPlayerHWDecode;
+                    userSettings.Settings.VideoPlayerHwAccel = _videoPlayerHWDecode;
                     UpdateConfigFile();
                     WallpaperRestart(WallpaperType.video);
                     WallpaperRestart(WallpaperType.videostream);
@@ -635,9 +624,9 @@ namespace livelywpf.ViewModels
             {
                 _selectedGifPlayerIndex = CheckGifPluginExists((LivelyGifPlayer)value) ? value : (int)LivelyGifPlayer.win10Img;
                 OnPropertyChanged();
-                if (Settings.GifPlayer != (LivelyGifPlayer)_selectedGifPlayerIndex)
+                if (userSettings.Settings.GifPlayer != (LivelyGifPlayer)_selectedGifPlayerIndex)
                 {
-                    Settings.GifPlayer = (LivelyGifPlayer)_selectedGifPlayerIndex;
+                    userSettings.Settings.GifPlayer = (LivelyGifPlayer)_selectedGifPlayerIndex;
                     UpdateConfigFile();
                     WallpaperRestart(WallpaperType.gif);
                     WallpaperRestart(WallpaperType.picture);
@@ -653,9 +642,9 @@ namespace livelywpf.ViewModels
             {
                 _selectedWallpaperStreamQualityIndex = value;
                 OnPropertyChanged();
-                if (Settings.StreamQuality != (StreamQualitySuggestion)_selectedWallpaperStreamQualityIndex)
+                if (userSettings.Settings.StreamQuality != (StreamQualitySuggestion)_selectedWallpaperStreamQualityIndex)
                 {
-                    Settings.StreamQuality = (StreamQualitySuggestion)_selectedWallpaperStreamQualityIndex;
+                    userSettings.Settings.StreamQuality = (StreamQualitySuggestion)_selectedWallpaperStreamQualityIndex;
                     UpdateConfigFile();
 
                     WallpaperRestart(WallpaperType.videostream);
@@ -675,9 +664,9 @@ namespace livelywpf.ViewModels
                 _selectedWebBrowserIndex = value;
                 OnPropertyChanged();
 
-                if (Settings.WebBrowser != (LivelyWebBrowser)_selectedWebBrowserIndex)
+                if (userSettings.Settings.WebBrowser != (LivelyWebBrowser)_selectedWebBrowserIndex)
                 {
-                    Settings.WebBrowser = (LivelyWebBrowser)_selectedWebBrowserIndex;
+                    userSettings.Settings.WebBrowser = (LivelyWebBrowser)_selectedWebBrowserIndex;
                     UpdateConfigFile();
 
                     WallpaperRestart(WallpaperType.web);
@@ -696,9 +685,9 @@ namespace livelywpf.ViewModels
                 _mouseMoveOnDesktop = value;
                 OnPropertyChanged();
 
-                if (Settings.MouseInputMovAlways != _mouseMoveOnDesktop)
+                if (userSettings.Settings.MouseInputMovAlways != _mouseMoveOnDesktop)
                 {
-                    Settings.MouseInputMovAlways = _mouseMoveOnDesktop;
+                    userSettings.Settings.MouseInputMovAlways = _mouseMoveOnDesktop;
                     UpdateConfigFile();
                 }
             }
@@ -711,9 +700,9 @@ namespace livelywpf.ViewModels
             set
             {
                 _webDebuggingPort = value;
-                if (Settings.WebDebugPort != _webDebuggingPort)
+                if (userSettings.Settings.WebDebugPort != _webDebuggingPort)
                 {
-                    Settings.WebDebugPort = _webDebuggingPort;
+                    userSettings.Settings.WebDebugPort = _webDebuggingPort;
                     UpdateConfigFile();
                 }
                 OnPropertyChanged();
@@ -727,9 +716,9 @@ namespace livelywpf.ViewModels
             set
             {
                 _cefDiskCache = value;
-                if (Settings.CefDiskCache != _cefDiskCache)
+                if (userSettings.Settings.CefDiskCache != _cefDiskCache)
                 {
-                    Settings.CefDiskCache = _cefDiskCache;
+                    userSettings.Settings.CefDiskCache = _cefDiskCache;
                     UpdateConfigFile();
                 }
                 OnPropertyChanged();
@@ -743,9 +732,9 @@ namespace livelywpf.ViewModels
             set
             {
                 _detectStreamWallpaper = value;
-                if (Settings.AutoDetectOnlineStreams != _detectStreamWallpaper)
+                if (userSettings.Settings.AutoDetectOnlineStreams != _detectStreamWallpaper)
                 {
-                    Settings.AutoDetectOnlineStreams = _detectStreamWallpaper;
+                    userSettings.Settings.AutoDetectOnlineStreams = _detectStreamWallpaper;
                     UpdateConfigFile();
                 }
                 OnPropertyChanged();
@@ -763,9 +752,9 @@ namespace livelywpf.ViewModels
             set
             {
                 _globalWallpaperVolume = value;
-                if (Settings.AudioVolumeGlobal != _globalWallpaperVolume)
+                if (userSettings.Settings.AudioVolumeGlobal != _globalWallpaperVolume)
                 {
-                    Settings.AudioVolumeGlobal = _globalWallpaperVolume;
+                    userSettings.Settings.AudioVolumeGlobal = _globalWallpaperVolume;
                     UpdateConfigFile();
                 }
                 OnPropertyChanged();
@@ -782,9 +771,9 @@ namespace livelywpf.ViewModels
             set
             {
                 _isAudioOnlyOnDesktop = value;
-                if (Settings.AudioOnlyOnDesktop != _isAudioOnlyOnDesktop)
+                if (userSettings.Settings.AudioOnlyOnDesktop != _isAudioOnlyOnDesktop)
                 {
-                    Settings.AudioOnlyOnDesktop = _isAudioOnlyOnDesktop;
+                    userSettings.Settings.AudioOnlyOnDesktop = _isAudioOnlyOnDesktop;
                     UpdateConfigFile();
                 }
                 OnPropertyChanged();
@@ -826,9 +815,9 @@ namespace livelywpf.ViewModels
             set
             {
                 _isDesktopAutoWallpaper = value;
-                if (Settings.DesktopAutoWallpaper != _isDesktopAutoWallpaper)
+                if (userSettings.Settings.DesktopAutoWallpaper != _isDesktopAutoWallpaper)
                 {
-                    Settings.DesktopAutoWallpaper = _isDesktopAutoWallpaper;
+                    userSettings.Settings.DesktopAutoWallpaper = _isDesktopAutoWallpaper;
                     UpdateConfigFile();
                 }
                 OnPropertyChanged();
@@ -870,9 +859,9 @@ namespace livelywpf.ViewModels
                     Helpers.TransparentTaskbar.Instance.Start((TaskbarTheme)_selectedTaskbarThemeIndex);
                 }
                 //save the data..
-                if (Settings.SystemTaskbarTheme != (TaskbarTheme)_selectedTaskbarThemeIndex)
+                if (userSettings.Settings.SystemTaskbarTheme != (TaskbarTheme)_selectedTaskbarThemeIndex)
                 {
-                    Settings.SystemTaskbarTheme = (TaskbarTheme)_selectedTaskbarThemeIndex;
+                    userSettings.Settings.SystemTaskbarTheme = (TaskbarTheme)_selectedTaskbarThemeIndex;
                     UpdateConfigFile();
                 }
                 OnPropertyChanged();
@@ -908,23 +897,23 @@ namespace livelywpf.ViewModels
                 };
                 if (idleTime != 0)
                 {
-                    ScreensaverService.Instance.StartIdleTimer(idleTime);
+                    screenSaver.StartIdleTimer(idleTime);
                 }
                 else
                 {
-                    ScreensaverService.Instance.StopIdleTimer();
+                    screenSaver.StopIdleTimer();
                 }
                 //save the data..
-                if (Settings.ScreensaverIdleWait != (ScreensaverIdleTime)_selectedScreensaverWaitIndex)
+                if (userSettings.Settings.ScreensaverIdleWait != (ScreensaverIdleTime)_selectedScreensaverWaitIndex)
                 {
-                    if (!Settings.ScreensaverOledWarning)
+                    if (!userSettings.Settings.ScreensaverOledWarning)
                     {
                         _ = Task.Run(() =>
                                System.Windows.MessageBox.Show(Properties.Resources.DescOledScreensaverNotice,
                                    Properties.Resources.TitleAppName, MessageBoxButton.OK, MessageBoxImage.Information));
-                        Settings.ScreensaverOledWarning = true;
+                        userSettings.Settings.ScreensaverOledWarning = true;
                     }
-                    Settings.ScreensaverIdleWait = (ScreensaverIdleTime)_selectedScreensaverWaitIndex;
+                    userSettings.Settings.ScreensaverIdleWait = (ScreensaverIdleTime)_selectedScreensaverWaitIndex;
                     UpdateConfigFile();
                 }
                 OnPropertyChanged();
@@ -941,9 +930,9 @@ namespace livelywpf.ViewModels
             set
             {
                 _isScreensaverLockOnResume = value;
-                if (Settings.ScreensaverLockOnResume != _isScreensaverLockOnResume)
+                if (userSettings.Settings.ScreensaverLockOnResume != _isScreensaverLockOnResume)
                 {
-                    Settings.ScreensaverLockOnResume = _isScreensaverLockOnResume;
+                    userSettings.Settings.ScreensaverLockOnResume = _isScreensaverLockOnResume;
                     UpdateConfigFile();
                 }
                 OnPropertyChanged();
@@ -967,9 +956,9 @@ namespace livelywpf.ViewModels
                 _isSysTrayIconVisible = value;
                 OnPropertyChanged();
                 TrayIconVisibilityChange?.Invoke(null, _isSysTrayIconVisible);
-                if (Settings.SysTrayIcon != _isSysTrayIconVisible)
+                if (userSettings.Settings.SysTrayIcon != _isSysTrayIconVisible)
                 {
-                    Settings.SysTrayIcon = _isSysTrayIconVisible;
+                    userSettings.Settings.SysTrayIcon = _isSysTrayIconVisible;
                     UpdateConfigFile();
                 }
             }
@@ -984,10 +973,10 @@ namespace livelywpf.ViewModels
             {
                 _isDebugMenuVisible = value;
                 OnPropertyChanged();
-                if (Settings.DebugMenu != _isDebugMenuVisible)
+                if (userSettings.Settings.DebugMenu != _isDebugMenuVisible)
                 {
                     DebugMenuVisibilityChange?.Invoke(null, _isDebugMenuVisible);
-                    Settings.DebugMenu = _isDebugMenuVisible;
+                    userSettings.Settings.DebugMenu = _isDebugMenuVisible;
                     UpdateConfigFile();
                 }
             }
@@ -1033,7 +1022,7 @@ namespace livelywpf.ViewModels
             {
                 canSwitchBranchCommand = false;
                 SwitchBranchCommand.RaiseCanExecuteChanged();
-                (Uri, Version, string) item = await AppUpdaterService.Instance.GetLatestRelease(!Program.IsTestBuild);
+                (Uri, Version, string) item = await appUpdater.GetLatestRelease(!Program.IsTestBuild);
                 var msg = Program.IsTestBuild ?
                     item.Item3 : $"!! {Properties.Resources.TitleWarning} !!\n{Properties.Resources.DescSwitchBranchBetaWarning}\n\n{Properties.Resources.TitleChangelog}\n{item.Item3}";
                 var updateWindow = new AppUpdaterView(item.Item1, msg)
@@ -1108,15 +1097,15 @@ namespace livelywpf.ViewModels
         private void WallpaperRestart(WallpaperType type)
         {
             Logger.Info("Restarting wallpaper:" + type);
-            var originalWallpapers = SetupDesktop.Wallpapers.FindAll(x => x.GetWallpaperType() == type);
+            var originalWallpapers = desktopCore.Wallpapers.Where(x => x.Category == type).ToList();
             if (originalWallpapers.Count > 0)
             {
-                SetupDesktop.TerminateWallpaper(type);
+                desktopCore.CloseWallpaper(type, true);
                 foreach (var item in originalWallpapers)
                 {
-                    SetupDesktop.SetWallpaper(item.GetWallpaperData(), item.GetScreen());
-                    if (Settings.WallpaperArrangement == WallpaperArrangement.span
-                        || Settings.WallpaperArrangement == WallpaperArrangement.duplicate)
+                    desktopCore.SetWallpaper(item.Model, item.Screen);
+                    if (userSettings.Settings.WallpaperArrangement == WallpaperArrangement.span
+                        || userSettings.Settings.WallpaperArrangement == WallpaperArrangement.duplicate)
                     {
                         break;
                     }
@@ -1134,7 +1123,7 @@ namespace livelywpf.ViewModels
             };
             if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
             {
-                if(string.Equals(folderBrowserDialog.SelectedPath, Settings.WallpaperDir, StringComparison.OrdinalIgnoreCase))
+                if(string.Equals(folderBrowserDialog.SelectedPath, userSettings.Settings.WallpaperDir, StringComparison.OrdinalIgnoreCase))
                 {
                     return;
                 }
@@ -1171,7 +1160,7 @@ namespace livelywpf.ViewModels
                     Directory.CreateDirectory(Path.Combine(folderBrowserDialog.SelectedPath, "SaveData", "wptmp"));
                     Directory.CreateDirectory(Path.Combine(folderBrowserDialog.SelectedPath, "SaveData", "wpdata"));
 
-                    if (Settings.WallpaperDirMoveExistingWallpaperNewDir)
+                    if (userSettings.Settings.WallpaperDirMoveExistingWallpaperNewDir)
                     {
                         await Task.Run(() =>
                         {
@@ -1201,13 +1190,13 @@ namespace livelywpf.ViewModels
                 }
 
                 //exit all running wp's immediately
-                SetupDesktop.TerminateAllWallpapers();
+                desktopCore.CloseAllWallpapers(true);
 
-                var previousDirectory = Settings.WallpaperDir;
-                Settings.WallpaperDir = folderBrowserDialog.SelectedPath;
+                var previousDirectory = userSettings.Settings.WallpaperDir;
+                userSettings.Settings.WallpaperDir = folderBrowserDialog.SelectedPath;
                 UpdateConfigFile();
-                WallpaperDirectory = Settings.WallpaperDir;
-                Program.WallpaperDir = Settings.WallpaperDir;
+                WallpaperDirectory = userSettings.Settings.WallpaperDir;
+                Program.WallpaperDir = userSettings.Settings.WallpaperDir;
                 LivelyWallpaperDirChange?.Invoke(null, folderBrowserDialog.SelectedPath);
 
                 if (!isDestEmptyDir)
