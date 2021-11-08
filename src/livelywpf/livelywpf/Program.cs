@@ -250,9 +250,8 @@ namespace livelywpf
         public static void ExitApplication()
         {
             MainWindow.IsExit = true;
-            App.Services.GetRequiredService<IDesktopCore>().ShutDown();
-            //sysTray?.Dispose(); //ioc will handle it.
-            Helpers.TransparentTaskbar.Instance.Stop();
+            //Singleton dispose() not calling otherwise?
+            ((ServiceProvider)App.Services)?.Dispose();
             System.Windows.Application.Current.Shutdown();
         }
 

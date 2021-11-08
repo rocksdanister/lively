@@ -30,13 +30,15 @@ namespace livelywpf.ViewModels
         private readonly IDesktopCore desktopCore;
         private readonly IScreensaverService screenSaver;
         private readonly IAppUpdaterService appUpdater;
+        private readonly ITransparentTbService ttbService;
 
-        public SettingsViewModel(IUserSettingsService userSettings, IDesktopCore desktopCore, IScreensaverService screenSaver, IAppUpdaterService appUpdater)
+        public SettingsViewModel(IUserSettingsService userSettings, IDesktopCore desktopCore, IScreensaverService screenSaver, IAppUpdaterService appUpdater, ITransparentTbService ttbService)
         {
             this.userSettings = userSettings;
             this.desktopCore = desktopCore;
             this.screenSaver = screenSaver;
             this.appUpdater = appUpdater;
+            this.ttbService = ttbService;
 
             //lang-codes: https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-lcid/a9eac961-e77d-41a6-90a5-ce1a8b0cdb9c
             LanguageItems = new ObservableCollection<LanguagesModel>()
@@ -824,7 +826,7 @@ namespace livelywpf.ViewModels
             }
         }
 
-        private bool taskbarThemeInit = false;
+        private bool ttbInitialized = false;
         private int _selectedTaskbarThemeIndex;
         public int SelectedTaskbarThemeIndex
         {
@@ -835,15 +837,15 @@ namespace livelywpf.ViewModels
             set
             {
                 _selectedTaskbarThemeIndex = value;
-                if (!taskbarThemeInit)
+                if (!ttbInitialized)
                 {
                     if ((TaskbarTheme)_selectedTaskbarThemeIndex != TaskbarTheme.none)
                     {
                         string pgm = null;
-                        if ((pgm = Helpers.TransparentTaskbar.CheckIncompatiblePrograms()) == null)
+                        if ((pgm = ttbService.CheckIncompatiblePrograms()) == null)
                         {
-                            Helpers.TransparentTaskbar.Instance.Start((TaskbarTheme)_selectedTaskbarThemeIndex);
-                            taskbarThemeInit = true;
+                            ttbService.Start((TaskbarTheme)_selectedTaskbarThemeIndex);
+                            ttbInitialized = true;
                         }
                         else
                         {
@@ -856,7 +858,7 @@ namespace livelywpf.ViewModels
                 }
                 else
                 {
-                    Helpers.TransparentTaskbar.Instance.Start((TaskbarTheme)_selectedTaskbarThemeIndex);
+                    ttbService.Start((TaskbarTheme)_selectedTaskbarThemeIndex);
                 }
                 //save the data..
                 if (userSettings.Settings.SystemTaskbarTheme != (TaskbarTheme)_selectedTaskbarThemeIndex)

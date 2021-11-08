@@ -33,6 +33,7 @@ namespace livelywpf.Core
         private IntPtr progman, workerw;
         public IntPtr DesktopWorkerW => workerw;
         private bool _isInitialized = false;
+        private bool disposedValue;
         private readonly List<IWallpaper> wallpapersPending = new List<IWallpaper>(2);
         private readonly List<WallpaperLayoutModel> wallpapersDisconnected = new List<WallpaperLayoutModel>();
 
@@ -41,13 +42,17 @@ namespace livelywpf.Core
 
         private readonly IUserSettingsService userSettings;
         private readonly IWallpaperFactory wallpaperFactory;
+        private readonly ITransparentTbService ttbService;
+        private readonly IWatchdogService watchdog;
         //private readonly IScreensaverService screenSaver;
         //private readonly IPlayback playbackMonitor;
         private readonly LibraryViewModel libraryVm;
 
-        public WinDesktopCore(IUserSettingsService userSettings)
+        public WinDesktopCore(IUserSettingsService userSettings, ITransparentTbService ttbService, IWatchdogService watchdog)
         {
             this.userSettings = userSettings;
+            this.ttbService = ttbService;
+            this.watchdog = watchdog;
             //this.screenSaver = screenSaver;
             //this.playbackMonitor = playbackMonitor;
             //this.libraryVm = libraryVm;
@@ -130,7 +135,7 @@ namespace livelywpf.Core
                     _isInitialized = true;
                     WallpaperReset?.Invoke(this, EventArgs.Empty);
                     //playbackMonitor.Start();
-                    WatchdogProcess.Instance.Start();
+                    watchdog.Start();
                 }
             }
 
@@ -361,7 +366,7 @@ namespace livelywpf.Core
 
                     if (wallpaper.Proc != null)
                     {
-                        WatchdogProcess.Instance.Add(wallpaper.Proc.Id);
+                        watchdog.Add(wallpaper.Proc.Id);
                     }
 
                     var thumbRequiredLockscreen = userSettings.Settings.LockScreenAutoWallpaper &&
@@ -399,8 +404,8 @@ namespace livelywpf.Core
                             {
                                 try
                                 {
-                                    var color = await Task.Run(() => Helpers.TransparentTaskbar.GetAverageColor(imgPath));
-                                    Helpers.TransparentTaskbar.Instance.SetAccentColor(color);
+                                    var color = await Task.Run(() => ttbService.GetAverageColor(imgPath));
+                                    ttbService.SetAccentColor(color);
                                 }
                                 catch (Exception ie1)
                                 {
@@ -882,28 +887,6 @@ namespace livelywpf.Core
             _ = RestoreWallpaperFromLayout(Constants.CommonPaths.WallpaperLayoutPath);
         }
 
-        public void ShutDown()
-        {
-            ScreenHelper.DisplayUpdated -= DisplaySettingsChanged_Hwnd;
-            WallpaperChanged -= SetupDesktop_WallpaperChanged;
-            if (_isInitialized)
-            {
-                try
-                {
-                    //playbackMonitor?.Dispose(); //ioc will do it
-                    CloseAllWallpapers(false, true);
-                    DesktopUtil.RefreshDesktop();
-
-                    //not required.. (need to restart if used.)
-                    //NativeMethods.SendMessage(workerw, (int)NativeMethods.WM.CLOSE, IntPtr.Zero, IntPtr.Zero);
-                }
-                catch (Exception e)
-                {
-                    Logger.Error("Failed to shutdown core: " + e.ToString());
-                }
-            }
-        }
-
         public void CloseAllWallpapers(bool terminate = false)
         {
             CloseAllWallpapers(true, terminate);
@@ -922,7 +905,7 @@ namespace livelywpf.Core
                     wallpapers.ForEach(x => x.Close());
                 }
                 wallpapers.Clear();
-                WatchdogProcess.Instance.Clear();
+                watchdog.Clear();
 
                 if (fireEvent)
                 {
@@ -945,7 +928,7 @@ namespace livelywpf.Core
                 {
                     if (x.Proc != null)
                     {
-                        WatchdogProcess.Instance.Remove(x.Proc.Id);
+                        watchdog.Remove(x.Proc.Id);
                     }
 
                     if (terminate)
@@ -975,7 +958,7 @@ namespace livelywpf.Core
                 {
                     if (x.Proc != null)
                     {
-                        WatchdogProcess.Instance.Remove(x.Proc.Id);
+                        watchdog.Remove(x.Proc.Id);
                     }
 
                     if (terminate)
@@ -1006,7 +989,7 @@ namespace livelywpf.Core
                 {
                     if (x.Proc != null)
                     {
-                        WatchdogProcess.Instance.Remove(x.Proc.Id);
+                        watchdog.Remove(x.Proc.Id);
                     }
 
                     if (terminate)
@@ -1065,6 +1048,51 @@ namespace livelywpf.Core
                 if (x.Screen.Equals(display))
                     x.SetPlaybackPos(seek, type);
             });
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    ScreenHelper.DisplayUpdated -= DisplaySettingsChanged_Hwnd;
+                    WallpaperChanged -= SetupDesktop_WallpaperChanged;
+                    if (_isInitialized)
+                    {
+                        try
+                        {
+                            CloseAllWallpapers(false, true);
+                            DesktopUtil.RefreshDesktop();
+
+                            //not required.. (need to restart if used.)
+                            //NativeMethods.SendMessage(workerw, (int)NativeMethods.WM.CLOSE, IntPtr.Zero, IntPtr.Zero);
+                        }
+                        catch (Exception e)
+                        {
+                            Logger.Error("Failed to shutdown core: " + e.ToString());
+                        }
+                    }
+                }
+
+                // TODO: free unmanaged resources (unmanaged objects) and override finalizer
+                // TODO: set large fields to null
+                disposedValue = true;
+            }
+        }
+
+        // // TODO: override finalizer only if 'Dispose(bool disposing)' has code to free unmanaged resources
+        // ~WinDesktopCore()
+        // {
+        //     // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+        //     Dispose(disposing: false);
+        // }
+
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
         }
 
         #region helpers

@@ -5,7 +5,7 @@ using System.Collections.ObjectModel;
 
 namespace livelywpf.Core
 {
-    public interface IDesktopCore
+    public interface IDesktopCore : IDisposable
     {
         IntPtr DesktopWorkerW { get; }
         /// <summary>
@@ -23,7 +23,6 @@ namespace livelywpf.Core
         void SendMessageWallpaper(ILibraryModel wp, IpcMessage msg);
         void SendMessageWallpaper(ILivelyScreen display, ILibraryModel wp, IpcMessage msg);
         void SetWallpaper(ILibraryModel wallpaper, ILivelyScreen display);
-        void ShutDown();
 
         /// <summary>
         /// Wallpaper set/removed.

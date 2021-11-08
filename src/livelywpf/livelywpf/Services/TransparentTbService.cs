@@ -8,34 +8,27 @@ using System.Collections.Generic;
 using System.Threading;
 using livelywpf.Helpers.Pinvoke;
 
-namespace livelywpf.Helpers
+namespace livelywpf.Services
 {
     //ref:
     //https://gist.github.com/riverar/fd6525579d6bbafc6e48
-    public sealed class TransparentTaskbar
+    public class TransparentTbService : ITransparentTbService
     {
         public bool IsRunning { get; private set; } = false;
         private Color accentColor = Color.FromArgb(0, 0, 0);
         private TaskbarTheme taskbarTheme = TaskbarTheme.none;
         private AccentPolicy accentPolicyRegular = new AccentPolicy();
+        private bool disposedValue;
+
         //private AccentPolicy accentPolicyMaximised = new AccentPolicy();
         private readonly System.Timers.Timer _timer = new System.Timers.Timer();
-        private static readonly TransparentTaskbar instance = new TransparentTaskbar();
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private readonly static IDictionary<string, string> incompatiblePrograms = new Dictionary<string, string>() { 
+        private readonly static IDictionary<string, string> incompatiblePrograms = new Dictionary<string, string>() {
             {"TranslucentTB", "344635E9-9AE4-4E60-B128-D53E25AB70A7"},
             {"TaskbarX", null}, //don't have mutex
         };
 
-        public static TransparentTaskbar Instance
-        {
-            get
-            {
-                return instance;
-            }
-        }
-
-        private TransparentTaskbar()
+        public TransparentTbService()
         {
             _timer.Interval = 500;
             _timer.Elapsed += Timer_Elapsed;
@@ -157,6 +150,35 @@ namespace livelywpf.Helpers
             }
         }
 
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    Stop();
+                }
+
+                // TODO: free unmanaged resources (unmanaged objects) and override finalizer
+                // TODO: set large fields to null
+                disposedValue = true;
+            }
+        }
+
+        // // TODO: override finalizer only if 'Dispose(bool disposing)' has code to free unmanaged resources
+        // ~TransparentTbService()
+        // {
+        //     // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+        //     Dispose(disposing: false);
+        // }
+
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
+        }
+
         #region helpers
 
         private List<IntPtr> GetTaskbars()
@@ -188,7 +210,7 @@ namespace livelywpf.Helpers
             }
         }
 
-        public static string CheckIncompatiblePrograms()
+        public string CheckIncompatiblePrograms()
         {
             foreach (var item in incompatiblePrograms)
             {
@@ -232,7 +254,7 @@ namespace livelywpf.Helpers
         /// </summary>
         /// <param name="imgPath">Image file path.</param>
         /// <returns></returns>
-        public static Color GetAverageColor(string imgPath)
+        public Color GetAverageColor(string imgPath)
         {
             //avg of colors by resizing to 1x1..
             using var image = new MagickImage(imgPath);

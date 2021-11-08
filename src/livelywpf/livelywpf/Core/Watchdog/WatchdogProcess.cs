@@ -6,21 +6,12 @@ using System.Text;
 
 namespace livelywpf.Core.Watchdog
 {
-    public sealed class WatchdogProcess
+    public class WatchdogProcess : IWatchdogService
     {
         private Process livelySubProcess;
-        private static readonly WatchdogProcess instance = new WatchdogProcess();
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
-        public static WatchdogProcess Instance
-        {
-            get
-            {
-                return instance;
-            }
-        }
-
-        private WatchdogProcess()
+        public WatchdogProcess()
         {
             //crickets..
         }

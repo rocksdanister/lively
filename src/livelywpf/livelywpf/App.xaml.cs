@@ -20,6 +20,7 @@ using livelywpf.Helpers.ScreenRecord;
 using livelywpf.Cmd;
 using livelywpf.Core.InputForwarding;
 using livelywpf.Core.Suspend;
+using livelywpf.Core.Watchdog;
 
 namespace livelywpf
 {
@@ -57,18 +58,23 @@ namespace livelywpf
 
         private IServiceProvider ConfigureServices()
         {
+            //TODO: Logger abstraction.
+            //TODO: Remove: public static MainWindow AppWindow
+            //TODO: Simplify startup order: App() -> OnStartup() -> App.Startup event.
             var provider = new ServiceCollection()
                 //singleton
                 .AddSingleton<MainWindow>()
                 .AddSingleton<IUserSettingsService, UserSettingsService>()
                 .AddSingleton<IDesktopCore, WinDesktopCore>()
+                .AddSingleton<IWatchdogService, WatchdogProcess>()
                 .AddSingleton<IScreensaverService, ScreensaverService>()
                 .AddSingleton<IPlayback, Playback>()
                 .AddSingleton<IAppUpdaterService, GithubUpdaterService>()
                 .AddSingleton<ISystray, Systray>()
+                .AddSingleton<ITransparentTbService, TransparentTbService>()
                 .AddSingleton<RawInputDX>()
-                .AddSingleton<SettingsViewModel>() //some init stuff like locale, startup etc happening.. todo: remove?
-                .AddSingleton<LibraryViewModel>()
+                .AddSingleton<SettingsViewModel>() //some init stuff like locale, startup etc happening.. TODO: remove!
+                .AddSingleton<LibraryViewModel>() //loaded wallpapers..
                 //transient
                 .AddTransient<SetupView>()
                 .AddTransient<ApplicationRulesViewModel>()
