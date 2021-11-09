@@ -10,6 +10,7 @@ using livelywpf.Helpers.Storage;
 using livelywpf.Models;
 using livelywpf.Services;
 using livelywpf.ViewModels;
+using livelywpf.Views;
 using livelywpf.Views.Dialogues;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -243,15 +244,16 @@ namespace livelywpf.Core
                                 {
                                     System.Windows.Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, new ThreadStart(delegate
                                     {
+                                        var appWindow = App.Services.GetRequiredService<MainWindow>();
                                         var pWindow = new LibraryPreviewView(wallpaper);
                                         if (type == LibraryTileType.multiImport)
                                         {
                                             pWindow.Topmost = true;
                                             pWindow.ShowActivated = true;
-                                            if (App.AppWindow.IsVisible)
+                                            if (appWindow.IsVisible)
                                             {
-                                                pWindow.Left = App.AppWindow.Left;
-                                                pWindow.Top = App.AppWindow.Top;
+                                                pWindow.Left = appWindow.Left;
+                                                pWindow.Top = appWindow.Top;
                                                 pWindow.WindowStartupLocation = WindowStartupLocation.Manual;
                                             }
                                             pWindow.Closed += (s, a) => tcs.SetResult(null);
@@ -267,9 +269,9 @@ namespace livelywpf.Core
                                         }
                                         else
                                         {
-                                            if (App.AppWindow.IsVisible)
+                                            if (appWindow.IsVisible)
                                             {
-                                                pWindow.Owner = App.AppWindow;
+                                                pWindow.Owner = appWindow;
                                                 pWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
                                             }
                                             pWindow.ShowDialog();
@@ -468,7 +470,8 @@ namespace livelywpf.Core
                     Logger.Error("Failed launching wallpaper: " + e.Msg + "\n" + e.Error?.ToString());
                     wallpaper.Terminate();
                     WallpaperChanged?.Invoke(this, EventArgs.Empty);
-                    if (App.AppWindow.IsVisible)
+                    var appWindow = App.Services.GetRequiredService<MainWindow>();
+                    if (appWindow.IsVisible)
                     {
                         MessageBox.Show(Properties.Resources.LivelyExceptionGeneral, Properties.Resources.TitleAppName, MessageBoxButton.OK, MessageBoxImage.Error);
                     }

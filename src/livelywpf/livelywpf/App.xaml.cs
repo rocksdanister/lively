@@ -44,12 +44,6 @@ namespace livelywpf
             }
         }
 
-        private static MainWindow _appWindow;
-        public static MainWindow AppWindow
-        {
-            get => _appWindow ??= App.Services.GetRequiredService<MainWindow>();
-        }
-
         public App()
         {
             //App() -> OnStartup() -> App.Startup event.
@@ -59,7 +53,6 @@ namespace livelywpf
         private IServiceProvider ConfigureServices()
         {
             //TODO: Logger abstraction.
-            //TODO: Remove: public static MainWindow AppWindow
             //TODO: Simplify startup order: App() -> OnStartup() -> App.Startup event.
             var provider = new ServiceCollection()
                 //singleton
@@ -163,20 +156,20 @@ namespace livelywpf
 
             #endregion //vm init
 
-            Application.Current.MainWindow = AppWindow;
+            var appWindow = App.Services.GetRequiredService<MainWindow>();
+            Application.Current.MainWindow = appWindow;
             //Creates an empty xaml island control as a temp fix for closing issue; also receives window msg..
             //Issue: https://github.com/microsoft/microsoft-ui-xaml/issues/3482
             //Steps to reproduce: Start gif wallpaper using uwp control -> restart lively -> close restored gif wallpaper -> library gridview stops.
             WndProcMsgWindow wndproc = new WndProcMsgWindow();
             wndproc.Show();
             //Package app otherwise bugging out when initialized in settings vm.
-            //SetupDesktop.SetupInputHooks();
             App.Services.GetRequiredService<RawInputDX>().Show();
             if (userSettings.Settings.IsRestart)
             {
                 userSettings.Settings.IsRestart = false;
                 userSettings.Save<ISettingsModel>();
-                AppWindow?.Show();
+                appWindow?.Show();
             }
 
             base.OnStartup(e);

@@ -1,7 +1,9 @@
 ﻿using livelywpf.Helpers;
 using livelywpf.Helpers.MVVM;
 using livelywpf.Services;
+using livelywpf.Views;
 using livelywpf.Views.Dialogues;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -183,22 +185,12 @@ namespace livelywpf.ViewModels
 
         private void ShowRtfDocDialog(string docPath)
         {
-            var item = new DocView(docPath)
+            (new DocView(docPath)
             {
                 Title = Properties.Resources.TitleDocumentation,
-            };
-            if (App.AppWindow.IsVisible)
-            {
-                item.Owner = App.AppWindow;
-                item.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-                item.Width = App.AppWindow.Width / 1.2;
-                item.Height = App.AppWindow.Height / 1.2;
-            }
-            else
-            {
-                item.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            }
-            item.ShowDialog();
+                Owner = App.Services.GetRequiredService<MainWindow>(),
+                WindowStartupLocation = WindowStartupLocation.CenterOwner,
+            }).ShowDialog();
         }
 
         public void OnViewClosing(object sender, RoutedEventArgs e)

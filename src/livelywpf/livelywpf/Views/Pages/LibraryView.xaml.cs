@@ -28,12 +28,14 @@ namespace livelywpf.Views.Pages
         private readonly LibraryViewModel libraryVm;
         private readonly IUserSettingsService userSettings;
         private readonly IDesktopCore desktopCore;
+        private readonly MainWindow appWindow;
 
         public LibraryView()
         {
             libraryVm = App.Services.GetRequiredService<LibraryViewModel>();
             userSettings = App.Services.GetRequiredService<IUserSettingsService>();
             desktopCore = App.Services.GetRequiredService<IDesktopCore>();
+            appWindow = App.Services.GetRequiredService<MainWindow>();
 
             InitializeComponent();
             //uwp control also gets binded..
@@ -95,7 +97,7 @@ namespace livelywpf.Views.Pages
                         var prev = new WallpaperPreviewWindow((LibraryModel)e)
                         {
                             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner,
-                            Owner = App.AppWindow
+                            Owner = appWindow
                         };
                         prev.Show();
                         break;
@@ -155,10 +157,10 @@ namespace livelywpf.Views.Pages
                         var overlay =
                             new Cef.LivelyPropertiesWindow(obj)
                             {
-                                Owner = App.AppWindow,
+                                Owner = appWindow,
                                 WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner,
-                                Width = 350,//App.AppWindow.Width / 3.0,
-                                Height = App.AppWindow.Height / 1.2,
+                                Width = 350,//appWindow.Width / 3.0,
+                                Height = appWindow.Height / 1.2,
                                 Title = obj.Title.Length > 40 ? obj.Title.Substring(0, 40) + "..." : obj.Title
                             };
                         overlay.ShowDialog();
@@ -277,7 +279,7 @@ namespace livelywpf.Views.Pages
                                             Properties.Resources.TextOK,
                                             Properties.Resources.TextCancel)
                                         { 
-                                            Owner = App.AppWindow,
+                                            Owner = appWindow,
                                             Width = 350,
                                             Height = 200
                                         };
@@ -329,11 +331,11 @@ namespace livelywpf.Views.Pages
                         {
                             //This dialog on right-topmost like position and librarypreview window left-topmost.
                             WindowStartupLocation = System.Windows.WindowStartupLocation.Manual,
-                            Left = App.AppWindow.Left + App.AppWindow.Width - (App.AppWindow.Width/1.5),
-                            Top = App.AppWindow.Top + (App.AppWindow.Height/15),
-                            Owner = App.AppWindow,
-                            Width = App.AppWindow.Width/1.5,
-                            Height = App.AppWindow.Height/1.3,
+                            Left = appWindow.Left + appWindow.Width - (appWindow.Width/1.5),
+                            Top = appWindow.Top + (appWindow.Height/15),
+                            Owner = appWindow,
+                            Width = appWindow.Width/1.5,
+                            Height = appWindow.Height/1.3,
                         };
                         miw.ShowDialog();
                     }

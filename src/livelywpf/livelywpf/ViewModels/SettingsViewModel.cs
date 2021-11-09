@@ -20,6 +20,7 @@ using System.Windows.Forms;
 using livelywpf.Models;
 using livelywpf.Views.Dialogues;
 using livelywpf.Services;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace livelywpf.ViewModels
 {
@@ -32,7 +33,12 @@ namespace livelywpf.ViewModels
         private readonly IAppUpdaterService appUpdater;
         private readonly ITransparentTbService ttbService;
 
-        public SettingsViewModel(IUserSettingsService userSettings, IDesktopCore desktopCore, IScreensaverService screenSaver, IAppUpdaterService appUpdater, ITransparentTbService ttbService)
+        public SettingsViewModel(IUserSettingsService 
+            userSettings, 
+            IDesktopCore desktopCore, 
+            IScreensaverService screenSaver, 
+            IAppUpdaterService appUpdater, 
+            ITransparentTbService ttbService)
         {
             this.userSettings = userSettings;
             this.desktopCore = desktopCore;
@@ -371,13 +377,11 @@ namespace livelywpf.ViewModels
 
         private void ShowApplicationRulesWindow()
         {
-            ApplicationRulesView app = new ApplicationRulesView();
-            if (App.AppWindow.IsVisible)
+            (new ApplicationRulesView()
             {
-                app.Owner = App.AppWindow;
-                app.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-            }
-            app.ShowDialog();
+                Owner = App.Services.GetRequiredService<MainWindow>(),
+                WindowStartupLocation = WindowStartupLocation.CenterOwner,
+            }).ShowDialog();
         }
 
         private int _selectedAppFullScreenIndex;
@@ -1027,12 +1031,11 @@ namespace livelywpf.ViewModels
                 (Uri, Version, string) item = await appUpdater.GetLatestRelease(!Program.IsTestBuild);
                 var msg = Program.IsTestBuild ?
                     item.Item3 : $"!! {Properties.Resources.TitleWarning} !!\n{Properties.Resources.DescSwitchBranchBetaWarning}\n\n{Properties.Resources.TitleChangelog}\n{item.Item3}";
-                var updateWindow = new AppUpdaterView(item.Item1, msg)
+                (new AppUpdaterView(item.Item1, msg)
                 {
-                    Owner = App.AppWindow,
+                    Owner = App.Services.GetRequiredService<MainWindow>(),
                     WindowStartupLocation = WindowStartupLocation.CenterOwner
-                };
-                updateWindow.ShowDialog();
+                }).ShowDialog();
             }
             catch (Exception e)
             {

@@ -18,6 +18,7 @@ using Path = System.IO.Path;
 using Microsoft.Extensions.DependencyInjection;
 using livelywpf.Services;
 using System.Linq;
+using livelywpf.Views;
 
 namespace livelywpf.Cef
 {
@@ -545,9 +546,10 @@ namespace livelywpf.Cef
                 var item = (Rectangle)sender;
                 var fill = ((SolidColorBrush)item.Fill).Color;
                 var cpicker = new Views.Dialogues.ColorDialog(new Windows.UI.Color() { A = fill.A, R = fill.R, G = fill.G, B = fill.B });
-                if (App.AppWindow.IsVisible)
+                var appWindow = App.Services.GetRequiredService<MainWindow>();
+                if (appWindow.IsVisible)
                 {
-                    cpicker.Owner = App.AppWindow;
+                    cpicker.Owner = appWindow;
                     cpicker.WindowStartupLocation = WindowStartupLocation.CenterOwner;
                 }
                 else

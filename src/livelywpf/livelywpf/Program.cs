@@ -181,25 +181,20 @@ namespace livelywpf
             updateNotify = false;
             if (updateWindow == null)
             {
+                var appWindow = App.Services.GetRequiredService<MainWindow>();
                 updateWindow = new AppUpdaterView(uri, changelog);
-                if (App.AppWindow.IsVisible)
+                if (appWindow.IsVisible)
                 {
-                    updateWindow.Owner = App.AppWindow;
+                    updateWindow.Owner = appWindow;
                     updateWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
                 }
                 else
                 {
                     updateWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
                 }
-                updateWindow.Closed += UpdateWindow_Closed;
+                updateWindow.Closed += (s, e) => { updateWindow = null; };
                 updateWindow.Show();
             }
-        }
-
-        private static void UpdateWindow_Closed(object sender, EventArgs e)
-        {
-            updateWindow.Closed -= UpdateWindow_Closed;
-            updateWindow = null;
         }
 
         #endregion //app updater.
@@ -228,8 +223,9 @@ namespace livelywpf
                 setupWizard = null;
             }
 
-            App.AppWindow?.Show();
-            App.AppWindow.WindowState = App.AppWindow?.WindowState != WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
+            var appWindow = App.Services.GetRequiredService<MainWindow>();
+            appWindow?.Show();
+            appWindow.WindowState = appWindow?.WindowState != WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
 
             if (updateNotify)
             {

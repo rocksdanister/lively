@@ -12,6 +12,7 @@ using System.Text;
 using livelywpf.Models;
 using livelywpf.Views.Dialogues;
 using livelywpf.Services;
+using livelywpf.Views;
 
 namespace livelywpf.ViewModels
 {
@@ -20,11 +21,13 @@ namespace livelywpf.ViewModels
         private readonly string fileDialogFilter;
         private readonly IUserSettingsService userSettings;
         private readonly LibraryViewModel libraryVm;
+        private readonly MainWindow appWindow;
 
-        public AddWallpaperViewModel(IUserSettingsService userSettings, LibraryViewModel libraryVm)
+        public AddWallpaperViewModel(IUserSettingsService userSettings, LibraryViewModel libraryVm, MainWindow appWindow)
         {
             this.userSettings = userSettings;
             this.libraryVm = libraryVm;
+            this.appWindow = appWindow;
 
             WebUrlText = userSettings.Settings.SavedURL;
             fileDialogFilter = FileFilter.GetLivelySupportedFileDialogFilter(true);
@@ -100,7 +103,7 @@ namespace livelywpf.ViewModels
             userSettings.Settings.SavedURL = WebUrlText;
             userSettings.Save<ISettingsModel>();
 
-            App.AppWindow.NavViewNavigate("library");
+            appWindow.NavViewNavigate("library");
         }
 
         private RelayCommand _browseStreamCommand;
@@ -135,7 +138,7 @@ namespace livelywpf.ViewModels
                   LibraryTileType.processing,
                   userSettings.Settings.SelectedDisplay);
 
-            App.AppWindow.NavViewNavigate("library");
+            appWindow.NavViewNavigate("library");
         }
 
         private RelayCommand _browseFileCommand;
@@ -171,11 +174,11 @@ namespace livelywpf.ViewModels
                     {
                         //This dialog on right-topmost like position and librarypreview window left-topmost.
                         WindowStartupLocation = System.Windows.WindowStartupLocation.Manual,
-                        Left = App.AppWindow.Left + App.AppWindow.Width - (App.AppWindow.Width / 1.5),
-                        Top = App.AppWindow.Top + (App.AppWindow.Height / 15),
-                        Owner = App.AppWindow,
-                        Width = App.AppWindow.Width / 1.5,
-                        Height = App.AppWindow.Height / 1.3,
+                        Left = appWindow.Left + appWindow.Width - (appWindow.Width / 1.5),
+                        Top = appWindow.Top + (appWindow.Height / 15),
+                        Owner = appWindow,
+                        Width = appWindow.Width / 1.5,
+                        Height = appWindow.Height / 1.3,
                     }.ShowDialog();
                     return;
                 }
@@ -245,7 +248,7 @@ namespace livelywpf.ViewModels
                             userSettings.Settings.SelectedDisplay);
                     }
                 }
-                App.AppWindow.NavViewNavigate("library");
+                appWindow.NavViewNavigate("library");
             }
         }
     }

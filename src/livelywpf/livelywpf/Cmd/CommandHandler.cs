@@ -16,6 +16,8 @@ using livelywpf.Core;
 using livelywpf.Core.Suspend;
 using livelywpf.Services;
 using livelywpf.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
+using livelywpf.Views;
 
 namespace livelywpf.Cmd
 {
@@ -124,8 +126,15 @@ namespace livelywpf.Cmd
         private readonly IPlayback playbackMonitor;
         private readonly LibraryViewModel libraryVm;
         private readonly SettingsViewModel settingsVm;
+        private readonly MainWindow appWindow;
 
-        public CommandHandler(IUserSettingsService userSettings, IDesktopCore desktopCore, IScreensaverService screenSaver, IPlayback playbackMonitor, LibraryViewModel libraryVm, SettingsViewModel settingsVm)
+        public CommandHandler(IUserSettingsService userSettings, 
+            IDesktopCore desktopCore, 
+            IScreensaverService screenSaver, 
+            IPlayback playbackMonitor, 
+            LibraryViewModel libraryVm, 
+            SettingsViewModel settingsVm, 
+            MainWindow appWindow)
         {
             this.userSettings = userSettings;
             this.desktopCore = desktopCore;
@@ -133,6 +142,7 @@ namespace livelywpf.Cmd
             this.playbackMonitor = playbackMonitor;
             this.libraryVm = libraryVm;
             this.settingsVm = settingsVm;
+            this.appWindow = appWindow;
         }
 
         public void ParseArgs(string[] args)
@@ -160,9 +170,9 @@ namespace livelywpf.Cmd
                     }
                     else
                     {
-                        if (App.AppWindow.IsVisible)
+                        if (appWindow.IsVisible)
                         {
-                            App.AppWindow?.HideWindow();
+                            appWindow?.HideWindow();
                         }
                     }
                 }
@@ -465,7 +475,7 @@ namespace livelywpf.Cmd
             {
                 if (opts.Configure != null)
                 {
-                    App.AppWindow?.ShowControlPanelDialog();
+                    appWindow?.ShowControlPanelDialog();
                 }
 
                 if (opts.Preview != null)

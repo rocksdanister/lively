@@ -3,6 +3,7 @@ using livelywpf.Models;
 using livelywpf.Services;
 using livelywpf.Views;
 using livelywpf.Views.Pages;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Toolkit.Wpf.UI.XamlHost;
 //using ModernWpf.Controls;
 using ModernWpf.Media.Animation;
@@ -226,31 +227,29 @@ namespace livelywpf.Views
         {
             if (layoutWindow == null)
             {
+                var appWindow = App.Services.GetRequiredService<MainWindow>();
                 layoutWindow = new Screen.ScreenLayoutView();
-                if (App.AppWindow.IsVisible)
+                if (appWindow.IsVisible)
                 {
-                    layoutWindow.Owner = App.AppWindow;
+                    layoutWindow.Owner = appWindow;
                     layoutWindow.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner;
-                    layoutWindow.Width = App.AppWindow.Width / 1.5;
-                    layoutWindow.Height = App.AppWindow.Height / 1.5;
+                    layoutWindow.Width = appWindow.Width / 1.5;
+                    layoutWindow.Height = appWindow.Height / 1.5;
                 }
                 else
                 {
                     layoutWindow.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
                 }
-                layoutWindow.Closed += LayoutWindow_Closed;
+                layoutWindow.Closed += (s, e) => {
+                    layoutWindow = null;
+                    this.Activate();
+                };
                 layoutWindow.Show();
             }
             else
             {
                 layoutWindow.Activate();
             }
-        }
-
-        private void LayoutWindow_Closed(object sender, EventArgs e)
-        {
-            layoutWindow = null;
-            this.Activate();
         }
 
         private void statusBtn_Click(object sender, RoutedEventArgs e)

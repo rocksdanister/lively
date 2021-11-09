@@ -11,6 +11,7 @@ using livelywpf.Models;
 using livelywpf.Core.Suspend;
 using livelywpf.Services;
 using livelywpf.ViewModels;
+using livelywpf.Views;
 
 namespace livelywpf
 {
@@ -27,8 +28,15 @@ namespace livelywpf
         private readonly IAppUpdaterService appUpdater;
         private readonly LibraryViewModel libraryVm;
         private readonly SettingsViewModel settingsVm;
+        private readonly MainWindow appWindow;
 
-        public Systray(IUserSettingsService userSettings, IPlayback playbackMonitor, IDesktopCore desktopCore, LibraryViewModel libraryVm, IAppUpdaterService appUpdater, SettingsViewModel settingsVm)
+        public Systray(IUserSettingsService userSettings, 
+            IPlayback playbackMonitor, 
+            IDesktopCore desktopCore, 
+            LibraryViewModel libraryVm, 
+            IAppUpdaterService appUpdater, 
+            SettingsViewModel settingsVm,
+            MainWindow appWindow)
         {
             this.userSettings = userSettings;
             this.playbackMonitor = playbackMonitor;
@@ -36,6 +44,7 @@ namespace livelywpf
             this.appUpdater = appUpdater;
             this.libraryVm = libraryVm;
             this.settingsVm = settingsVm;
+            this.appWindow = appWindow;
 
             //NotifyIcon Fix: https://stackoverflow.com/questions/28833702/wpf-notifyicon-crash-on-first-run-the-root-visual-of-a-visualtarget-cannot-hav/29116917
             //Error: "The root Visual of a VisualTarget cannot have a parent.."
@@ -203,7 +212,7 @@ namespace livelywpf
                 {
                     case WallpaperArrangement.per:
                         //multiple different wallpapers.. open control panel.
-                        App.AppWindow?.ShowControlPanelDialog();
+                        appWindow?.ShowControlPanelDialog();
                         break;
                     case WallpaperArrangement.span:
                     case WallpaperArrangement.duplicate:
