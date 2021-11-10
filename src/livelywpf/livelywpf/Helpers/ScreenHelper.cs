@@ -11,7 +11,7 @@ namespace livelywpf.Helpers
     public static class ScreenHelper
     {
         public static event EventHandler DisplayUpdated;
-        private static readonly List<LivelyScreen> displayMonitors = new List<LivelyScreen>();
+        private static readonly List<ILivelyScreen> displayMonitors = new List<ILivelyScreen>();
 
         static ScreenHelper()
         {
@@ -31,7 +31,7 @@ namespace livelywpf.Helpers
             DisplayUpdated?.Invoke(null, EventArgs.Empty);
         }
 
-        public static List<LivelyScreen> GetScreen()
+        public static List<ILivelyScreen> GetScreen()
         {
             return displayMonitors;
         }

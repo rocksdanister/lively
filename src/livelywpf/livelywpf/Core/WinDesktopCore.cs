@@ -47,9 +47,9 @@ namespace livelywpf.Core
         private readonly IWatchdogService watchdog;
         //private readonly IScreensaverService screenSaver;
         //private readonly IPlayback playbackMonitor;
-        private readonly LibraryViewModel libraryVm;
+        //private readonly LibraryViewModel libraryVm;
 
-        public WinDesktopCore(IUserSettingsService userSettings, ITransparentTbService ttbService, IWatchdogService watchdog)
+        public WinDesktopCore(IUserSettingsService userSettings, ITransparentTbService ttbService, IWatchdogService watchdog, IWallpaperFactory wallpaperFactory)
         {
             this.userSettings = userSettings;
             this.ttbService = ttbService;
@@ -57,7 +57,7 @@ namespace livelywpf.Core
             //this.screenSaver = screenSaver;
             //this.playbackMonitor = playbackMonitor;
             //this.libraryVm = libraryVm;
-            wallpaperFactory = new WallpaperFactory();
+            this.wallpaperFactory = wallpaperFactory;
 
             ScreenHelper.DisplayUpdated += DisplaySettingsChanged_Hwnd;
             WallpaperChanged += SetupDesktop_WallpaperChanged;
@@ -135,7 +135,7 @@ namespace livelywpf.Core
                     Logger.Info("Core initialized..");
                     _isInitialized = true;
                     WallpaperReset?.Invoke(this, EventArgs.Empty);
-                    //playbackMonitor.Start();
+                    App.Services.GetRequiredService<IPlayback>().Start();
                     watchdog.Start();
                 }
             }
@@ -180,7 +180,7 @@ namespace livelywpf.Core
                 {
                     if (wallpaper.DataType == LibraryTileType.processing)
                     {
-                        libraryVm.WallpaperDelete(wallpaper);
+                        App.Services.GetRequiredService<LibraryViewModel>().WallpaperDelete(wallpaper);
                     }
                     WallpaperChanged?.Invoke(this, EventArgs.Empty);
                 }));
@@ -296,7 +296,7 @@ namespace livelywpf.Core
                                 DesktopUtil.RefreshDesktop();
                                 await System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
                                 {
-                                    libraryVm.WallpaperDelete(wallpaper.Model);
+                                    App.Services.GetRequiredService<LibraryViewModel>().WallpaperDelete(wallpaper.Model);
                                 }));
                                 return; //exit
                             }
@@ -480,7 +480,7 @@ namespace livelywpf.Core
                     {
                         await System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
                         {
-                            libraryVm.WallpaperDelete(wallpaper.Model);
+                            App.Services.GetRequiredService<LibraryViewModel>().WallpaperDelete(wallpaper.Model);
                         }));
                     }
                 }
@@ -593,7 +593,7 @@ namespace livelywpf.Core
         {
             Logger.Info("Restarting wallpaper service..");
             _isInitialized = false;
-            //playbackMonitor?.Stop(); 
+            App.Services.GetRequiredService<IPlayback>().Stop(); 
             if (Wallpapers.Count > 0)
             {
                 var originalWallpapers = Wallpapers.ToList();
@@ -653,7 +653,7 @@ namespace livelywpf.Core
             {
                 Logger.Info("Display settings changed, screen(s):");
                 ScreenHelper.GetScreen().ForEach(x => Logger.Info(x.DeviceName + " " + x.Bounds));
-                //screenSaver.Stop();
+                App.Services.GetRequiredService<IScreensaverService>().Stop();
                 RefreshWallpaper();
                 await RestoreDisconnectedWallpapers();
             }
@@ -676,7 +676,7 @@ namespace livelywpf.Core
                 //Updating user selected screen to primary if disconnected.
                 userSettings.Settings.SelectedDisplay =
                     allScreens.Find(x => ScreenHelper.ScreenCompare(userSettings.Settings.SelectedDisplay, x, DisplayIdentificationMode.deviceId)) ??
-                    (LivelyScreen)ScreenHelper.GetPrimaryScreen();
+                    ScreenHelper.GetPrimaryScreen();
                 userSettings.Save<ISettingsModel>();
 
                 switch (userSettings.Settings.WallpaperArrangement)
@@ -734,7 +734,7 @@ namespace livelywpf.Core
         {
             try
             {
-                //playbackMonitor?.Stop();
+                App.Services.GetRequiredService<IPlayback>().Stop();
                 if (ScreenHelper.IsMultiScreen() && userSettings.Settings.WallpaperArrangement == WallpaperArrangement.span)
                 {
                     if (wallpapers.Count != 0)
@@ -777,7 +777,7 @@ namespace livelywpf.Core
             }
             finally
             {
-                //playbackMonitor?.Start();
+                App.Services.GetRequiredService<IPlayback>().Start();
             }
         }
 
@@ -830,7 +830,7 @@ namespace livelywpf.Core
                     {
                         await System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
                         {
-                            var libraryItem = libraryVm.LibraryItems.FirstOrDefault(x => x.LivelyInfoFolderPath.Equals(wallpaperLayout[0].LivelyInfoPath));
+                            var libraryItem = App.Services.GetRequiredService<LibraryViewModel>().LibraryItems.FirstOrDefault(x => x.LivelyInfoFolderPath.Equals(wallpaperLayout[0].LivelyInfoPath));
                             if (libraryItem != null)
                             {
                                 SetWallpaper(libraryItem, ScreenHelper.GetPrimaryScreen());
@@ -855,7 +855,7 @@ namespace livelywpf.Core
             {
                 foreach (var layout in wallpaperLayout)
                 {
-                    var libraryItem = libraryVm.LibraryItems.FirstOrDefault(x => x.LivelyInfoFolderPath.Equals(layout.LivelyInfoPath));
+                    var libraryItem = App.Services.GetRequiredService<LibraryViewModel>().LibraryItems.FirstOrDefault(x => x.LivelyInfoFolderPath.Equals(layout.LivelyInfoPath));
                     var screen = ScreenHelper.GetScreen(layout.LivelyScreen.DeviceId, layout.LivelyScreen.DeviceName,
                         layout.LivelyScreen.Bounds, layout.LivelyScreen.WorkingArea, DisplayIdentificationMode.deviceId);
                     if (libraryItem == null)
@@ -869,7 +869,7 @@ namespace livelywpf.Core
                         if (!wallpapersDisconnected.Contains(layout))
                         {
                             Logger.Info($"Wallpaper queued to disconnected screenlist {layout.LivelyInfoPath} | {layout.LivelyScreen.DeviceName}");
-                            wallpapersDisconnected.Add(new WallpaperLayoutModel(layout.LivelyScreen, layout.LivelyInfoPath));
+                            wallpapersDisconnected.Add(new WallpaperLayoutModel((LivelyScreen)layout.LivelyScreen, layout.LivelyInfoPath));
                         }
                     }
                     else

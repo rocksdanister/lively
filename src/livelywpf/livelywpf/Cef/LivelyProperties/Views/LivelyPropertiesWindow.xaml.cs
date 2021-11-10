@@ -15,7 +15,7 @@ namespace livelywpf.Cef
     /// </summary>
     public partial class LivelyPropertiesWindow : Window
     {
-        public LivelyPropertiesWindow(LibraryModel model)
+        public LivelyPropertiesWindow(ILibraryModel model)
         {
             InitializeComponent();
             PreviewKeyDown += (s, e) => { if (e.Key == Key.Escape) this.Close(); };

@@ -21,6 +21,7 @@ using livelywpf.Cmd;
 using livelywpf.Core.InputForwarding;
 using livelywpf.Core.Suspend;
 using livelywpf.Core.Watchdog;
+using livelywpf.Helpers.NetWork;
 
 namespace livelywpf
 {
@@ -65,21 +66,23 @@ namespace livelywpf
                 .AddSingleton<IAppUpdaterService, GithubUpdaterService>()
                 .AddSingleton<ISystray, Systray>()
                 .AddSingleton<ITransparentTbService, TransparentTbService>()
-                .AddSingleton<RawInputDX>()
                 .AddSingleton<SettingsViewModel>() //some init stuff like locale, startup etc happening.. TODO: remove!
                 .AddSingleton<LibraryViewModel>() //loaded wallpapers..
+                .AddSingleton<RawInputDX>()
                 //transient
+                .AddTransient<IApplicationsRulesFactory, ApplicationsRulesFactory>()
+                .AddTransient<IWallpaperFactory, WallpaperFactory>()
+                .AddTransient<ILivelyPropertyFactory, LivelyPropertyFactory>()
+                .AddTransient<IScreenRecorder, ScreenRecorderlibScreen>()
+                .AddTransient<ICommandHandler, CommandHandler>()
+                .AddTransient<IDownloadHelper, MultiDownloadHelper>()
                 .AddTransient<SetupView>()
                 .AddTransient<ApplicationRulesViewModel>()
                 .AddTransient<AddWallpaperViewModel>()
                 .AddTransient<AboutViewModel>()
                 .AddTransient<HelpViewModel>()
                 .AddTransient<ScreenLayoutViewModel>()
-                .AddTransient<IScreenRecorder, ScreenRecorderlibScreen>()
-                .AddTransient<ICommandHandler, CommandHandler>()
                 /*
-                .AddSingleton<IAppUpdaterService, GithubUpdaterService>()
-                .AddTransient<Factories.IApplicationRulesFactory, Factories.ApplicationRulesFactory>()
                 .AddLogging(loggingBuilder =>
                 {
                     // configure Logging with NLog
@@ -158,6 +161,12 @@ namespace livelywpf
 
             var appWindow = App.Services.GetRequiredService<MainWindow>();
             Application.Current.MainWindow = appWindow;
+            if (userSettings.Settings.IsRestart)
+            {
+                userSettings.Settings.IsRestart = false;
+                userSettings.Save<ISettingsModel>();
+                appWindow?.Show();
+            }
             //Creates an empty xaml island control as a temp fix for closing issue; also receives window msg..
             //Issue: https://github.com/microsoft/microsoft-ui-xaml/issues/3482
             //Steps to reproduce: Start gif wallpaper using uwp control -> restart lively -> close restored gif wallpaper -> library gridview stops.
@@ -165,12 +174,7 @@ namespace livelywpf
             wndproc.Show();
             //Package app otherwise bugging out when initialized in settings vm.
             App.Services.GetRequiredService<RawInputDX>().Show();
-            if (userSettings.Settings.IsRestart)
-            {
-                userSettings.Settings.IsRestart = false;
-                userSettings.Save<ISettingsModel>();
-                appWindow?.Show();
-            }
+            App.Services.GetRequiredService<IDesktopCore>().RestoreWallpaper();
 
             base.OnStartup(e);
         }

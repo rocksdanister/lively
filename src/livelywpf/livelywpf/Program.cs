@@ -120,8 +120,6 @@ namespace livelywpf
                 setupWizard.Show();
             }
 
-            App.Services.GetRequiredService<IDesktopCore>().RestoreWallpaper();
-
             //first element is not application path, unlike Environment.GetCommandLineArgs().
             if (e.Args.Length > 0)
             {

@@ -1,4 +1,5 @@
-﻿using livelywpf.Helpers.MVVM;
+﻿using livelywpf.Factories;
+using livelywpf.Helpers.MVVM;
 using livelywpf.Helpers.Storage;
 using livelywpf.Models;
 using livelywpf.Services;
@@ -14,12 +15,17 @@ namespace livelywpf.ViewModels
 {
     public class ApplicationRulesViewModel : ObservableObject
     {
-        readonly IUserSettingsService userSettings;
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private bool itemSelected = false;
-        public ApplicationRulesViewModel(IUserSettingsService userSettings)
+
+        private readonly IUserSettingsService userSettings;
+        private readonly IApplicationsRulesFactory appRuleFactory;
+
+        public ApplicationRulesViewModel(IUserSettingsService userSettings, IApplicationsRulesFactory appRuleFactory)
         {
             this.userSettings = userSettings;
+            this.appRuleFactory = appRuleFactory;
+
             AppRules = new ObservableCollection<IApplicationRulesModel>(userSettings.AppRules);
         }
 
@@ -121,7 +127,7 @@ namespace livelywpf.ViewModels
                         }
                     }
 
-                    var rule = new ApplicationRulesModel(fileName, AppRulesEnum.pause);
+                    var rule = appRuleFactory.CreateAppRule(fileName, AppRulesEnum.pause);
                     userSettings.AppRules.Add(rule);
                     AppRules.Add(rule);
                 }

@@ -30,7 +30,7 @@ namespace livelywpf.Helpers.NetWork
         public string FileName { get; set; }
     }
 
-    interface IDownloadHelper
+    public interface IDownloadHelper
     {
         event EventHandler<bool> DownloadFileCompleted;
         event EventHandler<DownloadProgressEventArgs> DownloadProgressChanged;

@@ -83,10 +83,10 @@ namespace livelywpf.Views.Pages
         private async void LivelyGridControl_ContextMenuClick(object sender, object e)
         {
             var s = sender as MenuFlyoutItem;
-            LibraryModel obj;
+            ILibraryModel obj;
             try
             {
-                obj = (LibraryModel)e;
+                obj = (ILibraryModel)e;
             }
             catch { return; }
 
@@ -94,7 +94,7 @@ namespace livelywpf.Views.Pages
                 switch (s.Name)
                 {
                     case "previewWallpaper":
-                        var prev = new WallpaperPreviewWindow((LibraryModel)e)
+                        var prev = new WallpaperPreviewWindow(obj)
                         {
                             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner,
                             Owner = appWindow
@@ -105,7 +105,7 @@ namespace livelywpf.Views.Pages
                         libraryVm.WallpaperShowOnDisk(e);
                         break;
                     case "setWallpaper":
-                        desktopCore.SetWallpaper((LibraryModel)e, userSettings.Settings.SelectedDisplay);
+                        desktopCore.SetWallpaper(obj, userSettings.Settings.SelectedDisplay);
                         break;
                     case "exportWallpaper":
                         string savePath = "";
@@ -114,7 +114,7 @@ namespace livelywpf.Views.Pages
                             Title = "Select location to save the file",
                             Filter = "Lively/zip file|*.zip",
                             //title ending with '.' can have diff extension (example: parallax.js)
-                            FileName = Path.ChangeExtension(((LibraryModel)e).Title, ".zip"),
+                            FileName = Path.ChangeExtension(obj.Title, ".zip"),
                         };
                         if (saveFileDialog1.ShowDialog() == true)
                         {
@@ -129,7 +129,7 @@ namespace livelywpf.Views.Pages
                     case "deleteWallpaper":
                         var deleteView = new livelyUserControls.InfoPage
                         {
-                            DataContext = ((LibraryModel)e),
+                            DataContext = obj,
                             UIText = new livelyUserControls.InfoPage.LocalizeText()
                             {
                                 Author = Properties.Resources.TextAuthor,
@@ -138,7 +138,7 @@ namespace livelywpf.Views.Pages
                             },
                         };
                         var result = await DialogService.ShowConfirmationDialog(
-                            ((LibraryModel)e).LivelyInfo.IsAbsolutePath ?
+                            obj.LivelyInfo.IsAbsolutePath ?
                                 Properties.Resources.DescriptionDeleteConfirmationLibrary : Properties.Resources.DescriptionDeleteConfirmation,
                             deleteView,
                             ((UIElement)sender).XamlRoot,
@@ -175,7 +175,7 @@ namespace livelywpf.Views.Pages
                     case "moreInformation":
                         var infoView = new livelyUserControls.InfoPage
                         {
-                            DataContext = ((LibraryModel)e),
+                            DataContext = obj,
                             UIText = new livelyUserControls.InfoPage.LocalizeText()
                             {
                                 Author = Properties.Resources.TextAuthor,

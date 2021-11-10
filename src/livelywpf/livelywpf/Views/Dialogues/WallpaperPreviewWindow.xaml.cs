@@ -44,7 +44,7 @@ namespace livelywpf.Views.Dialogues
         {
             userSettings = App.Services.GetRequiredService<IUserSettingsService>();
             recorder = App.Services.GetRequiredService<IScreenRecorder>();
-            wallpaperFactory = new WallpaperFactory();
+            wallpaperFactory = App.Services.GetRequiredService<IWallpaperFactory>();
             this.wallpaperData = model;
 
             InitializeComponent();

@@ -11,9 +11,15 @@ namespace livelywpf.Factories
 {
     public class WallpaperFactory : IWallpaperFactory
     {
+        private readonly ILivelyPropertyFactory lpFactory;
+
+        public WallpaperFactory(ILivelyPropertyFactory lpFactory)
+        {
+            this.lpFactory = lpFactory;
+        }
+
         public IWallpaper CreateWallpaper(ILibraryModel obj, ILivelyScreen display, IUserSettingsService userSettings, bool isPreview = false)
         {
-            ILivelyPropertyFactory pf = new LivelyPropertyFactory();
             switch (obj.LivelyInfo.Type)
             {
                 case WallpaperType.web:
@@ -26,12 +32,12 @@ namespace livelywpf.Factories
                             return new WebProcess(obj.FilePath,
                                 obj,
                                 display,
-                                pf.CreateLivelyPropertyFolder(obj, display, userSettings.Settings.WallpaperArrangement),
+                                lpFactory.CreateLivelyPropertyFolder(obj, display, userSettings.Settings.WallpaperArrangement),
                                 userSettings.Settings.WebDebugPort,
                                 userSettings.Settings.CefDiskCache,
                                 userSettings.Settings.AudioVolumeGlobal);
                         case LivelyWebBrowser.webview2:
-                            return new WebEdge(obj.FilePath, obj, display, pf.CreateLivelyPropertyFolder(obj, display, userSettings.Settings.WallpaperArrangement));
+                            return new WebEdge(obj.FilePath, obj, display, lpFactory.CreateLivelyPropertyFolder(obj, display, userSettings.Settings.WallpaperArrangement));
                     }
                     break;
                 case WallpaperType.video:
@@ -52,11 +58,11 @@ namespace livelywpf.Factories
                         case LivelyMediaPlayer.libmpvExt:
                             return new VideoPlayerMPVExt(obj.FilePath, 
                                 obj, 
-                                display, 
-                                pf.CreateLivelyPropertyFolder(obj, display, userSettings.Settings.WallpaperArrangement), 
+                                display,
+                                lpFactory.CreateLivelyPropertyFolder(obj, display, userSettings.Settings.WallpaperArrangement), 
                                 userSettings.Settings.WallpaperScaling);
                          case LivelyMediaPlayer.mpv:
-                            return new VideoMpvPlayer(obj.FilePath, obj, display, pf.CreateLivelyPropertyFolder(obj, 
+                            return new VideoMpvPlayer(obj.FilePath, obj, display, lpFactory.CreateLivelyPropertyFolder(obj, 
                                 display, 
                                 userSettings.Settings.WallpaperArrangement),
                                 userSettings.Settings.WallpaperScaling, 
@@ -80,14 +86,14 @@ namespace livelywpf.Factories
                         case LivelyGifPlayer.libmpvExt:
                             return new VideoPlayerMPVExt(obj.FilePath, 
                                 obj, 
-                                display, 
-                                pf.CreateLivelyPropertyFolder(obj, display, userSettings.Settings.WallpaperArrangement),
+                                display,
+                                lpFactory.CreateLivelyPropertyFolder(obj, display, userSettings.Settings.WallpaperArrangement),
                                 userSettings.Settings.WallpaperScaling);
                         case LivelyGifPlayer.mpv:
                             return new VideoMpvPlayer(obj.FilePath,
                                 obj,
                                 display,
-                                pf.CreateLivelyPropertyFolder(obj, display, userSettings.Settings.WallpaperArrangement),
+                                lpFactory.CreateLivelyPropertyFolder(obj, display, userSettings.Settings.WallpaperArrangement),
                                 userSettings.Settings.WallpaperScaling, 
                                 userSettings.Settings.VideoPlayerHwAccel, 
                                 isPreview);
@@ -113,7 +119,7 @@ namespace livelywpf.Factories
                         return new VideoMpvPlayer(obj.FilePath, 
                             obj,
                             display,
-                            pf.CreateLivelyPropertyFolder(obj, display, userSettings.Settings.WallpaperArrangement),
+                            lpFactory.CreateLivelyPropertyFolder(obj, display, userSettings.Settings.WallpaperArrangement),
                             userSettings.Settings.WallpaperScaling, userSettings.Settings.VideoPlayerHwAccel,
                             isPreview, userSettings.Settings.StreamQuality);
                     }
@@ -123,7 +129,7 @@ namespace livelywpf.Factories
                         return new WebProcess(obj.FilePath,
                             obj,
                             display,
-                            pf.CreateLivelyPropertyFolder(obj, display, userSettings.Settings.WallpaperArrangement),
+                            lpFactory.CreateLivelyPropertyFolder(obj, display, userSettings.Settings.WallpaperArrangement),
                             userSettings.Settings.WebDebugPort,
                             userSettings.Settings.CefDiskCache,
                             userSettings.Settings.AudioVolumeGlobal);

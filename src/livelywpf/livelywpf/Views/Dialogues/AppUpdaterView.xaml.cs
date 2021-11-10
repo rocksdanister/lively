@@ -1,4 +1,5 @@
 ﻿using livelywpf.Helpers.NetWork;
+using Microsoft.Extensions.DependencyInjection;
 using ModernWpf.Controls;
 using System;
 using System.Diagnostics;
@@ -114,7 +115,7 @@ namespace livelywpf.Views.Dialogues
                 */
                 try
                 {
-                    download = new MultiDownloadHelper();
+                    download = App.Services.GetRequiredService<IDownloadHelper>();
                     savePath = Path.Combine(Constants.CommonPaths.TempDir, suggestedFileName);
                     download.DownloadFile(fileUrl, savePath);
                     download.DownloadFileCompleted += UpdateDownload_DownloadFileCompleted;
@@ -143,7 +144,7 @@ namespace livelywpf.Views.Dialogues
                     Title = Properties.Resources.TitlePleaseWait,
                     Content = Properties.Resources.DescriptionCancelQuestion,
                     PrimaryButtonText = Properties.Resources.TextYes,
-                    SecondaryButtonText = Properties.Resources.TextNo,      
+                    SecondaryButtonText = Properties.Resources.TextNo,
                 };
                 ContentDialogResult result = await cancelDownload.ShowAsync();
                 if (result == ContentDialogResult.Primary)

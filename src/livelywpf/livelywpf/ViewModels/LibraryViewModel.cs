@@ -51,8 +51,8 @@ namespace livelywpf.ViewModels
 
         #region collections
 
-        private ObservableCollection<LibraryModel> _libraryItems = new ObservableCollection<LibraryModel>();
-        public ObservableCollection<LibraryModel> LibraryItems
+        private ObservableCollection<ILibraryModel> _libraryItems = new ObservableCollection<ILibraryModel>();
+        public ObservableCollection<ILibraryModel> LibraryItems
         {
             get { return _libraryItems; }
             set
@@ -65,8 +65,8 @@ namespace livelywpf.ViewModels
             }
         }
 
-        private ObservableCollection<LibraryModel> _libraryItemsFiltered;
-        public ObservableCollection<LibraryModel> LibraryItemsFiltered
+        private ObservableCollection<ILibraryModel> _libraryItemsFiltered;
+        public ObservableCollection<ILibraryModel> LibraryItemsFiltered
         {
             get { return _libraryItemsFiltered; }
             set
@@ -91,8 +91,8 @@ namespace livelywpf.ViewModels
             }
         }
 
-        private LibraryModel _selectedItem;
-        public LibraryModel SelectedItem
+        private ILibraryModel _selectedItem;
+        public ILibraryModel SelectedItem
         {
             get
             {
@@ -137,7 +137,7 @@ namespace livelywpf.ViewModels
 
         public void WallpaperShowOnDisk(object obj)
         {
-            var selection = (LibraryModel)obj;
+            var selection = (ILibraryModel)obj;
             string folderPath;
             if (selection.LivelyInfo.Type == WallpaperType.url 
             || selection.LivelyInfo.Type == WallpaperType.videostream)
@@ -153,7 +153,7 @@ namespace livelywpf.ViewModels
 
         public async void WallpaperExport(object obj, string saveFile)
         {
-            var selection = (LibraryModel)obj;
+            var selection = (ILibraryModel)obj;
             await Task.Run(() =>
             {
                 try
@@ -283,7 +283,7 @@ namespace livelywpf.ViewModels
 
         public async void WallpaperDelete(object obj)
         {
-            var selection = (LibraryModel)obj;
+            var selection = (ILibraryModel)obj;
             //close if running.
             desktopCore.CloseWallpaper(selection, true);
             //delete wp folder.      
@@ -350,7 +350,7 @@ namespace livelywpf.ViewModels
 
         public void WallpaperVideoConvert(object obj)
         {
-            var selection = (LibraryModel)obj;
+            var selection = (ILibraryModel)obj;
             var model = new LibraryModel(selection.LivelyInfo, selection.LivelyInfoFolderPath, LibraryTileType.videoConvert, userSettings.Settings.LivelyGUIRendering == LivelyGUIState.normal);
             desktopCore.SetWallpaper(model, userSettings.Settings.SelectedDisplay);
         }
@@ -370,7 +370,7 @@ namespace livelywpf.ViewModels
 
         #region helpers
 
-        public void AddWallpaper(string path, WallpaperType wpType, LibraryTileType dataType, LivelyScreen screen, string cmdArgs = null)
+        public void AddWallpaper(string path, WallpaperType wpType, LibraryTileType dataType, ILivelyScreen screen, string cmdArgs = null)
         {
             var dir = Path.Combine(Program.WallpaperDir, "SaveData", "wptmp", Path.GetRandomFileName());
             if (dataType == LibraryTileType.processing || 
@@ -413,7 +413,7 @@ namespace livelywpf.ViewModels
             }
         }
 
-        public void EditWallpaper(LibraryModel obj)
+        public void EditWallpaper(ILibraryModel obj)
         {
             //Kill wp if running..
             desktopCore.CloseWallpaper(obj, true);
@@ -551,7 +551,7 @@ namespace livelywpf.ViewModels
             }
         }
 
-        private int BinarySearch(ObservableCollection<LibraryModel> item, string x)
+        private int BinarySearch(ObservableCollection<ILibraryModel> item, string x)
         {
             if (x is null)
             {
@@ -586,9 +586,9 @@ namespace livelywpf.ViewModels
             System.Windows.Application.Current.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background,
             new System.Threading.ThreadStart(delegate
             {
-                SelectedItem = (LibraryModel)(userSettings.Settings.WallpaperArrangement == WallpaperArrangement.span && desktopCore.Wallpapers.Count > 0 ?
+                SelectedItem = userSettings.Settings.WallpaperArrangement == WallpaperArrangement.span && desktopCore.Wallpapers.Count > 0 ?
                     desktopCore.Wallpapers[0].Model :
-                    desktopCore.Wallpapers.FirstOrDefault(wp => userSettings.Settings.SelectedDisplay.Equals(wp.Screen))?.Model);
+                    desktopCore.Wallpapers.FirstOrDefault(wp => userSettings.Settings.SelectedDisplay.Equals(wp.Screen))?.Model;
             }));
         }
 

@@ -46,7 +46,7 @@ namespace livelywpf.Models
         ScreensaverIdleTime ScreensaverIdleWait { get; set; }
         bool ScreensaverLockOnResume { get; set; }
         bool ScreensaverOledWarning { get; set; }
-        LivelyScreen SelectedDisplay { get; set; }
+        ILivelyScreen SelectedDisplay { get; set; }
         bool Startup { get; set; }
         StreamQualitySuggestion StreamQuality { get; set; }
         TaskbarTheme SystemTaskbarTheme { get; set; }

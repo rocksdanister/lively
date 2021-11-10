@@ -71,7 +71,7 @@ namespace livelywpf.Models
         public LivelyWebBrowser WebBrowser { get; set; }
         public bool GifCapture { get; set; }
         public bool MultiFileAutoImport { get; set; }
-        public livelywpf.Core.LivelyScreen SelectedDisplay { get; set; }
+        public ILivelyScreen SelectedDisplay { get; set; }
         public LivelyGUIState LivelyGUIRendering { get; set; }
         public string WallpaperDir { get; set; }
         public bool WallpaperDirMoveExistingWallpaperNewDir { get; set; }
@@ -153,7 +153,7 @@ namespace livelywpf.Models
 
             TileSize = 1;
             DisplayIdentification = DisplayIdentificationMode.deviceId;
-            SelectedDisplay = (LivelyScreen)ScreenHelper.GetPrimaryScreen();
+            SelectedDisplay = ScreenHelper.GetPrimaryScreen();
             LivelyGUIRendering = LivelyGUIState.normal;
             WallpaperDir = Path.Combine(Constants.CommonPaths.AppDataDir, "Library");
             WallpaperDirMoveExistingWallpaperNewDir = false;

@@ -206,8 +206,8 @@ namespace livelywpf.Cmd
                     if (Directory.Exists(opts.File))
                     {
                         //Folder containing LivelyInfo.json file.
-                        Core.LivelyScreen screen = (LivelyScreen)(opts.Monitor != null ?
-                            ScreenHelper.GetScreen().FirstOrDefault(x => x.DeviceNumber == ((int)opts.Monitor).ToString()) : ScreenHelper.GetPrimaryScreen());
+                        var screen = opts.Monitor != null ?
+                            ScreenHelper.GetScreen().FirstOrDefault(x => x.DeviceNumber == ((int)opts.Monitor).ToString()) : ScreenHelper.GetPrimaryScreen();
                         var libraryItem = libraryVm.LibraryItems.FirstOrDefault(x => x.LivelyInfoFolderPath != null && x.LivelyInfoFolderPath.Equals(opts.File));
                         if (libraryItem != null && screen != null)
                         {
@@ -216,8 +216,8 @@ namespace livelywpf.Cmd
                     }
                     else if (File.Exists(opts.File))
                     {
-                        Core.LivelyScreen screen = (LivelyScreen)(opts.Monitor != null ?
-                            ScreenHelper.GetScreen().FirstOrDefault(x => x.DeviceNumber == ((int)opts.Monitor).ToString()) : ScreenHelper.GetPrimaryScreen());
+                        var screen = opts.Monitor != null ?
+                            ScreenHelper.GetScreen().FirstOrDefault(x => x.DeviceNumber == ((int)opts.Monitor).ToString()) : ScreenHelper.GetPrimaryScreen();
                         var libraryItem = libraryVm.LibraryItems.FirstOrDefault(x => x.FilePath != null && x.FilePath.Equals(opts.File));
                         if (screen != null)
                         {
@@ -295,8 +295,8 @@ namespace livelywpf.Cmd
 
         private int RunSeekWallpaperOptions(SeekWallpaperOptions opts)
         {
-            Core.LivelyScreen screen = (LivelyScreen)(opts.Monitor != null ?
-                ScreenHelper.GetScreen().FirstOrDefault(x => x.DeviceNumber == ((int)opts.Monitor).ToString()) : ScreenHelper.GetPrimaryScreen());
+            var screen = opts.Monitor != null ?
+                ScreenHelper.GetScreen().FirstOrDefault(x => x.DeviceNumber == ((int)opts.Monitor).ToString()) : ScreenHelper.GetPrimaryScreen();
             if (screen != null)
             {
                 var wp = desktopCore.Wallpapers.FirstOrDefault(x => x.Screen.Equals(screen));
@@ -343,8 +343,8 @@ namespace livelywpf.Cmd
             if (opts.Param != null)
             {
                 //use primary screen if none found..
-                Core.LivelyScreen screen = (LivelyScreen)(opts.Monitor != null ?
-                    ScreenHelper.GetScreen().FirstOrDefault(x => x.DeviceNumber == ((int)opts.Monitor).ToString()) : ScreenHelper.GetPrimaryScreen());
+                var screen = opts.Monitor != null ?
+                    ScreenHelper.GetScreen().FirstOrDefault(x => x.DeviceNumber == ((int)opts.Monitor).ToString()) : ScreenHelper.GetPrimaryScreen();
 
                 if (screen != null)
                 {
@@ -379,7 +379,7 @@ namespace livelywpf.Cmd
                             {
                                 if (name.Equals("lively_default_settings_reload", StringComparison.OrdinalIgnoreCase))
                                 {
-                                    if (Cef.LivelyPropertiesView.RestoreOriginalPropertyFile((LibraryModel)wp.Model, wp.LivelyPropertyCopyPath))
+                                    if (Cef.LivelyPropertiesView.RestoreOriginalPropertyFile(wp.Model, wp.LivelyPropertyCopyPath))
                                     {
                                         msg = new LivelyButton() { Name = "lively_default_settings_reload", IsDefault = true };
                                     }
@@ -438,7 +438,7 @@ namespace livelywpf.Cmd
                                 switch (userSettings.Settings.WallpaperArrangement)
                                 {
                                     case WallpaperArrangement.per:
-                                        desktopCore.SendMessageWallpaper(screen, (LibraryModel)wp.Model, msg);
+                                        desktopCore.SendMessageWallpaper(screen, wp.Model, msg);
                                         break;
                                     case WallpaperArrangement.span:
                                     case WallpaperArrangement.duplicate:

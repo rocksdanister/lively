@@ -113,8 +113,8 @@ namespace livelywpf.ViewModels
             //Restrictions..
             userSettings.Settings.LockScreenAutoWallpaper = false;
 
-            userSettings.Settings.SelectedDisplay = (LivelyScreen)(ScreenHelper.GetScreen(userSettings.Settings.SelectedDisplay.DeviceId, userSettings.Settings.SelectedDisplay.DeviceName,
-                        userSettings.Settings.SelectedDisplay.Bounds, userSettings.Settings.SelectedDisplay.WorkingArea, DisplayIdentificationMode.deviceId) ?? ScreenHelper.GetPrimaryScreen());
+            userSettings.Settings.SelectedDisplay = ScreenHelper.GetScreen(userSettings.Settings.SelectedDisplay.DeviceId, userSettings.Settings.SelectedDisplay.DeviceName,
+                        userSettings.Settings.SelectedDisplay.Bounds, userSettings.Settings.SelectedDisplay.WorkingArea, DisplayIdentificationMode.deviceId) ?? ScreenHelper.GetPrimaryScreen();
 
             SelectedTileSizeIndex = userSettings.Settings.TileSize;
             SelectedAppFullScreenIndex = (int)userSettings.Settings.AppFullscreenPause;
