@@ -9,6 +9,8 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
+using livelywpf.Helpers.Hardware;
+using livelywpf.Helpers.Archive;
 
 namespace livelywpf
 {
@@ -23,13 +25,13 @@ namespace livelywpf
 
             //process start date as filename
             string fileName = DateTime.Now.ToString("yyyyMMdd_HHmmss", CultureInfo.InvariantCulture) + ".txt";
-            if (File.Exists(Path.Combine(Program.AppDataDir, "logs", fileName)))
+            if (File.Exists(Path.Combine(Constants.CommonPaths.LogDir, fileName)))
             {
                 fileName = Path.GetRandomFileName() + ".txt";
             }
 
             // Targets where to log to: File and Console
-            var logfile = new NLog.Targets.FileTarget("logfile") { FileName = Path.Combine(Program.AppDataDir, "logs", fileName), DeleteOldFileOnStartup = false };
+            var logfile = new NLog.Targets.FileTarget("logfile") { FileName = Path.Combine(Constants.CommonPaths.LogDir, fileName), DeleteOldFileOnStartup = false };
             var logconsole = new NLog.Targets.ConsoleTarget("logconsole");
 
             // Rules for mapping loggers to targets            
@@ -45,7 +47,7 @@ namespace livelywpf
         {
             try
             {
-                foreach (var fi in new DirectoryInfo(Path.Combine(Program.AppDataDir, "logs")).GetFiles().OrderByDescending(x => x.LastWriteTime).Skip(maxLogs))
+                foreach (var fi in new DirectoryInfo(Constants.CommonPaths.LogDir).GetFiles().OrderByDescending(x => x.LastWriteTime).Skip(maxLogs))
                 {
                     fi.Delete();
                 }
@@ -125,19 +127,19 @@ namespace livelywpf
                 try
                 {
                     var files = new List<string>();
-                    var logFolder = Path.Combine(Program.AppDataDir, "logs");
+                    var logFolder = Constants.CommonPaths.LogDir;
                     if (Directory.Exists(logFolder))
                     {
                         files.AddRange(Directory.GetFiles(logFolder, "*.*", SearchOption.TopDirectoryOnly));
                     }
 
-                    var settingsFile = Path.Combine(Program.AppDataDir, "Settings.json");
+                    var settingsFile = Constants.CommonPaths.UserSettingsPath;
                     if (File.Exists(settingsFile))
                     {
                         files.Add(settingsFile);
                     }
 
-                    var layoutFile = Path.Combine(Program.AppDataDir, "WallpaperLayout.json");
+                    var layoutFile = Constants.CommonPaths.WallpaperLayoutPath;
                     if (File.Exists(layoutFile))
                     {
                         files.Add(layoutFile);
@@ -153,7 +155,7 @@ namespace livelywpf
                     {
                         ZipCreate.CreateZip(savePath,
                             new List<ZipCreate.FileData>() { 
-                                new ZipCreate.FileData() { ParentDirectory = Program.AppDataDir, Files = files } });
+                                new ZipCreate.FileData() { ParentDirectory = Constants.CommonPaths.AppDataDir, Files = files } });
                     }
                 }
                 catch (Exception e)

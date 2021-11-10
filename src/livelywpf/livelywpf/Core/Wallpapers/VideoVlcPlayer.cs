@@ -1,4 +1,6 @@
 ﻿using livelywpf.Core.API;
+using livelywpf.Helpers;
+using livelywpf.Helpers.Pinvoke;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -6,8 +8,10 @@ using System.IO;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using livelywpf.Models;
+using livelywpf.Helpers.Shell;
 
-namespace livelywpf.Core
+namespace livelywpf.Core.Wallpapers
 {
     //Ref: 
     //https://github.com/rocksdanister/lively/discussions/342
@@ -18,13 +22,29 @@ namespace livelywpf.Core
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
         private IntPtr hwnd;
         private readonly Process _process;
-        private readonly LibraryModel model;
-        private LivelyScreen display;
+        private readonly ILibraryModel model;
+        private ILivelyScreen display;
         private readonly CancellationTokenSource ctsProcessWait = new CancellationTokenSource();
         private Task processWaitTask;
         private readonly int timeOut;
 
-        public VideoVlcPlayer(string path, LibraryModel model, LivelyScreen display, WallpaperScaler scaler = WallpaperScaler.fill)
+        public bool IsLoaded => hwnd != IntPtr.Zero;
+
+        public WallpaperType Category => model.LivelyInfo.Type;
+
+        public ILibraryModel Model => model;
+
+        public IntPtr Handle => hwnd;
+
+        public IntPtr InputHandle => IntPtr.Zero;
+
+        public Process Proc => _process;
+
+        public ILivelyScreen Screen { get => display; set => display = value; }
+
+        public string LivelyPropertyCopyPath => null;
+
+        public VideoVlcPlayer(string path, ILibraryModel model, ILivelyScreen display, WallpaperScaler scaler = WallpaperScaler.fill, bool hwAccel = true)
         {
             var scalerArg = scaler switch
             {
@@ -51,7 +71,7 @@ namespace livelywpf.Core
             //open window at (-9999,0), not working without: --no-embedded-video
             cmdArgs.Append("--video-x=-9999 --video-y=0 ");
             //gpu decode preference.
-            cmdArgs.Append(Program.SettingsVM.Settings.VideoPlayerHwAccel ? "--avcodec-hw=any " : "--avcodec-hw=none ");
+            cmdArgs.Append(hwAccel ? "--avcodec-hw=any " : "--avcodec-hw=none ");
             //media file path.
             cmdArgs.Append("\"" + path + "\"");
 
@@ -88,36 +108,6 @@ namespace livelywpf.Core
             Terminate();
         }
 
-        public IntPtr GetHWND()
-        {
-            return hwnd;
-        }
-
-        public IntPtr GetHWNDInput()
-        {
-            return IntPtr.Zero;
-        }
-
-        public string GetLivelyPropertyCopyPath()
-        {
-            return null;
-        }
-
-        public Process GetProcess()
-        {
-            return _process;
-        }
-
-        public LivelyScreen GetScreen()
-        {
-            return display;
-        }
-
-        public LibraryModel GetWallpaperData()
-        {
-            return model;
-        }
-
         public WallpaperType GetWallpaperType()
         {
             return model.LivelyInfo.Type;
@@ -141,11 +131,6 @@ namespace livelywpf.Core
         public void SetPlaybackPos(float pos, PlaybackPosType type)
         {
             //todo
-        }
-
-        public void SetScreen(LivelyScreen display)
-        {
-            this.display = display;
         }
 
         public void SetVolume(int volume)
@@ -220,7 +205,7 @@ namespace livelywpf.Core
         private void Proc_Exited(object sender, EventArgs e)
         {
             _process?.Dispose();
-            SetupDesktop.RefreshDesktop();
+            DesktopUtil.RefreshDesktop();
         }
 
         #region process task
@@ -346,7 +331,7 @@ namespace livelywpf.Core
                 _process.Kill();
             }
             catch { }
-            SetupDesktop.RefreshDesktop();
+            DesktopUtil.RefreshDesktop();
         }
 
         public Task ScreenCapture(string filePath)
@@ -357,11 +342,6 @@ namespace livelywpf.Core
         public void SendMessage(IpcMessage obj)
         {
             //todo
-        }
-
-        public bool IsLoaded()
-        {
-            return GetHWND() != IntPtr.Zero;
         }
     }
 }

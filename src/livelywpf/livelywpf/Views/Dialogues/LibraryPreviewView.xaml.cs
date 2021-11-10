@@ -1,5 +1,11 @@
 ﻿using ImageMagick;
 using livelywpf.Core;
+using livelywpf.Helpers;
+using livelywpf.Helpers.Pinvoke;
+using livelywpf.Helpers.ScreenRecord;
+using livelywpf.Services;
+using livelywpf.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Globalization;
 using System.IO;
@@ -10,7 +16,7 @@ using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Threading;
 
-namespace livelywpf.Views
+namespace livelywpf.Views.Dialogues
 {
     public interface ILibraryPreview
     {
@@ -65,13 +71,17 @@ namespace livelywpf.Views
         public event EventHandler<double> CaptureProgress;
         public event EventHandler WallpaperAttached;
 
-        public LibraryPreviewView(IWallpaper wp)
+        private readonly IUserSettingsService userSettings;
+
+        public LibraryPreviewView(IWallpaper wallpaper)
         {
-            LibraryPreviewViewModel vm = new LibraryPreviewViewModel(this, wp);
+            userSettings = App.Services.GetRequiredService<IUserSettingsService>();
+
+            LibraryPreviewViewModel vm = new LibraryPreviewViewModel(this, wallpaper);
             this.DataContext = vm;
             this.Closed += vm.OnWindowClosed;
-            wallpaperHwnd = wp.GetHWND();
-            wallpaperType = wp.GetWallpaperType();
+            wallpaperHwnd = wallpaper.Handle;
+            wallpaperType = wallpaper.Category;
 
             InitializeComponent();
             PreviewKeyDown += (s, e) => { if (e.Key == Key.Escape) this.Close(); };
@@ -163,7 +173,7 @@ namespace livelywpf.Views
             ThumbnailUpdated?.Invoke(this, thumbFilePath);
 
             //preview clip (animated gif file).
-            if (Program.SettingsVM.Settings.GifCapture && wallpaperType != WallpaperType.picture)
+            if (userSettings.Settings.GifCapture && wallpaperType != WallpaperType.picture)
             {
                 var previewFilePath = Path.Combine(saveDirectory, Path.ChangeExtension(Path.GetRandomFileName(), ".gif"));
                 previewPanelPos = WindowOperations.GetAbsolutePlacement(PreviewBorder, true);

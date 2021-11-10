@@ -1,8 +1,11 @@
-﻿using System;
+﻿using livelywpf.Helpers;
+using livelywpf.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 
-namespace livelywpf.Views
+namespace livelywpf.Views.Screen
 {
     /// <summary>
     /// Interaction logic for ScreenLayoutView.xaml
@@ -14,7 +17,7 @@ namespace livelywpf.Views
         public ScreenLayoutView()
         {
             InitializeComponent();
-            var vm = new ScreenLayoutViewModel();
+            var vm = App.Services.GetRequiredService<ScreenLayoutViewModel>();
             this.DataContext = vm;
             this.Closing += vm.OnWindowClosing;
             CreateLabelWindows();

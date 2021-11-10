@@ -1,11 +1,12 @@
-﻿using System;
+﻿using livelywpf.Helpers;
+using System;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Interop;
 using System.Windows.Media;
 
-namespace livelywpf
+namespace livelywpf.Views.Wallpapers
 {
     /// <summary>
     /// MediaElement video player (old, compatible with win7 onwards.)

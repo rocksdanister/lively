@@ -1,11 +1,12 @@
-﻿using Microsoft.Toolkit.Wpf.UI.XamlHost;
+﻿using livelywpf.Helpers;
+using Microsoft.Toolkit.Wpf.UI.XamlHost;
 using System;
 using System.Windows;
 using System.Windows.Interop;
 using Windows.Foundation.Metadata;
 using Windows.UI.Xaml.Media.Imaging;
 
-namespace livelywpf
+namespace livelywpf.Views.Wallpapers
 {
     /// <summary>
     /// References:

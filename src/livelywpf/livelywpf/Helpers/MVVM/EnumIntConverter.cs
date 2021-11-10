@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Data;
 
-namespace livelywpf.Helpers
+namespace livelywpf.Helpers.MVVM
 {
     //ref: https://stackoverflow.com/questions/20707160/data-binding-int-property-to-enum-in-wpf
     public class EnumIntConverter : IValueConverter

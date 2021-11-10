@@ -1,4 +1,4 @@
-﻿<Window x:Class="livelywpf.MainWindow"
+﻿<Window x:Class="livelywpf.Views.MainWindow"
         xmlns:ui="http://schemas.modernwpf.com/2019"
         ui:WindowHelper.UseModernWindowStyle="True"
         ui:TitleBar.ExtendViewIntoTitleBar="True"

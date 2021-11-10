@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Text;
 using System.Windows.Input;
 
-namespace livelywpf
+namespace livelywpf.Helpers.MVVM
 {
     //ref: https://rachel53461.wordpress.com/2011/05/08/simplemvvmexample/
     /// <summary>

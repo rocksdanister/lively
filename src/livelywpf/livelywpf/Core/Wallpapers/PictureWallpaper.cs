@@ -6,8 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using livelywpf.Core.API;
 using livelywpf.Helpers;
+using livelywpf.Models;
 
-namespace livelywpf.Core
+namespace livelywpf.Core.Wallpapers
 {
     //incomplete
     class PictureWallpaper : IWallpaper
@@ -15,12 +16,32 @@ namespace livelywpf.Core
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
         private DesktopWallpaperPosition desktopScaler;
         private IDesktopWallpaper desktop;
-        private readonly LibraryModel model;
+        private readonly ILibraryModel model;
         private string systemWallpaperPath;
-        private LivelyScreen display;
+        private ILivelyScreen display;
 
-        public PictureWallpaper(string filePath, LibraryModel model, LivelyScreen display, WallpaperScaler scaler = WallpaperScaler.fill)
+        public bool IsLoaded => true;
+
+        public WallpaperType Category => WallpaperType.picture;
+
+        public ILibraryModel Model => model;
+
+        public IntPtr Handle => IntPtr.Zero;
+
+        public IntPtr InputHandle => IntPtr.Zero;
+
+        public Process Proc => null;
+
+        public ILivelyScreen Screen { get => display; set => display = value; }
+
+        public string LivelyPropertyCopyPath => null;
+
+        private readonly WallpaperArrangement arrangement;
+
+        public PictureWallpaper(string filePath, ILibraryModel model, ILivelyScreen display, WallpaperArrangement arrangement, WallpaperScaler scaler = WallpaperScaler.fill)
         {
+            this.arrangement = arrangement;
+
             //Has transition animation..
             desktop = (IDesktopWallpaper)new Helpers.DesktopWallpaperClass();
             systemWallpaperPath = desktop.GetWallpaper(display.DeviceId);
@@ -48,41 +69,6 @@ namespace livelywpf.Core
         public void Close()
         {
             Terminate();
-        }
-
-        public IntPtr GetHWND()
-        {
-            return IntPtr.Zero;
-        }
-
-        public IntPtr GetHWNDInput()
-        {
-            return IntPtr.Zero;
-        }
-
-        public string GetLivelyPropertyCopyPath()
-        {
-            return null;
-        }
-
-        public Process GetProcess()
-        {
-            return null;
-        }
-
-        public LivelyScreen GetScreen()
-        {
-            return display;
-        }
-
-        public LibraryModel GetWallpaperData()
-        {
-            return model;
-        }
-
-        public WallpaperType GetWallpaperType()
-        {
-            return WallpaperType.picture;
         }
 
         public void Pause()
@@ -123,8 +109,8 @@ namespace livelywpf.Core
         public void Show()
         {
             //desktop.Enable();
-            desktop.SetPosition(Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span ? Helpers.DesktopWallpaperPosition.Span : desktopScaler);
-            desktop.SetWallpaper(Program.SettingsVM.Settings.WallpaperArrangement == WallpaperArrangement.span ? null : display.DeviceId, model.FilePath);
+            desktop.SetPosition(arrangement == WallpaperArrangement.span ? Helpers.DesktopWallpaperPosition.Span : desktopScaler);
+            desktop.SetWallpaper(arrangement == WallpaperArrangement.span ? null : display.DeviceId, model.FilePath);
         }
 
         public void Stop()
@@ -141,12 +127,6 @@ namespace livelywpf.Core
         public void SendMessage(IpcMessage obj)
         {
             //todo
-        }
-
-        public bool IsLoaded()
-        {
-            //nothing to load..
-            return true;
         }
     }
 }

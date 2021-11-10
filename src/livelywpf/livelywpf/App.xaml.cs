@@ -5,6 +5,23 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Reflection;
+using livelywpf.Helpers.Files;
+using livelywpf.Helpers.Archive;
+using livelywpf.Helpers;
+using livelywpf.Core;
+using livelywpf.Views;
+using livelywpf.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
+using livelywpf.Services;
+using livelywpf.Factories;
+using livelywpf.Models;
+using livelywpf.Views.SetupWizard;
+using livelywpf.Helpers.ScreenRecord;
+using livelywpf.Cmd;
+using livelywpf.Core.InputForwarding;
+using livelywpf.Core.Suspend;
+using livelywpf.Core.Watchdog;
+using livelywpf.Helpers.NetWork;
 
 namespace livelywpf
 {
@@ -14,10 +31,69 @@ namespace livelywpf
     public partial class App : Application
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private static MainWindow _appWindow;
-        public static MainWindow AppWindow
+
+        private readonly IServiceProvider _serviceProvider;
+        /// <summary>
+        /// Gets the <see cref="IServiceProvider"/> instance for the current application instance.
+        /// </summary>
+        public static IServiceProvider Services
         {
-            get => _appWindow ??= new MainWindow();
+            get
+            {
+                IServiceProvider serviceProvider = ((App)Current)._serviceProvider;
+                return serviceProvider ?? throw new InvalidOperationException("The service provider is not initialized");
+            }
+        }
+
+        public App()
+        {
+            //App() -> OnStartup() -> App.Startup event.
+            _serviceProvider = ConfigureServices();
+        }
+
+        private IServiceProvider ConfigureServices()
+        {
+            //TODO: Logger abstraction.
+            //TODO: Simplify startup order: App() -> OnStartup() -> App.Startup event.
+            var provider = new ServiceCollection()
+                //singleton
+                .AddSingleton<MainWindow>()
+                .AddSingleton<IUserSettingsService, UserSettingsService>()
+                .AddSingleton<IDesktopCore, WinDesktopCore>()
+                .AddSingleton<IWatchdogService, WatchdogProcess>()
+                .AddSingleton<IScreensaverService, ScreensaverService>()
+                .AddSingleton<IPlayback, Playback>()
+                .AddSingleton<IAppUpdaterService, GithubUpdaterService>()
+                .AddSingleton<ISystray, Systray>()
+                .AddSingleton<ITransparentTbService, TransparentTbService>()
+                .AddSingleton<SettingsViewModel>() //some init stuff like locale, startup etc happening.. TODO: remove!
+                .AddSingleton<LibraryViewModel>() //loaded wallpapers..
+                .AddSingleton<RawInputDX>()
+                //transient
+                .AddTransient<IApplicationsRulesFactory, ApplicationsRulesFactory>()
+                .AddTransient<IWallpaperFactory, WallpaperFactory>()
+                .AddTransient<ILivelyPropertyFactory, LivelyPropertyFactory>()
+                .AddTransient<IScreenRecorder, ScreenRecorderlibScreen>()
+                .AddTransient<ICommandHandler, CommandHandler>()
+                .AddTransient<IDownloadHelper, MultiDownloadHelper>()
+                .AddTransient<SetupView>()
+                .AddTransient<ApplicationRulesViewModel>()
+                .AddTransient<AddWallpaperViewModel>()
+                .AddTransient<AboutViewModel>()
+                .AddTransient<HelpViewModel>()
+                .AddTransient<ScreenLayoutViewModel>()
+                /*
+                .AddLogging(loggingBuilder =>
+                {
+                    // configure Logging with NLog
+                    loggingBuilder.ClearProviders();
+                    loggingBuilder.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
+                    loggingBuilder.AddNLog("Nlog.config");
+                })
+                */
+                .BuildServiceProvider();
+
+            return provider;
         }
 
         protected override void OnStartup(StartupEventArgs e)
@@ -25,10 +101,10 @@ namespace livelywpf
             try
             {
                 //create directories if not exist, eg: C:\Users\<User>\AppData\Local
-                Directory.CreateDirectory(Program.AppDataDir);
-                Directory.CreateDirectory(Path.Combine(Program.AppDataDir, "logs"));
-                Directory.CreateDirectory(Path.Combine(Program.AppDataDir, "temp"));
-                Directory.CreateDirectory(Path.Combine(Program.AppDataDir, "Cef"));
+                Directory.CreateDirectory(Constants.CommonPaths.AppDataDir);
+                Directory.CreateDirectory(Constants.CommonPaths.LogDir);
+                Directory.CreateDirectory(Constants.CommonPaths.TempDir);
+                Directory.CreateDirectory(Constants.CommonPaths.TempCefDir);
             }
             catch (Exception ex)
             {
@@ -42,15 +118,15 @@ namespace livelywpf
             NLogger.LogHardwareInfo();
 
             //clear temp files if any.
-            FileOperations.EmptyDirectory(Path.Combine(Program.AppDataDir, "temp"));
+            FileOperations.EmptyDirectory(Constants.CommonPaths.TempDir);
 
             //Initialize before viewmodel and main window.
             ScreenHelper.Initialize();
 
             #region vm init
 
-            Program.SettingsVM = new SettingsViewModel();
-            Program.WallpaperDir = Program.SettingsVM.Settings.WallpaperDir;
+            var userSettings = App.Services.GetRequiredService<IUserSettingsService>();
+            Program.WallpaperDir = userSettings.Settings.WallpaperDir;
             try
             {
                 CreateWallpaperDir();
@@ -58,8 +134,8 @@ namespace livelywpf
             catch (Exception ex)
             {
                 Logger.Error("Wallpaper Directory creation fail, falling back to default directory:" + ex.ToString());
-                Program.SettingsVM.Settings.WallpaperDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Lively Wallpaper", "Library");
-                Program.SettingsVM.UpdateConfigFile();
+                userSettings.Settings.WallpaperDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Lively Wallpaper", "Library");
+                userSettings.Save<ISettingsModel>();
                 try
                 {
                     CreateWallpaperDir();
@@ -72,34 +148,34 @@ namespace livelywpf
                 }
             }
 
-            //previous installed appversion is different from current instance..
-            if (!Program.SettingsVM.Settings.AppVersion.Equals(Assembly.GetExecutingAssembly().GetName().Version.ToString(), StringComparison.OrdinalIgnoreCase))
+            //previous installed appversion is different from current instance..    
+            if (!userSettings.Settings.AppVersion.Equals(Assembly.GetExecutingAssembly().GetName().Version.ToString(), StringComparison.OrdinalIgnoreCase))
             {
                 //todo: show changelog window here..
-                Program.SettingsVM.Settings.WallpaperBundleVersion = ExtractWallpaperBundle(Program.SettingsVM.Settings.WallpaperBundleVersion);
-                Program.SettingsVM.Settings.AppVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-                Program.SettingsVM.UpdateConfigFile();
+                userSettings.Settings.WallpaperBundleVersion = ExtractWallpaperBundle(userSettings.Settings.WallpaperBundleVersion);
+                userSettings.Settings.AppVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+                userSettings.Save<ISettingsModel>();
             }
-
-            Program.AppRulesVM = new ApplicationRulesViewModel();
-            Program.LibraryVM = new LibraryViewModel();
 
             #endregion //vm init
 
-            Application.Current.MainWindow = AppWindow;
+            var appWindow = App.Services.GetRequiredService<MainWindow>();
+            Application.Current.MainWindow = appWindow;
+            if (userSettings.Settings.IsRestart)
+            {
+                userSettings.Settings.IsRestart = false;
+                userSettings.Save<ISettingsModel>();
+                appWindow?.Show();
+            }
             //Creates an empty xaml island control as a temp fix for closing issue; also receives window msg..
             //Issue: https://github.com/microsoft/microsoft-ui-xaml/issues/3482
             //Steps to reproduce: Start gif wallpaper using uwp control -> restart lively -> close restored gif wallpaper -> library gridview stops.
             WndProcMsgWindow wndproc = new WndProcMsgWindow();
             wndproc.Show();
             //Package app otherwise bugging out when initialized in settings vm.
-            SetupDesktop.SetupInputHooks();
-            if (Program.SettingsVM.Settings.IsRestart)
-            {
-                Program.SettingsVM.Settings.IsRestart = false;
-                Program.SettingsVM.UpdateConfigFile();
-                AppWindow?.Show();
-            }
+            App.Services.GetRequiredService<RawInputDX>().Show();
+            App.Services.GetRequiredService<IDesktopCore>().RestoreWallpaper();
+
             base.OnStartup(e);
         }
 

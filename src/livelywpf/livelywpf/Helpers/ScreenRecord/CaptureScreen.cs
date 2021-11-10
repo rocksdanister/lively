@@ -1,4 +1,5 @@
 ﻿using ImageMagick;
+using livelywpf.Helpers.Pinvoke;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,7 +12,7 @@ using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media.Imaging;
 
-namespace livelywpf
+namespace livelywpf.Helpers.ScreenRecord
 {
     public static class CaptureScreen
     {

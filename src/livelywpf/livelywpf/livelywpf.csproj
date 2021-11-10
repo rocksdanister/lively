@@ -18,6 +18,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Helpers\DesktopWallpaper.cs~RF689195a.TMP" />
     <None Remove="Resources\appicon_96.png" />
     <None Remove="Resources\icons8-helping-hand-96.png" />
     <None Remove="Resources\tutorial_systray.png" />
@@ -27,17 +28,18 @@
     <PackageReference Include="CommandLineParser" Version="2.8.0" />
     <PackageReference Include="DesktopBridge.Helpers" Version="1.2.2" />
     <PackageReference Include="Downloader" Version="2.2.9" />
-    <PackageReference Include="H.Hooks" Version="1.4.9" />
-    <PackageReference Include="Magick.NET-Q16-x86" Version="8.3.2" />
-    <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.0" />
+    <PackageReference Include="H.Hooks" Version="1.4.14" />
+    <PackageReference Include="Magick.NET-Q16-x86" Version="8.4.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.2" />
+    <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.1" />
     <PackageReference Include="Microsoft.Toolkit.Wpf.UI.Controls" Version="6.1.2" />
     <PackageReference Include="Microsoft.Toolkit.Wpf.UI.XamlHost" Version="6.1.2" />
-    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.992.28" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1020.30" />
     <PackageReference Include="Microsoft.Windows.Compatibility" Version="5.0.2" />
-    <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.22000.194" />
+    <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.22000.196" />
     <PackageReference Include="ModernWpfUI" Version="0.9.4" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="NLog" Version="4.7.11" />
+    <PackageReference Include="NLog" Version="4.7.12" />
     <PackageReference Include="Octokit" Version="0.50.0" />
     <PackageReference Include="RawInput.Sharp" Version="0.0.4" />
     <PackageReference Include="ScreenRecorderLib" Version="3.1.2" />

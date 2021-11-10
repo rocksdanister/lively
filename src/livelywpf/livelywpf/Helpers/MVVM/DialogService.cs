@@ -6,7 +6,7 @@ using mwpfc = ModernWpf.Controls;
 using swc = System.Windows.Controls;
 using wuxc = Windows.UI.Xaml.Controls;
 
-namespace livelywpf.Helpers
+namespace livelywpf.Helpers.MVVM
 {
     /// <summary>
     /// UWP ContentDialog

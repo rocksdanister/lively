@@ -1,4 +1,4 @@
-﻿<Window x:Class="livelywpf.Views.MultiWallpaperImport"
+﻿<Window x:Class="livelywpf.Views.Dialogues.MultiWallpaperImport"
         xmlns:ui="http://schemas.modernwpf.com/2019"
         ui:WindowHelper.UseModernWindowStyle="True"
         ui:TitleBar.ExtendViewIntoTitleBar="False"

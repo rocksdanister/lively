@@ -4,7 +4,9 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Interop;
 using livelywpf.Core;
+using livelywpf.Helpers.Pinvoke;
 using ModernWpf.Media.Animation;
+using livelywpf.Models;
 
 namespace livelywpf.Cef
 {
@@ -13,7 +15,7 @@ namespace livelywpf.Cef
     /// </summary>
     public partial class LivelyPropertiesWindow : Window
     {
-        public LivelyPropertiesWindow(LibraryModel model)
+        public LivelyPropertiesWindow(ILibraryModel model)
         {
             InitializeComponent();
             PreviewKeyDown += (s, e) => { if (e.Key == Key.Escape) this.Close(); };

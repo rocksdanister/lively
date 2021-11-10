@@ -3,9 +3,10 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
-using System.Windows.Threading;
+using livelywpf.Models;
+using livelywpf.Helpers.Shell;
 
-namespace livelywpf.Core
+namespace livelywpf.Core.Wallpapers
 {
     /// <summary>
     /// libVLC videoplayer (External plugin.)
@@ -15,12 +16,29 @@ namespace livelywpf.Core
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private IntPtr hwnd;
         private readonly Process _process;
-        private readonly LibraryModel model;
-        private LivelyScreen display;
+        private readonly ILibraryModel model;
+        private ILivelyScreen display;
         private bool _initialized;
+
+        public bool IsLoaded => hwnd != IntPtr.Zero;
+
+        public WallpaperType Category => model.LivelyInfo.Type;
+
+        public ILibraryModel Model => model;
+
+        public IntPtr Handle => hwnd;
+
+        public IntPtr InputHandle => IntPtr.Zero;
+
+        public Process Proc => _process;
+
+        public ILivelyScreen Screen { get => display; set => display = value; }
+
+        public string LivelyPropertyCopyPath => null;
+
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
 
-        public VideoPlayerVLCExt(string path, LibraryModel model, LivelyScreen display)
+        public VideoPlayerVLCExt(string path, ILibraryModel model, ILivelyScreen display)
         {
             ProcessStartInfo start = new ProcessStartInfo
             {
@@ -55,36 +73,6 @@ namespace livelywpf.Core
             {
                 Terminate();
             }
-        }
-
-        public IntPtr GetHWND()
-        {
-            return hwnd;
-        }
-
-        public IntPtr GetHWNDInput()
-        {
-            return IntPtr.Zero;
-        }
-
-        public Process GetProcess()
-        {
-            return _process;
-        }
-
-        public LivelyScreen GetScreen()
-        {
-            return display;
-        }
-
-        public LibraryModel GetWallpaperData()
-        {
-            return model;
-        }
-
-        public WallpaperType GetWallpaperType()
-        {
-            return model.LivelyInfo.Type;
         }
 
         public void Pause()
@@ -130,7 +118,7 @@ namespace livelywpf.Core
             }
             _process.OutputDataReceived -= Proc_OutputDataReceived;
             _process?.Dispose();
-            SetupDesktop.RefreshDesktop();
+            DesktopUtil.RefreshDesktop();
         }
 
         private void Proc_OutputDataReceived(object sender, DataReceivedEventArgs e)
@@ -190,11 +178,6 @@ namespace livelywpf.Core
             }
         }
 
-        public string GetLivelyPropertyCopyPath()
-        {
-            return null;
-        }
-
         public void SetScreen(LivelyScreen display)
         {
             this.display = display;
@@ -207,7 +190,7 @@ namespace livelywpf.Core
                 _process.Kill();
             }
             catch { }
-            SetupDesktop.RefreshDesktop();
+            DesktopUtil.RefreshDesktop();
         }
 
         public void SetVolume(int volume)
@@ -228,11 +211,6 @@ namespace livelywpf.Core
         public void SendMessage(IpcMessage obj)
         {
             //todo
-        }
-
-        public bool IsLoaded()
-        {
-            return GetHWND() != IntPtr.Zero;
         }
     }
 }

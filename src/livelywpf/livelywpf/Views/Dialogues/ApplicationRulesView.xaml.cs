@@ -1,6 +1,8 @@
-﻿using System.Windows;
+﻿using livelywpf.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
+using System.Windows;
 
-namespace livelywpf.Views
+namespace livelywpf.Views.Dialogues
 {
     /// <summary>
     /// Interaction logic for ApplicationRulesView.xaml
@@ -10,8 +12,9 @@ namespace livelywpf.Views
         public ApplicationRulesView()
         {
             InitializeComponent();
-            this.DataContext = Program.AppRulesVM;
-            this.Closing += Program.AppRulesVM.OnWindowClosing;
+            var vm = App.Services.GetRequiredService<ApplicationRulesViewModel>();
+            this.DataContext = vm;
+            this.Closing += vm.OnWindowClosing;
         }
     }
 }

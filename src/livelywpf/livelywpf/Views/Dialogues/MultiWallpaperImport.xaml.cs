@@ -1,4 +1,5 @@
 ﻿using livelywpf.Helpers;
+using livelywpf.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -6,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 
-namespace livelywpf.Views
+namespace livelywpf.Views.Dialogues
 {
     /// <summary>
     /// Interaction logic for MultiWallpaperImport.xaml

@@ -4,7 +4,7 @@ using System.IO;
 using System.IO.Pipes;
 using System.Text;
 
-namespace livelywpf.Helpers
+namespace livelywpf.Helpers.IPC
 {
     class PipeServer
     {

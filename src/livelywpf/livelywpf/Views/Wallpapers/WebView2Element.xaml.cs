@@ -1,4 +1,6 @@
 ﻿using livelywpf.Core.API;
+using livelywpf.Helpers;
+using livelywpf.Helpers.NetStream;
 using Microsoft.Web.WebView2.Core;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -12,7 +14,7 @@ using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media.Imaging;
 
-namespace livelywpf
+namespace livelywpf.Views.Wallpapers
 {
     /// <summary>
     /// Interaction logic for WebView2Element.xaml
@@ -40,7 +42,7 @@ namespace livelywpf
         public async Task<IntPtr> InitializeWebView()
         {
             //Ref: https://docs.microsoft.com/en-us/microsoft-edge/webview2/concepts/user-data-folder
-            var env = await CoreWebView2Environment.CreateAsync(null, Path.Combine(Program.AppDataDir, "WebView2"));
+            var env = await CoreWebView2Environment.CreateAsync(null, Constants.CommonPaths.TempWebView2Dir);
             await webView.EnsureCoreWebView2Async(env);
             webView.CoreWebView2.ProcessFailed += CoreWebView2_ProcessFailed;
 
@@ -51,7 +53,7 @@ namespace livelywpf
                 {
                     webView.CoreWebView2.NavigateToString(tmp);
                 }
-                else if ((tmp = Helpers.StreamHelper.GetYouTubeVideoIdFromUrl(htmlPath)) != "")
+                else if ((tmp = StreamHelper.GetYouTubeVideoIdFromUrl(htmlPath)) != "")
                 {
                     //open fullscreen embed player with loop enabled.
                     webView.CoreWebView2.Navigate("https://www.youtube.com/embed/" + tmp +

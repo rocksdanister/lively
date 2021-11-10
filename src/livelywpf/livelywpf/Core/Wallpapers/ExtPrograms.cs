@@ -1,18 +1,40 @@
 ﻿using livelywpf.Core.API;
+using livelywpf.Helpers;
+using livelywpf.Helpers.Pinvoke;
 using System;
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
+using livelywpf.Models;
+using livelywpf.Core.Suspend;
+using livelywpf.Helpers.Shell;
 
-namespace livelywpf.Core
+namespace livelywpf.Core.Wallpapers
 {
     public class ExtPrograms : IWallpaper
     {
         private IntPtr hwnd;
         private readonly Process _process;
-        private readonly LibraryModel model;
-        private LivelyScreen display;
+        private readonly ILibraryModel model;
+        private ILivelyScreen display;
         public UInt32 SuspendCnt { get; set; }
+
+        public bool IsLoaded => hwnd != IntPtr.Zero;
+
+        public WallpaperType Category => model.LivelyInfo.Type;
+
+        public ILibraryModel Model => model;
+
+        public IntPtr Handle => hwnd;
+
+        public IntPtr InputHandle => hwnd;
+
+        public Process Proc => _process;
+
+        public ILivelyScreen Screen { get => display; set => display = value; }
+
+        public string LivelyPropertyCopyPath => null;
+
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
         private readonly CancellationTokenSource ctsProcessWait = new CancellationTokenSource();
         private Task processWaitTask;
@@ -25,7 +47,7 @@ namespace livelywpf.Core
         /// <param name="model">Wallpaper data</param>
         /// <param name="display">Screen metadata</param>
         /// <param name="timeOut">Time to wait for program to be ready(in milliseconds)</param>
-        public ExtPrograms(string path, LibraryModel model, LivelyScreen display, int timeOut = 20000)
+        public ExtPrograms(string path, ILibraryModel model, ILivelyScreen display, int timeOut = 20000)
         {
             // Unity flags
             //-popupwindow removes from taskbar
@@ -68,31 +90,6 @@ namespace livelywpf.Core
             //Not reliable, app may refuse to close(open dialogue window.. etc)
             //Proc.CloseMainWindow();
             Terminate();
-        }
-
-        public IntPtr GetHWND()
-        {
-            return hwnd;
-        }
-
-        public IntPtr GetHWNDInput()
-        {
-            return hwnd;
-        }
-
-        public Process GetProcess()
-        {
-            return _process;
-        }
-
-        public LibraryModel GetWallpaperData()
-        {
-            return model;
-        }
-
-        public WallpaperType GetWallpaperType()
-        {
-            return model.LivelyInfo.Type;
         }
 
         public void Pause()
@@ -144,11 +141,6 @@ namespace livelywpf.Core
         public void Stop()
         {
             
-        }
-
-        public LivelyScreen GetScreen()
-        {
-            return display;
         }
 
         public async void Show()
@@ -209,7 +201,7 @@ namespace livelywpf.Core
         private void Proc_Exited(object sender, EventArgs e)
         {
             _process?.Dispose();
-            SetupDesktop.RefreshDesktop();
+            DesktopUtil.RefreshDesktop();
         }
 
         #region process task
@@ -232,7 +224,7 @@ namespace livelywpf.Core
             }
 
             IntPtr wHWND = IntPtr.Zero;
-            if (GetWallpaperType() == WallpaperType.godot)
+            if (Category == WallpaperType.godot)
             {
                 for (int i = 0; i < timeOut && _process.HasExited == false; i++)
                 {
@@ -363,16 +355,6 @@ namespace livelywpf.Core
 
         }
 
-        public string GetLivelyPropertyCopyPath()
-        {
-            return null;
-        }
-
-        public void SetScreen(LivelyScreen display)
-        {
-            this.display = display;
-        }
-
         public void Terminate()
         {
             try
@@ -380,7 +362,7 @@ namespace livelywpf.Core
                 _process.Kill();
             }
             catch { }
-            SetupDesktop.RefreshDesktop();
+            DesktopUtil.RefreshDesktop();
         }
 
         public void SetVolume(int volume)
@@ -405,11 +387,6 @@ namespace livelywpf.Core
         public void SendMessage(IpcMessage obj)
         {
             //todo
-        }
-
-        public bool IsLoaded()
-        {
-            return GetHWND() != IntPtr.Zero;
         }
     }
 }

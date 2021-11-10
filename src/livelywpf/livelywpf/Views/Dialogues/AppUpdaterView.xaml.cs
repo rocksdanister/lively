@@ -1,13 +1,14 @@
-﻿using ModernWpf.Controls;
+﻿using livelywpf.Helpers.NetWork;
+using Microsoft.Extensions.DependencyInjection;
+using ModernWpf.Controls;
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Documents;
-using livelywpf.NetWork;
 
-namespace livelywpf.Views
+namespace livelywpf.Views.Dialogues
 {
     /// <summary>
     /// Interaction logic for AppUpdaterView.xaml
@@ -114,8 +115,8 @@ namespace livelywpf.Views
                 */
                 try
                 {
-                    download = new MultiDownloadHelper();
-                    savePath = Path.Combine(Program.AppDataDir, "temp", suggestedFileName);
+                    download = App.Services.GetRequiredService<IDownloadHelper>();
+                    savePath = Path.Combine(Constants.CommonPaths.TempDir, suggestedFileName);
                     download.DownloadFile(fileUrl, savePath);
                     download.DownloadFileCompleted += UpdateDownload_DownloadFileCompleted;
                     download.DownloadProgressChanged += UpdateDownload_DownloadProgressChanged;
@@ -143,7 +144,7 @@ namespace livelywpf.Views
                     Title = Properties.Resources.TitlePleaseWait,
                     Content = Properties.Resources.DescriptionCancelQuestion,
                     PrimaryButtonText = Properties.Resources.TextYes,
-                    SecondaryButtonText = Properties.Resources.TextNo,      
+                    SecondaryButtonText = Properties.Resources.TextNo,
                 };
                 ContentDialogResult result = await cancelDownload.ShowAsync();
                 if (result == ContentDialogResult.Primary)

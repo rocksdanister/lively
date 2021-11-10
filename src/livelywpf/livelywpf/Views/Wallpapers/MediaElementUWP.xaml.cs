@@ -12,7 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Windows.Media.Core;
 
-namespace livelywpf
+namespace livelywpf.Views.Wallpapers
 {
     /// <summary>
     /// Interaction logic for MediaElementUWP.xaml

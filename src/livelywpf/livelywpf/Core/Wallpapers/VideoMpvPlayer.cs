@@ -1,17 +1,22 @@
 ﻿using ImageMagick;
 using livelywpf.Core.API;
+using livelywpf.Helpers;
+using livelywpf.Helpers.IPC;
+using livelywpf.Helpers.NetStream;
+using livelywpf.Helpers.Pinvoke;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using livelywpf.Models;
+using livelywpf.Helpers.Shell;
 
-namespace livelywpf.Core
+namespace livelywpf.Core.Wallpapers
 {
     /// <summary>
     /// Mpv videoplayer application.
@@ -34,70 +39,41 @@ namespace livelywpf.Core
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
         private IntPtr hwnd;
         private readonly Process _process;
-        private readonly LibraryModel model;
-        private LivelyScreen display;
+        private readonly ILibraryModel model;
+        private ILivelyScreen display;
         private readonly CancellationTokenSource ctsProcessWait = new CancellationTokenSource();
         private Task processWaitTask;
         private readonly int timeOut;
         private readonly string ipcServerName;
         private bool _isVideoStopped;
         private JObject livelyPropertiesData;
-        private readonly string livelyPropertyCopyPath;
         private static int globalCount;
         private readonly int uniqueId;
-        private bool isLoaded;
 
-        public VideoMpvPlayer(string path, LibraryModel model, LivelyScreen display,
-            WallpaperScaler scaler = WallpaperScaler.fill, StreamQualitySuggestion streamQuality = StreamQualitySuggestion.Highest, bool onScreenControl = false)
+        public string LivelyPropertyCopyPath { get; }
+
+        public bool IsLoaded { get; private set; } = false;
+
+        public Process Proc => _process;
+
+        public WallpaperType Category => model.LivelyInfo.Type;
+
+        public ILibraryModel Model => model;
+
+        public IntPtr Handle => hwnd;
+
+        public IntPtr InputHandle => IntPtr.Zero;
+
+        public ILivelyScreen Screen { get => display; set => display = value; }
+
+        public VideoMpvPlayer(string path, ILibraryModel model, ILivelyScreen display, string livelyPropertyPath,
+            WallpaperScaler scaler = WallpaperScaler.fill, bool hwAccel = true, bool onScreenControl = false, StreamQualitySuggestion streamQuality = StreamQualitySuggestion.Highest)
         {
-            livelyPropertyCopyPath = null;
-            if (model.LivelyPropertyPath != null)
-            {
-                //customisable wallpaper, livelyproperty.json is present.
-                var dataFolder = Path.Combine(Program.WallpaperDir, "SaveData", "wpdata");
-                try
-                {
-                    //extract last digits of the Screen class DeviceName, eg: \\.\DISPLAY4 -> 4
-                    var screenNumber = display.DeviceNumber;
-                    if (screenNumber != null)
-                    {
-                        //Create a directory with the wp foldername in SaveData/wpdata/, copy livelyproperties.json into this.
-                        //Further modifications are done to the copy file.
-                        string wpdataFolder = null;
-                        switch (Program.SettingsVM.Settings.WallpaperArrangement)
-                        {
-                            case WallpaperArrangement.per:
-                                wpdataFolder = Path.Combine(dataFolder, new DirectoryInfo(model.LivelyInfoFolderPath).Name, screenNumber);
-                                break;
-                            case WallpaperArrangement.span:
-                                wpdataFolder = Path.Combine(dataFolder, new DirectoryInfo(model.LivelyInfoFolderPath).Name, "span");
-                                break;
-                            case WallpaperArrangement.duplicate:
-                                wpdataFolder = Path.Combine(dataFolder, new DirectoryInfo(model.LivelyInfoFolderPath).Name, "duplicate");
-                                break;
-                        }
-                        Directory.CreateDirectory(wpdataFolder);
-                        //copy the original file if not found..
-                        livelyPropertyCopyPath = Path.Combine(wpdataFolder, "LivelyProperties.json");
-                        if (!File.Exists(livelyPropertyCopyPath))
-                        {
-                            File.Copy(model.LivelyPropertyPath, livelyPropertyCopyPath);
-                        }
-                    }
-                    else
-                    {
-                        //todo: fallback, use the original file (restore feature disabled.)
-                    }
-                }
-                catch
-                {
-                    //todo: fallback, use the original file (restore feature disabled.)
-                }
-            }
+            LivelyPropertyCopyPath = livelyPropertyPath;
 
-            if (livelyPropertyCopyPath != null)
+            if (LivelyPropertyCopyPath != null)
             {
-                livelyPropertiesData = Cef.LivelyPropertiesJSON.LoadLivelyProperties(livelyPropertyCopyPath);
+                livelyPropertiesData = Cef.LivelyPropertiesJSON.LoadLivelyProperties(LivelyPropertyCopyPath);
             }
 
             var scalerArg = scaler switch
@@ -142,13 +118,13 @@ namespace livelywpf.Core
             //integer scaler for sharpness
             cmdArgs.Append(model.LivelyInfo.Type == WallpaperType.gif ? "--scale=nearest " : " ");
             //gpu decode preference
-            cmdArgs.Append(Program.SettingsVM.Settings.VideoPlayerHwAccel ? "--hwdec=auto-safe " : "--hwdec=no ");
+            cmdArgs.Append(hwAccel ? "--hwdec=auto-safe " : "--hwdec=no ");
             //avoid global config file %APPDATA%\mpv\mpv.conf
             cmdArgs.Append(Directory.Exists(configDir) ? "--config-dir=" + "\"" + configDir + "\" " : "--no-config ");
             //screenshot location, important read: https://mpv.io/manual/master/#pseudo-gui-mode
-            cmdArgs.Append("--screenshot-template=" + "\"" + Path.Combine(Program.AppDataDir, "temp", ipcServerName) + "\" --screenshot-format=jpg ");
+            cmdArgs.Append("--screenshot-template=" + "\"" + Path.Combine(Constants.CommonPaths.TempDir, ipcServerName) + "\" --screenshot-format=jpg ");
             //file or online video stream path
-            cmdArgs.Append(model.LivelyInfo.Type == WallpaperType.videostream ? Helpers.StreamHelper.YoutubeDLMpvArgGenerate(streamQuality, path) : "\"" + path + "\"");
+            cmdArgs.Append(model.LivelyInfo.Type == WallpaperType.videostream ? StreamHelper.YoutubeDLMpvArgGenerate(streamQuality, path) : "\"" + path + "\"");
 
             ProcessStartInfo start = new ProcessStartInfo
             {
@@ -189,41 +165,6 @@ namespace livelywpf.Core
             Terminate();
         }
 
-        public IntPtr GetHWND()
-        {
-            return hwnd;
-        }
-
-        public IntPtr GetHWNDInput()
-        {
-            return IntPtr.Zero;
-        }
-
-        public string GetLivelyPropertyCopyPath()
-        {
-            return livelyPropertyCopyPath;
-        }
-
-        public Process GetProcess()
-        {
-            return _process;
-        }
-
-        public LivelyScreen GetScreen()
-        {
-            return display;
-        }
-
-        public LibraryModel GetWallpaperData()
-        {
-            return model;
-        }
-
-        public WallpaperType GetWallpaperType()
-        {
-            return model.LivelyInfo.Type;
-        }
-
         public void Play()
         {
             if (_isVideoStopped)
@@ -256,7 +197,7 @@ namespace livelywpf.Core
 
         public void SetPlaybackPos(float pos, PlaybackPosType type)
         {
-            if (GetWallpaperType() != WallpaperType.picture)
+            if (Category != WallpaperType.picture)
             {
                 var posStr = JsonConvert.SerializeObject(pos);
                 switch (type)
@@ -273,12 +214,12 @@ namespace livelywpf.Core
 
         public async Task ScreenCapture(string filePath)
         {
-            if (GetWallpaperType() == WallpaperType.gif)
+            if (Category == WallpaperType.gif)
             {
                 await Task.Run(() =>
                 {
                     //read first frame of gif image
-                    using var image = new MagickImage(GetWallpaperData().FilePath);
+                    using var image = new MagickImage(Model.FilePath);
                     if (image.Width < 1920)
                     {
                         //if the image is too small then resize to min: 1080p using integer scaling for sharpness.
@@ -291,10 +232,10 @@ namespace livelywpf.Core
             else
             {
                 var tcs = new TaskCompletionSource<bool>();
-                var imgPath = Path.Combine(Program.AppDataDir, "temp", ipcServerName + ".jpg");
+                var imgPath = Path.Combine(Constants.CommonPaths.TempDir, ipcServerName + ".jpg");
                 //monitor directory for screenshot, mpv only outputs message before capturing screenshot..
                 using var watcher = new FileSystemWatcher();
-                watcher.Path = Path.Combine(Program.AppDataDir, "temp");
+                watcher.Path = Constants.CommonPaths.TempDir;
                 watcher.NotifyFilter = NotifyFilters.LastWrite;
                 watcher.Filter = "*.jpg";
                 watcher.Changed += (s, e) =>
@@ -346,7 +287,7 @@ namespace livelywpf.Core
 
                         if (msg != null)
                         {
-                            Helpers.PipeClient.SendMessage(ipcServerName, msg);
+                            PipeClient.SendMessage(ipcServerName, msg);
                         }
                     }
                 }
@@ -355,11 +296,6 @@ namespace livelywpf.Core
             { 
                 //todo
             }
-        }
-
-        public void SetScreen(LivelyScreen display)
-        {
-            this.display = display;
         }
 
         public async void Show()
@@ -399,7 +335,7 @@ namespace livelywpf.Core
                         //Wait a bit for properties to apply.
                         //Todo: check ipc mgs and do this properly.
                         await Task.Delay(69);
-                        isLoaded = true;
+                        IsLoaded = true;
                     }
                 }
                 catch (OperationCanceledException e1)
@@ -445,7 +381,7 @@ namespace livelywpf.Core
         {
             _process.OutputDataReceived -= Proc_OutputDataReceived;
             _process?.Dispose();
-            SetupDesktop.RefreshDesktop();
+            DesktopUtil.RefreshDesktop();
         }
 
         #region process task
@@ -565,14 +501,14 @@ namespace livelywpf.Core
                 _process.Kill();
             }
             catch { }
-            SetupDesktop.RefreshDesktop();
+            DesktopUtil.RefreshDesktop();
         }
 
         public void SendMessage(string msg)
         {
             try
             {
-                Helpers.PipeClient.SendMessage(ipcServerName, msg);
+                PipeClient.SendMessage(ipcServerName, msg);
             }
             catch { }
         }
@@ -608,7 +544,7 @@ namespace livelywpf.Core
                         if (btn.IsDefault)
                         {
                             //load new file.
-                            livelyPropertiesData = Cef.LivelyPropertiesJSON.LoadLivelyProperties(GetLivelyPropertyCopyPath());
+                            livelyPropertiesData = Cef.LivelyPropertiesJSON.LoadLivelyProperties(LivelyPropertyCopyPath);
                             //restore new property values.
                             SetPlaybackProperties(livelyPropertiesData);
                         }
@@ -638,11 +574,6 @@ namespace livelywpf.Core
                 Logger.Error("Mpv{0}: Slider double -> int overlow", uniqueId); 
             }
             catch { }
-        }
-
-        public bool IsLoaded()
-        {
-            return isLoaded;
         }
 
         #region mpv util

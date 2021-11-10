@@ -7,18 +7,38 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Interop;
 using System.Windows.Threading;
+using livelywpf.Models;
+using livelywpf.Views.Wallpapers;
+using livelywpf.Helpers.Shell;
 
-namespace livelywpf.Core
+namespace livelywpf.Core.Wallpapers
 {
     public class GIFPlayerUWP : IWallpaper
     {
         private IntPtr hwnd;
         private readonly GIFViewUWP player;
-        private readonly LibraryModel model;
-        private LivelyScreen display;
+        private readonly ILibraryModel model;
+        private ILivelyScreen display;
+
+        public bool IsLoaded => player?.IsActive == true;
+
+        public WallpaperType Category => model.LivelyInfo.Type;
+
+        public ILibraryModel Model => model;
+
+        public IntPtr Handle => hwnd;
+
+        public IntPtr InputHandle => IntPtr.Zero;
+
+        public Process Proc => null;
+
+        public ILivelyScreen Screen { get => display; set => display = value; }
+
+        public string LivelyPropertyCopyPath => null;
+
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
 
-        public GIFPlayerUWP(string filePath, LibraryModel model, LivelyScreen display, WallpaperScaler scaler = WallpaperScaler.fill)
+        public GIFPlayerUWP(string filePath, ILibraryModel model, ILivelyScreen display, WallpaperScaler scaler = WallpaperScaler.fill)
         {
             player = new GIFViewUWP(filePath, scaler == WallpaperScaler.auto ? WallpaperScaler.uniform : scaler);
             this.model = model;
@@ -31,41 +51,6 @@ namespace livelywpf.Core
             {
                 player.Close();
             }));
-        }
-
-        public IntPtr GetHWND()
-        {
-            return hwnd;
-        }
-
-        public IntPtr GetHWNDInput()
-        {
-            return IntPtr.Zero;
-        }
-
-        public string GetLivelyPropertyCopyPath()
-        {
-            return null;
-        }
-
-        public Process GetProcess()
-        {
-            return null;
-        }
-
-        public LivelyScreen GetScreen()
-        {
-            return display;
-        }
-
-        public LibraryModel GetWallpaperData()
-        {
-            return model;
-        }
-
-        public WallpaperType GetWallpaperType()
-        {
-            return model.LivelyInfo.Type;
         }
 
         public void Pause()
@@ -83,17 +68,12 @@ namespace livelywpf.Core
             //throw new NotImplementedException();
         }
 
-        public void SetScreen(LivelyScreen display)
-        {
-            this.display = display;
-        }
-
         public async Task ScreenCapture(string filePath)
         {
             await Task.Run(() =>
             {
                 //read first frame of gif image
-                using var image = new MagickImage(GetWallpaperData().FilePath);
+                using var image = new MagickImage(Model.FilePath);
                 if (image.Width < 1920)
                 {
                     //if the image is too small then resize to min: 1080p using integer scaling for sharpness.
@@ -117,7 +97,7 @@ namespace livelywpf.Core
 
         private void Player_Closed(object sender, EventArgs e)
         {
-            SetupDesktop.RefreshDesktop();
+            DesktopUtil.RefreshDesktop();
         }
 
         public void Stop()
@@ -143,11 +123,6 @@ namespace livelywpf.Core
         public void SendMessage(IpcMessage obj)
         {
             //todo
-        }
-
-        public bool IsLoaded()
-        {
-            return player?.IsActive == true;
         }
     }
 }

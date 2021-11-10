@@ -120,7 +120,7 @@ namespace livelywpf.Core.API
     [Serializable]
     public class LivelySystemInformation : IpcMessage
     {
-        public Helpers.HWUsageMonitorEventArgs Info { get; set; }
+        public Helpers.Hardware.HWUsageMonitorEventArgs Info { get; set; }
         public LivelySystemInformation() : base(MessageType.cmd_reload)
         {
         }

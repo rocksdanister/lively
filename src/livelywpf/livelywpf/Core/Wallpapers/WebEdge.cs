@@ -1,4 +1,5 @@
 ﻿using livelywpf.Core.API;
+using livelywpf.Helpers.Pinvoke;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -6,8 +7,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Interop;
 using System.Windows.Threading;
+using livelywpf.Models;
+using livelywpf.Views.Wallpapers;
+using livelywpf.Helpers.Shell;
 
-namespace livelywpf.Core
+namespace livelywpf.Core.Wallpapers
 {
     class WebEdge : IWallpaper
     {
@@ -15,59 +19,30 @@ namespace livelywpf.Core
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
         private IntPtr hwndWindow, hwndWebView;
         private readonly WebView2Element player;
-        private readonly LibraryModel model;
-        private LivelyScreen display;
-        private readonly string livelyPropertyCopyPath;
-        private bool isLoaded;
+        private readonly ILibraryModel model;
+        private ILivelyScreen display;
 
-        public WebEdge(string path, LibraryModel model, LivelyScreen display)
+        public bool IsLoaded { get; private set; } = false;
+
+        public WallpaperType Category => model.LivelyInfo.Type;
+
+        public ILibraryModel Model => model;
+
+        public IntPtr Handle => hwndWindow;
+
+        public IntPtr InputHandle => hwndWebView;
+
+        public Process Proc => null;
+
+        public ILivelyScreen Screen { get => display; set => display = value; }
+
+        public string LivelyPropertyCopyPath { get; }
+
+        public WebEdge(string path, ILibraryModel model, ILivelyScreen display, string livelyPropertyPath)
         {
-            livelyPropertyCopyPath = null;
-            if (model.LivelyPropertyPath != null)
-            {
-                //customisable wallpaper, livelyproperty.json is present.
-                var dataFolder = Path.Combine(Program.WallpaperDir, "SaveData", "wpdata");
-                try
-                {
-                    //extract last digits of the Screen class DeviceName, eg: \\.\DISPLAY4 -> 4
-                    var screenNumber = display.DeviceNumber;
-                    if (screenNumber != null)
-                    {
-                        //Create a directory with the wp foldername in SaveData/wpdata/, copy livelyproperties.json into this.
-                        //Further modifications are done to the copy file.
-                        string wpdataFolder = null;
-                        switch (Program.SettingsVM.Settings.WallpaperArrangement)
-                        {
-                            case WallpaperArrangement.per:
-                                wpdataFolder = Path.Combine(dataFolder, new DirectoryInfo(model.LivelyInfoFolderPath).Name, screenNumber);
-                                break;
-                            case WallpaperArrangement.span:
-                                wpdataFolder = Path.Combine(dataFolder, new DirectoryInfo(model.LivelyInfoFolderPath).Name, "span");
-                                break;
-                            case WallpaperArrangement.duplicate:
-                                wpdataFolder = Path.Combine(dataFolder, new DirectoryInfo(model.LivelyInfoFolderPath).Name, "duplicate");
-                                break;
-                        }
-                        Directory.CreateDirectory(wpdataFolder);
-                        //copy the original file if not found..
-                        livelyPropertyCopyPath = Path.Combine(wpdataFolder, "LivelyProperties.json");
-                        if (!File.Exists(livelyPropertyCopyPath))
-                        {
-                            File.Copy(model.LivelyPropertyPath, livelyPropertyCopyPath);
-                        }
-                    }
-                    else
-                    {
-                        //todo: fallback, use the original file (restore feature disabled.)
-                    }
-                }
-                catch
-                {
-                    //todo: fallback, use the original file (restore feature disabled.)
-                }
-            }
+            LivelyPropertyCopyPath = livelyPropertyPath;
 
-            player = new WebView2Element(path, model.LivelyInfo.Type, livelyPropertyCopyPath);
+            player = new WebView2Element(path, model.LivelyInfo.Type, LivelyPropertyCopyPath);
             this.model = model;
             this.display = display;
         }
@@ -78,41 +53,6 @@ namespace livelywpf.Core
             {
                 player.Close();
             }));
-        }
-
-        public string GetLivelyPropertyCopyPath()
-        {
-            return livelyPropertyCopyPath;
-        }
-
-        public Process GetProcess()
-        {
-            return null;
-        }
-
-        public LivelyScreen GetScreen()
-        {
-            return display;
-        }
-
-        public LibraryModel GetWallpaperData()
-        {
-            return model;
-        }
-
-        public WallpaperType GetWallpaperType()
-        {
-            return model.LivelyInfo.Type;
-        }
-
-        public IntPtr GetHWND()
-        {
-            return hwndWindow;
-        }
-
-        public IntPtr GetHWNDInput()
-        {
-            return hwndWebView;
         }
 
         public void Pause()
@@ -130,11 +70,6 @@ namespace livelywpf.Core
         public void SendMessage(string msg)
         {
             player?.MessageProcess(msg);
-        }
-
-        public void SetScreen(LivelyScreen display)
-        {
-            this.display = display;
         }
 
         public void SetVolume(int volume)
@@ -185,13 +120,13 @@ namespace livelywpf.Core
 
         private void Player_LivelyPropertiesInitialized(object sender, EventArgs e)
         {
-            isLoaded = true;
+            IsLoaded = true;
             player.LivelyPropertiesInitialized -= Player_LivelyPropertiesInitialized;
         }
 
         private void Player_Closed(object sender, EventArgs e)
         {
-            SetupDesktop.RefreshDesktop();
+            DesktopUtil.RefreshDesktop();
         }
 
         public void Stop()
@@ -220,11 +155,6 @@ namespace livelywpf.Core
         public void SendMessage(IpcMessage obj)
         {
             player?.MessageProcess(obj);
-        }
-
-        public bool IsLoaded()
-        {
-            return isLoaded;
         }
     }
 }

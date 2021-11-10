@@ -1,8 +1,9 @@
-﻿using System;
+﻿using livelywpf.Helpers.Pinvoke;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace livelywpf.Helpers
+namespace livelywpf.Helpers.Shell
 {
     public static class DesktopUtil
     {
@@ -62,6 +63,15 @@ namespace livelywpf.Helpers
                 }
             }
             return hShellViewWin;
+        }
+
+        /// <summary>
+        /// Force redraw desktop - clears wallpaper persisting on screen even after close.
+        /// </summary>
+        public static void RefreshDesktop()
+        {
+            //todo: Find a better way to do this?
+            NativeMethods.SystemParametersInfo(NativeMethods.SPI_SETDESKWALLPAPER, 0, null, NativeMethods.SPIF_UPDATEINIFILE);
         }
     }
 }
