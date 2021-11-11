@@ -18,11 +18,11 @@
 ## About
 <img src="/resources/main_preview.gif" width="600" height="338"/>
 
-Lively is the only animated desktop wallpaper application that you will need.
+**Lively is the only animated desktop wallpaper application that you will need.**
 
 <img src="/resources/main_dragdrop.gif" width="600" height="338"/>
 
-Its super easy.. barely an inconvenience, just drag & drop the files or webpages to set as wallpaper.
+**Its super easy.. barely an inconvenience, just drag & drop the files or webpages to set as wallpaper.**
 
 #### Join Discussions:
 * <a href="https://www.reddit.com/r/LivelyWallpaper/">Reddit</a>
@@ -111,7 +111,7 @@ Its super easy.. barely an inconvenience, just drag & drop the files or webpages
 
 **_I'm not officially affiliated with Unity technologies, godot, shadertoy;_**
 ## Download
-##### Latest version: v1.7.2.6 (Windows 10 1903 or above)[What's new?](https://github.com/rocksdanister/lively/releases/tag/v1.7.2.6)
+##### Latest version: v1.7.2.6 (Windows 10 1903 or above)[ What's new?](https://github.com/rocksdanister/lively/releases/tag/v1.7.2.6)
 - [`Installer`][direct-full-win32] 
 
 SHA256: 8bf189dc5a0cdab5db905cbff4907d796d416f50df82eaedbc7e2c20e1a38cc2
@@ -124,7 +124,7 @@ Installer will give Smartscreen warning, [discussion.](https://github.com/rocksd
 
 [Which version do I download?](https://github.com/rocksdanister/lively/wiki/Differences-Between-Distributions)
 ## Problems
-See github [issues.](https://github.com/rocksdanister/lively/issues)
+See github issues [here](https://github.com/rocksdanister/lively/issues)
 
 ## Contributing
 
@@ -135,8 +135,9 @@ Pull requests are welcome, check [guidelines](https://github.com/rocksdanister/l
 Help translate lively to other <a href="https://github.com/rocksdanister/lively-translations">languages.</a>
 
 ## Support
-You can always help development by buying me a cup of coffee(paypal):
+You can always help development by buying me a cup of coffee(paypal): 
+### 
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/P5P1U8NQ)
 
 ## License
-Lively v1.0 onwards is licensed under GPL-3.
+Lively v1.0 onwards is licensed under **GPL-3**.
