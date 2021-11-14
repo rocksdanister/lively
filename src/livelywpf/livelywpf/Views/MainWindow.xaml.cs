@@ -1,6 +1,7 @@
 ﻿using livelywpf.Core;
 using livelywpf.Models;
 using livelywpf.Services;
+using livelywpf.ViewModels;
 using livelywpf.Views;
 using livelywpf.Views.Pages;
 using Microsoft.Extensions.DependencyInjection;
@@ -36,12 +37,15 @@ namespace livelywpf.Views
         private NavigationView navView;
         private readonly IDesktopCore desktopCore;
         private readonly IUserSettingsService userSettings;
+        private readonly SettingsViewModel settingsVm;
 
-        public MainWindow(IUserSettingsService userSettings, IDesktopCore desktopCore)
+        public MainWindow(IUserSettingsService userSettings, IDesktopCore desktopCore, SettingsViewModel settingsVm)
         {
-            InitializeComponent();
             this.desktopCore = desktopCore;
             this.userSettings = userSettings;
+            this.settingsVm = settingsVm;
+
+            InitializeComponent();
             wallpaperStatusText.Text = desktopCore.Wallpapers.Count.ToString();
             desktopCore.WallpaperChanged += SetupDesktop_WallpaperChanged;
             Logger.Debug("MainWindow ctor initialized..");
@@ -64,8 +68,8 @@ namespace livelywpf.Views
                 navView.MenuItems.Add(CreateMenu(Properties.Resources.TitleAddWallpaper, "add", "\uE710"));
                 navView.MenuItems.Add(CreateMenu(Properties.Resources.TitleHelp, "help", "\uE897"));
                 navView.MenuItems.Add(CreateMenu(Properties.Resources.TitleAbout, "about", "\uE90A"));
-                //navView.MenuItems.Add(debugMenu = CreateMenu(Properties.Resources.TitleDebug, "debug", "\uEBE8", Program.SettingsVM.Settings.DebugMenu));
-                //Program.SettingsVM.DebugMenuVisibilityChange += SettingsVM_DebugMenuVisibilityChange;
+                navView.MenuItems.Add(debugMenu = CreateMenu(Properties.Resources.TitleDebug, "debug", "\uEBE8", userSettings.Settings.DebugMenu));
+                settingsVm.DebugMenuVisibilityChange += SettingsVM_DebugMenuVisibilityChange;
                 navView.ItemInvoked += NavView_ItemInvoked;
                 NavViewNavigate("library");
             }

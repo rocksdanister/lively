@@ -31,11 +31,13 @@ namespace livelywpf.Views.SetupWizard
         public SetupView(IUserSettingsService userSettings)
         {
             this.userSettings = userSettings;
+
             InitializeComponent();
-            Initialize();
+            this.DataContext = App.Services.GetRequiredService<SettingsViewModel>();
+            SetupDefaultWallpapers();
         }
 
-        private async void Initialize()
+        private async void SetupDefaultWallpapers()
         {
             //extraction of default wallpaper.
             userSettings.Settings.WallpaperBundleVersion = await Task.Run(() =>

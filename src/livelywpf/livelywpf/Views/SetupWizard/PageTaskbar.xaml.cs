@@ -23,7 +23,7 @@ namespace livelywpf.Views.SetupWizard
         public PageTaskbar()
         {
             InitializeComponent();
-            this.DataContext = App.Services.GetRequiredService<SettingsViewModel>();
+            //this.DataContext = App.Services.GetRequiredService<SettingsViewModel>();
         }
     }
 }

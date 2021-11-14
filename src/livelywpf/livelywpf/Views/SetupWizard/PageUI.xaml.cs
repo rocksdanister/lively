@@ -23,7 +23,7 @@ namespace livelywpf.Views.SetupWizard
         public PageUI()
         {
             InitializeComponent();
-            this.DataContext = App.Services.GetRequiredService<SettingsViewModel>();
+            //this.DataContext = App.Services.GetRequiredService<SettingsViewModel>();
         }
     }
 }
