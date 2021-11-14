@@ -55,6 +55,7 @@ namespace livelywpf
         {
             //TODO: Logger abstraction.
             //TODO: Simplify startup order: App() -> OnStartup() -> App.Startup event.
+            //TODO: IPC server
             var provider = new ServiceCollection()
                 //singleton
                 .AddSingleton<MainWindow>()

@@ -49,7 +49,10 @@ namespace livelywpf.Core
         //private readonly IPlayback playbackMonitor;
         //private readonly LibraryViewModel libraryVm;
 
-        public WinDesktopCore(IUserSettingsService userSettings, ITransparentTbService ttbService, IWatchdogService watchdog, IWallpaperFactory wallpaperFactory)
+        public WinDesktopCore(IUserSettingsService userSettings, 
+            ITransparentTbService ttbService, 
+            IWatchdogService watchdog, 
+            IWallpaperFactory wallpaperFactory)
         {
             this.userSettings = userSettings;
             this.ttbService = ttbService;
@@ -892,7 +895,7 @@ namespace livelywpf.Core
 
         public void CloseAllWallpapers(bool terminate = false)
         {
-            CloseAllWallpapers(true, terminate);
+            CloseAllWallpapers(fireEvent: true, terminate: terminate);
         }
 
         private void CloseAllWallpapers(bool fireEvent, bool terminate)
@@ -919,7 +922,7 @@ namespace livelywpf.Core
 
         public void CloseWallpaper(ILivelyScreen display, bool terminate = false)
         {
-            CloseWallpaper(display, true, terminate);
+            CloseWallpaper(display: display, fireEvent: true, terminate: terminate);
         }
 
         private void CloseWallpaper(ILivelyScreen display, bool fireEvent, bool terminate)
@@ -980,7 +983,7 @@ namespace livelywpf.Core
 
         public void CloseWallpaper(ILibraryModel wp, bool terminate = false)
         {
-            CloseWallpaper(wp, true, terminate);
+            CloseWallpaper(wp: wp, fireEvent: true, terminate: terminate);
         }
 
         private void CloseWallpaper(ILibraryModel wp, bool fireEvent, bool terminate)
