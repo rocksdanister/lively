@@ -9,7 +9,7 @@ namespace livelywpf.Factories
     {
         public IApplicationRulesModel CreateAppRule(string appName, AppRulesEnum rule)
         {
-            return new ApplicationRulesModel(appName, AppRulesEnum.pause);
+            return new ApplicationRulesModel(appName, rule);
         }
     }
 }

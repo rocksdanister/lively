@@ -92,7 +92,7 @@ namespace livelywpf
             customiseWallpaperBtn.Click += CustomiseWallpaper;
             _notifyIcon.ContextMenuStrip.Items.Add(customiseWallpaperBtn);
 
-            if (!Program.IsMSIX)
+            if (!Constants.ApplicationType.IsMSIX)
             {
                 _notifyIcon.ContextMenuStrip.Items.Add(new CustomContextMenu.StripSeparatorCustom().stripSeparator);
                 updateTrayBtn = new ToolStripMenuItem(Properties.Resources.TextUpdateChecking, null)

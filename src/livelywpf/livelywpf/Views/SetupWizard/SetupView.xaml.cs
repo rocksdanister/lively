@@ -64,7 +64,7 @@ namespace livelywpf.Views.SetupWizard
 
         private void NavigateNext()
         {
-            if (Program.IsMSIX)
+            if (Constants.ApplicationType.IsMSIX)
             {
                 //Finish button is visible for Store app.
                 if ((index + 1) == pages.Count)
