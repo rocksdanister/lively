@@ -70,6 +70,7 @@ namespace livelywpf
                 .AddSingleton<SettingsViewModel>() //some init stuff like locale, startup etc happening.. TODO: remove!
                 .AddSingleton<LibraryViewModel>() //loaded wallpapers..
                 .AddSingleton<RawInputDX>()
+                .AddSingleton<WndProcMsgWindow>()
                 //transient
                 .AddTransient<IApplicationsRulesFactory, ApplicationsRulesFactory>()
                 .AddTransient<IWallpaperFactory, WallpaperFactory>()
@@ -171,8 +172,7 @@ namespace livelywpf
             //Creates an empty xaml island control as a temp fix for closing issue; also receives window msg..
             //Issue: https://github.com/microsoft/microsoft-ui-xaml/issues/3482
             //Steps to reproduce: Start gif wallpaper using uwp control -> restart lively -> close restored gif wallpaper -> library gridview stops.
-            WndProcMsgWindow wndproc = new WndProcMsgWindow();
-            wndproc.Show();
+            App.Services.GetRequiredService<WndProcMsgWindow>().Show();
             //Package app otherwise bugging out when initialized in settings vm.
             App.Services.GetRequiredService<RawInputDX>().Show();
             App.Services.GetRequiredService<IDesktopCore>().RestoreWallpaper();
