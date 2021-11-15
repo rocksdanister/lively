@@ -25,9 +25,12 @@ namespace livelywpf.Views
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private int prevExplorerPid = GetTaskbarExplorerPid();
         private DateTime prevCrashTime = DateTime.MinValue;
+        private readonly IDesktopCore desktopCore;
 
-        public WndProcMsgWindow()
+        public WndProcMsgWindow(IDesktopCore desktopCore)
         {
+            this.desktopCore = desktopCore;
+
             InitializeComponent();
             //Starting a hidden window outside screen region, rawinput receives msg through WndProc
             this.WindowStartupLocation = WindowStartupLocation.Manual;
@@ -41,6 +44,7 @@ namespace livelywpf.Views
             source.AddHook(WndProc);
         }
 
+        //TODO: create event instead?
         private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
             if (msg == NativeMethods.WM_SHOWLIVELY)
@@ -54,7 +58,6 @@ namespace livelywpf.Views
                 int newExplorerPid = GetTaskbarExplorerPid();
                 if (prevExplorerPid != newExplorerPid)
                 {
-                    var desktopCore = App.Services.GetRequiredService<IDesktopCore>();
                     //Explorer crash detection, dpi change also sends WM_TASKBARCREATED..
                     Logger.Info($"Explorer crashed, pid mismatch: {prevExplorerPid} != {newExplorerPid}");
                     if ((DateTime.Now - prevCrashTime).TotalSeconds > 30)
@@ -63,7 +66,6 @@ namespace livelywpf.Views
                     }
                     else
                     {
-                        //todo: move this to core.
                         Logger.Warn("Explorer restarted multiple times in the last 30s.");
                         _ = Task.Run(() => MessageBox.Show(Properties.Resources.DescExplorerCrash,
                                 $"{Properties.Resources.TitleAppName} - {Properties.Resources.TextError}",
