@@ -86,7 +86,7 @@ namespace livelywpf
             }
 
             var arch = Environment.Is64BitProcess ? "x86" : "x64";
-            var container = Program.IsMSIX ? "desktop-bridge" : "desktop-native";
+            var container = Constants.ApplicationType.IsMSIX ? "desktop-bridge" : "desktop-native";
             Logger.Info($"\nLively v{Assembly.GetExecutingAssembly().GetName().Version} {arch} {container} {CultureInfo.CurrentCulture.Name}" +
                 $"\n{SystemInfo.GetOSInfo()}\n{SystemInfo.GetCpuInfo()}\n{SystemInfo.GetGpuInfo()}\n");
         }

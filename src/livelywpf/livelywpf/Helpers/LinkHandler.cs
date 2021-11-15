@@ -11,7 +11,7 @@ namespace livelywpf.Helpers
         {
             try
             {
-                if (Program.IsMSIX)
+                if (Constants.ApplicationType.IsMSIX)
                 {
                     _ = Windows.System.Launcher.LaunchUriAsync(uri);
                 }

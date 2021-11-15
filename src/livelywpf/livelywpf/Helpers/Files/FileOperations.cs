@@ -23,7 +23,7 @@ namespace livelywpf.Helpers.Files
             try
             {
                 //bug, disabled for now.
-                if (Program.IsMSIX)
+                if (Constants.ApplicationType.IsMSIX)
                 {
                     _ = LaunchFolder(path);
                     return;

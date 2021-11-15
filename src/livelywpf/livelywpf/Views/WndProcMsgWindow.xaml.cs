@@ -77,7 +77,7 @@ namespace livelywpf.Views
                     prevExplorerPid = newExplorerPid;
                 }
             }
-            else if (msg == (uint)NativeMethods.WM.QUERYENDSESSION && Program.IsMSIX)
+            else if (msg == (uint)NativeMethods.WM.QUERYENDSESSION && Constants.ApplicationType.IsMSIX)
             {
                 _ = NativeMethods.RegisterApplicationRestart(
                     null,

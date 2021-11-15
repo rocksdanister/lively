@@ -21,14 +21,9 @@ namespace livelywpf
     public class Program
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        //private static readonly string uniqueAppName = "LIVELY:DESKTOPWALLPAPERSYSTEM";
-        //private static readonly string pipeServerName = uniqueAppName + Environment.UserName;
         private static readonly Mutex mutex = new Mutex(false, Constants.SingleInstance.UniqueAppName);
         //Loaded from Settings.json (User configurable.)
         public static string WallpaperDir { get; set; }
-        public static bool IsMSIX { get; } = new DesktopBridge.Helpers().IsRunningAsUwp();
-        //todo: make compile time flag.
-        public static bool IsTestBuild { get; } = false;
 
         #region app entry
 

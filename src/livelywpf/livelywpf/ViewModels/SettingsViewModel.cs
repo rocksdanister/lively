@@ -168,7 +168,7 @@ namespace livelywpf.ViewModels
             {
                 _isStartup = value;
                 OnPropertyChanged();
-                if (Program.IsMSIX)
+                if (Constants.ApplicationType.IsMSIX)
                 {
                     _ = WindowsStartup.StartupWin10(_isStartup);
                     if (userSettings.Settings.Startup != _isStartup)
@@ -283,7 +283,7 @@ namespace livelywpf.ViewModels
                 if (_wallpaperDirectoryChangeCommand == null)
                 {
                     _wallpaperDirectoryChangeCommand = new RelayCommand(
-                        param => WallpaperDirectoryChange(), param => !Program.IsMSIX && !WallpapeDirectoryChanging
+                        param => WallpaperDirectoryChange(), param => !Constants.ApplicationType.IsMSIX && !WallpapeDirectoryChanging
                         );
                 }
                 return _wallpaperDirectoryChangeCommand;
@@ -1003,9 +1003,9 @@ namespace livelywpf.ViewModels
             }
         }
 
-        public string SwitchBranchText => Program.IsTestBuild ? Properties.Resources.TextSwitchBranchOfficial : Properties.Resources.TextSwitchBranchDev;
+        public string SwitchBranchText => Constants.ApplicationType.IsTestBuild ? Properties.Resources.TextSwitchBranchOfficial : Properties.Resources.TextSwitchBranchDev;
 
-        private bool canSwitchBranchCommand = !Program.IsMSIX;
+        private bool canSwitchBranchCommand = !Constants.ApplicationType.IsMSIX;
         private RelayCommand _switchBranchCommand;
         public RelayCommand SwitchBranchCommand
         {
@@ -1028,8 +1028,8 @@ namespace livelywpf.ViewModels
             {
                 canSwitchBranchCommand = false;
                 SwitchBranchCommand.RaiseCanExecuteChanged();
-                (Uri, Version, string) item = await appUpdater.GetLatestRelease(!Program.IsTestBuild);
-                var msg = Program.IsTestBuild ?
+                (Uri, Version, string) item = await appUpdater.GetLatestRelease(!Constants.ApplicationType.IsTestBuild);
+                var msg = Constants.ApplicationType.IsTestBuild ?
                     item.Item3 : $"!! {Properties.Resources.TitleWarning} !!\n{Properties.Resources.DescSwitchBranchBetaWarning}\n\n{Properties.Resources.TitleChangelog}\n{item.Item3}";
                 (new AppUpdaterView(item.Item1, msg)
                 {
