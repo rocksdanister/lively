@@ -3,53 +3,13 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
+using livelywpf.Helpers.Hardware;
 
-namespace livelywpf.Helpers.Hardware
+namespace livelywpf.Services
 {
-    public class HWUsageMonitorEventArgs : EventArgs
-    {
-        /// <summary>
-        /// Primary cpu name.
-        /// </summary>
-        public string NameCpu { get; set; }
-        /// <summary>
-        /// Primary gpu name.
-        /// </summary>
-        public string NameGpu { get; set; }
-        /// <summary>
-        /// Cpu usage % similar to taskmanager (Processor Time.)
-        /// </summary>
-        public string NameNetCard { get; set; }
-        /// <summary>
-        /// Current total cpu usage %.
-        /// </summary>
-        public float CurrentCpu { get; set; }
-        /// <summary>
-        /// Gpu usage % similar to taskmanager (GPU 3D Engine.)
-        /// </summary>
-        public float CurrentGpu3D { get; set; }
-        /// <summary>
-        /// Free memory in Megabytes.
-        /// </summary>
-        public float CurrentRamAvail { get; set; }
-        /// <summary>
-        /// Network download speed (Bytes/Sec)
-        /// </summary>
-        public float CurrentNetDown { get; set; }
-        /// <summary>
-        /// Network upload speed (Bytes/Sec)
-        /// </summary>
-        public float CurrentNetUp { get; set; }
-        /// <summary>
-        /// Full system ram amount (MegaBytes)
-        /// </summary>
-        public long TotalRam { get; set; }
-    }
-
-    public sealed class UsageMonitor
+    public class HardwareUsageService : IHardwareUsageService
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private static readonly UsageMonitor instance = new UsageMonitor();
         public event EventHandler<HWUsageMonitorEventArgs> HWMonitor = delegate { };
         private readonly HWUsageMonitorEventArgs perfData = new HWUsageMonitorEventArgs();
         private CancellationTokenSource ctsHwMonitor;
@@ -60,41 +20,30 @@ namespace livelywpf.Helpers.Hardware
         private PerformanceCounter netDownCounter = null;
         private PerformanceCounter netUpCounter = null;
 
-        public static UsageMonitor Instance
+        public HardwareUsageService()
         {
-            get
-            {
-                return instance;
-            }
+            InitializePerfCounters();
         }
 
-        private UsageMonitor()
-        {
-            InitCounters();
-        }
-
-        public void StartService()
+        public void Start()
         {
             if (ctsHwMonitor == null)
             {
                 ctsHwMonitor = new CancellationTokenSource();
-                HWMonitorService();
+                HWMonitorLoop();
             }
-        }
-
-        /// <summary>
-        /// todo: incomplete, not thread safe.
-        /// Once stopped, cannot start again.
-        /// </summary>
-        public void StopService()
-        {
-            if (ctsHwMonitor != null)
+            else
             {
-                ctsHwMonitor.Cancel();
+                throw new InvalidOperationException("Service once stopped cannot be restarted!");
             }
         }
 
-        private void InitCounters()
+        public void Stop()
+        {
+            ctsHwMonitor?.Cancel();
+        }
+
+        private void InitializePerfCounters()
         {
             try
             {
@@ -123,11 +72,11 @@ namespace livelywpf.Helpers.Hardware
             }
             catch (Exception ex)
             {
-                Logger.Info("PerfCounter: Init fail=>" + ex.Message);
+                Logger.Info("PerfCounter: Init fail:" + ex.Message);
             }
         }
 
-        private async void HWMonitorService()
+        private async void HWMonitorLoop()
         {
             try
             {

@@ -67,6 +67,7 @@ namespace livelywpf
                 .AddSingleton<IAppUpdaterService, GithubUpdaterService>()
                 .AddSingleton<ISystray, Systray>()
                 .AddSingleton<ITransparentTbService, TransparentTbService>()
+                .AddSingleton<IHardwareUsageService, HardwareUsageService>() //single service for all wallpapers/widgets
                 .AddSingleton<SettingsViewModel>() //some init stuff like locale, startup etc happening.. TODO: remove!
                 .AddSingleton<LibraryViewModel>() //loaded wallpapers..
                 .AddSingleton<RawInputDX>()
