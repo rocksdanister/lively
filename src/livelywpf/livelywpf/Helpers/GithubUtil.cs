@@ -82,6 +82,12 @@ namespace livelywpf.Helpers
             return result;
         }
 
+        public static int CompareAssemblyVersion(Version version)
+        {
+            var appVersion = new Version(System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString());
+            return version.CompareTo(appVersion);
+        }
+
         /// <summary>
         /// String Contains method with StringComparison property.
         /// </summary>

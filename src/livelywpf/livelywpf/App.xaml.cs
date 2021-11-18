@@ -22,6 +22,7 @@ using livelywpf.Core.InputForwarding;
 using livelywpf.Core.Suspend;
 using livelywpf.Core.Watchdog;
 using livelywpf.Helpers.NetWork;
+using livelywpf.Services.Weather;
 
 namespace livelywpf
 {
@@ -67,9 +68,10 @@ namespace livelywpf
                 .AddSingleton<IAppUpdaterService, GithubUpdaterService>()
                 .AddSingleton<ISystray, Systray>()
                 .AddSingleton<ITransparentTbService, TransparentTbService>()
-                .AddSingleton<IHardwareUsageService, HardwareUsageService>() //single service for all wallpapers/widgets
+                .AddSingleton<IHardwareUsageService, PerfCounterUsageService>() //single service for all wallpapers/widgets.
+                .AddSingleton<IWeatherService, OpenWeatherMapService>() //single service for all wallpapers/widgets.
                 .AddSingleton<SettingsViewModel>() //some init stuff like locale, startup etc happening.. TODO: remove!
-                .AddSingleton<LibraryViewModel>() //loaded wallpapers..
+                .AddSingleton<LibraryViewModel>() //loaded wallpapers etc..
                 .AddSingleton<RawInputDX>()
                 .AddSingleton<WndProcMsgWindow>()
                 //transient
