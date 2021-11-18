@@ -69,7 +69,7 @@ namespace livelywpf.Services
             {
                 await Task.Delay(fetchDelay);
                 (Uri, Version, string) data = await GetLatestRelease(false);
-                int verCompare = CompareAssemblyVersion(data.Item2);
+                int verCompare = GithubUtil.CompareAssemblyVersion(data.Item2);
                 if (verCompare > 0)
                 {
                     //update available.
@@ -119,15 +119,5 @@ namespace livelywpf.Services
 
             return (uri, version, changelog);
         }
-
-        #region helpers
-
-        public static int CompareAssemblyVersion(Version version)
-        {
-            var appVersion = new Version(Assembly.GetExecutingAssembly().GetName().Version.ToString());
-            return version.CompareTo(appVersion);
-        }
-
-        #endregion //helpers
     }
 }

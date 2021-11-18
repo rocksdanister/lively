@@ -7,7 +7,7 @@ using livelywpf.Helpers.Hardware;
 
 namespace livelywpf.Services
 {
-    public class HardwareUsageService : IHardwareUsageService
+    public class PerfCounterUsageService : IHardwareUsageService
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         public event EventHandler<HWUsageMonitorEventArgs> HWMonitor = delegate { };
@@ -20,7 +20,7 @@ namespace livelywpf.Services
         private PerformanceCounter netDownCounter = null;
         private PerformanceCounter netUpCounter = null;
 
-        public HardwareUsageService()
+        public PerfCounterUsageService()
         {
             InitializePerfCounters();
         }
