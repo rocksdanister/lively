@@ -49,9 +49,9 @@ namespace livelywpf.Core
         //private readonly IPlayback playbackMonitor;
         //private readonly LibraryViewModel libraryVm;
 
-        public WinDesktopCore(IUserSettingsService userSettings, 
-            ITransparentTbService ttbService, 
-            IWatchdogService watchdog, 
+        public WinDesktopCore(IUserSettingsService userSettings,
+            ITransparentTbService ttbService,
+            IWatchdogService watchdog,
             IWallpaperFactory wallpaperFactory)
         {
             this.userSettings = userSettings;
@@ -737,7 +737,7 @@ namespace livelywpf.Core
         {
             try
             {
-                App.Services.GetRequiredService<IPlayback>().Stop();
+                //App.Services.GetRequiredService<IPlayback>().Stop();
                 if (ScreenHelper.IsMultiScreen() && userSettings.Settings.WallpaperArrangement == WallpaperArrangement.span)
                 {
                     if (wallpapers.Count != 0)
@@ -780,7 +780,7 @@ namespace livelywpf.Core
             }
             finally
             {
-                App.Services.GetRequiredService<IPlayback>().Start();
+                //App.Services.GetRequiredService<IPlayback>().Start();
             }
         }
 
