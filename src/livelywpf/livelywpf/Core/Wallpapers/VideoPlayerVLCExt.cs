@@ -194,6 +194,11 @@ namespace livelywpf.Core.Wallpapers
             SendMessage("lively:vid-volume " + volume);
         }
 
+        public void SetMute(bool mute)
+        {
+            //todo
+        }
+
         public void SetPlaybackPos(float pos, PlaybackPosType type)
         {
             //todo

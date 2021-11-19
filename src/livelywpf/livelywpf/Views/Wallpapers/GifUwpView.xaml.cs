@@ -12,13 +12,13 @@ namespace livelywpf.Views.Wallpapers
     /// References:
     /// https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.media.imaging.bitmapimage.play?view=winrt-19041
     /// </summary>
-    public partial class GIFViewUWP : Window
+    public partial class GifUwpView : Window
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         BitmapImage BitMapImg { get; set; }
         private string FilePath { get; set; }
         private readonly WallpaperScaler stretch;
-        public GIFViewUWP(string filePath, WallpaperScaler stretch = WallpaperScaler.fill)
+        public GifUwpView(string filePath, WallpaperScaler stretch = WallpaperScaler.fill)
         {
             FilePath = filePath;
             this.stretch = stretch;

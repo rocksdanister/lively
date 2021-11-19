@@ -15,7 +15,7 @@ namespace livelywpf.Core.Wallpapers
 {
     public class GIFPlayerUWP : IWallpaper
     {
-        private readonly GIFViewUWP player;
+        private readonly GifUwpView player;
 
         public bool IsLoaded => player?.IsActive == true;
 
@@ -37,7 +37,7 @@ namespace livelywpf.Core.Wallpapers
 
         public GIFPlayerUWP(string filePath, ILibraryModel model, ILivelyScreen display, WallpaperScaler scaler = WallpaperScaler.fill)
         {
-            player = new GIFViewUWP(filePath, scaler == WallpaperScaler.auto ? WallpaperScaler.uniform : scaler);
+            player = new GifUwpView(filePath, scaler == WallpaperScaler.auto ? WallpaperScaler.uniform : scaler);
             this.Model = model;
             this.Screen = display;
         }
@@ -110,6 +110,11 @@ namespace livelywpf.Core.Wallpapers
         public void SetVolume(int volume)
         {
             //gif has no sound.
+        }
+
+        public void SetMute(bool mute)
+        {
+            //nothing
         }
 
         public void SetPlaybackPos(float pos, PlaybackPosType type)

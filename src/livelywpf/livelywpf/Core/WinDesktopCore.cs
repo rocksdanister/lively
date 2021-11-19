@@ -567,21 +567,18 @@ namespace livelywpf.Core
             else
             {
                 Logger.Info("Synchronizing wallpaper (duplicate.)");
-                var mpvFix = (wallpaper.Category == WallpaperType.video || wallpaper.Category == WallpaperType.videostream) &&
-                    userSettings.Settings.VideoPlayer == LivelyMediaPlayer.mpv;
+                var videoSync = wallpaper.Category == WallpaperType.video || wallpaper.Category == WallpaperType.videostream;
                 wallpapers.ForEach(x =>
                 {
-                    if (mpvFix)
+                    if (videoSync)
                     {
-                        //{mpv player}
-                        //todo: make a general IWallpaper interface method for track change.
                         //disable audio track of everything except the latest `wallpaper` (not added to Wallpaper list yet..)
                         Logger.Info($"Disabling audio track on screen {x.Screen.DeviceName} (duplicate.)");
-                        x.SendMessage("{\"command\":[\"set_property\",\"aid\",\"no\"]}\n");
+                        x.SetMute(true);
                     }
                     x.SetPlaybackPos(0, PlaybackPosType.absolutePercent);
                 });
-                if (mpvFix)
+                if (videoSync)
                 {
                     //in theory this is not needed since its the latest - it should stay sync with the rest..
                     wallpaper.SetPlaybackPos(0, PlaybackPosType.absolutePercent);

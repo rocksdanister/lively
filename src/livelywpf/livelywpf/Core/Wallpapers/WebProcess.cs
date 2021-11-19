@@ -296,6 +296,11 @@ namespace livelywpf.Core.Wallpapers
             */
         }
 
+        public void SetMute(bool mute)
+        {
+            //todo
+        }
+
         private void SetProcessAndChildrenVolume(int pid, int volume)
         {
             ManagementObjectSearcher searcher = new ManagementObjectSearcher("Select * From Win32_Process Where ParentProcessID=" + pid);

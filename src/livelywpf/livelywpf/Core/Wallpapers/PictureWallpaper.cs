@@ -104,6 +104,11 @@ namespace livelywpf.Core.Wallpapers
             //nothing
         }
 
+        public void SetMute(bool mute)
+        {
+            //nothing
+        }
+
         public void Show()
         {
             //desktop.Enable();
