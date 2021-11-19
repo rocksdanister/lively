@@ -370,6 +370,11 @@ namespace livelywpf.Core.Wallpapers
             catch { }
         }
 
+        public void SetMute(bool mute)
+        {
+            //todo
+        }
+
         public void SetPlaybackPos(float pos, PlaybackPosType type)
         {
             //todo

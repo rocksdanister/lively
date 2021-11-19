@@ -1,0 +1,1140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DescCommunity" xml:space="preserve">
+    <value>Onlayn müzakirə forumu</value>
+    <comment/>
+  </data>
+  <data name="DescDocumentation" xml:space="preserve">
+    <value>API sənədləri və kömək</value>
+    <comment/>
+  </data>
+  <data name="DescExplorerCrash" xml:space="preserve">
+    <value>Lively ciddi xəta ilə qarşılaşdı. Windows Explorer son 30 saniyə ərzində iki dəfə yenidən başladıldı! Bu, Lively və digər masaüstü fərdiləşdirmə proqramı və ya Windows arasında ziddiyyət ola bilər. Əlavə problemlərin qarşısını almaq üçün bütün divar kağızları ləğv edilir.</value>
+    <comment/>
+  </data>
+  <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
+    <value>Uyğun olmayan proqram tapıldı, tapşırıq paneli mövzusu deaktiv edilib.</value>
+    <comment/>
+  </data>
+  <data name="DescOfficialWebpage" xml:space="preserve">
+    <value>Lively Wallpaper rəsmi internet səhifəsi</value>
+    <comment/>
+  </data>
+  <data name="DescOledScreensaverNotice" xml:space="preserve">
+    <value>Müasir LCD və LED displeylərin əksəriyyəti yanma problemindən əziyyət çəkmir və buna görə də istənilən divar kağızı ekran qoruyucusu kimi istifadə edilə bilər. Yanmağa həssas olan OLED, Plazma və ya CRT displeylər üçün müntəzəm hərəkətli və bütövlükdə divar kağızı istifadə etmək tövsiyə olunur. Yanma ehtimalını azaltmalı olan qaranlıq mövzu həllindən də istifadə etmək olar, lakin bu xüsusiyyət sınaqdan keçirilməmişdir və onun effektivliyinə zəmanət verilə bilməz. Lively-nin ekran qoruyucularının əsas məqsədi kompüterinizə daha bir fərdiləşdirmə qatı əlavə etmək, ekran qoruyucularından yanmadan qorunma kimi istifadə etməkdir!</value>
+    <comment/>
+  </data>
+  <data name="DescReportBug" xml:space="preserve">
+    <value>Proqramla bağlı problem barədə məlumat verin</value>
+    <comment/>
+  </data>
+  <data name="DescriptionAddWallpaper" xml:space="preserve">
+    <value>Divar kağızı kimi təyin etmək üçün fayl seçin və ya bir vebsayt bağlantısı daxil edin.</value>
+    <comment/>
+  </data>
+  <data name="DescriptionAppRules" xml:space="preserve">
+    <value>Çalışan proqrama əsaslanan divar kağızı davranışı.</value>
+    <comment/>
+  </data>
+  <data name="DescriptionCancelQuestion" xml:space="preserve">
+    <value>Ləğv etmək istədiyinizə əminsiniz?</value>
+    <comment/>
+  </data>
+  <data name="DescriptionDeleteConfirmation" xml:space="preserve">
+    <value>Bu divar kağızını diskdən həmişəlik silmək istədiyinizə əminsiniz?</value>
+    <comment/>
+  </data>
+  <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
+    <value>Bu divar kağızını Kitabxanadan silmək istədiyinizə əminsiniz?</value>
+    <comment/>
+  </data>
+  <data name="DescriptionDragDropFIle" xml:space="preserve">
+    <value>Sadəcə olaraq faylları Kitabxanaya sürükləyib buraxın.</value>
+    <comment/>
+  </data>
+  <data name="DescriptionExternalAppWarning" xml:space="preserve">
+    <value>Siz divar kağızı kimi xarici proqram açırsınız. Zərərli proqramların sisteminizə zərər verə biləcəyini unutmayın. Yalnız bu proqram etibarlı mənbədən gəldiyinə əmin olduqda davam edin.</value>
+    <comment/>
+  </data>
+  <data name="DescriptionMinimizedTray" xml:space="preserve">
+    <value>Lively sistem tepsisinə kiçildilib, davam etmək üçün lively ikonuna sağ klikləyin.</value>
+    <comment/>
+  </data>
+  <data name="DescriptionPleaseRestartLively" xml:space="preserve">
+    <value>Parametrlərin qüvvəyə minməsi üçün Lively-i yenidən başladın.</value>
+    <comment/>
+  </data>
+  <data name="DescriptionPleaseStop" xml:space="preserve">
+    <value>Davam etməzdən əvvəl dayandırın.</value>
+    <comment/>
+  </data>
+  <data name="DescriptionRecordStart" xml:space="preserve">
+    <value>Yazmağa başlamaq üçün basın.</value>
+    <comment/>
+  </data>
+  <data name="DescriptionRestoringWallpaper" xml:space="preserve">
+    <value>Hazırda əvvəlki divar kağızları bərpa olunur, zəhmət olmasa gözləyin...</value>
+    <comment/>
+  </data>
+  <data name="DescriptionScreenLayout" xml:space="preserve">
+    <value>Ekran seçin</value>
+    <comment/>
+  </data>
+  <data name="DescriptionUpdateAvailable" xml:space="preserve">
+    <value>Proqramın yeni versiyası mövcuddur!</value>
+    <comment/>
+  </data>
+  <data name="DescriptionWebpageLoad" xml:space="preserve">
+    <value>Yükləmək üçün vebsayt linkini daxil edin, shadertoy.com şader bağlantıları dəstəklənir</value>
+    <comment/>
+  </data>
+  <data name="DescriptionWelcomeWizard" xml:space="preserve">
+    <value>Bu sehrbaz sizə Lively-ni qurmağa kömək edəcək.</value>
+    <comment/>
+  </data>
+  <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
+    <value>Sizin Windows N/KN versiyanız divar kağızlarında videoların oxudulmasını dəstəkləmək üçün əlavə kodeklərin endirilməsini tələb edəcək.</value>
+    <comment/>
+  </data>
+  <data name="DescSupperDev" xml:space="preserve">
+    <value>Tərtibatçıya qəhvəsini almaqla dəstək göstərin</value>
+    <comment/>
+  </data>
+  <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
+    <value>Siz Lively proqramının beta (developer) quruluşuna keçmək üzrəsiniz. Yeniləmələr tez-tez olacaq və baqlar ola bilər!</value>
+    <comment/>
+  </data>
+  <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
+    <value>Güncəlləmək olmadı; quraşdırıcını bu ünvandan yükləməyə cəhd edin: https://github.com/rocksdanister/lively/releases</value>
+    <comment/>
+  </data>
+  <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
+    <value>Zədələnmiş divar kağızı faylı, yenidən yükləməyə cəhd edin.</value>
+    <comment/>
+  </data>
+  <data name="LivelyExceptionGeneral" xml:space="preserve">
+    <value>Ups... Deyəsən, xəta baş verdi :(Bu xətanı daha yaxşı başa düşmək və problemi həll etmək üçün log faylını tərtibatçı ilə paylaşın. Jurnal faylını paylaşmaq üçün təlimatlar:https://github.com/rocksdanister/lively/wiki</value>
+    <comment/>
+  </data>
+  <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
+    <value>Windows Yüksək Kontrast rejimi aktiv olduqda Lively düzgün işləyə bilmir! Yüksək Kontrast rejimini söndürün və yenidən cəhd edin.</value>
+    <comment/>
+  </data>
+  <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
+    <value>Media oxutma uğursuz oldu :( lively parametrlərində videopleyeri dəyişməyə cəhd edin. Bu xətanı daha yaxşı başa düşmək və problemi həll etmək üçün log faylını tərtibatçı ilə paylaşın. Jurnal faylını paylaşmaq üçün təlimatlar:https://github.com/rocksdanister/lively /viki</value>
+    <comment/>
+  </data>
+  <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
+    <value>Lively divar kağızı faylı deyil.</value>
+    <comment/>
+  </data>
+  <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
+    <value>Lively düzgün qapadılmayıb, ona görə də təhlükəsiz rejimdə başladılır. Əvvəllər işləyən divar kağızı bərpa etmək istəyirsiniz?</value>
+    <comment/>
+  </data>
+  <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
+    <value>Görünür, Lively-nin işləməsi üçün bəzi parametrləri qurmaq lazımdır: 1. Run-u açmaq üçün Win + R düymələrini basın, 2. Run-a SystemPropertiesPerformance.exe yazın, Performans Seçimlərini açmaq üçün "OK" düyməsini basın. 3. "Pəncərələrin daxilində idarəetmə elementlərini və elementləri canlandırın" seçimini aktivləşdirin (əgər artıq işarələnibsə, işarəni çıxarın və yoxlayın). 4. Pəncərəni bağlamaq üçün "Tətbiq et" düyməsini və sonra "OK" düyməsini basın. Əgər Windows 7 yeni quraşdırılıbsa - Ən yaxşı görünüş üçün tənzimləyin &amp;amp; Tətbiq edin. Əgər hələ də işləmirsə, bağlayın və Lively-i yenidən başladın. (Bəzi insayder Windows 10 quruculuqlarında işləmir)</value>
+    <comment/>
+  </data>
+  <data name="TextAdd" xml:space="preserve">
+    <value>Əlavə et</value>
+    <comment/>
+  </data>
+  <data name="TextAllFiles" xml:space="preserve">
+    <value>Bütün Fayllar</value>
+    <comment/>
+  </data>
+  <data name="TextApplication" xml:space="preserve">
+    <value>Tətbiq</value>
+    <comment/>
+  </data>
+  <data name="TextAttribution" xml:space="preserve">
+    <value>Atribut</value>
+    <comment/>
+  </data>
+  <data name="TextAuthor" xml:space="preserve">
+    <value>Müəllif</value>
+    <comment/>
+  </data>
+  <data name="TextBack" xml:space="preserve">
+    <value>Geri</value>
+    <comment/>
+  </data>
+  <data name="TextBrowse" xml:space="preserve">
+    <value>Gözdən keçirin</value>
+    <comment/>
+  </data>
+  <data name="TextCancel" xml:space="preserve">
+    <value>Ləğv et</value>
+    <comment/>
+  </data>
+  <data name="TextChangeWallpaper" xml:space="preserve">
+    <value>Divar kağızlarını dəyişdirin</value>
+    <comment/>
+  </data>
+  <data name="TextClose" xml:space="preserve">
+    <value>Bağla</value>
+    <comment/>
+  </data>
+  <data name="TextCloseWallpapers" xml:space="preserve">
+    <value>Divar kağızlarını bağlayın</value>
+    <comment/>
+  </data>
+  <data name="TextCompleted" xml:space="preserve">
+    <value>Tamamlandı!</value>
+    <comment/>
+  </data>
+  <data name="TextControlPanelOpen" xml:space="preserve">
+    <value>Divar kağızlarını idarə etmək üçün bura klikləyin.</value>
+    <comment/>
+  </data>
+  <data name="TextConvertVideo" xml:space="preserve">
+    <value>Videoya çevirin</value>
+    <comment/>
+  </data>
+  <data name="TextCreatePreview" xml:space="preserve">
+    <value>Önizləmə yaradın</value>
+    <comment/>
+  </data>
+  <data name="TextCustomise" xml:space="preserve">
+    <value>Özəlləşdir</value>
+    <comment/>
+  </data>
+  <data name="TextCustomiseWallpaper" xml:space="preserve">
+    <value>Divar kağızını fərdiləşdirin</value>
+    <comment/>
+  </data>
+  <data name="TextDeleteWallpaper" xml:space="preserve">
+    <value>Sil</value>
+    <comment/>
+  </data>
+  <data name="TextDescription" xml:space="preserve">
+    <value>Təsvir</value>
+    <comment/>
+  </data>
+  <data name="TextDisplayPauseRuleAllScreen" xml:space="preserve">
+    <value>Bütün Ekran</value>
+    <comment/>
+  </data>
+  <data name="TextDisplayPauseRulePerScreen" xml:space="preserve">
+    <value>Ekran başına</value>
+    <comment/>
+  </data>
+  <data name="TextDownload" xml:space="preserve">
+    <value>Yüklə</value>
+    <comment/>
+  </data>
+  <data name="TextEditWallpaper" xml:space="preserve">
+    <value>Redaktə et</value>
+    <comment/>
+  </data>
+  <data name="TextError" xml:space="preserve">
+    <value>Xəta</value>
+    <comment/>
+  </data>
+  <data name="TextExit" xml:space="preserve">
+    <value>Çıx</value>
+    <comment/>
+  </data>
+  <data name="TextExportWallpaperZip" xml:space="preserve">
+    <value>Lively .zip formatında ixrac edin</value>
+    <comment/>
+  </data>
+  <data name="TextFeatureMissing" xml:space="preserve">
+    <value>Bəzi funksiyalar Lively-in bu versiyasında mövcud deyil.</value>
+    <comment/>
+  </data>
+  <data name="TextFileNotFound" xml:space="preserve">
+    <value>Fayl tapılmadı</value>
+    <comment/>
+  </data>
+  <data name="TextGIF" xml:space="preserve">
+    <value>Animasiyalı GIF</value>
+    <comment/>
+  </data>
+  <data name="TextGitHubStar" xml:space="preserve">
+    <value>Ulduz ataraq sevginizi göstərin</value>
+    <comment/>
+  </data>
+  <data name="TextGo" xml:space="preserve">
+    <value>Get</value>
+    <comment/>
+  </data>
+  <data name="TextHelpTranslate" xml:space="preserve">
+    <value>Tərcümə etməyə kömək edin</value>
+    <comment/>
+  </data>
+  <data name="TextHours" xml:space="preserve">
+    <value>saat</value>
+    <comment/>
+  </data>
+  <data name="TextInstall" xml:space="preserve">
+    <value>Yüklə</value>
+    <comment/>
+  </data>
+  <data name="TextKeyboard" xml:space="preserve">
+    <value>Klaviatura</value>
+    <comment/>
+  </data>
+  <data name="TextLastChecked" xml:space="preserve">
+    <value>Son yoxlanılma</value>
+    <comment/>
+  </data>
+  <data name="TextLearnMore" xml:space="preserve">
+    <value>Daha ətraflı</value>
+    <comment/>
+  </data>
+  <data name="TextLicense" xml:space="preserve">
+    <value>Lisenziya</value>
+    <comment/>
+  </data>
+  <data name="TextMinutes" xml:space="preserve">
+    <value>dəqiqə</value>
+    <comment/>
+  </data>
+  <data name="TextmoreInfo" xml:space="preserve">
+    <value>Məlumat</value>
+    <comment/>
+  </data>
+  <data name="TextMoreWallpapers" xml:space="preserve">
+    <value>Daha çox Divar kağızları</value>
+    <comment/>
+  </data>
+  <data name="TextMouse" xml:space="preserve">
+    <value>Siçan</value>
+    <comment/>
+  </data>
+  <data name="TextMouseInteractOnDesktop" xml:space="preserve">
+    <value>Tətbiq fokuslandıqda siçanla qarşılıqlı əlaqə</value>
+    <comment/>
+  </data>
+  <data name="TextNext" xml:space="preserve">
+    <value>Sonrakı</value>
+    <comment/>
+  </data>
+  <data name="TextNo" xml:space="preserve">
+    <value>Yox</value>
+    <comment/>
+  </data>
+  <data name="TextOff" xml:space="preserve">
+    <value>Söndür</value>
+    <comment/>
+  </data>
+  <data name="TextOK" xml:space="preserve">
+    <value>Oldu</value>
+    <comment/>
+  </data>
+  <data name="TextOn" xml:space="preserve">
+    <value>Yandır</value>
+    <comment/>
+  </data>
+  <data name="TextOnline" xml:space="preserve">
+    <value>Onlayn</value>
+    <comment/>
+  </data>
+  <data name="TextOpenLively" xml:space="preserve">
+    <value>Lively-i açın</value>
+    <comment/>
+  </data>
+  <data name="TextPauseAlgoAllProcess" xml:space="preserve">
+    <value>Bütün Proseslər</value>
+    <comment/>
+  </data>
+  <data name="TextPauseAlgoExclusiveMode" xml:space="preserve">
+    <value>Direct3D</value>
+    <comment/>
+  </data>
+  <data name="TextPauseAlgoForegroundProcess" xml:space="preserve">
+    <value>Ön Proses</value>
+    <comment/>
+  </data>
+  <data name="TextPauseWallpapers" xml:space="preserve">
+    <value>Divar kağızlarına fasilə verin</value>
+    <comment/>
+  </data>
+  <data name="TextPerformanceKill" xml:space="preserve">
+    <value>Xitam ver</value>
+    <comment/>
+  </data>
+  <data name="TextPerformanceNone" xml:space="preserve">
+    <value>Heç nə</value>
+    <comment/>
+  </data>
+  <data name="TextPerformancePause" xml:space="preserve">
+    <value>Fasilə</value>
+    <comment/>
+  </data>
+  <data name="TextPicture" xml:space="preserve">
+    <value>Şəkil</value>
+    <comment/>
+  </data>
+  <data name="TextPreviewWallpaper" xml:space="preserve">
+    <value>Önizləmə</value>
+    <comment/>
+  </data>
+  <data name="TextPrivacyPolicy" xml:space="preserve">
+    <value>Gizlilik Siyasəti</value>
+    <comment/>
+  </data>
+  <data name="TextProcessingWallpaper" xml:space="preserve">
+    <value>Emal edilir</value>
+    <comment/>
+  </data>
+  <data name="TextRemove" xml:space="preserve">
+    <value>Sil</value>
+    <comment/>
+  </data>
+  <data name="TextRule" xml:space="preserve">
+    <value>Qayda</value>
+    <comment/>
+  </data>
+  <data name="TextScreen" xml:space="preserve">
+    <value>Ekran</value>
+    <comment/>
+  </data>
+  <data name="TextSearch" xml:space="preserve">
+    <value>Axtar</value>
+    <comment/>
+  </data>
+  <data name="TextSetWallpaper" xml:space="preserve">
+    <value>Divar kağızı kimi təyin edin</value>
+    <comment/>
+  </data>
+  <data name="TextShowOnDisk" xml:space="preserve">
+    <value>Fayl yerini açın</value>
+    <comment/>
+  </data>
+  <data name="TextSource" xml:space="preserve">
+    <value>Mənbə</value>
+    <comment/>
+  </data>
+  <data name="TextStart" xml:space="preserve">
+    <value>Başla</value>
+    <comment/>
+  </data>
+  <data name="TextStop" xml:space="preserve">
+    <value>Dayan</value>
+    <comment/>
+  </data>
+  <data name="TextStoreReview" xml:space="preserve">
+    <value>Lively-dən zövq alırsınız? Rəy buraxın :)</value>
+    <comment/>
+  </data>
+  <data name="TextSupport" xml:space="preserve">
+    <value>Dəstək</value>
+    <comment/>
+  </data>
+  <data name="TextSwitchBranchDev" xml:space="preserve">
+    <value>Beta versiyaya keçin (İnkişaf kanalı)</value>
+    <comment/>
+  </data>
+  <data name="TextSwitchBranchOfficial" xml:space="preserve">
+    <value>Stabil versiyaya keçin (Defolt kanal)</value>
+    <comment/>
+  </data>
+  <data name="TextTags" xml:space="preserve">
+    <value>Teqlər</value>
+    <comment/>
+  </data>
+  <data name="TextTaskbarThemeBlur" xml:space="preserve">
+    <value>Blur</value>
+    <comment/>
+  </data>
+  <data name="TextTaskbarThemeClear" xml:space="preserve">
+    <value>Təmiz</value>
+    <comment/>
+  </data>
+  <data name="TextTaskbarThemeColor" xml:space="preserve">
+    <value>Rəng</value>
+    <comment/>
+  </data>
+  <data name="TextTaskbarThemeFluent" xml:space="preserve">
+    <value>Axıcı</value>
+    <comment/>
+  </data>
+  <data name="TextTaskbarThemeWallpaper" xml:space="preserve">
+    <value>Divar kağızı</value>
+    <comment/>
+  </data>
+  <data name="TextTaskbarThemeWallpaperFluent" xml:space="preserve">
+    <value>Səlis divar kağızı</value>
+    <comment/>
+  </data>
+  <data name="TextTileSizeLarge" xml:space="preserve">
+    <value>Böyük</value>
+    <comment/>
+  </data>
+  <data name="TextTileSizeNormal" xml:space="preserve">
+    <value>Normal</value>
+    <comment/>
+  </data>
+  <data name="TextTileSizeSmall" xml:space="preserve">
+    <value>Kiçik</value>
+    <comment/>
+  </data>
+  <data name="TextTitle" xml:space="preserve">
+    <value>Başlıq</value>
+    <comment/>
+  </data>
+  <data name="TextUIHeadless" xml:space="preserve">
+    <value>Başlıqsız</value>
+    <comment/>
+  </data>
+  <data name="TextUILite" xml:space="preserve">
+    <value>Lite</value>
+    <comment/>
+  </data>
+  <data name="TextUINormal" xml:space="preserve">
+    <value>Normal</value>
+    <comment/>
+  </data>
+  <data name="TextUnsupportedFile" xml:space="preserve">
+    <value>Fayl formatı dəstəklənmir</value>
+    <comment/>
+  </data>
+  <data name="TextUpdateAvailable" xml:space="preserve">
+    <value>Yenilənmə mövcuddur!</value>
+    <comment/>
+  </data>
+  <data name="TextUpdateCheck" xml:space="preserve">
+    <value>Yenilənməni yoxlayın</value>
+    <comment/>
+  </data>
+  <data name="TextupdateCheckFail" xml:space="preserve">
+    <value>Proqram yenilənməsini yoxlamaq alınmadı</value>
+    <comment/>
+  </data>
+  <data name="TextUpdateChecking" xml:space="preserve">
+    <value>Yenilənmə yoxlanılır</value>
+    <comment/>
+  </data>
+  <data name="TextUpdateUptodate" xml:space="preserve">
+    <value>Proqram yenilənib!</value>
+    <comment/>
+  </data>
+  <data name="TextVideo" xml:space="preserve">
+    <value>Video</value>
+    <comment/>
+  </data>
+  <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
+    <value>Əlavə əmr xətti arqumentlərini daxil edin</value>
+    <comment/>
+  </data>
+  <data name="TextWallpaperFitFill" xml:space="preserve">
+    <value>Doldur</value>
+    <comment/>
+  </data>
+  <data name="TextWallpaperFitNone" xml:space="preserve">
+    <value>Heç biri</value>
+    <comment/>
+  </data>
+  <data name="TextWallpaperFitUniform" xml:space="preserve">
+    <value>Uniforma</value>
+    <comment/>
+  </data>
+  <data name="TextWallpaperFitUniformToFill" xml:space="preserve">
+    <value>Vahid doldurma</value>
+    <comment/>
+  </data>
+  <data name="TextWallpaperLayoutDuplicate" xml:space="preserve">
+    <value>Eyni divar kağızı kopyalayın</value>
+    <comment/>
+  </data>
+  <data name="TextWallpaperLayoutPerScreen" xml:space="preserve">
+    <value>Yalnız seçilmiş ekran</value>
+    <comment/>
+  </data>
+  <data name="TextWallpaperLayoutSpan" xml:space="preserve">
+    <value>Ekranlar arasında yaymaq</value>
+    <comment/>
+  </data>
+  <data name="TextWallpaperType" xml:space="preserve">
+    <value>Növ</value>
+    <comment/>
+  </data>
+  <data name="TextWebsite" xml:space="preserve">
+    <value>Veb sayt</value>
+    <comment/>
+  </data>
+  <data name="TextWebStream" xml:space="preserve">
+    <value>Veb yayım</value>
+    <comment/>
+  </data>
+  <data name="TextWelcome" xml:space="preserve">
+    <value>Xoş gəldiniz</value>
+    <comment/>
+  </data>
+  <data name="TextYes" xml:space="preserve">
+    <value>Bəli</value>
+    <comment/>
+  </data>
+  <data name="TileVideoPlayer" xml:space="preserve">
+    <value>Video pleyer</value>
+    <comment/>
+  </data>
+  <data name="TipAddWallpaperFileBrowse" xml:space="preserve">
+    <value>Bütün dəstəklənən fayl növlərini divar kağızı kimi təyin edin.</value>
+    <comment/>
+  </data>
+  <data name="TipAddWallpaperURL" xml:space="preserve">
+    <value>Divar kağızı kimi daxil etdiyiniz URL-in veb səhifəsini təyin edin.</value>
+    <comment/>
+  </data>
+  <data name="TipAppFocus" xml:space="preserve">
+    <value>Hər hansı proqram diqqət mərkəzində olduqda nə edəcəyinizi təyin edin.</value>
+    <comment/>
+  </data>
+  <data name="TipAppFullScreen" xml:space="preserve">
+    <value>Tam ekranlı oyunlar/tətbiqlər işləyərkən nə edəcəyinizi təyin edin.</value>
+    <comment/>
+  </data>
+  <data name="TipAppRules" xml:space="preserve">
+    <value>Çalışan proqram əsasında müxtəlif divar kağızı oxutma qaydalarını təyin edin.</value>
+    <comment/>
+  </data>
+  <data name="TipAppTheme" xml:space="preserve">
+    <value>Canlı görünüşünü dəyişmək üçün sistem mövzu parametrlərinə uyğunlaşır</value>
+    <comment/>
+  </data>
+  <data name="TipAudioMaster" xml:space="preserve">
+    <value>Bütün divar kağızlarının səs səviyyəsi.</value>
+    <comment/>
+  </data>
+  <data name="TipBatteryPower" xml:space="preserve">
+    <value>AC enerjisi kəsildikdə oxutmanı dəyişdirin.</value>
+    <comment/>
+  </data>
+  <data name="TipBrowserDebuggingPort" xml:space="preserve">
+    <value>Veb səhifə divar kağızlarını sazlamaq üçün portu daxil edin, dəyişikliklərin qüvvəyə minməsi üçün brauzerin yenidən işə salınması tələb olunur. Hazır olduqda, developer konsoluna daxil olmaq üçün http://localhost:portnumber səhifəsinə keçin.</value>
+    <comment/>
+  </data>
+  <data name="TipDebug" xml:space="preserve">
+    <value>Tərtibatçı menyusunu göstərin.</value>
+    <comment/>
+  </data>
+  <data name="TipDesktopPicture" xml:space="preserve">
+    <value>Cizgi divar kağızı şəklini masa üstü divar kağızı kimi təyin edin.</value>
+    <comment/>
+  </data>
+  <data name="TipDisplayPauseRule" xml:space="preserve">
+    <value>Divar kağızı bütün ekranlarda və ya yalnız tətbiqin fokuslandığı ekranda olduğu müvafiq ekranda dayandırılacağını seçin.</value>
+    <comment/>
+  </data>
+  <data name="TipExportLogs" xml:space="preserve">
+    <value>Log faylı yaradın.</value>
+    <comment/>
+  </data>
+  <data name="TipGifPlayer" xml:space="preserve">
+    <value>Gif divar kağızı üçün istifadə olunan pleyeri seçin.</value>
+    <comment/>
+  </data>
+  <data name="TipHideSysTray" xml:space="preserve">
+    <value>System-tray icon visibility, lively will continue to run with the icon hidden.</value>
+    <comment/>
+  </data>
+  <data name="TipLanguage" xml:space="preserve">
+    <value>Lively yeni dili tətbiq etmək üçün yenidən başlayacaq.</value>
+    <comment/>
+  </data>
+  <data name="TipLivelySetupOnClose" xml:space="preserve">
+    <value>Davam etmək üçün quraşdırmanı tamamlayın.</value>
+    <comment/>
+  </data>
+  <data name="TipLockscreenPicture" xml:space="preserve">
+    <value>Kilid ekranı divar kağızı kimi cizgi divar kağızı şəklini təyin edin.</value>
+    <comment/>
+  </data>
+  <data name="TipPauseAlgorithm" xml:space="preserve">
+    <value>Divar kağızı fasilə alqoritmi.</value>
+    <comment/>
+  </data>
+  <data name="TipPowerSavingModePower" xml:space="preserve">
+    <value>Windows Enerjiyə Qənaət Modu aktiv olduqda oxutmanı dəyişdirin.</value>
+    <comment/>
+  </data>
+  <data name="TipRemoteDesktopPower" xml:space="preserve">
+    <value>Uzaq Masaüstü seansını işlədən zaman oxutmanı dəyişdirin.</value>
+    <comment/>
+  </data>
+  <data name="TipScreensaver" xml:space="preserve">
+    <value>Seçilmiş hərəkətsizlik müddətindən sonra ekran qoruyucunuz kimi cari divar kağızı istifadə edin.</value>
+    <comment/>
+  </data>
+  <data name="TipStreamWallpaperDetect" xml:space="preserve">
+    <value>Dəstəklənən video axını bağlantısı aşkar edilərsə, veb səhifəni yükləmək əvəzinə video pleyerdən istifadə edin.</value>
+    <comment/>
+  </data>
+  <data name="TipStreamWallpaperVideoQuality" xml:space="preserve">
+    <value>Onlayn yayımlar üçün istədiyiniz video keyfiyyətini seçin.</value>
+    <comment/>
+  </data>
+  <data name="TipSwitchSoftwareBranch" xml:space="preserve">
+    <value>Proqram təminatı buraxılışını betadan stabilə və ya əksinə dəyişdirin.</value>
+    <comment/>
+  </data>
+  <data name="TipTaskbarTheme" xml:space="preserve">
+    <value>Sistem tapşırıq çubuğunun görünüşünü dəyişdirin.</value>
+    <comment/>
+  </data>
+  <data name="TipTileSize" xml:space="preserve">
+    <value>Kitabxanada divar kağızı plitələrinin ölçüsü.</value>
+    <comment/>
+  </data>
+  <data name="TipUIMode" xml:space="preserve">
+    <value>Aşağı səviyyəli sistemlər üçün Lite rejimi seçin.</value>
+    <comment/>
+  </data>
+  <data name="TipVideoHardwareDecode" xml:space="preserve">
+    <value>Mümkün olduqda cihaz sürətləndirilməsindən istifadə edin.</value>
+    <comment/>
+  </data>
+  <data name="TipVideoPlayer" xml:space="preserve">
+    <value>Video divar kağızı üçün istifadə olunan pleyeri seçin.</value>
+    <comment/>
+  </data>
+  <data name="TipWallpaperDir" xml:space="preserve">
+    <value>Divar kağızı fayllarını saxlamaq üçün istifadə edilən yol.</value>
+    <comment/>
+  </data>
+  <data name="TipWallpaperFit" xml:space="preserve">
+    <value>Divar kağızı ölçmə alqoritmi.</value>
+    <comment/>
+  </data>
+  <data name="TipWallpaperInput" xml:space="preserve">
+    <value>Divar kağızı ilə qarşılıqlı əlaqə yollarını seçin.</value>
+    <comment/>
+  </data>
+  <data name="TipWallpaperLayout" xml:space="preserve">
+    <value>Qoşulmuş ekran cihazlarına divar kağızı necə tətbiq olunur.</value>
+    <comment/>
+  </data>
+  <data name="TipWallpaperPlayback" xml:space="preserve">
+    <value>İş masası fokuslanmadıqda divar kağızı oxunmasını dayandırın.</value>
+    <comment/>
+  </data>
+  <data name="TipWebBrowserDiskCache" xml:space="preserve">
+    <value>Müvəqqəti faylları yaddaş əvəzinə diskdə saxlayın, brauzer yenidən işə salındıqda parametrlər bərpa olunur.</value>
+    <comment/>
+  </data>
+  <data name="TipWebBrowserEngine" xml:space="preserve">
+    <value>CEF (Chromium Embedded Framework) yüngül xrom mühərrikidir. Edge, Windows 10-un daxili veb görünüşüdür.</value>
+    <comment/>
+  </data>
+  <data name="TipWindowsStartup" xml:space="preserve">
+    <value>Divar kağızı oxutmaq üçün Lively arxa planda işləməlidir.</value>
+    <comment/>
+  </data>
+  <data name="TitleAbout" xml:space="preserve">
+    <value>Haqqında</value>
+    <comment/>
+  </data>
+  <data name="TitleAddWallpaper" xml:space="preserve">
+    <value>Divar kağızı əlavə edin</value>
+    <comment/>
+  </data>
+  <data name="TitleAppFocus" xml:space="preserve">
+    <value>Applications Focused</value>
+    <comment/>
+  </data>
+  <data name="TitleAppFullScreen" xml:space="preserve">
+    <value>Proqramlar Tam ekran</value>
+    <comment/>
+  </data>
+  <data name="TitleAppName" xml:space="preserve">
+    <value>Lively divar kağızı</value>
+    <comment/>
+  </data>
+  <data name="TitleAppRules" xml:space="preserve">
+    <value>Tətbiq qaydaları</value>
+    <comment/>
+  </data>
+  <data name="TitleAppTheme" xml:space="preserve">
+    <value>Mövzu</value>
+    <comment/>
+  </data>
+  <data name="TitleAudio" xml:space="preserve">
+    <value>Audio</value>
+    <comment/>
+  </data>
+  <data name="TitleAudioDesktopOnly" xml:space="preserve">
+    <value>Audionu yalnız iş masası fokuslandıqda oxudun</value>
+    <comment/>
+  </data>
+  <data name="TitleAudioMaster" xml:space="preserve">
+    <value>Əsas səs səviyyəsi</value>
+    <comment/>
+  </data>
+  <data name="TitleAudioPlayOnScreen" xml:space="preserve">
+    <value>Audionu ekranda səsləndirin</value>
+    <comment/>
+  </data>
+  <data name="TitleBatteryPower" xml:space="preserve">
+    <value>Batareya şəbəkəyə taxıldıqda</value>
+    <comment/>
+  </data>
+  <data name="TitleBrowseFile" xml:space="preserve">
+    <value>Divar kağızı kimi təyin etmək üçün video, gif, veb səhifə... faylı axtarın</value>
+    <comment/>
+  </data>
+  <data name="TitleBrowserDebuggingPort" xml:space="preserve">
+    <value>Sazlama Portu</value>
+    <comment/>
+  </data>
+  <data name="TitleChangelog" xml:space="preserve">
+    <value>Dəyişikliklər jurnalı</value>
+    <comment/>
+  </data>
+  <data name="TitleCommunity" xml:space="preserve">
+    <value>İcma</value>
+    <comment/>
+  </data>
+  <data name="TitleDebug" xml:space="preserve">
+    <value>Debug</value>
+    <comment/>
+  </data>
+  <data name="TitleDeleteConfirmation" xml:space="preserve">
+    <value>Silinməni təsdiqləyin</value>
+    <comment/>
+  </data>
+  <data name="TitleDesktopPicture" xml:space="preserve">
+    <value>Masa üstü şəkli</value>
+    <comment/>
+  </data>
+  <data name="TitleDisplayPauseRule" xml:space="preserve">
+    <value>Pauza Qaydasını göstərin</value>
+    <comment/>
+  </data>
+  <data name="TitleDocumentation" xml:space="preserve">
+    <value>Dokumentasiya</value>
+    <comment/>
+  </data>
+  <data name="TitleEnterUrl" xml:space="preserve">
+    <value>URL daxil edin</value>
+    <comment/>
+  </data>
+  <data name="TitleExportLogs" xml:space="preserve">
+    <value>Log Faylı</value>
+    <comment/>
+  </data>
+  <data name="TitleGeneral" xml:space="preserve">
+    <value>Ümumi</value>
+    <comment/>
+  </data>
+  <data name="TitleGifPlayer" xml:space="preserve">
+    <value>Gif Pleyer</value>
+    <comment/>
+  </data>
+  <data name="TitleHelp" xml:space="preserve">
+    <value>Yardım</value>
+    <comment/>
+  </data>
+  <data name="TitleHideSysTray" xml:space="preserve">
+    <value>Sistem tepsisi nişanı</value>
+    <comment/>
+  </data>
+  <data name="TitleInteraction" xml:space="preserve">
+    <value>Qarşılıqlı əlaqə</value>
+    <comment/>
+  </data>
+  <data name="TitleLanguage" xml:space="preserve">
+    <value>Dil</value>
+    <comment/>
+  </data>
+  <data name="TitleLibrary" xml:space="preserve">
+    <value>Kitabxana</value>
+    <comment/>
+  </data>
+  <data name="TitleLivelySetup" xml:space="preserve">
+    <value>Lively Quraştırılma</value>
+    <comment/>
+  </data>
+  <data name="TitleLocation" xml:space="preserve">
+    <value>Məkan</value>
+    <comment/>
+  </data>
+  <data name="TitleLockscreenPicture" xml:space="preserve">
+    <value>Lockscreen Picture</value>
+    <comment/>
+  </data>
+  <data name="TitleMisc" xml:space="preserve">
+    <value>Misc</value>
+    <comment/>
+  </data>
+  <data name="TitleMute" xml:space="preserve">
+    <value>Sustur</value>
+    <comment/>
+  </data>
+  <data name="TitlePauseAlgo" xml:space="preserve">
+    <value>Fasilə alqoritmi</value>
+    <comment/>
+  </data>
+  <data name="TitlePerformance" xml:space="preserve">
+    <value>Performans</value>
+    <comment/>
+  </data>
+  <data name="TitlePlaylist" xml:space="preserve">
+    <value>Pleylist</value>
+    <comment/>
+  </data>
+  <data name="TitlePleaseWait" xml:space="preserve">
+    <value>Zəhmət olmasa, gözləyin</value>
+    <comment/>
+  </data>
+  <data name="TitlePowerSavingModePower" xml:space="preserve">
+    <value>Batareyaya qənaət edəndə</value>
+    <comment/>
+  </data>
+  <data name="TitleRemoteDesktopPower" xml:space="preserve">
+    <value>Uzaq Masaüstündə olduqda</value>
+    <comment/>
+  </data>
+  <data name="TitleReportBug" xml:space="preserve">
+    <value>Xəta bildirin</value>
+    <comment/>
+  </data>
+  <data name="TitleScalingFit" xml:space="preserve">
+    <value>Ölçəkləmə/Uyğunlaşdırma</value>
+    <comment/>
+  </data>
+  <data name="TitleScreenLayout" xml:space="preserve">
+    <value>İdarə paneli</value>
+    <comment/>
+  </data>
+  <data name="TitleScreensaver" xml:space="preserve">
+    <value>Ekran qoruyucu</value>
+    <comment/>
+  </data>
+  <data name="TitleScreensaverLockOnResume" xml:space="preserve">
+    <value>Davam edərkən daxil olma ekranını göstərin</value>
+    <comment/>
+  </data>
+  <data name="TitleSelectFile" xml:space="preserve">
+    <value>Fayl seçin</value>
+    <comment/>
+  </data>
+  <data name="TitleSettings" xml:space="preserve">
+    <value>Parametrlər</value>
+    <comment/>
+  </data>
+  <data name="TitleSkipConfirm" xml:space="preserve">
+    <value>Təsdiqetməni keçin</value>
+    <comment/>
+  </data>
+  <data name="TitleSourceCode" xml:space="preserve">
+    <value>Mənbə kodu</value>
+    <comment/>
+  </data>
+  <data name="TitleStore" xml:space="preserve">
+    <value>Mağaza</value>
+    <comment>For different version of Lively, example: Microsoft Store</comment>
+  </data>
+  <data name="TitleStreamWallpaper" xml:space="preserve">
+    <value>Yayımla</value>
+    <comment/>
+  </data>
+  <data name="TitleStreamWallpaperDetect" xml:space="preserve">
+    <value>Axınları aşkar edin</value>
+    <comment/>
+  </data>
+  <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
+    <value>Video Keyfiyyəti</value>
+    <comment/>
+  </data>
+  <data name="TitleSystem" xml:space="preserve">
+    <value>Sistem</value>
+    <comment/>
+  </data>
+  <data name="TitleTaskbarTheme" xml:space="preserve">
+    <value>Tapşırıq çubuğu mövzusu</value>
+    <comment/>
+  </data>
+  <data name="TitleTileSize" xml:space="preserve">
+    <value>Tile ölçüsü</value>
+    <comment/>
+  </data>
+  <data name="TitleUIMode" xml:space="preserve">
+    <value>İstifadəçi interfeysi</value>
+    <comment/>
+  </data>
+  <data name="TitleUpdates" xml:space="preserve">
+    <value>Yenilənmələr</value>
+    <comment/>
+  </data>
+  <data name="TitleVideo" xml:space="preserve">
+    <value>Video</value>
+    <comment/>
+  </data>
+  <data name="TitleVideoHardwareDecode" xml:space="preserve">
+    <value>GPU deşifrəsi</value>
+    <comment/>
+  </data>
+  <data name="TitleWallpaper" xml:space="preserve">
+    <value>Divar kağızı</value>
+    <comment/>
+  </data>
+  <data name="TitleWallpaperDir" xml:space="preserve">
+    <value>Divar kağızı kataloqu</value>
+    <comment/>
+  </data>
+  <data name="TitleWallpaperDirMoveExisting" xml:space="preserve">
+    <value>Mövcud divar kağızlarını yeni qovluğa köçürün</value>
+    <comment/>
+  </data>
+  <data name="TitleWallpaperFit" xml:space="preserve">
+    <value>Bir uyğunluq seçin</value>
+    <comment/>
+  </data>
+  <data name="TitleWallpaperInput" xml:space="preserve">
+    <value>Divar kağızı girişi</value>
+    <comment/>
+  </data>
+  <data name="TitleWallpaperLayout" xml:space="preserve">
+    <value>Yerləşdirmə üsulu</value>
+    <comment/>
+  </data>
+  <data name="TitleWallpaperPlayback" xml:space="preserve">
+    <value>Divar kağızı oxunması</value>
+    <comment/>
+  </data>
+  <data name="TitleWarning" xml:space="preserve">
+    <value>Xəbərdarlıq</value>
+    <comment/>
+  </data>
+  <data name="TitleWebBrowser" xml:space="preserve">
+    <value>Veb Brauzer</value>
+    <comment/>
+  </data>
+  <data name="TitleWebBrowserDiskCache" xml:space="preserve">
+    <value>Disk keşi</value>
+    <comment/>
+  </data>
+  <data name="TitleWebBrowserEngine" xml:space="preserve">
+    <value>Mühərrik</value>
+    <comment/>
+  </data>
+  <data name="TitleWebpageLoad" xml:space="preserve">
+    <value>Veb səhifəni yükləyin</value>
+    <comment/>
+  </data>
+  <data name="TitleWindowsStartup" xml:space="preserve">
+    <value>Windows ilə başlat</value>
+    <comment/>
+  </data>
+</root>

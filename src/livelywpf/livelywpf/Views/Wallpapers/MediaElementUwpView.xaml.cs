@@ -17,10 +17,10 @@ namespace livelywpf.Views.Wallpapers
     /// <summary>
     /// Interaction logic for MediaElementUWP.xaml
     /// </summary>
-    public partial class MediaElementUWP : Window
+    public partial class MediaElementUwpView : Window
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        public MediaElementUWP(string path, int playSpeed)
+        public MediaElementUwpView(string path, int playSpeed)
         {
             InitializeComponent();
             this.Loaded += Window_Loaded;

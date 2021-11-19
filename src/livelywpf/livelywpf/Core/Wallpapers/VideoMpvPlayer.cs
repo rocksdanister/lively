@@ -191,6 +191,18 @@ namespace livelywpf.Core.Wallpapers
             SendMessage("{\"command\":[\"set_property\",\"volume\"," + JsonConvert.SerializeObject(volume) + "]}\n");
         }
 
+        public void SetMute(bool mute)
+        {
+            if (mute)
+            {
+                SendMessage("{\"command\":[\"set_property\",\"aid\",\"no\"]}\n");
+            }
+            else
+            {
+                //todo
+            }
+        }
+
         public void SetPlaybackPos(float pos, PlaybackPosType type)
         {
             if (Category != WallpaperType.picture)

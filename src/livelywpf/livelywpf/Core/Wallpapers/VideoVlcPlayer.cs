@@ -134,6 +134,11 @@ namespace livelywpf.Core.Wallpapers
             //todo
         }
 
+        public void SetMute(bool mute)
+        {
+            //todo
+        }
+
         public async void Show()
         {
             if (Proc != null)

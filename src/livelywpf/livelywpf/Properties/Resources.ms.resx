@@ -606,62 +606,8 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
   <data name="TitleSelectFile" xml:space="preserve">
     <value>Pilih fail</value>
   </data>
-  <data name="TitleSettings" xml:space="preserve">
-    <value>Seting</value>
-  </data>
   <data name="TitleStreamWallpaper" xml:space="preserve">
     <value>Strim</value>
-  </data>
-  <data name="TitleStreamWallpaperDetect" xml:space="preserve">
-    <value>Cari Strim</value>
-  </data>
-  <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
-    <value>Kualiti Video</value>
-  </data>
-  <data name="TitleTileSize" xml:space="preserve">
-    <value>Saiz Jubin</value>
-  </data>
-  <data name="TitleUIMode" xml:space="preserve">
-    <value>Antara Muka Pengguna</value>
-  </data>
-  <data name="TitleVideo" xml:space="preserve">
-    <value>Video</value>
-  </data>
-  <data name="TitleWallpaper" xml:space="preserve">
-    <value>Wallpaper</value>
-  </data>
-  <data name="TitleWallpaperDir" xml:space="preserve">
-    <value>Direktori Wallpaper</value>
-  </data>
-  <data name="TitleWallpaperDirMoveExisting" xml:space="preserve">
-    <value>Alih wallpaper sedia ada ke dalam folder baharu</value>
-  </data>
-  <data name="TitleWallpaperInput" xml:space="preserve">
-    <value>Input Wallpaper</value>
-  </data>
-  <data name="TitleWallpaperLayout" xml:space="preserve">
-    <value>Kaedah Penyusunan</value>
-  </data>
-  <data name="TitleWallpaperPlayback" xml:space="preserve">
-    <value>Main Semula Wallpaper</value>
-  </data>
-  <data name="TitleWarning" xml:space="preserve">
-    <value>Amaran</value>
-  </data>
-  <data name="TitleWebBrowser" xml:space="preserve">
-    <value>Pelayar Web</value>
-  </data>
-  <data name="TitleWebBrowserDiskCache" xml:space="preserve">
-    <value>Cache simpanan</value>
-  </data>
-  <data name="TitleWebBrowserEngine" xml:space="preserve">
-    <value>Enjin</value>
-  </data>
-  <data name="TitleWebpageLoad" xml:space="preserve">
-    <value>Paparkan laman sesawang</value>
-  </data>
-  <data name="TitleWindowsStartup" xml:space="preserve">
-    <value>Mula dengan Windows</value>
   </data>
   <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
     <value>Adakah anda mahu memadamkan wallpaper ini daripada pustaka?</value>
@@ -686,9 +632,6 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
   </data>
   <data name="TipWallpaperFit" xml:space="preserve">
     <value>Algoritma Skala Wallpaper</value>
-  </data>
-  <data name="TitleWallpaperFit" xml:space="preserve">
-    <value>Pilih Padanan</value>
   </data>
   <data name="TextPreviewWallpaper" xml:space="preserve">
     <value>Previu Wallpaper</value>
@@ -744,10 +687,6 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
   <data name="TextStoreReview" xml:space="preserve">
     <value>Adakah anda berpuas hati dengan Lively? Sila tinggalkan ulasan :)</value>
   </data>
-  <data name="TitleStore" xml:space="preserve">
-    <value>Store</value>
-    <comment>Untuk versi Lively yang lain-lain, contohnya : Microsoft Store</comment>
-  </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
     <value>Bagi Windows versi N/KN muat turun pengekod penyahkod (codec) tambahan adalah diperlukan untuk menyokong main semula video didalam wallpaper.</value>
   </data>
@@ -769,9 +708,6 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
   <data name="TitleReportBug" xml:space="preserve">
     <value>Lapor Pepijat</value>
   </data>
-  <data name="TitleVideoHardwareDecode" xml:space="preserve">
-    <value>Nyahkod menggunakan GPU</value>
-  </data>
   <data name="TipVideoHardwareDecode" xml:space="preserve">
     <value>Gunakan 'Hardware Acceleration' jika mampu.</value>
   </data>
@@ -784,9 +720,6 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
 <data name="TitleLocation" xml:space="preserve">
   <value>Lokasi</value>
 </data>
-<data name="TitleSkipConfirm" xml:space="preserve">
-  <value>Skip pengesahan</value>
-</data>
 <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
   <value>Masukkan argumen baris perintah</value>
 </data>
@@ -795,9 +728,6 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
     <value>Tema taskbar dinyahaktifkan kerana terjumpa program yang tidak serasi.</value>
-  </data>
-  <data name="TitleTaskbarTheme" xml:space="preserve">
-    <value>Tema Taskbar</value>
   </data>
   <data name="TitleLockscreenPicture" xml:space="preserve">
     <value>Gambar Skrin Kekunci</value>
@@ -859,9 +789,6 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
   <data name="TextLastChecked" xml:space="preserve">
     <value>Semakan terakhir</value>
   </data>
-  <data name="TitleUpdates" xml:space="preserve">
-    <value>Kemaskini</value>
-  </data>
   <data name="DescCommunity" xml:space="preserve">
     <value>Forum perbincangan atas talian</value>
   </data>
@@ -899,33 +826,21 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
   <data name="TitleScreensaverLockOnResume" xml:space="preserve">
     <value>Paparkan skrin log masuk ketika menyambung semula</value>
   </data>
-  <data name="TitleSelectFile" xml:space="preserve">
-    <value>Pilih Fail</value>
-  </data>
   <data name="TitleSettings" xml:space="preserve">
     <value>Tetapan</value>
   </data>
   <data name="TitleSkipConfirm" xml:space="preserve">
     <value>Skip Pengesahan</value>
   </data>
-  <data name="TitleSourceCode" xml:space="preserve">
-    <value>Kod Sumber</value>
-  </data>
   <data name="TitleStore" xml:space="preserve">
     <value>Stor</value>
     <comment>Bagi versi Lively yang lain-lain, contoh: Microsoft Store</comment>
-  </data>
-  <data name="TitleStreamWallpaper" xml:space="preserve">
-    <value>Strim</value>
   </data>
   <data name="TitleStreamWallpaperDetect" xml:space="preserve">
     <value>Kesan Strim</value>
   </data>
   <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
     <value>Kualiti Video</value>
-  </data>
-  <data name="TitleSystem" xml:space="preserve">
-    <value>Sistem</value>
   </data>
   <data name="TitleTaskbarTheme" xml:space="preserve">
     <value>Tema Bar Tugas</value>

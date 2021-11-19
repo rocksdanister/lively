@@ -16,7 +16,7 @@ namespace livelywpf.Core.Wallpapers
     /// </summary>
     public class VideoPlayerWPF : IWallpaper
     {
-        private readonly MediaElementWPF player;
+        private readonly MediaElementView player;
 
         public bool IsLoaded => player?.IsActive == true;
 
@@ -38,7 +38,7 @@ namespace livelywpf.Core.Wallpapers
 
         public VideoPlayerWPF(string filePath, ILibraryModel model, ILivelyScreen display, WallpaperScaler scaler = WallpaperScaler.fill)
         {
-            player = new MediaElementWPF(filePath, scaler == WallpaperScaler.auto ? WallpaperScaler.uniform : scaler);
+            player = new MediaElementView(filePath, scaler == WallpaperScaler.auto ? WallpaperScaler.uniform : scaler);
             this.Model = model;
             this.Screen = display;
         }
@@ -95,6 +95,11 @@ namespace livelywpf.Core.Wallpapers
         public void SetVolume(int volume)
         {
             player.SetVolume(volume);
+        }
+
+        public void SetMute(bool mute)
+        {
+            //todo
         }
 
         public void SetPlaybackPos(float pos, PlaybackPosType type)

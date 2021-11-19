@@ -19,7 +19,7 @@ namespace livelywpf.Views.Wallpapers
     /// <summary>
     /// Interaction logic for WebView2Element.xaml
     /// </summary>
-    public partial class WebView2Element : Window
+    public partial class Webview2View : Window
     {
         //ref: https://docs.microsoft.com/en-us/microsoft-edge/webview2/gettingstarted/wpf
         private readonly string htmlPath;
@@ -28,7 +28,7 @@ namespace livelywpf.Views.Wallpapers
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         public event EventHandler LivelyPropertiesInitialized;
 
-        public WebView2Element(string path, WallpaperType type, string livelyPropertyPath)
+        public Webview2View(string path, WallpaperType type, string livelyPropertyPath)
         {
             InitializeComponent();
             this.Loaded += WebView2Element_Loaded;

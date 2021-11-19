@@ -90,6 +90,11 @@ namespace livelywpf.Core
         /// <param name="volume">Range 0 - 100</param>
         void SetVolume(int volume);
         /// <summary>
+        /// Mute/disable audio track.
+        /// </summary>
+        /// <param name="mute">true: mute audio</param>
+        void SetMute(bool mute);
+        /// <summary>
         /// Sets wallpaper position in timeline. <br>
         /// Only value 0 works for non-video wallpapers.</br>
         /// </summary>

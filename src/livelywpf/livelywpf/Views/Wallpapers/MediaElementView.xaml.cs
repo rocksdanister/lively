@@ -11,11 +11,11 @@ namespace livelywpf.Views.Wallpapers
     /// <summary>
     /// MediaElement video player (old, compatible with win7 onwards.)
     /// </summary>
-    public partial class MediaElementWPF : Window
+    public partial class MediaElementView : Window
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
-        public MediaElementWPF(string filePath, WallpaperScaler scaler = WallpaperScaler.fill)
+        public MediaElementView(string filePath, WallpaperScaler scaler = WallpaperScaler.fill)
         {
             InitializeComponent();
             this.Loaded += MediaPlayer_Loaded;

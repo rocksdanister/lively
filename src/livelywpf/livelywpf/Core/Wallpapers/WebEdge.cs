@@ -17,8 +17,9 @@ namespace livelywpf.Core.Wallpapers
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
-
-        private readonly WebView2Element player;
+        private int cefD3DRenderingSubProcessPid;
+        //private IntPtr chrome_WidgetWin_0;
+        private readonly Webview2View player;
 
         public bool IsLoaded { get; private set; } = false;
 
@@ -40,7 +41,7 @@ namespace livelywpf.Core.Wallpapers
         {
             LivelyPropertyCopyPath = livelyPropertyPath;
 
-            player = new WebView2Element(path, model.LivelyInfo.Type, LivelyPropertyCopyPath);
+            player = new Webview2View(path, model.LivelyInfo.Type, LivelyPropertyCopyPath);
             this.Model = model;
             this.Screen = display;
         }
@@ -57,12 +58,26 @@ namespace livelywpf.Core.Wallpapers
         {
             //minimize browser.
             NativeMethods.ShowWindow(InputHandle, (uint)NativeMethods.SHOWWINDOW.SW_SHOWMINNOACTIVE);
+            /*
+            if (cefD3DRenderingSubProcessPid != 0)
+            {
+                //Cef spawns multiple subprocess but "Intermediate D3D Window" seems to do the trick..
+                //The "System Idle Process" is given process ID 0, Kernel is 1.
+                _ = NativeMethods.DebugActiveProcess((uint)cefD3DRenderingSubProcessPid);
+            }
+            */
         }
 
         public void Play()
         {
             //show minimized browser.
             NativeMethods.ShowWindow(InputHandle, (uint)NativeMethods.SHOWWINDOW.SW_SHOWNOACTIVATE);
+            /*
+            if (cefD3DRenderingSubProcessPid != 0)
+            {
+                _ = NativeMethods.DebugActiveProcessStop((uint)cefD3DRenderingSubProcessPid);
+            }
+            */
         }
 
         public void SendMessage(string msg)
@@ -71,6 +86,11 @@ namespace livelywpf.Core.Wallpapers
         }
 
         public void SetVolume(int volume)
+        {
+            //todo
+        }
+
+        public void SetMute(bool mute)
         {
             //todo
         }
@@ -92,10 +112,10 @@ namespace livelywpf.Core.Wallpapers
                 {
                     var tmpHwnd = await player.InitializeWebView();
                     //input window..
-                    var parentHwnd = NativeMethods.FindWindowEx(tmpHwnd, IntPtr.Zero, "Chrome_WidgetWin_0", null);
-                    if (!parentHwnd.Equals(IntPtr.Zero))
+                    var chrome_WidgetWin_0 = NativeMethods.FindWindowEx(tmpHwnd, IntPtr.Zero, "Chrome_WidgetWin_0", null);
+                    if (!chrome_WidgetWin_0.Equals(IntPtr.Zero))
                     {
-                        this.InputHandle = NativeMethods.FindWindowEx(parentHwnd, IntPtr.Zero, "Chrome_WidgetWin_1", null);
+                        this.InputHandle = NativeMethods.FindWindowEx(chrome_WidgetWin_0, IntPtr.Zero, "Chrome_WidgetWin_1", null);
                     }
 
                     if (this.InputHandle.Equals(IntPtr.Zero))
@@ -118,8 +138,10 @@ namespace livelywpf.Core.Wallpapers
 
         private void Player_LivelyPropertiesInitialized(object sender, EventArgs e)
         {
+            //Takes time for rendering window to spawn.. this should be enough.
+            _ = NativeMethods.GetWindowThreadProcessId(NativeMethods.FindWindowEx(InputHandle, IntPtr.Zero, "Intermediate D3D Window", null), out cefD3DRenderingSubProcessPid);
+            Logger.Debug("ID3DW: " + cefD3DRenderingSubProcessPid);
             IsLoaded = true;
-            player.LivelyPropertiesInitialized -= Player_LivelyPropertiesInitialized;
         }
 
         private void Player_Closed(object sender, EventArgs e)

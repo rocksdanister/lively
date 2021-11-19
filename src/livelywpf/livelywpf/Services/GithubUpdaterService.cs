@@ -13,6 +13,7 @@ namespace livelywpf.Services
         //in milliseconds
         private readonly int fetchDelayError = 30 * 60 * 1000; //30min
         private readonly int fetchDelayRepeat = 12 * 60 * 60 * 1000; //12hr
+        private readonly Timer retryTimer = new Timer();
 
         //public
         public AppUpdateStatus Status { get; private set; } = AppUpdateStatus.notchecked;
@@ -20,8 +21,8 @@ namespace livelywpf.Services
         public Version LastCheckVersion { get; private set; } = new Version(0, 0, 0, 0);
         public string LastCheckChangelog { get; private set; }
         public Uri LastCheckUri { get; private set; }
+
         public event EventHandler<AppUpdaterEventArgs> UpdateChecked;
-        private readonly Timer retryTimer = new Timer();
 
         public GithubUpdaterService()
         {
@@ -68,7 +69,7 @@ namespace livelywpf.Services
             try
             {
                 await Task.Delay(fetchDelay);
-                (Uri, Version, string) data = await GetLatestRelease(false);
+                (Uri, Version, string) data = await GetLatestRelease(Constants.ApplicationType.IsTestBuild);
                 int verCompare = GithubUtil.CompareAssemblyVersion(data.Item2);
                 if (verCompare > 0)
                 {
