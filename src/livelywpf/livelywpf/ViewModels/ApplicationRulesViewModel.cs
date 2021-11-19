@@ -117,21 +117,15 @@ namespace livelywpf.ViewModels
             {
                 try
                 {
-                    string fileName = Path.GetFileNameWithoutExtension(openFileDialog.FileName);
-                    //skip if same name exists.
-                    foreach (var item in AppRules)
+                    var rule = appRuleFactory.CreateAppRule(openFileDialog.FileName, AppRulesEnum.pause);
+                    if (AppRules.Any(x => x.AppName.Equals(rule.AppName, StringComparison.Ordinal)))
                     {
-                        if(item.AppName.Equals(fileName, StringComparison.OrdinalIgnoreCase))
-                        {
-                            return;
-                        }
+                        return;
                     }
-
-                    var rule = appRuleFactory.CreateAppRule(fileName, AppRulesEnum.pause);
                     userSettings.AppRules.Add(rule);
                     AppRules.Add(rule);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     //todo loggin
                 }

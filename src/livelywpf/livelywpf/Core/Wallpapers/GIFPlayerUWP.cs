@@ -15,24 +15,21 @@ namespace livelywpf.Core.Wallpapers
 {
     public class GIFPlayerUWP : IWallpaper
     {
-        private IntPtr hwnd;
         private readonly GIFViewUWP player;
-        private readonly ILibraryModel model;
-        private ILivelyScreen display;
 
         public bool IsLoaded => player?.IsActive == true;
 
-        public WallpaperType Category => model.LivelyInfo.Type;
+        public WallpaperType Category => Model.LivelyInfo.Type;
 
-        public ILibraryModel Model => model;
+        public ILibraryModel Model { get; }
 
-        public IntPtr Handle => hwnd;
+        public IntPtr Handle { get; private set; }
 
         public IntPtr InputHandle => IntPtr.Zero;
 
         public Process Proc => null;
 
-        public ILivelyScreen Screen { get => display; set => display = value; }
+        public ILivelyScreen Screen { get; set; }
 
         public string LivelyPropertyCopyPath => null;
 
@@ -41,8 +38,8 @@ namespace livelywpf.Core.Wallpapers
         public GIFPlayerUWP(string filePath, ILibraryModel model, ILivelyScreen display, WallpaperScaler scaler = WallpaperScaler.fill)
         {
             player = new GIFViewUWP(filePath, scaler == WallpaperScaler.auto ? WallpaperScaler.uniform : scaler);
-            this.model = model;
-            this.display = display;
+            this.Model = model;
+            this.Screen = display;
         }
 
         public void Close()
@@ -90,7 +87,7 @@ namespace livelywpf.Core.Wallpapers
             {
                 player.Closed += Player_Closed;
                 player.Show();
-                hwnd = new WindowInteropHelper(player).Handle;
+                Handle = new WindowInteropHelper(player).Handle;
                 WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = true, Error = null });
             }
         }

@@ -56,7 +56,6 @@ namespace livelywpf
         {
             //TODO: Logger abstraction.
             //TODO: Simplify startup order: App() -> OnStartup() -> App.Startup event.
-            //TODO: IPC server
             var provider = new ServiceCollection()
                 //singleton
                 .AddSingleton<MainWindow>()
@@ -72,7 +71,7 @@ namespace livelywpf
                 .AddSingleton<IWeatherService, OpenWeatherMapService>() //single service for all wallpapers/widgets.
                 .AddSingleton<SettingsViewModel>() //some init stuff like locale, startup etc happening.. TODO: remove!
                 .AddSingleton<LibraryViewModel>() //loaded wallpapers etc..
-                .AddSingleton<RawInputDX>()
+                .AddSingleton<RawInputMsgWindow>()
                 .AddSingleton<WndProcMsgWindow>()
                 //transient
                 .AddTransient<IApplicationsRulesFactory, ApplicationsRulesFactory>()
@@ -177,7 +176,7 @@ namespace livelywpf
             //Steps to reproduce: Start gif wallpaper using uwp control -> restart lively -> close restored gif wallpaper -> library gridview stops.
             App.Services.GetRequiredService<WndProcMsgWindow>().Show();
             //Package app otherwise bugging out when initialized in settings vm.
-            App.Services.GetRequiredService<RawInputDX>().Show();
+            App.Services.GetRequiredService<RawInputMsgWindow>().Show();
             App.Services.GetRequiredService<IDesktopCore>().RestoreWallpaper();
 
             base.OnStartup(e);

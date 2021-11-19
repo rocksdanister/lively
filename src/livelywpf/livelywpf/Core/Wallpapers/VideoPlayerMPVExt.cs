@@ -15,28 +15,24 @@ namespace livelywpf.Core.Wallpapers
     public class VideoPlayerMPVExt : IWallpaper
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private IntPtr hwnd;
-        private readonly Process _process;
-        private readonly ILibraryModel model;
-        private ILivelyScreen display;
         private bool _initialized;
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
         private static int globalCount;
         private readonly int uniqueId;
 
-        public bool IsLoaded => hwnd != IntPtr.Zero;
+        public bool IsLoaded => Handle != IntPtr.Zero;
 
-        public WallpaperType Category => model.LivelyInfo.Type;
+        public WallpaperType Category => Model.LivelyInfo.Type;
 
-        public ILibraryModel Model => model;
+        public ILibraryModel Model { get; }
 
-        public IntPtr Handle => hwnd;
+        public IntPtr Handle { get; private set; }
 
         public IntPtr InputHandle => IntPtr.Zero;
 
-        public Process Proc => _process;
+        public Process Proc { get; }
 
-        public ILivelyScreen Screen { get => display; set => display = value; }
+        public ILivelyScreen Screen { get; set; }
 
         public string LivelyPropertyCopyPath { get; }
 
@@ -64,9 +60,9 @@ namespace livelywpf.Core.Wallpapers
                 EnableRaisingEvents = true
             };
 
-            this._process = videoPlayerProc;
-            this.model = model;
-            this.display = display;
+            this.Proc = videoPlayerProc;
+            this.Model = model;
+            this.Screen = display;
 
             //for logging purpose
             uniqueId = globalCount++;
@@ -76,8 +72,8 @@ namespace livelywpf.Core.Wallpapers
         {
             try
             {
-                _process.Refresh();
-                _process.StandardInput.WriteLine("lively:terminate");
+                Proc.Refresh();
+                Proc.StandardInput.WriteLine("lively:terminate");
             }
             catch
             {
@@ -102,14 +98,14 @@ namespace livelywpf.Core.Wallpapers
 
         public void Show()
         {
-            if (_process != null)
+            if (Proc != null)
             {
                 try
                 {
-                    _process.Exited += Proc_Exited;
-                    _process.OutputDataReceived += Proc_OutputDataReceived;
-                    _process.Start();
-                    _process.BeginOutputReadLine();
+                    Proc.Exited += Proc_Exited;
+                    Proc.OutputDataReceived += Proc_OutputDataReceived;
+                    Proc.Start();
+                    Proc.BeginOutputReadLine();
                 }
                 catch (Exception e)
                 {
@@ -131,8 +127,8 @@ namespace livelywpf.Core.Wallpapers
                     Msg = "Process exited before giving HWND."
                 });
             }
-            _process.OutputDataReceived -= Proc_OutputDataReceived;
-            _process?.Dispose();
+            Proc.OutputDataReceived -= Proc_OutputDataReceived;
+            Proc?.Dispose();
             DesktopUtil.RefreshDesktop();
         }
 
@@ -155,7 +151,7 @@ namespace livelywpf.Core.Wallpapers
                         {
                             status = false;
                         }
-                        hwnd = handle;
+                        Handle = handle;
                     }
                     catch (Exception ex)
                     {
@@ -178,11 +174,11 @@ namespace livelywpf.Core.Wallpapers
 
         public void SendMessage(string msg)
         {
-            if (_process != null)
+            if (Proc != null)
             {
                 try
                 {
-                    _process.StandardInput.WriteLine(msg);
+                    Proc.StandardInput.WriteLine(msg);
                 }
                 catch { }
             }
@@ -190,14 +186,14 @@ namespace livelywpf.Core.Wallpapers
 
         public void SetScreen(LivelyScreen display)
         {
-            this.display = display;
+            this.Screen = display;
         }
 
         public void Terminate()
         {
             try
             {
-                _process.Kill();
+                Proc.Kill();
             }
             catch { }
             DesktopUtil.RefreshDesktop();

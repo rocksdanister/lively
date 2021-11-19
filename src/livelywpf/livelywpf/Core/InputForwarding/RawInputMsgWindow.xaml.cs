@@ -47,7 +47,7 @@ namespace livelywpf.Core.InputForwarding
     /// Mouseinput retrival and forwarding to wallpaper using DirectX RawInput.
     /// ref: https://docs.microsoft.com/en-us/windows/win32/inputdev/raw-input
     /// </summary>
-    public partial class RawInputDX : Window
+    public partial class RawInputMsgWindow : Window
     {
         #region setup
 
@@ -64,7 +64,7 @@ namespace livelywpf.Core.InputForwarding
         private readonly IUserSettingsService userSettings;
         private readonly IDesktopCore desktopCore;
 
-        public RawInputDX(IUserSettingsService userSettings, IDesktopCore desktopCore)
+        public RawInputMsgWindow(IUserSettingsService userSettings, IDesktopCore desktopCore)
         {
             this.userSettings = userSettings;
             this.desktopCore = desktopCore;

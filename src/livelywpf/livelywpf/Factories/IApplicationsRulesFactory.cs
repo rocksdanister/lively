@@ -4,6 +4,6 @@ namespace livelywpf.Factories
 {
     public interface IApplicationsRulesFactory
     {
-        IApplicationRulesModel CreateAppRule(string appName, AppRulesEnum rule);
+        IApplicationRulesModel CreateAppRule(string appPath, AppRulesEnum rule);
     }
 }

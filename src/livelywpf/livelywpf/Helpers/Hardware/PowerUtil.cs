@@ -8,28 +8,22 @@ namespace livelywpf.Helpers.Hardware
     //ref:
     //https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-getsystempowerstatus
     //https://docs.microsoft.com/en-us/windows/win32/api/winbase/ns-winbase-system_power_status
-    public class BatteryChecker
+    public static class PowerUtil
     {
-        public BatteryChecker()
-        {
-            // Nothing
-        }
+        private static readonly SystemPowerStatus sps = new SystemPowerStatus();
 
         public static bool GetSystemPowerStatus(ref SystemPowerStatus sps)
         {
-            sps = new SystemPowerStatus();
             return GetSystemPowerStatus(sps);
         }
 
         public static SystemStatusFlag GetBatterySaverStatus()
         {
-            var sps = new SystemPowerStatus();
             return GetSystemPowerStatus(sps) ? sps._SystemStatusFlag : SystemStatusFlag.Off;
         }
 
         public static ACLineStatus GetACPowerStatus()
         {
-            var sps = new SystemPowerStatus();
             return GetSystemPowerStatus(sps) ? sps._ACLineStatus : ACLineStatus.Online;
         }
 

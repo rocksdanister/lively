@@ -36,9 +36,9 @@ namespace livelywpf.Services
 
         private readonly IUserSettingsService userSettings;
         private readonly IDesktopCore desktopCore;
-        private readonly RawInputDX rawInput;
+        private readonly RawInputMsgWindow rawInput;
 
-        public ScreensaverService(IUserSettingsService userSettings, IDesktopCore desktopCore, RawInputDX rawInput)
+        public ScreensaverService(IUserSettingsService userSettings, IDesktopCore desktopCore, RawInputMsgWindow rawInput)
         {
             this.userSettings = userSettings;
             this.desktopCore = desktopCore;

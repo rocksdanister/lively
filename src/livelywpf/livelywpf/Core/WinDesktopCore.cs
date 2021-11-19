@@ -735,53 +735,45 @@ namespace livelywpf.Core
 
         private void UpdateWallpaperRect()
         {
-            try
+            if (ScreenHelper.IsMultiScreen() && userSettings.Settings.WallpaperArrangement == WallpaperArrangement.span)
             {
-                //App.Services.GetRequiredService<IPlayback>().Stop();
-                if (ScreenHelper.IsMultiScreen() && userSettings.Settings.WallpaperArrangement == WallpaperArrangement.span)
+                if (wallpapers.Count != 0)
                 {
-                    if (wallpapers.Count != 0)
-                    {
-                        Wallpapers[0].Play();
-                        var screenArea = ScreenHelper.GetVirtualScreenBounds();
-                        Logger.Info($"Updating wallpaper rect(Span): ({screenArea.Width}, {screenArea.Height}).");
-                        //For play/pause, setting the new metadata.
-                        Wallpapers[0].Screen = ScreenHelper.GetPrimaryScreen();
-                        NativeMethods.SetWindowPos(Wallpapers[0].Handle, 1, 0, 0, screenArea.Width, screenArea.Height, 0x0010);
-                    }
+                    Wallpapers[0].Play();
+                    var screenArea = ScreenHelper.GetVirtualScreenBounds();
+                    Logger.Info($"Updating wallpaper rect(Span): ({screenArea.Width}, {screenArea.Height}).");
+                    //For play/pause, setting the new metadata.
+                    Wallpapers[0].Screen = ScreenHelper.GetPrimaryScreen();
+                    NativeMethods.SetWindowPos(Wallpapers[0].Handle, 1, 0, 0, screenArea.Width, screenArea.Height, 0x0010);
                 }
-                else
+            }
+            else
+            {
+                int i;
+                foreach (var screen in ScreenHelper.GetScreen().ToList())
                 {
-                    int i;
-                    foreach (var screen in ScreenHelper.GetScreen().ToList())
+                    if ((i = wallpapers.FindIndex(x => ScreenHelper.ScreenCompare(screen, x.Screen, DisplayIdentificationMode.deviceId))) != -1)
                     {
-                        if ((i = wallpapers.FindIndex(x => ScreenHelper.ScreenCompare(screen, x.Screen, DisplayIdentificationMode.deviceId))) != -1)
-                        {
-                            Wallpapers[i].Play();
-                            Logger.Info($"Updating wallpaper rect(Screen): {Wallpapers[i].Screen.Bounds} -> {screen.Bounds}.");
-                            //For play/pause, setting the new metadata.
-                            Wallpapers[i].Screen = screen;
+                        Wallpapers[i].Play();
+                        Logger.Info($"Updating wallpaper rect(Screen): {Wallpapers[i].Screen.Bounds} -> {screen.Bounds}.");
+                        //For play/pause, setting the new metadata.
+                        Wallpapers[i].Screen = screen;
 
-                            var screenArea = ScreenHelper.GetVirtualScreenBounds();
-                            if (!NativeMethods.SetWindowPos(Wallpapers[i].Handle,
-                                                            1,
-                                                            (screen.Bounds.X - screenArea.Location.X),
-                                                            (screen.Bounds.Y - screenArea.Location.Y),
-                                                            (screen.Bounds.Width),
-                                                            (screen.Bounds.Height),
-                                                            0x0010))
-                            {
-                                NLogger.LogWin32Error("Failed to update wallpaper rect");
-                            }
+                        var screenArea = ScreenHelper.GetVirtualScreenBounds();
+                        if (!NativeMethods.SetWindowPos(Wallpapers[i].Handle,
+                                                        1,
+                                                        (screen.Bounds.X - screenArea.Location.X),
+                                                        (screen.Bounds.Y - screenArea.Location.Y),
+                                                        (screen.Bounds.Width),
+                                                        (screen.Bounds.Height),
+                                                        0x0010))
+                        {
+                            NLogger.LogWin32Error("Failed to update wallpaper rect");
                         }
                     }
                 }
-                DesktopUtil.RefreshDesktop();
             }
-            finally
-            {
-                //App.Services.GetRequiredService<IPlayback>().Start();
-            }
+            DesktopUtil.RefreshDesktop();
         }
 
         private async Task RestoreDisconnectedWallpapers()

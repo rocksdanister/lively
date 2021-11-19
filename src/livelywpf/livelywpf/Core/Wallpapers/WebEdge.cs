@@ -17,24 +17,22 @@ namespace livelywpf.Core.Wallpapers
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
-        private IntPtr hwndWindow, hwndWebView;
+
         private readonly WebView2Element player;
-        private readonly ILibraryModel model;
-        private ILivelyScreen display;
 
         public bool IsLoaded { get; private set; } = false;
 
-        public WallpaperType Category => model.LivelyInfo.Type;
+        public WallpaperType Category => Model.LivelyInfo.Type;
 
-        public ILibraryModel Model => model;
+        public ILibraryModel Model { get; }
 
-        public IntPtr Handle => hwndWindow;
+        public IntPtr Handle { get; private set; }
 
-        public IntPtr InputHandle => hwndWebView;
+        public IntPtr InputHandle { get; private set; }
 
         public Process Proc => null;
 
-        public ILivelyScreen Screen { get => display; set => display = value; }
+        public ILivelyScreen Screen { get; set; }
 
         public string LivelyPropertyCopyPath { get; }
 
@@ -43,8 +41,8 @@ namespace livelywpf.Core.Wallpapers
             LivelyPropertyCopyPath = livelyPropertyPath;
 
             player = new WebView2Element(path, model.LivelyInfo.Type, LivelyPropertyCopyPath);
-            this.model = model;
-            this.display = display;
+            this.Model = model;
+            this.Screen = display;
         }
 
         public void Close()
@@ -58,13 +56,13 @@ namespace livelywpf.Core.Wallpapers
         public void Pause()
         {
             //minimize browser.
-            NativeMethods.ShowWindow(hwndWebView, (uint)NativeMethods.SHOWWINDOW.SW_SHOWMINNOACTIVE);
+            NativeMethods.ShowWindow(InputHandle, (uint)NativeMethods.SHOWWINDOW.SW_SHOWMINNOACTIVE);
         }
 
         public void Play()
         {
             //show minimized browser.
-            NativeMethods.ShowWindow(hwndWebView, (uint)NativeMethods.SHOWWINDOW.SW_SHOWNOACTIVATE);
+            NativeMethods.ShowWindow(InputHandle, (uint)NativeMethods.SHOWWINDOW.SW_SHOWNOACTIVATE);
         }
 
         public void SendMessage(string msg)
@@ -85,7 +83,7 @@ namespace livelywpf.Core.Wallpapers
                 player.Closed += Player_Closed;
                 player.Show();
                 //visible window..
-                this.hwndWindow = new WindowInteropHelper(player).Handle;
+                this.Handle = new WindowInteropHelper(player).Handle;
 
                 bool status = true;
                 Exception error = null;
@@ -97,10 +95,10 @@ namespace livelywpf.Core.Wallpapers
                     var parentHwnd = NativeMethods.FindWindowEx(tmpHwnd, IntPtr.Zero, "Chrome_WidgetWin_0", null);
                     if (!parentHwnd.Equals(IntPtr.Zero))
                     {
-                        this.hwndWebView = NativeMethods.FindWindowEx(parentHwnd, IntPtr.Zero, "Chrome_WidgetWin_1", null);
+                        this.InputHandle = NativeMethods.FindWindowEx(parentHwnd, IntPtr.Zero, "Chrome_WidgetWin_1", null);
                     }
 
-                    if (this.hwndWebView.Equals(IntPtr.Zero))
+                    if (this.InputHandle.Equals(IntPtr.Zero))
                     {
                         throw new Exception("Webview input handle not found.");
                     }

@@ -1142,19 +1142,7 @@ namespace livelywpf.ViewModels
                             Directory.Exists(Path.Combine(parentDir, "SaveData","wpdata")))
                         {
                             //User selected wrong directory, lively needs the SaveData folder also(root).
-                            var result = System.Windows.MessageBox.Show("Did you mean to select?\n" + parentDir +
-                                "\nBoth 'SaveData' and 'wallpapers' folders are required by lively!",
-                                Properties.Resources.TitlePleaseWait, 
-                                MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes);
-                            switch (result)
-                            {
-                                case MessageBoxResult.Yes:
-                                    folderBrowserDialog.SelectedPath = parentDir;
-                                    break;
-                                case MessageBoxResult.No:
-                                    //none
-                                    break;
-                            }
+                            folderBrowserDialog.SelectedPath = parentDir;
                         }
                     }
 

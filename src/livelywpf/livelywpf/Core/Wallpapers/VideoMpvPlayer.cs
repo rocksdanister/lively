@@ -37,10 +37,6 @@ namespace livelywpf.Core.Wallpapers
 
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
-        private IntPtr hwnd;
-        private readonly Process _process;
-        private readonly ILibraryModel model;
-        private ILivelyScreen display;
         private readonly CancellationTokenSource ctsProcessWait = new CancellationTokenSource();
         private Task processWaitTask;
         private readonly int timeOut;
@@ -54,17 +50,17 @@ namespace livelywpf.Core.Wallpapers
 
         public bool IsLoaded { get; private set; } = false;
 
-        public Process Proc => _process;
+        public Process Proc { get; }
 
-        public WallpaperType Category => model.LivelyInfo.Type;
+        public WallpaperType Category => Model.LivelyInfo.Type;
 
-        public ILibraryModel Model => model;
+        public ILibraryModel Model { get; }
 
-        public IntPtr Handle => hwnd;
+        public IntPtr Handle { get; private set; }
 
         public IntPtr InputHandle => IntPtr.Zero;
 
-        public ILivelyScreen Screen { get => display; set => display = value; }
+        public ILivelyScreen Screen { get; set; }
 
         public VideoMpvPlayer(string path, ILibraryModel model, ILivelyScreen display, string livelyPropertyPath,
             WallpaperScaler scaler = WallpaperScaler.fill, bool hwAccel = true, bool onScreenControl = false, StreamQualitySuggestion streamQuality = StreamQualitySuggestion.Highest)
@@ -143,9 +139,9 @@ namespace livelywpf.Core.Wallpapers
                 StartInfo = start,
             };
 
-            this._process = _process;
-            this.model = model;
-            this.display = display;
+            this.Proc = _process;
+            this.Model = model;
+            this.Screen = display;
             this.timeOut = 20000;
 
             //for logging purpose
@@ -300,17 +296,17 @@ namespace livelywpf.Core.Wallpapers
 
         public async void Show()
         {
-            if (_process != null)
+            if (Proc != null)
             {
                 try
                 {
-                    _process.Exited += Proc_Exited;
-                    _process.OutputDataReceived += Proc_OutputDataReceived;
-                    _process.Start();
-                    _process.BeginOutputReadLine();
-                    processWaitTask = Task.Run(() => hwnd = WaitForProcesWindow().Result, ctsProcessWait.Token);
+                    Proc.Exited += Proc_Exited;
+                    Proc.OutputDataReceived += Proc_OutputDataReceived;
+                    Proc.Start();
+                    Proc.BeginOutputReadLine();
+                    processWaitTask = Task.Run((Func<IntPtr>)(() => this.Handle = WaitForProcesWindow().Result), ctsProcessWait.Token);
                     await processWaitTask;
-                    if (hwnd.Equals(IntPtr.Zero))
+                    if (Handle.Equals(IntPtr.Zero))
                     {
                         WindowInitialized?.Invoke(this, new WindowInitializedArgs()
                         {
@@ -321,8 +317,8 @@ namespace livelywpf.Core.Wallpapers
                     }
                     else
                     {
-                        WindowOperations.BorderlessWinStyle(hwnd);
-                        WindowOperations.RemoveWindowFromTaskbar(hwnd);
+                        WindowOperations.BorderlessWinStyle(Handle);
+                        WindowOperations.RemoveWindowFromTaskbar(Handle);
                         //Program ready!
                         WindowInitialized?.Invoke(this, new WindowInitializedArgs()
                         {
@@ -379,8 +375,8 @@ namespace livelywpf.Core.Wallpapers
 
         private void Proc_Exited(object sender, EventArgs e)
         {
-            _process.OutputDataReceived -= Proc_OutputDataReceived;
-            _process?.Dispose();
+            Proc.OutputDataReceived -= Proc_OutputDataReceived;
+            Proc?.Dispose();
             DesktopUtil.RefreshDesktop();
         }
 
@@ -391,24 +387,24 @@ namespace livelywpf.Core.Wallpapers
         /// </summary>
         private async Task<IntPtr> WaitForProcesWindow()
         {
-            if (_process == null)
+            if (Proc == null)
             {
                 return IntPtr.Zero;
             }
 
-            _process.Refresh();
+            Proc.Refresh();
             //waiting for program messageloop to be ready (GUI is not guaranteed to be ready.)
-            while (_process.WaitForInputIdle(-1) != true)
+            while (Proc.WaitForInputIdle(-1) != true)
             {
                 ctsProcessWait.Token.ThrowIfCancellationRequested();
             }
 
             IntPtr wHWND = IntPtr.Zero;
             //Find process window.
-            for (int i = 0; i < timeOut && _process.HasExited == false; i++)
+            for (int i = 0; i < timeOut && Proc.HasExited == false; i++)
             {
                 ctsProcessWait.Token.ThrowIfCancellationRequested();
-                if (!IntPtr.Equals((wHWND = GetProcessWindow(_process, true)), IntPtr.Zero))
+                if (!IntPtr.Equals((wHWND = GetProcessWindow(Proc, true)), IntPtr.Zero))
                     break;
                 await Task.Delay(1);
             }
@@ -423,7 +419,7 @@ namespace livelywpf.Core.Wallpapers
         /// <returns></returns>
         private IntPtr GetProcessWindow(Process proc, bool win32Search = false)
         {
-            if (_process == null)
+            if (Proc == null)
                 return IntPtr.Zero;
 
             if (win32Search)
@@ -498,7 +494,7 @@ namespace livelywpf.Core.Wallpapers
         {
             try
             {
-                _process.Kill();
+                Proc.Kill();
             }
             catch { }
             DesktopUtil.RefreshDesktop();
