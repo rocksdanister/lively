@@ -19,11 +19,7 @@ namespace livelywpf.Core.Wallpapers
     public class WebProcess : IWallpaper
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        //todo: Check this library out https://github.com/Tyrrrz/CliWrap
-        private IntPtr hwndWebView, hwndWindow;
-        private readonly Process _process;
-        private readonly ILibraryModel model;
-        private ILivelyScreen display;
+        private int cefD3DRenderingSubProcessPid;//, cefAudioSubProcessPid;
         private bool _initialized;
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
         private static int globalCount;
@@ -31,17 +27,17 @@ namespace livelywpf.Core.Wallpapers
 
         public bool IsLoaded { get; private set; } = false;
 
-        public WallpaperType Category => model.LivelyInfo.Type;
+        public WallpaperType Category => Model.LivelyInfo.Type;
 
-        public ILibraryModel Model => model;
+        public ILibraryModel Model { get; }
 
-        public IntPtr Handle => hwndWindow;
+        public IntPtr Handle { get; private set; }
 
-        public IntPtr InputHandle => hwndWebView;
+        public IntPtr InputHandle { get; private set; }
 
-        public Process Proc => _process;
+        public Process Proc { get; }
 
-        public ILivelyScreen Screen { get => display; set => display = value; }
+        public ILivelyScreen Screen { get; set; }
 
         public string LivelyPropertyCopyPath { get; }
 
@@ -82,88 +78,46 @@ namespace livelywpf.Core.Wallpapers
                 EnableRaisingEvents = true
             };
 
-            this._process = webProcess;
-            this.model = model;
-            this.display = display;
+            this.Proc = webProcess;
+            this.Model = model;
+            this.Screen = display;
 
             //for logging purpose
             uniqueId = globalCount++;
         }
 
-        public void Close()
-        {
-            //Issue: Cef.shutdown() crashing when multiple instance is closed simulataneously.
-            Terminate();
-            /*
-            try
-            {
-                Proc.Refresh();
-                Proc.StandardInput.WriteLine("lively:terminate");
-                //TODO: Make it Async function.
-                if (!Proc.WaitForExit(4000))
-                {
-                    Terminate();
-                }
-            }
-            catch
-            {
-                Terminate();
-            }
-            */
-        }
-
         public void Pause()
         {
             //minimize browser.
-            NativeMethods.ShowWindow(hwndWebView, (uint)NativeMethods.SHOWWINDOW.SW_SHOWMINNOACTIVE);
-            //SendMessage("lively-playback pause");
+            //NativeMethods.ShowWindow(hwndWebView, (uint)NativeMethods.SHOWWINDOW.SW_SHOWMINNOACTIVE);
+            if (cefD3DRenderingSubProcessPid != 0)
+            {
+                //Cef spawns multiple subprocess but "Intermediate D3D Window" seems to do the trick..
+                //The "System Idle Process" is given process ID 0, Kernel is 1.
+                _ = NativeMethods.DebugActiveProcess((uint)cefD3DRenderingSubProcessPid);
+            }
         }
 
         public void Play()
         {
-            //show minimized browser.
-            NativeMethods.ShowWindow(hwndWebView, (uint)NativeMethods.SHOWWINDOW.SW_SHOWNOACTIVATE);
-            //SendMessage("lively-playback play");
-            //WallpaperRectFix();
-        }
-
-        private void WallpaperRectFix()
-        {
-            if (VerifyWindowRect(Handle, Screen))
+            //Show minimized browser.
+            //NativeMethods.ShowWindow(hwndWebView, (uint)NativeMethods.SHOWWINDOW.SW_SHOWNOACTIVATE);
+            if (cefD3DRenderingSubProcessPid != 0)
             {
-                Logger.Info("Correcting wp rect!");
-                if (!NativeMethods.SetWindowPos(Handle, 1, 0, 0, Screen.Bounds.Width, Screen.Bounds.Height, 0 | 0x0010 | 0x0002))
-                {
-                    //todo: log
-                }
-            }
-        }
-
-        private static bool VerifyWindowRect(IntPtr hWnd, ILivelyScreen screen)
-        {
-            try
-            {
-                System.Drawing.Rectangle screenBounds;
-                NativeMethods.GetWindowRect(hWnd, out NativeMethods.RECT appBounds);
-                screenBounds = System.Windows.Forms.Screen.FromHandle(hWnd).Bounds;
-                return ((appBounds.Bottom - appBounds.Top) != screen.Bounds.Height || (appBounds.Right - appBounds.Left) != screen.Bounds.Width);
-            }
-            catch
-            {
-                return false;
+                _ = NativeMethods.DebugActiveProcessStop((uint)cefD3DRenderingSubProcessPid);
             }
         }
 
         public void Show()
         {
-            if (_process != null)
+            if (Proc != null)
             {
                 try
                 {
-                    _process.Exited += Proc_Exited;
-                    _process.OutputDataReceived += Proc_OutputDataReceived;
-                    _process.Start();
-                    _process.BeginOutputReadLine();
+                    Proc.Exited += Proc_Exited;
+                    Proc.OutputDataReceived += Proc_OutputDataReceived;
+                    Proc.Start();
+                    Proc.BeginOutputReadLine();
                 }
                 catch (Exception e)
                 {
@@ -185,8 +139,8 @@ namespace livelywpf.Core.Wallpapers
                     Msg = "Process exited before giving HWND."
                 });
             }
-            _process.OutputDataReceived -= Proc_OutputDataReceived;
-            _process?.Dispose();
+            Proc.OutputDataReceived -= Proc_OutputDataReceived;
+            Proc?.Dispose();
             DesktopUtil.RefreshDesktop();
         }
 
@@ -217,20 +171,19 @@ namespace livelywpf.Core.Wallpapers
                         try
                         {
                             msg = e.Data;
+                            //CefBrowserWindow
                             var handle = new IntPtr(((LivelyMessageHwnd)obj).Hwnd);
-                            //note-handle: WindowsForms10.Window.8.app.0.141b42a_r9_ad1
-                            hwndWebView = NativeMethods.FindWindowEx(handle, IntPtr.Zero, "Chrome_WidgetWin_0", null);
-                            //cefRenderWidget = StaticPinvoke.FindWindowEx(handle, IntPtr.Zero, "Chrome_RenderWidgetHostHWND", null);
-                            //cefIntermediate = StaticPinvoke.FindWindowEx(handle, IntPtr.Zero, "Intermediate D3D Window", null);
-                            hwndWindow = FindWindowByProcessId(Proc.Id);
+                            //WindowsForms10.Window.8.app.0.141b42a_r9_ad1
+                            InputHandle = NativeMethods.FindWindowEx(handle, IntPtr.Zero, "Chrome_WidgetWin_0", null);
+                            Handle = FindWindowByProcessId(Proc.Id);
 
-                            if (IntPtr.Equals(hwndWebView, IntPtr.Zero) || IntPtr.Equals(hwndWindow, IntPtr.Zero))
+                            if (IntPtr.Equals(InputHandle, IntPtr.Zero) || IntPtr.Equals(Handle, IntPtr.Zero))
                             {
                                 throw new Exception("Browser input/window handle NULL.");
                             }
 
                             //TaskView crash fix..
-                            WindowOperations.RemoveWindowFromTaskbar(hwndWindow);
+                            WindowOperations.RemoveWindowFromTaskbar(Handle);
                         }
                         catch (Exception ie)
                         {
@@ -245,6 +198,8 @@ namespace livelywpf.Core.Wallpapers
                     }
                     else if (obj.Type == MessageType.msg_wploaded)
                     {
+                        //Takes time for rendering window to spawn.. this should be enough.
+                        _ = NativeMethods.GetWindowThreadProcessId(NativeMethods.FindWindowEx(InputHandle, IntPtr.Zero, "Intermediate D3D Window", null), out cefD3DRenderingSubProcessPid);
                         IsLoaded = ((LivelyMessageWallpaperLoaded)obj).Success;
                     }
                 }
@@ -281,7 +236,7 @@ namespace livelywpf.Core.Wallpapers
         {
             try
             {
-                _process?.StandardInput.WriteLine(msg);
+                Proc?.StandardInput.WriteLine(msg);
             }
             catch (Exception e)
             {
@@ -298,15 +253,32 @@ namespace livelywpf.Core.Wallpapers
         {
             try
             {
-                _process.Kill();
+                Proc.Kill();
             }
             catch { }
             DesktopUtil.RefreshDesktop();
         }
 
-        public void Resume()
+        public void Close()
         {
-            //throw new NotImplementedException();
+            //Issue: Cef.shutdown() crashing when multiple instance is closed simulataneously.
+            Terminate();
+            /*
+            try
+            {
+                Proc.Refresh();
+                Proc.StandardInput.WriteLine("lively:terminate");
+                //TODO: Make it Async function.
+                if (!Proc.WaitForExit(4000))
+                {
+                    Terminate();
+                }
+            }
+            catch
+            {
+                Terminate();
+            }
+            */
         }
 
         public void SetVolume(int volume)
@@ -387,7 +359,7 @@ namespace livelywpf.Core.Wallpapers
 
             try
             {
-                _process.OutputDataReceived += OutputDataReceived;
+                Proc.OutputDataReceived += OutputDataReceived;
                 SendMessage(new LivelyScreenshotCmd() 
                 { 
                     FilePath = Path.GetExtension(filePath) != ".jpg" ? filePath + ".jpg" : filePath,
@@ -398,7 +370,7 @@ namespace livelywpf.Core.Wallpapers
             }
             finally
             {
-                _process.OutputDataReceived -= OutputDataReceived;
+                Proc.OutputDataReceived -= OutputDataReceived;
             }
         }
     }
