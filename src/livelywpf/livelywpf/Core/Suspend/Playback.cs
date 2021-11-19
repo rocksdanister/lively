@@ -169,12 +169,12 @@ namespace livelywpf.Core.Suspend
                 PauseWallpapers();
             }
             else if (userSettings.Settings.BatteryPause == AppRulesEnum.pause &&
-                BatteryChecker.GetACPowerStatus() == BatteryChecker.ACLineStatus.Offline)
+                PowerUtil.GetACPowerStatus() == PowerUtil.ACLineStatus.Offline)
             {
                 PauseWallpapers();
             }
             else if (userSettings.Settings.PowerSaveModePause == AppRulesEnum.pause &&
-                BatteryChecker.GetBatterySaverStatus() == BatteryChecker.SystemStatusFlag.On)
+                PowerUtil.GetBatterySaverStatus() == PowerUtil.SystemStatusFlag.On)
             {
                 PauseWallpapers();
             }
@@ -214,6 +214,27 @@ namespace livelywpf.Core.Suspend
             }
             PlayWallpapers();
             SetWallpaperVolume(userSettings.Settings.AudioVolumeGlobal);
+        }
+
+        private void UIAutomationMonitor()
+        {
+            throw new NotImplementedException();
+            /*
+            // track windows open
+            Automation.AddAutomationEventHandler(WindowPattern.WindowOpenedEvent, AutomationElement.RootElement, TreeScope.Subtree, (s, e) =>
+            {
+                var element = (AutomationElement)s;
+                if (element.Current.ProcessId != Process.GetCurrentProcess().Id)
+                {
+                    Debug.WriteLine("Added window '" + element.Current.Name + "'");
+                    // track window close
+                    Automation.AddAutomationEventHandler(WindowPattern.WindowClosedEvent, element, TreeScope.Element, (s2, e2) =>
+                    {
+                        Debug.WriteLine("Removed windows '" + element + "'");
+                    });
+                }
+            });
+            */
         }
 
         private void ForegroundAppMonitor()

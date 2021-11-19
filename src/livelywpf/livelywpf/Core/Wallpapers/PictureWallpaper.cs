@@ -14,17 +14,15 @@ namespace livelywpf.Core.Wallpapers
     class PictureWallpaper : IWallpaper
     {
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
-        private DesktopWallpaperPosition desktopScaler;
-        private IDesktopWallpaper desktop;
-        private readonly ILibraryModel model;
-        private string systemWallpaperPath;
-        private ILivelyScreen display;
+        private readonly DesktopWallpaperPosition desktopScaler;
+        private readonly IDesktopWallpaper desktop;
+        private readonly string systemWallpaperPath;
 
         public bool IsLoaded => true;
 
         public WallpaperType Category => WallpaperType.picture;
 
-        public ILibraryModel Model => model;
+        public ILibraryModel Model { get; }
 
         public IntPtr Handle => IntPtr.Zero;
 
@@ -32,7 +30,7 @@ namespace livelywpf.Core.Wallpapers
 
         public Process Proc => null;
 
-        public ILivelyScreen Screen { get => display; set => display = value; }
+        public ILivelyScreen Screen { get; set; }
 
         public string LivelyPropertyCopyPath => null;
 
@@ -62,8 +60,8 @@ namespace livelywpf.Core.Wallpapers
                     desktopScaler = Helpers.DesktopWallpaperPosition.Fill;
                     break;
             }
-            this.display = display;
-            this.model = model;
+            this.Screen = display;
+            this.Model = model;
         }
 
         public void Close()
@@ -98,7 +96,7 @@ namespace livelywpf.Core.Wallpapers
 
         public void SetScreen(LivelyScreen display)
         {
-            this.display = display;
+            this.Screen = display;
         }
 
         public void SetVolume(int volume)
@@ -110,7 +108,7 @@ namespace livelywpf.Core.Wallpapers
         {
             //desktop.Enable();
             desktop.SetPosition(arrangement == WallpaperArrangement.span ? Helpers.DesktopWallpaperPosition.Span : desktopScaler);
-            desktop.SetWallpaper(arrangement == WallpaperArrangement.span ? null : display.DeviceId, model.FilePath);
+            desktop.SetWallpaper(arrangement == WallpaperArrangement.span ? null : Screen.DeviceId, Model.FilePath);
         }
 
         public void Stop()
@@ -121,7 +119,7 @@ namespace livelywpf.Core.Wallpapers
         public void Terminate()
         {
             //restoring original wallpaper.
-            desktop.SetWallpaper(display.DeviceId ,systemWallpaperPath);
+            desktop.SetWallpaper(Screen.DeviceId ,systemWallpaperPath);
         }
 
         public void SendMessage(IpcMessage obj)
