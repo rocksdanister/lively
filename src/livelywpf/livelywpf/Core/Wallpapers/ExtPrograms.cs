@@ -346,11 +346,6 @@ namespace livelywpf.Core.Wallpapers
 
         #endregion process task
 
-        public void SendMessage(string msg)
-        {
-
-        }
-
         public void Terminate()
         {
             try

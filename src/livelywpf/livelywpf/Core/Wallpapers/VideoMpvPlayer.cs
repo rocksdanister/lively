@@ -512,7 +512,7 @@ namespace livelywpf.Core.Wallpapers
             DesktopUtil.RefreshDesktop();
         }
 
-        public void SendMessage(string msg)
+        private void SendMessage(string msg)
         {
             try
             {

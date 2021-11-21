@@ -72,11 +72,6 @@ namespace livelywpf.Core
         /// Send ipc message to program wallpaper.
         /// </summary>
         /// <param name="msg"></param>
-        void SendMessage(string msg);
-        /// <summary>
-        /// Send ipc message to program wallpaper.
-        /// </summary>
-        /// <param name="msg"></param>
         void SendMessage(IpcMessage obj);
         /// <summary>
         /// Get location of LivelyProperties.json copy file in Savedata/wpdata.

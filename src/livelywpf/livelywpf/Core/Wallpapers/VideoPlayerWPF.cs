@@ -14,7 +14,7 @@ namespace livelywpf.Core.Wallpapers
     /// <summary>
     /// Built in Windws media foundation player.
     /// </summary>
-    public class VideoPlayerWPF : IWallpaper
+    public class VideoPlayerWpf : IWallpaper
     {
         private readonly MediaElementView player;
 
@@ -36,7 +36,7 @@ namespace livelywpf.Core.Wallpapers
 
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
 
-        public VideoPlayerWPF(string filePath, ILibraryModel model, ILivelyScreen display, WallpaperScaler scaler = WallpaperScaler.fill)
+        public VideoPlayerWpf(string filePath, ILibraryModel model, ILivelyScreen display, WallpaperScaler scaler = WallpaperScaler.fill)
         {
             player = new MediaElementView(filePath, scaler == WallpaperScaler.auto ? WallpaperScaler.uniform : scaler);
             this.Model = model;
@@ -80,11 +80,6 @@ namespace livelywpf.Core.Wallpapers
         private void Player_Closed(object sender, EventArgs e)
         {
             DesktopUtil.RefreshDesktop();
-        }
-
-        public void SendMessage(string msg)
-        {
-            //todo
         }
 
         public void Terminate()

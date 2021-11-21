@@ -11,7 +11,7 @@ namespace livelywpf.Core.Wallpapers
     /// <summary>
     /// libVLC videoplayer (External plugin.)
     /// </summary>
-    public class VideoPlayerVLCExt : IWallpaper
+    public class VideoPlayerVlcExt : IWallpaper
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private bool _initialized;
@@ -34,7 +34,7 @@ namespace livelywpf.Core.Wallpapers
 
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
 
-        public VideoPlayerVLCExt(string path, ILibraryModel model, ILivelyScreen display)
+        public VideoPlayerVlcExt(string path, ILibraryModel model, ILivelyScreen display)
         {
             ProcessStartInfo start = new ProcessStartInfo
             {
@@ -162,7 +162,7 @@ namespace livelywpf.Core.Wallpapers
             //throw new NotImplementedException();
         }
 
-        public void SendMessage(string msg)
+        private void SendMessage(string msg)
         {
             if (Proc != null)
             {

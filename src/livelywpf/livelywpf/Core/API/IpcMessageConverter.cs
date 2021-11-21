@@ -19,6 +19,8 @@ namespace livelywpf.Core.API
                 MessageType.cmd_reload => jo.ToObject<LivelyReloadCmd>(serializer),
                 MessageType.cmd_close => jo.ToObject<LivelyCloseCmd>(serializer),
                 MessageType.cmd_screenshot => jo.ToObject<LivelyScreenshotCmd>(serializer),
+                MessageType.cmd_suspend => jo.ToObject<LivelySuspendCmd>(serializer),
+                MessageType.cmd_resume => jo.ToObject<LivelyResumeCmd>(serializer),
                 MessageType.lsp_perfcntr => jo.ToObject<LivelySystemInformation>(serializer),
                 MessageType.lsp_nowplaying => jo.ToObject<LivelySystemNowPlaying>(serializer),
                 MessageType.lp_slider => jo.ToObject<LivelySlider>(serializer),

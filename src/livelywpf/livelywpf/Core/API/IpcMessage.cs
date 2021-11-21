@@ -16,6 +16,8 @@ namespace livelywpf.Core.API
         cmd_reload,
         cmd_close,
         cmd_screenshot,
+        cmd_suspend,
+        cmd_resume,
         lsp_perfcntr,
         lsp_nowplaying,
         lp_slider,
@@ -114,6 +116,22 @@ namespace livelywpf.Core.API
         public string FilePath { get; set; }
         public uint Delay { get; set; }
         public LivelyScreenshotCmd() : base(MessageType.cmd_screenshot)
+        {
+        }
+    }
+
+    [Serializable]
+    public class LivelySuspendCmd : IpcMessage
+    {
+        public LivelySuspendCmd() : base(MessageType.cmd_suspend)
+        {
+        }
+    }
+
+    [Serializable]
+    public class LivelyResumeCmd : IpcMessage
+    {
+        public LivelyResumeCmd() : base(MessageType.cmd_resume)
         {
         }
     }

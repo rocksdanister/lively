@@ -84,11 +84,6 @@ namespace livelywpf.Core.Wallpapers
             throw new NotImplementedException();
         }
 
-        public void SendMessage(string msg)
-        {
-            //nothing
-        }
-
         public void SetPlaybackPos(float pos, PlaybackPosType type)
         {
             //nothing

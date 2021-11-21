@@ -119,11 +119,6 @@ namespace livelywpf.Core.Wallpapers
             //todo
         }
 
-        public void SendMessage(string msg)
-        {
-            //todo
-        }
-
         public void SetPlaybackPos(float pos, PlaybackPosType type)
         {
             //todo

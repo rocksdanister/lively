@@ -59,7 +59,7 @@ namespace livelywpf
             var provider = new ServiceCollection()
                 //singleton
                 .AddSingleton<MainWindow>()
-                .AddSingleton<IUserSettingsService, UserSettingsService>()
+                .AddSingleton<IUserSettingsService, JsonUserSettingsService>()
                 .AddSingleton<IDesktopCore, WinDesktopCore>()
                 .AddSingleton<IWatchdogService, WatchdogProcess>()
                 .AddSingleton<IScreensaverService, ScreensaverService>()
