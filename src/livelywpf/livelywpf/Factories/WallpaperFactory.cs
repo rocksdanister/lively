@@ -45,7 +45,7 @@ namespace livelywpf.Factories
                     switch (userSettings.Settings.VideoPlayer)
                     {
                         case LivelyMediaPlayer.wmf:
-                            return new VideoPlayerWPF(obj.FilePath, obj,
+                            return new VideoPlayerWpf(obj.FilePath, obj,
                                 display, userSettings.Settings.WallpaperScaling);
                         case LivelyMediaPlayer.libvlc:
                             //depreciated
@@ -54,9 +54,9 @@ namespace livelywpf.Factories
                             //depreciated
                             throw new DepreciatedException("libmpv depreciated player selected.");
                         case LivelyMediaPlayer.libvlcExt:
-                            return new VideoPlayerVLCExt(obj.FilePath, obj, display);
+                            return new VideoPlayerVlcExt(obj.FilePath, obj, display);
                         case LivelyMediaPlayer.libmpvExt:
-                            return new VideoPlayerMPVExt(obj.FilePath, 
+                            return new VideoPlayerMpvExt(obj.FilePath, 
                                 obj, 
                                 display,
                                 lpFactory.CreateLivelyPropertyFolder(obj, display, userSettings.Settings.WallpaperArrangement), 
@@ -81,10 +81,10 @@ namespace livelywpf.Factories
                     switch (userSettings.Settings.GifPlayer)
                     {
                         case LivelyGifPlayer.win10Img:
-                            return new GIFPlayerUWP(obj.FilePath, obj,
+                            return new GIFPlayerUwp(obj.FilePath, obj,
                                 display, userSettings.Settings.WallpaperScaling);
                         case LivelyGifPlayer.libmpvExt:
-                            return new VideoPlayerMPVExt(obj.FilePath, 
+                            return new VideoPlayerMpvExt(obj.FilePath, 
                                 obj, 
                                 display,
                                 lpFactory.CreateLivelyPropertyFolder(obj, display, userSettings.Settings.WallpaperArrangement),

@@ -6,13 +6,13 @@ using System.Text;
 
 namespace livelywpf.Services
 {
-    class UserSettingsService : IUserSettingsService
+    public class JsonUserSettingsService : IUserSettingsService
     {
         private readonly string settingsPath = Constants.CommonPaths.UserSettingsPath;
         private readonly string appRulesPath = Constants.CommonPaths.AppRulesPath;
         private readonly string wallpaperLayoutPath = Constants.CommonPaths.WallpaperLayoutPath;
 
-        public UserSettingsService()
+        public JsonUserSettingsService()
         {
             Load<ISettingsModel>();
             Load<List<IApplicationRulesModel>>();

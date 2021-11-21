@@ -11,6 +11,9 @@ using Timer = System.Timers.Timer;
 
 namespace livelywpf.Services.Weather
 {
+    //TODO: cache the results to disk reduce api calls
+    //TODO: make APIKey compile time flag?
+    //TODO: user input for "city" and "units", possibly during app setup and during weather wallpaper apply if not setup yet.
     public class OpenWeatherMapService : IWeatherService
     {
         //in milliseconds
@@ -18,9 +21,9 @@ namespace livelywpf.Services.Weather
         private readonly int fetchDelayRepeat = 1 * 60 * 60 * 1000; //1hr
 
         private readonly Timer retryTimer = new Timer();
-        private const string key = "abc"; //TODO: compile time flag.
-        private string units = "metric"; // TODO: user input
-        private string city = "New York"; // TODO: user input
+        private const string key = "abc"; 
+        private string units = "metric"; 
+        private string city = "New York"; 
         private bool checkSuccess = false;
 
         //public

@@ -95,6 +95,7 @@ namespace livelywpf.Core.Wallpapers
                 //Cef spawns multiple subprocess but "Intermediate D3D Window" seems to do the trick..
                 //The "System Idle Process" is given process ID 0, Kernel is 1.
                 _ = NativeMethods.DebugActiveProcess((uint)cefD3DRenderingSubProcessPid);
+                SendMessage(new LivelySuspendCmd()); //"{\"Type\":7}"
             }
         }
 
@@ -105,6 +106,7 @@ namespace livelywpf.Core.Wallpapers
             if (cefD3DRenderingSubProcessPid != 0)
             {
                 _ = NativeMethods.DebugActiveProcessStop((uint)cefD3DRenderingSubProcessPid);
+                SendMessage(new LivelyResumeCmd()); //"{\"Type\":8}"
             }
         }
 
@@ -232,7 +234,7 @@ namespace livelywpf.Core.Wallpapers
             //throw new NotImplementedException();
         }
 
-        public void SendMessage(string msg)
+        private void SendMessage(string msg)
         {
             try
             {

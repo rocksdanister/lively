@@ -80,7 +80,7 @@ namespace livelywpf.Core.Wallpapers
             */
         }
 
-        public void SendMessage(string msg)
+        private void SendMessage(string msg)
         {
             player?.MessageProcess(msg);
         }

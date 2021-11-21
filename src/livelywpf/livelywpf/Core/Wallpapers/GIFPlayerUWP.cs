@@ -13,7 +13,7 @@ using livelywpf.Helpers.Shell;
 
 namespace livelywpf.Core.Wallpapers
 {
-    public class GIFPlayerUWP : IWallpaper
+    public class GIFPlayerUwp : IWallpaper
     {
         private readonly GifUwpView player;
 
@@ -35,7 +35,7 @@ namespace livelywpf.Core.Wallpapers
 
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
 
-        public GIFPlayerUWP(string filePath, ILibraryModel model, ILivelyScreen display, WallpaperScaler scaler = WallpaperScaler.fill)
+        public GIFPlayerUwp(string filePath, ILibraryModel model, ILivelyScreen display, WallpaperScaler scaler = WallpaperScaler.fill)
         {
             player = new GifUwpView(filePath, scaler == WallpaperScaler.auto ? WallpaperScaler.uniform : scaler);
             this.Model = model;
@@ -58,11 +58,6 @@ namespace livelywpf.Core.Wallpapers
         public void Play()
         {
             player.Play();
-        }
-
-        public void SendMessage(string msg)
-        {
-            //throw new NotImplementedException();
         }
 
         public async Task ScreenCapture(string filePath)

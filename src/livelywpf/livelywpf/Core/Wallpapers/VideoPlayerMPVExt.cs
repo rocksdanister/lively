@@ -12,7 +12,7 @@ namespace livelywpf.Core.Wallpapers
     /// <summary>
     /// libMPV videoplayer (External plugin.)
     /// </summary>
-    public class VideoPlayerMPVExt : IWallpaper
+    public class VideoPlayerMpvExt : IWallpaper
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private bool _initialized;
@@ -36,7 +36,7 @@ namespace livelywpf.Core.Wallpapers
 
         public string LivelyPropertyCopyPath { get; }
 
-        public VideoPlayerMPVExt(string path, ILibraryModel model, ILivelyScreen display, string livelyPropertyPath,
+        public VideoPlayerMpvExt(string path, ILibraryModel model, ILivelyScreen display, string livelyPropertyPath,
             WallpaperScaler scaler = WallpaperScaler.fill, StreamQualitySuggestion streamQuality = StreamQualitySuggestion.Highest)
         {
             LivelyPropertyCopyPath = livelyPropertyPath;
@@ -172,7 +172,7 @@ namespace livelywpf.Core.Wallpapers
             }
         }
 
-        public void SendMessage(string msg)
+        private void SendMessage(string msg)
         {
             if (Proc != null)
             {
