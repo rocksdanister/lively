@@ -45,6 +45,8 @@ namespace livelywpf.Views.Pages
                     TitleDocumentation = Properties.Resources.TitleDocumentation,
                     TitleReportBug = Properties.Resources.TitleReportBug,
                     TitleSourceCode = Properties.Resources.TitleSourceCode,
+                    TitleStoreReview = Properties.Resources.TitleStore,
+                    DescStoreReview = Properties.Resources.TextStoreReview,
                     DescWebsite = Properties.Resources.DescOfficialWebpage,
                     DescReportBug = Properties.Resources.DescReportBug,
                     DescSourceCode = Properties.Resources.TextGitHubStar,

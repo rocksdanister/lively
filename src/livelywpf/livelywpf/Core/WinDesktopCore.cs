@@ -64,6 +64,15 @@ namespace livelywpf.Core
 
             ScreenHelper.DisplayUpdated += DisplaySettingsChanged_Hwnd;
             WallpaperChanged += SetupDesktop_WallpaperChanged;
+
+            /*
+            SystemEvents.SessionSwitch += (s, e) => {
+                if (e.Reason == SessionSwitchReason.SessionUnlock)
+                {
+                    ResetWallpaper();
+                }
+            };
+            */
         }
 
         /// <summary>
