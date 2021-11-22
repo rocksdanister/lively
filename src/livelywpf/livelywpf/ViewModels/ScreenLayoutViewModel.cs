@@ -9,6 +9,7 @@ using livelywpf.Helpers;
 using livelywpf.Helpers.MVVM;
 using livelywpf.Models;
 using livelywpf.Services;
+using livelywpf.Views.LivelyProperty.Dialogues;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace livelywpf.ViewModels
@@ -188,7 +189,7 @@ namespace livelywpf.ViewModels
                 }
                 if (obj != null)
                 {
-                    var settingsWidget = new Cef.LivelyPropertiesTrayWidget(obj);
+                    var settingsWidget = new LivelyPropertiesTrayWidget(obj);
                     settingsWidget.Show();
                 }
             }
