@@ -8,7 +8,7 @@ namespace livelywpf.ViewModels
 {
     public class HelpViewModel : ObservableObject
     {
-        //public bool IsWinStore => Program.IsMSIX;
+        public bool IsWinStore => Constants.ApplicationType.IsMSIX;
 
         private RelayCommand _websiteCommand;
         public RelayCommand WebsiteCommand
@@ -91,6 +91,20 @@ namespace livelywpf.ViewModels
                         param => LinkHandler.OpenBrowser("https://ko-fi.com/rocksdanister"));
                 }
                 return _supportCommand;
+            }
+        }
+
+        private RelayCommand _mSReviewCommand;
+        public RelayCommand MSReviewCommand
+        {
+            get
+            {
+                if (_mSReviewCommand == null)
+                {
+                    _mSReviewCommand = new RelayCommand(
+                        param => LinkHandler.OpenBrowser("ms-windows-store://review/?ProductId=9NTM2QC6QWS7"));
+                }
+                return _mSReviewCommand;
             }
         }
     }

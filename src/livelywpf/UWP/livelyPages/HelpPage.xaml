@@ -72,6 +72,18 @@
                         </StackPanel>
                     </StackPanel>
                 </Button>
+                
+                <!-- Starting in Windows 10, version 1607, the XAML framework provides a built in Boolean to Visibility converter.-->
+                <Button Visibility="{Binding Path=IsWinStore}" Style="{StaticResource ButtonRevealStyle}" BorderThickness="0" Background="Transparent" MinWidth="450" MaxWidth="450" MinHeight="50" HorizontalContentAlignment="Left" CornerRadius="5" Command="{Binding MSReviewCommand}">
+                    <StackPanel Orientation="Horizontal">
+                        <FontIcon Glyph="&#xEB68;" Margin="10" FontSize="25" Foreground="{ThemeResource SystemControlHighlightAltListAccentHighBrush}"/>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" MaxWidth="450">
+                            <TextBlock Text="{x:Bind UIText.TitleStoreReview}"/>
+                            <TextBlock Text="{x:Bind UIText.DescStoreReview}" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Button>
+                
             </StackPanel>
         </ScrollViewer>
     </Grid>

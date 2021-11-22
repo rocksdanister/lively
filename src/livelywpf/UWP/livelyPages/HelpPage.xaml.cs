@@ -34,12 +34,14 @@ namespace livelyPages
             public string TitleSourceCode { get; set; }
             public string TitleReportBug { get; set; }
             public string TitleSupport { get; set; }
+            public string TitleStoreReview { get; set; }
             public string DescWebsite { get; set; }
             public string DescDocumentation { get; set; }
             public string DescCommunity { get; set; }
             public string DescSourceCode { get; set; }
             public string DescReportBug { get; set; }
             public string DescSupport { get; set; }
+            public string DescStoreReview { get; set; }
         }
     }
 }

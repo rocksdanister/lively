@@ -2,6 +2,7 @@
 
 namespace livelyScreenSaver
 {
+    //TODO: Make screensaver launcher run as long as screensaver is running and exit based on keyboard/mouse hook.
     class Program
     {
         private static readonly string uniqueAppName = "LIVELY:DESKTOPWALLPAPERSYSTEM";

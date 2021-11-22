@@ -140,7 +140,6 @@ namespace livelywpf.Core.Wallpapers
         {
             //Takes time for rendering window to spawn.. this should be enough.
             _ = NativeMethods.GetWindowThreadProcessId(NativeMethods.FindWindowEx(InputHandle, IntPtr.Zero, "Intermediate D3D Window", null), out cefD3DRenderingSubProcessPid);
-            Logger.Debug("ID3DW: " + cefD3DRenderingSubProcessPid);
             IsLoaded = true;
         }
 
