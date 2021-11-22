@@ -116,7 +116,6 @@ namespace livelywpf.Views
         /// </summary>
         public void HideWindow()
         {
-            ContentFrame.Content = null;
             this.Hide();
             GC.Collect();
         }

@@ -13,6 +13,7 @@ using livelywpf.ViewModels;
 using livelywpf.Views;
 using livelywpf.Views.Dialogues;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -64,6 +65,15 @@ namespace livelywpf.Core
 
             ScreenHelper.DisplayUpdated += DisplaySettingsChanged_Hwnd;
             WallpaperChanged += SetupDesktop_WallpaperChanged;
+
+            /*
+            SystemEvents.SessionSwitch += (s, e) => {
+                if (e.Reason == SessionSwitchReason.SessionUnlock)
+                {
+                    ResetWallpaper();
+                }
+            };
+            */
         }
 
         /// <summary>
