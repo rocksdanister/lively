@@ -1,4 +1,4 @@
-﻿<Window x:Class="livelywpf.Cef.LivelyPropertiesTrayWidget"
+﻿<Window x:Class="livelywpf.Views.LivelyProperty.Dialogues.LivelyPropertiesTrayWidget"
         xmlns:ui="http://schemas.modernwpf.com/2019"
         ui:WindowHelper.UseModernWindowStyle="True"
         ui:TitleBar.ExtendViewIntoTitleBar="False"
@@ -8,7 +8,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:xaml="clr-namespace:Microsoft.Toolkit.Wpf.UI.XamlHost;assembly=Microsoft.Toolkit.Wpf.UI.XamlHost"
-        xmlns:local="clr-namespace:livelywpf.Cef"
         mc:Ignorable="d"
         Width="250" Height="450" 
         MinWidth="250" MinHeight="300"

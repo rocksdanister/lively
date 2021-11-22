@@ -19,8 +19,9 @@ using Microsoft.Extensions.DependencyInjection;
 using livelywpf.Services;
 using System.Linq;
 using livelywpf.Views;
+using livelywpf.Helpers.Storage;
 
-namespace livelywpf.Cef
+namespace livelywpf.Views.LivelyProperty
 {
     /// <summary>
     /// Interaction logic for LivelyPropertiesView.xaml
@@ -67,7 +68,7 @@ namespace livelywpf.Cef
         {
             try
             {
-                this.livelyPropertyCopyData = LivelyPropertiesJSON.LoadLivelyProperties(livelyPropertyCopyPath);
+                this.livelyPropertyCopyData = JsonUtil.Read(livelyPropertyCopyPath);
                 GenerateUIElements();
             }
             catch (Exception e)
@@ -545,7 +546,7 @@ namespace livelywpf.Cef
             {
                 var item = (Rectangle)sender;
                 var fill = ((SolidColorBrush)item.Fill).Color;
-                var cpicker = new Views.Dialogues.ColorDialog(new Windows.UI.Color() { A = fill.A, R = fill.R, G = fill.G, B = fill.B });
+                var cpicker = new livelywpf.Views.Dialogues.ColorDialog(new Windows.UI.Color() { A = fill.A, R = fill.R, G = fill.G, B = fill.B });
                 var appWindow = App.Services.GetRequiredService<MainWindow>();
                 if (appWindow.IsVisible)
                 {
@@ -642,7 +643,14 @@ namespace livelywpf.Cef
 
         private void UpdatePropertyFile()
         {
-            Cef.LivelyPropertiesJSON.SaveLivelyProperties(livelyPropertyCopyPath, livelyPropertyCopyData);
+            try
+            {
+                JsonUtil.Write(livelyPropertyCopyPath, livelyPropertyCopyData);
+            }
+            catch (Exception e)
+            {
+                Logger.Error(e.ToString());
+            }
         }
 
         private void WallpaperSendMsg(IpcMessage msg)

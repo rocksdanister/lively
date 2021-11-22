@@ -12,6 +12,7 @@ using livelywpf.Core.Suspend;
 using livelywpf.Services;
 using livelywpf.ViewModels;
 using livelywpf.Views;
+using livelywpf.Views.LivelyProperty.Dialogues;
 
 namespace livelywpf
 {
@@ -203,7 +204,7 @@ namespace livelywpf
             else if (items.Count() == 1)
             {
                 //quick wallpaper customise tray widget.
-                var settingsWidget = new Cef.LivelyPropertiesTrayWidget(items.First().Model);
+                var settingsWidget = new LivelyPropertiesTrayWidget(items.First().Model);
                 settingsWidget.Show();
             }
             else if (items.Count() > 1)
@@ -216,7 +217,7 @@ namespace livelywpf
                         break;
                     case WallpaperArrangement.span:
                     case WallpaperArrangement.duplicate:
-                        var settingsWidget = new Cef.LivelyPropertiesTrayWidget(items.First().Model);
+                        var settingsWidget = new LivelyPropertiesTrayWidget(items.First().Model);
                         settingsWidget.Show();
                         break;
                 }

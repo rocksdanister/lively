@@ -15,6 +15,7 @@ using livelywpf.Views.Dialogues;
 using Microsoft.Extensions.DependencyInjection;
 using livelywpf.ViewModels;
 using livelywpf.Services;
+using livelywpf.Views.LivelyProperty.Dialogues;
 
 namespace livelywpf.Views.Pages
 {
@@ -155,7 +156,7 @@ namespace livelywpf.Views.Pages
                         //modernwpf contentdialogue does not have xamlroot so can't draw over livelygrid.
                         LivelyGridControl?.DimBackground(true);
                         var overlay =
-                            new Cef.LivelyPropertiesWindow(obj)
+                            new LivelyPropertiesWindow(obj)
                             {
                                 Owner = appWindow,
                                 WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner,

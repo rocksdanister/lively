@@ -15,6 +15,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using livelywpf.Models;
 using livelywpf.Helpers.Shell;
+using livelywpf.Helpers.Storage;
 
 namespace livelywpf.Core.Wallpapers
 {
@@ -69,7 +70,14 @@ namespace livelywpf.Core.Wallpapers
 
             if (LivelyPropertyCopyPath != null)
             {
-                livelyPropertiesData = Cef.LivelyPropertiesJSON.LoadLivelyProperties(LivelyPropertyCopyPath);
+                try
+                {
+                    livelyPropertiesData = JsonUtil.Read(LivelyPropertyCopyPath);
+                }
+                catch(Exception e)
+                {
+                    Logger.Error(e.ToString());
+                }
             }
 
             var scalerArg = scaler switch
@@ -551,10 +559,17 @@ namespace livelywpf.Core.Wallpapers
                         var btn = (LivelyButton)obj;
                         if (btn.IsDefault)
                         {
-                            //load new file.
-                            livelyPropertiesData = Cef.LivelyPropertiesJSON.LoadLivelyProperties(LivelyPropertyCopyPath);
-                            //restore new property values.
-                            SetPlaybackProperties(livelyPropertiesData);
+                            try
+                            {
+                                //load new file.
+                                livelyPropertiesData = JsonUtil.Read(LivelyPropertyCopyPath);
+                                //restore new property values.
+                                SetPlaybackProperties(livelyPropertiesData);
+                            }
+                            catch(Exception e)
+                            {
+                                Logger.Error(e.ToString());
+                            }
                         }
                         else { } //unused
                         break;
