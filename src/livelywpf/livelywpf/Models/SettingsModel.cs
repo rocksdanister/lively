@@ -116,7 +116,7 @@ namespace livelywpf.Models
 
         public SettingsModel()
         {
-            SavedURL = "https://www.youtube.com/watch?v=aqz-KE-bpKQ";
+            SavedURL = "https://www.shadertoy.com/view/MsKcRh";
             ProcessMonitorAlgorithm = ProcessMonitorAlgorithm.foreground;
             WallpaperArrangement = WallpaperArrangement.per;
             AppVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
@@ -129,7 +129,7 @@ namespace livelywpf.Models
             VideoPlayer = LivelyMediaPlayer.mpv;
             VideoPlayerHwAccel = true;
             WebBrowser = LivelyWebBrowser.cef;
-            GifPlayer = LivelyGifPlayer.win10Img;
+            GifPlayer = LivelyGifPlayer.mpv;
 
             WallpaperWaitTime = 20000; // 20sec
             ProcessTimerInterval = 500; //reduce to 250 for quicker response.
@@ -154,7 +154,7 @@ namespace livelywpf.Models
             TileSize = 1;
             DisplayIdentification = DisplayIdentificationMode.deviceId;
             SelectedDisplay = ScreenHelper.GetPrimaryScreen();
-            LivelyGUIRendering = LivelyGUIState.normal;
+            LivelyGUIRendering = LivelyGUIState.lite;
             WallpaperDir = Path.Combine(Constants.CommonPaths.AppDataDir, "Library");
             WallpaperDirMoveExistingWallpaperNewDir = false;
             SysTrayIcon = true;

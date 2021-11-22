@@ -117,6 +117,12 @@ namespace livelywpf.ViewModels
             userSettings.Settings.SelectedDisplay = ScreenHelper.GetScreen(userSettings.Settings.SelectedDisplay.DeviceId, userSettings.Settings.SelectedDisplay.DeviceName,
                         userSettings.Settings.SelectedDisplay.Bounds, userSettings.Settings.SelectedDisplay.WorkingArea, DisplayIdentificationMode.deviceId) ?? ScreenHelper.GetPrimaryScreen();
 
+            //Restrictions on wpf only version of Lively.
+            if (userSettings.Settings.LivelyGUIRendering == LivelyGUIState.normal)
+            {
+                userSettings.Settings.LivelyGUIRendering = LivelyGUIState.lite;
+            }
+
             SelectedTileSizeIndex = userSettings.Settings.TileSize;
             SelectedAppFullScreenIndex = (int)userSettings.Settings.AppFullscreenPause;
             SelectedAppFocusIndex = (int)userSettings.Settings.AppFocusPause;
@@ -1073,7 +1079,7 @@ namespace livelywpf.ViewModels
         {
             return gp switch
             {
-                LivelyGifPlayer.win10Img => true,
+                LivelyGifPlayer.win10Img => false, //xaml island
                 LivelyGifPlayer.libmpvExt => File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "libMPVPlayer", "libMPVPlayer.exe")),
                 LivelyGifPlayer.mpv => File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "mpv", "mpv.exe")),
                 _ => false,

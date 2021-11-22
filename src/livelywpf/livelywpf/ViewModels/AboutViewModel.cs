@@ -29,6 +29,8 @@ namespace livelywpf.ViewModels
             appUpdater.UpdateChecked += AppUpdateChecked;
         }
 
+        public bool IsNotWinStore => !Constants.ApplicationType.IsMSIX;
+
         public string AppVersionText => "v" + Assembly.GetExecutingAssembly().GetName().Version.ToString() +
                 (Constants.ApplicationType.IsTestBuild ? "b" : (Constants.ApplicationType.IsMSIX ? " " + Properties.Resources.TitleStore : string.Empty));
 
