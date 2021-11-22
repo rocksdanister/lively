@@ -1,0 +1,21 @@
+﻿<Window x:Class="livelywpf.Views.Wallpapers.Webview2View"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+        xmlns:local="clr-namespace:livelywpf"
+        WindowStartupLocation ="Manual"
+        Left='-9999'
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        Background="#FF2B2B2B"
+        mc:Ignorable="d"
+        Title="WebView2Element" Height="450" Width="800"
+        Closing="Window_Closing">
+
+    <Grid>
+        <wv2:WebView2 Name="webView" NavigationCompleted="webView_NavigationCompleted"/>
+        <Image x:Name="picView" Stretch="Fill"/>
+    </Grid>
+</Window>

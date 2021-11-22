@@ -1,18 +1,36 @@
 ﻿using livelywpf.Core.API;
+using livelywpf.Helpers;
+using livelywpf.Helpers.Pinvoke;
 using System;
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
+using livelywpf.Models;
+using livelywpf.Core.Suspend;
+using livelywpf.Helpers.Shell;
 
-namespace livelywpf.Core
+namespace livelywpf.Core.Wallpapers
 {
     public class ExtPrograms : IWallpaper
     {
-        private IntPtr hwnd;
-        private readonly Process _process;
-        private readonly LibraryModel model;
-        private LivelyScreen display;
         public UInt32 SuspendCnt { get; set; }
+
+        public bool IsLoaded => Handle != IntPtr.Zero;
+
+        public WallpaperType Category => Model.LivelyInfo.Type;
+
+        public ILibraryModel Model { get; }
+
+        public IntPtr Handle { get; private set; }
+
+        public IntPtr InputHandle => Handle;
+
+        public Process Proc { get; }
+
+        public ILivelyScreen Screen { get; set; }
+
+        public string LivelyPropertyCopyPath => null;
+
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
         private readonly CancellationTokenSource ctsProcessWait = new CancellationTokenSource();
         private Task processWaitTask;
@@ -25,7 +43,7 @@ namespace livelywpf.Core
         /// <param name="model">Wallpaper data</param>
         /// <param name="display">Screen metadata</param>
         /// <param name="timeOut">Time to wait for program to be ready(in milliseconds)</param>
-        public ExtPrograms(string path, LibraryModel model, LivelyScreen display, int timeOut = 20000)
+        public ExtPrograms(string path, ILibraryModel model, ILivelyScreen display, int timeOut = 20000)
         {
             // Unity flags
             //-popupwindow removes from taskbar
@@ -50,9 +68,9 @@ namespace livelywpf.Core
                 StartInfo = start,
             };
 
-            this._process = _process;
-            this.model = model;
-            this.display = display;
+            this.Proc = _process;
+            this.Model = model;
+            this.Screen = display;
             this.timeOut = timeOut;
             SuspendCnt = 0;
         }
@@ -70,34 +88,9 @@ namespace livelywpf.Core
             Terminate();
         }
 
-        public IntPtr GetHWND()
-        {
-            return hwnd;
-        }
-
-        public IntPtr GetHWNDInput()
-        {
-            return hwnd;
-        }
-
-        public Process GetProcess()
-        {
-            return _process;
-        }
-
-        public LibraryModel GetWallpaperData()
-        {
-            return model;
-        }
-
-        public WallpaperType GetWallpaperType()
-        {
-            return model.LivelyInfo.Type;
-        }
-
         public void Pause()
         {
-            if (_process != null)
+            if (Proc != null)
             {
                 //method 0, issue: does not work with every pgm
                 //NativeMethods.DebugActiveProcess((uint)Proc.Id);
@@ -120,7 +113,7 @@ namespace livelywpf.Core
 
         public void Play()
         {
-            if (_process != null)
+            if (Proc != null)
             {
                 //method 0, issue: does not work with every pgm
                 //NativeMethods.DebugActiveProcessStop((uint)Proc.Id);
@@ -146,22 +139,17 @@ namespace livelywpf.Core
             
         }
 
-        public LivelyScreen GetScreen()
-        {
-            return display;
-        }
-
         public async void Show()
         {
-            if (_process != null)
+            if (Proc != null)
             {
                 try
                 {
-                    _process.Exited += Proc_Exited;
-                    _process.Start();
-                    processWaitTask = Task.Run(() => hwnd = WaitForProcesWindow().Result, ctsProcessWait.Token);
+                    Proc.Exited += Proc_Exited;
+                    Proc.Start();
+                    processWaitTask = Task.Run((Func<IntPtr>)(() => this.Handle = WaitForProcesWindow().Result), ctsProcessWait.Token);
                     await processWaitTask;
-                    if(hwnd.Equals(IntPtr.Zero))
+                    if(Handle.Equals(IntPtr.Zero))
                     {
                         WindowInitialized?.Invoke(this, new WindowInitializedArgs()
                         {
@@ -172,8 +160,8 @@ namespace livelywpf.Core
                     }
                     else
                     {
-                        WindowOperations.BorderlessWinStyle(hwnd);
-                        WindowOperations.RemoveWindowFromTaskbar(hwnd);
+                        WindowOperations.BorderlessWinStyle(Handle);
+                        WindowOperations.RemoveWindowFromTaskbar(Handle);
                         //Program ready!
                         WindowInitialized?.Invoke(this, new WindowInitializedArgs() { 
                             Success = true, 
@@ -208,8 +196,8 @@ namespace livelywpf.Core
 
         private void Proc_Exited(object sender, EventArgs e)
         {
-            _process?.Dispose();
-            SetupDesktop.RefreshDesktop();
+            Proc?.Dispose();
+            DesktopUtil.RefreshDesktop();
         }
 
         #region process task
@@ -219,22 +207,22 @@ namespace livelywpf.Core
         /// </summary>
         private async Task<IntPtr> WaitForProcesWindow()
         {
-            if (_process == null)
+            if (Proc == null)
             {
                 return IntPtr.Zero;
             }
 
-            _process.Refresh();
+            Proc.Refresh();
             //waiting for program messageloop to be ready (GUI is not guaranteed to be ready.)
-            while (_process.WaitForInputIdle(-1) != true)
+            while (Proc.WaitForInputIdle(-1) != true)
             {
                 ctsProcessWait.Token.ThrowIfCancellationRequested();
             }
 
             IntPtr wHWND = IntPtr.Zero;
-            if (GetWallpaperType() == WallpaperType.godot)
+            if (Category == WallpaperType.godot)
             {
-                for (int i = 0; i < timeOut && _process.HasExited == false; i++)
+                for (int i = 0; i < timeOut && Proc.HasExited == false; i++)
                 {
                     ctsProcessWait.Token.ThrowIfCancellationRequested();
                     //todo: verify pid of window.
@@ -247,10 +235,10 @@ namespace livelywpf.Core
             }
 
             //Find process window.
-            for (int i = 0; i < timeOut && _process.HasExited == false; i++)
+            for (int i = 0; i < timeOut && Proc.HasExited == false; i++)
             {
                 ctsProcessWait.Token.ThrowIfCancellationRequested();
-                if (!IntPtr.Equals((wHWND = GetProcessWindow(_process, true)), IntPtr.Zero))
+                if (!IntPtr.Equals((wHWND = GetProcessWindow(Proc, true)), IntPtr.Zero))
                     break;
                 await Task.Delay(1);
             }
@@ -266,10 +254,10 @@ namespace livelywpf.Core
                 await Task.Delay(1);
 
                 //Search for Unity main Window.
-                for (int i = 0; i < timeOut && _process.HasExited == false; i++)
+                for (int i = 0; i < timeOut && Proc.HasExited == false; i++)
                 {
                     ctsProcessWait.Token.ThrowIfCancellationRequested();
-                    if (!IntPtr.Equals((wHWND = GetProcessWindow(_process, true)), IntPtr.Zero))
+                    if (!IntPtr.Equals((wHWND = GetProcessWindow(Proc, true)), IntPtr.Zero))
                     {
                         break;
                     }
@@ -287,7 +275,7 @@ namespace livelywpf.Core
         /// <returns></returns>
         private IntPtr GetProcessWindow(Process proc, bool win32Search = false)
         {
-            if (_process == null)
+            if (Proc == null)
                 return IntPtr.Zero;
 
             if(win32Search)
@@ -358,38 +346,28 @@ namespace livelywpf.Core
 
         #endregion process task
 
-        public void SendMessage(string msg)
-        {
-
-        }
-
-        public string GetLivelyPropertyCopyPath()
-        {
-            return null;
-        }
-
-        public void SetScreen(LivelyScreen display)
-        {
-            this.display = display;
-        }
-
         public void Terminate()
         {
             try
             {
-                _process.Kill();
+                Proc.Kill();
             }
             catch { }
-            SetupDesktop.RefreshDesktop();
+            DesktopUtil.RefreshDesktop();
         }
 
         public void SetVolume(int volume)
         {
             try
             {
-                VolumeMixer.SetApplicationVolume(_process.Id, volume);
+                VolumeMixer.SetApplicationVolume(Proc.Id, volume);
             }
             catch { }
+        }
+
+        public void SetMute(bool mute)
+        {
+            //todo
         }
 
         public void SetPlaybackPos(float pos, PlaybackPosType type)
@@ -405,11 +383,6 @@ namespace livelywpf.Core
         public void SendMessage(IpcMessage obj)
         {
             //todo
-        }
-
-        public bool IsLoaded()
-        {
-            return GetHWND() != IntPtr.Zero;
         }
     }
 }

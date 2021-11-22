@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Controls;
 
-namespace livelywpf.Helpers
+namespace livelywpf.Helpers.MVVM
 {
     class OnlyDigitsValidationRule : ValidationRule
     {

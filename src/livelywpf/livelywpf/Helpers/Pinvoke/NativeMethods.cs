@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace livelywpf
+namespace livelywpf.Helpers.Pinvoke
 {
 #pragma warning disable CA1707, CA1401, CA1712
     public static class NativeMethods

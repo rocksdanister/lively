@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel;
 
-namespace livelywpf.NetWork
+namespace livelywpf.Helpers.NetWork
 {
     class MultiDownloadHelper : IDownloadHelper
     {

@@ -1,6 +1,10 @@
-﻿using ModernWpf.Controls.Primitives;
+﻿using livelywpf.Helpers.Hardware;
+using livelywpf.Models;
+using livelywpf.Services;
+using livelywpf.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
+using ModernWpf.Controls.Primitives;
 using ModernWpf.Media.Animation;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows;
@@ -14,7 +18,7 @@ namespace livelywpf.Views.SetupWizard
     {
         private int index = 0;
         private bool _isClosable = false;
-        private readonly List<object> pages = new List<object>() { 
+        private readonly List<object> pages = new List<object>() {
             new PageWelcome(),
             new PageStartup(),
             //new PageDirectory(),
@@ -22,20 +26,24 @@ namespace livelywpf.Views.SetupWizard
             new PageTaskbar(),
             new PageFinal() 
         };
+        private readonly IUserSettingsService userSettings;
 
-        public SetupView()
+        public SetupView(IUserSettingsService userSettings)
         {
+            this.userSettings = userSettings;
+
             InitializeComponent();
-            Initialize();
+            this.DataContext = App.Services.GetRequiredService<SettingsViewModel>();
+            SetupDefaultWallpapers();
         }
 
-        private async void Initialize()
+        private async void SetupDefaultWallpapers()
         {
             //extraction of default wallpaper.
-            Program.SettingsVM.Settings.WallpaperBundleVersion = await Task.Run(() => 
-                App.ExtractWallpaperBundle(Program.SettingsVM.Settings.WallpaperBundleVersion));
-            Program.SettingsVM.UpdateConfigFile();
-            Program.LibraryVM.WallpaperDirectoryUpdate();
+            userSettings.Settings.WallpaperBundleVersion = await Task.Run(() =>
+                App.ExtractWallpaperBundle(userSettings.Settings.WallpaperBundleVersion));
+            userSettings.Save<ISettingsModel>();
+            App.Services.GetRequiredService<LibraryViewModel>().WallpaperDirectoryUpdate();
 
             //windows codec install page.
             if (SystemInfo.CheckWindowsNorKN())
@@ -56,7 +64,7 @@ namespace livelywpf.Views.SetupWizard
 
         private void NavigateNext()
         {
-            if (Program.IsMSIX)
+            if (Constants.ApplicationType.IsMSIX)
             {
                 //Finish button is visible for Store app.
                 if ((index + 1) == pages.Count)

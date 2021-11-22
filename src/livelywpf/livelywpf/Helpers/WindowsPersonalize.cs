@@ -48,6 +48,8 @@ namespace livelywpf.Helpers
 
         public static async Task SetLockScreenWallpaper(string imgPath)
         {
+            throw new Exception("Lockscreen wallpaper disabled due to pending bugs.");
+
             if (Windows.System.UserProfile.UserProfilePersonalizationSettings.IsSupported())
             {
                 var file = await Windows.Storage.StorageFile.GetFileFromPathAsync(imgPath);

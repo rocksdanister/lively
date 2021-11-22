@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Text;
 
-namespace livelywpf
+namespace livelywpf.Helpers.MVVM
 {
     //ref: https://rachel53461.wordpress.com/2011/05/08/simplemvvmexample/
     public abstract class ObservableObject : INotifyPropertyChanged

@@ -1,4 +1,4 @@
-﻿<Window x:Class="livelywpf.Views.ColorDialog"
+﻿<Window x:Class="livelywpf.Views.Dialogues.ColorDialog"
         xmlns:ui="http://schemas.modernwpf.com/2019"
         ui:WindowHelper.UseModernWindowStyle="True"
         ui:ThemeManager.IsThemeAware="True"  
@@ -13,7 +13,7 @@
         WindowStyle="ToolWindow"
         ResizeMode="NoResize"
         Closing="Window_Closing"
-        Title="{x:Static p:Resources.TextTaskbarThemeColor}" Height="500" Width="400">
+        Title="{x:Static p:Resources.TextTaskbarThemeColor}" Height="675" Width="450">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -43,6 +43,5 @@
                 <ui:FontIcon Glyph="&#xE790;"/>
             </Button>
         </StackPanel>
-
     </Grid>
 </Window>

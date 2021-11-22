@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Documents;
 
-namespace livelywpf.Views
+namespace livelywpf.Views.Dialogues
 {
     /// <summary>
     /// Interaction logic for DocView.xaml

@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Interop;
 using livelywpf.Core;
 using System.Windows.Input;
+using livelywpf.Models;
 
 namespace livelywpf.Cef 
 {
@@ -13,7 +14,7 @@ namespace livelywpf.Cef
     public partial class LivelyPropertiesTrayWidget : Window
     {
         //readonly int xPos = 0, yPos = 0, width = 250, height = 250;
-        public LivelyPropertiesTrayWidget(LibraryModel model)
+        public LivelyPropertiesTrayWidget(ILibraryModel model)
         {
             InitializeComponent();
             PreviewKeyDown += (s, e) => { if (e.Key == Key.Escape) this.Close(); };

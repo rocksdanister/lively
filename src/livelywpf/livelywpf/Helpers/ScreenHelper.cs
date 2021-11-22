@@ -6,12 +6,12 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using livelywpf.Core;
 
-namespace livelywpf
+namespace livelywpf.Helpers
 {
     public static class ScreenHelper
     {
         public static event EventHandler DisplayUpdated;
-        private static readonly List<LivelyScreen> displayMonitors = new List<LivelyScreen>();
+        private static readonly List<ILivelyScreen> displayMonitors = new List<ILivelyScreen>();
 
         static ScreenHelper()
         {
@@ -31,7 +31,7 @@ namespace livelywpf
             DisplayUpdated?.Invoke(null, EventArgs.Empty);
         }
 
-        public static List<LivelyScreen> GetScreen()
+        public static List<ILivelyScreen> GetScreen()
         {
             return displayMonitors;
         }
@@ -46,12 +46,12 @@ namespace livelywpf
             return DisplayManager.Instance.DisplayMonitors.Count;
         }
 
-        public static LivelyScreen GetPrimaryScreen()
+        public static ILivelyScreen GetPrimaryScreen()
         {
             return new LivelyScreen(DisplayManager.Instance.PrimaryDisplayMonitor);
         }
 
-        public static bool ScreenExists(LivelyScreen screen, DisplayIdentificationMode mode)
+        public static bool ScreenExists(ILivelyScreen screen, DisplayIdentificationMode mode)
         {
             bool screenStatus = false;
             switch (mode)
@@ -77,7 +77,7 @@ namespace livelywpf
             return screenStatus;
         }
 
-        public static bool ScreenCompare(LivelyScreen screen1, LivelyScreen screen2, DisplayIdentificationMode mode)
+        public static bool ScreenCompare(ILivelyScreen screen1, ILivelyScreen screen2, DisplayIdentificationMode mode)
         {
             bool screenStatus = false;
             switch (mode)
@@ -95,7 +95,7 @@ namespace livelywpf
             return screenStatus;
         }
 
-        public static LivelyScreen GetScreen(string DeviceId, string DeviceName, Rectangle Bounds, Rectangle WorkingArea, DisplayIdentificationMode mode)
+        public static ILivelyScreen GetScreen(string DeviceId, string DeviceName, Rectangle Bounds, Rectangle WorkingArea, DisplayIdentificationMode mode)
         {
             foreach (var item in GetScreen())
             {
@@ -142,7 +142,7 @@ namespace livelywpf
                 screen => displayMonitors.Add(new LivelyScreen(screen)));
         }
 
-        public static LivelyScreen GetScreenFromPoint(Point pt)
+        public static ILivelyScreen GetScreenFromPoint(Point pt)
         {
             return new LivelyScreen(
                 DisplayManager.Instance.GetDisplayMonitorFromPoint(

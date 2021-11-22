@@ -5,50 +5,42 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Interop;
 using System.Windows.Threading;
+using livelywpf.Models;
+using livelywpf.Views.Wallpapers;
+using livelywpf.Helpers.Shell;
 
-namespace livelywpf.Core
+namespace livelywpf.Core.Wallpapers
 {
     /// <summary>
     /// Built in Windws media foundation player.
     /// </summary>
-    public class VideoPlayerWPF : IWallpaper
+    public class VideoPlayerWpf : IWallpaper
     {
-        private IntPtr hwnd;
-        private readonly MediaElementWPF player;
-        private readonly LibraryModel model;
-        private LivelyScreen display;
+        private readonly MediaElementView player;
+
+        public bool IsLoaded => player?.IsActive == true;
+
+        public WallpaperType Category => Model.LivelyInfo.Type;
+
+        public ILibraryModel Model { get; }
+
+        public IntPtr Handle { get; private set; }
+
+        public IntPtr InputHandle => IntPtr.Zero;
+
+        public Process Proc => null;
+
+        public ILivelyScreen Screen { get; set; }
+
+        public string LivelyPropertyCopyPath => null;
+
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
 
-        public VideoPlayerWPF(string filePath, LibraryModel model, LivelyScreen display, WallpaperScaler scaler = WallpaperScaler.fill)
+        public VideoPlayerWpf(string filePath, ILibraryModel model, ILivelyScreen display, WallpaperScaler scaler = WallpaperScaler.fill)
         {
-            player = new MediaElementWPF(filePath, scaler == WallpaperScaler.auto ? WallpaperScaler.uniform : scaler);
-            this.model = model;
-            this.display = display;
-        }
-
-        public WallpaperType GetWallpaperType()
-        {
-            return WallpaperType.video;
-        }
-
-        public LibraryModel GetWallpaperData()
-        {
-            return model;
-        }
-
-        public IntPtr GetHWND()
-        {
-            return hwnd;
-        }
-
-        public IntPtr GetHWNDInput()
-        {
-            return IntPtr.Zero;
-        }
-
-        public Process GetProcess()
-        {
-            return null;
+            player = new MediaElementView(filePath, scaler == WallpaperScaler.auto ? WallpaperScaler.uniform : scaler);
+            this.Model = model;
+            this.Screen = display;
         }
 
         public void Play()
@@ -74,40 +66,20 @@ namespace livelywpf.Core
             }));
         }
 
-        public LivelyScreen GetScreen()
-        {
-            return display;
-        }
-
         public void Show()
         {
             if(player != null)
             {
                 player.Closed += Player_Closed;
                 player.Show();
-                hwnd = new WindowInteropHelper(player).Handle;
+                Handle = new WindowInteropHelper(player).Handle;
                 WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = true, Error = null });
             }
         }
 
         private void Player_Closed(object sender, EventArgs e)
         {
-            SetupDesktop.RefreshDesktop();
-        }
-
-        public void SendMessage(string msg)
-        {
-            //todo
-        }
-
-        public string GetLivelyPropertyCopyPath()
-        {
-            return null;
-        }
-
-        public void SetScreen(LivelyScreen display)
-        {
-            this.display = display;
+            DesktopUtil.RefreshDesktop();
         }
 
         public void Terminate()
@@ -118,6 +90,11 @@ namespace livelywpf.Core
         public void SetVolume(int volume)
         {
             player.SetVolume(volume);
+        }
+
+        public void SetMute(bool mute)
+        {
+            //todo
         }
 
         public void SetPlaybackPos(float pos, PlaybackPosType type)
@@ -133,11 +110,6 @@ namespace livelywpf.Core
         public void SendMessage(IpcMessage obj)
         {
             //todo
-        }
-
-        public bool IsLoaded()
-        {
-            return player?.IsActive == true;
         }
     }
 }

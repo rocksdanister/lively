@@ -1,20 +1,23 @@
 ﻿using livelywpf.Core;
 using livelywpf.Core.API;
-using Newtonsoft.Json;
+using livelywpf.Helpers;
+using livelywpf.Helpers.Files;
 using Newtonsoft.Json.Linq;
 using NLog;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using livelywpf.Models;
 using Path = System.IO.Path;
+using Microsoft.Extensions.DependencyInjection;
+using livelywpf.Services;
+using System.Linq;
+using livelywpf.Views;
 
 namespace livelywpf.Cef
 {
@@ -23,23 +26,31 @@ namespace livelywpf.Cef
     /// </summary>
     public partial class LivelyPropertiesView : Page
     {
+        #region init
+
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private readonly string livelyPropertyCopyPath;
-        private readonly LibraryModel wallpaperData;
-        private readonly LivelyScreen screen;
+        private readonly ILibraryModel wallpaperData;
+        private readonly ILivelyScreen screen;
         private JObject livelyPropertyCopyData;
 
         //UI
         private readonly Thickness margin = new Thickness(0, 10, 0, 0);
         private readonly double maxWidth = 200;
 
-        public LivelyPropertiesView(LibraryModel model)
+        private readonly IUserSettingsService userSettings;
+        private readonly IDesktopCore desktopCore;
+
+        public LivelyPropertiesView(ILibraryModel model)
         {
+            userSettings = App.Services.GetRequiredService<IUserSettingsService>();
+            desktopCore = App.Services.GetRequiredService<IDesktopCore>();
+
             InitializeComponent();
             wallpaperData = model;
             try
             {
-                var wpInfo = GetLivelyPropertyDetails(model, Program.SettingsVM.Settings.WallpaperArrangement, Program.SettingsVM.Settings.SelectedDisplay);
+                var wpInfo = GetLivelyPropertyDetails(model, userSettings.Settings.WallpaperArrangement, userSettings.Settings.SelectedDisplay);
                 this.livelyPropertyCopyPath = wpInfo.Item1;
                 this.screen = wpInfo.Item2;
             }
@@ -61,11 +72,9 @@ namespace livelywpf.Cef
             catch (Exception e)
             {
                 Logger.Error(e.ToString());
-                _ = Task.Run(() => (MessageBox.Show(e.ToString(), Properties.Resources.TitleAppName)));
+                _= Task.Run(() => (MessageBox.Show(e.ToString(), Properties.Resources.TitleAppName)));
             }
         }
-
-        #region ui generation
 
         private void GenerateUIElements()
         {
@@ -79,13 +88,13 @@ namespace livelywpf.Cef
                 {
                     msg += "\nMpv player is required...";
                 }
-                //Empty..
-                AddUIElement(new TextBlock
+                    //Empty..
+                    AddUIElement(new TextBlock
                 {
                     Text = msg,
                     Background = Brushes.Red,
-                    Foreground = Brushes.Yellow,
-                    HorizontalAlignment = HorizontalAlignment.Left,
+                        Foreground = Brushes.Yellow,
+                        HorizontalAlignment = HorizontalAlignment.Left,
                     Margin = new Thickness(0, 50, 0, 0)
                 });
                 return;
@@ -174,7 +183,7 @@ namespace livelywpf.Cef
                     {
                         Name = item.Key,
                         Fill = (SolidColorBrush)new BrushConverter().ConvertFromString(item.Value["value"].ToString()),
-                        Stroke = new SolidColorBrush(Color.FromRgb(200, 200, 200)),
+                        Stroke = new SolidColorBrush(Color.FromRgb(200, 200 ,200)),
                         StrokeThickness = 0.25,
                         MinWidth = maxWidth,
                         MaxWidth = maxWidth,
@@ -317,7 +326,7 @@ namespace livelywpf.Cef
             uiPanel.Children.Add(obj);
         }
 
-        #endregion //ui generation
+        #endregion //init
 
         #region slider
 
@@ -458,10 +467,11 @@ namespace livelywpf.Cef
             {
                 var item = (Rectangle)sender;
                 var fill = ((SolidColorBrush)item.Fill).Color;
-                var cpicker = new Views.ColorDialog(new Color() { A = fill.A, R = fill.R, G = fill.G, B = fill.B });
-                if (App.AppWindow.IsVisible)
+                var cpicker = new Views.Dialogues.ColorDialog(new Color() { A = fill.A, R = fill.R, G = fill.G, B = fill.B });
+                var appWindow = App.Services.GetRequiredService<MainWindow>();
+                if (appWindow.IsVisible)
                 {
-                    cpicker.Owner = App.AppWindow;
+                    cpicker.Owner = appWindow;
                     cpicker.WindowStartupLocation = WindowStartupLocation.CenterOwner;
                 }
                 else
@@ -483,29 +493,6 @@ namespace livelywpf.Cef
                 }
             }
             catch { }
-
-            /*
-            try
-            {
-                var item = (Rectangle)sender;
-                var fill = ((SolidColorBrush)item.Fill).Color;
-                //wpf has no native color picker :(
-                var colorDialog = new System.Windows.Forms.ColorDialog()
-                {
-                    AllowFullOpen = true,
-                    Color = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(fill.A, fill.R, fill.G, fill.B)).Color
-                };
-
-                if (colorDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    item.Fill = new SolidColorBrush(Color.FromArgb(colorDialog.Color.A, colorDialog.Color.R, colorDialog.Color.G, colorDialog.Color.B));
-                    WallpaperSendMsg(new LivelyColorPicker() { Name = item.Name, Value = ToHexValue(colorDialog.Color) });
-                    livelyPropertyCopyData[item.Name]["value"] = ToHexValue(colorDialog.Color);
-                    UpdatePropertyFile();
-                }
-            }
-            catch { }
-            */
         }
 
         private static string ToHexValue(System.Drawing.Color color)
@@ -589,14 +576,14 @@ namespace livelywpf.Cef
 
         private void WallpaperSendMsg(IpcMessage msg)
         {
-            switch (Program.SettingsVM.Settings.WallpaperArrangement)
+            switch (userSettings.Settings.WallpaperArrangement)
             {
                 case WallpaperArrangement.per:
-                    SetupDesktop.SendMessageWallpaper(screen, wallpaperData, msg);
+                    desktopCore.SendMessageWallpaper(screen, wallpaperData, msg);
                     break;
                 case WallpaperArrangement.span:
                 case WallpaperArrangement.duplicate:
-                    SetupDesktop.SendMessageWallpaper(wallpaperData, msg);
+                    desktopCore.SendMessageWallpaper(wallpaperData, msg);
                     break;
             }
         }
@@ -607,15 +594,15 @@ namespace livelywpf.Cef
         /// <param name="wallpaperData">Wallpaper info.</param>
         /// <param name="livelyPropertyCopyPath">Modified LivelyProperties.json path.</param>
         /// <returns></returns>
-        public static bool RestoreOriginalPropertyFile(LibraryModel wallpaperData, string livelyPropertyCopyPath)
+        public static bool RestoreOriginalPropertyFile(ILibraryModel wallpaperData, string livelyPropertyCopyPath)
         {
             bool status = false;
             try
             {
                 //todo: Use DirectoryWatcher..
                 if (wallpaperData.LivelyInfo.Type == WallpaperType.video ||
-                    wallpaperData.LivelyInfo.Type == WallpaperType.videostream ||
-                    wallpaperData.LivelyInfo.Type == WallpaperType.gif ||
+                    wallpaperData.LivelyInfo.Type == WallpaperType.videostream || 
+                    wallpaperData.LivelyInfo.Type == WallpaperType.gif || 
                     wallpaperData.LivelyInfo.Type == WallpaperType.picture)
                 {
                     //user defined property file if it exists..
@@ -644,20 +631,19 @@ namespace livelywpf.Cef
                 File.Copy(wallpaperData.LivelyPropertyPath, livelyPropertyCopyPath, true);
                 status = true;
             }
-            catch (Exception e)
+            catch(Exception e)
             {
                 Logger.Error(e.ToString());
             }
             return status;
         }
 
-
         /// <summary>
         /// Get LivelyProperties.json copy filepath and corresponding screen logic.
         /// </summary>
         /// <param name="obj">LibraryModel object</param>
         /// <returns></returns>
-        public static Tuple<string, LivelyScreen> GetLivelyPropertyDetails(LibraryModel obj, WallpaperArrangement arrangement, LivelyScreen selectedScreen)
+        public Tuple<string, ILivelyScreen> GetLivelyPropertyDetails(ILibraryModel obj, WallpaperArrangement arrangement, ILivelyScreen selectedScreen)
         {
             if (obj.LivelyPropertyPath == null)
             {
@@ -665,8 +651,8 @@ namespace livelywpf.Cef
             }
 
             string livelyPropertyCopy = string.Empty;
-            LivelyScreen screen = null;
-            var items = SetupDesktop.Wallpapers.FindAll(x => x.GetWallpaperData() == obj);
+            ILivelyScreen screen = null;
+            var items = desktopCore.Wallpapers.ToList().FindAll(x => x.Model == obj);
             if (items.Count == 0)
             {
                 try
@@ -712,8 +698,8 @@ namespace livelywpf.Cef
             else if (items.Count == 1)
             {
                 //send regardless of selected display, if wallpaper is running on non-selected display - its modified instead.
-                livelyPropertyCopy = items[0].GetLivelyPropertyCopyPath();
-                screen = items[0].GetScreen();
+                livelyPropertyCopy = items[0].LivelyPropertyCopyPath;
+                screen = items[0].Screen;
             }
             else
             {
@@ -722,21 +708,21 @@ namespace livelywpf.Cef
                     case WallpaperArrangement.per:
                         {
                             //more than one screen; if selected display, sendpath otherwise send the first one found.
-                            int index = items.FindIndex(x => ScreenHelper.ScreenCompare(selectedScreen, x.GetScreen(), DisplayIdentificationMode.deviceId));
-                            livelyPropertyCopy = index != -1 ? items[index].GetLivelyPropertyCopyPath() : items[0].GetLivelyPropertyCopyPath();
-                            screen = index != -1 ? items[index].GetScreen() : items[0].GetScreen();
+                            int index = items.FindIndex(x => ScreenHelper.ScreenCompare(selectedScreen, x.Screen, DisplayIdentificationMode.deviceId));
+                            livelyPropertyCopy = index != -1 ? items[index].LivelyPropertyCopyPath : items[0].LivelyPropertyCopyPath;
+                            screen = index != -1 ? items[index].Screen : items[0].Screen;
                         }
                         break;
                     case WallpaperArrangement.span:
                     case WallpaperArrangement.duplicate:
                         {
-                            livelyPropertyCopy = items[0].GetLivelyPropertyCopyPath();
-                            screen = items[0].GetScreen();
+                            livelyPropertyCopy = items[0].LivelyPropertyCopyPath;
+                            screen = items[0].Screen;
                         }
                         break;
                 }
             }
-            return new Tuple<string, LivelyScreen>(livelyPropertyCopy, screen);
+            return new Tuple<string, ILivelyScreen>(livelyPropertyCopy, screen);
         }
 
         #endregion //helpers

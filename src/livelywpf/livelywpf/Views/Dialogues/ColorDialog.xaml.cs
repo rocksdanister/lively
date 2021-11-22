@@ -6,8 +6,9 @@ using System.Windows.Media;
 using ColorUwp = Windows.UI.Color;
 using ColorMedia = System.Windows.Media.Color;
 using CursorForm = System.Windows.Forms.Cursor;
+using livelywpf.Helpers.Pinvoke;
 
-namespace livelywpf.Views
+namespace livelywpf.Views.Dialogues
 {
     /// <summary>
     /// Interaction logic for ColorDialog.xaml
@@ -109,7 +110,7 @@ namespace livelywpf.Views
         private void UpdateToolTip(int x, int y)
         {
             var color = GetColorAt(x, y);
-            _= this.Dispatcher.BeginInvoke(new Action(() => {
+            _ = this.Dispatcher.BeginInvoke(new Action(() => {
                 var dpi = VisualTreeHelper.GetDpi(ctt).DpiScaleX;
                 dpi = dpi != 0f ? dpi : 1.0f;
                 ctt.HorizontalOffset = (x + 15) / dpi;

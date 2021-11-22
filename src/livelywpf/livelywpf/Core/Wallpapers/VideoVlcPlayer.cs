@@ -1,4 +1,6 @@
 ﻿using livelywpf.Core.API;
+using livelywpf.Helpers;
+using livelywpf.Helpers.Pinvoke;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -6,8 +8,10 @@ using System.IO;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using livelywpf.Models;
+using livelywpf.Helpers.Shell;
 
-namespace livelywpf.Core
+namespace livelywpf.Core.Wallpapers
 {
     //Ref: 
     //https://github.com/rocksdanister/lively/discussions/342
@@ -16,15 +20,27 @@ namespace livelywpf.Core
     {
         //private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
-        private IntPtr hwnd;
-        private readonly Process _process;
-        private readonly LibraryModel model;
-        private LivelyScreen display;
         private readonly CancellationTokenSource ctsProcessWait = new CancellationTokenSource();
         private Task processWaitTask;
         private readonly int timeOut;
 
-        public VideoVlcPlayer(string path, LibraryModel model, LivelyScreen display, WallpaperScaler scaler = WallpaperScaler.fill)
+        public bool IsLoaded => Handle != IntPtr.Zero;
+
+        public WallpaperType Category => Model.LivelyInfo.Type;
+
+        public ILibraryModel Model { get; }
+
+        public IntPtr Handle { get; private set; }
+
+        public IntPtr InputHandle => IntPtr.Zero;
+
+        public Process Proc { get; }
+
+        public ILivelyScreen Screen { get; set; }
+
+        public string LivelyPropertyCopyPath => null;
+
+        public VideoVlcPlayer(string path, ILibraryModel model, ILivelyScreen display, WallpaperScaler scaler = WallpaperScaler.fill, bool hwAccel = true)
         {
             var scalerArg = scaler switch
             {
@@ -51,7 +67,7 @@ namespace livelywpf.Core
             //open window at (-9999,0), not working without: --no-embedded-video
             cmdArgs.Append("--video-x=-9999 --video-y=0 ");
             //gpu decode preference.
-            cmdArgs.Append(Program.SettingsVM.Settings.VideoPlayerHwAccel ? "--avcodec-hw=any " : "--avcodec-hw=none ");
+            cmdArgs.Append(hwAccel ? "--avcodec-hw=any " : "--avcodec-hw=none ");
             //media file path.
             cmdArgs.Append("\"" + path + "\"");
 
@@ -69,9 +85,9 @@ namespace livelywpf.Core
                 StartInfo = start,
             };
 
-            this._process = _process;
-            this.model = model;
-            this.display = display;
+            this.Proc = _process;
+            this.Model = model;
+            this.Screen = display;
             this.timeOut = 20000;
         }
 
@@ -88,39 +104,9 @@ namespace livelywpf.Core
             Terminate();
         }
 
-        public IntPtr GetHWND()
-        {
-            return hwnd;
-        }
-
-        public IntPtr GetHWNDInput()
-        {
-            return IntPtr.Zero;
-        }
-
-        public string GetLivelyPropertyCopyPath()
-        {
-            return null;
-        }
-
-        public Process GetProcess()
-        {
-            return _process;
-        }
-
-        public LivelyScreen GetScreen()
-        {
-            return display;
-        }
-
-        public LibraryModel GetWallpaperData()
-        {
-            return model;
-        }
-
         public WallpaperType GetWallpaperType()
         {
-            return model.LivelyInfo.Type;
+            return Model.LivelyInfo.Type;
         }
 
         public void Pause()
@@ -133,19 +119,9 @@ namespace livelywpf.Core
             //todo
         }
 
-        public void SendMessage(string msg)
-        {
-            //todo
-        }
-
         public void SetPlaybackPos(float pos, PlaybackPosType type)
         {
             //todo
-        }
-
-        public void SetScreen(LivelyScreen display)
-        {
-            this.display = display;
         }
 
         public void SetVolume(int volume)
@@ -153,17 +129,22 @@ namespace livelywpf.Core
             //todo
         }
 
+        public void SetMute(bool mute)
+        {
+            //todo
+        }
+
         public async void Show()
         {
-            if (_process != null)
+            if (Proc != null)
             {
                 try
                 {
-                    _process.Exited += Proc_Exited;
-                    _process.Start();
-                    processWaitTask = Task.Run(() => hwnd = WaitForProcesWindow().Result, ctsProcessWait.Token);
+                    Proc.Exited += Proc_Exited;
+                    Proc.Start();
+                    processWaitTask = Task.Run((Func<IntPtr>)(() => this.Handle = WaitForProcesWindow().Result), ctsProcessWait.Token);
                     await processWaitTask;
-                    if (hwnd.Equals(IntPtr.Zero))
+                    if (Handle.Equals(IntPtr.Zero))
                     {
                         WindowInitialized?.Invoke(this, new WindowInitializedArgs()
                         {
@@ -174,8 +155,8 @@ namespace livelywpf.Core
                     }
                     else
                     {
-                        WindowOperations.BorderlessWinStyle(hwnd);
-                        WindowOperations.RemoveWindowFromTaskbar(hwnd);
+                        WindowOperations.BorderlessWinStyle(Handle);
+                        WindowOperations.RemoveWindowFromTaskbar(Handle);
                         //Program ready!
                         WindowInitialized?.Invoke(this, new WindowInitializedArgs()
                         {
@@ -219,8 +200,8 @@ namespace livelywpf.Core
 
         private void Proc_Exited(object sender, EventArgs e)
         {
-            _process?.Dispose();
-            SetupDesktop.RefreshDesktop();
+            Proc?.Dispose();
+            DesktopUtil.RefreshDesktop();
         }
 
         #region process task
@@ -230,24 +211,24 @@ namespace livelywpf.Core
         /// </summary>
         private async Task<IntPtr> WaitForProcesWindow()
         {
-            if (_process == null)
+            if (Proc == null)
             {
                 return IntPtr.Zero;
             }
 
-            _process.Refresh();
+            Proc.Refresh();
             //waiting for program messageloop to be ready (GUI is not guaranteed to be ready.)
-            while (_process.WaitForInputIdle(-1) != true)
+            while (Proc.WaitForInputIdle(-1) != true)
             {
                 ctsProcessWait.Token.ThrowIfCancellationRequested();
             }
 
             IntPtr wHWND = IntPtr.Zero;
             //Find process window.
-            for (int i = 0; i < timeOut && _process.HasExited == false; i++)
+            for (int i = 0; i < timeOut && Proc.HasExited == false; i++)
             {
                 ctsProcessWait.Token.ThrowIfCancellationRequested();
-                if (!IntPtr.Equals((wHWND = GetProcessWindow(_process, true)), IntPtr.Zero))
+                if (!IntPtr.Equals((wHWND = GetProcessWindow(Proc, true)), IntPtr.Zero))
                     break;
                 await Task.Delay(1);
             }
@@ -262,7 +243,7 @@ namespace livelywpf.Core
         /// <returns></returns>
         private IntPtr GetProcessWindow(Process proc, bool win32Search = false)
         {
-            if (this._process == null)
+            if (this.Proc == null)
                 return IntPtr.Zero;
 
             if (win32Search)
@@ -343,10 +324,10 @@ namespace livelywpf.Core
         {
             try
             {
-                _process.Kill();
+                Proc.Kill();
             }
             catch { }
-            SetupDesktop.RefreshDesktop();
+            DesktopUtil.RefreshDesktop();
         }
 
         public Task ScreenCapture(string filePath)
@@ -357,11 +338,6 @@ namespace livelywpf.Core
         public void SendMessage(IpcMessage obj)
         {
             //todo
-        }
-
-        public bool IsLoaded()
-        {
-            return GetHWND() != IntPtr.Zero;
         }
     }
 }

@@ -1,35 +1,29 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
-using System.Text;
 using System.Threading;
 using System.Windows;
 using System.Linq;
-using livelywpf.Helpers;
 using System.Windows.Threading;
+using livelywpf.Helpers.IPC;
+using livelywpf.Helpers.Pinvoke;
+using livelywpf.Core;
+using livelywpf.Views;
+using livelywpf.Views.Dialogues;
+using Microsoft.Extensions.DependencyInjection;
+using livelywpf.Services;
+using livelywpf.Models;
+using livelywpf.Views.SetupWizard;
+using livelywpf.Cmd;
 
 namespace livelywpf
 {
     public class Program
     {
-        #region init
-
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private static readonly string uniqueAppName = "LIVELY:DESKTOPWALLPAPERSYSTEM";
-        private static readonly string pipeServerName = uniqueAppName + Environment.UserName;
-        private static readonly Mutex mutex = new Mutex(false, uniqueAppName);
+        private static readonly Mutex mutex = new Mutex(false, Constants.SingleInstance.UniqueAppName);
         //Loaded from Settings.json (User configurable.)
         public static string WallpaperDir { get; set; }
-        public static string AppDataDir { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Lively Wallpaper");
-        public static bool IsMSIX { get; } = new DesktopBridge.Helpers().IsRunningAsUwp();
-        public static bool IsTestBuild { get; } = false;
-
-        //todo: use singleton or something instead?
-        public static SettingsViewModel SettingsVM { get; set; }
-        public static ApplicationRulesViewModel AppRulesVM { get; set; }
-        public static LibraryViewModel LibraryVM { get; set; }
-
-        #endregion //init
 
         #region app entry
 
@@ -45,7 +39,7 @@ namespace livelywpf
                     {
                         //skipping first element (application path.)
                         var args = Environment.GetCommandLineArgs().Skip(1).ToArray();
-                        Helpers.PipeClient.SendMessage(pipeServerName, args.Length != 0 ? args : new string[] { "--showApp", "true" });
+                        PipeClient.SendMessage(Constants.SingleInstance.PipeServerName, args.Length != 0 ? args : new string[] { "--showApp", "true" });
                     }
                     catch
                     {
@@ -69,7 +63,7 @@ namespace livelywpf
 
             try
             {
-                var server = new Helpers.PipeServer(pipeServerName);
+                var server = new PipeServer(Constants.SingleInstance.PipeServerName);
                 server.MessageReceived += Server_MessageReceived1;
             }
             catch (Exception e)
@@ -93,52 +87,51 @@ namespace livelywpf
 
         private static void Server_MessageReceived1(object sender, string[] msg)
         {
-            Cmd.CommandHandler.ParseArgs(msg);
+            App.Services.GetRequiredService<ICommandHandler>().ParseArgs(msg);
         }
 
-        private static Systray sysTray;
+
         private static Views.SetupWizard.SetupView setupWizard = null;
         private static void App_Startup(object sender, StartupEventArgs e)
         {
-            sysTray = new Systray(SettingsVM.IsSysTrayIconVisible);
-            ApplicationThemeChange(Program.SettingsVM.Settings.ApplicationTheme);
-            AppUpdaterService.Instance.UpdateChecked += AppUpdateChecked;
-            _ = AppUpdaterService.Instance.CheckUpdate();
-            AppUpdaterService.Instance.Start();
+            var userSettings = App.Services.GetRequiredService<IUserSettingsService>();
+            var appUpdater = App.Services.GetRequiredService<IAppUpdaterService>();
+            var sysTray = App.Services.GetRequiredService<ISystray>();
 
-            if (Program.SettingsVM.Settings.IsFirstRun)
+            appUpdater.UpdateChecked += AppUpdateChecked;
+            _ = appUpdater.CheckUpdate();
+            appUpdater.Start();
+
+            if (userSettings.Settings.IsFirstRun)
             {
-                setupWizard = new Views.SetupWizard.SetupView()
-                {
-                    WindowStartupLocation = WindowStartupLocation.CenterScreen
-                };
+                setupWizard = App.Services.GetRequiredService<SetupView>();
+                setupWizard.WindowStartupLocation = WindowStartupLocation.CenterScreen;
                 setupWizard.Show();
             }
-
-            _ = SetupDesktop.RestoreWallpaperFromLayout(Path.Combine(Program.AppDataDir, "WallpaperLayout.json"));
 
             //first element is not application path, unlike Environment.GetCommandLineArgs().
             if (e.Args.Length > 0)
             {
-                Cmd.CommandHandler.ParseArgs(e.Args);
+                App.Services.GetRequiredService<ICommandHandler>().ParseArgs(e.Args);
             }
         }
 
         public static void ApplicationThemeChange(AppTheme theme)
         {
-            switch (theme)
-            {
-                case AppTheme.Auto:
-                    break;
-                case AppTheme.Light:
-                    ModernWpf.ThemeManager.Current.ApplicationTheme = ModernWpf.ApplicationTheme.Light;
-                    break;
-                case AppTheme.Dark:
-                    ModernWpf.ThemeManager.Current.ApplicationTheme = ModernWpf.ApplicationTheme.Dark;
-                    break;
-                default:
-                    break;
-            }
+            throw new NotImplementedException("xaml island theme/auto incomplete.");
+            //switch (theme)
+            //{
+            //    case AppTheme.Auto:
+            //        break;
+            //    case AppTheme.Light:
+            //        ModernWpf.ThemeManager.Current.ApplicationTheme = ModernWpf.ApplicationTheme.Light;
+            //        break;
+            //    case AppTheme.Dark:
+            //        ModernWpf.ThemeManager.Current.ApplicationTheme = ModernWpf.ApplicationTheme.Dark;
+            //        break;
+            //    default:
+            //        break;
+            //}
         }
 
         #endregion //app entry
@@ -151,6 +144,7 @@ namespace livelywpf
 
         private static void AppUpdateChecked(object sender, AppUpdaterEventArgs e)
         {
+            var sysTray = App.Services.GetRequiredService<ISystray>();
             _ = Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
             {
                 if (e.UpdateStatus == AppUpdateStatus.available)
@@ -159,41 +153,35 @@ namespace livelywpf
                     {
                         updateNotifyAmt--;
                         updateNotify = true;
-                        sysTray.ShowBalloonNotification(4000,
+                        sysTray?.ShowBalloonNotification(4000,
                             Properties.Resources.TitleAppName,
                             Properties.Resources.DescriptionUpdateAvailable);
                     }
                 }
-                sysTray.SetUpdateMenu(e.UpdateStatus);
                 Logger.Info($"AppUpdate status: {e.UpdateStatus}");
             }));
         }
 
-        private static Views.AppUpdaterView updateWindow = null;
+        private static AppUpdaterView updateWindow = null;
         public static void AppUpdateDialog(Uri uri, string changelog)
         {
             updateNotify = false;
             if (updateWindow == null)
             {
-                updateWindow = new Views.AppUpdaterView(uri, changelog);
-                if (App.AppWindow.IsVisible)
+                var appWindow = App.Services.GetRequiredService<MainWindow>();
+                updateWindow = new AppUpdaterView(uri, changelog);
+                if (appWindow.IsVisible)
                 {
-                    updateWindow.Owner = App.AppWindow;
+                    updateWindow.Owner = appWindow;
                     updateWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
                 }
                 else
                 {
                     updateWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
                 }
-                updateWindow.Closed += UpdateWindow_Closed;
+                updateWindow.Closed += (s, e) => { updateWindow = null; };
                 updateWindow.Show();
             }
-        }
-
-        private static void UpdateWindow_Closed(object sender, EventArgs e)
-        {
-            updateWindow.Closed -= UpdateWindow_Closed;
-            updateWindow = null;
         }
 
         #endregion //app updater.
@@ -215,18 +203,21 @@ namespace livelywpf
             //Exit firstrun setupwizard.
             if (setupWizard != null)
             {
-                SettingsVM.Settings.IsFirstRun = false;
-                SettingsVM.UpdateConfigFile();
+                var userSettings = App.Services.GetRequiredService<IUserSettingsService>();
+                userSettings.Settings.IsFirstRun = false;
+                userSettings.Save<ISettingsModel>();
                 setupWizard.ExitWindow();
                 setupWizard = null;
             }
 
-            App.AppWindow?.Show();
-            App.AppWindow.WindowState = App.AppWindow?.WindowState != WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
+            var appWindow = App.Services.GetRequiredService<MainWindow>();
+            appWindow?.Show();
+            appWindow.WindowState = appWindow?.WindowState != WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
 
             if (updateNotify)
             {
-                AppUpdateDialog(AppUpdaterService.Instance.LastCheckUri, AppUpdaterService.Instance.LastCheckChangelog);
+                var appUpdater = App.Services.GetRequiredService<IAppUpdaterService>();
+                AppUpdateDialog(appUpdater.LastCheckUri, appUpdater.LastCheckChangelog);
             }
         }
 
@@ -242,9 +233,8 @@ namespace livelywpf
         public static void ExitApplication()
         {
             MainWindow.IsExit = true;
-            SetupDesktop.ShutDown();
-            sysTray?.Dispose();
-            Helpers.TransparentTaskbar.Instance.Stop();
+            //Singleton dispose() not calling otherwise?
+            ((ServiceProvider)App.Services)?.Dispose();
             System.Windows.Application.Current.Shutdown();
         }
 

@@ -2,7 +2,7 @@
 using System;
 using System.Windows;
 
-namespace livelywpf.Helpers
+namespace livelywpf.Helpers.ScreenRecord
 {
     //todo: make the configuration for video encoding external json file.
     class ScreenRecorderlibScreen : IScreenRecorder

@@ -1,8 +1,9 @@
-﻿using System;
+﻿using livelywpf.Helpers.Pinvoke;
+using System;
 using System.Windows;
 using System.Windows.Interop;
 
-namespace livelywpf.Views
+namespace livelywpf.Views.Screen
 {
     /// <summary>
     /// Interaction logic for ScreenLabelView.xaml

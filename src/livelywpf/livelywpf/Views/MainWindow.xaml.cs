@@ -1,17 +1,26 @@
-﻿using livelywpf.Helpers;
+﻿using livelywpf.Core;
+using livelywpf.Helpers.Archive;
+using livelywpf.Helpers.Files;
+using livelywpf.Helpers.MVVM;
+using livelywpf.Helpers.NetStream;
+using livelywpf.Models;
+using livelywpf.Services;
+using livelywpf.ViewModels;
 using livelywpf.Views;
+using livelywpf.Views.Dialogues;
+using livelywpf.Views.Pages;
+using Microsoft.Extensions.DependencyInjection;
 using ModernWpf.Controls;
-using ModernWpf.Controls.Primitives;
 using ModernWpf.Media.Animation;
 using NLog;
+using Octokit;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Interop;
 
-namespace livelywpf
+namespace livelywpf.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -19,18 +28,27 @@ namespace livelywpf
     public partial class MainWindow : Window
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private DateTime prevCrashTime = DateTime.MinValue;
-        private int prevExplorerPid = GetTaskbarExplorerPid();
         public static bool IsExit { get; set; } = false;
 
-        public MainWindow()
+        private readonly IDesktopCore desktopCore;
+        private readonly IUserSettingsService userSettings;
+        private readonly SettingsViewModel settingsVm;
+        private readonly LibraryViewModel libraryVm;
+
+        public MainWindow(IUserSettingsService userSettings, IDesktopCore desktopCore, SettingsViewModel settingsVm, LibraryViewModel libraryVm)
         {
+            this.desktopCore = desktopCore;
+            this.userSettings = userSettings;
+            this.settingsVm = settingsVm;
+            this.libraryVm = libraryVm;
+
             InitializeComponent();
-            NavViewNavigate("library");
-            wallpaperStatusText.Text = SetupDesktop.Wallpapers.Count.ToString();
-            SetupDesktop.WallpaperChanged += SetupDesktop_WallpaperChanged;
-            this.DataContext = Program.SettingsVM;
+            wallpaperStatusText.Text = desktopCore.Wallpapers.Count.ToString();
+            desktopCore.WallpaperChanged += SetupDesktop_WallpaperChanged;
+            this.DataContext = settingsVm;
             Logger.Debug("MainWindow ctor initialized..");
+
+            this.ContentRendered += (s, e) => NavViewNavigate("library");
         }
 
         #region navigation
@@ -41,7 +59,7 @@ namespace livelywpf
 
             if (args.IsSettingsInvoked)
             {
-                ContentFrame.Navigate(typeof(livelywpf.Views.SettingsView), new Uri("Views/SettingsView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
+                ContentFrame.Navigate(typeof(livelywpf.Views.Pages.SettingsView), new Uri("Views/SettingsView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
             }
             else if (args.InvokedItemContainer != null)
             {
@@ -68,22 +86,22 @@ namespace livelywpf
             switch (tag)
             {
                 case "library":
-                    ContentFrame.Navigate(typeof(livelywpf.Views.LibraryView), new Uri("Views/LibraryView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
+                    ContentFrame.Navigate(typeof(LibraryView), new Uri("Views/LibraryView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
                     break;
                 case "add":
-                    ContentFrame.Navigate(typeof(livelywpf.Views.AddWallpaperView), new Uri("Views/AddWallpaperView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
+                    ContentFrame.Navigate(typeof(AddWallpaperView), new Uri("Views/AddWallpaperView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
                     break;
                 case "about":
-                    ContentFrame.Navigate(typeof(livelywpf.Views.AboutView), new Uri("Views/AboutView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
+                    ContentFrame.Navigate(typeof(AboutView), new Uri("Views/AboutView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
                     break;
                 case "help":
-                    ContentFrame.Navigate(typeof(livelywpf.Views.HelpView), new Uri("Views/HelpView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
+                    ContentFrame.Navigate(typeof(HelpView), new Uri("Views/HelpView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
                     break;
                 case "debug":
-                    ContentFrame.Navigate(typeof(livelywpf.Views.DebugView), new Uri("Views/DebugView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
+                    ContentFrame.Navigate(typeof(DebugView), new Uri("Views/DebugView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
                     break;
                 default:
-                    ContentFrame.Navigate(typeof(livelywpf.Views.LibraryView), new Uri("Views/LibraryView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
+                    ContentFrame.Navigate(typeof(LibraryView), new Uri("Views/LibraryView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
                     break;
             }
         }
@@ -98,6 +116,7 @@ namespace livelywpf
         /// </summary>
         public void HideWindow()
         {
+            ContentFrame.Content = null;
             this.Hide();
             GC.Collect();
         }
@@ -123,53 +142,51 @@ namespace livelywpf
         {
             _ = this.Dispatcher.BeginInvoke(new Action(() => {
                 //teaching tip - control panel.
-                if (!Program.SettingsVM.Settings.ControlPanelOpened &&
+                if (!userSettings.Settings.ControlPanelOpened &&
                     this.WindowState != WindowState.Minimized &&
                     this.Visibility == Visibility.Visible)
                 {
                     ModernWpf.Controls.Primitives.FlyoutBase.ShowAttachedFlyout(statusBtn);
-                    Program.SettingsVM.Settings.ControlPanelOpened = true;
-                    Program.SettingsVM.UpdateConfigFile();
+                    userSettings.Settings.ControlPanelOpened = true;
+                    userSettings.Save<ISettingsModel>();
                 }
                 //wallpaper focus steal fix.
                 if (this.IsVisible && (layoutWindow == null || layoutWindow.Visibility != Visibility.Visible))
                 {
                     this.Activate();
                 }
-                wallpaperStatusText.Text = SetupDesktop.Wallpapers.Count.ToString();
+                wallpaperStatusText.Text = desktopCore.Wallpapers.Count.ToString();
             }));
         }
 
-        ScreenLayoutView layoutWindow = null;
+        private Screen.ScreenLayoutView layoutWindow = null;
         public void ShowControlPanelDialog()
         {
             if (layoutWindow == null)
             {
-                layoutWindow = new ScreenLayoutView();
-                if (App.AppWindow.IsVisible)
+                var appWindow = App.Services.GetRequiredService<MainWindow>();
+                layoutWindow = new Screen.ScreenLayoutView();
+                if (appWindow.IsVisible)
                 {
-                    layoutWindow.Owner = App.AppWindow;
+                    layoutWindow.Owner = appWindow;
                     layoutWindow.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner;
-                    layoutWindow.Width = App.AppWindow.Width / 1.5;
-                    layoutWindow.Height = App.AppWindow.Height / 1.5;
+                    layoutWindow.Width = appWindow.Width / 1.5;
+                    layoutWindow.Height = appWindow.Height / 1.5;
                 }
                 else
                 {
                     layoutWindow.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
                 }
-                layoutWindow.Closed += LayoutWindow_Closed;
+                layoutWindow.Closed += (s, e) => {
+                    layoutWindow = null;
+                    this.Activate();
+                };
                 layoutWindow.Show();
             }
             else
             {
                 layoutWindow.Activate();
             }
-        }
-
-        private void LayoutWindow_Closed(object sender, EventArgs e)
-        {
-            layoutWindow = null;
-            this.Activate();
         }
 
         private void statusBtn_Click(object sender, RoutedEventArgs e)
@@ -215,10 +232,10 @@ namespace livelywpf
                         case WallpaperType.videostream:
                         case WallpaperType.picture:
                             {
-                                Program.LibraryVM.AddWallpaper(item,
+                                libraryVm.AddWallpaper(item,
                                     type,
                                     LibraryTileType.processing,
-                                    Program.SettingsVM.Settings.SelectedDisplay);
+                                    userSettings.Settings.SelectedDisplay);
                             }
                             break;
                         case WallpaperType.app:
@@ -228,7 +245,7 @@ namespace livelywpf
                         case WallpaperType.unityaudio:
                             {
                                 //Show warning before proceeding..
-                                var result = await Helpers.DialogService.ShowConfirmationDialog(
+                                var result = await DialogService.ShowConfirmationDialog(
                                      Properties.Resources.TitlePleaseWait,
                                      Properties.Resources.DescriptionExternalAppWarning,
                                      Properties.Resources.TextYes,
@@ -236,14 +253,14 @@ namespace livelywpf
 
                                 if (result == ContentDialogResult.Primary)
                                 {
-                                    var txtInput = await Helpers.DialogService.ShowTextInputDialog(
+                                    var txtInput = await DialogService.ShowTextInputDialog(
                                         Properties.Resources.TextWallpaperCommandlineArgs,
                                         Properties.Resources.TextOK);
 
-                                    Program.LibraryVM.AddWallpaper(item,
+                                    libraryVm.AddWallpaper(item,
                                         WallpaperType.app,
                                         LibraryTileType.processing,
-                                        Program.SettingsVM.Settings.SelectedDisplay,
+                                        userSettings.Settings.SelectedDisplay,
                                         string.IsNullOrWhiteSpace(txtInput) ? null : txtInput);
                                 }
                             }
@@ -253,7 +270,7 @@ namespace livelywpf
                                 //lively wallpaper .zip
                                 if (ZipExtract.CheckLivelyZip(item))
                                 {
-                                    _ = Program.LibraryVM.WallpaperInstall(item, false);
+                                    _ = libraryVm.WallpaperInstall(item, false);
                                 }
                                 else
                                 {
@@ -265,7 +282,7 @@ namespace livelywpf
                             break;
                         case (WallpaperType)(-1):
                             {
-                                await Helpers.DialogService.ShowConfirmationDialog(
+                                await DialogService.ShowConfirmationDialog(
                                     Properties.Resources.TextError,
                                     Properties.Resources.TextUnsupportedFile + " (" + Path.GetExtension(item) + ")",
                                     Properties.Resources.TextClose);
@@ -282,15 +299,13 @@ namespace livelywpf
                     {
                         //This dialog on right-topmost like position and librarypreview window left-topmost.
                         WindowStartupLocation = System.Windows.WindowStartupLocation.Manual,
-                        Left = App.AppWindow.Left + App.AppWindow.Width - (App.AppWindow.Width / 1.5),
-                        Top = App.AppWindow.Top + (App.AppWindow.Height / 15),
-                        Owner = App.AppWindow,
-                        Width = App.AppWindow.Width / 1.5,
-                        Height = App.AppWindow.Height / 1.3,
+                        Left = this.Left + this.Width - (this.Width / 1.5),
+                        Top = this.Top + (this.Height / 15),
+                        Owner = this,
+                        Width = this.Width / 1.5,
+                        Height = this.Height / 1.3,
                     };
-                    //hanging file explorer..
-                    //miw.ShowDialog();
-                    miw.Show();
+                    miw.ShowDialog();
                 }
             }
             else if (e.Data.GetDataPresent(System.Windows.DataFormats.Text))
@@ -310,94 +325,26 @@ namespace livelywpf
                     return;
                 }
 
-                if (Program.SettingsVM.Settings.AutoDetectOnlineStreams &&
+                if (userSettings.Settings.AutoDetectOnlineStreams &&
                     StreamHelper.IsSupportedStream(uri))
                 {
-                    Program.LibraryVM.AddWallpaper(uri.OriginalString,
+                    libraryVm.AddWallpaper(uri.OriginalString,
                         WallpaperType.videostream,
                         LibraryTileType.processing,
-                        Program.SettingsVM.Settings.SelectedDisplay);
+                        userSettings.Settings.SelectedDisplay);
                 }
                 else
                 {
-                    Program.LibraryVM.AddWallpaper(uri.OriginalString,
+                    libraryVm.AddWallpaper(uri.OriginalString,
                         WallpaperType.url,
                         LibraryTileType.processing,
-                        Program.SettingsVM.Settings.SelectedDisplay);
+                        userSettings.Settings.SelectedDisplay);
                 }
 
             }
-            App.AppWindow.NavViewNavigate("library");
+            NavViewNavigate("library");
         }
 
         #endregion //file drop
-
-        #region window msg
-
-        protected override void OnSourceInitialized(EventArgs e)
-        {
-            base.OnSourceInitialized(e);
-            var source = PresentationSource.FromVisual(this) as HwndSource;
-            source.AddHook(WndProc);
-        }
-
-        private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
-        {
-            if (msg == NativeMethods.WM_SHOWLIVELY)
-            {
-                Logger.Info("WM_SHOWLIVELY msg received.");
-                Program.ShowMainWindow();
-            }
-            else if (msg == NativeMethods.WM_TASKBARCREATED)
-            {
-                Logger.Info("WM_TASKBARCREATED: New taskbar created.");
-                int newExplorerPid = GetTaskbarExplorerPid();
-                if (prevExplorerPid != newExplorerPid)
-                {
-                    //Explorer crash detection..
-                    Logger.Info($"Explorer crashed: {prevExplorerPid} != {newExplorerPid}");
-                    if ((DateTime.Now - prevCrashTime).TotalSeconds > 30)
-                    {
-                        SetupDesktop.ResetWorkerW();
-                    }
-                    else
-                    {
-                        //todo: move this to core.
-                        Logger.Warn("Explorer restarted multiple times in the last 30s.");
-                        _ = Task.Run(() => MessageBox.Show(Properties.Resources.DescExplorerCrash,
-                                $"{Properties.Resources.TitleAppName} - {Properties.Resources.TextError}",
-                                MessageBoxButton.OK, MessageBoxImage.Error));
-                        SetupDesktop.TerminateAllWallpapers();
-                        SetupDesktop.ResetWorkerW();
-                    }
-                    prevCrashTime = DateTime.Now;
-                    prevExplorerPid = newExplorerPid;
-                }
-            }
-            else if (msg == (uint)NativeMethods.WM.QUERYENDSESSION && Program.IsMSIX)
-            {
-                _ = NativeMethods.RegisterApplicationRestart(
-                    null,
-                    (int)NativeMethods.RestartFlags.RESTART_NO_CRASH |
-                    (int)NativeMethods.RestartFlags.RESTART_NO_HANG |
-                    (int)NativeMethods.RestartFlags.RESTART_NO_REBOOT);
-            }
-            //screen message processing...
-            _ = Core.DisplayManager.Instance?.OnWndProc(hwnd, (uint)msg, wParam, lParam);
-
-            return IntPtr.Zero;
-        }
-
-        #endregion //window msg
-
-        #region helpers
-
-        private static int GetTaskbarExplorerPid()
-        {
-            _ = NativeMethods.GetWindowThreadProcessId(NativeMethods.FindWindow("Shell_TrayWnd", null), out int pid);
-            return pid;
-        }
-
-        #endregion //helpers
     }
 }

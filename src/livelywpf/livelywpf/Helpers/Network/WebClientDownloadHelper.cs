@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows;
 using Windows.Web.UI.Interop;
 
-namespace livelywpf.NetWork
+namespace livelywpf.Helpers.NetWork
 {
     [Obsolete("Cannot cancel in-progress download: https://github.com/dotnet/runtime/issues/31479")]
     class WebClientDownloadHelper : IDownloadHelper

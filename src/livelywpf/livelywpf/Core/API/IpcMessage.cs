@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using livelywpf.Services;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,8 @@ namespace livelywpf.Core.API
         cmd_reload,
         cmd_close,
         cmd_screenshot,
+        cmd_suspend,
+        cmd_resume,
         lsp_perfcntr,
         lsp_nowplaying,
         lp_slider,
@@ -118,9 +121,25 @@ namespace livelywpf.Core.API
     }
 
     [Serializable]
+    public class LivelySuspendCmd : IpcMessage
+    {
+        public LivelySuspendCmd() : base(MessageType.cmd_suspend)
+        {
+        }
+    }
+
+    [Serializable]
+    public class LivelyResumeCmd : IpcMessage
+    {
+        public LivelyResumeCmd() : base(MessageType.cmd_resume)
+        {
+        }
+    }
+
+    [Serializable]
     public class LivelySystemInformation : IpcMessage
     {
-        public Helpers.HWUsageMonitorEventArgs Info { get; set; }
+        public HWUsageMonitorEventArgs Info { get; set; }
         public LivelySystemInformation() : base(MessageType.cmd_reload)
         {
         }

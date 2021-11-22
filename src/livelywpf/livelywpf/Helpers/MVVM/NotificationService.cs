@@ -4,7 +4,7 @@ using System.Text;
 using Windows.Data.Xml.Dom;
 using Windows.UI.Notifications;
 
-namespace livelywpf
+namespace livelywpf.Helpers.MVVM
 {
     class NotificationService
     {

@@ -2,7 +2,7 @@
 using System;
 using System.IO;
 
-namespace livelywpf.Helpers
+namespace livelywpf.Helpers.Storage
 {
     public static class JsonStorage<T>
     {

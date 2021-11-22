@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace livelywpf.NetWork
+namespace livelywpf.Helpers.NetWork
 {
     public class DownloadProgressEventArgs : EventArgs
     {
@@ -30,7 +30,7 @@ namespace livelywpf.NetWork
         public string FileName { get; set; }
     }
 
-    interface IDownloadHelper
+    public interface IDownloadHelper
     {
         event EventHandler<bool> DownloadFileCompleted;
         event EventHandler<DownloadProgressEventArgs> DownloadProgressChanged;
