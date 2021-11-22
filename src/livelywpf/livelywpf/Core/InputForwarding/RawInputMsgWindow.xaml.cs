@@ -79,6 +79,10 @@ namespace livelywpf.Core.InputForwarding
 
         private void FindDesktopHandles()
         {
+            //resetting
+            workerWOrig = IntPtr.Zero;
+            progman = IntPtr.Zero;
+
             progman = NativeMethods.FindWindow("Progman", null);
             var folderView = NativeMethods.FindWindowEx(progman, IntPtr.Zero, "SHELLDLL_DefView", null);
             if (folderView == IntPtr.Zero)
