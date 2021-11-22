@@ -116,7 +116,7 @@ namespace livelywpf.Models
 
         public SettingsModel()
         {
-            SavedURL = "https://www.shadertoy.com/view/MsKcRh";
+            SavedURL = "https://www.youtube.com/watch?v=aqz-KE-bpKQ";
             ProcessMonitorAlgorithm = ProcessMonitorAlgorithm.foreground;
             WallpaperArrangement = WallpaperArrangement.per;
             AppVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();

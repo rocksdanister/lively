@@ -358,7 +358,7 @@ namespace livelywpf.ViewModels
                     userSettings.Settings.ApplicationTheme = (AppTheme)value;
                     UpdateConfigFile();
 
-                    //Program.ApplicationThemeChange(Settings.ApplicationTheme);
+                    Program.ApplicationThemeChange(userSettings.Settings.ApplicationTheme);
                 }
             }
         }

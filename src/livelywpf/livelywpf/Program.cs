@@ -98,6 +98,7 @@ namespace livelywpf
             var appUpdater = App.Services.GetRequiredService<IAppUpdaterService>();
             var sysTray = App.Services.GetRequiredService<ISystray>();
 
+            ApplicationThemeChange(userSettings.Settings.ApplicationTheme);
             appUpdater.UpdateChecked += AppUpdateChecked;
             _ = appUpdater.CheckUpdate();
             appUpdater.Start();
@@ -118,20 +119,19 @@ namespace livelywpf
 
         public static void ApplicationThemeChange(AppTheme theme)
         {
-            throw new NotImplementedException("xaml island theme/auto incomplete.");
-            //switch (theme)
-            //{
-            //    case AppTheme.Auto:
-            //        break;
-            //    case AppTheme.Light:
-            //        ModernWpf.ThemeManager.Current.ApplicationTheme = ModernWpf.ApplicationTheme.Light;
-            //        break;
-            //    case AppTheme.Dark:
-            //        ModernWpf.ThemeManager.Current.ApplicationTheme = ModernWpf.ApplicationTheme.Dark;
-            //        break;
-            //    default:
-            //        break;
-            //}
+            switch (theme)
+            {
+                case AppTheme.Auto:
+                    break;
+                case AppTheme.Light:
+                    ModernWpf.ThemeManager.Current.ApplicationTheme = ModernWpf.ApplicationTheme.Light;
+                    break;
+                case AppTheme.Dark:
+                    ModernWpf.ThemeManager.Current.ApplicationTheme = ModernWpf.ApplicationTheme.Dark;
+                    break;
+                default:
+                    break;
+            }
         }
 
         #endregion //app entry
