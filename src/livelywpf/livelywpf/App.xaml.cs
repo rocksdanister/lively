@@ -178,6 +178,7 @@ namespace livelywpf
             //Package app otherwise bugging out when initialized in settings vm.
             App.Services.GetRequiredService<RawInputMsgWindow>().Show();
             App.Services.GetRequiredService<IDesktopCore>().RestoreWallpaper();
+            App.Services.GetRequiredService<IPlayback>().Start();
 
             base.OnStartup(e);
         }
