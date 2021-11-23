@@ -6,7 +6,7 @@ using livelywpf.Core;
 using System.Windows.Input;
 using livelywpf.Models;
 
-namespace livelywpf.Cef 
+namespace livelywpf.Views.LivelyProperty.Dialogues
 {
     /// <summary>
     /// Interaction logic for LivelyPropertiesTrayWidget.xaml
@@ -32,7 +32,7 @@ namespace livelywpf.Cef
             //xPos = screen.Bounds.Right - this.width - 100;
             //yPos = screen.Bounds.Bottom - this.height - 10;
 
-            ContentFrame.Navigate(new Cef.LivelyPropertiesView(model), new SuppressNavigationTransitionInfo());
+            ContentFrame.Navigate(new LivelyPropertiesView(model), new SuppressNavigationTransitionInfo());
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

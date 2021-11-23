@@ -18,8 +18,9 @@ using Microsoft.Extensions.DependencyInjection;
 using livelywpf.Services;
 using System.Linq;
 using livelywpf.Views;
+using livelywpf.Helpers.Storage;
 
-namespace livelywpf.Cef
+namespace livelywpf.Views.LivelyProperty
 {
     /// <summary>
     /// Interaction logic for LivelyPropertiesView.xaml
@@ -66,7 +67,7 @@ namespace livelywpf.Cef
         {
             try
             {
-                this.livelyPropertyCopyData = LivelyPropertiesJSON.LoadLivelyProperties(livelyPropertyCopyPath);
+                this.livelyPropertyCopyData = JsonUtil.Read(livelyPropertyCopyPath);
                 GenerateUIElements();
             }
             catch (Exception e)
@@ -571,7 +572,14 @@ namespace livelywpf.Cef
 
         private void UpdatePropertyFile()
         {
-            Cef.LivelyPropertiesJSON.SaveLivelyProperties(livelyPropertyCopyPath, livelyPropertyCopyData);
+            try
+            {
+                JsonUtil.Write(livelyPropertyCopyPath, livelyPropertyCopyData);
+            }
+            catch (Exception e)
+            {
+                Logger.Error(e.ToString());
+            }
         }
 
         private void WallpaperSendMsg(IpcMessage msg)

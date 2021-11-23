@@ -47,7 +47,6 @@ namespace livelywpf.Core
         private readonly ITransparentTbService ttbService;
         private readonly IWatchdogService watchdog;
         //private readonly IScreensaverService screenSaver;
-        //private readonly IPlayback playbackMonitor;
         //private readonly LibraryViewModel libraryVm;
 
         public WinDesktopCore(IUserSettingsService userSettings,
@@ -59,7 +58,6 @@ namespace livelywpf.Core
             this.ttbService = ttbService;
             this.watchdog = watchdog;
             //this.screenSaver = screenSaver;
-            //this.playbackMonitor = playbackMonitor;
             //this.libraryVm = libraryVm;
             this.wallpaperFactory = wallpaperFactory;
 
@@ -148,7 +146,6 @@ namespace livelywpf.Core
                     Logger.Info("Core initialized..");
                     _isInitialized = true;
                     WallpaperReset?.Invoke(this, EventArgs.Empty);
-                    App.Services.GetRequiredService<IPlayback>().Start();
                     watchdog.Start();
                 }
             }
@@ -603,7 +600,6 @@ namespace livelywpf.Core
         {
             Logger.Info("Restarting wallpaper service..");
             _isInitialized = false;
-            App.Services.GetRequiredService<IPlayback>().Stop(); 
             if (Wallpapers.Count > 0)
             {
                 var originalWallpapers = Wallpapers.ToList();

@@ -8,7 +8,7 @@ using livelywpf.Helpers.Pinvoke;
 using ModernWpf.Media.Animation;
 using livelywpf.Models;
 
-namespace livelywpf.Cef
+namespace livelywpf.Views.LivelyProperty.Dialogues
 {
     /// <summary>
     /// Interaction logic for LivelyPropertiesWindow.xaml
@@ -19,7 +19,7 @@ namespace livelywpf.Cef
         {
             InitializeComponent();
             PreviewKeyDown += (s, e) => { if (e.Key == Key.Escape) this.Close(); };
-            ContentFrame.Navigate(new Cef.LivelyPropertiesView(model), new SuppressNavigationTransitionInfo());
+            ContentFrame.Navigate(new LivelyPropertiesView(model), new SuppressNavigationTransitionInfo());
         }
 
         #region window move/resize lock

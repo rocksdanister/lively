@@ -18,6 +18,8 @@ using livelywpf.Services;
 using livelywpf.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using livelywpf.Views;
+using livelywpf.Views.LivelyProperty;
+using livelywpf.Helpers.Storage;
 
 namespace livelywpf.Cmd
 {
@@ -379,7 +381,7 @@ namespace livelywpf.Cmd
                             {
                                 if (name.Equals("lively_default_settings_reload", StringComparison.OrdinalIgnoreCase))
                                 {
-                                    if (Cef.LivelyPropertiesView.RestoreOriginalPropertyFile(wp.Model, wp.LivelyPropertyCopyPath))
+                                    if (LivelyPropertiesView.RestoreOriginalPropertyFile(wp.Model, wp.LivelyPropertyCopyPath))
                                     {
                                         msg = new LivelyButton() { Name = "lively_default_settings_reload", IsDefault = true };
                                     }
@@ -430,7 +432,14 @@ namespace livelywpf.Cmd
                                     lp[name]["value"] = val;
                                 }
 
-                                Cef.LivelyPropertiesJSON.SaveLivelyProperties(wp.LivelyPropertyCopyPath, lp);
+                                try
+                                {
+                                    JsonUtil.Write(wp.LivelyPropertyCopyPath, lp);
+                                }
+                                catch (Exception e)
+                                {
+                                    Logger.Error(e.ToString());
+                                }
                             }
 
                             if (msg != null)

@@ -15,6 +15,7 @@ using livelywpf.Services;
 using System.Windows;
 using System.Windows.Controls;
 using ModernWpf.Controls;
+using livelywpf.Views.LivelyProperty;
 
 namespace livelywpf.Views.Pages
 {
@@ -136,7 +137,7 @@ namespace livelywpf.Views.Pages
                     {
                         Margin = new Thickness(25, 0, 25, 25)
                     };
-                    customiseFrame.Navigate(new Cef.LivelyPropertiesView(obj));
+                    customiseFrame.Navigate(new LivelyPropertiesView(obj));
                     ScrollViewer scv = new ScrollViewer()
                     {
                         VerticalScrollBarVisibility = ScrollBarVisibility.Auto,

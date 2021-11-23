@@ -1,6 +1,7 @@
 ﻿using livelywpf.Core.API;
 using livelywpf.Helpers;
 using livelywpf.Helpers.NetStream;
+using livelywpf.Helpers.Storage;
 using Microsoft.Web.WebView2.Core;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -211,7 +212,7 @@ namespace livelywpf.Views.Wallpapers
                 if (path == null)
                     return;
 
-                foreach (var item in Cef.LivelyPropertiesJSON.LoadLivelyProperties(path))
+                foreach (var item in JsonUtil.Read(path))
                 {
                     string uiElementType = item.Value["type"].ToString();
                     if (!uiElementType.Equals("button", StringComparison.OrdinalIgnoreCase) && !uiElementType.Equals("label", StringComparison.OrdinalIgnoreCase))
