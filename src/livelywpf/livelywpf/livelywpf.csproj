@@ -10,7 +10,7 @@
     <StartupObject>livelywpf.Program</StartupObject>
     <ApplicationIcon>appicon.ico</ApplicationIcon>
     <Version>1.0.0</Version>
-    <AssemblyVersion>1.7.4.0</AssemblyVersion>
+    <AssemblyVersion>1.7.5.0</AssemblyVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">

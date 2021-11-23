@@ -741,7 +741,7 @@ namespace livelywpf.Core
             {
                 if (wallpapers.Count != 0)
                 {
-                    Wallpapers[0].Play();
+                    //Wallpapers[0].Play();
                     var screenArea = ScreenHelper.GetVirtualScreenBounds();
                     Logger.Info($"Updating wallpaper rect(Span): ({screenArea.Width}, {screenArea.Height}).");
                     //For play/pause, setting the new metadata.
@@ -756,7 +756,7 @@ namespace livelywpf.Core
                 {
                     if ((i = wallpapers.FindIndex(x => ScreenHelper.ScreenCompare(screen, x.Screen, DisplayIdentificationMode.deviceId))) != -1)
                     {
-                        Wallpapers[i].Play();
+                        //Wallpapers[i].Play();
                         Logger.Info($"Updating wallpaper rect(Screen): {Wallpapers[i].Screen.Bounds} -> {screen.Bounds}.");
                         //For play/pause, setting the new metadata.
                         Wallpapers[i].Screen = screen;
