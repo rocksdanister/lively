@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using livelywpf.Services.Weather;
 using Timer = System.Timers.Timer;
+using System.Collections.Generic;
 
 namespace livelywpf.Services.Weather
 {
     //TODO: cache the results to disk reduce api calls
-    //TODO: make APIKey compile time flag?
     //TODO: user input for "city" and "units", possibly during app setup and during weather wallpaper apply if not setup yet.
     public class OpenWeatherMapService : IWeatherService
     {
@@ -21,9 +21,9 @@ namespace livelywpf.Services.Weather
         private readonly int fetchDelayRepeat = 1 * 60 * 60 * 1000; //1hr
 
         private readonly Timer retryTimer = new Timer();
-        private const string key = "abc"; 
-        private string units = "metric"; 
-        private string city = "New York"; 
+        private readonly string key = Constants.Weather.OpenWeatherMapAPIKey;
+        private string units = string.Empty; 
+        private string city = string.Empty; 
         private bool checkSuccess = false;
 
         //public
@@ -31,9 +31,11 @@ namespace livelywpf.Services.Weather
         public WeatherData Weather { get; private set; } = new WeatherData();
         public event EventHandler<WeatherData> WeatherFetched;
 
-
-        public OpenWeatherMapService()
+        public OpenWeatherMapService(IUserSettingsService settings)
         {
+            units = settings.WeatherSettings.Units == Models.WeatherUnit.metric ? "metric" : "imperial";
+            city = settings.WeatherSettings.Location;
+
             retryTimer.Elapsed += RetryTimer_Elapsed;
             //giving the retry delay is not reliable since it will reset if system sleeps/suspends.
             retryTimer.Interval = 1 * 60 * 1000;
@@ -72,10 +74,16 @@ namespace livelywpf.Services.Weather
             try
             {
                 var current = await QueryCurrent();
-                var forecast = await QueryForecast();
-                Weather.Temp = current.Main.Temp;
-                Weather.Humidity = current.Main.Humidity;
-                Weather.FeelsLike = current.Main.FeelsLike;
+                //var forecast = await QueryForecast();
+
+                Weather.Units = units;
+                Weather.Current = new Data(current.Main.Temp,
+                                           current.Main.TempMin,
+                                           current.Main.TempMax,
+                                           current.Main.FeelsLike,
+                                           current.Main.Humidity,
+                                           current.Weather[0].Description);
+
                 checkSuccess = true;
             }
             catch (Exception)
