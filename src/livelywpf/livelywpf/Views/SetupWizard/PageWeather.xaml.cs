@@ -1,5 +1,4 @@
-﻿using livelywpf.ViewModels;
-using Microsoft.Extensions.DependencyInjection;
+﻿using livelywpf.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -16,13 +15,19 @@ using System.Windows.Shapes;
 namespace livelywpf.Views.SetupWizard
 {
     /// <summary>
-    /// Interaction logic for PageDirectory.xaml
+    /// Interaction logic for PageWeather.xaml
     /// </summary>
-    public partial class PageDirectory : Page
+    public partial class PageWeather : Page
     {
-        public PageDirectory()
+        public PageWeather()
         {
             InitializeComponent();
+        }
+
+        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            e.Handled = true;
+            LinkHandler.OpenBrowser(e.Uri);
         }
     }
 }
