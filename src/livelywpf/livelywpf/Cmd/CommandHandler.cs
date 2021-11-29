@@ -23,6 +23,7 @@ using livelywpf.Helpers.Storage;
 
 namespace livelywpf.Cmd
 {
+    //Doc: https://github.com/rocksdanister/lively/wiki/Command-Line-Controls
     public class CommandHandler : ICommandHandler
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
@@ -506,7 +507,7 @@ namespace livelywpf.Cmd
 
         #region helpers
 
-        public static T Clamp<T>(T value, T min, T max) where T : IComparable<T>
+        private static T Clamp<T>(T value, T min, T max) where T : IComparable<T>
         {
             if (value.CompareTo(min) < 0)
                 return min;

@@ -11,22 +11,20 @@ namespace livelywpf.Services
         private readonly string settingsPath = Constants.CommonPaths.UserSettingsPath;
         private readonly string appRulesPath = Constants.CommonPaths.AppRulesPath;
         private readonly string wallpaperLayoutPath = Constants.CommonPaths.WallpaperLayoutPath;
+        private readonly string weatherPath = Constants.CommonPaths.WeatherSettingsPath;
 
         public JsonUserSettingsService()
         {
             Load<ISettingsModel>();
+            Load<IWeatherModel>();
             Load<List<IApplicationRulesModel>>();
             Load<List<IWallpaperLayoutModel>>();
         }
 
-        private ISettingsModel _settings;
-        public ISettingsModel Settings => _settings;
-
-        private List<IApplicationRulesModel> _appRules;
-        public List<IApplicationRulesModel> AppRules => _appRules;
-
-        private List<IWallpaperLayoutModel> _wallpaperLayout;
-        public List<IWallpaperLayoutModel> WallpaperLayout => _wallpaperLayout;
+        public ISettingsModel Settings { get; private set; }
+        public IWeatherModel WeatherSettings { get; private set; }
+        public List<IApplicationRulesModel> AppRules { get; private set; }
+        public List<IWallpaperLayoutModel> WallpaperLayout { get; private set; }
 
         public void Save<T>()
         {
@@ -34,6 +32,10 @@ namespace livelywpf.Services
             if (typeof(T) == typeof(ISettingsModel))
             {
                 JsonStorage<ISettingsModel>.StoreData(settingsPath, Settings);
+            }
+            else if (typeof(T) == typeof(IWeatherModel))
+            {
+                JsonStorage<IWeatherModel>.StoreData(weatherPath, WeatherSettings);
             }
             else if (typeof(T) == typeof(List<IApplicationRulesModel>))
             {
@@ -45,7 +47,7 @@ namespace livelywpf.Services
             }
             else
             {
-                throw new InvalidCastException("Type not found");
+                throw new InvalidCastException($"Type not found: {typeof(T)}");
             }
         }
 
@@ -56,13 +58,26 @@ namespace livelywpf.Services
             {
                 try
                 {
-                    _settings = JsonStorage<SettingsModel>.LoadData(settingsPath);
+                    Settings = JsonStorage<SettingsModel>.LoadData(settingsPath);
                 }
                 catch (Exception e)
                 {
                     //Logger.Error(e.ToString());
-                    _settings = new SettingsModel();
+                    Settings = new SettingsModel();
                     Save<ISettingsModel>();
+                }
+
+            }
+            else if (typeof(T) == typeof(IWeatherModel))
+            {
+                try
+                {
+                    WeatherSettings = JsonStorage<WeatherModel>.LoadData(weatherPath);
+                }
+                catch (Exception e)
+                {
+                    WeatherSettings = new WeatherModel();
+                    Save<IWeatherModel>();
                 }
 
             }
@@ -70,12 +85,12 @@ namespace livelywpf.Services
             {
                 try
                 {
-                    _appRules = new List<IApplicationRulesModel>(JsonStorage<List<ApplicationRulesModel>>.LoadData(appRulesPath));
+                    AppRules = new List<IApplicationRulesModel>(JsonStorage<List<ApplicationRulesModel>>.LoadData(appRulesPath));
                 }
                 catch (Exception e)
                 {
                     //Logger.Error(e.ToString());
-                    _appRules = new List<IApplicationRulesModel>
+                    AppRules = new List<IApplicationRulesModel>
                     {
                         //defaults.
                         new ApplicationRulesModel("Discord", AppRulesEnum.ignore)
@@ -87,18 +102,18 @@ namespace livelywpf.Services
             {
                 try
                 {
-                    _wallpaperLayout = new List<IWallpaperLayoutModel>(JsonStorage<List<WallpaperLayoutModel>>.LoadData(wallpaperLayoutPath));
+                    WallpaperLayout = new List<IWallpaperLayoutModel>(JsonStorage<List<WallpaperLayoutModel>>.LoadData(wallpaperLayoutPath));
                 }
                 catch (Exception e)
                 {
                     //Logger.Error(e.ToString());
-                    _wallpaperLayout = new List<IWallpaperLayoutModel>();
+                    WallpaperLayout = new List<IWallpaperLayoutModel>();
                     Save<List<IWallpaperLayoutModel>>();
                 }
             }
             else
             {
-                throw new InvalidCastException("Type not found");
+                throw new InvalidCastException($"Type not found: {typeof(T)}");
             }
         }
     }

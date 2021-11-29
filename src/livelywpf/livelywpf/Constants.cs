@@ -19,6 +19,7 @@ namespace livelywpf
             public static string AppRulesPath { get; } = Path.Combine(AppDataDir, "AppRules.json");
             public static string WallpaperLayoutPath { get; } = Path.Combine(AppDataDir, "WallpaperLayout.json");
             public static string UserSettingsPath { get; } = Path.Combine(AppDataDir, "Settings.json");
+            public static string WeatherSettingsPath { get; } = Path.Combine(AppDataDir, "WeatherSettings.json");
         }
 
         public static class SingleInstance
@@ -32,6 +33,12 @@ namespace livelywpf
             public static bool IsMSIX { get; } = new DesktopBridge.Helpers().IsRunningAsUwp();
             //todo: make compile-time flag.
             public static bool IsTestBuild { get; } = false;
+        }
+
+        public static class Weather
+        {
+            //todo: make compile-time flag.
+            public static string OpenWeatherMapAPIKey = string.Empty;
         }
     }
 }

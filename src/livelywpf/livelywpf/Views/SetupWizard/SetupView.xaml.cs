@@ -23,8 +23,9 @@ namespace livelywpf.Views.SetupWizard
             new PageStartup(),
             //new PageDirectory(),
             //new PageUI(),
+            //new PageWeather(),
             new PageTaskbar(),
-            new PageFinal() 
+            new PageFinal()
         };
         private readonly IUserSettingsService userSettings;
 
