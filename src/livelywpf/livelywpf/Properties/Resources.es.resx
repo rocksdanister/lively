@@ -183,7 +183,7 @@ Deshabilita el modo de alto contraste e intente nuevamente.</value>
 2. Selecciona Propiedades
 3. Selecciona Configuración avanzada del sistema
 4. En la pestaña Rendimiento, selecciona Configuración
-5. Habilita animar los elementos y controles de las ventanas
+5. Habilita la opcion animar los elementos y controles de las ventanas
 6. Aplica los cambios
 
 Si Windows 7 se acaba de configurar: ajusta para obtener la mejor apariencia y aplica los cambios.
@@ -281,7 +281,7 @@ Si aún no funciona, cierra e inicia Lively nuevamente o reinicia Windows.
     <value>Procesos en primer plano</value>
   </data>
   <data name="TextPauseWallpapers" xml:space="preserve">
-    <value>Pausar fondos de pantalla</value>
+    <value>Pausar los fondos de pantalla</value>
   </data>
   <data name="TextPerformanceKill" xml:space="preserve">
     <value>Terminar</value>
@@ -308,7 +308,7 @@ Si aún no funciona, cierra e inicia Lively nuevamente o reinicia Windows.
     <value>Establecer como fondo de pantalla</value>
   </data>
   <data name="TextShowOnDisk" xml:space="preserve">
-    <value>Mostrar en disco</value>
+    <value>Mostrar en el disco</value>
   </data>
   <data name="TextSource" xml:space="preserve">
     <value>Fuente</value>
@@ -332,13 +332,13 @@ Si aún no funciona, cierra e inicia Lively nuevamente o reinicia Windows.
     <value>Pequeño</value>
   </data>
   <data name="TextUIHeadless" xml:space="preserve">
-    <value>Headless</value>
+    <value>Pesada (Para PC de Altos recursos</value>
   </data>
   <data name="TextUILite" xml:space="preserve">
-    <value>Lite</value>
+    <value>Lite (Para Pc de Bajos recursos</value>
   </data>
   <data name="TextUINormal" xml:space="preserve">
-    <value>Normal</value>
+    <value>Normal (Para pc que tienen recursos decentes)</value>
   </data>
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>¡Actualización disponible!</value>
@@ -353,7 +353,7 @@ Si aún no funciona, cierra e inicia Lively nuevamente o reinicia Windows.
     <value>Comprobación de actualización</value>
   </data>
   <data name="TextUpdateUptodate" xml:space="preserve">
-    <value>¡El software está actualizado!</value>
+    <value>¡El software ha sido actualizado con exito!</value>
   </data>
   <data name="TextVideo" xml:space="preserve">
     <value>Video</value>
@@ -434,10 +434,10 @@ Todos los procesos: Pesado, analiza todos los procesos abiertos para determinar 
     <value>Tamaño de los mosaicos de la Biblioteca.</value>
   </data>
   <data name="TipUIMode" xml:space="preserve">
-    <value>Para sistemas de gama baja, selecciona el modo Lite.</value>
+    <value>Para Sistemas o Pc de bajos recursos por favor elija la version lite (le ayudara mucho)</value>
   </data>
   <data name="TipVideoPlayer" xml:space="preserve">
-    <value>Selecciona el reproductor utilizado para el fondo de pantalla de video.</value>
+    <value>Selecciona el reproductor de video para usarlo en los fondos de video o fondos animados</value>
   </data>
   <data name="TipWallpaperDir" xml:space="preserve">
     <value>Ruta utilizada para almacenar archivos de fondo de pantalla.</value>
@@ -540,7 +540,7 @@ Edge es la vista web integrada en Windows 10.</value>
     <value>Lista de reproducción</value>
   </data>
   <data name="TitlePleaseWait" xml:space="preserve">
-    <value>Por favor Espera</value>
+    <value>Por favor Espere...</value>
   </data>
   <data name="TitleScalingFit" xml:space="preserve">
     <value>Escalar/Ajustar</value>
@@ -579,13 +579,13 @@ Edge es la vista web integrada en Windows 10.</value>
     <value>Directorio de fondos de pantalla</value>
   </data>
   <data name="TitleWallpaperInput" xml:space="preserve">
-    <value>Input</value>
+    <value>Entrada</value>
   </data>
   <data name="TitleWallpaperLayout" xml:space="preserve">
     <value>Disposición de/los fondo(s)</value>
   </data>
   <data name="TitleWallpaperPlayback" xml:space="preserve">
-    <value>Reproducción del Fondo</value>
+    <value>Reproducción del Fondo </value>
   </data>
   <data name="TitleWarning" xml:space="preserve">
     <value>Advertencia</value>
@@ -594,7 +594,7 @@ Edge es la vista web integrada en Windows 10.</value>
     <value>Navegador web</value>
   </data>
   <data name="TitleWebBrowserDiskCache" xml:space="preserve">
-    <value>Caché de disco</value>
+    <value>Caché de disco duro</value>
   </data>
   <data name="TitleWebBrowserEngine" xml:space="preserve">
     <value>Motor</value>
@@ -606,7 +606,7 @@ Edge es la vista web integrada en Windows 10.</value>
     <value>Iniciar con Windows</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
-    <value>Por favor reinicia Lively para que las configuraciones tengan efecto.</value>
+    <value>Por favor reinicie Lively para que las configuraciones tengan efecto Haga clic derecho en el icono de notificacion seleccione salir y abralo otra ves</value>
   </data>
   <data name="TextSupport" xml:space="preserve">
     <value>Soporte</value>
@@ -627,24 +627,24 @@ Edge es la vista web integrada en Windows 10.</value>
     <value>Cómo se aplica el fondo a las pantallas conectadas.</value>
   </data>
   <data name="TitleWallpaperDirMoveExisting" xml:space="preserve">
-    <value>Mover los fondos de pantalla existentes al nuevo directorio</value>
+    <value>Mover los fondos de pantalla existentes a un nuevo directorio</value>
   </data>
   <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
     <value>El reproducto de contenido ha fallado :(
-Inta cambiar el reproducto de video desde la configuración de Lively.
+ Intenta cambiar el reproductor de video desde la configuración de Lively.
 
 Para enteder mejor este error y solucionar el problema, comparte el archivo de registro con el desarrollador.
 Visita el siguiente enlace con instrucciones sobre como compartir el archivo de registro:
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="TextOff" xml:space="preserve">
-    <value>APAGADO</value>
+    <value>Apagado</value>
   </data>
   <data name="TextOn" xml:space="preserve">
-    <value>ENCENDIDO</value>
+    <value>Encendido</value>
   </data>
   <data name="TextMouse" xml:space="preserve">
-    <value>Ratón</value>
+    <value>Mouse</value>
   </data>
   <data name="TextKeyboard" xml:space="preserve">
     <value>Teclado</value>
@@ -695,13 +695,13 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Mostrar el menú de desarrollador</value>
   </data>
   <data name="TextFileNotFound" xml:space="preserve">
-    <value>Archivo no encontrado</value>
-  </data>  
+    <value>El Archivo no ha podido ser encontrado (puede ser que se ha movido o se ha borrado)</value>
+  </data>
   <data name="TextPicture" xml:space="preserve">
     <value>Imagen</value>
   </data>
   <data name="TextUnsupportedFile" xml:space="preserve">
-    <value>Este tipo de archivo no está soportado</value>
+    <value>El tipo de archivo no es soportado o esta corrupto</value>
   </data>
   <data name="TextProcessingWallpaper" xml:space="preserve">
     <value>Procesando</value>
@@ -713,7 +713,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Descripción</value>
   </data>
   <data name="TextOK" xml:space="preserve">
-    <value>OK</value>
+    <value>Ok</value>
   </data>
   <data name="TextCancel" xml:space="preserve">
     <value>Cancelar</value>
@@ -728,16 +728,16 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Selecciona el reproductor que quieras usar para convertir los GIFs en fondos de pantalla.</value>
   </data>
   <data name="TextFeatureMissing" xml:space="preserve">
-    <value>Algunas funciones no están disponibles en esta versión de Lively.</value>
+    <value>Algunas funciones no están disponibles en esta versión de Lively. Por favor use la version de Internet ya que la de la tienda es para pc de Altos recursos</value>
   </data>
-    <data name="TextControlPanelOpen" xml:space="preserve">
+  <data name="TextControlPanelOpen" xml:space="preserve">
     <value>Haz click aquí para administrar tus fondos de pantalla.</value>
   </data>
-    <data name="TextStoreReview" xml:space="preserve">
+  <data name="TextStoreReview" xml:space="preserve">
     <value>Te está gustando Lively? Deja un comentario 😁</value>
   </data>
   <data name="TitleStore" xml:space="preserve">
-    <value>Store</value>
+    <value>Tienda</value>
     <comment>Para diferentes versiones de Lively, ejemplo: Microsoft Store</comment>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
@@ -753,58 +753,58 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Reproducir audio solo cuando el escritorio esté enfocado</value>
   </data>
   <data name="TipExportLogs" xml:space="preserve">
-    <value>Create log report file.</value>
+    <value>Crear un archivo log de soporte</value>
   </data>
   <data name="TitleExportLogs" xml:space="preserve">
     <value>Log File</value>
   </data>
   <data name="TitleReportBug" xml:space="preserve">
-    <value>Report Bug</value>
+    <value>Reportar Bug</value>
   </data>
   <data name="TitleVideoHardwareDecode" xml:space="preserve">
-    <value>GPU Decode</value>
+    <value>Decodificacion de GPU</value>
   </data>
   <data name="TipVideoHardwareDecode" xml:space="preserve">
-    <value>Use hardware acceleration when possible.</value>
-  </data> 
+    <value>Usar Aceleracion de Hardware cuando sea posible</value>
+  </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
-  <value>Please stop before proceeding.</value>
+  <value>Por Favor pare antes de proceder</value>
 </data>
-<data name="TextEditWallpaper" xml:space="preserve">
-  <value>Edit</value>
+  <data name="TextEditWallpaper" xml:space="preserve">
+  <value>Editar</value>
 </data>
-<data name="TitleLocation" xml:space="preserve">
-  <value>Location</value>
+  <data name="TitleLocation" xml:space="preserve">
+  <value>Ubicacion</value>
 </data>
-<data name="TitleSkipConfirm" xml:space="preserve">
-  <value>Skip Confirmation</value>
+  <data name="TitleSkipConfirm" xml:space="preserve">
+  <value>Saltar Confirmacion</value>
 </data>
-<data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-  <value>Enter optional commandline arguments</value>
+  <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
+  <value>Poner algunos argumentos de comandos opcionales</value>
 </data>
   <data name="TextGitHubStar" xml:space="preserve">
-    <value>Show some love by dropping a star</value>
+    <value>Muestra algo de amor dejando caer una estrella</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
-    <value>Incompatible program found, taskbar theming disabled.</value>
+    <value>No se ha encontrado un programa compatible se desabilitara el tema de la barra de tareas</value>
   </data>
   <data name="TitleTaskbarTheme" xml:space="preserve">
-    <value>Taskbar Theme</value>
-  </data>
+    
+  <value>Tema de Barra de Tares</value></data>
   <data name="TitleLockscreenPicture" xml:space="preserve">
-    <value>Lockscreen Picture</value>
+    <value>Imagen de pantalla de bloqueo</value>
   </data>
   <data name="TitleDesktopPicture" xml:space="preserve">
-    <value>Desktop Picture</value>
+    <value>Imagen de Escritorio</value>
   </data>
   <data name="TipLockscreenPicture" xml:space="preserve">
-    <value>Set a picture of animated wallpaper as lockscreen wallpaper.</value>
+    <value>Poner un fondo animado en la pantalla de bloqueo</value>
   </data>
   <data name="TipDesktopPicture" xml:space="preserve">
-    <value>Set a picture of animated wallpaper as desktop wallpaper.</value>
+    <value>Poner un fondo animado en el escritorio</value>
   </data>
   <data name="TipTaskbarTheme" xml:space="preserve">
-    <value>Change system taskbar appearance.</value>
+    <value>Cambiar la aparienciea de la barra de tareas del sistema </value>
   </data>
   <data name="TextTaskbarThemeBlur" xml:space="preserve">
     <value>Blur</value>
@@ -830,22 +830,22 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TitleSourceCode" xml:space="preserve">
     <value>Source Code</value>
   </data>
-    <data name="TitleScreensaver" xml:space="preserve">
+  <data name="TitleScreensaver" xml:space="preserve">
     <value>Screensaver</value>
   </data>
   <data name="TipScreensaver" xml:space="preserve">
     <value>After the selected inactivity period use the current wallpaper as your screensaver.</value>
   </data>
-    <data name="TextHours" xml:space="preserve">
-    <value>hours</value>
+  <data name="TextHours" xml:space="preserve">
+    <value>Horas</value>
   </data>
   <data name="TextMinutes" xml:space="preserve">
-    <value>minutes</value>
+    <value>Minutos</value>
   </data>
   <data name="TextLearnMore" xml:space="preserve">
-    <value>Learn more</value>
+    <value>Aprender más</value>
   </data>
-    <data name="DescOledScreensaverNotice" xml:space="preserve">
+  <data name="DescOledScreensaverNotice" xml:space="preserve">
     <value>La mayoría de pantallas modernas LCD y LED no sufren de quemado de pantalla, y por esa razón cualquier fondo de pantallas puede ser usado como salva pantallas.
 
 Para pantallas OLED, Plasma o CRT que son susceptibles ha quemado y retención de imagen es recomendado el uso de salva pantallas con movimiento continuo, y que tenga un tema relativamente oscuro que ayuden a mitigar el quemado de la pantalla, pero la eficacia de este método no ah sido comprobado y no puede ser garantizado.
@@ -897,5 +897,5 @@ Updates will be frequent and may contain bugs!</value>
   </data>
   <data name="TitleScreensaverLockOnResume" xml:space="preserve">
     <value>On resume, display logon screen</value>
-  </data>  
+  </data>
 </root>

@@ -18,6 +18,7 @@ namespace livelywpf.Core.API
         cmd_screenshot,
         cmd_suspend,
         cmd_resume,
+        cmd_volume,
         lsp_perfcntr,
         lsp_nowplaying,
         lp_slider,
@@ -132,6 +133,15 @@ namespace livelywpf.Core.API
     public class LivelyResumeCmd : IpcMessage
     {
         public LivelyResumeCmd() : base(MessageType.cmd_resume)
+        {
+        }
+    }
+
+    [Serializable]
+    public class LivelyVolumeCmd : IpcMessage
+    {
+        public int Volume { get; set; }
+        public LivelyVolumeCmd() : base(MessageType.cmd_volume)
         {
         }
     }

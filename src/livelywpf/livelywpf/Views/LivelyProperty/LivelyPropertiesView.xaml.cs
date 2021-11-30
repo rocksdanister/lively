@@ -68,7 +68,10 @@ namespace livelywpf.Views.LivelyProperty
         {
             try
             {
-                this.livelyPropertyCopyData = JsonUtil.Read(livelyPropertyCopyPath);
+                if (livelyPropertyCopyPath != null)
+                {
+                    this.livelyPropertyCopyData = JsonUtil.Read(livelyPropertyCopyPath);
+                }
                 GenerateUIElements();
             }
             catch (Exception e)
@@ -88,15 +91,16 @@ namespace livelywpf.Views.LivelyProperty
                     wallpaperData.LivelyInfo.Type == WallpaperType.gif ||
                     wallpaperData.LivelyInfo.Type == WallpaperType.picture)
                 {
-                    msg += "\nMpv player is required...";
+                    msg += "\n(Mpv player is required.)";
                 }
                     //Empty..
                     AddUIElement(new TextBlock
                 {
                     Text = msg,
-                    Background = Brushes.Red,
-                        Foreground = Brushes.Yellow,
-                        HorizontalAlignment = HorizontalAlignment.Left,
+                    //Background = Brushes.Red,
+                    FontSize = 18,
+                    Foreground = Brushes.Gray,
+                    HorizontalAlignment = HorizontalAlignment.Left,
                     Margin = new Thickness(0, 50, 0, 0)
                 });
                 return;
