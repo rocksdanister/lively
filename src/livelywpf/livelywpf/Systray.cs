@@ -195,7 +195,7 @@ namespace livelywpf
 
         private void CustomiseWallpaper(object sender, EventArgs e)
         {
-            var items = desktopCore.Wallpapers.Where(x => x.Model.LivelyPropertyPath != null);
+            var items = desktopCore.Wallpapers.Where(x => x.LivelyPropertyCopyPath != null);
             if (items.Count() == 0)
             {
                 //not possible, menu should be disabled.
@@ -295,7 +295,7 @@ namespace livelywpf
         {
             System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
             {
-                customiseWallpaperBtn.Enabled = desktopCore.Wallpapers.Any(x => x.Model.LivelyPropertyPath != null);
+                customiseWallpaperBtn.Enabled = desktopCore.Wallpapers.Any(x => x.LivelyPropertyCopyPath != null);
             }));
         }
 
