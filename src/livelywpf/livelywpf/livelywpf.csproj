@@ -10,7 +10,7 @@
     <StartupObject>livelywpf.Program</StartupObject>
     <ApplicationIcon>appicon.ico</ApplicationIcon>
     <Version>1.0.0</Version>
-    <AssemblyVersion>1.7.4.0</AssemblyVersion>
+    <AssemblyVersion>1.7.4.2</AssemblyVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
@@ -32,7 +32,7 @@
     <PackageReference Include="Magick.NET-Q16-x86" Version="8.4.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
-    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1020.30" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1054.31" />
     <PackageReference Include="Microsoft.Windows.Compatibility" Version="6.0.0" />
     <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.22000.196" />
     <PackageReference Include="ModernWpfUI" Version="0.9.4" />

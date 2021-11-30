@@ -43,13 +43,17 @@ namespace livelywpf.Core.Wallpapers
 
         public WebProcess(string path, ILibraryModel model, ILivelyScreen display, string livelyPropertyPath, string debugPort, bool diskCache, int volume)
         {
-            LivelyPropertyCopyPath = livelyPropertyPath;
+            //Streams can also use browser..
+            //TODO: Add support for livelyproperty video adjustments.
+            var isWeb = model.LivelyInfo.Type == WallpaperType.url || model.LivelyInfo.Type == WallpaperType.web || model.LivelyInfo.Type == WallpaperType.webaudio;
+            LivelyPropertyCopyPath = isWeb ? livelyPropertyPath : null;
 
             StringBuilder cmdArgs = new StringBuilder();
             cmdArgs.Append(" --url " + "\"" + path + "\"");
             cmdArgs.Append(" --display " + "\"" + display + "\"");
             cmdArgs.Append(" --property " + "\"" + LivelyPropertyCopyPath + "\"");
-            cmdArgs.Append(" --volume " + volume);
+            //volume == 0, Cef is permanently muted and cannot be adjusted runtime
+            cmdArgs.Append(" --volume " + 100);
             cmdArgs.Append(" --geometry " + display.Bounds.Width + "x" + display.Bounds.Height);
             //--audio false Issue: https://github.com/commandlineparser/commandline/issues/702
             cmdArgs.Append(model.LivelyInfo.Type == WallpaperType.webaudio ? " --audio true" : " ");
@@ -285,17 +289,7 @@ namespace livelywpf.Core.Wallpapers
 
         public void SetVolume(int volume)
         {
-            /*
-            try
-            {
-                if (Proc != null)
-                {
-                    //VolumeMixer.SetApplicationVolume(Proc.Id, volume);
-                    SetProcessAndChildrenVolume(Proc.Id, volume);
-                }
-            }
-            catch { }
-            */
+            SendMessage(new LivelyVolumeCmd() { Volume = volume });
         }
 
         public void SetMute(bool mute)
