@@ -1,26 +1,32 @@
-﻿<Window x:Class="livelywpf.Views.LivelyProperty.Dialogues.LivelyPropertiesTrayWidget"
-        xmlns:ui="http://schemas.modernwpf.com/2019"
-        ui:WindowHelper.UseModernWindowStyle="True"
-        ui:TitleBar.ExtendViewIntoTitleBar="False"
-        ui:ThemeManager.IsThemeAware="True" 
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:xaml="clr-namespace:Microsoft.Toolkit.Wpf.UI.XamlHost;assembly=Microsoft.Toolkit.Wpf.UI.XamlHost"
-        mc:Ignorable="d"
-        Width="250" Height="450" 
-        MinWidth="250" MinHeight="300"
-        MaxWidth="250"
-        WindowStyle="None"
-        ResizeMode="CanResize"
-        AllowsTransparency="True"
-        Loaded="Window_Loaded"
-        BorderBrush="{DynamicResource SystemControlHighlightAltListAccentHighBrush}">
-    
+﻿<Window
+    x:Class="livelywpf.Views.LivelyProperty.Dialogues.LivelyPropertiesTrayWidget"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="http://schemas.modernwpf.com/2019"
+    xmlns:xaml="clr-namespace:Microsoft.Toolkit.Wpf.UI.XamlHost;assembly=Microsoft.Toolkit.Wpf.UI.XamlHost"
+    Width="250"
+    Height="450"
+    MinWidth="250"
+    MinHeight="300"
+    MaxWidth="250"
+    ui:ThemeManager.IsThemeAware="True"
+    ui:TitleBar.ExtendViewIntoTitleBar="False"
+    ui:WindowHelper.UseModernWindowStyle="True"
+    AllowsTransparency="True"
+    BorderBrush="{DynamicResource SystemControlHighlightAltListAccentHighBrush}"
+    Loaded="Window_Loaded"
+    ResizeMode="CanResize"
+    WindowStyle="None"
+    mc:Ignorable="d">
+
     <Grid>
-        <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto" Margin="0, 15, 0, 0">
-            <ui:Frame x:Name="ContentFrame" Margin="25, 0, 50, 25"/>
+        <ScrollViewer
+            Margin="0,15,0,0"
+            HorizontalScrollBarVisibility="Hidden"
+            VerticalScrollBarVisibility="Auto">
+            <ui:Frame x:Name="ContentFrame" Margin="25,0,50,25" />
         </ScrollViewer>
         <!--
         <xaml:WindowsXamlHost InitialTypeName="livelycefproperties.CefPropertiesView" ChildChanged="WindowsXamlHost_ChildChanged" />

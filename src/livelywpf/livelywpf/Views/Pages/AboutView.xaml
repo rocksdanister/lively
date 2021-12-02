@@ -1,34 +1,45 @@
-﻿<Page x:Class="livelywpf.Views.Pages.AboutView"
-      xmlns:ui="http://schemas.modernwpf.com/2019"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:livelywpf.Views"
-      xmlns:p = "clr-namespace:livelywpf.Properties"                
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="AboutView">
+﻿<Page
+    x:Class="livelywpf.Views.Pages.AboutView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:livelywpf.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:p="clr-namespace:livelywpf.Properties"
+    xmlns:ui="http://schemas.modernwpf.com/2019"
+    Title="AboutView"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
 
     <Page.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
-        <Storyboard  x:Key="fidgetSpinner">
+        <Storyboard x:Key="fidgetSpinner">
             <DoubleAnimation
-                    Storyboard.TargetProperty="RenderTransform.Angle"
-                    From="0"
-                    To="360"
-                    Duration="0:0:10"
-                    RepeatBehavior="Forever" />
+                RepeatBehavior="Forever"
+                Storyboard.TargetProperty="RenderTransform.Angle"
+                From="0"
+                To="360"
+                Duration="0:0:10" />
         </Storyboard>
     </Page.Resources>
 
     <Grid>
         <ScrollViewer>
-            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="{x:Static p:Resources.TitleAppName}" FontSize="35" Margin="0, 0, 5, 0" FontWeight="Medium"/>
-                    <!-- animated lively icon -->
-                    <Image x:Name="livelyIcon" Source="pack://application:,,,/Resources/appicon_96.png" Width="75" Height="75" Margin="0, 0, 5, 0">
+                    <TextBlock
+                        Margin="0,0,5,0"
+                        FontSize="35"
+                        FontWeight="Medium"
+                        Text="{x:Static p:Resources.TitleAppName}" />
+                    <!--  animated lively icon  -->
+                    <Image
+                        x:Name="livelyIcon"
+                        Width="75"
+                        Height="75"
+                        Margin="0,0,5,0"
+                        Source="pack://application:,,,/Resources/appicon_96.png">
                         <Image.RenderTransform>
                             <RotateTransform CenterX="37.5" CenterY="37.5" />
                         </Image.RenderTransform>
@@ -37,8 +48,7 @@
                                 <Style.Triggers>
                                     <Trigger Property="Image.IsVisible" Value="True">
                                         <Trigger.EnterActions>
-                                            <BeginStoryboard Storyboard="{StaticResource fidgetSpinner}">
-                                            </BeginStoryboard>
+                                            <BeginStoryboard Storyboard="{StaticResource fidgetSpinner}" />
                                         </Trigger.EnterActions>
                                     </Trigger>
 
@@ -46,33 +56,68 @@
                             </Style>
                         </Image.Style>
                     </Image>
-                    <StackPanel Margin="0, 5, 0, 0">
-                        <TextBlock Text="{Binding AppVersionText}" FontSize="15" Margin="0, 0, 5, 0" VerticalAlignment="Center"/>
-                        <TextBlock Margin="20, 0, 0, 0">           
-                            <Hyperlink Foreground="{DynamicResource SystemControlHighlightAltListAccentHighBrush}" NavigateUri="https://github.com/rocksdanister" 
-                                        ToolTipService.ToolTip="https://github.com/rocksdanister" 
-                                        RequestNavigate="Hyperlink_RequestNavigate">
-                                <TextBlock Text="Rocksdanister"/>
+                    <StackPanel Margin="0,5,0,0">
+                        <TextBlock
+                            Margin="0,0,5,0"
+                            VerticalAlignment="Center"
+                            FontSize="15"
+                            Text="{Binding AppVersionText}" />
+                        <TextBlock Margin="20,0,0,0">
+                            <Hyperlink
+                                Foreground="{DynamicResource SystemControlHighlightAltListAccentHighBrush}"
+                                NavigateUri="https://github.com/rocksdanister"
+                                RequestNavigate="Hyperlink_RequestNavigate"
+                                ToolTipService.ToolTip="https://github.com/rocksdanister">
+                                <TextBlock Text="Rocksdanister" />
                             </Hyperlink>
                         </TextBlock>
                     </StackPanel>
                 </StackPanel>
 
-                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0, 25, 0, 0">
-                    <Button Content="{x:Static p:Resources.TextLicense}" 
-                                MinWidth="200" MaxWidth="200" Margin="0, 0, 0, 10" Command="{Binding LicenseDocCommand}"/>
-                    <Button Content="{x:Static p:Resources.TextAttribution}" 
-                                MinWidth="200" MaxWidth="200" Margin="0, 0, 0, 10" Command="{Binding AttribDocCommand}"/>
-                    <Button Content="{x:Static p:Resources.TextPrivacyPolicy}" 
-                            MinWidth="200" MaxWidth="200" Margin="0, 0, 0, 10" Command="{Binding PrivacyDocCommand}" 
-                            ToolTip="https://github.com/rocksdanister/lively/blob/dev-v1.0-fluent-netcore/PRIVACY.md"/>
+                <StackPanel
+                    Margin="0,25,0,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+                    <Button
+                        MinWidth="200"
+                        MaxWidth="200"
+                        Margin="0,0,0,10"
+                        Command="{Binding LicenseDocCommand}"
+                        Content="{x:Static p:Resources.TextLicense}" />
+                    <Button
+                        MinWidth="200"
+                        MaxWidth="200"
+                        Margin="0,0,0,10"
+                        Command="{Binding AttribDocCommand}"
+                        Content="{x:Static p:Resources.TextAttribution}" />
+                    <Button
+                        MinWidth="200"
+                        MaxWidth="200"
+                        Margin="0,0,0,10"
+                        Command="{Binding PrivacyDocCommand}"
+                        Content="{x:Static p:Resources.TextPrivacyPolicy}"
+                        ToolTip="https://github.com/rocksdanister/lively/blob/dev-v1.0-fluent-netcore/PRIVACY.md" />
                 </StackPanel>
                 <StackPanel Visibility="{Binding Path=IsNotWinStore, Converter={StaticResource BoolToVis}}">
-                    <TextBlock Text="{x:Static p:Resources.TitleUpdates}" FontSize="20" Margin="0, 25, 5, 0" TextAlignment="Center"/>
-                    <TextBlock Text="{Binding UpdateStatusText}" Margin="0, 5, 5, 0" TextAlignment="Center"/>
-                    <TextBlock Text="{Binding UpdateDateText}" Margin="0, 5, 5, 0" TextAlignment="Center"/>
-                    <Button MinWidth="200" Margin="0, 5, 0, 0" HorizontalAlignment="Center" Content="{Binding UpdateCommandText}"
-                        Command="{Binding UpdateAppCommand}"/>
+                    <TextBlock
+                        Margin="0,25,5,0"
+                        FontSize="20"
+                        Text="{x:Static p:Resources.TitleUpdates}"
+                        TextAlignment="Center" />
+                    <TextBlock
+                        Margin="0,5,5,0"
+                        Text="{Binding UpdateStatusText}"
+                        TextAlignment="Center" />
+                    <TextBlock
+                        Margin="0,5,5,0"
+                        Text="{Binding UpdateDateText}"
+                        TextAlignment="Center" />
+                    <Button
+                        MinWidth="200"
+                        Margin="0,5,0,0"
+                        HorizontalAlignment="Center"
+                        Command="{Binding UpdateAppCommand}"
+                        Content="{Binding UpdateCommandText}" />
                 </StackPanel>
             </StackPanel>
         </ScrollViewer>
