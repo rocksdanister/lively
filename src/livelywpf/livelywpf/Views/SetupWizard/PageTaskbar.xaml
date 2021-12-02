@@ -1,28 +1,38 @@
-﻿<Page x:Class="livelywpf.Views.SetupWizard.PageTaskbar"
-      xmlns:ui="http://schemas.modernwpf.com/2019"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:p = "clr-namespace:livelywpf.Properties"   
-      xmlns:local="clr-namespace:livelywpf.Views.SetupWizard"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="TaskbarTheme">
+﻿<Page
+    x:Class="livelywpf.Views.SetupWizard.PageTaskbar"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:livelywpf.Views.SetupWizard"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:p="clr-namespace:livelywpf.Properties"
+    xmlns:ui="http://schemas.modernwpf.com/2019"
+    Title="TaskbarTheme"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
 
     <Grid>
         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center">
-            <TextBlock Text="{x:Static p:Resources.TitleTaskbarTheme}" FontSize="20"/>
-            <ComboBox Margin="0,5,0,0" MinWidth="150" SelectedIndex="{Binding SelectedTaskbarThemeIndex, Mode=TwoWay}" >
-                <ComboBoxItem Content="{x:Static p:Resources.TextOff}"/>
-                <ComboBoxItem Content="{x:Static p:Resources.TextTaskbarThemeClear}"/>
-                <ComboBoxItem Content="{x:Static p:Resources.TextTaskbarThemeBlur}"/>
-                <ComboBoxItem Content="{x:Static p:Resources.TextTaskbarThemeFluent}"/>
-                <ComboBoxItem Content="{x:Static p:Resources.TextTaskbarThemeColor}" Visibility="Collapsed"/>
-                <ComboBoxItem Content="{x:Static p:Resources.TextTaskbarThemeWallpaper}"/>
-                <ComboBoxItem Content="{x:Static p:Resources.TextTaskbarThemeWallpaperFluent}"/>
+            <TextBlock FontSize="20" Text="{x:Static p:Resources.TitleTaskbarTheme}" />
+            <ComboBox
+                MinWidth="150"
+                Margin="0,5,0,0"
+                SelectedIndex="{Binding SelectedTaskbarThemeIndex, Mode=TwoWay}">
+                <ComboBoxItem Content="{x:Static p:Resources.TextOff}" />
+                <ComboBoxItem Content="{x:Static p:Resources.TextTaskbarThemeClear}" />
+                <ComboBoxItem Content="{x:Static p:Resources.TextTaskbarThemeBlur}" />
+                <ComboBoxItem Content="{x:Static p:Resources.TextTaskbarThemeFluent}" />
+                <ComboBoxItem Content="{x:Static p:Resources.TextTaskbarThemeColor}" Visibility="Collapsed" />
+                <ComboBoxItem Content="{x:Static p:Resources.TextTaskbarThemeWallpaper}" />
+                <ComboBoxItem Content="{x:Static p:Resources.TextTaskbarThemeWallpaperFluent}" />
             </ComboBox>
-            <TextBlock Margin="0,10,0,0" FontSize="12" Foreground="Gray" TextWrapping="Wrap" Text="{x:Static p:Resources.TipTaskbarTheme}"/>
+            <TextBlock
+                Margin="0,10,0,0"
+                FontSize="12"
+                Foreground="Gray"
+                Text="{x:Static p:Resources.TipTaskbarTheme}"
+                TextWrapping="Wrap" />
         </StackPanel>
     </Grid>
 </Page>

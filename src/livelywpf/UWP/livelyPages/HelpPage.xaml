@@ -4,86 +4,230 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
     d:DesignHeight="450"
-    d:DesignWidth="800">
+    d:DesignWidth="800"
+    mc:Ignorable="d">
 
     <Grid>
         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
             <StackPanel>
-                <TextBlock Text="Help" FontWeight="Bold" Margin="10"/>
-                
-                <Button Style="{StaticResource ButtonRevealStyle}" BorderThickness="0" Background="Transparent" MinWidth="450" MaxWidth="450" MinHeight="50" HorizontalContentAlignment="Left" CornerRadius="5" Command="{Binding WebsiteCommand}">
+                <TextBlock
+                    Margin="10"
+                    FontWeight="Bold"
+                    Text="Help" />
+
+                <Button
+                    MinWidth="450"
+                    MinHeight="50"
+                    MaxWidth="450"
+                    HorizontalContentAlignment="Left"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Command="{Binding WebsiteCommand}"
+                    CornerRadius="5"
+                    Style="{StaticResource ButtonRevealStyle}">
                     <StackPanel Orientation="Horizontal">
-                        <FontIcon Glyph="&#xEB41;" Margin="10" FontSize="25" Foreground="{ThemeResource SystemControlHighlightAltListAccentHighBrush}"/>
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" MaxWidth="450">
-                            <TextBlock Text="{x:Bind UIText.TitleWebsite}"/>
-                            <TextBlock Text="{x:Bind UIText.DescWebsite}" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                        <FontIcon
+                            Margin="10"
+                            FontSize="25"
+                            Foreground="{ThemeResource SystemControlHighlightAltListAccentHighBrush}"
+                            Glyph="&#xEB41;" />
+                        <StackPanel
+                            MaxWidth="450"
+                            HorizontalAlignment="Left"
+                            Orientation="Vertical">
+                            <TextBlock Text="{x:Bind UIText.TitleWebsite}" />
+                            <TextBlock
+                                FontSize="12"
+                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
+                                Text="{x:Bind UIText.DescWebsite}"
+                                TextWrapping="Wrap" />
                         </StackPanel>
                     </StackPanel>
                 </Button>
 
-                <Button Style="{StaticResource ButtonRevealStyle}" BorderThickness="0" Background="Transparent" MinWidth="450" MaxWidth="450" MinHeight="50" HorizontalContentAlignment="Left" CornerRadius="5" Command="{Binding DocumentationCommand}">
+                <Button
+                    MinWidth="450"
+                    MinHeight="50"
+                    MaxWidth="450"
+                    HorizontalContentAlignment="Left"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Command="{Binding DocumentationCommand}"
+                    CornerRadius="5"
+                    Style="{StaticResource ButtonRevealStyle}">
                     <StackPanel Orientation="Horizontal">
-                        <FontIcon Glyph="&#xE736;" Margin="10" FontSize="25" Foreground="{ThemeResource SystemControlHighlightAltListAccentHighBrush}"/>
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" MaxWidth="450">
-                            <TextBlock Text="{x:Bind UIText.TitleDocumentation}"/>
-                            <TextBlock Text="{x:Bind UIText.DescDocumentation}" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                        <FontIcon
+                            Margin="10"
+                            FontSize="25"
+                            Foreground="{ThemeResource SystemControlHighlightAltListAccentHighBrush}"
+                            Glyph="&#xE736;" />
+                        <StackPanel
+                            MaxWidth="450"
+                            HorizontalAlignment="Left"
+                            Orientation="Vertical">
+                            <TextBlock Text="{x:Bind UIText.TitleDocumentation}" />
+                            <TextBlock
+                                FontSize="12"
+                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
+                                Text="{x:Bind UIText.DescDocumentation}"
+                                TextWrapping="Wrap" />
                         </StackPanel>
                     </StackPanel>
                 </Button>
 
-                <Button Style="{StaticResource ButtonRevealStyle}" BorderThickness="0" Background="Transparent" MinWidth="450" MaxWidth="450" MinHeight="50" HorizontalContentAlignment="Left" CornerRadius="5" Command="{Binding CommunityCommand}">
+                <Button
+                    MinWidth="450"
+                    MinHeight="50"
+                    MaxWidth="450"
+                    HorizontalContentAlignment="Left"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Command="{Binding CommunityCommand}"
+                    CornerRadius="5"
+                    Style="{StaticResource ButtonRevealStyle}">
                     <StackPanel Orientation="Horizontal">
-                        <FontIcon Glyph="&#xEC27;" Margin="10" FontSize="25" Foreground="{ThemeResource SystemControlHighlightAltListAccentHighBrush}"/>
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" MaxWidth="450">
-                            <TextBlock Text="{x:Bind UIText.TitleCommunity}"/>
-                            <TextBlock Text="{x:Bind UIText.DescCommunity}" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                        <FontIcon
+                            Margin="10"
+                            FontSize="25"
+                            Foreground="{ThemeResource SystemControlHighlightAltListAccentHighBrush}"
+                            Glyph="&#xEC27;" />
+                        <StackPanel
+                            MaxWidth="450"
+                            HorizontalAlignment="Left"
+                            Orientation="Vertical">
+                            <TextBlock Text="{x:Bind UIText.TitleCommunity}" />
+                            <TextBlock
+                                FontSize="12"
+                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
+                                Text="{x:Bind UIText.DescCommunity}"
+                                TextWrapping="Wrap" />
                         </StackPanel>
                     </StackPanel>
                 </Button>
 
-                <Button Style="{StaticResource ButtonRevealStyle}" BorderThickness="0" Background="Transparent" MinWidth="450" MaxWidth="450" MinHeight="50" HorizontalContentAlignment="Left" CornerRadius="5" Command="{Binding BugReportCommand}">
+                <Button
+                    MinWidth="450"
+                    MinHeight="50"
+                    MaxWidth="450"
+                    HorizontalContentAlignment="Left"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Command="{Binding BugReportCommand}"
+                    CornerRadius="5"
+                    Style="{StaticResource ButtonRevealStyle}">
                     <StackPanel Orientation="Horizontal">
-                        <FontIcon Glyph="&#xEBE8;" Margin="10" FontSize="25" Foreground="{ThemeResource SystemControlHighlightAltListAccentHighBrush}"/>
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" MaxWidth="450">
-                            <TextBlock Text="{x:Bind UIText.TitleReportBug}"/>
-                            <TextBlock Text="{x:Bind UIText.DescReportBug}" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                        <FontIcon
+                            Margin="10"
+                            FontSize="25"
+                            Foreground="{ThemeResource SystemControlHighlightAltListAccentHighBrush}"
+                            Glyph="&#xEBE8;" />
+                        <StackPanel
+                            MaxWidth="450"
+                            HorizontalAlignment="Left"
+                            Orientation="Vertical">
+                            <TextBlock Text="{x:Bind UIText.TitleReportBug}" />
+                            <TextBlock
+                                FontSize="12"
+                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
+                                Text="{x:Bind UIText.DescReportBug}"
+                                TextWrapping="Wrap" />
                         </StackPanel>
                     </StackPanel>
                 </Button>
 
-                <Button Style="{StaticResource ButtonRevealStyle}" BorderThickness="0" Background="Transparent" MinWidth="450" MaxWidth="450" MinHeight="50" HorizontalContentAlignment="Left" CornerRadius="5" Command="{Binding SourceCodeCommand}">
+                <Button
+                    MinWidth="450"
+                    MinHeight="50"
+                    MaxWidth="450"
+                    HorizontalContentAlignment="Left"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Command="{Binding SourceCodeCommand}"
+                    CornerRadius="5"
+                    Style="{StaticResource ButtonRevealStyle}">
                     <StackPanel Orientation="Horizontal">
-                        <FontIcon Glyph="&#xE716;" Margin="10" FontSize="25" Foreground="{ThemeResource SystemControlHighlightAltListAccentHighBrush}"/>
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" MaxWidth="450">
-                            <TextBlock Text="{x:Bind UIText.TitleSourceCode}"/>
-                            <TextBlock Text="{x:Bind UIText.DescSourceCode}" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                        <FontIcon
+                            Margin="10"
+                            FontSize="25"
+                            Foreground="{ThemeResource SystemControlHighlightAltListAccentHighBrush}"
+                            Glyph="&#xE716;" />
+                        <StackPanel
+                            MaxWidth="450"
+                            HorizontalAlignment="Left"
+                            Orientation="Vertical">
+                            <TextBlock Text="{x:Bind UIText.TitleSourceCode}" />
+                            <TextBlock
+                                FontSize="12"
+                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
+                                Text="{x:Bind UIText.DescSourceCode}"
+                                TextWrapping="Wrap" />
                         </StackPanel>
                     </StackPanel>
                 </Button>
 
-                <Button Style="{StaticResource ButtonRevealStyle}" BorderThickness="0" Background="Transparent" MinWidth="450" MaxWidth="450" MinHeight="50" HorizontalContentAlignment="Left" CornerRadius="5" Command="{Binding SupportCommand}">
+                <Button
+                    MinWidth="450"
+                    MinHeight="50"
+                    MaxWidth="450"
+                    HorizontalContentAlignment="Left"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Command="{Binding SupportCommand}"
+                    CornerRadius="5"
+                    Style="{StaticResource ButtonRevealStyle}">
                     <StackPanel Orientation="Horizontal">
-                        <FontIcon Glyph="&#xEB68;" Margin="10" FontSize="25" Foreground="{ThemeResource SystemControlHighlightAltListAccentHighBrush}"/>
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" MaxWidth="450">
-                            <TextBlock Text="{x:Bind UIText.TitleSupport}"/>
-                            <TextBlock Text="{x:Bind UIText.DescSupport}" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                        <FontIcon
+                            Margin="10"
+                            FontSize="25"
+                            Foreground="{ThemeResource SystemControlHighlightAltListAccentHighBrush}"
+                            Glyph="&#xEB68;" />
+                        <StackPanel
+                            MaxWidth="450"
+                            HorizontalAlignment="Left"
+                            Orientation="Vertical">
+                            <TextBlock Text="{x:Bind UIText.TitleSupport}" />
+                            <TextBlock
+                                FontSize="12"
+                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
+                                Text="{x:Bind UIText.DescSupport}"
+                                TextWrapping="Wrap" />
                         </StackPanel>
                     </StackPanel>
                 </Button>
-                
-                <!-- Starting in Windows 10, version 1607, the XAML framework provides a built in Boolean to Visibility converter.-->
-                <Button Visibility="{Binding Path=IsWinStore}" Style="{StaticResource ButtonRevealStyle}" BorderThickness="0" Background="Transparent" MinWidth="450" MaxWidth="450" MinHeight="50" HorizontalContentAlignment="Left" CornerRadius="5" Command="{Binding MSReviewCommand}">
+
+                <!--  Starting in Windows 10, version 1607, the XAML framework provides a built in Boolean to Visibility converter.  -->
+                <Button
+                    MinWidth="450"
+                    MinHeight="50"
+                    MaxWidth="450"
+                    HorizontalContentAlignment="Left"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Command="{Binding MSReviewCommand}"
+                    CornerRadius="5"
+                    Style="{StaticResource ButtonRevealStyle}"
+                    Visibility="{Binding Path=IsWinStore}">
                     <StackPanel Orientation="Horizontal">
-                        <FontIcon Glyph="&#xEB68;" Margin="10" FontSize="25" Foreground="{ThemeResource SystemControlHighlightAltListAccentHighBrush}"/>
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" MaxWidth="450">
-                            <TextBlock Text="{x:Bind UIText.TitleStoreReview}"/>
-                            <TextBlock Text="{x:Bind UIText.DescStoreReview}" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                        <FontIcon
+                            Margin="10"
+                            FontSize="25"
+                            Foreground="{ThemeResource SystemControlHighlightAltListAccentHighBrush}"
+                            Glyph="&#xEB68;" />
+                        <StackPanel
+                            MaxWidth="450"
+                            HorizontalAlignment="Left"
+                            Orientation="Vertical">
+                            <TextBlock Text="{x:Bind UIText.TitleStoreReview}" />
+                            <TextBlock
+                                FontSize="12"
+                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
+                                Text="{x:Bind UIText.DescStoreReview}"
+                                TextWrapping="Wrap" />
                         </StackPanel>
                     </StackPanel>
                 </Button>
-                
+
             </StackPanel>
         </ScrollViewer>
     </Grid>

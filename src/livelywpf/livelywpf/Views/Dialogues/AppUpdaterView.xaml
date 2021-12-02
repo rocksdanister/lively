@@ -1,33 +1,48 @@
-﻿<Window x:Class="livelywpf.Views.Dialogues.AppUpdaterView"
-        xmlns:ui="http://schemas.modernwpf.com/2019"
-        ui:WindowHelper.UseModernWindowStyle="True"
-        ui:TitleBar.ExtendViewIntoTitleBar="False"
-        ui:ThemeManager.IsThemeAware="True"        
-        ui:TitleBar.IsIconVisible="True"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:livelywpf.Views"
-        xmlns:p = "clr-namespace:livelywpf.Properties"       
-        mc:Ignorable="d"
-        Title="{x:Static p:Resources.TextUpdateAvailable}" Height="700" Width="650"
-        Closing="Window_Closing"
-        ResizeMode="CanMinimize"
-        WindowStyle="SingleBorderWindow"
-        BorderBrush="{DynamicResource SystemControlHighlightAltListAccentHighBrush}">
+﻿<Window
+    x:Class="livelywpf.Views.Dialogues.AppUpdaterView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:livelywpf.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:p="clr-namespace:livelywpf.Properties"
+    xmlns:ui="http://schemas.modernwpf.com/2019"
+    Title="{x:Static p:Resources.TextUpdateAvailable}"
+    Width="650"
+    Height="700"
+    ui:ThemeManager.IsThemeAware="True"
+    ui:TitleBar.ExtendViewIntoTitleBar="False"
+    ui:TitleBar.IsIconVisible="True"
+    ui:WindowHelper.UseModernWindowStyle="True"
+    BorderBrush="{DynamicResource SystemControlHighlightAltListAccentHighBrush}"
+    Closing="Window_Closing"
+    ResizeMode="CanMinimize"
+    WindowStyle="SingleBorderWindow"
+    mc:Ignorable="d">
     <Window.TaskbarItemInfo>
-        <TaskbarItemInfo x:Name="taskbarItemInfo" ProgressState="None"/>
+        <TaskbarItemInfo x:Name="taskbarItemInfo" ProgressState="None" />
     </Window.TaskbarItemInfo>
     <Grid>
-        <StackPanel Margin="10, 10, 10, 10">
-            <RichTextBox x:Name="changelog" MaxHeight="550" MinHeight="550" IsReadOnly="True"/>
-            <ui:ProgressBar Name="progressBar" MinHeight="10" Margin="0, 10, 0, 0"/>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+        <StackPanel Margin="10,10,10,10">
+            <RichTextBox
+                x:Name="changelog"
+                MinHeight="550"
+                MaxHeight="550"
+                IsReadOnly="True" />
+            <ui:ProgressBar
+                Name="progressBar"
+                MinHeight="10"
+                Margin="0,10,0,0" />
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                 <TextBlock x:Name="sizeTxt">-</TextBlock>
                 <TextBlock x:Name="totalSizeTxt">/- MB</TextBlock>
             </StackPanel>
-            <Button Name="downloadBtn" HorizontalAlignment="Center" Click="Download_Button_Click" Margin="0, 10, 0, 0" Content="{x:Static p:Resources.TextDownload}"/> 
+            <Button
+                Name="downloadBtn"
+                Margin="0,10,0,0"
+                HorizontalAlignment="Center"
+                Click="Download_Button_Click"
+                Content="{x:Static p:Resources.TextDownload}" />
         </StackPanel>
     </Grid>
 </Window>

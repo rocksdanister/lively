@@ -4,26 +4,43 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
     d:DesignHeight="400"
-    d:DesignWidth="400">
+    d:DesignWidth="400"
+    mc:Ignorable="d">
 
-    <Grid BorderBrush="{ThemeResource SystemBaseLowColor}" BorderThickness="1" Background="{ThemeResource SystemListLowColor}">
-        <GridView HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="GridControl" Margin="5, 5, 5, 5"
-                  ItemsSource= "{Binding ScreenItems}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" >
+    <Grid
+        Background="{ThemeResource SystemListLowColor}"
+        BorderBrush="{ThemeResource SystemBaseLowColor}"
+        BorderThickness="1">
+        <GridView
+            x:Name="GridControl"
+            Margin="5,5,5,5"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            ItemsSource="{Binding ScreenItems}"
+            SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
             <GridView.ItemTemplate>
-                <DataTemplate >
-                    <Grid Width="192" Height="108" Background="{ThemeResource SystemBaseLowColor}">
-                        <Image Source="{Binding ScreenImagePath}" Stretch="UniformToFill" Opacity="0.50"/>
+                <DataTemplate>
+                    <Grid
+                        Width="192"
+                        Height="108"
+                        Background="{ThemeResource SystemBaseLowColor}">
+                        <Image
+                            Opacity="0.50"
+                            Source="{Binding ScreenImagePath}"
+                            Stretch="UniformToFill" />
                         <Viewbox Width="192" Height="108">
-                            <TextBlock Text="{Binding ScreenTitle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Text="{Binding ScreenTitle}" />
                         </Viewbox>
                     </Grid>
                 </DataTemplate>
             </GridView.ItemTemplate>
             <GridView.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <ItemsWrapGrid Name="GridWrap" Orientation="Horizontal"/>
+                    <ItemsWrapGrid Name="GridWrap" Orientation="Horizontal" />
                 </ItemsPanelTemplate>
             </GridView.ItemsPanel>
         </GridView>
