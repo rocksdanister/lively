@@ -37,7 +37,7 @@ namespace livelywpf.Core
         private bool _isInitialized = false;
         private bool disposedValue;
         private readonly List<IWallpaper> wallpapersPending = new List<IWallpaper>(2);
-        private readonly List<WallpaperLayoutModel> wallpapersDisconnected = new List<WallpaperLayoutModel>();
+        private readonly List<IWallpaperLayoutModel> wallpapersDisconnected = new List<IWallpaperLayoutModel>();
 
         public event EventHandler WallpaperChanged;
         public event EventHandler WallpaperReset;
@@ -614,40 +614,39 @@ namespace livelywpf.Core
             //WallpaperReset?.Invoke(this, EventArgs.Empty);
         }
 
-        static readonly object _layoutWriteLock = new object();
         private void SetupDesktop_WallpaperChanged(object sender, EventArgs e)
+        {
+            SaveWallpaperLayout();
+        }
+
+        static readonly object _layoutWriteLock = new object();
+        private void SaveWallpaperLayout()
         {
             lock (_layoutWriteLock)
             {
-                SaveWallpaperLayout();
-            }
-        }
-
-        private void SaveWallpaperLayout()
-        {
-            var layout = new List<WallpaperLayoutModel>();
-            wallpapers.ForEach(wallpaper =>
-            {
-                layout.Add(new WallpaperLayoutModel(
-                        (LivelyScreen)wallpaper.Screen,
-                        wallpaper.Model.LivelyInfoFolderPath));
-            });
-            if (userSettings.Settings.WallpaperArrangement == WallpaperArrangement.per)
-            {
-                layout.AddRange(wallpapersDisconnected);
-            }
-            /*
-            layout.AddRange(wallpapersDisconnected.Except(wallpapersDisconnected.FindAll(
-                layout => Wallpapers.FirstOrDefault(wp => ScreenHelper.ScreenCompare(layout.LivelyScreen, wp.GetScreen(), DisplayIdentificationMode.deviceId)) != null)));
-            */
-
-            try
-            {
-                JsonStorage<List<WallpaperLayoutModel>>.StoreData(Constants.CommonPaths.WallpaperLayoutPath, layout);
-            }
-            catch (Exception e)
-            {
-                Logger.Error(e.ToString());
+                userSettings.WallpaperLayout.Clear();
+                wallpapers.ForEach(wallpaper =>
+                {
+                    userSettings.WallpaperLayout.Add(new WallpaperLayoutModel(
+                            (LivelyScreen)wallpaper.Screen,
+                            wallpaper.Model.LivelyInfoFolderPath));
+                });
+                if (userSettings.Settings.WallpaperArrangement == WallpaperArrangement.per)
+                {
+                    userSettings.WallpaperLayout.AddRange(wallpapersDisconnected);
+                }
+                /*
+                layout.AddRange(wallpapersDisconnected.Except(wallpapersDisconnected.FindAll(
+                    layout => Wallpapers.FirstOrDefault(wp => ScreenHelper.ScreenCompare(layout.LivelyScreen, wp.GetScreen(), DisplayIdentificationMode.deviceId)) != null)));
+                */
+                try
+                {
+                    userSettings.Save<List<IWallpaperLayoutModel>>();
+                }
+                catch (Exception e)
+                {
+                    Logger.Error(e.ToString());
+                }
             }
         }
 
@@ -816,44 +815,14 @@ namespace livelywpf.Core
             }
         }
 
-        private async Task RestoreWallpaperFromLayout(string wallpaperLayoutPath)
-        {
-            try
-            {
-                var wallpaperLayout = JsonStorage<List<WallpaperLayoutModel>>.LoadData(wallpaperLayoutPath);
-                if (userSettings.Settings.WallpaperArrangement == WallpaperArrangement.span ||
-                    userSettings.Settings.WallpaperArrangement == WallpaperArrangement.duplicate)
-                {
-                    if (wallpaperLayout.Count != 0)
-                    {
-                        await System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
-                        {
-                            var libraryItem = App.Services.GetRequiredService<LibraryViewModel>().LibraryItems.FirstOrDefault(x => x.LivelyInfoFolderPath.Equals(wallpaperLayout[0].LivelyInfoPath));
-                            if (libraryItem != null)
-                            {
-                                SetWallpaper(libraryItem, ScreenHelper.GetPrimaryScreen());
-                            }
-                        }));
-                    }
-                }
-                else if (userSettings.Settings.WallpaperArrangement == WallpaperArrangement.per)
-                {
-                    await RestoreWallpaper(wallpaperLayout);
-                }
-            }
-            catch (Exception e)
-            {
-                Logger.Error("Failed to restore wallpaper: " + e.ToString());
-            }
-        }
-
-        private async Task RestoreWallpaper(List<WallpaperLayoutModel> wallpaperLayout)
+        private async Task RestoreWallpaper(List<IWallpaperLayoutModel> wallpaperLayout)
         {
             await System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
             {
                 foreach (var layout in wallpaperLayout)
                 {
-                    var libraryItem = App.Services.GetRequiredService<LibraryViewModel>().LibraryItems.FirstOrDefault(x => x.LivelyInfoFolderPath.Equals(layout.LivelyInfoPath));
+                    var library = App.Services.GetRequiredService<LibraryViewModel>();
+                    var libraryItem = library.LibraryItems.FirstOrDefault(x => x.LivelyInfoFolderPath.Equals(layout.LivelyInfoPath));
                     var screen = ScreenHelper.GetScreen(layout.LivelyScreen.DeviceId, layout.LivelyScreen.DeviceName,
                         layout.LivelyScreen.Bounds, layout.LivelyScreen.WorkingArea, DisplayIdentificationMode.deviceId);
                     if (libraryItem == null)
@@ -885,7 +854,34 @@ namespace livelywpf.Core
         /// </summary>
         public void RestoreWallpaper()
         {
-            _ = RestoreWallpaperFromLayout(Constants.CommonPaths.WallpaperLayoutPath);
+            try
+            {
+                var wallpaperLayout = userSettings.WallpaperLayout;
+                if (userSettings.Settings.WallpaperArrangement == WallpaperArrangement.span ||
+                    userSettings.Settings.WallpaperArrangement == WallpaperArrangement.duplicate)
+                {
+                    if (wallpaperLayout.Count != 0)
+                    {
+                        _ = System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
+                        {
+                            var library = App.Services.GetRequiredService<LibraryViewModel>();
+                            var libraryItem = library.LibraryItems.FirstOrDefault(x => x.LivelyInfoFolderPath.Equals(wallpaperLayout[0].LivelyInfoPath));
+                            if (libraryItem != null)
+                            {
+                                SetWallpaper(libraryItem, ScreenHelper.GetPrimaryScreen());
+                            }
+                        }));
+                    }
+                }
+                else if (userSettings.Settings.WallpaperArrangement == WallpaperArrangement.per)
+                {
+                    _ = RestoreWallpaper(wallpaperLayout);
+                }
+            }
+            catch (Exception e)
+            {
+                Logger.Error($"Failed to restore wallpaper: {e}");
+            }
         }
 
         public void CloseAllWallpapers(bool terminate = false)
