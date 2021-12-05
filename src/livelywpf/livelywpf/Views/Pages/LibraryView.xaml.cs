@@ -138,7 +138,7 @@ namespace livelywpf.Views.Pages
                                 Type = Properties.Resources.TextWallpaperType,
                             },
                         };
-                        var result = await DialogService.ShowConfirmationDialog(
+                        var result = await Dialogs.ShowConfirmationDialog(
                             obj.LivelyInfo.IsAbsolutePath ?
                                 Properties.Resources.DescriptionDeleteConfirmationLibrary : Properties.Resources.DescriptionDeleteConfirmation,
                             deleteView,
@@ -184,7 +184,7 @@ namespace livelywpf.Views.Pages
                                 Type = Properties.Resources.TextWallpaperType,
                             },
                         };
-                        await DialogService.ShowConfirmationDialog(
+                        await Dialogs.ShowConfirmationDialog(
                             Properties.Resources.TitleAbout,
                             infoView,
                             ((UIElement)sender).XamlRoot,
@@ -259,7 +259,7 @@ namespace livelywpf.Views.Pages
                             case WallpaperType.unityaudio:
                                 {
                                     //Show warning before proceeding..
-                                    var result = await DialogService.ShowConfirmationDialog(
+                                    var result = await Dialogs.ShowConfirmationDialog(
                                          Properties.Resources.TitlePleaseWait,
                                          Properties.Resources.DescriptionExternalAppWarning,
                                          ((UIElement)sender).XamlRoot,
@@ -304,7 +304,7 @@ namespace livelywpf.Views.Pages
                                     }
                                     else
                                     {
-                                        await DialogService.ShowConfirmationDialog(
+                                        await Dialogs.ShowConfirmationDialog(
                                           Properties.Resources.TextError,
                                           Properties.Resources.LivelyExceptionNotLivelyZip,
                                           ((UIElement)sender).XamlRoot,
@@ -314,7 +314,7 @@ namespace livelywpf.Views.Pages
                                 break;
                             case (WallpaperType)(-1):
                                 {
-                                    await DialogService.ShowConfirmationDialog(
+                                    await Dialogs.ShowConfirmationDialog(
                                         Properties.Resources.TextError,
                                         Properties.Resources.TextUnsupportedFile + " (" + Path.GetExtension(item) + ")",
                                         ((UIElement)sender).XamlRoot,

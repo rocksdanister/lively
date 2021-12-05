@@ -998,7 +998,7 @@ namespace livelywpf.ViewModels
                 if (_extractLogCommand == null)
                 {
                     _extractLogCommand = new RelayCommand(
-                            param => NLogger.ExtractLogFiles()
+                            param => LogUtil.ExtractLogFiles()
                         );
                 }
                 return _extractLogCommand;

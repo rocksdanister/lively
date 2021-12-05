@@ -36,7 +36,7 @@ namespace livelywpf.Core
         private bool _isInitialized = false;
         private bool disposedValue;
         private readonly List<IWallpaper> wallpapersPending = new List<IWallpaper>(2);
-        private readonly List<WallpaperLayoutModel> wallpapersDisconnected = new List<WallpaperLayoutModel>();
+        private readonly List<IWallpaperLayoutModel> wallpapersDisconnected = new List<IWallpaperLayoutModel>();
 
         public event EventHandler WallpaperChanged;
         public event EventHandler WallpaperReset;
@@ -518,7 +518,7 @@ namespace livelywpf.Core
             //Position the wp fullscreen to corresponding display.
             if (!NativeMethods.SetWindowPos(handle, 1, targetDisplay.Bounds.X, targetDisplay.Bounds.Y, (targetDisplay.Bounds.Width), (targetDisplay.Bounds.Height), 0x0010))
             {
-                NLogger.LogWin32Error("Failed to set perscreen wallpaper(1)");
+                LogUtil.LogWin32Error("Failed to set perscreen wallpaper(1)");
             }
 
             NativeMethods.MapWindowPoints(handle, workerw, ref prct, 2);
@@ -526,7 +526,7 @@ namespace livelywpf.Core
             //Position the wp window relative to the new parent window(workerw).
             if (!NativeMethods.SetWindowPos(handle, 1, prct.Left, prct.Top, (targetDisplay.Bounds.Width), (targetDisplay.Bounds.Height), 0x0010))
             {
-                NLogger.LogWin32Error("Failed to set perscreen wallpaper(2)");
+                LogUtil.LogWin32Error("Failed to set perscreen wallpaper(2)");
             }
 
             //SetFocusMainApp();
@@ -546,7 +546,7 @@ namespace livelywpf.Core
             Logger.Info($"Sending wallpaper(Span): ({prct.Left}, {prct.Top}, {prct.Right - prct.Left}, {prct.Bottom - prct.Top}).");
             if (!NativeMethods.SetWindowPos(handle, 1, 0, 0, prct.Right - prct.Left, prct.Bottom - prct.Top, 0x0010))
             {
-                NLogger.LogWin32Error("Failed to set span wallpaper");
+                LogUtil.LogWin32Error("Failed to set span wallpaper");
             }
 
             //SetFocusMainApp();
@@ -613,40 +613,39 @@ namespace livelywpf.Core
             //WallpaperReset?.Invoke(this, EventArgs.Empty);
         }
 
-        static readonly object _layoutWriteLock = new object();
         private void SetupDesktop_WallpaperChanged(object sender, EventArgs e)
+        {
+            SaveWallpaperLayout();
+        }
+
+        static readonly object _layoutWriteLock = new object();
+        private void SaveWallpaperLayout()
         {
             lock (_layoutWriteLock)
             {
-                SaveWallpaperLayout();
-            }
-        }
-
-        private void SaveWallpaperLayout()
-        {
-            var layout = new List<WallpaperLayoutModel>();
-            wallpapers.ForEach(wallpaper =>
-            {
-                layout.Add(new WallpaperLayoutModel(
-                        (LivelyScreen)wallpaper.Screen,
-                        wallpaper.Model.LivelyInfoFolderPath));
-            });
-            if (userSettings.Settings.WallpaperArrangement == WallpaperArrangement.per)
-            {
-                layout.AddRange(wallpapersDisconnected);
-            }
-            /*
-            layout.AddRange(wallpapersDisconnected.Except(wallpapersDisconnected.FindAll(
-                layout => Wallpapers.FirstOrDefault(wp => ScreenHelper.ScreenCompare(layout.LivelyScreen, wp.GetScreen(), DisplayIdentificationMode.deviceId)) != null)));
-            */
-
-            try
-            {
-                JsonStorage<List<WallpaperLayoutModel>>.StoreData(Constants.CommonPaths.WallpaperLayoutPath, layout);
-            }
-            catch (Exception e)
-            {
-                Logger.Error(e.ToString());
+                userSettings.WallpaperLayout.Clear();
+                wallpapers.ForEach(wallpaper =>
+                {
+                    userSettings.WallpaperLayout.Add(new WallpaperLayoutModel(
+                            (LivelyScreen)wallpaper.Screen,
+                            wallpaper.Model.LivelyInfoFolderPath));
+                });
+                if (userSettings.Settings.WallpaperArrangement == WallpaperArrangement.per)
+                {
+                    userSettings.WallpaperLayout.AddRange(wallpapersDisconnected);
+                }
+                /*
+                layout.AddRange(wallpapersDisconnected.Except(wallpapersDisconnected.FindAll(
+                    layout => Wallpapers.FirstOrDefault(wp => ScreenHelper.ScreenCompare(layout.LivelyScreen, wp.GetScreen(), DisplayIdentificationMode.deviceId)) != null)));
+                */
+                try
+                {
+                    userSettings.Save<List<IWallpaperLayoutModel>>();
+                }
+                catch (Exception e)
+                {
+                    Logger.Error(e.ToString());
+                }
             }
         }
 
@@ -770,7 +769,7 @@ namespace livelywpf.Core
                                                         (screen.Bounds.Height),
                                                         0x0010))
                         {
-                            NLogger.LogWin32Error("Failed to update wallpaper rect");
+                            LogUtil.LogWin32Error("Failed to update wallpaper rect");
                         }
                     }
                 }
@@ -815,44 +814,14 @@ namespace livelywpf.Core
             }
         }
 
-        private async Task RestoreWallpaperFromLayout(string wallpaperLayoutPath)
-        {
-            try
-            {
-                var wallpaperLayout = JsonStorage<List<WallpaperLayoutModel>>.LoadData(wallpaperLayoutPath);
-                if (userSettings.Settings.WallpaperArrangement == WallpaperArrangement.span ||
-                    userSettings.Settings.WallpaperArrangement == WallpaperArrangement.duplicate)
-                {
-                    if (wallpaperLayout.Count != 0)
-                    {
-                        await System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
-                        {
-                            var libraryItem = App.Services.GetRequiredService<LibraryViewModel>().LibraryItems.FirstOrDefault(x => x.LivelyInfoFolderPath.Equals(wallpaperLayout[0].LivelyInfoPath));
-                            if (libraryItem != null)
-                            {
-                                SetWallpaper(libraryItem, ScreenHelper.GetPrimaryScreen());
-                            }
-                        }));
-                    }
-                }
-                else if (userSettings.Settings.WallpaperArrangement == WallpaperArrangement.per)
-                {
-                    await RestoreWallpaper(wallpaperLayout);
-                }
-            }
-            catch (Exception e)
-            {
-                Logger.Error("Failed to restore wallpaper: " + e.ToString());
-            }
-        }
-
-        private async Task RestoreWallpaper(List<WallpaperLayoutModel> wallpaperLayout)
+        private async Task RestoreWallpaper(List<IWallpaperLayoutModel> wallpaperLayout)
         {
             await System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
             {
                 foreach (var layout in wallpaperLayout)
                 {
-                    var libraryItem = App.Services.GetRequiredService<LibraryViewModel>().LibraryItems.FirstOrDefault(x => x.LivelyInfoFolderPath.Equals(layout.LivelyInfoPath));
+                    var library = App.Services.GetRequiredService<LibraryViewModel>();
+                    var libraryItem = library.LibraryItems.FirstOrDefault(x => x.LivelyInfoFolderPath.Equals(layout.LivelyInfoPath));
                     var screen = ScreenHelper.GetScreen(layout.LivelyScreen.DeviceId, layout.LivelyScreen.DeviceName,
                         layout.LivelyScreen.Bounds, layout.LivelyScreen.WorkingArea, DisplayIdentificationMode.deviceId);
                     if (libraryItem == null)
@@ -884,7 +853,34 @@ namespace livelywpf.Core
         /// </summary>
         public void RestoreWallpaper()
         {
-            _ = RestoreWallpaperFromLayout(Constants.CommonPaths.WallpaperLayoutPath);
+            try
+            {
+                var wallpaperLayout = userSettings.WallpaperLayout;
+                if (userSettings.Settings.WallpaperArrangement == WallpaperArrangement.span ||
+                    userSettings.Settings.WallpaperArrangement == WallpaperArrangement.duplicate)
+                {
+                    if (wallpaperLayout.Count != 0)
+                    {
+                        _ = System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
+                        {
+                            var library = App.Services.GetRequiredService<LibraryViewModel>();
+                            var libraryItem = library.LibraryItems.FirstOrDefault(x => x.LivelyInfoFolderPath.Equals(wallpaperLayout[0].LivelyInfoPath));
+                            if (libraryItem != null)
+                            {
+                                SetWallpaper(libraryItem, ScreenHelper.GetPrimaryScreen());
+                            }
+                        }));
+                    }
+                }
+                else if (userSettings.Settings.WallpaperArrangement == WallpaperArrangement.per)
+                {
+                    _ = RestoreWallpaper(wallpaperLayout);
+                }
+            }
+            catch (Exception e)
+            {
+                Logger.Error($"Failed to restore wallpaper: {e}");
+            }
         }
 
         public void CloseAllWallpapers(bool terminate = false)
@@ -1112,7 +1108,7 @@ namespace livelywpf.Core
                 IntPtr ret = NativeMethods.SetParent(windowHandle, progman);
                 if (ret.Equals(IntPtr.Zero))
                 {
-                    NLogger.LogWin32Error("Failed to set window parent");
+                    LogUtil.LogWin32Error("Failed to set window parent");
                     throw new Exception("Failed to set window parent.");
                 }
                 //workerw is assumed as progman in win7, this is untested with all fn's: addwallpaper(), wp pause, resize events.. 
@@ -1123,7 +1119,7 @@ namespace livelywpf.Core
                 IntPtr ret = NativeMethods.SetParent(windowHandle, workerw);
                 if (ret.Equals(IntPtr.Zero))
                 {
-                    NLogger.LogWin32Error("Failed to set window parent");
+                    LogUtil.LogWin32Error("Failed to set window parent");
                     throw new Exception("Failed to set window parent.");
                 }
             }

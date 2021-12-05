@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <None Remove="Helpers\DesktopWallpaper.cs~RF689195a.TMP" />
+    <None Remove="Nlog.config" />
     <None Remove="Resources\appicon_96.png" />
     <None Remove="Resources\icons8-helping-hand-96.png" />
     <None Remove="Resources\tutorial_systray.png" />
@@ -121,6 +122,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="bundle\**">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Nlog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

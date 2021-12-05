@@ -167,7 +167,7 @@ namespace livelywpf.Services
             //Update preview size and position.
             if (!NativeMethods.SetWindowPos(previewHandle, 1, 0, 0, prct.Right - prct.Left, prct.Bottom - prct.Top, 0x0010))
             {
-                NLogger.LogWin32Error("Failed to set screensaver preview");
+                LogUtil.LogWin32Error("Failed to set screensaver preview");
             }
         }
 
@@ -194,7 +194,7 @@ namespace livelywpf.Services
                     0,
                     0x0001))
                 {
-                    NLogger.LogWin32Error("Failed to show screensaver");
+                    LogUtil.LogWin32Error("Failed to show screensaver");
                 }
             }
         }
@@ -214,7 +214,7 @@ namespace livelywpf.Services
                     //fill wp into the whole workerw area.
                     if (!NativeMethods.SetWindowPos(desktopCore.Wallpapers[0].Handle, 1, 0, 0, prct.Right - prct.Left, prct.Bottom - prct.Top, 0x0010))
                     {
-                        NLogger.LogWin32Error("Failed to hide screensaver(1)");
+                        LogUtil.LogWin32Error("Failed to hide screensaver(1)");
                     }
                 }
             }
@@ -225,7 +225,7 @@ namespace livelywpf.Services
                     //update position & size incase window is moved.
                     if (!NativeMethods.SetWindowPos(item.Handle, 1, item.Screen.Bounds.Left, item.Screen.Bounds.Top, item.Screen.Bounds.Width, item.Screen.Bounds.Height, 0x0010))
                     {
-                        NLogger.LogWin32Error("Failed to hide screensaver(2)");
+                        LogUtil.LogWin32Error("Failed to hide screensaver(2)");
                     }
                     //re-calcuate position on desktop workerw.
                     NativeMethods.RECT prct = new NativeMethods.RECT();
@@ -235,7 +235,7 @@ namespace livelywpf.Services
                     //update position & size on desktop workerw.
                     if (!NativeMethods.SetWindowPos(item.Handle, 1, prct.Left, prct.Top, item.Screen.Bounds.Width, item.Screen.Bounds.Height, 0x0010))
                     {
-                        NLogger.LogWin32Error("Failed to hide screensaver(3)");
+                        LogUtil.LogWin32Error("Failed to hide screensaver(3)");
                     }
                 }
             }
