@@ -11,7 +11,7 @@ namespace livelywpf.Helpers.MVVM
     /// <summary>
     /// UWP ContentDialog
     /// </summary>
-    public static class DialogService
+    public static class Dialogs
     {
         public static async Task<wuxc.ContentDialogResult> ShowConfirmationDialog(string title, string message, XamlRoot xamlRoot,
             string primaryBtnText, string secondaryBtnText = null, wuxc.ContentDialogButton defaultBtn = wuxc.ContentDialogButton.Primary)

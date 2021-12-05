@@ -116,10 +116,9 @@ namespace livelywpf
                 Program.ExitApplication();
             }
 
-            //Setting up logging.
-            NLogger.SetupNLog();
+            //Initial logging.
             SetupUnhandledExceptionLogging();
-            NLogger.LogHardwareInfo();
+            LogUtil.LogHardwareInfo();
 
             //clear temp files if any.
             FileOperations.EmptyDirectory(Constants.CommonPaths.TempDir);

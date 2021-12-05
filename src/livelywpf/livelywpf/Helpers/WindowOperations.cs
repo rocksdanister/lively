@@ -126,7 +126,7 @@ namespace livelywpf.Helpers
 
             if (!NativeMethods.SetWindowPos(pgmHandle, 1, (int)reviewPanel.Left, (int)reviewPanel.Top, (int)reviewPanel.Width, (int)reviewPanel.Height, 0 | 0x0010))
             {
-                NLogger.LogWin32Error("Failed to set window as parent to framework(1)");
+                LogUtil.LogWin32Error("Failed to set window as parent to framework(1)");
             }
 
             //ScreentoClient is no longer used, this supports windows mirrored mode also, calculate new relative position of window w.r.t parent.
@@ -137,7 +137,7 @@ namespace livelywpf.Helpers
             //Position the wp window relative to the new parent window(workerw).
             if (!NativeMethods.SetWindowPos(pgmHandle, 1, prct.Left, prct.Top, (int)reviewPanel.Width, (int)reviewPanel.Height, 0 | 0x0010))
             {
-                NLogger.LogWin32Error("Failed to set window as parent to framework(2)");
+                LogUtil.LogWin32Error("Failed to set window as parent to framework(2)");
             }
         }
 
@@ -146,7 +146,7 @@ namespace livelywpf.Helpers
             IntPtr ret = NativeMethods.SetParent(child, parent);
             if (ret.Equals(IntPtr.Zero))
             {
-                NLogger.LogWin32Error("Failed to set window parent");
+                LogUtil.LogWin32Error("Failed to set window parent");
             }
         }
 
@@ -190,12 +190,12 @@ namespace livelywpf.Helpers
             // update window styles
             if (NativeMethods.SetWindowLongPtr(new HandleRef(null, handle), (int)NativeMethods.GWL.GWL_STYLE, (IntPtr)styleNewWindowStandard) == IntPtr.Zero)
             {
-                NLogger.LogWin32Error("Failed to modify window style(1)");
+                LogUtil.LogWin32Error("Failed to modify window style(1)");
             }
 
             if (NativeMethods.SetWindowLongPtr(new HandleRef(null, handle), (int)NativeMethods.GWL.GWL_EXSTYLE, (IntPtr)styleNewWindowExtended) == IntPtr.Zero)
             {
-                NLogger.LogWin32Error("Failed to modify window style(2)");
+                LogUtil.LogWin32Error("Failed to modify window style(2)");
             }
 
             // remove the menu and menuitems and force a redraw
@@ -230,7 +230,7 @@ namespace livelywpf.Helpers
             NativeMethods.ShowWindow(handle, (int)NativeMethods.SHOWWINDOW.SW_HIDE);
             if (NativeMethods.SetWindowLongPtr(new HandleRef(null, handle), (int)NativeMethods.GWL.GWL_EXSTYLE, (IntPtr)styleNewWindowExtended) == IntPtr.Zero)
             {
-                NLogger.LogWin32Error("Failed to modify window style");
+                LogUtil.LogWin32Error("Failed to modify window style");
             }
             NativeMethods.ShowWindow(handle, (int)NativeMethods.SHOWWINDOW.SW_SHOW);
         }
