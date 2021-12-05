@@ -244,7 +244,7 @@ namespace livelywpf.Views
                         case WallpaperType.unityaudio:
                             {
                                 //Show warning before proceeding..
-                                var result = await DialogService.ShowConfirmationDialog(
+                                var result = await Dialogs.ShowConfirmationDialog(
                                      Properties.Resources.TitlePleaseWait,
                                      Properties.Resources.DescriptionExternalAppWarning,
                                      Properties.Resources.TextYes,
@@ -252,7 +252,7 @@ namespace livelywpf.Views
 
                                 if (result == ContentDialogResult.Primary)
                                 {
-                                    var txtInput = await DialogService.ShowTextInputDialog(
+                                    var txtInput = await Dialogs.ShowTextInputDialog(
                                         Properties.Resources.TextWallpaperCommandlineArgs,
                                         Properties.Resources.TextOK);
 
@@ -273,7 +273,7 @@ namespace livelywpf.Views
                                 }
                                 else
                                 {
-                                    await DialogService.ShowConfirmationDialog(Properties.Resources.TextError,
+                                    await Dialogs.ShowConfirmationDialog(Properties.Resources.TextError,
                                         Properties.Resources.LivelyExceptionNotLivelyZip,
                                         Properties.Resources.TextOK);
                                 }
@@ -281,7 +281,7 @@ namespace livelywpf.Views
                             break;
                         case (WallpaperType)(-1):
                             {
-                                await DialogService.ShowConfirmationDialog(
+                                await Dialogs.ShowConfirmationDialog(
                                     Properties.Resources.TextError,
                                     Properties.Resources.TextUnsupportedFile + " (" + Path.GetExtension(item) + ")",
                                     Properties.Resources.TextClose);

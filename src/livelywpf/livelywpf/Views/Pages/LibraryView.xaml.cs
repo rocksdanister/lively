@@ -121,7 +121,7 @@ namespace livelywpf.Views.Pages
                     };
                     var deleteFrame = new ModernWpf.Controls.Frame();
                     deleteFrame.Navigate(deleteView);
-                    var result = await DialogService.ShowConfirmationDialog(
+                    var result = await Dialogs.ShowConfirmationDialog(
                         (obj.LivelyInfo.IsAbsolutePath ?
                             Properties.Resources.DescriptionDeleteConfirmationLibrary : Properties.Resources.DescriptionDeleteConfirmation),
                         deleteFrame,
@@ -146,7 +146,7 @@ namespace livelywpf.Views.Pages
                         HorizontalAlignment = HorizontalAlignment.Center
                     };
                     scv.Content = customiseFrame;
-                    await DialogService.ShowConfirmationDialog(
+                    await Dialogs.ShowConfirmationDialog(
                         obj.Title.Length > 35 ? obj.Title.Substring(0, 35) + "..." : obj.Title,
                         scv,
                         Properties.Resources.TextClose);
@@ -164,7 +164,7 @@ namespace livelywpf.Views.Pages
                     };
                     var aboutFrame = new ModernWpf.Controls.Frame();
                     aboutFrame.Navigate(aboutView);
-                    await DialogService.ShowConfirmationDialog(
+                    await Dialogs.ShowConfirmationDialog(
                         Properties.Resources.TitleAbout,
                         aboutFrame,
                         Properties.Resources.TextOK);
