@@ -23,6 +23,7 @@ namespace livelywpf.Views
     public partial class WndProcMsgWindow : Window
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+        private readonly int WM_TASKBARCREATED = NativeMethods.RegisterWindowMessage("TaskbarCreated");
         private int prevExplorerPid = GetTaskbarExplorerPid();
         private DateTime prevCrashTime = DateTime.MinValue;
         private readonly IDesktopCore desktopCore;
@@ -47,12 +48,7 @@ namespace livelywpf.Views
         //TODO: create event instead?
         private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
-            if (msg == NativeMethods.WM_SHOWLIVELY)
-            {
-                Logger.Info("WM_SHOWLIVELY msg received.");
-                Program.ShowMainWindow();
-            }
-            else if (msg == NativeMethods.WM_TASKBARCREATED)
+            if (msg == WM_TASKBARCREATED)
             {
                 Logger.Info("WM_TASKBARCREATED: New taskbar created.");
                 int newExplorerPid = GetTaskbarExplorerPid();
