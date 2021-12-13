@@ -202,6 +202,14 @@ namespace livelywpf
         min120
     }
 
+    public enum ScreensaverMode
+    {
+        [Description("Same as running wallpaper.")]
+        wallpaper,
+        [Description("Different from running wallpaper.")]
+        standalone
+    }
+
     /// <summary>
     /// System taskbar theme
     /// </summary>

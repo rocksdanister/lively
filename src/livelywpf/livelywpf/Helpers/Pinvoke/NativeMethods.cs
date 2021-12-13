@@ -13,6 +13,7 @@ namespace livelywpf.Helpers.Pinvoke
 #pragma warning disable CA1707, CA1401, CA1712
     public static class NativeMethods
     {
+        #region screensaver
 
         [DllImport("user32.dll", SetLastError = true)]
         public static extern bool LockWorkStation();
@@ -31,16 +32,10 @@ namespace livelywpf.Helpers.Pinvoke
             QUNS_QUIET_TIME = 6
         };
 
-
         [DllImport("shell32.dll")]
         public static extern int SHQueryUserNotificationState(out QUERY_USER_NOTIFICATION_STATE pquns);
 
-        #region WM_Register
-
-        public static readonly int WM_SHOWLIVELY = RegisterWindowMessage("WM_SHOWLIVELYMAINWINDOW");
-        public static readonly int WM_TASKBARCREATED = NativeMethods.RegisterWindowMessage("TaskbarCreated");
-
-        #endregion //WM_Register
+        #endregion //screensaver
 
         #region undocumented 
 
@@ -181,6 +176,17 @@ namespace livelywpf.Helpers.Pinvoke
 
         #region life cycle
 
+        public const int HWND_BROADCAST = 0xffff;
+
+        [DllImport("kernel32.dll", CharSet = CharSet.Auto)]
+        public static extern System.IntPtr GetCommandLine();
+
+        [DllImport("user32")]
+        public static extern bool PostMessage(IntPtr hwnd, int msg, IntPtr wparam, IntPtr lparam);
+
+        [DllImport("user32")]
+        public static extern int RegisterWindowMessage(string message);
+
         [DllImport("kernel32.dll", SetLastError = true)]
         public static extern int RegisterApplicationRestart([MarshalAs(UnmanagedType.LPWStr)] string commandLineArgs, int Flags);
 
@@ -238,17 +244,6 @@ namespace livelywpf.Helpers.Pinvoke
 
         [DllImport("user32.dll")]
         public static extern bool GetClientRect(IntPtr hWnd, out RECT lpRect);
-
-        #region single instance
-
-        public const int HWND_BROADCAST = 0xffff;
-
-        [DllImport("user32")]
-        public static extern bool PostMessage(IntPtr hwnd, int msg, IntPtr wparam, IntPtr lparam);
-        [DllImport("user32")]
-        public static extern int RegisterWindowMessage(string message);
-
-        #endregion single instance
 
         [DllImport("user32.dll")]
         public static extern bool SetLayeredWindowAttributes(IntPtr hwnd, uint crKey, byte bAlpha, uint dwFlags);
@@ -1253,6 +1248,7 @@ namespace livelywpf.Helpers.Pinvoke
             /// </summary>
             HSHELL_WINDOWREPLACED = 13
         }
+
         #endregion
 
         [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
@@ -1311,7 +1307,7 @@ namespace livelywpf.Helpers.Pinvoke
         //[DllImportAttribute("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
         //public static extern int MessageBox(IntPtr hwnd, String text, String caption, uint type);
 
-        #region SetupDesktop.cs
+        #region WinDesktopCore
 
         [Flags]
         public enum SendMessageTimeoutFlags : uint
@@ -1538,7 +1534,7 @@ namespace livelywpf.Helpers.Pinvoke
         public static UInt32 SPIF_UPDATEINIFILE = 0x1;
         public static UInt32 SPI_SETCLIENTAREAANIMATION = 0x1043;
 
-        #endregion SetupDesktop.cs
+        #endregion //WinDesktopCore
 
         #region keyboard
 
@@ -1549,7 +1545,6 @@ namespace livelywpf.Helpers.Pinvoke
         public static extern int SetForegroundWindow(IntPtr point);
 
         #endregion keyboard
-
 
         #region Pause
 
@@ -1864,7 +1859,8 @@ namespace livelywpf.Helpers.Pinvoke
             public int Bottom;
         }
 
-        #region parentprocess
+        #region parent process
+
         /// <summary>
         /// A utility class to determine a process parent.
         /// </summary>
@@ -1926,7 +1922,8 @@ namespace livelywpf.Helpers.Pinvoke
                 }
             }
         }
-        #endregion
+
+        #endregion //parent process
 
         [DllImport("user32.dll")]
         public static extern IntPtr GetTopWindow(IntPtr hWnd);
@@ -2159,10 +2156,8 @@ namespace livelywpf.Helpers.Pinvoke
 
         #endregion //shell
 
-        [DllImport("kernel32.dll", CharSet = CharSet.Auto)]
-        public static extern System.IntPtr GetCommandLine();
-
         #region display mgr
+
         #region SPI
         /// <summary>
         /// SPI_ System-wide parameter - Used in SystemParametersInfo function

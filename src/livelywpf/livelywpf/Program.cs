@@ -41,16 +41,9 @@ namespace livelywpf
                         var args = Environment.GetCommandLineArgs().Skip(1).ToArray();
                         PipeClient.SendMessage(Constants.SingleInstance.PipeServerName, args.Length != 0 ? args : new string[] { "--showApp", "true" });
                     }
-                    catch
+                    catch (Exception e)
                     {
-                        //fallback, Send our registered Win32 message to make the currently running lively instance to bring to foreground.
-                        //registration of WM_SHOWLIVELY done at NativeMethods.cs file.
-                        //ref: https://stackoverflow.com/questions/19147/what-is-the-correct-way-to-create-a-single-instance-wpf-application
-                        NativeMethods.PostMessage(
-                            (IntPtr)NativeMethods.HWND_BROADCAST,
-                            NativeMethods.WM_SHOWLIVELY,
-                            IntPtr.Zero,
-                            IntPtr.Zero);
+                        MessageBox.Show($"Failed to communicate with ipc server: {e.Message}", "Lively Wallpaper");
                     }
                     return;
                 }
@@ -58,7 +51,7 @@ namespace livelywpf
             catch (AbandonedMutexException e)
             {
                 //unexpected app termination.
-                System.Diagnostics.Debug.WriteLine(e.Message);
+                Debug.WriteLine(e.Message);
             }
 
             try
