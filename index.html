@@ -15,7 +15,11 @@
 		  window.dataLayer = window.dataLayer || [];
 		  function gtag(){dataLayer.push(arguments);}
 		  gtag('js', new Date());
-		  gtag('config', 'UA-160230230-1');
+		  gtag('consent', 'default', {
+		    'ad_storage': 'denied',
+		    'analytics_storage': 'denied'
+		  });
+		  gtag('config', 'UA-160230230-1', { 'anonymize_ip': true });
 		</script>
 		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     	<link rel="icon" href="favicon.ico" type="image/x-icon">
