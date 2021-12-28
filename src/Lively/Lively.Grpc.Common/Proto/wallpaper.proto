@@ -1,0 +1,17 @@
+﻿syntax = "proto3";
+package Desktop;
+import "google/protobuf/empty.proto";
+
+service DesktopService {
+  rpc SetWallpaper (WallpaperRequest) returns (WallpaperResponse);
+}
+
+message WallpaperRequest {
+  string lively_info_path = 1;
+  string monitor_id = 2;
+}
+
+message WallpaperResponse
+{
+	bool status = 1;
+}

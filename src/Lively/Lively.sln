@@ -13,6 +13,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lively.Models", "Lively.Mod
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lively.MediaPlayerWmf", "Lively.MediaPlayerWmf\Lively.MediaPlayerWmf.csproj", "{95A2CE21-5CF3-4432-8BE5-33B71C2C7A82}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lively.Grpc.Common", "Lively.Grpc.Common\Lively.Grpc.Common.csproj", "{F3E38E78-1670-4E6F-A9FB-041AC30E61E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lively.Grpc.Client", "Lively.Grpc.Client\Lively.Grpc.Client.csproj", "{7DC09366-776F-4937-8823-03F7125A7EA6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{95A2CE21-5CF3-4432-8BE5-33B71C2C7A82}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95A2CE21-5CF3-4432-8BE5-33B71C2C7A82}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95A2CE21-5CF3-4432-8BE5-33B71C2C7A82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3E38E78-1670-4E6F-A9FB-041AC30E61E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3E38E78-1670-4E6F-A9FB-041AC30E61E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3E38E78-1670-4E6F-A9FB-041AC30E61E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3E38E78-1670-4E6F-A9FB-041AC30E61E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DC09366-776F-4937-8823-03F7125A7EA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DC09366-776F-4937-8823-03F7125A7EA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DC09366-776F-4937-8823-03F7125A7EA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DC09366-776F-4937-8823-03F7125A7EA6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

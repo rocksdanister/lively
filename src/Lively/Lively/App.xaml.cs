@@ -1,10 +1,12 @@
-﻿using Lively.Common;
+﻿using GrpcDotNetNamedPipes;
+using Lively.Common;
 using Lively.Common.Helpers.Storage;
 using Lively.Core;
 using Lively.Core.Display;
 using Lively.Core.Suspend;
 using Lively.Core.Watchdog;
 using Lively.Factories;
+using Lively.IPC;
 using Lively.Models;
 using Lively.Services;
 using Lively.WndMsg;
@@ -57,55 +59,14 @@ namespace Lively
             Services.GetRequiredService<IPlayback>().Start();
 
             //TEST
-            var core = App.Services.GetRequiredService<IDesktopCore>();
-            var display = App.Services.GetRequiredService<IDisplayManager>();
-            var lm = ScanWallpaperFolder(@"C:\Users\rocks\AppData\Local\Lively Wallpaper_v2\Library\wallpapers\iqdvd4pt.jyo");
-            core.SetWallpaper(lm, display.PrimaryDisplayMonitor);
+            ConfigureGrpcServer();
         }
 
-
-        //TEST
-        private ILibraryModel ScanWallpaperFolder(string folderPath)
+        private void ConfigureGrpcServer()
         {
-            if (File.Exists(Path.Combine(folderPath, "LivelyInfo.json")))
-            {
-                LivelyInfoModel info = null;
-                try
-                {
-                    info = JsonStorage<LivelyInfoModel>.LoadData(Path.Combine(folderPath, "LivelyInfo.json"));
-                }
-                catch (Exception e)
-                {
-                    //Logger.Error(e.ToString());
-                }
-
-                if (info != null)
-                {
-                    if (info.Type == WallpaperType.videostream || info.Type == WallpaperType.url)
-                    {
-                        //online content, no file.
-                        //Logger.Info("Loading Wallpaper (no-file):- " + info.FileName + " " + info.Type);
-                        return new LibraryModel(info, folderPath, LibraryItemType.ready, false);
-                    }
-                    else
-                    {
-                        if (info.IsAbsolutePath)
-                        {
-                            //Logger.Info("Loading Wallpaper(absolute):- " + info.FileName + " " + info.Type);
-                        }
-                        else
-                        {
-                            //Logger.Info("Loading Wallpaper(relative):- " + Path.Combine(folderPath, info.FileName) + " " + info.Type);
-                        }
-                        return new LibraryModel(info, folderPath, LibraryItemType.ready, false);
-                    }
-                }
-            }
-            else
-            {
-                //Logger.Info("Not a lively wallpaper folder, skipping:- " + folderPath);
-            }
-            return null;
+            var server = new NamedPipeServer(Constants.SingleInstance.GrpcPipeServerName);
+            Desktop.DesktopService.BindService(server.ServiceBinder, new DesktopService());
+            server.Start();
         }
 
         private IServiceProvider ConfigureServices()
