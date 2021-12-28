@@ -1,0 +1,88 @@
+﻿// Copyright (c) 2020 Shankar
+// The Shankar licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+// Source: https://github.com/ModernFlyouts-Community/ModernFlyouts
+
+using System;
+using System.Drawing;
+using observableObject = Microsoft.Toolkit.Mvvm.ComponentModel.ObservableObject;
+
+namespace Lively.Models
+{
+    public class DisplayMonitor : observableObject, IDisplayMonitor
+    {
+        public bool isStale;
+
+        #region Properties
+
+        private Rectangle bounds = Rectangle.Empty;
+
+        public Rectangle Bounds
+        {
+            get => bounds;
+            set => SetProperty(ref bounds, value);
+        }
+
+        private string deviceId = string.Empty;
+
+        public string DeviceId
+        {
+            get => deviceId;
+            set => SetProperty(ref deviceId, value);
+        }
+
+        public string DeviceName { get; }//{ get; init; }
+
+        private string displayName = string.Empty;
+
+        public string DisplayName
+        {
+            get => displayName;
+            set => SetProperty(ref displayName, value);
+        }
+
+        private IntPtr hMonitor = IntPtr.Zero;
+
+        public IntPtr HMonitor
+        {
+            get => hMonitor;
+            set => SetProperty(ref hMonitor, value);
+        }
+
+        private int index;
+
+        public int Index
+        {
+            get => index;
+            set => SetProperty(ref index, value);
+        }
+
+        private bool isPrimary;
+
+        public bool IsPrimary
+        {
+            get => isPrimary;
+            set => SetProperty(ref isPrimary, value);
+        }
+
+        private Rectangle workingArea = Rectangle.Empty;
+
+        public Rectangle WorkingArea
+        {
+            get => workingArea;
+            set => SetProperty(ref workingArea, value);
+        }
+
+        #endregion
+
+        public DisplayMonitor(string deviceName)
+        {
+            DeviceName = deviceName;
+        }
+
+        public bool Equals(IDisplayMonitor other)
+        {
+            return other.DeviceId == this.DeviceId;
+        }
+    }
+}
