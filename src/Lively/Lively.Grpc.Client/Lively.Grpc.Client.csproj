@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="GrpcDotNetNamedPipes" Version="1.4.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Lively.Common\Lively.Common.csproj" />
+    <ProjectReference Include="..\Lively.Grpc.Common\Lively.Grpc.Common.csproj" />
+  </ItemGroup>
+
+</Project>
