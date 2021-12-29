@@ -65,7 +65,7 @@ namespace Lively
         private void ConfigureGrpcServer()
         {
             var server = new NamedPipeServer(Constants.SingleInstance.GrpcPipeServerName);
-            Desktop.DesktopService.BindService(server.ServiceBinder, new DesktopService());
+            Desktop.DesktopService.BindService(server.ServiceBinder, Services.GetRequiredService<DesktopService>());
             server.Start();
         }
 
@@ -84,6 +84,7 @@ namespace Lively
                 //.AddSingleton<LibraryViewModel>() //loaded wallpapers etc..
                 .AddSingleton<RawInputMsgWindow>()
                 .AddSingleton<WndProcMsgWindow>()
+                .AddSingleton<DesktopService>()
                 //transient
                 //.AddTransient<IApplicationsRulesFactory, ApplicationsRulesFactory>()
                 .AddTransient<IWallpaperFactory, WallpaperFactory>()

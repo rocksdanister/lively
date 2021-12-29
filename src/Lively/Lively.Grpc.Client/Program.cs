@@ -2,6 +2,7 @@
 using GrpcDotNetNamedPipes;
 using Lively.Common;
 using System;
+using System.Threading.Tasks;
 
 namespace Lively.Grpc.Client
 {
@@ -10,6 +11,11 @@ namespace Lively.Grpc.Client
         static void Main(string[] args)
         {
             var client = new DesktopService.DesktopServiceClient(GetChannel());
+
+            var wpcec = new WallpaperChangedEvent(client);
+            wpcec.WallpaperChanged += (s, e) => Console.WriteLine("Wallpaper Changed:" + e);
+            wpcec.Start();
+
             var request = new WallpaperRequest
             {
                 LivelyInfoPath = @"C:\Users\rocks\AppData\Local\Lively Wallpaper_v2\Library\wallpapers\iqdvd4pt.jyo",
@@ -18,6 +24,9 @@ namespace Lively.Grpc.Client
 
             var response = client.SetWallpaper(request);
             Console.WriteLine("SetWallpaper: " + response.Status);
+
+            //wpcec.Stop();
+            Console.ReadKey();
         }
 
         private static NamedPipeChannel GetChannel() => 
