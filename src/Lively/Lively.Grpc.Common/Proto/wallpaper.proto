@@ -4,6 +4,7 @@ import "google/protobuf/empty.proto";
 
 service DesktopService {
   rpc SetWallpaper (WallpaperRequest) returns (WallpaperResponse);
+  rpc SubscribeWallpaperChanged (google.protobuf.Empty) returns (stream WallpaperChangedModel);
 }
 
 message WallpaperRequest {
@@ -11,7 +12,10 @@ message WallpaperRequest {
   string monitor_id = 2;
 }
 
-message WallpaperResponse
-{
+message WallpaperResponse {
 	bool status = 1;
+}
+
+message WallpaperChangedModel {
+	int32 count = 1;
 }
