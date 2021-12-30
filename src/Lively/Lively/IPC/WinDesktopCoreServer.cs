@@ -13,30 +13,72 @@ using Microsoft.Extensions.DependencyInjection;
 using Lively.Core;
 using Lively.Core.Display;
 using System.Diagnostics;
+using System.Linq;
 
 namespace Lively.IPC
 {
-    internal class DesktopService : Desktop.DesktopService.DesktopServiceBase
+    internal class WinDesktopCoreServer : DesktopService.DesktopServiceBase
     {
         private readonly IDesktopCore desktopCore;
         private readonly IDisplayManager displayManager;
 
-        public DesktopService(IDesktopCore desktopCore, IDisplayManager displayManager)
+        public WinDesktopCoreServer(IDesktopCore desktopCore, IDisplayManager displayManager)
         {
             this.desktopCore = desktopCore;
             this.displayManager = displayManager;
         }
 
-        public override Task<WallpaperResponse> SetWallpaper(WallpaperRequest request, ServerCallContext context)
+        public override Task<SetWallpaperResponse> SetWallpaper(SetWallpaperRequest request, ServerCallContext context)
         {
             //TEST
-            var lm = ScanWallpaperFolder(request.LivelyInfoPath);//(@"C:\Users\rocks\AppData\Local\Lively Wallpaper_v2\Library\wallpapers\iqdvd4pt.jyo");
-            desktopCore.SetWallpaper(lm, displayManager.PrimaryDisplayMonitor);
+            var lm = ScanWallpaperFolder(request.LivelyInfoPath);
+            var display = displayManager.DisplayMonitors.FirstOrDefault(x => x.DeviceId == request.MonitorId);
+            desktopCore.SetWallpaper(lm, display ?? displayManager.PrimaryDisplayMonitor);
 
-            return Task.FromResult(new WallpaperResponse
+            return Task.FromResult(new SetWallpaperResponse
             {
+                //TODO
                 Status = true,
             });
+        }
+
+        public override async Task GetWallpapers(Empty _, IServerStreamWriter<WallpaperModel> responseStream, ServerCallContext context)
+        {
+            try
+            {
+                foreach (var wallpaper in desktopCore.Wallpapers)
+                {
+                    var item = new WallpaperModel()
+                    {
+                        LivelyInfoPath = wallpaper.Model.LivelyInfoFolderPath,
+                        MonitorId = wallpaper.Screen.DeviceId,
+                    };
+                    await responseStream.WriteAsync(item);
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.ToString());
+            }
+        }
+
+        public override async Task GetScreens(Empty _, IServerStreamWriter<ScreenModel> responseStream, ServerCallContext context)
+        {
+            try
+            {
+                foreach (var display in displayManager.DisplayMonitors)
+                {
+                    var item = new ScreenModel()
+                    {
+                        DeviceId = display.DeviceId,
+                    };
+                    await responseStream.WriteAsync(item);
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.ToString());
+            }
         }
 
         public override async Task SubscribeWallpaperChanged(Empty _, IServerStreamWriter<WallpaperChangedModel> responseStream, ServerCallContext context)

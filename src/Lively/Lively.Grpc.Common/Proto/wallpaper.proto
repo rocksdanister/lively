@@ -3,17 +3,28 @@ package Desktop;
 import "google/protobuf/empty.proto";
 
 service DesktopService {
-  rpc SetWallpaper (WallpaperRequest) returns (WallpaperResponse);
+  rpc SetWallpaper (SetWallpaperRequest) returns (SetWallpaperResponse);
+  rpc GetWallpapers (google.protobuf.Empty) returns (stream WallpaperModel);
+  rpc GetScreens (google.protobuf.Empty) returns (stream ScreenModel);
   rpc SubscribeWallpaperChanged (google.protobuf.Empty) returns (stream WallpaperChangedModel);
 }
 
-message WallpaperRequest {
+message SetWallpaperRequest {
   string lively_info_path = 1;
   string monitor_id = 2;
 }
 
-message WallpaperResponse {
+message SetWallpaperResponse {
 	bool status = 1;
+}
+
+message WallpaperModel {
+  string lively_info_path = 1;
+  string monitor_id = 2;
+}
+
+message ScreenModel {
+  string device_id = 1;
 }
 
 message WallpaperChangedModel {
