@@ -22,6 +22,7 @@ namespace Lively
     /// </summary>
     public partial class App : Application
     {
+        private readonly NamedPipeServer grpcServer;
         private readonly IServiceProvider _serviceProvider;
         /// <summary>
         /// Gets the <see cref="IServiceProvider"/> instance for the current application instance.
@@ -39,6 +40,7 @@ namespace Lively
         {
             //App() -> OnStartup() -> App.Startup event.
             _serviceProvider = ConfigureServices();
+            grpcServer = ConfigureGrpcServer();
 
             try
             {
@@ -51,22 +53,12 @@ namespace Lively
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "AppData Directory Initialize Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                Application.Current.Shutdown();
+                ShutDown();
             }
 
             Services.GetRequiredService<WndProcMsgWindow>().Show();
             Services.GetRequiredService<RawInputMsgWindow>().Show();
             Services.GetRequiredService<IPlayback>().Start();
-
-            //TEST
-            ConfigureGrpcServer();
-        }
-
-        private void ConfigureGrpcServer()
-        {
-            var server = new NamedPipeServer(Constants.SingleInstance.GrpcPipeServerName);
-            Desktop.DesktopService.BindService(server.ServiceBinder, Services.GetRequiredService<WinDesktopCoreServer>());
-            server.Start();
         }
 
         private IServiceProvider ConfigureServices()
@@ -105,6 +97,22 @@ namespace Lively
                 .BuildServiceProvider();
 
             return provider;
+        }
+
+        private NamedPipeServer ConfigureGrpcServer()
+        {
+            var server = new NamedPipeServer(Constants.SingleInstance.GrpcPipeServerName);
+            Desktop.DesktopService.BindService(server.ServiceBinder, Services.GetRequiredService<WinDesktopCoreServer>());
+            server.Start();
+
+            return server;
+        }
+
+        public static void ShutDown()
+        {
+            ((App)Current).grpcServer?.Dispose();
+            ((ServiceProvider)App.Services)?.Dispose();
+            Application.Current.Dispatcher.Invoke(Application.Current.Shutdown);
         }
     }
 }

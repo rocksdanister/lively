@@ -3,19 +3,24 @@ using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 using GrpcDotNetNamedPipes;
 using Lively.Common;
+using Lively.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Lively.Grpc.Client
+namespace Lively.ConsoleDemo
 {
     public class WinDesktopCoreClient : IDisposable
     {
         public event EventHandler<int> WallpaperChanged;
         //TODO
         public event EventHandler DisplayChanged;
+
+        //private readonly List<WallpaperData> wallpapers = new List<WallpaperData>(2);
+        //public ReadOnlyCollection<WallpaperData> Wallpapers => wallpapers.AsReadOnly();
 
         private readonly DesktopService.DesktopServiceClient client;
         private readonly CancellationTokenSource cancellationTokeneWallpaperChanged;
@@ -51,6 +56,9 @@ namespace Lively.Grpc.Client
             return status;
         }
 
+        public async Task<bool> SetWallpaper(ILibraryModel item, IDisplayMonitor display) => 
+            await SetWallpaper(item.LivelyInfoFolderPath, display.DeviceId);
+
         public async Task<List<WallpaperModel>> GetWallpapers()
         {
             var wallpapers = new List<WallpaperModel>();
@@ -70,11 +78,11 @@ namespace Lively.Grpc.Client
             return wallpapers;
         }
 
-        public void CloseAllWallpapers(bool terminate = false)
+        public async Task CloseAllWallpapers(bool terminate = false)
         {
             try
             {
-                _ = client.CloseAllWallpapers(new CloseAllWallpapersRequest() { Terminate = terminate });
+                await client.CloseAllWallpapersAsync(new CloseAllWallpapersRequest() { Terminate = terminate });
             }
             catch (Exception e)
             {
@@ -82,11 +90,14 @@ namespace Lively.Grpc.Client
             }
         }
 
-        public void CloseWallpaper(CloseWallpaperCategoryRequest category)
+        public async Task CloseWallpaper(WallpaperType type, bool terminate = false)
         {
             try
             {
-                _ = client.CloseWallpaperCategory(category);
+                await client.CloseWallpaperCategoryAsync(new CloseWallpaperCategoryRequest() { 
+                    Category = (WallpaperCategory)((int)type), 
+                    Terminate = terminate }
+                );
             }
             catch (Exception e)
             {
@@ -94,11 +105,14 @@ namespace Lively.Grpc.Client
             }
         }
 
-        public void CloseWallpaper(CloseWallpaperLibraryRequest libraryItem)
+        public async Task CloseWallpaper(ILibraryModel item, bool terminate = false)
         {
             try
             {
-                _ = client.CloseWallpaperLibrary(libraryItem);
+                await client.CloseWallpaperLibraryAsync(new CloseWallpaperLibraryRequest() {
+                    LivelyInfoPath = item.LivelyInfoFolderPath,
+                    Terminate = terminate
+                });
             }
             catch (Exception e)
             {
@@ -106,11 +120,14 @@ namespace Lively.Grpc.Client
             }
         }
 
-        public void CloseWallpaper(CloseWallpaperMonitorRequest monitor)
+        public async Task CloseWallpaper(IDisplayMonitor monitor, bool terminate = false)
         {
             try
             {
-                _ = client.CloseWallpaperMonitor(monitor);
+                await client.CloseWallpaperMonitorAsync(new CloseWallpaperMonitorRequest() { 
+                    MonitorId = monitor.DeviceId,
+                    Terminate = terminate
+                });
             }
             catch (Exception e)
             {
@@ -118,23 +135,30 @@ namespace Lively.Grpc.Client
             }
         }
 
-        public async Task<List<ScreenModel>> GetScreens()
+        //TODO: hook it into an event and store it as a list.
+        public async Task<List<IDisplayMonitor>> GetScreens()
         {
-            var displays = new List<ScreenModel>();
+            var screens = new List<ScreenModel>();
             try
             {
                 using var call = client.GetScreens(new Empty());
                 while (await call.ResponseStream.MoveNext())
                 {
                     var response = call.ResponseStream.Current;
-                    displays.Add(response);
+                    screens.Add(response);
                 }
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.ToString());
             }
-            return displays;
+
+            var displayMonitors = new List<IDisplayMonitor>();
+            foreach (var screen in screens)
+            {
+                displayMonitors.Add(new DisplayMonitor() { DeviceId = screen.DeviceId });
+            }
+            return displayMonitors;
         }
 
         private async Task SubscribeWallpaperChangedServer(CancellationToken token)
@@ -152,6 +176,11 @@ namespace Lively.Grpc.Client
             {
                 Console.WriteLine(e.ToString());
             }
+        }
+
+        public async Task ShutDown()
+        {
+            await client.ShutDownAsync(new Empty());
         }
 
         #region dispose
