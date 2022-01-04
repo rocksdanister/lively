@@ -805,7 +805,8 @@ namespace Lively.Core
 
         private void CloseWallpaper(ILibraryModel wp, bool fireEvent, bool terminate)
         {
-            var tmp = wallpapers.FindAll(x => x.Model == wp);
+            //NOTE: To maintain compatibility with existing code ILibraryModel is still used.
+            var tmp = wallpapers.FindAll(x => x.Model.LivelyInfoFolderPath == wp.LivelyInfoFolderPath);
             if (tmp.Count > 0)
             {
                 tmp.ForEach(x =>

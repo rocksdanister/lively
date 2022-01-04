@@ -9,15 +9,15 @@ namespace Lively.Grpc.Client
         {
             using var client = new WinDesktopCoreClient();
             client.WallpaperChanged += (s, e) => Console.WriteLine("\nWallpaper Changed Event: " + e);
-
+            
             bool showMenu = true;
             while (showMenu)
             {
-                //Console.Clear();
                 Console.WriteLine("\nChoose an option:");
                 Console.WriteLine("1) Set Wallpaper");
                 Console.WriteLine("2) Get Wallpapers");
                 Console.WriteLine("3) Get Screens");
+                Console.WriteLine("4) Close Wallpaper(s)");
                 Console.WriteLine("9) Exit");
                 Console.Write("\r\nSelect an option: ");
 
@@ -27,7 +27,10 @@ namespace Lively.Grpc.Client
                         {
                             Console.WriteLine("\nEnter display id:");
                             var displayId = Console.ReadLine();
-                            var status = await client.SetWallpaper(@"C:\Users\rocks\AppData\Local\Lively Wallpaper_v2\Library\wallpapers\iqdvd4pt.jyo", displayId);
+                            Console.WriteLine("\nEnter wallpaper metadata path:");
+                            //Example: C:\Users\rocks\AppData\Local\Lively Wallpaper_v2\Library\wallpapers\iqdvd4pt.jyo
+                            var path = Console.ReadLine();
+                            var status = await client.SetWallpaper(path, displayId);
                             Console.WriteLine("SetWallpaper: " + status);
                         }
                         break;
@@ -44,6 +47,27 @@ namespace Lively.Grpc.Client
                             foreach (var item in await client.GetScreens())
                             {
                                 Console.WriteLine("GetScreens: " + item.DeviceId);
+                            }
+                        }
+                        break;
+                    case "4":
+                        {
+                            Console.WriteLine("\nChoose an option:");
+                            Console.WriteLine("1) Close all wallpaper(s)");
+                            Console.WriteLine("2) Close wallpaper - monitor");
+                            Console.WriteLine("3) Close wallpaper - library");
+                            Console.WriteLine("4) Close wallpaper - category");
+                            Console.WriteLine("5) Exit");
+                            Console.Write("\r\nSelect an option: ");
+                            switch (Console.ReadLine())
+                            {
+                                case "1":
+                                    client.CloseAllWallpapers(true);
+                                    break;
+                                case "5":
+                                    break;
+                                default:
+                                    throw new NotImplementedException();
                             }
                         }
                         break;
