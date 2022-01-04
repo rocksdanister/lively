@@ -80,6 +80,8 @@ namespace Lively.Models
             DeviceName = deviceName;
         }
 
+        public DisplayMonitor() { }
+
         public bool Equals(IDisplayMonitor other)
         {
             return other.DeviceId == this.DeviceId;

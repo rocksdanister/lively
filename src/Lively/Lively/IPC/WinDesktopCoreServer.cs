@@ -14,6 +14,9 @@ using Lively.Core;
 using Lively.Core.Display;
 using System.Diagnostics;
 using System.Linq;
+using System.Windows;
+using System.Windows.Threading;
+using System.Threading;
 
 namespace Lively.IPC
 {
@@ -40,6 +43,18 @@ namespace Lively.IPC
                 //TODO
                 Status = true,
             });
+        }
+
+        public override Task<Empty> ShutDown(Empty _, ServerCallContext context)
+        {
+            try
+            {
+                return Task.FromResult(new Empty());
+            }
+            finally
+            {
+                App.ShutDown();
+            }
         }
 
         public override async Task GetWallpapers(Empty _, IServerStreamWriter<WallpaperModel> responseStream, ServerCallContext context)

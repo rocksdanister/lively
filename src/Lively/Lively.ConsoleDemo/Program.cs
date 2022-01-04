@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace Lively.Grpc.Client
+namespace Lively.ConsoleDemo
 {
     class Program
     {
@@ -9,7 +9,7 @@ namespace Lively.Grpc.Client
         {
             using var client = new WinDesktopCoreClient();
             client.WallpaperChanged += (s, e) => Console.WriteLine("\nWallpaper Changed Event: " + e);
-            
+
             bool showMenu = true;
             while (showMenu)
             {
@@ -62,7 +62,7 @@ namespace Lively.Grpc.Client
                             switch (Console.ReadLine())
                             {
                                 case "1":
-                                    client.CloseAllWallpapers(true);
+                                    await client.CloseAllWallpapers(true);
                                     break;
                                 case "5":
                                     break;
@@ -72,6 +72,9 @@ namespace Lively.Grpc.Client
                         }
                         break;
                     case "9":
+                        await client.ShutDown();
+                        Console.WriteLine("Core shut down complete..");
+                        Console.ReadLine();
                         showMenu = false;
                         break;
                 }
