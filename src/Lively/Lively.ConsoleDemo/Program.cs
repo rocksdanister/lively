@@ -9,6 +9,7 @@ namespace Lively.ConsoleDemo
         {
             using var client = new WinDesktopCoreClient();
             client.WallpaperChanged += (s, e) => Console.WriteLine("\nWallpaper Changed Event: " + e);
+            client.DisplayChanged += (s, e) => Console.WriteLine("\nDisplay Changed Event.");
 
             bool showMenu = true;
             while (showMenu)
@@ -36,7 +37,7 @@ namespace Lively.ConsoleDemo
                         break;
                     case "2":
                         {
-                            foreach (var item in await client.GetWallpapers())
+                            foreach (var item in client.Wallpapers)
                             {
                                 Console.WriteLine("GetWallpapers: " + item.LivelyInfoPath + " " + item.MonitorId);
                             }
@@ -44,7 +45,7 @@ namespace Lively.ConsoleDemo
                         break;
                     case "3":
                         {
-                            foreach (var item in await client.GetScreens())
+                            foreach (var item in client.DisplayMonitors)
                             {
                                 Console.WriteLine("GetScreens: " + item.DeviceId);
                             }

@@ -4,13 +4,14 @@ import "google/protobuf/empty.proto";
 
 service DesktopService {
   rpc SetWallpaper (SetWallpaperRequest) returns (SetWallpaperResponse);
-  rpc GetWallpapers (google.protobuf.Empty) returns (stream WallpaperModel);
+  rpc GetWallpapers (google.protobuf.Empty) returns (stream GetWallpapersResponse);
   rpc CloseAllWallpapers(CloseAllWallpapersRequest) returns (google.protobuf.Empty);
   rpc CloseWallpaperMonitor(CloseWallpaperMonitorRequest) returns (google.protobuf.Empty);
   rpc CloseWallpaperLibrary(CloseWallpaperLibraryRequest) returns (google.protobuf.Empty);
   rpc CloseWallpaperCategory(CloseWallpaperCategoryRequest) returns (google.protobuf.Empty);
-  rpc GetScreens (google.protobuf.Empty) returns (stream ScreenModel);
-  rpc SubscribeWallpaperChanged (google.protobuf.Empty) returns (stream WallpaperChangedModel);
+  rpc GetScreens (google.protobuf.Empty) returns (stream GetScreensResponse);
+  rpc SubscribeWallpaperChanged (google.protobuf.Empty) returns (stream WallpaperChangedResponse);
+  rpc SubscribeDisplayChanged (google.protobuf.Empty) returns (stream google.protobuf.Empty);
   rpc ShutDown (google.protobuf.Empty) returns (google.protobuf.Empty);
 }
 
@@ -23,7 +24,7 @@ message SetWallpaperResponse {
 	bool status = 1;
 }
 
-message WallpaperModel {
+message GetWallpapersResponse {
   string lively_info_path = 1;
   string monitor_id = 2;
 }
@@ -47,11 +48,17 @@ message CloseWallpaperCategoryRequest {
 	WallpaperCategory Category = 2;
 }
 
-message ScreenModel {
+message GetScreensResponse {
   string device_id = 1;
+  string device_name = 2;
+  string display_name = 3;
+  int32 h_monitor = 4;
+  int32 index = 5;
+  bool is_primary = 6;
+  //Rectangle bounds, workingarea
 }
 
-message WallpaperChangedModel {
+message WallpaperChangedResponse {
 	int32 count = 1;
 }
 

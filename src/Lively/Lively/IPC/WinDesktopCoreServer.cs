@@ -57,13 +57,13 @@ namespace Lively.IPC
             }
         }
 
-        public override async Task GetWallpapers(Empty _, IServerStreamWriter<WallpaperModel> responseStream, ServerCallContext context)
+        public override async Task GetWallpapers(Empty _, IServerStreamWriter<GetWallpapersResponse> responseStream, ServerCallContext context)
         {
             try
             {
                 foreach (var wallpaper in desktopCore.Wallpapers)
                 {
-                    var item = new WallpaperModel()
+                    var item = new GetWallpapersResponse()
                     {
                         LivelyInfoPath = wallpaper.Model.LivelyInfoFolderPath,
                         MonitorId = wallpaper.Screen.DeviceId,
@@ -77,15 +77,19 @@ namespace Lively.IPC
             }
         }
 
-        public override async Task GetScreens(Empty _, IServerStreamWriter<ScreenModel> responseStream, ServerCallContext context)
+        public override async Task GetScreens(Empty _, IServerStreamWriter<GetScreensResponse> responseStream, ServerCallContext context)
         {
             try
             {
                 foreach (var display in displayManager.DisplayMonitors)
                 {
-                    var item = new ScreenModel()
+                    var item = new GetScreensResponse()
                     {
                         DeviceId = display.DeviceId,
+                        DeviceName = display.DeviceName,
+                        DisplayName = display.DisplayName,
+                        HMonitor = display.HMonitor.ToInt32(),
+                        IsPrimary = display.IsPrimary,
                     };
                     await responseStream.WriteAsync(item);
                 }
@@ -135,7 +139,7 @@ namespace Lively.IPC
             return Task.FromResult(new Empty());
         }
 
-        public override async Task SubscribeWallpaperChanged(Empty _, IServerStreamWriter<WallpaperChangedModel> responseStream, ServerCallContext context)
+        public override async Task SubscribeWallpaperChanged(Empty _, IServerStreamWriter<WallpaperChangedResponse> responseStream, ServerCallContext context)
         {
             try
             {
@@ -150,11 +154,35 @@ namespace Lively.IPC
                     }
                     await tcs.Task;
 
-                    var response = new WallpaperChangedModel
+                    var response = new WallpaperChangedResponse
                     {
                         Count = desktopCore.Wallpapers.Count,
                     };
                     await responseStream.WriteAsync(response);
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.ToString());
+            }
+        }
+
+        public override async Task SubscribeDisplayChanged(Empty _, IServerStreamWriter<Empty> responseStream, ServerCallContext context)
+        {
+            try
+            {
+                while (!context.CancellationToken.IsCancellationRequested)
+                {
+                    var tcs = new TaskCompletionSource<bool>();
+                    displayManager.DisplayUpdated += DisplayChanged;
+                    void DisplayChanged(object s, EventArgs e)
+                    {
+                        displayManager.DisplayUpdated -= DisplayChanged;
+                        tcs.SetResult(true);
+                    }
+                    await tcs.Task;
+
+                    await responseStream.WriteAsync(new Empty());
                 }
             }
             catch (Exception e)
