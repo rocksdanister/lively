@@ -14,6 +14,8 @@ namespace Lively.Grpc.Client
     public class WinDesktopCoreClient : IDisposable
     {
         public event EventHandler<int> WallpaperChanged;
+        //TODO
+        public event EventHandler DisplayChanged;
 
         private readonly DesktopService.DesktopServiceClient client;
         private readonly CancellationTokenSource cancellationTokeneWallpaperChanged;
@@ -66,6 +68,54 @@ namespace Lively.Grpc.Client
                 Console.WriteLine(e.ToString());
             }
             return wallpapers;
+        }
+
+        public void CloseAllWallpapers(bool terminate = false)
+        {
+            try
+            {
+                _ = client.CloseAllWallpapers(new CloseAllWallpapersRequest() { Terminate = terminate });
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+        }
+
+        public void CloseWallpaper(CloseWallpaperCategoryRequest category)
+        {
+            try
+            {
+                _ = client.CloseWallpaperCategory(category);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+        }
+
+        public void CloseWallpaper(CloseWallpaperLibraryRequest libraryItem)
+        {
+            try
+            {
+                _ = client.CloseWallpaperLibrary(libraryItem);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+        }
+
+        public void CloseWallpaper(CloseWallpaperMonitorRequest monitor)
+        {
+            try
+            {
+                _ = client.CloseWallpaperMonitor(monitor);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
         }
 
         public async Task<List<ScreenModel>> GetScreens()

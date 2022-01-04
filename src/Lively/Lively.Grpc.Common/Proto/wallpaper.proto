@@ -5,6 +5,10 @@ import "google/protobuf/empty.proto";
 service DesktopService {
   rpc SetWallpaper (SetWallpaperRequest) returns (SetWallpaperResponse);
   rpc GetWallpapers (google.protobuf.Empty) returns (stream WallpaperModel);
+  rpc CloseAllWallpapers(CloseAllWallpapersRequest) returns (google.protobuf.Empty);
+  rpc CloseWallpaperMonitor(CloseWallpaperMonitorRequest) returns (google.protobuf.Empty);
+  rpc CloseWallpaperLibrary(CloseWallpaperLibraryRequest) returns (google.protobuf.Empty);
+  rpc CloseWallpaperCategory(CloseWallpaperCategoryRequest) returns (google.protobuf.Empty);
   rpc GetScreens (google.protobuf.Empty) returns (stream ScreenModel);
   rpc SubscribeWallpaperChanged (google.protobuf.Empty) returns (stream WallpaperChangedModel);
 }
@@ -23,10 +27,44 @@ message WallpaperModel {
   string monitor_id = 2;
 }
 
+message CloseAllWallpapersRequest {
+	bool terminate = 1;
+}
+
+message CloseWallpaperMonitorRequest {
+	bool terminate = 1;
+    string monitor_id = 2;
+}
+
+message CloseWallpaperLibraryRequest {
+	bool terminate = 1;
+	string lively_info_path = 2;
+}
+
+message CloseWallpaperCategoryRequest {
+	bool terminate = 1;
+	WallpaperCategory Category = 2;
+}
+
 message ScreenModel {
   string device_id = 1;
 }
 
 message WallpaperChangedModel {
 	int32 count = 1;
+}
+
+enum WallpaperCategory {
+	app = 0;
+	web = 1;
+	webaudio = 2;
+	url = 3;
+	bizhawk = 4;
+	unity = 5;
+	godot = 6;
+	video = 7;
+	gif = 8;
+	unityaudio = 9;
+	videostream = 10;
+	picture = 11;
 }

@@ -60,7 +60,7 @@ namespace Lively.Core.Wallpapers
             cmdArgs.Append(model.LivelyInfo.Type == WallpaperType.url || model.LivelyInfo.Type == WallpaperType.videostream ? " --type online" : " --type local");
             cmdArgs.Append(diskCache && model.LivelyInfo.Type == WallpaperType.url ? " --cache " + "\"" + Path.Combine(Constants.CommonPaths.TempCefDir, "cache", display.Index.ToString()) + "\"" : " ");
 #if DEBUG
-            cmdArgs.Append(" --verbose-log true"); 
+            //cmdArgs.Append(" --verbose-log true"); 
 #endif
           
             ProcessStartInfo start = new ProcessStartInfo

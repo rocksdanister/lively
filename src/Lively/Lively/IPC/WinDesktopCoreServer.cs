@@ -81,6 +81,45 @@ namespace Lively.IPC
             }
         }
 
+        public override Task<Empty> CloseAllWallpapers(CloseAllWallpapersRequest request, ServerCallContext context)
+        {
+            desktopCore.CloseAllWallpapers(request.Terminate);
+            return Task.FromResult(new Empty());
+        }
+
+        public override Task<Empty> CloseWallpaperMonitor(CloseWallpaperMonitorRequest request, ServerCallContext context)
+        {
+            var display = displayManager.DisplayMonitors.FirstOrDefault(x => x.DeviceId == request.MonitorId);
+            if (display != null)
+            {
+                desktopCore.CloseWallpaper(display, request.Terminate);
+            }
+            return Task.FromResult(new Empty());
+        }
+
+        public override Task<Empty> CloseWallpaperLibrary(CloseWallpaperLibraryRequest request, ServerCallContext context)
+        {
+            var lm = ScanWallpaperFolder(request.LivelyInfoPath);
+            if (lm != null)
+            {
+                desktopCore.CloseWallpaper(lm, request.Terminate);
+            }
+            return Task.FromResult(new Empty());
+        }
+
+        public override Task<Empty> CloseWallpaperCategory(CloseWallpaperCategoryRequest request, ServerCallContext context)
+        {
+            try
+            {
+                desktopCore.CloseWallpaper((WallpaperType)((int)request.Category), request.Terminate);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.ToString());
+            }
+            return Task.FromResult(new Empty());
+        }
+
         public override async Task SubscribeWallpaperChanged(Empty _, IServerStreamWriter<WallpaperChangedModel> responseStream, ServerCallContext context)
         {
             try
