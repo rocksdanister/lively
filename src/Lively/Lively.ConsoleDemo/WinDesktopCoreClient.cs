@@ -16,15 +16,19 @@ namespace Lively.ConsoleDemo
     public class WinDesktopCoreClient : IDisposable
     {
         public event EventHandler<int> WallpaperChanged;
-        //TODO
         public event EventHandler DisplayChanged;
 
-        //private readonly List<WallpaperData> wallpapers = new List<WallpaperData>(2);
-        //public ReadOnlyCollection<WallpaperData> Wallpapers => wallpapers.AsReadOnly();
+        private readonly List<GetScreensResponse> displayMonitors = new List<GetScreensResponse>(2);
+        public ReadOnlyCollection<GetScreensResponse> DisplayMonitors => displayMonitors.AsReadOnly();
 
+        private readonly List<GetWallpapersResponse> wallpapers = new List<GetWallpapersResponse>(2);
+        public ReadOnlyCollection<GetWallpapersResponse> Wallpapers => wallpapers.AsReadOnly();
+
+        private readonly SemaphoreSlim displayChangedLock = new SemaphoreSlim(1, 1);
+        private readonly SemaphoreSlim wallpaperChangedLock = new SemaphoreSlim(1, 1);
         private readonly DesktopService.DesktopServiceClient client;
-        private readonly CancellationTokenSource cancellationTokeneWallpaperChanged;
-        private readonly Task wallpaperChangedTask;
+        private readonly CancellationTokenSource cancellationTokeneWallpaperChanged, cancellationTokeneDisplayChanged;
+        private readonly Task wallpaperChangedTask, displayChangedTask;
         private bool disposedValue;
 
         public WinDesktopCoreClient()
@@ -32,7 +36,18 @@ namespace Lively.ConsoleDemo
             client = new DesktopService.DesktopServiceClient(GetChannel());
 
             cancellationTokeneWallpaperChanged = new CancellationTokenSource();
-            wallpaperChangedTask = Task.Run(() => SubscribeWallpaperChangedServer(cancellationTokeneWallpaperChanged.Token));
+            wallpaperChangedTask = Task.Run(() => SubscribeWallpaperChangedStream(cancellationTokeneWallpaperChanged.Token));
+
+            cancellationTokeneDisplayChanged = new CancellationTokenSource();
+            displayChangedTask = Task.Run(() => SubscribeDisplayChangedStream(cancellationTokeneDisplayChanged.Token));
+
+            _ = Initialize();
+        }
+
+        private async Task Initialize()
+        {
+            displayMonitors.AddRange(await GetScreens());
+            wallpapers.AddRange(await GetWallpapers());
         }
 
         public async Task<bool> SetWallpaper(string livelyInfoPath, string monitorId)
@@ -59,9 +74,9 @@ namespace Lively.ConsoleDemo
         public async Task<bool> SetWallpaper(ILibraryModel item, IDisplayMonitor display) => 
             await SetWallpaper(item.LivelyInfoFolderPath, display.DeviceId);
 
-        public async Task<List<WallpaperModel>> GetWallpapers()
+        private async Task<List<GetWallpapersResponse>> GetWallpapers()
         {
-            var wallpapers = new List<WallpaperModel>();
+            var wallpapers = new List<GetWallpapersResponse>();
             try
             {
                 using var call = client.GetWallpapers(new Empty());
@@ -136,9 +151,9 @@ namespace Lively.ConsoleDemo
         }
 
         //TODO: hook it into an event and store it as a list.
-        public async Task<List<IDisplayMonitor>> GetScreens()
+        private async Task<List<GetScreensResponse>> GetScreens()
         {
-            var screens = new List<ScreenModel>();
+            var screens = new List<GetScreensResponse>();
             try
             {
                 using var call = client.GetScreens(new Empty());
@@ -152,24 +167,73 @@ namespace Lively.ConsoleDemo
             {
                 Console.WriteLine(e.ToString());
             }
-
+            return screens;
+            /*
             var displayMonitors = new List<IDisplayMonitor>();
             foreach (var screen in screens)
             {
-                displayMonitors.Add(new DisplayMonitor() { DeviceId = screen.DeviceId });
+                displayMonitors.Add(new DisplayMonitor() 
+                { 
+                    DeviceId = screen.DeviceId,
+                    DisplayName = screen.DisplayName,
+                    //DeviceName = screen.DeviceName,
+                    HMonitor = new IntPtr(screen.HMonitor),
+                    IsPrimary = screen.IsPrimary,
+                    Index = screen.Index,
+                });
             }
             return displayMonitors;
+            */
         }
 
-        private async Task SubscribeWallpaperChangedServer(CancellationToken token)
+        private async Task SubscribeWallpaperChangedStream(CancellationToken token)
         {
             try
             {
                 using var call = client.SubscribeWallpaperChanged(new Empty());
                 while (await call.ResponseStream.MoveNext(token))
                 {
-                    var response = call.ResponseStream.Current;
-                    WallpaperChanged?.Invoke(this, response.Count);
+                    await wallpaperChangedLock.WaitAsync();
+                    try
+                    {
+                        var response = call.ResponseStream.Current;
+
+                        wallpapers.Clear();
+                        wallpapers.AddRange(await GetWallpapers());
+                        WallpaperChanged?.Invoke(this, response.Count);
+                    }
+                    finally
+                    {
+                        wallpaperChangedLock.Release();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+        }
+
+        private async Task SubscribeDisplayChangedStream(CancellationToken token)
+        {
+            try
+            {
+                using var call = client.SubscribeDisplayChanged(new Empty());
+                while (await call.ResponseStream.MoveNext(token))
+                {
+                    await displayChangedLock.WaitAsync();
+                    try
+                    {
+                        var response = call.ResponseStream.Current;
+
+                        displayMonitors.Clear();
+                        displayMonitors.AddRange(await GetScreens());
+                        DisplayChanged?.Invoke(this, EventArgs.Empty);
+                    }
+                    finally
+                    {
+                        displayChangedLock.Release();
+                    }
                 }
             }
             catch (Exception e)
@@ -193,7 +257,9 @@ namespace Lively.ConsoleDemo
                 {
                     // TODO: dispose managed state (managed objects)
                     cancellationTokeneWallpaperChanged?.Cancel();
+                    cancellationTokeneDisplayChanged?.Cancel();
                     wallpaperChangedTask?.Wait(100);
+                    displayChangedTask?.Wait(100);
                 }
 
                 // TODO: free unmanaged resources (unmanaged objects) and override finalizer
