@@ -1,4 +1,5 @@
 ﻿using System;
+using Lively.Grpc.Client;
 using System.Threading.Tasks;
 
 namespace Lively.ConsoleDemo
@@ -8,7 +9,7 @@ namespace Lively.ConsoleDemo
         static async Task Main(string[] args)
         {
             using var client = new WinDesktopCoreClient();
-            client.WallpaperChanged += (s, e) => Console.WriteLine("\nWallpaper Changed Event: " + e);
+            client.WallpaperChanged += (s, e) => Console.WriteLine("\nWallpaper Changed Event");
             client.DisplayChanged += (s, e) => Console.WriteLine("\nDisplay Changed Event.");
 
             bool showMenu = true;
@@ -31,8 +32,7 @@ namespace Lively.ConsoleDemo
                             Console.WriteLine("\nEnter wallpaper metadata path:");
                             //Example: C:\Users\rocks\AppData\Local\Lively Wallpaper_v2\Library\wallpapers\iqdvd4pt.jyo
                             var path = Console.ReadLine();
-                            var status = await client.SetWallpaper(path, displayId);
-                            Console.WriteLine("SetWallpaper: " + status);
+                            await client.SetWallpaper(path, displayId);
                         }
                         break;
                     case "2":
@@ -47,7 +47,7 @@ namespace Lively.ConsoleDemo
                         {
                             foreach (var item in client.DisplayMonitors)
                             {
-                                Console.WriteLine("GetScreens: " + item.DeviceId);
+                                Console.WriteLine("GetScreens: " + item.DeviceId + " " + item.Bounds);
                             }
                         }
                         break;

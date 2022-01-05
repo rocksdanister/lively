@@ -12,7 +12,9 @@ using Lively.Services;
 using Lively.WndMsg;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Diagnostics;
 using System.IO;
+using System.Threading;
 using System.Windows;
 
 namespace Lively
@@ -23,6 +25,8 @@ namespace Lively
     public partial class App : Application
     {
         private readonly NamedPipeServer grpcServer;
+        private readonly Mutex mutex = new Mutex(false, Constants.SingleInstance.UniqueAppName);
+
         private readonly IServiceProvider _serviceProvider;
         /// <summary>
         /// Gets the <see cref="IServiceProvider"/> instance for the current application instance.
@@ -38,6 +42,33 @@ namespace Lively
 
         public App()
         {
+            try
+            {
+                //wait a few seconds in case application instance is just shutting down..
+                if (!mutex.WaitOne(TimeSpan.FromSeconds(1), false))
+                {
+                    try
+                    {
+                        //TODO: Launch UI program if not open already.
+
+                        //skipping first element (application path.)
+                        //var args = Environment.GetCommandLineArgs().Skip(1).ToArray();
+                        //PipeClient.SendMessage(Constants.SingleInstance.PipeServerName, args.Length != 0 ? args : new string[] { "--showApp", "true" });
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show($"Failed to communicate with IPC Server/ Client Program: {e.Message}", "Lively Wallpaper");
+                    }
+                    ShutDown();
+                    return;
+                }
+            }
+            catch (AbandonedMutexException e)
+            {
+                //unexpected app termination.
+                Debug.WriteLine(e.Message);
+            }
+
             //App() -> OnStartup() -> App.Startup event.
             _serviceProvider = ConfigureServices();
             grpcServer = ConfigureGrpcServer();
@@ -110,8 +141,13 @@ namespace Lively
 
         public static void ShutDown()
         {
+            try
+            {
+                ((ServiceProvider)App.Services)?.Dispose();
+            }
+            catch (InvalidOperationException) { /* not initialised */ }
             ((App)Current).grpcServer?.Dispose();
-            ((ServiceProvider)App.Services)?.Dispose();
+            //Shutdown needs to be called from dispatcher..
             Application.Current.Dispatcher.Invoke(Application.Current.Shutdown);
         }
     }

@@ -3,14 +3,14 @@ package Desktop;
 import "google/protobuf/empty.proto";
 
 service DesktopService {
-  rpc SetWallpaper (SetWallpaperRequest) returns (SetWallpaperResponse);
+  rpc SetWallpaper (SetWallpaperRequest) returns (google.protobuf.Empty);
   rpc GetWallpapers (google.protobuf.Empty) returns (stream GetWallpapersResponse);
   rpc CloseAllWallpapers(CloseAllWallpapersRequest) returns (google.protobuf.Empty);
   rpc CloseWallpaperMonitor(CloseWallpaperMonitorRequest) returns (google.protobuf.Empty);
   rpc CloseWallpaperLibrary(CloseWallpaperLibraryRequest) returns (google.protobuf.Empty);
   rpc CloseWallpaperCategory(CloseWallpaperCategoryRequest) returns (google.protobuf.Empty);
   rpc GetScreens (google.protobuf.Empty) returns (stream GetScreensResponse);
-  rpc SubscribeWallpaperChanged (google.protobuf.Empty) returns (stream WallpaperChangedResponse);
+  rpc SubscribeWallpaperChanged (google.protobuf.Empty) returns (stream google.protobuf.Empty);
   rpc SubscribeDisplayChanged (google.protobuf.Empty) returns (stream google.protobuf.Empty);
   rpc ShutDown (google.protobuf.Empty) returns (google.protobuf.Empty);
 }
@@ -18,10 +18,6 @@ service DesktopService {
 message SetWallpaperRequest {
   string lively_info_path = 1;
   string monitor_id = 2;
-}
-
-message SetWallpaperResponse {
-	bool status = 1;
 }
 
 message GetWallpapersResponse {
@@ -55,11 +51,19 @@ message GetScreensResponse {
   int32 h_monitor = 4;
   int32 index = 5;
   bool is_primary = 6;
-  //Rectangle bounds, workingarea
+  Rectangle bounds = 7;
+  Rectangle working_area = 8;
 }
 
-message WallpaperChangedResponse {
-	int32 count = 1;
+message Rectangle {
+	int32 x = 1;
+	int32 y = 2;
+	int32 width = 3;
+	int32 height = 4;
+	//int32 bottom = 1;
+	//int32 left = 3;
+	//int32 right = 4;
+	//int32 top = 5;
 }
 
 enum WallpaperCategory {
