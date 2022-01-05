@@ -11,11 +11,11 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Lively.ConsoleDemo
+namespace Lively.Grpc.Client
 {
     public class WinDesktopCoreClient : IDisposable
     {
-        public event EventHandler<int> WallpaperChanged;
+        public event EventHandler WallpaperChanged;
         public event EventHandler DisplayChanged;
 
         private readonly List<GetScreensResponse> displayMonitors = new List<GetScreensResponse>(2);
@@ -35,24 +35,21 @@ namespace Lively.ConsoleDemo
         {
             client = new DesktopService.DesktopServiceClient(GetChannel());
 
+            Task.Run(async () =>
+            {
+                displayMonitors.AddRange(await GetScreens());
+                wallpapers.AddRange(await GetWallpapers());
+            }).Wait();
+
             cancellationTokeneWallpaperChanged = new CancellationTokenSource();
             wallpaperChangedTask = Task.Run(() => SubscribeWallpaperChangedStream(cancellationTokeneWallpaperChanged.Token));
 
             cancellationTokeneDisplayChanged = new CancellationTokenSource();
             displayChangedTask = Task.Run(() => SubscribeDisplayChangedStream(cancellationTokeneDisplayChanged.Token));
-
-            _ = Initialize();
         }
 
-        private async Task Initialize()
+        public async Task SetWallpaper(string livelyInfoPath, string monitorId)
         {
-            displayMonitors.AddRange(await GetScreens());
-            wallpapers.AddRange(await GetWallpapers());
-        }
-
-        public async Task<bool> SetWallpaper(string livelyInfoPath, string monitorId)
-        {
-            bool status = false;
             try
             {
                 var request = new SetWallpaperRequest
@@ -62,16 +59,14 @@ namespace Lively.ConsoleDemo
                 };
 
                 var response = await client.SetWallpaperAsync(request);
-                status = response.Status;
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.ToString());
             }
-            return status;
         }
 
-        public async Task<bool> SetWallpaper(ILibraryModel item, IDisplayMonitor display) => 
+        public async Task SetWallpaper(ILibraryModel item, IDisplayMonitor display) => 
             await SetWallpaper(item.LivelyInfoFolderPath, display.DeviceId);
 
         private async Task<List<GetWallpapersResponse>> GetWallpapers()
@@ -200,7 +195,7 @@ namespace Lively.ConsoleDemo
 
                         wallpapers.Clear();
                         wallpapers.AddRange(await GetWallpapers());
-                        WallpaperChanged?.Invoke(this, response.Count);
+                        WallpaperChanged?.Invoke(this, EventArgs.Empty);
                     }
                     finally
                     {

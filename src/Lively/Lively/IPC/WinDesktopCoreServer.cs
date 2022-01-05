@@ -31,18 +31,14 @@ namespace Lively.IPC
             this.displayManager = displayManager;
         }
 
-        public override Task<SetWallpaperResponse> SetWallpaper(SetWallpaperRequest request, ServerCallContext context)
+        public override Task<Empty> SetWallpaper(SetWallpaperRequest request, ServerCallContext context)
         {
             //TEST
             var lm = ScanWallpaperFolder(request.LivelyInfoPath);
             var display = displayManager.DisplayMonitors.FirstOrDefault(x => x.DeviceId == request.MonitorId);
             desktopCore.SetWallpaper(lm, display ?? displayManager.PrimaryDisplayMonitor);
 
-            return Task.FromResult(new SetWallpaperResponse
-            {
-                //TODO
-                Status = true,
-            });
+            return Task.FromResult(new Empty());
         }
 
         public override Task<Empty> ShutDown(Empty _, ServerCallContext context)
@@ -90,6 +86,20 @@ namespace Lively.IPC
                         DisplayName = display.DisplayName,
                         HMonitor = display.HMonitor.ToInt32(),
                         IsPrimary = display.IsPrimary,
+                        WorkingArea = new Rectangle() 
+                        { 
+                            X = display.WorkingArea.X, 
+                            Y = display.WorkingArea.Y, 
+                            Width = display.WorkingArea.Width, 
+                            Height = display.WorkingArea.Height
+                        },
+                        Bounds = new Rectangle()
+                        {
+                            X = display.Bounds.X,
+                            Y = display.Bounds.Y,
+                            Width = display.Bounds.Width,
+                            Height = display.Bounds.Height
+                        }
                     };
                     await responseStream.WriteAsync(item);
                 }
@@ -139,7 +149,7 @@ namespace Lively.IPC
             return Task.FromResult(new Empty());
         }
 
-        public override async Task SubscribeWallpaperChanged(Empty _, IServerStreamWriter<WallpaperChangedResponse> responseStream, ServerCallContext context)
+        public override async Task SubscribeWallpaperChanged(Empty _, IServerStreamWriter<Empty> responseStream, ServerCallContext context)
         {
             try
             {
@@ -154,11 +164,7 @@ namespace Lively.IPC
                     }
                     await tcs.Task;
 
-                    var response = new WallpaperChangedResponse
-                    {
-                        Count = desktopCore.Wallpapers.Count,
-                    };
-                    await responseStream.WriteAsync(response);
+                    await responseStream.WriteAsync(new Empty());
                 }
             }
             catch (Exception e)
