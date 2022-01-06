@@ -12,6 +12,7 @@ service DesktopService {
   rpc GetScreens (google.protobuf.Empty) returns (stream GetScreensResponse);
   rpc SubscribeWallpaperChanged (google.protobuf.Empty) returns (stream google.protobuf.Empty);
   rpc SubscribeDisplayChanged (google.protobuf.Empty) returns (stream google.protobuf.Empty);
+  rpc ShowUI (google.protobuf.Empty) returns (google.protobuf.Empty);
   rpc ShutDown (google.protobuf.Empty) returns (google.protobuf.Empty);
 }
 

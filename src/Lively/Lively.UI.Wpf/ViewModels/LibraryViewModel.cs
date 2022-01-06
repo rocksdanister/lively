@@ -12,6 +12,7 @@ using Lively.Common;
 using Lively.Common.Helpers.Files;
 using Lively.Common.Helpers.Storage;
 using Lively.Common.Helpers.Archive;
+using Lively.Grpc.Client;
 
 namespace Lively.UI.Wpf.ViewModels
 {
@@ -26,8 +27,12 @@ namespace Lively.UI.Wpf.ViewModels
                 Path.Combine(WallpaperDir, "saveData", "wptmp")
             };
 
-        public LibraryViewModel()
+        private readonly IDesktopCoreClient desktopCore;
+
+        public LibraryViewModel(IDesktopCoreClient desktopCore)
         {
+            this.desktopCore = desktopCore;
+
             foreach (var item in ScanWallpaperFolders(wallpaperScanFolders))
             {
                 LibraryItems.Add(item);
@@ -53,14 +58,10 @@ namespace Lively.UI.Wpf.ViewModels
         private LibraryModel _selectedItem;
         public LibraryModel SelectedItem
         {
-            get
-            {
-                return _selectedItem;
-            }
+            get => _selectedItem;
             set
             {
-                //var client = new Grpc.Client.WinDesktopCoreClient();
-                ///_= client.SetWallpaper(value.LivelyInfoFolderPath, "test_id");
+                _ = desktopCore.SetWallpaper(value.LivelyInfoFolderPath, desktopCore.DisplayMonitors[0].DeviceId);
                 _selectedItem = value;
                 OnPropertyChanged();
             }

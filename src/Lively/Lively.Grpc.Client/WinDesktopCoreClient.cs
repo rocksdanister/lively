@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Lively.Grpc.Client
 {
-    public class WinDesktopCoreClient : IDisposable
+    public class WinDesktopCoreClient : IDesktopCoreClient
     {
         public event EventHandler WallpaperChanged;
         public event EventHandler DisplayChanged;
@@ -33,7 +33,7 @@ namespace Lively.Grpc.Client
 
         public WinDesktopCoreClient()
         {
-            client = new DesktopService.DesktopServiceClient(GetChannel());
+            client = new DesktopService.DesktopServiceClient(new NamedPipeChannel(".", Constants.SingleInstance.GrpcPipeServerName));
 
             Task.Run(async () =>
             {
@@ -66,7 +66,7 @@ namespace Lively.Grpc.Client
             }
         }
 
-        public async Task SetWallpaper(ILibraryModel item, IDisplayMonitor display) => 
+        public async Task SetWallpaper(ILibraryModel item, IDisplayMonitor display) =>
             await SetWallpaper(item.LivelyInfoFolderPath, display.DeviceId);
 
         private async Task<List<GetWallpapersResponse>> GetWallpapers()
@@ -104,9 +104,11 @@ namespace Lively.Grpc.Client
         {
             try
             {
-                await client.CloseWallpaperCategoryAsync(new CloseWallpaperCategoryRequest() { 
-                    Category = (WallpaperCategory)((int)type), 
-                    Terminate = terminate }
+                await client.CloseWallpaperCategoryAsync(new CloseWallpaperCategoryRequest()
+                {
+                    Category = (WallpaperCategory)((int)type),
+                    Terminate = terminate
+                }
                 );
             }
             catch (Exception e)
@@ -119,7 +121,8 @@ namespace Lively.Grpc.Client
         {
             try
             {
-                await client.CloseWallpaperLibraryAsync(new CloseWallpaperLibraryRequest() {
+                await client.CloseWallpaperLibraryAsync(new CloseWallpaperLibraryRequest()
+                {
                     LivelyInfoPath = item.LivelyInfoFolderPath,
                     Terminate = terminate
                 });
@@ -134,7 +137,8 @@ namespace Lively.Grpc.Client
         {
             try
             {
-                await client.CloseWallpaperMonitorAsync(new CloseWallpaperMonitorRequest() { 
+                await client.CloseWallpaperMonitorAsync(new CloseWallpaperMonitorRequest()
+                {
                     MonitorId = monitor.DeviceId,
                     Terminate = terminate
                 });
@@ -278,12 +282,5 @@ namespace Lively.Grpc.Client
         }
 
         #endregion //dispose
-
-        #region helpers
-
-        private static NamedPipeChannel GetChannel() =>
-            new NamedPipeChannel(".", Constants.SingleInstance.GrpcPipeServerName);
-
-        #endregion //helpers
     }
 }
