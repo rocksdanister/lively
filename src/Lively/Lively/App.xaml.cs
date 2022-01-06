@@ -1,6 +1,5 @@
 ﻿using GrpcDotNetNamedPipes;
 using Lively.Common;
-using Lively.Common.Helpers.Storage;
 using Lively.Core;
 using Lively.Core.Display;
 using Lively.Core.Suspend;
@@ -49,7 +48,8 @@ namespace Lively
                 {
                     try
                     {
-                        //TODO: Launch UI program if not open already.
+                        _ = new Desktop.DesktopService.DesktopServiceClient(new NamedPipeChannel(".", Constants.SingleInstance.GrpcPipeServerName)).
+                            ShowUIAsync(new Google.Protobuf.WellKnownTypes.Empty());
 
                         //skipping first element (application path.)
                         //var args = Environment.GetCommandLineArgs().Skip(1).ToArray();
@@ -57,7 +57,7 @@ namespace Lively
                     }
                     catch (Exception e)
                     {
-                        MessageBox.Show($"Failed to communicate with IPC Server/ Client Program: {e.Message}", "Lively Wallpaper");
+                        _ = MessageBox.Show($"Failed to communicate with Core:\n{e.Message}", "Lively Wallpaper");
                     }
                     ShutDown();
                     return;
@@ -90,6 +90,7 @@ namespace Lively
             Services.GetRequiredService<WndProcMsgWindow>().Show();
             Services.GetRequiredService<RawInputMsgWindow>().Show();
             Services.GetRequiredService<IPlayback>().Start();
+            Services.GetRequiredService<ISystray>();
         }
 
         private IServiceProvider ConfigureServices()
@@ -103,7 +104,8 @@ namespace Lively
                 .AddSingleton<IDisplayManager, DisplayManager>()
                 .AddSingleton<IScreensaverService, ScreensaverService>()
                 .AddSingleton<IPlayback, Playback>()
-                //.AddSingleton<ISystray, Systray>()
+                .AddSingleton<IRunnerService, RunnerService>()
+                .AddSingleton<ISystray, Systray>()
                 //.AddSingleton<LibraryViewModel>() //loaded wallpapers etc..
                 .AddSingleton<RawInputMsgWindow>()
                 .AddSingleton<WndProcMsgWindow>()
@@ -119,7 +121,8 @@ namespace Lively
                 /*
                 .AddLogging(loggingBuilder =>
                 {
-                    // configure Logging with NLog
+                    // configure Logging with
+                NLog
                     loggingBuilder.ClearProviders();
                     loggingBuilder.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
                     loggingBuilder.AddNLog("Nlog.config");

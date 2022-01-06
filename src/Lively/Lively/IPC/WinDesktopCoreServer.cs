@@ -17,6 +17,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Threading;
 using System.Threading;
+using Lively.Services;
 
 namespace Lively.IPC
 {
@@ -24,11 +25,13 @@ namespace Lively.IPC
     {
         private readonly IDesktopCore desktopCore;
         private readonly IDisplayManager displayManager;
+        private readonly IRunnerService runner;
 
-        public WinDesktopCoreServer(IDesktopCore desktopCore, IDisplayManager displayManager)
+        public WinDesktopCoreServer(IDesktopCore desktopCore, IDisplayManager displayManager, IRunnerService runner)
         {
             this.desktopCore = desktopCore;
             this.displayManager = displayManager;
+            this.runner = runner;
         }
 
         public override Task<Empty> SetWallpaper(SetWallpaperRequest request, ServerCallContext context)
@@ -51,6 +54,12 @@ namespace Lively.IPC
             {
                 App.ShutDown();
             }
+        }
+
+        public override Task<Empty> ShowUI(Empty _, ServerCallContext context)
+        {
+            runner.ShowUI();
+            return Task.FromResult(new Empty());
         }
 
         public override async Task GetWallpapers(Empty _, IServerStreamWriter<GetWallpapersResponse> responseStream, ServerCallContext context)
