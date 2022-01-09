@@ -9,6 +9,8 @@ namespace Lively.Services
 {
     public class RunnerService : IRunnerService
     {
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+
         private Process processUI;
         private bool disposedValue;
 
@@ -37,49 +39,37 @@ namespace Lively.Services
                     StartInfo = new ProcessStartInfo
                     {
                         FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "UI", "Lively.UI.Wpf.exe"),
-                        //RedirectStandardInput = true,
-                        //RedirectStandardOutput = true,
-                        //RedirectStandardError = true,
+                        RedirectStandardInput = true,
+                        RedirectStandardOutput = true,
+                        RedirectStandardError = true,
                         UseShellExecute = false,
                         WorkingDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "UI")
                     },
                     EnableRaisingEvents = true
                 };
                 processUI.Exited += Proc_UI_Exited;
+                processUI.OutputDataReceived += Proc_OutputDataReceived;
                 processUI.Start();
+                processUI.BeginOutputReadLine();
+            }
+        }
+
+        private void Proc_OutputDataReceived(object sender, DataReceivedEventArgs e)
+        {
+            //When the redirected stream is closed, a null line is sent to the event handler.
+            if (!string.IsNullOrEmpty(e.Data))
+            {
+                Logger.Info($"UI: {e.Data}");
             }
         }
 
         private void Proc_UI_Exited(object sender, EventArgs e)
         {
+            processUI.Exited -= Proc_UI_Exited;
+            processUI.OutputDataReceived -= Proc_OutputDataReceived;
             processUI?.Dispose();
             processUI = null;
         }
-
-        #region helpers
-
-        private IntPtr FindWindowByProcessId(int pid)
-        {
-            IntPtr HWND = IntPtr.Zero;
-            NativeMethods.EnumWindows(new NativeMethods.EnumWindowsProc((tophandle, topparamhandle) =>
-            {
-                _ = NativeMethods.GetWindowThreadProcessId(tophandle, out int cur_pid);
-                if (cur_pid == pid)
-                {
-                    if (NativeMethods.IsWindowVisible(tophandle))
-                    {
-                        HWND = tophandle;
-                        return false;
-                    }
-                }
-
-                return true;
-            }), IntPtr.Zero);
-
-            return HWND;
-        }
-
-        #endregion //helpers
 
         #region dispose
 

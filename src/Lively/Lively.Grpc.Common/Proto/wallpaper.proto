@@ -9,9 +9,7 @@ service DesktopService {
   rpc CloseWallpaperMonitor(CloseWallpaperMonitorRequest) returns (google.protobuf.Empty);
   rpc CloseWallpaperLibrary(CloseWallpaperLibraryRequest) returns (google.protobuf.Empty);
   rpc CloseWallpaperCategory(CloseWallpaperCategoryRequest) returns (google.protobuf.Empty);
-  rpc GetScreens (google.protobuf.Empty) returns (stream GetScreensResponse);
   rpc SubscribeWallpaperChanged (google.protobuf.Empty) returns (stream google.protobuf.Empty);
-  rpc SubscribeDisplayChanged (google.protobuf.Empty) returns (stream google.protobuf.Empty);
   rpc ShowUI (google.protobuf.Empty) returns (google.protobuf.Empty);
   rpc ShutDown (google.protobuf.Empty) returns (google.protobuf.Empty);
 }
@@ -24,6 +22,9 @@ message SetWallpaperRequest {
 message GetWallpapersResponse {
   string lively_info_path = 1;
   string monitor_id = 2;
+  string property_copy_path = 3;
+  string thumbnail_path = 4;
+  string preview_path = 5;
 }
 
 message CloseAllWallpapersRequest {
@@ -43,28 +44,6 @@ message CloseWallpaperLibraryRequest {
 message CloseWallpaperCategoryRequest {
 	bool terminate = 1;
 	WallpaperCategory Category = 2;
-}
-
-message GetScreensResponse {
-  string device_id = 1;
-  string device_name = 2;
-  string display_name = 3;
-  int32 h_monitor = 4;
-  int32 index = 5;
-  bool is_primary = 6;
-  Rectangle bounds = 7;
-  Rectangle working_area = 8;
-}
-
-message Rectangle {
-	int32 x = 1;
-	int32 y = 2;
-	int32 width = 3;
-	int32 height = 4;
-	//int32 bottom = 1;
-	//int32 left = 3;
-	//int32 right = 4;
-	//int32 top = 5;
 }
 
 enum WallpaperCategory {

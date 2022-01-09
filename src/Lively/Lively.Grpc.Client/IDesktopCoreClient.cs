@@ -9,10 +9,8 @@ namespace Lively.Grpc.Client
 {
     public interface IDesktopCoreClient : IDisposable
     {
-        ReadOnlyCollection<GetScreensResponse> DisplayMonitors { get; }
         ReadOnlyCollection<GetWallpapersResponse> Wallpapers { get; }
 
-        event EventHandler DisplayChanged;
         event EventHandler WallpaperChanged;
 
         Task CloseAllWallpapers(bool terminate = false);

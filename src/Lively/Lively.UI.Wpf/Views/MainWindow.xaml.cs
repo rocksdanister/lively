@@ -1,4 +1,5 @@
 ﻿using Lively.UI.Wpf.Views.Pages;
+using Microsoft.Extensions.DependencyInjection;
 using ModernWpf.Controls;
 using ModernWpf.Media.Animation;
 using System;
@@ -30,6 +31,12 @@ namespace Lively.UI.Wpf.Views
             InitializeComponent();
 
             this.ContentRendered += (s, e) => NavViewNavigate("library");
+            this.Closing += (s, e) => App.ShutDown();
+        }
+
+        private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void MyNavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
@@ -91,10 +98,44 @@ namespace Lively.UI.Wpf.Views
             //TODO
         }
 
+        #region wallpaper statusbar
+
+        private Screen.ScreenLayoutView layoutWindow;
+        public void ShowControlPanelDialog()
+        {
+            if (layoutWindow == null)
+            {
+                var appWindow = App.Services.GetRequiredService<MainWindow>();
+                layoutWindow = new Screen.ScreenLayoutView();
+                if (appWindow.IsVisible)
+                {
+                    layoutWindow.Owner = appWindow;
+                    layoutWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                    layoutWindow.Width = appWindow.Width / 1.5;
+                    layoutWindow.Height = appWindow.Height / 1.5;
+                }
+                else
+                {
+                    layoutWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                }
+                layoutWindow.Closed += (s, e) => {
+                    layoutWindow = null;
+                    this.Activate();
+                };
+                layoutWindow.Show();
+            }
+            else
+            {
+                layoutWindow.Activate();
+            }
+        }
+
         private void statusBtn_Click(object sender, RoutedEventArgs e)
         {
-            //ShowControlPanelDialog();
+            ShowControlPanelDialog();
         }
+
+        #endregion //wallpaper statusbar
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {

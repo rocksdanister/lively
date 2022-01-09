@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Proto\display.proto" />
     <None Remove="Proto\settings.proto" />
     <None Remove="Proto\wallpaper.proto" />
   </ItemGroup>
@@ -24,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Protobuf Include="Proto\display.proto" />
     <Protobuf Include="Proto\settings.proto" />
     <Protobuf Include="Proto\wallpaper.proto" />
   </ItemGroup>

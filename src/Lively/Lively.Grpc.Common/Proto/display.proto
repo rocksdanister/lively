@@ -1,0 +1,30 @@
+﻿syntax = "proto3";
+package Lively.Grpc.Common.Proto.Display;
+import "google/protobuf/empty.proto";
+
+service DisplayService {
+  rpc GetScreens (google.protobuf.Empty) returns (stream GetScreensResponse);
+  rpc SubscribeDisplayChanged (google.protobuf.Empty) returns (stream google.protobuf.Empty);
+}
+
+message GetScreensResponse {
+  string device_id = 1;
+  string device_name = 2;
+  string display_name = 3;
+  int32 h_monitor = 4;
+  int32 index = 5;
+  bool is_primary = 6;
+  Rectangle bounds = 7;
+  Rectangle working_area = 8;
+}
+
+message Rectangle {
+	int32 x = 1;
+	int32 y = 2;
+	int32 width = 3;
+	int32 height = 4;
+	//int32 bottom = 1;
+	//int32 left = 3;
+	//int32 right = 4;
+	//int32 top = 5;
+}
