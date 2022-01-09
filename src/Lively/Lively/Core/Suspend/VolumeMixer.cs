@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace livelywpf.Core.Suspend
+namespace Lively.Core.Suspend
 {
     //credit: https://stackoverflow.com/questions/14306048/controlling-volume-mixer
     public class VolumeMixer

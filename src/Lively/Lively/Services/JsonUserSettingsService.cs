@@ -1,5 +1,6 @@
 ﻿using Lively.Common;
 using Lively.Common.Helpers.Storage;
+using Lively.Core.Display;
 using Lively.Models;
 using System;
 using System.Collections.Generic;
@@ -14,12 +15,14 @@ namespace Lively.Services
         private readonly string wallpaperLayoutPath = Constants.CommonPaths.WallpaperLayoutPath;
         //private readonly string weatherPath = Constants.CommonPaths.WeatherSettingsPath;
 
-        public JsonUserSettingsService()
+        public JsonUserSettingsService(IDisplayManager displayManager)
         {
             Load<ISettingsModel>();
             //Load<IWeatherModel>();
             Load<List<IApplicationRulesModel>>();
             Load<List<IWallpaperLayoutModel>>();
+
+            Settings.SelectedDisplay ??= displayManager.PrimaryDisplayMonitor;
         }
 
         public ISettingsModel Settings { get; private set; }

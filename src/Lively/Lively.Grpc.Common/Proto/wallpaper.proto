@@ -1,5 +1,5 @@
 ﻿syntax = "proto3";
-package Desktop;
+package Lively.Grpc.Common.Proto.Desktop;
 import "google/protobuf/empty.proto";
 
 service DesktopService {

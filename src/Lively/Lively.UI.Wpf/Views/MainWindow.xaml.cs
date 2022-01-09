@@ -34,19 +34,17 @@ namespace Lively.UI.Wpf.Views
 
         private void MyNavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
-            /*
             var navView = (ModernWpf.Controls.NavigationView)sender;
 
             if (args.IsSettingsInvoked)
             {
-                ContentFrame.Navigate(typeof(livelywpf.Views.Pages.SettingsView), new Uri("Views/SettingsView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
+                ContentFrame.Navigate(typeof(SettingsView), new Uri("Views/SettingsView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
             }
             else if (args.InvokedItemContainer != null)
             {
                 var navItemTag = args.InvokedItemContainer.Tag.ToString();
                 NavigatePage(navItemTag);
             }
-            */
         }
 
         public void NavViewNavigate(string tag)

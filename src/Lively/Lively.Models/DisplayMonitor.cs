@@ -31,7 +31,12 @@ namespace Lively.Models
             set => SetProperty(ref deviceId, value);
         }
 
-        public string DeviceName { get; }//{ get; init; }
+        private string deviceName = string.Empty;
+        public string DeviceName
+        {
+            get => deviceName;
+            set => SetProperty(ref deviceName, value);
+        }
 
         private string displayName = string.Empty;
 

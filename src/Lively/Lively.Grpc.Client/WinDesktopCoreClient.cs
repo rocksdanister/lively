@@ -1,8 +1,8 @@
-﻿using Desktop;
-using Google.Protobuf.WellKnownTypes;
+﻿using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 using GrpcDotNetNamedPipes;
 using Lively.Common;
+using Lively.Grpc.Common.Proto.Desktop;
 using Lively.Models;
 using System;
 using System.Collections.Generic;
@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace Lively.Grpc.Client
 {
+    //TODO: don't catch exceptions, just throw.
     public class WinDesktopCoreClient : IDesktopCoreClient
     {
         public event EventHandler WallpaperChanged;

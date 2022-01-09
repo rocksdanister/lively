@@ -5,7 +5,8 @@ using Lively.Core.Display;
 using Lively.Core.Suspend;
 using Lively.Core.Watchdog;
 using Lively.Factories;
-using Lively.IPC;
+using Lively.Grpc.Common.Proto.Desktop;
+using Lively.RPC;
 using Lively.Models;
 using Lively.Services;
 using Lively.WndMsg;
@@ -15,6 +16,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Windows;
+using Lively.Grpc.Common.Proto.Settings;
 
 namespace Lively
 {
@@ -48,7 +50,7 @@ namespace Lively
                 {
                     try
                     {
-                        _ = new Desktop.DesktopService.DesktopServiceClient(new NamedPipeChannel(".", Constants.SingleInstance.GrpcPipeServerName)).
+                        _ = new DesktopService.DesktopServiceClient(new NamedPipeChannel(".", Constants.SingleInstance.GrpcPipeServerName)).
                             ShowUIAsync(new Google.Protobuf.WellKnownTypes.Empty());
 
                         //skipping first element (application path.)
@@ -110,6 +112,7 @@ namespace Lively
                 .AddSingleton<RawInputMsgWindow>()
                 .AddSingleton<WndProcMsgWindow>()
                 .AddSingleton<WinDesktopCoreServer>()
+                .AddSingleton<UserSettingsServer>()
                 //transient
                 //.AddTransient<IApplicationsRulesFactory, ApplicationsRulesFactory>()
                 .AddTransient<IWallpaperFactory, WallpaperFactory>()
@@ -136,7 +139,8 @@ namespace Lively
         private NamedPipeServer ConfigureGrpcServer()
         {
             var server = new NamedPipeServer(Constants.SingleInstance.GrpcPipeServerName);
-            Desktop.DesktopService.BindService(server.ServiceBinder, Services.GetRequiredService<WinDesktopCoreServer>());
+            DesktopService.BindService(server.ServiceBinder, Services.GetRequiredService<WinDesktopCoreServer>());
+            SettingsService.BindService(server.ServiceBinder, Services.GetRequiredService<UserSettingsServer>());
             server.Start();
 
             return server;

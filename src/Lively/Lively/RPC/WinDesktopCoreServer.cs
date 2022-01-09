@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using Grpc.Core;
 using Google.Protobuf.WellKnownTypes;
-using Desktop;
 using System.Threading.Tasks;
 using Lively.Models;
 using System.IO;
@@ -18,8 +17,9 @@ using System.Windows;
 using System.Windows.Threading;
 using System.Threading;
 using Lively.Services;
+using Lively.Grpc.Common.Proto.Desktop;
 
-namespace Lively.IPC
+namespace Lively.RPC
 {
     internal class WinDesktopCoreServer : DesktopService.DesktopServiceBase
     {

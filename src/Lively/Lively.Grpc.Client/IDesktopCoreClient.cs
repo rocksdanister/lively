@@ -1,5 +1,5 @@
-﻿using Desktop;
-using Lively.Common;
+﻿using Lively.Common;
+using Lively.Grpc.Common.Proto.Desktop;
 using Lively.Models;
 using System;
 using System.Collections.ObjectModel;
