@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//TODO: Kill UI program also.
 namespace Lively.Watchdog
 {
     /// <summary>

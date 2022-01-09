@@ -72,43 +72,9 @@ namespace Lively.RPC
                     {
                         LivelyInfoPath = wallpaper.Model.LivelyInfoFolderPath,
                         MonitorId = wallpaper.Screen.DeviceId,
-                    };
-                    await responseStream.WriteAsync(item);
-                }
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine(e.ToString());
-            }
-        }
-
-        public override async Task GetScreens(Empty _, IServerStreamWriter<GetScreensResponse> responseStream, ServerCallContext context)
-        {
-            try
-            {
-                foreach (var display in displayManager.DisplayMonitors)
-                {
-                    var item = new GetScreensResponse()
-                    {
-                        DeviceId = display.DeviceId,
-                        DeviceName = display.DeviceName,
-                        DisplayName = display.DisplayName,
-                        HMonitor = display.HMonitor.ToInt32(),
-                        IsPrimary = display.IsPrimary,
-                        WorkingArea = new Rectangle() 
-                        { 
-                            X = display.WorkingArea.X, 
-                            Y = display.WorkingArea.Y, 
-                            Width = display.WorkingArea.Width, 
-                            Height = display.WorkingArea.Height
-                        },
-                        Bounds = new Rectangle()
-                        {
-                            X = display.Bounds.X,
-                            Y = display.Bounds.Y,
-                            Width = display.Bounds.Width,
-                            Height = display.Bounds.Height
-                        }
+                        ThumbnailPath = wallpaper.Model.ThumbnailPath ?? string.Empty,
+                        PreviewPath = wallpaper.Model.PreviewClipPath ?? string.Empty,
+                        PropertyCopyPath = wallpaper.LivelyPropertyCopyPath ?? string.Empty,
                     };
                     await responseStream.WriteAsync(item);
                 }
@@ -169,30 +135,6 @@ namespace Lively.RPC
                     void WallpaperChanged(object s, EventArgs e)
                     {
                         desktopCore.WallpaperChanged -= WallpaperChanged;
-                        tcs.SetResult(true);
-                    }
-                    await tcs.Task;
-
-                    await responseStream.WriteAsync(new Empty());
-                }
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine(e.ToString());
-            }
-        }
-
-        public override async Task SubscribeDisplayChanged(Empty _, IServerStreamWriter<Empty> responseStream, ServerCallContext context)
-        {
-            try
-            {
-                while (!context.CancellationToken.IsCancellationRequested)
-                {
-                    var tcs = new TaskCompletionSource<bool>();
-                    displayManager.DisplayUpdated += DisplayChanged;
-                    void DisplayChanged(object s, EventArgs e)
-                    {
-                        displayManager.DisplayUpdated -= DisplayChanged;
                         tcs.SetResult(true);
                     }
                     await tcs.Task;

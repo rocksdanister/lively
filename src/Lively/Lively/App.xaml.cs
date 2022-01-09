@@ -17,6 +17,8 @@ using System.IO;
 using System.Threading;
 using System.Windows;
 using Lively.Grpc.Common.Proto.Settings;
+using System.Threading.Tasks;
+using Lively.Grpc.Common.Proto.Display;
 
 namespace Lively
 {
@@ -25,8 +27,9 @@ namespace Lively
     /// </summary>
     public partial class App : Application
     {
-        private readonly NamedPipeServer grpcServer;
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private readonly Mutex mutex = new Mutex(false, Constants.SingleInstance.UniqueAppName);
+        private readonly NamedPipeServer grpcServer;
 
         private readonly IServiceProvider _serviceProvider;
         /// <summary>
@@ -89,6 +92,8 @@ namespace Lively
                 ShutDown();
             }
 
+            SetupUnhandledExceptionLogging();
+
             Services.GetRequiredService<WndProcMsgWindow>().Show();
             Services.GetRequiredService<RawInputMsgWindow>().Show();
             Services.GetRequiredService<IPlayback>().Start();
@@ -112,6 +117,7 @@ namespace Lively
                 .AddSingleton<RawInputMsgWindow>()
                 .AddSingleton<WndProcMsgWindow>()
                 .AddSingleton<WinDesktopCoreServer>()
+                .AddSingleton<DisplayManagerServer>()
                 .AddSingleton<UserSettingsServer>()
                 //transient
                 //.AddTransient<IApplicationsRulesFactory, ApplicationsRulesFactory>()
@@ -141,9 +147,40 @@ namespace Lively
             var server = new NamedPipeServer(Constants.SingleInstance.GrpcPipeServerName);
             DesktopService.BindService(server.ServiceBinder, Services.GetRequiredService<WinDesktopCoreServer>());
             SettingsService.BindService(server.ServiceBinder, Services.GetRequiredService<UserSettingsServer>());
+            DisplayService.BindService(server.ServiceBinder, Services.GetRequiredService<DisplayManagerServer>());
             server.Start();
 
             return server;
+        }
+
+        private void SetupUnhandledExceptionLogging()
+        {
+            AppDomain.CurrentDomain.UnhandledException += (s, e) =>
+                LogUnhandledException((Exception)e.ExceptionObject, "AppDomain.CurrentDomain.UnhandledException");
+
+            Dispatcher.UnhandledException += (s, e) =>
+                LogUnhandledException(e.Exception, "Application.Current.DispatcherUnhandledException");
+
+            TaskScheduler.UnobservedTaskException += (s, e) =>
+                LogUnhandledException(e.Exception, "TaskScheduler.UnobservedTaskException");
+        }
+
+        private void LogUnhandledException(Exception exception, string source)
+        {
+            string message = $"Unhandled exception ({source})";
+            try
+            {
+                System.Reflection.AssemblyName assemblyName = System.Reflection.Assembly.GetExecutingAssembly().GetName();
+                message = string.Format("Unhandled exception in {0} v{1}", assemblyName.Name, assemblyName.Version);
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "Exception in LogUnhandledException");
+            }
+            finally
+            {
+                Logger.Error("{0}\n{1}", message, exception.ToString());
+            }
         }
 
         public static void ShutDown()

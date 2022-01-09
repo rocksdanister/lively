@@ -28,10 +28,14 @@ namespace Lively.UI.Wpf.ViewModels
             };
 
         private readonly IDesktopCoreClient desktopCore;
+        private readonly IUserSettingsClient userSettings;
+        private readonly IDisplayManagerClient displayManager;
 
-        public LibraryViewModel(IDesktopCoreClient desktopCore)
+        public LibraryViewModel(IDesktopCoreClient desktopCore, IDisplayManagerClient displayManager, IUserSettingsClient userSettings)
         {
             this.desktopCore = desktopCore;
+            this.displayManager = displayManager;
+            this.userSettings = userSettings;
 
             foreach (var item in ScanWallpaperFolders(wallpaperScanFolders))
             {
@@ -61,7 +65,33 @@ namespace Lively.UI.Wpf.ViewModels
             get => _selectedItem;
             set
             {
-                _ = desktopCore.SetWallpaper(value.LivelyInfoFolderPath, desktopCore.DisplayMonitors[0].DeviceId);
+                //_ = desktopCore.SetWallpaper(value.LivelyInfoFolderPath, displayManager.DisplayMonitors[0].DeviceId);
+                if (value != null)
+                {
+                    var wp = desktopCore.Wallpapers.Where(x => x.LivelyInfoPath == value.LivelyInfoFolderPath);
+                    if (wp.Count() > 0)
+                    {
+                        switch (userSettings.Settings.WallpaperArrangement)
+                        {
+                            case WallpaperArrangement.per:
+                                if (!wp.Any(x => userSettings.Settings.SelectedDisplay.DeviceId == x.MonitorId))
+                                {
+                                    desktopCore.SetWallpaper(value, userSettings.Settings.SelectedDisplay);
+                                }
+                                break;
+                            case WallpaperArrangement.span:
+                                //Wallpaper already set!
+                                break;
+                            case WallpaperArrangement.duplicate:
+                                //Wallpaper already set!
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        desktopCore.SetWallpaper(value, userSettings.Settings.SelectedDisplay);
+                    }
+                }
                 _selectedItem = value;
                 OnPropertyChanged();
             }

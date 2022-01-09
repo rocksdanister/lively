@@ -11,9 +11,10 @@ namespace Lively.ConsoleDemo
         static async Task Main(string[] args)
         {
             using IDesktopCoreClient coreClient = new WinDesktopCoreClient();
+            using IDisplayManagerClient displayManager = new DisplayManagerClient();
             IUserSettingsClient settingsClient = new UserSettingsClient();
             coreClient.WallpaperChanged += (s, e) => Console.WriteLine("\nWallpaper Changed Event");
-            coreClient.DisplayChanged += (s, e) => Console.WriteLine("\nDisplay Changed Event.");
+            displayManager.DisplayChanged += (s, e) => Console.WriteLine("\nDisplay Changed Event.");
 
             bool showMenu = true;
             while (showMenu)
@@ -44,15 +45,17 @@ namespace Lively.ConsoleDemo
                         {
                             foreach (var item in coreClient.Wallpapers)
                             {
-                                Console.WriteLine("GetWallpapers: " + item.LivelyInfoPath + " " + item.MonitorId);
+                                Console.WriteLine("GetWallpaper() ");
+                                PrintPropreties(item);
                             }
                         }
                         break;
                     case "3":
                         {
-                            foreach (var item in coreClient.DisplayMonitors)
+                            foreach (var item in displayManager.DisplayMonitors)
                             {
-                                Console.WriteLine("GetScreens: " + item.DeviceId + " " + item.Bounds);
+                                Console.WriteLine("GetScreens() ");
+                                PrintPropreties(item);
                             }
                         }
                         break;
