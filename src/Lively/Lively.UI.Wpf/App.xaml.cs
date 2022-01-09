@@ -42,7 +42,9 @@ namespace Lively.UI.Wpf
             var provider = new ServiceCollection()
                 //singleton
                 .AddSingleton<IDesktopCoreClient, WinDesktopCoreClient>()
+                .AddSingleton<IUserSettingsClient, UserSettingsClient>()
                 .AddSingleton<LibraryViewModel>()
+                .AddSingleton<SettingsViewModel>()
                 .AddSingleton<MainWindow>()
                 .BuildServiceProvider();
 

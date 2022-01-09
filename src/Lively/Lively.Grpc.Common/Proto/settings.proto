@@ -1,0 +1,195 @@
+﻿syntax = "proto3";
+package Lively.Grpc.Common.Proto.Settings;
+import "google/protobuf/empty.proto";
+
+service SettingsService {
+      rpc GetSettings (google.protobuf.Empty) returns (SettingsDataModel);
+      rpc SetSettings (SettingsDataModel) returns (google.protobuf.Empty);
+}
+
+message SettingsDataModel {
+	string app_version = 1;
+	string language = 2;
+	bool startup = 3;
+	bool lively_zip_generate = 4;
+	bool is_first_run = 5;
+	bool control_panel_opened = 6;
+	AppRules app_focus_pause = 7;
+	AppRules app_fullscreen_pause = 8;
+	AppRules battery_pause = 9;
+	AppRules remote_desktop_pause = 10;
+	AppRules power_save_mode_pause = 11;
+	DisplayPauseRule display_pause_settings = 12;
+	bool live_tile = 13;
+	WallpaperScalerRule scaler_video = 14;
+    WallpaperScalerRule scaler_gif = 15;
+    WallpaperArrangementRule wallpaper_arrangement = 16;
+    string saved_url = 17;
+    int32 process_timer_interval = 18;
+    int32 wallpaper_wait_time = 19;
+    bool safe_shutdown = 20;
+    bool is_restart = 21;
+    InputForwardMode input_forward = 22;
+    bool mouse_input_mov_always = 23;
+    int32 tile_size = 24;
+    MediaPlayer video_player = 25;
+    bool video_player_hw_accel = 26;
+    GifPlayer gif_player = 27;
+    WebBrowser web_browser = 28;
+    bool gif_capture = 29;
+    bool multi_file_auto_import = 30;
+    GetScreensResponse selected_display = 31;
+    GuiMode lively_Gui_rendering = 32;
+    string wallpaper_dir = 33;
+    bool wallpaper_dirMove_existing_wallpaper_new_dir = 34;
+    bool sys_tray_icon = 35;
+    bool auto_detect_online_streams = 36;
+    bool extract_stream_meta_data = 37;
+    string web_debug_port = 38;
+    int32 wallpaper_bundle_version = 39;
+    StreamQualitySuggestion stream_quality = 40;
+    int32 audio_volume_global = 41;
+    bool audio_only_on_desktop = 42;
+    WallpaperScalerRule wallpaper_scaling = 43;
+    bool cef_disk_cache = 44;
+    bool debug_menu = 45;
+    bool test_build = 46;
+    AppTheme application_theme = 47;
+    bool lock_screen_auto_wallpaper = 48;
+    bool desktop_auto_wallpaper = 49;
+    TaskbarTheme system_taskbar_theme = 50;
+    ScreensaverIdleTime screensaver_idle_wait = 51;
+    bool screensaver_oled_warning = 52;
+    bool screensaver_empty_screen_show_black = 53;
+    bool screensaver_lock_on_resume = 54;
+    ProcessMonitorRule process_monitor_alogorithm = 55;
+}
+
+message GetScreensResponse {
+  string device_id = 1;
+  string device_name = 2;
+  string display_name = 3;
+  int32 h_monitor = 4;
+  int32 index = 5;
+  bool is_primary = 6;
+  Rectangle bounds = 7;
+  Rectangle working_area = 8;
+}
+
+message Rectangle {
+	int32 x = 1;
+	int32 y = 2;
+	int32 width = 3;
+	int32 height = 4;
+	//int32 bottom = 1;
+	//int32 left = 3;
+	//int32 right = 4;
+	//int32 top = 5;
+}
+
+enum AppRules {
+	pause = 0;
+	ignore = 1;
+	kill = 2;
+}
+
+enum DisplayPauseRule {
+	perdisplay = 0;
+	alldisplay = 1;
+}
+
+enum ProcessMonitorRule {
+	foreground = 0;
+	all = 1;
+	gamemode = 2;
+}
+
+enum WallpaperScalerRule {
+    none = 0;
+    fill = 1;
+    uniform = 2;
+    uniformfill = 3;
+    autofit = 4;
+}
+
+enum WallpaperArrangementRule {
+    per = 0;
+    span = 1;
+    duplicate = 2;
+}
+
+enum InputForwardMode {
+    off = 0;
+    mouse = 1;
+    mousekeyboard = 2;
+}
+
+enum MediaPlayer {
+    wmf = 0;
+    libvlc = 1;
+    libvlcExt = 2;
+    libmpv = 3;
+    libmpvExt = 4;
+    mpv = 5;
+    vlc = 6;
+}
+
+enum GifPlayer {
+    win10img = 0;
+    libmpvExt_ = 1;
+    mpv_ = 2;
+}
+
+enum WebBrowser {
+    cef = 0;
+    webview2 = 1;
+}
+
+enum GuiMode {
+    normal = 0;
+    lite = 1;
+    headless = 2;
+}
+
+enum StreamQualitySuggestion {
+    lowest = 0;
+    low = 1;
+    lowMedium = 2;
+    medium = 3;
+    mediumHigh = 4;
+    high = 5;
+    highest = 6;
+}
+
+enum AppTheme {
+    auto = 0;
+    light = 1;
+    dark = 2;
+}
+
+enum TaskbarTheme {
+    none_ = 0;
+    clear = 1;
+    blur = 2;
+    fluent = 3;
+    color = 4;
+    wallpaper = 5;
+    wallpaperfluent = 6;
+}
+
+enum ScreensaverIdleTime
+{
+    off_ = 0;
+    min1 = 1;
+    min2 = 2;
+    min3 = 3;
+    min5 = 4;
+    min10 = 5;
+    min15 = 6;
+    min20 = 7;
+    min25 = 8;
+    min30 = 9;
+    min45 = 10;
+    min60 = 11;
+    min120 = 12;
+}
