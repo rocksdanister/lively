@@ -18,7 +18,7 @@ namespace Lively.UI.Wpf.ViewModels
 {
     public class LibraryViewModel : ObservableObject
     {
-        //TEST
+        //TEST, TODO: change in LivelyPropertisView also
         public static string WallpaperDir = @"C:\Users\rocks\AppData\Local\Lively Wallpaper_v2\Library\";
 
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
@@ -41,6 +41,8 @@ namespace Lively.UI.Wpf.ViewModels
             {
                 LibraryItems.Add(item);
             }
+
+            desktopCore.WallpaperChanged += DesktopCore_WallpaperChanged;
         }
 
         #region collections
@@ -68,13 +70,13 @@ namespace Lively.UI.Wpf.ViewModels
                 //_ = desktopCore.SetWallpaper(value.LivelyInfoFolderPath, displayManager.DisplayMonitors[0].DeviceId);
                 if (value != null)
                 {
-                    var wp = desktopCore.Wallpapers.Where(x => x.LivelyInfoPath == value.LivelyInfoFolderPath);
-                    if (wp.Count() > 0)
+                    var wallpapers = desktopCore.Wallpapers.Where(x => x.LivelyInfoFolderPath == value.LivelyInfoFolderPath);
+                    if (wallpapers.Count() > 0)
                     {
                         switch (userSettings.Settings.WallpaperArrangement)
                         {
                             case WallpaperArrangement.per:
-                                if (!wp.Any(x => userSettings.Settings.SelectedDisplay.DeviceId == x.MonitorId))
+                                if (!wallpapers.Any(x => userSettings.Settings.SelectedDisplay.Equals(x.Display)))
                                 {
                                     desktopCore.SetWallpaper(value, userSettings.Settings.SelectedDisplay);
                                 }
@@ -98,6 +100,31 @@ namespace Lively.UI.Wpf.ViewModels
         }
 
         #endregion //collections
+
+        private void DesktopCore_WallpaperChanged(object sender, EventArgs e)
+        {
+            System.Windows.Application.Current.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background,
+                new System.Threading.ThreadStart(delegate
+                {
+                    UpdateSelection();
+                }));
+        }
+
+        /// <summary>
+        /// Update library selected item based on selected display.
+        /// </summary>
+        public void UpdateSelection()
+        {
+            if (userSettings.Settings.WallpaperArrangement == WallpaperArrangement.span && desktopCore.Wallpapers.Count > 0)
+            {
+                SelectedItem = LibraryItems.FirstOrDefault(x => desktopCore.Wallpapers[0].LivelyInfoFolderPath == x.LivelyInfoFolderPath);
+            }
+            else
+            {
+                var wp = desktopCore.Wallpapers.FirstOrDefault(x => userSettings.Settings.SelectedDisplay.Equals(x.Display));
+                SelectedItem = LibraryItems.FirstOrDefault(x => x.LivelyInfoFolderPath == wp?.LivelyInfoFolderPath);
+            }
+        }
 
         #region helpers
 

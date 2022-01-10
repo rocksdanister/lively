@@ -2,6 +2,8 @@
 using Grpc.Core;
 using GrpcDotNetNamedPipes;
 using Lively.Common;
+using Lively.Common.API;
+using Lively.Common.Helpers.Storage;
 using Lively.Grpc.Common.Proto.Desktop;
 using Lively.Models;
 using System;
@@ -18,8 +20,8 @@ namespace Lively.Grpc.Client
     {
         public event EventHandler WallpaperChanged;
 
-        private readonly List<GetWallpapersResponse> wallpapers = new List<GetWallpapersResponse>(2);
-        public ReadOnlyCollection<GetWallpapersResponse> Wallpapers => wallpapers.AsReadOnly();
+        private readonly List<WallpaperData> wallpapers = new List<WallpaperData>(2);
+        public ReadOnlyCollection<WallpaperData> Wallpapers => wallpapers.AsReadOnly();
 
         private readonly DesktopService.DesktopServiceClient client;
         private readonly SemaphoreSlim wallpaperChangedLock = new SemaphoreSlim(1, 1);
@@ -53,14 +55,46 @@ namespace Lively.Grpc.Client
         public async Task SetWallpaper(ILibraryModel item, IDisplayMonitor display) =>
             await SetWallpaper(item.LivelyInfoFolderPath, display.DeviceId);
 
-        private async Task<List<GetWallpapersResponse>> GetWallpapers()
+        private async Task<List<WallpaperData>> GetWallpapers()
         {
-            var wallpapers = new List<GetWallpapersResponse>();
+            var resp = new List<GetWallpapersResponse>();
             using var call = client.GetWallpapers(new Empty());
             while (await call.ResponseStream.MoveNext())
             {
                 var response = call.ResponseStream.Current;
-                wallpapers.Add(response);
+                resp.Add(response);
+            }
+
+            var wallpapers = new List<WallpaperData>();
+            foreach (var item in resp)
+            {
+                wallpapers.Add(new WallpaperData()
+                {
+                    LivelyInfoFolderPath = item.LivelyInfoPath,
+                    LivelyPropertyCopyPath = item.PropertyCopyPath,
+                    PreviewPath = item.PreviewPath,
+                    ThumbnailPath = item.ThumbnailPath,
+                    Display = new DisplayMonitor()
+                    {
+                        DeviceId = item.Screen.DeviceId,
+                        DisplayName = item.Screen.DisplayName,
+                        DeviceName = item.Screen.DeviceName,
+                        HMonitor = new IntPtr(item.Screen.HMonitor),
+                        IsPrimary = item.Screen.IsPrimary,
+                        Index = item.Screen.Index,
+                        Bounds = new System.Drawing.Rectangle(
+                        item.Screen.Bounds.X,
+                        item.Screen.Bounds.Y,
+                        item.Screen.Bounds.Width,
+                        item.Screen.Bounds.Height),
+                        WorkingArea = new System.Drawing.Rectangle(
+                        item.Screen.WorkingArea.X,
+                        item.Screen.WorkingArea.Y,
+                        item.Screen.WorkingArea.Width,
+                        item.Screen.WorkingArea.Height),
+
+                    },
+                });
             }
             return wallpapers;
         }
@@ -95,6 +129,26 @@ namespace Lively.Grpc.Client
             {
                 MonitorId = monitor.DeviceId,
                 Terminate = terminate
+            });
+        }
+
+        public void SendMessageWallpaper(ILibraryModel obj, IpcMessage msg)
+        {
+            client.SendMessageWallpaper(new WallpaperMessageRequest()
+            {
+                MonitorId = string.Empty,
+                LivelyInfoPath = obj.LivelyInfoFolderPath,
+                Msg = JsonUtil.Serialize(msg),
+            });
+        }
+
+        public void SendMessageWallpaper(IDisplayMonitor display, ILibraryModel obj, IpcMessage msg)
+        {
+            client.SendMessageWallpaper(new WallpaperMessageRequest()
+            {
+                MonitorId = display.DeviceId,
+                LivelyInfoPath = obj.LivelyInfoFolderPath,
+                Msg = JsonUtil.Serialize(msg),
             });
         }
 

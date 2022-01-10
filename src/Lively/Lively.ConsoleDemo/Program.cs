@@ -3,6 +3,11 @@ using Lively.Grpc.Client;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using Lively.Models;
+using Lively.Common.Helpers;
+using System.IO;
+using Lively.Common.Helpers.Storage;
+using Lively.Common;
+using Lively.Common.API;
 
 namespace Lively.ConsoleDemo
 {
@@ -45,8 +50,7 @@ namespace Lively.ConsoleDemo
                         {
                             foreach (var item in coreClient.Wallpapers)
                             {
-                                Console.WriteLine("GetWallpaper() ");
-                                PrintPropreties(item);
+                                Console.WriteLine("GetWallpaper() " + LogUtil.PropertyList(item));
                             }
                         }
                         break;
@@ -54,8 +58,7 @@ namespace Lively.ConsoleDemo
                         {
                             foreach (var item in displayManager.DisplayMonitors)
                             {
-                                Console.WriteLine("GetScreens() ");
-                                PrintPropreties(item);
+                                Console.WriteLine("GetScreens() " + LogUtil.PropertyList(item));
                             }
                         }
                         break;
@@ -82,7 +85,7 @@ namespace Lively.ConsoleDemo
                         break;
                     case "5":
                         {
-                            PrintPropreties(settingsClient.Settings);
+                            Console.WriteLine(LogUtil.PropertyList(settingsClient.Settings));
                         }
                         break;
                     case "6":
@@ -98,16 +101,6 @@ namespace Lively.ConsoleDemo
                         showMenu = false;
                         break;
                 }
-            }
-        }
-
-        public static void PrintPropreties(object obj)
-        {
-            foreach (PropertyDescriptor descriptor in TypeDescriptor.GetProperties(obj))
-            {
-                string name = descriptor.Name;
-                object value = descriptor.GetValue(obj);
-                Console.WriteLine("{0}={1}", name, value);
             }
         }
     }

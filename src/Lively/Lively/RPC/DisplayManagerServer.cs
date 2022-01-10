@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Lively.RPC
 {
-    public class DisplayManagerServer : DisplayService.DisplayServiceBase
+    internal class DisplayManagerServer : DisplayService.DisplayServiceBase
     {
         private readonly IDisplayManager displayManager;
 

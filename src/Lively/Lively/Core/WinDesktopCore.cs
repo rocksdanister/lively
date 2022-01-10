@@ -834,22 +834,22 @@ namespace Lively.Core
             }
         }
 
-        public void SendMessageWallpaper(ILibraryModel wp, IpcMessage msg)
+        public void SendMessageWallpaper(string info_path, IpcMessage msg)
         {
             wallpapers.ForEach(x =>
             {
-                if (x.Model == wp)
+                if (x.Model.LivelyInfoFolderPath == info_path)
                 {
                     x.SendMessage(msg);
                 }
             });
         }
 
-        public void SendMessageWallpaper(IDisplayMonitor display, ILibraryModel wp, IpcMessage msg)
+        public void SendMessageWallpaper(IDisplayMonitor display, string info_path, IpcMessage msg)
         {
             wallpapers.ForEach(x =>
             {
-                if (x.Screen.Equals(display) && wp == x.Model)
+                if (x.Screen.Equals(display) && info_path == x.Model.LivelyInfoFolderPath)
                     x.SendMessage(msg);
             });
         }

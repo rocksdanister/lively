@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace Lively.Common.Helpers.Storage
@@ -16,5 +17,9 @@ namespace Lively.Common.Helpers.Storage
             return JObject.Parse(json);
         }
 
+        public static string Serialize(object obj)
+        {
+            return JsonConvert.SerializeObject(obj);
+        }
     }
 }
