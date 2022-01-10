@@ -13,7 +13,7 @@ using System.Linq;
 
 namespace Lively.RPC
 {
-    public class UserSettingsServer : SettingsService.SettingsServiceBase
+    internal class UserSettingsServer : SettingsService.SettingsServiceBase
     {
         private readonly IDisplayManager displayManager;
         private readonly IUserSettingsService userSettings;

@@ -18,6 +18,9 @@ using System.Windows.Threading;
 using System.Threading;
 using Lively.Services;
 using Lively.Grpc.Common.Proto.Desktop;
+using Newtonsoft.Json;
+using Lively.Common.API;
+using Lively.Common.Helpers;
 
 namespace Lively.RPC
 {
@@ -56,12 +59,6 @@ namespace Lively.RPC
             }
         }
 
-        public override Task<Empty> ShowUI(Empty _, ServerCallContext context)
-        {
-            runner.ShowUI();
-            return Task.FromResult(new Empty());
-        }
-
         public override async Task GetWallpapers(Empty _, IServerStreamWriter<GetWallpapersResponse> responseStream, ServerCallContext context)
         {
             try
@@ -71,7 +68,29 @@ namespace Lively.RPC
                     var item = new GetWallpapersResponse()
                     {
                         LivelyInfoPath = wallpaper.Model.LivelyInfoFolderPath,
-                        MonitorId = wallpaper.Screen.DeviceId,
+                        Screen = new GetScreensResponse()
+                        {
+                            DeviceId = wallpaper.Screen.DeviceId,
+                            DeviceName = wallpaper.Screen.DeviceName,
+                            DisplayName = wallpaper.Screen.DisplayName,
+                            HMonitor = wallpaper.Screen.HMonitor.ToInt32(),
+                            IsPrimary = wallpaper.Screen.IsPrimary,
+                            Index = wallpaper.Screen.Index,
+                            WorkingArea = new Rectangle()
+                            {
+                                X = wallpaper.Screen.WorkingArea.X,
+                                Y = wallpaper.Screen.WorkingArea.Y,
+                                Width = wallpaper.Screen.WorkingArea.Width,
+                                Height = wallpaper.Screen.WorkingArea.Height
+                            },
+                            Bounds = new Rectangle()
+                            {
+                                X = wallpaper.Screen.Bounds.X,
+                                Y = wallpaper.Screen.Bounds.Y,
+                                Width = wallpaper.Screen.Bounds.Width,
+                                Height = wallpaper.Screen.Bounds.Height
+                            }
+                        },
                         ThumbnailPath = wallpaper.Model.ThumbnailPath ?? string.Empty,
                         PreviewPath = wallpaper.Model.PreviewClipPath ?? string.Empty,
                         PropertyCopyPath = wallpaper.LivelyPropertyCopyPath ?? string.Empty,
@@ -146,6 +165,33 @@ namespace Lively.RPC
             {
                 Debug.WriteLine(e.ToString());
             }
+        }
+
+        public override Task<Empty> SendMessageWallpaper(WallpaperMessageRequest request, ServerCallContext context)
+        {
+            var obj = JsonConvert.DeserializeObject<IpcMessage>(request.Msg, new JsonSerializerSettings()
+            {
+                Converters = {
+                    new IpcMessageConverter()
+                }}
+            );
+
+            if (string.IsNullOrEmpty(request.MonitorId))
+            {
+                desktopCore.SendMessageWallpaper(request.LivelyInfoPath, obj);
+            }
+            else
+            {
+                var display = displayManager.DisplayMonitors.FirstOrDefault(x => x.DeviceId == request.MonitorId);
+                desktopCore.SendMessageWallpaper(display, request.LivelyInfoPath, obj);
+            }
+            return Task.FromResult(new Empty());
+        }
+
+        public override Task<Empty> ShowUI(Empty _, ServerCallContext context)
+        {
+            runner.ShowUI();
+            return Task.FromResult(new Empty());
         }
 
         #region helpers

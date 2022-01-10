@@ -21,8 +21,8 @@ namespace Lively.Core
         void RestoreWallpaper();
         void SeekWallpaper(ILibraryModel wp, float seek, PlaybackPosType type);
         void SeekWallpaper(IDisplayMonitor display, float seek, PlaybackPosType type);
-        void SendMessageWallpaper(ILibraryModel wp, IpcMessage msg);
-        void SendMessageWallpaper(IDisplayMonitor display, ILibraryModel wp, IpcMessage msg);
+        void SendMessageWallpaper(string info_path, IpcMessage msg);
+        void SendMessageWallpaper(IDisplayMonitor display, string info_path, IpcMessage msg);
         void SetWallpaper(ILibraryModel wallpaper, IDisplayMonitor display);
 
         /// <summary>
