@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Lively.Common;
 using Lively.Models;
 using System.Linq;
+using System.Diagnostics;
 
 namespace Lively.RPC
 {
@@ -22,6 +23,46 @@ namespace Lively.RPC
         {
             this.displayManager = displayManager;
             this.userSettings = userSettings;
+        }
+
+        public override async Task GetAppRulesSettings(Empty _, IServerStreamWriter<AppRulesDataModel> responseStream, ServerCallContext context)
+        {
+            try
+            {
+                foreach (var app in userSettings.AppRules)
+                {
+                    var resp = new AppRulesDataModel
+                    {
+                        AppName = app.AppName,
+                        Rule = (AppRules)((int)app.Rule)
+                    };
+                    await responseStream.WriteAsync(resp);
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.ToString());
+            }
+        }
+
+        public override async Task<Empty> SetAppRulesSettings(IAsyncStreamReader<AppRulesDataModel> requestStream, ServerCallContext context)
+        {
+            try
+            {
+                userSettings.AppRules.Clear();
+                while (await requestStream.MoveNext())
+                {
+                    var rule = requestStream.Current;
+                    userSettings.AppRules.Add(new ApplicationRulesModel(rule.AppName, (AppRulesEnum)((int)rule.Rule)));
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.ToString());
+            }
+
+            userSettings.Save<List<IApplicationRulesModel>>();
+            return new Empty();
         }
 
         public override Task<Empty> SetSettings(SettingsDataModel resp, ServerCallContext context)

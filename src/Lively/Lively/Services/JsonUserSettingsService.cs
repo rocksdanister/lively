@@ -59,7 +59,6 @@ namespace Lively.Services
 
         public void Load<T>()
         {
-            // ugh...
             if (typeof(T) == typeof(ISettingsModel))
             {
                 try

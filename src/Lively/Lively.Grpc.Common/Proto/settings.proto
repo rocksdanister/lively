@@ -5,6 +5,8 @@ import "google/protobuf/empty.proto";
 service SettingsService {
       rpc GetSettings (google.protobuf.Empty) returns (SettingsDataModel);
       rpc SetSettings (SettingsDataModel) returns (google.protobuf.Empty);
+      rpc GetAppRulesSettings  (google.protobuf.Empty) returns (stream AppRulesDataModel);
+      rpc SetAppRulesSettings (stream AppRulesDataModel) returns (google.protobuf.Empty);
 }
 
 message SettingsDataModel {
@@ -64,6 +66,11 @@ message SettingsDataModel {
     bool screensaver_lock_on_resume = 54;
     ProcessMonitorRule process_monitor_alogorithm = 55;
     bool keep_awake_ui = 56;
+}
+
+message AppRulesDataModel {
+  string app_name = 1;
+  AppRules rule = 2;
 }
 
 message GetScreensResponse {

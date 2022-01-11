@@ -1,0 +1,77 @@
+﻿<Window
+    x:Class="Lively.UI.Wpf.Views.Dialogues.ApplicationRulesView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:p="clr-namespace:Lively.UI.Wpf.Properties"
+    xmlns:ui="http://schemas.modernwpf.com/2019"
+    Title="{x:Static p:Resources.TitleAppRules}"
+    Width="800"
+    Height="450"
+    ui:ThemeManager.IsThemeAware="True"
+    ui:TitleBar.ExtendViewIntoTitleBar="False"
+    ui:WindowHelper.UseModernWindowStyle="True"
+    BorderBrush="{DynamicResource SystemControlHighlightAltListAccentHighBrush}"
+    ResizeMode="NoResize"
+    mc:Ignorable="d">
+
+    <Grid>
+        <TextBlock Margin="25,5,0,0" Text="{x:Static p:Resources.DescriptionAppRules}" />
+        <ListView
+            x:Name="listView"
+            Width="Auto"
+            Margin="25,38,199.6,11"
+            BorderBrush="{DynamicResource SystemControlForegroundBaseLowBrush}"
+            BorderThickness="1"
+            ItemsSource="{Binding AppRules}"
+            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+            SelectedItem="{Binding SelectedItem}"
+            SelectionMode="Single"
+            Style="{StaticResource {x:Static GridView.GridViewStyleKey}}">
+            <!--  style required for modernwpf gridview listview  -->
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn
+                            Width="400"
+                            DisplayMemberBinding="{Binding AppName}"
+                            Header="{x:Static p:Resources.TextApplication}" />
+                        <GridViewColumn
+                            Width="200"
+                            DisplayMemberBinding="{Binding RuleText}"
+                            Header="{x:Static p:Resources.TextRule}" />
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Button
+            MinWidth="133"
+            Margin="624,123,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Command="{Binding AddCommand}"
+            Content="{x:Static p:Resources.TextAdd}" />
+        <Button
+            MinWidth="133"
+            Margin="624,160,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Command="{Binding RemoveCommand}"
+            Content="{x:Static p:Resources.TextRemove}" />
+
+        <ui:RadioButtons
+            MinWidth="155"
+            Margin="630,202,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            SelectedIndex="{Binding SelectedAppRuleProperty, Mode=TwoWay}">
+            <RadioButton Content="{x:Static p:Resources.TextPerformancePause}" />
+            <RadioButton Content="{x:Static p:Resources.TextPerformanceNone}" />
+            <RadioButton Content="{x:Static p:Resources.TextPerformanceKill}" IsEnabled="False" />
+        </ui:RadioButtons>
+    </Grid>
+
+</Window>
