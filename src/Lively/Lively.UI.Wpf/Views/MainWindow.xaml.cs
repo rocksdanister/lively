@@ -1,4 +1,5 @@
-﻿using Lively.UI.Wpf.Views.Pages;
+﻿using Lively.Grpc.Client;
+using Lively.UI.Wpf.Views.Pages;
 using Microsoft.Extensions.DependencyInjection;
 using ModernWpf.Controls;
 using ModernWpf.Media.Animation;
@@ -24,19 +25,15 @@ namespace Lively.UI.Wpf.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static bool IsExit { get; set; } = false;
+        private readonly IUserSettingsClient userSettings;
 
-        public MainWindow()
+        public MainWindow(IUserSettingsClient userSettings)
         {
+            this.userSettings = userSettings;
+
             InitializeComponent();
-
             this.ContentRendered += (s, e) => NavViewNavigate("library");
-            this.Closing += (s, e) => App.ShutDown();
-        }
-
-        private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            throw new NotImplementedException();
+            _ = StdInListener();
         }
 
         private void MyNavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
@@ -139,17 +136,41 @@ namespace Lively.UI.Wpf.Views
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            /*
-            if (!IsExit)
+            if (userSettings.Settings.KeepAwakeUI)
             {
                 e.Cancel = true;
-                HideWindow();
+                this.Hide();
             }
             else
             {
-                //todo
+                App.ShutDown();
             }
-            */
+        }
+
+        /// <summary>
+        /// std I/O redirect.
+        /// </summary>
+        private async Task StdInListener()
+        {
+            try
+            {
+                await Task.Run(async () =>
+                {
+                    while (true)
+                    {
+                        var msg = await Console.In.ReadLineAsync();
+                        var args = msg.Split(' ');
+                        if (args[0].Equals("WM", StringComparison.OrdinalIgnoreCase))
+                        {
+                            if (args[1].Equals("SHOW", StringComparison.OrdinalIgnoreCase))
+                            {
+                                Application.Current.Dispatcher.Invoke(this.Show);
+                            }
+                        }
+                    }
+                });
+            }
+            catch { }
         }
     }
 }

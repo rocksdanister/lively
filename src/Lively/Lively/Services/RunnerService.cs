@@ -23,6 +23,8 @@ namespace Lively.Services
         {
             if (processUI != null)
             {
+                processUI.StandardInput.WriteLine("WM SHOW");
+                /*
                 if (NativeMethods.IsIconic(processUI.MainWindowHandle))
                 {
                     _ = NativeMethods.ShowWindow(processUI.MainWindowHandle, (uint)NativeMethods.SHOWWINDOW.SW_RESTORE);
@@ -31,6 +33,7 @@ namespace Lively.Services
                 {
                     _ = NativeMethods.SetForegroundWindow(processUI.MainWindowHandle);
                 }
+                */
             }
             else
             {

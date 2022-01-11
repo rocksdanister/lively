@@ -63,5 +63,6 @@ namespace Lively.Models
         bool WaterMarkTile { get; set; }
         LivelyWebBrowser WebBrowser { get; set; }
         string WebDebugPort { get; set; }
+        bool KeepAwakeUI { get; set; }
     }
 }
