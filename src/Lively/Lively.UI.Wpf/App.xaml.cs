@@ -1,4 +1,5 @@
 ﻿using Lively.Grpc.Client;
+using Lively.UI.Wpf.Factories;
 using Lively.UI.Wpf.ViewModels;
 using Lively.UI.Wpf.Views;
 using Microsoft.Extensions.DependencyInjection;
@@ -53,9 +54,11 @@ namespace Lively.UI.Wpf
                 .AddSingleton<IDisplayManagerClient, DisplayManagerClient>()
                 .AddSingleton<MainWindow>()
                 .AddSingleton<LibraryViewModel>()
-                .AddSingleton<SettingsViewModel>()
+                .AddSingleton<SettingsViewModel>() // can be made transient now?
                 //transient
                 .AddTransient<ScreenLayoutViewModel>()
+                .AddTransient<ApplicationRulesViewModel>()
+                .AddTransient<IApplicationsRulesFactory, ApplicationsRulesFactory>()
                 .BuildServiceProvider();
 
             return provider;

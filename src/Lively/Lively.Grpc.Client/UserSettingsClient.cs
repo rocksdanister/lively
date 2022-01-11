@@ -1,10 +1,12 @@
 ﻿using Google.Protobuf.WellKnownTypes;
+using Grpc.Core;
 using GrpcDotNetNamedPipes;
 using Lively.Common;
 using Lively.Grpc.Common.Proto.Settings;
 using Lively.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -25,6 +27,7 @@ namespace Lively.Grpc.Client
             Task.Run(async () =>
             {
                 await Load<ISettingsModel>();
+                await Load<List<IApplicationRulesModel>>();
             }).Wait();
         }
 
@@ -182,6 +185,40 @@ namespace Lively.Grpc.Client
             return settings;
         }
 
+        private async Task<List<IApplicationRulesModel>> GetAppRulesSettings()
+        {
+            var appRules = new List<IApplicationRulesModel>();
+            using var call = client.GetAppRulesSettings(new Empty());
+            while (await call.ResponseStream.MoveNext())
+            {
+                var resp = call.ResponseStream.Current;
+                appRules.Add(new ApplicationRulesModel(resp.AppName, (AppRulesEnum)((int)resp.Rule)));
+            }
+            return appRules;
+        }
+
+        private async Task SetAppRulesSettings()
+        {
+            try
+            {
+                using var call = client.SetAppRulesSettings();
+                foreach (var item in AppRules)
+                {
+                    await call.RequestStream.WriteAsync(new AppRulesDataModel
+                    {
+                        AppName = item.AppName,
+                        Rule = (Common.Proto.Settings.AppRules)((int)item.Rule)
+                    });
+                }
+                await call.RequestStream.CompleteAsync();
+                var resp = await call.ResponseAsync;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.ToString());
+            }
+        }
+
         public async Task Save<T>()
         {
             if (typeof(T) == typeof(ISettingsModel))
@@ -190,7 +227,7 @@ namespace Lively.Grpc.Client
             }
             else if (typeof(T) == typeof(List<IApplicationRulesModel>))
             {
-                
+                await SetAppRulesSettings();
             }
             else if (typeof(T) == typeof(List<IWallpaperLayoutModel>))
             {
@@ -210,7 +247,7 @@ namespace Lively.Grpc.Client
             }
             else if (typeof(T) == typeof(List<IApplicationRulesModel>))
             {
-
+                AppRules = await GetAppRulesSettings();
             }
             else if (typeof(T) == typeof(List<IWallpaperLayoutModel>))
             {

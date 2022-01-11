@@ -15,6 +15,8 @@ using Lively.Common.Helpers.Shell;
 using Lively.Grpc.Client;
 using Lively.Models;
 using Lively.UI.Wpf.Helpers.MVVM;
+using Lively.UI.Wpf.Views;
+using Lively.UI.Wpf.Views.Dialogues;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Lively.UI.Wpf.ViewModels
@@ -382,13 +384,11 @@ namespace Lively.UI.Wpf.ViewModels
 
         private void ShowApplicationRulesWindow()
         {
-            /*
-            (new ApplicationRulesView()
+            _ = new ApplicationRulesView()
             {
                 Owner = App.Services.GetRequiredService<MainWindow>(),
                 WindowStartupLocation = WindowStartupLocation.CenterOwner,
-            }).ShowDialog();
-            */
+            }.ShowDialog();
         }
 
         private int _selectedAppFullScreenIndex;
