@@ -19,6 +19,7 @@
     BorderBrush="{DynamicResource SystemControlHighlightAltListAccentHighBrush}"
     Closing="Window_Closing"
     Drop="Window_Drop"
+    ShowActivated="True"
     mc:Ignorable="d">
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />

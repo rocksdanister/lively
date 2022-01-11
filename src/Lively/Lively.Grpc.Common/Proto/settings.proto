@@ -63,6 +63,7 @@ message SettingsDataModel {
     bool screensaver_empty_screen_show_black = 53;
     bool screensaver_lock_on_resume = 54;
     ProcessMonitorRule process_monitor_alogorithm = 55;
+    bool keep_awake_ui = 56;
 }
 
 message GetScreensResponse {

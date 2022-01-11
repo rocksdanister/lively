@@ -106,6 +106,7 @@ namespace Lively.Grpc.Client
                 ScreensaverEmptyScreenShowBlack = Settings.ScreensaverEmptyScreenShowBlack,
                 ScreensaverLockOnResume = Settings.ScreensaverLockOnResume,
                 Language = Settings.Language,
+                KeepAwakeUi = Settings.KeepAwakeUI,
             };
             _ = await client.SetSettingsAsync(settings);
         }
@@ -176,6 +177,7 @@ namespace Lively.Grpc.Client
                 ScreensaverEmptyScreenShowBlack = resp.ScreensaverEmptyScreenShowBlack,
                 ScreensaverLockOnResume = resp.ScreensaverLockOnResume,
                 Language = resp.Language,
+                KeepAwakeUI = resp.KeepAwakeUi,
             };
             return settings;
         }

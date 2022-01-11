@@ -53,7 +53,52 @@
             VerticalAlignment="Stretch"
             ItemTemplate="{StaticResource Normal}"
             ItemsSource="{Binding LibraryItems}"
+            PreviewKeyDown="GridControl_PreviewKeyDown"
+            PreviewMouseRightButtonDown="GridControl_PreviewMouseRightButtonDown"
             SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+
+            <ui:ContextFlyoutService.ContextFlyout>
+                <ui:MenuFlyout>
+                    <MenuItem
+                        Name="moreInformation"
+                        Click="MenuItem_Click"
+                        Header="{x:Static p:Resources.TitleAbout}" />
+                    <MenuItem
+                        Name="setWallpaper"
+                        Click="MenuItem_Click"
+                        Header="{x:Static p:Resources.TextSetWallpaper}" />
+                    <MenuItem
+                        Name="previewWallpaper"
+                        Click="MenuItem_Click"
+                        Header="{x:Static p:Resources.TextPreviewWallpaper}" />
+                    <MenuItem
+                        Name="customiseWallpaper"
+                        Click="MenuItem_Click"
+                        Header="{x:Static p:Resources.TextCustomise}" />
+                    <MenuItem
+                        Name="showOnDisk"
+                        Click="MenuItem_Click"
+                        Header="{x:Static p:Resources.TextShowOnDisk}" />
+                    <MenuItem
+                        Name="exportWallpaper"
+                        Click="MenuItem_Click"
+                        Header="{x:Static p:Resources.TextExportWallpaperZip}" />
+                    <MenuItem
+                        Name="convertVideo"
+                        Click="MenuItem_Click"
+                        Header="{x:Static p:Resources.TextConvertVideo}"
+                        IsEnabled="False"
+                        Visibility="Collapsed" />
+                    <MenuItem
+                        Name="deleteWallpaper"
+                        Click="MenuItem_Click"
+                        Header="{x:Static p:Resources.TextDeleteWallpaper}" />
+                    <MenuItem
+                        Name="editWallpaper"
+                        Click="MenuItem_Click"
+                        Header="{x:Static p:Resources.TextEditWallpaper}" />
+                </ui:MenuFlyout>
+            </ui:ContextFlyoutService.ContextFlyout>
 
             <ui:GridView.ItemsPanel>
                 <ItemsPanelTemplate>

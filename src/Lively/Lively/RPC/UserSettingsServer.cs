@@ -79,6 +79,7 @@ namespace Lively.RPC
             userSettings.Settings.ScreensaverEmptyScreenShowBlack = resp.ScreensaverEmptyScreenShowBlack;
             userSettings.Settings.ScreensaverLockOnResume = resp.ScreensaverLockOnResume;
             userSettings.Settings.Language = resp.Language;
+            userSettings.Settings.KeepAwakeUI = resp.KeepAwakeUi;
 
             userSettings.Save<ISettingsModel>();
             return Task.FromResult(new Empty());
@@ -163,6 +164,7 @@ namespace Lively.RPC
                 ScreensaverEmptyScreenShowBlack = settings.ScreensaverEmptyScreenShowBlack,
                 ScreensaverLockOnResume = settings.ScreensaverLockOnResume,
                 Language = settings.Language,
+                KeepAwakeUi = settings.KeepAwakeUI,
             };
             return Task.FromResult(resp);
         }
