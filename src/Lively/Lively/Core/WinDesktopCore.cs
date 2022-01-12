@@ -7,6 +7,7 @@ using Lively.Core.Watchdog;
 using Lively.Factories;
 using Lively.Models;
 using Lively.Services;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -478,7 +479,7 @@ namespace Lively.Core
             {
                 Logger.Info("Display settings changed, screen(s):");
                 displayManager.DisplayMonitors.ToList().ForEach(x => Logger.Info(x.DeviceName + " " + x.Bounds));
-                //App.Services.GetRequiredService<IScreensaverService>().Stop();
+                App.Services.GetRequiredService<IScreensaverService>().Stop();
                 RefreshWallpaper();
                 await RestoreDisconnectedWallpapers();
             }

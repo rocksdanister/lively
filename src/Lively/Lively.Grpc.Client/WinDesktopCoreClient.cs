@@ -180,11 +180,6 @@ namespace Lively.Grpc.Client
             }
         }
 
-        public async Task ShutDown()
-        {
-            await client.ShutDownAsync(new Empty());
-        }
-
         #region dispose
 
         protected virtual void Dispose(bool disposing)

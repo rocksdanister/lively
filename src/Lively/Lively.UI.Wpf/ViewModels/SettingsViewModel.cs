@@ -154,6 +154,7 @@ namespace Lively.UI.Wpf.ViewModels
             SelectedAppThemeIndex = (int)userSettings.Settings.ApplicationTheme;
             //SelectedScreensaverWaitIndex = (int)userSettings.Settings.ScreensaverIdleWait;
             //IsScreensaverLockOnResume = userSettings.Settings.ScreensaverLockOnResume;
+            IsKeepUIAwake = userSettings.Settings.KeepAwakeUI;
         }
 
         public void UpdateConfigFile()
@@ -993,6 +994,25 @@ namespace Lively.UI.Wpf.ViewModels
                 {
                     DebugMenuVisibilityChange?.Invoke(null, _isDebugMenuVisible);
                     userSettings.Settings.DebugMenu = _isDebugMenuVisible;
+                    UpdateConfigFile();
+                }
+            }
+        }
+
+        private bool _isKeepUIAwake;
+        public bool IsKeepUIAwake
+        {
+            get
+            {
+                return _isKeepUIAwake;
+            }
+            set
+            {
+                _isKeepUIAwake = value;
+                OnPropertyChanged();
+                if (userSettings.Settings.KeepAwakeUI != _isKeepUIAwake)
+                {
+                    userSettings.Settings.KeepAwakeUI = _isKeepUIAwake;
                     UpdateConfigFile();
                 }
             }

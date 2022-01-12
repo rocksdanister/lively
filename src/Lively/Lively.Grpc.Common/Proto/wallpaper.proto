@@ -11,8 +11,6 @@ service DesktopService {
   rpc CloseWallpaperCategory(CloseWallpaperCategoryRequest) returns (google.protobuf.Empty);
   rpc SubscribeWallpaperChanged (google.protobuf.Empty) returns (stream google.protobuf.Empty);
   rpc SendMessageWallpaper(WallpaperMessageRequest) returns (google.protobuf.Empty);
-  rpc ShowUI (google.protobuf.Empty) returns (google.protobuf.Empty);
-  rpc ShutDown (google.protobuf.Empty) returns (google.protobuf.Empty);
 }
 
 message SetWallpaperRequest {

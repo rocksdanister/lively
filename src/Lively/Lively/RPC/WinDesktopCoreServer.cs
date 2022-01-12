@@ -28,13 +28,11 @@ namespace Lively.RPC
     {
         private readonly IDesktopCore desktopCore;
         private readonly IDisplayManager displayManager;
-        private readonly IRunnerService runner;
 
-        public WinDesktopCoreServer(IDesktopCore desktopCore, IDisplayManager displayManager, IRunnerService runner)
+        public WinDesktopCoreServer(IDesktopCore desktopCore, IDisplayManager displayManager)
         {
             this.desktopCore = desktopCore;
             this.displayManager = displayManager;
-            this.runner = runner;
         }
 
         public override Task<Empty> SetWallpaper(SetWallpaperRequest request, ServerCallContext context)
@@ -45,18 +43,6 @@ namespace Lively.RPC
             desktopCore.SetWallpaper(lm, display ?? displayManager.PrimaryDisplayMonitor);
 
             return Task.FromResult(new Empty());
-        }
-
-        public override Task<Empty> ShutDown(Empty _, ServerCallContext context)
-        {
-            try
-            {
-                return Task.FromResult(new Empty());
-            }
-            finally
-            {
-                App.ShutDown();
-            }
         }
 
         public override async Task GetWallpapers(Empty _, IServerStreamWriter<GetWallpapersResponse> responseStream, ServerCallContext context)
@@ -185,12 +171,6 @@ namespace Lively.RPC
                 var display = displayManager.DisplayMonitors.FirstOrDefault(x => x.DeviceId == request.MonitorId);
                 desktopCore.SendMessageWallpaper(display, request.LivelyInfoPath, obj);
             }
-            return Task.FromResult(new Empty());
-        }
-
-        public override Task<Empty> ShowUI(Empty _, ServerCallContext context)
-        {
-            runner.ShowUI();
             return Task.FromResult(new Empty());
         }
 
