@@ -8,6 +8,8 @@ using System.IO;
 using Lively.Common.Helpers.Storage;
 using Lively.Common;
 using Lively.Common.API;
+using Lively.Grpc.Common.Proto.Commands;
+using GrpcDotNetNamedPipes;
 
 namespace Lively.ConsoleDemo
 {
@@ -18,6 +20,7 @@ namespace Lively.ConsoleDemo
             using IDesktopCoreClient coreClient = new WinDesktopCoreClient();
             using IDisplayManagerClient displayManager = new DisplayManagerClient();
             IUserSettingsClient settingsClient = new UserSettingsClient();
+            ICommandsClient commandsClient = new CommandsClient();
             coreClient.WallpaperChanged += (s, e) => Console.WriteLine("\nWallpaper Changed Event");
             displayManager.DisplayChanged += (s, e) => Console.WriteLine("\nDisplay Changed Event.");
 
@@ -31,6 +34,7 @@ namespace Lively.ConsoleDemo
                 Console.WriteLine("4) Close Wallpaper(s)");
                 Console.WriteLine("5) Get Settings(s)");
                 Console.WriteLine("6) Set Settings(s)");
+                Console.WriteLine("7) Start screensaver(s)");
                 Console.WriteLine("9) Exit");
                 Console.Write("\r\nSelect an option: ");
 
@@ -94,8 +98,15 @@ namespace Lively.ConsoleDemo
                             await settingsClient.Save<ISettingsModel>();
                         }
                         break;
+                    case "7":
+                        {
+                            Console.Write("Please wait..");
+                            await Task.Delay(1000); //delay because "Enter" key triggering screensaver exit.
+                            await commandsClient.ScreensaverShow(true);
+                        }
+                        break;
                     case "9":
-                        await coreClient.ShutDown();
+                        await commandsClient.ShutDown();
                         Console.WriteLine("Core shut down complete..");
                         Console.ReadLine();
                         showMenu = false;

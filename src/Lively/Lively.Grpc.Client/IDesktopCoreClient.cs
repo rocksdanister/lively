@@ -22,7 +22,6 @@ namespace Lively.Grpc.Client
         Task SetWallpaper(string livelyInfoPath, string monitorId);
         void SendMessageWallpaper(ILibraryModel obj, IpcMessage msg);
         void SendMessageWallpaper(IDisplayMonitor display, ILibraryModel obj, IpcMessage msg);
-        Task ShutDown();
     }
 
     public class WallpaperData

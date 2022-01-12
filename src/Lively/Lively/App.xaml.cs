@@ -19,6 +19,7 @@ using System.Windows;
 using Lively.Grpc.Common.Proto.Settings;
 using System.Threading.Tasks;
 using Lively.Grpc.Common.Proto.Display;
+using Lively.Grpc.Common.Proto.Commands;
 
 namespace Lively
 {
@@ -53,7 +54,7 @@ namespace Lively
                 {
                     try
                     {
-                        _ = new DesktopService.DesktopServiceClient(new NamedPipeChannel(".", Constants.SingleInstance.GrpcPipeServerName)).
+                        _ = new CommandsService.CommandsServiceClient(new NamedPipeChannel(".", Constants.SingleInstance.GrpcPipeServerName)).
                             ShowUIAsync(new Google.Protobuf.WellKnownTypes.Empty());
 
                         //skipping first element (application path.)
@@ -119,6 +120,7 @@ namespace Lively
                 .AddSingleton<WinDesktopCoreServer>()
                 .AddSingleton<DisplayManagerServer>()
                 .AddSingleton<UserSettingsServer>()
+                .AddSingleton<CommandsServer>()
                 //transient
                 //.AddTransient<IApplicationsRulesFactory, ApplicationsRulesFactory>()
                 .AddTransient<IWallpaperFactory, WallpaperFactory>()
@@ -148,6 +150,7 @@ namespace Lively
             DesktopService.BindService(server.ServiceBinder, Services.GetRequiredService<WinDesktopCoreServer>());
             SettingsService.BindService(server.ServiceBinder, Services.GetRequiredService<UserSettingsServer>());
             DisplayService.BindService(server.ServiceBinder, Services.GetRequiredService<DisplayManagerServer>());
+            CommandsService.BindService(server.ServiceBinder, Services.GetRequiredService<CommandsServer>());
             server.Start();
 
             return server;
