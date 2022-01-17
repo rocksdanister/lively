@@ -29,8 +29,7 @@ namespace Lively.Factories
                     switch (userSettings.Settings.WebBrowser)
                     {
                         case LivelyWebBrowser.cef:
-
-                            return new WebProcess(obj.FilePath,
+                            return new WebCefSharpProcess(obj.FilePath,
                                 obj,
                                 display,
                                 lpFactory.CreateLivelyPropertyFolder(obj, display, userSettings.Settings.WallpaperArrangement, userSettings),
@@ -38,8 +37,10 @@ namespace Lively.Factories
                                 userSettings.Settings.CefDiskCache,
                                 userSettings.Settings.AudioVolumeGlobal);
                         case LivelyWebBrowser.webview2:
-                            throw new NotImplementedException();
-                            //return new WebEdge(obj.FilePath, obj, display, lpFactory.CreateLivelyPropertyFolder(obj, display, userSettings.Settings.WallpaperArrangement, userSettings));
+                            return new WebWebView2(obj.FilePath,
+                                obj,
+                                display,
+                                lpFactory.CreateLivelyPropertyFolder(obj, display, userSettings.Settings.WallpaperArrangement, userSettings));
                     }
                     break;
                 case WallpaperType.video:
@@ -68,15 +69,13 @@ namespace Lively.Factories
                                 userSettings.Settings.WallpaperScaling);
                             */
                         case LivelyMediaPlayer.mpv:
-                            throw new NotImplementedException();
-                            /*
-                            return new VideoMpvPlayer(obj.FilePath, obj, display, lpFactory.CreateLivelyPropertyFolder(obj, 
-                                display, 
-                                userSettings.Settings.WallpaperArrangement),
-                                userSettings.Settings.WallpaperScaling, 
-                                userSettings.Settings.VideoPlayerHwAccel, 
+                            return new VideoMpvPlayer(obj.FilePath,
+                                obj,
+                                display,
+                                lpFactory.CreateLivelyPropertyFolder(obj, display, userSettings.Settings.WallpaperArrangement, userSettings),
+                                userSettings.Settings.WallpaperScaling,
+                                userSettings.Settings.VideoPlayerHwAccel,
                                 isPreview);
-                            */
                         case LivelyMediaPlayer.vlc:
                             throw new NotImplementedException();
                             /*

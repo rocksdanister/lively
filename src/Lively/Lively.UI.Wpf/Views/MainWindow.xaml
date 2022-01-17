@@ -20,6 +20,7 @@
     Closing="Window_Closing"
     Drop="Window_Drop"
     ShowActivated="True"
+    WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />

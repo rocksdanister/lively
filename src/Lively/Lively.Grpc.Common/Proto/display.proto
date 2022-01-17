@@ -3,11 +3,16 @@ package Lively.Grpc.Common.Proto.Display;
 import "google/protobuf/empty.proto";
 
 service DisplayService {
-  rpc GetScreens (google.protobuf.Empty) returns (stream GetScreensResponse);
+  rpc GetScreens (google.protobuf.Empty) returns (GetScreensResponse);
+  rpc GetVirtualScreenBounds (google.protobuf.Empty) returns (Rectangle);
   rpc SubscribeDisplayChanged (google.protobuf.Empty) returns (stream google.protobuf.Empty);
 }
 
 message GetScreensResponse {
+  repeated ScreenData screens = 1;
+}
+
+message ScreenData {
   string device_id = 1;
   string device_name = 2;
   string display_name = 3;

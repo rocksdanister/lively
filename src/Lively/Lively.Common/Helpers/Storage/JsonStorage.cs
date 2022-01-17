@@ -9,14 +9,15 @@ namespace Lively.Common.Helpers.Storage
         public static T LoadData(string filePath)
         {
             // deserialize JSON directly from a file
-            using (StreamReader file = File.OpenText(filePath))
+            using StreamReader file = File.OpenText(filePath);
+            var serializer = new JsonSerializer
             {
-                var serializer = new JsonSerializer();
-                var tmp = (T)serializer.Deserialize(file, typeof(T));
+                TypeNameHandling = TypeNameHandling.Auto
+            };
+            var tmp = (T)serializer.Deserialize(file, typeof(T));
 
-                //if file is corrupted, json can return null.
-                return (tmp != null ? tmp : throw new ArgumentNullException("json null/corrupt"));
-            }
+            //if file is corrupted, json can return null.
+            return (tmp != null ? tmp : throw new ArgumentNullException("json null/corrupt"));
         }
 
         public static void StoreData(string filePath, T data)
@@ -25,14 +26,13 @@ namespace Lively.Common.Helpers.Storage
             {
                 Formatting = Formatting.Indented,
                 //serializer.Converters.Add(new JavaScriptDateTimeConverter());
-                NullValueHandling = NullValueHandling.Include
+                NullValueHandling = NullValueHandling.Include,
+                TypeNameHandling = TypeNameHandling.Auto,
             };
 
-            using (StreamWriter sw = new StreamWriter(filePath))
-            using (JsonWriter writer = new JsonTextWriter(sw))
-            {
-                serializer.Serialize(writer, data);
-            }
+            using StreamWriter sw = new StreamWriter(filePath);
+            using JsonWriter writer = new JsonTextWriter(sw);
+            serializer.Serialize(writer, data, typeof(T));
         }
     }
 }

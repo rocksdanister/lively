@@ -6,11 +6,16 @@ service CommandsService {
   rpc ShowUI (google.protobuf.Empty) returns (google.protobuf.Empty);
   rpc Screensaver (ScreensaverRequest) returns (google.protobuf.Empty);
   rpc ShutDown (google.protobuf.Empty) returns (google.protobuf.Empty);
+  rpc AutomationCommand (AutomationCommandRequest) returns (google.protobuf.Empty);
 }
 
 message ScreensaverRequest {
 	ScreensaverState state = 1;
 	int32 preview_hwnd = 2;
+}
+
+message AutomationCommandRequest {
+	repeated string args = 1;
 }
 
 enum ScreensaverState {

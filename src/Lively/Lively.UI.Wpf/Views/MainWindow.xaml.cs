@@ -1,4 +1,5 @@
 ﻿using Lively.Grpc.Client;
+using Lively.Models;
 using Lively.UI.Wpf.Views.Pages;
 using Microsoft.Extensions.DependencyInjection;
 using ModernWpf.Controls;
@@ -26,13 +27,16 @@ namespace Lively.UI.Wpf.Views
     public partial class MainWindow : Window
     {
         private readonly IUserSettingsClient userSettings;
+        private readonly IDesktopCoreClient desktopCore;
 
-        public MainWindow(IUserSettingsClient userSettings)
+        public MainWindow(IUserSettingsClient userSettings, IDesktopCoreClient desktopCore)
         {
             this.userSettings = userSettings;
+            this.desktopCore = desktopCore;
 
             InitializeComponent();
             this.ContentRendered += (s, e) => NavViewNavigate("library");
+            this.desktopCore.WallpaperChanged += DesktopCore_WallpaperChanged;
             _ = StdInListener();
         }
 
@@ -75,16 +79,16 @@ namespace Lively.UI.Wpf.Views
                     //ContentFrame.Navigate(typeof(AddWallpaperView), new Uri("Views/AddWallpaperView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
                     break;
                 case "about":
-                    //ContentFrame.Navigate(typeof(AboutView), new Uri("Views/AboutView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
+                    ContentFrame.Navigate(typeof(AboutView), new Uri("Views/AboutView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
                     break;
                 case "help":
-                    //ContentFrame.Navigate(typeof(HelpView), new Uri("Views/HelpView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
+                    ContentFrame.Navigate(typeof(HelpView), new Uri("Views/HelpView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
                     break;
                 case "debug":
                     //ContentFrame.Navigate(typeof(DebugView), new Uri("Views/DebugView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
                     break;
                 default:
-                    //ContentFrame.Navigate(typeof(LibraryView), new Uri("Views/LibraryView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
+                    ContentFrame.Navigate(typeof(LibraryView), new Uri("Views/LibraryView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
                     break;
             }
         }
@@ -96,6 +100,27 @@ namespace Lively.UI.Wpf.Views
         }
 
         #region wallpaper statusbar
+
+        private void DesktopCore_WallpaperChanged(object sender, EventArgs e)
+        {
+            _ = this.Dispatcher.BeginInvoke(new Action(() => {
+                //teaching tip - control panel.
+                if (!userSettings.Settings.ControlPanelOpened &&
+                    this.WindowState != WindowState.Minimized &&
+                    this.Visibility == Visibility.Visible)
+                {
+                    ModernWpf.Controls.Primitives.FlyoutBase.ShowAttachedFlyout(statusBtn);
+                    userSettings.Settings.ControlPanelOpened = true;
+                    userSettings.Save<ISettingsModel>();
+                }
+                //wallpaper focus steal fix.
+                if (this.IsVisible && (layoutWindow == null || layoutWindow.Visibility != Visibility.Visible))
+                {
+                    this.Activate();
+                }
+                wallpaperStatusText.Text = desktopCore.Wallpapers.Count.ToString();
+            }));
+        }
 
         private Screen.ScreenLayoutView layoutWindow;
         public void ShowControlPanelDialog()

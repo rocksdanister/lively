@@ -1,9 +1,11 @@
 ﻿using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
+using Lively.Automation;
 using Lively.Grpc.Common.Proto.Commands;
 using Lively.Services;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,11 +15,13 @@ namespace Lively.RPC
     {
         private readonly IRunnerService runner;
         private readonly IScreensaverService screensaver;
+        private readonly ICommandHandler commandHandler;
 
-        public CommandsServer(IRunnerService runner, IScreensaverService screensaver)
+        public CommandsServer(IRunnerService runner, IScreensaverService screensaver, ICommandHandler commandHandler)
         {
             this.runner = runner;
             this.screensaver = screensaver;
+            this.commandHandler = commandHandler;
         }
 
         public override Task<Empty> ShowUI(Empty _, ServerCallContext context)
@@ -53,6 +57,12 @@ namespace Lively.RPC
             {
                 App.ShutDown();
             }
+        }
+
+        public override Task<Empty> AutomationCommand(AutomationCommandRequest request, ServerCallContext context)
+        {
+            commandHandler.ParseArgs(request.Args.ToArray());
+            return Task.FromResult(new Empty());
         }
     }
 }

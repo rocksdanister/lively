@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lively.MediaPlayerWmf
+namespace Lively.PlayerWmf
 {
     public class StartArgs
     {

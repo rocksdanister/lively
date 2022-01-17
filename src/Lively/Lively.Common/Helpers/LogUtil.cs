@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace Lively.Common.Helpers
@@ -27,6 +29,18 @@ namespace Lively.Common.Helpers
             {
                 return "Failed to retrive properties of config file.";
             }
+        }
+
+        /// <summary>
+        /// Write to log win32 error if GetLastWin32Error returns true.
+        /// </summary>
+        public static string GetWin32Error(string message,
+            [CallerMemberName] string memberName = "",
+            [CallerFilePath] string fileName = "",
+            [CallerLineNumber] int lineNumber = 0)
+        {
+            int err = Marshal.GetLastWin32Error();
+            return $"HRESULT: {err}, {message} at\n{fileName} ({lineNumber})\n{memberName}";
         }
     }
 }

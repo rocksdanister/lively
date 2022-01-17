@@ -19,42 +19,49 @@ namespace Lively.RPC
             this.displayManager = displayManager;
         }
 
-        public override async Task GetScreens(Empty _, IServerStreamWriter<GetScreensResponse> responseStream, ServerCallContext context)
+        public override Task<GetScreensResponse> GetScreens(Empty _, ServerCallContext context)
         {
-            try
+            var resp = new GetScreensResponse();
+            foreach (var display in displayManager.DisplayMonitors)
             {
-                foreach (var display in displayManager.DisplayMonitors)
+                var item = new ScreenData()
                 {
-                    var item = new GetScreensResponse()
+                    DeviceId = display.DeviceId,
+                    DeviceName = display.DeviceName,
+                    DisplayName = display.DisplayName,
+                    HMonitor = display.HMonitor.ToInt32(),
+                    IsPrimary = display.IsPrimary,
+                    Index = display.Index,
+                    WorkingArea = new Rectangle()
                     {
-                        DeviceId = display.DeviceId,
-                        DeviceName = display.DeviceName,
-                        DisplayName = display.DisplayName,
-                        HMonitor = display.HMonitor.ToInt32(),
-                        IsPrimary = display.IsPrimary,
-                        Index = display.Index,
-                        WorkingArea = new Rectangle()
-                        {
-                            X = display.WorkingArea.X,
-                            Y = display.WorkingArea.Y,
-                            Width = display.WorkingArea.Width,
-                            Height = display.WorkingArea.Height
-                        },
-                        Bounds = new Rectangle()
-                        {
-                            X = display.Bounds.X,
-                            Y = display.Bounds.Y,
-                            Width = display.Bounds.Width,
-                            Height = display.Bounds.Height
-                        }
-                    };
-                    await responseStream.WriteAsync(item);
-                }
+                        X = display.WorkingArea.X,
+                        Y = display.WorkingArea.Y,
+                        Width = display.WorkingArea.Width,
+                        Height = display.WorkingArea.Height
+                    },
+                    Bounds = new Rectangle()
+                    {
+                        X = display.Bounds.X,
+                        Y = display.Bounds.Y,
+                        Width = display.Bounds.Width,
+                        Height = display.Bounds.Height
+                    }
+                };
+                resp.Screens.Add(item);
             }
-            catch (Exception e)
+            return Task.FromResult(resp);
+        }
+
+        public override Task<Rectangle> GetVirtualScreenBounds(Empty _, ServerCallContext context)
+        {
+            var resp = new Rectangle()
             {
-                Debug.WriteLine(e.ToString());
-            }
+                X = displayManager.VirtualScreenBounds.X,
+                Y = displayManager.VirtualScreenBounds.Y,
+                Width = displayManager.VirtualScreenBounds.Width,
+                Height = displayManager.VirtualScreenBounds.Height,
+            };
+            return Task.FromResult(resp);
         }
 
         public override async Task SubscribeDisplayChanged(Empty _, IServerStreamWriter<Empty> responseStream, ServerCallContext context)

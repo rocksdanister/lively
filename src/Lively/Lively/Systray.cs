@@ -1,4 +1,5 @@
-﻿using Lively.Services;
+﻿using Lively.Core;
+using Lively.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,7 +15,7 @@ namespace Lively
         private readonly NotifyIcon _notifyIcon = new NotifyIcon();
         private bool disposedValue;
 
-        public Systray(IRunnerService runner)
+        public Systray(IRunnerService runner, IDesktopCore desktopCore)
         {
             //NotifyIcon Fix: https://stackoverflow.com/questions/28833702/wpf-notifyicon-crash-on-first-run-the-root-visual-of-a-visualtarget-cannot-hav/29116917
             //Error: "The root Visual of a VisualTarget cannot have a parent.."
@@ -29,7 +30,8 @@ namespace Lively
             _notifyIcon.Text = "Lively Wallpaper";
             _notifyIcon.Visible = true;
             _notifyIcon.ContextMenuStrip.Items.Add("Open Lively").Click += (s, e) => runner.ShowUI();
-            _notifyIcon.ContextMenuStrip.Items.Add("Quit").Click += (s, e) => App.ShutDown();
+            _notifyIcon.ContextMenuStrip.Items.Add("Close all wallpaper(s)", null).Click += (s, e) => desktopCore.CloseAllWallpapers(true);
+            _notifyIcon.ContextMenuStrip.Items.Add("Exit").Click += (s, e) => App.ShutDown();
         }
 
         public void ShowBalloonNotification(int timeout, string title, string msg)

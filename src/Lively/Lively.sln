@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lively.Watchdog", "Lively.W
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lively.Models", "Lively.Models\Lively.Models.csproj", "{1E3D9D5B-A1FD-4915-95F5-9A52D87FCDEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lively.MediaPlayerWmf", "Lively.MediaPlayerWmf\Lively.MediaPlayerWmf.csproj", "{95A2CE21-5CF3-4432-8BE5-33B71C2C7A82}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lively.PlayerWmf", "Lively.MediaPlayerWmf\Lively.PlayerWmf.csproj", "{95A2CE21-5CF3-4432-8BE5-33B71C2C7A82}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lively.Grpc.Common", "Lively.Grpc.Common\Lively.Grpc.Common.csproj", "{F3E38E78-1670-4E6F-A9FB-041AC30E61E8}"
 EndProject
@@ -21,7 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lively.ConsoleDemo", "Livel
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lively.Grpc.Client", "Lively.Grpc.Client\Lively.Grpc.Client.csproj", "{E2DD302F-D4EA-45EF-9F79-46BFAB8A3A1D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lively.Screensaver", "Lively.Screensaver\Lively.Screensaver.csproj", "{E31712AF-0C2D-4E81-8251-855A9A7C3DA5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lively.Screensaver", "Lively.Screensaver\Lively.Screensaver.csproj", "{E31712AF-0C2D-4E81-8251-855A9A7C3DA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lively.PlayerWebView2", "Lively.PlayerWebView2\Lively.PlayerWebView2.csproj", "{0A3C922E-3CE4-4676-AD1E-891D195EE74A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{E31712AF-0C2D-4E81-8251-855A9A7C3DA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E31712AF-0C2D-4E81-8251-855A9A7C3DA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E31712AF-0C2D-4E81-8251-855A9A7C3DA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A3C922E-3CE4-4676-AD1E-891D195EE74A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A3C922E-3CE4-4676-AD1E-891D195EE74A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A3C922E-3CE4-4676-AD1E-891D195EE74A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A3C922E-3CE4-4676-AD1E-891D195EE74A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

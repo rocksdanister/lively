@@ -33,6 +33,7 @@ namespace Lively.Grpc.Client
         {
             client = new DesktopService.DesktopServiceClient(new NamedPipeChannel(".", Constants.SingleInstance.GrpcPipeServerName));
 
+            //TODO: Wait timeout
             Task.Run(async () =>
             {
                 wallpapers.AddRange(await GetWallpapers());
@@ -74,6 +75,7 @@ namespace Lively.Grpc.Client
                     LivelyPropertyCopyPath = item.PropertyCopyPath,
                     PreviewPath = item.PreviewPath,
                     ThumbnailPath = item.ThumbnailPath,
+                    Category = (WallpaperType)(int)item.Category,
                     Display = new DisplayMonitor()
                     {
                         DeviceId = item.Screen.DeviceId,
@@ -97,6 +99,11 @@ namespace Lively.Grpc.Client
                 });
             }
             return wallpapers;
+        }
+
+        public async Task PreviewWallpaper(string livelyInfoPath)
+        {
+            await client.PreviewWallpaperAsync(new PreviewWallpaperRequest() { LivelyInfoPath = livelyInfoPath });
         }
 
         public async Task CloseAllWallpapers(bool terminate = false)

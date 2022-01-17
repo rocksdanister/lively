@@ -5,7 +5,7 @@ using System;
 using System.Windows;
 using System.Windows.Interop;
 
-namespace Lively.WndMsg
+namespace Lively.Views.WindowMsg
 {
     /// <summary>
     /// Interaction logic for WndProcMessageWindow.xaml

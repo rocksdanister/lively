@@ -19,6 +19,7 @@ namespace Lively.Grpc.Client
 
         private readonly List<IDisplayMonitor> displayMonitors = new List<IDisplayMonitor>(2);
         public ReadOnlyCollection<IDisplayMonitor> DisplayMonitors => displayMonitors.AsReadOnly();
+        public System.Drawing.Rectangle VirtulScreenBounds { get; private set; }
 
         private readonly DisplayService.DisplayServiceClient client;
         private readonly SemaphoreSlim displayChangedLock = new SemaphoreSlim(1, 1);
@@ -33,6 +34,7 @@ namespace Lively.Grpc.Client
             Task.Run(async () =>
             {
                 displayMonitors.AddRange(await GetScreens());
+                VirtulScreenBounds = await GetVirtualScreenBounds();
             }).Wait();
 
             cancellationTokeneDisplayChanged = new CancellationTokenSource();
@@ -41,15 +43,9 @@ namespace Lively.Grpc.Client
 
         private async Task<List<IDisplayMonitor>> GetScreens()
         {
-            var screens = new List<GetScreensResponse>();
-            using var call = client.GetScreens(new Empty());
-            while (await call.ResponseStream.MoveNext())
-            {
-                var response = call.ResponseStream.Current;
-                screens.Add(response);
-            }
+            var resp = await client.GetScreensAsync(new Empty());
             var displayMonitors = new List<IDisplayMonitor>();
-            foreach (var screen in screens)
+            foreach (var screen in resp.Screens)
             {
                 displayMonitors.Add(new DisplayMonitor()
                 {
@@ -75,6 +71,17 @@ namespace Lively.Grpc.Client
             return displayMonitors;
         }
 
+        private async Task<System.Drawing.Rectangle> GetVirtualScreenBounds()
+        {
+            var resp = await client.GetVirtualScreenBoundsAsync(new Empty());
+            var vsb = new System.Drawing.Rectangle(
+                        resp.X,
+                        resp.Y,
+                        resp.Width,
+                        resp.Height);
+            return vsb;
+        }
+
         private async Task SubscribeDisplayChangedStream(CancellationToken token)
         {
             try
@@ -89,6 +96,7 @@ namespace Lively.Grpc.Client
 
                         displayMonitors.Clear();
                         displayMonitors.AddRange(await GetScreens());
+                        VirtulScreenBounds = await GetVirtualScreenBounds();
                         DisplayChanged?.Invoke(this, EventArgs.Empty);
                     }
                     finally

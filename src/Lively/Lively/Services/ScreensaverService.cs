@@ -13,11 +13,13 @@ using Point = System.Drawing.Point;
 using System.Diagnostics;
 using System.Linq;
 using Lively.Core;
-using Lively.WndMsg;
 using Lively.Common.Helpers.Pinvoke;
 using Lively.Common.Helpers;
 using Lively.Common;
 using Lively.Common.Helpers.Shell;
+using Lively.Views.WindowMsg;
+using Lively.Views;
+using Lively.Core.Display;
 
 namespace Lively.Services
 {
@@ -29,16 +31,21 @@ namespace Lively.Services
         private readonly Timer idleTimer = new Timer();
         public bool IsRunning { get; private set; } = false;
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        //private readonly List<ScreensaverBlank> blankWindows = new List<ScreensaverBlank>();
+        private readonly List<Blank> blankWindows = new List<Blank>();
 
         private readonly IUserSettingsService userSettings;
         private readonly IDesktopCore desktopCore;
+        private readonly IDisplayManager displayManager;
         private readonly RawInputMsgWindow rawInput;
 
-        public ScreensaverService(IUserSettingsService userSettings, IDesktopCore desktopCore, RawInputMsgWindow rawInput)
+        public ScreensaverService(IUserSettingsService userSettings,
+            IDesktopCore desktopCore,
+            IDisplayManager displayManager,
+            RawInputMsgWindow rawInput)
         {
             this.userSettings = userSettings;
             this.desktopCore = desktopCore;
+            this.displayManager = displayManager;
             this.rawInput = rawInput;
 
             idleTimer.Elapsed += IdleCheckTimer;
@@ -58,7 +65,7 @@ namespace Lively.Services
                 Logger.Info("Starting screensaver..");
                 IsRunning = true;
                 ShowScreensavers();
-                ShowBlankScreensavers();
+                //ShowBlankScreensavers();
                 StartInputListener();
             }
         }
@@ -71,7 +78,7 @@ namespace Lively.Services
                 IsRunning = false;
                 StopInputListener();
                 HideScreensavers();
-                CloseBlankScreensavers();
+                //CloseBlankScreensavers();
 
                 if (userSettings.Settings.ScreensaverLockOnResume)
                 {
@@ -241,40 +248,43 @@ namespace Lively.Services
 
         private void ShowBlankScreensavers()
         {
-            //if (!userSettings.Settings.ScreensaverEmptyScreenShowBlack ||
-            //    (userSettings.Settings.WallpaperArrangement == WallpaperArrangement.span && desktopCore.Wallpapers.Count > 0))
-            //{
-            //    return;
-            //}
+            if (!userSettings.Settings.ScreensaverEmptyScreenShowBlack ||
+                (userSettings.Settings.WallpaperArrangement == WallpaperArrangement.span && desktopCore.Wallpapers.Count > 0))
+            {
+                return;
+            }
 
-            //_ = Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, new ThreadStart(delegate
-            //  {
-            //      var freeScreens = ScreenHelper.GetScreen().FindAll(
-            //          x => !desktopCore.Wallpapers.Any(y => y.Screen.Equals(x)));
-
-            //      foreach (var item in freeScreens)
-            //      {
-            //          var bWindow = new ScreensaverBlank
-            //          {
-            //              Left = item.Bounds.Left,
-            //              Top = item.Bounds.Top,
-            //              WindowState = WindowState.Maximized,
-            //              WindowStyle = WindowStyle.None,
-            //              Topmost = true,
-            //          };
-            //          bWindow.Show();
-            //          blankWindows.Add(bWindow);
-            //      }
-            //  }));
+            _ = Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, new ThreadStart(delegate
+              {
+                  var freeScreens = displayManager.DisplayMonitors.ToList().FindAll(
+                      x => !desktopCore.Wallpapers.Any(y => y.Screen.Equals(x)));
+                  foreach (var item in freeScreens)
+                  {
+                      var blankWindow = new Blank
+                      {
+                          Left = item.Bounds.Left,
+                          Top = item.Bounds.Top,
+                          Width = item.Bounds.Width,
+                          Height = item.Bounds.Height,
+                          //WindowStartupLocation = WindowStartupLocation.Manual,
+                          //WindowState = WindowState.Maximized,
+                          WindowStyle = WindowStyle.None,
+                          Topmost = true,
+                      };
+                      //blankWindow.Loaded += (s, e) => { blankWindow.WindowState = WindowState.Maximized; };
+                      blankWindow.Show();
+                      blankWindows.Add(blankWindow);
+                  }
+              }));
         }
 
         private void CloseBlankScreensavers()
         {
-            //_ = Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, new ThreadStart(delegate
-            //  {
-            //      blankWindows.ForEach(x => x.Close());
-            //      blankWindows.Clear();
-            //  }));
+            _ = Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, new ThreadStart(delegate
+              {
+                  blankWindows.ForEach(x => x.Close());
+                  blankWindows.Clear();
+              }));
         }
 
         #endregion //screensavers

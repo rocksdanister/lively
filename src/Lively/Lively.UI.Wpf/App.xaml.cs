@@ -1,5 +1,7 @@
-﻿using Lively.Grpc.Client;
+﻿using Lively.Common.Services;
+using Lively.Grpc.Client;
 using Lively.UI.Wpf.Factories;
+using Lively.UI.Wpf.Helpers;
 using Lively.UI.Wpf.ViewModels;
 using Lively.UI.Wpf.Views;
 using Microsoft.Extensions.DependencyInjection;
@@ -52,10 +54,14 @@ namespace Lively.UI.Wpf
                 .AddSingleton<IDesktopCoreClient, WinDesktopCoreClient>()
                 .AddSingleton<IUserSettingsClient, UserSettingsClient>()
                 .AddSingleton<IDisplayManagerClient, DisplayManagerClient>()
+                .AddSingleton<IAppUpdaterService, GithubUpdaterService>()
                 .AddSingleton<MainWindow>()
                 .AddSingleton<LibraryViewModel>()
                 .AddSingleton<SettingsViewModel>() // can be made transient now?
                 //transient
+                .AddTransient<HelpViewModel>()
+                .AddTransient<AboutViewModel>()
+                .AddTransient<LibraryUtil>()
                 .AddTransient<ScreenLayoutViewModel>()
                 .AddTransient<ApplicationRulesViewModel>()
                 .AddTransient<IApplicationsRulesFactory, ApplicationsRulesFactory>()
