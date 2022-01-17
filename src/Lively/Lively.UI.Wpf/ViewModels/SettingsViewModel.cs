@@ -23,7 +23,7 @@ namespace Lively.UI.Wpf.ViewModels
 {
     public class SettingsViewModel : ObservableObject
     {
-        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+        //private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private readonly IUserSettingsClient userSettings;
         private readonly IDesktopCoreClient desktopCore;
         //private readonly IScreensaverService screenSaver;
@@ -549,11 +549,7 @@ namespace Lively.UI.Wpf.ViewModels
                 {
                     userSettings.Settings.WallpaperScaling = (WallpaperScaler)_selectedWallpaperScalingIndex;
                     UpdateConfigFile();
-
-                    WallpaperRestart(WallpaperType.videostream);
-                    WallpaperRestart(WallpaperType.video);
-                    WallpaperRestart(WallpaperType.gif);
-                    WallpaperRestart(WallpaperType.picture);
+                    _ = WallpaperRestart(new WallpaperType[] { WallpaperType.video, WallpaperType.picture, WallpaperType.videostream, WallpaperType.gif });
                 }
             }
         }
@@ -602,7 +598,7 @@ namespace Lively.UI.Wpf.ViewModels
                     userSettings.Settings.VideoPlayer = (LivelyMediaPlayer)_selectedVideoPlayerIndex;
                     UpdateConfigFile();
                     //VideoPlayerSwitch((LivelyMediaPlayer)_selectedVideoPlayerIndex);
-                    WallpaperRestart(WallpaperType.video);
+                    _ = WallpaperRestart(new WallpaperType[] { WallpaperType.video, WallpaperType.picture, WallpaperType.videostream });
                 }
             }
         }
@@ -619,10 +615,8 @@ namespace Lively.UI.Wpf.ViewModels
                 {
                     userSettings.Settings.VideoPlayerHwAccel = _videoPlayerHWDecode;
                     UpdateConfigFile();
-                    WallpaperRestart(WallpaperType.video);
-                    WallpaperRestart(WallpaperType.videostream);
                     //if mpv player is also set as gif player..
-                    WallpaperRestart(WallpaperType.gif);
+                    _ = WallpaperRestart(new WallpaperType[] { WallpaperType.video, WallpaperType.videostream, WallpaperType.gif });
                 }
             }
         }
@@ -642,8 +636,7 @@ namespace Lively.UI.Wpf.ViewModels
                 {
                     userSettings.Settings.GifPlayer = (LivelyGifPlayer)_selectedGifPlayerIndex;
                     UpdateConfigFile();
-                    WallpaperRestart(WallpaperType.gif);
-                    WallpaperRestart(WallpaperType.picture);
+                    _ = WallpaperRestart(new WallpaperType[] { WallpaperType.gif, WallpaperType.picture });
                 }
             }
         }
@@ -660,8 +653,7 @@ namespace Lively.UI.Wpf.ViewModels
                 {
                     userSettings.Settings.StreamQuality = (StreamQualitySuggestion)_selectedWallpaperStreamQualityIndex;
                     UpdateConfigFile();
-
-                    WallpaperRestart(WallpaperType.videostream);
+                    _ = WallpaperRestart(new WallpaperType[] { WallpaperType.videostream });
                 }
             }
         }
@@ -682,11 +674,7 @@ namespace Lively.UI.Wpf.ViewModels
                 {
                     userSettings.Settings.WebBrowser = (LivelyWebBrowser)_selectedWebBrowserIndex;
                     UpdateConfigFile();
-
-                    WallpaperRestart(WallpaperType.web);
-                    WallpaperRestart(WallpaperType.webaudio);
-                    WallpaperRestart(WallpaperType.url);
-                    WallpaperRestart(WallpaperType.videostream);
+                    _ = WallpaperRestart(new WallpaperType[] { WallpaperType.web, WallpaperType.webaudio, WallpaperType.url, WallpaperType.videostream });
                 }
             }
         }
@@ -1133,17 +1121,19 @@ namespace Lively.UI.Wpf.ViewModels
         }
         */
 
-        private void WallpaperRestart(WallpaperType type)
+        private async Task WallpaperRestart(WallpaperType[] type)
         {
-            /*
-            Logger.Info("Restarting wallpaper:" + type);
-            var originalWallpapers = desktopCore.Wallpapers.Where(x => x.Category == type).ToList();
-            if (originalWallpapers.Count > 0)
+            var originalWallpapers = desktopCore.Wallpapers.Where(x => type.Any(y => y == x.Category)).ToList();
+            if (originalWallpapers.Count() > 0)
             {
-                desktopCore.CloseWallpaper(type, true);
+                foreach (var item in type)
+                {
+                    await desktopCore.CloseWallpaper(item, true);
+                }
+
                 foreach (var item in originalWallpapers)
                 {
-                    desktopCore.SetWallpaper(item.Model, item.Screen);
+                    await desktopCore.SetWallpaper(item.LivelyInfoFolderPath, item.Display.DeviceId);
                     if (userSettings.Settings.WallpaperArrangement == WallpaperArrangement.span
                         || userSettings.Settings.WallpaperArrangement == WallpaperArrangement.duplicate)
                     {
@@ -1151,7 +1141,6 @@ namespace Lively.UI.Wpf.ViewModels
                     }
                 }
             }
-            */
         }
 
         public event EventHandler<string> LivelyWallpaperDirChange;

@@ -11,7 +11,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Interop;
 
-namespace Lively.MediaPlayerWmf
+namespace Lively.PlayerWmf
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -25,6 +25,7 @@ namespace Lively.MediaPlayerWmf
                 .WithParsed(RunOptions)
                 .WithNotParsed(HandleParseError);
         }
+
         private void RunOptions(StartArgs opts)
         {
             try
@@ -135,22 +136,25 @@ namespace Lively.MediaPlayerWmf
                             {
                                 var close = false;
                                 var obj = JsonConvert.DeserializeObject<IpcMessage>(msg, new JsonSerializerSettings() { Converters = { new IpcMessageConverter() } });
-                                switch (obj.Type)
+                                this.Dispatcher.Invoke(() =>
                                 {
-                                    case MessageType.cmd_suspend:
-                                        Pause();
-                                        break;
-                                    case MessageType.cmd_resume:
-                                        Play();
-                                        break;
-                                    case MessageType.cmd_close:
-                                        close = true;
-                                        break;
-                                    case MessageType.cmd_volume:
-                                        var vc = (LivelyVolumeCmd)obj;
-                                        SetVolume(vc.Volume);
-                                        break;
-                                }
+                                    switch (obj.Type)
+                                    {
+                                        case MessageType.cmd_suspend:
+                                            Pause();
+                                            break;
+                                        case MessageType.cmd_resume:
+                                            Play();
+                                            break;
+                                        case MessageType.cmd_close:
+                                            close = true;
+                                            break;
+                                        case MessageType.cmd_volume:
+                                            var vc = (LivelyVolumeCmd)obj;
+                                            SetVolume(vc.Volume);
+                                            break;
+                                    }
+                                });
 
                                 if (close)
                                 {
@@ -162,7 +166,7 @@ namespace Lively.MediaPlayerWmf
                                 App.WriteToParent(new LivelyMessageConsole()
                                 {
                                     Category = ConsoleMessageType.error,
-                                    Message = $"Ipc parse error: {ie.Message}"
+                                    Message = $"Ipc action error: {ie.Message}"
                                 });
                             }
                         }
@@ -179,7 +183,7 @@ namespace Lively.MediaPlayerWmf
             }
             finally
             {
-                Application.Current.Shutdown();
+                Application.Current.Dispatcher.Invoke(Application.Current.Shutdown);
             }
         }
     }

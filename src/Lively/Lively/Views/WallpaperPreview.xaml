@@ -1,0 +1,45 @@
+﻿<Window
+    x:Class="Lively.Views.WallpaperPreview"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Lively.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Preview"
+    Width="1281"
+    Height="762"
+    Closing="Window_Closing"
+    Loaded="Window_Loaded"
+    ResizeMode="CanResize"
+    SizeChanged="Window_SizeChanged"
+    WindowStyle="SingleBorderWindow"
+    mc:Ignorable="d">
+    <Grid>
+
+        <!--  wallpaper window will be placed here!  -->
+        <Rectangle
+            x:Name="PreviewBorder"
+            MinWidth="3840"
+            MinHeight="2160"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            Fill="#FF2B2B2B" />
+
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="25"
+                Foreground="LightGray">
+                Please Wait..
+            </TextBlock>
+            <ProgressBar
+                x:Name="ProgressIndicator"
+                Grid.Row="1"
+                Width="100"
+                Height="25"
+                Margin="10"
+                IsIndeterminate="True" />
+        </StackPanel>
+    </Grid>
+</Window>

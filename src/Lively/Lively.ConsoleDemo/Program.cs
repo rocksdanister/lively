@@ -35,6 +35,7 @@ namespace Lively.ConsoleDemo
                 Console.WriteLine("5) Get Settings(s)");
                 Console.WriteLine("6) Set Settings(s)");
                 Console.WriteLine("7) Start screensaver(s)");
+                Console.WriteLine("8) Commandline control");
                 Console.WriteLine("9) Exit");
                 Console.Write("\r\nSelect an option: ");
 
@@ -103,6 +104,14 @@ namespace Lively.ConsoleDemo
                             Console.Write("Please wait..");
                             await Task.Delay(1000); //delay because "Enter" key triggering screensaver exit.
                             await commandsClient.ScreensaverShow(true);
+                        }
+                        break;
+                    case "8":
+                        {
+                            Console.Write("Enter commandline command:");
+                            var msg = Console.ReadLine();
+                            var arguments = msg.Split(" ");
+                            await commandsClient.AutomationCommand(arguments);
                         }
                         break;
                     case "9":

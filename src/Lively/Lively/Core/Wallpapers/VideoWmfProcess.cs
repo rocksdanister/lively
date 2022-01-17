@@ -51,7 +51,7 @@ namespace Lively.Core.Wallpapers
             ProcessStartInfo start = new ProcessStartInfo
             {
                 Arguments = cmdArgs.ToString(),
-                FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "wmf", "Lively.MediaPlayerWmf.exe"),
+                FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "wmf", "Lively.PlayerWmf.exe"),
                 RedirectStandardInput = true,
                 RedirectStandardOutput = true,
                 RedirectStandardError = true,

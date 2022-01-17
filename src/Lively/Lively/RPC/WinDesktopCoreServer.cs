@@ -21,11 +21,15 @@ using Lively.Grpc.Common.Proto.Desktop;
 using Newtonsoft.Json;
 using Lively.Common.API;
 using Lively.Common.Helpers;
+using Lively.Helpers;
+using Lively.Views;
 
 namespace Lively.RPC
 {
     internal class WinDesktopCoreServer : DesktopService.DesktopServiceBase
     {
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+
         private readonly IDesktopCore desktopCore;
         private readonly IDisplayManager displayManager;
 
@@ -37,10 +41,16 @@ namespace Lively.RPC
 
         public override Task<Empty> SetWallpaper(SetWallpaperRequest request, ServerCallContext context)
         {
-            //TEST
-            var lm = ScanWallpaperFolder(request.LivelyInfoPath);
-            var display = displayManager.DisplayMonitors.FirstOrDefault(x => x.DeviceId == request.MonitorId);
-            desktopCore.SetWallpaper(lm, display ?? displayManager.PrimaryDisplayMonitor);
+            try
+            {
+                var lm = WallpaperUtil.ScanWallpaperFolder(request.LivelyInfoPath);
+                var display = displayManager.DisplayMonitors.FirstOrDefault(x => x.DeviceId == request.MonitorId);
+                desktopCore.SetWallpaper(lm, display ?? displayManager.PrimaryDisplayMonitor);
+            }
+            catch (Exception e)
+            {
+                Logger.Error(e.ToString());
+            }
 
             return Task.FromResult(new Empty());
         }
@@ -54,7 +64,7 @@ namespace Lively.RPC
                     var item = new GetWallpapersResponse()
                     {
                         LivelyInfoPath = wallpaper.Model.LivelyInfoFolderPath,
-                        Screen = new GetScreensResponse()
+                        Screen = new ScreenData()
                         {
                             DeviceId = wallpaper.Screen.DeviceId,
                             DeviceName = wallpaper.Screen.DeviceName,
@@ -80,6 +90,7 @@ namespace Lively.RPC
                         ThumbnailPath = wallpaper.Model.ThumbnailPath ?? string.Empty,
                         PreviewPath = wallpaper.Model.PreviewClipPath ?? string.Empty,
                         PropertyCopyPath = wallpaper.LivelyPropertyCopyPath ?? string.Empty,
+                        Category = (WallpaperCategory)(int)wallpaper.Category
                     };
                     await responseStream.WriteAsync(item);
                 }
@@ -88,6 +99,27 @@ namespace Lively.RPC
             {
                 Debug.WriteLine(e.ToString());
             }
+        }
+
+        public override Task<Empty> PreviewWallpaper(PreviewWallpaperRequest request, ServerCallContext context)
+        {
+            try
+            {
+                var lm = WallpaperUtil.ScanWallpaperFolder(request.LivelyInfoPath);
+                _ = Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, new ThreadStart(delegate
+                  {
+                      new WallpaperPreview(lm)
+                      {
+                          WindowStartupLocation = WindowStartupLocation.CenterScreen,
+                          Topmost = true,
+                      }.Show();
+                  }));
+            }
+            catch (Exception e)
+            {
+                Logger.Error(e.ToString());
+            }
+            return Task.FromResult(new Empty());
         }
 
         public override Task<Empty> CloseAllWallpapers(CloseAllWallpapersRequest request, ServerCallContext context)
@@ -108,11 +140,16 @@ namespace Lively.RPC
 
         public override Task<Empty> CloseWallpaperLibrary(CloseWallpaperLibraryRequest request, ServerCallContext context)
         {
-            var lm = ScanWallpaperFolder(request.LivelyInfoPath);
-            if (lm != null)
+            try
             {
+                var lm = WallpaperUtil.ScanWallpaperFolder(request.LivelyInfoPath);
                 desktopCore.CloseWallpaper(lm, request.Terminate);
             }
+            catch (Exception e)
+            {
+                Logger.Error(e.ToString());
+            }
+
             return Task.FromResult(new Empty());
         }
 
@@ -173,53 +210,5 @@ namespace Lively.RPC
             }
             return Task.FromResult(new Empty());
         }
-
-        #region helpers
-
-        //TEST
-        private ILibraryModel ScanWallpaperFolder(string folderPath)
-        {
-            if (File.Exists(Path.Combine(folderPath, "LivelyInfo.json")))
-            {
-                LivelyInfoModel info = null;
-                try
-                {
-                    info = JsonStorage<LivelyInfoModel>.LoadData(Path.Combine(folderPath, "LivelyInfo.json"));
-                }
-                catch (Exception e)
-                {
-                    //Logger.Error(e.ToString());
-                }
-
-                if (info != null)
-                {
-                    if (info.Type == WallpaperType.videostream || info.Type == WallpaperType.url)
-                    {
-                        //online content, no file.
-                        //Logger.Info("Loading Wallpaper (no-file):- " + info.FileName + " " + info.Type);
-                        return new LibraryModel(info, folderPath, LibraryItemType.ready, false);
-                    }
-                    else
-                    {
-                        if (info.IsAbsolutePath)
-                        {
-                            //Logger.Info("Loading Wallpaper(absolute):- " + info.FileName + " " + info.Type);
-                        }
-                        else
-                        {
-                            //Logger.Info("Loading Wallpaper(relative):- " + Path.Combine(folderPath, info.FileName) + " " + info.Type);
-                        }
-                        return new LibraryModel(info, folderPath, LibraryItemType.ready, false);
-                    }
-                }
-            }
-            else
-            {
-                //Logger.Info("Not a lively wallpaper folder, skipping:- " + folderPath);
-            }
-            return null;
-        }
-
-        #endregion //helpers
     }
 }

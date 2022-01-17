@@ -1,17 +1,13 @@
 ﻿<Window
-    x:Class="Lively.WndMsg.WndProcMsgWindow"
+    x:Class="Lively.Views.Blank"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:Lively"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="Lively WndProc"
+    Title="Blank"
     Width="800"
     Height="450"
-    Left="-99999"
-    ShowInTaskbar="False"
-    Visibility="Hidden"
-    WindowStartupLocation="Manual"
+    Background="Black"
     mc:Ignorable="d">
     <Grid />
 </Window>

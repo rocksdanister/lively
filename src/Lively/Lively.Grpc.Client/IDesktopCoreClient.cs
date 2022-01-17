@@ -22,6 +22,7 @@ namespace Lively.Grpc.Client
         Task SetWallpaper(string livelyInfoPath, string monitorId);
         void SendMessageWallpaper(ILibraryModel obj, IpcMessage msg);
         void SendMessageWallpaper(IDisplayMonitor display, ILibraryModel obj, IpcMessage msg);
+        Task PreviewWallpaper(string livelyInfoPath);
     }
 
     public class WallpaperData
@@ -31,5 +32,6 @@ namespace Lively.Grpc.Client
         public string ThumbnailPath { get; set; }
         public string PreviewPath { get; set; }
         public IDisplayMonitor Display { get; set; }
+        public WallpaperType Category { get; set; }
     }
 }

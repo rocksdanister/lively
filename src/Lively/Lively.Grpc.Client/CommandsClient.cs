@@ -4,6 +4,7 @@ using Lively.Common;
 using Lively.Grpc.Common.Proto.Commands;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -53,5 +54,11 @@ namespace Lively.Grpc.Client
             await client.ShutDownAsync(new Empty());
         }
 
+        public async Task AutomationCommand(string[] args)
+        {
+            var request = new AutomationCommandRequest();
+            request.Args.AddRange(args);
+            await client.AutomationCommandAsync(request);
+        }
     }
 }

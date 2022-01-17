@@ -12,7 +12,7 @@ using Lively.Models;
 using Lively.Services;
 using Point = System.Drawing.Point;
 
-namespace Lively.WndMsg
+namespace Lively.Views.WindowMsg
 {
     public enum RawInputMouseBtn
     {

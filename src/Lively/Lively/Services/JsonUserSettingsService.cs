@@ -10,6 +10,8 @@ namespace Lively.Services
 {
     public class JsonUserSettingsService : IUserSettingsService
     {
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+
         private readonly string settingsPath = Constants.CommonPaths.UserSettingsPath;
         private readonly string appRulesPath = Constants.CommonPaths.AppRulesPath;
         private readonly string wallpaperLayoutPath = Constants.CommonPaths.WallpaperLayoutPath;
@@ -67,7 +69,7 @@ namespace Lively.Services
                 }
                 catch (Exception e)
                 {
-                    //Logger.Error(e.ToString());
+                    Logger.Error(e.ToString());
                     Settings = new SettingsModel();
                     Save<ISettingsModel>();
                 }
@@ -96,7 +98,7 @@ namespace Lively.Services
                 }
                 catch (Exception e)
                 {
-                    //Logger.Error(e.ToString());
+                    Logger.Error(e.ToString());
                     AppRules = new List<IApplicationRulesModel>
                     {
                         //defaults.
@@ -113,7 +115,7 @@ namespace Lively.Services
                 }
                 catch (Exception e)
                 {
-                    //Logger.Error(e.ToString());
+                    Logger.Error(e.ToString());
                     WallpaperLayout = new List<IWallpaperLayoutModel>();
                     Save<List<IWallpaperLayoutModel>>();
                 }

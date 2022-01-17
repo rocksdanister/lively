@@ -14,26 +14,20 @@ namespace Lively.Services
         private Process processUI;
         private bool disposedValue;
 
-        public RunnerService()
-        {
-
-        }
+        public RunnerService() { }
 
         public void ShowUI()
         {
             if (processUI != null)
             {
-                processUI.StandardInput.WriteLine("WM SHOW");
-                /*
-                if (NativeMethods.IsIconic(processUI.MainWindowHandle))
+                if (!processUI.Responding)
                 {
-                    _ = NativeMethods.ShowWindow(processUI.MainWindowHandle, (uint)NativeMethods.SHOWWINDOW.SW_RESTORE);
+                    RestartProcessUI();
                 }
                 else
                 {
-                    _ = NativeMethods.SetForegroundWindow(processUI.MainWindowHandle);
+                    processUI.StandardInput.WriteLine("WM SHOW");
                 }
-                */
             }
             else
             {
@@ -57,6 +51,9 @@ namespace Lively.Services
             }
         }
 
+        public bool IsVisibleUI => 
+            processUI != null && NativeMethods.IsWindowVisible(processUI.MainWindowHandle);
+
         private void Proc_OutputDataReceived(object sender, DataReceivedEventArgs e)
         {
             //When the redirected stream is closed, a null line is sent to the event handler.
@@ -70,8 +67,31 @@ namespace Lively.Services
         {
             processUI.Exited -= Proc_UI_Exited;
             processUI.OutputDataReceived -= Proc_OutputDataReceived;
-            processUI?.Dispose();
+            processUI.Dispose();
             processUI = null;
+        }
+
+        private void RestartProcessUI()
+        {
+            if (processUI != null)
+            {
+                try
+                {
+                    processUI.Exited -= Proc_UI_Exited;
+                    processUI.OutputDataReceived -= Proc_OutputDataReceived;
+                    processUI.Kill();
+                    processUI.Dispose();
+                }
+                catch (Exception e)
+                {
+                    Logger.Error(e.Message);
+                }
+                finally
+                {
+                    processUI = null;
+                }
+            }
+            ShowUI();
         }
 
         #region dispose

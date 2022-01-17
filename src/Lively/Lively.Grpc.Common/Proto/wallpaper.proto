@@ -5,6 +5,7 @@ import "google/protobuf/empty.proto";
 service DesktopService {
   rpc SetWallpaper (SetWallpaperRequest) returns (google.protobuf.Empty);
   rpc GetWallpapers (google.protobuf.Empty) returns (stream GetWallpapersResponse);
+  rpc PreviewWallpaper (PreviewWallpaperRequest) returns (google.protobuf.Empty);
   rpc CloseAllWallpapers(CloseAllWallpapersRequest) returns (google.protobuf.Empty);
   rpc CloseWallpaperMonitor(CloseWallpaperMonitorRequest) returns (google.protobuf.Empty);
   rpc CloseWallpaperLibrary(CloseWallpaperLibraryRequest) returns (google.protobuf.Empty);
@@ -20,13 +21,18 @@ message SetWallpaperRequest {
 
 message GetWallpapersResponse {
   string lively_info_path = 1;
-  GetScreensResponse screen = 2;
+  ScreenData screen = 2;
   string property_copy_path = 3;
   string thumbnail_path = 4;
   string preview_path = 5;
+  WallpaperCategory category = 6;
 }
 
-message GetScreensResponse {
+message PreviewWallpaperRequest {
+	string lively_info_path = 1;
+}
+
+message ScreenData {
   string device_id = 1;
   string device_name = 2;
   string display_name = 3;

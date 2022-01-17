@@ -7,9 +7,7 @@ using Lively.Core.Watchdog;
 using Lively.Factories;
 using Lively.Grpc.Common.Proto.Desktop;
 using Lively.RPC;
-using Lively.Models;
 using Lively.Services;
-using Lively.WndMsg;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Diagnostics;
@@ -20,6 +18,9 @@ using Lively.Grpc.Common.Proto.Settings;
 using System.Threading.Tasks;
 using Lively.Grpc.Common.Proto.Display;
 using Lively.Grpc.Common.Proto.Commands;
+using System.Linq;
+using Lively.Automation;
+using Lively.Views.WindowMsg;
 
 namespace Lively
 {
@@ -54,12 +55,12 @@ namespace Lively
                 {
                     try
                     {
-                        _ = new CommandsService.CommandsServiceClient(new NamedPipeChannel(".", Constants.SingleInstance.GrpcPipeServerName)).
-                            ShowUIAsync(new Google.Protobuf.WellKnownTypes.Empty());
-
                         //skipping first element (application path.)
-                        //var args = Environment.GetCommandLineArgs().Skip(1).ToArray();
-                        //PipeClient.SendMessage(Constants.SingleInstance.PipeServerName, args.Length != 0 ? args : new string[] { "--showApp", "true" });
+                        var args = Environment.GetCommandLineArgs().Skip(1).ToArray();
+                        var client = new CommandsService.CommandsServiceClient(new NamedPipeChannel(".", Constants.SingleInstance.GrpcPipeServerName));
+                        var request = new AutomationCommandRequest();
+                        request.Args.AddRange(args.Length != 0 ? args : new string[] { "--showApp", "true" });
+                        _ = client.AutomationCommandAsync(request);
                     }
                     catch (Exception e)
                     {
@@ -99,6 +100,9 @@ namespace Lively
             Services.GetRequiredService<RawInputMsgWindow>().Show();
             Services.GetRequiredService<IPlayback>().Start();
             Services.GetRequiredService<ISystray>();
+
+            //Restore wallpaper(s) from previous run.
+            Services.GetRequiredService<IDesktopCore>().RestoreWallpaper();
         }
 
         private IServiceProvider ConfigureServices()
@@ -126,7 +130,7 @@ namespace Lively
                 .AddTransient<IWallpaperFactory, WallpaperFactory>()
                 .AddTransient<ILivelyPropertyFactory, LivelyPropertyFactory>()
                 //.AddTransient<IScreenRecorder, ScreenRecorderlibScreen>()
-                //.AddTransient<ICommandHandler, CommandHandler>()
+                .AddTransient<ICommandHandler, CommandHandler>()
                 //.AddTransient<IDownloadHelper, MultiDownloadHelper>()
                 //.AddTransient<SetupView>()
                 /*
