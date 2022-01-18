@@ -7,7 +7,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Threading;
 
 namespace Lively.RPC
 {
@@ -41,7 +44,10 @@ namespace Lively.RPC
                     screensaver.Stop();
                     break;
                 case ScreensaverState.Preview:
-                    //TODO
+                    _ = Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
+                    {
+                        screensaver.CreatePreview(new IntPtr(request.PreviewHwnd));
+                    }));
                     break;
             }
             return Task.FromResult(new Empty());

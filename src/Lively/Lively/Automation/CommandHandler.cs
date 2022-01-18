@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading;
+using System.Windows;
 using System.Windows.Threading;
 using CommandLine;
 using Lively.Common;
@@ -476,7 +477,7 @@ namespace Lively.Automation
                 }
             }
 
-            System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
+            _ = Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
             {
                 if (opts.Configure != null)
                 {

@@ -26,6 +26,7 @@
 
   <ItemGroup>
     <None Remove="Nlog.config" />
+    <None Remove="Resources\appicon_96.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -47,6 +48,10 @@
   <ItemGroup>
     <ProjectReference Include="..\Lively.Grpc.Common\Lively.Grpc.Common.csproj" />
     <ProjectReference Include="..\Lively.Models\Lively.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\appicon_96.png" />
   </ItemGroup>
 
 </Project>

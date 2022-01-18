@@ -1,0 +1,48 @@
+﻿<Window
+    x:Class="Lively.Views.ScreenSaverPreview"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Lively.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="ScreenSaver Preview"
+    Width="156"
+    Height="108"
+    mc:Ignorable="d">
+
+    <Window.Resources>
+        <Storyboard x:Key="fidgetSpinner">
+            <DoubleAnimation
+                RepeatBehavior="Forever"
+                Storyboard.TargetProperty="RenderTransform.Angle"
+                From="0"
+                To="360"
+                Duration="0:0:10" />
+        </Storyboard>
+    </Window.Resources>
+
+    <Grid>
+        <!--  animated lively icon  -->
+        <Image
+            x:Name="livelyIcon"
+            Width="70"
+            Height="70"
+            Margin="0,0,5,0"
+            Source="pack://application:,,,/Resources/appicon_96.png">
+            <Image.RenderTransform>
+                <RotateTransform CenterX="35" CenterY="35" />
+            </Image.RenderTransform>
+            <Image.Style>
+                <Style>
+                    <Style.Triggers>
+                        <Trigger Property="Image.IsVisible" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource fidgetSpinner}" />
+                            </Trigger.EnterActions>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Image.Style>
+        </Image>
+    </Grid>
+</Window>
