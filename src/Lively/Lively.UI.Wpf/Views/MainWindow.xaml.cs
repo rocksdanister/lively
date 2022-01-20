@@ -1,5 +1,7 @@
 ﻿using Lively.Grpc.Client;
 using Lively.Models;
+using Lively.UI.Wpf.ViewModels;
+using Lively.UI.Wpf.Views.LivelyProperty.Dialogues;
 using Lively.UI.Wpf.Views.Pages;
 using Microsoft.Extensions.DependencyInjection;
 using ModernWpf.Controls;
@@ -8,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,6 +21,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Lively.UI.Wpf.Views
 {
@@ -28,11 +32,13 @@ namespace Lively.UI.Wpf.Views
     {
         private readonly IUserSettingsClient userSettings;
         private readonly IDesktopCoreClient desktopCore;
+        private readonly LibraryViewModel libraryVm;
 
-        public MainWindow(IUserSettingsClient userSettings, IDesktopCoreClient desktopCore)
+        public MainWindow(IUserSettingsClient userSettings, IDesktopCoreClient desktopCore, LibraryViewModel libraryVm)
         {
             this.userSettings = userSettings;
             this.desktopCore = desktopCore;
+            this.libraryVm = libraryVm;
 
             InitializeComponent();
             this.ContentRendered += (s, e) => NavViewNavigate("library");
@@ -185,13 +191,37 @@ namespace Lively.UI.Wpf.Views
                     {
                         var msg = await Console.In.ReadLineAsync();
                         var args = msg.Split(' ');
-                        if (args[0].Equals("WM", StringComparison.OrdinalIgnoreCase))
+                        this.Dispatcher.Invoke(() =>
                         {
-                            if (args[1].Equals("SHOW", StringComparison.OrdinalIgnoreCase))
+                            if (args[0].Equals("WM", StringComparison.OrdinalIgnoreCase))
                             {
-                                Application.Current.Dispatcher.Invoke(this.Show);
+                                if (args[1].Equals("SHOW", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    this.Show();
+                                }
                             }
-                        }
+                            else if (args[0].Equals("LM", StringComparison.OrdinalIgnoreCase))
+                            {
+                                if (args[1].Equals("SHOWCONTROLPANEL", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    this.ShowControlPanelDialog();
+                                }
+                                else if (args[1].Equals("SHOWCUSTOMISEPANEL", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    var items = desktopCore.Wallpapers.Where(x => x.LivelyPropertyCopyPath != null);
+                                    if (items.Count() != 0)
+                                    {
+                                        //Usually this msg is sent when span/duplicate layout mode.
+                                        var model = libraryVm.LibraryItems.FirstOrDefault(x => items.First().LivelyInfoFolderPath == x.LivelyInfoFolderPath);
+                                        if (model != null)
+                                        {
+                                            var settingsWidget = new LivelyPropertiesTrayWidget(model);
+                                            settingsWidget.Show();
+                                        }
+                                    }
+                                }
+                            }
+                        });
                     }
                 });
             }
