@@ -37,6 +37,7 @@ namespace Lively.Core
         private readonly List<IWallpaperLayoutModel> wallpapersDisconnected = new List<IWallpaperLayoutModel>();
 
         public event EventHandler WallpaperChanged;
+        public event EventHandler WallpaperError;
         public event EventHandler WallpaperReset;
 
         private readonly IUserSettingsService userSettings;

@@ -34,8 +34,6 @@ namespace Lively.PlayerWebView2
             Parser.Default.ParseArguments<StartArgs>(args)
                 .WithParsed(RunOptions)
                 .WithNotParsed(HandleParseError);
-
-            _ = InitializeWebView();
         }
 
         private void RunOptions(StartArgs opts)
@@ -60,6 +58,20 @@ namespace Lively.PlayerWebView2
                 {
                     Category = ConsoleMessageType.error,
                     Message = $"Initialziation failed: {e.Message}",
+                });
+            }
+        }
+
+        protected override async void OnContentRendered(EventArgs e)
+        {
+            base.OnContentRendered(e);
+
+            try
+            {
+                await InitializeWebView();
+                App.WriteToParent(new LivelyMessageHwnd()
+                {
+                    Hwnd = webView.Handle.ToInt32()
                 });
             }
             finally
@@ -105,12 +117,6 @@ namespace Lively.PlayerWebView2
                 //webView.CoreWebView2.SetVirtualHostNameToFolderMapping("lively_test", Path.GetDirectoryName(htmlPath), CoreWebView2HostResourceAccessKind.Allow);
                 webView.CoreWebView2.Navigate(htmlPath);
             }
-
-            //Assuming wv2 loaded after window loaded.
-            App.WriteToParent(new LivelyMessageHwnd()
-            {
-                Hwnd = webView.Handle.ToInt32()
-            });
         }
 
         private async void WebView_NavigationCompleted(object sender, CoreWebView2NavigationCompletedEventArgs e)
@@ -299,14 +305,6 @@ namespace Lively.PlayerWebView2
             //this hides the window from taskbar and also fixes crash when win10 taskview is launched. 
             this.ShowInTaskbar = false;
             this.ShowInTaskbar = true;
-
-            /*
-            //Passing hwnd to core.
-            App.WriteToParent(new LivelyMessageHwnd()
-            {
-                Hwnd = handle.ToInt32(),
-            });
-            */
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -331,7 +329,7 @@ namespace Lively.PlayerWebView2
                 }
             }
             script.Append(");");
-            return await webView.ExecuteScriptAsync(script.ToString());
+            return await webView?.ExecuteScriptAsync(script.ToString());
         }
 
         //ref: https://github.com/MicrosoftEdge/WebView2Feedback/issues/529

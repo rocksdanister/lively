@@ -190,6 +190,11 @@ namespace Lively.UI.Wpf.Views
                     while (true)
                     {
                         var msg = await Console.In.ReadLineAsync();
+                        if (string.IsNullOrEmpty(msg))
+                        {
+                            //When the redirected stream is closed, a null line is sent to the event handler. 
+                            break;
+                        }
                         var args = msg.Split(' ');
                         this.Dispatcher.Invoke(() =>
                         {
