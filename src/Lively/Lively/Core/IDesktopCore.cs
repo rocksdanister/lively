@@ -32,7 +32,7 @@ namespace Lively.Core
         /// <summary>
         /// Error occured in wallpaper core.
         /// </summary>
-        public event EventHandler WallpaperError;
+        public event EventHandler<Exception> WallpaperError;
         /// <summary>
         /// Wallpaper core services restarted.
         /// </summary>

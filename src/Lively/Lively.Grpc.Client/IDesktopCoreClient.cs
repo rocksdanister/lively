@@ -12,8 +12,6 @@ namespace Lively.Grpc.Client
     {
         ReadOnlyCollection<WallpaperData> Wallpapers { get; }
 
-        event EventHandler WallpaperChanged;
-
         Task CloseAllWallpapers(bool terminate = false);
         Task CloseWallpaper(IDisplayMonitor monitor, bool terminate = false);
         Task CloseWallpaper(ILibraryModel item, bool terminate = false);
@@ -23,6 +21,9 @@ namespace Lively.Grpc.Client
         void SendMessageWallpaper(ILibraryModel obj, IpcMessage msg);
         void SendMessageWallpaper(IDisplayMonitor display, ILibraryModel obj, IpcMessage msg);
         Task PreviewWallpaper(string livelyInfoPath);
+
+        event EventHandler WallpaperChanged;
+        event EventHandler<Exception> WallpaperError;
     }
 
     public class WallpaperData

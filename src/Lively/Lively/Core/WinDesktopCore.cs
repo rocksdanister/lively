@@ -8,12 +8,14 @@ using Lively.Core.Display;
 using Lively.Core.Watchdog;
 using Lively.Factories;
 using Lively.Helpers;
+using Lively.Helpers.Hardware;
 using Lively.Models;
 using Lively.Services;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -21,6 +23,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
+using static Lively.Common.Errors;
 
 namespace Lively.Core
 {
@@ -37,7 +40,7 @@ namespace Lively.Core
         private readonly List<IWallpaperLayoutModel> wallpapersDisconnected = new List<IWallpaperLayoutModel>();
 
         public event EventHandler WallpaperChanged;
-        public event EventHandler WallpaperError;
+        public event EventHandler<Exception> WallpaperError;
         public event EventHandler WallpaperReset;
 
         private readonly IUserSettingsService userSettings;
@@ -137,8 +140,8 @@ namespace Lively.Core
 
                 if (IntPtr.Equals(workerw, IntPtr.Zero))
                 {
-                    Logger.Error("Failed to setup core, WorkerW handle not found!");
-                    MessageBox.Show("Workerw Fail", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    Logger.Error("Failed to setup core, WorkerW handle not found..");
+                    WallpaperError?.Invoke(this, new WorkerWException("WorkerW handle not found."));
                     WallpaperChanged?.Invoke(this, EventArgs.Empty);
                     return;
                 }
@@ -154,6 +157,7 @@ namespace Lively.Core
             if (!displayManager.ScreenExists(display))
             {
                 Logger.Info($"Skipping wallpaper, screen {display.DeviceName} not found.");
+                WallpaperError?.Invoke(this, new ScreenNotFoundException($"Screen {display.DeviceName} not found."));
                 return;
             }
             else if (wallpapersPending.Exists(x => display.Equals(x.Screen)))//ScreenHelper.ScreenCompare(x.Screen, display, DisplayIdentificationMode.deviceId)))
@@ -166,9 +170,8 @@ namespace Lively.Core
                 wallpaper.FilePath != null))
             {
                 //Only checking for wallpapers outside Lively folder.
-                _ = Task.Run(() => 
-                    MessageBox.Show("File not found", "Error", MessageBoxButton.OK, MessageBoxImage.Information));
-                Logger.Info("Skipping wallpaper, file not found.");
+                Logger.Info($"Skipping wallpaper, file {wallpaper.FilePath} not found.");
+                WallpaperError?.Invoke(this, new WallpaperNotFoundException($"File {wallpaper.FilePath} not found"));
                 WallpaperChanged?.Invoke(this, EventArgs.Empty);
                 return;
             }
@@ -320,13 +323,27 @@ namespace Lively.Core
                 {
                     //failed to show wp window..
                     Logger.Error("Failed launching wallpaper: " + e.Msg + "\n" + e.Error?.ToString());
-                    wallpaper.Terminate();
-                    WallpaperChanged?.Invoke(this, EventArgs.Empty);
-                    if (runner.IsVisibleUI)
+                    if (e.Error is Win32Exception)
                     {
-                        MessageBox.Show(e.Msg + "\n" + e.Error?.Message, "Lively Wallpaper", MessageBoxButton.OK, MessageBoxImage.Error);
+                        var w32e = (Win32Exception)e.Error;
+                        if (w32e.NativeErrorCode == 2) //ERROR_FILE_NOT_FOUND
+                        {
+                            WallpaperError?.Invoke(this, new WallpaperPluginNotFoundException(e.Msg));
+                        }
+                    }
+                    else
+                    {
+                        /*
+                        if (wallpaper.Category == WallpaperType.video && SystemInfo.CheckWindowsNorKN())
+                        {
+                            WallpaperError?.Invoke(this, new WallpaperPluginMediaCodecException(e.Msg));
+                        }
+                        */
+                        WallpaperError?.Invoke(this, new WallpaperPluginException(e.Msg));
                     }
                 }
+                wallpaper.Terminate();
+                WallpaperChanged?.Invoke(this, EventArgs.Empty);
             }
             catch (Exception ex)
             {

@@ -22,6 +22,7 @@ namespace Lively.ConsoleDemo
             IUserSettingsClient settingsClient = new UserSettingsClient();
             ICommandsClient commandsClient = new CommandsClient();
             coreClient.WallpaperChanged += (s, e) => Console.WriteLine("\nWallpaper Changed Event");
+            coreClient.WallpaperError += (s, e) => Console.WriteLine(e.ToString());
             displayManager.DisplayChanged += (s, e) => Console.WriteLine("\nDisplay Changed Event.");
 
             bool showMenu = true;

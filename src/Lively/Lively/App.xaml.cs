@@ -174,20 +174,7 @@ namespace Lively
 
         private void LogUnhandledException(Exception exception, string source)
         {
-            string message = $"Unhandled exception ({source})";
-            try
-            {
-                System.Reflection.AssemblyName assemblyName = System.Reflection.Assembly.GetExecutingAssembly().GetName();
-                message = string.Format("Unhandled exception in {0} v{1}", assemblyName.Name, assemblyName.Version);
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, "Exception in LogUnhandledException");
-            }
-            finally
-            {
-                Logger.Error("{0}\n{1}", message, exception.ToString());
-            }
+            Logger.Error(exception);
         }
 
         public static void ShutDown()
