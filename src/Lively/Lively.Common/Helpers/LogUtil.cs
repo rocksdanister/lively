@@ -32,8 +32,13 @@ namespace Lively.Common.Helpers
         }
 
         /// <summary>
-        /// Write to log win32 error if GetLastWin32Error returns true.
+        /// Return string representation of win32 error.
         /// </summary>
+        /// <param name="message"></param>
+        /// <param name="memberName"></param>
+        /// <param name="fileName"></param>
+        /// <param name="lineNumber"></param>
+        /// <returns></returns>
         public static string GetWin32Error(string message,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string fileName = "",

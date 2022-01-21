@@ -54,6 +54,7 @@ namespace Lively.UI.Wpf
                 .AddSingleton<IDesktopCoreClient, WinDesktopCoreClient>()
                 .AddSingleton<IUserSettingsClient, UserSettingsClient>()
                 .AddSingleton<IDisplayManagerClient, DisplayManagerClient>()
+                .AddSingleton<ICommandsClient, CommandsClient>()
                 .AddSingleton<IAppUpdaterService, GithubUpdaterService>()
                 .AddSingleton<MainWindow>()
                 .AddSingleton<LibraryViewModel>()

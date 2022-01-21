@@ -14,6 +14,7 @@ using Lively.Common.Helpers.Storage;
 using Lively.Core;
 using Lively.Core.Display;
 using Lively.Core.Suspend;
+using Lively.Helpers;
 using Lively.Models;
 using Lively.Services;
 using Newtonsoft.Json;
@@ -48,6 +49,11 @@ namespace Lively.Automation
             Required = false,
             HelpText = "Wallpaper playback state (true/false).")]
             public bool? Play { get; set; }
+
+            [Option("startup",
+            Required = false,
+            HelpText = "Start with Windows (true/false).")]
+            public bool? Startup { get; set; }
         }
 
         [Verb("setwp", HelpText = "Apply wallpaper.")]
@@ -158,35 +164,54 @@ namespace Lively.Automation
 
         private int RunAppOptions(AppOptions opts)
         {
-            System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
+            if (opts.ShowApp != null)
             {
-                if (opts.ShowApp != null)
+                if ((bool)opts.ShowApp)
                 {
-                    if ((bool)opts.ShowApp)
+                    runner.ShowUI();
+                }
+                else
+                {
+                    runner.CloseUI();
+                }
+            }
+
+            if (opts.Volume != null)
+            {
+                userSettings.Settings.AudioVolumeGlobal = Clamp((int)opts.Volume, 0, 100);
+                userSettings.Save<ISettingsModel>();
+            }
+
+            if (opts.Play != null)
+            {
+                playbackMonitor.WallpaperPlayback = (bool)opts.Play ? PlaybackState.play : PlaybackState.paused;
+            }
+
+            if (opts.Startup != null)
+            {
+                try
+                {
+                    var status = WindowsStartup.CheckStartupRegistry();
+                    if (opts.Startup == true)
                     {
-                        runner.ShowUI();
+                        if (status != WindowsStartup.StartupStatus.ok)
+                        {
+                            WindowsStartup.SetStartupRegistry(true);
+                        }
                     }
                     else
                     {
-                        if (runner.IsVisibleUI)
+                        if (status != WindowsStartup.StartupStatus.missing)
                         {
-                            //TODO
+                            WindowsStartup.SetStartupRegistry(false);
                         }
                     }
                 }
-
-                if (opts.Volume != null)
+                catch (Exception e)
                 {
-                    userSettings.Settings.AudioVolumeGlobal = Clamp((int)opts.Volume, 0, 100);
-                    userSettings.Save<ISettingsModel>();
+                    Logger.Error(e);
                 }
-
-                if (opts.Play != null)
-                {
-                    playbackMonitor.WallpaperPlayback = (bool)opts.Play ? PlaybackState.play : PlaybackState.paused;
-                }
-
-            }));
+            }
 
             if (opts.ShowIcons != null)
             {

@@ -1,6 +1,7 @@
 ﻿using Lively.Common;
 using Lively.Common.Helpers.Storage;
 using Lively.Core.Display;
+using Lively.Helpers;
 using Lively.Models;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,14 @@ namespace Lively.Services
             Load<List<IWallpaperLayoutModel>>();
 
             Settings.SelectedDisplay ??= displayManager.PrimaryDisplayMonitor;
+            try
+            {
+                WindowsStartup.SetStartupRegistry(Settings.Startup);
+            }
+            catch (Exception e)
+            {
+                Logger.Error(e);
+            }
         }
 
         public ISettingsModel Settings { get; private set; }

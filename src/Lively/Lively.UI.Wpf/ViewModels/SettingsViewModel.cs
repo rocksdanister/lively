@@ -26,19 +26,22 @@ namespace Lively.UI.Wpf.ViewModels
         //private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private readonly IUserSettingsClient userSettings;
         private readonly IDesktopCoreClient desktopCore;
+        private readonly ICommandsClient commands;
         //private readonly IScreensaverService screenSaver;
         //private readonly IAppUpdaterService appUpdater;
         //private readonly ITransparentTbService ttbService;
 
         public SettingsViewModel(
-            IUserSettingsClient userSettings, 
-            IDesktopCoreClient desktopCore)
+            IUserSettingsClient userSettings,
+            IDesktopCoreClient desktopCore,
+            ICommandsClient commands)
             //IScreensaverService screenSaver, 
             //IAppUpdaterService appUpdater, 
             //ITransparentTbService ttbService)
         {
             this.userSettings = userSettings;
             this.desktopCore = desktopCore;
+            this.commands = commands;
             //this.screenSaver = screenSaver;
             //this.appUpdater = appUpdater;
             //this.ttbService = ttbService;
@@ -155,6 +158,7 @@ namespace Lively.UI.Wpf.ViewModels
             //SelectedScreensaverWaitIndex = (int)userSettings.Settings.ScreensaverIdleWait;
             //IsScreensaverLockOnResume = userSettings.Settings.ScreensaverLockOnResume;
             IsKeepUIAwake = userSettings.Settings.KeepAwakeUI;
+            IsStartup = userSettings.Settings.Startup;
         }
 
         public void UpdateConfigFile()
@@ -163,7 +167,7 @@ namespace Lively.UI.Wpf.ViewModels
         }
 
         #region general
-        /*
+
         private bool _isStartup;
         public bool IsStartup
         {
@@ -174,23 +178,12 @@ namespace Lively.UI.Wpf.ViewModels
             set
             {
                 _isStartup = value;
+                _ = commands.AutomationCommand(new string[] { "--startup", value.ToString() });
                 OnPropertyChanged();
-                if (Constants.ApplicationType.IsMSIX)
-                {
-                    _ = WindowsStartup.StartupWin10(_isStartup);
-                    if (userSettings.Settings.Startup != _isStartup)
-                    {
-                        userSettings.Settings.Startup = _isStartup;
-                        UpdateConfigFile();
-                    }
-                }
-                else
-                {
-                    WindowsStartup.SetStartupRegistry(_isStartup);
-                }
             }
         }
 
+        /*
         private ObservableCollection<LanguagesModel> _languageItems;
         public ObservableCollection<LanguagesModel> LanguageItems
         {
