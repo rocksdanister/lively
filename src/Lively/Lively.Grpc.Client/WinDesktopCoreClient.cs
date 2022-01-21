@@ -12,6 +12,7 @@ using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using static Lively.Common.Errors;
 
 namespace Lively.Grpc.Client
 {
@@ -19,14 +20,15 @@ namespace Lively.Grpc.Client
     public class WinDesktopCoreClient : IDesktopCoreClient
     {
         public event EventHandler WallpaperChanged;
+        public event EventHandler<Exception> WallpaperError;
 
         private readonly List<WallpaperData> wallpapers = new List<WallpaperData>(2);
         public ReadOnlyCollection<WallpaperData> Wallpapers => wallpapers.AsReadOnly();
 
         private readonly DesktopService.DesktopServiceClient client;
         private readonly SemaphoreSlim wallpaperChangedLock = new SemaphoreSlim(1, 1);
-        private readonly CancellationTokenSource cancellationTokeneWallpaperChanged;
-        private readonly Task wallpaperChangedTask;
+        private readonly CancellationTokenSource cancellationTokenWallpaperChanged, cancellationTokenWallpaperError;
+        private readonly Task wallpaperChangedTask, wallpaperErrorTask;
         private bool disposedValue;
 
         public WinDesktopCoreClient()
@@ -39,8 +41,10 @@ namespace Lively.Grpc.Client
                 wallpapers.AddRange(await GetWallpapers());
             }).Wait();
 
-            cancellationTokeneWallpaperChanged = new CancellationTokenSource();
-            wallpaperChangedTask = Task.Run(() => SubscribeWallpaperChangedStream(cancellationTokeneWallpaperChanged.Token));
+            cancellationTokenWallpaperChanged = new CancellationTokenSource();
+            wallpaperChangedTask = Task.Run(() => SubscribeWallpaperChangedStream(cancellationTokenWallpaperChanged.Token));
+            cancellationTokenWallpaperError = new CancellationTokenSource();
+            wallpaperErrorTask = Task.Run(() => SubscribeWallpaperErrorStream(cancellationTokenWallpaperError.Token));
         }
 
         public async Task SetWallpaper(string livelyInfoPath, string monitorId)
@@ -187,6 +191,35 @@ namespace Lively.Grpc.Client
             }
         }
 
+        private async Task SubscribeWallpaperErrorStream(CancellationToken token)
+        {
+            try
+            {
+                using var call = client.SubscribeWallpaperError(new Empty());
+                while (await call.ResponseStream.MoveNext(token))
+                {
+                    var response = call.ResponseStream.Current;
+
+                    var exp = response.Error switch
+                    {
+                        ErrorCategory.Workerw => new WorkerWException(response.ErrorMsg),
+                        ErrorCategory.WallpaperNotFound => new WallpaperNotFoundException(response.ErrorMsg),
+                        ErrorCategory.WallpaperNotAllowed => new WallpaperNotAllowedException(response.ErrorMsg),
+                        ErrorCategory.WallpaperPluginNotFound => new WallpaperPluginNotFoundException(response.ErrorMsg),
+                        ErrorCategory.WallpaperPluginFail => new WallpaperPluginException(response.ErrorMsg),
+                        ErrorCategory.WallpaperPluginMediaCodecMissing => new WallpaperPluginMediaCodecException(response.ErrorMsg),
+                        ErrorCategory.ScreenNotFound => new ScreenNotFoundException(response.ErrorMsg),
+                        _ => new Exception("Unhandled Error"),
+                    };
+                    WallpaperError?.Invoke(this, exp);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+        }
+
         #region dispose
 
         protected virtual void Dispose(bool disposing)
@@ -196,8 +229,10 @@ namespace Lively.Grpc.Client
                 if (disposing)
                 {
                     // TODO: dispose managed state (managed objects)
-                    cancellationTokeneWallpaperChanged?.Cancel();
+                    cancellationTokenWallpaperChanged?.Cancel();
                     wallpaperChangedTask?.Wait(100);
+                    cancellationTokenWallpaperError?.Cancel();
+                    wallpaperErrorTask?.Wait(100);
                 }
 
                 // TODO: free unmanaged resources (unmanaged objects) and override finalizer

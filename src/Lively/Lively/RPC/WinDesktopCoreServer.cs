@@ -23,6 +23,7 @@ using Lively.Common.API;
 using Lively.Common.Helpers;
 using Lively.Helpers;
 using Lively.Views;
+using static Lively.Common.Errors;
 
 namespace Lively.RPC
 {
@@ -182,6 +183,44 @@ namespace Lively.RPC
                     await tcs.Task;
 
                     await responseStream.WriteAsync(new Empty());
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.ToString());
+            }
+        }
+
+        public override async Task SubscribeWallpaperError(Empty _, IServerStreamWriter<WallpaperErrorResponse> responseStream, ServerCallContext context)
+        {
+            try
+            {
+                while (!context.CancellationToken.IsCancellationRequested)
+                {
+                    var resp = new WallpaperErrorResponse();
+                    var tcs = new TaskCompletionSource<bool>();
+                    desktopCore.WallpaperError += WallpaperError;
+                    void WallpaperError(object s, Exception e)
+                    {
+                        desktopCore.WallpaperError -= WallpaperError;
+
+                        resp.ErrorMsg = e.Message;
+                        resp.Error = e switch
+                        {
+                            WorkerWException _ => ErrorCategory.Workerw,
+                            WallpaperNotAllowedException _ => ErrorCategory.WallpaperNotAllowed,
+                            WallpaperNotFoundException _ => ErrorCategory.WallpaperNotFound,
+                            WallpaperPluginException _ => ErrorCategory.WallpaperPluginFail,
+                            WallpaperPluginNotFoundException _ => ErrorCategory.WallpaperPluginNotFound,
+                            WallpaperPluginMediaCodecException _ => ErrorCategory.WallpaperPluginMediaCodecMissing,
+                            ScreenNotFoundException _ => ErrorCategory.ScreenNotFound,
+                            _ => ErrorCategory.General,
+                        };
+                        tcs.SetResult(true);
+                    }
+                    await tcs.Task;
+
+                    await responseStream.WriteAsync(resp);
                 }
             }
             catch (Exception e)

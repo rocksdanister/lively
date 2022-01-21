@@ -11,6 +11,7 @@ service DesktopService {
   rpc CloseWallpaperLibrary(CloseWallpaperLibraryRequest) returns (google.protobuf.Empty);
   rpc CloseWallpaperCategory(CloseWallpaperCategoryRequest) returns (google.protobuf.Empty);
   rpc SubscribeWallpaperChanged (google.protobuf.Empty) returns (stream google.protobuf.Empty);
+  rpc SubscribeWallpaperError (google.protobuf.Empty) returns (stream WallpaperErrorResponse);
   rpc SendMessageWallpaper(WallpaperMessageRequest) returns (google.protobuf.Empty);
 }
 
@@ -77,6 +78,22 @@ message WallpaperMessageRequest {
 	string monitor_id = 1;
 	string lively_info_path = 2;
 	string msg = 3;
+}
+
+message WallpaperErrorResponse {
+	ErrorCategory error = 1;
+	string error_msg = 2;
+}
+
+enum ErrorCategory {
+	workerw = 0;
+	wallpaper_not_found = 1;
+	wallpaper_plugin_fail = 2;
+	wallpaper_plugin_not_found = 3;
+	wallpaper_plugin_media_codec_missing = 4;
+	wallpaper_not_allowed = 5;
+	screen_not_found = 6;
+	general = 7;
 }
 
 enum WallpaperCategory {
