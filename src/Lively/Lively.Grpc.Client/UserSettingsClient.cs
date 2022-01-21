@@ -16,7 +16,6 @@ namespace Lively.Grpc.Client
     {
         public ISettingsModel Settings { get; private set; }
         public List<IApplicationRulesModel> AppRules { get; private set; }
-        public List<IWallpaperLayoutModel> WallpaperLayout { get; private set; }
 
         private readonly SettingsService.SettingsServiceClient client;
 
@@ -229,10 +228,6 @@ namespace Lively.Grpc.Client
             {
                 await SetAppRulesSettings();
             }
-            else if (typeof(T) == typeof(List<IWallpaperLayoutModel>))
-            {
-                
-            }
             else
             {
                 throw new InvalidCastException($"Type not found: {typeof(T)}");
@@ -248,10 +243,6 @@ namespace Lively.Grpc.Client
             else if (typeof(T) == typeof(List<IApplicationRulesModel>))
             {
                 AppRules = await GetAppRulesSettings();
-            }
-            else if (typeof(T) == typeof(List<IWallpaperLayoutModel>))
-            {
-
             }
             else
             {

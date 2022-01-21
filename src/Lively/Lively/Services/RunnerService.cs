@@ -51,6 +51,11 @@ namespace Lively.Services
             }
         }
 
+        public void CloseUI()
+        {
+            processUI?.CloseMainWindow();
+        }
+
         //TODO: Make it work by launching process in background.
         public void ShowControlPanel()
         {
@@ -70,7 +75,7 @@ namespace Lively.Services
         }
 
 
-        public bool IsVisibleUI => 
+        public bool IsVisibleUI =>
             processUI != null && NativeMethods.IsWindowVisible(processUI.MainWindowHandle);
 
         private void Proc_OutputDataReceived(object sender, DataReceivedEventArgs e)
