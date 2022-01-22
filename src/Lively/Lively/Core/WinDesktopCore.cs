@@ -333,17 +333,11 @@ namespace Lively.Core
                     }
                     else
                     {
-                        /*
-                        if (wallpaper.Category == WallpaperType.video && SystemInfo.CheckWindowsNorKN())
-                        {
-                            WallpaperError?.Invoke(this, new WallpaperPluginMediaCodecException(e.Msg));
-                        }
-                        */
                         WallpaperError?.Invoke(this, new WallpaperPluginException(e.Msg));
                     }
+                    wallpaper.Terminate();
+                    WallpaperChanged?.Invoke(this, EventArgs.Empty);
                 }
-                wallpaper.Terminate();
-                WallpaperChanged?.Invoke(this, EventArgs.Empty);
             }
             catch (Exception ex)
             {
