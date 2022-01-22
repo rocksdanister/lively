@@ -66,7 +66,7 @@ namespace Lively.Core.Wallpapers
             ProcessStartInfo start = new ProcessStartInfo
             {
                 Arguments = cmdArgs.ToString(),
-                FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "cef", "LivelyCefSharp.exe"),
+                FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "cef", "Lively.PlayerCefSharp.exe"),
                 RedirectStandardInput = true,
                 RedirectStandardOutput = true,
                 RedirectStandardError = true,
