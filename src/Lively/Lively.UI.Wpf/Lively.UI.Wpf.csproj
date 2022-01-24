@@ -28,6 +28,7 @@
     <PackageReference Include="NLog" Version="4.7.13" />
     <PackageReference Include="PixiEditor.ColorPicker" Version="3.1.0" />
     <PackageReference Include="System.Collections" Version="4.3.0" />
+    <PackageReference Include="YoutubeExplode" Version="6.0.7" />
   </ItemGroup>
 
   <ItemGroup>

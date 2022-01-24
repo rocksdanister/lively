@@ -77,7 +77,7 @@ namespace Lively.Common.Helpers.Archive
         /// </summary>
         /// <param name="archivePath">Path to .zip file.</param>
         /// <returns></returns>
-        public static bool CheckLivelyZip(string archivePath)
+        public static bool IsLivelyZip(string archivePath)
         {
             bool result = true;
             try

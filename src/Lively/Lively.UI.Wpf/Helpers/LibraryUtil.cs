@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Lively.UI.Wpf.Helpers
@@ -186,6 +187,64 @@ namespace Lively.UI.Wpf.Helpers
                 libraryItem.LivelyInfo.Type == WallpaperType.url || libraryItem.LivelyInfo.Type == WallpaperType.videostream
                 ? libraryItem.LivelyInfoFolderPath : libraryItem.FilePath;
             FileOperations.OpenFolder(folderPath);
+        }
+
+        readonly SemaphoreSlim semaphoreSlimInstallLock = new SemaphoreSlim(1, 1);
+        public async Task AddWallpaper(string filePath)
+        {
+            WallpaperType type;
+            if ((type = FileFilter.GetLivelyFileType(filePath)) != (WallpaperType)(-1))
+            {
+                if (type == (WallpaperType)100)
+                {
+                    //lively .zip is not a wallpaper type.
+                    if (ZipExtract.IsLivelyZip(filePath))
+                    {
+                        await semaphoreSlimInstallLock.WaitAsync();
+                        string installDir = null;
+                        try
+                        {
+                            installDir = Path.Combine(userSettings.Settings.WallpaperDir, "wallpapers", Path.GetRandomFileName());
+                            await Task.Run(() => ZipExtract.ZipExtractFile(filePath, installDir, false));
+                            libraryVm.AddWallpaper(installDir);
+                        }
+                        catch (Exception)
+                        {
+                            try
+                            {
+                                Directory.Delete(installDir, true);
+                            }
+                            catch { }
+                        }
+                        finally
+                        {
+                            semaphoreSlimInstallLock.Release();
+                        }
+                    }
+                    else
+                    {
+                        throw new InvalidOperationException(Properties.Resources.LivelyExceptionNotLivelyZip);
+                    }
+                }
+                else
+                {
+                    /*
+                    libraryVm.AddWallpaper(openFileDlg.FileName,
+                        type,
+                        LibraryTileType.processing,
+                        userSettings.Settings.SelectedDisplay);
+                    */
+                }
+            }
+            else
+            {
+                throw new InvalidOperationException(Properties.Resources.TextUnsupportedFile);
+            }
+        }
+
+        public void AddWallpaper(Uri uri)
+        {
+
         }
     }
 }

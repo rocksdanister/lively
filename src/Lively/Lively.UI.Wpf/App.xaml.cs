@@ -60,6 +60,7 @@ namespace Lively.UI.Wpf
                 .AddSingleton<LibraryViewModel>()
                 .AddSingleton<SettingsViewModel>() // can be made transient now?
                 //transient
+                .AddTransient<AddWallpaperViewModel>()
                 .AddTransient<HelpViewModel>()
                 .AddTransient<AboutViewModel>()
                 .AddTransient<LibraryUtil>()

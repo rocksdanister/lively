@@ -12,6 +12,9 @@ namespace Lively.Models
         processing,
         [Description("Import complete.")]
         ready,
+        cmdImport,
+        multiImport,
+        edit
     }
 
     [Serializable]

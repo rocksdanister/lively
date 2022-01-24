@@ -83,6 +83,7 @@ namespace Lively.Services
             //When the redirected stream is closed, a null line is sent to the event handler.
             if (!string.IsNullOrEmpty(e.Data))
             {
+                //Ref: https://github.com/cyanfish/grpc-dotnet-namedpipes/issues/8
                 Logger.Info($"UI: {e.Data}");
             }
         }
