@@ -1,0 +1,102 @@
+﻿<Page
+    x:Class="Lively.UI.Wpf.Views.Pages.AddWallpaperView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:p="clr-namespace:Lively.UI.Wpf.Properties"
+    xmlns:ui="http://schemas.modernwpf.com/2019"
+    Title="{x:Static p:Resources.TitleWallpaper}"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+    </Page.Resources>
+
+    <Grid>
+        <ScrollViewer>
+            <StackPanel
+                x:Name="AddPanel"
+                Margin="10,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top">
+                <TextBlock
+                    Margin="0,10,0,0"
+                    FontSize="12"
+                    FontWeight="Bold"
+                    Text="{x:Static p:Resources.TitleWallpaper}" />
+                <ui:FontIcon
+                    Margin="0,25,0,0"
+                    HorizontalAlignment="Left"
+                    FontSize="100"
+                    Foreground="{DynamicResource SystemControlHighlightAltListAccentHighBrush}"
+                    Glyph="&#xEB8C;" />
+                <TextBlock
+                    Margin="25,5,0,0"
+                    FontSize="12"
+                    Text="{x:Static p:Resources.DescriptionDragDropFIle}" />
+
+                <TextBlock
+                    Margin="0,25,0,0"
+                    FontSize="17"
+                    Text="{x:Static p:Resources.DescriptionAddWallpaper}" />
+                <TextBlock Margin="0,10,0,0" Text="{x:Static p:Resources.TitleSelectFile}" />
+                <Button
+                    MinWidth="150"
+                    Margin="0,5,0,0"
+                    Command="{Binding BrowseFileCommand}"
+                    Content="{x:Static p:Resources.TextBrowse}" />
+                <TextBlock
+                    Margin="0,10,0,0"
+                    FontSize="12"
+                    Foreground="Gray"
+                    Text="{x:Static p:Resources.TipAddWallpaperFileBrowse}"
+                    TextWrapping="Wrap" />
+
+                <TextBlock Margin="0,10,0,0" Text="{x:Static p:Resources.TitleEnterUrl}" />
+                <StackPanel Margin="0,5,0,0" Orientation="Horizontal">
+                    <TextBox
+                        MinWidth="500"
+                        MaxWidth="500"
+                        Text="{Binding WebUrlText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <Button Margin="10,0,0,0" Command="{Binding BrowseWebCommand}">
+                        <ui:FontIcon Margin="0,2,5,0" Glyph="&#xE72A;" />
+                    </Button>
+                </StackPanel>
+                <StackPanel
+                    Margin="0,5,0,0"
+                    Orientation="Horizontal"
+                    Visibility="{Binding Path=IsStreamUrlTextVisible, Converter={StaticResource BoolToVis}}">
+                    <TextBox
+                        MinWidth="500"
+                        MaxWidth="500"
+                        Text="{Binding StreamUrlText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <Button Margin="10,0,0,0" Command="{Binding BrowseStreamCommand}">
+                        <TextBlock>
+                            <Run Text="{x:Static p:Resources.TitleStreamWallpaper}" />
+                            <Run Text="{x:Static p:Resources.TitleDebug}" />
+                        </TextBlock>
+                    </Button>
+                </StackPanel>
+                <TextBlock
+                    Margin="0,10,0,0"
+                    FontSize="12"
+                    Foreground="Gray"
+                    Text="{x:Static p:Resources.TipAddWallpaperURL}"
+                    TextWrapping="Wrap" />
+
+                <TextBlock Margin="0,10,0,0" ToolTip="https://www.reddit.com/r/LivelyWallpaper/">
+                    <Hyperlink
+                        FontSize="15"
+                        Foreground="{DynamicResource SystemControlHighlightAltListAccentHighBrush}"
+                        NavigateUri="https://www.reddit.com/r/LivelyWallpaper/"
+                        RequestNavigate="Hyperlink_RequestNavigate">
+                        <TextBlock Text="{x:Static p:Resources.TextMoreWallpapers}" />
+                    </Hyperlink>
+                </TextBlock>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>
