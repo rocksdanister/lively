@@ -33,6 +33,12 @@ namespace Lively.RPC
             return Task.FromResult(new Empty());
         }
 
+        public override Task<Empty> RestartUI(Empty _, ServerCallContext context)
+        {
+            runner.RestartUI();
+            return Task.FromResult(new Empty());
+        }
+
         public override Task<Empty> Screensaver(ScreensaverRequest request, ServerCallContext context)
         {
             switch (request.State)

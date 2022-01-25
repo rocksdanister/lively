@@ -3,6 +3,7 @@ using Lively.Common.Helpers.MVVM;
 using Lively.Grpc.Client;
 using Lively.Models;
 using Lively.UI.Wpf.Factories;
+using Lively.UI.Wpf.Helpers;
 using Lively.UI.Wpf.Helpers.MVVM;
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,11 @@ namespace Lively.UI.Wpf.ViewModels
             this.appRuleFactory = appRuleFactory;
 
             AppRules = new ObservableCollection<IApplicationRulesModel>(userSettings.AppRules);
+            //Localization of apprules text..
+            foreach (var item in AppRules)
+            {
+                item.RuleText = LocalizationUtil.GetLocalizedAppRules(item.Rule);
+            }
         }
 
         private ObservableCollection<IApplicationRulesModel> _appRules;
@@ -35,7 +41,7 @@ namespace Lively.UI.Wpf.ViewModels
         {
             get
             {
-                return _appRules;
+                return _appRules ?? new ObservableCollection<IApplicationRulesModel>();
             }
             set
             {
@@ -72,6 +78,7 @@ namespace Lively.UI.Wpf.ViewModels
                 if (itemSelected)
                 {
                     SelectedItem.Rule = (AppRulesEnum)_selectedAppRuleProperty;
+                    SelectedItem.RuleText = LocalizationUtil.GetLocalizedAppRules(SelectedItem.Rule);
                 }
                 OnPropertyChanged();
             }
@@ -124,6 +131,7 @@ namespace Lively.UI.Wpf.ViewModels
                         return;
                     }
                     userSettings.AppRules.Add(rule);
+                    rule.RuleText = LocalizationUtil.GetLocalizedAppRules(rule.Rule);
                     AppRules.Add(rule);
                 }
                 catch (Exception)

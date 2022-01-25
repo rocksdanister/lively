@@ -13,6 +13,7 @@ using Lively.Common.Helpers.Files;
 using Lively.Common.Helpers.Storage;
 using Lively.Common.Helpers.Archive;
 using Lively.Grpc.Client;
+using System.Windows.Threading;
 
 namespace Lively.UI.Wpf.ViewModels
 {
@@ -24,12 +25,17 @@ namespace Lively.UI.Wpf.ViewModels
         private readonly IDesktopCoreClient desktopCore;
         private readonly IUserSettingsClient userSettings;
         private readonly IDisplayManagerClient displayManager;
+        private readonly SettingsViewModel settingsVm;
 
-        public LibraryViewModel(IDesktopCoreClient desktopCore, IDisplayManagerClient displayManager, IUserSettingsClient userSettings)
+        public LibraryViewModel(IDesktopCoreClient desktopCore,
+            IDisplayManagerClient displayManager,
+            IUserSettingsClient userSettings,
+            SettingsViewModel settingsVm)
         {
             this.desktopCore = desktopCore;
             this.displayManager = displayManager;
             this.userSettings = userSettings;
+            this.settingsVm = settingsVm;
 
             wallpaperScanFolders = new List<string>
             {
@@ -50,6 +56,7 @@ namespace Lively.UI.Wpf.ViewModels
             }
 
             desktopCore.WallpaperChanged += DesktopCore_WallpaperChanged;
+            settingsVm.WallpaperDirChanged += SettingsVm_WallpaperDirChanged;
         }
 
         #region collections
@@ -129,6 +136,19 @@ namespace Lively.UI.Wpf.ViewModels
             {
                 var wp = desktopCore.Wallpapers.FirstOrDefault(x => userSettings.Settings.SelectedDisplay.Equals(x.Display));
                 SelectedItem = LibraryItems.FirstOrDefault(x => x.LivelyInfoFolderPath == wp?.LivelyInfoFolderPath);
+            }
+        }
+
+        private void SettingsVm_WallpaperDirChanged(object sender, string dir)
+        {
+            LibraryItems.Clear();
+            wallpaperScanFolders.Clear();
+            wallpaperScanFolders.Add(Path.Combine(dir, "wallpapers"));
+            wallpaperScanFolders.Add(Path.Combine(dir, "SaveData", "wptmp"));
+
+            foreach (var item in ScanWallpaperFolders(wallpaperScanFolders))
+            {
+                LibraryItems.Add(item);
             }
         }
 

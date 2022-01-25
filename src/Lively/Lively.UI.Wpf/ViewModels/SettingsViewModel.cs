@@ -8,16 +8,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Forms;
 using Lively.Common;
 using Lively.Common.Helpers.Files;
 using Lively.Common.Helpers.MVVM;
 using Lively.Common.Helpers.Shell;
 using Lively.Grpc.Client;
 using Lively.Models;
+using Lively.UI.Wpf.Helpers;
 using Lively.UI.Wpf.Helpers.MVVM;
 using Lively.UI.Wpf.Views;
 using Lively.UI.Wpf.Views.Dialogues;
 using Microsoft.Extensions.DependencyInjection;
+using MessageBox = System.Windows.MessageBox;
 
 namespace Lively.UI.Wpf.ViewModels
 {
@@ -46,61 +49,10 @@ namespace Lively.UI.Wpf.ViewModels
             //this.appUpdater = appUpdater;
             //this.ttbService = ttbService;
 
-            /*
             //lang-codes: https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-lcid/a9eac961-e77d-41a6-90a5-ce1a8b0cdb9c
-            LanguageItems = new ObservableCollection<LanguagesModel>()
-            {
-                new LanguagesModel("English(en)", new string[]{"en", "en-US"}),
-                new LanguagesModel("日本語(ja)", new string[]{"ja", "ja-JP"}),
-                new LanguagesModel("中文(zh-CN)", new string[]{"zh", "zh-Hans","zh-CN","zh-SG"}),
-                new LanguagesModel("繁體中文(zh-Hant)", new string[]{ "zh-HK", "zh-MO", "zh-TW"}),
-                new LanguagesModel("한국어(ko-KR)", new string[]{"ko", "ko-KR","ko-KP"}),
-                new LanguagesModel("Pусский(ru)", new string[]{"ru", "ru-BY", "ru-KZ", "ru-KG", "ru-MD", "ru-RU","ru-UA"}),
-                new LanguagesModel("Українська(uk)", new string[]{"uk", "uk-UA"}),
-                new LanguagesModel("Español(es)", new string[]{"es"}),
-                new LanguagesModel("Español(es-MX)", new string[]{"es-MX"}),
-                new LanguagesModel("Italian(it)", new string[]{"it", "it-IT", "it-SM","it-CH","it-VA"}),
-                new LanguagesModel("عربى(ar-AE)", new string[]{"ar"}),
-                new LanguagesModel("فارسی(fa-IR)", new string[]{"fa-IR"}),
-                new LanguagesModel("עִברִית(he-IL)", new string[]{"he", "he-IL"}),
-                new LanguagesModel("Française(fr)", new string[]{"fr"}),
-                new LanguagesModel("Deutsch(de)", new string[]{"de"}),
-                new LanguagesModel("język polski(pl)", new string[]{"pl", "pl-PL"}),
-                new LanguagesModel("Português(pt)", new string[]{"pt"}),
-                new LanguagesModel("Português(pt-BR)", new string[]{"pt-BR"}),
-                new LanguagesModel("Filipino(fil)", new string[]{"fil", "fil-PH"}),
-                new LanguagesModel("Bahasa Indonesia(id)", new string[]{"id", "id-ID"}),
-                new LanguagesModel("Magyar(hu)", new string[]{"hu", "hu-HU"}),
-                new LanguagesModel("Svenska(sv)", new string[]{"sv","sv-AX", "sv-FI", "sv-SE"}),
-                new LanguagesModel("Bahasa Melayu(ms)", new string[]{"ms", "ms-BN", "ms-MY"}),
-                new LanguagesModel("Nederlands(nl-NL)", new string[]{"nl-NL"}),
-                new LanguagesModel("Tiếng Việt(vi)", new string[]{"vi", "vi-VN"}),
-                new LanguagesModel("Català(ca)", new string[]{"ca", "ca-AD", "ca-FR", "ca-IT", "ca-ES"}),
-                new LanguagesModel("Türkçe(tr)", new string[]{"tr", "tr-CY", "tr-TR"}),
-                new LanguagesModel("Cрпски језик(sr)", new string[]{"sr", "sr-Latn", "sr-Latn-BA", "sr-Latn-ME", "sr-Latn-RS", "sr-Latn-CS"}),
-                new LanguagesModel("Српска ћирилица(sr-Cyrl)", new string[]{"sr-Cyrl", "sr-Cyrl-BA", "sr-Cyrl-ME", "sr-Cyrl-RS", "sr-Cyrl-CS"}),
-                new LanguagesModel("Ελληνικά(el)", new string[]{"el", "el-GR", "el-CY"}),
-                new LanguagesModel("हिन्दी(hi)", new string[]{"hi", "hi-IN"}),
-                new LanguagesModel("Azerbaijani(az)", new string[]{"az", "az-Cyrl", "az-Cyrl-AZ"})
-            };
+            LanguageItems = new ObservableCollection<LanguagesModel>(LocalizationUtil.SupportedLanguages);
 
-            var defaultLanguage = SearchSupportedLanguage(userSettings.Settings.Language);
-            if (defaultLanguage == null)
-            {
-                defaultLanguage = LanguageItems[0];
-                userSettings.Settings.Language = defaultLanguage.Codes[0]; //en
-                UpdateConfigFile();
-            }
-            try
-            {
-                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(userSettings.Settings.Language);
-            }
-            catch (Exception e)
-            {
-                Logger.Error("Setting locale fail:" + e.Message);
-            }
-            SelectedLanguageItem = defaultLanguage;
-
+            /*
             if (Constants.ApplicationType.IsMSIX)
             {
                 _ = WindowsStartup.StartupWin10(userSettings.Settings.Startup);
@@ -159,6 +111,7 @@ namespace Lively.UI.Wpf.ViewModels
             //IsScreensaverLockOnResume = userSettings.Settings.ScreensaverLockOnResume;
             IsKeepUIAwake = userSettings.Settings.KeepAwakeUI;
             IsStartup = userSettings.Settings.Startup;
+            SelectedLanguageItem = LocalizationUtil.GetSupportedLanguage(userSettings.Settings.Language);
         }
 
         public void UpdateConfigFile()
@@ -178,12 +131,16 @@ namespace Lively.UI.Wpf.ViewModels
             set
             {
                 _isStartup = value;
-                _ = commands.AutomationCommand(new string[] { "--startup", value.ToString() });
+                if (userSettings.Settings.Startup != _isStartup)
+                {
+                    _ = commands.AutomationCommand(new string[] { "--startup", value.ToString() });
+                    userSettings.Settings.Startup = _isStartup;
+                    UpdateConfigFile();
+                }
                 OnPropertyChanged();
             }
         }
 
-        /*
         private ObservableCollection<LanguagesModel> _languageItems;
         public ObservableCollection<LanguagesModel> LanguageItems
         {
@@ -212,14 +169,12 @@ namespace Lively.UI.Wpf.ViewModels
                 OnPropertyChanged();
                 if (_selectedLanguageItem.Codes.FirstOrDefault(x => x == userSettings.Settings.Language) == null)
                 {
-                    //Settings.IsRestart = true;
                     userSettings.Settings.Language = _selectedLanguageItem.Codes[0];
                     UpdateConfigFile();
-                    //Program.RestartApplication();
+                    _ = commands.RestartUI();
                 }
             }
         }
-        */
 
         private int _selectedTileSizeIndex;
         public int SelectedTileSizeIndex
@@ -1136,94 +1091,96 @@ namespace Lively.UI.Wpf.ViewModels
             }
         }
 
-        public event EventHandler<string> LivelyWallpaperDirChange;
-        private async void WallpaperDirectoryChange()
+        public event EventHandler<string> WallpaperDirChanged;
+        private async Task WallpaperDirectoryChange()
         {
-            /*
-            bool isDestEmptyDir = false;
-            var folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog
+            using var folderBrowserDialog = new FolderBrowserDialog()
             {
-                SelectedPath = Program.WallpaperDir
+                SelectedPath = userSettings.Settings.WallpaperDir,
             };
             if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
             {
-                if(string.Equals(folderBrowserDialog.SelectedPath, userSettings.Settings.WallpaperDir, StringComparison.OrdinalIgnoreCase))
-                {
-                    return;
-                }
-
-                try
-                {
-                    var parentDir = Directory.GetParent(folderBrowserDialog.SelectedPath).ToString();
-                    if (parentDir != null)
-                    {
-                        if (Directory.Exists(Path.Combine(parentDir, "wallpapers")) &&
-                            Directory.Exists(Path.Combine(parentDir, "SaveData","wpdata")))
-                        {
-                            //User selected wrong directory, lively needs the SaveData folder also(root).
-                            folderBrowserDialog.SelectedPath = parentDir;
-                        }
-                    }
-
-                    WallpapeDirectoryChanging = true;
-                    WallpaperDirectoryChangeCommand.RaiseCanExecuteChanged();
-                    //create destination directory's if not exist.
-                    Directory.CreateDirectory(Path.Combine(folderBrowserDialog.SelectedPath, "wallpapers"));
-                    Directory.CreateDirectory(Path.Combine(folderBrowserDialog.SelectedPath, "SaveData", "wptmp"));
-                    Directory.CreateDirectory(Path.Combine(folderBrowserDialog.SelectedPath, "SaveData", "wpdata"));
-
-                    if (userSettings.Settings.WallpaperDirMoveExistingWallpaperNewDir)
-                    {
-                        await Task.Run(() =>
-                        {
-                            FileOperations.DirectoryCopy(Path.Combine(Program.WallpaperDir, "wallpapers"),
-                                Path.Combine(folderBrowserDialog.SelectedPath, "wallpapers"), true);
-                            FileOperations.DirectoryCopy(Path.Combine(Program.WallpaperDir, "SaveData", "wptmp"),
-                                Path.Combine(folderBrowserDialog.SelectedPath, "SaveData", "wptmp"), true);
-                            FileOperations.DirectoryCopy(Path.Combine(Program.WallpaperDir, "SaveData", "wpdata"),
-                                Path.Combine(folderBrowserDialog.SelectedPath, "SaveData", "wpdata"), true);
-                        });
-                    }
-                    else
-                    {
-                        isDestEmptyDir = true;
-                    }
-                }
-                catch (Exception e)
-                {
-                    Logger.Error("Lively Folder Change Fail: " + e.Message);
-                    System.Windows.MessageBox.Show("Failed to write to new directory:\n" + e.Message, Properties.Resources.TextError);
-                    return;
-                }
-                finally
-                {
-                    WallpapeDirectoryChanging = false;
-                    WallpaperDirectoryChangeCommand.RaiseCanExecuteChanged();
-                }
-
-                //exit all running wp's immediately
-                desktopCore.CloseAllWallpapers(true);
-
-                var previousDirectory = userSettings.Settings.WallpaperDir;
-                userSettings.Settings.WallpaperDir = folderBrowserDialog.SelectedPath;
-                UpdateConfigFile();
-                WallpaperDirectory = userSettings.Settings.WallpaperDir;
-                Program.WallpaperDir = userSettings.Settings.WallpaperDir;
-                LivelyWallpaperDirChange?.Invoke(null, folderBrowserDialog.SelectedPath);
-
-                if (!isDestEmptyDir)
-                {
-                    //not deleting the root folder, what if the user selects a folder that is not used by Lively alone!
-                    var result1 = await FileOperations.DeleteDirectoryAsync(Path.Combine(previousDirectory, "wallpapers"), 1000, 3000);
-                    var result2 = await FileOperations.DeleteDirectoryAsync(Path.Combine(previousDirectory, "SaveData"), 0, 1000);
-                    if (!(result1 && result2))
-                    {
-                        System.Windows.MessageBox.Show("Failed to delete old wallpaper directory!\nTry deleting it manually.", Properties.Resources.TextError);
-                    }
-                }
-                folderBrowserDialog.Dispose();
+                await WallpaperDirectoryChange(folderBrowserDialog.SelectedPath);
             }
-            */
+        }
+
+        public async Task WallpaperDirectoryChange(string newDir)
+        {
+            bool isDestEmptyDir = false;
+            if (string.Equals(newDir, userSettings.Settings.WallpaperDir, StringComparison.OrdinalIgnoreCase))
+            {
+                //refresh request to other classes..
+                WallpaperDirChanged?.Invoke(this, userSettings.Settings.WallpaperDir);
+                return;
+            }
+
+            try
+            {
+                var parentDir = Directory.GetParent(newDir).ToString();
+                if (parentDir != null)
+                {
+                    if (Directory.Exists(Path.Combine(parentDir, "wallpapers")) &&
+                        Directory.Exists(Path.Combine(parentDir, "SaveData", "wpdata")))
+                    {
+                        //User selected wrong directory, lively needs the SaveData folder also(root).
+                        newDir = parentDir;
+                    }
+                }
+
+                WallpapeDirectoryChanging = true;
+                WallpaperDirectoryChangeCommand.RaiseCanExecuteChanged();
+                //create destination directory's if not exist.
+                Directory.CreateDirectory(Path.Combine(newDir, "wallpapers"));
+                Directory.CreateDirectory(Path.Combine(newDir, "SaveData", "wptmp"));
+                Directory.CreateDirectory(Path.Combine(newDir, "SaveData", "wpdata"));
+
+                if (userSettings.Settings.WallpaperDirMoveExistingWallpaperNewDir)
+                {
+                    await Task.Run(() =>
+                    {
+                        FileOperations.DirectoryCopy(Path.Combine(WallpaperDirectory, "wallpapers"),
+                            Path.Combine(newDir, "wallpapers"), true);
+                        FileOperations.DirectoryCopy(Path.Combine(WallpaperDirectory, "SaveData", "wptmp"),
+                            Path.Combine(newDir, "SaveData", "wptmp"), true);
+                        FileOperations.DirectoryCopy(Path.Combine(WallpaperDirectory, "SaveData", "wpdata"),
+                            Path.Combine(newDir, "SaveData", "wpdata"), true);
+                    });
+                }
+                else
+                {
+                    isDestEmptyDir = true;
+                }
+            }
+            catch (Exception)
+            {
+                //TODO: log
+                return;
+            }
+            finally
+            {
+                WallpapeDirectoryChanging = false;
+                WallpaperDirectoryChangeCommand.RaiseCanExecuteChanged();
+            }
+
+            //exit all running wp's immediately
+            await desktopCore.CloseAllWallpapers(true);
+
+            var previousDirectory = userSettings.Settings.WallpaperDir;
+            userSettings.Settings.WallpaperDir = newDir;
+            UpdateConfigFile();
+            WallpaperDirectory = userSettings.Settings.WallpaperDir;
+            WallpaperDirChanged?.Invoke(this, newDir);
+
+            if (!isDestEmptyDir)
+            {
+                //not deleting the root folder, what if the user selects a folder that is not used by Lively alone!
+                var result1 = await FileOperations.DeleteDirectoryAsync(Path.Combine(previousDirectory, "wallpapers"), 1000, 3000);
+                var result2 = await FileOperations.DeleteDirectoryAsync(Path.Combine(previousDirectory, "SaveData"), 0, 1000);
+                if (!(result1 && result2))
+                {
+                    //TODO: Dialogue
+                }
+            }
         }
 
         #endregion //helper fns

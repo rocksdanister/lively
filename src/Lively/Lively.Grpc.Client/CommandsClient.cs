@@ -24,6 +24,11 @@ namespace Lively.Grpc.Client
             await client.ShowUIAsync(new Empty());
         }
 
+        public async Task RestartUI()
+        {
+            await client.RestartUIAsync(new Empty());
+        }
+
         public async Task ScreensaverShow(bool show)
         {
             await client.ScreensaverAsync(new ScreensaverRequest()

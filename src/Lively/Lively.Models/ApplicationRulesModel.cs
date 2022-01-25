@@ -1,5 +1,6 @@
 ﻿using Lively.Common;
 using Lively.Common.Helpers.MVVM;
+using Newtonsoft.Json;
 using System;
 
 namespace Lively.Models
@@ -37,6 +38,21 @@ namespace Lively.Models
             set
             {
                 _rule = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private string _ruleText;
+        [JsonIgnore]
+        public string RuleText
+        {
+            get
+            {
+                return _ruleText;
+            }
+            set
+            {
+                _ruleText = value;
                 OnPropertyChanged();
             }
         }

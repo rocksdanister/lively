@@ -206,6 +206,8 @@ namespace Lively.Automation
                             WindowsStartup.SetStartupRegistry(false);
                         }
                     }
+                    //userSettings.Settings.Startup = (bool)opts.Startup;
+                    //userSettings.Save<ISettingsModel>();
                 }
                 catch (Exception e)
                 {

@@ -156,7 +156,7 @@ namespace Lively.Models
             //SelectedDisplay = ScreenHelper.GetPrimaryScreen();
             LivelyGUIRendering = LivelyGUIState.lite;
             WallpaperDir = Path.Combine(Constants.CommonPaths.AppDataDir, "Library");
-            WallpaperDirMoveExistingWallpaperNewDir = false;
+            WallpaperDirMoveExistingWallpaperNewDir = true;
             SysTrayIcon = true;
             WebDebugPort = string.Empty;
             AutoDetectOnlineStreams = true;

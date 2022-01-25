@@ -108,10 +108,7 @@
                                     <ui:SymbolIcon Symbol="OpenLocal" />
                                 </Button>
                             </StackPanel>
-                            <CheckBox
-                                Content="{x:Static p:Resources.TitleWallpaperDirMoveExisting}"
-                                IsChecked="{Binding MoveExistingWallpaperNewDir, Mode=TwoWay}"
-                                IsEnabled="False" />
+                            <CheckBox Content="{x:Static p:Resources.TitleWallpaperDirMoveExisting}" IsChecked="{Binding MoveExistingWallpaperNewDir, Mode=TwoWay}" />
                             <TextBlock
                                 Margin="0,10,0,0"
                                 FontSize="12"
