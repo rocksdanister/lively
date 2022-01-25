@@ -1,0 +1,42 @@
+﻿<Page
+    x:Class="Lively.UI.Wpf.Views.SetupWizard.PageWindowsN"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:p="clr-namespace:Lively.UI.Wpf.Properties"
+    xmlns:ui="http://schemas.modernwpf.com/2019"
+    Title="PageWindowsN"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center">
+            <ui:FontIcon
+                Margin="0,2,5,0"
+                HorizontalAlignment="Left"
+                FontSize="75"
+                Glyph="&#xE7BA;" />
+            <TextBlock
+                FontSize="25"
+                FontWeight="Bold"
+                Text="{x:Static p:Resources.TextmoreInfo}" />
+            <TextBlock
+                Margin="0,10,0,0"
+                FontSize="12"
+                Foreground="Gray"
+                Text="{x:Static p:Resources.DescriptionWindowsNCodecInstall}"
+                TextWrapping="Wrap" />
+            <TextBlock Margin="5" FontSize="15">
+                <Hyperlink
+                    Foreground="{DynamicResource SystemControlHighlightAltListAccentHighBrush}"
+                    NavigateUri="https://github.com/rocksdanister/lively/wiki/Video-Guide"
+                    RequestNavigate="Hyperlink_RequestNavigate"
+                    ToolTipService.ToolTip="https://github.com/rocksdanister/lively/wiki/Video-Guide">
+                    <TextBlock Text="{x:Static p:Resources.TextDownload}" />
+                </Hyperlink>
+            </TextBlock>
+        </StackPanel>
+    </Grid>
+</Page>

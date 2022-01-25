@@ -103,6 +103,12 @@ namespace Lively
 
             //Restore wallpaper(s) from previous run.
             Services.GetRequiredService<IDesktopCore>().RestoreWallpaper();
+
+            //First run Setup-Wizard show..
+            if (Services.GetRequiredService<IUserSettingsService>().Settings.IsFirstRun)
+            {
+                Services.GetRequiredService<IRunnerService>().ShowUI();
+            }
         }
 
         private IServiceProvider ConfigureServices()

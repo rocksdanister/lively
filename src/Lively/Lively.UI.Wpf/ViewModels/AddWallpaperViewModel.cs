@@ -22,14 +22,14 @@ namespace Lively.UI.Wpf.ViewModels
     {
         private readonly string fileDialogFilter;
         private readonly IUserSettingsClient userSettings;
-        private readonly LibraryViewModel libraryVm;
+        //private readonly LibraryViewModel libraryVm;
         private readonly MainWindow appWindow;
         private readonly LibraryUtil libraryUtil;
 
-        public AddWallpaperViewModel(IUserSettingsClient userSettings, LibraryViewModel libraryVm, LibraryUtil libraryUtil, MainWindow appWindow)
+        public AddWallpaperViewModel(IUserSettingsClient userSettings, LibraryUtil libraryUtil, MainWindow appWindow)
         {
             this.userSettings = userSettings;
-            this.libraryVm = libraryVm;
+            //this.libraryVm = libraryVm;
             this.libraryUtil = libraryUtil;
             this.appWindow = appWindow;
 
@@ -194,7 +194,18 @@ namespace Lively.UI.Wpf.ViewModels
                 }
                 else
                 {
-                    await libraryUtil.AddWallpaper(openFileDlg.FileName);
+                    try
+                    {
+                        await libraryUtil.AddWallpaper(openFileDlg.FileName);
+                    }
+                    catch (Exception e)
+                    {
+                        //TODO: better dialogue
+                        System.Windows.MessageBox.Show(
+                             e.Message,
+                             Properties.Resources.TextError);
+                        return;
+                    }
                 }
                 appWindow.NavViewNavigate("library");
             }

@@ -22,7 +22,7 @@ namespace Lively.Services
             {
                 if (!processUI.Responding)
                 {
-                    RestartProcessUI();
+                    RestartUI();
                 }
                 else
                 {
@@ -49,6 +49,29 @@ namespace Lively.Services
                 processUI.Start();
                 processUI.BeginOutputReadLine();
             }
+        }
+
+        public void RestartUI()
+        {
+            if (processUI != null)
+            {
+                try
+                {
+                    processUI.Exited -= Proc_UI_Exited;
+                    processUI.OutputDataReceived -= Proc_OutputDataReceived;
+                    processUI.Kill();
+                    processUI.Dispose();
+                }
+                catch (Exception e)
+                {
+                    Logger.Error(e.Message);
+                }
+                finally
+                {
+                    processUI = null;
+                }
+            }
+            ShowUI();
         }
 
         public void CloseUI()
@@ -94,29 +117,6 @@ namespace Lively.Services
             processUI.OutputDataReceived -= Proc_OutputDataReceived;
             processUI.Dispose();
             processUI = null;
-        }
-
-        private void RestartProcessUI()
-        {
-            if (processUI != null)
-            {
-                try
-                {
-                    processUI.Exited -= Proc_UI_Exited;
-                    processUI.OutputDataReceived -= Proc_OutputDataReceived;
-                    processUI.Kill();
-                    processUI.Dispose();
-                }
-                catch (Exception e)
-                {
-                    Logger.Error(e.Message);
-                }
-                finally
-                {
-                    processUI = null;
-                }
-            }
-            ShowUI();
         }
 
         #region dispose
