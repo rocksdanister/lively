@@ -624,19 +624,6 @@
 
                             <ui:ToggleSwitch
                                 Margin="0,10,0,0"
-                                Header="{x:Static p:Resources.TitleDebug}"
-                                IsOn="{Binding IsDebugMenuVisible, Mode=TwoWay}"
-                                OffContent="{x:Static p:Resources.TextOff}"
-                                OnContent="{x:Static p:Resources.TextOn}" />
-                            <TextBlock
-                                Margin="0,10,0,0"
-                                FontSize="12"
-                                Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}"
-                                Text="{x:Static p:Resources.TipDebug}"
-                                TextWrapping="Wrap" />
-
-                            <ui:ToggleSwitch
-                                Margin="0,10,0,0"
                                 Header="Fast UI"
                                 IsOn="{Binding IsKeepUIAwake, Mode=TwoWay}"
                                 OffContent="{x:Static p:Resources.TextOff}"
@@ -646,6 +633,17 @@
                                 FontSize="12"
                                 Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}"
                                 Text="Keep User Interface running for faster startup (consume more memory.)"
+                                TextWrapping="Wrap" />
+
+                            <Button
+                                Margin="0,10,0,0"
+                                Command="{Binding ShowDebugCommand}"
+                                Content="{x:Static p:Resources.TitleDebug}" />
+                            <TextBlock
+                                Margin="0,10,0,0"
+                                FontSize="12"
+                                Foreground="{DynamicResource SystemControlPageTextBaseMediumBrush}"
+                                Text="{x:Static p:Resources.TipDebug}"
                                 TextWrapping="Wrap" />
 
                             <Button

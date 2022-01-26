@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Lively.Common.Helpers.Archive;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -46,6 +48,51 @@ namespace Lively.Common.Helpers
         {
             int err = Marshal.GetLastWin32Error();
             return $"HRESULT: {err}, {message} at\n{fileName} ({lineNumber})\n{memberName}";
+        }
+
+        /// <summary>
+        /// Let user create archive file with all the relevant diagnostic files.
+        /// </summary>
+        public static void ExtractLogFiles(string savePath)
+        {
+            if (!string.IsNullOrEmpty(savePath))
+            {
+                try
+                {
+                    var files = new List<string>();
+                    var logFolder = Constants.CommonPaths.LogDir;
+                    if (Directory.Exists(logFolder))
+                    {
+                        files.AddRange(Directory.GetFiles(logFolder, "*.*", SearchOption.TopDirectoryOnly));
+                    }
+
+                    var settingsFile = Constants.CommonPaths.UserSettingsPath;
+                    if (File.Exists(settingsFile))
+                    {
+                        files.Add(settingsFile);
+                    }
+
+                    var layoutFile = Constants.CommonPaths.WallpaperLayoutPath;
+                    if (File.Exists(layoutFile))
+                    {
+                        files.Add(layoutFile);
+                    }
+
+                    /*
+                    var procFile = Path.Combine(Program.AppDataDir, "temp", "process.txt");
+                    File.WriteAllLines(procFile, Process.GetProcesses().Select(x => x.ProcessName));
+                    files.Add(procFile);
+                    */
+
+                    if (files.Count != 0)
+                    {
+                        ZipCreate.CreateZip(savePath,
+                            new List<ZipCreate.FileData>() {
+                                new ZipCreate.FileData() { ParentDirectory = Constants.CommonPaths.AppDataDir, Files = files } });
+                    }
+                }
+                catch {/* TODO */}
+            }
         }
     }
 }
