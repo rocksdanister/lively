@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using Lively.Common;
+using Lively.Common.Helpers;
 using Lively.Common.Helpers.Files;
 using Lively.Common.Helpers.MVVM;
 using Lively.Common.Helpers.Shell;
@@ -104,7 +105,7 @@ namespace Lively.UI.Wpf.ViewModels
             //IsLockScreenAutoWallpaper = userSettings.Settings.LockScreenAutoWallpaper;
             //SelectedTaskbarThemeIndex = (int)userSettings.Settings.SystemTaskbarTheme;
             IsDesktopAutoWallpaper = userSettings.Settings.DesktopAutoWallpaper;
-            IsDebugMenuVisible = userSettings.Settings.DebugMenu;
+            //IsDebugMenuVisible = userSettings.Settings.DebugMenu;
             SelectedWebBrowserIndex = (int)userSettings.Settings.WebBrowser;
             SelectedAppThemeIndex = (int)userSettings.Settings.ApplicationTheme;
             //SelectedScreensaverWaitIndex = (int)userSettings.Settings.ScreensaverIdleWait;
@@ -917,6 +918,7 @@ namespace Lively.UI.Wpf.ViewModels
             }
         }
 
+        /*
         public event EventHandler<bool> DebugMenuVisibilityChange;
         private bool _isDebugMenuVisible;
         public bool IsDebugMenuVisible
@@ -934,6 +936,7 @@ namespace Lively.UI.Wpf.ViewModels
                 }
             }
         }
+        */
 
         private bool _isKeepUIAwake;
         public bool IsKeepUIAwake
@@ -954,7 +957,21 @@ namespace Lively.UI.Wpf.ViewModels
             }
         }
 
-        /*
+        private RelayCommand _showDebugCommand;
+        public RelayCommand ShowDebugCommand
+        {
+            get
+            {
+                if (_showDebugCommand == null)
+                {
+                    _showDebugCommand = new RelayCommand(
+                            param => commands.ShowDebugger()
+                        );
+                }
+                return _showDebugCommand;
+            }
+        }
+
         private RelayCommand _extractLogCommand;
         public RelayCommand ExtractLogCommand
         {
@@ -963,13 +980,28 @@ namespace Lively.UI.Wpf.ViewModels
                 if (_extractLogCommand == null)
                 {
                     _extractLogCommand = new RelayCommand(
-                            param => LogUtil.ExtractLogFiles()
+                            param => ExtractLog()
                         );
                 }
                 return _extractLogCommand;
             }
         }
 
+        private void ExtractLog()
+        {
+            var saveFileDialog1 = new Microsoft.Win32.SaveFileDialog()
+            {
+                Title = "Select location to save the file",
+                Filter = "Compressed archive|*.zip",
+                FileName = "lively_log_" + DateTime.Now.ToString("yyyyMMdd_HHmmss", CultureInfo.InvariantCulture) + ".zip",
+            };
+            if (saveFileDialog1.ShowDialog() == true)
+            {
+                LogUtil.ExtractLogFiles(saveFileDialog1.FileName);
+            }
+        }
+
+        /*
         public string SwitchBranchText => Constants.ApplicationType.IsTestBuild ? Properties.Resources.TextSwitchBranchOfficial : Properties.Resources.TextSwitchBranchDev;
 
         private bool canSwitchBranchCommand = !Constants.ApplicationType.IsMSIX;

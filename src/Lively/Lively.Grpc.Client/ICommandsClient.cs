@@ -9,6 +9,7 @@ namespace Lively.Grpc.Client
         Task ScreensaverShow(bool show);
         Task ShowUI();
         Task RestartUI();
+        Task ShowDebugger();
         Task ShutDown();
         Task AutomationCommand(string[] args);
     }

@@ -5,6 +5,7 @@ import "google/protobuf/empty.proto";
 service CommandsService {
   rpc ShowUI (google.protobuf.Empty) returns (google.protobuf.Empty);
   rpc RestartUI (google.protobuf.Empty) returns (google.protobuf.Empty);
+  rpc ShowDebugger (google.protobuf.Empty) returns (google.protobuf.Empty);
   rpc Screensaver (ScreensaverRequest) returns (google.protobuf.Empty);
   rpc ShutDown (google.protobuf.Empty) returns (google.protobuf.Empty);
   rpc AutomationCommand (AutomationCommandRequest) returns (google.protobuf.Empty);

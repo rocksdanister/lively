@@ -46,6 +46,7 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="NLog" Version="4.7.13" />
     <PackageReference Include="RawInput.Sharp" Version="0.0.4" />
+    <PackageReference Include="Sentinel.NLogViewer" Version="1.3.3" />
   </ItemGroup>
 
   <ItemGroup>
