@@ -20,34 +20,48 @@ namespace Lively.Services
         {
             if (processUI != null)
             {
-                if (!processUI.Responding)
+                try
                 {
-                    RestartUI();
+                    if (!processUI.Responding)
+                    {
+                        RestartUI();
+                    }
+                    else
+                    {
+                        processUI.StandardInput.WriteLine("WM SHOW");
+                    }
                 }
-                else
+                catch (Exception e)
                 {
-                    processUI.StandardInput.WriteLine("WM SHOW");
+                    Logger.Error(e);
                 }
             }
             else
             {
-                processUI = new Process
+                try
                 {
-                    StartInfo = new ProcessStartInfo
+                    processUI = new Process
                     {
-                        FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "UI", "Lively.UI.Wpf.exe"),
-                        RedirectStandardInput = true,
-                        RedirectStandardOutput = true,
-                        RedirectStandardError = true,
-                        UseShellExecute = false,
-                        WorkingDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "UI")
-                    },
-                    EnableRaisingEvents = true
-                };
-                processUI.Exited += Proc_UI_Exited;
-                processUI.OutputDataReceived += Proc_OutputDataReceived;
-                processUI.Start();
-                processUI.BeginOutputReadLine();
+                        StartInfo = new ProcessStartInfo
+                        {
+                            FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "UI", "Lively.UI.Wpf.exe"),
+                            RedirectStandardInput = true,
+                            RedirectStandardOutput = true,
+                            RedirectStandardError = true,
+                            UseShellExecute = false,
+                            WorkingDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "UI")
+                        },
+                        EnableRaisingEvents = true
+                    };
+                    processUI.Exited += Proc_UI_Exited;
+                    processUI.OutputDataReceived += Proc_OutputDataReceived;
+                    processUI.Start();
+                    processUI.BeginOutputReadLine();
+                }
+                catch (Exception e)
+                {
+                    Logger.Error(e);
+                }
             }
         }
 
@@ -59,12 +73,16 @@ namespace Lively.Services
                 {
                     processUI.Exited -= Proc_UI_Exited;
                     processUI.OutputDataReceived -= Proc_OutputDataReceived;
-                    processUI.Kill();
+                    processUI.CloseMainWindow();
+                    if (!processUI.Responding || !processUI.WaitForExit(2500))
+                    {
+                        processUI.Kill();
+                    }
                     processUI.Dispose();
                 }
                 catch (Exception e)
                 {
-                    Logger.Error(e.Message);
+                    Logger.Error(e);
                 }
                 finally
                 {
@@ -76,7 +94,18 @@ namespace Lively.Services
 
         public void CloseUI()
         {
-            processUI?.CloseMainWindow();
+            try
+            {
+                processUI?.CloseMainWindow();
+                if (!processUI.Responding || !processUI.WaitForExit(2500))
+                {
+                    processUI.Kill();
+                }
+            }
+            catch (Exception e)
+            {
+                Logger.Error(e);
+            }
         }
 
         //TODO: Make it work by launching process in background.
