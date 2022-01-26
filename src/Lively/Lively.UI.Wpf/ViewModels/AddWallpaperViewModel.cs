@@ -196,7 +196,7 @@ namespace Lively.UI.Wpf.ViewModels
                 {
                     try
                     {
-                        await libraryUtil.AddWallpaper(openFileDlg.FileName);
+                        await libraryUtil.AddWallpaperFile(openFileDlg.FileName);
                     }
                     catch (Exception e)
                     {

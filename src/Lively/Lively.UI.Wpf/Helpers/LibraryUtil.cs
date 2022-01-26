@@ -190,7 +190,7 @@ namespace Lively.UI.Wpf.Helpers
         }
 
         readonly SemaphoreSlim semaphoreSlimInstallLock = new SemaphoreSlim(1, 1);
-        public async Task AddWallpaper(string filePath)
+        public async Task AddWallpaperFile(string filePath)
         {
             WallpaperType type;
             if ((type = FileFilter.GetLivelyFileType(filePath)) != (WallpaperType)(-1))
@@ -238,13 +238,13 @@ namespace Lively.UI.Wpf.Helpers
             }
             else
             {
-                throw new InvalidOperationException(Properties.Resources.TextUnsupportedFile);
+                throw new InvalidOperationException($"{Properties.Resources.TextUnsupportedFile} ({Path.GetExtension(filePath)})");
             }
         }
 
-        public void AddWallpaper(Uri uri)
+        public async Task AddWallpaperLink(Uri uri)
         {
-
+            throw new NotImplementedException();
         }
     }
 }

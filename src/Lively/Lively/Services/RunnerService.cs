@@ -73,8 +73,7 @@ namespace Lively.Services
                 {
                     processUI.Exited -= Proc_UI_Exited;
                     processUI.OutputDataReceived -= Proc_OutputDataReceived;
-                    processUI.CloseMainWindow();
-                    if (!processUI.Responding || !processUI.WaitForExit(2500))
+                    if (!processUI.Responding || !processUI.CloseMainWindow() || !processUI.WaitForExit(2500))
                     {
                         processUI.Kill();
                     }
@@ -94,10 +93,12 @@ namespace Lively.Services
 
         public void CloseUI()
         {
+            if (processUI == null)
+                return;
+
             try
             {
-                processUI?.CloseMainWindow();
-                if (!processUI.Responding || !processUI.WaitForExit(2500))
+                if (!processUI.Responding || !processUI.CloseMainWindow() || !processUI.WaitForExit(2500))
                 {
                     processUI.Kill();
                 }

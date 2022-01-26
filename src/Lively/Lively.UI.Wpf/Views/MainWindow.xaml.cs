@@ -1,5 +1,10 @@
-﻿using Lively.Grpc.Client;
+﻿using Lively.Common;
+using Lively.Common.Helpers.Archive;
+using Lively.Common.Helpers.Files;
+using Lively.Grpc.Client;
 using Lively.Models;
+using Lively.UI.Wpf.Helpers;
+using Lively.UI.Wpf.Helpers.MVVM.Dialogs;
 using Lively.UI.Wpf.ViewModels;
 using Lively.UI.Wpf.Views.LivelyProperty.Dialogues;
 using Lively.UI.Wpf.Views.Pages;
@@ -8,6 +13,7 @@ using ModernWpf.Controls;
 using ModernWpf.Media.Animation;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -21,14 +27,18 @@ namespace Lively.UI.Wpf.Views
     /// </summary>
     public partial class MainWindow : Window
     {
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+
         private readonly IUserSettingsClient userSettings;
         private readonly IDesktopCoreClient desktopCore;
         private readonly LibraryViewModel libraryVm;
+        private readonly LibraryUtil libraryUtil;
 
-        public MainWindow(IUserSettingsClient userSettings, IDesktopCoreClient desktopCore, LibraryViewModel libraryVm)
+        public MainWindow(IUserSettingsClient userSettings, IDesktopCoreClient desktopCore, LibraryUtil libraryUtil, LibraryViewModel libraryVm)
         {
             this.userSettings = userSettings;
             this.desktopCore = desktopCore;
+            this.libraryUtil = libraryUtil;
             this.libraryVm = libraryVm;
 
             InitializeComponent();
@@ -93,7 +103,72 @@ namespace Lively.UI.Wpf.Views
 
         private async void Window_Drop(object sender, DragEventArgs e)
         {
-            //TODO
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                var droppedFiles = e.Data.GetData(DataFormats.FileDrop, true) as string[];
+                if ((null == droppedFiles) || (!droppedFiles.Any()))
+                    return;
+
+                if (droppedFiles.Count() == 1)
+                {
+                    var item = droppedFiles[0];
+                    Logger.Info("Dropped File, Selecting first file:" + item);
+                    try
+                    {
+                        if (string.IsNullOrWhiteSpace(Path.GetExtension(item)))
+                            return;
+                    }
+                    catch (ArgumentException)
+                    {
+                        Logger.Info("Invalid character, skipping dropped file.");
+                        return;
+                    }
+
+                    try
+                    {
+                        await libraryUtil.AddWallpaperFile(item);
+                    }
+                    catch (Exception ex)
+                    {
+                        await Dialogs.ShowConfirmationDialog(Properties.Resources.TextError, ex.Message, Properties.Resources.TextOK);
+                    }                  
+                }
+                else if (droppedFiles.Count() > 1)
+                {
+                    /*
+                    var miw = new MultiWallpaperImport(droppedFiles.ToList())
+                    {
+                        //This dialog on right-topmost like position and librarypreview window left-topmost.
+                        WindowStartupLocation = System.Windows.WindowStartupLocation.Manual,
+                        Left = this.Left + this.Width - (this.Width / 1.5),
+                        Top = this.Top + (this.Height / 15),
+                        Owner = this,
+                        Width = this.Width / 1.5,
+                        Height = this.Height / 1.3,
+                    };
+                    miw.ShowDialog();
+                    */
+                }
+            }
+            else if (e.Data.GetDataPresent(DataFormats.Text))
+            {
+                string droppedText = (string)e.Data.GetData(System.Windows.DataFormats.Text, true);
+                Logger.Info("Dropped Text:" + droppedText);
+                if (string.IsNullOrWhiteSpace(droppedText))
+                    return;
+
+                Uri uri;
+                try
+                {
+                    uri = LinkHandler.SanitizeUrl(droppedText);
+                }
+                catch
+                {
+                    return;
+                }
+                //await libraryUtil.AddWallpaperLink(uri);
+            }
+            NavViewNavigate("library");
         }
 
         #region wallpaper statusbar
