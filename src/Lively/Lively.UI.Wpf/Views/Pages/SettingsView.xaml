@@ -383,7 +383,7 @@
                                 MinWidth="200"
                                 Margin="0,5,0,0"
                                 SelectedIndex="{Binding SelectedGifPlayerIndex, Mode=TwoWay}">
-                                <ComboBoxItem Visibility="Collapsed">Win10</ComboBoxItem>
+                                <ComboBoxItem>Win10</ComboBoxItem>
                                 <ComboBoxItem Visibility="Collapsed">libMPV(External)</ComboBoxItem>
                                 <ComboBoxItem>mpv</ComboBoxItem>
                             </ComboBox>
@@ -636,6 +636,7 @@
                                 TextWrapping="Wrap" />
 
                             <Button
+                                MinWidth="125"
                                 Margin="0,10,0,0"
                                 Command="{Binding ShowDebugCommand}"
                                 Content="{x:Static p:Resources.TitleDebug}" />
@@ -647,6 +648,7 @@
                                 TextWrapping="Wrap" />
 
                             <Button
+                                MinWidth="125"
                                 Margin="0,10,0,0"
                                 Command="{Binding ExtractLogCommand}"
                                 Content="{x:Static p:Resources.TitleExportLogs}" />

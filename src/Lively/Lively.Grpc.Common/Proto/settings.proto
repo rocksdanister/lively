@@ -66,6 +66,7 @@ message SettingsDataModel {
     bool screensaver_lock_on_resume = 54;
     ProcessMonitorRule process_monitor_alogorithm = 55;
     bool keep_awake_ui = 56;
+    PicturePlayer picture_player = 57;
 }
 
 message AppRulesDataModel {
@@ -146,6 +147,13 @@ enum GifPlayer {
     win10img = 0;
     libmpvExt_ = 1;
     mpv_ = 2;
+}
+
+enum PicturePlayer {
+    picture = 0;
+    winApi = 1;
+    mpv__ = 2;
+    wmf_ = 3;
 }
 
 enum WebBrowser {

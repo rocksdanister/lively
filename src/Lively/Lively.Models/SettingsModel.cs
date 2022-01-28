@@ -67,6 +67,7 @@ namespace Lively.Models
         /// Gif and picture wallpaper player.
         /// </summary>
         public LivelyGifPlayer GifPlayer { get; set; }
+        public LivelyPicturePlayer PicturePlayer { get; set; }
         public LivelyWebBrowser WebBrowser { get; set; }
         public bool GifCapture { get; set; }
         public bool MultiFileAutoImport { get; set; }
@@ -130,6 +131,7 @@ namespace Lively.Models
             VideoPlayerHwAccel = true;
             WebBrowser = LivelyWebBrowser.cef;
             GifPlayer = LivelyGifPlayer.mpv;
+            PicturePlayer = LivelyPicturePlayer.mpv;
 
             WallpaperWaitTime = 20000; // 20sec
             ProcessTimerInterval = 500; //reduce to 250 for quicker response.

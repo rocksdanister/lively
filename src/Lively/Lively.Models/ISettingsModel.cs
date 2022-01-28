@@ -22,6 +22,7 @@ namespace Lively.Models
         bool GenerateTile { get; set; }
         bool GifCapture { get; set; }
         LivelyGifPlayer GifPlayer { get; set; }
+        LivelyPicturePlayer PicturePlayer { get; set; }
         string IgnoreUpdateTag { get; set; }
         InputForwardMode InputForward { get; set; }
         bool IsFirstRun { get; set; }

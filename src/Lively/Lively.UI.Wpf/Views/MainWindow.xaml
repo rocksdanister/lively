@@ -87,11 +87,12 @@
                     Content="{x:Static p:Resources.TitleAbout}"
                     Icon="Comment"
                     Tag="about" />
+                <!--
                 <ui:NavigationViewItem
                     Content="{x:Static p:Resources.TitleDebug}"
                     Icon="Emoji2"
                     Tag="debug"
-                    Visibility="{Binding Path=IsDebugMenuVisible, Converter={StaticResource BoolToVis}}" />
+                    Visibility="{Binding Path=IsDebugMenuVisible, Converter={StaticResource BoolToVis}}" />-->
             </ui:NavigationView.MenuItems>
         </ui:NavigationView>
 

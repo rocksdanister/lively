@@ -1,4 +1,5 @@
-﻿using Lively.Common.Services;
+﻿using Lively.Common;
+using Lively.Common.Services;
 using Lively.Grpc.Client;
 using Lively.UI.Wpf.Factories;
 using Lively.UI.Wpf.Helpers;
@@ -65,6 +66,9 @@ namespace Lively.UI.Wpf
             {
                 Services.GetRequiredService<MainWindow>().Show();
             }
+
+            SetAppTheme(userSettings.Settings.ApplicationTheme);
+            Services.GetRequiredService<SettingsViewModel>().AppThemeChanged += (s, e) => SetAppTheme(e);
         }
 
         private void InitializeMainWindowHidden()
@@ -107,6 +111,23 @@ namespace Lively.UI.Wpf
                 .BuildServiceProvider();
 
             return provider;
+        }
+
+        public void SetAppTheme(AppTheme theme)
+        {
+            switch (theme)
+            {
+                case AppTheme.Auto:
+                    break;
+                case AppTheme.Light:
+                    ModernWpf.ThemeManager.Current.ApplicationTheme = ModernWpf.ApplicationTheme.Light;
+                    break;
+                case AppTheme.Dark:
+                    ModernWpf.ThemeManager.Current.ApplicationTheme = ModernWpf.ApplicationTheme.Dark;
+                    break;
+                default:
+                    break;
+            }
         }
 
         public static void ShutDown()

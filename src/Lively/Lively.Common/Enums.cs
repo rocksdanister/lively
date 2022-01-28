@@ -156,8 +156,10 @@ namespace Lively.Common
 
     public enum LivelyPicturePlayer
     {
-        win10Img,
-        picture
+        picture,
+        winApi,
+        mpv,
+        wmf
     }
 
     public enum LivelyWebBrowser

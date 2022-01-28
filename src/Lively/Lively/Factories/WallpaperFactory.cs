@@ -88,31 +88,39 @@ namespace Lively.Factories
                     }
                     break;
                 case WallpaperType.gif:
-                case WallpaperType.picture:
                     switch (userSettings.Settings.GifPlayer)
                     {
                         case LivelyGifPlayer.win10Img:
-                            throw new PluginNotFoundException("xaml island gif player not available.");
+                        throw new PluginNotFoundException("xaml island gif player not available.");
                         case LivelyGifPlayer.libmpvExt:
                             throw new NotImplementedException();
-                            /*
-                            return new VideoPlayerMpvExt(obj.FilePath, 
-                                obj, 
-                                display,
-                                lpFactory.CreateLivelyPropertyFolder(obj, display, userSettings.Settings.WallpaperArrangement),
-                                userSettings.Settings.WallpaperScaling);
-                            */
                         case LivelyGifPlayer.mpv:
-                            throw new NotImplementedException();
-                            /*
                             return new VideoMpvPlayer(obj.FilePath,
-                                obj,
-                                display,
-                                lpFactory.CreateLivelyPropertyFolder(obj, display, userSettings.Settings.WallpaperArrangement),
-                                userSettings.Settings.WallpaperScaling, 
-                                userSettings.Settings.VideoPlayerHwAccel, 
-                                isPreview);
-                            */
+                                           obj,
+                                           display,
+                                           lpFactory.CreateLivelyPropertyFolder(obj, display, userSettings.Settings.WallpaperArrangement, userSettings),
+                                           userSettings.Settings.WallpaperScaling,
+                                           userSettings.Settings.VideoPlayerHwAccel,
+                                           isPreview);
+                    }
+                    break;
+                case WallpaperType.picture:
+                    switch (userSettings.Settings.PicturePlayer)
+                    {
+                        case LivelyPicturePlayer.picture:
+                            throw new PluginNotFoundException("xaml island gif player not available.");
+                        case LivelyPicturePlayer.winApi:
+                        return new PictureWinApi(obj.FilePath, obj, display, userSettings.Settings.WallpaperArrangement, userSettings.Settings.WallpaperScaling);
+                        case LivelyPicturePlayer.mpv:
+                            return new VideoMpvPlayer(obj.FilePath,
+                                              obj,
+                                              display,
+                                              lpFactory.CreateLivelyPropertyFolder(obj, display, userSettings.Settings.WallpaperArrangement, userSettings),
+                                              userSettings.Settings.WallpaperScaling,
+                                              userSettings.Settings.VideoPlayerHwAccel,
+                                              isPreview);
+                        case LivelyPicturePlayer.wmf:
+                            return new VideoWmfProcess(obj.FilePath, obj, display, 0, userSettings.Settings.WallpaperScaling);
                     }
                     break;
                 case WallpaperType.app:
@@ -147,17 +155,13 @@ namespace Lively.Factories
                     }
                     else
                     {
-                        throw new NotImplementedException();
-                        //note: wallpaper type will be videostream, don't forget..
-                        /*
-                        return new WebProcess(obj.FilePath,
-                            obj,
-                            display,
-                            lpFactory.CreateLivelyPropertyFolder(obj, display, userSettings.Settings.WallpaperArrangement),
-                            userSettings.Settings.WebDebugPort,
-                            userSettings.Settings.CefDiskCache,
-                            userSettings.Settings.AudioVolumeGlobal);
-                        */
+                        return new WebCefSharpProcess(obj.FilePath,
+                                obj,
+                                display,
+                                lpFactory.CreateLivelyPropertyFolder(obj, display, userSettings.Settings.WallpaperArrangement, userSettings),
+                                userSettings.Settings.WebDebugPort,
+                                userSettings.Settings.CefDiskCache,
+                                userSettings.Settings.AudioVolumeGlobal);
                     }
             }
             throw new PluginNotFoundException("Wallpaper player not found.");

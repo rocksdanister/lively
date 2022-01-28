@@ -14,6 +14,7 @@
     Left="-9999"
     Loaded="Window_Loaded"
     ResizeMode="NoResize"
+    ShowActivated="False"
     WindowStartupLocation="Manual"
     WindowStyle="None"
     mc:Ignorable="d">

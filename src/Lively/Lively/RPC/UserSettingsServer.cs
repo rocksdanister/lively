@@ -82,6 +82,7 @@ namespace Lively.RPC
             userSettings.Settings.VideoPlayerHwAccel = resp.VideoPlayerHwAccel;
             userSettings.Settings.WebBrowser = (LivelyWebBrowser)((int)resp.WebBrowser);
             userSettings.Settings.GifPlayer = (LivelyGifPlayer)((int)resp.GifPlayer);
+            userSettings.Settings.PicturePlayer = (LivelyPicturePlayer)((int)resp.PicturePlayer);
             userSettings.Settings.WallpaperWaitTime = resp.WallpaperWaitTime;
             userSettings.Settings.ProcessTimerInterval = resp.ProcessTimerInterval;
             userSettings.Settings.StreamQuality = (Common.StreamQualitySuggestion)((int)resp.StreamQuality);
@@ -167,6 +168,7 @@ namespace Lively.RPC
                 VideoPlayerHwAccel = settings.VideoPlayerHwAccel,
                 WebBrowser = (WebBrowser)((int)settings.WebBrowser),
                 GifPlayer = (GifPlayer)((int)settings.GifPlayer),
+                PicturePlayer = (PicturePlayer)(((int)settings.PicturePlayer)),
                 WallpaperWaitTime = settings.WallpaperWaitTime,
                 ProcessTimerInterval = settings.ProcessTimerInterval,
                 StreamQuality = (Grpc.Common.Proto.Settings.StreamQualitySuggestion)((int)settings.StreamQuality),
