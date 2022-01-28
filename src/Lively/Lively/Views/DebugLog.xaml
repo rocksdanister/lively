@@ -7,9 +7,10 @@
     xmlns:local="clr-namespace:Lively.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Lively Debugger"
-    Width="800"
-    Height="450"
+    Width="1200"
+    Height="700"
     Background="#FF2B2B2B"
+    WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Grid>
         <dj:NLogViewer

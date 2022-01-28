@@ -8,6 +8,7 @@
     Background="#FF2B2B2B"
     Left="-9999"
     ResizeMode="NoResize"
+    ShowActivated="False"
     WindowStartupLocation="Manual"
     WindowStyle="None"
     mc:Ignorable="d">

@@ -5,6 +5,7 @@ using Lively.Common.Helpers.Pinvoke;
 using Lively.Common.Helpers.Shell;
 using Lively.Common.Helpers.Storage;
 using Lively.Core.Display;
+using Lively.Core.Wallpapers;
 using Lively.Core.Watchdog;
 using Lively.Factories;
 using Lively.Helpers;
@@ -179,10 +180,6 @@ namespace Lively.Core
             try
             {
                 IWallpaper instance = wallpaperFactory.CreateWallpaper(wallpaper, display, userSettings);
-                _ = System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
-                {
-                    wallpaper.ItemStartup = true;
-                }));
                 instance.WindowInitialized += WallpaperInitialized;
                 wallpapersPending.Add(instance);
                 instance.Show();
@@ -192,7 +189,6 @@ namespace Lively.Core
                 Logger.Error(e.ToString());
             }
         }
-
 
         private readonly SemaphoreSlim semaphoreSlimWallpaperInitLock = new SemaphoreSlim(1, 1);
         private async void WallpaperInitialized(object sender, WindowInitializedArgs e)
@@ -205,10 +201,6 @@ namespace Lively.Core
                 wallpaper = (IWallpaper)sender;
                 wallpapersPending.Remove(wallpaper);
                 wallpaper.WindowInitialized -= WallpaperInitialized;
-                await System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
-                {
-                    wallpaper.Model.ItemStartup = false;
-                }));
                 if (e.Success)
                 {
                     //reload wp, fix if the webpage code is not subscribed to js window size changed event.
@@ -933,7 +925,7 @@ namespace Lively.Core
         private void SetParentWorkerW(IntPtr windowHandle)
         {
             //Legacy, Windows 7
-            if (System.Environment.OSVersion.Version.Major == 6 && System.Environment.OSVersion.Version.Minor == 1)
+            if (Environment.OSVersion.Version.Major == 6 && Environment.OSVersion.Version.Minor == 1)
             {
                 if (!workerw.Equals(progman)) //this should fix the win7 wallpaper disappearing issue.
                     NativeMethods.ShowWindow(workerw, (uint)0);
