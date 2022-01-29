@@ -35,6 +35,11 @@ namespace Lively.Automation
             HelpText = "Open app window (true/false).")]
             public bool? ShowApp { get; set; }
 
+            [Option("showTray",
+            Required = false,
+            HelpText = "Tray-icon visibility (true/false).")]
+            public bool? ShowTray { get; set; }
+
             [Option("showIcons",
             Required = false,
             HelpText = "Desktop icons visibility (true/false).")]
@@ -133,19 +138,22 @@ namespace Lively.Automation
         private readonly IScreensaverService screenSaver;
         private readonly IPlayback playbackMonitor;
         private readonly IRunnerService runner;
+        private readonly ISystray systray;
 
         public CommandHandler(IUserSettingsService userSettings, 
             IDesktopCore desktopCore, 
             IDisplayManager displayManager,
             IScreensaverService screenSaver,
             IPlayback playbackMonitor,
-            IRunnerService runner)
+            IRunnerService runner,
+            ISystray systray)
         {
             this.userSettings = userSettings;
             this.desktopCore = desktopCore;
             this.displayManager = displayManager;
             this.screenSaver = screenSaver;
             this.playbackMonitor = playbackMonitor;
+            this.systray = systray;
             this.runner = runner;
         }
 
@@ -168,6 +176,7 @@ namespace Lively.Automation
             {
                 if ((bool)opts.ShowApp)
                 {
+                    //process so dispatcher not required.
                     runner.ShowUI();
                 }
                 else
@@ -175,6 +184,14 @@ namespace Lively.Automation
                     runner.CloseUI();
                 }
             }
+
+            _ = Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
+            {
+                if (opts.ShowTray != null)
+                {
+                    systray.Visibility((bool)opts.ShowTray);
+                }
+            }));
 
             if (opts.Volume != null)
             {

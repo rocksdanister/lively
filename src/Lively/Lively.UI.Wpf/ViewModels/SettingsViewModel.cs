@@ -898,7 +898,6 @@ namespace Lively.UI.Wpf.ViewModels
 
         #region misc
 
-        public event EventHandler<bool> TrayIconVisibilityChange;
         private bool _isSysTrayIconVisible;
         public bool IsSysTrayIconVisible
         {
@@ -909,13 +908,13 @@ namespace Lively.UI.Wpf.ViewModels
             set
             {
                 _isSysTrayIconVisible = value;
-                OnPropertyChanged();
-                TrayIconVisibilityChange?.Invoke(this, _isSysTrayIconVisible);
                 if (userSettings.Settings.SysTrayIcon != _isSysTrayIconVisible)
                 {
+                    _ = commands.AutomationCommand(new string[] { "--showTray", value.ToString() });
                     userSettings.Settings.SysTrayIcon = _isSysTrayIconVisible;
                     UpdateConfigFile();
                 }
+                OnPropertyChanged();
             }
         }
 

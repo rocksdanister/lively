@@ -53,7 +53,11 @@ namespace Lively.Core.Wallpapers
         private readonly WallpaperArrangement arrangement;
         private readonly string filePath;
 
-        public PictureWinApi(string filePath, ILibraryModel model, IDisplayMonitor display, WallpaperArrangement arrangement, WallpaperScaler scaler = WallpaperScaler.fill)
+        public PictureWinApi(string filePath,
+            ILibraryModel model,
+            IDisplayMonitor display,
+            WallpaperArrangement arrangement,
+            WallpaperScaler scaler = WallpaperScaler.fill)
         {
             //Has transition animation if enabled in os settings..
             wallpapersToRestore = new List<WinWallpaper>();
