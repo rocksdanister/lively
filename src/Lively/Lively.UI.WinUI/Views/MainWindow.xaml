@@ -8,6 +8,7 @@
     mc:Ignorable="d">
 
     <Grid>
+
         <!--
         <StackPanel
             x:Name="TitleBar"
@@ -17,8 +18,29 @@
             VerticalAlignment="Top"
             Orientation="Horizontal"
             Spacing="15">
-            <TextBlock VerticalAlignment="Center" Text="MyApp" />
+            <TextBlock VerticalAlignment="Center" Text="Lively Wallpaper" />
         </StackPanel>
         -->
+
+        <NavigationView
+            Name="navView"
+            Margin="0,0,0,0"
+            IsBackButtonVisible="Collapsed"
+            PaneDisplayMode="Top">
+            <NavigationView.MenuItems>
+                <NavigationViewItem
+                    Content="Library"
+                    Icon="OtherUser"
+                    Tag="library" />
+                <NavigationViewItem
+                    Content="Gallery"
+                    Icon="Library"
+                    Tag="gallery" />
+            </NavigationView.MenuItems>
+            <NavigationView.FooterMenuItems>
+                <NavigationViewItem Icon="Help" Tag="help" />
+            </NavigationView.FooterMenuItems>
+            <Frame x:Name="contentFrame" />
+        </NavigationView>
     </Grid>
 </Window>
