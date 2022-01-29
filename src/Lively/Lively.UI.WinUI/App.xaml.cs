@@ -1,4 +1,5 @@
-﻿using Lively.Grpc.Client;
+﻿using Lively.Common.Helpers.Pinvoke;
+using Lively.Grpc.Client;
 using Lively.UI.WinUI.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
@@ -14,6 +15,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
@@ -31,7 +33,7 @@ namespace Lively.UI.WinUI
     /// </summary>
     public partial class App : Application
     {
-        private readonly Window m_window;
+        private Window m_window;
 
         private readonly IServiceProvider _serviceProvider;
         /// <summary>
@@ -54,7 +56,6 @@ namespace Lively.UI.WinUI
         {
             this.InitializeComponent();
             _serviceProvider = ConfigureServices();
-            m_window = Services.GetRequiredService<MainWindow>();
         }
 
         /// <summary>
@@ -64,12 +65,14 @@ namespace Lively.UI.WinUI
         /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
-            //m_window = new MainWindow();
-
-            //m_window.ExtendsContentIntoTitleBar = true;
-            //m_window.SetTitleBar(m_window.TitleBar);
-
+            m_window = Services.GetRequiredService<MainWindow>();
             m_window.Activate();
+
+            //Issue: https://github.com/microsoft/microsoft-ui-xaml/issues/6353
+            //IntPtr hWnd = WinRT.Interop.WindowNative.GetWindowHandle(m_window);
+            //var windowId = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(hWnd);
+            //var appWindow = Microsoft.UI.Windowing.AppWindow.GetFromWindowId(windowId);
+            //appWindow.Resize(new Windows.Graphics.SizeInt32(1200, 720));
         }
 
         private IServiceProvider ConfigureServices()
@@ -108,5 +111,27 @@ namespace Lively.UI.WinUI
             //var dispatcherQueue = DispatcherQueue.GetForCurrentThread();
             //dispatcherQueue.TryEnqueue(() => Debug.WriteLine("Dispatcher Queue"));
         }
+
+        #region helpers
+
+        private void SetWindowSize(IntPtr hwnd, int width, int height)
+        {
+            var dpi = NativeMethods.GetDpiForWindow(hwnd);
+            float scalingFactor = (float)dpi / 96;
+            width = (int)(width * scalingFactor);
+            height = (int)(height * scalingFactor);
+
+            NativeMethods.SetWindowPos(hwnd, 0, 0, 0, width, height, (int)NativeMethods.SetWindowPosFlags.SWP_NOMOVE);
+        }
+
+        [ComImport]
+        [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+        [Guid("EECDBF0E-BAE9-4CB6-A68E-9598E1CB57BB")]
+        internal interface IWindowNative
+        {
+            IntPtr WindowHandle { get; }
+        }
+
+        #endregion //helpers
     }
 }

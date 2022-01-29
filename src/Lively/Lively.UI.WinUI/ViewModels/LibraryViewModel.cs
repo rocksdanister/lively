@@ -110,8 +110,7 @@ namespace Lively.UI.WinUI.ViewModels
 
         private void DesktopCore_WallpaperChanged(object sender, EventArgs e)
         {
-            var dispatcherQueue = DispatcherQueue.GetForCurrentThread();
-            dispatcherQueue.TryEnqueue(() => UpdateSelection());
+            UpdateSelection();
         }
 
         /// <summary>
@@ -198,7 +197,7 @@ namespace Lively.UI.WinUI.ViewModels
                     {
                         //online content, no file.
                         Logger.Info("Loading Wallpaper (no-file):- " + info.FileName + " " + info.Type);
-                        return new LibraryModel(info, folderPath);
+                        return new LibraryModel(info, folderPath, LibraryItemType.ready, true);
                     }
                     else
                     {
@@ -210,7 +209,7 @@ namespace Lively.UI.WinUI.ViewModels
                         {
                             Logger.Info("Loading Wallpaper(relative):- " + Path.Combine(folderPath, info.FileName) + " " + info.Type);
                         }
-                        return new LibraryModel(info, folderPath);
+                        return new LibraryModel(info, folderPath, LibraryItemType.ready, true);
                     }
                 }
             }

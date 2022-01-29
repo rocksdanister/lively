@@ -13,6 +13,9 @@ namespace Lively.Common.Helpers.Pinvoke
 #pragma warning disable CA1707, CA1401, CA1712
     public static class NativeMethods
     {
+        [DllImport("User32")]
+        public static extern int GetDpiForWindow(IntPtr hwnd);
+
         #region screensaver
 
         [DllImport("user32.dll", SetLastError = true)]

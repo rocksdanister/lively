@@ -12,9 +12,6 @@
     <EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
     <WindowsPackageType>None</WindowsPackageType>
   </PropertyGroup>
-  <ItemGroup>
-    <None Remove="Views\Pages\LibraryView.xaml" />
-  </ItemGroup>
 
   <ItemGroup>
     <Content Include="Assets\SplashScreen.scale-200.png" />
