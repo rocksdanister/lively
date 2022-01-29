@@ -39,7 +39,13 @@ namespace Lively.Core.Wallpapers
 
         public string LivelyPropertyCopyPath { get; }
 
-        public WebCefSharpProcess(string path, ILibraryModel model, IDisplayMonitor display, string livelyPropertyPath, string debugPort, bool diskCache, int volume)
+        public WebCefSharpProcess(string path,
+            ILibraryModel model,
+            IDisplayMonitor display,
+            string livelyPropertyPath,
+            string debugPort,
+            bool diskCache,
+            int volume)
         {
             //Streams can also use browser..
             //TODO: Add support for livelyproperty video adjustments.

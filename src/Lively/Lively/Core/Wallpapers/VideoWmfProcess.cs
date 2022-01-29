@@ -38,7 +38,11 @@ namespace Lively.Core.Wallpapers
 
         public string LivelyPropertyCopyPath { get; }
 
-        public VideoWmfProcess(string path, ILibraryModel model, IDisplayMonitor display, int volume, WallpaperScaler scaler = WallpaperScaler.fill)
+        public VideoWmfProcess(string path,
+            ILibraryModel model,
+            IDisplayMonitor display,
+            int volume,
+            WallpaperScaler scaler = WallpaperScaler.fill)
         {
             StringBuilder cmdArgs = new StringBuilder();
             cmdArgs.Append(" --path " + "\"" + path + "\"");

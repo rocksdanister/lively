@@ -26,7 +26,6 @@ namespace Lively
         private readonly IUserSettingsService userSettings;
         private readonly IPlayback playbackMonitor;
 
-
         public Systray(IRunnerService runner, IUserSettingsService userSettings, IDesktopCore desktopCore, IPlayback playbackMonitor)
         {
             this.runner = runner;
@@ -45,7 +44,7 @@ namespace Lively
             _notifyIcon.ContextMenuStrip = new ContextMenuStrip();
             _notifyIcon.Icon = System.Drawing.Icon.ExtractAssociatedIcon(System.Reflection.Assembly.GetEntryAssembly().ManifestModule.Name);
             _notifyIcon.Text = "Lively Wallpaper";
-            _notifyIcon.Visible = true;
+            _notifyIcon.Visible = userSettings.Settings.SysTrayIcon;
             _notifyIcon.ContextMenuStrip.Items.Add("Open Lively").Click += (s, e) => runner.ShowUI();
             _notifyIcon.ContextMenuStrip.Items.Add("Close all wallpaper(s)", null).Click += (s, e) => desktopCore.CloseAllWallpapers(true);
             pauseTrayBtn = new ToolStripMenuItem("Pause Wallpaper(s)", null);
@@ -65,6 +64,11 @@ namespace Lively
 
             playbackMonitor.PlaybackStateChanged += Playback_PlaybackStateChanged;
             desktopCore.WallpaperChanged += DesktopCore_WallpaperChanged;
+        }
+
+        public void Visibility(bool visible)
+        {
+            _notifyIcon.Visible = visible;
         }
 
         public void ShowBalloonNotification(int timeout, string title, string msg)

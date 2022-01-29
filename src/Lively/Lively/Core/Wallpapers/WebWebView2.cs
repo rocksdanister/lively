@@ -39,7 +39,10 @@ namespace Lively.Core.Wallpapers
 
         public string LivelyPropertyCopyPath { get; }
 
-        public WebWebView2(string path, ILibraryModel model, IDisplayMonitor display, string livelyPropertyPath)
+        public WebWebView2(string path,
+            ILibraryModel model,
+            IDisplayMonitor display,
+            string livelyPropertyPath)
         {
             LivelyPropertyCopyPath = livelyPropertyPath;
 
