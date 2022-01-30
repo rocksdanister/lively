@@ -40,7 +40,7 @@ namespace Lively.UI.WinUI
         {
             if (args.IsSettingsInvoked)
             {
-                //ContentFrame.Navigate(typeof(SettingsView), new Uri("Views/SettingsView.xaml", UriKind.Relative), new EntranceNavigationTransitionInfo());
+                contentFrame.Navigate(typeof(SettingsView), null);
             }
             else if (args.InvokedItemContainer != null)
             {

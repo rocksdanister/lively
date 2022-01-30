@@ -1,0 +1,95 @@
+﻿<Page
+    x:Class="Lively.UI.WinUI.Views.Pages.SettingsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:SettingsUI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:Lively.UI.WinUI.Views.Pages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
+
+    <Grid Margin="10">
+
+        <StackPanel>
+            <controls:Setting
+                Margin="0,0,0,0"
+                Description="Lively needs to run in the background for wallpaper playback"
+                Header="Start with Windows"
+                Icon="&#xE768;">
+                <ToggleSwitch IsOn="{Binding IsStartup, Mode=TwoWay}" />
+            </controls:Setting>
+
+            <controls:Setting
+                Margin="0,10,0,0"
+                Description="Lively will restart to apply the new language"
+                Header="Language"
+                Icon="&#xF2B7;">
+                <ComboBox
+                    MinWidth="150"
+                    Margin="0,10,0,0"
+                    DisplayMemberPath="Language"
+                    ItemsSource="{Binding LanguageItems}"
+                    SelectedIndex="0"
+                    SelectedItem="{Binding SelectedLanguageItem, Mode=TwoWay}" />
+            </controls:Setting>
+
+            <controls:Setting
+                Margin="0,10,0,0"
+                Description="For low-end systems select Lite mode"
+                Header="User interface"
+                Icon="&#xE75F;">
+                <ComboBox
+                    MinWidth="150"
+                    Margin="0,10,0,0"
+                    DisplayMemberPath="Language"
+                    SelectedIndex="{Binding SelectedLivelyUIModeIndex, Mode=TwoWay}">
+                    <ComboBoxItem>Normal</ComboBoxItem>
+                    <ComboBoxItem>Lite</ComboBoxItem>
+                    <ComboBoxItem Visibility="Collapsed">Headless</ComboBoxItem>
+                </ComboBox>
+            </controls:Setting>
+
+            <controls:SettingExpander Margin="0,10,0,0" IsExpanded="True">
+                <controls:SettingExpander.Header>
+                    <controls:Setting
+                        Description="Path used to store wallpaper"
+                        Header="Wallpaper directory"
+                        Icon="&#xF12B;"
+                        Style="{StaticResource ExpanderHeaderSettingStyle}">
+                        <controls:Setting.ActionContent>
+                            <ProgressRing Margin="0" IsActive="{Binding WallpapeDirectoryChanging}" />
+                        </controls:Setting.ActionContent>
+                    </controls:Setting>
+                </controls:SettingExpander.Header>
+                <controls:SettingExpander.Content>
+                    <StackPanel Orientation="Vertical">
+                        <controls:Setting HorizontalAlignment="Left" Style="{StaticResource ExpanderContentSettingStyle}">
+                            <StackPanel Orientation="Horizontal">
+                                <Button
+                                    MinWidth="450"
+                                    MinHeight="35"
+                                    MaxWidth="450"
+                                    HorizontalContentAlignment="Left"
+                                    Command="{Binding WallpaperDirectoryChangeCommand}"
+                                    Content="{Binding WallpaperDirectory}"
+                                    IsEnabled="False" />
+                                <Button
+                                    MinWidth="45"
+                                    MinHeight="35"
+                                    Margin="5,0,0,0"
+                                    Command="{Binding OpenWallpaperDirectory}">
+                                    <SymbolIcon Symbol="OpenLocal" />
+                                </Button>
+                            </StackPanel>
+                        </controls:Setting>
+                        <controls:Setting HorizontalAlignment="Left" Style="{StaticResource ExpanderContentSettingStyle}">
+                            <CheckBox Content="Move existing wallpapers to new folder" IsChecked="{Binding MoveExistingWallpaperNewDir, Mode=TwoWay}" />
+                        </controls:Setting>
+                    </StackPanel>
+                </controls:SettingExpander.Content>
+            </controls:SettingExpander>
+        </StackPanel>
+
+    </Grid>
+</Page>

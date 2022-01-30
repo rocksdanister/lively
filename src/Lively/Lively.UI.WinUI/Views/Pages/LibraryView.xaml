@@ -13,48 +13,74 @@
             x:Key="CustomAcrylicBrush"
             TintColor="{ThemeResource SystemAltMediumColor}"
             TintOpacity="0.05" />
-
-        <DataTemplate x:Name="Normal">
-            <Grid
-                Width="272"
-                Height="153"
-                AutomationProperties.Name="{Binding Title}">
-                <Image Source="{Binding ImagePath}" Stretch="UniformToFill" />
-                <!--
-                <Viewbox MaxHeight="10" MaxWidth="10" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5, 5, 5, 5">
-                    <SymbolIcon Symbol="Document"/>
-                </Viewbox>
-                -->
-                <ProgressRing
-                    Width="25"
-                    Height="25"
-                    Margin="5,5,5,5"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Top"
-                    IsActive="{Binding ItemStartup}" />
-                <StackPanel
-                    Height="60"
-                    Padding="7"
-                    VerticalAlignment="Bottom"
-                    Background="{ThemeResource AcrylicInAppFillColorDefaultBrush}"
-                    Orientation="Vertical">
-                    <TextBlock MaxLines="1" Text="{Binding Title}" />
-                    <TextBlock
-                        Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
-                        MaxLines="2"
-                        Style="{ThemeResource CaptionTextBlockStyle}"
-                        Text="{Binding Desc}" />
-                </StackPanel>
-            </Grid>
-        </DataTemplate>
     </Page.Resources>
 
     <Grid Margin="10">
+        <!--
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        -->
+
+        <!--
+        <StackPanel
+            Grid.Row="0"
+            HorizontalAlignment="Left"
+            Orientation="Horizontal">
+            <Button
+                Width="272"
+                Height="75"
+                Margin="0,5,5,0">
+                <StackPanel Orientation="Horizontal">
+                    <FontIcon
+                        Margin="10"
+                        FontSize="25"
+                        Foreground="{ThemeResource SystemControlHighlightAltListAccentHighBrush}"
+                        Glyph="&#xE7F4;" />
+                    <StackPanel
+                        MaxWidth="200"
+                        HorizontalAlignment="Left"
+                        Orientation="Vertical">
+                        <TextBlock Text="Connected displays" />
+                        <TextBlock
+                            FontSize="12"
+                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
+                            Text="Span across screens"
+                            TextWrapping="Wrap" />
+                    </StackPanel>
+                </StackPanel>
+            </Button>
+            <Button
+                Width="272"
+                Height="75"
+                Margin="0,5,5,0">
+                <StackPanel Orientation="Horizontal">
+                    <FontIcon
+                        Margin="10"
+                        FontSize="25"
+                        Foreground="{ThemeResource SystemControlHighlightAltListAccentHighBrush}"
+                        Glyph="&#xE710;" />
+                    <StackPanel
+                        MaxWidth="200"
+                        HorizontalAlignment="Left"
+                        Orientation="Vertical">
+                        <TextBlock Text="Add new wallpaper" />
+                        <TextBlock
+                            FontSize="12"
+                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
+                            Text="Import a video or website"
+                            TextWrapping="Wrap" />
+                    </StackPanel>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+        -->
+
         <GridView
             x:Name="GridControl"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
-            ItemTemplate="{StaticResource Normal}"
             ItemsSource="{Binding LibraryItems}"
             SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
             <!--
@@ -71,6 +97,41 @@
                 </MenuFlyout.Items>
             </MenuFlyout>
             -->
+            <GridView.ItemTemplate>
+                <DataTemplate>
+                    <Grid
+                        Width="272"
+                        Height="153"
+                        AutomationProperties.Name="{Binding Title}">
+                        <Image Source="{Binding ImagePath}" Stretch="UniformToFill" />
+                        <!--
+                <Viewbox MaxHeight="10" MaxWidth="10" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5, 5, 5, 5">
+                    <SymbolIcon Symbol="Document"/>
+                </Viewbox>
+                        -->
+                        <ProgressRing
+                            Width="25"
+                            Height="25"
+                            Margin="5,5,5,5"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            IsActive="{Binding ItemStartup}" />
+                        <StackPanel
+                            Height="60"
+                            Padding="7"
+                            VerticalAlignment="Bottom"
+                            Background="{ThemeResource AcrylicInAppFillColorDefaultBrush}"
+                            Orientation="Vertical">
+                            <TextBlock MaxLines="1" Text="{Binding Title}" />
+                            <TextBlock
+                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
+                                MaxLines="2"
+                                Style="{ThemeResource CaptionTextBlockStyle}"
+                                Text="{Binding Desc}" />
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </GridView.ItemTemplate>
             <GridView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <ItemsWrapGrid Name="GridWrap" Orientation="Horizontal" />

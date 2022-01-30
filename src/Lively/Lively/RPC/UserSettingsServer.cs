@@ -18,6 +18,8 @@ namespace Lively.RPC
     {
         private readonly IDisplayManager displayManager;
         private readonly IUserSettingsService userSettings;
+        private readonly object appRulesWriteLock = new object();
+        private readonly object settingsWriteLock = new object();
 
         public UserSettingsServer(IDisplayManager displayManager, IUserSettingsService userSettings)
         {
@@ -61,8 +63,17 @@ namespace Lively.RPC
                 Debug.WriteLine(e.ToString());
             }
 
-            userSettings.Save<List<IApplicationRulesModel>>();
-            return new Empty();
+            try
+            {
+                return new Empty();
+            }
+            finally
+            {
+                lock (appRulesWriteLock)
+                {
+                    userSettings.Save<List<IApplicationRulesModel>>();
+                }
+            }
         }
 
         public override Task<Empty> SetSettings(SettingsDataModel resp, ServerCallContext context)
@@ -123,8 +134,17 @@ namespace Lively.RPC
             userSettings.Settings.Language = resp.Language;
             userSettings.Settings.KeepAwakeUI = resp.KeepAwakeUi;
 
-            userSettings.Save<ISettingsModel>();
-            return Task.FromResult(new Empty());
+            try
+            {
+                return Task.FromResult(new Empty());
+            }
+            finally
+            {
+                lock (settingsWriteLock)
+                {
+                    userSettings.Save<ISettingsModel>();
+                }
+            }
         }
 
         public override Task<SettingsDataModel> GetSettings(Empty _, ServerCallContext context)

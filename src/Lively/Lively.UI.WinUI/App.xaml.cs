@@ -83,10 +83,11 @@ namespace Lively.UI.WinUI
                 .AddSingleton<IDesktopCoreClient, WinDesktopCoreClient>()
                 .AddSingleton<IUserSettingsClient, UserSettingsClient>()
                 .AddSingleton<IDisplayManagerClient, DisplayManagerClient>()
+                .AddSingleton<ICommandsClient, CommandsClient>()
                 //.AddSingleton<IAppUpdaterService, GithubUpdaterService>()
                 .AddSingleton<MainWindow>()
-                .AddSingleton<LibraryViewModel>()
-                //.AddSingleton<SettingsViewModel>() // can be made transient now?
+                .AddSingleton<LibraryViewModel>() //Library items are stored..
+                .AddSingleton<SettingsViewModel>() //Some events..
                 //transient
                 //.AddTransient<HelpViewModel>()
                 //.AddTransient<AboutViewModel>()

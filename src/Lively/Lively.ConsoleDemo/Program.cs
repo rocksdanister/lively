@@ -112,7 +112,7 @@ namespace Lively.ConsoleDemo
                             Console.Write("Enter commandline command:");
                             var msg = Console.ReadLine();
                             var arguments = msg.Split(" ");
-                            await commandsClient.AutomationCommand(arguments);
+                            await commandsClient.AutomationCommandAsync(arguments);
                         }
                         break;
                     case "9":
