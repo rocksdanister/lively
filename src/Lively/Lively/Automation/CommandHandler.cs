@@ -23,6 +23,7 @@ using Newtonsoft.Json.Linq;
 namespace Lively.Automation
 {
     //Doc: https://github.com/rocksdanister/lively/wiki/Command-Line-Controls
+    //Note: No user settings should be saved here, changes are temporary only.
     public class CommandHandler : ICommandHandler
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
@@ -196,7 +197,6 @@ namespace Lively.Automation
             if (opts.Volume != null)
             {
                 userSettings.Settings.AudioVolumeGlobal = Clamp((int)opts.Volume, 0, 100);
-                userSettings.Save<ISettingsModel>();
             }
 
             if (opts.Play != null)
@@ -223,8 +223,6 @@ namespace Lively.Automation
                             WindowsStartup.SetStartupRegistry(false);
                         }
                     }
-                    //userSettings.Settings.Startup = (bool)opts.Startup;
-                    //userSettings.Save<ISettingsModel>();
                 }
                 catch (Exception e)
                 {

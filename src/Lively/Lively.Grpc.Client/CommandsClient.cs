@@ -17,6 +17,9 @@ namespace Lively.Grpc.Client
         public CommandsClient()
         {
             client = new CommandsService.CommandsServiceClient(new NamedPipeChannel(".", Constants.SingleInstance.GrpcPipeServerName));
+            
+            //workaround: initialize to prevent startup delay..
+            //AutomationCommand(new string[] { });
         }
 
         public async Task ShowUI()
@@ -64,11 +67,23 @@ namespace Lively.Grpc.Client
             await client.ShutDownAsync(new Empty());
         }
 
-        public async Task AutomationCommand(string[] args)
+        public async Task AutomationCommandAsync(string[] args)
         {
             var request = new AutomationCommandRequest();
             request.Args.AddRange(args);
             await client.AutomationCommandAsync(request);
+        }
+
+        public void AutomationCommand(string[] args)
+        {
+            var request = new AutomationCommandRequest();
+            request.Args.AddRange(args);
+            _ = client.AutomationCommand(request);
+        }
+
+        public void SetVolume(int volume)
+        {
+            _ = client.SetVolume(new SetVolumeRequest() { Volume = volume });
         }
     }
 }

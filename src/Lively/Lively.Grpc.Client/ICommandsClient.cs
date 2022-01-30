@@ -11,6 +11,8 @@ namespace Lively.Grpc.Client
         Task RestartUI();
         Task ShowDebugger();
         Task ShutDown();
-        Task AutomationCommand(string[] args);
+        Task AutomationCommandAsync(string[] args);
+        void AutomationCommand(string[] args);
+        void SetVolume(int volume);
     }
 }

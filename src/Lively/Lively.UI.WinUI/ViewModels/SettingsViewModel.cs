@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Forms;
 using Lively.Common;
 using Lively.Common.Helpers;
 using Lively.Common.Helpers.Files;
@@ -17,14 +16,9 @@ using Lively.Common.Helpers.Shell;
 using Lively.Common.Helpers.Storage;
 using Lively.Grpc.Client;
 using Lively.Models;
-using Lively.UI.Wpf.Helpers;
-using Lively.UI.Wpf.Helpers.MVVM;
-using Lively.UI.Wpf.Views;
-using Lively.UI.Wpf.Views.Dialogues;
 using Microsoft.Extensions.DependencyInjection;
-using MessageBox = System.Windows.MessageBox;
 
-namespace Lively.UI.Wpf.ViewModels
+namespace Lively.UI.WinUI.ViewModels
 {
     public class SettingsViewModel : ObservableObject
     {
@@ -52,7 +46,7 @@ namespace Lively.UI.Wpf.ViewModels
             //this.ttbService = ttbService;
 
             //lang-codes: https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-lcid/a9eac961-e77d-41a6-90a5-ce1a8b0cdb9c
-            LanguageItems = new ObservableCollection<LanguagesModel>(LocalizationUtil.SupportedLanguages);
+            //LanguageItems = new ObservableCollection<LanguagesModel>(LocalizationUtil.SupportedLanguages);
 
             /*
             if (Constants.ApplicationType.IsMSIX)
@@ -113,7 +107,7 @@ namespace Lively.UI.Wpf.ViewModels
             //IsScreensaverLockOnResume = userSettings.Settings.ScreensaverLockOnResume;
             IsKeepUIAwake = userSettings.Settings.KeepAwakeUI;
             IsStartup = userSettings.Settings.Startup;
-            SelectedLanguageItem = LocalizationUtil.GetSupportedLanguage(userSettings.Settings.Language);
+            //SelectedLanguageItem = LocalizationUtil.GetSupportedLanguage(userSettings.Settings.Language);
         }
 
         public void UpdateConfigFile()
@@ -233,6 +227,7 @@ namespace Lively.UI.Wpf.ViewModels
             }
         }
 
+        /*
         private RelayCommand _wallpaperDirectoryChangeCommand;
         public RelayCommand WallpaperDirectoryChangeCommand
         {
@@ -247,6 +242,7 @@ namespace Lively.UI.Wpf.ViewModels
                 return _wallpaperDirectoryChangeCommand;
             }
         }
+        */
 
         private bool _wallpapeDirectoryChanging;
         public bool WallpapeDirectoryChanging
@@ -276,6 +272,7 @@ namespace Lively.UI.Wpf.ViewModels
             }
         }
 
+        /*
         private RelayCommand _openWallpaperDirectory;
         public RelayCommand OpenWallpaperDirectory
         {
@@ -290,6 +287,7 @@ namespace Lively.UI.Wpf.ViewModels
                 return _openWallpaperDirectory;
             }
         }
+        */
 
         public event EventHandler<AppTheme> AppThemeChanged;
         private int _selectedAppThemeIndex;
@@ -319,6 +317,7 @@ namespace Lively.UI.Wpf.ViewModels
 
         #region performance
 
+        /*
         private RelayCommand _applicationRulesCommand;
         public RelayCommand ApplicationRulesCommand
         {
@@ -342,6 +341,7 @@ namespace Lively.UI.Wpf.ViewModels
                 WindowStartupLocation = WindowStartupLocation.CenterOwner,
             }.ShowDialog();
         }
+        */
 
         private int _selectedAppFullScreenIndex;
         public int SelectedAppFullScreenIndex
@@ -958,6 +958,7 @@ namespace Lively.UI.Wpf.ViewModels
             }
         }
 
+        /*
         private RelayCommand _showDebugCommand;
         public RelayCommand ShowDebugCommand
         {
@@ -1001,6 +1002,7 @@ namespace Lively.UI.Wpf.ViewModels
                 LogUtil.ExtractLogFiles(saveFileDialog1.FileName);
             }
         }
+        */
 
         /*
         public string SwitchBranchText => Constants.ApplicationType.IsTestBuild ? Properties.Resources.TextSwitchBranchOfficial : Properties.Resources.TextSwitchBranchDev;
@@ -1127,6 +1129,7 @@ namespace Lively.UI.Wpf.ViewModels
         public event EventHandler<string> WallpaperDirChanged;
         private async Task WallpaperDirectoryChange()
         {
+            /*
             using var folderBrowserDialog = new FolderBrowserDialog()
             {
                 SelectedPath = userSettings.Settings.WallpaperDir,
@@ -1135,6 +1138,7 @@ namespace Lively.UI.Wpf.ViewModels
             {
                 await WallpaperDirectoryChange(folderBrowserDialog.SelectedPath);
             }
+            */
         }
 
         public async Task WallpaperDirectoryChange(string newDir)
@@ -1161,7 +1165,7 @@ namespace Lively.UI.Wpf.ViewModels
                 }
 
                 WallpapeDirectoryChanging = true;
-                WallpaperDirectoryChangeCommand.RaiseCanExecuteChanged();
+                //WallpaperDirectoryChangeCommand.RaiseCanExecuteChanged();
                 //create destination directory's if not exist.
                 Directory.CreateDirectory(Path.Combine(newDir, "wallpapers"));
                 Directory.CreateDirectory(Path.Combine(newDir, "SaveData", "wptmp"));
@@ -1192,7 +1196,7 @@ namespace Lively.UI.Wpf.ViewModels
             finally
             {
                 WallpapeDirectoryChanging = false;
-                WallpaperDirectoryChangeCommand.RaiseCanExecuteChanged();
+                //WallpaperDirectoryChangeCommand.RaiseCanExecuteChanged();
             }
 
             //exit all running wp's immediately

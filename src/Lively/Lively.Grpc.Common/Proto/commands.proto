@@ -7,13 +7,19 @@ service CommandsService {
   rpc RestartUI (google.protobuf.Empty) returns (google.protobuf.Empty);
   rpc ShowDebugger (google.protobuf.Empty) returns (google.protobuf.Empty);
   rpc Screensaver (ScreensaverRequest) returns (google.protobuf.Empty);
+  rpc SetVolume (SetVolumeRequest) returns (google.protobuf.Empty);
   rpc ShutDown (google.protobuf.Empty) returns (google.protobuf.Empty);
+    //rpc ShutDown (google.protobuf.Empty) returns (google.protobuf.Empty);
   rpc AutomationCommand (AutomationCommandRequest) returns (google.protobuf.Empty);
 }
 
 message ScreensaverRequest {
 	ScreensaverState state = 1;
 	int32 preview_hwnd = 2;
+}
+
+message SetVolumeRequest {
+	int32 volume = 1;
 }
 
 message AutomationCommandRequest {
