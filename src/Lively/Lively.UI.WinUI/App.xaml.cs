@@ -1,5 +1,7 @@
 ﻿using Lively.Common.Helpers.Pinvoke;
 using Lively.Grpc.Client;
+using Lively.UI.WinUI.Factories;
+using Lively.UI.WinUI.Helpers;
 using Lively.UI.WinUI.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
@@ -22,6 +24,7 @@ using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.System;
+using WinRT;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -33,10 +36,7 @@ namespace Lively.UI.WinUI
     /// </summary>
     public partial class App : Application
     {
-        public DispatcherQueue AppDispatcher { get; private set; }
-
         private Window m_window;
-
         private readonly IServiceProvider _serviceProvider;
         /// <summary>
         /// Gets the <see cref="IServiceProvider"/> instance for the current application instance.
@@ -68,15 +68,16 @@ namespace Lively.UI.WinUI
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
             m_window = Services.GetRequiredService<MainWindow>();
+            var windowNative = m_window.As<IWindowNative>();
+            var m_windowHandle = windowNative.WindowHandle;
             m_window.Activate();
-
-            AppDispatcher = DispatcherQueue.GetForCurrentThread();
 
             //Issue: https://github.com/microsoft/microsoft-ui-xaml/issues/6353
             //IntPtr hWnd = WinRT.Interop.WindowNative.GetWindowHandle(m_window);
             //var windowId = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(hWnd);
             //var appWindow = Microsoft.UI.Windowing.AppWindow.GetFromWindowId(windowId);
             //appWindow.Resize(new Windows.Graphics.SizeInt32(1200, 720));
+            SetWindowSize(m_windowHandle, 875, 800); //1150x720
         }
 
         private IServiceProvider ConfigureServices()
@@ -97,8 +98,8 @@ namespace Lively.UI.WinUI
                 //.AddTransient<AboutViewModel>()
                 //.AddTransient<LibraryUtil>()
                 .AddTransient<ScreenLayoutViewModel>()
-                //.AddTransient<ApplicationRulesViewModel>()
-                //.AddTransient<IApplicationsRulesFactory, ApplicationsRulesFactory>()
+                .AddTransient<ApplicationRulesViewModel>()
+                .AddTransient<IApplicationsRulesFactory, ApplicationsRulesFactory>()
                 .BuildServiceProvider();
 
             return provider;

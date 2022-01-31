@@ -18,6 +18,8 @@ using Lively.Grpc.Client;
 using Lively.Models;
 using Lively.UI.WinUI.Helpers;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Toolkit.Mvvm.Input;
+using Windows.Storage.Pickers;
 
 namespace Lively.UI.WinUI.ViewModels
 {
@@ -228,33 +230,20 @@ namespace Lively.UI.WinUI.ViewModels
             }
         }
 
-        /*
-        private RelayCommand _wallpaperDirectoryChangeCommand;
-        public RelayCommand WallpaperDirectoryChangeCommand
+        private bool _wallpaperDirectoryChangeOngoing;
+        public bool WallpaperDirectoryChangeOngoing
         {
-            get
-            {
-                if (_wallpaperDirectoryChangeCommand == null)
-                {
-                    _wallpaperDirectoryChangeCommand = new RelayCommand(
-                        param => WallpaperDirectoryChange(), param => !Constants.ApplicationType.IsMSIX && !WallpapeDirectoryChanging
-                        );
-                }
-                return _wallpaperDirectoryChangeCommand;
-            }
-        }
-        */
-
-        private bool _wallpapeDirectoryChanging;
-        public bool WallpapeDirectoryChanging
-        {
-            get { return _wallpapeDirectoryChanging; }
+            get => _wallpaperDirectoryChangeOngoing;
             set
             {
-                _wallpapeDirectoryChanging = value;
+                _wallpaperDirectoryChangeOngoing = value;
                 OnPropertyChanged();
             }
         }
+
+        private RelayCommand _wallpaperDirectoryChangeCommand;
+        public RelayCommand WallpaperDirectoryChangeCommand => _wallpaperDirectoryChangeCommand
+            ??= new RelayCommand(WallpaperDirectoryChange, () => !Constants.ApplicationType.IsMSIX && !WallpaperDirectoryChangeOngoing);
 
         private bool _moveExistingWallpaperNewDir;
         public bool MoveExistingWallpaperNewDir
@@ -273,22 +262,9 @@ namespace Lively.UI.WinUI.ViewModels
             }
         }
 
-        /*
         private RelayCommand _openWallpaperDirectory;
-        public RelayCommand OpenWallpaperDirectory
-        {
-            get
-            {
-                if (_openWallpaperDirectory == null)
-                {
-                    _openWallpaperDirectory = new RelayCommand(
-                            param => FileOperations.OpenFolder(userSettings.Settings.WallpaperDir)
-                        );
-                }
-                return _openWallpaperDirectory;
-            }
-        }
-        */
+        public RelayCommand OpenWallpaperDirectory => 
+            _openWallpaperDirectory ??= new RelayCommand(() => FileOperations.OpenFolder(userSettings.Settings.WallpaperDir));
 
         public event EventHandler<AppTheme> AppThemeChanged;
         private int _selectedAppThemeIndex;
@@ -318,31 +294,20 @@ namespace Lively.UI.WinUI.ViewModels
 
         #region performance
 
-        /*
         private RelayCommand _applicationRulesCommand;
-        public RelayCommand ApplicationRulesCommand
-        {
-            get
-            {
-                if (_applicationRulesCommand == null)
-                {
-                    _applicationRulesCommand = new RelayCommand(
-                            param => ShowApplicationRulesWindow()
-                        );
-                }
-                return _applicationRulesCommand;
-            }
-        }
+        public RelayCommand ApplicationRulesCommand =>
+            _applicationRulesCommand ??= new RelayCommand(ShowApplicationRulesWindow);
 
         private void ShowApplicationRulesWindow()
         {
+            /*
             _ = new ApplicationRulesView()
             {
                 Owner = App.Services.GetRequiredService<MainWindow>(),
                 WindowStartupLocation = WindowStartupLocation.CenterOwner,
             }.ShowDialog();
+            */
         }
-        */
 
         private int _selectedAppFullScreenIndex;
         public int SelectedAppFullScreenIndex
@@ -1082,29 +1047,6 @@ namespace Lively.UI.WinUI.ViewModels
             };
         }
 
-        /*
-        /// <summary>
-        /// Checks LanguageItems and see if language with the given code exists.
-        /// </summary>
-        /// <param name="langCode">language code</param>
-        /// <returns>Languagemodel if found; null otherwise.</returns>
-        private LanguagesModel SearchSupportedLanguage(string langCode)
-        {
-            //return LanguageItems.FirstOrDefault(lang => lang.Codes.Contains(langCode));
-            foreach (var lang in LanguageItems)
-            {
-                foreach (var code in lang.Codes)
-                {
-                    if (string.Equals(code, langCode, StringComparison.OrdinalIgnoreCase))
-                    {
-                        return lang;
-                    }
-                }
-            }
-            return null;
-        }
-        */
-
         private async Task WallpaperRestart(WallpaperType[] type)
         {
             var originalWallpapers = desktopCore.Wallpapers.Where(x => type.Any(y => y == x.Category)).ToList();
@@ -1128,18 +1070,17 @@ namespace Lively.UI.WinUI.ViewModels
         }
 
         public event EventHandler<string> WallpaperDirChanged;
-        private async Task WallpaperDirectoryChange()
+
+        private async void WallpaperDirectoryChange()
         {
-            /*
-            using var folderBrowserDialog = new FolderBrowserDialog()
+            var folderPicker = new FolderPicker();
+            folderPicker.SetOwnerWindow(App.Services.GetRequiredService<MainWindow>());
+            folderPicker.FileTypeFilter.Add("*");
+            var folder = await folderPicker.PickSingleFolderAsync();
+            if (folder != null)
             {
-                SelectedPath = userSettings.Settings.WallpaperDir,
-            };
-            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
-            {
-                await WallpaperDirectoryChange(folderBrowserDialog.SelectedPath);
+                await WallpaperDirectoryChange(folder.Path);
             }
-            */
         }
 
         public async Task WallpaperDirectoryChange(string newDir)
@@ -1165,8 +1106,8 @@ namespace Lively.UI.WinUI.ViewModels
                     }
                 }
 
-                WallpapeDirectoryChanging = true;
-                //WallpaperDirectoryChangeCommand.RaiseCanExecuteChanged();
+                WallpaperDirectoryChangeOngoing = true;
+                WallpaperDirectoryChangeCommand.NotifyCanExecuteChanged();
                 //create destination directory's if not exist.
                 Directory.CreateDirectory(Path.Combine(newDir, "wallpapers"));
                 Directory.CreateDirectory(Path.Combine(newDir, "SaveData", "wptmp"));
@@ -1196,8 +1137,8 @@ namespace Lively.UI.WinUI.ViewModels
             }
             finally
             {
-                WallpapeDirectoryChanging = false;
-                //WallpaperDirectoryChangeCommand.RaiseCanExecuteChanged();
+                WallpaperDirectoryChangeOngoing = false;
+                WallpaperDirectoryChangeCommand.NotifyCanExecuteChanged();
             }
 
             //exit all running wp's immediately

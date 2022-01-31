@@ -72,7 +72,7 @@
                         Icon="&#xF12B;"
                         Style="{StaticResource ExpanderHeaderSettingStyle}">
                         <controls:Setting.ActionContent>
-                            <ProgressRing Margin="0" IsActive="{Binding WallpapeDirectoryChanging}" />
+                            <ProgressRing Margin="0" IsActive="{Binding WallpaperDirectoryChangeOngoing}" />
                         </controls:Setting.ActionContent>
                     </controls:Setting>
                 </controls:SettingExpander.Header>
@@ -102,13 +102,21 @@
                     </StackPanel>
                 </controls:SettingExpander.Content>
             </controls:SettingExpander>
+
+            <!--  Performance  -->
+            <controls:Setting
+                Margin="0,10,0,0"
+                Description="Set different playback rules based on running application."
+                Header="Application Rules"
+                Icon="&#xF0E3;">
+                <Button
+                    MinWidth="150"
+                    Margin="0,10,0,0"
+                    Command="{Binding ApplicationRulesCommand}"
+                    Content="Open" />
+            </controls:Setting>
+
+            <!--  Misc  -->
         </StackPanel>
-
-        <!--  Performance  -->
-        <StackPanel />
-
-        <!--  Misc  -->
-        <StackPanel />
-
     </Grid>
 </Page>

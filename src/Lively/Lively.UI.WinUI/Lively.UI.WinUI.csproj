@@ -13,6 +13,7 @@
     <WindowsPackageType>None</WindowsPackageType>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Views\Pages\ApplicationRulesView.xaml" />
     <None Remove="Views\Pages\ScreenLayoutView.xaml" />
     <None Remove="Views\Pages\SettingsView.xaml" />
   </ItemGroup>
@@ -62,5 +63,18 @@
     <Page Update="Views\Pages\SettingsView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\en-US\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\Pages\ApplicationRulesView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Update="Strings\en-US\Resources.resw">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </PRIResource>
   </ItemGroup>
 </Project>

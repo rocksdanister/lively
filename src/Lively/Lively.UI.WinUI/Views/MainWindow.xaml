@@ -5,10 +5,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Lively.UI.WinUI"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:strings="using:Lively.UI.WinUI.Strings"
     mc:Ignorable="d">
 
     <Grid>
-
         <!--
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />

@@ -20,7 +20,10 @@ namespace Lively.UI.WinUI.ViewModels
         private readonly IDisplayManagerClient displayManager;
         private readonly LibraryViewModel libraryVm;
 
-        public ScreenLayoutViewModel(IUserSettingsClient userSettings, IDesktopCoreClient desktopCore, IDisplayManagerClient displayManager, LibraryViewModel libraryVm)
+        public ScreenLayoutViewModel(IUserSettingsClient userSettings,
+            IDesktopCoreClient desktopCore,
+            IDisplayManagerClient displayManager,
+            LibraryViewModel libraryVm)
         {
             this.displayManager = displayManager;
             this.userSettings = userSettings;
@@ -103,9 +106,9 @@ namespace Lively.UI.WinUI.ViewModels
 
         #region commands
 
-        private RelayCommand<ScreenLayoutModel> _closeWallpaperCommand;
-        public RelayCommand<ScreenLayoutModel> CloseWallpaperCommand => _closeWallpaperCommand ??=
-            new RelayCommand<ScreenLayoutModel>(param => CloseWallpaper(SelectedItem), param => CanCloseWallpaper());
+        private RelayCommand _closeWallpaperCommand;
+        public RelayCommand CloseWallpaperCommand => _closeWallpaperCommand ??=
+            new RelayCommand(() => CloseWallpaper(SelectedItem), CanCloseWallpaper);
 
         private void CloseWallpaper(ScreenLayoutModel selection)
         {
@@ -138,9 +141,9 @@ namespace Lively.UI.WinUI.ViewModels
             return false;
         }
 
-        private RelayCommand<ScreenLayoutModel> _customiseWallpaperCommand;
-        public RelayCommand<ScreenLayoutModel> CustomiseWallpaperCommand => _customiseWallpaperCommand ??=
-            new RelayCommand<ScreenLayoutModel>(param => CustomiseWallpaper(SelectedItem), param => CanCustomiseWallpaper());
+        private RelayCommand _customiseWallpaperCommand;
+        public RelayCommand CustomiseWallpaperCommand => _customiseWallpaperCommand ??=
+            new RelayCommand(() => CustomiseWallpaper(SelectedItem), CanCustomiseWallpaper);
 
         private void CustomiseWallpaper(ScreenLayoutModel selection)
         {
