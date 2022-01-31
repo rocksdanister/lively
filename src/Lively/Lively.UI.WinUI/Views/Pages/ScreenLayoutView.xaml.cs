@@ -1,4 +1,6 @@
-﻿using Microsoft.UI.Xaml;
+﻿using Lively.UI.WinUI.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Data;
@@ -21,11 +23,12 @@ namespace Lively.UI.WinUI.Views.Pages
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class ControlPanelView : Page
+    public sealed partial class ScreenLayoutView : Page
     {
-        public ControlPanelView()
+        public ScreenLayoutView()
         {
             this.InitializeComponent();
+            this.DataContext = App.Services.GetRequiredService<ScreenLayoutViewModel>();
         }
     }
 }

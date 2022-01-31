@@ -1,6 +1,6 @@
 ﻿using Lively.Models;
 
-namespace Lively.UI.Wpf.Models
+namespace Lively.Models
 {
     public interface IScreenLayoutModel
     {

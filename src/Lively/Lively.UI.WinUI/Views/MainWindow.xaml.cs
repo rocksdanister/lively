@@ -1,5 +1,6 @@
 ﻿using Lively.UI.WinUI.Views;
 using Lively.UI.WinUI.Views.Pages;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -8,11 +9,13 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.UI.Xaml.Navigation;
+using SettingsUI.Extensions;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 
@@ -66,6 +69,19 @@ namespace Lively.UI.WinUI
                     //TODO
                     break;
             }
+        }
+
+        private async Task ShowControlPanel()
+        {
+            ContentDialog dialog = new ContentDialog()
+            {
+                Title = "Choose display",
+                Content = new ScreenLayoutView(),
+                PrimaryButtonText = "OK",
+                DefaultButton = ContentDialogButton.Primary,
+                XamlRoot = this.Content.XamlRoot,
+            };
+            await dialog.ShowAsyncQueue();
         }
     }
 }

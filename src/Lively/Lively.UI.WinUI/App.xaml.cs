@@ -33,6 +33,8 @@ namespace Lively.UI.WinUI
     /// </summary>
     public partial class App : Application
     {
+        public DispatcherQueue AppDispatcher { get; private set; }
+
         private Window m_window;
 
         private readonly IServiceProvider _serviceProvider;
@@ -68,6 +70,8 @@ namespace Lively.UI.WinUI
             m_window = Services.GetRequiredService<MainWindow>();
             m_window.Activate();
 
+            AppDispatcher = DispatcherQueue.GetForCurrentThread();
+
             //Issue: https://github.com/microsoft/microsoft-ui-xaml/issues/6353
             //IntPtr hWnd = WinRT.Interop.WindowNative.GetWindowHandle(m_window);
             //var windowId = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(hWnd);
@@ -92,7 +96,7 @@ namespace Lively.UI.WinUI
                 //.AddTransient<HelpViewModel>()
                 //.AddTransient<AboutViewModel>()
                 //.AddTransient<LibraryUtil>()
-                //.AddTransient<ScreenLayoutViewModel>()
+                .AddTransient<ScreenLayoutViewModel>()
                 //.AddTransient<ApplicationRulesViewModel>()
                 //.AddTransient<IApplicationsRulesFactory, ApplicationsRulesFactory>()
                 .BuildServiceProvider();

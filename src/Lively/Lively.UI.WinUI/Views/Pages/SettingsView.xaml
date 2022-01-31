@@ -10,7 +10,7 @@
     mc:Ignorable="d">
 
     <Grid Margin="10">
-
+        <!--  General  -->
         <StackPanel>
             <controls:Setting
                 Margin="0,0,0,0"
@@ -36,13 +36,27 @@
 
             <controls:Setting
                 Margin="0,10,0,0"
-                Description="For low-end systems select Lite mode"
-                Header="User interface"
-                Icon="&#xE75F;">
+                Description="Select which theme to apply"
+                Header="App theme"
+                Icon="&#xE790;">
                 <ComboBox
                     MinWidth="150"
                     Margin="0,10,0,0"
-                    DisplayMemberPath="Language"
+                    SelectedIndex="{Binding SelectedAppThemeIndex, Mode=TwoWay}">
+                    <ComboBoxItem Content="System" />
+                    <ComboBoxItem Content="Light" />
+                    <ComboBoxItem Content="Dark" />
+                </ComboBox>
+            </controls:Setting>
+
+            <controls:Setting
+                Margin="0,10,0,0"
+                Description="For low-end systems select Lite mode"
+                Header="User interface"
+                Icon="&#xE8AB;">
+                <ComboBox
+                    MinWidth="150"
+                    Margin="0,10,0,0"
                     SelectedIndex="{Binding SelectedLivelyUIModeIndex, Mode=TwoWay}">
                     <ComboBoxItem>Normal</ComboBoxItem>
                     <ComboBoxItem>Lite</ComboBoxItem>
@@ -72,8 +86,7 @@
                                     MaxWidth="450"
                                     HorizontalContentAlignment="Left"
                                     Command="{Binding WallpaperDirectoryChangeCommand}"
-                                    Content="{Binding WallpaperDirectory}"
-                                    IsEnabled="False" />
+                                    Content="{Binding WallpaperDirectory}" />
                                 <Button
                                     MinWidth="45"
                                     MinHeight="35"
@@ -90,6 +103,12 @@
                 </controls:SettingExpander.Content>
             </controls:SettingExpander>
         </StackPanel>
+
+        <!--  Performance  -->
+        <StackPanel />
+
+        <!--  Misc  -->
+        <StackPanel />
 
     </Grid>
 </Page>

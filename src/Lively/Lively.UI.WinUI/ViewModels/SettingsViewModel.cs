@@ -16,6 +16,7 @@ using Lively.Common.Helpers.Shell;
 using Lively.Common.Helpers.Storage;
 using Lively.Grpc.Client;
 using Lively.Models;
+using Lively.UI.WinUI.Helpers;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Lively.UI.WinUI.ViewModels
@@ -46,7 +47,7 @@ namespace Lively.UI.WinUI.ViewModels
             //this.ttbService = ttbService;
 
             //lang-codes: https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-lcid/a9eac961-e77d-41a6-90a5-ce1a8b0cdb9c
-            //LanguageItems = new ObservableCollection<LanguagesModel>(LocalizationUtil.SupportedLanguages);
+            LanguageItems = new ObservableCollection<LanguagesModel>(LocalizationUtil.SupportedLanguages);
 
             /*
             if (Constants.ApplicationType.IsMSIX)
@@ -107,7 +108,7 @@ namespace Lively.UI.WinUI.ViewModels
             //IsScreensaverLockOnResume = userSettings.Settings.ScreensaverLockOnResume;
             IsKeepUIAwake = userSettings.Settings.KeepAwakeUI;
             IsStartup = userSettings.Settings.Startup;
-            //SelectedLanguageItem = LocalizationUtil.GetSupportedLanguage(userSettings.Settings.Language);
+            SelectedLanguageItem = LocalizationUtil.GetSupportedLanguage(userSettings.Settings.Language);
         }
 
         public void UpdateConfigFile()

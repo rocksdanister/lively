@@ -13,6 +13,5 @@ namespace Lively.Grpc.Client
         Task ShutDown();
         Task AutomationCommandAsync(string[] args);
         void AutomationCommand(string[] args);
-        void SetVolume(int volume);
     }
 }

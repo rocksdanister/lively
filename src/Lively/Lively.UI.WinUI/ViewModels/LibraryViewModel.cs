@@ -110,7 +110,10 @@ namespace Lively.UI.WinUI.ViewModels
 
         private void DesktopCore_WallpaperChanged(object sender, EventArgs e)
         {
-            UpdateSelection();
+            _ = App.Services.GetRequiredService<MainWindow>().DispatcherQueue.TryEnqueue(() =>
+            {
+                UpdateSelection();
+            });
         }
 
         /// <summary>
