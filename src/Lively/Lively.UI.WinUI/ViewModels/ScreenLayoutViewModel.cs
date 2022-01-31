@@ -8,11 +8,10 @@ using Lively.Common;
 using Lively.Common.Helpers.MVVM;
 using Lively.Grpc.Client;
 using Lively.Models;
-using Lively.UI.Wpf.Helpers.MVVM;
-using Lively.UI.Wpf.ViewModels;
-using Lively.UI.Wpf.Views.LivelyProperty.Dialogues;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Toolkit.Mvvm.Input;
 
-namespace Lively.UI.Wpf.ViewModels
+namespace Lively.UI.WinUI.ViewModels
 {
     public class ScreenLayoutViewModel : ObservableObject
     {
@@ -37,11 +36,10 @@ namespace Lively.UI.Wpf.ViewModels
 
         private void SetupDesktop_WallpaperChanged(object sender, EventArgs e)
         {
-            System.Windows.Application.Current.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background,
-                new System.Threading.ThreadStart(delegate
-                {
-                    UpdateLayout();
-                }));
+            _ = App.Services.GetRequiredService<MainWindow>().DispatcherQueue.TryEnqueue(() =>
+            {
+                UpdateLayout();
+            });
         }
 
         private ObservableCollection<ScreenLayoutModel> _screenItems;
@@ -68,8 +66,8 @@ namespace Lively.UI.Wpf.ViewModels
                 {
                     _selectedItem = value;
                     OnPropertyChanged();
-                    CanCloseWallpaper();
-                    CanCustomiseWallpaper();
+                    CustomiseWallpaperCommand.NotifyCanExecuteChanged();
+                    CloseWallpaperCommand.NotifyCanExecuteChanged();
                     if (!userSettings.Settings.SelectedDisplay.Equals(value.Screen))
                     {
                         userSettings.Settings.SelectedDisplay = value.Screen;
@@ -105,25 +103,13 @@ namespace Lively.UI.Wpf.ViewModels
 
         #region commands
 
-        private bool _canCloseWallpaper = false;
-        private RelayCommand _closeWallpaperCommand;
-        public RelayCommand CloseWallpaperCommand
-        {
-            get
-            {
-                if (_closeWallpaperCommand == null)
-                {
-                    _closeWallpaperCommand = new RelayCommand(
-                        param => CloseWallpaper(SelectedItem),
-                        param => _canCloseWallpaper);
-                }
-                return _closeWallpaperCommand;
-            }
-        }
+        private RelayCommand<ScreenLayoutModel> _closeWallpaperCommand;
+        public RelayCommand<ScreenLayoutModel> CloseWallpaperCommand => _closeWallpaperCommand ??=
+            new RelayCommand<ScreenLayoutModel>(param => CloseWallpaper(SelectedItem), param => CanCloseWallpaper());
 
         private void CloseWallpaper(ScreenLayoutModel selection)
         {
-            if (userSettings.Settings.WallpaperArrangement == WallpaperArrangement.per)
+            if(userSettings.Settings.WallpaperArrangement == WallpaperArrangement.per)
             {
                 desktopCore.CloseWallpaper(selection.Screen);
             }
@@ -133,42 +119,28 @@ namespace Lively.UI.Wpf.ViewModels
             }
             selection.ScreenImagePath = null;
             selection.LivelyPropertyPath = null;
-            CanCloseWallpaper();
-            CanCustomiseWallpaper();
+            CustomiseWallpaperCommand.NotifyCanExecuteChanged();
+            CloseWallpaperCommand.NotifyCanExecuteChanged();
         }
 
-        private void CanCloseWallpaper()
+        private bool CanCloseWallpaper()
         {
-            bool result = false;
             if (SelectedItem != null)
             {
                 foreach (var x in desktopCore.Wallpapers)
                 {
                     if (SelectedItem.Screen.Equals(x.Display))
                     {
-                        result = true;
+                        return true;
                     }
                 }
             }
-            _canCloseWallpaper = result;
-            CloseWallpaperCommand.RaiseCanExecuteChanged();
+            return false;
         }
 
-        private bool _canCustomiseWallpaper = false;
-        private RelayCommand _customiseWallpaperCommand;
-        public RelayCommand CustomiseWallpaperCommand
-        {
-            get
-            {
-                if (_customiseWallpaperCommand == null)
-                {
-                    _customiseWallpaperCommand = new RelayCommand(
-                        param => CustomiseWallpaper(SelectedItem),
-                        param => _canCustomiseWallpaper);
-                }
-                return _customiseWallpaperCommand;
-            }
-        }
+        private RelayCommand<ScreenLayoutModel> _customiseWallpaperCommand;
+        public RelayCommand<ScreenLayoutModel> CustomiseWallpaperCommand => _customiseWallpaperCommand ??=
+            new RelayCommand<ScreenLayoutModel>(param => CustomiseWallpaper(SelectedItem), param => CanCustomiseWallpaper());
 
         private void CustomiseWallpaper(ScreenLayoutModel selection)
         {
@@ -191,26 +163,18 @@ namespace Lively.UI.Wpf.ViewModels
                             var item = items[0];
                             obj = libraryVm.LibraryItems.FirstOrDefault(x => x.LivelyInfoFolderPath == item.LivelyInfoFolderPath);
                         }
-                        break;
+                        break;      
                 }
                 if (obj != null)
                 {
-                    var settingsWidget = new LivelyPropertiesTrayWidget(obj);
-                    settingsWidget.Show();
+                    //var settingsWidget = new LivelyPropertiesTrayWidget(obj);
+                    //settingsWidget.Show();
                 }
             }
         }
 
-        private void CanCustomiseWallpaper()
-        {
-            bool result = false;
-            if (SelectedItem != null)
-            {
-                result = SelectedItem.LivelyPropertyPath != null;
-            }
-            _canCustomiseWallpaper = result;
-            CustomiseWallpaperCommand.RaiseCanExecuteChanged();
-        }
+        private bool CanCustomiseWallpaper() => 
+            SelectedItem != null && SelectedItem.LivelyPropertyPath != null;
 
         #endregion //commands
 
@@ -237,7 +201,7 @@ namespace Lively.UI.Wpf.ViewModels
                             {
                                 if (item.Equals(x.Display))
                                 {
-                                    imgPath = x.ThumbnailPath;
+                                    imgPath = string.IsNullOrEmpty(x.PreviewPath) ? x.ThumbnailPath : x.PreviewPath;
                                     livelyPropertyFilePath = x.LivelyPropertyCopyPath;
                                 }
                             }
@@ -261,7 +225,7 @@ namespace Lively.UI.Wpf.ViewModels
                         {
                             var x = desktopCore.Wallpapers[0];
                             ScreenItems.Add(new ScreenLayoutModel(userSettings.Settings.SelectedDisplay,
-                                x.ThumbnailPath, x.LivelyPropertyCopyPath, "---"));
+                                string.IsNullOrEmpty(x.PreviewPath) ? x.ThumbnailPath : x.PreviewPath, x.LivelyPropertyCopyPath, "---"));
                         }
                     }
                     break;
@@ -275,7 +239,7 @@ namespace Lively.UI.Wpf.ViewModels
                         {
                             var x = desktopCore.Wallpapers[0];
                             ScreenItems.Add(new ScreenLayoutModel(userSettings.Settings.SelectedDisplay,
-                                x.ThumbnailPath, x.LivelyPropertyCopyPath, "\""));
+                                string.IsNullOrEmpty(x.PreviewPath) ? x.ThumbnailPath : x.PreviewPath, x.LivelyPropertyCopyPath, "\""));
                         }
                     }
                     break;

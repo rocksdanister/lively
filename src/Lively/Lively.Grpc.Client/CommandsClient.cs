@@ -80,10 +80,5 @@ namespace Lively.Grpc.Client
             request.Args.AddRange(args);
             _ = client.AutomationCommand(request);
         }
-
-        public void SetVolume(int volume)
-        {
-            _ = client.SetVolume(new SetVolumeRequest() { Volume = volume });
-        }
     }
 }

@@ -50,11 +50,11 @@
             <NavigationView.MenuItems>
                 <NavigationViewItem
                     Content="Library"
-                    Icon="OtherUser"
+                    Icon="ViewAll"
                     Tag="library" />
                 <NavigationViewItem
                     Content="Gallery"
-                    Icon="Library"
+                    Icon="Shop"
                     Tag="gallery" />
             </NavigationView.MenuItems>
             <!--

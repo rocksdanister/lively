@@ -1,7 +1,7 @@
 ﻿using Lively.Common.Helpers.MVVM;
 using Lively.Models;
 
-namespace Lively.UI.Wpf.Models
+namespace Lively.Models
 {
     public class ScreenLayoutModel : ObservableObject, IScreenLayoutModel
     {
