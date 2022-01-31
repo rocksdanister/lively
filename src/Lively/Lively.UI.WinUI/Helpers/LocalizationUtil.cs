@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Windows.ApplicationModel.Resources;
 
 namespace Lively.UI.WinUI.Helpers
 {
@@ -55,7 +56,6 @@ namespace Lively.UI.WinUI.Helpers
             SupportedLanguages.FirstOrDefault(lang => lang.Codes.Contains(langCode)) ?? SupportedLanguages[0];
 
         /*
-
         public static string GetLocalizedWallpaperCategory(WallpaperType type)
         {
             return type switch
