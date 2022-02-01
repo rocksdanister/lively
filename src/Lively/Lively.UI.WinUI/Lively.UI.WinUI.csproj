@@ -13,10 +13,12 @@
     <WindowsPackageType>None</WindowsPackageType>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Views\Pages\AboutView.xaml" />
     <None Remove="Views\Pages\AddWallpaperView.xaml" />
     <None Remove="Views\Pages\ApplicationRulesView.xaml" />
     <None Remove="Views\Pages\ScreenLayoutView.xaml" />
-    <None Remove="Views\Pages\SettingsView.xaml" />
+    <None Remove="Views\Pages\SettingsGeneralView.xaml" />
+    <None Remove="Views\Pages\SettingsPerformanceView.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -61,12 +63,22 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Views\Pages\SettingsView.xaml">
+    <PRIResource Remove="Strings\en-US\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\Pages\AboutView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <PRIResource Remove="Strings\en-US\Resources.resw" />
+    <Page Update="Views\Pages\SettingsPerformanceView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\Pages\SettingsGeneralView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\Pages\AddWallpaperView.xaml">

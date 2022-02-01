@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="Lively.UI.WinUI.Views.Pages.SettingsView"
+    x:Class="Lively.UI.WinUI.Views.Pages.SettingsGeneralView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="using:SettingsUI.Controls"
@@ -10,7 +10,6 @@
     mc:Ignorable="d">
 
     <Grid Margin="10">
-        <!--  General  -->
         <StackPanel>
             <controls:Setting
                 Margin="0,0,0,0"

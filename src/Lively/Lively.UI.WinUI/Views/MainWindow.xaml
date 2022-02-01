@@ -8,7 +8,6 @@
     mc:Ignorable="d">
 
     <Grid>
-
         <!--
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
@@ -40,10 +39,16 @@
 
         <NavigationView
             Name="navView"
+            BackRequested="NavView_BackRequested"
             IsBackButtonVisible="Collapsed"
+            IsBackEnabled="True"
             IsSettingsVisible="True"
+            ItemInvoked="NavView_ItemInvoked"
+            Loaded="NavView_Loaded"
             PaneDisplayMode="Top">
+            <!--  main  -->
             <NavigationView.MenuItems>
+                <!--
                 <NavigationViewItem
                     Content="Library"
                     Icon="ViewAll"
@@ -52,20 +57,22 @@
                     Content="Gallery"
                     Icon="Shop"
                     Tag="gallery" />
+                -->
             </NavigationView.MenuItems>
             <NavigationView.FooterMenuItems>
+                <!--
                 <NavigationViewItem Icon="Help" Tag="help" />
+                -->
             </NavigationView.FooterMenuItems>
+            <!--  footer  -->
             <NavigationView.PaneFooter>
-                <CommandBar DefaultLabelPosition="Right">
-
+                <CommandBar Name="navCommandBar" DefaultLabelPosition="Right">
                     <AppBarButton Click="AddWallpaperButton_Click" Label="Add Wallpaper">
                         <AppBarButton.Icon>
                             <FontIcon Glyph="&#xE710;" />
                         </AppBarButton.Icon>
                     </AppBarButton>
                     <AppBarSeparator />
-
                     <AppBarButton
                         x:Name="controlPanelLabel"
                         Click="ControlPanelButton_Click"
@@ -75,7 +82,6 @@
                         </AppBarButton.Icon>
                     </AppBarButton>
                     <AppBarSeparator />
-
                     <AppBarButton>
                         <AppBarButton.Flyout>
                             <Flyout>
@@ -88,6 +94,7 @@
                     </AppBarButton>
                 </CommandBar>
             </NavigationView.PaneFooter>
+            <!--  content  -->
             <Frame x:Name="contentFrame" />
         </NavigationView>
     </Grid>

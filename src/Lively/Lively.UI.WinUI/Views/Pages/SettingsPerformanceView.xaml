@@ -1,0 +1,27 @@
+﻿<Page
+    x:Class="Lively.UI.WinUI.Views.Pages.SettingsPerformanceView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:SettingsUI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:Lively.UI.WinUI.Views.Pages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
+
+    <Grid Margin="10">
+        <StackPanel>
+            <controls:Setting
+                Margin="0,10,0,0"
+                Description="Set different playback rules based on running application."
+                Header="Application Rules"
+                Icon="&#xF0E3;">
+                <Button
+                    MinWidth="150"
+                    Margin="0,10,0,0"
+                    Command="{Binding ApplicationRulesCommand}"
+                    Content="Open" />
+            </controls:Setting>
+        </StackPanel>
+    </Grid>
+</Page>
