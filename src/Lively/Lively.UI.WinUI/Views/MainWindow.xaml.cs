@@ -38,11 +38,7 @@ namespace Lively.UI.WinUI
 
             this.InitializeComponent();
             this.Title = "Lively Wallpaper (WinUI)";
-            NavViewNavigate("library");
             controlPanelLabel.Label = $"{desktopCore.Wallpapers.Count} active wallpaper(s)";
-
-            //navView.ItemInvoked += NavView_ItemInvoked;
-            navView.SelectionChanged += NavView_SelectionChanged;
             desktopCore.WallpaperChanged += DesktopCore_WallpaperChanged;
 
             //ExtendsContentIntoTitleBar = true;
@@ -62,25 +58,18 @@ namespace Lively.UI.WinUI
             });
         }
 
-        private void NavView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        private void NavView_Loaded(object sender, RoutedEventArgs e)
         {
-            if (args.IsSettingsSelected)
-            {
-                contentFrame.Navigate(typeof(SettingsView), null);
-            }
-            else if (args.SelectedItemContainer != null)
-            {
-                var navItemTag = args.SelectedItemContainer.Tag.ToString();
-                NavigatePage(navItemTag);
-            }
+            CreateMainMenu();
+            NavViewNavigate(NavPages.library);
         }
 
-        /*
-        private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
+        public void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
             if (args.IsSettingsInvoked)
             {
-                contentFrame.Navigate(typeof(SettingsView), null);
+                CreateSettingsMenu();
+                NavViewNavigate(NavPages.settingsGeneral);
             }
             else if (args.InvokedItemContainer != null)
             {
@@ -88,12 +77,30 @@ namespace Lively.UI.WinUI
                 NavigatePage(navItemTag);
             }
         }
-        */
 
-        public void NavViewNavigate(string tag)
+        public void NavViewNavigate(NavPages item)
         {
+            string tag = item switch
+            {
+                NavPages.library => "library",
+                NavPages.gallery => "gallery",
+                NavPages.help => "help",
+                NavPages.settingsGeneral => "general",
+                NavPages.settingsPerformance => "performance",
+                NavPages.settingsWallpaper => "wallpaper",
+                NavPages.settingsAudio => "audio",
+                NavPages.settingsSystem => "system",
+                NavPages.settingsMisc => "misc",
+                _ => "library"
+            };
             navView.SelectedItem = navView.MenuItems.First(x => ((NavigationViewItem)x).Tag.ToString() == tag);
             NavigatePage(tag);
+        }
+
+        private void NavView_BackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)
+        {
+            CreateMainMenu();
+            NavViewNavigate(NavPages.library);
         }
 
         private void NavigatePage(string tag)
@@ -101,7 +108,16 @@ namespace Lively.UI.WinUI
             switch (tag)
             {
                 case "library":
-                    contentFrame.Navigate(typeof(LibraryView), null);
+                    contentFrame.Navigate(typeof(LibraryView), null, new DrillInNavigationTransitionInfo());
+                    break;
+                case "general":
+                    contentFrame.Navigate(typeof(SettingsGeneralView), null, new DrillInNavigationTransitionInfo());
+                    break;
+                case "performance":
+                    contentFrame.Navigate(typeof(SettingsPerformanceView), null, new DrillInNavigationTransitionInfo());
+                    break;
+                case "help":
+                    contentFrame.Navigate(typeof(AboutView), null, new DrillInNavigationTransitionInfo());
                     break;
                 default:
                     //TODO
@@ -146,5 +162,67 @@ namespace Lively.UI.WinUI
             };
             await dialog.ShowAsyncQueue();
         }
+
+        private void CreateMainMenu()
+        {
+            navView.MenuItems.Clear();
+            navView.FooterMenuItems.Clear();
+            navView.IsSettingsVisible = true;
+            navCommandBar.Visibility = Visibility.Visible;
+            navView.IsBackButtonVisible = NavigationViewBackButtonVisible.Collapsed;
+            navView.MenuItems.Add(CreateMenu("Library", "library", "\uE8A9"));
+            navView.MenuItems.Add(CreateMenu("Gallery", "gallery", "\uE719"));
+            navView.FooterMenuItems.Add(CreateMenu(string.Empty, "help", "\uE897"));
+        }
+
+        private void CreateSettingsMenu()
+        {
+            navView.MenuItems.Clear();
+            navView.FooterMenuItems.Clear();
+            navView.IsSettingsVisible = false;
+            navCommandBar.Visibility = Visibility.Collapsed;
+            navView.IsBackButtonVisible = NavigationViewBackButtonVisible.Visible;
+            navView.MenuItems.Add(CreateMenu("General", "general"));
+            navView.MenuItems.Add(CreateMenu("Performance", "performance"));
+            navView.MenuItems.Add(CreateMenu("Wallpaper", "wallpaper"));
+            navView.MenuItems.Add(CreateMenu("Audio", "audio"));
+            navView.MenuItems.Add(CreateMenu("System", "system"));
+            navView.MenuItems.Add(CreateMenu("Misc", "misc"));
+        }
+
+        public enum NavPages
+        {
+            library,
+            gallery,
+            help,
+            settingsGeneral,
+            settingsPerformance,
+            settingsWallpaper,
+            settingsAudio,
+            settingsSystem,
+            settingsMisc
+        }
+
+        #region helpers
+
+        private NavigationViewItem CreateMenu(string menuName, string tag, string glyph = "")
+        {
+            var item = new NavigationViewItem
+            {
+                Name = menuName,
+                Content = menuName,
+                Tag = tag,
+            };
+            if (!string.IsNullOrEmpty(glyph))
+            {
+                item.Icon = new FontIcon()
+                {
+                    Glyph = glyph
+                };
+            }
+            return item;
+        }
+
+        #endregion //helpers
     }
 }
