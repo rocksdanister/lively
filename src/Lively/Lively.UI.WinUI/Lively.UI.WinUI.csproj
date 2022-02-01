@@ -13,6 +13,7 @@
     <WindowsPackageType>None</WindowsPackageType>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Views\Pages\AddWallpaperView.xaml" />
     <None Remove="Views\Pages\ApplicationRulesView.xaml" />
     <None Remove="Views\Pages\ScreenLayoutView.xaml" />
     <None Remove="Views\Pages\SettingsView.xaml" />
@@ -66,6 +67,11 @@
   </ItemGroup>
   <ItemGroup>
     <PRIResource Remove="Strings\en-US\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\Pages\AddWallpaperView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\Pages\ApplicationRulesView.xaml">

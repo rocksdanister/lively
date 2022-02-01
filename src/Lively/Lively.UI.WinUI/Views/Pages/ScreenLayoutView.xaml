@@ -22,7 +22,6 @@
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch">
             <GridView
-                x:Name="GridControl"
                 Margin="5"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"

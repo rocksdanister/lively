@@ -104,6 +104,7 @@
             </controls:SettingExpander>
 
             <!--  Performance  -->
+            <!--
             <controls:Setting
                 Margin="0,10,0,0"
                 Description="Set different playback rules based on running application."
@@ -115,8 +116,7 @@
                     Command="{Binding ApplicationRulesCommand}"
                     Content="Open" />
             </controls:Setting>
-
-            <!--  Misc  -->
+            -->
         </StackPanel>
     </Grid>
 </Page>
