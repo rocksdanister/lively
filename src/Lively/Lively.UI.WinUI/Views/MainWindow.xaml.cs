@@ -1,4 +1,5 @@
-﻿using Lively.UI.WinUI.Views;
+﻿using Lively.Grpc.Client;
+using Lively.UI.WinUI.Views;
 using Lively.UI.WinUI.Views.Pages;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
@@ -29,16 +30,52 @@ namespace Lively.UI.WinUI
     /// </summary>
     public sealed partial class MainWindow : Window
     {
-        public MainWindow()
+        private readonly IDesktopCoreClient desktopCore;
+
+        public MainWindow(IDesktopCoreClient desktopCore)
         {
+            this.desktopCore = desktopCore;
+
             this.InitializeComponent();
+            this.Title = "Lively Wallpaper (WinUI)";
             NavViewNavigate("library");
-            navView.ItemInvoked += NavView_ItemInvoked;
+            controlPanelLabel.Label = $"{desktopCore.Wallpapers.Count} active wallpaper(s)";
+
+            //navView.ItemInvoked += NavView_ItemInvoked;
+            navView.SelectionChanged += NavView_SelectionChanged;
+            desktopCore.WallpaperChanged += DesktopCore_WallpaperChanged;
 
             //ExtendsContentIntoTitleBar = true;
             //SetTitleBar(TitleBar);
         }
 
+        private void DesktopCore_WallpaperChanged(object sender, EventArgs e)
+        {
+            _ = this.DispatcherQueue.TryEnqueue(() =>
+            {
+                //wallpaper focus steal fix.
+                if (this.Visible)
+                {
+                    this.Activate();
+                }
+                controlPanelLabel.Label = $"{desktopCore.Wallpapers.Count} active wallpaper(s)";
+            });
+        }
+
+        private void NavView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        {
+            if (args.IsSettingsSelected)
+            {
+                contentFrame.Navigate(typeof(SettingsView), null);
+            }
+            else if (args.SelectedItemContainer != null)
+            {
+                var navItemTag = args.SelectedItemContainer.Tag.ToString();
+                NavigatePage(navItemTag);
+            }
+        }
+
+        /*
         private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
             if (args.IsSettingsInvoked)
@@ -51,6 +88,7 @@ namespace Lively.UI.WinUI
                 NavigatePage(navItemTag);
             }
         }
+        */
 
         public void NavViewNavigate(string tag)
         {
@@ -71,13 +109,38 @@ namespace Lively.UI.WinUI
             }
         }
 
+        private void AddWallpaperButton_Click(object sender, RoutedEventArgs e)
+        {
+            _ = ShowAddWallpaper();
+        }
+
+        private void ControlPanelButton_Click(object sender, RoutedEventArgs e)
+        {
+            _ = ShowControlPanel();
+        }
+
         private async Task ShowControlPanel()
         {
-            ContentDialog dialog = new ContentDialog()
+            var dialog = new ContentDialog()
             {
                 Title = "Choose display",
                 Content = new ScreenLayoutView(),
                 PrimaryButtonText = "OK",
+                DefaultButton = ContentDialogButton.Primary,
+                XamlRoot = this.Content.XamlRoot,
+            };
+            await dialog.ShowAsyncQueue();
+        }
+
+        private async Task ShowAddWallpaper()
+        {
+            var dialog = new ContentDialog()
+            {
+                Title = "Add wallpaper",
+                Content = new AddWallpaperView(),
+                PrimaryButtonText = "Continue",
+                CloseButtonText = "Cancel",
+                IsPrimaryButtonEnabled = false,
                 DefaultButton = ContentDialogButton.Primary,
                 XamlRoot = this.Content.XamlRoot,
             };

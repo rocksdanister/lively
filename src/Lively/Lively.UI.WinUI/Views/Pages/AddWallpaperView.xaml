@@ -1,0 +1,71 @@
+﻿<Page
+    x:Class="Lively.UI.WinUI.Views.Pages.AddWallpaperView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:SettingsUI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:Lively.UI.WinUI.Views.Pages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <!--  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"  -->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200" />
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" MinWidth="400">
+            <Rectangle
+                Margin="1"
+                Stroke="{ThemeResource SystemControlPageTextBaseMediumBrush}"
+                StrokeDashArray="3"
+                StrokeDashCap="Flat"
+                StrokeDashOffset="1.5"
+                StrokeThickness="2" />
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <FontIcon
+                    FontSize="45"
+                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
+                    Glyph="&#xE724;"
+                    RenderTransformOrigin="0.5,0.5">
+                    <FontIcon.RenderTransform>
+                        <RotateTransform Angle="-45" />
+                    </FontIcon.RenderTransform>
+                </FontIcon>
+                <TextBlock
+                    Margin="0,15,0,0"
+                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
+                    Text="Simply drag and drop file here" />
+            </StackPanel>
+        </Grid>
+
+        <StackPanel Grid.Row="1">
+            <controls:Setting
+                Margin="0,10,0,0"
+                Description="Choose a file."
+                Header="Select a file to set it as wallpaper"
+                Icon="&#xEB9F;">
+                <Button MinWidth="150" Content="Browse" />
+            </controls:Setting>
+
+            <controls:SettingExpander Margin="0,2.5,0,0" IsExpanded="True">
+                <controls:SettingExpander.Header>
+                    <controls:Setting
+                        Description="Set the webpage of the URL you entered as wallpaper"
+                        Header="Enter URL"
+                        Icon="&#xE71B;"
+                        Style="{StaticResource ExpanderHeaderSettingStyle}" />
+                </controls:SettingExpander.Header>
+                <controls:SettingExpander.Content>
+                    <controls:Setting Style="{StaticResource ExpanderContentSettingStyle}">
+                        <TextBox
+                            Width="400"
+                            HorizontalAlignment="Left"
+                            Text="https://example.com" />
+                    </controls:Setting>
+                </controls:SettingExpander.Content>
+            </controls:SettingExpander>
+        </StackPanel>
+    </Grid>
+</Page>

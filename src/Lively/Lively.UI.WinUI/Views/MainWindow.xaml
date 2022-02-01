@@ -5,39 +5,35 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Lively.UI.WinUI"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:strings="using:Lively.UI.WinUI.Strings"
     mc:Ignorable="d">
 
     <Grid>
+
         <!--
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
-            <RowDefinition Height="50" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="250" />
-            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         -->
 
         <!--
-        <Grid
-            x:Name="TitleBar"
-            Grid.Row="0"
-            Grid.ColumnSpan="3"
-            Background="{ThemeResource AcrylicInAppFillColorDefaultBrush}">
+        <Grid x:Name="TitleBar" Grid.Row="0">
             <TextBlock
-                Margin="5"
+                Margin="15"
                 HorizontalAlignment="Left"
+                FontSize="12"
                 Text="Lively Wallpaper" />
             <AutoSuggestBox
-                Width="300"
-                Height="30"
+                Width="350"
+                MaxWidth="400"
+                MaxHeight="32"
+                Margin="100,5,100,5"
                 HorizontalAlignment="Center"
-                PlaceholderText="Search library"
+                PlaceholderText="Search"
                 QueryIcon="Find" />
         </Grid>
         -->
@@ -57,11 +53,41 @@
                     Icon="Shop"
                     Tag="gallery" />
             </NavigationView.MenuItems>
-            <!--
             <NavigationView.FooterMenuItems>
                 <NavigationViewItem Icon="Help" Tag="help" />
             </NavigationView.FooterMenuItems>
-            -->
+            <NavigationView.PaneFooter>
+                <CommandBar DefaultLabelPosition="Right">
+
+                    <AppBarButton Click="AddWallpaperButton_Click" Label="Add Wallpaper">
+                        <AppBarButton.Icon>
+                            <FontIcon Glyph="&#xE710;" />
+                        </AppBarButton.Icon>
+                    </AppBarButton>
+                    <AppBarSeparator />
+
+                    <AppBarButton
+                        x:Name="controlPanelLabel"
+                        Click="ControlPanelButton_Click"
+                        Label="0 active wallpaper(s)">
+                        <AppBarButton.Icon>
+                            <FontIcon Glyph="&#xE7F4;" />
+                        </AppBarButton.Icon>
+                    </AppBarButton>
+                    <AppBarSeparator />
+
+                    <AppBarButton>
+                        <AppBarButton.Flyout>
+                            <Flyout>
+                                <Slider MinWidth="100" Value="40" />
+                            </Flyout>
+                        </AppBarButton.Flyout>
+                        <AppBarButton.Icon>
+                            <FontIcon Glyph="&#xE767;" />
+                        </AppBarButton.Icon>
+                    </AppBarButton>
+                </CommandBar>
+            </NavigationView.PaneFooter>
             <Frame x:Name="contentFrame" />
         </NavigationView>
     </Grid>
