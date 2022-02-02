@@ -6,6 +6,7 @@
     xmlns:local="using:Lively.UI.WinUI.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Unloaded="Page_Unloaded"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -78,25 +79,48 @@
         -->
 
         <GridView
-            x:Name="GridControl"
+            x:Name="libraryGridView"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
             ItemsSource="{Binding LibraryItems}"
+            RightTapped="libraryGridView_RightTapped"
             SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
-            <!--
             <MenuFlyout x:Name="contextMenu">
                 <MenuFlyout.Items>
                     <MenuFlyoutItem
                         x:Name="moreInformation"
                         Click="contextMenu_Click"
-                        Text="Menu1" />
+                        Text="About" />
                     <MenuFlyoutItem
                         x:Name="setWallpaper"
                         Click="contextMenu_Click"
-                        Text="Menu2" />
+                        Text="Set as Wallpaper" />
+                    <MenuFlyoutItem
+                        x:Name="previewWallpaper"
+                        Click="contextMenu_Click"
+                        Text="Preview" />
+                    <MenuFlyoutItem
+                        x:Name="customiseWallpaper"
+                        Click="contextMenu_Click"
+                        Text="Customise" />
+                    <MenuFlyoutItem
+                        x:Name="showOnDisk"
+                        Click="contextMenu_Click"
+                        Text="Open File Location" />
+                    <MenuFlyoutItem
+                        x:Name="exportWallpaper"
+                        Click="contextMenu_Click"
+                        Text="Export lively .zip" />
+                    <MenuFlyoutItem
+                        x:Name="deleteWallpaper"
+                        Click="contextMenu_Click"
+                        Text="Delete" />
+                    <MenuFlyoutItem
+                        x:Name="editWallpaper"
+                        Click="contextMenu_Click"
+                        Text="Edit" />
                 </MenuFlyout.Items>
             </MenuFlyout>
-            -->
             <GridView.ItemTemplate>
                 <DataTemplate>
                     <Grid

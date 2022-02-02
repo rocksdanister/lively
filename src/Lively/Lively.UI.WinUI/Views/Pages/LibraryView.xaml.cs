@@ -1,4 +1,7 @@
-﻿using Lively.UI.WinUI.ViewModels;
+﻿using Lively.Grpc.Client;
+using Lively.Models;
+using Lively.UI.WinUI.Helpers;
+using Lively.UI.WinUI.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -7,6 +10,7 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using SettingsUI.Extensions;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,6 +18,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage.Pickers;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -25,10 +30,130 @@ namespace Lively.UI.WinUI.Views.Pages
     /// </summary>
     public sealed partial class LibraryView : Page
     {
+        private ILibraryModel selectedTile;
+
+        private readonly IUserSettingsClient userSettings;
+        private readonly IDesktopCoreClient desktopCore;
+        private readonly LibraryViewModel libraryVm;
+        private readonly LibraryUtil libraryUtil;
+
         public LibraryView()
         {
+            this.desktopCore = App.Services.GetRequiredService<IDesktopCoreClient>();
+            this.libraryVm = App.Services.GetRequiredService<LibraryViewModel>();
+            this.userSettings = App.Services.GetRequiredService<IUserSettingsClient>();
+            this.libraryUtil = App.Services.GetRequiredService<LibraryUtil>();
+
             this.InitializeComponent();
-            this.DataContext = App.Services.GetRequiredService<LibraryViewModel>();
+            this.DataContext = libraryVm;
+        }
+
+        private async void contextMenu_Click(object sender, RoutedEventArgs e)
+        {
+            if (selectedTile == null)
+                return;
+
+            var s = sender as MenuFlyoutItem;
+            var obj = selectedTile;
+            switch (s.Name)
+            {
+                case "previewWallpaper":
+                    await desktopCore.PreviewWallpaper(obj.LivelyInfoFolderPath);
+                    break;
+                case "showOnDisk":
+                    libraryUtil.WallpaperShowOnDisk(obj);
+                    break;
+                case "setWallpaper":
+                    await desktopCore.SetWallpaper(obj, userSettings.Settings.SelectedDisplay);
+                    break;
+                case "exportWallpaper":
+                    {
+                        var filePicker = new FileSavePicker();
+                        filePicker.SetOwnerWindow(App.Services.GetRequiredService<MainWindow>());
+                        filePicker.FileTypeChoices.Add("Compressed archive", new List<string>() { ".zip" });
+                        filePicker.SuggestedFileName = obj.Title;
+                        var file = await filePicker.PickSaveFileAsync();
+                        if (file != null)
+                        {
+                            try
+                            {
+                                await libraryUtil.WallpaperExport(obj, file.Path);
+                            }
+                            catch (Exception)
+                            {
+                                //TODO
+                            }
+                        }
+                    }
+                    break;
+                case "deleteWallpaper":
+                    {
+                        var result = await new ContentDialog()
+                        {
+                            Title = "Do you want to delete?",
+                            Content = new LibraryAboutView()
+                            {
+                                DataContext = obj,
+                            },
+                            PrimaryButtonText = "Yes",
+                            SecondaryButtonText = "No",
+                            DefaultButton = ContentDialogButton.Primary,
+                            XamlRoot = this.Content.XamlRoot,
+                        }.ShowAsyncQueue();
+                        if (result == ContentDialogResult.Primary)
+                        {
+                            await libraryUtil.WallpaperDelete(obj);
+                        }
+                    }
+                    break;
+                case "customiseWallpaper":
+                    {
+                        //TODO
+                    }
+                    break;
+                case "editWallpaper":
+                    {
+                        //TODO
+                    }
+                    break;
+                case "moreInformation":
+                    {
+                        _ = await new ContentDialog()
+                        {
+                            Title = "About",
+                            Content = new LibraryAboutView()
+                            {
+                                DataContext = obj,
+                            },
+                            PrimaryButtonText = "OK",
+                            DefaultButton = ContentDialogButton.Primary,
+                            XamlRoot = this.Content.XamlRoot,
+                        }.ShowAsyncQueue();
+                    }
+                    break;
+            }
+        }
+
+        private void libraryGridView_RightTapped(object sender, RightTappedRoutedEventArgs e)
+        {
+            try
+            {
+                GridView gridView = (GridView)sender;
+                contextMenu.ShowAt(gridView, e.GetPosition(gridView));
+                var a = ((FrameworkElement)e.OriginalSource).DataContext;
+                selectedTile = (ILibraryModel)a;
+                customiseWallpaper.IsEnabled = selectedTile.LivelyPropertyPath != null;
+            }
+            catch
+            {
+                selectedTile = null;
+                customiseWallpaper.IsEnabled = false;
+            }
+        }
+
+        private void Page_Unloaded(object sender, RoutedEventArgs e)
+        {
+            libraryUtil?.Dispose();
         }
     }
 }

@@ -6,15 +6,11 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Lively.UI.WinUI.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
     <Grid>
         <StackPanel Orientation="Vertical">
-            <controls:Setting
-                Header="Website"
-                Icon="&#xEB41;"
-                Style="{StaticResource ExpanderContentSettingStyle}">
+            <controls:Setting Header="Website" Icon="&#xEB41;">
                 <controls:Setting.Description>
                     <HyperlinkButton Content="Official website of Lively Wallpaper" NavigateUri="https://livelywallpaper.net/" />
                 </controls:Setting.Description>
@@ -23,8 +19,7 @@
             <controls:Setting
                 Margin="0,5,0,0"
                 Header="Documentation"
-                Icon="&#xE736;"
-                Style="{StaticResource ExpanderContentSettingStyle}">
+                Icon="&#xE736;">
                 <controls:Setting.Description>
                     <HyperlinkButton Content="API documentation and help" NavigateUri="https://github.com/rocksdanister/lively/wiki" />
                 </controls:Setting.Description>
@@ -33,8 +28,7 @@
             <controls:Setting
                 Margin="0,5,0,0"
                 Header="Community"
-                Icon="&#xEC27;"
-                Style="{StaticResource ExpanderContentSettingStyle}">
+                Icon="&#xEC27;">
                 <controls:Setting.Description>
                     <HyperlinkButton Content="Online discussion forum" NavigateUri="https://www.reddit.com/r/LivelyWallpaper/" />
                 </controls:Setting.Description>
@@ -43,8 +37,7 @@
             <controls:Setting
                 Margin="0,5,0,0"
                 Header="Report Bug"
-                Icon="&#xEBE8;"
-                Style="{StaticResource ExpanderContentSettingStyle}">
+                Icon="&#xEBE8;">
                 <controls:Setting.Description>
                     <HyperlinkButton Content="Report a problem with the software" NavigateUri="https://github.com/rocksdanister/lively/issues" />
                 </controls:Setting.Description>
