@@ -83,7 +83,7 @@
                     </controls:Setting>
                 </controls:SettingsGroup>
 
-                <controls:SettingsGroup Header="Excluded apps">
+                <controls:SettingsGroup Header="Excluded apps" Visibility="Collapsed">
                     <controls:Setting
                         Description="Set different playback rules based on running application."
                         Header="Application Rules"

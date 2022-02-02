@@ -18,6 +18,7 @@
     <None Remove="Views\Pages\AddWallpaperView.xaml" />
     <None Remove="Views\Pages\ApplicationRulesView.xaml" />
     <None Remove="Views\Pages\HelpView.xaml" />
+    <None Remove="Views\Pages\LibraryAboutView.xaml" />
     <None Remove="Views\Pages\ScreenLayoutView.xaml" />
     <None Remove="Views\Pages\SettingsGeneralView.xaml" />
     <None Remove="Views\Pages\SettingsPerformanceView.xaml" />
@@ -68,6 +69,11 @@
   </ItemGroup>
   <ItemGroup>
     <PRIResource Remove="Strings\en-US\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\Pages\LibraryAboutView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\Pages\HelpView.xaml">
