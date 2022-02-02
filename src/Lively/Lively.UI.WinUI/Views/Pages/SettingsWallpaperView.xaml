@@ -1,0 +1,34 @@
+﻿<Page
+    x:Class="Lively.UI.WinUI.Views.Pages.SettingsWallpaperView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:SettingsUI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:Lively.UI.WinUI.Views.Pages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
+
+    <Grid Margin="10">
+        <StackPanel>
+
+            <controls:Setting
+                Margin="0,0,0,0"
+                Description="Set a picture of animated wallpaper as desktop wallpaper."
+                Header="Desktop Picture"
+                Icon="&#xE8B9;">
+                <ToggleSwitch IsOn="{Binding IsDesktopAutoWallpaper, Mode=TwoWay}" />
+            </controls:Setting>
+
+            <!--
+            <controls:Setting
+                Margin="0,10,0,0"
+                Description="Set a picture of animated wallpaper as lockscreen wallpaper."
+                Header="LockscreenPicture">
+                <ToggleSwitch IsOn="{Binding IsLockScreenAutoWallpaper, Mode=TwoWay}" />
+            </controls:Setting>
+            -->
+
+        </StackPanel>
+    </Grid>
+</Page>

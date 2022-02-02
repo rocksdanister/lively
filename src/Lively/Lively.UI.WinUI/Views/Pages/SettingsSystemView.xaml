@@ -1,0 +1,99 @@
+﻿<Page
+    x:Class="Lively.UI.WinUI.Views.Pages.SettingsSystemView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:SettingsUI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:Lively.UI.WinUI.Views.Pages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
+
+    <Grid>
+        <ScrollViewer>
+            <StackPanel Margin="10,5,10,5">
+                <controls:SettingsGroup Header="Appearance">
+                    <controls:Setting Description="Change system taskbar appearance." Header="Taskbar theme">
+                        <controls:Setting.ActionContent>
+                            <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedTaskbarThemeIndex, Mode=TwoWay}">
+                                <ComboBoxItem Content="Off" />
+                                <ComboBoxItem Content="Clear" />
+                                <ComboBoxItem Content="Blur" />
+                                <ComboBoxItem Content="Fluent" />
+                                <ComboBoxItem Content="Color" Visibility="Collapsed" />
+                                <ComboBoxItem Content="Wallpaper" />
+                                <ComboBoxItem Content="Wallpaper Fluent" />
+                            </ComboBox>
+                        </controls:Setting.ActionContent>
+                    </controls:Setting>
+                </controls:SettingsGroup>
+
+                <!--
+                <controls:SettingExpander IsExpanded="True">
+                    <controls:SettingExpander.Header>
+                        <controls:Setting
+                            Description="After the selected inactivity period use the current wallpaper as your screensaver."
+                            Header="Screensaver"
+                            Icon="&#xEC77;"
+                            Style="{StaticResource ExpanderHeaderSettingStyle}">
+                            <controls:Setting.ActionContent>
+                                <ComboBox MinWidth="125" SelectedIndex="{Binding SelectedScreensaverWaitIndex, Mode=TwoWay}">
+                                    <ComboBoxItem Content="Off" />
+                                    <ComboBoxItem Content="1" />
+                                    <ComboBoxItem Content="2" />
+                                    <ComboBoxItem Content="3" />
+                                    <ComboBoxItem Content="5" />
+                                    <ComboBoxItem Content="10" />
+                                    <ComboBoxItem Content="15" />
+                                    <ComboBoxItem Content="20" />
+                                    <ComboBoxItem Content="25" />
+                                    <ComboBoxItem Content="30" />
+                                    <ComboBoxItem Content="45" />
+                                    <ComboBoxItem Content="60" />
+                                    <ComboBoxItem Content="120" />
+                                </ComboBox>
+                            </controls:Setting.ActionContent>
+                        </controls:Setting>
+
+                    </controls:SettingExpander.Header>
+                    <controls:SettingExpander.Content>
+                        <controls:Setting HorizontalAlignment="Left" Style="{StaticResource ExpanderContentSettingStyle}">
+                            <CheckBox Content="On resume, display logon screen" IsChecked="{Binding IsScreensaverLockOnResume, Mode=TwoWay}" />
+                        </controls:Setting>
+                    </controls:SettingExpander.Content>
+                </controls:SettingExpander>
+                -->
+
+                <controls:SettingsGroup Header="Developer">
+                    <controls:Setting
+                        Description="Show developer menu."
+                        Header="Debug"
+                        Icon="&#xEC7A;">
+                        <controls:Setting.ActionContent>
+                            <Button
+                                MinWidth="{StaticResource SettingActionControlMinWidth}"
+                                Command="{Binding ShowDebugCommand}"
+                                Content="Open" />
+                        </controls:Setting.ActionContent>
+                        <Button
+                            MinWidth="{StaticResource SettingActionControlMinWidth}"
+                            Command="{Binding ShowDebugCommand}"
+                            Content="Open" />
+                    </controls:Setting>
+
+                    <controls:Setting
+                        Description="Create log file."
+                        Header="Log File"
+                        Icon="&#xE9F9;">
+                        <controls:Setting.ActionContent>
+                            <Button
+                                MinWidth="{StaticResource SettingActionControlMinWidth}"
+                                Command="{Binding ExtractLogCommand}"
+                                Content="Save" />
+                        </controls:Setting.ActionContent>
+                    </controls:Setting>
+                </controls:SettingsGroup>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>
