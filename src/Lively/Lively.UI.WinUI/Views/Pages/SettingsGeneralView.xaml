@@ -99,15 +99,16 @@
                             </controls:Setting>
                         </controls:SettingExpander.Header>
                         <controls:SettingExpander.Content>
-                            <controls:Setting HorizontalAlignment="Left" Style="{StaticResource ExpanderContentSettingStyle}">
-                                <CheckBox Content="Play audio only when desktop is focused" IsChecked="{Binding IsAudioOnlyOnDesktop, Mode=TwoWay}" />
-                            </controls:Setting>
+                            <CheckBox
+                                Margin="{StaticResource ExpanderSettingMargin}"
+                                Content="Play audio only when desktop is focused"
+                                IsChecked="{Binding IsAudioOnlyOnDesktop, Mode=TwoWay}" />
                         </controls:SettingExpander.Content>
                     </controls:SettingExpander>
                 </controls:SettingsGroup>
 
                 <controls:SettingsGroup Header="File">
-                    <controls:SettingExpander IsExpanded="True">
+                    <controls:SettingExpander IsExpanded="False">
                         <controls:SettingExpander.Header>
                             <controls:Setting
                                 Description="Path used to store wallpaper"
@@ -120,28 +121,26 @@
                             </controls:Setting>
                         </controls:SettingExpander.Header>
                         <controls:SettingExpander.Content>
-                            <StackPanel Orientation="Vertical">
-                                <controls:Setting HorizontalAlignment="Left" Style="{StaticResource ExpanderContentSettingStyle}">
-                                    <StackPanel Orientation="Horizontal">
-                                        <Button
-                                            MinWidth="450"
-                                            MinHeight="35"
-                                            MaxWidth="450"
-                                            HorizontalContentAlignment="Left"
-                                            Command="{Binding WallpaperDirectoryChangeCommand}"
-                                            Content="{Binding WallpaperDirectory}" />
-                                        <Button
-                                            MinWidth="45"
-                                            MinHeight="35"
-                                            Margin="5,0,0,0"
-                                            Command="{Binding OpenWallpaperDirectory}">
-                                            <SymbolIcon Symbol="OpenLocal" />
-                                        </Button>
-                                    </StackPanel>
-                                </controls:Setting>
-                                <controls:Setting HorizontalAlignment="Left" Style="{StaticResource ExpanderContentSettingStyle}">
-                                    <CheckBox Content="Move existing wallpapers to new folder" IsChecked="{Binding MoveExistingWallpaperNewDir, Mode=TwoWay}" />
-                                </controls:Setting>
+                            <StackPanel>
+                                <StackPanel Margin="{StaticResource ExpanderSettingMargin}" Orientation="Horizontal">
+                                    <Button
+                                        MinWidth="450"
+                                        MinHeight="35"
+                                        Command="{Binding WallpaperDirectoryChangeCommand}"
+                                        Content="{Binding WallpaperDirectory}" />
+                                    <Button
+                                        MinWidth="45"
+                                        MinHeight="35"
+                                        Margin="5,0,0,0"
+                                        Command="{Binding OpenWallpaperDirectory}">
+                                        <SymbolIcon Symbol="OpenLocal" />
+                                    </Button>
+                                </StackPanel>
+                                <Rectangle Style="{StaticResource ExpanderSeparatorStyle}" />
+                                <CheckBox
+                                    Margin="{StaticResource ExpanderSettingMargin}"
+                                    Content="Move existing wallpapers to new folder"
+                                    IsChecked="{Binding MoveExistingWallpaperNewDir, Mode=TwoWay}" />
                             </StackPanel>
                         </controls:SettingExpander.Content>
                     </controls:SettingExpander>
