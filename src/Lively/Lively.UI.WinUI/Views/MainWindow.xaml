@@ -20,7 +20,10 @@
         -->
 
         <!--
-        <Grid x:Name="TitleBar" Grid.Row="0">
+        <Grid
+            x:Name="TitleBar"
+            Grid.Row="0"
+            Background="Transparent">
             <TextBlock
                 Margin="15"
                 HorizontalAlignment="Left"
@@ -39,12 +42,12 @@
 
         <NavigationView
             Name="navView"
+            Grid.Row="1"
             BackRequested="NavView_BackRequested"
             IsBackButtonVisible="Collapsed"
             IsBackEnabled="True"
             IsSettingsVisible="True"
             ItemInvoked="NavView_ItemInvoked"
-            Loaded="NavView_Loaded"
             PaneDisplayMode="Top">
             <!--  main  -->
             <NavigationView.MenuItems>
@@ -85,13 +88,28 @@
                     <AppBarButton>
                         <AppBarButton.Flyout>
                             <Flyout>
-                                <Slider MinWidth="100" Value="40" />
+                                <Slider
+                                    Name="audioSlider"
+                                    MinWidth="100"
+                                    ValueChanged="SliderAudio_ValueChanged" />
                             </Flyout>
                         </AppBarButton.Flyout>
                         <AppBarButton.Icon>
                             <FontIcon Glyph="&#xE767;" />
                         </AppBarButton.Icon>
                     </AppBarButton>
+                    <CommandBar.SecondaryCommands>
+                        <AppBarButton Click="AppBarHelpButton_Click" Label="Help">
+                            <AppBarButton.Icon>
+                                <FontIcon Glyph="&#xE897;" />
+                            </AppBarButton.Icon>
+                        </AppBarButton>
+                        <AppBarButton Click="AppBarAboutButton_Click" Label="About">
+                            <AppBarButton.Icon>
+                                <FontIcon Glyph="&#xE90A;" />
+                            </AppBarButton.Icon>
+                        </AppBarButton>
+                    </CommandBar.SecondaryCommands>
                 </CommandBar>
             </NavigationView.PaneFooter>
             <!--  content  -->

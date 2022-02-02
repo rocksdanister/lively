@@ -77,7 +77,7 @@ namespace Lively.UI.WinUI
             //var windowId = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(hWnd);
             //var appWindow = Microsoft.UI.Windowing.AppWindow.GetFromWindowId(windowId);
             //appWindow.Resize(new Windows.Graphics.SizeInt32(1200, 720));
-            SetWindowSize(m_windowHandle, 875, 800); //1150x720
+            SetWindowSize(m_windowHandle, 875, 875);
         }
 
         private IServiceProvider ConfigureServices()

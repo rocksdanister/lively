@@ -1,4 +1,5 @@
 ﻿using Lively.Grpc.Client;
+using Lively.UI.WinUI.ViewModels;
 using Lively.UI.WinUI.Views;
 using Lively.UI.WinUI.Views.Pages;
 using Microsoft.Extensions.DependencyInjection;
@@ -30,17 +31,25 @@ namespace Lively.UI.WinUI
     /// </summary>
     public sealed partial class MainWindow : Window
     {
+        private readonly SettingsViewModel settingsVm;
         private readonly IDesktopCoreClient desktopCore;
+        //private readonly IUserSettingsClient userSettings;
 
-        public MainWindow(IDesktopCoreClient desktopCore)
+        public MainWindow(IDesktopCoreClient desktopCore, SettingsViewModel settingsVm)
         {
+            this.settingsVm = settingsVm;
             this.desktopCore = desktopCore;
+            //this.userSettings = userSettings;
 
             this.InitializeComponent();
             this.Title = "Lively Wallpaper (WinUI)";
-            controlPanelLabel.Label = $"{desktopCore.Wallpapers.Count} active wallpaper(s)";
+            this.audioSlider.Value = settingsVm.GlobalWallpaperVolume;
+            this.controlPanelLabel.Label = $"{desktopCore.Wallpapers.Count} active wallpaper(s)";
             desktopCore.WallpaperChanged += DesktopCore_WallpaperChanged;
-
+            //App startup is slower if done in NavView_Loaded..
+            CreateMainMenu();
+            NavViewNavigate(NavPages.library);
+            //Issue: https://github.com/microsoft/microsoft-ui-xaml/issues/6070
             //ExtendsContentIntoTitleBar = true;
             //SetTitleBar(TitleBar);
         }
@@ -56,12 +65,6 @@ namespace Lively.UI.WinUI
                 }
                 controlPanelLabel.Label = $"{desktopCore.Wallpapers.Count} active wallpaper(s)";
             });
-        }
-
-        private void NavView_Loaded(object sender, RoutedEventArgs e)
-        {
-            CreateMainMenu();
-            NavViewNavigate(NavPages.library);
         }
 
         public void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
@@ -84,13 +87,10 @@ namespace Lively.UI.WinUI
             {
                 NavPages.library => "library",
                 NavPages.gallery => "gallery",
-                NavPages.help => "help",
                 NavPages.settingsGeneral => "general",
                 NavPages.settingsPerformance => "performance",
                 NavPages.settingsWallpaper => "wallpaper",
-                NavPages.settingsAudio => "audio",
                 NavPages.settingsSystem => "system",
-                NavPages.settingsMisc => "misc",
                 _ => "library"
             };
             navView.SelectedItem = navView.MenuItems.First(x => ((NavigationViewItem)x).Tag.ToString() == tag);
@@ -116,8 +116,11 @@ namespace Lively.UI.WinUI
                 case "performance":
                     contentFrame.Navigate(typeof(SettingsPerformanceView), null, new DrillInNavigationTransitionInfo());
                     break;
-                case "help":
-                    contentFrame.Navigate(typeof(AboutView), null, new DrillInNavigationTransitionInfo());
+                case "wallpaper":
+                    contentFrame.Navigate(typeof(SettingsWallpaperView), null, new DrillInNavigationTransitionInfo());
+                    break;
+                case "system":
+                    contentFrame.Navigate(typeof(SettingsSystemView), null, new DrillInNavigationTransitionInfo());
                     break;
                 default:
                     //TODO
@@ -127,30 +130,7 @@ namespace Lively.UI.WinUI
 
         private void AddWallpaperButton_Click(object sender, RoutedEventArgs e)
         {
-            _ = ShowAddWallpaper();
-        }
-
-        private void ControlPanelButton_Click(object sender, RoutedEventArgs e)
-        {
-            _ = ShowControlPanel();
-        }
-
-        private async Task ShowControlPanel()
-        {
-            var dialog = new ContentDialog()
-            {
-                Title = "Choose display",
-                Content = new ScreenLayoutView(),
-                PrimaryButtonText = "OK",
-                DefaultButton = ContentDialogButton.Primary,
-                XamlRoot = this.Content.XamlRoot,
-            };
-            await dialog.ShowAsyncQueue();
-        }
-
-        private async Task ShowAddWallpaper()
-        {
-            var dialog = new ContentDialog()
+            _ = new ContentDialog()
             {
                 Title = "Add wallpaper",
                 Content = new AddWallpaperView(),
@@ -159,8 +139,48 @@ namespace Lively.UI.WinUI
                 IsPrimaryButtonEnabled = false,
                 DefaultButton = ContentDialogButton.Primary,
                 XamlRoot = this.Content.XamlRoot,
-            };
-            await dialog.ShowAsyncQueue();
+            }.ShowAsyncQueue();
+        }
+
+        private void ControlPanelButton_Click(object sender, RoutedEventArgs e)
+        {
+            _ = new ContentDialog()
+            {
+                Title = "Choose display",
+                Content = new ScreenLayoutView(),
+                PrimaryButtonText = "OK",
+                DefaultButton = ContentDialogButton.Primary,
+                XamlRoot = this.Content.XamlRoot,
+            }.ShowAsyncQueue();
+        }
+
+        private void AppBarHelpButton_Click(object sender, RoutedEventArgs e)
+        {
+            _ = new ContentDialog()
+            {
+                Title = "Help",
+                Content = new HelpView(),
+                PrimaryButtonText = "OK",
+                DefaultButton = ContentDialogButton.Primary,
+                XamlRoot = this.Content.XamlRoot,
+            }.ShowAsyncQueue();
+        }
+
+        private void AppBarAboutButton_Click(object sender, RoutedEventArgs e)
+        {
+            _ = new ContentDialog()
+            {
+                Title = "About",
+                Content = new AboutView(),
+                PrimaryButtonText = "OK",
+                DefaultButton = ContentDialogButton.Primary,
+                XamlRoot = this.Content.XamlRoot,
+            }.ShowAsyncQueue();
+        }
+
+        private void SliderAudio_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+        {
+            settingsVm.GlobalWallpaperVolume = (int)e.NewValue;
         }
 
         private void CreateMainMenu()
@@ -172,7 +192,6 @@ namespace Lively.UI.WinUI
             navView.IsBackButtonVisible = NavigationViewBackButtonVisible.Collapsed;
             navView.MenuItems.Add(CreateMenu("Library", "library", "\uE8A9"));
             navView.MenuItems.Add(CreateMenu("Gallery", "gallery", "\uE719"));
-            navView.FooterMenuItems.Add(CreateMenu(string.Empty, "help", "\uE897"));
         }
 
         private void CreateSettingsMenu()
@@ -185,9 +204,7 @@ namespace Lively.UI.WinUI
             navView.MenuItems.Add(CreateMenu("General", "general"));
             navView.MenuItems.Add(CreateMenu("Performance", "performance"));
             navView.MenuItems.Add(CreateMenu("Wallpaper", "wallpaper"));
-            navView.MenuItems.Add(CreateMenu("Audio", "audio"));
             navView.MenuItems.Add(CreateMenu("System", "system"));
-            navView.MenuItems.Add(CreateMenu("Misc", "misc"));
         }
 
         public enum NavPages

@@ -924,51 +924,24 @@ namespace Lively.UI.WinUI.ViewModels
             }
         }
 
-        /*
         private RelayCommand _showDebugCommand;
-        public RelayCommand ShowDebugCommand
-        {
-            get
-            {
-                if (_showDebugCommand == null)
-                {
-                    _showDebugCommand = new RelayCommand(
-                            param => commands.ShowDebugger()
-                        );
-                }
-                return _showDebugCommand;
-            }
-        }
+        public RelayCommand ShowDebugCommand => _showDebugCommand ??= new RelayCommand(() => commands.ShowDebugger());
 
         private RelayCommand _extractLogCommand;
-        public RelayCommand ExtractLogCommand
-        {
-            get
-            {
-                if (_extractLogCommand == null)
-                {
-                    _extractLogCommand = new RelayCommand(
-                            param => ExtractLog()
-                        );
-                }
-                return _extractLogCommand;
-            }
-        }
+        public RelayCommand ExtractLogCommand => _extractLogCommand ??= new RelayCommand(ExtractLog);
 
-        private void ExtractLog()
+        private async void ExtractLog()
         {
-            var saveFileDialog1 = new Microsoft.Win32.SaveFileDialog()
+            var filePicker = new FileSavePicker();
+            filePicker.SetOwnerWindow(App.Services.GetRequiredService<MainWindow>());
+            filePicker.FileTypeChoices.Add("Compressed archive", new List<string>() { ".zip" });
+            filePicker.SuggestedFileName = "lively_log_" + DateTime.Now.ToString("yyyyMMdd_HHmmss", CultureInfo.InvariantCulture);
+            var file = await filePicker.PickSaveFileAsync();
+            if (file != null)
             {
-                Title = "Select location to save the file",
-                Filter = "Compressed archive|*.zip",
-                FileName = "lively_log_" + DateTime.Now.ToString("yyyyMMdd_HHmmss", CultureInfo.InvariantCulture) + ".zip",
-            };
-            if (saveFileDialog1.ShowDialog() == true)
-            {
-                LogUtil.ExtractLogFiles(saveFileDialog1.FileName);
+                LogUtil.ExtractLogFiles(file.Path);
             }
         }
-        */
 
         /*
         public string SwitchBranchText => Constants.ApplicationType.IsTestBuild ? Properties.Resources.TextSwitchBranchOfficial : Properties.Resources.TextSwitchBranchDev;
