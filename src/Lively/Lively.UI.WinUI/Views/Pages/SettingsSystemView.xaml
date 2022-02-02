@@ -13,7 +13,10 @@
         <ScrollViewer>
             <StackPanel Margin="10,5,10,5">
                 <controls:SettingsGroup Header="Appearance">
-                    <controls:Setting Description="Change system taskbar appearance." Header="Taskbar theme">
+                    <controls:Setting
+                        Description="Change system taskbar appearance."
+                        Header="Taskbar theme"
+                        Icon="&#xE771;">
                         <controls:Setting.ActionContent>
                             <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedTaskbarThemeIndex, Mode=TwoWay}">
                                 <ComboBoxItem Content="Off" />
@@ -28,8 +31,7 @@
                     </controls:Setting>
                 </controls:SettingsGroup>
 
-                <!--
-                <controls:SettingExpander IsExpanded="True">
+                <controls:SettingExpander IsExpanded="True" Visibility="Collapsed">
                     <controls:SettingExpander.Header>
                         <controls:Setting
                             Description="After the selected inactivity period use the current wallpaper as your screensaver."
@@ -37,7 +39,7 @@
                             Icon="&#xEC77;"
                             Style="{StaticResource ExpanderHeaderSettingStyle}">
                             <controls:Setting.ActionContent>
-                                <ComboBox MinWidth="125" SelectedIndex="{Binding SelectedScreensaverWaitIndex, Mode=TwoWay}">
+                                <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedScreensaverWaitIndex, Mode=TwoWay}">
                                     <ComboBoxItem Content="Off" />
                                     <ComboBoxItem Content="1" />
                                     <ComboBoxItem Content="2" />
@@ -57,12 +59,12 @@
 
                     </controls:SettingExpander.Header>
                     <controls:SettingExpander.Content>
-                        <controls:Setting HorizontalAlignment="Left" Style="{StaticResource ExpanderContentSettingStyle}">
-                            <CheckBox Content="On resume, display logon screen" IsChecked="{Binding IsScreensaverLockOnResume, Mode=TwoWay}" />
-                        </controls:Setting>
+                        <CheckBox
+                            Margin="{StaticResource ExpanderSettingMargin}"
+                            Content="On resume, display logon screen"
+                            IsChecked="{Binding IsScreensaverLockOnResume, Mode=TwoWay}" />
                     </controls:SettingExpander.Content>
                 </controls:SettingExpander>
-                -->
 
                 <controls:SettingsGroup Header="Developer">
                     <controls:Setting
@@ -71,14 +73,10 @@
                         Icon="&#xEC7A;">
                         <controls:Setting.ActionContent>
                             <Button
-                                MinWidth="{StaticResource SettingActionControlMinWidth}"
+                                MinWidth="150"
                                 Command="{Binding ShowDebugCommand}"
                                 Content="Open" />
                         </controls:Setting.ActionContent>
-                        <Button
-                            MinWidth="{StaticResource SettingActionControlMinWidth}"
-                            Command="{Binding ShowDebugCommand}"
-                            Content="Open" />
                     </controls:Setting>
 
                     <controls:Setting
@@ -87,7 +85,7 @@
                         Icon="&#xE9F9;">
                         <controls:Setting.ActionContent>
                             <Button
-                                MinWidth="{StaticResource SettingActionControlMinWidth}"
+                                MinWidth="150"
                                 Command="{Binding ExtractLogCommand}"
                                 Content="Save" />
                         </controls:Setting.ActionContent>

@@ -1,4 +1,6 @@
-﻿using Microsoft.UI.Xaml;
+﻿using Lively.UI.WinUI.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Data;
@@ -26,6 +28,8 @@ namespace Lively.UI.WinUI.Views.Pages
         public SettingsWallpaperView()
         {
             this.InitializeComponent();
+            this.DataContext = App.Services.GetRequiredService<SettingsViewModel>();
+
         }
     }
 }
