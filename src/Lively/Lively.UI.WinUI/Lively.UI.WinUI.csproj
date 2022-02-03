@@ -14,6 +14,7 @@
     <ApplicationIcon>appicon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Views\LivelyProperty\LivelyPropertiesView.xaml" />
     <None Remove="Views\Pages\AboutView.xaml" />
     <None Remove="Views\Pages\AddWallpaperView.xaml" />
     <None Remove="Views\Pages\ApplicationRulesView.xaml" />
@@ -37,6 +38,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="H.Hooks" Version="1.4.14" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.0.0" />
@@ -119,5 +121,10 @@
     <PRIResource Update="Strings\en-US\Resources.resw">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </PRIResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\LivelyProperty\LivelyPropertiesView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 </Project>
