@@ -38,7 +38,7 @@ namespace Lively.Grpc.Client
             //TODO: Wait timeout
             Task.Run(async () =>
             {
-                wallpapers.AddRange(await GetWallpapers());
+                wallpapers.AddRange(await GetWallpapers().ConfigureAwait(false));
             }).Wait();
 
             cancellationTokenWallpaperChanged = new CancellationTokenSource();

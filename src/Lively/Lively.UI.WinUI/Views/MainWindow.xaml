@@ -85,17 +85,17 @@
                         </AppBarButton.Icon>
                     </AppBarButton>
                     <AppBarSeparator />
-                    <AppBarButton>
+                    <AppBarButton Name="audioBtn">
                         <AppBarButton.Flyout>
                             <Flyout>
                                 <Slider
                                     Name="audioSlider"
-                                    MinWidth="100"
+                                    MinWidth="125"
                                     ValueChanged="SliderAudio_ValueChanged" />
                             </Flyout>
                         </AppBarButton.Flyout>
                         <AppBarButton.Icon>
-                            <FontIcon Glyph="&#xE767;" />
+                            <FontIcon Glyph="&#xE994;" />
                         </AppBarButton.Icon>
                     </AppBarButton>
                     <CommandBar.SecondaryCommands>

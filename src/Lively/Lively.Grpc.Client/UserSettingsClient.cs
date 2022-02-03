@@ -25,8 +25,8 @@ namespace Lively.Grpc.Client
 
             Task.Run(async () =>
             {
-                await Load<ISettingsModel>();
-                await Load<List<IApplicationRulesModel>>();
+                await Load<ISettingsModel>().ConfigureAwait(false);
+                await Load<List<IApplicationRulesModel>>().ConfigureAwait(false);
             }).Wait();
         }
 
@@ -70,7 +70,7 @@ namespace Lively.Grpc.Client
                 VideoPlayerHwAccel = Settings.VideoPlayerHwAccel,
                 WebBrowser = (WebBrowser)((int)Settings.WebBrowser),
                 GifPlayer = (GifPlayer)((int)Settings.GifPlayer),
-                PicturePlayer  = (PicturePlayer)((int)Settings.PicturePlayer),
+                PicturePlayer = (PicturePlayer)((int)Settings.PicturePlayer),
                 WallpaperWaitTime = Settings.WallpaperWaitTime,
                 ProcessTimerInterval = Settings.ProcessTimerInterval,
                 StreamQuality = (Grpc.Common.Proto.Settings.StreamQualitySuggestion)((int)Settings.StreamQuality),
@@ -224,11 +224,11 @@ namespace Lively.Grpc.Client
         {
             if (typeof(T) == typeof(ISettingsModel))
             {
-                await SetSettings();
+                await SetSettings().ConfigureAwait(false);
             }
             else if (typeof(T) == typeof(List<IApplicationRulesModel>))
             {
-                await SetAppRulesSettings();
+                await SetAppRulesSettings().ConfigureAwait(false);
             }
             else
             {
@@ -240,11 +240,11 @@ namespace Lively.Grpc.Client
         {
             if (typeof(T) == typeof(ISettingsModel))
             {
-                Settings = await GetSettings();
+                Settings = await GetSettings().ConfigureAwait(false);
             }
             else if (typeof(T) == typeof(List<IApplicationRulesModel>))
             {
-                AppRules = await GetAppRulesSettings();
+                AppRules = await GetAppRulesSettings().ConfigureAwait(false);
             }
             else
             {

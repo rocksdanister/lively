@@ -5,18 +5,22 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Lively.UI.WinUI.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    AllowDrop="True"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    DragLeave="Page_DragLeave"
+    DragOver="Page_DragOver"
+    Drop="Page_Drop"
     Unloaded="Page_Unloaded"
     mc:Ignorable="d">
 
     <Page.Resources>
         <AcrylicBrush
-            x:Key="CustomAcrylicBrush"
+            x:Key="DragAcrylicBrush"
             TintColor="{ThemeResource SystemAltMediumColor}"
-            TintOpacity="0.05" />
+            TintOpacity="1.0" />
     </Page.Resources>
 
-    <Grid Margin="10">
+    <Grid>
         <!--
         <Grid.RowDefinitions>
             <RowDefinition Height="100" />
@@ -24,62 +28,9 @@
         </Grid.RowDefinitions>
         -->
 
-        <!--
-        <StackPanel
-            Grid.Row="0"
-            HorizontalAlignment="Left"
-            Orientation="Horizontal">
-            <Button
-                Width="272"
-                Height="75"
-                Margin="0,5,5,0">
-                <StackPanel Orientation="Horizontal">
-                    <FontIcon
-                        Margin="10"
-                        FontSize="25"
-                        Foreground="{ThemeResource SystemControlHighlightAltListAccentHighBrush}"
-                        Glyph="&#xE7F4;" />
-                    <StackPanel
-                        MaxWidth="200"
-                        HorizontalAlignment="Left"
-                        Orientation="Vertical">
-                        <TextBlock Text="Connected displays" />
-                        <TextBlock
-                            FontSize="12"
-                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
-                            Text="Span across screens"
-                            TextWrapping="Wrap" />
-                    </StackPanel>
-                </StackPanel>
-            </Button>
-            <Button
-                Width="272"
-                Height="75"
-                Margin="0,5,5,0">
-                <StackPanel Orientation="Horizontal">
-                    <FontIcon
-                        Margin="10"
-                        FontSize="25"
-                        Foreground="{ThemeResource SystemControlHighlightAltListAccentHighBrush}"
-                        Glyph="&#xE710;" />
-                    <StackPanel
-                        MaxWidth="200"
-                        HorizontalAlignment="Left"
-                        Orientation="Vertical">
-                        <TextBlock Text="Add new wallpaper" />
-                        <TextBlock
-                            FontSize="12"
-                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
-                            Text="Import a video or website"
-                            TextWrapping="Wrap" />
-                    </StackPanel>
-                </StackPanel>
-            </Button>
-        </StackPanel>
-        -->
-
         <GridView
             x:Name="libraryGridView"
+            Margin="10"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
             ItemsSource="{Binding LibraryItems}"
@@ -129,9 +80,9 @@
                         AutomationProperties.Name="{Binding Title}">
                         <Image Source="{Binding ImagePath}" Stretch="UniformToFill" />
                         <!--
-                <Viewbox MaxHeight="10" MaxWidth="10" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5, 5, 5, 5">
-                    <SymbolIcon Symbol="Document"/>
-                </Viewbox>
+                        <Viewbox MaxHeight="10" MaxWidth="10" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5, 5, 5, 5">
+                            <SymbolIcon Symbol="Document"/>
+                        </Viewbox>
                         -->
                         <ProgressRing
                             Width="25"
@@ -162,5 +113,29 @@
                 </ItemsPanelTemplate>
             </GridView.ItemsPanel>
         </GridView>
+
+        <RelativePanel
+            x:Name="AddFilePanel"
+            Background="{ThemeResource DragAcrylicBrush}"
+            Visibility="Collapsed">
+            <SymbolIcon
+                x:Name="AddSymbol"
+                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
+                RelativePanel.AlignHorizontalCenterWithPanel="True"
+                RelativePanel.AlignVerticalCenterWithPanel="True"
+                RenderTransformOrigin="0.5,0.5"
+                Symbol="Add">
+                <SymbolIcon.RenderTransform>
+                    <CompositeTransform ScaleX="1.5" ScaleY="1.5" />
+                </SymbolIcon.RenderTransform>
+            </SymbolIcon>
+            <TextBlock
+                Margin="0,12,0,0"
+                FontSize="24"
+                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
+                RelativePanel.AlignHorizontalCenterWithPanel="True"
+                RelativePanel.Below="AddSymbol"
+                Text="Add Wallpaper" />
+        </RelativePanel>
     </Grid>
 </Page>

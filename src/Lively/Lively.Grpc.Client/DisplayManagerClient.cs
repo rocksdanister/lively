@@ -33,8 +33,8 @@ namespace Lively.Grpc.Client
 
             Task.Run(async () =>
             {
-                displayMonitors.AddRange(await GetScreens());
-                VirtulScreenBounds = await GetVirtualScreenBounds();
+                displayMonitors.AddRange(await GetScreens().ConfigureAwait(false));
+                VirtulScreenBounds = await GetVirtualScreenBounds().ConfigureAwait(false);
             }).Wait();
 
             cancellationTokeneDisplayChanged = new CancellationTokenSource();
@@ -95,8 +95,8 @@ namespace Lively.Grpc.Client
                         var response = call.ResponseStream.Current;
 
                         displayMonitors.Clear();
-                        displayMonitors.AddRange(await GetScreens());
-                        VirtulScreenBounds = await GetVirtualScreenBounds();
+                        displayMonitors.AddRange(await GetScreens().ConfigureAwait(false));
+                        VirtulScreenBounds = await GetVirtualScreenBounds().ConfigureAwait(false);
                         DisplayChanged?.Invoke(this, EventArgs.Empty);
                     }
                     finally

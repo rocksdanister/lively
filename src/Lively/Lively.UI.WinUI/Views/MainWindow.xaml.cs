@@ -44,6 +44,7 @@ namespace Lively.UI.WinUI
             this.InitializeComponent();
             this.Title = "Lively Wallpaper (WinUI)";
             this.audioSlider.Value = settingsVm.GlobalWallpaperVolume;
+            UpdateAudioSliderIcon(settingsVm.GlobalWallpaperVolume);
             this.controlPanelLabel.Label = $"{desktopCore.Wallpapers.Count} active wallpaper(s)";
             desktopCore.WallpaperChanged += DesktopCore_WallpaperChanged;
             //App startup is slower if done in NavView_Loaded..
@@ -181,6 +182,7 @@ namespace Lively.UI.WinUI
         private void SliderAudio_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
         {
             settingsVm.GlobalWallpaperVolume = (int)e.NewValue;
+            UpdateAudioSliderIcon(settingsVm.GlobalWallpaperVolume);
         }
 
         private void CreateMainMenu()
@@ -207,6 +209,8 @@ namespace Lively.UI.WinUI
             navView.MenuItems.Add(CreateMenu("System", "system"));
         }
 
+        private void UpdateAudioSliderIcon(double volume) => audioBtn.Icon = audioIcons[(int)Math.Ceiling((audioIcons.Length - 1) * volume / 100)];
+
         public enum NavPages
         {
             library,
@@ -221,6 +225,15 @@ namespace Lively.UI.WinUI
         }
 
         #region helpers
+
+        private readonly FontIcon[] audioIcons =
+{
+            new FontIcon(){ Glyph = "\uE74F" },
+            new FontIcon(){ Glyph = "\uE992" },
+            new FontIcon(){ Glyph = "\uE993" },
+            new FontIcon(){ Glyph = "\uE994" },
+            new FontIcon(){ Glyph = "\uE995" },
+        };
 
         private NavigationViewItem CreateMenu(string menuName, string tag, string glyph = "")
         {

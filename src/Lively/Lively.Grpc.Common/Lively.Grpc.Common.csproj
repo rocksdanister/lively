@@ -12,11 +12,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Google.Protobuf" Version="3.19.1" />
-    <PackageReference Include="Grpc" Version="2.42.0" />
-    <PackageReference Include="Grpc.Core" Version="2.42.0" />
-    <PackageReference Include="Grpc.Core.Api" Version="2.42.0" />
-    <PackageReference Include="Grpc.Tools" Version="2.42.0">
+    <PackageReference Include="Google.Protobuf" Version="3.19.4" />
+    <PackageReference Include="Grpc" Version="2.43.0" />
+    <PackageReference Include="Grpc.Core" Version="2.43.0" />
+    <PackageReference Include="Grpc.Core.Api" Version="2.43.0" />
+    <PackageReference Include="Grpc.Tools" Version="2.43.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
