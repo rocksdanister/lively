@@ -2,6 +2,7 @@
 using Lively.Models;
 using Lively.UI.WinUI.Helpers;
 using Lively.UI.WinUI.ViewModels;
+using Lively.UI.WinUI.Views.LivelyProperty;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -112,7 +113,14 @@ namespace Lively.UI.WinUI.Views.Pages
                     break;
                 case "customiseWallpaper":
                     {
-                        //TODO
+                        _ = await new ContentDialog()
+                        {
+                            Title = "Properties",
+                            Content = new LivelyPropertiesView(obj),
+                            PrimaryButtonText = "OK",
+                            DefaultButton = ContentDialogButton.Primary,
+                            XamlRoot = this.Content.XamlRoot,
+                        }.ShowAsyncQueue();
                     }
                     break;
                 case "editWallpaper":
