@@ -16,28 +16,19 @@
                 </controls:Setting.Description>
             </controls:Setting>
 
-            <controls:Setting
-                Margin="0,5,0,0"
-                Header="Documentation"
-                Icon="&#xE736;">
+            <controls:Setting Header="Documentation" Icon="&#xE736;">
                 <controls:Setting.Description>
                     <HyperlinkButton Content="API documentation and help" NavigateUri="https://github.com/rocksdanister/lively/wiki" />
                 </controls:Setting.Description>
             </controls:Setting>
 
-            <controls:Setting
-                Margin="0,5,0,0"
-                Header="Community"
-                Icon="&#xEC27;">
+            <controls:Setting Header="Community" Icon="&#xEC27;">
                 <controls:Setting.Description>
                     <HyperlinkButton Content="Online discussion forum" NavigateUri="https://www.reddit.com/r/LivelyWallpaper/" />
                 </controls:Setting.Description>
             </controls:Setting>
 
-            <controls:Setting
-                Margin="0,5,0,0"
-                Header="Report Bug"
-                Icon="&#xEBE8;">
+            <controls:Setting Header="Report Bug" Icon="&#xEBE8;">
                 <controls:Setting.Description>
                     <HyperlinkButton Content="Report a problem with the software" NavigateUri="https://github.com/rocksdanister/lively/issues" />
                 </controls:Setting.Description>

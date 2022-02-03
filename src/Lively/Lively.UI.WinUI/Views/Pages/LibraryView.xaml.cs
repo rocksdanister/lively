@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage.Pickers;
@@ -30,6 +31,7 @@ namespace Lively.UI.WinUI.Views.Pages
     /// </summary>
     public sealed partial class LibraryView : Page
     {
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private ILibraryModel selectedTile;
 
         private readonly IUserSettingsClient userSettings;
@@ -47,6 +49,8 @@ namespace Lively.UI.WinUI.Views.Pages
             this.InitializeComponent();
             this.DataContext = libraryVm;
         }
+
+        #region library
 
         private async void contextMenu_Click(object sender, RoutedEventArgs e)
         {
@@ -151,8 +155,82 @@ namespace Lively.UI.WinUI.Views.Pages
             }
         }
 
+        #endregion //library
+
+        #region file drop
+
+        private async void Page_Drop(object sender, DragEventArgs e)
+        {
+            this.AddFilePanel.Visibility = Visibility.Collapsed;
+
+            if (e.DataView.Contains(StandardDataFormats.WebLink))
+            {
+                var uri = await e.DataView.GetWebLinkAsync();
+                Logger.Info($"Dropped string {uri}");
+            }
+            else if (e.DataView.Contains(StandardDataFormats.StorageItems))
+            {
+                var items = await e.DataView.GetStorageItemsAsync();
+                if (items.Count == 1)
+                {
+                    var item = items[0].Path;
+                    Logger.Info($"Dropped file {item}");
+                    try
+                    {
+                        if (string.IsNullOrWhiteSpace(Path.GetExtension(item)))
+                            return;
+                    }
+                    catch (ArgumentException)
+                    {
+                        Logger.Info($"Invalid character, skipping dropped file {item}");
+                        return;
+                    }
+
+                    try
+                    {
+                        await libraryUtil.AddWallpaperFile(item);
+                    }
+                    catch (Exception ie)
+                    {
+                        await new ContentDialog()
+                        {
+                            Title = "Error",
+                            Content = ie.Message,
+                            PrimaryButtonText = "OK",
+                            DefaultButton = ContentDialogButton.Primary,
+                            XamlRoot = this.Content.XamlRoot,
+                        }.ShowAsyncQueue();
+                    }
+                }
+                if (items.Count > 1)
+                {
+                    //TODO
+                }
+            }
+        }
+
+        private void Page_DragOver(object sender, DragEventArgs e)
+        {
+            e.AcceptedOperation = DataPackageOperation.Copy;
+            if (e.DragUIOverride != null)
+            {
+                e.DragUIOverride.IsCaptionVisible = false;
+                e.DragUIOverride.IsContentVisible = true;
+            }
+            this.AddFilePanel.Visibility = Visibility.Visible;
+        }
+
+        private void Page_DragLeave(object sender, DragEventArgs e)
+        {
+            this.AddFilePanel.Visibility = Visibility.Collapsed;
+        }
+
+        #endregion //file drop
+
         private void Page_Unloaded(object sender, RoutedEventArgs e)
         {
+
+            //Since GetRequiredService() is used IoC not disposing it automatically?..
             libraryUtil?.Dispose();
         }
     }

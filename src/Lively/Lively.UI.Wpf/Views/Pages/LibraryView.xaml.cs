@@ -180,5 +180,11 @@ namespace Lively.UI.Wpf.Views.Pages
             //keyboard disable.
             e.Handled = true;
         }
+
+        private void Page_Unloaded(object sender, RoutedEventArgs e)
+        {
+            //Since GetRequiredService() is used IoC not disposing it automatically?..
+            libraryUtil?.Dispose();
+        }
     }
 }
