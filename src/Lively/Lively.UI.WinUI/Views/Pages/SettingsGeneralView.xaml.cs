@@ -25,10 +25,26 @@ namespace Lively.UI.WinUI.Views.Pages
     /// </summary>
     public sealed partial class SettingsGeneralView : Page
     {
+        private readonly FontIcon[] audioIcons =
+{
+            new FontIcon(){ Glyph = "\uE74F" },
+            new FontIcon(){ Glyph = "\uE992" },
+            new FontIcon(){ Glyph = "\uE993" },
+            new FontIcon(){ Glyph = "\uE994" },
+            new FontIcon(){ Glyph = "\uE995" },
+        };
+
         public SettingsGeneralView()
         {
             this.InitializeComponent();
-            this.DataContext = App.Services.GetRequiredService<SettingsViewModel>();
+            var settings = App.Services.GetRequiredService<SettingsViewModel>();
+            this.DataContext = settings;
+            UpdateAudioSliderIcon(settings.GlobalWallpaperVolume);
         }
+
+        private void UpdateAudioSliderIcon(double volume) => 
+            audioBtn.Icon = audioIcons[(int)Math.Ceiling((audioIcons.Length - 1) * volume / 100)];
+
+        private void Slider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e) => UpdateAudioSliderIcon(e.NewValue);
     }
 }

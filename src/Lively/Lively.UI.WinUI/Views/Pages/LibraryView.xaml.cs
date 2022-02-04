@@ -163,6 +163,22 @@ namespace Lively.UI.WinUI.Views.Pages
             }
         }
 
+        private void MoreButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var a = ((FrameworkElement)e.OriginalSource).DataContext;
+                selectedTile = (ILibraryModel)a;
+                customiseWallpaper.IsEnabled = selectedTile.LivelyPropertyPath != null;
+                contextMenu.ShowAt((UIElement)e.OriginalSource, new Point(0, 0));
+            }
+            catch
+            {
+                selectedTile = null;
+                customiseWallpaper.IsEnabled = false;
+            }
+        }
+
         #endregion //library
 
         #region file drop

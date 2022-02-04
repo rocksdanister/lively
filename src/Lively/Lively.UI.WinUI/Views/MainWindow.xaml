@@ -48,19 +48,21 @@
             IsSettingsVisible="True"
             ItemInvoked="NavView_ItemInvoked"
             PaneDisplayMode="Top">
-            <!--  main  -->
-            <NavigationView.MenuItems>
+            <NavigationView.Resources>
+                <AcrylicBrush
+                    x:Key="NavigationViewTopPaneBackground"
+                    Opacity="0.7"
+                    TintColor="{ThemeResource SystemAccentColor}"
+                    TintOpacity="0.5" />
                 <!--
-                <NavigationViewItem
-                    Content="Library"
-                    Icon="ViewAll"
-                    Tag="library" />
-                <NavigationViewItem
-                    Content="Gallery"
-                    Icon="Shop"
-                    Tag="gallery" />
+                <SolidColorBrush
+                    x:Key="NavigationViewTopPaneBackground"
+                    Opacity="0.4"
+                    Color="{ThemeResource SystemAccentColor}" />
                 -->
-            </NavigationView.MenuItems>
+            </NavigationView.Resources>
+            <!--  main  -->
+            <NavigationView.MenuItems />
             <NavigationView.FooterMenuItems>
                 <!--
                 <NavigationViewItem Icon="Help" Tag="help" />

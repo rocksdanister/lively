@@ -28,7 +28,9 @@ namespace Lively.UI.WinUI.Views.Pages
         public ScreenLayoutView()
         {
             this.InitializeComponent();
-            this.DataContext = App.Services.GetRequiredService<ScreenLayoutViewModel>();
+            var vm = App.Services.GetRequiredService<ScreenLayoutViewModel>();
+            this.DataContext = vm;
+            this.Unloaded += vm.OnWindowClosing;
         }
     }
 }

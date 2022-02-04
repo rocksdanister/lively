@@ -41,8 +41,8 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
         private readonly object _sendMsgLock = new();
 
         //UI
-        private readonly Thickness margin = new Thickness(0, 10, 0, 0);
-        private readonly double maxWidth = 200;
+        private readonly Thickness margin = new Thickness(0, 10, 20, 10);
+        private readonly double minWidth = 200;
         //Color picker
         private LowLevelMouseHook mouseHook;
         private SplitButton currEyeDropSplitBtn;
@@ -137,9 +137,9 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                     var slider = new Slider()
                     {
                         Name = item.Key,
-                        MaxWidth = maxWidth,
-                        MinWidth = maxWidth,
-                        HorizontalAlignment = HorizontalAlignment.Left,
+                        //MaxWidth = maxWidth,
+                        MinWidth = minWidth,
+                        //HorizontalAlignment = HorizontalAlignment.Left,
                         Margin = margin,
                         Minimum = (double)item.Value["min"],
                         Maximum = (double)item.Value["max"],
@@ -166,8 +166,8 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                         Name = item.Key,
                         Text = item.Value["value"].ToString(),
                         AcceptsReturn = true,
-                        MaxWidth = maxWidth,
-                        MinWidth = maxWidth,
+                        //MaxWidth = minWidth,
+                        MinWidth = minWidth,
                         HorizontalAlignment = HorizontalAlignment.Left,
                         Margin = margin
                     };
@@ -180,8 +180,8 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                     {
                         Name = item.Key,
                         Content = item.Value["value"].ToString(),
-                        MaxWidth = maxWidth,
-                        MinWidth = maxWidth,
+                        //MaxWidth = minWidth,
+                        MinWidth = minWidth,
                         HorizontalAlignment = HorizontalAlignment.Left,
                         Margin = margin
                     };
@@ -242,8 +242,8 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                         Content = item.Value["text"].ToString(),
                         IsChecked = (bool)item.Value["value"],
                         HorizontalAlignment = HorizontalAlignment.Left,
-                        MaxWidth = maxWidth,
-                        MinWidth = maxWidth,
+                        //MaxWidth = minWidth,
+                        MinWidth = minWidth,
                         Margin = margin
                     };
                     chk.Checked += Checkbox_CheckedChanged;
@@ -255,8 +255,8 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                     var cmbBox = new ComboBox()
                     {
                         Name = item.Key,
-                        MaxWidth = maxWidth,
-                        MinWidth = maxWidth,
+                        //MaxWidth = minWidth,
+                        MinWidth = minWidth,
                         HorizontalAlignment = HorizontalAlignment.Left,
                         Margin = margin,
                         SelectedIndex = (int)item.Value["value"],
@@ -273,8 +273,8 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                     var cmbBox = new ComboBox
                     {
                         Name = item.Key,
-                        MaxWidth = maxWidth,
-                        MinWidth = maxWidth,
+                        //MaxWidth = minWidth,
+                        MinWidth = minWidth,
                         HorizontalAlignment = HorizontalAlignment.Left,
                         Margin = margin
                     };
@@ -297,8 +297,8 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                     {
                         Name = item.Key,
                         Text = item.Value["value"].ToString(),
-                        MaxWidth = maxWidth,
-                        MinWidth = maxWidth,
+                        //MaxWidth = minWidth,
+                        MinWidth = minWidth,
                         HorizontalAlignment = HorizontalAlignment.Left,
                         Margin = margin
                     };
@@ -319,8 +319,8 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                     {
                         Text = item.Value["text"].ToString(),
                         HorizontalAlignment = HorizontalAlignment.Left,
-                        MaxWidth = maxWidth,
-                        MinWidth = maxWidth,
+                        //MaxWidth = minWidth,
+                        MinWidth = minWidth,
                         Margin = margin
                     });
                 }
@@ -334,8 +334,8 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                         Tag = item.Key,
                         Content = "Browse",
                         HorizontalAlignment = HorizontalAlignment.Left,
-                        MaxWidth = maxWidth,
-                        MinWidth = maxWidth,
+                        //MaxWidth = minWidth,
+                        MinWidth = minWidth,
                         Margin = new Thickness(0, 5, 0, 0),
                     };
                     folderDropDownOpenFileBtn.Click += FolderDropDownOpenFileBtn_Click;
@@ -364,8 +364,8 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
             {
                 Name = "defaultBtn",
                 Content = defaultPanel,
-                MaxWidth = maxWidth,
-                MinWidth = maxWidth,
+                //MaxWidth = minWidth,
+                MinWidth = minWidth,
                 HorizontalAlignment = HorizontalAlignment.Left,
                 Margin = margin
             };

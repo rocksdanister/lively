@@ -97,13 +97,26 @@
                             VerticalAlignment="Bottom"
                             Background="{ThemeResource AcrylicInAppFillColorDefaultBrush}"
                             Orientation="Vertical">
-                            <TextBlock MaxLines="1" Text="{Binding Title}" />
                             <TextBlock
+                                Margin="0,0,30,0"
+                                MaxLines="1"
+                                Text="{Binding Title}" />
+                            <TextBlock
+                                Margin="0,0,30,0"
                                 Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
                                 MaxLines="2"
                                 Style="{ThemeResource CaptionTextBlockStyle}"
                                 Text="{Binding Desc}" />
                         </StackPanel>
+                        <Button
+                            Height="60"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom"
+                            Background="Transparent"
+                            BorderBrush="Transparent"
+                            Click="MoreButton_Click">
+                            <FontIcon Glyph="&#xE10C;" />
+                        </Button>
                     </Grid>
                 </DataTemplate>
             </GridView.ItemTemplate>
