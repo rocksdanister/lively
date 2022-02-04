@@ -17,6 +17,7 @@ using Lively.Common;
 using Lively.Common.Helpers.Storage;
 using Lively.Common.API;
 using Lively.Common.Helpers.Files;
+using System.Threading;
 
 namespace Lively.UI.Wpf.Views.LivelyProperty
 {
@@ -32,6 +33,7 @@ namespace Lively.UI.Wpf.Views.LivelyProperty
         private readonly ILibraryModel libraryItem;
         private readonly IDisplayMonitor screen;
         private JObject livelyPropertyCopyData;
+        private readonly object _sendMsgLock = new object();
 
         //UI
         private readonly Thickness margin = new Thickness(0, 10, 0, 0);
@@ -589,18 +591,30 @@ namespace Lively.UI.Wpf.Views.LivelyProperty
             }
         }
 
-        private void WallpaperSendMsg(IpcMessage msg)
+        private async void WallpaperSendMsg(IpcMessage msg)
         {
-            switch (userSettings.Settings.WallpaperArrangement)
+            lock (_sendMsgLock)
+                Monitor.PulseAll(_sendMsgLock);
+
+            await Task.Run(() =>
             {
-                case WallpaperArrangement.per:
-                    desktopCore.SendMessageWallpaper(screen, libraryItem, msg);
-                    break;
-                case WallpaperArrangement.span:
-                case WallpaperArrangement.duplicate:
-                    desktopCore.SendMessageWallpaper(libraryItem, msg);
-                    break;
-            }
+                lock (_sendMsgLock)
+                {
+                    if (!Monitor.Wait(_sendMsgLock, 100))
+                    {
+                        switch (userSettings.Settings.WallpaperArrangement)
+                        {
+                            case WallpaperArrangement.per:
+                                desktopCore.SendMessageWallpaper(screen, libraryItem, msg);
+                                break;
+                            case WallpaperArrangement.span:
+                            case WallpaperArrangement.duplicate:
+                                desktopCore.SendMessageWallpaper(libraryItem, msg);
+                                break;
+                        }
+                    }
+                }
+            }).ConfigureAwait(false);
         }
 
         /// <summary>

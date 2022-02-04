@@ -33,13 +33,13 @@ namespace Lively.UI.WinUI
     {
         private readonly SettingsViewModel settingsVm;
         private readonly IDesktopCoreClient desktopCore;
-        //private readonly IUserSettingsClient userSettings;
+        private readonly IUserSettingsClient userSettings;
 
-        public MainWindow(IDesktopCoreClient desktopCore, SettingsViewModel settingsVm)
+        public MainWindow(IDesktopCoreClient desktopCore, IUserSettingsClient userSettings, SettingsViewModel settingsVm)
         {
             this.settingsVm = settingsVm;
             this.desktopCore = desktopCore;
-            //this.userSettings = userSettings;
+            this.userSettings = userSettings;
 
             this.InitializeComponent();
             this.Title = "Lively Wallpaper (WinUI)";
@@ -47,12 +47,29 @@ namespace Lively.UI.WinUI
             UpdateAudioSliderIcon(settingsVm.GlobalWallpaperVolume);
             this.controlPanelLabel.Label = $"{desktopCore.Wallpapers.Count} active wallpaper(s)";
             desktopCore.WallpaperChanged += DesktopCore_WallpaperChanged;
+            desktopCore.WallpaperError += DesktopCore_WallpaperError;
             //App startup is slower if done in NavView_Loaded..
             CreateMainMenu();
             NavViewNavigate(NavPages.library);
             //Issue: https://github.com/microsoft/microsoft-ui-xaml/issues/6070
             //ExtendsContentIntoTitleBar = true;
             //SetTitleBar(TitleBar);
+        }
+
+        private void DesktopCore_WallpaperError(object sender, Exception e)
+        {
+            _ = this.DispatcherQueue.TryEnqueue(() =>
+            {
+                infoBar.IsOpen = true;
+                infoBar.ActionButton = new HyperlinkButton
+                {
+                    Content = "More information",
+                    NavigateUri = new Uri("https://github.com/rocksdanister/lively/wiki/Common-Problems"),
+                };
+                infoBar.Title = "Error";
+                infoBar.Message = e.Message;
+                infoBar.Severity = InfoBarSeverity.Error;
+            });
         }
 
         private void DesktopCore_WallpaperChanged(object sender, EventArgs e)

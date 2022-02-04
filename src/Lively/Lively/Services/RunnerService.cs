@@ -1,4 +1,5 @@
-﻿using Lively.Common.Helpers.Pinvoke;
+﻿using Lively.Common;
+using Lively.Common.Helpers.Pinvoke;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -13,8 +14,20 @@ namespace Lively.Services
 
         private Process processUI;
         private bool disposedValue;
-
-        public RunnerService() { }
+        private readonly string uiClientFileName;
+        private readonly bool uiOutputRedirect;
+        
+        public RunnerService()
+        {
+            uiClientFileName = Constants.ApplicationType.Client switch
+            {
+                ClientType.wpf => "Lively.UI.Wpf.exe",
+                ClientType.winui => "Lively.UI.WinUI.exe",
+                _ => throw new NotImplementedException(),
+            };
+            //winui source not using Debug.Writeline() for debugging.. wtf?
+            uiOutputRedirect = Constants.ApplicationType.Client != ClientType.winui;
+        }
 
         public void ShowUI()
         {
@@ -44,10 +57,10 @@ namespace Lively.Services
                     {
                         StartInfo = new ProcessStartInfo
                         {
-                            FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "UI", "Lively.UI.Wpf.exe"),
+                            FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "UI", uiClientFileName),
                             RedirectStandardInput = true,
-                            RedirectStandardOutput = true,
-                            RedirectStandardError = true,
+                            RedirectStandardOutput = uiOutputRedirect,
+                            RedirectStandardError = uiOutputRedirect,
                             UseShellExecute = false,
                             WorkingDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "UI")
                         },
@@ -56,7 +69,10 @@ namespace Lively.Services
                     processUI.Exited += Proc_UI_Exited;
                     processUI.OutputDataReceived += Proc_OutputDataReceived;
                     processUI.Start();
-                    processUI.BeginOutputReadLine();
+                    if (uiOutputRedirect)
+                    {
+                        processUI.BeginOutputReadLine();
+                    }
                 }
                 catch (Exception e)
                 {

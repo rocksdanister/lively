@@ -187,6 +187,7 @@ namespace Lively.Core
             catch (Exception e)
             {
                 Logger.Error(e.ToString());
+                WallpaperError?.Invoke(this, new WallpaperPluginNotFoundException(e.Message));
             }
         }
 

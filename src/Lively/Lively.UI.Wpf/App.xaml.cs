@@ -1,4 +1,6 @@
 ﻿using Lively.Common;
+using Lively.Common.Helpers;
+using Lively.Common.Helpers.Pinvoke;
 using Lively.Common.Services;
 using Lively.Grpc.Client;
 using Lively.UI.Wpf.Factories;
@@ -15,6 +17,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using static Lively.Common.Constants;
 
 namespace Lively.UI.Wpf
 {
@@ -40,6 +43,13 @@ namespace Lively.UI.Wpf
 
         public App()
         {
+            if (!SingleInstanceUtil.IsAppMutexRunning(SingleInstance.UniqueAppName))
+            {
+                _ = NativeMethods.MessageBox(IntPtr.Zero, "Wallpaper core is not running, exiting..", "Lively UI", 16);
+                this.Shutdown();
+                return;
+            }
+
             _serviceProvider = ConfigureServices();
             //Logger writes to console(stdout) only for now.
             SetupUnhandledExceptionLogging();
@@ -130,7 +140,7 @@ namespace Lively.UI.Wpf
             }
         }
 
-        public static void ShutDown()
+        public static void ExitApp()
         {
             try
             {

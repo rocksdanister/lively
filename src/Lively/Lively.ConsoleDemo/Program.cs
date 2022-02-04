@@ -97,7 +97,7 @@ namespace Lively.ConsoleDemo
                     case "6":
                         {
                             settingsClient.Settings.SysTrayIcon = !settingsClient.Settings.SysTrayIcon;
-                            await settingsClient.Save<ISettingsModel>();
+                            await settingsClient.SaveAsync<ISettingsModel>();
                         }
                         break;
                     case "7":

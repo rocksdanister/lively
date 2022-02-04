@@ -183,7 +183,7 @@ namespace Lively.UI.Wpf.Views
                 {
                     ModernWpf.Controls.Primitives.FlyoutBase.ShowAttachedFlyout(statusBtn);
                     userSettings.Settings.ControlPanelOpened = true;
-                    userSettings.Save<ISettingsModel>();
+                    userSettings.SaveAsync<ISettingsModel>();
                 }
                 //wallpaper focus steal fix.
                 if (this.IsVisible && (layoutWindow == null || layoutWindow.Visibility != Visibility.Visible))
@@ -240,7 +240,7 @@ namespace Lively.UI.Wpf.Views
             }
             else
             {
-                App.ShutDown();
+                App.ExitApp();
             }
         }
 

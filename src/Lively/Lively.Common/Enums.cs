@@ -232,4 +232,10 @@ namespace Lively.Common
         [Description("Live wallpaper color avg fluet style.")]
         wallpaperFluent,
     }
+
+    public enum ClientType
+    {
+        wpf,
+        winui
+    }
 }

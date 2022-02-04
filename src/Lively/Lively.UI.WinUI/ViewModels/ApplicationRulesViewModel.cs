@@ -129,7 +129,7 @@ namespace Lively.UI.WinUI.ViewModels
 
         public void UpdateDiskFile()
         {
-            _ = userSettings.Save<List<IApplicationRulesModel>>();
+            _ = userSettings.SaveAsync<List<IApplicationRulesModel>>();
         }
 
         public void OnWindowClosing(object sender, CancelEventArgs e)
