@@ -25,231 +25,302 @@ namespace Lively.Grpc.Client
 
             Task.Run(async () =>
             {
-                await Load<ISettingsModel>().ConfigureAwait(false);
-                await Load<List<IApplicationRulesModel>>().ConfigureAwait(false);
+                await LoadAsync<ISettingsModel>().ConfigureAwait(false);
+                await LoadAsync<List<IApplicationRulesModel>>().ConfigureAwait(false);
             }).Wait();
         }
 
-        private async Task SetSettings()
+        private void SetSettings()
         {
-            var settings = new SettingsDataModel()
-            {
-                SavedUrl = Settings.SavedURL,
-                ProcessMonitorAlogorithm = (ProcessMonitorRule)((int)Settings.ProcessMonitorAlgorithm),
-                WallpaperArrangement = (WallpaperArrangementRule)Settings.WallpaperArrangement,
-                SelectedDisplay = new GetScreensResponse()
-                {
-                    DeviceId = Settings.SelectedDisplay.DeviceId,
-                    DeviceName = Settings.SelectedDisplay.DeviceName,
-                    DisplayName = Settings.SelectedDisplay.DisplayName,
-                    HMonitor = Settings.SelectedDisplay.HMonitor.ToInt32(),
-                    IsPrimary = Settings.SelectedDisplay.IsPrimary,
-                    WorkingArea = new Rectangle()
-                    {
-                        X = Settings.SelectedDisplay.WorkingArea.X,
-                        Y = Settings.SelectedDisplay.WorkingArea.Y,
-                        Width = Settings.SelectedDisplay.WorkingArea.Width,
-                        Height = Settings.SelectedDisplay.WorkingArea.Height
-                    },
-                    Bounds = new Rectangle()
-                    {
-                        X = Settings.SelectedDisplay.Bounds.X,
-                        Y = Settings.SelectedDisplay.Bounds.Y,
-                        Width = Settings.SelectedDisplay.Bounds.Width,
-                        Height = Settings.SelectedDisplay.Bounds.Height
-                    }
-                },
-                AppVersion = Settings.AppVersion,
-                Startup = Settings.Startup,
-                IsFirstRun = Settings.IsFirstRun,
-                ControlPanelOpened = Settings.ControlPanelOpened,
-                AppFocusPause = (AppRules)((int)Settings.AppFocusPause),
-                AppFullscreenPause = (AppRules)((int)Settings.AppFullscreenPause),
-                BatteryPause = (AppRules)((int)Settings.BatteryPause),
-                VideoPlayer = (MediaPlayer)((int)Settings.VideoPlayer),
-                VideoPlayerHwAccel = Settings.VideoPlayerHwAccel,
-                WebBrowser = (WebBrowser)((int)Settings.WebBrowser),
-                GifPlayer = (GifPlayer)((int)Settings.GifPlayer),
-                PicturePlayer = (PicturePlayer)((int)Settings.PicturePlayer),
-                WallpaperWaitTime = Settings.WallpaperWaitTime,
-                ProcessTimerInterval = Settings.ProcessTimerInterval,
-                StreamQuality = (Grpc.Common.Proto.Settings.StreamQualitySuggestion)((int)Settings.StreamQuality),
-                LivelyZipGenerate = Settings.LivelyZipGenerate,
-                ScalerVideo = (WallpaperScalerRule)((int)Settings.ScalerVideo),
-                ScalerGif = (WallpaperScalerRule)((int)Settings.ScalerGif),
-                GifCapture = Settings.GifCapture,
-                MultiFileAutoImport = Settings.MultiFileAutoImport,
-                SafeShutdown = Settings.SafeShutdown,
-                IsRestart = Settings.IsRestart,
-                InputForward = (Grpc.Common.Proto.Settings.InputForwardMode)((int)Settings.InputForward),
-                MouseInputMovAlways = Settings.MouseInputMovAlways,
-                TileSize = Settings.TileSize,
-                LivelyGuiRendering = (GuiMode)Settings.LivelyGUIRendering,
-                WallpaperDir = Settings.WallpaperDir,
-                WallpaperDirMoveExistingWallpaperNewDir = Settings.WallpaperDirMoveExistingWallpaperNewDir,
-                SysTrayIcon = Settings.SysTrayIcon,
-                WebDebugPort = Settings.WebDebugPort,
-                AutoDetectOnlineStreams = Settings.AutoDetectOnlineStreams,
-                ExtractStreamMetaData = Settings.ExtractStreamMetaData,
-                WallpaperBundleVersion = Settings.WallpaperBundleVersion,
-                AudioVolumeGlobal = Settings.AudioVolumeGlobal,
-                AudioOnlyOnDesktop = Settings.AudioOnlyOnDesktop,
-                WallpaperScaling = (WallpaperScalerRule)Settings.WallpaperScaling,
-                CefDiskCache = Settings.CefDiskCache,
-                DebugMenu = Settings.DebugMenu,
-                TestBuild = Settings.TestBuild,
-                ApplicationTheme = (Grpc.Common.Proto.Settings.AppTheme)Settings.ApplicationTheme,
-                RemoteDesktopPause = (AppRules)Settings.RemoteDesktopPause,
-                PowerSaveModePause = (AppRules)Settings.PowerSaveModePause,
-                LockScreenAutoWallpaper = Settings.LockScreenAutoWallpaper,
-                DesktopAutoWallpaper = Settings.DesktopAutoWallpaper,
-                SystemTaskbarTheme = (Grpc.Common.Proto.Settings.TaskbarTheme)((int)Settings.SystemTaskbarTheme),
-                ScreensaverIdleWait = (Grpc.Common.Proto.Settings.ScreensaverIdleTime)((uint)Settings.WallpaperWaitTime),
-                ScreensaverOledWarning = Settings.ScreensaverOledWarning,
-                ScreensaverEmptyScreenShowBlack = Settings.ScreensaverEmptyScreenShowBlack,
-                ScreensaverLockOnResume = Settings.ScreensaverLockOnResume,
-                Language = Settings.Language,
-                KeepAwakeUi = Settings.KeepAwakeUI,
-            };
-            _ = await client.SetSettingsAsync(settings);
+            _ = client.SetSettings(CreateGrpcSettings(Settings));
         }
 
-        private async Task<ISettingsModel> GetSettings()
+        private async Task SetSettingsAsync()
+        {
+            _ = await client.SetSettingsAsync(CreateGrpcSettings(Settings));
+        }
+
+        private ISettingsModel GetSettings()
+        {
+            var resp = client.GetSettings(new Empty());
+            return CreateSettingsFromGrpc(resp);
+        }
+
+        private async Task<ISettingsModel> GetSettingsAsync()
         {
             var resp = await client.GetSettingsAsync(new Empty());
-            var settings = new SettingsModel()
-            {
-                SavedURL = resp.SavedUrl,
-                ProcessMonitorAlgorithm = (ProcessMonitorAlgorithm)((int)resp.ProcessMonitorAlogorithm),
-                SelectedDisplay = new DisplayMonitor()
-                {
-                    DeviceId = resp.SelectedDisplay.DeviceId,
-                    DisplayName = resp.SelectedDisplay.DisplayName,
-                    DeviceName = resp.SelectedDisplay.DeviceName,
-                    HMonitor = new IntPtr(resp.SelectedDisplay.HMonitor),
-                    IsPrimary = resp.SelectedDisplay.IsPrimary,
-                    Index = resp.SelectedDisplay.Index,
-                },
-                WallpaperArrangement = (WallpaperArrangement)((int)resp.WallpaperArrangement),
-                AppVersion = resp.AppVersion,
-                Startup = resp.Startup,
-                IsFirstRun = resp.IsFirstRun,
-                ControlPanelOpened = resp.ControlPanelOpened,
-                AppFocusPause = (AppRulesEnum)((int)resp.AppFocusPause),
-                AppFullscreenPause = (AppRulesEnum)((int)resp.AppFullscreenPause),
-                BatteryPause = (AppRulesEnum)((int)resp.BatteryPause),
-                VideoPlayer = (LivelyMediaPlayer)((int)resp.VideoPlayer),
-                VideoPlayerHwAccel = resp.VideoPlayerHwAccel,
-                WebBrowser = (LivelyWebBrowser)((int)resp.WebBrowser),
-                GifPlayer = (LivelyGifPlayer)((int)resp.GifPlayer),
-                PicturePlayer = (LivelyPicturePlayer)((int)resp.PicturePlayer),
-                WallpaperWaitTime = resp.WallpaperWaitTime,
-                ProcessTimerInterval = resp.ProcessTimerInterval,
-                StreamQuality = (Lively.Common.StreamQualitySuggestion)((int)resp.StreamQuality),
-                LivelyZipGenerate = resp.LivelyZipGenerate,
-                ScalerVideo = (WallpaperScaler)((int)resp.ScalerVideo),
-                ScalerGif = (WallpaperScaler)((int)resp.ScalerGif),
-                GifCapture = resp.GifCapture,
-                MultiFileAutoImport = resp.MultiFileAutoImport,
-                SafeShutdown = resp.SafeShutdown,
-                IsRestart = resp.IsRestart,
-                InputForward = (Lively.Common.InputForwardMode)resp.InputForward,
-                MouseInputMovAlways = resp.MouseInputMovAlways,
-                TileSize = resp.TileSize,
-                LivelyGUIRendering = (LivelyGUIState)((int)resp.LivelyGuiRendering),
-                WallpaperDir = resp.WallpaperDir,
-                WallpaperDirMoveExistingWallpaperNewDir = resp.WallpaperDirMoveExistingWallpaperNewDir,
-                SysTrayIcon = resp.SysTrayIcon,
-                WebDebugPort = resp.WebDebugPort,
-                AutoDetectOnlineStreams = resp.AutoDetectOnlineStreams,
-                ExtractStreamMetaData = resp.ExtractStreamMetaData,
-                WallpaperBundleVersion = resp.WallpaperBundleVersion,
-                AudioVolumeGlobal = resp.AudioVolumeGlobal,
-                AudioOnlyOnDesktop = resp.AudioOnlyOnDesktop,
-                WallpaperScaling = (WallpaperScaler)resp.WallpaperScaling,
-                CefDiskCache = resp.CefDiskCache,
-                DebugMenu = resp.DebugMenu,
-                TestBuild = resp.TestBuild,
-                ApplicationTheme = (Lively.Common.AppTheme)resp.ApplicationTheme,
-                RemoteDesktopPause = (AppRulesEnum)resp.RemoteDesktopPause,
-                PowerSaveModePause = (AppRulesEnum)resp.PowerSaveModePause,
-                LockScreenAutoWallpaper = resp.LockScreenAutoWallpaper,
-                DesktopAutoWallpaper = resp.DesktopAutoWallpaper,
-                SystemTaskbarTheme = (Lively.Common.TaskbarTheme)resp.SystemTaskbarTheme,
-                ScreensaverIdleWait = (Lively.Common.ScreensaverIdleTime)((int)resp.ScreensaverIdleWait),
-                ScreensaverOledWarning = resp.ScreensaverOledWarning,
-                ScreensaverEmptyScreenShowBlack = resp.ScreensaverEmptyScreenShowBlack,
-                ScreensaverLockOnResume = resp.ScreensaverLockOnResume,
-                Language = resp.Language,
-                KeepAwakeUI = resp.KeepAwakeUi,
-            };
-            return settings;
+            return CreateSettingsFromGrpc(resp);
         }
 
-        private async Task<List<IApplicationRulesModel>> GetAppRulesSettings()
+        private List<IApplicationRulesModel> GetAppRulesSettings()
         {
             var appRules = new List<IApplicationRulesModel>();
-            using var call = client.GetAppRulesSettings(new Empty());
-            while (await call.ResponseStream.MoveNext())
+            var resp = client.GetAppRulesSettings(new Empty());
+            foreach (var item in resp.AppRules)
             {
-                var resp = call.ResponseStream.Current;
-                appRules.Add(new ApplicationRulesModel(resp.AppName, (AppRulesEnum)((int)resp.Rule)));
+                appRules.Add(new ApplicationRulesModel(item.AppName, (AppRulesEnum)((int)item.Rule)));
             }
             return appRules;
         }
 
-        private async Task SetAppRulesSettings()
+        private async Task<List<IApplicationRulesModel>> GetAppRulesSettingsAsync()
         {
-            try
+            var appRules = new List<IApplicationRulesModel>();
+            var resp = await client.GetAppRulesSettingsAsync(new Empty());
+            foreach (var item in resp.AppRules)
             {
-                using var call = client.SetAppRulesSettings();
-                foreach (var item in AppRules)
+                appRules.Add(new ApplicationRulesModel(item.AppName, (AppRulesEnum)((int)item.Rule)));
+            }
+            return appRules;
+        }
+
+        private void SetAppRulesSettings()
+        {
+            var tmp = new AppRulesSettings();
+            foreach (var item in AppRules)
+            {
+                tmp.AppRules.Add(new AppRulesDataModel
                 {
-                    await call.RequestStream.WriteAsync(new AppRulesDataModel
+                    AppName = item.AppName,
+                    Rule = (Common.Proto.Settings.AppRules)((int)item.Rule)
+                });
+            }
+            _ = client.SetAppRulesSettings(tmp);
+        }
+
+        private async Task SetAppRulesSettingsAsync()
+        {
+            var tmp = new AppRulesSettings();
+            foreach (var item in AppRules)
+            {
+                tmp.AppRules.Add(new AppRulesDataModel
+                {
+                    AppName = item.AppName,
+                    Rule = (Common.Proto.Settings.AppRules)((int)item.Rule)
+                });
+            }
+            _ = await client.SetAppRulesSettingsAsync(tmp);
+        }
+
+        public void Save<T>()
+        {
+            if (typeof(T) == typeof(ISettingsModel))
+            {
+                SetSettings();
+            }
+            else if (typeof(T) == typeof(List<IApplicationRulesModel>))
+            {
+                SetAppRulesSettings();
+            }
+            else
+            {
+                throw new InvalidCastException($"Type not found: {typeof(T)}");
+            }
+        }
+
+        public async Task SaveAsync<T>()
+        {
+            if (typeof(T) == typeof(ISettingsModel))
+            {
+                await SetSettingsAsync().ConfigureAwait(false);
+            }
+            else if (typeof(T) == typeof(List<IApplicationRulesModel>))
+            {
+                await SetAppRulesSettingsAsync().ConfigureAwait(false);
+            }
+            else
+            {
+                throw new InvalidCastException($"Type not found: {typeof(T)}");
+            }
+        }
+
+        public void Load<T>()
+        {
+            if (typeof(T) == typeof(ISettingsModel))
+            {
+                Settings = GetSettings();
+            }
+            else if (typeof(T) == typeof(List<IApplicationRulesModel>))
+            {
+                AppRules = GetAppRulesSettings();
+            }
+            else
+            {
+                throw new InvalidCastException($"Type not found: {typeof(T)}");
+            }
+        }
+
+        public async Task LoadAsync<T>()
+        {
+            if (typeof(T) == typeof(ISettingsModel))
+            {
+                Settings = await GetSettingsAsync().ConfigureAwait(false);
+            }
+            else if (typeof(T) == typeof(List<IApplicationRulesModel>))
+            {
+                AppRules = await GetAppRulesSettingsAsync().ConfigureAwait(false);
+            }
+            else
+            {
+                throw new InvalidCastException($"Type not found: {typeof(T)}");
+            }
+        }
+
+        #region helpers
+
+        private SettingsDataModel CreateGrpcSettings(ISettingsModel settings)
+        {
+            return new SettingsDataModel()
+            {
+                SavedUrl = settings.SavedURL,
+                ProcessMonitorAlogorithm = (ProcessMonitorRule)((int)settings.ProcessMonitorAlgorithm),
+                WallpaperArrangement = (WallpaperArrangementRule)settings.WallpaperArrangement,
+                SelectedDisplay = new GetScreensResponse()
+                {
+                    DeviceId = settings.SelectedDisplay.DeviceId,
+                    DeviceName = settings.SelectedDisplay.DeviceName,
+                    DisplayName = settings.SelectedDisplay.DisplayName,
+                    HMonitor = settings.SelectedDisplay.HMonitor.ToInt32(),
+                    IsPrimary = settings.SelectedDisplay.IsPrimary,
+                    WorkingArea = new Rectangle()
                     {
-                        AppName = item.AppName,
-                        Rule = (Common.Proto.Settings.AppRules)((int)item.Rule)
-                    });
-                }
-                await call.RequestStream.CompleteAsync();
-                var resp = await call.ResponseAsync;
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine(e.ToString());
-            }
+                        X = settings.SelectedDisplay.WorkingArea.X,
+                        Y = settings.SelectedDisplay.WorkingArea.Y,
+                        Width = settings.SelectedDisplay.WorkingArea.Width,
+                        Height = settings.SelectedDisplay.WorkingArea.Height
+                    },
+                    Bounds = new Rectangle()
+                    {
+                        X = settings.SelectedDisplay.Bounds.X,
+                        Y = settings.SelectedDisplay.Bounds.Y,
+                        Width = settings.SelectedDisplay.Bounds.Width,
+                        Height = settings.SelectedDisplay.Bounds.Height
+                    }
+                },
+                AppVersion = settings.AppVersion,
+                Startup = settings.Startup,
+                IsFirstRun = settings.IsFirstRun,
+                ControlPanelOpened = settings.ControlPanelOpened,
+                AppFocusPause = (AppRules)((int)settings.AppFocusPause),
+                AppFullscreenPause = (AppRules)((int)settings.AppFullscreenPause),
+                BatteryPause = (AppRules)((int)settings.BatteryPause),
+                VideoPlayer = (MediaPlayer)((int)settings.VideoPlayer),
+                VideoPlayerHwAccel = settings.VideoPlayerHwAccel,
+                WebBrowser = (WebBrowser)((int)settings.WebBrowser),
+                GifPlayer = (GifPlayer)((int)settings.GifPlayer),
+                PicturePlayer = (PicturePlayer)((int)settings.PicturePlayer),
+                WallpaperWaitTime = settings.WallpaperWaitTime,
+                ProcessTimerInterval = settings.ProcessTimerInterval,
+                StreamQuality = (Grpc.Common.Proto.Settings.StreamQualitySuggestion)((int)settings.StreamQuality),
+                LivelyZipGenerate = settings.LivelyZipGenerate,
+                ScalerVideo = (WallpaperScalerRule)((int)settings.ScalerVideo),
+                ScalerGif = (WallpaperScalerRule)((int)settings.ScalerGif),
+                GifCapture = settings.GifCapture,
+                MultiFileAutoImport = settings.MultiFileAutoImport,
+                SafeShutdown = settings.SafeShutdown,
+                IsRestart = settings.IsRestart,
+                InputForward = (Grpc.Common.Proto.Settings.InputForwardMode)((int)settings.InputForward),
+                MouseInputMovAlways = settings.MouseInputMovAlways,
+                TileSize = settings.TileSize,
+                LivelyGuiRendering = (GuiMode)settings.LivelyGUIRendering,
+                WallpaperDir = settings.WallpaperDir,
+                WallpaperDirMoveExistingWallpaperNewDir = settings.WallpaperDirMoveExistingWallpaperNewDir,
+                SysTrayIcon = settings.SysTrayIcon,
+                WebDebugPort = settings.WebDebugPort,
+                AutoDetectOnlineStreams = settings.AutoDetectOnlineStreams,
+                ExtractStreamMetaData = settings.ExtractStreamMetaData,
+                WallpaperBundleVersion = settings.WallpaperBundleVersion,
+                AudioVolumeGlobal = settings.AudioVolumeGlobal,
+                AudioOnlyOnDesktop = settings.AudioOnlyOnDesktop,
+                WallpaperScaling = (WallpaperScalerRule)settings.WallpaperScaling,
+                CefDiskCache = settings.CefDiskCache,
+                DebugMenu = settings.DebugMenu,
+                TestBuild = settings.TestBuild,
+                ApplicationTheme = (Grpc.Common.Proto.Settings.AppTheme)settings.ApplicationTheme,
+                RemoteDesktopPause = (AppRules)settings.RemoteDesktopPause,
+                PowerSaveModePause = (AppRules)settings.PowerSaveModePause,
+                LockScreenAutoWallpaper = settings.LockScreenAutoWallpaper,
+                DesktopAutoWallpaper = settings.DesktopAutoWallpaper,
+                SystemTaskbarTheme = (Grpc.Common.Proto.Settings.TaskbarTheme)((int)settings.SystemTaskbarTheme),
+                ScreensaverIdleWait = (Grpc.Common.Proto.Settings.ScreensaverIdleTime)((uint)settings.WallpaperWaitTime),
+                ScreensaverOledWarning = settings.ScreensaverOledWarning,
+                ScreensaverEmptyScreenShowBlack = settings.ScreensaverEmptyScreenShowBlack,
+                ScreensaverLockOnResume = settings.ScreensaverLockOnResume,
+                Language = settings.Language,
+                KeepAwakeUi = settings.KeepAwakeUI,
+            };
         }
 
-        public async Task Save<T>()
+        private ISettingsModel CreateSettingsFromGrpc(SettingsDataModel settings)
         {
-            if (typeof(T) == typeof(ISettingsModel))
+            return new SettingsModel()
             {
-                await SetSettings().ConfigureAwait(false);
-            }
-            else if (typeof(T) == typeof(List<IApplicationRulesModel>))
-            {
-                await SetAppRulesSettings().ConfigureAwait(false);
-            }
-            else
-            {
-                throw new InvalidCastException($"Type not found: {typeof(T)}");
-            }
+                SavedURL = settings.SavedUrl,
+                ProcessMonitorAlgorithm = (ProcessMonitorAlgorithm)((int)settings.ProcessMonitorAlogorithm),
+                SelectedDisplay = new DisplayMonitor()
+                {
+                    DeviceId = settings.SelectedDisplay.DeviceId,
+                    DisplayName = settings.SelectedDisplay.DisplayName,
+                    DeviceName = settings.SelectedDisplay.DeviceName,
+                    HMonitor = new IntPtr(settings.SelectedDisplay.HMonitor),
+                    IsPrimary = settings.SelectedDisplay.IsPrimary,
+                    Index = settings.SelectedDisplay.Index,
+                },
+                WallpaperArrangement = (WallpaperArrangement)((int)settings.WallpaperArrangement),
+                AppVersion = settings.AppVersion,
+                Startup = settings.Startup,
+                IsFirstRun = settings.IsFirstRun,
+                ControlPanelOpened = settings.ControlPanelOpened,
+                AppFocusPause = (AppRulesEnum)((int)settings.AppFocusPause),
+                AppFullscreenPause = (AppRulesEnum)((int)settings.AppFullscreenPause),
+                BatteryPause = (AppRulesEnum)((int)settings.BatteryPause),
+                VideoPlayer = (LivelyMediaPlayer)((int)settings.VideoPlayer),
+                VideoPlayerHwAccel = settings.VideoPlayerHwAccel,
+                WebBrowser = (LivelyWebBrowser)((int)settings.WebBrowser),
+                GifPlayer = (LivelyGifPlayer)((int)settings.GifPlayer),
+                PicturePlayer = (LivelyPicturePlayer)((int)settings.PicturePlayer),
+                WallpaperWaitTime = settings.WallpaperWaitTime,
+                ProcessTimerInterval = settings.ProcessTimerInterval,
+                StreamQuality = (Lively.Common.StreamQualitySuggestion)((int)settings.StreamQuality),
+                LivelyZipGenerate = settings.LivelyZipGenerate,
+                ScalerVideo = (WallpaperScaler)((int)settings.ScalerVideo),
+                ScalerGif = (WallpaperScaler)((int)settings.ScalerGif),
+                GifCapture = settings.GifCapture,
+                MultiFileAutoImport = settings.MultiFileAutoImport,
+                SafeShutdown = settings.SafeShutdown,
+                IsRestart = settings.IsRestart,
+                InputForward = (Lively.Common.InputForwardMode)settings.InputForward,
+                MouseInputMovAlways = settings.MouseInputMovAlways,
+                TileSize = settings.TileSize,
+                LivelyGUIRendering = (LivelyGUIState)((int)settings.LivelyGuiRendering),
+                WallpaperDir = settings.WallpaperDir,
+                WallpaperDirMoveExistingWallpaperNewDir = settings.WallpaperDirMoveExistingWallpaperNewDir,
+                SysTrayIcon = settings.SysTrayIcon,
+                WebDebugPort = settings.WebDebugPort,
+                AutoDetectOnlineStreams = settings.AutoDetectOnlineStreams,
+                ExtractStreamMetaData = settings.ExtractStreamMetaData,
+                WallpaperBundleVersion = settings.WallpaperBundleVersion,
+                AudioVolumeGlobal = settings.AudioVolumeGlobal,
+                AudioOnlyOnDesktop = settings.AudioOnlyOnDesktop,
+                WallpaperScaling = (WallpaperScaler)settings.WallpaperScaling,
+                CefDiskCache = settings.CefDiskCache,
+                DebugMenu = settings.DebugMenu,
+                TestBuild = settings.TestBuild,
+                ApplicationTheme = (Lively.Common.AppTheme)settings.ApplicationTheme,
+                RemoteDesktopPause = (AppRulesEnum)settings.RemoteDesktopPause,
+                PowerSaveModePause = (AppRulesEnum)settings.PowerSaveModePause,
+                LockScreenAutoWallpaper = settings.LockScreenAutoWallpaper,
+                DesktopAutoWallpaper = settings.DesktopAutoWallpaper,
+                SystemTaskbarTheme = (Lively.Common.TaskbarTheme)settings.SystemTaskbarTheme,
+                ScreensaverIdleWait = (Lively.Common.ScreensaverIdleTime)((int)settings.ScreensaverIdleWait),
+                ScreensaverOledWarning = settings.ScreensaverOledWarning,
+                ScreensaverEmptyScreenShowBlack = settings.ScreensaverEmptyScreenShowBlack,
+                ScreensaverLockOnResume = settings.ScreensaverLockOnResume,
+                Language = settings.Language,
+                KeepAwakeUI = settings.KeepAwakeUi,
+            };
         }
 
-        public async Task Load<T>()
-        {
-            if (typeof(T) == typeof(ISettingsModel))
-            {
-                Settings = await GetSettings().ConfigureAwait(false);
-            }
-            else if (typeof(T) == typeof(List<IApplicationRulesModel>))
-            {
-                AppRules = await GetAppRulesSettings().ConfigureAwait(false);
-            }
-            else
-            {
-                throw new InvalidCastException($"Type not found: {typeof(T)}");
-            }
-        }
+        #endregion //helpers
     }
 }

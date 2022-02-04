@@ -24,6 +24,8 @@ using Windows.Storage.Pickers;
 using Windows.UI;
 using H.Hooks;
 using Lively.Common.Helpers.Pinvoke;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace Lively.UI.WinUI.Views.LivelyProperty
 {
@@ -36,10 +38,15 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
         private readonly ILibraryModel libraryItem;
         private readonly IDisplayMonitor screen;
         private JObject livelyPropertyCopyData;
+        private readonly object _sendMsgLock = new();
 
         //UI
         private readonly Thickness margin = new Thickness(0, 10, 0, 0);
         private readonly double maxWidth = 200;
+        //Color picker
+        private LowLevelMouseHook mouseHook;
+        private SplitButton currEyeDropSplitBtn;
+        private ToggleButton currEyeDropBtn;
 
         private readonly IUserSettingsClient userSettings;
         private readonly IDesktopCoreClient desktopCore;
@@ -337,10 +344,26 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
             }
 
             //restore-default btn.
+            var defaultPanel = new StackPanel()
+            {
+                Orientation = Orientation.Horizontal,
+            };
+            var defaultIcon = new FontIcon
+            {
+                Glyph = "\uE777",
+                FontSize = 13,
+                Margin = new Thickness(0, 0, 5, 0),
+            };
+            var defaultText = new TextBlock
+            {
+                Text = "Restore default",
+            };
+            defaultPanel.Children.Add(defaultIcon);
+            defaultPanel.Children.Add(defaultText);
             var defaultBtn = new Button
             {
                 Name = "defaultBtn",
-                Content = "Restore Default",
+                Content = defaultPanel,
                 MaxWidth = maxWidth,
                 MinWidth = maxWidth,
                 HorizontalAlignment = HorizontalAlignment.Left,
@@ -519,10 +542,6 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
             }
           
         }
-
-        private LowLevelMouseHook mouseHook;
-        private SplitButton currEyeDropSplitBtn;
-        private ToggleButton currEyeDropBtn;
 
         private void EyeDropBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -703,18 +722,30 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
             }
         }
 
-        private void WallpaperSendMsg(IpcMessage msg)
+        private async void WallpaperSendMsg(IpcMessage msg)
         {
-            switch (userSettings.Settings.WallpaperArrangement)
+            lock (_sendMsgLock)
+                Monitor.PulseAll(_sendMsgLock);
+
+            await Task.Run(() =>
             {
-                case WallpaperArrangement.per:
-                    desktopCore.SendMessageWallpaper(screen, libraryItem, msg);
-                    break;
-                case WallpaperArrangement.span:
-                case WallpaperArrangement.duplicate:
-                    desktopCore.SendMessageWallpaper(libraryItem, msg);
-                    break;
-            }
+                lock (_sendMsgLock)
+                {
+                    if (!Monitor.Wait(_sendMsgLock, 100))
+                    {
+                        switch (userSettings.Settings.WallpaperArrangement)
+                        {
+                            case WallpaperArrangement.per:
+                                desktopCore.SendMessageWallpaper(screen, libraryItem, msg);
+                                break;
+                            case WallpaperArrangement.span:
+                            case WallpaperArrangement.duplicate:
+                                desktopCore.SendMessageWallpaper(libraryItem, msg);
+                                break;
+                        }
+                    }
+                }
+            }).ConfigureAwait(false);
         }
 
         /// <summary>

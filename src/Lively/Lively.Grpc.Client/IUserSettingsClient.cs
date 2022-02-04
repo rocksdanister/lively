@@ -8,8 +8,9 @@ namespace Lively.Grpc.Client
     {
         ISettingsModel Settings { get; }
         List<IApplicationRulesModel> AppRules { get; }
-        //List<IWallpaperLayoutModel> WallpaperLayout { get; }
-        Task Save<T>();
-        Task Load<T>();
+        Task SaveAsync<T>();
+        void Save<T>();
+        Task LoadAsync<T>();
+        void Load<T>();
     }
 }

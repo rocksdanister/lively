@@ -59,7 +59,7 @@ namespace Lively.UI.Wpf.Views.SetupWizard
         {
             //extraction of default wallpaper.
             userSettings.Settings.WallpaperBundleVersion = await Task.Run(() => ExtractWallpaperBundle(userSettings.Settings.WallpaperBundleVersion));
-            await userSettings.Save<ISettingsModel>();
+            await userSettings.SaveAsync<ISettingsModel>();
             //re-scan libraryVm items..
             await this.Dispatcher.Invoke(async () =>
             {
@@ -98,7 +98,7 @@ namespace Lively.UI.Wpf.Views.SetupWizard
         private void ExitWindow()
         {
             userSettings.Settings.IsFirstRun = false;
-            _ = userSettings.Save<ISettingsModel>();
+            _ = userSettings.SaveAsync<ISettingsModel>();
             _isClosable = true;
             this.Close();
         }

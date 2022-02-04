@@ -16,6 +16,7 @@ namespace Lively.RPC
 {
     internal class UserSettingsServer : SettingsService.SettingsServiceBase
     {
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private readonly IDisplayManager displayManager;
         private readonly IUserSettingsService userSettings;
         private readonly object appRulesWriteLock = new object();
@@ -27,45 +28,31 @@ namespace Lively.RPC
             this.userSettings = userSettings;
         }
 
-        public override async Task GetAppRulesSettings(Empty _, IServerStreamWriter<AppRulesDataModel> responseStream, ServerCallContext context)
+        public override Task<AppRulesSettings> GetAppRulesSettings(Empty _, ServerCallContext context)
         {
-            try
+            var resp = new AppRulesSettings();
+            foreach (var app in userSettings.AppRules)
             {
-                foreach (var app in userSettings.AppRules)
+                resp.AppRules.Add(new AppRulesDataModel
                 {
-                    var resp = new AppRulesDataModel
-                    {
-                        AppName = app.AppName,
-                        Rule = (AppRules)((int)app.Rule)
-                    };
-                    await responseStream.WriteAsync(resp);
-                }
+                    AppName = app.AppName,
+                    Rule = (AppRules)((int)app.Rule)
+                });
             }
-            catch (Exception e)
-            {
-                Debug.WriteLine(e.ToString());
-            }
+            return Task.FromResult(resp);
         }
 
-        public override async Task<Empty> SetAppRulesSettings(IAsyncStreamReader<AppRulesDataModel> requestStream, ServerCallContext context)
+        public override Task<Empty> SetAppRulesSettings(AppRulesSettings req, ServerCallContext context)
         {
-            try
+            userSettings.AppRules.Clear();
+            foreach (var item in req.AppRules)
             {
-                userSettings.AppRules.Clear();
-                while (await requestStream.MoveNext())
-                {
-                    var rule = requestStream.Current;
-                    userSettings.AppRules.Add(new ApplicationRulesModel(rule.AppName, (AppRulesEnum)((int)rule.Rule)));
-                }
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine(e.ToString());
+                userSettings.AppRules.Add(new ApplicationRulesModel(item.AppName, (AppRulesEnum)((int)item.Rule)));
             }
 
             try
             {
-                return new Empty();
+                return Task.FromResult(new Empty());
             }
             finally
             {
@@ -76,63 +63,63 @@ namespace Lively.RPC
             }
         }
 
-        public override Task<Empty> SetSettings(SettingsDataModel resp, ServerCallContext context)
+        public override Task<Empty> SetSettings(SettingsDataModel req, ServerCallContext context)
         {
-            userSettings.Settings.SavedURL = resp.SavedUrl;
-            userSettings.Settings.ProcessMonitorAlgorithm = (ProcessMonitorAlgorithm)((int)resp.ProcessMonitorAlogorithm);
-            userSettings.Settings.SelectedDisplay = displayManager.DisplayMonitors.FirstOrDefault(x => resp.SelectedDisplay.DeviceId == x.DeviceId) ?? displayManager.PrimaryDisplayMonitor;
-            userSettings.Settings.WallpaperArrangement = (WallpaperArrangement)((int)resp.WallpaperArrangement);
-            userSettings.Settings.AppVersion = resp.AppVersion;
-            userSettings.Settings.Startup = resp.Startup;
-            userSettings.Settings.IsFirstRun = resp.IsFirstRun;
-            userSettings.Settings.ControlPanelOpened = resp.ControlPanelOpened;
-            userSettings.Settings.AppFocusPause = (AppRulesEnum)((int)resp.AppFocusPause);
-            userSettings.Settings.AppFullscreenPause = (AppRulesEnum)((int)resp.AppFullscreenPause);
-            userSettings.Settings.BatteryPause = (AppRulesEnum)((int)resp.BatteryPause);
-            userSettings.Settings.VideoPlayer = (LivelyMediaPlayer)((int)resp.VideoPlayer);
-            userSettings.Settings.VideoPlayerHwAccel = resp.VideoPlayerHwAccel;
-            userSettings.Settings.WebBrowser = (LivelyWebBrowser)((int)resp.WebBrowser);
-            userSettings.Settings.GifPlayer = (LivelyGifPlayer)((int)resp.GifPlayer);
-            userSettings.Settings.PicturePlayer = (LivelyPicturePlayer)((int)resp.PicturePlayer);
-            userSettings.Settings.WallpaperWaitTime = resp.WallpaperWaitTime;
-            userSettings.Settings.ProcessTimerInterval = resp.ProcessTimerInterval;
-            userSettings.Settings.StreamQuality = (Common.StreamQualitySuggestion)((int)resp.StreamQuality);
-            userSettings.Settings.LivelyZipGenerate = resp.LivelyZipGenerate;
-            userSettings.Settings.ScalerVideo = (WallpaperScaler)((int)resp.ScalerVideo);
-            userSettings.Settings.ScalerGif = (WallpaperScaler)((int)resp.ScalerGif);
-            userSettings.Settings.GifCapture = resp.GifCapture;
-            userSettings.Settings.MultiFileAutoImport = resp.MultiFileAutoImport;
-            userSettings.Settings.SafeShutdown = resp.SafeShutdown;
-            userSettings.Settings.IsRestart = resp.IsRestart;
-            userSettings.Settings.InputForward = (Common.InputForwardMode)resp.InputForward;
-            userSettings.Settings.MouseInputMovAlways = resp.MouseInputMovAlways;
-            userSettings.Settings.TileSize = resp.TileSize;
-            userSettings.Settings.LivelyGUIRendering = (LivelyGUIState)((int)resp.LivelyGuiRendering);
-            userSettings.Settings.WallpaperDir = resp.WallpaperDir;
-            userSettings.Settings.WallpaperDirMoveExistingWallpaperNewDir = resp.WallpaperDirMoveExistingWallpaperNewDir;
-            userSettings.Settings.SysTrayIcon = resp.SysTrayIcon;
-            userSettings.Settings.WebDebugPort = resp.WebDebugPort;
-            userSettings.Settings.AutoDetectOnlineStreams = resp.AutoDetectOnlineStreams;
-            userSettings.Settings.ExtractStreamMetaData = resp.ExtractStreamMetaData;
-            userSettings.Settings.WallpaperBundleVersion = resp.WallpaperBundleVersion;
-            userSettings.Settings.AudioVolumeGlobal = resp.AudioVolumeGlobal;
-            userSettings.Settings.AudioOnlyOnDesktop = resp.AudioOnlyOnDesktop;
-            userSettings.Settings.WallpaperScaling = (WallpaperScaler)resp.WallpaperScaling;
-            userSettings.Settings.CefDiskCache = resp.CefDiskCache;
-            userSettings.Settings.DebugMenu = resp.DebugMenu;
-            userSettings.Settings.TestBuild = resp.TestBuild;
-            userSettings.Settings.ApplicationTheme = (Common.AppTheme)resp.ApplicationTheme;
-            userSettings.Settings.RemoteDesktopPause = (AppRulesEnum)resp.RemoteDesktopPause;
-            userSettings.Settings.PowerSaveModePause = (AppRulesEnum)resp.PowerSaveModePause;
-            userSettings.Settings.LockScreenAutoWallpaper = resp.LockScreenAutoWallpaper;
-            userSettings.Settings.DesktopAutoWallpaper = resp.DesktopAutoWallpaper;
-            userSettings.Settings.SystemTaskbarTheme = (Common.TaskbarTheme)resp.SystemTaskbarTheme;
-            userSettings.Settings.ScreensaverIdleWait = (Common.ScreensaverIdleTime)((int)resp.ScreensaverIdleWait);
-            userSettings.Settings.ScreensaverOledWarning = resp.ScreensaverOledWarning;
-            userSettings.Settings.ScreensaverEmptyScreenShowBlack = resp.ScreensaverEmptyScreenShowBlack;
-            userSettings.Settings.ScreensaverLockOnResume = resp.ScreensaverLockOnResume;
-            userSettings.Settings.Language = resp.Language;
-            userSettings.Settings.KeepAwakeUI = resp.KeepAwakeUi;
+            userSettings.Settings.SavedURL = req.SavedUrl;
+            userSettings.Settings.ProcessMonitorAlgorithm = (ProcessMonitorAlgorithm)((int)req.ProcessMonitorAlogorithm);
+            userSettings.Settings.SelectedDisplay = displayManager.DisplayMonitors.FirstOrDefault(x => req.SelectedDisplay.DeviceId == x.DeviceId) ?? displayManager.PrimaryDisplayMonitor;
+            userSettings.Settings.WallpaperArrangement = (WallpaperArrangement)((int)req.WallpaperArrangement);
+            userSettings.Settings.AppVersion = req.AppVersion;
+            userSettings.Settings.Startup = req.Startup;
+            userSettings.Settings.IsFirstRun = req.IsFirstRun;
+            userSettings.Settings.ControlPanelOpened = req.ControlPanelOpened;
+            userSettings.Settings.AppFocusPause = (AppRulesEnum)((int)req.AppFocusPause);
+            userSettings.Settings.AppFullscreenPause = (AppRulesEnum)((int)req.AppFullscreenPause);
+            userSettings.Settings.BatteryPause = (AppRulesEnum)((int)req.BatteryPause);
+            userSettings.Settings.VideoPlayer = (LivelyMediaPlayer)((int)req.VideoPlayer);
+            userSettings.Settings.VideoPlayerHwAccel = req.VideoPlayerHwAccel;
+            userSettings.Settings.WebBrowser = (LivelyWebBrowser)((int)req.WebBrowser);
+            userSettings.Settings.GifPlayer = (LivelyGifPlayer)((int)req.GifPlayer);
+            userSettings.Settings.PicturePlayer = (LivelyPicturePlayer)((int)req.PicturePlayer);
+            userSettings.Settings.WallpaperWaitTime = req.WallpaperWaitTime;
+            userSettings.Settings.ProcessTimerInterval = req.ProcessTimerInterval;
+            userSettings.Settings.StreamQuality = (Common.StreamQualitySuggestion)((int)req.StreamQuality);
+            userSettings.Settings.LivelyZipGenerate = req.LivelyZipGenerate;
+            userSettings.Settings.ScalerVideo = (WallpaperScaler)((int)req.ScalerVideo);
+            userSettings.Settings.ScalerGif = (WallpaperScaler)((int)req.ScalerGif);
+            userSettings.Settings.GifCapture = req.GifCapture;
+            userSettings.Settings.MultiFileAutoImport = req.MultiFileAutoImport;
+            userSettings.Settings.SafeShutdown = req.SafeShutdown;
+            userSettings.Settings.IsRestart = req.IsRestart;
+            userSettings.Settings.InputForward = (Common.InputForwardMode)req.InputForward;
+            userSettings.Settings.MouseInputMovAlways = req.MouseInputMovAlways;
+            userSettings.Settings.TileSize = req.TileSize;
+            userSettings.Settings.LivelyGUIRendering = (LivelyGUIState)((int)req.LivelyGuiRendering);
+            userSettings.Settings.WallpaperDir = req.WallpaperDir;
+            userSettings.Settings.WallpaperDirMoveExistingWallpaperNewDir = req.WallpaperDirMoveExistingWallpaperNewDir;
+            userSettings.Settings.SysTrayIcon = req.SysTrayIcon;
+            userSettings.Settings.WebDebugPort = req.WebDebugPort;
+            userSettings.Settings.AutoDetectOnlineStreams = req.AutoDetectOnlineStreams;
+            userSettings.Settings.ExtractStreamMetaData = req.ExtractStreamMetaData;
+            userSettings.Settings.WallpaperBundleVersion = req.WallpaperBundleVersion;
+            userSettings.Settings.AudioVolumeGlobal = req.AudioVolumeGlobal;
+            userSettings.Settings.AudioOnlyOnDesktop = req.AudioOnlyOnDesktop;
+            userSettings.Settings.WallpaperScaling = (WallpaperScaler)req.WallpaperScaling;
+            userSettings.Settings.CefDiskCache = req.CefDiskCache;
+            userSettings.Settings.DebugMenu = req.DebugMenu;
+            userSettings.Settings.TestBuild = req.TestBuild;
+            userSettings.Settings.ApplicationTheme = (Common.AppTheme)req.ApplicationTheme;
+            userSettings.Settings.RemoteDesktopPause = (AppRulesEnum)req.RemoteDesktopPause;
+            userSettings.Settings.PowerSaveModePause = (AppRulesEnum)req.PowerSaveModePause;
+            userSettings.Settings.LockScreenAutoWallpaper = req.LockScreenAutoWallpaper;
+            userSettings.Settings.DesktopAutoWallpaper = req.DesktopAutoWallpaper;
+            userSettings.Settings.SystemTaskbarTheme = (Common.TaskbarTheme)req.SystemTaskbarTheme;
+            userSettings.Settings.ScreensaverIdleWait = (Common.ScreensaverIdleTime)((int)req.ScreensaverIdleWait);
+            userSettings.Settings.ScreensaverOledWarning = req.ScreensaverOledWarning;
+            userSettings.Settings.ScreensaverEmptyScreenShowBlack = req.ScreensaverEmptyScreenShowBlack;
+            userSettings.Settings.ScreensaverLockOnResume = req.ScreensaverLockOnResume;
+            userSettings.Settings.Language = req.Language;
+            userSettings.Settings.KeepAwakeUI = req.KeepAwakeUi;
 
             try
             {

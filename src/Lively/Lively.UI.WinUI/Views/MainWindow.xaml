@@ -42,7 +42,6 @@
 
         <NavigationView
             Name="navView"
-            Grid.Row="1"
             BackRequested="NavView_BackRequested"
             IsBackButtonVisible="Collapsed"
             IsBackEnabled="True"
@@ -115,5 +114,12 @@
             <!--  content  -->
             <Frame x:Name="contentFrame" />
         </NavigationView>
+
+        <InfoBar
+            Name="infoBar"
+            Title="Title"
+            IsOpen="False"
+            Message="Essential app message for your users to be informed of, acknowledge, or take action on."
+            Severity="Informational" />
     </Grid>
 </Window>

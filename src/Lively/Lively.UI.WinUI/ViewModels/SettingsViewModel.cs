@@ -6,6 +6,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using Lively.Common;
@@ -113,9 +114,23 @@ namespace Lively.UI.WinUI.ViewModels
             SelectedLanguageItem = LocalizationUtil.GetSupportedLanguage(userSettings.Settings.Language);
         }
 
-        public void UpdateConfigFile()
+
+        private readonly object _settingsLock = new object();
+        public async Task UpdateConfigFile()
         {
-            userSettings.Save<ISettingsModel>();
+            lock (_settingsLock)
+                Monitor.PulseAll(_settingsLock);
+
+            await Task.Run(() =>
+            {
+                lock (_settingsLock)
+                {
+                    if (!Monitor.Wait(_settingsLock, 500))
+                    {
+                        userSettings.Save<ISettingsModel>();
+                    }
+                }
+            }).ConfigureAwait(false);
         }
 
         #region general

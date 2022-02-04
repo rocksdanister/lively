@@ -5,8 +5,8 @@ import "google/protobuf/empty.proto";
 service SettingsService {
       rpc GetSettings (google.protobuf.Empty) returns (SettingsDataModel);
       rpc SetSettings (SettingsDataModel) returns (google.protobuf.Empty);
-      rpc GetAppRulesSettings  (google.protobuf.Empty) returns (stream AppRulesDataModel);
-      rpc SetAppRulesSettings (stream AppRulesDataModel) returns (google.protobuf.Empty);
+      rpc GetAppRulesSettings  (google.protobuf.Empty) returns (AppRulesSettings);
+      rpc SetAppRulesSettings (AppRulesSettings) returns (google.protobuf.Empty);
 }
 
 message SettingsDataModel {
@@ -67,6 +67,10 @@ message SettingsDataModel {
     ProcessMonitorRule process_monitor_alogorithm = 55;
     bool keep_awake_ui = 56;
     PicturePlayer picture_player = 57;
+}
+
+message AppRulesSettings {
+  repeated AppRulesDataModel app_rules = 1;
 }
 
 message AppRulesDataModel {

@@ -74,7 +74,7 @@ namespace Lively.UI.WinUI.ViewModels
                     if (!userSettings.Settings.SelectedDisplay.Equals(value.Screen))
                     {
                         userSettings.Settings.SelectedDisplay = value.Screen;
-                        userSettings.Save<ISettingsModel>();
+                        userSettings.SaveAsync<ISettingsModel>();
                         //Updating library selected item.
                         libraryVm.UpdateSelection();
                     }
@@ -98,7 +98,7 @@ namespace Lively.UI.WinUI.ViewModels
                 {
                     var prevArrangement = userSettings.Settings.WallpaperArrangement;
                     userSettings.Settings.WallpaperArrangement = (WallpaperArrangement)_selectedWallpaperLayout;
-                    userSettings.Save<ISettingsModel>();
+                    userSettings.SaveAsync<ISettingsModel>();
                     UpdateWallpaper(prevArrangement, userSettings.Settings.WallpaperArrangement);
                 }
             }

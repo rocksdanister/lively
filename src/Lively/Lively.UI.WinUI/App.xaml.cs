@@ -1,4 +1,5 @@
-﻿using Lively.Common.Helpers.Pinvoke;
+﻿using Lively.Common.Helpers;
+using Lively.Common.Helpers.Pinvoke;
 using Lively.Grpc.Client;
 using Lively.UI.WinUI.Factories;
 using Lively.UI.WinUI.Helpers;
@@ -25,6 +26,7 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.System;
 using WinRT;
+using static Lively.Common.Constants;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -56,6 +58,13 @@ namespace Lively.UI.WinUI
         /// </summary>
         public App()
         {
+            if (!SingleInstanceUtil.IsAppMutexRunning(SingleInstance.UniqueAppName))
+            {
+                _ = NativeMethods.MessageBox(IntPtr.Zero, "Wallpaper core is not running, exiting..", "Lively UI", 16);
+                //Sad dev noises.. this.Exit() does not work without Window: https://github.com/microsoft/microsoft-ui-xaml/issues/5931
+                Process.GetCurrentProcess().Kill();
+            }
+
             this.InitializeComponent();
             _serviceProvider = ConfigureServices();
         }
@@ -67,17 +76,22 @@ namespace Lively.UI.WinUI
         /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
-            m_window = Services.GetRequiredService<MainWindow>();
-            var windowNative = m_window.As<IWindowNative>();
-            var m_windowHandle = windowNative.WindowHandle;
-            m_window.Activate();
+            try
+            {
+                m_window = Services.GetRequiredService<MainWindow>();
+                var windowNative = m_window.As<IWindowNative>();
+                var m_windowHandle = windowNative.WindowHandle;
+                m_window.Activate();
 
-            //Issue: https://github.com/microsoft/microsoft-ui-xaml/issues/6353
-            //IntPtr hWnd = WinRT.Interop.WindowNative.GetWindowHandle(m_window);
-            //var windowId = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(hWnd);
-            //var appWindow = Microsoft.UI.Windowing.AppWindow.GetFromWindowId(windowId);
-            //appWindow.Resize(new Windows.Graphics.SizeInt32(1200, 720));
-            SetWindowSize(m_windowHandle, 875, 875);
+                //Issue: https://github.com/microsoft/microsoft-ui-xaml/issues/6353
+                //IntPtr hWnd = WinRT.Interop.WindowNative.GetWindowHandle(m_window);
+                //var windowId = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(hWnd);
+                //var appWindow = Microsoft.UI.Windowing.AppWindow.GetFromWindowId(windowId);
+                //appWindow.Resize(new Windows.Graphics.SizeInt32(1200, 720));
+                SetWindowSize(m_windowHandle, 875, 875);
+            }
+            catch
+            { }
         }
 
         private IServiceProvider ConfigureServices()

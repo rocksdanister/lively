@@ -117,7 +117,7 @@ namespace Lively.UI.WinUI.Views.Pages
                         {
                             Title = "Properties",
                             Content = new LivelyPropertiesView(obj),
-                            PrimaryButtonText = "OK",
+                            PrimaryButtonText = "Close",
                             DefaultButton = ContentDialogButton.Primary,
                             XamlRoot = this.Content.XamlRoot,
                         }.ShowAsyncQueue();
