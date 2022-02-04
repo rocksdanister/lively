@@ -16,7 +16,7 @@
                     <controls:Setting
                         Description="Set what to do when fullscreen games/apps are running."
                         Header="Application Fullscreen"
-                        Icon="&#xE740;">
+                        Icon="&#xE90E;">
                         <controls:Setting.ActionContent>
                             <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedAppFullScreenIndex, Mode=TwoWay}">
                                 <ComboBoxItem Content="Pause" />
@@ -83,7 +83,7 @@
                     </controls:Setting>
                 </controls:SettingsGroup>
 
-                <controls:SettingsGroup Header="Excluded apps" Visibility="Collapsed">
+                <controls:SettingsGroup Header="Excluded apps">
                     <controls:Setting
                         Description="Set different playback rules based on running application."
                         Header="Application Rules"

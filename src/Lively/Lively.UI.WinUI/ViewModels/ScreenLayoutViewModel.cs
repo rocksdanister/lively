@@ -10,6 +10,7 @@ using Lively.Grpc.Client;
 using Lively.Models;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.Input;
+using Microsoft.UI.Xaml;
 
 namespace Lively.UI.WinUI.ViewModels
 {
@@ -183,10 +184,8 @@ namespace Lively.UI.WinUI.ViewModels
 
         #region helpers
 
-        public void OnWindowClosing(object sender, CancelEventArgs e)
-        {
-            desktopCore.WallpaperChanged -= SetupDesktop_WallpaperChanged;
-        }
+        public void OnWindowClosing(object sender, RoutedEventArgs e) 
+            => desktopCore.WallpaperChanged -= SetupDesktop_WallpaperChanged;
 
         private void UpdateLayout()
         {

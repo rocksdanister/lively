@@ -76,22 +76,17 @@ namespace Lively.UI.WinUI
         /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
-            try
-            {
-                m_window = Services.GetRequiredService<MainWindow>();
-                var windowNative = m_window.As<IWindowNative>();
-                var m_windowHandle = windowNative.WindowHandle;
-                m_window.Activate();
+            m_window = Services.GetRequiredService<MainWindow>();
+            var windowNative = m_window.As<IWindowNative>();
+            var m_windowHandle = windowNative.WindowHandle;
+            m_window.Activate();
 
-                //Issue: https://github.com/microsoft/microsoft-ui-xaml/issues/6353
-                //IntPtr hWnd = WinRT.Interop.WindowNative.GetWindowHandle(m_window);
-                //var windowId = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(hWnd);
-                //var appWindow = Microsoft.UI.Windowing.AppWindow.GetFromWindowId(windowId);
-                //appWindow.Resize(new Windows.Graphics.SizeInt32(1200, 720));
-                SetWindowSize(m_windowHandle, 875, 875);
-            }
-            catch
-            { }
+            //Issue: https://github.com/microsoft/microsoft-ui-xaml/issues/6353
+            //IntPtr hWnd = WinRT.Interop.WindowNative.GetWindowHandle(m_window);
+            //var windowId = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(hWnd);
+            //var appWindow = Microsoft.UI.Windowing.AppWindow.GetFromWindowId(windowId);
+            //appWindow.Resize(new Windows.Graphics.SizeInt32(1200, 720));
+            SetWindowSize(m_windowHandle, 875, 875);
         }
 
         private IServiceProvider ConfigureServices()

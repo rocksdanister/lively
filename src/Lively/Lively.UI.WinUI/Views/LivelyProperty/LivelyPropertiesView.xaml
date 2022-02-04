@@ -10,10 +10,7 @@
 
     <Grid>
         <ScrollViewer>
-            <StackPanel
-                Name="uiPanel"
-                HorizontalAlignment="Center"
-                Orientation="Vertical" />
+            <StackPanel Name="uiPanel" Orientation="Vertical" />
         </ScrollViewer>
     </Grid>
 </Page>

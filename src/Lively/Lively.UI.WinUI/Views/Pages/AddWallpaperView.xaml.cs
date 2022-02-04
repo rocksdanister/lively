@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 
@@ -27,5 +28,25 @@ namespace Lively.UI.WinUI.Views.Pages
         {
             this.InitializeComponent();
         }
+
+        private void Page_Drop(object sender, DragEventArgs e)
+        {
+            this.addPanel.Visibility = Visibility.Visible;
+            this.addPanelDrop.Visibility = Visibility.Collapsed;
+        }
+
+        private void Page_DragOver(object sender, DragEventArgs e)
+        {
+            e.AcceptedOperation = DataPackageOperation.Copy;
+            this.addPanel.Visibility = Visibility.Collapsed;
+            this.addPanelDrop.Visibility = Visibility.Visible;
+        }
+
+        private void Page_DragLeave(object sender, DragEventArgs e)
+        {
+            this.addPanel.Visibility = Visibility.Visible;
+            this.addPanelDrop.Visibility = Visibility.Collapsed;
+        }
+
     }
 }

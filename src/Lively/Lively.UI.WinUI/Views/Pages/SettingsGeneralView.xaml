@@ -85,6 +85,7 @@
                     <controls:SettingExpander IsExpanded="True">
                         <controls:SettingExpander.Header>
                             <controls:Setting
+                                Name="audioBtn"
                                 Description="Volume level of all wallpapers"
                                 Header="Volume"
                                 Icon="&#xE767;"
@@ -94,6 +95,7 @@
                                         MinWidth="{StaticResource SettingActionControlMinWidth}"
                                         Maximum="100"
                                         Minimum="0"
+                                        ValueChanged="Slider_ValueChanged"
                                         Value="{Binding GlobalWallpaperVolume, Mode=TwoWay}" />
                                 </controls:Setting.ActionContent>
                             </controls:Setting>

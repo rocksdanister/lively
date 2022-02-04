@@ -6,9 +6,12 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Lively.UI.WinUI.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    AllowDrop="True"
+    DragLeave="Page_DragLeave"
+    DragOver="Page_DragOver"
+    Drop="Page_Drop"
     mc:Ignorable="d">
 
-    <!--  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"  -->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="200" />
@@ -23,7 +26,11 @@
                 StrokeDashCap="Flat"
                 StrokeDashOffset="1.5"
                 StrokeThickness="2" />
-            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel
+                Name="addPanel"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Visibility="Visible">
                 <FontIcon
                     FontSize="45"
                     Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
@@ -37,6 +44,21 @@
                     Margin="0,15,0,0"
                     Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
                     Text="Simply drag and drop file here" />
+            </StackPanel>
+
+            <StackPanel
+                Name="addPanelDrop"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Visibility="Collapsed">
+                <FontIcon
+                    FontSize="45"
+                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
+                    Glyph="&#xE710;" />
+                <TextBlock
+                    Margin="0,15,0,0"
+                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
+                    Text="Add Wallpaper" />
             </StackPanel>
         </Grid>
 
