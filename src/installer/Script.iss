@@ -2,10 +2,10 @@
 ; https://jrsoftware.org/isinfo.php
 
 #define MyAppName "Lively Wallpaper"
-#define MyAppVersion "1.7.4.0"
+#define MyAppVersion "1.9.0.0"
 #define MyAppPublisher "rocksdanister"
 #define MyAppURL "https://github.com/rocksdanister/lively"
-#define MyAppExeName "livelywpf.exe"
+#define MyAppExeName "Lively.exe"
 
 [CustomMessages]
 english.RunAtStartup=Start with Windows
@@ -66,18 +66,19 @@ Name: "windowsstartup";Description: "{cm:RunAtStartup}"
 
 [Registry]
 ;current user only
-Root: HKCU; Subkey: "Software\Microsoft\Windows\CurrentVersion\Run"; ValueType: string; ValueName: "livelywpf"; ValueData: """{app}\livelywpf.exe"""; Flags: uninsdeletevalue; Tasks:windowsstartup
+Root: HKCU; Subkey: "Software\Microsoft\Windows\CurrentVersion\Run"; ValueType: string; ValueName: "Lively"; ValueData: """{app}\Lively.exe"""; Flags: uninsdeletevalue; Tasks:windowsstartup
 
 ;[UninstallDelete]
 
 [Files]
 Source: "VC\VC_redist.x86.exe"; DestDir: {tmp}; Flags: deleteafterinstall
-Source: "dotnetcore\windowsdesktop-runtime-3.1.21-win-x86.exe"; DestDir: {tmp}; Flags: deleteafterinstall
-Source: "dotnetcore\netcorecheck.exe"; DestDir: {tmp}; Flags: deleteafterinstall
-
+; https://docs.microsoft.com/en-us/windows/apps/windows-app-sdk/deploy-unpackaged-apps
+Source: "WindowsAppRuntime\WindowsAppRuntimeInstall_x86.exe"; DestDir: {tmp}; Flags: deleteafterinstall
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
-Source: "Release\livelywpf.exe"; DestDir: "{app}"; Flags: ignoreversion;
+Source: "Release\Lively.exe"; DestDir: "{app}"; Flags: ignoreversion;
 Source: "Release\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs;
+;Source: "dotnetcore\windowsdesktop-runtime-3.1.21-win-x86.exe"; DestDir: {tmp}; Flags: deleteafterinstall
+;Source: "dotnetcore\netcorecheck.exe"; DestDir: {tmp}; Flags: deleteafterinstall
 
 [Icons]
 Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
@@ -87,8 +88,8 @@ Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: de
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall; Check: AutoLaunch 
 ;skipifsilent
 Filename: "{tmp}\VC_redist.x86.exe"; Parameters: /install /quiet /norestart; Check: VCRedistNeedsInstall and DependencyInstall; StatusMsg: Installing Visual C++ Redistributable...
-;todo:write loop for Check
-Filename: "{tmp}\windowsdesktop-runtime-3.1.21-win-x86.exe"; Parameters: /install /quiet /norestart; Check: NetCoreNeedsInstall('3.1.20') and DependencyInstall;  StatusMsg: Installing .Net Core 3.1.21...
+Filename: "{tmp}\WindowsAppRuntimeInstall_x86.exe"; Parameters: --quiet; Check: DependencyInstall; Flags: runhidden; StatusMsg: Installing Windows App SDK...
+;Filename: "{tmp}\windowsdesktop-runtime-3.1.21-win-x86.exe"; Parameters: /install /quiet /norestart; Check: NetCoreNeedsInstall('3.1.20') and DependencyInstall;  StatusMsg: Installing .Net Core 3.1.21...
 
 [Code]
 var
