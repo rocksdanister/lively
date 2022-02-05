@@ -14,6 +14,10 @@ namespace Lively.Common.Helpers.Pinvoke
     public static class NativeMethods
     {
         [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
+        public static extern IntPtr LoadImage(IntPtr hinst, string lpszName, uint uType,
+            int cxDesired, int cyDesired, uint fuLoad);
+
+        [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
         public static extern int MessageBox(IntPtr hWnd, String text, String caption, uint type);
 
         [DllImport("User32")]

@@ -73,6 +73,11 @@
     <PRIResource Remove="Strings\en-US\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
+    <None Update="appicon.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
     <Page Update="Views\Pages\LibraryAboutView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>

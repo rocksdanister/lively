@@ -1,4 +1,5 @@
-﻿using Lively.Grpc.Client;
+﻿using Lively.Common.Helpers.Pinvoke;
+using Lively.Grpc.Client;
 using Lively.UI.WinUI.ViewModels;
 using Lively.UI.WinUI.Views;
 using Lively.UI.WinUI.Views.Pages;
@@ -16,6 +17,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Windows.Foundation;
@@ -42,7 +44,6 @@ namespace Lively.UI.WinUI
             this.userSettings = userSettings;
 
             this.InitializeComponent();
-            this.Title = "Lively Wallpaper (WinUI)";
             this.audioSlider.Value = settingsVm.GlobalWallpaperVolume;
             UpdateAudioSliderIcon(settingsVm.GlobalWallpaperVolume);
             this.controlPanelLabel.Label = $"{desktopCore.Wallpapers.Count} active wallpaper(s)";
@@ -51,9 +52,14 @@ namespace Lively.UI.WinUI
             //App startup is slower if done in NavView_Loaded..
             CreateMainMenu();
             NavViewNavigate(NavPages.library);
+
             //Issue: https://github.com/microsoft/microsoft-ui-xaml/issues/6070
             //ExtendsContentIntoTitleBar = true;
             //SetTitleBar(TitleBar);
+
+            //Issue: https://github.com/microsoft/microsoft-ui-xaml/issues/4056
+            this.Title = "Lively Wallpaper (WinUI)";
+            this.SetIcon("appicon.ico");
         }
 
         private void DesktopCore_WallpaperError(object sender, Exception e)
