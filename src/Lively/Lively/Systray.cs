@@ -42,7 +42,7 @@ namespace Lively
             //Show UI
             _notifyIcon.DoubleClick += (s, args) => runner.ShowUI();
             _notifyIcon.ContextMenuStrip = new ContextMenuStrip();
-            _notifyIcon.Icon = System.Drawing.Icon.ExtractAssociatedIcon(System.Reflection.Assembly.GetEntryAssembly().ManifestModule.Name);
+            _notifyIcon.Icon = Properties.Resources.appicon;
             _notifyIcon.Text = "Lively Wallpaper";
             _notifyIcon.Visible = userSettings.Settings.SysTrayIcon;
             _notifyIcon.ContextMenuStrip.Items.Add("Open Lively").Click += (s, e) => runner.ShowUI();
