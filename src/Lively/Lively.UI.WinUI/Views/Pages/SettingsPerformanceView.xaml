@@ -14,7 +14,7 @@
             <StackPanel Margin="10,5,10,5">
                 <controls:SettingsGroup Header="Wallpaper Playback">
                     <controls:Setting
-                        Description="Set what to do when fullscreen games/apps are running."
+                        Description="Set what to do when fullscreen games/apps are running"
                         Header="Application Fullscreen"
                         Icon="&#xE90E;">
                         <controls:Setting.ActionContent>
@@ -27,7 +27,7 @@
                     </controls:Setting>
 
                     <controls:Setting
-                        Description="Set what to do when any application is in focus."
+                        Description="Set what to do when any application is in focus"
                         Header="Application Focused"
                         Icon="&#xE90C;">
                         <controls:Setting.ActionContent>
@@ -41,7 +41,7 @@
 
                     <controls:SettingsGroup Header="Laptops">
                         <controls:Setting
-                            Description="Change playback when AC power is disconnected."
+                            Description="Change playback when AC power is disconnected"
                             Header="When on Batter Power"
                             Icon="&#xE856;">
                             <controls:Setting.ActionContent>
@@ -54,7 +54,7 @@
                         </controls:Setting>
 
                         <controls:Setting
-                            Description="Change playback when Windows Power Saving Mode is enabled."
+                            Description="Change playback when Windows Power Saving Mode is enabled"
                             Header="When on Batter Saver"
                             Icon="&#xE863;">
                             <controls:Setting.ActionContent>
@@ -70,7 +70,7 @@
 
                 <controls:SettingsGroup Header="System">
                     <controls:Setting
-                        Description="Change playback when running a Remote Desktop session."
+                        Description="Change playback when running a Remote Desktop session"
                         Header="When on Remote Desktop"
                         Icon="&#xE703;">
                         <controls:Setting.ActionContent>
@@ -83,17 +83,52 @@
                     </controls:Setting>
                 </controls:SettingsGroup>
 
-                <controls:SettingsGroup Header="Excluded apps">
-                    <controls:Setting
-                        Description="Set different playback rules based on running application."
-                        Header="Application Rules"
-                        Icon="&#xF0E3;">
-                        <Button
-                            MinWidth="150"
-                            Margin="0,10,0,0"
-                            Command="{Binding ApplicationRulesCommand}"
-                            Content="Open" />
-                    </controls:Setting>
+                <controls:SettingsGroup Header="Application">
+                    <controls:SettingExpander IsExpanded="False">
+                        <controls:SettingExpander.Header>
+                            <controls:Setting
+                                Description="Pause wallpaper when running these apps"
+                                Header="Application Rules"
+                                Icon="&#xF0E3;"
+                                Style="{StaticResource ExpanderHeaderSettingStyle}" />
+                        </controls:SettingExpander.Header>
+                        <controls:SettingExpander.Content>
+                            <Grid Margin="{StaticResource ExpanderSettingMargin}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="0.5*" />
+                                </Grid.ColumnDefinitions>
+                                <ListView
+                                    Grid.Column="0"
+                                    MinHeight="200"
+                                    MaxHeight="200"
+                                    BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"
+                                    BorderThickness="1"
+                                    CornerRadius="5"
+                                    ItemsSource="{Binding AppRules}"
+                                    SelectedItem="{Binding SelectedAppRuleItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    SelectionMode="Single">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Margin="0,5,0,5" Text="{Binding AppName}" />
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                    <Button
+                                        MinWidth="133"
+                                        Margin="5"
+                                        Command="{Binding AddAppRuleCommand}"
+                                        Content="Add" />
+                                    <Button
+                                        MinWidth="133"
+                                        Margin="5"
+                                        Command="{Binding RemoveAppRuleCommand}"
+                                        Content="Remove" />
+                                </StackPanel>
+                            </Grid>
+                        </controls:SettingExpander.Content>
+                    </controls:SettingExpander>
                 </controls:SettingsGroup>
             </StackPanel>
         </ScrollViewer>

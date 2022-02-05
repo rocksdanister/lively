@@ -17,6 +17,7 @@ using Lively.Common.Helpers.Shell;
 using Lively.Common.Helpers.Storage;
 using Lively.Grpc.Client;
 using Lively.Models;
+using Lively.UI.WinUI.Factories;
 using Lively.UI.WinUI.Helpers;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.Input;
@@ -30,6 +31,7 @@ namespace Lively.UI.WinUI.ViewModels
         private readonly IUserSettingsClient userSettings;
         private readonly IDesktopCoreClient desktopCore;
         private readonly ICommandsClient commands;
+        private readonly IApplicationsRulesFactory appRuleFactory;
         //private readonly IScreensaverService screenSaver;
         //private readonly IAppUpdaterService appUpdater;
         //private readonly ITransparentTbService ttbService;
@@ -37,14 +39,16 @@ namespace Lively.UI.WinUI.ViewModels
         public SettingsViewModel(
             IUserSettingsClient userSettings,
             IDesktopCoreClient desktopCore,
-            ICommandsClient commands)
-            //IScreensaverService screenSaver, 
-            //IAppUpdaterService appUpdater, 
-            //ITransparentTbService ttbService)
+            ICommandsClient commands,
+            IApplicationsRulesFactory appRuleFactory)
+        //IScreensaverService screenSaver, 
+        //IAppUpdaterService appUpdater, 
+        //ITransparentTbService ttbService)
         {
             this.userSettings = userSettings;
             this.desktopCore = desktopCore;
             this.commands = commands;
+            this.appRuleFactory = appRuleFactory;
             //this.screenSaver = screenSaver;
             //this.appUpdater = appUpdater;
             //this.ttbService = ttbService;
@@ -112,11 +116,14 @@ namespace Lively.UI.WinUI.ViewModels
             IsKeepUIAwake = userSettings.Settings.KeepAwakeUI;
             IsStartup = userSettings.Settings.Startup;
             SelectedLanguageItem = LocalizationUtil.GetSupportedLanguage(userSettings.Settings.Language);
+
+            //Only pause action is shown to user, rest is for internal use by editing the json file manually..
+            AppRules = new ObservableCollection<IApplicationRulesModel>(userSettings.AppRules.Where(x => x.Rule == AppRulesEnum.pause));
         }
 
 
         private readonly object _settingsLock = new object();
-        public async Task UpdateConfigFile()
+        public async Task UpdateSettingsConfigFile()
         {
             lock (_settingsLock)
                 Monitor.PulseAll(_settingsLock);
@@ -128,6 +135,24 @@ namespace Lively.UI.WinUI.ViewModels
                     if (!Monitor.Wait(_settingsLock, 500))
                     {
                         userSettings.Save<ISettingsModel>();
+                    }
+                }
+            }).ConfigureAwait(false);
+        }
+
+        private readonly object _appRulesSettingsLock = new object();
+        public async Task UpdateAppRulesConfigFile()
+        {
+            lock (_appRulesSettingsLock)
+                Monitor.PulseAll(_appRulesSettingsLock);
+
+            await Task.Run(() =>
+            {
+                lock (_appRulesSettingsLock)
+                {
+                    if (!Monitor.Wait(_appRulesSettingsLock, 500))
+                    {
+                        userSettings.Save<List<IApplicationRulesModel>>();
                     }
                 }
             }).ConfigureAwait(false);
@@ -149,7 +174,7 @@ namespace Lively.UI.WinUI.ViewModels
                 {
                     _ = commands.AutomationCommandAsync(new string[] { "--startup", JsonUtil.Serialize(value) });
                     userSettings.Settings.Startup = _isStartup;
-                    UpdateConfigFile();
+                    UpdateSettingsConfigFile();
                 }
                 OnPropertyChanged();
             }
@@ -184,7 +209,7 @@ namespace Lively.UI.WinUI.ViewModels
                 if (_selectedLanguageItem.Codes.FirstOrDefault(x => x == userSettings.Settings.Language) == null)
                 {
                     userSettings.Settings.Language = _selectedLanguageItem.Codes[0];
-                    UpdateConfigFile();
+                    UpdateSettingsConfigFile();
                     _ = commands.RestartUI();
                 }
             }
@@ -205,7 +230,7 @@ namespace Lively.UI.WinUI.ViewModels
                 if (userSettings.Settings.TileSize != _selectedTileSizeIndex)
                 {
                     userSettings.Settings.TileSize = _selectedTileSizeIndex;
-                    UpdateConfigFile();
+                    UpdateSettingsConfigFile();
                 }
             }
         }
@@ -227,7 +252,7 @@ namespace Lively.UI.WinUI.ViewModels
                 if (userSettings.Settings.LivelyGUIRendering != (LivelyGUIState)value)
                 {
                     userSettings.Settings.LivelyGUIRendering = (LivelyGUIState)value;
-                    UpdateConfigFile();
+                    UpdateSettingsConfigFile();
 
                     LivelyGUIStateChanged?.Invoke(null, (LivelyGUIState)value);
                 }
@@ -272,13 +297,13 @@ namespace Lively.UI.WinUI.ViewModels
                 if (userSettings.Settings.WallpaperDirMoveExistingWallpaperNewDir != _moveExistingWallpaperNewDir)
                 {
                     userSettings.Settings.WallpaperDirMoveExistingWallpaperNewDir = _moveExistingWallpaperNewDir;
-                    UpdateConfigFile();
+                    UpdateSettingsConfigFile();
                 }
             }
         }
 
         private RelayCommand _openWallpaperDirectory;
-        public RelayCommand OpenWallpaperDirectory => 
+        public RelayCommand OpenWallpaperDirectory =>
             _openWallpaperDirectory ??= new RelayCommand(() => FileOperations.OpenFolder(userSettings.Settings.WallpaperDir));
 
         public event EventHandler<AppTheme> AppThemeChanged;
@@ -298,7 +323,7 @@ namespace Lively.UI.WinUI.ViewModels
                 if (userSettings.Settings.ApplicationTheme != (AppTheme)value)
                 {
                     userSettings.Settings.ApplicationTheme = (AppTheme)value;
-                    UpdateConfigFile();
+                    UpdateSettingsConfigFile();
 
                     AppThemeChanged?.Invoke(this, userSettings.Settings.ApplicationTheme);
                 }
@@ -339,7 +364,7 @@ namespace Lively.UI.WinUI.ViewModels
                 if (userSettings.Settings.AppFullscreenPause != (AppRulesEnum)_selectedAppFullScreenIndex)
                 {
                     userSettings.Settings.AppFullscreenPause = (AppRulesEnum)_selectedAppFullScreenIndex;
-                    UpdateConfigFile();
+                    UpdateSettingsConfigFile();
                 }
             }
         }
@@ -359,7 +384,7 @@ namespace Lively.UI.WinUI.ViewModels
                 if (userSettings.Settings.AppFocusPause != (AppRulesEnum)_selectedAppFocusIndex)
                 {
                     userSettings.Settings.AppFocusPause = (AppRulesEnum)_selectedAppFocusIndex;
-                    UpdateConfigFile();
+                    UpdateSettingsConfigFile();
                 }
             }
         }
@@ -379,7 +404,7 @@ namespace Lively.UI.WinUI.ViewModels
                 if (userSettings.Settings.BatteryPause != (AppRulesEnum)_selectedBatteryPowerIndex)
                 {
                     userSettings.Settings.BatteryPause = (AppRulesEnum)_selectedBatteryPowerIndex;
-                    UpdateConfigFile();
+                    UpdateSettingsConfigFile();
                 }
             }
         }
@@ -399,7 +424,7 @@ namespace Lively.UI.WinUI.ViewModels
                 if (userSettings.Settings.PowerSaveModePause != (AppRulesEnum)_selectedPowerSaveModeIndex)
                 {
                     userSettings.Settings.PowerSaveModePause = (AppRulesEnum)_selectedPowerSaveModeIndex;
-                    UpdateConfigFile();
+                    UpdateSettingsConfigFile();
                 }
             }
         }
@@ -419,7 +444,7 @@ namespace Lively.UI.WinUI.ViewModels
                 if (userSettings.Settings.RemoteDesktopPause != (AppRulesEnum)_selectedRemoteDestopPowerIndex)
                 {
                     userSettings.Settings.RemoteDesktopPause = (AppRulesEnum)_selectedRemoteDestopPowerIndex;
-                    UpdateConfigFile();
+                    UpdateSettingsConfigFile();
                 }
             }
         }
@@ -439,7 +464,7 @@ namespace Lively.UI.WinUI.ViewModels
                 if (userSettings.Settings.DisplayPauseSettings != (DisplayPauseEnum)_selectedDisplayPauseRuleIndex)
                 {
                     userSettings.Settings.DisplayPauseSettings = (DisplayPauseEnum)_selectedDisplayPauseRuleIndex;
-                    UpdateConfigFile();
+                    UpdateSettingsConfigFile();
                 }
             }
         }
@@ -459,10 +484,81 @@ namespace Lively.UI.WinUI.ViewModels
                 if (userSettings.Settings.ProcessMonitorAlgorithm != (ProcessMonitorAlgorithm)_selectedPauseAlgorithmIndex)
                 {
                     userSettings.Settings.ProcessMonitorAlgorithm = (ProcessMonitorAlgorithm)_selectedPauseAlgorithmIndex;
-                    UpdateConfigFile();
+                    UpdateSettingsConfigFile();
                 }
             }
         }
+
+        #region apprules
+
+        private ObservableCollection<IApplicationRulesModel> _appRules;
+        public ObservableCollection<IApplicationRulesModel> AppRules
+        {
+            get
+            {
+                return _appRules ?? new ObservableCollection<IApplicationRulesModel>();
+            }
+            set
+            {
+                _appRules = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private IApplicationRulesModel _selectedAppRuleItem;
+        public IApplicationRulesModel SelectedAppRuleItem
+        {
+            get { return _selectedAppRuleItem; }
+            set
+            {
+                _selectedAppRuleItem = value;
+                RemoveAppRuleCommand.NotifyCanExecuteChanged();
+                OnPropertyChanged();
+            }
+        }
+
+        private RelayCommand _addAppRuleCommand;
+        public RelayCommand AddAppRuleCommand => _addAppRuleCommand ??= new RelayCommand(AppRuleAddProgram);
+
+        private RelayCommand _removeAppRuleCommand;
+        public RelayCommand RemoveAppRuleCommand =>
+            _removeAppRuleCommand ??= new RelayCommand(AppRuleRemoveProgram, () => SelectedAppRuleItem != null);
+
+        private async void AppRuleAddProgram()
+        {
+            var filePicker = new FileOpenPicker();
+            filePicker.SetOwnerWindow(App.Services.GetRequiredService<MainWindow>());
+            filePicker.FileTypeFilter.Add(".exe");
+            var file = await filePicker.PickSingleFileAsync();
+            if (file != null)
+            {
+                try
+                {
+                    var rule = appRuleFactory.CreateAppRule(file.Path, AppRulesEnum.pause);
+                    if (AppRules.Any(x => x.AppName.Equals(rule.AppName, StringComparison.Ordinal)))
+                    {
+                        return;
+                    }
+                    userSettings.AppRules.Add(rule);
+                    AppRules.Add(rule);
+                    await UpdateAppRulesConfigFile();
+                }
+                catch (Exception)
+                {
+                    //TODO
+                }
+            }
+        }
+
+        private void AppRuleRemoveProgram()
+        {
+            userSettings.AppRules.Remove(SelectedAppRuleItem);
+            AppRules.Remove(SelectedAppRuleItem);
+            UpdateAppRulesConfigFile();
+        }
+
+
+        #endregion //apprules
 
         #endregion performance
 
@@ -480,7 +576,7 @@ namespace Lively.UI.WinUI.ViewModels
                 if (userSettings.Settings.WallpaperScaling != (WallpaperScaler)_selectedWallpaperScalingIndex)
                 {
                     userSettings.Settings.WallpaperScaling = (WallpaperScaler)_selectedWallpaperScalingIndex;
-                    UpdateConfigFile();
+                    UpdateSettingsConfigFile();
                     _ = WallpaperRestart(new WallpaperType[] { WallpaperType.video, WallpaperType.picture, WallpaperType.videostream, WallpaperType.gif });
                 }
             }
@@ -498,7 +594,7 @@ namespace Lively.UI.WinUI.ViewModels
                 if (userSettings.Settings.InputForward != (InputForwardMode)_selectedWallpaperInputMode)
                 {
                     userSettings.Settings.InputForward = (InputForwardMode)_selectedWallpaperInputMode;
-                    UpdateConfigFile();
+                    UpdateSettingsConfigFile();
                 }
 
                 //todo: show msg to user desc whats happening.
@@ -528,7 +624,7 @@ namespace Lively.UI.WinUI.ViewModels
                 if (userSettings.Settings.VideoPlayer != (LivelyMediaPlayer)_selectedVideoPlayerIndex)
                 {
                     userSettings.Settings.VideoPlayer = (LivelyMediaPlayer)_selectedVideoPlayerIndex;
-                    UpdateConfigFile();
+                    UpdateSettingsConfigFile();
                     //VideoPlayerSwitch((LivelyMediaPlayer)_selectedVideoPlayerIndex);
                     _ = WallpaperRestart(new WallpaperType[] { WallpaperType.video, WallpaperType.picture, WallpaperType.videostream });
                 }
@@ -546,7 +642,7 @@ namespace Lively.UI.WinUI.ViewModels
                 if (userSettings.Settings.VideoPlayerHwAccel != _videoPlayerHWDecode)
                 {
                     userSettings.Settings.VideoPlayerHwAccel = _videoPlayerHWDecode;
-                    UpdateConfigFile();
+                    UpdateSettingsConfigFile();
                     //if mpv player is also set as gif player..
                     _ = WallpaperRestart(new WallpaperType[] { WallpaperType.video, WallpaperType.videostream, WallpaperType.gif });
                 }
@@ -567,7 +663,7 @@ namespace Lively.UI.WinUI.ViewModels
                 if (userSettings.Settings.GifPlayer != (LivelyGifPlayer)_selectedGifPlayerIndex)
                 {
                     userSettings.Settings.GifPlayer = (LivelyGifPlayer)_selectedGifPlayerIndex;
-                    UpdateConfigFile();
+                    UpdateSettingsConfigFile();
                     _ = WallpaperRestart(new WallpaperType[] { WallpaperType.gif, WallpaperType.picture });
                 }
             }
@@ -584,7 +680,7 @@ namespace Lively.UI.WinUI.ViewModels
                 if (userSettings.Settings.StreamQuality != (StreamQualitySuggestion)_selectedWallpaperStreamQualityIndex)
                 {
                     userSettings.Settings.StreamQuality = (StreamQualitySuggestion)_selectedWallpaperStreamQualityIndex;
-                    UpdateConfigFile();
+                    UpdateSettingsConfigFile();
                     _ = WallpaperRestart(new WallpaperType[] { WallpaperType.videostream });
                 }
             }
@@ -605,7 +701,7 @@ namespace Lively.UI.WinUI.ViewModels
                 if (userSettings.Settings.WebBrowser != (LivelyWebBrowser)_selectedWebBrowserIndex)
                 {
                     userSettings.Settings.WebBrowser = (LivelyWebBrowser)_selectedWebBrowserIndex;
-                    UpdateConfigFile();
+                    UpdateSettingsConfigFile();
                     _ = WallpaperRestart(new WallpaperType[] { WallpaperType.web, WallpaperType.webaudio, WallpaperType.url, WallpaperType.videostream });
                 }
             }
@@ -623,7 +719,7 @@ namespace Lively.UI.WinUI.ViewModels
                 if (userSettings.Settings.MouseInputMovAlways != _mouseMoveOnDesktop)
                 {
                     userSettings.Settings.MouseInputMovAlways = _mouseMoveOnDesktop;
-                    UpdateConfigFile();
+                    UpdateSettingsConfigFile();
                 }
             }
         }
@@ -638,7 +734,7 @@ namespace Lively.UI.WinUI.ViewModels
                 if (userSettings.Settings.WebDebugPort != _webDebuggingPort)
                 {
                     userSettings.Settings.WebDebugPort = _webDebuggingPort;
-                    UpdateConfigFile();
+                    UpdateSettingsConfigFile();
                 }
                 OnPropertyChanged();
             }
@@ -654,7 +750,7 @@ namespace Lively.UI.WinUI.ViewModels
                 if (userSettings.Settings.CefDiskCache != _cefDiskCache)
                 {
                     userSettings.Settings.CefDiskCache = _cefDiskCache;
-                    UpdateConfigFile();
+                    UpdateSettingsConfigFile();
                 }
                 OnPropertyChanged();
             }
@@ -670,7 +766,7 @@ namespace Lively.UI.WinUI.ViewModels
                 if (userSettings.Settings.AutoDetectOnlineStreams != _detectStreamWallpaper)
                 {
                     userSettings.Settings.AutoDetectOnlineStreams = _detectStreamWallpaper;
-                    UpdateConfigFile();
+                    UpdateSettingsConfigFile();
                 }
                 OnPropertyChanged();
             }
@@ -690,7 +786,7 @@ namespace Lively.UI.WinUI.ViewModels
                 if (userSettings.Settings.AudioVolumeGlobal != _globalWallpaperVolume)
                 {
                     userSettings.Settings.AudioVolumeGlobal = _globalWallpaperVolume;
-                    UpdateConfigFile();
+                    UpdateSettingsConfigFile();
                 }
                 OnPropertyChanged();
             }
@@ -709,7 +805,7 @@ namespace Lively.UI.WinUI.ViewModels
                 if (userSettings.Settings.AudioOnlyOnDesktop != _isAudioOnlyOnDesktop)
                 {
                     userSettings.Settings.AudioOnlyOnDesktop = _isAudioOnlyOnDesktop;
-                    UpdateConfigFile();
+                    UpdateSettingsConfigFile();
                 }
                 OnPropertyChanged();
             }
@@ -753,7 +849,7 @@ namespace Lively.UI.WinUI.ViewModels
                 if (userSettings.Settings.DesktopAutoWallpaper != _isDesktopAutoWallpaper)
                 {
                     userSettings.Settings.DesktopAutoWallpaper = _isDesktopAutoWallpaper;
-                    UpdateConfigFile();
+                    UpdateSettingsConfigFile();
                 }
                 OnPropertyChanged();
             }
@@ -894,7 +990,7 @@ namespace Lively.UI.WinUI.ViewModels
                 {
                     _ = commands.AutomationCommandAsync(new string[] { "--showTray", JsonUtil.Serialize(value) });
                     userSettings.Settings.SysTrayIcon = _isSysTrayIconVisible;
-                    UpdateConfigFile();
+                    UpdateSettingsConfigFile();
                 }
                 OnPropertyChanged();
             }
@@ -934,7 +1030,7 @@ namespace Lively.UI.WinUI.ViewModels
                 if (userSettings.Settings.KeepAwakeUI != _isKeepUIAwake)
                 {
                     userSettings.Settings.KeepAwakeUI = _isKeepUIAwake;
-                    UpdateConfigFile();
+                    UpdateSettingsConfigFile();
                 }
             }
         }
@@ -1134,7 +1230,7 @@ namespace Lively.UI.WinUI.ViewModels
 
             var previousDirectory = userSettings.Settings.WallpaperDir;
             userSettings.Settings.WallpaperDir = newDir;
-            UpdateConfigFile();
+            UpdateSettingsConfigFile();
             WallpaperDirectory = userSettings.Settings.WallpaperDir;
             WallpaperDirChanged?.Invoke(this, newDir);
 
