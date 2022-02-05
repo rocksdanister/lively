@@ -125,6 +125,9 @@ namespace Lively.UI.WinUI
         {
             CreateMainMenu();
             NavViewNavigate(NavPages.library);
+
+            //If audio changed in settings page..
+            this.audioSlider.Value = settingsVm.GlobalWallpaperVolume;
         }
 
         private void NavigatePage(string tag)
