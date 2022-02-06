@@ -11,6 +11,7 @@ namespace Lively.Grpc.Client
     public interface IDesktopCoreClient : IDisposable
     {
         ReadOnlyCollection<WallpaperData> Wallpapers { get; }
+        string BaseDirectory { get; }
 
         Task CloseAllWallpapers(bool terminate = false);
         Task CloseWallpaper(IDisplayMonitor monitor, bool terminate = false);

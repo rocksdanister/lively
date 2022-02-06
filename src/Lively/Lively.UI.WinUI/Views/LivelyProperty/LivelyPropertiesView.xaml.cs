@@ -761,35 +761,6 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
             bool status = false;
             try
             {
-                //todo: Use DirectoryWatcher..
-                if (wallpaperData.LivelyInfo.Type == WallpaperType.video ||
-                    wallpaperData.LivelyInfo.Type == WallpaperType.videostream ||
-                    wallpaperData.LivelyInfo.Type == WallpaperType.gif ||
-                    wallpaperData.LivelyInfo.Type == WallpaperType.picture)
-                {
-                    //user defined property file if it exists..
-                    var lpp = Path.Combine(wallpaperData.LivelyInfoFolderPath, "LivelyProperties.json");
-                    //default property file..
-                    var dlpp = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
-                                "plugins", "mpv", "api", "LivelyProperties.json");
-                    if (File.Exists(lpp))
-                    {
-                        //if user created a file at runtime.. update
-                        if (!string.Equals(wallpaperData.LivelyPropertyPath, lpp, StringComparison.OrdinalIgnoreCase))
-                        {
-                            wallpaperData.LivelyPropertyPath = lpp;
-                        }
-                    }
-                    else
-                    {
-                        //if user deleted user defined property file at runtime.. update
-                        if (!string.Equals(wallpaperData.LivelyPropertyPath, dlpp, StringComparison.OrdinalIgnoreCase))
-                        {
-                            wallpaperData.LivelyPropertyPath = dlpp;
-                        }
-                    }
-                }
-
                 File.Copy(wallpaperData.LivelyPropertyPath, livelyPropertyCopyPath, true);
                 status = true;
             }

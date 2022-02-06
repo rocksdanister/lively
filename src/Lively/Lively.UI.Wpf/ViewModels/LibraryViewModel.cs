@@ -194,6 +194,20 @@ namespace Lively.UI.Wpf.ViewModels
                     if (libItem != null)
                     {
                         tmpLibItems.Add(libItem);
+                        if (libItem.LivelyInfo.Type == WallpaperType.video || libItem.LivelyInfo.Type == WallpaperType.videostream)
+                        {
+                            if (libItem.LivelyPropertyPath == null)
+                            {
+                                try
+                                {
+                                    //default lp file for media..
+                                    var dlp = Path.Combine(Path.GetFullPath(Path.Combine(desktopCore.BaseDirectory, "Plugins", "mpv", "api", "LivelyProperties.json")));
+                                    File.Copy(dlp, Path.Combine(libItem.LivelyInfoFolderPath, "LivelyProperties.json"));
+                                    libItem.LivelyPropertyPath = dlp;
+                                }
+                                catch { }
+                            }
+                        }
                     }
                 }
             }
