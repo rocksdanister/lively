@@ -161,9 +161,7 @@ namespace Lively.UI.WinUI
             {
                 Title = "Add wallpaper",
                 Content = new AddWallpaperView(),
-                PrimaryButtonText = "Continue",
-                CloseButtonText = "Cancel",
-                IsPrimaryButtonEnabled = false,
+                PrimaryButtonText = "Close",
                 DefaultButton = ContentDialogButton.Primary,
                 XamlRoot = this.Content.XamlRoot,
             }.ShowAsyncQueue();

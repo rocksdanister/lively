@@ -123,7 +123,7 @@ namespace Lively.UI.WinUI.ViewModels
 
 
         private readonly object _settingsLock = new object();
-        public async Task UpdateSettingsConfigFile()
+        public async Task UpdateSettingsConfigFile(bool restart = false)
         {
             lock (_settingsLock)
                 Monitor.PulseAll(_settingsLock);
@@ -138,6 +138,9 @@ namespace Lively.UI.WinUI.ViewModels
                     }
                 }
             }).ConfigureAwait(false);
+
+            if (restart)
+                _ = commands.RestartUI();
         }
 
         private readonly object _appRulesSettingsLock = new object();
@@ -306,7 +309,7 @@ namespace Lively.UI.WinUI.ViewModels
         public RelayCommand OpenWallpaperDirectory =>
             _openWallpaperDirectory ??= new RelayCommand(() => FileOperations.OpenFolder(userSettings.Settings.WallpaperDir));
 
-        public event EventHandler<AppTheme> AppThemeChanged;
+        //public event EventHandler<AppTheme> AppThemeChanged;
         private int _selectedAppThemeIndex;
         public int SelectedAppThemeIndex
         {
@@ -323,9 +326,8 @@ namespace Lively.UI.WinUI.ViewModels
                 if (userSettings.Settings.ApplicationTheme != (AppTheme)value)
                 {
                     userSettings.Settings.ApplicationTheme = (AppTheme)value;
-                    UpdateSettingsConfigFile();
-
-                    AppThemeChanged?.Invoke(this, userSettings.Settings.ApplicationTheme);
+                    UpdateSettingsConfigFile(true);
+                    //AppThemeChanged?.Invoke(this, userSettings.Settings.ApplicationTheme);
                 }
             }
         }

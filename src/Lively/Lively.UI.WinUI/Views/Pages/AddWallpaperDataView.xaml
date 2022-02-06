@@ -1,0 +1,54 @@
+﻿<Page
+    x:Class="Lively.UI.WinUI.Views.Pages.AddWallpaperDataView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:Lively.UI.WinUI.Views.Pages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid>
+        <ScrollViewer>
+            <StackPanel>
+                <TextBlock Text="Title" />
+                <TextBox
+                    Name="textboxTitle"
+                    Height="20"
+                    MaxHeight="20"
+                    Margin="10,5,25,10"
+                    IsEnabled="{Binding IsUserEditable}"
+                    Text="{Binding Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                <TextBlock Text="Desc" />
+                <TextBox
+                    Name="textboxDesc"
+                    Height="81"
+                    MaxHeight="81"
+                    Margin="10,5,25,10"
+                    Padding="10,10,15,10"
+                    AcceptsReturn="True"
+                    IsEnabled="{Binding IsUserEditable}"
+                    Text="{Binding Desc, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    TextWrapping="Wrap" />
+
+                <TextBlock Text="Author" />
+                <TextBox
+                    Name="textboxAuthor"
+                    Height="20"
+                    MaxHeight="20"
+                    Margin="10,5,25,10"
+                    IsEnabled="{Binding IsUserEditable}"
+                    Text="{Binding Author, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                <TextBlock Text="Website" />
+                <TextBox
+                    Name="textboxContact"
+                    Height="20"
+                    MaxHeight="20"
+                    Margin="10,5,25,0"
+                    IsEnabled="{Binding IsUserEditable}"
+                    Text="{Binding Url, Mode=TwoWay}" />
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>
