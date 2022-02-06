@@ -13,6 +13,7 @@ service DesktopService {
   rpc SubscribeWallpaperChanged (google.protobuf.Empty) returns (stream google.protobuf.Empty);
   rpc SubscribeWallpaperError (google.protobuf.Empty) returns (stream WallpaperErrorResponse);
   rpc SendMessageWallpaper(WallpaperMessageRequest) returns (google.protobuf.Empty);
+  rpc GetCoreStats (google.protobuf.Empty) returns (GetCoreStatsResponse);
 }
 
 message SetWallpaperRequest {
@@ -27,6 +28,10 @@ message GetWallpapersResponse {
   string thumbnail_path = 4;
   string preview_path = 5;
   WallpaperCategory category = 6;
+}
+
+message GetCoreStatsResponse {
+	string base_directory = 1;
 }
 
 message PreviewWallpaperRequest {

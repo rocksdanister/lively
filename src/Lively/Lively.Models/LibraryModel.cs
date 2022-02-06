@@ -127,20 +127,6 @@ namespace Lively.Models
             //Use animated gif if exists.
             ImagePath = preferPreviewGif ?
                 (File.Exists(PreviewClipPath) ? PreviewClipPath : ThumbnailPath) : ThumbnailPath;
-
-            if (data.Type == WallpaperType.video ||
-                data.Type == WallpaperType.videostream ||
-                data.Type == WallpaperType.gif ||
-                data.Type == WallpaperType.picture)
-            {
-                //No user made livelyproperties file if missing, using default for video.
-                if (LivelyPropertyPath == null)
-                {
-                    LivelyPropertyPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
-                        "plugins", "mpv", "api", "LivelyProperties.json");
-                }
-            }
-
             ItemStartup = false;
         }
 

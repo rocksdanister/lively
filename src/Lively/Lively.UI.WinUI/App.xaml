@@ -29,7 +29,7 @@
                         x:Key="AcrylicInAppCustomGridBrush"
                         FallbackColor="{ThemeResource SystemAltMediumColor}"
                         TintColor="#FCFCFC"
-                        TintOpacity="0.0" />
+                        TintOpacity="0.5" />
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
         </ResourceDictionary>

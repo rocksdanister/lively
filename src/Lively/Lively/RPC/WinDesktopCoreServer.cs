@@ -40,6 +40,14 @@ namespace Lively.RPC
             this.displayManager = displayManager;
         }
 
+        public override Task<GetCoreStatsResponse> GetCoreStats(Empty _, ServerCallContext context)
+        {
+            return Task.FromResult(new GetCoreStatsResponse()
+            {
+                BaseDirectory = AppDomain.CurrentDomain.BaseDirectory
+            });
+        }
+
         public override Task<Empty> SetWallpaper(SetWallpaperRequest request, ServerCallContext context)
         {
             try
