@@ -1,4 +1,6 @@
-﻿using Microsoft.UI.Xaml;
+﻿using Lively.UI.WinUI.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Data;
@@ -27,6 +29,7 @@ namespace Lively.UI.WinUI.Views.Pages
         public AddWallpaperView()
         {
             this.InitializeComponent();
+            this.DataContext = App.Services.GetRequiredService<AddWallpaperViewModel>();
         }
 
         private void Page_Drop(object sender, DragEventArgs e)

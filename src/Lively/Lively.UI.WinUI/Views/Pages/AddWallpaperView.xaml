@@ -68,7 +68,10 @@
                 Description="Choose a file."
                 Header="Select a file to set it as wallpaper"
                 Icon="&#xEB9F;">
-                <Button MinWidth="150" Content="Browse" />
+                <Button
+                    MinWidth="150"
+                    Command="{Binding BrowseFileCommand}"
+                    Content="Browse" />
             </controls:Setting>
 
             <controls:SettingExpander Margin="0,2.5,0,0" IsExpanded="True">
