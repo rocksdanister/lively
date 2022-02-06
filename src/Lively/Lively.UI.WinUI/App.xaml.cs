@@ -107,6 +107,7 @@ namespace Lively.UI.WinUI
                 //transient
                 //.AddTransient<HelpViewModel>()
                 //.AddTransient<AboutViewModel>()
+                .AddTransient<AddWallpaperViewModel>()
                 .AddTransient<LibraryUtil>()
                 .AddTransient<ScreenLayoutViewModel>()
                 .AddTransient<IApplicationsRulesFactory, ApplicationsRulesFactory>()

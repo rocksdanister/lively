@@ -48,19 +48,6 @@ namespace Lively.UI.Wpf.ViewModels
             }
         }
 
-        public bool IsStreamUrlTextVisible => userSettings.Settings.DebugMenu;
-
-        private string _streamUrlText;
-        public string StreamUrlText
-        {
-            get { return _streamUrlText; }
-            set
-            {
-                _streamUrlText = value;
-                OnPropertyChanged();
-            }
-        }
-
         private RelayCommand _browseWebCommand;
         public RelayCommand BrowseWebCommand
         {
@@ -107,43 +94,6 @@ namespace Lively.UI.Wpf.ViewModels
 
             userSettings.Settings.SavedURL = WebUrlText;
             userSettings.Save<ISettingsModel>();
-
-            appWindow.NavViewNavigate("library");
-            */
-        }
-
-        private RelayCommand _browseStreamCommand;
-        public RelayCommand BrowseStreamCommand
-        {
-            get
-            {
-                if (_browseStreamCommand == null)
-                {
-                    _browseStreamCommand = new RelayCommand(
-                        param => StreamBrowseAction());
-                }
-                return _browseStreamCommand;
-            }
-        }
-
-        private void StreamBrowseAction()
-        {
-            Uri uri;
-            try
-            {
-                uri = LinkHandler.SanitizeUrl(StreamUrlText);
-            }
-            catch
-            {
-                return;
-            }
-
-            /*
-            StreamUrlText = uri.OriginalString;
-            libraryVm.AddWallpaper(uri.OriginalString,
-                  WallpaperType.videostream,
-                  LibraryTileType.processing,
-                  userSettings.Settings.SelectedDisplay);
 
             appWindow.NavViewNavigate("library");
             */
