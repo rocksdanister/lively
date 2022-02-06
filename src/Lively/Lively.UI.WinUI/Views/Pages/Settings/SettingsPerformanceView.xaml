@@ -102,8 +102,7 @@
                                     Grid.Column="0"
                                     MinHeight="200"
                                     MaxHeight="200"
-                                    BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"
-                                    BorderThickness="1"
+                                    Background="{ThemeResource ControlFillColorDefault}"
                                     CornerRadius="5"
                                     ItemsSource="{Binding AppRules}"
                                     SelectedItem="{Binding SelectedAppRuleItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -115,16 +114,12 @@
                                     </ListView.ItemTemplate>
                                 </ListView>
                                 <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                                    <Button
-                                        MinWidth="133"
-                                        Margin="5"
-                                        Command="{Binding AddAppRuleCommand}"
-                                        Content="Add" />
-                                    <Button
-                                        MinWidth="133"
-                                        Margin="5"
-                                        Command="{Binding RemoveAppRuleCommand}"
-                                        Content="Remove" />
+                                    <Button Margin="5" Command="{Binding AddAppRuleCommand}">
+                                        <FontIcon FontSize="12" Glyph="&#xE710;" />
+                                    </Button>
+                                    <Button Margin="5" Command="{Binding RemoveAppRuleCommand}">
+                                        <FontIcon FontSize="12" Glyph="&#xE738;" />
+                                    </Button>
                                 </StackPanel>
                             </Grid>
                         </controls:SettingExpander.Content>

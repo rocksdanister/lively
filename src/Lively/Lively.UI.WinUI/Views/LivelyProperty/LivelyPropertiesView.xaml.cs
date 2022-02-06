@@ -190,6 +190,7 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                 }
                 else if (uiElementType.Equals("color", StringComparison.OrdinalIgnoreCase))
                 {
+                    var selectedColorBrush = GetSolidColorBrush(item.Value["value"].ToString());
                     var cpicker = new ColorPicker
                     {
                         Tag = item.Key, //used for searching the splitbtn
@@ -200,6 +201,7 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                         IsHexInputVisible = true,
                         IsAlphaEnabled = false,
                         IsAlphaSliderVisible = true,
+                        Color = selectedColorBrush.Color,
                     };
                     var eyeDropBtn = new ToggleButton()
                     {
@@ -223,7 +225,7 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                             Width = 32,
                             Height = 32,
                             CornerRadius = new CornerRadius(4),
-                            Background = GetSolidColorBrush(item.Value["value"].ToString()),
+                            Background = selectedColorBrush,
                         },
                         Flyout = new Flyout
                         {

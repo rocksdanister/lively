@@ -67,6 +67,8 @@ namespace Lively.UI.WinUI
 
             this.InitializeComponent();
             _serviceProvider = ConfigureServices();
+            SetAppTheme(Services.GetRequiredService<IUserSettingsClient>().Settings.ApplicationTheme);
+            //Services.GetRequiredService<SettingsViewModel>().AppThemeChanged += (s, e) => SetAppTheme(e);
         }
 
         /// <summary>
@@ -111,6 +113,24 @@ namespace Lively.UI.WinUI
                 .BuildServiceProvider();
 
             return provider;
+        }
+
+        //Cannot change runtime.
+        //Issue: https://github.com/microsoft/microsoft-ui-xaml/issues/4474
+        public void SetAppTheme(Common.AppTheme theme)
+        {
+            switch (theme)
+            {
+                case Common.AppTheme.Auto:
+                    //Nothing
+                    break;
+                case Common.AppTheme.Light:
+                    this.RequestedTheme = ApplicationTheme.Light;
+                    break;
+                case Common.AppTheme.Dark:
+                    this.RequestedTheme = ApplicationTheme.Dark;
+                    break;
+            }
         }
 
         public static void ShutDown()

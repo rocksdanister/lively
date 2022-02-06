@@ -16,7 +16,9 @@
   <ItemGroup>
     <None Remove="Views\LivelyProperty\LivelyPropertiesView.xaml" />
     <None Remove="Views\Pages\AboutView.xaml" />
+    <None Remove="Views\Pages\AddWallpaperDataView.xaml" />
     <None Remove="Views\Pages\AddWallpaperView.xaml" />
+    <None Remove="Views\Pages\GalleryView.xaml" />
     <None Remove="Views\Pages\HelpView.xaml" />
     <None Remove="Views\Pages\LibraryAboutView.xaml" />
     <None Remove="Views\Pages\ScreenLayoutView.xaml" />
@@ -75,6 +77,12 @@
     <None Update="appicon.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Page Update="Views\Pages\GalleryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\Pages\AddWallpaperDataView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\Pages\LibraryAboutView.xaml">
@@ -87,12 +95,12 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Views\Pages\SettingsSystemView.xaml">
+    <Page Update="Views\Pages\Settings\SettingsSystemView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Views\Pages\SettingsWallpaperView.xaml">
+    <Page Update="Views\Pages\Settings\SettingsWallpaperView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
@@ -102,12 +110,12 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Views\Pages\SettingsPerformanceView.xaml">
+    <Page Update="Views\Pages\Settings\SettingsPerformanceView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Views\Pages\SettingsGeneralView.xaml">
+    <Page Update="Views\Pages\Settings\SettingsGeneralView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

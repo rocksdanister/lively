@@ -16,6 +16,7 @@
     <Page.Resources>
         <AcrylicBrush
             x:Key="DragAcrylicBrush"
+            FallbackColor="{ThemeResource SystemAltMediumColor}"
             TintColor="{ThemeResource SystemAltMediumColor}"
             TintOpacity="1.0" />
     </Page.Resources>
@@ -41,35 +42,68 @@
                     <MenuFlyoutItem
                         x:Name="moreInformation"
                         Click="contextMenu_Click"
-                        Text="About" />
+                        Text="About">
+                        <MenuFlyoutItem.Icon>
+                            <FontIcon Glyph="&#xE946;" />
+                        </MenuFlyoutItem.Icon>
+                    </MenuFlyoutItem>
                     <MenuFlyoutItem
                         x:Name="setWallpaper"
                         Click="contextMenu_Click"
-                        Text="Set as Wallpaper" />
+                        Text="Set as Wallpaper">
+                        <MenuFlyoutItem.Icon>
+                            <FontIcon Glyph="&#xE73E;" />
+                        </MenuFlyoutItem.Icon>
+                    </MenuFlyoutItem>
                     <MenuFlyoutItem
                         x:Name="previewWallpaper"
                         Click="contextMenu_Click"
-                        Text="Preview" />
+                        Text="Preview">
+                        <MenuFlyoutItem.Icon>
+                            <FontIcon Glyph="&#xE890;" />
+                        </MenuFlyoutItem.Icon>
+                    </MenuFlyoutItem>
                     <MenuFlyoutItem
                         x:Name="customiseWallpaper"
                         Click="contextMenu_Click"
-                        Text="Customise" />
+                        Text="Customise">
+                        <MenuFlyoutItem.Icon>
+                            <FontIcon Glyph="&#xE790;" />
+                        </MenuFlyoutItem.Icon>
+                    </MenuFlyoutItem>
                     <MenuFlyoutItem
                         x:Name="showOnDisk"
                         Click="contextMenu_Click"
-                        Text="Open File Location" />
+                        Text="Open File Location">
+                        <MenuFlyoutItem.Icon>
+                            <FontIcon Glyph="&#xED25;" />
+                        </MenuFlyoutItem.Icon>
+                    </MenuFlyoutItem>
                     <MenuFlyoutItem
                         x:Name="exportWallpaper"
                         Click="contextMenu_Click"
-                        Text="Export lively .zip" />
+                        Text="Export lively .zip">
+                        <MenuFlyoutItem.Icon>
+                            <FontIcon Glyph="&#xE74E;" />
+                        </MenuFlyoutItem.Icon>
+                    </MenuFlyoutItem>
                     <MenuFlyoutItem
                         x:Name="deleteWallpaper"
                         Click="contextMenu_Click"
-                        Text="Delete" />
+                        Text="Delete">
+                        <MenuFlyoutItem.Icon>
+                            <FontIcon Glyph="&#xE74D;" />
+                        </MenuFlyoutItem.Icon>
+                    </MenuFlyoutItem>
                     <MenuFlyoutItem
                         x:Name="editWallpaper"
                         Click="contextMenu_Click"
-                        Text="Edit" />
+                        IsEnabled="False"
+                        Text="Edit">
+                        <MenuFlyoutItem.Icon>
+                            <FontIcon Glyph="&#xE70F;" />
+                        </MenuFlyoutItem.Icon>
+                    </MenuFlyoutItem>
                 </MenuFlyout.Items>
             </MenuFlyout>
             <GridView.ItemTemplate>
@@ -83,7 +117,6 @@
                         <Viewbox MaxHeight="10" MaxWidth="10" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5, 5, 5, 5">
                             <SymbolIcon Symbol="Document"/>
                         </Viewbox>
-                        -->
                         <ProgressRing
                             Width="25"
                             Height="25"
@@ -91,11 +124,13 @@
                             HorizontalAlignment="Right"
                             VerticalAlignment="Top"
                             IsActive="{Binding ItemStartup}" />
+                        -->
                         <StackPanel
                             Height="60"
                             Padding="7"
                             VerticalAlignment="Bottom"
-                            Background="{ThemeResource AcrylicInAppFillColorDefaultBrush}"
+                            Background="{ThemeResource AcrylicInAppCustomGridBrush}"
+                            Opacity="0.97"
                             Orientation="Vertical">
                             <TextBlock
                                 Margin="0,0,30,0"

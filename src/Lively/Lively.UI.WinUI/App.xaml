@@ -11,6 +11,27 @@
                 <!--  Other merged dictionaries here  -->
             </ResourceDictionary.MergedDictionaries>
             <!--  Other app resources here  -->
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Default">
+                    <AcrylicBrush
+                        x:Key="AcrylicInAppCustomGridBrush"
+                        FallbackColor="{ThemeResource SystemAltMediumColor}"
+                        TintColor="#2C2C2C"
+                        TintOpacity="0.15" />
+                </ResourceDictionary>
+
+                <ResourceDictionary x:Key="HighContrast">
+                    <SolidColorBrush x:Key="AcrylicInAppCustomGridBrush" Color="{ThemeResource SystemColorWindowColor}" />
+                </ResourceDictionary>
+
+                <ResourceDictionary x:Key="Light">
+                    <AcrylicBrush
+                        x:Key="AcrylicInAppCustomGridBrush"
+                        FallbackColor="{ThemeResource SystemAltMediumColor}"
+                        TintColor="#FCFCFC"
+                        TintOpacity="0.0" />
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

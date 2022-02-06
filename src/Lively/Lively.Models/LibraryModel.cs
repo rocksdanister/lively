@@ -23,7 +23,7 @@ namespace Lively.Models
         public LibraryModel(LivelyInfoModel data, string folderPath, LibraryItemType tileType = LibraryItemType.ready, bool preferPreviewGif = false)
         {
             DataType = tileType;
-            WallpaperCategory = "TODO: Localize";
+            WallpaperCategory = "---"; //TODO!
             LivelyInfo = new LivelyInfoModel(data);
             Title = data.Title;
             Desc = data.Desc;
