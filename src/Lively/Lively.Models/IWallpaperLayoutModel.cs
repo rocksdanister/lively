@@ -2,7 +2,7 @@
 {
     public interface IWallpaperLayoutModel
     {
-        IDisplayMonitor Display { get; set; }
+        DisplayMonitor Display { get; set; }
         string LivelyInfoPath { get; set; }
     }
 }

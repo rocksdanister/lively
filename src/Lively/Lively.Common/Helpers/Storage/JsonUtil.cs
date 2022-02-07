@@ -11,10 +11,16 @@ namespace Lively.Common.Helpers.Storage
             File.WriteAllText(path, rss.ToString());
         }
 
-        public static JObject Read(string path)
+        public static JObject ReadJObject(string path)
         {
             var json = File.ReadAllText(path);
             return JObject.Parse(json);
+        }
+
+        public static JToken ReadJToken(string path)
+        {
+            var json = File.ReadAllText(path);
+            return JToken.Parse(json);
         }
 
         public static string Serialize(object obj)

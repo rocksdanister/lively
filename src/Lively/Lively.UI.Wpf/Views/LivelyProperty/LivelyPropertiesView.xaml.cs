@@ -71,7 +71,7 @@ namespace Lively.UI.Wpf.Views.LivelyProperty
             {
                 if (livelyPropertyCopyPath != null)
                 {
-                    this.livelyPropertyCopyData = JsonUtil.Read(livelyPropertyCopyPath);
+                    this.livelyPropertyCopyData = JsonUtil.ReadJObject(livelyPropertyCopyPath);
                 }
                 GenerateUIElements();
             }

@@ -12,7 +12,7 @@ namespace Lively.Common.Helpers.Storage
             using StreamReader file = File.OpenText(filePath);
             var serializer = new JsonSerializer
             {
-                TypeNameHandling = TypeNameHandling.Auto
+                //TypeNameHandling = TypeNameHandling.Auto
             };
             var tmp = (T)serializer.Deserialize(file, typeof(T));
 
@@ -27,7 +27,7 @@ namespace Lively.Common.Helpers.Storage
                 Formatting = Formatting.Indented,
                 //serializer.Converters.Add(new JavaScriptDateTimeConverter());
                 NullValueHandling = NullValueHandling.Include,
-                TypeNameHandling = TypeNameHandling.Auto,
+                //TypeNameHandling = TypeNameHandling.Auto,
             };
 
             using StreamWriter sw = new StreamWriter(filePath);

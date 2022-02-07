@@ -45,7 +45,7 @@ namespace Lively.UI.Wpf.ViewModels
 
             foreach (var item in ScanWallpaperFolders(wallpaperScanFolders))
             {
-                LibraryItems.Add(item);
+                LibraryItems.Insert(BinarySearch(LibraryItems, item.Title), item);
             }
 
             var selectedWallpaper = desktopCore.Wallpapers.FirstOrDefault(x => x.Display.Equals(userSettings.Settings.SelectedDisplay));
@@ -169,9 +169,9 @@ namespace Lively.UI.Wpf.ViewModels
         /// </summary>
         /// <param name="folderPaths">Parent folders to search for subdirectories.</param>
         /// <returns>Sorted(based on Title) wallpaper data.</returns>
-        private List<LibraryModel> ScanWallpaperFolders(List<string> folderPaths)
+        private IEnumerable<LibraryModel> ScanWallpaperFolders(List<string> folderPaths)
         {
-            List<String[]> dir = new List<string[]>();
+            var dir = new List<string[]>();
             for (int i = 0; i < folderPaths.Count; i++)
             {
                 try
@@ -183,7 +183,6 @@ namespace Lively.UI.Wpf.ViewModels
                     Logger.Error("Skipping wp folder-scan:" + e.ToString());
                 }
             }
-            List<LibraryModel> tmpLibItems = new List<LibraryModel>();
 
             for (int i = 0; i < dir.Count; i++)
             {
@@ -193,7 +192,6 @@ namespace Lively.UI.Wpf.ViewModels
                     var libItem = ScanWallpaperFolder(currDir);
                     if (libItem != null)
                     {
-                        tmpLibItems.Add(libItem);
                         if (libItem.LivelyInfo.Type == WallpaperType.video || libItem.LivelyInfo.Type == WallpaperType.videostream)
                         {
                             if (libItem.LivelyPropertyPath == null)
@@ -208,10 +206,10 @@ namespace Lively.UI.Wpf.ViewModels
                                 catch { }
                             }
                         }
+                        yield return libItem;
                     }
                 }
             }
-            return SortWallpapers(tmpLibItems);
         }
 
         private LibraryModel ScanWallpaperFolder(string folderPath)

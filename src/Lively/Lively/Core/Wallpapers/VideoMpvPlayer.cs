@@ -78,7 +78,7 @@ namespace Lively.Core.Wallpapers
             {
                 try
                 {
-                    livelyPropertiesData = JsonUtil.Read(LivelyPropertyCopyPath);
+                    livelyPropertiesData = JsonUtil.ReadJObject(LivelyPropertyCopyPath);
                 }
                 catch (Exception e)
                 {
@@ -568,7 +568,7 @@ namespace Lively.Core.Wallpapers
                             try
                             {
                                 //load new file.
-                                livelyPropertiesData = JsonUtil.Read(LivelyPropertyCopyPath);
+                                livelyPropertiesData = JsonUtil.ReadJObject(LivelyPropertyCopyPath);
                                 //restore new property values.
                                 SetPlaybackProperties(livelyPropertiesData);
                             }

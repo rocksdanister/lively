@@ -71,7 +71,7 @@ namespace Lively.Models
         public LivelyWebBrowser WebBrowser { get; set; }
         public bool GifCapture { get; set; }
         public bool MultiFileAutoImport { get; set; }
-        public IDisplayMonitor SelectedDisplay { get; set; }
+        public DisplayMonitor SelectedDisplay { get; set; }
         public LivelyGUIState LivelyGUIRendering { get; set; }
         public string WallpaperDir { get; set; }
         public bool WallpaperDirMoveExistingWallpaperNewDir { get; set; }
@@ -120,14 +120,14 @@ namespace Lively.Models
             SavedURL = "https://www.youtube.com/watch?v=aqz-KE-bpKQ";
             ProcessMonitorAlgorithm = ProcessMonitorAlgorithm.foreground;
             WallpaperArrangement = WallpaperArrangement.per;
-            AppVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            AppVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString(); //not getting core's version?!
             Startup = true;
             IsFirstRun = true;
             ControlPanelOpened = false;
             AppFocusPause = AppRulesEnum.ignore;
             AppFullscreenPause = AppRulesEnum.pause;
             BatteryPause = AppRulesEnum.ignore;
-            VideoPlayer = LivelyMediaPlayer.wmf;
+            VideoPlayer = LivelyMediaPlayer.mpv;
             VideoPlayerHwAccel = true;
             WebBrowser = LivelyWebBrowser.cef;
             GifPlayer = LivelyGifPlayer.mpv;
@@ -156,7 +156,7 @@ namespace Lively.Models
             TileSize = 1;
             DisplayIdentification = DisplayIdentificationMode.deviceId;
             //SelectedDisplay = ScreenHelper.GetPrimaryScreen();
-            LivelyGUIRendering = LivelyGUIState.lite;
+            LivelyGUIRendering = LivelyGUIState.normal;
             WallpaperDir = Path.Combine(Constants.CommonPaths.AppDataDir, "Library");
             WallpaperDirMoveExistingWallpaperNewDir = true;
             SysTrayIcon = true;

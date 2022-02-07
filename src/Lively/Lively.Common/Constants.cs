@@ -11,7 +11,7 @@ namespace Lively.Common
         {
             //User configurable in settings
             //public static string WallpaperDir { get; set; }
-            public static string AppDataDir { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Lively Wallpaper_v2");
+            public static string AppDataDir { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Lively Wallpaper");
             public static string LogDir { get; } = Path.Combine(AppDataDir, "logs");
             public static string TempDir { get; } = Path.Combine(AppDataDir, "temp");
             public static string TempCefDir { get; } = Path.Combine(AppDataDir, "Cef");
@@ -32,7 +32,7 @@ namespace Lively.Common
         public static class ApplicationType
         {
             public static bool IsMSIX { get; } = new DesktopBridge.Helpers().IsRunningAsUwp();
-            public static ClientType Client { get; } = ClientType.winui;
+            public static ClientType Client { get; } = ClientType.wpf;
             //todo: make compile-time flag.
             public static bool IsTestBuild { get; } = false;
         }

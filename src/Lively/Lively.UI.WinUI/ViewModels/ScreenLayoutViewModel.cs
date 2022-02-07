@@ -208,7 +208,7 @@ namespace Lively.UI.WinUI.ViewModels
                                 }
                             }
                             unsortedScreenItems.Add(
-                                new ScreenLayoutModel(item, imgPath, livelyPropertyFilePath, item.Index.ToString()));
+                                new ScreenLayoutModel((DisplayMonitor)item, imgPath, livelyPropertyFilePath, item.Index.ToString()));
                         }
 
                         foreach (var item in unsortedScreenItems.OrderBy(x => x.Screen.Bounds.X).ToList())

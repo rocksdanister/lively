@@ -3,8 +3,10 @@ using Lively.Common.Helpers.Storage;
 using Lively.Core.Display;
 using Lively.Helpers;
 using Lively.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Lively.Services
@@ -25,7 +27,10 @@ namespace Lively.Services
             Load<List<IApplicationRulesModel>>();
             Load<List<IWallpaperLayoutModel>>();
 
-            Settings.SelectedDisplay ??= displayManager.PrimaryDisplayMonitor;
+            Settings.SelectedDisplay = Settings.SelectedDisplay != null ?
+                displayManager.DisplayMonitors.FirstOrDefault(x => x.Equals(Settings.SelectedDisplay)) ?? displayManager.PrimaryDisplayMonitor :
+                displayManager.PrimaryDisplayMonitor;
+
             try
             {
                 WindowsStartup.SetStartupRegistry(Settings.Startup);
@@ -43,17 +48,10 @@ namespace Lively.Services
 
         public void Save<T>()
         {
-            // ugh...
             if (typeof(T) == typeof(ISettingsModel))
             {
                 JsonStorage<ISettingsModel>.StoreData(settingsPath, Settings);
             }
-            /*
-            else if (typeof(T) == typeof(IWeatherModel))
-            {
-                JsonStorage<IWeatherModel>.StoreData(weatherPath, WeatherSettings);
-            }
-            */
             else if (typeof(T) == typeof(List<IApplicationRulesModel>))
             {
                 JsonStorage<List<IApplicationRulesModel>>.StoreData(appRulesPath, AppRules);
@@ -62,11 +60,33 @@ namespace Lively.Services
             {
                 JsonStorage<List<IWallpaperLayoutModel>>.StoreData(wallpaperLayoutPath, WallpaperLayout);
             }
+            /*
+            else if (typeof(T) == typeof(IWeatherModel))
+            {
+                JsonStorage<IWeatherModel>.StoreData(weatherPath, WeatherSettings);
+            }
+            */
             else
             {
                 throw new InvalidCastException($"Type not found: {typeof(T)}");
             }
         }
+
+        /*
+        private void HandleOldBaggage()
+        {
+            var settingsObject = JsonUtil.ReadJObject(settingsPath);
+            var currentVer = new Version(settingsObject["AppVersion"].ToString());
+            if (currentVer.CompareTo(new Version(1, 9, 0, 0)) < 0) // =v1.9 beta of Lively v2.0
+            {
+                var layoutObject = JsonUtil.ReadJToken(wallpaperLayoutPath);
+                foreach (var item in layoutObject)
+                {
+                    //TODO
+                }
+            }
+        }
+        */
 
         public void Load<T>()
         {
@@ -78,27 +98,12 @@ namespace Lively.Services
                 }
                 catch (Exception e)
                 {
-                    Logger.Error(e.ToString());
+                    Logger.Error(e);
                     Settings = new SettingsModel();
                     Save<ISettingsModel>();
                 }
 
             }
-            /*
-            else if (typeof(T) == typeof(IWeatherModel))
-            {
-                try
-                {
-                    WeatherSettings = JsonStorage<WeatherModel>.LoadData(weatherPath);
-                }
-                catch (Exception e)
-                {
-                    WeatherSettings = new WeatherModel();
-                    Save<IWeatherModel>();
-                }
-
-            }
-            */
             else if (typeof(T) == typeof(List<IApplicationRulesModel>))
             {
                 try
@@ -129,6 +134,21 @@ namespace Lively.Services
                     Save<List<IWallpaperLayoutModel>>();
                 }
             }
+            /*
+            else if (typeof(T) == typeof(IWeatherModel))
+            {
+                try
+                {
+                    WeatherSettings = JsonStorage<WeatherModel>.LoadData(weatherPath);
+                }
+                catch (Exception e)
+                {
+                    WeatherSettings = new WeatherModel();
+                    Save<IWeatherModel>();
+                }
+
+            }
+            */
             else
             {
                 throw new InvalidCastException($"Type not found: {typeof(T)}");

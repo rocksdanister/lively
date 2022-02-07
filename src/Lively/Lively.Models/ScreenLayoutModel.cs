@@ -5,7 +5,7 @@ namespace Lively.Models
 {
     public class ScreenLayoutModel : ObservableObject, IScreenLayoutModel
     {
-        public ScreenLayoutModel(IDisplayMonitor screen, string screenImagePath, string livelypropertyFilePath, string screenTitle)
+        public ScreenLayoutModel(DisplayMonitor screen, string screenImagePath, string livelypropertyFilePath, string screenTitle)
         {
             this.Screen = screen;
             this.ScreenImagePath = screenImagePath;
@@ -13,8 +13,8 @@ namespace Lively.Models
             this.ScreenTitle = screenTitle;
         }
 
-        private IDisplayMonitor _screen;
-        public IDisplayMonitor Screen
+        private DisplayMonitor _screen;
+        public DisplayMonitor Screen
         {
             get { return _screen; }
             set

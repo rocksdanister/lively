@@ -1107,28 +1107,28 @@ namespace Lively.UI.WinUI.ViewModels
 
         #region helper fns
 
-        private static bool IsVideoPlayerAvailable(LivelyMediaPlayer mp)
+        private bool IsVideoPlayerAvailable(LivelyMediaPlayer mp)
         {
             return mp switch
             {
                 LivelyMediaPlayer.libvlc => false, //depreciated
                 LivelyMediaPlayer.libmpv => false, //depreciated
-                LivelyMediaPlayer.wmf => File.Exists(Path.Combine(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\")), "plugins", "wmf", "Lively.PlayerWmf.exe")),
-                LivelyMediaPlayer.libvlcExt => File.Exists(Path.Combine(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\")), "plugins", "libVLCPlayer", "libVLCPlayer.exe")),
-                LivelyMediaPlayer.libmpvExt => File.Exists(Path.Combine(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\")), "plugins", "libMPVPlayer", "libMPVPlayer.exe")),
-                LivelyMediaPlayer.mpv => File.Exists(Path.Combine(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\")), "plugins", "mpv", "mpv.exe")), 
-                LivelyMediaPlayer.vlc => File.Exists(Path.Combine(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\")), "plugins", "vlc", "vlc.exe")),
+                LivelyMediaPlayer.wmf => File.Exists(Path.Combine(desktopCore.BaseDirectory, "plugins", "wmf", "Lively.PlayerWmf.exe")),
+                LivelyMediaPlayer.libvlcExt => File.Exists(Path.Combine(desktopCore.BaseDirectory, "plugins", "libVLCPlayer", "libVLCPlayer.exe")),
+                LivelyMediaPlayer.libmpvExt => File.Exists(Path.Combine(desktopCore.BaseDirectory, "plugins", "libMPVPlayer", "libMPVPlayer.exe")),
+                LivelyMediaPlayer.mpv => File.Exists(Path.Combine(desktopCore.BaseDirectory, "plugins", "mpv", "mpv.exe")), 
+                LivelyMediaPlayer.vlc => File.Exists(Path.Combine(desktopCore.BaseDirectory, "plugins", "vlc", "vlc.exe")),
                 _ => false,
             };
         }
 
-        private static bool IsGifPlayerAvailable(LivelyGifPlayer gp)
+        private bool IsGifPlayerAvailable(LivelyGifPlayer gp)
         {
             return gp switch
             {
                 LivelyGifPlayer.win10Img => false, //xaml island
-                LivelyGifPlayer.libmpvExt => File.Exists(Path.Combine(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\")), "plugins", "libMPVPlayer", "libMPVPlayer.exe")),
-                LivelyGifPlayer.mpv => File.Exists(Path.Combine(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\")), "plugins", "mpv", "mpv.exe")),
+                LivelyGifPlayer.libmpvExt => File.Exists(Path.Combine(desktopCore.BaseDirectory, "plugins", "libMPVPlayer", "libMPVPlayer.exe")),
+                LivelyGifPlayer.mpv => File.Exists(Path.Combine(desktopCore.BaseDirectory, "plugins", "mpv", "mpv.exe")),
                 _ => false,
             };
         }
