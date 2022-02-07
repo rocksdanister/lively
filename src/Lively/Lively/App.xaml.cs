@@ -113,10 +113,10 @@ namespace Lively
                 Services.GetRequiredService<IRunnerService>().ShowUI();
             }
 
-            var appUpdater = Services.GetRequiredService<IAppUpdaterService>();
-            appUpdater.UpdateChecked += AppUpdateChecked;
-            _ = appUpdater.CheckUpdate();
-            appUpdater.Start();
+            //var appUpdater = Services.GetRequiredService<IAppUpdaterService>();
+            //appUpdater.UpdateChecked += AppUpdateChecked;
+            //_ = appUpdater.CheckUpdate();
+            //appUpdater.Start();
         }
 
         private IServiceProvider ConfigureServices()

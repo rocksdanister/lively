@@ -120,7 +120,7 @@ namespace Lively.Models
             SavedURL = "https://www.youtube.com/watch?v=aqz-KE-bpKQ";
             ProcessMonitorAlgorithm = ProcessMonitorAlgorithm.foreground;
             WallpaperArrangement = WallpaperArrangement.per;
-            AppVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString(); //not getting core's version?!
+            AppVersion = System.Reflection.Assembly.GetEntryAssembly().GetName().Version.ToString();
             Startup = true;
             IsFirstRun = true;
             ControlPanelOpened = false;

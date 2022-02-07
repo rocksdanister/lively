@@ -59,7 +59,9 @@ namespace Lively.UI.WinUI
 
             //Issue: https://github.com/microsoft/microsoft-ui-xaml/issues/4056
             this.Title = "Lively Wallpaper (WinUI)";
-            this.SetIcon("appicon.ico");
+            this.SetIconEx("appicon.ico");
+
+            _ = StdInListener();
         }
 
         private void DesktopCore_WallpaperError(object sender, Exception e)
@@ -136,6 +138,9 @@ namespace Lively.UI.WinUI
             {
                 case "library":
                     contentFrame.Navigate(typeof(LibraryView), null, new DrillInNavigationTransitionInfo());
+                    break;
+                case "gallery":
+                    contentFrame.Navigate(typeof(GalleryView), null, new DrillInNavigationTransitionInfo());
                     break;
                 case "general":
                     contentFrame.Navigate(typeof(SettingsGeneralView), null, new DrillInNavigationTransitionInfo());
@@ -246,6 +251,80 @@ namespace Lively.UI.WinUI
             settingsAudio,
             settingsSystem,
             settingsMisc
+        }
+
+        //Actually called before window closed!
+        //Issue: https://github.com/microsoft/microsoft-ui-xaml/issues/5454
+        private void Window_Closed(object sender, WindowEventArgs args)
+        {
+            if (userSettings.Settings.KeepAwakeUI)
+            {
+                args.Handled = true;
+                NativeMethods.ShowWindow(this.GetWindowHandleEx(), (uint)NativeMethods.SHOWWINDOW.SW_HIDE);
+            }
+            else
+            {
+                App.ShutDown();
+            }
+        }
+
+        /// <summary>
+        /// std I/O redirect.
+        /// </summary>
+        private async Task StdInListener()
+        {
+            try
+            {
+                await Task.Run(async () =>
+                {
+                    while (true)
+                    {
+                        var msg = await Console.In.ReadLineAsync();
+                        if (string.IsNullOrEmpty(msg))
+                        {
+                            //When the redirected stream is closed, a null line is sent to the event handler. 
+                            break;
+                        }
+                        var args = msg.Split(' ');
+                        DispatcherQueue.TryEnqueue(() =>
+                        {
+                            if (args[0].Equals("WM", StringComparison.OrdinalIgnoreCase))
+                            {
+                                if (args[1].Equals("SHOW", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    //this.Show();
+                                    NativeMethods.ShowWindow(this.GetWindowHandleEx(), (uint)NativeMethods.SHOWWINDOW.SW_SHOW);
+                                }
+                            }
+                            else if (args[0].Equals("LM", StringComparison.OrdinalIgnoreCase))
+                            {
+
+                                /*
+                                if (args[1].Equals("SHOWCONTROLPANEL", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    //this.ShowControlPanelDialog();
+                                }
+                                else if (args[1].Equals("SHOWCUSTOMISEPANEL", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    var items = desktopCore.Wallpapers.Where(x => x.LivelyPropertyCopyPath != null);
+                                    if (items.Count() != 0)
+                                    {
+                                        //Usually this msg is sent when span/duplicate layout mode.
+                                        var model = libraryVm.LibraryItems.FirstOrDefault(x => items.First().LivelyInfoFolderPath == x.LivelyInfoFolderPath);
+                                        if (model != null)
+                                        {
+                                            var settingsWidget = new LivelyPropertiesTrayWidget(model);
+                                            settingsWidget.Show();
+                                        }
+                                    }
+                                }
+                                */
+                            }
+                        });
+                    }
+                });
+            }
+            catch { }
         }
 
         #region helpers

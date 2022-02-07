@@ -9,7 +9,7 @@
     Title="Lively Debugger"
     Width="1200"
     Height="700"
-    Background="LightGray"
+    Background="#FF2B2B2B"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Grid>
