@@ -13,7 +13,8 @@ namespace Lively.Models
     [Serializable]
     public class WallpaperLayoutModel : IWallpaperLayoutModel
     {
-        public IDisplayMonitor Display { get; set; }
+        [JsonProperty(PropertyName = "LivelyScreen")] //backward compatibility < v1.9
+        public DisplayMonitor Display { get; set; }
         public string LivelyInfoPath { get; set; }
 
         /*
@@ -25,7 +26,7 @@ namespace Lively.Models
         }
         */
 
-        public WallpaperLayoutModel(IDisplayMonitor Display, string livelyInfoPath)
+        public WallpaperLayoutModel(DisplayMonitor Display, string livelyInfoPath)
         {
             this.Display = Display;
             this.LivelyInfoPath = livelyInfoPath;

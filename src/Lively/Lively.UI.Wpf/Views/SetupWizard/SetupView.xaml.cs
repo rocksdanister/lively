@@ -36,13 +36,15 @@ namespace Lively.UI.Wpf.Views.SetupWizard
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private readonly IUserSettingsClient userSettings;
         private readonly ICommandsClient commands;
+        private readonly IDesktopCoreClient desktopCore;
         private readonly SettingsViewModel settingsVm;
 
-        public SetupView(IUserSettingsClient userSettings, ICommandsClient commands, SettingsViewModel settingsVm)
+        public SetupView(IUserSettingsClient userSettings, ICommandsClient commands, IDesktopCoreClient desktopCore ,SettingsViewModel settingsVm)
         {
             this.userSettings = userSettings;
             this.commands = commands;
             this.settingsVm = settingsVm;
+            this.desktopCore = desktopCore;
 
             InitializeComponent();
             this.DataContext = settingsVm;
@@ -123,7 +125,7 @@ namespace Lively.UI.Wpf.Views.SetupWizard
             {
                 //wallpaper bundles filenames are 0.zip, 1.zip ...
                 var sortedBundles = Directory.GetFiles(
-                    Path.Combine(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\")), "bundle"))
+                    Path.Combine(desktopCore.BaseDirectory, "bundle"))
                     .OrderBy(x => x);
 
                 foreach (var item in sortedBundles)

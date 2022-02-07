@@ -257,7 +257,7 @@ namespace Lively.PlayerWebView2
                 if (path == null)
                     return;
 
-                foreach (var item in JsonUtil.Read(path))
+                foreach (var item in JsonUtil.ReadJObject(path))
                 {
                     string uiElementType = item.Value["type"].ToString();
                     if (!uiElementType.Equals("button", StringComparison.OrdinalIgnoreCase) && !uiElementType.Equals("label", StringComparison.OrdinalIgnoreCase))

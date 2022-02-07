@@ -46,7 +46,7 @@ namespace Lively.Models
         ScreensaverIdleTime ScreensaverIdleWait { get; set; }
         bool ScreensaverLockOnResume { get; set; }
         bool ScreensaverOledWarning { get; set; }
-        IDisplayMonitor SelectedDisplay { get; set; }
+        DisplayMonitor SelectedDisplay { get; set; }
         bool Startup { get; set; }
         StreamQualitySuggestion StreamQuality { get; set; }
         TaskbarTheme SystemTaskbarTheme { get; set; }

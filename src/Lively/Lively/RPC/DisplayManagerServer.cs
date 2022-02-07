@@ -26,9 +26,9 @@ namespace Lively.RPC
             {
                 var item = new ScreenData()
                 {
-                    DeviceId = display.DeviceId,
-                    DeviceName = display.DeviceName,
-                    DisplayName = display.DisplayName,
+                    DeviceId = display.DeviceId ?? string.Empty,
+                    DeviceName = display.DeviceName ?? string.Empty,
+                    DisplayName = display.DisplayName ?? string.Empty,
                     HMonitor = display.HMonitor.ToInt32(),
                     IsPrimary = display.IsPrimary,
                     Index = display.Index,

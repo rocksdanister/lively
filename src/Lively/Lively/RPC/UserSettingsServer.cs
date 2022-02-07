@@ -144,9 +144,9 @@ namespace Lively.RPC
                 WallpaperArrangement = (WallpaperArrangementRule)settings.WallpaperArrangement,
                 SelectedDisplay = new GetScreensResponse()
                 {
-                    DeviceId = settings.SelectedDisplay.DeviceId,
-                    DeviceName = settings.SelectedDisplay.DeviceName,
-                    DisplayName = settings.SelectedDisplay.DisplayName,
+                    DeviceId = settings.SelectedDisplay.DeviceId ?? string.Empty,
+                    DeviceName = settings.SelectedDisplay.DeviceName ?? string.Empty,
+                    DisplayName = settings.SelectedDisplay.DisplayName ?? string.Empty,
                     HMonitor = settings.SelectedDisplay.HMonitor.ToInt32(),
                     IsPrimary = settings.SelectedDisplay.IsPrimary,
                     WorkingArea = new Rectangle()
