@@ -76,7 +76,7 @@ namespace Lively.Common.Helpers
         {
             string tmp = Regex.Replace(release.TagName, "[A-Za-z ]", "");
             var gitVersion = new Version(tmp);
-            var appVersion = new Version(System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString());
+            var appVersion = new Version(System.Reflection.Assembly.GetEntryAssembly().GetName().Version.ToString());
             var result = gitVersion.CompareTo(appVersion);
 
             return result;
@@ -84,7 +84,7 @@ namespace Lively.Common.Helpers
 
         public static int CompareAssemblyVersion(Version version)
         {
-            var appVersion = new Version(System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString());
+            var appVersion = new Version(System.Reflection.Assembly.GetEntryAssembly().GetName().Version.ToString());
             return version.CompareTo(appVersion);
         }
 

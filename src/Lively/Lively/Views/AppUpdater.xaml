@@ -8,7 +8,7 @@
     Title="Lively Updater"
     Width="650"
     Height="700"
-    Background="LightGray"
+    Background="#FF2B2B2B"
     Closing="Window_Closing"
     ResizeMode="CanMinimize"
     WindowStartupLocation="CenterScreen"
@@ -23,6 +23,8 @@
                 x:Name="changelog"
                 MinHeight="550"
                 MaxHeight="550"
+                Background="Gray"
+                Foreground="White"
                 IsReadOnly="True" />
             <ProgressBar
                 Name="progressBar"
