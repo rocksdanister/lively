@@ -58,7 +58,7 @@ namespace Lively.Views
             {
                 Logger.Error(e.ToString());
                 _initializedWallpaper = true;
-                this.Close();
+                //TODO: show error message
             }
         }
 

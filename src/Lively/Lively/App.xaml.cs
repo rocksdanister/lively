@@ -21,6 +21,9 @@ using Lively.Grpc.Common.Proto.Commands;
 using System.Linq;
 using Lively.Automation;
 using Lively.Views.WindowMsg;
+using Lively.Common.Helpers.Network;
+using System.Windows.Threading;
+using Lively.Views;
 
 namespace Lively
 {
@@ -109,6 +112,11 @@ namespace Lively
             {
                 Services.GetRequiredService<IRunnerService>().ShowUI();
             }
+
+            var appUpdater = Services.GetRequiredService<IAppUpdaterService>();
+            appUpdater.UpdateChecked += AppUpdateChecked;
+            _ = appUpdater.CheckUpdate();
+            appUpdater.Start();
         }
 
         private IServiceProvider ConfigureServices()
@@ -124,7 +132,7 @@ namespace Lively
                 .AddSingleton<IPlayback, Playback>()
                 .AddSingleton<IRunnerService, RunnerService>()
                 .AddSingleton<ISystray, Systray>()
-                //.AddSingleton<LibraryViewModel>() //loaded wallpapers etc..
+                .AddSingleton<IAppUpdaterService, GithubUpdaterService>()
                 .AddSingleton<RawInputMsgWindow>()
                 .AddSingleton<WndProcMsgWindow>()
                 .AddSingleton<WinDesktopCoreServer>()
@@ -137,7 +145,7 @@ namespace Lively
                 .AddTransient<ILivelyPropertyFactory, LivelyPropertyFactory>()
                 //.AddTransient<IScreenRecorder, ScreenRecorderlibScreen>()
                 .AddTransient<ICommandHandler, CommandHandler>()
-                //.AddTransient<IDownloadHelper, MultiDownloadHelper>()
+                .AddTransient<IDownloadHelper, MultiDownloadHelper>()
                 //.AddTransient<SetupView>()
                 /*
                 .AddLogging(loggingBuilder =>
@@ -164,6 +172,34 @@ namespace Lively
             server.Start();
 
             return server;
+        }
+
+        //number of times to notify user about update.
+        private int updateNotifyAmt = 1;
+        private bool updateNotify = false;
+        private void AppUpdateChecked(object sender, AppUpdaterEventArgs e)
+        {
+            var sysTray = Services.GetRequiredService<ISystray>();
+            _ = Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
+            {
+                if (e.UpdateStatus == AppUpdateStatus.available)
+                {
+                    if (updateNotifyAmt > 0)
+                    {
+                        updateNotifyAmt--;
+                        updateNotify = true;
+                        sysTray?.ShowBalloonNotification(4000,
+                            "Lively Wallpaper",
+                            "Update available!");
+                    }
+
+                    //TODO: attach to runner service instead and notify only when required!
+                    var updateWindow = new AppUpdater(e.UpdateUri, e.ChangeLog);
+                    //updateWindow.Closed += (s, e) => { updateWindow = null; };
+                    updateWindow.Show();
+                }
+                Logger.Info($"AppUpdate status: {e.UpdateStatus}");
+            }));
         }
 
         private void SetupUnhandledExceptionLogging()
