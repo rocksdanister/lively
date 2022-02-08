@@ -12,20 +12,14 @@
     <Grid>
         <ScrollViewer>
             <StackPanel Margin="10,5,10,5">
-                <controls:SettingsGroup Header="Appearance &amp; behavior">
-                    <controls:Setting
-                        Description="Set a picture of animated wallpaper as lockscreen wallpaper"
-                        Header="LockscreenPicture"
-                        Visibility="Collapsed">
+                <controls:SettingsGroup x:Uid="AppearanceBehaviour">
+                    <controls:Setting x:Uid="LockscreenPicture" Visibility="Collapsed">
                         <controls:Setting.ActionContent>
                             <ToggleSwitch IsOn="{Binding IsLockScreenAutoWallpaper, Mode=TwoWay}" />
                         </controls:Setting.ActionContent>
                     </controls:Setting>
 
-                    <controls:Setting
-                        Description="Set a picture of animated wallpaper as desktop wallpaper"
-                        Header="Desktop Picture"
-                        Icon="&#xE8B9;">
+                    <controls:Setting x:Uid="DesktopPicture" Icon="&#xE8B9;">
                         <controls:Setting.ActionContent>
                             <ToggleSwitch IsOn="{Binding IsDesktopAutoWallpaper, Mode=TwoWay}" />
                         </controls:Setting.ActionContent>
@@ -34,36 +28,32 @@
                     <controls:SettingExpander IsExpanded="True">
                         <controls:SettingExpander.Header>
                             <controls:Setting
-                                Description="Select ways to interact with wallpaper"
-                                Header="Wallpaper Input"
+                                x:Uid="WallpaperInput"
                                 Icon="&#xEC77;"
                                 Style="{StaticResource ExpanderHeaderSettingStyle}">
                                 <controls:Setting.ActionContent>
                                     <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedWallpaperInputMode, Mode=TwoWay}">
-                                        <ComboBoxItem Content="Off" />
-                                        <ComboBoxItem Content="Mouse" />
-                                        <ComboBoxItem Content="Keyboard" />
+                                        <ComboBoxItem x:Uid="TextOff" />
+                                        <ComboBoxItem x:Uid="TextMouse" />
+                                        <ComboBoxItem x:Uid="TextKeyboard" />
                                     </ComboBox>
                                 </controls:Setting.ActionContent>
                             </controls:Setting>
                         </controls:SettingExpander.Header>
                         <controls:SettingExpander.Content>
                             <controls:Setting HorizontalAlignment="Left" Style="{StaticResource ExpanderContentSettingStyle}">
-                                <CheckBox Content="Mouse interaction when application focused" IsChecked="{Binding MouseMoveOnDesktop, Mode=TwoWay}" />
+                                <CheckBox x:Uid="MouseInteractOnDesktop" IsChecked="{Binding MouseMoveOnDesktop, Mode=TwoWay}" />
                             </controls:Setting>
                         </controls:SettingExpander.Content>
                     </controls:SettingExpander>
 
-                    <controls:Setting
-                        Description="Wallpaper scaling algorithm"
-                        Header="Choose a fit"
-                        Icon="&#xE73F;">
+                    <controls:Setting x:Uid="WallpaperFit" Icon="&#xE73F;">
                         <controls:Setting.ActionContent>
                             <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedWallpaperScalingIndex, Mode=TwoWay}">
-                                <ComboBoxItem Content="None" />
-                                <ComboBoxItem Content="Fill" />
-                                <ComboBoxItem Content="Uniform" />
-                                <ComboBoxItem Content="Uniform Fill" />
+                                <ComboBoxItem x:Uid="WallpaperFitNone" />
+                                <ComboBoxItem x:Uid="WallpaperFitFill" />
+                                <ComboBoxItem x:Uid="WallpaperFitUniform" />
+                                <ComboBoxItem x:Uid="WallpaperFitUniformToFill" />
                             </ComboBox>
                         </controls:Setting.ActionContent>
                     </controls:Setting>
@@ -72,10 +62,7 @@
                 <controls:SettingsGroup Header="Plugins">
                     <controls:SettingExpander IsExpanded="False">
                         <controls:SettingExpander.Header>
-                            <controls:Setting
-                                Description="Select the player used for video wallpaper"
-                                Header="Video Player"
-                                Style="{StaticResource ExpanderHeaderSettingStyle}">
+                            <controls:Setting x:Uid="VideoPlayer" Style="{StaticResource ExpanderHeaderSettingStyle}">
                                 <controls:Setting.ActionContent>
                                     <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedVideoPlayerIndex, Mode=TwoWay}">
                                         <ComboBoxItem>wmf</ComboBoxItem>
@@ -90,10 +77,7 @@
                             </controls:Setting>
                         </controls:SettingExpander.Header>
                         <controls:SettingExpander.Content>
-                            <controls:Setting
-                                Description="Use hardware acceleration when possible"
-                                Header="GPU Decode"
-                                Style="{StaticResource ExpanderContentSettingStyle}">
+                            <controls:Setting x:Uid="VideoHardwareDecode" Style="{StaticResource ExpanderContentSettingStyle}">
                                 <CheckBox IsChecked="{Binding VideoPlayerHWDecode, Mode=TwoWay}" />
                             </controls:Setting>
                         </controls:SettingExpander.Content>
@@ -101,10 +85,7 @@
 
                     <controls:SettingExpander IsExpanded="False">
                         <controls:SettingExpander.Header>
-                            <controls:Setting
-                                Description="Select a desired video quality for online streams"
-                                Header="Stream Quality"
-                                Style="{StaticResource ExpanderHeaderSettingStyle}">
+                            <controls:Setting x:Uid="StreamWallpaperVideoQuality" Style="{StaticResource ExpanderHeaderSettingStyle}">
                                 <controls:Setting.ActionContent>
                                     <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedWallpaperStreamQualityIndex, Mode=TwoWay}">
                                         <ComboBoxItem>144p</ComboBoxItem>
@@ -119,10 +100,7 @@
                             </controls:Setting>
                         </controls:SettingExpander.Header>
                         <controls:SettingExpander.Content>
-                            <controls:Setting
-                                Description="If supported video stream is detected use video player instead"
-                                Header="Detect Streams"
-                                Style="{StaticResource ExpanderContentSettingStyle}">
+                            <controls:Setting x:Uid="StreamWallpaperDetect" Style="{StaticResource ExpanderContentSettingStyle}">
                                 <CheckBox IsChecked="{Binding DetectStreamWallpaper, Mode=TwoWay}" />
                             </controls:Setting>
                         </controls:SettingExpander.Content>
@@ -130,33 +108,24 @@
 
                     <controls:SettingExpander IsExpanded="False">
                         <controls:SettingExpander.Header>
-                            <controls:Setting
-                                Description="Select the player used for html wallpaper"
-                                Header="Web Browser"
-                                Style="{StaticResource ExpanderHeaderSettingStyle}">
+                            <controls:Setting x:Uid="WebBrowser" Style="{StaticResource ExpanderHeaderSettingStyle}">
                                 <controls:Setting.ActionContent>
                                     <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedWebBrowserIndex, Mode=TwoWay}">
-                                        <ComboBoxItem>CEF</ComboBoxItem>
-                                        <ComboBoxItem>MS Edge</ComboBoxItem>
+                                        <ComboBoxItem>CefSharp</ComboBoxItem>
+                                        <ComboBoxItem>WebView2</ComboBoxItem>
                                     </ComboBox>
                                 </controls:Setting.ActionContent>
                             </controls:Setting>
                         </controls:SettingExpander.Header>
                         <controls:SettingExpander.Content>
                             <StackPanel>
-                                <controls:Setting
-                                    Description="Select the player used for gif wallpaper"
-                                    Header="Disk Cache"
-                                    Style="{StaticResource ExpanderContentSettingStyle}">
+                                <controls:Setting x:Uid="WebBrowserDiskCache" Style="{StaticResource ExpanderContentSettingStyle}">
                                     <controls:Setting.ActionContent>
                                         <CheckBox IsChecked="{Binding CefDiskCache, Mode=TwoWay}" />
                                     </controls:Setting.ActionContent>
                                 </controls:Setting>
 
-                                <controls:Setting
-                                    Description="Enter the port for debugging webpage wallpapers, browser restart is required for changes to take effect, when ready navigate to https//localhost:portnumber to access developer console"
-                                    Header="Debug Port"
-                                    Style="{StaticResource ExpanderContentSettingStyle}">
+                                <controls:Setting x:Uid="BrowserDebuggingPort" Style="{StaticResource ExpanderContentSettingStyle}">
                                     <controls:Setting.ActionContent>
                                         <NumberBox MinWidth="200" Text="{Binding WebDebuggingPort, Mode=TwoWay}" />
                                     </controls:Setting.ActionContent>
@@ -165,7 +134,7 @@
                         </controls:SettingExpander.Content>
                     </controls:SettingExpander>
 
-                    <controls:Setting Description="Select the player used for gif wallpaper" Header="Gif Player">
+                    <controls:Setting x:Uid="GifPlayer">
                         <controls:Setting.ActionContent>
                             <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedGifPlayerIndex, Mode=TwoWay}">
                                 <ComboBoxItem>Win10</ComboBoxItem>

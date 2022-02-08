@@ -9,8 +9,18 @@ using Windows.ApplicationModel.Resources;
 
 namespace Lively.UI.WinUI.Helpers
 {
+    //Ref: https://docs.microsoft.com/en-us/windows/uwp/app-resources/localize-strings-ui-manifest
     public static class LocalizationUtil
     {
+        private static readonly ResourceLoader resourceLoader;
+
+        static LocalizationUtil()
+        {
+            //Use GetForViewIndependentUse instead of GetForCurrentView when resolving resources from code as there is no current view in non-packaged scenarios.
+            //The following exception occurs if you call GetForCurrentView in non-packaged scenarios: Resource Contexts may not be created on threads that do not have a CoreWindow.
+            resourceLoader = ResourceLoader.GetForViewIndependentUse();
+        }
+
         public static List<LanguagesModel> SupportedLanguages = new List<LanguagesModel>()
         {
             new LanguagesModel("English(en)", new string[]{"en", "en-US"}), //default
@@ -55,29 +65,29 @@ namespace Lively.UI.WinUI.Helpers
         public static LanguagesModel GetSupportedLanguage(string langCode) =>
             SupportedLanguages.FirstOrDefault(lang => lang.Codes.Contains(langCode)) ?? SupportedLanguages[0];
 
-        /*
         public static string GetLocalizedWallpaperCategory(WallpaperType type)
         {
             return type switch
             {
-                WallpaperType.app => Properties.Resources.TextApplication,
+                WallpaperType.app => resourceLoader.GetString("TextApplication"),
                 WallpaperType.unity => "Unity",
                 WallpaperType.godot => "Godot",
                 WallpaperType.unityaudio => "Unity",
                 WallpaperType.bizhawk => "Bizhawk",
-                WallpaperType.web => Properties.Resources.TextWebsite,
-                WallpaperType.webaudio => Properties.Resources.TitleAudio,
-                WallpaperType.url => Properties.Resources.TextWebsite,
-                WallpaperType.video => Properties.Resources.TextVideo,
+                WallpaperType.web => resourceLoader.GetString("TextWebsite"),
+                WallpaperType.webaudio => resourceLoader.GetString("TitleAudio"),
+                WallpaperType.url => resourceLoader.GetString("TextWebsite"),
+                WallpaperType.video => resourceLoader.GetString("TextVideo"),
                 WallpaperType.gif => "Gif",
-                WallpaperType.videostream => Properties.Resources.TextWebStream,
-                WallpaperType.picture => Properties.Resources.TextPicture,
+                WallpaperType.videostream => resourceLoader.GetString("TextWebStream"),
+                WallpaperType.picture => resourceLoader.GetString("TextPicture"),
                 //WallpaperType.heic => "HEIC",
-                (WallpaperType)(100) => Properties.Resources.TitleAppName,
-                _ => Properties.Resources.TextError,
+                (WallpaperType)(100) => resourceLoader.GetString("TitleAppName"),
+                _ => resourceLoader.GetString("TextError"),
             };
         }
 
+        /*
         /// <summary>
         /// Generating filter text for file dialog (culture localised.)
         /// </summary>

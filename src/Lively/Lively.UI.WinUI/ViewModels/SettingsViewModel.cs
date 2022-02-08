@@ -660,7 +660,7 @@ namespace Lively.UI.WinUI.ViewModels
             }
             set
             {
-                _selectedGifPlayerIndex = IsGifPlayerAvailable((LivelyGifPlayer)value) ? value : (int)LivelyGifPlayer.win10Img;
+                _selectedGifPlayerIndex = IsGifPlayerAvailable((LivelyGifPlayer)value) ? value : (int)LivelyGifPlayer.mpv;
                 OnPropertyChanged();
                 if (userSettings.Settings.GifPlayer != (LivelyGifPlayer)_selectedGifPlayerIndex)
                 {
@@ -1116,7 +1116,7 @@ namespace Lively.UI.WinUI.ViewModels
                 LivelyMediaPlayer.wmf => File.Exists(Path.Combine(desktopCore.BaseDirectory, "plugins", "wmf", "Lively.PlayerWmf.exe")),
                 LivelyMediaPlayer.libvlcExt => File.Exists(Path.Combine(desktopCore.BaseDirectory, "plugins", "libVLCPlayer", "libVLCPlayer.exe")),
                 LivelyMediaPlayer.libmpvExt => File.Exists(Path.Combine(desktopCore.BaseDirectory, "plugins", "libMPVPlayer", "libMPVPlayer.exe")),
-                LivelyMediaPlayer.mpv => File.Exists(Path.Combine(desktopCore.BaseDirectory, "plugins", "mpv", "mpv.exe")), 
+                LivelyMediaPlayer.mpv => File.Exists(Path.Combine(desktopCore.BaseDirectory, "plugins", "mpv", "mpv.exe")),
                 LivelyMediaPlayer.vlc => File.Exists(Path.Combine(desktopCore.BaseDirectory, "plugins", "vlc", "vlc.exe")),
                 _ => false,
             };

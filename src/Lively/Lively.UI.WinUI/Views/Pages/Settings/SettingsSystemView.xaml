@@ -12,11 +12,8 @@
     <Grid>
         <ScrollViewer>
             <StackPanel Margin="10,5,10,5">
-                <controls:SettingsGroup Header="Appearance">
-                    <controls:Setting
-                        Description="Change system taskbar appearance."
-                        Header="Taskbar theme"
-                        Icon="&#xE771;">
+                <controls:SettingsGroup x:Uid="AppearanceBehaviour">
+                    <controls:Setting x:Uid="TaskbarTheme" Icon="&#xE771;">
                         <controls:Setting.ActionContent>
                             <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedTaskbarThemeIndex, Mode=TwoWay}">
                                 <ComboBoxItem Content="Off" />
@@ -66,11 +63,8 @@
                     </controls:SettingExpander.Content>
                 </controls:SettingExpander>
 
-                <controls:SettingsGroup Header="Developer">
-                    <controls:Setting
-                        Description="Show developer menu."
-                        Header="Debug"
-                        Icon="&#xEC7A;">
+                <controls:SettingsGroup x:Uid="DeveloperGroup">
+                    <controls:Setting x:Uid="Debug" Icon="&#xEC7A;">
                         <controls:Setting.ActionContent>
                             <Button
                                 MinWidth="150"
@@ -79,10 +73,7 @@
                         </controls:Setting.ActionContent>
                     </controls:Setting>
 
-                    <controls:Setting
-                        Description="Create log file."
-                        Header="Log File"
-                        Icon="&#xE9F9;">
+                    <controls:Setting x:Uid="ExportLogs" Icon="&#xE9F9;">
                         <controls:Setting.ActionContent>
                             <Button
                                 MinWidth="150"

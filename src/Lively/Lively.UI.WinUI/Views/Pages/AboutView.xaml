@@ -8,6 +8,9 @@
     mc:Ignorable="d">
 
     <Grid>
-        <TextBlock>Lively Wallpaper by Rocksdanister</TextBlock>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <PersonPicture Margin="0,5,0,0" ProfilePicture="https://avatars.githubusercontent.com/rocksdanister" />
+            <TextBlock>Hi, I'm Dani John and I created Lively as a fun project..</TextBlock>
+        </StackPanel>
     </Grid>
 </Page>
