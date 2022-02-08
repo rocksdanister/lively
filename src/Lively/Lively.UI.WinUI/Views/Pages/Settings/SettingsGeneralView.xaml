@@ -12,29 +12,20 @@
     <Grid>
         <ScrollViewer>
             <StackPanel Margin="10,5,10,5">
-                <controls:SettingsGroup Header="Appearance &amp; behavior">
-                    <controls:Setting
-                        Description="Lively needs to run in the background for wallpaper playback"
-                        Header="Start with Windows"
-                        Icon="&#xE768;">
+                <controls:SettingsGroup x:Uid="AppearanceBehaviour">
+                    <controls:Setting x:Uid="Startup" Icon="&#xE768;">
                         <controls:Setting.ActionContent>
                             <ToggleSwitch IsOn="{Binding IsStartup, Mode=TwoWay}" />
                         </controls:Setting.ActionContent>
                     </controls:Setting>
 
-                    <controls:Setting
-                        Description="System-tray icon visibility, app will continue to run in the background."
-                        Header="System-tray icon"
-                        Icon="&#xED35;">
+                    <controls:Setting x:Uid="HideSysTray" Icon="&#xED35;">
                         <controls:Setting.ActionContent>
                             <ToggleSwitch IsOn="{Binding IsSysTrayIconVisible, Mode=TwoWay}" />
                         </controls:Setting.ActionContent>
                     </controls:Setting>
 
-                    <controls:Setting
-                        Description="Keep User Interface running for faster startup."
-                        Header="Fast UI"
-                        Icon="&#xEC4A;">
+                    <controls:Setting x:Uid="FastUI" Icon="&#xEC4A;">
                         <controls:Setting.ActionContent>
                             <ToggleSwitch IsOn="{Binding IsKeepUIAwake, Mode=TwoWay}" />
                         </controls:Setting.ActionContent>
@@ -53,10 +44,7 @@
                         </controls:Setting.ActionContent>
                     </controls:Setting>
                     -->
-                    <controls:Setting
-                        Description="Lively will restart to apply the new language"
-                        Header="Language"
-                        Icon="&#xF2B7;">
+                    <controls:Setting x:Uid="Language" Icon="&#xF2B7;">
                         <controls:Setting.ActionContent>
                             <ComboBox
                                 MinWidth="{StaticResource SettingActionControlMinWidth}"
@@ -67,27 +55,26 @@
                         </controls:Setting.ActionContent>
                     </controls:Setting>
 
-                    <controls:Setting Header="Theme" Icon="&#xE771;">
+                    <controls:Setting x:Uid="AppTheme" Icon="&#xE771;">
                         <controls:Setting.Description>
-                            <HyperlinkButton Content="Windows color settings" NavigateUri="ms-settings:colors" />
+                            <HyperlinkButton x:Uid="WindowsSettingsColor" NavigateUri="ms-settings:colors" />
                         </controls:Setting.Description>
                         <controls:Setting.ActionContent>
                             <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedAppThemeIndex, Mode=TwoWay}">
-                                <ComboBoxItem Content="System" />
-                                <ComboBoxItem Content="Light" />
-                                <ComboBoxItem Content="Dark" />
+                                <ComboBoxItem x:Uid="AppThemeSystem" />
+                                <ComboBoxItem x:Uid="AppThemeLight" />
+                                <ComboBoxItem x:Uid="AppThemeDark" />
                             </ComboBox>
                         </controls:Setting.ActionContent>
                     </controls:Setting>
                 </controls:SettingsGroup>
 
-                <controls:SettingsGroup Header="Audio">
+                <controls:SettingsGroup x:Uid="AudioGroup" Header="Audio">
                     <controls:SettingExpander IsExpanded="True">
                         <controls:SettingExpander.Header>
                             <controls:Setting
                                 Name="audioBtn"
-                                Description="Volume level of all wallpapers"
-                                Header="Volume"
+                                x:Uid="Audio"
                                 Icon="&#xE767;"
                                 Style="{StaticResource ExpanderHeaderSettingStyle}">
                                 <controls:Setting.ActionContent>
@@ -102,19 +89,18 @@
                         </controls:SettingExpander.Header>
                         <controls:SettingExpander.Content>
                             <CheckBox
+                                x:Uid="AudioFocused"
                                 Margin="{StaticResource ExpanderSettingMargin}"
-                                Content="Play audio only when desktop is focused"
                                 IsChecked="{Binding IsAudioOnlyOnDesktop, Mode=TwoWay}" />
                         </controls:SettingExpander.Content>
                     </controls:SettingExpander>
                 </controls:SettingsGroup>
 
-                <controls:SettingsGroup Header="File">
+                <controls:SettingsGroup x:Uid="WallpaperDirGroup" Header="File">
                     <controls:SettingExpander IsExpanded="False">
                         <controls:SettingExpander.Header>
                             <controls:Setting
-                                Description="Path used to store wallpaper"
-                                Header="Wallpaper directory"
+                                x:Uid="WallpaperDir"
                                 Icon="&#xF12B;"
                                 Style="{StaticResource ExpanderHeaderSettingStyle}">
                                 <controls:Setting.ActionContent>
@@ -128,6 +114,7 @@
                                     <Button
                                         MinWidth="450"
                                         MinHeight="35"
+                                        HorizontalContentAlignment="Left"
                                         Command="{Binding WallpaperDirectoryChangeCommand}"
                                         Content="{Binding WallpaperDirectory}" />
                                     <Button
@@ -140,6 +127,7 @@
                                 </StackPanel>
                                 <Rectangle Style="{StaticResource ExpanderSeparatorStyle}" />
                                 <CheckBox
+                                    x:Uid="WallpaperDirMoveExisting"
                                     Margin="{StaticResource ExpanderSettingMargin}"
                                     Content="Move existing wallpapers to new folder"
                                     IsChecked="{Binding MoveExistingWallpaperNewDir, Mode=TwoWay}" />

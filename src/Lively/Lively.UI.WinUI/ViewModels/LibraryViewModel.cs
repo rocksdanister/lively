@@ -14,6 +14,7 @@ using Lively.Common.Helpers.Storage;
 using Lively.Common.Helpers.Archive;
 using Lively.Grpc.Client;
 using Windows.System;
+using Lively.UI.WinUI.Helpers;
 
 namespace Lively.UI.WinUI.ViewModels
 {
@@ -172,6 +173,7 @@ namespace Lively.UI.WinUI.ViewModels
                     var libItem = ScanWallpaperFolder(currDir);
                     if (libItem != null)
                     {
+                        libItem.WallpaperCategory = LocalizationUtil.GetLocalizedWallpaperCategory(libItem.LivelyInfo.Type);
                         if (libItem.LivelyInfo.Type == WallpaperType.video || libItem.LivelyInfo.Type == WallpaperType.videostream)
                         {
                             if (libItem.LivelyPropertyPath == null)

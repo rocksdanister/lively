@@ -41,6 +41,7 @@
                             <TextBlock
                                 Margin="0,0,30,0"
                                 MaxLines="1"
+                                Style="{ThemeResource BodyTextBlockStyle}"
                                 Text="{Binding Title}" />
                             <TextBlock
                                 Margin="0,0,30,0"

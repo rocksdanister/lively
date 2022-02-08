@@ -134,4 +134,7 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Strings\ru-RU\" />
+  </ItemGroup>
 </Project>

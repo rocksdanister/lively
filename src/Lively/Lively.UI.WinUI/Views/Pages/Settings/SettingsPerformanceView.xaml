@@ -9,86 +9,90 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
+    <!--  TODO: pause algorithm, display pause rule  -->
     <Grid>
         <ScrollViewer>
             <StackPanel Margin="10,5,10,5">
-                <controls:SettingsGroup Header="Wallpaper Playback">
-                    <controls:Setting
-                        Description="Set what to do when fullscreen games/apps are running"
-                        Header="Application Fullscreen"
-                        Icon="&#xE90E;">
+                <controls:SettingsGroup x:Uid="WallpaperPlaybackGroup">
+                    <controls:Setting x:Uid="AppFullScreen" Icon="&#xE90E;">
                         <controls:Setting.ActionContent>
                             <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedAppFullScreenIndex, Mode=TwoWay}">
-                                <ComboBoxItem Content="Pause" />
-                                <ComboBoxItem Content="Nothing" />
-                                <ComboBoxItem Content="Kill" Visibility="Collapsed" />
+                                <ComboBoxItem x:Uid="TextPerformancePause" />
+                                <ComboBoxItem x:Uid="TextPerformanceNone" />
+                                <ComboBoxItem x:Uid="TextPerformanceKill" Visibility="Collapsed" />
                             </ComboBox>
                         </controls:Setting.ActionContent>
                     </controls:Setting>
 
-                    <controls:Setting
-                        Description="Set what to do when any application is in focus"
-                        Header="Application Focused"
-                        Icon="&#xE90C;">
+                    <controls:Setting x:Uid="AppFocus" Icon="&#xE90C;">
                         <controls:Setting.ActionContent>
                             <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedAppFocusIndex, Mode=TwoWay}">
-                                <ComboBoxItem Content="Pause" />
-                                <ComboBoxItem Content="Nothing" />
-                                <ComboBoxItem Content="Kill" Visibility="Collapsed" />
+                                <ComboBoxItem x:Uid="TextPerformancePause" />
+                                <ComboBoxItem x:Uid="TextPerformanceNone" />
+                                <ComboBoxItem x:Uid="TextPerformanceKill" Visibility="Collapsed" />
                             </ComboBox>
                         </controls:Setting.ActionContent>
                     </controls:Setting>
 
-                    <controls:SettingsGroup Header="Laptops">
-                        <controls:Setting
-                            Description="Change playback when AC power is disconnected"
-                            Header="When on Batter Power"
-                            Icon="&#xE856;">
+                    <controls:SettingsGroup x:Uid="LaptopWallpaperPlaybackGroup">
+                        <controls:Setting x:Uid="BatteryPower" Icon="&#xE856;">
                             <controls:Setting.ActionContent>
                                 <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedBatteryPowerIndex, Mode=TwoWay}">
-                                    <ComboBoxItem Content="Pause" />
-                                    <ComboBoxItem Content="Nothing" />
-                                    <ComboBoxItem Content="Kill" Visibility="Collapsed" />
+                                    <ComboBoxItem x:Uid="TextPerformancePause" />
+                                    <ComboBoxItem x:Uid="TextPerformanceNone" />
+                                    <ComboBoxItem x:Uid="TextPerformanceKill" Visibility="Collapsed" />
                                 </ComboBox>
                             </controls:Setting.ActionContent>
                         </controls:Setting>
 
-                        <controls:Setting
-                            Description="Change playback when Windows Power Saving Mode is enabled"
-                            Header="When on Batter Saver"
-                            Icon="&#xE863;">
+                        <controls:Setting x:Uid="PowerSavingModePower" Icon="&#xE863;">
                             <controls:Setting.ActionContent>
                                 <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedPowerSaveModeIndex, Mode=TwoWay}">
-                                    <ComboBoxItem Content="Pause" />
-                                    <ComboBoxItem Content="Nothing" />
-                                    <ComboBoxItem Content="Kill" Visibility="Collapsed" />
+                                    <ComboBoxItem x:Uid="TextPerformancePause" />
+                                    <ComboBoxItem x:Uid="TextPerformanceNone" />
+                                    <ComboBoxItem x:Uid="TextPerformanceKill" Visibility="Collapsed" />
                                 </ComboBox>
                             </controls:Setting.ActionContent>
                         </controls:Setting>
                     </controls:SettingsGroup>
                 </controls:SettingsGroup>
 
-                <controls:SettingsGroup Header="System">
-                    <controls:Setting
-                        Description="Change playback when running a Remote Desktop session"
-                        Header="When on Remote Desktop"
-                        Icon="&#xE703;">
+                <controls:SettingsGroup x:Uid="System">
+                    <controls:Setting x:Uid="RemoteDesktopPower" Icon="&#xE703;">
                         <controls:Setting.ActionContent>
                             <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedRemoteDestopPowerIndex, Mode=TwoWay}">
-                                <ComboBoxItem Content="Pause" />
-                                <ComboBoxItem Content="Nothing" />
-                                <ComboBoxItem Content="Kill" Visibility="Collapsed" />
+                                <ComboBoxItem x:Uid="TextPerformancePause" />
+                                <ComboBoxItem x:Uid="TextPerformanceNone" />
+                                <ComboBoxItem x:Uid="TextPerformanceKill" Visibility="Collapsed" />
+                            </ComboBox>
+                        </controls:Setting.ActionContent>
+                    </controls:Setting>
+
+                    <controls:Setting x:Uid="DisplayPauseRule" Icon="&#xE7F4;">
+                        <controls:Setting.ActionContent>
+                            <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedDisplayPauseRuleIndex, Mode=TwoWay}">
+                                <ComboBoxItem x:Uid="DisplayPauseRulePerScreen" />
+                                <ComboBoxItem x:Uid="DisplayPauseRuleAllScreen" />
+                            </ComboBox>
+                        </controls:Setting.ActionContent>
+                    </controls:Setting>
+
+                    <controls:Setting x:Uid="PauseAlgorithm" Icon="&#xE769;">
+                        <controls:Setting.ActionContent>
+                            <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedPauseAlgorithmIndex, Mode=TwoWay}">
+                                <ComboBoxItem x:Uid="PauseAlgorithmTypeForegroundProcess" />
+                                <ComboBoxItem x:Uid="PauseAlgorithmTypeAllProcess" />
+                                <ComboBoxItem x:Uid="PauseAlgorithmTypeExclusiveMode" />
                             </ComboBox>
                         </controls:Setting.ActionContent>
                     </controls:Setting>
                 </controls:SettingsGroup>
 
-                <controls:SettingsGroup Header="Application">
+                <controls:SettingsGroup x:Uid="Application">
                     <controls:SettingExpander IsExpanded="False">
                         <controls:SettingExpander.Header>
                             <controls:Setting
-                                Description="Pause wallpaper when running these apps"
-                                Header="Application Rules"
+                                x:Uid="AppRules"
                                 Icon="&#xF0E3;"
                                 Style="{StaticResource ExpanderHeaderSettingStyle}" />
                         </controls:SettingExpander.Header>

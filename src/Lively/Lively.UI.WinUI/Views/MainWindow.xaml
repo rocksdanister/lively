@@ -72,7 +72,7 @@
             <!--  footer  -->
             <NavigationView.PaneFooter>
                 <CommandBar Name="navCommandBar" DefaultLabelPosition="Right">
-                    <AppBarButton Click="AddWallpaperButton_Click" Label="Add Wallpaper">
+                    <AppBarButton x:Uid="AddWallpaper" Click="AddWallpaperButton_Click">
                         <AppBarButton.Icon>
                             <FontIcon Glyph="&#xE710;" />
                         </AppBarButton.Icon>
@@ -80,8 +80,8 @@
                     <AppBarSeparator />
                     <AppBarButton
                         x:Name="controlPanelLabel"
-                        Click="ControlPanelButton_Click"
-                        Label="0 active wallpaper(s)">
+                        x:Uid="ActiveWallpapers"
+                        Click="ControlPanelButton_Click">
                         <AppBarButton.Icon>
                             <FontIcon Glyph="&#xE7F4;" />
                         </AppBarButton.Icon>
@@ -101,12 +101,12 @@
                         </AppBarButton.Icon>
                     </AppBarButton>
                     <CommandBar.SecondaryCommands>
-                        <AppBarButton Click="AppBarHelpButton_Click" Label="Help">
+                        <AppBarButton x:Uid="Help" Click="AppBarHelpButton_Click">
                             <AppBarButton.Icon>
                                 <FontIcon Glyph="&#xE897;" />
                             </AppBarButton.Icon>
                         </AppBarButton>
-                        <AppBarButton Click="AppBarAboutButton_Click" Label="About">
+                        <AppBarButton x:Uid="About" Click="AppBarAboutButton_Click">
                             <AppBarButton.Icon>
                                 <FontIcon Glyph="&#xE90A;" />
                             </AppBarButton.Icon>
