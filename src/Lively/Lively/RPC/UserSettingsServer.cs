@@ -6,11 +6,15 @@ using Lively.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Threading.Tasks;
 using Lively.Common;
 using Lively.Models;
 using System.Linq;
 using System.Diagnostics;
+using Lively.Helpers;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Threading;
+using System.Threading;
 
 namespace Lively.RPC
 {
@@ -19,13 +23,17 @@ namespace Lively.RPC
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private readonly IDisplayManager displayManager;
         private readonly IUserSettingsService userSettings;
+        private readonly IRunnerService runner;
+        private readonly ISystray sysTray;
         private readonly object appRulesWriteLock = new object();
         private readonly object settingsWriteLock = new object();
 
-        public UserSettingsServer(IDisplayManager displayManager, IUserSettingsService userSettings)
+        public UserSettingsServer(IDisplayManager displayManager, IUserSettingsService userSettings, IRunnerService runner, ISystray sysTray)
         {
             this.displayManager = displayManager;
             this.userSettings = userSettings;
+            this.sysTray = sysTray;
+            this.runner = runner;
         }
 
         public override Task<AppRulesSettings> GetAppRulesSettings(Empty _, ServerCallContext context)
@@ -65,12 +73,28 @@ namespace Lively.RPC
 
         public override Task<Empty> SetSettings(SettingsDataModel req, ServerCallContext context)
         {
+            bool restartRequired = req.Language != userSettings.Settings.Language || (Common.AppTheme)req.ApplicationTheme != userSettings.Settings.ApplicationTheme;
+            if (req.Startup != userSettings.Settings.Startup)
+            {
+                userSettings.Settings.Startup = req.Startup;
+                WindowsStartup.SetStartupRegistry(userSettings.Settings.Startup);
+            }
+
+            if (req.SysTrayIcon != userSettings.Settings.SysTrayIcon)
+            {
+                userSettings.Settings.SysTrayIcon = req.SysTrayIcon;
+                _ = Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
+                {
+                    sysTray.Visibility(userSettings.Settings.SysTrayIcon);
+                }));
+            }
+
             userSettings.Settings.SavedURL = req.SavedUrl;
             userSettings.Settings.ProcessMonitorAlgorithm = (ProcessMonitorAlgorithm)((int)req.ProcessMonitorAlogorithm);
             userSettings.Settings.SelectedDisplay = displayManager.DisplayMonitors.FirstOrDefault(x => req.SelectedDisplay.DeviceId == x.DeviceId) ?? displayManager.PrimaryDisplayMonitor;
             userSettings.Settings.WallpaperArrangement = (WallpaperArrangement)((int)req.WallpaperArrangement);
             userSettings.Settings.AppVersion = req.AppVersion;
-            userSettings.Settings.Startup = req.Startup;
+            //userSettings.Settings.Startup = req.Startup;
             userSettings.Settings.IsFirstRun = req.IsFirstRun;
             userSettings.Settings.ControlPanelOpened = req.ControlPanelOpened;
             userSettings.Settings.AppFocusPause = (AppRulesEnum)((int)req.AppFocusPause);
@@ -97,7 +121,7 @@ namespace Lively.RPC
             userSettings.Settings.LivelyGUIRendering = (LivelyGUIState)((int)req.LivelyGuiRendering);
             userSettings.Settings.WallpaperDir = req.WallpaperDir;
             userSettings.Settings.WallpaperDirMoveExistingWallpaperNewDir = req.WallpaperDirMoveExistingWallpaperNewDir;
-            userSettings.Settings.SysTrayIcon = req.SysTrayIcon;
+            //userSettings.Settings.SysTrayIcon = req.SysTrayIcon;
             userSettings.Settings.WebDebugPort = req.WebDebugPort;
             userSettings.Settings.AutoDetectOnlineStreams = req.AutoDetectOnlineStreams;
             userSettings.Settings.ExtractStreamMetaData = req.ExtractStreamMetaData;
@@ -130,6 +154,10 @@ namespace Lively.RPC
                 lock (settingsWriteLock)
                 {
                     userSettings.Save<ISettingsModel>();
+                    if (restartRequired)
+                    {
+                        runner.RestartUI();
+                    }
                 }
             }
         }

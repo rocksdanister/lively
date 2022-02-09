@@ -156,8 +156,8 @@ The main purpose of Lively's screensavers is to add another layer of customizati
   <data name="DescReportBug" xml:space="preserve">
     <value>Report a problem with the software</value>
   </data>
-  <data name="DescriptionAddWallpaper" xml:space="preserve">
-    <value>Select a file or specify a website url to set as a wallpaper</value>
+  <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
+    <value>Choose a file</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
     <value>Wallpaper playback behaviour based on running application</value>
@@ -171,8 +171,8 @@ The main purpose of Lively's screensavers is to add another layer of customizati
   <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
     <value>Are you sure you want to delete this wallpaper from the Library?</value>
   </data>
-  <data name="DescriptionDragDropFIle" xml:space="preserve">
-    <value>Simply drag and drop files into Library</value>
+  <data name="DragDropFile.Text" xml:space="preserve">
+    <value>Simply drag and drop files into here</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
     <value>You are opening an external application as wallpaper.
@@ -286,7 +286,7 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="Application.Header" xml:space="preserve">
     <value>Application</value>
   </data>
-  <data name="TextAttribution" xml:space="preserve">
+  <data name="Attribution.Header" xml:space="preserve">
     <value>Attribution</value>
   </data>
   <data name="TextAuthor" xml:space="preserve">
@@ -388,7 +388,7 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="TextLearnMore" xml:space="preserve">
     <value>Learn more</value>
   </data>
-  <data name="TextLicense" xml:space="preserve">
+  <data name="License.Header" xml:space="preserve">
     <value>License</value>
   </data>
   <data name="TextMinutes" xml:space="preserve">
@@ -454,7 +454,7 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="TextPreviewWallpaper" xml:space="preserve">
     <value>Preview</value>
   </data>
-  <data name="TextPrivacyPolicy" xml:space="preserve">
+  <data name="PrivacyPolicy.Header" xml:space="preserve">
     <value>Privacy Policy</value>
   </data>
   <data name="TextProcessingWallpaper" xml:space="preserve">
@@ -604,10 +604,10 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="VideoPlayer.Header" xml:space="preserve">
     <value>Video player</value>
   </data>
-  <data name="TipAddWallpaperFileBrowse" xml:space="preserve">
+  <data name="AddWallpaperFileBrowse.Description" xml:space="preserve">
     <value>Set all supported file types as wallpaper</value>
   </data>
-  <data name="TipAddWallpaperURL" xml:space="preserve">
+  <data name="EnterUrl.Description" xml:space="preserve">
     <value>Set the web page of the URL you entered as wallpaper</value>
   </data>
   <data name="AppFocus.Description" xml:space="preserve">
@@ -760,7 +760,7 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="TitleDocumentation" xml:space="preserve">
     <value>Documentation</value>
   </data>
-  <data name="TitleEnterUrl" xml:space="preserve">
+  <data name="EnterUrl.Header" xml:space="preserve">
     <value>Enter URL</value>
   </data>
   <data name="ExportLogs.Header" xml:space="preserve">
@@ -946,5 +946,23 @@ If still not working, close &amp; start Lively again/restart windows.
   </data>
   <data name="TitleGallery" xml:space="preserve">
     <value>Gallery</value>
+  </data>
+  <data name="AboutMe.Text" xml:space="preserve">
+    <value>Hi I'm Dani John also known as rocksdanister. I developed Lively a Free and open-source (FOSS) wallpaper application. Thanks for taking the time to look at my work. You can follow me on my socials linked below for regular development updates.</value>
+  </data>
+  <data name="LicenseLink.Content" xml:space="preserve">
+    <value>Software license</value>
+  </data>
+  <data name="AttributionLink.Content" xml:space="preserve">
+    <value>Third party software notice and contributors</value>
+  </data>
+  <data name="PrivacyPolicyLink.Content" xml:space="preserve">
+    <value>Data collection policy</value>
+  </data>
+  <data name="AddWallpaperDrop.Text" xml:space="preserve">
+    <value>Add wallpaper</value>
+  </data>
+  <data name="ComingSoon.Text" xml:space="preserve">
+    <value>Coming soon</value>
   </data>
 </root>

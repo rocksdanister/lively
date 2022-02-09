@@ -41,9 +41,9 @@
                     </FontIcon.RenderTransform>
                 </FontIcon>
                 <TextBlock
+                    x:Uid="DragDropFile"
                     Margin="0,15,0,0"
-                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
-                    Text="Simply drag and drop file here" />
+                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" />
             </StackPanel>
 
             <StackPanel
@@ -56,17 +56,16 @@
                     Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
                     Glyph="&#xE710;" />
                 <TextBlock
+                    x:Uid="AddWallpaperDrop"
                     Margin="0,15,0,0"
-                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
-                    Text="Add Wallpaper" />
+                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" />
             </StackPanel>
         </Grid>
 
         <StackPanel Grid.Row="1">
             <controls:Setting
+                x:Uid="AddWallpaperFileBrowse"
                 Margin="0,10,0,0"
-                Description="Choose a file."
-                Header="Select a file to set it as wallpaper"
                 Icon="&#xEB9F;">
                 <Button
                     MinWidth="150"
@@ -77,17 +76,21 @@
             <controls:SettingExpander Margin="0,2.5,0,0" IsExpanded="True">
                 <controls:SettingExpander.Header>
                     <controls:Setting
-                        Description="Set the webpage of the URL you entered as wallpaper"
-                        Header="Enter URL"
+                        x:Uid="EnterUrl"
                         Icon="&#xE71B;"
                         Style="{StaticResource ExpanderHeaderSettingStyle}" />
                 </controls:SettingExpander.Header>
                 <controls:SettingExpander.Content>
                     <controls:Setting Style="{StaticResource ExpanderContentSettingStyle}">
-                        <TextBox
-                            Width="400"
-                            HorizontalAlignment="Left"
-                            Text="https://example.com" />
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox
+                                MinWidth="350"
+                                HorizontalAlignment="Left"
+                                Text="{Binding WebUrlText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            <Button Margin="5,0,0,0" Command="{Binding BrowseWebCommand}">
+                                <FontIcon Glyph="&#xE72A;" />
+                            </Button>
+                        </StackPanel>
                     </controls:Setting>
                 </controls:SettingExpander.Content>
             </controls:SettingExpander>

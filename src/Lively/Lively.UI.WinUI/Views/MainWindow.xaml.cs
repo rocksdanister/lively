@@ -14,15 +14,9 @@ using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.UI.Xaml.Navigation;
 using SettingsUI.Extensions;
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -203,7 +197,7 @@ namespace Lively.UI.WinUI
         {
             _ = new ContentDialog()
             {
-                Title = languageResource.GetString("About/Label"),
+                Title = new FontIcon() { Glyph = "\uE90A" },// languageResource.GetString("About/Label"),
                 Content = new AboutView(),
                 PrimaryButtonText = languageResource.GetString("TextOK"),
                 DefaultButton = ContentDialogButton.Primary,

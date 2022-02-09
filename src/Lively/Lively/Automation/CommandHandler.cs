@@ -35,12 +35,12 @@ namespace Lively.Automation
             Required = false,
             HelpText = "Open app window (true/false).")]
             public bool? ShowApp { get; set; }
-
+            /*
             [Option("showTray",
             Required = false,
             HelpText = "Tray-icon visibility (true/false).")]
             public bool? ShowTray { get; set; }
-
+            */
             [Option("showIcons",
             Required = false,
             HelpText = "Desktop icons visibility (true/false).")]
@@ -185,7 +185,7 @@ namespace Lively.Automation
                     runner.CloseUI();
                 }
             }
-
+            /*
             _ = Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
             {
                 if (opts.ShowTray != null)
@@ -193,7 +193,7 @@ namespace Lively.Automation
                     systray.Visibility((bool)opts.ShowTray);
                 }
             }));
-
+            */
             if (opts.Volume != null)
             {
                 userSettings.Settings.AudioVolumeGlobal = Clamp((int)opts.Volume, 0, 100);

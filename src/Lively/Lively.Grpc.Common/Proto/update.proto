@@ -1,0 +1,26 @@
+﻿syntax = "proto3";
+package Lively.Grpc.Common.Proto.Update;
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
+service UpdateService {
+	  rpc CheckUpdate (google.protobuf.Empty) returns (google.protobuf.Empty);
+	  rpc StartUpdate (google.protobuf.Empty) returns (google.protobuf.Empty);
+	  rpc SubscribeUpdateChecked (google.protobuf.Empty) returns (stream UpdateCheckedResponse);
+}
+
+message UpdateCheckedResponse {
+	UpdateStatus status = 1;
+	string version = 2;
+	string url = 3;
+	string changelog = 4;
+	google.protobuf.Timestamp time = 5;
+}
+
+enum UpdateStatus {
+	uptodate = 0;
+	available = 1;
+	invalid = 2;
+	notchecked = 3;
+	error = 4;
+}

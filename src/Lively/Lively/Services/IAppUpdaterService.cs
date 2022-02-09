@@ -18,6 +18,7 @@ namespace Lively.Services
         Task<(Uri, Version, string)> GetLatestRelease(bool isBeta);
         void Start();
         void Stop();
+        void ShowUpdateDialog();
     }
 
     public enum AppUpdateStatus

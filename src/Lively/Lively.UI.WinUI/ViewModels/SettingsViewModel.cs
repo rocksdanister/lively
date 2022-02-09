@@ -123,7 +123,7 @@ namespace Lively.UI.WinUI.ViewModels
 
 
         private readonly object _settingsLock = new object();
-        public async Task UpdateSettingsConfigFile(bool restart = false)
+        public async Task UpdateSettingsConfigFile()
         {
             lock (_settingsLock)
                 Monitor.PulseAll(_settingsLock);
@@ -138,9 +138,6 @@ namespace Lively.UI.WinUI.ViewModels
                     }
                 }
             }).ConfigureAwait(false);
-
-            if (restart)
-                _ = commands.RestartUI();
         }
 
         private readonly object _appRulesSettingsLock = new object();
@@ -175,7 +172,6 @@ namespace Lively.UI.WinUI.ViewModels
                 _isStartup = value;
                 if (userSettings.Settings.Startup != _isStartup)
                 {
-                    _ = commands.AutomationCommandAsync(new string[] { "--startup", JsonUtil.Serialize(value) });
                     userSettings.Settings.Startup = _isStartup;
                     UpdateSettingsConfigFile();
                 }
@@ -213,7 +209,6 @@ namespace Lively.UI.WinUI.ViewModels
                 {
                     userSettings.Settings.Language = _selectedLanguageItem.Codes[0];
                     UpdateSettingsConfigFile();
-                    _ = commands.RestartUI();
                 }
             }
         }
@@ -326,7 +321,7 @@ namespace Lively.UI.WinUI.ViewModels
                 if (userSettings.Settings.ApplicationTheme != (AppTheme)value)
                 {
                     userSettings.Settings.ApplicationTheme = (AppTheme)value;
-                    UpdateSettingsConfigFile(true);
+                    UpdateSettingsConfigFile();
                     //AppThemeChanged?.Invoke(this, userSettings.Settings.ApplicationTheme);
                 }
             }
@@ -697,7 +692,7 @@ namespace Lively.UI.WinUI.ViewModels
             }
             set
             {
-                _selectedWebBrowserIndex = value;
+                _selectedWebBrowserIndex = IsWebPlayerAvailable((LivelyWebBrowser)value) ? value : (int)LivelyWebBrowser.cef;
                 OnPropertyChanged();
 
                 if (userSettings.Settings.WebBrowser != (LivelyWebBrowser)_selectedWebBrowserIndex)
@@ -990,7 +985,7 @@ namespace Lively.UI.WinUI.ViewModels
                 _isSysTrayIconVisible = value;
                 if (userSettings.Settings.SysTrayIcon != _isSysTrayIconVisible)
                 {
-                    _ = commands.AutomationCommandAsync(new string[] { "--showTray", JsonUtil.Serialize(value) });
+                    //_ = commands.AutomationCommandAsync(new string[] { "--showTray", JsonUtil.Serialize(value) });
                     userSettings.Settings.SysTrayIcon = _isSysTrayIconVisible;
                     UpdateSettingsConfigFile();
                 }
@@ -1129,6 +1124,16 @@ namespace Lively.UI.WinUI.ViewModels
                 LivelyGifPlayer.win10Img => false, //xaml island
                 LivelyGifPlayer.libmpvExt => File.Exists(Path.Combine(desktopCore.BaseDirectory, "plugins", "libMPVPlayer", "libMPVPlayer.exe")),
                 LivelyGifPlayer.mpv => File.Exists(Path.Combine(desktopCore.BaseDirectory, "plugins", "mpv", "mpv.exe")),
+                _ => false,
+            };
+        }
+
+        private bool IsWebPlayerAvailable(LivelyWebBrowser wp)
+        {
+            return wp switch
+            {
+                LivelyWebBrowser.cef => File.Exists(Path.Combine(desktopCore.BaseDirectory, "plugins", "Cef", "Lively.PlayerCefSharp.exe")),
+                LivelyWebBrowser.webview2 => File.Exists(Path.Combine(desktopCore.BaseDirectory, "plugins", "Wv2", "Lively.PlayerWebView2.exe")),
                 _ => false,
             };
         }

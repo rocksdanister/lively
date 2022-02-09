@@ -121,5 +121,10 @@ namespace Lively.Services
 
             return (uri, version, changelog);
         }
+
+        public void ShowUpdateDialog()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

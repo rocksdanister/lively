@@ -72,22 +72,6 @@ namespace Lively.Services
             }
         }
 
-        /*
-        private void HandleOldBaggage()
-        {
-            var settingsObject = JsonUtil.ReadJObject(settingsPath);
-            var currentVer = new Version(settingsObject["AppVersion"].ToString());
-            if (currentVer.CompareTo(new Version(1, 9, 0, 0)) < 0) // =v1.9 beta of Lively v2.0
-            {
-                var layoutObject = JsonUtil.ReadJToken(wallpaperLayoutPath);
-                foreach (var item in layoutObject)
-                {
-                    //TODO
-                }
-            }
-        }
-        */
-
         public void Load<T>()
         {
             if (typeof(T) == typeof(ISettingsModel))
