@@ -8,6 +8,7 @@
     <None Remove="Proto\commands.proto" />
     <None Remove="Proto\display.proto" />
     <None Remove="Proto\settings.proto" />
+    <None Remove="Proto\update.proto" />
     <None Remove="Proto\wallpaper.proto" />
   </ItemGroup>
 
@@ -29,6 +30,7 @@
     <Protobuf Include="Proto\commands.proto" />
     <Protobuf Include="Proto\display.proto" />
     <Protobuf Include="Proto\settings.proto" />
+    <Protobuf Include="Proto\update.proto" />
     <Protobuf Include="Proto\wallpaper.proto" />
   </ItemGroup>
 

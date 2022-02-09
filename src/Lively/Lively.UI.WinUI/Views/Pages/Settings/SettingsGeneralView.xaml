@@ -44,7 +44,10 @@
                         </controls:Setting.ActionContent>
                     </controls:Setting>
                     -->
-                    <controls:Setting x:Uid="Language" Icon="&#xF2B7;">
+                    <controls:Setting
+                        x:Uid="Language"
+                        Icon="&#xF2B7;"
+                        IsEnabled="False">
                         <controls:Setting.ActionContent>
                             <ComboBox
                                 MinWidth="{StaticResource SettingActionControlMinWidth}"

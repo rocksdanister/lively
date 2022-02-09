@@ -24,6 +24,7 @@ using Lively.Views.WindowMsg;
 using Lively.Common.Helpers.Network;
 using System.Windows.Threading;
 using Lively.Views;
+using Lively.Grpc.Common.Proto.Update;
 
 namespace Lively
 {
@@ -139,6 +140,7 @@ namespace Lively
                 .AddSingleton<DisplayManagerServer>()
                 .AddSingleton<UserSettingsServer>()
                 .AddSingleton<CommandsServer>()
+                .AddSingleton<AppUpdateServer>()
                 //transient
                 //.AddTransient<IApplicationsRulesFactory, ApplicationsRulesFactory>()
                 .AddTransient<IWallpaperFactory, WallpaperFactory>()
@@ -169,6 +171,7 @@ namespace Lively
             SettingsService.BindService(server.ServiceBinder, Services.GetRequiredService<UserSettingsServer>());
             DisplayService.BindService(server.ServiceBinder, Services.GetRequiredService<DisplayManagerServer>());
             CommandsService.BindService(server.ServiceBinder, Services.GetRequiredService<CommandsServer>());
+            UpdateService.BindService(server.ServiceBinder, Services.GetRequiredService<AppUpdateServer>());
             server.Start();
 
             return server;

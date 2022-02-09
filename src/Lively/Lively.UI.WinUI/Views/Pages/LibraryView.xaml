@@ -179,12 +179,12 @@
                 </SymbolIcon.RenderTransform>
             </SymbolIcon>
             <TextBlock
+                x:Uid="AddWallpaperDrop"
                 Margin="0,12,0,0"
                 FontSize="24"
                 Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
                 RelativePanel.AlignHorizontalCenterWithPanel="True"
-                RelativePanel.Below="AddSymbol"
-                Text="Add Wallpaper" />
+                RelativePanel.Below="AddSymbol" />
         </RelativePanel>
     </Grid>
 </Page>

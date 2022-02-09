@@ -2,15 +2,87 @@
     x:Class="Lively.UI.WinUI.Views.Pages.AboutView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:SettingsUI.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Lively.UI.WinUI.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
     <Grid>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <PersonPicture Margin="0,5,0,0" ProfilePicture="https://avatars.githubusercontent.com/rocksdanister" />
-            <TextBlock>Hi, I'm Dani John and I created Lively as a fun project..</TextBlock>
-        </StackPanel>
+        <ScrollViewer>
+            <StackPanel>
+                <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <PersonPicture
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        ProfilePicture="https://avatars.githubusercontent.com/rocksdanister" />
+                    <TextBlock
+                        x:Uid="AboutMe"
+                        Margin="10"
+                        Style="{ThemeResource BodyTextBlockStyle}" />
+                </StackPanel>
+
+                <controls:SettingsGroup>
+                    <controls:Setting Header="Lively Wallpaper v1.0.0.0" Icon="&#xE117;">
+                        <controls:Setting.Description>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Style="{StaticResource SecondaryTextStyle}">
+                                    <Run Text="Last Checked" />
+                                    <Run Text="2021/09/10" />
+                                </TextBlock>
+                                <HyperlinkButton
+                                    Margin="0,2,0,0"
+                                    Content="Release notes"
+                                    NavigateUri="https://github.com/microsoft/PowerToys/releases/" />
+                            </StackPanel>
+                        </controls:Setting.Description>
+                        <controls:Setting.ActionContent>
+                            <StackPanel
+                                VerticalAlignment="Center"
+                                Orientation="Horizontal"
+                                Spacing="18">
+                                <ProgressRing
+                                    Width="24"
+                                    Height="24"
+                                    IsEnabled="True" />
+                                <Button HorizontalAlignment="Right" Content="Check For Updates" />
+                            </StackPanel>
+                        </controls:Setting.ActionContent>
+                    </controls:Setting>
+                    <InfoBar
+                        Title="Up To Date"
+                        IsClosable="False"
+                        IsOpen="True"
+                        Severity="Success" />
+                </controls:SettingsGroup>
+
+                <controls:SettingExpander Margin="0,5,0,0" IsExpanded="False">
+                    <controls:SettingExpander.Header>
+                        <controls:Setting Header="About" Style="{StaticResource ExpanderHeaderSettingStyle}" />
+                    </controls:SettingExpander.Header>
+                    <controls:SettingExpander.Content>
+                        <StackPanel Orientation="Vertical">
+                            <controls:Setting x:Uid="License">
+                                <controls:Setting.Description>
+                                    <HyperlinkButton x:Uid="LicenseLink" NavigateUri="https://github.com/rocksdanister/lively/blob/core-separation/LICENSE" />
+                                </controls:Setting.Description>
+                            </controls:Setting>
+
+                            <controls:Setting x:Uid="Attribution">
+                                <controls:Setting.Description>
+                                    <HyperlinkButton x:Uid="AttributionLink" NavigateUri="https://github.com/rocksdanister/lively/blob/core-separation/ATTRIBUTION.md" />
+                                </controls:Setting.Description>
+                            </controls:Setting>
+
+                            <controls:Setting x:Uid="PrivacyPolicy">
+                                <controls:Setting.Description>
+                                    <HyperlinkButton x:Uid="PrivacyPolicyLink" NavigateUri="https://github.com/rocksdanister/lively/blob/core-separation/PRIVACY.md" />
+                                </controls:Setting.Description>
+                            </controls:Setting>
+                        </StackPanel>
+                    </controls:SettingExpander.Content>
+                </controls:SettingExpander>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>

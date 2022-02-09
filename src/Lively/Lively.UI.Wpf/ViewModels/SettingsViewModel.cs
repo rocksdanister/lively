@@ -118,7 +118,7 @@ namespace Lively.UI.Wpf.ViewModels
         }
 
         private readonly object _settingsLock = new object();
-        public async Task UpdateSettingsConfigFile(bool restart = false)
+        public async Task UpdateSettingsConfigFile()
         {
             lock (_settingsLock)
                 Monitor.PulseAll(_settingsLock);
@@ -133,9 +133,6 @@ namespace Lively.UI.Wpf.ViewModels
                     }
                 }
             }).ConfigureAwait(false);
-
-            if (restart)
-                _ = commands.RestartUI();
         }
 
         #region general
@@ -152,7 +149,6 @@ namespace Lively.UI.Wpf.ViewModels
                 _isStartup = value;
                 if (userSettings.Settings.Startup != _isStartup)
                 {
-                    _ = commands.AutomationCommandAsync(new string[] { "--startup", JsonUtil.Serialize(value) });
                     userSettings.Settings.Startup = _isStartup;
                     UpdateSettingsConfigFile();
                 }
@@ -189,7 +185,7 @@ namespace Lively.UI.Wpf.ViewModels
                 if (_selectedLanguageItem.Codes.FirstOrDefault(x => x == userSettings.Settings.Language) == null)
                 {
                     userSettings.Settings.Language = _selectedLanguageItem.Codes[0];
-                    UpdateSettingsConfigFile(true);
+                    UpdateSettingsConfigFile();
                 }
             }
         }
@@ -634,7 +630,7 @@ namespace Lively.UI.Wpf.ViewModels
             }
             set
             {
-                _selectedWebBrowserIndex = value;
+                _selectedWebBrowserIndex = IsWebPlayerAvailable((LivelyWebBrowser)value) ? value : (int)LivelyWebBrowser.cef;
                 OnPropertyChanged();
 
                 if (userSettings.Settings.WebBrowser != (LivelyWebBrowser)_selectedWebBrowserIndex)
@@ -927,7 +923,6 @@ namespace Lively.UI.Wpf.ViewModels
                 _isSysTrayIconVisible = value;
                 if (userSettings.Settings.SysTrayIcon != _isSysTrayIconVisible)
                 {
-                    _ = commands.AutomationCommandAsync(new string[] { "--showTray", JsonUtil.Serialize(value) });
                     userSettings.Settings.SysTrayIcon = _isSysTrayIconVisible;
                     UpdateSettingsConfigFile();
                 }
@@ -1091,6 +1086,16 @@ namespace Lively.UI.Wpf.ViewModels
                 LivelyGifPlayer.win10Img => false, //xaml island
                 LivelyGifPlayer.libmpvExt => File.Exists(Path.Combine(desktopCore.BaseDirectory, "plugins", "libMPVPlayer", "libMPVPlayer.exe")),
                 LivelyGifPlayer.mpv => File.Exists(Path.Combine(desktopCore.BaseDirectory, "plugins", "mpv", "mpv.exe")),
+                _ => false,
+            };
+        }
+
+        private bool IsWebPlayerAvailable(LivelyWebBrowser wp)
+        {
+            return wp switch
+            {
+                LivelyWebBrowser.cef => File.Exists(Path.Combine(desktopCore.BaseDirectory, "plugins", "Cef", "Lively.PlayerCefSharp.exe")),
+                LivelyWebBrowser.webview2 => File.Exists(Path.Combine(desktopCore.BaseDirectory, "plugins", "Wv2", "Lively.PlayerWebView2.exe")),
                 _ => false,
             };
         }

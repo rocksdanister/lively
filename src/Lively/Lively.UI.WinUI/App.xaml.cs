@@ -9,6 +9,10 @@ using Microsoft.UI.Xaml;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
+using System.Threading;
+using Windows.ApplicationModel.Resources.Core;
+using Windows.Globalization;
 using static Lively.Common.Constants;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -106,6 +110,22 @@ namespace Lively.UI.WinUI
                     this.RequestedTheme = ApplicationTheme.Dark;
                     break;
             }
+        }
+
+        //Cannot set custom language on unpackaged, issues:
+        //https://github.com/microsoft/microsoft-ui-xaml/issues/5940
+        //https://github.com/microsoft/WindowsAppSDK/issues/1687
+        //https://github.com/microsoft/WindowsAppSDK-Samples/issues/138
+        void SetAppLanguage(string cult = "en-US")
+        {
+            ApplicationLanguages.PrimaryLanguageOverride = cult;
+            CultureInfo culture = new CultureInfo(cult);
+            CultureInfo.DefaultThreadCurrentCulture = culture;
+            CultureInfo.CurrentCulture = culture;
+            Thread.CurrentThread.CurrentCulture = culture;
+            Thread.CurrentThread.CurrentUICulture = culture;
+            //ResourceContext.GetForCurrentView().Reset();
+            ResourceContext.GetForViewIndependentUse().Reset();
         }
 
         public static void ShutDown()

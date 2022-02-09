@@ -24,6 +24,7 @@ using Lively.Common.Helpers;
 using Lively.Helpers;
 using Lively.Views;
 using static Lively.Common.Errors;
+using System.Reflection;
 
 namespace Lively.RPC
 {
@@ -44,7 +45,8 @@ namespace Lively.RPC
         {
             return Task.FromResult(new GetCoreStatsResponse()
             {
-                BaseDirectory = AppDomain.CurrentDomain.BaseDirectory
+                BaseDirectory = AppDomain.CurrentDomain.BaseDirectory,
+                AssemblyVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString(),
             });
         }
 
