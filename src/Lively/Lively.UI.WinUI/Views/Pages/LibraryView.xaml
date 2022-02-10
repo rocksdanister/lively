@@ -41,65 +41,65 @@
                 <MenuFlyout.Items>
                     <MenuFlyoutItem
                         x:Name="moreInformation"
-                        Click="contextMenu_Click"
-                        Text="About">
+                        x:Uid="AboutMenu"
+                        Click="contextMenu_Click">
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="&#xE946;" />
                         </MenuFlyoutItem.Icon>
                     </MenuFlyoutItem>
                     <MenuFlyoutItem
                         x:Name="setWallpaper"
-                        Click="contextMenu_Click"
-                        Text="Set as Wallpaper">
+                        x:Uid="SetWallpaper"
+                        Click="contextMenu_Click">
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="&#xE73E;" />
                         </MenuFlyoutItem.Icon>
                     </MenuFlyoutItem>
                     <MenuFlyoutItem
                         x:Name="previewWallpaper"
-                        Click="contextMenu_Click"
-                        Text="Preview">
+                        x:Uid="PreviewWallpaper"
+                        Click="contextMenu_Click">
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="&#xE890;" />
                         </MenuFlyoutItem.Icon>
                     </MenuFlyoutItem>
                     <MenuFlyoutItem
                         x:Name="customiseWallpaper"
-                        Click="contextMenu_Click"
-                        Text="Customise">
+                        x:Uid="Customise"
+                        Click="contextMenu_Click">
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="&#xE790;" />
                         </MenuFlyoutItem.Icon>
                     </MenuFlyoutItem>
                     <MenuFlyoutItem
                         x:Name="showOnDisk"
-                        Click="contextMenu_Click"
-                        Text="Open File Location">
+                        x:Uid="ShowOnDisk"
+                        Click="contextMenu_Click">
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="&#xED25;" />
                         </MenuFlyoutItem.Icon>
                     </MenuFlyoutItem>
                     <MenuFlyoutItem
                         x:Name="exportWallpaper"
-                        Click="contextMenu_Click"
-                        Text="Export lively .zip">
+                        x:Uid="ExportWallpaperZip"
+                        Click="contextMenu_Click">
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="&#xE74E;" />
                         </MenuFlyoutItem.Icon>
                     </MenuFlyoutItem>
                     <MenuFlyoutItem
                         x:Name="deleteWallpaper"
-                        Click="contextMenu_Click"
-                        Text="Delete">
+                        x:Uid="DeleteWallpaper"
+                        Click="contextMenu_Click">
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="&#xE74D;" />
                         </MenuFlyoutItem.Icon>
                     </MenuFlyoutItem>
                     <MenuFlyoutItem
                         x:Name="editWallpaper"
+                        x:Uid="EditWallpaper"
                         Click="contextMenu_Click"
-                        IsEnabled="False"
-                        Text="Edit">
+                        IsEnabled="False">
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="&#xE70F;" />
                         </MenuFlyoutItem.Icon>

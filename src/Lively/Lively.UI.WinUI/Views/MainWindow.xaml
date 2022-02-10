@@ -41,6 +41,15 @@
         </Grid>
         -->
 
+        <TeachingTip
+            x:Name="toggleTeachingTipControlPanel"
+            x:Uid="ControlPanel"
+            Target="{x:Bind controlPanelLabel}">
+            <TeachingTip.IconSource>
+                <FontIconSource Glyph="&#xE946;" />
+            </TeachingTip.IconSource>
+        </TeachingTip>
+
         <NavigationView
             Name="navView"
             BackRequested="NavView_BackRequested"

@@ -129,10 +129,10 @@
   <data name="AudioGroup.Header" xml:space="preserve">
     <value>Audio</value>
   </data>
-  <data name="DescCommunity" xml:space="preserve">
+  <data name="CommunityPage.Content" xml:space="preserve">
     <value>Online discussion forum</value>
   </data>
-  <data name="DescDocumentation" xml:space="preserve">
+  <data name="DocumentationPage.Content" xml:space="preserve">
     <value>API documentation and help</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
@@ -143,7 +143,7 @@ Windows Explorer restarted twice in the last 30 seconds! This may be a conflict 
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
     <value>Incompatible program found, taskbar theming disabled</value>
   </data>
-  <data name="DescOfficialWebpage" xml:space="preserve">
+  <data name="OfficialWebpage.Content" xml:space="preserve">
     <value>Official webpage of Lively Wallpaper</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
@@ -153,7 +153,7 @@ For OLED, Plasma or CRT displays which are susceptibe to burn-in it is advised t
 
 The main purpose of Lively's screensavers is to add another layer of customization to your pc, use screensavers as burn-in protection at your own risk!</value>
   </data>
-  <data name="DescReportBug" xml:space="preserve">
+  <data name="ReportBugPage.Content" xml:space="preserve">
     <value>Report a problem with the software</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
@@ -289,7 +289,7 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="Attribution.Header" xml:space="preserve">
     <value>Attribution</value>
   </data>
-  <data name="TextAuthor" xml:space="preserve">
+  <data name="Author.Text" xml:space="preserve">
     <value>Author</value>
   </data>
   <data name="TextBack" xml:space="preserve">
@@ -298,7 +298,7 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="TextBrowse" xml:space="preserve">
     <value>Browse</value>
   </data>
-  <data name="TextCancel" xml:space="preserve">
+  <data name="Cancel.Content" xml:space="preserve">
     <value>Cancel</value>
   </data>
   <data name="TextChangeWallpaper" xml:space="preserve">
@@ -307,13 +307,13 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="TextClose" xml:space="preserve">
     <value>Close</value>
   </data>
-  <data name="TextCloseWallpapers" xml:space="preserve">
+  <data name="CloseWallpapers.Label" xml:space="preserve">
     <value>Close Wallpapers</value>
   </data>
   <data name="TextCompleted" xml:space="preserve">
     <value>Completed!</value>
   </data>
-  <data name="TextControlPanelOpen" xml:space="preserve">
+  <data name="ControlPanel.Subtitle" xml:space="preserve">
     <value>Click here to manage wallpapers</value>
   </data>
   <data name="TextConvertVideo" xml:space="preserve">
@@ -322,16 +322,16 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="TextCreatePreview" xml:space="preserve">
     <value>Create Preview</value>
   </data>
-  <data name="TextCustomise" xml:space="preserve">
+  <data name="Customise.Text" xml:space="preserve">
     <value>Customise</value>
   </data>
-  <data name="TextCustomiseWallpaper" xml:space="preserve">
+  <data name="CustomiseWallpaper.Label" xml:space="preserve">
     <value>Customise Wallpaper</value>
   </data>
-  <data name="TextDeleteWallpaper" xml:space="preserve">
+  <data name="DeleteWallpaper.Text" xml:space="preserve">
     <value>Delete</value>
   </data>
-  <data name="TextDescription" xml:space="preserve">
+  <data name="Description.Text" xml:space="preserve">
     <value>Description</value>
   </data>
   <data name="DisplayPauseRuleAllScreen.Content" xml:space="preserve">
@@ -343,7 +343,7 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="TextDownload" xml:space="preserve">
     <value>Download</value>
   </data>
-  <data name="TextEditWallpaper" xml:space="preserve">
+  <data name="EditWallpaper.Text" xml:space="preserve">
     <value>Edit</value>
   </data>
   <data name="TextError" xml:space="preserve">
@@ -352,7 +352,7 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="TextExit" xml:space="preserve">
     <value>Exit</value>
   </data>
-  <data name="TextExportWallpaperZip" xml:space="preserve">
+  <data name="ExportWallpaperZip.Text" xml:space="preserve">
     <value>Export lively .zip</value>
   </data>
   <data name="TextFeatureMissing" xml:space="preserve">
@@ -416,7 +416,7 @@ If still not working, close &amp; start Lively again/restart windows.
     <value>Off</value>
   </data>
   <data name="TextOK" xml:space="preserve">
-    <value>Ok</value>
+    <value>OK</value>
   </data>
   <data name="TextOn.Content" xml:space="preserve">
     <value>On</value>
@@ -451,7 +451,7 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="TextPicture" xml:space="preserve">
     <value>Picture</value>
   </data>
-  <data name="TextPreviewWallpaper" xml:space="preserve">
+  <data name="PreviewWallpaper.Text" xml:space="preserve">
     <value>Preview</value>
   </data>
   <data name="PrivacyPolicy.Header" xml:space="preserve">
@@ -472,13 +472,13 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="TextSearch" xml:space="preserve">
     <value>Search</value>
   </data>
-  <data name="TextSetWallpaper" xml:space="preserve">
+  <data name="SetWallpaper.Text" xml:space="preserve">
     <value>Set as Wallpaper</value>
   </data>
-  <data name="TextShowOnDisk" xml:space="preserve">
-    <value>Open File Location</value>
+  <data name="ShowOnDisk.Text" xml:space="preserve">
+    <value>Open file location</value>
   </data>
-  <data name="TextSource" xml:space="preserve">
+  <data name="WallpaperSource.Text" xml:space="preserve">
     <value>Source</value>
   </data>
   <data name="TextStart" xml:space="preserve">
@@ -502,22 +502,22 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="TextTags" xml:space="preserve">
     <value>Tags</value>
   </data>
-  <data name="TextTaskbarThemeBlur" xml:space="preserve">
+  <data name="TaskbarThemeBlur.Content" xml:space="preserve">
     <value>Blur</value>
   </data>
-  <data name="TextTaskbarThemeClear" xml:space="preserve">
+  <data name="TaskbarThemeClear.Content" xml:space="preserve">
     <value>Clear</value>
   </data>
-  <data name="TextTaskbarThemeColor" xml:space="preserve">
+  <data name="TaskbarThemeColor.Content" xml:space="preserve">
     <value>Color</value>
   </data>
-  <data name="TextTaskbarThemeFluent" xml:space="preserve">
+  <data name="TaskbarThemeFluent.Content" xml:space="preserve">
     <value>Fluent</value>
   </data>
-  <data name="TextTaskbarThemeWallpaper" xml:space="preserve">
+  <data name="TaskbarThemeWallpaper.Content" xml:space="preserve">
     <value>Wallpaper</value>
   </data>
-  <data name="TextTaskbarThemeWallpaperFluent" xml:space="preserve">
+  <data name="TaskbarThemeWallpaperFluent.Content" xml:space="preserve">
     <value>Wallpaper Fluent</value>
   </data>
   <data name="TextTileSizeLarge" xml:space="preserve">
@@ -529,7 +529,7 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="TextTileSizeSmall" xml:space="preserve">
     <value>Small</value>
   </data>
-  <data name="TextTitle" xml:space="preserve">
+  <data name="Title.Text" xml:space="preserve">
     <value>Title</value>
   </data>
   <data name="TextUIHeadless" xml:space="preserve">
@@ -577,19 +577,19 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="WallpaperFitUniformToFill.Content" xml:space="preserve">
     <value>Uniform Fill</value>
   </data>
-  <data name="TextWallpaperLayoutDuplicate" xml:space="preserve">
+  <data name="WallpaperLayoutDuplicate.Content" xml:space="preserve">
     <value>Duplicate same wallpaper</value>
   </data>
-  <data name="TextWallpaperLayoutPerScreen" xml:space="preserve">
+  <data name="WallpaperLayoutPerScreen.Content" xml:space="preserve">
     <value>Selected screen only</value>
   </data>
-  <data name="TextWallpaperLayoutSpan" xml:space="preserve">
+  <data name="WallpaperLayoutSpan.Content" xml:space="preserve">
     <value>Span across screens</value>
   </data>
-  <data name="TextWallpaperType" xml:space="preserve">
+  <data name="WallpaperType.Text" xml:space="preserve">
     <value>Type</value>
   </data>
-  <data name="TextWebsite" xml:space="preserve">
+  <data name="Website.Header" xml:space="preserve">
     <value>Website</value>
   </data>
   <data name="TextWebStream" xml:space="preserve">
@@ -694,7 +694,7 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="WallpaperInput.Description" xml:space="preserve">
     <value>Select ways to interact with wallpaper</value>
   </data>
-  <data name="TipWallpaperLayout" xml:space="preserve">
+  <data name="WallpaperLayout.Description" xml:space="preserve">
     <value>How wallpaper is applied to connected display devices</value>
   </data>
   <data name="TipWallpaperPlayback" xml:space="preserve">
@@ -742,7 +742,7 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="TitleChangelog" xml:space="preserve">
     <value>Changelog</value>
   </data>
-  <data name="TitleCommunity" xml:space="preserve">
+  <data name="Community.Header" xml:space="preserve">
     <value>Community</value>
   </data>
   <data name="Debug.Header" xml:space="preserve">
@@ -757,7 +757,7 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="DisplayPauseRule.Header" xml:space="preserve">
     <value>Display pause rule</value>
   </data>
-  <data name="TitleDocumentation" xml:space="preserve">
+  <data name="Documentation.Header" xml:space="preserve">
     <value>Documentation</value>
   </data>
   <data name="EnterUrl.Header" xml:space="preserve">
@@ -805,7 +805,7 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="TitlePlaylist" xml:space="preserve">
     <value>Playlist</value>
   </data>
-  <data name="TitlePleaseWait" xml:space="preserve">
+  <data name="PleaseWait.Text" xml:space="preserve">
     <value>Please Wait</value>
   </data>
   <data name="PowerSavingModePower.Header" xml:space="preserve">
@@ -814,13 +814,13 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="RemoteDesktopPower.Header" xml:space="preserve">
     <value>When on Remote Desktop</value>
   </data>
-  <data name="TitleReportBug" xml:space="preserve">
+  <data name="ReportBug.Header" xml:space="preserve">
     <value>Report Bug</value>
   </data>
   <data name="TitleScalingFit" xml:space="preserve">
     <value>Scaling/Fit</value>
   </data>
-  <data name="TitleScreenLayout" xml:space="preserve">
+  <data name="ControlPanel.Title" xml:space="preserve">
     <value>Control Panel</value>
   </data>
   <data name="TitleScreensaver" xml:space="preserve">
@@ -890,7 +890,7 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="WallpaperInput.Header" xml:space="preserve">
     <value>Wallpaper input</value>
   </data>
-  <data name="TitleWallpaperLayout" xml:space="preserve">
+  <data name="WallpaperLayout.Header" xml:space="preserve">
     <value>Placement Method</value>
   </data>
   <data name="WallpaperPlaybackGroup.Header" xml:space="preserve">
@@ -948,13 +948,13 @@ If still not working, close &amp; start Lively again/restart windows.
     <value>Gallery</value>
   </data>
   <data name="AboutMe.Text" xml:space="preserve">
-    <value>Hi I'm Dani John also known as rocksdanister. I developed Lively a Free and open-source (FOSS) wallpaper application. Thanks for taking the time to look at my work. You can follow me on my socials linked below for regular development updates.</value>
+    <value>Hi, I'm Dani John also known as rocksdanister. I developed Lively a Free and open-source (FOSS) wallpaper application. Thanks for taking the time to look at my work.</value>
   </data>
   <data name="LicenseLink.Content" xml:space="preserve">
     <value>Software license</value>
   </data>
   <data name="AttributionLink.Content" xml:space="preserve">
-    <value>Third party software notice and contributors</value>
+    <value>Third party software notice</value>
   </data>
   <data name="PrivacyPolicyLink.Content" xml:space="preserve">
     <value>Data collection policy</value>
@@ -964,5 +964,17 @@ If still not working, close &amp; start Lively again/restart windows.
   </data>
   <data name="ComingSoon.Text" xml:space="preserve">
     <value>Coming soon</value>
+  </data>
+  <data name="AboutMenu.Text" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="SourceWebsite.Text" xml:space="preserve">
+    <value>Website</value>
+  </data>
+  <data name="TextOpen.Content" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="TextSave.Content" xml:space="preserve">
+    <value>Save</value>
   </data>
 </root>

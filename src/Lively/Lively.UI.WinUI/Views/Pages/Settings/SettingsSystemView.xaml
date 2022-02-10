@@ -16,13 +16,13 @@
                     <controls:Setting x:Uid="TaskbarTheme" Icon="&#xE771;">
                         <controls:Setting.ActionContent>
                             <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedTaskbarThemeIndex, Mode=TwoWay}">
-                                <ComboBoxItem Content="Off" />
-                                <ComboBoxItem Content="Clear" />
-                                <ComboBoxItem Content="Blur" />
-                                <ComboBoxItem Content="Fluent" />
-                                <ComboBoxItem Content="Color" Visibility="Collapsed" />
-                                <ComboBoxItem Content="Wallpaper" />
-                                <ComboBoxItem Content="Wallpaper Fluent" />
+                                <ComboBoxItem x:Uid="TextOff" />
+                                <ComboBoxItem x:Uid="TaskbarThemeClear" />
+                                <ComboBoxItem x:Uid="TaskbarThemeBlur" />
+                                <ComboBoxItem x:Uid="TaskbarThemeFluent" />
+                                <ComboBoxItem x:Uid="TaskbarThemeColor" Visibility="Collapsed" />
+                                <ComboBoxItem x:Uid="TaskbarThemeWallpaper" />
+                                <ComboBoxItem x:Uid="TaskbarThemeWallpaperFluent" />
                             </ComboBox>
                         </controls:Setting.ActionContent>
                     </controls:Setting>
@@ -67,18 +67,18 @@
                     <controls:Setting x:Uid="Debug" Icon="&#xEC7A;">
                         <controls:Setting.ActionContent>
                             <Button
+                                x:Uid="TextOpen"
                                 MinWidth="150"
-                                Command="{Binding ShowDebugCommand}"
-                                Content="Open" />
+                                Command="{Binding ShowDebugCommand}" />
                         </controls:Setting.ActionContent>
                     </controls:Setting>
 
                     <controls:Setting x:Uid="ExportLogs" Icon="&#xE9F9;">
                         <controls:Setting.ActionContent>
                             <Button
+                                x:Uid="TextSave"
                                 MinWidth="150"
-                                Command="{Binding ExtractLogCommand}"
-                                Content="Save" />
+                                Command="{Binding ExtractLogCommand}" />
                         </controls:Setting.ActionContent>
                     </controls:Setting>
                 </controls:SettingsGroup>

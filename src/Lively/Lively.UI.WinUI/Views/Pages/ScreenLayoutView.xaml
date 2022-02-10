@@ -56,13 +56,13 @@
 
         <StackPanel Grid.Row="1">
             <CommandBar HorizontalAlignment="Center" DefaultLabelPosition="Right">
-                <AppBarButton Command="{Binding CustomiseWallpaperCommand}" Label="Customise">
+                <AppBarButton x:Uid="CustomiseWallpaper" Command="{Binding CustomiseWallpaperCommand}">
                     <AppBarButton.Icon>
                         <FontIcon Glyph="&#xE790;" />
                     </AppBarButton.Icon>
                 </AppBarButton>
                 <AppBarSeparator />
-                <AppBarButton Command="{Binding CloseWallpaperCommand}" Label="Close">
+                <AppBarButton x:Uid="CloseWallpapers" Command="{Binding CloseWallpaperCommand}">
                     <AppBarButton.Icon>
                         <FontIcon Glyph="&#xE894;" />
                     </AppBarButton.Icon>
@@ -72,8 +72,7 @@
             <controls:SettingExpander Margin="0,5,0,0" IsExpanded="True">
                 <controls:SettingExpander.Header>
                     <controls:Setting
-                        Description="How wallpaper is applied to connected display devices."
-                        Header="Placement method"
+                        x:Uid="WallpaperLayout"
                         Icon="&#xE90C;"
                         Style="{StaticResource ExpanderHeaderSettingStyle}" />
                 </controls:SettingExpander.Header>
@@ -81,9 +80,9 @@
                     <StackPanel Orientation="Vertical">
                         <controls:Setting HorizontalAlignment="Left" Style="{StaticResource ExpanderContentSettingStyle}">
                             <RadioButtons SelectedIndex="{Binding SelectedWallpaperLayout, Mode=TwoWay}">
-                                <RadioButton Content="Selected screen only" />
-                                <RadioButton Content="Span across screens" />
-                                <RadioButton Content="Duplicate same wallpaper" />
+                                <RadioButton x:Uid="WallpaperLayoutPerScreen" />
+                                <RadioButton x:Uid="WallpaperLayoutSpan" />
+                                <RadioButton x:Uid="WallpaperLayoutDuplicate" />
                             </RadioButtons>
                         </controls:Setting>
                     </StackPanel>

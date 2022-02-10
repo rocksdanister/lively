@@ -5,11 +5,12 @@ import "google/protobuf/timestamp.proto";
 
 service UpdateService {
 	  rpc CheckUpdate (google.protobuf.Empty) returns (google.protobuf.Empty);
+	  rpc GetUpdateStatus (google.protobuf.Empty) returns (UpdateResponse);
 	  rpc StartUpdate (google.protobuf.Empty) returns (google.protobuf.Empty);
-	  rpc SubscribeUpdateChecked (google.protobuf.Empty) returns (stream UpdateCheckedResponse);
+	  rpc SubscribeUpdateChecked (google.protobuf.Empty) returns (stream google.protobuf.Empty);
 }
 
-message UpdateCheckedResponse {
+message UpdateResponse {
 	UpdateStatus status = 1;
 	string version = 2;
 	string url = 3;

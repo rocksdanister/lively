@@ -16,6 +16,7 @@ namespace Lively.RPC
 {
     internal class AppUpdateServer : UpdateService.UpdateServiceBase
     {
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private readonly IAppUpdaterService updater;
 
         public AppUpdateServer(IAppUpdaterService updater)
@@ -31,15 +32,29 @@ namespace Lively.RPC
 
         public override Task<Empty> StartUpdate(Empty _, ServerCallContext context)
         {
-
-            Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
+            if (updater.Status == AppUpdateStatus.available)
             {
-                //updater.ShowUpdateDialog();
-            }));
+                Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
+                {
+                    App.AppUpdateDialog(updater.LastCheckUri, updater.LastCheckChangelog);
+                }));
+            }
             return Task.FromResult(new Empty());
         }
 
-        public override async Task SubscribeUpdateChecked(Empty _, IServerStreamWriter<UpdateCheckedResponse> responseStream, ServerCallContext context)
+        public override Task<UpdateResponse> GetUpdateStatus(Empty _, ServerCallContext context)
+        {
+            return Task.FromResult(new UpdateResponse()
+            {
+                Status = (UpdateStatus)((int)updater.Status),
+                Changelog = updater.LastCheckChangelog ?? string.Empty,
+                Url = updater.LastCheckUri?.OriginalString ?? string.Empty,
+                Version = updater.LastCheckVersion?.ToString() ?? string.Empty,
+                Time = Timestamp.FromDateTime(DateTime.UtcNow),
+            });
+        }
+
+        public override async Task SubscribeUpdateChecked(Empty _, IServerStreamWriter<Empty> responseStream, ServerCallContext context)
         {
             try
             {
@@ -54,19 +69,12 @@ namespace Lively.RPC
                     }
                     await tcs.Task;
 
-                    await responseStream.WriteAsync(new UpdateCheckedResponse()
-                    {
-                        Status = (UpdateStatus)((int)updater.Status),
-                        Changelog = updater.LastCheckChangelog ?? string.Empty,
-                        Url = updater.LastCheckUri.OriginalString ?? string.Empty,
-                        Version = updater.LastCheckVersion?.ToString() ?? string.Empty,
-                        Time = Timestamp.FromDateTime(DateTime.Now),
-                    });
+                    await responseStream.WriteAsync(new Empty());
                 }
             }
             catch (Exception e)
             {
-                Debug.WriteLine(e.ToString());
+                Logger.Error(e);
             }
         }
     }

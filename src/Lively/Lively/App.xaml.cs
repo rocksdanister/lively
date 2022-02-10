@@ -25,6 +25,7 @@ using Lively.Common.Helpers.Network;
 using System.Windows.Threading;
 using Lively.Views;
 using Lively.Grpc.Common.Proto.Update;
+using Lively.Common.Services;
 
 namespace Lively
 {
@@ -114,10 +115,12 @@ namespace Lively
                 Services.GetRequiredService<IRunnerService>().ShowUI();
             }
 
+#if DEBUG != true
             var appUpdater = Services.GetRequiredService<IAppUpdaterService>();
             appUpdater.UpdateChecked += AppUpdateChecked;
             _ = appUpdater.CheckUpdate();
             appUpdater.Start();
+#endif
         }
 
         private IServiceProvider ConfigureServices()
@@ -178,8 +181,8 @@ namespace Lively
         }
 
         //number of times to notify user about update.
-        private int updateNotifyAmt = 1;
-        private bool updateNotify = false;
+        private static int updateNotifyAmt = 1;
+        private static bool updateNotify = false;
         private void AppUpdateChecked(object sender, AppUpdaterEventArgs e)
         {
             var sysTray = Services.GetRequiredService<ISystray>();
@@ -196,13 +199,29 @@ namespace Lively
                             "Update available!");
                     }
 
-                    //TODO: attach to runner service instead and notify only when required!
-                    var updateWindow = new AppUpdater(e.UpdateUri, e.ChangeLog);
-                    //updateWindow.Closed += (s, e) => { updateWindow = null; };
-                    updateWindow.Show();
+                    //If UI program already running then notification is displayed withing the it.
+                    if (!Services.GetRequiredService<IRunnerService>().IsVisibleUI && updateNotify)
+                    {
+                        AppUpdateDialog(e.UpdateUri, e.ChangeLog);
+                    }
                 }
                 Logger.Info($"AppUpdate status: {e.UpdateStatus}");
             }));
+        }
+
+        private static AppUpdater updateWindow;
+        public static void AppUpdateDialog(Uri uri, string changelog)
+        {
+            updateNotify = false;
+            if (updateWindow == null)
+            {
+                updateWindow = new AppUpdater(uri, changelog)
+                {
+                    WindowStartupLocation = WindowStartupLocation.CenterScreen
+                };
+                updateWindow.Closed += (s, e) => { updateWindow = null; };
+                updateWindow.Show();
+            }
         }
 
         private void SetupUnhandledExceptionLogging()

@@ -72,7 +72,7 @@
             <TextBlock
                 x:Uid="ComingSoon"
                 Margin="0,12,0,0"
-                FontSize="24"
+                FontSize="32"
                 Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
                 RelativePanel.AlignHorizontalCenterWithPanel="True" />
         </RelativePanel>

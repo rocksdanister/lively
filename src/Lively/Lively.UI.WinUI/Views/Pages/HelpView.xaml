@@ -10,27 +10,27 @@
 
     <Grid>
         <StackPanel Orientation="Vertical">
-            <controls:Setting Header="Website" Icon="&#xEB41;">
+            <controls:Setting x:Uid="Website" Icon="&#xEB41;">
                 <controls:Setting.Description>
-                    <HyperlinkButton Content="Official website of Lively Wallpaper" NavigateUri="https://livelywallpaper.net/" />
+                    <HyperlinkButton x:Uid="OfficialWebpage" NavigateUri="https://livelywallpaper.net/" />
                 </controls:Setting.Description>
             </controls:Setting>
 
-            <controls:Setting Header="Documentation" Icon="&#xE736;">
+            <controls:Setting x:Uid="Documentation" Icon="&#xE736;">
                 <controls:Setting.Description>
-                    <HyperlinkButton Content="API documentation and help" NavigateUri="https://github.com/rocksdanister/lively/wiki" />
+                    <HyperlinkButton x:Uid="DocumentationPage" NavigateUri="https://github.com/rocksdanister/lively/wiki" />
                 </controls:Setting.Description>
             </controls:Setting>
 
-            <controls:Setting Header="Community" Icon="&#xEC27;">
+            <controls:Setting x:Uid="Community" Icon="&#xEC27;">
                 <controls:Setting.Description>
-                    <HyperlinkButton Content="Online discussion forum" NavigateUri="https://www.reddit.com/r/LivelyWallpaper/" />
+                    <HyperlinkButton x:Uid="CommunityPage" NavigateUri="https://www.reddit.com/r/LivelyWallpaper/" />
                 </controls:Setting.Description>
             </controls:Setting>
 
-            <controls:Setting Header="Report Bug" Icon="&#xEBE8;">
+            <controls:Setting x:Uid="ReportBug" Icon="&#xEBE8;">
                 <controls:Setting.Description>
-                    <HyperlinkButton Content="Report a problem with the software" NavigateUri="https://github.com/rocksdanister/lively/issues" />
+                    <HyperlinkButton x:Uid="ReportBugPage" NavigateUri="https://github.com/rocksdanister/lively/issues" />
                 </controls:Setting.Description>
             </controls:Setting>
         </StackPanel>
