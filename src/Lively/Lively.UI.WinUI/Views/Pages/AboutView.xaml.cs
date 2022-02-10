@@ -1,4 +1,8 @@
 ﻿using Lively.Common;
+using Lively.Common.Services;
+using Lively.Grpc.Client;
+using Lively.UI.WinUI.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -8,6 +12,7 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -24,9 +29,44 @@ namespace Lively.UI.WinUI.Views.Pages
     /// </summary>
     public sealed partial class AboutView : Page
     {
+        private readonly IAppUpdaterClient appUpdater;
         public AboutView()
         {
             this.InitializeComponent();
+            var vm = App.Services.GetRequiredService<AboutViewModel>();
+            this.DataContext = vm;
+            appUpdater = App.Services.GetRequiredService<IAppUpdaterClient>();
+            appUpdater.UpdateChecked += AboutView_UpdateChecked;
+            infoBar.Severity = GetSeverity(appUpdater.Status);
+            //this.Unloaded += vm.OnWindowClosing;
+        }
+
+        private void AboutView_UpdateChecked(object sender, AppUpdaterEventArgs e)
+        {
+            _ = this.DispatcherQueue.TryEnqueue(() =>
+            {
+                infoBar.Severity = GetSeverity(e.UpdateStatus);
+            });
+        }
+
+        private InfoBarSeverity GetSeverity(AppUpdateStatus status)
+        {
+            return status switch
+            {
+                AppUpdateStatus.uptodate => InfoBarSeverity.Informational,
+                AppUpdateStatus.available => InfoBarSeverity.Success,
+                AppUpdateStatus.invalid => InfoBarSeverity.Error,
+                AppUpdateStatus.notchecked => InfoBarSeverity.Warning,
+                AppUpdateStatus.error => InfoBarSeverity.Error,
+                _ => InfoBarSeverity.Error,
+            };
+        }
+
+        //Issue: WinUI firing unloaded randomly..
+        private void Page_Unloaded(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("Unloaded aboutview");
+            //appUpdater.UpdateChecked -= AboutView_UpdateChecked;
         }
     }
 }

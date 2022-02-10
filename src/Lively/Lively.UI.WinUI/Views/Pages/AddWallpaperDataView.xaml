@@ -10,7 +10,7 @@
     <Grid>
         <ScrollViewer>
             <StackPanel>
-                <TextBlock Text="Title" />
+                <TextBlock x:Uid="Title" />
                 <TextBox
                     Name="textboxTitle"
                     Height="20"
@@ -19,7 +19,7 @@
                     IsEnabled="{Binding IsUserEditable}"
                     Text="{Binding Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-                <TextBlock Text="Desc" />
+                <TextBlock x:Uid="Description" />
                 <TextBox
                     Name="textboxDesc"
                     Height="81"
@@ -31,7 +31,7 @@
                     Text="{Binding Desc, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     TextWrapping="Wrap" />
 
-                <TextBlock Text="Author" />
+                <TextBlock x:Uid="Author" />
                 <TextBox
                     Name="textboxAuthor"
                     Height="20"
@@ -40,7 +40,7 @@
                     IsEnabled="{Binding IsUserEditable}"
                     Text="{Binding Author, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-                <TextBlock Text="Website" />
+                <TextBlock x:Uid="SourceWebsite" />
                 <TextBox
                     Name="textboxContact"
                     Height="20"

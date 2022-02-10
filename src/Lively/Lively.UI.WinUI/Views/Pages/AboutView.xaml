@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Lively.UI.WinUI.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Unloaded="Page_Unloaded"
     mc:Ignorable="d">
 
     <Grid>
@@ -23,17 +24,17 @@
                 </StackPanel>
 
                 <controls:SettingsGroup>
-                    <controls:Setting Header="Lively Wallpaper v1.0.0.0" Icon="&#xE117;">
+                    <controls:Setting Header="{Binding AppVersionText}" Icon="&#xE117;">
                         <controls:Setting.Description>
                             <StackPanel Orientation="Vertical">
                                 <TextBlock Style="{StaticResource SecondaryTextStyle}">
-                                    <Run Text="Last Checked" />
-                                    <Run Text="2021/09/10" />
+                                    <Run Text="{Binding UpdateDateText}" />
+                                    <!--<Run Text="2021/09/10" />-->
                                 </TextBlock>
                                 <HyperlinkButton
                                     Margin="0,2,0,0"
                                     Content="Release notes"
-                                    NavigateUri="https://github.com/microsoft/PowerToys/releases/" />
+                                    NavigateUri="https://github.com/rocksdanister/lively/releases" />
                             </StackPanel>
                         </controls:Setting.Description>
                         <controls:Setting.ActionContent>
@@ -45,17 +46,22 @@
                                     Width="24"
                                     Height="24"
                                     IsEnabled="True" />
-                                <Button HorizontalAlignment="Right" Content="Check For Updates" />
+                                <Button
+                                    HorizontalAlignment="Right"
+                                    Command="{Binding UpdateAppCommand}"
+                                    Content="{Binding UpdateCommandText}" />
                             </StackPanel>
                         </controls:Setting.ActionContent>
                     </controls:Setting>
                     <InfoBar
-                        Title="Up To Date"
+                        Name="infoBar"
+                        Title="{Binding UpdateStatusText}"
                         IsClosable="False"
                         IsOpen="True"
                         Severity="Success" />
                 </controls:SettingsGroup>
 
+                <!--
                 <controls:SettingExpander Margin="0,5,0,0" IsExpanded="False">
                     <controls:SettingExpander.Header>
                         <controls:Setting Header="About" Style="{StaticResource ExpanderHeaderSettingStyle}" />
@@ -82,6 +88,26 @@
                         </StackPanel>
                     </controls:SettingExpander.Content>
                 </controls:SettingExpander>
+                -->
+                <StackPanel Margin="5">
+                    <HyperlinkButton x:Uid="AttributionLink" NavigateUri="https://rocksdanister.github.io/lively/attribution/" />
+                    <HyperlinkButton x:Uid="LicenseLink" NavigateUri="https://github.com/rocksdanister/lively/blob/core-separation/LICENSE" />
+                    <HyperlinkButton x:Uid="PrivacyPolicyLink" NavigateUri="https://github.com/rocksdanister/lively/blob/core-separation/PRIVACY.md" />
+                </StackPanel>
+
+                <TextBlock
+                    Margin="5"
+                    HorizontalAlignment="Center"
+                    Text="Contributors"
+                    Visibility="Collapsed" />
+                <!--
+                <ScrollViewer MaxHeight="200">
+                    <StackPanel>
+                        <PersonPicture />
+                        <PersonPicture />
+                    </StackPanel>
+                </ScrollViewer>
+                -->
             </StackPanel>
         </ScrollViewer>
     </Grid>

@@ -25,6 +25,7 @@ namespace Lively.Grpc.Client
         private readonly List<WallpaperData> wallpapers = new List<WallpaperData>(2);
         public ReadOnlyCollection<WallpaperData> Wallpapers => wallpapers.AsReadOnly();
         public string BaseDirectory { get; private set; }
+        public Version AssemblyVersion { get; private set; }
 
         private readonly DesktopService.DesktopServiceClient client;
         private readonly SemaphoreSlim wallpaperChangedLock = new SemaphoreSlim(1, 1);
@@ -40,7 +41,9 @@ namespace Lively.Grpc.Client
             Task.Run(async () =>
             {
                 wallpapers.AddRange(await GetWallpapers().ConfigureAwait(false));
-                BaseDirectory = (await GetCoreStats().ConfigureAwait(false)).BaseDirectory;
+                var status = (await GetCoreStats().ConfigureAwait(false));
+                BaseDirectory = status.BaseDirectory;
+                AssemblyVersion = new Version(status.AssemblyVersion);
             }).Wait();
 
             cancellationTokenWallpaperChanged = new CancellationTokenSource();

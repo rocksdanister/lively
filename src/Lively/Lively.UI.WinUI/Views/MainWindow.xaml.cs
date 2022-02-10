@@ -1,5 +1,6 @@
 ﻿using Lively.Common.Helpers.Pinvoke;
 using Lively.Grpc.Client;
+using Lively.Models;
 using Lively.UI.WinUI.ViewModels;
 using Lively.UI.WinUI.Views;
 using Lively.UI.WinUI.Views.Pages;
@@ -31,21 +32,22 @@ namespace Lively.UI.WinUI
         private readonly SettingsViewModel settingsVm;
         private readonly IDesktopCoreClient desktopCore;
         private readonly IUserSettingsClient userSettings;
-        private static ResourceLoader languageResource;
+        private static ResourceLoader i18n;
 
-        public MainWindow(IDesktopCoreClient desktopCore, IUserSettingsClient userSettings, SettingsViewModel settingsVm)
+        public MainWindow(IDesktopCoreClient desktopCore, IUserSettingsClient userSettings, SettingsViewModel settingsVm, IAppUpdaterClient appUpdater)
         {
             this.settingsVm = settingsVm;
             this.desktopCore = desktopCore;
             this.userSettings = userSettings;
 
             this.InitializeComponent();
-            languageResource = ResourceLoader.GetForViewIndependentUse();
+            i18n = ResourceLoader.GetForViewIndependentUse();
             this.audioSlider.Value = settingsVm.GlobalWallpaperVolume;
             UpdateAudioSliderIcon(settingsVm.GlobalWallpaperVolume);
-            this.controlPanelLabel.Label = $"{desktopCore.Wallpapers.Count} {languageResource.GetString("ActiveWallpapers/Label")}";
+            this.controlPanelLabel.Label = $"{desktopCore.Wallpapers.Count} {i18n.GetString("ActiveWallpapers/Label")}";
             desktopCore.WallpaperChanged += DesktopCore_WallpaperChanged;
             desktopCore.WallpaperError += DesktopCore_WallpaperError;
+            appUpdater.UpdateChecked += AppUpdater_UpdateChecked;
             //App startup is slower if done in NavView_Loaded..
             CreateMainMenu();
             NavViewNavigate(NavPages.library);
@@ -77,6 +79,30 @@ namespace Lively.UI.WinUI
             });
         }
 
+        private void AppUpdater_UpdateChecked(object sender, Common.Services.AppUpdaterEventArgs e)
+        {
+            if (e.UpdateStatus == Common.Services.AppUpdateStatus.available)
+            {
+                _ = this.DispatcherQueue.TryEnqueue(() =>
+                {
+                    infoBar.IsOpen = true;
+                    var btn = new Button()
+                    {
+                        Content = i18n.GetString("TextLearnMore"),
+                    };
+                    btn.Click += (_, _) =>
+                    {
+                        infoBar.IsOpen = false;
+                        ShowAboutDialog();
+                    };
+                    infoBar.ActionButton = btn;
+                    infoBar.Title = i18n.GetString("TextUpdateAvailable");
+                    infoBar.Message = $"{i18n.GetString("DescriptionUpdateAvailable")} (v{e.UpdateVersion})";
+                    infoBar.Severity = InfoBarSeverity.Success;
+                });
+            }
+        }
+
         private void DesktopCore_WallpaperChanged(object sender, EventArgs e)
         {
             _ = this.DispatcherQueue.TryEnqueue(() =>
@@ -84,9 +110,16 @@ namespace Lively.UI.WinUI
                 //wallpaper focus steal fix.
                 if (this.Visible)
                 {
-                    this.Activate();
+                    if (!userSettings.Settings.ControlPanelOpened)
+                    {
+                        toggleTeachingTipControlPanel.IsOpen = true;
+                        userSettings.Settings.ControlPanelOpened = true;
+                        userSettings.Save<ISettingsModel>();
+                    }
+                    NativeMethods.SetForegroundWindow(this.GetWindowHandleEx());
+                    //this.Activate();
                 }
-                controlPanelLabel.Label = $"{desktopCore.Wallpapers.Count} {languageResource.GetString("ActiveWallpapers/Label")}";
+                controlPanelLabel.Label = $"{desktopCore.Wallpapers.Count} {i18n.GetString("ActiveWallpapers/Label")}";
             });
         }
 
@@ -161,9 +194,9 @@ namespace Lively.UI.WinUI
         {
             _ = new ContentDialog()
             {
-                Title = languageResource.GetString("AddWallpaper/Label"),
+                Title = i18n.GetString("AddWallpaper/Label"),
                 Content = new AddWallpaperView(),
-                PrimaryButtonText = languageResource.GetString("TextClose"),
+                PrimaryButtonText = i18n.GetString("TextClose"),
                 DefaultButton = ContentDialogButton.Primary,
                 XamlRoot = this.Content.XamlRoot,
             }.ShowAsyncQueue();
@@ -173,9 +206,9 @@ namespace Lively.UI.WinUI
         {
             _ = new ContentDialog()
             {
-                Title = "Choose display",
+                Title = i18n.GetString("DescriptionScreenLayout"),
                 Content = new ScreenLayoutView(),
-                PrimaryButtonText = languageResource.GetString("TextOK"),
+                PrimaryButtonText = i18n.GetString("TextOK"),
                 DefaultButton = ContentDialogButton.Primary,
                 XamlRoot = this.Content.XamlRoot,
             }.ShowAsyncQueue();
@@ -185,9 +218,9 @@ namespace Lively.UI.WinUI
         {
             _ = new ContentDialog()
             {
-                Title = languageResource.GetString("Help/Label"),
+                Title = i18n.GetString("Help/Label"),
                 Content = new HelpView(),
-                PrimaryButtonText = languageResource.GetString("TextOK"),
+                PrimaryButtonText = i18n.GetString("TextOK"),
                 DefaultButton = ContentDialogButton.Primary,
                 XamlRoot = this.Content.XamlRoot,
             }.ShowAsyncQueue();
@@ -195,11 +228,16 @@ namespace Lively.UI.WinUI
 
         private void AppBarAboutButton_Click(object sender, RoutedEventArgs e)
         {
+            ShowAboutDialog();
+        }
+
+        private void ShowAboutDialog()
+        {
             _ = new ContentDialog()
             {
-                Title = new FontIcon() { Glyph = "\uE90A" },// languageResource.GetString("About/Label"),
+                Title = i18n.GetString("About/Label"),
                 Content = new AboutView(),
-                PrimaryButtonText = languageResource.GetString("TextOK"),
+                PrimaryButtonText = i18n.GetString("TextOK"),
                 DefaultButton = ContentDialogButton.Primary,
                 XamlRoot = this.Content.XamlRoot,
             }.ShowAsyncQueue();
@@ -218,8 +256,8 @@ namespace Lively.UI.WinUI
             navView.IsSettingsVisible = true;
             navCommandBar.Visibility = Visibility.Visible;
             navView.IsBackButtonVisible = NavigationViewBackButtonVisible.Collapsed;
-            navView.MenuItems.Add(CreateMenu(languageResource.GetString("TitleLibrary"), "library", "\uE8A9"));
-            navView.MenuItems.Add(CreateMenu(languageResource.GetString("TitleGallery"), "gallery", "\uE719"));
+            navView.MenuItems.Add(CreateMenu(i18n.GetString("TitleLibrary"), "library", "\uE8A9"));
+            navView.MenuItems.Add(CreateMenu(i18n.GetString("TitleGallery"), "gallery", "\uE719"));
         }
 
         private void CreateSettingsMenu()
@@ -229,10 +267,10 @@ namespace Lively.UI.WinUI
             navView.IsSettingsVisible = false;
             navCommandBar.Visibility = Visibility.Collapsed;
             navView.IsBackButtonVisible = NavigationViewBackButtonVisible.Visible;
-            navView.MenuItems.Add(CreateMenu(languageResource.GetString("TitleGeneral"), "general"));
-            navView.MenuItems.Add(CreateMenu(languageResource.GetString("TitlePerformance"), "performance"));
-            navView.MenuItems.Add(CreateMenu(languageResource.GetString("TitleWallpaper"), "wallpaper"));
-            navView.MenuItems.Add(CreateMenu(languageResource.GetString("System/Header"), "system"));
+            navView.MenuItems.Add(CreateMenu(i18n.GetString("TitleGeneral"), "general"));
+            navView.MenuItems.Add(CreateMenu(i18n.GetString("TitlePerformance"), "performance"));
+            navView.MenuItems.Add(CreateMenu(i18n.GetString("TitleWallpaper"), "wallpaper"));
+            navView.MenuItems.Add(CreateMenu(i18n.GetString("System/Header"), "system"));
         }
 
         private void UpdateAudioSliderIcon(double volume) => audioBtn.Icon = audioIcons[(int)Math.Ceiling((audioIcons.Length - 1) * volume / 100)];

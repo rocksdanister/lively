@@ -78,13 +78,13 @@ namespace Lively.UI.WinUI
                 .AddSingleton<IUserSettingsClient, UserSettingsClient>()
                 .AddSingleton<IDisplayManagerClient, DisplayManagerClient>()
                 .AddSingleton<ICommandsClient, CommandsClient>()
-                //.AddSingleton<IAppUpdaterService, GithubUpdaterService>()
+                .AddSingleton<IAppUpdaterClient, AppUpdaterClient>()
                 .AddSingleton<MainWindow>()
                 .AddSingleton<LibraryViewModel>() //Library items are stored..
                 .AddSingleton<SettingsViewModel>() //Some events..
                 //transient
                 //.AddTransient<HelpViewModel>()
-                //.AddTransient<AboutViewModel>()
+                .AddTransient<AboutViewModel>()
                 .AddTransient<AddWallpaperViewModel>()
                 .AddTransient<LibraryUtil>()
                 .AddTransient<ScreenLayoutViewModel>()

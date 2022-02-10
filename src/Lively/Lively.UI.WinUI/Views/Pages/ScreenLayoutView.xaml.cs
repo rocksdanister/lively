@@ -9,6 +9,7 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -30,7 +31,13 @@ namespace Lively.UI.WinUI.Views.Pages
             this.InitializeComponent();
             var vm = App.Services.GetRequiredService<ScreenLayoutViewModel>();
             this.DataContext = vm;
-            this.Unloaded += vm.OnWindowClosing;
+            //this.Unloaded += vm.OnWindowClosing;
+            this.Unloaded += ScreenLayoutView_Unloaded;
+        }
+
+        private void ScreenLayoutView_Unloaded(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("Unloaded screenlayoutview");
         }
     }
 }

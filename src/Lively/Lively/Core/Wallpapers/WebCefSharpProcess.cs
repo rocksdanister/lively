@@ -68,7 +68,7 @@ namespace Lively.Core.Wallpapers
 #if DEBUG
             //cmdArgs.Append(" --verbose-log true"); 
 #endif
-          
+        
             ProcessStartInfo start = new ProcessStartInfo
             {
                 Arguments = cmdArgs.ToString(),

@@ -22,19 +22,19 @@
                     Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
                     Text="{Binding Desc}"
                     TextWrapping="Wrap" />
-                <TextBlock Margin="0,5,0,0" Text="Type" />
+                <TextBlock x:Uid="WallpaperType" Margin="0,5,0,0" />
                 <TextBlock
                     Margin="0,5,0,0"
                     Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
                     Text="{Binding WallpaperCategory}"
                     TextWrapping="Wrap" />
-                <TextBlock Margin="0,5,0,0" Text="Author" />
+                <TextBlock x:Uid="Author" Margin="0,5,0,0" />
                 <TextBlock
                     Margin="0,5,0,0"
                     Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
                     Text="{Binding Author}"
                     TextWrapping="Wrap" />
-                <TextBlock Margin="0,5,0,0" Text="Source" />
+                <TextBlock x:Uid="WallpaperSource" Margin="0,5,0,0" />
                 <HyperlinkButton
                     Margin="0,0,0,0"
                     Content="{Binding LivelyInfo.Contact}"
