@@ -1,9 +1,151 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r95/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.16/vanta.waves.min.js"></script>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
-    <head>
-        <title>Example</title>
-    </head>
-    <body>
-        <p>This is an example of a simple HTML page with one paragraph.</p>
-    </body>
+	<head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<!--
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-160230230-1"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+		  gtag('config', 'UA-160230230-1');
+		</script>
+		-->
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    	<link rel="icon" href="favicon.ico" type="image/x-icon">
+		<title>Lively Wallpaper Attributions</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="/assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
+	</head>
+
+	<body class="is-preload">
+		<!-- Sidebar -->
+			<section id="sidebar">
+				<div class="inner">
+					<nav>
+						<ul>
+							<li><a href="#intro" onclick="window.location.href='/lively'">Home</a></li>
+              <li><a href="#table">Table Of Contents</a></li>
+						</ul>
+					</nav>
+				</div>
+			</section>
+
+      
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+        <section id="intro" class="wrapper style1 fullscreen fade-up">
+          <div class="inner">
+            <div style="position: relative; left: -2.5%;">
+              <img class="imageRotate" src="\images\logo.png" alt="logo" />
+              <h1 >Lively Wallpaper</h1>
+            </div>
+            <p>This page is dedicated for other projects that make lively possible.</p>
+          </div>
+        </section>
+
+        <script>
+        const effect = VANTA.WAVES({
+          el: "#intro",
+          mouseControls: true,
+          touchControls: true,
+          minHeight: 400.00,
+          minWidth: 400.00,
+          scale: 1.00,
+          scaleMobile: 1.00,
+          waveHeight: 20.0,
+          color: 0x50409a,
+          waveSpeed: 0.50,
+        })
+        //horizon scrollbar fix... sort of.
+        window.onload = function() {
+          window.dispatchEvent(new Event('resize'));
+          };
+        </script>
+				<!-- One -->
+					<section id="one" class="wrapper style2 spotlights fade-up">
+								<div class="inner">
+									<h2 id="table">Table Of Contents:</h2>
+									<ul>
+                    <li><a href="#test">Test</a></li>
+                    <li><a href="#test1">Test1</a></li>
+                    <li><a href="#test2">Test2</a></li>
+                  </ul>
+								</div>
+                <div class="inner" class="scrolly"> 
+									<b id="test">Test</b>
+                  <div>
+                    <div>
+                      Find out more about Test here: <a href="www.google.com">www.google.com</a>
+                    </div>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id posuere magna, a porta massa. In sollicitudin, nibh nec tincidunt hendrerit, tellus tellus sodales tellus, et bibendum lectus elit eget lectus. Nullam pretium id urna eu aliquam. Morbi tincidunt felis eget eros facilisis, ac rutrum massa eleifend. Sed congue at augue in eleifend. Nulla nec augue eget turpis hendrerit varius. Nam et pharetra lorem, ac ultricies diam. Donec sagittis nulla nibh, eget dictum ex imperdiet eu. Curabitur consequat, metus quis porttitor placerat, metus turpis laoreet libero, vitae porta neque libero non nulla. Nullam ut volutpat erat, sit amet porta justo. Nam elit magna, sagittis id finibus a, ornare in justo. Morbi sodales luctus consequat.
+
+                    Phasellus vitae elit interdum, iaculis ipsum sed, accumsan nulla. Phasellus tincidunt accumsan sapien, quis vehicula turpis volutpat sed. Pellentesque quis lobortis nisl, non bibendum magna. Vestibulum at ex dignissim, pretium odio at, ullamcorper felis. Cras porttitor vehicula sapien, vel tristique neque vestibulum sed. Suspendisse euismod quam ut ipsum facilisis, ut efficitur felis commodo. Ut volutpat enim ut diam maximus, ut blandit quam mollis. Aenean sapien metus, eleifend ac ligula quis, vehicula feugiat lacus.
+                    
+                    Vestibulum eget dolor pharetra, hendrerit neque nec, iaculis nibh. Nam mattis est ac velit fermentum, eu viverra ex consectetur. Nullam nec porttitor tortor. Aenean finibus, mi fringilla blandit vestibulum, tortor lorem accumsan libero, et ultricies tellus nisi facilisis odio. Sed at ultricies odio, sed tempus arcu. Maecenas tristique quam ac cursus iaculis. Praesent iaculis vitae lectus vitae congue. Vivamus sollicitudin sed mi in dapibus. Fusce vitae molestie velit, ut ornare diam. Phasellus id tortor auctor, ultricies turpis vitae, ultrices leo. Mauris nibh erat, consequat non laoreet non, mollis ac augue. Vestibulum tincidunt odio eros, at eleifend lorem vulputate a. Fusce porttitor non eros eu hendrerit. Vivamus id aliquam tellus. Nam efficitur augue nec dolor aliquet, quis condimentum mi pellentesque.
+                    
+                    Praesent lobortis turpis vel tellus volutpat, at maximus nunc ultricies. Donec tellus magna, euismod ac sem vel, suscipit scelerisque nunc. Donec faucibus eleifend massa, vel bibendum mauris rutrum quis. Morbi neque felis, elementum eget laoreet ut, maximus ultricies leo. Pellentesque dignissim mattis nulla, eget imperdiet sem lacinia in. Vestibulum ut elit vitae dolor vulputate accumsan at eget elit. Duis eu magna a dolor congue hendrerit vel cursus purus. In hac habitasse platea dictumst. Integer lobortis non magna nec bibendum. Donec posuere tortor sed ligula ullamcorper molestie. Ut vulputate felis lacus, ut sollicitudin felis elementum at. Morbi vitae tempor massa, ut euismod erat. Morbi vel lacus at eros dignissim efficitur. Praesent pellentesque pulvinar augue, at facilisis magna sollicitudin sit amet.
+                    
+                    Duis vulputate orci et ante faucibus, vel facilisis augue venenatis. Vivamus risus purus, euismod a elit quis, aliquet vestibulum neque. Proin egestas ligula ut est pulvinar, vitae aliquet quam facilisis. Quisque lacus arcu, ullamcorper sed rutrum vitae, molestie ut ex. Pellentesque malesuada condimentum mattis. Fusce semper blandit efficitur. Cras lacus mauris, bibendum in libero eget, lobortis malesuada nisi.
+                  </div>
+								</div>
+                <div class="inner" class="scrolly">
+									<b id="test1">Test1</b>
+                  <div>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id posuere magna, a porta massa. In sollicitudin, nibh nec tincidunt hendrerit, tellus tellus sodales tellus, et bibendum lectus elit eget lectus. Nullam pretium id urna eu aliquam. Morbi tincidunt felis eget eros facilisis, ac rutrum massa eleifend. Sed congue at augue in eleifend. Nulla nec augue eget turpis hendrerit varius. Nam et pharetra lorem, ac ultricies diam. Donec sagittis nulla nibh, eget dictum ex imperdiet eu. Curabitur consequat, metus quis porttitor placerat, metus turpis laoreet libero, vitae porta neque libero non nulla. Nullam ut volutpat erat, sit amet porta justo. Nam elit magna, sagittis id finibus a, ornare in justo. Morbi sodales luctus consequat.
+
+                    Phasellus vitae elit interdum, iaculis ipsum sed, accumsan nulla. Phasellus tincidunt accumsan sapien, quis vehicula turpis volutpat sed. Pellentesque quis lobortis nisl, non bibendum magna. Vestibulum at ex dignissim, pretium odio at, ullamcorper felis. Cras porttitor vehicula sapien, vel tristique neque vestibulum sed. Suspendisse euismod quam ut ipsum facilisis, ut efficitur felis commodo. Ut volutpat enim ut diam maximus, ut blandit quam mollis. Aenean sapien metus, eleifend ac ligula quis, vehicula feugiat lacus.
+                    
+                    Vestibulum eget dolor pharetra, hendrerit neque nec, iaculis nibh. Nam mattis est ac velit fermentum, eu viverra ex consectetur. Nullam nec porttitor tortor. Aenean finibus, mi fringilla blandit vestibulum, tortor lorem accumsan libero, et ultricies tellus nisi facilisis odio. Sed at ultricies odio, sed tempus arcu. Maecenas tristique quam ac cursus iaculis. Praesent iaculis vitae lectus vitae congue. Vivamus sollicitudin sed mi in dapibus. Fusce vitae molestie velit, ut ornare diam. Phasellus id tortor auctor, ultricies turpis vitae, ultrices leo. Mauris nibh erat, consequat non laoreet non, mollis ac augue. Vestibulum tincidunt odio eros, at eleifend lorem vulputate a. Fusce porttitor non eros eu hendrerit. Vivamus id aliquam tellus. Nam efficitur augue nec dolor aliquet, quis condimentum mi pellentesque.
+                    
+                    Praesent lobortis turpis vel tellus volutpat, at maximus nunc ultricies. Donec tellus magna, euismod ac sem vel, suscipit scelerisque nunc. Donec faucibus eleifend massa, vel bibendum mauris rutrum quis. Morbi neque felis, elementum eget laoreet ut, maximus ultricies leo. Pellentesque dignissim mattis nulla, eget imperdiet sem lacinia in. Vestibulum ut elit vitae dolor vulputate accumsan at eget elit. Duis eu magna a dolor congue hendrerit vel cursus purus. In hac habitasse platea dictumst. Integer lobortis non magna nec bibendum. Donec posuere tortor sed ligula ullamcorper molestie. Ut vulputate felis lacus, ut sollicitudin felis elementum at. Morbi vitae tempor massa, ut euismod erat. Morbi vel lacus at eros dignissim efficitur. Praesent pellentesque pulvinar augue, at facilisis magna sollicitudin sit amet.
+                    
+                    Duis vulputate orci et ante faucibus, vel facilisis augue venenatis. Vivamus risus purus, euismod a elit quis, aliquet vestibulum neque. Proin egestas ligula ut est pulvinar, vitae aliquet quam facilisis. Quisque lacus arcu, ullamcorper sed rutrum vitae, molestie ut ex. Pellentesque malesuada condimentum mattis. Fusce semper blandit efficitur. Cras lacus mauris, bibendum in libero eget, lobortis malesuada nisi.
+                  </div>
+								</div>
+                <div class="inner" class="scrolly">
+									<b id="test2">Test2</b>
+                  <div>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id posuere magna, a porta massa. In sollicitudin, nibh nec tincidunt hendrerit, tellus tellus sodales tellus, et bibendum lectus elit eget lectus. Nullam pretium id urna eu aliquam. Morbi tincidunt felis eget eros facilisis, ac rutrum massa eleifend. Sed congue at augue in eleifend. Nulla nec augue eget turpis hendrerit varius. Nam et pharetra lorem, ac ultricies diam. Donec sagittis nulla nibh, eget dictum ex imperdiet eu. Curabitur consequat, metus quis porttitor placerat, metus turpis laoreet libero, vitae porta neque libero non nulla. Nullam ut volutpat erat, sit amet porta justo. Nam elit magna, sagittis id finibus a, ornare in justo. Morbi sodales luctus consequat.
+
+                    Phasellus vitae elit interdum, iaculis ipsum sed, accumsan nulla. Phasellus tincidunt accumsan sapien, quis vehicula turpis volutpat sed. Pellentesque quis lobortis nisl, non bibendum magna. Vestibulum at ex dignissim, pretium odio at, ullamcorper felis. Cras porttitor vehicula sapien, vel tristique neque vestibulum sed. Suspendisse euismod quam ut ipsum facilisis, ut efficitur felis commodo. Ut volutpat enim ut diam maximus, ut blandit quam mollis. Aenean sapien metus, eleifend ac ligula quis, vehicula feugiat lacus.
+                    
+                    Vestibulum eget dolor pharetra, hendrerit neque nec, iaculis nibh. Nam mattis est ac velit fermentum, eu viverra ex consectetur. Nullam nec porttitor tortor. Aenean finibus, mi fringilla blandit vestibulum, tortor lorem accumsan libero, et ultricies tellus nisi facilisis odio. Sed at ultricies odio, sed tempus arcu. Maecenas tristique quam ac cursus iaculis. Praesent iaculis vitae lectus vitae congue. Vivamus sollicitudin sed mi in dapibus. Fusce vitae molestie velit, ut ornare diam. Phasellus id tortor auctor, ultricies turpis vitae, ultrices leo. Mauris nibh erat, consequat non laoreet non, mollis ac augue. Vestibulum tincidunt odio eros, at eleifend lorem vulputate a. Fusce porttitor non eros eu hendrerit. Vivamus id aliquam tellus. Nam efficitur augue nec dolor aliquet, quis condimentum mi pellentesque.
+                    
+                    Praesent lobortis turpis vel tellus volutpat, at maximus nunc ultricies. Donec tellus magna, euismod ac sem vel, suscipit scelerisque nunc. Donec faucibus eleifend massa, vel bibendum mauris rutrum quis. Morbi neque felis, elementum eget laoreet ut, maximus ultricies leo. Pellentesque dignissim mattis nulla, eget imperdiet sem lacinia in. Vestibulum ut elit vitae dolor vulputate accumsan at eget elit. Duis eu magna a dolor congue hendrerit vel cursus purus. In hac habitasse platea dictumst. Integer lobortis non magna nec bibendum. Donec posuere tortor sed ligula ullamcorper molestie. Ut vulputate felis lacus, ut sollicitudin felis elementum at. Morbi vitae tempor massa, ut euismod erat. Morbi vel lacus at eros dignissim efficitur. Praesent pellentesque pulvinar augue, at facilisis magna sollicitudin sit amet.
+                    
+                    Duis vulputate orci et ante faucibus, vel facilisis augue venenatis. Vivamus risus purus, euismod a elit quis, aliquet vestibulum neque. Proin egestas ligula ut est pulvinar, vitae aliquet quam facilisis. Quisque lacus arcu, ullamcorper sed rutrum vitae, molestie ut ex. Pellentesque malesuada condimentum mattis. Fusce semper blandit efficitur. Cras lacus mauris, bibendum in libero eget, lobortis malesuada nisi.</div>
+								</div>
+					</section>
+			</div>
+		<!-- Footer -->
+			<footer id="footer" class="wrapper style1-alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>Rocksdanister. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+		<!-- Scripts -->
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/jquery.scrolly.min.js"></script>
+			<script src="/assets/js/browser.min.js"></script>
+			<script src="/assets/js/breakpoints.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+			<script src="/assets/js/main.js"></script>
+
+	</body>
 </html>
