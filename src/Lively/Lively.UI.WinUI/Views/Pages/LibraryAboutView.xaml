@@ -36,7 +36,7 @@
                     TextWrapping="Wrap" />
                 <TextBlock x:Uid="WallpaperSource" Margin="0,5,0,0" />
                 <HyperlinkButton
-                    Margin="0,0,0,0"
+                    HorizontalContentAlignment="Left"
                     Content="{Binding LivelyInfo.Contact}"
                     IsTabStop="False"
                     NavigateUri="{Binding SrcWebsite}"

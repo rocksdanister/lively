@@ -1,0 +1,969 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
+    <value>选择一个文件或指定一个网站 URL 以设置为壁纸。</value>
+  </data>
+  <data name="DescriptionAppRules" xml:space="preserve">
+    <value>根据正在运行的应用程序设置壁纸播放行为</value>
+  </data>
+  <data name="DescriptionCancelQuestion" xml:space="preserve">
+    <value>您确定要取消吗?</value>
+  </data>
+  <data name="DescriptionDeleteConfirmation" xml:space="preserve">
+    <value>您确定要从磁盘上永久删除该壁纸吗？</value>
+  </data>
+  <data name="DragDropFile.Text" xml:space="preserve">
+    <value>拖曳文件至图库。</value>
+  </data>
+  <data name="DescriptionExternalAppWarning" xml:space="preserve">
+    <value>请注意, 您将使用一个外部应用程序作为壁纸。
+恶意应用程序可能趁机注入木马、病毒..这将损害您的系统。
+仅当您信任此应用程序时，方可继续。</value>
+  </data>
+  <data name="DescriptionMinimizedTray" xml:space="preserve">
+    <value>Lively 已被最小化到系统托盘，右键单击 Lively 的图标以获取更多选项。</value>
+  </data>
+  <data name="DescriptionRecordStart" xml:space="preserve">
+    <value>按下以开始录影</value>
+  </data>
+  <data name="DescriptionRestoringWallpaper" xml:space="preserve">
+    <value>正在恢复以前的壁纸..</value>
+  </data>
+  <data name="DescriptionUpdateAvailable" xml:space="preserve">
+    <value>有新版本可用！</value>
+  </data>
+  <data name="DescriptionWebpageLoad" xml:space="preserve">
+    <value>输入要加载的网站链接，支持 Shadertoy.com 着色器链接</value>
+  </data>
+  <data name="DescriptionWelcomeWizard" xml:space="preserve">
+    <value>该向导将会帮助您设置 Lively 。</value>
+  </data>
+  <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
+    <value>更新失败。请尝试从此处下载安装程序：
+https://github.com/rocksdanister/lively/releases</value>
+  </data>
+  <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
+    <value>壁纸文件已损坏，请尝试重新下载。</value>
+  </data>
+  <data name="LivelyExceptionGeneral" xml:space="preserve">
+    <value>哎呀...好像有什么东西坏掉了 :(
+为了更好地了解这个错误并修复问题，请将日志文件分享给开发者。
+分享日志文件的说明：
+https://github.com/rocksdanister/lively/wiki</value>
+  </data>
+  <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
+    <value>Lively 无法在 Windows 高对比度 (Windows High Contrast) 模式下正常工作！
+请禁用高对比度模式，然后重试。</value>
+  </data>
+  <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
+    <value>不是合法的 Lively 壁纸文件。</value>
+  </data>
+  <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
+    <value>Lively 没有被正确关闭, 正在以安全模式启动。
+您是否希望还原以前运行的壁纸?</value>
+  </data>
+  <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
+    <value>似乎需要进行一些设置才能使Lively工作：  
+1. 打开此电脑（我的电脑）
+2. 右键单击空白区域
+3. 选择"属性"
+4. 选择"高级系统设置"
+5. 在"性能"选项卡下，选择"设置"
+6. 启用"窗口内的动画控件和元素"并应用。
+
+如果是 Windows 7 系统只需设置"调整为最近外观"并应用。
+如果仍不起作用, 重启 Lively 或重启操作系统。
+(在一些 Windows 10 预览体验计划版本中无法工作)</value>
+  </data>
+  <data name="TextAdd" xml:space="preserve">
+    <value>添加</value>
+  </data>
+  <data name="Application.Header" xml:space="preserve">
+    <value>应用程序</value>
+  </data>
+  <data name="Attribution.Header" xml:space="preserve">
+    <value>说明/属性</value>
+  </data>
+  <data name="Author.Text" xml:space="preserve">
+    <value>作者</value>
+  </data>
+  <data name="TextBack" xml:space="preserve">
+    <value>返回</value>
+  </data>
+  <data name="TextBrowse" xml:space="preserve">
+    <value>浏览</value>
+  </data>
+  <data name="CloseWallpapers.Label" xml:space="preserve">
+    <value>关闭所有壁纸</value>
+  </data>
+  <data name="TextCompleted" xml:space="preserve">
+    <value>完成!</value>
+  </data>
+  <data name="TextConvertVideo" xml:space="preserve">
+    <value>转换成视频</value>
+  </data>
+  <data name="CustomiseWallpaper.Label" xml:space="preserve">
+    <value>自定义壁纸</value>
+  </data>
+  <data name="DeleteWallpaper.Text" xml:space="preserve">
+    <value>删除壁纸</value>
+  </data>
+  <data name="DisplayPauseRuleAllScreen.Content" xml:space="preserve">
+    <value>所有屏幕</value>
+  </data>
+  <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
+    <value>每个屏幕</value>
+  </data>
+  <data name="TextDownload" xml:space="preserve">
+    <value>下载</value>
+  </data>
+  <data name="TextError" xml:space="preserve">
+    <value>错误</value>
+  </data>
+  <data name="TextExit" xml:space="preserve">
+    <value>退出</value>
+  </data>
+  <data name="ExportWallpaperZip.Text" xml:space="preserve">
+    <value>输出为 Lively .zip</value>
+  </data>
+  <data name="TextGIF" xml:space="preserve">
+    <value>动态 GIF</value>
+  </data>
+  <data name="TextGo" xml:space="preserve">
+    <value>GO</value>
+  </data>
+  <data name="TextHelpTranslate" xml:space="preserve">
+    <value>帮助翻译 Lively 。</value>
+  </data>
+  <data name="TextInstall" xml:space="preserve">
+    <value>安装</value>
+  </data>
+  <data name="TextmoreInfo" xml:space="preserve">
+    <value>资讯</value>
+  </data>
+  <data name="TextMoreWallpapers" xml:space="preserve">
+    <value>更多壁纸</value>
+  </data>
+  <data name="MouseInteractOnDesktop.Content" xml:space="preserve">
+    <value>应用聚焦时的鼠标交互</value>
+  </data>
+  <data name="TextNext" xml:space="preserve">
+    <value>下一步</value>
+  </data>
+  <data name="TextNo" xml:space="preserve">
+    <value>否</value>
+  </data>
+  <data name="TextOnline" xml:space="preserve">
+    <value>在线网页 (Online)</value>
+  </data>
+  <data name="TextOpenLively" xml:space="preserve">
+    <value>打开 Lively</value>
+  </data>
+  <data name="PauseAlgorithmTypeAllProcess.Content" xml:space="preserve">
+    <value>所有进程</value>
+  </data>
+  <data name="PauseAlgorithmTypeForegroundProcess.Content" xml:space="preserve">
+    <value>前台进程</value>
+  </data>
+  <data name="TextPauseWallpapers" xml:space="preserve">
+    <value>暂停壁纸</value>
+  </data>
+  <data name="TextPerformanceKill.Content" xml:space="preserve">
+    <value>停止</value>
+  </data>
+  <data name="TextPerformanceNone.Content" xml:space="preserve">
+    <value>保持运行</value>
+  </data>
+  <data name="TextPerformancePause.Content" xml:space="preserve">
+    <value>暂停</value>
+  </data>
+  <data name="TextRemove" xml:space="preserve">
+    <value>移除</value>
+  </data>
+  <data name="TextRule" xml:space="preserve">
+    <value>规则</value>
+  </data>
+  <data name="TextScreen" xml:space="preserve">
+    <value>屏幕</value>
+  </data>
+  <data name="TextSearch" xml:space="preserve">
+    <value>搜索</value>
+  </data>
+  <data name="SetWallpaper.Text" xml:space="preserve">
+    <value>设置为壁纸</value>
+  </data>
+  <data name="ShowOnDisk.Text" xml:space="preserve">
+    <value>打开文件所在位置</value>
+  </data>
+  <data name="WallpaperSource.Text" xml:space="preserve">
+    <value>来源</value>
+  </data>
+  <data name="TextStart" xml:space="preserve">
+    <value>开始</value>
+  </data>
+  <data name="TextStop" xml:space="preserve">
+    <value>结束</value>
+  </data>
+  <data name="TextTags" xml:space="preserve">
+    <value>标签</value>
+  </data>
+  <data name="TextTileSizeLarge" xml:space="preserve">
+    <value>大</value>
+  </data>
+  <data name="TextTileSizeNormal" xml:space="preserve">
+    <value>中</value>
+  </data>
+  <data name="TextTileSizeSmall" xml:space="preserve">
+    <value>小</value>
+  </data>
+  <data name="TextUIHeadless" xml:space="preserve">
+    <value>无UI (Headless)</value>
+  </data>
+  <data name="TextUILite" xml:space="preserve">
+    <value>精简 (Lite)</value>
+  </data>
+  <data name="TextUINormal" xml:space="preserve">
+    <value>正常 (Normal)</value>
+  </data>
+  <data name="TextUpdateAvailable" xml:space="preserve">
+    <value>发现新版本！</value>
+  </data>
+  <data name="TextUpdateCheck" xml:space="preserve">
+    <value>检查更新</value>
+  </data>
+  <data name="TextupdateCheckFail" xml:space="preserve">
+    <value>检查更新出错</value>
+  </data>
+  <data name="TextUpdateChecking" xml:space="preserve">
+    <value>正在检查更新</value>
+  </data>
+  <data name="TextUpdateUptodate" xml:space="preserve">
+    <value>已是最新版本！</value>
+  </data>
+  <data name="TextVideo" xml:space="preserve">
+    <value>视频</value>
+  </data>
+  <data name="WallpaperLayoutDuplicate.Content" xml:space="preserve">
+    <value>复制相同壁纸</value>
+  </data>
+  <data name="WallpaperLayoutSpan.Content" xml:space="preserve">
+    <value>跨显示器</value>
+  </data>
+  <data name="WallpaperType.Text" xml:space="preserve">
+    <value>类型</value>
+  </data>
+  <data name="Website.Header" xml:space="preserve">
+    <value>网站</value>
+  </data>
+  <data name="TextWebStream" xml:space="preserve">
+    <value>Web流 (Web Stream)</value>
+  </data>
+  <data name="TextWelcome" xml:space="preserve">
+    <value>欢迎</value>
+  </data>
+  <data name="TextYes" xml:space="preserve">
+    <value>是</value>
+  </data>
+  <data name="VideoPlayer.Header" xml:space="preserve">
+    <value>视频播放器</value>
+  </data>
+  <data name="AddWallpaperFileBrowse.Description" xml:space="preserve">
+    <value>将所有支持的文件类型设置为壁纸。</value>
+  </data>
+  <data name="EnterUrl.Description" xml:space="preserve">
+    <value>将您输入的URL的网页设置为墙纸。</value>
+  </data>
+  <data name="AppFocus.Description" xml:space="preserve">
+    <value>设置当任何应用程序处于焦点时的行为。</value>
+  </data>
+  <data name="AppFullScreen.Description" xml:space="preserve">
+    <value>设置全屏游戏/应用程序运行时的操作。</value>
+  </data>
+  <data name="AppRules.Description" xml:space="preserve">
+    <value>根据运行的应用程序设置不同的壁纸播放规则。</value>
+  </data>
+  <data name="TipAppTheme" xml:space="preserve">
+    <value>Lively 自适应系统主题设置，要更改外观请前往</value>
+  </data>
+  <data name="BatteryPower.Description" xml:space="preserve">
+    <value>（仅电池供电的系统）当电源断开时改变播放方式。</value>
+  </data>
+  <data name="BrowserDebuggingPort.Description" xml:space="preserve">
+    <value>输入调试网页壁纸的端口，需要重新启动浏览器才能使修改生效。
+准备好后前往 http://localhost:portnumber ，进入开发者控制台。</value>
+  </data>
+  <data name="DisplayPauseRule.Description" xml:space="preserve">
+    <value>每个：只在应用程序聚焦/全屏的屏幕上暂停壁纸。
+所有：如果有应用程序聚焦/全屏，则在所有屏幕上暂停壁纸。</value>
+  </data>
+  <data name="TipHideSysTray" xml:space="preserve">
+    <value>系统托盘图标可见性， Lively 会在图标隐藏的情况下继续运行。</value>
+  </data>
+  <data name="Language.Description" xml:space="preserve">
+    <value>重启 Lively 以应用新的语言。</value>
+  </data>
+  <data name="TipLivelySetupOnClose" xml:space="preserve">
+    <value>完成配置以继续。</value>
+  </data>
+  <data name="PauseAlgorithm.Description" xml:space="preserve">
+    <value>前台：轻量，只检查前台的单一进程，以确定壁纸播放行为。
+所有进程：较重，扫描所有进程以确定播放行为。</value>
+  </data>
+  <data name="StreamWallpaperDetect.Description" xml:space="preserve">
+    <value>如果检测到支持的视频流链接，则使用视频播放器而非加载网页。</value>
+  </data>
+  <data name="StreamWallpaperVideoQuality.Description" xml:space="preserve">
+    <value>选择在线流媒体的视频质量</value>
+  </data>
+  <data name="TipTileSize" xml:space="preserve">
+    <value>图库中壁纸预览的大小。</value>
+  </data>
+  <data name="TipUIMode" xml:space="preserve">
+    <value>低配电脑建议使用精简 (Lite) 模式。</value>
+  </data>
+  <data name="VideoPlayer.Description" xml:space="preserve">
+    <value>选择壁纸使用的视频播放器。</value>
+  </data>
+  <data name="WallpaperDir.Description" xml:space="preserve">
+    <value>存储壁纸的路径。</value>
+  </data>
+  <data name="WallpaperInput.Description" xml:space="preserve">
+    <value>选择与背景互动的方式。</value>
+  </data>
+  <data name="TipWallpaperPlayback" xml:space="preserve">
+    <value>当桌面失去焦点时，暂停壁纸播放。</value>
+  </data>
+  <data name="WebBrowserDiskCache.Description" xml:space="preserve">
+    <value>将临时文件存储在磁盘而不是内存上，当浏览器重新启动时，设置将被恢复。</value>
+  </data>
+  <data name="WebBrowser.Description" xml:space="preserve">
+    <value>CEF (Chromium Embedded Framework) 是一个轻量级的Chromium引擎。
+Edge 是 Windows 10 内置的浏览器。</value>
+  </data>
+  <data name="Startup.Description" xml:space="preserve">
+    <value>Lively 需要在后台运行以播放壁纸。</value>
+  </data>
+  <data name="About.Label" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="AddWallpaper.Label" xml:space="preserve">
+    <value>添加壁纸</value>
+  </data>
+  <data name="AppFocus.Header" xml:space="preserve">
+    <value>其他应用程序获得焦点</value>
+  </data>
+  <data name="AppFullScreen.Header" xml:space="preserve">
+    <value>其他应用程序全屏</value>
+  </data>
+  <data name="TitleAppName" xml:space="preserve">
+    <value>Lively背景</value>
+  </data>
+  <data name="AppRules.Header" xml:space="preserve">
+    <value>应用规则</value>
+  </data>
+  <data name="AppTheme.Header" xml:space="preserve">
+    <value>主题</value>
+  </data>
+  <data name="AudioGroup.Header" xml:space="preserve">
+    <value>音频</value>
+  </data>
+  <data name="TitleAudioPlayOnScreen" xml:space="preserve">
+    <value>播放屏幕上的音频</value>
+  </data>
+  <data name="BatteryPower.Header" xml:space="preserve">
+    <value>当处于电池供电模式时</value>
+  </data>
+  <data name="TitleBrowseFile" xml:space="preserve">
+    <value>浏览视频、GIF、网页......文件以设置为壁纸</value>
+  </data>
+  <data name="BrowserDebuggingPort.Header" xml:space="preserve">
+    <value>调试端口</value>
+  </data>
+  <data name="TitleDeleteConfirmation" xml:space="preserve">
+    <value>确认删除</value>
+  </data>
+  <data name="DisplayPauseRule.Header" xml:space="preserve">
+    <value>播放器暂停规则</value>
+  </data>
+  <data name="TitleEnterUrl" xml:space="preserve">
+    <value>输入 URL</value>
+  </data>
+  <data name="TitleGeneral" xml:space="preserve">
+    <value>通用</value>
+  </data>
+  <data name="Help.Label" xml:space="preserve">
+    <value>帮助</value>
+  </data>
+  <data name="HideSysTray.Header" xml:space="preserve">
+    <value>系统托盘图标</value>
+  </data>
+  <data name="TitleInteraction" xml:space="preserve">
+    <value>交互</value>
+  </data>
+  <data name="Language.Header" xml:space="preserve">
+    <value>语言</value>
+  </data>
+  <data name="TitleLibrary" xml:space="preserve">
+    <value>图库</value>
+  </data>
+  <data name="TitleLivelySetup" xml:space="preserve">
+    <value>Lively 配置</value>
+  </data>
+  <data name="TitleMisc" xml:space="preserve">
+    <value>杂项</value>
+  </data>
+  <data name="TitleMute" xml:space="preserve">
+    <value>静音</value>
+  </data>
+  <data name="PauseAlgorithm.Header" xml:space="preserve">
+    <value>暂停算法</value>
+  </data>
+  <data name="TitlePerformance" xml:space="preserve">
+    <value>性能</value>
+  </data>
+  <data name="TitlePlaylist" xml:space="preserve">
+    <value>播放列表</value>
+  </data>
+  <data name="PleaseWait.Text" xml:space="preserve">
+    <value>请稍候</value>
+  </data>
+  <data name="TitleScalingFit" xml:space="preserve">
+    <value>缩放/调整</value>
+  </data>
+  <data name="ControlPanel.Title" xml:space="preserve">
+    <value>控制面板</value>
+  </data>
+  <data name="TitleSelectFile" xml:space="preserve">
+    <value>选择文件</value>
+  </data>
+  <data name="TitleSettings" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="StreamWallpaperVideoQuality.Header" xml:space="preserve">
+    <value>流 (Stream)</value>
+  </data>
+  <data name="StreamWallpaperDetect.Header" xml:space="preserve">
+    <value>检测流</value>
+  </data>
+  <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
+    <value>视频质量</value>
+  </data>
+  <data name="TitleTileSize" xml:space="preserve">
+    <value>预览大小</value>
+  </data>
+  <data name="TitleUIMode" xml:space="preserve">
+    <value>用户界面</value>
+  </data>
+  <data name="TitleVideo" xml:space="preserve">
+    <value>视频</value>
+  </data>
+  <data name="TitleWallpaper" xml:space="preserve">
+    <value>壁纸</value>
+  </data>
+  <data name="WallpaperDir.Header" xml:space="preserve">
+    <value>壁纸路径</value>
+  </data>
+  <data name="WallpaperInput.Header" xml:space="preserve">
+    <value>壁纸输入</value>
+  </data>
+  <data name="WallpaperLayout.Header" xml:space="preserve">
+    <value>布局方式</value>
+  </data>
+  <data name="WallpaperPlaybackGroup.Header" xml:space="preserve">
+    <value>壁纸播放</value>
+  </data>
+  <data name="TitleWarning" xml:space="preserve">
+    <value>警告</value>
+  </data>
+  <data name="WebBrowser.Header" xml:space="preserve">
+    <value>网页浏览器</value>
+  </data>
+  <data name="WebBrowserDiskCache.Header" xml:space="preserve">
+    <value>磁盘缓存</value>
+  </data>
+  <data name="TitleWebBrowserEngine" xml:space="preserve">
+    <value>引擎</value>
+  </data>
+  <data name="TitleWebpageLoad" xml:space="preserve">
+    <value>载入网页</value>
+  </data>
+  <data name="Startup.Header" xml:space="preserve">
+    <value>开机自启动</value>
+  </data>
+  <data name="DescriptionPleaseRestartLively" xml:space="preserve">
+    <value>请重新启动 Lively 以使设置生效。</value>
+  </data>
+  <data name="TextSupport.Content" xml:space="preserve">
+    <value>支持</value>
+  </data>
+  <data name="TextClose" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="Customise.Text" xml:space="preserve">
+    <value>自定义</value>
+  </data>
+  <data name="DescriptionScreenLayout" xml:space="preserve">
+    <value>选择屏幕</value>
+  </data>
+  <data name="WallpaperLayoutPerScreen.Content" xml:space="preserve">
+    <value>仅选中的屏幕</value>
+  </data>
+  <data name="WallpaperLayout.Description" xml:space="preserve">
+    <value>壁纸应用于连接的显示设备的方式。</value>
+  </data>
+  <data name="WallpaperDirMoveExisting.Content" xml:space="preserve">
+    <value>移动现有的壁纸到新的文件夹</value>
+  </data>
+  <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
+    <value>媒体播放失败 :(
+请尝试在 Lively 设置中改变视频播放器。
+
+为了更好地了解这个错误并修复问题，请将日志文件分享给开发者。
+分享日志文件的说明：
+https://github.com/rocksdanister/lively/wiki</value>
+  </data>
+  <data name="TextOff.Content" xml:space="preserve">
+    <value>关</value>
+  </data>
+  <data name="TextOn.Content" xml:space="preserve">
+    <value>开</value>
+  </data>
+  <data name="TextMouse.Content" xml:space="preserve">
+    <value>鼠标</value>
+  </data>
+  <data name="TextKeyboard.Content" xml:space="preserve">
+    <value>键盘</value>
+  </data>
+  <data name="Documentation.Header" xml:space="preserve">
+    <value>文档</value>
+  </data>
+  <data name="Community.Header" xml:space="preserve">
+    <value>社区</value>
+  </data>
+  <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
+    <value>您确定要从图库中删除这张壁纸吗？</value>
+  </data>
+  <data name="Audio.Description" xml:space="preserve">
+    <value>所有壁纸的音量大小。</value>
+  </data>
+  <data name="Audio.Header" xml:space="preserve">
+    <value>主音量</value>
+  </data>
+  <data name="WallpaperFitFill.Content" xml:space="preserve">
+    <value>填充</value>
+  </data>
+  <data name="WallpaperFitNone.Content" xml:space="preserve">
+    <value>无</value>
+  </data>
+  <data name="WallpaperFitUniform.Content" xml:space="preserve">
+    <value>统一</value>
+  </data>
+  <data name="WallpaperFitUniformToFill.Content" xml:space="preserve">
+    <value>统一填充</value>
+  </data>
+  <data name="WallpaperFit.Description" xml:space="preserve">
+    <value>壁纸缩放算法。</value>
+  </data>
+  <data name="WallpaperFit.Header" xml:space="preserve">
+    <value>选择契合度</value>
+  </data>
+  <data name="PreviewWallpaper.Text" xml:space="preserve">
+    <value>预览壁纸</value>
+  </data>
+  <data name="TextAllFiles" xml:space="preserve">
+    <value>所有文件</value>
+  </data>
+  <data name="Debug.Header" xml:space="preserve">
+    <value>调试 (Debug)</value>
+  </data>
+  <data name="Debug.Description" xml:space="preserve">
+    <value>显示开发者选项</value>
+  </data>
+  <data name="TextFileNotFound" xml:space="preserve">
+    <value>无法找到文件</value>
+  </data>
+  <data name="TextPicture" xml:space="preserve">
+    <value>图片</value>
+  </data>
+  <data name="TextUnsupportedFile" xml:space="preserve">
+    <value>不支持的文件格式!</value>
+  </data>
+  <data name="TextProcessingWallpaper" xml:space="preserve">
+    <value>处理中</value>
+  </data>
+  <data name="Title.Text" xml:space="preserve">
+    <value>标题</value>
+  </data>
+  <data name="Description.Text" xml:space="preserve">
+    <value>描述</value>
+  </data>
+  <data name="TextOK" xml:space="preserve">
+    <value>好</value>
+  </data>
+  <data name="Cancel.Content" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="TextCreatePreview" xml:space="preserve">
+    <value>创建预览</value>
+  </data>
+  <data name="GifPlayer.Header" xml:space="preserve">
+    <value>Gif播放器</value>
+  </data>
+  <data name="GifPlayer.Description" xml:space="preserve">
+    <value>选择GIF使用的图片播放器</value>
+  </data>
+  <data name="TextFeatureMissing" xml:space="preserve">
+    <value>此版本不提供某些功能。</value>
+  </data>
+  <data name="ControlPanel.Subtitle" xml:space="preserve">
+    <value>单击此处管理壁纸。</value>
+  </data>
+  <data name="StoreReview.Content" xml:space="preserve">
+    <value>您喜欢使用Lively吗？留下评论:)</value>
+  </data>
+  <data name="Store.Header" xml:space="preserve">
+    <value>微软商店版</value>
+    <comment>For different version of Lively, example: Microsoft Store</comment>
+  </data>
+  <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
+    <value>您的Windows N / KN版本将需要下载其他编解码器，以支持壁纸中的视频播放。</value>
+  </data>
+  <data name="License.Header" xml:space="preserve">
+    <value>许可</value>
+  </data>
+  <data name="PrivacyPolicy.Header" xml:space="preserve">
+    <value>隐私政策</value>
+  </data>
+  <data name="AudioFocused.Content" xml:space="preserve">
+    <value>仅在桌面聚焦时播放音频</value>
+  </data>
+  <data name="ExportLogs.Description" xml:space="preserve">
+    <value>创建日志报告文件。</value>
+  </data>
+  <data name="ExportLogs.Header" xml:space="preserve">
+    <value>日志文件</value>
+  </data>
+  <data name="ReportBug.Header" xml:space="preserve">
+    <value>报告软件缺陷</value>
+  </data>
+  <data name="VideoHardwareDecode.Header" xml:space="preserve">
+    <value>使用GPU</value>
+  </data>
+  <data name="VideoHardwareDecode.Description" xml:space="preserve">
+    <value>尽可能使用硬件加速。</value>
+  </data>
+  <data name="DescriptionPleaseStop" xml:space="preserve">
+    <value>请先停止，然后再继续。</value>
+  </data>
+  <data name="EditWallpaper.Text" xml:space="preserve">
+    <value>编辑</value>
+  </data>
+  <data name="TitleLocation" xml:space="preserve">
+    <value>地点</value>
+  </data>
+  <data name="TitleSkipConfirm" xml:space="preserve">
+    <value>跳过确认</value>
+  </data>
+  <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
+    <value>输入可选的命令行参数</value>
+  </data>
+  <data name="GitHubStar.Content" xml:space="preserve">
+    <value>通过投下一颗星来表达爱意</value>
+  </data>
+  <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
+    <value>发现不兼容的程序，任务栏主题设计被禁用。</value>
+  </data>
+  <data name="TaskbarTheme.Header" xml:space="preserve">
+    <value>任务栏主题</value>
+  </data>
+  <data name="LockscreenPicture.Header" xml:space="preserve">
+    <value>锁屏图片</value>
+  </data>
+  <data name="DesktopPicture.Header" xml:space="preserve">
+    <value>桌面图片</value>
+  </data>
+  <data name="LockscreenPicture.Description" xml:space="preserve">
+    <value>将动画墙纸的图片设置为锁屏墙纸。</value>
+  </data>
+  <data name="DesktopPicture.Description" xml:space="preserve">
+    <value>将动画墙纸的图片设置为桌面墙纸。</value>
+  </data>
+  <data name="TaskbarTheme.Description" xml:space="preserve">
+    <value>改变系统任务栏的外观。</value>
+  </data>
+  <data name="TaskbarThemeBlur.Content" xml:space="preserve">
+    <value>模糊</value>
+  </data>
+  <data name="TaskbarThemeClear.Content" xml:space="preserve">
+    <value>清楚</value>
+  </data>
+  <data name="TaskbarThemeColor.Content" xml:space="preserve">
+    <value>颜色</value>
+  </data>
+  <data name="TaskbarThemeFluent.Content" xml:space="preserve">
+    <value>高斯模糊</value>
+  </data>
+  <data name="TaskbarThemeWallpaper.Content" xml:space="preserve">
+    <value>壁纸色半透明</value>
+  </data>
+  <data name="TaskbarThemeWallpaperFluent.Content" xml:space="preserve">
+    <value>壁纸色高斯模糊</value>
+  </data>
+  <data name="SourceCode.Header" xml:space="preserve">
+    <value>源代码</value>
+  </data>
+  <data name="System.Header" xml:space="preserve">
+    <value>系统</value>
+  </data>
+  <data name="TitleScreensaver" xml:space="preserve">
+    <value>屏幕保护</value>
+  </data>
+  <data name="TipScreensaver" xml:space="preserve">
+    <value>在选定的非活动期后，使用当前的墙纸作为你的屏保。</value>
+  </data>
+  <data name="TextHours" xml:space="preserve">
+    <value>小时</value>
+  </data>
+  <data name="TextMinutes" xml:space="preserve">
+    <value>分钟</value>
+  </data>
+  <data name="TextLearnMore" xml:space="preserve">
+    <value>更多说明</value>
+  </data>
+  <data name="DescOledScreensaverNotice" xml:space="preserve">
+    <value>大多数现代 LCD 和 LED 显示器都不会出现老化问题，因此任何墙纸都可以用作屏幕保护程序。
+
+对于容易老化的 OLED、等离子或 CRT 显示器，建议使用有规律运动的墙纸和整体深色主题，以减轻老化，但此功能未经测试，无法保证其有效性。
+
+Lively 屏幕保护程序的主要目的是为您的电脑添加另一层自定义，使用屏幕保护程序作为老化保护，风险自负！</value>
+  </data>
+  <data name="TextChangeWallpaper" xml:space="preserve">
+    <value>更换壁纸</value>
+  </data>
+  <data name="TextLastChecked" xml:space="preserve">
+    <value>上次检查</value>
+  </data>
+  <data name="TitleUpdates" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="CommunityPage.Content" xml:space="preserve">
+    <value>在线论坛</value>
+  </data>
+  <data name="DocumentationPage.Content" xml:space="preserve">
+    <value>API 文档和帮助</value>
+  </data>
+  <data name="OfficialWebpage.Content" xml:space="preserve">
+    <value>官方网页</value>
+  </data>
+  <data name="ReportBugPage.Content" xml:space="preserve">
+    <value>报告软件问题</value>
+  </data>
+  <data name="DescSupperDev" xml:space="preserve">
+    <value>通过购买开发者咖啡来表示支持</value>
+  </data>
+  <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
+    <value>您即将更改为该软件的测试版（开发人员）版本。
+更新会很频繁，并且可能包含错误！</value>
+  </data>
+  <data name="TextSwitchBranchDev" xml:space="preserve">
+    <value>切换到测试版（开发频道）</value>
+  </data>
+  <data name="TextSwitchBranchOfficial" xml:space="preserve">
+    <value>切换到稳定（默认频道）</value>
+  </data>
+  <data name="TipSwitchSoftwareBranch" xml:space="preserve">
+    <value>将软件版本从测试版更改为稳定版，反之亦然。</value>
+  </data>
+  <data name="TitleChangelog" xml:space="preserve">
+    <value>变更日志</value>
+  </data>
+  <data name="PauseAlgorithmTypeExclusiveMode.Content" xml:space="preserve">
+    <value>直接3D</value>
+  </data>
+  <data name="TitleScreensaverLockOnResume" xml:space="preserve">
+    <value>在恢复，显示登录界面</value>
+  </data>
+  <data name="WallpaperDirGroup.Header" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="FastUI.Header" xml:space="preserve">
+    <value>Fast startup</value>
+  </data>
+  <data name="FastUI.Description" xml:space="preserve">
+    <value>Keep User Interface running for faster startup</value>
+  </data>
+  <data name="WindowsSettingsColor.Content" xml:space="preserve">
+    <value>Windows color settings</value>
+  </data>
+  <data name="AppThemeDark.Content" xml:space="preserve">
+    <value>Dark</value>
+  </data>
+  <data name="AppThemeLight.Content" xml:space="preserve">
+    <value>Light</value>
+  </data>
+  <data name="AppThemeSystem.Content" xml:space="preserve">
+    <value>System</value>
+  </data>
+  <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
+    <value>Laptops</value>
+  </data>
+  <data name="DeveloperGroup.Header" xml:space="preserve">
+    <value>Developer</value>
+  </data>
+  <data name="AppearanceBehaviour.Header" xml:space="preserve">
+    <value>Appearance &amp; behavior</value>
+  </data>
+  <data name="TitleGallery" xml:space="preserve">
+    <value>Gallery</value>
+  </data>
+  <data name="ActiveWallpapers.Label" xml:space="preserve">
+    <value>Active Wallpaper(s)</value>
+  </data>
+  <data name="AboutMe.Text" xml:space="preserve">
+    <value>Hi, I'm Dani John also known as rocksdanister. I developed Lively a Free and open-source (FOSS) wallpaper application. Thanks for taking the time to look at my work.</value>
+  </data>
+  <data name="LicenseLink.Content" xml:space="preserve">
+    <value>Software license</value>
+  </data>
+  <data name="AttributionLink.Content" xml:space="preserve">
+    <value>Third party software notice</value>
+  </data>
+  <data name="PrivacyPolicyLink.Content" xml:space="preserve">
+    <value>Data collection policy</value>
+  </data>
+  <data name="AddWallpaperDrop.Text" xml:space="preserve">
+    <value>Add wallpaper</value>
+  </data>
+ <data name="ComingSoon.Text" xml:space="preserve">
+    <value>Coming soon</value>
+  </data>
+  <data name="TextOpen.Content" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="TextSave.Content" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="AboutMenu.Text" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="SourceWebsite.Text" xml:space="preserve">
+    <value>网站</value>
+  </data>      
+</root>

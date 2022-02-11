@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,808 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AudioFocused.Content" xml:space="preserve">
-    <value>Play audio only when desktop is focused</value>
-  </data>
-  <data name="Audio.Description" xml:space="preserve">
-    <value>Volume level of all wallpapers</value>
-  </data>
-  <data name="Audio.Header" xml:space="preserve">
-    <value>Volume</value>
-  </data>
-  <data name="AudioGroup.Header" xml:space="preserve">
-    <value>Audio</value>
-  </data>
-  <data name="CommunityPage.Content" xml:space="preserve">
-    <value>Online discussion forum</value>
-  </data>
-  <data name="DocumentationPage.Content" xml:space="preserve">
-    <value>API documentation and help</value>
-  </data>
-  <data name="DescExplorerCrash" xml:space="preserve">
-    <value>Lively has encountered a fatal error.
-
-Windows Explorer restarted twice in the last 30 seconds! This may be a conflict between Lively and other desktop customization software or Windows. To avoid further issues, all wallpapers are terminated.</value>
-  </data>
-  <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
-    <value>Incompatible program found, taskbar theming disabled</value>
-  </data>
-  <data name="OfficialWebpage.Content" xml:space="preserve">
-    <value>Official webpage of Lively Wallpaper</value>
-  </data>
-  <data name="DescOledScreensaverNotice" xml:space="preserve">
-    <value>Most modern LCD and LED displays do not suffer from burn-in issue and therefore any wallpaper can be used as screensaver.
-
-For OLED, Plasma or CRT displays which are susceptibe to burn-in it is advised to use wallpaper with regular motion and an overall dark theme which is supposed to mitigate burn-in but this feature is untested and its effectiveness cannot be guaranteed.
-
-The main purpose of Lively's screensavers is to add another layer of customization to your pc, use screensavers as burn-in protection at your own risk!</value>
-  </data>
-  <data name="ReportBugPage.Content" xml:space="preserve">
-    <value>Report a problem with the software</value>
-  </data>
-  <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
-    <value>Choose a file</value>
-  </data>
-  <data name="DescriptionAppRules" xml:space="preserve">
-    <value>Wallpaper playback behaviour based on running application</value>
-  </data>
-  <data name="DescriptionCancelQuestion" xml:space="preserve">
-    <value>Are you sure you want to cancel?</value>
-  </data>
-  <data name="DescriptionDeleteConfirmation" xml:space="preserve">
-    <value>Are you sure you want to permanently delete this wallpaper from the disk?</value>
-  </data>
-  <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
-    <value>Are you sure you want to delete this wallpaper from the Library?</value>
-  </data>
-  <data name="DragDropFile.Text" xml:space="preserve">
-    <value>Simply drag and drop files into here</value>
-  </data>
-  <data name="DescriptionExternalAppWarning" xml:space="preserve">
-    <value>You are opening an external application as wallpaper.
-Malicious applications can host malware, virus.. and do harm to your system.
-Only continue if this application comes from a trusted source.</value>
-  </data>
-  <data name="DescriptionMinimizedTray" xml:space="preserve">
-    <value>Lively is minimized to systemtray, right click lively icon to continue.</value>
-  </data>
-  <data name="DescriptionPleaseRestartLively" xml:space="preserve">
-    <value>Please restart Lively for settings to take effect</value>
-  </data>
-  <data name="DescriptionPleaseStop" xml:space="preserve">
-    <value>Please stop before proceeding</value>
-  </data>
-  <data name="DescriptionRecordStart" xml:space="preserve">
-    <value>Press to begin recording</value>
-  </data>
-  <data name="DescriptionRestoringWallpaper" xml:space="preserve">
-    <value>Currently restoring previous wallpaper(s), please wait...</value>
-  </data>
-  <data name="DescriptionScreenLayout" xml:space="preserve">
-    <value>Choose Display</value>
-  </data>
-  <data name="DescriptionUpdateAvailable" xml:space="preserve">
-    <value>A new version of software is available!</value>
-  </data>
-  <data name="DescriptionWebpageLoad" xml:space="preserve">
-    <value>Enter website link to load, shadertoy.com shader links are supported</value>
-  </data>
-  <data name="DescriptionWelcomeWizard" xml:space="preserve">
-    <value>This wizard will get you started on setting up Lively</value>
-  </data>
-  <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>Your Windows N/KN version will require the download of additional codecs to support video playback in wallpapers</value>
-  </data>
-  <data name="DescSupperDev" xml:space="preserve">
-    <value>Show support by buying the developer coffee</value>
-  </data>
-  <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
-    <value>You are about to change to beta (developer) build of Lively.
-Updates will be frequent and may contain bugs!</value>
-  </data>
-  <data name="HideSysTray.Description" xml:space="preserve">
-    <value>System-tray icon visibility, lively will continue to run with the icon hidden</value>
-  </data>
-  <data name="HideSysTray.Header" xml:space="preserve">
-    <value>System-tray Icon</value>
-  </data>
-  <data name="Language.Description" xml:space="preserve">
-    <value>Lively will restart to apply the new language</value>
-  </data>
-  <data name="Language.Header" xml:space="preserve">
-    <value>Language</value>
-  </data>
-  <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
-    <value>Failed to update; try downloading the installer from:
-https://github.com/rocksdanister/lively/releases</value>
-  </data>
-  <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
-    <value>Damaged wallpaper file, try redownloading</value>
-  </data>
-  <data name="LivelyExceptionGeneral" xml:space="preserve">
-    <value>Oops... Looks like something went wrong :(
-In order to better understand this error and fix the issue, share the log file with the developer.
-Instructions for sharing log file:
-https://github.com/rocksdanister/lively/wiki</value>
-  </data>
-  <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
-    <value>Lively cannot work properly with Windows High Contrast mode enabled!
-Disable High Contrast mode and try again</value>
-  </data>
-  <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
-    <value>Media playback failed :(
-Try changing the videoplayer in lively settings.
-
-In order to better understand this error and fix the issue, share the log file with the developer.
-Instructions for sharing log file:
-https://github.com/rocksdanister/lively/wiki</value>
-  </data>
-  <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
-    <value>Not Lively wallpaper file</value>
-  </data>
-  <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
-    <value>Lively was not closed properly, starting in safe mode.
-Do you wish to restore previously running wallpapers?</value>
-  </data>
-  <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
-    <value>It looks like some settings need to be set to make Lively work:  
-1. Press the Win + R keys to open Run, 
-2. Type SystemPropertiesPerformance.exe into Run, click on "OK" to open Performance Options.
-3. Enable/Check "Animate controls and elements inside windows" (If already checked, then uncheck and check) &amp; Apply.
-4. Click "Apply" then press "OK" to close the window.
-
-If Windows 7 just set - Adjust for best appearance &amp;amp; Apply.
-If still not working, close &amp; start Lively again/restart windows.
-(Does not work in some insider windows 10 builds)</value>
-  </data>
-  <data name="Startup.Description" xml:space="preserve">
-    <value>Lively needs to run in the background for wallpaper playback</value>
-  </data>
-  <data name="Startup.Header" xml:space="preserve">
-    <value>Start with Windows</value>
-  </data>
-  <data name="TextAdd" xml:space="preserve">
-    <value>Add</value>
-  </data>
-  <data name="TextAllFiles" xml:space="preserve">
-    <value>All Files</value>
-  </data>
-  <data name="Application.Header" xml:space="preserve">
-    <value>Application</value>
-  </data>
-  <data name="Attribution.Header" xml:space="preserve">
-    <value>Attribution</value>
-  </data>
-  <data name="Author.Text" xml:space="preserve">
-    <value>Author</value>
-  </data>
-  <data name="TextBack" xml:space="preserve">
-    <value>Back</value>
-  </data>
-  <data name="TextBrowse" xml:space="preserve">
-    <value>Browse</value>
-  </data>
-  <data name="Cancel.Content" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
-  <data name="TextChangeWallpaper" xml:space="preserve">
-    <value>Change Wallpapers</value>
-  </data>
-  <data name="TextClose" xml:space="preserve">
-    <value>Close</value>
-  </data>
-  <data name="CloseWallpapers.Label" xml:space="preserve">
-    <value>Close Wallpapers</value>
-  </data>
-  <data name="TextCompleted" xml:space="preserve">
-    <value>Completed!</value>
-  </data>
-  <data name="ControlPanel.Subtitle" xml:space="preserve">
-    <value>Click here to manage wallpapers</value>
-  </data>
-  <data name="TextConvertVideo" xml:space="preserve">
-    <value>Convert to Video</value>
-  </data>
-  <data name="TextCreatePreview" xml:space="preserve">
-    <value>Create Preview</value>
-  </data>
-  <data name="Customise.Text" xml:space="preserve">
-    <value>Customise</value>
-  </data>
-  <data name="CustomiseWallpaper.Label" xml:space="preserve">
-    <value>Customise Wallpaper</value>
-  </data>
-  <data name="DeleteWallpaper.Text" xml:space="preserve">
-    <value>Delete</value>
-  </data>
-  <data name="Description.Text" xml:space="preserve">
-    <value>Description</value>
-  </data>
-  <data name="DisplayPauseRuleAllScreen.Content" xml:space="preserve">
-    <value>All screen(s)</value>
-  </data>
-  <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
-    <value>Per screen</value>
-  </data>
-  <data name="TextDownload" xml:space="preserve">
-    <value>Download</value>
-  </data>
-  <data name="EditWallpaper.Text" xml:space="preserve">
-    <value>Edit</value>
-  </data>
-  <data name="TextError" xml:space="preserve">
-    <value>Error</value>
-  </data>
-  <data name="TextExit" xml:space="preserve">
-    <value>Exit</value>
-  </data>
-  <data name="ExportWallpaperZip.Text" xml:space="preserve">
-    <value>Export lively .zip</value>
-  </data>
-  <data name="TextFeatureMissing" xml:space="preserve">
-    <value>Some features are not available in this version of Lively</value>
-  </data>
-  <data name="TextFileNotFound" xml:space="preserve">
-    <value>File not found</value>
-  </data>
-  <data name="TextGIF" xml:space="preserve">
-    <value>Animated GIF</value>
-  </data>
-  <data name="GitHubStar.Content" xml:space="preserve">
-    <value>Show some love by dropping a star</value>
-  </data>
-  <data name="TextGo" xml:space="preserve">
-    <value>GO</value>
-  </data>
-  <data name="TextHelpTranslate" xml:space="preserve">
-    <value>Help translate</value>
-  </data>
-  <data name="TextHours" xml:space="preserve">
-    <value>hour(s)</value>
-  </data>
-  <data name="TextInstall" xml:space="preserve">
-    <value>Install</value>
-  </data>
-  <data name="TextKeyboard.Content" xml:space="preserve">
-    <value>Keyboard</value>
-  </data>
-  <data name="TextLastChecked" xml:space="preserve">
-    <value>Last checked</value>
-  </data>
-  <data name="TextLearnMore" xml:space="preserve">
-    <value>Learn more</value>
-  </data>
-  <data name="License.Header" xml:space="preserve">
-    <value>License</value>
-  </data>
-  <data name="TextMinutes" xml:space="preserve">
-    <value>minute(s)</value>
-  </data>
-  <data name="TextmoreInfo" xml:space="preserve">
-    <value>Information</value>
-  </data>
-  <data name="TextMoreWallpapers" xml:space="preserve">
-    <value>More Wallpapers</value>
-  </data>
-  <data name="TextMouse.Content" xml:space="preserve">
-    <value>Mouse</value>
-  </data>
-  <data name="MouseInteractOnDesktop.Content" xml:space="preserve">
-    <value>Mouse interaction when application focused</value>
-  </data>
-  <data name="TextNext" xml:space="preserve">
-    <value>Next</value>
-  </data>
-  <data name="TextNo" xml:space="preserve">
-    <value>No</value>
-  </data>
-  <data name="TextOff.Content" xml:space="preserve">
-    <value>Off</value>
-  </data>
-  <data name="TextOK" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="TextOn.Content" xml:space="preserve">
-    <value>On</value>
-  </data>
-  <data name="TextOnline" xml:space="preserve">
-    <value>Online</value>
-  </data>
-  <data name="TextOpenLively" xml:space="preserve">
-    <value>Open Lively</value>
-  </data>
-  <data name="PauseAlgorithmTypeAllProcess.Content" xml:space="preserve">
-    <value>All process</value>
-  </data>
-  <data name="PauseAlgorithmTypeExclusiveMode.Content" xml:space="preserve">
-    <value>Direct3D</value>
-  </data>
-  <data name="PauseAlgorithmTypeForegroundProcess.Content" xml:space="preserve">
-    <value>Foreground process</value>
-  </data>
-  <data name="TextPauseWallpapers" xml:space="preserve">
-    <value>Pause Wallpapers</value>
-  </data>
-  <data name="TextPerformanceKill.Content" xml:space="preserve">
-    <value>Kill</value>
-  </data>
-  <data name="TextPerformanceNone.Content" xml:space="preserve">
-    <value>Nothing</value>
-  </data>
-  <data name="TextPerformancePause.Content" xml:space="preserve">
-    <value>Pause</value>
-  </data>
-  <data name="TextPicture" xml:space="preserve">
-    <value>Picture</value>
-  </data>
-  <data name="PreviewWallpaper.Text" xml:space="preserve">
-    <value>Preview</value>
-  </data>
-  <data name="PrivacyPolicy.Header" xml:space="preserve">
-    <value>Privacy Policy</value>
-  </data>
-  <data name="TextProcessingWallpaper" xml:space="preserve">
-    <value>Processing</value>
-  </data>
-  <data name="TextRemove" xml:space="preserve">
-    <value>Remove</value>
-  </data>
-  <data name="TextRule" xml:space="preserve">
-    <value>Rule</value>
-  </data>
-  <data name="TextScreen" xml:space="preserve">
-    <value>Screen</value>
-  </data>
-  <data name="TextSearch" xml:space="preserve">
-    <value>Search</value>
-  </data>
-  <data name="SetWallpaper.Text" xml:space="preserve">
-    <value>Set as Wallpaper</value>
-  </data>
-  <data name="ShowOnDisk.Text" xml:space="preserve">
-    <value>Open file location</value>
-  </data>
-  <data name="WallpaperSource.Text" xml:space="preserve">
-    <value>Source</value>
-  </data>
-  <data name="TextStart" xml:space="preserve">
-    <value>Start</value>
-  </data>
-  <data name="TextStop" xml:space="preserve">
-    <value>Stop</value>
-  </data>
-  <data name="StoreReview.Content" xml:space="preserve">
-    <value>Do you enjoy using Lively? Leave a review :)</value>
-  </data>
-  <data name="TextSupport.Content" xml:space="preserve">
-    <value>Support</value>
-  </data>
-  <data name="TextSwitchBranchDev" xml:space="preserve">
-    <value>Switch to beta (Dev channel)</value>
-  </data>
-  <data name="TextSwitchBranchOfficial" xml:space="preserve">
-    <value>Switch to stable (Default channel)</value>
-  </data>
-  <data name="TextTags" xml:space="preserve">
-    <value>Tags</value>
-  </data>
-  <data name="TaskbarThemeBlur.Content" xml:space="preserve">
-    <value>Blur</value>
-  </data>
-  <data name="TaskbarThemeClear.Content" xml:space="preserve">
-    <value>Clear</value>
-  </data>
-  <data name="TaskbarThemeColor.Content" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="TaskbarThemeFluent.Content" xml:space="preserve">
-    <value>Fluent</value>
-  </data>
-  <data name="TaskbarThemeWallpaper.Content" xml:space="preserve">
-    <value>Wallpaper</value>
-  </data>
-  <data name="TaskbarThemeWallpaperFluent.Content" xml:space="preserve">
-    <value>Wallpaper Fluent</value>
-  </data>
-  <data name="TextTileSizeLarge" xml:space="preserve">
-    <value>Large</value>
-  </data>
-  <data name="TextTileSizeNormal" xml:space="preserve">
-    <value>Normal</value>
-  </data>
-  <data name="TextTileSizeSmall" xml:space="preserve">
-    <value>Small</value>
-  </data>
-  <data name="Title.Text" xml:space="preserve">
-    <value>Title</value>
-  </data>
-  <data name="TextUIHeadless" xml:space="preserve">
-    <value>Headless</value>
-  </data>
-  <data name="TextUILite" xml:space="preserve">
-    <value>Lite</value>
-  </data>
-  <data name="TextUINormal" xml:space="preserve">
-    <value>Normal</value>
-  </data>
-  <data name="TextUnsupportedFile" xml:space="preserve">
-    <value>File format not supported</value>
-  </data>
-  <data name="TextUpdateAvailable" xml:space="preserve">
-    <value>Update available!</value>
-  </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
-    <value>Check for update</value>
-  </data>
-  <data name="TextupdateCheckFail" xml:space="preserve">
-    <value>Failed to check for software update</value>
-  </data>
-  <data name="TextUpdateChecking" xml:space="preserve">
-    <value>Checking for update</value>
-  </data>
-  <data name="TextUpdateUptodate" xml:space="preserve">
-    <value>Software is up-to-date!</value>
-  </data>
-  <data name="TextVideo" xml:space="preserve">
-    <value>Video</value>
-  </data>
-  <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>Enter optional commandline arguments</value>
-  </data>
-  <data name="WallpaperFitFill.Content" xml:space="preserve">
-    <value>Fill</value>
-  </data>
-  <data name="WallpaperFitNone.Content" xml:space="preserve">
-    <value>None</value>
-  </data>
-  <data name="WallpaperFitUniform.Content" xml:space="preserve">
-    <value>Uniform</value>
-  </data>
-  <data name="WallpaperFitUniformToFill.Content" xml:space="preserve">
-    <value>Uniform Fill</value>
-  </data>
-  <data name="WallpaperLayoutDuplicate.Content" xml:space="preserve">
-    <value>Duplicate same wallpaper</value>
-  </data>
-  <data name="WallpaperLayoutPerScreen.Content" xml:space="preserve">
-    <value>Selected screen only</value>
-  </data>
-  <data name="WallpaperLayoutSpan.Content" xml:space="preserve">
-    <value>Span across screens</value>
-  </data>
-  <data name="WallpaperType.Text" xml:space="preserve">
-    <value>Type</value>
-  </data>
-  <data name="Website.Header" xml:space="preserve">
-    <value>Website</value>
-  </data>
-  <data name="TextWebStream" xml:space="preserve">
-    <value>Web Stream</value>
-  </data>
-  <data name="TextWelcome" xml:space="preserve">
-    <value>Welcome</value>
-  </data>
-  <data name="TextYes" xml:space="preserve">
-    <value>Yes</value>
-  </data>
-  <data name="VideoPlayer.Header" xml:space="preserve">
-    <value>Video player</value>
-  </data>
-  <data name="AddWallpaperFileBrowse.Description" xml:space="preserve">
-    <value>Set all supported file types as wallpaper</value>
-  </data>
-  <data name="EnterUrl.Description" xml:space="preserve">
-    <value>Set the web page of the URL you entered as wallpaper</value>
-  </data>
-  <data name="AppFocus.Description" xml:space="preserve">
-    <value>Set what to do when any application is in focus</value>
-  </data>
-  <data name="AppFullScreen.Description" xml:space="preserve">
-    <value>Set what to do when fullscreen games/applications are running</value>
-  </data>
-  <data name="AppRules.Description" xml:space="preserve">
-    <value>Pause wallpaper when running these applications</value>
-  </data>
-  <data name="TipAppTheme" xml:space="preserve">
-    <value>Lively adapts to system theme settings, to change appearance goto</value>
-  </data>
-  <data name="BatteryPower.Description" xml:space="preserve">
-    <value>Change playback when AC power is disconnected</value>
-  </data>
-  <data name="BrowserDebuggingPort.Description" xml:space="preserve">
-    <value>Enter the port for debugging webpage wallpapers; when ready navigate to http://localhost:portnumber to access developer console</value>
-  </data>
-  <data name="Debug.Description" xml:space="preserve">
-    <value>Show developer menu</value>
-  </data>
-  <data name="DesktopPicture.Description" xml:space="preserve">
-    <value>Set a picture of animated wallpaper as desktop wallpaper</value>
-  </data>
-  <data name="DisplayPauseRule.Description" xml:space="preserve">
-    <value>Pause wallpaper on all screens or only the screen in which application is focused</value>
-  </data>
-  <data name="ExportLogs.Description" xml:space="preserve">
-    <value>Create log report file</value>
-  </data>
-  <data name="GifPlayer.Description" xml:space="preserve">
-    <value>Select the player used for gif wallpaper</value>
-  </data>
-  <data name="TipLivelySetupOnClose" xml:space="preserve">
-    <value>Finish the setup to continue</value>
-  </data>
-  <data name="LockscreenPicture.Description" xml:space="preserve">
-    <value>Set a picture of animated wallpaper as lockscreen wallpaper</value>
-  </data>
-  <data name="PauseAlgorithm.Description" xml:space="preserve">
-    <value>Wallpaper pause algorithm</value>
-  </data>
-  <data name="PowerSavingModePower.Description" xml:space="preserve">
-    <value>Change playback when Windows Power Saving Mode is enabled</value>
-  </data>
-  <data name="RemoteDesktopPower.Description" xml:space="preserve">
-    <value>Change playback when running a Remote Desktop session</value>
-  </data>
-  <data name="TipScreensaver" xml:space="preserve">
-    <value>After the selected inactivity period use the current wallpaper as your screensaver</value>
-  </data>
-  <data name="StreamWallpaperDetect.Description" xml:space="preserve">
-    <value>If supported video stream link is detected use the video player instead of loading the webpage</value>
-  </data>
-  <data name="StreamWallpaperVideoQuality.Description" xml:space="preserve">
-    <value>Select the desired video quality for online streams</value>
-  </data>
-  <data name="TipSwitchSoftwareBranch" xml:space="preserve">
-    <value>Change software release from beta to stable or vice versa</value>
-  </data>
-  <data name="TaskbarTheme.Description" xml:space="preserve">
-    <value>Change system taskbar appearance</value>
-  </data>
-  <data name="TipTileSize" xml:space="preserve">
-    <value>Size of the wallpaper tiles in Library</value>
-  </data>
-  <data name="TipUIMode" xml:space="preserve">
-    <value>For low-end systems select Lite mode</value>
-  </data>
-  <data name="VideoHardwareDecode.Description" xml:space="preserve">
-    <value>Use hardware acceleration when possible</value>
-  </data>
-  <data name="VideoPlayer.Description" xml:space="preserve">
-    <value>Select the player used for video wallpaper</value>
-  </data>
-  <data name="WallpaperDir.Description" xml:space="preserve">
-    <value>Path used to store wallpaper files</value>
-  </data>
-  <data name="WallpaperFit.Description" xml:space="preserve">
-    <value>Wallpaper scaling algorithm</value>
-  </data>
-  <data name="WallpaperInput.Description" xml:space="preserve">
-    <value>Select ways to interact with wallpaper</value>
-  </data>
-  <data name="WallpaperLayout.Description" xml:space="preserve">
-    <value>How wallpaper is applied to connected display devices</value>
-  </data>
-  <data name="TipWallpaperPlayback" xml:space="preserve">
-    <value>Pause wallpaper playback when desktop is not focused</value>
-  </data>
-  <data name="WebBrowserDiskCache.Description" xml:space="preserve">
-    <value>Store temporary files on disk instead of memory</value>
-  </data>
-  <data name="WebBrowser.Description" xml:space="preserve">
-    <value>Select the player used for html wallpaper</value>
-  </data>
-  <data name="About.Label" xml:space="preserve">
-    <value>About</value>
-  </data>
-  <data name="AddWallpaper.Label" xml:space="preserve">
-    <value>Add Wallpaper</value>
-  </data>
-  <data name="AppFocus.Header" xml:space="preserve">
-    <value>Applications focused</value>
-  </data>
-  <data name="AppFullScreen.Header" xml:space="preserve">
-    <value>Applications fullscreen</value>
-  </data>
-  <data name="TitleAppName" xml:space="preserve">
-    <value>Lively Wallpaper</value>
-  </data>
-  <data name="AppRules.Header" xml:space="preserve">
-    <value>Application Rules</value>
-  </data>
-  <data name="AppTheme.Header" xml:space="preserve">
-    <value>Theme</value>
-  </data>
-  <data name="TitleAudioPlayOnScreen" xml:space="preserve">
-    <value>Play audio on screen</value>
-  </data>
-  <data name="BatteryPower.Header" xml:space="preserve">
-    <value>When on Battery Power</value>
-  </data>
-  <data name="TitleBrowseFile" xml:space="preserve">
-    <value>Browse for video, gif, webpage... file to set as wallpaper</value>
-  </data>
-  <data name="BrowserDebuggingPort.Header" xml:space="preserve">
-    <value>Debugging port</value>
-  </data>
-  <data name="TitleChangelog" xml:space="preserve">
-    <value>Changelog</value>
-  </data>
-  <data name="Community.Header" xml:space="preserve">
-    <value>Community</value>
-  </data>
-  <data name="Debug.Header" xml:space="preserve">
-    <value>Debug</value>
-  </data>
-  <data name="TitleDeleteConfirmation" xml:space="preserve">
-    <value>Confirm Deletion</value>
-  </data>
-  <data name="DesktopPicture.Header" xml:space="preserve">
-    <value>Desktop picture</value>
-  </data>
-  <data name="DisplayPauseRule.Header" xml:space="preserve">
-    <value>Display pause rule</value>
-  </data>
-  <data name="Documentation.Header" xml:space="preserve">
-    <value>Documentation</value>
-  </data>
-  <data name="EnterUrl.Header" xml:space="preserve">
-    <value>Enter URL</value>
-  </data>
-  <data name="ExportLogs.Header" xml:space="preserve">
-    <value>Log File</value>
-  </data>
-  <data name="TitleGeneral" xml:space="preserve">
-    <value>General</value>
-  </data>
-  <data name="GifPlayer.Header" xml:space="preserve">
-    <value>Gif player</value>
-  </data>
-  <data name="Help.Label" xml:space="preserve">
-    <value>Help</value>
-  </data>
-  <data name="TitleInteraction" xml:space="preserve">
-    <value>Interaction</value>
-  </data>
-  <data name="TitleLibrary" xml:space="preserve">
-    <value>Library</value>
-  </data>
-  <data name="TitleLivelySetup" xml:space="preserve">
-    <value>Lively Setup</value>
-  </data>
-  <data name="TitleLocation" xml:space="preserve">
-    <value>Location</value>
-  </data>
-  <data name="LockscreenPicture.Header" xml:space="preserve">
-    <value>Lockscreen picture</value>
-  </data>
-  <data name="TitleMisc" xml:space="preserve">
-    <value>Misc</value>
-  </data>
-  <data name="TitleMute" xml:space="preserve">
-    <value>Mute</value>
-  </data>
-  <data name="PauseAlgorithm.Header" xml:space="preserve">
-    <value>Pause algorithm</value>
-  </data>
-  <data name="TitlePerformance" xml:space="preserve">
-    <value>Performance</value>
-  </data>
-  <data name="TitlePlaylist" xml:space="preserve">
-    <value>Playlist</value>
-  </data>
-  <data name="PleaseWait.Text" xml:space="preserve">
-    <value>Please Wait</value>
-  </data>
-  <data name="PowerSavingModePower.Header" xml:space="preserve">
-    <value>When on Battery Saver</value>
-  </data>
-  <data name="RemoteDesktopPower.Header" xml:space="preserve">
-    <value>When on Remote Desktop</value>
-  </data>
-  <data name="ReportBug.Header" xml:space="preserve">
-    <value>Report Bug</value>
-  </data>
-  <data name="TitleScalingFit" xml:space="preserve">
-    <value>Scaling/Fit</value>
-  </data>
-  <data name="ControlPanel.Title" xml:space="preserve">
-    <value>Control Panel</value>
-  </data>
-  <data name="TitleScreensaver" xml:space="preserve">
-    <value>Screensaver</value>
-  </data>
-  <data name="TitleScreensaverLockOnResume" xml:space="preserve">
-    <value>On resume, display logon screen</value>
-  </data>
-  <data name="TitleSelectFile" xml:space="preserve">
-    <value>Select File</value>
-  </data>
-  <data name="TitleSettings" xml:space="preserve">
-    <value>Settings</value>
-  </data>
-  <data name="TitleSkipConfirm" xml:space="preserve">
-    <value>Skip Confirmation</value>
-  </data>
-  <data name="SourceCode.Header" xml:space="preserve">
-    <value>Source Code</value>
-  </data>
-  <data name="Store.Header" xml:space="preserve">
-    <value>Store</value>
-    <comment>For different version of Lively, example: Microsoft Store</comment>
-  </data>
-  <data name="StreamWallpaperVideoQuality.Header" xml:space="preserve">
-    <value>Stream</value>
-  </data>
-  <data name="StreamWallpaperDetect.Header" xml:space="preserve">
-    <value>Detect streams</value>
-  </data>
-  <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
-    <value>Video quality</value>
-  </data>
-  <data name="System.Header" xml:space="preserve">
-    <value>System</value>
-  </data>
-  <data name="TaskbarTheme.Header" xml:space="preserve">
-    <value>Taskbar Theme</value>
-  </data>
-  <data name="TitleTileSize" xml:space="preserve">
-    <value>Tile Size</value>
-  </data>
-  <data name="TitleUIMode" xml:space="preserve">
-    <value>User Interface</value>
-  </data>
-  <data name="TitleUpdates" xml:space="preserve">
-    <value>Updates</value>
-  </data>
-  <data name="TitleVideo" xml:space="preserve">
-    <value>Video</value>
-  </data>
-  <data name="VideoHardwareDecode.Header" xml:space="preserve">
-    <value>GPU decode</value>
-  </data>
-  <data name="TitleWallpaper" xml:space="preserve">
-    <value>Wallpaper</value>
-  </data>
-  <data name="WallpaperDir.Header" xml:space="preserve">
-    <value>Wallpaper Directory</value>
-  </data>
-  <data name="WallpaperDirMoveExisting.Content" xml:space="preserve">
-    <value>Move existing wallpapers to new folder</value>
-  </data>
-  <data name="WallpaperFit.Header" xml:space="preserve">
-    <value>Choose a fit</value>
-  </data>
-  <data name="WallpaperInput.Header" xml:space="preserve">
-    <value>Wallpaper input</value>
-  </data>
-  <data name="WallpaperLayout.Header" xml:space="preserve">
-    <value>Placement Method</value>
-  </data>
-  <data name="WallpaperPlaybackGroup.Header" xml:space="preserve">
-    <value>Wallpaper playback</value>
-  </data>
-  <data name="TitleWarning" xml:space="preserve">
-    <value>Warning</value>
-  </data>
-  <data name="WebBrowser.Header" xml:space="preserve">
-    <value>Web browser</value>
-  </data>
-  <data name="WebBrowserDiskCache.Header" xml:space="preserve">
-    <value>Disk cache</value>
-  </data>
-  <data name="TitleWebBrowserEngine" xml:space="preserve">
-    <value>Engine</value>
-  </data>
-  <data name="TitleWebpageLoad" xml:space="preserve">
-    <value>Load Webpage</value>
-  </data>
-  <data name="FastUI.Description" xml:space="preserve">
-    <value>Keep User Interface running for faster startup</value>
+  <data name="WallpaperDirGroup.Header" xml:space="preserve">
+    <value>File</value>
   </data>
   <data name="FastUI.Header" xml:space="preserve">
     <value>Fast startup</value>
   </data>
-  <data name="WallpaperDirGroup.Header" xml:space="preserve">
-    <value>File</value>
+  <data name="FastUI.Description" xml:space="preserve">
+    <value>Keep User Interface running for faster startup</value>
+  </data>
+  <data name="WindowsSettingsColor.Content" xml:space="preserve">
+    <value>Windows color settings</value>
   </data>
   <data name="AppThemeDark.Content" xml:space="preserve">
     <value>Dark</value>
@@ -929,9 +138,6 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="AppThemeSystem.Content" xml:space="preserve">
     <value>System</value>
   </data>
-  <data name="WindowsSettingsColor.Content" xml:space="preserve">
-    <value>Windows color settings</value>
-  </data>
   <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
     <value>Laptops</value>
   </data>
@@ -941,11 +147,11 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="AppearanceBehaviour.Header" xml:space="preserve">
     <value>Appearance &amp; behavior</value>
   </data>
-  <data name="ActiveWallpapers.Label" xml:space="preserve">
-    <value>Active Wallpaper(s)</value>
-  </data>
   <data name="TitleGallery" xml:space="preserve">
     <value>Gallery</value>
+  </data>
+  <data name="ActiveWallpapers.Label" xml:space="preserve">
+    <value>Active Wallpaper(s)</value>
   </data>
   <data name="AboutMe.Text" xml:space="preserve">
     <value>Hi, I'm Dani John also known as rocksdanister. I developed Lively a Free and open-source (FOSS) wallpaper application. Thanks for taking the time to look at my work.</value>
@@ -962,19 +168,815 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="AddWallpaperDrop.Text" xml:space="preserve">
     <value>Add wallpaper</value>
   </data>
-  <data name="ComingSoon.Text" xml:space="preserve">
+ <data name="ComingSoon.Text" xml:space="preserve">
     <value>Coming soon</value>
-  </data>
-  <data name="AboutMenu.Text" xml:space="preserve">
-    <value>About</value>
-  </data>
-  <data name="SourceWebsite.Text" xml:space="preserve">
-    <value>Website</value>
   </data>
   <data name="TextOpen.Content" xml:space="preserve">
     <value>Open</value>
   </data>
   <data name="TextSave.Content" xml:space="preserve">
     <value>Save</value>
+  </data>
+  <data name="CommunityPage.Content" xml:space="preserve">
+    <value>線上討論社群</value>
+  </data>
+  <data name="DocumentationPage.Content" xml:space="preserve">
+    <value>API 文件和幫助</value>
+  </data>
+  <data name="DescExplorerCrash" xml:space="preserve">
+    <value>Lively 動態桌布遇到了致命錯誤。
+
+Windows 檔案總管在最近30秒內重新啟動了兩次！這也許是 Lively 動態桌布與其他桌面自訂軟體或 Windows 的衝突造成的。為了防止出現更多問題，所有桌布已被終止。</value>
+  </data>
+  <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
+    <value>偵測到不相容軟體，工具列主題已禁用。</value>
+  </data>
+  <data name="OfficialWebpage.Content" xml:space="preserve">
+    <value>Lively 動態桌布官方網站</value>
+  </data>
+  <data name="DescOledScreensaverNotice" xml:space="preserve">
+    <value>大多數現代 LCD 和 LED 顯示器都不會出現殘影問題，因此任何桌布都可以用作螢幕保護程式。
+
+對於容易出現殘影的 OLED、電漿或 CRT 顯示器，建議使用有規律運動的動態桌布和深色整體主題，以減輕殘影；但此功能未經測試，無法保證其有效性。
+
+Lively 動態桌布的螢幕保護程式主要用於為您的電腦新增另一層客製化可能性，使用螢幕保護程式作為殘影保護手段請自行承擔風險！</value>
+  </data>
+  <data name="ReportBugPage.Content" xml:space="preserve">
+    <value>回報軟體問題</value>
+  </data>
+  <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
+    <value>選取一個檔案或指定一個網站以設定為桌布。</value>
+  </data>
+  <data name="DescriptionAppRules" xml:space="preserve">
+    <value>根據正在運作的應用程式設定桌布的播放行為。</value>
+  </data>
+  <data name="DescriptionCancelQuestion" xml:space="preserve">
+    <value>確定要取消嗎？</value>
+  </data>
+  <data name="DescriptionDeleteConfirmation" xml:space="preserve">
+    <value>確定要從磁碟上永久刪除桌布嗎？</value>
+  </data>
+  <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
+    <value>確定要從資料庫刪除此桌布嗎？</value>
+  </data>
+  <data name="DragDropFile.Text" xml:space="preserve">
+    <value>將檔案拖放至資料庫中。</value>
+  </data>
+  <data name="DescriptionExternalAppWarning" xml:space="preserve">
+    <value>你正在開啟一個外部應用程式作為桌布。
+有害應用程式可能包含綑綁軟體，病毒.. 而且損壞你的作業系統。
+請僅在你信任此應用程式的來源時繼續。</value>
+  </data>
+  <data name="DescriptionMinimizedTray" xml:space="preserve">
+    <value>Lively 已最小化至系統匣，右鍵點選 Lively 動態桌布的圖示以存取更多選項。</value>
+  </data>
+  <data name="DescriptionPleaseRestartLively" xml:space="preserve">
+    <value>請重新啟動 Lively 動態桌布以使設定生效。</value>
+  </data>
+  <data name="DescriptionPleaseStop" xml:space="preserve">
+    <value>繼續操作前請停止桌布。</value>
+  </data>
+  <data name="DescriptionRecordStart" xml:space="preserve">
+    <value>點按以開始錄製影片。</value>
+  </data>
+  <data name="DescriptionRestoringWallpaper" xml:space="preserve">
+    <value>正在恢復之前的桌布，請稍候...</value>
+  </data>
+  <data name="DescriptionScreenLayout" xml:space="preserve">
+    <value>選取桌布</value>
+  </data>
+  <data name="DescriptionUpdateAvailable" xml:space="preserve">
+    <value>有新版本的軟體可用！</value>
+  </data>
+  <data name="DescriptionWebpageLoad" xml:space="preserve">
+    <value>輸入網站連結以載入，支援來自 shadertoy.com 的著色器連結</value>
+  </data>
+  <data name="DescriptionWelcomeWizard" xml:space="preserve">
+    <value>此精靈將幫助你開始設定 Lively 動態桌布。</value>
+  </data>
+  <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
+    <value>你的 Windows N/KN 版本將需要下載附加解碼元件以支援桌布的影片播放作業。</value>
+  </data>
+  <data name="DescSupperDev" xml:space="preserve">
+    <value>為開發人員購買咖啡以示支持</value>
+  </data>
+  <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
+    <value>您即將變更為 Beta (開發人員) 版。
+更新將會很頻繁，並且可能包含漏洞！</value>
+  </data>
+  <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
+    <value>更新失敗；請嘗試從以下位址下載安裝程式： 
+https://github.com/rocksdanister/lively/releases</value>
+  </data>
+  <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
+    <value>桌布檔案已損毀，請嘗試重新下載。</value>
+  </data>
+  <data name="LivelyExceptionGeneral" xml:space="preserve">
+    <value>糟糕... 好像出了點問題 :(
+為了更好地理解此錯誤並解決問題，請與開發人員分享日誌檔。
+分享日誌檔的說明：
+https://github.com/rocksdanister/lively/wiki</value>
+  </data>
+  <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
+    <value>啟用 Windows 高對比 (Windows High Contrast) 模式時 Lively 將無法正常工作！
+請禁用高對比模式然後重試。</value>
+  </data>
+  <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
+    <value>媒體播放作業失敗:(
+請嘗試在 Lively 動態桌布的設定中變更影片播放器。
+
+為了更好地理解這個錯誤並解決問題，請與開發人員分享日誌檔。
+分享日誌檔的說明：
+https://github.com/rocksdanister/lively/wiki</value>
+  </data>
+  <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
+    <value>非 Lively 桌布檔案。</value>
+  </data>
+  <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
+    <value>Lively 動態桌布之前沒有被正常關閉，因此正在以安全模式啟動。
+您是否要還原之前運作的動態桌布？</value>
+  </data>
+  <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
+    <value>看起來需要進行一些設定才能使 Lively 動態桌布正常工作：
+1. 點按 Win + R 快速鍵開啟「執行」，
+2. 輸入「SystemPropertiesPerformance.exe」，點選「確定」以開啟「效能選項」。
+3. 啟用/選定「在視窗內部以動畫方式顯示控制項和元素」(如果已經選定，請反選然後再次選定) 並套用。
+4. 點選「套用」然後點按「確定」關閉視窗。
+
+如果是 Windows 7 只需設定 -「調整成最佳外觀」並套用。
+如果仍無法正常工作， 請關閉並重新啟動 Lively / Windows。
+(在部分 Windows 10 測試人員組建中無法正常工作)</value>
+  </data>
+  <data name="TextAdd" xml:space="preserve">
+    <value>新增</value>
+  </data>
+  <data name="TextAllFiles" xml:space="preserve">
+    <value>全部檔案</value>
+  </data>
+  <data name="Application.Header" xml:space="preserve">
+    <value>應用程式</value>
+  </data>
+  <data name="Attribution.Header" xml:space="preserve">
+    <value>屬性</value>
+  </data>
+  <data name="Author.Text" xml:space="preserve">
+    <value>作者</value>
+  </data>
+  <data name="TextBack" xml:space="preserve">
+    <value>返回</value>
+  </data>
+  <data name="TextBrowse" xml:space="preserve">
+    <value>瀏覽</value>
+  </data>
+  <data name="Cancel.Content" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="TextChangeWallpaper" xml:space="preserve">
+    <value>變更桌布</value>
+  </data>
+  <data name="TextClose" xml:space="preserve">
+    <value>關閉</value>
+  </data>
+  <data name="CloseWallpapers.Label" xml:space="preserve">
+    <value>關閉桌布</value>
+  </data>
+  <data name="TextCompleted" xml:space="preserve">
+    <value>已完成！</value>
+  </data>
+  <data name="ControlPanel.Subtitle" xml:space="preserve">
+    <value>點選此處以管理桌布。</value>
+  </data>
+  <data name="TextConvertVideo" xml:space="preserve">
+    <value>轉換為影片</value>
+  </data>
+  <data name="TextCreatePreview" xml:space="preserve">
+    <value>建立預覽</value>
+  </data>
+  <data name="Customise.Text" xml:space="preserve">
+    <value>自訂</value>
+  </data>
+  <data name="CustomiseWallpaper.Label" xml:space="preserve">
+    <value>自訂桌布</value>
+  </data>
+  <data name="DeleteWallpaper.Text" xml:space="preserve">
+    <value>刪除</value>
+  </data>
+  <data name="Description.Text" xml:space="preserve">
+    <value>描述</value>
+  </data>
+  <data name="DisplayPauseRuleAllScreen.Content" xml:space="preserve">
+    <value>螢幕統一設定</value>
+  </data>
+  <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
+    <value>螢幕獨立設定</value>
+  </data>
+  <data name="TextDownload" xml:space="preserve">
+    <value>下載</value>
+  </data>
+  <data name="EditWallpaper.Text" xml:space="preserve">
+    <value>編輯</value>
+  </data>
+  <data name="TextError" xml:space="preserve">
+    <value>錯誤</value>
+  </data>
+  <data name="TextExit" xml:space="preserve">
+    <value>退出</value>
+  </data>
+  <data name="ExportWallpaperZip.Text" xml:space="preserve">
+    <value>匯出為 Lively 動態桌布 .zip 檔</value>
+  </data>
+  <data name="TextFeatureMissing" xml:space="preserve">
+    <value>一些功能在此版本 Lively 動態桌布中不可用。</value>
+  </data>
+  <data name="TextFileNotFound" xml:space="preserve">
+    <value>找不到檔案</value>
+  </data>
+  <data name="TextGIF" xml:space="preserve">
+    <value>GIF 動畫</value>
+  </data>
+  <data name="GitHubStar.Content" xml:space="preserve">
+    <value>給予 Star 以展示你對本軟體的喜愛</value>
+  </data>
+  <data name="TextGo" xml:space="preserve">
+    <value>開始</value>
+  </data>
+  <data name="TextHelpTranslate" xml:space="preserve">
+    <value>幫助翻譯</value>
+  </data>
+  <data name="TextHours" xml:space="preserve">
+    <value>小時</value>
+  </data>
+  <data name="TextInstall" xml:space="preserve">
+    <value>安裝</value>
+  </data>
+  <data name="TextKeyboard.Content" xml:space="preserve">
+    <value>鍵盤</value>
+  </data>
+  <data name="TextLastChecked" xml:space="preserve">
+    <value>最後檢查</value>
+  </data>
+  <data name="TextLearnMore" xml:space="preserve">
+    <value>了解更多</value>
+  </data>
+  <data name="License.Header" xml:space="preserve">
+    <value>授權</value>
+  </data>
+  <data name="TextMinutes" xml:space="preserve">
+    <value>分鐘</value>
+  </data>
+  <data name="TextmoreInfo" xml:space="preserve">
+    <value>資訊</value>
+  </data>
+  <data name="TextMoreWallpapers" xml:space="preserve">
+    <value>更多桌布</value>
+  </data>
+  <data name="TextMouse.Content" xml:space="preserve">
+    <value>滑鼠</value>
+  </data>
+  <data name="MouseInteractOnDesktop.Content" xml:space="preserve">
+    <value>當應用程式取得焦點時仍啟用滑鼠互動</value>
+  </data>
+  <data name="TextNext" xml:space="preserve">
+    <value>繼續</value>
+  </data>
+  <data name="TextNo" xml:space="preserve">
+    <value>否</value>
+  </data>
+  <data name="TextOff.Content" xml:space="preserve">
+    <value>關閉</value>
+  </data>
+  <data name="TextOK" xml:space="preserve">
+    <value>是</value>
+  </data>
+  <data name="TextOn.Content" xml:space="preserve">
+    <value>開啟</value>
+  </data>
+  <data name="TextOnline" xml:space="preserve">
+    <value>線上</value>
+  </data>
+  <data name="TextOpenLively" xml:space="preserve">
+    <value>開啟 Lively</value>
+  </data>
+  <data name="PauseAlgorithmTypeAllProcess.Content" xml:space="preserve">
+    <value>所有處理程序</value>
+  </data>
+  <data name="PauseAlgorithmTypeExclusiveMode.Content" xml:space="preserve">
+    <value>Direct3D</value>
+  </data>
+  <data name="PauseAlgorithmTypeForegroundProcess.Content" xml:space="preserve">
+    <value>前景處理程序</value>
+  </data>
+  <data name="TextPauseWallpapers" xml:space="preserve">
+    <value>暫停桌布</value>
+  </data>
+  <data name="TextPerformanceKill.Content" xml:space="preserve">
+    <value>終止</value>
+  </data>
+  <data name="TextPerformanceNone.Content" xml:space="preserve">
+    <value>無</value>
+  </data>
+  <data name="TextPerformancePause.Content" xml:space="preserve">
+    <value>暫停</value>
+  </data>
+  <data name="TextPicture" xml:space="preserve">
+    <value>圖片</value>
+  </data>
+  <data name="PreviewWallpaper.Text" xml:space="preserve">
+    <value>預覽</value>
+  </data>
+  <data name="PrivacyPolicy.Header" xml:space="preserve">
+    <value>隱私政策</value>
+  </data>
+  <data name="TextProcessingWallpaper" xml:space="preserve">
+    <value>處理中</value>
+  </data>
+  <data name="TextRemove" xml:space="preserve">
+    <value>移除</value>
+  </data>
+  <data name="TextRule" xml:space="preserve">
+    <value>規則</value>
+  </data>
+  <data name="TextScreen" xml:space="preserve">
+    <value>螢幕</value>
+  </data>
+  <data name="TextSearch" xml:space="preserve">
+    <value>搜尋</value>
+  </data>
+  <data name="SetWallpaper.Text" xml:space="preserve">
+    <value>設定為桌布</value>
+  </data>
+  <data name="ShowOnDisk.Text" xml:space="preserve">
+    <value>開啟檔案位置</value>
+  </data>
+  <data name="WallpaperSource.Text" xml:space="preserve">
+    <value>來源</value>
+  </data>
+  <data name="TextStart" xml:space="preserve">
+    <value>啟動</value>
+  </data>
+  <data name="TextStop" xml:space="preserve">
+    <value>停止</value>
+  </data>
+  <data name="StoreReview.Content" xml:space="preserve">
+    <value>你是否享受使用 Lively 動態桌布？請留下評論 :)</value>
+  </data>
+  <data name="TextSupport.Content" xml:space="preserve">
+    <value>支援開發</value>
+  </data>
+  <data name="TextSwitchBranchDev" xml:space="preserve">
+    <value>切換至 Beta 版 (開發頻道)</value>
+  </data>
+  <data name="TextSwitchBranchOfficial" xml:space="preserve">
+    <value>切換至穩定版 (預設頻道)</value>
+  </data>
+  <data name="TextTags" xml:space="preserve">
+    <value>標籤</value>
+  </data>
+  <data name="TaskbarThemeBlur.Content" xml:space="preserve">
+    <value>模糊</value>
+  </data>
+  <data name="TaskbarThemeClear.Content" xml:space="preserve">
+    <value>去除</value>
+  </data>
+  <data name="TaskbarThemeColor.Content" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="TaskbarThemeFluent.Content" xml:space="preserve">
+    <value>平滑</value>
+  </data>
+  <data name="TaskbarThemeWallpaper.Content" xml:space="preserve">
+    <value>桌布取色</value>
+  </data>
+  <data name="TaskbarThemeWallpaperFluent.Content" xml:space="preserve">
+    <value>平滑(桌布取色)</value>
+  </data>
+  <data name="TextTileSizeLarge" xml:space="preserve">
+    <value>大</value>
+  </data>
+  <data name="TextTileSizeNormal" xml:space="preserve">
+    <value>中</value>
+  </data>
+  <data name="TextTileSizeSmall" xml:space="preserve">
+    <value>小</value>
+  </data>
+  <data name="Title.Text" xml:space="preserve">
+    <value>標題</value>
+  </data>
+  <data name="TextUIHeadless" xml:space="preserve">
+    <value>無介面模式</value>
+  </data>
+  <data name="TextUILite" xml:space="preserve">
+    <value>簡易</value>
+  </data>
+  <data name="TextUINormal" xml:space="preserve">
+    <value>正常</value>
+  </data>
+  <data name="TextUnsupportedFile" xml:space="preserve">
+    <value>不支援的檔案格式</value>
+  </data>
+  <data name="TextUpdateAvailable" xml:space="preserve">
+    <value>有更新可用！</value>
+  </data>
+  <data name="TextUpdateCheck" xml:space="preserve">
+    <value>偵測更新</value>
+  </data>
+  <data name="TextupdateCheckFail" xml:space="preserve">
+    <value>無法偵測軟體更新</value>
+  </data>
+  <data name="TextUpdateChecking" xml:space="preserve">
+    <value>偵測更新</value>
+  </data>
+  <data name="TextUpdateUptodate" xml:space="preserve">
+    <value>軟體已是最新版本！</value>
+  </data>
+  <data name="TextVideo" xml:space="preserve">
+    <value>影片</value>
+  </data>
+  <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
+    <value>輸入可選命令列引數</value>
+  </data>
+  <data name="WallpaperFitFill.Content" xml:space="preserve">
+    <value>填滿</value>
+  </data>
+  <data name="WallpaperFitNone.Content" xml:space="preserve">
+    <value>無</value>
+  </data>
+  <data name="WallpaperFitUniform.Content" xml:space="preserve">
+    <value>統一</value>
+  </data>
+  <data name="WallpaperFitUniformToFill.Content" xml:space="preserve">
+    <value>統一並填滿</value>
+  </data>
+  <data name="WallpaperLayoutDuplicate.Content" xml:space="preserve">
+    <value>複製相同桌布</value>
+  </data>
+  <data name="WallpaperLayoutPerScreen.Content" xml:space="preserve">
+    <value>僅選定的螢幕</value>
+  </data>
+  <data name="WallpaperLayoutSpan.Content" xml:space="preserve">
+    <value>跨顯示器延伸</value>
+  </data>
+  <data name="WallpaperType.Text" xml:space="preserve">
+    <value>類型</value>
+  </data>
+  <data name="Website.Header" xml:space="preserve">
+    <value>網站</value>
+  </data>
+  <data name="TextWebStream" xml:space="preserve">
+    <value>網頁串流</value>
+  </data>
+  <data name="TextWelcome" xml:space="preserve">
+    <value>歡迎</value>
+  </data>
+  <data name="TextYes" xml:space="preserve">
+    <value>確定</value>
+  </data>
+  <data name="VideoPlayer.Header" xml:space="preserve">
+    <value>影片播放器</value>
+  </data>
+  <data name="AddWallpaperFileBrowse.Description" xml:space="preserve">
+    <value>將所有支援類型的檔案設定為桌布。</value>
+  </data>
+  <data name="EnterUrl.Description" xml:space="preserve">
+    <value>將您輸入 URL 對應的網頁設定為桌布。</value>
+  </data>
+  <data name="AppFocus.Description" xml:space="preserve">
+    <value>設定在其他應用程式取得焦點時執行的操作。</value>
+  </data>
+  <data name="AppFullScreen.Description" xml:space="preserve">
+    <value>設定在運作全螢幕遊戲/應用程式時執行的操作。</value>
+  </data>
+  <data name="AppRules.Description" xml:space="preserve">
+    <value>根據運作的應用程式設定不同的桌布播放規則。</value>
+  </data>
+  <data name="TipAppTheme" xml:space="preserve">
+    <value>Lively 動態桌布跟隨系統主題設定，要改變外觀請至</value>
+  </data>
+  <data name="Audio.Description" xml:space="preserve">
+    <value>桌布音量等級。</value>
+  </data>
+  <data name="BatteryPower.Description" xml:space="preserve">
+    <value>變更斷開交流電源後的播放行為。</value>
+  </data>
+  <data name="BrowserDebuggingPort.Description" xml:space="preserve">
+    <value>輸入用於除錯網頁桌布的連接埠，需要重新啟動瀏覽器以使改動生效。
+準備就緒後，請前往 http://localhost:埠號 開啟開發人員控制台。</value>
+  </data>
+  <data name="Debug.Description" xml:space="preserve">
+    <value>顯示開發人員選單。</value>
+  </data>
+  <data name="DesktopPicture.Description" xml:space="preserve">
+    <value>設定動態桌布的一個畫面作為桌面背景。</value>
+  </data>
+  <data name="DisplayPauseRule.Description" xml:space="preserve">
+    <value>選擇在所有螢幕暫停桌布，或是僅在應用程式取得焦點\全螢幕運作的相關螢幕上如此操作。</value>
+  </data>
+  <data name="ExportLogs.Description" xml:space="preserve">
+    <value>建立日誌回報檔。</value>
+  </data>
+  <data name="GifPlayer.Description" xml:space="preserve">
+    <value>選取用於 GIF 桌布的播放器。</value>
+  </data>
+  <data name="TipHideSysTray" xml:space="preserve">
+    <value>系統匣中圖示的可見性，Lively 動態桌布在隱藏圖示的情況下將繼續運作。</value>
+  </data>
+  <data name="Language.Description" xml:space="preserve">
+    <value>將 Lively 動態桌布重新啟動以套用新語言。</value>
+  </data>
+  <data name="TipLivelySetupOnClose" xml:space="preserve">
+    <value>完成初始設定以繼續。</value>
+  </data>
+  <data name="LockscreenPicture.Description" xml:space="preserve">
+    <value>設定動態桌布的一個畫面作為鎖定螢幕背景。</value>
+  </data>
+  <data name="PauseAlgorithm.Description" xml:space="preserve">
+    <value>暫停桌布的演算法。</value>
+  </data>
+  <data name="PowerSavingModePower.Description" xml:space="preserve">
+    <value>當 Windows 省電模式啟用時變更播放行為。</value>
+  </data>
+  <data name="RemoteDesktopPower.Description" xml:space="preserve">
+    <value>當遠端桌面工作階段啟用時變更播放行為。</value>
+  </data>
+  <data name="TipScreensaver" xml:space="preserve">
+    <value>在選定非活躍時段後，使用目前桌布作為螢幕保護程式。</value>
+  </data>
+  <data name="StreamWallpaperDetect.Description" xml:space="preserve">
+    <value>如果偵測到受支援的影片串流連結，將使用影片播放器，而不是載入網頁。</value>
+  </data>
+  <data name="StreamWallpaperVideoQuality.Description" xml:space="preserve">
+    <value>選擇你想要的線上影片品質。</value>
+  </data>
+  <data name="TipSwitchSoftwareBranch" xml:space="preserve">
+    <value>將軟體版本從 Beta 版變更為穩定版，或是相反。</value>
+  </data>
+  <data name="TaskbarTheme.Description" xml:space="preserve">
+    <value>改變系統工作列外觀。</value>
+  </data>
+  <data name="TipTileSize" xml:space="preserve">
+    <value>資料庫中桌布磚塊的大小。</value>
+  </data>
+  <data name="TipUIMode" xml:space="preserve">
+    <value>對於低階裝置，請選擇簡易模式。</value>
+  </data>
+  <data name="VideoHardwareDecode.Description" xml:space="preserve">
+    <value>當可能時使用硬體加速。</value>
+  </data>
+  <data name="VideoPlayer.Description" xml:space="preserve">
+    <value>選取用於播放影片桌布的播放器。</value>
+  </data>
+  <data name="WallpaperDir.Description" xml:space="preserve">
+    <value>儲存桌布的位置。</value>
+  </data>
+  <data name="WallpaperFit.Description" xml:space="preserve">
+    <value>桌布縮放演算法。</value>
+  </data>
+  <data name="WallpaperInput.Description" xml:space="preserve">
+    <value>選擇與桌布互動的方式。</value>
+  </data>
+  <data name="WallpaperLayout.Description" xml:space="preserve">
+    <value>選擇將如何套用桌布至連結的顯示裝置。</value>
+  </data>
+  <data name="TipWallpaperPlayback" xml:space="preserve">
+    <value>當桌面不是焦點時，暫停桌布播放作業。</value>
+  </data>
+  <data name="WebBrowserDiskCache.Description" xml:space="preserve">
+    <value>將暫存檔案儲存在磁碟而不是記憶體中，重新啟動瀏覽器後將恢復初始設定。</value>
+  </data>
+  <data name="WebBrowser.Description" xml:space="preserve">
+    <value>CEF(Chromium Embedded Framework) 是個輕量級的 Chromium 引擎。
+Edge 是 Windows 10 的內建網頁繪製元件 (Webview)。</value>
+  </data>
+  <data name="Startup.Description" xml:space="preserve">
+    <value>Lively 動態桌布需要在背景運作以進行桌布播放作業。</value>
+  </data>
+  <data name="About.Label" xml:space="preserve">
+    <value>關於</value>
+  </data>
+  <data name="AddWallpaper.Label" xml:space="preserve">
+    <value>新增桌布</value>
+  </data>
+  <data name="AppFocus.Header" xml:space="preserve">
+    <value>焦點應用程式</value>
+  </data>
+  <data name="AppFullScreen.Header" xml:space="preserve">
+    <value>全螢幕應用程式</value>
+  </data>
+  <data name="TitleAppName" xml:space="preserve">
+    <value>Lively 動態桌布</value>
+  </data>
+  <data name="AppRules.Header" xml:space="preserve">
+    <value>應用程式規則</value>
+  </data>
+  <data name="AppTheme.Header" xml:space="preserve">
+    <value>主題</value>
+  </data>
+  <data name="AudioGroup.Header" xml:space="preserve">
+    <value>音訊</value>
+  </data>
+  <data name="AudioFocused.Content" xml:space="preserve">
+    <value>僅在桌面為焦點時播放音訊</value>
+  </data>
+  <data name="Audio.Header" xml:space="preserve">
+    <value>主音量</value>
+  </data>
+  <data name="TitleAudioPlayOnScreen" xml:space="preserve">
+    <value>在螢幕上播放音訊</value>
+  </data>
+  <data name="BatteryPower.Header" xml:space="preserve">
+    <value>當處於電池供電</value>
+  </data>
+  <data name="TitleBrowseFile" xml:space="preserve">
+    <value>瀏覽影片，GIF，網頁等檔案以設定為桌布</value>
+  </data>
+  <data name="BrowserDebuggingPort.Header" xml:space="preserve">
+    <value>除錯連接埠</value>
+  </data>
+  <data name="TitleChangelog" xml:space="preserve">
+    <value>更新日誌</value>
+  </data>
+  <data name="Community.Header" xml:space="preserve">
+    <value>社群</value>
+  </data>
+  <data name="Debug.Header" xml:space="preserve">
+    <value>除錯</value>
+  </data>
+  <data name="TitleDeleteConfirmation" xml:space="preserve">
+    <value>確認刪除</value>
+  </data>
+  <data name="DesktopPicture.Header" xml:space="preserve">
+    <value>桌面圖片</value>
+  </data>
+  <data name="DisplayPauseRule.Header" xml:space="preserve">
+    <value>顯示幕暫停規則</value>
+  </data>
+  <data name="Documentation.Header" xml:space="preserve">
+    <value>文件</value>
+  </data>
+  <data name="TitleEnterUrl" xml:space="preserve">
+    <value>輸入 URL</value>
+  </data>
+  <data name="ExportLogs.Header" xml:space="preserve">
+    <value>日誌檔</value>
+  </data>
+  <data name="TitleGeneral" xml:space="preserve">
+    <value>一般</value>
+  </data>
+  <data name="GifPlayer.Header" xml:space="preserve">
+    <value>GIF 播放器</value>
+  </data>
+  <data name="Help.Label" xml:space="preserve">
+    <value>幫助</value>
+  </data>
+  <data name="HideSysTray.Header" xml:space="preserve">
+    <value>系統匣圖示</value>
+  </data>
+  <data name="TitleInteraction" xml:space="preserve">
+    <value>互動</value>
+  </data>
+  <data name="Language.Header" xml:space="preserve">
+    <value>語言</value>
+  </data>
+  <data name="TitleLibrary" xml:space="preserve">
+    <value>資料庫</value>
+  </data>
+  <data name="TitleLivelySetup" xml:space="preserve">
+    <value>Lively 初始設定</value>
+  </data>
+  <data name="TitleLocation" xml:space="preserve">
+    <value>位置</value>
+  </data>
+  <data name="LockscreenPicture.Header" xml:space="preserve">
+    <value>鎖定螢幕圖片</value>
+  </data>
+  <data name="TitleMisc" xml:space="preserve">
+    <value>雜項</value>
+  </data>
+  <data name="TitleMute" xml:space="preserve">
+    <value>靜音</value>
+  </data>
+  <data name="PauseAlgorithm.Header" xml:space="preserve">
+    <value>暫停演算法</value>
+  </data>
+  <data name="TitlePerformance" xml:space="preserve">
+    <value>效能</value>
+  </data>
+  <data name="TitlePlaylist" xml:space="preserve">
+    <value>播放清單</value>
+  </data>
+  <data name="PleaseWait.Text" xml:space="preserve">
+    <value>請稍候</value>
+  </data>
+  <data name="PowerSavingModePower.Header" xml:space="preserve">
+    <value>當處於省電模式</value>
+  </data>
+  <data name="RemoteDesktopPower.Header" xml:space="preserve">
+    <value>當處於遠端桌面</value>
+  </data>
+  <data name="ReportBug.Header" xml:space="preserve">
+    <value>回報 Bug</value>
+  </data>
+  <data name="TitleScalingFit" xml:space="preserve">
+    <value>縮放/適合</value>
+  </data>
+  <data name="ControlPanel.Title" xml:space="preserve">
+    <value>控制台</value>
+  </data>
+  <data name="TitleScreensaver" xml:space="preserve">
+    <value>螢幕保護程式</value>
+  </data>
+  <data name="TitleScreensaverLockOnResume" xml:space="preserve">
+    <value>恢復工作階段後，顯示登入螢幕</value>
+  </data>
+  <data name="TitleSelectFile" xml:space="preserve">
+    <value>選取檔案</value>
+  </data>
+  <data name="TitleSettings" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="TitleSkipConfirm" xml:space="preserve">
+    <value>跳過確認</value>
+  </data>
+  <data name="SourceCode.Header" xml:space="preserve">
+    <value>原始碼</value>
+  </data>
+  <data name="Store.Header" xml:space="preserve">
+    <value>商店</value>
+    <comment>對於不同版本的 Lively 動態桌布，例如：Microsoft Store</comment>
+  </data>
+  <data name="StreamWallpaperVideoQuality.Header" xml:space="preserve">
+    <value>串流</value>
+  </data>
+  <data name="StreamWallpaperDetect.Header" xml:space="preserve">
+    <value>偵測串流</value>
+  </data>
+  <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
+    <value>影片品質</value>
+  </data>
+  <data name="System.Header" xml:space="preserve">
+    <value>作業系統</value>
+  </data>
+  <data name="TaskbarTheme.Header" xml:space="preserve">
+    <value>工具列主題</value>
+  </data>
+  <data name="TitleTileSize" xml:space="preserve">
+    <value>預覽大小</value>
+  </data>
+  <data name="TitleUIMode" xml:space="preserve">
+    <value>使用者介面</value>
+  </data>
+  <data name="TitleUpdates" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="TitleVideo" xml:space="preserve">
+    <value>影片</value>
+  </data>
+  <data name="VideoHardwareDecode.Header" xml:space="preserve">
+    <value>GPU 解碼</value>
+  </data>
+  <data name="TitleWallpaper" xml:space="preserve">
+    <value>桌布</value>
+  </data>
+  <data name="WallpaperDir.Header" xml:space="preserve">
+    <value>桌布目錄</value>
+  </data>
+  <data name="WallpaperDirMoveExisting.Content" xml:space="preserve">
+    <value>將現有動態桌布移動至新資料夾</value>
+  </data>
+  <data name="WallpaperFit.Header" xml:space="preserve">
+    <value>選取一種適合方案</value>
+  </data>
+  <data name="WallpaperInput.Header" xml:space="preserve">
+    <value>桌布輸入</value>
+  </data>
+  <data name="WallpaperLayout.Header" xml:space="preserve">
+    <value>放置方式</value>
+  </data>
+  <data name="WallpaperPlaybackGroup.Header" xml:space="preserve">
+    <value>桌布播放行為</value>
+  </data>
+  <data name="TitleWarning" xml:space="preserve">
+    <value>警告</value>
+  </data>
+  <data name="WebBrowser.Header" xml:space="preserve">
+    <value>網頁瀏覽器</value>
+  </data>
+  <data name="WebBrowserDiskCache.Header" xml:space="preserve">
+    <value>磁碟暫存</value>
+  </data>
+  <data name="TitleWebBrowserEngine" xml:space="preserve">
+    <value>引擎</value>
+  </data>
+  <data name="TitleWebpageLoad" xml:space="preserve">
+    <value>載入網頁</value>
+  </data>
+  <data name="TitleWindowsStartup" xml:space="preserve">
+    <value>隨 Windows 開機啟動</value>
+  </data>
+  <data name="SourceWebsite.Text" xml:space="preserve">
+    <value>網站</value>
+  </data>
+  <data name="AboutMenu.Text" xml:space="preserve">
+    <value>關於</value>
   </data>
 </root>
