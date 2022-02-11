@@ -1,4 +1,5 @@
-﻿using Lively.UI.WinUI.ViewModels;
+﻿using Lively.Common;
+using Lively.UI.WinUI.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -46,5 +47,8 @@ namespace Lively.UI.WinUI.Views.Pages
             audioBtn.Icon = audioIcons[(int)Math.Ceiling((audioIcons.Length - 1) * volume / 100)];
 
         private void Slider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e) => UpdateAudioSliderIcon(e.NewValue);
+
+        //NavigateUri not working, Issue: https://github.com/microsoft/microsoft-ui-xaml/issues/5630
+        private void HyperlinkButton_Click(object sender, RoutedEventArgs e) => LinkHandler.OpenBrowser("ms-settings:colors");
     }
 }

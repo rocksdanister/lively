@@ -60,7 +60,7 @@
 
                     <controls:Setting x:Uid="AppTheme" Icon="&#xE771;">
                         <controls:Setting.Description>
-                            <HyperlinkButton x:Uid="WindowsSettingsColor" NavigateUri="ms-settings:colors" />
+                            <HyperlinkButton x:Uid="WindowsSettingsColor" Click="HyperlinkButton_Click" />
                         </controls:Setting.Description>
                         <controls:Setting.ActionContent>
                             <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedAppThemeIndex, Mode=TwoWay}">
@@ -132,7 +132,6 @@
                                 <CheckBox
                                     x:Uid="WallpaperDirMoveExisting"
                                     Margin="{StaticResource ExpanderSettingMargin}"
-                                    Content="Move existing wallpapers to new folder"
                                     IsChecked="{Binding MoveExistingWallpaperNewDir, Mode=TwoWay}" />
                             </StackPanel>
                         </controls:SettingExpander.Content>

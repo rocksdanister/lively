@@ -28,6 +28,12 @@
                 </controls:Setting.Description>
             </controls:Setting>
 
+            <controls:Setting x:Uid="SourceCode" Icon="&#xE716;">
+                <controls:Setting.Description>
+                    <HyperlinkButton x:Uid="GitHubStar" NavigateUri="https://github.com/rocksdanister/lively" />
+                </controls:Setting.Description>
+            </controls:Setting>
+
             <controls:Setting x:Uid="ReportBug" Icon="&#xEBE8;">
                 <controls:Setting.Description>
                     <HyperlinkButton x:Uid="ReportBugPage" NavigateUri="https://github.com/rocksdanister/lively/issues" />

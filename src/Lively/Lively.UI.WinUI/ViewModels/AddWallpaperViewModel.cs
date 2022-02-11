@@ -87,13 +87,17 @@ namespace Lively.UI.WinUI.ViewModels
         }
 
         private RelayCommand _browseFileCommand;
-        public RelayCommand BrowseFileCommand => _browseFileCommand ??= new RelayCommand(() => FileBrowseAction());
+        public RelayCommand BrowseFileCommand => _browseFileCommand ??= new RelayCommand(async () => await FileBrowseAction());
 
         private async Task FileBrowseAction()
         {
             var filePicker = new FileOpenPicker();
             filePicker.SetOwnerWindow(App.Services.GetRequiredService<MainWindow>());
-            filePicker.FileTypeFilter.Add("*");
+            //filePicker.FileTypeFilter.Add("*");
+            foreach (var item in LocalizationUtil.GetLocalizedSupportedFileDialogFilter(true))
+            {
+                filePicker.FileTypeFilter.Add(item);
+            }
             var file = await filePicker.PickSingleFileAsync();
             if (file != null)
             {

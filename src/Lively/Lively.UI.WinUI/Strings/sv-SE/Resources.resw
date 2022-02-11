@@ -1,0 +1,1051 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="WallpaperDirGroup.Header" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="FastUI.Header" xml:space="preserve">
+    <value>Fast startup</value>
+  </data>
+  <data name="FastUI.Description" xml:space="preserve">
+    <value>Keep User Interface running for faster startup</value>
+  </data>
+  <data name="WindowsSettingsColor.Content" xml:space="preserve">
+    <value>Windows color settings</value>
+  </data>
+  <data name="AppThemeDark.Content" xml:space="preserve">
+    <value>Dark</value>
+  </data>
+  <data name="AppThemeLight.Content" xml:space="preserve">
+    <value>Light</value>
+  </data>
+  <data name="AppThemeSystem.Content" xml:space="preserve">
+    <value>System</value>
+  </data>
+  <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
+    <value>Laptops</value>
+  </data>
+  <data name="DeveloperGroup.Header" xml:space="preserve">
+    <value>Developer</value>
+  </data>
+  <data name="AppearanceBehaviour.Header" xml:space="preserve">
+    <value>Appearance &amp; behavior</value>
+  </data>
+  <data name="TitleGallery" xml:space="preserve">
+    <value>Gallery</value>
+  </data>
+  <data name="ActiveWallpapers.Label" xml:space="preserve">
+    <value>Active Wallpaper(s)</value>
+  </data>
+  <data name="AboutMe.Text" xml:space="preserve">
+    <value>Hi, I'm Dani John also known as rocksdanister. I developed Lively a Free and open-source (FOSS) wallpaper application. Thanks for taking the time to look at my work.</value>
+  </data>
+  <data name="LicenseLink.Content" xml:space="preserve">
+    <value>Software license</value>
+  </data>
+  <data name="AttributionLink.Content" xml:space="preserve">
+    <value>Third party software notice</value>
+  </data>
+  <data name="PrivacyPolicyLink.Content" xml:space="preserve">
+    <value>Data collection policy</value>
+  </data>
+  <data name="AddWallpaperDrop.Text" xml:space="preserve">
+    <value>Add wallpaper</value>
+  </data>
+ <data name="ComingSoon.Text" xml:space="preserve">
+    <value>Coming soon</value>
+  </data>
+  <data name="TextOpen.Content" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="TextSave.Content" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
+        <value>Välj en fil eller skriv in en webbadress som ska användas som bakgrundsbild.</value>
+        <comment />
+    </data>
+  <data name="DescriptionAppRules" xml:space="preserve">
+        <value>Bakgrundsbildens beteende baserad på programmet som används.</value>
+        <comment />
+    </data>
+  <data name="DescriptionCancelQuestion" xml:space="preserve">
+        <value>Är du säker på att du vill avbryta?</value>
+    </data>
+  <data name="DescriptionDeleteConfirmation" xml:space="preserve">
+        <value>Är du säker på att du vill ta bort denna bakgrundsbild?</value>
+        <comment />
+    </data>
+  <data name="DragDropFile.Text" xml:space="preserve">
+        <value>Bara dra och släpp filer till biblioteket.</value>
+        <comment />
+    </data>
+  <data name="DescriptionExternalAppWarning" xml:space="preserve">
+        <value>Du öppnar ett externt program som bakgrundsbild. Skadliga program kan vara värd för skadlig kod, virus och skada ditt system. Fortsätt endast om programmet kommer från en betrodd källa.</value>
+        <comment />
+    </data>
+  <data name="DescriptionMinimizedTray" xml:space="preserve">
+        <value>Lively är nu minimerad.</value>
+        <comment />
+    </data>
+  <data name="DescriptionPleaseRestartLively" xml:space="preserve">
+        <value>Starta om Lively för att dina nya inställningar ska ta effekt.</value>
+        <comment />
+    </data>
+  <data name="DescriptionRecordStart" xml:space="preserve">
+        <value>Tryck för att börja spela in.</value>
+        <comment />
+    </data>
+  <data name="DescriptionRestoringWallpaper" xml:space="preserve">
+        <value>Håller på att återställa bakgrundbild.</value>
+    </data>
+  <data name="DescriptionScreenLayout" xml:space="preserve">
+        <value>Välj skärm</value>
+        <comment />
+    </data>
+  <data name="DescriptionUpdateAvailable" xml:space="preserve">
+        <value>En ny uppdatering är tillgänglig.</value>
+        <comment />
+    </data>
+  <data name="DescriptionWebpageLoad" xml:space="preserve">
+        <value>Skriv in en webbadress för att ladda. Shader-länkar från shadertoy.com stöds.</value>
+        <comment />
+    </data>
+  <data name="DescriptionWelcomeWizard" xml:space="preserve">
+        <value>Denna guide kommer att hjälpa dig med att komma igång med att konfigurera Lively.</value>
+        <comment />
+    </data>
+  <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
+        <value>Uppdateringen misslyckades. Prova att ladda installionsprogrammet från denna länk; https://github.com/rocksdanister/lively/releases</value>
+        <comment />
+    </data>
+  <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
+        <value>Skadad bakgrunds fil, prova att ladda ner filen igen.</value>
+    </data>
+  <data name="LivelyExceptionGeneral" xml:space="preserve">
+        <value>Oj... Det verkar som om något gick fel :( Dela loggfilen med utvecklaren för att bättre förstå felet och åtgärda problemet. Instruktioner för att dela loggfilen: https://github.com/rocksdanister/lively/wiki</value>
+    </data>
+  <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
+        <value>Lively fungerar inte med Hög Kontrast läge på. Stäng av det i dina inställningar och försök igen.</value>
+    </data>
+  <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
+        <value>Uppspelning av media misslyckades. Försök att ändra videospelaren i Lively inställningar. För att bättre förstå felet och åtgärda problemet kan du dela loggfilen med utvecklaren.Instruktioner för att dela loggfilen: https://github.com/rocksdanister/lively/wiki</value>
+    </data>
+  <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
+        <value>Denna fil är inte en Lively fil.</value>
+    </data>
+  <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
+        <value>Lively stängdes inte ordentligt och startade i felsäkert läge. Vill du återställa tidigare körda bakgrundsbilder?</value>
+    </data>
+  <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
+        <value>Det ser ut som om några inställningar måste göras för att Lively ska fungera: 1. Öppna den här datorn (Min dator) 2. Högerklicka på ett tomt område 3. Välj Egenskaper 4. Välj Avancerade systeminställningar 5. Under fliken Prestanda välj Inställningar 6. Aktivera Animera kontroller och element i fönster och tillämpa. Om Windows 7 ställ bara in - Justera för bästa utseende och tillämpa. Om det fortfarande inte fungerar, stäng och starta Lively igen / starta om Windows. (Fungerar inte i vissa Insider Windows 10-versioner)</value>
+    </data>
+  <data name="TextAdd" xml:space="preserve">
+        <value>Lägg till</value>
+        <comment />
+    </data>
+  <data name="Application.Header" xml:space="preserve">
+        <value>Applikation</value>
+    </data>
+  <data name="Attribution.Header" xml:space="preserve">
+        <value>Attribution</value>
+        <comment />
+    </data>
+  <data name="Author.Text" xml:space="preserve">
+        <value>Skapare</value>
+        <comment />
+    </data>
+  <data name="TextBack" xml:space="preserve">
+        <value>Tillbaka</value>
+        <comment />
+    </data>
+  <data name="TextBrowse" xml:space="preserve">
+        <value>Browse</value>
+        <comment />
+    </data>
+  <data name="TextClose" xml:space="preserve">
+        <value>Stäng</value>
+    </data>
+  <data name="CloseWallpapers.Label" xml:space="preserve">
+        <value>Stäng bakgrundsbild</value>
+    </data>
+  <data name="TextCompleted" xml:space="preserve">
+        <value>Avslutad!</value>
+        <comment />
+    </data>
+  <data name="TextConvertVideo" xml:space="preserve">
+        <value>Konvertera till video</value>
+        <comment />
+    </data>
+  <data name="Customise.Text" xml:space="preserve">
+        <value>Customise</value>
+        <comment />
+    </data>
+  <data name="CustomiseWallpaper.Label" xml:space="preserve">
+        <value>Anpassa bakgrundsbilden</value>
+    </data>
+  <data name="DeleteWallpaper.Text" xml:space="preserve">
+        <value>Ta bort bakgrundsbild</value>
+    </data>
+  <data name="DisplayPauseRuleAllScreen.Content" xml:space="preserve">
+        <value>Alla skärmar</value>
+        <comment />
+    </data>
+  <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
+        <value>Per skärm</value>
+        <comment />
+    </data>
+  <data name="TextDownload" xml:space="preserve">
+        <value>Ladda ner</value>
+        <comment />
+    </data>
+  <data name="TextError" xml:space="preserve">
+        <value>Fel</value>
+        <comment />
+    </data>
+  <data name="TextExit" xml:space="preserve">
+        <value>Stäng</value>
+        <comment />
+    </data>
+  <data name="ExportWallpaperZip.Text" xml:space="preserve">
+        <value>Exportera lively.zip</value>
+    </data>
+  <data name="TextGIF" xml:space="preserve">
+        <value>Animerad GIF</value>
+        <comment />
+    </data>
+  <data name="TextGo" xml:space="preserve">
+        <value>GO</value>
+        <comment />
+    </data>
+  <data name="TextHelpTranslate" xml:space="preserve">
+        <value>Hjälp till med att översätta Lively</value>
+    </data>
+  <data name="TextInstall" xml:space="preserve">
+        <value>Installera</value>
+    </data>
+  <data name="TextKeyboard.Content" xml:space="preserve">
+        <value>Keyboard</value>
+        <comment />
+    </data>
+  <data name="TextmoreInfo" xml:space="preserve">
+        <value>Information</value>
+        <comment />
+    </data>
+  <data name="TextMoreWallpapers" xml:space="preserve">
+        <value>Mer bakgrundsbilder</value>
+    </data>
+  <data name="TextMouse.Content" xml:space="preserve">
+        <value>Mus</value>
+    </data>
+  <data name="MouseInteractOnDesktop.Content" xml:space="preserve">
+        <value>Mus interaktion när program är fokuserade</value>
+        <comment />
+    </data>
+  <data name="TextNext" xml:space="preserve">
+        <value>Nästa</value>
+        <comment />
+    </data>
+  <data name="TextNo" xml:space="preserve">
+        <value>Nej</value>
+        <comment />
+    </data>
+  <data name="TextOff.Content" xml:space="preserve">
+        <value>AV</value>
+    </data>
+  <data name="TextOn.Content" xml:space="preserve">
+        <value>PÅ</value>
+    </data>
+  <data name="TextOnline" xml:space="preserve">
+        <value>Online</value>
+        <comment />
+    </data>
+  <data name="TextOpenLively" xml:space="preserve">
+        <value>Öppna Lively</value>
+    </data>
+  <data name="PauseAlgorithmTypeAllProcess.Content" xml:space="preserve">
+        <value>Alla processer</value>
+        <comment />
+    </data>
+  <data name="PauseAlgorithmTypeForegroundProcess.Content" xml:space="preserve">
+        <value>Förgrunds processer</value>
+        <comment />
+    </data>
+  <data name="TextPauseWallpapers" xml:space="preserve">
+        <value>Pause tapeter</value>
+        <comment />
+    </data>
+  <data name="TextPerformanceKill.Content" xml:space="preserve">
+        <value>Döda</value>
+        <comment />
+    </data>
+  <data name="TextPerformanceNone.Content" xml:space="preserve">
+        <value>Inget</value>
+        <comment />
+    </data>
+  <data name="TextPerformancePause.Content" xml:space="preserve">
+        <value>Pausa</value>
+        <comment />
+    </data>
+  <data name="TextRemove" xml:space="preserve">
+        <value>Radera</value>
+        <comment />
+    </data>
+  <data name="TextRule" xml:space="preserve">
+        <value>Regel</value>
+        <comment />
+    </data>
+  <data name="TextScreen" xml:space="preserve">
+        <value>Skärm</value>
+        <comment />
+    </data>
+  <data name="TextSearch" xml:space="preserve">
+        <value>Sök</value>
+        <comment />
+    </data>
+  <data name="SetWallpaper.Text" xml:space="preserve">
+        <value>Ställa in som bakgrundsbild</value>
+    </data>
+  <data name="ShowOnDisk.Text" xml:space="preserve">
+        <value>Visa på disk</value>
+        <comment />
+    </data>
+  <data name="WallpaperSource.Text" xml:space="preserve">
+        <value>Källa</value>
+        <comment />
+    </data>
+  <data name="TextStart" xml:space="preserve">
+        <value>Start</value>
+        <comment />
+    </data>
+  <data name="TextStop" xml:space="preserve">
+        <value>Stop</value>
+        <comment />
+    </data>
+  <data name="TextSupport.Content" xml:space="preserve">
+        <value>Support</value>
+        <comment />
+    </data>
+  <data name="TextTags" xml:space="preserve">
+        <value>Etiketter</value>
+        <comment />
+    </data>
+  <data name="TextTileSizeLarge" xml:space="preserve">
+        <value>Stor</value>
+        <comment />
+    </data>
+  <data name="TextTileSizeNormal" xml:space="preserve">
+        <value>Normal</value>
+        <comment />
+    </data>
+  <data name="TextTileSizeSmall" xml:space="preserve">
+        <value>Liten</value>
+        <comment />
+    </data>
+  <data name="TextUIHeadless" xml:space="preserve">
+        <value>Huvudlös</value>
+        <comment />
+    </data>
+  <data name="TextUILite" xml:space="preserve">
+        <value>Lätt</value>
+        <comment />
+    </data>
+  <data name="TextUINormal" xml:space="preserve">
+        <value>Normal</value>
+        <comment />
+    </data>
+  <data name="TextUpdateAvailable" xml:space="preserve">
+        <value>Uppdatering tillgänglig!</value>
+        <comment />
+    </data>
+  <data name="TextUpdateCheck" xml:space="preserve">
+        <value>Sök efter uppdatering</value>
+        <comment />
+    </data>
+  <data name="TextupdateCheckFail" xml:space="preserve">
+        <value>Det gick inte att söka efter uppdateringar</value>
+    </data>
+  <data name="TextUpdateChecking" xml:space="preserve">
+        <value>Söker efter uppdatering</value>
+    </data>
+  <data name="TextUpdateUptodate" xml:space="preserve">
+        <value>Programvaran är aktuell!</value>
+    </data>
+  <data name="TextVideo" xml:space="preserve">
+        <value>Video</value>
+        <comment />
+    </data>
+  <data name="WallpaperLayoutDuplicate.Content" xml:space="preserve">
+        <value>Duplicera samma tapet</value>
+        <comment />
+    </data>
+  <data name="WallpaperLayoutPerScreen.Content" xml:space="preserve">
+        <value>Endast den valda skärmen</value>
+    </data>
+  <data name="WallpaperLayoutSpan.Content" xml:space="preserve">
+        <value>Spänn över skärmar</value>
+        <comment />
+    </data>
+  <data name="WallpaperType.Text" xml:space="preserve">
+        <value>Typ</value>
+        <comment />
+    </data>
+  <data name="Website.Header" xml:space="preserve">
+        <value>Hemsida</value>
+        <comment />
+    </data>
+  <data name="TextWebStream" xml:space="preserve">
+        <value>Web Stream</value>
+        <comment />
+    </data>
+  <data name="TextWelcome" xml:space="preserve">
+        <value>Välkommen</value>
+        <comment />
+    </data>
+  <data name="TextYes" xml:space="preserve">
+        <value>Ja</value>
+        <comment />
+    </data>
+  <data name="VideoPlayer.Header" xml:space="preserve">
+        <value>Videospelare</value>
+        <comment />
+    </data>
+  <data name="AddWallpaperFileBrowse.Description" xml:space="preserve">
+        <value>Ställ in alla filtyper som stöds som bakgrundsbilder.</value>
+    </data>
+  <data name="EnterUrl.Description" xml:space="preserve">
+        <value>Ställ in webbsidan med den webbadress du angett som bakgrundsbild.</value>
+    </data>
+  <data name="AppFocus.Description" xml:space="preserve">
+        <value>Ställ in vad du ska göra när ett program står i fokus.</value>
+        <comment />
+    </data>
+  <data name="AppFullScreen.Description" xml:space="preserve">
+        <value>Ställ in vad du ska göra när helskärmsspel/applikationer körs.</value>
+        <comment />
+    </data>
+  <data name="AppRules.Description" xml:space="preserve">
+        <value>Ställ in olika tapet suppspelningsregler baserat på program som körs.</value>
+        <comment />
+    </data>
+  <data name="TipAppTheme" xml:space="preserve">
+        <value>Lively anpassar sig till inställningarna för systemtema för att ändra utseendet</value>
+    </data>
+  <data name="BatteryPower.Description" xml:space="preserve">
+        <value>(Endast för batteridrivna system) Ändra uppspelning när AC ström är frånkopplad.</value>
+    </data>
+  <data name="BrowserDebuggingPort.Description" xml:space="preserve">
+        <value>Ange porten för felsökning av tapet på webbsidan, omstart av webbläsaren krävs för att ändringarna ska träda i kraft.När du är redo navigerar du till http://localhost:portnumber för att komma åt utvecklarkonsolen.</value>
+        <comment />
+    </data>
+  <data name="DisplayPauseRule.Description" xml:space="preserve">
+        <value>Välj om du vill pausa bakgrundsbilden på alla skärmar eller bara på den relevanta skärmen där programmet är fokuserat/fullskärm.</value>
+    </data>
+  <data name="TipHideSysTray" xml:space="preserve">
+        <value>Systemfackets ikon synliggörs, Lively kommer att fortsätta att köras när ikonen är dold.</value>
+    </data>
+  <data name="Language.Description" xml:space="preserve">
+        <value>Lively kommer att startas om för att tillämpa det nya språket</value>
+    </data>
+  <data name="TipLivelySetupOnClose" xml:space="preserve">
+        <value>Avsluta installationen för att fortsätta.</value>
+        <comment />
+    </data>
+  <data name="PauseAlgorithm.Description" xml:space="preserve">
+        <value>Algoritm för paus för bakgrundsbilder.</value>
+    </data>
+  <data name="StreamWallpaperDetect.Description" xml:space="preserve">
+        <value>Om en länk till en videoström som stöds upptäcks används videospelaren i stället för att ladda webbsidan.</value>
+    </data>
+  <data name="StreamWallpaperVideoQuality.Description" xml:space="preserve">
+        <value>Välj önskad videokvalitet för online-strömmar.</value>
+    </data>
+  <data name="TipTileSize" xml:space="preserve">
+        <value>Storlek på bakgrundsplattorna i biblioteket.</value>
+    </data>
+  <data name="TipUIMode" xml:space="preserve">
+        <value>För lågprestandasystem väljer du Lite-läget.</value>
+    </data>
+  <data name="VideoPlayer.Description" xml:space="preserve">
+        <value>Välj den spelare som används för videotapet.</value>
+        <comment />
+    </data>
+  <data name="WallpaperDir.Description" xml:space="preserve">
+        <value>Sökväg som används för att lagra bakgrundfiler.</value>
+    </data>
+  <data name="WallpaperInput.Description" xml:space="preserve">
+        <value>Välj sätt att interagera med bakgrunder.</value>
+    </data>
+  <data name="WallpaperLayout.Description" xml:space="preserve">
+        <value>Hur bakgrundsbilder appliceras på anslutna bildskärmsenheter.</value>
+    </data>
+  <data name="TipWallpaperPlayback" xml:space="preserve">
+        <value>Pausa bakgrundens uppspelning när skrivbordet inte är fokuserat.</value>
+    </data>
+  <data name="WebBrowserDiskCache.Description" xml:space="preserve">
+        <value>Lagra tillfälliga filer på disken istället för minne, inställningarna återställs när webbläsaren startas om.</value>
+    </data>
+  <data name="WebBrowser.Description" xml:space="preserve">
+        <value>CEF (Chromium Embedded Framework) är en lättviktig Chromium-motor. Edge är den inbyggda webbvisningen i Windows 10.</value>
+    </data>
+  <data name="Startup.Description" xml:space="preserve">
+        <value>Lively måste köras i bakgrunden för uppspelning av tapeter.</value>
+        <comment />
+    </data>
+  <data name="About.Label" xml:space="preserve">
+        <value>Om</value>
+        <comment />
+    </data>
+  <data name="AddWallpaper.Label" xml:space="preserve">
+        <value>Lägg till bakgrund</value>
+    </data>
+  <data name="AppFocus.Header" xml:space="preserve">
+        <value>Program fokuserade</value>
+        <comment />
+    </data>
+  <data name="AppFullScreen.Header" xml:space="preserve">
+        <value>Program Hellskärm</value>
+        <comment>dont understand this one, english translation for this one is weird too</comment>
+    </data>
+  <data name="TitleAppName" xml:space="preserve">
+        <value>Lively Bakgrundsbilder</value>
+    </data>
+  <data name="AppRules.Header" xml:space="preserve">
+        <value>Programregler</value>
+        <comment />
+    </data>
+  <data name="AppTheme.Header" xml:space="preserve">
+        <value>Tema</value>
+        <comment />
+    </data>
+  <data name="AudioGroup.Header" xml:space="preserve">
+        <value>Ljud</value>
+    </data>
+  <data name="TitleAudioPlayOnScreen" xml:space="preserve">
+        <value>Spela ljud på skärmen</value>
+        <comment />
+    </data>
+  <data name="BatteryPower.Header" xml:space="preserve">
+        <value>När du är på batteriström</value>
+    </data>
+  <data name="TitleBrowseFile" xml:space="preserve">
+        <value>Bläddra efter video, gif, webbsida eller fil för att ställa in som bakgrundsbild</value>
+    </data>
+  <data name="BrowserDebuggingPort.Header" xml:space="preserve">
+        <value>Debuggningsport</value>
+    </data>
+  <data name="Community.Header" xml:space="preserve">
+        <value>Gemenskap</value>
+    </data>
+  <data name="TitleDeleteConfirmation" xml:space="preserve">
+        <value>Bekräfta radering</value>
+        <comment />
+    </data>
+  <data name="DisplayPauseRule.Header" xml:space="preserve">
+        <value>Visa pausregel</value>
+        <comment />
+    </data>
+  <data name="Documentation.Header" xml:space="preserve">
+        <value>Dokumentation</value>
+    </data>
+  <data name="TitleEnterUrl" xml:space="preserve">
+        <value>Enter URL</value>
+        <comment />
+    </data>
+  <data name="TitleGeneral" xml:space="preserve">
+        <value>Allmänt</value>
+        <comment />
+    </data>
+  <data name="Help.Label" xml:space="preserve">
+        <value>Hjälp</value>
+        <comment />
+    </data>
+  <data name="HideSysTray.Header" xml:space="preserve">
+        <value>Systemfälts ikon</value>
+        <comment />
+    </data>
+  <data name="TitleInteraction" xml:space="preserve">
+        <value>interaktion</value>
+        <comment />
+    </data>
+  <data name="Language.Header" xml:space="preserve">
+        <value>Språk</value>
+        <comment />
+    </data>
+  <data name="TitleLibrary" xml:space="preserve">
+        <value>Bibliotek</value>
+        <comment />
+    </data>
+  <data name="TitleLivelySetup" xml:space="preserve">
+        <value>Lively Installation</value>
+    </data>
+  <data name="TitleMisc" xml:space="preserve">
+        <value>Diverse</value>
+        <comment />
+    </data>
+  <data name="TitleMute" xml:space="preserve">
+        <value>Tysta</value>
+        <comment />
+    </data>
+  <data name="PauseAlgorithm.Header" xml:space="preserve">
+        <value>Pausa algoritmen</value>
+        <comment />
+    </data>
+  <data name="TitlePerformance" xml:space="preserve">
+        <value>Prestanda</value>
+        <comment />
+    </data>
+  <data name="TitlePlaylist" xml:space="preserve">
+        <value>Spellista</value>
+        <comment />
+    </data>
+  <data name="PleaseWait.Text" xml:space="preserve">
+        <value>Vänligen vänta</value>
+    </data>
+  <data name="TitleScalingFit" xml:space="preserve">
+        <value>Skalning/Fyll</value>
+    </data>
+  <data name="ControlPanel.Title" xml:space="preserve">
+        <value>Skärmlayout</value>
+    </data>
+  <data name="TitleSelectFile" xml:space="preserve">
+        <value>Välj fil</value>
+    </data>
+  <data name="TitleSettings" xml:space="preserve">
+        <value>Inställningar</value>
+        <comment />
+    </data>
+  <data name="StreamWallpaperVideoQuality.Header" xml:space="preserve">
+        <value>Ström</value>
+        <comment />
+    </data>
+  <data name="StreamWallpaperDetect.Header" xml:space="preserve">
+        <value>Upptäck strömmar</value>
+    </data>
+  <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
+        <value>Videokvalitet</value>
+        <comment />
+    </data>
+  <data name="TitleTileSize" xml:space="preserve">
+        <value>Rutstorlek</value>
+        <comment />
+    </data>
+  <data name="TitleUIMode" xml:space="preserve">
+        <value>Användargränssnitt</value>
+        <comment />
+    </data>
+  <data name="TitleVideo" xml:space="preserve">
+        <value>Video</value>
+    </data>
+  <data name="TitleWallpaper" xml:space="preserve">
+        <value>Bakgrundsbild</value>
+    </data>
+  <data name="WallpaperDir.Header" xml:space="preserve">
+        <value>Bakgrundskatalog</value>
+    </data>
+  <data name="WallpaperDirMoveExisting.Content" xml:space="preserve">
+        <value>Flytta befintliga bakgrundsbilder till en ny mapp</value>
+    </data>
+  <data name="WallpaperInput.Header" xml:space="preserve">
+        <value>Bakgrundssinmatning</value>
+    </data>
+  <data name="WallpaperLayout.Header" xml:space="preserve">
+        <value>Bakgrundsslayout</value>
+    </data>
+  <data name="WallpaperPlaybackGroup.Header" xml:space="preserve">
+        <value>Bakgrundsuppspelning</value>
+    </data>
+  <data name="TitleWarning" xml:space="preserve">
+        <value>Varning</value>
+        <comment />
+    </data>
+  <data name="WebBrowser.Header" xml:space="preserve">
+        <value>Webbläsare</value>
+        <comment />
+    </data>
+  <data name="WebBrowserDiskCache.Header" xml:space="preserve">
+        <value>Diskcache</value>
+        <comment />
+    </data>
+  <data name="TitleWebBrowserEngine" xml:space="preserve">
+        <value>Motor</value>
+        <comment />
+    </data>
+  <data name="TitleWebpageLoad" xml:space="preserve">
+        <value>Ladda webbsidan</value>
+        <comment />
+    </data>
+  <data name="Startup.Header" xml:space="preserve">
+        <value>Starta med Windows</value>
+    </data>
+  <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
+        <value>Är du säker på att du vill ta bort den här bakgrunden från biblioteket?</value>
+    </data>
+  <data name="Audio.Description" xml:space="preserve">
+        <value>Volymnivå för alla bakgrunder.</value>
+    </data>
+  <data name="Audio.Header" xml:space="preserve">
+        <value>Huvudvolym</value>
+    </data>
+  <data name="WallpaperFitFill.Content" xml:space="preserve">
+        <value>Fyll</value>
+    </data>
+  <data name="WallpaperFitNone.Content" xml:space="preserve">
+        <value>Ingen</value>
+    </data>
+  <data name="WallpaperFitUniform.Content" xml:space="preserve">
+        <value>Uniform</value>
+        <comment>not sure</comment>
+    </data>
+  <data name="WallpaperFitUniformToFill.Content" xml:space="preserve">
+        <value>Enhetlig fyllning</value>
+    </data>
+  <data name="WallpaperFit.Description" xml:space="preserve">
+        <value>Algoritm för skalning av bakgrundsbilder.</value>
+    </data>
+  <data name="WallpaperFit.Header" xml:space="preserve">
+        <value>Choose a fit</value>
+        <comment>not sure about this one</comment>
+    </data>
+  <data name="PreviewWallpaper.Text" xml:space="preserve">
+        <value>Förhandsgranska bakgrundsbild</value>
+    </data>
+  <data name="TextAllFiles" xml:space="preserve">
+        <value>Alla Filer</value>
+    </data>
+  <data name="Debug.Header" xml:space="preserve">
+        <value>Felsökning</value>
+        <comment>may not be correct</comment>
+    </data>
+  <data name="Debug.Description" xml:space="preserve">
+        <value>Visa utvecklarmenyn</value>
+    </data>
+  <data name="TextFileNotFound" xml:space="preserve">
+        <value>Filen finns inte</value>
+    </data>
+  <data name="TextPicture" xml:space="preserve">
+        <value>Bild</value>
+    </data>
+  <data name="TextUnsupportedFile" xml:space="preserve">
+        <value>Filformatet stöds inte</value>
+    </data>
+  <data name="TextProcessingWallpaper" xml:space="preserve">
+        <value>Processing</value>
+        <comment>Don't know this one, someone can come and finish it</comment>
+    </data>
+  <data name="Title.Text" xml:space="preserve">
+        <value>Titel</value>
+    </data>
+  <data name="Description.Text" xml:space="preserve">
+        <value>Beskrivning</value>
+    </data>
+  <data name="TextOK" xml:space="preserve">
+        <value>OK</value>
+        <comment />
+    </data>
+  <data name="Cancel.Content" xml:space="preserve">
+        <value>Avbryt</value>
+    </data>
+  <data name="TextCreatePreview" xml:space="preserve">
+        <value>Skapa förhandsgranskning</value>
+    </data>
+  <data name="GifPlayer.Header" xml:space="preserve">
+        <value>Gif Spelare</value>
+    </data>
+  <data name="GifPlayer.Description" xml:space="preserve">
+        <value>Välj den spelare som används för gif-bakgrundsbilden.</value>
+    </data>
+  <data name="TextFeatureMissing" xml:space="preserve">
+        <value>Vissa funktioner är inte tillgängliga i den här versionen av Lively.</value>
+    </data>
+  <data name="ControlPanel.Subtitle" xml:space="preserve">
+        <value>Klicka här för att hantera bakgrundsbilder.</value>
+    </data>
+  <data name="StoreReview.Content" xml:space="preserve">
+        <value>Tycker du om att använda Lively? Lämna en recension :)</value>
+    </data>
+  <data name="Store.Header" xml:space="preserve">
+        <value>Store</value>
+        <comment>For different version of Lively, example: Microsoft Store</comment>
+    </data>
+  <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
+        <value>Din Windows N/KN-version kräver nedladdning av ytterligare codecs för att stödja videouppspelning i bakgrundsbilder.</value>
+    </data>
+  <data name="License.Header" xml:space="preserve">
+        <value>Licens</value>
+    </data>
+  <data name="PrivacyPolicy.Header" xml:space="preserve">
+        <value>Sekretesspolicy</value>
+    </data>
+  <data name="AudioFocused.Content" xml:space="preserve">
+        <value>Spela upp ljudet endast när skrivbordet är fokuserat</value>
+    </data>
+  <data name="ExportLogs.Description" xml:space="preserve">
+        <value>Skapa loggfil</value>
+    </data>
+  <data name="ExportLogs.Header" xml:space="preserve">
+        <value>Loggfil</value>
+    </data>
+  <data name="ReportBug.Header" xml:space="preserve">
+        <value>Rapportera fel</value>
+    </data>
+  <data name="VideoHardwareDecode.Header" xml:space="preserve">
+        <value>GPU avkodning</value>
+    </data>
+  <data name="VideoHardwareDecode.Description" xml:space="preserve">
+        <value>Använd maskinvaruacceleration när det är möjligt.</value>
+    </data>
+  <data name="DescriptionPleaseStop" xml:space="preserve">
+        <value>Vänligen avbryt innan du fortsätter.</value>
+    </data>
+  <data name="EditWallpaper.Text" xml:space="preserve">
+        <value>Redigera</value>
+    </data>
+  <data name="TitleLocation" xml:space="preserve">
+        <value>Plats</value>
+    </data>
+  <data name="TitleSkipConfirm" xml:space="preserve">
+        <value>Hoppa över bekräftelse</value>
+    </data>
+  <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
+        <value>Ange valfria kommandsargument</value>
+    </data>
+  <data name="GitHubStar.Content" xml:space="preserve">
+        <value>Visa kärlek genom att ge en stjärna</value>
+    </data>
+  <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
+        <value>Inkompatibelt program har hittats, tematisering i aktivitetsfältet är inaktiverad.</value>
+    </data>
+  <data name="TaskbarTheme.Header" xml:space="preserve">
+        <value>Tema för aktivitetsfältet</value>
+    </data>
+  <data name="LockscreenPicture.Header" xml:space="preserve">
+        <value>Bild på låsskärmen</value>
+    </data>
+  <data name="DesktopPicture.Header" xml:space="preserve">
+        <value>Skrivbordsbild</value>
+    </data>
+  <data name="LockscreenPicture.Description" xml:space="preserve">
+        <value>Ställ in en bild från en animerad bakgrundsbild som bakgrundsbild på låsskärmen.</value>
+    </data>
+  <data name="DesktopPicture.Description" xml:space="preserve">
+        <value>Ställ in en bild av den animerade bakgrundsbilden som skrivbordsunderlägg.</value>
+    </data>
+  <data name="TaskbarTheme.Description" xml:space="preserve">
+        <value>Ändra utseendet på systemets aktivitetsfält.</value>
+    </data>
+  <data name="TaskbarThemeBlur.Content" xml:space="preserve">
+        <value>Suddig</value>
+    </data>
+  <data name="TaskbarThemeClear.Content" xml:space="preserve">
+        <value>Klart</value>
+    </data>
+  <data name="TaskbarThemeColor.Content" xml:space="preserve">
+        <value>Färg</value>
+    </data>
+  <data name="TaskbarThemeFluent.Content" xml:space="preserve">
+        <value>Flytande</value>
+    </data>
+  <data name="TaskbarThemeWallpaper.Content" xml:space="preserve">
+        <value>Bakgrundsbild</value>
+    </data>
+  <data name="TaskbarThemeWallpaperFluent.Content" xml:space="preserve">
+        <value>Wallpaper Fluent</value>
+        <comment>Don't know what this means, someone can some and correct it for me</comment>
+    </data>
+  <data name="System.Header" xml:space="preserve">
+        <value>System</value>
+        <comment />
+    </data>
+  <data name="SourceCode.Header" xml:space="preserve">
+        <value>Källkod</value>
+    </data>
+  <data name="TitleScreensaver" xml:space="preserve">
+        <value>Skärmsläckare</value>
+    </data>
+  <data name="TipScreensaver" xml:space="preserve">
+        <value>Efter den valda inaktivitetsperioden kan du använda den aktuella tapeten som skärmsläckare.</value>
+    </data>
+  <data name="TextHours" xml:space="preserve">
+        <value>timmar</value>
+    </data>
+  <data name="TextMinutes" xml:space="preserve">
+        <value>minuter</value>
+    </data>
+  <data name="TextLearnMore" xml:space="preserve">
+        <value>Läs mer</value>
+    </data>
+  <data name="DescOledScreensaverNotice" xml:space="preserve">
+        <value>De flesta moderna LCD- och LED-skärmar lider inte av problemet med inbränning och därför kan alla bakgrunder användas som skärmsläckare. För OLED-, plasma- eller CRT-skärmar som är känsliga för inbränning rekommenderas det att använda bakgrunder med regelbundna rörelser och ett övergripande mörkt tema som antas minska inbränningen, men den här funktionen är oprövad och dess effektivitet kan inte garanteras. Huvudsyftet med Livelys skärmsläckare är att lägga till ytterligare ett lager av anpassning till din dator, använd skärmsläckare som skydd mot inbränning på egen risk!</value>
+    </data>
+  <data name="TextChangeWallpaper" xml:space="preserve">
+        <value>Byt bakgrundsbild</value>
+    </data>
+  <data name="TextLastChecked" xml:space="preserve">
+        <value>Senast kontrollerat</value>
+    </data>
+  <data name="TitleUpdates" xml:space="preserve">
+        <value>Uppdatering</value>
+    </data>
+  <data name="CommunityPage.Content" xml:space="preserve">
+        <value>Diskussionsforum online</value>
+    </data>
+  <data name="DocumentationPage.Content" xml:space="preserve">
+        <value>API-dokumentation och hjälp</value>
+    </data>
+  <data name="OfficialWebpage.Content" xml:space="preserve">
+        <value>Officiell hemsida för Lively Wallpaper</value>
+    </data>
+  <data name="ReportBugPage.Content" xml:space="preserve">
+        <value>Rapportera ett problem med programvaran</value>
+    </data>
+  <data name="DescSupperDev" xml:space="preserve">
+        <value>Visa ditt stöd genom att köpa kaffe till utvecklaren</value>
+    </data>
+  <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
+        <value>Du är på väg att byta till en betaversion (utvecklare) av Lively.Uppdateringarna kommer att vara frekventa och kan innehålla buggar!</value>
+    </data>
+  <data name="TextSwitchBranchDev" xml:space="preserve">
+        <value>Byt till beta versionen (För utveckling)</value>
+    </data>
+  <data name="TextSwitchBranchOfficial" xml:space="preserve">
+        <value>Byt till stabila versionen (Standard versionen)</value>
+    </data>
+  <data name="TipSwitchSoftwareBranch" xml:space="preserve">
+        <value>Ändra programvaruversion från beta till stabil eller vice versa.</value>
+    </data>
+  <data name="TitleChangelog" xml:space="preserve">
+        <value>Ändringslogg</value>
+    </data>
+  <data name="PauseAlgorithmTypeExclusiveMode.Content" xml:space="preserve">
+        <value>Direct3D</value>
+        <comment />
+    </data>
+  <data name="TitleScreensaverLockOnResume" xml:space="preserve">
+        <value>Vid återupptagande visas inloggningsskärmen</value>
+    </data>
+  <data name="SourceWebsite.Text" xml:space="preserve">
+        <value>Hemsida</value>
+        <comment />
+    </data>
+  <data name="AboutMenu.Text" xml:space="preserve">
+        <value>Om</value>
+        <comment />
+    </data>
+</root>

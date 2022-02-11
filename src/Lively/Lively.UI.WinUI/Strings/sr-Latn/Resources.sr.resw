@@ -1,0 +1,950 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="WallpaperDirGroup.Header" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="FastUI.Header" xml:space="preserve">
+    <value>Fast startup</value>
+  </data>
+  <data name="FastUI.Description" xml:space="preserve">
+    <value>Keep User Interface running for faster startup</value>
+  </data>
+  <data name="WindowsSettingsColor.Content" xml:space="preserve">
+    <value>Windows color settings</value>
+  </data>
+  <data name="AppThemeDark.Content" xml:space="preserve">
+    <value>Dark</value>
+  </data>
+  <data name="AppThemeLight.Content" xml:space="preserve">
+    <value>Light</value>
+  </data>
+  <data name="AppThemeSystem.Content" xml:space="preserve">
+    <value>System</value>
+  </data>
+  <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
+    <value>Laptops</value>
+  </data>
+  <data name="DeveloperGroup.Header" xml:space="preserve">
+    <value>Developer</value>
+  </data>
+  <data name="AppearanceBehaviour.Header" xml:space="preserve">
+    <value>Appearance &amp; behavior</value>
+  </data>
+  <data name="TitleGallery" xml:space="preserve">
+    <value>Gallery</value>
+  </data>
+  <data name="ActiveWallpapers.Label" xml:space="preserve">
+    <value>Active Wallpaper(s)</value>
+  </data>
+  <data name="AboutMe.Text" xml:space="preserve">
+    <value>Hi, I'm Dani John also known as rocksdanister. I developed Lively a Free and open-source (FOSS) wallpaper application. Thanks for taking the time to look at my work.</value>
+  </data>
+  <data name="LicenseLink.Content" xml:space="preserve">
+    <value>Software license</value>
+  </data>
+  <data name="AttributionLink.Content" xml:space="preserve">
+    <value>Third party software notice</value>
+  </data>
+  <data name="PrivacyPolicyLink.Content" xml:space="preserve">
+    <value>Data collection policy</value>
+  </data>
+  <data name="AddWallpaperDrop.Text" xml:space="preserve">
+    <value>Add wallpaper</value>
+  </data>
+ <data name="ComingSoon.Text" xml:space="preserve">
+    <value>Coming soon</value>
+  </data>
+  <data name="TextOpen.Content" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="TextSave.Content" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
+    <value>Izaberi fajl ili napiši adresu sajta od pozadine.</value>
+  </data>
+  <data name="DescriptionAppRules" xml:space="preserve">
+    <value>Pozadinsko plej-bek ponašanje bazirano od aplikacije.</value>
+  </data>
+  <data name="DescriptionCancelQuestion" xml:space="preserve">
+    <value>Da li si siguran da zeliš otkazati?</value>
+  </data>
+  <data name="DescriptionDeleteConfirmation" xml:space="preserve">
+    <value>Da li si siguran da zeliš da zauvek izbrišeš ovu pozadinu sa diska?</value>
+  </data>
+  <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
+    <value>Da li si siguran da zeliš da izbrišeš ovu pozadinu iz biblioteke?</value>
+  </data>
+  <data name="DragDropFile.Text" xml:space="preserve">
+    <value>Jednostavno prevuci i pusti fajl u biblioteku.</value>
+  </data>
+  <data name="DescriptionExternalAppWarning" xml:space="preserve">
+    <value>Otvaraš spoljašnu aplikaciju kao pozadinu.Zlonamerne aplikacije mogu da ubace viruse... i oštete vaš računar.Jedino prihvatajte ako aplikacija dolazi od proverenog izvora.</value>
+  </data>
+  <data name="DescriptionMinimizedTray" xml:space="preserve">
+    <value>Lively je minimiziran u računaru, desnim klikom na lively ikonicu kako bi nastavio.</value>
+  </data>
+  <data name="DescriptionPleaseRestartLively" xml:space="preserve">
+    <value>Molim vas pokrenite ponovo Lively kako bi promene dobile efekat.</value>
+  </data>
+  <data name="DescriptionRecordStart" xml:space="preserve">
+    <value>Stisni da započneš snimanje.</value>
+  </data>
+  <data name="DescriptionRestoringWallpaper" xml:space="preserve">
+    <value>Trenutno vraćam prethodne pozadine, molim vas sačekajte...</value>
+  </data>
+  <data name="DescriptionScreenLayout" xml:space="preserve">
+    <value>Izaberi monitor</value>
+  </data>
+  <data name="DescriptionUpdateAvailable" xml:space="preserve">
+    <value>Nova verzija softvera je dostupna!</value>
+  </data>
+  <data name="DescriptionWebpageLoad" xml:space="preserve">
+    <value>Unesi link vebsajta za učitavanje, shadertoy.com linkovi su podržani.</value>
+  </data>
+  <data name="DescriptionWelcomeWizard" xml:space="preserve">
+    <value>Ovo će vam pomoći da započnete sa Lively.</value>
+  </data>
+  <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
+    <value>Neuspešna nadogradnja; pokusaj da skines instaler sa:https://github.com/rocksdanister/lively/releases</value>
+  </data>
+  <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
+    <value>Oštećen pozadinski fajl, pokušaj da ponovo preuzmeš.</value>
+  </data>
+  <data name="LivelyExceptionGeneral" xml:space="preserve">
+    <value>Ups... Izgleda da je nešto napravilo grešku :(Da bi bolje razumeo ovu grešku i da rešiš problem, podeli evidenciju aplikacije(log) sa razvijačem aplikacije.Uputstva za podelu evidencije:https://github.com/rocksdanister/lively/wiki</value>
+  </data>
+  <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
+    <value>Lively ne može da radi normlano sa Windows Visok Kontrast režimom!Iskljuci Visok Kontrast režim i pokušaj ponovo</value>
+  </data>
+  <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
+    <value>Medijski plej-bek neuspešan :(Pokušaj da promeniš video-plejer u Lively podešavanjima.Da bi bolje razumeo problem i mogao da rešiš grešku podeli evidenciju(log) fajl i pošalji programeru.Instrukcije za deljenje evidencije:https://github.com/rocksdanister/lively/wiki</value>
+  </data>
+  <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
+    <value>Nije Lively pozadinski fajl.</value>
+  </data>
+  <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
+    <value>Lively nije ugašen normalno, pali se u sigurnom režimu.Da li želiš da povratiš prethodnu pozadinu?</value>
+  </data>
+  <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
+    <value>Izgleda da neka podešavanja moraju da se promene da bi Lively radio:
+1. Pritisni Windows dugme + R da bi otvorio Run,
+2. Ukukucaj SystemPropertiesPerfomance.exe u Run, stisni "OK" da otvoris Podešavanja Performansa.
+3. Dozvoli/Proveri "Animate controls and elements inside windows" (Ako je već štiklirano, pritisni opet da onemogućiš i opet štikliraj) i pristisni "Apply".
+4. Klikni "Apply" i onda pritisni "OK" da zatvoriš prozor.
+
+Ako imas Windows 7 samo štikliraj - "Adjust for best appearance &amp;amp; onda "Apply".
+Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
+(Ne radi na nekim windows 10 sistemima)</value>
+  </data>
+  <data name="TextAdd" xml:space="preserve">
+    <value>Dodaj</value>
+  </data>
+  <data name="TextAllFiles" xml:space="preserve">
+    <value>Svi fajlovi</value>
+  </data>
+  <data name="Application.Header" xml:space="preserve">
+    <value>Aplikacija</value>
+  </data>
+  <data name="Attribution.Header" xml:space="preserve">
+    <value>Pripisivanje</value>
+  </data>
+  <data name="Author.Text" xml:space="preserve">
+    <value>Autor</value>
+  </data>
+  <data name="TextBack" xml:space="preserve">
+    <value>Nazad</value>
+  </data>
+  <data name="TextBrowse" xml:space="preserve">
+    <value>Pretrazi</value>
+  </data>
+  <data name="TextClose" xml:space="preserve">
+    <value>Zatvori</value>
+  </data>
+  <data name="CloseWallpapers.Label" xml:space="preserve">
+    <value>Zatvori pozadinu</value>
+  </data>
+  <data name="TextCompleted" xml:space="preserve">
+    <value>Završeno!</value>
+  </data>
+  <data name="TextConvertVideo" xml:space="preserve">
+    <value>Prebaci u video</value>
+  </data>
+  <data name="Customise.Text" xml:space="preserve">
+    <value>Izmeni</value>
+  </data>
+  <data name="CustomiseWallpaper.Label" xml:space="preserve">
+    <value>Izmeni pozadinu</value>
+  </data>
+  <data name="DeleteWallpaper.Text" xml:space="preserve">
+    <value>Izbriši pozadinu</value>
+  </data>
+  <data name="DisplayPauseRuleAllScreen.Content" xml:space="preserve">
+    <value>Svi Ekrani</value>
+  </data>
+  <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
+    <value>Po ekranu</value>
+  </data>
+  <data name="TextDownload" xml:space="preserve">
+    <value>Preuzmi</value>
+  </data>
+  <data name="TextError" xml:space="preserve">
+    <value>Greška</value>
+  </data>
+  <data name="TextExit" xml:space="preserve">
+    <value>Izađi</value>
+  </data>
+  <data name="ExportWallpaperZip.Text" xml:space="preserve">
+    <value>Pretvori lively u .zip</value>
+  </data>
+  <data name="TextFileNotFound" xml:space="preserve">
+    <value>Fajl nije pronađen</value>
+  </data>
+  <data name="TextGIF" xml:space="preserve">
+    <value>Animirani GIF</value>
+  </data>
+  <data name="TextGo" xml:space="preserve">
+    <value>Kreni</value>
+  </data>
+  <data name="TextHelpTranslate" xml:space="preserve">
+    <value>Pomozi oko prevoda za Lively</value>
+  </data>
+  <data name="TextInstall" xml:space="preserve">
+    <value>Instaliraj</value>
+  </data>
+  <data name="TextKeyboard.Content" xml:space="preserve">
+    <value>Tastatura</value>
+  </data>
+  <data name="TextmoreInfo" xml:space="preserve">
+    <value>Informacije</value>
+  </data>
+  <data name="TextMoreWallpapers" xml:space="preserve">
+    <value>Vise pozadina</value>
+  </data>
+  <data name="TextMouse.Content" xml:space="preserve">
+    <value>Miš</value>
+  </data>
+  <data name="MouseInteractOnDesktop.Content" xml:space="preserve">
+    <value>Uticaj miša kada je aplikacija fokusirana</value>
+  </data>
+  <data name="TextNext" xml:space="preserve">
+    <value>Sledeće</value>
+  </data>
+  <data name="TextNo" xml:space="preserve">
+    <value>Ne</value>
+  </data>
+  <data name="TextOff.Content" xml:space="preserve">
+    <value>Ugašeno</value>
+  </data>
+  <data name="TextOn.Content" xml:space="preserve">
+    <value>Upaljeno</value>
+  </data>
+  <data name="TextOnline" xml:space="preserve">
+    <value>Povezan</value>
+  </data>
+  <data name="TextOpenLively" xml:space="preserve">
+    <value>Otvori Lively</value>
+  </data>
+  <data name="PauseAlgorithmTypeAllProcess.Content" xml:space="preserve">
+    <value>Svi procesi</value>
+  </data>
+  <data name="PauseAlgorithmTypeForegroundProcess.Content" xml:space="preserve">
+    <value>Pozadinski procesi</value>
+  </data>
+  <data name="TextPauseWallpapers" xml:space="preserve">
+    <value>Pauziraj pozadinu</value>
+  </data>
+  <data name="TextPerformanceKill.Content" xml:space="preserve">
+    <value>Stopiraj</value>
+  </data>
+  <data name="TextPerformanceNone.Content" xml:space="preserve">
+    <value>Nista</value>
+  </data>
+  <data name="TextPerformancePause.Content" xml:space="preserve">
+    <value>Pauziraj</value>
+  </data>
+  <data name="TextPicture" xml:space="preserve">
+    <value>Slika</value>
+  </data>
+  <data name="PreviewWallpaper.Text" xml:space="preserve">
+    <value>Pregled pozadine</value>
+  </data>
+  <data name="TextProcessingWallpaper" xml:space="preserve">
+    <value>Procesovanje</value>
+  </data>
+  <data name="TextRemove" xml:space="preserve">
+    <value>Izbriši</value>
+  </data>
+  <data name="TextRule" xml:space="preserve">
+    <value>Pravilo</value>
+  </data>
+  <data name="TextScreen" xml:space="preserve">
+    <value>Ekran</value>
+  </data>
+  <data name="TextSearch" xml:space="preserve">
+    <value>Pretraži</value>
+  </data>
+  <data name="SetWallpaper.Text" xml:space="preserve">
+    <value>Postavi kao pozadinu</value>
+  </data>
+  <data name="ShowOnDisk.Text" xml:space="preserve">
+    <value>Otvori lokaciju fajla</value>
+  </data>
+  <data name="WallpaperSource.Text" xml:space="preserve">
+    <value>Izvor</value>
+  </data>
+  <data name="TextStart" xml:space="preserve">
+    <value>Početak</value>
+  </data>
+  <data name="TextStop" xml:space="preserve">
+    <value>Zaustavi</value>
+  </data>
+  <data name="TextSupport.Content" xml:space="preserve">
+    <value>Podrška</value>
+  </data>
+  <data name="TextTags" xml:space="preserve">
+    <value>Tagovi</value>
+  </data>
+  <data name="TextTileSizeLarge" xml:space="preserve">
+    <value>Ogromno</value>
+  </data>
+  <data name="TextTileSizeNormal" xml:space="preserve">
+    <value>Normalno</value>
+  </data>
+  <data name="TextTileSizeSmall" xml:space="preserve">
+    <value>Malo</value>
+  </data>
+  <data name="TextUIHeadless" xml:space="preserve">
+    <value>Bezglav</value>
+  </data>
+  <data name="TextUILite" xml:space="preserve">
+    <value>Lako</value>
+  </data>
+  <data name="TextUINormal" xml:space="preserve">
+    <value>Normalno</value>
+  </data>
+  <data name="TextUnsupportedFile" xml:space="preserve">
+    <value>Format fajla nije podržan</value>
+  </data>
+  <data name="TextUpdateAvailable" xml:space="preserve">
+    <value>Nadogradnja dostupna!</value>
+  </data>
+  <data name="TextUpdateCheck" xml:space="preserve">
+    <value>Proveri za nadogradnju</value>
+  </data>
+  <data name="TextupdateCheckFail" xml:space="preserve">
+    <value>Neuspena provera novog softver.</value>
+  </data>
+  <data name="TextUpdateChecking" xml:space="preserve">
+    <value>Provera za novije verzije aplikacije.</value>
+  </data>
+  <data name="TextUpdateUptodate" xml:space="preserve">
+    <value>Najnovija verzija aplikacije je u upotrebi!</value>
+  </data>
+  <data name="TextVideo" xml:space="preserve">
+    <value>Video</value>
+  </data>
+  <data name="WallpaperFitFill.Content" xml:space="preserve">
+    <value>Popuni</value>
+  </data>
+  <data name="WallpaperFitNone.Content" xml:space="preserve">
+    <value>Nema</value>
+  </data>
+  <data name="WallpaperFitUniform.Content" xml:space="preserve">
+    <value>Uniform</value>
+  </data>
+  <data name="WallpaperFitUniformToFill.Content" xml:space="preserve">
+    <value>Uniform Fill</value>
+  </data>
+  <data name="WallpaperLayoutDuplicate.Content" xml:space="preserve">
+    <value>Udvostruči pozadinu.</value>
+  </data>
+  <data name="WallpaperLayoutPerScreen.Content" xml:space="preserve">
+    <value>Samo izabran ekran</value>
+  </data>
+  <data name="WallpaperLayoutSpan.Content" xml:space="preserve">
+    <value>Razmak izmedju ekrana</value>
+  </data>
+  <data name="WallpaperType.Text" xml:space="preserve">
+    <value>Tip</value>
+  </data>
+  <data name="Website.Header" xml:space="preserve">
+    <value>Website</value>
+  </data>
+  <data name="TextWebStream" xml:space="preserve">
+    <value>Web Stream</value>
+  </data>
+  <data name="TextWelcome" xml:space="preserve">
+    <value>Dobrodošao</value>
+  </data>
+  <data name="TextYes" xml:space="preserve">
+    <value>Da</value>
+  </data>
+  <data name="VideoPlayer.Header" xml:space="preserve">
+    <value>Video Plejer</value>
+  </data>
+  <data name="AddWallpaperFileBrowse.Description" xml:space="preserve">
+    <value>Pogledaj sve podržane formate.</value>
+  </data>
+  <data name="EnterUrl.Description" xml:space="preserve">
+    <value>Postavi web url kao pozadinu.</value>
+  </data>
+  <data name="AppFocus.Description" xml:space="preserve">
+    <value>Postavi šta da radi aplikacija kada je drugi prozor fokusiran.</value>
+  </data>
+  <data name="AppFullScreen.Description" xml:space="preserve">
+    <value>Postavi šta da radi aplikacija kada je igirca ili aplikacija u fullscreenu.</value>
+  </data>
+  <data name="AppRules.Description" xml:space="preserve">
+    <value>Postavi drugačije plej-bek opcije kada je aplikacija fokusirana.</value>
+  </data>
+  <data name="TipAppTheme" xml:space="preserve">
+    <value>Lively menja izgled windowsa u skladu sa aplikacijom da vidis podešavanja idi na</value>
+  </data>
+  <data name="Audio.Description" xml:space="preserve">
+    <value>Jačina zvuka pozadina.</value>
+  </data>
+  <data name="BatteryPower.Description" xml:space="preserve">
+    <value>(Sa sistemima sa baterijom(laptop)) Postavi drugačije plej-bek opcije kada je isključeno sa punjača</value>
+  </data>
+  <data name="BrowserDebuggingPort.Description" xml:space="preserve">
+    <value>Unesite port za otklanjanje grešaka u pozadinama veb stranica, potrebno je ponovno pokretanje pregledača da bi promene stupile na snagu. Kada budete spremni, idite na http: // localhost: broj porta za pristup konzoli za programere. Unesi port za uklanjanje grešaka pozadine, ponovno pokretanje pretraživača je obavezno da se promene dobile efekat.</value>
+  </data>
+  <data name="Debug.Description" xml:space="preserve">
+    <value>Pokaži meni za developere</value>
+  </data>
+  <data name="DisplayPauseRule.Description" xml:space="preserve">
+    <value>Po: Pauziraj pozadinu na ekranu samo kad je aplikacija u fullscrenu ili fokusirana.Sve: Pauziraj pozadinu na svim ekranima ako je aplikacija fokusarina ili u fullscrenu</value>
+  </data>
+  <data name="TipHideSysTray" xml:space="preserve">
+    <value>Ikona vidljiva u sistemskom platnu(srelica koja pokazuje na gore u donjem uglu), Lively će nastaviti raditi sa sakrivenom ikonom.</value>
+  </data>
+  <data name="Language.Description" xml:space="preserve">
+    <value>Livley će se restartovati kako bi promene jezika dobila efekat.</value>
+  </data>
+  <data name="TipLivelySetupOnClose" xml:space="preserve">
+    <value>Završi preuzimanje da bi nastavio.</value>
+  </data>
+  <data name="PauseAlgorithm.Description" xml:space="preserve">
+    <value>Prvi plan: Lako, samo provera proces sa jednim jezgrom koje je u prvom planu da odredi ponašanje plej-beka pozadine.Svi Procesi: Tezi, Skenira sve procese da odredi plej-bek ponašanje.</value>
+  </data>
+  <data name="StreamWallpaperDetect.Description" xml:space="preserve">
+    <value>Ako je podržan video link detektovan koristi video plejer umesto učitavanja stranice.</value>
+  </data>
+  <data name="StreamWallpaperVideoQuality.Description" xml:space="preserve">
+    <value>Izaberi željenu rezoluciji videa(pozadine).</value>
+  </data>
+  <data name="TipTileSize" xml:space="preserve">
+    <value>Veličina pločica pozadinske Biblioteke.</value>
+  </data>
+  <data name="TipUIMode" xml:space="preserve">
+    <value>Za slabije računare izaberite Lak mod.</value>
+  </data>
+  <data name="VideoPlayer.Description" xml:space="preserve">
+    <value>Izaberi plejer za puštanje videa.</value>
+  </data>
+  <data name="WallpaperDir.Description" xml:space="preserve">
+    <value>Lokacija za čuvanje svih pozadina.</value>
+  </data>
+  <data name="WallpaperFit.Description" xml:space="preserve">
+    <value>Algoritam određivanja veličine pozadine.</value>
+  </data>
+  <data name="WallpaperInput.Description" xml:space="preserve">
+    <value>Izaberi načine za interakciju sa pozadinu</value>
+  </data>
+  <data name="WallpaperLayout.Description" xml:space="preserve">
+    <value>Kako je pozadina nameštena sa konektovanim monitorima.</value>
+  </data>
+  <data name="TipWallpaperPlayback" xml:space="preserve">
+    <value>Pauziraj plej-bek kada pozadina nije fokusirana.</value>
+  </data>
+  <data name="WebBrowserDiskCache.Description" xml:space="preserve">
+    <value>Čuvaj privremen fajlove u disku umesto ram memorije, podešavanja se vraćaju kada se pretraživač ponovo pokrene.</value>
+  </data>
+  <data name="WebBrowser.Description" xml:space="preserve">
+    <value>CEF(Chronium Embedded Framework) je lagan chromium sistem. Edge je ugradjen pretraživač za Windows 10.</value>
+  </data>
+  <data name="Startup.Description" xml:space="preserve">
+    <value>Lively mora da radi u pozadini za pozadinski plej-bek.</value>
+  </data>
+  <data name="About.Label" xml:space="preserve">
+    <value>O Lively-ju</value>
+  </data>
+  <data name="AddWallpaper.Label" xml:space="preserve">
+    <value>Dodaj pozadinu</value>
+  </data>
+  <data name="AppFocus.Header" xml:space="preserve">
+    <value>Aplikacija je fokusirana</value>
+  </data>
+  <data name="AppFullScreen.Header" xml:space="preserve">
+    <value>Aplikacija je u Fullscreenu</value>
+  </data>
+  <data name="TitleAppName" xml:space="preserve">
+    <value>Lively pozadina</value>
+  </data>
+  <data name="AppRules.Header" xml:space="preserve">
+    <value>Pravila aplikacije</value>
+  </data>
+  <data name="AppTheme.Header" xml:space="preserve">
+    <value>Tema</value>
+  </data>
+  <data name="AudioGroup.Header" xml:space="preserve">
+    <value>Audio</value>
+  </data>
+  <data name="Audio.Header" xml:space="preserve">
+    <value>Jačina zvuka</value>
+  </data>
+  <data name="TitleAudioPlayOnScreen" xml:space="preserve">
+    <value>Pusti audio na ekranu.</value>
+  </data>
+  <data name="BatteryPower.Header" xml:space="preserve">
+    <value>Kada je na snazi baterije</value>
+  </data>
+  <data name="TitleBrowseFile" xml:space="preserve">
+    <value>Pretraži za video, gif, stranicu sajta... fajl za postavljanje kao pozadinu</value>
+  </data>
+  <data name="BrowserDebuggingPort.Header" xml:space="preserve">
+    <value>Port za otklanjanje grešaka</value>
+  </data>
+  <data name="Community.Header" xml:space="preserve">
+    <value>Zajednica</value>
+  </data>
+  <data name="Debug.Header" xml:space="preserve">
+    <value>Otklanjanje grešaka</value>
+  </data>
+  <data name="TitleDeleteConfirmation" xml:space="preserve">
+    <value>Potvrdi brisanje</value>
+  </data>
+  <data name="DisplayPauseRule.Header" xml:space="preserve">
+    <value>Prikaži Pravilo o Pauziranju</value>
+  </data>
+  <data name="Documentation.Header" xml:space="preserve">
+    <value>Dokumentacija</value>
+  </data>
+  <data name="TitleEnterUrl" xml:space="preserve">
+    <value>Unesi URL</value>
+  </data>
+  <data name="TitleGeneral" xml:space="preserve">
+    <value>Generalno</value>
+  </data>
+  <data name="Help.Label" xml:space="preserve">
+    <value>Pomoć</value>
+  </data>
+  <data name="HideSysTray.Header" xml:space="preserve">
+    <value>Ikona u pozadini sistema</value>
+  </data>
+  <data name="TitleInteraction" xml:space="preserve">
+    <value>Interakcija</value>
+  </data>
+  <data name="Language.Header" xml:space="preserve">
+    <value>Jezik</value>
+  </data>
+  <data name="TitleLibrary" xml:space="preserve">
+    <value>Biblioteka</value>
+  </data>
+  <data name="TitleLivelySetup" xml:space="preserve">
+    <value>Lively Instalacija</value>
+  </data>
+  <data name="TitleMisc" xml:space="preserve">
+    <value>Ostalo</value>
+  </data>
+  <data name="TitleMute" xml:space="preserve">
+    <value>Prigušiti Zvuk</value>
+  </data>
+  <data name="PauseAlgorithm.Header" xml:space="preserve">
+    <value>Algoritam Pauziranja</value>
+  </data>
+  <data name="TitlePerformance" xml:space="preserve">
+    <value>Performanse</value>
+  </data>
+  <data name="TitlePlaylist" xml:space="preserve">
+    <value>Plejlista</value>
+  </data>
+  <data name="PleaseWait.Text" xml:space="preserve">
+    <value>Molim vas sačekajte</value>
+  </data>
+  <data name="TitleScalingFit" xml:space="preserve">
+    <value>Skaliranje/Podesiti </value>
+  </data>
+  <data name="ControlPanel.Title" xml:space="preserve">
+    <value>Kontrolna tabla</value>
+  </data>
+  <data name="TitleSelectFile" xml:space="preserve">
+    <value>Izaberi Fajl</value>
+  </data>
+  <data name="TitleSettings" xml:space="preserve">
+    <value>Podešavanja</value>
+  </data>
+  <data name="StreamWallpaperVideoQuality.Header" xml:space="preserve">
+    <value>Tok</value>
+  </data>
+  <data name="StreamWallpaperDetect.Header" xml:space="preserve">
+    <value>Nadji Tok snimka</value>
+  </data>
+  <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
+    <value>Kvalitet videa</value>
+  </data>
+  <data name="TitleTileSize" xml:space="preserve">
+    <value>Veličina pločica</value>
+  </data>
+  <data name="TitleUIMode" xml:space="preserve">
+    <value>Korisnički interfejs</value>
+  </data>
+  <data name="TitleVideo" xml:space="preserve">
+    <value>Video</value>
+  </data>
+  <data name="TitleWallpaper" xml:space="preserve">
+    <value>Pozadina</value>
+  </data>
+  <data name="WallpaperDir.Header" xml:space="preserve">
+    <value>Lokacija pozadine</value>
+  </data>
+  <data name="WallpaperDirMoveExisting.Content" xml:space="preserve">
+    <value>Pomeri postojaću pozadinu u folder</value>
+  </data>
+  <data name="WallpaperFit.Header" xml:space="preserve">
+    <value>Prilagodi rezoluciji ekrana</value>
+  </data>
+  <data name="WallpaperInput.Header" xml:space="preserve">
+    <value>Pozadinski ulaz</value>
+  </data>
+  <data name="WallpaperLayout.Header" xml:space="preserve">
+    <value>Metod postavljanja</value>
+  </data>
+  <data name="WallpaperPlaybackGroup.Header" xml:space="preserve">
+    <value>Plej-bek pozadine</value>
+  </data>
+  <data name="TitleWarning" xml:space="preserve">
+    <value>Upozorenje</value>
+  </data>
+  <data name="WebBrowser.Header" xml:space="preserve">
+    <value>Web Pretrazivač</value>
+  </data>
+  <data name="WebBrowserDiskCache.Header" xml:space="preserve">
+    <value>Keš memorija diska</value>
+  </data>
+  <data name="TitleWebBrowserEngine" xml:space="preserve">
+    <value>Pogon</value>
+  </data>
+  <data name="TitleWebpageLoad" xml:space="preserve">
+    <value>Učitaj web stranicu</value>
+  </data>
+  <data name="Startup.Header" xml:space="preserve">
+    <value>Startuj sa Windowsom</value>
+  </data>
+  <data name="Title.Text" xml:space="preserve">
+    <value>Titl</value>
+  </data>
+  <data name="Description.Text" xml:space="preserve">
+    <value>Deskripcija</value>
+  </data>
+  <data name="TextOK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Cancel.Content" xml:space="preserve">
+    <value>Otkaži</value>
+  </data>
+  <data name="TextCreatePreview" xml:space="preserve">
+    <value>Napravi Pregled</value>
+  </data>
+  <data name="GifPlayer.Header" xml:space="preserve">
+    <value>Gif Player</value>
+  </data>
+  <data name="GifPlayer.Description" xml:space="preserve">
+    <value>Select the player used for gif wallpaper.</value>
+  </data>
+  <data name="TextFeatureMissing" xml:space="preserve">
+    <value>Some features are not available in this version of Lively.</value>
+  </data>
+  <data name="ControlPanel.Subtitle" xml:space="preserve">
+    <value>Click here to manage wallpapers.</value>
+  </data>
+  <data name="StoreReview.Content" xml:space="preserve">
+    <value>Do you enjoy using Lively? Leave a review :)</value>
+  </data>
+  <data name="Store.Header" xml:space="preserve">
+    <value>Store</value>
+    <comment>For different version of Lively, example: Microsoft Store</comment>
+  </data>
+  <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
+    <value>Your Windows N/KN version will require the download of additional codecs to support video playback in wallpapers.</value>
+  </data>
+  <data name="License.Header" xml:space="preserve">
+    <value>License</value>
+  </data>
+  <data name="PrivacyPolicy.Header" xml:space="preserve">
+    <value>Privacy Policy</value>
+  </data>
+  <data name="AudioFocused.Content" xml:space="preserve">
+    <value>Play audio only when desktop is focused</value>
+  </data>
+  <data name="ExportLogs.Description" xml:space="preserve">
+    <value>Create log report file.</value>
+  </data>
+  <data name="ExportLogs.Header" xml:space="preserve">
+    <value>Log File</value>
+  </data>
+  <data name="ReportBug.Header" xml:space="preserve">
+    <value>Report Bug</value>
+  </data>
+  <data name="VideoHardwareDecode.Header" xml:space="preserve">
+    <value>GPU Decode</value>
+  </data>
+  <data name="VideoHardwareDecode.Description" xml:space="preserve">
+    <value>Use hardware acceleration when possible.</value>
+  </data>
+  <data name="DescriptionPleaseStop" xml:space="preserve">
+  <value>Please stop before proceeding.</value>
+</data>
+  <data name="EditWallpaper.Text" xml:space="preserve">
+  <value>Edit</value>
+</data>
+  <data name="TitleLocation" xml:space="preserve">
+  <value>Location</value>
+</data>
+  <data name="TitleSkipConfirm" xml:space="preserve">
+  <value>Skip Confirmation</value>
+</data>
+  <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
+  <value>Enter optional commandline arguments</value>
+</data>
+  <data name="GitHubStar.Content" xml:space="preserve">
+    <value>Show some love by dropping a star</value>
+  </data>
+  <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
+    <value>Incompatible program found, taskbar theming disabled.</value>
+  </data>
+  <data name="TaskbarTheme.Header" xml:space="preserve">
+    <value>Taskbar Theme</value>
+  </data>
+  <data name="LockscreenPicture.Header" xml:space="preserve">
+    <value>Lockscreen Picture</value>
+  </data>
+  <data name="DesktopPicture.Header" xml:space="preserve">
+    <value>Desktop Picture</value>
+  </data>
+  <data name="LockscreenPicture.Description" xml:space="preserve">
+    <value>Set a picture of animated wallpaper as lockscreen wallpaper.</value>
+  </data>
+  <data name="DesktopPicture.Description" xml:space="preserve">
+    <value>Set a picture of animated wallpaper as desktop wallpaper.</value>
+  </data>
+  <data name="TaskbarTheme.Description" xml:space="preserve">
+    <value>Change system taskbar appearance.</value>
+  </data>
+  <data name="TaskbarThemeBlur.Content" xml:space="preserve">
+    <value>Blur</value>
+  </data>
+  <data name="TaskbarThemeClear.Content" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="TaskbarThemeColor.Content" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="TaskbarThemeFluent.Content" xml:space="preserve">
+    <value>Fluent</value>
+  </data>
+  <data name="TaskbarThemeWallpaper.Content" xml:space="preserve">
+    <value>Wallpaper</value>
+  </data>
+  <data name="TaskbarThemeWallpaperFluent.Content" xml:space="preserve">
+    <value>Wallpaper Fluent</value>
+  </data>
+  <data name="System.Header" xml:space="preserve">
+    <value>System</value>
+  </data>
+  <data name="SourceCode.Header" xml:space="preserve">
+    <value>Source Code</value>
+  </data>
+  <data name="TitleScreensaver" xml:space="preserve">
+    <value>Screensaver</value>
+  </data>
+  <data name="TipScreensaver" xml:space="preserve">
+    <value>After the selected inactivity period use the current wallpaper as your screensaver.</value>
+  </data>
+  <data name="TextHours" xml:space="preserve">
+    <value>hours</value>
+  </data>
+  <data name="TextMinutes" xml:space="preserve">
+    <value>minutes</value>
+  </data>
+  <data name="TextLearnMore" xml:space="preserve">
+    <value>Learn more</value>
+  </data>
+  <data name="DescOledScreensaverNotice" xml:space="preserve">
+    <value>Most modern LCD and LED displays do not suffer from burn-in issue and therefore any wallpaper can be used as screensaver.
+
+For OLED, Plasma or CRT displays which are susceptibe to burn-in it is advised to use wallpaper with regular motion and an overall dark theme which is supposed to mitigate burn-in but this feature is untested and its effectiveness cannot be guaranteed.
+
+The main purpose of Lively's screensavers is to add another layer of customization to your pc, use screensavers as burn-in protection at your own risk!</value>
+  </data>
+  <data name="TextChangeWallpaper" xml:space="preserve">
+    <value>Change Wallpapers</value>
+  </data>
+  <data name="TextLastChecked" xml:space="preserve">
+    <value>Last checked</value>
+  </data>
+  <data name="TitleUpdates" xml:space="preserve">
+    <value>Updates</value>
+  </data>
+  <data name="CommunityPage.Content" xml:space="preserve">
+    <value>Online discussion forum</value>
+  </data>
+  <data name="DocumentationPage.Content" xml:space="preserve">
+    <value>API documentation and help</value>
+  </data>
+  <data name="OfficialWebpage.Content" xml:space="preserve">
+    <value>Official webpage of Lively Wallpaper</value>
+  </data>
+  <data name="ReportBugPage.Content" xml:space="preserve">
+    <value>Report a problem with the software</value>
+  </data>
+  <data name="DescSupperDev" xml:space="preserve">
+    <value>Show support by buying the developer coffee</value>
+  </data>
+  <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
+    <value>You are about to change to beta (developer) build of Lively.
+Updates will be frequent and may contain bugs!</value>
+  </data>
+  <data name="TextSwitchBranchDev" xml:space="preserve">
+    <value>Switch to beta (Dev channel)</value>
+  </data>
+  <data name="TextSwitchBranchOfficial" xml:space="preserve">
+    <value>Switch to stable (Default channel)</value>
+  </data>
+  <data name="TipSwitchSoftwareBranch" xml:space="preserve">
+    <value>Change software release from beta to stable or vice versa.</value>
+  </data>
+  <data name="TitleChangelog" xml:space="preserve">
+    <value>Changelog</value>
+  </data>
+  <data name="PauseAlgorithmTypeExclusiveMode.Content" xml:space="preserve">
+    <value>Direct3D</value>
+  </data>
+  <data name="TitleScreensaverLockOnResume" xml:space="preserve">
+    <value>On resume, display logon screen</value>
+  </data>
+  <data name="SourceWebsite.Text" xml:space="preserve">
+    <value>Website</value>
+  </data>
+  <data name="AboutMenu.Text" xml:space="preserve">
+    <value>O Lively-ju</value>
+  </data>
+</root>

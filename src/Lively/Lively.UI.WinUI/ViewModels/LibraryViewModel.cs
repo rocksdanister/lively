@@ -174,7 +174,7 @@ namespace Lively.UI.WinUI.ViewModels
                     if (libItem != null)
                     {
                         libItem.WallpaperCategory = LocalizationUtil.GetLocalizedWallpaperCategory(libItem.LivelyInfo.Type);
-                        if (libItem.LivelyInfo.Type == WallpaperType.video || libItem.LivelyInfo.Type == WallpaperType.videostream)
+                        if (libItem.LivelyInfo.Type == WallpaperType.video || libItem.LivelyInfo.Type == WallpaperType.videostream || libItem.LivelyInfo.Type == WallpaperType.gif)
                         {
                             if (libItem.LivelyPropertyPath == null)
                             {

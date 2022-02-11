@@ -87,35 +87,30 @@ namespace Lively.UI.WinUI.Helpers
             };
         }
 
-        /*
         /// <summary>
         /// Generating filter text for file dialog (culture localised.)
         /// </summary>
         /// <param name="anyFile">Show any filetype.</param>
         /// <returns></returns>
-        public static string GetLocalizedSupportedFileDialogFilter(bool anyFile = false)
+        public static List<string> GetLocalizedSupportedFileDialogFilter(bool anyFile = false)
         {
-            StringBuilder filterString = new StringBuilder();
-            if(anyFile)
+            var filterCollection = new List<string>();
+            if (anyFile)
             {
-                filterString.Append(Properties.Resources.TextAllFiles + "|*.*|");
+                filterCollection.Append("*");
             }
+
             foreach (var item in FileFilter.LivelySupportedFormats)
             {
-                filterString.Append(GetLocalizedWallpaperCategory(item.Type));
-                filterString.Append("|");
                 foreach (var extension in item.Extentions)
                 {
-                    filterString.Append("*").Append(extension).Append(";");
+                    filterCollection.Add(extension);
                 }
-                filterString.Remove(filterString.Length - 1, 1);
-                filterString.Append("|");
             }
-            filterString.Remove(filterString.Length - 1, 1);
-
-            return filterString.ToString();
+            return filterCollection.Distinct().ToList();
         }
 
+        /*
         public static string GetLocalizedAppRules(AppRulesEnum rule)
         {
             return rule switch

@@ -1,0 +1,967 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="WallpaperDirGroup.Header" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="FastUI.Header" xml:space="preserve">
+    <value>Fast startup</value>
+  </data>
+  <data name="FastUI.Description" xml:space="preserve">
+    <value>Keep User Interface running for faster startup</value>
+  </data>
+  <data name="WindowsSettingsColor.Content" xml:space="preserve">
+    <value>Windows color settings</value>
+  </data>
+  <data name="AppThemeDark.Content" xml:space="preserve">
+    <value>Dark</value>
+  </data>
+  <data name="AppThemeLight.Content" xml:space="preserve">
+    <value>Light</value>
+  </data>
+  <data name="AppThemeSystem.Content" xml:space="preserve">
+    <value>System</value>
+  </data>
+  <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
+    <value>Laptops</value>
+  </data>
+  <data name="DeveloperGroup.Header" xml:space="preserve">
+    <value>Developer</value>
+  </data>
+  <data name="AppearanceBehaviour.Header" xml:space="preserve">
+    <value>Appearance &amp; behavior</value>
+  </data>
+  <data name="TitleGallery" xml:space="preserve">
+    <value>Gallery</value>
+  </data>
+  <data name="ActiveWallpapers.Label" xml:space="preserve">
+    <value>Active Wallpaper(s)</value>
+  </data>
+  <data name="AboutMe.Text" xml:space="preserve">
+    <value>Hi, I'm Dani John also known as rocksdanister. I developed Lively a Free and open-source (FOSS) wallpaper application. Thanks for taking the time to look at my work.</value>
+  </data>
+  <data name="LicenseLink.Content" xml:space="preserve">
+    <value>Software license</value>
+  </data>
+  <data name="AttributionLink.Content" xml:space="preserve">
+    <value>Third party software notice</value>
+  </data>
+  <data name="PrivacyPolicyLink.Content" xml:space="preserve">
+    <value>Data collection policy</value>
+  </data>
+  <data name="AddWallpaperDrop.Text" xml:space="preserve">
+    <value>Add wallpaper</value>
+  </data>
+ <data name="ComingSoon.Text" xml:space="preserve">
+    <value>Coming soon</value>
+  </data>
+  <data name="TextOpen.Content" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="TextSave.Content" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
+    <value>Виберіть файл або вкажіть URL-адресу веб-сайту, який потрібно встановити як шпалери.</value>
+  </data>
+  <data name="DescriptionAppRules" xml:space="preserve">
+    <value>Встановіть поведінку відтворення шпалер на основі запущеної програми</value>
+  </data>
+  <data name="DescriptionCancelQuestion" xml:space="preserve">
+    <value>Ви впевнені, що хочете скасувати?</value>
+  </data>
+  <data name="DescriptionDeleteConfirmation" xml:space="preserve">
+    <value>Ви справді бажаєте остаточно видалити шпалери з диску?</value>
+  </data>
+  <data name="DragDropFile.Text" xml:space="preserve">
+    <value>Просто перетягніть файли в бібліотеку.</value>
+  </data>
+  <data name="DescriptionExternalAppWarning" xml:space="preserve">
+    <value>Ви відкриваєте зовнішню програму як шпалери.
+Шкідливі програми можуть містити віруси і зашкодити Вашій системі.
+Продовжуйте лише в тому разі, якщо програму отримано з надійного джерела.</value>
+  </data>
+  <data name="DescriptionMinimizedTray" xml:space="preserve">
+    <value>Я згорнувся до системного трею, натисніть правою кнопкою миші на значок lively для додаткових опцій.</value>
+  </data>
+  <data name="DescriptionRecordStart" xml:space="preserve">
+    <value>Натисніть, щоб розпочати запис.</value>
+  </data>
+  <data name="DescriptionRestoringWallpaper" xml:space="preserve">
+    <value>Відновлення попередніх шпалер.</value>
+  </data>
+  <data name="DescriptionUpdateAvailable" xml:space="preserve">
+    <value>Доступна нова версія!</value>
+  </data>
+  <data name="DescriptionWebpageLoad" xml:space="preserve">
+    <value>Введіть посилання на сторінку, підтримуються посилання Shadertoy.com</value>
+  </data>
+  <data name="DescriptionWelcomeWizard" xml:space="preserve">
+    <value>Цей майстер допоможе вам розпочати налаштування Lively.</value>
+  </data>
+  <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
+    <value>Помилка оновлення. Спробуйте завантажити інсталятор з</value>
+  </data>
+  <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
+    <value>Файл шпалер пошкоджено, спробуйте завантажити заново.</value>
+  </data>
+  <data name="LivelyExceptionGeneral" xml:space="preserve">
+    <value>Упс... Схоже, щось не так :(
+Щоб краще зрозуміти цю помилку та виправити проблему, надайте файл журналу розробнику.
+Інструкції щодо надсилання файлу журналу:
+https://github.com/rocksdanister/lively/wiki</value>
+  </data>
+  <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
+    <value>Lively не може працювати з Windows в режимі високої контрастності!
+Вимкніть режим високої контрастності і спробуйте знову.</value>
+  </data>
+  <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
+    <value>Непідтримуваний файл шпалер.</value>
+  </data>
+  <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
+    <value>Доступна нова версія!</value>
+  </data>
+  <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
+    <value>Здається, потрібно змінити деякі налаштування, щоб Lively запрацював:-  
+1. Відкрийте Мій комп'ютер
+2. Натисніть правою кнопкою миші на пустій ділянці
+3. Оберіть "Властивості"
+4. Оберіть "Додаткові настройки системи"
+5. На вкладці Продуктивність оберіть "Настройки"
+6. Ввімкніть "Анімація елементів керування та елементів всередині вікна" і натисніть застосувати.
+
+Якщо у Вас Windows 7, виберіть - "Налаштувати на кращий вигляд" і натисніть застосувати.
+Якщо далі не працює, перезавантажте Lively / windows.
+(Не працює в інсайдерських збірках windows 10)</value>
+  </data>
+  <data name="TextAdd" xml:space="preserve">
+    <value>Додати</value>
+  </data>
+  <data name="Application.Header" xml:space="preserve">
+    <value>Додаток</value>
+  </data>
+  <data name="Attribution.Header" xml:space="preserve">
+    <value>Атрибути</value>
+  </data>
+  <data name="Author.Text" xml:space="preserve">
+    <value>Автор</value>
+  </data>
+  <data name="TextBack" xml:space="preserve">
+    <value>Назад</value>
+  </data>
+  <data name="TextBrowse" xml:space="preserve">
+    <value>Огляд</value>
+  </data>
+  <data name="CloseWallpapers.Label" xml:space="preserve">
+    <value>Закрити шпалери</value>
+  </data>
+  <data name="TextCompleted" xml:space="preserve">
+    <value>Готово!</value>
+  </data>
+  <data name="TextConvertVideo" xml:space="preserve">
+    <value>Перетворення в відео</value>
+  </data>
+  <data name="CustomiseWallpaper.Label" xml:space="preserve">
+    <value>Налаштувати шпалер</value>
+  </data>
+  <data name="DeleteWallpaper.Text" xml:space="preserve">
+    <value>Видалити шпалери</value>
+  </data>
+  <data name="DisplayPauseRuleAllScreen.Content" xml:space="preserve">
+    <value>Всі екрани</value>
+  </data>
+  <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
+    <value>Певний екран</value>
+  </data>
+  <data name="TextDownload" xml:space="preserve">
+    <value>Завантажити</value>
+  </data>
+  <data name="TextError" xml:space="preserve">
+    <value>Помилка</value>
+  </data>
+  <data name="TextExit" xml:space="preserve">
+    <value>Вихід</value>
+  </data>
+  <data name="ExportWallpaperZip.Text" xml:space="preserve">
+    <value>Експортувати lively .zip</value>
+  </data>
+  <data name="TextGIF" xml:space="preserve">
+    <value>GIF-анімація</value>
+  </data>
+  <data name="TextGo" xml:space="preserve">
+    <value>Вперед</value>
+  </data>
+  <data name="TextHelpTranslate" xml:space="preserve">
+    <value>Допоможіть з перекладом Lively.</value>
+  </data>
+  <data name="TextInstall" xml:space="preserve">
+    <value>Встановити</value>
+  </data>
+  <data name="TextmoreInfo" xml:space="preserve">
+    <value>Інформація</value>
+  </data>
+  <data name="TextMoreWallpapers" xml:space="preserve">
+    <value>Більше шпалер...</value>
+  </data>
+  <data name="MouseInteractOnDesktop.Content" xml:space="preserve">
+    <value>Миша взаємодіє зі шпалерами, коли на передньому плані відкрито додаток</value>
+  </data>
+  <data name="TextNext" xml:space="preserve">
+    <value>Далі</value>
+  </data>
+  <data name="TextNo" xml:space="preserve">
+    <value>Ні</value>
+  </data>
+  <data name="TextOnline" xml:space="preserve">
+    <value>Онлайн</value>
+  </data>
+  <data name="TextOpenLively" xml:space="preserve">
+    <value>Відкрити Lively</value>
+  </data>
+  <data name="PauseAlgorithmTypeAllProcess.Content" xml:space="preserve">
+    <value>Всі процеси</value>
+  </data>
+  <data name="PauseAlgorithmTypeForegroundProcess.Content" xml:space="preserve">
+    <value>Процес переднього плану</value>
+  </data>
+  <data name="TextPauseWallpapers" xml:space="preserve">
+    <value>Призупинити шпалери</value>
+  </data>
+  <data name="TextPerformanceKill.Content" xml:space="preserve">
+    <value>Вбити</value>
+  </data>
+  <data name="TextPerformanceNone.Content" xml:space="preserve">
+    <value>Нічого</value>
+  </data>
+  <data name="TextPerformancePause.Content" xml:space="preserve">
+    <value>Пауза</value>
+  </data>
+  <data name="TextRemove" xml:space="preserve">
+    <value>Видалити</value>
+  </data>
+  <data name="TextRule" xml:space="preserve">
+    <value>Правило</value>
+  </data>
+  <data name="TextScreen" xml:space="preserve">
+    <value>Екран</value>
+  </data>
+  <data name="TextSearch" xml:space="preserve">
+    <value>Пошук</value>
+  </data>
+  <data name="SetWallpaper.Text" xml:space="preserve">
+    <value>Встановити як шпалери</value>
+  </data>
+  <data name="ShowOnDisk.Text" xml:space="preserve">
+    <value>Показати на диску</value>
+  </data>
+  <data name="WallpaperSource.Text" xml:space="preserve">
+    <value>Джерело</value>
+  </data>
+  <data name="TextStart" xml:space="preserve">
+    <value>Старт</value>
+  </data>
+  <data name="TextStop" xml:space="preserve">
+    <value>Стоп</value>
+  </data>
+  <data name="TextTags" xml:space="preserve">
+    <value>Теги</value>
+  </data>
+  <data name="TextTileSizeLarge" xml:space="preserve">
+    <value>Великі</value>
+  </data>
+  <data name="TextTileSizeNormal" xml:space="preserve">
+    <value>Нормальні</value>
+  </data>
+  <data name="TextTileSizeSmall" xml:space="preserve">
+    <value>Малі</value>
+  </data>
+  <data name="TextUIHeadless" xml:space="preserve">
+    <value>Headless</value>
+  </data>
+  <data name="TextUILite" xml:space="preserve">
+    <value>Простий</value>
+  </data>
+  <data name="TextUINormal" xml:space="preserve">
+    <value>Нормальний</value>
+  </data>
+  <data name="TextUpdateAvailable" xml:space="preserve">
+    <value>Доступне оновлення!</value>
+  </data>
+  <data name="TextUpdateCheck" xml:space="preserve">
+    <value>Перевірити оновлення</value>
+  </data>
+  <data name="TextupdateCheckFail" xml:space="preserve">
+    <value>Помилка перевірки оновлень</value>
+  </data>
+  <data name="TextUpdateChecking" xml:space="preserve">
+    <value>Перевірити оновлення</value>
+  </data>
+  <data name="TextUpdateUptodate" xml:space="preserve">
+    <value>Lively оновлено!</value>
+  </data>
+  <data name="TextVideo" xml:space="preserve">
+    <value>Відео</value>
+  </data>
+  <data name="WallpaperLayoutDuplicate.Content" xml:space="preserve">
+    <value>Дублювати шпалери</value>
+  </data>
+  <data name="WallpaperLayoutSpan.Content" xml:space="preserve">
+    <value>Перекривати</value>
+  </data>
+  <data name="WallpaperType.Text" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="Website.Header" xml:space="preserve">
+    <value>Вебсайт</value>
+  </data>
+  <data name="TextWebStream" xml:space="preserve">
+    <value>Стрім</value>
+  </data>
+  <data name="TextWelcome" xml:space="preserve">
+    <value>Вітаємо</value>
+  </data>
+  <data name="TextYes" xml:space="preserve">
+    <value>Так</value>
+  </data>
+  <data name="VideoPlayer.Header" xml:space="preserve">
+    <value>Відео програвач</value>
+  </data>
+  <data name="AddWallpaperFileBrowse.Description" xml:space="preserve">
+    <value>Встановіть шпалери з файлу підтримуваного формату.</value>
+  </data>
+  <data name="EnterUrl.Description" xml:space="preserve">
+    <value>Встановіть веб-сторінку в якості шпалер використовуючи її веб-адресу.</value>
+  </data>
+  <data name="AppFocus.Description" xml:space="preserve">
+    <value>Вкажіть, що робити, коли на передньому плані відкрито будь-який додаток.</value>
+  </data>
+  <data name="AppFullScreen.Description" xml:space="preserve">
+    <value>Вкажіть, що робити, коли відкрито повноекранний додаток/гра.</value>
+  </data>
+  <data name="AppRules.Description" xml:space="preserve">
+    <value>Встановіть правила відтворення шпалер в залежності від відкритої програми.</value>
+  </data>
+  <data name="TipAppTheme" xml:space="preserve">
+    <value>Lively використовує системні налаштування для встановлення теми. Щоб змінити це, перейдіть в</value>
+  </data>
+  <data name="BatteryPower.Description" xml:space="preserve">
+    <value>(Для систем які працюють від акумулятора) Змінити режим відтворення при відключенні від мережі.</value>
+  </data>
+  <data name="BrowserDebuggingPort.Description" xml:space="preserve">
+    <value>Введіть порт для налагодження веб шпалер. Для прийняття змін необхідне перезавантаження браузера.
+Коли будете готові, переходьте на http://localhost:port для отримання доступу до консолі розробника.</value>
+  </data>
+  <data name="DisplayPauseRule.Description" xml:space="preserve">
+    <value>Для кожного: Призупиняти шпалери тільки на тому екрані, де відрито додаток на передньому плані/на весь екран.
+Всі: Припиняти шпалери на всіх екранах, якщо відкрито додаток на передньому плані/на весь екран.</value>
+  </data>
+  <data name="TipHideSysTray" xml:space="preserve">
+    <value>Видимість значка на панелі задач. Якщо іконку приховати, Lively все одно продовжить працювати.</value>
+  </data>
+  <data name="Language.Description" xml:space="preserve">
+    <value>Потрібен перезапуск Lively для зміни мови.</value>
+  </data>
+  <data name="TipLivelySetupOnClose" xml:space="preserve">
+    <value>Закінчіть встановлення, щоб продовжити.</value>
+  </data>
+  <data name="PauseAlgorithm.Description" xml:space="preserve">
+    <value>Процес переднього плану: Швидкий. Сканує тільки процес на передньому плані, щоб визначити режим відтворення.
+Всі процеси: Повільний. Сканує всі процеси, щоб визначити режим відтворення.</value>
+  </data>
+  <data name="StreamWallpaperDetect.Description" xml:space="preserve">
+    <value>Якщо виявлено підтримуване посилання, використовувати відеоплеєр замість підвантаження веб-сторінки.</value>
+  </data>
+  <data name="StreamWallpaperVideoQuality.Description" xml:space="preserve">
+    <value>Виберіть бажану якість потокового відео.</value>
+  </data>
+  <data name="TipTileSize" xml:space="preserve">
+    <value>Розмір плиток зі шпалерами в Бібліотеці.</value>
+  </data>
+  <data name="TipUIMode" xml:space="preserve">
+    <value>Якщо у вас низькопродуктивна система, вибирайте Простий режим.</value>
+  </data>
+  <data name="VideoPlayer.Description" xml:space="preserve">
+    <value>Виберіть плеєр для відео-шпалер.</value>
+  </data>
+  <data name="WallpaperDir.Description" xml:space="preserve">
+    <value>Шлях, по якому зберігаються файли шпалер.</value>
+  </data>
+  <data name="WallpaperInput.Description" xml:space="preserve">
+    <value>Виберіть спосіб взаємодії зі шпалерами.</value>
+  </data>
+  <data name="TipWallpaperPlayback" xml:space="preserve">
+    <value>Призупинити відтворення шпалер, коли робочий стіл не в фокусі.</value>
+  </data>
+  <data name="WebBrowserDiskCache.Description" xml:space="preserve">
+    <value>Зберігайте тимчасові файли на диску, а не в оперативній пам'яті. Дозволяє зберігати налаштування для шпалер веб-сайтів.</value>
+  </data>
+  <data name="WebBrowser.Description" xml:space="preserve">
+    <value>CEF(Chromium Embedded Framework) - полегшений веб-двигун Chromium.
+Edge - веб-двигун з Windows 10 WebView.</value>
+  </data>
+  <data name="Startup.Description" xml:space="preserve">
+    <value>Lively необхідно працювати в фоні для відтворення шпалер.</value>
+  </data>
+  <data name="About.Label" xml:space="preserve">
+    <value>Про програму</value>
+  </data>
+  <data name="AddWallpaper.Label" xml:space="preserve">
+    <value>Додати</value>
+  </data>
+  <data name="AppFocus.Header" xml:space="preserve">
+    <value>Інший додаток у фокусі</value>
+  </data>
+  <data name="AppFullScreen.Header" xml:space="preserve">
+    <value>Інший додаток на весь екран</value>
+  </data>
+  <data name="TitleAppName" xml:space="preserve">
+    <value>Lively Wallpaper</value>
+  </data>
+  <data name="AppRules.Header" xml:space="preserve">
+    <value>Правила для програм</value>
+  </data>
+  <data name="AppTheme.Header" xml:space="preserve">
+    <value>Тема</value>
+  </data>
+  <data name="AudioGroup.Header" xml:space="preserve">
+    <value>Аудіо</value>
+  </data>
+  <data name="TitleAudioPlayOnScreen" xml:space="preserve">
+    <value>Грати музику на екрані</value>
+  </data>
+  <data name="BatteryPower.Header" xml:space="preserve">
+    <value>Коли працює від акумулятора</value>
+  </data>
+  <data name="TitleBrowseFile" xml:space="preserve">
+    <value>Виберіть відео, GIF, веб-сторінку ... щоб встановити як шпалери</value>
+  </data>
+  <data name="BrowserDebuggingPort.Header" xml:space="preserve">
+    <value>Порт налагодження</value>
+  </data>
+  <data name="TitleDeleteConfirmation" xml:space="preserve">
+    <value>Підтвердіть видалення</value>
+  </data>
+  <data name="DisplayPauseRule.Header" xml:space="preserve">
+    <value>Правило зупинки екрану</value>
+  </data>
+  <data name="TitleEnterUrl" xml:space="preserve">
+    <value>Введіть URL</value>
+  </data>
+  <data name="TitleGeneral" xml:space="preserve">
+    <value>Основні</value>
+  </data>
+  <data name="Help.Label" xml:space="preserve">
+    <value>Допомога</value>
+  </data>
+  <data name="HideSysTray.Header" xml:space="preserve">
+    <value>Іконка на панелі задач</value>
+  </data>
+  <data name="TitleInteraction" xml:space="preserve">
+    <value>Взаємодія</value>
+  </data>
+  <data name="Language.Header" xml:space="preserve">
+    <value>Потребує перезапуску програми</value>
+  </data>
+  <data name="TitleLibrary" xml:space="preserve">
+    <value>Бібліотека</value>
+  </data>
+  <data name="TitleLivelySetup" xml:space="preserve">
+    <value>Встановлення Lively</value>
+  </data>
+  <data name="TitleMisc" xml:space="preserve">
+    <value>Інше</value>
+  </data>
+  <data name="TitleMute" xml:space="preserve">
+    <value>Вимкнути</value>
+  </data>
+  <data name="PauseAlgorithm.Header" xml:space="preserve">
+    <value>Алгоритм зупинки</value>
+  </data>
+  <data name="TitlePerformance" xml:space="preserve">
+    <value>Продуктивність</value>
+  </data>
+  <data name="TitlePlaylist" xml:space="preserve">
+    <value>Плейлист</value>
+  </data>
+  <data name="PleaseWait.Text" xml:space="preserve">
+    <value>Будь ласка, зачекайте</value>
+  </data>
+  <data name="TitleScalingFit" xml:space="preserve">
+    <value>Масштабування/Розміщення</value>
+  </data>
+  <data name="ControlPanel.Title" xml:space="preserve">
+    <value>Макет шпалер</value>
+  </data>
+  <data name="TitleSelectFile" xml:space="preserve">
+    <value>Виберіть файл</value>
+  </data>
+  <data name="TitleSettings" xml:space="preserve">
+    <value>Налаштування</value>
+  </data>
+  <data name="StreamWallpaperVideoQuality.Header" xml:space="preserve">
+    <value>Стрім</value>
+  </data>
+  <data name="StreamWallpaperDetect.Header" xml:space="preserve">
+    <value>Виявляти потокове відео</value>
+  </data>
+  <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
+    <value>Якість відео</value>
+  </data>
+  <data name="TitleTileSize" xml:space="preserve">
+    <value>Розмір плитки</value>
+  </data>
+  <data name="TitleUIMode" xml:space="preserve">
+    <value>Інтерфейс</value>
+  </data>
+  <data name="TitleVideo" xml:space="preserve">
+    <value>Відео</value>
+  </data>
+  <data name="TitleWallpaper" xml:space="preserve">
+    <value>Шпалери</value>
+  </data>
+  <data name="WallpaperDir.Header" xml:space="preserve">
+    <value>Тека зі шпалерами</value>
+  </data>
+  <data name="WallpaperInput.Header" xml:space="preserve">
+    <value>Пристрій вводу</value>
+  </data>
+  <data name="WallpaperLayout.Header" xml:space="preserve">
+    <value>Виберіть макет шпалер</value>
+  </data>
+  <data name="WallpaperPlaybackGroup.Header" xml:space="preserve">
+    <value>Відтворення шпалер</value>
+  </data>
+  <data name="TitleWarning" xml:space="preserve">
+    <value>Увага</value>
+  </data>
+  <data name="WebBrowser.Header" xml:space="preserve">
+    <value>Веб браузер:</value>
+  </data>
+  <data name="WebBrowserDiskCache.Header" xml:space="preserve">
+    <value>Кеш на диску</value>
+  </data>
+  <data name="TitleWebBrowserEngine" xml:space="preserve">
+    <value>Веб-двигун</value>
+  </data>
+  <data name="TitleWebpageLoad" xml:space="preserve">
+    <value>Завантажити сторінку</value>
+  </data>
+  <data name="Startup.Header" xml:space="preserve">
+    <value>Запускати разом з Windows</value>
+  </data>
+  <data name="DescriptionPleaseRestartLively" xml:space="preserve">
+    <value>Будь ласка, перезапустіть Lively, щоб налаштування набрали чинності.</value>
+  </data>
+  <data name="TextSupport.Content" xml:space="preserve">
+    <value>Підтримати</value>
+  </data>
+  <data name="TextClose" xml:space="preserve">
+    <value>Закрити</value>
+  </data>
+  <data name="Customise.Text" xml:space="preserve">
+    <value>Налаштувати</value>
+  </data>
+  <data name="DescriptionScreenLayout" xml:space="preserve">
+    <value>Виберіть дисплей</value>
+  </data>
+  <data name="WallpaperLayoutPerScreen.Content" xml:space="preserve">
+    <value>Тільки обраний дисплей</value>
+  </data>
+  <data name="WallpaperLayout.Description" xml:space="preserve">
+    <value>Спосіб застосування шпалер до підключених пристроїв відображення.</value>
+  </data>
+  <data name="WallpaperDirMoveExisting.Content" xml:space="preserve">
+    <value>Перемістіть наявні шпалери в нову теку</value>
+  </data>
+  <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
+    <value>Помилка відтворення медіа :(
+Спробуйте змінити відеоплеєр в налаштуваннях Lively.
+
+Для того, щоб краще зрозуміти помилку і знайти вирішення, можна надіслати розробнику файл журналу.
+Прочитайте про те, як це можна зробити:
+https://github.com/rocksdanister/lively/wiki</value>
+  </data>
+  <data name="TextOff.Content" xml:space="preserve">
+    <value>Вимк.</value>
+  </data>
+  <data name="TextOn.Content" xml:space="preserve">
+    <value>Увімк.</value>
+  </data>
+  <data name="TextMouse.Content" xml:space="preserve">
+    <value>Миша</value>
+  </data>
+  <data name="TextKeyboard.Content" xml:space="preserve">
+    <value>Клавіатура</value>
+  </data>
+  <data name="Documentation.Header" xml:space="preserve">
+    <value>Документація</value>
+  </data>
+  <data name="Community.Header" xml:space="preserve">
+    <value>Спільнота</value>
+  </data>
+  <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
+    <value>Ви впевнені, що хочете видалити ці шпалери з бібліотеки?</value>
+  </data>
+  <data name="Audio.Description" xml:space="preserve">
+    <value>Рівень гучності всіх шпалер.</value>
+  </data>
+  <data name="Audio.Header" xml:space="preserve">
+    <value>Загальна гучність</value>
+  </data>
+  <data name="WallpaperFitFill.Content" xml:space="preserve">
+    <value>Заповнення</value>
+  </data>
+  <data name="WallpaperFitNone.Content" xml:space="preserve">
+    <value>Ніякий</value>
+  </data>
+  <data name="WallpaperFitUniform.Content" xml:space="preserve">
+    <value>Рівномірний</value>
+  </data>
+  <data name="WallpaperFitUniformToFill.Content" xml:space="preserve">
+    <value>Рівномірне заповнення</value>
+  </data>
+  <data name="WallpaperFit.Description" xml:space="preserve">
+    <value>Алгоритм масштабування шпалер.</value>
+  </data>
+  <data name="WallpaperFit.Header" xml:space="preserve">
+    <value>Метод розміщення</value>
+  </data>
+  <data name="PreviewWallpaper.Text" xml:space="preserve">
+    <value>Попередній перегляд</value>
+  </data>
+  <data name="TextAllFiles" xml:space="preserve">
+    <value>Всі файли</value>
+  </data>
+  <data name="Debug.Header" xml:space="preserve">
+    <value>Налагодження</value>
+  </data>
+  <data name="Debug.Description" xml:space="preserve">
+    <value>Показати  меню розробника</value>
+  </data>
+  <data name="TextFileNotFound" xml:space="preserve">
+    <value>Файл не знайдено</value>
+  </data>
+  <data name="TextPicture" xml:space="preserve">
+    <value>Зображення</value>
+  </data>
+  <data name="TextUnsupportedFile" xml:space="preserve">
+    <value>Формат файлу не підтримується</value>
+  </data>
+  <data name="TextProcessingWallpaper" xml:space="preserve">
+    <value>Обробка</value>
+  </data>
+  <data name="Title.Text" xml:space="preserve">
+    <value>Назва</value>
+  </data>
+  <data name="Description.Text" xml:space="preserve">
+    <value>Опис</value>
+  </data>
+  <data name="TextOK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Cancel.Content" xml:space="preserve">
+    <value>Скасувати</value>
+  </data>
+  <data name="TextCreatePreview" xml:space="preserve">
+    <value>Створити попередній перегляд</value>
+  </data>
+  <data name="GifPlayer.Header" xml:space="preserve">
+    <value>GIF-плеєр</value>
+  </data>
+  <data name="GifPlayer.Description" xml:space="preserve">
+    <value>Виберіть плеєр для відтворення GIF шпалер.</value>
+  </data>
+  <data name="TextFeatureMissing" xml:space="preserve">
+    <value>Деякі можливості недоступні в цій версії Lively.</value>
+  </data>
+  <data name="ControlPanel.Subtitle" xml:space="preserve">
+    <value>Натисніть тут для керування шпалерами.</value>
+  </data>
+  <data name="StoreReview.Content" xml:space="preserve">
+    <value>Вам подобається користуватися Lively? Залиште відгук :)</value>
+  </data>
+  <data name="Store.Header" xml:space="preserve">
+    <value>Магазин</value>
+    <comment>For different version of Lively, example: Microsoft Store</comment>
+  </data>
+  <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
+    <value>Ваша версія Windows N/KN вимагає завантаження додаткових кодеків для підтримки відтворення відео в шпалерах.</value>
+  </data>
+  <data name="License.Header" xml:space="preserve">
+    <value>Ліцензія</value>
+  </data>
+  <data name="PrivacyPolicy.Header" xml:space="preserve">
+    <value>Політика приватності</value>
+  </data>
+  <data name="AudioFocused.Content" xml:space="preserve">
+    <value>Відтворювати аудіо тільки коли робочий стіл у фокусі</value>
+  </data>
+  <data name="ExportLogs.Description" xml:space="preserve">
+    <value>Експорт журналу.</value>
+  </data>
+  <data name="ExportLogs.Header" xml:space="preserve">
+    <value>Файл журналу</value>
+  </data>
+  <data name="ReportBug.Header" xml:space="preserve">
+    <value>Повідомити про помилку</value>
+  </data>
+  <data name="VideoHardwareDecode.Header" xml:space="preserve">
+    <value>GPU декодування</value>
+  </data>
+  <data name="VideoHardwareDecode.Description" xml:space="preserve">
+    <value>Використовуйте апаратне прискорення, коли це можливо.</value>
+  </data>
+  <data name="DescriptionPleaseStop" xml:space="preserve">
+  <value>Будь ласка, зупиніться, перш ніж продовжити.</value>
+</data>
+  <data name="EditWallpaper.Text" xml:space="preserve">
+  <value>Редагувати</value>
+</data>
+  <data name="TitleLocation" xml:space="preserve">
+  <value>Місцезнаходження</value>
+</data>
+  <data name="TitleSkipConfirm" xml:space="preserve">
+  <value>Пропустити підтвердження</value>
+</data>
+  <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
+  <value>Введіть необов'язкові аргументи командного рядка</value>
+</data>
+  <data name="GitHubStar.Content" xml:space="preserve">
+    <value>Покажіть свою любов через зірочку на GitHub</value>
+  </data>
+  <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
+    <value>Знайдена несумісна програма, тематизація панелі завдань вимкнена.</value>
+  </data>
+  <data name="TaskbarTheme.Header" xml:space="preserve">
+    <value>Тема панелі завдань</value>
+  </data>
+  <data name="LockscreenPicture.Header" xml:space="preserve">
+    <value>Зображення на екрані блокування</value>
+  </data>
+  <data name="DesktopPicture.Header" xml:space="preserve">
+    <value>Зображення на робочому столі</value>
+  </data>
+  <data name="LockscreenPicture.Description" xml:space="preserve">
+    <value>Встановіть зображення анімованих шпалер в якості шпалер екрану блокування.</value>
+  </data>
+  <data name="DesktopPicture.Description" xml:space="preserve">
+    <value>Встановіть зображення анімованих шпалер в якості шпалер робочого столу.</value>
+  </data>
+  <data name="TaskbarTheme.Description" xml:space="preserve">
+    <value>Зміна оформлення системної панелі завдань.</value>
+  </data>
+  <data name="TaskbarThemeBlur.Content" xml:space="preserve">
+    <value>Розмиття</value>
+  </data>
+  <data name="TaskbarThemeClear.Content" xml:space="preserve">
+    <value>Прозоре</value>
+  </data>
+  <data name="TaskbarThemeColor.Content" xml:space="preserve">
+    <value>Колір</value>
+  </data>
+  <data name="TaskbarThemeFluent.Content" xml:space="preserve">
+    <value>Плавний</value>
+  </data>
+  <data name="TaskbarThemeWallpaper.Content" xml:space="preserve">
+    <value>Шпалери</value>
+  </data>
+  <data name="TaskbarThemeWallpaperFluent.Content" xml:space="preserve">
+    <value>Плавні шпалери</value>
+  </data>
+  <data name="System.Header" xml:space="preserve">
+    <value>Система</value>
+  </data>
+  <data name="SourceCode.Header" xml:space="preserve">
+    <value>Вихідний код</value>
+  </data>
+  <data name="TitleScreensaver" xml:space="preserve">
+    <value>Заставка</value>
+  </data>
+  <data name="TipScreensaver" xml:space="preserve">
+    <value>Після вибраного періоду бездіяльності використовуйте поточні шпалери як заставку.</value>
+  </data>
+  <data name="TextHours" xml:space="preserve">
+    <value>години(-а)</value>
+  </data>
+  <data name="TextMinutes" xml:space="preserve">
+    <value>хвилини(-а)</value>
+  </data>
+  <data name="TextLearnMore" xml:space="preserve">
+    <value>Дізнатись більше</value>
+  </data>
+  <data name="DescOledScreensaverNotice" xml:space="preserve">
+    <value>Більшість сучасних рідкокристалічних та світлодіодних дисплеїв не страждають від вигорання, і тому будь-які шпалери можна використовувати як заставку.
+
+Для OLED, плазмових або ЕЛТ-дисплеїв, які чутливі до вигорання, рекомендується використовувати шпалери з регулярним рухом та загальну темну тему, яка повинна пом'якшити вигорання, але ця функція не перевірена, і її ефективність не може бути гарантована.
+
+Основна мета заставки Lively - це додати ще один рівень налаштування до свого ПК, використовувати заставки як захист від вигорання на власний ризик!</value>
+  </data>
+  <data name="TextChangeWallpaper" xml:space="preserve">
+    <value>Change Wallpapers</value>
+  </data>
+  <data name="TextLastChecked" xml:space="preserve">
+    <value>Last checked</value>
+  </data>
+  <data name="TitleUpdates" xml:space="preserve">
+    <value>Updates</value>
+  </data>
+  <data name="CommunityPage.Content" xml:space="preserve">
+    <value>Online discussion forum</value>
+  </data>
+  <data name="DocumentationPage.Content" xml:space="preserve">
+    <value>API documentation and help</value>
+  </data>
+  <data name="OfficialWebpage.Content" xml:space="preserve">
+    <value>Official webpage of Lively Wallpaper</value>
+  </data>
+  <data name="ReportBugPage.Content" xml:space="preserve">
+    <value>Report a problem with the software</value>
+  </data>
+  <data name="DescSupperDev" xml:space="preserve">
+    <value>Show support by buying the developer coffee</value>
+  </data>
+  <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
+    <value>You are about to change to beta (developer) build of Lively.
+Updates will be frequent and may contain bugs!</value>
+  </data>
+  <data name="TextSwitchBranchDev" xml:space="preserve">
+    <value>Switch to beta (Dev channel)</value>
+  </data>
+  <data name="TextSwitchBranchOfficial" xml:space="preserve">
+    <value>Switch to stable (Default channel)</value>
+  </data>
+  <data name="TipSwitchSoftwareBranch" xml:space="preserve">
+    <value>Change software release from beta to stable or vice versa.</value>
+  </data>
+  <data name="TitleChangelog" xml:space="preserve">
+    <value>Changelog</value>
+  </data>
+  <data name="PauseAlgorithmTypeExclusiveMode.Content" xml:space="preserve">
+    <value>Direct3D</value>
+  </data>
+  <data name="TitleScreensaverLockOnResume" xml:space="preserve">
+    <value>On resume, display logon screen</value>
+  </data>
+  <data name="SourceWebsite.Text" xml:space="preserve">
+    <value>Вебсайт</value>
+  </data>
+  <data name="AboutMenu.Text" xml:space="preserve">
+    <value>Про програму</value>
+  </data>
+</root>

@@ -18,6 +18,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel.DataTransfer;
+using Windows.ApplicationModel.Resources;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage.Pickers;
@@ -35,6 +36,7 @@ namespace Lively.UI.WinUI.Views.Pages
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private ILibraryModel selectedTile;
 
+        private readonly ResourceLoader i18n;
         private readonly IUserSettingsClient userSettings;
         private readonly IDesktopCoreClient desktopCore;
         private readonly LibraryViewModel libraryVm;
@@ -48,6 +50,7 @@ namespace Lively.UI.WinUI.Views.Pages
             this.libraryUtil = App.Services.GetRequiredService<LibraryUtil>();
 
             this.InitializeComponent();
+            i18n = ResourceLoader.GetForViewIndependentUse();
             this.DataContext = libraryVm;
         }
 
@@ -95,13 +98,11 @@ namespace Lively.UI.WinUI.Views.Pages
                     {
                         var result = await new ContentDialog()
                         {
-                            Title = "Do you want to delete?",
-                            Content = new LibraryAboutView()
-                            {
-                                DataContext = obj,
-                            },
-                            PrimaryButtonText = "Yes",
-                            SecondaryButtonText = "No",
+                            Title = obj.LivelyInfo.IsAbsolutePath ?
+                                i18n.GetString("DescriptionDeleteConfirmationLibrary") : i18n.GetString("DescriptionDeleteConfirmation"),
+                            Content = new LibraryAboutView() { DataContext = obj },
+                            PrimaryButtonText = i18n.GetString("TextYes"),
+                            SecondaryButtonText = i18n.GetString("TextNo"),
                             DefaultButton = ContentDialogButton.Primary,
                             XamlRoot = this.Content.XamlRoot,
                         }.ShowAsyncQueue();
@@ -115,9 +116,9 @@ namespace Lively.UI.WinUI.Views.Pages
                     {
                         _ = await new ContentDialog()
                         {
-                            Title = "Properties",
+                            Title = obj.Title.Length > 35 ? obj.Title.Substring(0, 35) + "..." : obj.Title,
                             Content = new LivelyPropertiesView(obj),
-                            PrimaryButtonText = "Close",
+                            PrimaryButtonText = i18n.GetString("TextClose"),
                             DefaultButton = ContentDialogButton.Primary,
                             XamlRoot = this.Content.XamlRoot,
                         }.ShowAsyncQueue();
@@ -132,12 +133,12 @@ namespace Lively.UI.WinUI.Views.Pages
                     {
                         _ = await new ContentDialog()
                         {
-                            Title = "About",
+                            Title = i18n.GetString("About/Label"),
                             Content = new LibraryAboutView()
                             {
                                 DataContext = obj,
                             },
-                            PrimaryButtonText = "OK",
+                            PrimaryButtonText = i18n.GetString("TextOK"),
                             DefaultButton = ContentDialogButton.Primary,
                             XamlRoot = this.Content.XamlRoot,
                         }.ShowAsyncQueue();

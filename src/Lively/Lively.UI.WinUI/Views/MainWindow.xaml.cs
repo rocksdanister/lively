@@ -32,7 +32,7 @@ namespace Lively.UI.WinUI
         private readonly SettingsViewModel settingsVm;
         private readonly IDesktopCoreClient desktopCore;
         private readonly IUserSettingsClient userSettings;
-        private static ResourceLoader i18n;
+        private readonly ResourceLoader i18n;
 
         public MainWindow(IDesktopCoreClient desktopCore, IUserSettingsClient userSettings, SettingsViewModel settingsVm, IAppUpdaterClient appUpdater)
         {
@@ -70,10 +70,10 @@ namespace Lively.UI.WinUI
                 infoBar.IsOpen = true;
                 infoBar.ActionButton = new HyperlinkButton
                 {
-                    Content = "More information",
+                    Content = i18n.GetString("Help.Label"),
                     NavigateUri = new Uri("https://github.com/rocksdanister/lively/wiki/Common-Problems"),
                 };
-                infoBar.Title = "Error";
+                infoBar.Title = i18n.GetString("TextError");
                 infoBar.Message = e.Message;
                 infoBar.Severity = InfoBarSeverity.Error;
             });
