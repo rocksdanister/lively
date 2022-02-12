@@ -308,7 +308,7 @@ If still not working, close &amp; start Lively again/restart windows.
     <value>Close</value>
   </data>
   <data name="CloseWallpapers.Label" xml:space="preserve">
-    <value>Close Wallpapers</value>
+    <value>Close</value>
   </data>
   <data name="TextCompleted" xml:space="preserve">
     <value>Completed!</value>
@@ -326,7 +326,7 @@ If still not working, close &amp; start Lively again/restart windows.
     <value>Customise</value>
   </data>
   <data name="CustomiseWallpaper.Label" xml:space="preserve">
-    <value>Customise Wallpaper</value>
+    <value>Customise</value>
   </data>
   <data name="DeleteWallpaper.Text" xml:space="preserve">
     <value>Delete</value>
