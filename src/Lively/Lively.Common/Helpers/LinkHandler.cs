@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Text;
 
 namespace Lively.Common
@@ -52,6 +53,20 @@ namespace Lively.Common
                 }.Uri;
             }
             return uri;
+        }
+
+        public static string GetLastSegmentUrl(string url)
+        {
+            try
+            {
+                var uri = new Uri(url);
+                var segment = uri.Segments.Last();
+                return (segment == "/" || segment == "//") ? uri.Host.Replace("www.", string.Empty) : segment.Replace("/", string.Empty);
+            }
+            catch
+            {
+                return url;
+            }
         }
     }
 }

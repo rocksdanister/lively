@@ -251,12 +251,5 @@ namespace Lively.UI.WinUI.Views.Pages
         }
 
         #endregion //file drop
-
-        private void Page_Unloaded(object sender, RoutedEventArgs e)
-        {
-
-            //Since GetRequiredService() is used IoC not disposing it automatically?..
-            libraryUtil?.Dispose();
-        }
     }
 }

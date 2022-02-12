@@ -6,6 +6,7 @@ using Lively.Common.Helpers.MVVM;
 using Lively.Grpc.Client;
 using Lively.Models;
 using Lively.UI.WinUI.Helpers;
+using Lively.UI.WinUI.Views.Pages;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.Win32;
@@ -21,6 +22,9 @@ namespace Lively.UI.WinUI.ViewModels
 {
     public class AddWallpaperViewModel : ObservableObject
     {
+        public ILibraryModel NewWallpaper { get; private set; }
+        public event EventHandler OnRequestClose;
+
         private readonly IUserSettingsClient userSettings;
         //private readonly LibraryViewModel libraryVm;
         private readonly LibraryUtil libraryUtil;
@@ -103,7 +107,13 @@ namespace Lively.UI.WinUI.ViewModels
             {
                 try
                 {
-                    await libraryUtil.AddWallpaperFile(file.Path);
+                    var item = await libraryUtil.AddWallpaperFile(file.Path);
+
+                    if (item.LivelyInfo.IsAbsolutePath)
+                    {
+                        NewWallpaper = item;
+                        OnRequestClose?.Invoke(this, EventArgs.Empty);
+                    }
                 }
                 catch (Exception e)
                 {

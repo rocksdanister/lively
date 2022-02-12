@@ -9,11 +9,12 @@
 
     <Grid>
         <ScrollViewer>
-            <StackPanel>
+            <StackPanel HorizontalAlignment="Stretch">
                 <TextBlock x:Uid="Title" />
                 <TextBox
                     Name="textboxTitle"
                     Height="20"
+                    MinWidth="200"
                     MaxHeight="20"
                     Margin="10,5,25,10"
                     IsEnabled="{Binding IsUserEditable}"
@@ -23,6 +24,7 @@
                 <TextBox
                     Name="textboxDesc"
                     Height="81"
+                    MinWidth="200"
                     MaxHeight="81"
                     Margin="10,5,25,10"
                     Padding="10,10,15,10"
@@ -35,6 +37,7 @@
                 <TextBox
                     Name="textboxAuthor"
                     Height="20"
+                    MinWidth="200"
                     MaxHeight="20"
                     Margin="10,5,25,10"
                     IsEnabled="{Binding IsUserEditable}"
@@ -44,6 +47,7 @@
                 <TextBox
                     Name="textboxContact"
                     Height="20"
+                    MinWidth="200"
                     MaxHeight="20"
                     Margin="10,5,25,0"
                     IsEnabled="{Binding IsUserEditable}"

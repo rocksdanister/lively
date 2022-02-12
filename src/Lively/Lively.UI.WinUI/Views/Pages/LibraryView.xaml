@@ -12,7 +12,6 @@
     DragLeave="Page_DragLeave"
     DragOver="Page_DragOver"
     Drop="Page_Drop"
-    Unloaded="Page_Unloaded"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -37,6 +36,7 @@
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
             DesiredWidth="272"
+            ItemHeight="153"
             ItemsSource="{Binding LibraryItems}"
             RightTapped="libraryGridView_RightTapped"
             SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
@@ -111,10 +111,10 @@
             </MenuFlyout>
             <toolkit:AdaptiveGridView.ItemTemplate>
                 <DataTemplate>
-                    <controls:AspectContentControl HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
-                        <Grid AutomationProperties.Name="{Binding Title}">
-                            <Image Source="{Binding ImagePath}" Stretch="UniformToFill" />
-                            <!--
+                    <!--<controls:AspectContentControl HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">-->
+                    <Grid AutomationProperties.Name="{Binding Title}">
+                        <Image Source="{Binding ImagePath}" Stretch="UniformToFill" />
+                        <!--
                         <Viewbox MaxHeight="10" MaxWidth="10" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5, 5, 5, 5">
                             <SymbolIcon Symbol="Document"/>
                         </Viewbox>
@@ -125,37 +125,37 @@
                             HorizontalAlignment="Right"
                             VerticalAlignment="Top"
                             IsActive="{Binding ItemStartup}" />
-                            -->
-                            <StackPanel
-                                Height="60"
-                                Padding="7"
-                                VerticalAlignment="Bottom"
-                                Background="{ThemeResource AcrylicInAppCustomGridBrush}"
-                                Opacity="0.97"
-                                Orientation="Vertical">
-                                <TextBlock
-                                    Margin="0,0,30,0"
-                                    MaxLines="1"
-                                    Style="{ThemeResource BodyTextBlockStyle}"
-                                    Text="{Binding Title}" />
-                                <TextBlock
-                                    Margin="0,0,30,0"
-                                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
-                                    MaxLines="2"
-                                    Style="{ThemeResource CaptionTextBlockStyle}"
-                                    Text="{Binding Desc}" />
-                            </StackPanel>
-                            <Button
-                                Height="60"
-                                HorizontalAlignment="Right"
-                                VerticalAlignment="Bottom"
-                                Background="Transparent"
-                                BorderBrush="Transparent"
-                                Click="MoreButton_Click">
-                                <FontIcon Glyph="&#xE10C;" />
-                            </Button>
-                        </Grid>
-                    </controls:AspectContentControl>
+                        -->
+                        <StackPanel
+                            Height="60"
+                            Padding="7"
+                            VerticalAlignment="Bottom"
+                            Background="{ThemeResource AcrylicInAppCustomGridBrush}"
+                            Opacity="0.97"
+                            Orientation="Vertical">
+                            <TextBlock
+                                Margin="0,0,30,0"
+                                MaxLines="1"
+                                Style="{ThemeResource BodyTextBlockStyle}"
+                                Text="{Binding Title}" />
+                            <TextBlock
+                                Margin="0,0,30,0"
+                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
+                                MaxLines="2"
+                                Style="{ThemeResource CaptionTextBlockStyle}"
+                                Text="{Binding Desc}" />
+                        </StackPanel>
+                        <Button
+                            Height="60"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom"
+                            Background="Transparent"
+                            BorderBrush="Transparent"
+                            Click="MoreButton_Click">
+                            <FontIcon Glyph="&#xE10C;" />
+                        </Button>
+                    </Grid>
+                    <!--</controls:AspectContentControl>-->
                 </DataTemplate>
             </toolkit:AdaptiveGridView.ItemTemplate>
             <!--

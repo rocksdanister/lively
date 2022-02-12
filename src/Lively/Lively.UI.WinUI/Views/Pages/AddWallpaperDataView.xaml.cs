@@ -1,4 +1,6 @@
-﻿using Microsoft.UI.Xaml;
+﻿using Lively.Models;
+using Lively.UI.WinUI.ViewModels;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Data;
@@ -23,9 +25,10 @@ namespace Lively.UI.WinUI.Views.Pages
     /// </summary>
     public sealed partial class AddWallpaperDataView : Page
     {
-        public AddWallpaperDataView()
+        public AddWallpaperDataView(AddWallpaperDataViewModel vm)
         {
             this.InitializeComponent();
+            this.DataContext = vm;
         }
     }
 }
