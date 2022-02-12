@@ -291,6 +291,21 @@ input, select, textarea {
 		margin: 0 0.25em;
 		padding: 0.25em 0.65em;
 	}
+  
+  license {
+    display: block;
+    color: #fff;
+    max-width: 100%;
+    min-width: 100px;
+    padding: 0;
+    text-align: center;
+    white-space: pre-line;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 0.25em;
+    border: solid 1px rgba(255, 255, 255, 0.15);
+    font-family: "Courier New", monospace;
+    font-size: 0.9em;
+  }
 
 	pre {
 		-webkit-overflow-scrolling: touch;
