@@ -26,10 +26,10 @@ namespace Lively.UI.WinUI.Views.Pages
     /// </summary>
     public sealed partial class AddWallpaperView : Page
     {
-        public AddWallpaperView()
+        public AddWallpaperView(AddWallpaperViewModel vm)
         {
             this.InitializeComponent();
-            this.DataContext = App.Services.GetRequiredService<AddWallpaperViewModel>();
+            this.DataContext = vm;
         }
 
         private void Page_Drop(object sender, DragEventArgs e)

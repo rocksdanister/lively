@@ -192,7 +192,7 @@ namespace Lively.UI.WinUI.Helpers
             FileOperations.OpenFolder(folderPath);
         }
 
-        public async Task AddWallpaperFile(string filePath)
+        public async Task<ILibraryModel> AddWallpaperFile(string filePath)
         {
             WallpaperType type;
             if ((type = FileFilter.GetLivelyFileType(filePath)) != (WallpaperType)(-1))
@@ -208,7 +208,7 @@ namespace Lively.UI.WinUI.Helpers
                         {
                             installDir = Path.Combine(userSettings.Settings.WallpaperDir, "wallpapers", Path.GetRandomFileName());
                             await Task.Run(() => ZipExtract.ZipExtractFile(filePath, installDir, false));
-                            libraryVm.AddWallpaper(installDir);
+                            return libraryVm.AddWallpaper(installDir);
                         }
                         catch (Exception)
                         {
@@ -230,18 +230,24 @@ namespace Lively.UI.WinUI.Helpers
                 }
                 else
                 {
-                    /*
-                    libraryVm.AddWallpaper(openFileDlg.FileName,
-                        type,
-                        LibraryTileType.processing,
-                        userSettings.Settings.SelectedDisplay);
-                    */
+                    var dir = Path.Combine(userSettings.Settings.WallpaperDir, "SaveData", "wptmp", Path.GetRandomFileName());
+                    Directory.CreateDirectory(dir);
+                    var data = new LivelyInfoModel()
+                    {
+                        Title = "...",
+                        Type = type,
+                        IsAbsolutePath = true,
+                        FileName = filePath,
+                        Preview = null,
+                        Thumbnail = null,
+                        Arguments = string.Empty,
+                    };
+                    //TODO generate livelyproperty for gif etc..
+                    JsonStorage<LivelyInfoModel>.StoreData(Path.Combine(dir, "LivelyInfo.json"), data);
+                    return libraryVm.AddWallpaper(dir);
                 }
             }
-            else
-            {
-                throw new InvalidOperationException($"Unsupported file ({Path.GetExtension(filePath)})");
-            }
+            throw new InvalidOperationException($"Unsupported file ({Path.GetExtension(filePath)})");
         }
 
         public async Task AddWallpaperLink(Uri uri)

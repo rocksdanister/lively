@@ -135,7 +135,7 @@ namespace Lively.UI.WinUI.ViewModels
 
         #region helpers
 
-        public void AddWallpaper(string folderPath)
+        public ILibraryModel AddWallpaper(string folderPath)
         {
             var libItem = ScanWallpaperFolder(folderPath);
             if (libItem != null)
@@ -143,6 +143,7 @@ namespace Lively.UI.WinUI.ViewModels
                 var binarySearchIndex = BinarySearch(LibraryItems, libItem.Title);
                 LibraryItems.Insert(binarySearchIndex, libItem);
             }
+            return libItem;
         }
 
         /// <summary>

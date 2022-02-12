@@ -190,16 +190,36 @@ namespace Lively.UI.WinUI
             }
         }
 
-        private void AddWallpaperButton_Click(object sender, RoutedEventArgs e)
+        private async void AddWallpaperButton_Click(object sender, RoutedEventArgs e)
         {
-            _ = new ContentDialog()
+            var addVm = App.Services.GetRequiredService<AddWallpaperViewModel>();
+            var addDialog = new ContentDialog()
             {
                 Title = i18n.GetString("AddWallpaper/Label"),
-                Content = new AddWallpaperView(),
+                Content = new AddWallpaperView(addVm),
                 PrimaryButtonText = i18n.GetString("TextClose"),
                 DefaultButton = ContentDialogButton.Primary,
                 XamlRoot = this.Content.XamlRoot,
-            }.ShowAsyncQueue();
+            };
+            addVm.OnRequestClose += (_, _) => addDialog.Hide();
+            await addDialog.ShowAsyncQueue();
+
+            if (addVm.NewWallpaper != null)
+            {
+                var inputVm = new AddWallpaperDataViewModel(addVm.NewWallpaper);
+                var inputDialog = new ContentDialog()
+                {
+                    Title = i18n.GetString("AddWallpaper/Label"),
+                    Content = new AddWallpaperDataView(inputVm),
+                    PrimaryButtonText = i18n.GetString("TextOk"),
+                    SecondaryButtonText = i18n.GetString("Cancel/Content"),
+                    DefaultButton = ContentDialogButton.Primary,
+                    XamlRoot = this.Content.XamlRoot,
+                    SecondaryButtonCommand = inputVm.CancelCommand,
+                    PrimaryButtonCommand = inputVm.ProceedCommand,
+                };          
+                await inputDialog.ShowAsyncQueue();
+            }
         }
 
         private void ControlPanelButton_Click(object sender, RoutedEventArgs e)

@@ -82,11 +82,11 @@ namespace Lively.UI.WinUI
                 .AddSingleton<MainWindow>()
                 .AddSingleton<LibraryViewModel>() //Library items are stored..
                 .AddSingleton<SettingsViewModel>() //Some events..
+                .AddSingleton<LibraryUtil>() //Used frequently..
                 //transient
                 //.AddTransient<HelpViewModel>()
                 .AddTransient<AboutViewModel>()
                 .AddTransient<AddWallpaperViewModel>()
-                .AddTransient<LibraryUtil>()
                 .AddTransient<ScreenLayoutViewModel>()
                 .AddTransient<IApplicationsRulesFactory, ApplicationsRulesFactory>()
                 .BuildServiceProvider();
