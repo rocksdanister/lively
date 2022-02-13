@@ -227,7 +227,7 @@ Scopul principal al screensaverelor de la Lively este de a adăuga un alt nivel 
 Aplicațiile rău intenționate pot găzdui malware, viruși... și pot dăuna sistemul tău.
 Continuă doar dacă această aplicație provine dintr-o sursă de încredere.</value>
   </data>
-  <data name="DescriptionMinimizedTray" xml:space="preserve">
+  <data name="MinimizedTray.Text" xml:space="preserve">
     <value>Lively este minimizat în bara de sistem, fă clic dreapta pe pictograma lively pentru a continua.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">

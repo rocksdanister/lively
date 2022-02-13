@@ -200,7 +200,7 @@
 Aplikasi seperti ini dapat terkontaminasi oleh malware, virus.. dan dapat merusak sistem anda.
 Lanjutkan jika aplikasi berasal dari sumber terpercaya</value>
   </data>
-  <data name="DescriptionMinimizedTray" xml:space="preserve">
+  <data name="MinimizedTray.Text" xml:space="preserve">
     <value>Lively dikecilkan ke systemtray, klik kanan pada ikon Lively untuk melanjutkan.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">

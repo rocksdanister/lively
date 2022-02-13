@@ -204,7 +204,7 @@
 Aplikasi sebegini mungkin mempunyai virus yang mampu merosakkan sistem anda.
 Hanya teruskan jika aplikasi ini berasal daripada sumber yang dipercayai.</value>
   </data>
-  <data name="DescriptionMinimizedTray" xml:space="preserve">
+  <data name="MinimizedTray.Text" xml:space="preserve">
     <value>Lively diminimumkan ke dalam dulang sistem. Klik kanan ikon Lively untuk teruskan.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">

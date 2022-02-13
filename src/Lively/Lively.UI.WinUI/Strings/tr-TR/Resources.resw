@@ -200,7 +200,7 @@
 Kötü niyetli uygulamalar sisteminize ciddi zararlar verebilir.
 Eğer güvenilir bir kaynak olduğuna inanıyorsanız devam edin.</value>
   </data>
-  <data name="DescriptionMinimizedTray" xml:space="preserve">
+  <data name="MinimizedTray.Text" xml:space="preserve">
     <value>Lively durum çubuğuna küçültüldü, Lively ikonuna sağ tıklayarak devam edin.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">

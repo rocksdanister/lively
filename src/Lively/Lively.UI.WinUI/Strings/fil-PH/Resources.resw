@@ -195,7 +195,7 @@
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
     <value>Binubuksan mo ang isang panlabas na application bilang wallpaper. Ang mga nakakahamak na apllikasyon ay maaaring mag-host ng malware, virus.. na makakahamak sa iyong system. Patuloy lamang kung ang aplikasyon na ito ay nagmula sa mapagkakatiwalaang mapagkukunan</value>
   </data>
-  <data name="DescriptionMinimizedTray" xml:space="preserve">
+  <data name="MinimizedTray.Text" xml:space="preserve">
     <value>Ang Lively ay nai-minimize sa system tray, mag--click sa Lively icon upang matuloy.</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">

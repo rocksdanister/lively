@@ -233,7 +233,7 @@
     <value>Siz divar kağızı kimi xarici proqram açırsınız. Zərərli proqramların sisteminizə zərər verə biləcəyini unutmayın. Yalnız bu proqram etibarlı mənbədən gəldiyinə əmin olduqda davam edin.</value>
     <comment />
   </data>
-  <data name="DescriptionMinimizedTray" xml:space="preserve">
+  <data name="MinimizedTray.Text" xml:space="preserve">
     <value>Lively sistem tepsisinə kiçildilib, davam etmək üçün lively ikonuna sağ klikləyin.</value>
     <comment />
   </data>

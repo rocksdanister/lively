@@ -310,8 +310,24 @@ namespace Lively.UI.WinUI
 
         //Actually called before window closed!
         //Issue: https://github.com/microsoft/microsoft-ui-xaml/issues/5454
-        private void Window_Closed(object sender, WindowEventArgs args)
+        private async void Window_Closed(object sender, WindowEventArgs args)
         {
+            if (userSettings.Settings.IsFirstRun)
+            {
+                args.Handled = true;
+                await new ContentDialog()
+                {
+                    Title = i18n.GetString("PleaseWait/Text"),
+                    Content = new TrayMenuHelp(),
+                    PrimaryButtonText = i18n.GetString("TextOK"),
+                    DefaultButton = ContentDialogButton.Primary,
+                    XamlRoot = this.Content.XamlRoot,
+                }.ShowAsyncQueue();
+                userSettings.Settings.IsFirstRun = false;
+                userSettings.Save<ISettingsModel>();
+                this.Close();
+            }
+
             if (userSettings.Settings.KeepAwakeUI)
             {
                 args.Handled = true;

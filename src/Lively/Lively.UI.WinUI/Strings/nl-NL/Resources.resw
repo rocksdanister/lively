@@ -198,7 +198,7 @@
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
     <value>U opent een extern programma als achtergrond. Kwaadaardige applicaties kunnen malware en virussen hosten, dit kan schade toebrengen aan uw systeem. Ga alleen verder als het programma vanuit een betrouwbare bron is verkregen.</value>
   </data>
-  <data name="DescriptionMinimizedTray" xml:space="preserve">
+  <data name="MinimizedTray.Text" xml:space="preserve">
     <value>Lively wordt geminimaliseerd naar de systeembalk, om verder te gaan klikt u met de rechtermuisknop op Lively.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">

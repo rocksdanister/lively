@@ -200,7 +200,7 @@
 Aplicativos maliciosos podem conter malware, vírus... que podem danificar o seu sistema.
 Prossiga apenas se confia na fonte do aplicativo.</value>
   </data>
-  <data name="DescriptionMinimizedTray" xml:space="preserve">
+  <data name="MinimizedTray.Text" xml:space="preserve">
     <value>Estou minimizado na barra de tarefas, clique com o botão direito no ícone do lively para continuar.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">

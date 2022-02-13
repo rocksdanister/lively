@@ -222,7 +222,7 @@ Lively 화면 보호기의 주요 목적은 사용자 PC에 사용자 지정의 
 악성 응용 프로그램은 악성 코드나 바이러스를 감염시켜 시스템이 위험해질 수 있습니다.
 이 응용 프로그램이 신뢰된 출처로부터 제공된 경우에만 계속하세요.</value>
   </data>
-  <data name="DescriptionMinimizedTray" xml:space="preserve">
+  <data name="MinimizedTray.Text" xml:space="preserve">
     <value>Lively는 시스템 트레이로 최소화됩니다. 계속하려면 트레이에서 Lively 아이콘을 마우스 오른쪽 버튼으로 누르세요.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">

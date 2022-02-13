@@ -200,7 +200,7 @@
 Phần mềm không được kiểm duyệt có thể chứa phần mềm gián điệp, virus.. và làm hại đến máy tính của bạn.
 Chỉ tiếp tục nếu phần mềm này được tin tưởng.</value>
   </data>
-  <data name="DescriptionMinimizedTray" xml:space="preserve">
+  <data name="MinimizedTray.Text" xml:space="preserve">
     <value>Lively đã được thu nhỏ vào khay hệ thống, click vào biểu tượng Lively để tiếp tục.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">

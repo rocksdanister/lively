@@ -50,8 +50,20 @@
             </TeachingTip.IconSource>
         </TeachingTip>
 
+        <!--
+        <TeachingTip
+            x:Name="toggleTeachingTipTray"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            Target="{x:Bind navCommandBar}">
+            <TeachingTip.HeroContent>
+                <Image Source="/Assets/tray-tutorial.gif" />
+            </TeachingTip.HeroContent>
+        </TeachingTip>
+        -->
+
         <NavigationView
-            Name="navView"
+            x:Name="navView"
             BackRequested="NavView_BackRequested"
             IsBackButtonVisible="Collapsed"
             IsBackEnabled="True"

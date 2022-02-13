@@ -198,7 +198,7 @@
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
     <value>Otvaraš spoljašnu aplikaciju kao pozadinu.Zlonamerne aplikacije mogu da ubace viruse... i oštete vaš računar.Jedino prihvatajte ako aplikacija dolazi od proverenog izvora.</value>
   </data>
-  <data name="DescriptionMinimizedTray" xml:space="preserve">
+  <data name="MinimizedTray.Text" xml:space="preserve">
     <value>Lively je minimiziran u računaru, desnim klikom na lively ikonicu kako bi nastavio.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">

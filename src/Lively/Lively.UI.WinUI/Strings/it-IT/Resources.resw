@@ -197,7 +197,7 @@
 Le applicazioni malevole possono avere  malware, virus... e danneggiare il tuo sistema.
 Continua soltanto se l'applicazione proviene da una fonte sicura.</value>
   </data>
-  <data name="DescriptionMinimizedTray" xml:space="preserve">
+  <data name="MinimizedTray.Text" xml:space="preserve">
     <value>Sono limitato all'area di notifiche, fai tasto destro sull'icona di lively per più opzioni.</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">

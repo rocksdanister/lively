@@ -14,6 +14,12 @@
     <ApplicationIcon>appicon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Assets\icons8-github-96.png" />
+    <None Remove="Assets\icons8-mail-96.png" />
+    <None Remove="Assets\icons8-reddit-96.png" />
+    <None Remove="Assets\icons8-twitter-96.png" />
+    <None Remove="Assets\icons8-youtube-96.png" />
+    <None Remove="Assets\tray-tutorial.gif" />
     <None Remove="Views\LivelyProperty\LivelyPropertiesView.xaml" />
     <None Remove="Views\Pages\AboutView.xaml" />
     <None Remove="Views\Pages\AddWallpaperDataView.xaml" />
@@ -26,6 +32,7 @@
     <None Remove="Views\Pages\SettingsPerformanceView.xaml" />
     <None Remove="Views\Pages\SettingsSystemView.xaml" />
     <None Remove="Views\Pages\SettingsWallpaperView.xaml" />
+    <None Remove="Views\Pages\TrayMenuHelp.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -79,6 +86,9 @@
     <None Update="appicon.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Page Update="Views\Pages\TrayMenuHelp.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Update="Views\Pages\GalleryView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>

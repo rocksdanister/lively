@@ -22,8 +22,35 @@
                         Margin="10"
                         Style="{ThemeResource BodyTextBlockStyle}" />
                 </StackPanel>
+                <CommandBar HorizontalAlignment="Center" OverflowButtonVisibility="Collapsed">
+                    <AppBarButton Click="GithubButton_Click" ToolTipService.ToolTip="https://github.com/rocksdanister">
+                        <AppBarButton.Icon>
+                            <BitmapIcon Foreground="{ThemeResource SystemControlBackgroundBaseHighBrush}" UriSource="ms-appx:///Assets/icons8-github-96.png" />
+                        </AppBarButton.Icon>
+                    </AppBarButton>
+                    <AppBarButton Click="TwitterButton_Click" ToolTipService.ToolTip="https://twitter.com/rocksdanister">
+                        <AppBarButton.Icon>
+                            <BitmapIcon Foreground="{ThemeResource SystemControlBackgroundBaseHighBrush}" UriSource="ms-appx:///Assets/icons8-twitter-96.png" />
+                        </AppBarButton.Icon>
+                    </AppBarButton>
+                    <AppBarButton Click="RedditButton_Click" ToolTipService.ToolTip="https://reddit.com/u/rocksdanister">
+                        <AppBarButton.Icon>
+                            <BitmapIcon Foreground="{ThemeResource SystemControlBackgroundBaseHighBrush}" UriSource="ms-appx:///Assets/icons8-reddit-96.png" />
+                        </AppBarButton.Icon>
+                    </AppBarButton>
+                    <AppBarButton Click="YoutubeButton_Click" ToolTipService.ToolTip="https://www.youtube.com/channel/UClep84ofxC41H8-R9UfNPSQ">
+                        <AppBarButton.Icon>
+                            <BitmapIcon Foreground="{ThemeResource SystemControlBackgroundBaseHighBrush}" UriSource="ms-appx:///Assets/icons8-youtube-96.png" />
+                        </AppBarButton.Icon>
+                    </AppBarButton>
+                    <AppBarButton Click="EmailButton_Click" ToolTipService.ToolTip="awoo.git@gmail.com">
+                        <AppBarButton.Icon>
+                            <BitmapIcon Foreground="{ThemeResource SystemControlBackgroundBaseHighBrush}" UriSource="ms-appx:///Assets/icons8-mail-96.png" />
+                        </AppBarButton.Icon>
+                    </AppBarButton>
+                </CommandBar>
 
-                <controls:SettingsGroup>
+                <controls:SettingsGroup Margin="0,-25,0,0">
                     <controls:Setting Header="{Binding AppVersionText}" Icon="&#xE117;">
                         <controls:Setting.Description>
                             <StackPanel Orientation="Vertical">
@@ -38,14 +65,7 @@
                             </StackPanel>
                         </controls:Setting.Description>
                         <controls:Setting.ActionContent>
-                            <StackPanel
-                                VerticalAlignment="Center"
-                                Orientation="Horizontal"
-                                Spacing="18">
-                                <ProgressRing
-                                    Width="24"
-                                    Height="24"
-                                    IsEnabled="True" />
+                            <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
                                 <Button
                                     HorizontalAlignment="Right"
                                     Command="{Binding UpdateAppCommand}"

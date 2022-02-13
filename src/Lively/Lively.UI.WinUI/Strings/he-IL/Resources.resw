@@ -210,7 +210,7 @@
 תוכניות זדוניות ווירוסים עשויים להיות כלולים ביישומים זדוניים .. ולהזיק למערכת שלכם.
 המשך רק אם יישום זה מגיע ממקור מהימן.</value>
   </data>
-  <data name="DescriptionMinimizedTray" xml:space="preserve">
+  <data name="MinimizedTray.Text" xml:space="preserve">
     <value>Lively ממוזערת למגש המערכת, לחץ לחצן ימני על הסמל כדי להמשיך.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
