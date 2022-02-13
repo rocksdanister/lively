@@ -26,6 +26,7 @@ using System.Windows.Threading;
 using Lively.Views;
 using Lively.Grpc.Common.Proto.Update;
 using Lively.Common.Services;
+using Lively.Common.Helpers.Files;
 
 namespace Lively
 {
@@ -92,12 +93,24 @@ namespace Lively
                 Directory.CreateDirectory(Constants.CommonPaths.LogDir);
                 Directory.CreateDirectory(Constants.CommonPaths.TempDir);
                 Directory.CreateDirectory(Constants.CommonPaths.TempCefDir);
+                Directory.CreateDirectory(Constants.CommonPaths.TempVideoDir);
+                //default livelyproperty for media files..
+                File.Copy(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "mpv", "api", "LivelyProperties.json"),
+                    Path.Combine(Constants.CommonPaths.TempVideoDir, "LivelyProperties.json"));
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "AppData Directory Initialize Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 ShutDown();
+                return;
             }
+
+            try
+            {
+                //clear temp files from previous run if any..
+                FileOperations.EmptyDirectory(Constants.CommonPaths.TempDir);
+            }
+            catch { /* TODO */ }
 
             SetupUnhandledExceptionLogging();
 
@@ -106,10 +119,10 @@ namespace Lively
             Services.GetRequiredService<IPlayback>().Start();
             Services.GetRequiredService<ISystray>();
 
-            //Restore wallpaper(s) from previous run.
+            //restore wallpaper(s) from previous run.
             Services.GetRequiredService<IDesktopCore>().RestoreWallpaper();
 
-            //First run Setup-Wizard show..
+            //first run Setup-Wizard show..
             if (Services.GetRequiredService<IUserSettingsService>().Settings.IsFirstRun)
             {
                 Services.GetRequiredService<IRunnerService>().ShowUI();

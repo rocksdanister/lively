@@ -68,6 +68,7 @@ namespace Lively.Models
                 try
                 {
                     LivelyPropertyPath = Path.Combine(Directory.GetParent(data.FileName).ToString(), "LivelyProperties.json");
+                    //LivelyPropertyPath ??= Path.Combine(folderPath, "LivelyProperties.json");
                 }
                 catch
                 {
@@ -128,6 +129,11 @@ namespace Lively.Models
             ImagePath = preferPreviewGif ?
                 (File.Exists(PreviewClipPath) ? PreviewClipPath : ThumbnailPath) : ThumbnailPath;
             ItemStartup = false;
+
+            if (data.Type == WallpaperType.video || data.Type == WallpaperType.videostream || data.Type == WallpaperType.gif)
+            {
+                LivelyPropertyPath ??= Path.Combine(Constants.CommonPaths.TempVideoDir, "LivelyProperties.json");
+            }
         }
 
         private LivelyInfoModel _livelyInfo;

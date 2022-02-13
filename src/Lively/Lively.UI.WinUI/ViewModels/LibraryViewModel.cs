@@ -25,12 +25,14 @@ namespace Lively.UI.WinUI.ViewModels
 
         private readonly IDesktopCoreClient desktopCore;
         private readonly IUserSettingsClient userSettings;
+        private readonly SettingsViewModel settingsVm;
         private readonly IDisplayManagerClient displayManager;
 
-        public LibraryViewModel(IDesktopCoreClient desktopCore, IDisplayManagerClient displayManager, IUserSettingsClient userSettings)
+        public LibraryViewModel(IDesktopCoreClient desktopCore, IDisplayManagerClient displayManager, IUserSettingsClient userSettings, SettingsViewModel settingsVm)
         {
             this.desktopCore = desktopCore;
             this.displayManager = displayManager;
+            this.settingsVm = settingsVm;
             this.userSettings = userSettings;
 
             wallpaperScanFolders = new List<string>
@@ -41,7 +43,7 @@ namespace Lively.UI.WinUI.ViewModels
 
             foreach (var item in ScanWallpaperFolders(wallpaperScanFolders))
             {
-                LibraryItems.Insert(BinarySearch(LibraryItems, item.Title), item);               
+                LibraryItems.Insert(BinarySearch(LibraryItems, item.Title), item);             
             }
 
             var selectedWallpaper = desktopCore.Wallpapers.FirstOrDefault(x => x.Display.Equals(userSettings.Settings.SelectedDisplay));
@@ -52,6 +54,7 @@ namespace Lively.UI.WinUI.ViewModels
             }
 
             desktopCore.WallpaperChanged += DesktopCore_WallpaperChanged;
+            settingsVm.WallpaperDirChanged += (s, e) => WallpaperDirectoryUpdate(e);
         }
 
         #region collections
@@ -175,20 +178,6 @@ namespace Lively.UI.WinUI.ViewModels
                     if (libItem != null)
                     {
                         libItem.WallpaperCategory = LocalizationUtil.GetLocalizedWallpaperCategory(libItem.LivelyInfo.Type);
-                        if (libItem.LivelyInfo.Type == WallpaperType.video || libItem.LivelyInfo.Type == WallpaperType.videostream || libItem.LivelyInfo.Type == WallpaperType.gif)
-                        {
-                            if (libItem.LivelyPropertyPath == null)
-                            {
-                                try
-                                {
-                                    //default lp file for media..
-                                    var dlp = Path.Combine(Path.GetFullPath(Path.Combine(desktopCore.BaseDirectory, "Plugins", "mpv", "api", "LivelyProperties.json")));
-                                    File.Copy(dlp, Path.Combine(libItem.LivelyInfoFolderPath, "LivelyProperties.json"));
-                                    libItem.LivelyPropertyPath = dlp;
-                                }
-                                catch { }
-                            }
-                        }
                         yield return libItem;
                     }
                 }
@@ -282,6 +271,21 @@ namespace Lively.UI.WinUI.ViewModels
                     r = m - 1;
             }
             return l;//(l - 1);
+        }
+
+        /// <summary>
+        /// Rescans wallpaper directory and update library.
+        /// </summary>
+        private void WallpaperDirectoryUpdate(string newDir)
+        {
+            LibraryItems.Clear();
+            wallpaperScanFolders.Clear();
+            wallpaperScanFolders.Add(Path.Combine(newDir, "wallpapers"));
+            wallpaperScanFolders.Add(Path.Combine(newDir, "saveData", "wptmp"));
+            foreach (var item in ScanWallpaperFolders(wallpaperScanFolders))
+            {
+                LibraryItems.Insert(BinarySearch(LibraryItems, item.Title), item);
+            }
         }
 
         #endregion //helpers

@@ -21,7 +21,13 @@ namespace Lively.UI.WinUI.ViewModels
 
         public AddWallpaperDataViewModel(ILibraryModel obj)
         {
-            libData = obj;
+            this.libData = obj;
+
+            //use existing data for editing already imported wallpaper..
+            Title = libData.LivelyInfo.Title;
+            Desc = libData.LivelyInfo.Desc;
+            Url = libData.LivelyInfo.Contact;
+            Author = libData.LivelyInfo.Author;
         }
 
         #region data

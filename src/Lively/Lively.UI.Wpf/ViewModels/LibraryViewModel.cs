@@ -148,7 +148,7 @@ namespace Lively.UI.Wpf.ViewModels
 
             foreach (var item in ScanWallpaperFolders(wallpaperScanFolders))
             {
-                LibraryItems.Add(item);
+                LibraryItems.Insert(BinarySearch(LibraryItems, item.Title), item);
             }
         }
 
@@ -192,20 +192,6 @@ namespace Lively.UI.Wpf.ViewModels
                     var libItem = ScanWallpaperFolder(currDir);
                     if (libItem != null)
                     {
-                        if (libItem.LivelyInfo.Type == WallpaperType.video || libItem.LivelyInfo.Type == WallpaperType.videostream)
-                        {
-                            if (libItem.LivelyPropertyPath == null)
-                            {
-                                try
-                                {
-                                    //default lp file for media..
-                                    var dlp = Path.Combine(Path.GetFullPath(Path.Combine(desktopCore.BaseDirectory, "Plugins", "mpv", "api", "LivelyProperties.json")));
-                                    File.Copy(dlp, Path.Combine(libItem.LivelyInfoFolderPath, "LivelyProperties.json"));
-                                    libItem.LivelyPropertyPath = dlp;
-                                }
-                                catch { }
-                            }
-                        }
                         yield return libItem;
                     }
                 }

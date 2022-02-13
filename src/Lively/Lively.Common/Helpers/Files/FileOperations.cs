@@ -118,29 +118,17 @@ namespace Lively.Common.Helpers.Files
         /// </summary>
         /// <param name="directory"></param>
         /// <returns>True if deletion completed succesfully.</returns>
-        public static bool EmptyDirectory(string directory)
+        public static void EmptyDirectory(string directory)
         {
-            var status = true;
-            try
+            DirectoryInfo di = new DirectoryInfo(directory);
+            foreach (FileInfo file in di.EnumerateFiles())
             {
-                System.IO.DirectoryInfo di = new DirectoryInfo(directory);
-
-                foreach (FileInfo file in di.EnumerateFiles())
-                {
-                    file.Delete();
-                }
-
-                foreach (DirectoryInfo dir in di.EnumerateDirectories())
-                {
-                    dir.Delete(true);
-                }
+                file.Delete();
             }
-            catch (Exception e)
+            foreach (DirectoryInfo dir in di.EnumerateDirectories())
             {
-                //Logger.Error(e.ToString());
-                status = false;
+                dir.Delete(true);
             }
-            return status;
         }
 
         /// <summary>

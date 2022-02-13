@@ -1,6 +1,8 @@
 ﻿using Lively.Common.Helpers;
+using Lively.Common.Helpers.Archive;
 using Lively.Common.Helpers.Pinvoke;
 using Lively.Grpc.Client;
+using Lively.Models;
 using Lively.UI.WinUI.Factories;
 using Lively.UI.WinUI.Helpers;
 using Lively.UI.WinUI.ViewModels;
@@ -10,6 +12,8 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
+using System.IO;
+using System.Linq;
 using System.Threading;
 using Windows.ApplicationModel.Resources.Core;
 using Windows.Globalization;
@@ -53,7 +57,8 @@ namespace Lively.UI.WinUI
 
             this.InitializeComponent();
             _serviceProvider = ConfigureServices();
-            SetAppTheme(Services.GetRequiredService<IUserSettingsClient>().Settings.ApplicationTheme);
+            var userSettings = Services.GetRequiredService<IUserSettingsClient>();
+            SetAppTheme(userSettings.Settings.ApplicationTheme);
             //Services.GetRequiredService<SettingsViewModel>().AppThemeChanged += (s, e) => SetAppTheme(e);
         }
 
@@ -96,7 +101,7 @@ namespace Lively.UI.WinUI
 
         //Cannot change runtime.
         //Issue: https://github.com/microsoft/microsoft-ui-xaml/issues/4474
-        public void SetAppTheme(Common.AppTheme theme)
+        private void SetAppTheme(Common.AppTheme theme)
         {
             switch (theme)
             {
@@ -116,7 +121,7 @@ namespace Lively.UI.WinUI
         //https://github.com/microsoft/microsoft-ui-xaml/issues/5940
         //https://github.com/microsoft/WindowsAppSDK/issues/1687
         //https://github.com/microsoft/WindowsAppSDK-Samples/issues/138
-        void SetAppLanguage(string cult = "en-US")
+        private void SetAppLanguage(string cult = "en-US")
         {
             ApplicationLanguages.PrimaryLanguageOverride = cult;
             CultureInfo culture = new CultureInfo(cult);
@@ -126,6 +131,35 @@ namespace Lively.UI.WinUI
             Thread.CurrentThread.CurrentUICulture = culture;
             //ResourceContext.GetForCurrentView().Reset();
             ResourceContext.GetForViewIndependentUse().Reset();
+        }
+
+        /// <summary>
+        /// Extract default wallpapers and incremental if any.
+        /// </summary>
+        public static int ExtractWallpaperBundle(int currentBundleVer, string currentBundleDir, string currentWallpaperDir)
+        {
+            //Lively stores the last extracted bundle filename, extraction proceeds from next file onwards.
+            int maxExtracted = currentBundleVer;
+            try
+            {
+                //wallpaper bundles filenames are 0.zip, 1.zip ...
+                var sortedBundles = Directory.GetFiles(currentBundleDir).OrderBy(x => x);
+
+                foreach (var item in sortedBundles)
+                {
+                    if (int.TryParse(Path.GetFileNameWithoutExtension(item), out int val))
+                    {
+                        if (val > maxExtracted)
+                        {
+                            //Sharpzip library will overwrite files if exists during extraction.
+                            ZipExtract.ZipExtractFile(item, Path.Combine(currentWallpaperDir, "wallpapers"), false);
+                            maxExtracted = val;
+                        }
+                    }
+                }
+            }
+            catch { /* TODO */ }
+            return maxExtracted;
         }
 
         public static void ShutDown()
