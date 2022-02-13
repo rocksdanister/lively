@@ -191,17 +191,19 @@
 
 //Here I go, messing up a perfectly good webpage.. ATT dabjulmaros
 window.onload=e=>{
-	posSpinner();
+	posFix();
 }
 
 window.onresize=e=>{
-	posSpinner();
-	document.querySelector('.vanta-canvas').style.width=window.innerWidth+"px";
-	document.querySelector('.vanta-canvas').style.right=0;
-	document.querySelector('.vanta-canvas').style.left="";
+	posFix();
 }
 
-function posSpinner(){
+function posFix(){
+
+  document.querySelector('.vanta-canvas').style.width=window.innerWidth+"px";
+	document.querySelector('.vanta-canvas').style.right=0;
+	document.querySelector('.vanta-canvas').style.left="";
+
 	const header = $('#intro > div > div > h1')[0];
 	const logo = $('.imageRotate')[0];
 	logo.style.top=`${header.offsetHeight/4-logo.width/2}px`;
