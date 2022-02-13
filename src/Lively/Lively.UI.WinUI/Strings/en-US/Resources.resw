@@ -179,7 +179,7 @@ The main purpose of Lively's screensavers is to add another layer of customizati
 Malicious applications can host malware, virus.. and do harm to your system.
 Only continue if this application comes from a trusted source.</value>
   </data>
-  <data name="DescriptionMinimizedTray" xml:space="preserve">
+  <data name="MinimizedTray.Text" xml:space="preserve">
     <value>Lively is minimized to systemtray, right click lively icon to continue.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
@@ -806,7 +806,7 @@ If still not working, close &amp; start Lively again/restart windows.
     <value>Playlist</value>
   </data>
   <data name="PleaseWait.Text" xml:space="preserve">
-    <value>Please Wait</value>
+    <value>Please wait</value>
   </data>
   <data name="PowerSavingModePower.Header" xml:space="preserve">
     <value>When on Battery Saver</value>

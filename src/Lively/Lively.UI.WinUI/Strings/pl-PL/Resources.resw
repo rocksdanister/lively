@@ -197,7 +197,7 @@
 Złośliwe aplikacje mogą zawierać malware,wirusy... niebezpieczne dla twojego systemu.
 Kontunuuj, tylko jeśli aplikacja pochodzi z zaufanego źródła.</value>
   </data>
-  <data name="DescriptionMinimizedTray" xml:space="preserve">
+  <data name="MinimizedTray.Text" xml:space="preserve">
     <value>Jestem w zasobniku systemowym, kliknij prawym lively po więcej opcji.</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">

@@ -140,7 +140,7 @@
 Вредоносные приложения могут содержать  вирусы, которые навредят вашей системе.
 Продолжайте только в том случае, если приложение получено из надежного источника.</value>
   </data>
-  <data name="DescriptionMinimizedTray" xml:space="preserve">
+  <data name="MinimizedTray.Text" xml:space="preserve">
     <value>Lively свернут на панель задач. Нажмите правой кнопкой мыши на иконку Lively для дополнительных опций.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">

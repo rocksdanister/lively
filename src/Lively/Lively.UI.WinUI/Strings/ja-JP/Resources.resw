@@ -227,7 +227,7 @@ Livelyのスクリーンセーバーの主な目的はあなたのPCのカスタ
 悪意のあるアプリケーションは、マルウェアやウイルスをホストし、システムに害を及ぼす可能性があります。
 このアプリケーションが信頼できるソースから来ている場合のみ続行してください。</value>
   </data>
-  <data name="DescriptionMinimizedTray" xml:space="preserve">
+  <data name="MinimizedTray.Text" xml:space="preserve">
     <value>Livelyはシステムトレイに最小化されています。Livelyのアイコンを右クリックして続行します。</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">

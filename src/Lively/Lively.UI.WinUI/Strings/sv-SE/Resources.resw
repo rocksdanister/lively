@@ -200,7 +200,7 @@
         <value>Du öppnar ett externt program som bakgrundsbild. Skadliga program kan vara värd för skadlig kod, virus och skada ditt system. Fortsätt endast om programmet kommer från en betrodd källa.</value>
         <comment />
     </data>
-  <data name="DescriptionMinimizedTray" xml:space="preserve">
+  <data name="MinimizedTray.Text" xml:space="preserve">
         <value>Lively är nu minimerad.</value>
         <comment />
     </data>

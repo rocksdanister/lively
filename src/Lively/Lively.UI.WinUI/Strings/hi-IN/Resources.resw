@@ -200,7 +200,7 @@
 दुर्भावनापूर्ण एप्लिकेशन मैलवेयर, वायरस ... और आपके सिस्टम को नुकसान पहुंचा सकते हैं।
 कृपया तभी आगे बढ़ें जब यह एप्लिकेशन किसी विश्वसनीय स्रोत से आता है।</value>
   </data>
-  <data name="DescriptionMinimizedTray" xml:space="preserve">
+  <data name="MinimizedTray.Text" xml:space="preserve">
     <value>जीवंतएलय सिस्टम ट्रे पर कम से कम होगा, जारी रखने के लिए एनिमेटेड आइकन पर राइट क्लिक करें।</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">

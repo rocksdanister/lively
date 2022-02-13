@@ -227,7 +227,7 @@ Lively 動態桌布的螢幕保護程式主要用於為您的電腦新增另一�
 有害應用程式可能包含綑綁軟體，病毒.. 而且損壞你的作業系統。
 請僅在你信任此應用程式的來源時繼續。</value>
   </data>
-  <data name="DescriptionMinimizedTray" xml:space="preserve">
+  <data name="MinimizedTray.Text" xml:space="preserve">
     <value>Lively 已最小化至系統匣，右鍵點選 Lively 動態桌布的圖示以存取更多選項。</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">

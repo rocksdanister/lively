@@ -65,8 +65,13 @@ namespace Lively.UI.WinUI.Views.Pages
         //Issue: WinUI firing unloaded randomly..
         private void Page_Unloaded(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("Unloaded aboutview");
             //appUpdater.UpdateChecked -= AboutView_UpdateChecked;
         }
+
+        private void GithubButton_Click(object sender, RoutedEventArgs e) => LinkHandler.OpenBrowser("https://github.com/rocksdanister");
+        private void TwitterButton_Click(object sender, RoutedEventArgs e) => LinkHandler.OpenBrowser("https://twitter.com/rocksdanister");
+        private void RedditButton_Click(object sender, RoutedEventArgs e) => LinkHandler.OpenBrowser("https://reddit.com/u/rocksdanister");
+        private void YoutubeButton_Click(object sender, RoutedEventArgs e) => LinkHandler.OpenBrowser("https://www.youtube.com/channel/UClep84ofxC41H8-R9UfNPSQ");
+        private void EmailButton_Click(object sender, RoutedEventArgs e) => LinkHandler.OpenBrowser("mailto:awoo.git@gmail.com");
     }
 }

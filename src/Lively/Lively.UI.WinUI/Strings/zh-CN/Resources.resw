@@ -137,7 +137,7 @@
 恶意应用程序可能趁机注入木马、病毒..这将损害您的系统。
 仅当您信任此应用程序时，方可继续。</value>
   </data>
-  <data name="DescriptionMinimizedTray" xml:space="preserve">
+  <data name="MinimizedTray.Text" xml:space="preserve">
     <value>Lively 已被最小化到系统托盘，右键单击 Lively 的图标以获取更多选项。</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">

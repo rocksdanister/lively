@@ -197,7 +197,7 @@
 Rosszindulatú alkalmazások hordozhatnak káros szoftvert, vírust.. és kárt okozhatnak a rendszerben.
 Csak akkor folytasd, ha ez az alkalmazás egy megbízható forrásból származik.</value>
   </data>
-  <data name="DescriptionMinimizedTray" xml:space="preserve">
+  <data name="MinimizedTray.Text" xml:space="preserve">
     <value>A Lively minimalizálva lett a talcára, jobb klikkelj a lively ikonra a folytatáshoz.</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">

@@ -195,7 +195,7 @@
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
     <value>Esteu obrint una aplicació externa com a fons de pantalla. Les aplicacions externes poden contenir malware, virus .. i danyar el teu sistema. Només contínua si aquesta aplicació prové d'una font fiable.</value>
   </data>
-  <data name="DescriptionMinimizedTray" xml:space="preserve">
+  <data name="MinimizedTray.Text" xml:space="preserve">
     <value>Lively es minimitza a la safata del sistema, fes clic dret a la icona de lively per continuar.</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">

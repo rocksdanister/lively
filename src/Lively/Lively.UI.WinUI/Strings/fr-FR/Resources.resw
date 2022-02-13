@@ -197,7 +197,7 @@
 Les applications malveillantes peuvent contenir des malwares, virus etc. et menaçent votre système.
 Continuez seulement si cette application provient d'une source fiable.</value>
   </data>
-  <data name="DescriptionMinimizedTray" xml:space="preserve">
+  <data name="MinimizedTray.Text" xml:space="preserve">
     <value>Lively est réduit dans la barre d'état, clic droit sur l'icone Lively pour plus d'options.</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">

@@ -200,7 +200,7 @@
 Κακόβουλες εφαρμογές μπορούν να φιλοξενήσουν κακόβουλο λογισμικό, ιούς .. και να βλάψουν το σύστημά σας.
 Συνεχίστε μόνο εάν αυτή η εφαρμογή προέρχεται από αξιόπιστη πηγή.</value>
   </data>
-  <data name="DescriptionMinimizedTray" xml:space="preserve">
+  <data name="MinimizedTray.Text" xml:space="preserve">
     <value>Το Lively ελαχιστοποιείται στον δίσκο συστήματος, κάντε δεξί κλικ στο Lively εικονίδιο για να συνεχίσετε.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">

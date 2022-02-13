@@ -197,7 +197,7 @@
 Schädliche Anwendungen können Malware, Viren usw. beinhalten und Ihrem System Schaden zufügen.
 Fahren Sie nur fort, wenn diese Anwendung aus einer vertrauenswürdigen Quelle stammt.</value>
   </data>
-  <data name="DescriptionMinimizedTray" xml:space="preserve">
+  <data name="MinimizedTray.Text" xml:space="preserve">
     <value>Lively ist in das Systemtray minimiert. Zum Fortfahren klicken Sie mit der rechten Maustaste auf das Lively-Symbol.</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">

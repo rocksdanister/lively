@@ -198,7 +198,7 @@
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
     <value>شما دارید یک برنامه خارجی را به عنوان پس زمینه باز میکنید. برنامه های مخرب میتوانند حاوی بد افزار یا ویروس باشند و میتوانند به سیستم شما آسیب بزنند. تنها در صورنی ادامه دهید که این برنامه از منبع قابل اعتماد آمده باشد.</value>
   </data>
-  <data name="DescriptionMinimizedTray" xml:space="preserve">
+  <data name="MinimizedTray.Text" xml:space="preserve">
     <value>لایولی کوچک شده و به سیستم تری انتقال یافته، برای ادامه آیکون لایولی را راست کلیک کنید.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
