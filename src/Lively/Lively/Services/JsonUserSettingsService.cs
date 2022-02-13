@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace Lively.Services
@@ -35,6 +36,12 @@ namespace Lively.Services
             Settings.VideoPlayer = IsVideoPlayerAvailable(Settings.VideoPlayer) ? Settings.VideoPlayer : LivelyMediaPlayer.mpv;
             Settings.GifPlayer = IsGifPlayerAvailable(Settings.GifPlayer) ? Settings.GifPlayer : LivelyGifPlayer.mpv;
             Settings.WebBrowser = IsWebPlayerAvailable(Settings.WebBrowser) ? Settings.WebBrowser : LivelyWebBrowser.cef;
+
+            //previous installed appversion is different from current instance..    
+            if (!Settings.AppVersion.Equals(Assembly.GetExecutingAssembly().GetName().Version.ToString(), StringComparison.OrdinalIgnoreCase))
+            {
+                Settings.AppVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            }
 
             try
             {

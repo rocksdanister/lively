@@ -16,6 +16,7 @@ namespace Lively.Common
             public static string TempDir { get; } = Path.Combine(AppDataDir, "temp");
             public static string TempCefDir { get; } = Path.Combine(AppDataDir, "Cef");
             public static string TempWebView2Dir { get; } = Path.Combine(AppDataDir, "WebView2");
+            public static string TempVideoDir { get; } = Path.Combine(AppDataDir, "Mpv");
             public static string AppRulesPath { get; } = Path.Combine(AppDataDir, "AppRules.json");
             public static string WallpaperLayoutPath { get; } = Path.Combine(AppDataDir, "WallpaperLayout.json");
             public static string UserSettingsPath { get; } = Path.Combine(AppDataDir, "Settings.json");

@@ -15,6 +15,7 @@ using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.UI.Xaml.Navigation;
 using SettingsUI.Extensions;
 using System;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources;
@@ -61,6 +62,7 @@ namespace Lively.UI.WinUI
             this.SetIconEx("appicon.ico");
 
             _ = StdInListener();
+            _ = FirstTimeSetup();
         }
 
         private void DesktopCore_WallpaperError(object sender, Exception e)
@@ -336,6 +338,25 @@ namespace Lively.UI.WinUI
             else
             {
                 App.ShutDown();
+            }
+        }
+
+        private async Task FirstTimeSetup()
+        {
+            if (userSettings.Settings.IsFirstRun)
+            {
+                try
+                {
+                    startupProgressRing.IsActive = true;
+                    userSettings.Settings.WallpaperBundleVersion = await Task.Run(() =>
+                        App.ExtractWallpaperBundle(userSettings.Settings.WallpaperBundleVersion, Path.Combine(desktopCore.BaseDirectory, "bundle"), userSettings.Settings.WallpaperDir));
+                    userSettings.Save<ISettingsModel>();
+                    await settingsVm.WallpaperDirectoryChange(userSettings.Settings.WallpaperDir);
+                }
+                finally
+                {
+                    startupProgressRing.IsActive = false;
+                }
             }
         }
 

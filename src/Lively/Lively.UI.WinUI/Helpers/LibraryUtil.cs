@@ -234,7 +234,7 @@ namespace Lively.UI.WinUI.Helpers
                     Directory.CreateDirectory(dir);
                     var data = new LivelyInfoModel()
                     {
-                        Title = "...",
+                        Title = Path.GetFileNameWithoutExtension(filePath),
                         Type = type,
                         IsAbsolutePath = true,
                         FileName = filePath,
@@ -242,6 +242,7 @@ namespace Lively.UI.WinUI.Helpers
                         Thumbnail = null,
                         Arguments = string.Empty,
                     };
+
                     //TODO generate livelyproperty for gif etc..
                     JsonStorage<LivelyInfoModel>.StoreData(Path.Combine(dir, "LivelyInfo.json"), data);
                     return libraryVm.AddWallpaper(dir);
