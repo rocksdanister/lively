@@ -20,13 +20,18 @@ namespace Lively.UI.Wpf.ViewModels
 {
     public class AddWallpaperViewModel : ObservableObject
     {
+        public ILibraryModel NewWallpaper { get; private set; }
+        public event EventHandler OnRequestClose;
         private readonly string fileDialogFilter;
         private readonly IUserSettingsClient userSettings;
         //private readonly LibraryViewModel libraryVm;
         private readonly MainWindow appWindow;
         private readonly LibraryUtil libraryUtil;
 
-        public AddWallpaperViewModel(IUserSettingsClient userSettings, LibraryUtil libraryUtil, MainWindow appWindow)
+        public AddWallpaperViewModel(
+            IUserSettingsClient userSettings,
+            LibraryUtil libraryUtil,
+            MainWindow appWindow)
         {
             this.userSettings = userSettings;
             //this.libraryVm = libraryVm;
@@ -75,9 +80,20 @@ namespace Lively.UI.Wpf.ViewModels
             }
 
             WebUrlText = uri.OriginalString;
+
+            try
+            {
+                NewWallpaper = libraryUtil.AddWallpaperLink(uri.OriginalString);
+                OnRequestClose?.Invoke(this, EventArgs.Empty);
+            }
+            catch (Exception e)
+            {
+                //TODO
+            }
+
             /*
             if (userSettings.Settings.AutoDetectOnlineStreams &&
-                 StreamUtil.IsSupportedStream(uri))
+                    StreamUtil.IsSupportedStream(uri))
             {
                 libraryVm.AddWallpaper(uri.OriginalString,
                     WallpaperType.videostream,
@@ -107,7 +123,7 @@ namespace Lively.UI.Wpf.ViewModels
                 if (_browseFileCommand == null)
                 {
                     _browseFileCommand = new RelayCommand(
-                        param => FileBrowseAction());
+                        async param => await FileBrowseAction());
                 }
                 return _browseFileCommand;
             }
@@ -146,11 +162,15 @@ namespace Lively.UI.Wpf.ViewModels
                 {
                     try
                     {
-                        await libraryUtil.AddWallpaperFile(openFileDlg.FileName);
+                       var item = await libraryUtil.AddWallpaperFile(openFileDlg.FileName);
+                        if (item.LivelyInfo.IsAbsolutePath)
+                        {
+                            NewWallpaper = item;
+                            OnRequestClose?.Invoke(this, EventArgs.Empty);
+                        }
                     }
                     catch (Exception e)
                     {
-                        //TODO: better dialogue
                         System.Windows.MessageBox.Show(
                              e.Message,
                              Properties.Resources.TextError);

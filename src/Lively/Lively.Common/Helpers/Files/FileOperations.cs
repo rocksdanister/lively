@@ -113,11 +113,6 @@ namespace Lively.Common.Helpers.Files
             return BitConverter.ToString(hash).Replace("-", "").ToLowerInvariant();
         }
 
-        /// <summary>
-        /// Deletes file and folder contents of a directory (parent directory remains).
-        /// </summary>
-        /// <param name="directory"></param>
-        /// <returns>True if deletion completed succesfully.</returns>
         public static void EmptyDirectory(string directory)
         {
             DirectoryInfo di = new DirectoryInfo(directory);

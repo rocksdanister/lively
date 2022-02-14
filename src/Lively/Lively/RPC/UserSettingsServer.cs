@@ -22,16 +22,22 @@ namespace Lively.RPC
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private readonly IDisplayManager displayManager;
+        private readonly ITransparentTbService ttbService;
         private readonly IUserSettingsService userSettings;
         private readonly IRunnerService runner;
         private readonly ISystray sysTray;
         private readonly object appRulesWriteLock = new object();
         private readonly object settingsWriteLock = new object();
 
-        public UserSettingsServer(IDisplayManager displayManager, IUserSettingsService userSettings, IRunnerService runner, ISystray sysTray)
+        public UserSettingsServer(IDisplayManager displayManager,
+            IUserSettingsService userSettings,
+            IRunnerService runner,
+            ISystray sysTray,
+            ITransparentTbService ttbService)
         {
             this.displayManager = displayManager;
             this.userSettings = userSettings;
+            this.ttbService = ttbService;
             this.sysTray = sysTray;
             this.runner = runner;
         }
@@ -89,6 +95,12 @@ namespace Lively.RPC
                 }));
             }
 
+            if ((Common.TaskbarTheme)req.SystemTaskbarTheme != userSettings.Settings.SystemTaskbarTheme)
+            {
+                userSettings.Settings.SystemTaskbarTheme = (Common.TaskbarTheme)req.SystemTaskbarTheme;
+                ttbService.Start(userSettings.Settings.SystemTaskbarTheme);
+            }
+
             userSettings.Settings.SavedURL = req.SavedUrl;
             userSettings.Settings.ProcessMonitorAlgorithm = (ProcessMonitorAlgorithm)((int)req.ProcessMonitorAlogorithm);
             userSettings.Settings.SelectedDisplay = displayManager.DisplayMonitors.FirstOrDefault(x => req.SelectedDisplay.DeviceId == x.DeviceId) ?? displayManager.PrimaryDisplayMonitor;
@@ -137,7 +149,7 @@ namespace Lively.RPC
             userSettings.Settings.PowerSaveModePause = (AppRulesEnum)req.PowerSaveModePause;
             userSettings.Settings.LockScreenAutoWallpaper = req.LockScreenAutoWallpaper;
             userSettings.Settings.DesktopAutoWallpaper = req.DesktopAutoWallpaper;
-            userSettings.Settings.SystemTaskbarTheme = (Common.TaskbarTheme)req.SystemTaskbarTheme;
+            //userSettings.Settings.SystemTaskbarTheme = (Common.TaskbarTheme)req.SystemTaskbarTheme;
             userSettings.Settings.ScreensaverIdleWait = (Common.ScreensaverIdleTime)((int)req.ScreensaverIdleWait);
             userSettings.Settings.ScreensaverOledWarning = req.ScreensaverOledWarning;
             userSettings.Settings.ScreensaverEmptyScreenShowBlack = req.ScreensaverEmptyScreenShowBlack;

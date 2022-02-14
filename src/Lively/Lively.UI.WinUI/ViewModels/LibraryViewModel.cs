@@ -239,12 +239,16 @@ namespace Lively.UI.WinUI.ViewModels
             }
         }
 
-        private void SortLibraryItem(LibraryModel item)
+        public void SortWallpaper(LibraryModel item)
         {
-            LibraryItems.Remove(item);
-            var binarySearchIndex = BinarySearch(LibraryItems, item.Title);
-            //LibraryItems.Move(LibraryItems.IndexOf(item), binarySearchIndex);
-            LibraryItems.Insert(binarySearchIndex, item);
+            try
+            {
+                LibraryItems.Remove(item);
+                var binarySearchIndex = BinarySearch(LibraryItems, item.Title);
+                //LibraryItems.Move(LibraryItems.IndexOf(item), binarySearchIndex);
+                LibraryItems.Insert(binarySearchIndex, item);
+            }
+            catch { }
         }
 
         private int BinarySearch(ObservableCollection<LibraryModel> item, string x)

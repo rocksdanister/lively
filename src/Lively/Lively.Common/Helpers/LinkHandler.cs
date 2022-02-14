@@ -60,12 +60,24 @@ namespace Lively.Common
             try
             {
                 var uri = new Uri(url);
+                return GetLastSegmentUrl(uri);
+            }
+            catch
+            {
+                return url;
+            }
+        }
+
+        public static string GetLastSegmentUrl(Uri uri)
+        {
+            try
+            {
                 var segment = uri.Segments.Last();
                 return (segment == "/" || segment == "//") ? uri.Host.Replace("www.", string.Empty) : segment.Replace("/", string.Empty);
             }
             catch
             {
-                return url;
+                return string.Empty;
             }
         }
     }
