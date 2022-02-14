@@ -109,12 +109,12 @@ namespace Lively.UI.Wpf
                 .AddSingleton<MainWindow>()
                 .AddSingleton<LibraryViewModel>() //Library items are stored..
                 .AddSingleton<SettingsViewModel>() //Some events..
+                .AddSingleton<LibraryUtil>() //Frequent use..
                 //transient
                 .AddTransient<SetupView>()
                 .AddTransient<AddWallpaperViewModel>()
                 .AddTransient<HelpViewModel>()
                 .AddTransient<AboutViewModel>()
-                .AddTransient<LibraryUtil>()
                 .AddTransient<ScreenLayoutViewModel>()
                 .AddTransient<ApplicationRulesViewModel>()
                 .AddTransient<IApplicationsRulesFactory, ApplicationsRulesFactory>()

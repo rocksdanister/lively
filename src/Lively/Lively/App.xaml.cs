@@ -27,6 +27,7 @@ using Lively.Views;
 using Lively.Grpc.Common.Proto.Update;
 using Lively.Common.Services;
 using Lively.Common.Helpers.Files;
+using Lively.Models;
 
 namespace Lively
 {
@@ -94,12 +95,10 @@ namespace Lively
                 Directory.CreateDirectory(Constants.CommonPaths.TempDir);
                 Directory.CreateDirectory(Constants.CommonPaths.TempCefDir);
                 Directory.CreateDirectory(Constants.CommonPaths.TempVideoDir);
-                //default livelyproperty for media files..
-                File.Copy(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "mpv", "api", "LivelyProperties.json"),
-                    Path.Combine(Constants.CommonPaths.TempVideoDir, "LivelyProperties.json"));
             }
             catch (Exception ex)
             {
+                //nothing much can be done here..
                 MessageBox.Show(ex.Message, "AppData Directory Initialize Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 ShutDown();
                 return;
@@ -107,12 +106,32 @@ namespace Lively
 
             try
             {
+                //default livelyproperty for media files..
+                var mediaProperty = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "mpv", "api", "LivelyProperties.json");
+                if (File.Exists(mediaProperty))
+                {
+                    File.Copy(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "mpv", "api", "LivelyProperties.json"),
+                        Path.Combine(Constants.CommonPaths.TempVideoDir, "LivelyProperties.json"));
+                }
                 //clear temp files from previous run if any..
                 FileOperations.EmptyDirectory(Constants.CommonPaths.TempDir);
             }
             catch { /* TODO */ }
 
             SetupUnhandledExceptionLogging();
+
+            var userSettings = Services.GetRequiredService<IUserSettingsService>();
+            try
+            {
+                CreateWallpaperDir(userSettings.Settings.WallpaperDir);
+            }
+            catch (Exception ex)
+            {
+                Logger.Error($"Wallpaper directory setup failed: {ex.Message}, falling back to default.");
+                userSettings.Settings.WallpaperDir = Path.Combine(Constants.CommonPaths.AppDataDir, "Library");
+                CreateWallpaperDir(userSettings.Settings.WallpaperDir);
+                userSettings.Save<ISettingsModel>();
+            }
 
             Services.GetRequiredService<WndProcMsgWindow>().Show();
             Services.GetRequiredService<RawInputMsgWindow>().Show();
@@ -123,7 +142,7 @@ namespace Lively
             Services.GetRequiredService<IDesktopCore>().RestoreWallpaper();
 
             //first run Setup-Wizard show..
-            if (Services.GetRequiredService<IUserSettingsService>().Settings.IsFirstRun)
+            if (userSettings.Settings.IsFirstRun)
             {
                 Services.GetRequiredService<IRunnerService>().ShowUI();
             }
@@ -150,6 +169,7 @@ namespace Lively
                 .AddSingleton<IRunnerService, RunnerService>()
                 .AddSingleton<ISystray, Systray>()
                 .AddSingleton<IAppUpdaterService, GithubUpdaterService>()
+                .AddSingleton<ITransparentTbService, TranslucentTBService>()
                 .AddSingleton<RawInputMsgWindow>()
                 .AddSingleton<WndProcMsgWindow>()
                 .AddSingleton<WinDesktopCoreServer>()
@@ -235,6 +255,13 @@ namespace Lively
                 updateWindow.Closed += (s, e) => { updateWindow = null; };
                 updateWindow.Show();
             }
+        }
+
+        private void CreateWallpaperDir(string baseDirectory)
+        {
+            Directory.CreateDirectory(Path.Combine(baseDirectory, "wallpapers"));
+            Directory.CreateDirectory(Path.Combine(baseDirectory, "SaveData", "wptmp"));
+            Directory.CreateDirectory(Path.Combine(baseDirectory, "SaveData", "wpdata"));
         }
 
         private void SetupUnhandledExceptionLogging()

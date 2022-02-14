@@ -192,6 +192,37 @@ namespace Lively.UI.WinUI.Views.Pages
             {
                 var uri = await e.DataView.GetWebLinkAsync();
                 Logger.Info($"Dropped string {uri}");
+                try
+                {
+                    var libItem = libraryUtil.AddWallpaperLink(uri);
+                    if (libItem.LivelyInfo.IsAbsolutePath)
+                    {
+                        var inputVm = new AddWallpaperDataViewModel(libItem);
+                        var inputDialog = new ContentDialog()
+                        {
+                            Title = i18n.GetString("AddWallpaper/Label"),
+                            Content = new AddWallpaperDataView(inputVm),
+                            PrimaryButtonText = i18n.GetString("TextOk"),
+                            SecondaryButtonText = i18n.GetString("Cancel/Content"),
+                            DefaultButton = ContentDialogButton.Primary,
+                            XamlRoot = this.Content.XamlRoot,
+                            SecondaryButtonCommand = inputVm.CancelCommand,
+                            PrimaryButtonCommand = inputVm.ProceedCommand,
+                        };
+                        await inputDialog.ShowAsyncQueue();
+                    }
+                }
+                catch (Exception ie)
+                {
+                    await new ContentDialog()
+                    {
+                        Title = i18n.GetString("TextError"),
+                        Content = ie.Message,
+                        PrimaryButtonText = i18n.GetString("TextOk"),
+                        DefaultButton = ContentDialogButton.Primary,
+                        XamlRoot = this.Content.XamlRoot,
+                    }.ShowAsyncQueue();
+                }
             }
             else if (e.DataView.Contains(StandardDataFormats.StorageItems))
             {

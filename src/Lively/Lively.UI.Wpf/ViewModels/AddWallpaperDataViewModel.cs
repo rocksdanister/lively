@@ -1,19 +1,17 @@
-﻿using Lively.Models;
+﻿using Lively.Common;
+using Lively.Common.Helpers.MVVM;
+using Lively.Common.Helpers.Storage;
+using Lively.Models;
+using Lively.UI.Wpf.Helpers;
+using Lively.UI.Wpf.Helpers.MVVM;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
-using Lively.Common.Helpers.MVVM;
-using Lively.Common;
-using Microsoft.UI.Xaml;
-using Microsoft.Toolkit.Mvvm.Input;
-using Lively.Common.Helpers.Storage;
-using System.IO;
-using Microsoft.Extensions.DependencyInjection;
-using Lively.UI.WinUI.Helpers;
 
-namespace Lively.UI.WinUI.ViewModels
+namespace Lively.UI.Wpf.ViewModels
 {
     public class AddWallpaperDataViewModel : ObservableObject
     {
@@ -117,11 +115,11 @@ namespace Lively.UI.WinUI.ViewModels
 
         private RelayCommand _cancelCommand;
         public RelayCommand CancelCommand => _cancelCommand ??=
-            new RelayCommand(async () => await OperationCancelled());
+            new RelayCommand(async param => await OperationCancelled());
 
         private RelayCommand _proceedCommand;
         public RelayCommand ProceedCommand => _proceedCommand ??=
-            new RelayCommand(() => OperationProceed());
+            new RelayCommand(param => OperationProceed());
 
         private async Task OperationCancelled()
         {
@@ -132,8 +130,6 @@ namespace Lively.UI.WinUI.ViewModels
         private void OperationProceed()
         {
             JsonStorage<LivelyInfoModel>.StoreData(Path.Combine(libData.LivelyInfoFolderPath, "LivelyInfo.json"), libData.LivelyInfo);
-            var libraryUtil = App.Services.GetRequiredService<LibraryUtil>();
-            libraryUtil.SortWallpaper(libData);
         }
     }
 }

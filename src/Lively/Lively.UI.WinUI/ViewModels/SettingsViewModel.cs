@@ -106,7 +106,7 @@ namespace Lively.UI.WinUI.ViewModels
             SelectedWallpaperScalingIndex = (int)userSettings.Settings.WallpaperScaling;
             CefDiskCache = userSettings.Settings.CefDiskCache;
             //IsLockScreenAutoWallpaper = userSettings.Settings.LockScreenAutoWallpaper;
-            //SelectedTaskbarThemeIndex = (int)userSettings.Settings.SystemTaskbarTheme;
+            SelectedTaskbarThemeIndex = (int)userSettings.Settings.SystemTaskbarTheme;
             IsDesktopAutoWallpaper = userSettings.Settings.DesktopAutoWallpaper;
             //IsDebugMenuVisible = userSettings.Settings.DebugMenu;
             SelectedWebBrowserIndex = (int)userSettings.Settings.WebBrowser;
@@ -852,8 +852,6 @@ namespace Lively.UI.WinUI.ViewModels
             }
         }
 
-        /*
-        private bool ttbInitialized = false;
         private int _selectedTaskbarThemeIndex;
         public int SelectedTaskbarThemeIndex
         {
@@ -864,39 +862,17 @@ namespace Lively.UI.WinUI.ViewModels
             set
             {
                 _selectedTaskbarThemeIndex = value;
-                if (!ttbInitialized)
-                {
-                    if ((TaskbarTheme)_selectedTaskbarThemeIndex != TaskbarTheme.none)
-                    {
-                        string pgm = null;
-                        if ((pgm = ttbService.CheckIncompatiblePrograms()) == null)
-                        {
-                            ttbService.Start((TaskbarTheme)_selectedTaskbarThemeIndex);
-                            ttbInitialized = true;
-                        }
-                        else
-                        {
-                            _selectedTaskbarThemeIndex = (int)TaskbarTheme.none;
-                            _ = Task.Run(() =>
-                                    System.Windows.MessageBox.Show(Properties.Resources.DescIncompatibleTaskbarTheme + "\n\n" + pgm,
-                                        Properties.Resources.TitleAppName, MessageBoxButton.OK, MessageBoxImage.Information));
-                        }
-                    }
-                }
-                else
-                {
-                    ttbService.Start((TaskbarTheme)_selectedTaskbarThemeIndex);
-                }
                 //save the data..
                 if (userSettings.Settings.SystemTaskbarTheme != (TaskbarTheme)_selectedTaskbarThemeIndex)
                 {
                     userSettings.Settings.SystemTaskbarTheme = (TaskbarTheme)_selectedTaskbarThemeIndex;
-                    UpdateConfigFile();
+                    UpdateSettingsConfigFile();
                 }
                 OnPropertyChanged();
             }
         }
 
+        /*
         private int _selectedScreensaverWaitIndex;
         public int SelectedScreensaverWaitIndex
         {

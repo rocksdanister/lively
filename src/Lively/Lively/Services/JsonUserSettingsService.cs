@@ -22,7 +22,7 @@ namespace Lively.Services
         private readonly string wallpaperLayoutPath = Constants.CommonPaths.WallpaperLayoutPath;
         //private readonly string weatherPath = Constants.CommonPaths.WeatherSettingsPath;
 
-        public JsonUserSettingsService(IDisplayManager displayManager)
+        public JsonUserSettingsService(IDisplayManager displayManager, ITransparentTbService ttbService)
         {
             Load<ISettingsModel>();
             //Load<IWeatherModel>();
@@ -50,6 +50,11 @@ namespace Lively.Services
             catch (Exception e)
             {
                 Logger.Error(e);
+            }
+
+            if (Settings.SystemTaskbarTheme != TaskbarTheme.none)
+            {
+                ttbService.Start(Settings.SystemTaskbarTheme);
             }
         }
 

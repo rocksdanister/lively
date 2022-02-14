@@ -238,6 +238,7 @@ namespace Lively.UI.WinUI.Helpers
                         Type = type,
                         IsAbsolutePath = true,
                         FileName = filePath,
+                        Contact = null,
                         Preview = null,
                         Thumbnail = null,
                         Arguments = string.Empty,
@@ -251,10 +252,30 @@ namespace Lively.UI.WinUI.Helpers
             throw new InvalidOperationException($"Unsupported file ({Path.GetExtension(filePath)})");
         }
 
-        public async Task AddWallpaperLink(Uri uri)
+        public ILibraryModel AddWallpaperLink(string url)
         {
-            throw new NotImplementedException();
+            var dir = Path.Combine(userSettings.Settings.WallpaperDir, "SaveData", "wptmp", Path.GetRandomFileName());
+            Directory.CreateDirectory(dir);
+            var data = new LivelyInfoModel()
+            {
+                Title = LinkHandler.GetLastSegmentUrl(url),
+                Type = WallpaperType.url,
+                IsAbsolutePath = true,
+                FileName = url,
+                Contact = url,
+                Preview = null,
+                Thumbnail = null,
+                Arguments = string.Empty,
+            };
+
+            //TODO generate livelyproperty for gif etc..
+            JsonStorage<LivelyInfoModel>.StoreData(Path.Combine(dir, "LivelyInfo.json"), data);
+            return libraryVm.AddWallpaper(dir);
         }
+
+        public ILibraryModel AddWallpaperLink(Uri uri) => AddWallpaperLink(uri.OriginalString);
+
+        public void SortWallpaper(ILibraryModel obj) => libraryVm.SortWallpaper((LibraryModel)obj);
 
         protected virtual void Dispose(bool disposing)
         {

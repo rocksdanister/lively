@@ -66,6 +66,17 @@ namespace Lively.UI.WinUI.ViewModels
             }
 
             WebUrlText = uri.OriginalString;
+
+            try
+            {
+                NewWallpaper = libraryUtil.AddWallpaperLink(uri.OriginalString);
+                OnRequestClose?.Invoke(this, EventArgs.Empty);
+            }
+            catch (Exception e)
+            {
+                //TODO
+            }
+
             /*
             if (userSettings.Settings.AutoDetectOnlineStreams &&
                  StreamUtil.IsSupportedStream(uri))
@@ -123,7 +134,6 @@ namespace Lively.UI.WinUI.ViewModels
                          e.Message,
                          Properties.Resources.TextError);
                     */
-                    return;
                 }
             }
         }
