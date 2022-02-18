@@ -35,6 +35,7 @@ namespace Lively.Services
             {
                 try
                 {
+                    /*
                     if (!processUI.Responding)
                     {
                         RestartUI();
@@ -43,6 +44,8 @@ namespace Lively.Services
                     {
                         processUI.StandardInput.WriteLine("WM SHOW");
                     }
+                    */
+                    processUI.StandardInput.WriteLine("WM SHOW");
                 }
                 catch (Exception e)
                 {

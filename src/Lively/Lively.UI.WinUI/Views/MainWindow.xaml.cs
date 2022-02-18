@@ -15,6 +15,7 @@ using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.UI.Xaml.Navigation;
 using SettingsUI.Extensions;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -30,6 +31,16 @@ namespace Lively.UI.WinUI
     /// </summary>
     public sealed partial class MainWindow : Window
     {
+        private readonly List<(string Tag, Type Page, NavPages navPage)> _pages = new List<(string Tag, Type Page, NavPages navPage)>
+        {
+            ("library", typeof(LibraryView), NavPages.library),
+            ("gallery", typeof(GalleryView), NavPages.gallery),
+            ("general", typeof(SettingsGeneralView), NavPages.settingsGeneral),
+            ("performance", typeof(SettingsPerformanceView), NavPages.settingsPerformance),
+            ("wallpaper", typeof(SettingsWallpaperView), NavPages.settingsWallpaper),
+            ("system", typeof(SettingsSystemView), NavPages.settingsSystem),
+        };
+
         private readonly SettingsViewModel settingsVm;
         private readonly IDesktopCoreClient desktopCore;
         private readonly IUserSettingsClient userSettings;
@@ -141,18 +152,22 @@ namespace Lively.UI.WinUI
 
         public void NavViewNavigate(NavPages item)
         {
-            string tag = item switch
-            {
-                NavPages.library => "library",
-                NavPages.gallery => "gallery",
-                NavPages.settingsGeneral => "general",
-                NavPages.settingsPerformance => "performance",
-                NavPages.settingsWallpaper => "wallpaper",
-                NavPages.settingsSystem => "system",
-                _ => "library"
-            };
+            var tag = _pages.FirstOrDefault(p => p.navPage.Equals(item)).Tag.ToString();
             navView.SelectedItem = navView.MenuItems.First(x => ((NavigationViewItem)x).Tag.ToString() == tag);
             NavigatePage(tag);
+        }
+
+        private void NavigatePage(string navItemTag)
+        {
+            var item = _pages.FirstOrDefault(p => p.Tag.Equals(navItemTag));
+            Type _page = item.Page;
+            // Get the page type before navigation so you can prevent duplicate entries in the backstack.
+            var preNavPageType = contentFrame.CurrentSourcePageType;
+            // Only navigate if the selected page isn't currently loaded.
+            if (!(_page is null) && !Type.Equals(preNavPageType, _page))
+            {
+                contentFrame.Navigate(_page, null, new DrillInNavigationTransitionInfo());
+            }
         }
 
         private void NavView_BackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)
@@ -162,34 +177,6 @@ namespace Lively.UI.WinUI
 
             //If audio changed in settings page..
             this.audioSlider.Value = settingsVm.GlobalWallpaperVolume;
-        }
-
-        private void NavigatePage(string tag)
-        {
-            switch (tag)
-            {
-                case "library":
-                    contentFrame.Navigate(typeof(LibraryView), null, new DrillInNavigationTransitionInfo());
-                    break;
-                case "gallery":
-                    contentFrame.Navigate(typeof(GalleryView), null, new DrillInNavigationTransitionInfo());
-                    break;
-                case "general":
-                    contentFrame.Navigate(typeof(SettingsGeneralView), null, new DrillInNavigationTransitionInfo());
-                    break;
-                case "performance":
-                    contentFrame.Navigate(typeof(SettingsPerformanceView), null, new DrillInNavigationTransitionInfo());
-                    break;
-                case "wallpaper":
-                    contentFrame.Navigate(typeof(SettingsWallpaperView), null, new DrillInNavigationTransitionInfo());
-                    break;
-                case "system":
-                    contentFrame.Navigate(typeof(SettingsSystemView), null, new DrillInNavigationTransitionInfo());
-                    break;
-                default:
-                    //TODO
-                    break;
-            }
         }
 
         private async void AddWallpaperButton_Click(object sender, RoutedEventArgs e)
@@ -295,20 +282,8 @@ namespace Lively.UI.WinUI
             navView.MenuItems.Add(CreateMenu(i18n.GetString("System/Header"), "system"));
         }
 
-        private void UpdateAudioSliderIcon(double volume) => audioBtn.Icon = audioIcons[(int)Math.Ceiling((audioIcons.Length - 1) * volume / 100)];
-
-        public enum NavPages
-        {
-            library,
-            gallery,
-            help,
-            settingsGeneral,
-            settingsPerformance,
-            settingsWallpaper,
-            settingsAudio,
-            settingsSystem,
-            settingsMisc
-        }
+        private void UpdateAudioSliderIcon(double volume) => 
+            audioBtn.Icon = audioIcons[(int)Math.Ceiling((audioIcons.Length - 1) * volume / 100)];
 
         //Actually called before window closed!
         //Issue: https://github.com/microsoft/microsoft-ui-xaml/issues/5454
@@ -421,8 +396,18 @@ namespace Lively.UI.WinUI
 
         #region helpers
 
+        public enum NavPages
+        {
+            library,
+            gallery,
+            settingsGeneral,
+            settingsPerformance,
+            settingsWallpaper,
+            settingsSystem,
+        }
+
         private readonly FontIcon[] audioIcons =
-{
+        {
             new FontIcon(){ Glyph = "\uE74F" },
             new FontIcon(){ Glyph = "\uE992" },
             new FontIcon(){ Glyph = "\uE993" },
