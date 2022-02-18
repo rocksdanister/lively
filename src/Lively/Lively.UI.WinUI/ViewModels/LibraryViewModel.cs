@@ -144,6 +144,7 @@ namespace Lively.UI.WinUI.ViewModels
             if (libItem != null)
             {
                 var binarySearchIndex = BinarySearch(LibraryItems, libItem.Title);
+                libItem.WallpaperCategory = LocalizationUtil.GetLocalizedWallpaperCategory(libItem.LivelyInfo.Type);
                 LibraryItems.Insert(binarySearchIndex, libItem);
             }
             return libItem;
