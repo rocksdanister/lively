@@ -8,7 +8,7 @@
     Title="Lively Updater"
     Width="650"
     Height="700"
-    Background="#FF2B2B2B"
+    Background="#202020"
     Closing="Window_Closing"
     ResizeMode="CanMinimize"
     WindowStartupLocation="CenterScreen"
@@ -23,16 +23,16 @@
                 x:Name="changelog"
                 MinHeight="550"
                 MaxHeight="550"
-                Background="Gray"
+                Background="#373737"
                 Foreground="White"
                 IsReadOnly="True" />
             <ProgressBar
                 Name="progressBar"
                 MinHeight="10"
-                Margin="0,10,0,0" />
+                Margin="0,0,0,0" />
             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                 <TextBlock x:Name="sizeTxt">-</TextBlock>
-                <TextBlock x:Name="totalSizeTxt">/- MB</TextBlock>
+                <TextBlock x:Name="totalSizeTxt" Foreground="White">/- MB</TextBlock>
             </StackPanel>
             <Button
                 Name="downloadBtn"
@@ -40,8 +40,16 @@
                 MinHeight="35"
                 Margin="0,10,0,0"
                 HorizontalAlignment="Center"
+                Background="#2d2d2d"
                 Click="Download_Button_Click"
-                Content="Download" />
+                Content="Download"
+                Foreground="LightGray">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="2.5" />
+                    </Style>
+                </Button.Resources>
+            </Button>
         </StackPanel>
     </Grid>
 </Window>
