@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources;
 
@@ -31,14 +32,14 @@ namespace Lively.UI.WinUI
     /// </summary>
     public sealed partial class MainWindow : Window
     {
-        private readonly List<(string Tag, Type Page, NavPages navPage)> _pages = new List<(string Tag, Type Page, NavPages navPage)>
+        private readonly List<(Type Page, NavPages NavPage)> _pages = new List<(Type Page, NavPages NavPage)>
         {
-            ("library", typeof(LibraryView), NavPages.library),
-            ("gallery", typeof(GalleryView), NavPages.gallery),
-            ("general", typeof(SettingsGeneralView), NavPages.settingsGeneral),
-            ("performance", typeof(SettingsPerformanceView), NavPages.settingsPerformance),
-            ("wallpaper", typeof(SettingsWallpaperView), NavPages.settingsWallpaper),
-            ("system", typeof(SettingsSystemView), NavPages.settingsSystem),
+            (typeof(LibraryView), NavPages.library),
+            (typeof(GalleryView), NavPages.gallery),
+            (typeof(SettingsGeneralView), NavPages.settingsGeneral),
+            (typeof(SettingsPerformanceView), NavPages.settingsPerformance),
+            (typeof(SettingsWallpaperView), NavPages.settingsWallpaper),
+            (typeof(SettingsSystemView), NavPages.settingsSystem),
         };
 
         private readonly SettingsViewModel settingsVm;
@@ -152,14 +153,14 @@ namespace Lively.UI.WinUI
 
         public void NavViewNavigate(NavPages item)
         {
-            var tag = _pages.FirstOrDefault(p => p.navPage.Equals(item)).Tag.ToString();
+            var tag = GetEnumMemberAttrValue(item);
             navView.SelectedItem = navView.MenuItems.First(x => ((NavigationViewItem)x).Tag.ToString() == tag);
             NavigatePage(tag);
         }
 
         private void NavigatePage(string navItemTag)
         {
-            var item = _pages.FirstOrDefault(p => p.Tag.Equals(navItemTag));
+            var item = _pages.FirstOrDefault(p => GetEnumMemberAttrValue(p.NavPage).Equals(navItemTag));
             Type _page = item.Page;
             // Get the page type before navigation so you can prevent duplicate entries in the backstack.
             var preNavPageType = contentFrame.CurrentSourcePageType;
@@ -398,12 +399,26 @@ namespace Lively.UI.WinUI
 
         public enum NavPages
         {
+            [EnumMember(Value = "library")]
             library,
+            [EnumMember(Value = "gallery")]
             gallery,
+            [EnumMember(Value = "general")]
             settingsGeneral,
+            [EnumMember(Value = "performance")]
             settingsPerformance,
+            [EnumMember(Value = "wallpaper")]
             settingsWallpaper,
+            [EnumMember(Value = "system")]
             settingsSystem,
+        }
+
+        public static string GetEnumMemberAttrValue<T>(T enumVal) where T : Enum
+        {
+            var enumType = typeof(T);
+            var memInfo = enumType.GetMember(enumVal.ToString());
+            var attr = memInfo.FirstOrDefault()?.GetCustomAttributes(false).OfType<EnumMemberAttribute>().FirstOrDefault();
+            return attr?.Value;
         }
 
         private readonly FontIcon[] audioIcons =
@@ -415,7 +430,7 @@ namespace Lively.UI.WinUI
             new FontIcon(){ Glyph = "\uE995" },
         };
 
-        private NavigationViewItem CreateMenu(string menuName, string tag, string glyph = "")
+        private static NavigationViewItem CreateMenu(string menuName, string tag, string glyph = "")
         {
             var item = new NavigationViewItem
             {
