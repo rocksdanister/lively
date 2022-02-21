@@ -158,14 +158,14 @@ namespace Lively.UI.WinUI.ViewModels
                     case WallpaperArrangement.per:
                         {
                             var item = items.Find(x => selection.Screen.Equals(x.Display));
-                            obj = libraryVm.LibraryItems.FirstOrDefault(x => x.LivelyInfoFolderPath == item.LivelyInfoFolderPath);
+                            obj = libraryVm.LibraryItems.FirstOrDefault(x => x.LivelyInfoFolderPath.Equals(item.LivelyInfoFolderPath, StringComparison.OrdinalIgnoreCase));
                         }
                         break;
                     case WallpaperArrangement.span:
                     case WallpaperArrangement.duplicate:
                         {
                             var item = items[0];
-                            obj = libraryVm.LibraryItems.FirstOrDefault(x => x.LivelyInfoFolderPath == item.LivelyInfoFolderPath);
+                            obj = libraryVm.LibraryItems.FirstOrDefault(x => x.LivelyInfoFolderPath.Equals(item.LivelyInfoFolderPath, StringComparison.OrdinalIgnoreCase));
                         }
                         break;      
                 }

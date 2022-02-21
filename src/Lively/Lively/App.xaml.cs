@@ -259,9 +259,9 @@ namespace Lively
 
         private void CreateWallpaperDir(string baseDirectory)
         {
-            Directory.CreateDirectory(Path.Combine(baseDirectory, "wallpapers"));
-            Directory.CreateDirectory(Path.Combine(baseDirectory, "SaveData", "wptmp"));
-            Directory.CreateDirectory(Path.Combine(baseDirectory, "SaveData", "wpdata"));
+            Directory.CreateDirectory(Path.Combine(baseDirectory, Constants.CommonPartialPaths.WallpaperInstallDir));
+            Directory.CreateDirectory(Path.Combine(baseDirectory, Constants.CommonPartialPaths.WallpaperInstallTempDir));
+            Directory.CreateDirectory(Path.Combine(baseDirectory, Constants.CommonPartialPaths.WallpaperSettingsDir));
         }
 
         private void SetupUnhandledExceptionLogging()

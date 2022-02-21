@@ -59,7 +59,7 @@ namespace Lively.UI.WinUI.Helpers
                         return;
 
                     //Delete LivelyProperties.json backup folder.
-                    string[] wpdataDir = Directory.GetDirectories(Path.Combine(userSettings.Settings.WallpaperDir, "SaveData", "wpdata"));
+                    string[] wpdataDir = Directory.GetDirectories(Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperSettingsDir));
                     var wpFolderName = new DirectoryInfo(obj.LivelyInfoFolderPath).Name;
                     for (int i = 0; i < wpdataDir.Length; i++)
                     {
@@ -230,7 +230,7 @@ namespace Lively.UI.WinUI.Helpers
                 }
                 else
                 {
-                    var dir = Path.Combine(userSettings.Settings.WallpaperDir, "SaveData", "wptmp", Path.GetRandomFileName());
+                    var dir = Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperInstallTempDir, Path.GetRandomFileName());
                     Directory.CreateDirectory(dir);
                     var data = new LivelyInfoModel()
                     {
@@ -254,7 +254,7 @@ namespace Lively.UI.WinUI.Helpers
 
         public ILibraryModel AddWallpaperLink(string url)
         {
-            var dir = Path.Combine(userSettings.Settings.WallpaperDir, "SaveData", "wptmp", Path.GetRandomFileName());
+            var dir = Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperInstallTempDir, Path.GetRandomFileName());
             Directory.CreateDirectory(dir);
             var data = new LivelyInfoModel()
             {

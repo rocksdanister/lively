@@ -38,8 +38,8 @@ namespace Lively.UI.WinUI.ViewModels
 
             wallpaperScanFolders = new List<string>
             {
-                Path.Combine(userSettings.Settings.WallpaperDir, "wallpapers"),
-                Path.Combine(userSettings.Settings.WallpaperDir, "SaveData", "wptmp")
+                Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperInstallDir),
+                Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperInstallTempDir)
             };
 
             foreach (var item in ScanWallpaperFolders(wallpaperScanFolders))
@@ -311,8 +311,8 @@ namespace Lively.UI.WinUI.ViewModels
         {
             LibraryItems.Clear();
             wallpaperScanFolders.Clear();
-            wallpaperScanFolders.Add(Path.Combine(newDir, "wallpapers"));
-            wallpaperScanFolders.Add(Path.Combine(newDir, "saveData", "wptmp"));
+            wallpaperScanFolders.Add(Path.Combine(newDir, Constants.CommonPartialPaths.WallpaperInstallDir));
+            wallpaperScanFolders.Add(Path.Combine(newDir, Constants.CommonPartialPaths.WallpaperInstallTempDir));
             foreach (var item in ScanWallpaperFolders(wallpaperScanFolders))
             {
                 LibraryItems.Insert(BinarySearch(LibraryItems, item.Title), item);

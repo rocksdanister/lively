@@ -658,7 +658,7 @@ namespace Lively.UI.Wpf.Views.LivelyProperty
                 try
                 {
                     screen = selectedScreen;
-                    var dataFolder = Path.Combine(userSettings.Settings.WallpaperDir, "SaveData", "wpdata");
+                    var dataFolder = Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperSettingsDir);
                     if (screen?.Index.ToString() != null)
                     {
                         //Create a directory with the wp foldername in SaveData/wpdata/, copy livelyproperties.json into this.

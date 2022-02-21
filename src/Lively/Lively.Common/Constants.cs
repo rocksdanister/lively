@@ -23,6 +23,22 @@ namespace Lively.Common
             public static string WeatherSettingsPath { get; } = Path.Combine(AppDataDir, "WeatherSettings.json");
         }
 
+        public static class CommonPartialPaths
+        {
+            /// <summary>
+            /// To be combined with dynamic path Settings.WallpaperDir
+            /// </summary>
+            public static string WallpaperInstallDir { get; } = "wallpapers";
+            /// <summary>
+            /// To be combined with dynamic path Settings.WallpaperDir
+            /// </summary>
+            public static string WallpaperInstallTempDir { get; } = Path.Combine("SaveData", "wptmp");
+            /// <summary>
+            /// To be combined with dynamic path Settings.WallpaperDir
+            /// </summary>
+            public static string WallpaperSettingsDir { get; } = Path.Combine("SaveData", "wpdata");
+        }
+
         public static class SingleInstance
         {
             public static string UniqueAppName { get; } = "LIVELY:DESKTOPWALLPAPERSYSTEM";
