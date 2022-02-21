@@ -1165,8 +1165,8 @@ namespace Lively.UI.WinUI.ViewModels
                 var parentDir = Directory.GetParent(newDir).ToString();
                 if (parentDir != null)
                 {
-                    if (Directory.Exists(Path.Combine(parentDir, "wallpapers")) &&
-                        Directory.Exists(Path.Combine(parentDir, "SaveData", "wpdata")))
+                    if (Directory.Exists(Path.Combine(parentDir, Constants.CommonPartialPaths.WallpaperInstallDir)) &&
+                        Directory.Exists(Path.Combine(parentDir, Constants.CommonPartialPaths.WallpaperSettingsDir)))
                     {
                         //User selected wrong directory, lively needs the SaveData folder also(root).
                         newDir = parentDir;
@@ -1176,20 +1176,20 @@ namespace Lively.UI.WinUI.ViewModels
                 WallpaperDirectoryChangeOngoing = true;
                 WallpaperDirectoryChangeCommand.NotifyCanExecuteChanged();
                 //create destination directory's if not exist.
-                Directory.CreateDirectory(Path.Combine(newDir, "wallpapers"));
-                Directory.CreateDirectory(Path.Combine(newDir, "SaveData", "wptmp"));
-                Directory.CreateDirectory(Path.Combine(newDir, "SaveData", "wpdata"));
+                Directory.CreateDirectory(Path.Combine(newDir, Constants.CommonPartialPaths.WallpaperInstallDir));
+                Directory.CreateDirectory(Path.Combine(newDir, Constants.CommonPartialPaths.WallpaperInstallTempDir));
+                Directory.CreateDirectory(Path.Combine(newDir, Constants.CommonPartialPaths.WallpaperSettingsDir));
 
                 if (userSettings.Settings.WallpaperDirMoveExistingWallpaperNewDir)
                 {
                     await Task.Run(() =>
                     {
-                        FileOperations.DirectoryCopy(Path.Combine(WallpaperDirectory, "wallpapers"),
-                            Path.Combine(newDir, "wallpapers"), true);
-                        FileOperations.DirectoryCopy(Path.Combine(WallpaperDirectory, "SaveData", "wptmp"),
-                            Path.Combine(newDir, "SaveData", "wptmp"), true);
-                        FileOperations.DirectoryCopy(Path.Combine(WallpaperDirectory, "SaveData", "wpdata"),
-                            Path.Combine(newDir, "SaveData", "wpdata"), true);
+                        FileOperations.DirectoryCopy(Path.Combine(WallpaperDirectory, Constants.CommonPartialPaths.WallpaperInstallDir),
+                            Path.Combine(newDir, Constants.CommonPartialPaths.WallpaperInstallDir), true);
+                        FileOperations.DirectoryCopy(Path.Combine(WallpaperDirectory, Constants.CommonPartialPaths.WallpaperInstallTempDir),
+                            Path.Combine(newDir, Constants.CommonPartialPaths.WallpaperInstallTempDir), true);
+                        FileOperations.DirectoryCopy(Path.Combine(WallpaperDirectory, Constants.CommonPartialPaths.WallpaperSettingsDir),
+                            Path.Combine(newDir, Constants.CommonPartialPaths.WallpaperSettingsDir), true);
                     });
                 }
                 else
@@ -1220,9 +1220,10 @@ namespace Lively.UI.WinUI.ViewModels
             if (!isDestEmptyDir)
             {
                 //not deleting the root folder, what if the user selects a folder that is not used by Lively alone!
-                var result1 = await FileOperations.DeleteDirectoryAsync(Path.Combine(previousDirectory, "wallpapers"), 1000, 3000);
-                var result2 = await FileOperations.DeleteDirectoryAsync(Path.Combine(previousDirectory, "SaveData"), 0, 1000);
-                if (!(result1 && result2))
+                var result1 = await FileOperations.DeleteDirectoryAsync(Path.Combine(previousDirectory, Constants.CommonPartialPaths.WallpaperInstallDir), 1000, 3000);
+                var result2 = await FileOperations.DeleteDirectoryAsync(Path.Combine(previousDirectory, Constants.CommonPartialPaths.WallpaperInstallTempDir), 0, 1000);
+                var result3 = await FileOperations.DeleteDirectoryAsync(Path.Combine(previousDirectory, Constants.CommonPartialPaths.WallpaperSettingsDir), 0, 1000);
+                if (!(result1 && result2 && result3))
                 {
                     //TODO: Dialogue
                 }

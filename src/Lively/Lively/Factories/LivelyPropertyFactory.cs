@@ -16,7 +16,7 @@ namespace Lively.Factories
             if (model.LivelyPropertyPath != null)
             {
                 //customisable wallpaper, livelyproperty.json is present.
-                var dataFolder = Path.Combine(userSettings.Settings.WallpaperDir, "SaveData", "wpdata");
+                var dataFolder = Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperSettingsDir);
                 try
                 {
                     //extract last digits of the Screen class DeviceName, eg: \\.\DISPLAY4 -> 4

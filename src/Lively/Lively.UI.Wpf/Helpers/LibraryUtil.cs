@@ -58,7 +58,7 @@ namespace Lively.UI.Wpf.Helpers
                         return;
 
                     //Delete LivelyProperties.json backup folder.
-                    string[] wpdataDir = Directory.GetDirectories(Path.Combine(userSettings.Settings.WallpaperDir, "SaveData", "wpdata"));
+                    string[] wpdataDir = Directory.GetDirectories(Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperSettingsDir));
                     var wpFolderName = new DirectoryInfo(obj.LivelyInfoFolderPath).Name;
                     for (int i = 0; i < wpdataDir.Length; i++)
                     {
@@ -205,7 +205,7 @@ namespace Lively.UI.Wpf.Helpers
                         string installDir = null;
                         try
                         {
-                            installDir = Path.Combine(userSettings.Settings.WallpaperDir, "wallpapers", Path.GetRandomFileName());
+                            installDir = Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperInstallDir, Path.GetRandomFileName());
                             await Task.Run(() => ZipExtract.ZipExtractFile(filePath, installDir, false));
                             return libraryVm.AddWallpaper(installDir);
                         }
@@ -229,7 +229,7 @@ namespace Lively.UI.Wpf.Helpers
                 }
                 else
                 {
-                    var dir = Path.Combine(userSettings.Settings.WallpaperDir, "SaveData", "wptmp", Path.GetRandomFileName());
+                    var dir = Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperInstallTempDir, Path.GetRandomFileName());
                     Directory.CreateDirectory(dir);
                     var data = new LivelyInfoModel()
                     {
@@ -253,7 +253,7 @@ namespace Lively.UI.Wpf.Helpers
 
         public ILibraryModel AddWallpaperLink(string url)
         {
-            var dir = Path.Combine(userSettings.Settings.WallpaperDir, "SaveData", "wptmp", Path.GetRandomFileName());
+            var dir = Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperInstallTempDir, Path.GetRandomFileName());
             Directory.CreateDirectory(dir);
             var data = new LivelyInfoModel()
             {
