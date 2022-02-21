@@ -120,7 +120,7 @@ namespace Lively.UI.WinUI.ViewModels
                 {
                     var item = await libraryUtil.AddWallpaperFile(file.Path);
 
-                    if (item.LivelyInfo.IsAbsolutePath)
+                    if (item.DataType == LibraryItemType.processing)
                     {
                         NewWallpaper = item;
                         OnRequestClose?.Invoke(this, EventArgs.Empty);

@@ -238,15 +238,15 @@ namespace Lively.UI.WinUI.Helpers
                         Type = type,
                         IsAbsolutePath = true,
                         FileName = filePath,
-                        Contact = null,
-                        Preview = null,
-                        Thumbnail = null,
+                        Contact = string.Empty,
+                        Preview = string.Empty,
+                        Thumbnail = string.Empty,
                         Arguments = string.Empty,
                     };
 
                     //TODO generate livelyproperty for gif etc..
                     JsonStorage<LivelyInfoModel>.StoreData(Path.Combine(dir, "LivelyInfo.json"), data);
-                    return libraryVm.AddWallpaper(dir);
+                    return libraryVm.AddWallpaper(dir, true);
                 }
             }
             throw new InvalidOperationException($"Unsupported file ({Path.GetExtension(filePath)})");
@@ -263,14 +263,14 @@ namespace Lively.UI.WinUI.Helpers
                 IsAbsolutePath = true,
                 FileName = url,
                 Contact = url,
-                Preview = null,
-                Thumbnail = null,
+                Preview = string.Empty,
+                Thumbnail = string.Empty,
                 Arguments = string.Empty,
             };
 
             //TODO generate livelyproperty for gif etc..
             JsonStorage<LivelyInfoModel>.StoreData(Path.Combine(dir, "LivelyInfo.json"), data);
-            return libraryVm.AddWallpaper(dir);
+            return libraryVm.AddWallpaper(dir, true);
         }
 
         public ILibraryModel AddWallpaperLink(Uri uri) => AddWallpaperLink(uri.OriginalString);

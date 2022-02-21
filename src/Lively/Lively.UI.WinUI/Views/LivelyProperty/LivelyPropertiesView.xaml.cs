@@ -39,6 +39,7 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
         private readonly IDisplayMonitor screen;
         private JObject livelyPropertyCopyData;
         private readonly object _sendMsgLock = new();
+        private readonly object _colorPickerTipLock = new();
 
         //UI
         private readonly Thickness margin = new Thickness(0, 10, 20, 10);
@@ -575,22 +576,47 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
             }
 
             currEyeDropBtn.IsChecked = true;
-            mouseHook = new LowLevelMouseHook() { GenerateMouseMoveEvents = false, Handling = false };
-            //mouseHook.Move += MouseHook_Move;
+            mouseHook = new LowLevelMouseHook() { GenerateMouseMoveEvents = true, Handling = false };
+            mouseHook.Move += MouseHook_Move;
             mouseHook.Down += MouseHook_Down;
             mouseHook.Start();
+        }
+
+        private void MouseHook_Move(object sender, MouseEventArgs e)
+        {
+            lock (_colorPickerTipLock)
+                Monitor.PulseAll(_colorPickerTipLock);
+
+            lock (_colorPickerTipLock)
+            {
+                if (!Monitor.Wait(_colorPickerTipLock, 100))
+                {
+                    var color = GetColorAt(e.Position.X, e.Position.Y);
+                    _ = App.Services.GetRequiredService<MainWindow>().DispatcherQueue.TryEnqueue(() =>
+                    {
+                        currEyeDropBtn.Background = new SolidColorBrush(Color.FromArgb(
+                          255,
+                          color.R,
+                          color.G,
+                          color.B
+                        ));
+                    });
+                }
+            }
         }
 
         private void MouseHook_Down(object sender, H.Hooks.MouseEventArgs e)
         {
             try
             {
+                //e.IsHandled = true;
                 var color = GetColorAt(e.Position.X, e.Position.Y);
                 if (currEyeDropSplitBtn != null && currEyeDropBtn != null)
                 {
                     _ = App.Services.GetRequiredService<MainWindow>().DispatcherQueue.TryEnqueue(() =>
                     {
                         currEyeDropBtn.IsChecked = false;
+                        //currEyeDropBtn.Background = (SolidColorBrush)Application.Current.Resources["SystemControlForegroundAccentBrush"];
                         Border border = (Border)currEyeDropSplitBtn.Content;
                         border.Background = new SolidColorBrush(Color.FromArgb(
                           255,

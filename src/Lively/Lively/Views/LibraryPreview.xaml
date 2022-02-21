@@ -7,8 +7,8 @@
     xmlns:local="clr-namespace:Lively.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Width="410"
-    Height="610"
-    Background="#202020"
+    Height="630"
+    Background="#2b2b2b"
     Closing="Window_Closing"
     Loaded="Window_Loaded"
     ResizeMode="NoResize"
@@ -47,9 +47,13 @@
                 <TextBox
                     Name="textboxTitle"
                     Height="20"
+                    MinHeight="25"
                     MaxHeight="20"
                     Margin="10,5,25,10"
+                    Padding="5,0,0,0"
+                    VerticalContentAlignment="Center"
                     Background="#373737"
+                    BorderThickness="0,0,0,1"
                     Foreground="White"
                     IsEnabled="{Binding IsUserEditable}"
                     Text="{Binding Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
@@ -66,9 +70,10 @@
                     Height="81"
                     MaxHeight="81"
                     Margin="10,5,25,10"
-                    Padding="10,10,15,10"
+                    Padding="5,10,15,10"
                     AcceptsReturn="True"
                     Background="#373737"
+                    BorderThickness="0,0,0,1"
                     Foreground="White"
                     IsEnabled="{Binding IsUserEditable}"
                     Text="{Binding Desc, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -85,9 +90,13 @@
                 <TextBox
                     Name="textboxAuthor"
                     Height="20"
+                    MinHeight="25"
                     MaxHeight="20"
                     Margin="10,5,25,10"
+                    Padding="5,0,0,0"
+                    VerticalContentAlignment="Center"
                     Background="#373737"
+                    BorderThickness="0,0,0,1"
                     Foreground="White"
                     IsEnabled="{Binding IsUserEditable}"
                     Text="{Binding Author, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
@@ -102,9 +111,13 @@
                 <TextBox
                     Name="textboxContact"
                     Height="20"
+                    MinHeight="25"
                     MaxHeight="20"
                     Margin="10,5,25,0"
+                    Padding="5,0,0,0"
+                    VerticalContentAlignment="Center"
                     Background="#373737"
+                    BorderThickness="0,0,0,1"
                     Foreground="White"
                     IsEnabled="{Binding IsUserEditable}"
                     Text="{Binding Url, Mode=TwoWay}">
@@ -115,48 +128,49 @@
                     </TextBox.Resources>
                 </TextBox>
 
-                <StackPanel
-                    Margin="0,10,25,0"
-                    HorizontalAlignment="Right"
-                    Orientation="Horizontal">
-                    <Button
-                        x:Name="CancelBtn"
-                        MinWidth="100"
-                        MinHeight="30"
-                        Margin="0,0,10,0"
-                        Background="#2d2d2d"
-                        Command="{Binding CancelCommand}"
-                        Content="Cancel"
-                        Foreground="LightGray">
-                        <Button.Resources>
-                            <Style TargetType="Border">
-                                <Setter Property="CornerRadius" Value="2.5" />
-                            </Style>
-                        </Button.Resources>
-                    </Button>
-                    <Button
-                        x:Name="OkBtn"
-                        MinWidth="100"
-                        MinHeight="30"
-                        Background="#2d2d2d"
-                        Command="{Binding CaptureCommand}"
-                        Content="OK"
-                        Foreground="LightGray"
-                        IsDefault="True"
-                        IsEnabled="{Binding IsUserEditable}">
-                        <Button.Resources>
-                            <Style TargetType="Border">
-                                <Setter Property="CornerRadius" Value="2.5" />
-                            </Style>
-                        </Button.Resources>
-                    </Button>
-                </StackPanel>
-
-                <ProgressBar
-                    Name="gifProgressBar"
-                    Margin="0,15,0,0"
-                    VerticalAlignment="Bottom"
-                    Value="{Binding CurrentProgress, Mode=OneWay}" />
+                <Grid Margin="0,10,0,0" Background="#202020">
+                    <StackPanel
+                        Margin="10"
+                        HorizontalAlignment="Right"
+                        Orientation="Horizontal">
+                        <Button
+                            x:Name="CancelBtn"
+                            MinWidth="100"
+                            MinHeight="30"
+                            Margin="0,0,10,0"
+                            Background="#2d2d2d"
+                            Command="{Binding CancelCommand}"
+                            Content="Cancel"
+                            Foreground="LightGray">
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="2.5" />
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+                        <Button
+                            x:Name="OkBtn"
+                            MinWidth="100"
+                            MinHeight="30"
+                            Background="#2d2d2d"
+                            Command="{Binding CaptureCommand}"
+                            Content="OK"
+                            Foreground="LightGray"
+                            IsDefault="True"
+                            IsEnabled="{Binding IsUserEditable}">
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="2.5" />
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+                    </StackPanel>
+                    <ProgressBar
+                        Name="gifProgressBar"
+                        MinHeight="2.5"
+                        VerticalAlignment="Bottom"
+                        Value="{Binding CurrentProgress, Mode=OneWay}" />
+                </Grid>
             </StackPanel>
         </ScrollViewer>
     </Grid>

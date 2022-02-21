@@ -30,6 +30,10 @@ namespace Lively.Core
         /// </summary>
         public event EventHandler WallpaperChanged;
         /// <summary>
+        /// Update/remove preview clips, metadata or wallpaper.
+        /// </summary>
+        public event EventHandler<WallpaperUpdateArgs> WallpaperUpdated;
+        /// <summary>
         /// Error occured in wallpaper core.
         /// </summary>
         public event EventHandler<Exception> WallpaperError;
@@ -37,5 +41,12 @@ namespace Lively.Core
         /// Wallpaper core services restarted.
         /// </summary>
         public event EventHandler WallpaperReset;
+    }
+
+    public class WallpaperUpdateArgs : EventArgs
+    {
+        public UpdateWallpaperType Category { get; set; }
+        public ILivelyInfoModel Info { get; set; }
+        public string InfoPath { get; set; }
     }
 }

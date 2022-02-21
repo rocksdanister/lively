@@ -12,6 +12,7 @@ service DesktopService {
   rpc CloseWallpaperCategory(CloseWallpaperCategoryRequest) returns (google.protobuf.Empty);
   rpc SubscribeWallpaperChanged (google.protobuf.Empty) returns (stream google.protobuf.Empty);
   rpc SubscribeWallpaperError (google.protobuf.Empty) returns (stream WallpaperErrorResponse);
+  rpc SubscribeUpdateWallpaper (google.protobuf.Empty) returns (stream UpdateWallpaperResponse);
   rpc SendMessageWallpaper(WallpaperMessageRequest) returns (google.protobuf.Empty);
   rpc GetCoreStats (google.protobuf.Empty) returns (GetCoreStatsResponse);
 }
@@ -19,6 +20,7 @@ service DesktopService {
 message SetWallpaperRequest {
   string lively_info_path = 1;
   string monitor_id = 2;
+  LibraryItemCategory type = 3;
 }
 
 message GetWallpapersResponse {
@@ -28,6 +30,17 @@ message GetWallpapersResponse {
   string thumbnail_path = 4;
   string preview_path = 5;
   WallpaperCategory category = 6;
+}
+
+message UpdateWallpaperResponse {
+	UpdateWallpaperCategory type_ = 1;
+	string lively_info_path_ = 2;
+	string title = 3;
+	string description = 4;
+	string author = 5;
+	string website = 6;
+	string thumbnail_path_ = 7;
+	string preview_path_ = 8;
 }
 
 message GetCoreStatsResponse {
@@ -115,4 +128,18 @@ enum WallpaperCategory {
 	unityaudio = 9;
 	videostream = 10;
 	picture = 11;
+}
+
+enum LibraryItemCategory {
+	processing = 0;
+	ready = 1;
+	cmdImport = 2;
+	multiImport = 3;
+	edit = 4;
+}
+
+enum UpdateWallpaperCategory {
+	changed = 0;
+	remove = 1;
+    done = 2;
 }
