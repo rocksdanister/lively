@@ -16,7 +16,8 @@ namespace Lively.Services
         private bool disposedValue;
         private readonly string uiClientFileName;
         private readonly bool uiOutputRedirect;
-        
+        //private NativeMethods.RECT rctUI;
+
         public RunnerService()
         {
             uiClientFileName = Constants.ApplicationType.Client switch
@@ -92,6 +93,7 @@ namespace Lively.Services
                 {
                     processUI.Exited -= Proc_UI_Exited;
                     processUI.OutputDataReceived -= Proc_OutputDataReceived;
+                    //NativeMethods.GetWindowRect(processUI.MainWindowHandle, out rctUI);
                     if (!processUI.Responding || !processUI.CloseMainWindow() || !processUI.WaitForExit(2500))
                     {
                         processUI.Kill();
@@ -117,6 +119,7 @@ namespace Lively.Services
 
             try
             {
+                //NativeMethods.GetWindowRect(processUI.MainWindowHandle, out rctUI);
                 if (!processUI.Responding || !processUI.CloseMainWindow() || !processUI.WaitForExit(2500))
                 {
                     processUI.Kill();
@@ -146,6 +149,7 @@ namespace Lively.Services
             }
         }
 
+        public IntPtr HwndUI => processUI?.MainWindowHandle ?? IntPtr.Zero;
 
         public bool IsVisibleUI =>
             processUI != null && NativeMethods.IsWindowVisible(processUI.MainWindowHandle);

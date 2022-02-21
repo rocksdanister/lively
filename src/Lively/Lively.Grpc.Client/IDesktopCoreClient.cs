@@ -26,6 +26,7 @@ namespace Lively.Grpc.Client
 
         event EventHandler WallpaperChanged;
         event EventHandler<Exception> WallpaperError;
+        event EventHandler<WallpaperUpdatedData> WallpaperUpdated;
     }
 
     public class WallpaperData
@@ -36,5 +37,12 @@ namespace Lively.Grpc.Client
         public string PreviewPath { get; set; }
         public IDisplayMonitor Display { get; set; }
         public WallpaperType Category { get; set; }
+    }
+
+    public class WallpaperUpdatedData
+    {
+        public ILivelyInfoModel Info { get; set; }
+        public UpdateWallpaperType Category { get; set; }
+        public string InfoPath { get; set; }
     }
 }

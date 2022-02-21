@@ -238,4 +238,11 @@ namespace Lively.Common
         wpf,
         winui
     }
+
+    public enum UpdateWallpaperType
+    {
+        changed,
+        remove,
+        done
+    }
 }

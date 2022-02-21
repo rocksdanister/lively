@@ -77,7 +77,7 @@ namespace Lively.UI.WinUI.ViewModels
                         userSettings.Settings.SelectedDisplay = value.Screen;
                         userSettings.SaveAsync<ISettingsModel>();
                         //Updating library selected item.
-                        libraryVm.UpdateSelection();
+                        libraryVm.UpdateSelectedWallpaper();
                     }
                 }
             }

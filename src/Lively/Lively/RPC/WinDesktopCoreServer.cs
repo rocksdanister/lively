@@ -55,6 +55,7 @@ namespace Lively.RPC
             try
             {
                 var lm = WallpaperUtil.ScanWallpaperFolder(request.LivelyInfoPath);
+                lm.DataType = (LibraryItemType)(int)request.Type;
                 var display = displayManager.DisplayMonitors.FirstOrDefault(x => x.DeviceId == request.MonitorId);
                 desktopCore.SetWallpaper(lm, display ?? displayManager.PrimaryDisplayMonitor);
             }
@@ -193,6 +194,41 @@ namespace Lively.RPC
                     await tcs.Task;
 
                     await responseStream.WriteAsync(new Empty());
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.ToString());
+            }
+        }
+
+        public override async Task SubscribeUpdateWallpaper(Empty _, IServerStreamWriter<UpdateWallpaperResponse> responseStream, ServerCallContext context)
+        {
+            try
+            {
+                while (!context.CancellationToken.IsCancellationRequested)
+                {
+                    UpdateWallpaperResponse resp = null;
+                    var tcs = new TaskCompletionSource<bool>();
+                    desktopCore.WallpaperUpdated += WallpaperUpdated;
+                    void WallpaperUpdated(object s, WallpaperUpdateArgs e)
+                    {
+                        resp = new UpdateWallpaperResponse()
+                        {
+                            Title = e.Info.Title ?? string.Empty,
+                            Description = e.Info.Desc ?? string.Empty,
+                            Website = e.Info.Contact ?? string.Empty,
+                            Author = e.Info.Author ?? string.Empty,
+                            ThumbnailPath = e.Info.Thumbnail ?? string.Empty,
+                            PreviewPath = e.Info.Preview ?? string.Empty,
+                            LivelyInfoPath = e.InfoPath ?? string.Empty,
+                            Type = (UpdateWallpaperCategory)(int)e.Category,
+                        };
+                        desktopCore.WallpaperUpdated -= WallpaperUpdated;
+                        tcs.SetResult(true);
+                    }
+                    await tcs.Task;
+                    await responseStream.WriteAsync(resp);
                 }
             }
             catch (Exception e)

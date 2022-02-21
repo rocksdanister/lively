@@ -197,6 +197,9 @@ namespace Lively.UI.WinUI.Views.Pages
                     var libItem = libraryUtil.AddWallpaperLink(uri);
                     if (libItem.LivelyInfo.IsAbsolutePath)
                     {
+                        libItem.DataType = LibraryItemType.processing;
+                        await desktopCore.SetWallpaper(libItem, userSettings.Settings.SelectedDisplay);
+                        /*
                         var inputVm = new AddWallpaperDataViewModel(libItem);
                         var inputDialog = new ContentDialog()
                         {
@@ -210,6 +213,7 @@ namespace Lively.UI.WinUI.Views.Pages
                             PrimaryButtonCommand = inputVm.ProceedCommand,
                         };
                         await inputDialog.ShowAsyncQueue();
+                        */
                     }
                 }
                 catch (Exception ie)
@@ -245,8 +249,10 @@ namespace Lively.UI.WinUI.Views.Pages
                     try
                     {
                         var libItem = await libraryUtil.AddWallpaperFile(item);
-                        if (libItem.LivelyInfo.IsAbsolutePath)
+                        if (libItem.DataType == LibraryItemType.processing)
                         {
+                            await desktopCore.SetWallpaper(libItem, userSettings.Settings.SelectedDisplay);
+                            /*
                             var inputVm = new AddWallpaperDataViewModel(libItem);
                             var inputDialog = new ContentDialog()
                             {
@@ -260,6 +266,7 @@ namespace Lively.UI.WinUI.Views.Pages
                                 PrimaryButtonCommand = inputVm.ProceedCommand,
                             };
                             await inputDialog.ShowAsyncQueue();
+                            */
                         }
                     }
                     catch (Exception ie)

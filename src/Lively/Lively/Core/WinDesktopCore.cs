@@ -1,6 +1,7 @@
 ﻿using Lively.Common;
 using Lively.Common.API;
 using Lively.Common.Helpers;
+using Lively.Common.Helpers.Files;
 using Lively.Common.Helpers.Pinvoke;
 using Lively.Common.Helpers.Shell;
 using Lively.Common.Helpers.Storage;
@@ -12,6 +13,8 @@ using Lively.Helpers;
 using Lively.Helpers.Hardware;
 using Lively.Models;
 using Lively.Services;
+using Lively.ViewModels;
+using Lively.Views;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -23,6 +26,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Interop;
 using System.Windows.Threading;
 using static Lively.Common.Errors;
 
@@ -40,8 +44,9 @@ namespace Lively.Core
         private readonly List<IWallpaper> wallpapersPending = new List<IWallpaper>(2);
         private readonly List<IWallpaperLayoutModel> wallpapersDisconnected = new List<IWallpaperLayoutModel>();
 
-        public event EventHandler WallpaperChanged;
+        public event EventHandler<WallpaperUpdateArgs> WallpaperUpdated;
         public event EventHandler<Exception> WallpaperError;
+        public event EventHandler WallpaperChanged;
         public event EventHandler WallpaperReset;
 
         private readonly IUserSettingsService userSettings;
@@ -205,8 +210,83 @@ namespace Lively.Core
                 wallpaper.WindowInitialized -= WallpaperInitialized;
                 if (e.Success)
                 {
+                    bool cancelled = false;
+                    switch (wallpaper.Model.DataType)
+                    {
+                        case LibraryItemType.processing:
+                        case LibraryItemType.cmdImport:
+                        case LibraryItemType.multiImport:
+                        case LibraryItemType.edit:
+                            //backup..once processed is done, becomes ready.
+                            var type = wallpaper.Model.DataType;
+                            var tcs = new TaskCompletionSource<object>();
+                            var thread = new Thread(() =>
+                            {
+                                try
+                                {
+                                    _ = Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, new ThreadStart(delegate
+                                    {
+                                        var pWindow = new LibraryPreview(wallpaper)
+                                        {
+                                            Topmost = true,
+                                            ShowActivated = true,
+                                            WindowStartupLocation = WindowStartupLocation.CenterScreen
+                                        };
+                                        pWindow.Closed += (s, a) => tcs.SetResult(null);
+                                        var vm = (LibraryPreviewViewModel)pWindow.DataContext;
+                                        vm.DetailsUpdated += (s, e) => {
+                                            WallpaperUpdated?.Invoke(this, e);
+                                            if (e.Category == UpdateWallpaperType.remove)
+                                            {
+                                                cancelled = true;
+                                            }
+                                        };
+                                        pWindow.Show();
+                                        if (runner.IsVisibleUI)
+                                        {
+                                            var client = runner.HwndUI;
+                                            var preview = new WindowInteropHelper(pWindow).Handle;
+                                            NativeMethods.GetWindowRect(client, out NativeMethods.RECT crt);
+                                            NativeMethods.GetWindowRect(preview, out NativeMethods.RECT prt);
+                                            //Assigning left, top to window directly not working correctly with display scaling..
+                                            NativeMethods.SetWindowPos(preview,
+                                                0,
+                                                crt.Left + (crt.Right - crt.Left) / 2 - (prt.Right - prt.Left) / 2,
+                                                crt.Top - (crt.Top - crt.Bottom) / 2 - (prt.Bottom - prt.Top) / 2,
+                                                0,
+                                                0,
+                                                0x0001 | 0x0004);
+                                        }
+                                    }));
+                                }
+                                catch (Exception e)
+                                {
+                                    tcs.SetException(e);
+                                    Logger.Error(e.ToString());
+                                }
+                            });
+                            thread.SetApartmentState(ApartmentState.STA);
+                            thread.Start();
+                            await tcs.Task;
+                            break;
+                        case LibraryItemType.ready:
+                            break;
+                        default:
+                            break;
+                    }
+
+                    if (cancelled)
+                    {
+                        //user cancelled/fail!
+                        wallpaper.Terminate();
+                        DesktopUtil.RefreshDesktop();
+                        _ = FileOperations.DeleteDirectoryAsync(wallpaper.Model.LivelyInfoFolderPath, 0, 1000);
+                        _ = FileOperations.DeleteDirectoryAsync(Directory.GetParent(Path.GetDirectoryName(wallpaper.LivelyPropertyCopyPath)).ToString(), 0, 1000);
+                        return;
+                    }
+
                     //reload wp, fix if the webpage code is not subscribed to js window size changed event.
-                    reloadRequired = wallpaper.Category == WallpaperType.web || 
+                    reloadRequired = wallpaper.Category == WallpaperType.web ||
                         wallpaper.Category == WallpaperType.webaudio ||
                         wallpaper.Category == WallpaperType.url;
 

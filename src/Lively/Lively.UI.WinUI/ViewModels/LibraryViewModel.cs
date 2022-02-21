@@ -15,6 +15,7 @@ using Lively.Common.Helpers.Archive;
 using Lively.Grpc.Client;
 using Windows.System;
 using Lively.UI.WinUI.Helpers;
+using System.Diagnostics;
 
 namespace Lively.UI.WinUI.ViewModels
 {
@@ -38,22 +39,19 @@ namespace Lively.UI.WinUI.ViewModels
             wallpaperScanFolders = new List<string>
             {
                 Path.Combine(userSettings.Settings.WallpaperDir, "wallpapers"),
-                Path.Combine(userSettings.Settings.WallpaperDir, "saveData", "wptmp")
+                Path.Combine(userSettings.Settings.WallpaperDir, "SaveData", "wptmp")
             };
 
             foreach (var item in ScanWallpaperFolders(wallpaperScanFolders))
             {
-                LibraryItems.Insert(BinarySearch(LibraryItems, item.Title), item);             
+                LibraryItems.Insert(BinarySearch(LibraryItems, item.Title), item);          
             }
 
-            var selectedWallpaper = desktopCore.Wallpapers.FirstOrDefault(x => x.Display.Equals(userSettings.Settings.SelectedDisplay));
-            if (selectedWallpaper != null)
-            {
-                //Select already running item when UI program is started again..
-                SelectedItem = LibraryItems.FirstOrDefault(x => selectedWallpaper.LivelyInfoFolderPath == x.LivelyInfoFolderPath);
-            }
+            //Select already running item when UI program is started again..
+            UpdateSelectedWallpaper();
 
             desktopCore.WallpaperChanged += DesktopCore_WallpaperChanged;
+            desktopCore.WallpaperUpdated += DesktopCore_WallpaperUpdated;
             settingsVm.WallpaperDirChanged += (s, e) => WallpaperDirectoryUpdate(e);
         }
 
@@ -81,7 +79,7 @@ namespace Lively.UI.WinUI.ViewModels
             {
                 if (value != null)
                 {
-                    var wallpapers = desktopCore.Wallpapers.Where(x => x.LivelyInfoFolderPath == value.LivelyInfoFolderPath);
+                    var wallpapers = desktopCore.Wallpapers.Where(x => x.LivelyInfoFolderPath.Equals(value.LivelyInfoFolderPath, StringComparison.OrdinalIgnoreCase));
                     if (wallpapers.Count() > 0)
                     {
                         switch (userSettings.Settings.WallpaperArrangement)
@@ -116,36 +114,64 @@ namespace Lively.UI.WinUI.ViewModels
         {
             _ = App.Services.GetRequiredService<MainWindow>().DispatcherQueue.TryEnqueue(() =>
             {
-                UpdateSelection();
+                UpdateSelectedWallpaper();
+            });
+        }
+
+        private void DesktopCore_WallpaperUpdated(object sender, WallpaperUpdatedData e)
+        {
+            _ = App.Services.GetRequiredService<MainWindow>().DispatcherQueue.TryEnqueue(() =>
+            {
+                var item = LibraryItems.FirstOrDefault(x => x.LivelyInfoFolderPath.Equals(e.InfoPath, StringComparison.OrdinalIgnoreCase));
+                if (item != null)
+                {
+                    if (e.Category == UpdateWallpaperType.changed)
+                    {
+                        //temporary for visual appearance only..
+                        item.Title = e.Info.Title;
+                        item.Desc = e.Info.Desc;
+                        item.ImagePath = e.Info.Thumbnail;
+                    }
+                    else if (e.Category == UpdateWallpaperType.done)
+                    {
+                        LibraryItems.Remove(item);
+                        AddWallpaper(item.LivelyInfoFolderPath);
+                    }
+                    else if (e.Category == UpdateWallpaperType.remove)
+                    {
+                        LibraryItems.Remove(item);
+                    }
+                }
             });
         }
 
         /// <summary>
         /// Update library selected item based on selected display.
         /// </summary>
-        public void UpdateSelection()
+        public void UpdateSelectedWallpaper()
         {
             if (userSettings.Settings.WallpaperArrangement == WallpaperArrangement.span && desktopCore.Wallpapers.Count > 0)
             {
-                SelectedItem = LibraryItems.FirstOrDefault(x => desktopCore.Wallpapers[0].LivelyInfoFolderPath == x.LivelyInfoFolderPath);
+                SelectedItem = LibraryItems.FirstOrDefault(x => desktopCore.Wallpapers[0].LivelyInfoFolderPath.Equals(x.LivelyInfoFolderPath, StringComparison.OrdinalIgnoreCase));
             }
             else
             {
-                var wp = desktopCore.Wallpapers.FirstOrDefault(x => userSettings.Settings.SelectedDisplay.Equals(x.Display));
-                SelectedItem = LibraryItems.FirstOrDefault(x => x.LivelyInfoFolderPath == wp?.LivelyInfoFolderPath);
+                var wallpaper = desktopCore.Wallpapers.FirstOrDefault(x => userSettings.Settings.SelectedDisplay.Equals(x.Display));
+                SelectedItem = LibraryItems.FirstOrDefault(x => x.LivelyInfoFolderPath.Equals(wallpaper?.LivelyInfoFolderPath, StringComparison.OrdinalIgnoreCase));
             }
         }
 
         #region helpers
 
-        public ILibraryModel AddWallpaper(string folderPath)
+        public ILibraryModel AddWallpaper(string folderPath, bool processing = false)
         {
             var libItem = ScanWallpaperFolder(folderPath);
             if (libItem != null)
             {
-                var binarySearchIndex = BinarySearch(LibraryItems, libItem.Title);
+                var index = processing ? 0 : BinarySearch(LibraryItems, libItem.Title);
+                libItem.DataType = processing ? LibraryItemType.processing : LibraryItemType.ready;
                 libItem.WallpaperCategory = LocalizationUtil.GetLocalizedWallpaperCategory(libItem.LivelyInfo.Type);
-                LibraryItems.Insert(binarySearchIndex, libItem);
+                LibraryItems.Insert(index, libItem);
             }
             return libItem;
         }
@@ -245,9 +271,9 @@ namespace Lively.UI.WinUI.ViewModels
             try
             {
                 LibraryItems.Remove(item);
-                var binarySearchIndex = BinarySearch(LibraryItems, item.Title);
+                var index = BinarySearch(LibraryItems, item.Title);
                 //LibraryItems.Move(LibraryItems.IndexOf(item), binarySearchIndex);
-                LibraryItems.Insert(binarySearchIndex, item);
+                LibraryItems.Insert(index, item);
             }
             catch { }
         }

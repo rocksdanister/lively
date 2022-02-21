@@ -196,6 +196,8 @@ namespace Lively.UI.WinUI
 
             if (addVm.NewWallpaper != null)
             {
+                await desktopCore.SetWallpaper(addVm.NewWallpaper, userSettings.Settings.SelectedDisplay);
+                /*
                 var inputVm = new AddWallpaperDataViewModel(addVm.NewWallpaper);
                 var inputDialog = new ContentDialog()
                 {
@@ -209,6 +211,7 @@ namespace Lively.UI.WinUI
                     PrimaryButtonCommand = inputVm.ProceedCommand,
                 };          
                 await inputDialog.ShowAsyncQueue();
+                */
             }
         }
 

@@ -4,6 +4,7 @@ namespace Lively.Services
 {
     public interface IRunnerService : IDisposable
     {
+        IntPtr HwndUI { get; }
         void ShowUI();
         void CloseUI();
         void RestartUI();

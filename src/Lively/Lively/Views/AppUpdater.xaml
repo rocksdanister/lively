@@ -24,12 +24,13 @@
                 MinHeight="550"
                 MaxHeight="550"
                 Background="#373737"
+                BorderThickness="0,0,0,1"
                 Foreground="White"
                 IsReadOnly="True" />
             <ProgressBar
                 Name="progressBar"
                 MinHeight="10"
-                Margin="0,0,0,0" />
+                Margin="0,5,0,0" />
             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                 <TextBlock x:Name="sizeTxt">-</TextBlock>
                 <TextBlock x:Name="totalSizeTxt" Foreground="White">/- MB</TextBlock>
