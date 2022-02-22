@@ -140,11 +140,5 @@
         </NavigationView>
 
         <InfoBar Name="infoBar" />
-
-        <ProgressRing
-            x:Name="startupProgressRing"
-            Width="125"
-            Height="125"
-            IsActive="False" />
     </Grid>
 </Window>

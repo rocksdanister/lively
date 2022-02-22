@@ -217,57 +217,65 @@ namespace Lively.Core
                         case LibraryItemType.cmdImport:
                         case LibraryItemType.multiImport:
                         case LibraryItemType.edit:
-                            //backup..once processed is done, becomes ready.
-                            var type = wallpaper.Model.DataType;
-                            var tcs = new TaskCompletionSource<object>();
-                            var thread = new Thread(() =>
+                            try
                             {
-                                try
+                                runner.SetBusyUI(true);
+                                //backup..once processed is done, becomes ready.
+                                var type = wallpaper.Model.DataType;
+                                var tcs = new TaskCompletionSource<object>();
+                                var thread = new Thread(() =>
                                 {
-                                    _ = Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, new ThreadStart(delegate
+                                    try
                                     {
-                                        var pWindow = new LibraryPreview(wallpaper)
+                                        _ = Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, new ThreadStart(delegate
                                         {
-                                            Topmost = true,
-                                            ShowActivated = true,
-                                            WindowStartupLocation = WindowStartupLocation.CenterScreen
-                                        };
-                                        pWindow.Closed += (s, a) => tcs.SetResult(null);
-                                        var vm = (LibraryPreviewViewModel)pWindow.DataContext;
-                                        vm.DetailsUpdated += (s, e) => {
-                                            WallpaperUpdated?.Invoke(this, e);
-                                            if (e.Category == UpdateWallpaperType.remove)
+                                            var pWindow = new LibraryPreview(wallpaper)
                                             {
-                                                cancelled = true;
+                                                Topmost = true,
+                                                ShowActivated = true,
+                                                WindowStartupLocation = WindowStartupLocation.CenterScreen
+                                            };
+                                            pWindow.Closed += (s, a) => tcs.SetResult(null);
+                                            var vm = (LibraryPreviewViewModel)pWindow.DataContext;
+                                            vm.DetailsUpdated += (s, e) => {
+                                                WallpaperUpdated?.Invoke(this, e);
+                                                if (e.Category == UpdateWallpaperType.remove)
+                                                {
+                                                    cancelled = true;
+                                                }
+                                            };
+                                            pWindow.Show();
+                                            if (runner.IsVisibleUI)
+                                            {
+                                                var client = runner.HwndUI;
+                                                var preview = new WindowInteropHelper(pWindow).Handle;
+                                                NativeMethods.GetWindowRect(client, out NativeMethods.RECT crt);
+                                                NativeMethods.GetWindowRect(preview, out NativeMethods.RECT prt);
+                                                //Assigning left, top to window directly not working correctly with display scaling..
+                                                NativeMethods.SetWindowPos(preview,
+                                                    0,
+                                                    crt.Left + (crt.Right - crt.Left) / 2 - (prt.Right - prt.Left) / 2,
+                                                    crt.Top - (crt.Top - crt.Bottom) / 2 - (prt.Bottom - prt.Top) / 2,
+                                                    0,
+                                                    0,
+                                                    0x0001 | 0x0004);
                                             }
-                                        };
-                                        pWindow.Show();
-                                        if (runner.IsVisibleUI)
-                                        {
-                                            var client = runner.HwndUI;
-                                            var preview = new WindowInteropHelper(pWindow).Handle;
-                                            NativeMethods.GetWindowRect(client, out NativeMethods.RECT crt);
-                                            NativeMethods.GetWindowRect(preview, out NativeMethods.RECT prt);
-                                            //Assigning left, top to window directly not working correctly with display scaling..
-                                            NativeMethods.SetWindowPos(preview,
-                                                0,
-                                                crt.Left + (crt.Right - crt.Left) / 2 - (prt.Right - prt.Left) / 2,
-                                                crt.Top - (crt.Top - crt.Bottom) / 2 - (prt.Bottom - prt.Top) / 2,
-                                                0,
-                                                0,
-                                                0x0001 | 0x0004);
-                                        }
-                                    }));
-                                }
-                                catch (Exception e)
-                                {
-                                    tcs.SetException(e);
-                                    Logger.Error(e.ToString());
-                                }
-                            });
-                            thread.SetApartmentState(ApartmentState.STA);
-                            thread.Start();
-                            await tcs.Task;
+                                        }));
+                                    }
+                                    catch (Exception e)
+                                    {
+                                        tcs.SetException(e);
+                                        Logger.Error(e.ToString());
+                                    }
+                                });
+                                thread.SetApartmentState(ApartmentState.STA);
+                                thread.Start();
+                                await tcs.Task;
+                            }
+                            finally
+                            {
+                                runner.SetBusyUI(false);
+                            }
                             break;
                         case LibraryItemType.ready:
                             break;

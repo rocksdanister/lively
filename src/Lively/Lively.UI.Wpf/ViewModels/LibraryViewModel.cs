@@ -81,7 +81,7 @@ namespace Lively.UI.Wpf.ViewModels
             get => _selectedItem;
             set
             {
-                if (value != null)
+                if (value != null && value.DataType == LibraryItemType.ready)
                 {
                     var wallpapers = desktopCore.Wallpapers.Where(x => x.LivelyInfoFolderPath == value.LivelyInfoFolderPath);
                     if (wallpapers.Count() > 0)

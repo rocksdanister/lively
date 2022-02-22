@@ -9,11 +9,14 @@
     Width="410"
     Height="630"
     Background="#2b2b2b"
+    BorderBrush="#80FFFFFF"
+    BorderThickness="0.5"
     Closing="Window_Closing"
     Loaded="Window_Loaded"
     ResizeMode="NoResize"
     WindowStyle="None"
     mc:Ignorable="d">
+
     <Window.Resources>
         <helpers:TaskbarProgressConverter x:Key="TaskbarProgressConverter" />
     </Window.Resources>
@@ -24,8 +27,8 @@
             ProgressState="None"
             ProgressValue="{Binding CurrentProgress, Mode=OneWay, Converter={StaticResource TaskbarProgressConverter}}" />
     </Window.TaskbarItemInfo>
-    <Grid Margin="0,10,0,0">
 
+    <Grid Margin="0,10,0,0" Background="#2b2b2b">
         <!--  wallpaper window will be placed here!  -->
         <Border
             x:Name="PreviewBorder"

@@ -45,12 +45,18 @@ namespace Lively.UI.WinUI
         private readonly SettingsViewModel settingsVm;
         private readonly IDesktopCoreClient desktopCore;
         private readonly IUserSettingsClient userSettings;
+        private readonly LibraryViewModel libraryVm;
         private readonly ResourceLoader i18n;
 
-        public MainWindow(IDesktopCoreClient desktopCore, IUserSettingsClient userSettings, SettingsViewModel settingsVm, IAppUpdaterClient appUpdater)
+        public MainWindow(IDesktopCoreClient desktopCore,
+            IUserSettingsClient userSettings,
+            SettingsViewModel settingsVm,
+            LibraryViewModel libraryVm,
+            IAppUpdaterClient appUpdater)
         {
             this.settingsVm = settingsVm;
             this.desktopCore = desktopCore;
+            this.libraryVm = libraryVm;
             this.userSettings = userSettings;
 
             this.InitializeComponent();
@@ -74,7 +80,6 @@ namespace Lively.UI.WinUI
             this.SetIconEx("appicon.ico");
 
             _ = StdInListener();
-            _ = FirstTimeSetup();
         }
 
         private void DesktopCore_WallpaperError(object sender, Exception e)
@@ -320,25 +325,6 @@ namespace Lively.UI.WinUI
             }
         }
 
-        private async Task FirstTimeSetup()
-        {
-            if (userSettings.Settings.IsFirstRun)
-            {
-                try
-                {
-                    startupProgressRing.IsActive = true;
-                    userSettings.Settings.WallpaperBundleVersion = await Task.Run(() =>
-                        App.ExtractWallpaperBundle(userSettings.Settings.WallpaperBundleVersion, Path.Combine(desktopCore.BaseDirectory, "bundle"), userSettings.Settings.WallpaperDir));
-                    userSettings.Save<ISettingsModel>();
-                    await settingsVm.WallpaperDirectoryChange(userSettings.Settings.WallpaperDir);
-                }
-                finally
-                {
-                    startupProgressRing.IsActive = false;
-                }
-            }
-        }
-
         /// <summary>
         /// std I/O redirect.
         /// </summary>
@@ -369,7 +355,14 @@ namespace Lively.UI.WinUI
                             }
                             else if (args[0].Equals("LM", StringComparison.OrdinalIgnoreCase))
                             {
-
+                                if (args[1].Equals("SHOWBUSY", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    libraryVm.IsBusy = true;
+                                }
+                                else if (args[1].Equals("HIDEBUSY", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    libraryVm.IsBusy = false;
+                                }
                                 /*
                                 if (args[1].Equals("SHOWCONTROLPANEL", StringComparison.OrdinalIgnoreCase))
                                 {

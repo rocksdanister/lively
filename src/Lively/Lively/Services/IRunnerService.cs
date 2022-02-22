@@ -8,6 +8,7 @@ namespace Lively.Services
         void ShowUI();
         void CloseUI();
         void RestartUI();
+        void SetBusyUI(bool isBusy);
         void ShowControlPanel();
         void ShowCustomisWallpaperePanel();
         bool IsVisibleUI { get; }
