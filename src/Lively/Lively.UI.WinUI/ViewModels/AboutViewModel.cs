@@ -6,14 +6,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.UI.Xaml;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Reflection;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows;
 using Windows.ApplicationModel.Resources;
 
 namespace Lively.UI.WinUI.ViewModels
@@ -75,34 +67,36 @@ namespace Lively.UI.WinUI.ViewModels
 
         private bool canUpdateAppCommand = true;
         private RelayCommand _updateAppCommand;
-        public RelayCommand UpdateAppCommand => _updateAppCommand ??= new RelayCommand(async () => await CheckUpdate(), () => canUpdateAppCommand);
+        public RelayCommand UpdateAppCommand => _updateAppCommand ??= new RelayCommand(CheckUpdate, () => canUpdateAppCommand);
 
-        private async Task CheckUpdate()
+        private void CheckUpdate()
         {
-            if (updateAvailable)
+            _ = App.Services.GetRequiredService<MainWindow>().DispatcherQueue.TryEnqueue(async () =>
             {
-                await appUpdater.StartUpdate();
-            }
-            else
-            {
-                try
+                if (updateAvailable)
                 {
-                    canUpdateAppCommand = false;
-                    _updateAppCommand.NotifyCanExecuteChanged();
-                    await appUpdater.CheckUpdate();
-                    MenuUpdate(appUpdater.Status, appUpdater.LastCheckTime, appUpdater.LastCheckVersion);
+                    await appUpdater.StartUpdate();
                 }
-                finally
+                else
                 {
-                    canUpdateAppCommand = true;
-                    _updateAppCommand.NotifyCanExecuteChanged();
+                    try
+                    {
+                        canUpdateAppCommand = false;
+                        _updateAppCommand.NotifyCanExecuteChanged();
+                        await appUpdater.CheckUpdate();
+                        MenuUpdate(appUpdater.Status, appUpdater.LastCheckTime, appUpdater.LastCheckVersion);
+                    }
+                    finally
+                    {
+                        canUpdateAppCommand = true;
+                        _updateAppCommand.NotifyCanExecuteChanged();
+                    }
                 }
-            }
+            });
         }
 
         private void AppUpdater_UpdateChecked(object sender, AppUpdaterEventArgs e)
         {
-            //Debug.WriteLine($"Update Checked: {appUpdater.Status}, {appUpdater.LastCheckTime}, {appUpdater.LastCheckVersion}");
             _ = App.Services.GetRequiredService<MainWindow>().DispatcherQueue.TryEnqueue(() =>
             {
                 MenuUpdate(e.UpdateStatus, e.UpdateDate, e.UpdateVersion);

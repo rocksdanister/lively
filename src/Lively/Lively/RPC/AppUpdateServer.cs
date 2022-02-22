@@ -24,10 +24,10 @@ namespace Lively.RPC
             this.updater = updater;
         }
 
-        public override Task<Empty> CheckUpdate(Empty _, ServerCallContext context)
+        public override async Task<Empty> CheckUpdate(Empty _, ServerCallContext context)
         {
-            updater.CheckUpdate(0);
-            return Task.FromResult(new Empty());
+            await updater.CheckUpdate(0);
+            return await Task.FromResult(new Empty());
         }
 
         public override Task<Empty> StartUpdate(Empty _, ServerCallContext context)
