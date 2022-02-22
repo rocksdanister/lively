@@ -44,7 +44,7 @@ namespace Lively.UI.WinUI.ViewModels
 
             foreach (var item in ScanWallpaperFolders(wallpaperScanFolders))
             {
-                LibraryItems.Insert(BinarySearch(LibraryItems, item.Title), item);          
+                LibraryItems.Insert(BinarySearch(LibraryItems, item.Title), item);        
             }
 
             //Select already running item when UI program is started again..
@@ -53,6 +53,8 @@ namespace Lively.UI.WinUI.ViewModels
             desktopCore.WallpaperChanged += DesktopCore_WallpaperChanged;
             desktopCore.WallpaperUpdated += DesktopCore_WallpaperUpdated;
             settingsVm.WallpaperDirChanged += (s, e) => WallpaperDirectoryUpdate(e);
+
+            _ = InstallDefaultWallpapers();
         }
 
         #region collections
@@ -77,7 +79,7 @@ namespace Lively.UI.WinUI.ViewModels
             get => _selectedItem;
             set
             {
-                if (value != null)
+                if (value != null && value.DataType == LibraryItemType.ready)
                 {
                     var wallpapers = desktopCore.Wallpapers.Where(x => x.LivelyInfoFolderPath.Equals(value.LivelyInfoFolderPath, StringComparison.OrdinalIgnoreCase));
                     if (wallpapers.Count() > 0)
@@ -109,6 +111,17 @@ namespace Lively.UI.WinUI.ViewModels
         }
 
         #endregion //collections
+
+        private bool _isBusy;
+        public bool IsBusy
+        {
+            get => _isBusy;
+            set
+            {
+                _isBusy = value;
+                OnPropertyChanged();
+            }
+        }
 
         private void DesktopCore_WallpaperChanged(object sender, EventArgs e)
         {
@@ -317,6 +330,54 @@ namespace Lively.UI.WinUI.ViewModels
             {
                 LibraryItems.Insert(BinarySearch(LibraryItems, item.Title), item);
             }
+        }
+
+        private async Task InstallDefaultWallpapers()
+        {
+            if (userSettings.Settings.IsFirstRun)
+            {
+                try
+                {
+                    IsBusy = true;
+                    userSettings.Settings.WallpaperBundleVersion = await Task.Run(() =>
+                        ExtractWallpaperBundle(userSettings.Settings.WallpaperBundleVersion, Path.Combine(desktopCore.BaseDirectory, "bundle"), userSettings.Settings.WallpaperDir));
+                    userSettings.Save<ISettingsModel>();
+                    await settingsVm.WallpaperDirectoryChange(userSettings.Settings.WallpaperDir);
+                }
+                finally
+                {
+                    IsBusy = false;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Extract default wallpapers and incremental if any.
+        /// </summary>
+        public static int ExtractWallpaperBundle(int currentBundleVer, string currentBundleDir, string currentWallpaperDir)
+        {
+            //Lively stores the last extracted bundle filename, extraction proceeds from next file onwards.
+            int maxExtracted = currentBundleVer;
+            try
+            {
+                //wallpaper bundles filenames are 0.zip, 1.zip ...
+                var sortedBundles = Directory.GetFiles(currentBundleDir).OrderBy(x => x);
+
+                foreach (var item in sortedBundles)
+                {
+                    if (int.TryParse(Path.GetFileNameWithoutExtension(item), out int val))
+                    {
+                        if (val > maxExtracted)
+                        {
+                            //Sharpzip library will overwrite files if exists during extraction.
+                            ZipExtract.ZipExtractFile(item, Path.Combine(currentWallpaperDir, "wallpapers"), false);
+                            maxExtracted = val;
+                        }
+                    }
+                }
+            }
+            catch { /* TODO */ }
+            return maxExtracted;
         }
 
         #endregion //helpers

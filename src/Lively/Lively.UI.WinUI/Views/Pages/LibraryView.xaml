@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="using:Lively.UI.WinUI.UserControls"
+    xmlns:converters="using:CommunityToolkit.WinUI.UI.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Lively.UI.WinUI.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -20,6 +21,7 @@
             FallbackColor="{ThemeResource SystemAltMediumColor}"
             TintColor="{ThemeResource SystemAltMediumColor}"
             TintOpacity="1.0" />
+        <converters:BoolToVisibilityConverter x:Key="VisibilityConverter" />
     </Page.Resources>
 
     <Grid>
@@ -189,6 +191,18 @@
                 Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
                 RelativePanel.AlignHorizontalCenterWithPanel="True"
                 RelativePanel.Below="AddSymbol" />
+        </RelativePanel>
+
+        <RelativePanel
+            x:Name="BusyPanel"
+            Background="{ThemeResource SystemAltMediumColor}"
+            Visibility="{Binding IsBusy, Mode=OneWay, Converter={StaticResource VisibilityConverter}}">
+            <ProgressRing
+                Width="100"
+                Height="100"
+                IsActive="True"
+                RelativePanel.AlignHorizontalCenterWithPanel="True"
+                RelativePanel.AlignVerticalCenterWithPanel="True" />
         </RelativePanel>
     </Grid>
 </Page>

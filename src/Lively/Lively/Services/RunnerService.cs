@@ -132,22 +132,12 @@ namespace Lively.Services
         }
 
         //TODO: Make it work by launching process in background.
-        public void ShowControlPanel()
-        {
-            if (processUI != null)
-            {
-                processUI.StandardInput.WriteLine("LM SHOWCONTROLPANEL");
-            }
-        }
+        public void ShowControlPanel() => processUI?.StandardInput.WriteLine("LM SHOWCONTROLPANEL");
 
         //TODO: Make it work by launching process in background.
-        public void ShowCustomisWallpaperePanel()
-        {
-            if (processUI != null)
-            {
-                processUI.StandardInput.WriteLine("LM SHOWCUSTOMISEPANEL");
-            }
-        }
+        public void ShowCustomisWallpaperePanel() => processUI?.StandardInput.WriteLine("LM SHOWCUSTOMISEPANEL");
+
+        public void SetBusyUI(bool isBusy) => processUI?.StandardInput.WriteLine(isBusy ? "LM SHOWBUSY" : "LM HIDEBUSY");
 
         public IntPtr HwndUI => processUI?.MainWindowHandle ?? IntPtr.Zero;
 

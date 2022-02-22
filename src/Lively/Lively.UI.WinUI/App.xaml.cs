@@ -133,35 +133,6 @@ namespace Lively.UI.WinUI
             ResourceContext.GetForViewIndependentUse().Reset();
         }
 
-        /// <summary>
-        /// Extract default wallpapers and incremental if any.
-        /// </summary>
-        public static int ExtractWallpaperBundle(int currentBundleVer, string currentBundleDir, string currentWallpaperDir)
-        {
-            //Lively stores the last extracted bundle filename, extraction proceeds from next file onwards.
-            int maxExtracted = currentBundleVer;
-            try
-            {
-                //wallpaper bundles filenames are 0.zip, 1.zip ...
-                var sortedBundles = Directory.GetFiles(currentBundleDir).OrderBy(x => x);
-
-                foreach (var item in sortedBundles)
-                {
-                    if (int.TryParse(Path.GetFileNameWithoutExtension(item), out int val))
-                    {
-                        if (val > maxExtracted)
-                        {
-                            //Sharpzip library will overwrite files if exists during extraction.
-                            ZipExtract.ZipExtractFile(item, Path.Combine(currentWallpaperDir, "wallpapers"), false);
-                            maxExtracted = val;
-                        }
-                    }
-                }
-            }
-            catch { /* TODO */ }
-            return maxExtracted;
-        }
-
         public static void ShutDown()
         {
             try

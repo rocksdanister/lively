@@ -56,12 +56,15 @@
 
         <StackPanel Grid.Row="1">
             <CommandBar HorizontalAlignment="Center" DefaultLabelPosition="Right">
-                <AppBarButton x:Uid="CustomiseWallpaper" Command="{Binding CustomiseWallpaperCommand}">
+                <AppBarButton
+                    x:Uid="CustomiseWallpaper"
+                    Command="{Binding CustomiseWallpaperCommand}"
+                    Visibility="Collapsed">
                     <AppBarButton.Icon>
                         <FontIcon Glyph="&#xE790;" />
                     </AppBarButton.Icon>
                 </AppBarButton>
-                <AppBarSeparator />
+                <AppBarSeparator Visibility="Collapsed" />
                 <AppBarButton x:Uid="CloseWallpapers" Command="{Binding CloseWallpaperCommand}">
                     <AppBarButton.Icon>
                         <FontIcon Glyph="&#xE894;" />
