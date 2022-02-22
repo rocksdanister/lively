@@ -38,6 +38,14 @@ namespace Lively.UI.WinUI.ViewModels
             desktopCore.WallpaperChanged += SetupDesktop_WallpaperChanged;
         }
 
+        public void UpdateSettingsConfigFile()
+        {
+            _ = App.Services.GetRequiredService<MainWindow>().DispatcherQueue.TryEnqueue(() =>
+            {
+                userSettings.Save<ISettingsModel>();
+            });
+        }
+
         private void SetupDesktop_WallpaperChanged(object sender, EventArgs e)
         {
             _ = App.Services.GetRequiredService<MainWindow>().DispatcherQueue.TryEnqueue(() =>
@@ -75,7 +83,7 @@ namespace Lively.UI.WinUI.ViewModels
                     if (!userSettings.Settings.SelectedDisplay.Equals(value.Screen))
                     {
                         userSettings.Settings.SelectedDisplay = value.Screen;
-                        userSettings.SaveAsync<ISettingsModel>();
+                        UpdateSettingsConfigFile();
                         //Updating library selected item.
                         libraryVm.UpdateSelectedWallpaper();
                     }
@@ -99,7 +107,7 @@ namespace Lively.UI.WinUI.ViewModels
                 {
                     var prevArrangement = userSettings.Settings.WallpaperArrangement;
                     userSettings.Settings.WallpaperArrangement = (WallpaperArrangement)_selectedWallpaperLayout;
-                    userSettings.SaveAsync<ISettingsModel>();
+                    UpdateSettingsConfigFile();
                     UpdateWallpaper(prevArrangement, userSettings.Settings.WallpaperArrangement);
                 }
             }

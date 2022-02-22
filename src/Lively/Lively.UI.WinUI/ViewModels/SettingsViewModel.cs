@@ -122,41 +122,20 @@ namespace Lively.UI.WinUI.ViewModels
             AppRules = new ObservableCollection<IApplicationRulesModel>(userSettings.AppRules.Where(x => x.Rule == AppRulesEnum.pause));
         }
 
-
-        private readonly object _settingsLock = new object();
-        public async Task UpdateSettingsConfigFile()
+        public void UpdateSettingsConfigFile()
         {
-            lock (_settingsLock)
-                Monitor.PulseAll(_settingsLock);
-
-            await Task.Run(() =>
+            _ = App.Services.GetRequiredService<MainWindow>().DispatcherQueue.TryEnqueue(() =>
             {
-                lock (_settingsLock)
-                {
-                    if (!Monitor.Wait(_settingsLock, 500))
-                    {
-                        userSettings.Save<ISettingsModel>();
-                    }
-                }
-            }).ConfigureAwait(false);
+                userSettings.Save<ISettingsModel>();
+            });
         }
 
-        private readonly object _appRulesSettingsLock = new object();
-        public async Task UpdateAppRulesConfigFile()
+        public void UpdateAppRulesConfigFile()
         {
-            lock (_appRulesSettingsLock)
-                Monitor.PulseAll(_appRulesSettingsLock);
-
-            await Task.Run(() =>
+            _ = App.Services.GetRequiredService<MainWindow>().DispatcherQueue.TryEnqueue(() =>
             {
-                lock (_appRulesSettingsLock)
-                {
-                    if (!Monitor.Wait(_appRulesSettingsLock, 500))
-                    {
-                        userSettings.Save<List<IApplicationRulesModel>>();
-                    }
-                }
-            }).ConfigureAwait(false);
+                userSettings.Save<List<IApplicationRulesModel>>();
+            });
         }
 
         #region general
@@ -539,7 +518,7 @@ namespace Lively.UI.WinUI.ViewModels
                     }
                     userSettings.AppRules.Add(rule);
                     AppRules.Add(rule);
-                    await UpdateAppRulesConfigFile();
+                    UpdateAppRulesConfigFile();
                 }
                 catch (Exception)
                 {

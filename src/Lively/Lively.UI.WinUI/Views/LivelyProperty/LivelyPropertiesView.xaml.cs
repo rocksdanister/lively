@@ -38,7 +38,6 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
         private readonly ILibraryModel libraryItem;
         private readonly IDisplayMonitor screen;
         private JObject livelyPropertyCopyData;
-        private readonly object _sendMsgLock = new();
         private readonly object _colorPickerTipLock = new();
 
         //UI
@@ -750,30 +749,21 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
             }
         }
 
-        private async void WallpaperSendMsg(IpcMessage msg)
+        private void WallpaperSendMsg(IpcMessage msg)
         {
-            lock (_sendMsgLock)
-                Monitor.PulseAll(_sendMsgLock);
-
-            await Task.Run(() =>
+            _ = App.Services.GetRequiredService<MainWindow>().DispatcherQueue.TryEnqueue(() =>
             {
-                lock (_sendMsgLock)
+                switch (userSettings.Settings.WallpaperArrangement)
                 {
-                    if (!Monitor.Wait(_sendMsgLock, 100))
-                    {
-                        switch (userSettings.Settings.WallpaperArrangement)
-                        {
-                            case WallpaperArrangement.per:
-                                desktopCore.SendMessageWallpaper(screen, libraryItem, msg);
-                                break;
-                            case WallpaperArrangement.span:
-                            case WallpaperArrangement.duplicate:
-                                desktopCore.SendMessageWallpaper(libraryItem, msg);
-                                break;
-                        }
-                    }
+                    case WallpaperArrangement.per:
+                        desktopCore.SendMessageWallpaper(screen, libraryItem, msg);
+                        break;
+                    case WallpaperArrangement.span:
+                    case WallpaperArrangement.duplicate:
+                        desktopCore.SendMessageWallpaper(libraryItem, msg);
+                        break;
                 }
-            }).ConfigureAwait(false);
+            });
         }
 
         /// <summary>
