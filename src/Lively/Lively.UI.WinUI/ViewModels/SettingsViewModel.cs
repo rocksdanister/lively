@@ -27,7 +27,8 @@ namespace Lively.UI.WinUI.ViewModels
 {
     public class SettingsViewModel : ObservableObject
     {
-        //private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+        public event EventHandler<string> WallpaperDirChanged;
+
         private readonly IUserSettingsClient userSettings;
         private readonly IDesktopCoreClient desktopCore;
         private readonly ICommandsClient commands;
@@ -1135,8 +1136,6 @@ namespace Lively.UI.WinUI.ViewModels
                 }
             }
         }
-
-        public event EventHandler<string> WallpaperDirChanged;
 
         private async void WallpaperDirectoryChange()
         {

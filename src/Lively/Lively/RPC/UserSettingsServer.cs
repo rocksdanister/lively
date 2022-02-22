@@ -61,7 +61,7 @@ namespace Lively.RPC
             userSettings.AppRules.Clear();
             foreach (var item in req.AppRules)
             {
-                userSettings.AppRules.Add(new ApplicationRulesModel(item.AppName, (AppRulesEnum)((int)item.Rule)));
+                userSettings.AppRules.Add(new ApplicationRulesModel(item.AppName, (AppRulesEnum)(int)item.Rule));
             }
 
             try
@@ -79,7 +79,7 @@ namespace Lively.RPC
 
         public override Task<Empty> SetSettings(SettingsDataModel req, ServerCallContext context)
         {
-            bool restartRequired = req.Language != userSettings.Settings.Language || (Common.AppTheme)req.ApplicationTheme != userSettings.Settings.ApplicationTheme;
+            bool restartRequired = (Common.AppTheme)req.ApplicationTheme != userSettings.Settings.ApplicationTheme;// || req.Language != userSettings.Settings.Language;
             if (req.Startup != userSettings.Settings.Startup)
             {
                 userSettings.Settings.Startup = req.Startup;
@@ -168,7 +168,7 @@ namespace Lively.RPC
                     userSettings.Save<ISettingsModel>();
                     if (restartRequired)
                     {
-                        runner.RestartUI();
+                        //runner.RestartUI();
                     }
                 }
             }

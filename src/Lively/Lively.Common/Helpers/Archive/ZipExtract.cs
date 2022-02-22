@@ -17,14 +17,14 @@ namespace Lively.Common.Helpers.Archive
         /// </summary>
         /// <param name="archivePath">Source .zip path.</param>
         /// <param name="outFolder">Destination directory.</param>
-        /// <param name="livelyFileCheck">Verify whether the archive is lively wallpaper format, throws Exception if not.</param>
-        public static void ZipExtractFile(string archivePath, string outFolder, bool livelyFileCheck)
+        /// <param name="isLivelyFile">Verify whether the archive is lively wallpaper format, throws Exception if not.</param>
+        public static void ZipExtractFile(string archivePath, string outFolder, bool isLivelyFile)
         {
             using (Stream fsInput = File.OpenRead(archivePath))
             using (var zf = new ZipFile(fsInput))
             {
 
-                if (livelyFileCheck && zf.FindEntry("LivelyInfo.json", true) == -1)
+                if (isLivelyFile && zf.FindEntry("LivelyInfo.json", true) == -1)
                 {
                     throw new Exception("LivelyInfo.json not found");
                 }
