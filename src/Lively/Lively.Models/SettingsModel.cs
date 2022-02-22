@@ -184,7 +184,7 @@ namespace Lively.Models
 
             try
             {
-                Language = CultureInfo.CurrentCulture.Name;
+                Language = CultureInfo.CurrentUICulture.Name;
             }
             catch (ArgumentNullException)
             {

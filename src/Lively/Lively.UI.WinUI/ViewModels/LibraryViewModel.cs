@@ -370,7 +370,7 @@ namespace Lively.UI.WinUI.ViewModels
                         if (val > maxExtracted)
                         {
                             //Sharpzip library will overwrite files if exists during extraction.
-                            ZipExtract.ZipExtractFile(item, Path.Combine(currentWallpaperDir, "wallpapers"), false);
+                            ZipExtract.ZipExtractFile(item, Path.Combine(currentWallpaperDir, Constants.CommonPartialPaths.WallpaperInstallDir), false);
                             maxExtracted = val;
                         }
                     }
