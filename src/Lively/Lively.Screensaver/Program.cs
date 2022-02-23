@@ -1,5 +1,7 @@
-﻿using Lively.Grpc.Client;
+﻿using Lively.Common.Helpers;
+using Lively.Grpc.Client;
 using System;
+using static Lively.Common.Constants;
 
 //Reference: https://sites.harding.edu/fmccown/screensaver/screensaver.html
 //CC BY-SA 2.0
@@ -9,6 +11,11 @@ namespace Lively.Screensaver
     {
         static void Main(string[] args)
         {
+            if (!SingleInstanceUtil.IsAppMutexRunning(SingleInstance.UniqueAppName))
+            {
+                return;
+            }
+
             ICommandsClient commandsClient = new CommandsClient();
             if (args.Length > 0)
             {

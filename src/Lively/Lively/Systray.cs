@@ -56,7 +56,8 @@ namespace Lively
             _notifyIcon.ContextMenuStrip.Items.Add(pauseTrayBtn);
             customiseWallpaperBtn = new ToolStripMenuItem("Customise Wallpaper", null)
             {
-                Enabled = false
+                Enabled = false,
+                Visible = false,
             };
             customiseWallpaperBtn.Click += CustomiseWallpaper;
             _notifyIcon.ContextMenuStrip.Items.Add(customiseWallpaperBtn);

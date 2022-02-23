@@ -41,6 +41,7 @@ message UpdateWallpaperResponse {
 	string website = 6;
 	string thumbnail_path_ = 7;
 	string preview_path_ = 8;
+	bool is_absolute_path = 9;
 }
 
 message GetCoreStatsResponse {

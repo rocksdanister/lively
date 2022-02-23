@@ -257,6 +257,7 @@ namespace Lively.Grpc.Client
                             Contact = resp.Website,
                             Thumbnail = resp.ThumbnailPath,
                             Preview = resp.PreviewPath,
+                            IsAbsolutePath = resp.IsAbsolutePath,
                         },
                         InfoPath = resp.LivelyInfoPath,
                         Category = (UpdateWallpaperType)(int)resp.Type,

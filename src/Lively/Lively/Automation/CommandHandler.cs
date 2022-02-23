@@ -19,6 +19,7 @@ using Lively.Models;
 using Lively.Services;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using static Lively.Common.AutomationArgs;
 
 namespace Lively.Automation
 {
@@ -27,112 +28,6 @@ namespace Lively.Automation
     public class CommandHandler : ICommandHandler
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-
-        [Verb("app", isDefault: true, HelpText = "Application controls.")]
-        private class AppOptions
-        {
-            [Option("showApp",
-            Required = false,
-            HelpText = "Open app window (true/false).")]
-            public bool? ShowApp { get; set; }
-            /*
-            [Option("showTray",
-            Required = false,
-            HelpText = "Tray-icon visibility (true/false).")]
-            public bool? ShowTray { get; set; }
-            */
-            [Option("showIcons",
-            Required = false,
-            HelpText = "Desktop icons visibility (true/false).")]
-            public bool? ShowIcons { get; set; }
-
-            [Option("volume",
-            Required = false,
-            HelpText = "Wallpaper audio level (0-100).")]
-            public int? Volume { get; set; }
-
-            [Option("play",
-            Required = false,
-            HelpText = "Wallpaper playback state (true/false).")]
-            public bool? Play { get; set; }
-
-            [Option("startup",
-            Required = false,
-            HelpText = "Start with Windows (true/false).")]
-            public bool? Startup { get; set; }
-        }
-
-        [Verb("setwp", HelpText = "Apply wallpaper.")]
-        private class SetWallpaperOptions
-        {
-            [Option("file",
-            Required = true,
-            HelpText = "Path containing LivelyInfo.json project file.")]
-            public string File { get; set; }
-
-            [Option("monitor",
-            Required = false,
-            HelpText = "Index of the monitor to load the wallpaper on (optional).")]
-            public int? Monitor { get; set; }
-        }
-
-        [Verb("closewp", HelpText = "Close wallpaper.")]
-        private class CloseWallpaperOptions
-        {
-            [Option("monitor",
-            Required = true,
-            HelpText = "Index of the monitor to close wallpaper, if -1 all running wallpapers are closed.")]
-            public int? Monitor { get; set; }
-        }
-
-        [Verb("seekwp", HelpText = "Set wallpaper playback position.")]
-        private class SeekWallpaperOptions
-        {
-            [Option("value",
-            Required = true,
-            HelpText = "Seek percentage, optionally add +/- to seek from current position.")]
-            public string Param { get; set; }
-
-            [Option("monitor",
-            Required = false,
-            HelpText = "Index of the monitor to load the wallpaper on (optional).")]
-            public int? Monitor { get; set; }
-        }
-
-        [Verb("setprop", HelpText = "Customise wallpaper.")]
-        private class CustomiseWallpaperOptions
-        {
-            [Option("property",
-            Required = true,
-            HelpText = "syntax: keyvalue=value")]
-            public string Param { get; set; }
-
-            [Option("monitor",
-            Required = false,
-            HelpText = "Index of the monitor to apply the wallpaper customisation.")]
-            public int? Monitor { get; set; }
-        }
-
-        [Verb("screensaver", HelpText = "Screen saver control.")]
-        private class ScreenSaverOptions
-        {
-            [Option("preview",
-            Required = false,
-            HelpText = "Show the ss in the ss selection dialog box, number represents the handle to the parent's window.")]
-            public int? Preview { get; set; }
-
-            [Option("configure",
-            Required = false,
-            HelpText = "Show the ss configuration dialog box.")]
-            public int? Configure { get; set; }
-
-
-            [Option("show",
-            Required = false,
-            HelpText = "Show the ss full-screen, false cancels running ss.")]
-            public bool? Show { get; set; }
-        }
-
         private readonly IUserSettingsService userSettings;
         private readonly IDesktopCore desktopCore;
         private readonly IDisplayManager displayManager;
@@ -239,75 +134,90 @@ namespace Lively.Automation
 
         private int RunSetWallpaperOptions(SetWallpaperOptions opts)
         {
-            //if (opts.File != null)
-            //{
-            //    //todo: Rewrite fn in libraryvm
-            //    System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
-            //    {
-            //        if (Directory.Exists(opts.File))
-            //        {
-            //            //Folder containing LivelyInfo.json file.
-            //            var screen = opts.Monitor != null ?
-            //                displayManager.DisplayMonitors.FirstOrDefault(x => x.Index == ((int)opts.Monitor)) : displayManager.PrimaryDisplayMonitor;
-            //            var libraryItem = libraryVm.LibraryItems.FirstOrDefault(x => x.LivelyInfoFolderPath != null && x.LivelyInfoFolderPath.Equals(opts.File));
-            //            if (libraryItem != null && screen != null)
-            //            {
-            //                desktopCore.SetWallpaper(libraryItem, screen);
-            //            }
-            //        }
-            //        else if (File.Exists(opts.File))
-            //        {
-            //            var screen = opts.Monitor != null ?
-            //                displayManager.DisplayMonitors.FirstOrDefault(x => x.Index == ((int)opts.Monitor)) : displayManager.PrimaryDisplayMonitor;
-            //            var libraryItem = libraryVm.LibraryItems.FirstOrDefault(x => x.FilePath != null && x.FilePath.Equals(opts.File));
-            //            if (screen != null)
-            //            {
-            //                if (libraryItem != null)
-            //                {
-            //                    desktopCore.SetWallpaper(libraryItem, screen);
-            //                }
-            //                else
-            //                {
-            //                    Logger.Info("Wallpaper not found in library, importing as new file.");
-            //                    WallpaperType type = FileFilter.GetLivelyFileType(opts.File);
-            //                    switch (type)
-            //                    {
-            //                        case WallpaperType.web:
-            //                        case WallpaperType.webaudio:
-            //                        case WallpaperType.url:
-            //                            Logger.Info("Web type wallpaper import is disabled for cmd control.");
-            //                            break;
-            //                        case WallpaperType.video:
-            //                        case WallpaperType.gif:
-            //                        case WallpaperType.videostream:
-            //                        case WallpaperType.picture:
-            //                            libraryVm.AddWallpaper(opts.File,
-            //                                type,
-            //                                LibraryTileType.cmdImport,
-            //                                userSettings.Settings.SelectedDisplay);
-            //                            break;
-            //                        case WallpaperType.app:
-            //                        case WallpaperType.bizhawk:
-            //                        case WallpaperType.unity:
-            //                        case WallpaperType.godot:
-            //                        case WallpaperType.unityaudio:
-            //                            Logger.Info("App type wallpaper import is disabled for cmd control.");
-            //                            break;
-            //                        case (WallpaperType)100:
-            //                            Logger.Info("Lively .zip type wallpaper import is disabled for cmd control.");
-            //                            break;
-            //                        case (WallpaperType)(-1):
-            //                            Logger.Info("Wallpaper format not supported.");
-            //                            break;
-            //                        default:
-            //                            Logger.Info("No wallpaper type recognised.");
-            //                            break;
-            //                    }
-            //                }
-            //            }
-            //        }
-            //    }));
-            //}
+            if (opts.File != null)
+            {
+                if (Directory.Exists(opts.File))
+                {
+                    //Folder containing LivelyInfo.json file.
+                    var screen = opts.Monitor != null ?
+                        displayManager.DisplayMonitors.FirstOrDefault(x => x.Index == ((int)opts.Monitor)) : displayManager.PrimaryDisplayMonitor;
+                    try
+                    {
+                        var di = new DirectoryInfo(opts.File); //Verify path is wallpaper install location.
+                        if (di.Parent.FullName.Contains(userSettings.Settings.WallpaperDir, StringComparison.OrdinalIgnoreCase))
+                        {
+                            var libraryItem = WallpaperUtil.ScanWallpaperFolder(opts.File);
+                            if (screen != null)
+                            {
+                                desktopCore.SetWallpaper(libraryItem, screen);
+                            }
+                        }
+                    }
+                    catch { /* TODO */ }
+                }
+                else if (File.Exists(opts.File))
+                {
+                    var screen = opts.Monitor != null ?
+                        displayManager.DisplayMonitors.FirstOrDefault(x => x.Index == ((int)opts.Monitor)) : displayManager.PrimaryDisplayMonitor;
+                    ILibraryModel libraryItem = null;
+                    foreach (var x in GetWallpapers())
+                    {
+                        if (x.FilePath != null && x.FilePath.Equals(opts.File, StringComparison.OrdinalIgnoreCase))
+                        {
+                            libraryItem = x;
+                            break;
+                        }
+                    }
+
+                    if (screen != null)
+                    {
+                        if (libraryItem != null)
+                        {
+                            desktopCore.SetWallpaper(libraryItem, screen);
+                        }
+                        /*
+                        else
+                        {
+                            Logger.Info("Wallpaper not found in library, importing as new file.");
+                            WallpaperType type = FileFilter.GetLivelyFileType(opts.File);
+                            switch (type)
+                            {
+                                case WallpaperType.web:
+                                case WallpaperType.webaudio:
+                                case WallpaperType.url:
+                                    Logger.Info("Web type wallpaper import is disabled for cmd control.");
+                                    break;
+                                case WallpaperType.video:
+                                case WallpaperType.gif:
+                                case WallpaperType.videostream:
+                                case WallpaperType.picture:
+                                    libraryVm.AddWallpaper(opts.File,
+                                        type,
+                                        LibraryTileType.cmdImport,
+                                        userSettings.Settings.SelectedDisplay);
+                                    break;
+                                case WallpaperType.app:
+                                case WallpaperType.bizhawk:
+                                case WallpaperType.unity:
+                                case WallpaperType.godot:
+                                case WallpaperType.unityaudio:
+                                    Logger.Info("App type wallpaper import is disabled for cmd control.");
+                                    break;
+                                case (WallpaperType)100:
+                                    Logger.Info("Lively .zip type wallpaper import is disabled for cmd control.");
+                                    break;
+                                case (WallpaperType)(-1):
+                                    Logger.Info("Wallpaper format not supported.");
+                                    break;
+                                default:
+                                    Logger.Info("No wallpaper type recognised.");
+                                    break;
+                            }
+                        }
+                        */
+                    }
+                }
+            }
             return 0;
         }
 
@@ -381,127 +291,127 @@ namespace Lively.Automation
 
         private int RunCustomiseWallpaperOptions(CustomiseWallpaperOptions opts)
         {
-            //if (opts.Param != null)
-            //{
-            //    //use primary screen if none found..
-            //    var screen = opts.Monitor != null ?
-            //        displayManager.DisplayMonitors.FirstOrDefault(x => x.Index == ((int)opts.Monitor)) : displayManager.PrimaryDisplayMonitor;
+            if (opts.Param != null)
+            {
+                //use primary screen if none found..
+                var screen = opts.Monitor != null ?
+                    displayManager.DisplayMonitors.FirstOrDefault(x => x.Index == ((int)opts.Monitor)) : displayManager.PrimaryDisplayMonitor;
 
-            //    if (screen != null)
-            //    {
-            //        try
-            //        {
-            //            var wp = desktopCore.Wallpapers.FirstOrDefault(x => x.Screen.Equals(screen));
-            //            //only for running wallpaper instance unlike gui property..
-            //            if (wp == null)
-            //                return 0;
+                if (screen != null)
+                {
+                    try
+                    {
+                        var wp = desktopCore.Wallpapers.FirstOrDefault(x => x.Screen.Equals(screen));
+                        //only for running wallpaper instance unlike gui property..
+                        if (wp == null)
+                            return 0;
 
-            //            //delimiter
-            //            var tmp = opts.Param.Split("=");
-            //            string name = tmp[0], val = tmp[1], ctype = null;
-            //            var lp = JObject.Parse(File.ReadAllText(wp.LivelyPropertyCopyPath));
-            //            foreach (var item in lp)
-            //            {
-            //                //Searching for the given control in the json file.
-            //                if (item.Key.ToString().Equals(name, StringComparison.Ordinal))
-            //                {
-            //                    ctype = item.Value["type"].ToString();
-            //                    val = ctype.Equals("folderDropdown", StringComparison.OrdinalIgnoreCase) ?
-            //                        Path.Combine(item.Value["folder"].ToString(), val) : val;
-            //                    break;
-            //                }
-            //            }
+                        //delimiter
+                        var tmp = opts.Param.Split("=");
+                        string name = tmp[0], val = tmp[1], ctype = null;
+                        var lp = JObject.Parse(File.ReadAllText(wp.LivelyPropertyCopyPath));
+                        foreach (var item in lp)
+                        {
+                            //Searching for the given control in the json file.
+                            if (item.Key.ToString().Equals(name, StringComparison.Ordinal))
+                            {
+                                ctype = item.Value["type"].ToString();
+                                val = ctype.Equals("folderDropdown", StringComparison.OrdinalIgnoreCase) ?
+                                    Path.Combine(item.Value["folder"].ToString(), val) : val;
+                                break;
+                            }
+                        }
 
-            //            IpcMessage msg = null;
-            //            ctype = (ctype == null && name.Equals("lively_default_settings_reload", StringComparison.OrdinalIgnoreCase)) ? "button" : ctype;
-            //            if (ctype != null)
-            //            {
-            //                if (ctype.Equals("button", StringComparison.OrdinalIgnoreCase))
-            //                {
-            //                    if (name.Equals("lively_default_settings_reload", StringComparison.OrdinalIgnoreCase))
-            //                    {
-            //                        if (LivelyPropertiesView.RestoreOriginalPropertyFile(wp.Model, wp.LivelyPropertyCopyPath))
-            //                        {
-            //                            msg = new LivelyButton() { Name = "lively_default_settings_reload", IsDefault = true };
-            //                        }
-            //                    }
-            //                    else
-            //                    {
-            //                        msg = new LivelyButton() { Name = name };
-            //                    }
-            //                }
-            //                else
-            //                {
-            //                    if (ctype.Equals("checkbox", StringComparison.OrdinalIgnoreCase))
-            //                    {
-            //                        msg = new LivelyCheckbox() { Name = name, Value = (val == "true") };
-            //                        lp[name]["value"] = (val == "true");
-            //                    }
-            //                    else if (ctype.Equals("slider", StringComparison.OrdinalIgnoreCase))
-            //                    {
-            //                        var sliderValue = val.StartsWith("++") || val.StartsWith("--") ?
-            //                            (double)lp[name]["value"] + double.Parse(val[1..]) : double.Parse(val);
-            //                        sliderValue = Clamp(sliderValue, (double)lp[name]["min"], (double)lp[name]["max"]);
+                        IpcMessage msg = null;
+                        ctype = (ctype == null && name.Equals("lively_default_settings_reload", StringComparison.OrdinalIgnoreCase)) ? "button" : ctype;
+                        if (ctype != null)
+                        {
+                            if (ctype.Equals("button", StringComparison.OrdinalIgnoreCase))
+                            {
+                                if (name.Equals("lively_default_settings_reload", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    if (RestoreOriginalPropertyFile(wp.Model, wp.LivelyPropertyCopyPath))
+                                    {
+                                        msg = new LivelyButton() { Name = "lively_default_settings_reload", IsDefault = true };
+                                    }
+                                }
+                                else
+                                {
+                                    msg = new LivelyButton() { Name = name };
+                                }
+                            }
+                            else
+                            {
+                                if (ctype.Equals("checkbox", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    msg = new LivelyCheckbox() { Name = name, Value = (val == "true") };
+                                    lp[name]["value"] = (val == "true");
+                                }
+                                else if (ctype.Equals("slider", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    var sliderValue = val.StartsWith("++") || val.StartsWith("--") ?
+                                        (double)lp[name]["value"] + double.Parse(val[1..]) : double.Parse(val);
+                                    sliderValue = Clamp(sliderValue, (double)lp[name]["min"], (double)lp[name]["max"]);
 
-            //                        msg = new LivelySlider() { Name = name, Value = sliderValue };
-            //                        lp[name]["value"] = sliderValue;
-            //                    }
-            //                    else if (ctype.Equals("dropdown", StringComparison.OrdinalIgnoreCase))
-            //                    {
-            //                        var selectedIndex = val.StartsWith("++") || val.StartsWith("--") ?
-            //                            (int)lp[name]["value"] + int.Parse(val[1..]) : int.Parse(val);
-            //                        selectedIndex = Clamp(selectedIndex, 0, lp[name]["items"].Count() - 1);
+                                    msg = new LivelySlider() { Name = name, Value = sliderValue };
+                                    lp[name]["value"] = sliderValue;
+                                }
+                                else if (ctype.Equals("dropdown", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    var selectedIndex = val.StartsWith("++") || val.StartsWith("--") ?
+                                        (int)lp[name]["value"] + int.Parse(val[1..]) : int.Parse(val);
+                                    selectedIndex = Clamp(selectedIndex, 0, lp[name]["items"].Count() - 1);
 
-            //                        msg = new LivelyDropdown() { Name = name, Value = selectedIndex };
-            //                        lp[name]["value"] = selectedIndex;
-            //                    }
-            //                    else if (ctype.Equals("folderDropdown", StringComparison.OrdinalIgnoreCase))
-            //                    {
-            //                        msg = new LivelyFolderDropdown() { Name = name, Value = val };
-            //                        lp[name]["value"] = Path.GetFileName(val);
-            //                    }
-            //                    else if (ctype.Equals("textbox", StringComparison.OrdinalIgnoreCase))
-            //                    {
-            //                        msg = new LivelyTextBox() { Name = name, Value = val };
-            //                        lp[name]["value"] = val;
-            //                    }
-            //                    else if (ctype.Equals("color", StringComparison.OrdinalIgnoreCase))
-            //                    {
-            //                        msg = new LivelyColorPicker() { Name = name, Value = val };
-            //                        lp[name]["value"] = val;
-            //                    }
+                                    msg = new LivelyDropdown() { Name = name, Value = selectedIndex };
+                                    lp[name]["value"] = selectedIndex;
+                                }
+                                else if (ctype.Equals("folderDropdown", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    msg = new LivelyFolderDropdown() { Name = name, Value = val };
+                                    lp[name]["value"] = Path.GetFileName(val);
+                                }
+                                else if (ctype.Equals("textbox", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    msg = new LivelyTextBox() { Name = name, Value = val };
+                                    lp[name]["value"] = val;
+                                }
+                                else if (ctype.Equals("color", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    msg = new LivelyColorPicker() { Name = name, Value = val };
+                                    lp[name]["value"] = val;
+                                }
 
-            //                    try
-            //                    {
-            //                        JsonUtil.Write(wp.LivelyPropertyCopyPath, lp);
-            //                    }
-            //                    catch (Exception e)
-            //                    {
-            //                        Logger.Error(e.ToString());
-            //                    }
-            //                }
+                                try
+                                {
+                                    JsonUtil.Write(wp.LivelyPropertyCopyPath, lp);
+                                }
+                                catch (Exception e)
+                                {
+                                    Logger.Error(e.ToString());
+                                }
+                            }
 
-            //                if (msg != null)
-            //                {
-            //                    switch (userSettings.Settings.WallpaperArrangement)
-            //                    {
-            //                        case WallpaperArrangement.per:
-            //                            desktopCore.SendMessageWallpaper(screen, wp.Model, msg);
-            //                            break;
-            //                        case WallpaperArrangement.span:
-            //                        case WallpaperArrangement.duplicate:
-            //                            desktopCore.SendMessageWallpaper(wp.Model, msg);
-            //                            break;
-            //                    }
-            //                }
-            //            }
-            //        }
-            //        catch (Exception ex)
-            //        {
-            //            Logger.Error(ex.ToString());
-            //        }
-            //    }
-            //}
+                            if (msg != null)
+                            {
+                                switch (userSettings.Settings.WallpaperArrangement)
+                                {
+                                    case WallpaperArrangement.per:
+                                        desktopCore.SendMessageWallpaper(screen, wp.Model.LivelyInfoFolderPath, msg);
+                                        break;
+                                    case WallpaperArrangement.span:
+                                    case WallpaperArrangement.duplicate:
+                                        desktopCore.SendMessageWallpaper(wp.Model.LivelyInfoFolderPath, msg);
+                                        break;
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Logger.Error(ex.ToString());
+                    }
+                }
+            }
             return 0;
         }
 
@@ -553,6 +463,59 @@ namespace Lively.Automation
                 return max;
 
             return value;
+        }
+
+        private IEnumerable<ILibraryModel> GetWallpapers()
+        {
+            var dir = new List<string[]>();
+            string[] folderPaths = {
+                Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperInstallDir),
+                Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperInstallTempDir)
+            };
+            for (int i = 0; i < folderPaths.Count(); i++)
+            {
+                try
+                {
+                    dir.Add(Directory.GetDirectories(folderPaths[i], "*", SearchOption.TopDirectoryOnly));
+                }
+                catch { /* TODO */ }
+            }
+
+            for (int i = 0; i < dir.Count; i++)
+            {
+                for (int j = 0; j < dir[i].Length; j++)
+                {
+                    ILibraryModel libItem = null;
+                    try
+                    {
+                        libItem = WallpaperUtil.ScanWallpaperFolder(dir[i][j]);
+                    }
+                    catch { }
+
+                    if (libItem != null)
+                    {
+                        yield return libItem;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Copies LivelyProperties.json from root to the per monitor file.
+        /// </summary>
+        /// <param name="wallpaperData">Wallpaper info.</param>
+        /// <param name="livelyPropertyCopyPath">Modified LivelyProperties.json path.</param>
+        /// <returns></returns>
+        public static bool RestoreOriginalPropertyFile(ILibraryModel wallpaperData, string livelyPropertyCopyPath)
+        {
+            bool status = false;
+            try
+            {
+                File.Copy(wallpaperData.LivelyPropertyPath, livelyPropertyCopyPath, true);
+                status = true;
+            }
+            catch { /* TODO */ }
+            return status;
         }
 
         #endregion //helpers

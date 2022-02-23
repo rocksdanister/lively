@@ -213,15 +213,19 @@ namespace Lively.Core
                     bool cancelled = false;
                     switch (wallpaper.Model.DataType)
                     {
-                        case LibraryItemType.processing:
-                        case LibraryItemType.cmdImport:
-                        case LibraryItemType.multiImport:
                         case LibraryItemType.edit:
+                        case LibraryItemType.processing:
+                        //case LibraryItemType.cmdImport:
+                        //case LibraryItemType.multiImport:
                             try
                             {
                                 runner.SetBusyUI(true);
-                                //backup..once processed is done, becomes ready.
+                                //backup.. once processed is done, becomes ready.
                                 var type = wallpaper.Model.DataType;
+                                if (type == LibraryItemType.edit)
+                                {
+                                    CloseWallpaper(wallpaper.Model, terminate: true);
+                                }
                                 var tcs = new TaskCompletionSource<object>();
                                 var thread = new Thread(() =>
                                 {
@@ -235,14 +239,16 @@ namespace Lively.Core
                                                 ShowActivated = true,
                                                 WindowStartupLocation = WindowStartupLocation.CenterScreen
                                             };
-                                            pWindow.Closed += (s, a) => tcs.SetResult(null);
+                                            //pWindow.Closed += (s, a) => tcs.SetResult(null);
                                             var vm = (LibraryPreviewViewModel)pWindow.DataContext;
-                                            vm.DetailsUpdated += (s, e) => {
-                                                WallpaperUpdated?.Invoke(this, e);
-                                                if (e.Category == UpdateWallpaperType.remove)
+                                            vm.DetailsUpdated += (s, e) =>
+                                            {
+                                                cancelled = e.Category == UpdateWallpaperType.remove;
+                                                if (cancelled || e.Category == UpdateWallpaperType.done)
                                                 {
-                                                    cancelled = true;
+                                                    tcs.SetResult(null);
                                                 }
+                                                WallpaperUpdated?.Invoke(this, e);
                                             };
                                             pWindow.Show();
                                             if (runner.IsVisibleUI)
@@ -265,12 +271,19 @@ namespace Lively.Core
                                     catch (Exception e)
                                     {
                                         tcs.SetException(e);
-                                        Logger.Error(e.ToString());
+                                        Logger.Error(e);
                                     }
                                 });
                                 thread.SetApartmentState(ApartmentState.STA);
                                 thread.Start();
                                 await tcs.Task;
+
+                                if (type == LibraryItemType.edit)
+                                {
+                                    wallpaper.Terminate();
+                                    //await Task.Delay(1000);
+                                    return;
+                                }
                             }
                             finally
                             {

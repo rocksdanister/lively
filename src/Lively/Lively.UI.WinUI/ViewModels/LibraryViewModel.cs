@@ -16,6 +16,7 @@ using Lively.Grpc.Client;
 using Windows.System;
 using Lively.UI.WinUI.Helpers;
 using System.Diagnostics;
+using Lively.Common.Helpers;
 
 namespace Lively.UI.WinUI.ViewModels
 {
@@ -44,7 +45,7 @@ namespace Lively.UI.WinUI.ViewModels
 
             foreach (var item in ScanWallpaperFolders(wallpaperScanFolders))
             {
-                LibraryItems.Insert(BinarySearch(LibraryItems, item.Title), item);        
+                LibraryItems.Insert(BinarySearch(LibraryItems, item.Title), item);      
             }
 
             //Select already running item when UI program is started again..
@@ -143,7 +144,7 @@ namespace Lively.UI.WinUI.ViewModels
                         //temporary for visual appearance only..
                         item.Title = e.Info.Title;
                         item.Desc = e.Info.Desc;
-                        item.ImagePath = e.Info.Thumbnail;
+                        item.ImagePath = e.Info.IsAbsolutePath ? e.Info.Thumbnail : Path.Combine(e.InfoPath, e.Info.Thumbnail);
                     }
                     else if (e.Category == UpdateWallpaperType.done)
                     {
