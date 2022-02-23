@@ -126,7 +126,9 @@ namespace Lively.UI.WinUI.Views.Pages
                     break;
                 case "editWallpaper":
                     {
-                        //TODO
+                        obj.DataType = LibraryItemType.edit;
+                        libraryVm.LibraryItems.Move(libraryVm.LibraryItems.IndexOf((LibraryModel)obj), 0);
+                        await desktopCore.SetWallpaper(obj, userSettings.Settings.SelectedDisplay);
                     }
                     break;
                 case "moreInformation":

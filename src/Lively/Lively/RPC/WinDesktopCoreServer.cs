@@ -223,6 +223,7 @@ namespace Lively.RPC
                             PreviewPath = e.Info.Preview ?? string.Empty,
                             LivelyInfoPath = e.InfoPath ?? string.Empty,
                             Type = (UpdateWallpaperCategory)(int)e.Category,
+                            IsAbsolutePath = e.Info.IsAbsolutePath,
                         };
                         desktopCore.WallpaperUpdated -= WallpaperUpdated;
                         tcs.SetResult(true);

@@ -1,21 +1,21 @@
 ﻿using Lively.Common;
 using Lively.Common.Helpers.Pinvoke;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Text;
+using System.Security.Principal;
+using System.Windows;
 
 namespace Lively.Services
 {
     public class RunnerService : IRunnerService
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-
         private Process processUI;
         private bool disposedValue;
         private readonly string uiClientFileName;
         private readonly bool uiOutputRedirect;
+        private readonly bool _isElevated;
         //private NativeMethods.RECT rctUI;
 
         public RunnerService()
@@ -28,6 +28,12 @@ namespace Lively.Services
             };
             //winui source not using Debug.Writeline() for debugging.. wtf?
             uiOutputRedirect = Constants.ApplicationType.Client != ClientType.winui;
+
+            if(IsElevated)
+            {
+                _isElevated = true;
+                Logger.Warn("Process is running as admin, winui is disabled.");
+            }
         }
 
         public void ShowUI()
@@ -36,16 +42,6 @@ namespace Lively.Services
             {
                 try
                 {
-                    /*
-                    if (!processUI.Responding)
-                    {
-                        RestartUI();
-                    }
-                    else
-                    {
-                        processUI.StandardInput.WriteLine("WM SHOW");
-                    }
-                    */
                     processUI.StandardInput.WriteLine("WM SHOW");
                 }
                 catch (Exception e)
@@ -57,6 +53,16 @@ namespace Lively.Services
             {
                 try
                 {
+                    //Ref: https://github.com/rocksdanister/lively/issues/1060
+                    if (_isElevated && Constants.ApplicationType.Client == ClientType.winui)
+                    {
+                        _ = MessageBox.Show("Lively UI cannot run as administrator because WindowsAppSDK does not currently support this.",
+                            "Running as Administrator!",
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Error);
+                        return;
+                    }
+
                     processUI = new Process
                     {
                         StartInfo = new ProcessStartInfo
@@ -161,6 +167,25 @@ namespace Lively.Services
             processUI.Dispose();
             processUI = null;
         }
+
+        #region helpers
+
+        public bool IsElevated
+        {
+            get
+            {
+                try
+                {
+                    return new WindowsPrincipal(WindowsIdentity.GetCurrent()).IsInRole(WindowsBuiltInRole.Administrator);
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
+
+        #endregion //helpers
 
         #region dispose
 

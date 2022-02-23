@@ -286,6 +286,7 @@ namespace Lively.ViewModels
                 libData.LivelyInfo.Thumbnail = null;
                 libData.PreviewClipPath = null;
                 libData.LivelyInfo.Preview = null;
+                DetailsUpdated?.Invoke(this, new WallpaperUpdateArgs() { Category = UpdateWallpaperType.changed, Info = libData.LivelyInfo, InfoPath = libData.LivelyInfoFolderPath });
             }
             Winstance.StartCapture(libData.LivelyInfoFolderPath);
         }
@@ -304,11 +305,8 @@ namespace Lively.ViewModels
 
         private void WInstance_PreviewUpdated(object sender, string path)
         {
-            if (userSettings.Settings.LivelyGUIRendering != LivelyGUIState.lite)
-            {
-                libData.ImagePath = null;
-                libData.ImagePath = path;
-            }
+            libData.ImagePath = null;
+            libData.ImagePath = path;
             libData.LivelyInfo.Preview = libData.LivelyInfo.IsAbsolutePath ? path : Path.GetFileName(path);
             libData.PreviewClipPath = path;
             DetailsUpdated?.Invoke(this, new WallpaperUpdateArgs() { Category = UpdateWallpaperType.changed, Info = libData.LivelyInfo, InfoPath = libData.LivelyInfoFolderPath });
@@ -350,12 +348,12 @@ namespace Lively.ViewModels
                     libData.LivelyInfo.Thumbnail = libData.LivelyInfo.IsAbsolutePath ? thumbnailOriginalPath : Path.GetFileName(thumbnailOriginalPath);
                     //restore tile img..
                     libData.ImagePath = null;
-                    libData.ImagePath = userSettings.Settings.LivelyGUIRendering == LivelyGUIState.normal ?
-                        (File.Exists(libData.PreviewClipPath) ? libData.PreviewClipPath : libData.ThumbnailPath) : libData.ThumbnailPath;
+                    libData.ImagePath = File.Exists(libData.PreviewClipPath) ? libData.PreviewClipPath : libData.ThumbnailPath;
 
                     //change from pos 0..
                     libData.DataType = LibraryItemType.ready;
                     //libraryVm.SortLibraryItem((LibraryModel)libData);
+                    DetailsUpdated?.Invoke(this, new WallpaperUpdateArgs() { Category = UpdateWallpaperType.done, Info = libData.LivelyInfo, InfoPath = libData.LivelyInfoFolderPath });
                 }
                 else
                 {
