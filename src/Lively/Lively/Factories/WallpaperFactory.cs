@@ -134,24 +134,18 @@ namespace Lively.Factories
                     }
                     else
                     {
-                        throw new NotImplementedException();
-                        /*
                         return new ExtPrograms(obj.FilePath, obj, display,
-                            userSettings.Settings.WallpaperWaitTime);
-                        */
+                          userSettings.Settings.WallpaperWaitTime);
                     }
                 case WallpaperType.videostream:
                     if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "mpv", "youtube-dl.exe")))
                     {
-                        throw new NotImplementedException();
-                        /*
-                        return new VideoMpvPlayer(obj.FilePath, 
+                        return new VideoMpvPlayer(obj.FilePath,
                             obj,
                             display,
-                            lpFactory.CreateLivelyPropertyFolder(obj, display, userSettings.Settings.WallpaperArrangement),
+                            lpFactory.CreateLivelyPropertyFolder(obj, display, userSettings.Settings.WallpaperArrangement, userSettings),
                             userSettings.Settings.WallpaperScaling, userSettings.Settings.VideoPlayerHwAccel,
                             isPreview, userSettings.Settings.StreamQuality);
-                        */
                     }
                     else
                     {

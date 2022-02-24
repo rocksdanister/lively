@@ -301,14 +301,26 @@ namespace Lively.UI.WinUI
             if (userSettings.Settings.IsFirstRun)
             {
                 args.Handled = true;
-                await new ContentDialog()
+                var dlg = new ContentDialog()
                 {
                     Title = i18n.GetString("PleaseWait/Text"),
                     Content = new TrayMenuHelp(),
-                    PrimaryButtonText = i18n.GetString("TextOK"),
+                    PrimaryButtonText = "4s",
+                    IsPrimaryButtonEnabled = false,
                     DefaultButton = ContentDialogButton.Primary,
                     XamlRoot = this.Content.XamlRoot,
-                }.ShowAsyncQueue();
+                };
+                dlg.Opened += async (s, e) =>
+                {
+                    for (int i = 4; i > 0; i--)
+                    {
+                        dlg.PrimaryButtonText = $"{i}s";
+                        await Task.Delay(1000);
+                    }
+                    dlg.PrimaryButtonText = i18n.GetString("TextOK");
+                    dlg.IsPrimaryButtonEnabled = true;
+                };
+                await dlg.ShowAsyncQueue();
                 userSettings.Settings.IsFirstRun = false;
                 userSettings.Save<ISettingsModel>();
                 this.Close();
