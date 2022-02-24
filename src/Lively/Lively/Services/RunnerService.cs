@@ -29,10 +29,10 @@ namespace Lively.Services
             //winui source not using Debug.Writeline() for debugging.. wtf?
             uiOutputRedirect = Constants.ApplicationType.Client != ClientType.winui;
 
-            if(IsElevated)
+            if (IsElevated)
             {
                 _isElevated = true;
-                Logger.Warn("Process is running as admin, winui is disabled.");
+                Logger.Warn("Process is running as admin, disabling winui.");
             }
         }
 
@@ -56,7 +56,9 @@ namespace Lively.Services
                     //Ref: https://github.com/rocksdanister/lively/issues/1060
                     if (_isElevated && Constants.ApplicationType.Client == ClientType.winui)
                     {
-                        _ = MessageBox.Show("Lively UI cannot run as administrator because WindowsAppSDK does not currently support this.",
+                        _ = MessageBox.Show("Lively UI cannot run as administrator because WindowsAppSDK does not currently support this.\n\nMake sure UAC driver is enabled by:\n" +
+                            "Search and open Local Security Policy from startmenu > Security Settings > Local Policies > Security Options > " +
+                            "Double-click User Account Control: Run all administrators in Admin Approval Mode and make sure its enabled.\nIf disabled then enable it and restart system.",
                             "Running as Administrator!",
                             MessageBoxButton.OK,
                             MessageBoxImage.Error);
