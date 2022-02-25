@@ -9,8 +9,8 @@ using System.Drawing.Imaging;
 using Lively.Models;
 using Lively.Common;
 using Lively.Common.API;
-using Lively.Common.Helpers.ScreenRecord;
 using Lively.Common.Helpers.Shell;
+using Lively.Helpers;
 
 namespace Lively.Core.Wallpapers
 {

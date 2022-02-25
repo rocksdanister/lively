@@ -9,7 +9,6 @@
     <PackageReference Include="CommandLineParser" Version="2.8.0" />
     <PackageReference Include="DesktopBridge.Helpers" Version="1.2.2" />
     <PackageReference Include="Downloader" Version="2.3.3" />
-    <PackageReference Include="Magick.NET-Q16-AnyCPU" Version="10.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Octokit" Version="0.50.0" />
     <PackageReference Include="SharpZipLib" Version="1.3.3" />
