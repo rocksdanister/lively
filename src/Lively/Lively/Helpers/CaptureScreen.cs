@@ -1,5 +1,4 @@
-﻿//using ImageMagick;
-using ImageMagick;
+﻿using ImageMagick;
 using Lively.Common.Helpers.Pinvoke;
 using System;
 using System.Collections.Generic;
@@ -11,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Lively.Common.Helpers.ScreenRecord
+namespace Lively.Helpers
 {
     public static class CaptureScreen
     {
