@@ -7,8 +7,51 @@ using System.Web;
 
 namespace Lively.Common.Helpers
 {
-    public class StreamUtil
+    public static class StreamUtil
     {
+        public static bool IsSupportedStream(Uri uri)
+        {
+            bool status = false;
+            string host, url, tmp = string.Empty;
+            try
+            {
+                url = uri.AbsoluteUri;
+                host = uri.Host;
+            }
+            catch
+            {
+                return status;
+            }
+
+            switch (host)
+            {
+                case "youtube.com":
+                case "youtu.be":
+                case "www.youtu.be":
+                case "www.youtube.com":
+                    if (TryParseYouTubeVideoIdFromUrl(url, ref tmp))
+                        status = true;
+                    break;
+                case "www.bilibili.com":
+                    if (url.Contains("bilibili.com/video/"))
+                        status = true;
+                    break;
+            }
+            return status;
+        }
+
+        public static bool IsSupportedStream(string url)
+        {
+            try
+            {
+                return IsSupportedStream(new Uri(url));
+            }
+            catch 
+            { 
+                return false; 
+            }
+        }
+
         //ref: https://stackoverflow.com/questions/39777659/extract-the-video-id-from-youtube-url-in-net
         public static bool TryParseYouTubeVideoIdFromUrl(string url, ref string id)
         {

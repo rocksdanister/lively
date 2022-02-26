@@ -47,6 +47,8 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
         private LowLevelMouseHook mouseHook;
         private SplitButton currEyeDropSplitBtn;
         private ToggleButton currEyeDropBtn;
+        private ColorPicker currColorPicker;
+        private Color currColorPickerOriginalColor;
 
         private readonly IUserSettingsClient userSettings;
         private readonly IDesktopCoreClient desktopCore;
@@ -194,6 +196,7 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                     var cpicker = new ColorPicker
                     {
                         Tag = item.Key, //used for searching the splitbtn
+                        Name = "cpicker",
                         ColorSpectrumShape = ColorSpectrumShape.Box,
                         IsMoreButtonVisible = false,
                         IsColorSliderVisible = true,
@@ -566,15 +569,18 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                 {
                     return;
                 }
-                currEyeDropSplitBtn = splBtn;
                 currEyeDropBtn = btn;
+                currEyeDropSplitBtn = splBtn;
+                currColorPicker = (ColorPicker)((StackPanel)((Flyout)splBtn.Flyout).Content).FindName("cpicker");
+                currColorPickerOriginalColor = currColorPicker.Color;
             }
             catch (Exception ex)
             {
                 Logger.Error(ex);
             }
-
+            
             currEyeDropBtn.IsChecked = true;
+            currColorPicker.ColorChanged -= Cpicker_ColorChanged;
             mouseHook = new LowLevelMouseHook() { GenerateMouseMoveEvents = true, Handling = false };
             mouseHook.Move += MouseHook_Move;
             mouseHook.Down += MouseHook_Down;
@@ -593,12 +599,12 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                     var color = GetColorAt(e.Position.X, e.Position.Y);
                     _ = App.Services.GetRequiredService<MainWindow>().DispatcherQueue.TryEnqueue(() =>
                     {
-                        currEyeDropBtn.Background = new SolidColorBrush(Color.FromArgb(
+                        currColorPicker.Color = Color.FromArgb(
                           255,
                           color.R,
                           color.G,
                           color.B
-                        ));
+                        );
                     });
                 }
             }
@@ -610,23 +616,30 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
             {
                 //e.IsHandled = true;
                 var color = GetColorAt(e.Position.X, e.Position.Y);
-                if (currEyeDropSplitBtn != null && currEyeDropBtn != null)
+                if (currEyeDropSplitBtn != null && currEyeDropBtn != null &&  currColorPicker != null)
                 {
                     _ = App.Services.GetRequiredService<MainWindow>().DispatcherQueue.TryEnqueue(() =>
                     {
-                        currEyeDropBtn.IsChecked = false;
-                        //currEyeDropBtn.Background = (SolidColorBrush)Application.Current.Resources["SystemControlForegroundAccentBrush"];
                         Border border = (Border)currEyeDropSplitBtn.Content;
-                        border.Background = new SolidColorBrush(Color.FromArgb(
-                          255,
-                          color.R,
-                          color.G,
-                          color.B
-                        ));
-
-                        WallpaperSendMsg(new LivelyColorPicker() { Name = currEyeDropSplitBtn.Name, Value = ToHexValue(color) });
-                        livelyPropertyCopyData[currEyeDropSplitBtn.Name]["value"] = ToHexValue(color);
-                        UpdatePropertyFile();
+                        if (e.Keys.Values.Contains(Key.MouseLeft))
+                        {
+                            border.Background = new SolidColorBrush(Color.FromArgb(
+                              255,
+                              color.R,
+                              color.G,
+                              color.B
+                            ));
+                            WallpaperSendMsg(new LivelyColorPicker() { Name = currEyeDropSplitBtn.Name, Value = ToHexValue(color) });
+                            livelyPropertyCopyData[currEyeDropSplitBtn.Name]["value"] = ToHexValue(color);
+                            UpdatePropertyFile();
+                        }
+                        else //discard
+                        {
+                            currColorPicker.Color = currColorPickerOriginalColor;
+                            border.Background = new SolidColorBrush(currColorPickerOriginalColor);
+                        }
+                        currEyeDropBtn.IsChecked = false;
+                        currColorPicker.ColorChanged += Cpicker_ColorChanged;
                     });
                 }
             }

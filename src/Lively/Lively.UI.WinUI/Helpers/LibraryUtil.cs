@@ -1,4 +1,5 @@
 ﻿using Lively.Common;
+using Lively.Common.Helpers;
 using Lively.Common.Helpers.Archive;
 using Lively.Common.Helpers.Files;
 using Lively.Common.Helpers.Storage;
@@ -259,7 +260,7 @@ namespace Lively.UI.WinUI.Helpers
             var data = new LivelyInfoModel()
             {
                 Title = LinkHandler.GetLastSegmentUrl(url),
-                Type = WallpaperType.url,
+                Type = (userSettings.Settings.AutoDetectOnlineStreams && StreamUtil.IsSupportedStream(url)) ? WallpaperType.videostream : WallpaperType.url,
                 IsAbsolutePath = true,
                 FileName = url,
                 Contact = url,

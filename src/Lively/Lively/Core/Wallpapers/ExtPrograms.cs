@@ -150,7 +150,7 @@ namespace Lively.Core.Wallpapers
                     Proc.Start();
                     processWaitTask = Task.Run((Func<IntPtr>)(() => this.Handle = WaitForProcesWindow().Result), ctsProcessWait.Token);
                     await processWaitTask;
-                    if(Handle.Equals(IntPtr.Zero))
+                    if (Handle.Equals(IntPtr.Zero))
                     {
                         WindowInitialized?.Invoke(this, new WindowInitializedArgs()
                         {
@@ -170,14 +170,14 @@ namespace Lively.Core.Wallpapers
                             Msg = null });
                     }
                 }
-                catch(OperationCanceledException e1)
+                catch (OperationCanceledException e1)
                 {
                     WindowInitialized?.Invoke(this, new WindowInitializedArgs() { 
                         Success = false, 
                         Error = e1, 
                         Msg = "Program wallpaper terminated early/user cancel." });
                 }
-                catch(InvalidOperationException e2)
+                catch (InvalidOperationException e2)
                 {
                     //No GUI, program failed to enter idle state.
                     WindowInitialized?.Invoke(this, new WindowInitializedArgs() { 

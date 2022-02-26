@@ -329,6 +329,7 @@ namespace Lively.UI.WinUI
             if (userSettings.Settings.KeepAwakeUI)
             {
                 args.Handled = true;
+                contentFrame.Visibility = Visibility.Collapsed; //drop resource usage.
                 NativeMethods.ShowWindow(this.GetWindowHandleEx(), (uint)NativeMethods.SHOWWINDOW.SW_HIDE);
             }
             else
@@ -361,7 +362,7 @@ namespace Lively.UI.WinUI
                             {
                                 if (args[1].Equals("SHOW", StringComparison.OrdinalIgnoreCase))
                                 {
-                                    //this.Show();
+                                    contentFrame.Visibility = Visibility.Visible; //undo drop resource usage.
                                     NativeMethods.ShowWindow(this.GetWindowHandleEx(), (uint)NativeMethods.SHOWWINDOW.SW_SHOW);
                                 }
                             }
