@@ -66,39 +66,14 @@ namespace Lively.UI.WinUI.ViewModels
             }
 
             WebUrlText = uri.OriginalString;
-
             try
             {
                 NewWallpaper = libraryUtil.AddWallpaperLink(uri.OriginalString);
                 OnRequestClose?.Invoke(this, EventArgs.Empty);
             }
-            catch (Exception e)
-            {
+            catch {
                 //TODO
             }
-
-            /*
-            if (userSettings.Settings.AutoDetectOnlineStreams &&
-                 StreamUtil.IsSupportedStream(uri))
-            {
-                libraryVm.AddWallpaper(uri.OriginalString,
-                    WallpaperType.videostream,
-                    LibraryTileType.processing,
-                    userSettings.Settings.SelectedDisplay);
-            }
-            else
-            {
-                libraryVm.AddWallpaper(uri.OriginalString,
-                    WallpaperType.url,
-                    LibraryTileType.processing,
-                    userSettings.Settings.SelectedDisplay);
-            }
-
-            userSettings.Settings.SavedURL = WebUrlText;
-            userSettings.Save<ISettingsModel>();
-
-            appWindow.NavViewNavigate("library");
-            */
         }
 
         private RelayCommand _browseFileCommand;

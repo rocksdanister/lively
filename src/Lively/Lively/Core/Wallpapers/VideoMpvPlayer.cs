@@ -134,7 +134,7 @@ namespace Lively.Core.Wallpapers
             //screenshot location, important read: https://mpv.io/manual/master/#pseudo-gui-mode
             cmdArgs.Append("--screenshot-template=" + "\"" + Path.Combine(Constants.CommonPaths.TempDir, ipcServerName) + "\" --screenshot-format=jpg ");
             //file or online video stream path
-            cmdArgs.Append(model.LivelyInfo.Type == WallpaperType.videostream ? YoutubeDLMpvArgGenerate(streamQuality, path) : "\"" + path + "\"");
+            cmdArgs.Append(model.LivelyInfo.Type == WallpaperType.videostream ? GetYtDlMpvArg(streamQuality, path) : "\"" + path + "\"");
 
             ProcessStartInfo start = new ProcessStartInfo
             {
@@ -647,11 +647,9 @@ namespace Lively.Core.Wallpapers
             return script.ToString();
         }
 
-        private string YoutubeDLMpvArgGenerate(StreamQualitySuggestion qualitySuggestion, string link)
+        private static string GetYtDlMpvArg(StreamQualitySuggestion qualitySuggestion, string link)
         {
-            StringBuilder sb = new StringBuilder();
-            sb.Append(link);
-            sb.Append(qualitySuggestion switch
+            return link + qualitySuggestion switch
             {
                 StreamQualitySuggestion.Lowest => " --ytdl-format=bestvideo[height<=144]+bestaudio/best",
                 StreamQualitySuggestion.Low => " --ytdl-format=bestvideo[height<=240]+bestaudio/best",
@@ -661,9 +659,7 @@ namespace Lively.Core.Wallpapers
                 StreamQualitySuggestion.High => " --ytdl-format=bestvideo[height<=1080]+bestaudio/best",
                 StreamQualitySuggestion.Highest => " --ytdl-format=bestvideo+bestaudio/best",
                 _ => string.Empty,
-            }
-            );
-            return sb.ToString();
+            };
         }
 
         #endregion //mpv util
