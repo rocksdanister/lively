@@ -225,7 +225,12 @@ namespace Lively.UI.WinUI
             _ = new ContentDialog()
             {
                 Title = i18n.GetString("DescriptionScreenLayout"),
-                Content = new ScreenLayoutView(),
+                Content = new ScreenLayoutView() { 
+                    I18n = new ScreenLayoutView.Localization {
+                        TitleScreenSaver = i18n.GetString("TitleScreensaver"),
+                        TipScreenSaver = i18n.GetString("TipScreensaver"),
+                    }
+                },
                 PrimaryButtonText = i18n.GetString("TextOK"),
                 DefaultButton = ContentDialogButton.Primary,
                 XamlRoot = this.Content.XamlRoot,

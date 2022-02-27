@@ -60,7 +60,7 @@ namespace Lively.Services
         {
             if (!IsRunning)
             {
-                //moving cursor outisde screen..
+                //moving cursor outside screen..
                 _ = NativeMethods.SetCursorPos(int.MaxValue, 0);
                 Logger.Info("Starting screensaver..");
                 IsRunning = true;

@@ -659,7 +659,7 @@ If still not working, close &amp; start Lively again/restart windows.
     <value>Change playback when running a Remote Desktop session</value>
   </data>
   <data name="TipScreensaver" xml:space="preserve">
-    <value>After the selected inactivity period use the current wallpaper as your screensaver</value>
+    <value>After the inactivity period use the current wallpaper as your screensaver</value>
   </data>
   <data name="StreamWallpaperDetect.Description" xml:space="preserve">
     <value>If supported video stream link is detected use the video player instead of loading the webpage</value>

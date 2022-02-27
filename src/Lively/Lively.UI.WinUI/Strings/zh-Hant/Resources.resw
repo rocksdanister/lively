@@ -118,64 +118,64 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="WallpaperDirGroup.Header" xml:space="preserve">
-    <value>File</value>
+    <value>檔案</value>
   </data>
   <data name="FastUI.Header" xml:space="preserve">
-    <value>Fast startup</value>
+    <value>快速啟動</value>
   </data>
   <data name="FastUI.Description" xml:space="preserve">
-    <value>Keep User Interface running for faster startup</value>
+    <value>保持用戶介面在運作中以加快啟動速度</value>
   </data>
   <data name="WindowsSettingsColor.Content" xml:space="preserve">
-    <value>Windows color settings</value>
+    <value>Windows 色彩設定</value>
   </data>
   <data name="AppThemeDark.Content" xml:space="preserve">
-    <value>Dark</value>
+    <value>深色</value>
   </data>
   <data name="AppThemeLight.Content" xml:space="preserve">
-    <value>Light</value>
+    <value>淺色</value>
   </data>
   <data name="AppThemeSystem.Content" xml:space="preserve">
-    <value>System</value>
+    <value>系統</value>
   </data>
   <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
-    <value>Laptops</value>
+    <value>筆電</value>
   </data>
   <data name="DeveloperGroup.Header" xml:space="preserve">
-    <value>Developer</value>
+    <value>開發人員</value>
   </data>
   <data name="AppearanceBehaviour.Header" xml:space="preserve">
-    <value>Appearance &amp; behavior</value>
+    <value>外觀與行為</value>
   </data>
   <data name="TitleGallery" xml:space="preserve">
-    <value>Gallery</value>
+    <value>相簿</value>
   </data>
   <data name="ActiveWallpapers.Label" xml:space="preserve">
-    <value>Active Wallpaper(s)</value>
+    <value>啟用中桌布</value>
   </data>
   <data name="AboutMe.Text" xml:space="preserve">
-    <value>Hi, I'm Dani John also known as rocksdanister. I developed Lively a Free and open-source (FOSS) wallpaper application. Thanks for taking the time to look at my work.</value>
+    <value>嗨，我是 Dani John，也被稱為 Rocksdanister。我開發了 Lively 動態桌布，一個免費和開源 (FOSS) 桌布應用程式。感謝您花時間體驗我的作品。</value>
   </data>
   <data name="LicenseLink.Content" xml:space="preserve">
-    <value>Software license</value>
+    <value>軟體許可</value>
   </data>
   <data name="AttributionLink.Content" xml:space="preserve">
-    <value>Third party software notice</value>
+    <value>第三方軟體提醒</value>
   </data>
   <data name="PrivacyPolicyLink.Content" xml:space="preserve">
-    <value>Data collection policy</value>
+    <value>資料蒐集政策</value>
   </data>
   <data name="AddWallpaperDrop.Text" xml:space="preserve">
-    <value>Add wallpaper</value>
+    <value>新增桌布</value>
   </data>
  <data name="ComingSoon.Text" xml:space="preserve">
-    <value>Coming soon</value>
+    <value>即將推出</value>
   </data>
   <data name="TextOpen.Content" xml:space="preserve">
-    <value>Open</value>
+    <value>開啟</value>
   </data>
   <data name="TextSave.Content" xml:space="preserve">
-    <value>Save</value>
+    <value>儲存</value>
   </data>
   <data name="CommunityPage.Content" xml:space="preserve">
     <value>線上討論社群</value>
@@ -383,7 +383,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>退出</value>
   </data>
   <data name="ExportWallpaperZip.Text" xml:space="preserve">
-    <value>匯出為 Lively 動態桌布 .zip 檔</value>
+    <value>匯出為 Lively 動態桌布 .zip 壓縮檔</value>
   </data>
   <data name="TextFeatureMissing" xml:space="preserve">
     <value>一些功能在此版本 Lively 動態桌布中不可用。</value>
@@ -419,7 +419,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>了解更多</value>
   </data>
   <data name="License.Header" xml:space="preserve">
-    <value>授權</value>
+    <value>許可</value>
   </data>
   <data name="TextMinutes" xml:space="preserve">
     <value>分鐘</value>
