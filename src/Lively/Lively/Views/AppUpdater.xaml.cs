@@ -38,8 +38,8 @@ namespace Lively.Views
             else
             {
                 downloadBtn.IsEnabled = false;
-                this.Title = "Fail";
-                changelog.Document.Blocks.Add(new Paragraph(new Run("Error, Download from website instead: https://github.com/rocksdanister/lively/releases")));
+                this.Title = Properties.Resources.TextupdateCheckFail;
+                changelog.Document.Blocks.Add(new Paragraph(new Run(Properties.Resources.LivelyExceptionAppUpdateFail)));
             }
         }
 
@@ -66,14 +66,14 @@ namespace Lively.Views
                 {
                     downloadComplete = true;
                     downloadBtn.IsEnabled = true;
-                    downloadBtn.Content = "Install";
+                    downloadBtn.Content = Properties.Resources.TextInstall;
                     taskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                 }
                 else
                 {
                     taskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Error;
                     changelog.Document.Blocks.Clear();
-                    changelog.Document.Blocks.Add(new Paragraph(new Run("Error, Download from website instead: https://github.com/rocksdanister/lively/releases")));
+                    changelog.Document.Blocks.Add(new Paragraph(new Run(Properties.Resources.LivelyExceptionAppUpdateFail)));
                     _forceClose = true;
                 }
             }));
@@ -95,7 +95,7 @@ namespace Lively.Views
                 catch (Exception ex)
                 {
                     Logger.Error(ex);
-                    MessageBox.Show("Error, Download from website instead: https://github.com/rocksdanister/lively/releases", "Error");
+                    MessageBox.Show(Properties.Resources.LivelyExceptionAppUpdateFail, Properties.Resources.TextError);
                 }
             }
             else
@@ -132,7 +132,7 @@ namespace Lively.Views
                     Logger.Error(ex);
                     taskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Error;
                     changelog.Document.Blocks.Clear();
-                    changelog.Document.Blocks.Add(new Paragraph(new Run("Error, Download from website instead: https://github.com/rocksdanister/lively/releases")));
+                    changelog.Document.Blocks.Add(new Paragraph(new Run(Properties.Resources.LivelyExceptionAppUpdateFail)));
                     _forceClose = true;
                 }
             }
@@ -142,7 +142,7 @@ namespace Lively.Views
         {
             if (_forceClose != true && download != null)
             {
-                if (MessageBox.Show("Cancel update?", "Please wait", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                if (MessageBox.Show(Properties.Resources.DescriptionCancelQuestion, Properties.Resources.TitlePleaseWait, MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
                 {
                     _forceClose = true;
                 }

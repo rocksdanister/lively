@@ -53,7 +53,7 @@ namespace Lively
             //Show UI
             _notifyIcon.DoubleClick += (s, args) => runner.ShowUI();
             _notifyIcon.ContextMenuStrip = new ContextMenuStrip();
-            _notifyIcon.Icon = Properties.Resources.appicon;
+            _notifyIcon.Icon = Properties.Icons.appicon;
             _notifyIcon.Text = "Lively Wallpaper";
             _notifyIcon.Visible = userSettings.Settings.SysTrayIcon;
             _notifyIcon.ContextMenuStrip = new ContextMenuStrip
@@ -66,16 +66,16 @@ namespace Lively
             _notifyIcon.ContextMenuStrip.Renderer = new ContextMenuTheme.RendererDark();
             _notifyIcon.ContextMenuStrip.Opening += ContextMenuStrip_Opening;
 
-            _notifyIcon.ContextMenuStrip.Items.Add("Open Lively", Properties.Resources.icons8_application_window_96).Click += (s, e) => runner.ShowUI();
-            _notifyIcon.ContextMenuStrip.Items.Add("Close all wallpaper(s)", null).Click += (s, e) => desktopCore.CloseAllWallpapers(true);
-            pauseTrayBtn = new ToolStripMenuItem("Pause Wallpaper(s)", null);
+            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextOpenLively, Properties.Icons.icons8_application_window_96).Click += (s, e) => runner.ShowUI();
+            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextCloseWallpapers, null).Click += (s, e) => desktopCore.CloseAllWallpapers(true);
+            pauseTrayBtn = new ToolStripMenuItem(Properties.Resources.TextPauseWallpapers, null);
             pauseTrayBtn.Click += (s, e) =>
             {
                 playbackMonitor.WallpaperPlayback = (playbackMonitor.WallpaperPlayback == PlaybackState.play) ? 
                     playbackMonitor.WallpaperPlayback = PlaybackState.paused : PlaybackState.play;
             };
             _notifyIcon.ContextMenuStrip.Items.Add(pauseTrayBtn);
-            customiseWallpaperBtn = new ToolStripMenuItem("Customise Wallpaper", null)
+            customiseWallpaperBtn = new ToolStripMenuItem(Properties.Resources.TextCustomiseWallpaper, null)
             {
                 Enabled = false,
                 Visible = false,
@@ -85,7 +85,7 @@ namespace Lively
 
             if (!Constants.ApplicationType.IsMSIX)
             {
-                updateTrayBtn = new ToolStripMenuItem("Checking for update", null)
+                updateTrayBtn = new ToolStripMenuItem(Properties.Resources.TextUpdateChecking, null)
                 {
                     Enabled = false
                 };
@@ -94,10 +94,10 @@ namespace Lively
             }
 
             _notifyIcon.ContextMenuStrip.Items.Add(new ContextMenuTheme.StripSeparatorCustom().stripSeparator);
-            _notifyIcon.ContextMenuStrip.Items.Add("Report bug", Properties.Resources.icons8_website_bug_96).Click += (s, e) => 
+            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TitleReportBug, Properties.Icons.icons8_website_bug_96).Click += (s, e) => 
                 LinkHandler.OpenBrowser("https://github.com/rocksdanister/lively/wiki/Common-Problems");
             _notifyIcon.ContextMenuStrip.Items.Add(new ContextMenuTheme.StripSeparatorCustom().stripSeparator);
-            _notifyIcon.ContextMenuStrip.Items.Add("Exit", Properties.Resources.icons8_close_96).Click += (s, e) => App.ShutDown();
+            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextExit, Properties.Icons.icons8_close_96).Click += (s, e) => App.ShutDown();
 
             playbackMonitor.PlaybackStateChanged += Playback_PlaybackStateChanged;
             desktopCore.WallpaperChanged += DesktopCore_WallpaperChanged;
@@ -214,22 +214,22 @@ namespace Lively
             {
                 case AppUpdateStatus.uptodate:
                     updateTrayBtn.Enabled = false;
-                    updateTrayBtn.Text = "Up to date";
+                    updateTrayBtn.Text = Properties.Resources.TextUpdateUptodate;
                     break;
                 case AppUpdateStatus.available:
                     updateTrayBtn.Enabled = true;
-                    updateTrayBtn.Text = "Update available!";
+                    updateTrayBtn.Text = Properties.Resources.TextUpdateAvailable;
                     break;
                 case AppUpdateStatus.invalid:
                     updateTrayBtn.Enabled = false;
-                    updateTrayBtn.Text = "Unique tag";
+                    updateTrayBtn.Text = "Fancy~";
                     break;
                 case AppUpdateStatus.notchecked:
                     updateTrayBtn.Enabled = false;
                     break;
                 case AppUpdateStatus.error:
                     updateTrayBtn.Enabled = true;
-                    updateTrayBtn.Text = "Update check failed";
+                    updateTrayBtn.Text = Properties.Resources.TextupdateCheckFail;
                     break;
             }
         }

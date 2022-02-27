@@ -5,7 +5,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Lively.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="Lively Updater"
+    xmlns:p="clr-namespace:Lively.Properties"
+    Title="Lively Wallpaper"
     Width="650"
     Height="700"
     Background="#202020"
@@ -43,7 +44,7 @@
                 HorizontalAlignment="Center"
                 Background="#2d2d2d"
                 Click="Download_Button_Click"
-                Content="Download"
+                Content="{x:Static p:Resources.TextDownload}"
                 Foreground="LightGray">
                 <Button.Resources>
                     <Style TargetType="Border">
