@@ -66,7 +66,7 @@ namespace Lively
             _notifyIcon.ContextMenuStrip.Renderer = new ContextMenuTheme.RendererDark();
             _notifyIcon.ContextMenuStrip.Opening += ContextMenuStrip_Opening;
 
-            _notifyIcon.ContextMenuStrip.Items.Add("Open Lively", Properties.Resources.icons8_home_screen_96).Click += (s, e) => runner.ShowUI();
+            _notifyIcon.ContextMenuStrip.Items.Add("Open Lively", Properties.Resources.icons8_application_window_96).Click += (s, e) => runner.ShowUI();
             _notifyIcon.ContextMenuStrip.Items.Add("Close all wallpaper(s)", null).Click += (s, e) => desktopCore.CloseAllWallpapers(true);
             pauseTrayBtn = new ToolStripMenuItem("Pause Wallpaper(s)", null);
             pauseTrayBtn.Click += (s, e) =>

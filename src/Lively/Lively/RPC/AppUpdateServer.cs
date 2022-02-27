@@ -50,7 +50,7 @@ namespace Lively.RPC
                 Changelog = updater.LastCheckChangelog ?? string.Empty,
                 Url = updater.LastCheckUri?.OriginalString ?? string.Empty,
                 Version = updater.LastCheckVersion?.ToString() ?? string.Empty,
-                Time = Timestamp.FromDateTime(DateTime.UtcNow),
+                Time = Timestamp.FromDateTime(updater.LastCheckTime.ToUniversalTime()),
             });
         }
 

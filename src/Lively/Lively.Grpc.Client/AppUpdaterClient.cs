@@ -54,7 +54,7 @@ namespace Lively.Grpc.Client
         {
             var resp = await client.GetUpdateStatusAsync(new Empty());
             Status = (AppUpdateStatus)((int)resp.Status);
-            LastCheckTime = resp.Time.ToDateTime();
+            LastCheckTime = resp.Time.ToDateTime().ToLocalTime();
             LastCheckChangelog = resp.Changelog;
             try
             {
