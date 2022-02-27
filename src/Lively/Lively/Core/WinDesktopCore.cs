@@ -16,6 +16,7 @@ using Lively.Services;
 using Lively.ViewModels;
 using Lively.Views;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -74,14 +75,17 @@ namespace Lively.Core
             this.displayManager.DisplayUpdated += DisplaySettingsChanged_Hwnd;
             WallpaperChanged += SetupDesktop_WallpaperChanged;
 
-            /*
             SystemEvents.SessionSwitch += (s, e) => {
                 if (e.Reason == SessionSwitchReason.SessionUnlock)
                 {
-                    ResetWallpaper();
+                    //Issue: https://github.com/rocksdanister/lively/issues/802
+                    if (!(IntPtr.Equals(DesktopWorkerW, IntPtr.Zero) || NativeMethods.IsWindow(DesktopWorkerW)))
+                    {
+                        Logger.Info("WorkerW invalid after unlock, resetting..");
+                        ResetWallpaper();
+                    }
                 }
             };
-            */
         }
 
         /// <summary>
