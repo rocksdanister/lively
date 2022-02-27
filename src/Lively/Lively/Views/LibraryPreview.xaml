@@ -4,8 +4,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:helpers="clr-namespace:Lively.Helpers"
+    xmlns:p="clr-namespace:Lively.Properties"
     xmlns:local="clr-namespace:Lively.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="{x:Static p:Resources.TitleLibrary}"
     Width="410"
     Height="630"
     Background="#2b2b2b"
@@ -46,7 +48,7 @@
             <StackPanel>
                 <Label
                     Margin="0,10,0,0"
-                    Content="Title"
+                    Content="{x:Static p:Resources.TextTitle}"
                     Foreground="White" />
                 <TextBox
                     Name="textboxTitle"
@@ -68,7 +70,7 @@
                     </TextBox.Resources>
                 </TextBox>
 
-                <Label Content="Description" Foreground="White" />
+                <Label Content="{x:Static p:Resources.TextDescription}" Foreground="White" />
                 <TextBox
                     Name="textboxDesc"
                     Height="81"
@@ -90,7 +92,7 @@
                     </TextBox.Resources>
                 </TextBox>
 
-                <Label Content="Author" Foreground="White" />
+                <Label Content="{x:Static p:Resources.TextAuthor}" Foreground="White" />
                 <TextBox
                     Name="textboxAuthor"
                     Height="20"
@@ -111,7 +113,7 @@
                     </TextBox.Resources>
                 </TextBox>
 
-                <Label Content="Website" Foreground="White" />
+                <Label Content="{x:Static p:Resources.TextWebsite}" Foreground="White" />
                 <TextBox
                     Name="textboxContact"
                     Height="20"
@@ -144,7 +146,7 @@
                             Margin="0,0,10,0"
                             Background="#2d2d2d"
                             Command="{Binding CancelCommand}"
-                            Content="Cancel"
+                            Content="{x:Static p:Resources.TextCancel}"
                             Foreground="LightGray">
                             <Button.Resources>
                                 <Style TargetType="Border">
@@ -158,7 +160,7 @@
                             MinHeight="30"
                             Background="#2d2d2d"
                             Command="{Binding CaptureCommand}"
-                            Content="OK"
+                            Content="{x:Static p:Resources.TextOK}"
                             Foreground="LightGray"
                             IsDefault="True"
                             IsEnabled="{Binding IsUserEditable}">

@@ -21,7 +21,7 @@ namespace Lively.UI.WinUI.Helpers
             resourceLoader = ResourceLoader.GetForViewIndependentUse();
         }
 
-        public static List<LanguagesModel> SupportedLanguages = new List<LanguagesModel>()
+        public readonly static List<LanguagesModel> SupportedLanguages = new List<LanguagesModel>()
         {
             new LanguagesModel("English(en)", new string[]{"en", "en-US"}), //default
             new LanguagesModel("日本語(ja)", new string[]{"ja", "ja-JP"}),
