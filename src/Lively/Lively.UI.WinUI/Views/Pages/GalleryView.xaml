@@ -6,6 +6,7 @@
     xmlns:local="using:Lively.UI.WinUI.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:media="using:CommunityToolkit.WinUI.UI.Media"
+    xmlns:toolkit="using:CommunityToolkit.WinUI.UI.Controls"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
@@ -18,19 +19,18 @@
     </Page.Resources>
 
     <Grid>
-        <GridView
+        <toolkit:AdaptiveGridView
             Grid.Row="1"
             Margin="10"
+            DesiredWidth="272"
+            ItemHeight="153"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Center"
             IsEnabled="False"
             ItemsSource="{Binding LibraryItems}">
-            <GridView.ItemTemplate>
+            <toolkit:AdaptiveGridView.ItemTemplate>
                 <DataTemplate>
-                    <Grid
-                        Width="272"
-                        Height="153"
-                        AutomationProperties.Name="{Binding Title}">
+                    <Grid AutomationProperties.Name="{Binding Title}">
                         <Image Source="{Binding ThumbnailPath}" Stretch="UniformToFill" />
                         <StackPanel
                             Height="60"
@@ -61,13 +61,8 @@
                         </Button>
                     </Grid>
                 </DataTemplate>
-            </GridView.ItemTemplate>
-            <GridView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <ItemsWrapGrid Name="GridWrap" Orientation="Horizontal" />
-                </ItemsPanelTemplate>
-            </GridView.ItemsPanel>
-        </GridView>
+            </toolkit:AdaptiveGridView.ItemTemplate>
+        </toolkit:AdaptiveGridView>
 
         <RelativePanel Background="{ThemeResource AcrylicInAppCustomGridBrush}">
             <TextBlock

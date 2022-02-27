@@ -26,6 +26,13 @@ namespace Lively.UI.WinUI.Views.Pages
     /// </summary>
     public sealed partial class ScreenLayoutView : Page
     {
+        public class Localization
+        {
+            public string TitleScreenSaver { get; set; }
+            public string TipScreenSaver { get; set; }
+        }
+        public Localization I18n { get; set; }
+
         public ScreenLayoutView()
         {
             this.InitializeComponent();
@@ -37,7 +44,7 @@ namespace Lively.UI.WinUI.Views.Pages
 
         private void ScreenLayoutView_Unloaded(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("Unloaded screenlayoutview");
+            //Debug.WriteLine("Unloaded screenlayoutview");
         }
     }
 }

@@ -71,6 +71,10 @@ namespace Lively.RPC
                         screensaver.CreatePreview(new IntPtr(request.PreviewHwnd));
                     }));
                     break;
+                case ScreensaverState.Configure:
+                    //TODO: Open control panel or cutomise panel
+                    runner.ShowUI();
+                    break;
             }
             return Task.FromResult(new Empty());
         }

@@ -32,7 +32,7 @@
                 MinHeight="10"
                 Margin="0,5,0,0" />
             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                <TextBlock x:Name="sizeTxt">-</TextBlock>
+                <TextBlock x:Name="sizeTxt" Foreground="White">-</TextBlock>
                 <TextBlock x:Name="totalSizeTxt" Foreground="White">/- MB</TextBlock>
             </StackPanel>
             <Button

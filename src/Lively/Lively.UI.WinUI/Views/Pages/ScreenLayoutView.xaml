@@ -91,6 +91,19 @@
                     </StackPanel>
                 </controls:SettingExpander.Content>
             </controls:SettingExpander>
+            <controls:Setting 
+                Header="{x:Bind I18n.TitleScreenSaver}" 
+                Icon="&#xF182;">
+                <controls:Setting.Description>
+                    <HyperlinkButton 
+                        NavigateUri="https://github.com/rocksdanister/lively/wiki/Screen-Saver" 
+                        ToolTipService.ToolTip="https://github.com/rocksdanister/lively/wiki/Screen-Saver">
+                        <HyperlinkButton.Content>
+                            <TextBlock Text="{x:Bind I18n.TipScreenSaver}" />
+                        </HyperlinkButton.Content>
+                    </HyperlinkButton>
+                </controls:Setting.Description>
+            </controls:Setting>
         </StackPanel>
     </Grid>
 </Page>
