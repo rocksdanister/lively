@@ -64,6 +64,15 @@ namespace Lively.Watchdog
                 catch { }
             }
 
+            foreach (var item in Process.GetProcessesByName("Lively.UI.WinUI"))
+            {
+                try
+                {
+                    item.Kill();
+                }
+                catch { }
+            }
+
             //force refresh desktop.
             _ = NativeMethods.SystemParametersInfo(NativeMethods.SPI_SETDESKWALLPAPER, 0, null, NativeMethods.SPIF_UPDATEINIFILE);
         }

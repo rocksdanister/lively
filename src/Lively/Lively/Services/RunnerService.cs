@@ -1,9 +1,13 @@
 ﻿using Lively.Common;
 using Lively.Common.Helpers.Pinvoke;
+using Lively.Core.Display;
 using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Security.Principal;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace Lively.Services
@@ -13,13 +17,17 @@ namespace Lively.Services
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private Process processUI;
         private bool disposedValue;
+        private readonly IDisplayManager displayManager;
         private readonly string uiClientFileName;
         private readonly bool uiOutputRedirect;
         private readonly bool _isElevated;
-        //private NativeMethods.RECT rctUI;
+        private bool _isFirstRun = true;
+        private NativeMethods.RECT prevWindowRect = new() { Left = 50, Top = 50, Right = 925, Bottom = 925 };
 
-        public RunnerService()
+        public RunnerService(IDisplayManager displayManager)
         {
+            this.displayManager = displayManager;
+
             uiClientFileName = Constants.ApplicationType.Client switch
             {
                 ClientType.wpf => "Lively.UI.Wpf.exe",
@@ -85,6 +93,12 @@ namespace Lively.Services
                     {
                         processUI.BeginOutputReadLine();
                     }
+
+                    if (!_isFirstRun)
+                    {
+                        SetWindowRect(processUI, prevWindowRect);
+                    }
+                    _isFirstRun = false;
                 }
                 catch (Exception e)
                 {
@@ -101,8 +115,8 @@ namespace Lively.Services
                 {
                     processUI.Exited -= Proc_UI_Exited;
                     processUI.OutputDataReceived -= Proc_OutputDataReceived;
-                    //NativeMethods.GetWindowRect(processUI.MainWindowHandle, out rctUI);
-                    if (!processUI.Responding || !processUI.CloseMainWindow() || !processUI.WaitForExit(2500))
+                    NativeMethods.GetWindowRect(processUI.MainWindowHandle, out prevWindowRect);
+                    if (!processUI.Responding || !processUI.CloseMainWindow() || !processUI.WaitForExit(500))
                     {
                         processUI.Kill();
                     }
@@ -127,8 +141,8 @@ namespace Lively.Services
 
             try
             {
-                //NativeMethods.GetWindowRect(processUI.MainWindowHandle, out rctUI);
-                if (!processUI.Responding || !processUI.CloseMainWindow() || !processUI.WaitForExit(2500))
+                NativeMethods.GetWindowRect(processUI.MainWindowHandle, out prevWindowRect);
+                if (!processUI.Responding || !processUI.CloseMainWindow() || !processUI.WaitForExit(3500))
                 {
                     processUI.Kill();
                 }
@@ -172,7 +186,7 @@ namespace Lively.Services
 
         #region helpers
 
-        public bool IsElevated
+        private static bool IsElevated
         {
             get
             {
@@ -185,6 +199,54 @@ namespace Lively.Services
                     return false;
                 }
             }
+        }
+
+        private void SetWindowRect(Process proc, NativeMethods.RECT rect)
+        {
+            if (proc == null)
+                return;
+
+            while (proc.WaitForInputIdle(-1) != true || proc.MainWindowHandle == IntPtr.Zero)
+            {
+                proc.Refresh();
+            }
+
+            NativeMethods.SetWindowPos(proc.MainWindowHandle,
+                0,
+                rect.Left,
+                rect.Top,
+                (rect.Right - rect.Left),
+                (rect.Bottom - rect.Top),
+                (int)NativeMethods.SetWindowPosFlags.SWP_SHOWWINDOW);
+
+            //Display disconnected fallback.
+            if (!IsOnScreen(proc.MainWindowHandle))
+            {
+                NativeMethods.SetWindowPos(proc.MainWindowHandle,
+                         0,
+                         displayManager.PrimaryDisplayMonitor.Bounds.Left + 50,
+                         displayManager.PrimaryDisplayMonitor.Bounds.Top + 50,
+                         0,
+                         0,
+                         (int)NativeMethods.SetWindowPosFlags.SWP_NOSIZE);
+            }
+        }
+
+        /// <summary>
+        /// Checks if Window is fully outside screen region.
+        /// </summary>
+        private bool IsOnScreen(IntPtr hwnd)
+        {
+            if (NativeMethods.GetWindowRect(hwnd, out NativeMethods.RECT winRect) != 0)
+            {
+                var rect = new Rectangle(
+                    winRect.Left,
+                    winRect.Top,
+                    (winRect.Right - winRect.Left),
+                    (winRect.Bottom - winRect.Top));
+                return displayManager.DisplayMonitors.Any(s => s.WorkingArea.IntersectsWith(rect));
+            }
+            return false;
         }
 
         #endregion //helpers

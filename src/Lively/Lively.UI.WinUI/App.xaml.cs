@@ -69,6 +69,8 @@ namespace Lively.UI.WinUI
         /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
+            //Issue: https://github.com/microsoft/microsoft-ui-xaml/issues/3368   
+            //Environment.GetCommandLineArgs()[1]
             var m_window = Services.GetRequiredService<MainWindow>();
             m_window.Activate();
             m_window.SetWindowSizeEx(875, 875);

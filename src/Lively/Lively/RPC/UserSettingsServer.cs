@@ -168,7 +168,7 @@ namespace Lively.RPC
                     userSettings.Save<ISettingsModel>();
                     if (restartRequired)
                     {
-                        //runner.RestartUI();
+                        runner.RestartUI();
                     }
                 }
             }
