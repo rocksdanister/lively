@@ -35,6 +35,12 @@ namespace Lively.RPC
             return Task.FromResult(new Empty());
         }
 
+        public override Task<Empty> CloseUI(Empty _, ServerCallContext context)
+        {
+            runner.CloseUI();
+            return Task.FromResult(new Empty());
+        }
+
         public override Task<Empty> RestartUI(Empty _, ServerCallContext context)
         {
             runner.RestartUI();

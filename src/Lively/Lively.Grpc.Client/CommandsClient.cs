@@ -27,6 +27,11 @@ namespace Lively.Grpc.Client
             await client.ShowUIAsync(new Empty());
         }
 
+        public async Task CloseUI()
+        {
+            await client.CloseUIAsync(new Empty());
+        }
+
         public async Task RestartUI()
         {
             await client.RestartUIAsync(new Empty());

@@ -2,17 +2,12 @@
 using Lively.Grpc.Client;
 using Lively.Models;
 using Lively.UI.WinUI.ViewModels;
-using Lively.UI.WinUI.Views;
 using Lively.UI.WinUI.Views.Pages;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Animation;
-using Microsoft.UI.Xaml.Navigation;
 using SettingsUI.Extensions;
 using System;
 using System.Collections.Generic;
@@ -46,9 +41,11 @@ namespace Lively.UI.WinUI
         private readonly IDesktopCoreClient desktopCore;
         private readonly IUserSettingsClient userSettings;
         private readonly LibraryViewModel libraryVm;
+        private readonly ICommandsClient commands;
         private readonly ResourceLoader i18n;
 
         public MainWindow(IDesktopCoreClient desktopCore,
+            ICommandsClient commands,
             IUserSettingsClient userSettings,
             SettingsViewModel settingsVm,
             LibraryViewModel libraryVm,
@@ -58,6 +55,7 @@ namespace Lively.UI.WinUI
             this.desktopCore = desktopCore;
             this.libraryVm = libraryVm;
             this.userSettings = userSettings;
+            this.commands = commands;
 
             this.InitializeComponent();
             i18n = ResourceLoader.GetForViewIndependentUse();
@@ -339,6 +337,8 @@ namespace Lively.UI.WinUI
             }
             else
             {
+                //To sync GetWindowRect() to restore window state
+                await commands.CloseUI();
                 App.ShutDown();
             }
         }
