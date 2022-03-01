@@ -15,6 +15,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources.Core;
 using Windows.Globalization;
 using static Lively.Common.Constants;
@@ -29,6 +30,8 @@ namespace Lively.UI.WinUI
     /// </summary>
     public partial class App : Application
     {
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+
         private readonly IServiceProvider _serviceProvider;
         /// <summary>
         /// Gets the <see cref="IServiceProvider"/> instance for the current application instance.
@@ -60,6 +63,8 @@ namespace Lively.UI.WinUI
             var userSettings = Services.GetRequiredService<IUserSettingsClient>();
             SetAppTheme(userSettings.Settings.ApplicationTheme);
             //Services.GetRequiredService<SettingsViewModel>().AppThemeChanged += (s, e) => SetAppTheme(e);
+
+            SetupUnhandledExceptionLogging();
         }
 
         /// <summary>
@@ -134,6 +139,25 @@ namespace Lively.UI.WinUI
             //ResourceContext.GetForCurrentView().Reset();
             ResourceContext.GetForViewIndependentUse().Reset();
         }
+
+        //Not working ugh..
+        //Issue: https://github.com/microsoft/microsoft-ui-xaml/issues/5221
+        private void SetupUnhandledExceptionLogging()
+        {
+            AppDomain.CurrentDomain.UnhandledException += (s, e) =>
+                LogUnhandledException((Exception)e.ExceptionObject);
+
+            TaskScheduler.UnobservedTaskException += (s, e) =>
+                LogUnhandledException(e.Exception);
+
+            this.UnhandledException += (s, e) =>
+                LogUnhandledException(e.Exception);
+
+            Windows.ApplicationModel.Core.CoreApplication.UnhandledErrorDetected += (s, e) =>
+                LogUnhandledException(e.UnhandledError);
+        }
+
+        private void LogUnhandledException<T>(T exception) => Logger.Error(exception);
 
         public static void ShutDown()
         {

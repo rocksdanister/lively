@@ -13,6 +13,7 @@ namespace Lively.Common
             //public static string WallpaperDir { get; set; }
             public static string AppDataDir { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Lively Wallpaper");
             public static string LogDir { get; } = Path.Combine(AppDataDir, "logs");
+            public static string LogDirUI { get; } = Path.Combine(AppDataDir, "UI"); //temp use..
             public static string TempDir { get; } = Path.Combine(AppDataDir, "temp");
             public static string TempCefDir { get; } = Path.Combine(AppDataDir, "Cef");
             public static string TempWebView2Dir { get; } = Path.Combine(AppDataDir, "WebView2");
