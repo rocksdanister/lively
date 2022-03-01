@@ -1,7 +1,10 @@
 ﻿using Lively.Common.Helpers.Archive;
+using Lively.Helpers.Hardware;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -31,6 +34,17 @@ namespace Lively.Common.Helpers
             {
                 return "Failed to retrive properties of config file.";
             }
+        }
+
+        /// <summary>
+        /// Get hardware information
+        /// </summary>
+        public static string GetHardwareInfo()
+        {
+            var arch = Environment.Is64BitProcess ? "x86" : "x64";
+            var container = Constants.ApplicationType.IsMSIX ? "desktop-bridge" : "desktop-native";
+            return $"\nLively v{Assembly.GetEntryAssembly().GetName().Version} {arch} {container} {CultureInfo.CurrentUICulture.Name}" +
+                $"\n{SystemInfo.GetOSInfo()}\n{SystemInfo.GetCpuInfo()}\n{SystemInfo.GetGpuInfo()}\n";
         }
 
         /// <summary>
@@ -64,6 +78,12 @@ namespace Lively.Common.Helpers
                     if (Directory.Exists(logFolder))
                     {
                         files.AddRange(Directory.GetFiles(logFolder, "*.*", SearchOption.TopDirectoryOnly));
+                    }
+
+                    var logFolderUI = Constants.CommonPaths.LogDirUI;
+                    if (Directory.Exists(logFolder))
+                    {
+                        files.AddRange(Directory.GetFiles(logFolderUI, "*.*", SearchOption.TopDirectoryOnly));
                     }
 
                     var settingsFile = Constants.CommonPaths.UserSettingsPath;

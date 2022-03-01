@@ -37,10 +37,13 @@
                 <TextBlock x:Uid="WallpaperSource" Margin="0,5,0,0" />
                 <HyperlinkButton
                     HorizontalContentAlignment="Left"
-                    Content="{Binding LivelyInfo.Contact}"
                     IsTabStop="False"
                     NavigateUri="{Binding SrcWebsite}"
-                    ToolTipService.ToolTip="{Binding SrcWebsite.OriginalString}" />
+                    ToolTipService.ToolTip="{Binding SrcWebsite.OriginalString}" >
+                    <HyperlinkButton.Content>
+                        <TextBlock MaxLines="1" Style="{ThemeResource BodyTextBlockStyle}" Text="{Binding LivelyInfo.Contact}" />
+                    </HyperlinkButton.Content>
+                </HyperlinkButton>
             </StackPanel>
         </ScrollViewer>
     </Grid>

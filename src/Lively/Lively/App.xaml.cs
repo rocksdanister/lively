@@ -28,6 +28,7 @@ using Lively.Grpc.Common.Proto.Update;
 using Lively.Common.Services;
 using Lively.Common.Helpers.Files;
 using Lively.Models;
+using Lively.Common.Helpers;
 
 namespace Lively
 {
@@ -83,6 +84,9 @@ namespace Lively
                 Debug.WriteLine(e.Message);
             }
 
+            SetupUnhandledExceptionLogging();
+            Logger.Info(LogUtil.GetHardwareInfo());
+
             //App() -> OnStartup() -> App.Startup event.
             _serviceProvider = ConfigureServices();
             grpcServer = ConfigureGrpcServer();
@@ -117,8 +121,6 @@ namespace Lively
                 FileOperations.EmptyDirectory(Constants.CommonPaths.TempDir);
             }
             catch { /* TODO */ }
-
-            SetupUnhandledExceptionLogging();
 
             var userSettings = Services.GetRequiredService<IUserSettingsService>();
             try
