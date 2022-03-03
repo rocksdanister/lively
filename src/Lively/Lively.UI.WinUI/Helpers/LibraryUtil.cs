@@ -207,7 +207,7 @@ namespace Lively.UI.WinUI.Helpers
                         string installDir = null;
                         try
                         {
-                            installDir = Path.Combine(userSettings.Settings.WallpaperDir, "wallpapers", Path.GetRandomFileName());
+                            installDir = Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperInstallDir, Path.GetRandomFileName());
                             await Task.Run(() => ZipExtract.ZipExtractFile(filePath, installDir, false));
                             return libraryVm.AddWallpaper(installDir);
                         }
