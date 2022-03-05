@@ -19,7 +19,7 @@
                         </controls:Setting.ActionContent>
                     </controls:Setting>
 
-                    <controls:Setting x:Uid="DesktopPicture" Icon="&#xE8B9;">
+                    <controls:Setting x:Uid="DesktopPicture" Icon="&#xE8B9;" IsEnabled="{Binding IsNotWinStore}">
                         <controls:Setting.ActionContent>
                             <ToggleSwitch IsOn="{Binding IsDesktopAutoWallpaper, Mode=TwoWay}" />
                         </controls:Setting.ActionContent>

@@ -1,7 +1,9 @@
-﻿using Lively.Common.Helpers.Pinvoke;
+﻿using Lively.Common;
+using Lively.Common.Helpers.Pinvoke;
 using Lively.Core;
 using Lively.Core.Display;
 using System;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Interop;
 
@@ -53,11 +55,9 @@ namespace Lively.Views.WindowMsg
                     else
                     {
                         Logger.Warn("Explorer restarted multiple times in the last 30s.");
-                        /*
                         _ = Task.Run(() => MessageBox.Show(Properties.Resources.DescExplorerCrash,
                                 $"{Properties.Resources.TitleAppName} - {Properties.Resources.TextError}",
                                 MessageBoxButton.OK, MessageBoxImage.Error));
-                        */
                         desktopCore.CloseAllWallpapers(true);
                         desktopCore.ResetWallpaper();
                     }
@@ -65,7 +65,6 @@ namespace Lively.Views.WindowMsg
                     prevExplorerPid = newExplorerPid;
                 }
             }
-            /*
             else if (msg == (uint)NativeMethods.WM.QUERYENDSESSION && Constants.ApplicationType.IsMSIX)
             {
                 _ = NativeMethods.RegisterApplicationRestart(
@@ -74,7 +73,6 @@ namespace Lively.Views.WindowMsg
                     (int)NativeMethods.RestartFlags.RESTART_NO_HANG |
                     (int)NativeMethods.RestartFlags.RESTART_NO_REBOOT);
             }
-            */
 
             //screen message processing...
             _ = displayManager.OnWndProc(hwnd, (uint)msg, wParam, lParam);

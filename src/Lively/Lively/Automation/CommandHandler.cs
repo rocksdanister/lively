@@ -103,21 +103,7 @@ namespace Lively.Automation
             {
                 try
                 {
-                    var status = WindowsStartup.CheckStartupRegistry();
-                    if (opts.Startup == true)
-                    {
-                        if (status != WindowsStartup.StartupStatus.ok)
-                        {
-                            WindowsStartup.SetStartupRegistry(true);
-                        }
-                    }
-                    else
-                    {
-                        if (status != WindowsStartup.StartupStatus.missing)
-                        {
-                            WindowsStartup.SetStartupRegistry(false);
-                        }
-                    }
+                    _ = WindowsStartup.SetStartup((bool)opts.Startup);
                 }
                 catch (Exception e)
                 {

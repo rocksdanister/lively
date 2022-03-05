@@ -50,7 +50,7 @@
                     </AppBarButton>
                 </CommandBar>
 
-                <controls:SettingsGroup Margin="0,-25,0,0">
+                <controls:SettingsGroup Margin="0,-25,0,0" IsEnabled="{Binding IsNotWinStore}">
                     <controls:Setting Header="{Binding AppVersionText}" Icon="&#xE117;">
                         <controls:Setting.Description>
                             <StackPanel Orientation="Vertical">

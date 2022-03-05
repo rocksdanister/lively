@@ -45,7 +45,7 @@ namespace Lively.Services
 
             try
             {
-                WindowsStartup.SetStartupRegistry(Settings.Startup);
+                _ = WindowsStartup.SetStartup(Settings.Startup);
             }
             catch (Exception e)
             {
