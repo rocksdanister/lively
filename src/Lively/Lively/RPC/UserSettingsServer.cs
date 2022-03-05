@@ -83,7 +83,14 @@ namespace Lively.RPC
             if (req.Startup != userSettings.Settings.Startup)
             {
                 userSettings.Settings.Startup = req.Startup;
-                WindowsStartup.SetStartupRegistry(userSettings.Settings.Startup);
+                try
+                {
+                    _ = WindowsStartup.SetStartup(userSettings.Settings.Startup);
+                }
+                catch (Exception e)
+                {
+                    Logger.Error(e);
+                }
             }
 
             if (req.SysTrayIcon != userSettings.Settings.SysTrayIcon)

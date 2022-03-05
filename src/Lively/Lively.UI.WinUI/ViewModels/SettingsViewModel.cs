@@ -138,6 +138,8 @@ namespace Lively.UI.WinUI.ViewModels
             });
         }
 
+        public bool IsNotWinStore => !Constants.ApplicationType.IsMSIX;
+
         #region general
 
         private bool _isStartup;
