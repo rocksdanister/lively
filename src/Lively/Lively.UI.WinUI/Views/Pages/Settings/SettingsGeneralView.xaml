@@ -99,7 +99,7 @@
                     </controls:SettingExpander>
                 </controls:SettingsGroup>
 
-                <controls:SettingsGroup x:Uid="WallpaperDirGroup" Header="File" IsEnabled="{Binding IsNotWinStore}">
+                <controls:SettingsGroup x:Uid="WallpaperDirGroup" Header="File">
                     <controls:SettingExpander IsExpanded="False">
                         <controls:SettingExpander.Header>
                             <controls:Setting

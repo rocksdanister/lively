@@ -1,4 +1,5 @@
-﻿using Lively.Common.Helpers.Pinvoke;
+﻿using Lively.Common;
+using Lively.Common.Helpers.Pinvoke;
 using Lively.Grpc.Client;
 using Lively.Models;
 using Lively.UI.WinUI.ViewModels;
@@ -234,6 +235,9 @@ namespace Lively.UI.WinUI
                 XamlRoot = this.Content.XamlRoot,
             }.ShowAsyncQueue();
         }
+
+        private void AppBarCoffeeBtn_Click(object sender, RoutedEventArgs e) =>
+            LinkHandler.OpenBrowser("https://rocksdanister.github.io/lively/coffee/");
 
         private void AppBarHelpButton_Click(object sender, RoutedEventArgs e)
         {
