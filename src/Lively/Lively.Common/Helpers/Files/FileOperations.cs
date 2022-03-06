@@ -13,7 +13,8 @@ namespace Lively.Common.Helpers.Files
     public static class FileOperations
     {
         /// <summary>
-        /// Opens the folder in file explorer; If file path is given, file is selected.
+        /// Opens the folder in file explorer; If file path is given, file is selected.<br>
+        /// Does NOT work under desktop bridge!</br>
         /// </summary>
         /// <param name="path"></param>
         public static void OpenFolder(string path)

@@ -69,7 +69,7 @@ namespace Lively.UI.WinUI.Views.Pages
                     await desktopCore.PreviewWallpaper(obj.LivelyInfoFolderPath);
                     break;
                 case "showOnDisk":
-                    libraryUtil.WallpaperShowOnDisk(obj);
+                    await libraryUtil.WallpaperShowOnDisk(obj);
                     break;
                 case "setWallpaper":
                     await desktopCore.SetWallpaper(obj, userSettings.Settings.SelectedDisplay);
