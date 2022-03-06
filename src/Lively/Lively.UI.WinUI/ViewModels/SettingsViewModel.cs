@@ -57,31 +57,6 @@ namespace Lively.UI.WinUI.ViewModels
             //lang-codes: https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-lcid/a9eac961-e77d-41a6-90a5-ce1a8b0cdb9c
             LanguageItems = new ObservableCollection<LanguagesModel>(LocalizationUtil.SupportedLanguages);
 
-            /*
-            if (Constants.ApplicationType.IsMSIX)
-            {
-                _ = WindowsStartup.StartupWin10(userSettings.Settings.Startup);
-                IsStartup = userSettings.Settings.Startup;
-            }
-            else
-            {
-                //Ignoring the Settings.json savefile value, only checking the windows registry and user action on the ui.
-                IsStartup = WindowsStartup.CheckStartupRegistry() == 1 || WindowsStartup.CheckStartupRegistry() == -1;
-            }
-
-            //Restrictions..
-            userSettings.Settings.LockScreenAutoWallpaper = false;
-
-            userSettings.Settings.SelectedDisplay = ScreenHelper.GetScreen(userSettings.Settings.SelectedDisplay.DeviceId, userSettings.Settings.SelectedDisplay.DeviceName,
-                        userSettings.Settings.SelectedDisplay.Bounds, userSettings.Settings.SelectedDisplay.WorkingArea, DisplayIdentificationMode.deviceId) ?? ScreenHelper.GetPrimaryScreen();
-
-            //Restrictions on wpf only version of Lively.
-            if (userSettings.Settings.LivelyGUIRendering == LivelyGUIState.normal)
-            {
-                userSettings.Settings.LivelyGUIRendering = LivelyGUIState.lite;
-            }
-            */
-
             SelectedTileSizeIndex = userSettings.Settings.TileSize;
             SelectedAppFullScreenIndex = (int)userSettings.Settings.AppFullscreenPause;
             SelectedAppFocusIndex = (int)userSettings.Settings.AppFocusPause;
@@ -263,7 +238,7 @@ namespace Lively.UI.WinUI.ViewModels
 
         private RelayCommand _wallpaperDirectoryChangeCommand;
         public RelayCommand WallpaperDirectoryChangeCommand => _wallpaperDirectoryChangeCommand
-            ??= new RelayCommand(WallpaperDirectoryChange, () => !Constants.ApplicationType.IsMSIX && !WallpaperDirectoryChangeOngoing);
+            ??= new RelayCommand(WallpaperDirectoryChange, () => !WallpaperDirectoryChangeOngoing);
 
         private bool _moveExistingWallpaperNewDir;
         public bool MoveExistingWallpaperNewDir
