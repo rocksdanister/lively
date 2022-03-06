@@ -259,7 +259,7 @@ namespace Lively.UI.WinUI.ViewModels
 
         private RelayCommand _openWallpaperDirectory;
         public RelayCommand OpenWallpaperDirectory =>
-            _openWallpaperDirectory ??= new RelayCommand(() => FileOperations.OpenFolder(userSettings.Settings.WallpaperDir));
+            _openWallpaperDirectory ??= new RelayCommand(async () => await DesktopBridgeUtil.OpenFolder(userSettings.Settings.WallpaperDir));
 
         //public event EventHandler<AppTheme> AppThemeChanged;
         private int _selectedAppThemeIndex;

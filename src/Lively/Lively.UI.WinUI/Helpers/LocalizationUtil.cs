@@ -63,7 +63,7 @@ namespace Lively.UI.WinUI.Helpers
         /// <param name="langCode"></param>
         /// <returns></returns>
         public static LanguagesModel GetSupportedLanguage(string langCode) =>
-            SupportedLanguages.FirstOrDefault(lang => lang.Codes.Contains(langCode)) ?? SupportedLanguages[0];
+            SupportedLanguages.FirstOrDefault(lang => lang.Codes.Contains(langCode, StringComparer.OrdinalIgnoreCase)) ?? SupportedLanguages[0];
 
         public static string GetLocalizedWallpaperCategory(WallpaperType type)
         {

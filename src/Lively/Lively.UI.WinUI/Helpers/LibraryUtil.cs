@@ -185,12 +185,12 @@ namespace Lively.UI.WinUI.Helpers
             });
         }
 
-        public void WallpaperShowOnDisk(ILibraryModel libraryItem)
+        public async Task WallpaperShowOnDisk(ILibraryModel libraryItem)
         {
             string folderPath =
                 libraryItem.LivelyInfo.Type == WallpaperType.url || libraryItem.LivelyInfo.Type == WallpaperType.videostream
                 ? libraryItem.LivelyInfoFolderPath : libraryItem.FilePath;
-            FileOperations.OpenFolder(folderPath);
+            await DesktopBridgeUtil.OpenFolder(folderPath);
         }
 
         public async Task<ILibraryModel> AddWallpaperFile(string filePath)
