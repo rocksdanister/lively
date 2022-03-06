@@ -43,6 +43,9 @@ namespace Lively.Services
                 Settings.AppVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
             }
 
+            //Restrictions on msix..
+            Settings.DesktopAutoWallpaper = Settings.DesktopAutoWallpaper && !Common.Constants.ApplicationType.IsMSIX;
+
             try
             {
                 _ = WindowsStartup.SetStartup(Settings.Startup);
