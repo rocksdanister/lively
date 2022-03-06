@@ -193,6 +193,7 @@
                 RelativePanel.Below="AddSymbol" />
         </RelativePanel>
 
+        <!-- Issue: https://github.com/microsoft/microsoft-ui-xaml/issues/6702 -->
         <RelativePanel
             x:Name="BusyPanel"
             Background="{ThemeResource SystemAltMediumColor}"
@@ -200,7 +201,7 @@
             <ProgressRing
                 Width="100"
                 Height="100"
-                IsActive="True"
+                IsActive="{Binding IsBusy, Mode=OneWay}"
                 RelativePanel.AlignHorizontalCenterWithPanel="True"
                 RelativePanel.AlignVerticalCenterWithPanel="True" />
         </RelativePanel>

@@ -4,10 +4,15 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="using:SettingsUI.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:converters="using:CommunityToolkit.WinUI.UI.Converters"
     xmlns:local="using:Lively.UI.WinUI.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Unloaded="Page_Unloaded"
     mc:Ignorable="d">
+
+    <Page.Resources>
+        <converters:BoolToVisibilityConverter x:Key="VisibilityConverter" />
+    </Page.Resources>
 
     <Grid>
         <ScrollViewer>
@@ -50,7 +55,7 @@
                     </AppBarButton>
                 </CommandBar>
 
-                <controls:SettingsGroup Margin="0,-25,0,0" IsEnabled="{Binding IsNotWinStore}">
+                <controls:SettingsGroup Margin="0,-25,0,0">
                     <controls:Setting Header="{Binding AppVersionText}" Icon="&#xE117;">
                         <controls:Setting.Description>
                             <StackPanel Orientation="Vertical">
@@ -68,6 +73,7 @@
                             <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
                                 <Button
                                     HorizontalAlignment="Right"
+                                    Visibility="{Binding IsNotWinStore, Mode=OneWay, Converter={StaticResource VisibilityConverter}}"
                                     Command="{Binding UpdateAppCommand}"
                                     Content="{Binding UpdateCommandText}" />
                             </StackPanel>
@@ -76,6 +82,7 @@
                     <InfoBar
                         Name="infoBar"
                         Title="{Binding UpdateStatusText}"
+                        Visibility="{Binding IsNotWinStore, Mode=OneWay, Converter={StaticResource VisibilityConverter}}"
                         IsClosable="False"
                         IsOpen="True"
                         Severity="Success" />

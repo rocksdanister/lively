@@ -121,8 +121,8 @@
                             <FontIcon Glyph="&#xE994;" />
                         </AppBarButton.Icon>
                     </AppBarButton>
-                    <AppBarSeparator Visibility="Collapsed" />
-                    <AppBarButton Visibility="Collapsed" >
+                    <AppBarSeparator />
+                    <AppBarButton Name="coffeeBtn" Click="AppBarCoffeeBtn_Click">
                         <AppBarButton.Icon>
                             <FontIcon Glyph="&#xEB51;" />
                         </AppBarButton.Icon>
