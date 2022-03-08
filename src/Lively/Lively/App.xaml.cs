@@ -149,6 +149,14 @@ namespace Lively
                 Services.GetRequiredService<IRunnerService>().ShowUI();
             }
 
+            this.SessionEnding += (s, e) => {
+                if (e.ReasonSessionEnding == ReasonSessionEnding.Shutdown || e.ReasonSessionEnding == ReasonSessionEnding.Logoff)
+                {
+                    e.Cancel = true;
+                    ShutDown();
+                }
+            };
+
 #if DEBUG != true
             var appUpdater = Services.GetRequiredService<IAppUpdaterService>();
             appUpdater.UpdateChecked += AppUpdateChecked;
