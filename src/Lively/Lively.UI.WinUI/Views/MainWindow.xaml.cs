@@ -4,19 +4,26 @@ using Lively.Grpc.Client;
 using Lively.Models;
 using Lively.UI.WinUI.ViewModels;
 using Lively.UI.WinUI.Views.Pages;
+using LivelyGallery.Client;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Animation;
+using Microsoft.UI.Xaml.Media.Imaging;
 using SettingsUI.Extensions;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources;
+using Windows.Storage.Streams;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -42,6 +49,7 @@ namespace Lively.UI.WinUI
         private readonly IDesktopCoreClient desktopCore;
         private readonly IUserSettingsClient userSettings;
         private readonly LibraryViewModel libraryVm;
+        private readonly GalleryClient galleryClient;
         private readonly ICommandsClient commands;
         private readonly ResourceLoader i18n;
 
@@ -50,11 +58,13 @@ namespace Lively.UI.WinUI
             IUserSettingsClient userSettings,
             SettingsViewModel settingsVm,
             LibraryViewModel libraryVm,
-            IAppUpdaterClient appUpdater)
+            IAppUpdaterClient appUpdater,
+            GalleryClient galleryClient)
         {
             this.settingsVm = settingsVm;
             this.desktopCore = desktopCore;
             this.libraryVm = libraryVm;
+            this.galleryClient = galleryClient;
             this.userSettings = userSettings;
             this.commands = commands;
 
@@ -66,6 +76,9 @@ namespace Lively.UI.WinUI
             desktopCore.WallpaperChanged += DesktopCore_WallpaperChanged;
             desktopCore.WallpaperError += DesktopCore_WallpaperError;
             appUpdater.UpdateChecked += AppUpdater_UpdateChecked;
+
+            InitializeGallery();
+
             //App startup is slower if done in NavView_Loaded..
             CreateMainMenu();
             NavViewNavigate(NavPages.library);
@@ -80,6 +93,8 @@ namespace Lively.UI.WinUI
 
             _ = StdInListener();
         }
+
+
 
         private void DesktopCore_WallpaperError(object sender, Exception e)
         {
@@ -224,8 +239,10 @@ namespace Lively.UI.WinUI
             _ = new ContentDialog()
             {
                 Title = i18n.GetString("DescriptionScreenLayout"),
-                Content = new ScreenLayoutView() { 
-                    I18n = new ScreenLayoutView.Localization {
+                Content = new ScreenLayoutView()
+                {
+                    I18n = new ScreenLayoutView.Localization
+                    {
                         TitleScreenSaver = i18n.GetString("TitleScreensaver"),
                         TipScreenSaver = i18n.GetString("TipScreensaver"),
                     }
@@ -298,7 +315,7 @@ namespace Lively.UI.WinUI
             navView.MenuItems.Add(CreateMenu(i18n.GetString("System/Header"), "system"));
         }
 
-        private void UpdateAudioSliderIcon(double volume) => 
+        private void UpdateAudioSliderIcon(double volume) =>
             audioBtn.Icon = audioIcons[(int)Math.Ceiling((audioIcons.Length - 1) * volume / 100)];
 
         //Actually called before window closed!
@@ -467,5 +484,105 @@ namespace Lively.UI.WinUI
         }
 
         #endregion //helpers
+
+        private async void InitializeGallery()
+        {
+            try
+            {
+                await galleryClient.InitializeAsync();
+            }
+            catch (Exception ex)
+            {
+                //just ignore it
+            }
+            finally
+            {
+                UpdateAuthState();
+            }
+        }
+        private async void UpdateAuthState()
+        {
+            if (galleryClient.IsLoggedIn)
+            {
+                //I just wanted rounded corners...
+                using var wc = new WebClient();
+                var imgStream = wc.DownloadData(galleryClient.CurrentUser.AvatarUrl);
+                var ms = new MemoryStream(imgStream, false);
+                var image = System.Drawing.Image.FromStream(ms);
+                var rounded = RoundCorners(image, 50, Color.Transparent);
+                ms = new MemoryStream();
+                rounded.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                var source = await SetSourceFromStream(ms);
+
+                avatarImg.Source = source;
+                nameText.Text = galleryClient.CurrentUser.DisplayName;
+                iconAvatarImg.Source = source;
+                notAuthorizedBtn.Visibility = Visibility.Collapsed;
+                authorizedBtn.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                authorizedBtn.Visibility = Visibility.Collapsed;
+                notAuthorizedBtn.Visibility = Visibility.Visible;
+            }
+        }
+
+        private async void AuthWithGoogleClick(object sender, RoutedEventArgs e)
+        {
+            if (galleryClient.IsLoggedIn)
+                return;
+            _ = Task.Run(async () =>
+            {
+                var code = await galleryClient.RequestGoogleCodeAsync();
+                if (code == null)
+                    return;
+                await galleryClient.AuthenticateAsync(code);
+                DispatcherQueue.TryEnqueue(() =>
+                {
+                    UpdateAuthState();
+                });
+            });
+
+        }
+        //TODO: Move to extension method
+        public async Task<BitmapImage> SetSourceFromStream(Stream stream)
+        {
+            using (InMemoryRandomAccessStream ras = new InMemoryRandomAccessStream())
+            {
+                stream.Seek(0, SeekOrigin.Begin);
+                await stream.CopyToAsync(ras.AsStreamForWrite((int)stream.Length));
+                ras.Seek(0);
+                BitmapImage bi = new BitmapImage();
+                bi.SetSource(ras);
+                return bi;
+            }
+        }
+
+
+        private System.Drawing.Image RoundCorners(System.Drawing.Image StartImage, int CornerRadius, Color BackgroundColor)
+        {
+            CornerRadius *= 2;
+            Bitmap RoundedImage = new Bitmap(StartImage.Width, StartImage.Height);
+            using (Graphics g = Graphics.FromImage(RoundedImage))
+            {
+                g.Clear(BackgroundColor);
+                g.SmoothingMode = SmoothingMode.HighQuality;
+                System.Drawing.Brush brush = new TextureBrush(StartImage);
+                GraphicsPath gp = new GraphicsPath();
+                gp.AddArc(0, 0, CornerRadius, CornerRadius, 180, 90);
+                gp.AddArc(0 + RoundedImage.Width - CornerRadius, 0, CornerRadius, CornerRadius, 270, 90);
+                gp.AddArc(0 + RoundedImage.Width - CornerRadius, 0 + RoundedImage.Height - CornerRadius, CornerRadius, CornerRadius, 0, 90);
+                gp.AddArc(0, 0 + RoundedImage.Height - CornerRadius, CornerRadius, CornerRadius, 90, 90);
+                g.FillPath(brush, gp);
+                return RoundedImage;
+            }
+        }
+
+        private async void Logout(object sender, RoutedEventArgs e)
+        {
+            await galleryClient.LogoutAsync();
+            UpdateAuthState();
+            authorizedBtn.Flyout.Hide();
+        }
     }
 }

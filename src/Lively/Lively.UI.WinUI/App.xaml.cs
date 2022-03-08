@@ -6,6 +6,7 @@ using Lively.Models;
 using Lively.UI.WinUI.Factories;
 using Lively.UI.WinUI.Helpers;
 using Lively.UI.WinUI.ViewModels;
+using LivelyGallery.Client;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using System;
@@ -96,6 +97,7 @@ namespace Lively.UI.WinUI
                 .AddSingleton<LibraryViewModel>() //Library items are stored..
                 .AddSingleton<SettingsViewModel>() //Some events..
                 .AddSingleton<LibraryUtil>() //Used frequently..
+                .AddSingleton<GalleryClient>((e) => new GalleryClient("https://lively-dev.roxxel.moe/api/", "https://accounts.google.com/o/oauth2/auth/oauthchooseaccount?client_id=923081992071-qg27j4uhasb3r4lasb9cb19nbhvgbb34.apps.googleusercontent.com&redirect_uri=http://127.0.0.1:43821/signin-oidc&scope=email%20openid%20profile&response_type=code&state=asdafwswdwefwsdg&flowName=GeneralOAuthFlow", new JsonTokenStore()))
                 //transient
                 //.AddTransient<HelpViewModel>()
                 .AddTransient<AboutViewModel>()

@@ -127,6 +127,54 @@
                             <FontIcon Glyph="&#xEB51;" />
                         </AppBarButton.Icon>
                     </AppBarButton>
+                    <AppBarSeparator/>
+                    <AppBarButton Visibility="Collapsed" Name="authorizedBtn" Padding="0">
+                        <AppBarButton.Flyout>
+                            <Flyout>
+                                <StackPanel Padding="0">
+                                    <TextBlock  Text="Manage account" FontSize="18" FontWeight="SemiBold" />
+                                    <StackPanel HorizontalAlignment="Center" Margin="0,8,0,8" Padding="0" Orientation="Horizontal">
+                                        <Border CornerRadius="50" HorizontalAlignment="Left" >
+                                            <Image x:Name="avatarImg" Width="64" Height="64" />
+                                        </Border>
+                                        <TextBlock Margin="8,0,0,0" x:Name="nameText" Text="Roxxel" VerticalAlignment="Center" FontSize="16" FontWeight="Medium" />
+                                    </StackPanel>
+                                    <StackPanel Padding="0" Orientation="Horizontal">
+                                        <HyperlinkButton Content="Edit profile" />
+                                        <HyperlinkButton Content="Log out" Click="Logout" />
+                                    </StackPanel>
+                                </StackPanel>
+                            </Flyout>
+                        </AppBarButton.Flyout>
+                        
+                        <AppBarButton.Icon>
+                            <ImageIcon Margin="4,0,0,0" x:Name="iconAvatarImg" RenderTransformOrigin="0.3,0.5" MinWidth="64">
+                                <ImageIcon.RenderTransform>
+                                        
+                                    <ScaleTransform  ScaleX="2.1" ScaleY="2.1" />
+                                </ImageIcon.RenderTransform>
+                            </ImageIcon>
+                        </AppBarButton.Icon>
+                    </AppBarButton>
+                    <AppBarButton Visibility="Visible" Name="notAuthorizedBtn" Padding="0,0,0,0">
+                        <AppBarButton.Icon>
+                            <SymbolIcon Symbol="Contact" >
+                                <SymbolIcon.RenderTransform>
+                                    <TranslateTransform X="4" />
+                                </SymbolIcon.RenderTransform>
+                            </SymbolIcon>
+                        </AppBarButton.Icon>
+                        <AppBarButton.Flyout>
+                            <Flyout>
+                                <StackPanel Padding="0">
+                                    <TextBlock  Text="You're not authorized" FontSize="18" FontWeight="SemiBold" />
+                                    <HyperlinkButton Click="AuthWithGoogleClick" Margin="-2,8,0,0" Content="Login with Google" />
+                                    
+                                </StackPanel>
+                            </Flyout>
+                        </AppBarButton.Flyout>
+                    </AppBarButton>
+                    <AppBarSeparator />
                     <CommandBar.SecondaryCommands>
                         <AppBarButton x:Uid="Help" Click="AppBarHelpButton_Click">
                             <AppBarButton.Icon>

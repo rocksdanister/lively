@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31729.503
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32203.90
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lively", "Lively\Lively.csproj", "{8135BD37-5857-415F-AA7B-F58B284C6DDA}"
 EndProject
@@ -28,6 +28,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lively.UI.WinUI", "Lively.UI.WinUI\Lively.UI.WinUI.csproj", "{418B6EB5-1874-4681-89F8-6BC393AB2DC0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lively.Commandline", "Lively.Commandline\Lively.Commandline.csproj", "{CE0921CD-1236-41AA-BD1A-501BDF9C99AF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivelyGallery.Shared", "LivelyGallery.Shared\LivelyGallery.Shared.csproj", "{27D06EC2-464F-4476-BA46-0178FB28B646}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivelyGallery.Client", "LivelyGallery.Client\LivelyGallery.Client.csproj", "{AD99738F-500A-48BB-90BE-5EA012126ADD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -255,6 +259,38 @@ Global
 		{CE0921CD-1236-41AA-BD1A-501BDF9C99AF}.Release|x64.Build.0 = Release|Any CPU
 		{CE0921CD-1236-41AA-BD1A-501BDF9C99AF}.Release|x86.ActiveCfg = Release|Any CPU
 		{CE0921CD-1236-41AA-BD1A-501BDF9C99AF}.Release|x86.Build.0 = Release|Any CPU
+		{27D06EC2-464F-4476-BA46-0178FB28B646}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27D06EC2-464F-4476-BA46-0178FB28B646}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27D06EC2-464F-4476-BA46-0178FB28B646}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{27D06EC2-464F-4476-BA46-0178FB28B646}.Debug|arm64.Build.0 = Debug|Any CPU
+		{27D06EC2-464F-4476-BA46-0178FB28B646}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{27D06EC2-464F-4476-BA46-0178FB28B646}.Debug|x64.Build.0 = Debug|Any CPU
+		{27D06EC2-464F-4476-BA46-0178FB28B646}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{27D06EC2-464F-4476-BA46-0178FB28B646}.Debug|x86.Build.0 = Debug|Any CPU
+		{27D06EC2-464F-4476-BA46-0178FB28B646}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27D06EC2-464F-4476-BA46-0178FB28B646}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27D06EC2-464F-4476-BA46-0178FB28B646}.Release|arm64.ActiveCfg = Release|Any CPU
+		{27D06EC2-464F-4476-BA46-0178FB28B646}.Release|arm64.Build.0 = Release|Any CPU
+		{27D06EC2-464F-4476-BA46-0178FB28B646}.Release|x64.ActiveCfg = Release|Any CPU
+		{27D06EC2-464F-4476-BA46-0178FB28B646}.Release|x64.Build.0 = Release|Any CPU
+		{27D06EC2-464F-4476-BA46-0178FB28B646}.Release|x86.ActiveCfg = Release|Any CPU
+		{27D06EC2-464F-4476-BA46-0178FB28B646}.Release|x86.Build.0 = Release|Any CPU
+		{AD99738F-500A-48BB-90BE-5EA012126ADD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD99738F-500A-48BB-90BE-5EA012126ADD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD99738F-500A-48BB-90BE-5EA012126ADD}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{AD99738F-500A-48BB-90BE-5EA012126ADD}.Debug|arm64.Build.0 = Debug|Any CPU
+		{AD99738F-500A-48BB-90BE-5EA012126ADD}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{AD99738F-500A-48BB-90BE-5EA012126ADD}.Debug|x64.Build.0 = Debug|Any CPU
+		{AD99738F-500A-48BB-90BE-5EA012126ADD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AD99738F-500A-48BB-90BE-5EA012126ADD}.Debug|x86.Build.0 = Debug|Any CPU
+		{AD99738F-500A-48BB-90BE-5EA012126ADD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD99738F-500A-48BB-90BE-5EA012126ADD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD99738F-500A-48BB-90BE-5EA012126ADD}.Release|arm64.ActiveCfg = Release|Any CPU
+		{AD99738F-500A-48BB-90BE-5EA012126ADD}.Release|arm64.Build.0 = Release|Any CPU
+		{AD99738F-500A-48BB-90BE-5EA012126ADD}.Release|x64.ActiveCfg = Release|Any CPU
+		{AD99738F-500A-48BB-90BE-5EA012126ADD}.Release|x64.Build.0 = Release|Any CPU
+		{AD99738F-500A-48BB-90BE-5EA012126ADD}.Release|x86.ActiveCfg = Release|Any CPU
+		{AD99738F-500A-48BB-90BE-5EA012126ADD}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
