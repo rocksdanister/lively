@@ -107,7 +107,7 @@
                                 Icon="&#xF12B;"
                                 Style="{StaticResource ExpanderHeaderSettingStyle}">
                                 <controls:Setting.ActionContent>
-                                    <ProgressRing MinWidth="{StaticResource SettingActionControlMinWidth}" IsActive="{Binding WallpaperDirectoryChangeOngoing}" />
+                                    <ProgressRing IsActive="{Binding WallpaperDirectoryChangeOngoing}" />
                                 </controls:Setting.ActionContent>
                             </controls:Setting>
                         </controls:SettingExpander.Header>

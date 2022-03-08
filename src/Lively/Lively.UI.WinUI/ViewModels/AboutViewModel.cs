@@ -128,7 +128,7 @@ namespace Lively.UI.WinUI.ViewModels
                     UpdateStatusText = languageResource.GetString("TextupdateCheckFail");
                     break;
             }
-            UpdateDateText = date == DateTime.MinValue ? $"{languageResource.GetString("TextLastChecked")}: ---" : $"{languageResource.GetString("TextLastChecked")}: {date}";
+            UpdateDateText = status == AppUpdateStatus.notchecked ? $"{languageResource.GetString("TextLastChecked")}: ---" : $"{languageResource.GetString("TextLastChecked")}: {date}";
             UpdateCommandText = updateAvailable ? languageResource.GetString("TextDownload") : languageResource.GetString("TextUpdateCheck");
         }
 

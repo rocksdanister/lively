@@ -65,16 +65,27 @@ namespace Lively.Views.WindowMsg
                     prevExplorerPid = newExplorerPid;
                 }
             }
-            else if (msg == (uint)NativeMethods.WM.QUERYENDSESSION && Constants.ApplicationType.IsMSIX)
+            else if (msg == (uint)NativeMethods.WM.QUERYENDSESSION)
             {
-                _ = NativeMethods.RegisterApplicationRestart(
-                    null,
-                    (int)NativeMethods.RestartFlags.RESTART_NO_CRASH |
-                    (int)NativeMethods.RestartFlags.RESTART_NO_HANG |
-                    (int)NativeMethods.RestartFlags.RESTART_NO_REBOOT);
+                if (lParam != IntPtr.Zero && lParam == (IntPtr)0x00000001) // ENDSESSION_CLOSEAPP
+                {
+                    //The app is being queried if it can close for an update.
+                    _ = NativeMethods.RegisterApplicationRestart(
+                        null,
+                        (int)NativeMethods.RestartFlags.RESTART_NO_CRASH |
+                        (int)NativeMethods.RestartFlags.RESTART_NO_HANG |
+                        (int)NativeMethods.RestartFlags.RESTART_NO_REBOOT);
+
+                    return (IntPtr)1;
+                }
+            }
+            else if (msg == (uint)NativeMethods.WM.ENDSESSION)
+            {
+                //Gracefully close app.
+                App.ShutDown();
             }
 
-            //screen message processing...
+            //Screen message processing...
             _ = displayManager.OnWndProc(hwnd, (uint)msg, wParam, lParam);
 
             return IntPtr.Zero;

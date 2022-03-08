@@ -39,10 +39,7 @@ namespace Lively.Common.Helpers.Files
                 }
                 Process.Start(startInfo);
             }
-            catch (Exception e)
-            {
-                //Logger.Error(e.Message + "\n" + e.StackTrace);
-            }
+            catch { }
         }
 
         /// <summary>
