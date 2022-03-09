@@ -1,4 +1,4 @@
-﻿namespace Lively.Models
+﻿namespace Lively.Common.Helpers.Localization
 {
     public interface ILanguagesModel
     {
