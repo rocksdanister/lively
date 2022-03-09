@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Lively.Models
+namespace Lively.Common.Helpers.Localization
 {
     [Serializable]
     public class LanguagesModel : ILanguagesModel

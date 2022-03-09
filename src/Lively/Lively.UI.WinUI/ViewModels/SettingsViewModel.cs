@@ -12,6 +12,7 @@ using System.Windows;
 using Lively.Common;
 using Lively.Common.Helpers;
 using Lively.Common.Helpers.Files;
+using Lively.Common.Helpers.Localization;
 using Lively.Common.Helpers.MVVM;
 using Lively.Common.Helpers.Shell;
 using Lively.Common.Helpers.Storage;
@@ -21,6 +22,7 @@ using Lively.UI.WinUI.Factories;
 using Lively.UI.WinUI.Helpers;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.Input;
+using Microsoft.UI.Dispatching;
 using Windows.Storage.Pickers;
 
 namespace Lively.UI.WinUI.ViewModels
@@ -28,6 +30,7 @@ namespace Lively.UI.WinUI.ViewModels
     public class SettingsViewModel : ObservableObject
     {
         public event EventHandler<string> WallpaperDirChanged;
+        private readonly DispatcherQueue dispatcherQueue;
 
         private readonly IUserSettingsClient userSettings;
         private readonly IDesktopCoreClient desktopCore;
@@ -54,8 +57,11 @@ namespace Lively.UI.WinUI.ViewModels
             //this.appUpdater = appUpdater;
             //this.ttbService = ttbService;
 
+            //MainWindow dispatcher may not be ready yet, creating our own instead..
+            dispatcherQueue = DispatcherQueue.GetForCurrentThread() ?? DispatcherQueueController.CreateOnCurrentThread().DispatcherQueue;
+
             //lang-codes: https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-lcid/a9eac961-e77d-41a6-90a5-ce1a8b0cdb9c
-            LanguageItems = new ObservableCollection<LanguagesModel>(LocalizationUtil.SupportedLanguages);
+            LanguageItems = new ObservableCollection<LanguagesModel>(SupportedLanguages.Languages);
 
             SelectedTileSizeIndex = userSettings.Settings.TileSize;
             SelectedAppFullScreenIndex = (int)userSettings.Settings.AppFullscreenPause;
@@ -91,7 +97,7 @@ namespace Lively.UI.WinUI.ViewModels
             //IsScreensaverLockOnResume = userSettings.Settings.ScreensaverLockOnResume;
             IsKeepUIAwake = userSettings.Settings.KeepAwakeUI;
             IsStartup = userSettings.Settings.Startup;
-            SelectedLanguageItem = LocalizationUtil.GetSupportedLanguage(userSettings.Settings.Language);
+            SelectedLanguageItem = SupportedLanguages.GetLanguage(userSettings.Settings.Language);
 
             //Only pause action is shown to user, rest is for internal use by editing the json file manually..
             AppRules = new ObservableCollection<IApplicationRulesModel>(userSettings.AppRules.Where(x => x.Rule == AppRulesEnum.pause));
@@ -99,7 +105,7 @@ namespace Lively.UI.WinUI.ViewModels
 
         public void UpdateSettingsConfigFile()
         {
-            _ = App.Services.GetRequiredService<MainWindow>().DispatcherQueue.TryEnqueue(() =>
+            _ = dispatcherQueue.TryEnqueue(() =>
             {
                 userSettings.Save<ISettingsModel>();
             });
@@ -107,7 +113,7 @@ namespace Lively.UI.WinUI.ViewModels
 
         public void UpdateAppRulesConfigFile()
         {
-            _ = App.Services.GetRequiredService<MainWindow>().DispatcherQueue.TryEnqueue(() =>
+            _ = dispatcherQueue.TryEnqueue(() =>
             {
                 userSettings.Save<List<IApplicationRulesModel>>();
             });
