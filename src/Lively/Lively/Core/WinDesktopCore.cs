@@ -52,6 +52,7 @@ namespace Lively.Core
 
         private readonly IUserSettingsService userSettings;
         private readonly IWallpaperFactory wallpaperFactory;
+        private readonly ITransparentTbService ttbService;
         private readonly IWatchdogService watchdog;
         private readonly IDisplayManager displayManager;
         private readonly IRunnerService runner;
@@ -60,12 +61,14 @@ namespace Lively.Core
 
         public WinDesktopCore(IUserSettingsService userSettings,
             IDisplayManager displayManager,
+            ITransparentTbService ttbService,
             IWatchdogService watchdog,
             IRunnerService runner,
             IWallpaperFactory wallpaperFactory)
         {
             this.userSettings = userSettings;
             this.displayManager = displayManager;
+            this.ttbService = ttbService;
             this.watchdog = watchdog;
             this.runner = runner;
             //this.screenSaver = screenSaver;
@@ -350,7 +353,9 @@ namespace Lively.Core
                         watchdog.Add(wallpaper.Proc.Id);
                     }
 
-                    if (userSettings.Settings.DesktopAutoWallpaper)
+                    var thumbRequiredAvgColor = (userSettings.Settings.SystemTaskbarTheme == TaskbarTheme.wallpaper || userSettings.Settings.SystemTaskbarTheme == TaskbarTheme.wallpaperFluent) &&
+                        (!displayManager.IsMultiScreen() || userSettings.Settings.WallpaperArrangement == WallpaperArrangement.span || wallpaper.Screen.IsPrimary);
+                    if (userSettings.Settings.DesktopAutoWallpaper || thumbRequiredAvgColor)
                     {
                         try
                         {
@@ -373,6 +378,20 @@ namespace Lively.Core
                             if (!File.Exists(imgPath))
                             {
                                 throw new FileNotFoundException();
+                            }
+
+                            //set accent color of taskbar..
+                            if (thumbRequiredAvgColor)
+                            {
+                                try
+                                {
+                                    var color = await Task.Run(() => ttbService.GetAverageColor(imgPath));
+                                    ttbService.SetAccentColor(color);
+                                }
+                                catch (Exception ie1)
+                                {
+                                    Logger.Error("Failed to set taskbar accent: " + ie1.Message);
+                                }
                             }
 
                             //set desktop picture wallpaper..

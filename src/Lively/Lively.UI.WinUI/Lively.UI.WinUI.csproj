@@ -14,6 +14,7 @@
     <ApplicationIcon>appicon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Assets\icon-lively-48.png" />
     <None Remove="Assets\icons8-github-96.png" />
     <None Remove="Assets\icons8-mail-96.png" />
     <None Remove="Assets\icons8-reddit-96.png" />
@@ -88,6 +89,9 @@
     <PRIResource Remove="Strings\en-US\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
+    <Content Update="Assets\icon-lively-48.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Update="Assets\icons8-github-96.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
