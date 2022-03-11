@@ -18,7 +18,12 @@
             <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" MinWidth="400">
+        <Grid x:Name="addGrid"
+              Grid.Row="0"
+              MinWidth="400"
+              Background="Transparent">
+            <!-- workaround: drop don't work with empty MinWidth-->
+            <TextBlock />
             <Rectangle
                 Margin="1"
                 Stroke="{ThemeResource SystemControlPageTextBaseMediumBrush}"

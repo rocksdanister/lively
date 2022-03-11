@@ -39,6 +39,14 @@ namespace Lively.UI.WinUI.ViewModels
             WebUrlText = userSettings.Settings.SavedURL;
         }
 
+        public void UpdateSettingsConfigFile()
+        {
+            _ = App.Services.GetRequiredService<MainWindow>().DispatcherQueue.TryEnqueue(() =>
+            {
+                userSettings.Save<ISettingsModel>();
+            });
+        }
+
         private string _webUrlText;
         public string WebUrlText
         {
@@ -66,12 +74,21 @@ namespace Lively.UI.WinUI.ViewModels
             }
 
             WebUrlText = uri.OriginalString;
+            userSettings.Settings.SavedURL = WebUrlText;
+            UpdateSettingsConfigFile();
+
+            AddWallpaperLink(uri);
+        }
+
+        public void AddWallpaperLink(Uri uri)
+        {
             try
             {
                 NewWallpaper = libraryUtil.AddWallpaperLink(uri.OriginalString);
                 OnRequestClose?.Invoke(this, EventArgs.Empty);
             }
-            catch {
+            catch
+            {
                 //TODO
             }
         }
@@ -91,25 +108,24 @@ namespace Lively.UI.WinUI.ViewModels
             var file = await filePicker.PickSingleFileAsync();
             if (file != null)
             {
-                try
-                {
-                    var item = await libraryUtil.AddWallpaperFile(file.Path);
+                await AddWallpaperFile(file.Path);
+            }
+        }
 
-                    if (item.DataType == LibraryItemType.processing)
-                    {
-                        NewWallpaper = item;
-                        OnRequestClose?.Invoke(this, EventArgs.Empty);
-                    }
-                }
-                catch (Exception e)
+        public async Task AddWallpaperFile(string path)
+        {
+            try
+            {
+                var item = await libraryUtil.AddWallpaperFile(path);
+                if (item.DataType == LibraryItemType.processing)
                 {
-                    //TODO
-                    /*
-                    System.Windows.MessageBox.Show(
-                         e.Message,
-                         Properties.Resources.TextError);
-                    */
+                    NewWallpaper = item;
+                    OnRequestClose?.Invoke(this, EventArgs.Empty);
                 }
+            }
+            catch
+            {
+                //TODO
             }
         }
     }
