@@ -201,6 +201,13 @@ namespace Lively.Core
                 Logger.Error(e.ToString());
                 WallpaperError?.Invoke(this, new WallpaperPluginNotFoundException(e.Message));
                 WallpaperChanged?.Invoke(this, EventArgs.Empty);
+
+                if (e is WallpaperFactory.MsixNotAllowedException && wallpaper.DataType == LibraryItemType.processing)
+                {
+                    WallpaperUpdated?.Invoke(this, new WallpaperUpdateArgs() { Category = UpdateWallpaperType.remove, Info = wallpaper.LivelyInfo, InfoPath = wallpaper.LivelyInfoFolderPath });
+                    //Deleting from core because incase UI client not running.
+                    _ = FileOperations.DeleteDirectoryAsync(wallpaper.LivelyInfoFolderPath, 0, 1000);
+                }
             }
         }
 
@@ -308,6 +315,7 @@ namespace Lively.Core
                         //user cancelled/fail!
                         wallpaper.Terminate();
                         DesktopUtil.RefreshDesktop();
+                        //Deleting from core because incase UI client not running.
                         _ = FileOperations.DeleteDirectoryAsync(wallpaper.Model.LivelyInfoFolderPath, 0, 1000);
                         _ = FileOperations.DeleteDirectoryAsync(Directory.GetParent(Path.GetDirectoryName(wallpaper.LivelyPropertyCopyPath)).ToString(), 0, 1000);
                         return;
