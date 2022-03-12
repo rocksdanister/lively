@@ -9,11 +9,12 @@
     mc:Ignorable="d">
 
     <Grid>
-
+        <!--
         <Grid.RowDefinitions>
             <RowDefinition Height="32" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+        -->
 
         <!--
         <Grid
