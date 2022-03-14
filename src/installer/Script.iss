@@ -2,7 +2,7 @@
 ; https://jrsoftware.org/isinfo.php
 
 #define MyAppName "Lively Wallpaper"
-#define MyAppVersion "1.9.0.0"
+#define MyAppVersion "1.9.4.4"
 #define MyAppPublisher "rocksdanister"
 #define MyAppURL "https://github.com/rocksdanister/lively"
 #define MyAppExeName "Lively.exe"
@@ -45,8 +45,8 @@ WizardStyle=modern
 ;Installer/Uninstaller will stop if application is running by checking mutex.
 AppMutex=LIVELY:DESKTOPWALLPAPERSYSTEM
 ;https://jrsoftware.org/ishelp/index.php?topic=winvernotes
-;Win10 1903 or above
-MinVersion=10.0.18362
+;Win10 1809 or above
+MinVersion=10.0.17763
 WizardSmallImageFile=Theme\wizard_small.bmp
 WizardImageFile=Theme\wizard_large.bmp
 ;Default is hide the welcome page, ms guidelines

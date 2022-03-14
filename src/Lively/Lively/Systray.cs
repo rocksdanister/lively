@@ -88,11 +88,12 @@ namespace Lively
             _notifyIcon.ContextMenuStrip.Items.Add(customiseWallpaperBtn);
 
             //Random wallpaper
-            _notifyIcon.ContextMenuStrip.Items.Add(new ContextMenuTheme.StripSeparatorCustom().stripSeparator);
+            //_notifyIcon.ContextMenuStrip.Items.Add(new ContextMenuTheme.StripSeparatorCustom().stripSeparator);
             _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextChangeWallpaper, null).Click += (s, e) => SetRandomWallpapers();
 
             if (!Constants.ApplicationType.IsMSIX)
             {
+                _notifyIcon.ContextMenuStrip.Items.Add(new ContextMenuTheme.StripSeparatorCustom().stripSeparator);
                 updateTrayBtn = new ToolStripMenuItem(Properties.Resources.TextUpdateChecking, null)
                 {
                     Enabled = false
