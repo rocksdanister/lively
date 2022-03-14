@@ -45,12 +45,6 @@ Its super easy.. barely an inconvenience, just drag & drop the files or webpages
 * Load HTML file or web address as wallpaper.
 * Runs webgl, javascript.. basically anything that works on chrome.
 * Audio Reactive Wallpaper support.
-#### Video Streams
-<img src="/resources/wallpaper_yt.gif" width="600" height="338"/>
-
-* Just drag & drop stream links.
-* Adjustable video quality.
-* Autofills wallpaper data.
 #### Shaders
 <img src="/resources/wallpaper_shadertoy.gif" width="600" height="338"/>
 
