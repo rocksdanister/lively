@@ -30,7 +30,7 @@ namespace Lively.UI.WinUI.ViewModels
         public bool IsNotWinStore => !Constants.ApplicationType.IsMSIX;
 
         public string AppVersionText => "v" + desktopCore.AssemblyVersion +
-                (Constants.ApplicationType.IsTestBuild ? "b" : (IsNotWinStore ? " " + "Store" : string.Empty));
+                (Constants.ApplicationType.IsTestBuild ? "b" : (Constants.ApplicationType.IsMSIX ? $" {languageResource.GetString("Store/Header")}" : string.Empty));
 
         private string _updateStatusText;
         public string UpdateStatusText
