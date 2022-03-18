@@ -130,7 +130,7 @@ namespace Lively.Models
                 (File.Exists(PreviewClipPath) ? PreviewClipPath : ThumbnailPath) : ThumbnailPath;
             ItemStartup = false;
 
-            if (data.Type == WallpaperType.video || data.Type == WallpaperType.videostream || data.Type == WallpaperType.gif)
+            if (data.Type == WallpaperType.video || data.Type == WallpaperType.videostream || data.Type == WallpaperType.gif || data.Type == WallpaperType.picture)
             {
                 LivelyPropertyPath ??= Path.Combine(Constants.CommonPaths.TempVideoDir, "LivelyProperties.json");
             }
