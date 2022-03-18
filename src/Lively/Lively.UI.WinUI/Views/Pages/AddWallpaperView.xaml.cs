@@ -1,5 +1,6 @@
 ﻿using Lively.UI.WinUI.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -26,16 +27,54 @@ namespace Lively.UI.WinUI.Views.Pages
     /// </summary>
     public sealed partial class AddWallpaperView : Page
     {
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+        private readonly AddWallpaperViewModel vm;
+
         public AddWallpaperView(AddWallpaperViewModel vm)
         {
+            this.vm = vm;
+
             this.InitializeComponent();
             this.DataContext = vm;
         }
 
-        private void Page_Drop(object sender, DragEventArgs e)
+        private async void Page_Drop(object sender, DragEventArgs e)
         {
             this.addPanel.Visibility = Visibility.Visible;
             this.addPanelDrop.Visibility = Visibility.Collapsed;
+
+            if (e.DataView.Contains(StandardDataFormats.WebLink))
+            {
+                var uri = await e.DataView.GetWebLinkAsync();
+                Logger.Info($"Dropped string {uri}");
+
+                vm.AddWallpaperLink(uri);
+            }
+            else if (e.DataView.Contains(StandardDataFormats.StorageItems))
+            {
+                var items = await e.DataView.GetStorageItemsAsync();
+                if (items.Count == 1)
+                {
+                    var item = items[0].Path;
+                    Logger.Info($"Dropped file {item}");
+                    try
+                    {
+                        if (string.IsNullOrWhiteSpace(Path.GetExtension(item)))
+                            return;
+                    }
+                    catch (ArgumentException)
+                    {
+                        Logger.Info($"Invalid character, skipping dropped file {item}");
+                        return;
+                    }
+
+                    await vm.AddWallpaperFile(item);
+                }
+                if (items.Count > 1)
+                {
+                    //TODO
+                }
+            }
         }
 
         private void Page_DragOver(object sender, DragEventArgs e)
@@ -43,12 +82,14 @@ namespace Lively.UI.WinUI.Views.Pages
             e.AcceptedOperation = DataPackageOperation.Copy;
             this.addPanel.Visibility = Visibility.Collapsed;
             this.addPanelDrop.Visibility = Visibility.Visible;
+            this.addGrid.Background = (SolidColorBrush)App.Current.Resources["SystemControlForegroundChromeMediumBrush"];
         }
 
         private void Page_DragLeave(object sender, DragEventArgs e)
         {
             this.addPanel.Visibility = Visibility.Visible;
             this.addPanelDrop.Visibility = Visibility.Collapsed;
+            this.addGrid.Background = new SolidColorBrush(Colors.Transparent);
         }
 
     }

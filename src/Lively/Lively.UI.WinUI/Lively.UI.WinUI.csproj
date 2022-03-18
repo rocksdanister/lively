@@ -3,6 +3,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows10.0.18362</TargetFramework>
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+    <SupportedOSPlatformVersion>10.0.17763.0</SupportedOSPlatformVersion>
     <RootNamespace>Lively.UI.WinUI</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <Platforms>x86;x64;arm64</Platforms>
@@ -14,6 +15,7 @@
     <ApplicationIcon>appicon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Assets\icon-lively-48.png" />
     <None Remove="Assets\icons8-github-96.png" />
     <None Remove="Assets\icons8-mail-96.png" />
     <None Remove="Assets\icons8-reddit-96.png" />
@@ -89,6 +91,9 @@
     <PRIResource Remove="Strings\en-US\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
+    <Content Update="Assets\icon-lively-48.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Update="Assets\icons8-github-96.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

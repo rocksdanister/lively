@@ -1,5 +1,9 @@
 
-# Lively Wallpaper
+<p align="center">
+  <img alt="Files Logo" src="resources/figma_promo_16x9.jpg" width="450" />
+  <h2 align="center">Lively Wallpaper</h2>
+</p>
+
 [![GitHub release](https://img.shields.io/github/release/rocksdanister/lively/all.svg)](https://github.com/rocksdanister/lively/releases)
 [![Github all releases](https://img.shields.io/github/downloads/rocksdanister/lively/total.svg)](https://github.com/rocksdanister/lively/releases)
 [![GitHub stars](https://img.shields.io/github/stars/rocksdanister/lively.svg)](https://github.com/rocksdanister/lively/stargazers)
@@ -45,12 +49,6 @@ Its super easy.. barely an inconvenience, just drag & drop the files or webpages
 * Load HTML file or web address as wallpaper.
 * Runs webgl, javascript.. basically anything that works on chrome.
 * Audio Reactive Wallpaper support.
-#### Video Streams
-<img src="/resources/wallpaper_yt.gif" width="600" height="338"/>
-
-* Just drag & drop stream links.
-* Adjustable video quality.
-* Autofills wallpaper data.
 #### Shaders
 <img src="/resources/wallpaper_shadertoy.gif" width="600" height="338"/>
 

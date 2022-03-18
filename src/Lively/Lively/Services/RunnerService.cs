@@ -96,13 +96,24 @@ namespace Lively.Services
 
                     if (!_isFirstRun)
                     {
-                        SetWindowRect(processUI, prevWindowRect);
+                        try
+                        {
+                            SetWindowRect(processUI, prevWindowRect);
+                        }
+                        catch (Exception ie)
+                        {
+                            Logger.Error($"Failed to restore windowrect: {ie.Message}");
+                        }
                     }
                     _isFirstRun = false;
                 }
                 catch (Exception e)
                 {
                     Logger.Error(e);
+                    _ = MessageBox.Show($"{Properties.Resources.LivelyExceptionGeneral}\nEXCEPTION:\n{e.Message}",
+                        Properties.Resources.TextError,
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Error);
                 }
             }
         }
@@ -204,7 +215,7 @@ namespace Lively.Services
         private void SetWindowRect(Process proc, NativeMethods.RECT rect)
         {
             if (proc == null)
-                return;
+                throw new ArgumentNullException(nameof(proc));
 
             while (proc.WaitForInputIdle(-1) != true || proc.MainWindowHandle == IntPtr.Zero)
             {

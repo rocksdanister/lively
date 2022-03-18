@@ -3,11 +3,14 @@ using Lively.Common.Services;
 using Lively.Core;
 using Lively.Core.Display;
 using Lively.Core.Suspend;
+using Lively.Helpers;
 using Lively.Helpers.Theme;
+using Lively.Models;
 using Lively.Services;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -21,6 +24,7 @@ namespace Lively
     //TODO: Switch to wpf-notifyicon library instead.
     public class Systray : ISystray
     {
+        private readonly Random rng = new Random();
         private readonly NotifyIcon _notifyIcon = new NotifyIcon();
         private ToolStripMenuItem pauseTrayBtn, customiseWallpaperBtn, updateTrayBtn;
         private bool disposedValue;
@@ -83,8 +87,13 @@ namespace Lively
             customiseWallpaperBtn.Click += CustomiseWallpaper;
             _notifyIcon.ContextMenuStrip.Items.Add(customiseWallpaperBtn);
 
+            //Random wallpaper
+            //_notifyIcon.ContextMenuStrip.Items.Add(new ContextMenuTheme.StripSeparatorCustom().stripSeparator);
+            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextChangeWallpaper, null).Click += (s, e) => SetRandomWallpapers();
+
             if (!Constants.ApplicationType.IsMSIX)
             {
+                _notifyIcon.ContextMenuStrip.Items.Add(new ContextMenuTheme.StripSeparatorCustom().stripSeparator);
                 updateTrayBtn = new ToolStripMenuItem(Properties.Resources.TextUpdateChecking, null)
                 {
                     Enabled = false
@@ -233,6 +242,90 @@ namespace Lively
                     break;
             }
         }
+
+        /// <summary>
+        /// Sets random library item as wallpaper.
+        /// </summary>
+        private void SetRandomWallpapers()
+        {
+            switch (userSettings.Settings.WallpaperArrangement)
+            {
+                case WallpaperArrangement.per:
+                    {
+                        var screenCount = displayManager.DisplayMonitors.Count;
+                        var wallpapersRandom = GetRandomWallpaper().Take(screenCount);
+                        var wallpapersCount = wallpapersRandom.Count();
+                        if (wallpapersCount > 0)
+                        {
+                            for (int i = 0; i < screenCount; i++)
+                            {
+                                desktopCore.SetWallpaper(wallpapersRandom.ElementAt(i > wallpapersCount - 1 ? 0 : i), displayManager.DisplayMonitors[i]);
+                            }
+                        }
+                    }
+                    break;
+                case WallpaperArrangement.span:
+                case WallpaperArrangement.duplicate:
+                    {
+                        try
+                        {
+                            desktopCore.SetWallpaper(GetRandomWallpaper().First(), displayManager.PrimaryDisplayMonitor);
+                        }
+                        catch (InvalidOperationException)
+                        {
+                            //No wallpapers present.
+                        }
+                    }
+                    break;
+            }
+        }
+
+        #region helpers
+
+        private IEnumerable<ILibraryModel> GetRandomWallpaper()
+        {
+            var dir = new List<string>();
+            string[] folderPaths = {
+                Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperInstallDir),
+                Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperInstallTempDir)
+            };
+            for (int i = 0; i < folderPaths.Count(); i++)
+            {
+                try
+                {
+                    dir.AddRange(Directory.GetDirectories(folderPaths[i], "*", SearchOption.TopDirectoryOnly));
+                }
+                catch { /* TODO */ }
+            }
+
+            //Fisher-Yates shuffle
+            int n = dir.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = rng.Next(n + 1);
+                var value = dir[k];
+                dir[k] = dir[n];
+                dir[n] = value;
+            }
+
+            for (int i = 0; i < dir.Count; i++)
+            {
+                ILibraryModel libItem = null;
+                try
+                {
+                    libItem = WallpaperUtil.ScanWallpaperFolder(dir[i]);
+                }
+                catch { }
+
+                if (libItem != null)
+                {
+                    yield return libItem;
+                }
+            }
+        }
+
+        #endregion //helpers
 
         #region dispose
 

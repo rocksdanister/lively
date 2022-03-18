@@ -1,4 +1,5 @@
 ﻿using Lively.Common;
+using Lively.Common.Helpers.Localization;
 using Lively.Common.Helpers.Storage;
 using Lively.Core.Display;
 using Lively.Helpers;
@@ -41,6 +42,13 @@ namespace Lively.Services
             if (!Settings.AppVersion.Equals(Assembly.GetExecutingAssembly().GetName().Version.ToString(), StringComparison.OrdinalIgnoreCase))
             {
                 Settings.AppVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            }
+
+            //Ensure if the locale is supported..
+            var lang = SupportedLanguages.GetLanguage(Settings.Language);
+            if (lang.Codes.FirstOrDefault(x => x == Settings.Language) == null)
+            {
+                Settings.Language = lang.Codes[0];
             }
 
             //Restrictions on msix..

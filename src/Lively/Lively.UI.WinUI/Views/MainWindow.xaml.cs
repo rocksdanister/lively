@@ -86,6 +86,7 @@ namespace Lively.UI.WinUI
             //Issue: https://github.com/microsoft/microsoft-ui-xaml/issues/6070
             //ExtendsContentIntoTitleBar = true;
             //SetTitleBar(TitleBar);
+            //this.Activated += MainWindow_Activated;
 
             //Issue: https://github.com/microsoft/microsoft-ui-xaml/issues/4056
             this.Title = "Lively Wallpaper";
@@ -95,6 +96,21 @@ namespace Lively.UI.WinUI
         }
 
 
+        /*
+        private void MainWindow_Activated(object sender, WindowActivatedEventArgs args)
+        {
+            if (args.WindowActivationState == WindowActivationState.Deactivated)
+            {
+                AppTitleTextBlock.Foreground =
+                    (SolidColorBrush)App.Current.Resources["WindowCaptionForegroundDisabled"];
+            }
+            else
+            {
+                AppTitleTextBlock.Foreground =
+                    (SolidColorBrush)App.Current.Resources["WindowCaptionForeground"];
+            }
+        }
+        */
 
         private void DesktopCore_WallpaperError(object sender, Exception e)
         {

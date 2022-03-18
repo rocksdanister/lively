@@ -11,26 +11,27 @@
     <Grid>
         <!--
         <Grid.RowDefinitions>
-            <RowDefinition Height="50" />
+            <RowDefinition Height="32" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="250" />
-        </Grid.ColumnDefinitions>
         -->
 
         <!--
         <Grid
             x:Name="TitleBar"
-            Grid.Row="0"
-            Background="Transparent">
-            <TextBlock
-                Margin="15"
-                HorizontalAlignment="Left"
-                FontSize="12"
-                Text="Lively Wallpaper" />
+            Background="{StaticResource SystemControlDisabledChromeDisabledHighBrush}"
+            Margin="0,0,125,0">
+            <Image Source="ms-appx:///Assets/icon-lively-48.png"
+                   HorizontalAlignment="Left" 
+                   Width="16" Height="16" 
+                   Margin="8,0"/>
+            <TextBlock x:Name="AppTitleTextBlock" Text="Lively Wallpaper"
+                       TextWrapping="NoWrap"
+                       Style="{StaticResource CaptionTextBlockStyle}" 
+                       VerticalAlignment="Center"
+                       Margin="28,0,0,0"/>
             <AutoSuggestBox
+                Visibility="Collapsed"
                 Width="350"
                 MaxWidth="400"
                 MaxHeight="32"
