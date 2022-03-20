@@ -109,12 +109,12 @@ Its super easy.. barely an inconvenience, just drag & drop the files or webpages
 
 **_I'm not officially affiliated with Unity technologies, godot, shadertoy;_**
 ## Download
-##### Latest version: v2.0.0.1 (Windows 10 1903 or above)[What's new?](https://github.com/rocksdanister/lively/releases/tag/v2.0.0.1)
+##### Version: v1.7.4.2 (Windows 10 1903 or above)[What's new?](https://github.com/rocksdanister/lively/releases/tag/v1.7.4.2)
 - [`Installer`][direct-full-win32] 
 
-SHA256: f9ede471f6665a83777ef2f37929fd62d5305105314c9d8c7f25994c9529f210
-     
-[direct-full-win32]: https://github.com/rocksdanister/lively/releases/download/v2.0.0.1/lively_setup_x86_full_v2001.exe
+SHA256: 0683fe78bede802eece570da143e8c26c75753374f57c964907c672b66d12b6e
+
+[direct-full-win32]: https://github.com/rocksdanister/lively/releases/download/v1.7.4.2/lively_setup_x86_full_v1742.exe
 
 Installer will give Smartscreen warning, [discussion.](https://github.com/rocksdanister/lively/issues/9)
 
