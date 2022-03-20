@@ -90,6 +90,7 @@
                         <StackPanel Orientation="Horizontal">
                             <TextBox
                                 MinWidth="350"
+                                MaxWidth="350"
                                 HorizontalAlignment="Left"
                                 Text="{Binding WebUrlText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                             <Button Margin="5,0,0,0" Command="{Binding BrowseWebCommand}">

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Security.Principal;
 using System.Threading.Tasks;
 using System.Windows;
+using UAC = UACHelper.UACHelper;
 
 namespace Lively.Services
 {
@@ -20,7 +21,6 @@ namespace Lively.Services
         private readonly IDisplayManager displayManager;
         private readonly string uiClientFileName;
         private readonly bool uiOutputRedirect;
-        private readonly bool _isElevated;
         private bool _isFirstRun = true;
         private NativeMethods.RECT prevWindowRect = new() { Left = 50, Top = 50, Right = 925, Bottom = 925 };
 
@@ -37,10 +37,9 @@ namespace Lively.Services
             //winui source not using Debug.Writeline() for debugging.. wtf?
             uiOutputRedirect = Constants.ApplicationType.Client != ClientType.winui;
 
-            if (IsElevated)
+            if (UAC.IsElevated)
             {
-                _isElevated = true;
-                Logger.Warn("Process is running as admin, disabling winui.");
+                Logger.Warn("Process is running elevated, winui may not work...");
             }
         }
 
@@ -61,18 +60,6 @@ namespace Lively.Services
             {
                 try
                 {
-                    //Ref: https://github.com/rocksdanister/lively/issues/1060
-                    if (_isElevated && Constants.ApplicationType.Client == ClientType.winui)
-                    {
-                        _ = MessageBox.Show("Lively UI cannot run as administrator because WindowsAppSDK does not currently support this.\n\nMake sure UAC driver is enabled by:\n" +
-                            "Search and open Local Security Policy from startmenu > Security Settings > Local Policies > Security Options > " +
-                            "Double-click User Account Control: Run all administrators in Admin Approval Mode and make sure its enabled.\nIf disabled then enable it and restart system.",
-                            "Running as Administrator!",
-                            MessageBoxButton.OK,
-                            MessageBoxImage.Error);
-                        return;
-                    }
-
                     processUI = new Process
                     {
                         StartInfo = new ProcessStartInfo
@@ -93,19 +80,6 @@ namespace Lively.Services
                     {
                         processUI.BeginOutputReadLine();
                     }
-
-                    if (!_isFirstRun)
-                    {
-                        try
-                        {
-                            SetWindowRect(processUI, prevWindowRect);
-                        }
-                        catch (Exception ie)
-                        {
-                            Logger.Error($"Failed to restore windowrect: {ie.Message}");
-                        }
-                    }
-                    _isFirstRun = false;
                 }
                 catch (Exception e)
                 {
@@ -114,7 +88,33 @@ namespace Lively.Services
                         Properties.Resources.TextError,
                         MessageBoxButton.OK,
                         MessageBoxImage.Error);
+
+                    /*
+                    //Ref: https://github.com/rocksdanister/lively/issues/1060
+                    if (UAC.IsElevated && Constants.ApplicationType.Client == ClientType.winui)
+                    {
+                        _ = MessageBox.Show("Lively UI cannot run as administrator because WindowsAppSDK does not currently support this.\n\nMake sure UAC driver is enabled by:\n" +
+                            "Search and open Local Security Policy from startmenu > Security Settings > Local Policies > Security Options > " +
+                            "Double-click User Account Control: Run all administrators in Admin Approval Mode and make sure its enabled.\nIf disabled then enable it and restart system.",
+                            "Running as Administrator!",
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Error);
+                    }
+                    */
                 }
+
+                if (!_isFirstRun)
+                {
+                    try
+                    {
+                        SetWindowRect(processUI, prevWindowRect);
+                    }
+                    catch (Exception ie)
+                    {
+                        Logger.Error($"Failed to restore windowrect: {ie.Message}");
+                    }
+                }
+                _isFirstRun = false;
             }
         }
 
@@ -196,21 +196,6 @@ namespace Lively.Services
         }
 
         #region helpers
-
-        private static bool IsElevated
-        {
-            get
-            {
-                try
-                {
-                    return new WindowsPrincipal(WindowsIdentity.GetCurrent()).IsInRole(WindowsBuiltInRole.Administrator);
-                }
-                catch
-                {
-                    return false;
-                }
-            }
-        }
 
         private void SetWindowRect(Process proc, NativeMethods.RECT rect)
         {
