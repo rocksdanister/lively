@@ -52,7 +52,7 @@ namespace Lively.Services
             }
 
             //Restrictions on msix..
-            Settings.DesktopAutoWallpaper = Settings.DesktopAutoWallpaper && !Common.Constants.ApplicationType.IsMSIX;
+            //Settings.DesktopAutoWallpaper = Settings.DesktopAutoWallpaper && !Common.Constants.ApplicationType.IsMSIX;
 
             try
             {
