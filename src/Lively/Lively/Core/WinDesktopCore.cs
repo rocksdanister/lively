@@ -427,12 +427,15 @@ namespace Lively.Core
                                             break;
                                     }
                                     desktop.SetPosition(userSettings.Settings.WallpaperArrangement == WallpaperArrangement.span ? DesktopWallpaperPosition.Span : scaler);
-                                    desktop.SetWallpaper(userSettings.Settings.WallpaperArrangement == WallpaperArrangement.span ? null : wallpaper.Screen.DeviceId, imgPath);
+                                    desktop.SetWallpaper(userSettings.Settings.WallpaperArrangement == WallpaperArrangement.span ? null : wallpaper.Screen.DeviceId, DesktopBridgeUtil.GetVirtualizedPath(imgPath));
                                 }
                                 else
                                 {
                                     //No transition animation..
-                                    NativeMethods.SystemParametersInfo(NativeMethods.SPI_SETDESKWALLPAPER, 0, imgPath, NativeMethods.SPIF_UPDATEINIFILE | NativeMethods.SPIF_SENDWININICHANGE);
+                                    _ = NativeMethods.SystemParametersInfo(NativeMethods.SPI_SETDESKWALLPAPER,
+                                        0,
+                                        DesktopBridgeUtil.GetVirtualizedPath(imgPath),
+                                        NativeMethods.SPIF_UPDATEINIFILE | NativeMethods.SPIF_SENDWININICHANGE);
                                 }
                             }
                         }

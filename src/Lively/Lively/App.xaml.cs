@@ -115,7 +115,7 @@ namespace Lively
                 if (File.Exists(mediaProperty))
                 {
                     File.Copy(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "mpv", "api", "LivelyProperties.json"),
-                        Path.Combine(Constants.CommonPaths.TempVideoDir, "LivelyProperties.json"));
+                        Path.Combine(Constants.CommonPaths.TempVideoDir, "LivelyProperties.json"), true);
                 }
                 //clear temp files from previous run if any..
                 FileOperations.EmptyDirectory(Constants.CommonPaths.TempDir);
