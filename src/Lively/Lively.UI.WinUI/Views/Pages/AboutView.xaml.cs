@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -66,6 +67,14 @@ namespace Lively.UI.WinUI.Views.Pages
         private void Page_Unloaded(object sender, RoutedEventArgs e)
         {
             //appUpdater.UpdateChecked -= AboutView_UpdateChecked;
+        }
+
+        private async void markDownPatreon_Loaded(object sender, RoutedEventArgs e)
+        {
+            //TODO: best practice to create one HttpClient per Application and inject it
+            var client = new HttpClient();
+            using HttpResponseMessage response = await client.GetAsync("https://raw.githubusercontent.com/wiki/rocksdanister/lively/Patreon.md");
+            markDownPatreon.Text = await response.Content.ReadAsStringAsync();
         }
 
         private void GithubButton_Click(object sender, RoutedEventArgs e) => LinkHandler.OpenBrowser("https://github.com/rocksdanister");
