@@ -5,6 +5,7 @@
     xmlns:controls="using:SettingsUI.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:converters="using:CommunityToolkit.WinUI.UI.Converters"
+    xmlns:wctc="using:CommunityToolkit.WinUI.UI.Controls"
     xmlns:local="using:Lively.UI.WinUI.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Unloaded="Page_Unloaded"
@@ -88,34 +89,22 @@
                         Severity="Success" />
                 </controls:SettingsGroup>
 
-                <!--
                 <controls:SettingExpander Margin="0,5,0,0" IsExpanded="False">
                     <controls:SettingExpander.Header>
-                        <controls:Setting Header="About" Style="{StaticResource ExpanderHeaderSettingStyle}" />
+                        <controls:Setting Header="Patreon" Style="{StaticResource ExpanderHeaderSettingStyle}" />
                     </controls:SettingExpander.Header>
                     <controls:SettingExpander.Content>
-                        <StackPanel Orientation="Vertical">
-                            <controls:Setting x:Uid="License">
-                                <controls:Setting.Description>
-                                    <HyperlinkButton x:Uid="LicenseLink" NavigateUri="https://github.com/rocksdanister/lively/blob/core-separation/LICENSE" />
-                                </controls:Setting.Description>
-                            </controls:Setting>
-
-                            <controls:Setting x:Uid="Attribution">
-                                <controls:Setting.Description>
-                                    <HyperlinkButton x:Uid="AttributionLink" NavigateUri="https://github.com/rocksdanister/lively/blob/core-separation/ATTRIBUTION.md" />
-                                </controls:Setting.Description>
-                            </controls:Setting>
-
-                            <controls:Setting x:Uid="PrivacyPolicy">
-                                <controls:Setting.Description>
-                                    <HyperlinkButton x:Uid="PrivacyPolicyLink" NavigateUri="https://github.com/rocksdanister/lively/blob/core-separation/PRIVACY.md" />
-                                </controls:Setting.Description>
-                            </controls:Setting>
-                        </StackPanel>
+                        <!-- Issue: vertical scrollbar not visible -->
+                        <ScrollViewer
+                            MaxHeight="250"
+                            VerticalScrollBarVisibility="Auto" 
+                            HorizontalScrollBarVisibility="Hidden"
+                            Margin="{StaticResource ExpanderSettingMargin}">
+                            <wctc:MarkdownTextBlock Name="markDownPatreon" Loaded="markDownPatreon_Loaded" Background="Transparent"/>
+                        </ScrollViewer>
                     </controls:SettingExpander.Content>
                 </controls:SettingExpander>
-                -->
+
                 <StackPanel Margin="5">
                     <HyperlinkButton x:Uid="AttributionLink" NavigateUri="https://rocksdanister.github.io/lively/attribution/" />
                     <HyperlinkButton x:Uid="LicenseLink" NavigateUri="https://github.com/rocksdanister/lively/blob/core-separation/LICENSE" />
