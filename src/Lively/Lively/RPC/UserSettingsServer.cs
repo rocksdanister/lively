@@ -108,6 +108,11 @@ namespace Lively.RPC
                 ttbService.Start(userSettings.Settings.SystemTaskbarTheme);
             }
 
+            if ((Common.AppTheme)req.ApplicationTheme != userSettings.Settings.ApplicationTheme)
+            {
+                App.ChangeTheme((Common.AppTheme)req.ApplicationTheme);
+            }
+
             userSettings.Settings.SavedURL = req.SavedUrl;
             userSettings.Settings.ProcessMonitorAlgorithm = (ProcessMonitorAlgorithm)((int)req.ProcessMonitorAlogorithm);
             userSettings.Settings.SelectedDisplay = displayManager.DisplayMonitors.FirstOrDefault(x => req.SelectedDisplay.DeviceId == x.DeviceId) ?? displayManager.PrimaryDisplayMonitor;

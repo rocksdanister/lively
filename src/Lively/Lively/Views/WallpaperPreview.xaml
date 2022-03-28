@@ -6,6 +6,7 @@
     xmlns:local="clr-namespace:Lively.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:p="clr-namespace:Lively.Properties"
+    Style="{StaticResource WindowUI}"
     Title="{x:Static p:Resources.TextPreviewWallpaper}"
     Width="1281"
     Height="762"
@@ -24,15 +25,14 @@
             MinHeight="2160"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
-            Fill="#FF2B2B2B" />
+            Fill="{DynamicResource BackgroundMediumBrush}" />
 
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 FontSize="25"
-                Text="{x:Static p:Resources.TitlePleaseWait}"
-                Foreground="LightGray">
+                Text="{x:Static p:Resources.TitlePleaseWait}">
             </TextBlock>
             <ProgressBar
                 x:Name="ProgressIndicator"
