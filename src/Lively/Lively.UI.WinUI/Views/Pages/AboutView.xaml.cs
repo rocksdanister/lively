@@ -71,10 +71,17 @@ namespace Lively.UI.WinUI.Views.Pages
 
         private async void markDownPatreon_Loaded(object sender, RoutedEventArgs e)
         {
-            //TODO: best practice to create one HttpClient per Application and inject it
-            var client = new HttpClient();
-            using HttpResponseMessage response = await client.GetAsync("https://raw.githubusercontent.com/wiki/rocksdanister/lively/Patreon.md");
-            markDownPatreon.Text = await response.Content.ReadAsStringAsync();
+            try
+            {
+                //TODO: best practice to create one HttpClient per Application and inject it
+                var client = new HttpClient();
+                using HttpResponseMessage response = await client.GetAsync("https://raw.githubusercontent.com/wiki/rocksdanister/lively/Patreon.md");
+                markDownPatreon.Text = await response.Content.ReadAsStringAsync();
+            }
+            catch
+            {
+                markDownPatreon.Text = "---";
+            }
         }
 
         private void GithubButton_Click(object sender, RoutedEventArgs e) => LinkHandler.OpenBrowser("https://github.com/rocksdanister");

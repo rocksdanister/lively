@@ -29,6 +29,8 @@ using Lively.Common.Services;
 using Lively.Common.Helpers.Files;
 using Lively.Models;
 using Lively.Common.Helpers;
+using Lively.Helpers.Theme;
+using Microsoft.Win32;
 
 namespace Lively
 {
@@ -149,6 +151,22 @@ namespace Lively
                 Services.GetRequiredService<IRunnerService>().ShowUI();
             }
 
+            //need to load theme later stage of startu to update..
+            this.Startup += (s, e) => {
+                ChangeTheme(userSettings.Settings.ApplicationTheme);
+            };
+
+            //Ref: https://github.com/Kinnara/ModernWpf/blob/master/ModernWpf/Helpers/ColorsHelper.cs
+            SystemEvents.UserPreferenceChanged += (s, e) => {
+                if (e.Category == UserPreferenceCategory.General)
+                {
+                    if (userSettings.Settings.ApplicationTheme == Common.AppTheme.Auto)
+                    {
+                        ChangeTheme(Common.AppTheme.Auto);
+                    }
+                }
+            };
+
             this.SessionEnding += (s, e) => {
                 if (e.ReasonSessionEnding == ReasonSessionEnding.Shutdown || e.ReasonSessionEnding == ReasonSessionEnding.Logoff)
                 {
@@ -221,6 +239,35 @@ namespace Lively
             server.Start();
 
             return server;
+        }
+
+        private static Common.AppTheme _currentTheme = Common.AppTheme.Dark; //default
+        public static void ChangeTheme(Common.AppTheme theme)
+        {
+            if (_currentTheme == theme && theme != Common.AppTheme.Auto)
+                return;
+
+            _currentTheme = theme;
+            Logger.Info($"Theme changed: {theme}");
+            Uri uri = theme switch
+            {
+                Common.AppTheme.Auto => ThemeUtil.GetWindowsTheme() == Common.AppTheme.Dark ? 
+                    new Uri("Themes/Dark.xaml", UriKind.Relative) : new Uri("Themes/Light.xaml", UriKind.Relative),
+                Common.AppTheme.Light => new Uri("Themes/Light.xaml", UriKind.Relative),
+                Common.AppTheme.Dark => new Uri("Themes/Dark.xaml", UriKind.Relative),
+                _ => new Uri("Themes/Dark.xaml", UriKind.Relative)
+            };
+
+            try
+            {
+                ResourceDictionary resourceDict = Application.LoadComponent(uri) as ResourceDictionary;
+                Application.Current.Resources.MergedDictionaries.Clear();
+                Application.Current.Resources.MergedDictionaries.Add(resourceDict);
+            }
+            catch (Exception e)
+            {
+                Logger.Error(e);
+            }
         }
 
         //number of times to notify user about update.

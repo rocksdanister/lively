@@ -2,10 +2,13 @@
 using Lively.Common.Helpers.Pinvoke;
 using Lively.Core;
 using Lively.Core.Display;
+using Lively.Services;
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Interop;
+using System.Windows.Threading;
 
 namespace Lively.Views.WindowMsg
 {

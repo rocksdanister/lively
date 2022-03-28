@@ -6,10 +6,10 @@
     xmlns:dj="clr-namespace:DJ;assembly=NLogViewer"
     xmlns:local="clr-namespace:Lively.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Style="{DynamicResource WindowUI}"
     Title="Lively Debugger"
     Width="1200"
     Height="700"
-    Background="#FF2B2B2B"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Grid>

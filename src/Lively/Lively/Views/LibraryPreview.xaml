@@ -8,11 +8,9 @@
     xmlns:local="clr-namespace:Lively.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="{x:Static p:Resources.TitleLibrary}"
+    Style="{DynamicResource WindowUI}"
     Width="410"
     Height="630"
-    Background="#2b2b2b"
-    BorderBrush="#80FFFFFF"
-    BorderThickness="0.5"
     Closing="Window_Closing"
     Loaded="Window_Loaded"
     ResizeMode="NoResize"
@@ -21,6 +19,15 @@
 
     <Window.Resources>
         <helpers:TaskbarProgressConverter x:Key="TaskbarProgressConverter" />
+        <!--
+        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />
+        <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Transparent" />
+        -->
+        
+        <!--
+        <Color x:Key="detailMark">#FFA1A9B3</Color>
+        <SolidColorBrush x:Key="detailMarkBrush" Color="{StaticResource ResourceKey=detailMark}" />
+        -->
     </Window.Resources>
 
     <Window.TaskbarItemInfo>
@@ -30,7 +37,7 @@
             ProgressValue="{Binding CurrentProgress, Mode=OneWay, Converter={StaticResource TaskbarProgressConverter}}" />
     </Window.TaskbarItemInfo>
 
-    <Grid Margin="0,10,0,0" Background="#2b2b2b">
+    <Grid Margin="0,10,0,0">
         <!--  wallpaper window will be placed here!  -->
         <Border
             x:Name="PreviewBorder"
@@ -47,9 +54,7 @@
         <ScrollViewer VerticalAlignment="Bottom" VerticalScrollBarVisibility="Auto">
             <StackPanel>
                 <Label
-                    Margin="0,10,0,0"
-                    Content="{x:Static p:Resources.TextTitle}"
-                    Foreground="White" />
+                    Margin="0,10,0,0" Content="{x:Static p:Resources.TextTitle}" />
                 <TextBox
                     Name="textboxTitle"
                     Height="20"
@@ -58,19 +63,12 @@
                     Margin="10,5,25,10"
                     Padding="5,0,0,0"
                     VerticalContentAlignment="Center"
-                    Background="#373737"
                     BorderThickness="0,0,0,1"
-                    Foreground="White"
                     IsEnabled="{Binding IsUserEditable}"
                     Text="{Binding Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                    <TextBox.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="2.5" />
-                        </Style>
-                    </TextBox.Resources>
                 </TextBox>
 
-                <Label Content="{x:Static p:Resources.TextDescription}" Foreground="White" />
+                <Label Content="{x:Static p:Resources.TextDescription}" />
                 <TextBox
                     Name="textboxDesc"
                     Height="81"
@@ -78,21 +76,14 @@
                     Margin="10,5,25,10"
                     Padding="5,10,15,10"
                     AcceptsReturn="True"
-                    Background="#373737"
                     BorderThickness="0,0,0,1"
-                    Foreground="White"
                     IsEnabled="{Binding IsUserEditable}"
                     Text="{Binding Desc, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     TextWrapping="Wrap"
                     VerticalScrollBarVisibility="Auto">
-                    <TextBox.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="2.5" />
-                        </Style>
-                    </TextBox.Resources>
                 </TextBox>
 
-                <Label Content="{x:Static p:Resources.TextAuthor}" Foreground="White" />
+                <Label Content="{x:Static p:Resources.TextAuthor}" />
                 <TextBox
                     Name="textboxAuthor"
                     Height="20"
@@ -101,19 +92,12 @@
                     Margin="10,5,25,10"
                     Padding="5,0,0,0"
                     VerticalContentAlignment="Center"
-                    Background="#373737"
                     BorderThickness="0,0,0,1"
-                    Foreground="White"
                     IsEnabled="{Binding IsUserEditable}"
                     Text="{Binding Author, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                    <TextBox.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="2.5" />
-                        </Style>
-                    </TextBox.Resources>
                 </TextBox>
 
-                <Label Content="{x:Static p:Resources.TextWebsite}" Foreground="White" />
+                <Label Content="{x:Static p:Resources.TextWebsite}" />
                 <TextBox
                     Name="textboxContact"
                     Height="20"
@@ -122,19 +106,12 @@
                     Margin="10,5,25,0"
                     Padding="5,0,0,0"
                     VerticalContentAlignment="Center"
-                    Background="#373737"
                     BorderThickness="0,0,0,1"
-                    Foreground="White"
                     IsEnabled="{Binding IsUserEditable}"
                     Text="{Binding Url, Mode=TwoWay}">
-                    <TextBox.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="2.5" />
-                        </Style>
-                    </TextBox.Resources>
                 </TextBox>
 
-                <Grid Margin="0,10,0,0" Background="#202020">
+                <Grid Margin="0,10,0,0" Background="{DynamicResource BackgroundMediumBrush}">
                     <StackPanel
                         Margin="10"
                         HorizontalAlignment="Right"
@@ -144,31 +121,16 @@
                             MinWidth="100"
                             MinHeight="30"
                             Margin="0,0,10,0"
-                            Background="#2d2d2d"
                             Command="{Binding CancelCommand}"
-                            Content="{x:Static p:Resources.TextCancel}"
-                            Foreground="LightGray">
-                            <Button.Resources>
-                                <Style TargetType="Border">
-                                    <Setter Property="CornerRadius" Value="2.5" />
-                                </Style>
-                            </Button.Resources>
+                            Content="{x:Static p:Resources.TextCancel}">
                         </Button>
                         <Button
                             x:Name="OkBtn"
                             MinWidth="100"
-                            MinHeight="30"
-                            Background="#2d2d2d"
+                            IsDefault="True"
                             Command="{Binding CaptureCommand}"
                             Content="{x:Static p:Resources.TextOK}"
-                            Foreground="LightGray"
-                            IsDefault="True"
                             IsEnabled="{Binding IsUserEditable}">
-                            <Button.Resources>
-                                <Style TargetType="Border">
-                                    <Setter Property="CornerRadius" Value="2.5" />
-                                </Style>
-                            </Button.Resources>
                         </Button>
                     </StackPanel>
                     <ProgressBar
