@@ -241,18 +241,19 @@ namespace Lively
             return server;
         }
 
-        private static Common.AppTheme _currentTheme = Common.AppTheme.Dark; //default
+        /// <summary>
+        /// Actual apptheme, no Auto allowed.
+        /// </summary>
+        private static Common.AppTheme _currentTheme = Common.AppTheme.Dark;
         public static void ChangeTheme(Common.AppTheme theme)
         {
-            if (_currentTheme == theme && theme != Common.AppTheme.Auto)
+            theme = theme == Common.AppTheme.Auto ? ThemeUtil.GetWindowsTheme() : theme;
+            if (_currentTheme == theme)
                 return;
 
             _currentTheme = theme;
-            Logger.Info($"Theme changed: {theme}");
             Uri uri = theme switch
             {
-                Common.AppTheme.Auto => ThemeUtil.GetWindowsTheme() == Common.AppTheme.Dark ? 
-                    new Uri("Themes/Dark.xaml", UriKind.Relative) : new Uri("Themes/Light.xaml", UriKind.Relative),
                 Common.AppTheme.Light => new Uri("Themes/Light.xaml", UriKind.Relative),
                 Common.AppTheme.Dark => new Uri("Themes/Dark.xaml", UriKind.Relative),
                 _ => new Uri("Themes/Dark.xaml", UriKind.Relative)
@@ -268,6 +269,7 @@ namespace Lively
             {
                 Logger.Error(e);
             }
+            Logger.Info($"Theme changed: {theme}");
         }
 
         //number of times to notify user about update.
