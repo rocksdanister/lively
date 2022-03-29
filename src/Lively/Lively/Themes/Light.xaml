@@ -70,7 +70,7 @@
                 <Setter Property="Background" Value="#f6f6f6" />
             </Trigger>
             <Trigger Property="IsEnabled" Value="false">
-                <Setter Property="Foreground" Value="#bebebe" />
+                <Setter Property="Opacity" Value="0.56" />
             </Trigger>
         </Style.Triggers>
     </Style>

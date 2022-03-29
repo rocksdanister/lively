@@ -6,6 +6,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.UI.Xaml;
 using System;
+using System.Net.Http;
+using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources;
 
 namespace Lively.UI.WinUI.ViewModels
@@ -15,12 +17,14 @@ namespace Lively.UI.WinUI.ViewModels
         private bool updateAvailable;
         private readonly IAppUpdaterClient appUpdater;
         private readonly IDesktopCoreClient desktopCore;
+        private readonly IHttpClientFactory httpClientFactory;
         ResourceLoader languageResource;
 
-        public AboutViewModel(IAppUpdaterClient appUpdater, IDesktopCoreClient desktopCore)
+        public AboutViewModel(IAppUpdaterClient appUpdater, IDesktopCoreClient desktopCore, IHttpClientFactory httpClientFactory)
         {
             this.appUpdater = appUpdater;
             this.desktopCore = desktopCore;
+            this.httpClientFactory = httpClientFactory;
             languageResource = ResourceLoader.GetForViewIndependentUse();
 
             MenuUpdate(appUpdater.Status, appUpdater.LastCheckTime, appUpdater.LastCheckVersion);
@@ -131,6 +135,35 @@ namespace Lively.UI.WinUI.ViewModels
             UpdateDateText = status == AppUpdateStatus.notchecked ? $"{languageResource.GetString("TextLastChecked")}: ---" : $"{languageResource.GetString("TextLastChecked")}: {date}";
             UpdateCommandText = updateAvailable ? languageResource.GetString("TextDownload") : languageResource.GetString("TextUpdateCheck");
         }
+
+        public string _patreonMembers;
+        public string PatreonMembers
+        {
+            get => _patreonMembers;
+            set
+            {
+                _patreonMembers = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private async Task<string> GetPatreonMembers()
+        {
+            try
+            {
+                System.Diagnostics.Debug.WriteLine("PATREON LOADED");
+                var client = httpClientFactory.CreateClient();
+                using HttpResponseMessage response = await client.GetAsync("https://raw.githubusercontent.com/wiki/rocksdanister/lively/Patreon.md");
+                return await response.Content.ReadAsStringAsync();
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+        }
+
+        public async void OnPatreonLoaded(object sender, RoutedEventArgs e)
+            => PatreonMembers = await GetPatreonMembers();
 
         public void OnWindowClosing(object sender, RoutedEventArgs e)
             => appUpdater.UpdateChecked -= AppUpdater_UpdateChecked;
