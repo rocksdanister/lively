@@ -102,6 +102,8 @@ namespace Lively.UI.WinUI
                 .AddTransient<AddWallpaperViewModel>()
                 .AddTransient<ScreenLayoutViewModel>()
                 .AddTransient<IApplicationsRulesFactory, ApplicationsRulesFactory>()
+                //https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests
+                .AddHttpClient()
                 .BuildServiceProvider();
 
             return provider;

@@ -100,7 +100,7 @@
                             VerticalScrollBarVisibility="Auto" 
                             HorizontalScrollBarVisibility="Hidden"
                             Margin="{StaticResource ExpanderSettingMargin}">
-                            <wctc:MarkdownTextBlock Name="markDownPatreon" Loaded="markDownPatreon_Loaded" Background="Transparent"/>
+                            <wctc:MarkdownTextBlock Name="markDownPatreon" Text="{Binding PatreonMembers}" Background="Transparent"/>
                         </ScrollViewer>
                     </controls:SettingExpander.Content>
                 </controls:SettingExpander>
