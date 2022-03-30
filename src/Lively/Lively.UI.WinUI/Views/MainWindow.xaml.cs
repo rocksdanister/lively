@@ -75,6 +75,7 @@ namespace Lively.UI.WinUI
             //ExtendsContentIntoTitleBar = true;
             //SetTitleBar(TitleBar);
             //this.Activated += MainWindow_Activated;
+            this.UseImmersiveDarkModeEx(true);
 
             //Issue: https://github.com/microsoft/microsoft-ui-xaml/issues/4056
             this.Title = "Lively Wallpaper";
