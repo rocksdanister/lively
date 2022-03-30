@@ -151,7 +151,6 @@ namespace Lively.UI.WinUI.ViewModels
         {
             try
             {
-                System.Diagnostics.Debug.WriteLine("PATREON LOADED");
                 var client = httpClientFactory.CreateClient();
                 using HttpResponseMessage response = await client.GetAsync("https://raw.githubusercontent.com/wiki/rocksdanister/lively/Patreon.md");
                 return await response.Content.ReadAsStringAsync();
