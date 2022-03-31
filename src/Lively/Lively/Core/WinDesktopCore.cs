@@ -457,12 +457,12 @@ namespace Lively.Core
                         var w32e = (Win32Exception)e.Error;
                         if (w32e.NativeErrorCode == 2) //ERROR_FILE_NOT_FOUND
                         {
-                            WallpaperError?.Invoke(this, new WallpaperPluginNotFoundException(e.Msg));
+                            WallpaperError?.Invoke(this, new WallpaperPluginNotFoundException(e.Error?.Message));
                         }
                     }
                     else
                     {
-                        WallpaperError?.Invoke(this, new WallpaperPluginException(e.Msg));
+                        WallpaperError?.Invoke(this, new WallpaperPluginException(e.Error?.Message));
                     }
                     wallpaper.Terminate();
                     WallpaperChanged?.Invoke(this, EventArgs.Empty);
@@ -470,7 +470,7 @@ namespace Lively.Core
             }
             catch (Exception ex)
             {
-                Logger.Error("Failed processing wallpaper: " + ex.ToString());
+                Logger.Error(ex);
                 wallpaper?.Terminate();
                 WallpaperChanged?.Invoke(this, EventArgs.Empty);
             }

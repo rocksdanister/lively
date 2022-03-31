@@ -17,7 +17,7 @@
 
     <Grid>
         <ScrollViewer>
-            <StackPanel>
+            <StackPanel Margin="10">
                 <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                     <PersonPicture
                         HorizontalAlignment="Center"
@@ -96,7 +96,8 @@
                     <controls:SettingExpander.Content>
                         <!-- Issue: vertical scrollbar not visible -->
                         <ScrollViewer
-                            MaxHeight="250"
+                            Height="100"
+                            MaxHeight="100"
                             VerticalScrollBarVisibility="Auto" 
                             HorizontalScrollBarVisibility="Hidden"
                             Margin="{StaticResource ExpanderSettingMargin}">

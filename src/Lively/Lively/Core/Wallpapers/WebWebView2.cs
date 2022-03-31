@@ -164,7 +164,7 @@ namespace Lively.Core.Wallpapers
                 WindowInitialized?.Invoke(this, new WindowInitializedArgs()
                 {
                     Success = false,
-                    Error = new Exception("ERROR"),
+                    Error = new Exception(Properties.Resources.LivelyExceptionGeneral),
                     Msg = "Process exited before giving HWND."
                 });
             }
