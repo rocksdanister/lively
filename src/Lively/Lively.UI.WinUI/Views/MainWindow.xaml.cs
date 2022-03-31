@@ -75,7 +75,7 @@ namespace Lively.UI.WinUI
             //ExtendsContentIntoTitleBar = true;
             //SetTitleBar(TitleBar);
             //this.Activated += MainWindow_Activated;
-            this.UseImmersiveDarkModeEx(true);
+            this.UseImmersiveDarkModeEx(userSettings.Settings.ApplicationTheme == AppTheme.Dark);
 
             //Issue: https://github.com/microsoft/microsoft-ui-xaml/issues/4056
             this.Title = "Lively Wallpaper";
@@ -107,11 +107,11 @@ namespace Lively.UI.WinUI
                 infoBar.IsOpen = true;
                 infoBar.ActionButton = new HyperlinkButton
                 {
-                    Content = i18n.GetString("Help.Label"),
+                    Content = i18n.GetString("Help/Label"),
                     NavigateUri = new Uri("https://github.com/rocksdanister/lively/wiki/Common-Problems"),
                 };
                 infoBar.Title = i18n.GetString("TextError");
-                infoBar.Message = e.Message;
+                infoBar.Message = e.ToString();//e.Message;
                 infoBar.Severity = InfoBarSeverity.Error;
             });
         }

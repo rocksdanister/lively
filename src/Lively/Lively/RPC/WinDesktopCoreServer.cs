@@ -251,7 +251,7 @@ namespace Lively.RPC
                     {
                         desktopCore.WallpaperError -= WallpaperError;
 
-                        resp.ErrorMsg = e.Message;
+                        resp.ErrorMsg = e.Message ?? string.Empty;
                         resp.Error = e switch
                         {
                             WorkerWException _ => ErrorCategory.Workerw,
