@@ -337,22 +337,7 @@ namespace Lively.ViewModels
                 //user close or 'x' btn press..
                 if (libData.DataType == LibraryItemType.edit)
                 {
-                    //restore previous data..
-                    Title = livelyInfoCopy.Title;
-                    Desc = livelyInfoCopy.Desc;
-                    Author = livelyInfoCopy.Author;
-                    Url = livelyInfoCopy.Contact;
-
-                    //restoring original thumbnail img..
-                    libData.ThumbnailPath = thumbnailOriginalPath;
-                    libData.LivelyInfo.Thumbnail = libData.LivelyInfo.IsAbsolutePath ? thumbnailOriginalPath : Path.GetFileName(thumbnailOriginalPath);
-                    //restore tile img..
-                    libData.ImagePath = null;
-                    libData.ImagePath = File.Exists(libData.PreviewClipPath) ? libData.PreviewClipPath : libData.ThumbnailPath;
-
-                    //change from pos 0..
-                    libData.DataType = LibraryItemType.ready;
-                    //libraryVm.SortLibraryItem((LibraryModel)libData);
+                    //Not required to restore data from memory since "done" just reloads from disk anyway ignoring "Info"..
                     DetailsUpdated?.Invoke(this, new WallpaperUpdateArgs() { Category = UpdateWallpaperType.done, Info = libData.LivelyInfo, InfoPath = libData.LivelyInfoFolderPath });
                 }
                 else
