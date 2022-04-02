@@ -94,7 +94,6 @@
                         <controls:Setting Header="Patreon" Style="{StaticResource ExpanderHeaderSettingStyle}" />
                     </controls:SettingExpander.Header>
                     <controls:SettingExpander.Content>
-                        <!-- Issue: vertical scrollbar not visible -->
                         <ScrollViewer
                             Height="100"
                             MaxHeight="100"

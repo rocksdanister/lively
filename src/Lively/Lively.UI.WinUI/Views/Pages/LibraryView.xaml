@@ -103,8 +103,7 @@
                     <MenuFlyoutItem
                         x:Name="editWallpaper"
                         x:Uid="EditWallpaper"
-                        Click="contextMenu_Click"
-                        IsEnabled="False">
+                        Click="contextMenu_Click">
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="&#xE70F;" />
                         </MenuFlyoutItem.Icon>
