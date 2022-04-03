@@ -23,6 +23,7 @@ namespace Lively.UI.WinUI.ViewModels
     public class AddWallpaperViewModel : ObservableObject
     {
         public ILibraryModel NewWallpaper { get; private set; }
+        public List<string> NewWallpapers { get; private set; } = new List<string>();
         public event EventHandler OnRequestClose;
 
         private readonly IUserSettingsClient userSettings;
@@ -127,6 +128,12 @@ namespace Lively.UI.WinUI.ViewModels
             {
                 //TODO
             }
+        }
+
+        public void AddWallpaperFile(List<string> path)
+        {
+            NewWallpapers.AddRange(path);
+            OnRequestClose?.Invoke(this, EventArgs.Empty);
         }
     }
 }

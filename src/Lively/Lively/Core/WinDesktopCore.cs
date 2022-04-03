@@ -229,8 +229,8 @@ namespace Lively.Core
                     {
                         case LibraryItemType.edit:
                         case LibraryItemType.processing:
+                        case LibraryItemType.multiImport:
                         //case LibraryItemType.cmdImport:
-                        //case LibraryItemType.multiImport:
                             try
                             {
                                 runner.SetBusyUI(true);
@@ -295,7 +295,12 @@ namespace Lively.Core
                                 if (type == LibraryItemType.edit)
                                 {
                                     wallpaper.Terminate();
-                                    //await Task.Delay(1000);
+                                    return;
+                                }
+                                else if (type == LibraryItemType.multiImport)
+                                {
+                                    wallpaper.Terminate();
+                                    WallpaperChanged?.Invoke(this, EventArgs.Empty);
                                     return;
                                 }
                             }

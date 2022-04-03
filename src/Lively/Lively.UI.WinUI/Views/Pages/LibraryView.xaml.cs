@@ -17,6 +17,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading;
+using System.Threading.Tasks;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.ApplicationModel.Resources;
 using Windows.Foundation;
@@ -283,9 +285,9 @@ namespace Lively.UI.WinUI.Views.Pages
                         }.ShowAsyncQueue();
                     }
                 }
-                if (items.Count > 1)
+                else if (items.Count > 1)
                 {
-                    //TODO
+                    await App.Services.GetRequiredService<MainWindow>().AddWallpapers(items.Select(x => x.Path).ToList());
                 }
             }
         }

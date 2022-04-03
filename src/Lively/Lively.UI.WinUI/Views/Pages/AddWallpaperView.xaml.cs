@@ -70,9 +70,9 @@ namespace Lively.UI.WinUI.Views.Pages
 
                     await vm.AddWallpaperFile(item);
                 }
-                if (items.Count > 1)
+                else if (items.Count > 1)
                 {
-                    //TODO
+                    vm.AddWallpaperFile(items.Select(x => x.Path).ToList());
                 }
             }
         }
