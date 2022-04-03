@@ -2,6 +2,7 @@
 using Lively.Common.Helpers.Pinvoke;
 using Lively.Grpc.Client;
 using Lively.Models;
+using Lively.UI.WinUI.Helpers;
 using Lively.UI.WinUI.ViewModels;
 using Lively.UI.WinUI.Views.Pages;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,6 +17,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
+using System.Threading;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources;
 
@@ -43,6 +45,7 @@ namespace Lively.UI.WinUI
         private readonly IDesktopCoreClient desktopCore;
         private readonly IUserSettingsClient userSettings;
         private readonly LibraryViewModel libraryVm;
+        private readonly LibraryUtil libraryUtil;
         private readonly ICommandsClient commands;
         private readonly ResourceLoader i18n;
 
@@ -51,11 +54,13 @@ namespace Lively.UI.WinUI
             IUserSettingsClient userSettings,
             SettingsViewModel settingsVm,
             LibraryViewModel libraryVm,
+            LibraryUtil libraryUtil,
             IAppUpdaterClient appUpdater)
         {
             this.settingsVm = settingsVm;
             this.desktopCore = desktopCore;
             this.libraryVm = libraryVm;
+            this.libraryUtil = libraryUtil;
             this.userSettings = userSettings;
             this.commands = commands;
 
@@ -217,24 +222,41 @@ namespace Lively.UI.WinUI
             addVm.OnRequestClose += (_, _) => addDialog.Hide();
             await addDialog.ShowAsyncQueue();
 
-            if (addVm.NewWallpaper != null)
+            if (addVm.NewWallpapers.Count > 0)
             {
+                NavViewNavigate(NavPages.library);
+                await AddWallpapers(addVm.NewWallpapers);
+            }
+            else if (addVm.NewWallpaper != null)
+            {
+                NavViewNavigate(NavPages.library);
                 await desktopCore.SetWallpaper(addVm.NewWallpaper, userSettings.Settings.SelectedDisplay);
-                /*
-                var inputVm = new AddWallpaperDataViewModel(addVm.NewWallpaper);
-                var inputDialog = new ContentDialog()
+            }
+        }
+
+        public async Task AddWallpapers(List<string> files)
+        {
+            try
+            {
+                importBar.IsOpen = true;
+                importBar.Message = "0%";
+                importBar.Title = i18n.GetString("TextProcessingWallpaper");
+                importBar.ActionButton = new Button
                 {
-                    Title = i18n.GetString("AddWallpaper/Label"),
-                    Content = new AddWallpaperDataView(inputVm),
-                    PrimaryButtonText = i18n.GetString("TextOk"),
-                    SecondaryButtonText = i18n.GetString("Cancel/Content"),
-                    DefaultButton = ContentDialogButton.Primary,
-                    XamlRoot = this.Content.XamlRoot,
-                    SecondaryButtonCommand = inputVm.CancelCommand,
-                    PrimaryButtonCommand = inputVm.ProceedCommand,
-                };          
-                await inputDialog.ShowAsyncQueue();
-                */
+                    Content = i18n.GetString("Cancel/Content"),
+                };
+                var ct = new CancellationTokenSource();
+                importBar.ActionButton.Click += (_, _) => {
+                    importBar.ActionButton.Visibility = Visibility.Collapsed;
+                    importBar.Title = i18n.GetString("PleaseWait/Text");
+                    importBar.Message = "100%";
+                    ct.Cancel();
+                };
+                await libraryUtil.AddWallpapers(files, ct.Token, new Progress<int>(percent => { importBar.Message = $"{percent}%"; }));
+            }
+            finally
+            {
+                importBar.IsOpen = false;
             }
         }
 

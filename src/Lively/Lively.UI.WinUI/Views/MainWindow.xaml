@@ -147,5 +147,6 @@
         </NavigationView>
 
         <InfoBar Name="infoBar" />
+        <InfoBar Name="importBar" IsClosable="False"/>
     </Grid>
 </Window>

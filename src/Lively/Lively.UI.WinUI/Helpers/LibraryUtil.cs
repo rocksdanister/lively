@@ -276,6 +276,44 @@ namespace Lively.UI.WinUI.Helpers
 
         public ILibraryModel AddWallpaperLink(Uri uri) => AddWallpaperLink(uri.OriginalString);
 
+        public async Task AddWallpapers(List<string> files, CancellationToken cancellationToken, IProgress<int> progress)
+        {
+            //display all Lively zip files first since its the first items to get processed.
+            files = files.OrderByDescending(x => Path.GetExtension(x).Equals(".zip", StringComparison.OrdinalIgnoreCase)).ToList();
+            var tcs = new TaskCompletionSource<bool>();
+            desktopCore.WallpaperChanged += WallpaperChanged;
+            void WallpaperChanged(object sender, EventArgs e)
+            {
+                tcs.SetResult(true);
+            }
+
+            for (int i = 0; i < files.Count; i++)
+            {
+                try
+                {
+                    var wallpaper = await AddWallpaperFile(files[i]);
+                    //Skipping .zip files already processed..
+                    if (wallpaper.DataType == LibraryItemType.processing)
+                    {
+                        wallpaper.DataType = LibraryItemType.multiImport;
+                        await desktopCore.SetWallpaper(wallpaper, userSettings.Settings.SelectedDisplay);
+                        await tcs.Task;
+                        tcs = new TaskCompletionSource<bool>();
+                    }
+
+                    if (cancellationToken.IsCancellationRequested)
+                        break;
+                }
+                catch (Exception e)
+                {
+                    Logger.Error(e);
+                }
+                progress.Report(100 * (i + 1) / files.Count);
+            }
+
+            desktopCore.WallpaperChanged -= WallpaperChanged;
+        }
+
         public void SortWallpaper(ILibraryModel obj) => libraryVm.SortWallpaper((LibraryModel)obj);
 
         protected virtual void Dispose(bool disposing)
