@@ -104,7 +104,7 @@
                         </ScrollViewer>
                     </controls:SettingExpander.Content>
                 </controls:SettingExpander>
-
+                
                 <StackPanel Margin="5">
                     <HyperlinkButton x:Uid="AttributionLink" NavigateUri="https://rocksdanister.github.io/lively/attribution/" />
                     <HyperlinkButton x:Uid="LicenseLink" NavigateUri="https://github.com/rocksdanister/lively/blob/core-separation/LICENSE" />

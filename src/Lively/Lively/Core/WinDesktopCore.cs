@@ -179,12 +179,11 @@ namespace Lively.Core
                 return;
             }
             else if (!(wallpaper.LivelyInfo.IsAbsolutePath ?
-                wallpaper.LivelyInfo.Type == WallpaperType.url || wallpaper.LivelyInfo.Type == WallpaperType.videostream || File.Exists(wallpaper.FilePath) :
-                wallpaper.FilePath != null))
+                wallpaper.LivelyInfo.Type == WallpaperType.url || wallpaper.LivelyInfo.Type == WallpaperType.videostream || File.Exists(wallpaper.FilePath) : wallpaper.FilePath != null))
             {
                 //Only checking for wallpapers outside Lively folder.
-                Logger.Info($"Skipping wallpaper, file {wallpaper.FilePath} not found.");
-                WallpaperError?.Invoke(this, new WallpaperNotFoundException($"File {wallpaper.FilePath} not found"));
+                Logger.Info($"Skipping wallpaper, file {wallpaper.LivelyInfo.FileName} not found.");
+                WallpaperError?.Invoke(this, new WallpaperNotFoundException($"File {wallpaper.LivelyInfo.FileName} not found"));
                 WallpaperChanged?.Invoke(this, EventArgs.Empty);
                 return;
             }
@@ -410,7 +409,7 @@ namespace Lively.Core
                             //set desktop picture wallpaper..
                             if (userSettings.Settings.DesktopAutoWallpaper)
                             {
-                                if (displayManager.IsMultiScreen())
+                                if (true)//displayManager.IsMultiScreen())
                                 {
                                     //Has transition animation..
                                     var desktop = (IDesktopWallpaper)new DesktopWallpaperClass();

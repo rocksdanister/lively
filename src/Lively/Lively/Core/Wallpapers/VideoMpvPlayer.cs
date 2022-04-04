@@ -337,7 +337,7 @@ namespace Lively.Core.Wallpapers
                         WindowInitialized?.Invoke(this, new WindowInitializedArgs()
                         {
                             Success = false,
-                            Error = new Exception("Error"),
+                            Error = new Exception(Properties.Resources.LivelyExceptionGeneral),
                             Msg = "Process window handle is zero."
                         });
                     }

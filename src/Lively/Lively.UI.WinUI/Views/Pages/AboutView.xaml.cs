@@ -15,7 +15,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -31,7 +30,6 @@ namespace Lively.UI.WinUI.Views.Pages
     public sealed partial class AboutView : Page
     {
         private readonly IAppUpdaterClient appUpdater;
-
         public AboutView()
         {
             this.InitializeComponent();
