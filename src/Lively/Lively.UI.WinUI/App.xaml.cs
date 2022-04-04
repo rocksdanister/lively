@@ -62,7 +62,7 @@ namespace Lively.UI.WinUI
             _serviceProvider = ConfigureServices();
             var userSettings = Services.GetRequiredService<IUserSettingsClient>();
             SetAppTheme(userSettings.Settings.ApplicationTheme);
-            //SetAppLanguage("sr-Latn");
+            //SetAppLanguage(userSettings.Settings.Language);
             //Services.GetRequiredService<SettingsViewModel>().AppThemeChanged += (s, e) => SetAppTheme(e);
 
             SetupUnhandledExceptionLogging();

@@ -56,14 +56,14 @@
     <PackageReference Include="CommunityToolkit.WinUI.UI.Controls" Version="7.1.2" />
     <PackageReference Include="CommunityToolkit.WinUI.UI.Controls.Primitives" Version="7.1.2" />
     <PackageReference Include="CommunityToolkit.WinUI.UI.Media" Version="7.1.2" />
-    <PackageReference Include="H.Hooks" Version="1.4.19" />
+    <PackageReference Include="H.Hooks" Version="1.4.21" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
     <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.0.1" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22000.197" />
-    <PackageReference Include="NLog" Version="4.7.14" />
-    <PackageReference Include="SettingsUI" Version="1.5.0" />
+    <PackageReference Include="NLog" Version="4.7.15" />
+    <PackageReference Include="SettingsUI" Version="1.7.0" />
     <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
 
