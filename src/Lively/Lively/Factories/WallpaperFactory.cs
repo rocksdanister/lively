@@ -77,14 +77,11 @@ namespace Lively.Factories
                                 userSettings.Settings.VideoPlayerHwAccel,
                                 isPreview);
                         case LivelyMediaPlayer.vlc:
-                            throw new NotImplementedException();
-                            /*
                             return new VideoVlcPlayer(obj.FilePath, 
                                 obj, 
                                 display,
                                 userSettings.Settings.WallpaperScaling, 
                                 userSettings.Settings.VideoPlayerHwAccel);
-                            */
                     }
                     break;
                 case WallpaperType.gif:

@@ -123,7 +123,7 @@ Installer will give Smartscreen warning, [discussion.](https://github.com/rocksd
 [Which version do I download?](https://github.com/rocksdanister/lively/wiki/Differences-Between-Distributions)
 
 ## Support
-Want to help Lively? here are some options..
+Are you a Lively fan and want to help out? here are some options..
 
 #### Programmer
 Code contributions are welcome, [learn more..](https://github.com/rocksdanister/lively/wiki/Contributing-Guidelines)
