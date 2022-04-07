@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using Lively.Common;
 using Lively.Common.Helpers;
 using Lively.Common.Helpers.Files;
+using Lively.Common.Helpers.Localization;
 using Lively.Common.Helpers.MVVM;
 using Lively.Common.Helpers.Shell;
 using Lively.Common.Helpers.Storage;
