@@ -14,8 +14,6 @@
 - [About](#about)
 - [Features](#features)
 - [Download](#download)
-- [Problems](#problems)
-- [Contributing](#contributing)
 - [Support](#support)
 - [License](#license)
 
@@ -123,16 +121,27 @@ Installer will give Smartscreen warning, [discussion.](https://github.com/rocksd
 <a href='//www.microsoft.com/store/apps/9ntm2qc6qws7?cid=storebadge&ocid=badge'><img src='https://developer.microsoft.com/store/badges/images/English_get-it-from-MS.png' alt='English badge' width="142px" height="52px"/></a>
 
 [Which version do I download?](https://github.com/rocksdanister/lively/wiki/Differences-Between-Distributions)
-## Problems
-See github [issues.](https://github.com/rocksdanister/lively/issues)
 
-## Contributing
+## Support
+Want to help Lively? here are some options..
 
-#### Coding
-Pull requests are welcome, check [guidelines](https://github.com/rocksdanister/lively/wiki/Contributing-Guidelines) for further instructions.
+#### Programmer
+Code contributions are welcome, [learn more..](https://github.com/rocksdanister/lively/wiki/Contributing-Guidelines)
 
-#### Translation
-Help translate lively to other <a href="https://github.com/rocksdanister/lively-translations">languages.</a>
+#### Designer
+Help improve UI/UX of Lively, [learn more..](https://github.com/rocksdanister/lively/wiki/Contributing-Guidelines)
+
+#### Localization
+Help translate Lively to more languages, [learn more..](https://github.com/rocksdanister/lively-translations)
+
+#### Suggestions & Bug report
+Suggest new features or file bug reports to improve Lively, [learn more..](https://github.com/rocksdanister/lively/issues)
+
+#### Patreon
+Financially support Lively by become a patreon member and get your name listed in-app, [learn more..](https://patreon.com/rocksdanister)
+
+#### Spread the word
+Star this repository, leave a Microsoft store review or tell your friend.. any help is welcome :)
 
 ## License
 Lively is licensed under [GPL-v3.](https://github.com/rocksdanister/lively/blob/core-separation/LICENSE)
