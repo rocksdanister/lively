@@ -118,7 +118,7 @@ SHA256: 0683fe78bede802eece570da143e8c26c75753374f57c964907c672b66d12b6e
 
 Installer will give Smartscreen warning, [discussion.](https://github.com/rocksdanister/lively/issues/9)
 
-Version 2.0
+##### Version: v2.0.0.2
 
 <a href='//www.microsoft.com/store/apps/9ntm2qc6qws7?cid=storebadge&ocid=badge'><img src='https://developer.microsoft.com/store/badges/images/English_get-it-from-MS.png' alt='English badge' width="142px" height="52px"/></a>
 
@@ -134,9 +134,5 @@ Pull requests are welcome, check [guidelines](https://github.com/rocksdanister/l
 #### Translation
 Help translate lively to other <a href="https://github.com/rocksdanister/lively-translations">languages.</a>
 
-## Support
-You can always help development by buying me a cup of coffee(paypal):
-[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/P5P1U8NQ)
-
 ## License
-Lively v1.0 onwards is licensed under GPL-3.
+Lively is licensed under [GPL-v3.](https://github.com/rocksdanister/lively/blob/core-separation/LICENSE)
