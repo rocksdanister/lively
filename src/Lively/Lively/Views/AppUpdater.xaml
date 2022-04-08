@@ -9,9 +9,9 @@
     Title="Lively Wallpaper"
     Width="650"
     Height="700"
-    Style="{DynamicResource WindowUI}"
     Closing="Window_Closing"
     ResizeMode="CanMinimize"
+    Style="{DynamicResource WindowUI}"
     WindowStartupLocation="CenterScreen"
     WindowStyle="SingleBorderWindow"
     mc:Ignorable="d">
@@ -41,8 +41,7 @@
                 Margin="0,10,0,0"
                 HorizontalAlignment="Center"
                 Click="Download_Button_Click"
-                Content="{x:Static p:Resources.TextDownload}">
-            </Button>
+                Content="{x:Static p:Resources.TextDownload}" />
         </StackPanel>
     </Grid>
 </Window>

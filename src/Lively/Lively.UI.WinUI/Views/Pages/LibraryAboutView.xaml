@@ -39,9 +39,12 @@
                     HorizontalContentAlignment="Left"
                     IsTabStop="False"
                     NavigateUri="{Binding SrcWebsite}"
-                    ToolTipService.ToolTip="{Binding SrcWebsite.OriginalString}" >
+                    ToolTipService.ToolTip="{Binding SrcWebsite.OriginalString}">
                     <HyperlinkButton.Content>
-                        <TextBlock MaxLines="1" Style="{ThemeResource BodyTextBlockStyle}" Text="{Binding LivelyInfo.Contact}" />
+                        <TextBlock
+                            MaxLines="1"
+                            Style="{ThemeResource BodyTextBlockStyle}"
+                            Text="{Binding LivelyInfo.Contact}" />
                     </HyperlinkButton.Content>
                 </HyperlinkButton>
             </StackPanel>

@@ -22,12 +22,12 @@
             Background="{StaticResource SystemControlDisabledChromeDisabledHighBrush}"
             Margin="0,0,125,0">
             <Image Source="ms-appx:///Assets/icon-lively-48.png"
-                   HorizontalAlignment="Left" 
-                   Width="16" Height="16" 
+                   HorizontalAlignment="Left"
+                   Width="16" Height="16"
                    Margin="8,0"/>
             <TextBlock x:Name="AppTitleTextBlock" Text="Lively Wallpaper"
                        TextWrapping="NoWrap"
-                       Style="{StaticResource CaptionTextBlockStyle}" 
+                       Style="{StaticResource CaptionTextBlockStyle}"
                        VerticalAlignment="Center"
                        Margin="28,0,0,0"/>
             <AutoSuggestBox
@@ -147,6 +147,6 @@
         </NavigationView>
 
         <InfoBar Name="infoBar" />
-        <InfoBar Name="importBar" IsClosable="False"/>
+        <InfoBar Name="importBar" IsClosable="False" />
     </Grid>
 </Window>

@@ -192,7 +192,7 @@
                 RelativePanel.Below="AddSymbol" />
         </RelativePanel>
 
-        <!-- Issue: https://github.com/microsoft/microsoft-ui-xaml/issues/6702 -->
+        <!--  Issue: https://github.com/microsoft/microsoft-ui-xaml/issues/6702  -->
         <RelativePanel
             x:Name="BusyPanel"
             Background="{ThemeResource SystemAltMediumColor}"
