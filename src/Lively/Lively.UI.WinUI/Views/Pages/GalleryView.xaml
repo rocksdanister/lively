@@ -22,11 +22,11 @@
         <toolkit:AdaptiveGridView
             Grid.Row="1"
             Margin="10"
-            DesiredWidth="272"
-            ItemHeight="153"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Center"
+            DesiredWidth="272"
             IsEnabled="False"
+            ItemHeight="153"
             ItemsSource="{Binding LibraryItems}">
             <toolkit:AdaptiveGridView.ItemTemplate>
                 <DataTemplate>

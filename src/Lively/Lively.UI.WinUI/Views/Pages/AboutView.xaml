@@ -3,11 +3,11 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="using:SettingsUI.Controls"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:converters="using:CommunityToolkit.WinUI.UI.Converters"
-    xmlns:wctc="using:CommunityToolkit.WinUI.UI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Lively.UI.WinUI.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:wctc="using:CommunityToolkit.WinUI.UI.Controls"
     Unloaded="Page_Unloaded"
     mc:Ignorable="d">
 
@@ -74,19 +74,19 @@
                             <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
                                 <Button
                                     HorizontalAlignment="Right"
-                                    Visibility="{Binding IsNotWinStore, Mode=OneWay, Converter={StaticResource VisibilityConverter}}"
                                     Command="{Binding UpdateAppCommand}"
-                                    Content="{Binding UpdateCommandText}" />
+                                    Content="{Binding UpdateCommandText}"
+                                    Visibility="{Binding IsNotWinStore, Mode=OneWay, Converter={StaticResource VisibilityConverter}}" />
                             </StackPanel>
                         </controls:Setting.ActionContent>
                     </controls:Setting>
                     <InfoBar
                         Name="infoBar"
                         Title="{Binding UpdateStatusText}"
-                        Visibility="{Binding IsNotWinStore, Mode=OneWay, Converter={StaticResource VisibilityConverter}}"
                         IsClosable="False"
                         IsOpen="True"
-                        Severity="Success" />
+                        Severity="Success"
+                        Visibility="{Binding IsNotWinStore, Mode=OneWay, Converter={StaticResource VisibilityConverter}}" />
                 </controls:SettingsGroup>
 
                 <controls:SettingExpander Margin="0,5,0,0" IsExpanded="False">
@@ -97,14 +97,17 @@
                         <ScrollViewer
                             Height="100"
                             MaxHeight="100"
-                            VerticalScrollBarVisibility="Auto" 
+                            Margin="{StaticResource ExpanderSettingMargin}"
                             HorizontalScrollBarVisibility="Hidden"
-                            Margin="{StaticResource ExpanderSettingMargin}">
-                            <wctc:MarkdownTextBlock Name="markDownPatreon" Text="{Binding PatreonMembers}" Background="Transparent"/>
+                            VerticalScrollBarVisibility="Auto">
+                            <wctc:MarkdownTextBlock
+                                Name="markDownPatreon"
+                                Background="Transparent"
+                                Text="{Binding PatreonMembers}" />
                         </ScrollViewer>
                     </controls:SettingExpander.Content>
                 </controls:SettingExpander>
-                
+
                 <StackPanel Margin="5">
                     <HyperlinkButton x:Uid="AttributionLink" NavigateUri="https://rocksdanister.github.io/lively/attribution/" />
                     <HyperlinkButton x:Uid="LicenseLink" NavigateUri="https://github.com/rocksdanister/lively/blob/core-separation/LICENSE" />

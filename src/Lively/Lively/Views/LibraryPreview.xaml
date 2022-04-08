@@ -4,16 +4,16 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:helpers="clr-namespace:Lively.Helpers"
-    xmlns:p="clr-namespace:Lively.Properties"
     xmlns:local="clr-namespace:Lively.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:p="clr-namespace:Lively.Properties"
     Title="{x:Static p:Resources.TitleLibrary}"
-    Style="{DynamicResource WindowUI}"
     Width="410"
     Height="630"
     Closing="Window_Closing"
     Loaded="Window_Loaded"
     ResizeMode="NoResize"
+    Style="{DynamicResource WindowUI}"
     WindowStyle="None"
     mc:Ignorable="d">
 
@@ -44,8 +44,7 @@
 
         <ScrollViewer VerticalAlignment="Bottom" VerticalScrollBarVisibility="Auto">
             <StackPanel>
-                <Label
-                    Margin="0,10,0,0" Content="{x:Static p:Resources.TextTitle}" />
+                <Label Margin="0,10,0,0" Content="{x:Static p:Resources.TextTitle}" />
                 <TextBox
                     Name="textboxTitle"
                     Height="20"
@@ -56,8 +55,7 @@
                     VerticalContentAlignment="Center"
                     BorderThickness="0,0,0,1"
                     IsEnabled="{Binding IsUserEditable}"
-                    Text="{Binding Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                </TextBox>
+                    Text="{Binding Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
                 <Label Content="{x:Static p:Resources.TextDescription}" />
                 <TextBox
@@ -71,8 +69,7 @@
                     IsEnabled="{Binding IsUserEditable}"
                     Text="{Binding Desc, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     TextWrapping="Wrap"
-                    VerticalScrollBarVisibility="Auto">
-                </TextBox>
+                    VerticalScrollBarVisibility="Auto" />
 
                 <Label Content="{x:Static p:Resources.TextAuthor}" />
                 <TextBox
@@ -85,8 +82,7 @@
                     VerticalContentAlignment="Center"
                     BorderThickness="0,0,0,1"
                     IsEnabled="{Binding IsUserEditable}"
-                    Text="{Binding Author, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                </TextBox>
+                    Text="{Binding Author, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
                 <Label Content="{x:Static p:Resources.TextWebsite}" />
                 <TextBox
@@ -99,8 +95,7 @@
                     VerticalContentAlignment="Center"
                     BorderThickness="0,0,0,1"
                     IsEnabled="{Binding IsUserEditable}"
-                    Text="{Binding Url, Mode=TwoWay}">
-                </TextBox>
+                    Text="{Binding Url, Mode=TwoWay}" />
 
                 <Grid Margin="0,10,0,0" Background="{DynamicResource BackgroundMediumBrush}">
                     <StackPanel
@@ -113,16 +108,14 @@
                             MinHeight="30"
                             Margin="0,0,10,0"
                             Command="{Binding CancelCommand}"
-                            Content="{x:Static p:Resources.TextCancel}">
-                        </Button>
+                            Content="{x:Static p:Resources.TextCancel}" />
                         <Button
                             x:Name="OkBtn"
                             MinWidth="100"
-                            IsDefault="True"
                             Command="{Binding CaptureCommand}"
                             Content="{x:Static p:Resources.TextOK}"
-                            IsEnabled="{Binding IsUserEditable}">
-                        </Button>
+                            IsDefault="True"
+                            IsEnabled="{Binding IsUserEditable}" />
                     </StackPanel>
                     <ProgressBar
                         Name="gifProgressBar"
