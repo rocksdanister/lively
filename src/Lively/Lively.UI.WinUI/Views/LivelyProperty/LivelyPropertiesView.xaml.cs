@@ -41,7 +41,7 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
         private readonly object _colorPickerTipLock = new();
 
         //UI
-        private readonly Thickness margin = new Thickness(0, 10, 20, 10);
+        private readonly Thickness margin = new Thickness(0, 0, 20, 10);
         private readonly double minWidth = 200;
         //Color picker
         private LowLevelMouseHook mouseHook;
@@ -341,7 +341,7 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                         HorizontalAlignment = HorizontalAlignment.Left,
                         //MaxWidth = minWidth,
                         MinWidth = minWidth,
-                        Margin = new Thickness(0, 5, 0, 0),
+                        Margin = new Thickness(0, 5, 0, 10),
                     };
                     folderDropDownOpenFileBtn.Click += FolderDropDownOpenFileBtn_Click;
                     AddUIElement(folderDropDownOpenFileBtn);
