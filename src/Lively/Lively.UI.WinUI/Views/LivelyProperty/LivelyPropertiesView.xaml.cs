@@ -89,6 +89,7 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
             }
             catch (Exception e)
             {
+                restoreDefaultBtn.Visibility = Visibility.Collapsed;
                 Logger.Error(e);
             }
         }
@@ -115,6 +116,7 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                     HorizontalAlignment = HorizontalAlignment.Left,
                     Margin = new Thickness(0, 50, 0, 0)
                 });
+                restoreDefaultBtn.IsEnabled = false;
                 return;
             }
             else if (livelyPropertyCopyData.Count == 0)
@@ -127,6 +129,7 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                     HorizontalAlignment = HorizontalAlignment.Left,
                     Margin = margin
                 });
+                restoreDefaultBtn.IsEnabled = false;
                 return;
             }
 
@@ -275,13 +278,19 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                 }
                 else if (uiElementType.Equals("folderDropdown", StringComparison.OrdinalIgnoreCase))
                 {
+                    var panel = new StackPanel()
+                    {
+                        Name = item.Key,
+                        Orientation = Orientation.Horizontal,
+                        Margin = margin,
+                    };
                     var cmbBox = new ComboBox
                     {
                         Name = item.Key,
-                        //MaxWidth = minWidth,
+                        MaxWidth = minWidth,
                         MinWidth = minWidth,
+                        MinHeight = 35,
                         HorizontalAlignment = HorizontalAlignment.Left,
-                        Margin = margin
                     };
                     //filter syntax: "*.jpg|*.png"
                     var files = GetFileNames(Path.Combine(Path.GetDirectoryName(libraryItem.FilePath), item.Value["folder"].ToString()),
@@ -294,7 +303,20 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                     }
                     cmbBox.SelectedIndex = Array.FindIndex(files, x => x.Contains(item.Value["value"].ToString())); //returns -1 if not found, none selected.
                     cmbBox.SelectionChanged += XamlFolderCmbBox_SelectionChanged;
-                    obj = cmbBox;
+
+                    var folderDropDownOpenFileBtn = new Button()
+                    {
+                        Tag = item.Key,
+                        Content = new FontIcon
+                        {
+                            Glyph = "\uE8E5",
+                        },
+                        Margin = new Thickness(5,0,0,0),
+                    };
+                    folderDropDownOpenFileBtn.Click += FolderDropDownOpenFileBtn_Click;
+                    panel.Children.Add(cmbBox);
+                    panel.Children.Add(folderDropDownOpenFileBtn);
+                    obj = panel;
                 }
                 else if (uiElementType.Equals("label", StringComparison.OrdinalIgnoreCase))
                 {
@@ -331,51 +353,7 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                 }
 
                 AddUIElement(obj);
-                //File browser for folderdropdown.
-                if (uiElementType.Equals("folderDropdown", StringComparison.OrdinalIgnoreCase))
-                {
-                    var folderDropDownOpenFileBtn = new Button()
-                    {
-                        Tag = item.Key,
-                        Content = "Browse",
-                        HorizontalAlignment = HorizontalAlignment.Left,
-                        //MaxWidth = minWidth,
-                        MinWidth = minWidth,
-                        Margin = new Thickness(0, 5, 0, 10),
-                    };
-                    folderDropDownOpenFileBtn.Click += FolderDropDownOpenFileBtn_Click;
-                    AddUIElement(folderDropDownOpenFileBtn);
-                }
             }
-
-            //restore-default btn.
-            var defaultPanel = new StackPanel()
-            {
-                Orientation = Orientation.Horizontal,
-            };
-            var defaultIcon = new FontIcon
-            {
-                Glyph = "\uE777",
-                FontSize = 13,
-                Margin = new Thickness(0, 0, 5, 0),
-            };
-            var defaultText = new TextBlock
-            {
-                Text = "Restore default",
-            };
-            defaultPanel.Children.Add(defaultIcon);
-            defaultPanel.Children.Add(defaultText);
-            var defaultBtn = new Button
-            {
-                Name = "defaultBtn",
-                Content = defaultPanel,
-                //MaxWidth = minWidth,
-                MinWidth = minWidth,
-                HorizontalAlignment = HorizontalAlignment.Left,
-                Margin = margin
-            };
-            defaultBtn.Click += DefaultBtn_Click;
-            AddUIElement(defaultBtn);
         }
 
         private void AddUIElement(dynamic obj) => uiPanel.Children.Add(obj);
@@ -436,7 +414,8 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                 {
                     if ((element as FrameworkElement).Name == btn.Tag.ToString())
                     {
-                        cmbBox = (ComboBox)element;
+                        var panel = (StackPanel)element;
+                        cmbBox = (ComboBox)panel.Children[0];
                         break;
                     }
                 }
@@ -452,7 +431,12 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                     {
                         var filePicker = new FileOpenPicker();
                         filePicker.SetOwnerWindow(App.Services.GetRequiredService<MainWindow>());
-                        filePicker.FileTypeFilter.Add("*"); //openFileDlg.Filter = $"{lp.Value["text"]}|{lp.Value["filter"].ToString().Replace("|", ";")}";
+                        var filterString = lp.Value["filter"].ToString();
+                        var filter = filterString == "*" ? new string[] {"*"} : filterString.Replace("*", string.Empty).Split("|");
+                        foreach (var item in filter)
+                        {
+                            filePicker.FileTypeFilter.Add(item);
+                        }
                         var selectedFiles = await filePicker.PickMultipleFilesAsync();
                         if (selectedFiles != null)
                         {
