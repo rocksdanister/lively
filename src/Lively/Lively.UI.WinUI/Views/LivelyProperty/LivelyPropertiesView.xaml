@@ -9,8 +9,16 @@
     mc:Ignorable="d">
 
     <Grid>
-        <ScrollViewer>
+        <ScrollViewer Margin="0,0,0,45">
             <StackPanel Name="uiPanel" Orientation="Vertical" />
         </ScrollViewer>
+        <Button
+            Name="restoreDefaultBtn"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+            Click="DefaultBtn_Click"
+            ToolTipService.ToolTip="Restore default">
+            <FontIcon Glyph="&#xE777;" />
+        </Button>
     </Grid>
 </Page>
