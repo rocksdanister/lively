@@ -9,7 +9,7 @@
     mc:Ignorable="d">
 
     <Grid>
-        <ScrollViewer Margin="0,0,0,45">
+        <ScrollViewer Margin="0,0,0,35">
             <StackPanel Name="uiPanel" Orientation="Vertical" />
         </ScrollViewer>
         <Button
