@@ -263,7 +263,7 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                     var cmbBox = new ComboBox()
                     {
                         Name = item.Key,
-                        //MaxWidth = minWidth,
+                        MaxWidth = minWidth,
                         MinWidth = minWidth,
                         HorizontalAlignment = HorizontalAlignment.Left,
                         Margin = margin,
@@ -281,16 +281,16 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                     var panel = new StackPanel()
                     {
                         Name = item.Key,
-                        Orientation = Orientation.Horizontal,
                         Margin = margin,
+                        Orientation = Orientation.Horizontal,
+                        HorizontalAlignment= HorizontalAlignment.Left,
                     };
                     var cmbBox = new ComboBox
                     {
-                        Name = item.Key,
+                        Tag = item.Key,
                         MaxWidth = minWidth,
                         MinWidth = minWidth,
                         MinHeight = 35,
-                        HorizontalAlignment = HorizontalAlignment.Left,
                     };
                     //filter syntax: "*.jpg|*.png"
                     var files = GetFileNames(Path.Combine(Path.GetDirectoryName(libraryItem.FilePath), item.Value["folder"].ToString()),
@@ -382,10 +382,11 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
         {
             try
             {
-                var item = (ComboBox)sender;
-                var filePath = Path.Combine(livelyPropertyCopyData[item.Name]["folder"].ToString(), item.SelectedItem.ToString()); //filename is unique.
-                WallpaperSendMsg(new LivelyFolderDropdown() { Name = item.Name, Value = filePath });
-                livelyPropertyCopyData[item.Name]["value"] = item.SelectedItem.ToString();
+                var menuItem = (ComboBox)sender;
+                var propertyName = menuItem.Tag.ToString();
+                var filePath = Path.Combine(livelyPropertyCopyData[propertyName]["folder"].ToString(), menuItem.SelectedItem.ToString()); //filename is unique.
+                WallpaperSendMsg(new LivelyFolderDropdown() { Name = propertyName, Value = filePath });
+                livelyPropertyCopyData[propertyName]["value"] = menuItem.SelectedItem.ToString();
                 UpdatePropertyFile();
             }
             catch { }
@@ -462,6 +463,11 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                             foreach (var file in destFiles)
                             {
                                 cmbBox.Items.Add(file);
+                            }
+
+                            if (selectedFiles.Count == 1)
+                            {
+                                cmbBox.SelectedIndex = cmbBox.Items.Count - 1;
                             }
                         }
                         break;
