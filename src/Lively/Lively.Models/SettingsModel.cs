@@ -72,7 +72,7 @@ namespace Lively.Models
         public bool GifCapture { get; set; }
         public bool MultiFileAutoImport { get; set; }
         public DisplayMonitor SelectedDisplay { get; set; }
-        public LivelyGUIState LivelyGUIRendering { get; set; }
+        public LivelyGUIState UIMode { get; set; }
         public string WallpaperDir { get; set; }
         public bool WallpaperDirMoveExistingWallpaperNewDir { get; set; }
         public bool SysTrayIcon { get; set; }
@@ -156,7 +156,7 @@ namespace Lively.Models
             TileSize = 1;
             DisplayIdentification = DisplayIdentificationMode.deviceId;
             //SelectedDisplay = ScreenHelper.GetPrimaryScreen();
-            LivelyGUIRendering = LivelyGUIState.normal;
+            UIMode = LivelyGUIState.normal;
             WallpaperDir = Path.Combine(Constants.CommonPaths.AppDataDir, "Library");
             WallpaperDirMoveExistingWallpaperNewDir = true;
             SysTrayIcon = true;
