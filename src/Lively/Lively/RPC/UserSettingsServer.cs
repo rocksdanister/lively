@@ -142,7 +142,7 @@ namespace Lively.RPC
             userSettings.Settings.InputForward = (Common.InputForwardMode)req.InputForward;
             userSettings.Settings.MouseInputMovAlways = req.MouseInputMovAlways;
             userSettings.Settings.TileSize = req.TileSize;
-            userSettings.Settings.LivelyGUIRendering = (LivelyGUIState)((int)req.LivelyGuiRendering);
+            userSettings.Settings.UIMode = (LivelyGUIState)((int)req.LivelyGuiRendering);
             userSettings.Settings.WallpaperDir = req.WallpaperDir;
             userSettings.Settings.WallpaperDirMoveExistingWallpaperNewDir = req.WallpaperDirMoveExistingWallpaperNewDir;
             //userSettings.Settings.SysTrayIcon = req.SysTrayIcon;
@@ -241,7 +241,7 @@ namespace Lively.RPC
                 InputForward = (Grpc.Common.Proto.Settings.InputForwardMode)((int)settings.InputForward),
                 MouseInputMovAlways = settings.MouseInputMovAlways,
                 TileSize = settings.TileSize,
-                LivelyGuiRendering = (GuiMode)settings.LivelyGUIRendering,
+                LivelyGuiRendering = (GuiMode)settings.UIMode,
                 WallpaperDir = settings.WallpaperDir,
                 WallpaperDirMoveExistingWallpaperNewDir = settings.WallpaperDirMoveExistingWallpaperNewDir,
                 SysTrayIcon = settings.SysTrayIcon,

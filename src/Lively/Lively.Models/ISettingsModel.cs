@@ -28,7 +28,7 @@ namespace Lively.Models
         bool IsFirstRun { get; set; }
         bool IsRestart { get; set; }
         string Language { get; set; }
-        LivelyGUIState LivelyGUIRendering { get; set; }
+        LivelyGUIState UIMode { get; set; }
         bool LivelyZipGenerate { get; set; }
         bool LiveTile { get; set; }
         bool LockScreenAutoWallpaper { get; set; }

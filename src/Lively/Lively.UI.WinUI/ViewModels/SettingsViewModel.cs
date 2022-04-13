@@ -75,7 +75,7 @@ namespace Lively.UI.WinUI.ViewModels
             VideoPlayerHWDecode = userSettings.Settings.VideoPlayerHwAccel;
             SelectedGifPlayerIndex = (int)userSettings.Settings.GifPlayer;
             SelectedWallpaperStreamQualityIndex = (int)userSettings.Settings.StreamQuality;
-            SelectedLivelyUIModeIndex = (int)userSettings.Settings.LivelyGUIRendering;
+            SelectedLivelyUIModeIndex = (int)userSettings.Settings.UIMode;
             SelectedWallpaperInputMode = (int)userSettings.Settings.InputForward;
             MouseMoveOnDesktop = userSettings.Settings.MouseInputMovAlways;
             IsSysTrayIconVisible = userSettings.Settings.SysTrayIcon;
@@ -209,9 +209,9 @@ namespace Lively.UI.WinUI.ViewModels
                 _selectedLivelyUIModeIndex = value;
                 OnPropertyChanged();
 
-                if (userSettings.Settings.LivelyGUIRendering != (LivelyGUIState)value)
+                if (userSettings.Settings.UIMode != (LivelyGUIState)value)
                 {
-                    userSettings.Settings.LivelyGUIRendering = (LivelyGUIState)value;
+                    userSettings.Settings.UIMode = (LivelyGUIState)value;
                     UpdateSettingsConfigFile();
 
                     UIStateChanged?.Invoke(this, (LivelyGUIState)value);

@@ -257,7 +257,7 @@ namespace Lively.UI.WinUI.ViewModels
             {
                 LivelyInfoModel info = JsonStorage<LivelyInfoModel>.LoadData(Path.Combine(folderPath, "LivelyInfo.json"));
                 return info != null ? 
-                    new LibraryModel(info, folderPath, LibraryItemType.ready, userSettings.Settings.LivelyGUIRendering != LivelyGUIState.lite) : 
+                    new LibraryModel(info, folderPath, LibraryItemType.ready, userSettings.Settings.UIMode != LivelyGUIState.lite) : 
                     throw new Exception("Corrupted wallpaper metadata");
             }
             throw new Exception("Wallpaper not found.");
