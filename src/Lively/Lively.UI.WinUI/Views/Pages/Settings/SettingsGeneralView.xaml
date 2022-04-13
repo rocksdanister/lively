@@ -30,9 +30,9 @@
                             <ToggleSwitch IsOn="{Binding IsKeepUIAwake, Mode=TwoWay}" />
                         </controls:Setting.ActionContent>
                     </controls:Setting>
-                    <!--
+                    <!--  TODO: localization  -->
                     <controls:Setting
-                        Description="For low-end systems select Lite mode"
+                        Description="User interface effects and animations"
                         Header="User interface"
                         Icon="&#xE8AB;">
                         <controls:Setting.ActionContent>
@@ -43,7 +43,7 @@
                             </ComboBox>
                         </controls:Setting.ActionContent>
                     </controls:Setting>
-                    -->
+
                     <controls:Setting
                         x:Uid="Language"
                         Icon="&#xF2B7;"

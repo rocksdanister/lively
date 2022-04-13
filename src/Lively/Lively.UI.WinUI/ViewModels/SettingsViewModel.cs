@@ -196,7 +196,7 @@ namespace Lively.UI.WinUI.ViewModels
             }
         }
 
-        public event EventHandler<LivelyGUIState> LivelyGUIStateChanged;
+        public event EventHandler<LivelyGUIState> UIStateChanged;
         private int _selectedLivelyUIModeIndex;
         public int SelectedLivelyUIModeIndex
         {
@@ -209,13 +209,12 @@ namespace Lively.UI.WinUI.ViewModels
                 _selectedLivelyUIModeIndex = value;
                 OnPropertyChanged();
 
-                //prevent running on startup etc.
                 if (userSettings.Settings.LivelyGUIRendering != (LivelyGUIState)value)
                 {
                     userSettings.Settings.LivelyGUIRendering = (LivelyGUIState)value;
                     UpdateSettingsConfigFile();
 
-                    LivelyGUIStateChanged?.Invoke(null, (LivelyGUIState)value);
+                    UIStateChanged?.Invoke(this, (LivelyGUIState)value);
                 }
             }
         }

@@ -30,7 +30,10 @@ namespace Lively.UI.WinUI.ViewModels
         private readonly SettingsViewModel settingsVm;
         private readonly IDisplayManagerClient displayManager;
 
-        public LibraryViewModel(IDesktopCoreClient desktopCore, IDisplayManagerClient displayManager, IUserSettingsClient userSettings, SettingsViewModel settingsVm)
+        public LibraryViewModel(IDesktopCoreClient desktopCore,
+            IDisplayManagerClient displayManager,
+            IUserSettingsClient userSettings,
+            SettingsViewModel settingsVm)
         {
             this.desktopCore = desktopCore;
             this.displayManager = displayManager;
@@ -45,11 +48,19 @@ namespace Lively.UI.WinUI.ViewModels
 
             foreach (var item in ScanWallpaperFolders(wallpaperScanFolders))
             {
-                LibraryItems.Insert(BinarySearch(LibraryItems, item.Title), item);      
+                LibraryItems.Insert(BinarySearch(LibraryItems, item.Title), item);
             }
 
             //Select already running item when UI program is started again..
             UpdateSelectedWallpaper();
+
+            settingsVm.UIStateChanged += (s, e) =>
+            {
+                foreach (var item in LibraryItems)
+                {
+                    item.ImagePath = e == LivelyGUIState.lite ? item.ThumbnailPath : item.PreviewClipPath ?? item.ThumbnailPath;
+                }
+            };
 
             desktopCore.WallpaperChanged += DesktopCore_WallpaperChanged;
             desktopCore.WallpaperUpdated += DesktopCore_WallpaperUpdated;
@@ -179,15 +190,20 @@ namespace Lively.UI.WinUI.ViewModels
 
         public ILibraryModel AddWallpaper(string folderPath, bool processing = false)
         {
-            var libItem = ScanWallpaperFolder(folderPath);
-            if (libItem != null)
+            try
             {
+                var libItem = ScanWallpaperFolder(folderPath);
                 var index = processing ? 0 : BinarySearch(LibraryItems, libItem.Title);
                 libItem.DataType = processing ? LibraryItemType.processing : LibraryItemType.ready;
                 libItem.WallpaperCategory = LocalizationUtil.GetLocalizedWallpaperCategory(libItem.LivelyInfo.Type);
                 LibraryItems.Insert(index, libItem);
+                return libItem;
             }
-            return libItem;
+            catch (Exception e)
+            {
+                Logger.Error(e);
+            }
+            return null;
         }
 
         /// <summary>
@@ -206,7 +222,7 @@ namespace Lively.UI.WinUI.ViewModels
                 }
                 catch (Exception e)
                 {
-                    Logger.Error("Skipping wp folder-scan:" + e.ToString());
+                    Logger.Error(e);
                 }
             }
 
@@ -215,7 +231,17 @@ namespace Lively.UI.WinUI.ViewModels
                 for (int j = 0; j < dir[i].Length; j++)
                 {
                     var currDir = dir[i][j];
-                    var libItem = ScanWallpaperFolder(currDir);
+                    LibraryModel libItem = null;
+                    try
+                    {
+                        libItem = ScanWallpaperFolder(currDir);
+                        Logger.Info($"Loaded wallpaper: {libItem.FilePath}");
+                    }
+                    catch(Exception e)
+                    {
+                        Logger.Error(e);
+                    }
+
                     if (libItem != null)
                     {
                         libItem.WallpaperCategory = LocalizationUtil.GetLocalizedWallpaperCategory(libItem.LivelyInfo.Type);
@@ -229,43 +255,12 @@ namespace Lively.UI.WinUI.ViewModels
         {
             if (File.Exists(Path.Combine(folderPath, "LivelyInfo.json")))
             {
-                LivelyInfoModel info = null;
-                try
-                {
-                    info = JsonStorage<LivelyInfoModel>.LoadData(Path.Combine(folderPath, "LivelyInfo.json"));
-                }
-                catch (Exception e)
-                {
-                    Logger.Error(e.ToString());
-                }
-
-                if (info != null)
-                {
-                    if (info.Type == WallpaperType.videostream || info.Type == WallpaperType.url)
-                    {
-                        //online content, no file.
-                        Logger.Info("Loading Wallpaper (no-file):- " + info.FileName + " " + info.Type);
-                        return new LibraryModel(info, folderPath, LibraryItemType.ready, true);
-                    }
-                    else
-                    {
-                        if (info.IsAbsolutePath)
-                        {
-                            Logger.Info("Loading Wallpaper(absolute):- " + info.FileName + " " + info.Type);
-                        }
-                        else
-                        {
-                            Logger.Info("Loading Wallpaper(relative):- " + Path.Combine(folderPath, info.FileName) + " " + info.Type);
-                        }
-                        return new LibraryModel(info, folderPath, LibraryItemType.ready, true);
-                    }
-                }
+                LivelyInfoModel info = JsonStorage<LivelyInfoModel>.LoadData(Path.Combine(folderPath, "LivelyInfo.json"));
+                return info != null ? 
+                    new LibraryModel(info, folderPath, LibraryItemType.ready, userSettings.Settings.LivelyGUIRendering != LivelyGUIState.lite) : 
+                    throw new Exception("Corrupted wallpaper metadata");
             }
-            else
-            {
-                Logger.Info("Not a lively wallpaper folder, skipping:- " + folderPath);
-            }
-            return null;
+            throw new Exception("Wallpaper not found.");
         }
 
         private List<LibraryModel> SortWallpapers(List<LibraryModel> data)
