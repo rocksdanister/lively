@@ -331,14 +331,13 @@ namespace Lively
             Dispatcher.UnhandledException += (s, e) =>
                 LogUnhandledException(e.Exception, "Application.Current.DispatcherUnhandledException");
 
-            TaskScheduler.UnobservedTaskException += (s, e) =>
-                LogUnhandledException(e.Exception, "TaskScheduler.UnobservedTaskException");
+            //ref: https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.taskscheduler.unobservedtaskexception?redirectedfrom=MSDN&view=net-6.0
+            TaskScheduler.UnobservedTaskException += (s, e) => {
+                //LogUnhandledException(e.Exception, "TaskScheduler.UnobservedTaskException");
+            };
         }
 
-        private void LogUnhandledException(Exception exception, string source)
-        {
-            Logger.Error(exception);
-        }
+        private void LogUnhandledException(Exception exception, string source) => Logger.Error(exception);
 
         public static void ShutDown()
         {

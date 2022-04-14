@@ -120,7 +120,7 @@ namespace Lively.Grpc.Client
                 if (disposing)
                 {
                     cancellationTokeneDisplayChanged?.Cancel();
-                    displayChangedTask?.Wait(100);
+                    displayChangedTask?.Wait();
                 }
 
                 // TODO: free unmanaged resources (unmanaged objects) and override finalizer

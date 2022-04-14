@@ -281,11 +281,9 @@ namespace Lively.Grpc.Client
                 {
                     // TODO: dispose managed state (managed objects)
                     cancellationTokenWallpaperChanged?.Cancel();
-                    wallpaperChangedTask?.Wait(100);
                     cancellationTokenWallpaperError?.Cancel();
-                    wallpaperErrorTask?.Wait(100);
                     cancellationTokenWallpaperUpdated?.Cancel();
-                    wallpaperUpdatedTask?.Wait(100);
+                    Task.WaitAll(wallpaperChangedTask, wallpaperErrorTask, wallpaperUpdatedTask);
                 }
 
                 // TODO: free unmanaged resources (unmanaged objects) and override finalizer
