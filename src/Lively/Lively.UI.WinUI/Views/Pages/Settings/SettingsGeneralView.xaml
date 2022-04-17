@@ -30,15 +30,12 @@
                             <ToggleSwitch IsOn="{Binding IsKeepUIAwake, Mode=TwoWay}" />
                         </controls:Setting.ActionContent>
                     </controls:Setting>
-                    <!--  TODO: localization  -->
-                    <controls:Setting
-                        Description="User interface effects and animations"
-                        Header="User interface"
-                        Icon="&#xE8AB;">
+
+                    <controls:Setting x:Uid="UIMode" Icon="&#xE8AB;">
                         <controls:Setting.ActionContent>
                             <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedLivelyUIModeIndex, Mode=TwoWay}">
-                                <ComboBoxItem>Normal</ComboBoxItem>
-                                <ComboBoxItem>Lite</ComboBoxItem>
+                                <ComboBoxItem x:Uid="UIModeNormal" />
+                                <ComboBoxItem x:Uid="UIModeLite" />
                                 <ComboBoxItem Visibility="Collapsed">Headless</ComboBoxItem>
                             </ComboBox>
                         </controls:Setting.ActionContent>
