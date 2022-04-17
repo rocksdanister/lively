@@ -977,4 +977,16 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="TextSave.Content" xml:space="preserve">
     <value>Save</value>
   </data>
+  <data name="UIMode.Description" xml:space="preserve">
+    <value>User interface effects and animations</value>
+  </data>
+  <data name="UIMode.Header" xml:space="preserve">
+    <value>User interface</value>
+  </data>
+  <data name="UIModeLite.Content" xml:space="preserve">
+    <value>Lite</value>
+  </data>
+  <data name="UIModeNormal.Content" xml:space="preserve">
+    <value>Normal</value>
+  </data>
 </root>
