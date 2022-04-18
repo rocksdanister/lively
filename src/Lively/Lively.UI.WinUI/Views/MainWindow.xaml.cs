@@ -413,7 +413,7 @@ namespace Lively.UI.WinUI
                                 if (args[1].Equals("SHOW", StringComparison.OrdinalIgnoreCase))
                                 {
                                     contentFrame.Visibility = Visibility.Visible; //undo drop resource usage.
-                                    NativeMethods.ShowWindow(this.GetWindowHandleEx(), (uint)NativeMethods.SHOWWINDOW.SW_RESTORE);
+                                    NativeMethods.ShowWindow(this.GetWindowHandleEx(), (uint)NativeMethods.SHOWWINDOW.SW_SHOW);
                                 }
                             }
                             else if (args[0].Equals("LM", StringComparison.OrdinalIgnoreCase))
