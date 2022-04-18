@@ -121,8 +121,8 @@ namespace Lively.UI.WinUI.ViewModels
                 if (item.DataType == LibraryItemType.processing)
                 {
                     NewWallpaper = item;
-                    OnRequestClose?.Invoke(this, EventArgs.Empty);
                 }
+                OnRequestClose?.Invoke(this, EventArgs.Empty);
             }
             catch
             {
