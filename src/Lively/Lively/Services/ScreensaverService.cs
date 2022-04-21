@@ -194,11 +194,11 @@ namespace Lively.Services
                     -1, //topmost
                     userSettings.Settings.WallpaperArrangement != WallpaperArrangement.span ? item.Screen.Bounds.Left : 0,
                     userSettings.Settings.WallpaperArrangement != WallpaperArrangement.span ? item.Screen.Bounds.Top : 0,
-                    0,
-                    0,
-                    0x0001))
+                    item.Screen.Bounds.Width,
+                    item.Screen.Bounds.Height,
+                    userSettings.Settings.WallpaperArrangement != WallpaperArrangement.span ? 0x0040 : 0x0001)) //ignore WxH if span
                 {
-                    //LogUtil.LogWin32Error("Failed to show screensaver");
+                    Logger.Error(LogUtil.GetWin32Error("Screensaver show fail"));
                 }
             }
         }
@@ -218,7 +218,7 @@ namespace Lively.Services
                     //fill wp into the whole workerw area.
                     if (!NativeMethods.SetWindowPos(desktopCore.Wallpapers[0].Handle, 1, 0, 0, prct.Right - prct.Left, prct.Bottom - prct.Top, 0x0010))
                     {
-                        //LogUtil.LogWin32Error("Failed to hide screensaver(1)");
+                        Logger.Error(LogUtil.GetWin32Error("Screensaver hide fail"));
                     }
                 }
             }
