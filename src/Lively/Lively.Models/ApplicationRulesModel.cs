@@ -41,20 +41,5 @@ namespace Lively.Models
                 OnPropertyChanged();
             }
         }
-
-        private string _ruleText;
-        [JsonIgnore]
-        public string RuleText
-        {
-            get
-            {
-                return _ruleText;
-            }
-            set
-            {
-                _ruleText = value;
-                OnPropertyChanged();
-            }
-        }
     }
 }
