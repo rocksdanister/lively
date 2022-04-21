@@ -168,6 +168,7 @@ namespace Lively.RPC
             userSettings.Settings.ScreensaverLockOnResume = req.ScreensaverLockOnResume;
             userSettings.Settings.Language = req.Language;
             userSettings.Settings.KeepAwakeUI = req.KeepAwakeUi;
+            userSettings.Settings.DisplayPauseSettings = (DisplayPauseEnum)req.DisplayPauseSettings;
 
             try
             {
@@ -267,6 +268,7 @@ namespace Lively.RPC
                 ScreensaverLockOnResume = settings.ScreensaverLockOnResume,
                 Language = settings.Language,
                 KeepAwakeUi = settings.KeepAwakeUI,
+                DisplayPauseSettings = (DisplayPauseRule)settings.DisplayPauseSettings,
             };
             return Task.FromResult(resp);
         }

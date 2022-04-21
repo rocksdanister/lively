@@ -248,6 +248,7 @@ namespace Lively.Grpc.Client
                 ScreensaverLockOnResume = settings.ScreensaverLockOnResume,
                 Language = settings.Language,
                 KeepAwakeUi = settings.KeepAwakeUI,
+                DisplayPauseSettings = (DisplayPauseRule)settings.DisplayPauseSettings,
             };
         }
 
@@ -318,6 +319,7 @@ namespace Lively.Grpc.Client
                 ScreensaverLockOnResume = settings.ScreensaverLockOnResume,
                 Language = settings.Language,
                 KeepAwakeUI = settings.KeepAwakeUi,
+                DisplayPauseSettings = (DisplayPauseEnum)settings.DisplayPauseSettings,
             };
         }
 
