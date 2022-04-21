@@ -195,7 +195,6 @@ namespace Lively.UI.WinUI.ViewModels
                 var libItem = ScanWallpaperFolder(folderPath);
                 var index = processing ? 0 : BinarySearch(LibraryItems, libItem.Title);
                 libItem.DataType = processing ? LibraryItemType.processing : LibraryItemType.ready;
-                libItem.WallpaperCategory = LocalizationUtil.GetLocalizedWallpaperCategory(libItem.LivelyInfo.Type);
                 LibraryItems.Insert(index, libItem);
                 return libItem;
             }
@@ -244,7 +243,6 @@ namespace Lively.UI.WinUI.ViewModels
 
                     if (libItem != null)
                     {
-                        libItem.WallpaperCategory = LocalizationUtil.GetLocalizedWallpaperCategory(libItem.LivelyInfo.Type);
                         yield return libItem;
                     }
                 }

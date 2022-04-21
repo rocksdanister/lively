@@ -17,6 +17,5 @@ namespace Lively.Models
         Uri SrcWebsite { get; set; }
         string ThumbnailPath { get; set; }
         string Title { get; set; }
-        string WallpaperCategory { get; set; }
     }
 }

@@ -65,18 +65,5 @@ namespace Lively.UI.WinUI.Helpers
             }
             return filterCollection.Distinct().ToList();
         }
-
-        /*
-        public static string GetLocalizedAppRules(AppRulesEnum rule)
-        {
-            return rule switch
-            {
-                AppRulesEnum.pause => Properties.Resources.TextPerformancePause,
-                AppRulesEnum.ignore => Properties.Resources.TextPerformanceNone,
-                AppRulesEnum.kill => Properties.Resources.TextPerformanceKill,
-                _ => Properties.Resources.TextPerformanceNone,
-            };
-        }
-        */
     }
 }

@@ -23,7 +23,6 @@ namespace Lively.Models
         public LibraryModel(LivelyInfoModel data, string folderPath, LibraryItemType tileType = LibraryItemType.ready, bool preferPreviewGif = false)
         {
             DataType = tileType;
-            WallpaperCategory = "---";
             LivelyInfo = new LivelyInfoModel(data);
             Title = data.Title;
             Desc = data.Desc;
@@ -228,7 +227,7 @@ namespace Lively.Models
             }
             set
             {
-                _desc = string.IsNullOrWhiteSpace(value) ? WallpaperCategory : (value.Length > 5000 ? value.Substring(0, 5000) : value);
+                _desc = string.IsNullOrWhiteSpace(value) ? "---" : (value.Length > 5000 ? value.Substring(0, 5000) : value);
                 OnPropertyChanged();
             }
         }
@@ -285,23 +284,6 @@ namespace Lively.Models
             set
             {
                 _srcWebsite = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private string _wallpaperCategory;
-        /// <summary>
-        /// Localised wallpapertype text.
-        /// </summary>
-        public string WallpaperCategory
-        {
-            get
-            {
-                return _wallpaperCategory;
-            }
-            set
-            {
-                _wallpaperCategory = value;
                 OnPropertyChanged();
             }
         }
