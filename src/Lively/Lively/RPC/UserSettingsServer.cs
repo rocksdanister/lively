@@ -162,7 +162,7 @@ namespace Lively.RPC
             userSettings.Settings.LockScreenAutoWallpaper = req.LockScreenAutoWallpaper;
             userSettings.Settings.DesktopAutoWallpaper = req.DesktopAutoWallpaper;
             //userSettings.Settings.SystemTaskbarTheme = (Common.TaskbarTheme)req.SystemTaskbarTheme;
-            userSettings.Settings.ScreensaverIdleWait = (Common.ScreensaverIdleTime)((int)req.ScreensaverIdleWait);
+            userSettings.Settings.ScreensaverIdleDelay = (Common.ScreensaverIdleTime)((int)req.ScreensaverIdleWait);
             userSettings.Settings.ScreensaverOledWarning = req.ScreensaverOledWarning;
             userSettings.Settings.ScreensaverEmptyScreenShowBlack = req.ScreensaverEmptyScreenShowBlack;
             userSettings.Settings.ScreensaverLockOnResume = req.ScreensaverLockOnResume;
@@ -262,7 +262,7 @@ namespace Lively.RPC
                 LockScreenAutoWallpaper = settings.LockScreenAutoWallpaper,
                 DesktopAutoWallpaper = settings.DesktopAutoWallpaper,
                 SystemTaskbarTheme = (Grpc.Common.Proto.Settings.TaskbarTheme)((int)settings.SystemTaskbarTheme),
-                ScreensaverIdleWait = (Grpc.Common.Proto.Settings.ScreensaverIdleTime)((uint)settings.WallpaperWaitTime),
+                ScreensaverIdleWait = (Grpc.Common.Proto.Settings.ScreensaverIdleTime)((uint)settings.ScreensaverIdleDelay),
                 ScreensaverOledWarning = settings.ScreensaverOledWarning,
                 ScreensaverEmptyScreenShowBlack = settings.ScreensaverEmptyScreenShowBlack,
                 ScreensaverLockOnResume = settings.ScreensaverLockOnResume,
