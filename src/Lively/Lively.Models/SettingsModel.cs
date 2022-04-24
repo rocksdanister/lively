@@ -109,7 +109,7 @@ namespace Lively.Models
         /// </summary>
         public bool DesktopAutoWallpaper { get; set; }
         public TaskbarTheme SystemTaskbarTheme { get; set; }
-        public ScreensaverIdleTime ScreensaverIdleWait { get; set; }
+        public ScreensaverIdleTime ScreensaverIdleDelay { get; set; }
         public bool ScreensaverOledWarning { get; set; }
         public bool ScreensaverEmptyScreenShowBlack { get; set; }
         public bool ScreensaverLockOnResume { get; set; }
@@ -176,7 +176,7 @@ namespace Lively.Models
             LockScreenAutoWallpaper = false;
             DesktopAutoWallpaper = false;
             SystemTaskbarTheme = TaskbarTheme.none;
-            ScreensaverIdleWait = ScreensaverIdleTime.none;
+            ScreensaverIdleDelay = ScreensaverIdleTime.none;
             ScreensaverOledWarning = false;
             ScreensaverEmptyScreenShowBlack = true;
             ScreensaverLockOnResume = false;

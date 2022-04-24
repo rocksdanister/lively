@@ -93,7 +93,7 @@ namespace Lively.UI.WinUI.ViewModels
             //IsDebugMenuVisible = userSettings.Settings.DebugMenu;
             SelectedWebBrowserIndex = (int)userSettings.Settings.WebBrowser;
             SelectedAppThemeIndex = (int)userSettings.Settings.ApplicationTheme;
-            //SelectedScreensaverWaitIndex = (int)userSettings.Settings.ScreensaverIdleWait;
+            //SelectedScreensaverWaitIndex = (int)userSettings.Settings.ScreensaverIdleDelay;
             //IsScreensaverLockOnResume = userSettings.Settings.ScreensaverLockOnResume;
             IsKeepUIAwake = userSettings.Settings.KeepAwakeUI;
             IsStartup = userSettings.Settings.Startup;
@@ -834,78 +834,76 @@ namespace Lively.UI.WinUI.ViewModels
             }
         }
 
-        /*
-        private int _selectedScreensaverWaitIndex;
-        public int SelectedScreensaverWaitIndex
-        {
-            get
-            {
-                return _selectedScreensaverWaitIndex;
-            }
-            set
-            {
-                _selectedScreensaverWaitIndex = value;
-                uint idleTime = (ScreensaverIdleTime)_selectedScreensaverWaitIndex switch
-                {
-                    ScreensaverIdleTime.none => 0,
-                    ScreensaverIdleTime.min1 => 60000,
-                    ScreensaverIdleTime.min2 => 120000,
-                    ScreensaverIdleTime.min3 => 180000,
-                    ScreensaverIdleTime.min5 => 300000,
-                    ScreensaverIdleTime.min10 => 600000,
-                    ScreensaverIdleTime.min15 => 900000,
-                    ScreensaverIdleTime.min20 => 1200000,
-                    ScreensaverIdleTime.min25 => 1500000,
-                    ScreensaverIdleTime.min30 => 1800000,
-                    ScreensaverIdleTime.min45 => 2700000,
-                    ScreensaverIdleTime.min60 => 3600000,
-                    ScreensaverIdleTime.min120 => 7200000,
-                    _ => 300000,
-                };
-                if (idleTime != 0)
-                {
-                    screenSaver.StartIdleTimer(idleTime);
-                }
-                else
-                {
-                    screenSaver.StopIdleTimer();
-                }
-                //save the data..
-                if (userSettings.Settings.ScreensaverIdleWait != (ScreensaverIdleTime)_selectedScreensaverWaitIndex)
-                {
-                    if (!userSettings.Settings.ScreensaverOledWarning)
-                    {
-                        _ = Task.Run(() =>
-                               System.Windows.MessageBox.Show(Properties.Resources.DescOledScreensaverNotice,
-                                   Properties.Resources.TitleAppName, MessageBoxButton.OK, MessageBoxImage.Information));
-                        userSettings.Settings.ScreensaverOledWarning = true;
-                    }
-                    userSettings.Settings.ScreensaverIdleWait = (ScreensaverIdleTime)_selectedScreensaverWaitIndex;
-                    UpdateConfigFile();
-                }
-                OnPropertyChanged();
-            }
-        }
+        //private int _selectedScreensaverWaitIndex;
+        //public int SelectedScreensaverWaitIndex
+        //{
+        //    get
+        //    {
+        //        return _selectedScreensaverWaitIndex;
+        //    }
+        //    set
+        //    {
+        //        _selectedScreensaverWaitIndex = value;
+        //        uint idleTime = (ScreensaverIdleTime)_selectedScreensaverWaitIndex switch
+        //        {
+        //            ScreensaverIdleTime.none => 0,
+        //            ScreensaverIdleTime.min1 => 60000,
+        //            ScreensaverIdleTime.min2 => 120000,
+        //            ScreensaverIdleTime.min3 => 180000,
+        //            ScreensaverIdleTime.min5 => 300000,
+        //            ScreensaverIdleTime.min10 => 600000,
+        //            ScreensaverIdleTime.min15 => 900000,
+        //            ScreensaverIdleTime.min20 => 1200000,
+        //            ScreensaverIdleTime.min25 => 1500000,
+        //            ScreensaverIdleTime.min30 => 1800000,
+        //            ScreensaverIdleTime.min45 => 2700000,
+        //            ScreensaverIdleTime.min60 => 3600000,
+        //            ScreensaverIdleTime.min120 => 7200000,
+        //            _ => 0,
+        //        };
+        //        if (idleTime != 0)
+        //        {
+        //            //screenSaver.StartIdleTimer(idleTime);
+        //        }
+        //        else
+        //        {
+        //            //screenSaver.StopIdleTimer();
+        //        }
+        //        //save the data..
+        //        if (userSettings.Settings.ScreensaverIdleDelay != (ScreensaverIdleTime)_selectedScreensaverWaitIndex)
+        //        {
+        //            if (!userSettings.Settings.ScreensaverOledWarning)
+        //            {
+        //                //_ = Task.Run(() =>
+        //                //       System.Windows.MessageBox.Show(Properties.Resources.DescOledScreensaverNotice,
+        //                //           Properties.Resources.TitleAppName, MessageBoxButton.OK, MessageBoxImage.Information));
+        //                userSettings.Settings.ScreensaverOledWarning = true;
+        //            }
+        //            userSettings.Settings.ScreensaverIdleDelay = (ScreensaverIdleTime)_selectedScreensaverWaitIndex;
+        //            UpdateSettingsConfigFile();
+        //        }
+        //        OnPropertyChanged();
+        //    }
+        //}
 
-        private bool _isScreensaverLockOnResume;
-        public bool IsScreensaverLockOnResume
-        {
-            get
-            {
-                return _isScreensaverLockOnResume;
-            }
-            set
-            {
-                _isScreensaverLockOnResume = value;
-                if (userSettings.Settings.ScreensaverLockOnResume != _isScreensaverLockOnResume)
-                {
-                    userSettings.Settings.ScreensaverLockOnResume = _isScreensaverLockOnResume;
-                    UpdateConfigFile();
-                }
-                OnPropertyChanged();
-            }
-        }
-        */
+        //private bool _isScreensaverLockOnResume;
+        //public bool IsScreensaverLockOnResume
+        //{
+        //    get
+        //    {
+        //        return _isScreensaverLockOnResume;
+        //    }
+        //    set
+        //    {
+        //        _isScreensaverLockOnResume = value;
+        //        if (userSettings.Settings.ScreensaverLockOnResume != _isScreensaverLockOnResume)
+        //        {
+        //            userSettings.Settings.ScreensaverLockOnResume = _isScreensaverLockOnResume;
+        //            UpdateSettingsConfigFile();
+        //        }
+        //        OnPropertyChanged();
+        //    }
+        //}
 
         #endregion //system
 

@@ -43,7 +43,7 @@ namespace Lively.Models
         WallpaperScaler ScalerGif { get; set; }
         WallpaperScaler ScalerVideo { get; set; }
         bool ScreensaverEmptyScreenShowBlack { get; set; }
-        ScreensaverIdleTime ScreensaverIdleWait { get; set; }
+        ScreensaverIdleTime ScreensaverIdleDelay { get; set; }
         bool ScreensaverLockOnResume { get; set; }
         bool ScreensaverOledWarning { get; set; }
         DisplayMonitor SelectedDisplay { get; set; }
