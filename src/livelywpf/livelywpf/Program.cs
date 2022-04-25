@@ -57,7 +57,7 @@ namespace livelywpf
             try
             {
                 var server = new PipeServer(Constants.SingleInstance.PipeServerName);
-                server.MessageReceived += Server_MessageReceived1;
+                server.MessageReceived += (s, e) => App.Services.GetRequiredService<ICommandHandler>().ParseArgs(e);
             }
             catch (Exception e)
             {
@@ -82,11 +82,6 @@ namespace livelywpf
             {
                 mutex.ReleaseMutex();
             }
-        }
-
-        private static void Server_MessageReceived1(object sender, string[] msg)
-        {
-            App.Services.GetRequiredService<ICommandHandler>().ParseArgs(msg);
         }
 
 

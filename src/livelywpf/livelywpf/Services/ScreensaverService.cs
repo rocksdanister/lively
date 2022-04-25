@@ -187,9 +187,9 @@ namespace livelywpf.Services
                     -1, //topmost
                     userSettings.Settings.WallpaperArrangement != WallpaperArrangement.span ? item.Screen.Bounds.Left : 0,
                     userSettings.Settings.WallpaperArrangement != WallpaperArrangement.span ? item.Screen.Bounds.Top : 0,
-                    0,
-                    0,
-                    0x0001))
+                    item.Screen.Bounds.Width,
+                    item.Screen.Bounds.Height,
+                    userSettings.Settings.WallpaperArrangement != WallpaperArrangement.span ? 0x0040 : 0x0001)) //ignore WxH if span
                 {
                     LogUtil.LogWin32Error("Failed to show screensaver");
                 }

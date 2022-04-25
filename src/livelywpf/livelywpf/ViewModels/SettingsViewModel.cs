@@ -901,7 +901,7 @@ namespace livelywpf.ViewModels
                     ScreensaverIdleTime.min45 => 2700000,
                     ScreensaverIdleTime.min60 => 3600000,
                     ScreensaverIdleTime.min120 => 7200000,
-                    _ => 300000,
+                    _ => 0,
                 };
                 if (idleTime != 0)
                 {

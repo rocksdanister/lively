@@ -46,7 +46,7 @@ namespace livelywpf.Views
             this.settingsVm = settingsVm;
 
             InitializeComponent();
-            wallpaperStatusText.Text = desktopCore.Wallpapers.Count.ToString();
+            wallpaperStatusText.Text = $"{desktopCore.Wallpapers.Count} Active Wallpaper(s)";
             desktopCore.WallpaperChanged += SetupDesktop_WallpaperChanged;
             Logger.Debug("MainWindow ctor initialized..");
         }
@@ -222,7 +222,7 @@ namespace livelywpf.Views
                 {
                     this.Activate();
                 }
-                wallpaperStatusText.Text = desktopCore.Wallpapers.Count.ToString();
+                wallpaperStatusText.Text =  $"{desktopCore.Wallpapers.Count} Active Wallpaper(s)";
             }));
         }
 

@@ -88,7 +88,7 @@ namespace livelywpf.ViewModels
                 if (_supportCommand == null)
                 {
                     _supportCommand = new RelayCommand(
-                        param => LinkHandler.OpenBrowser("https://ko-fi.com/rocksdanister"));
+                        param => LinkHandler.OpenBrowser("https://rocksdanister.github.io/lively/coffee/"));
                 }
                 return _supportCommand;
             }

@@ -91,7 +91,7 @@ namespace livelywpf.ViewModels
                 if (_licenseDocCommand == null)
                 {
                     _licenseDocCommand = new RelayCommand(
-                        param => ShowRtfDocDialog(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Docs", "license.rtf")));
+                        param => LinkHandler.OpenBrowser("https://github.com/rocksdanister/lively/blob/core-separation/LICENSE"));
                 }
                 return _licenseDocCommand;
             }
@@ -105,7 +105,7 @@ namespace livelywpf.ViewModels
                 if (_attribDocCommand == null)
                 {
                     _attribDocCommand = new RelayCommand(
-                        param => ShowRtfDocDialog(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Docs", "attribution.rtf")));
+                        param => LinkHandler.OpenBrowser("https://rocksdanister.github.io/lively/attribution/"));
                 }
                 return _attribDocCommand;
             }
@@ -119,7 +119,7 @@ namespace livelywpf.ViewModels
                 if (_privacyDocCommand == null)
                 {
                     _privacyDocCommand = new RelayCommand(
-                        param => LinkHandler.OpenBrowser("https://github.com/rocksdanister/lively/blob/dev-v1.0-fluent-netcore/PRIVACY.md"));
+                        param => LinkHandler.OpenBrowser("https://github.com/rocksdanister/lively/blob/core-separation/PRIVACY.md"));
                 }
                 return _privacyDocCommand;
             }
