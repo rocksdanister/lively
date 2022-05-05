@@ -168,29 +168,33 @@
             -->
         </toolkit:AdaptiveGridView>
 
-        <RelativePanel
+        <Grid
             x:Name="AddFilePanel"
             Background="{ThemeResource DragAcrylicBrush}"
             Visibility="Collapsed">
-            <SymbolIcon
-                x:Name="AddSymbol"
-                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
-                RelativePanel.AlignHorizontalCenterWithPanel="True"
-                RelativePanel.AlignVerticalCenterWithPanel="True"
-                RenderTransformOrigin="0.5,0.5"
-                Symbol="Add">
-                <SymbolIcon.RenderTransform>
-                    <CompositeTransform ScaleX="1.5" ScaleY="1.5" />
-                </SymbolIcon.RenderTransform>
-            </SymbolIcon>
-            <TextBlock
-                x:Uid="AddWallpaperDrop"
-                Margin="0,12,0,0"
-                FontSize="24"
-                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
-                RelativePanel.AlignHorizontalCenterWithPanel="True"
-                RelativePanel.Below="AddSymbol" />
-        </RelativePanel>
+            <Rectangle
+                Margin="25"
+                Stroke="{ThemeResource SystemControlPageTextBaseMediumBrush}"
+                StrokeDashArray="3"
+                StrokeDashCap="Flat"
+                StrokeDashOffset="1.5"
+                StrokeThickness="2" />
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <SymbolIcon
+                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
+                    RenderTransformOrigin="0.5,0.5"
+                    Symbol="Add">
+                    <SymbolIcon.RenderTransform>
+                        <CompositeTransform ScaleX="1.5" ScaleY="1.5" />
+                    </SymbolIcon.RenderTransform>
+                </SymbolIcon>
+                <TextBlock
+                    x:Uid="AddWallpaperDrop"
+                    Margin="0,12,0,0"
+                    FontSize="24"
+                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" />
+            </StackPanel>
+        </Grid>
 
         <!--  Issue: https://github.com/microsoft/microsoft-ui-xaml/issues/6702  -->
         <RelativePanel
