@@ -7,7 +7,7 @@
     <StartupObject></StartupObject>
     <ApplicationIcon>appicon.ico</ApplicationIcon>
     <ApplicationManifest>app.manifest</ApplicationManifest>
-    <AssemblyVersion>1.9.5.8</AssemblyVersion>
+    <AssemblyVersion>1.9.5.9</AssemblyVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -42,7 +42,7 @@
     <PackageReference Include="CommandLineParser" Version="2.8.0" />
     <PackageReference Include="GrpcDotNetNamedPipes" Version="1.4.4" />
     <PackageReference Include="Hardcodet.NotifyIcon.Wpf" Version="1.1.0" />
-    <PackageReference Include="Magick.NET-Q16-AnyCPU" Version="11.1.0" />
+    <PackageReference Include="Magick.NET-Q16-AnyCPU" Version="11.1.2" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="NLog" Version="4.7.15" />
     <PackageReference Include="RawInput.Sharp" Version="0.0.4" />
