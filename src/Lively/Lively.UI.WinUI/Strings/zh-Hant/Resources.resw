@@ -148,13 +148,13 @@
     <value>外觀與行為</value>
   </data>
   <data name="TitleGallery" xml:space="preserve">
-    <value>相簿</value>
+    <value>市集</value>
   </data>
   <data name="ActiveWallpapers.Label" xml:space="preserve">
     <value>啟用中桌布</value>
   </data>
   <data name="AboutMe.Text" xml:space="preserve">
-    <value>嗨，我是 Dani John，也被稱為 Rocksdanister。我開發了 Lively 動態桌布，一個免費和開源 (FOSS) 桌布應用程式。感謝您花時間體驗我的作品。</value>
+    <value>嗨，我是 Dani John，也被稱為 Rocksdanister。我開發了 Lively 動態桌布，一個免費和開源 (FOSS) 的桌布應用程式。感謝您花時間體驗我的作品。</value>
   </data>
   <data name="LicenseLink.Content" xml:space="preserve">
     <value>軟體許可</value>
@@ -265,7 +265,7 @@ Lively 動態桌布的螢幕保護程式主要用於為您的電腦新增另一�
 更新將會很頻繁，並且可能包含漏洞！</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
-    <value>更新失敗；請嘗試從以下位址下載安裝程式： 
+    <value>更新失敗；請嘗試從以下位址下載安裝程式: 
 https://github.com/rocksdanister/lively/releases</value>
   </data>
   <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
@@ -274,11 +274,11 @@ https://github.com/rocksdanister/lively/releases</value>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
     <value>糟糕... 好像出了點問題 :(
 為了更好地理解此錯誤並解決問題，請與開發人員分享日誌檔。
-分享日誌檔的說明：
+分享日誌檔的說明:
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
-    <value>啟用 Windows 高對比 (Windows High Contrast) 模式時 Lively 將無法正常工作！
+    <value>啟用 Windows 高對比 (Windows High Contrast) 模式時 Lively 動態桌布將無法正常工作！
 請禁用高對比模式然後重試。</value>
   </data>
   <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
@@ -290,7 +290,7 @@ https://github.com/rocksdanister/lively/wiki</value>
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
-    <value>非 Lively 桌布檔案。</value>
+    <value>非 Lively 動態桌布檔案。</value>
   </data>
   <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
     <value>Lively 動態桌布之前沒有被正常關閉，因此正在以安全模式啟動。
@@ -304,7 +304,7 @@ https://github.com/rocksdanister/lively/wiki</value>
 4. 點選「套用」然後點按「確定」關閉視窗。
 
 如果是 Windows 7 只需設定 -「調整成最佳外觀」並套用。
-如果仍無法正常工作， 請關閉並重新啟動 Lively / Windows。
+如果仍無法正常工作， 請關閉並重新啟動 Lively 動態桌布 / Windows。
 (在部分 Windows 10 測試人員組建中無法正常工作)</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
@@ -902,7 +902,7 @@ Edge 是 Windows 10 的內建網頁繪製元件 (Webview)。</value>
   </data>
   <data name="Store.Header" xml:space="preserve">
     <value>商店</value>
-    <comment>對於不同版本的 Lively 動態桌布，例如：Microsoft Store</comment>
+    <comment>對於不同版本的 Lively 動態桌布，例如: Microsoft Store</comment>
   </data>
   <data name="StreamWallpaperVideoQuality.Header" xml:space="preserve">
     <value>串流</value>
@@ -980,24 +980,24 @@ Edge 是 Windows 10 的內建網頁繪製元件 (Webview)。</value>
     <value>關於</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
-    <value>System-tray icon visibility, lively will continue to run with the icon hidden</value>
+    <value>系統匣圖示可見性，Lively 動態桌布在圖示隱藏的情況下仍會繼續運作</value>
   </data>
   <data name="EnterUrl.Header" xml:space="preserve">
-    <value>Enter URL</value>
+    <value>輸入 URL</value>
   </data>
   <data name="Startup.Header" xml:space="preserve">
-    <value>Start with Windows</value>
+    <value>隨 Windows 開機啟動</value>
   </data>
   <data name="UIMode.Description" xml:space="preserve">
-    <value>User interface effects and animations</value>
+    <value>使用者介面效果和動畫</value>
   </data>
   <data name="UIMode.Header" xml:space="preserve">
-    <value>User interface</value>
+    <value>使用者介面</value>
   </data>
   <data name="UIModeLite.Content" xml:space="preserve">
-    <value>Lite</value>
+    <value>簡易</value>
   </data>
   <data name="UIModeNormal.Content" xml:space="preserve">
-    <value>Normal</value>
+    <value>正常</value>
   </data>
 </root>

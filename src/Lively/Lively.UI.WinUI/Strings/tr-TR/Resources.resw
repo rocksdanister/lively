@@ -961,36 +961,36 @@ Beta sürümünde hatalar bulunabilir ve sıklıkla güncellemeler yapılabilir!
     <value>Hakkında</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
-    <value>Lively has encountered a fatal error.
+    <value>Lively ciddi bir sorunla karşılaştı.
 
-Windows Explorer restarted twice in the last 30 seconds! This may be a conflict between Lively and other desktop customization software or Windows. To avoid further issues, all wallpapers are terminated.</value>
+Windows Explorer son 30 saniye içinde iki kere yeniden başlatıldı! Windows veya başka bir masaüstü özelleştirme uygulaması ve Lively arasında uyumsuzluk olabilir. Sorun yaşamamak için tüm duvar kağıtları durduruldu.</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
-    <value>System-tray icon visibility, lively will continue to run with the icon hidden</value>
+    <value>Sistem tepsisinde ikon görünürlüğü, Lively ikon gizli bir şekilde çalışmaya devam edecek.</value>
   </data>
   <data name="PowerSavingModePower.Description" xml:space="preserve">
-    <value>Change playback when Windows Power Saving Mode is enabled</value>
+    <value>Windows güç koruma modu aktifken oynatmayı değiştir.</value>
   </data>
   <data name="RemoteDesktopPower.Description" xml:space="preserve">
-    <value>Change playback when running a Remote Desktop session</value>
+    <value>Uzak masaüstü bağlantısı aktifken oynatmayı değiştir.</value>
   </data>
   <data name="EnterUrl.Header" xml:space="preserve">
-    <value>Enter URL</value>
+    <value>URL girin</value>
   </data>
   <data name="PowerSavingModePower.Header" xml:space="preserve">
-    <value>When on Battery Saver</value>
+    <value>Pil koruma modundayken</value>
   </data>
   <data name="RemoteDesktopPower.Header" xml:space="preserve">
-    <value>When on Remote Desktop</value>
+    <value>Uzak masaüstü bağlantısı aktifken</value>
   </data>
   <data name="UIMode.Description" xml:space="preserve">
-    <value>User interface effects and animations</value>
+    <value>Kullanıcı arayüz efektleri ve animasyonları</value>
   </data>
   <data name="UIMode.Header" xml:space="preserve">
-    <value>User interface</value>
+    <value>Kullanıcı Arayüzü</value>
   </data>
   <data name="UIModeLite.Content" xml:space="preserve">
-    <value>Lite</value>
+    <value>Hafif</value>
   </data>
   <data name="UIModeNormal.Content" xml:space="preserve">
     <value>Normal</value>

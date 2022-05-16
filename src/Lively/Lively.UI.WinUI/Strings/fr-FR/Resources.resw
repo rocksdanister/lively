@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
     <!-- 
     Microsoft ResX Schema 
@@ -139,7 +139,7 @@
     <value>Système</value>
   </data>
   <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
-    <value>Laptops</value>
+    <value>Ordinateurs Portables</value>
   </data>
   <data name="DeveloperGroup.Header" xml:space="preserve">
     <value>Développeur</value>
@@ -154,13 +154,13 @@
     <value>Fonds d'écrans Actifs</value>
   </data>
   <data name="AboutMe.Text" xml:space="preserve">
-    <value>Hi, I'm Dani John also known as rocksdanister. I developed Lively a Free and open-source (FOSS) wallpaper application. Thanks for taking the time to look at my work.</value>
+    <value>Salut, je suis Dani aussi connu sous le nom de rockdanisher. Je développe Lively qui est une application de fond d'écrans gratuite et Open source (FOSS). Merci d'avoir pris le temps de regarder mon travail.</value>
   </data>
   <data name="LicenseLink.Content" xml:space="preserve">
     <value>Licence</value>
   </data>
   <data name="AttributionLink.Content" xml:space="preserve">
-    <value>Third party software notice</value>
+    <value>Notice logiciel tierce</value>
   </data>
   <data name="PrivacyPolicyLink.Content" xml:space="preserve">
     <value>Politique de récupération des données</value>
@@ -169,7 +169,7 @@
     <value>Ajouter un Fond d'écranr</value>
   </data>
  <data name="ComingSoon.Text" xml:space="preserve">
-    <value>Coming soon</value>
+    <value>Prochainement</value>
   </data>
   <data name="TextOpen.Content" xml:space="preserve">
     <value>Ouvrir</value>
@@ -869,10 +869,10 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Changez l'apparence de la barre des tâches système</value>
   </data>
   <data name="TaskbarThemeBlur.Content" xml:space="preserve">
-    <value>Blur</value>
+    <value>Flou</value>
   </data>
   <data name="TaskbarThemeClear.Content" xml:space="preserve">
-    <value>Clear</value>
+    <value>Transparent</value>
   </data>
   <data name="TaskbarThemeColor.Content" xml:space="preserve">
     <value>Couleur</value>
@@ -908,11 +908,11 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>En Savoir Plus</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
-    <value>Most modern LCD and LED displays do not suffer from burn-in issue and therefore any wallpaper can be used as screensaver.
+    <value>La plupart des écrans modernes LCD et LED ne souffres pas de brûlures internes et donc nimporte quel fond d'écran peut être utilisé comme écran de veille.
 
-For OLED, Plasma or CRT displays which are susceptibe to burn-in it is advised to use wallpaper with regular motion and an overall dark theme which is supposed to mitigate burn-in but this feature is untested and its effectiveness cannot be guaranteed.
+Pour les écrans OLED, Plasma ou CRT qui sont susceptibles aux brûlures internes, il est conseillé d'utiliser un fond d'écran avec un mouvement régulier et le thème sombre ce qui permet d'atténuer les brûlures internes, cependant son efficacité ne peut pas être garantie.
 
-The main purpose of Lively's screensavers is to add another layer of customization to your pc, use screensavers as burn-in protection at your own risk!</value>
+La principale utilité des écrans de veille de Lively est d'ajouter une couche supplémentaire de personnalisation à votre ordinateur, utilisez les écrans de veilles comme protection contre les brûlures internes d'écrans à votre propre risque !</value>
   </data>
   <data name="TextChangeWallpaper" xml:space="preserve">
     <value>Changer le fond d'écran</value>
@@ -967,36 +967,36 @@ Les Mises à Jour seront fréquentes et pourront contenir des bugs !</value>
     <value>À propos</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
-    <value>Lively has encountered a fatal error.
+    <value>Lively a rencontré une erreur fatale !
 
-Windows Explorer restarted twice in the last 30 seconds! This may be a conflict between Lively and other desktop customization software or Windows. To avoid further issues, all wallpapers are terminated.</value>
+Windows Explorer a redémarré deux fois durant les 30 dernières secondes! Cela est peut être un conflit entre Lively et d'autres applications de personnalisations de bureau ou de Windows. Pour eviters plus d'erreurs, tous les fonds d'écran ont été arrêtés.</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
-    <value>System-tray icon visibility, lively will continue to run with the icon hidden</value>
+    <value>La visibilité de l'icône dans la barre des taches, lively continura de fonctionner avec l'icône cachée</value>
   </data>
   <data name="PowerSavingModePower.Description" xml:space="preserve">
-    <value>Change playback when Windows Power Saving Mode is enabled</value>
+    <value>Définir le comportement de lecture quand le mode économie d'énergie est activé</value>
   </data>
   <data name="RemoteDesktopPower.Description" xml:space="preserve">
-    <value>Change playback when running a Remote Desktop session</value>
+    <value>Définir le comportement de lecture lorsqu'une session de bureau distant est en cours</value>
   </data>
   <data name="EnterUrl.Header" xml:space="preserve">
-    <value>Enter URL</value>
+    <value>Entrer une URL</value>
   </data>
   <data name="PowerSavingModePower.Header" xml:space="preserve">
-    <value>When on Battery Saver</value>
+    <value>Quand le mode économie d'énergie est activé</value>
   </data>
   <data name="RemoteDesktopPower.Header" xml:space="preserve">
-    <value>When on Remote Desktop</value>
+    <value>Lors d'une connexion de bureau distant</value>
   </data>
   <data name="UIMode.Description" xml:space="preserve">
-    <value>User interface effects and animations</value>
+    <value>Effets et animations de l'interface utilisateur</value>
   </data>
   <data name="UIMode.Header" xml:space="preserve">
-    <value>User interface</value>
+    <value>Interface utilisateur</value>
   </data>
   <data name="UIModeLite.Content" xml:space="preserve">
-    <value>Lite</value>
+    <value>Faible</value>
   </data>
   <data name="UIModeNormal.Content" xml:space="preserve">
     <value>Normal</value>
