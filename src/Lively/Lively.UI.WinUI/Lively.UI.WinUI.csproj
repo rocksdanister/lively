@@ -23,6 +23,7 @@
     <None Remove="Assets\icons8-youtube-96.png" />
     <None Remove="Assets\tray-tutorial.gif" />
     <None Remove="Nlog.config" />
+    <None Remove="Views\LivelyProperty\LivelyPropertiesTray.xaml" />
     <None Remove="Views\LivelyProperty\LivelyPropertiesView.xaml" />
     <None Remove="Views\Pages\AboutView.xaml" />
     <None Remove="Views\Pages\AddWallpaperDataView.xaml" />
@@ -64,6 +65,7 @@
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22000.197" />
     <PackageReference Include="NLog" Version="4.7.15" />
     <PackageReference Include="SettingsUI" Version="2.0.0" />
+    <PackageReference Include="WinUIEx" Version="1.4.2" />
     <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
 
@@ -118,6 +120,9 @@
     <None Update="appicon.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Page Update="Views\LivelyProperty\LivelyPropertiesTray.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Update="Views\Pages\TrayMenuHelp.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>

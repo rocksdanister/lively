@@ -77,6 +77,11 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
             LoadUI();
         }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            // Read e.Parameter to retrieve the parameter
+        }
+
         private void LoadUI()
         {
             try

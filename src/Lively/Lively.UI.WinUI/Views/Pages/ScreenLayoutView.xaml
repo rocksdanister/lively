@@ -59,13 +59,17 @@
                 <AppBarButton
                     x:Uid="CustomiseWallpaper"
                     Command="{Binding CustomiseWallpaperCommand}"
-                    Visibility="Collapsed">
+                    LabelPosition="Collapsed"
+                    Visibility="Visible">
                     <AppBarButton.Icon>
                         <FontIcon Glyph="&#xE790;" />
                     </AppBarButton.Icon>
                 </AppBarButton>
-                <AppBarSeparator Visibility="Collapsed" />
-                <AppBarButton x:Uid="CloseWallpapers" Command="{Binding CloseWallpaperCommand}">
+                <AppBarSeparator Visibility="Visible" />
+                <AppBarButton
+                    x:Uid="CloseWallpapers"
+                    Command="{Binding CloseWallpaperCommand}"
+                    LabelPosition="Collapsed">
                     <AppBarButton.Icon>
                         <FontIcon Glyph="&#xE894;" />
                     </AppBarButton.Icon>

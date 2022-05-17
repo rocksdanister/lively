@@ -8,6 +8,7 @@ using Lively.Common;
 using Lively.Common.Helpers.MVVM;
 using Lively.Grpc.Client;
 using Lively.Models;
+using Lively.UI.WinUI.Views.LivelyProperty;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.UI.Xaml;
@@ -154,6 +155,7 @@ namespace Lively.UI.WinUI.ViewModels
         public RelayCommand CustomiseWallpaperCommand => _customiseWallpaperCommand ??=
             new RelayCommand(() => CustomiseWallpaper(SelectedItem), CanCustomiseWallpaper);
 
+        LivelyPropertiesTray settingsWidget = null;
         private void CustomiseWallpaper(ScreenLayoutModel selection)
         {
             //only for running wallpapers..
@@ -177,10 +179,11 @@ namespace Lively.UI.WinUI.ViewModels
                         }
                         break;      
                 }
-                if (obj != null)
+                if (obj != null && settingsWidget == null)
                 {
-                    //var settingsWidget = new LivelyPropertiesTrayWidget(obj);
-                    //settingsWidget.Show();
+                    settingsWidget = new LivelyPropertiesTray(obj);
+                    settingsWidget.Activate();
+                    settingsWidget.Closed += (s, e) => settingsWidget = null;
                 }
             }
         }
