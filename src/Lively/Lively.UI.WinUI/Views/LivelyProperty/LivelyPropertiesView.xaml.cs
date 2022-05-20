@@ -34,9 +34,9 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
         #region init
 
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private readonly string livelyPropertyCopyPath;
-        private readonly ILibraryModel libraryItem;
-        private readonly IDisplayMonitor screen;
+        private string livelyPropertyCopyPath;
+        private ILibraryModel libraryItem;
+        private IDisplayMonitor screen;
         private JObject livelyPropertyCopyData;
         private readonly object _colorPickerTipLock = new();
 
@@ -54,6 +54,15 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
         private readonly IDesktopCoreClient desktopCore;
         private readonly IDisplayManagerClient displayManager;
 
+        public LivelyPropertiesView() // Default constructor for OnNavigatedTo
+        {
+            userSettings = App.Services.GetRequiredService<IUserSettingsClient>();
+            desktopCore = App.Services.GetRequiredService<IDesktopCoreClient>();
+            displayManager = App.Services.GetRequiredService<IDisplayManagerClient>();
+
+            this.InitializeComponent();
+        }
+
         public LivelyPropertiesView(ILibraryModel model)
         {
             userSettings = App.Services.GetRequiredService<IUserSettingsClient>();
@@ -61,7 +70,14 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
             displayManager = App.Services.GetRequiredService<IDisplayManagerClient>();
 
             this.InitializeComponent();
+            CreateUI(model);
+        }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e) =>
+            CreateUI((ILibraryModel)e.Parameter);
+
+        private void CreateUI(ILibraryModel model)
+        {
             libraryItem = model;
             try
             {
@@ -74,15 +90,10 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                 Logger.Error(e.ToString());
                 return;
             }
-            LoadUI();
+            ReadUI();
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            // Read e.Parameter to retrieve the parameter
-        }
-
-        private void LoadUI()
+        private void ReadUI()
         {
             try
             {
@@ -694,7 +705,7 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
             if (RestoreOriginalPropertyFile(libraryItem, livelyPropertyCopyPath))
             {
                 uiPanel.Children.Clear();
-                LoadUI();
+                ReadUI();
                 WallpaperSendMsg(new LivelyButton() { Name = "lively_default_settings_reload", IsDefault = true });
             }
         }

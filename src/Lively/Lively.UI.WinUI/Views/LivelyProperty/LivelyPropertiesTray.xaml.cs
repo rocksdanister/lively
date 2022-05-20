@@ -47,8 +47,8 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
             this.SetIsMinimizable(false);
             this.Title = model.Title;
 
-            //contentFrame.Navigate(typeof(LivelyPropertiesView), model, new SuppressNavigationTransitionInfo());
-            contentFrame.Content = new LivelyPropertiesView(model);
+            contentFrame.Navigate(typeof(LivelyPropertiesView), model);
+            //contentFrame.Content = new LivelyPropertiesView(model);
         }
     }
 }

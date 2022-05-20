@@ -5,6 +5,8 @@ using Lively.Models;
 using Lively.UI.WinUI.Helpers;
 using Lively.UI.WinUI.ViewModels;
 using Lively.UI.WinUI.Views.Pages;
+using Lively.UI.WinUI.Views.Pages.ControlPanel;
+using Lively.UI.WinUI.Views.Pages.Settings;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -265,12 +267,7 @@ namespace Lively.UI.WinUI
             _ = new ContentDialog()
             {
                 Title = i18n.GetString("DescriptionScreenLayout"),
-                Content = new ScreenLayoutView() { 
-                    I18n = new ScreenLayoutView.Localization {
-                        TitleScreenSaver = i18n.GetString("TitleScreensaver"),
-                        TipScreenSaver = i18n.GetString("TipScreensaver"),
-                    }
-                },
+                Content = new ControlPanelView(),
                 PrimaryButtonText = i18n.GetString("TextOK"),
                 DefaultButton = ContentDialogButton.Primary,
                 XamlRoot = this.Content.XamlRoot,

@@ -1,0 +1,21 @@
+﻿<Page
+    x:Class="Lively.UI.WinUI.Views.Pages.ControlPanel.WallpaperLayoutCustomiseView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:Lively.UI.WinUI.Views.Pages.ControlPanel"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
+
+    <Grid Margin="5">
+        <Button
+            VerticalAlignment="Top"
+            Background="Transparent"
+            BorderBrush="Transparent"
+            Command="{Binding NavigateBackWallpaperCommand}">
+            <FontIcon Glyph="&#xE72B;" />
+        </Button>
+        <Frame x:Name="contentFrame" Margin="50" />
+    </Grid>
+</Page>
