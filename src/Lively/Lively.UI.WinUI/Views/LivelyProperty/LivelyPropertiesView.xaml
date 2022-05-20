@@ -5,7 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Lively.UI.WinUI.Views.LivelyProperty"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Width="325"
+    MinWidth="325"
     mc:Ignorable="d">
 
     <Grid>

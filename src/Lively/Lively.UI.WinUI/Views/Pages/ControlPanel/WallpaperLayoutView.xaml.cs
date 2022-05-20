@@ -9,35 +9,27 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel.Resources;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace Lively.UI.WinUI.Views.Pages
+namespace Lively.UI.WinUI.Views.Pages.ControlPanel
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class ScreenLayoutView : Page
+    public sealed partial class WallpaperLayoutView : Page
     {
-        public class Localization
-        {
-            public string TitleScreenSaver { get; set; }
-            public string TipScreenSaver { get; set; }
-        }
-        public Localization I18n { get; set; }
-
-        public ScreenLayoutView()
+        public WallpaperLayoutView()
         {
             this.InitializeComponent();
-            var vm = App.Services.GetRequiredService<ScreenLayoutViewModel>();
-            this.DataContext = vm;
+            //this.DataContext = App.Services.GetRequiredService<ScreenLayoutViewModel>();
             //this.Unloaded += vm.OnWindowClosing;
             this.Unloaded += ScreenLayoutView_Unloaded;
         }

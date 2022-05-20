@@ -28,15 +28,18 @@
     <None Remove="Views\Pages\AboutView.xaml" />
     <None Remove="Views\Pages\AddWallpaperDataView.xaml" />
     <None Remove="Views\Pages\AddWallpaperView.xaml" />
+    <None Remove="Views\Pages\ControlPanelView.xaml" />
     <None Remove="Views\Pages\GalleryView.xaml" />
     <None Remove="Views\Pages\HelpView.xaml" />
     <None Remove="Views\Pages\LibraryAboutView.xaml" />
-    <None Remove="Views\Pages\ScreenLayoutView.xaml" />
+    <None Remove="Views\Pages\ScreensaverLayoutView.xaml" />
     <None Remove="Views\Pages\SettingsGeneralView.xaml" />
     <None Remove="Views\Pages\SettingsPerformanceView.xaml" />
     <None Remove="Views\Pages\SettingsSystemView.xaml" />
     <None Remove="Views\Pages\SettingsWallpaperView.xaml" />
     <None Remove="Views\Pages\TrayMenuHelp.xaml" />
+    <None Remove="Views\Pages\WallpaperLayoutCustomiseView.xaml" />
+    <None Remove="Views\Pages\WallpaperLayoutView.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -81,7 +84,7 @@
     <ProjectReference Include="..\Lively.Models\Lively.Models.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Views\Pages\ScreenLayoutView.xaml">
+    <Page Update="Views\Pages\ControlPanel\ControlPanelView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
@@ -120,6 +123,15 @@
     <None Update="appicon.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Page Update="Views\Pages\ControlPanel\WallpaperLayoutCustomiseView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\Pages\ControlPanel\ScreensaverLayoutView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\Pages\ControlPanel\WallpaperLayoutView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Update="Views\LivelyProperty\LivelyPropertiesTray.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -15,14 +15,21 @@ using Microsoft.UI.Xaml;
 
 namespace Lively.UI.WinUI.ViewModels
 {
-    public class ScreenLayoutViewModel : ObservableObject
+    public class ControlPanelViewModel : ObservableObject
     {
+        public class NavigatePageEventArgs : EventArgs
+        {
+            public string Tag { get; set; }
+            public object Arg { get; set; }
+        }
+        public event EventHandler<NavigatePageEventArgs> NavigatePage;
+
         private readonly IUserSettingsClient userSettings;
         private readonly IDesktopCoreClient desktopCore;
         private readonly IDisplayManagerClient displayManager;
         private readonly LibraryViewModel libraryVm;
 
-        public ScreenLayoutViewModel(IUserSettingsClient userSettings,
+        public ControlPanelViewModel(IUserSettingsClient userSettings,
             IDesktopCoreClient desktopCore,
             IDisplayManagerClient displayManager,
             LibraryViewModel libraryVm)
@@ -181,15 +188,21 @@ namespace Lively.UI.WinUI.ViewModels
                 }
                 if (obj != null && settingsWidget == null)
                 {
+                    /*
                     settingsWidget = new LivelyPropertiesTray(obj);
                     settingsWidget.Activate();
                     settingsWidget.Closed += (s, e) => settingsWidget = null;
+                    */
+                    NavigatePage?.Invoke(this, new NavigatePageEventArgs() { Tag = "customiseWallpaper", Arg = obj });
                 }
             }
         }
 
         private bool CanCustomiseWallpaper() => 
             SelectedItem != null && SelectedItem.LivelyPropertyPath != null;
+
+        public RelayCommand NavigateBackWallpaperCommand =>
+            new RelayCommand(() => NavigatePage?.Invoke(this, new NavigatePageEventArgs() { Tag = "wallpaper", Arg = null }));
 
         #endregion //commands
 

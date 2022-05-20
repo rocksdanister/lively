@@ -1,10 +1,10 @@
 ﻿<Page
-    x:Class="Lively.UI.WinUI.Views.Pages.ScreenLayoutView"
+    x:Class="Lively.UI.WinUI.Views.Pages.ControlPanel.WallpaperLayoutView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="using:SettingsUI.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="using:Lively.UI.WinUI.Views.Pages"
+    xmlns:local="using:Lively.UI.WinUI.Views.Pages.ControlPanel"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
@@ -48,13 +48,13 @@
                 </GridView.ItemTemplate>
                 <GridView.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <ItemsWrapGrid Name="GridWrap" Orientation="Horizontal" />
+                        <ItemsWrapGrid Orientation="Horizontal" />
                     </ItemsPanelTemplate>
                 </GridView.ItemsPanel>
             </GridView>
         </Grid>
 
-        <StackPanel Grid.Row="1">
+        <StackPanel Grid.Row="1" VerticalAlignment="Bottom">
             <CommandBar HorizontalAlignment="Center" DefaultLabelPosition="Right">
                 <AppBarButton
                     x:Uid="CustomiseWallpaper"
@@ -84,7 +84,7 @@
                         Style="{StaticResource ExpanderHeaderSettingStyle}" />
                 </controls:SettingExpander.Header>
                 <controls:SettingExpander.Content>
-                    <StackPanel Orientation="Vertical">
+                    <StackPanel>
                         <controls:Setting HorizontalAlignment="Left" Style="{StaticResource ExpanderContentSettingStyle}">
                             <RadioButtons SelectedIndex="{Binding SelectedWallpaperLayout, Mode=TwoWay}">
                                 <RadioButton x:Uid="WallpaperLayoutPerScreen" />
@@ -92,18 +92,15 @@
                                 <RadioButton x:Uid="WallpaperLayoutDuplicate" />
                             </RadioButtons>
                         </controls:Setting>
+                        <Rectangle Style="{StaticResource ExpanderSeparatorStyle}" />
+                        <CheckBox
+                            Margin="{StaticResource ExpanderSettingMargin}"
+                            Content="Remember selected screen"
+                            IsEnabled="False" />
                     </StackPanel>
                 </controls:SettingExpander.Content>
             </controls:SettingExpander>
-            <controls:Setting Header="{x:Bind I18n.TitleScreenSaver}" Icon="&#xF182;">
-                <controls:Setting.Description>
-                    <HyperlinkButton NavigateUri="https://github.com/rocksdanister/lively/wiki/Screen-Saver" ToolTipService.ToolTip="https://github.com/rocksdanister/lively/wiki/Screen-Saver">
-                        <HyperlinkButton.Content>
-                            <TextBlock Text="{x:Bind I18n.TipScreenSaver}" />
-                        </HyperlinkButton.Content>
-                    </HyperlinkButton>
-                </controls:Setting.Description>
-            </controls:Setting>
+
         </StackPanel>
     </Grid>
 </Page>
