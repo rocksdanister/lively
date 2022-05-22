@@ -169,6 +169,7 @@ namespace Lively.RPC
             userSettings.Settings.Language = req.Language;
             userSettings.Settings.KeepAwakeUI = req.KeepAwakeUi;
             userSettings.Settings.DisplayPauseSettings = (DisplayPauseEnum)req.DisplayPauseSettings;
+            userSettings.Settings.RememberSelectedScreen = req.RememberSelectedScreen;
 
             try
             {
@@ -269,6 +270,7 @@ namespace Lively.RPC
                 Language = settings.Language,
                 KeepAwakeUi = settings.KeepAwakeUI,
                 DisplayPauseSettings = (DisplayPauseRule)settings.DisplayPauseSettings,
+                RememberSelectedScreen = settings.RememberSelectedScreen,
             };
             return Task.FromResult(resp);
         }

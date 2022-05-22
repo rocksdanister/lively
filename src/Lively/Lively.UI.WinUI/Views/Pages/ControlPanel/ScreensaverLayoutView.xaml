@@ -85,8 +85,6 @@
                 <controls:SettingExpander.Header>
                     <controls:Setting
                         x:Uid="Screensaver"
-                        Description="How screensaver is applied to connected to display devices"
-                        Header="Type of screensaver"
                         Icon="&#xE90C;"
                         Style="{StaticResource ExpanderHeaderSettingStyle}" />
                 </controls:SettingExpander.Header>
@@ -94,8 +92,8 @@
                     <StackPanel Orientation="Vertical">
                         <controls:Setting HorizontalAlignment="Left" Style="{StaticResource ExpanderContentSettingStyle}">
                             <RadioButtons>
-                                <RadioButton x:Uid="ScreensaverModeSameWallpaper" IsEnabled="True" />
-                                <RadioButton x:Uid="ScreensaverModeDifferentWallpaper" IsChecked="False" />
+                                <RadioButton x:Uid="ScreensaverModeSameWallpaper" IsChecked="True" />
+                                <RadioButton x:Uid="ScreensaverModeDifferentWallpaper" IsEnabled="False" />
                             </RadioButtons>
                         </controls:Setting>
                     </StackPanel>
@@ -117,19 +115,5 @@
                 </HyperlinkButton>
             </InfoBar>
         </StackPanel>
-        <!--
-        <controls:Setting
-            Header="{x:Bind I18n.TitleScreenSaver}"
-            Icon="&#xF182;"
-            Visibility="Collapsed">
-            <controls:Setting.Description>
-                <HyperlinkButton NavigateUri="https://github.com/rocksdanister/lively/wiki/Screen-Saver" ToolTipService.ToolTip="https://github.com/rocksdanister/lively/wiki/Screen-Saver">
-                    <HyperlinkButton.Content>
-                        <TextBlock Text="{x:Bind I18n.TipScreenSaver}" />
-                    </HyperlinkButton.Content>
-                </HyperlinkButton>
-            </controls:Setting.Description>
-        </controls:Setting>
-        -->
     </Grid>
 </Page>

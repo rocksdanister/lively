@@ -5,6 +5,7 @@ using Lively.Grpc.Client;
 using Lively.Models;
 using Lively.UI.WinUI.Factories;
 using Lively.UI.WinUI.Helpers;
+using Lively.UI.WinUI.Services;
 using Lively.UI.WinUI.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
@@ -101,6 +102,8 @@ namespace Lively.UI.WinUI
                 .AddTransient<AboutViewModel>()
                 .AddTransient<AddWallpaperViewModel>()
                 .AddTransient<ControlPanelViewModel>()
+                .AddTransient<ChooseDisplayViewModel>()
+                .AddTransient<IDialogService, DialogService>()
                 .AddTransient<IApplicationsRulesFactory, ApplicationsRulesFactory>()
                 //https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests
                 .AddHttpClient()

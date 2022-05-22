@@ -249,6 +249,7 @@ namespace Lively.Grpc.Client
                 Language = settings.Language,
                 KeepAwakeUi = settings.KeepAwakeUI,
                 DisplayPauseSettings = (DisplayPauseRule)settings.DisplayPauseSettings,
+                RememberSelectedScreen = settings.RememberSelectedScreen,
             };
         }
 
@@ -320,6 +321,7 @@ namespace Lively.Grpc.Client
                 Language = settings.Language,
                 KeepAwakeUI = settings.KeepAwakeUi,
                 DisplayPauseSettings = (DisplayPauseEnum)settings.DisplayPauseSettings,
+                RememberSelectedScreen = settings.RememberSelectedScreen,
             };
         }
 

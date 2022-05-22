@@ -17,6 +17,8 @@ using Windows.System;
 using Lively.UI.WinUI.Helpers;
 using System.Diagnostics;
 using Lively.Common.Helpers;
+using Microsoft.Toolkit.Mvvm.Input;
+using Lively.UI.WinUI.Services;
 
 namespace Lively.UI.WinUI.ViewModels
 {
@@ -29,16 +31,19 @@ namespace Lively.UI.WinUI.ViewModels
         private readonly IUserSettingsClient userSettings;
         private readonly SettingsViewModel settingsVm;
         private readonly IDisplayManagerClient displayManager;
+        private readonly IDialogService dialogService;
 
         public LibraryViewModel(IDesktopCoreClient desktopCore,
             IDisplayManagerClient displayManager,
             IUserSettingsClient userSettings,
-            SettingsViewModel settingsVm)
+            SettingsViewModel settingsVm,
+            IDialogService dialogService)
         {
             this.desktopCore = desktopCore;
             this.displayManager = displayManager;
             this.settingsVm = settingsVm;
             this.userSettings = userSettings;
+            this.dialogService = dialogService;
 
             wallpaperScanFolders = new List<string>
             {
@@ -51,6 +56,7 @@ namespace Lively.UI.WinUI.ViewModels
                 LibraryItems.Insert(BinarySearch(LibraryItems, item.Title), item);
             }
 
+            LibrarySelectionMode = userSettings.Settings.RememberSelectedScreen ? "Single" : "None";
             //Select already running item when UI program is started again..
             UpdateSelectedWallpaper();
 
@@ -91,6 +97,9 @@ namespace Lively.UI.WinUI.ViewModels
             get => _selectedItem;
             set
             {
+                if (!userSettings.Settings.RememberSelectedScreen)
+                    return;
+
                 if (value != null && value.DataType == LibraryItemType.ready)
                 {
                     var wallpapers = desktopCore.Wallpapers.Where(x => x.LivelyInfoFolderPath.Equals(value.LivelyInfoFolderPath, StringComparison.OrdinalIgnoreCase));
@@ -121,6 +130,32 @@ namespace Lively.UI.WinUI.ViewModels
                 OnPropertyChanged();
             }
         }
+
+        private string _librarySelectionMode = "Single";
+        public string LibrarySelectionMode
+        {
+            get => _librarySelectionMode;
+            set
+            {
+                _librarySelectionMode = value;
+                OnPropertyChanged();
+            }
+
+        }
+
+        private RelayCommand<LibraryModel> _libraryClickCommand;
+        public RelayCommand<LibraryModel> LibraryClickCommand => _libraryClickCommand ??= new RelayCommand<LibraryModel>(async (wp) =>
+        {
+            if (userSettings.Settings.RememberSelectedScreen)
+                return;
+
+            var monitor = displayManager.DisplayMonitors.Count == 1 || userSettings.Settings.WallpaperArrangement != WallpaperArrangement.per ?
+                displayManager.DisplayMonitors.FirstOrDefault(x => x.IsPrimary) : await dialogService.ShowDisplayChooseDialog();
+            if (monitor != null && wp != null)
+            {
+                await desktopCore.SetWallpaper(wp, monitor);
+            }
+        });
 
         #endregion //collections
 
