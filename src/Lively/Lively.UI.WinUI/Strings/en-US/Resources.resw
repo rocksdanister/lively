@@ -1007,4 +1007,7 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="ScreensaverPluginMessage.Text" xml:space="preserve">
     <value>One time setup is required to run screensaver</value>
   </data>
+  <data name="WallpaperLayoutScreenPicker.Content" xml:space="preserve">
+    <value>Always pick screen when choosing wallpaper</value>
+  </data>
 </root>

@@ -8,7 +8,6 @@ using Lively.Common;
 using Lively.Common.Helpers.MVVM;
 using Lively.Grpc.Client;
 using Lively.Models;
-using Lively.UI.WinUI.Views.LivelyProperty;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.UI.Xaml;
@@ -40,6 +39,7 @@ namespace Lively.UI.WinUI.ViewModels
             this.libraryVm = libraryVm;
 
             SelectedWallpaperLayout = (int)userSettings.Settings.WallpaperArrangement;
+            IsRememberSelectedScreen = userSettings.Settings.RememberSelectedScreen;
             ScreenItems = new ObservableCollection<ScreenLayoutModel>();
             UpdateLayout();
 
@@ -116,8 +116,37 @@ namespace Lively.UI.WinUI.ViewModels
                     var prevArrangement = userSettings.Settings.WallpaperArrangement;
                     userSettings.Settings.WallpaperArrangement = (WallpaperArrangement)_selectedWallpaperLayout;
                     UpdateSettingsConfigFile();
-                    UpdateWallpaper(prevArrangement, userSettings.Settings.WallpaperArrangement);
+                    _ = UpdateWallpaper(prevArrangement, userSettings.Settings.WallpaperArrangement);
                 }
+            }
+        }
+
+        private bool _isRememberSelectedScreen;
+        public bool IsRememberSelectedScreen
+        {
+            get
+            {
+                return _isRememberSelectedScreen;
+            }
+            set
+            {
+                _isRememberSelectedScreen = value;
+                if (userSettings.Settings.RememberSelectedScreen != _isRememberSelectedScreen)
+                {
+                    userSettings.Settings.RememberSelectedScreen = _isRememberSelectedScreen;
+                    if (_isRememberSelectedScreen)
+                    {
+                        libraryVm.LibrarySelectionMode = "Single";
+                        //Updating library selected item.
+                        libraryVm.UpdateSelectedWallpaper();
+                    }
+                    else
+                    {
+                        libraryVm.LibrarySelectionMode = "None";
+                    }
+                    UpdateSettingsConfigFile();
+                }
+                OnPropertyChanged();
             }
         }
 
@@ -162,7 +191,6 @@ namespace Lively.UI.WinUI.ViewModels
         public RelayCommand CustomiseWallpaperCommand => _customiseWallpaperCommand ??=
             new RelayCommand(() => CustomiseWallpaper(SelectedItem), CanCustomiseWallpaper);
 
-        LivelyPropertiesTray settingsWidget = null;
         private void CustomiseWallpaper(ScreenLayoutModel selection)
         {
             //only for running wallpapers..
@@ -186,13 +214,9 @@ namespace Lively.UI.WinUI.ViewModels
                         }
                         break;      
                 }
-                if (obj != null && settingsWidget == null)
+
+                if (obj != null)
                 {
-                    /*
-                    settingsWidget = new LivelyPropertiesTray(obj);
-                    settingsWidget.Activate();
-                    settingsWidget.Closed += (s, e) => settingsWidget = null;
-                    */
                     NavigatePage?.Invoke(this, new NavigatePageEventArgs() { Tag = "customiseWallpaper", Arg = obj });
                 }
             }

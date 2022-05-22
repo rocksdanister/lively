@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="using:Lively.UI.WinUI.UserControls"
     xmlns:converters="using:CommunityToolkit.WinUI.UI.Converters"
+    xmlns:customconverters="using:Lively.UI.WinUI.Helpers.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Lively.UI.WinUI.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -22,6 +23,7 @@
             TintColor="{ThemeResource SystemAltMediumColor}"
             TintOpacity="1.0" />
         <converters:BoolToVisibilityConverter x:Key="VisibilityConverter" />
+        <customconverters:ListViewSelectionModeStringToEnumConverter x:Key="ListViewSelectionModeStringToEnumConverter" />
     </Page.Resources>
 
     <Grid>
@@ -38,9 +40,12 @@
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
             DesiredWidth="272"
+            IsItemClickEnabled="True"
+            ItemClickCommand="{Binding LibraryClickCommand}"
             ItemsSource="{Binding LibraryItems}"
             RightTapped="libraryGridView_RightTapped"
             SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+            SelectionMode="{Binding LibrarySelectionMode, Mode=OneWay, Converter={StaticResource ListViewSelectionModeStringToEnumConverter}}"
             StretchContentForSingleRow="False">
             <MenuFlyout x:Name="contextMenu">
                 <MenuFlyout.Items>

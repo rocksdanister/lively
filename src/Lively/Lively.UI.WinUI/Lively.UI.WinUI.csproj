@@ -28,6 +28,7 @@
     <None Remove="Views\Pages\AboutView.xaml" />
     <None Remove="Views\Pages\AddWallpaperDataView.xaml" />
     <None Remove="Views\Pages\AddWallpaperView.xaml" />
+    <None Remove="Views\Pages\ChooseDisplayView.xaml" />
     <None Remove="Views\Pages\ControlPanelView.xaml" />
     <None Remove="Views\Pages\GalleryView.xaml" />
     <None Remove="Views\Pages\HelpView.xaml" />
@@ -123,6 +124,9 @@
     <None Update="appicon.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Page Update="Views\Pages\ChooseDisplayView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Update="Views\Pages\ControlPanel\WallpaperLayoutCustomiseView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>

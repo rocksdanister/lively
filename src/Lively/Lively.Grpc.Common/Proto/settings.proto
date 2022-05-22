@@ -67,6 +67,7 @@ message SettingsDataModel {
     ProcessMonitorRule process_monitor_alogorithm = 55;
     bool keep_awake_ui = 56;
     PicturePlayer picture_player = 57;
+    bool remember_selected_screen = 58;
 }
 
 message AppRulesSettings {

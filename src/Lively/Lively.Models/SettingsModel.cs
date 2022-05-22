@@ -114,6 +114,7 @@ namespace Lively.Models
         public bool ScreensaverEmptyScreenShowBlack { get; set; }
         public bool ScreensaverLockOnResume { get; set; }
         public bool KeepAwakeUI { get; set; }
+        public bool RememberSelectedScreen { get; set; }
 
         public SettingsModel()
         {
@@ -181,6 +182,7 @@ namespace Lively.Models
             ScreensaverEmptyScreenShowBlack = true;
             ScreensaverLockOnResume = false;
             KeepAwakeUI = false;
+            RememberSelectedScreen = true;
 
             try
             {
