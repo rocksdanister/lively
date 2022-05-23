@@ -34,7 +34,7 @@ A clear and concise description of what you expected to happen.
 If applicable, add screenshots/video to help explain your problem.
 
 **Desktop (please complete the following information):**
- - OS: [e.g. Windows 10 1909]
+- OS: [e.g. Windows 10 1909, Windows 11 21H2]
 - Which wallpaper was running at the time if any.
 
 **Additional context**
