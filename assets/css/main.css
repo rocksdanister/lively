@@ -2702,15 +2702,13 @@ input, select, textarea {
 
 /* Actions */
 	.DownloadBtn {
-		max-width: 235px;
-		width: 235px;
-		min-width: 235px;	
+    text-align: left!important;
 	}	
   
   .DownloadBtn > a{
     background-color: #000000;
     color: white !important;
-    border-color: transparent;
+    border: transparent!important;
     padding: 0;
     text-align: center;
     text-decoration: none;
@@ -2718,8 +2716,10 @@ input, select, textarea {
     font-family: Segoe UI;
     cursor: pointer;
     border-radius: 11px;
-    width: 18rem;
     height: 6.5rem;
+    width: 288px;
+    max-width: 288px;
+    min-width: 288px;
   }
     .DownloadBtn > a:hover{
       border: transparent!important;
