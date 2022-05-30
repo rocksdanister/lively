@@ -2706,24 +2706,33 @@ input, select, textarea {
 		width: 235px;
 		min-width: 235px;	
 	}	
-		.DownloadBtn > a{
-			background-color: #000000;
-			border: 1px solid white !important;
-			color: white !important;
-			padding: 0;
-			text-align: center;
-			text-decoration: none;
-			font-size: 1rem;
-			font-family: Segoe UI;
-			cursor: pointer;
-			border-radius: 0;
-			width: calc(235px - 1.3rem);
-		}
+  
+  .DownloadBtn > a{
+    background-color: #000000;
+    color: white !important;
+    border-color: transparent;
+    padding: 0;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1rem;
+    font-family: Segoe UI;
+    cursor: pointer;
+    border-radius: 11px;
+    width: 18rem;
+    height: 6.5rem;
+  }
+    .DownloadBtn > a:hover{
+      border: transparent!important;
+    }
+    .DownloadBtn > a:hover::after{
+      opacity: 0;
+    }
+  
 		.DownloadBtn .fas{
-			font-size: 2.5rem;
+			font-size: 4rem;
 			position: relative;
-			top: -1.5rem;
-			right: .5rem;
+			top: 0rem;
+			right: -.5rem;
 		}
 		.DownloadBtn span{
 			position: relative;
@@ -2733,7 +2742,10 @@ input, select, textarea {
 			text-overflow: ellipsis;
 			white-space: nowrap;
 			min-width: 13ch;
-			display: inline-block;	
+			display: inline-block;
+      font-size: 1.5rem;
+      right: -0.5rem;
+      top: 0.75rem;	
 		}
 
 	ul.actions {
