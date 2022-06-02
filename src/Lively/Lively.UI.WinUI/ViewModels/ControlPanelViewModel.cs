@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Lively.Common;
@@ -150,6 +151,21 @@ namespace Lively.UI.WinUI.ViewModels
             }
         }
 
+        public bool IsScreensaverPluginNotify 
+        {
+            get
+            {
+                try
+                {
+                    return !File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Windows), "Lively.scr"));
+                }
+                catch
+                {
+                    return true;
+                }
+            }
+        }
+
         #region commands
 
         private RelayCommand _closeWallpaperCommand;
@@ -222,8 +238,7 @@ namespace Lively.UI.WinUI.ViewModels
             }
         }
 
-        private bool CanCustomiseWallpaper() => 
-            SelectedItem != null && SelectedItem.LivelyPropertyPath != null;
+        private bool CanCustomiseWallpaper() => !string.IsNullOrEmpty(SelectedItem?.LivelyPropertyPath);
 
         public RelayCommand NavigateBackWallpaperCommand =>
             new RelayCommand(() => NavigatePage?.Invoke(this, new NavigatePageEventArgs() { Tag = "wallpaper", Arg = null }));

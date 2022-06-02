@@ -6,10 +6,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Lively.UI.WinUI.Views.Pages.ControlPanel"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    MinWidth="450"
-    MinHeight="550"
-    MaxWidth="450"
-    MaxHeight="550"
+    MinWidth="490"
+    MinHeight="560"
+    MaxWidth="490"
+    MaxHeight="560"
     mc:Ignorable="d">
 
     <Grid>
@@ -20,8 +20,8 @@
             ItemInvoked="navView_ItemInvoked"
             PaneDisplayMode="Top">
             <NavigationView.MenuItems>
-                <NavigationViewItem Content="Wallpaper" Tag="wallpaper" />
-                <NavigationViewItem Content="Screensaver" Tag="screensaver" />
+                <NavigationViewItem Content="{x:Bind I18n.TitleWallpaper}" Tag="wallpaper" />
+                <NavigationViewItem Content="{x:Bind I18n.TitleScreenSaver}" Tag="screensaver" />
                 <!--  navView selection not visible to user  -->
                 <NavigationViewItem Tag="customiseWallpaper" Visibility="Collapsed" />
                 <NavigationViewItem Tag="customiseScreensaver" Visibility="Collapsed" />

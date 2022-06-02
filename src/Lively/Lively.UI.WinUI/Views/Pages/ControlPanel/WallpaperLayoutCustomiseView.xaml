@@ -14,7 +14,7 @@
             Background="Transparent"
             BorderBrush="Transparent"
             Command="{Binding NavigateBackWallpaperCommand}">
-            <FontIcon Glyph="&#xE72B;" />
+            <FontIcon FontSize="15" Glyph="&#xE72B;" />
         </Button>
         <Frame x:Name="contentFrame" Margin="50" />
     </Grid>
