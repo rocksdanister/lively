@@ -17,14 +17,14 @@
             <GridView.ItemTemplate>
                 <DataTemplate>
                     <Grid
-                        Width="192"
-                        Height="108"
+                        Width="144"
+                        Height="81"
                         Background="{ThemeResource SystemBaseLowColor}">
                         <Image
                             Opacity="0.50"
                             Source="{Binding ScreenImagePath}"
                             Stretch="UniformToFill" />
-                        <Viewbox Width="192" Height="108">
+                        <Viewbox Width="144" Height="81">
                             <TextBlock
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
@@ -35,7 +35,7 @@
             </GridView.ItemTemplate>
             <GridView.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <ItemsWrapGrid Orientation="Horizontal" />
+                    <ItemsWrapGrid MaximumRowsOrColumns="3" Orientation="Horizontal" />
                 </ItemsPanelTemplate>
             </GridView.ItemsPanel>
         </GridView>
