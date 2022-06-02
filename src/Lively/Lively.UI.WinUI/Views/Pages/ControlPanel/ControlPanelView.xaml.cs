@@ -15,6 +15,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel.Resources;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 
@@ -35,12 +36,24 @@ namespace Lively.UI.WinUI.Views.Pages.ControlPanel
             (typeof(WallpaperLayoutCustomiseView), "customiseWallpaper"),
         };
 
+        private class Localization
+        {
+            public string TitleScreenSaver { get; set; }
+            public string TitleWallpaper { get; set; }
+        }
+        private readonly Localization I18n = new Localization();
+
         public ControlPanelView()
         {
             this.InitializeComponent();
             var vm = App.Services.GetRequiredService<ControlPanelViewModel>();
             this.DataContext = vm;
             vm.NavigatePage += Vm_NavigatePage;
+
+            var i18n = ResourceLoader.GetForViewIndependentUse();
+            I18n.TitleWallpaper = i18n.GetString("TitleWallpaper");
+            I18n.TitleScreenSaver = i18n.GetString("TitleScreensaver");
+
             NavigatePage("wallpaper");
         }
 

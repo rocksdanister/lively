@@ -3,11 +3,16 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="using:SettingsUI.Controls"
+    xmlns:converters="using:CommunityToolkit.WinUI.UI.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Lively.UI.WinUI.Views.Pages.ControlPanel"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
+
+    <Page.Resources>
+        <converters:BoolToVisibilityConverter x:Key="VisibilityConverter" />
+    </Page.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -32,14 +37,14 @@
                 <GridView.ItemTemplate>
                     <DataTemplate>
                         <Grid
-                            Width="192"
-                            Height="108"
+                            Width="144"
+                            Height="81"
                             Background="{ThemeResource SystemBaseLowColor}">
                             <Image
                                 Opacity="0.50"
                                 Source="{Binding ScreenImagePath}"
                                 Stretch="UniformToFill" />
-                            <Viewbox Width="192" Height="108">
+                            <Viewbox Width="144" Height="81">
                                 <TextBlock
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
@@ -50,7 +55,7 @@
                 </GridView.ItemTemplate>
                 <GridView.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <ItemsWrapGrid Name="GridWrap" Orientation="Horizontal" />
+                        <ItemsWrapGrid MaximumRowsOrColumns="3" Orientation="Horizontal" />
                     </ItemsPanelTemplate>
                 </GridView.ItemsPanel>
             </GridView>
@@ -104,7 +109,8 @@
                 x:Uid="ScreensaverPlugin"
                 IsClosable="False"
                 IsOpen="True"
-                Severity="Informational">
+                Severity="Informational"
+                Visibility="{Binding IsScreensaverPluginNotify, Mode=OneWay, Converter={StaticResource VisibilityConverter}}">
                 <HyperlinkButton
                     Margin="0,0,0,2.5"
                     NavigateUri="https://github.com/rocksdanister/lively/wiki/Screen-Saver"
