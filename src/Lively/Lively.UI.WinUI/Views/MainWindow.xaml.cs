@@ -16,12 +16,12 @@ using Microsoft.UI.Xaml.Media.Animation;
 using SettingsUI.Extensions;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources;
+using WinUIEx;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -31,7 +31,7 @@ namespace Lively.UI.WinUI
     /// <summary>
     /// An empty window that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainWindow : Window
+    public sealed partial class MainWindow : WindowEx
     {
         private readonly List<(Type Page, NavPages NavPage)> _pages = new List<(Type Page, NavPages NavPage)>
         {
@@ -79,19 +79,18 @@ namespace Lively.UI.WinUI
             NavViewNavigate(NavPages.library);
 
             //Issue: https://github.com/microsoft/microsoft-ui-xaml/issues/6070
-            //ExtendsContentIntoTitleBar = true;
-            //SetTitleBar(TitleBar);
-            //this.Activated += MainWindow_Activated;
-            this.UseImmersiveDarkModeEx(userSettings.Settings.ApplicationTheme == AppTheme.Dark);
+            ExtendsContentIntoTitleBar = true;
+            SetTitleBar(customTitleBar);
+            this.Activated += MainWindow_Activated;
 
             //Issue: https://github.com/microsoft/microsoft-ui-xaml/issues/4056
-            this.Title = "Lively Wallpaper";
-            this.SetIconEx("appicon.ico");
+            //this.Title = "Lively Wallpaper";
+            //this.SetIconEx("appicon.ico");
+            //this.UseImmersiveDarkModeEx(userSettings.Settings.ApplicationTheme == AppTheme.Dark);
 
             _ = StdInListener();
         }
 
-        /*
         private void MainWindow_Activated(object sender, WindowActivatedEventArgs args)
         {
             if (args.WindowActivationState == WindowActivationState.Deactivated)
@@ -105,7 +104,6 @@ namespace Lively.UI.WinUI
                     (SolidColorBrush)App.Current.Resources["WindowCaptionForeground"];
             }
         }
-        */
 
         private void DesktopCore_WallpaperError(object sender, Exception e)
         {

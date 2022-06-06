@@ -80,7 +80,6 @@ namespace Lively.UI.WinUI
             //Environment.GetCommandLineArgs()[1]
             var m_window = Services.GetRequiredService<MainWindow>();
             m_window.Activate();
-            m_window.SetWindowSizeEx(875, 875);
         }
 
         private IServiceProvider ConfigureServices()
