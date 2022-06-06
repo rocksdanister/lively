@@ -13,6 +13,7 @@
     <EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
     <WindowsPackageType>None</WindowsPackageType>
     <ApplicationIcon>appicon.ico</ApplicationIcon>
+    <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Assets\icon-lively-48.png" />
@@ -66,11 +67,11 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
     <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.0.3" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.1.0" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22000.197" />
     <PackageReference Include="NLog" Version="5.0.0" />
-    <PackageReference Include="SettingsUI" Version="2.0.0" />
-    <PackageReference Include="WinUIEx" Version="1.4.3" />
+    <PackageReference Include="SettingsUI" Version="2.0.6" />
+    <PackageReference Include="WinUIEx" Version="1.5.0" />
     <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
 
