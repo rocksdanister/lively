@@ -18,10 +18,17 @@
                         FallbackColor="{ThemeResource SystemAltMediumColor}"
                         TintColor="#2C2C2C"
                         TintOpacity="0.15" />
+                    <AcrylicBrush
+                        x:Key="AcrylicBackgroundCustomBrush"
+                        FallbackColor="{ThemeResource SystemAltMediumColor}"
+                        TintColor="{ThemeResource SystemAltMediumColor}"
+                        TintLuminosityOpacity="0.5"
+                        TintOpacity="0.5" />
                 </ResourceDictionary>
 
                 <ResourceDictionary x:Key="HighContrast">
                     <SolidColorBrush x:Key="AcrylicInAppCustomGridBrush" Color="{ThemeResource SystemColorWindowColor}" />
+                    <SolidColorBrush x:Key="AcrylicBackgroundCustomBrush" Color="{ThemeResource SystemColorWindowColor}" />
                 </ResourceDictionary>
 
                 <ResourceDictionary x:Key="Light">
@@ -30,6 +37,12 @@
                         FallbackColor="{ThemeResource SystemAltMediumColor}"
                         TintColor="#FCFCFC"
                         TintOpacity="0.5" />
+                    <AcrylicBrush
+                        x:Key="AcrylicBackgroundCustomBrush"
+                        FallbackColor="{ThemeResource SystemAltMediumColor}"
+                        TintColor="{ThemeResource SystemAltMediumColor}"
+                        TintLuminosityOpacity="0.5"
+                        TintOpacity="0.2" />
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
         </ResourceDictionary>
