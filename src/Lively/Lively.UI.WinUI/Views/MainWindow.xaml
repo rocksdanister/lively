@@ -11,13 +11,12 @@
     Height="875"
     MinWidth="700"
     MinHeight="700"
-    Backdrop="Mica"
+    Backdrop="Acrylic"
     Closed="Window_Closed"
     TaskBarIcon="appicon.ico"
     mc:Ignorable="d">
 
-    <Grid>
-
+    <Grid Background="{ThemeResource AcrylicBackgroundCustomBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="32" />
             <RowDefinition Height="*" />
