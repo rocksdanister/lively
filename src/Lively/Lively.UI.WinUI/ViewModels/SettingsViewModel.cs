@@ -20,6 +20,7 @@ using Lively.Grpc.Client;
 using Lively.Models;
 using Lively.UI.WinUI.Factories;
 using Lively.UI.WinUI.Helpers;
+using Lively.UI.WinUI.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.UI.Dispatching;
@@ -36,6 +37,7 @@ namespace Lively.UI.WinUI.ViewModels
         private readonly IDesktopCoreClient desktopCore;
         private readonly ICommandsClient commands;
         private readonly IApplicationsRulesFactory appRuleFactory;
+        private readonly IDialogService dialogService;
         //private readonly IScreensaverService screenSaver;
         //private readonly IAppUpdaterService appUpdater;
         //private readonly ITransparentTbService ttbService;
@@ -44,6 +46,7 @@ namespace Lively.UI.WinUI.ViewModels
             IUserSettingsClient userSettings,
             IDesktopCoreClient desktopCore,
             ICommandsClient commands,
+            IDialogService dialogService,
             IApplicationsRulesFactory appRuleFactory)
         //IScreensaverService screenSaver, 
         //IAppUpdaterService appUpdater, 
@@ -53,6 +56,7 @@ namespace Lively.UI.WinUI.ViewModels
             this.desktopCore = desktopCore;
             this.commands = commands;
             this.appRuleFactory = appRuleFactory;
+            this.dialogService = dialogService;
             //this.screenSaver = screenSaver;
             //this.appUpdater = appUpdater;
             //this.ttbService = ttbService;
@@ -983,7 +987,14 @@ namespace Lively.UI.WinUI.ViewModels
             var file = await filePicker.PickSaveFileAsync();
             if (file != null)
             {
-                LogUtil.ExtractLogFiles(file.Path);
+                try
+                {
+                    LogUtil.ExtractLogFiles(file.Path);
+                }
+                catch (Exception ex)
+                {
+                    await dialogService.ShowDialog(ex.Message, "Error", "OK");
+                }
             }
         }
 

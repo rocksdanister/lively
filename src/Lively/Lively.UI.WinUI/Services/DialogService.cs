@@ -40,12 +40,12 @@ namespace Lively.UI.WinUI.Services
             return vm.SelectedItem?.Screen;
         }
 
-        public async Task ShowDialog(object content, string title, string message, string primaryBtnText)
+        public async Task ShowDialog(string message, string title, string primaryBtnText)
         {
             await new ContentDialog()
             {
                 Title = title,
-                Content = content,
+                Content = new TextBlock() { Text = message },
                 PrimaryButtonText = primaryBtnText,
                 DefaultButton = ContentDialogButton.Primary,
                 XamlRoot = App.Services.GetRequiredService<MainWindow>().Content.XamlRoot,

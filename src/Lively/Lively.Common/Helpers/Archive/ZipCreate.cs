@@ -63,7 +63,7 @@ namespace Lively.Common.Helpers.Archive
                         // Zip the file in buffered chunks
                         // the "using" will close the stream even if an exception occurs
                         var buffer = new byte[4096];
-                        using (FileStream fsInput = File.OpenRead(file))
+                        using (FileStream fsInput = File.Open(file, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
                         {
                             StreamUtils.Copy(fsInput, zipStream, buffer);
                         }
@@ -141,7 +141,7 @@ namespace Lively.Common.Helpers.Archive
                         // Zip the file in buffered chunks
                         // the "using" will close the stream even if an exception occurs
                         var buffer = new byte[4096];
-                        using (FileStream fsInput = File.OpenRead(file))
+                        using (FileStream fsInput = File.Open(file, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
                         {
                             StreamUtils.Copy(fsInput, zipStream, buffer);
                         }
