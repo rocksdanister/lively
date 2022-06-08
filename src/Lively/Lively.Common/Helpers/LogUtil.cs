@@ -69,49 +69,47 @@ namespace Lively.Common.Helpers
         /// </summary>
         public static void ExtractLogFiles(string savePath)
         {
-            if (!string.IsNullOrEmpty(savePath))
+            if (string.IsNullOrEmpty(savePath))
             {
-                try
-                {
-                    var files = new List<string>();
-                    var logFolder = Constants.CommonPaths.LogDir;
-                    if (Directory.Exists(logFolder))
-                    {
-                        files.AddRange(Directory.GetFiles(logFolder, "*.*", SearchOption.TopDirectoryOnly));
-                    }
+                throw new ArgumentNullException(savePath);
+            }
 
-                    var logFolderUI = Constants.CommonPaths.LogDirUI;
-                    if (Directory.Exists(logFolder))
-                    {
-                        files.AddRange(Directory.GetFiles(logFolderUI, "*.*", SearchOption.TopDirectoryOnly));
-                    }
+            var files = new List<string>();
+            var logFolder = Constants.CommonPaths.LogDir;
+            if (Directory.Exists(logFolder))
+            {
+                files.AddRange(Directory.GetFiles(logFolder, "*.*", SearchOption.TopDirectoryOnly));
+            }
 
-                    var settingsFile = Constants.CommonPaths.UserSettingsPath;
-                    if (File.Exists(settingsFile))
-                    {
-                        files.Add(settingsFile);
-                    }
+            var logFolderUI = Constants.CommonPaths.LogDirUI;
+            if (Directory.Exists(logFolder))
+            {
+                files.AddRange(Directory.GetFiles(logFolderUI, "*.*", SearchOption.TopDirectoryOnly));
+            }
 
-                    var layoutFile = Constants.CommonPaths.WallpaperLayoutPath;
-                    if (File.Exists(layoutFile))
-                    {
-                        files.Add(layoutFile);
-                    }
+            var settingsFile = Constants.CommonPaths.UserSettingsPath;
+            if (File.Exists(settingsFile))
+            {
+                files.Add(settingsFile);
+            }
 
-                    /*
-                    var procFile = Path.Combine(Program.AppDataDir, "temp", "process.txt");
-                    File.WriteAllLines(procFile, Process.GetProcesses().Select(x => x.ProcessName));
-                    files.Add(procFile);
-                    */
+            var layoutFile = Constants.CommonPaths.WallpaperLayoutPath;
+            if (File.Exists(layoutFile))
+            {
+                files.Add(layoutFile);
+            }
 
-                    if (files.Count != 0)
-                    {
-                        ZipCreate.CreateZip(savePath,
-                            new List<ZipCreate.FileData>() {
+            /*
+            var procFile = Path.Combine(Program.AppDataDir, "temp", "process.txt");
+            File.WriteAllLines(procFile, Process.GetProcesses().Select(x => x.ProcessName));
+            files.Add(procFile);
+            */
+
+            if (files.Count != 0)
+            {
+                ZipCreate.CreateZip(savePath,
+                    new List<ZipCreate.FileData>() {
                                 new ZipCreate.FileData() { ParentDirectory = Constants.CommonPaths.AppDataDir, Files = files } });
-                    }
-                }
-                catch {/* TODO */}
             }
         }
     }

@@ -6,7 +6,7 @@ namespace Lively.UI.WinUI.Services
     public interface IDialogService
     {
         Task<IDisplayMonitor> ShowDisplayChooseDialog();
-        Task ShowDialog(object content, string title, string message, string primaryBtnText);
+        Task ShowDialog(string message, string title, string primaryBtnText);
         Task<DialogResult> ShowDialog(object content,
             string title,
             string primaryBtnText,
