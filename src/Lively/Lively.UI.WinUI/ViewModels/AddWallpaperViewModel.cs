@@ -102,7 +102,7 @@ namespace Lively.UI.WinUI.ViewModels
             var filePicker = new FileOpenPicker();
             filePicker.SetOwnerWindow(App.Services.GetRequiredService<MainWindow>());
             //filePicker.FileTypeFilter.Add("*");
-            foreach (var item in LocalizationUtil.GetLocalizedSupportedFileDialogFilter(true))
+            foreach (var item in LocalizationUtil.SupportedFileDialogFilter(true))
             {
                 filePicker.FileTypeFilter.Add(item);
             }
