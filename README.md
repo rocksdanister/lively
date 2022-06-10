@@ -89,10 +89,9 @@ Its super easy.. barely an inconvenience, just drag & drop the files or webpages
 - Easy to use; Just drag'n'drop media files & webpages into lively window to set it as wallpaper.
 - Hardware accelerated video playback, powered by mpv player.
 - Interactive webgl wallpapers, powered by lightweight chromium engine Cef.
-- Windows 10 fluent design, native windows theme.
+- Windows 11 fluent design language.
 - Efficient, Lively is a native .net core application.
 - Fully opensource & free; no blackmagic, no features behind paywall.
-- Supports converting any wallpaper to video via screen recording.
 #### Performance
  * Wallpaper playback pauses when fullscreen application/games run on the machine (~0% cpu, gpu usage). 
  * Set wallpaper playback rules based on running foreground application.
@@ -107,16 +106,16 @@ Its super easy.. barely an inconvenience, just drag & drop the files or webpages
 
 **_I'm not officially affiliated with Unity technologies, godot, shadertoy;_**
 ## Download
-##### Version: v2.0.0.7 (Windows 10 1809 or above)
+##### Version: v2.0 (Windows 10 1809 or above)
 
 <a href='//www.microsoft.com/store/apps/9ntm2qc6qws7?cid=storebadge&ocid=badge'><img src='https://developer.microsoft.com/store/badges/images/English_get-it-from-MS.png' alt='English badge' width="142px" height="52px"/></a>
 
-##### Version: v1.7.5.2 (Windows 10 1903 or above)[What's new?](https://github.com/rocksdanister/lively/releases/tag/v1.7.5.2)
+##### Version: v2.0.2.1 (Windows 10 1903 or above)[What's new?](https://github.com/rocksdanister/lively/releases/tag/v2.0.2.1)
 - [`Installer`][direct-full-win32] 
 
-SHA256: 9313ceff2d9aadbcdf55813d0572f09c8e3c01b57739e2361888ea3ea320b347
+SHA256: 66fea3857d50f9f4dbe2c6df2630d567df283067cb4b90f36c27c3c9cc1d90d4
 
-[direct-full-win32]: https://github.com/rocksdanister/lively/releases/download/v1.7.5.2/lively_setup_x86_full_v1752.exe
+[direct-full-win32]: https://github.com/rocksdanister/lively/releases/download/v2.0.2.1/lively_setup_x86_full_v2021.exe
 
 Installer will give Smartscreen warning, [discussion.](https://github.com/rocksdanister/lively/issues/9)
 
