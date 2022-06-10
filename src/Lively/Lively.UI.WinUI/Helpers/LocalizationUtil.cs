@@ -48,7 +48,7 @@ namespace Lively.UI.WinUI.Helpers
         /// </summary>
         /// <param name="anyFile">Show any filetype.</param>
         /// <returns></returns>
-        public static List<string> GetLocalizedSupportedFileDialogFilter(bool anyFile = false)
+        public static List<string> SupportedFileDialogFilter(bool anyFile = false)
         {
             var filterCollection = new List<string>();
             if (anyFile)
