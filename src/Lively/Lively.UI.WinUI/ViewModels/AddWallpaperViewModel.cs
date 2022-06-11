@@ -106,10 +106,17 @@ namespace Lively.UI.WinUI.ViewModels
             {
                 filePicker.FileTypeFilter.Add(item);
             }
-            var file = await filePicker.PickSingleFileAsync();
-            if (file != null)
+            var files = await filePicker.PickMultipleFilesAsync();
+            if (files.Count > 0)
             {
-                await AddWallpaperFile(file.Path);
+                if (files.Count == 1)
+                {
+                    await AddWallpaperFile(files[0].Path);
+                }
+                else
+                {
+                    AddWallpaperFile(files.Select(x => x.Path).ToList());
+                }
             }
         }
 

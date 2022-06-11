@@ -455,7 +455,7 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                             filePicker.FileTypeFilter.Add(item);
                         }
                         var selectedFiles = await filePicker.PickMultipleFilesAsync();
-                        if (selectedFiles != null)
+                        if (selectedFiles.Count > 0)
                         {
                             var destFiles = new List<string>();
                             var destFolder = Path.Combine(Path.GetDirectoryName(libraryItem.FilePath), lp.Value["folder"].ToString());
