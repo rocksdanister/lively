@@ -9,7 +9,7 @@
     xmlns:local="using:Lively.UI.WinUI.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:toolkit="using:CommunityToolkit.WinUI.UI.Controls"
-    AllowDrop="True"
+    AllowDrop="False"
     DragLeave="Page_DragLeave"
     DragOver="Page_DragOver"
     Drop="Page_Drop"
