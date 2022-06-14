@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Lively.UI.WinUI.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    AllowDrop="True"
+    AllowDrop="False"
     DragLeave="Page_DragLeave"
     DragOver="Page_DragOver"
     Drop="Page_Drop"
@@ -14,7 +14,7 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="200" />
+            <RowDefinition Height="0" />
             <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
 
