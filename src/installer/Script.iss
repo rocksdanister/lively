@@ -2,7 +2,7 @@
 ; https://jrsoftware.org/isinfo.php
 
 #define MyAppName "Lively Wallpaper"
-#define MyAppVersion "1.9.7.0"
+#define MyAppVersion "2.0.2.2"
 #define MyAppPublisher "rocksdanister"
 #define MyAppURL "https://github.com/rocksdanister/lively"
 #define MyAppExeName "Lively.exe"
