@@ -67,10 +67,10 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
     <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.1.0" />
-    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22000.197" />
-    <PackageReference Include="NLog" Version="5.0.0" />
-    <PackageReference Include="SettingsUI" Version="2.0.6" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.1.1" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.1" />
+    <PackageReference Include="NLog" Version="5.0.1" />
+    <PackageReference Include="SettingsUI" Version="2.1.1" />
     <PackageReference Include="WinUIEx" Version="1.5.0" />
     <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>

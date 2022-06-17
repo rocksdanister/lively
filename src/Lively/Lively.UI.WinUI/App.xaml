@@ -7,7 +7,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
-                <ResourceDictionary Source="ms-appx:///SettingsUI/Themes/SettingsUI.xaml" />
+                <ResourceDictionary Source="ms-appx:///SettingsUI/Themes/Generic.xaml" />
                 <!--  Other merged dictionaries here  -->
             </ResourceDictionary.MergedDictionaries>
             <!--  Other app resources here  -->
