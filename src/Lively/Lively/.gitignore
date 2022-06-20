@@ -1,0 +1,2 @@
+# exclude plugins directory, plugins will be copied over after successful build by visual studio
+Plugins/
