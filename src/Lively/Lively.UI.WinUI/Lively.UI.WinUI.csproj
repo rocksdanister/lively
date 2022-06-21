@@ -15,6 +15,13 @@
     <ApplicationIcon>appicon.ico</ApplicationIcon>
     <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
   </PropertyGroup>
+
+  <PropertyGroup>
+    <!-- Output UI build to Lively core plugins directory -->
+    <OutputPath>..\Lively\Plugins\UI\</OutputPath> 
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Remove="Assets\icon-lively-48.png" />
     <None Remove="Assets\icons8-github-96.png" />
