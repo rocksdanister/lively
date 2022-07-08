@@ -110,12 +110,13 @@ Its super easy.. barely an inconvenience, just drag & drop the files or webpages
 
 <a href='//www.microsoft.com/store/apps/9ntm2qc6qws7?cid=storebadge&ocid=badge'><img src='https://developer.microsoft.com/store/badges/images/English_get-it-from-MS.png' alt='English badge' width="142px" height="52px"/></a>
 
-##### Version: v2.0.2.2 (Windows 10 1903 or above)[What's new?](https://github.com/rocksdanister/lively/releases/tag/v2.0.2.2)
+##### Version: v2.0.2.4 (Windows 10 1903 or above)[What's new?](https://github.com/rocksdanister/lively/releases/tag/v2.0.2.4)
 - [`Installer`][direct-full-win32] 
 
-SHA256: ece974279c873074fcb02e3ee5494c99d99e6e24544967a00c5d551749a04e86
+SHA256: 4cc1cc320a94504486e27a9e2c9fd9a2394fe7b48014f429e177eef43163419c
 
-[direct-full-win32]: https://github.com/rocksdanister/lively/releases/download/v2.0.2.2/lively_setup_x86_full_v2022.exe
+
+[direct-full-win32]: https://github.com/rocksdanister/lively/releases/download/v2.0.2.4/lively_setup_x86_full_v2024.exe
 
 Installer will give Smartscreen warning, [discussion.](https://github.com/rocksdanister/lively/issues/9)
 
