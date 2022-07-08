@@ -16,6 +16,7 @@
     <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Assets\banner-lively-1080.jpg" />
     <None Remove="Assets\icon-lively-48.png" />
     <None Remove="Assets\icons8-github-96.png" />
     <None Remove="Assets\icons8-mail-96.png" />
@@ -31,7 +32,6 @@
     <None Remove="Views\Pages\AddWallpaperView.xaml" />
     <None Remove="Views\Pages\ChooseDisplayView.xaml" />
     <None Remove="Views\Pages\ControlPanelView.xaml" />
-    <None Remove="Views\Pages\GalleryView.xaml" />
     <None Remove="Views\Pages\HelpView.xaml" />
     <None Remove="Views\Pages\LibraryAboutView.xaml" />
     <None Remove="Views\Pages\ScreensaverLayoutView.xaml" />
@@ -67,7 +67,7 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
     <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.1.1" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.1.2" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.1" />
     <PackageReference Include="NLog" Version="5.0.1" />
     <PackageReference Include="SettingsUI" Version="2.1.1" />
@@ -126,6 +126,9 @@
     <None Update="appicon.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Content Update="Assets\banner-lively-1080.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Page Update="Views\Pages\ChooseDisplayView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -142,9 +145,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Update="Views\Pages\TrayMenuHelp.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Views\Pages\GalleryView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Update="Views\Pages\AddWallpaperDataView.xaml">

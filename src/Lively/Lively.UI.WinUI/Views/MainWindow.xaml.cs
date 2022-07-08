@@ -6,6 +6,7 @@ using Lively.UI.WinUI.Helpers;
 using Lively.UI.WinUI.ViewModels;
 using Lively.UI.WinUI.Views.Pages;
 using Lively.UI.WinUI.Views.Pages.ControlPanel;
+using Lively.UI.WinUI.Views.Pages.Gallery;
 using Lively.UI.WinUI.Views.Pages.Settings;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
@@ -159,7 +160,11 @@ namespace Lively.UI.WinUI
                         userSettings.Save<ISettingsModel>();
                     }
                     NativeMethods.SetForegroundWindow(this.GetWindowHandleEx());
-                    //this.Activate();
+                    //If its duplicate mode fire the animation more than once.
+                    if (userSettings.Settings.WallpaperArrangement != WallpaperArrangement.duplicate || desktopCore.Wallpapers.Count < 2)
+                    {
+                        activeWallpaperOffsetAnimation.Start();
+                    }
                 }
                 controlPanelLabel.Label = $"{desktopCore.Wallpapers.Count} {i18n.GetString("ActiveWallpapers/Label")}";
             });

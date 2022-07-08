@@ -100,7 +100,7 @@ namespace Lively.UI.WinUI.Views.Pages
                         {
                             Title = obj.LivelyInfo.IsAbsolutePath ?
                                 i18n.GetString("DescriptionDeleteConfirmationLibrary") : i18n.GetString("DescriptionDeleteConfirmation"),
-                            Content = new LibraryAboutView() { DataContext = obj },
+                            Content = new LibraryAboutView() { DataContext = new LibraryAboutViewModel(obj) },
                             PrimaryButtonText = i18n.GetString("TextYes"),
                             SecondaryButtonText = i18n.GetString("TextNo"),
                             DefaultButton = ContentDialogButton.Primary,
@@ -138,7 +138,7 @@ namespace Lively.UI.WinUI.Views.Pages
                             Title = i18n.GetString("About/Label"),
                             Content = new LibraryAboutView()
                             {
-                                DataContext = obj,
+                                DataContext = new LibraryAboutViewModel(obj),
                             },
                             PrimaryButtonText = i18n.GetString("TextOK"),
                             DefaultButton = ContentDialogButton.Primary,

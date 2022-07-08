@@ -1,0 +1,119 @@
+﻿<Page
+    x:Class="Lively.UI.WinUI.Views.Pages.Gallery.GalleryLoginView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:animations="using:CommunityToolkit.WinUI.UI.Animations"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:Lively.UI.WinUI.Views.Pages.Gallery"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <AcrylicBrush
+            x:Key="DragAcrylicBrush"
+            FallbackColor="{ThemeResource SystemAltMediumColor}"
+            TintColor="{ThemeResource SystemAltMediumColor}"
+            TintOpacity="1.0" />
+    </Page.Resources>
+
+    <Grid Margin="-5">
+        <!--
+        <Grid.Background>
+            <ImageBrush ImageSource="ms-appx:///Assets/banner-lively-1080.jpg" Stretch="UniformToFill" />
+        </Grid.Background>
+        -->
+        <Image
+            x:Name="bgImage"
+            Source="ms-appx:///Assets/banner-lively-1080.jpg"
+            Stretch="UniformToFill">
+            <animations:Implicit.ShowAnimations>
+                <animations:TranslationAnimation
+                    From="0,-100,0"
+                    To="0"
+                    Duration="0:0:1" />
+                <animations:OpacityAnimation
+                    From="0"
+                    To="1.0"
+                    Duration="0:0:1" />
+            </animations:Implicit.ShowAnimations>
+        </Image>
+        <Page Background="{ThemeResource SystemAltMediumColor}" />
+
+
+        <StackPanel
+            x:Name="mainPanel"
+            Margin="50"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top">
+            <animations:Implicit.ShowAnimations>
+                <animations:TranslationAnimation
+                    From="0,50,0"
+                    To="0"
+                    Duration="0:0:1" />
+                <animations:OpacityAnimation
+                    From="0"
+                    To="1.0"
+                    Duration="0:0:1" />
+            </animations:Implicit.ShowAnimations>
+            <Grid>
+                <PersonPicture
+                    x:Name="personPicture"
+                    Margin="0,0,0,5"
+                    ProfilePicture="{Binding Picture, Mode=OneWay}" />
+                <ProgressRing
+                    x:Name="loadingProgressRing"
+                    Width="100"
+                    Height="100"
+                    IsActive="False"
+                    IsIndeterminate="True" />
+            </Grid>
+            <TextBlock
+                x:Name="mainText"
+                x:Uid="ComingSoon"
+                HorizontalAlignment="Center"
+                FontSize="24"
+                FontWeight="SemiBold">
+                <animations:Implicit.Animations>
+                    <animations:TranslationAnimation
+                        ImplicitTarget="Size"
+                        From="0"
+                        To="0,25,0"
+                        Duration="0:0:1" />
+                </animations:Implicit.Animations>
+            </TextBlock>
+            <StackPanel
+                x:Name="loginPanel"
+                Margin="0,10,0,0"
+                HorizontalAlignment="Center"
+                Visibility="Collapsed">
+                <animations:Implicit.HideAnimations>
+                    <animations:OpacityAnimation To="0" Duration="0:0:1" />
+                </animations:Implicit.HideAnimations>
+                <animations:Implicit.ShowAnimations>
+                    <animations:OpacityAnimation To="1" Duration="0:0:1" />
+                </animations:Implicit.ShowAnimations>
+                <Button
+                    Width="175"
+                    Height="35"
+                    Margin="0"
+                    Command="{Binding AuthGoogleCommand}">
+                    <StackPanel Orientation="Horizontal">
+                        <BitmapIcon Foreground="{ThemeResource SystemControlBackgroundBaseHighBrush}" UriSource="ms-appx:///Assets/icons8-google-96.png" />
+                        <TextBlock Margin="5,0,0,0" VerticalAlignment="Center">Google</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button
+                    Width="175"
+                    Height="35"
+                    Margin="0,5,0,0"
+                    Command="{Binding AuthGithubCommand}"
+                    Visibility="Visible">
+                    <StackPanel Orientation="Horizontal">
+                        <BitmapIcon Foreground="{ThemeResource SystemControlBackgroundBaseHighBrush}" UriSource="ms-appx:///Assets/icons8-github-96.png" />
+                        <TextBlock Margin="5,0,0,0" VerticalAlignment="Center">Github</TextBlock>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>
