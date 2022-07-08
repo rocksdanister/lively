@@ -1,0 +1,34 @@
+﻿<Page
+    x:Class="Lively.UI.WinUI.Views.Pages.Gallery.GalleryView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:Lively.UI.WinUI.Views.Pages.Gallery"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
+
+    <Grid>
+        <NavigationView
+            x:Name="navView"
+            Margin="-50,0,0,0"
+            IsBackButtonVisible="Collapsed"
+            IsSettingsVisible="False"
+            PaneDisplayMode="LeftCompact">
+            <NavigationView.MenuItems>
+                <NavigationViewItem
+                    Content="Home"
+                    Icon="Home"
+                    IsEnabled="False"
+                    Tag="featured" />
+                <NavigationViewItem
+                    Content="Library"
+                    Icon="Library"
+                    Tag="library" />
+                <!--  navView selection not visible to user  -->
+                <NavigationViewItem Tag="login" Visibility="Collapsed" />
+            </NavigationView.MenuItems>
+            <Frame x:Name="contentFrame" />
+        </NavigationView>
+    </Grid>
+</Page>

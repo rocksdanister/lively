@@ -6,9 +6,11 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Lively.UI.WinUI.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="using:CommunityToolkit.WinUI.UI.Converters"
     mc:Ignorable="d">
 
     <Page.Resources>
+        <toolkit:BoolToVisibilityConverter x:Key="VisibilityConverter" />
         <converters:WallpaperTypeEnumToStringConverter x:Key="WallpaperTypeEnumToStringConverter" />
     </Page.Resources>
 
@@ -31,7 +33,7 @@
                 <TextBlock
                     Margin="0,5,0,0"
                     Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
-                    Text="{Binding LivelyInfo.Type, Mode=OneWay, Converter={StaticResource WallpaperTypeEnumToStringConverter}}"
+                    Text="{Binding Type, Mode=OneWay, Converter={StaticResource WallpaperTypeEnumToStringConverter}}"
                     TextWrapping="Wrap" />
                 <TextBlock x:Uid="Author" Margin="0,5,0,0" />
                 <TextBlock
@@ -39,6 +41,14 @@
                     Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
                     Text="{Binding Author}"
                     TextWrapping="Wrap" />
+                <StackPanel Visibility="{Binding IsInstalled, Mode=OneWay, Converter={StaticResource VisibilityConverter}}">
+                    <TextBlock Margin="0,5,0,0" Text="Size" />
+                    <TextBlock
+                        Margin="0,5,0,0"
+                        Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
+                        Text="{Binding DirectorySize}"
+                        TextWrapping="Wrap" />
+                </StackPanel>
                 <TextBlock x:Uid="WallpaperSource" Margin="0,5,0,0" />
                 <HyperlinkButton
                     HorizontalContentAlignment="Left"
@@ -49,7 +59,7 @@
                         <TextBlock
                             MaxLines="1"
                             Style="{ThemeResource BodyTextBlockStyle}"
-                            Text="{Binding LivelyInfo.Contact}" />
+                            Text="{Binding Contact}" />
                     </HyperlinkButton.Content>
                 </HyperlinkButton>
             </StackPanel>
