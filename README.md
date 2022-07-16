@@ -9,6 +9,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/rocksdanister/lively.svg)](https://github.com/rocksdanister/lively/stargazers)
 [![Documentation](https://img.shields.io/badge/Docs-WIP-red.svg)](https://github.com/rocksdanister/lively/wiki)
 [![Issues](https://img.shields.io/github/issues/rocksdanister/lively.svg)](https://github.com/rocksdanister/lively/issues)
+[![Crowdin](https://badges.crowdin.net/lively-wallpaper/localized.svg)](https://crowdin.com/project/lively-wallpaper)
 
 ## Contents
 - [About](#about)
