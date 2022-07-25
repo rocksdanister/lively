@@ -4056,6 +4056,12 @@ body.is-preload #sidebar nav ul li {
   animation: spin 14s linear infinite;
 }
 
+.award {
+  width: 40rem;
+  max-width: 100%;
+  z-index: 1;
+}
+
 @media screen and (max-width: 980px) {
   #intro p br {
     display: none;
