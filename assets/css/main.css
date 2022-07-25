@@ -781,9 +781,184 @@ hr.major {
     width: 66.66667%;
   }
 
+<<<<<<< HEAD
   .row > .off-8-xlarge {
     margin-left: 66.66667%;
   }
+=======
+/* Actions */
+	.DownloadBtn {
+    text-align: left!important;
+	}	
+  
+  .DownloadBtn > a{
+    background-color: #000000;
+    color: white !important;
+    border: transparent!important;
+    padding: 0;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1rem;
+    font-family: Segoe UI;
+    cursor: pointer;
+    border-radius: 11px;
+    height: 6.5rem;
+    width: 288px;
+    max-width: 288px;
+    min-width: 288px;
+  }
+    .DownloadBtn > a:hover{
+      transform: translate(0, -4px);
+      cursor: pointer;
+      box-shadow: 0 12px 40px 2px rgba(0, 0, 0, 0.05);
+      transition: 0.35s ease;
+      border: transparent!important;
+    }
+    .DownloadBtn > a:hover::after{
+      opacity: 0;
+    }
+  
+		.DownloadBtn .fas{
+			font-size: 4rem;
+			position: relative;
+			top: 0rem;
+			right: -.5rem;
+		}
+		.DownloadBtn span{
+			position: relative;
+			max-width: 13ch;
+			width: 13ch;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			min-width: 13ch;
+			display: inline-block;
+      font-size: 1.5rem;
+      right: -0.5rem;
+      top: 0.75rem;	
+		}
+
+	ul.actions {
+		display: -moz-flex;
+		display: -webkit-flex;
+		display: -ms-flex;
+		display: flex;
+		cursor: default;
+		list-style: none;
+		margin-left: -1em;
+		padding-left: 0;
+		flex-wrap: wrap;
+	}
+
+		ul.actions li {
+			padding: 0 0 0 1em;
+			vertical-align: middle;
+		}
+
+		ul.actions.special {
+			-moz-justify-content: center;
+			-webkit-justify-content: center;
+			-ms-justify-content: center;
+			justify-content: center;
+			width: 100%;
+			margin-left: 0;
+		}
+
+			ul.actions.special li:first-child {
+				padding-left: 0;
+			}
+
+		ul.actions.stacked {
+			-moz-flex-direction: column;
+			-webkit-flex-direction: column;
+			-ms-flex-direction: column;
+			flex-direction: column;
+			margin-left: 0;
+		}
+
+			ul.actions.stacked li {
+				padding: 1.3em 0 0 0;
+			}
+
+				ul.actions.stacked li:first-child {
+					padding-top: 0;
+				}
+
+		ul.actions.fit {
+			width: calc(100% + 1em);
+		}
+
+			ul.actions.fit li {
+				-moz-flex-grow: 1;
+				-webkit-flex-grow: 1;
+				-ms-flex-grow: 1;
+				flex-grow: 1;
+				-moz-flex-shrink: 1;
+				-webkit-flex-shrink: 1;
+				-ms-flex-shrink: 1;
+				flex-shrink: 1;
+				width: 100%;
+			}
+
+				ul.actions.fit li > * {
+					width: 100%;
+				}
+
+			ul.actions.fit.stacked {
+				width: 100%;
+			}
+
+		@media screen and (max-width: 480px) {
+
+			ul.actions:not(.fixed) {
+				-moz-flex-direction: column;
+				-webkit-flex-direction: column;
+				-ms-flex-direction: column;
+				flex-direction: column;
+				margin-left: 0;
+				width: 100% !important;
+			}
+
+				ul.actions:not(.fixed) li {
+					-moz-flex-grow: 1;
+					-webkit-flex-grow: 1;
+					-ms-flex-grow: 1;
+					flex-grow: 1;
+					-moz-flex-shrink: 1;
+					-webkit-flex-shrink: 1;
+					-ms-flex-shrink: 1;
+					flex-shrink: 1;
+					padding: 1em 0 0 0;
+					text-align: center;
+					width: 100%;
+				}
+
+					ul.actions:not(.fixed) li > * {
+						width: 100%;
+					}
+
+					ul.actions:not(.fixed) li:first-child {
+						padding-top: 0;
+					}
+
+					ul.actions:not(.fixed) li input[type="submit"],
+					ul.actions:not(.fixed) li input[type="reset"],
+					ul.actions:not(.fixed) li input[type="button"],
+					ul.actions:not(.fixed) li button,
+					ul.actions:not(.fixed) li .button {
+						width: 100%;
+					}
+
+						ul.actions:not(.fixed) li input[type="submit"].icon:before,
+						ul.actions:not(.fixed) li input[type="reset"].icon:before,
+						ul.actions:not(.fixed) li input[type="button"].icon:before,
+						ul.actions:not(.fixed) li button.icon:before,
+						ul.actions:not(.fixed) li .button.icon:before {
+							margin-left: -0.5rem;
+						}
+
+		}
+>>>>>>> parent of 834da99... removed local installer hover animation
 
   .row > .col-9-xlarge {
     width: 75%;
