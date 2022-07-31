@@ -2809,9 +2809,8 @@ dl dd {
   cursor: pointer;
   border-radius: 11px;
   height: 6.5rem;
-  width: 288px;
-  max-width: 288px;
-  min-width: 288px;
+  max-width: 292px;
+  min-width: 292px;
 }
 .DownloadBtn > a:hover {
   cursor: pointer;
@@ -3241,6 +3240,7 @@ body.is-ie .spotlights > section {
   width: 50em;
   -ms-flex: 1;
   flex: 1;
+  align-items: flex-start;
 }
 
 .spotlights > section > .content > .inner {
