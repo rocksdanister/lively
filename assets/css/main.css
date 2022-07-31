@@ -3240,6 +3240,7 @@ body.is-ie .spotlights > section {
   width: 50em;
   -ms-flex: 1;
   flex: 1;
+  align-items: flex-start;
 }
 
 .spotlights > section > .content > .inner {
