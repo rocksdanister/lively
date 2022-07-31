@@ -2809,9 +2809,8 @@ dl dd {
   cursor: pointer;
   border-radius: 11px;
   height: 6.5rem;
-  width: 288px;
-  max-width: 288px;
-  min-width: 288px;
+  max-width: 292px;
+  min-width: 292px;
 }
 .DownloadBtn > a:hover {
   cursor: pointer;
