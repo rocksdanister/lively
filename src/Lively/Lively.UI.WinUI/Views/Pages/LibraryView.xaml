@@ -8,7 +8,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Lively.UI.WinUI.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:media="using:CommunityToolkit.WinUI.UI.Media"
     xmlns:toolkit="using:CommunityToolkit.WinUI.UI.Controls"
+    x:Name="rootPage"
     AllowDrop="False"
     DragLeave="Page_DragLeave"
     DragOver="Page_DragOver"
@@ -21,8 +23,9 @@
             FallbackColor="{ThemeResource SystemAltMediumColor}"
             TintColor="{ThemeResource SystemAltMediumColor}"
             TintOpacity="1.0" />
-        <converters:BoolToVisibilityConverter x:Key="VisibilityConverter" />
+        <customconverters:BooleanToVisibilityConverter x:Key="VisibilityConverter" />
         <customconverters:ListViewSelectionModeStringToEnumConverter x:Key="ListViewSelectionModeStringToEnumConverter" />
+        <customconverters:FloatToBoolConverter x:Key="ProgressRingIsIndeterminateConverter" />
     </Page.Resources>
 
     <Grid>
@@ -35,12 +38,14 @@
 
         <toolkit:AdaptiveGridView
             x:Name="libraryGridView"
-            Margin="10"
+            Margin="5"
+            Padding="5"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
             DesiredWidth="272"
             IsItemClickEnabled="True"
             ItemClickCommand="{Binding LibraryClickCommand}"
+            ItemHeight="153"
             ItemsSource="{Binding LibraryItems}"
             RightTapped="libraryGridView_RightTapped"
             SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
@@ -90,10 +95,19 @@
                     </MenuFlyoutItem>
                     <MenuFlyoutItem
                         x:Name="exportWallpaper"
-                        x:Uid="ExportWallpaperZip"
+                        x:Uid="TextShare"
                         Click="contextMenu_Click">
                         <MenuFlyoutItem.Icon>
-                            <FontIcon Glyph="&#xE74E;" />
+                            <FontIcon Glyph="&#xE72D;" />
+                        </MenuFlyoutItem.Icon>
+                    </MenuFlyoutItem>
+                    <MenuFlyoutItem
+                        x:Name="reportWallpaper"
+                        x:Uid="TextReportWallpaper"
+                        Click="contextMenu_Click"
+                        Visibility="Collapsed">
+                        <MenuFlyoutItem.Icon>
+                            <FontIcon Glyph="&#xE730;" />
                         </MenuFlyoutItem.Icon>
                     </MenuFlyoutItem>
                     <MenuFlyoutItem
@@ -116,54 +130,104 @@
             </MenuFlyout>
             <toolkit:AdaptiveGridView.ItemTemplate>
                 <DataTemplate>
-                    <controls:AspectContentControl HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
-                        <Grid AutomationProperties.Name="{Binding Title}">
+                    <Grid AutomationProperties.Name="{Binding Title}">
 
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="45" />
-                            </Grid.ColumnDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="45" />
+                        </Grid.ColumnDefinitions>
 
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*" />
-                                <RowDefinition Height="60" />
-                            </Grid.RowDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="60" />
+                        </Grid.RowDefinitions>
 
-                            <Image
-                                Grid.RowSpan="2"
-                                Grid.ColumnSpan="2"
-                                Source="{Binding ImagePath}"
-                                Stretch="UniformToFill" />
-                            <StackPanel
-                                Grid.Row="1"
-                                Grid.ColumnSpan="2"
-                                Padding="7"
-                                Background="{ThemeResource AcrylicInAppCustomGridBrush}"
-                                Opacity="0.97"
-                                Orientation="Vertical">
-                                <TextBlock
-                                    Margin="0,0,30,0"
-                                    MaxLines="1"
-                                    Style="{ThemeResource BodyTextBlockStyle}"
-                                    Text="{Binding Title}" />
-                                <TextBlock
-                                    Margin="0,0,30,0"
-                                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
-                                    MaxLines="2"
-                                    Style="{ThemeResource CaptionTextBlockStyle}"
-                                    Text="{Binding Desc}" />
-                            </StackPanel>
+                        <Image
+                            Grid.RowSpan="2"
+                            Grid.ColumnSpan="2"
+                            Source="{Binding ImagePath}"
+                            Stretch="UniformToFill" />
+
+                        <Grid
+                            Grid.Row="0"
+                            Grid.ColumnSpan="2"
+                            Visibility="{Binding IsDownloading, Mode=OneWay, Converter={StaticResource VisibilityConverter}}">
+                            <Border>
+                                <Border.Background>
+                                    <media:BackdropBlurBrush Amount="3" />
+                                </Border.Background>
+                            </Border>
+                            <TextBlock
+                                Margin="2.5"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Bottom"
+                                FontSize="10"
+                                FontWeight="Medium"
+                                Text="{Binding DownloadingProgressText, Mode=OneWay}" />
+                        </Grid>
+
+                        <StackPanel
+                            Grid.Row="1"
+                            Grid.ColumnSpan="2"
+                            Padding="7"
+                            Background="{ThemeResource AcrylicInAppCustomGridBrush}"
+                            Orientation="Vertical">
+                            <TextBlock
+                                Margin="0,0,30,0"
+                                MaxLines="1"
+                                Style="{ThemeResource BodyTextBlockStyle}"
+                                Text="{Binding Title}" />
+                            <TextBlock
+                                Margin="0,0,30,0"
+                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
+                                MaxLines="2"
+                                Style="{ThemeResource CaptionTextBlockStyle}"
+                                Text="{Binding Desc}" />
+                        </StackPanel>
+
+                        <FontIcon
+                            Grid.RowSpan="2"
+                            Grid.ColumnSpan="2"
+                            Margin="5"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            FontSize="12"
+                            Glyph="&#xE753;"
+                            Visibility="{Binding IsSubscribed, Converter={StaticResource VisibilityConverter}, Mode=OneWay}" />
+
+                        <Grid Grid.Row="1" Grid.Column="1">
                             <Button
-                                Grid.Row="1"
-                                Grid.Column="1"
                                 VerticalAlignment="Stretch"
                                 Background="Transparent"
                                 BorderBrush="Transparent"
-                                Click="MoreButton_Click">
+                                Click="MoreButton_Click"
+                                Visibility="{Binding IsDownloading, Converter={StaticResource VisibilityConverter}, Mode=OneWay, ConverterParameter=Reverse}">
                                 <FontIcon Glyph="&#xE10C;" />
                             </Button>
+                            <Button
+                                VerticalAlignment="Stretch"
+                                Background="Transparent"
+                                BorderBrush="Transparent"
+                                Command="{Binding DataContext.CancelDownloadCommand, ElementName=rootPage}"
+                                CommandParameter="{Binding}"
+                                Visibility="{Binding IsDownloading, Converter={StaticResource VisibilityConverter}, Mode=OneWay}">
+                                <Grid>
+                                    <ProgressRing
+                                        Width="22"
+                                        Height="22"
+                                        Foreground="{ThemeResource TextFillColorPrimaryBrush}"
+                                        IsActive="{Binding IsDownloading, Mode=OneWay}"
+                                        IsIndeterminate="{Binding DownloadingProgress, Converter={StaticResource ProgressRingIsIndeterminateConverter}, Mode=OneWay}"
+                                        Value="{Binding DownloadingProgress, Mode=OneWay}" />
+                                    <FontIcon
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        FontSize="8"
+                                        Glyph="&#xE978;" />
+                                </Grid>
+                            </Button>
                         </Grid>
-                    </controls:AspectContentControl>
+                    </Grid>
                 </DataTemplate>
             </toolkit:AdaptiveGridView.ItemTemplate>
             <!--

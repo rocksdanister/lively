@@ -1,5 +1,6 @@
 ﻿using Lively.Common;
 using System;
+using System.Collections.Generic;
 
 namespace Lively.Models
 {
@@ -21,7 +22,9 @@ namespace Lively.Models
         public string FileName { get; set; }
         public string Arguments { get; set; } //start commandline args
         public bool IsAbsolutePath { get; set; } //for auto-generated tile: true, user opened wp's.. FileName will be full file path.
-
+        public string Id { get; set; } //gallery wallpaper id
+        public List<string> Tags { get; set; }
+        public int Version { get; set; } //wallpaper version
         public LivelyInfoModel()
         {
             AppVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
@@ -36,6 +39,9 @@ namespace Lively.Models
             Contact = null;
             Arguments = null;
             IsAbsolutePath = false;
+            Id = null;
+            Tags = null;
+            Version = 0;
         }
 
         public LivelyInfoModel(LivelyInfoModel info)
@@ -52,6 +58,9 @@ namespace Lively.Models
             License = info.License;
             Arguments = info.Arguments;
             IsAbsolutePath = info.IsAbsolutePath;
+            Id = info.Id;
+            Tags = info.Tags;
+            Version = info.Version;
         }
     }
 }

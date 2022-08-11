@@ -1,9 +1,9 @@
-﻿using Lively.Common;
+﻿using CommunityToolkit.Mvvm.Input;
+using Lively.Common;
 using Lively.Common.Helpers.MVVM;
 using Lively.Common.Services;
 using Lively.Grpc.Client;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.UI.Xaml;
 using System;
 using System.Net.Http;
@@ -151,7 +151,7 @@ namespace Lively.UI.WinUI.ViewModels
         {
             try
             {
-                var client = httpClientFactory.CreateClient();
+                using var client = httpClientFactory.CreateClient();
                 using HttpResponseMessage response = await client.GetAsync("https://raw.githubusercontent.com/wiki/rocksdanister/lively/Patreon.md");
                 return await response.Content.ReadAsStringAsync();
             }

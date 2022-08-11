@@ -1,0 +1,95 @@
+﻿<Page
+    x:Class="Lively.UI.WinUI.Views.Pages.Gallery.ShareWallpaperView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:SettingsUI.Controls"
+    xmlns:customconverters="using:Lively.UI.WinUI.Helpers.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:Lively.UI.WinUI.Views.Pages.Gallery"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <customconverters:BooleanToVisibilityConverter x:Key="VisibilityConverter" />
+    </Page.Resources>
+
+    <Grid>
+        <StackPanel>
+            <Grid
+                MaxWidth="410"
+                Padding="10,5,0,0"
+                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                BorderThickness="1"
+                CornerRadius="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="160" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Border
+                    Grid.Column="0"
+                    Width="144"
+                    Height="81"
+                    Margin="0,5,0,10"
+                    HorizontalAlignment="Left"
+                    CornerRadius="5">
+                    <Image Source="{Binding Model.ImagePath}" Stretch="UniformToFill" />
+                </Border>
+                <StackPanel Grid.Column="1" Margin="0,5,5,0">
+                    <TextBlock
+                        MaxLines="1"
+                        Style="{ThemeResource BodyTextBlockStyle}"
+                        Text="{Binding Model.Title}" />
+                    <TextBlock
+                        MaxLines="3"
+                        Style="{ThemeResource CaptionTextBlockStyle}"
+                        Text="{Binding Model.Desc}" />
+                </StackPanel>
+            </Grid>
+
+            <Grid
+                MinHeight="100"
+                Padding="10"
+                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                BorderThickness="1"
+                CornerRadius="5">
+                <StackPanel
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+                    <Button
+                        Width="125"
+                        Height="75"
+                        Margin="0,0,0,0"
+                        Command="{Binding ExportFileCommand}">
+                        <StackPanel>
+                            <FontIcon Glyph="&#xE74E;" />
+                            <TextBlock x:Uid="ExportWallpaperZip" />
+                        </StackPanel>
+                    </Button>
+                    <Button
+                        Width="125"
+                        Height="75"
+                        Margin="5,0,0,0"
+                        Command="{Binding GalleryFileUploadCommand}">
+                        <StackPanel>
+                            <FontIcon Glyph="&#xE753;" />
+                            <TextBlock x:Uid="ExportWallpaperGallery" />
+                        </StackPanel>
+                    </Button>
+                    <Button
+                        Width="125"
+                        Height="75"
+                        Margin="5,0,0,0"
+                        Command="{Binding CopyLinkCommand}">
+                        <StackPanel>
+                            <FontIcon Glyph="&#xE71B;" />
+                            <TextBlock x:Uid="ExportWallpaperLink" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -7,7 +7,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Lively.UI.WinUI.Views.Pages.ControlPanel"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -16,17 +16,23 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="200" />
-            <RowDefinition Height="2*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <Grid
             Grid.Row="0"
-            MinWidth="400"
-            Margin="15,30,15,10"
             HorizontalAlignment="Stretch"
-            VerticalAlignment="Stretch">
+            VerticalAlignment="Stretch"
+            Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+            CornerRadius="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
             <GridView
+                Grid.Row="0"
                 Margin="5"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
@@ -57,10 +63,11 @@
                     </ItemsPanelTemplate>
                 </GridView.ItemsPanel>
             </GridView>
-        </Grid>
 
-        <StackPanel Grid.Row="1" VerticalAlignment="Bottom">
-            <CommandBar HorizontalAlignment="Center" DefaultLabelPosition="Right">
+            <CommandBar
+                Grid.Row="1"
+                HorizontalAlignment="Center"
+                DefaultLabelPosition="Right">
                 <AppBarButton
                     x:Uid="CustomiseWallpaper"
                     Command="{Binding CustomiseWallpaperCommand}"
@@ -79,32 +86,34 @@
                     </AppBarButton.Icon>
                 </AppBarButton>
             </CommandBar>
+        </Grid>
 
-            <controls:SettingExpander Margin="0,5,0,0" IsExpanded="True">
-                <controls:SettingExpander.Header>
-                    <controls:Setting
-                        x:Uid="WallpaperLayout"
-                        Icon="&#xE90C;"
-                        Style="{StaticResource ExpanderHeaderSettingStyle}" />
-                </controls:SettingExpander.Header>
-                <controls:SettingExpander.Content>
-                    <StackPanel>
-                        <controls:Setting HorizontalAlignment="Left" Style="{StaticResource ExpanderContentSettingStyle}">
-                            <RadioButtons SelectedIndex="{Binding SelectedWallpaperLayout, Mode=TwoWay}">
-                                <RadioButton x:Uid="WallpaperLayoutPerScreen" />
-                                <RadioButton x:Uid="WallpaperLayoutSpan" />
-                                <RadioButton x:Uid="WallpaperLayoutDuplicate" />
-                            </RadioButtons>
-                        </controls:Setting>
-                        <Rectangle Style="{StaticResource ExpanderSeparatorStyle}" />
-                        <CheckBox
-                            x:Uid="WallpaperLayoutScreenPicker"
-                            Margin="{StaticResource ExpanderSettingMargin}"
-                            IsChecked="{Binding IsRememberSelectedScreen, Mode=TwoWay, Converter={StaticResource BoolNegationConverter}}" />
-                    </StackPanel>
-                </controls:SettingExpander.Content>
-            </controls:SettingExpander>
-
-        </StackPanel>
+        <controls:SettingExpander
+            Grid.Row="1"
+            Margin="0,5,0,0"
+            IsExpanded="True">
+            <controls:SettingExpander.Header>
+                <controls:Setting
+                    x:Uid="WallpaperLayout"
+                    Icon="&#xE90C;"
+                    Style="{StaticResource ExpanderHeaderSettingStyle}" />
+            </controls:SettingExpander.Header>
+            <controls:SettingExpander.Content>
+                <StackPanel>
+                    <controls:Setting HorizontalAlignment="Left" Style="{StaticResource ExpanderContentSettingStyle}">
+                        <RadioButtons SelectedIndex="{Binding SelectedWallpaperLayout, Mode=TwoWay}">
+                            <RadioButton x:Uid="WallpaperLayoutPerScreen" />
+                            <RadioButton x:Uid="WallpaperLayoutSpan" />
+                            <RadioButton x:Uid="WallpaperLayoutDuplicate" />
+                        </RadioButtons>
+                    </controls:Setting>
+                    <Rectangle Style="{StaticResource ExpanderSeparatorStyle}" />
+                    <CheckBox
+                        x:Uid="WallpaperLayoutScreenPicker"
+                        Margin="{StaticResource ExpanderSettingMargin}"
+                        IsChecked="{Binding IsRememberSelectedScreen, Mode=TwoWay, Converter={StaticResource BoolNegationConverter}}" />
+                </StackPanel>
+            </controls:SettingExpander.Content>
+        </controls:SettingExpander>
     </Grid>
 </Page>

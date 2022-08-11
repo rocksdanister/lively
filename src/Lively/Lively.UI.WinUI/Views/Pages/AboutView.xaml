@@ -8,6 +8,7 @@
     xmlns:local="using:Lively.UI.WinUI.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:wctc="using:CommunityToolkit.WinUI.UI.Controls"
+    MinWidth="500"
     Unloaded="Page_Unloaded"
     mc:Ignorable="d">
 
@@ -17,7 +18,7 @@
 
     <Grid>
         <ScrollViewer>
-            <StackPanel Margin="10">
+            <StackPanel Margin="5,0,10,5">
                 <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                     <PersonPicture
                         HorizontalAlignment="Center"
@@ -25,7 +26,8 @@
                         ProfilePicture="https://avatars.githubusercontent.com/rocksdanister" />
                     <TextBlock
                         x:Uid="AboutMe"
-                        Margin="10"
+                        Margin="5"
+                        FontSize="12"
                         Style="{ThemeResource BodyTextBlockStyle}" />
                 </StackPanel>
                 <CommandBar HorizontalAlignment="Center" OverflowButtonVisibility="Collapsed">
@@ -56,47 +58,49 @@
                     </AppBarButton>
                 </CommandBar>
 
-                <controls:SettingsGroup Margin="0,-25,0,0">
-                    <controls:Setting Header="{Binding AppVersionText}" Icon="&#xE117;">
-                        <controls:Setting.Description>
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock Style="{StaticResource SecondaryTextStyle}">
-                                    <Run Text="{Binding UpdateDateText}" />
-                                    <!--<Run Text="2021/09/10" />-->
-                                </TextBlock>
-                                <HyperlinkButton
-                                    Margin="0,2,0,0"
-                                    Content="Release notes"
-                                    NavigateUri="https://github.com/rocksdanister/lively/releases" />
-                            </StackPanel>
-                        </controls:Setting.Description>
-                        <controls:Setting.ActionContent>
-                            <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
-                                <Button
-                                    HorizontalAlignment="Right"
-                                    Command="{Binding UpdateAppCommand}"
-                                    Content="{Binding UpdateCommandText}"
-                                    Visibility="{Binding IsNotWinStore, Mode=OneWay, Converter={StaticResource VisibilityConverter}}" />
-                            </StackPanel>
-                        </controls:Setting.ActionContent>
-                    </controls:Setting>
-                    <InfoBar
-                        Name="infoBar"
-                        Title="{Binding UpdateStatusText}"
-                        IsClosable="False"
-                        IsOpen="True"
-                        Severity="Success"
-                        Visibility="{Binding IsNotWinStore, Mode=OneWay, Converter={StaticResource VisibilityConverter}}" />
-                </controls:SettingsGroup>
+                <controls:Setting
+                    Margin="0,5,0,0"
+                    Header="{Binding AppVersionText}"
+                    Icon="&#xE117;">
+                    <controls:Setting.Description>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Style="{StaticResource SecondaryTextStyle}">
+                                <Run Text="{Binding UpdateDateText}" />
+                                <!--<Run Text="2021/09/10" />-->
+                            </TextBlock>
+                            <HyperlinkButton
+                                Margin="0,2,0,0"
+                                Content="Release notes"
+                                NavigateUri="https://github.com/rocksdanister/lively/releases" />
+                        </StackPanel>
+                    </controls:Setting.Description>
+                    <controls:Setting.ActionContent>
+                        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                            <Button
+                                HorizontalAlignment="Right"
+                                Command="{Binding UpdateAppCommand}"
+                                Content="{Binding UpdateCommandText}"
+                                Visibility="{Binding IsNotWinStore, Mode=OneWay, Converter={StaticResource VisibilityConverter}}" />
+                        </StackPanel>
+                    </controls:Setting.ActionContent>
+                </controls:Setting>
+                <InfoBar
+                    Name="infoBar"
+                    Title="{Binding UpdateStatusText}"
+                    Margin="0,-1.5,0,0"
+                    IsClosable="False"
+                    IsOpen="True"
+                    Severity="Success"
+                    Visibility="{Binding IsNotWinStore, Mode=OneWay, Converter={StaticResource VisibilityConverter}}" />
 
-                <controls:SettingExpander Margin="0,5,0,0" IsExpanded="False">
+                <controls:SettingExpander IsExpanded="False">
                     <controls:SettingExpander.Header>
                         <controls:Setting Header="Patreon" Style="{StaticResource ExpanderHeaderSettingStyle}" />
                     </controls:SettingExpander.Header>
                     <controls:SettingExpander.Content>
                         <ScrollViewer
-                            Height="100"
-                            MaxHeight="100"
+                            Height="250"
+                            MaxHeight="250"
                             Margin="{StaticResource ExpanderSettingMargin}"
                             HorizontalScrollBarVisibility="Hidden"
                             VerticalScrollBarVisibility="Auto">
@@ -108,25 +112,42 @@
                     </controls:SettingExpander.Content>
                 </controls:SettingExpander>
 
-                <StackPanel Margin="5">
+                <StackPanel
+                    x:Name="contributorPanel"
+                    Margin="0"
+                    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                    BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                    BorderThickness="1"
+                    CornerRadius="5"
+                    Visibility="Visible">
+                    <TextBlock
+                        x:Uid="TextContributors"
+                        Margin="0,5,0,0"
+                        HorizontalAlignment="Center" />
+                    <StackPanel
+                        Margin="5"
+                        HorizontalAlignment="Center"
+                        Orientation="Horizontal">
+                        <HyperlinkButton NavigateUri="https://github.com/roxxel" ToolTipService.ToolTip="Roxxel">
+                            <PersonPicture Width="35" ProfilePicture="https://avatars.githubusercontent.com/roxxel" />
+                        </HyperlinkButton>
+                        <HyperlinkButton NavigateUri="https://github.com/dabjulmaros" ToolTipService.ToolTip="Dabjulmaros">
+                            <PersonPicture Width="35" ProfilePicture="https://avatars.githubusercontent.com/dabjulmaros" />
+                        </HyperlinkButton>
+                        <HyperlinkButton NavigateUri="https://twitter.com/zeealeid" ToolTipService.ToolTip="Zee-Al-Eid Ahmad Rana">
+                            <PersonPicture Width="35" ProfilePicture="https://avatars.githubusercontent.com/zeealeid" />
+                        </HyperlinkButton>
+                        <HyperlinkButton NavigateUri="https://github.com/GireeshChandran" ToolTipService.ToolTip="Gireesh Chandran">
+                            <PersonPicture Width="35" ProfilePicture="https://avatars.githubusercontent.com/GireeshChandran" />
+                        </HyperlinkButton>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Margin="0,5,5,0">
                     <HyperlinkButton x:Uid="AttributionLink" NavigateUri="https://rocksdanister.github.io/lively/attribution/" />
                     <HyperlinkButton x:Uid="LicenseLink" NavigateUri="https://github.com/rocksdanister/lively/blob/core-separation/LICENSE" />
                     <HyperlinkButton x:Uid="PrivacyPolicyLink" NavigateUri="https://github.com/rocksdanister/lively/blob/core-separation/PRIVACY.md" />
                 </StackPanel>
-
-                <TextBlock
-                    Margin="5"
-                    HorizontalAlignment="Center"
-                    Text="Contributors"
-                    Visibility="Collapsed" />
-                <!--
-                <ScrollViewer MaxHeight="200">
-                    <StackPanel>
-                        <PersonPicture />
-                        <PersonPicture />
-                    </StackPanel>
-                </ScrollViewer>
-                -->
             </StackPanel>
         </ScrollViewer>
     </Grid>

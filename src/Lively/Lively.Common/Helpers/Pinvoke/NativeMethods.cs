@@ -13,6 +13,47 @@ namespace Lively.Common.Helpers.Pinvoke
 #pragma warning disable CA1707, CA1401, CA1712
     public static class NativeMethods
     {
+        [DllImport("dwmapi.dll", CharSet = CharSet.Unicode, PreserveSig = false)]
+        public static extern void DwmSetWindowAttribute(IntPtr hwnd,
+                                                 DWMWINDOWATTRIBUTE attribute,
+                                                 ref DWM_WINDOW_CORNER_PREFERENCE pvAttribute,
+                                                 uint cbAttribute);
+        public enum DWMWINDOWATTRIBUTE
+        {
+            NCRenderingEnabled = 1,
+            NCRenderingPolicy,
+            TransitionsForceDisabled,
+            AllowNCPaint,
+            CaptionButtonBounds,
+            NonClientRtlLayout,
+            ForceIconicRepresentation,
+            Flip3DPolicy,
+            ExtendedFrameBounds,
+            HasIconicBitmap,
+            DisallowPeek,
+            ExcludedFromPeek,
+            Cloak,
+            Cloaked,
+            FreezeRepresentation,
+            PassiveUpdateMode,
+            UseHostBackdropBrush,
+            UseImmersiveDarkMode = 20,
+            WindowCornerPreference = 33,
+            BorderColor,
+            CaptionColor,
+            TextColor,
+            VisibleFrameBorderThickness,
+            Last
+        }
+
+        public enum DWM_WINDOW_CORNER_PREFERENCE
+        {
+            DWMWCP_DEFAULT = 0,
+            DWMWCP_DONOTROUND = 1,
+            DWMWCP_ROUND = 2,
+            DWMWCP_ROUNDSMALL = 3
+        }
+
         [DllImport("dwmapi.dll")]
         public static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, ref int attrValue, int attrSize);
 

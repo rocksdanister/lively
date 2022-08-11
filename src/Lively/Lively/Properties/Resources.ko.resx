@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -53,51 +53,52 @@
     value   : The object must be serialized with 
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
+
     mimetype: application/x-microsoft.net.object.bytearray.base64
     value   : The object must be serialized into a byte array 
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -116,52 +117,69 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="DescCommunity" xml:space="preserve">
+  <data name="AudioFocused.Content" xml:space="preserve">
+    <value>바탕 화면에 초점이 맞춰진 경우에만 오디오 재생</value>
+  </data>
+  <data name="Audio.Description" xml:space="preserve">
+    <value>모든 배경화면의 볼륨 수준.</value>
+  </data>
+  <data name="Audio.Header" xml:space="preserve">
+    <value>마스터 볼륨</value>
+  </data>
+  <data name="AudioGroup.Header" xml:space="preserve">
+    <value>오디오</value>
+  </data>
+  <data name="CommunityPage.Content" xml:space="preserve">
     <value>온라인 토론 포럼</value>
   </data>
-  <data name="DescDocumentation" xml:space="preserve">
+  <data name="DocumentationPage.Content" xml:space="preserve">
     <value>API 문서 및 도움말</value>
+  </data>
+  <data name="DescExplorerCrash" xml:space="preserve">
+    <value>Lively에서 심각한 오류가 발생했습니다. 
+
+Windows 탐색기가 지난 30초 동안 두 번 다시 시작되었습니다! Lively와 다른 데스크톱 사용자 지정 소프트웨어 또는 Windows 간의 충돌일 수 있습니다. 추가 문제를 방지하기 위해 모든 배경화면이 종료됩니다.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
     <value>호환되지 않는 프로그램 발견됨, 작업 표시줄 테마가 비활성화되었습니다.</value>
   </data>
-  <data name="DescOfficialWebpage" xml:space="preserve">
+  <data name="OfficialWebpage.Content" xml:space="preserve">
     <value>Lively Wallpaper 공식 웹페이지</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
-    <value>대부분의 최신 LCD 및 LED 디스플레이는 번인 문제가 발생하지 않으므로 모든 배경 화면을 화면 보호기로 사용할 수 있습니다.
+    <value>대부분의 최신 LCD 및 LED 디스플레이는 번인 문제가 발생하지 않으므로 모든 배경화면을 화면 보호기로 사용할 수 있습니다.
 
-번인에 취약한 OLED, Plasma 또는 CRT 디스플레이의 경우 규칙적인 움직임이 있는 배경 화면과 번인을 완화해야 하는 전체 어두운 테마를 사용하는 것이 좋습니다. 그러나 이 기능은 테스트되지 않았으며 그 효과를 보장할 수 없습니다.
+번인에 취약한 OLED, Plasma 또는 CRT 디스플레이의 경우 규칙적인 움직임이 있는 배경화면과 번인을 완화해야 하는 전체 어두운 테마를 사용하는 것이 좋습니다. 그러나 이 기능은 테스트되지 않았으며 그 효과를 보장할 수 없습니다.
 
 Lively 화면 보호기의 주요 목적은 사용자 PC에 사용자 지정의 다른 레이어를 추가하는 것입니다. 위험 부담을 감수하고 화면 보호기를 번인 보호로 사용하세요!</value>
   </data>
-  <data name="DescReportBug" xml:space="preserve">
+  <data name="ReportBugPage.Content" xml:space="preserve">
     <value>소프트웨어 문제 보고</value>
   </data>
-  <data name="DescriptionAddWallpaper" xml:space="preserve">
-    <value>배경 화면으로 설정할 파일을 선택하거나 웹사이트 URL을 지정합니다.</value>
+  <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
+    <value>배경화면으로 설정할 파일을 선택하거나 웹사이트 URL을 지정합니다.</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
-    <value>실행 중인 응용 프로그램에 따른 배경 화면 재생 동작 설정</value>
+    <value>실행 중인 응용 프로그램에 따른 배경화면 재생 동작 설정</value>
   </data>
   <data name="DescriptionCancelQuestion" xml:space="preserve">
     <value>정말로 취소하시겠습니까?</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
-    <value>디스크에서 배경 화면을 영구적으로 삭제하시겠습니까?</value>
+    <value>디스크에서 배경화면을 영구적으로 삭제하시겠습니까?</value>
   </data>
   <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
-    <value>라이브러리에서 이 배경 화면을 삭제하시겠습니까?</value>
+    <value>라이브러리에서 이 배경화면을 삭제하시겠습니까?</value>
   </data>
-  <data name="DescriptionDragDropFIle" xml:space="preserve">
+  <data name="DragDropFile.Text" xml:space="preserve">
     <value>간단히 파일을 라이브러리로 끌어 놓으세요.</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
-    <value>외부 응용 프로그램을 배경 화면으로 여는 중입니다.
+    <value>외부 응용 프로그램을 배경화면으로 여는 중입니다.
 악성 응용 프로그램은 악성 코드나 바이러스를 감염시켜 시스템이 위험해질 수 있습니다.
 이 응용 프로그램이 신뢰된 출처로부터 제공된 경우에만 계속하세요.</value>
   </data>
-  <data name="DescriptionMinimizedTray" xml:space="preserve">
+  <data name="MinimizedTray.Text" xml:space="preserve">
     <value>Lively는 시스템 트레이로 최소화됩니다. 계속하려면 트레이에서 Lively 아이콘을 마우스 오른쪽 버튼으로 누르세요.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
@@ -169,12 +187,12 @@ Lively 화면 보호기의 주요 목적은 사용자 PC에 사용자 지정의 
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
     <value>계속하기 전에 중지하세요.</value>
-  </data>  
+  </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
     <value>녹화 시작 클릭.</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
-    <value>이전 배경 화면 복원 중, 잠시 기다려 주세요...</value>
+    <value>이전 배경화면 복원 중, 잠시 기다려 주세요...</value>
   </data>
   <data name="DescriptionScreenLayout" xml:space="preserve">
     <value>디스플레이 선택</value>
@@ -189,7 +207,7 @@ Lively 화면 보호기의 주요 목적은 사용자 PC에 사용자 지정의 
     <value>이 마법사는 Lively 설정을 시작합니다.</value>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>Windows N/KN 버전은 배경 화면의 비디오를 재생하기 위해 추가 코덱을 다운로드해야 합니다.</value>
+    <value>Windows N/KN 버전은 배경화면의 비디오를 재생하기 위해 추가 코덱을 다운로드해야 합니다.</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
     <value>개발자 커피를 구입하여 지원 표시</value>
@@ -197,13 +215,25 @@ Lively 화면 보호기의 주요 목적은 사용자 PC에 사용자 지정의 
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
     <value>Lively의 베타(개발자) 빌드로 변경하려고 합니다.
 업데이트는 빈번하며 버그가 포함될 수 있습니다!</value>
-  </data>  
+  </data>
+  <data name="HideSysTray.Description" xml:space="preserve">
+    <value>System-tray icon visibility, lively will continue to run with the icon hidden</value>
+  </data>
+  <data name="HideSysTray.Header" xml:space="preserve">
+    <value>시스템 트레이 아이콘</value>
+  </data>
+  <data name="Language.Description" xml:space="preserve">
+    <value>새로운 언어 적용을 위해 Lively를 다시 시작합니다.</value>
+  </data>
+  <data name="Language.Header" xml:space="preserve">
+    <value>언어</value>
+  </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
     <value>업데이트 실패됨. 다음 링크에서 설치 파일을 내려받으세요:
 https://github.com/rocksdanister/lively/releases</value>
   </data>
   <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
-    <value>손상된 배경 화면입니다. 다시 내려받으세요.</value>
+    <value>손상된 배경화면입니다. 다시 내려받으세요.</value>
   </data>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
     <value>이런... 어떤 문제가 발생했습니다!
@@ -228,7 +258,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
     <value>안전 모드에서 시작하여 Lively가 제대로 종료되지 않았습니다.
-이전에 실행한 배경 화면을 복원하시겠습니까?</value>
+이전에 실행한 배경화면을 복원하시겠습니까?</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
     <value>Lively가 작동하려면 몇 가지 설정이 필요한 것 같습니다.  
@@ -237,9 +267,15 @@ https://github.com/rocksdanister/lively/wiki</value>
 3. "창의 제어 및 요소에 애니메이션 효과 주기"에 활성화/체크(이미 체크된 경우, 체크 해제했다가 다시 체크) &amp; 적용합니다.
 4. "적용"을 누른 다음 "확인"을 눌러 창을 닫습니다.
 
-Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp;amp; 적용.
+Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp; 적용.
 그래도 작동하지 않을 경우, Lively를 종료 후 재실행한 다음 Windows를 다시 시작해 주세요.
 (일부 Windows 10 Insider 빌드에서는 작동하지 않음)</value>
+  </data>
+  <data name="Startup.Description" xml:space="preserve">
+    <value>배경화면 재생을 위해 Windows 시작 시 실행하여 백그라운드에서 실행되도록 해야 합니다.</value>
+  </data>
+  <data name="Startup.Header" xml:space="preserve">
+    <value>Windows 시작 시 실행</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
     <value>추가</value>
@@ -247,13 +283,13 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp;amp; 적용.
   <data name="TextAllFiles" xml:space="preserve">
     <value>모든 파일</value>
   </data>
-  <data name="TextApplication" xml:space="preserve">
+  <data name="Application.Header" xml:space="preserve">
     <value>응용 프로그램</value>
   </data>
-  <data name="TextAttribution" xml:space="preserve">
+  <data name="Attribution.Header" xml:space="preserve">
     <value>공헌자</value>
   </data>
-  <data name="TextAuthor" xml:space="preserve">
+  <data name="Author.Text" xml:space="preserve">
     <value>저작자</value>
   </data>
   <data name="TextBack" xml:space="preserve">
@@ -262,23 +298,23 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp;amp; 적용.
   <data name="TextBrowse" xml:space="preserve">
     <value>찾아보기</value>
   </data>
-  <data name="TextCancel" xml:space="preserve">
+  <data name="Cancel.Content" xml:space="preserve">
     <value>취소</value>
   </data>
   <data name="TextChangeWallpaper" xml:space="preserve">
-    <value>배경 화면 변경</value>
-  </data>  
+    <value>배경화면 변경</value>
+  </data>
   <data name="TextClose" xml:space="preserve">
     <value>닫기</value>
   </data>
-  <data name="TextCloseWallpapers" xml:space="preserve">
-    <value>배경 화면 닫기</value>
+  <data name="CloseWallpapers.Label" xml:space="preserve">
+    <value>배경화면 닫기</value>
   </data>
   <data name="TextCompleted" xml:space="preserve">
     <value>완료됨!</value>
   </data>
-  <data name="TextControlPanelOpen" xml:space="preserve">
-    <value>배경 화면을 관리하려면 여기를 누르세요.</value>
+  <data name="ControlPanel.Subtitle" xml:space="preserve">
+    <value>배경화면을 관리하려면 여기를 누르세요.</value>
   </data>
   <data name="TextConvertVideo" xml:space="preserve">
     <value>비디오로 변환</value>
@@ -286,37 +322,37 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp;amp; 적용.
   <data name="TextCreatePreview" xml:space="preserve">
     <value>미리보기 만들기</value>
   </data>
-  <data name="TextCustomise" xml:space="preserve">
+  <data name="Customise.Text" xml:space="preserve">
     <value>사용자 정의</value>
   </data>
-  <data name="TextCustomiseWallpaper" xml:space="preserve">
-    <value>배경 화면 사용자 정의</value>
+  <data name="CustomiseWallpaper.Label" xml:space="preserve">
+    <value>배경화면 사용자 정의</value>
   </data>
-  <data name="TextDeleteWallpaper" xml:space="preserve">
-    <value>배경 화면 삭제</value>
+  <data name="DeleteWallpaper.Text" xml:space="preserve">
+    <value>배경화면 삭제</value>
   </data>
-  <data name="TextDescription" xml:space="preserve">
+  <data name="Description.Text" xml:space="preserve">
     <value>설명</value>
   </data>
-  <data name="TextDisplayPauseRuleAllScreen" xml:space="preserve">
+  <data name="DisplayPauseRuleAllScreen.Content" xml:space="preserve">
     <value>모든 화면</value>
   </data>
-  <data name="TextDisplayPauseRulePerScreen" xml:space="preserve">
+  <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>개별 화면</value>
   </data>
   <data name="TextDownload" xml:space="preserve">
     <value>다운로드</value>
   </data>
-  <data name="TextEditWallpaper" xml:space="preserve">
+  <data name="EditWallpaper.Text" xml:space="preserve">
     <value>편집</value>
-  </data>  
+  </data>
   <data name="TextError" xml:space="preserve">
     <value>오류</value>
   </data>
   <data name="TextExit" xml:space="preserve">
     <value>끝내기</value>
   </data>
-  <data name="TextExportWallpaperZip" xml:space="preserve">
+  <data name="ExportWallpaperZip.Text" xml:space="preserve">
     <value>Zip 파일로 저장</value>
   </data>
   <data name="TextFeatureMissing" xml:space="preserve">
@@ -328,9 +364,9 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp;amp; 적용.
   <data name="TextGIF" xml:space="preserve">
     <value>GIF 애니메이션</value>
   </data>
-  <data name="TextGitHubStar" xml:space="preserve">
+  <data name="GitHubStar.Content" xml:space="preserve">
     <value>별을 눌러 사랑을 보여주세요</value>
-  </data>  
+  </data>
   <data name="TextGo" xml:space="preserve">
     <value>이동</value>
   </data>
@@ -339,11 +375,11 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp;amp; 적용.
   </data>
   <data name="TextHours" xml:space="preserve">
     <value>시간</value>
-  </data>  
+  </data>
   <data name="TextInstall" xml:space="preserve">
     <value>설치</value>
   </data>
-  <data name="TextKeyboard" xml:space="preserve">
+  <data name="TextKeyboard.Content" xml:space="preserve">
     <value>키보드</value>
   </data>
   <data name="TextLastChecked" xml:space="preserve">
@@ -351,23 +387,23 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp;amp; 적용.
   </data>
   <data name="TextLearnMore" xml:space="preserve">
     <value>더 알아보기</value>
-  </data>  
-  <data name="TextLicense" xml:space="preserve">
+  </data>
+  <data name="License.Header" xml:space="preserve">
     <value>라이센스</value>
   </data>
   <data name="TextMinutes" xml:space="preserve">
     <value>분</value>
-  </data>  
+  </data>
   <data name="TextmoreInfo" xml:space="preserve">
     <value>정보</value>
   </data>
   <data name="TextMoreWallpapers" xml:space="preserve">
-    <value>더 많은 배경 화면</value>
+    <value>더 많은 배경화면</value>
   </data>
-  <data name="TextMouse" xml:space="preserve">
+  <data name="TextMouse.Content" xml:space="preserve">
     <value>마우스</value>
   </data>
-  <data name="TextMouseInteractOnDesktop" xml:space="preserve">
+  <data name="MouseInteractOnDesktop.Content" xml:space="preserve">
     <value>응용 프로그램이 포커싱된 경우 마우스 상호 작용</value>
   </data>
   <data name="TextNext" xml:space="preserve">
@@ -376,13 +412,13 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp;amp; 적용.
   <data name="TextNo" xml:space="preserve">
     <value>아니오</value>
   </data>
-  <data name="TextOff" xml:space="preserve">
+  <data name="TextOff.Content" xml:space="preserve">
     <value>꺼짐</value>
   </data>
   <data name="TextOK" xml:space="preserve">
     <value>확인</value>
   </data>
-  <data name="TextOn" xml:space="preserve">
+  <data name="TextOn.Content" xml:space="preserve">
     <value>켜짐</value>
   </data>
   <data name="TextOnline" xml:space="preserve">
@@ -391,34 +427,34 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp;amp; 적용.
   <data name="TextOpenLively" xml:space="preserve">
     <value>Lively 열기</value>
   </data>
-  <data name="TextPauseAlgoAllProcess" xml:space="preserve">
+  <data name="PauseAlgorithmTypeAllProcess.Content" xml:space="preserve">
     <value>모든 프로세스</value>
   </data>
-  <data name="TextPauseAlgoExclusiveMode" xml:space="preserve">
+  <data name="PauseAlgorithmTypeExclusiveMode.Content" xml:space="preserve">
     <value>Direct3D</value>
-  </data>  
-  <data name="TextPauseAlgoForegroundProcess" xml:space="preserve">
+  </data>
+  <data name="PauseAlgorithmTypeForegroundProcess.Content" xml:space="preserve">
     <value>포그라운드 프로세스</value>
   </data>
   <data name="TextPauseWallpapers" xml:space="preserve">
-    <value>배경 화면 일시 중지</value>
+    <value>배경화면 일시 중지</value>
   </data>
-  <data name="TextPerformanceKill" xml:space="preserve">
+  <data name="TextPerformanceKill.Content" xml:space="preserve">
     <value>종료</value>
   </data>
-  <data name="TextPerformanceNone" xml:space="preserve">
+  <data name="TextPerformanceNone.Content" xml:space="preserve">
     <value>동작 없음</value>
   </data>
-  <data name="TextPerformancePause" xml:space="preserve">
+  <data name="TextPerformancePause.Content" xml:space="preserve">
     <value>일시 중지</value>
   </data>
   <data name="TextPicture" xml:space="preserve">
     <value>사진</value>
   </data>
-  <data name="TextPreviewWallpaper" xml:space="preserve">
-    <value>배경 화면 미리보기</value>
+  <data name="PreviewWallpaper.Text" xml:space="preserve">
+    <value>배경화면 미리보기</value>
   </data>
-  <data name="TextPrivacyPolicy" xml:space="preserve">
+  <data name="PrivacyPolicy.Header" xml:space="preserve">
     <value>개인정보 보호정책</value>
   </data>
   <data name="TextProcessingWallpaper" xml:space="preserve">
@@ -436,13 +472,13 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp;amp; 적용.
   <data name="TextSearch" xml:space="preserve">
     <value>검색</value>
   </data>
-  <data name="TextSetWallpaper" xml:space="preserve">
-    <value>배경 화면으로 설정</value>
+  <data name="SetWallpaper.Text" xml:space="preserve">
+    <value>배경화면으로 설정</value>
   </data>
-  <data name="TextShowOnDisk" xml:space="preserve">
+  <data name="ShowOnDisk.Text" xml:space="preserve">
     <value>파일 위치 열기</value>
   </data>
-  <data name="TextSource" xml:space="preserve">
+  <data name="WallpaperSource.Text" xml:space="preserve">
     <value>소스</value>
   </data>
   <data name="TextStart" xml:space="preserve">
@@ -451,10 +487,10 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp;amp; 적용.
   <data name="TextStop" xml:space="preserve">
     <value>중지</value>
   </data>
-  <data name="TextStoreReview" xml:space="preserve">
+  <data name="StoreReview.Content" xml:space="preserve">
     <value>Lively가 맘에 드시나요? 리뷰를 남겨주세요. ^O^</value>
   </data>
-  <data name="TextSupport" xml:space="preserve">
+  <data name="TextSupport.Content" xml:space="preserve">
     <value>기부하기</value>
   </data>
   <data name="TextSwitchBranchDev" xml:space="preserve">
@@ -462,28 +498,28 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp;amp; 적용.
   </data>
   <data name="TextSwitchBranchOfficial" xml:space="preserve">
     <value>안정(기본 채널)으로 전환</value>
-  </data>  
+  </data>
   <data name="TextTags" xml:space="preserve">
     <value>태그</value>
   </data>
-  <data name="TextTaskbarThemeBlur" xml:space="preserve">
+  <data name="TaskbarThemeBlur.Content" xml:space="preserve">
     <value>블러</value>
   </data>
-  <data name="TextTaskbarThemeClear" xml:space="preserve">
+  <data name="TaskbarThemeClear.Content" xml:space="preserve">
     <value>클리어</value>
   </data>
-  <data name="TextTaskbarThemeColor" xml:space="preserve">
+  <data name="TaskbarThemeColor.Content" xml:space="preserve">
     <value>컬러</value>
   </data>
-  <data name="TextTaskbarThemeFluent" xml:space="preserve">
+  <data name="TaskbarThemeFluent.Content" xml:space="preserve">
     <value>플루언트</value>
   </data>
-  <data name="TextTaskbarThemeWallpaper" xml:space="preserve">
-    <value>배경 화면</value>
+  <data name="TaskbarThemeWallpaper.Content" xml:space="preserve">
+    <value>배경화면</value>
   </data>
-  <data name="TextTaskbarThemeWallpaperFluent" xml:space="preserve">
-    <value>배경 화면 플루언트</value>
-  </data>  
+  <data name="TaskbarThemeWallpaperFluent.Content" xml:space="preserve">
+    <value>배경화면 플루언트</value>
+  </data>
   <data name="TextTileSizeLarge" xml:space="preserve">
     <value>크게</value>
   </data>
@@ -493,7 +529,7 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp;amp; 적용.
   <data name="TextTileSizeSmall" xml:space="preserve">
     <value>작게</value>
   </data>
-  <data name="TextTitle" xml:space="preserve">
+  <data name="Title.Text" xml:space="preserve">
     <value>제목</value>
   </data>
   <data name="TextUIHeadless" xml:space="preserve">
@@ -528,32 +564,32 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp;amp; 적용.
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
     <value>선택적 명령줄 인수 입력</value>
-  </data>  
-  <data name="TextWallpaperFitFill" xml:space="preserve">
+  </data>
+  <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>채우기</value>
   </data>
-  <data name="TextWallpaperFitNone" xml:space="preserve">
+  <data name="WallpaperFitNone.Content" xml:space="preserve">
     <value>없음</value>
   </data>
-  <data name="TextWallpaperFitUniform" xml:space="preserve">
+  <data name="WallpaperFitUniform.Content" xml:space="preserve">
     <value>비율유지 확대/축소(맞춤)</value>
   </data>
-  <data name="TextWallpaperFitUniformToFill" xml:space="preserve">
+  <data name="WallpaperFitUniformToFill.Content" xml:space="preserve">
     <value>비율유지 확대/축소(잘림)</value>
   </data>
-  <data name="TextWallpaperLayoutDuplicate" xml:space="preserve">
-    <value>동일한 배경 화면 복사</value>
+  <data name="WallpaperLayoutDuplicate.Content" xml:space="preserve">
+    <value>동일한 배경화면 복사</value>
   </data>
-  <data name="TextWallpaperLayoutPerScreen" xml:space="preserve">
+  <data name="WallpaperLayoutPerScreen.Content" xml:space="preserve">
     <value>선택한 화면만</value>
   </data>
-  <data name="TextWallpaperLayoutSpan" xml:space="preserve">
-    <value>배경 화면을 여러 디스플레이에 확장</value>
+  <data name="WallpaperLayoutSpan.Content" xml:space="preserve">
+    <value>배경화면을 여러 디스플레이에 확장</value>
   </data>
-  <data name="TextWallpaperType" xml:space="preserve">
+  <data name="WallpaperType.Text" xml:space="preserve">
     <value>유형</value>
   </data>
-  <data name="TextWebsite" xml:space="preserve">
+  <data name="Website.Header" xml:space="preserve">
     <value>웹사이트</value>
   </data>
   <data name="TextWebStream" xml:space="preserve">
@@ -565,206 +601,185 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp;amp; 적용.
   <data name="TextYes" xml:space="preserve">
     <value>예</value>
   </data>
-  <data name="TileVideoPlayer" xml:space="preserve">
+  <data name="VideoPlayer.Header" xml:space="preserve">
     <value>비디오 플레이어</value>
   </data>
-  <data name="TipAddWallpaperFileBrowse" xml:space="preserve">
-    <value>모든 지원되는 파일 유형을 배경 화면으로 설정할 수 있습니다.</value>
+  <data name="AddWallpaperFileBrowse.Description" xml:space="preserve">
+    <value>모든 지원되는 파일 유형을 배경화면으로 설정할 수 있습니다.</value>
   </data>
-  <data name="TipAddWallpaperURL" xml:space="preserve">
-    <value>입력한 URL의 웹 페이지를 배경 화면으로 설정합니다.</value>
+  <data name="EnterUrl.Description" xml:space="preserve">
+    <value>입력한 URL의 웹 페이지를 배경화면으로 설정합니다.</value>
   </data>
-  <data name="TipAppFocus" xml:space="preserve">
+  <data name="AppFocus.Description" xml:space="preserve">
     <value>응용 프로그램이 포커싱 되었을 때 수행할 작업을 설정합니다.</value>
   </data>
-  <data name="TipAppFullScreen" xml:space="preserve">
+  <data name="AppFullScreen.Description" xml:space="preserve">
     <value>전체 화면 게임/응용 프로그램이 실행 중일 때 수행할 작업을 설정합니다.</value>
   </data>
-  <data name="TipAppRules" xml:space="preserve">
-    <value>실행 중인 응용 프로그램에 따라 다른 배경 화면을 재생할 규칙을 설정합니다.</value>
+  <data name="AppRules.Description" xml:space="preserve">
+    <value>실행 중인 응용 프로그램에 따라 다른 배경화면을 재생할 규칙을 설정합니다.</value>
   </data>
   <data name="TipAppTheme" xml:space="preserve">
     <value>Lively는 시스템 테마 설정에 맞게 모양을 변경합니다.</value>
   </data>
-  <data name="TipAudioMaster" xml:space="preserve">
-    <value>모든 배경 화면의 볼륨 수준.</value>
-  </data>
-  <data name="TipBatteryPower" xml:space="preserve">
+  <data name="BatteryPower.Description" xml:space="preserve">
     <value>(배터리 작동 시스템 전용) AC 전원이 차단되면 재생을 변경합니다.</value>
   </data>
-  <data name="TipBrowserDebuggingPort" xml:space="preserve">
-    <value>웹페이지 배경 화면 디버깅을 위한 포트 번호를 입력합니다. 변경 내용을 적용하려면 브라우저를 다시 시작해야 합니다.
+  <data name="BrowserDebuggingPort.Description" xml:space="preserve">
+    <value>웹페이지 배경화면 디버깅을 위한 포트 번호를 입력합니다. 변경 내용을 적용하려면 브라우저를 다시 시작해야 합니다.
 포트 번호 지정하고 http://localhost:portnumber로 이동하여 개발자 콘솔에 액세스하세요.</value>
   </data>
-  <data name="TipDebug" xml:space="preserve">
+  <data name="Debug.Description" xml:space="preserve">
     <value>개발자 메뉴 표시</value>
   </data>
-  <data name="TipDesktopPicture" xml:space="preserve">
-    <value>애니메이션 배경 화면의 사진을 바탕 화면 배경으로 설정합니다.</value>
-  </data>  
-  <data name="TipDisplayPauseRule" xml:space="preserve">
-    <value>개별 화면: 응용 프로그램이 포커싱/전체 화면인 화면에서만 배경 화면을 일시 중지합니다.
-모든 화면: 응용 프로그램이 포커싱/전체 화면일 때 모든 화면에서 배경 화면을 일시 중지합니다.</value>
+  <data name="DesktopPicture.Description" xml:space="preserve">
+    <value>애니메이션 배경화면의 사진을 바탕 화면 배경으로 설정합니다.</value>
   </data>
-  <data name="TipExportLogs" xml:space="preserve">
+  <data name="DisplayPauseRule.Description" xml:space="preserve">
+    <value>개별 화면: 응용 프로그램이 포커싱/전체 화면인 화면에서만 배경화면을 일시 중지합니다.
+모든 화면: 응용 프로그램이 포커싱/전체 화면일 때 모든 화면에서 배경화면을 일시 중지합니다.</value>
+  </data>
+  <data name="ExportLogs.Description" xml:space="preserve">
     <value>로그 보고서 파일을 만듭니다.</value>
-  </data>  
-  <data name="TipGifPlayer" xml:space="preserve">
-    <value>GIF 배경 화면에 사용할 플레이어를 선택합니다.</value>
   </data>
-  <data name="TipHideSysTray" xml:space="preserve">
-    <value>시스템 트레이 아이콘 표시 여부를 선택합니다. 아이콘이 숨겨진 상태에서도 계속 실행됩니다.</value>
-  </data>
-  <data name="TipLanguage" xml:space="preserve">
-    <value>새로운 언어 적용을 위해 Lively를 다시 시작합니다.</value>
+  <data name="GifPlayer.Description" xml:space="preserve">
+    <value>GIF 배경화면에 사용할 플레이어를 선택합니다.</value>
   </data>
   <data name="TipLivelySetupOnClose" xml:space="preserve">
     <value>설치를 완료하고 계속합니다.</value>
   </data>
-  <data name="TipLockscreenPicture" xml:space="preserve">
-    <value>애니메이션 배경 화면의 사진을 잠금 화면 배으로 설정합니다.</value>
-  </data>  
-  <data name="TipPauseAlgorithm" xml:space="preserve">
-    <value>배경 화면 일시 중지 알고리즘</value>
+  <data name="LockscreenPicture.Description" xml:space="preserve">
+    <value>애니메이션 배경화면의 사진을 잠금 화면 배으로 설정합니다.</value>
+  </data>
+  <data name="PauseAlgorithm.Description" xml:space="preserve">
+    <value>배경화면 일시 중지 알고리즘</value>
+  </data>
+  <data name="PowerSavingModePower.Description" xml:space="preserve">
+    <value>Change playback when Windows Power Saving Mode is enabled</value>
+  </data>
+  <data name="RemoteDesktopPower.Description" xml:space="preserve">
+    <value>원격 데스크톱 세션을 실행할 때 재생을 변경합니다.</value>
   </data>
   <data name="TipScreensaver" xml:space="preserve">
-    <value>선택한 비활성 시간이 지나면 현재 배경 화면을 화면 보호기로 사용합니다.</value>
+    <value>선택한 비활성 시간이 지나면 현재 배경화면을 화면 보호기로 사용합니다.</value>
   </data>
-  <data name="TipStreamWallpaperDetect" xml:space="preserve">
+  <data name="StreamWallpaperDetect.Description" xml:space="preserve">
     <value>지원되는 비디오 스트림 링크가 감지되면 웹페이지를 불러오는 대신 비디오 플레이어를 사용합니다.</value>
   </data>
-  <data name="TipStreamWallpaperVideoQuality" xml:space="preserve">
+  <data name="StreamWallpaperVideoQuality.Description" xml:space="preserve">
     <value>온라인 스트림에 대한 원하는 비디오 품질을 선택합니다.</value>
   </data>
   <data name="TipSwitchSoftwareBranch" xml:space="preserve">
     <value>베타 버전에서 안정 버전으로 또는 그 반대로 소프트웨어 버전을 변경합니다.</value>
   </data>
-  <data name="TipTaskbarTheme" xml:space="preserve">
+  <data name="TaskbarTheme.Description" xml:space="preserve">
     <value>시스템 작업 표시줄 모양을 변경합니다.</value>
-  </data>  
+  </data>
   <data name="TipTileSize" xml:space="preserve">
-    <value>라이브러리의 배경 화면 타일 크기입니다.</value>
+    <value>라이브러리의 배경화면 타일 크기입니다.</value>
   </data>
   <data name="TipUIMode" xml:space="preserve">
     <value>저사양 시스템의 경우 라이트 모드를 선택합니다.</value>
   </data>
-  <data name="TipVideoHardwareDecode" xml:space="preserve">
+  <data name="VideoHardwareDecode.Description" xml:space="preserve">
     <value>가능하면 하드웨어 가속을 사용합니다.</value>
-  </data>  
-  <data name="TipVideoPlayer" xml:space="preserve">
-    <value>비디오 배경 화면에 사용되는 플레이어를 선택합니다.</value>
   </data>
-  <data name="TipWallpaperDir" xml:space="preserve">
-    <value>배경 화면 파일을 저장하는 데 사용되는 경로입니다.</value>
+  <data name="VideoPlayer.Description" xml:space="preserve">
+    <value>비디오 배경화면에 사용되는 플레이어를 선택합니다.</value>
   </data>
-  <data name="TipWallpaperFit" xml:space="preserve">
-    <value>배경 화면 크기 조정 알고리즘.</value>
+  <data name="WallpaperDir.Description" xml:space="preserve">
+    <value>배경화면 파일을 저장하는 데 사용되는 경로입니다.</value>
   </data>
-  <data name="TipWallpaperInput" xml:space="preserve">
-    <value>배경 화면과 상호 작용하는 방법을 선택합니다.</value>
+  <data name="WallpaperFit.Description" xml:space="preserve">
+    <value>배경화면 크기 조정 알고리즘.</value>
   </data>
-  <data name="TipWallpaperLayout" xml:space="preserve">
-    <value>연결된 디스플레이 장치에 배경 화면을 적용하는 방법.</value>
+  <data name="WallpaperInput.Description" xml:space="preserve">
+    <value>배경화면과 상호 작용하는 방법을 선택합니다.</value>
+  </data>
+  <data name="WallpaperLayout.Description" xml:space="preserve">
+    <value>연결된 디스플레이 장치에 배경화면을 적용하는 방법.</value>
   </data>
   <data name="TipWallpaperPlayback" xml:space="preserve">
-    <value>바탕 화면에 포커싱 되지 않을 때 배경 화면 재생을 일시 중지합니다.</value>
+    <value>바탕 화면에 포커싱 되지 않을 때 배경화면 재생을 일시 중지합니다.</value>
   </data>
-  <data name="TipWebBrowserDiskCache" xml:space="preserve">
+  <data name="WebBrowserDiskCache.Description" xml:space="preserve">
     <value>메모리 대신에 디스크에 임시 파일을 저장합니다. 브라우저를 다시 시작하면 설정이 복원됩니다.</value>
   </data>
-  <data name="TipWebBrowserEngine" xml:space="preserve">
+  <data name="WebBrowser.Description" xml:space="preserve">
     <value>CEF(크로미엄 임베디드 프레임워크)는 가벼운 크로미엄 엔진입니다.
 Edge는 Windows 10의 내장 웹뷰입니다.</value>
   </data>
-  <data name="TipWindowsStartup" xml:space="preserve">
-    <value>배경 화면 재생을 위해 Windows 시작 시 실행하여 백그라운드에서 실행되도록 해야 합니다.</value>
-  </data>
-  <data name="TitleAbout" xml:space="preserve">
+  <data name="About.Label" xml:space="preserve">
     <value>정보</value>
   </data>
-  <data name="TitleAddWallpaper" xml:space="preserve">
-    <value>배경 화면 추가</value>
+  <data name="AddWallpaper.Label" xml:space="preserve">
+    <value>배경화면 추가</value>
   </data>
-  <data name="TitleAppFocus" xml:space="preserve">
+  <data name="AppFocus.Header" xml:space="preserve">
     <value>응용 프로그램이 포커싱 되었을 때</value>
   </data>
-  <data name="TitleAppFullScreen" xml:space="preserve">
+  <data name="AppFullScreen.Header" xml:space="preserve">
     <value>응용 프로그램이 전체 화면일 때</value>
   </data>
   <data name="TitleAppName" xml:space="preserve">
     <value>Lively Wallpaper</value>
   </data>
-  <data name="TitleAppRules" xml:space="preserve">
+  <data name="AppRules.Header" xml:space="preserve">
     <value>응용 프로그램 규칙</value>
   </data>
-  <data name="TitleAppTheme" xml:space="preserve">
+  <data name="AppTheme.Header" xml:space="preserve">
     <value>테마</value>
-  </data>
-  <data name="TitleAudio" xml:space="preserve">
-    <value>오디오</value>
-  </data>
-  <data name="TitleAudioDesktopOnly" xml:space="preserve">
-    <value>바탕 화면에 초점이 맞춰진 경우에만 오디오 재생</value>
-  </data>
-  <data name="TitleAudioMaster" xml:space="preserve">
-    <value>마스터 볼륨</value>
   </data>
   <data name="TitleAudioPlayOnScreen" xml:space="preserve">
     <value>화면에 오디오 재생</value>
   </data>
-  <data name="TitleBatteryPower" xml:space="preserve">
+  <data name="BatteryPower.Header" xml:space="preserve">
     <value>배터리 전원 모드일 때</value>
   </data>
   <data name="TitleBrowseFile" xml:space="preserve">
-    <value>배경 화면으로 설정할 동영상, Gif, 웹페이지... 파일 찾아보기</value>
+    <value>배경화면으로 설정할 동영상, Gif, 웹페이지... 파일 찾아보기</value>
   </data>
-  <data name="TitleBrowserDebuggingPort" xml:space="preserve">
+  <data name="BrowserDebuggingPort.Header" xml:space="preserve">
     <value>디버깅 포트</value>
   </data>
   <data name="TitleChangelog" xml:space="preserve">
     <value>변경 로그</value>
-  </data>  
-  <data name="TitleCommunity" xml:space="preserve">
+  </data>
+  <data name="Community.Header" xml:space="preserve">
     <value>커뮤니티</value>
   </data>
-  <data name="TitleDebug" xml:space="preserve">
+  <data name="Debug.Header" xml:space="preserve">
     <value>디버그</value>
   </data>
   <data name="TitleDeleteConfirmation" xml:space="preserve">
     <value>삭제 확인</value>
   </data>
-  <data name="TitleDesktopPicture" xml:space="preserve">
+  <data name="DesktopPicture.Header" xml:space="preserve">
     <value>바탕 화면 사진</value>
-  </data>  
-  <data name="TitleDisplayPauseRule" xml:space="preserve">
+  </data>
+  <data name="DisplayPauseRule.Header" xml:space="preserve">
     <value>디스플레이 일시 중지 규칙</value>
   </data>
-  <data name="TitleDocumentation" xml:space="preserve">
+  <data name="Documentation.Header" xml:space="preserve">
     <value>도움말 문서</value>
   </data>
-  <data name="TitleEnterUrl" xml:space="preserve">
-    <value>URL 입력</value>
+  <data name="EnterUrl.Header" xml:space="preserve">
+    <value>Enter URL</value>
   </data>
-  <data name="TitleExportLogs" xml:space="preserve">
+  <data name="ExportLogs.Header" xml:space="preserve">
     <value>로그 파일</value>
-  </data>  
+  </data>
   <data name="TitleGeneral" xml:space="preserve">
     <value>일반</value>
   </data>
-  <data name="TitleGifPlayer" xml:space="preserve">
+  <data name="GifPlayer.Header" xml:space="preserve">
     <value>GIF 플레이어</value>
   </data>
-  <data name="TitleHelp" xml:space="preserve">
+  <data name="Help.Label" xml:space="preserve">
     <value>도움말</value>
-  </data>
-  <data name="TitleHideSysTray" xml:space="preserve">
-    <value>시스템 트레이 아이콘</value>
   </data>
   <data name="TitleInteraction" xml:space="preserve">
     <value>상호 작용</value>
-  </data>
-  <data name="TitleLanguage" xml:space="preserve">
-    <value>언어</value>
   </data>
   <data name="TitleLibrary" xml:space="preserve">
     <value>라이브러리</value>
@@ -775,16 +790,16 @@ Edge는 Windows 10의 내장 웹뷰입니다.</value>
   <data name="TitleLocation" xml:space="preserve">
     <value>위치</value>
   </data>
-  <data name="TitleLockscreenPicture" xml:space="preserve">
+  <data name="LockscreenPicture.Header" xml:space="preserve">
     <value>잠금 화면 사진</value>
-  </data>  
+  </data>
   <data name="TitleMisc" xml:space="preserve">
     <value>기타</value>
   </data>
   <data name="TitleMute" xml:space="preserve">
     <value>음소거</value>
   </data>
-  <data name="TitlePauseAlgo" xml:space="preserve">
+  <data name="PauseAlgorithm.Header" xml:space="preserve">
     <value>알고리즘 일시 중지</value>
   </data>
   <data name="TitlePerformance" xml:space="preserve">
@@ -793,16 +808,22 @@ Edge는 Windows 10의 내장 웹뷰입니다.</value>
   <data name="TitlePlaylist" xml:space="preserve">
     <value>재생 목록</value>
   </data>
-  <data name="TitlePleaseWait" xml:space="preserve">
+  <data name="PleaseWait.Text" xml:space="preserve">
     <value>잠시 기다려 주세요...</value>
   </data>
-  <data name="TitleReportBug" xml:space="preserve">
+  <data name="PowerSavingModePower.Header" xml:space="preserve">
+    <value>배터리 절약 모드일 때</value>
+  </data>
+  <data name="RemoteDesktopPower.Header" xml:space="preserve">
+    <value>원격 데스크톱 모드일 때</value>
+  </data>
+  <data name="ReportBug.Header" xml:space="preserve">
     <value>버그 보고</value>
-  </data>  
+  </data>
   <data name="TitleScalingFit" xml:space="preserve">
     <value>확장/맞춤</value>
   </data>
-  <data name="TitleScreenLayout" xml:space="preserve">
+  <data name="ControlPanel.Title" xml:space="preserve">
     <value>제어 패널</value>
   </data>
   <data name="TitleScreensaver" xml:space="preserve">
@@ -810,7 +831,7 @@ Edge는 Windows 10의 내장 웹뷰입니다.</value>
   </data>
   <data name="TitleScreensaverLockOnResume" xml:space="preserve">
     <value>다시 시작할 때 로그온 화면 표시</value>
-  </data>  
+  </data>
   <data name="TitleSelectFile" xml:space="preserve">
     <value>파일 선택</value>
   </data>
@@ -820,28 +841,28 @@ Edge는 Windows 10의 내장 웹뷰입니다.</value>
   <data name="TitleSkipConfirm" xml:space="preserve">
     <value>건너뛰기 확인</value>
   </data>
-  <data name="TitleSourceCode" xml:space="preserve">
+  <data name="SourceCode.Header" xml:space="preserve">
     <value>소스 코드</value>
-  </data>  
-  <data name="TitleStore" xml:space="preserve">
-    <value>MS 스토어</value>
-    <comment>다른 버전의 Lively의 경우 예:Microsoft Store</comment>
   </data>
-  <data name="TitleStreamWallpaper" xml:space="preserve">
+  <data name="Store.Header" xml:space="preserve">
+    <value>MS 스토어</value>
+    <comment>For different version of Lively, example: Microsoft Store</comment>
+  </data>
+  <data name="StreamWallpaperVideoQuality.Header" xml:space="preserve">
     <value>스트림</value>
   </data>
-  <data name="TitleStreamWallpaperDetect" xml:space="preserve">
+  <data name="StreamWallpaperDetect.Header" xml:space="preserve">
     <value>스트림 감지</value>
   </data>
   <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
     <value>비디오 품질</value>
   </data>
-  <data name="TitleSystem" xml:space="preserve">
+  <data name="System.Header" xml:space="preserve">
     <value>시스템</value>
   </data>
-  <data name="TitleTaskbarTheme" xml:space="preserve">
+  <data name="TaskbarTheme.Header" xml:space="preserve">
     <value>작업 표시줄 테마</value>
-  </data>  
+  </data>
   <data name="TitleTileSize" xml:space="preserve">
     <value>타일 크기</value>
   </data>
@@ -850,41 +871,41 @@ Edge는 Windows 10의 내장 웹뷰입니다.</value>
   </data>
   <data name="TitleUpdates" xml:space="preserve">
     <value>업데이트</value>
-  </data>  
+  </data>
   <data name="TitleVideo" xml:space="preserve">
     <value>비디오</value>
   </data>
-  <data name="TitleVideoHardwareDecode" xml:space="preserve">
+  <data name="VideoHardwareDecode.Header" xml:space="preserve">
     <value>GPU 디코드</value>
-  </data>  
+  </data>
   <data name="TitleWallpaper" xml:space="preserve">
-    <value>배경 화면</value>
+    <value>배경화면</value>
   </data>
-  <data name="TitleWallpaperDir" xml:space="preserve">
-    <value>배경 화면 디렉터리</value>
+  <data name="WallpaperDir.Header" xml:space="preserve">
+    <value>배경화면 디렉터리</value>
   </data>
-  <data name="TitleWallpaperDirMoveExisting" xml:space="preserve">
-    <value>기존 배경 화면을 새 폴더로 이동</value>
+  <data name="WallpaperDirMoveExisting.Content" xml:space="preserve">
+    <value>기존 배경화면을 새 폴더로 이동</value>
   </data>
-  <data name="TitleWallpaperFit" xml:space="preserve">
-    <value>배경 화면 맞춤 방식 선택</value>
+  <data name="WallpaperFit.Header" xml:space="preserve">
+    <value>배경화면 맞춤 방식 선택</value>
   </data>
-  <data name="TitleWallpaperInput" xml:space="preserve">
-    <value>배경 화면 입력</value>
+  <data name="WallpaperInput.Header" xml:space="preserve">
+    <value>배경화면 입력</value>
   </data>
-  <data name="TitleWallpaperLayout" xml:space="preserve">
-    <value>배경 화면 레이아웃</value>
+  <data name="WallpaperLayout.Header" xml:space="preserve">
+    <value>배경화면 레이아웃</value>
   </data>
-  <data name="TitleWallpaperPlayback" xml:space="preserve">
-    <value>배경 화면 재생</value>
+  <data name="WallpaperPlaybackGroup.Header" xml:space="preserve">
+    <value>배경화면 재생</value>
   </data>
   <data name="TitleWarning" xml:space="preserve">
     <value>알림</value>
   </data>
-  <data name="TitleWebBrowser" xml:space="preserve">
+  <data name="WebBrowser.Header" xml:space="preserve">
     <value>웹 브라우저</value>
   </data>
-  <data name="TitleWebBrowserDiskCache" xml:space="preserve">
+  <data name="WebBrowserDiskCache.Header" xml:space="preserve">
     <value>디스크 캐시</value>
   </data>
   <data name="TitleWebBrowserEngine" xml:space="preserve">
@@ -893,24 +914,220 @@ Edge는 Windows 10의 내장 웹뷰입니다.</value>
   <data name="TitleWebpageLoad" xml:space="preserve">
     <value>웹페이지 불러오기</value>
   </data>
-  <data name="TitleWindowsStartup" xml:space="preserve">
-    <value>Windows 시작 시 실행</value>
+  <data name="FastUI.Description" xml:space="preserve">
+    <value>빠른 시작을 위해 사용자 인터페이스 실행 유지</value>
   </data>
-  <data name="DescExplorerCrash" xml:space="preserve">
-    <value>Lively에서 심각한 오류가 발생했습니다. 
-
-Windows 탐색기가 지난 30초 동안 두 번 다시 시작되었습니다! Lively와 다른 데스크톱 사용자 지정 소프트웨어 또는 Windows 간의 충돌일 수 있습니다. 추가 문제를 방지하기 위해 모든 배경 화면이 종료됩니다.</value>
+  <data name="FastUI.Header" xml:space="preserve">
+    <value>빠른 시작</value>
   </data>
-  <data name="TipRemoteDesktopPower" xml:space="preserve">
-    <value>원격 데스크톱 세션을 실행할 때 재생을 변경합니다.</value>
+  <data name="WallpaperDirGroup.Header" xml:space="preserve">
+    <value>파일</value>
   </data>
-  <data name="TitleRemoteDesktopPower" xml:space="preserve">
-    <value>원격 데스크톱 모드일 때</value>
+  <data name="AppThemeDark.Content" xml:space="preserve">
+    <value>어둡게</value>
   </data>
-  <data name="TitlePowerSavingModePower" xml:space="preserve">
-    <value>배터리 절약 모드일 때</value>
+  <data name="AppThemeLight.Content" xml:space="preserve">
+    <value>밝게</value>
   </data>
-  <data name="TipPowerSavingModePower" xml:space="preserve">
-    <value>Windows 절전 모드가 활성화되면 재생을 변경합니다.</value>
+  <data name="AppThemeSystem.Content" xml:space="preserve">
+    <value>시스템</value>
+  </data>
+  <data name="WindowsSettingsColor.Content" xml:space="preserve">
+    <value>창 색상 설정</value>
+  </data>
+  <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
+    <value>랩탑</value>
+  </data>
+  <data name="DeveloperGroup.Header" xml:space="preserve">
+    <value>개발자</value>
+  </data>
+  <data name="AppearanceBehaviour.Header" xml:space="preserve">
+    <value>모양 &amp; 동작</value>
+  </data>
+  <data name="ActiveWallpapers.Label" xml:space="preserve">
+    <value>활성 배경화면</value>
+  </data>
+  <data name="TitleGallery" xml:space="preserve">
+    <value>갤러리</value>
+  </data>
+  <data name="AboutMe.Text" xml:space="preserve">
+    <value>안녕하세요, 저는 rocksdanister라고 알려진 Dani John입니다. 저는 라이블리(Lively) 자유 오픈 소스(FOSS) 배경화면 프로그램을 개발했습니다. 시간을 내어 제 작품을 둘러봐 주셔서 감사합니다.</value>
+  </data>
+  <data name="LicenseLink.Content" xml:space="preserve">
+    <value>소프트웨어 라이센스</value>
+  </data>
+  <data name="AttributionLink.Content" xml:space="preserve">
+    <value>타사 소프트웨어 고지</value>
+  </data>
+  <data name="PrivacyPolicyLink.Content" xml:space="preserve">
+    <value>데이터 수집 정책</value>
+  </data>
+  <data name="AddWallpaperDrop.Text" xml:space="preserve">
+    <value>배경화면 추가</value>
+  </data>
+  <data name="ComingSoon.Text" xml:space="preserve">
+    <value>출시 예정</value>
+  </data>
+  <data name="AboutMenu.Text" xml:space="preserve">
+    <value>정보</value>
+  </data>
+  <data name="SourceWebsite.Text" xml:space="preserve">
+    <value>웹사이트</value>
+  </data>
+  <data name="TextOpen.Content" xml:space="preserve">
+    <value>열기</value>
+  </data>
+  <data name="TextSave.Content" xml:space="preserve">
+    <value>저장</value>
+  </data>
+  <data name="UIMode.Description" xml:space="preserve">
+    <value>User interface effects and animations</value>
+  </data>
+  <data name="UIMode.Header" xml:space="preserve">
+    <value>User interface</value>
+  </data>
+  <data name="UIModeLite.Content" xml:space="preserve">
+    <value>Lite</value>
+  </data>
+  <data name="UIModeNormal.Content" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="Screensaver.Description" xml:space="preserve">
+    <value>How screensaver is applied to connected to display devices</value>
+  </data>
+  <data name="Screensaver.Header" xml:space="preserve">
+    <value>Type of screensaver</value>
+  </data>
+  <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
+    <value>Configured separately</value>
+  </data>
+  <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
+    <value>Same as running wallpaper</value>
+  </data>
+  <data name="ScreensaverPlugin.Title" xml:space="preserve">
+    <value>Plugin required</value>
+  </data>
+  <data name="ScreensaverPluginMessage.Text" xml:space="preserve">
+    <value>One time setup is required to run screensaver</value>
+  </data>
+  <data name="WallpaperLayoutScreenPicker.Content" xml:space="preserve">
+    <value>Always pick screen when choosing wallpaper</value>
+  </data>
+  <data name="GalleryAccount.Text" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="GalleryAccountDelete.Content" xml:space="preserve">
+    <value>Delete account</value>
+  </data>
+  <data name="GalleryAccountExport.Content" xml:space="preserve">
+    <value>Export data</value>
+  </data>
+  <data name="GalleryAccountLogin.Content" xml:space="preserve">
+    <value>Log in</value>
+  </data>
+  <data name="GalleryAccountLogout.Content" xml:space="preserve">
+    <value>Log out</value>
+  </data>
+  <data name="GalleryPageCollection.Content" xml:space="preserve">
+    <value>Collection</value>
+  </data>
+  <data name="GalleryPageHome.Content" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="GalleryPageManage.Content" xml:space="preserve">
+    <value>Manage</value>
+  </data>
+  <data name="GalleryPageProfile.Content" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="GalleryPleaseLogin.Text" xml:space="preserve">
+    <value>Please log in to continue</value>
+  </data>
+  <data name="GalleryWelcomeMessage.Text" xml:space="preserve">
+    <value>Hi</value>
+  </data>
+  <data name="RestoreWallpaper.Text" xml:space="preserve">
+    <value>We found these wallpapers in your account</value>
+  </data>
+  <data name="TextDownloadNow.Content" xml:space="preserve">
+    <value>Download now</value>
+  </data>
+  <data name="TextMaybeLater.Content" xml:space="preserve">
+    <value>Maybe later</value>
+  </data>
+  <data name="TextSelectAll.Content" xml:space="preserve">
+    <value>Select all</value>
+  </data>
+  <data name="TextSelectNone.Content" xml:space="preserve">
+    <value>Select none</value>
+  </data>
+  <data name="TitleWelcomeback.Text" xml:space="preserve">
+    <value>Welcome back!</value>
+  </data>
+  <data name="ReportWallpaper.Header" xml:space="preserve">
+    <value>Reasons</value>
+  </data>
+  <data name="ReportWallpaperCopyright.Content" xml:space="preserve">
+    <value>Copyright violation</value>
+  </data>
+  <data name="ReportWallpaperMisleading.Content" xml:space="preserve">
+    <value>Misleading information</value>
+  </data>
+  <data name="ReportWallpaperOther.Content" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="ReportWallpaperSpam.Content" xml:space="preserve">
+    <value>Spam</value>
+  </data>
+  <data name="ReportWallpaperViolence.Content" xml:space="preserve">
+    <value>Nudity or violence</value>
+  </data>
+  <data name="TextAdditionalNotes.Text" xml:space="preserve">
+    <value>Additional notes</value>
+  </data>
+  <data name="TextReportWallpaper.Text" xml:space="preserve">
+    <value>Report</value>
+  </data>
+  <data name="TitleReportWallpaper.Text" xml:space="preserve">
+    <value>Report Wallpaper</value>
+  </data>
+  <data name="Send.Content" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="GalleryAccountDeleteConfirm.Text" xml:space="preserve">
+    <value>Please confirm this action as it CAN NOT be undone</value>
+  </data>
+  <data name="GalleryAccountDeleteFail.Text" xml:space="preserve">
+    <value>Failed to delete account, please try again later</value>
+  </data>
+  <data name="TextConfirmCancel.Text" xml:space="preserve">
+    <value>Do you want to cancel it?</value>
+  </data>
+  <data name="TextWait.Text" xml:space="preserve">
+    <value>Wait</value>
+  </data>
+  <data name="TitleDownloadProgress.Text" xml:space="preserve">
+    <value>Download in Progress</value>
+  </data>
+  <data name="TextContributors.Text" xml:space="preserve">
+    <value>Contributors</value>
+  </data>
+  <data name="TextShare.Text" xml:space="preserve">
+    <value>Share</value>
+  </data>
+  <data name="TitleShareWallpaper.Text" xml:space="preserve">
+    <value>Share Wallpaper</value>
+  </data>
+  <data name="ExportWallpaperGallery.Text" xml:space="preserve">
+    <value>Gallery upload</value>
+  </data>
+  <data name="ExportWallpaperLink.Text" xml:space="preserve">
+    <value>Copy link</value>
+  </data>
+  <data name="TextCustomiseWallpaper" xml:space="preserve">
+    <value>배경 화면 사용자 정의</value>
+  </data>
+  <data name="TextCloseWallpapers" xml:space="preserve">
+    <value>배경 화면 닫기</value>
   </data>
 </root>

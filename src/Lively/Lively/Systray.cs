@@ -103,7 +103,7 @@ namespace Lively
             }
 
             _notifyIcon.ContextMenuStrip.Items.Add(new ContextMenuTheme.StripSeparatorCustom().stripSeparator);
-            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TitleReportBug, Properties.Icons.icons8_website_bug_96).Click += (s, e) => 
+            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.ReportBug_Header, Properties.Icons.icons8_website_bug_96).Click += (s, e) => 
                 LinkHandler.OpenBrowser("https://github.com/rocksdanister/lively/wiki/Common-Problems");
             _notifyIcon.ContextMenuStrip.Items.Add(new ContextMenuTheme.StripSeparatorCustom().stripSeparator);
             _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextExit, Properties.Icons.icons8_close_96).Click += (s, e) => App.ShutDown();

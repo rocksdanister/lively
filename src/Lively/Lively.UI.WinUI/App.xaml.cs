@@ -1,6 +1,7 @@
 ﻿using Lively.Common.Helpers;
 using Lively.Common.Helpers.Archive;
 using Lively.Common.Helpers.Pinvoke;
+using Lively.Gallery.Client;
 using Lively.Grpc.Client;
 using Lively.Models;
 using Lively.UI.WinUI.Factories;
@@ -15,6 +16,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources.Core;
@@ -84,7 +86,6 @@ namespace Lively.UI.WinUI
 
         private IServiceProvider ConfigureServices()
         {
-            //TODO: make nlogger write only to console.
             var provider = new ServiceCollection()
                 //singleton
                 .AddSingleton<IDesktopCoreClient, WinDesktopCoreClient>()
@@ -93,15 +94,24 @@ namespace Lively.UI.WinUI
                 .AddSingleton<ICommandsClient, CommandsClient>()
                 .AddSingleton<IAppUpdaterClient, AppUpdaterClient>()
                 .AddSingleton<MainWindow>()
+                .AddSingleton<GalleryClient>((e) => new GalleryClient("http://api.livelywallpaper.net/api/",
+                    "https://accounts.google.com/o/oauth2/auth/oauthchooseaccount?client_id=923081992071-qg27j4uhasb3r4lasb9cb19nbhvgbb34.apps.googleusercontent.com&redirect_uri=http://127.0.0.1:43821/signin-oidc&scope=email%20openid%20profile&response_type=code&state=asdafwswdwefwsdg&flowName=GeneralOAuthFlow",
+                    "https://github.com/login/oauth/authorize?client_id=bbfd46fbb54895ecee74&redirect_uri=http://127.0.0.1:43821/signin-oidc-github&scope=user:email",
+                    new JsonTokenStore()))
                 .AddSingleton<LibraryViewModel>() //Library items are stored..
+                .AddSingleton<GalleryViewModel>()
+                .AddSingleton<GallerySubscriptionViewModel>()
                 .AddSingleton<SettingsViewModel>() //Some events..
-                .AddSingleton<LibraryUtil>() //Used frequently..
+                .AddSingleton<ICacheService, DiskCacheService>((e) => new DiskCacheService(e.GetRequiredService<IHttpClientFactory>(), Path.Combine(Path.GetTempPath(), "Lively Wallpaper", "gallery")))
                 //transient
                 //.AddTransient<HelpViewModel>()
                 .AddTransient<AboutViewModel>()
                 .AddTransient<AddWallpaperViewModel>()
                 .AddTransient<ControlPanelViewModel>()
                 .AddTransient<ChooseDisplayViewModel>()
+                .AddTransient<GalleryLoginViewModel>()
+                .AddTransient<ManageAccountViewModel>()
+                .AddTransient<RestoreWallpaperViewModel>()
                 .AddTransient<IDialogService, DialogService>()
                 .AddTransient<IApplicationsRulesFactory, ApplicationsRulesFactory>()
                 //https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests

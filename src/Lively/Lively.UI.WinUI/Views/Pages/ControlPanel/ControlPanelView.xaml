@@ -7,9 +7,9 @@
     xmlns:local="using:Lively.UI.WinUI.Views.Pages.ControlPanel"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     MinWidth="490"
-    MinHeight="560"
+    MinHeight="520"
     MaxWidth="490"
-    MaxHeight="560"
+    MaxHeight="520"
     mc:Ignorable="d">
 
     <Grid>

@@ -7,7 +7,7 @@
     <StartupObject></StartupObject>
     <ApplicationIcon>appicon.ico</ApplicationIcon>
     <ApplicationManifest>app.manifest</ApplicationManifest>
-    <AssemblyVersion>2.0.2.4</AssemblyVersion>
+    <AssemblyVersion>2.0.2.8</AssemblyVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -41,11 +41,11 @@
   <ItemGroup>
     <PackageReference Include="GrpcDotNetNamedPipes" Version="1.4.4" />
     <PackageReference Include="Hardcodet.NotifyIcon.Wpf" Version="1.1.0" />
-    <PackageReference Include="Magick.NET-Q16-AnyCPU" Version="11.1.2" />
+    <PackageReference Include="Magick.NET-Q16-AnyCPU" Version="12.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
-    <PackageReference Include="NLog" Version="5.0.0" />
+    <PackageReference Include="NLog" Version="5.0.1" />
     <PackageReference Include="RawInput.Sharp" Version="0.0.4" />
-    <PackageReference Include="Sentinel.NLogViewer" Version="1.3.3" />
+    <PackageReference Include="Sentinel.NLogViewer" Version="2.0.1" />
     <PackageReference Include="UACHelper" Version="1.3.0.5" />
   </ItemGroup>
 

@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:Lively.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:p="clr-namespace:Lively.Properties"
-    Title="{x:Static p:Resources.TextPreviewWallpaper}"
+    Title="{x:Static p:Resources.PreviewWallpaper_Text}"
     Width="1281"
     Height="762"
     Closing="Window_Closing"
@@ -32,7 +32,7 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 FontSize="25"
-                Text="{x:Static p:Resources.TitlePleaseWait}" />
+                Text="{x:Static p:Resources.PleaseWait_Text}" />
             <ProgressBar
                 x:Name="ProgressIndicator"
                 Grid.Row="1"

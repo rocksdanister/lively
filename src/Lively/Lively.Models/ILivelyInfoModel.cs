@@ -1,4 +1,5 @@
 ﻿using Lively.Common;
+using System.Collections.Generic;
 
 namespace Lively.Models
 {
@@ -16,5 +17,8 @@ namespace Lively.Models
         string Thumbnail { get; set; }
         string Title { get; set; }
         WallpaperType Type { get; set; }
+        string Id { get; set; }
+        public List<string> Tags { get; set; }
+        public int Version { get; set; }
     }
 }

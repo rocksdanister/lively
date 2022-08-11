@@ -44,7 +44,7 @@
 
         <ScrollViewer VerticalAlignment="Bottom" VerticalScrollBarVisibility="Auto">
             <StackPanel>
-                <Label Margin="0,10,0,0" Content="{x:Static p:Resources.TextTitle}" />
+                <Label Margin="0,10,0,0" Content="{x:Static p:Resources.Title_Text}" />
                 <TextBox
                     Name="textboxTitle"
                     Height="20"
@@ -57,7 +57,7 @@
                     IsEnabled="{Binding IsUserEditable}"
                     Text="{Binding Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-                <Label Content="{x:Static p:Resources.TextDescription}" />
+                <Label Content="{x:Static p:Resources.Description_Text}" />
                 <TextBox
                     Name="textboxDesc"
                     Height="81"
@@ -71,7 +71,7 @@
                     TextWrapping="Wrap"
                     VerticalScrollBarVisibility="Auto" />
 
-                <Label Content="{x:Static p:Resources.TextAuthor}" />
+                <Label Content="{x:Static p:Resources.Author_Text}" />
                 <TextBox
                     Name="textboxAuthor"
                     Height="20"
@@ -84,7 +84,7 @@
                     IsEnabled="{Binding IsUserEditable}"
                     Text="{Binding Author, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-                <Label Content="{x:Static p:Resources.TextWebsite}" />
+                <Label Content="{x:Static p:Resources.Website_Header}" />
                 <TextBox
                     Name="textboxContact"
                     Height="20"
@@ -108,7 +108,7 @@
                             MinHeight="30"
                             Margin="0,0,10,0"
                             Command="{Binding CancelCommand}"
-                            Content="{x:Static p:Resources.TextCancel}" />
+                            Content="{x:Static p:Resources.Cancel_Content}" />
                         <Button
                             x:Name="OkBtn"
                             MinWidth="100"

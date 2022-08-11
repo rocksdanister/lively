@@ -3,9 +3,9 @@
 // See the LICENSE file in the project root for more information.
 // Source: https://github.com/ModernFlyouts-Community/ModernFlyouts
 
+using CommunityToolkit.Mvvm.ComponentModel;
 using Lively.Common.Helpers.Pinvoke;
 using Lively.Models;
-using Microsoft.Toolkit.Mvvm.ComponentModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

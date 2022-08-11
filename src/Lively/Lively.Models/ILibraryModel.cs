@@ -17,5 +17,9 @@ namespace Lively.Models
         Uri SrcWebsite { get; set; }
         string ThumbnailPath { get; set; }
         string Title { get; set; }
+        public bool IsDownloading { get; set; }
+        public float DownloadingProgress { get; set; }
+        public string DownloadingProgressText { get; set; }
+        public bool IsSubscribed { get; set; }
     }
 }

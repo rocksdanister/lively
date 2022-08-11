@@ -1,4 +1,5 @@
-﻿using Lively.Common;
+﻿using CommunityToolkit.Mvvm.Input;
+using Lively.Common;
 using Lively.Common.Helpers;
 using Lively.Common.Helpers.Archive;
 using Lively.Common.Helpers.Files;
@@ -8,7 +9,6 @@ using Lively.Models;
 using Lively.UI.WinUI.Helpers;
 using Lively.UI.WinUI.Views.Pages;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -28,13 +28,13 @@ namespace Lively.UI.WinUI.ViewModels
 
         private readonly IUserSettingsClient userSettings;
         //private readonly LibraryViewModel libraryVm;
-        private readonly LibraryUtil libraryUtil;
+        private readonly LibraryViewModel libraryVm;
 
-        public AddWallpaperViewModel(IUserSettingsClient userSettings, LibraryUtil libraryUtil)
+        public AddWallpaperViewModel(IUserSettingsClient userSettings, LibraryViewModel libraryVm)
         {
             this.userSettings = userSettings;
             //this.libraryVm = libraryVm;
-            this.libraryUtil = libraryUtil;
+            this.libraryVm = libraryVm;
             //this.appWindow = appWindow;
 
             WebUrlText = userSettings.Settings.SavedURL;
@@ -85,7 +85,7 @@ namespace Lively.UI.WinUI.ViewModels
         {
             try
             {
-                NewWallpaper = libraryUtil.AddWallpaperLink(uri.OriginalString);
+                NewWallpaper = libraryVm.AddWallpaperLink(uri.OriginalString);
                 OnRequestClose?.Invoke(this, EventArgs.Empty);
             }
             catch
@@ -124,7 +124,7 @@ namespace Lively.UI.WinUI.ViewModels
         {
             try
             {
-                var item = await libraryUtil.AddWallpaperFile(path);
+                var item = await libraryVm.AddWallpaperFile(path);
                 if (item.DataType == LibraryItemType.processing)
                 {
                     NewWallpaper = item;

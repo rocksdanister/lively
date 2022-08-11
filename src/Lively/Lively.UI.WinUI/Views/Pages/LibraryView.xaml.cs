@@ -3,6 +3,7 @@ using Lively.Models;
 using Lively.UI.WinUI.Helpers;
 using Lively.UI.WinUI.ViewModels;
 using Lively.UI.WinUI.Views.LivelyProperty;
+using Lively.UI.WinUI.Views.Pages.Gallery;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -40,14 +41,12 @@ namespace Lively.UI.WinUI.Views.Pages
         private readonly IUserSettingsClient userSettings;
         private readonly IDesktopCoreClient desktopCore;
         private readonly LibraryViewModel libraryVm;
-        private readonly LibraryUtil libraryUtil;
 
         public LibraryView()
         {
             this.desktopCore = App.Services.GetRequiredService<IDesktopCoreClient>();
             this.libraryVm = App.Services.GetRequiredService<LibraryViewModel>();
             this.userSettings = App.Services.GetRequiredService<IUserSettingsClient>();
-            this.libraryUtil = App.Services.GetRequiredService<LibraryUtil>();
 
             this.InitializeComponent();
             i18n = ResourceLoader.GetForViewIndependentUse();
@@ -69,29 +68,24 @@ namespace Lively.UI.WinUI.Views.Pages
                     await desktopCore.PreviewWallpaper(obj.LivelyInfoFolderPath);
                     break;
                 case "showOnDisk":
-                    await libraryUtil.WallpaperShowOnDisk(obj);
+                    await libraryVm.WallpaperShowOnDisk(obj);
                     break;
                 case "setWallpaper":
                     await desktopCore.SetWallpaper(obj, userSettings.Settings.SelectedDisplay);
                     break;
                 case "exportWallpaper":
                     {
-                        var filePicker = new FileSavePicker();
-                        filePicker.SetOwnerWindow(App.Services.GetRequiredService<MainWindow>());
-                        filePicker.FileTypeChoices.Add("Compressed archive", new List<string>() { ".zip" });
-                        filePicker.SuggestedFileName = obj.Title;
-                        var file = await filePicker.PickSaveFileAsync();
-                        if (file != null)
+                        _ = await new ContentDialog()
                         {
-                            try
+                            Title = i18n.GetString("TitleShareWallpaper/Text"),
+                            Content = new ShareWallpaperView()
                             {
-                                await libraryUtil.WallpaperExport(obj, file.Path);
-                            }
-                            catch (Exception)
-                            {
-                                //TODO
-                            }
-                        }
+                                DataContext = new ShareWallpaperViewModel(obj),
+                            },
+                            PrimaryButtonText = i18n.GetString("TextOK"),
+                            DefaultButton = ContentDialogButton.Primary,
+                            XamlRoot = this.Content.XamlRoot,
+                        }.ShowAsyncQueue();
                     }
                     break;
                 case "deleteWallpaper":
@@ -108,7 +102,7 @@ namespace Lively.UI.WinUI.Views.Pages
                         }.ShowAsyncQueue();
                         if (result == ContentDialogResult.Primary)
                         {
-                            await libraryUtil.WallpaperDelete(obj);
+                            await libraryVm.WallpaperDelete(obj);
                         }
                     }
                     break;
@@ -146,6 +140,22 @@ namespace Lively.UI.WinUI.Views.Pages
                         }.ShowAsyncQueue();
                     }
                     break;
+                case "reportWallpaper":
+                    {
+                        _ = await new ContentDialog()
+                        {
+                            Title = i18n.GetString("TitleReportWallpaper/Text"),
+                            Content = new ReportWallpaperView()
+                            {
+                                DataContext = new ReportWallpaperViewModel(obj),
+                            },
+                            PrimaryButtonText = i18n.GetString("Send/Content"),
+                            SecondaryButtonText = i18n.GetString("Cancel/Content"),
+                            DefaultButton = ContentDialogButton.Primary,
+                            XamlRoot = this.Content.XamlRoot,
+                        }.ShowAsyncQueue();
+                    }
+                    break;
             }
         }
 
@@ -153,11 +163,14 @@ namespace Lively.UI.WinUI.Views.Pages
         {
             try
             {
-                GridView gridView = (GridView)sender;
-                contextMenu.ShowAt(gridView, e.GetPosition(gridView));
                 var a = ((FrameworkElement)e.OriginalSource).DataContext;
                 selectedTile = (ILibraryModel)a;
-                customiseWallpaper.IsEnabled = selectedTile.LivelyPropertyPath != null;
+                if (selectedTile.DataType == LibraryItemType.ready)
+                {
+                    GridView gridView = (GridView)sender;
+                    contextMenu.ShowAt(gridView, e.GetPosition(gridView));
+                    customiseWallpaper.IsEnabled = selectedTile.LivelyPropertyPath != null;
+                }
             }
             catch
             {
@@ -172,8 +185,11 @@ namespace Lively.UI.WinUI.Views.Pages
             {
                 var a = ((FrameworkElement)e.OriginalSource).DataContext;
                 selectedTile = (ILibraryModel)a;
-                customiseWallpaper.IsEnabled = selectedTile.LivelyPropertyPath != null;
-                contextMenu.ShowAt((UIElement)e.OriginalSource, new Point(0, 0));
+                if (selectedTile.DataType == LibraryItemType.ready)
+                {
+                    customiseWallpaper.IsEnabled = selectedTile.LivelyPropertyPath != null;
+                    contextMenu.ShowAt((UIElement)e.OriginalSource, new Point(0, 0));
+                }
             }
             catch
             {
@@ -196,7 +212,7 @@ namespace Lively.UI.WinUI.Views.Pages
                 Logger.Info($"Dropped string {uri}");
                 try
                 {
-                    var libItem = libraryUtil.AddWallpaperLink(uri);
+                    var libItem = libraryVm.AddWallpaperLink(uri);
                     if (libItem.LivelyInfo.IsAbsolutePath)
                     {
                         libItem.DataType = LibraryItemType.processing;
@@ -250,7 +266,7 @@ namespace Lively.UI.WinUI.Views.Pages
 
                     try
                     {
-                        var libItem = await libraryUtil.AddWallpaperFile(item);
+                        var libItem = await libraryVm.AddWallpaperFile(item);
                         if (libItem.DataType == LibraryItemType.processing)
                         {
                             await desktopCore.SetWallpaper(libItem, userSettings.Settings.SelectedDisplay);
