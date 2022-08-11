@@ -14,7 +14,8 @@ namespace Lively.Models
         ready,
         cmdImport,
         multiImport,
-        edit
+        edit,
+        gallery,
     }
 
     [Serializable]
@@ -27,6 +28,7 @@ namespace Lively.Models
             Title = data.Title;
             Desc = data.Desc;
             Author = data.Author;
+
             try
             {
                 SrcWebsite = LinkHandler.SanitizeUrl(data.Contact);
@@ -132,6 +134,52 @@ namespace Lively.Models
             if (data.Type == WallpaperType.video || data.Type == WallpaperType.videostream || data.Type == WallpaperType.gif || data.Type == WallpaperType.picture)
             {
                 LivelyPropertyPath ??= Path.Combine(Constants.CommonPaths.TempVideoDir, "LivelyProperties.json");
+            }
+
+            //Assume its gallery wp if these conditions true (offline.)
+            IsSubscribed = DataType == LibraryItemType.ready && !string.IsNullOrEmpty(data.Id);
+        }
+
+        public LibraryModel(LivelyInfoModel data, LibraryItemType tileType = LibraryItemType.gallery)
+        {
+            Title = data.Title;
+            Desc = data.Desc;
+            ImagePath = data.Preview ?? data.Thumbnail;
+            LivelyInfo = new LivelyInfoModel(data);
+            DataType = tileType;
+            //IsSubscribed = !string.IsNullOrEmpty(data.Id);
+        }
+
+        private bool _isSubscribed;
+        public bool IsSubscribed
+        {
+            get => _isSubscribed;
+            set { _isSubscribed = value; OnPropertyChanged(); }
+        }
+
+        private bool _isDownloading;
+        public bool IsDownloading
+        {
+            get { return _isDownloading; }
+            set { _isDownloading = value; OnPropertyChanged(); }
+        }
+
+        private float _downloadingProgress;
+
+        public float DownloadingProgress
+        {
+            get { return _downloadingProgress; }
+            set { _downloadingProgress = value; OnPropertyChanged(); }
+        }
+
+        private string _downloadingProgressText = "-/- MB";
+        public string DownloadingProgressText
+        {
+            get => _downloadingProgressText;
+            set
+            {
+                _downloadingProgressText = value;
+                OnPropertyChanged();
             }
         }
 

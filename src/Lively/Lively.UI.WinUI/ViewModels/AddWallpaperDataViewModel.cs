@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 using Lively.Common.Helpers.MVVM;
 using Lively.Common;
 using Microsoft.UI.Xaml;
-using Microsoft.Toolkit.Mvvm.Input;
 using Lively.Common.Helpers.Storage;
 using System.IO;
 using Microsoft.Extensions.DependencyInjection;
 using Lively.UI.WinUI.Helpers;
+using CommunityToolkit.Mvvm.Input;
 
 namespace Lively.UI.WinUI.ViewModels
 {
@@ -125,15 +125,15 @@ namespace Lively.UI.WinUI.ViewModels
 
         private async Task OperationCancelled()
         {
-            var libraryUtil = App.Services.GetRequiredService<LibraryUtil>();
+            var libraryUtil = App.Services.GetRequiredService<LibraryViewModel>();
             await libraryUtil.WallpaperDelete(libData);
         }
 
         private void OperationProceed()
         {
             JsonStorage<LivelyInfoModel>.StoreData(Path.Combine(libData.LivelyInfoFolderPath, "LivelyInfo.json"), libData.LivelyInfo);
-            var libraryUtil = App.Services.GetRequiredService<LibraryUtil>();
-            libraryUtil.SortWallpaper(libData);
+            var libraryUtil = App.Services.GetRequiredService<LibraryViewModel>();
+            libraryUtil.SortWallpaper((LibraryModel)libData);
         }
     }
 }

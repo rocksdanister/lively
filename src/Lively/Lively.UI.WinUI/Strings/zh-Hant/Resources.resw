@@ -1,6 +1,6 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
-    <!-- 
+  <!-- 
     Microsoft ResX Schema 
     
     Version 2.0
@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -117,65 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="WallpaperDirGroup.Header" xml:space="preserve">
-    <value>檔案</value>
+  <data name="AudioFocused.Content" xml:space="preserve">
+    <value>僅在桌面為焦點時播放音訊</value>
   </data>
-  <data name="FastUI.Header" xml:space="preserve">
-    <value>快速啟動</value>
+  <data name="Audio.Description" xml:space="preserve">
+    <value>桌布音量等級。</value>
   </data>
-  <data name="FastUI.Description" xml:space="preserve">
-    <value>保持用戶介面在運作中以加快啟動速度</value>
+  <data name="Audio.Header" xml:space="preserve">
+    <value>主音量</value>
   </data>
-  <data name="WindowsSettingsColor.Content" xml:space="preserve">
-    <value>Windows 色彩設定</value>
-  </data>
-  <data name="AppThemeDark.Content" xml:space="preserve">
-    <value>深色</value>
-  </data>
-  <data name="AppThemeLight.Content" xml:space="preserve">
-    <value>淺色</value>
-  </data>
-  <data name="AppThemeSystem.Content" xml:space="preserve">
-    <value>系統</value>
-  </data>
-  <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
-    <value>筆電</value>
-  </data>
-  <data name="DeveloperGroup.Header" xml:space="preserve">
-    <value>開發人員</value>
-  </data>
-  <data name="AppearanceBehaviour.Header" xml:space="preserve">
-    <value>外觀與行為</value>
-  </data>
-  <data name="TitleGallery" xml:space="preserve">
-    <value>市集</value>
-  </data>
-  <data name="ActiveWallpapers.Label" xml:space="preserve">
-    <value>啟用中桌布</value>
-  </data>
-  <data name="AboutMe.Text" xml:space="preserve">
-    <value>嗨，我是 Dani John，也被稱為 Rocksdanister。我開發了 Lively 動態桌布，一個免費和開源 (FOSS) 的桌布應用程式。感謝您花時間體驗我的作品。</value>
-  </data>
-  <data name="LicenseLink.Content" xml:space="preserve">
-    <value>軟體許可</value>
-  </data>
-  <data name="AttributionLink.Content" xml:space="preserve">
-    <value>第三方軟體提醒</value>
-  </data>
-  <data name="PrivacyPolicyLink.Content" xml:space="preserve">
-    <value>資料蒐集政策</value>
-  </data>
-  <data name="AddWallpaperDrop.Text" xml:space="preserve">
-    <value>新增桌布</value>
-  </data>
- <data name="ComingSoon.Text" xml:space="preserve">
-    <value>即將推出</value>
-  </data>
-  <data name="TextOpen.Content" xml:space="preserve">
-    <value>開啟</value>
-  </data>
-  <data name="TextSave.Content" xml:space="preserve">
-    <value>儲存</value>
+  <data name="AudioGroup.Header" xml:space="preserve">
+    <value>音訊</value>
   </data>
   <data name="CommunityPage.Content" xml:space="preserve">
     <value>線上討論社群</value>
@@ -264,6 +216,18 @@ Lively 動態桌布的螢幕保護程式主要用於為您的電腦新增另一�
     <value>您即將變更為 Beta (開發人員) 版。
 更新將會很頻繁，並且可能包含漏洞！</value>
   </data>
+  <data name="HideSysTray.Description" xml:space="preserve">
+    <value>系統匣圖示可見性，Lively 動態桌布在圖示隱藏的情況下仍會繼續運作</value>
+  </data>
+  <data name="HideSysTray.Header" xml:space="preserve">
+    <value>系統匣圖示</value>
+  </data>
+  <data name="Language.Description" xml:space="preserve">
+    <value>將 Lively 動態桌布重新啟動以套用新語言。</value>
+  </data>
+  <data name="Language.Header" xml:space="preserve">
+    <value>語言</value>
+  </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
     <value>更新失敗；請嘗試從以下位址下載安裝程式: 
 https://github.com/rocksdanister/lively/releases</value>
@@ -306,6 +270,12 @@ https://github.com/rocksdanister/lively/wiki</value>
 如果是 Windows 7 只需設定 -「調整成最佳外觀」並套用。
 如果仍無法正常工作， 請關閉並重新啟動 Lively 動態桌布 / Windows。
 (在部分 Windows 10 測試人員組建中無法正常工作)</value>
+  </data>
+  <data name="Startup.Description" xml:space="preserve">
+    <value>Lively 動態桌布需要在背景運作以進行桌布播放作業。</value>
+  </data>
+  <data name="Startup.Header" xml:space="preserve">
+    <value>隨 Windows 開機啟動</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
     <value>新增</value>
@@ -400,7 +370,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextGo" xml:space="preserve">
     <value>開始</value>
   </data>
-  <data name="TextHelpTranslate" xml:space="preserve">
+  <data name="TextHelpTranslate.Title" xml:space="preserve">
     <value>幫助翻譯</value>
   </data>
   <data name="TextHours" xml:space="preserve">
@@ -415,7 +385,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextLastChecked" xml:space="preserve">
     <value>最後檢查</value>
   </data>
-  <data name="TextLearnMore" xml:space="preserve">
+  <data name="TextLearnMore.Text" xml:space="preserve">
     <value>了解更多</value>
   </data>
   <data name="License.Header" xml:space="preserve">
@@ -652,9 +622,6 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TipAppTheme" xml:space="preserve">
     <value>Lively 動態桌布跟隨系統主題設定，要改變外觀請至</value>
   </data>
-  <data name="Audio.Description" xml:space="preserve">
-    <value>桌布音量等級。</value>
-  </data>
   <data name="BatteryPower.Description" xml:space="preserve">
     <value>變更斷開交流電源後的播放行為。</value>
   </data>
@@ -676,12 +643,6 @@ https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="GifPlayer.Description" xml:space="preserve">
     <value>選取用於 GIF 桌布的播放器。</value>
-  </data>
-  <data name="TipHideSysTray" xml:space="preserve">
-    <value>系統匣中圖示的可見性，Lively 動態桌布在隱藏圖示的情況下將繼續運作。</value>
-  </data>
-  <data name="Language.Description" xml:space="preserve">
-    <value>將 Lively 動態桌布重新啟動以套用新語言。</value>
   </data>
   <data name="TipLivelySetupOnClose" xml:space="preserve">
     <value>完成初始設定以繼續。</value>
@@ -747,9 +708,6 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>CEF(Chromium Embedded Framework) 是個輕量級的 Chromium 引擎。
 Edge 是 Windows 10 的內建網頁繪製元件 (Webview)。</value>
   </data>
-  <data name="Startup.Description" xml:space="preserve">
-    <value>Lively 動態桌布需要在背景運作以進行桌布播放作業。</value>
-  </data>
   <data name="About.Label" xml:space="preserve">
     <value>關於</value>
   </data>
@@ -770,15 +728,6 @@ Edge 是 Windows 10 的內建網頁繪製元件 (Webview)。</value>
   </data>
   <data name="AppTheme.Header" xml:space="preserve">
     <value>主題</value>
-  </data>
-  <data name="AudioGroup.Header" xml:space="preserve">
-    <value>音訊</value>
-  </data>
-  <data name="AudioFocused.Content" xml:space="preserve">
-    <value>僅在桌面為焦點時播放音訊</value>
-  </data>
-  <data name="Audio.Header" xml:space="preserve">
-    <value>主音量</value>
   </data>
   <data name="TitleAudioPlayOnScreen" xml:space="preserve">
     <value>在螢幕上播放音訊</value>
@@ -813,7 +762,7 @@ Edge 是 Windows 10 的內建網頁繪製元件 (Webview)。</value>
   <data name="Documentation.Header" xml:space="preserve">
     <value>文件</value>
   </data>
-  <data name="TitleEnterUrl" xml:space="preserve">
+  <data name="EnterUrl.Header" xml:space="preserve">
     <value>輸入 URL</value>
   </data>
   <data name="ExportLogs.Header" xml:space="preserve">
@@ -828,14 +777,8 @@ Edge 是 Windows 10 的內建網頁繪製元件 (Webview)。</value>
   <data name="Help.Label" xml:space="preserve">
     <value>幫助</value>
   </data>
-  <data name="HideSysTray.Header" xml:space="preserve">
-    <value>系統匣圖示</value>
-  </data>
   <data name="TitleInteraction" xml:space="preserve">
     <value>互動</value>
-  </data>
-  <data name="Language.Header" xml:space="preserve">
-    <value>語言</value>
   </data>
   <data name="TitleLibrary" xml:space="preserve">
     <value>資料庫</value>
@@ -902,7 +845,7 @@ Edge 是 Windows 10 的內建網頁繪製元件 (Webview)。</value>
   </data>
   <data name="Store.Header" xml:space="preserve">
     <value>商店</value>
-    <comment>對於不同版本的 Lively 動態桌布，例如: Microsoft Store</comment>
+    <comment>For different version of Lively, example: Microsoft Store</comment>
   </data>
   <data name="StreamWallpaperVideoQuality.Header" xml:space="preserve">
     <value>串流</value>
@@ -970,23 +913,71 @@ Edge 是 Windows 10 的內建網頁繪製元件 (Webview)。</value>
   <data name="TitleWebpageLoad" xml:space="preserve">
     <value>載入網頁</value>
   </data>
-  <data name="TitleWindowsStartup" xml:space="preserve">
-    <value>隨 Windows 開機啟動</value>
+  <data name="FastUI.Description" xml:space="preserve">
+    <value>保持用戶介面在運作中以加快啟動速度</value>
   </data>
-  <data name="SourceWebsite.Text" xml:space="preserve">
-    <value>網站</value>
+  <data name="FastUI.Header" xml:space="preserve">
+    <value>快速啟動</value>
+  </data>
+  <data name="WallpaperDirGroup.Header" xml:space="preserve">
+    <value>檔案</value>
+  </data>
+  <data name="AppThemeDark.Content" xml:space="preserve">
+    <value>深色</value>
+  </data>
+  <data name="AppThemeLight.Content" xml:space="preserve">
+    <value>淺色</value>
+  </data>
+  <data name="AppThemeSystem.Content" xml:space="preserve">
+    <value>系統</value>
+  </data>
+  <data name="WindowsSettingsColor.Content" xml:space="preserve">
+    <value>Windows 色彩設定</value>
+  </data>
+  <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
+    <value>筆電</value>
+  </data>
+  <data name="DeveloperGroup.Header" xml:space="preserve">
+    <value>開發人員</value>
+  </data>
+  <data name="AppearanceBehaviour.Header" xml:space="preserve">
+    <value>外觀與行為</value>
+  </data>
+  <data name="ActiveWallpapers.Label" xml:space="preserve">
+    <value>啟用中桌布</value>
+  </data>
+  <data name="TitleGallery" xml:space="preserve">
+    <value>市集</value>
+  </data>
+  <data name="AboutMe.Text" xml:space="preserve">
+    <value>嗨，我是 Dani John，也被稱為 Rocksdanister。我開發了 Lively 動態桌布，一個免費和開源 (FOSS) 的桌布應用程式。感謝您花時間體驗我的作品。</value>
+  </data>
+  <data name="LicenseLink.Content" xml:space="preserve">
+    <value>軟體許可</value>
+  </data>
+  <data name="AttributionLink.Content" xml:space="preserve">
+    <value>第三方軟體提醒</value>
+  </data>
+  <data name="PrivacyPolicyLink.Content" xml:space="preserve">
+    <value>資料蒐集政策</value>
+  </data>
+  <data name="AddWallpaperDrop.Text" xml:space="preserve">
+    <value>新增桌布</value>
+  </data>
+  <data name="ComingSoon.Text" xml:space="preserve">
+    <value>即將推出</value>
   </data>
   <data name="AboutMenu.Text" xml:space="preserve">
     <value>關於</value>
   </data>
-  <data name="HideSysTray.Description" xml:space="preserve">
-    <value>系統匣圖示可見性，Lively 動態桌布在圖示隱藏的情況下仍會繼續運作</value>
+  <data name="SourceWebsite.Text" xml:space="preserve">
+    <value>網站</value>
   </data>
-  <data name="EnterUrl.Header" xml:space="preserve">
-    <value>輸入 URL</value>
+  <data name="TextOpen.Content" xml:space="preserve">
+    <value>開啟</value>
   </data>
-  <data name="Startup.Header" xml:space="preserve">
-    <value>隨 Windows 開機啟動</value>
+  <data name="TextSave.Content" xml:space="preserve">
+    <value>儲存</value>
   </data>
   <data name="UIMode.Description" xml:space="preserve">
     <value>使用者介面效果和動畫</value>
@@ -999,5 +990,143 @@ Edge 是 Windows 10 的內建網頁繪製元件 (Webview)。</value>
   </data>
   <data name="UIModeNormal.Content" xml:space="preserve">
     <value>正常</value>
+  </data>
+  <data name="Screensaver.Description" xml:space="preserve">
+    <value>How screensaver is applied to connected to display devices</value>
+  </data>
+  <data name="Screensaver.Header" xml:space="preserve">
+    <value>Type of screensaver</value>
+  </data>
+  <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
+    <value>Configured separately</value>
+  </data>
+  <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
+    <value>Same as running wallpaper</value>
+  </data>
+  <data name="ScreensaverPlugin.Title" xml:space="preserve">
+    <value>Plugin required</value>
+  </data>
+  <data name="ScreensaverPluginMessage.Text" xml:space="preserve">
+    <value>One time setup is required to run screensaver</value>
+  </data>
+  <data name="WallpaperLayoutScreenPicker.Content" xml:space="preserve">
+    <value>Always pick screen when choosing wallpaper</value>
+  </data>
+  <data name="GalleryAccount.Text" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="GalleryAccountDelete.Content" xml:space="preserve">
+    <value>Delete account</value>
+  </data>
+  <data name="GalleryAccountExport.Content" xml:space="preserve">
+    <value>Export data</value>
+  </data>
+  <data name="GalleryAccountLogin.Content" xml:space="preserve">
+    <value>Log in</value>
+  </data>
+  <data name="GalleryAccountLogout.Content" xml:space="preserve">
+    <value>Log out</value>
+  </data>
+  <data name="GalleryPageCollection.Content" xml:space="preserve">
+    <value>Collection</value>
+  </data>
+  <data name="GalleryPageHome.Content" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="GalleryPageManage.Content" xml:space="preserve">
+    <value>Manage</value>
+  </data>
+  <data name="GalleryPageProfile.Content" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="GalleryPleaseLogin.Text" xml:space="preserve">
+    <value>Please log in to continue</value>
+  </data>
+  <data name="GalleryWelcomeMessage.Text" xml:space="preserve">
+    <value>Hi</value>
+  </data>
+  <data name="RestoreWallpaper.Text" xml:space="preserve">
+    <value>We found these wallpapers in your account</value>
+  </data>
+  <data name="TextDownloadNow.Content" xml:space="preserve">
+    <value>Download now</value>
+  </data>
+  <data name="TextMaybeLater.Content" xml:space="preserve">
+    <value>Maybe later</value>
+  </data>
+  <data name="TextSelectAll.Content" xml:space="preserve">
+    <value>Select all</value>
+  </data>
+  <data name="TextSelectNone.Content" xml:space="preserve">
+    <value>Select none</value>
+  </data>
+  <data name="TitleWelcomeback.Text" xml:space="preserve">
+    <value>Welcome back!</value>
+  </data>
+  <data name="ReportWallpaper.Header" xml:space="preserve">
+    <value>Reasons</value>
+  </data>
+  <data name="ReportWallpaperCopyright.Content" xml:space="preserve">
+    <value>Copyright violation</value>
+  </data>
+  <data name="ReportWallpaperMisleading.Content" xml:space="preserve">
+    <value>Misleading information</value>
+  </data>
+  <data name="ReportWallpaperOther.Content" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="ReportWallpaperSpam.Content" xml:space="preserve">
+    <value>Spam</value>
+  </data>
+  <data name="ReportWallpaperViolence.Content" xml:space="preserve">
+    <value>Nudity or violence</value>
+  </data>
+  <data name="TextAdditionalNotes.Text" xml:space="preserve">
+    <value>Additional notes</value>
+  </data>
+  <data name="TextReportWallpaper.Text" xml:space="preserve">
+    <value>Report</value>
+  </data>
+  <data name="TitleReportWallpaper.Text" xml:space="preserve">
+    <value>Report Wallpaper</value>
+  </data>
+  <data name="Send.Content" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="GalleryAccountDeleteConfirm.Text" xml:space="preserve">
+    <value>Please confirm this action as it CAN NOT be undone</value>
+  </data>
+  <data name="GalleryAccountDeleteFail.Text" xml:space="preserve">
+    <value>Failed to delete account, please try again later</value>
+  </data>
+  <data name="TextConfirmCancel.Text" xml:space="preserve">
+    <value>Do you want to cancel it?</value>
+  </data>
+  <data name="TextWait.Text" xml:space="preserve">
+    <value>Wait</value>
+  </data>
+  <data name="TitleDownloadProgress.Text" xml:space="preserve">
+    <value>Download in Progress</value>
+  </data>
+  <data name="TextContributors.Text" xml:space="preserve">
+    <value>Contributors</value>
+  </data>
+  <data name="TextShare.Text" xml:space="preserve">
+    <value>Share</value>
+  </data>
+  <data name="TitleShareWallpaper.Text" xml:space="preserve">
+    <value>Share Wallpaper</value>
+  </data>
+  <data name="ExportWallpaperGallery.Text" xml:space="preserve">
+    <value>Gallery upload</value>
+  </data>
+  <data name="ExportWallpaperLink.Text" xml:space="preserve">
+    <value>Copy link</value>
+  </data>
+  <data name="TextCustomiseWallpaper" xml:space="preserve">
+    <value>自訂桌布</value>
+  </data>
+  <data name="TextCloseWallpapers" xml:space="preserve">
+    <value>關閉桌布</value>
   </data>
 </root>

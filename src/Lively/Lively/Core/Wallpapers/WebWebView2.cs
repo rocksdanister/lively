@@ -48,7 +48,7 @@ namespace Lively.Core.Wallpapers
 
             StringBuilder cmdArgs = new StringBuilder();
             cmdArgs.Append(" --url " + "\"" + path + "\"");
-            cmdArgs.Append(" --display " + "\"" + display + "\"");
+            cmdArgs.Append(" --display " + "\"" + display.DeviceId + "\"");
             cmdArgs.Append(" --property " + "\"" + LivelyPropertyCopyPath + "\"");
             cmdArgs.Append(" --volume " + 100);
             cmdArgs.Append(" --geometry " + display.Bounds.Width + "x" + display.Bounds.Height);
@@ -99,6 +99,7 @@ namespace Lively.Core.Wallpapers
                 //Cef spawns multiple subprocess but "Intermediate D3D Window" seems to do the trick..
                 //The "System Idle Process" is given process ID 0, Kernel is 1.
                 _ = NativeMethods.DebugActiveProcess((uint)cefD3DRenderingSubProcessPid);
+                SendMessage(new LivelySuspendCmd()); //"{\"Type\":7}"
             }
         }
 
@@ -107,6 +108,7 @@ namespace Lively.Core.Wallpapers
             if (cefD3DRenderingSubProcessPid != 0)
             {
                 _ = NativeMethods.DebugActiveProcessStop((uint)cefD3DRenderingSubProcessPid);
+                SendMessage(new LivelyResumeCmd()); //"{\"Type\":8}"
             }
         }
 

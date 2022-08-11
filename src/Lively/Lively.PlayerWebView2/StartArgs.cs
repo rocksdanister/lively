@@ -26,7 +26,7 @@ namespace Lively.PlayerWebView2
         public string Type { get; set; }
 
         [Option("display",
-        Required = true,
+        Required = false,
         HelpText = "Wallpaper running display.")]
         public string DisplayDevice { get; set; }
 
@@ -61,6 +61,16 @@ namespace Lively.PlayerWebView2
         Required = false,
         HelpText = "Lively hw monitor api")]
         public bool SysInfo { get; set; }
+
+        [Option("system-nowplaying", 
+        Default = false, 
+        Required = false)]
+        public bool NowPlaying { get; set; }
+
+        [Option("pause-event",
+        Required = false,
+        HelpText = "Wallpaper playback changed notify")]
+        public bool PauseEvent { get; set; }
 
         [Option("verbose-log",
         Required = false,

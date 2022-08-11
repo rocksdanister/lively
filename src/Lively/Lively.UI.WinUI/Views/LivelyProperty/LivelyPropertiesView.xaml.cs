@@ -22,7 +22,6 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage.Pickers;
 using Windows.UI;
-using H.Hooks;
 using Lively.Common.Helpers.Pinvoke;
 using System.Threading.Tasks;
 using System.Threading;
@@ -38,17 +37,13 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
         private ILibraryModel libraryItem;
         private IDisplayMonitor screen;
         private JObject livelyPropertyCopyData;
-        private readonly object _colorPickerTipLock = new();
 
         //UI
         private readonly Thickness margin = new Thickness(0, 0, 20, 10);
         private readonly double minWidth = 200;
         //Color picker
-        private LowLevelMouseHook mouseHook;
-        private SplitButton currEyeDropSplitBtn;
-        private ToggleButton currEyeDropBtn;
+        private SplitButton currColorPickerSplitBtn;
         private ColorPicker currColorPicker;
-        private Color currColorPickerOriginalColor;
 
         private readonly IUserSettingsClient userSettings;
         private readonly IDesktopCoreClient desktopCore;
@@ -225,19 +220,19 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                         IsAlphaSliderVisible = true,
                         Color = selectedColorBrush.Color,
                     };
-                    var eyeDropBtn = new ToggleButton()
+                    var eyeDropBtn = new Button()
                     {
                         Tag = item.Key, //used for searching the splitbtn
-                        HorizontalAlignment = HorizontalAlignment.Right,
-                        Margin = new Thickness(0, 10, 0, 0),
+                        //HorizontalAlignment = HorizontalAlignment.Right,
+                        Margin = new Thickness(-15,0,0,10),
+                        Width = 43,
+                        Height = 43,
                         Content = new FontIcon
                         {
                             Glyph = "\uEF3C",
+                            FontSize = 17,
                         },
                     };
-                    var cpickerPanel = new StackPanel();
-                    cpickerPanel.Children.Add(cpicker);
-                    cpickerPanel.Children.Add(eyeDropBtn);
                     var sb = new SplitButton
                     {
                         Name = item.Key,
@@ -251,12 +246,19 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                         },
                         Flyout = new Flyout
                         {
-                            Content = cpickerPanel,
+                            Content = cpicker,
                         },
                     };
+                    var cpickerPanel = new StackPanel() 
+                    {
+                        Name = item.Key,
+                        Orientation = Orientation.Horizontal
+                    };
+                    cpickerPanel.Children.Add(sb);
+                    cpickerPanel.Children.Add(eyeDropBtn);
                     cpicker.ColorChanged += Cpicker_ColorChanged;
                     eyeDropBtn.Click += EyeDropBtn_Click;
-                    obj = sb;
+                    obj = cpickerPanel;
                 }
                 else if (uiElementType.Equals("checkbox", StringComparison.OrdinalIgnoreCase))
                 {
@@ -520,21 +522,21 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
         {
             try
             {
-                SplitButton splBtn = null;
+                StackPanel stackPanel = null;
                 foreach (object element in uiPanel.Children)
                 {
                     if ((element as FrameworkElement).Name == sender.Tag.ToString())
                     {
-                        splBtn = (SplitButton)element;
+                        stackPanel = (StackPanel)element;
                         break;
                     }
                 }
-                if (splBtn == null)
+                if (stackPanel == null)
                 {
                     return;
                 }
 
-                Border border = (Border)splBtn.Content;
+                Border border = (Border)((SplitButton)stackPanel.Children[0]).Content;
                 border.Background = new SolidColorBrush(Color.FromArgb(
                     255,
                     args.NewColor.R,
@@ -542,8 +544,8 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                     args.NewColor.B
                 ));
 
-                WallpaperSendMsg(new LivelyColorPicker() { Name = splBtn.Name, Value = ToHexValue(args.NewColor) });
-                livelyPropertyCopyData[splBtn.Name]["value"] = ToHexValue(args.NewColor);
+                WallpaperSendMsg(new LivelyColorPicker() { Name = stackPanel.Name, Value = ToHexValue(args.NewColor) });
+                livelyPropertyCopyData[stackPanel.Name]["value"] = ToHexValue(args.NewColor);
                 UpdatePropertyFile();
 
             }
@@ -556,104 +558,57 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
 
         private void EyeDropBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (mouseHook != null)
-                return;
-
             try
             {
-                var btn = sender as ToggleButton;
-                SplitButton splBtn = null;
+                var eyeDropBtn = sender as Button;
+                StackPanel stackPanel = null;
                 foreach (object element in uiPanel.Children)
                 {
-                    if ((element as FrameworkElement).Name == btn.Tag.ToString())
+                    if ((element as FrameworkElement).Name == eyeDropBtn.Tag.ToString())
                     {
-                        splBtn = (SplitButton)element;
+                        stackPanel = (StackPanel)element;
                         break;
                     }
                 }
-                if (splBtn == null)
+                if (stackPanel == null)
                 {
                     return;
                 }
-                currEyeDropBtn = btn;
-                currEyeDropSplitBtn = splBtn;
-                currColorPicker = (ColorPicker)((StackPanel)((Flyout)splBtn.Flyout).Content).FindName("cpicker");
-                currColorPickerOriginalColor = currColorPicker.Color;
+                currColorPickerSplitBtn = (SplitButton)stackPanel.Children[0];
+                currColorPicker = (ColorPicker)(((Flyout)currColorPickerSplitBtn.Flyout).Content);
             }
             catch (Exception ex)
             {
                 Logger.Error(ex);
             }
             
-            currEyeDropBtn.IsChecked = true;
-            currColorPicker.ColorChanged -= Cpicker_ColorChanged;
-            mouseHook = new LowLevelMouseHook() { GenerateMouseMoveEvents = true, Handling = false };
-            mouseHook.Move += MouseHook_Move;
-            mouseHook.Down += MouseHook_Down;
-            mouseHook.Start();
-        }
-
-        private void MouseHook_Move(object sender, MouseEventArgs e)
-        {
-            lock (_colorPickerTipLock)
-                Monitor.PulseAll(_colorPickerTipLock);
-
-            lock (_colorPickerTipLock)
+            var eyeDropper = new ColorEyeDropWindow();
+            eyeDropper.Activate();
+            eyeDropper.Closed += (_, _) =>
             {
-                if (!Monitor.Wait(_colorPickerTipLock, 100))
+                if (eyeDropper.SelectedColor != null && currColorPicker != null && currColorPickerSplitBtn != null)
                 {
-                    var color = GetColorAt(e.Position.X, e.Position.Y);
-                    _ = App.Services.GetRequiredService<MainWindow>().DispatcherQueue.TryEnqueue(() =>
-                    {
-                        currColorPicker.Color = Color.FromArgb(
-                          255,
-                          color.R,
-                          color.G,
-                          color.B
-                        );
-                    });
-                }
-            }
-        }
-
-        private void MouseHook_Down(object sender, H.Hooks.MouseEventArgs e)
-        {
-            try
-            {
-                //e.IsHandled = true;
-                var color = GetColorAt(e.Position.X, e.Position.Y);
-                if (currEyeDropSplitBtn != null && currEyeDropBtn != null &&  currColorPicker != null)
-                {
-                    _ = App.Services.GetRequiredService<MainWindow>().DispatcherQueue.TryEnqueue(() =>
-                    {
-                        Border border = (Border)currEyeDropSplitBtn.Content;
-                        if (e.Keys.Values.Contains(Key.MouseLeft))
+                    this.DispatcherQueue.TryEnqueue(() => {
+                        try
                         {
+                            var color = (Color)eyeDropper.SelectedColor;
+                            Border border = (Border)currColorPickerSplitBtn.Content;
                             border.Background = new SolidColorBrush(Color.FromArgb(
-                              255,
-                              color.R,
-                              color.G,
-                              color.B
-                            ));
-                            WallpaperSendMsg(new LivelyColorPicker() { Name = currEyeDropSplitBtn.Name, Value = ToHexValue(color) });
-                            livelyPropertyCopyData[currEyeDropSplitBtn.Name]["value"] = ToHexValue(color);
-                            UpdatePropertyFile();
+                                255,
+                                color.R,
+                                color.G,
+                                color.B
+                                ));
+                            currColorPicker.Color = color; //ColorChanged event fire.
                         }
-                        else //discard
+                        finally
                         {
-                            currColorPicker.Color = currColorPickerOriginalColor;
-                            border.Background = new SolidColorBrush(currColorPickerOriginalColor);
+                            currColorPicker = null;
+                            currColorPickerSplitBtn = null;
                         }
-                        currEyeDropBtn.IsChecked = false;
-                        currColorPicker.ColorChanged += Cpicker_ColorChanged;
                     });
                 }
-            }
-            finally
-            {
-                mouseHook.Dispose();
-                mouseHook = null;
-            }
+            };
         }
 
         //private static string ToHexValue(System.Drawing.Color color)

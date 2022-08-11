@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -117,6 +117,45 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AudioFocused.Content" xml:space="preserve">
+    <value>Воспроизводить звук только при открытом рабочем столе</value>
+  </data>
+  <data name="Audio.Description" xml:space="preserve">
+    <value>Уровень громкости всех обоев</value>
+  </data>
+  <data name="Audio.Header" xml:space="preserve">
+    <value>Общаяя громкость</value>
+  </data>
+  <data name="AudioGroup.Header" xml:space="preserve">
+    <value>Аудио</value>
+  </data>
+  <data name="CommunityPage.Content" xml:space="preserve">
+    <value>Интернет-форум для обсуждения</value>
+  </data>
+  <data name="DocumentationPage.Content" xml:space="preserve">
+    <value>Документация и справка по API</value>
+  </data>
+  <data name="DescExplorerCrash" xml:space="preserve">
+    <value>В Lively произошла фатальная ошибка.
+
+Проводник Windows перезапустился дважды за последние 30 секунд! Это может быть вызвано конфликтом между Lively и другим приложением для кастомизации Windows. Что бы избежать дальнейших сбоев все обои были выключены.</value>
+  </data>
+  <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
+    <value>Найдена несовместимая программа, тематизация панели задач отключена.</value>
+  </data>
+  <data name="OfficialWebpage.Content" xml:space="preserve">
+    <value>Официальная страница Lively Wallpaper</value>
+  </data>
+  <data name="DescOledScreensaverNotice" xml:space="preserve">
+    <value>Большинство современных ЖК и светодиодных дисплеев не подвержены выгоранию, поэтому в качестве заставки можно использовать любые обои.
+
+Для OLED, плазменных или ЭЛТ-дисплеев, подверженных выгоранию, рекомендуется использовать темные обои с постоянным движением. Это должно помочь избавиться от эффекта выгорания, однако результат не гарантирован.
+
+Основная цель заставок Lively - добавить еще один уровень персонализации на ваш компьютер. Используйте заставки в качестве защиты от выгорания на свой страх и риск!</value>
+  </data>
+  <data name="ReportBugPage.Content" xml:space="preserve">
+    <value>Сообщить о проблеме с программным обеспечением</value>
+  </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
     <value>Выберите файл или укажите ссылку на веб-сайт, чтобы установить обои.</value>
   </data>
@@ -130,14 +169,14 @@
     <value>Вы уверены, что хотите безвозвратно удалить обои с диска?</value>
   </data>
   <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
-    <value>Вы уверены, что хотите удалить эти обои из Библиотеки?</value>
+    <value>Вы уверены, что хотите удалить эти обои из библиотеки?</value>
   </data>
   <data name="DragDropFile.Text" xml:space="preserve">
-    <value>Просто перетащите файлы в Библиотеку.</value>
+    <value>Просто перетащите файлы в библиотеку.</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
     <value>Вы открываете внешнее приложение как обои.
-Вредоносные приложения могут содержать  вирусы, которые навредят вашей системе.
+Вредоносные приложения могут содержать вирусы и вредить вашему компьютеру.
 Продолжайте только в том случае, если приложение получено из надежного источника.</value>
   </data>
   <data name="MinimizedTray.Text" xml:space="preserve">
@@ -145,6 +184,9 @@
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
     <value>Пожалуйста, перезапустите Lively, чтобы изменения вступили в силу.</value>
+  </data>
+  <data name="DescriptionPleaseStop" xml:space="preserve">
+    <value>Пожалуйста, остановитесь, прежде чем продолжить.</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
     <value>Нажмите, чтобы начать запись.</value>
@@ -159,13 +201,35 @@
     <value>Доступна новая версия приложения!</value>
   </data>
   <data name="DescriptionWebpageLoad" xml:space="preserve">
-    <value>Для скачивания введите ссылку на веб-сайт.Ссылки на шейдеры c shadertoy.com поддерживаются</value>
+    <value>Вставьте ссылку для скачивания. Имеется поддержка шейдеров с shadertoy.com.</value>
   </data>
   <data name="DescriptionWelcomeWizard" xml:space="preserve">
     <value>Мастер установки поможет вам настроить Lively.</value>
   </data>
+  <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
+    <value>Ваша версия Windows N/KN потребует загрузки дополнительных кодеков для поддержки воспроизведения видео в обоях.</value>
+  </data>
+  <data name="DescSupperDev" xml:space="preserve">
+    <value>Поддержите разработчика, купив ему кофе</value>
+  </data>
+  <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
+    <value>Вы собираетесь перейти на бета-версию Lively.
+Обновления будут частыми и могут содержать ошибки!</value>
+  </data>
+  <data name="HideSysTray.Description" xml:space="preserve">
+    <value>Отображение значка Lively в области уведомлений. Убрать значок Lively?</value>
+  </data>
+  <data name="HideSysTray.Header" xml:space="preserve">
+    <value>Отображение значка в панели уведомлений</value>
+  </data>
+  <data name="Language.Description" xml:space="preserve">
+    <value>Lively перезапустится, чтобы сменить язык на новый.</value>
+  </data>
+  <data name="Language.Header" xml:space="preserve">
+    <value>Язык</value>
+  </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
-    <value>Не удалось обновится. Попробуйте скачать установщик самостоятельно:
+    <value>Обновление не удалось. Попробуйте скачать установочник самостоятельно:
 https://github.com/rocksdanister/lively/releases </value>
   </data>
   <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
@@ -173,42 +237,59 @@ https://github.com/rocksdanister/lively/releases </value>
   </data>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
     <value>Упс... Похоже, что-то пошло не так :(
-Для того, чтобы лучше понять ошибку и решить проблему, отправьте разработчику файл лога.
-Прочитайте о том, как это можно сделать:
+Для того, чтобы мы могли лучше понять ошибку и решить проблему, отправьте нам файл лога.
+Прочитайте, как это можно сделать здесь:
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
-    <value>Lively не может работать корректно в Windows в режиме высокой контрастности!
-Выключите режим высокой контрастности и попробуйте снова.</value>
+    <value>Lively не может работать корректно в режиме высокой контрастности Windows!
+Попробуйте выключить режим высокой контрастности и запустить программу снова.</value>
+  </data>
+  <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
+    <value>Ошибка воспроизведения видео :(	
+Попробуйте изменить плеер в настройках Lively.
+
+Для того, чтобы мы могли лучше понять ошибку и решить проблему, отправьте нам файл лога.
+Прочитайте, как это можно сделать здесь:
+https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
     <value>Не является файлом обоев Lively.</value>
   </data>
   <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
-    <value>Lively был закрыт неправильно. Запуск в безопасном режиме.
-Хотите восстановить работавшие ранее обои?</value>
+    <value>Работа Lively была некорректно прекращена. Запуск в безопасном режиме.
+Хотите вернуть прежние обои?</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
-    <value>Похоже, нужно изменить некоторые настройки, чтобы Lively заработал:-  
-1. Откройте ярлык "Этот компьютер"
+    <value>Похоже, нужно изменить некоторые настройки, чтобы Lively заработал:
+1. Откройте "Этот компьютер"
 2. Нажмите правую кнопку мыши в пустом месте
 3. Выберите пункт "Свойства"
 4. Выберите "Дополнительные параметры системы"
 5. Во вкладке "Дополнительно" в поле "Быстродействите" нажмите "Параметры"
 6. Поставьте галочку в поле "Анимированные элементы управления и элементы внутри окна", нажмите "Применить" -&gt; "ОК".
 
-Если Windows 7, то просто выберите пункт - "Обеспечить наилучший внешний вид" &amp; примените.
-Если по прежнему не работает, попробуйте закрыть и запустить Lively заново или перезагрузить Windows.
+Если вы используете Windows 7, то просто выберите пункт "Обеспечить наилучший внешний вид" и примените.
+Если Lively по прежнему не работает, попробуйте закрыть и запустить программу заново или перезагрузить Windows.
 (Не работает в некоторых инсайдерских сборках Windows 10)</value>
+  </data>
+  <data name="Startup.Description" xml:space="preserve">
+    <value>Lively необходимо работать в фоновом режиме для воспроизведения обоев.</value>
+  </data>
+  <data name="Startup.Header" xml:space="preserve">
+    <value>Запускать с Windows</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
     <value>Добавить</value>
+  </data>
+  <data name="TextAllFiles" xml:space="preserve">
+    <value>Все файлы</value>
   </data>
   <data name="Application.Header" xml:space="preserve">
     <value>Приложение</value>
   </data>
   <data name="Attribution.Header" xml:space="preserve">
-    <value>Атрибуция</value>
+    <value>Авторство</value>
   </data>
   <data name="Author.Text" xml:space="preserve">
     <value>Автор</value>
@@ -219,6 +300,12 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextBrowse" xml:space="preserve">
     <value>Обзор</value>
   </data>
+  <data name="Cancel.Content" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="TextChangeWallpaper" xml:space="preserve">
+    <value>Изменить обои</value>
+  </data>
   <data name="TextClose" xml:space="preserve">
     <value>Закрыть</value>
   </data>
@@ -228,8 +315,14 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextCompleted" xml:space="preserve">
     <value>Установка завершена!</value>
   </data>
+  <data name="ControlPanel.Subtitle" xml:space="preserve">
+    <value>Нажмите здесь для управления обоями.</value>
+  </data>
   <data name="TextConvertVideo" xml:space="preserve">
     <value>Конвертировать в видео</value>
+  </data>
+  <data name="TextCreatePreview" xml:space="preserve">
+    <value>Создать предпросмотр</value>
   </data>
   <data name="Customise.Text" xml:space="preserve">
     <value>Настроить</value>
@@ -240,6 +333,9 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="DeleteWallpaper.Text" xml:space="preserve">
     <value>Удалить обои</value>
   </data>
+  <data name="Description.Text" xml:space="preserve">
+    <value>Описание</value>
+  </data>
   <data name="DisplayPauseRuleAllScreen.Content" xml:space="preserve">
     <value>Все экраны</value>
   </data>
@@ -249,29 +345,56 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextDownload" xml:space="preserve">
     <value>Скачать</value>
   </data>
+  <data name="EditWallpaper.Text" xml:space="preserve">
+    <value>Редактировать</value>
+  </data>
   <data name="TextError" xml:space="preserve">
     <value>Ошибка</value>
   </data>
   <data name="TextExit" xml:space="preserve">
-    <value>Выйти</value>
+    <value>Выход</value>
   </data>
   <data name="ExportWallpaperZip.Text" xml:space="preserve">
-    <value>Экспорт Lively .zip</value>
+    <value>Экспорт в Lively.zip</value>
+  </data>
+  <data name="TextFeatureMissing" xml:space="preserve">
+    <value>Некоторые функции недоступны в этой версии Lively.</value>
+  </data>
+  <data name="TextFileNotFound" xml:space="preserve">
+    <value>Файл не найден</value>
   </data>
   <data name="TextGIF" xml:space="preserve">
     <value>GIF-анимация</value>
   </data>
+  <data name="GitHubStar.Content" xml:space="preserve">
+    <value>Покажите свою любовь, нажав на звездочку</value>
+  </data>
   <data name="TextGo" xml:space="preserve">
     <value>Добавить</value>
   </data>
-  <data name="TextHelpTranslate" xml:space="preserve">
+  <data name="TextHelpTranslate.Title" xml:space="preserve">
     <value>Помогите c переводом Lively.</value>
+  </data>
+  <data name="TextHours" xml:space="preserve">
+    <value>часы</value>
   </data>
   <data name="TextInstall" xml:space="preserve">
     <value>Установить</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
     <value>Клавиатура</value>
+  </data>
+  <data name="TextLastChecked" xml:space="preserve">
+    <value>Последний раз проверено</value>
+  </data>
+  <data name="TextLearnMore.Text" xml:space="preserve">
+    <value>Узнать больше</value>
+  </data>
+  <data name="License.Header" xml:space="preserve">
+    <value>Лицензия</value>
+  </data>
+  <data name="TextMinutes" xml:space="preserve">
+    <value>минут</value>
   </data>
   <data name="TextmoreInfo" xml:space="preserve">
     <value>Информация</value>
@@ -283,7 +406,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Мышь</value>
   </data>
   <data name="MouseInteractOnDesktop.Content" xml:space="preserve">
-    <value>Мышь взаимодействует с обоями, когда на переднем плане открыто приложение</value>
+    <value>Мышь взаимодействует с обоями, когда приложение открыто</value>
   </data>
   <data name="TextNext" xml:space="preserve">
     <value>Дальше</value>
@@ -292,7 +415,10 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Нет</value>
   </data>
   <data name="TextOff.Content" xml:space="preserve">
-    <value>Откл.</value>
+    <value>Выкл.</value>
+  </data>
+  <data name="TextOK" xml:space="preserve">
+    <value>Ок</value>
   </data>
   <data name="TextOn.Content" xml:space="preserve">
     <value>Вкл.</value>
@@ -305,6 +431,9 @@ https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="PauseAlgorithmTypeAllProcess.Content" xml:space="preserve">
     <value>Все процессы</value>
+  </data>
+  <data name="PauseAlgorithmTypeExclusiveMode.Content" xml:space="preserve">
+    <value>Direct3D</value>
   </data>
   <data name="PauseAlgorithmTypeForegroundProcess.Content" xml:space="preserve">
     <value>Процесс переднего плана</value>
@@ -321,8 +450,17 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextPerformancePause.Content" xml:space="preserve">
     <value>Приостановить</value>
   </data>
+  <data name="TextPicture" xml:space="preserve">
+    <value>Изображение</value>
+  </data>
   <data name="PreviewWallpaper.Text" xml:space="preserve">
-    <value>Предпросмотр обоев</value>
+    <value>Предпросмотр</value>
+  </data>
+  <data name="PrivacyPolicy.Header" xml:space="preserve">
+    <value>Политика конфиденциальности</value>
+  </data>
+  <data name="TextProcessingWallpaper" xml:space="preserve">
+    <value>Обработка</value>
   </data>
   <data name="TextRemove" xml:space="preserve">
     <value>Удалить</value>
@@ -351,29 +489,62 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextStop" xml:space="preserve">
     <value>Стоп</value>
   </data>
+  <data name="StoreReview.Content" xml:space="preserve">
+    <value>Вам нравится пользоваться Lively? Оставьте отзыв :)</value>
+  </data>
   <data name="TextSupport.Content" xml:space="preserve">
     <value>Поддержать</value>
+  </data>
+  <data name="TextSwitchBranchDev" xml:space="preserve">
+    <value>Перейти на бета-версию (канал разработчиков)</value>
+  </data>
+  <data name="TextSwitchBranchOfficial" xml:space="preserve">
+    <value>Перейти на стабильный (канал по умолчанию)</value>
   </data>
   <data name="TextTags" xml:space="preserve">
     <value>Теги</value>
   </data>
+  <data name="TaskbarThemeBlur.Content" xml:space="preserve">
+    <value>Пятно</value>
+  </data>
+  <data name="TaskbarThemeClear.Content" xml:space="preserve">
+    <value>Очистить</value>
+  </data>
+  <data name="TaskbarThemeColor.Content" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="TaskbarThemeFluent.Content" xml:space="preserve">
+    <value>Акрил</value>
+  </data>
+  <data name="TaskbarThemeWallpaper.Content" xml:space="preserve">
+    <value>Обои</value>
+  </data>
+  <data name="TaskbarThemeWallpaperFluent.Content" xml:space="preserve">
+    <value>Обои акриловые</value>
+  </data>
   <data name="TextTileSizeLarge" xml:space="preserve">
-    <value>Большие</value>
+    <value>Большой</value>
   </data>
   <data name="TextTileSizeNormal" xml:space="preserve">
-    <value>Средние</value>
+    <value>Обычный</value>
   </data>
   <data name="TextTileSizeSmall" xml:space="preserve">
-    <value>Маленькие</value>
+    <value>Маленький</value>
+  </data>
+  <data name="Title.Text" xml:space="preserve">
+    <value>Название</value>
   </data>
   <data name="TextUIHeadless" xml:space="preserve">
-    <value>Headless</value>
+    <value>Без заголовка</value>
   </data>
   <data name="TextUILite" xml:space="preserve">
-    <value>Облегчённый</value>
+    <value>Упрощенный</value>
   </data>
   <data name="TextUINormal" xml:space="preserve">
     <value>Обычный</value>
+  </data>
+  <data name="TextUnsupportedFile" xml:space="preserve">
+    <value>Формат файла не поддерживается</value>
   </data>
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>Доступно обновление!</value>
@@ -392,6 +563,9 @@ https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="TextVideo" xml:space="preserve">
     <value>Видео</value>
+  </data>
+  <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
+    <value>Введите необязательные аргументы командной строки</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>Заполнение</value>
@@ -412,7 +586,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Только выбранный дисплей</value>
   </data>
   <data name="WallpaperLayoutSpan.Content" xml:space="preserve">
-    <value>Охватить все дисплеи</value>
+    <value>Растянуть по всем дисплеям</value>
   </data>
   <data name="WallpaperType.Text" xml:space="preserve">
     <value>Тип</value>
@@ -433,49 +607,64 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Видеоплеер</value>
   </data>
   <data name="AddWallpaperFileBrowse.Description" xml:space="preserve">
-    <value>Установите обои из файла поддерживаемого формата.</value>
+    <value>Выберите обои любого поддерживаемого формата.</value>
   </data>
   <data name="EnterUrl.Description" xml:space="preserve">
     <value>Установите веб-страницу в качестве обоев, используя её URL-адрес.</value>
   </data>
   <data name="AppFocus.Description" xml:space="preserve">
-    <value>Укажите, что делать, когда на переднем плане открыто какое-либо приложение.</value>
+    <value>Установите поведение обоев, при развернутом приложении.</value>
   </data>
   <data name="AppFullScreen.Description" xml:space="preserve">
-    <value>Укажите, что делать, когда открытo полноэкранное приложение/игра.</value>
+    <value>Установите поведение обоев, при запущенном полноэкранном приложении/игре.</value>
   </data>
   <data name="AppRules.Description" xml:space="preserve">
-    <value>Установите правила воспроизведения обоев в зависимости от открытого приложения.</value>
+    <value>Приостановить обои, если запущены следющие приложения:</value>
   </data>
   <data name="TipAppTheme" xml:space="preserve">
     <value>Lively использует настройки системной темы. Чтобы изменить их, перейдите в</value>
   </data>
-  <data name="Audio.Description" xml:space="preserve">
-    <value>Уровень громкости всех обоев.</value>
-  </data>
   <data name="BatteryPower.Description" xml:space="preserve">
-    <value>(Для систем работающих от аккумулятора) Изменить режим воспроизведения при отключении питания от сети.</value>
+    <value>Изменить режим воспроизведения при работе от батареи.</value>
   </data>
   <data name="BrowserDebuggingPort.Description" xml:space="preserve">
     <value>Введите порт для отладки веб-станичных обоев. Для вступления измений в силу, необходима перезагрузка браузера.
 Когда будете готовы, переходите на http://localhost:portnumber для получения доступа к консоли разработчика.</value>
   </data>
+  <data name="Debug.Description" xml:space="preserve">
+    <value>Показать меню разработчика.</value>
+  </data>
+  <data name="DesktopPicture.Description" xml:space="preserve">
+    <value>Установите картинку анимированных обоев в качестве обоев рабочего стола.</value>
+  </data>
   <data name="DisplayPauseRule.Description" xml:space="preserve">
     <value>Для каждого: Приостанавливать обои только на том экране, где отрыто приложение на переднем плане/на весь экран.
 Все: Приостанавливать обои на всех экранах, если открыто приложение на переднем плане/на весь экран.</value>
   </data>
-  <data name="TipHideSysTray" xml:space="preserve">
-    <value>Видимость значка на панели задач. Если иконку скрыть, Lively всё равно продолжит работать.</value>
+  <data name="ExportLogs.Description" xml:space="preserve">
+    <value>Создайте файл отчета журнала.</value>
   </data>
-  <data name="Language.Description" xml:space="preserve">
-    <value>Lively будет перезапущен, чтобы применить новый язык.</value>
+  <data name="GifPlayer.Description" xml:space="preserve">
+    <value>Выберите плеер для воспроизведения GIF обоев.</value>
   </data>
   <data name="TipLivelySetupOnClose" xml:space="preserve">
     <value>Закончите установку, чтобы продолжить.</value>
   </data>
+  <data name="LockscreenPicture.Description" xml:space="preserve">
+    <value>Установите изображение анимированных обоев в качестве обоев экрана блокировки.</value>
+  </data>
   <data name="PauseAlgorithm.Description" xml:space="preserve">
     <value>Процесс переднего плана: Быстрый. Сканирует только процесс на переднем плане, чтобы определить режим воспроизведения.
 Все процессы: Медленный. Сканирует все процессы, чтобы определить режим воспроизведения.</value>
+  </data>
+  <data name="PowerSavingModePower.Description" xml:space="preserve">
+    <value>Настройки воспроизведения в режиме энергосбережения Windows</value>
+  </data>
+  <data name="RemoteDesktopPower.Description" xml:space="preserve">
+    <value>Настройки воспроизведения в режиме удаленного рабочего стола</value>
+  </data>
+  <data name="TipScreensaver" xml:space="preserve">
+    <value>Использовать текущие обои вместо заставки, при переходе в режим бездействия</value>
   </data>
   <data name="StreamWallpaperDetect.Description" xml:space="preserve">
     <value>Если обнаружена поддерживаемая ссылка, использовать видеоплеер вместо подгрузки веб-страницы.</value>
@@ -483,11 +672,20 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="StreamWallpaperVideoQuality.Description" xml:space="preserve">
     <value>Выберите желаемое качество потокового видео.</value>
   </data>
+  <data name="TipSwitchSoftwareBranch" xml:space="preserve">
+    <value>Измените версию программного обеспечения с бета-версии на стабильную или наоборот.</value>
+  </data>
+  <data name="TaskbarTheme.Description" xml:space="preserve">
+    <value>Изменение внешнего вида панели задач системы.</value>
+  </data>
   <data name="TipTileSize" xml:space="preserve">
     <value>Размер плиток с обоями в Библиотеке.</value>
   </data>
   <data name="TipUIMode" xml:space="preserve">
     <value>Если у вас низкопроизводительная система, выбирайте Облегчённый режим.</value>
+  </data>
+  <data name="VideoHardwareDecode.Description" xml:space="preserve">
+    <value>Используйте аппаратное ускорение, когда это возможно.</value>
   </data>
   <data name="VideoPlayer.Description" xml:space="preserve">
     <value>Выберите плеер для видео-обоев.</value>
@@ -514,9 +712,6 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>CEF(Chromium Embedded Framework) - облегчённый движок Chromium.
 Edge - встроенный в Windows 10 WebView.</value>
   </data>
-  <data name="Startup.Description" xml:space="preserve">
-    <value>Lively необходимо работать в фоне для воспроизведения обоев.</value>
-  </data>
   <data name="About.Label" xml:space="preserve">
     <value>Описание</value>
   </data>
@@ -538,12 +733,6 @@ Edge - встроенный в Windows 10 WebView.</value>
   <data name="AppTheme.Header" xml:space="preserve">
     <value>Тема</value>
   </data>
-  <data name="AudioGroup.Header" xml:space="preserve">
-    <value>Аудио</value>
-  </data>
-  <data name="Audio.Header" xml:space="preserve">
-    <value>Общаяя громкость</value>
-  </data>
   <data name="TitleAudioPlayOnScreen" xml:space="preserve">
     <value>Играть музыку на экране</value>
   </data>
@@ -556,11 +745,20 @@ Edge - встроенный в Windows 10 WebView.</value>
   <data name="BrowserDebuggingPort.Header" xml:space="preserve">
     <value>Порт отладки</value>
   </data>
+  <data name="TitleChangelog" xml:space="preserve">
+    <value>Журнал изменений</value>
+  </data>
   <data name="Community.Header" xml:space="preserve">
     <value>Сообщество</value>
   </data>
+  <data name="Debug.Header" xml:space="preserve">
+    <value>Отладка</value>
+  </data>
   <data name="TitleDeleteConfirmation" xml:space="preserve">
     <value>Подтвердите удаление</value>
+  </data>
+  <data name="DesktopPicture.Header" xml:space="preserve">
+    <value>Изображение на рабочем столе</value>
   </data>
   <data name="DisplayPauseRule.Header" xml:space="preserve">
     <value>Тип паузы</value>
@@ -568,29 +766,35 @@ Edge - встроенный в Windows 10 WebView.</value>
   <data name="Documentation.Header" xml:space="preserve">
     <value>Документация</value>
   </data>
-  <data name="TitleEnterUrl" xml:space="preserve">
+  <data name="EnterUrl.Header" xml:space="preserve">
     <value>Введите URL</value>
+  </data>
+  <data name="ExportLogs.Header" xml:space="preserve">
+    <value>Файл журнала</value>
   </data>
   <data name="TitleGeneral" xml:space="preserve">
     <value>Основные</value>
   </data>
+  <data name="GifPlayer.Header" xml:space="preserve">
+    <value>GIF-плеер</value>
+  </data>
   <data name="Help.Label" xml:space="preserve">
     <value>Помощь</value>
   </data>
-  <data name="HideSysTray.Header" xml:space="preserve">
-    <value>Значок на панели задач</value>
-  </data>
   <data name="TitleInteraction" xml:space="preserve">
     <value>Взаимодействие</value>
-  </data>
-  <data name="Language.Header" xml:space="preserve">
-    <value>Язык</value>
   </data>
   <data name="TitleLibrary" xml:space="preserve">
     <value>Библиотека</value>
   </data>
   <data name="TitleLivelySetup" xml:space="preserve">
     <value>Установка Lively</value>
+  </data>
+  <data name="TitleLocation" xml:space="preserve">
+    <value>Местонахождение</value>
+  </data>
+  <data name="LockscreenPicture.Header" xml:space="preserve">
+    <value>Изображение на экране блокировки</value>
   </data>
   <data name="TitleMisc" xml:space="preserve">
     <value>Прочее</value>
@@ -610,17 +814,42 @@ Edge - встроенный в Windows 10 WebView.</value>
   <data name="PleaseWait.Text" xml:space="preserve">
     <value>Пожалуйста, подождите</value>
   </data>
+  <data name="PowerSavingModePower.Header" xml:space="preserve">
+    <value>При работе в режиме энергосбережения</value>
+  </data>
+  <data name="RemoteDesktopPower.Header" xml:space="preserve">
+    <value>При работе в режиме удаленного стола</value>
+  </data>
+  <data name="ReportBug.Header" xml:space="preserve">
+    <value>Сообщить об ошибке</value>
+  </data>
   <data name="TitleScalingFit" xml:space="preserve">
     <value>Масштабирование/Размещение</value>
   </data>
   <data name="ControlPanel.Title" xml:space="preserve">
     <value>Панель управления</value>
   </data>
+  <data name="TitleScreensaver" xml:space="preserve">
+    <value>Заставка</value>
+  </data>
+  <data name="TitleScreensaverLockOnResume" xml:space="preserve">
+    <value>На резюме, экран входа в систему</value>
+  </data>
   <data name="TitleSelectFile" xml:space="preserve">
     <value>Выберите файл</value>
   </data>
   <data name="TitleSettings" xml:space="preserve">
     <value>Настройки</value>
+  </data>
+  <data name="TitleSkipConfirm" xml:space="preserve">
+    <value>Пропустить подтверждение</value>
+  </data>
+  <data name="SourceCode.Header" xml:space="preserve">
+    <value>Исходный код</value>
+  </data>
+  <data name="Store.Header" xml:space="preserve">
+    <value>Магазин</value>
+    <comment>For different version of Lively, example: Microsoft Store</comment>
   </data>
   <data name="StreamWallpaperVideoQuality.Header" xml:space="preserve">
     <value>Потоковое видео</value>
@@ -631,14 +860,26 @@ Edge - встроенный в Windows 10 WebView.</value>
   <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
     <value>Качество видео</value>
   </data>
+  <data name="System.Header" xml:space="preserve">
+    <value>Система</value>
+  </data>
+  <data name="TaskbarTheme.Header" xml:space="preserve">
+    <value>Тема панели задач</value>
+  </data>
   <data name="TitleTileSize" xml:space="preserve">
     <value>Размер плиток</value>
   </data>
   <data name="TitleUIMode" xml:space="preserve">
     <value>Пользовательский интерфейс</value>
   </data>
+  <data name="TitleUpdates" xml:space="preserve">
+    <value>Обновления</value>
+  </data>
   <data name="TitleVideo" xml:space="preserve">
     <value>Видео</value>
+  </data>
+  <data name="VideoHardwareDecode.Header" xml:space="preserve">
+    <value>Декодирование GPU</value>
   </data>
   <data name="TitleWallpaper" xml:space="preserve">
     <value>Обои</value>
@@ -676,247 +917,14 @@ Edge - встроенный в Windows 10 WebView.</value>
   <data name="TitleWebpageLoad" xml:space="preserve">
     <value>Загрузка веб-страницы</value>
   </data>
-  <data name="Startup.Header" xml:space="preserve">
-    <value>Запускать с Windows</value>
-  </data>
-  <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
-    <value>Ошибка воспроизведения медиа :(	
-Попробуйте изменить видеоплеер в настройках Lively.
-
-Для того, чтобы лучше понять ошибку и решить проблему, отправьте разработчику файл лога.
-Прочитайте о том, как это можно сделать:
-https://github.com/rocksdanister/lively/wiki</value>
-  </data>
-  <data name="TextAllFiles" xml:space="preserve">
-    <value>Все файлы</value>
-  </data>
-  <data name="Debug.Header" xml:space="preserve">
-    <value>Отладка</value>
-  </data>
-  <data name="Debug.Description" xml:space="preserve">
-    <value>Показать меню разработчика.</value>
-  </data>
-  <data name="TextFileNotFound" xml:space="preserve">
-    <value>Файл не найден</value>
-  </data>
-  <data name="TextPicture" xml:space="preserve">
-    <value>Изображение</value>
-  </data>
-  <data name="TextUnsupportedFile" xml:space="preserve">
-    <value>Формат файла не поддерживается</value>
-  </data>
-  <data name="TextProcessingWallpaper" xml:space="preserve">
-    <value>Обработка</value>
-  </data>
-  <data name="Title.Text" xml:space="preserve">
-    <value>Название</value>
-  </data>
-  <data name="Description.Text" xml:space="preserve">
-    <value>Описание</value>
-  </data>
-  <data name="TextOK" xml:space="preserve">
-    <value>Ок</value>
-  </data>
-  <data name="Cancel.Content" xml:space="preserve">
-    <value>Отмена</value>
-  </data>
-  <data name="TextCreatePreview" xml:space="preserve">
-    <value>Создать предпросмотр</value>
-  </data>
-  <data name="GifPlayer.Header" xml:space="preserve">
-    <value>GIF-плеер</value>
-  </data>
-  <data name="GifPlayer.Description" xml:space="preserve">
-    <value>Выберите плеер для воспроизведения GIF обоев.</value>
-  </data>
-  <data name="TextFeatureMissing" xml:space="preserve">
-    <value>Некоторые возможности недоступны в этой версии Lively.</value>
-  </data>
-  <data name="ControlPanel.Subtitle" xml:space="preserve">
-    <value>Нажмите здесь для управления обоями.</value>
-  </data>
-  <data name="StoreReview.Content" xml:space="preserve">
-    <value>Вам нравится пользоваться Lively? Оставьте отзыв :)</value>
-  </data>
-  <data name="Store.Header" xml:space="preserve">
-    <value>Магазин</value>
-    <comment>For different version of Lively, example: Microsoft Store</comment>
-  </data>
-  <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>Ваша версия Windows N/KN потребует загрузки дополнительных кодеков для поддержки воспроизведения видео в обоях.</value>
-  </data>
-  <data name="License.Header" xml:space="preserve">
-    <value>Лицензия</value>
-  </data>
-  <data name="PrivacyPolicy.Header" xml:space="preserve">
-    <value>Политика конфиденциальности</value>
-  </data>
-  <data name="AudioFocused.Content" xml:space="preserve">
-    <value>Воспроизведение звука только при фокусировке рабочего стола</value>
-  </data>
-  <data name="ExportLogs.Description" xml:space="preserve">
-    <value>Создайте файл отчета журнала.</value>
-  </data>
-  <data name="ExportLogs.Header" xml:space="preserve">
-    <value>Файл журнала</value>
-  </data>
-  <data name="ReportBug.Header" xml:space="preserve">
-    <value>Сообщить об ошибке</value>
-  </data>
-  <data name="VideoHardwareDecode.Header" xml:space="preserve">
-    <value>Декодирование GPU</value>
-  </data>
-  <data name="VideoHardwareDecode.Description" xml:space="preserve">
-    <value>Используйте аппаратное ускорение, когда это возможно.</value>
-  </data>
-  <data name="DescriptionPleaseStop" xml:space="preserve">
-  <value>Пожалуйста, остановитесь, прежде чем продолжить.</value>
-</data>
-  <data name="EditWallpaper.Text" xml:space="preserve">
-  <value>Редактировать</value>
-</data>
-  <data name="TitleLocation" xml:space="preserve">
-  <value>Местонахождение</value>
-</data>
-  <data name="TitleSkipConfirm" xml:space="preserve">
-  <value>Пропустить подтверждение</value>
-</data>
-  <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-  <value>Введите необязательные аргументы командной строки</value>
-</data>
-  <data name="GitHubStar.Content" xml:space="preserve">
-    <value>Покажите свою любовь, бросив звезду</value>
-  </data>
-  <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
-    <value>Найдена несовместимая программа, тематизация панели задач отключена.</value>
-  </data>
-  <data name="TaskbarTheme.Header" xml:space="preserve">
-    <value>Тема панели задач</value>
-  </data>
-  <data name="LockscreenPicture.Header" xml:space="preserve">
-    <value>Изображение на экране блокировки</value>
-  </data>
-  <data name="DesktopPicture.Header" xml:space="preserve">
-    <value>Изображение на рабочем столе</value>
-  </data>
-  <data name="LockscreenPicture.Description" xml:space="preserve">
-    <value>Установите изображение анимированных обоев в качестве обоев экрана блокировки.</value>
-  </data>
-  <data name="DesktopPicture.Description" xml:space="preserve">
-    <value>Установите картинку анимированных обоев в качестве обоев рабочего стола.</value>
-  </data>
-  <data name="TaskbarTheme.Description" xml:space="preserve">
-    <value>Изменение внешнего вида панели задач системы.</value>
-  </data>
-  <data name="TaskbarThemeBlur.Content" xml:space="preserve">
-    <value>Пятно</value>
-  </data>
-  <data name="TaskbarThemeClear.Content" xml:space="preserve">
-    <value>Очистить</value>
-  </data>
-  <data name="TaskbarThemeColor.Content" xml:space="preserve">
-    <value>Цвет</value>
-  </data>
-  <data name="TaskbarThemeFluent.Content" xml:space="preserve">
-    <value>Акрил</value>
-  </data>
-  <data name="TaskbarThemeWallpaper.Content" xml:space="preserve">
-    <value>Обои</value>
-  </data>
-  <data name="TaskbarThemeWallpaperFluent.Content" xml:space="preserve">
-    <value>Обои акриловые</value>
-  </data>
-  <data name="SourceCode.Header" xml:space="preserve">
-    <value>Исходный код</value>
-  </data>
-  <data name="System.Header" xml:space="preserve">
-    <value>Система</value>
-  </data>
-  <data name="TitleScreensaver" xml:space="preserve">
-    <value>Хранитель экрана</value>
-  </data>
-  <data name="TipScreensaver" xml:space="preserve">
-    <value>По истечении выбранного периода бездействия используйте текущие обои в качестве заставки.</value>
-  </data>
-  <data name="TextHours" xml:space="preserve">
-    <value>часы</value>
-  </data>
-  <data name="TextMinutes" xml:space="preserve">
-    <value>минут</value>
-  </data>
-  <data name="TextLearnMore" xml:space="preserve">
-    <value>Выучить больше</value>
-  </data>
-  <data name="DescOledScreensaverNotice" xml:space="preserve">
-    <value>Большинство современных ЖК-дисплеев и светодиодных экранов не подвержены выгоранию, поэтому в качестве заставки можно использовать любые обои.
-
-Для OLED, плазменных или ЭЛТ-дисплеев, которые подвержены выгоранию, рекомендуется использовать обои с регулярным движением и общей темной темой, которая должна смягчать выгорание, но эта функция не проверена, и ее эффективность не может быть гарантирована.
-
-Основная цель заставок Lively - добавить еще один уровень настройки на ваш компьютер, использовать заставки в качестве защиты от выгорания на свой страх и риск!</value>
-  </data>
-  <data name="TextChangeWallpaper" xml:space="preserve">
-    <value>Изменить обои</value>
-  </data>
-  <data name="TextLastChecked" xml:space="preserve">
-    <value>Последний раз проверено</value>
-  </data>
-  <data name="TitleUpdates" xml:space="preserve">
-    <value>Обновления</value>
-  </data>
-  <data name="CommunityPage.Content" xml:space="preserve">
-    <value>Интернет-форум для обсуждения</value>
-  </data>
-  <data name="DocumentationPage.Content" xml:space="preserve">
-    <value>Документация и справка по API</value>
-  </data>
-  <data name="OfficialWebpage.Content" xml:space="preserve">
-    <value>Официальная страница Lively Wallpaper</value>
-  </data>
-  <data name="ReportBugPage.Content" xml:space="preserve">
-    <value>Сообщить о проблеме с программным обеспечением</value>
-  </data>
-  <data name="DescSupperDev" xml:space="preserve">
-    <value>Окажите поддержку, купив кофе разработчика</value>
-  </data>
-  <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
-    <value>Вы собираетесь перейти на бета-версию (для разработчиков) Lively.
-Обновления будут частыми и могут содержать ошибки!</value>
-  </data>
-  <data name="TextSwitchBranchDev" xml:space="preserve">
-    <value>Перейти на бета-версию (канал разработчиков)</value>
-  </data>
-  <data name="TextSwitchBranchOfficial" xml:space="preserve">
-    <value>Перейти на стабильный (канал по умолчанию)</value>
-  </data>
-  <data name="TipSwitchSoftwareBranch" xml:space="preserve">
-    <value>Измените версию программного обеспечения с бета-версии на стабильную или наоборот.</value>
-  </data>
-  <data name="TitleChangelog" xml:space="preserve">
-    <value>Журнал изменений</value>
-  </data>
-  <data name="PauseAlgorithmTypeExclusiveMode.Content" xml:space="preserve">
-    <value>Direct3D</value>
-  </data>
-  <data name="TitleScreensaverLockOnResume" xml:space="preserve">
-    <value>На резюме, экран входа в систему</value>
-  </data>
-  <data name="SourceWebsite.Text" xml:space="preserve">
-    <value>Веб-сайт</value>
-  </data>
-  <data name="AboutMenu.Text" xml:space="preserve">
-    <value>Описание</value>
-  </data>
-  <data name="WallpaperDirGroup.Header" xml:space="preserve">
-    <value>Файл</value>
+  <data name="FastUI.Description" xml:space="preserve">
+    <value>Держать приложение запущеным для быстрого запуска</value>
   </data>
   <data name="FastUI.Header" xml:space="preserve">
     <value>Быстрый запуск</value>
   </data>
-  <data name="FastUI.Description" xml:space="preserve">
-    <value>Держать приложение запущеным для быстрого запуска</value>
-  </data>
-  <data name="WindowsSettingsColor.Content" xml:space="preserve">
-    <value>Системная</value>
+  <data name="WallpaperDirGroup.Header" xml:space="preserve">
+    <value>Файл</value>
   </data>
   <data name="AppThemeDark.Content" xml:space="preserve">
     <value>Темная</value>
@@ -927,6 +935,9 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="AppThemeSystem.Content" xml:space="preserve">
     <value>Система</value>
   </data>
+  <data name="WindowsSettingsColor.Content" xml:space="preserve">
+    <value>Системная</value>
+  </data>
   <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
     <value>Ноутбуки</value>
   </data>
@@ -936,11 +947,11 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="AppearanceBehaviour.Header" xml:space="preserve">
     <value>Вид и поведение</value>
   </data>
-  <data name="TitleGallery" xml:space="preserve">
-    <value>Галерея</value>
-  </data>
   <data name="ActiveWallpapers.Label" xml:space="preserve">
     <value>Активные обои</value>
+  </data>
+  <data name="TitleGallery" xml:space="preserve">
+    <value>Галерея</value>
   </data>
   <data name="AboutMe.Text" xml:space="preserve">
     <value>Привет, я Dani John (также известен как rocksdanister). Я разработал Lively, бесплатное и открытое приложение для управления обоями. Спасибо, что выбрали Lively!</value>
@@ -960,45 +971,166 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="ComingSoon.Text" xml:space="preserve">
     <value>Скоро...</value>
   </data>
+  <data name="AboutMenu.Text" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="SourceWebsite.Text" xml:space="preserve">
+    <value>Веб-сайт</value>
+  </data>
   <data name="TextOpen.Content" xml:space="preserve">
     <value>Открыть</value>
   </data>
   <data name="TextSave.Content" xml:space="preserve">
     <value>Сохранить</value>
   </data>
-  <data name="DescExplorerCrash" xml:space="preserve">
-    <value>Lively has encountered a fatal error.
-
-Windows Explorer restarted twice in the last 30 seconds! This may be a conflict between Lively and other desktop customization software or Windows. To avoid further issues, all wallpapers are terminated.</value>
-  </data>
-  <data name="HideSysTray.Description" xml:space="preserve">
-    <value>System-tray icon visibility, lively will continue to run with the icon hidden</value>
-  </data>
-  <data name="PowerSavingModePower.Description" xml:space="preserve">
-    <value>Change playback when Windows Power Saving Mode is enabled</value>
-  </data>
-  <data name="RemoteDesktopPower.Description" xml:space="preserve">
-    <value>Change playback when running a Remote Desktop session</value>
-  </data>
-  <data name="EnterUrl.Header" xml:space="preserve">
-    <value>Enter URL</value>
-  </data>
-  <data name="PowerSavingModePower.Header" xml:space="preserve">
-    <value>When on Battery Saver</value>
-  </data>
-  <data name="RemoteDesktopPower.Header" xml:space="preserve">
-    <value>When on Remote Desktop</value>
-  </data>
   <data name="UIMode.Description" xml:space="preserve">
-    <value>User interface effects and animations</value>
+    <value>Эффекты и анимации пользовательского интерфейса</value>
   </data>
   <data name="UIMode.Header" xml:space="preserve">
-    <value>User interface</value>
+    <value>Пользовательский интерфейс</value>
   </data>
   <data name="UIModeLite.Content" xml:space="preserve">
-    <value>Lite</value>
+    <value>Упрощенный</value>
   </data>
   <data name="UIModeNormal.Content" xml:space="preserve">
-    <value>Normal</value>
-  </data>  
+    <value>Обычный</value>
+  </data>
+  <data name="Screensaver.Description" xml:space="preserve">
+    <value>Способ применения заставки к подключённым устройствам отображения</value>
+  </data>
+  <data name="Screensaver.Header" xml:space="preserve">
+    <value>Тип заставки</value>
+  </data>
+  <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
+    <value>Настроить отдельно</value>
+  </data>
+  <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
+    <value>Совместно с текущими обоями</value>
+  </data>
+  <data name="ScreensaverPlugin.Title" xml:space="preserve">
+    <value>Требуется плагин</value>
+  </data>
+  <data name="ScreensaverPluginMessage.Text" xml:space="preserve">
+    <value>Для запуска заставки требуется единоразовая настройка</value>
+  </data>
+  <data name="WallpaperLayoutScreenPicker.Content" xml:space="preserve">
+    <value>Всегда применять к экрану</value>
+  </data>
+  <data name="GalleryAccount.Text" xml:space="preserve">
+    <value>Учетная запись</value>
+  </data>
+  <data name="GalleryAccountDelete.Content" xml:space="preserve">
+    <value>Удалить учетную запись</value>
+  </data>
+  <data name="GalleryAccountExport.Content" xml:space="preserve">
+    <value>Экспорт данных</value>
+  </data>
+  <data name="GalleryAccountLogin.Content" xml:space="preserve">
+    <value>Вход</value>
+  </data>
+  <data name="GalleryAccountLogout.Content" xml:space="preserve">
+    <value>Выход</value>
+  </data>
+  <data name="GalleryPageCollection.Content" xml:space="preserve">
+    <value>Коллекция</value>
+  </data>
+  <data name="GalleryPageHome.Content" xml:space="preserve">
+    <value>Главная</value>
+  </data>
+  <data name="GalleryPageManage.Content" xml:space="preserve">
+    <value>Управление</value>
+  </data>
+  <data name="GalleryPageProfile.Content" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="GalleryPleaseLogin.Text" xml:space="preserve">
+    <value>Пожалуйста, войдите, чтобы продолжить</value>
+  </data>
+  <data name="GalleryWelcomeMessage.Text" xml:space="preserve">
+    <value>Привет,</value>
+  </data>
+  <data name="RestoreWallpaper.Text" xml:space="preserve">
+    <value>Вот что мы нашли в вашей учетной записи</value>
+  </data>
+  <data name="TextDownloadNow.Content" xml:space="preserve">
+    <value>Скачать</value>
+  </data>
+  <data name="TextMaybeLater.Content" xml:space="preserve">
+    <value>В другой раз...</value>
+  </data>
+  <data name="TextSelectAll.Content" xml:space="preserve">
+    <value>Выбрать все</value>
+  </data>
+  <data name="TextSelectNone.Content" xml:space="preserve">
+    <value>Снять выделение</value>
+  </data>
+  <data name="TitleWelcomeback.Text" xml:space="preserve">
+    <value>С возвращением!</value>
+  </data>
+  <data name="ReportWallpaper.Header" xml:space="preserve">
+    <value>Причина</value>
+  </data>
+  <data name="ReportWallpaperCopyright.Content" xml:space="preserve">
+    <value>Нарушение авторских прав</value>
+  </data>
+  <data name="ReportWallpaperMisleading.Content" xml:space="preserve">
+    <value>Ложная информация</value>
+  </data>
+  <data name="ReportWallpaperOther.Content" xml:space="preserve">
+    <value>Другое</value>
+  </data>
+  <data name="ReportWallpaperSpam.Content" xml:space="preserve">
+    <value>Спам</value>
+  </data>
+  <data name="ReportWallpaperViolence.Content" xml:space="preserve">
+    <value>Нагота или насилие</value>
+  </data>
+  <data name="TextAdditionalNotes.Text" xml:space="preserve">
+    <value>Дополнительная информация</value>
+  </data>
+  <data name="TextReportWallpaper.Text" xml:space="preserve">
+    <value>Пожаловаться</value>
+  </data>
+  <data name="TitleReportWallpaper.Text" xml:space="preserve">
+    <value>Пожаловаться</value>
+  </data>
+  <data name="Send.Content" xml:space="preserve">
+    <value>Отправить</value>
+  </data>
+  <data name="GalleryAccountDeleteConfirm.Text" xml:space="preserve">
+    <value>Это действие не может быть отменено. Вы уверены, что хотите продолжить?</value>
+  </data>
+  <data name="GalleryAccountDeleteFail.Text" xml:space="preserve">
+    <value>Не удалось удалить аккаунт, попробуйте позже</value>
+  </data>
+  <data name="TextConfirmCancel.Text" xml:space="preserve">
+    <value>Отменить скачивание?</value>
+  </data>
+  <data name="TextWait.Text" xml:space="preserve">
+    <value>Подождать</value>
+  </data>
+  <data name="TitleDownloadProgress.Text" xml:space="preserve">
+    <value>Скачивание в процессе</value>
+  </data>
+  <data name="TextContributors.Text" xml:space="preserve">
+    <value>Благодарности</value>
+  </data>
+  <data name="TextShare.Text" xml:space="preserve">
+    <value>Поделиться</value>
+  </data>
+  <data name="TitleShareWallpaper.Text" xml:space="preserve">
+    <value>Поделиться обоями</value>
+  </data>
+  <data name="ExportWallpaperGallery.Text" xml:space="preserve">
+    <value>Загрузить галерею</value>
+  </data>
+  <data name="ExportWallpaperLink.Text" xml:space="preserve">
+    <value>Копировать ссылку</value>
+  </data>
+  <data name="TextCustomiseWallpaper" xml:space="preserve">
+    <value>Настроить обои</value>
+  </data>
+  <data name="TextCloseWallpapers" xml:space="preserve">
+    <value>Отключить обои</value>
+  </data>
 </root>

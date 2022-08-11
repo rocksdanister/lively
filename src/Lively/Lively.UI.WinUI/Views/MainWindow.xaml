@@ -12,10 +12,17 @@
     Height="875"
     MinWidth="700"
     MinHeight="700"
-    Backdrop="Acrylic"
     Closed="Window_Closed"
     TaskBarIcon="appicon.ico"
     mc:Ignorable="d">
+    <winex:WindowEx.Backdrop>
+        <!--<winex:MicaSystemBackdrop
+            DarkLuminosityOpacity="0.9"
+            DarkTintOpacity="0.5"
+            LightLuminosityOpacity="0.9"
+            LightTintOpacity="0.5" />-->
+        <winex:AcrylicSystemBackdrop />
+    </winex:WindowEx.Backdrop>
 
     <Grid Background="{ThemeResource AcrylicBackgroundCustomBrush}">
         <Grid.RowDefinitions>
@@ -108,6 +115,7 @@
                         </AppBarButton.Icon>
                     </AppBarButton>
                     <AppBarSeparator />
+
                     <AppBarButton
                         x:Name="controlPanelLabel"
                         x:Uid="ActiveWallpapers"
@@ -128,8 +136,23 @@
                                 </animations:Explicit.Animations>
                             </FontIcon>
                         </AppBarButton.Icon>
+                        <!--
+                        <interactivity:Interaction.Behaviors>
+                            <core:EventTriggerBehavior EventName="PointerEntered">
+                                <core:ChangePropertyAction PropertyName="LabelPosition">
+                                    <core:ChangePropertyAction.Value>Default</core:ChangePropertyAction.Value>
+                                </core:ChangePropertyAction>
+                            </core:EventTriggerBehavior>
+                            <core:EventTriggerBehavior EventName="PointerExited">
+                                <core:ChangePropertyAction PropertyName="LabelPosition">
+                                    <core:ChangePropertyAction.Value>Collapsed</core:ChangePropertyAction.Value>
+                                </core:ChangePropertyAction>
+                            </core:EventTriggerBehavior>
+                        </interactivity:Interaction.Behaviors>
+                        -->
                     </AppBarButton>
                     <AppBarSeparator />
+
                     <AppBarButton
                         Name="audioBtn"
                         MaxWidth="50"
@@ -147,6 +170,7 @@
                         </AppBarButton.Icon>
                     </AppBarButton>
                     <AppBarSeparator />
+
                     <AppBarButton
                         Name="coffeeBtn"
                         MaxWidth="50"
@@ -156,6 +180,89 @@
                             <FontIcon Glyph="&#xEB51;" />
                         </AppBarButton.Icon>
                     </AppBarButton>
+                    <AppBarSeparator />
+
+                    <AppBarButton
+                        Name="authorizedBtn"
+                        MaxWidth="50"
+                        Padding="0"
+                        LabelPosition="Collapsed"
+                        Visibility="Collapsed">
+                        <AppBarButton.Flyout>
+                            <Flyout>
+                                <StackPanel MinWidth="150">
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        FontSize="18"
+                                        FontWeight="SemiBold"
+                                        Text="Account" />
+                                    <StackPanel
+                                        Margin="0,8,0,8"
+                                        Padding="0"
+                                        HorizontalAlignment="Center"
+                                        Orientation="Vertical">
+                                        <!--  PersonPicture control not updating sometimes  -->
+                                        <Border MaxWidth="100" CornerRadius="50">
+                                            <Image x:Name="avatarPage" Stretch="Fill" />
+                                        </Border>
+                                        <TextBlock
+                                            x:Name="nameText"
+                                            HorizontalAlignment="Center"
+                                            FontWeight="Medium"
+                                            Text="Okabe Rintarou" />
+                                    </StackPanel>
+                                    <StackPanel HorizontalAlignment="Center" Orientation="Vertical">
+                                        <HyperlinkButton
+                                            Click=" EditProfile_Click"
+                                            Content="Manage"
+                                            Visibility="Collapsed" />
+                                        <HyperlinkButton x:Uid="GalleryAccountLogout" Click="Logout" />
+                                    </StackPanel>
+                                </StackPanel>
+                            </Flyout>
+                        </AppBarButton.Flyout>
+                        <AppBarButton.Content>
+                            <!--  Same animated image(?) for multiple PersonPicture control causes flicker(?)  -->
+                            <Border
+                                MaxWidth="100"
+                                Margin="-22"
+                                CornerRadius="50">
+                                <Image x:Name="avatarBtn" Stretch="Fill" />
+                            </Border>
+                        </AppBarButton.Content>
+                    </AppBarButton>
+
+                    <AppBarButton
+                        Name="notAuthorizedBtn"
+                        Padding="0,0,0,0"
+                        Visibility="Collapsed">
+                        <AppBarButton.Icon>
+                            <SymbolIcon Symbol="Contact">
+                                <SymbolIcon.RenderTransform>
+                                    <TranslateTransform X="4" />
+                                </SymbolIcon.RenderTransform>
+                            </SymbolIcon>
+                        </AppBarButton.Icon>
+                        <AppBarButton.Flyout>
+                            <Flyout>
+                                <StackPanel MinWidth="150">
+                                    <TextBlock
+                                        x:Uid="GalleryAccount"
+                                        HorizontalAlignment="Center"
+                                        FontSize="18"
+                                        FontWeight="SemiBold" />
+                                    <PersonPicture Margin="0,5,0,0" />
+                                    <HyperlinkButton
+                                        x:Uid="GalleryAccountLogin"
+                                        Margin="0,5,0,0"
+                                        HorizontalAlignment="Center"
+                                        Click="AuthClick" />
+                                </StackPanel>
+                            </Flyout>
+                        </AppBarButton.Flyout>
+                    </AppBarButton>
+                    <!--<AppBarSeparator />-->
+
                     <CommandBar.SecondaryCommands>
                         <AppBarButton x:Uid="Help" Click="AppBarHelpButton_Click">
                             <AppBarButton.Icon>

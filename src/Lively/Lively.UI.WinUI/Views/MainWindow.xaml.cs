@@ -1,8 +1,10 @@
 ﻿using Lively.Common;
 using Lively.Common.Helpers.Pinvoke;
+using Lively.Gallery.Client;
 using Lively.Grpc.Client;
 using Lively.Models;
 using Lively.UI.WinUI.Helpers;
+using Lively.UI.WinUI.Services;
 using Lively.UI.WinUI.ViewModels;
 using Lively.UI.WinUI.Views.Pages;
 using Lively.UI.WinUI.Views.Pages.ControlPanel;
@@ -14,14 +16,21 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Animation;
+using Microsoft.UI.Xaml.Media.Imaging;
 using SettingsUI.Extensions;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Numerics;
 using System.Runtime.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources;
+using Windows.Storage.Streams;
 using WinUIEx;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -34,6 +43,7 @@ namespace Lively.UI.WinUI
     /// </summary>
     public sealed partial class MainWindow : WindowEx
     {
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private readonly List<(Type Page, NavPages NavPage)> _pages = new List<(Type Page, NavPages NavPage)>
         {
             (typeof(LibraryView), NavPages.library),
@@ -48,23 +58,26 @@ namespace Lively.UI.WinUI
         private readonly IDesktopCoreClient desktopCore;
         private readonly IUserSettingsClient userSettings;
         private readonly LibraryViewModel libraryVm;
-        private readonly LibraryUtil libraryUtil;
+        private readonly GalleryClient galleryClient;
+        private readonly IDialogService dialogService;
         private readonly ICommandsClient commands;
         private readonly ResourceLoader i18n;
 
         public MainWindow(IDesktopCoreClient desktopCore,
+            IDialogService dialogService,
             ICommandsClient commands,
             IUserSettingsClient userSettings,
             SettingsViewModel settingsVm,
             LibraryViewModel libraryVm,
-            LibraryUtil libraryUtil,
-            IAppUpdaterClient appUpdater)
+            IAppUpdaterClient appUpdater,
+            GalleryClient galleryClient)
         {
             this.settingsVm = settingsVm;
             this.desktopCore = desktopCore;
             this.libraryVm = libraryVm;
-            this.libraryUtil = libraryUtil;
+            this.galleryClient = galleryClient;
             this.userSettings = userSettings;
+            this.dialogService = dialogService;
             this.commands = commands;
 
             this.InitializeComponent();
@@ -75,6 +88,7 @@ namespace Lively.UI.WinUI
             desktopCore.WallpaperChanged += DesktopCore_WallpaperChanged;
             desktopCore.WallpaperError += DesktopCore_WallpaperError;
             appUpdater.UpdateChecked += AppUpdater_UpdateChecked;
+
             //App startup is slower if done in NavView_Loaded..
             CreateMainMenu();
             NavViewNavigate(NavPages.library);
@@ -88,6 +102,28 @@ namespace Lively.UI.WinUI
             //this.Title = "Lively Wallpaper";
             //this.SetIconEx("appicon.ico");
             //this.UseImmersiveDarkModeEx(userSettings.Settings.ApplicationTheme == AppTheme.Dark);
+
+            //Gallery
+            InitializeGallery();
+            galleryClient.LoggedIn += (_, _) =>
+            {
+                this.DispatcherQueue.TryEnqueue(() =>
+                {
+                    UpdateAuthState();
+                });
+            };
+            galleryClient.LoggedOut += (_, _) =>
+            {
+                this.DispatcherQueue.TryEnqueue(() =>
+                {
+                    if (contentFrame.CurrentSourcePageType == typeof(GalleryView))
+                    {
+                        NavViewNavigate(NavPages.library);
+                    }
+                    UpdateAuthState();
+                    authorizedBtn.Flyout.Hide();
+                });
+            };
 
             _ = StdInListener();
         }
@@ -251,13 +287,14 @@ namespace Lively.UI.WinUI
                     Content = i18n.GetString("Cancel/Content"),
                 };
                 var ct = new CancellationTokenSource();
-                importBar.ActionButton.Click += (_, _) => {
+                importBar.ActionButton.Click += (_, _) =>
+                {
                     importBar.ActionButton.Visibility = Visibility.Collapsed;
                     importBar.Title = i18n.GetString("PleaseWait/Text");
                     importBar.Message = "100%";
                     ct.Cancel();
                 };
-                await libraryUtil.AddWallpapers(files, ct.Token, new Progress<int>(percent => { importBar.Message = $"{percent}%"; }));
+                await libraryVm.AddWallpapers(files, ct.Token, new Progress<int>(percent => { importBar.Message = $"{percent}%"; }));
             }
             finally
             {
@@ -339,7 +376,7 @@ namespace Lively.UI.WinUI
             navView.MenuItems.Add(CreateMenu(i18n.GetString("System/Header"), "system"));
         }
 
-        private void UpdateAudioSliderIcon(double volume) => 
+        private void UpdateAudioSliderIcon(double volume) =>
             audioBtn.Icon = audioIcons[(int)Math.Ceiling((audioIcons.Length - 1) * volume / 100)];
 
         //Actually called before window closed!
@@ -379,6 +416,28 @@ namespace Lively.UI.WinUI
                 args.Handled = true;
                 contentFrame.Visibility = Visibility.Collapsed; //drop resource usage.
                 NativeMethods.ShowWindow(this.GetWindowHandleEx(), (uint)NativeMethods.SHOWWINDOW.SW_HIDE);
+            }
+            else if (libraryVm.IsWorking)
+            {
+                args.Handled = true;
+
+                //Option 1: Show user prompt with choice to cancel.
+                var result = await dialogService.ShowDialog(i18n.GetString("TextConfirmCancel/Text"),
+                                                            i18n.GetString("TitleDownloadProgress/Text"),
+                                                            i18n.GetString("TextYes"),
+                                                            i18n.GetString("TextWait/Text"),
+                                                            false);
+                if (result == IDialogService.DialogResult.primary)
+                {
+                    libraryVm.CancelAllDownloads();
+                    libraryVm.IsBusy = true;
+                    await Task.Delay(1500);
+                    this.Close();
+                }
+
+                //Option 2: Keep UI client running and close after work completed.
+                //contentFrame.Visibility = Visibility.Collapsed; //drop resource usage.
+                //NativeMethods.ShowWindow(this.GetWindowHandleEx(), (uint)NativeMethods.SHOWWINDOW.SW_HIDE);
             }
             else
             {
@@ -453,6 +512,76 @@ namespace Lively.UI.WinUI
             }
             catch { }
         }
+
+        #region gallery
+
+        private async void InitializeGallery()
+        {
+            try
+            {
+                await galleryClient.InitializeAsync();
+            }
+            catch (UnauthorizedAccessException ex1)
+            {
+                Logger.Info($"Skipping login: {ex1?.Message}");
+            }
+            catch (Exception ex2)
+            {
+                Logger.Error($"Failed to login: {ex2}");
+            }
+        }
+
+        private void UpdateAuthState()
+        {
+            if (galleryClient.IsLoggedIn)
+            {
+                notAuthorizedBtn.Visibility = Visibility.Collapsed;
+                authorizedBtn.Visibility = Visibility.Visible;
+
+                try
+                {
+                    var img = new BitmapImage(new Uri(galleryClient.CurrentUser.AvatarUrl));
+                    avatarBtn.Source = avatarPage.Source = img;
+                }
+                catch
+                {
+                    //sad
+                }
+
+                nameText.Text = galleryClient.CurrentUser.DisplayName;
+            }
+            else
+            {
+                authorizedBtn.Visibility = Visibility.Collapsed;
+                notAuthorizedBtn.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void AuthClick(object sender, RoutedEventArgs e)
+        {
+            NavViewNavigate(NavPages.gallery);
+            notAuthorizedBtn.Flyout.Hide();
+        }
+
+        private async void Logout(object sender, RoutedEventArgs e)
+        {
+            await galleryClient.LogoutAsync();
+        }
+
+        private void EditProfile_Click(object sender, RoutedEventArgs e)
+        {
+            authorizedBtn.Flyout.Hide();
+            _ = new ContentDialog()
+            {
+                Title = "Account",
+                Content = new ManageAccountView(),
+                PrimaryButtonText = i18n.GetString("TextOK"),
+                DefaultButton = ContentDialogButton.Primary,
+                XamlRoot = this.Content.XamlRoot,
+            }.ShowAsyncQueue();
+        }
+
+        #endregion //gallery
 
         #region helpers
 

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -117,68 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="WallpaperDirGroup.Header" xml:space="preserve">
-    <value>File</value>
+  <data name="AudioFocused.Content" xml:space="preserve">
+    <value>הפעל אודיו רק כששולחן העבודה ממוקד</value>
   </data>
-  <data name="FastUI.Header" xml:space="preserve">
-    <value>Fast startup</value>
+  <data name="Audio.Description" xml:space="preserve">
+    <value>רמת עוצמת הקול של כל הטפטים.</value>
   </data>
-  <data name="FastUI.Description" xml:space="preserve">
-    <value>Keep User Interface running for faster startup</value>
+  <data name="Audio.Header" xml:space="preserve">
+    <value>ווליום ראשי</value>
   </data>
-  <data name="WindowsSettingsColor.Content" xml:space="preserve">
-    <value>Windows color settings</value>
+  <data name="AudioGroup.Header" xml:space="preserve">
+    <value>אודיו</value>
   </data>
-  <data name="AppThemeDark.Content" xml:space="preserve">
-    <value>Dark</value>
+  <data name="CommunityPage.Content" xml:space="preserve">
+    <value>פורום דיונים מקוון</value>
   </data>
-  <data name="AppThemeLight.Content" xml:space="preserve">
-    <value>Light</value>
+  <data name="DocumentationPage.Content" xml:space="preserve">
+    <value>תיעוד ועזרה של API</value>
   </data>
-  <data name="AppThemeSystem.Content" xml:space="preserve">
-    <value>System</value>
-  </data>
-  <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
-    <value>Laptops</value>
-  </data>
-  <data name="DeveloperGroup.Header" xml:space="preserve">
-    <value>Developer</value>
-  </data>
-  <data name="AppearanceBehaviour.Header" xml:space="preserve">
-    <value>Appearance &amp; behavior</value>
-  </data>
-  <data name="TitleGallery" xml:space="preserve">
-    <value>Gallery</value>
-  </data>
-  <data name="ActiveWallpapers.Label" xml:space="preserve">
-    <value>Active Wallpaper(s)</value>
-  </data>
-  <data name="AboutMe.Text" xml:space="preserve">
-    <value>Hi, I'm Dani John also known as rocksdanister. I developed Lively a Free and open-source (FOSS) wallpaper application. Thanks for taking the time to look at my work.</value>
-  </data>
-  <data name="LicenseLink.Content" xml:space="preserve">
-    <value>Software license</value>
-  </data>
-  <data name="AttributionLink.Content" xml:space="preserve">
-    <value>Third party software notice</value>
-  </data>
-  <data name="PrivacyPolicyLink.Content" xml:space="preserve">
-    <value>Data collection policy</value>
-  </data>
-  <data name="AddWallpaperDrop.Text" xml:space="preserve">
-    <value>Add wallpaper</value>
-  </data>
- <data name="ComingSoon.Text" xml:space="preserve">
-    <value>Coming soon</value>
-  </data>
-  <data name="TextOpen.Content" xml:space="preserve">
-    <value>Open</value>
-  </data>
-  <data name="TextSave.Content" xml:space="preserve">
-    <value>Save</value>
+  <data name="DescExplorerCrash" xml:space="preserve">
+    <value>Lively נתקלה בשגיאה קטלנית.
+
+סייר Windows הופעל מחדש פעמיים ב-30 השניות האחרונות! זה עשוי להיות התנגשות בין Lively לבין תוכנות אחרות להתאמה אישית של שולחן העבודה או Windows. כדי למנוע בעיות נוספות, כל הטפטים מופסקים.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
     <value>נמצאה תוכנית לא תואמת, נושא שורת המשימות מושבת.</value>
+  </data>
+  <data name="OfficialWebpage.Content" xml:space="preserve">
+    <value>דף האינטרנט הרשמי של Lively Wallpaper</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
     <value>מרבית צגי ה- LCD וה- LED המודרניים אינם סובלים מבעיות צריבה ולכן כל טפט יכול לשמש כשומר מסך.
@@ -186,6 +152,9 @@
 עבור מסכי OLED, פלזמה או CRT הרגישים לצריבה מומלץ להשתמש בטפטים עם תנועה קבועה ועם נושא כהה כולל אשר אמור למתן צריבה אך תכונה זו אינה נבדקה ולא ניתן להבטיח את יעילותה.
 
 המטרה העיקרית של שומרי המסך של Lively היא להוסיף שכבת התאמה אישית נוספת למחשב האישי שלך, השתמש בשומרי מסך כהגנה על צריבה על אחריותך בלבד!</value>
+  </data>
+  <data name="ReportBugPage.Content" xml:space="preserve">
+    <value>דווח על בעיה בתוכנה</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
     <value>בחר קובץ או ציין כתובת אתר להגדרה כטפט.</value>
@@ -240,6 +209,25 @@
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
     <value>גרסת Windows N / KN שלך תדרוש הורדת קודקים נוספים כדי לתמוך בהפעלת וידאו ברקעים.</value>
   </data>
+  <data name="DescSupperDev" xml:space="preserve">
+    <value>הראה תמיכה על ידי קניית קפה מפתחים</value>
+  </data>
+  <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
+    <value>אתה עומד לעבור למבנה בטא (מפתח) של Lively.
+העדכונים יהיו תכופים ועשויים להכיל באגים!</value>
+  </data>
+  <data name="HideSysTray.Description" xml:space="preserve">
+    <value>נראות סמל מגש המערכת, Livlely תמשיך לרוץ עם הסמל מוסתר</value>
+  </data>
+  <data name="HideSysTray.Header" xml:space="preserve">
+    <value>סמל מגש המערכת</value>
+  </data>
+  <data name="Language.Description" xml:space="preserve">
+    <value>Lively תופעל מחדש כדי להחיל את השפה החדשה</value>
+  </data>
+  <data name="Language.Header" xml:space="preserve">
+    <value>שפה</value>
+  </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
     <value>העדכון נכשל; נסה להוריד את תוכנית ההתקנה מ:
 https://github.com/rocksdanister/lively/releases</value>
@@ -287,8 +275,14 @@ https://github.com/rocksdanister/lively/wiki
 (לא עובד בחלק מגרסאות הניסיון של Windows 10)
 </value>
   </data>
+  <data name="Startup.Description" xml:space="preserve">
+    <value>Lively צריכה לפעול ברקע להפעלת טפטים</value>
+  </data>
+  <data name="Startup.Header" xml:space="preserve">
+    <value>התחל עם ווינדוס</value>
+  </data>
   <data name="TextAdd" xml:space="preserve">
-    <value>Add</value>
+    <value>הוסף</value>
   </data>
   <data name="TextAllFiles" xml:space="preserve">
     <value>כל הקבצים</value>
@@ -310,6 +304,9 @@ https://github.com/rocksdanister/lively/wiki
   </data>
   <data name="Cancel.Content" xml:space="preserve">
     <value>ביטול</value>
+  </data>
+  <data name="TextChangeWallpaper" xml:space="preserve">
+    <value>שינוי טפט</value>
   </data>
   <data name="TextClose" xml:space="preserve">
     <value>סגור</value>
@@ -377,7 +374,7 @@ https://github.com/rocksdanister/lively/wiki
   <data name="TextGo" xml:space="preserve">
     <value>המשך</value>
   </data>
-  <data name="TextHelpTranslate" xml:space="preserve">
+  <data name="TextHelpTranslate.Title" xml:space="preserve">
     <value>עזור לתרגם</value>
   </data>
   <data name="TextHours" xml:space="preserve">
@@ -389,7 +386,10 @@ https://github.com/rocksdanister/lively/wiki
   <data name="TextKeyboard.Content" xml:space="preserve">
     <value>מקלדת</value>
   </data>
-  <data name="TextLearnMore" xml:space="preserve">
+  <data name="TextLastChecked" xml:space="preserve">
+    <value>נבדק לאחרונה</value>
+  </data>
+  <data name="TextLearnMore.Text" xml:space="preserve">
     <value>למד עוד</value>
   </data>
   <data name="License.Header" xml:space="preserve">
@@ -433,6 +433,9 @@ https://github.com/rocksdanister/lively/wiki
   </data>
   <data name="PauseAlgorithmTypeAllProcess.Content" xml:space="preserve">
     <value>כל התהליך</value>
+  </data>
+  <data name="PauseAlgorithmTypeExclusiveMode.Content" xml:space="preserve">
+    <value>Direct3D</value>
   </data>
   <data name="PauseAlgorithmTypeForegroundProcess.Content" xml:space="preserve">
     <value>תהליך קדמה</value>
@@ -493,6 +496,12 @@ https://github.com/rocksdanister/lively/wiki
   </data>
   <data name="TextSupport.Content" xml:space="preserve">
     <value>תמיכה</value>
+  </data>
+  <data name="TextSwitchBranchDev" xml:space="preserve">
+    <value>עבור לבטא (ערוץ פיתוח)</value>
+  </data>
+  <data name="TextSwitchBranchOfficial" xml:space="preserve">
+    <value>עבור ליציב (ערוץ ברירת מחדל)</value>
   </data>
   <data name="TextTags" xml:space="preserve">
     <value>תגיות</value>
@@ -617,9 +626,6 @@ https://github.com/rocksdanister/lively/wiki
   <data name="TipAppTheme" xml:space="preserve">
     <value>Lively מסתגל להגדרות נושא המערכת, כדי לשנות את המראה גש ל</value>
   </data>
-  <data name="Audio.Description" xml:space="preserve">
-    <value>רמת עוצמת הקול של כל הטפטים.</value>
-  </data>
   <data name="BatteryPower.Description" xml:space="preserve">
     <value>שנה את ההפעלה כאשר המחשב מנותק מהחשמל (מערכות המופעלות באמצעות סוללות בלבד)</value>
   </data>
@@ -641,12 +647,6 @@ https://github.com/rocksdanister/lively/wiki
   <data name="GifPlayer.Description" xml:space="preserve">
     <value>בחר את הנגן המשמש לטפט gif.</value>
   </data>
-  <data name="TipHideSysTray" xml:space="preserve">
-    <value>נראות סמל מגש המערכת, Lively תמשיך לפעול כשהסמל מוסתר.</value>
-  </data>
-  <data name="Language.Description" xml:space="preserve">
-    <value>Lively תופעל מחדש כדי להחיל את השפה החדשה</value>
-  </data>
   <data name="TipLivelySetupOnClose" xml:space="preserve">
     <value>סיים את ההתקנה כדי להמשיך.</value>
   </data>
@@ -656,6 +656,12 @@ https://github.com/rocksdanister/lively/wiki
   <data name="PauseAlgorithm.Description" xml:space="preserve">
     <value>אלגוריתם השהיית טפטים.</value>
   </data>
+  <data name="PowerSavingModePower.Description" xml:space="preserve">
+    <value>שנה השמעה כאשר מצב חיסכון בחשמל של Windows מופעל</value>
+  </data>
+  <data name="RemoteDesktopPower.Description" xml:space="preserve">
+    <value>שנה השמעה בעת הפעלת הפעלה של שולחן עבודה מרוחק</value>
+  </data>
   <data name="TipScreensaver" xml:space="preserve">
     <value>לאחר תקופת חוסר הפעילות שנבחרה השתמש בטפט הנוכחי כשומר המסך שלך.</value>
   </data>
@@ -664,6 +670,9 @@ https://github.com/rocksdanister/lively/wiki
   </data>
   <data name="StreamWallpaperVideoQuality.Description" xml:space="preserve">
     <value>בחר את איכות הווידאו הרצויה לזרמים מקוונים.</value>
+  </data>
+  <data name="TipSwitchSoftwareBranch" xml:space="preserve">
+    <value>Change software release from beta to stable or vice versa.</value>
   </data>
   <data name="TaskbarTheme.Description" xml:space="preserve">
     <value>שנה את מראה שורת המשימות במערכת.</value>
@@ -702,9 +711,6 @@ https://github.com/rocksdanister/lively/wiki
     <value>CEF(Chromium Embedded Framework) הוא מנוע chromium קל משקל.
 Edge הוא תצוגת האינטרנט המובנית של Windows 10.</value>
   </data>
-  <data name="Startup.Description" xml:space="preserve">
-    <value>Lively צריכה לפעול ברקע להפעלת טפטים</value>
-  </data>
   <data name="About.Label" xml:space="preserve">
     <value>אודות</value>
   </data>
@@ -726,15 +732,6 @@ Edge הוא תצוגת האינטרנט המובנית של Windows 10.</value>
   <data name="AppTheme.Header" xml:space="preserve">
     <value>נושא</value>
   </data>
-  <data name="AudioGroup.Header" xml:space="preserve">
-    <value>אודיו</value>
-  </data>
-  <data name="AudioFocused.Content" xml:space="preserve">
-    <value>הפעל אודיו רק כששולחן העבודה ממוקד</value>
-  </data>
-  <data name="Audio.Header" xml:space="preserve">
-    <value>ווליום ראשי</value>
-  </data>
   <data name="TitleAudioPlayOnScreen" xml:space="preserve">
     <value>הפעל אודיו על המסך</value>
   </data>
@@ -746,6 +743,9 @@ Edge הוא תצוגת האינטרנט המובנית של Windows 10.</value>
   </data>
   <data name="BrowserDebuggingPort.Header" xml:space="preserve">
     <value>איתור באגים</value>
+  </data>
+  <data name="TitleChangelog" xml:space="preserve">
+    <value>יומן שינויים</value>
   </data>
   <data name="Community.Header" xml:space="preserve">
     <value>קהילה</value>
@@ -765,8 +765,8 @@ Edge הוא תצוגת האינטרנט המובנית של Windows 10.</value>
   <data name="Documentation.Header" xml:space="preserve">
     <value>תיעוד</value>
   </data>
-  <data name="TitleEnterUrl" xml:space="preserve">
-    <value>הקלד כתובת URL</value>
+  <data name="EnterUrl.Header" xml:space="preserve">
+    <value>הזן כתובת URL</value>
   </data>
   <data name="ExportLogs.Header" xml:space="preserve">
     <value>קובץ Log</value>
@@ -780,14 +780,8 @@ Edge הוא תצוגת האינטרנט המובנית של Windows 10.</value>
   <data name="Help.Label" xml:space="preserve">
     <value>עזרה</value>
   </data>
-  <data name="HideSysTray.Header" xml:space="preserve">
-    <value>סמל מגש המערכת</value>
-  </data>
   <data name="TitleInteraction" xml:space="preserve">
     <value>אינטראקציה</value>
-  </data>
-  <data name="Language.Header" xml:space="preserve">
-    <value>שפה</value>
   </data>
   <data name="TitleLibrary" xml:space="preserve">
     <value>ספרייה</value>
@@ -819,6 +813,12 @@ Edge הוא תצוגת האינטרנט המובנית של Windows 10.</value>
   <data name="PleaseWait.Text" xml:space="preserve">
     <value>אנא המתן</value>
   </data>
+  <data name="PowerSavingModePower.Header" xml:space="preserve">
+    <value>כשחיסכון בסוללה פועל</value>
+  </data>
+  <data name="RemoteDesktopPower.Header" xml:space="preserve">
+    <value>כאשר על שולחן עבודה מרוחק</value>
+  </data>
   <data name="ReportBug.Header" xml:space="preserve">
     <value>דווח על באג</value>
   </data>
@@ -830,6 +830,9 @@ Edge הוא תצוגת האינטרנט המובנית של Windows 10.</value>
   </data>
   <data name="TitleScreensaver" xml:space="preserve">
     <value>שומר מסך</value>
+  </data>
+  <data name="TitleScreensaverLockOnResume" xml:space="preserve">
+    <value>On resume, display logon screen</value>
   </data>
   <data name="TitleSelectFile" xml:space="preserve">
     <value>בחר קובץ</value>
@@ -867,6 +870,9 @@ Edge הוא תצוגת האינטרנט המובנית של Windows 10.</value>
   </data>
   <data name="TitleUIMode" xml:space="preserve">
     <value>ממשק משתמש</value>
+  </data>
+  <data name="TitleUpdates" xml:space="preserve">
+    <value>עדכונים</value>
   </data>
   <data name="TitleVideo" xml:space="preserve">
     <value>וידאו</value>
@@ -910,94 +916,220 @@ Edge הוא תצוגת האינטרנט המובנית של Windows 10.</value>
   <data name="TitleWebpageLoad" xml:space="preserve">
     <value>פתח את עמוד האינטרנט</value>
   </data>
-  <data name="Startup.Header" xml:space="preserve">
-    <value>התחל עם ווינדוס</value>
+  <data name="FastUI.Description" xml:space="preserve">
+    <value>השאר את ממשק המשתמש פועל לאתחול מהיר יותר</value>
   </data>
-  <data name="TextChangeWallpaper" xml:space="preserve">
-    <value>Change Wallpapers</value>
+  <data name="FastUI.Header" xml:space="preserve">
+    <value>אתחול מהיר</value>
   </data>
-  <data name="TextLastChecked" xml:space="preserve">
-    <value>Last checked</value>
+  <data name="WallpaperDirGroup.Header" xml:space="preserve">
+    <value>קובץ</value>
   </data>
-  <data name="TitleUpdates" xml:space="preserve">
-    <value>Updates</value>
+  <data name="AppThemeDark.Content" xml:space="preserve">
+    <value>כהה</value>
   </data>
-  <data name="CommunityPage.Content" xml:space="preserve">
-    <value>Online discussion forum</value>
+  <data name="AppThemeLight.Content" xml:space="preserve">
+    <value>בהיר</value>
   </data>
-  <data name="DocumentationPage.Content" xml:space="preserve">
-    <value>API documentation and help</value>
+  <data name="AppThemeSystem.Content" xml:space="preserve">
+    <value>מערכת</value>
   </data>
-  <data name="OfficialWebpage.Content" xml:space="preserve">
-    <value>Official webpage of Lively Wallpaper</value>
+  <data name="WindowsSettingsColor.Content" xml:space="preserve">
+    <value>הגדרות צבע של Windows</value>
   </data>
-  <data name="ReportBugPage.Content" xml:space="preserve">
-    <value>Report a problem with the software</value>
+  <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
+    <value>מחשב נייד</value>
   </data>
-  <data name="DescSupperDev" xml:space="preserve">
-    <value>Show support by buying the developer coffee</value>
+  <data name="DeveloperGroup.Header" xml:space="preserve">
+    <value>מפתח</value>
   </data>
-  <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
-    <value>You are about to change to beta (developer) build of Lively.
-Updates will be frequent and may contain bugs!</value>
+  <data name="AppearanceBehaviour.Header" xml:space="preserve">
+    <value>מראה והתנהגות</value>
   </data>
-  <data name="TextSwitchBranchDev" xml:space="preserve">
-    <value>Switch to beta (Dev channel)</value>
+  <data name="ActiveWallpapers.Label" xml:space="preserve">
+    <value>טפטים פעילים</value>
   </data>
-  <data name="TextSwitchBranchOfficial" xml:space="preserve">
-    <value>Switch to stable (Default channel)</value>
+  <data name="TitleGallery" xml:space="preserve">
+    <value>גלריה</value>
   </data>
-  <data name="TipSwitchSoftwareBranch" xml:space="preserve">
-    <value>Change software release from beta to stable or vice versa.</value>
+  <data name="AboutMe.Text" xml:space="preserve">
+    <value>שלום, אני דני ג'ון ידוע גם בתור rocksdanister. אני פיתחתי את Lively תוכנת טפטים חינמית בעלת קוד פתוח (FOSS). תודה שאתם לוקחים מזמנכם כדי להסתכל על עבודתי.</value>
   </data>
-  <data name="TitleChangelog" xml:space="preserve">
-    <value>Changelog</value>
+  <data name="LicenseLink.Content" xml:space="preserve">
+    <value>רשיון תוכנה</value>
   </data>
-  <data name="PauseAlgorithmTypeExclusiveMode.Content" xml:space="preserve">
-    <value>Direct3D</value>
+  <data name="AttributionLink.Content" xml:space="preserve">
+    <value>הודעת תוכנת צד שלישי</value>
   </data>
-  <data name="TitleScreensaverLockOnResume" xml:space="preserve">
-    <value>On resume, display logon screen</value>
+  <data name="PrivacyPolicyLink.Content" xml:space="preserve">
+    <value>מדיניות איסוף נתונים</value>
   </data>
-  <data name="SourceWebsite.Text" xml:space="preserve">
-    <value>אתר אינטרנט</value>
+  <data name="AddWallpaperDrop.Text" xml:space="preserve">
+    <value>הוסף טפט</value>
+  </data>
+  <data name="ComingSoon.Text" xml:space="preserve">
+    <value>בקרוב</value>
   </data>
   <data name="AboutMenu.Text" xml:space="preserve">
     <value>אודות</value>
   </data>
-  <data name="DescExplorerCrash" xml:space="preserve">
-    <value>Lively has encountered a fatal error.
-
-Windows Explorer restarted twice in the last 30 seconds! This may be a conflict between Lively and other desktop customization software or Windows. To avoid further issues, all wallpapers are terminated.</value>
+  <data name="SourceWebsite.Text" xml:space="preserve">
+    <value>אתר אינטרנט</value>
   </data>
-  <data name="HideSysTray.Description" xml:space="preserve">
-    <value>System-tray icon visibility, lively will continue to run with the icon hidden</value>
+  <data name="TextOpen.Content" xml:space="preserve">
+    <value>פתוח</value>
   </data>
-  <data name="PowerSavingModePower.Description" xml:space="preserve">
-    <value>Change playback when Windows Power Saving Mode is enabled</value>
-  </data>
-  <data name="RemoteDesktopPower.Description" xml:space="preserve">
-    <value>Change playback when running a Remote Desktop session</value>
-  </data>
-  <data name="EnterUrl.Header" xml:space="preserve">
-    <value>Enter URL</value>
-  </data>
-  <data name="PowerSavingModePower.Header" xml:space="preserve">
-    <value>When on Battery Saver</value>
-  </data>
-  <data name="RemoteDesktopPower.Header" xml:space="preserve">
-    <value>When on Remote Desktop</value>
+  <data name="TextSave.Content" xml:space="preserve">
+    <value>שמור</value>
   </data>
   <data name="UIMode.Description" xml:space="preserve">
-    <value>User interface effects and animations</value>
+    <value>ממשק משתמש אפקטים ואנימציות</value>
   </data>
   <data name="UIMode.Header" xml:space="preserve">
-    <value>User interface</value>
+    <value>ממשק משתמש</value>
   </data>
   <data name="UIModeLite.Content" xml:space="preserve">
-    <value>Lite</value>
+    <value>לייט</value>
   </data>
   <data name="UIModeNormal.Content" xml:space="preserve">
-    <value>Normal</value>
-  </data>  
+    <value>רגיל</value>
+  </data>
+  <data name="Screensaver.Description" xml:space="preserve">
+    <value>כיצד שומר מסך מוחל על התקני תצוגה מחוברים</value>
+  </data>
+  <data name="Screensaver.Header" xml:space="preserve">
+    <value>סוג שומר המסך</value>
+  </data>
+  <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
+    <value>מוגדר בנפרד</value>
+  </data>
+  <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
+    <value>זהה לטפט המופעל</value>
+  </data>
+  <data name="ScreensaverPlugin.Title" xml:space="preserve">
+    <value>נדרש תוסף</value>
+  </data>
+  <data name="ScreensaverPluginMessage.Text" xml:space="preserve">
+    <value>נדרשת הגדרה חד פעמית להפעלת שומר מסך</value>
+  </data>
+  <data name="WallpaperLayoutScreenPicker.Content" xml:space="preserve">
+    <value>תמיד בחר מסך בעת בחירת טפט</value>
+  </data>
+  <data name="GalleryAccount.Text" xml:space="preserve">
+    <value>חשבון</value>
+  </data>
+  <data name="GalleryAccountDelete.Content" xml:space="preserve">
+    <value>מחק חשבון</value>
+  </data>
+  <data name="GalleryAccountExport.Content" xml:space="preserve">
+    <value>ייצא נתונים</value>
+  </data>
+  <data name="GalleryAccountLogin.Content" xml:space="preserve">
+    <value>התחבר</value>
+  </data>
+  <data name="GalleryAccountLogout.Content" xml:space="preserve">
+    <value>התנתק</value>
+  </data>
+  <data name="GalleryPageCollection.Content" xml:space="preserve">
+    <value>מאגר</value>
+  </data>
+  <data name="GalleryPageHome.Content" xml:space="preserve">
+    <value>מסך הבית</value>
+  </data>
+  <data name="GalleryPageManage.Content" xml:space="preserve">
+    <value>נהל</value>
+  </data>
+  <data name="GalleryPageProfile.Content" xml:space="preserve">
+    <value>פרופיל</value>
+  </data>
+  <data name="GalleryPleaseLogin.Text" xml:space="preserve">
+    <value>אנא התחבר כדי להמשיך</value>
+  </data>
+  <data name="GalleryWelcomeMessage.Text" xml:space="preserve">
+    <value>שלום</value>
+  </data>
+  <data name="RestoreWallpaper.Text" xml:space="preserve">
+    <value>מצאנו את הטפטים האלה בחשבון שלך</value>
+  </data>
+  <data name="TextDownloadNow.Content" xml:space="preserve">
+    <value>הורד עכשיו</value>
+  </data>
+  <data name="TextMaybeLater.Content" xml:space="preserve">
+    <value>אולי אחר כך</value>
+  </data>
+  <data name="TextSelectAll.Content" xml:space="preserve">
+    <value>בחר הכל</value>
+  </data>
+  <data name="TextSelectNone.Content" xml:space="preserve">
+    <value>בטל בחירה</value>
+  </data>
+  <data name="TitleWelcomeback.Text" xml:space="preserve">
+    <value>ברוך שובך!</value>
+  </data>
+  <data name="ReportWallpaper.Header" xml:space="preserve">
+    <value>סיבות</value>
+  </data>
+  <data name="ReportWallpaperCopyright.Content" xml:space="preserve">
+    <value>הפרת זכויות יוצרים</value>
+  </data>
+  <data name="ReportWallpaperMisleading.Content" xml:space="preserve">
+    <value>מידע מטעה</value>
+  </data>
+  <data name="ReportWallpaperOther.Content" xml:space="preserve">
+    <value>אחר</value>
+  </data>
+  <data name="ReportWallpaperSpam.Content" xml:space="preserve">
+    <value>ספאם</value>
+  </data>
+  <data name="ReportWallpaperViolence.Content" xml:space="preserve">
+    <value>עירום או אלימות</value>
+  </data>
+  <data name="TextAdditionalNotes.Text" xml:space="preserve">
+    <value>הערות נוספות</value>
+  </data>
+  <data name="TextReportWallpaper.Text" xml:space="preserve">
+    <value>דווח</value>
+  </data>
+  <data name="TitleReportWallpaper.Text" xml:space="preserve">
+    <value>דווח על טפט</value>
+  </data>
+  <data name="Send.Content" xml:space="preserve">
+    <value>שלח</value>
+  </data>
+  <data name="GalleryAccountDeleteConfirm.Text" xml:space="preserve">
+    <value>נא לאשר פעולה זו מכיוון *שלא ניתן* לבטל אותה</value>
+  </data>
+  <data name="GalleryAccountDeleteFail.Text" xml:space="preserve">
+    <value>מחיקת החשבון נכשלה, בבקשה נסה שוב במועד מאוחר יותר</value>
+  </data>
+  <data name="TextConfirmCancel.Text" xml:space="preserve">
+    <value>האם תרצה לבטל אותה?</value>
+  </data>
+  <data name="TextWait.Text" xml:space="preserve">
+    <value>המתן</value>
+  </data>
+  <data name="TitleDownloadProgress.Text" xml:space="preserve">
+    <value>הורדה מתבצעת</value>
+  </data>
+  <data name="TextContributors.Text" xml:space="preserve">
+    <value>תורמים</value>
+  </data>
+  <data name="TextShare.Text" xml:space="preserve">
+    <value>שתף</value>
+  </data>
+  <data name="TitleShareWallpaper.Text" xml:space="preserve">
+    <value>שתף טפט</value>
+  </data>
+  <data name="ExportWallpaperGallery.Text" xml:space="preserve">
+    <value>העלאה לגלריה</value>
+  </data>
+  <data name="ExportWallpaperLink.Text" xml:space="preserve">
+    <value>העתק קישור</value>
+  </data>
+  <data name="TextCustomiseWallpaper" xml:space="preserve">
+    <value>התאם אישית טפט</value>
+  </data>
+  <data name="TextCloseWallpapers" xml:space="preserve">
+    <value>סגור טפטים</value>
+  </data>
 </root>

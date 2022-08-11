@@ -1,0 +1,109 @@
+﻿<Page
+    x:Class="Lively.UI.WinUI.Views.Pages.Gallery.ManageAccountView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:animations="using:CommunityToolkit.WinUI.UI.Animations"
+    xmlns:converters="using:Lively.UI.WinUI.Helpers.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:Lively.UI.WinUI.Views.Pages.Gallery"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:media="using:CommunityToolkit.WinUI.UI.Media"
+    xmlns:ui="using:CommunityToolkit.WinUI.UI"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <converters:BooleanToVisibilityConverter x:Key="VisibilityConverter" />
+        <media:AttachedCardShadow
+            x:Key="PersonShadow"
+            CornerRadius="50"
+            Offset="4" />
+        <media:AttachedCardShadow x:Key="CommonShadow" Offset="4" />
+    </Page.Resources>
+
+    <Grid Margin="-5">
+        <Image
+            x:Name="bgImage"
+            Source="ms-appx:///Assets/banner-lively-1080.jpg"
+            Stretch="UniformToFill">
+            <animations:Implicit.ShowAnimations>
+                <animations:TranslationAnimation
+                    From="0,-100,0"
+                    To="0"
+                    Duration="0:0:1" />
+                <animations:OpacityAnimation
+                    From="0"
+                    To="1.0"
+                    Duration="0:0:1" />
+            </animations:Implicit.ShowAnimations>
+        </Image>
+        <Page Background="{ThemeResource SystemAltMediumColor}" />
+
+        <StackPanel
+            Margin="50"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top">
+            <animations:Implicit.ShowAnimations>
+                <animations:TranslationAnimation
+                    From="0,50,0"
+                    To="0"
+                    Duration="0:0:1" />
+                <animations:OpacityAnimation
+                    From="0"
+                    To="1.0"
+                    Duration="0:0:1" />
+            </animations:Implicit.ShowAnimations>
+            <PersonPicture
+                Margin="0,0,0,5"
+                ui:Effects.Shadow="{StaticResource PersonShadow}"
+                ProfilePicture="{Binding Picture, Mode=OneWay}" />
+            <TextBlock
+                Margin="0,0,0,10"
+                HorizontalAlignment="Center"
+                FontSize="18"
+                FontWeight="SemiBold"
+                Text="{Binding DisplayName, Mode=OneWay}" />
+            <StackPanel x:Name="btnPanel" Visibility="{Binding IsProcessing, Converter={StaticResource VisibilityConverter}, Mode=OneWay, ConverterParameter=Reverse}">
+                <animations:Implicit.HideAnimations>
+                    <animations:OpacityAnimation To="0" Duration="0:0:1" />
+                </animations:Implicit.HideAnimations>
+                <animations:Implicit.ShowAnimations>
+                    <animations:OpacityAnimation To="1" Duration="0:0:1" />
+                </animations:Implicit.ShowAnimations>
+                <Button
+                    x:Uid="GalleryAccountExport"
+                    Width="175"
+                    Height="35"
+                    ui:Effects.Shadow="{StaticResource CommonShadow}"
+                    Command="{Binding ExportAccountCommand}" />
+                <Button
+                    x:Uid="GalleryAccountLogout"
+                    Width="175"
+                    Height="35"
+                    Margin="0,10,0,0"
+                    ui:Effects.Shadow="{StaticResource CommonShadow}"
+                    Command="{Binding LogoutAccountCommand}" />
+                <Button
+                    x:Uid="GalleryAccountDelete"
+                    Width="175"
+                    Height="35"
+                    Margin="0,25,0,0"
+                    ui:Effects.Shadow="{StaticResource CommonShadow}"
+                    Background="#AADD0000"
+                    Command="{Binding DeleteAccountCommand}">
+                    <Button.Resources>
+                        <ResourceDictionary>
+                            <ResourceDictionary.ThemeDictionaries>
+                                <ResourceDictionary x:Key="Dark">
+                                    <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#CCDD0000" />
+                                </ResourceDictionary>
+                                <ResourceDictionary x:Key="Light">
+                                    <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#CCDD0000" />
+                                </ResourceDictionary>
+                            </ResourceDictionary.ThemeDictionaries>
+                        </ResourceDictionary>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

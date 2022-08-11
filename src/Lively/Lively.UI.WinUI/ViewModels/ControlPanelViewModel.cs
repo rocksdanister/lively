@@ -5,12 +5,12 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using CommunityToolkit.Mvvm.Input;
 using Lively.Common;
 using Lively.Common.Helpers.MVVM;
 using Lively.Grpc.Client;
 using Lively.Models;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.UI.Xaml;
 
 namespace Lively.UI.WinUI.ViewModels

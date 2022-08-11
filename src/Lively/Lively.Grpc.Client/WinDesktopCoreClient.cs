@@ -139,8 +139,7 @@ namespace Lively.Grpc.Client
             await client.CloseWallpaperCategoryAsync(new CloseWallpaperCategoryRequest()
             {
                 Category = (WallpaperCategory)((int)type),
-                Terminate = terminate 
-                
+                Terminate = terminate
             });
         }
 

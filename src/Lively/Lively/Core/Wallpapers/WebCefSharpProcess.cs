@@ -54,7 +54,7 @@ namespace Lively.Core.Wallpapers
 
             StringBuilder cmdArgs = new StringBuilder();
             cmdArgs.Append(" --url " + "\"" + path + "\"");
-            cmdArgs.Append(" --display " + "\"" + display + "\"");
+            cmdArgs.Append(" --display " + "\"" + display.DeviceId + "\"");
             cmdArgs.Append(" --property " + "\"" + LivelyPropertyCopyPath + "\"");
             //volume == 0, Cef is permanently muted and cannot be adjusted runtime
             cmdArgs.Append(" --volume " + 100);

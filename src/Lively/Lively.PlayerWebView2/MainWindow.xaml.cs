@@ -3,16 +3,20 @@ using Lively.Common;
 using Lively.Common.API;
 using Lively.Common.Helpers;
 using Lively.Common.Helpers.Storage;
+using Lively.Common.Services;
 using Microsoft.Web.WebView2.Core;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Services;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Interop;
@@ -23,43 +27,47 @@ namespace Lively.PlayerWebView2
     //ref: https://docs.microsoft.com/en-us/microsoft-edge/webview2/gettingstarted/wpf
     public partial class MainWindow : Window
     {
-
-        private string htmlPath;
-        private string livelyPropertyPath;
-        private WallpaperType wallpaperType;
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0044:Add readonly modifier", Justification = "Debug only")]
+        private StartArgs startArgs;
+        private bool isPaused = false;
 
         public MainWindow(string[] args)
         {
             InitializeComponent();
+#if DEBUG
+            startArgs = new StartArgs
+            {
+                // .html fullpath
+                Url = @"",
+                //online or local(file)
+                Type = "local",
+                // LivelyProperties.json path if any
+                Properties = null,
+                SysInfo = false,
+                NowPlaying = false,
+            };
+
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            this.WindowStyle = WindowStyle.SingleBorderWindow;
+            this.ShowActivated = true;
+            this.ResizeMode = ResizeMode.CanResize;
+#endif
+
+#if DEBUG != true
             Parser.Default.ParseArguments<StartArgs>(args)
-                .WithParsed(RunOptions)
-                .WithNotParsed(HandleParseError);
+            .WithParsed((x) => startArgs = x)
+            .WithNotParsed(HandleParseError);
+#endif
         }
 
-        private void RunOptions(StartArgs opts)
+        private void HandleParseError(IEnumerable<Error> errs)
         {
-            try
+            App.WriteToParent(new LivelyMessageConsole()
             {
-                htmlPath = opts.Url;
-                livelyPropertyPath = opts.Properties;
-                //TODO: web audio
-                if (opts.Type.Equals("local", StringComparison.OrdinalIgnoreCase))
-                {
-                    wallpaperType = WallpaperType.web;
-                }
-                else if (opts.Type.Equals("online", StringComparison.OrdinalIgnoreCase))
-                {
-                    wallpaperType = WallpaperType.url;
-                }
-            }
-            catch (Exception e)
-            {
-                App.WriteToParent(new LivelyMessageConsole()
-                {
-                    Category = ConsoleMessageType.error,
-                    Message = $"Initialziation failed: {e.Message}",
-                });
-            }
+                Category = ConsoleMessageType.error,
+                Message = $"Error parsing cmdline args: {errs.First()}",
+            });
+            Application.Current.Shutdown();
         }
 
         protected override async void OnContentRendered(EventArgs e)
@@ -73,10 +81,60 @@ namespace Lively.PlayerWebView2
                 {
                     Hwnd = webView.Handle.ToInt32()
                 });
+
+                if (startArgs.NowPlaying)
+                {
+                    var nowPlayingService = new NowPlayingService();
+                    nowPlayingService.NowPlayingTrackChanged += (s, e) => {
+                        try
+                        {
+                            if (isPaused)
+                                return;
+
+                            //TODO: CefSharp CanExecuteJavascriptInMainFrame equivalent in webview
+                            this.Dispatcher.Invoke(() =>
+                            {
+                                _ = ExecuteScriptFunctionAsync("livelyCurrentTrack", JsonConvert.SerializeObject(e, Formatting.Indented));
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            App.WriteToParent(new LivelyMessageConsole()
+                            {
+                                Category = ConsoleMessageType.log,
+                                Message = $"Error sending track:{ex.Message}",
+                            });
+
+                        }
+                    };
+                }
+
+
+                if (startArgs.SysInfo)
+                {
+                    var sysMonitor = new PerfCounterUsageService();
+                    sysMonitor.HWMonitor += (s, e) => {
+                        try
+                        {
+                            if (isPaused)
+                                return;
+
+                            //TODO: CefSharp CanExecuteJavascriptInMainFrame equivalent in webview
+                            this.Dispatcher.Invoke(() =>
+                            {
+                                _ = ExecuteScriptFunctionAsync("livelySystemInformation", JsonConvert.SerializeObject(e, Formatting.Indented));
+                            });
+                        }
+                        catch { }
+                    };
+                    sysMonitor.Start();
+                }
             }
             finally
             {
+#if DEBUG != true
                 _ = StdInListener();
+#endif
             }
         }
 
@@ -85,7 +143,8 @@ namespace Lively.PlayerWebView2
             //Ref: https://docs.microsoft.com/en-us/microsoft-edge/webview2/concepts/user-data-folder
             var env = await CoreWebView2Environment.CreateAsync(null, Constants.CommonPaths.TempWebView2Dir);
             await webView.EnsureCoreWebView2Async(env);
-            webView.CoreWebView2.ProcessFailed += (s, e) => {
+            webView.CoreWebView2.ProcessFailed += (s, e) =>
+            {
                 App.WriteToParent(new LivelyMessageConsole()
                 {
                     Category = ConsoleMessageType.error,
@@ -94,14 +153,14 @@ namespace Lively.PlayerWebView2
             };
             webView.NavigationCompleted += WebView_NavigationCompleted;
 
-            if (wallpaperType == WallpaperType.url)
+            if (startArgs.Type.Equals("online", StringComparison.OrdinalIgnoreCase))
             {
                 string tmp = null;
-                if (StreamUtil.TryParseShadertoy(htmlPath, ref tmp))
+                if (StreamUtil.TryParseShadertoy(startArgs.Url, ref tmp))
                 {
                     webView.CoreWebView2.NavigateToString(tmp);
                 }
-                else if (StreamUtil.TryParseYouTubeVideoIdFromUrl(htmlPath, ref tmp))
+                else if (StreamUtil.TryParseYouTubeVideoIdFromUrl(startArgs.Url, ref tmp))
                 {
                     //fullscreen yt embed player with looping enabled.
                     webView.CoreWebView2.Navigate("https://www.youtube.com/embed/" + tmp +
@@ -109,30 +168,25 @@ namespace Lively.PlayerWebView2
                 }
                 else
                 {
-                    webView.CoreWebView2.Navigate(htmlPath);
+                    webView.CoreWebView2.Navigate(startArgs.Url);
                 }
             }
             else
             {
-                //webView.CoreWebView2.SetVirtualHostNameToFolderMapping("lively_test", Path.GetDirectoryName(htmlPath), CoreWebView2HostResourceAccessKind.Allow);
-                webView.CoreWebView2.Navigate(htmlPath);
+                //webView.CoreWebView2.SetVirtualHostNameToFolderMapping("lively_test", Path.GetDirectoryName(startArgs.Url), CoreWebView2HostResourceAccessKind.Allow);
+                webView.CoreWebView2.Navigate(startArgs.Url);
             }
         }
 
         private async void WebView_NavigationCompleted(object sender, CoreWebView2NavigationCompletedEventArgs e)
         {
-            await RestoreLivelyProperties(livelyPropertyPath);
+            await RestoreLivelyProperties(startArgs.Properties);
             App.WriteToParent(new LivelyMessageWallpaperLoaded() { Success = true });
         }
 
-        private void HandleParseError(IEnumerable<Error> errs)
+        private class WallpaperPlaybackState
         {
-            App.WriteToParent(new LivelyMessageConsole()
-            {
-                Category = ConsoleMessageType.error,
-                Message = $"Error parsing cmdline args: {errs.First()}",
-            });
-            Application.Current.Shutdown();
+            public bool IsPaused { get; set; }
         }
 
         public async Task StdInListener()
@@ -162,6 +216,22 @@ namespace Lively.PlayerWebView2
                                         case MessageType.cmd_reload:
                                             webView?.Reload();
                                             break;
+                                        case MessageType.cmd_suspend:
+                                            if (startArgs.PauseEvent && !isPaused)
+                                            {
+                                                //TODO: check if js context ready
+                                                _ = ExecuteScriptFunctionAsync("livelyWallpaperPlaybackChanged", JsonConvert.SerializeObject(new WallpaperPlaybackState() { IsPaused = true }), Formatting.Indented);
+                                            }
+                                            isPaused = true;
+                                            break;
+                                        case MessageType.cmd_resume:
+                                            if (startArgs.PauseEvent && isPaused)
+                                            {
+                                                //TODO: check if js context ready
+                                                _ = ExecuteScriptFunctionAsync("livelyWallpaperPlaybackChanged", JsonConvert.SerializeObject(new WallpaperPlaybackState() { IsPaused = false }), Formatting.Indented);
+                                            }
+                                            isPaused = false;
+                                            break;
                                         case MessageType.lp_slider:
                                             var sl = (LivelySlider)obj;
                                             _ = ExecuteScriptFunctionAsync("livelyPropertyListener", sl.Name, sl.Value);
@@ -184,7 +254,7 @@ namespace Lively.PlayerWebView2
                                             break;
                                         case MessageType.lp_fdropdown:
                                             var fd = (LivelyFolderDropdown)obj;
-                                            var filePath = Path.Combine(Path.GetDirectoryName(htmlPath), fd.Value);
+                                            var filePath = Path.Combine(Path.GetDirectoryName(startArgs.Url), fd.Value);
                                             if (File.Exists(filePath))
                                             {
                                                 _ = ExecuteScriptFunctionAsync("livelyPropertyListener",
@@ -202,7 +272,7 @@ namespace Lively.PlayerWebView2
                                             var btn = (LivelyButton)obj;
                                             if (btn.IsDefault)
                                             {
-                                                _ = RestoreLivelyProperties(livelyPropertyPath);
+                                                _ = RestoreLivelyProperties(startArgs.Properties);
                                             }
                                             else
                                             {
@@ -210,8 +280,16 @@ namespace Lively.PlayerWebView2
                                             }
                                             break;
                                         case MessageType.lsp_perfcntr:
+                                            if (!isPaused)
+                                            {
+                                                _ = ExecuteScriptFunctionAsync("livelySystemInformation", JsonConvert.SerializeObject(((LivelySystemInformation)obj).Info, Formatting.Indented));
+                                            }
                                             break;
                                         case MessageType.lsp_nowplaying:
+                                            if (!isPaused)
+                                            {
+                                                _ = ExecuteScriptFunctionAsync("livelyCurrentTrack", JsonConvert.SerializeObject(((LivelySystemNowPlaying)obj).Info, Formatting.Indented));
+                                            }
                                             break;
                                         case MessageType.cmd_close:
                                             close = true;
@@ -269,7 +347,7 @@ namespace Lively.PlayerWebView2
                         }
                         else if (uiElementType.Equals("folderDropdown", StringComparison.OrdinalIgnoreCase))
                         {
-                            var filePath = Path.Combine(Path.GetDirectoryName(htmlPath), item.Value["folder"].ToString(), item.Value["value"].ToString());
+                            var filePath = Path.Combine(Path.GetDirectoryName(startArgs.Url), item.Value["folder"].ToString(), item.Value["value"].ToString());
                             if (File.Exists(filePath))
                             {
                                 await ExecuteScriptFunctionAsync("livelyPropertyListener",
@@ -299,12 +377,14 @@ namespace Lively.PlayerWebView2
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+#if DEBUG != true
             IntPtr handle = new WindowInteropHelper(this).Handle;
             //ShowInTaskbar = false : causing issue with windows10 Taskview.
             WindowOperations.RemoveWindowFromTaskbar(handle);
             //this hides the window from taskbar and also fixes crash when win10 taskview is launched. 
             this.ShowInTaskbar = false;
             this.ShowInTaskbar = true;
+#endif
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -312,7 +392,7 @@ namespace Lively.PlayerWebView2
             webView?.Dispose();
         }
 
-        #region helpers
+#region helpers
 
         //credit: https://stackoverflow.com/questions/62835549/equivalent-of-webbrowser-invokescriptstring-object-in-webview2
         private async Task<string> ExecuteScriptFunctionAsync(string functionName, params object[] parameters)
@@ -398,6 +478,6 @@ namespace Lively.PlayerWebView2
             return bi;
         }
 
-        #endregion //helpers
+#endregion //helpers
     }
 }

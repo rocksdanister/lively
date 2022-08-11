@@ -1,4 +1,5 @@
-﻿using Lively.Common;
+﻿using CommunityToolkit.Mvvm.Input;
+using Lively.Common;
 using Lively.Common.Helpers.MVVM;
 using Lively.Common.Helpers.Storage;
 using Lively.Core;
@@ -6,7 +7,6 @@ using Lively.Models;
 using Lively.Services;
 using Lively.Views;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Toolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
 using System.IO;

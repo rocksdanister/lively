@@ -142,7 +142,7 @@ namespace Lively.Views
         {
             if (_forceClose != true && download != null)
             {
-                if (MessageBox.Show(Properties.Resources.DescriptionCancelQuestion, Properties.Resources.TitlePleaseWait, MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                if (MessageBox.Show(Properties.Resources.DescriptionCancelQuestion, Properties.Resources.PleaseWait_Text, MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
                 {
                     _forceClose = true;
                 }

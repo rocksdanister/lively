@@ -80,7 +80,7 @@
                         <controls:Setting.ActionContent>
                             <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedPauseAlgorithmIndex, Mode=TwoWay}">
                                 <ComboBoxItem x:Uid="PauseAlgorithmTypeForegroundProcess" />
-                                <ComboBoxItem x:Uid="PauseAlgorithmTypeAllProcess" />
+                                <ComboBoxItem x:Uid="PauseAlgorithmTypeAllProcess" Visibility="Collapsed" />
                                 <ComboBoxItem x:Uid="PauseAlgorithmTypeExclusiveMode" />
                             </ComboBox>
                         </controls:Setting.ActionContent>

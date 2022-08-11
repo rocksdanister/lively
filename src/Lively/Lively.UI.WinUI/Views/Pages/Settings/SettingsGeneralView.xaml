@@ -40,23 +40,9 @@
                         </controls:Setting.ActionContent>
                     </controls:Setting>
 
-                    <controls:Setting
-                        x:Uid="Language"
-                        Icon="&#xF2B7;"
-                        IsEnabled="False">
-                        <controls:Setting.ActionContent>
-                            <ComboBox
-                                MinWidth="{StaticResource SettingActionControlMinWidth}"
-                                DisplayMemberPath="Language"
-                                ItemsSource="{Binding LanguageItems}"
-                                SelectedIndex="0"
-                                SelectedItem="{Binding SelectedLanguageItem, Mode=TwoWay}" />
-                        </controls:Setting.ActionContent>
-                    </controls:Setting>
-
                     <controls:Setting x:Uid="AppTheme" Icon="&#xE771;">
                         <controls:Setting.Description>
-                            <HyperlinkButton x:Uid="WindowsSettingsColor" Click="HyperlinkButton_Click" />
+                            <HyperlinkButton x:Uid="WindowsSettingsColor" Click="Color_HyperlinkButton_Click" />
                         </controls:Setting.Description>
                         <controls:Setting.ActionContent>
                             <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedAppThemeIndex, Mode=TwoWay}">
@@ -66,6 +52,37 @@
                             </ComboBox>
                         </controls:Setting.ActionContent>
                     </controls:Setting>
+
+                    <controls:Setting
+                        x:Uid="Language"
+                        Icon="&#xF2B7;"
+                        IsEnabled="False">
+                        <controls:Setting.ActionContent>
+                            <StackPanel>
+                                <ComboBox
+                                    MinWidth="{StaticResource SettingActionControlMinWidth}"
+                                    DisplayMemberPath="Language"
+                                    ItemsSource="{Binding LanguageItems}"
+                                    SelectedIndex="0"
+                                    SelectedItem="{Binding SelectedLanguageItem, Mode=TwoWay}" />
+                            </StackPanel>
+                        </controls:Setting.ActionContent>
+                    </controls:Setting>
+                    <InfoBar
+                        x:Uid="TextHelpTranslate"
+                        Margin="0,-2.5,0,0"
+                        VerticalAlignment="Top"
+                        IsClosable="False"
+                        IsOpen="True"
+                        Severity="Informational">
+                        <InfoBar.ActionButton>
+                            <HyperlinkButton NavigateUri="https://crwd.in/lively-wallpaper" ToolTipService.ToolTip="https://crwd.in/lively-wallpaper">
+                                <HyperlinkButton.Content>
+                                    <TextBlock x:Uid="TextLearnMore" TextWrapping="Wrap" />
+                                </HyperlinkButton.Content>
+                            </HyperlinkButton>
+                        </InfoBar.ActionButton>
+                    </InfoBar>
                 </controls:SettingsGroup>
 
                 <controls:SettingsGroup x:Uid="AudioGroup" Header="Audio">

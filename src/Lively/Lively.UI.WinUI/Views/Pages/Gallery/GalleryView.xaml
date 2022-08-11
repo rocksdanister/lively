@@ -5,29 +5,38 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Lively.UI.WinUI.Views.Pages.Gallery"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
     <Grid>
         <NavigationView
             x:Name="navView"
-            Margin="-50,0,0,0"
             IsBackButtonVisible="Collapsed"
             IsSettingsVisible="False"
+            ItemInvoked="navView_ItemInvoked"
             PaneDisplayMode="LeftCompact">
             <NavigationView.MenuItems>
                 <NavigationViewItem
-                    Content="Home"
+                    x:Uid="GalleryPageHome"
                     Icon="Home"
                     IsEnabled="False"
                     Tag="featured" />
                 <NavigationViewItem
-                    Content="Library"
+                    x:Uid="GalleryPageCollection"
                     Icon="Library"
                     Tag="library" />
                 <!--  navView selection not visible to user  -->
                 <NavigationViewItem Tag="login" Visibility="Collapsed" />
             </NavigationView.MenuItems>
+            <NavigationView.FooterMenuItems>
+                <NavigationViewItem
+                    x:Uid="GalleryPageManage"
+                    Icon="Manage"
+                    Tag="subscription" />
+                <NavigationViewItem
+                    x:Uid="GalleryPageProfile"
+                    Icon="Contact"
+                    Tag="profile" />
+            </NavigationView.FooterMenuItems>
             <Frame x:Name="contentFrame" />
         </NavigationView>
     </Grid>

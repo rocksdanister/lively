@@ -22,6 +22,7 @@ namespace Lively.Common
             public static string WallpaperLayoutPath { get; } = Path.Combine(AppDataDir, "WallpaperLayout.json");
             public static string UserSettingsPath { get; } = Path.Combine(AppDataDir, "Settings.json");
             public static string WeatherSettingsPath { get; } = Path.Combine(AppDataDir, "WeatherSettings.json");
+            public static string TokensPath { get; } = Path.Combine(AppDataDir, "Tokens.dat");
         }
 
         public static class CommonPartialPaths

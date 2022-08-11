@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -54,6 +55,7 @@ namespace Lively.PlayerWebView2
         public static void WriteToParent(IpcMessage obj)
         {
             Console.WriteLine(JsonConvert.SerializeObject(obj));
+            Debug.WriteLine(JsonConvert.SerializeObject(obj));
         }
     }
 }

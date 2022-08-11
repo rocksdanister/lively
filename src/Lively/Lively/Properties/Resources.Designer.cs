@@ -61,20 +61,389 @@ namespace Lively.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Online discussion forum.
+        ///   Looks up a localized string similar to About.
         /// </summary>
-        public static string DescCommunity {
+        public static string About_Label {
             get {
-                return ResourceManager.GetString("DescCommunity", resourceCulture);
+                return ResourceManager.GetString("About.Label", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to API documentation and help.
+        ///   Looks up a localized string similar to Hi, I&apos;m Dani John also known as rocksdanister. I developed Lively a Free and open-source (FOSS) wallpaper application. Thanks for taking the time to look at my work..
         /// </summary>
-        public static string DescDocumentation {
+        public static string AboutMe_Text {
             get {
-                return ResourceManager.GetString("DescDocumentation", resourceCulture);
+                return ResourceManager.GetString("AboutMe.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to About.
+        /// </summary>
+        public static string AboutMenu_Text {
+            get {
+                return ResourceManager.GetString("AboutMenu.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Active Wallpaper(s).
+        /// </summary>
+        public static string ActiveWallpapers_Label {
+            get {
+                return ResourceManager.GetString("ActiveWallpapers.Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Wallpaper.
+        /// </summary>
+        public static string AddWallpaper_Label {
+            get {
+                return ResourceManager.GetString("AddWallpaper.Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add wallpaper.
+        /// </summary>
+        public static string AddWallpaperDrop_Text {
+            get {
+                return ResourceManager.GetString("AddWallpaperDrop.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set all supported file types as wallpaper.
+        /// </summary>
+        public static string AddWallpaperFileBrowse_Description {
+            get {
+                return ResourceManager.GetString("AddWallpaperFileBrowse.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose a file.
+        /// </summary>
+        public static string AddWallpaperFileBrowse_Header {
+            get {
+                return ResourceManager.GetString("AddWallpaperFileBrowse.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Appearance &amp; behavior.
+        /// </summary>
+        public static string AppearanceBehaviour_Header {
+            get {
+                return ResourceManager.GetString("AppearanceBehaviour.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set what to do when any application is in focus.
+        /// </summary>
+        public static string AppFocus_Description {
+            get {
+                return ResourceManager.GetString("AppFocus.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Applications focused.
+        /// </summary>
+        public static string AppFocus_Header {
+            get {
+                return ResourceManager.GetString("AppFocus.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set what to do when fullscreen games/applications are running.
+        /// </summary>
+        public static string AppFullScreen_Description {
+            get {
+                return ResourceManager.GetString("AppFullScreen.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Applications fullscreen.
+        /// </summary>
+        public static string AppFullScreen_Header {
+            get {
+                return ResourceManager.GetString("AppFullScreen.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Application.
+        /// </summary>
+        public static string Application_Header {
+            get {
+                return ResourceManager.GetString("Application.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pause wallpaper when running these applications.
+        /// </summary>
+        public static string AppRules_Description {
+            get {
+                return ResourceManager.GetString("AppRules.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Application Rules.
+        /// </summary>
+        public static string AppRules_Header {
+            get {
+                return ResourceManager.GetString("AppRules.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Theme.
+        /// </summary>
+        public static string AppTheme_Header {
+            get {
+                return ResourceManager.GetString("AppTheme.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dark.
+        /// </summary>
+        public static string AppThemeDark_Content {
+            get {
+                return ResourceManager.GetString("AppThemeDark.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light.
+        /// </summary>
+        public static string AppThemeLight_Content {
+            get {
+                return ResourceManager.GetString("AppThemeLight.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to System.
+        /// </summary>
+        public static string AppThemeSystem_Content {
+            get {
+                return ResourceManager.GetString("AppThemeSystem.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attribution.
+        /// </summary>
+        public static string Attribution_Header {
+            get {
+                return ResourceManager.GetString("Attribution.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Third party software notice.
+        /// </summary>
+        public static string AttributionLink_Content {
+            get {
+                return ResourceManager.GetString("AttributionLink.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Volume level of all wallpapers.
+        /// </summary>
+        public static string Audio_Description {
+            get {
+                return ResourceManager.GetString("Audio.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Volume.
+        /// </summary>
+        public static string Audio_Header {
+            get {
+                return ResourceManager.GetString("Audio.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Play audio only when desktop is focused.
+        /// </summary>
+        public static string AudioFocused_Content {
+            get {
+                return ResourceManager.GetString("AudioFocused.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Audio.
+        /// </summary>
+        public static string AudioGroup_Header {
+            get {
+                return ResourceManager.GetString("AudioGroup.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Author.
+        /// </summary>
+        public static string Author_Text {
+            get {
+                return ResourceManager.GetString("Author.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change playback when AC power is disconnected.
+        /// </summary>
+        public static string BatteryPower_Description {
+            get {
+                return ResourceManager.GetString("BatteryPower.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When on Battery Power.
+        /// </summary>
+        public static string BatteryPower_Header {
+            get {
+                return ResourceManager.GetString("BatteryPower.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter the port for debugging webpage wallpapers; when ready navigate to http://localhost:portnumber to access developer console.
+        /// </summary>
+        public static string BrowserDebuggingPort_Description {
+            get {
+                return ResourceManager.GetString("BrowserDebuggingPort.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Debugging port.
+        /// </summary>
+        public static string BrowserDebuggingPort_Header {
+            get {
+                return ResourceManager.GetString("BrowserDebuggingPort.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string Cancel_Content {
+            get {
+                return ResourceManager.GetString("Cancel.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        public static string CloseWallpapers_Label {
+            get {
+                return ResourceManager.GetString("CloseWallpapers.Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Coming soon.
+        /// </summary>
+        public static string ComingSoon_Text {
+            get {
+                return ResourceManager.GetString("ComingSoon.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Community.
+        /// </summary>
+        public static string Community_Header {
+            get {
+                return ResourceManager.GetString("Community.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Online discussion forum.
+        /// </summary>
+        public static string CommunityPage_Content {
+            get {
+                return ResourceManager.GetString("CommunityPage.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Click here to manage wallpapers.
+        /// </summary>
+        public static string ControlPanel_Subtitle {
+            get {
+                return ResourceManager.GetString("ControlPanel.Subtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Control Panel.
+        /// </summary>
+        public static string ControlPanel_Title {
+            get {
+                return ResourceManager.GetString("ControlPanel.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Customise.
+        /// </summary>
+        public static string Customise_Text {
+            get {
+                return ResourceManager.GetString("Customise.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Customise.
+        /// </summary>
+        public static string CustomiseWallpaper_Label {
+            get {
+                return ResourceManager.GetString("CustomiseWallpaper.Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show developer menu.
+        /// </summary>
+        public static string Debug_Description {
+            get {
+                return ResourceManager.GetString("Debug.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Debug.
+        /// </summary>
+        public static string Debug_Header {
+            get {
+                return ResourceManager.GetString("Debug.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        public static string DeleteWallpaper_Text {
+            get {
+                return ResourceManager.GetString("DeleteWallpaper.Text", resourceCulture);
             }
         }
         
@@ -90,20 +459,11 @@ namespace Lively.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Incompatible program found, taskbar theming disabled..
+        ///   Looks up a localized string similar to Incompatible program found, taskbar theming disabled.
         /// </summary>
         public static string DescIncompatibleTaskbarTheme {
             get {
                 return ResourceManager.GetString("DescIncompatibleTaskbarTheme", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Official webpage of Lively Wallpaper.
-        /// </summary>
-        public static string DescOfficialWebpage {
-            get {
-                return ResourceManager.GetString("DescOfficialWebpage", resourceCulture);
             }
         }
         
@@ -121,25 +481,16 @@ namespace Lively.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Report a problem with the software.
+        ///   Looks up a localized string similar to Description.
         /// </summary>
-        public static string DescReportBug {
+        public static string Description_Text {
             get {
-                return ResourceManager.GetString("DescReportBug", resourceCulture);
+                return ResourceManager.GetString("Description.Text", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select a file or specify a website url to set as a wallpaper..
-        /// </summary>
-        public static string DescriptionAddWallpaper {
-            get {
-                return ResourceManager.GetString("DescriptionAddWallpaper", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Wallpaper playback behaviour based on running application..
+        ///   Looks up a localized string similar to Wallpaper playback behaviour based on running application.
         /// </summary>
         public static string DescriptionAppRules {
             get {
@@ -175,15 +526,6 @@ namespace Lively.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Simply drag and drop files into Library..
-        /// </summary>
-        public static string DescriptionDragDropFIle {
-            get {
-                return ResourceManager.GetString("DescriptionDragDropFIle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to You are opening an external application as wallpaper.
         ///Malicious applications can host malware, virus.. and do harm to your system.
         ///Only continue if this application comes from a trusted source..
@@ -195,16 +537,7 @@ namespace Lively.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lively is minimized to systemtray, right click lively icon to continue..
-        /// </summary>
-        public static string DescriptionMinimizedTray {
-            get {
-                return ResourceManager.GetString("DescriptionMinimizedTray", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Please restart Lively for settings to take effect..
+        ///   Looks up a localized string similar to Please restart Lively for settings to take effect.
         /// </summary>
         public static string DescriptionPleaseRestartLively {
             get {
@@ -213,7 +546,7 @@ namespace Lively.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please stop before proceeding..
+        ///   Looks up a localized string similar to Please stop before proceeding.
         /// </summary>
         public static string DescriptionPleaseStop {
             get {
@@ -222,7 +555,7 @@ namespace Lively.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Press to begin recording..
+        ///   Looks up a localized string similar to Press to begin recording.
         /// </summary>
         public static string DescriptionRecordStart {
             get {
@@ -267,7 +600,7 @@ namespace Lively.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This wizard will get you started on setting up Lively..
+        ///   Looks up a localized string similar to This wizard will get you started on setting up Lively.
         /// </summary>
         public static string DescriptionWelcomeWizard {
             get {
@@ -276,7 +609,7 @@ namespace Lively.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your Windows N/KN version will require the download of additional codecs to support video playback in wallpapers..
+        ///   Looks up a localized string similar to Your Windows N/KN version will require the download of additional codecs to support video playback in wallpapers.
         /// </summary>
         public static string DescriptionWindowsNCodecInstall {
             get {
@@ -304,6 +637,402 @@ namespace Lively.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Set a picture of animated wallpaper as desktop wallpaper.
+        /// </summary>
+        public static string DesktopPicture_Description {
+            get {
+                return ResourceManager.GetString("DesktopPicture.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Desktop picture.
+        /// </summary>
+        public static string DesktopPicture_Header {
+            get {
+                return ResourceManager.GetString("DesktopPicture.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Developer.
+        /// </summary>
+        public static string DeveloperGroup_Header {
+            get {
+                return ResourceManager.GetString("DeveloperGroup.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pause wallpaper on all screens or only the screen in which application is focused.
+        /// </summary>
+        public static string DisplayPauseRule_Description {
+            get {
+                return ResourceManager.GetString("DisplayPauseRule.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Display pause rule.
+        /// </summary>
+        public static string DisplayPauseRule_Header {
+            get {
+                return ResourceManager.GetString("DisplayPauseRule.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All screen(s).
+        /// </summary>
+        public static string DisplayPauseRuleAllScreen_Content {
+            get {
+                return ResourceManager.GetString("DisplayPauseRuleAllScreen.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Per screen.
+        /// </summary>
+        public static string DisplayPauseRulePerScreen_Content {
+            get {
+                return ResourceManager.GetString("DisplayPauseRulePerScreen.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Documentation.
+        /// </summary>
+        public static string Documentation_Header {
+            get {
+                return ResourceManager.GetString("Documentation.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to API documentation and help.
+        /// </summary>
+        public static string DocumentationPage_Content {
+            get {
+                return ResourceManager.GetString("DocumentationPage.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Simply drag and drop files into here.
+        /// </summary>
+        public static string DragDropFile_Text {
+            get {
+                return ResourceManager.GetString("DragDropFile.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit.
+        /// </summary>
+        public static string EditWallpaper_Text {
+            get {
+                return ResourceManager.GetString("EditWallpaper.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set the web page of the URL you entered as wallpaper.
+        /// </summary>
+        public static string EnterUrl_Description {
+            get {
+                return ResourceManager.GetString("EnterUrl.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter URL.
+        /// </summary>
+        public static string EnterUrl_Header {
+            get {
+                return ResourceManager.GetString("EnterUrl.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create log report file.
+        /// </summary>
+        public static string ExportLogs_Description {
+            get {
+                return ResourceManager.GetString("ExportLogs.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Log File.
+        /// </summary>
+        public static string ExportLogs_Header {
+            get {
+                return ResourceManager.GetString("ExportLogs.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gallery upload.
+        /// </summary>
+        public static string ExportWallpaperGallery_Text {
+            get {
+                return ResourceManager.GetString("ExportWallpaperGallery.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy link.
+        /// </summary>
+        public static string ExportWallpaperLink_Text {
+            get {
+                return ResourceManager.GetString("ExportWallpaperLink.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save to file.
+        /// </summary>
+        public static string ExportWallpaperZip_Text {
+            get {
+                return ResourceManager.GetString("ExportWallpaperZip.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Keep User Interface running for faster startup.
+        /// </summary>
+        public static string FastUI_Description {
+            get {
+                return ResourceManager.GetString("FastUI.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fast startup.
+        /// </summary>
+        public static string FastUI_Header {
+            get {
+                return ResourceManager.GetString("FastUI.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account.
+        /// </summary>
+        public static string GalleryAccount_Text {
+            get {
+                return ResourceManager.GetString("GalleryAccount.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete account.
+        /// </summary>
+        public static string GalleryAccountDelete_Content {
+            get {
+                return ResourceManager.GetString("GalleryAccountDelete.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please confirm this action as it CAN NOT be undone.
+        /// </summary>
+        public static string GalleryAccountDeleteConfirm_Text {
+            get {
+                return ResourceManager.GetString("GalleryAccountDeleteConfirm.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to delete account, please try again later.
+        /// </summary>
+        public static string GalleryAccountDeleteFail_Text {
+            get {
+                return ResourceManager.GetString("GalleryAccountDeleteFail.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export data.
+        /// </summary>
+        public static string GalleryAccountExport_Content {
+            get {
+                return ResourceManager.GetString("GalleryAccountExport.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Log in.
+        /// </summary>
+        public static string GalleryAccountLogin_Content {
+            get {
+                return ResourceManager.GetString("GalleryAccountLogin.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Log out.
+        /// </summary>
+        public static string GalleryAccountLogout_Content {
+            get {
+                return ResourceManager.GetString("GalleryAccountLogout.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Collection.
+        /// </summary>
+        public static string GalleryPageCollection_Content {
+            get {
+                return ResourceManager.GetString("GalleryPageCollection.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        public static string GalleryPageHome_Content {
+            get {
+                return ResourceManager.GetString("GalleryPageHome.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Manage.
+        /// </summary>
+        public static string GalleryPageManage_Content {
+            get {
+                return ResourceManager.GetString("GalleryPageManage.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profile.
+        /// </summary>
+        public static string GalleryPageProfile_Content {
+            get {
+                return ResourceManager.GetString("GalleryPageProfile.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please log in to continue.
+        /// </summary>
+        public static string GalleryPleaseLogin_Text {
+            get {
+                return ResourceManager.GetString("GalleryPleaseLogin.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hi.
+        /// </summary>
+        public static string GalleryWelcomeMessage_Text {
+            get {
+                return ResourceManager.GetString("GalleryWelcomeMessage.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select the player used for gif wallpaper.
+        /// </summary>
+        public static string GifPlayer_Description {
+            get {
+                return ResourceManager.GetString("GifPlayer.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gif player.
+        /// </summary>
+        public static string GifPlayer_Header {
+            get {
+                return ResourceManager.GetString("GifPlayer.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show some love by dropping a star.
+        /// </summary>
+        public static string GitHubStar_Content {
+            get {
+                return ResourceManager.GetString("GitHubStar.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Help.
+        /// </summary>
+        public static string Help_Label {
+            get {
+                return ResourceManager.GetString("Help.Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to System-tray icon visibility, lively will continue to run with the icon hidden.
+        /// </summary>
+        public static string HideSysTray_Description {
+            get {
+                return ResourceManager.GetString("HideSysTray.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to System-tray Icon.
+        /// </summary>
+        public static string HideSysTray_Header {
+            get {
+                return ResourceManager.GetString("HideSysTray.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lively will restart to apply the new language.
+        /// </summary>
+        public static string Language_Description {
+            get {
+                return ResourceManager.GetString("Language.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Language.
+        /// </summary>
+        public static string Language_Header {
+            get {
+                return ResourceManager.GetString("Language.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Laptops.
+        /// </summary>
+        public static string LaptopWallpaperPlaybackGroup_Header {
+            get {
+                return ResourceManager.GetString("LaptopWallpaperPlaybackGroup.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to License.
+        /// </summary>
+        public static string License_Header {
+            get {
+                return ResourceManager.GetString("License.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Software license.
+        /// </summary>
+        public static string LicenseLink_Content {
+            get {
+                return ResourceManager.GetString("LicenseLink.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed to update; try downloading the installer from:
         ///https://github.com/rocksdanister/lively/releases.
         /// </summary>
@@ -314,7 +1043,7 @@ namespace Lively.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Damaged wallpaper file, try redownloading..
+        ///   Looks up a localized string similar to Damaged wallpaper file, try redownloading.
         /// </summary>
         public static string LivelyExceptionDamagedZipFile {
             get {
@@ -336,7 +1065,7 @@ namespace Lively.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to Lively cannot work properly with Windows High Contrast mode enabled!
-        ///Disable High Contrast mode and try again..
+        ///Disable High Contrast mode and try again.
         /// </summary>
         public static string LivelyExceptionHighContrastMode {
             get {
@@ -359,7 +1088,7 @@ namespace Lively.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Not Lively wallpaper file..
+        ///   Looks up a localized string similar to Not Lively wallpaper file.
         /// </summary>
         public static string LivelyExceptionNotLivelyZip {
             get {
@@ -395,6 +1124,501 @@ namespace Lively.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Set a picture of animated wallpaper as lockscreen wallpaper.
+        /// </summary>
+        public static string LockscreenPicture_Description {
+            get {
+                return ResourceManager.GetString("LockscreenPicture.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lockscreen picture.
+        /// </summary>
+        public static string LockscreenPicture_Header {
+            get {
+                return ResourceManager.GetString("LockscreenPicture.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lively is minimized to systemtray, right click lively icon to continue..
+        /// </summary>
+        public static string MinimizedTray_Text {
+            get {
+                return ResourceManager.GetString("MinimizedTray.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mouse interaction when application focused.
+        /// </summary>
+        public static string MouseInteractOnDesktop_Content {
+            get {
+                return ResourceManager.GetString("MouseInteractOnDesktop.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Official webpage of Lively Wallpaper.
+        /// </summary>
+        public static string OfficialWebpage_Content {
+            get {
+                return ResourceManager.GetString("OfficialWebpage.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wallpaper pause algorithm.
+        /// </summary>
+        public static string PauseAlgorithm_Description {
+            get {
+                return ResourceManager.GetString("PauseAlgorithm.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pause algorithm.
+        /// </summary>
+        public static string PauseAlgorithm_Header {
+            get {
+                return ResourceManager.GetString("PauseAlgorithm.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All process.
+        /// </summary>
+        public static string PauseAlgorithmTypeAllProcess_Content {
+            get {
+                return ResourceManager.GetString("PauseAlgorithmTypeAllProcess.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Direct3D.
+        /// </summary>
+        public static string PauseAlgorithmTypeExclusiveMode_Content {
+            get {
+                return ResourceManager.GetString("PauseAlgorithmTypeExclusiveMode.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Foreground process.
+        /// </summary>
+        public static string PauseAlgorithmTypeForegroundProcess_Content {
+            get {
+                return ResourceManager.GetString("PauseAlgorithmTypeForegroundProcess.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please wait.
+        /// </summary>
+        public static string PleaseWait_Text {
+            get {
+                return ResourceManager.GetString("PleaseWait.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change playback when Windows Power Saving Mode is enabled.
+        /// </summary>
+        public static string PowerSavingModePower_Description {
+            get {
+                return ResourceManager.GetString("PowerSavingModePower.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When on Battery Saver.
+        /// </summary>
+        public static string PowerSavingModePower_Header {
+            get {
+                return ResourceManager.GetString("PowerSavingModePower.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preview.
+        /// </summary>
+        public static string PreviewWallpaper_Text {
+            get {
+                return ResourceManager.GetString("PreviewWallpaper.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Privacy Policy.
+        /// </summary>
+        public static string PrivacyPolicy_Header {
+            get {
+                return ResourceManager.GetString("PrivacyPolicy.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data collection policy.
+        /// </summary>
+        public static string PrivacyPolicyLink_Content {
+            get {
+                return ResourceManager.GetString("PrivacyPolicyLink.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change playback when running a Remote Desktop session.
+        /// </summary>
+        public static string RemoteDesktopPower_Description {
+            get {
+                return ResourceManager.GetString("RemoteDesktopPower.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When on Remote Desktop.
+        /// </summary>
+        public static string RemoteDesktopPower_Header {
+            get {
+                return ResourceManager.GetString("RemoteDesktopPower.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Report Bug.
+        /// </summary>
+        public static string ReportBug_Header {
+            get {
+                return ResourceManager.GetString("ReportBug.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Report a problem with the software.
+        /// </summary>
+        public static string ReportBugPage_Content {
+            get {
+                return ResourceManager.GetString("ReportBugPage.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reasons.
+        /// </summary>
+        public static string ReportWallpaper_Header {
+            get {
+                return ResourceManager.GetString("ReportWallpaper.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copyright violation.
+        /// </summary>
+        public static string ReportWallpaperCopyright_Content {
+            get {
+                return ResourceManager.GetString("ReportWallpaperCopyright.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Misleading information.
+        /// </summary>
+        public static string ReportWallpaperMisleading_Content {
+            get {
+                return ResourceManager.GetString("ReportWallpaperMisleading.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Other.
+        /// </summary>
+        public static string ReportWallpaperOther_Content {
+            get {
+                return ResourceManager.GetString("ReportWallpaperOther.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Spam.
+        /// </summary>
+        public static string ReportWallpaperSpam_Content {
+            get {
+                return ResourceManager.GetString("ReportWallpaperSpam.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nudity or violence.
+        /// </summary>
+        public static string ReportWallpaperViolence_Content {
+            get {
+                return ResourceManager.GetString("ReportWallpaperViolence.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to We found these wallpapers in your account.
+        /// </summary>
+        public static string RestoreWallpaper_Text {
+            get {
+                return ResourceManager.GetString("RestoreWallpaper.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to How screensaver is applied to connected to display devices.
+        /// </summary>
+        public static string Screensaver_Description {
+            get {
+                return ResourceManager.GetString("Screensaver.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type of screensaver.
+        /// </summary>
+        public static string Screensaver_Header {
+            get {
+                return ResourceManager.GetString("Screensaver.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Configured separately.
+        /// </summary>
+        public static string ScreensaverModeDifferentWallpaper_Content {
+            get {
+                return ResourceManager.GetString("ScreensaverModeDifferentWallpaper.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Same as running wallpaper.
+        /// </summary>
+        public static string ScreensaverModeSameWallpaper_Content {
+            get {
+                return ResourceManager.GetString("ScreensaverModeSameWallpaper.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Plugin required.
+        /// </summary>
+        public static string ScreensaverPlugin_Title {
+            get {
+                return ResourceManager.GetString("ScreensaverPlugin.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to One time setup is required to run screensaver.
+        /// </summary>
+        public static string ScreensaverPluginMessage_Text {
+            get {
+                return ResourceManager.GetString("ScreensaverPluginMessage.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send.
+        /// </summary>
+        public static string Send_Content {
+            get {
+                return ResourceManager.GetString("Send.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set as Wallpaper.
+        /// </summary>
+        public static string SetWallpaper_Text {
+            get {
+                return ResourceManager.GetString("SetWallpaper.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open file location.
+        /// </summary>
+        public static string ShowOnDisk_Text {
+            get {
+                return ResourceManager.GetString("ShowOnDisk.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Source Code.
+        /// </summary>
+        public static string SourceCode_Header {
+            get {
+                return ResourceManager.GetString("SourceCode.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Website.
+        /// </summary>
+        public static string SourceWebsite_Text {
+            get {
+                return ResourceManager.GetString("SourceWebsite.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lively needs to run in the background for wallpaper playback.
+        /// </summary>
+        public static string Startup_Description {
+            get {
+                return ResourceManager.GetString("Startup.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start with Windows.
+        /// </summary>
+        public static string Startup_Header {
+            get {
+                return ResourceManager.GetString("Startup.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Store.
+        /// </summary>
+        public static string Store_Header {
+            get {
+                return ResourceManager.GetString("Store.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you enjoy using Lively? Leave a review :).
+        /// </summary>
+        public static string StoreReview_Content {
+            get {
+                return ResourceManager.GetString("StoreReview.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If supported video stream link is detected use the video player instead of loading the webpage.
+        /// </summary>
+        public static string StreamWallpaperDetect_Description {
+            get {
+                return ResourceManager.GetString("StreamWallpaperDetect.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Detect streams.
+        /// </summary>
+        public static string StreamWallpaperDetect_Header {
+            get {
+                return ResourceManager.GetString("StreamWallpaperDetect.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select the desired video quality for online streams.
+        /// </summary>
+        public static string StreamWallpaperVideoQuality_Description {
+            get {
+                return ResourceManager.GetString("StreamWallpaperVideoQuality.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stream.
+        /// </summary>
+        public static string StreamWallpaperVideoQuality_Header {
+            get {
+                return ResourceManager.GetString("StreamWallpaperVideoQuality.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to System.
+        /// </summary>
+        public static string System_Header {
+            get {
+                return ResourceManager.GetString("System.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change system taskbar appearance.
+        /// </summary>
+        public static string TaskbarTheme_Description {
+            get {
+                return ResourceManager.GetString("TaskbarTheme.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Taskbar Theme.
+        /// </summary>
+        public static string TaskbarTheme_Header {
+            get {
+                return ResourceManager.GetString("TaskbarTheme.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Blur.
+        /// </summary>
+        public static string TaskbarThemeBlur_Content {
+            get {
+                return ResourceManager.GetString("TaskbarThemeBlur.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clear.
+        /// </summary>
+        public static string TaskbarThemeClear_Content {
+            get {
+                return ResourceManager.GetString("TaskbarThemeClear.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Color.
+        /// </summary>
+        public static string TaskbarThemeColor_Content {
+            get {
+                return ResourceManager.GetString("TaskbarThemeColor.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fluent.
+        /// </summary>
+        public static string TaskbarThemeFluent_Content {
+            get {
+                return ResourceManager.GetString("TaskbarThemeFluent.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wallpaper.
+        /// </summary>
+        public static string TaskbarThemeWallpaper_Content {
+            get {
+                return ResourceManager.GetString("TaskbarThemeWallpaper.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wallpaper Fluent.
+        /// </summary>
+        public static string TaskbarThemeWallpaperFluent_Content {
+            get {
+                return ResourceManager.GetString("TaskbarThemeWallpaperFluent.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add.
         /// </summary>
         public static string TextAdd {
@@ -404,38 +1628,20 @@ namespace Lively.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Additional notes.
+        /// </summary>
+        public static string TextAdditionalNotes_Text {
+            get {
+                return ResourceManager.GetString("TextAdditionalNotes.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to All Files.
         /// </summary>
         public static string TextAllFiles {
             get {
                 return ResourceManager.GetString("TextAllFiles", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Application.
-        /// </summary>
-        public static string TextApplication {
-            get {
-                return ResourceManager.GetString("TextApplication", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Attribution.
-        /// </summary>
-        public static string TextAttribution {
-            get {
-                return ResourceManager.GetString("TextAttribution", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Author.
-        /// </summary>
-        public static string TextAuthor {
-            get {
-                return ResourceManager.GetString("TextAuthor", resourceCulture);
             }
         }
         
@@ -454,15 +1660,6 @@ namespace Lively.Properties {
         public static string TextBrowse {
             get {
                 return ResourceManager.GetString("TextBrowse", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cancel.
-        /// </summary>
-        public static string TextCancel {
-            get {
-                return ResourceManager.GetString("TextCancel", resourceCulture);
             }
         }
         
@@ -503,11 +1700,20 @@ namespace Lively.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Click here to manage wallpapers..
+        ///   Looks up a localized string similar to Do you want to cancel it?.
         /// </summary>
-        public static string TextControlPanelOpen {
+        public static string TextConfirmCancel_Text {
             get {
-                return ResourceManager.GetString("TextControlPanelOpen", resourceCulture);
+                return ResourceManager.GetString("TextConfirmCancel.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contributors.
+        /// </summary>
+        public static string TextContributors_Text {
+            get {
+                return ResourceManager.GetString("TextContributors.Text", resourceCulture);
             }
         }
         
@@ -530,56 +1736,11 @@ namespace Lively.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Customise.
-        /// </summary>
-        public static string TextCustomise {
-            get {
-                return ResourceManager.GetString("TextCustomise", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Customise Wallpaper.
         /// </summary>
         public static string TextCustomiseWallpaper {
             get {
                 return ResourceManager.GetString("TextCustomiseWallpaper", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Delete.
-        /// </summary>
-        public static string TextDeleteWallpaper {
-            get {
-                return ResourceManager.GetString("TextDeleteWallpaper", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Description.
-        /// </summary>
-        public static string TextDescription {
-            get {
-                return ResourceManager.GetString("TextDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to All Screen.
-        /// </summary>
-        public static string TextDisplayPauseRuleAllScreen {
-            get {
-                return ResourceManager.GetString("TextDisplayPauseRuleAllScreen", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Per Screen.
-        /// </summary>
-        public static string TextDisplayPauseRulePerScreen {
-            get {
-                return ResourceManager.GetString("TextDisplayPauseRulePerScreen", resourceCulture);
             }
         }
         
@@ -593,11 +1754,11 @@ namespace Lively.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Edit.
+        ///   Looks up a localized string similar to Download now.
         /// </summary>
-        public static string TextEditWallpaper {
+        public static string TextDownloadNow_Content {
             get {
-                return ResourceManager.GetString("TextEditWallpaper", resourceCulture);
+                return ResourceManager.GetString("TextDownloadNow.Content", resourceCulture);
             }
         }
         
@@ -620,16 +1781,7 @@ namespace Lively.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Export lively .zip.
-        /// </summary>
-        public static string TextExportWallpaperZip {
-            get {
-                return ResourceManager.GetString("TextExportWallpaperZip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Some features are not available in this version of Lively..
+        ///   Looks up a localized string similar to Some features are not available in this version of Lively.
         /// </summary>
         public static string TextFeatureMissing {
             get {
@@ -652,15 +1804,6 @@ namespace Lively.Properties {
         public static string TextGIF {
             get {
                 return ResourceManager.GetString("TextGIF", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Show some love by dropping a star.
-        /// </summary>
-        public static string TextGitHubStar {
-            get {
-                return ResourceManager.GetString("TextGitHubStar", resourceCulture);
             }
         }
         
@@ -703,9 +1846,9 @@ namespace Lively.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Keyboard.
         /// </summary>
-        public static string TextKeyboard {
+        public static string TextKeyboard_Content {
             get {
-                return ResourceManager.GetString("TextKeyboard", resourceCulture);
+                return ResourceManager.GetString("TextKeyboard.Content", resourceCulture);
             }
         }
         
@@ -728,11 +1871,11 @@ namespace Lively.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to License.
+        ///   Looks up a localized string similar to Maybe later.
         /// </summary>
-        public static string TextLicense {
+        public static string TextMaybeLater_Content {
             get {
-                return ResourceManager.GetString("TextLicense", resourceCulture);
+                return ResourceManager.GetString("TextMaybeLater.Content", resourceCulture);
             }
         }
         
@@ -766,18 +1909,9 @@ namespace Lively.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Mouse.
         /// </summary>
-        public static string TextMouse {
+        public static string TextMouse_Content {
             get {
-                return ResourceManager.GetString("TextMouse", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Mouse interaction when application focused.
-        /// </summary>
-        public static string TextMouseInteractOnDesktop {
-            get {
-                return ResourceManager.GetString("TextMouseInteractOnDesktop", resourceCulture);
+                return ResourceManager.GetString("TextMouse.Content", resourceCulture);
             }
         }
         
@@ -800,11 +1934,11 @@ namespace Lively.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to OFF.
+        ///   Looks up a localized string similar to Off.
         /// </summary>
-        public static string TextOff {
+        public static string TextOff_Content {
             get {
-                return ResourceManager.GetString("TextOff", resourceCulture);
+                return ResourceManager.GetString("TextOff.Content", resourceCulture);
             }
         }
         
@@ -818,11 +1952,11 @@ namespace Lively.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ON.
+        ///   Looks up a localized string similar to On.
         /// </summary>
-        public static string TextOn {
+        public static string TextOn_Content {
             get {
-                return ResourceManager.GetString("TextOn", resourceCulture);
+                return ResourceManager.GetString("TextOn.Content", resourceCulture);
             }
         }
         
@@ -836,38 +1970,20 @@ namespace Lively.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Open.
+        /// </summary>
+        public static string TextOpen_Content {
+            get {
+                return ResourceManager.GetString("TextOpen.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Open Lively.
         /// </summary>
         public static string TextOpenLively {
             get {
                 return ResourceManager.GetString("TextOpenLively", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to All Process.
-        /// </summary>
-        public static string TextPauseAlgoAllProcess {
-            get {
-                return ResourceManager.GetString("TextPauseAlgoAllProcess", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Direct3D.
-        /// </summary>
-        public static string TextPauseAlgoExclusiveMode {
-            get {
-                return ResourceManager.GetString("TextPauseAlgoExclusiveMode", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Foreground Process.
-        /// </summary>
-        public static string TextPauseAlgoForegroundProcess {
-            get {
-                return ResourceManager.GetString("TextPauseAlgoForegroundProcess", resourceCulture);
             }
         }
         
@@ -883,27 +1999,27 @@ namespace Lively.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Kill.
         /// </summary>
-        public static string TextPerformanceKill {
+        public static string TextPerformanceKill_Content {
             get {
-                return ResourceManager.GetString("TextPerformanceKill", resourceCulture);
+                return ResourceManager.GetString("TextPerformanceKill.Content", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Nothing.
         /// </summary>
-        public static string TextPerformanceNone {
+        public static string TextPerformanceNone_Content {
             get {
-                return ResourceManager.GetString("TextPerformanceNone", resourceCulture);
+                return ResourceManager.GetString("TextPerformanceNone.Content", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Pause.
         /// </summary>
-        public static string TextPerformancePause {
+        public static string TextPerformancePause_Content {
             get {
-                return ResourceManager.GetString("TextPerformancePause", resourceCulture);
+                return ResourceManager.GetString("TextPerformancePause.Content", resourceCulture);
             }
         }
         
@@ -913,24 +2029,6 @@ namespace Lively.Properties {
         public static string TextPicture {
             get {
                 return ResourceManager.GetString("TextPicture", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Preview.
-        /// </summary>
-        public static string TextPreviewWallpaper {
-            get {
-                return ResourceManager.GetString("TextPreviewWallpaper", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Privacy Policy.
-        /// </summary>
-        public static string TextPrivacyPolicy {
-            get {
-                return ResourceManager.GetString("TextPrivacyPolicy", resourceCulture);
             }
         }
         
@@ -953,11 +2051,29 @@ namespace Lively.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Report.
+        /// </summary>
+        public static string TextReportWallpaper_Text {
+            get {
+                return ResourceManager.GetString("TextReportWallpaper.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Rule.
         /// </summary>
         public static string TextRule {
             get {
                 return ResourceManager.GetString("TextRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string TextSave_Content {
+            get {
+                return ResourceManager.GetString("TextSave.Content", resourceCulture);
             }
         }
         
@@ -980,29 +2096,29 @@ namespace Lively.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Set as Wallpaper.
+        ///   Looks up a localized string similar to Select all.
         /// </summary>
-        public static string TextSetWallpaper {
+        public static string TextSelectAll_Content {
             get {
-                return ResourceManager.GetString("TextSetWallpaper", resourceCulture);
+                return ResourceManager.GetString("TextSelectAll.Content", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Open File Location.
+        ///   Looks up a localized string similar to Select none.
         /// </summary>
-        public static string TextShowOnDisk {
+        public static string TextSelectNone_Content {
             get {
-                return ResourceManager.GetString("TextShowOnDisk", resourceCulture);
+                return ResourceManager.GetString("TextSelectNone.Content", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Source.
+        ///   Looks up a localized string similar to Share.
         /// </summary>
-        public static string TextSource {
+        public static string TextShare_Text {
             get {
-                return ResourceManager.GetString("TextSource", resourceCulture);
+                return ResourceManager.GetString("TextShare.Text", resourceCulture);
             }
         }
         
@@ -1025,20 +2141,11 @@ namespace Lively.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Do you enjoy using Lively? Leave a review :).
-        /// </summary>
-        public static string TextStoreReview {
-            get {
-                return ResourceManager.GetString("TextStoreReview", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Support.
         /// </summary>
-        public static string TextSupport {
+        public static string TextSupport_Content {
             get {
-                return ResourceManager.GetString("TextSupport", resourceCulture);
+                return ResourceManager.GetString("TextSupport.Content", resourceCulture);
             }
         }
         
@@ -1070,60 +2177,6 @@ namespace Lively.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Blur.
-        /// </summary>
-        public static string TextTaskbarThemeBlur {
-            get {
-                return ResourceManager.GetString("TextTaskbarThemeBlur", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Clear.
-        /// </summary>
-        public static string TextTaskbarThemeClear {
-            get {
-                return ResourceManager.GetString("TextTaskbarThemeClear", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Color.
-        /// </summary>
-        public static string TextTaskbarThemeColor {
-            get {
-                return ResourceManager.GetString("TextTaskbarThemeColor", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Fluent.
-        /// </summary>
-        public static string TextTaskbarThemeFluent {
-            get {
-                return ResourceManager.GetString("TextTaskbarThemeFluent", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Wallpaper.
-        /// </summary>
-        public static string TextTaskbarThemeWallpaper {
-            get {
-                return ResourceManager.GetString("TextTaskbarThemeWallpaper", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Wallpaper Fluent.
-        /// </summary>
-        public static string TextTaskbarThemeWallpaperFluent {
-            get {
-                return ResourceManager.GetString("TextTaskbarThemeWallpaperFluent", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Large.
         /// </summary>
         public static string TextTileSizeLarge {
@@ -1147,15 +2200,6 @@ namespace Lively.Properties {
         public static string TextTileSizeSmall {
             get {
                 return ResourceManager.GetString("TextTileSizeSmall", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Title.
-        /// </summary>
-        public static string TextTitle {
-            get {
-                return ResourceManager.GetString("TextTitle", resourceCulture);
             }
         }
         
@@ -1250,92 +2294,20 @@ namespace Lively.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Wait.
+        /// </summary>
+        public static string TextWait_Text {
+            get {
+                return ResourceManager.GetString("TextWait.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter optional commandline arguments.
         /// </summary>
         public static string TextWallpaperCommandlineArgs {
             get {
                 return ResourceManager.GetString("TextWallpaperCommandlineArgs", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Fill.
-        /// </summary>
-        public static string TextWallpaperFitFill {
-            get {
-                return ResourceManager.GetString("TextWallpaperFitFill", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to None.
-        /// </summary>
-        public static string TextWallpaperFitNone {
-            get {
-                return ResourceManager.GetString("TextWallpaperFitNone", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Uniform.
-        /// </summary>
-        public static string TextWallpaperFitUniform {
-            get {
-                return ResourceManager.GetString("TextWallpaperFitUniform", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Uniform Fill.
-        /// </summary>
-        public static string TextWallpaperFitUniformToFill {
-            get {
-                return ResourceManager.GetString("TextWallpaperFitUniformToFill", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Duplicate same wallpaper.
-        /// </summary>
-        public static string TextWallpaperLayoutDuplicate {
-            get {
-                return ResourceManager.GetString("TextWallpaperLayoutDuplicate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Selected screen only.
-        /// </summary>
-        public static string TextWallpaperLayoutPerScreen {
-            get {
-                return ResourceManager.GetString("TextWallpaperLayoutPerScreen", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Span across screens.
-        /// </summary>
-        public static string TextWallpaperLayoutSpan {
-            get {
-                return ResourceManager.GetString("TextWallpaperLayoutSpan", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Type.
-        /// </summary>
-        public static string TextWallpaperType {
-            get {
-                return ResourceManager.GetString("TextWallpaperType", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Website.
-        /// </summary>
-        public static string TextWebsite {
-            get {
-                return ResourceManager.GetString("TextWebsite", resourceCulture);
             }
         }
         
@@ -1367,60 +2339,6 @@ namespace Lively.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Video Player.
-        /// </summary>
-        public static string TileVideoPlayer {
-            get {
-                return ResourceManager.GetString("TileVideoPlayer", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Set all supported file types as wallpaper..
-        /// </summary>
-        public static string TipAddWallpaperFileBrowse {
-            get {
-                return ResourceManager.GetString("TipAddWallpaperFileBrowse", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Set the web page of the URL you entered as wallpaper..
-        /// </summary>
-        public static string TipAddWallpaperURL {
-            get {
-                return ResourceManager.GetString("TipAddWallpaperURL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Set what to do when any application is in focus..
-        /// </summary>
-        public static string TipAppFocus {
-            get {
-                return ResourceManager.GetString("TipAppFocus", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Set what to do when fullscreen games/applications are running..
-        /// </summary>
-        public static string TipAppFullScreen {
-            get {
-                return ResourceManager.GetString("TipAppFullScreen", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Set different wallpaper playback rules based on running application..
-        /// </summary>
-        public static string TipAppRules {
-            get {
-                return ResourceManager.GetString("TipAppRules", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Lively adapts to system theme settings, to change appearance goto.
         /// </summary>
         public static string TipAppTheme {
@@ -1430,98 +2348,7 @@ namespace Lively.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Volume level of all wallpapers..
-        /// </summary>
-        public static string TipAudioMaster {
-            get {
-                return ResourceManager.GetString("TipAudioMaster", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Change playback when AC power is disconnected..
-        /// </summary>
-        public static string TipBatteryPower {
-            get {
-                return ResourceManager.GetString("TipBatteryPower", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Enter the port for debugging webpage wallpapers, browser restart is required for changes to take effect.
-        ///When ready navigate to http://localhost:portnumber to access developer console..
-        /// </summary>
-        public static string TipBrowserDebuggingPort {
-            get {
-                return ResourceManager.GetString("TipBrowserDebuggingPort", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Show developer menu..
-        /// </summary>
-        public static string TipDebug {
-            get {
-                return ResourceManager.GetString("TipDebug", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Set a picture of animated wallpaper as desktop wallpaper..
-        /// </summary>
-        public static string TipDesktopPicture {
-            get {
-                return ResourceManager.GetString("TipDesktopPicture", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Choose whether to pause wallpaper on all screens or only the relevant screen in which application is focused/fullscreen..
-        /// </summary>
-        public static string TipDisplayPauseRule {
-            get {
-                return ResourceManager.GetString("TipDisplayPauseRule", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Create log report file..
-        /// </summary>
-        public static string TipExportLogs {
-            get {
-                return ResourceManager.GetString("TipExportLogs", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Select the player used for gif wallpaper..
-        /// </summary>
-        public static string TipGifPlayer {
-            get {
-                return ResourceManager.GetString("TipGifPlayer", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to System-tray icon visibility, lively will continue to run with the icon hidden..
-        /// </summary>
-        public static string TipHideSysTray {
-            get {
-                return ResourceManager.GetString("TipHideSysTray", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Lively will restart to apply the new language..
-        /// </summary>
-        public static string TipLanguage {
-            get {
-                return ResourceManager.GetString("TipLanguage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Finish the setup to continue..
+        ///   Looks up a localized string similar to Finish the setup to continue.
         /// </summary>
         public static string TipLivelySetupOnClose {
             get {
@@ -1530,43 +2357,7 @@ namespace Lively.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Set a picture of animated wallpaper as lockscreen wallpaper..
-        /// </summary>
-        public static string TipLockscreenPicture {
-            get {
-                return ResourceManager.GetString("TipLockscreenPicture", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Wallpaper pause algorithm..
-        /// </summary>
-        public static string TipPauseAlgorithm {
-            get {
-                return ResourceManager.GetString("TipPauseAlgorithm", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Change playback when Windows Power Saving Mode is enabled..
-        /// </summary>
-        public static string TipPowerSavingModePower {
-            get {
-                return ResourceManager.GetString("TipPowerSavingModePower", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Change playback when running a Remote Desktop session..
-        /// </summary>
-        public static string TipRemoteDesktopPower {
-            get {
-                return ResourceManager.GetString("TipRemoteDesktopPower", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to After the selected inactivity period use the current wallpaper as your screensaver..
+        ///   Looks up a localized string similar to After the inactivity period use the current wallpaper as your screensaver.
         /// </summary>
         public static string TipScreensaver {
             get {
@@ -1575,25 +2366,7 @@ namespace Lively.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If supported video stream link is detected use the video player instead of loading the webpage..
-        /// </summary>
-        public static string TipStreamWallpaperDetect {
-            get {
-                return ResourceManager.GetString("TipStreamWallpaperDetect", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Select the desired video quality for online streams..
-        /// </summary>
-        public static string TipStreamWallpaperVideoQuality {
-            get {
-                return ResourceManager.GetString("TipStreamWallpaperVideoQuality", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Change software release from beta to stable or vice versa..
+        ///   Looks up a localized string similar to Change software release from beta to stable or vice versa.
         /// </summary>
         public static string TipSwitchSoftwareBranch {
             get {
@@ -1602,16 +2375,7 @@ namespace Lively.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Change system taskbar appearance..
-        /// </summary>
-        public static string TipTaskbarTheme {
-            get {
-                return ResourceManager.GetString("TipTaskbarTheme", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Size of the wallpaper tiles in Library..
+        ///   Looks up a localized string similar to Size of the wallpaper tiles in Library.
         /// </summary>
         public static string TipTileSize {
             get {
@@ -1620,7 +2384,7 @@ namespace Lively.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to For low-end systems select Lite mode..
+        ///   Looks up a localized string similar to For low-end systems select Lite mode.
         /// </summary>
         public static string TipUIMode {
             get {
@@ -1629,61 +2393,7 @@ namespace Lively.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use hardware acceleration when possible..
-        /// </summary>
-        public static string TipVideoHardwareDecode {
-            get {
-                return ResourceManager.GetString("TipVideoHardwareDecode", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Select the player used for video wallpaper..
-        /// </summary>
-        public static string TipVideoPlayer {
-            get {
-                return ResourceManager.GetString("TipVideoPlayer", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Path used to store wallpaper files..
-        /// </summary>
-        public static string TipWallpaperDir {
-            get {
-                return ResourceManager.GetString("TipWallpaperDir", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Wallpaper scaling algorithm..
-        /// </summary>
-        public static string TipWallpaperFit {
-            get {
-                return ResourceManager.GetString("TipWallpaperFit", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Select ways to interact with wallpaper..
-        /// </summary>
-        public static string TipWallpaperInput {
-            get {
-                return ResourceManager.GetString("TipWallpaperInput", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to How wallpaper is applied to connected display devices..
-        /// </summary>
-        public static string TipWallpaperLayout {
-            get {
-                return ResourceManager.GetString("TipWallpaperLayout", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Pause wallpaper playback when desktop is not focused..
+        ///   Looks up a localized string similar to Pause wallpaper playback when desktop is not focused.
         /// </summary>
         public static string TipWallpaperPlayback {
             get {
@@ -1692,66 +2402,11 @@ namespace Lively.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Store temporary files on disk instead of memory, settings gets restored when browser is restarted..
+        ///   Looks up a localized string similar to Title.
         /// </summary>
-        public static string TipWebBrowserDiskCache {
+        public static string Title_Text {
             get {
-                return ResourceManager.GetString("TipWebBrowserDiskCache", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to CEF(Chromium Embedded Framework) is a lightweight chromium engine.
-        ///Edge is the built in webview of windows 10..
-        /// </summary>
-        public static string TipWebBrowserEngine {
-            get {
-                return ResourceManager.GetString("TipWebBrowserEngine", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Lively needs to run in the background for wallpaper playback..
-        /// </summary>
-        public static string TipWindowsStartup {
-            get {
-                return ResourceManager.GetString("TipWindowsStartup", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to About.
-        /// </summary>
-        public static string TitleAbout {
-            get {
-                return ResourceManager.GetString("TitleAbout", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Add Wallpaper.
-        /// </summary>
-        public static string TitleAddWallpaper {
-            get {
-                return ResourceManager.GetString("TitleAddWallpaper", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Applications Focused.
-        /// </summary>
-        public static string TitleAppFocus {
-            get {
-                return ResourceManager.GetString("TitleAppFocus", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Applications Fullscreen.
-        /// </summary>
-        public static string TitleAppFullScreen {
-            get {
-                return ResourceManager.GetString("TitleAppFullScreen", resourceCulture);
+                return ResourceManager.GetString("Title.Text", resourceCulture);
             }
         }
         
@@ -1765,65 +2420,11 @@ namespace Lively.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Application Rules.
-        /// </summary>
-        public static string TitleAppRules {
-            get {
-                return ResourceManager.GetString("TitleAppRules", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Theme.
-        /// </summary>
-        public static string TitleAppTheme {
-            get {
-                return ResourceManager.GetString("TitleAppTheme", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Audio.
-        /// </summary>
-        public static string TitleAudio {
-            get {
-                return ResourceManager.GetString("TitleAudio", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Play audio only when desktop is focused.
-        /// </summary>
-        public static string TitleAudioDesktopOnly {
-            get {
-                return ResourceManager.GetString("TitleAudioDesktopOnly", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Master Volume.
-        /// </summary>
-        public static string TitleAudioMaster {
-            get {
-                return ResourceManager.GetString("TitleAudioMaster", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Play audio on screen.
         /// </summary>
         public static string TitleAudioPlayOnScreen {
             get {
                 return ResourceManager.GetString("TitleAudioPlayOnScreen", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to When on Battery Power.
-        /// </summary>
-        public static string TitleBatteryPower {
-            get {
-                return ResourceManager.GetString("TitleBatteryPower", resourceCulture);
             }
         }
         
@@ -1837,38 +2438,11 @@ namespace Lively.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Debugging Port.
-        /// </summary>
-        public static string TitleBrowserDebuggingPort {
-            get {
-                return ResourceManager.GetString("TitleBrowserDebuggingPort", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Changelog.
         /// </summary>
         public static string TitleChangelog {
             get {
                 return ResourceManager.GetString("TitleChangelog", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Community.
-        /// </summary>
-        public static string TitleCommunity {
-            get {
-                return ResourceManager.GetString("TitleCommunity", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Debug.
-        /// </summary>
-        public static string TitleDebug {
-            get {
-                return ResourceManager.GetString("TitleDebug", resourceCulture);
             }
         }
         
@@ -1882,47 +2456,20 @@ namespace Lively.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Desktop Picture.
+        ///   Looks up a localized string similar to Download in Progress.
         /// </summary>
-        public static string TitleDesktopPicture {
+        public static string TitleDownloadProgress_Text {
             get {
-                return ResourceManager.GetString("TitleDesktopPicture", resourceCulture);
+                return ResourceManager.GetString("TitleDownloadProgress.Text", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Display Pause Rule.
+        ///   Looks up a localized string similar to Gallery.
         /// </summary>
-        public static string TitleDisplayPauseRule {
+        public static string TitleGallery {
             get {
-                return ResourceManager.GetString("TitleDisplayPauseRule", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Documentation.
-        /// </summary>
-        public static string TitleDocumentation {
-            get {
-                return ResourceManager.GetString("TitleDocumentation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Enter URL.
-        /// </summary>
-        public static string TitleEnterUrl {
-            get {
-                return ResourceManager.GetString("TitleEnterUrl", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Log File.
-        /// </summary>
-        public static string TitleExportLogs {
-            get {
-                return ResourceManager.GetString("TitleExportLogs", resourceCulture);
+                return ResourceManager.GetString("TitleGallery", resourceCulture);
             }
         }
         
@@ -1936,47 +2483,11 @@ namespace Lively.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Gif Player.
-        /// </summary>
-        public static string TitleGifPlayer {
-            get {
-                return ResourceManager.GetString("TitleGifPlayer", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Help.
-        /// </summary>
-        public static string TitleHelp {
-            get {
-                return ResourceManager.GetString("TitleHelp", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to System-tray Icon.
-        /// </summary>
-        public static string TitleHideSysTray {
-            get {
-                return ResourceManager.GetString("TitleHideSysTray", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Interaction.
         /// </summary>
         public static string TitleInteraction {
             get {
                 return ResourceManager.GetString("TitleInteraction", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Language.
-        /// </summary>
-        public static string TitleLanguage {
-            get {
-                return ResourceManager.GetString("TitleLanguage", resourceCulture);
             }
         }
         
@@ -2008,15 +2519,6 @@ namespace Lively.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lockscreen Picture.
-        /// </summary>
-        public static string TitleLockscreenPicture {
-            get {
-                return ResourceManager.GetString("TitleLockscreenPicture", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Misc.
         /// </summary>
         public static string TitleMisc {
@@ -2031,15 +2533,6 @@ namespace Lively.Properties {
         public static string TitleMute {
             get {
                 return ResourceManager.GetString("TitleMute", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Pause Algorithm.
-        /// </summary>
-        public static string TitlePauseAlgo {
-            get {
-                return ResourceManager.GetString("TitlePauseAlgo", resourceCulture);
             }
         }
         
@@ -2062,38 +2555,11 @@ namespace Lively.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please Wait.
+        ///   Looks up a localized string similar to Report Wallpaper.
         /// </summary>
-        public static string TitlePleaseWait {
+        public static string TitleReportWallpaper_Text {
             get {
-                return ResourceManager.GetString("TitlePleaseWait", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to When on Battery Saver.
-        /// </summary>
-        public static string TitlePowerSavingModePower {
-            get {
-                return ResourceManager.GetString("TitlePowerSavingModePower", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to When on Remote Desktop.
-        /// </summary>
-        public static string TitleRemoteDesktopPower {
-            get {
-                return ResourceManager.GetString("TitleRemoteDesktopPower", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Report Bug.
-        /// </summary>
-        public static string TitleReportBug {
-            get {
-                return ResourceManager.GetString("TitleReportBug", resourceCulture);
+                return ResourceManager.GetString("TitleReportWallpaper.Text", resourceCulture);
             }
         }
         
@@ -2103,15 +2569,6 @@ namespace Lively.Properties {
         public static string TitleScalingFit {
             get {
                 return ResourceManager.GetString("TitleScalingFit", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Control Panel.
-        /// </summary>
-        public static string TitleScreenLayout {
-            get {
-                return ResourceManager.GetString("TitleScreenLayout", resourceCulture);
             }
         }
         
@@ -2152,6 +2609,15 @@ namespace Lively.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Share Wallpaper.
+        /// </summary>
+        public static string TitleShareWallpaper_Text {
+            get {
+                return ResourceManager.GetString("TitleShareWallpaper.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Skip Confirmation.
         /// </summary>
         public static string TitleSkipConfirm {
@@ -2161,65 +2627,11 @@ namespace Lively.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Source Code.
-        /// </summary>
-        public static string TitleSourceCode {
-            get {
-                return ResourceManager.GetString("TitleSourceCode", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Store.
-        /// </summary>
-        public static string TitleStore {
-            get {
-                return ResourceManager.GetString("TitleStore", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Stream.
-        /// </summary>
-        public static string TitleStreamWallpaper {
-            get {
-                return ResourceManager.GetString("TitleStreamWallpaper", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Detect Streams.
-        /// </summary>
-        public static string TitleStreamWallpaperDetect {
-            get {
-                return ResourceManager.GetString("TitleStreamWallpaperDetect", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Video Quality.
+        ///   Looks up a localized string similar to Video quality.
         /// </summary>
         public static string TitleStreamWallpaperVideoQuality {
             get {
                 return ResourceManager.GetString("TitleStreamWallpaperVideoQuality", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to System.
-        /// </summary>
-        public static string TitleSystem {
-            get {
-                return ResourceManager.GetString("TitleSystem", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Taskbar Theme.
-        /// </summary>
-        public static string TitleTaskbarTheme {
-            get {
-                return ResourceManager.GetString("TitleTaskbarTheme", resourceCulture);
             }
         }
         
@@ -2260,15 +2672,6 @@ namespace Lively.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to GPU Decode.
-        /// </summary>
-        public static string TitleVideoHardwareDecode {
-            get {
-                return ResourceManager.GetString("TitleVideoHardwareDecode", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Wallpaper.
         /// </summary>
         public static string TitleWallpaper {
@@ -2278,83 +2681,11 @@ namespace Lively.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Wallpaper Directory.
-        /// </summary>
-        public static string TitleWallpaperDir {
-            get {
-                return ResourceManager.GetString("TitleWallpaperDir", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Move existing wallpapers to new folder.
-        /// </summary>
-        public static string TitleWallpaperDirMoveExisting {
-            get {
-                return ResourceManager.GetString("TitleWallpaperDirMoveExisting", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Choose a fit.
-        /// </summary>
-        public static string TitleWallpaperFit {
-            get {
-                return ResourceManager.GetString("TitleWallpaperFit", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Wallpaper Input.
-        /// </summary>
-        public static string TitleWallpaperInput {
-            get {
-                return ResourceManager.GetString("TitleWallpaperInput", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Placement Method.
-        /// </summary>
-        public static string TitleWallpaperLayout {
-            get {
-                return ResourceManager.GetString("TitleWallpaperLayout", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Wallpaper Playback.
-        /// </summary>
-        public static string TitleWallpaperPlayback {
-            get {
-                return ResourceManager.GetString("TitleWallpaperPlayback", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Warning.
         /// </summary>
         public static string TitleWarning {
             get {
                 return ResourceManager.GetString("TitleWarning", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Web Browser.
-        /// </summary>
-        public static string TitleWebBrowser {
-            get {
-                return ResourceManager.GetString("TitleWebBrowser", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Disk cache.
-        /// </summary>
-        public static string TitleWebBrowserDiskCache {
-            get {
-                return ResourceManager.GetString("TitleWebBrowserDiskCache", resourceCulture);
             }
         }
         
@@ -2377,11 +2708,326 @@ namespace Lively.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Start with Windows.
+        ///   Looks up a localized string similar to Welcome back!.
         /// </summary>
-        public static string TitleWindowsStartup {
+        public static string TitleWelcomeback_Text {
             get {
-                return ResourceManager.GetString("TitleWindowsStartup", resourceCulture);
+                return ResourceManager.GetString("TitleWelcomeback.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User interface effects and animations.
+        /// </summary>
+        public static string UIMode_Description {
+            get {
+                return ResourceManager.GetString("UIMode.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User interface.
+        /// </summary>
+        public static string UIMode_Header {
+            get {
+                return ResourceManager.GetString("UIMode.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lite.
+        /// </summary>
+        public static string UIModeLite_Content {
+            get {
+                return ResourceManager.GetString("UIModeLite.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Normal.
+        /// </summary>
+        public static string UIModeNormal_Content {
+            get {
+                return ResourceManager.GetString("UIModeNormal.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use hardware acceleration when possible.
+        /// </summary>
+        public static string VideoHardwareDecode_Description {
+            get {
+                return ResourceManager.GetString("VideoHardwareDecode.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GPU decode.
+        /// </summary>
+        public static string VideoHardwareDecode_Header {
+            get {
+                return ResourceManager.GetString("VideoHardwareDecode.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select the player used for video wallpaper.
+        /// </summary>
+        public static string VideoPlayer_Description {
+            get {
+                return ResourceManager.GetString("VideoPlayer.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Video player.
+        /// </summary>
+        public static string VideoPlayer_Header {
+            get {
+                return ResourceManager.GetString("VideoPlayer.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Path used to store wallpaper files.
+        /// </summary>
+        public static string WallpaperDir_Description {
+            get {
+                return ResourceManager.GetString("WallpaperDir.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wallpaper Directory.
+        /// </summary>
+        public static string WallpaperDir_Header {
+            get {
+                return ResourceManager.GetString("WallpaperDir.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File.
+        /// </summary>
+        public static string WallpaperDirGroup_Header {
+            get {
+                return ResourceManager.GetString("WallpaperDirGroup.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Move existing wallpapers to new folder.
+        /// </summary>
+        public static string WallpaperDirMoveExisting_Content {
+            get {
+                return ResourceManager.GetString("WallpaperDirMoveExisting.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wallpaper scaling algorithm.
+        /// </summary>
+        public static string WallpaperFit_Description {
+            get {
+                return ResourceManager.GetString("WallpaperFit.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose a fit.
+        /// </summary>
+        public static string WallpaperFit_Header {
+            get {
+                return ResourceManager.GetString("WallpaperFit.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fill.
+        /// </summary>
+        public static string WallpaperFitFill_Content {
+            get {
+                return ResourceManager.GetString("WallpaperFitFill.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to None.
+        /// </summary>
+        public static string WallpaperFitNone_Content {
+            get {
+                return ResourceManager.GetString("WallpaperFitNone.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uniform.
+        /// </summary>
+        public static string WallpaperFitUniform_Content {
+            get {
+                return ResourceManager.GetString("WallpaperFitUniform.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uniform Fill.
+        /// </summary>
+        public static string WallpaperFitUniformToFill_Content {
+            get {
+                return ResourceManager.GetString("WallpaperFitUniformToFill.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select ways to interact with wallpaper.
+        /// </summary>
+        public static string WallpaperInput_Description {
+            get {
+                return ResourceManager.GetString("WallpaperInput.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wallpaper input.
+        /// </summary>
+        public static string WallpaperInput_Header {
+            get {
+                return ResourceManager.GetString("WallpaperInput.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to How wallpaper is applied to connected display devices.
+        /// </summary>
+        public static string WallpaperLayout_Description {
+            get {
+                return ResourceManager.GetString("WallpaperLayout.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Placement Method.
+        /// </summary>
+        public static string WallpaperLayout_Header {
+            get {
+                return ResourceManager.GetString("WallpaperLayout.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Duplicate same wallpaper.
+        /// </summary>
+        public static string WallpaperLayoutDuplicate_Content {
+            get {
+                return ResourceManager.GetString("WallpaperLayoutDuplicate.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selected screen only.
+        /// </summary>
+        public static string WallpaperLayoutPerScreen_Content {
+            get {
+                return ResourceManager.GetString("WallpaperLayoutPerScreen.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Always pick screen when choosing wallpaper.
+        /// </summary>
+        public static string WallpaperLayoutScreenPicker_Content {
+            get {
+                return ResourceManager.GetString("WallpaperLayoutScreenPicker.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Span across screens.
+        /// </summary>
+        public static string WallpaperLayoutSpan_Content {
+            get {
+                return ResourceManager.GetString("WallpaperLayoutSpan.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wallpaper playback.
+        /// </summary>
+        public static string WallpaperPlaybackGroup_Header {
+            get {
+                return ResourceManager.GetString("WallpaperPlaybackGroup.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Source.
+        /// </summary>
+        public static string WallpaperSource_Text {
+            get {
+                return ResourceManager.GetString("WallpaperSource.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type.
+        /// </summary>
+        public static string WallpaperType_Text {
+            get {
+                return ResourceManager.GetString("WallpaperType.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select the player used for html wallpaper.
+        /// </summary>
+        public static string WebBrowser_Description {
+            get {
+                return ResourceManager.GetString("WebBrowser.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Web browser.
+        /// </summary>
+        public static string WebBrowser_Header {
+            get {
+                return ResourceManager.GetString("WebBrowser.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Store temporary files on disk instead of memory.
+        /// </summary>
+        public static string WebBrowserDiskCache_Description {
+            get {
+                return ResourceManager.GetString("WebBrowserDiskCache.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disk cache.
+        /// </summary>
+        public static string WebBrowserDiskCache_Header {
+            get {
+                return ResourceManager.GetString("WebBrowserDiskCache.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Website.
+        /// </summary>
+        public static string Website_Header {
+            get {
+                return ResourceManager.GetString("Website.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Windows color settings.
+        /// </summary>
+        public static string WindowsSettingsColor_Content {
+            get {
+                return ResourceManager.GetString("WindowsSettingsColor.Content", resourceCulture);
             }
         }
     }

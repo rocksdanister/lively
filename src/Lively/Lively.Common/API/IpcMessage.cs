@@ -158,8 +158,8 @@ namespace Lively.Common.API
     [Serializable]
     public class LivelySystemNowPlaying : IpcMessage
     {
-        public NowPlayingEventArgs Info { get; set; }
-        public LivelySystemNowPlaying() : base(MessageType.cmd_reload)
+        public NowPlayingModel Info { get; set; }
+        public LivelySystemNowPlaying() : base(MessageType.lsp_nowplaying)
         {
         }
     }

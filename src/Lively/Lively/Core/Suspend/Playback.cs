@@ -39,7 +39,9 @@ namespace Lively.Core.Suspend
             //systray notifyicon expanded popup
             "NotifyIconOverflowWindow",
             //rainmeter widgets
-            "RainmeterMeterWindow"
+            "RainmeterMeterWindow",
+            //Coodesker, ref: https://github.com/rocksdanister/lively/issues/760
+            "_cls_desk_"
         };
         private IntPtr workerWOrig, progman;
         private PlaybackState _wallpaperPlayback;
@@ -195,7 +197,7 @@ namespace Lively.Core.Suspend
                         ForegroundAppMonitor();
                         break;
                     case ProcessMonitorAlgorithm.all:
-                        //todo
+                        ForegroundAppMonitor(); //fallback
                         break;
                     case ProcessMonitorAlgorithm.gamemode:
                         GameModeAppMonitor();

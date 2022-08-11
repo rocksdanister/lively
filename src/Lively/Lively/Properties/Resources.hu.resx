@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -117,7 +117,46 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="DescriptionAddWallpaper" xml:space="preserve">
+  <data name="AudioFocused.Content" xml:space="preserve">
+    <value>Play audio only when desktop is focused</value>
+  </data>
+  <data name="Audio.Description" xml:space="preserve">
+    <value>Hangerő szint minden egyes háttérképnek.</value>
+  </data>
+  <data name="Audio.Header" xml:space="preserve">
+    <value>Fő hangerő</value>
+  </data>
+  <data name="AudioGroup.Header" xml:space="preserve">
+    <value>Audió</value>
+  </data>
+  <data name="CommunityPage.Content" xml:space="preserve">
+    <value>Online discussion forum</value>
+  </data>
+  <data name="DocumentationPage.Content" xml:space="preserve">
+    <value>API documentation and help</value>
+  </data>
+  <data name="DescExplorerCrash" xml:space="preserve">
+    <value>Lively has encountered a fatal error.
+
+Windows Explorer restarted twice in the last 30 seconds! This may be a conflict between Lively and other desktop customization software or Windows. To avoid further issues, all wallpapers are terminated.</value>
+  </data>
+  <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
+    <value>Incompatible program found, taskbar theming disabled.</value>
+  </data>
+  <data name="OfficialWebpage.Content" xml:space="preserve">
+    <value>Official webpage of Lively Wallpaper</value>
+  </data>
+  <data name="DescOledScreensaverNotice" xml:space="preserve">
+    <value>Most modern LCD and LED displays do not suffer from burn-in issue and therefore any wallpaper can be used as screensaver.
+
+For OLED, Plasma or CRT displays which are susceptibe to burn-in it is advised to use wallpaper with regular motion and an overall dark theme which is supposed to mitigate burn-in but this feature is untested and its effectiveness cannot be guaranteed.
+
+The main purpose of Lively's screensavers is to add another layer of customization to your pc, use screensavers as burn-in protection at your own risk!</value>
+  </data>
+  <data name="ReportBugPage.Content" xml:space="preserve">
+    <value>Report a problem with the software</value>
+  </data>
+  <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
     <value>Válassz ki egy egy fáljt vagy egy weboldal linket hogy beállíthasd háttérképnek.</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
@@ -129,7 +168,10 @@
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
     <value>Biztos véglegesen törölni akarod a háttérképet a lemezről?</value>
   </data>
-  <data name="DescriptionDragDropFIle" xml:space="preserve">
+  <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
+    <value>Biztos vagy abban hogy ki szeretnéd törölni ezt a háttérképet a könyvtárból?</value>
+  </data>
+  <data name="DragDropFile.Text" xml:space="preserve">
     <value>Egyszerűen húzz és dobj fájlokat a könyvtárba.</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
@@ -137,14 +179,23 @@
 Rosszindulatú alkalmazások hordozhatnak káros szoftvert, vírust.. és kárt okozhatnak a rendszerben.
 Csak akkor folytasd, ha ez az alkalmazás egy megbízható forrásból származik.</value>
   </data>
-  <data name="DescriptionMinimizedTray" xml:space="preserve">
+  <data name="MinimizedTray.Text" xml:space="preserve">
     <value>A Lively minimalizálva lett a talcára, jobb klikkelj a lively ikonra a folytatáshoz.</value>
+  </data>
+  <data name="DescriptionPleaseRestartLively" xml:space="preserve">
+    <value>Kérlek indítsd újra a programot hogy a beállítások müködésbe lépjenek.</value>
+  </data>
+  <data name="DescriptionPleaseStop" xml:space="preserve">
+    <value>Please stop before proceeding.</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
     <value>Nyomd meg az Indítást a felvételhez.</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
     <value>Az előző hátter(ek) visszaállítása, kérem várjon...</value>
+  </data>
+  <data name="DescriptionScreenLayout" xml:space="preserve">
+    <value>Válassz képernyőt</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
     <value>Egy új verziója elérhető a programnak!</value>
@@ -154,6 +205,28 @@ Csak akkor folytasd, ha ez az alkalmazás egy megbízható forrásból származi
   </data>
   <data name="DescriptionWelcomeWizard" xml:space="preserve">
     <value>Ez a varázsló segít elkezdeni a Lively felépítését.</value>
+  </data>
+  <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
+    <value>Your Windows N/KN version will require the download of additional codecs to support video playback in wallpapers.</value>
+  </data>
+  <data name="DescSupperDev" xml:space="preserve">
+    <value>Show support by buying the developer coffee</value>
+  </data>
+  <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
+    <value>You are about to change to beta (developer) build of Lively.
+Updates will be frequent and may contain bugs!</value>
+  </data>
+  <data name="HideSysTray.Description" xml:space="preserve">
+    <value>System-tray icon visibility, lively will continue to run with the icon hidden</value>
+  </data>
+  <data name="HideSysTray.Header" xml:space="preserve">
+    <value>Tálca Ikon</value>
+  </data>
+  <data name="Language.Description" xml:space="preserve">
+    <value>A Lively újra fog indulni, hogy alkalmazza az új nyelvet.</value>
+  </data>
+  <data name="Language.Header" xml:space="preserve">
+    <value>Nyelv</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
     <value>Frissítési hiba; próbáld meg letölteni a telepítőt innen: https://github.com/rocksdanister/lively/releases</value>
@@ -171,6 +244,11 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>A Lively nem tud megfelelően működni, ha a Windows Kontrasztos megjelenítés be van kapcsolva.
 Kérem, kapcsolja ki a Lively megfelelő működéséhez.</value>
   </data>
+  <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
+    <value>Média lejátszás nem sikerült :(Próbáld meg megváltoztatni a videó lejátszót a beállításokban.Annak érdekében hogy jobban megértsd a hibát és javítsd meg a problémát, oszd meg a napló fáljt a fejlesztővel.
+Utasítások a naplófálj megosztására:
+https://github.com/rocksdanister/lively/wiki</value>
+  </data>
   <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
     <value>Nem Lively háttérkép fájl.</value>
   </data>
@@ -187,20 +265,29 @@ Szeretnéd visszaállítani az előzőleg futó háttérképeket?</value>
 5. A Teljesítmény fül alatt kattints a Beállításokra
 6. Engedélyezd az Ablakokon belüli vezérlők és elemek animálását és nyomj az Alkalmazra.
 
-Ha a Windows 7 épphogy csak be lett állítva - Igazítsd a legjobb megjelenéshez &amp;amp; Alkalmaz.
-Ha még mindig nem működik, zárd be &amp;amp; indítsd el a Livelyt újra/ indítsd újra a Windowst.
+Ha a Windows 7 épphogy csak be lett állítva - Igazítsd a legjobb megjelenéshez &amp; Alkalmaz.
+Ha még mindig nem működik, zárd be &amp; indítsd el a Livelyt újra/ indítsd újra a Windowst.
 (Nem működik néhány bennfentes Windows felépítésnél.)</value>
+  </data>
+  <data name="Startup.Description" xml:space="preserve">
+    <value>A Livelynek futnia kell a háttérben a háttérkép lejátszásához.</value>
+  </data>
+  <data name="Startup.Header" xml:space="preserve">
+    <value>Indítás Windowssal</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
     <value>Hozzáadás</value>
   </data>
-  <data name="TextApplication" xml:space="preserve">
+  <data name="TextAllFiles" xml:space="preserve">
+    <value>Minden fálj</value>
+  </data>
+  <data name="Application.Header" xml:space="preserve">
     <value>Alkalmazás</value>
   </data>
-  <data name="TextAttribution" xml:space="preserve">
+  <data name="Attribution.Header" xml:space="preserve">
     <value>Tulajdonság</value>
   </data>
-  <data name="TextAuthor" xml:space="preserve">
+  <data name="Author.Text" xml:space="preserve">
     <value>Szerző</value>
   </data>
   <data name="TextBack" xml:space="preserve">
@@ -209,29 +296,53 @@ Ha még mindig nem működik, zárd be &amp;amp; indítsd el a Livelyt újra/ in
   <data name="TextBrowse" xml:space="preserve">
     <value>Keres</value>
   </data>
-  <data name="TextCloseWallpapers" xml:space="preserve">
+  <data name="Cancel.Content" xml:space="preserve">
+    <value>Mégse</value>
+  </data>
+  <data name="TextChangeWallpaper" xml:space="preserve">
+    <value>Change Wallpapers</value>
+  </data>
+  <data name="TextClose" xml:space="preserve">
+    <value>Bezár</value>
+  </data>
+  <data name="CloseWallpapers.Label" xml:space="preserve">
     <value>Háttérkép</value>
   </data>
   <data name="TextCompleted" xml:space="preserve">
     <value>Teljesítve!</value>
   </data>
+  <data name="ControlPanel.Subtitle" xml:space="preserve">
+    <value>Kattints ide hogy kezeld a háttérképeket.</value>
+  </data>
   <data name="TextConvertVideo" xml:space="preserve">
     <value>Videóvá konvertálás</value>
   </data>
-  <data name="TextCustomiseWallpaper" xml:space="preserve">
+  <data name="TextCreatePreview" xml:space="preserve">
+    <value>Előnézet készítése</value>
+  </data>
+  <data name="Customise.Text" xml:space="preserve">
+    <value>Testreszab</value>
+  </data>
+  <data name="CustomiseWallpaper.Label" xml:space="preserve">
     <value>Háttérkép testreszabása</value>
   </data>
-  <data name="TextDeleteWallpaper" xml:space="preserve">
+  <data name="DeleteWallpaper.Text" xml:space="preserve">
     <value>Háttérkép törlése</value>
   </data>
-  <data name="TextDisplayPauseRuleAllScreen" xml:space="preserve">
+  <data name="Description.Text" xml:space="preserve">
+    <value>Leírás</value>
+  </data>
+  <data name="DisplayPauseRuleAllScreen.Content" xml:space="preserve">
     <value>Összes Képernyő</value>
   </data>
-  <data name="TextDisplayPauseRulePerScreen" xml:space="preserve">
+  <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>Képernyőnként</value>
   </data>
   <data name="TextDownload" xml:space="preserve">
     <value>Letöltés</value>
+  </data>
+  <data name="EditWallpaper.Text" xml:space="preserve">
+    <value>Edit</value>
   </data>
   <data name="TextError" xml:space="preserve">
     <value>Hiba</value>
@@ -239,11 +350,20 @@ Ha még mindig nem működik, zárd be &amp;amp; indítsd el a Livelyt újra/ in
   <data name="TextExit" xml:space="preserve">
     <value>Kilépés</value>
   </data>
-  <data name="TextExportWallpaperZip" xml:space="preserve">
+  <data name="ExportWallpaperZip.Text" xml:space="preserve">
     <value>Lively .zip exportálása</value>
+  </data>
+  <data name="TextFeatureMissing" xml:space="preserve">
+    <value>Néhány funkciók nem elérhető ebben a verzióban.</value>
+  </data>
+  <data name="TextFileNotFound" xml:space="preserve">
+    <value>Fálj nem található</value>
   </data>
   <data name="TextGIF" xml:space="preserve">
     <value>Animált GIF</value>
+  </data>
+  <data name="GitHubStar.Content" xml:space="preserve">
+    <value>Show some love by dropping a star</value>
   </data>
   <data name="TextGo" xml:space="preserve">
     <value>GO</value>
@@ -251,8 +371,26 @@ Ha még mindig nem működik, zárd be &amp;amp; indítsd el a Livelyt újra/ in
   <data name="TextHelpTranslate" xml:space="preserve">
     <value>Segíts a lefordításban</value>
   </data>
+  <data name="TextHours" xml:space="preserve">
+    <value>hours</value>
+  </data>
   <data name="TextInstall" xml:space="preserve">
     <value>Telepítés</value>
+  </data>
+  <data name="TextKeyboard.Content" xml:space="preserve">
+    <value>Billentyűzet</value>
+  </data>
+  <data name="TextLastChecked" xml:space="preserve">
+    <value>Last checked</value>
+  </data>
+  <data name="TextLearnMore" xml:space="preserve">
+    <value>Learn more</value>
+  </data>
+  <data name="License.Header" xml:space="preserve">
+    <value>License</value>
+  </data>
+  <data name="TextMinutes" xml:space="preserve">
+    <value>minutes</value>
   </data>
   <data name="TextmoreInfo" xml:space="preserve">
     <value>Információ</value>
@@ -260,7 +398,10 @@ Ha még mindig nem működik, zárd be &amp;amp; indítsd el a Livelyt újra/ in
   <data name="TextMoreWallpapers" xml:space="preserve">
     <value>Több háttérkép</value>
   </data>
-  <data name="TextMouseInteractOnDesktop" xml:space="preserve">
+  <data name="TextMouse.Content" xml:space="preserve">
+    <value>Egér</value>
+  </data>
+  <data name="MouseInteractOnDesktop.Content" xml:space="preserve">
     <value>Egér Interakció, ha egy alkalmazás fókuszban van.</value>
   </data>
   <data name="TextNext" xml:space="preserve">
@@ -269,29 +410,53 @@ Ha még mindig nem működik, zárd be &amp;amp; indítsd el a Livelyt újra/ in
   <data name="TextNo" xml:space="preserve">
     <value>Nem</value>
   </data>
+  <data name="TextOff.Content" xml:space="preserve">
+    <value>OFF</value>
+  </data>
+  <data name="TextOK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="TextOn.Content" xml:space="preserve">
+    <value>ON</value>
+  </data>
   <data name="TextOnline" xml:space="preserve">
     <value>Online</value>
   </data>
   <data name="TextOpenLively" xml:space="preserve">
     <value>Lively indítása</value>
   </data>
-  <data name="TextPauseAlgoAllProcess" xml:space="preserve">
+  <data name="PauseAlgorithmTypeAllProcess.Content" xml:space="preserve">
     <value>Összes Folyamat</value>
   </data>
-  <data name="TextPauseAlgoForegroundProcess" xml:space="preserve">
+  <data name="PauseAlgorithmTypeExclusiveMode.Content" xml:space="preserve">
+    <value>Direct3D</value>
+  </data>
+  <data name="PauseAlgorithmTypeForegroundProcess.Content" xml:space="preserve">
     <value>Előtérbeli Folyamat</value>
   </data>
   <data name="TextPauseWallpapers" xml:space="preserve">
     <value>Háttérképek megállítása</value>
   </data>
-  <data name="TextPerformanceKill" xml:space="preserve">
+  <data name="TextPerformanceKill.Content" xml:space="preserve">
     <value>Megölés</value>
   </data>
-  <data name="TextPerformanceNone" xml:space="preserve">
+  <data name="TextPerformanceNone.Content" xml:space="preserve">
     <value>Semmi</value>
   </data>
-  <data name="TextPerformancePause" xml:space="preserve">
+  <data name="TextPerformancePause.Content" xml:space="preserve">
     <value>Megállítás</value>
+  </data>
+  <data name="TextPicture" xml:space="preserve">
+    <value>Kép</value>
+  </data>
+  <data name="PreviewWallpaper.Text" xml:space="preserve">
+    <value>Háttérkép előnézete</value>
+  </data>
+  <data name="PrivacyPolicy.Header" xml:space="preserve">
+    <value>Privacy Policy</value>
+  </data>
+  <data name="TextProcessingWallpaper" xml:space="preserve">
+    <value>Folyamatban</value>
   </data>
   <data name="TextRemove" xml:space="preserve">
     <value>Eltávolítás</value>
@@ -305,13 +470,13 @@ Ha még mindig nem működik, zárd be &amp;amp; indítsd el a Livelyt újra/ in
   <data name="TextSearch" xml:space="preserve">
     <value>Keresés</value>
   </data>
-  <data name="TextSetWallpaper" xml:space="preserve">
+  <data name="SetWallpaper.Text" xml:space="preserve">
     <value>Beállítás Háttérképnek</value>
   </data>
-  <data name="TextShowOnDisk" xml:space="preserve">
+  <data name="ShowOnDisk.Text" xml:space="preserve">
     <value>Mutasd a Lemezen</value>
   </data>
-  <data name="TextSource" xml:space="preserve">
+  <data name="WallpaperSource.Text" xml:space="preserve">
     <value>Forrás</value>
   </data>
   <data name="TextStart" xml:space="preserve">
@@ -320,8 +485,38 @@ Ha még mindig nem működik, zárd be &amp;amp; indítsd el a Livelyt újra/ in
   <data name="TextStop" xml:space="preserve">
     <value>Megállítás</value>
   </data>
+  <data name="StoreReview.Content" xml:space="preserve">
+    <value>Élvezed használni Lively-t? Hadj véleményt :)</value>
+  </data>
+  <data name="TextSupport.Content" xml:space="preserve">
+    <value>Támogatás</value>
+  </data>
+  <data name="TextSwitchBranchDev" xml:space="preserve">
+    <value>Switch to beta (Dev channel)</value>
+  </data>
+  <data name="TextSwitchBranchOfficial" xml:space="preserve">
+    <value>Switch to stable (Default channel)</value>
+  </data>
   <data name="TextTags" xml:space="preserve">
     <value>Címkék</value>
+  </data>
+  <data name="TaskbarThemeBlur.Content" xml:space="preserve">
+    <value>Blur</value>
+  </data>
+  <data name="TaskbarThemeClear.Content" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="TaskbarThemeColor.Content" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="TaskbarThemeFluent.Content" xml:space="preserve">
+    <value>Fluent</value>
+  </data>
+  <data name="TaskbarThemeWallpaper.Content" xml:space="preserve">
+    <value>Wallpaper</value>
+  </data>
+  <data name="TaskbarThemeWallpaperFluent.Content" xml:space="preserve">
+    <value>Wallpaper Fluent</value>
   </data>
   <data name="TextTileSizeLarge" xml:space="preserve">
     <value>Nagy</value>
@@ -332,6 +527,9 @@ Ha még mindig nem működik, zárd be &amp;amp; indítsd el a Livelyt újra/ in
   <data name="TextTileSizeSmall" xml:space="preserve">
     <value>Kicsi</value>
   </data>
+  <data name="Title.Text" xml:space="preserve">
+    <value>Cím</value>
+  </data>
   <data name="TextUIHeadless" xml:space="preserve">
     <value>Fejetlen</value>
   </data>
@@ -340,6 +538,9 @@ Ha még mindig nem működik, zárd be &amp;amp; indítsd el a Livelyt újra/ in
   </data>
   <data name="TextUINormal" xml:space="preserve">
     <value>Normál</value>
+  </data>
+  <data name="TextUnsupportedFile" xml:space="preserve">
+    <value>Fálj tipus nem támogatott</value>
   </data>
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>Frissítés elérhető!</value>
@@ -359,16 +560,34 @@ Ha még mindig nem működik, zárd be &amp;amp; indítsd el a Livelyt újra/ in
   <data name="TextVideo" xml:space="preserve">
     <value>Videó</value>
   </data>
-  <data name="TextWallpaperLayoutDuplicate" xml:space="preserve">
+  <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
+    <value>Enter optional commandline arguments</value>
+  </data>
+  <data name="WallpaperFitFill.Content" xml:space="preserve">
+    <value>Kitölt</value>
+  </data>
+  <data name="WallpaperFitNone.Content" xml:space="preserve">
+    <value>Semmi</value>
+  </data>
+  <data name="WallpaperFitUniform.Content" xml:space="preserve">
+    <value>Uniform</value>
+  </data>
+  <data name="WallpaperFitUniformToFill.Content" xml:space="preserve">
+    <value>Uniform Fill</value>
+  </data>
+  <data name="WallpaperLayoutDuplicate.Content" xml:space="preserve">
     <value>Azonos háttérkép duplikálása</value>
   </data>
-  <data name="TextWallpaperLayoutSpan" xml:space="preserve">
+  <data name="WallpaperLayoutPerScreen.Content" xml:space="preserve">
+    <value>Kiválaszott képernyő kizárólag</value>
+  </data>
+  <data name="WallpaperLayoutSpan.Content" xml:space="preserve">
     <value>Képernyő átfogása</value>
   </data>
-  <data name="TextWallpaperType" xml:space="preserve">
+  <data name="WallpaperType.Text" xml:space="preserve">
     <value>Típus</value>
   </data>
-  <data name="TextWebsite" xml:space="preserve">
+  <data name="Website.Header" xml:space="preserve">
     <value>Weboldal</value>
   </data>
   <data name="TextWebStream" xml:space="preserve">
@@ -380,56 +599,80 @@ Ha még mindig nem működik, zárd be &amp;amp; indítsd el a Livelyt újra/ in
   <data name="TextYes" xml:space="preserve">
     <value>Igen</value>
   </data>
-  <data name="TileVideoPlayer" xml:space="preserve">
+  <data name="VideoPlayer.Header" xml:space="preserve">
     <value>Videó lejátszó</value>
   </data>
-  <data name="TipAddWallpaperFileBrowse" xml:space="preserve">
+  <data name="AddWallpaperFileBrowse.Description" xml:space="preserve">
     <value>Állíts be minden támogatott file tipust háttérképként.</value>
   </data>
-  <data name="TipAddWallpaperURL" xml:space="preserve">
+  <data name="EnterUrl.Description" xml:space="preserve">
     <value>Állítsd be a megadott linket háttérképként.</value>
   </data>
-  <data name="TipAppFocus" xml:space="preserve">
+  <data name="AppFocus.Description" xml:space="preserve">
     <value>Állítsd be mi legyen, ha egy alkalmazás fókuszban van.</value>
   </data>
-  <data name="TipAppFullScreen" xml:space="preserve">
+  <data name="AppFullScreen.Description" xml:space="preserve">
     <value>Állítsd be mi legyen, ha teljes képernyős játékok/alkalmazások futnak.</value>
   </data>
-  <data name="TipAppRules" xml:space="preserve">
+  <data name="AppRules.Description" xml:space="preserve">
     <value>Állíts be különböző háttérkép lejátszási szabályokat a futó alkalmazásokon alapulva.</value>
   </data>
   <data name="TipAppTheme" xml:space="preserve">
     <value>A Lively a rendszer téma beállításához igazítja magát, hogy megváltoztassa a megjelenést.</value>
   </data>
-  <data name="TipBatteryPower" xml:space="preserve">
+  <data name="BatteryPower.Description" xml:space="preserve">
     <value>(Csak az akkumulátor működő rendszereknél) Változtasd meg a lejátszást, ha az AC tápkábel nincs csatlakoztatva.</value>
   </data>
-  <data name="TipBrowserDebuggingPort" xml:space="preserve">
+  <data name="BrowserDebuggingPort.Description" xml:space="preserve">
     <value>Írd be a portot a weboldal háttérképek hibakereséséhez, kereső újraindítás szükséges a változások eléréséhez.
 A kész vagy menj a http://localhost:portnumber hogy hozzáférj a fejlesztői konzolhoz.</value>
   </data>
-  <data name="TipDisplayPauseRule" xml:space="preserve">
+  <data name="Debug.Description" xml:space="preserve">
+    <value>Fejlesztői menü mutatása</value>
+  </data>
+  <data name="DesktopPicture.Description" xml:space="preserve">
+    <value>Set a picture of animated wallpaper as desktop wallpaper.</value>
+  </data>
+  <data name="DisplayPauseRule.Description" xml:space="preserve">
     <value>Egyik: Szüneteltesd a háttérképet csak azon a képernyőn, amelyen az alkalmazás fókuszban/teljes képernyőben van.
 Összes: Szüneteltesd a háttérképet az összes képernyő(kö)n, ha egy alkalmazás fókuszban/teljes képernyőben van.</value>
   </data>
-  <data name="TipHideSysTray" xml:space="preserve">
-    <value>Tálca ikon láthatóság, a lively továbbra is futni fog, ha az ikon el van rejtve.</value>
+  <data name="ExportLogs.Description" xml:space="preserve">
+    <value>Create log report file.</value>
   </data>
-  <data name="TipLanguage" xml:space="preserve">
-    <value>A Lively újra fog indulni, hogy alkalmazza az új nyelvet.</value>
+  <data name="GifPlayer.Description" xml:space="preserve">
+    <value>Válassz ki egy lejátszót a gif háttérképnek.</value>
   </data>
   <data name="TipLivelySetupOnClose" xml:space="preserve">
     <value>Fejezd be a felépítést a folytatáshoz.</value>
   </data>
-  <data name="TipPauseAlgorithm" xml:space="preserve">
+  <data name="LockscreenPicture.Description" xml:space="preserve">
+    <value>Set a picture of animated wallpaper as lockscreen wallpaper.</value>
+  </data>
+  <data name="PauseAlgorithm.Description" xml:space="preserve">
     <value>Előtér: Könnyű, csak egy folyamatot vizsgál át, ami előtérben van, hogy meghatározza a háttérkép lejátszás viselkedését.
 Összes folyamat: Nehezebb, az összes folyamatot beszkenneli, hogy meghatározza a lejátszás viselkedését.</value>
   </data>
-  <data name="TipStreamWallpaperDetect" xml:space="preserve">
+  <data name="PowerSavingModePower.Description" xml:space="preserve">
+    <value>Change playback when Windows Power Saving Mode is enabled</value>
+  </data>
+  <data name="RemoteDesktopPower.Description" xml:space="preserve">
+    <value>Change playback when running a Remote Desktop session</value>
+  </data>
+  <data name="TipScreensaver" xml:space="preserve">
+    <value>After the selected inactivity period use the current wallpaper as your screensaver.</value>
+  </data>
+  <data name="StreamWallpaperDetect.Description" xml:space="preserve">
     <value>Ha egy támogatott videó élő adás link elérhető, használd a videó lejátszót, ahelyett, hogy betöltenél egy weboldalt.</value>
   </data>
-  <data name="TipStreamWallpaperVideoQuality" xml:space="preserve">
+  <data name="StreamWallpaperVideoQuality.Description" xml:space="preserve">
     <value>Válaszd ki a kívánt videó minőséget csak az élő adásokhoz.</value>
+  </data>
+  <data name="TipSwitchSoftwareBranch" xml:space="preserve">
+    <value>Change software release from beta to stable or vice versa.</value>
+  </data>
+  <data name="TaskbarTheme.Description" xml:space="preserve">
+    <value>Change system taskbar appearance.</value>
   </data>
   <data name="TipTileSize" xml:space="preserve">
     <value>A háttérkép csempék mérete a Könyvtárban.</value>
@@ -437,87 +680,105 @@ A kész vagy menj a http://localhost:portnumber hogy hozzáférj a fejlesztői k
   <data name="TipUIMode" xml:space="preserve">
     <value>Az alsó kategóriás rendszerekhez válaszd az Egyszerű módot.</value>
   </data>
-  <data name="TipVideoPlayer" xml:space="preserve">
+  <data name="VideoHardwareDecode.Description" xml:space="preserve">
+    <value>Use hardware acceleration when possible.</value>
+  </data>
+  <data name="VideoPlayer.Description" xml:space="preserve">
     <value>Válaszd ki a lejátszót, amit videó háttérhez szoktál használni.</value>
   </data>
-  <data name="TipWallpaperDir" xml:space="preserve">
+  <data name="WallpaperDir.Description" xml:space="preserve">
     <value>Az Path (fájl elérési útja) a háttérkép fájlok tárolására van használva.</value>
   </data>
-  <data name="TipWallpaperInput" xml:space="preserve">
+  <data name="WallpaperFit.Description" xml:space="preserve">
+    <value>Háttérkép átméretező algoritmus.</value>
+  </data>
+  <data name="WallpaperInput.Description" xml:space="preserve">
     <value>Válaszd ki az utakat, hogy interakcióba lépj a háttérképpel.</value>
+  </data>
+  <data name="WallpaperLayout.Description" xml:space="preserve">
+    <value>Hogyan van alakalmazva a háttérkép a csatlakoztatott képernyő eszközökre.</value>
   </data>
   <data name="TipWallpaperPlayback" xml:space="preserve">
     <value>Állítsd le a háttérkép lejátszást, ha az asztal nincs fókuszban.</value>
   </data>
-  <data name="TipWebBrowserDiskCache" xml:space="preserve">
+  <data name="WebBrowserDiskCache.Description" xml:space="preserve">
     <value>Tárolj ideiglenes fájlokat a Lemezen memória helyett, a beállítások vissza lesznek állítva, ha a böngésző újraindult.</value>
   </data>
-  <data name="TipWebBrowserEngine" xml:space="preserve">
+  <data name="WebBrowser.Description" xml:space="preserve">
     <value>A CEF(Krómmal Beágyazott Szerkezet) egy könnyű króm motor.
 Az Edge a Windows 10 beépített WebView-ja (Lehetővé teszi, hogy webes tartalmakat nyisson meg egy alkalmazáson belül.)</value>
   </data>
-  <data name="TipWindowsStartup" xml:space="preserve">
-    <value>A Livelynek futnia kell a háttérben a háttérkép lejátszásához.</value>
-  </data>
-  <data name="TitleAbout" xml:space="preserve">
+  <data name="About.Label" xml:space="preserve">
     <value>Róla</value>
   </data>
-  <data name="TitleAddWallpaper" xml:space="preserve">
+  <data name="AddWallpaper.Label" xml:space="preserve">
     <value>Háttérkép Hozzáadása</value>
   </data>
-  <data name="TitleAppFocus" xml:space="preserve">
+  <data name="AppFocus.Header" xml:space="preserve">
     <value>Alkalmazások Fókuszban</value>
   </data>
-  <data name="TitleAppFullScreen" xml:space="preserve">
+  <data name="AppFullScreen.Header" xml:space="preserve">
     <value>Alkalmazások Teljes képernyőben</value>
   </data>
   <data name="TitleAppName" xml:space="preserve">
     <value>Lively Háttérkép</value>
   </data>
-  <data name="TitleAppRules" xml:space="preserve">
+  <data name="AppRules.Header" xml:space="preserve">
     <value>Alkalmazás Szabályok</value>
   </data>
-  <data name="TitleAppTheme" xml:space="preserve">
+  <data name="AppTheme.Header" xml:space="preserve">
     <value>Téma</value>
-  </data>
-  <data name="TitleAudio" xml:space="preserve">
-    <value>Audió</value>
   </data>
   <data name="TitleAudioPlayOnScreen" xml:space="preserve">
     <value>Audió lejátszása a képernyőn</value>
   </data>
-  <data name="TitleBatteryPower" xml:space="preserve">
+  <data name="BatteryPower.Header" xml:space="preserve">
     <value>Ha Akkumulátoros Áramon van</value>
   </data>
   <data name="TitleBrowseFile" xml:space="preserve">
     <value>Keresés videó, gif, weboldal... fájl után, beállítani háttérképnek.</value>
   </data>
-  <data name="TitleBrowserDebuggingPort" xml:space="preserve">
+  <data name="BrowserDebuggingPort.Header" xml:space="preserve">
     <value>Hibakeresési port</value>
+  </data>
+  <data name="TitleChangelog" xml:space="preserve">
+    <value>Changelog</value>
+  </data>
+  <data name="Community.Header" xml:space="preserve">
+    <value>Közösség</value>
+  </data>
+  <data name="Debug.Header" xml:space="preserve">
+    <value>Debug</value>
   </data>
   <data name="TitleDeleteConfirmation" xml:space="preserve">
     <value>Törlés elfogadása</value>
   </data>
-  <data name="TitleDisplayPauseRule" xml:space="preserve">
+  <data name="DesktopPicture.Header" xml:space="preserve">
+    <value>Desktop Picture</value>
+  </data>
+  <data name="DisplayPauseRule.Header" xml:space="preserve">
     <value>Szüneteltetési Előírás Megjelenítése</value>
   </data>
-  <data name="TitleEnterUrl" xml:space="preserve">
+  <data name="Documentation.Header" xml:space="preserve">
+    <value>Dokumentáció</value>
+  </data>
+  <data name="EnterUrl.Header" xml:space="preserve">
     <value>Enter URL</value>
+  </data>
+  <data name="ExportLogs.Header" xml:space="preserve">
+    <value>Log File</value>
   </data>
   <data name="TitleGeneral" xml:space="preserve">
     <value>Általános</value>
   </data>
-  <data name="TitleHelp" xml:space="preserve">
-    <value>Segítség</value>
+  <data name="GifPlayer.Header" xml:space="preserve">
+    <value>Gif lejátszó</value>
   </data>
-  <data name="TitleHideSysTray" xml:space="preserve">
-    <value>Tálca Ikon</value>
+  <data name="Help.Label" xml:space="preserve">
+    <value>Segítség</value>
   </data>
   <data name="TitleInteraction" xml:space="preserve">
     <value>Interakció</value>
-  </data>
-  <data name="TitleLanguage" xml:space="preserve">
-    <value>Nyelv</value>
   </data>
   <data name="TitleLibrary" xml:space="preserve">
     <value>Könyvtár</value>
@@ -525,13 +786,19 @@ Az Edge a Windows 10 beépített WebView-ja (Lehetővé teszi, hogy webes tartal
   <data name="TitleLivelySetup" xml:space="preserve">
     <value>Lively Felépítés</value>
   </data>
+  <data name="TitleLocation" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="LockscreenPicture.Header" xml:space="preserve">
+    <value>Lockscreen Picture</value>
+  </data>
   <data name="TitleMisc" xml:space="preserve">
     <value>Egyéb</value>
   </data>
   <data name="TitleMute" xml:space="preserve">
     <value>Némítás</value>
   </data>
-  <data name="TitlePauseAlgo" xml:space="preserve">
+  <data name="PauseAlgorithm.Header" xml:space="preserve">
     <value>Algoritmus szüneteltetése</value>
   </data>
   <data name="TitlePerformance" xml:space="preserve">
@@ -540,14 +807,29 @@ Az Edge a Windows 10 beépített WebView-ja (Lehetővé teszi, hogy webes tartal
   <data name="TitlePlaylist" xml:space="preserve">
     <value>Lejátszási lista</value>
   </data>
-  <data name="TitlePleaseWait" xml:space="preserve">
+  <data name="PleaseWait.Text" xml:space="preserve">
     <value>Kérem várjon...</value>
+  </data>
+  <data name="PowerSavingModePower.Header" xml:space="preserve">
+    <value>When on Battery Saver</value>
+  </data>
+  <data name="RemoteDesktopPower.Header" xml:space="preserve">
+    <value>When on Remote Desktop</value>
+  </data>
+  <data name="ReportBug.Header" xml:space="preserve">
+    <value>Report Bug</value>
   </data>
   <data name="TitleScalingFit" xml:space="preserve">
     <value>Arányosítás/Illesztés</value>
   </data>
-  <data name="TitleScreenLayout" xml:space="preserve">
+  <data name="ControlPanel.Title" xml:space="preserve">
     <value>Képernyő elrendezés</value>
+  </data>
+  <data name="TitleScreensaver" xml:space="preserve">
+    <value>Screensaver</value>
+  </data>
+  <data name="TitleScreensaverLockOnResume" xml:space="preserve">
+    <value>On resume, display logon screen</value>
   </data>
   <data name="TitleSelectFile" xml:space="preserve">
     <value>File kiválasztása</value>
@@ -555,14 +837,30 @@ Az Edge a Windows 10 beépített WebView-ja (Lehetővé teszi, hogy webes tartal
   <data name="TitleSettings" xml:space="preserve">
     <value>Beállítások</value>
   </data>
-  <data name="TitleStreamWallpaper" xml:space="preserve">
+  <data name="TitleSkipConfirm" xml:space="preserve">
+    <value>Skip Confirmation</value>
+  </data>
+  <data name="SourceCode.Header" xml:space="preserve">
+    <value>Source Code</value>
+  </data>
+  <data name="Store.Header" xml:space="preserve">
+    <value>Bolt</value>
+    <comment>For different version of Lively, example: Microsoft Store</comment>
+  </data>
+  <data name="StreamWallpaperVideoQuality.Header" xml:space="preserve">
     <value>Élő adás</value>
   </data>
-  <data name="TitleStreamWallpaperDetect" xml:space="preserve">
+  <data name="StreamWallpaperDetect.Header" xml:space="preserve">
     <value>Élő adások Érzékelése</value>
   </data>
   <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
     <value>Videó Minőség</value>
+  </data>
+  <data name="System.Header" xml:space="preserve">
+    <value>System</value>
+  </data>
+  <data name="TaskbarTheme.Header" xml:space="preserve">
+    <value>Taskbar Theme</value>
   </data>
   <data name="TitleTileSize" xml:space="preserve">
     <value>Csempe Méret</value>
@@ -570,31 +868,43 @@ Az Edge a Windows 10 beépített WebView-ja (Lehetővé teszi, hogy webes tartal
   <data name="TitleUIMode" xml:space="preserve">
     <value>Felhasználói Felület</value>
   </data>
+  <data name="TitleUpdates" xml:space="preserve">
+    <value>Updates</value>
+  </data>
   <data name="TitleVideo" xml:space="preserve">
     <value>Videó</value>
+  </data>
+  <data name="VideoHardwareDecode.Header" xml:space="preserve">
+    <value>GPU Decode</value>
   </data>
   <data name="TitleWallpaper" xml:space="preserve">
     <value>Háttérkép</value>
   </data>
-  <data name="TitleWallpaperDir" xml:space="preserve">
+  <data name="WallpaperDir.Header" xml:space="preserve">
     <value>Háttérkép Címtár</value>
   </data>
-  <data name="TitleWallpaperInput" xml:space="preserve">
+  <data name="WallpaperDirMoveExisting.Content" xml:space="preserve">
+    <value>Mozgass meglévő háttérképet egy új mappába</value>
+  </data>
+  <data name="WallpaperFit.Header" xml:space="preserve">
+    <value>Válassz egy illeszkedést</value>
+  </data>
+  <data name="WallpaperInput.Header" xml:space="preserve">
     <value>Bemenő Háttérkép</value>
   </data>
-  <data name="TitleWallpaperLayout" xml:space="preserve">
+  <data name="WallpaperLayout.Header" xml:space="preserve">
     <value>Háttérkép Elrendezés</value>
   </data>
-  <data name="TitleWallpaperPlayback" xml:space="preserve">
+  <data name="WallpaperPlaybackGroup.Header" xml:space="preserve">
     <value>Háttérkép Lejátszás</value>
   </data>
   <data name="TitleWarning" xml:space="preserve">
     <value>Figyelmeztetés</value>
   </data>
-  <data name="TitleWebBrowser" xml:space="preserve">
+  <data name="WebBrowser.Header" xml:space="preserve">
     <value>Web Böngésző</value>
   </data>
-  <data name="TitleWebBrowserDiskCache" xml:space="preserve">
+  <data name="WebBrowserDiskCache.Header" xml:space="preserve">
     <value>Lemez gyorsítótár</value>
   </data>
   <data name="TitleWebBrowserEngine" xml:space="preserve">
@@ -603,297 +913,220 @@ Az Edge a Windows 10 beépített WebView-ja (Lehetővé teszi, hogy webes tartal
   <data name="TitleWebpageLoad" xml:space="preserve">
     <value>Weboldal Betöltése</value>
   </data>
-  <data name="TitleWindowsStartup" xml:space="preserve">
-    <value>Indítás Windowssal</value>
+  <data name="FastUI.Description" xml:space="preserve">
+    <value>Keep User Interface running for faster startup</value>
   </data>
-  <data name="DescriptionPleaseRestartLively" xml:space="preserve">
-    <value>Kérlek indítsd újra a programot hogy a beállítások müködésbe lépjenek.</value>
+  <data name="FastUI.Header" xml:space="preserve">
+    <value>Fast startup</value>
   </data>
-  <data name="TextSupport" xml:space="preserve">
-    <value>Támogatás</value>
+  <data name="WallpaperDirGroup.Header" xml:space="preserve">
+    <value>File</value>
   </data>
-  <data name="TextClose" xml:space="preserve">
-    <value>Bezár</value>
+  <data name="AppThemeDark.Content" xml:space="preserve">
+    <value>Dark</value>
   </data>
-  <data name="TextCustomise" xml:space="preserve">
-    <value>Testreszab</value>
+  <data name="AppThemeLight.Content" xml:space="preserve">
+    <value>Light</value>
   </data>
-  <data name="DescriptionScreenLayout" xml:space="preserve">
-    <value>Válassz képernyőt</value>
-  </data>
-  <data name="TextWallpaperLayoutPerScreen" xml:space="preserve">
-    <value>Kiválaszott képernyő kizárólag</value>
-  </data>
-  <data name="TipWallpaperLayout" xml:space="preserve">
-    <value>Hogyan van alakalmazva a háttérkép a csatlakoztatott képernyő eszközökre.</value>
-  </data>
-  <data name="TitleWallpaperDirMoveExisting" xml:space="preserve">
-    <value>Mozgass meglévő háttérképet egy új mappába</value>
-  </data>
-  <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
-    <value>Média lejátszás nem sikerült :(Próbáld meg megváltoztatni a videó lejátszót a beállításokban.Annak érdekében hogy jobban megértsd a hibát és javítsd meg a problémát, oszd meg a napló fáljt a fejlesztővel.
-Utasítások a naplófálj megosztására:
-https://github.com/rocksdanister/lively/wiki</value>
-  </data>
-  <data name="TextOff" xml:space="preserve">
-    <value>OFF</value>
-  </data>
-  <data name="TextOn" xml:space="preserve">
-    <value>ON</value>
-  </data>
-  <data name="TextMouse" xml:space="preserve">
-    <value>Egér</value>
-  </data>
-  <data name="TextKeyboard" xml:space="preserve">
-    <value>Billentyűzet</value>
-  </data>
-  <data name="TitleDocumentation" xml:space="preserve">
-    <value>Dokumentáció</value>
-  </data>
-  <data name="TitleCommunity" xml:space="preserve">
-    <value>Közösség</value>
-  </data>
-  <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
-    <value>Biztos vagy abban hogy ki szeretnéd törölni ezt a háttérképet a könyvtárból?</value>
-  </data>
-  <data name="TipAudioMaster" xml:space="preserve">
-    <value>Hangerő szint minden egyes háttérképnek.</value>
-  </data>
-  <data name="TitleAudioMaster" xml:space="preserve">
-    <value>Fő hangerő</value>
-  </data>
-  <data name="TextWallpaperFitFill" xml:space="preserve">
-    <value>Kitölt</value>
-  </data>
-  <data name="TextWallpaperFitNone" xml:space="preserve">
-    <value>Semmi</value>
-  </data>
-  <data name="TextWallpaperFitUniform" xml:space="preserve">
-    <value>Uniform</value>
-  </data>
-  <data name="TextWallpaperFitUniformToFill" xml:space="preserve">
-    <value>Uniform Fill</value>
-  </data>
-  <data name="TipWallpaperFit" xml:space="preserve">
-    <value>Háttérkép átméretező algoritmus.</value>
-  </data>
-  <data name="TitleWallpaperFit" xml:space="preserve">
-    <value>Válassz egy illeszkedést</value>
-  </data>
-  <data name="TextPreviewWallpaper" xml:space="preserve">
-    <value>Háttérkép előnézete</value>
-  </data>
-  <data name="TextAllFiles" xml:space="preserve">
-    <value>Minden fálj</value>
-  </data>
-  <data name="TitleDebug" xml:space="preserve">
-    <value>Debug</value>
-  </data>
-  <data name="TipDebug" xml:space="preserve">
-    <value>Fejlesztői menü mutatása</value>
-  </data>
-  <data name="TextFileNotFound" xml:space="preserve">
-    <value>Fálj nem található</value>
-  </data>
-  <data name="TextPicture" xml:space="preserve">
-    <value>Kép</value>
-  </data>
-  <data name="TextUnsupportedFile" xml:space="preserve">
-    <value>Fálj tipus nem támogatott</value>
-  </data>
-  <data name="TextProcessingWallpaper" xml:space="preserve">
-    <value>Folyamatban</value>
-  </data>
-  <data name="TextTitle" xml:space="preserve">
-    <value>Cím</value>
-  </data>
-  <data name="TextDescription" xml:space="preserve">
-    <value>Leírás</value>
-  </data>
-  <data name="TextOK" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="TextCancel" xml:space="preserve">
-    <value>Mégse</value>
-  </data>
-  <data name="TextCreatePreview" xml:space="preserve">
-    <value>Előnézet készítése</value>
-  </data>
-  <data name="TitleGifPlayer" xml:space="preserve">
-    <value>Gif lejátszó</value>
-  </data>
-  <data name="TipGifPlayer" xml:space="preserve">
-    <value>Válassz ki egy lejátszót a gif háttérképnek.</value>
-  </data>
-  <data name="TextFeatureMissing" xml:space="preserve">
-    <value>Néhány funkciók nem elérhető ebben a verzióban.</value>
-  </data>
-  <data name="TextControlPanelOpen" xml:space="preserve">
-    <value>Kattints ide hogy kezeld a háttérképeket.</value>
-  </data>
-  <data name="TextStoreReview" xml:space="preserve">
-    <value>Élvezed használni Lively-t? Hadj véleményt :)</value>
-  </data>
-  <data name="TitleStore" xml:space="preserve">
-    <value>Bolt</value>
-    <comment>For different version of Lively, example: Microsoft Store</comment>
-  </data>
-  <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>Your Windows N/KN version will require the download of additional codecs to support video playback in wallpapers.</value>
-  </data>
-  <data name="TextLicense" xml:space="preserve">
-    <value>License</value>
-  </data>
-  <data name="TextPrivacyPolicy" xml:space="preserve">
-    <value>Privacy Policy</value>
-  </data>
-  <data name="TitleAudioDesktopOnly" xml:space="preserve">
-    <value>Play audio only when desktop is focused</value>
-  </data>
-  <data name="TipExportLogs" xml:space="preserve">
-    <value>Create log report file.</value>
-  </data>
-  <data name="TitleExportLogs" xml:space="preserve">
-    <value>Log File</value>
-  </data>
-  <data name="TitleReportBug" xml:space="preserve">
-    <value>Report Bug</value>
-  </data>
-  <data name="TitleVideoHardwareDecode" xml:space="preserve">
-    <value>GPU Decode</value>
-  </data>
-  <data name="TipVideoHardwareDecode" xml:space="preserve">
-    <value>Use hardware acceleration when possible.</value>
-  </data>
-  <data name="DescriptionPleaseStop" xml:space="preserve">
-  <value>Please stop before proceeding.</value>
-</data>
-<data name="TextEditWallpaper" xml:space="preserve">
-  <value>Edit</value>
-</data>
-<data name="TitleLocation" xml:space="preserve">
-  <value>Location</value>
-</data>
-<data name="TitleSkipConfirm" xml:space="preserve">
-  <value>Skip Confirmation</value>
-</data>
-<data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-  <value>Enter optional commandline arguments</value>
-</data>
-  <data name="TextGitHubStar" xml:space="preserve">
-    <value>Show some love by dropping a star</value>
-  </data>
-  <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
-    <value>Incompatible program found, taskbar theming disabled.</value>
-  </data>
-  <data name="TitleTaskbarTheme" xml:space="preserve">
-    <value>Taskbar Theme</value>
-  </data>
-  <data name="TitleLockscreenPicture" xml:space="preserve">
-    <value>Lockscreen Picture</value>
-  </data>
-  <data name="TitleDesktopPicture" xml:space="preserve">
-    <value>Desktop Picture</value>
-  </data>
-  <data name="TipLockscreenPicture" xml:space="preserve">
-    <value>Set a picture of animated wallpaper as lockscreen wallpaper.</value>
-  </data>
-  <data name="TipDesktopPicture" xml:space="preserve">
-    <value>Set a picture of animated wallpaper as desktop wallpaper.</value>
-  </data>
-  <data name="TipTaskbarTheme" xml:space="preserve">
-    <value>Change system taskbar appearance.</value>
-  </data>
-  <data name="TextTaskbarThemeBlur" xml:space="preserve">
-    <value>Blur</value>
-  </data>
-  <data name="TextTaskbarThemeClear" xml:space="preserve">
-    <value>Clear</value>
-  </data>
-  <data name="TextTaskbarThemeColor" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="TextTaskbarThemeFluent" xml:space="preserve">
-    <value>Fluent</value>
-  </data>
-  <data name="TextTaskbarThemeWallpaper" xml:space="preserve">
-    <value>Wallpaper</value>
-  </data>
-  <data name="TextTaskbarThemeWallpaperFluent" xml:space="preserve">
-    <value>Wallpaper Fluent</value>
-  </data>
-  <data name="TitleSystem" xml:space="preserve">
+  <data name="AppThemeSystem.Content" xml:space="preserve">
     <value>System</value>
   </data>
-  <data name="TitleSourceCode" xml:space="preserve">
-    <value>Source Code</value>
+  <data name="WindowsSettingsColor.Content" xml:space="preserve">
+    <value>Windows color settings</value>
   </data>
-    <data name="TitleScreensaver" xml:space="preserve">
-    <value>Screensaver</value>
+  <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
+    <value>Laptops</value>
   </data>
-  <data name="TipScreensaver" xml:space="preserve">
-    <value>After the selected inactivity period use the current wallpaper as your screensaver.</value>
+  <data name="DeveloperGroup.Header" xml:space="preserve">
+    <value>Developer</value>
   </data>
-    <data name="TextHours" xml:space="preserve">
-    <value>hours</value>
+  <data name="AppearanceBehaviour.Header" xml:space="preserve">
+    <value>Appearance &amp; behavior</value>
   </data>
-  <data name="TextMinutes" xml:space="preserve">
-    <value>minutes</value>
+  <data name="ActiveWallpapers.Label" xml:space="preserve">
+    <value>Active Wallpaper(s)</value>
   </data>
-  <data name="TextLearnMore" xml:space="preserve">
-    <value>Learn more</value>
+  <data name="TitleGallery" xml:space="preserve">
+    <value>Gallery</value>
   </data>
-    <data name="DescOledScreensaverNotice" xml:space="preserve">
-    <value>Most modern LCD and LED displays do not suffer from burn-in issue and therefore any wallpaper can be used as screensaver.
-
-For OLED, Plasma or CRT displays which are susceptibe to burn-in it is advised to use wallpaper with regular motion and an overall dark theme which is supposed to mitigate burn-in but this feature is untested and its effectiveness cannot be guaranteed.
-
-The main purpose of Lively's screensavers is to add another layer of customization to your pc, use screensavers as burn-in protection at your own risk!</value>
+  <data name="AboutMe.Text" xml:space="preserve">
+    <value>Hi, I'm Dani John also known as rocksdanister. I developed Lively a Free and open-source (FOSS) wallpaper application. Thanks for taking the time to look at my work.</value>
   </data>
-  <data name="TextChangeWallpaper" xml:space="preserve">
-    <value>Change Wallpapers</value>
+  <data name="LicenseLink.Content" xml:space="preserve">
+    <value>Software license</value>
   </data>
-  <data name="TextLastChecked" xml:space="preserve">
-    <value>Last checked</value>
+  <data name="AttributionLink.Content" xml:space="preserve">
+    <value>Third party software notice</value>
   </data>
-  <data name="TitleUpdates" xml:space="preserve">
-    <value>Updates</value>
+  <data name="PrivacyPolicyLink.Content" xml:space="preserve">
+    <value>Data collection policy</value>
   </data>
-  <data name="DescCommunity" xml:space="preserve">
-    <value>Online discussion forum</value>
+  <data name="AddWallpaperDrop.Text" xml:space="preserve">
+    <value>Add wallpaper</value>
   </data>
-  <data name="DescDocumentation" xml:space="preserve">
-    <value>API documentation and help</value>
+  <data name="ComingSoon.Text" xml:space="preserve">
+    <value>Coming soon</value>
   </data>
-  <data name="DescOfficialWebpage" xml:space="preserve">
-    <value>Official webpage of Lively Wallpaper</value>
+  <data name="AboutMenu.Text" xml:space="preserve">
+    <value>Róla</value>
   </data>
-  <data name="DescReportBug" xml:space="preserve">
-    <value>Report a problem with the software</value>
+  <data name="SourceWebsite.Text" xml:space="preserve">
+    <value>Weboldal</value>
   </data>
-  <data name="DescSupperDev" xml:space="preserve">
-    <value>Show support by buying the developer coffee</value>
+  <data name="TextOpen.Content" xml:space="preserve">
+    <value>Open</value>
   </data>
-  <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
-    <value>You are about to change to beta (developer) build of Lively.
-Updates will be frequent and may contain bugs!</value>
+  <data name="TextSave.Content" xml:space="preserve">
+    <value>Save</value>
   </data>
-  <data name="TextSwitchBranchDev" xml:space="preserve">
-    <value>Switch to beta (Dev channel)</value>
+  <data name="UIMode.Description" xml:space="preserve">
+    <value>User interface effects and animations</value>
   </data>
-  <data name="TextSwitchBranchOfficial" xml:space="preserve">
-    <value>Switch to stable (Default channel)</value>
+  <data name="UIMode.Header" xml:space="preserve">
+    <value>User interface</value>
   </data>
-  <data name="TipSwitchSoftwareBranch" xml:space="preserve">
-    <value>Change software release from beta to stable or vice versa.</value>
+  <data name="UIModeLite.Content" xml:space="preserve">
+    <value>Lite</value>
   </data>
-  <data name="TitleChangelog" xml:space="preserve">
-    <value>Changelog</value>
+  <data name="UIModeNormal.Content" xml:space="preserve">
+    <value>Normal</value>
   </data>
-  <data name="TextPauseAlgoExclusiveMode" xml:space="preserve">
-    <value>Direct3D</value>
+  <data name="Screensaver.Description" xml:space="preserve">
+    <value>How screensaver is applied to connected to display devices</value>
   </data>
-  <data name="TitleScreensaverLockOnResume" xml:space="preserve">
-    <value>On resume, display logon screen</value>
-  </data>    
+  <data name="Screensaver.Header" xml:space="preserve">
+    <value>Type of screensaver</value>
+  </data>
+  <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
+    <value>Configured separately</value>
+  </data>
+  <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
+    <value>Same as running wallpaper</value>
+  </data>
+  <data name="ScreensaverPlugin.Title" xml:space="preserve">
+    <value>Plugin required</value>
+  </data>
+  <data name="ScreensaverPluginMessage.Text" xml:space="preserve">
+    <value>One time setup is required to run screensaver</value>
+  </data>
+  <data name="WallpaperLayoutScreenPicker.Content" xml:space="preserve">
+    <value>Always pick screen when choosing wallpaper</value>
+  </data>
+  <data name="GalleryAccount.Text" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="GalleryAccountDelete.Content" xml:space="preserve">
+    <value>Delete account</value>
+  </data>
+  <data name="GalleryAccountExport.Content" xml:space="preserve">
+    <value>Export data</value>
+  </data>
+  <data name="GalleryAccountLogin.Content" xml:space="preserve">
+    <value>Log in</value>
+  </data>
+  <data name="GalleryAccountLogout.Content" xml:space="preserve">
+    <value>Log out</value>
+  </data>
+  <data name="GalleryPageCollection.Content" xml:space="preserve">
+    <value>Collection</value>
+  </data>
+  <data name="GalleryPageHome.Content" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="GalleryPageManage.Content" xml:space="preserve">
+    <value>Manage</value>
+  </data>
+  <data name="GalleryPageProfile.Content" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="GalleryPleaseLogin.Text" xml:space="preserve">
+    <value>Please log in to continue</value>
+  </data>
+  <data name="GalleryWelcomeMessage.Text" xml:space="preserve">
+    <value>Hi</value>
+  </data>
+  <data name="RestoreWallpaper.Text" xml:space="preserve">
+    <value>We found these wallpapers in your account</value>
+  </data>
+  <data name="TextDownloadNow.Content" xml:space="preserve">
+    <value>Download now</value>
+  </data>
+  <data name="TextMaybeLater.Content" xml:space="preserve">
+    <value>Maybe later</value>
+  </data>
+  <data name="TextSelectAll.Content" xml:space="preserve">
+    <value>Select all</value>
+  </data>
+  <data name="TextSelectNone.Content" xml:space="preserve">
+    <value>Select none</value>
+  </data>
+  <data name="TitleWelcomeback.Text" xml:space="preserve">
+    <value>Welcome back!</value>
+  </data>
+  <data name="ReportWallpaper.Header" xml:space="preserve">
+    <value>Reasons</value>
+  </data>
+  <data name="ReportWallpaperCopyright.Content" xml:space="preserve">
+    <value>Copyright violation</value>
+  </data>
+  <data name="ReportWallpaperMisleading.Content" xml:space="preserve">
+    <value>Misleading information</value>
+  </data>
+  <data name="ReportWallpaperOther.Content" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="ReportWallpaperSpam.Content" xml:space="preserve">
+    <value>Spam</value>
+  </data>
+  <data name="ReportWallpaperViolence.Content" xml:space="preserve">
+    <value>Nudity or violence</value>
+  </data>
+  <data name="TextAdditionalNotes.Text" xml:space="preserve">
+    <value>Additional notes</value>
+  </data>
+  <data name="TextReportWallpaper.Text" xml:space="preserve">
+    <value>Report</value>
+  </data>
+  <data name="TitleReportWallpaper.Text" xml:space="preserve">
+    <value>Report Wallpaper</value>
+  </data>
+  <data name="Send.Content" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="GalleryAccountDeleteConfirm.Text" xml:space="preserve">
+    <value>Please confirm this action as it CAN NOT be undone</value>
+  </data>
+  <data name="GalleryAccountDeleteFail.Text" xml:space="preserve">
+    <value>Failed to delete account, please try again later</value>
+  </data>
+  <data name="TextConfirmCancel.Text" xml:space="preserve">
+    <value>Do you want to cancel it?</value>
+  </data>
+  <data name="TextWait.Text" xml:space="preserve">
+    <value>Wait</value>
+  </data>
+  <data name="TitleDownloadProgress.Text" xml:space="preserve">
+    <value>Download in Progress</value>
+  </data>
+  <data name="TextContributors.Text" xml:space="preserve">
+    <value>Contributors</value>
+  </data>
+  <data name="TextShare.Text" xml:space="preserve">
+    <value>Share</value>
+  </data>
+  <data name="TitleShareWallpaper.Text" xml:space="preserve">
+    <value>Share Wallpaper</value>
+  </data>
+  <data name="ExportWallpaperGallery.Text" xml:space="preserve">
+    <value>Gallery upload</value>
+  </data>
+  <data name="ExportWallpaperLink.Text" xml:space="preserve">
+    <value>Copy link</value>
+  </data>
+  <data name="TextCustomiseWallpaper" xml:space="preserve">
+    <value>Háttérkép testreszabása</value>
+  </data>
+  <data name="TextCloseWallpapers" xml:space="preserve">
+    <value>Háttérkép</value>
+  </data>
 </root>

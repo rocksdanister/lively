@@ -3,13 +3,13 @@
 // See the LICENSE file in the project root for more information.
 // Source: https://github.com/ModernFlyouts-Community/ModernFlyouts
 
+using CommunityToolkit.Mvvm.ComponentModel;
 using System;
 using System.Drawing;
-using observableObject = Microsoft.Toolkit.Mvvm.ComponentModel.ObservableObject;
 
 namespace Lively.Models
 {
-    public class DisplayMonitor : observableObject, IDisplayMonitor
+    public class DisplayMonitor : ObservableObject, IDisplayMonitor
     {
         public bool isStale;
 

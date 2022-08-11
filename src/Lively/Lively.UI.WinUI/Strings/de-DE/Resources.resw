@@ -1,6 +1,6 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
-    <!-- 
+  <!-- 
     Microsoft ResX Schema 
     
     Version 2.0
@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -117,66 +117,44 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="WallpaperDirGroup.Header" xml:space="preserve">
-    <value>Datei</value>
+  <data name="AudioFocused.Content" xml:space="preserve">
+    <value>Audio nur dann wiedergeben, wenn der Desktop im Vordergrund ist</value>
   </data>
-  <data name="FastUI.Header" xml:space="preserve">
-    <value>Schnellstart</value>
+  <data name="Audio.Description" xml:space="preserve">
+    <value>Lautstärke aller aktiven Hintergründe</value>
   </data>
-  <data name="FastUI.Description" xml:space="preserve">
-    <value>Benutzeroberfläche für schnelleren Startvorgang im Hintergrund geöffnet lassen</value>
+  <data name="Audio.Header" xml:space="preserve">
+    <value>Gesamtlautstärke</value>
   </data>
-  <data name="WindowsSettingsColor.Content" xml:space="preserve">
-    <value>Windows Farbeinstellungen</value>
+  <data name="AudioGroup.Header" xml:space="preserve">
+    <value>Ton</value>
   </data>
-  <data name="AppThemeDark.Content" xml:space="preserve">
-    <value>Dunkel</value>
+  <data name="CommunityPage.Content" xml:space="preserve">
+    <value>Online-Diskussionsforum</value>
   </data>
-  <data name="AppThemeLight.Content" xml:space="preserve">
-    <value>Hell</value>
+  <data name="DocumentationPage.Content" xml:space="preserve">
+    <value>API-Dokumentation und Hilfe</value>
   </data>
-  <data name="AppThemeSystem.Content" xml:space="preserve">
-    <value>System</value>
+  <data name="DescExplorerCrash" xml:space="preserve">
+    <value>Lively hat einen schwerwiegenden Fehler festgestellt.
+
+Windows Explorer wurde in den letzten 30 Sekunden zwei Mal neu gestartet! Dies kann durch einen Konflikt von Lively mit anderer Software zur Desktopanpassung oder von Windows hervorgerufen sein. Um weitere Probleme zu vermeiden, werden alle Hintergründe beendet.</value>
   </data>
-  <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
-    <value>Laptops</value>
+  <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
+    <value>Nicht-kompatibles Programm gefunden, Taskleisten Thema deaktiviert</value>
   </data>
-  <data name="DeveloperGroup.Header" xml:space="preserve">
-    <value>Entwickler</value>
+  <data name="OfficialWebpage.Content" xml:space="preserve">
+    <value>Offizielle Webseite von Lively Wallpaper</value>
   </data>
-  <data name="AppearanceBehaviour.Header" xml:space="preserve">
-    <value>Aussehen und Verhalten</value>
+  <data name="DescOledScreensaverNotice" xml:space="preserve">
+    <value>Die meisten modernen LCD- und LED-Bildschirme haben keine Probleme mit dem Einbrennen von Bildern, so dass jeder Hintergrund als Bildschirmschoner verwendet werden kann.
+
+Bei OLED-, Plasma- und CRT-Bildschirmen kann es zu Einbrenneffekten kommen. Es wird daher empfohlen einen Hintergrund mit konstanten Bewegungen und ein insgesamt dunkles Thema zu verwenden, um das Einbrennen zu mildern. Da diese Funktion jedoch nicht getestet ist, kann ihre Effektivität nicht gewährleistet werden.
+
+Der Hauptzweck von Livelys Bildschirmschonern ist das hinzufügen einer weiteren Schicht zu benutzerdefinierten Gestaltung des Computers. Die Verwendung des Bildschirmschoners als Schutz gegen Einbrennen geschieht auf eigene Gefahr!</value>
   </data>
-  <data name="TitleGallery" xml:space="preserve">
-    <value>Galerie</value>
-  </data>
-  <data name="ActiveWallpapers.Label" xml:space="preserve">
-    <value>Wallpaper aktiv
-</value>
-  </data>
-  <data name="AboutMe.Text" xml:space="preserve">
-    <value>Hi! Ich bin Dani John, auch bekannt als "rockdanister". Ich habe Lively entwickelt, diese kostenlose Open-Source Hintergrundbild-Software. Danke, dass du dir Zeit nimmst meine Arbeit zu betrachten.</value>
-  </data>
-  <data name="LicenseLink.Content" xml:space="preserve">
-    <value>Softwarelizenz</value>
-  </data>
-  <data name="AttributionLink.Content" xml:space="preserve">
-    <value>Drittanbieter-Software Hinweise</value>
-  </data>
-  <data name="PrivacyPolicyLink.Content" xml:space="preserve">
-    <value>Datenschutzerklärung</value>
-  </data>
-  <data name="AddWallpaperDrop.Text" xml:space="preserve">
-    <value>Hintergrund hinzufügen</value>
-  </data>
-  <data name="ComingSoon.Text" xml:space="preserve">
-    <value>Kommt bald</value>
-  </data>
-  <data name="TextOpen.Content" xml:space="preserve">
-    <value>Öffnen</value>
-  </data>
-  <data name="TextSave.Content" xml:space="preserve">
-    <value>Speichern</value>
+  <data name="ReportBugPage.Content" xml:space="preserve">
+    <value>Ein Problem mit der Software melden</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
     <value>Datei auswählen</value>
@@ -190,6 +168,9 @@
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
     <value>Sind Sie sicher, dass Sie den Hintergrund dauerhaft vom Datenträger löschen wollen?</value>
   </data>
+  <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
+    <value>Dieses Hintergrundbild wirklich aus der Bibliothek entfernen?</value>
+  </data>
   <data name="DragDropFile.Text" xml:space="preserve">
     <value>Einfach Dateien per Drag &amp; Drop in die Bibliothek ziehen</value>
   </data>
@@ -201,11 +182,20 @@ Fahren Sie nur fort, wenn diese Anwendung aus einer vertrauenswürdigen Quelle s
   <data name="MinimizedTray.Text" xml:space="preserve">
     <value>Lively wurde in den Infobereich minimiert. Klicken Sie mit der rechten Maustaste auf Lively um fortzufahren.</value>
   </data>
+  <data name="DescriptionPleaseRestartLively" xml:space="preserve">
+    <value>Bitte starten Sie Lively neu, damit die Einstellungen wirksam werden</value>
+  </data>
+  <data name="DescriptionPleaseStop" xml:space="preserve">
+    <value>Vor dem Fortfahren bitte anhalten</value>
+  </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
     <value>Zum Starten der Aufnahme hier drücken</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
     <value>Vorherige Hintergründe werden wiederhergestellt. Bitte warten...</value>
+  </data>
+  <data name="DescriptionScreenLayout" xml:space="preserve">
+    <value>Bildschirm auswählen</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
     <value>Eine neuere Version ist verfügbar!</value>
@@ -215,6 +205,28 @@ Fahren Sie nur fort, wenn diese Anwendung aus einer vertrauenswürdigen Quelle s
   </data>
   <data name="DescriptionWelcomeWizard" xml:space="preserve">
     <value>Dieser Assistent hilft dir dabei, Lively zu Beginn einzurichten</value>
+  </data>
+  <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
+    <value>Ihre Windows N/KN Version benötigt für das Abspielen von Videos in Hintergründen weitere Codecs, die heruntergeladen werden müssen</value>
+  </data>
+  <data name="DescSupperDev" xml:space="preserve">
+    <value>Unterstützung zeigen und dem Entwickler einen Kaffee kaufen</value>
+  </data>
+  <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
+    <value>Sie sind dabei zur Beta (Entwickler) Version von Lively zu wechseln.
+Aktualisierungen finden häufiger statt und können Fehler enthalten!</value>
+  </data>
+  <data name="HideSysTray.Description" xml:space="preserve">
+    <value>Sichtbarkeit des Symbols im Infobereich der Taskleiste (System Tray). Lively wird mit verstecktem Symbol ausgeführt</value>
+  </data>
+  <data name="HideSysTray.Header" xml:space="preserve">
+    <value>System-Tray Symbol</value>
+  </data>
+  <data name="Language.Description" xml:space="preserve">
+    <value>Lively muss neu gestartet werden, um die ausgewählte Sprache anzuwenden</value>
+  </data>
+  <data name="Language.Header" xml:space="preserve">
+    <value>Sprache</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
     <value>Aktualisierung fehlgeschlagen. Versuchen Sie die Installationsdatei manuell herunterzuladen: 
@@ -231,6 +243,14 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
     <value>Lively funktioniert nicht richtig, wenn der Hohe Kontrast-Modus von Windows aktiviert ist
 Schalten Sie den Hohen Kontrast-Modus aus und versuchen es erneut</value>
+  </data>
+  <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
+    <value>Medienwiedergabe fehlgeschlagen :(
+Versuchen Sie, den Videoplayer in den Lively Einstellungen zu wechseln.
+
+Um diesen Fehler besser zu verstehen und das Problem zu beheben, geben Sie die Protokolldatei an den Entwickler weiter.
+Anweisungen zur Freigabe der Protokolldatei:
+https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
     <value>Keine Lively Hintergrund-Datei</value>
@@ -250,8 +270,17 @@ Wenn Sie Windows 7 benutzten - einfach auf "Für optimale Darstellung anpassen a
 Wenn es immer noch nicht funktioniert, schließen &amp; starten Sie Lively oder Windows neu.
 (Funktioniert nicht in den Insider Builds von Windows 10)</value>
   </data>
+  <data name="Startup.Description" xml:space="preserve">
+    <value>Lively muss für die Wiedergabe von Hintergründen im Hintergrund ausgeführt werden</value>
+  </data>
+  <data name="Startup.Header" xml:space="preserve">
+    <value>Mit Windows starten</value>
+  </data>
   <data name="TextAdd" xml:space="preserve">
     <value>Hinzufügen</value>
+  </data>
+  <data name="TextAllFiles" xml:space="preserve">
+    <value>Alle Dateien</value>
   </data>
   <data name="Application.Header" xml:space="preserve">
     <value>Programm</value>
@@ -268,20 +297,41 @@ Wenn es immer noch nicht funktioniert, schließen &amp; starten Sie Lively oder 
   <data name="TextBrowse" xml:space="preserve">
     <value>Durchsuchen</value>
   </data>
+  <data name="Cancel.Content" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
+  <data name="TextChangeWallpaper" xml:space="preserve">
+    <value>Hintergründe ändern</value>
+  </data>
+  <data name="TextClose" xml:space="preserve">
+    <value>Schließen</value>
+  </data>
   <data name="CloseWallpapers.Label" xml:space="preserve">
     <value>Schließen</value>
   </data>
   <data name="TextCompleted" xml:space="preserve">
     <value>Abgeschlossen!</value>
   </data>
+  <data name="ControlPanel.Subtitle" xml:space="preserve">
+    <value>Hier klicken, um Hintergründe zu verwalten</value>
+  </data>
   <data name="TextConvertVideo" xml:space="preserve">
     <value>Zu Video konvertieren</value>
+  </data>
+  <data name="TextCreatePreview" xml:space="preserve">
+    <value>Vorschau erstellen</value>
+  </data>
+  <data name="Customise.Text" xml:space="preserve">
+    <value>Anpassen</value>
   </data>
   <data name="CustomiseWallpaper.Label" xml:space="preserve">
     <value>Hintergrund anpassen</value>
   </data>
   <data name="DeleteWallpaper.Text" xml:space="preserve">
     <value>Löschen</value>
+  </data>
+  <data name="Description.Text" xml:space="preserve">
+    <value>Beschreibung</value>
   </data>
   <data name="DisplayPauseRuleAllScreen.Content" xml:space="preserve">
     <value>Alle Anzeigen</value>
@@ -292,6 +342,9 @@ Wenn es immer noch nicht funktioniert, schließen &amp; starten Sie Lively oder 
   <data name="TextDownload" xml:space="preserve">
     <value>Herunterladen</value>
   </data>
+  <data name="EditWallpaper.Text" xml:space="preserve">
+    <value>Bearbeiten</value>
+  </data>
   <data name="TextError" xml:space="preserve">
     <value>Fehler</value>
   </data>
@@ -301,23 +354,53 @@ Wenn es immer noch nicht funktioniert, schließen &amp; starten Sie Lively oder 
   <data name="ExportWallpaperZip.Text" xml:space="preserve">
     <value>Lively .zip exportieren</value>
   </data>
+  <data name="TextFeatureMissing" xml:space="preserve">
+    <value>Einige Funktionen sind in dieser Version von Lively nicht verfügbar</value>
+  </data>
+  <data name="TextFileNotFound" xml:space="preserve">
+    <value>Datei nicht gefunden</value>
+  </data>
   <data name="TextGIF" xml:space="preserve">
     <value>Animiertes GIF</value>
+  </data>
+  <data name="GitHubStar.Content" xml:space="preserve">
+    <value>Ein wenig Anerkennung zeigen und einen Stern da lassen</value>
   </data>
   <data name="TextGo" xml:space="preserve">
     <value>LOS</value>
   </data>
-  <data name="TextHelpTranslate" xml:space="preserve">
+  <data name="TextHelpTranslate.Title" xml:space="preserve">
     <value>Bei der Übersetzung helfen</value>
+  </data>
+  <data name="TextHours" xml:space="preserve">
+    <value>Stunde(n)</value>
   </data>
   <data name="TextInstall" xml:space="preserve">
     <value>Installieren</value>
+  </data>
+  <data name="TextKeyboard.Content" xml:space="preserve">
+    <value>Tastatur</value>
+  </data>
+  <data name="TextLastChecked" xml:space="preserve">
+    <value>Zuletzt geprüft</value>
+  </data>
+  <data name="TextLearnMore.Text" xml:space="preserve">
+    <value>Mehr erfahren</value>
+  </data>
+  <data name="License.Header" xml:space="preserve">
+    <value>Lizenz</value>
+  </data>
+  <data name="TextMinutes" xml:space="preserve">
+    <value>Minute(n)</value>
   </data>
   <data name="TextmoreInfo" xml:space="preserve">
     <value>Info</value>
   </data>
   <data name="TextMoreWallpapers" xml:space="preserve">
     <value>Mehr Hintergründe</value>
+  </data>
+  <data name="TextMouse.Content" xml:space="preserve">
+    <value>Maus</value>
   </data>
   <data name="MouseInteractOnDesktop.Content" xml:space="preserve">
     <value>Mausinteraktion bei fokussierter Anwendung</value>
@@ -327,6 +410,15 @@ Wenn es immer noch nicht funktioniert, schließen &amp; starten Sie Lively oder 
   </data>
   <data name="TextNo" xml:space="preserve">
     <value>Nein</value>
+  </data>
+  <data name="TextOff.Content" xml:space="preserve">
+    <value>Aus</value>
+  </data>
+  <data name="TextOK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="TextOn.Content" xml:space="preserve">
+    <value>An</value>
   </data>
   <data name="TextOnline" xml:space="preserve">
     <value>Online</value>
@@ -355,6 +447,18 @@ Wenn es immer noch nicht funktioniert, schließen &amp; starten Sie Lively oder 
   <data name="TextPerformancePause.Content" xml:space="preserve">
     <value>Pausieren</value>
   </data>
+  <data name="TextPicture" xml:space="preserve">
+    <value>Bild</value>
+  </data>
+  <data name="PreviewWallpaper.Text" xml:space="preserve">
+    <value>Vorschau</value>
+  </data>
+  <data name="PrivacyPolicy.Header" xml:space="preserve">
+    <value>Datenschutzerklärung</value>
+  </data>
+  <data name="TextProcessingWallpaper" xml:space="preserve">
+    <value>Verarbeitung</value>
+  </data>
   <data name="TextRemove" xml:space="preserve">
     <value>Entfernen</value>
   </data>
@@ -382,8 +486,38 @@ Wenn es immer noch nicht funktioniert, schließen &amp; starten Sie Lively oder 
   <data name="TextStop" xml:space="preserve">
     <value>Stopp</value>
   </data>
+  <data name="StoreReview.Content" xml:space="preserve">
+    <value>Gefällt dir Lively? Lass eine Bewertung da :)</value>
+  </data>
+  <data name="TextSupport.Content" xml:space="preserve">
+    <value>Unterstützen</value>
+  </data>
+  <data name="TextSwitchBranchDev" xml:space="preserve">
+    <value>Zur Beta wechseln (Entwicklerkanal)</value>
+  </data>
+  <data name="TextSwitchBranchOfficial" xml:space="preserve">
+    <value>Zur Stable wechseln (Standardkanal)</value>
+  </data>
   <data name="TextTags" xml:space="preserve">
     <value>Tags</value>
+  </data>
+  <data name="TaskbarThemeBlur.Content" xml:space="preserve">
+    <value>Weichzeichnen</value>
+  </data>
+  <data name="TaskbarThemeClear.Content" xml:space="preserve">
+    <value>Transparent</value>
+  </data>
+  <data name="TaskbarThemeColor.Content" xml:space="preserve">
+    <value>Farbe</value>
+  </data>
+  <data name="TaskbarThemeFluent.Content" xml:space="preserve">
+    <value>Fluent</value>
+  </data>
+  <data name="TaskbarThemeWallpaper.Content" xml:space="preserve">
+    <value>Hintergrund</value>
+  </data>
+  <data name="TaskbarThemeWallpaperFluent.Content" xml:space="preserve">
+    <value>Hintergrund Fluent</value>
   </data>
   <data name="TextTileSizeLarge" xml:space="preserve">
     <value>Groß</value>
@@ -394,6 +528,9 @@ Wenn es immer noch nicht funktioniert, schließen &amp; starten Sie Lively oder 
   <data name="TextTileSizeSmall" xml:space="preserve">
     <value>Klein</value>
   </data>
+  <data name="Title.Text" xml:space="preserve">
+    <value>Titel</value>
+  </data>
   <data name="TextUIHeadless" xml:space="preserve">
     <value>Rahmenlos</value>
   </data>
@@ -402,6 +539,9 @@ Wenn es immer noch nicht funktioniert, schließen &amp; starten Sie Lively oder 
   </data>
   <data name="TextUINormal" xml:space="preserve">
     <value>Normal</value>
+  </data>
+  <data name="TextUnsupportedFile" xml:space="preserve">
+    <value>Dateiformat nicht unterstützt</value>
   </data>
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>Update verfügbar!</value>
@@ -421,8 +561,26 @@ Wenn es immer noch nicht funktioniert, schließen &amp; starten Sie Lively oder 
   <data name="TextVideo" xml:space="preserve">
     <value>Video</value>
   </data>
+  <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
+    <value>Optionale Kommandozeilenparameter eingeben</value>
+  </data>
+  <data name="WallpaperFitFill.Content" xml:space="preserve">
+    <value>Strecken</value>
+  </data>
+  <data name="WallpaperFitNone.Content" xml:space="preserve">
+    <value>Keine</value>
+  </data>
+  <data name="WallpaperFitUniform.Content" xml:space="preserve">
+    <value>Zentriert</value>
+  </data>
+  <data name="WallpaperFitUniformToFill.Content" xml:space="preserve">
+    <value>Anpassen</value>
+  </data>
   <data name="WallpaperLayoutDuplicate.Content" xml:space="preserve">
     <value>Hintergrund duplizieren</value>
+  </data>
+  <data name="WallpaperLayoutPerScreen.Content" xml:space="preserve">
+    <value>Nur ausgewählte Anzeige</value>
   </data>
   <data name="WallpaperLayoutSpan.Content" xml:space="preserve">
     <value>Über Anzeigen spannen</value>
@@ -469,14 +627,26 @@ Wenn es immer noch nicht funktioniert, schließen &amp; starten Sie Lively oder 
   <data name="BrowserDebuggingPort.Description" xml:space="preserve">
     <value>Geben Sie den Port für das Debuggen von Webpage-Hintergründen ein. Öffnen Sie http://localhost:portnumber, um auf die Entwicklerkonsole zuzugreifen</value>
   </data>
+  <data name="Debug.Description" xml:space="preserve">
+    <value>Entwickler-Menü anzeigen</value>
+  </data>
+  <data name="DesktopPicture.Description" xml:space="preserve">
+    <value>Ein Einzelbild aus dem Hintergrund als aktuellen Desktophintergrund festlegen</value>
+  </data>
   <data name="DisplayPauseRule.Description" xml:space="preserve">
     <value>Auswählen, welche Anzeigen pausiert werden sollen, wenn eine Anwendung im Vordergrund ist</value>
   </data>
-  <data name="Language.Description" xml:space="preserve">
-    <value>Lively muss neu gestartet werden, um die ausgewählte Sprache anzuwenden</value>
+  <data name="ExportLogs.Description" xml:space="preserve">
+    <value>Protokolldatei erstellen</value>
+  </data>
+  <data name="GifPlayer.Description" xml:space="preserve">
+    <value>Wählen Sie einen Player für GIF-Hintergründe</value>
   </data>
   <data name="TipLivelySetupOnClose" xml:space="preserve">
     <value>Beenden Sie die Einrichtung um fortzufahren</value>
+  </data>
+  <data name="LockscreenPicture.Description" xml:space="preserve">
+    <value>Einen animierten Hintergrund für den Sperrbildschirm festlegen</value>
   </data>
   <data name="PauseAlgorithm.Description" xml:space="preserve">
     <value>Wählen, welcher Algorithmus für das Erkennen von Anwendungen verwendet wird</value>
@@ -487,6 +657,9 @@ Wenn es immer noch nicht funktioniert, schließen &amp; starten Sie Lively oder 
   <data name="RemoteDesktopPower.Description" xml:space="preserve">
     <value>Wiedergabe ändern, wenn eine Remotedesktopsitzung ausgeführt wird</value>
   </data>
+  <data name="TipScreensaver" xml:space="preserve">
+    <value>Bei Inaktivität wird nach der festgelegten Zeit der aktuelle Hinergrund als Bildschirmschoner verwendet</value>
+  </data>
   <data name="StreamWallpaperDetect.Description" xml:space="preserve">
     <value>Wenn ein unterstützter Video-Stream-Link erkannt wird, verwenden Sie den Videoplayer, anstatt die Webseite zu laden</value>
   </data>
@@ -496,11 +669,17 @@ Wenn es immer noch nicht funktioniert, schließen &amp; starten Sie Lively oder 
   <data name="TipSwitchSoftwareBranch" xml:space="preserve">
     <value>Ändern von Beta zu Final Version und wieder zurück</value>
   </data>
+  <data name="TaskbarTheme.Description" xml:space="preserve">
+    <value>Aussehen der Taskleiste verändern</value>
+  </data>
   <data name="TipTileSize" xml:space="preserve">
     <value>Größe der Hintergrund-Kacheln in der Bibliothek</value>
   </data>
   <data name="TipUIMode" xml:space="preserve">
     <value>Der Lite Modus ist für Low-End Systeme geeignet</value>
+  </data>
+  <data name="VideoHardwareDecode.Description" xml:space="preserve">
+    <value>Wenn möglich, Hardwarebeschleunigung verwenden</value>
   </data>
   <data name="VideoPlayer.Description" xml:space="preserve">
     <value>Wählen Sie einen Player für Videohintergründe</value>
@@ -508,8 +687,14 @@ Wenn es immer noch nicht funktioniert, schließen &amp; starten Sie Lively oder 
   <data name="WallpaperDir.Description" xml:space="preserve">
     <value>Pfad, der zum Speichern von Hintergründen verwendet wird</value>
   </data>
+  <data name="WallpaperFit.Description" xml:space="preserve">
+    <value>Skalieralgorithmus für Hintergründe</value>
+  </data>
   <data name="WallpaperInput.Description" xml:space="preserve">
     <value>Methode zur Interaktion mit Hintergründen auswählen</value>
+  </data>
+  <data name="WallpaperLayout.Description" xml:space="preserve">
+    <value>Wie Hintergründe auf angeschlossenen Bildschirmen angezeigt werden</value>
   </data>
   <data name="TipWallpaperPlayback" xml:space="preserve">
     <value>Wiedergabe von Hintergründen pausieren, wenn der Desktop nicht fokussiert ist</value>
@@ -519,9 +704,6 @@ Wenn es immer noch nicht funktioniert, schließen &amp; starten Sie Lively oder 
   </data>
   <data name="WebBrowser.Description" xml:space="preserve">
     <value>Wird für HTML-Hintergründe verwendet</value>
-  </data>
-  <data name="Startup.Description" xml:space="preserve">
-    <value>Lively muss für die Wiedergabe von Hintergründen im Hintergrund ausgeführt werden</value>
   </data>
   <data name="About.Label" xml:space="preserve">
     <value>Über Lively</value>
@@ -544,9 +726,6 @@ Wenn es immer noch nicht funktioniert, schließen &amp; starten Sie Lively oder 
   <data name="AppTheme.Header" xml:space="preserve">
     <value>Farbschema</value>
   </data>
-  <data name="AudioGroup.Header" xml:space="preserve">
-    <value>Audio</value>
-  </data>
   <data name="TitleAudioPlayOnScreen" xml:space="preserve">
     <value>Audio auf dem Bildschirm wiedergeben</value>
   </data>
@@ -562,32 +741,53 @@ Wenn es immer noch nicht funktioniert, schließen &amp; starten Sie Lively oder 
   <data name="TitleChangelog" xml:space="preserve">
     <value>Änderungen</value>
   </data>
+  <data name="Community.Header" xml:space="preserve">
+    <value>Community</value>
+  </data>
+  <data name="Debug.Header" xml:space="preserve">
+    <value>Fehlersuche</value>
+  </data>
   <data name="TitleDeleteConfirmation" xml:space="preserve">
     <value>Löschen bestätigen</value>
+  </data>
+  <data name="DesktopPicture.Header" xml:space="preserve">
+    <value>Desktop Hintergrund</value>
   </data>
   <data name="DisplayPauseRule.Header" xml:space="preserve">
     <value>Hintergrund Pausieren</value>
   </data>
+  <data name="Documentation.Header" xml:space="preserve">
+    <value>Dokumentation</value>
+  </data>
+  <data name="EnterUrl.Header" xml:space="preserve">
+    <value>URL eingeben</value>
+  </data>
+  <data name="ExportLogs.Header" xml:space="preserve">
+    <value>Protokolldatei</value>
+  </data>
   <data name="TitleGeneral" xml:space="preserve">
     <value>Allgemein</value>
+  </data>
+  <data name="GifPlayer.Header" xml:space="preserve">
+    <value>Gif Player</value>
   </data>
   <data name="Help.Label" xml:space="preserve">
     <value>Hilfe</value>
   </data>
-  <data name="HideSysTray.Header" xml:space="preserve">
-    <value>System-Tray Symbol</value>
-  </data>
   <data name="TitleInteraction" xml:space="preserve">
     <value>Interaktion</value>
-  </data>
-  <data name="Language.Header" xml:space="preserve">
-    <value>Sprache</value>
   </data>
   <data name="TitleLibrary" xml:space="preserve">
     <value>Bibliothek</value>
   </data>
   <data name="TitleLivelySetup" xml:space="preserve">
     <value>Lively-Einrichtung</value>
+  </data>
+  <data name="TitleLocation" xml:space="preserve">
+    <value>Standort</value>
+  </data>
+  <data name="LockscreenPicture.Header" xml:space="preserve">
+    <value>Sperrbildschirm-Bild</value>
   </data>
   <data name="TitleMisc" xml:space="preserve">
     <value>Verschiedenes</value>
@@ -613,17 +813,36 @@ Wenn es immer noch nicht funktioniert, schließen &amp; starten Sie Lively oder 
   <data name="RemoteDesktopPower.Header" xml:space="preserve">
     <value>Während Remotedesktop</value>
   </data>
+  <data name="ReportBug.Header" xml:space="preserve">
+    <value>Fehler melden</value>
+  </data>
   <data name="TitleScalingFit" xml:space="preserve">
     <value>Skalierung und Anpassung</value>
   </data>
   <data name="ControlPanel.Title" xml:space="preserve">
     <value>Bildschirm-Layout</value>
   </data>
+  <data name="TitleScreensaver" xml:space="preserve">
+    <value>Bildschirmschoner</value>
+  </data>
+  <data name="TitleScreensaverLockOnResume" xml:space="preserve">
+    <value>Beim Fortsetzen den Anmeldebildschirm anzeigen</value>
+  </data>
   <data name="TitleSelectFile" xml:space="preserve">
     <value>Datei auswählen</value>
   </data>
   <data name="TitleSettings" xml:space="preserve">
     <value>Einstellungen</value>
+  </data>
+  <data name="TitleSkipConfirm" xml:space="preserve">
+    <value>Bestätigung überspringen</value>
+  </data>
+  <data name="SourceCode.Header" xml:space="preserve">
+    <value>Quelltext</value>
+  </data>
+  <data name="Store.Header" xml:space="preserve">
+    <value>Microsoft Store</value>
+    <comment>For different version of Lively, example: Microsoft Store</comment>
   </data>
   <data name="StreamWallpaperVideoQuality.Header" xml:space="preserve">
     <value>Stream</value>
@@ -633,6 +852,12 @@ Wenn es immer noch nicht funktioniert, schließen &amp; starten Sie Lively oder 
   </data>
   <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
     <value>Videoqualität</value>
+  </data>
+  <data name="System.Header" xml:space="preserve">
+    <value>System</value>
+  </data>
+  <data name="TaskbarTheme.Header" xml:space="preserve">
+    <value>Taskleisten Thema</value>
   </data>
   <data name="TitleTileSize" xml:space="preserve">
     <value>Kachelgröße</value>
@@ -646,11 +871,20 @@ Wenn es immer noch nicht funktioniert, schließen &amp; starten Sie Lively oder 
   <data name="TitleVideo" xml:space="preserve">
     <value>Video</value>
   </data>
+  <data name="VideoHardwareDecode.Header" xml:space="preserve">
+    <value>GPU-Dekodierung</value>
+  </data>
   <data name="TitleWallpaper" xml:space="preserve">
     <value>Hintergrund</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">
     <value>Hintergrund-Verzeichnis</value>
+  </data>
+  <data name="WallpaperDirMoveExisting.Content" xml:space="preserve">
+    <value>Vorhandene Hintergründe in einen neuen Ordner verschieben</value>
+  </data>
+  <data name="WallpaperFit.Header" xml:space="preserve">
+    <value>Hintergrundanpassung wählen</value>
   </data>
   <data name="WallpaperInput.Header" xml:space="preserve">
     <value>Hintergrundinteraktion</value>
@@ -676,317 +910,221 @@ Wenn es immer noch nicht funktioniert, schließen &amp; starten Sie Lively oder 
   <data name="TitleWebpageLoad" xml:space="preserve">
     <value>Webseite laden</value>
   </data>
-  <data name="Startup.Header" xml:space="preserve">
-    <value>Mit Windows starten</value>
+  <data name="FastUI.Description" xml:space="preserve">
+    <value>Benutzeroberfläche für schnelleren Startvorgang im Hintergrund geöffnet lassen</value>
   </data>
-  <data name="DescriptionPleaseRestartLively" xml:space="preserve">
-    <value>Bitte starten Sie Lively neu, damit die Einstellungen wirksam werden</value>
+  <data name="FastUI.Header" xml:space="preserve">
+    <value>Schnellstart</value>
   </data>
-  <data name="TextSupport.Content" xml:space="preserve">
-    <value>Unterstützen</value>
+  <data name="WallpaperDirGroup.Header" xml:space="preserve">
+    <value>Datei</value>
   </data>
-  <data name="TextSwitchBranchDev" xml:space="preserve">
-    <value>Zur Beta wechseln (Entwicklerkanal)</value>
+  <data name="AppThemeDark.Content" xml:space="preserve">
+    <value>Dunkel</value>
   </data>
-  <data name="TextSwitchBranchOfficial" xml:space="preserve">
-    <value>Zur Stable wechseln (Standardkanal)</value>
+  <data name="AppThemeLight.Content" xml:space="preserve">
+    <value>Hell</value>
   </data>
-  <data name="TextClose" xml:space="preserve">
-    <value>Schließen</value>
-  </data>
-  <data name="Customise.Text" xml:space="preserve">
-    <value>Anpassen</value>
-  </data>
-  <data name="DescriptionScreenLayout" xml:space="preserve">
-    <value>Bildschirm auswählen</value>
-  </data>
-  <data name="WallpaperLayoutPerScreen.Content" xml:space="preserve">
-    <value>Nur ausgewählte Anzeige</value>
-  </data>
-  <data name="WallpaperLayout.Description" xml:space="preserve">
-    <value>Wie Hintergründe auf angeschlossenen Bildschirmen angezeigt werden</value>
-  </data>
-  <data name="WallpaperDirMoveExisting.Content" xml:space="preserve">
-    <value>Vorhandene Hintergründe in einen neuen Ordner verschieben</value>
-  </data>
-  <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
-    <value>Medienwiedergabe fehlgeschlagen :(
-Versuchen Sie, den Videoplayer in den Lively Einstellungen zu wechseln.
-
-Um diesen Fehler besser zu verstehen und das Problem zu beheben, geben Sie die Protokolldatei an den Entwickler weiter.
-Anweisungen zur Freigabe der Protokolldatei:
-https://github.com/rocksdanister/lively/wiki</value>
-  </data>
-  <data name="TextOff.Content" xml:space="preserve">
-    <value>Aus</value>
-  </data>
-  <data name="TextOn.Content" xml:space="preserve">
-    <value>An</value>
-  </data>
-  <data name="TextMouse.Content" xml:space="preserve">
-    <value>Maus</value>
-  </data>
-  <data name="TextKeyboard.Content" xml:space="preserve">
-    <value>Tastatur</value>
-  </data>
-  <data name="TextLastChecked" xml:space="preserve">
-    <value>Zuletzt geprüft</value>
-  </data>
-  <data name="Documentation.Header" xml:space="preserve">
-    <value>Dokumentation</value>
-  </data>
-  <data name="Community.Header" xml:space="preserve">
-    <value>Community</value>
-  </data>
-  <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
-    <value>Dieses Hintergrundbild wirklich aus der Bibliothek entfernen?</value>
-  </data>
-  <data name="Audio.Description" xml:space="preserve">
-    <value>Lautstärke aller aktiven Hintergründe</value>
-  </data>
-  <data name="Audio.Header" xml:space="preserve">
-    <value>Gesamtlautstärke</value>
-  </data>
-  <data name="WallpaperFitFill.Content" xml:space="preserve">
-    <value>Strecken</value>
-  </data>
-  <data name="WallpaperFitNone.Content" xml:space="preserve">
-    <value>Keine</value>
-  </data>
-  <data name="WallpaperFitUniform.Content" xml:space="preserve">
-    <value>Zentriert</value>
-  </data>
-  <data name="WallpaperFitUniformToFill.Content" xml:space="preserve">
-    <value>Anpassen</value>
-  </data>
-  <data name="WallpaperFit.Description" xml:space="preserve">
-    <value>Skalieralgorithmus für Hintergründe</value>
-  </data>
-  <data name="WallpaperFit.Header" xml:space="preserve">
-    <value>Hintergrundanpassung wählen</value>
-  </data>
-  <data name="PreviewWallpaper.Text" xml:space="preserve">
-    <value>Vorschau</value>
-  </data>
-  <data name="TextAllFiles" xml:space="preserve">
-    <value>Alle Dateien</value>
-  </data>
-  <data name="Debug.Header" xml:space="preserve">
-    <value>Fehlersuche</value>
-  </data>
-  <data name="Debug.Description" xml:space="preserve">
-    <value>Entwickler-Menü anzeigen</value>
-  </data>
-  <data name="TextFileNotFound" xml:space="preserve">
-    <value>Datei nicht gefunden</value>
-  </data>
-  <data name="TextPicture" xml:space="preserve">
-    <value>Bild</value>
-  </data>
-  <data name="TextUnsupportedFile" xml:space="preserve">
-    <value>Dateiformat nicht unterstützt</value>
-  </data>
-  <data name="TextProcessingWallpaper" xml:space="preserve">
-    <value>Verarbeitung</value>
-  </data>
-  <data name="Title.Text" xml:space="preserve">
-    <value>Titel</value>
-  </data>
-  <data name="Description.Text" xml:space="preserve">
-    <value>Beschreibung</value>
-  </data>
-  <data name="TextOK" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="Cancel.Content" xml:space="preserve">
-    <value>Abbrechen</value>
-  </data>
-  <data name="TextChangeWallpaper" xml:space="preserve">
-    <value>Hintergründe ändern</value>
-  </data>
-  <data name="TextCreatePreview" xml:space="preserve">
-    <value>Vorschau erstellen</value>
-  </data>
-  <data name="GifPlayer.Header" xml:space="preserve">
-    <value>Gif Player</value>
-  </data>
-  <data name="GifPlayer.Description" xml:space="preserve">
-    <value>Wählen Sie einen Player für GIF-Hintergründe</value>
-  </data>
-  <data name="TextFeatureMissing" xml:space="preserve">
-    <value>Einige Funktionen sind in dieser Version von Lively nicht verfügbar</value>
-  </data>
-  <data name="ControlPanel.Subtitle" xml:space="preserve">
-    <value>Hier klicken, um Hintergründe zu verwalten</value>
-  </data>
-  <data name="StoreReview.Content" xml:space="preserve">
-    <value>Gefällt dir Lively? Lass eine Bewertung da :)</value>
-  </data>
-  <data name="Store.Header" xml:space="preserve">
-    <value>Microsoft Store</value>
-    <comment>Für andere Versionen von Lively. Beispiel: Microsoft Store</comment>
-  </data>
-  <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>Ihre Windows N/KN Version benötigt für das Abspielen von Videos in Hintergründen weitere Codecs, die heruntergeladen werden müssen</value>
-  </data>
-  <data name="DescSupperDev" xml:space="preserve">
-    <value>Unterstützung zeigen und dem Entwickler einen Kaffee kaufen</value>
-  </data>
-  <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
-    <value>Sie sind dabei zur Beta (Entwickler) Version von Lively zu wechseln.
-Aktualisierungen finden häufiger statt und können Fehler enthalten!</value>
-  </data>
-  <data name="License.Header" xml:space="preserve">
-    <value>Lizenz</value>
-  </data>
-  <data name="PrivacyPolicy.Header" xml:space="preserve">
-    <value>Datenschutzerklärung</value>
-  </data>
-  <data name="AudioFocused.Content" xml:space="preserve">
-    <value>Audio nur dann wiedergeben, wenn der Desktop im Vordergrund ist</value>
-  </data>
-  <data name="ExportLogs.Description" xml:space="preserve">
-    <value>Protokolldatei erstellen</value>
-  </data>
-  <data name="ExportLogs.Header" xml:space="preserve">
-    <value>Protokolldatei</value>
-  </data>
-  <data name="ReportBug.Header" xml:space="preserve">
-    <value>Fehler melden</value>
-  </data>
-  <data name="VideoHardwareDecode.Header" xml:space="preserve">
-    <value>GPU-Dekodierung</value>
-  </data>
-  <data name="VideoHardwareDecode.Description" xml:space="preserve">
-    <value>Wenn möglich, Hardwarebeschleunigung verwenden</value>
-  </data>
-  <data name="DescriptionPleaseStop" xml:space="preserve">
-    <value>Vor dem Fortfahren bitte anhalten</value>
-  </data>
-  <data name="EditWallpaper.Text" xml:space="preserve">
-    <value>Bearbeiten</value>
-  </data>
-  <data name="TitleLocation" xml:space="preserve">
-    <value>Standort</value>
-  </data>
-  <data name="TitleSkipConfirm" xml:space="preserve">
-    <value>Bestätigung überspringen</value>
-  </data>
-  <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>Optionale Kommandozeilenparameter eingeben</value>
-  </data>
-  <data name="GitHubStar.Content" xml:space="preserve">
-    <value>Ein wenig Anerkennung zeigen und einen Stern da lassen</value>
-  </data>
-  <data name="CommunityPage.Content" xml:space="preserve">
-    <value>Online-Diskussionsforum</value>
-  </data>
-  <data name="DocumentationPage.Content" xml:space="preserve">
-    <value>API-Dokumentation und Hilfe</value>
-  </data>
-  <data name="DescExplorerCrash" xml:space="preserve">
-    <value>Lively hat einen schwerwiegenden Fehler festgestellt.
-
-Windows Explorer wurde in den letzten 30 Sekunden zwei Mal neu gestartet! Dies kann durch einen Konflikt von Lively mit anderer Software zur Desktopanpassung oder von Windows hervorgerufen sein. Um weitere Probleme zu vermeiden, werden alle Hintergründe beendet.</value>
-  </data>
-  <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
-    <value>Nicht-kompatibles Programm gefunden, Taskleisten Thema deaktiviert</value>
-  </data>
-  <data name="ReportBugPage.Content" xml:space="preserve">
-    <value>Ein Problem mit der Software melden</value>
-  </data>
-  <data name="TaskbarTheme.Header" xml:space="preserve">
-    <value>Taskleisten Thema</value>
-  </data>
-  <data name="LockscreenPicture.Header" xml:space="preserve">
-    <value>Sperrbildschirm-Bild</value>
-  </data>
-  <data name="DesktopPicture.Header" xml:space="preserve">
-    <value>Desktop Hintergrund</value>
-  </data>
-  <data name="LockscreenPicture.Description" xml:space="preserve">
-    <value>Einen animierten Hintergrund für den Sperrbildschirm festlegen</value>
-  </data>
-  <data name="DesktopPicture.Description" xml:space="preserve">
-    <value>Ein Einzelbild aus dem Hintergrund als aktuellen Desktophintergrund festlegen</value>
-  </data>
-  <data name="TaskbarTheme.Description" xml:space="preserve">
-    <value>Aussehen der Taskleiste verändern</value>
-  </data>
-  <data name="TaskbarThemeBlur.Content" xml:space="preserve">
-    <value>Weichzeichnen</value>
-  </data>
-  <data name="TaskbarThemeClear.Content" xml:space="preserve">
-    <value>Transparent</value>
-  </data>
-  <data name="TaskbarThemeColor.Content" xml:space="preserve">
-    <value>Farbe</value>
-  </data>
-  <data name="TaskbarThemeFluent.Content" xml:space="preserve">
-    <value>Fluent</value>
-  </data>
-  <data name="TaskbarThemeWallpaper.Content" xml:space="preserve">
-    <value>Hintergrund</value>
-  </data>
-  <data name="TaskbarThemeWallpaperFluent.Content" xml:space="preserve">
-    <value>Hintergrund Fluent</value>
-  </data>
-  <data name="System.Header" xml:space="preserve">
+  <data name="AppThemeSystem.Content" xml:space="preserve">
     <value>System</value>
   </data>
-  <data name="SourceCode.Header" xml:space="preserve">
-    <value>Quelltext</value>
+  <data name="WindowsSettingsColor.Content" xml:space="preserve">
+    <value>Windows Farbeinstellungen</value>
   </data>
-  <data name="TitleScreensaver" xml:space="preserve">
-    <value>Bildschirmschoner</value>
+  <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
+    <value>Notebooks</value>
   </data>
-  <data name="TitleScreensaverLockOnResume" xml:space="preserve">
-    <value>Beim Fortsetzen den Anmeldebildschirm anzeigen</value>
+  <data name="DeveloperGroup.Header" xml:space="preserve">
+    <value>Entwickler</value>
   </data>
-  <data name="TipScreensaver" xml:space="preserve">
-    <value>Bei Inaktivität wird nach der festgelegten Zeit der aktuelle Hinergrund als Bildschirmschoner verwendet</value>
+  <data name="AppearanceBehaviour.Header" xml:space="preserve">
+    <value>Aussehen und Verhalten</value>
   </data>
-  <data name="TextHours" xml:space="preserve">
-    <value>Stunde(n)</value>
+  <data name="ActiveWallpapers.Label" xml:space="preserve">
+    <value>Wallpaper aktiv
+</value>
   </data>
-  <data name="TextMinutes" xml:space="preserve">
-    <value>Minute(n)</value>
+  <data name="TitleGallery" xml:space="preserve">
+    <value>Galerie</value>
   </data>
-  <data name="TextLearnMore" xml:space="preserve">
-    <value>Mehr erfahren</value>
+  <data name="AboutMe.Text" xml:space="preserve">
+    <value>Hi! Ich bin Dani John, auch bekannt als "rockdanister". Ich habe Lively entwickelt, diese kostenlose Open-Source Hintergrundbild-Software. Danke, dass du dir Zeit nimmst meine Arbeit zu betrachten.</value>
   </data>
-  <data name="DescOledScreensaverNotice" xml:space="preserve">
-    <value>Die meisten modernen LCD- und LED-Bildschirme haben keine Probleme mit dem Einbrennen von Bildern, so dass jeder Hintergrund als Bildschirmschoner verwendet werden kann.
-
-Bei OLED-, Plasma- und CRT-Bildschirmen kann es zu Einbrenneffekten kommen. Es wird daher empfohlen einen Hintergrund mit konstanten Bewegungen und ein insgesamt dunkles Thema zu verwenden, um das Einbrennen zu mildern. Da diese Funktion jedoch nicht getestet ist, kann ihre Effektivität nicht gewährleistet werden.
-
-Der Hauptzweck von Livelys Bildschirmschonern ist das hinzufügen einer weiteren Schicht zu benutzerdefinierten Gestaltung des Computers. Die Verwendung des Bildschirmschoners als Schutz gegen Einbrennen geschieht auf eigene Gefahr!</value>
+  <data name="LicenseLink.Content" xml:space="preserve">
+    <value>Softwarelizenz</value>
   </data>
-  <data name="SourceWebsite.Text" xml:space="preserve">
-    <value>Webseite</value>
+  <data name="AttributionLink.Content" xml:space="preserve">
+    <value>Drittanbieter-Software Hinweise</value>
+  </data>
+  <data name="PrivacyPolicyLink.Content" xml:space="preserve">
+    <value>Datenschutzerklärung</value>
+  </data>
+  <data name="AddWallpaperDrop.Text" xml:space="preserve">
+    <value>Hintergrund hinzufügen</value>
+  </data>
+  <data name="ComingSoon.Text" xml:space="preserve">
+    <value>Kommt bald</value>
   </data>
   <data name="AboutMenu.Text" xml:space="preserve">
     <value>Über den Hintergrund</value>
   </data>
-  <data name="EnterUrl.Header" xml:space="preserve">
-    <value>URL eingeben</value>
+  <data name="SourceWebsite.Text" xml:space="preserve">
+    <value>Webseite</value>
   </data>
-  <data name="HideSysTray.Description" xml:space="preserve">
-    <value>Sichtbarkeit des Symbols im Infobereich der Taskleiste (System Tray). Lively wird mit verstecktem Symbol ausgeführt</value>
+  <data name="TextOpen.Content" xml:space="preserve">
+    <value>Öffnen</value>
   </data>
-  <data name="OfficialWebpage.Content" xml:space="preserve">
-    <value>Offizielle Webseite von Lively Wallpaper</value>
+  <data name="TextSave.Content" xml:space="preserve">
+    <value>Speichern</value>
   </data>
   <data name="UIMode.Description" xml:space="preserve">
-    <value>User interface effects and animations</value>
+    <value>Effekte und Animationen der Benutzeroberfläche</value>
   </data>
   <data name="UIMode.Header" xml:space="preserve">
-    <value>User interface</value>
+    <value>Benutzeroberfläche</value>
   </data>
   <data name="UIModeLite.Content" xml:space="preserve">
     <value>Lite</value>
   </data>
   <data name="UIModeNormal.Content" xml:space="preserve">
     <value>Normal</value>
+  </data>
+  <data name="Screensaver.Description" xml:space="preserve">
+    <value>Wie der Bildschirmschoner auf angeschlossene Anzeigegeräte angewandt wird</value>
+  </data>
+  <data name="Screensaver.Header" xml:space="preserve">
+    <value>Art des Bildschirmschoners</value>
+  </data>
+  <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
+    <value>Separat konfiguriert</value>
+  </data>
+  <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
+    <value>Wie Hintergrund</value>
+  </data>
+  <data name="ScreensaverPlugin.Title" xml:space="preserve">
+    <value>Plugin erforderlich</value>
+  </data>
+  <data name="ScreensaverPluginMessage.Text" xml:space="preserve">
+    <value>Einmaliges Setup ist erforderlich, um den Bildschirmschoner auszuführen</value>
+  </data>
+  <data name="WallpaperLayoutScreenPicker.Content" xml:space="preserve">
+    <value>Bei der Auswahl des Hintergrundbildes immer den Bildschirm wählen</value>
+  </data>
+  <data name="GalleryAccount.Text" xml:space="preserve">
+    <value>Konto</value>
+  </data>
+  <data name="GalleryAccountDelete.Content" xml:space="preserve">
+    <value>Konto löschen</value>
+  </data>
+  <data name="GalleryAccountExport.Content" xml:space="preserve">
+    <value>Daten exportieren</value>
+  </data>
+  <data name="GalleryAccountLogin.Content" xml:space="preserve">
+    <value>Anmelden</value>
+  </data>
+  <data name="GalleryAccountLogout.Content" xml:space="preserve">
+    <value>Abmelden</value>
+  </data>
+  <data name="GalleryPageCollection.Content" xml:space="preserve">
+    <value>Kollektion</value>
+  </data>
+  <data name="GalleryPageHome.Content" xml:space="preserve">
+    <value>Startseite</value>
+  </data>
+  <data name="GalleryPageManage.Content" xml:space="preserve">
+    <value>Verwalten</value>
+  </data>
+  <data name="GalleryPageProfile.Content" xml:space="preserve">
+    <value>Profil</value>
+  </data>
+  <data name="GalleryPleaseLogin.Text" xml:space="preserve">
+    <value>Bitte anmelden, um fortzufahren</value>
+  </data>
+  <data name="GalleryWelcomeMessage.Text" xml:space="preserve">
+    <value>Hallo</value>
+  </data>
+  <data name="RestoreWallpaper.Text" xml:space="preserve">
+    <value>Wir haben diese Hintergründe in Ihrem Konto gefunden</value>
+  </data>
+  <data name="TextDownloadNow.Content" xml:space="preserve">
+    <value>Jetzt herunterladen</value>
+  </data>
+  <data name="TextMaybeLater.Content" xml:space="preserve">
+    <value>Vielleicht später</value>
+  </data>
+  <data name="TextSelectAll.Content" xml:space="preserve">
+    <value>Alle auswählen</value>
+  </data>
+  <data name="TextSelectNone.Content" xml:space="preserve">
+    <value>Keine auswählen</value>
+  </data>
+  <data name="TitleWelcomeback.Text" xml:space="preserve">
+    <value>Willkommen zurück!</value>
+  </data>
+  <data name="ReportWallpaper.Header" xml:space="preserve">
+    <value>Gründe</value>
+  </data>
+  <data name="ReportWallpaperCopyright.Content" xml:space="preserve">
+    <value>Urheberrechtsverletzung</value>
+  </data>
+  <data name="ReportWallpaperMisleading.Content" xml:space="preserve">
+    <value>Irreführende Information</value>
+  </data>
+  <data name="ReportWallpaperOther.Content" xml:space="preserve">
+    <value>Andere</value>
+  </data>
+  <data name="ReportWallpaperSpam.Content" xml:space="preserve">
+    <value>Spam</value>
+  </data>
+  <data name="ReportWallpaperViolence.Content" xml:space="preserve">
+    <value>Nacktheit oder Gewalt</value>
+  </data>
+  <data name="TextAdditionalNotes.Text" xml:space="preserve">
+    <value>Zusätzliche Notizen</value>
+  </data>
+  <data name="TextReportWallpaper.Text" xml:space="preserve">
+    <value>Melden</value>
+  </data>
+  <data name="TitleReportWallpaper.Text" xml:space="preserve">
+    <value>Hintergrund melden</value>
+  </data>
+  <data name="Send.Content" xml:space="preserve">
+    <value>Senden</value>
+  </data>
+  <data name="GalleryAccountDeleteConfirm.Text" xml:space="preserve">
+    <value>Diese Aktion kann mit Bestätigung NICHT rückgängig gemacht werden</value>
+  </data>
+  <data name="GalleryAccountDeleteFail.Text" xml:space="preserve">
+    <value>Konto konnte nicht gelöscht werden, bitte versuchen Sie es später erneut</value>
+  </data>
+  <data name="TextConfirmCancel.Text" xml:space="preserve">
+    <value>Möchten Sie abbrechen?</value>
+  </data>
+  <data name="TextWait.Text" xml:space="preserve">
+    <value>Warten</value>
+  </data>
+  <data name="TitleDownloadProgress.Text" xml:space="preserve">
+    <value>Download in Bearbeitung</value>
+  </data>
+  <data name="TextContributors.Text" xml:space="preserve">
+    <value>Mitwirkende</value>
+  </data>
+  <data name="TextShare.Text" xml:space="preserve">
+    <value>Teilen</value>
+  </data>
+  <data name="TitleShareWallpaper.Text" xml:space="preserve">
+    <value>Hintergrund teilen</value>
+  </data>
+  <data name="ExportWallpaperGallery.Text" xml:space="preserve">
+    <value>Galerie hochladen</value>
+  </data>
+  <data name="ExportWallpaperLink.Text" xml:space="preserve">
+    <value>Link kopieren</value>
+  </data>
+  <data name="TextCustomiseWallpaper" xml:space="preserve">
+    <value>Hintergrund anpassen</value>
+  </data>
+  <data name="TextCloseWallpapers" xml:space="preserve">
+    <value>Hintergründe schließen</value>
   </data>
 </root>

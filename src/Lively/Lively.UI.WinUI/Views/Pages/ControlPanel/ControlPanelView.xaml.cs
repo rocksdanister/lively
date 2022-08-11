@@ -86,6 +86,5 @@ namespace Lively.UI.WinUI.Views.Pages.ControlPanel
                 navView.SelectedItem = ((UIElement)item).Visibility != Visibility.Collapsed ? item : navView.SelectedItem;
             }
         }
-
     }
 }

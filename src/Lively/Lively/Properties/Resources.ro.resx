@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -117,10 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="DescCommunity" xml:space="preserve">
+  <data name="AudioFocused.Content" xml:space="preserve">
+    <value>Redați audio numai când desktopul este selectat</value>
+  </data>
+  <data name="Audio.Description" xml:space="preserve">
+    <value>Volumul tuturor fundalurilor.</value>
+  </data>
+  <data name="Audio.Header" xml:space="preserve">
+    <value>Volum Principal</value>
+  </data>
+  <data name="AudioGroup.Header" xml:space="preserve">
+    <value>Audio</value>
+  </data>
+  <data name="CommunityPage.Content" xml:space="preserve">
     <value>Forum discuții online</value>
   </data>
-  <data name="DescDocumentation" xml:space="preserve">
+  <data name="DocumentationPage.Content" xml:space="preserve">
     <value>Documentație API și ajutor</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
@@ -131,7 +143,7 @@ Windows Explorer a repornit de două ori în ultimele 30 de secunde! Acesta poat
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
     <value>Program incompatibil găsit, tematica din bara de activități dezactivată.</value>
   </data>
-  <data name="DescOfficialWebpage" xml:space="preserve">
+  <data name="OfficialWebpage.Content" xml:space="preserve">
     <value>Pagina oficială al Lively Wallpaper</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
@@ -141,10 +153,10 @@ Pentru afișajele OLED, cu plasmă sau CRT care sunt susceptibile de a arde, se 
 
 Scopul principal al screensaverelor de la Lively este de a adăuga un alt nivel de personalizare la computerul tău, folosește screensaverele ca protecție împotriva arderii pe propriu tău risc!</value>
   </data>
-  <data name="DescReportBug" xml:space="preserve">
+  <data name="ReportBugPage.Content" xml:space="preserve">
     <value>Raportează o problemă cu software-ul</value>
   </data>
-  <data name="DescriptionAddWallpaper" xml:space="preserve">
+  <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
     <value>Selectează un fișier sau specifică o adresă URL a site-ului web pentru a seta ca imagine de fundal.</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
@@ -159,7 +171,7 @@ Scopul principal al screensaverelor de la Lively este de a adăuga un alt nivel 
   <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
     <value>Sigur ștergi acest fundal din Bibliotecă?</value>
   </data>
-  <data name="DescriptionDragDropFIle" xml:space="preserve">
+  <data name="DragDropFile.Text" xml:space="preserve">
     <value>Trage fișiere în Bibliotecă</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
@@ -167,7 +179,7 @@ Scopul principal al screensaverelor de la Lively este de a adăuga un alt nivel 
 Aplicațiile rău intenționate pot găzdui malware, viruși... și pot dăuna sistemul tău.
 Continuă doar dacă această aplicație provine dintr-o sursă de încredere.</value>
   </data>
-  <data name="DescriptionMinimizedTray" xml:space="preserve">
+  <data name="MinimizedTray.Text" xml:space="preserve">
     <value>Lively este minimizat în bara de sistem, fă clic dreapta pe pictograma lively pentru a continua.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
@@ -203,6 +215,18 @@ Continuă doar dacă această aplicație provine dintr-o sursă de încredere.</
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
     <value>Ești pe cale să treci la versiunea beta (dezvoltator) a Lively.
 Actualizările vor fi frecvente și pot conține erori!</value>
+  </data>
+  <data name="HideSysTray.Description" xml:space="preserve">
+    <value>Vizibilitatea iconiței, Lively va continua să meargă cu iconița ascunsă</value>
+  </data>
+  <data name="HideSysTray.Header" xml:space="preserve">
+    <value>Iconiță din bară</value>
+  </data>
+  <data name="Language.Description" xml:space="preserve">
+    <value>Lively va reporni pentru a aplica noua limbă.</value>
+  </data>
+  <data name="Language.Header" xml:space="preserve">
+    <value>Limbă</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
     <value>Actualizare eșuată; încearcă să descarci programul de instalare de la:
@@ -241,9 +265,15 @@ vrei să restaurezi fundalurile care rulau anterior?</value>
 3. Activează/Bifează „Animate controls and elements inside windows” (Dacă este deja bifat, atunci debifează și bifaează) și Aplicați.
 4. Apasă „Aplicați”, apoi apasă pe „OK” pentru a închide fereastra.
 
-Dacă ești pe Windows 7 atunci setează - Adjust for best appearancet &amp;amp; Aplicați.
+Dacă ești pe Windows 7 atunci setează - Adjust for best appearancet &amp; Aplicați.
 Dacă tot nu funcționează, repornește Lively/Windows.
 (Nu funcționează în unele versiuni interne Windows 10)</value>
+  </data>
+  <data name="Startup.Description" xml:space="preserve">
+    <value>Lively trebuie să ruleze în fundal pentru redarea fundalului.</value>
+  </data>
+  <data name="Startup.Header" xml:space="preserve">
+    <value>Începe cu Windows</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
     <value>Adaugă</value>
@@ -251,13 +281,13 @@ Dacă tot nu funcționează, repornește Lively/Windows.
   <data name="TextAllFiles" xml:space="preserve">
     <value>Toate fișierele</value>
   </data>
-  <data name="TextApplication" xml:space="preserve">
+  <data name="Application.Header" xml:space="preserve">
     <value>Aplicație</value>
   </data>
-  <data name="TextAttribution" xml:space="preserve">
+  <data name="Attribution.Header" xml:space="preserve">
     <value>Atribuție</value>
   </data>
-  <data name="TextAuthor" xml:space="preserve">
+  <data name="Author.Text" xml:space="preserve">
     <value>Autor</value>
   </data>
   <data name="TextBack" xml:space="preserve">
@@ -266,7 +296,7 @@ Dacă tot nu funcționează, repornește Lively/Windows.
   <data name="TextBrowse" xml:space="preserve">
     <value>Caută</value>
   </data>
-  <data name="TextCancel" xml:space="preserve">
+  <data name="Cancel.Content" xml:space="preserve">
     <value>Anulare</value>
   </data>
   <data name="TextChangeWallpaper" xml:space="preserve">
@@ -275,13 +305,13 @@ Dacă tot nu funcționează, repornește Lively/Windows.
   <data name="TextClose" xml:space="preserve">
     <value>Închide</value>
   </data>
-  <data name="TextCloseWallpapers" xml:space="preserve">
+  <data name="CloseWallpapers.Label" xml:space="preserve">
     <value>Închide fundalurile</value>
   </data>
   <data name="TextCompleted" xml:space="preserve">
     <value>Complet!</value>
   </data>
-  <data name="TextControlPanelOpen" xml:space="preserve">
+  <data name="ControlPanel.Subtitle" xml:space="preserve">
     <value>Apasă aici pentru a gestiona fundalurile.</value>
   </data>
   <data name="TextConvertVideo" xml:space="preserve">
@@ -290,28 +320,28 @@ Dacă tot nu funcționează, repornește Lively/Windows.
   <data name="TextCreatePreview" xml:space="preserve">
     <value>Crează Previzualizare</value>
   </data>
-  <data name="TextCustomise" xml:space="preserve">
+  <data name="Customise.Text" xml:space="preserve">
     <value>Personalizare</value>
   </data>
-  <data name="TextCustomiseWallpaper" xml:space="preserve">
+  <data name="CustomiseWallpaper.Label" xml:space="preserve">
     <value>Personalizare fundal</value>
   </data>
-  <data name="TextDeleteWallpaper" xml:space="preserve">
+  <data name="DeleteWallpaper.Text" xml:space="preserve">
     <value>Șterge</value>
   </data>
-  <data name="TextDescription" xml:space="preserve">
+  <data name="Description.Text" xml:space="preserve">
     <value>Descriere</value>
   </data>
-  <data name="TextDisplayPauseRuleAllScreen" xml:space="preserve">
+  <data name="DisplayPauseRuleAllScreen.Content" xml:space="preserve">
     <value>Tot ecranul</value>
   </data>
-  <data name="TextDisplayPauseRulePerScreen" xml:space="preserve">
+  <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>Per Screen</value>
   </data>
   <data name="TextDownload" xml:space="preserve">
     <value>Descarcă</value>
   </data>
-  <data name="TextEditWallpaper" xml:space="preserve">
+  <data name="EditWallpaper.Text" xml:space="preserve">
     <value>Editează</value>
   </data>
   <data name="TextError" xml:space="preserve">
@@ -320,7 +350,7 @@ Dacă tot nu funcționează, repornește Lively/Windows.
   <data name="TextExit" xml:space="preserve">
     <value>Ieșire</value>
   </data>
-  <data name="TextExportWallpaperZip" xml:space="preserve">
+  <data name="ExportWallpaperZip.Text" xml:space="preserve">
     <value>Exportează lively .zip</value>
   </data>
   <data name="TextFeatureMissing" xml:space="preserve">
@@ -332,7 +362,7 @@ Dacă tot nu funcționează, repornește Lively/Windows.
   <data name="TextGIF" xml:space="preserve">
     <value>GIF animat</value>
   </data>
-  <data name="TextGitHubStar" xml:space="preserve">
+  <data name="GitHubStar.Content" xml:space="preserve">
     <value>Arată puțină dragoste aruncând o stea</value>
   </data>
   <data name="TextGo" xml:space="preserve">
@@ -347,7 +377,7 @@ Dacă tot nu funcționează, repornește Lively/Windows.
   <data name="TextInstall" xml:space="preserve">
     <value>Instalare</value>
   </data>
-  <data name="TextKeyboard" xml:space="preserve">
+  <data name="TextKeyboard.Content" xml:space="preserve">
     <value>Tastatură</value>
   </data>
   <data name="TextLastChecked" xml:space="preserve">
@@ -356,7 +386,7 @@ Dacă tot nu funcționează, repornește Lively/Windows.
   <data name="TextLearnMore" xml:space="preserve">
     <value>Află mai multe</value>
   </data>
-  <data name="TextLicense" xml:space="preserve">
+  <data name="License.Header" xml:space="preserve">
     <value>Licență</value>
   </data>
   <data name="TextMinutes" xml:space="preserve">
@@ -368,10 +398,10 @@ Dacă tot nu funcționează, repornește Lively/Windows.
   <data name="TextMoreWallpapers" xml:space="preserve">
     <value>Mai multe fundaluri</value>
   </data>
-  <data name="TextMouse" xml:space="preserve">
+  <data name="TextMouse.Content" xml:space="preserve">
     <value>Mouse</value>
   </data>
-  <data name="TextMouseInteractOnDesktop" xml:space="preserve">
+  <data name="MouseInteractOnDesktop.Content" xml:space="preserve">
     <value>Interacțiune cu mouse când aplicația este este selectată</value>
   </data>
   <data name="TextNext" xml:space="preserve">
@@ -380,13 +410,13 @@ Dacă tot nu funcționează, repornește Lively/Windows.
   <data name="TextNo" xml:space="preserve">
     <value>Nu</value>
   </data>
-  <data name="TextOff" xml:space="preserve">
+  <data name="TextOff.Content" xml:space="preserve">
     <value>Oprit</value>
   </data>
   <data name="TextOK" xml:space="preserve">
-    <value>OK</value>
+    <value>Ok</value>
   </data>
-  <data name="TextOn" xml:space="preserve">
+  <data name="TextOn.Content" xml:space="preserve">
     <value>Pornit</value>
   </data>
   <data name="TextOnline" xml:space="preserve">
@@ -395,34 +425,34 @@ Dacă tot nu funcționează, repornește Lively/Windows.
   <data name="TextOpenLively" xml:space="preserve">
     <value>Deschide Lively</value>
   </data>
-  <data name="TextPauseAlgoAllProcess" xml:space="preserve">
+  <data name="PauseAlgorithmTypeAllProcess.Content" xml:space="preserve">
     <value>Toate procesele</value>
   </data>
-  <data name="TextPauseAlgoExclusiveMode" xml:space="preserve">
+  <data name="PauseAlgorithmTypeExclusiveMode.Content" xml:space="preserve">
     <value>Direct3D</value>
   </data>
-  <data name="TextPauseAlgoForegroundProcess" xml:space="preserve">
+  <data name="PauseAlgorithmTypeForegroundProcess.Content" xml:space="preserve">
     <value>Procese în prim-plan</value>
   </data>
   <data name="TextPauseWallpapers" xml:space="preserve">
     <value>Întrerupe fundalurile</value>
   </data>
-  <data name="TextPerformanceKill" xml:space="preserve">
+  <data name="TextPerformanceKill.Content" xml:space="preserve">
     <value>Închide</value>
   </data>
-  <data name="TextPerformanceNone" xml:space="preserve">
+  <data name="TextPerformanceNone.Content" xml:space="preserve">
     <value>Nimic</value>
   </data>
-  <data name="TextPerformancePause" xml:space="preserve">
+  <data name="TextPerformancePause.Content" xml:space="preserve">
     <value>Pauză</value>
   </data>
   <data name="TextPicture" xml:space="preserve">
     <value>Poză</value>
   </data>
-  <data name="TextPreviewWallpaper" xml:space="preserve">
+  <data name="PreviewWallpaper.Text" xml:space="preserve">
     <value>Previzualizare</value>
   </data>
-  <data name="TextPrivacyPolicy" xml:space="preserve">
+  <data name="PrivacyPolicy.Header" xml:space="preserve">
     <value>Politica de Confidențialitate</value>
   </data>
   <data name="TextProcessingWallpaper" xml:space="preserve">
@@ -440,13 +470,13 @@ Dacă tot nu funcționează, repornește Lively/Windows.
   <data name="TextSearch" xml:space="preserve">
     <value>Caută</value>
   </data>
-  <data name="TextSetWallpaper" xml:space="preserve">
+  <data name="SetWallpaper.Text" xml:space="preserve">
     <value>Setează ca fundal</value>
   </data>
-  <data name="TextShowOnDisk" xml:space="preserve">
+  <data name="ShowOnDisk.Text" xml:space="preserve">
     <value>Deschide locație fișier</value>
   </data>
-  <data name="TextSource" xml:space="preserve">
+  <data name="WallpaperSource.Text" xml:space="preserve">
     <value>Sursă</value>
   </data>
   <data name="TextStart" xml:space="preserve">
@@ -455,11 +485,11 @@ Dacă tot nu funcționează, repornește Lively/Windows.
   <data name="TextStop" xml:space="preserve">
     <value>Stop</value>
   </data>
-  <data name="TextStoreReview" xml:space="preserve">
-    <value>Do you enjoy using Lively? Leave a review :)</value>
+  <data name="StoreReview.Content" xml:space="preserve">
+    <value>Ți-a plăcut să folosești lively ? Lasă o recenzie :)</value>
   </data>
-  <data name="TextSupport" xml:space="preserve">
-    <value>Support</value>
+  <data name="TextSupport.Content" xml:space="preserve">
+    <value>Ajutor</value>
   </data>
   <data name="TextSwitchBranchDev" xml:space="preserve">
     <value>Schimbă în beta (canal Dev)</value>
@@ -470,22 +500,22 @@ Dacă tot nu funcționează, repornește Lively/Windows.
   <data name="TextTags" xml:space="preserve">
     <value>Tag-uri</value>
   </data>
-  <data name="TextTaskbarThemeBlur" xml:space="preserve">
+  <data name="TaskbarThemeBlur.Content" xml:space="preserve">
     <value>Încețoșare</value>
   </data>
-  <data name="TextTaskbarThemeClear" xml:space="preserve">
+  <data name="TaskbarThemeClear.Content" xml:space="preserve">
     <value>Transparent</value>
   </data>
-  <data name="TextTaskbarThemeColor" xml:space="preserve">
+  <data name="TaskbarThemeColor.Content" xml:space="preserve">
     <value>Culoare</value>
   </data>
-  <data name="TextTaskbarThemeFluent" xml:space="preserve">
+  <data name="TaskbarThemeFluent.Content" xml:space="preserve">
     <value>Fluent</value>
   </data>
-  <data name="TextTaskbarThemeWallpaper" xml:space="preserve">
+  <data name="TaskbarThemeWallpaper.Content" xml:space="preserve">
     <value>Fundal</value>
   </data>
-  <data name="TextTaskbarThemeWallpaperFluent" xml:space="preserve">
+  <data name="TaskbarThemeWallpaperFluent.Content" xml:space="preserve">
     <value>Fundal Fluent</value>
   </data>
   <data name="TextTileSizeLarge" xml:space="preserve">
@@ -497,7 +527,7 @@ Dacă tot nu funcționează, repornește Lively/Windows.
   <data name="TextTileSizeSmall" xml:space="preserve">
     <value>Mic</value>
   </data>
-  <data name="TextTitle" xml:space="preserve">
+  <data name="Title.Text" xml:space="preserve">
     <value>Titlu</value>
   </data>
   <data name="TextUIHeadless" xml:space="preserve">
@@ -533,31 +563,31 @@ Dacă tot nu funcționează, repornește Lively/Windows.
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
     <value>Introdu argumente opționale în linia de comandă</value>
   </data>
-  <data name="TextWallpaperFitFill" xml:space="preserve">
+  <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>Umplere</value>
   </data>
-  <data name="TextWallpaperFitNone" xml:space="preserve">
+  <data name="WallpaperFitNone.Content" xml:space="preserve">
     <value>Nimic</value>
   </data>
-  <data name="TextWallpaperFitUniform" xml:space="preserve">
+  <data name="WallpaperFitUniform.Content" xml:space="preserve">
     <value>Uniform</value>
   </data>
-  <data name="TextWallpaperFitUniformToFill" xml:space="preserve">
+  <data name="WallpaperFitUniformToFill.Content" xml:space="preserve">
     <value>Umplere uniformă</value>
   </data>
-  <data name="TextWallpaperLayoutDuplicate" xml:space="preserve">
+  <data name="WallpaperLayoutDuplicate.Content" xml:space="preserve">
     <value>Duplică același fundal</value>
   </data>
-  <data name="TextWallpaperLayoutPerScreen" xml:space="preserve">
+  <data name="WallpaperLayoutPerScreen.Content" xml:space="preserve">
     <value>Numai ecranele selectate</value>
   </data>
-  <data name="TextWallpaperLayoutSpan" xml:space="preserve">
+  <data name="WallpaperLayoutSpan.Content" xml:space="preserve">
     <value>Se întinde pe ecrane</value>
   </data>
-  <data name="TextWallpaperType" xml:space="preserve">
+  <data name="WallpaperType.Text" xml:space="preserve">
     <value>Tip</value>
   </data>
-  <data name="TextWebsite" xml:space="preserve">
+  <data name="Website.Header" xml:space="preserve">
     <value>Website</value>
   </data>
   <data name="TextWebStream" xml:space="preserve">
@@ -569,86 +599,77 @@ Dacă tot nu funcționează, repornește Lively/Windows.
   <data name="TextYes" xml:space="preserve">
     <value>Da</value>
   </data>
-  <data name="TileVideoPlayer" xml:space="preserve">
+  <data name="VideoPlayer.Header" xml:space="preserve">
     <value>Player Video</value>
   </data>
-  <data name="TipAddWallpaperFileBrowse" xml:space="preserve">
+  <data name="AddWallpaperFileBrowse.Description" xml:space="preserve">
     <value>Setează toate tipurile de fișiere acceptate ca fundal.</value>
   </data>
-  <data name="TipAddWallpaperURL" xml:space="preserve">
+  <data name="EnterUrl.Description" xml:space="preserve">
     <value>Setează pagina web a adresei URL pe care ai introdus-o ca fundal.</value>
   </data>
-  <data name="TipAppFocus" xml:space="preserve">
+  <data name="AppFocus.Description" xml:space="preserve">
     <value>Setează ce se face când orice aplicație este selectată.</value>
   </data>
-  <data name="TipAppFullScreen" xml:space="preserve">
+  <data name="AppFullScreen.Description" xml:space="preserve">
     <value>Setează ce se face când se rulează jocuri/aplicații pe ecran complet.</value>
   </data>
-  <data name="TipAppRules" xml:space="preserve">
+  <data name="AppRules.Description" xml:space="preserve">
     <value>Setează reguli diferite de redare al fundalalurilor în funcție de rularea aplicației.</value>
   </data>
   <data name="TipAppTheme" xml:space="preserve">
     <value>Lively se adaptează la setările temei de sistem, pentru a schimba aspectul mergi la</value>
   </data>
-  <data name="TipAudioMaster" xml:space="preserve">
-    <value>Volumul tuturor fundalurilor.</value>
-  </data>
-  <data name="TipBatteryPower" xml:space="preserve">
+  <data name="BatteryPower.Description" xml:space="preserve">
     <value>Schimbă redarea când alimentarea CA este deconectată.</value>
   </data>
-  <data name="TipBrowserDebuggingPort" xml:space="preserve">
+  <data name="BrowserDebuggingPort.Description" xml:space="preserve">
     <value>Introdu portul pentru depanarea fundalurilor ale paginilor web, este necesară repornirea browserului pentru ca modificările să intre în vigoare.
 Când ești gata, navigează la http://localhost:portnumber pentru a accesa consola pentru dezvoltatori.</value>
   </data>
-  <data name="TipDebug" xml:space="preserve">
+  <data name="Debug.Description" xml:space="preserve">
     <value>Arată meniul dezvoltatorilor.</value>
   </data>
-  <data name="TipDesktopPicture" xml:space="preserve">
+  <data name="DesktopPicture.Description" xml:space="preserve">
     <value>Setează o imagine a fundalului animat ca imagine de fundal pentru desktop.</value>
   </data>
-  <data name="TipDisplayPauseRule" xml:space="preserve">
+  <data name="DisplayPauseRule.Description" xml:space="preserve">
     <value>Alege dacă se întrerup fundalulurile pe toate ecranele sau numai pe ecranul relevant în care aplicația este selectată/ecran complet.</value>
   </data>
-  <data name="TipExportLogs" xml:space="preserve">
+  <data name="ExportLogs.Description" xml:space="preserve">
     <value>Crează fișier "log"</value>
   </data>
-  <data name="TipGifPlayer" xml:space="preserve">
+  <data name="GifPlayer.Description" xml:space="preserve">
     <value>Selectează playerul folosit pentru imaginea de fundal gif.</value>
-  </data>
-  <data name="TipHideSysTray" xml:space="preserve">
-    <value>Vizibilitate pictogramei din bara de sistem, lively va continua să ruleze cu pictograma ascunsă.</value>
-  </data>
-  <data name="TipLanguage" xml:space="preserve">
-    <value>Lively va reporni pentru a aplica noua limbă.</value>
   </data>
   <data name="TipLivelySetupOnClose" xml:space="preserve">
     <value>Finalizează setup-ul pentru a continua.</value>
   </data>
-  <data name="TipLockscreenPicture" xml:space="preserve">
+  <data name="LockscreenPicture.Description" xml:space="preserve">
     <value>Setează o imagine a fundalului animat ca imagine de fundal pentru ecranul de blocare.</value>
   </data>
-  <data name="TipPauseAlgorithm" xml:space="preserve">
+  <data name="PauseAlgorithm.Description" xml:space="preserve">
     <value>Algoritmul de pauză a imaginii de fundal.</value>
   </data>
-  <data name="TipPowerSavingModePower" xml:space="preserve">
+  <data name="PowerSavingModePower.Description" xml:space="preserve">
     <value>Schimbă redarea când este activat modul Windows Economisire energie.</value>
   </data>
-  <data name="TipRemoteDesktopPower" xml:space="preserve">
+  <data name="RemoteDesktopPower.Description" xml:space="preserve">
     <value>Schimbă redarea când rulezi o sesiune Desktop la distanță.</value>
   </data>
   <data name="TipScreensaver" xml:space="preserve">
     <value>După perioada de inactivitate selectată, utilizează fundalul curent ca screensaver.</value>
   </data>
-  <data name="TipStreamWallpaperDetect" xml:space="preserve">
+  <data name="StreamWallpaperDetect.Description" xml:space="preserve">
     <value>Dacă este detectată un steam video acceptat, utilizeazp playerul video în loc să încarci pagina web.</value>
   </data>
-  <data name="TipStreamWallpaperVideoQuality" xml:space="preserve">
+  <data name="StreamWallpaperVideoQuality.Description" xml:space="preserve">
     <value>Selectează calitatea video dorită pentru stream-urile online.</value>
   </data>
   <data name="TipSwitchSoftwareBranch" xml:space="preserve">
     <value>Schimbă versiunea software de la beta la stabilă sau invers.</value>
   </data>
-  <data name="TipTaskbarTheme" xml:space="preserve">
+  <data name="TaskbarTheme.Description" xml:space="preserve">
     <value>Schimbă aspectul barei de activități a sistemului.</value>
   </data>
   <data name="TipTileSize" xml:space="preserve">
@@ -657,123 +678,105 @@ Când ești gata, navigează la http://localhost:portnumber pentru a accesa cons
   <data name="TipUIMode" xml:space="preserve">
     <value>Pentru sistemele slabe, selectează modul Lite.</value>
   </data>
-  <data name="TipVideoHardwareDecode" xml:space="preserve">
+  <data name="VideoHardwareDecode.Description" xml:space="preserve">
     <value>Folosește accelerarea hardware atunci când este posibil.</value>
   </data>
-  <data name="TipVideoPlayer" xml:space="preserve">
+  <data name="VideoPlayer.Description" xml:space="preserve">
     <value>Selectează playerul folosit pentru fundalul video.</value>
   </data>
-  <data name="TipWallpaperDir" xml:space="preserve">
+  <data name="WallpaperDir.Description" xml:space="preserve">
     <value>Calea folosită pentru stocarea fișierelor de fundal.</value>
   </data>
-  <data name="TipWallpaperFit" xml:space="preserve">
+  <data name="WallpaperFit.Description" xml:space="preserve">
     <value>Algoritm de scalare a fundalurilor.</value>
   </data>
-  <data name="TipWallpaperInput" xml:space="preserve">
+  <data name="WallpaperInput.Description" xml:space="preserve">
     <value>Selectează modalități de a interacționa cu fundalul.</value>
   </data>
-  <data name="TipWallpaperLayout" xml:space="preserve">
+  <data name="WallpaperLayout.Description" xml:space="preserve">
     <value>Cum se aplică imaginea de fundal pe dispozitivele de afișare conectate.</value>
   </data>
   <data name="TipWallpaperPlayback" xml:space="preserve">
     <value>Întrerupe redarea fundalului atunci când desktopul nu este selectat.</value>
   </data>
-  <data name="TipWebBrowserDiskCache" xml:space="preserve">
+  <data name="WebBrowserDiskCache.Description" xml:space="preserve">
     <value>Stocează fișierele temporare pe disc în loc de memorie, setările sunt restaurate când browserul este repornit.</value>
   </data>
-  <data name="TipWebBrowserEngine" xml:space="preserve">
+  <data name="WebBrowser.Description" xml:space="preserve">
     <value>CEF (Chromium Embedded Framework) este un motor ușor chronium.
 Edge este vizualizarea web integrată a Windows 10.</value>
   </data>
-  <data name="TipWindowsStartup" xml:space="preserve">
-    <value>Lively trebuie să ruleze în fundal pentru redarea fundalului.</value>
-  </data>
-  <data name="TitleAbout" xml:space="preserve">
+  <data name="About.Label" xml:space="preserve">
     <value>Despre</value>
   </data>
-  <data name="TitleAddWallpaper" xml:space="preserve">
+  <data name="AddWallpaper.Label" xml:space="preserve">
     <value>Adaugă fundal</value>
   </data>
-  <data name="TitleAppFocus" xml:space="preserve">
+  <data name="AppFocus.Header" xml:space="preserve">
     <value>Aplicații selectate</value>
   </data>
-  <data name="TitleAppFullScreen" xml:space="preserve">
+  <data name="AppFullScreen.Header" xml:space="preserve">
     <value>Aplicații fullscreen</value>
   </data>
   <data name="TitleAppName" xml:space="preserve">
     <value>Lively Wallpaper</value>
   </data>
-  <data name="TitleAppRules" xml:space="preserve">
+  <data name="AppRules.Header" xml:space="preserve">
     <value>Reguli aplicații</value>
   </data>
-  <data name="TitleAppTheme" xml:space="preserve">
+  <data name="AppTheme.Header" xml:space="preserve">
     <value>Temă</value>
-  </data>
-  <data name="TitleAudio" xml:space="preserve">
-    <value>Audio</value>
-  </data>
-  <data name="TitleAudioDesktopOnly" xml:space="preserve">
-    <value>Redp audio numai când desktopul este selectat</value>
-  </data>
-  <data name="TitleAudioMaster" xml:space="preserve">
-    <value>Volum Principal</value>
   </data>
   <data name="TitleAudioPlayOnScreen" xml:space="preserve">
     <value>Redă audio pe ecran</value>
   </data>
-  <data name="TitleBatteryPower" xml:space="preserve">
+  <data name="BatteryPower.Header" xml:space="preserve">
     <value>Când ești pe baterie</value>
   </data>
   <data name="TitleBrowseFile" xml:space="preserve">
     <value>Caută videoclipuri, gif, pagină web... fișier pentru a seta ca fundal</value>
   </data>
-  <data name="TitleBrowserDebuggingPort" xml:space="preserve">
+  <data name="BrowserDebuggingPort.Header" xml:space="preserve">
     <value>Port debugging</value>
   </data>
   <data name="TitleChangelog" xml:space="preserve">
     <value>Modificări</value>
   </data>
-  <data name="TitleCommunity" xml:space="preserve">
+  <data name="Community.Header" xml:space="preserve">
     <value>Comunitate</value>
   </data>
-  <data name="TitleDebug" xml:space="preserve">
+  <data name="Debug.Header" xml:space="preserve">
     <value>Debug</value>
   </data>
   <data name="TitleDeleteConfirmation" xml:space="preserve">
     <value>Confirmare ștergere</value>
   </data>
-  <data name="TitleDesktopPicture" xml:space="preserve">
+  <data name="DesktopPicture.Header" xml:space="preserve">
     <value>Poză desktop</value>
   </data>
-  <data name="TitleDisplayPauseRule" xml:space="preserve">
+  <data name="DisplayPauseRule.Header" xml:space="preserve">
     <value>Display Pause Rule</value>
   </data>
-  <data name="TitleDocumentation" xml:space="preserve">
+  <data name="Documentation.Header" xml:space="preserve">
     <value>Documentație</value>
   </data>
-  <data name="TitleEnterUrl" xml:space="preserve">
-    <value>Introdu URL</value>
+  <data name="EnterUrl.Header" xml:space="preserve">
+    <value>Enter URL</value>
   </data>
-  <data name="TitleExportLogs" xml:space="preserve">
+  <data name="ExportLogs.Header" xml:space="preserve">
     <value>Fișier log</value>
   </data>
   <data name="TitleGeneral" xml:space="preserve">
     <value>General</value>
   </data>
-  <data name="TitleGifPlayer" xml:space="preserve">
+  <data name="GifPlayer.Header" xml:space="preserve">
     <value>Player GIF</value>
   </data>
-  <data name="TitleHelp" xml:space="preserve">
+  <data name="Help.Label" xml:space="preserve">
     <value>Ajutor</value>
-  </data>
-  <data name="TitleHideSysTray" xml:space="preserve">
-    <value>Iconiță din bară</value>
   </data>
   <data name="TitleInteraction" xml:space="preserve">
     <value>Interacțiune</value>
-  </data>
-  <data name="TitleLanguage" xml:space="preserve">
-    <value>Limbă</value>
   </data>
   <data name="TitleLibrary" xml:space="preserve">
     <value>Bibliotecă</value>
@@ -784,7 +787,7 @@ Edge este vizualizarea web integrată a Windows 10.</value>
   <data name="TitleLocation" xml:space="preserve">
     <value>Locație</value>
   </data>
-  <data name="TitleLockscreenPicture" xml:space="preserve">
+  <data name="LockscreenPicture.Header" xml:space="preserve">
     <value>Imagine de pe ecranul de blocare</value>
   </data>
   <data name="TitleMisc" xml:space="preserve">
@@ -793,7 +796,7 @@ Edge este vizualizarea web integrată a Windows 10.</value>
   <data name="TitleMute" xml:space="preserve">
     <value>Mut</value>
   </data>
-  <data name="TitlePauseAlgo" xml:space="preserve">
+  <data name="PauseAlgorithm.Header" xml:space="preserve">
     <value>Algoritmul de pauză</value>
   </data>
   <data name="TitlePerformance" xml:space="preserve">
@@ -802,22 +805,22 @@ Edge este vizualizarea web integrată a Windows 10.</value>
   <data name="TitlePlaylist" xml:space="preserve">
     <value>Playlist</value>
   </data>
-  <data name="TitlePleaseWait" xml:space="preserve">
+  <data name="PleaseWait.Text" xml:space="preserve">
     <value>Așteaptă</value>
   </data>
-  <data name="TitlePowerSavingModePower" xml:space="preserve">
+  <data name="PowerSavingModePower.Header" xml:space="preserve">
     <value>Când este activat Economisire energie</value>
   </data>
-  <data name="TitleRemoteDesktopPower" xml:space="preserve">
+  <data name="RemoteDesktopPower.Header" xml:space="preserve">
     <value>Când ești într-o sesiune Desktop la distanță</value>
   </data>
-  <data name="TitleReportBug" xml:space="preserve">
+  <data name="ReportBug.Header" xml:space="preserve">
     <value>Raportează o eroare</value>
   </data>
   <data name="TitleScalingFit" xml:space="preserve">
     <value>Scalare/potrivire</value>
   </data>
-  <data name="TitleScreenLayout" xml:space="preserve">
+  <data name="ControlPanel.Title" xml:space="preserve">
     <value>Panou de Control</value>
   </data>
   <data name="TitleScreensaver" xml:space="preserve">
@@ -835,26 +838,26 @@ Edge este vizualizarea web integrată a Windows 10.</value>
   <data name="TitleSkipConfirm" xml:space="preserve">
     <value>Sari peste confirmare</value>
   </data>
-  <data name="TitleSourceCode" xml:space="preserve">
+  <data name="SourceCode.Header" xml:space="preserve">
     <value>Cod sursă</value>
   </data>
-  <data name="TitleStore" xml:space="preserve">
+  <data name="Store.Header" xml:space="preserve">
     <value>Magazin</value>
     <comment>For different version of Lively, example: Microsoft Store</comment>
   </data>
-  <data name="TitleStreamWallpaper" xml:space="preserve">
+  <data name="StreamWallpaperVideoQuality.Header" xml:space="preserve">
     <value>Stream</value>
   </data>
-  <data name="TitleStreamWallpaperDetect" xml:space="preserve">
+  <data name="StreamWallpaperDetect.Header" xml:space="preserve">
     <value>Detectează Stream-uri</value>
   </data>
   <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
     <value>Calitate Video</value>
   </data>
-  <data name="TitleSystem" xml:space="preserve">
+  <data name="System.Header" xml:space="preserve">
     <value>Sistem</value>
   </data>
-  <data name="TitleTaskbarTheme" xml:space="preserve">
+  <data name="TaskbarTheme.Header" xml:space="preserve">
     <value>Temă bară de activități</value>
   </data>
   <data name="TitleTileSize" xml:space="preserve">
@@ -869,37 +872,37 @@ Edge este vizualizarea web integrată a Windows 10.</value>
   <data name="TitleVideo" xml:space="preserve">
     <value>Video</value>
   </data>
-  <data name="TitleVideoHardwareDecode" xml:space="preserve">
+  <data name="VideoHardwareDecode.Header" xml:space="preserve">
     <value>Decodare GPU</value>
   </data>
   <data name="TitleWallpaper" xml:space="preserve">
     <value>Fundal</value>
   </data>
-  <data name="TitleWallpaperDir" xml:space="preserve">
+  <data name="WallpaperDir.Header" xml:space="preserve">
     <value>Director de fundaluri</value>
   </data>
-  <data name="TitleWallpaperDirMoveExisting" xml:space="preserve">
+  <data name="WallpaperDirMoveExisting.Content" xml:space="preserve">
     <value>Mută fundalurile existente într-un folder nou</value>
   </data>
-  <data name="TitleWallpaperFit" xml:space="preserve">
+  <data name="WallpaperFit.Header" xml:space="preserve">
     <value>Alege o potrivire</value>
   </data>
-  <data name="TitleWallpaperInput" xml:space="preserve">
+  <data name="WallpaperInput.Header" xml:space="preserve">
     <value>Intrare fundal</value>
   </data>
-  <data name="TitleWallpaperLayout" xml:space="preserve">
+  <data name="WallpaperLayout.Header" xml:space="preserve">
     <value>Metodă de plasare</value>
   </data>
-  <data name="TitleWallpaperPlayback" xml:space="preserve">
+  <data name="WallpaperPlaybackGroup.Header" xml:space="preserve">
     <value>Redare fundal</value>
   </data>
   <data name="TitleWarning" xml:space="preserve">
     <value>Atenție</value>
   </data>
-  <data name="TitleWebBrowser" xml:space="preserve">
+  <data name="WebBrowser.Header" xml:space="preserve">
     <value>Browser Web</value>
   </data>
-  <data name="TitleWebBrowserDiskCache" xml:space="preserve">
+  <data name="WebBrowserDiskCache.Header" xml:space="preserve">
     <value>Cache pe disc</value>
   </data>
   <data name="TitleWebBrowserEngine" xml:space="preserve">
@@ -908,7 +911,220 @@ Edge este vizualizarea web integrată a Windows 10.</value>
   <data name="TitleWebpageLoad" xml:space="preserve">
     <value>Încarcă pagină Web</value>
   </data>
-  <data name="TitleWindowsStartup" xml:space="preserve">
-    <value>Pornire cu Windows</value>
+  <data name="FastUI.Description" xml:space="preserve">
+    <value>Keep User Interface running for faster startup</value>
+  </data>
+  <data name="FastUI.Header" xml:space="preserve">
+    <value>Deschidere rapidă</value>
+  </data>
+  <data name="WallpaperDirGroup.Header" xml:space="preserve">
+    <value>Fișier</value>
+  </data>
+  <data name="AppThemeDark.Content" xml:space="preserve">
+    <value>Întunecat</value>
+  </data>
+  <data name="AppThemeLight.Content" xml:space="preserve">
+    <value>Luminat</value>
+  </data>
+  <data name="AppThemeSystem.Content" xml:space="preserve">
+    <value>Sistem</value>
+  </data>
+  <data name="WindowsSettingsColor.Content" xml:space="preserve">
+    <value>Windows color settings</value>
+  </data>
+  <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
+    <value>Laptops</value>
+  </data>
+  <data name="DeveloperGroup.Header" xml:space="preserve">
+    <value>Developer</value>
+  </data>
+  <data name="AppearanceBehaviour.Header" xml:space="preserve">
+    <value>Appearance &amp; behavior</value>
+  </data>
+  <data name="ActiveWallpapers.Label" xml:space="preserve">
+    <value>Active Wallpaper(s)</value>
+  </data>
+  <data name="TitleGallery" xml:space="preserve">
+    <value>Galerie</value>
+  </data>
+  <data name="AboutMe.Text" xml:space="preserve">
+    <value>Bună sunt Dani John cunoscut si ca rocksdanister. Eu am făcut Lively o aplicație gratis si open source (FOSS) de fundal. Mulțumesc pentru ca ați luat din timpul vostru pentru a vă uita la munca mea.</value>
+  </data>
+  <data name="LicenseLink.Content" xml:space="preserve">
+    <value>Licența de software</value>
+  </data>
+  <data name="AttributionLink.Content" xml:space="preserve">
+    <value>Third party software notice</value>
+  </data>
+  <data name="PrivacyPolicyLink.Content" xml:space="preserve">
+    <value>Politica de colectare a datelor</value>
+  </data>
+  <data name="AddWallpaperDrop.Text" xml:space="preserve">
+    <value>Adăugați imagine de fundal</value>
+  </data>
+  <data name="ComingSoon.Text" xml:space="preserve">
+    <value>Încurând</value>
+  </data>
+  <data name="AboutMenu.Text" xml:space="preserve">
+    <value>Despre</value>
+  </data>
+  <data name="SourceWebsite.Text" xml:space="preserve">
+    <value>Site-ul Web</value>
+  </data>
+  <data name="TextOpen.Content" xml:space="preserve">
+    <value>Deschideți</value>
+  </data>
+  <data name="TextSave.Content" xml:space="preserve">
+    <value>Salvați</value>
+  </data>
+  <data name="UIMode.Description" xml:space="preserve">
+    <value>Interfața utilizatorului a efectelor și a animațiilor</value>
+  </data>
+  <data name="UIMode.Header" xml:space="preserve">
+    <value>User interface</value>
+  </data>
+  <data name="UIModeLite.Content" xml:space="preserve">
+    <value>Lite</value>
+  </data>
+  <data name="UIModeNormal.Content" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="Screensaver.Description" xml:space="preserve">
+    <value>How screensaver is applied to connected to display devices</value>
+  </data>
+  <data name="Screensaver.Header" xml:space="preserve">
+    <value>Type of screensaver</value>
+  </data>
+  <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
+    <value>Configured separately</value>
+  </data>
+  <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
+    <value>Same as running wallpaper</value>
+  </data>
+  <data name="ScreensaverPlugin.Title" xml:space="preserve">
+    <value>Plugin required</value>
+  </data>
+  <data name="ScreensaverPluginMessage.Text" xml:space="preserve">
+    <value>One time setup is required to run screensaver</value>
+  </data>
+  <data name="WallpaperLayoutScreenPicker.Content" xml:space="preserve">
+    <value>Always pick screen when choosing wallpaper</value>
+  </data>
+  <data name="GalleryAccount.Text" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="GalleryAccountDelete.Content" xml:space="preserve">
+    <value>Delete account</value>
+  </data>
+  <data name="GalleryAccountExport.Content" xml:space="preserve">
+    <value>Export data</value>
+  </data>
+  <data name="GalleryAccountLogin.Content" xml:space="preserve">
+    <value>Log in</value>
+  </data>
+  <data name="GalleryAccountLogout.Content" xml:space="preserve">
+    <value>Log out</value>
+  </data>
+  <data name="GalleryPageCollection.Content" xml:space="preserve">
+    <value>Collection</value>
+  </data>
+  <data name="GalleryPageHome.Content" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="GalleryPageManage.Content" xml:space="preserve">
+    <value>Manage</value>
+  </data>
+  <data name="GalleryPageProfile.Content" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="GalleryPleaseLogin.Text" xml:space="preserve">
+    <value>Please log in to continue</value>
+  </data>
+  <data name="GalleryWelcomeMessage.Text" xml:space="preserve">
+    <value>Hi</value>
+  </data>
+  <data name="RestoreWallpaper.Text" xml:space="preserve">
+    <value>We found these wallpapers in your account</value>
+  </data>
+  <data name="TextDownloadNow.Content" xml:space="preserve">
+    <value>Download now</value>
+  </data>
+  <data name="TextMaybeLater.Content" xml:space="preserve">
+    <value>Maybe later</value>
+  </data>
+  <data name="TextSelectAll.Content" xml:space="preserve">
+    <value>Select all</value>
+  </data>
+  <data name="TextSelectNone.Content" xml:space="preserve">
+    <value>Select none</value>
+  </data>
+  <data name="TitleWelcomeback.Text" xml:space="preserve">
+    <value>Welcome back!</value>
+  </data>
+  <data name="ReportWallpaper.Header" xml:space="preserve">
+    <value>Reasons</value>
+  </data>
+  <data name="ReportWallpaperCopyright.Content" xml:space="preserve">
+    <value>Copyright violation</value>
+  </data>
+  <data name="ReportWallpaperMisleading.Content" xml:space="preserve">
+    <value>Informații false</value>
+  </data>
+  <data name="ReportWallpaperOther.Content" xml:space="preserve">
+    <value>Altele</value>
+  </data>
+  <data name="ReportWallpaperSpam.Content" xml:space="preserve">
+    <value>Spam</value>
+  </data>
+  <data name="ReportWallpaperViolence.Content" xml:space="preserve">
+    <value>Nuditate și violență</value>
+  </data>
+  <data name="TextAdditionalNotes.Text" xml:space="preserve">
+    <value>Notițe adiționale</value>
+  </data>
+  <data name="TextReportWallpaper.Text" xml:space="preserve">
+    <value>Raportează</value>
+  </data>
+  <data name="TitleReportWallpaper.Text" xml:space="preserve">
+    <value>Raportați imagine de fundal</value>
+  </data>
+  <data name="Send.Content" xml:space="preserve">
+    <value>Trimiteți</value>
+  </data>
+  <data name="GalleryAccountDeleteConfirm.Text" xml:space="preserve">
+    <value>Vă rog confirmați această acțiune nu putea fi anulată</value>
+  </data>
+  <data name="GalleryAccountDeleteFail.Text" xml:space="preserve">
+    <value>Contul nu a putut sa fie șters, vă rog încercați mai târziu</value>
+  </data>
+  <data name="TextConfirmCancel.Text" xml:space="preserve">
+    <value>Vreți să anulați?</value>
+  </data>
+  <data name="TextWait.Text" xml:space="preserve">
+    <value>Așteptați</value>
+  </data>
+  <data name="TitleDownloadProgress.Text" xml:space="preserve">
+    <value>Descărcare in progres</value>
+  </data>
+  <data name="TextContributors.Text" xml:space="preserve">
+    <value>Contributors</value>
+  </data>
+  <data name="TextShare.Text" xml:space="preserve">
+    <value>Share</value>
+  </data>
+  <data name="TitleShareWallpaper.Text" xml:space="preserve">
+    <value>Share Wallpaper</value>
+  </data>
+  <data name="ExportWallpaperGallery.Text" xml:space="preserve">
+    <value>Gallery upload</value>
+  </data>
+  <data name="ExportWallpaperLink.Text" xml:space="preserve">
+    <value>Copy link</value>
+  </data>
+  <data name="TextCustomiseWallpaper" xml:space="preserve">
+    <value>Personalizare fundal</value>
+  </data>
+  <data name="TextCloseWallpapers" xml:space="preserve">
+    <value>Închide fundalurile</value>
   </data>
 </root>
