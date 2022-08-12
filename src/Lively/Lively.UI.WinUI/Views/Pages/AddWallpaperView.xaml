@@ -74,9 +74,9 @@
                 Margin="0,10,0,0"
                 Icon="&#xEB9F;">
                 <Button
+                    x:Uid="TextOpen"
                     MinWidth="150"
-                    Command="{Binding BrowseFileCommand}"
-                    Content="Browse" />
+                    Command="{Binding BrowseFileCommand}" />
             </controls:Setting>
 
             <controls:SettingExpander Margin="0,2.5,0,0" IsExpanded="True">

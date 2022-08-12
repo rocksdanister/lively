@@ -49,6 +49,7 @@
     <None Remove="Views\Pages\SettingsPerformanceView.xaml" />
     <None Remove="Views\Pages\SettingsSystemView.xaml" />
     <None Remove="Views\Pages\SettingsWallpaperView.xaml" />
+    <None Remove="Views\Pages\Settings\FindMoreAppsView.xaml" />
     <None Remove="Views\Pages\TrayMenuHelp.xaml" />
     <None Remove="Views\Pages\WallpaperLayoutCustomiseView.xaml" />
     <None Remove="Views\Pages\WallpaperLayoutView.xaml" />
@@ -138,6 +139,9 @@
     <None Update="appicon.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Page Update="Views\Pages\Settings\FindMoreAppsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Update="Views\LivelyProperty\ColorEyeDropWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>

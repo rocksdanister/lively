@@ -13,6 +13,9 @@ namespace Lively.Common.Helpers.Pinvoke
 #pragma warning disable CA1707, CA1401, CA1712
     public static class NativeMethods
     {
+        [DllImport("kernel32.dll", SetLastError = true)]
+        public static extern bool QueryFullProcessImageName([In] IntPtr hProcess, [In] int dwFlags, [Out] StringBuilder lpExeName, ref int lpdwSize);
+
         [DllImport("dwmapi.dll", CharSet = CharSet.Unicode, PreserveSig = false)]
         public static extern void DwmSetWindowAttribute(IntPtr hwnd,
                                                  DWMWINDOWATTRIBUTE attribute,

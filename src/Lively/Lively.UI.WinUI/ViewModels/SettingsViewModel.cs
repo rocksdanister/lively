@@ -481,23 +481,20 @@ namespace Lively.UI.WinUI.ViewModels
         }
 
         private RelayCommand _addAppRuleCommand;
-        public RelayCommand AddAppRuleCommand => _addAppRuleCommand ??= new RelayCommand(AppRuleAddProgram);
+        public RelayCommand AddAppRuleCommand => _addAppRuleCommand ??= new RelayCommand(async() => await AppRuleAddProgram());
 
         private RelayCommand _removeAppRuleCommand;
         public RelayCommand RemoveAppRuleCommand =>
             _removeAppRuleCommand ??= new RelayCommand(AppRuleRemoveProgram, () => SelectedAppRuleItem != null);
 
-        private async void AppRuleAddProgram()
+        private async Task AppRuleAddProgram()
         {
-            var filePicker = new FileOpenPicker();
-            filePicker.SetOwnerWindow(App.Services.GetRequiredService<MainWindow>());
-            filePicker.FileTypeFilter.Add(".exe");
-            var file = await filePicker.PickSingleFileAsync();
-            if (file != null)
+            var result = await dialogService.ShowApplicationPickerDialog();
+            if (result != null)
             {
                 try
                 {
-                    var rule = appRuleFactory.CreateAppRule(file.Path, AppRulesEnum.pause);
+                    var rule = appRuleFactory.CreateAppRule(result.AppPath, AppRulesEnum.pause);
                     if (AppRules.Any(x => x.AppName.Equals(rule.AppName, StringComparison.Ordinal)))
                     {
                         return;
