@@ -40,6 +40,16 @@ namespace Lively.UI.WinUI.Services
             return vm.SelectedItem?.Screen;
         }
 
+        public async Task<ApplicationModel> ShowApplicationPickerDialog()
+        {
+            var vm = App.Services.GetRequiredService<FindMoreAppsViewModel>();
+            var result = await ShowDialog(new Views.Pages.Settings.FindMoreAppsView() { DataContext = vm },
+                                          "Choose Application",
+                                          i18n.GetString("TextAdd"),
+                                          i18n.GetString("Cancel/Content"));
+            return result == DialogResult.primary ? vm.SelectedItem : null;
+        }
+
         public async Task ShowDialog(string message, string title, string primaryBtnText)
         {
             await new ContentDialog()
