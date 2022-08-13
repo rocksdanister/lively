@@ -1126,4 +1126,10 @@ Khi sắn sàng, đi tới http://localhost:portnumber để truy cập bảng �
   <data name="TextCloseWallpapers" xml:space="preserve">
     <value>Tắt hình nền</value>
   </data>
+  <data name="TitleChooseApplication.Text" xml:space="preserve">
+    <value>Chọn ứng dụng</value>
+  </data>
+  <data name="WallpaperInstallSize.Text" xml:space="preserve">
+    <value>Kích thước</value>
+  </data>
 </root>

@@ -124,7 +124,7 @@
     <value>Darjah kekuatan bunyi bagi semua wallpaper.</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
-    <value>Kekuataan Bunyi (Utama)</value>
+    <value>Kekuatan Bunyi (Utama)</value>
   </data>
   <data name="AudioGroup.Header" xml:space="preserve">
     <value>Audio</value>
@@ -136,9 +136,9 @@
     <value>Dokumentasi API dan bantuan</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
-    <value>Lively has encountered a fatal error.
+    <value>Lively telah mengalami ralat yang maut.
 
-Windows Explorer restarted twice in the last 30 seconds! This may be a conflict between Lively and other desktop customization software or Windows. To avoid further issues, all wallpapers are terminated.</value>
+Windows Explorer telah dimulakan semula sebanyak 2 kali dalam tempoh 30 saat yang lalu. Ini mungkin disebabkan oleh konflik antara Lively dan software pemeribadian yang lain atau Windows. Untuk mengelakkan isu-isu yang lanjut, semua wallpaper telah ditamatkan.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
     <value>Tema taskbar dinyahaktifkan kerana terjumpa program yang tidak serasi.</value>
@@ -217,7 +217,7 @@ Hanya teruskan jika aplikasi ini berasal daripada sumber yang dipercayai.</value
       Kemaskini akan menjadi lebih kerap, tetapi mungkin mengandungi pepijat!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
-    <value>System-tray icon visibility, lively will continue to run with the icon hidden</value>
+    <value>Darjah penglihatan ikon dulang sistem. Lively akan masih berjalan dengan ikon tersembunyi.</value>
   </data>
   <data name="HideSysTray.Header" xml:space="preserve">
     <value>Ikon Dulang Sistem</value>
@@ -276,7 +276,7 @@ Jika masih tidak berkesan, mulakan semula Lively/Windows.
     <value>Lively mesti berjalan di latar belakang untuk memainkan semula wallpaper.</value>
   </data>
   <data name="Startup.Header" xml:space="preserve">
-    <value>Start with Windows</value>
+    <value>Mula dengan Windows</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
     <value>Tambah</value>
@@ -657,10 +657,10 @@ Semua: Henti seketika wallpaper bagi semua skrin jika apa-apa aplikasi berada di
 Semua Proses: Lebih berat, mengimbas semua proses untuk menentukan tingkah laku main semula wallpaper.</value>
   </data>
   <data name="PowerSavingModePower.Description" xml:space="preserve">
-    <value>Change playback when Windows Power Saving Mode is enabled</value>
+    <value>Tetapkan main semula jika mod Windows Power Saving diaktifkan</value>
   </data>
   <data name="RemoteDesktopPower.Description" xml:space="preserve">
-    <value>Change playback when running a Remote Desktop session</value>
+    <value>Tetapkan main semula ketika sesi Remote Desktop sedang berjalan</value>
   </data>
   <data name="TipScreensaver" xml:space="preserve">
     <value>Setelah jangka masa tidak aktif berlalu gunakan wallpaper kini sebagai screensaver.</value>
@@ -766,7 +766,7 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
     <value>Dokumentasi</value>
   </data>
   <data name="EnterUrl.Header" xml:space="preserve">
-    <value>Enter URL</value>
+    <value>Masukkan URL</value>
   </data>
   <data name="ExportLogs.Header" xml:space="preserve">
     <value>Log Fail</value>
@@ -814,10 +814,10 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
     <value>Sila Tunggu</value>
   </data>
   <data name="PowerSavingModePower.Header" xml:space="preserve">
-    <value>When on Battery Saver</value>
+    <value>Jika mod Battery Saver aktif</value>
   </data>
   <data name="RemoteDesktopPower.Header" xml:space="preserve">
-    <value>When on Remote Desktop</value>
+    <value>Jika Remote Desktop sedang berjalan</value>
   </data>
   <data name="ReportBug.Header" xml:space="preserve">
     <value>Lapor Pepijat</value>
@@ -829,7 +829,7 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
     <value>Panel Kawalan</value>
   </data>
   <data name="TitleScreensaver" xml:space="preserve">
-    <value>Screensaver</value>
+    <value>Penyelamat Skrin</value>
   </data>
   <data name="TitleScreensaverLockOnResume" xml:space="preserve">
     <value>Paparkan skrin log masuk ketika menyambung semula</value>
@@ -917,58 +917,58 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
     <value>Muat Laman Web</value>
   </data>
   <data name="FastUI.Description" xml:space="preserve">
-    <value>Keep User Interface running for faster startup</value>
+    <value>Benarkan antara muka pengguna berjalan untuk permulaan yang lebih cepat</value>
   </data>
   <data name="FastUI.Header" xml:space="preserve">
-    <value>Fast startup</value>
+    <value>Permulaan Cepat</value>
   </data>
   <data name="WallpaperDirGroup.Header" xml:space="preserve">
-    <value>File</value>
+    <value>Fail</value>
   </data>
   <data name="AppThemeDark.Content" xml:space="preserve">
-    <value>Dark</value>
+    <value>Gelap</value>
   </data>
   <data name="AppThemeLight.Content" xml:space="preserve">
-    <value>Light</value>
+    <value>Terang</value>
   </data>
   <data name="AppThemeSystem.Content" xml:space="preserve">
     <value>Sistem</value>
   </data>
   <data name="WindowsSettingsColor.Content" xml:space="preserve">
-    <value>Windows color settings</value>
+    <value>Tetapan Warna Windows</value>
   </data>
   <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
-    <value>Laptops</value>
+    <value>Komputer Riba</value>
   </data>
   <data name="DeveloperGroup.Header" xml:space="preserve">
-    <value>Developer</value>
+    <value>Pemaju</value>
   </data>
   <data name="AppearanceBehaviour.Header" xml:space="preserve">
-    <value>Appearance &amp; behavior</value>
+    <value>Penampilan &amp; Tingkah Laku</value>
   </data>
   <data name="ActiveWallpapers.Label" xml:space="preserve">
-    <value>Active Wallpaper(s)</value>
+    <value>Wallpaper Aktif</value>
   </data>
   <data name="TitleGallery" xml:space="preserve">
-    <value>Gallery</value>
+    <value>Galeri</value>
   </data>
   <data name="AboutMe.Text" xml:space="preserve">
-    <value>Hi, I'm Dani John also known as rocksdanister. I developed Lively a Free and open-source (FOSS) wallpaper application. Thanks for taking the time to look at my work.</value>
+    <value>Hai, saya Dani John atau juga dikenali sebagai rocksdanister. Saya telah mencipta sebuah perisian yang bebas dan sumber terbuka iaitu Lively. Terima kasih bagi mengambil masa untuk melihat karya saya.</value>
   </data>
   <data name="LicenseLink.Content" xml:space="preserve">
-    <value>Software license</value>
+    <value>Lesen Perisian</value>
   </data>
   <data name="AttributionLink.Content" xml:space="preserve">
-    <value>Third party software notice</value>
+    <value>Notis Perisian Pihak Ketiga</value>
   </data>
   <data name="PrivacyPolicyLink.Content" xml:space="preserve">
-    <value>Data collection policy</value>
+    <value>Dasar Pengumpulan Data</value>
   </data>
   <data name="AddWallpaperDrop.Text" xml:space="preserve">
-    <value>Add wallpaper</value>
+    <value>Tambah Wallpaper</value>
   </data>
   <data name="ComingSoon.Text" xml:space="preserve">
-    <value>Coming soon</value>
+    <value>Akan Datang!</value>
   </data>
   <data name="AboutMenu.Text" xml:space="preserve">
     <value>Tentang Lively</value>
@@ -977,16 +977,16 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
     <value>Laman Web</value>
   </data>
   <data name="TextOpen.Content" xml:space="preserve">
-    <value>Open</value>
+    <value>Buka</value>
   </data>
   <data name="TextSave.Content" xml:space="preserve">
-    <value>Save</value>
+    <value>Simpan</value>
   </data>
   <data name="UIMode.Description" xml:space="preserve">
-    <value>User interface effects and animations</value>
+    <value>Kesan-kesan dan animasi antara muka pengguna</value>
   </data>
   <data name="UIMode.Header" xml:space="preserve">
-    <value>User interface</value>
+    <value>Antara muka pengguna</value>
   </data>
   <data name="UIModeLite.Content" xml:space="preserve">
     <value>Lite</value>
@@ -995,141 +995,147 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
     <value>Biasa</value>
   </data>
   <data name="Screensaver.Description" xml:space="preserve">
-    <value>How screensaver is applied to connected to display devices</value>
+    <value>Tingkah laku penyelamat skrin terhadap peranti paparan yang terhubung</value>
   </data>
   <data name="Screensaver.Header" xml:space="preserve">
-    <value>Type of screensaver</value>
+    <value>Jenis Penyelamat Skrin</value>
   </data>
   <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
-    <value>Configured separately</value>
+    <value>Ditetapkan secara berasingan</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
-    <value>Same as running wallpaper</value>
+    <value>Sama seperti wallpaper terkini</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
-    <value>Plugin required</value>
+    <value>Plugin diperlukan</value>
   </data>
   <data name="ScreensaverPluginMessage.Text" xml:space="preserve">
-    <value>One time setup is required to run screensaver</value>
+    <value>Untuk menjalankan penyelamat skrin, setup perlu dijalankan sekali.</value>
   </data>
   <data name="WallpaperLayoutScreenPicker.Content" xml:space="preserve">
-    <value>Always pick screen when choosing wallpaper</value>
+    <value>Sentiasa pilih skrin semasa memilih wallpaper</value>
   </data>
   <data name="GalleryAccount.Text" xml:space="preserve">
-    <value>Account</value>
+    <value>Akaun</value>
   </data>
   <data name="GalleryAccountDelete.Content" xml:space="preserve">
-    <value>Delete account</value>
+    <value>Padam akaun</value>
   </data>
   <data name="GalleryAccountExport.Content" xml:space="preserve">
-    <value>Export data</value>
+    <value>Eksport data</value>
   </data>
   <data name="GalleryAccountLogin.Content" xml:space="preserve">
-    <value>Log in</value>
+    <value>Log masuk</value>
   </data>
   <data name="GalleryAccountLogout.Content" xml:space="preserve">
-    <value>Log out</value>
+    <value>Log keluar</value>
   </data>
   <data name="GalleryPageCollection.Content" xml:space="preserve">
-    <value>Collection</value>
+    <value>Koleksi</value>
   </data>
   <data name="GalleryPageHome.Content" xml:space="preserve">
-    <value>Home</value>
+    <value>Laman Utama</value>
   </data>
   <data name="GalleryPageManage.Content" xml:space="preserve">
-    <value>Manage</value>
+    <value>Pengurusan</value>
   </data>
   <data name="GalleryPageProfile.Content" xml:space="preserve">
-    <value>Profile</value>
+    <value>Maklumat peribadi</value>
   </data>
   <data name="GalleryPleaseLogin.Text" xml:space="preserve">
-    <value>Please log in to continue</value>
+    <value>Untuk teruskan, sila log masuk</value>
   </data>
   <data name="GalleryWelcomeMessage.Text" xml:space="preserve">
-    <value>Hi</value>
+    <value>Hai</value>
   </data>
   <data name="RestoreWallpaper.Text" xml:space="preserve">
-    <value>We found these wallpapers in your account</value>
+    <value>Wallpaper ini telah ditemukan di akaun anda</value>
   </data>
   <data name="TextDownloadNow.Content" xml:space="preserve">
-    <value>Download now</value>
+    <value>Muat turun sekarang</value>
   </data>
   <data name="TextMaybeLater.Content" xml:space="preserve">
-    <value>Maybe later</value>
+    <value>Mungkin nanti</value>
   </data>
   <data name="TextSelectAll.Content" xml:space="preserve">
-    <value>Select all</value>
+    <value>Pilih semua</value>
   </data>
   <data name="TextSelectNone.Content" xml:space="preserve">
-    <value>Select none</value>
+    <value>Pilih tiada</value>
   </data>
   <data name="TitleWelcomeback.Text" xml:space="preserve">
-    <value>Welcome back!</value>
+    <value>Selamat kembali!</value>
   </data>
   <data name="ReportWallpaper.Header" xml:space="preserve">
-    <value>Reasons</value>
+    <value>Alasan</value>
   </data>
   <data name="ReportWallpaperCopyright.Content" xml:space="preserve">
-    <value>Copyright violation</value>
+    <value>Pelanggaran hak cipta</value>
   </data>
   <data name="ReportWallpaperMisleading.Content" xml:space="preserve">
-    <value>Misleading information</value>
+    <value>Maklumat mengelirukan</value>
   </data>
   <data name="ReportWallpaperOther.Content" xml:space="preserve">
-    <value>Other</value>
+    <value>Lain-lain</value>
   </data>
   <data name="ReportWallpaperSpam.Content" xml:space="preserve">
     <value>Spam</value>
   </data>
   <data name="ReportWallpaperViolence.Content" xml:space="preserve">
-    <value>Nudity or violence</value>
+    <value>Kandungan bogel atau ganas</value>
   </data>
   <data name="TextAdditionalNotes.Text" xml:space="preserve">
-    <value>Additional notes</value>
+    <value>Nota tambahan</value>
   </data>
   <data name="TextReportWallpaper.Text" xml:space="preserve">
-    <value>Report</value>
+    <value>Laporkan</value>
   </data>
   <data name="TitleReportWallpaper.Text" xml:space="preserve">
-    <value>Report Wallpaper</value>
+    <value>Laporkan Wallpaper</value>
   </data>
   <data name="Send.Content" xml:space="preserve">
-    <value>Send</value>
+    <value>Hantar</value>
   </data>
   <data name="GalleryAccountDeleteConfirm.Text" xml:space="preserve">
-    <value>Please confirm this action as it CAN NOT be undone</value>
+    <value>Sila sahkan tindakan ini kerana ianya tidak akan boleh dipatahbalikkan</value>
   </data>
   <data name="GalleryAccountDeleteFail.Text" xml:space="preserve">
-    <value>Failed to delete account, please try again later</value>
+    <value>Gagal memadamkan akaun, sila cuba lagi.</value>
   </data>
   <data name="TextConfirmCancel.Text" xml:space="preserve">
-    <value>Do you want to cancel it?</value>
+    <value>Adakah anda ingin membatalkannya?</value>
   </data>
   <data name="TextWait.Text" xml:space="preserve">
-    <value>Wait</value>
+    <value>Tunggu sebentar</value>
   </data>
   <data name="TitleDownloadProgress.Text" xml:space="preserve">
-    <value>Download in Progress</value>
+    <value>Muat turun sedang dijalankan</value>
   </data>
   <data name="TextContributors.Text" xml:space="preserve">
-    <value>Contributors</value>
+    <value>Penyumbang</value>
   </data>
   <data name="TextShare.Text" xml:space="preserve">
-    <value>Share</value>
+    <value>Kongsi</value>
   </data>
   <data name="TitleShareWallpaper.Text" xml:space="preserve">
-    <value>Share Wallpaper</value>
+    <value>Kongsi Wallpaper</value>
   </data>
   <data name="ExportWallpaperGallery.Text" xml:space="preserve">
-    <value>Gallery upload</value>
+    <value>Muat naik dari galeri</value>
   </data>
   <data name="ExportWallpaperLink.Text" xml:space="preserve">
-    <value>Copy link</value>
+    <value>Salin pautan</value>
   </data>
   <data name="TextCustomiseWallpaper" xml:space="preserve">
     <value>Sunting Wallpaper</value>
   </data>
   <data name="TextCloseWallpapers" xml:space="preserve">
     <value>Tutup Wallpaper</value>
+  </data>
+  <data name="TitleChooseApplication.Text" xml:space="preserve">
+    <value>Choose Application</value>
+  </data>
+  <data name="WallpaperInstallSize.Text" xml:space="preserve">
+    <value>Size</value>
   </data>
 </root>

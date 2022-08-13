@@ -1114,4 +1114,10 @@ Updates will be frequent and may contain bugs!</value>
   <data name="TextCloseWallpapers" xml:space="preserve">
     <value>Затвори позадину</value>
   </data>
+  <data name="TitleChooseApplication.Text" xml:space="preserve">
+    <value>Choose Application</value>
+  </data>
+  <data name="WallpaperInstallSize.Text" xml:space="preserve">
+    <value>Size</value>
+  </data>
 </root>

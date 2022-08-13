@@ -1132,4 +1132,10 @@ Edge הוא תצוגת האינטרנט המובנית של Windows 10.</value>
   <data name="TextCloseWallpapers" xml:space="preserve">
     <value>סגור טפטים</value>
   </data>
+  <data name="TitleChooseApplication.Text" xml:space="preserve">
+    <value>Choose Application</value>
+  </data>
+  <data name="WallpaperInstallSize.Text" xml:space="preserve">
+    <value>Size</value>
+  </data>
 </root>

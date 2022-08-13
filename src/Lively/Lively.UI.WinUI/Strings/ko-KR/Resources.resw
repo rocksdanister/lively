@@ -1130,4 +1130,10 @@ Edge는 Windows 10의 내장 웹뷰입니다.</value>
   <data name="TextCloseWallpapers" xml:space="preserve">
     <value>배경 화면 닫기</value>
   </data>
+  <data name="TitleChooseApplication.Text" xml:space="preserve">
+    <value>Choose Application</value>
+  </data>
+  <data name="WallpaperInstallSize.Text" xml:space="preserve">
+    <value>Size</value>
+  </data>
 </root>

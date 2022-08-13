@@ -44,7 +44,7 @@ namespace Lively.UI.WinUI.Services
         {
             var vm = App.Services.GetRequiredService<FindMoreAppsViewModel>();
             var result = await ShowDialog(new Views.Pages.Settings.FindMoreAppsView() { DataContext = vm },
-                                          "Choose Application",
+                                          i18n.GetString("TitleChooseApplication/Text"),
                                           i18n.GetString("TextAdd"),
                                           i18n.GetString("Cancel/Content"));
             return result == DialogResult.primary ? vm.SelectedItem : null;

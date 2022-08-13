@@ -1130,4 +1130,10 @@ Edge هو عرض الويب المدمج في windows 10.</value>
   <data name="TextCloseWallpapers" xml:space="preserve">
     <value>إغلاق الخلفية</value>
   </data>
+  <data name="TitleChooseApplication.Text" xml:space="preserve">
+    <value>Choose Application</value>
+  </data>
+  <data name="WallpaperInstallSize.Text" xml:space="preserve">
+    <value>Size</value>
+  </data>
 </root>

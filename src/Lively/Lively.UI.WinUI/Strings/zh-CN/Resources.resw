@@ -1133,4 +1133,10 @@ Edge 是 Windows 10 内置的浏览器。</value>
   <data name="TextCloseWallpapers" xml:space="preserve">
     <value>关闭所有壁纸</value>
   </data>
+  <data name="TitleChooseApplication.Text" xml:space="preserve">
+    <value>Choose Application</value>
+  </data>
+  <data name="WallpaperInstallSize.Text" xml:space="preserve">
+    <value>Size</value>
+  </data>
 </root>
