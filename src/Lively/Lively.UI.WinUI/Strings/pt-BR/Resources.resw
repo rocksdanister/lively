@@ -868,7 +868,7 @@ O Edge é a webview embutida do Windows 10.</value>
     <value>Tamanho da visualização</value>
   </data>
   <data name="TitleUIMode" xml:space="preserve">
-    <value>Interface de usuário</value>
+    <value>Interface de Usuário</value>
   </data>
   <data name="TitleUpdates" xml:space="preserve">
     <value>Atualizações</value>
@@ -1130,5 +1130,11 @@ O Edge é a webview embutida do Windows 10.</value>
   </data>
   <data name="TextCloseWallpapers" xml:space="preserve">
     <value>Fechar Planos de Fundo</value>
+  </data>
+  <data name="TitleChooseApplication.Text" xml:space="preserve">
+    <value>Escolher Aplicação</value>
+  </data>
+  <data name="WallpaperInstallSize.Text" xml:space="preserve">
+    <value>Tamanho</value>
   </data>
 </root>

@@ -133,18 +133,18 @@
     <value>Online discussion forum</value>
   </data>
   <data name="DocumentationPage.Content" xml:space="preserve">
-    <value>API documentation and help</value>
+    <value>Bantuan dan Dokumentasi API</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
-    <value>Lively has encountered a fatal error.
+    <value>Lively mengalami kesalahan fatal.
 
-Windows Explorer restarted twice in the last 30 seconds! This may be a conflict between Lively and other desktop customization software or Windows. To avoid further issues, all wallpapers are terminated.</value>
+Windows Explorer memulai ulang dua kali dalam 30 detik terakhir! Ini mungkin ada konflik antara Lively dan perangkat lunak kustomisasi desktop lainnya atau Windows. Untuk menghindari masalah lebih lanjut, semua wallpaper dihentikan.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
     <value>Program yang tidak kompatibel ditemukan, tema taskbar dinonaktifkan.</value>
   </data>
   <data name="OfficialWebpage.Content" xml:space="preserve">
-    <value>Official webpage of Lively Wallpaper</value>
+    <value>Website resmi Lively Wallpaper</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
     <value>Sebagian besar layar LCD dan LED modern tidak mengalami masalah burn-in dan oleh karena itu wallpaper apa pun dapat digunakan sebagai screensaver.
@@ -154,7 +154,7 @@ Untuk tampilan OLED, Plasma, atau CRT yang rentan mengalami masalah burn-in, dis
 Tujuan utama screensaver Lively adalah untuk menambahkan bagian kostumisasi lain ke komputer Anda, gunakan screensaver sebagai perlindungan burn-in dengan risiko Anda sendiri!</value>
   </data>
   <data name="ReportBugPage.Content" xml:space="preserve">
-    <value>Report a problem with the software</value>
+    <value>Laporkan masalah dengan aplikasi</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
     <value>Pilih file atau URL halaman web untuk dijadikan sebagai wallpaper.</value>
@@ -210,7 +210,7 @@ Lanjutkan jika aplikasi berasal dari sumber terpercaya</value>
     <value>Versi Windows N/KN kamu membutuhkan codec tambahan untuk mendukung pemutaran video di wallpaper</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
-    <value>Show support by buying the developer coffee</value>
+    <value>Bantu developer dengan membelikan kopi</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
     <value>You are about to change to beta (developer) build of Lively.
@@ -302,13 +302,13 @@ Jika masih tidak berfungsi, tutup dan mulai ulang Lively/Windows.
     <value>Batal</value>
   </data>
   <data name="TextChangeWallpaper" xml:space="preserve">
-    <value>Change Wallpapers</value>
+    <value>Ganti Wallpaper</value>
   </data>
   <data name="TextClose" xml:space="preserve">
     <value>Tutup</value>
   </data>
   <data name="CloseWallpapers.Label" xml:space="preserve">
-    <value>Tutup Wallpaper</value>
+    <value>Tutup</value>
   </data>
   <data name="TextCompleted" xml:space="preserve">
     <value>Selesai!</value>
@@ -344,10 +344,10 @@ Jika masih tidak berfungsi, tutup dan mulai ulang Lively/Windows.
     <value>Unduh</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
-    <value>Edit</value>
+    <value>Ubah</value>
   </data>
   <data name="TextError" xml:space="preserve">
-    <value>Error</value>
+    <value>Galat</value>
   </data>
   <data name="TextExit" xml:space="preserve">
     <value>Keluar</value>
@@ -383,7 +383,7 @@ Jika masih tidak berfungsi, tutup dan mulai ulang Lively/Windows.
     <value>Keyboard</value>
   </data>
   <data name="TextLastChecked" xml:space="preserve">
-    <value>Last checked</value>
+    <value>Terakhir diperiksa</value>
   </data>
   <data name="TextLearnMore.Text" xml:space="preserve">
     <value>Pelajari Lebih Lanjut</value>
@@ -494,7 +494,7 @@ Jika masih tidak berfungsi, tutup dan mulai ulang Lively/Windows.
     <value>Dukungan</value>
   </data>
   <data name="TextSwitchBranchDev" xml:space="preserve">
-    <value>Switch to beta (Dev channel)</value>
+    <value>Ganti ke beta (chanel Dev)</value>
   </data>
   <data name="TextSwitchBranchOfficial" xml:space="preserve">
     <value>Switch to stable (Default channel)</value>
@@ -515,7 +515,7 @@ Jika masih tidak berfungsi, tutup dan mulai ulang Lively/Windows.
     <value>Fluent</value>
   </data>
   <data name="TaskbarThemeWallpaper.Content" xml:space="preserve">
-    <value>Wallpaper</value>
+    <value>Latar Belakang</value>
   </data>
   <data name="TaskbarThemeWallpaperFluent.Content" xml:space="preserve">
     <value>Wallpaper Fluent</value>
@@ -722,7 +722,7 @@ Semua proses: Lebih berat, memindai semua proses untuk menentukan tingkah laku p
     <value>Aplikasi Fullscreen</value>
   </data>
   <data name="TitleAppName" xml:space="preserve">
-    <value>Lively Wallpaper</value>
+    <value>Latar Belakang Lively</value>
   </data>
   <data name="AppRules.Header" xml:space="preserve">
     <value>Peraturan Aplikasi</value>
@@ -743,7 +743,7 @@ Semua proses: Lebih berat, memindai semua proses untuk menentukan tingkah laku p
     <value>Port Debug</value>
   </data>
   <data name="TitleChangelog" xml:space="preserve">
-    <value>Changelog</value>
+    <value>Catatan Perubahan</value>
   </data>
   <data name="Community.Header" xml:space="preserve">
     <value>Komunitas</value>
@@ -764,7 +764,7 @@ Semua proses: Lebih berat, memindai semua proses untuk menentukan tingkah laku p
     <value>Dokumentasi</value>
   </data>
   <data name="EnterUrl.Header" xml:space="preserve">
-    <value>Enter URL</value>
+    <value>Masukkan URL</value>
   </data>
   <data name="ExportLogs.Header" xml:space="preserve">
     <value>File log</value>
@@ -785,7 +785,7 @@ Semua proses: Lebih berat, memindai semua proses untuk menentukan tingkah laku p
     <value>Pustaka</value>
   </data>
   <data name="TitleLivelySetup" xml:space="preserve">
-    <value>Lively Setup</value>
+    <value>Pengaturan Lively</value>
   </data>
   <data name="TitleLocation" xml:space="preserve">
     <value>Lokasi</value>
@@ -812,7 +812,7 @@ Semua proses: Lebih berat, memindai semua proses untuk menentukan tingkah laku p
     <value>Mohon Tunggu</value>
   </data>
   <data name="PowerSavingModePower.Header" xml:space="preserve">
-    <value>When on Battery Saver</value>
+    <value>Saat mode Penghemat Baterai</value>
   </data>
   <data name="RemoteDesktopPower.Header" xml:space="preserve">
     <value>When on Remote Desktop</value>
@@ -845,11 +845,11 @@ Semua proses: Lebih berat, memindai semua proses untuk menentukan tingkah laku p
     <value>Kode sumber</value>
   </data>
   <data name="Store.Header" xml:space="preserve">
-    <value>Store</value>
+    <value>Toko</value>
     <comment>For different version of Lively, example: Microsoft Store</comment>
   </data>
   <data name="StreamWallpaperVideoQuality.Header" xml:space="preserve">
-    <value>Stream</value>
+    <value>Aliran</value>
   </data>
   <data name="StreamWallpaperDetect.Header" xml:space="preserve">
     <value>Deteksi Stream</value>
@@ -870,7 +870,7 @@ Semua proses: Lebih berat, memindai semua proses untuk menentukan tingkah laku p
     <value>Tampilan</value>
   </data>
   <data name="TitleUpdates" xml:space="preserve">
-    <value>Updates</value>
+    <value>Pembaruan</value>
   </data>
   <data name="TitleVideo" xml:space="preserve">
     <value>Video</value>
@@ -879,7 +879,7 @@ Semua proses: Lebih berat, memindai semua proses untuk menentukan tingkah laku p
     <value>Decode GPU</value>
   </data>
   <data name="TitleWallpaper" xml:space="preserve">
-    <value>Wallpaper</value>
+    <value>Latar Belakang</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">
     <value>Lokasi Wallpaper</value>
@@ -915,40 +915,40 @@ Semua proses: Lebih berat, memindai semua proses untuk menentukan tingkah laku p
     <value>Muat Halaman Web</value>
   </data>
   <data name="FastUI.Description" xml:space="preserve">
-    <value>Keep User Interface running for faster startup</value>
+    <value>Tetap jalankan tampilan pengguna untuk memulai lebih cepat</value>
   </data>
   <data name="FastUI.Header" xml:space="preserve">
-    <value>Fast startup</value>
+    <value>Mulai cepat</value>
   </data>
   <data name="WallpaperDirGroup.Header" xml:space="preserve">
-    <value>File</value>
+    <value>Berkas</value>
   </data>
   <data name="AppThemeDark.Content" xml:space="preserve">
-    <value>Dark</value>
+    <value>Gelap</value>
   </data>
   <data name="AppThemeLight.Content" xml:space="preserve">
-    <value>Light</value>
+    <value>Terang</value>
   </data>
   <data name="AppThemeSystem.Content" xml:space="preserve">
     <value>Sistem</value>
   </data>
   <data name="WindowsSettingsColor.Content" xml:space="preserve">
-    <value>Windows color settings</value>
+    <value>Pengaturan Warna Windows</value>
   </data>
   <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
-    <value>Laptops</value>
+    <value>Laptop</value>
   </data>
   <data name="DeveloperGroup.Header" xml:space="preserve">
-    <value>Developer</value>
+    <value>Pengembang</value>
   </data>
   <data name="AppearanceBehaviour.Header" xml:space="preserve">
-    <value>Appearance &amp; behavior</value>
+    <value>Tampilan &amp; Respon</value>
   </data>
   <data name="ActiveWallpapers.Label" xml:space="preserve">
-    <value>Active Wallpaper(s)</value>
+    <value>Latara Belakang Aktif</value>
   </data>
   <data name="TitleGallery" xml:space="preserve">
-    <value>Gallery</value>
+    <value>Galeri</value>
   </data>
   <data name="AboutMe.Text" xml:space="preserve">
     <value>Hi, I'm Dani John also known as rocksdanister. I developed Lively a Free and open-source (FOSS) wallpaper application. Thanks for taking the time to look at my work.</value>
@@ -1014,58 +1014,58 @@ Semua proses: Lebih berat, memindai semua proses untuk menentukan tingkah laku p
     <value>Always pick screen when choosing wallpaper</value>
   </data>
   <data name="GalleryAccount.Text" xml:space="preserve">
-    <value>Account</value>
+    <value>Akun</value>
   </data>
   <data name="GalleryAccountDelete.Content" xml:space="preserve">
-    <value>Delete account</value>
+    <value>Hapus akun</value>
   </data>
   <data name="GalleryAccountExport.Content" xml:space="preserve">
-    <value>Export data</value>
+    <value>Ekspor data</value>
   </data>
   <data name="GalleryAccountLogin.Content" xml:space="preserve">
-    <value>Log in</value>
+    <value>Masuk</value>
   </data>
   <data name="GalleryAccountLogout.Content" xml:space="preserve">
-    <value>Log out</value>
+    <value>Keluar</value>
   </data>
   <data name="GalleryPageCollection.Content" xml:space="preserve">
-    <value>Collection</value>
+    <value>Koleksi</value>
   </data>
   <data name="GalleryPageHome.Content" xml:space="preserve">
-    <value>Home</value>
+    <value>Halaman Utama</value>
   </data>
   <data name="GalleryPageManage.Content" xml:space="preserve">
-    <value>Manage</value>
+    <value>Kelola</value>
   </data>
   <data name="GalleryPageProfile.Content" xml:space="preserve">
-    <value>Profile</value>
+    <value>Profil</value>
   </data>
   <data name="GalleryPleaseLogin.Text" xml:space="preserve">
-    <value>Please log in to continue</value>
+    <value>Silahkan Masuk untuk melanjutkan</value>
   </data>
   <data name="GalleryWelcomeMessage.Text" xml:space="preserve">
-    <value>Hi</value>
+    <value>Hai</value>
   </data>
   <data name="RestoreWallpaper.Text" xml:space="preserve">
     <value>We found these wallpapers in your account</value>
   </data>
   <data name="TextDownloadNow.Content" xml:space="preserve">
-    <value>Download now</value>
+    <value>Unduh Sekarang</value>
   </data>
   <data name="TextMaybeLater.Content" xml:space="preserve">
-    <value>Maybe later</value>
+    <value>Nanti saja</value>
   </data>
   <data name="TextSelectAll.Content" xml:space="preserve">
-    <value>Select all</value>
+    <value>Pilih semua</value>
   </data>
   <data name="TextSelectNone.Content" xml:space="preserve">
-    <value>Select none</value>
+    <value>Hilangkan Semua Pilihan</value>
   </data>
   <data name="TitleWelcomeback.Text" xml:space="preserve">
-    <value>Welcome back!</value>
+    <value>Selamat datang kembali!</value>
   </data>
   <data name="ReportWallpaper.Header" xml:space="preserve">
-    <value>Reasons</value>
+    <value>Alasannya</value>
   </data>
   <data name="ReportWallpaperCopyright.Content" xml:space="preserve">
     <value>Copyright violation</value>
@@ -1074,60 +1074,66 @@ Semua proses: Lebih berat, memindai semua proses untuk menentukan tingkah laku p
     <value>Misleading information</value>
   </data>
   <data name="ReportWallpaperOther.Content" xml:space="preserve">
-    <value>Other</value>
+    <value>Lainnya</value>
   </data>
   <data name="ReportWallpaperSpam.Content" xml:space="preserve">
-    <value>Spam</value>
+    <value>Sampah</value>
   </data>
   <data name="ReportWallpaperViolence.Content" xml:space="preserve">
-    <value>Nudity or violence</value>
+    <value>Konten dewasa atau kekerasan</value>
   </data>
   <data name="TextAdditionalNotes.Text" xml:space="preserve">
-    <value>Additional notes</value>
+    <value>Catatan tambahan</value>
   </data>
   <data name="TextReportWallpaper.Text" xml:space="preserve">
-    <value>Report</value>
+    <value>Laporkan</value>
   </data>
   <data name="TitleReportWallpaper.Text" xml:space="preserve">
-    <value>Report Wallpaper</value>
+    <value>Laporkan Latar Belakang</value>
   </data>
   <data name="Send.Content" xml:space="preserve">
-    <value>Send</value>
+    <value>Kirim</value>
   </data>
   <data name="GalleryAccountDeleteConfirm.Text" xml:space="preserve">
-    <value>Please confirm this action as it CAN NOT be undone</value>
+    <value>Konfirmasi langkah ini karena TIDAK BISA dikembalikan lagi</value>
   </data>
   <data name="GalleryAccountDeleteFail.Text" xml:space="preserve">
-    <value>Failed to delete account, please try again later</value>
+    <value>Gagal menghapus akun, coba lagi nanti</value>
   </data>
   <data name="TextConfirmCancel.Text" xml:space="preserve">
-    <value>Do you want to cancel it?</value>
+    <value>Apakah anda ingin membatalkan?</value>
   </data>
   <data name="TextWait.Text" xml:space="preserve">
-    <value>Wait</value>
+    <value>Tunggu</value>
   </data>
   <data name="TitleDownloadProgress.Text" xml:space="preserve">
-    <value>Download in Progress</value>
+    <value>Pengunduhan sedang berlangsung</value>
   </data>
   <data name="TextContributors.Text" xml:space="preserve">
-    <value>Contributors</value>
+    <value>Kontributor</value>
   </data>
   <data name="TextShare.Text" xml:space="preserve">
-    <value>Share</value>
+    <value>Bagikan</value>
   </data>
   <data name="TitleShareWallpaper.Text" xml:space="preserve">
-    <value>Share Wallpaper</value>
+    <value>Bagikan Wallpaper</value>
   </data>
   <data name="ExportWallpaperGallery.Text" xml:space="preserve">
-    <value>Gallery upload</value>
+    <value>Unggah Gambar</value>
   </data>
   <data name="ExportWallpaperLink.Text" xml:space="preserve">
-    <value>Copy link</value>
+    <value>Salin tautan</value>
   </data>
   <data name="TextCustomiseWallpaper" xml:space="preserve">
     <value>Sesuaikan Wallpaper</value>
   </data>
   <data name="TextCloseWallpapers" xml:space="preserve">
     <value>Tutup Wallpaper</value>
+  </data>
+  <data name="TitleChooseApplication.Text" xml:space="preserve">
+    <value>Pilih aplikasi</value>
+  </data>
+  <data name="WallpaperInstallSize.Text" xml:space="preserve">
+    <value>Size</value>
   </data>
 </root>

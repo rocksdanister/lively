@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AudioFocused.Content" xml:space="preserve">
-    <value>Play audio only when desktop is focused</value>
+    <value>Reproduzir áudio somente quando a área de trabalho estiver focada</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
     <value>Volume level of all wallpapers.</value>
@@ -130,31 +130,31 @@
     <value>Áudio</value>
   </data>
   <data name="CommunityPage.Content" xml:space="preserve">
-    <value>Online discussion forum</value>
+    <value>Fórum de Discussão Online</value>
   </data>
   <data name="DocumentationPage.Content" xml:space="preserve">
-    <value>API documentation and help</value>
+    <value>Documentação da API e ajuda</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
-    <value>Lively has encountered a fatal error.
+    <value>A pessoa encontrou um erro fatal.
 
-Windows Explorer restarted twice in the last 30 seconds! This may be a conflict between Lively and other desktop customization software or Windows. To avoid further issues, all wallpapers are terminated.</value>
+O Windows Explorer reiniciou duas vezes nos últimos 30 segundos! Este pode ser um conflito entre o Lively e outro software de personalização da área de trabalho ou do Windows. Para evitar mais problemas, todos os papéis de parede foram encerrados.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
     <value>Incompatible program found, taskbar theming disabled.</value>
   </data>
   <data name="OfficialWebpage.Content" xml:space="preserve">
-    <value>Official webpage of Lively Wallpaper</value>
+    <value>Página oficial do Lively Wallpaper</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
-    <value>Most modern LCD and LED displays do not suffer from burn-in issue and therefore any wallpaper can be used as screensaver.
+    <value>A maioria das telas modernas LCD e LED não sofrem com o problema de queimadura, pelo que qualquer papel de parede pode ser usado como um protetor de tela.
 
-For OLED, Plasma or CRT displays which are susceptibe to burn-in it is advised to use wallpaper with regular motion and an overall dark theme which is supposed to mitigate burn-in but this feature is untested and its effectiveness cannot be guaranteed.
+Para as telas OLED, Plasma ou CRT que são susceptíveis de sofrer com o problema de queimadura é aconselhável utilizar papel de parede com movimento regular e um tema escuro global que supostamente irá atenuar o efeito de queimadura, mas este recurso não está testado e a sua eficácia não pode ser garantida.
 
-The main purpose of Lively's screensavers is to add another layer of customization to your pc, use screensavers as burn-in protection at your own risk!</value>
+O principal propósito do protetor de tela do Lively é adicionar outra camada de personalização ao pc, utilize o protetor de tela como proteção ao problema de queimadura por sua conta e risco!</value>
   </data>
   <data name="ReportBugPage.Content" xml:space="preserve">
-    <value>Report a problem with the software</value>
+    <value>Relatar um problema com o software</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
     <value>Seleccione um ficheiro ou especifique a hiperligação de um website para usar como fundo.</value>
@@ -169,7 +169,7 @@ The main purpose of Lively's screensavers is to add another layer of customizati
     <value>De certeza que quer apagar permanentemente o fundo do disco?</value>
   </data>
   <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
-    <value>Are you sure you want to delete this wallpaper from the Library?</value>
+    <value>De certeza que quer apagar este fundo da sua biblioteca?</value>
   </data>
   <data name="DragDropFile.Text" xml:space="preserve">
     <value>Simplesmente arraste e largue ficheiros na Biblioteca.</value>
@@ -210,14 +210,14 @@ Apenas prossiga se a aplicação é proveniente de uma fonte confiável.</value>
     <value>Your Windows N/KN version will require the download of additional codecs to support video playback in wallpapers.</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
-    <value>Show support by buying the developer coffee</value>
+    <value>Mostre apoio comprando um café ao desenvolvedor</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
-    <value>You are about to change to beta (developer) build of Lively.
-Updates will be frequent and may contain bugs!</value>
+    <value>Você está prestes a mudar para versão beta (desenvolvedor) do Lively.
+As atualizações serão frequentes e podem conter erros!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
-    <value>System-tray icon visibility, lively will continue to run with the icon hidden</value>
+    <value>Visibilidade do ícone na bandeja de sistema, o Lively continuará em execução com o ícone oculto</value>
   </data>
   <data name="HideSysTray.Header" xml:space="preserve">
     <value>Ícone de bandeja de sistema</value>
@@ -281,7 +281,7 @@ Se ainda não funcionar, fechei e inicie o Lively/ reinicei o Windows.
     <value>Adicionar</value>
   </data>
   <data name="TextAllFiles" xml:space="preserve">
-    <value>All Files</value>
+    <value>Todos os Ficheiros</value>
   </data>
   <data name="Application.Header" xml:space="preserve">
     <value>Aplicação</value>
@@ -299,10 +299,10 @@ Se ainda não funcionar, fechei e inicie o Lively/ reinicei o Windows.
     <value>Navegar</value>
   </data>
   <data name="Cancel.Content" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Cancelar</value>
   </data>
   <data name="TextChangeWallpaper" xml:space="preserve">
-    <value>Change Wallpapers</value>
+    <value>Alterar Papel de Parede</value>
   </data>
   <data name="TextClose" xml:space="preserve">
     <value>Fechar</value>
@@ -320,7 +320,7 @@ Se ainda não funcionar, fechei e inicie o Lively/ reinicei o Windows.
     <value>Converter para Vídeo</value>
   </data>
   <data name="TextCreatePreview" xml:space="preserve">
-    <value>Create Preview</value>
+    <value>Criar pré-visualização</value>
   </data>
   <data name="Customise.Text" xml:space="preserve">
     <value>Personalizar</value>
@@ -332,7 +332,7 @@ Se ainda não funcionar, fechei e inicie o Lively/ reinicei o Windows.
     <value>Eliminar Fundo</value>
   </data>
   <data name="Description.Text" xml:space="preserve">
-    <value>Description</value>
+    <value>Descrição</value>
   </data>
   <data name="DisplayPauseRuleAllScreen.Content" xml:space="preserve">
     <value>Todos os Ecrãs</value>
@@ -344,7 +344,7 @@ Se ainda não funcionar, fechei e inicie o Lively/ reinicei o Windows.
     <value>Descarregar</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
-    <value>Edit</value>
+    <value>Editar</value>
   </data>
   <data name="TextError" xml:space="preserve">
     <value>Erro</value>
@@ -359,13 +359,13 @@ Se ainda não funcionar, fechei e inicie o Lively/ reinicei o Windows.
     <value>Some features are not available in this version of Lively.</value>
   </data>
   <data name="TextFileNotFound" xml:space="preserve">
-    <value>File not found</value>
+    <value>Ficheiro não encontrado</value>
   </data>
   <data name="TextGIF" xml:space="preserve">
     <value>GIF Animado</value>
   </data>
   <data name="GitHubStar.Content" xml:space="preserve">
-    <value>Show some love by dropping a star</value>
+    <value>Mostre um pouco de amor dando uma estrela</value>
   </data>
   <data name="TextGo" xml:space="preserve">
     <value>Começar</value>
@@ -383,13 +383,13 @@ Se ainda não funcionar, fechei e inicie o Lively/ reinicei o Windows.
     <value>Teclado</value>
   </data>
   <data name="TextLastChecked" xml:space="preserve">
-    <value>Last checked</value>
+    <value>Última verificação</value>
   </data>
   <data name="TextLearnMore.Text" xml:space="preserve">
-    <value>Learn more</value>
+    <value>Saber mais</value>
   </data>
   <data name="License.Header" xml:space="preserve">
-    <value>License</value>
+    <value>Licença</value>
   </data>
   <data name="TextMinutes" xml:space="preserve">
     <value>minutes</value>
@@ -449,16 +449,16 @@ Se ainda não funcionar, fechei e inicie o Lively/ reinicei o Windows.
     <value>Pausar</value>
   </data>
   <data name="TextPicture" xml:space="preserve">
-    <value>Picture</value>
+    <value>Imagem</value>
   </data>
   <data name="PreviewWallpaper.Text" xml:space="preserve">
     <value>Preview Wallpaper</value>
   </data>
   <data name="PrivacyPolicy.Header" xml:space="preserve">
-    <value>Privacy Policy</value>
+    <value>Política de Privacidade</value>
   </data>
   <data name="TextProcessingWallpaper" xml:space="preserve">
-    <value>Processing</value>
+    <value>A processar</value>
   </data>
   <data name="TextRemove" xml:space="preserve">
     <value>Remover</value>
@@ -488,37 +488,37 @@ Se ainda não funcionar, fechei e inicie o Lively/ reinicei o Windows.
     <value>Parar</value>
   </data>
   <data name="StoreReview.Content" xml:space="preserve">
-    <value>Do you enjoy using Lively? Leave a review :)</value>
+    <value>Gostou de usar o Lively? Deixe uma avaliação :)</value>
   </data>
   <data name="TextSupport.Content" xml:space="preserve">
     <value>Suporte</value>
   </data>
   <data name="TextSwitchBranchDev" xml:space="preserve">
-    <value>Switch to beta (Dev channel)</value>
+    <value>Alternar para beta (canal de desenvolvedor)</value>
   </data>
   <data name="TextSwitchBranchOfficial" xml:space="preserve">
-    <value>Switch to stable (Default channel)</value>
+    <value>Mudar para estável (canal padrão)</value>
   </data>
   <data name="TextTags" xml:space="preserve">
     <value>Etiquetas</value>
   </data>
   <data name="TaskbarThemeBlur.Content" xml:space="preserve">
-    <value>Blur</value>
+    <value>Desfoque</value>
   </data>
   <data name="TaskbarThemeClear.Content" xml:space="preserve">
-    <value>Clear</value>
+    <value>Limpar</value>
   </data>
   <data name="TaskbarThemeColor.Content" xml:space="preserve">
-    <value>Color</value>
+    <value>Cor</value>
   </data>
   <data name="TaskbarThemeFluent.Content" xml:space="preserve">
-    <value>Fluent</value>
+    <value>Fluente</value>
   </data>
   <data name="TaskbarThemeWallpaper.Content" xml:space="preserve">
-    <value>Wallpaper</value>
+    <value>Papel de parede</value>
   </data>
   <data name="TaskbarThemeWallpaperFluent.Content" xml:space="preserve">
-    <value>Wallpaper Fluent</value>
+    <value>Papel de parede fluente</value>
   </data>
   <data name="TextTileSizeLarge" xml:space="preserve">
     <value>Grande</value>
@@ -530,10 +530,10 @@ Se ainda não funcionar, fechei e inicie o Lively/ reinicei o Windows.
     <value>Pequeno</value>
   </data>
   <data name="Title.Text" xml:space="preserve">
-    <value>Title</value>
+    <value>Título</value>
   </data>
   <data name="TextUIHeadless" xml:space="preserve">
-    <value>Headless</value>
+    <value>Sem cabeçalho</value>
   </data>
   <data name="TextUILite" xml:space="preserve">
     <value>Lite</value>
@@ -542,7 +542,7 @@ Se ainda não funcionar, fechei e inicie o Lively/ reinicei o Windows.
     <value>Normal</value>
   </data>
   <data name="TextUnsupportedFile" xml:space="preserve">
-    <value>File format not supported</value>
+    <value>Formato de arquivo não suportado</value>
   </data>
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>Atualização Disponível!</value>
@@ -563,19 +563,19 @@ Se ainda não funcionar, fechei e inicie o Lively/ reinicei o Windows.
     <value>Vídeo</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>Enter optional commandline arguments</value>
+    <value>Digite comandos opcionais na linha de comando</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
-    <value>Fill</value>
+    <value>Preencher</value>
   </data>
   <data name="WallpaperFitNone.Content" xml:space="preserve">
-    <value>None</value>
+    <value>Nenhum</value>
   </data>
   <data name="WallpaperFitUniform.Content" xml:space="preserve">
-    <value>Uniform</value>
+    <value>Uniforme</value>
   </data>
   <data name="WallpaperFitUniformToFill.Content" xml:space="preserve">
-    <value>Uniform Fill</value>
+    <value>Preenchimento uniforme</value>
   </data>
   <data name="WallpaperLayoutDuplicate.Content" xml:space="preserve">
     <value>Duplicar o memsmo fundo</value>
@@ -630,7 +630,7 @@ Se ainda não funcionar, fechei e inicie o Lively/ reinicei o Windows.
 Quando pronto navegar para http://localhost:portnumber para aceder a consola de programador.</value>
   </data>
   <data name="Debug.Description" xml:space="preserve">
-    <value>Show developer menu</value>
+    <value>Opções de programador</value>
   </data>
   <data name="DesktopPicture.Description" xml:space="preserve">
     <value>Set a picture of animated wallpaper as desktop wallpaper.</value>
@@ -656,10 +656,10 @@ Todos: Pausar fundo no(s) ecrã(s) se alguma aplicação esta focada/ecrã intei
 Todos os Processos: Pesado, varre todos os processos para determinar o comportamento de reprodução.</value>
   </data>
   <data name="PowerSavingModePower.Description" xml:space="preserve">
-    <value>Change playback when Windows Power Saving Mode is enabled</value>
+    <value>Alterar a reprodução quando o Modo de Economia de Energia do Windows estiver ativado</value>
   </data>
   <data name="RemoteDesktopPower.Description" xml:space="preserve">
-    <value>Change playback when running a Remote Desktop session</value>
+    <value>Mudar a reprodução ao executar uma sessão de Desktop Remota</value>
   </data>
   <data name="TipScreensaver" xml:space="preserve">
     <value>After the selected inactivity period use the current wallpaper as your screensaver.</value>
@@ -744,13 +744,13 @@ Edge é o webview integrado do windows 10.</value>
     <value>Porta de Depuração</value>
   </data>
   <data name="TitleChangelog" xml:space="preserve">
-    <value>Changelog</value>
+    <value>Registo de alterações</value>
   </data>
   <data name="Community.Header" xml:space="preserve">
     <value>Comunidade</value>
   </data>
   <data name="Debug.Header" xml:space="preserve">
-    <value>Debug</value>
+    <value>Depurar</value>
   </data>
   <data name="TitleDeleteConfirmation" xml:space="preserve">
     <value>Confirmar Remoção</value>
@@ -765,10 +765,10 @@ Edge é o webview integrado do windows 10.</value>
     <value>Documentação</value>
   </data>
   <data name="EnterUrl.Header" xml:space="preserve">
-    <value>Enter URL</value>
+    <value>Introduzir URL</value>
   </data>
   <data name="ExportLogs.Header" xml:space="preserve">
-    <value>Log File</value>
+    <value>Ficheiro de registo</value>
   </data>
   <data name="TitleGeneral" xml:space="preserve">
     <value>Geral</value>
@@ -789,7 +789,7 @@ Edge é o webview integrado do windows 10.</value>
     <value>Instalador do Lively</value>
   </data>
   <data name="TitleLocation" xml:space="preserve">
-    <value>Location</value>
+    <value>Localização</value>
   </data>
   <data name="LockscreenPicture.Header" xml:space="preserve">
     <value>Lockscreen Picture</value>
@@ -813,13 +813,13 @@ Edge é o webview integrado do windows 10.</value>
     <value>Aguarde Por Favor</value>
   </data>
   <data name="PowerSavingModePower.Header" xml:space="preserve">
-    <value>When on Battery Saver</value>
+    <value>Durante a poupança de bateria</value>
   </data>
   <data name="RemoteDesktopPower.Header" xml:space="preserve">
-    <value>When on Remote Desktop</value>
+    <value>Quando em “desktop” remoto</value>
   </data>
   <data name="ReportBug.Header" xml:space="preserve">
-    <value>Report Bug</value>
+    <value>Reportar Erro</value>
   </data>
   <data name="TitleScalingFit" xml:space="preserve">
     <value>Escalar/Ajustar</value>
@@ -828,10 +828,10 @@ Edge é o webview integrado do windows 10.</value>
     <value>Layout de Ecrã(s)</value>
   </data>
   <data name="TitleScreensaver" xml:space="preserve">
-    <value>Screensaver</value>
+    <value>Protetor de tela</value>
   </data>
   <data name="TitleScreensaverLockOnResume" xml:space="preserve">
-    <value>On resume, display logon screen</value>
+    <value>Ao retomar, exibe a tela de login</value>
   </data>
   <data name="TitleSelectFile" xml:space="preserve">
     <value>Seleccionar Ficheiro</value>
@@ -840,17 +840,17 @@ Edge é o webview integrado do windows 10.</value>
     <value>Definições</value>
   </data>
   <data name="TitleSkipConfirm" xml:space="preserve">
-    <value>Skip Confirmation</value>
+    <value>Confirmação para Pular</value>
   </data>
   <data name="SourceCode.Header" xml:space="preserve">
-    <value>Source Code</value>
+    <value>Código-Fonte</value>
   </data>
   <data name="Store.Header" xml:space="preserve">
-    <value>Store</value>
+    <value>Loja</value>
     <comment>For different version of Lively, example: Microsoft Store</comment>
   </data>
   <data name="StreamWallpaperVideoQuality.Header" xml:space="preserve">
-    <value>Stream</value>
+    <value>Transmissão</value>
   </data>
   <data name="StreamWallpaperDetect.Header" xml:space="preserve">
     <value>Detectar Streams</value>
@@ -859,10 +859,10 @@ Edge é o webview integrado do windows 10.</value>
     <value>Qualidade do Vídeo</value>
   </data>
   <data name="System.Header" xml:space="preserve">
-    <value>System</value>
+    <value>Sistema</value>
   </data>
   <data name="TaskbarTheme.Header" xml:space="preserve">
-    <value>Taskbar Theme</value>
+    <value>Tema da Barra de Tarefas</value>
   </data>
   <data name="TitleTileSize" xml:space="preserve">
     <value>Tamanho da Telha</value>
@@ -871,7 +871,7 @@ Edge é o webview integrado do windows 10.</value>
     <value>Interface de Utilizador</value>
   </data>
   <data name="TitleUpdates" xml:space="preserve">
-    <value>Updates</value>
+    <value>Atualizações</value>
   </data>
   <data name="TitleVideo" xml:space="preserve">
     <value>Vídeo</value>
@@ -889,7 +889,7 @@ Edge é o webview integrado do windows 10.</value>
     <value>Mover fundos existentes para uma nova pasta</value>
   </data>
   <data name="WallpaperFit.Header" xml:space="preserve">
-    <value>Choose a fit</value>
+    <value>Escolher um ajuste</value>
   </data>
   <data name="WallpaperInput.Header" xml:space="preserve">
     <value>Fonte do Fundo</value>
@@ -916,58 +916,58 @@ Edge é o webview integrado do windows 10.</value>
     <value>Carregar página web</value>
   </data>
   <data name="FastUI.Description" xml:space="preserve">
-    <value>Keep User Interface running for faster startup</value>
+    <value>Manter a Interface do Utilizador em execução para iniciar mais rapidamente</value>
   </data>
   <data name="FastUI.Header" xml:space="preserve">
-    <value>Fast startup</value>
+    <value>Inicialização rápida</value>
   </data>
   <data name="WallpaperDirGroup.Header" xml:space="preserve">
-    <value>File</value>
+    <value>Ficheiro</value>
   </data>
   <data name="AppThemeDark.Content" xml:space="preserve">
-    <value>Dark</value>
+    <value>Escuro</value>
   </data>
   <data name="AppThemeLight.Content" xml:space="preserve">
-    <value>Light</value>
+    <value>Claro</value>
   </data>
   <data name="AppThemeSystem.Content" xml:space="preserve">
-    <value>System</value>
+    <value>Sistema</value>
   </data>
   <data name="WindowsSettingsColor.Content" xml:space="preserve">
-    <value>Windows color settings</value>
+    <value>Definições de cor do Windows</value>
   </data>
   <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
-    <value>Laptops</value>
+    <value>Computadores Portáteis</value>
   </data>
   <data name="DeveloperGroup.Header" xml:space="preserve">
-    <value>Developer</value>
+    <value>Desenvolvedor</value>
   </data>
   <data name="AppearanceBehaviour.Header" xml:space="preserve">
-    <value>Appearance &amp; behavior</value>
+    <value>Aparência e comportamento</value>
   </data>
   <data name="ActiveWallpapers.Label" xml:space="preserve">
-    <value>Active Wallpaper(s)</value>
+    <value>Papéis de Parede ativos</value>
   </data>
   <data name="TitleGallery" xml:space="preserve">
-    <value>Gallery</value>
+    <value>Galeria</value>
   </data>
   <data name="AboutMe.Text" xml:space="preserve">
-    <value>Hi, I'm Dani John also known as rocksdanister. I developed Lively a Free and open-source (FOSS) wallpaper application. Thanks for taking the time to look at my work.</value>
+    <value>Olá! Eu sou Dani John também conhecido como rocksdanister. Desenvolvi um aplicativo de papel de parede gratuito e de código aberto (FOSS). Obrigado por reservar um tempo para olhar meu trabalho.</value>
   </data>
   <data name="LicenseLink.Content" xml:space="preserve">
-    <value>Software license</value>
+    <value>Licença de software</value>
   </data>
   <data name="AttributionLink.Content" xml:space="preserve">
-    <value>Third party software notice</value>
+    <value>Aviso de software de terceiros</value>
   </data>
   <data name="PrivacyPolicyLink.Content" xml:space="preserve">
-    <value>Data collection policy</value>
+    <value>Política de Proteção de Dados</value>
   </data>
   <data name="AddWallpaperDrop.Text" xml:space="preserve">
-    <value>Add wallpaper</value>
+    <value>Adicionar papel de parede</value>
   </data>
   <data name="ComingSoon.Text" xml:space="preserve">
-    <value>Coming soon</value>
+    <value>Disponível em breve</value>
   </data>
   <data name="AboutMenu.Text" xml:space="preserve">
     <value>Acerca</value>
@@ -976,16 +976,16 @@ Edge é o webview integrado do windows 10.</value>
     <value>Website</value>
   </data>
   <data name="TextOpen.Content" xml:space="preserve">
-    <value>Open</value>
+    <value>Abrir</value>
   </data>
   <data name="TextSave.Content" xml:space="preserve">
-    <value>Save</value>
+    <value>Guardar</value>
   </data>
   <data name="UIMode.Description" xml:space="preserve">
-    <value>User interface effects and animations</value>
+    <value>Animações e efeitos de interface do usuário</value>
   </data>
   <data name="UIMode.Header" xml:space="preserve">
-    <value>User interface</value>
+    <value>Interface do utilizador</value>
   </data>
   <data name="UIModeLite.Content" xml:space="preserve">
     <value>Lite</value>
@@ -994,141 +994,147 @@ Edge é o webview integrado do windows 10.</value>
     <value>Normal</value>
   </data>
   <data name="Screensaver.Description" xml:space="preserve">
-    <value>How screensaver is applied to connected to display devices</value>
+    <value>Como o fundo é aplicado a ecrãs conectados</value>
   </data>
   <data name="Screensaver.Header" xml:space="preserve">
-    <value>Type of screensaver</value>
+    <value>Tipo de protetor de tela</value>
   </data>
   <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
-    <value>Configured separately</value>
+    <value>Configurado separadamente</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
-    <value>Same as running wallpaper</value>
+    <value>Papel de parede iguais</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
-    <value>Plugin required</value>
+    <value>Plugin necessário</value>
   </data>
   <data name="ScreensaverPluginMessage.Text" xml:space="preserve">
-    <value>One time setup is required to run screensaver</value>
+    <value>É preciso configurar pelo menos uma vez para utilizar o protetor de ecrã</value>
   </data>
   <data name="WallpaperLayoutScreenPicker.Content" xml:space="preserve">
-    <value>Always pick screen when choosing wallpaper</value>
+    <value>Sempre escolher a tela ao escolher o papel de parede</value>
   </data>
   <data name="GalleryAccount.Text" xml:space="preserve">
-    <value>Account</value>
+    <value>Conta</value>
   </data>
   <data name="GalleryAccountDelete.Content" xml:space="preserve">
-    <value>Delete account</value>
+    <value>Eliminar conta</value>
   </data>
   <data name="GalleryAccountExport.Content" xml:space="preserve">
-    <value>Export data</value>
+    <value>Exportar dados</value>
   </data>
   <data name="GalleryAccountLogin.Content" xml:space="preserve">
-    <value>Log in</value>
+    <value>Iniciar sessão</value>
   </data>
   <data name="GalleryAccountLogout.Content" xml:space="preserve">
-    <value>Log out</value>
+    <value>Terminar sessão</value>
   </data>
   <data name="GalleryPageCollection.Content" xml:space="preserve">
-    <value>Collection</value>
+    <value>Coleção</value>
   </data>
   <data name="GalleryPageHome.Content" xml:space="preserve">
-    <value>Home</value>
+    <value>Menu Inicial</value>
   </data>
   <data name="GalleryPageManage.Content" xml:space="preserve">
-    <value>Manage</value>
+    <value>Gerenciar</value>
   </data>
   <data name="GalleryPageProfile.Content" xml:space="preserve">
-    <value>Profile</value>
+    <value>Perfil</value>
   </data>
   <data name="GalleryPleaseLogin.Text" xml:space="preserve">
-    <value>Please log in to continue</value>
+    <value>Por favor faça o login para continuar</value>
   </data>
   <data name="GalleryWelcomeMessage.Text" xml:space="preserve">
-    <value>Hi</value>
+    <value>Olá</value>
   </data>
   <data name="RestoreWallpaper.Text" xml:space="preserve">
-    <value>We found these wallpapers in your account</value>
+    <value>Encontramos estes papéis de parede em sua conta</value>
   </data>
   <data name="TextDownloadNow.Content" xml:space="preserve">
-    <value>Download now</value>
+    <value>Fazer download agora</value>
   </data>
   <data name="TextMaybeLater.Content" xml:space="preserve">
-    <value>Maybe later</value>
+    <value>Talvez mais tarde</value>
   </data>
   <data name="TextSelectAll.Content" xml:space="preserve">
-    <value>Select all</value>
+    <value>Selecionar todos</value>
   </data>
   <data name="TextSelectNone.Content" xml:space="preserve">
-    <value>Select none</value>
+    <value>Desselecionar</value>
   </data>
   <data name="TitleWelcomeback.Text" xml:space="preserve">
-    <value>Welcome back!</value>
+    <value>Bem-vindo de volta!</value>
   </data>
   <data name="ReportWallpaper.Header" xml:space="preserve">
-    <value>Reasons</value>
+    <value>Motivos</value>
   </data>
   <data name="ReportWallpaperCopyright.Content" xml:space="preserve">
-    <value>Copyright violation</value>
+    <value>Violação de direitos de autor</value>
   </data>
   <data name="ReportWallpaperMisleading.Content" xml:space="preserve">
-    <value>Misleading information</value>
+    <value>Informação enganosa</value>
   </data>
   <data name="ReportWallpaperOther.Content" xml:space="preserve">
-    <value>Other</value>
+    <value>Outros</value>
   </data>
   <data name="ReportWallpaperSpam.Content" xml:space="preserve">
     <value>Spam</value>
   </data>
   <data name="ReportWallpaperViolence.Content" xml:space="preserve">
-    <value>Nudity or violence</value>
+    <value>Nudez ou violência</value>
   </data>
   <data name="TextAdditionalNotes.Text" xml:space="preserve">
-    <value>Additional notes</value>
+    <value>Notas adicionais</value>
   </data>
   <data name="TextReportWallpaper.Text" xml:space="preserve">
-    <value>Report</value>
+    <value>Reportar</value>
   </data>
   <data name="TitleReportWallpaper.Text" xml:space="preserve">
-    <value>Report Wallpaper</value>
+    <value>Reportar Papel de Parede</value>
   </data>
   <data name="Send.Content" xml:space="preserve">
-    <value>Send</value>
+    <value>Enviar</value>
   </data>
   <data name="GalleryAccountDeleteConfirm.Text" xml:space="preserve">
-    <value>Please confirm this action as it CAN NOT be undone</value>
+    <value>Por favor, confirme esta ação, pois NÃO PODE ser desfeita</value>
   </data>
   <data name="GalleryAccountDeleteFail.Text" xml:space="preserve">
-    <value>Failed to delete account, please try again later</value>
+    <value>Falha ao apagar a conta, por favor tente mais tarde</value>
   </data>
   <data name="TextConfirmCancel.Text" xml:space="preserve">
-    <value>Do you want to cancel it?</value>
+    <value>Pretende cancelar?</value>
   </data>
   <data name="TextWait.Text" xml:space="preserve">
-    <value>Wait</value>
+    <value>Aguarde</value>
   </data>
   <data name="TitleDownloadProgress.Text" xml:space="preserve">
-    <value>Download in Progress</value>
+    <value>Transferência em curso</value>
   </data>
   <data name="TextContributors.Text" xml:space="preserve">
-    <value>Contributors</value>
+    <value>Contribuidores</value>
   </data>
   <data name="TextShare.Text" xml:space="preserve">
-    <value>Share</value>
+    <value>Partilhar</value>
   </data>
   <data name="TitleShareWallpaper.Text" xml:space="preserve">
-    <value>Share Wallpaper</value>
+    <value>Partilhar papel de parede</value>
   </data>
   <data name="ExportWallpaperGallery.Text" xml:space="preserve">
-    <value>Gallery upload</value>
+    <value>Upload da galeria</value>
   </data>
   <data name="ExportWallpaperLink.Text" xml:space="preserve">
-    <value>Copy link</value>
+    <value>Copiar link</value>
   </data>
   <data name="TextCustomiseWallpaper" xml:space="preserve">
     <value>Personalizar Fundo</value>
   </data>
   <data name="TextCloseWallpapers" xml:space="preserve">
     <value>Fechar Fundo</value>
+  </data>
+  <data name="TitleChooseApplication.Text" xml:space="preserve">
+    <value>Selecione Aplicações</value>
+  </data>
+  <data name="WallpaperInstallSize.Text" xml:space="preserve">
+    <value>Tamanho</value>
   </data>
 </root>

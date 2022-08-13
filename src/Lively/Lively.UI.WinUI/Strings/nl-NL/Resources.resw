@@ -1121,4 +1121,10 @@ Alle processen: Heavier, Scant alle processen om afspeelmogelijkheden te bepalen
   <data name="TextCloseWallpapers" xml:space="preserve">
     <value>Achtergronden Sluiten</value>
   </data>
+  <data name="TitleChooseApplication.Text" xml:space="preserve">
+    <value>Choose Application</value>
+  </data>
+  <data name="WallpaperInstallSize.Text" xml:space="preserve">
+    <value>Size</value>
+  </data>
 </root>

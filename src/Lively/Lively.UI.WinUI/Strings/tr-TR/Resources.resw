@@ -1127,4 +1127,10 @@ Edge ise windows 10 için geçerli web gösterim motorudur.</value>
   <data name="TextCloseWallpapers" xml:space="preserve">
     <value>Duvar Kağıtlarını kapat</value>
   </data>
+  <data name="TitleChooseApplication.Text" xml:space="preserve">
+    <value>Choose Application</value>
+  </data>
+  <data name="WallpaperInstallSize.Text" xml:space="preserve">
+    <value>Size</value>
+  </data>
 </root>

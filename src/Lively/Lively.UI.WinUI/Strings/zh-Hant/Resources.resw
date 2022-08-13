@@ -1129,4 +1129,10 @@ Edge 是 Windows 10 的內建網頁繪製元件 (Webview)。</value>
   <data name="TextCloseWallpapers" xml:space="preserve">
     <value>關閉桌布</value>
   </data>
+  <data name="TitleChooseApplication.Text" xml:space="preserve">
+    <value>Choose Application</value>
+  </data>
+  <data name="WallpaperInstallSize.Text" xml:space="preserve">
+    <value>Size</value>
+  </data>
 </root>

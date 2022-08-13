@@ -280,7 +280,7 @@ Si aún no funciona, cierra e inicia Lively nuevamente o reinicia Windows.
     <value>Iniciar con Windows</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
-    <value>Agregar</value>
+    <value>Añadir</value>
   </data>
   <data name="TextAllFiles" xml:space="preserve">
     <value>Todos los archivos</value>
@@ -1132,5 +1132,11 @@ Edge es la vista web integrada en Windows 10.</value>
   </data>
   <data name="TextCloseWallpapers" xml:space="preserve">
     <value>Cerrar fondos de pantalla</value>
+  </data>
+  <data name="TitleChooseApplication.Text" xml:space="preserve">
+    <value>Choose Application</value>
+  </data>
+  <data name="WallpaperInstallSize.Text" xml:space="preserve">
+    <value>Size</value>
   </data>
 </root>

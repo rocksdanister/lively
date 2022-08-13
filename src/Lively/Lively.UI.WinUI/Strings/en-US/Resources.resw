@@ -1127,4 +1127,10 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="TextCloseWallpapers" xml:space="preserve">
     <value>Close Wallpapers</value>
   </data>
+  <data name="TitleChooseApplication.Text" xml:space="preserve">
+    <value>Choose Application</value>
+  </data>
+  <data name="WallpaperInstallSize.Text" xml:space="preserve">
+    <value>Size</value>
+  </data>
 </root>

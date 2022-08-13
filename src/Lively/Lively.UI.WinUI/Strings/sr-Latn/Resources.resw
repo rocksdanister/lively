@@ -1004,22 +1004,22 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Delete account</value>
   </data>
   <data name="GalleryAccountExport.Content" xml:space="preserve">
-    <value>Export data</value>
+    <value>Izvoz podataka</value>
   </data>
   <data name="GalleryAccountLogin.Content" xml:space="preserve">
-    <value>Log in</value>
+    <value>Prijavite se</value>
   </data>
   <data name="GalleryAccountLogout.Content" xml:space="preserve">
-    <value>Log out</value>
+    <value>Odjaviti se</value>
   </data>
   <data name="GalleryPageCollection.Content" xml:space="preserve">
-    <value>Collection</value>
+    <value>Kolekcija</value>
   </data>
   <data name="GalleryPageHome.Content" xml:space="preserve">
     <value>Home</value>
   </data>
   <data name="GalleryPageManage.Content" xml:space="preserve">
-    <value>Manage</value>
+    <value>Upravljaj</value>
   </data>
   <data name="GalleryPageProfile.Content" xml:space="preserve">
     <value>Profile</value>
@@ -1064,54 +1064,60 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Spam</value>
   </data>
   <data name="ReportWallpaperViolence.Content" xml:space="preserve">
-    <value>Nudity or violence</value>
+    <value>Golotinja ili nasilje</value>
   </data>
   <data name="TextAdditionalNotes.Text" xml:space="preserve">
     <value>Additional notes</value>
   </data>
   <data name="TextReportWallpaper.Text" xml:space="preserve">
-    <value>Report</value>
+    <value>Prijava</value>
   </data>
   <data name="TitleReportWallpaper.Text" xml:space="preserve">
-    <value>Report Wallpaper</value>
+    <value>Prijavite pozadinu</value>
   </data>
   <data name="Send.Content" xml:space="preserve">
-    <value>Send</value>
+    <value>Pošalji</value>
   </data>
   <data name="GalleryAccountDeleteConfirm.Text" xml:space="preserve">
-    <value>Please confirm this action as it CAN NOT be undone</value>
+    <value>Potvrdite ovu radnju jer je NIJE MOGUĆE opozvati</value>
   </data>
   <data name="GalleryAccountDeleteFail.Text" xml:space="preserve">
-    <value>Failed to delete account, please try again later</value>
+    <value>Brisanje naloga nije uspelo, pokušajte ponovo kasnije</value>
   </data>
   <data name="TextConfirmCancel.Text" xml:space="preserve">
-    <value>Do you want to cancel it?</value>
+    <value>Želite li da ga otkažete?</value>
   </data>
   <data name="TextWait.Text" xml:space="preserve">
-    <value>Wait</value>
+    <value>Sačekajte</value>
   </data>
   <data name="TitleDownloadProgress.Text" xml:space="preserve">
-    <value>Download in Progress</value>
+    <value>Preuzimanje u toku</value>
   </data>
   <data name="TextContributors.Text" xml:space="preserve">
-    <value>Contributors</value>
+    <value>Saradnici</value>
   </data>
   <data name="TextShare.Text" xml:space="preserve">
-    <value>Share</value>
+    <value>Podeli</value>
   </data>
   <data name="TitleShareWallpaper.Text" xml:space="preserve">
-    <value>Share Wallpaper</value>
+    <value>Podeli pozadinu</value>
   </data>
   <data name="ExportWallpaperGallery.Text" xml:space="preserve">
-    <value>Gallery upload</value>
+    <value>Otpremi galeriju</value>
   </data>
   <data name="ExportWallpaperLink.Text" xml:space="preserve">
-    <value>Copy link</value>
+    <value>Kopiraj vezu</value>
   </data>
   <data name="TextCustomiseWallpaper" xml:space="preserve">
     <value>Izmeni pozadinu</value>
   </data>
   <data name="TextCloseWallpapers" xml:space="preserve">
     <value>Zatvori pozadinu</value>
+  </data>
+  <data name="TitleChooseApplication.Text" xml:space="preserve">
+    <value>Odaberite aplikaciju</value>
+  </data>
+  <data name="WallpaperInstallSize.Text" xml:space="preserve">
+    <value>Veličina</value>
   </data>
 </root>

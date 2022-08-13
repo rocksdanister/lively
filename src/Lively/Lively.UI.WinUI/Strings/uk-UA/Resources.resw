@@ -144,7 +144,7 @@
     <value>Знайдена несумісна програма, тематизація панелі завдань вимкнена.</value>
   </data>
   <data name="OfficialWebpage.Content" xml:space="preserve">
-    <value>Official webpage of Lively Wallpaper</value>
+    <value>Офіційна веб-сторінка Lively Wallpaper</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
     <value>Більшість сучасних рідкокристалічних та світлодіодних дисплеїв не страждають від вигорання, і тому будь-які шпалери можна використовувати як заставку.
@@ -154,7 +154,7 @@
 Основна мета заставки Lively - це додати ще один рівень налаштування до свого ПК, використовувати заставки як захист від вигорання на власний ризик!</value>
   </data>
   <data name="ReportBugPage.Content" xml:space="preserve">
-    <value>Report a problem with the software</value>
+    <value>Повідомити про проблему з програмним забезпеченням</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
     <value>Виберіть файл або вкажіть URL-адресу веб-сайту, який потрібно встановити як шпалери.</value>
@@ -210,14 +210,14 @@
     <value>Ваша версія Windows N/KN вимагає завантаження додаткових кодеків для підтримки відтворення відео в шпалерах.</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
-    <value>Show support by buying the developer coffee</value>
+    <value>Проявіть підтримку, купивши каву для розробників</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
-    <value>You are about to change to beta (developer) build of Lively.
-Updates will be frequent and may contain bugs!</value>
+    <value>Ви збираєтеся перейти на бета-версію (для розробників) Lively.
+Оновлення будуть частими та можуть містити помилки!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
-    <value>System-tray icon visibility, lively will continue to run with the icon hidden</value>
+    <value>Видимість значка системного лотка, Lively продовжуватиме працювати з прихованим значком</value>
   </data>
   <data name="HideSysTray.Header" xml:space="preserve">
     <value>Іконка на панелі задач</value>
@@ -302,7 +302,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Скасувати</value>
   </data>
   <data name="TextChangeWallpaper" xml:space="preserve">
-    <value>Change Wallpapers</value>
+    <value>Змінити шпалери</value>
   </data>
   <data name="TextClose" xml:space="preserve">
     <value>Закрити</value>
@@ -383,7 +383,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Клавіатура</value>
   </data>
   <data name="TextLastChecked" xml:space="preserve">
-    <value>Last checked</value>
+    <value>Востаннє перевірено</value>
   </data>
   <data name="TextLearnMore.Text" xml:space="preserve">
     <value>Дізнатись більше</value>
@@ -416,7 +416,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Вимк.</value>
   </data>
   <data name="TextOK" xml:space="preserve">
-    <value>OK</value>
+    <value>Гаразд</value>
   </data>
   <data name="TextOn.Content" xml:space="preserve">
     <value>Увімк.</value>
@@ -494,10 +494,10 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Підтримати</value>
   </data>
   <data name="TextSwitchBranchDev" xml:space="preserve">
-    <value>Switch to beta (Dev channel)</value>
+    <value>Перейти на бета-версію (канал для розробників)</value>
   </data>
   <data name="TextSwitchBranchOfficial" xml:space="preserve">
-    <value>Switch to stable (Default channel)</value>
+    <value>Перейти на стабільний (канал за замовчуванням)</value>
   </data>
   <data name="TextTags" xml:space="preserve">
     <value>Теги</value>
@@ -533,7 +533,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Назва</value>
   </data>
   <data name="TextUIHeadless" xml:space="preserve">
-    <value>Headless</value>
+    <value>Без заголовка</value>
   </data>
   <data name="TextUILite" xml:space="preserve">
     <value>Простий</value>
@@ -656,10 +656,10 @@ https://github.com/rocksdanister/lively/wiki</value>
 Всі процеси: Повільний. Сканує всі процеси, щоб визначити режим відтворення.</value>
   </data>
   <data name="PowerSavingModePower.Description" xml:space="preserve">
-    <value>Change playback when Windows Power Saving Mode is enabled</value>
+    <value>Змінити відтворення, коли ввімкнено режим енергозбереження Windows</value>
   </data>
   <data name="RemoteDesktopPower.Description" xml:space="preserve">
-    <value>Change playback when running a Remote Desktop session</value>
+    <value>Змінити відтворення під час запуску сеансу віддаленого робочого стола</value>
   </data>
   <data name="TipScreensaver" xml:space="preserve">
     <value>Після вибраного періоду бездіяльності використовуйте поточні шпалери як заставку.</value>
@@ -744,7 +744,7 @@ Edge - веб-двигун з Windows 10 WebView.</value>
     <value>Порт налагодження</value>
   </data>
   <data name="TitleChangelog" xml:space="preserve">
-    <value>Changelog</value>
+    <value>Журнал змін</value>
   </data>
   <data name="Community.Header" xml:space="preserve">
     <value>Спільнота</value>
@@ -765,7 +765,7 @@ Edge - веб-двигун з Windows 10 WebView.</value>
     <value>Документація</value>
   </data>
   <data name="EnterUrl.Header" xml:space="preserve">
-    <value>Enter URL</value>
+    <value>Введіть URL</value>
   </data>
   <data name="ExportLogs.Header" xml:space="preserve">
     <value>Файл журналу</value>
@@ -813,10 +813,10 @@ Edge - веб-двигун з Windows 10 WebView.</value>
     <value>Будь ласка, зачекайте</value>
   </data>
   <data name="PowerSavingModePower.Header" xml:space="preserve">
-    <value>When on Battery Saver</value>
+    <value>У режимі економії заряду акумулятора</value>
   </data>
   <data name="RemoteDesktopPower.Header" xml:space="preserve">
-    <value>When on Remote Desktop</value>
+    <value>Коли на віддаленому робочому столі</value>
   </data>
   <data name="ReportBug.Header" xml:space="preserve">
     <value>Повідомити про помилку</value>
@@ -831,7 +831,7 @@ Edge - веб-двигун з Windows 10 WebView.</value>
     <value>Заставка</value>
   </data>
   <data name="TitleScreensaverLockOnResume" xml:space="preserve">
-    <value>On resume, display logon screen</value>
+    <value>У резюме, екрана входу</value>
   </data>
   <data name="TitleSelectFile" xml:space="preserve">
     <value>Виберіть файл</value>
@@ -871,7 +871,7 @@ Edge - веб-двигун з Windows 10 WebView.</value>
     <value>Інтерфейс</value>
   </data>
   <data name="TitleUpdates" xml:space="preserve">
-    <value>Updates</value>
+    <value>Оновлення</value>
   </data>
   <data name="TitleVideo" xml:space="preserve">
     <value>Відео</value>
@@ -916,58 +916,58 @@ Edge - веб-двигун з Windows 10 WebView.</value>
     <value>Завантажити сторінку</value>
   </data>
   <data name="FastUI.Description" xml:space="preserve">
-    <value>Keep User Interface running for faster startup</value>
+    <value>Залишати інтерфейс користувача запущеним для швидкого запуску</value>
   </data>
   <data name="FastUI.Header" xml:space="preserve">
-    <value>Fast startup</value>
+    <value>Швидкий запуск</value>
   </data>
   <data name="WallpaperDirGroup.Header" xml:space="preserve">
-    <value>File</value>
+    <value>Файл</value>
   </data>
   <data name="AppThemeDark.Content" xml:space="preserve">
-    <value>Dark</value>
+    <value>Темний</value>
   </data>
   <data name="AppThemeLight.Content" xml:space="preserve">
-    <value>Light</value>
+    <value>Світлий</value>
   </data>
   <data name="AppThemeSystem.Content" xml:space="preserve">
     <value>Система</value>
   </data>
   <data name="WindowsSettingsColor.Content" xml:space="preserve">
-    <value>Windows color settings</value>
+    <value>Параметри кольору Windows</value>
   </data>
   <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
-    <value>Laptops</value>
+    <value>Ноутбуки</value>
   </data>
   <data name="DeveloperGroup.Header" xml:space="preserve">
-    <value>Developer</value>
+    <value>Розробник</value>
   </data>
   <data name="AppearanceBehaviour.Header" xml:space="preserve">
-    <value>Appearance &amp; behavior</value>
+    <value>Зовнішній вигляд і поведінка</value>
   </data>
   <data name="ActiveWallpapers.Label" xml:space="preserve">
-    <value>Active Wallpaper(s)</value>
+    <value>Активні шпалери</value>
   </data>
   <data name="TitleGallery" xml:space="preserve">
-    <value>Gallery</value>
+    <value>Галерея</value>
   </data>
   <data name="AboutMe.Text" xml:space="preserve">
-    <value>Hi, I'm Dani John also known as rocksdanister. I developed Lively a Free and open-source (FOSS) wallpaper application. Thanks for taking the time to look at my work.</value>
+    <value>Привіт, я Дані Джон, також відомий як rocksdanister. Я розробив безплатну програму для шпалер Lively із відкритим кодом (FOSS). Дякую, що знайшли час переглянути мою роботу.</value>
   </data>
   <data name="LicenseLink.Content" xml:space="preserve">
-    <value>Software license</value>
+    <value>Ліцензія ПЗ</value>
   </data>
   <data name="AttributionLink.Content" xml:space="preserve">
-    <value>Third party software notice</value>
+    <value>Повідомити про використання стороннього ПЗ</value>
   </data>
   <data name="PrivacyPolicyLink.Content" xml:space="preserve">
-    <value>Data collection policy</value>
+    <value>Політика збору даних</value>
   </data>
   <data name="AddWallpaperDrop.Text" xml:space="preserve">
-    <value>Add wallpaper</value>
+    <value>Додати шпалери</value>
   </data>
   <data name="ComingSoon.Text" xml:space="preserve">
-    <value>Coming soon</value>
+    <value>Незабаром</value>
   </data>
   <data name="AboutMenu.Text" xml:space="preserve">
     <value>Про програму</value>
@@ -976,16 +976,16 @@ Edge - веб-двигун з Windows 10 WebView.</value>
     <value>Вебсайт</value>
   </data>
   <data name="TextOpen.Content" xml:space="preserve">
-    <value>Open</value>
+    <value>Відкрити</value>
   </data>
   <data name="TextSave.Content" xml:space="preserve">
-    <value>Save</value>
+    <value>Зберегти</value>
   </data>
   <data name="UIMode.Description" xml:space="preserve">
-    <value>User interface effects and animations</value>
+    <value>Ефекти та анімація інтерфейсу користувача</value>
   </data>
   <data name="UIMode.Header" xml:space="preserve">
-    <value>User interface</value>
+    <value>Інтерфейс користувача</value>
   </data>
   <data name="UIModeLite.Content" xml:space="preserve">
     <value>Простий</value>
@@ -994,141 +994,147 @@ Edge - веб-двигун з Windows 10 WebView.</value>
     <value>Нормальні</value>
   </data>
   <data name="Screensaver.Description" xml:space="preserve">
-    <value>How screensaver is applied to connected to display devices</value>
+    <value>Як заставка застосовується до підключених до дисплея пристроїв</value>
   </data>
   <data name="Screensaver.Header" xml:space="preserve">
-    <value>Type of screensaver</value>
+    <value>Тип заставки</value>
   </data>
   <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
-    <value>Configured separately</value>
+    <value>Налаштувати окремо</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
-    <value>Same as running wallpaper</value>
+    <value>Те саме, що запущені шпалери</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
-    <value>Plugin required</value>
+    <value>Потрібно доповнення</value>
   </data>
   <data name="ScreensaverPluginMessage.Text" xml:space="preserve">
-    <value>One time setup is required to run screensaver</value>
+    <value>Для запуску заставки потрібно одноразове налаштування</value>
   </data>
   <data name="WallpaperLayoutScreenPicker.Content" xml:space="preserve">
-    <value>Always pick screen when choosing wallpaper</value>
+    <value>Завжди вибирати екран під час вибору шпалер</value>
   </data>
   <data name="GalleryAccount.Text" xml:space="preserve">
-    <value>Account</value>
+    <value>Обліковий запис</value>
   </data>
   <data name="GalleryAccountDelete.Content" xml:space="preserve">
-    <value>Delete account</value>
+    <value>Видалити обліковий запис</value>
   </data>
   <data name="GalleryAccountExport.Content" xml:space="preserve">
-    <value>Export data</value>
+    <value>Експорт даних</value>
   </data>
   <data name="GalleryAccountLogin.Content" xml:space="preserve">
-    <value>Log in</value>
+    <value>Увійти</value>
   </data>
   <data name="GalleryAccountLogout.Content" xml:space="preserve">
-    <value>Log out</value>
+    <value>Вийти</value>
   </data>
   <data name="GalleryPageCollection.Content" xml:space="preserve">
-    <value>Collection</value>
+    <value>Колекція</value>
   </data>
   <data name="GalleryPageHome.Content" xml:space="preserve">
-    <value>Home</value>
+    <value>Головна</value>
   </data>
   <data name="GalleryPageManage.Content" xml:space="preserve">
-    <value>Manage</value>
+    <value>Керування</value>
   </data>
   <data name="GalleryPageProfile.Content" xml:space="preserve">
-    <value>Profile</value>
+    <value>Профіль</value>
   </data>
   <data name="GalleryPleaseLogin.Text" xml:space="preserve">
-    <value>Please log in to continue</value>
+    <value>Увійдіть, щоб продовжити</value>
   </data>
   <data name="GalleryWelcomeMessage.Text" xml:space="preserve">
-    <value>Hi</value>
+    <value>Привіт</value>
   </data>
   <data name="RestoreWallpaper.Text" xml:space="preserve">
-    <value>We found these wallpapers in your account</value>
+    <value>Ми знайшли ці шпалери у вашому обліковому записі</value>
   </data>
   <data name="TextDownloadNow.Content" xml:space="preserve">
-    <value>Download now</value>
+    <value>Завантажити зараз</value>
   </data>
   <data name="TextMaybeLater.Content" xml:space="preserve">
-    <value>Maybe later</value>
+    <value>Можливо пізніше</value>
   </data>
   <data name="TextSelectAll.Content" xml:space="preserve">
-    <value>Select all</value>
+    <value>Вибрати всі</value>
   </data>
   <data name="TextSelectNone.Content" xml:space="preserve">
-    <value>Select none</value>
+    <value>Скасувати вибране</value>
   </data>
   <data name="TitleWelcomeback.Text" xml:space="preserve">
-    <value>Welcome back!</value>
+    <value>З поверненням!</value>
   </data>
   <data name="ReportWallpaper.Header" xml:space="preserve">
-    <value>Reasons</value>
+    <value>Причина</value>
   </data>
   <data name="ReportWallpaperCopyright.Content" xml:space="preserve">
-    <value>Copyright violation</value>
+    <value>Порушення авторських прав</value>
   </data>
   <data name="ReportWallpaperMisleading.Content" xml:space="preserve">
-    <value>Misleading information</value>
+    <value>Оманлива інформація</value>
   </data>
   <data name="ReportWallpaperOther.Content" xml:space="preserve">
-    <value>Other</value>
+    <value>Інше</value>
   </data>
   <data name="ReportWallpaperSpam.Content" xml:space="preserve">
-    <value>Spam</value>
+    <value>Спам</value>
   </data>
   <data name="ReportWallpaperViolence.Content" xml:space="preserve">
-    <value>Nudity or violence</value>
+    <value>Нагота або насильство</value>
   </data>
   <data name="TextAdditionalNotes.Text" xml:space="preserve">
-    <value>Additional notes</value>
+    <value>Додаткова інформація</value>
   </data>
   <data name="TextReportWallpaper.Text" xml:space="preserve">
-    <value>Report</value>
+    <value>Скарга</value>
   </data>
   <data name="TitleReportWallpaper.Text" xml:space="preserve">
-    <value>Report Wallpaper</value>
+    <value>Скарга про шпалери</value>
   </data>
   <data name="Send.Content" xml:space="preserve">
-    <value>Send</value>
+    <value>Надіслати</value>
   </data>
   <data name="GalleryAccountDeleteConfirm.Text" xml:space="preserve">
-    <value>Please confirm this action as it CAN NOT be undone</value>
+    <value>Підтвердьте цю дію, оскільки її НЕ МОЖНА скасувати</value>
   </data>
   <data name="GalleryAccountDeleteFail.Text" xml:space="preserve">
-    <value>Failed to delete account, please try again later</value>
+    <value>Не вдалося видалити обліковий запис, повторіть спробу пізніше</value>
   </data>
   <data name="TextConfirmCancel.Text" xml:space="preserve">
-    <value>Do you want to cancel it?</value>
+    <value>Ви хочете скасувати це?</value>
   </data>
   <data name="TextWait.Text" xml:space="preserve">
-    <value>Wait</value>
+    <value>Зачекати</value>
   </data>
   <data name="TitleDownloadProgress.Text" xml:space="preserve">
-    <value>Download in Progress</value>
+    <value>Триває завантаження</value>
   </data>
   <data name="TextContributors.Text" xml:space="preserve">
-    <value>Contributors</value>
+    <value>Учасники</value>
   </data>
   <data name="TextShare.Text" xml:space="preserve">
-    <value>Share</value>
+    <value>Поділитися</value>
   </data>
   <data name="TitleShareWallpaper.Text" xml:space="preserve">
-    <value>Share Wallpaper</value>
+    <value>Поділитися шпалерами</value>
   </data>
   <data name="ExportWallpaperGallery.Text" xml:space="preserve">
-    <value>Gallery upload</value>
+    <value>Завантажити галереї</value>
   </data>
   <data name="ExportWallpaperLink.Text" xml:space="preserve">
-    <value>Copy link</value>
+    <value>Копіювати посилання</value>
   </data>
   <data name="TextCustomiseWallpaper" xml:space="preserve">
     <value>Налаштувати шпалер</value>
   </data>
   <data name="TextCloseWallpapers" xml:space="preserve">
     <value>Закрити шпалери</value>
+  </data>
+  <data name="TitleChooseApplication.Text" xml:space="preserve">
+    <value>Виберіть додаток</value>
+  </data>
+  <data name="WallpaperInstallSize.Text" xml:space="preserve">
+    <value>Розмір</value>
   </data>
 </root>

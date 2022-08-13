@@ -1129,4 +1129,10 @@ Edgeは、Windows 10に内蔵されたWebViewです。</value>
   <data name="TextCloseWallpapers" xml:space="preserve">
     <value>壁紙を閉じる</value>
   </data>
+  <data name="TitleChooseApplication.Text" xml:space="preserve">
+    <value>Choose Application</value>
+  </data>
+  <data name="WallpaperInstallSize.Text" xml:space="preserve">
+    <value>Size</value>
+  </data>
 </root>

@@ -1132,4 +1132,10 @@ Edge est la vue Web intégrée de Windows 10.</value>
   <data name="TextCloseWallpapers" xml:space="preserve">
     <value>Fermer les fonds d'écran</value>
   </data>
+  <data name="TitleChooseApplication.Text" xml:space="preserve">
+    <value>Sélectionner une application</value>
+  </data>
+  <data name="WallpaperInstallSize.Text" xml:space="preserve">
+    <value>Taille</value>
+  </data>
 </root>

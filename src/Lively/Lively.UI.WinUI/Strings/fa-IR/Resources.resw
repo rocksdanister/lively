@@ -144,7 +144,7 @@ Windows Explorer restarted twice in the last 30 seconds! This may be a conflict 
     <value>Incompatible program found, taskbar theming disabled.</value>
   </data>
   <data name="OfficialWebpage.Content" xml:space="preserve">
-    <value>Official webpage of Lively Wallpaper</value>
+    <value>وبسایت رسمی Lively Wallpaper</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
     <value>Most modern LCD and LED displays do not suffer from burn-in issue and therefore any wallpaper can be used as screensaver.
@@ -154,7 +154,7 @@ For OLED, Plasma or CRT displays which are susceptibe to burn-in it is advised t
 The main purpose of Lively's screensavers is to add another layer of customization to your pc, use screensavers as burn-in protection at your own risk!</value>
   </data>
   <data name="ReportBugPage.Content" xml:space="preserve">
-    <value>Report a problem with the software</value>
+    <value>گزارش مشکل درباره نرم‌افزار</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
     <value>یک فایل یا آدرس وبسایت انتخاب کنید تا پس زمینه تنظیم شود.</value>
@@ -301,7 +301,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>لغو</value>
   </data>
   <data name="TextChangeWallpaper" xml:space="preserve">
-    <value>Change Wallpapers</value>
+    <value>تغییر پس زمینه</value>
   </data>
   <data name="TextClose" xml:space="preserve">
     <value>بستن</value>
@@ -382,10 +382,10 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>کيبورد</value>
   </data>
   <data name="TextLastChecked" xml:space="preserve">
-    <value>Last checked</value>
+    <value>آخرین بازدید</value>
   </data>
   <data name="TextLearnMore.Text" xml:space="preserve">
-    <value>Learn more</value>
+    <value>بیشتر بدانید</value>
   </data>
   <data name="License.Header" xml:space="preserve">
     <value>جواز</value>
@@ -505,16 +505,16 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Blur</value>
   </data>
   <data name="TaskbarThemeClear.Content" xml:space="preserve">
-    <value>Clear</value>
+    <value>پاک سازی</value>
   </data>
   <data name="TaskbarThemeColor.Content" xml:space="preserve">
-    <value>Color</value>
+    <value>رنگ</value>
   </data>
   <data name="TaskbarThemeFluent.Content" xml:space="preserve">
     <value>Fluent</value>
   </data>
   <data name="TaskbarThemeWallpaper.Content" xml:space="preserve">
-    <value>Wallpaper</value>
+    <value>پس زمینه</value>
   </data>
   <data name="TaskbarThemeWallpaperFluent.Content" xml:space="preserve">
     <value>Wallpaper Fluent</value>
@@ -764,7 +764,7 @@ Edge is the built in webview of windows 10.</value>
     <value>مدارک (اطلاعات بيشتر)</value>
   </data>
   <data name="EnterUrl.Header" xml:space="preserve">
-    <value>Enter URL</value>
+    <value>لینک را وارد کنید</value>
   </data>
   <data name="ExportLogs.Header" xml:space="preserve">
     <value>فایل گذارش</value>
@@ -812,13 +812,13 @@ Edge is the built in webview of windows 10.</value>
     <value>لطفا صبر کنید</value>
   </data>
   <data name="PowerSavingModePower.Header" xml:space="preserve">
-    <value>When on Battery Saver</value>
+    <value>وقتی که بهینه‌ساز باتری فعال است</value>
   </data>
   <data name="RemoteDesktopPower.Header" xml:space="preserve">
     <value>When on Remote Desktop</value>
   </data>
   <data name="ReportBug.Header" xml:space="preserve">
-    <value>Report Bug</value>
+    <value>گزارش اشکال</value>
   </data>
   <data name="TitleScalingFit" xml:space="preserve">
     <value>مقیاس/پر کردن</value>
@@ -842,7 +842,7 @@ Edge is the built in webview of windows 10.</value>
     <value>رد کردن تاییدیه</value>
   </data>
   <data name="SourceCode.Header" xml:space="preserve">
-    <value>Source Code</value>
+    <value>کد منبع</value>
   </data>
   <data name="Store.Header" xml:space="preserve">
     <value>فروشگاه</value>
@@ -858,7 +858,7 @@ Edge is the built in webview of windows 10.</value>
     <value>کیفیت ویدیو</value>
   </data>
   <data name="System.Header" xml:space="preserve">
-    <value>System</value>
+    <value>سیستم</value>
   </data>
   <data name="TaskbarTheme.Header" xml:space="preserve">
     <value>Taskbar Theme</value>
@@ -921,7 +921,7 @@ Edge is the built in webview of windows 10.</value>
     <value>Fast startup</value>
   </data>
   <data name="WallpaperDirGroup.Header" xml:space="preserve">
-    <value>File</value>
+    <value>فایل</value>
   </data>
   <data name="AppThemeDark.Content" xml:space="preserve">
     <value>Dark</value>
@@ -930,7 +930,7 @@ Edge is the built in webview of windows 10.</value>
     <value>Light</value>
   </data>
   <data name="AppThemeSystem.Content" xml:space="preserve">
-    <value>System</value>
+    <value>سیستم</value>
   </data>
   <data name="WindowsSettingsColor.Content" xml:space="preserve">
     <value>Windows color settings</value>
@@ -948,7 +948,7 @@ Edge is the built in webview of windows 10.</value>
     <value>Active Wallpaper(s)</value>
   </data>
   <data name="TitleGallery" xml:space="preserve">
-    <value>Gallery</value>
+    <value>گالری</value>
   </data>
   <data name="AboutMe.Text" xml:space="preserve">
     <value>Hi, I'm Dani John also known as rocksdanister. I developed Lively a Free and open-source (FOSS) wallpaper application. Thanks for taking the time to look at my work.</value>
@@ -1129,5 +1129,11 @@ Edge is the built in webview of windows 10.</value>
   </data>
   <data name="TextCloseWallpapers" xml:space="preserve">
     <value>بستن کاغذ ديواري ها</value>
+  </data>
+  <data name="TitleChooseApplication.Text" xml:space="preserve">
+    <value>Choose Application</value>
+  </data>
+  <data name="WallpaperInstallSize.Text" xml:space="preserve">
+    <value>Size</value>
   </data>
 </root>
