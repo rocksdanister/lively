@@ -1133,9 +1133,9 @@ Edge è la visualizzazione Web integrata di Windows 10.</value>
     <value>Chiudi Wallpaper</value>
   </data>
   <data name="TitleChooseApplication.Text" xml:space="preserve">
-    <value>Choose Application</value>
+    <value>Scegli l'Applicazione</value>
   </data>
   <data name="WallpaperInstallSize.Text" xml:space="preserve">
-    <value>Size</value>
+    <value>Dimensione</value>
   </data>
 </root>
