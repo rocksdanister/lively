@@ -751,7 +751,7 @@ Edge is the built in webview of windows 10.</value>
     <value>Debug</value>
   </data>
   <data name="TitleDeleteConfirmation" xml:space="preserve">
-    <value>Confirm Deletion</value>
+    <value>Kumpirmahin ang Pagbura</value>
   </data>
   <data name="DesktopPicture.Header" xml:space="preserve">
     <value>Desktop Picture</value>
@@ -760,10 +760,10 @@ Edge is the built in webview of windows 10.</value>
     <value>Display Pause Rule</value>
   </data>
   <data name="Documentation.Header" xml:space="preserve">
-    <value>Documentation</value>
+    <value>Dokumentasyon</value>
   </data>
   <data name="EnterUrl.Header" xml:space="preserve">
-    <value>Enter URL</value>
+    <value>Magpasok ng URL</value>
   </data>
   <data name="ExportLogs.Header" xml:space="preserve">
     <value>Log File</value>
@@ -775,19 +775,19 @@ Edge is the built in webview of windows 10.</value>
     <value>Gif Player</value>
   </data>
   <data name="Help.Label" xml:space="preserve">
-    <value>Help</value>
+    <value>Tulong</value>
   </data>
   <data name="TitleInteraction" xml:space="preserve">
-    <value>Interaction</value>
+    <value>Interaksyon</value>
   </data>
   <data name="TitleLibrary" xml:space="preserve">
     <value>Library</value>
   </data>
   <data name="TitleLivelySetup" xml:space="preserve">
-    <value>Lively Setup</value>
+    <value>Setup ng Lively</value>
   </data>
   <data name="TitleLocation" xml:space="preserve">
-    <value>Location</value>
+    <value>Lokasyon</value>
   </data>
   <data name="LockscreenPicture.Header" xml:space="preserve">
     <value>Lockscreen Picture</value>
@@ -796,7 +796,7 @@ Edge is the built in webview of windows 10.</value>
     <value>Miscellaneous</value>
   </data>
   <data name="TitleMute" xml:space="preserve">
-    <value>Mute</value>
+    <value>I-mute</value>
   </data>
   <data name="PauseAlgorithm.Header" xml:space="preserve">
     <value>Pause Algorithm</value>
@@ -1130,9 +1130,9 @@ Edge is the built in webview of windows 10.</value>
     <value>Isarado ang Wallpapers</value>
   </data>
   <data name="TitleChooseApplication.Text" xml:space="preserve">
-    <value>Choose Application</value>
+    <value>Mamili ng aplikasyon</value>
   </data>
   <data name="WallpaperInstallSize.Text" xml:space="preserve">
-    <value>Size</value>
+    <value>Sukat</value>
   </data>
 </root>

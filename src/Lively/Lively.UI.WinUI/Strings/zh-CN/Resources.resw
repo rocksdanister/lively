@@ -939,7 +939,7 @@ Edge 是 Windows 10 内置的浏览器。</value>
     <value>Windows 颜色设置</value>
   </data>
   <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
-    <value>Laptops</value>
+    <value>笔记本电脑</value>
   </data>
   <data name="DeveloperGroup.Header" xml:space="preserve">
     <value>开发者</value>
@@ -1026,16 +1026,16 @@ Edge 是 Windows 10 内置的浏览器。</value>
     <value>Export data</value>
   </data>
   <data name="GalleryAccountLogin.Content" xml:space="preserve">
-    <value>Log in</value>
+    <value>登录</value>
   </data>
   <data name="GalleryAccountLogout.Content" xml:space="preserve">
-    <value>Log out</value>
+    <value>登出</value>
   </data>
   <data name="GalleryPageCollection.Content" xml:space="preserve">
     <value>Collection</value>
   </data>
   <data name="GalleryPageHome.Content" xml:space="preserve">
-    <value>Home</value>
+    <value>主页</value>
   </data>
   <data name="GalleryPageManage.Content" xml:space="preserve">
     <value>Manage</value>

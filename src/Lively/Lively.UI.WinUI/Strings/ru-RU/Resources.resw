@@ -1134,9 +1134,9 @@ Edge - встроенный в Windows 10 WebView.</value>
     <value>Отключить обои</value>
   </data>
   <data name="TitleChooseApplication.Text" xml:space="preserve">
-    <value>Choose Application</value>
+    <value>Выберите программу</value>
   </data>
   <data name="WallpaperInstallSize.Text" xml:space="preserve">
-    <value>Size</value>
+    <value>Размер</value>
   </data>
 </root>

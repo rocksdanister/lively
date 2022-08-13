@@ -183,7 +183,7 @@ Kontunuuj, tylko jeśli aplikacja pochodzi z zaufanego źródła.</value>
     <value>Jestem w zasobniku systemowym, kliknij prawym lively po więcej opcji.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
-    <value>Uruchom ponownie Lively aby zastosować ustawienia.</value>
+    <value>Uruchom ponownie Lively aby zastosować ustawienia</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
     <value>Zatrzymaj się proszę zanim przejdziesz dalej.</value>
