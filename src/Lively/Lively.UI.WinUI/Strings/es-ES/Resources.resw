@@ -1134,9 +1134,9 @@ Edge es la vista web integrada en Windows 10.</value>
     <value>Cerrar fondos de pantalla</value>
   </data>
   <data name="TitleChooseApplication.Text" xml:space="preserve">
-    <value>Choose Application</value>
+    <value>Elige la aplicación</value>
   </data>
   <data name="WallpaperInstallSize.Text" xml:space="preserve">
-    <value>Size</value>
+    <value>Tamaño</value>
   </data>
 </root>
