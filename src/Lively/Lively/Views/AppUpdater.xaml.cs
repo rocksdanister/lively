@@ -33,7 +33,7 @@ namespace Lively.Views
             {
                 this.suggestedFileName = fileUri.Segments.Last();
                 this.fileUrl = fileUri;
-                changelog.Document.Blocks.Add(new Paragraph(new Run(changelogText)));
+                changelog.Markdown = changelogText;
             }
             else
             {

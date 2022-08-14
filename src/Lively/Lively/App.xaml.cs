@@ -288,7 +288,7 @@ namespace Lively
                         updateNotify = true;
                         sysTray?.ShowBalloonNotification(4000,
                             "Lively Wallpaper",
-                            "Update available!");
+                            Lively.Properties.Resources.TextUpdateAvailable);
                     }
 
                     //If UI program already running then notification is displayed withing the it.
