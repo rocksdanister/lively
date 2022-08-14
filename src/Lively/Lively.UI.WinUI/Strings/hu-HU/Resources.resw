@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AudioFocused.Content" xml:space="preserve">
-    <value>Play audio only when desktop is focused</value>
+    <value>Csak akkor játssza le a hangot, ha az asztal fókuszban van</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
     <value>Hangerő szint minden egyes háttérképnek.</value>
@@ -130,31 +130,31 @@
     <value>Audió</value>
   </data>
   <data name="CommunityPage.Content" xml:space="preserve">
-    <value>Online discussion forum</value>
+    <value>Online vitafórum</value>
   </data>
   <data name="DocumentationPage.Content" xml:space="preserve">
-    <value>API documentation and help</value>
+    <value>API dokumentáció és segítség</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
-    <value>Lively has encountered a fatal error.
+    <value>Lively végzetes hibába ütközött.
 
-Windows Explorer restarted twice in the last 30 seconds! This may be a conflict between Lively and other desktop customization software or Windows. To avoid further issues, all wallpapers are terminated.</value>
+A Windows Intéző kétszer indult újra az elmúlt 30 másodpercben! Ez ütközés lehet a Lively és más asztali testreszabási szoftverek vagy a Windows között. A további problémák elkerülése érdekében az összes háttérképet leállítja.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
     <value>Incompatible program found, taskbar theming disabled.</value>
   </data>
   <data name="OfficialWebpage.Content" xml:space="preserve">
-    <value>Official webpage of Lively Wallpaper</value>
+    <value>A Lively Wallpaper hivatalos weboldala</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
-    <value>Most modern LCD and LED displays do not suffer from burn-in issue and therefore any wallpaper can be used as screensaver.
+    <value>A legtöbb modern LCD és LED kijelző nem szenved beégési problémától, ezért bármilyen háttérkép használható képernyővédőként.
 
-For OLED, Plasma or CRT displays which are susceptibe to burn-in it is advised to use wallpaper with regular motion and an overall dark theme which is supposed to mitigate burn-in but this feature is untested and its effectiveness cannot be guaranteed.
+A beégésre hajlamos OLED-, plazma- vagy katódsugárcsöves kijelzők esetében javasolt szabályos mozgású tapéta és általános sötét témát használni, amely a beégést csökkenteni hivatott, de ez a funkció még nem tesztelt, és a hatékonysága nem garantálható.
 
-The main purpose of Lively's screensavers is to add another layer of customization to your pc, use screensavers as burn-in protection at your own risk!</value>
+A Lively képernyővédőinek fő célja, hogy egy újabb testreszabási réteget adjon a számítógépéhez, és saját felelősségére használja a képernyővédőket beégés elleni védelemként!</value>
   </data>
   <data name="ReportBugPage.Content" xml:space="preserve">
-    <value>Report a problem with the software</value>
+    <value>Jelentse be a szoftverrel kapcsolatos problémát</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
     <value>Válassz ki egy egy fáljt vagy egy weboldal linket hogy beállíthasd háttérképnek.</value>
@@ -210,14 +210,14 @@ Csak akkor folytasd, ha ez az alkalmazás egy megbízható forrásból származi
     <value>Your Windows N/KN version will require the download of additional codecs to support video playback in wallpapers.</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
-    <value>Show support by buying the developer coffee</value>
+    <value>Mutasson támogatást a fejlesztőknek egy kávé megvásárlásával</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
-    <value>You are about to change to beta (developer) build of Lively.
-Updates will be frequent and may contain bugs!</value>
+    <value>A Lively béta (fejlesztői) verziójára készül.
+A frissítések gyakoriak lesznek, és hibákat tartalmazhatnak!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
-    <value>System-tray icon visibility, lively will continue to run with the icon hidden</value>
+    <value>Rendszertálca ikon láthatósága, élénk továbbra is futni fog az ikon rejtett</value>
   </data>
   <data name="HideSysTray.Header" xml:space="preserve">
     <value>Tálca Ikon</value>
@@ -300,7 +300,7 @@ Ha még mindig nem működik, zárd be &amp; indítsd el a Livelyt újra/ indít
     <value>Mégse</value>
   </data>
   <data name="TextChangeWallpaper" xml:space="preserve">
-    <value>Change Wallpapers</value>
+    <value>Háttérkép-változtatás</value>
   </data>
   <data name="TextClose" xml:space="preserve">
     <value>Bezár</value>
@@ -342,7 +342,7 @@ Ha még mindig nem működik, zárd be &amp; indítsd el a Livelyt újra/ indít
     <value>Letöltés</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
-    <value>Edit</value>
+    <value>Szerkeszt</value>
   </data>
   <data name="TextError" xml:space="preserve">
     <value>Hiba</value>
@@ -363,7 +363,7 @@ Ha még mindig nem működik, zárd be &amp; indítsd el a Livelyt újra/ indít
     <value>Animált GIF</value>
   </data>
   <data name="GitHubStar.Content" xml:space="preserve">
-    <value>Show some love by dropping a star</value>
+    <value>Mutasson szeretetet egy csillag ledobásával</value>
   </data>
   <data name="TextGo" xml:space="preserve">
     <value>GO</value>
@@ -381,13 +381,13 @@ Ha még mindig nem működik, zárd be &amp; indítsd el a Livelyt újra/ indít
     <value>Billentyűzet</value>
   </data>
   <data name="TextLastChecked" xml:space="preserve">
-    <value>Last checked</value>
+    <value>Utoljára ellenőrizve</value>
   </data>
   <data name="TextLearnMore.Text" xml:space="preserve">
-    <value>Learn more</value>
+    <value>További információ</value>
   </data>
   <data name="License.Header" xml:space="preserve">
-    <value>License</value>
+    <value>Licenc</value>
   </data>
   <data name="TextMinutes" xml:space="preserve">
     <value>minutes</value>
@@ -420,7 +420,7 @@ Ha még mindig nem működik, zárd be &amp; indítsd el a Livelyt újra/ indít
     <value>ON</value>
   </data>
   <data name="TextOnline" xml:space="preserve">
-    <value>Online</value>
+    <value>Csatlakozás</value>
   </data>
   <data name="TextOpenLively" xml:space="preserve">
     <value>Lively indítása</value>
@@ -453,7 +453,7 @@ Ha még mindig nem működik, zárd be &amp; indítsd el a Livelyt újra/ indít
     <value>Háttérkép előnézete</value>
   </data>
   <data name="PrivacyPolicy.Header" xml:space="preserve">
-    <value>Privacy Policy</value>
+    <value>Adatvédelmi irányelvek</value>
   </data>
   <data name="TextProcessingWallpaper" xml:space="preserve">
     <value>Folyamatban</value>
@@ -492,7 +492,7 @@ Ha még mindig nem működik, zárd be &amp; indítsd el a Livelyt újra/ indít
     <value>Támogatás</value>
   </data>
   <data name="TextSwitchBranchDev" xml:space="preserve">
-    <value>Switch to beta (Dev channel)</value>
+    <value>Váltás béta verzióra (fejlesztői csatorna)</value>
   </data>
   <data name="TextSwitchBranchOfficial" xml:space="preserve">
     <value>Switch to stable (Default channel)</value>
@@ -917,7 +917,7 @@ Az Edge a Windows 10 beépített WebView-ja (Lehetővé teszi, hogy webes tartal
     <value>Keep User Interface running for faster startup</value>
   </data>
   <data name="FastUI.Header" xml:space="preserve">
-    <value>Fast startup</value>
+    <value>Gyors indítás</value>
   </data>
   <data name="WallpaperDirGroup.Header" xml:space="preserve">
     <value>File</value>
@@ -998,130 +998,130 @@ Az Edge a Windows 10 beépített WebView-ja (Lehetővé teszi, hogy webes tartal
     <value>Type of screensaver</value>
   </data>
   <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
-    <value>Configured separately</value>
+    <value>Külön konfigurálva</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
-    <value>Same as running wallpaper</value>
+    <value>Ugyanaz, mint a futó háttérkép</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
-    <value>Plugin required</value>
+    <value>Beépülő modul szükséges</value>
   </data>
   <data name="ScreensaverPluginMessage.Text" xml:space="preserve">
-    <value>One time setup is required to run screensaver</value>
+    <value>A képernyővédő futtatásához egyszeri beállítás szükséges</value>
   </data>
   <data name="WallpaperLayoutScreenPicker.Content" xml:space="preserve">
-    <value>Always pick screen when choosing wallpaper</value>
+    <value>A háttérkép kiválasztásakor mindig válasszon képernyőt</value>
   </data>
   <data name="GalleryAccount.Text" xml:space="preserve">
-    <value>Account</value>
+    <value>Fiók</value>
   </data>
   <data name="GalleryAccountDelete.Content" xml:space="preserve">
-    <value>Delete account</value>
+    <value>Fiók törlése</value>
   </data>
   <data name="GalleryAccountExport.Content" xml:space="preserve">
-    <value>Export data</value>
+    <value>Adatok exportálása</value>
   </data>
   <data name="GalleryAccountLogin.Content" xml:space="preserve">
-    <value>Log in</value>
+    <value>Bejelentkezés</value>
   </data>
   <data name="GalleryAccountLogout.Content" xml:space="preserve">
-    <value>Log out</value>
+    <value>Kijelentkezés</value>
   </data>
   <data name="GalleryPageCollection.Content" xml:space="preserve">
-    <value>Collection</value>
+    <value>Gyűjtemény</value>
   </data>
   <data name="GalleryPageHome.Content" xml:space="preserve">
-    <value>Home</value>
+    <value>Kezdőlap</value>
   </data>
   <data name="GalleryPageManage.Content" xml:space="preserve">
-    <value>Manage</value>
+    <value>Kezelés</value>
   </data>
   <data name="GalleryPageProfile.Content" xml:space="preserve">
-    <value>Profile</value>
+    <value>Profil</value>
   </data>
   <data name="GalleryPleaseLogin.Text" xml:space="preserve">
-    <value>Please log in to continue</value>
+    <value>Jelentkezz be a folytatáshoz</value>
   </data>
   <data name="GalleryWelcomeMessage.Text" xml:space="preserve">
-    <value>Hi</value>
+    <value>Szia</value>
   </data>
   <data name="RestoreWallpaper.Text" xml:space="preserve">
-    <value>We found these wallpapers in your account</value>
+    <value>Ezeket a háttérképeket találtuk a fiókjában</value>
   </data>
   <data name="TextDownloadNow.Content" xml:space="preserve">
-    <value>Download now</value>
+    <value>Letöltés most</value>
   </data>
   <data name="TextMaybeLater.Content" xml:space="preserve">
-    <value>Maybe later</value>
+    <value>Talán később</value>
   </data>
   <data name="TextSelectAll.Content" xml:space="preserve">
-    <value>Select all</value>
+    <value>Összes</value>
   </data>
   <data name="TextSelectNone.Content" xml:space="preserve">
-    <value>Select none</value>
+    <value>Nincs kiválasztás</value>
   </data>
   <data name="TitleWelcomeback.Text" xml:space="preserve">
-    <value>Welcome back!</value>
+    <value>Üdvözlünk újra itt!</value>
   </data>
   <data name="ReportWallpaper.Header" xml:space="preserve">
-    <value>Reasons</value>
+    <value>Okok</value>
   </data>
   <data name="ReportWallpaperCopyright.Content" xml:space="preserve">
-    <value>Copyright violation</value>
+    <value>Szerzői jog megsértése</value>
   </data>
   <data name="ReportWallpaperMisleading.Content" xml:space="preserve">
-    <value>Misleading information</value>
+    <value>Spam vagy félrevezető információ</value>
   </data>
   <data name="ReportWallpaperOther.Content" xml:space="preserve">
-    <value>Other</value>
+    <value>Egyéb</value>
   </data>
   <data name="ReportWallpaperSpam.Content" xml:space="preserve">
     <value>Spam</value>
   </data>
   <data name="ReportWallpaperViolence.Content" xml:space="preserve">
-    <value>Nudity or violence</value>
+    <value>Meztelenség vagy erőszak</value>
   </data>
   <data name="TextAdditionalNotes.Text" xml:space="preserve">
-    <value>Additional notes</value>
+    <value>További megjegyzések</value>
   </data>
   <data name="TextReportWallpaper.Text" xml:space="preserve">
-    <value>Report</value>
+    <value>Jelentés</value>
   </data>
   <data name="TitleReportWallpaper.Text" xml:space="preserve">
-    <value>Report Wallpaper</value>
+    <value>Jelentse a háttérképet</value>
   </data>
   <data name="Send.Content" xml:space="preserve">
-    <value>Send</value>
+    <value>Küldés</value>
   </data>
   <data name="GalleryAccountDeleteConfirm.Text" xml:space="preserve">
-    <value>Please confirm this action as it CAN NOT be undone</value>
+    <value>Kérjük, erősítse meg ezt a műveletet, mivel NEM vonható vissza</value>
   </data>
   <data name="GalleryAccountDeleteFail.Text" xml:space="preserve">
-    <value>Failed to delete account, please try again later</value>
+    <value>A dokumentum törlése sikertelen. Kérjük, próbálja újra később</value>
   </data>
   <data name="TextConfirmCancel.Text" xml:space="preserve">
-    <value>Do you want to cancel it?</value>
+    <value>Meg kívánja szakítani?</value>
   </data>
   <data name="TextWait.Text" xml:space="preserve">
-    <value>Wait</value>
+    <value>Várakozás</value>
   </data>
   <data name="TitleDownloadProgress.Text" xml:space="preserve">
-    <value>Download in Progress</value>
+    <value>Letöltés folyamatban</value>
   </data>
   <data name="TextContributors.Text" xml:space="preserve">
-    <value>Contributors</value>
+    <value>Közreműködők</value>
   </data>
   <data name="TextShare.Text" xml:space="preserve">
-    <value>Share</value>
+    <value>Megosztás</value>
   </data>
   <data name="TitleShareWallpaper.Text" xml:space="preserve">
-    <value>Share Wallpaper</value>
+    <value>Háttérkép megosztása</value>
   </data>
   <data name="ExportWallpaperGallery.Text" xml:space="preserve">
-    <value>Gallery upload</value>
+    <value>Galéria feltöltése</value>
   </data>
   <data name="ExportWallpaperLink.Text" xml:space="preserve">
-    <value>Copy link</value>
+    <value>Hivatkozás másolása</value>
   </data>
   <data name="TextCustomiseWallpaper" xml:space="preserve">
     <value>Háttérkép testreszabása</value>
@@ -1130,9 +1130,9 @@ Az Edge a Windows 10 beépített WebView-ja (Lehetővé teszi, hogy webes tartal
     <value>Háttérkép</value>
   </data>
   <data name="TitleChooseApplication.Text" xml:space="preserve">
-    <value>Choose Application</value>
+    <value>Alkalmazások választása</value>
   </data>
   <data name="WallpaperInstallSize.Text" xml:space="preserve">
-    <value>Size</value>
+    <value>Méret</value>
   </data>
 </root>
