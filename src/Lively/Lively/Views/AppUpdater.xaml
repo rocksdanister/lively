@@ -5,8 +5,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Lively.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mdxam="clr-namespace:MdXaml;assembly=MdXaml"
     xmlns:p="clr-namespace:Lively.Properties"
-    Title="Lively Wallpaper"
+    Title="{x:Static p:Resources.TextUpdateAvailable}"
     Width="650"
     Height="700"
     Closing="Window_Closing"
@@ -20,12 +21,18 @@
     </Window.TaskbarItemInfo>
     <Grid>
         <StackPanel Margin="10,10,10,10">
-            <RichTextBox
-                x:Name="changelog"
-                MinHeight="550"
-                MaxHeight="550"
-                BorderThickness="0,0,0,1"
-                IsReadOnly="True" />
+            <Border Background="White" CornerRadius="5">
+                <mdxam:MarkdownScrollViewer
+                    x:Name="changelog"
+                    MinHeight="550"
+                    MaxHeight="550"
+                    Padding="5,5,0,5"
+                    VerticalScrollBarVisibility="Auto">
+                    <mdxam:MarkdownScrollViewer.MarkdownStyle>
+                        <Style BasedOn="{x:Static mdxam:MarkdownStyle.GithubLike}" TargetType="FlowDocument" />
+                    </mdxam:MarkdownScrollViewer.MarkdownStyle>
+                </mdxam:MarkdownScrollViewer>
+            </Border>
             <ProgressBar
                 Name="progressBar"
                 MinHeight="10"

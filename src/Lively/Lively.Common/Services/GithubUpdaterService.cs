@@ -113,10 +113,7 @@ namespace Lively.Common.Services
                 gitRelease, repositoryName, userName);
             Uri uri = new Uri(gitUrl);
 
-            //changelog text and formatting
-            var sb = new StringBuilder(gitRelease.Body);
-            sb.Replace("#", "").Replace("\t", "  ");
-            string changelog = sb.ToString();
+            string changelog = gitRelease.Body;
 
             return (uri, version, changelog);
         }
