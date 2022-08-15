@@ -346,7 +346,7 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Some features are not available in this version of Lively.</value>
   </data>
   <data name="TextFileNotFound" xml:space="preserve">
-    <value>Fajl nije pronađen</value>
+    <value>Datoteka nije pronađena</value>
   </data>
   <data name="TextGIF" xml:space="preserve">
     <value>Animirani GIF</value>
@@ -499,13 +499,13 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Boja</value>
   </data>
   <data name="TaskbarThemeFluent.Content" xml:space="preserve">
-    <value>Fluent</value>
+    <value>Tečno</value>
   </data>
   <data name="TaskbarThemeWallpaper.Content" xml:space="preserve">
     <value>Pozadina</value>
   </data>
   <data name="TaskbarThemeWallpaperFluent.Content" xml:space="preserve">
-    <value>Wallpaper Fluent</value>
+    <value>Tečna pozadina</value>
   </data>
   <data name="TextTileSizeLarge" xml:space="preserve">
     <value>Ogromno</value>
@@ -829,7 +829,7 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Izvorni kod</value>
   </data>
   <data name="Store.Header" xml:space="preserve">
-    <value>Store</value>
+    <value>Radnja</value>
     <comment>For different version of Lively, example: Microsoft Store</comment>
   </data>
   <data name="StreamWallpaperVideoQuality.Header" xml:space="preserve">
@@ -998,10 +998,10 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Uvek biraj ekran pri izboru pozadine</value>
   </data>
   <data name="GalleryAccount.Text" xml:space="preserve">
-    <value>Account</value>
+    <value>Nalog</value>
   </data>
   <data name="GalleryAccountDelete.Content" xml:space="preserve">
-    <value>Delete account</value>
+    <value>Obriši nalog</value>
   </data>
   <data name="GalleryAccountExport.Content" xml:space="preserve">
     <value>Izvoz podataka</value>
@@ -1016,31 +1016,31 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Kolekcija</value>
   </data>
   <data name="GalleryPageHome.Content" xml:space="preserve">
-    <value>Home</value>
+    <value>Početna</value>
   </data>
   <data name="GalleryPageManage.Content" xml:space="preserve">
     <value>Upravljaj</value>
   </data>
   <data name="GalleryPageProfile.Content" xml:space="preserve">
-    <value>Profile</value>
+    <value>Profil</value>
   </data>
   <data name="GalleryPleaseLogin.Text" xml:space="preserve">
     <value>Please log in to continue</value>
   </data>
   <data name="GalleryWelcomeMessage.Text" xml:space="preserve">
-    <value>Hi</value>
+    <value>Zdravo</value>
   </data>
   <data name="RestoreWallpaper.Text" xml:space="preserve">
-    <value>We found these wallpapers in your account</value>
+    <value>Pronašli smo ove pozadine na tvom nalogu</value>
   </data>
   <data name="TextDownloadNow.Content" xml:space="preserve">
-    <value>Download now</value>
+    <value>Preuzmi sada</value>
   </data>
   <data name="TextMaybeLater.Content" xml:space="preserve">
-    <value>Maybe later</value>
+    <value>Možda kasnije</value>
   </data>
   <data name="TextSelectAll.Content" xml:space="preserve">
-    <value>Select all</value>
+    <value>Izaberi sve</value>
   </data>
   <data name="TextSelectNone.Content" xml:space="preserve">
     <value>Select none</value>
@@ -1058,7 +1058,7 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Misleading information</value>
   </data>
   <data name="ReportWallpaperOther.Content" xml:space="preserve">
-    <value>Other</value>
+    <value>Ostalo</value>
   </data>
   <data name="ReportWallpaperSpam.Content" xml:space="preserve">
     <value>Spam</value>
