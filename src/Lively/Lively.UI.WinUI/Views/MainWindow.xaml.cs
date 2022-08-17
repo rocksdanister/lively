@@ -153,7 +153,7 @@ namespace Lively.UI.WinUI
                     NavigateUri = new Uri("https://github.com/rocksdanister/lively/wiki/Common-Problems"),
                 };
                 infoBar.Title = i18n.GetString("TextError");
-                infoBar.Message = e.ToString();//e.Message;
+                infoBar.Message = $"{e.Message}\n\nException:\n{e.GetType().Name}";
                 infoBar.Severity = InfoBarSeverity.Error;
             });
         }

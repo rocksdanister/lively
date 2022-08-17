@@ -154,7 +154,7 @@ namespace Lively.Core
                 if (IntPtr.Equals(workerw, IntPtr.Zero))
                 {
                     Logger.Error("Failed to setup core, WorkerW handle not found..");
-                    WallpaperError?.Invoke(this, new WorkerWException("WorkerW handle not found."));
+                    WallpaperError?.Invoke(this, new WorkerWException(Properties.Resources.LivelyExceptionWorkerWSetupFail));
                     WallpaperChanged?.Invoke(this, EventArgs.Empty);
                     return;
                 }
@@ -182,8 +182,9 @@ namespace Lively.Core
                 wallpaper.LivelyInfo.Type == WallpaperType.url || wallpaper.LivelyInfo.Type == WallpaperType.videostream || File.Exists(wallpaper.FilePath) : wallpaper.FilePath != null))
             {
                 //Only checking for wallpapers outside Lively folder.
+                //This was before core separation, now the check can be simplified with just FilePath != null.
                 Logger.Info($"Skipping wallpaper, file {wallpaper.LivelyInfo.FileName} not found.");
-                WallpaperError?.Invoke(this, new WallpaperNotFoundException($"File {wallpaper.LivelyInfo.FileName} not found"));
+                WallpaperError?.Invoke(this, new WallpaperNotFoundException($"{Properties.Resources.TextFileNotFound}\n{wallpaper.LivelyInfo.FileName}"));
                 WallpaperChanged?.Invoke(this, EventArgs.Empty);
                 return;
             }

@@ -11,6 +11,7 @@
     <Grid>
         <StackPanel>
             <ListView
+                MinWidth="500"
                 MinHeight="350"
                 MaxWidth="500"
                 MaxHeight="400"
