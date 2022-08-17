@@ -23,6 +23,7 @@ namespace Lively.Services
         private readonly bool uiOutputRedirect;
         private bool _isFirstRun = true;
         private NativeMethods.RECT prevWindowRect = new() { Left = 50, Top = 50, Right = 925, Bottom = 925 };
+        private readonly string fileName, workingDirectory;
 
         public RunnerService(IDisplayManager displayManager)
         {
@@ -40,6 +41,17 @@ namespace Lively.Services
             if (UAC.IsElevated)
             {
                 Logger.Warn("Process is running elevated, winui may not work...");
+            }
+
+            if (Constants.ApplicationType.IsMSIX)
+            {
+                fileName = Path.Combine(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\")), uiClientFileName);
+                workingDirectory = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\"));
+            }
+            else
+            {
+                fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "UI", uiClientFileName);
+                workingDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "UI");
             }
         }
 
@@ -64,12 +76,12 @@ namespace Lively.Services
                     {
                         StartInfo = new ProcessStartInfo
                         {
-                            FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "UI", uiClientFileName),
+                            FileName = fileName,
                             RedirectStandardInput = true,
                             RedirectStandardOutput = uiOutputRedirect,
                             RedirectStandardError = uiOutputRedirect,
                             UseShellExecute = false,
-                            WorkingDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "UI")
+                            WorkingDirectory = workingDirectory,
                         },
                         EnableRaisingEvents = true
                     };

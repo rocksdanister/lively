@@ -8,13 +8,43 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <Platforms>x86;x64;arm64</Platforms>
     <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
-    <PublishProfile>win10-$(Platform).pubxml</PublishProfile>
     <UseWinUI>true</UseWinUI>
     <EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
-    <WindowsPackageType>None</WindowsPackageType>
     <ApplicationIcon>appicon.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(IsMsixRelease)' != 'true'">
+    <WindowsPackageType>None</WindowsPackageType>
     <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(IsMsixRelease)' == 'true'">
+    <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
+    <GenerateTestArtifacts>True</GenerateTestArtifacts>
+    <AppxBundle>Always</AppxBundle>
+    <AppxBundlePlatforms>x86</AppxBundlePlatforms>
+    <GenerateTemporaryStoreCertificate>True</GenerateTemporaryStoreCertificate>
+    <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
+    <!-- Create Properties/PublishProfiles for each release, Example: win10-x86.pubxml-->
+    <PublishProfile>win10-$(Platform).pubxml</PublishProfile>
+    <!-- Temporary cert-->
+    <!--
+    <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
+    <PackageCertificateThumbprint>AFCC4AADFFAC311F4E8090D3AF1B8F278AB907BC</PackageCertificateThumbprint>
+    <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
+    -->
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(IsMsixRelease)' == 'true'">
+    <!-- Include self-contained core build here (excluding UI plugin.) -->
+    <Folder Include="Build\" />
+    <Content Include="Build\**">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  
   <ItemGroup>
     <None Remove="Assets\banner-lively-1080.jpg" />
     <None Remove="Assets\icon-lively-48.png" />
@@ -61,7 +91,6 @@
     <Content Include="Assets\Square150x150Logo.scale-200.png" />
     <Content Include="Assets\Square44x44Logo.scale-200.png" />
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
-    <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Nlog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -246,5 +275,5 @@
     <Page Update="Views\LivelyProperty\LivelyPropertiesView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
-  </ItemGroup>
+  </ItemGroup>  
 </Project>
