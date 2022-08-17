@@ -4,22 +4,27 @@
   xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
   xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
   xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
-  IgnorableNamespaces="uap rescap">
+  xmlns:desktop="http://schemas.microsoft.com/appx/manifest/desktop/windows10"
+  xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
+  IgnorableNamespaces="uap rescap mp">
 
   <Identity
-    Name="54913591-f4d3-460d-a176-839e86c2b2d5"
-    Publisher="CN=rocks"
-    Version="1.0.0.0" />
+    Name="12030rocksdanister.LivelyWallpaper"
+    Publisher="CN=D80CB9E2-21E6-4D9B-8533-660C768F3C5B"
+    Version="1.0.125.0" />
 
+  <mp:PhoneIdentity PhoneProductId="04bfe68a-b076-487d-957e-c3eea0ef5dd3" PhonePublisherId="1decb601-e64f-4088-bc00-0e28637c9926" />
+  
   <Properties>
-    <DisplayName>Lively.UI.WinUI</DisplayName>
-    <PublisherDisplayName>rocks</PublisherDisplayName>
+    <DisplayName>Lively Wallpaper</DisplayName>
+    <PublisherDisplayName>rocksdanister</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
   <Dependencies>
     <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.17763.0" MaxVersionTested="10.0.19041.0" />
     <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.17763.0" MaxVersionTested="10.0.19041.0" />
+    <PackageDependency Name="Microsoft.VCLibs.140.00.UWPDesktop" MinVersion="14.0.24217.0" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" />
   </Dependencies>
 
   <Resources>
@@ -28,21 +33,33 @@
 
   <Applications>
     <Application Id="App" 
-      Executable="$targetnametoken$.exe"
+      Executable="Build\Lively.exe"
       EntryPoint="$targetentrypoint$">
       <uap:VisualElements
-        DisplayName="Lively.UI.WinUI"
-        Description="Lively.UI.WinUI"
+        DisplayName="Lively Wallpaper"
+        Description="Free and open-source software that allows users to set animated and interactive desktop wallpapers."
         BackgroundColor="transparent"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png">
-        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" />
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"  Square71x71Logo="Assets\SmallTile.png" Square310x310Logo="Assets\LargeTile.png" ShortName="Lively Wallpaper">
+          <uap:ShowNameOnTiles>
+            <uap:ShowOn Tile="square150x150Logo"/>
+            <uap:ShowOn Tile="wide310x150Logo"/>
+            <uap:ShowOn Tile="square310x310Logo"/>
+          </uap:ShowNameOnTiles>
+        </uap:DefaultTile >
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
       </uap:VisualElements>
+      <Extensions>
+        <desktop:Extension Category="windows.startupTask" Executable="Build\Lively.exe" EntryPoint="Windows.FullTrustApplication">
+          <desktop:StartupTask TaskId="AppStartup" Enabled="false" DisplayName="Lively Wallpaper" />
+        </desktop:Extension>
+      </Extensions>
     </Application>
   </Applications>
 
   <Capabilities>
     <rescap:Capability Name="runFullTrust" />
   </Capabilities>
+
 </Package>
