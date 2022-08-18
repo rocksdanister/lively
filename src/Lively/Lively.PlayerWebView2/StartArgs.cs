@@ -38,7 +38,7 @@ namespace Lively.PlayerWebView2
         [Option("audio",
         Default = false,
         HelpText = "Analyse system audio(visualiser data.)")]
-        public bool AudioAnalyse { get; set; }
+        public bool AudioVisualizer { get; set; }
 
         [Option("debug",
         Required = false,
