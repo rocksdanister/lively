@@ -54,7 +54,9 @@ namespace Lively.PlayerWebView2
 
         public static void WriteToParent(IpcMessage obj)
         {
+#if DEBUG != true
             Console.WriteLine(JsonConvert.SerializeObject(obj));
+#endif
             Debug.WriteLine(JsonConvert.SerializeObject(obj));
         }
     }

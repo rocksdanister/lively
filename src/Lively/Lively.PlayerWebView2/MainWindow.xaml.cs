@@ -10,6 +10,7 @@ using Newtonsoft.Json.Linq;
 using Services;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -19,7 +20,6 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Interop;
 using System.Windows.Media.Imaging;
 
 namespace Lively.PlayerWebView2
@@ -29,6 +29,7 @@ namespace Lively.PlayerWebView2
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0044:Add readonly modifier", Justification = "Debug only")]
         private StartArgs startArgs;
+        private IAudioVisualiserService audioCapture;
         private bool isPaused = false;
 
         public MainWindow(string[] args)
@@ -45,6 +46,7 @@ namespace Lively.PlayerWebView2
                 Properties = null,
                 SysInfo = false,
                 NowPlaying = false,
+                AudioVisualizer = false,
             };
 
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
@@ -129,6 +131,26 @@ namespace Lively.PlayerWebView2
                     };
                     sysMonitor.Start();
                 }
+
+                if (startArgs.AudioVisualizer)
+                {
+                    audioCapture = new AudioVisualizerService();
+                    audioCapture.AudioDataAvailable += (s, e) => {
+                        try
+                        {
+                            if (isPaused)
+                                return;
+
+                            //TODO: CefSharp CanExecuteJavascriptInMainFrame equivalent in webview
+                            this.Dispatcher.Invoke(() =>
+                            {
+                                _ = ExecuteScriptFunctionAsync("livelyAudioListener", e);
+                            });
+                        }
+                        catch { }
+                    };
+                    
+                }
             }
             finally
             {
@@ -173,7 +195,7 @@ namespace Lively.PlayerWebView2
             }
             else
             {
-                //webView.CoreWebView2.SetVirtualHostNameToFolderMapping("lively_test", Path.GetDirectoryName(startArgs.Url), CoreWebView2HostResourceAccessKind.Allow);
+                //webView.CoreWebView2.SetVirtualHostNameToFolderMapping(Path.GetFileName(startArgs.Url), Path.GetDirectoryName(startArgs.Url), CoreWebView2HostResourceAccessKind.Allow);
                 webView.CoreWebView2.Navigate(startArgs.Url);
             }
         }
@@ -389,6 +411,7 @@ namespace Lively.PlayerWebView2
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            audioCapture?.Dispose();
             webView?.Dispose();
         }
 
