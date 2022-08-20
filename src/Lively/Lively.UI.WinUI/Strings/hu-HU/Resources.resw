@@ -1135,4 +1135,10 @@ Az Edge a Windows 10 beépített WebView-ja (Lehetővé teszi, hogy webes tartal
   <data name="WallpaperInstallSize.Text" xml:space="preserve">
     <value>Méret</value>
   </data>
+  <data name="PluginNotFound.Message" xml:space="preserve">
+    <value>Please install the required plugin</value>
+  </data>
+  <data name="PluginNotFound.Title" xml:space="preserve">
+    <value>Plugin not found</value>
+  </data>
 </root>

@@ -999,7 +999,7 @@ Edge 是 Windows 10 内置的浏览器。</value>
     <value>壁纸应用于连接的显示设备的方式。</value>
   </data>
   <data name="Screensaver.Header" xml:space="preserve">
-    <value>Type of screensaver</value>
+    <value>屏幕保护程序类型</value>
   </data>
   <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
     <value>Configured separately</value>
@@ -1138,5 +1138,11 @@ Edge 是 Windows 10 内置的浏览器。</value>
   </data>
   <data name="WallpaperInstallSize.Text" xml:space="preserve">
     <value>文件大小</value>
+  </data>
+  <data name="PluginNotFound.Message" xml:space="preserve">
+    <value>Please install the required plugin</value>
+  </data>
+  <data name="PluginNotFound.Title" xml:space="preserve">
+    <value>Plugin not found</value>
   </data>
 </root>

@@ -12,7 +12,7 @@ namespace Services
 {
     //Ref: https://github.com/Quozul/Audio-Visualizer
     //MIT License Copyright (c) 2019 Erwan Le Gloannec.
-    public class AudioVisualizerService : IAudioVisualiserService, IMMNotificationClient
+    public class AudioVisualizerService : IAudioVisualizerService, IMMNotificationClient
     {
         public event EventHandler<double[]> AudioDataAvailable;
 

@@ -1120,4 +1120,10 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
   <data name="WallpaperInstallSize.Text" xml:space="preserve">
     <value>Veličina</value>
   </data>
+  <data name="PluginNotFound.Message" xml:space="preserve">
+    <value>Please install the required plugin</value>
+  </data>
+  <data name="PluginNotFound.Title" xml:space="preserve">
+    <value>Plugin not found</value>
+  </data>
 </root>

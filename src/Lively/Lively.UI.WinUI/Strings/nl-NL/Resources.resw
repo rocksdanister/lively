@@ -1127,4 +1127,10 @@ Alle processen: Heavier, Scant alle processen om afspeelmogelijkheden te bepalen
   <data name="WallpaperInstallSize.Text" xml:space="preserve">
     <value>Size</value>
   </data>
+  <data name="PluginNotFound.Message" xml:space="preserve">
+    <value>Please install the required plugin</value>
+  </data>
+  <data name="PluginNotFound.Title" xml:space="preserve">
+    <value>Plugin not found</value>
+  </data>
 </root>

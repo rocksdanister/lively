@@ -3,10 +3,15 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="using:SettingsUI.Controls"
+    xmlns:customconverters="using:Lively.UI.WinUI.Helpers.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Lively.UI.WinUI.Views.Pages.Settings"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+
+    <Page.Resources>
+        <customconverters:BooleanToVisibilityConverter x:Key="VisibilityConverter" />
+    </Page.Resources>
 
     <Grid>
         <ScrollViewer>
@@ -66,9 +71,9 @@
                                     <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedVideoPlayerIndex, Mode=TwoWay}">
                                         <ComboBoxItem>wmf</ComboBoxItem>
                                         <ComboBoxItem Visibility="Collapsed">libVLC</ComboBoxItem>
-                                        <ComboBoxItem>libVLC(External)</ComboBoxItem>
+                                        <ComboBoxItem Visibility="Collapsed">libVLC(External)</ComboBoxItem>
                                         <ComboBoxItem Visibility="Collapsed">libMPV</ComboBoxItem>
-                                        <ComboBoxItem>libMPV(External)</ComboBoxItem>
+                                        <ComboBoxItem Visibility="Collapsed">libMPV(External)</ComboBoxItem>
                                         <ComboBoxItem>mpv</ComboBoxItem>
                                         <ComboBoxItem>vlc</ComboBoxItem>
                                     </ComboBox>
@@ -81,6 +86,22 @@
                             </controls:Setting>
                         </controls:SettingExpander.Content>
                     </controls:SettingExpander>
+                    <InfoBar
+                        x:Uid="PluginNotFound"
+                        Margin="0,-2.5,0,0"
+                        VerticalAlignment="Top"
+                        IsClosable="False"
+                        IsOpen="True"
+                        Severity="Error"
+                        Visibility="{Binding IsSelectedVideoPlayerAvailable, Converter={StaticResource VisibilityConverter}, Mode=OneWay, ConverterParameter=Reverse}">
+                        <InfoBar.ActionButton>
+                            <HyperlinkButton NavigateUri="https://github.com/rocksdanister/lively/wiki/Video-Guide" ToolTipService.ToolTip="https://github.com/rocksdanister/lively/wiki/Video-Guide">
+                                <HyperlinkButton.Content>
+                                    <TextBlock x:Uid="TextLearnMore" TextWrapping="Wrap" />
+                                </HyperlinkButton.Content>
+                            </HyperlinkButton>
+                        </InfoBar.ActionButton>
+                    </InfoBar>
 
                     <controls:SettingExpander IsExpanded="False">
                         <controls:SettingExpander.Header>
@@ -132,6 +153,22 @@
                             </StackPanel>
                         </controls:SettingExpander.Content>
                     </controls:SettingExpander>
+                    <InfoBar
+                        x:Uid="PluginNotFound"
+                        Margin="0,-2.5,0,0"
+                        VerticalAlignment="Top"
+                        IsClosable="False"
+                        IsOpen="True"
+                        Severity="Error"
+                        Visibility="{Binding IsSelectedWebBrowserAvailable, Converter={StaticResource VisibilityConverter}, Mode=OneWay, ConverterParameter=Reverse}">
+                        <InfoBar.ActionButton>
+                            <HyperlinkButton NavigateUri="https://github.com/rocksdanister/lively/wiki/Web-Guide-I-:-Cef" ToolTipService.ToolTip="https://github.com/rocksdanister/lively/wiki/Web-Guide-I-:-Cef">
+                                <HyperlinkButton.Content>
+                                    <TextBlock x:Uid="TextLearnMore" TextWrapping="Wrap" />
+                                </HyperlinkButton.Content>
+                            </HyperlinkButton>
+                        </InfoBar.ActionButton>
+                    </InfoBar>
 
                     <controls:Setting x:Uid="GifPlayer">
                         <controls:Setting.ActionContent>

@@ -1132,4 +1132,10 @@ Khi sắn sàng, đi tới http://localhost:portnumber để truy cập bảng �
   <data name="WallpaperInstallSize.Text" xml:space="preserve">
     <value>Kích thước</value>
   </data>
+  <data name="PluginNotFound.Message" xml:space="preserve">
+    <value>Please install the required plugin</value>
+  </data>
+  <data name="PluginNotFound.Title" xml:space="preserve">
+    <value>Plugin not found</value>
+  </data>
 </root>
