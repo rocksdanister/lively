@@ -29,7 +29,7 @@ namespace Lively.PlayerWebView2
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0044:Add readonly modifier", Justification = "Debug only")]
         private StartArgs startArgs;
-        private IAudioVisualiserService audioCapture;
+        private IAudioVisualizerService audioCapture;
         private bool isPaused = false;
 
         public MainWindow(string[] args)

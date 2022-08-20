@@ -1133,4 +1133,10 @@ Wenn es immer noch nicht funktioniert, schließen &amp; starten Sie Lively oder 
   <data name="WallpaperInstallSize.Text" xml:space="preserve">
     <value>Größe</value>
   </data>
+  <data name="PluginNotFound.Message" xml:space="preserve">
+    <value>Please install the required plugin</value>
+  </data>
+  <data name="PluginNotFound.Title" xml:space="preserve">
+    <value>Plugin not found</value>
+  </data>
 </root>

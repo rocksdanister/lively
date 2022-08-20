@@ -5,17 +5,27 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Lively.UI.WinUI.Views.Pages.ControlPanel"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"
     mc:Ignorable="d">
 
-    <Grid Margin="5">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" CornerRadius="5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
         <Button
+            Grid.Column="0"
+            Margin="5"
             VerticalAlignment="Top"
             Background="Transparent"
             BorderBrush="Transparent"
             Command="{Binding NavigateBackWallpaperCommand}">
             <FontIcon FontSize="15" Glyph="&#xE72B;" />
         </Button>
-        <Frame x:Name="contentFrame" Margin="50" />
+        <Frame
+            x:Name="contentFrame"
+            Grid.ColumnSpan="2"
+            Margin="0,5,0,5"
+            HorizontalAlignment="Center" />
     </Grid>
 </Page>

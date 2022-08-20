@@ -456,16 +456,16 @@ Windows Utforskaren har startat om två gånger under de senaste 30 sekunderna! 
     <value>Källa</value>
   </data>
   <data name="TextStart" xml:space="preserve">
-    <value>Start</value>
+    <value>Starta</value>
   </data>
   <data name="TextStop" xml:space="preserve">
-    <value>Stop</value>
+    <value>Stoppa</value>
   </data>
   <data name="StoreReview.Content" xml:space="preserve">
     <value>Tycker du om att använda Lively? Lämna en recension :)</value>
   </data>
   <data name="TextSupport.Content" xml:space="preserve">
-    <value>Support</value>
+    <value>Hjälp</value>
   </data>
   <data name="TextSwitchBranchDev" xml:space="preserve">
     <value>Byt till beta versionen (För utveckling)</value>
@@ -492,13 +492,13 @@ Windows Utforskaren har startat om två gånger under de senaste 30 sekunderna! 
     <value>Bakgrundsbild</value>
   </data>
   <data name="TaskbarThemeWallpaperFluent.Content" xml:space="preserve">
-    <value>Wallpaper Fluent</value>
+    <value>Bakgrundsbilden flytande</value>
   </data>
   <data name="TextTileSizeLarge" xml:space="preserve">
     <value>Stor</value>
   </data>
   <data name="TextTileSizeNormal" xml:space="preserve">
-    <value>Normal</value>
+    <value>Standard</value>
   </data>
   <data name="TextTileSizeSmall" xml:space="preserve">
     <value>Liten</value>
@@ -513,7 +513,7 @@ Windows Utforskaren har startat om två gånger under de senaste 30 sekunderna! 
     <value>Lätt</value>
   </data>
   <data name="TextUINormal" xml:space="preserve">
-    <value>Normal</value>
+    <value>Standard</value>
   </data>
   <data name="TextUnsupportedFile" xml:space="preserve">
     <value>Filformatet stöds inte</value>
@@ -961,7 +961,7 @@ Windows Utforskaren har startat om två gånger under de senaste 30 sekunderna! 
     <value>Lätt</value>
   </data>
   <data name="UIModeNormal.Content" xml:space="preserve">
-    <value>Normal</value>
+    <value>Standard</value>
   </data>
   <data name="Screensaver.Description" xml:space="preserve">
     <value>How screensaver is applied to connected to display devices</value>
@@ -985,10 +985,10 @@ Windows Utforskaren har startat om två gånger under de senaste 30 sekunderna! 
     <value>Always pick screen when choosing wallpaper</value>
   </data>
   <data name="GalleryAccount.Text" xml:space="preserve">
-    <value>Account</value>
+    <value>Konto</value>
   </data>
   <data name="GalleryAccountDelete.Content" xml:space="preserve">
-    <value>Delete account</value>
+    <value>Radera konto</value>
   </data>
   <data name="GalleryAccountExport.Content" xml:space="preserve">
     <value>Export data</value>
@@ -1015,7 +1015,7 @@ Windows Utforskaren har startat om två gånger under de senaste 30 sekunderna! 
     <value>Please log in to continue</value>
   </data>
   <data name="GalleryWelcomeMessage.Text" xml:space="preserve">
-    <value>Hi</value>
+    <value>Hej</value>
   </data>
   <data name="RestoreWallpaper.Text" xml:space="preserve">
     <value>We found these wallpapers in your account</value>
@@ -1024,76 +1024,76 @@ Windows Utforskaren har startat om två gånger under de senaste 30 sekunderna! 
     <value>Download now</value>
   </data>
   <data name="TextMaybeLater.Content" xml:space="preserve">
-    <value>Maybe later</value>
+    <value>Kanske senare</value>
   </data>
   <data name="TextSelectAll.Content" xml:space="preserve">
-    <value>Select all</value>
+    <value>Markera alla</value>
   </data>
   <data name="TextSelectNone.Content" xml:space="preserve">
-    <value>Select none</value>
+    <value>Avmarkera alla</value>
   </data>
   <data name="TitleWelcomeback.Text" xml:space="preserve">
-    <value>Welcome back!</value>
+    <value>Välkommen tillbaka!</value>
   </data>
   <data name="ReportWallpaper.Header" xml:space="preserve">
-    <value>Reasons</value>
+    <value>Anledningar</value>
   </data>
   <data name="ReportWallpaperCopyright.Content" xml:space="preserve">
-    <value>Copyright violation</value>
+    <value>Upphovsrättsbrott</value>
   </data>
   <data name="ReportWallpaperMisleading.Content" xml:space="preserve">
-    <value>Misleading information</value>
+    <value>Vilseledande information</value>
   </data>
   <data name="ReportWallpaperOther.Content" xml:space="preserve">
-    <value>Other</value>
+    <value>Annat</value>
   </data>
   <data name="ReportWallpaperSpam.Content" xml:space="preserve">
     <value>Spam</value>
   </data>
   <data name="ReportWallpaperViolence.Content" xml:space="preserve">
-    <value>Nudity or violence</value>
+    <value>Nakenhet eller våld</value>
   </data>
   <data name="TextAdditionalNotes.Text" xml:space="preserve">
-    <value>Additional notes</value>
+    <value>Ytterligare anmärkningar</value>
   </data>
   <data name="TextReportWallpaper.Text" xml:space="preserve">
-    <value>Report</value>
+    <value>Rapportera</value>
   </data>
   <data name="TitleReportWallpaper.Text" xml:space="preserve">
-    <value>Report Wallpaper</value>
+    <value>Rapportera bakgrundsbild</value>
   </data>
   <data name="Send.Content" xml:space="preserve">
-    <value>Send</value>
+    <value>Skicka</value>
   </data>
   <data name="GalleryAccountDeleteConfirm.Text" xml:space="preserve">
-    <value>Please confirm this action as it CAN NOT be undone</value>
+    <value>Vänligen bekräfta denna åtgärd eftersom det INTE kan ångras</value>
   </data>
   <data name="GalleryAccountDeleteFail.Text" xml:space="preserve">
-    <value>Failed to delete account, please try again later</value>
+    <value>Det gick inte att radera kontot, vänligen försök igen senare</value>
   </data>
   <data name="TextConfirmCancel.Text" xml:space="preserve">
-    <value>Do you want to cancel it?</value>
+    <value>Vill du avbryta den?</value>
   </data>
   <data name="TextWait.Text" xml:space="preserve">
-    <value>Wait</value>
+    <value>Vänta</value>
   </data>
   <data name="TitleDownloadProgress.Text" xml:space="preserve">
-    <value>Download in Progress</value>
+    <value>Nedladdning pågår</value>
   </data>
   <data name="TextContributors.Text" xml:space="preserve">
-    <value>Contributors</value>
+    <value>Bidragsgivare</value>
   </data>
   <data name="TextShare.Text" xml:space="preserve">
-    <value>Share</value>
+    <value>Dela</value>
   </data>
   <data name="TitleShareWallpaper.Text" xml:space="preserve">
-    <value>Share Wallpaper</value>
+    <value>Dela bakgrundsbild</value>
   </data>
   <data name="ExportWallpaperGallery.Text" xml:space="preserve">
-    <value>Gallery upload</value>
+    <value>Galleri uppladdning</value>
   </data>
   <data name="ExportWallpaperLink.Text" xml:space="preserve">
-    <value>Copy link</value>
+    <value>Kopiera länk</value>
   </data>
   <data name="TextCustomiseWallpaper" xml:space="preserve">
     <value>Anpassa bakgrundsbilden</value>
@@ -1102,9 +1102,15 @@ Windows Utforskaren har startat om två gånger under de senaste 30 sekunderna! 
     <value>Stäng bakgrundsbild</value>
   </data>
   <data name="TitleChooseApplication.Text" xml:space="preserve">
-    <value>Choose Application</value>
+    <value>Välj program</value>
   </data>
   <data name="WallpaperInstallSize.Text" xml:space="preserve">
-    <value>Size</value>
+    <value>Storlek</value>
+  </data>
+  <data name="PluginNotFound.Message" xml:space="preserve">
+    <value>Please install the required plugin</value>
+  </data>
+  <data name="PluginNotFound.Title" xml:space="preserve">
+    <value>Plugin not found</value>
   </data>
 </root>

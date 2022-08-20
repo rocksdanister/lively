@@ -209,7 +209,7 @@ The main purpose of Lively's screensavers is to add another layer of customizati
     <value>سيتطلب إصدار Windows N/KN تنزيل برامج ترميز إضافية لدعم تشغيل الفيديو في خلفيات.</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
-    <value>Show support by buying the developer coffee</value>
+    <value>اضهر دعمك من خلال شراء قهوة للمطور</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
     <value>You are about to change to beta (developer) build of Lively.
@@ -1135,5 +1135,11 @@ Edge هو عرض الويب المدمج في windows 10.</value>
   </data>
   <data name="WallpaperInstallSize.Text" xml:space="preserve">
     <value>Size</value>
+  </data>
+  <data name="PluginNotFound.Message" xml:space="preserve">
+    <value>Please install the required plugin</value>
+  </data>
+  <data name="PluginNotFound.Title" xml:space="preserve">
+    <value>Plugin not found</value>
   </data>
 </root>

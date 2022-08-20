@@ -569,6 +569,13 @@ namespace Lively.UI.WinUI.ViewModels
             }
         }
 
+        private bool _isSelectedVideoPlayerAvailable;
+        public bool IsSelectedVideoPlayerAvailable
+        {
+            get { return _isSelectedVideoPlayerAvailable; }
+            set { _isSelectedVideoPlayerAvailable = value; OnPropertyChanged(); }
+        }
+
         private int _selectedVideoPlayerIndex;
         public int SelectedVideoPlayerIndex
         {
@@ -578,7 +585,9 @@ namespace Lively.UI.WinUI.ViewModels
             }
             set
             {
-                _selectedVideoPlayerIndex = IsVideoPlayerAvailable((LivelyMediaPlayer)value) ? value : (int)LivelyMediaPlayer.mpv;
+                _selectedVideoPlayerIndex = value;
+                IsSelectedVideoPlayerAvailable = IsVideoPlayerAvailable((LivelyMediaPlayer)value);
+                //_selectedVideoPlayerIndex = IsVideoPlayerAvailable((LivelyMediaPlayer)value) ? value : (int)LivelyMediaPlayer.mpv;
                 OnPropertyChanged();
 
                 if (userSettings.Settings.VideoPlayer != (LivelyMediaPlayer)_selectedVideoPlayerIndex)
@@ -646,6 +655,13 @@ namespace Lively.UI.WinUI.ViewModels
             }
         }
 
+        private bool _isSelectedWebBrowserAvailable;
+        public bool IsSelectedWebBrowserAvailable
+        {
+            get { return _isSelectedWebBrowserAvailable; }
+            set { _isSelectedWebBrowserAvailable = value; OnPropertyChanged(); }
+        }
+
         private int _selectedWebBrowserIndex;
         public int SelectedWebBrowserIndex
         {
@@ -655,7 +671,9 @@ namespace Lively.UI.WinUI.ViewModels
             }
             set
             {
-                _selectedWebBrowserIndex = IsWebPlayerAvailable((LivelyWebBrowser)value) ? value : (int)LivelyWebBrowser.cef;
+                _selectedWebBrowserIndex = value;
+                IsSelectedWebBrowserAvailable = IsWebPlayerAvailable((LivelyWebBrowser)value);
+                //_selectedWebBrowserIndex = IsWebPlayerAvailable((LivelyWebBrowser)value) ? value : (int)LivelyWebBrowser.cef;
                 OnPropertyChanged();
 
                 if (userSettings.Settings.WebBrowser != (LivelyWebBrowser)_selectedWebBrowserIndex)

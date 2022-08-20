@@ -1137,4 +1137,10 @@ O Edge é a webview embutida do Windows 10.</value>
   <data name="WallpaperInstallSize.Text" xml:space="preserve">
     <value>Tamanho</value>
   </data>
+  <data name="PluginNotFound.Message" xml:space="preserve">
+    <value>Please install the required plugin</value>
+  </data>
+  <data name="PluginNotFound.Title" xml:space="preserve">
+    <value>Plugin not found</value>
+  </data>
 </root>

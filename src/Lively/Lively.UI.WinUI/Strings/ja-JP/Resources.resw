@@ -953,19 +953,19 @@ Edgeは、Windows 10に内蔵されたWebViewです。</value>
     <value>Hi, I'm Dani John also known as rocksdanister. I developed Lively a Free and open-source (FOSS) wallpaper application. Thanks for taking the time to look at my work.</value>
   </data>
   <data name="LicenseLink.Content" xml:space="preserve">
-    <value>Software license</value>
+    <value>ソフトウェアライセンス</value>
   </data>
   <data name="AttributionLink.Content" xml:space="preserve">
-    <value>Third party software notice</value>
+    <value>サードパーティーのソフトウェア通知</value>
   </data>
   <data name="PrivacyPolicyLink.Content" xml:space="preserve">
-    <value>Data collection policy</value>
+    <value>個人情報保護方針</value>
   </data>
   <data name="AddWallpaperDrop.Text" xml:space="preserve">
-    <value>Add wallpaper</value>
+    <value>壁紙を追加</value>
   </data>
   <data name="ComingSoon.Text" xml:space="preserve">
-    <value>Coming soon</value>
+    <value>近日公開</value>
   </data>
   <data name="AboutMenu.Text" xml:space="preserve">
     <value>情報</value>
@@ -974,16 +974,16 @@ Edgeは、Windows 10に内蔵されたWebViewです。</value>
     <value>Webサイト</value>
   </data>
   <data name="TextOpen.Content" xml:space="preserve">
-    <value>Open</value>
+    <value>開く</value>
   </data>
   <data name="TextSave.Content" xml:space="preserve">
-    <value>Save</value>
+    <value>保存</value>
   </data>
   <data name="UIMode.Description" xml:space="preserve">
-    <value>User interface effects and animations</value>
+    <value>ユーザーインターフェースの効果とアニメーション</value>
   </data>
   <data name="UIMode.Header" xml:space="preserve">
-    <value>User interface</value>
+    <value>ユーザーインターフェイス</value>
   </data>
   <data name="UIModeLite.Content" xml:space="preserve">
     <value>ライト</value>
@@ -1055,7 +1055,7 @@ Edgeは、Windows 10に内蔵されたWebViewです。</value>
     <value>Maybe later</value>
   </data>
   <data name="TextSelectAll.Content" xml:space="preserve">
-    <value>Select all</value>
+    <value>すべてを選択</value>
   </data>
   <data name="TextSelectNone.Content" xml:space="preserve">
     <value>Select none</value>
@@ -1134,5 +1134,11 @@ Edgeは、Windows 10に内蔵されたWebViewです。</value>
   </data>
   <data name="WallpaperInstallSize.Text" xml:space="preserve">
     <value>Size</value>
+  </data>
+  <data name="PluginNotFound.Message" xml:space="preserve">
+    <value>Please install the required plugin</value>
+  </data>
+  <data name="PluginNotFound.Title" xml:space="preserve">
+    <value>Plugin not found</value>
   </data>
 </root>
