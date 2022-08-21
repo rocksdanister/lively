@@ -192,7 +192,7 @@ Prossiga apenas se confia na fonte do aplicativo.</value>
     <value>Pressione para iniciar a gravação</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
-    <value>Restaurando o(s) plano(s) de fundo anteriore(s), por favor aguarde...</value>
+    <value>Restaurando o(s) plano(s) de fundo anterior(es), por favor aguarde...</value>
   </data>
   <data name="DescriptionScreenLayout" xml:space="preserve">
     <value>Escolha a tela</value>
@@ -370,7 +370,7 @@ Se ainda não funcionar, abra o Lively novamente ou reinicie o Windows.
   <data name="TextGo" xml:space="preserve">
     <value>Ir</value>
   </data>
-  <data name="TextHelpTranslate" xml:space="preserve">
+  <data name="TextHelpTranslate.Title" xml:space="preserve">
     <value>Ajude a traduzir o Lively.</value>
   </data>
   <data name="TextHours" xml:space="preserve">
@@ -385,7 +385,7 @@ Se ainda não funcionar, abra o Lively novamente ou reinicie o Windows.
   <data name="TextLastChecked" xml:space="preserve">
     <value>Última verificação</value>
   </data>
-  <data name="TextLearnMore" xml:space="preserve">
+  <data name="TextLearnMore.Text" xml:space="preserve">
     <value>Saiba mais</value>
   </data>
   <data name="License.Header" xml:space="preserve">
@@ -868,7 +868,7 @@ O Edge é a webview embutida do Windows 10.</value>
     <value>Tamanho da visualização</value>
   </data>
   <data name="TitleUIMode" xml:space="preserve">
-    <value>Interface de usuário</value>
+    <value>Interface de Usuário</value>
   </data>
   <data name="TitleUpdates" xml:space="preserve">
     <value>Atualizações</value>
@@ -1130,5 +1130,17 @@ O Edge é a webview embutida do Windows 10.</value>
   </data>
   <data name="TextCloseWallpapers" xml:space="preserve">
     <value>Fechar Planos de Fundo</value>
+  </data>
+  <data name="TitleChooseApplication.Text" xml:space="preserve">
+    <value>Escolher Aplicação</value>
+  </data>
+  <data name="WallpaperInstallSize.Text" xml:space="preserve">
+    <value>Tamanho</value>
+  </data>
+  <data name="PluginNotFound.Message" xml:space="preserve">
+    <value>Por favor, instale o plugin necessário</value>
+  </data>
+  <data name="PluginNotFound.Title" xml:space="preserve">
+    <value>Plugin não encontrado</value>
   </data>
 </root>

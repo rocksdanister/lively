@@ -130,21 +130,21 @@
     <value>אודיו</value>
   </data>
   <data name="CommunityPage.Content" xml:space="preserve">
-    <value>Online discussion forum</value>
+    <value>פורום דיונים מקוון</value>
   </data>
   <data name="DocumentationPage.Content" xml:space="preserve">
-    <value>API documentation and help</value>
+    <value>תיעוד ועזרה של API</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
-    <value>Lively has encountered a fatal error.
+    <value>Lively נתקלה בשגיאה קטלנית.
 
-Windows Explorer restarted twice in the last 30 seconds! This may be a conflict between Lively and other desktop customization software or Windows. To avoid further issues, all wallpapers are terminated.</value>
+סייר Windows הופעל מחדש פעמיים ב-30 השניות האחרונות! זה עשוי להיות התנגשות בין Lively לבין תוכנות אחרות להתאמה אישית של שולחן העבודה או Windows. כדי למנוע בעיות נוספות, כל הטפטים מופסקים.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
     <value>נמצאה תוכנית לא תואמת, נושא שורת המשימות מושבת.</value>
   </data>
   <data name="OfficialWebpage.Content" xml:space="preserve">
-    <value>Official webpage of Lively Wallpaper</value>
+    <value>דף האינטרנט הרשמי של Lively Wallpaper</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
     <value>מרבית צגי ה- LCD וה- LED המודרניים אינם סובלים מבעיות צריבה ולכן כל טפט יכול לשמש כשומר מסך.
@@ -154,7 +154,7 @@ Windows Explorer restarted twice in the last 30 seconds! This may be a conflict 
 המטרה העיקרית של שומרי המסך של Lively היא להוסיף שכבת התאמה אישית נוספת למחשב האישי שלך, השתמש בשומרי מסך כהגנה על צריבה על אחריותך בלבד!</value>
   </data>
   <data name="ReportBugPage.Content" xml:space="preserve">
-    <value>Report a problem with the software</value>
+    <value>דווח על בעיה בתוכנה</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
     <value>בחר קובץ או ציין כתובת אתר להגדרה כטפט.</value>
@@ -210,14 +210,14 @@ Windows Explorer restarted twice in the last 30 seconds! This may be a conflict 
     <value>גרסת Windows N / KN שלך תדרוש הורדת קודקים נוספים כדי לתמוך בהפעלת וידאו ברקעים.</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
-    <value>Show support by buying the developer coffee</value>
+    <value>הראה תמיכה על ידי קניית קפה מפתחים</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
-    <value>You are about to change to beta (developer) build of Lively.
-Updates will be frequent and may contain bugs!</value>
+    <value>אתה עומד לעבור למבנה בטא (מפתח) של Lively.
+העדכונים יהיו תכופים ועשויים להכיל באגים!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
-    <value>System-tray icon visibility, lively will continue to run with the icon hidden</value>
+    <value>נראות סמל מגש המערכת, Livlely תמשיך לרוץ עם הסמל מוסתר</value>
   </data>
   <data name="HideSysTray.Header" xml:space="preserve">
     <value>סמל מגש המערכת</value>
@@ -282,7 +282,7 @@ https://github.com/rocksdanister/lively/wiki
     <value>התחל עם ווינדוס</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
-    <value>Add</value>
+    <value>הוסף</value>
   </data>
   <data name="TextAllFiles" xml:space="preserve">
     <value>כל הקבצים</value>
@@ -306,7 +306,7 @@ https://github.com/rocksdanister/lively/wiki
     <value>ביטול</value>
   </data>
   <data name="TextChangeWallpaper" xml:space="preserve">
-    <value>Change Wallpapers</value>
+    <value>שינוי טפט</value>
   </data>
   <data name="TextClose" xml:space="preserve">
     <value>סגור</value>
@@ -374,7 +374,7 @@ https://github.com/rocksdanister/lively/wiki
   <data name="TextGo" xml:space="preserve">
     <value>המשך</value>
   </data>
-  <data name="TextHelpTranslate" xml:space="preserve">
+  <data name="TextHelpTranslate.Title" xml:space="preserve">
     <value>עזור לתרגם</value>
   </data>
   <data name="TextHours" xml:space="preserve">
@@ -387,9 +387,9 @@ https://github.com/rocksdanister/lively/wiki
     <value>מקלדת</value>
   </data>
   <data name="TextLastChecked" xml:space="preserve">
-    <value>Last checked</value>
+    <value>נבדק לאחרונה</value>
   </data>
-  <data name="TextLearnMore" xml:space="preserve">
+  <data name="TextLearnMore.Text" xml:space="preserve">
     <value>למד עוד</value>
   </data>
   <data name="License.Header" xml:space="preserve">
@@ -498,10 +498,10 @@ https://github.com/rocksdanister/lively/wiki
     <value>תמיכה</value>
   </data>
   <data name="TextSwitchBranchDev" xml:space="preserve">
-    <value>Switch to beta (Dev channel)</value>
+    <value>עבור לבטא (ערוץ פיתוח)</value>
   </data>
   <data name="TextSwitchBranchOfficial" xml:space="preserve">
-    <value>Switch to stable (Default channel)</value>
+    <value>עבור ליציב (ערוץ ברירת מחדל)</value>
   </data>
   <data name="TextTags" xml:space="preserve">
     <value>תגיות</value>
@@ -657,10 +657,10 @@ https://github.com/rocksdanister/lively/wiki
     <value>אלגוריתם השהיית טפטים.</value>
   </data>
   <data name="PowerSavingModePower.Description" xml:space="preserve">
-    <value>Change playback when Windows Power Saving Mode is enabled</value>
+    <value>שנה השמעה כאשר מצב חיסכון בחשמל של Windows מופעל</value>
   </data>
   <data name="RemoteDesktopPower.Description" xml:space="preserve">
-    <value>Change playback when running a Remote Desktop session</value>
+    <value>שנה השמעה בעת הפעלת הפעלה של שולחן עבודה מרוחק</value>
   </data>
   <data name="TipScreensaver" xml:space="preserve">
     <value>לאחר תקופת חוסר הפעילות שנבחרה השתמש בטפט הנוכחי כשומר המסך שלך.</value>
@@ -745,7 +745,7 @@ Edge הוא תצוגת האינטרנט המובנית של Windows 10.</value>
     <value>איתור באגים</value>
   </data>
   <data name="TitleChangelog" xml:space="preserve">
-    <value>Changelog</value>
+    <value>יומן שינויים</value>
   </data>
   <data name="Community.Header" xml:space="preserve">
     <value>קהילה</value>
@@ -766,7 +766,7 @@ Edge הוא תצוגת האינטרנט המובנית של Windows 10.</value>
     <value>תיעוד</value>
   </data>
   <data name="EnterUrl.Header" xml:space="preserve">
-    <value>Enter URL</value>
+    <value>הזן כתובת URL</value>
   </data>
   <data name="ExportLogs.Header" xml:space="preserve">
     <value>קובץ Log</value>
@@ -814,10 +814,10 @@ Edge הוא תצוגת האינטרנט המובנית של Windows 10.</value>
     <value>אנא המתן</value>
   </data>
   <data name="PowerSavingModePower.Header" xml:space="preserve">
-    <value>When on Battery Saver</value>
+    <value>כשחיסכון בסוללה פועל</value>
   </data>
   <data name="RemoteDesktopPower.Header" xml:space="preserve">
-    <value>When on Remote Desktop</value>
+    <value>כאשר על שולחן עבודה מרוחק</value>
   </data>
   <data name="ReportBug.Header" xml:space="preserve">
     <value>דווח על באג</value>
@@ -872,7 +872,7 @@ Edge הוא תצוגת האינטרנט המובנית של Windows 10.</value>
     <value>ממשק משתמש</value>
   </data>
   <data name="TitleUpdates" xml:space="preserve">
-    <value>Updates</value>
+    <value>עדכונים</value>
   </data>
   <data name="TitleVideo" xml:space="preserve">
     <value>וידאו</value>
@@ -917,58 +917,58 @@ Edge הוא תצוגת האינטרנט המובנית של Windows 10.</value>
     <value>פתח את עמוד האינטרנט</value>
   </data>
   <data name="FastUI.Description" xml:space="preserve">
-    <value>Keep User Interface running for faster startup</value>
+    <value>השאר את ממשק המשתמש פועל לאתחול מהיר יותר</value>
   </data>
   <data name="FastUI.Header" xml:space="preserve">
-    <value>Fast startup</value>
+    <value>אתחול מהיר</value>
   </data>
   <data name="WallpaperDirGroup.Header" xml:space="preserve">
-    <value>File</value>
+    <value>קובץ</value>
   </data>
   <data name="AppThemeDark.Content" xml:space="preserve">
-    <value>Dark</value>
+    <value>כהה</value>
   </data>
   <data name="AppThemeLight.Content" xml:space="preserve">
-    <value>Light</value>
+    <value>בהיר</value>
   </data>
   <data name="AppThemeSystem.Content" xml:space="preserve">
-    <value>System</value>
+    <value>מערכת</value>
   </data>
   <data name="WindowsSettingsColor.Content" xml:space="preserve">
-    <value>Windows color settings</value>
+    <value>הגדרות צבע של Windows</value>
   </data>
   <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
-    <value>Laptops</value>
+    <value>מחשב נייד</value>
   </data>
   <data name="DeveloperGroup.Header" xml:space="preserve">
-    <value>Developer</value>
+    <value>מפתח</value>
   </data>
   <data name="AppearanceBehaviour.Header" xml:space="preserve">
-    <value>Appearance &amp; behavior</value>
+    <value>מראה והתנהגות</value>
   </data>
   <data name="ActiveWallpapers.Label" xml:space="preserve">
-    <value>Active Wallpaper(s)</value>
+    <value>טפטים פעילים</value>
   </data>
   <data name="TitleGallery" xml:space="preserve">
-    <value>Gallery</value>
+    <value>גלריה</value>
   </data>
   <data name="AboutMe.Text" xml:space="preserve">
-    <value>Hi, I'm Dani John also known as rocksdanister. I developed Lively a Free and open-source (FOSS) wallpaper application. Thanks for taking the time to look at my work.</value>
+    <value>שלום, אני דני ג'ון ידוע גם בתור rocksdanister. אני פיתחתי את Lively תוכנת טפטים חינמית בעלת קוד פתוח (FOSS). תודה שאתם לוקחים מזמנכם כדי להסתכל על עבודתי.</value>
   </data>
   <data name="LicenseLink.Content" xml:space="preserve">
-    <value>Software license</value>
+    <value>רשיון תוכנה</value>
   </data>
   <data name="AttributionLink.Content" xml:space="preserve">
-    <value>Third party software notice</value>
+    <value>הודעת תוכנת צד שלישי</value>
   </data>
   <data name="PrivacyPolicyLink.Content" xml:space="preserve">
-    <value>Data collection policy</value>
+    <value>מדיניות איסוף נתונים</value>
   </data>
   <data name="AddWallpaperDrop.Text" xml:space="preserve">
-    <value>Add wallpaper</value>
+    <value>הוסף טפט</value>
   </data>
   <data name="ComingSoon.Text" xml:space="preserve">
-    <value>Coming soon</value>
+    <value>בקרוב</value>
   </data>
   <data name="AboutMenu.Text" xml:space="preserve">
     <value>אודות</value>
@@ -977,159 +977,171 @@ Edge הוא תצוגת האינטרנט המובנית של Windows 10.</value>
     <value>אתר אינטרנט</value>
   </data>
   <data name="TextOpen.Content" xml:space="preserve">
-    <value>Open</value>
+    <value>פתוח</value>
   </data>
   <data name="TextSave.Content" xml:space="preserve">
-    <value>Save</value>
+    <value>שמור</value>
   </data>
   <data name="UIMode.Description" xml:space="preserve">
-    <value>User interface effects and animations</value>
+    <value>ממשק משתמש אפקטים ואנימציות</value>
   </data>
   <data name="UIMode.Header" xml:space="preserve">
-    <value>User interface</value>
+    <value>ממשק משתמש</value>
   </data>
   <data name="UIModeLite.Content" xml:space="preserve">
-    <value>Lite</value>
+    <value>לייט</value>
   </data>
   <data name="UIModeNormal.Content" xml:space="preserve">
-    <value>Normal</value>
+    <value>רגיל</value>
   </data>
   <data name="Screensaver.Description" xml:space="preserve">
-    <value>How screensaver is applied to connected to display devices</value>
+    <value>כיצד שומר מסך מוחל על התקני תצוגה מחוברים</value>
   </data>
   <data name="Screensaver.Header" xml:space="preserve">
-    <value>Type of screensaver</value>
+    <value>סוג שומר המסך</value>
   </data>
   <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
-    <value>Configured separately</value>
+    <value>מוגדר בנפרד</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
-    <value>Same as running wallpaper</value>
+    <value>זהה לטפט המופעל</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
-    <value>Plugin required</value>
+    <value>נדרש תוסף</value>
   </data>
   <data name="ScreensaverPluginMessage.Text" xml:space="preserve">
-    <value>One time setup is required to run screensaver</value>
+    <value>נדרשת הגדרה חד פעמית להפעלת שומר מסך</value>
   </data>
   <data name="WallpaperLayoutScreenPicker.Content" xml:space="preserve">
-    <value>Always pick screen when choosing wallpaper</value>
+    <value>תמיד בחר מסך בעת בחירת טפט</value>
   </data>
   <data name="GalleryAccount.Text" xml:space="preserve">
-    <value>Account</value>
+    <value>חשבון</value>
   </data>
   <data name="GalleryAccountDelete.Content" xml:space="preserve">
-    <value>Delete account</value>
+    <value>מחק חשבון</value>
   </data>
   <data name="GalleryAccountExport.Content" xml:space="preserve">
-    <value>Export data</value>
+    <value>ייצא נתונים</value>
   </data>
   <data name="GalleryAccountLogin.Content" xml:space="preserve">
-    <value>Log in</value>
+    <value>התחבר</value>
   </data>
   <data name="GalleryAccountLogout.Content" xml:space="preserve">
-    <value>Log out</value>
+    <value>התנתק</value>
   </data>
   <data name="GalleryPageCollection.Content" xml:space="preserve">
-    <value>Collection</value>
+    <value>מאגר</value>
   </data>
   <data name="GalleryPageHome.Content" xml:space="preserve">
-    <value>Home</value>
+    <value>מסך הבית</value>
   </data>
   <data name="GalleryPageManage.Content" xml:space="preserve">
-    <value>Manage</value>
+    <value>נהל</value>
   </data>
   <data name="GalleryPageProfile.Content" xml:space="preserve">
-    <value>Profile</value>
+    <value>פרופיל</value>
   </data>
   <data name="GalleryPleaseLogin.Text" xml:space="preserve">
-    <value>Please log in to continue</value>
+    <value>אנא התחבר כדי להמשיך</value>
   </data>
   <data name="GalleryWelcomeMessage.Text" xml:space="preserve">
-    <value>Hi</value>
+    <value>שלום</value>
   </data>
   <data name="RestoreWallpaper.Text" xml:space="preserve">
-    <value>We found these wallpapers in your account</value>
+    <value>מצאנו את הטפטים האלה בחשבון שלך</value>
   </data>
   <data name="TextDownloadNow.Content" xml:space="preserve">
-    <value>Download now</value>
+    <value>הורד עכשיו</value>
   </data>
   <data name="TextMaybeLater.Content" xml:space="preserve">
-    <value>Maybe later</value>
+    <value>אולי אחר כך</value>
   </data>
   <data name="TextSelectAll.Content" xml:space="preserve">
-    <value>Select all</value>
+    <value>בחר הכל</value>
   </data>
   <data name="TextSelectNone.Content" xml:space="preserve">
-    <value>Select none</value>
+    <value>בטל בחירה</value>
   </data>
   <data name="TitleWelcomeback.Text" xml:space="preserve">
-    <value>Welcome back!</value>
+    <value>ברוך שובך!</value>
   </data>
   <data name="ReportWallpaper.Header" xml:space="preserve">
-    <value>Reasons</value>
+    <value>סיבות</value>
   </data>
   <data name="ReportWallpaperCopyright.Content" xml:space="preserve">
-    <value>Copyright violation</value>
+    <value>הפרת זכויות יוצרים</value>
   </data>
   <data name="ReportWallpaperMisleading.Content" xml:space="preserve">
-    <value>Misleading information</value>
+    <value>מידע מטעה</value>
   </data>
   <data name="ReportWallpaperOther.Content" xml:space="preserve">
-    <value>Other</value>
+    <value>אחר</value>
   </data>
   <data name="ReportWallpaperSpam.Content" xml:space="preserve">
-    <value>Spam</value>
+    <value>ספאם</value>
   </data>
   <data name="ReportWallpaperViolence.Content" xml:space="preserve">
-    <value>Nudity or violence</value>
+    <value>עירום או אלימות</value>
   </data>
   <data name="TextAdditionalNotes.Text" xml:space="preserve">
-    <value>Additional notes</value>
+    <value>הערות נוספות</value>
   </data>
   <data name="TextReportWallpaper.Text" xml:space="preserve">
-    <value>Report</value>
+    <value>דווח</value>
   </data>
   <data name="TitleReportWallpaper.Text" xml:space="preserve">
-    <value>Report Wallpaper</value>
+    <value>דווח על טפט</value>
   </data>
   <data name="Send.Content" xml:space="preserve">
-    <value>Send</value>
+    <value>שלח</value>
   </data>
   <data name="GalleryAccountDeleteConfirm.Text" xml:space="preserve">
-    <value>Please confirm this action as it CAN NOT be undone</value>
+    <value>נא לאשר פעולה זו מכיוון *שלא ניתן* לבטל אותה</value>
   </data>
   <data name="GalleryAccountDeleteFail.Text" xml:space="preserve">
-    <value>Failed to delete account, please try again later</value>
+    <value>מחיקת החשבון נכשלה, בבקשה נסה שוב במועד מאוחר יותר</value>
   </data>
   <data name="TextConfirmCancel.Text" xml:space="preserve">
-    <value>Do you want to cancel it?</value>
+    <value>האם תרצה לבטל אותה?</value>
   </data>
   <data name="TextWait.Text" xml:space="preserve">
-    <value>Wait</value>
+    <value>המתן</value>
   </data>
   <data name="TitleDownloadProgress.Text" xml:space="preserve">
-    <value>Download in Progress</value>
+    <value>הורדה מתבצעת</value>
   </data>
   <data name="TextContributors.Text" xml:space="preserve">
-    <value>Contributors</value>
+    <value>תורמים</value>
   </data>
   <data name="TextShare.Text" xml:space="preserve">
-    <value>Share</value>
+    <value>שתף</value>
   </data>
   <data name="TitleShareWallpaper.Text" xml:space="preserve">
-    <value>Share Wallpaper</value>
+    <value>שתף טפט</value>
   </data>
   <data name="ExportWallpaperGallery.Text" xml:space="preserve">
-    <value>Gallery upload</value>
+    <value>העלאה לגלריה</value>
   </data>
   <data name="ExportWallpaperLink.Text" xml:space="preserve">
-    <value>Copy link</value>
+    <value>העתק קישור</value>
   </data>
   <data name="TextCustomiseWallpaper" xml:space="preserve">
     <value>התאם אישית טפט</value>
   </data>
   <data name="TextCloseWallpapers" xml:space="preserve">
-    <value>Close Wallpapers</value>
+    <value>סגור טפטים</value>
+  </data>
+  <data name="TitleChooseApplication.Text" xml:space="preserve">
+    <value>Choose Application</value>
+  </data>
+  <data name="WallpaperInstallSize.Text" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="PluginNotFound.Message" xml:space="preserve">
+    <value>Please install the required plugin</value>
+  </data>
+  <data name="PluginNotFound.Title" xml:space="preserve">
+    <value>Plugin not found</value>
   </data>
 </root>

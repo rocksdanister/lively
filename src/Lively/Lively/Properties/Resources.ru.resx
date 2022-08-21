@@ -372,7 +372,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextGo" xml:space="preserve">
     <value>Добавить</value>
   </data>
-  <data name="TextHelpTranslate" xml:space="preserve">
+  <data name="TextHelpTranslate.Title" xml:space="preserve">
     <value>Помогите c переводом Lively.</value>
   </data>
   <data name="TextHours" xml:space="preserve">
@@ -387,7 +387,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextLastChecked" xml:space="preserve">
     <value>Последний раз проверено</value>
   </data>
-  <data name="TextLearnMore" xml:space="preserve">
+  <data name="TextLearnMore.Text" xml:space="preserve">
     <value>Узнать больше</value>
   </data>
   <data name="License.Header" xml:space="preserve">
@@ -607,7 +607,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Видеоплеер</value>
   </data>
   <data name="AddWallpaperFileBrowse.Description" xml:space="preserve">
-    <value>Установите обои из файла поддерживаемого формата.</value>
+    <value>Выберите обои любого поддерживаемого формата.</value>
   </data>
   <data name="EnterUrl.Description" xml:space="preserve">
     <value>Установите веб-страницу в качестве обоев, используя её URL-адрес.</value>
@@ -1132,5 +1132,17 @@ Edge - встроенный в Windows 10 WebView.</value>
   </data>
   <data name="TextCloseWallpapers" xml:space="preserve">
     <value>Отключить обои</value>
+  </data>
+  <data name="TitleChooseApplication.Text" xml:space="preserve">
+    <value>Выберите программу</value>
+  </data>
+  <data name="WallpaperInstallSize.Text" xml:space="preserve">
+    <value>Размер</value>
+  </data>
+  <data name="PluginNotFound.Message" xml:space="preserve">
+    <value>Please install the required plugin</value>
+  </data>
+  <data name="PluginNotFound.Title" xml:space="preserve">
+    <value>Plugin not found</value>
   </data>
 </root>

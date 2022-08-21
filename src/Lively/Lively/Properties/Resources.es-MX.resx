@@ -370,7 +370,7 @@ Si aún no funciona, cierra e inicia Lively nuevamente o reinicia Windows.
   <data name="TextGo" xml:space="preserve">
     <value>Iniciar</value>
   </data>
-  <data name="TextHelpTranslate" xml:space="preserve">
+  <data name="TextHelpTranslate.Title" xml:space="preserve">
     <value>Ayuda a traducir Lively.</value>
   </data>
   <data name="TextHours" xml:space="preserve">
@@ -385,7 +385,7 @@ Si aún no funciona, cierra e inicia Lively nuevamente o reinicia Windows.
   <data name="TextLastChecked" xml:space="preserve">
     <value>Última comprobación</value>
   </data>
-  <data name="TextLearnMore" xml:space="preserve">
+  <data name="TextLearnMore.Text" xml:space="preserve">
     <value>Leer mas</value>
   </data>
   <data name="License.Header" xml:space="preserve">
@@ -931,7 +931,7 @@ Edge es la vista web integrada en Windows 10.</value>
     <value>Light</value>
   </data>
   <data name="AppThemeSystem.Content" xml:space="preserve">
-    <value>System</value>
+    <value>Sistema</value>
   </data>
   <data name="WindowsSettingsColor.Content" xml:space="preserve">
     <value>Windows color settings</value>
@@ -1130,5 +1130,17 @@ Edge es la vista web integrada en Windows 10.</value>
   </data>
   <data name="TextCloseWallpapers" xml:space="preserve">
     <value>Cerrar fondos de pantalla</value>
+  </data>
+  <data name="TitleChooseApplication.Text" xml:space="preserve">
+    <value>Choose Application</value>
+  </data>
+  <data name="WallpaperInstallSize.Text" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="PluginNotFound.Message" xml:space="preserve">
+    <value>Please install the required plugin</value>
+  </data>
+  <data name="PluginNotFound.Title" xml:space="preserve">
+    <value>Plugin not found</value>
   </data>
 </root>

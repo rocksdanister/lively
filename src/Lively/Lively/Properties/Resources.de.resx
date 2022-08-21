@@ -369,7 +369,7 @@ Wenn es immer noch nicht funktioniert, schließen &amp; starten Sie Lively oder 
   <data name="TextGo" xml:space="preserve">
     <value>LOS</value>
   </data>
-  <data name="TextHelpTranslate" xml:space="preserve">
+  <data name="TextHelpTranslate.Title" xml:space="preserve">
     <value>Bei der Übersetzung helfen</value>
   </data>
   <data name="TextHours" xml:space="preserve">
@@ -384,7 +384,7 @@ Wenn es immer noch nicht funktioniert, schließen &amp; starten Sie Lively oder 
   <data name="TextLastChecked" xml:space="preserve">
     <value>Zuletzt geprüft</value>
   </data>
-  <data name="TextLearnMore" xml:space="preserve">
+  <data name="TextLearnMore.Text" xml:space="preserve">
     <value>Mehr erfahren</value>
   </data>
   <data name="License.Header" xml:space="preserve">
@@ -1126,5 +1126,17 @@ Wenn es immer noch nicht funktioniert, schließen &amp; starten Sie Lively oder 
   </data>
   <data name="TextCloseWallpapers" xml:space="preserve">
     <value>Hintergründe schließen</value>
+  </data>
+  <data name="TitleChooseApplication.Text" xml:space="preserve">
+    <value>Anwendung auswählen</value>
+  </data>
+  <data name="WallpaperInstallSize.Text" xml:space="preserve">
+    <value>Größe</value>
+  </data>
+  <data name="PluginNotFound.Message" xml:space="preserve">
+    <value>Bitte installieren Sie das benötigte Plugin</value>
+  </data>
+  <data name="PluginNotFound.Title" xml:space="preserve">
+    <value>Plugin nicht gefunden</value>
   </data>
 </root>

@@ -369,7 +369,7 @@ Si cela ne fonctionne toujours pas, fermez et relancez Lively / redémarrez Wind
   <data name="TextGo" xml:space="preserve">
     <value>Go</value>
   </data>
-  <data name="TextHelpTranslate" xml:space="preserve">
+  <data name="TextHelpTranslate.Title" xml:space="preserve">
     <value>Aidez-nous à traduire Lively</value>
   </data>
   <data name="TextHours" xml:space="preserve">
@@ -384,7 +384,7 @@ Si cela ne fonctionne toujours pas, fermez et relancez Lively / redémarrez Wind
   <data name="TextLastChecked" xml:space="preserve">
     <value>Dernière vérification</value>
   </data>
-  <data name="TextLearnMore" xml:space="preserve">
+  <data name="TextLearnMore.Text" xml:space="preserve">
     <value>En Savoir Plus</value>
   </data>
   <data name="License.Header" xml:space="preserve">
@@ -1112,24 +1112,36 @@ Edge est la vue Web intégrée de Windows 10.</value>
     <value>Téléchargement en cours</value>
   </data>
   <data name="TextContributors.Text" xml:space="preserve">
-    <value>Contributors</value>
+    <value>Contributeurs</value>
   </data>
   <data name="TextShare.Text" xml:space="preserve">
-    <value>Share</value>
+    <value>Partage</value>
   </data>
   <data name="TitleShareWallpaper.Text" xml:space="preserve">
-    <value>Share Wallpaper</value>
+    <value>Partager le fond d'écran</value>
   </data>
   <data name="ExportWallpaperGallery.Text" xml:space="preserve">
-    <value>Gallery upload</value>
+    <value>Enregistré dans le gallerie</value>
   </data>
   <data name="ExportWallpaperLink.Text" xml:space="preserve">
-    <value>Copy link</value>
+    <value>Copier le lien</value>
   </data>
   <data name="TextCustomiseWallpaper" xml:space="preserve">
     <value>Personnaliser le fond d'écran</value>
   </data>
   <data name="TextCloseWallpapers" xml:space="preserve">
     <value>Fermer les fonds d'écran</value>
+  </data>
+  <data name="TitleChooseApplication.Text" xml:space="preserve">
+    <value>Sélectionner une application</value>
+  </data>
+  <data name="WallpaperInstallSize.Text" xml:space="preserve">
+    <value>Taille</value>
+  </data>
+  <data name="PluginNotFound.Message" xml:space="preserve">
+    <value>Veuillez installer le plugin requis</value>
+  </data>
+  <data name="PluginNotFound.Title" xml:space="preserve">
+    <value>Plugin introuvable</value>
   </data>
 </root>

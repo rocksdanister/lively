@@ -370,7 +370,7 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp; 적용.
   <data name="TextGo" xml:space="preserve">
     <value>이동</value>
   </data>
-  <data name="TextHelpTranslate" xml:space="preserve">
+  <data name="TextHelpTranslate.Title" xml:space="preserve">
     <value>Lively 번역 돕기.</value>
   </data>
   <data name="TextHours" xml:space="preserve">
@@ -385,7 +385,7 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp; 적용.
   <data name="TextLastChecked" xml:space="preserve">
     <value>마지막 확인</value>
   </data>
-  <data name="TextLearnMore" xml:space="preserve">
+  <data name="TextLearnMore.Text" xml:space="preserve">
     <value>더 알아보기</value>
   </data>
   <data name="License.Header" xml:space="preserve">
@@ -987,10 +987,10 @@ Edge는 Windows 10의 내장 웹뷰입니다.</value>
     <value>User interface</value>
   </data>
   <data name="UIModeLite.Content" xml:space="preserve">
-    <value>Lite</value>
+    <value>라이트</value>
   </data>
   <data name="UIModeNormal.Content" xml:space="preserve">
-    <value>Normal</value>
+    <value>보통</value>
   </data>
   <data name="Screensaver.Description" xml:space="preserve">
     <value>How screensaver is applied to connected to display devices</value>
@@ -1129,5 +1129,17 @@ Edge는 Windows 10의 내장 웹뷰입니다.</value>
   </data>
   <data name="TextCloseWallpapers" xml:space="preserve">
     <value>배경 화면 닫기</value>
+  </data>
+  <data name="TitleChooseApplication.Text" xml:space="preserve">
+    <value>Choose Application</value>
+  </data>
+  <data name="WallpaperInstallSize.Text" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="PluginNotFound.Message" xml:space="preserve">
+    <value>Please install the required plugin</value>
+  </data>
+  <data name="PluginNotFound.Title" xml:space="preserve">
+    <value>Plugin not found</value>
   </data>
 </root>

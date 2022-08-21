@@ -28,6 +28,7 @@ namespace Lively.Common.Helpers.Localization
             new LanguagesModel("Português(pt)", new string[] { "pt", "pt-PT" }),
             new LanguagesModel("Português(pt-BR)", new string[] { "pt-BR" }),
             new LanguagesModel("Filipino(fil)", new string[] { "fil", "fil-PH" }),
+            new LanguagesModel("Finnish(fi)", new string[] { "fi", "fi-FI" }),
             new LanguagesModel("Bahasa Indonesia(id)", new string[] { "id", "id-ID" }),
             new LanguagesModel("Magyar(hu)", new string[] { "hu", "hu-HU" }),
             new LanguagesModel("Svenska(sv)", new string[] { "sv", "sv-AX", "sv-FI", "sv-SE" }),

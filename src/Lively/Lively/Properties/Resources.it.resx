@@ -121,30 +121,30 @@
     <value>Riproduci l'audio solo quando il desktop è in primo piano</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
-    <value>Volume Generale dei wallpaper </value>
+    <value>Volume di tutti i sfondi</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
-    <value>Volume Generale</value>
+    <value>Volume</value>
   </data>
   <data name="AudioGroup.Header" xml:space="preserve">
-    <value>Suono</value>
+    <value>Audio</value>
   </data>
   <data name="CommunityPage.Content" xml:space="preserve">
-    <value>Forum online</value>
+    <value>Discussione Forum</value>
   </data>
   <data name="DocumentationPage.Content" xml:space="preserve">
     <value>Documentazione API e Aiuto</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
-    <value>Lively ha riscontrato un errore
+    <value>Lively ha riscontrato un errore fatale.
 
-Windows Explorer si è riavviato due volte negli ultimi 30 secondi! Questo potrebbe essere un conflitto tra Lively e altri software di personalizzazione del desktop  o Windows. Per evitare errori futuri, tutti gli sfondi sono stati terminati.</value>
+Windows Explorer si è riavviato due volte negli ultimi 30 secondi! Questo potrebbe esssere dato da un conflitto tra Lively ed alcuni altri software di personalizzazione dello sfondo oppure da Windows. Per evitare errori futuri, tutti gli sfondi sono stati terminati.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
-    <value>Programma incompatibile trovato. Disabilitato il tema della taskbar</value>
+    <value>Programma incompatibile trovato, Tema della barra delle applicazioni è stata disabilitata</value>
   </data>
   <data name="OfficialWebpage.Content" xml:space="preserve">
-    <value>Sito internet ufficiale di Lively</value>
+    <value>Sito Ufficiale di Lively Wallpaper</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
     <value>La maggior parte dei display LCD e LED moderni non soffre di problemi di burn-in e quindi qualsiasi sfondo può essere utilizzato come salvaschermo.
@@ -365,7 +365,7 @@ Se non funziona ancora, chiudi &amp; riavvia Lively / riavvia windows.</value>
   <data name="TextGo" xml:space="preserve">
     <value>VAI</value>
   </data>
-  <data name="TextHelpTranslate" xml:space="preserve">
+  <data name="TextHelpTranslate.Title" xml:space="preserve">
     <value>Aiuta a tradurre lively </value>
   </data>
   <data name="TextHours" xml:space="preserve">
@@ -380,7 +380,7 @@ Se non funziona ancora, chiudi &amp; riavvia Lively / riavvia windows.</value>
   <data name="TextLastChecked" xml:space="preserve">
     <value>Ultimo Controllo</value>
   </data>
-  <data name="TextLearnMore" xml:space="preserve">
+  <data name="TextLearnMore.Text" xml:space="preserve">
     <value>Impara di più</value>
   </data>
   <data name="License.Header" xml:space="preserve">
@@ -1014,120 +1014,134 @@ Edge è la visualizzazione Web integrata di Windows 10.</value>
     <value>Scegli sempre lo schermo quando scegli lo sfondo</value>
   </data>
   <data name="GalleryAccount.Text" xml:space="preserve">
-    <value>Account</value>
+    <value>Profilo
+</value>
   </data>
   <data name="GalleryAccountDelete.Content" xml:space="preserve">
-    <value>Delete account</value>
+    <value>Elimina profilo</value>
   </data>
   <data name="GalleryAccountExport.Content" xml:space="preserve">
-    <value>Export data</value>
+    <value>Esporta dati</value>
   </data>
   <data name="GalleryAccountLogin.Content" xml:space="preserve">
-    <value>Log in</value>
+    <value>Accedi</value>
   </data>
   <data name="GalleryAccountLogout.Content" xml:space="preserve">
-    <value>Log out</value>
+    <value>Disconnetti</value>
   </data>
   <data name="GalleryPageCollection.Content" xml:space="preserve">
-    <value>Collection</value>
+    <value>Raccolta</value>
   </data>
   <data name="GalleryPageHome.Content" xml:space="preserve">
     <value>Home</value>
   </data>
   <data name="GalleryPageManage.Content" xml:space="preserve">
-    <value>Manage</value>
+    <value>Gestisci
+</value>
   </data>
   <data name="GalleryPageProfile.Content" xml:space="preserve">
-    <value>Profile</value>
+    <value>Profilo</value>
   </data>
   <data name="GalleryPleaseLogin.Text" xml:space="preserve">
-    <value>Please log in to continue</value>
+    <value>Effettuare il login per continuare</value>
   </data>
   <data name="GalleryWelcomeMessage.Text" xml:space="preserve">
-    <value>Hi</value>
+    <value>Ciao</value>
   </data>
   <data name="RestoreWallpaper.Text" xml:space="preserve">
-    <value>We found these wallpapers in your account</value>
+    <value>Abbiamo trovato questi sfondi nel tuo profilo</value>
   </data>
   <data name="TextDownloadNow.Content" xml:space="preserve">
-    <value>Download now</value>
+    <value>Scarica adesso</value>
   </data>
   <data name="TextMaybeLater.Content" xml:space="preserve">
-    <value>Maybe later</value>
+    <value>Magari più tardi</value>
   </data>
   <data name="TextSelectAll.Content" xml:space="preserve">
-    <value>Select all</value>
+    <value>Seleziona tutto</value>
   </data>
   <data name="TextSelectNone.Content" xml:space="preserve">
-    <value>Select none</value>
+    <value>Deseleziona tutto</value>
   </data>
   <data name="TitleWelcomeback.Text" xml:space="preserve">
-    <value>Welcome back!</value>
+    <value>Bentornato!</value>
   </data>
   <data name="ReportWallpaper.Header" xml:space="preserve">
-    <value>Reasons</value>
+    <value>Motivi</value>
   </data>
   <data name="ReportWallpaperCopyright.Content" xml:space="preserve">
-    <value>Copyright violation</value>
+    <value>Violazione di copyright</value>
   </data>
   <data name="ReportWallpaperMisleading.Content" xml:space="preserve">
-    <value>Misleading information</value>
+    <value>Informazioni fuorvianti</value>
   </data>
   <data name="ReportWallpaperOther.Content" xml:space="preserve">
-    <value>Other</value>
+    <value>Altro</value>
   </data>
   <data name="ReportWallpaperSpam.Content" xml:space="preserve">
     <value>Spam</value>
   </data>
   <data name="ReportWallpaperViolence.Content" xml:space="preserve">
-    <value>Nudity or violence</value>
+    <value>Nudità o violenza</value>
   </data>
   <data name="TextAdditionalNotes.Text" xml:space="preserve">
-    <value>Additional notes</value>
+    <value>Note aggiuntive</value>
   </data>
   <data name="TextReportWallpaper.Text" xml:space="preserve">
-    <value>Report</value>
+    <value>Segnalazione</value>
   </data>
   <data name="TitleReportWallpaper.Text" xml:space="preserve">
-    <value>Report Wallpaper</value>
+    <value>Segnala Sfondo</value>
   </data>
   <data name="Send.Content" xml:space="preserve">
-    <value>Send</value>
+    <value>Invia</value>
   </data>
   <data name="GalleryAccountDeleteConfirm.Text" xml:space="preserve">
-    <value>Please confirm this action as it CAN NOT be undone</value>
+    <value>Si prega di confermare questa azione in quanto non può essere annullata</value>
   </data>
   <data name="GalleryAccountDeleteFail.Text" xml:space="preserve">
-    <value>Failed to delete account, please try again later</value>
+    <value>Non si è potuto Eliminare il profilo, la prego di riprovare più tardi</value>
   </data>
   <data name="TextConfirmCancel.Text" xml:space="preserve">
-    <value>Do you want to cancel it?</value>
+    <value>Vuoi cancellarlo?</value>
   </data>
   <data name="TextWait.Text" xml:space="preserve">
-    <value>Wait</value>
+    <value>Attendere</value>
   </data>
   <data name="TitleDownloadProgress.Text" xml:space="preserve">
-    <value>Download in Progress</value>
+    <value>Download in Corso</value>
   </data>
   <data name="TextContributors.Text" xml:space="preserve">
-    <value>Contributors</value>
+    <value>Collaboratori</value>
   </data>
   <data name="TextShare.Text" xml:space="preserve">
-    <value>Share</value>
+    <value>Condividi</value>
   </data>
   <data name="TitleShareWallpaper.Text" xml:space="preserve">
-    <value>Share Wallpaper</value>
+    <value>Condividi Sfondo</value>
   </data>
   <data name="ExportWallpaperGallery.Text" xml:space="preserve">
-    <value>Gallery upload</value>
+    <value>Caricamento galleria</value>
   </data>
   <data name="ExportWallpaperLink.Text" xml:space="preserve">
-    <value>Copy link</value>
+    <value>Copia link</value>
   </data>
   <data name="TextCustomiseWallpaper" xml:space="preserve">
     <value>Personalizza Wallpaper</value>
   </data>
   <data name="TextCloseWallpapers" xml:space="preserve">
     <value>Chiudi Wallpaper</value>
+  </data>
+  <data name="TitleChooseApplication.Text" xml:space="preserve">
+    <value>Scegli l'Applicazione</value>
+  </data>
+  <data name="WallpaperInstallSize.Text" xml:space="preserve">
+    <value>Dimensione</value>
+  </data>
+  <data name="PluginNotFound.Message" xml:space="preserve">
+    <value>Perfavore installare il plugin richiesto</value>
+  </data>
+  <data name="PluginNotFound.Title" xml:space="preserve">
+    <value>Plugin non trovato</value>
   </data>
 </root>

@@ -118,1026 +118,1025 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AudioFocused.Content" xml:space="preserve">
-    <value>Sesi sadece masaüstü odaktayken oynat</value>
+    <value>Soita ääntä vain, kun työpöytä on kohdistettuna</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
-    <value>Tüm duvar kağıtları için ses seviyesi</value>
+    <value>Kaikkien taustakuvien äänenvoimakkuus</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
-    <value>Ana ses</value>
+    <value>Äänenvoimakkuus</value>
   </data>
   <data name="AudioGroup.Header" xml:space="preserve">
-    <value>Ses</value>
+    <value>Ääni</value>
   </data>
   <data name="CommunityPage.Content" xml:space="preserve">
-    <value>Online tartışma forumu</value>
+    <value>Keskustelufoorumi verkossa</value>
   </data>
   <data name="DocumentationPage.Content" xml:space="preserve">
-    <value>API dökümantasyonu ve destek</value>
+    <value>API-rajapinta ja dokumentaatio</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
-    <value>Lively ciddi bir sorunla karşılaştı.
+    <value>Lively on kohdannut kriittisen virheen.
 
-Windows Explorer son 30 saniye içinde iki kere yeniden başlatıldı! Windows veya başka bir masaüstü özelleştirme uygulaması ve Lively arasında uyumsuzluk olabilir. Sorun yaşamamak için tüm duvar kağıtları durduruldu.</value>
+Windows Explorer uudelleenkäynnistyi kahdesti viimeisen 30 sekunnin aikana! Tämä voi olla ristiriita Livelyn ja muiden työpöydän taustakuvapalveluiden tai Windowsin kanssa. Uusien virheiden varalta kaikki taustakuvat on päätetty.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
-    <value>Uyumsuz program tespit edildi, görev çubuğu teması devre dışı bırakıldı.</value>
+    <value>Yhteensopimaton ohjelma löytyi, tehtäväpalkin teema poistettiin käytöstä</value>
   </data>
   <data name="OfficialWebpage.Content" xml:space="preserve">
-    <value>Lively Wallpaper Resmi İnternet Sitesi</value>
+    <value>Livelyn viralliset verkkosivut</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
-    <value>Birçok modern LCD ve LED monitörler ekran yanmasına dayanıklı olduğundan herhangi bir duvar kağıdı kilit ekranında kullanılabilir.
+    <value>Useimmat nykyaikaiset LCD ja LED-näytöt eivät kärsi burn-in ongelmista ja siksi mitä tahansa taustakuvaa voidaan käyttää näytönsäästäjä.
 
-OLED, Plasma ve CRT monitörler ise ekran yanması sorununa karşı dayanıksız olduğundan bu monitörlerde yanmayı engellemek için düzenli hareketleri olan koyu duvar kağıtlarının kullanılması önerilmektedir. Ancak bu öneri test edilmemiştir ve yanmaya karşı etkili olduğu garanti edilmemektedir.
+OLED, Plasma tai CRT näytöt, jotka ovat alttiita palamiselle on suositeltavaa käyttää taustakuvaa säännöllisellä liikeellä ja yleisellä tummalla teemalla, jonka on tarkoitus lieventää palamista, mutta tämä ominaisuus on testaamaton ja sen tehokkuutta ei voida taata.
 
-Lively'nin kilit ekranı özelliği, bilgisayarınızı daha da kişiselleştirmenizi sağlamak amacıyla tasarlanmıştır. Ekran yanmasına karşı kilit ekranında harketli duvar kağıtlarının kullanılması kullanıcının sorumluluğundadır.</value>
+Livelyn näytönsäästäjien päätarkoituksena on lisätä toinen kustomisoinnin kerros tietokoneeseen, käytä näytönsäästäjiä kuten palo-suojaa omalla riskilläsi!</value>
   </data>
   <data name="ReportBugPage.Content" xml:space="preserve">
-    <value>Sorun bildir</value>
+    <value>Ilmoita ongelmasta Livelyn kanssa</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
-    <value>Duvar kağıdı olarak ayarlamak için dosya seçin veya URL girin</value>
+    <value>Valitse tiedosto</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
-    <value>Duvar kağıdı davranışı çalışan uygulamaya göre belirlendi.</value>
+    <value>Taustakuvan toiston käyttäytyminen perustuen käynnissä olevaan sovellukseen</value>
   </data>
   <data name="DescriptionCancelQuestion" xml:space="preserve">
-    <value>İptal etmek istediğinize emin misiniz?</value>
+    <value>Oletko varma, että haluat perua?</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
-    <value>Duvar kağıdını kalıcı olarak diskten silmek istediğinize emin misiniz?</value>
+    <value>Oletko varma, että haluat poistaa tämän taustakuvan tietokoneeltasi?</value>
   </data>
   <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
-    <value>Duvar kağıdını kütüphaneden silmek istediğinize emin misiniz?</value>
+    <value>Oletko varma, että haluat poistaa tämän taustakuvan kirjastosta?</value>
   </data>
   <data name="DragDropFile.Text" xml:space="preserve">
-    <value>Dosyaları kütüphaneye sürükleyin ve bırakın.</value>
+    <value>Vedä ja pudota tiedostoja tähän</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
-    <value>Duvar kağıdı olarak dışarıdan uygulama açıyorsunuz.
-Kötü niyetli uygulamalar sisteminize ciddi zararlar verebilir.
-Eğer güvenilir bir kaynak olduğuna inanıyorsanız devam edin.</value>
+    <value>Olet asettamassa ulkoista sovellusta taustakuvaksi.
+Haitalliset sovellukset voivat isännöidä haittaohjelmia ja viruksia ja vahingoitata järjestelmääsi.
+Jatka vain, jos luotat tähän sovellukseen.</value>
   </data>
   <data name="MinimizedTray.Text" xml:space="preserve">
-    <value>Lively durum çubuğuna küçültüldü, Lively ikonuna sağ tıklayarak devam edin.</value>
+    <value>Lively piilotetaan järjestelmäkuvakkeeseen oikeassa alakulmassa, paina hiiren oikealla painikkeella jatkaaksesi.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
-    <value>Ayarların geçerli olması için Lively'yi yeniden başlatın.</value>
+    <value>Käynnistä ohjelma uudelleen, jotta asetus tulee voimaan</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
-    <value>Lütfen devam etmeden önce biraz bekleyin.</value>
+    <value>Tarkista ennen jatkamista</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
-    <value>Kayıda başlamak için tıklayın.</value>
+    <value>Paina aloittaaksesi nauhoituksen</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
-    <value>Geçmiş duvar kağıtları yükleniyor, Lütfen Bekleyin...</value>
+    <value>Ppalautetaan edellinen taustakuva(t), odota...</value>
   </data>
   <data name="DescriptionScreenLayout" xml:space="preserve">
-    <value>Ekranı seç</value>
+    <value>Valitse Näyttö</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
-    <value>Yazılımın yeni sürümü mevcut!</value>
+    <value>Livelyn uusi versio on saatavilla!</value>
   </data>
   <data name="DescriptionWebpageLoad" xml:space="preserve">
-    <value>Yüklemek için website urlsi girin, shadertoy.com shader linkleri destekleniyor.</value>
+    <value>Syötä sivuston linkki ladataksesi, shadertoy.com shader linkit ovat tuettuja</value>
   </data>
   <data name="DescriptionWelcomeWizard" xml:space="preserve">
-    <value>Kurulum sihirbazı Lively kurulumunu başlatacak.</value>
+    <value>Tämä avustaja auttaa sinua asentamaan Livelyn</value>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>Windows N/KN versiyonunuzda video duvar kağıtlarının oynatılabilmesi için ek çözümleyicilerin indirilmesi gerekiyor.</value>
+    <value>Windows N / KN versiosi vaatii ladata ylimääräisiä koodekkeja tukemaan videon toistoa taustakuvilla</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
-    <value>Bağışta bulunarak yazılımı destekle!</value>
+    <value>Näytä tukesi ostamalla kehittäjälle kahvia</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
-    <value>Lively'nin beta sürümüne geçmek üzeresiniz.
-Beta sürümünde hatalar bulunabilir ve sıklıkla güncellemeler yapılabilir!</value>
+    <value>Olet vaihtamassa Livelyn beta versioon.
+Päivityksiä tulee usein ja ne saattavat sisältää vikoja!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
-    <value>Sistem tepsisinde ikon görünürlüğü, Lively ikon gizli bir şekilde çalışmaya devam edecek.</value>
+    <value>Järjestelmäkuvakkeen näkyvyys, Lively jatkaa suorittamissa piilotetussa kuvakkeessa</value>
   </data>
   <data name="HideSysTray.Header" xml:space="preserve">
-    <value>Kontrol çubuğu ikonu</value>
+    <value>Järjestelmäkuvake</value>
   </data>
   <data name="Language.Description" xml:space="preserve">
-    <value>Lively yeni dili uygulamak için yeniden başlatılacak.</value>
+    <value>Lively käynnistyy uudelleen vaihtaakseen kielen</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
-    <value>Dil</value>
+    <value>Kieli</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
-    <value>Güncelleme başarısız; Kur dosyasını adresten indirmeyi deneyin:
+    <value>Päivitys epäonnistui, kokeile asentajan lataamista täältä:
 https://github.com/rocksdanister/lively/releases</value>
   </data>
   <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
-    <value>Hasarlı duvar kağıdı dosyası. Yeniden indirmeyi deneyin.</value>
+    <value>Vaurioitunut taustakuvatiedosto, kokeile uudelleenlatausta</value>
   </data>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
-    <value>Görünüşe göre bir şeyler yanlış.
-Bu sorunu daha iyi anlamak ve çözüme kavuşturmak için günlük dosyasını geliştirici ile paylaşın.
-Günlük dosyasını paylaşma hakkında detaylı bilgi:
+    <value>Hups... Näyttää siltä, että jokin meni vikaan :(
+Jotta voisimme ymmärtää tämän virheen paremmin ja korjata ongelman, jaa lokitiedosto kehittäjälle.
+Ohjeet lokitiedoston jakamiseen:
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
-    <value>Windows yüksek kontrast modu açıkken Lively düzhün çalışamıyor.
-Yüksek kontrast modunu kapatın be tekrar deneyin.</value>
+    <value>Lively ei toimi kunnolla Windows High Contrast -tilassa käytössä!
+Poista High Contrast -tila käytöstä ja yritä uudelleen</value>
   </data>
   <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
-    <value>Medya oynatması başarısız :(
-Ayarlardan video oynatıcı ayarlarını değiştirmeyi deneyin.
+    <value>Media playback failed :(
+Try changing the videoplayer in lively settings.
 
-Bu sorunu daha iyi anlamak ve çözüme kavuşturmak için günlük dosyasını geliştirici ile paylaşın.
-Günlük dosyasını paylaşma hakkında detaylı bilgi:
+In order to better understand this error and fix the issue, share the log file with the developer.
+Instructions for sharing log file:
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
-    <value>Not Lively duvar kağıdı dosyası</value>
+    <value>Ei Lively-taustakuvatiedosto</value>
   </data>
   <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
-    <value>Lively düzgün kapatılamadı, güvenli modda başlatılıyor.
-Daha önce çalışan duvar kağıdını geri yüklemek ister misiniz?</value>
+    <value>Lively ei sulkeutunut kunnolla, aloitetaan turvallisessa tilassa.
+Haluatko palauttaa viimeisimmät taustakuvat?</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
-    <value>Görünüşe göre Lively çalışmak için bazı ayarlara ihtiyaç duyuyor:  
-1. Win + R tuşlarına birlikte basarak Çalıştır'ı açın
-2. SystemPropertiesPerformance.exe yazın ve çalıştırın.
-3. "Denetim ve öğe animasyonlarını pencere içinde göster" yazılı düğmeyi işaretleyin &amp; Tamam.
-4. Uygula ve Tamam diyerek pencereyi kapatın.</value>
+    <value>Näyttää siltä, että jotkut asetukset täytyy asettaa, jotta Lively saataisiin toimimaan:  
+1. Paina Win + R -näppäimiä avataksesi suorittimen, 
+2. Kirjoita "SystemPropertiesPerformance.exe" ja, napsauta "OK" avataksesi suorituskykyasetukset.
+3. Ota käyttöön "Animoi ohjaimet ja elementit ikkunoiden sisäpuolella" (Jos ne on jo valittu, poista valinta ja tarkista ja ota käyttöön.
+4. Napsauta "Käytä" ja paina "OK" sulkeaksesi ikkunan.
+
+Jos Windows 7 on juuri asetettu - Säädä paras ulkonäkö &amp; Käytä .
+Jos ikkuna ei vieläkään toimi, sulje &amp; käynnistä eloisa uudestaan/uudelleenkäynnistys.
+(Ei toimi joissakin Windows 10 -käyttöjärjestelmissä)</value>
   </data>
   <data name="Startup.Description" xml:space="preserve">
-    <value>Duvar kağıdını oynatabilmek için Lively arka planda çalışmalı.</value>
+    <value>Livelyn täytyy pystyä suorittumaan taustalla, jotta taustakuva saadaan toimimaan</value>
   </data>
   <data name="Startup.Header" xml:space="preserve">
-    <value>Başlangıçta çalıştır</value>
+    <value>Käynnistä Windowsin mukana</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
-    <value>Ekle</value>
+    <value>Lisää</value>
   </data>
   <data name="TextAllFiles" xml:space="preserve">
-    <value>Tüm dosyalar</value>
+    <value>Kaikki Tiedostot</value>
   </data>
   <data name="Application.Header" xml:space="preserve">
-    <value>Uygulama</value>
+    <value>Sovellus</value>
   </data>
   <data name="Attribution.Header" xml:space="preserve">
-    <value>İlişkilendirmeler</value>
+    <value>Ominaisuudet</value>
   </data>
   <data name="Author.Text" xml:space="preserve">
-    <value>Yazar</value>
+    <value>Kehittäjä</value>
   </data>
   <data name="TextBack" xml:space="preserve">
-    <value>Geri</value>
+    <value>Takaisin</value>
   </data>
   <data name="TextBrowse" xml:space="preserve">
-    <value>Gezin</value>
+    <value>Selaa</value>
   </data>
   <data name="Cancel.Content" xml:space="preserve">
-    <value>İptal</value>
+    <value>Peruuta</value>
   </data>
   <data name="TextChangeWallpaper" xml:space="preserve">
-    <value>Duvar Kağıdını değiştir</value>
+    <value>Vaihda taustakuvaa</value>
   </data>
   <data name="TextClose" xml:space="preserve">
-    <value>Kapat</value>
+    <value>Sulje</value>
   </data>
   <data name="CloseWallpapers.Label" xml:space="preserve">
-    <value>Duvar Kağıtlarını kapat</value>
+    <value>Sulje</value>
   </data>
   <data name="TextCompleted" xml:space="preserve">
-    <value>Tamamlandı!</value>
+    <value>Suoritettu!</value>
   </data>
   <data name="ControlPanel.Subtitle" xml:space="preserve">
-    <value>Duvar kağıtlarını yönetmek için tıklayın.</value>
+    <value>Klikkaa tästä hallitaksesi taustakuvia</value>
   </data>
   <data name="TextConvertVideo" xml:space="preserve">
-    <value>Videoya çevir</value>
+    <value>Muunna videoksi</value>
   </data>
   <data name="TextCreatePreview" xml:space="preserve">
-    <value>Önizleme oluştur</value>
+    <value>Luo Esikatselu</value>
   </data>
   <data name="Customise.Text" xml:space="preserve">
-    <value>Özelleştir</value>
+    <value>Kustomoi</value>
   </data>
   <data name="CustomiseWallpaper.Label" xml:space="preserve">
-    <value>Duvar kağıdını özelleştir</value>
+    <value>Kustomoi</value>
   </data>
   <data name="DeleteWallpaper.Text" xml:space="preserve">
-    <value>Duvar kağıdını sil</value>
+    <value>Poista</value>
   </data>
   <data name="Description.Text" xml:space="preserve">
-    <value>Açıklama</value>
+    <value>Kuvaus</value>
   </data>
   <data name="DisplayPauseRuleAllScreen.Content" xml:space="preserve">
-    <value>Tüm ekranlar</value>
+    <value>Kaikki ruudut</value>
   </data>
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
-    <value>Tek ekran</value>
+    <value>Per näyttö</value>
   </data>
   <data name="TextDownload" xml:space="preserve">
-    <value>İndir</value>
+    <value>Lataa</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
-    <value>Düzenle</value>
+    <value>Muokkaa</value>
   </data>
   <data name="TextError" xml:space="preserve">
-    <value>Hata</value>
+    <value>Virhe</value>
   </data>
   <data name="TextExit" xml:space="preserve">
-    <value>Çıkış</value>
+    <value>Poistu</value>
   </data>
   <data name="ExportWallpaperZip.Text" xml:space="preserve">
-    <value>zip olarak dışa aktar</value>
+    <value>Tallenna tiedostoon</value>
   </data>
   <data name="TextFeatureMissing" xml:space="preserve">
-    <value>Bazı özellikler Lively'nin şu anki sürümünde mevcut değil.</value>
+    <value>Jotkin ominaisuudet eivät ole käytettävissä tässä Livelyn versiossa</value>
   </data>
   <data name="TextFileNotFound" xml:space="preserve">
-    <value>Dosya bulunamadı</value>
+    <value>Tiedostoa ei löydy</value>
   </data>
   <data name="TextGIF" xml:space="preserve">
-    <value>Animasyonlu GIF</value>
+    <value>Animoitu GIF</value>
   </data>
   <data name="GitHubStar.Content" xml:space="preserve">
-    <value>Yıldızlayarak sevginizi gösterin</value>
+    <value>Näytä hieman rakkautta pudottamalla tähti</value>
   </data>
   <data name="TextGo" xml:space="preserve">
-    <value>Git</value>
+    <value>GO</value>
   </data>
   <data name="TextHelpTranslate.Title" xml:space="preserve">
-    <value>Lively'yi farklı dillere çevirmemize yardım edin.</value>
+    <value>Auta kääntämään</value>
   </data>
   <data name="TextHours" xml:space="preserve">
-    <value>saat</value>
+    <value>tuntia</value>
   </data>
   <data name="TextInstall" xml:space="preserve">
-    <value>Kurulum</value>
+    <value>Asenna</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
-    <value>Klavye</value>
+    <value>Näppäimistö</value>
   </data>
   <data name="TextLastChecked" xml:space="preserve">
-    <value>Son kontrol</value>
+    <value>Viimeksi tarkistettu</value>
   </data>
   <data name="TextLearnMore.Text" xml:space="preserve">
-    <value>Daha fazla bilgi</value>
+    <value>Lue lisää</value>
   </data>
   <data name="License.Header" xml:space="preserve">
-    <value>Lisans</value>
+    <value>Lisenssi</value>
   </data>
   <data name="TextMinutes" xml:space="preserve">
-    <value>dakika</value>
+    <value>minuuttia</value>
   </data>
   <data name="TextmoreInfo" xml:space="preserve">
-    <value>Bilgi</value>
+    <value>Tietoa</value>
   </data>
   <data name="TextMoreWallpapers" xml:space="preserve">
-    <value>Daha fazla duvar kağıdı</value>
+    <value>Lisää taustakuvia</value>
   </data>
   <data name="TextMouse.Content" xml:space="preserve">
-    <value>Fare</value>
+    <value>Hiiri</value>
   </data>
   <data name="MouseInteractOnDesktop.Content" xml:space="preserve">
-    <value>Uygulama odaklandığında fare etkileşimi</value>
+    <value>Hiiren yhteisvaikutus kohdistettuna sovelluksessa</value>
   </data>
   <data name="TextNext" xml:space="preserve">
-    <value>İleri</value>
+    <value>Seuraava</value>
   </data>
   <data name="TextNo" xml:space="preserve">
-    <value>Hayır</value>
+    <value>Ei</value>
   </data>
   <data name="TextOff.Content" xml:space="preserve">
-    <value>Kapalı</value>
+    <value>Pois</value>
   </data>
   <data name="TextOK" xml:space="preserve">
-    <value>Tamam</value>
+    <value>OK</value>
   </data>
   <data name="TextOn.Content" xml:space="preserve">
-    <value>Açık</value>
+    <value>Päällä</value>
   </data>
   <data name="TextOnline" xml:space="preserve">
-    <value>Çevrimiçi</value>
+    <value>Paikalla</value>
   </data>
   <data name="TextOpenLively" xml:space="preserve">
-    <value>Lively'yi aç</value>
+    <value>Open Lively</value>
   </data>
   <data name="PauseAlgorithmTypeAllProcess.Content" xml:space="preserve">
-    <value>Tüm işlemler</value>
+    <value>Kaikki prosessit</value>
   </data>
   <data name="PauseAlgorithmTypeExclusiveMode.Content" xml:space="preserve">
     <value>Direct3D</value>
   </data>
   <data name="PauseAlgorithmTypeForegroundProcess.Content" xml:space="preserve">
-    <value>Önplan işlemi</value>
+    <value>Etualan prosessi</value>
   </data>
   <data name="TextPauseWallpapers" xml:space="preserve">
-    <value>Duvar Kağıdını durdur</value>
+    <value>Sulje Taustakuvat</value>
   </data>
   <data name="TextPerformanceKill.Content" xml:space="preserve">
-    <value>Sonlandır</value>
+    <value>Tapa</value>
   </data>
   <data name="TextPerformanceNone.Content" xml:space="preserve">
-    <value>Oynatmaya devam et</value>
+    <value>Ei mitään</value>
   </data>
   <data name="TextPerformancePause.Content" xml:space="preserve">
-    <value>Durdur</value>
+    <value>Keskeytä</value>
   </data>
   <data name="TextPicture" xml:space="preserve">
-    <value>Fotoğraflar</value>
+    <value>Kuva</value>
   </data>
   <data name="PreviewWallpaper.Text" xml:space="preserve">
-    <value>Duvar Kağıdını önizle</value>
+    <value>Esikatsele</value>
   </data>
   <data name="PrivacyPolicy.Header" xml:space="preserve">
-    <value>Gizlilik Politikası</value>
+    <value>Tietosuojakäytäntö</value>
   </data>
   <data name="TextProcessingWallpaper" xml:space="preserve">
-    <value>İşleniyor</value>
+    <value>Käsitellään</value>
   </data>
   <data name="TextRemove" xml:space="preserve">
-    <value>Kaldır</value>
+    <value>Poista</value>
   </data>
   <data name="TextRule" xml:space="preserve">
-    <value>Kural</value>
+    <value>Sääntö</value>
   </data>
   <data name="TextScreen" xml:space="preserve">
-    <value>Ekran</value>
+    <value>Näyttö</value>
   </data>
   <data name="TextSearch" xml:space="preserve">
-    <value>Arama</value>
+    <value>Hae</value>
   </data>
   <data name="SetWallpaper.Text" xml:space="preserve">
-    <value>Duvar Kağıdı olarak ayarla</value>
+    <value>Aseta taustakuvaksi</value>
   </data>
   <data name="ShowOnDisk.Text" xml:space="preserve">
-    <value>Dosya konumunu aç</value>
+    <value>Avaa tiedoston sijainti</value>
   </data>
   <data name="WallpaperSource.Text" xml:space="preserve">
-    <value>Kaynak</value>
+    <value>Lähde</value>
   </data>
   <data name="TextStart" xml:space="preserve">
-    <value>Başlat</value>
+    <value>Aloita</value>
   </data>
   <data name="TextStop" xml:space="preserve">
-    <value>Durdur</value>
+    <value>Pysäytä</value>
   </data>
   <data name="StoreReview.Content" xml:space="preserve">
-    <value>Lively kullanmaktan memnun musunuz? Lütfen yorum bırakın :)</value>
+    <value>Nauttitko Livelyn käytöstä? Jätä arvostelu :)</value>
   </data>
   <data name="TextSupport.Content" xml:space="preserve">
-    <value>Destek</value>
+    <value>Tuki</value>
   </data>
   <data name="TextSwitchBranchDev" xml:space="preserve">
-    <value>Beta sürümüne geç (Geliştirici)</value>
+    <value>Vaihda betan tilaan (kehittäjätila)</value>
   </data>
   <data name="TextSwitchBranchOfficial" xml:space="preserve">
-    <value>Kararlı sürümü kullan</value>
+    <value>Vaihda pois beta-tilasta</value>
   </data>
   <data name="TextTags" xml:space="preserve">
-    <value>Etiketler</value>
+    <value>Tunnisteet</value>
   </data>
   <data name="TaskbarThemeBlur.Content" xml:space="preserve">
-    <value>Bulanık</value>
+    <value>Sumennus</value>
   </data>
   <data name="TaskbarThemeClear.Content" xml:space="preserve">
-    <value>Temiz</value>
+    <value>Kirkkaus</value>
   </data>
   <data name="TaskbarThemeColor.Content" xml:space="preserve">
-    <value>Renk</value>
+    <value>Väri</value>
   </data>
   <data name="TaskbarThemeFluent.Content" xml:space="preserve">
-    <value>Akıcı</value>
+    <value>Sujuvuus</value>
   </data>
   <data name="TaskbarThemeWallpaper.Content" xml:space="preserve">
-    <value>Duvar Kağıdı</value>
+    <value>Taustakuva</value>
   </data>
   <data name="TaskbarThemeWallpaperFluent.Content" xml:space="preserve">
-    <value>Akıcı Duvar Kağıdı</value>
+    <value>Taustakuvan sujuvuus</value>
   </data>
   <data name="TextTileSizeLarge" xml:space="preserve">
-    <value>Büyük</value>
+    <value>Suuri</value>
   </data>
   <data name="TextTileSizeNormal" xml:space="preserve">
-    <value>Orta</value>
+    <value>Normaali</value>
   </data>
   <data name="TextTileSizeSmall" xml:space="preserve">
-    <value>Küçük</value>
+    <value>Pieni</value>
   </data>
   <data name="Title.Text" xml:space="preserve">
-    <value>Başlık</value>
+    <value>Otsikko</value>
   </data>
   <data name="TextUIHeadless" xml:space="preserve">
-    <value>Görünmez</value>
+    <value>Päätön</value>
   </data>
   <data name="TextUILite" xml:space="preserve">
-    <value>Hafif</value>
+    <value>Kevyt</value>
   </data>
   <data name="TextUINormal" xml:space="preserve">
-    <value>Orta</value>
+    <value>Normaali</value>
   </data>
   <data name="TextUnsupportedFile" xml:space="preserve">
-    <value>Dosya formatı desteklenmiyor</value>
+    <value>Tiedostomuotoa ei tueta</value>
   </data>
   <data name="TextUpdateAvailable" xml:space="preserve">
-    <value>Güncelleştirme mevcut!</value>
+    <value>Päivitys saatavilla!</value>
   </data>
   <data name="TextUpdateCheck" xml:space="preserve">
-    <value>Güncelleştirmeleri denetle</value>
+    <value>Tarkista päivitykset</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
-    <value>Güncelleştirme denetlenmesi başarısız oldu</value>
+    <value>Päivityksen tarkistaminen epäonnistui</value>
   </data>
   <data name="TextUpdateChecking" xml:space="preserve">
-    <value>Güncelleştirme denetleniyor</value>
+    <value>Tarkistetaan päivityksiä</value>
   </data>
   <data name="TextUpdateUptodate" xml:space="preserve">
-    <value>Uygulama en güncel sürümünde!</value>
+    <value>Ohjelmisto on ajan tasalla!</value>
   </data>
   <data name="TextVideo" xml:space="preserve">
     <value>Video</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>İsteğe bağlı komut satırı argümanlarını girin</value>
+    <value>Syötä valinnaiset komentorivin parametrit</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
-    <value>Doldur</value>
+    <value>Täytä</value>
   </data>
   <data name="WallpaperFitNone.Content" xml:space="preserve">
-    <value>Sığdırma yok</value>
+    <value>Ei mitään</value>
   </data>
   <data name="WallpaperFitUniform.Content" xml:space="preserve">
-    <value>Aynı</value>
+    <value>Yhtenäinen</value>
   </data>
   <data name="WallpaperFitUniformToFill.Content" xml:space="preserve">
-    <value>Aynı şekilde doldur</value>
+    <value>Täytä säilyttäen kuvasuhde</value>
   </data>
   <data name="WallpaperLayoutDuplicate.Content" xml:space="preserve">
-    <value>Aynı duvar kağıdını çoğalt</value>
+    <value>Monista sama taustakuva</value>
   </data>
   <data name="WallpaperLayoutPerScreen.Content" xml:space="preserve">
-    <value>Sadece seçili ekran</value>
+    <value>Vain valittu näyttö</value>
   </data>
   <data name="WallpaperLayoutSpan.Content" xml:space="preserve">
-    <value>Ekranlar arasında uzat</value>
+    <value>Kierrä ruutujen välillä</value>
   </data>
   <data name="WallpaperType.Text" xml:space="preserve">
-    <value>Tip</value>
+    <value>Tyyppi</value>
   </data>
   <data name="Website.Header" xml:space="preserve">
-    <value>Web Sayfası</value>
+    <value>Verkkosivusto</value>
   </data>
   <data name="TextWebStream" xml:space="preserve">
-    <value>Web Yayını</value>
+    <value>Web-suoratoisto</value>
   </data>
   <data name="TextWelcome" xml:space="preserve">
-    <value>Hoşgeldiniz</value>
+    <value>Tervetuloa</value>
   </data>
   <data name="TextYes" xml:space="preserve">
-    <value>Evet</value>
+    <value>Kyllä</value>
   </data>
   <data name="VideoPlayer.Header" xml:space="preserve">
-    <value>Video Oynatıcı</value>
+    <value>Videosoitin</value>
   </data>
   <data name="AddWallpaperFileBrowse.Description" xml:space="preserve">
-    <value>Kabul edilen tüm dosya tiplerini duvar kağıdı olarak ayarla</value>
+    <value>Aseta kaikki tuetut tiedostotyypit taustakuvaksi</value>
   </data>
   <data name="EnterUrl.Description" xml:space="preserve">
-    <value>Girilen URL'deki sayfayı duvar kağıdı olarak ayarla.</value>
+    <value>Aseta verkkosivun URL, jonka annoit, taustakuvaksi</value>
   </data>
   <data name="AppFocus.Description" xml:space="preserve">
-    <value>Herhangi bir uygulama odaktayken davranışı seçin.</value>
+    <value>Määritä mitä tehdä, kun jokin sovellus on tarkennuksessa</value>
   </data>
   <data name="AppFullScreen.Description" xml:space="preserve">
-    <value>Tam ekran uygulamalar çalışırken davranışı seçin.</value>
+    <value>Aseta mitä tehdä, kun koko näytön pelit/sovellukset ovat käynnissä</value>
   </data>
   <data name="AppRules.Description" xml:space="preserve">
-    <value>Çalışan uygulamalar için özel kurallar belirleyin.</value>
+    <value>Keskeytä taustakuva kun näitä sovelluksia käytetään</value>
   </data>
   <data name="TipAppTheme" xml:space="preserve">
-    <value>Lively sistem temasına adapte olur, değiştirmek için</value>
+    <value>Lively mukautuu järjestelmän teeman asetuksiin, muuttaaksesi ulkoasua, mene</value>
   </data>
   <data name="BatteryPower.Description" xml:space="preserve">
-    <value>(Sadece pil ile çalışanlar için) Adaptör çıkarıldığında oynatmayı değiştir.</value>
+    <value>Vaihda toistoa, kun vaihtovirtavirta katkaistaan</value>
   </data>
   <data name="BrowserDebuggingPort.Description" xml:space="preserve">
-    <value>Internet sitesi duvar kağıtlarında hata ayıklamak için port numarasını girin. Tarayıcının yeniden başlatılması gerekiyor.
-Hazır olduğunuzda http://localhost:port adresinden geliştirici konsoluna ulaşabilirsiniz.</value>
+    <value>Syötä portti vianetsintää varten; kun valmista, navigoi osoitteeseen http://localhost:portnumber päästäksesi käsiksi kehittäjän konsoliin</value>
   </data>
   <data name="Debug.Description" xml:space="preserve">
-    <value>Geliştirici menüsünü göster</value>
+    <value>Näytä kehittäjän valikko</value>
   </data>
   <data name="DesktopPicture.Description" xml:space="preserve">
-    <value>Masaüstü arkaplanı olarak animasyonlu duvar kağıdı ayarla.</value>
+    <value>Aseta kuva animoidusta taustakuvasta työpöydän taustakuvaksi</value>
   </data>
   <data name="DisplayPauseRule.Description" xml:space="preserve">
-    <value>Tek: Uygulamanın odaklandığı ekrandaki duvar kağıdının oynatmasını durdurur.
-Tüm ekranlar: Uygulamaya odaklanılırsa bütün ekranlardaki duvar kağıtlarının oynatılması durdurulur. </value>
+    <value>Keskeytä taustakuva kaikilla näytöillä tai vain näytöllä, johon sovellus on keskittynyt</value>
   </data>
   <data name="ExportLogs.Description" xml:space="preserve">
-    <value>Log dosyası oluştur.</value>
+    <value>Luo lokiraportti tiedosto</value>
   </data>
   <data name="GifPlayer.Description" xml:space="preserve">
-    <value>Gif duvar kağıdı için kullanılacak oynatıcıyı seçin</value>
+    <value>Valitse soittaja, jota käytetään Gif taustakuville</value>
   </data>
   <data name="TipLivelySetupOnClose" xml:space="preserve">
-    <value>Devam etmek için kurulumu bitirin.</value>
+    <value>Viimeistele asetukset jatkaaksesi</value>
   </data>
   <data name="LockscreenPicture.Description" xml:space="preserve">
-    <value>Kilit ekranı arkaplanı olarak animasyonlu duvar kağıdı ayarla.</value>
+    <value>Aseta kuva animoidusta taustakuvasta lukitusnäytön taustakuvaksi</value>
   </data>
   <data name="PauseAlgorithm.Description" xml:space="preserve">
-    <value>Önplan: Hafif, sadece odaktaki uygulamaya göre duvar kağıdı oynatma davranışını belirler.
-Tüm Uygulamalar: Daha ağır, Tüm uygulamara bakarak duvar kağıdı oynatma davranışını belirler.</value>
+    <value>Taustakuvan tauko algoritmi</value>
   </data>
   <data name="PowerSavingModePower.Description" xml:space="preserve">
-    <value>Windows güç koruma modu aktifken oynatmayı değiştir.</value>
+    <value>Vaihda toistoa, kun Windows Virransäästötila on käytössä</value>
   </data>
   <data name="RemoteDesktopPower.Description" xml:space="preserve">
-    <value>Uzak masaüstü bağlantısı aktifken oynatmayı değiştir.</value>
+    <value>Vaihda toistoa kun käytät etätyöpöytäistuntoa</value>
   </data>
   <data name="TipScreensaver" xml:space="preserve">
-    <value>Seçilen inaktivite süresinden sonra kullanılan duvar kağıdını kilit ekranı olarak ayarla.</value>
+    <value>Käyttämättömyyden jälkeen, näytä nykyistä taustakuvaa näytönsäästäjänä</value>
   </data>
   <data name="StreamWallpaperDetect.Description" xml:space="preserve">
-    <value>Eğer desteklenen video yayın linki tespit edilirse tarayıcı yerine video oynatıcıyı kullan</value>
+    <value>Jos tuettu videon stream-linkki havaitaan, käytä videosoitinta verkkosivun lataamisen sijaan</value>
   </data>
   <data name="StreamWallpaperVideoQuality.Description" xml:space="preserve">
-    <value>Online yayınlar için video kalitesini seçin.</value>
+    <value>Valitse haluamasi videon laatu online-puroille</value>
   </data>
   <data name="TipSwitchSoftwareBranch" xml:space="preserve">
-    <value>Kararlı ve Beta sürüm arasında geçiş yap</value>
+    <value>Vaihda beta-ohjelmiston versiota vakaaksi tai päinvastoin</value>
   </data>
   <data name="TaskbarTheme.Description" xml:space="preserve">
-    <value>Sistem görev çubuğu görünüşünü değiştir</value>
+    <value>Muuta järjestelmän tehtäväpalkin ulkoasua</value>
   </data>
   <data name="TipTileSize" xml:space="preserve">
-    <value>Kütüphanedeki duvar kağıtlarının kare boyutu.</value>
+    <value>Taustakuvan koko kirjastossa</value>
   </data>
   <data name="TipUIMode" xml:space="preserve">
-    <value>Düşük performanslı bilgisayarlarda hafif modu seçin.</value>
+    <value>Valitse matalien järjestelmien Lite-tila</value>
   </data>
   <data name="VideoHardwareDecode.Description" xml:space="preserve">
-    <value>Mümkün olduğunda donanım hızlandırmayı kullan.</value>
+    <value>Käytä laitteistokiihdytystä kun mahdollista</value>
   </data>
   <data name="VideoPlayer.Description" xml:space="preserve">
-    <value>Video duvar kağıdı oynatıcısını seçin</value>
+    <value>Valitse soittaja, jota käytetään videotaustakuville</value>
   </data>
   <data name="WallpaperDir.Description" xml:space="preserve">
-    <value>Duvar kağıdı dosyalarının depolanacağı klasör</value>
+    <value>Polku jota käytetään taustakuvatiedostojen tallentamiseen</value>
   </data>
   <data name="WallpaperFit.Description" xml:space="preserve">
-    <value>Duvar kağıdı ölçeklendirme algoritması</value>
+    <value>Taustakuvan skaalauksen algoritmi</value>
   </data>
   <data name="WallpaperInput.Description" xml:space="preserve">
-    <value>Duvar kağıdı ile etkileşime geçme yöntemi seçin</value>
+    <value>Valitse tapoja toimia taustakuvan kanssa</value>
   </data>
   <data name="WallpaperLayout.Description" xml:space="preserve">
-    <value>Duvar kağıdının bağlı ekranlara nasıl uygulanacağı</value>
+    <value>Kuinka taustakuvaa käytetään liitetyissä näyttölaitteissa</value>
   </data>
   <data name="TipWallpaperPlayback" xml:space="preserve">
-    <value>Masaüstü odakta değilken duvar kağıdını oynatmayı durdur.</value>
+    <value>Keskeytä taustakuvan toisto, kun työpöytää ei ole kohdistettu</value>
   </data>
   <data name="WebBrowserDiskCache.Description" xml:space="preserve">
-    <value>Geçici dosyalar hafıza yerine diske yazılıyor, tarayıcı yeniden başlatıldığında ayarlar eski haline dönecek.</value>
+    <value>Tallenna väliaikaisia tiedostoja levylle muistin sijasta</value>
   </data>
   <data name="WebBrowser.Description" xml:space="preserve">
-    <value>CEF(Chromium Embedded Framework) hafif bir chromium motorudur.
-Edge ise windows 10 için geçerli web gösterim motorudur.</value>
+    <value>Valitse soittaja, jota käytetään HTML taustakuville</value>
   </data>
   <data name="About.Label" xml:space="preserve">
-    <value>Hakkında</value>
+    <value>Tietoa</value>
   </data>
   <data name="AddWallpaper.Label" xml:space="preserve">
-    <value>Duvar Kağıdı ekle</value>
+    <value>Lisää Taustakuva</value>
   </data>
   <data name="AppFocus.Header" xml:space="preserve">
-    <value>Odaklanmış uygulama</value>
+    <value>Kohdistettuja sovelluksia</value>
   </data>
   <data name="AppFullScreen.Header" xml:space="preserve">
-    <value>Tam ekran uygulama</value>
+    <value>Koko näytön sovellukset</value>
   </data>
   <data name="TitleAppName" xml:space="preserve">
-    <value>Lively Duvar Kağıdı</value>
+    <value>Lively Taustakuva</value>
   </data>
   <data name="AppRules.Header" xml:space="preserve">
-    <value>Uygulama Kuralları</value>
+    <value>Sovellussäännöt</value>
   </data>
   <data name="AppTheme.Header" xml:space="preserve">
-    <value>Tema</value>
+    <value>Teema</value>
   </data>
   <data name="TitleAudioPlayOnScreen" xml:space="preserve">
-    <value>Ekranda ses oynat</value>
+    <value>Toista ääntä näytöllä</value>
   </data>
   <data name="BatteryPower.Header" xml:space="preserve">
-    <value>Pil gücünde</value>
+    <value>Virransäästötilassa</value>
   </data>
   <data name="TitleBrowseFile" xml:space="preserve">
-    <value>Duvar kağıdı olarak ayarlamak için video, gif, web sayfası gibi dosyaları arayın</value>
+    <value>Selaa videon, gifin, verkkosivun... tiedoston asettamiseksi taustakuvaksi</value>
   </data>
   <data name="BrowserDebuggingPort.Header" xml:space="preserve">
-    <value>Port Hata Ayıklama</value>
+    <value>Virheenkorjauksen portti</value>
   </data>
   <data name="TitleChangelog" xml:space="preserve">
-    <value>Yenilikler</value>
+    <value>Muutosloki</value>
   </data>
   <data name="Community.Header" xml:space="preserve">
-    <value>Topluluk</value>
+    <value>Yhteisö</value>
   </data>
   <data name="Debug.Header" xml:space="preserve">
-    <value>Hata Ayıklama</value>
+    <value>Vianetsintä</value>
   </data>
   <data name="TitleDeleteConfirmation" xml:space="preserve">
-    <value>Silmeyi onayla</value>
+    <value>Vahvista poistaminen</value>
   </data>
   <data name="DesktopPicture.Header" xml:space="preserve">
-    <value>Masaüstü fotoğrafı</value>
+    <value>Työpöydän kuva</value>
   </data>
   <data name="DisplayPauseRule.Header" xml:space="preserve">
-    <value>Durdurma Kuralı</value>
+    <value>Näytä keskeytyssääntö</value>
   </data>
   <data name="Documentation.Header" xml:space="preserve">
-    <value>Dokümantasyon</value>
+    <value>Dokumentaatio</value>
   </data>
   <data name="EnterUrl.Header" xml:space="preserve">
-    <value>URL girin</value>
+    <value>Kirjoita URL-osoite</value>
   </data>
   <data name="ExportLogs.Header" xml:space="preserve">
-    <value>Log Dosyası</value>
+    <value>Lokitiedosto</value>
   </data>
   <data name="TitleGeneral" xml:space="preserve">
-    <value>Genel</value>
+    <value>Yleinen</value>
   </data>
   <data name="GifPlayer.Header" xml:space="preserve">
-    <value>Gif Oynatıcı</value>
+    <value>Gif soitin</value>
   </data>
   <data name="Help.Label" xml:space="preserve">
-    <value>Yardım</value>
+    <value>Ohje</value>
   </data>
   <data name="TitleInteraction" xml:space="preserve">
-    <value>Etkileşim</value>
+    <value>Vuorovaikutus</value>
   </data>
   <data name="TitleLibrary" xml:space="preserve">
-    <value>Kütüphane</value>
+    <value>Kirjasto</value>
   </data>
   <data name="TitleLivelySetup" xml:space="preserve">
-    <value>Lively Kurulumu</value>
+    <value>Lively asetukset</value>
   </data>
   <data name="TitleLocation" xml:space="preserve">
-    <value>Konum</value>
+    <value>Sijainti</value>
   </data>
   <data name="LockscreenPicture.Header" xml:space="preserve">
-    <value>Kilit ekranı fotoğrafı</value>
+    <value>Lukitusnäytön kuva</value>
   </data>
   <data name="TitleMisc" xml:space="preserve">
-    <value>Çeşitli</value>
+    <value>Muut</value>
   </data>
   <data name="TitleMute" xml:space="preserve">
-    <value>Sustur</value>
+    <value>Mykistä</value>
   </data>
   <data name="PauseAlgorithm.Header" xml:space="preserve">
-    <value>Durdurma Algoritması</value>
+    <value>Tauko algoritmi</value>
   </data>
   <data name="TitlePerformance" xml:space="preserve">
-    <value>Performans</value>
+    <value>Suorituskyky</value>
   </data>
   <data name="TitlePlaylist" xml:space="preserve">
-    <value>Oynatma Listesi</value>
+    <value>Soittolista</value>
   </data>
   <data name="PleaseWait.Text" xml:space="preserve">
-    <value>Lütfen Bekleyin</value>
+    <value>Ole hyvä ja odota</value>
   </data>
   <data name="PowerSavingModePower.Header" xml:space="preserve">
-    <value>Pil koruma modundayken</value>
+    <value>Virransäästötilassa</value>
   </data>
   <data name="RemoteDesktopPower.Header" xml:space="preserve">
-    <value>Uzak masaüstü bağlantısı aktifken</value>
+    <value>Kun etätyöpöydällä</value>
   </data>
   <data name="ReportBug.Header" xml:space="preserve">
-    <value>Hata Bildir</value>
+    <value>Ilmoita viasta</value>
   </data>
   <data name="TitleScalingFit" xml:space="preserve">
-    <value>Ölçeklendirme/Sığdırma</value>
+    <value>Skaalaus</value>
   </data>
   <data name="ControlPanel.Title" xml:space="preserve">
-    <value>Kontrol Paneli</value>
+    <value>Ohjauspaneeli</value>
   </data>
   <data name="TitleScreensaver" xml:space="preserve">
-    <value>Kilit Ekranı</value>
+    <value>Näytönsäästäjä</value>
   </data>
   <data name="TitleScreensaverLockOnResume" xml:space="preserve">
-    <value>Ekran koruyucu devreye girdiğinde bilgisayarı kilitle</value>
+    <value>Jatkaessa, näytä kirjautumisruutu</value>
   </data>
   <data name="TitleSelectFile" xml:space="preserve">
-    <value>Dosya Seç</value>
+    <value>Valitse tiedosto</value>
   </data>
   <data name="TitleSettings" xml:space="preserve">
-    <value>Ayarlar</value>
+    <value>Asetukset</value>
   </data>
   <data name="TitleSkipConfirm" xml:space="preserve">
-    <value>Onaylamayı geç</value>
+    <value>Ohita Vahvistus</value>
   </data>
   <data name="SourceCode.Header" xml:space="preserve">
-    <value>Kaynak Kodu</value>
+    <value>Lähdekoodi</value>
   </data>
   <data name="Store.Header" xml:space="preserve">
-    <value>Market</value>
+    <value>Kauppa</value>
     <comment>For different version of Lively, example: Microsoft Store</comment>
   </data>
   <data name="StreamWallpaperVideoQuality.Header" xml:space="preserve">
-    <value>Yayın</value>
+    <value>Striimi</value>
   </data>
   <data name="StreamWallpaperDetect.Header" xml:space="preserve">
-    <value>Yayını algıla</value>
+    <value>Tunnista virrat</value>
   </data>
   <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
-    <value>Video Kalitesi</value>
+    <value>Videon laatu</value>
   </data>
   <data name="System.Header" xml:space="preserve">
-    <value>Sistem</value>
+    <value>Järjestelmä</value>
   </data>
   <data name="TaskbarTheme.Header" xml:space="preserve">
-    <value>Görev çubuğu teması</value>
+    <value>Tehtäväpalkin Teema</value>
   </data>
   <data name="TitleTileSize" xml:space="preserve">
-    <value>Kare Boyutu</value>
+    <value>Neliön koko</value>
   </data>
   <data name="TitleUIMode" xml:space="preserve">
-    <value>Kullanıcı Arayüzü</value>
+    <value>Käyttöliittymä</value>
   </data>
   <data name="TitleUpdates" xml:space="preserve">
-    <value>Güncellemeler</value>
+    <value>Päivitykset</value>
   </data>
   <data name="TitleVideo" xml:space="preserve">
     <value>Video</value>
   </data>
   <data name="VideoHardwareDecode.Header" xml:space="preserve">
-    <value>GPU Çözücü</value>
+    <value>GPU:n purku</value>
   </data>
   <data name="TitleWallpaper" xml:space="preserve">
-    <value>Duvar Kağıdı</value>
+    <value>Taustakuva</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">
-    <value>Duvar Kağıdı Dizini</value>
+    <value>Taustakuvan Hakemisto</value>
   </data>
   <data name="WallpaperDirMoveExisting.Content" xml:space="preserve">
-    <value>Mevcut duvar kağıtlarını başka bir klasöre taşı</value>
+    <value>Siirrä olemassa olevat taustakuvat uuteen kansioon</value>
   </data>
   <data name="WallpaperFit.Header" xml:space="preserve">
-    <value>Sığdırma Metodunu Seçin</value>
+    <value>Valitse sovitus</value>
   </data>
   <data name="WallpaperInput.Header" xml:space="preserve">
-    <value>Duvar Kağıdı girişi</value>
+    <value>Taustakuvan syöte</value>
   </data>
   <data name="WallpaperLayout.Header" xml:space="preserve">
-    <value>Yerleştirme Metodu</value>
+    <value>Sijoitusmenetelmä</value>
   </data>
   <data name="WallpaperPlaybackGroup.Header" xml:space="preserve">
-    <value>Oynatılan Duvar Kağıdı</value>
+    <value>Taustakuvan toisto</value>
   </data>
   <data name="TitleWarning" xml:space="preserve">
-    <value>Dikkat</value>
+    <value>Varoitus</value>
   </data>
   <data name="WebBrowser.Header" xml:space="preserve">
-    <value>Web Tarayıcısı</value>
+    <value>Verkkoselain</value>
   </data>
   <data name="WebBrowserDiskCache.Header" xml:space="preserve">
-    <value>Disk önbelleği</value>
+    <value>Levyn välimuisti</value>
   </data>
   <data name="TitleWebBrowserEngine" xml:space="preserve">
-    <value>Motor</value>
+    <value>Moottori</value>
   </data>
   <data name="TitleWebpageLoad" xml:space="preserve">
-    <value>Web sitesini yükle</value>
+    <value>Lataa Verkkosivu</value>
   </data>
   <data name="FastUI.Description" xml:space="preserve">
-    <value>Daha hızlı başlangıç için kullanıcı arayüzünü koru</value>
+    <value>Pidä käyttöliittymä käynnissä nopeuttaaksesi käynnistämistä</value>
   </data>
   <data name="FastUI.Header" xml:space="preserve">
-    <value>Hızlı Başlangıç</value>
+    <value>Fast startup</value>
   </data>
   <data name="WallpaperDirGroup.Header" xml:space="preserve">
-    <value>Dosya</value>
+    <value>Tiedosto</value>
   </data>
   <data name="AppThemeDark.Content" xml:space="preserve">
-    <value>Koyu</value>
+    <value>Tumma</value>
   </data>
   <data name="AppThemeLight.Content" xml:space="preserve">
-    <value>Açık</value>
+    <value>Vaalea</value>
   </data>
   <data name="AppThemeSystem.Content" xml:space="preserve">
-    <value>Sistem</value>
+    <value>Järjestelmä</value>
   </data>
   <data name="WindowsSettingsColor.Content" xml:space="preserve">
-    <value>Windows renk ayarları</value>
+    <value>Windowsin väriasetukset</value>
   </data>
   <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
-    <value>Dizüstü</value>
+    <value>Kannettava tietokone</value>
   </data>
   <data name="DeveloperGroup.Header" xml:space="preserve">
-    <value>Geliştirici</value>
+    <value>Kehittäjä</value>
   </data>
   <data name="AppearanceBehaviour.Header" xml:space="preserve">
-    <value>Görünüş &amp; davranışı</value>
+    <value>Ulkoasu &amp; käyttäytyminen</value>
   </data>
   <data name="ActiveWallpapers.Label" xml:space="preserve">
-    <value>Aktif Duvar Kağıtları</value>
+    <value>Aktiiviset Taustakuvat</value>
   </data>
   <data name="TitleGallery" xml:space="preserve">
-    <value>Galeri</value>
+    <value>Galleria</value>
   </data>
   <data name="AboutMe.Text" xml:space="preserve">
-    <value>Merhaba, benim adım Dani John, rocksdanister kullanıcı adıyla da tanınırım. Ücretsiz ve açık kaynaklı olan Lively duvar kağıdı uygulamasının geliştiricisiyim. Geliştirdiğim uygulamayı kullandığınız için teşekkür ederim.</value>
+    <value>Hei, olen Dani John tunnettuna myösnimellä rocksdanister. Olen kehittänyt Livelyn, ilmaisen ja avoimen lähdekoodin (FOSS) taustakuvasovelluksen. Kiitos siitä, että käytit aikkasi katsoaksesi työtäni.</value>
   </data>
   <data name="LicenseLink.Content" xml:space="preserve">
-    <value>Yazılım lisansı</value>
+    <value>Ohjelmistolisenssit</value>
   </data>
   <data name="AttributionLink.Content" xml:space="preserve">
-    <value>Üçüncü parti yazılım bilgisi</value>
+    <value>Kolmannen osapuolen ohjelmistoilmoitus</value>
   </data>
   <data name="PrivacyPolicyLink.Content" xml:space="preserve">
-    <value>Veri toplama politikası</value>
+    <value>Tietojen keruuta koskeva käytäntö</value>
   </data>
   <data name="AddWallpaperDrop.Text" xml:space="preserve">
-    <value>Duvar kağıdı ekle</value>
+    <value>Lisää taustakuva</value>
   </data>
   <data name="ComingSoon.Text" xml:space="preserve">
-    <value>Yakında</value>
+    <value>Tulossa pian</value>
   </data>
   <data name="AboutMenu.Text" xml:space="preserve">
-    <value>Hakkında</value>
+    <value>Tietoa</value>
   </data>
   <data name="SourceWebsite.Text" xml:space="preserve">
-    <value>Web Sayfası</value>
+    <value>Verkkosivusto</value>
   </data>
   <data name="TextOpen.Content" xml:space="preserve">
-    <value>Aç</value>
+    <value>Avaa</value>
   </data>
   <data name="TextSave.Content" xml:space="preserve">
-    <value>Kaydet</value>
+    <value>Tallenna</value>
   </data>
   <data name="UIMode.Description" xml:space="preserve">
-    <value>Kullanıcı arayüz efektleri ve animasyonları</value>
+    <value>Käyttöliittymän efektit ja animaatiot</value>
   </data>
   <data name="UIMode.Header" xml:space="preserve">
-    <value>Kullanıcı Arayüzü</value>
+    <value>Käyttöliittymä</value>
   </data>
   <data name="UIModeLite.Content" xml:space="preserve">
-    <value>Hafif</value>
+    <value>Kevyt</value>
   </data>
   <data name="UIModeNormal.Content" xml:space="preserve">
-    <value>Normal</value>
+    <value>Normaali</value>
   </data>
   <data name="Screensaver.Description" xml:space="preserve">
-    <value>Ekran koruyucunun bağlı ekran cihazlarına nasıl uygulanacağı</value>
+    <value>Kuinka taustakuvaa käytetään liitetyissä näyttölaitteissa</value>
   </data>
   <data name="Screensaver.Header" xml:space="preserve">
-    <value>Ekran koruyucu türü</value>
+    <value>Näytönsäästäjän tyyppi</value>
   </data>
   <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
-    <value>Ayrı olarak yapılandırılır</value>
+    <value>Määritelty erikseen</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
-    <value>Kullanılan duvar kağıdı ile aynı</value>
+    <value>Sama kuin käynnissä oleva taustakuva</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
-    <value>Eklenti gerekli</value>
+    <value>Lisäosa vaaditaan</value>
   </data>
   <data name="ScreensaverPluginMessage.Text" xml:space="preserve">
-    <value>Ekran koruyucuyu çalıştırmak için bir kez kurulum gereklidir</value>
+    <value>Näytönsäästäjän suorittaminen vaatii yhden kerran asennuksen</value>
   </data>
   <data name="WallpaperLayoutScreenPicker.Content" xml:space="preserve">
-    <value>Duvar kağıdı seçerken daima ekranı seç</value>
+    <value>Valitse näyttö aina kun valitset taustakuvan</value>
   </data>
   <data name="GalleryAccount.Text" xml:space="preserve">
-    <value>TÜRKÇE
-</value>
+    <value>Käyttäjä</value>
   </data>
   <data name="GalleryAccountDelete.Content" xml:space="preserve">
-    <value>Delete account</value>
+    <value>Poista tili</value>
   </data>
   <data name="GalleryAccountExport.Content" xml:space="preserve">
-    <value>Export data</value>
+    <value>Vie dataa</value>
   </data>
   <data name="GalleryAccountLogin.Content" xml:space="preserve">
-    <value>Log in</value>
+    <value>Kirjaudu sisään</value>
   </data>
   <data name="GalleryAccountLogout.Content" xml:space="preserve">
-    <value>Log out</value>
+    <value>Kirjaudu ulos</value>
   </data>
   <data name="GalleryPageCollection.Content" xml:space="preserve">
-    <value>Collection</value>
+    <value>Kokoelma</value>
   </data>
   <data name="GalleryPageHome.Content" xml:space="preserve">
-    <value>Home</value>
+    <value>Etusivu</value>
   </data>
   <data name="GalleryPageManage.Content" xml:space="preserve">
-    <value>Manage</value>
+    <value>Hallitse</value>
   </data>
   <data name="GalleryPageProfile.Content" xml:space="preserve">
-    <value>Profile</value>
+    <value>Profiili</value>
   </data>
   <data name="GalleryPleaseLogin.Text" xml:space="preserve">
-    <value>Please log in to continue</value>
+    <value>Kirjaudu sisään jatkaaksesi</value>
   </data>
   <data name="GalleryWelcomeMessage.Text" xml:space="preserve">
-    <value>Hi</value>
+    <value>Hei</value>
   </data>
   <data name="RestoreWallpaper.Text" xml:space="preserve">
-    <value>We found these wallpapers in your account</value>
+    <value>Löysimme nämä taustakuvat tililläsi</value>
   </data>
   <data name="TextDownloadNow.Content" xml:space="preserve">
-    <value>Download now</value>
+    <value>Lataa nyt</value>
   </data>
   <data name="TextMaybeLater.Content" xml:space="preserve">
-    <value>Maybe later</value>
+    <value>Ehkä myöhemmin</value>
   </data>
   <data name="TextSelectAll.Content" xml:space="preserve">
-    <value>Select all</value>
+    <value>Valitse kaikki</value>
   </data>
   <data name="TextSelectNone.Content" xml:space="preserve">
-    <value>Select none</value>
+    <value>Älä valitse mitäään</value>
   </data>
   <data name="TitleWelcomeback.Text" xml:space="preserve">
-    <value>Welcome back!</value>
+    <value>Tervetuloa takaisin!</value>
   </data>
   <data name="ReportWallpaper.Header" xml:space="preserve">
-    <value>Reasons</value>
+    <value>Syyt</value>
   </data>
   <data name="ReportWallpaperCopyright.Content" xml:space="preserve">
-    <value>Copyright violation</value>
+    <value>Tekijänoikeuden rikkominen</value>
   </data>
   <data name="ReportWallpaperMisleading.Content" xml:space="preserve">
-    <value>Misleading information</value>
+    <value>Harhaanjohtavat tiedot</value>
   </data>
   <data name="ReportWallpaperOther.Content" xml:space="preserve">
-    <value>Other</value>
+    <value>Muu</value>
   </data>
   <data name="ReportWallpaperSpam.Content" xml:space="preserve">
-    <value>Spam</value>
+    <value>Roskaposti</value>
   </data>
   <data name="ReportWallpaperViolence.Content" xml:space="preserve">
-    <value>Nudity or violence</value>
+    <value>Alastomuus tai väkivalta</value>
   </data>
   <data name="TextAdditionalNotes.Text" xml:space="preserve">
-    <value>Additional notes</value>
+    <value>Lisähuomautukset</value>
   </data>
   <data name="TextReportWallpaper.Text" xml:space="preserve">
-    <value>Report</value>
+    <value>Raportit</value>
   </data>
   <data name="TitleReportWallpaper.Text" xml:space="preserve">
-    <value>Report Wallpaper</value>
+    <value>Ilmoita Taustakuva</value>
   </data>
   <data name="Send.Content" xml:space="preserve">
-    <value>Send</value>
+    <value>Lähetä</value>
   </data>
   <data name="GalleryAccountDeleteConfirm.Text" xml:space="preserve">
-    <value>Please confirm this action as it CAN NOT be undone</value>
+    <value>Vahvista tämä toiminto, koska sitä EI voi perua</value>
   </data>
   <data name="GalleryAccountDeleteFail.Text" xml:space="preserve">
-    <value>Failed to delete account, please try again later</value>
+    <value>Tilin nimeä ei onnistuttu päivittämään, yritä myöhemmin uudelleen</value>
   </data>
   <data name="TextConfirmCancel.Text" xml:space="preserve">
-    <value>Do you want to cancel it?</value>
+    <value>Haluatko perua?</value>
   </data>
   <data name="TextWait.Text" xml:space="preserve">
-    <value>Wait</value>
+    <value>Odota</value>
   </data>
   <data name="TitleDownloadProgress.Text" xml:space="preserve">
-    <value>Download in Progress</value>
+    <value>Lataaminen käynnissä</value>
   </data>
   <data name="TextContributors.Text" xml:space="preserve">
-    <value>Contributors</value>
+    <value>Osallistu</value>
   </data>
   <data name="TextShare.Text" xml:space="preserve">
-    <value>Share</value>
+    <value>Jaa</value>
   </data>
   <data name="TitleShareWallpaper.Text" xml:space="preserve">
-    <value>Share Wallpaper</value>
+    <value>Jaa Taustakuva</value>
   </data>
   <data name="ExportWallpaperGallery.Text" xml:space="preserve">
-    <value>Gallery upload</value>
+    <value>Gallerian tuonti</value>
   </data>
   <data name="ExportWallpaperLink.Text" xml:space="preserve">
-    <value>Copy link</value>
+    <value>Kopioi linkki</value>
   </data>
   <data name="TextCustomiseWallpaper" xml:space="preserve">
-    <value>Duvar kağıdını özelleştir</value>
+    <value>Muokkaa Taustakuvaa</value>
   </data>
   <data name="TextCloseWallpapers" xml:space="preserve">
-    <value>Duvar Kağıtlarını kapat</value>
+    <value>Sulje Taustakuvat</value>
   </data>
   <data name="TitleChooseApplication.Text" xml:space="preserve">
-    <value>Choose Application</value>
+    <value>Valitse sovellus</value>
   </data>
   <data name="WallpaperInstallSize.Text" xml:space="preserve">
-    <value>Size</value>
+    <value>Koko</value>
   </data>
   <data name="PluginNotFound.Message" xml:space="preserve">
-    <value>Please install the required plugin</value>
+    <value>Asenna tarvittava liitännäinen</value>
   </data>
   <data name="PluginNotFound.Title" xml:space="preserve">
-    <value>Plugin not found</value>
+    <value>Liitännäistä ei löydy</value>
   </data>
 </root>

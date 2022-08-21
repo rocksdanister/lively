@@ -192,7 +192,7 @@ Prossiga apenas se confia na fonte do aplicativo.</value>
     <value>Pressione para iniciar a gravação</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
-    <value>Restaurando o(s) plano(s) de fundo anteriore(s), por favor aguarde...</value>
+    <value>Restaurando o(s) plano(s) de fundo anterior(es), por favor aguarde...</value>
   </data>
   <data name="DescriptionScreenLayout" xml:space="preserve">
     <value>Escolha a tela</value>
@@ -1138,9 +1138,9 @@ O Edge é a webview embutida do Windows 10.</value>
     <value>Tamanho</value>
   </data>
   <data name="PluginNotFound.Message" xml:space="preserve">
-    <value>Please install the required plugin</value>
+    <value>Por favor, instale o plugin necessário</value>
   </data>
   <data name="PluginNotFound.Title" xml:space="preserve">
-    <value>Plugin not found</value>
+    <value>Plugin não encontrado</value>
   </data>
 </root>

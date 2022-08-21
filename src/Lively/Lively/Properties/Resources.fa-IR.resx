@@ -130,10 +130,10 @@
     <value>صدا</value>
   </data>
   <data name="CommunityPage.Content" xml:space="preserve">
-    <value>Online discussion forum</value>
+    <value>انجمن گفتگوی آنلاین</value>
   </data>
   <data name="DocumentationPage.Content" xml:space="preserve">
-    <value>API documentation and help</value>
+    <value>مستندات و راهنمای API</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
     <value>Lively has encountered a fatal error.
@@ -144,7 +144,7 @@ Windows Explorer restarted twice in the last 30 seconds! This may be a conflict 
     <value>Incompatible program found, taskbar theming disabled.</value>
   </data>
   <data name="OfficialWebpage.Content" xml:space="preserve">
-    <value>Official webpage of Lively Wallpaper</value>
+    <value>وبسایت رسمی Lively Wallpaper</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
     <value>Most modern LCD and LED displays do not suffer from burn-in issue and therefore any wallpaper can be used as screensaver.
@@ -154,7 +154,7 @@ For OLED, Plasma or CRT displays which are susceptibe to burn-in it is advised t
 The main purpose of Lively's screensavers is to add another layer of customization to your pc, use screensavers as burn-in protection at your own risk!</value>
   </data>
   <data name="ReportBugPage.Content" xml:space="preserve">
-    <value>Report a problem with the software</value>
+    <value>گزارش مشکل درباره نرم‌افزار</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
     <value>یک فایل یا آدرس وبسایت انتخاب کنید تا پس زمینه تنظیم شود.</value>
@@ -301,7 +301,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>لغو</value>
   </data>
   <data name="TextChangeWallpaper" xml:space="preserve">
-    <value>Change Wallpapers</value>
+    <value>تغییر پس زمینه</value>
   </data>
   <data name="TextClose" xml:space="preserve">
     <value>بستن</value>
@@ -369,7 +369,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextGo" xml:space="preserve">
     <value>برو</value>
   </data>
-  <data name="TextHelpTranslate" xml:space="preserve">
+  <data name="TextHelpTranslate.Title" xml:space="preserve">
     <value>به ترجمه لايولي کمک کنيد.</value>
   </data>
   <data name="TextHours" xml:space="preserve">
@@ -382,10 +382,10 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>کيبورد</value>
   </data>
   <data name="TextLastChecked" xml:space="preserve">
-    <value>Last checked</value>
+    <value>آخرین بازدید</value>
   </data>
-  <data name="TextLearnMore" xml:space="preserve">
-    <value>Learn more</value>
+  <data name="TextLearnMore.Text" xml:space="preserve">
+    <value>بیشتر بدانید</value>
   </data>
   <data name="License.Header" xml:space="preserve">
     <value>جواز</value>
@@ -502,19 +502,19 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>برچسب ها</value>
   </data>
   <data name="TaskbarThemeBlur.Content" xml:space="preserve">
-    <value>Blur</value>
+    <value>تاری</value>
   </data>
   <data name="TaskbarThemeClear.Content" xml:space="preserve">
-    <value>Clear</value>
+    <value>پاک سازی</value>
   </data>
   <data name="TaskbarThemeColor.Content" xml:space="preserve">
-    <value>Color</value>
+    <value>رنگ</value>
   </data>
   <data name="TaskbarThemeFluent.Content" xml:space="preserve">
-    <value>Fluent</value>
+    <value>مسلط</value>
   </data>
   <data name="TaskbarThemeWallpaper.Content" xml:space="preserve">
-    <value>Wallpaper</value>
+    <value>پس زمینه</value>
   </data>
   <data name="TaskbarThemeWallpaperFluent.Content" xml:space="preserve">
     <value>Wallpaper Fluent</value>
@@ -743,7 +743,7 @@ Edge is the built in webview of windows 10.</value>
     <value>درگاه اشکال زدایی</value>
   </data>
   <data name="TitleChangelog" xml:space="preserve">
-    <value>Changelog</value>
+    <value>تغییرات</value>
   </data>
   <data name="Community.Header" xml:space="preserve">
     <value>انجمن</value>
@@ -764,7 +764,7 @@ Edge is the built in webview of windows 10.</value>
     <value>مدارک (اطلاعات بيشتر)</value>
   </data>
   <data name="EnterUrl.Header" xml:space="preserve">
-    <value>Enter URL</value>
+    <value>لینک را وارد کنید</value>
   </data>
   <data name="ExportLogs.Header" xml:space="preserve">
     <value>فایل گذارش</value>
@@ -812,13 +812,13 @@ Edge is the built in webview of windows 10.</value>
     <value>لطفا صبر کنید</value>
   </data>
   <data name="PowerSavingModePower.Header" xml:space="preserve">
-    <value>When on Battery Saver</value>
+    <value>وقتی که بهینه‌ساز باتری فعال است</value>
   </data>
   <data name="RemoteDesktopPower.Header" xml:space="preserve">
     <value>When on Remote Desktop</value>
   </data>
   <data name="ReportBug.Header" xml:space="preserve">
-    <value>Report Bug</value>
+    <value>گزارش اشکال</value>
   </data>
   <data name="TitleScalingFit" xml:space="preserve">
     <value>مقیاس/پر کردن</value>
@@ -842,7 +842,7 @@ Edge is the built in webview of windows 10.</value>
     <value>رد کردن تاییدیه</value>
   </data>
   <data name="SourceCode.Header" xml:space="preserve">
-    <value>Source Code</value>
+    <value>کد منبع</value>
   </data>
   <data name="Store.Header" xml:space="preserve">
     <value>فروشگاه</value>
@@ -858,7 +858,7 @@ Edge is the built in webview of windows 10.</value>
     <value>کیفیت ویدیو</value>
   </data>
   <data name="System.Header" xml:space="preserve">
-    <value>System</value>
+    <value>سیستم</value>
   </data>
   <data name="TaskbarTheme.Header" xml:space="preserve">
     <value>Taskbar Theme</value>
@@ -870,7 +870,7 @@ Edge is the built in webview of windows 10.</value>
     <value>رابط کاربر</value>
   </data>
   <data name="TitleUpdates" xml:space="preserve">
-    <value>Updates</value>
+    <value>به‌روزرسانی‌ها</value>
   </data>
   <data name="TitleVideo" xml:space="preserve">
     <value>ویدیو</value>
@@ -921,40 +921,40 @@ Edge is the built in webview of windows 10.</value>
     <value>Fast startup</value>
   </data>
   <data name="WallpaperDirGroup.Header" xml:space="preserve">
-    <value>File</value>
+    <value>فایل</value>
   </data>
   <data name="AppThemeDark.Content" xml:space="preserve">
-    <value>Dark</value>
+    <value>تیره</value>
   </data>
   <data name="AppThemeLight.Content" xml:space="preserve">
-    <value>Light</value>
+    <value>روشن</value>
   </data>
   <data name="AppThemeSystem.Content" xml:space="preserve">
-    <value>System</value>
+    <value>سیستم</value>
   </data>
   <data name="WindowsSettingsColor.Content" xml:space="preserve">
-    <value>Windows color settings</value>
+    <value>تنظیمات رنگ ویندوز</value>
   </data>
   <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
-    <value>Laptops</value>
+    <value>لپ‌تاپ</value>
   </data>
   <data name="DeveloperGroup.Header" xml:space="preserve">
-    <value>Developer</value>
+    <value>توسعه‌دهنده</value>
   </data>
   <data name="AppearanceBehaviour.Header" xml:space="preserve">
-    <value>Appearance &amp; behavior</value>
+    <value>ظاهر و رفتار</value>
   </data>
   <data name="ActiveWallpapers.Label" xml:space="preserve">
-    <value>Active Wallpaper(s)</value>
+    <value>والپیپر های فعال</value>
   </data>
   <data name="TitleGallery" xml:space="preserve">
-    <value>Gallery</value>
+    <value>گالری</value>
   </data>
   <data name="AboutMe.Text" xml:space="preserve">
-    <value>Hi, I'm Dani John also known as rocksdanister. I developed Lively a Free and open-source (FOSS) wallpaper application. Thanks for taking the time to look at my work.</value>
+    <value>سلام من Dani John هستم معروف به rocksdanister. من لایولی رو توسعه دادم، یه برنامه رایگان و منبع باز برای والپیپر. ممنونم از اینکه کار من دیدن کردین.</value>
   </data>
   <data name="LicenseLink.Content" xml:space="preserve">
-    <value>Software license</value>
+    <value>گواهی نامه نرم افزار</value>
   </data>
   <data name="AttributionLink.Content" xml:space="preserve">
     <value>Third party software notice</value>
@@ -963,10 +963,10 @@ Edge is the built in webview of windows 10.</value>
     <value>Data collection policy</value>
   </data>
   <data name="AddWallpaperDrop.Text" xml:space="preserve">
-    <value>Add wallpaper</value>
+    <value>اضافه کردن پس زمینه</value>
   </data>
   <data name="ComingSoon.Text" xml:space="preserve">
-    <value>Coming soon</value>
+    <value>به زودی</value>
   </data>
   <data name="AboutMenu.Text" xml:space="preserve">
     <value>درباره برنامه</value>
@@ -975,22 +975,22 @@ Edge is the built in webview of windows 10.</value>
     <value>وبسایت</value>
   </data>
   <data name="TextOpen.Content" xml:space="preserve">
-    <value>Open</value>
+    <value>باز کردن</value>
   </data>
   <data name="TextSave.Content" xml:space="preserve">
-    <value>Save</value>
+    <value>ذخیره</value>
   </data>
   <data name="UIMode.Description" xml:space="preserve">
-    <value>User interface effects and animations</value>
+    <value>جلوه ظاهری رابط کاربری و انیمیشن ها</value>
   </data>
   <data name="UIMode.Header" xml:space="preserve">
-    <value>User interface</value>
+    <value>رابط کاربری</value>
   </data>
   <data name="UIModeLite.Content" xml:space="preserve">
-    <value>Lite</value>
+    <value>سبک</value>
   </data>
   <data name="UIModeNormal.Content" xml:space="preserve">
-    <value>Normal</value>
+    <value>عادی</value>
   </data>
   <data name="Screensaver.Description" xml:space="preserve">
     <value>How screensaver is applied to connected to display devices</value>
@@ -999,13 +999,13 @@ Edge is the built in webview of windows 10.</value>
     <value>Type of screensaver</value>
   </data>
   <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
-    <value>Configured separately</value>
+    <value>جدا تنظیم شده</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
     <value>Same as running wallpaper</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
-    <value>Plugin required</value>
+    <value>پلاگین لازم است</value>
   </data>
   <data name="ScreensaverPluginMessage.Text" xml:space="preserve">
     <value>One time setup is required to run screensaver</value>
@@ -1014,120 +1014,132 @@ Edge is the built in webview of windows 10.</value>
     <value>Always pick screen when choosing wallpaper</value>
   </data>
   <data name="GalleryAccount.Text" xml:space="preserve">
-    <value>Account</value>
+    <value>حساب کاربری</value>
   </data>
   <data name="GalleryAccountDelete.Content" xml:space="preserve">
-    <value>Delete account</value>
+    <value>حذف حساب</value>
   </data>
   <data name="GalleryAccountExport.Content" xml:space="preserve">
-    <value>Export data</value>
+    <value>استخراج داده</value>
   </data>
   <data name="GalleryAccountLogin.Content" xml:space="preserve">
-    <value>Log in</value>
+    <value>ورود به حساب</value>
   </data>
   <data name="GalleryAccountLogout.Content" xml:space="preserve">
-    <value>Log out</value>
+    <value>خروج از حساب</value>
   </data>
   <data name="GalleryPageCollection.Content" xml:space="preserve">
-    <value>Collection</value>
+    <value>مجموعه</value>
   </data>
   <data name="GalleryPageHome.Content" xml:space="preserve">
-    <value>Home</value>
+    <value>خانه</value>
   </data>
   <data name="GalleryPageManage.Content" xml:space="preserve">
-    <value>Manage</value>
+    <value>مدیریت</value>
   </data>
   <data name="GalleryPageProfile.Content" xml:space="preserve">
-    <value>Profile</value>
+    <value>پروفایل</value>
   </data>
   <data name="GalleryPleaseLogin.Text" xml:space="preserve">
-    <value>Please log in to continue</value>
+    <value>لطفا برای ادامه وارد سیستم شوید</value>
   </data>
   <data name="GalleryWelcomeMessage.Text" xml:space="preserve">
-    <value>Hi</value>
+    <value>سلام</value>
   </data>
   <data name="RestoreWallpaper.Text" xml:space="preserve">
-    <value>We found these wallpapers in your account</value>
+    <value>ما این تصویر زمینه ها را از حساب شما پیدا کردیم</value>
   </data>
   <data name="TextDownloadNow.Content" xml:space="preserve">
-    <value>Download now</value>
+    <value>هم اکنون دانلود کنید</value>
   </data>
   <data name="TextMaybeLater.Content" xml:space="preserve">
-    <value>Maybe later</value>
+    <value>شاید بعدا</value>
   </data>
   <data name="TextSelectAll.Content" xml:space="preserve">
-    <value>Select all</value>
+    <value>انتخاب همه</value>
   </data>
   <data name="TextSelectNone.Content" xml:space="preserve">
-    <value>Select none</value>
+    <value>انتخاب هیچ‌کدام</value>
   </data>
   <data name="TitleWelcomeback.Text" xml:space="preserve">
-    <value>Welcome back!</value>
+    <value>خوش آمدید!</value>
   </data>
   <data name="ReportWallpaper.Header" xml:space="preserve">
-    <value>Reasons</value>
+    <value>دلایل</value>
   </data>
   <data name="ReportWallpaperCopyright.Content" xml:space="preserve">
-    <value>Copyright violation</value>
+    <value>نقض حق تکثیر</value>
   </data>
   <data name="ReportWallpaperMisleading.Content" xml:space="preserve">
-    <value>Misleading information</value>
+    <value>اطلاعات گمراه کننده</value>
   </data>
   <data name="ReportWallpaperOther.Content" xml:space="preserve">
-    <value>Other</value>
+    <value>دیگر</value>
   </data>
   <data name="ReportWallpaperSpam.Content" xml:space="preserve">
-    <value>Spam</value>
+    <value>هرزنامه</value>
   </data>
   <data name="ReportWallpaperViolence.Content" xml:space="preserve">
-    <value>Nudity or violence</value>
+    <value>برهنگی یا خشونت</value>
   </data>
   <data name="TextAdditionalNotes.Text" xml:space="preserve">
-    <value>Additional notes</value>
+    <value>یادداشت های اضافه</value>
   </data>
   <data name="TextReportWallpaper.Text" xml:space="preserve">
-    <value>Report</value>
+    <value>گزارش</value>
   </data>
   <data name="TitleReportWallpaper.Text" xml:space="preserve">
-    <value>Report Wallpaper</value>
+    <value>گزارش والپیپر</value>
   </data>
   <data name="Send.Content" xml:space="preserve">
-    <value>Send</value>
+    <value>ارسال</value>
   </data>
   <data name="GalleryAccountDeleteConfirm.Text" xml:space="preserve">
-    <value>Please confirm this action as it CAN NOT be undone</value>
+    <value>لطفا این عمل رو تایید کنید زیرا امکان برگرداندن آن وجود ندارد</value>
   </data>
   <data name="GalleryAccountDeleteFail.Text" xml:space="preserve">
-    <value>Failed to delete account, please try again later</value>
+    <value>حذف حساب کاربری ناموفق بود، لطفا دوباره امتحان کنید</value>
   </data>
   <data name="TextConfirmCancel.Text" xml:space="preserve">
-    <value>Do you want to cancel it?</value>
+    <value>کنسل میکنید؟</value>
   </data>
   <data name="TextWait.Text" xml:space="preserve">
-    <value>Wait</value>
+    <value>صبر کردن</value>
   </data>
   <data name="TitleDownloadProgress.Text" xml:space="preserve">
-    <value>Download in Progress</value>
+    <value>دانلود در حال انجام است</value>
   </data>
   <data name="TextContributors.Text" xml:space="preserve">
-    <value>Contributors</value>
+    <value>مشارکت کنندگان</value>
   </data>
   <data name="TextShare.Text" xml:space="preserve">
-    <value>Share</value>
+    <value>اشتراک‌گذاری</value>
   </data>
   <data name="TitleShareWallpaper.Text" xml:space="preserve">
-    <value>Share Wallpaper</value>
+    <value>به اشتراک گذاری والپیپر</value>
   </data>
   <data name="ExportWallpaperGallery.Text" xml:space="preserve">
-    <value>Gallery upload</value>
+    <value>آپلود به گالری</value>
   </data>
   <data name="ExportWallpaperLink.Text" xml:space="preserve">
-    <value>Copy link</value>
+    <value>کپی کردن لینک</value>
   </data>
   <data name="TextCustomiseWallpaper" xml:space="preserve">
     <value>شخصي سازي کاغذ ديواري</value>
   </data>
   <data name="TextCloseWallpapers" xml:space="preserve">
     <value>بستن کاغذ ديواري ها</value>
+  </data>
+  <data name="TitleChooseApplication.Text" xml:space="preserve">
+    <value>انتخاب برنامه‌</value>
+  </data>
+  <data name="WallpaperInstallSize.Text" xml:space="preserve">
+    <value>اندازه‌</value>
+  </data>
+  <data name="PluginNotFound.Message" xml:space="preserve">
+    <value>Please install the required plugin</value>
+  </data>
+  <data name="PluginNotFound.Title" xml:space="preserve">
+    <value>Plugin not found</value>
   </data>
 </root>
