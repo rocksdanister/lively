@@ -1133,15 +1133,15 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
     <value>Tutup Wallpaper</value>
   </data>
   <data name="TitleChooseApplication.Text" xml:space="preserve">
-    <value>Choose Application</value>
+    <value>Pilih Aplikasi</value>
   </data>
   <data name="WallpaperInstallSize.Text" xml:space="preserve">
-    <value>Size</value>
+    <value>Saiz</value>
   </data>
   <data name="PluginNotFound.Message" xml:space="preserve">
-    <value>Please install the required plugin</value>
+    <value>Sila pasang plugin yang diperlukan</value>
   </data>
   <data name="PluginNotFound.Title" xml:space="preserve">
-    <value>Plugin not found</value>
+    <value>Plugin gagal dijumpai</value>
   </data>
 </root>

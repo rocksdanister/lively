@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AudioFocused.Content" xml:space="preserve">
-    <value>Odtwarzaj dźwięk tylko po skupieniu na pulpicie</value>
+    <value>Odtwarzaj dźwięk tylko jeśli pulpit ma fokus</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
-    <value>Głośność dla wszystkich teł</value>
+    <value>Głośność dla wszystkich tapet</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
     <value>Głośność</value>
@@ -183,7 +183,7 @@ Kontunuuj, tylko jeśli aplikacja pochodzi z zaufanego źródła.</value>
     <value>Jestem w zasobniku systemowym, kliknij prawym lively po więcej opcji.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
-    <value>Uruchom ponownie Lively aby zastosować ustawienia.</value>
+    <value>Uruchom ponownie Lively aby zastosować ustawienia</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
     <value>Zatrzymaj się proszę zanim przejdziesz dalej.</value>
@@ -275,7 +275,7 @@ Jeśli ciągle nie działa,  uruchom ponownie Lively / system Windows.
     <value> Lively musi być uruchomiony w tle, aby móc odtwarzać tapety.</value>
   </data>
   <data name="Startup.Header" xml:space="preserve">
-    <value>Uruchom podczas startu systemu Windows</value>
+    <value>Uruchom przy starcie systemu</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
     <value>Dodaj</value>
@@ -290,7 +290,7 @@ Jeśli ciągle nie działa,  uruchom ponownie Lively / system Windows.
     <value>Kontrybucje</value>
   </data>
   <data name="Author.Text" xml:space="preserve">
-    <value>Autor:</value>
+    <value>Autor</value>
   </data>
   <data name="TextBack" xml:space="preserve">
     <value>Wstecz</value>
@@ -370,7 +370,7 @@ Jeśli ciągle nie działa,  uruchom ponownie Lively / system Windows.
   <data name="TextGo" xml:space="preserve">
     <value>START</value>
   </data>
-  <data name="TextHelpTranslate" xml:space="preserve">
+  <data name="TextHelpTranslate.Title" xml:space="preserve">
     <value>Pomóż tłumaczyć Lively.</value>
   </data>
   <data name="TextHours" xml:space="preserve">
@@ -385,7 +385,7 @@ Jeśli ciągle nie działa,  uruchom ponownie Lively / system Windows.
   <data name="TextLastChecked" xml:space="preserve">
     <value>Ostatnio sprawdzane</value>
   </data>
-  <data name="TextLearnMore" xml:space="preserve">
+  <data name="TextLearnMore.Text" xml:space="preserve">
     <value>Dowiedz się więcej</value>
   </data>
   <data name="License.Header" xml:space="preserve">
@@ -1126,9 +1126,21 @@ Edge jest przeglądarką wbudowaną w windows 10.</value>
     <value>Kopiuj odnośnik</value>
   </data>
   <data name="TextCustomiseWallpaper" xml:space="preserve">
-    <value>Dostosuj tapetę</value>
+    <value>Dostosuj tło pulpitu</value>
   </data>
   <data name="TextCloseWallpapers" xml:space="preserve">
-    <value>Zamknij tapetę</value>
+    <value>Zamknij tła pulpitu</value>
+  </data>
+  <data name="TitleChooseApplication.Text" xml:space="preserve">
+    <value>Wybierz aplikację</value>
+  </data>
+  <data name="WallpaperInstallSize.Text" xml:space="preserve">
+    <value>Rozmiar</value>
+  </data>
+  <data name="PluginNotFound.Message" xml:space="preserve">
+    <value>Należy zainstalować wymaganą wtyczkę</value>
+  </data>
+  <data name="PluginNotFound.Title" xml:space="preserve">
+    <value>Nie znaleziono wtyczki</value>
   </data>
 </root>

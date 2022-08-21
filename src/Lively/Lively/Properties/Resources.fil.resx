@@ -127,13 +127,13 @@
     <value>Master Volume</value>
   </data>
   <data name="AudioGroup.Header" xml:space="preserve">
-    <value>Audio</value>
+    <value>Tunog</value>
   </data>
   <data name="CommunityPage.Content" xml:space="preserve">
     <value>Online discussion forum</value>
   </data>
   <data name="DocumentationPage.Content" xml:space="preserve">
-    <value>API documentation and help</value>
+    <value>API documentaion at tulong</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
     <value>Lively has encountered a fatal error.
@@ -144,7 +144,7 @@ Windows Explorer restarted twice in the last 30 seconds! This may be a conflict 
     <value>Incompatible program found, taskbar theming disabled.</value>
   </data>
   <data name="OfficialWebpage.Content" xml:space="preserve">
-    <value>Official webpage of Lively Wallpaper</value>
+    <value>Opisyal webpage ng Lively Wallpaper</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
     <value>Most modern LCD and LED displays do not suffer from burn-in issue and therefore any wallpaper can be used as screensaver.
@@ -154,7 +154,7 @@ For OLED, Plasma or CRT displays which are susceptibe to burn-in it is advised t
 The main purpose of Lively's screensavers is to add another layer of customization to your pc, use screensavers as burn-in protection at your own risk!</value>
   </data>
   <data name="ReportBugPage.Content" xml:space="preserve">
-    <value>Report a problem with the software</value>
+    <value>I-report ang problema sa software</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
     <value>Select a file or specify a website url to set as a wallpaper.</value>
@@ -169,7 +169,7 @@ The main purpose of Lively's screensavers is to add another layer of customizati
     <value>Sigurado ka bang nais mong permanenteng tanggalin ang wallpaper mula sa disk?</value>
   </data>
   <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
-    <value>Are you sure you want to delete this wallpaper from the Library?</value>
+    <value>Sigurado ka bang nais mong permanenteng tanggalin ang wallpaper mula sa disk?</value>
   </data>
   <data name="DragDropFile.Text" xml:space="preserve">
     <value>I-drag lamang at i-drop ang mga file sa Library.</value>
@@ -193,7 +193,7 @@ The main purpose of Lively's screensavers is to add another layer of customizati
     <value>Kasalukuyang ibinabalik ang nakaraang mga wallpaper, magyayaring maghintay...</value>
   </data>
   <data name="DescriptionScreenLayout" xml:space="preserve">
-    <value>Choose Display</value>
+    <value>Mamili ng Display</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
     <value>May isang bagong bersyon ng sofware ay magagamit!</value>
@@ -208,7 +208,7 @@ The main purpose of Lively's screensavers is to add another layer of customizati
     <value>Your Windows N/KN version will require the download of additional codecs to support video playback in wallpapers.</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
-    <value>Show support by buying the developer coffee</value>
+    <value>Magpakita ng suporta sa developer sa pagbili ng Kape sa kanya</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
     <value>You are about to change to beta (developer) build of Lively.
@@ -224,7 +224,7 @@ Updates will be frequent and may contain bugs!</value>
     <value>Ang lively ay mai-restart upang ilapat ang bagong wika.</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
-    <value>Language</value>
+    <value>Wika</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
     <value>Nabigong i-update; subukang i-download ang installer mula sa:
@@ -280,10 +280,10 @@ Pag hindi pa gumagana, close &amp; buksan ulit ang Lively/ restart windows.
     <value>Idagdag</value>
   </data>
   <data name="TextAllFiles" xml:space="preserve">
-    <value>All Files</value>
+    <value>Lahat ang Files</value>
   </data>
   <data name="Application.Header" xml:space="preserve">
-    <value>Application</value>
+    <value>Aplikasyon</value>
   </data>
   <data name="Attribution.Header" xml:space="preserve">
     <value>Pagkilala</value>
@@ -295,16 +295,16 @@ Pag hindi pa gumagana, close &amp; buksan ulit ang Lively/ restart windows.
     <value>Balik</value>
   </data>
   <data name="TextBrowse" xml:space="preserve">
-    <value>Browse</value>
+    <value>Maghanap</value>
   </data>
   <data name="Cancel.Content" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Kanselahin</value>
   </data>
   <data name="TextChangeWallpaper" xml:space="preserve">
-    <value>Change Wallpapers</value>
+    <value>Palitan ang wallpaper</value>
   </data>
   <data name="TextClose" xml:space="preserve">
-    <value>Close</value>
+    <value>Isarado</value>
   </data>
   <data name="CloseWallpapers.Label" xml:space="preserve">
     <value>Isarado ang Wallpapers</value>
@@ -319,10 +319,10 @@ Pag hindi pa gumagana, close &amp; buksan ulit ang Lively/ restart windows.
     <value>I-convert sa Video</value>
   </data>
   <data name="TextCreatePreview" xml:space="preserve">
-    <value>Create Preview</value>
+    <value>Gumawa ng Preview</value>
   </data>
   <data name="Customise.Text" xml:space="preserve">
-    <value>Customise</value>
+    <value>I-customise ang Wallpaper</value>
   </data>
   <data name="CustomiseWallpaper.Label" xml:space="preserve">
     <value>I-customise ang Wallpaper</value>
@@ -340,61 +340,61 @@ Pag hindi pa gumagana, close &amp; buksan ulit ang Lively/ restart windows.
     <value>Bawat Screen</value>
   </data>
   <data name="TextDownload" xml:space="preserve">
-    <value>Download</value>
+    <value>I-download</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
-    <value>Edit</value>
+    <value>I-Edit</value>
   </data>
   <data name="TextError" xml:space="preserve">
     <value>Error</value>
   </data>
   <data name="TextExit" xml:space="preserve">
-    <value>Exit</value>
+    <value>I-sara</value>
   </data>
   <data name="ExportWallpaperZip.Text" xml:space="preserve">
-    <value>Save to file</value>
+    <value>I-save sa file</value>
   </data>
   <data name="TextFeatureMissing" xml:space="preserve">
     <value>Some features are not available in this version of Lively.</value>
   </data>
   <data name="TextFileNotFound" xml:space="preserve">
-    <value>File not found</value>
+    <value>Hindi makita ang file</value>
   </data>
   <data name="TextGIF" xml:space="preserve">
     <value>Animated GIF</value>
   </data>
   <data name="GitHubStar.Content" xml:space="preserve">
-    <value>Show some love by dropping a star</value>
+    <value>Magpakita ka ng mahal sa pag hulog ng bituin</value>
   </data>
   <data name="TextGo" xml:space="preserve">
     <value>GO</value>
   </data>
-  <data name="TextHelpTranslate" xml:space="preserve">
+  <data name="TextHelpTranslate.Title" xml:space="preserve">
     <value>Help translate Lively.</value>
   </data>
   <data name="TextHours" xml:space="preserve">
     <value>hours</value>
   </data>
   <data name="TextInstall" xml:space="preserve">
-    <value>Install</value>
+    <value>I-install</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
     <value>Keyboard</value>
   </data>
   <data name="TextLastChecked" xml:space="preserve">
-    <value>Last checked</value>
+    <value>Huling pagsusuri</value>
   </data>
-  <data name="TextLearnMore" xml:space="preserve">
-    <value>Learn more</value>
+  <data name="TextLearnMore.Text" xml:space="preserve">
+    <value>Higit pang matuto</value>
   </data>
   <data name="License.Header" xml:space="preserve">
-    <value>License</value>
+    <value>Lisensya</value>
   </data>
   <data name="TextMinutes" xml:space="preserve">
     <value>minutes</value>
   </data>
   <data name="TextmoreInfo" xml:space="preserve">
-    <value>Information</value>
+    <value>Impormasyon</value>
   </data>
   <data name="TextMoreWallpapers" xml:space="preserve">
     <value>Marami pang mga Wallpaper</value>
@@ -415,7 +415,7 @@ Pag hindi pa gumagana, close &amp; buksan ulit ang Lively/ restart windows.
     <value>OFF</value>
   </data>
   <data name="TextOK" xml:space="preserve">
-    <value>OK</value>
+    <value>Ok</value>
   </data>
   <data name="TextOn.Content" xml:space="preserve">
     <value>ON</value>
@@ -448,16 +448,16 @@ Pag hindi pa gumagana, close &amp; buksan ulit ang Lively/ restart windows.
     <value>Huminto</value>
   </data>
   <data name="TextPicture" xml:space="preserve">
-    <value>Picture</value>
+    <value>Pictura</value>
   </data>
   <data name="PreviewWallpaper.Text" xml:space="preserve">
     <value>Preview Wallpaper</value>
   </data>
   <data name="PrivacyPolicy.Header" xml:space="preserve">
-    <value>Privacy Policy</value>
+    <value>Patakaran sa Pagkapribado</value>
   </data>
   <data name="TextProcessingWallpaper" xml:space="preserve">
-    <value>Processing</value>
+    <value>Pinoproseso</value>
   </data>
   <data name="TextRemove" xml:space="preserve">
     <value>Alisin</value>
@@ -469,7 +469,7 @@ Pag hindi pa gumagana, close &amp; buksan ulit ang Lively/ restart windows.
     <value>Screen</value>
   </data>
   <data name="TextSearch" xml:space="preserve">
-    <value>Search</value>
+    <value>Maghanap</value>
   </data>
   <data name="SetWallpaper.Text" xml:space="preserve">
     <value>Itakda bilang wallpaper</value>
@@ -487,10 +487,10 @@ Pag hindi pa gumagana, close &amp; buksan ulit ang Lively/ restart windows.
     <value>Maghinto</value>
   </data>
   <data name="StoreReview.Content" xml:space="preserve">
-    <value>Do you enjoy using Lively? Leave a review :)</value>
+    <value>Nasisiyahan ka ba sa paggamit ng Lively? Mag-iwan ng review :)</value>
   </data>
   <data name="TextSupport.Content" xml:space="preserve">
-    <value>Support</value>
+    <value>Suporta</value>
   </data>
   <data name="TextSwitchBranchDev" xml:space="preserve">
     <value>Switch to beta (Dev channel)</value>
@@ -499,22 +499,22 @@ Pag hindi pa gumagana, close &amp; buksan ulit ang Lively/ restart windows.
     <value>Switch to stable (Default channel)</value>
   </data>
   <data name="TextTags" xml:space="preserve">
-    <value>Tags</value>
+    <value>Mga tags</value>
   </data>
   <data name="TaskbarThemeBlur.Content" xml:space="preserve">
-    <value>Blur</value>
+    <value>Labo</value>
   </data>
   <data name="TaskbarThemeClear.Content" xml:space="preserve">
-    <value>Clear</value>
+    <value>Malinaw</value>
   </data>
   <data name="TaskbarThemeColor.Content" xml:space="preserve">
-    <value>Color</value>
+    <value>Kulay</value>
   </data>
   <data name="TaskbarThemeFluent.Content" xml:space="preserve">
     <value>Fluent</value>
   </data>
   <data name="TaskbarThemeWallpaper.Content" xml:space="preserve">
-    <value>Wallpaper</value>
+    <value>Wolpeyper</value>
   </data>
   <data name="TaskbarThemeWallpaperFluent.Content" xml:space="preserve">
     <value>Wallpaper Fluent</value>
@@ -523,13 +523,13 @@ Pag hindi pa gumagana, close &amp; buksan ulit ang Lively/ restart windows.
     <value>Malaki</value>
   </data>
   <data name="TextTileSizeNormal" xml:space="preserve">
-    <value>Normal</value>
+    <value>Karaniwan</value>
   </data>
   <data name="TextTileSizeSmall" xml:space="preserve">
     <value>Maliit</value>
   </data>
   <data name="Title.Text" xml:space="preserve">
-    <value>Title</value>
+    <value>Pamagat</value>
   </data>
   <data name="TextUIHeadless" xml:space="preserve">
     <value>Headless</value>
@@ -538,10 +538,10 @@ Pag hindi pa gumagana, close &amp; buksan ulit ang Lively/ restart windows.
     <value>Lite</value>
   </data>
   <data name="TextUINormal" xml:space="preserve">
-    <value>Normal</value>
+    <value>Karaniwan</value>
   </data>
   <data name="TextUnsupportedFile" xml:space="preserve">
-    <value>File format not supported</value>
+    <value>Ang format ng file ay hindi sinusuportahan</value>
   </data>
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>Magagamit ang pag-Update!</value>
@@ -562,13 +562,13 @@ Pag hindi pa gumagana, close &amp; buksan ulit ang Lively/ restart windows.
     <value>Video</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>Enter optional commandline arguments</value>
+    <value>Maglagay ng mga opsyonal na argumento sa command line</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
-    <value>Fill</value>
+    <value>Pagpuno</value>
   </data>
   <data name="WallpaperFitNone.Content" xml:space="preserve">
-    <value>None</value>
+    <value>Wala</value>
   </data>
   <data name="WallpaperFitUniform.Content" xml:space="preserve">
     <value>Uniform</value>
@@ -580,13 +580,13 @@ Pag hindi pa gumagana, close &amp; buksan ulit ang Lively/ restart windows.
     <value>I-duplicate ang parehong wallpaper</value>
   </data>
   <data name="WallpaperLayoutPerScreen.Content" xml:space="preserve">
-    <value>Selected screen only</value>
+    <value>Ang napiling screen lamang</value>
   </data>
   <data name="WallpaperLayoutSpan.Content" xml:space="preserve">
     <value>Span sa buong mga screen</value>
   </data>
   <data name="WallpaperType.Text" xml:space="preserve">
-    <value>Type</value>
+    <value>Uri</value>
   </data>
   <data name="Website.Header" xml:space="preserve">
     <value>Website</value>
@@ -595,7 +595,7 @@ Pag hindi pa gumagana, close &amp; buksan ulit ang Lively/ restart windows.
     <value>Web Stream</value>
   </data>
   <data name="TextWelcome" xml:space="preserve">
-    <value>Welcome</value>
+    <value>Maligayang Pagdating</value>
   </data>
   <data name="TextYes" xml:space="preserve">
     <value>Oo</value>
@@ -629,7 +629,7 @@ Pag hindi pa gumagana, close &amp; buksan ulit ang Lively/ restart windows.
 Kapag handa na mag-navigate sa http://localhost:portnumber upang ma-access ang console ng developer.</value>
   </data>
   <data name="Debug.Description" xml:space="preserve">
-    <value>Show developer menu</value>
+    <value>Ipakita ang developer menu</value>
   </data>
   <data name="DesktopPicture.Description" xml:space="preserve">
     <value>Set a picture of animated wallpaper as desktop wallpaper.</value>
@@ -654,10 +654,10 @@ Lahat: I-pause ang wallpaper sa lahat ng (mga) screen kung ang anumang applicati
     <value>Tapusin ang pag-setup upang magpatuloy.</value>
   </data>
   <data name="PowerSavingModePower.Description" xml:space="preserve">
-    <value>Change playback when Windows Power Saving Mode is enabled</value>
+    <value>Baguhin ang pag-playback kapag ang naka-enable ang Windows Power Saving Mode</value>
   </data>
   <data name="RemoteDesktopPower.Description" xml:space="preserve">
-    <value>Change playback when running a Remote Desktop session</value>
+    <value>Baguhin ang playback kapag tumatakbo ang Remote Desktop session</value>
   </data>
   <data name="TipScreensaver" xml:space="preserve">
     <value>After the selected inactivity period use the current wallpaper as your screensaver.</value>
@@ -709,10 +709,10 @@ Lahat: I-pause ang wallpaper sa lahat ng (mga) screen kung ang anumang applicati
 Edge is the built in webview of windows 10.</value>
   </data>
   <data name="About.Label" xml:space="preserve">
-    <value>About</value>
+    <value>Tungkol sa</value>
   </data>
   <data name="AddWallpaper.Label" xml:space="preserve">
-    <value>Add Wallpaper</value>
+    <value>Magdagdag ng Wallpaper</value>
   </data>
   <data name="AppFocus.Header" xml:space="preserve">
     <value>Applications Focused</value>
@@ -736,22 +736,22 @@ Edge is the built in webview of windows 10.</value>
     <value>When on Battery Power</value>
   </data>
   <data name="TitleBrowseFile" xml:space="preserve">
-    <value>Browse for video, gif, webpage... file to set as wallpaper</value>
+    <value>Pumili ng video, gif, at webpage... file para maging wallpaper</value>
   </data>
   <data name="BrowserDebuggingPort.Header" xml:space="preserve">
     <value>Debugging Port</value>
   </data>
   <data name="TitleChangelog" xml:space="preserve">
-    <value>Changelog</value>
+    <value>Mga pagbabago</value>
   </data>
   <data name="Community.Header" xml:space="preserve">
-    <value>Community</value>
+    <value>Komunidad</value>
   </data>
   <data name="Debug.Header" xml:space="preserve">
     <value>Debug</value>
   </data>
   <data name="TitleDeleteConfirmation" xml:space="preserve">
-    <value>Confirm Deletion</value>
+    <value>Kumpirmahin ang Pagbura</value>
   </data>
   <data name="DesktopPicture.Header" xml:space="preserve">
     <value>Desktop Picture</value>
@@ -760,10 +760,10 @@ Edge is the built in webview of windows 10.</value>
     <value>Display Pause Rule</value>
   </data>
   <data name="Documentation.Header" xml:space="preserve">
-    <value>Documentation</value>
+    <value>Dokumentasyon</value>
   </data>
   <data name="EnterUrl.Header" xml:space="preserve">
-    <value>Enter URL</value>
+    <value>Magpasok ng URL</value>
   </data>
   <data name="ExportLogs.Header" xml:space="preserve">
     <value>Log File</value>
@@ -775,19 +775,19 @@ Edge is the built in webview of windows 10.</value>
     <value>Gif Player</value>
   </data>
   <data name="Help.Label" xml:space="preserve">
-    <value>Help</value>
+    <value>Tulong</value>
   </data>
   <data name="TitleInteraction" xml:space="preserve">
-    <value>Interaction</value>
+    <value>Interaksyon</value>
   </data>
   <data name="TitleLibrary" xml:space="preserve">
     <value>Library</value>
   </data>
   <data name="TitleLivelySetup" xml:space="preserve">
-    <value>Lively Setup</value>
+    <value>Setup ng Lively</value>
   </data>
   <data name="TitleLocation" xml:space="preserve">
-    <value>Location</value>
+    <value>Lokasyon</value>
   </data>
   <data name="LockscreenPicture.Header" xml:space="preserve">
     <value>Lockscreen Picture</value>
@@ -796,7 +796,7 @@ Edge is the built in webview of windows 10.</value>
     <value>Miscellaneous</value>
   </data>
   <data name="TitleMute" xml:space="preserve">
-    <value>Mute</value>
+    <value>I-mute</value>
   </data>
   <data name="PauseAlgorithm.Header" xml:space="preserve">
     <value>Pause Algorithm</value>
@@ -832,7 +832,7 @@ Edge is the built in webview of windows 10.</value>
     <value>On resume, display logon screen</value>
   </data>
   <data name="TitleSelectFile" xml:space="preserve">
-    <value>Select File</value>
+    <value>Pumili ng file</value>
   </data>
   <data name="TitleSettings" xml:space="preserve">
     <value>Settings</value>
@@ -857,7 +857,7 @@ Edge is the built in webview of windows 10.</value>
     <value>Video Quality</value>
   </data>
   <data name="System.Header" xml:space="preserve">
-    <value>System</value>
+    <value>Sistema</value>
   </data>
   <data name="TaskbarTheme.Header" xml:space="preserve">
     <value>Taskbar Theme</value>
@@ -878,7 +878,7 @@ Edge is the built in webview of windows 10.</value>
     <value>GPU Decode</value>
   </data>
   <data name="TitleWallpaper" xml:space="preserve">
-    <value>Wallpaper</value>
+    <value>Wolpeyper</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">
     <value>Wallpaper Directory</value>
@@ -887,7 +887,7 @@ Edge is the built in webview of windows 10.</value>
     <value>Move existing wallpapers to new folder</value>
   </data>
   <data name="WallpaperFit.Header" xml:space="preserve">
-    <value>Choose a fit</value>
+    <value>Pumili ng fit</value>
   </data>
   <data name="WallpaperInput.Header" xml:space="preserve">
     <value>Wallpaper Input</value>
@@ -899,7 +899,7 @@ Edge is the built in webview of windows 10.</value>
     <value>Wallpaper Playback</value>
   </data>
   <data name="TitleWarning" xml:space="preserve">
-    <value>Warning</value>
+    <value>Babala</value>
   </data>
   <data name="WebBrowser.Header" xml:space="preserve">
     <value>Web Browser</value>
@@ -908,7 +908,7 @@ Edge is the built in webview of windows 10.</value>
     <value>Disk cache</value>
   </data>
   <data name="TitleWebBrowserEngine" xml:space="preserve">
-    <value>Engine</value>
+    <value>Makina</value>
   </data>
   <data name="TitleWebpageLoad" xml:space="preserve">
     <value>Load Webpage</value>
@@ -917,7 +917,7 @@ Edge is the built in webview of windows 10.</value>
     <value>Keep User Interface running for faster startup</value>
   </data>
   <data name="FastUI.Header" xml:space="preserve">
-    <value>Fast startup</value>
+    <value>Mabilis na pagbukas</value>
   </data>
   <data name="WallpaperDirGroup.Header" xml:space="preserve">
     <value>File</value>
@@ -926,22 +926,22 @@ Edge is the built in webview of windows 10.</value>
     <value>Dark</value>
   </data>
   <data name="AppThemeLight.Content" xml:space="preserve">
-    <value>Light</value>
+    <value>Maliwanag</value>
   </data>
   <data name="AppThemeSystem.Content" xml:space="preserve">
-    <value>System</value>
+    <value>Sistema</value>
   </data>
   <data name="WindowsSettingsColor.Content" xml:space="preserve">
-    <value>Windows color settings</value>
+    <value>Setting sa Kulay ng Window</value>
   </data>
   <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
     <value>Laptops</value>
   </data>
   <data name="DeveloperGroup.Header" xml:space="preserve">
-    <value>Developer</value>
+    <value>Ang Developer</value>
   </data>
   <data name="AppearanceBehaviour.Header" xml:space="preserve">
-    <value>Appearance &amp; behavior</value>
+    <value>Itsura at pag-uugali</value>
   </data>
   <data name="ActiveWallpapers.Label" xml:space="preserve">
     <value>Active Wallpaper(s)</value>
@@ -950,10 +950,10 @@ Edge is the built in webview of windows 10.</value>
     <value>Gallery</value>
   </data>
   <data name="AboutMe.Text" xml:space="preserve">
-    <value>Hi, I'm Dani John also known as rocksdanister. I developed Lively a Free and open-source (FOSS) wallpaper application. Thanks for taking the time to look at my work.</value>
+    <value>Kumusta, ako si Dani John ako din si rocksdanister. Ako ang gumawa ng Lively, ang Lively ay free at open source (FOSS) wallpaper application. Salamat sa paghihintay tumingin sa gawa ko.</value>
   </data>
   <data name="LicenseLink.Content" xml:space="preserve">
-    <value>Software license</value>
+    <value>Lisensya ng Software</value>
   </data>
   <data name="AttributionLink.Content" xml:space="preserve">
     <value>Third party software notice</value>
@@ -962,10 +962,10 @@ Edge is the built in webview of windows 10.</value>
     <value>Data collection policy</value>
   </data>
   <data name="AddWallpaperDrop.Text" xml:space="preserve">
-    <value>Add wallpaper</value>
+    <value>Maglagay pa ng Wallpaper</value>
   </data>
   <data name="ComingSoon.Text" xml:space="preserve">
-    <value>Coming soon</value>
+    <value>Parating Na!</value>
   </data>
   <data name="AboutMenu.Text" xml:space="preserve">
     <value>About</value>
@@ -974,16 +974,16 @@ Edge is the built in webview of windows 10.</value>
     <value>Website</value>
   </data>
   <data name="TextOpen.Content" xml:space="preserve">
-    <value>Open</value>
+    <value>I-bukas</value>
   </data>
   <data name="TextSave.Content" xml:space="preserve">
-    <value>Save</value>
+    <value>I-save</value>
   </data>
   <data name="UIMode.Description" xml:space="preserve">
-    <value>User interface effects and animations</value>
+    <value>User interface effects at animations</value>
   </data>
   <data name="UIMode.Header" xml:space="preserve">
-    <value>User interface</value>
+    <value>User Interface</value>
   </data>
   <data name="UIModeLite.Content" xml:space="preserve">
     <value>Lite</value>
@@ -992,43 +992,43 @@ Edge is the built in webview of windows 10.</value>
     <value>Normal</value>
   </data>
   <data name="Screensaver.Description" xml:space="preserve">
-    <value>How screensaver is applied to connected to display devices</value>
+    <value>Paano naka apply ang screensaver sa konekted na display devices</value>
   </data>
   <data name="Screensaver.Header" xml:space="preserve">
-    <value>Type of screensaver</value>
+    <value>Uri ng screensaver</value>
   </data>
   <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
     <value>Configured separately</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
-    <value>Same as running wallpaper</value>
+    <value>Magkaparehas sa running wallpaper</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
-    <value>Plugin required</value>
+    <value>Kailangan ng plugin</value>
   </data>
   <data name="ScreensaverPluginMessage.Text" xml:space="preserve">
-    <value>One time setup is required to run screensaver</value>
+    <value>Unang beses na setup ay kailangan para gumana ang screensaver</value>
   </data>
   <data name="WallpaperLayoutScreenPicker.Content" xml:space="preserve">
-    <value>Always pick screen when choosing wallpaper</value>
+    <value>Palaging piliin ang screen sa pag pili ng wallpaper</value>
   </data>
   <data name="GalleryAccount.Text" xml:space="preserve">
     <value>Account</value>
   </data>
   <data name="GalleryAccountDelete.Content" xml:space="preserve">
-    <value>Delete account</value>
+    <value>Tanggalin ang account</value>
   </data>
   <data name="GalleryAccountExport.Content" xml:space="preserve">
-    <value>Export data</value>
+    <value>I-export ang data</value>
   </data>
   <data name="GalleryAccountLogin.Content" xml:space="preserve">
-    <value>Log in</value>
+    <value>Mag-log in</value>
   </data>
   <data name="GalleryAccountLogout.Content" xml:space="preserve">
-    <value>Log out</value>
+    <value>Mag-log out</value>
   </data>
   <data name="GalleryPageCollection.Content" xml:space="preserve">
-    <value>Collection</value>
+    <value>Koleksyon</value>
   </data>
   <data name="GalleryPageHome.Content" xml:space="preserve">
     <value>Home</value>
@@ -1043,25 +1043,25 @@ Edge is the built in webview of windows 10.</value>
     <value>Please log in to continue</value>
   </data>
   <data name="GalleryWelcomeMessage.Text" xml:space="preserve">
-    <value>Hi</value>
+    <value>Kumusta</value>
   </data>
   <data name="RestoreWallpaper.Text" xml:space="preserve">
-    <value>We found these wallpapers in your account</value>
+    <value>Nakahanap kami ng wallpaper sa account mo</value>
   </data>
   <data name="TextDownloadNow.Content" xml:space="preserve">
-    <value>Download now</value>
+    <value>I-download na</value>
   </data>
   <data name="TextMaybeLater.Content" xml:space="preserve">
-    <value>Maybe later</value>
+    <value>Mamaya</value>
   </data>
   <data name="TextSelectAll.Content" xml:space="preserve">
-    <value>Select all</value>
+    <value>Piliin lahat</value>
   </data>
   <data name="TextSelectNone.Content" xml:space="preserve">
-    <value>Select none</value>
+    <value>Walang piliin</value>
   </data>
   <data name="TitleWelcomeback.Text" xml:space="preserve">
-    <value>Welcome back!</value>
+    <value>Maligayang pagbalik!</value>
   </data>
   <data name="ReportWallpaper.Header" xml:space="preserve">
     <value>Reasons</value>
@@ -1070,10 +1070,10 @@ Edge is the built in webview of windows 10.</value>
     <value>Copyright violation</value>
   </data>
   <data name="ReportWallpaperMisleading.Content" xml:space="preserve">
-    <value>Misleading information</value>
+    <value>Mali na Impormasyon</value>
   </data>
   <data name="ReportWallpaperOther.Content" xml:space="preserve">
-    <value>Other</value>
+    <value>Iba pa</value>
   </data>
   <data name="ReportWallpaperSpam.Content" xml:space="preserve">
     <value>Spam</value>
@@ -1085,31 +1085,31 @@ Edge is the built in webview of windows 10.</value>
     <value>Additional notes</value>
   </data>
   <data name="TextReportWallpaper.Text" xml:space="preserve">
-    <value>Report</value>
+    <value>I-report</value>
   </data>
   <data name="TitleReportWallpaper.Text" xml:space="preserve">
-    <value>Report Wallpaper</value>
+    <value>I-report ang Wallpaper</value>
   </data>
   <data name="Send.Content" xml:space="preserve">
-    <value>Send</value>
+    <value>I-send</value>
   </data>
   <data name="GalleryAccountDeleteConfirm.Text" xml:space="preserve">
-    <value>Please confirm this action as it CAN NOT be undone</value>
+    <value>I-confirm ang aksyon na ito kasi hindi pwede ito mabalik</value>
   </data>
   <data name="GalleryAccountDeleteFail.Text" xml:space="preserve">
-    <value>Failed to delete account, please try again later</value>
+    <value>Hindi pwede ma tangal ang account, gawin mo na lang mamaya</value>
   </data>
   <data name="TextConfirmCancel.Text" xml:space="preserve">
-    <value>Do you want to cancel it?</value>
+    <value>Gusto mo ba kanselahin?</value>
   </data>
   <data name="TextWait.Text" xml:space="preserve">
-    <value>Wait</value>
+    <value>Maghintay</value>
   </data>
   <data name="TitleDownloadProgress.Text" xml:space="preserve">
     <value>Download in Progress</value>
   </data>
   <data name="TextContributors.Text" xml:space="preserve">
-    <value>Contributors</value>
+    <value>Mga Tumulong</value>
   </data>
   <data name="TextShare.Text" xml:space="preserve">
     <value>Share</value>
@@ -1118,15 +1118,27 @@ Edge is the built in webview of windows 10.</value>
     <value>Share Wallpaper</value>
   </data>
   <data name="ExportWallpaperGallery.Text" xml:space="preserve">
-    <value>Gallery upload</value>
+    <value>Gallery Upload</value>
   </data>
   <data name="ExportWallpaperLink.Text" xml:space="preserve">
-    <value>Copy link</value>
+    <value>Kopyahin ang link</value>
   </data>
   <data name="TextCustomiseWallpaper" xml:space="preserve">
     <value>I-customise ang Wallpaper</value>
   </data>
   <data name="TextCloseWallpapers" xml:space="preserve">
     <value>Isarado ang Wallpapers</value>
+  </data>
+  <data name="TitleChooseApplication.Text" xml:space="preserve">
+    <value>Mamili ng aplikasyon</value>
+  </data>
+  <data name="WallpaperInstallSize.Text" xml:space="preserve">
+    <value>Sukat</value>
+  </data>
+  <data name="PluginNotFound.Message" xml:space="preserve">
+    <value>Please install the required plugin</value>
+  </data>
+  <data name="PluginNotFound.Title" xml:space="preserve">
+    <value>Plugin not found</value>
   </data>
 </root>

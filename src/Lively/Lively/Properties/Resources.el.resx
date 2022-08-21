@@ -370,7 +370,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextGo" xml:space="preserve">
     <value>GO</value>
   </data>
-  <data name="TextHelpTranslate" xml:space="preserve">
+  <data name="TextHelpTranslate.Title" xml:space="preserve">
     <value>Βοήθεια μετάφρασης του Lively.</value>
   </data>
   <data name="TextHours" xml:space="preserve">
@@ -385,7 +385,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextLastChecked" xml:space="preserve">
     <value>Τελευταίος έλεγχος</value>
   </data>
-  <data name="TextLearnMore" xml:space="preserve">
+  <data name="TextLearnMore.Text" xml:space="preserve">
     <value>Μάθε περισσότερα</value>
   </data>
   <data name="License.Header" xml:space="preserve">
@@ -988,10 +988,10 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>User interface</value>
   </data>
   <data name="UIModeLite.Content" xml:space="preserve">
-    <value>Lite</value>
+    <value>Ελαφρύ</value>
   </data>
   <data name="UIModeNormal.Content" xml:space="preserve">
-    <value>Normal</value>
+    <value>Κανονικό</value>
   </data>
   <data name="Screensaver.Description" xml:space="preserve">
     <value>How screensaver is applied to connected to display devices</value>
@@ -1130,5 +1130,17 @@ https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="TextCloseWallpapers" xml:space="preserve">
     <value>Κλείσιμο Ταπετσαριών</value>
+  </data>
+  <data name="TitleChooseApplication.Text" xml:space="preserve">
+    <value>Choose Application</value>
+  </data>
+  <data name="WallpaperInstallSize.Text" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="PluginNotFound.Message" xml:space="preserve">
+    <value>Please install the required plugin</value>
+  </data>
+  <data name="PluginNotFound.Title" xml:space="preserve">
+    <value>Plugin not found</value>
   </data>
 </root>

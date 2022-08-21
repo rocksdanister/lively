@@ -213,8 +213,8 @@ Lanjutkan jika aplikasi berasal dari sumber terpercaya</value>
     <value>Bantu developer dengan membelikan kopi</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
-    <value>You are about to change to beta (developer) build of Lively.
-Updates will be frequent and may contain bugs!</value>
+    <value>Anda akan berganti ke versi beta (pengembang) Lively.
+Akan sering dilakukan pembaharuan dan mungkin ada bugnya!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
     <value>System-tray icon visibility, lively will continue to run with the icon hidden</value>
@@ -497,7 +497,7 @@ Jika masih tidak berfungsi, tutup dan mulai ulang Lively/Windows.
     <value>Ganti ke beta (chanel Dev)</value>
   </data>
   <data name="TextSwitchBranchOfficial" xml:space="preserve">
-    <value>Switch to stable (Default channel)</value>
+    <value>Ganti ke stabil (chanel utama)</value>
   </data>
   <data name="TextTags" xml:space="preserve">
     <value>Label</value>
@@ -512,7 +512,7 @@ Jika masih tidak berfungsi, tutup dan mulai ulang Lively/Windows.
     <value>Warna</value>
   </data>
   <data name="TaskbarThemeFluent.Content" xml:space="preserve">
-    <value>Fluent</value>
+    <value>Lancar</value>
   </data>
   <data name="TaskbarThemeWallpaper.Content" xml:space="preserve">
     <value>Latar Belakang</value>
@@ -951,22 +951,22 @@ Semua proses: Lebih berat, memindai semua proses untuk menentukan tingkah laku p
     <value>Galeri</value>
   </data>
   <data name="AboutMe.Text" xml:space="preserve">
-    <value>Hi, I'm Dani John also known as rocksdanister. I developed Lively a Free and open-source (FOSS) wallpaper application. Thanks for taking the time to look at my work.</value>
+    <value>Hi, saya Dani John dikenal juga sebagai rockdanister. Saya mengembangkan Lively sebuah aplikasi Gratis dan sumber-terbuka (FOSS). Terimakasih untuk waktunya telah mencoba karya saya.</value>
   </data>
   <data name="LicenseLink.Content" xml:space="preserve">
-    <value>Software license</value>
+    <value>Lisensi perangkat lunak</value>
   </data>
   <data name="AttributionLink.Content" xml:space="preserve">
-    <value>Third party software notice</value>
+    <value>Catatan perangkat lunak pihak ketiga</value>
   </data>
   <data name="PrivacyPolicyLink.Content" xml:space="preserve">
-    <value>Data collection policy</value>
+    <value>Aturan pengumpulan data</value>
   </data>
   <data name="AddWallpaperDrop.Text" xml:space="preserve">
-    <value>Add wallpaper</value>
+    <value>Tambah Latar Belakang</value>
   </data>
   <data name="ComingSoon.Text" xml:space="preserve">
-    <value>Coming soon</value>
+    <value>Segera hadir</value>
   </data>
   <data name="AboutMenu.Text" xml:space="preserve">
     <value>Tentang</value>
@@ -975,16 +975,16 @@ Semua proses: Lebih berat, memindai semua proses untuk menentukan tingkah laku p
     <value>Situs Web</value>
   </data>
   <data name="TextOpen.Content" xml:space="preserve">
-    <value>Open</value>
+    <value>Buka</value>
   </data>
   <data name="TextSave.Content" xml:space="preserve">
-    <value>Save</value>
+    <value>Simpan</value>
   </data>
   <data name="UIMode.Description" xml:space="preserve">
-    <value>User interface effects and animations</value>
+    <value>Efek tampilan pengguna dan animasi</value>
   </data>
   <data name="UIMode.Header" xml:space="preserve">
-    <value>User interface</value>
+    <value>Tampilan pengguna</value>
   </data>
   <data name="UIModeLite.Content" xml:space="preserve">
     <value>Ringan</value>
@@ -996,19 +996,19 @@ Semua proses: Lebih berat, memindai semua proses untuk menentukan tingkah laku p
     <value>How screensaver is applied to connected to display devices</value>
   </data>
   <data name="Screensaver.Header" xml:space="preserve">
-    <value>Type of screensaver</value>
+    <value>Jenis latar belakang</value>
   </data>
   <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
-    <value>Configured separately</value>
+    <value>Atur terpisah</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
-    <value>Same as running wallpaper</value>
+    <value>Sama dengan latar belakang yang digunakan</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
-    <value>Plugin required</value>
+    <value>Pengaya diperlukan</value>
   </data>
   <data name="ScreensaverPluginMessage.Text" xml:space="preserve">
-    <value>One time setup is required to run screensaver</value>
+    <value>Pengaturan awal dibutuhkan untuk menjalankan latar belakang</value>
   </data>
   <data name="WallpaperLayoutScreenPicker.Content" xml:space="preserve">
     <value>Always pick screen when choosing wallpaper</value>
@@ -1047,7 +1047,7 @@ Semua proses: Lebih berat, memindai semua proses untuk menentukan tingkah laku p
     <value>Hai</value>
   </data>
   <data name="RestoreWallpaper.Text" xml:space="preserve">
-    <value>We found these wallpapers in your account</value>
+    <value>Kami menemukan latar belakang ini pada akun Anda</value>
   </data>
   <data name="TextDownloadNow.Content" xml:space="preserve">
     <value>Unduh Sekarang</value>
@@ -1068,10 +1068,10 @@ Semua proses: Lebih berat, memindai semua proses untuk menentukan tingkah laku p
     <value>Alasannya</value>
   </data>
   <data name="ReportWallpaperCopyright.Content" xml:space="preserve">
-    <value>Copyright violation</value>
+    <value>Pelanggaran hak cipta</value>
   </data>
   <data name="ReportWallpaperMisleading.Content" xml:space="preserve">
-    <value>Misleading information</value>
+    <value>Informasi menyesatkan</value>
   </data>
   <data name="ReportWallpaperOther.Content" xml:space="preserve">
     <value>Lainnya</value>
@@ -1134,12 +1134,12 @@ Semua proses: Lebih berat, memindai semua proses untuk menentukan tingkah laku p
     <value>Pilih aplikasi</value>
   </data>
   <data name="WallpaperInstallSize.Text" xml:space="preserve">
-    <value>Size</value>
+    <value>Ukuran</value>
   </data>
   <data name="PluginNotFound.Message" xml:space="preserve">
-    <value>Please install the required plugin</value>
+    <value>Pasang pengaya yang dibutuhkan</value>
   </data>
   <data name="PluginNotFound.Title" xml:space="preserve">
-    <value>Plugin not found</value>
+    <value>Pengaya tidak ditemukan</value>
   </data>
 </root>

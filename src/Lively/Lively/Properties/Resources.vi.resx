@@ -327,7 +327,7 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Tùy chỉnh hình nền</value>
   </data>
   <data name="DeleteWallpaper.Text" xml:space="preserve">
-    <value>Xóa hình nền</value>
+    <value>Xóa</value>
   </data>
   <data name="Description.Text" xml:space="preserve">
     <value>Mô tả</value>
@@ -368,7 +368,7 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
   <data name="TextGo" xml:space="preserve">
     <value>ĐI</value>
   </data>
-  <data name="TextHelpTranslate" xml:space="preserve">
+  <data name="TextHelpTranslate.Title" xml:space="preserve">
     <value>Giúp phiên dịch Lively.</value>
   </data>
   <data name="TextHours" xml:space="preserve">
@@ -383,7 +383,7 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
   <data name="TextLastChecked" xml:space="preserve">
     <value>Kiểm tra lần cuối</value>
   </data>
-  <data name="TextLearnMore" xml:space="preserve">
+  <data name="TextLearnMore.Text" xml:space="preserve">
     <value>Tìm hiểu thêm</value>
   </data>
   <data name="License.Header" xml:space="preserve">
@@ -1125,5 +1125,17 @@ Khi sắn sàng, đi tới http://localhost:portnumber để truy cập bảng �
   </data>
   <data name="TextCloseWallpapers" xml:space="preserve">
     <value>Tắt hình nền</value>
+  </data>
+  <data name="TitleChooseApplication.Text" xml:space="preserve">
+    <value>Chọn ứng dụng</value>
+  </data>
+  <data name="WallpaperInstallSize.Text" xml:space="preserve">
+    <value>Kích thước</value>
+  </data>
+  <data name="PluginNotFound.Message" xml:space="preserve">
+    <value>Please install the required plugin</value>
+  </data>
+  <data name="PluginNotFound.Title" xml:space="preserve">
+    <value>Plugin not found</value>
   </data>
 </root>
