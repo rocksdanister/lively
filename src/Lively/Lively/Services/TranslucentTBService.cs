@@ -1,6 +1,7 @@
 ﻿using ImageMagick;
 using Lively.Common;
 using Lively.Common.Helpers.Pinvoke;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -40,7 +41,17 @@ namespace Lively.Services
                 incompatibleProgramFound = true;
             }
             _timer.Interval = 500;
-            _timer.Elapsed += Timer_Elapsed;
+            _timer.Elapsed += (_, _) =>
+            {
+                SetTaskbarTransparent(taskbarTheme);
+            };
+
+            SystemEvents.SessionSwitch += (s, e) => {
+                if (e.Reason == SessionSwitchReason.SessionUnlock && IsRunning)
+                {
+                    ResetTaskbar();
+                }
+            };
         }
 
         public void Start(TaskbarTheme theme)
@@ -115,11 +126,6 @@ namespace Lively.Services
         {
             accentColor = color;
             Start(taskbarTheme);
-        }
-
-        private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
-        {
-            SetTaskbarTransparent(taskbarTheme);
         }
 
         private void SetTaskbarTransparent(TaskbarTheme theme)
