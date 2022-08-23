@@ -1140,9 +1140,9 @@ Edge es la vista web integrada en Windows 10.</value>
     <value>Tamaño</value>
   </data>
   <data name="PluginNotFound.Message" xml:space="preserve">
-    <value>Please install the required plugin</value>
+    <value>Por favor, instale el complemento requerido</value>
   </data>
   <data name="PluginNotFound.Title" xml:space="preserve">
-    <value>Plugin not found</value>
+    <value>Complemento no encontrado</value>
   </data>
 </root>

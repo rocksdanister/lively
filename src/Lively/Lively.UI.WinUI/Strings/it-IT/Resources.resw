@@ -147,38 +147,40 @@ Windows Explorer si è riavviato due volte negli ultimi 30 secondi! Questo potre
     <value>Sito Ufficiale di Lively Wallpaper</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
-    <value>La maggior parte dei display LCD e LED moderni non soffre di problemi di burn-in e quindi qualsiasi sfondo può essere utilizzato come salvaschermo.
-Per i display OLED, Plasma o CRT che sono suscettibili al burn-in, si consiglia di utilizzare uno sfondo con movimento regolare e un tema scuro generale che dovrebbe mitigare il burn-in, ma questa funzione non è testata e la sua efficacia non può essere garantita.
-Lo scopo principale degli screensaver di Lively è aggiungere un altro livello di personalizzazione al tuo pc, usa gli screensaver come protezione burn-in a tuo rischio e pericolo!</value>
+    <value>La maggior parte dei schermi LCD e LED moderni non soffrono di problemi di bruciatura dello schermo, pertanto qualsiasi sfondo può essere usato.
+
+Per i schermi di tipo OLED, Plasma o CRT che sono suscettibili ai problemi di bruciatura dello schermo, si consiglia di utilizzare sfondi con movimenti regolari e un tema generale scuro che dovrebbero mitigare le bruciature, ma, questa funziona non è ancora testata e pertanto non è garantita la sua efficacia.
+
+Lo scopo principale dei sfondi di Lively è aggiungero un altro livello di personalizzazione al tuo PC, usa gli sfondi a tuo rischio e pericolo dalle bruciature dello schermo!</value>
   </data>
   <data name="ReportBugPage.Content" xml:space="preserve">
-    <value>Segnala un poblema col software</value>
+    <value>Segnala un problema con il software</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
-    <value>Seleziona un file o inserisci un indirizzo per impostare un wallpaper </value>
+    <value>Seleziona un file</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
-    <value>Imposta il comportamento del playback del wallpaper(s) basato sul funzionamento. dell'applicazione.</value>
+    <value>Imposta il comportamento della riproduzione sfondo in base alle applicazioni in esecuzione</value>
   </data>
   <data name="DescriptionCancelQuestion" xml:space="preserve">
-    <value>Sei sicuro di voler eliminare questo wallpaper?</value>
+    <value>Sei sicuro di voler annullare?</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
-    <value>Sei sicuro di voler eliminare permanentemente questo wallpaper?</value>
+    <value>Sei sicuro di voler eliminare permanentemente questo sfondo?</value>
   </data>
   <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
-    <value>Sei sicuro di voler eliminare questo wallpaper dalla libreria ?</value>
+    <value>Sei sicuro di voler eliminare questo sfondo dalla libreria?</value>
   </data>
   <data name="DragDropFile.Text" xml:space="preserve">
-    <value>Clicca e tieni premuto </value>
+    <value>Trascina i files qui</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
-    <value> Stai aprendo un applicazione esterna come wallpaper.
-Le applicazioni malevole possono avere  malware, virus... e danneggiare il tuo sistema.
+    <value>Stai aprendo un applicazione esterna come sfondo.
+Le applicazioni malevole possono contenere malware, virus... e danneggiare il tuo sistema.
 Continua soltanto se l'applicazione proviene da una fonte sicura.</value>
   </data>
   <data name="MinimizedTray.Text" xml:space="preserve">
-    <value>Sono limitato all'area di notifiche, fai tasto destro sull'icona di lively per più opzioni.</value>
+    <value>Lively è minimizzato all'area delle notifiche, fai trastro destro sull'icona lively per continuare.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
     <value>Riavva lively per applicare le impostazioni </value>
@@ -190,19 +192,19 @@ Continua soltanto se l'applicazione proviene da una fonte sicura.</value>
     <value>Clicca per iniziare a registrare.</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
-    <value>Ripristinando i wallpaper precedenti...</value>
+    <value>Ripristinandi i sfondi precedenti, attendere prego...</value>
   </data>
   <data name="DescriptionScreenLayout" xml:space="preserve">
-    <value>Scegli un Monitor</value>
+    <value>Scegli un Display</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
     <value>Una nuova versione è disponibile!</value>
   </data>
   <data name="DescriptionWebpageLoad" xml:space="preserve">
-    <value>Inserisci il link del sito per installare il wallpaper, Shadertoy.com shaders e links</value>
+    <value>Inserisci il link del sito per installare lo sfondo, I link da shadertoy.com sono supportati</value>
   </data>
   <data name="DescriptionWelcomeWizard" xml:space="preserve">
-    <value>Questa procedura guidata ti consentirà di iniziare a configurare Lively.</value>
+    <value>Questa procedura guidata ti consentirà di iniziare a configurare Lively</value>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
     <value>La tua versione di Windows N/KN richiede più codecs per riprodurre dei video come sfondo.</value>
