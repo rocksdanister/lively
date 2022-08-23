@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AudioFocused.Content" xml:space="preserve">
-    <value>Sesi sadece masaüstü odaktayken oynat</value>
+    <value>Sesi yalnızca masaüstü odaklandığında oynat</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
     <value>Tüm duvar kağıtları için ses seviyesi</value>
@@ -130,15 +130,15 @@
     <value>Ses</value>
   </data>
   <data name="CommunityPage.Content" xml:space="preserve">
-    <value>Online tartışma forumu</value>
+    <value>Çevrimiçi tartışma forumu</value>
   </data>
   <data name="DocumentationPage.Content" xml:space="preserve">
-    <value>API dökümantasyonu ve destek</value>
+    <value>API dokümantasyonu ve yardımı</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
     <value>Lively ciddi bir sorunla karşılaştı.
 
-Windows Explorer son 30 saniye içinde iki kere yeniden başlatıldı! Windows veya başka bir masaüstü özelleştirme uygulaması ve Lively arasında uyumsuzluk olabilir. Sorun yaşamamak için tüm duvar kağıtları durduruldu.</value>
+Windows Gezgini son 30 saniye içinde iki kez yeniden başlatıldı! Bu, Lively ile diğer masaüstü özelleştirme yazılımları veya Windows arasında bir çakışma olabilir. Daha fazla sorundan kaçınmak için tüm duvar kağıtları durduruldu.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
     <value>Uyumsuz program tespit edildi, görev çubuğu teması devre dışı bırakıldı.</value>
@@ -147,11 +147,11 @@ Windows Explorer son 30 saniye içinde iki kere yeniden başlatıldı! Windows v
     <value>Lively Wallpaper Resmi İnternet Sitesi</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
-    <value>Birçok modern LCD ve LED monitörler ekran yanmasına dayanıklı olduğundan herhangi bir duvar kağıdı kilit ekranında kullanılabilir.
+    <value>Modern LCD ve LED ekranların çoğu yanma sorunu yaşamaz ve bu nedenle herhangi bir duvar kağıdı ekran koruyucu olarak kullanılabilir.
 
-OLED, Plasma ve CRT monitörler ise ekran yanması sorununa karşı dayanıksız olduğundan bu monitörlerde yanmayı engellemek için düzenli hareketleri olan koyu duvar kağıtlarının kullanılması önerilmektedir. Ancak bu öneri test edilmemiştir ve yanmaya karşı etkili olduğu garanti edilmemektedir.
+Yanmaya duyarlı OLED, Plazma veya CRT ekranlar için, normal hareketli duvar kağıdı ve yanmayı hafifletmesi beklenen genel bir karanlık tema kullanılması tavsiye edilir, ancak bu özellik test edilmemiştir ve etkinliği garanti edilemez.
 
-Lively'nin kilit ekranı özelliği, bilgisayarınızı daha da kişiselleştirmenizi sağlamak amacıyla tasarlanmıştır. Ekran yanmasına karşı kilit ekranında harketli duvar kağıtlarının kullanılması kullanıcının sorumluluğundadır.</value>
+Lively'nin ekran koruyucularının temel amacı, bilgisayarınıza başka bir özelleştirme katmanı eklemek, ekran koruyucuları yanma koruması olarak kullanmak, riski size ait olmak üzere!</value>
   </data>
   <data name="ReportBugPage.Content" xml:space="preserve">
     <value>Sorun bildir</value>
@@ -310,10 +310,10 @@ Daha önce çalışan duvar kağıdını geri yüklemek ister misiniz?</value>
     <value>Tamamlandı!</value>
   </data>
   <data name="ControlPanel.Subtitle" xml:space="preserve">
-    <value>Duvar kağıtlarını yönetmek için tıklayın.</value>
+    <value>Duvar kağıtlarını yönetmek için tıklayın</value>
   </data>
   <data name="TextConvertVideo" xml:space="preserve">
-    <value>Videoya çevir</value>
+    <value>Videoya Dönüştür</value>
   </data>
   <data name="TextCreatePreview" xml:space="preserve">
     <value>Önizleme oluştur</value>
@@ -1015,112 +1015,112 @@ Edge ise windows 10 için geçerli web gösterim motorudur.</value>
 </value>
   </data>
   <data name="GalleryAccountDelete.Content" xml:space="preserve">
-    <value>Delete account</value>
+    <value>Hesabı sil</value>
   </data>
   <data name="GalleryAccountExport.Content" xml:space="preserve">
-    <value>Export data</value>
+    <value>Verileri dışarı aktar</value>
   </data>
   <data name="GalleryAccountLogin.Content" xml:space="preserve">
-    <value>Log in</value>
+    <value>Oturum aç</value>
   </data>
   <data name="GalleryAccountLogout.Content" xml:space="preserve">
-    <value>Log out</value>
+    <value>Oturumu kapat</value>
   </data>
   <data name="GalleryPageCollection.Content" xml:space="preserve">
-    <value>Collection</value>
+    <value>Koleksiyon</value>
   </data>
   <data name="GalleryPageHome.Content" xml:space="preserve">
-    <value>Home</value>
+    <value>Ana Sayfa</value>
   </data>
   <data name="GalleryPageManage.Content" xml:space="preserve">
-    <value>Manage</value>
+    <value>Yönet</value>
   </data>
   <data name="GalleryPageProfile.Content" xml:space="preserve">
-    <value>Profile</value>
+    <value>Profil</value>
   </data>
   <data name="GalleryPleaseLogin.Text" xml:space="preserve">
-    <value>Please log in to continue</value>
+    <value>Devam etmek için lütfen giriş yapın</value>
   </data>
   <data name="GalleryWelcomeMessage.Text" xml:space="preserve">
-    <value>Hi</value>
+    <value>Merhaba</value>
   </data>
   <data name="RestoreWallpaper.Text" xml:space="preserve">
-    <value>We found these wallpapers in your account</value>
+    <value>Hesabınızda geçen kaydettiğiniz koleksiyon geri yükleme kullanabilirsin.</value>
   </data>
   <data name="TextDownloadNow.Content" xml:space="preserve">
-    <value>Download now</value>
+    <value>Şimdi Yükle</value>
   </data>
   <data name="TextMaybeLater.Content" xml:space="preserve">
-    <value>Maybe later</value>
+    <value>Daha Sonra</value>
   </data>
   <data name="TextSelectAll.Content" xml:space="preserve">
-    <value>Select all</value>
+    <value>Tümünü seç</value>
   </data>
   <data name="TextSelectNone.Content" xml:space="preserve">
-    <value>Select none</value>
+    <value>Hiçbirini seçme</value>
   </data>
   <data name="TitleWelcomeback.Text" xml:space="preserve">
-    <value>Welcome back!</value>
+    <value>Tekrar Hoş Geldiniz!</value>
   </data>
   <data name="ReportWallpaper.Header" xml:space="preserve">
-    <value>Reasons</value>
+    <value>Sebep seç</value>
   </data>
   <data name="ReportWallpaperCopyright.Content" xml:space="preserve">
-    <value>Copyright violation</value>
+    <value>Telif hakkı ihlali</value>
   </data>
   <data name="ReportWallpaperMisleading.Content" xml:space="preserve">
-    <value>Misleading information</value>
+    <value>Eksik bilgi</value>
   </data>
   <data name="ReportWallpaperOther.Content" xml:space="preserve">
-    <value>Other</value>
+    <value>Diğer</value>
   </data>
   <data name="ReportWallpaperSpam.Content" xml:space="preserve">
-    <value>Spam</value>
+    <value>Gereksiz</value>
   </data>
   <data name="ReportWallpaperViolence.Content" xml:space="preserve">
-    <value>Nudity or violence</value>
+    <value>Çıplaklık veya Şiddet içerik</value>
   </data>
   <data name="TextAdditionalNotes.Text" xml:space="preserve">
-    <value>Additional notes</value>
+    <value>Şikayet yaz</value>
   </data>
   <data name="TextReportWallpaper.Text" xml:space="preserve">
-    <value>Report</value>
+    <value>Rapor Et</value>
   </data>
   <data name="TitleReportWallpaper.Text" xml:space="preserve">
-    <value>Report Wallpaper</value>
+    <value>Bu Duvar Kağıdını Rapor Et</value>
   </data>
   <data name="Send.Content" xml:space="preserve">
-    <value>Send</value>
+    <value>Gönder</value>
   </data>
   <data name="GalleryAccountDeleteConfirm.Text" xml:space="preserve">
-    <value>Please confirm this action as it CAN NOT be undone</value>
+    <value>Hesabını silmek istediğinden emin misin? GERİ ALINAMAZ</value>
   </data>
   <data name="GalleryAccountDeleteFail.Text" xml:space="preserve">
-    <value>Failed to delete account, please try again later</value>
+    <value>Hesabını silinemedi, lütfen daha sonra tekrar deneyin</value>
   </data>
   <data name="TextConfirmCancel.Text" xml:space="preserve">
-    <value>Do you want to cancel it?</value>
+    <value>İptal etmek istiyor musunuz?</value>
   </data>
   <data name="TextWait.Text" xml:space="preserve">
-    <value>Wait</value>
+    <value>Bekle</value>
   </data>
   <data name="TitleDownloadProgress.Text" xml:space="preserve">
-    <value>Download in Progress</value>
+    <value>İndirme devam ediyor</value>
   </data>
   <data name="TextContributors.Text" xml:space="preserve">
-    <value>Contributors</value>
+    <value>Katkıda bulunanlar</value>
   </data>
   <data name="TextShare.Text" xml:space="preserve">
-    <value>Share</value>
+    <value>Paylaş</value>
   </data>
   <data name="TitleShareWallpaper.Text" xml:space="preserve">
-    <value>Share Wallpaper</value>
+    <value>Bu duvar kağıdı paylaş</value>
   </data>
   <data name="ExportWallpaperGallery.Text" xml:space="preserve">
-    <value>Gallery upload</value>
+    <value>Galeri yükleme</value>
   </data>
   <data name="ExportWallpaperLink.Text" xml:space="preserve">
-    <value>Copy link</value>
+    <value>Bağlantıyı kopyala</value>
   </data>
   <data name="TextCustomiseWallpaper" xml:space="preserve">
     <value>Duvar kağıdını özelleştir</value>
@@ -1129,15 +1129,15 @@ Edge ise windows 10 için geçerli web gösterim motorudur.</value>
     <value>Duvar Kağıtlarını kapat</value>
   </data>
   <data name="TitleChooseApplication.Text" xml:space="preserve">
-    <value>Choose Application</value>
+    <value>Uygulama seçin</value>
   </data>
   <data name="WallpaperInstallSize.Text" xml:space="preserve">
-    <value>Size</value>
+    <value>Boyut</value>
   </data>
   <data name="PluginNotFound.Message" xml:space="preserve">
-    <value>Please install the required plugin</value>
+    <value>Lütfen gerekli eklentiyi kurun</value>
   </data>
   <data name="PluginNotFound.Title" xml:space="preserve">
-    <value>Plugin not found</value>
+    <value>Eklenti bulunamadı</value>
   </data>
 </root>
