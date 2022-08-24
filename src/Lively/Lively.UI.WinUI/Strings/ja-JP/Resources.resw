@@ -1022,7 +1022,7 @@ Edgeは、Windows 10に内蔵されたWebViewです。</value>
     <value>Export data</value>
   </data>
   <data name="GalleryAccountLogin.Content" xml:space="preserve">
-    <value>Log in</value>
+    <value>ログイン</value>
   </data>
   <data name="GalleryAccountLogout.Content" xml:space="preserve">
     <value>Log out</value>

@@ -1011,7 +1011,7 @@ Semua proses: Lebih berat, memindai semua proses untuk menentukan tingkah laku p
     <value>Pengaturan awal dibutuhkan untuk menjalankan latar belakang</value>
   </data>
   <data name="WallpaperLayoutScreenPicker.Content" xml:space="preserve">
-    <value>Always pick screen when choosing wallpaper</value>
+    <value>Selalu pilih layar tampilan ketika memilih wallpaper</value>
   </data>
   <data name="GalleryAccount.Text" xml:space="preserve">
     <value>Akun</value>

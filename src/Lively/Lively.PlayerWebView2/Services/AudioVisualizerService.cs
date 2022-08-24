@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Numerics;
+using Lively.Common.API;
 using Lively.Common.Services;
+using Lively.PlayerWebView2;
 using MathNet.Numerics.IntegralTransforms;
 using NAudio.CoreAudioApi;
 using NAudio.CoreAudioApi.Interfaces;
@@ -25,9 +27,28 @@ namespace Services
 
         public AudioVisualizerService()
         {
-            deviceEnum.RegisterEndpointNotificationCallback(this);
-            capture = CreateWasapiLoopbackCapture();
-            capture.StartRecording();
+            try
+            {
+                var HRESULT = deviceEnum.RegisterEndpointNotificationCallback(this);
+                if (HRESULT != 0)
+                {
+                    App.WriteToParent(new LivelyMessageConsole()
+                    {
+                        Category = ConsoleMessageType.error,
+                        Message = $"Failed to register audio device notifications.",
+                    });
+                }
+                capture = CreateWasapiLoopbackCapture();
+                capture.StartRecording();
+            }
+            catch (Exception e)
+            {
+                App.WriteToParent(new LivelyMessageConsole()
+                {
+                    Category = ConsoleMessageType.error,
+                    Message = $"Failed to initialize audio visualizer: {e.Message}",
+                });
+            }
         }
 
         private WasapiLoopbackCapture CreateWasapiLoopbackCapture(MMDevice device = null)
@@ -43,27 +64,38 @@ namespace Services
 
         private void ProcessAudioData(object sender, WaveInEventArgs e)
         {
-            var buffer = new WaveBuffer(e.Buffer); // save the buffer in the class variable
-
-            int len = buffer.FloatBuffer.Length / 8;
-
-            // fft
-            var values = new Complex[len];
-            for (int i = 0; i < len; i++)
-                values[i] = new Complex(buffer.FloatBuffer[i], 0.0);
-            Fourier.Forward(values, FourierOptions.Default);
-
-            // shift array
-            smooth.Add(values);
-            if (smooth.Count > vertical_smoothness)
-                smooth.RemoveAt(0);
-
-            var audioData = new double[maxSample];
-            for (int i = 0; i < maxSample; i++)
+            try
             {
-                audioData[i] = BothSmooth(i);
+                var buffer = new WaveBuffer(e.Buffer); // save the buffer in the class variable
+
+                int len = buffer.FloatBuffer.Length / 8;
+
+                // fft
+                var values = new Complex[len];
+                for (int i = 0; i < len; i++)
+                    values[i] = new Complex(buffer.FloatBuffer[i], 0.0);
+                Fourier.Forward(values, FourierOptions.Default);
+
+                // shift array
+                smooth.Add(values);
+                if (smooth.Count > vertical_smoothness)
+                    smooth.RemoveAt(0);
+
+                var audioData = new double[maxSample];
+                for (int i = 0; i < maxSample; i++)
+                {
+                    audioData[i] = BothSmooth(i);
+                }
+                AudioDataAvailable?.Invoke(this, audioData);
             }
-            AudioDataAvailable?.Invoke(this, audioData);
+            catch (Exception ex)
+            {
+                App.WriteToParent(new LivelyMessageConsole()
+                {
+                    Category = ConsoleMessageType.error,
+                    Message = $"Failed to process audio data: {ex.Message}",
+                });
+            }
         }
 
         private double BothSmooth(int i)
@@ -90,11 +122,22 @@ namespace Services
         {
             if (flow == DataFlow.Render)
             {
-                capture?.StopRecording();
-                var enumerator = new MMDeviceEnumerator();
-                var defaultDevice = enumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
-                capture = CreateWasapiLoopbackCapture(defaultDevice);
-                capture.StartRecording();
+                try
+                {
+                    capture?.StopRecording();
+                    //var enumerator = new MMDeviceEnumerator();
+                    //var defaultDevice = enumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
+                    capture = CreateWasapiLoopbackCapture();
+                    capture.StartRecording();
+                }
+                catch (Exception e)
+                {
+                    App.WriteToParent(new LivelyMessageConsole()
+                    {
+                        Category = ConsoleMessageType.error,
+                        Message = $"Failed to update WasapiLoopbackCapture device: {e.Message}",
+                    });
+                }
             }
         }
 
