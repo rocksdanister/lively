@@ -2,6 +2,7 @@
     x:Class="Lively.UI.WinUI.Views.Pages.Settings.SettingsWallpaperView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:animations="using:CommunityToolkit.WinUI.UI.Animations"
     xmlns:controls="using:SettingsUI.Controls"
     xmlns:customconverters="using:Lively.UI.WinUI.Helpers.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -64,7 +65,7 @@
                 </controls:SettingsGroup>
 
                 <controls:SettingsGroup Header="Plugins">
-                    <controls:SettingExpander IsExpanded="False">
+                    <controls:SettingExpander IsExpanded="True">
                         <controls:SettingExpander.Header>
                             <controls:Setting x:Uid="VideoPlayer" Style="{StaticResource ExpanderHeaderSettingStyle}">
                                 <controls:Setting.ActionContent>
@@ -101,30 +102,27 @@
                                 </HyperlinkButton.Content>
                             </HyperlinkButton>
                         </InfoBar.ActionButton>
+                        <animations:Implicit.ShowAnimations>
+                            <animations:TranslationAnimation
+                                From="0,-25,0"
+                                To="0"
+                                Duration="0:0:1" />
+                            <animations:OpacityAnimation
+                                From="0"
+                                To="1.0"
+                                Duration="0:0:1" />
+                        </animations:Implicit.ShowAnimations>
+                        <animations:Implicit.HideAnimations>
+                            <animations:TranslationAnimation
+                                From="0"
+                                To="0,-25,0"
+                                Duration="0:0:1" />
+                            <animations:OpacityAnimation
+                                From="1.0"
+                                To="0"
+                                Duration="0:0:1" />
+                        </animations:Implicit.HideAnimations>
                     </InfoBar>
-
-                    <controls:SettingExpander IsExpanded="False">
-                        <controls:SettingExpander.Header>
-                            <controls:Setting x:Uid="StreamWallpaperVideoQuality" Style="{StaticResource ExpanderHeaderSettingStyle}">
-                                <controls:Setting.ActionContent>
-                                    <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedWallpaperStreamQualityIndex, Mode=TwoWay}">
-                                        <ComboBoxItem>144p</ComboBoxItem>
-                                        <ComboBoxItem>240p</ComboBoxItem>
-                                        <ComboBoxItem>360p</ComboBoxItem>
-                                        <ComboBoxItem>480p</ComboBoxItem>
-                                        <ComboBoxItem>720p</ComboBoxItem>
-                                        <ComboBoxItem>1080p</ComboBoxItem>
-                                        <ComboBoxItem>1080p+</ComboBoxItem>
-                                    </ComboBox>
-                                </controls:Setting.ActionContent>
-                            </controls:Setting>
-                        </controls:SettingExpander.Header>
-                        <controls:SettingExpander.Content>
-                            <controls:Setting x:Uid="StreamWallpaperDetect" Style="{StaticResource ExpanderContentSettingStyle}">
-                                <CheckBox IsChecked="{Binding DetectStreamWallpaper, Mode=TwoWay}" />
-                            </controls:Setting>
-                        </controls:SettingExpander.Content>
-                    </controls:SettingExpander>
 
                     <controls:SettingExpander IsExpanded="False">
                         <controls:SettingExpander.Header>
@@ -168,6 +166,26 @@
                                 </HyperlinkButton.Content>
                             </HyperlinkButton>
                         </InfoBar.ActionButton>
+                        <animations:Implicit.ShowAnimations>
+                            <animations:TranslationAnimation
+                                From="0,-25,0"
+                                To="0"
+                                Duration="0:0:1" />
+                            <animations:OpacityAnimation
+                                From="0"
+                                To="1.0"
+                                Duration="0:0:1" />
+                        </animations:Implicit.ShowAnimations>
+                        <animations:Implicit.HideAnimations>
+                            <animations:TranslationAnimation
+                                From="0"
+                                To="0,-25,0"
+                                Duration="0:0:1" />
+                            <animations:OpacityAnimation
+                                From="1.0"
+                                To="0"
+                                Duration="0:0:1" />
+                        </animations:Implicit.HideAnimations>
                     </InfoBar>
 
                     <controls:Setting x:Uid="GifPlayer">
@@ -179,6 +197,65 @@
                             </ComboBox>
                         </controls:Setting.ActionContent>
                     </controls:Setting>
+                    <InfoBar
+                        x:Uid="PluginNotFound"
+                        Margin="0,-2.5,0,0"
+                        VerticalAlignment="Top"
+                        IsClosable="False"
+                        IsOpen="True"
+                        Severity="Error"
+                        Visibility="{Binding IsSelectedGifPlayerAvailable, Converter={StaticResource VisibilityConverter}, Mode=OneWay, ConverterParameter=Reverse}">
+                        <InfoBar.ActionButton>
+                            <HyperlinkButton NavigateUri="https://github.com/rocksdanister/lively/wiki/GIF-Guide" ToolTipService.ToolTip="https://github.com/rocksdanister/lively/wiki/GIF-Guide">
+                                <HyperlinkButton.Content>
+                                    <TextBlock x:Uid="TextLearnMore" TextWrapping="Wrap" />
+                                </HyperlinkButton.Content>
+                            </HyperlinkButton>
+                        </InfoBar.ActionButton>
+                        <animations:Implicit.ShowAnimations>
+                            <animations:TranslationAnimation
+                                From="0,-25,0"
+                                To="0"
+                                Duration="0:0:1" />
+                            <animations:OpacityAnimation
+                                From="0"
+                                To="1.0"
+                                Duration="0:0:1" />
+                        </animations:Implicit.ShowAnimations>
+                        <animations:Implicit.HideAnimations>
+                            <animations:TranslationAnimation
+                                From="0"
+                                To="0,-25,0"
+                                Duration="0:0:1" />
+                            <animations:OpacityAnimation
+                                From="1.0"
+                                To="0"
+                                Duration="0:0:1" />
+                        </animations:Implicit.HideAnimations>
+                    </InfoBar>
+
+                    <controls:SettingExpander IsExpanded="False" Visibility="{Binding IsStreamSupported, Converter={StaticResource VisibilityConverter}, Mode=OneWay}">
+                        <controls:SettingExpander.Header>
+                            <controls:Setting x:Uid="StreamWallpaperVideoQuality" Style="{StaticResource ExpanderHeaderSettingStyle}">
+                                <controls:Setting.ActionContent>
+                                    <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedWallpaperStreamQualityIndex, Mode=TwoWay}">
+                                        <ComboBoxItem>144p</ComboBoxItem>
+                                        <ComboBoxItem>240p</ComboBoxItem>
+                                        <ComboBoxItem>360p</ComboBoxItem>
+                                        <ComboBoxItem>480p</ComboBoxItem>
+                                        <ComboBoxItem>720p</ComboBoxItem>
+                                        <ComboBoxItem>1080p</ComboBoxItem>
+                                        <ComboBoxItem>1080p+</ComboBoxItem>
+                                    </ComboBox>
+                                </controls:Setting.ActionContent>
+                            </controls:Setting>
+                        </controls:SettingExpander.Header>
+                        <controls:SettingExpander.Content>
+                            <controls:Setting x:Uid="StreamWallpaperDetect" Style="{StaticResource ExpanderContentSettingStyle}">
+                                <CheckBox IsChecked="{Binding DetectStreamWallpaper, Mode=TwoWay}" />
+                            </controls:Setting>
+                        </controls:SettingExpander.Content>
+                    </controls:SettingExpander>
                 </controls:SettingsGroup>
             </StackPanel>
         </ScrollViewer>
