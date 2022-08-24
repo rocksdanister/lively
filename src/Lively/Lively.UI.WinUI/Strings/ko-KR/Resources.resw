@@ -217,7 +217,7 @@ Lively 화면 보호기의 주요 목적은 사용자 PC에 사용자 지정의 
 업데이트는 빈번하며 버그가 포함될 수 있습니다!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
-    <value>System-tray icon visibility, lively will continue to run with the icon hidden</value>
+    <value>시스템 트레이 아이콘 표시 여부, 활성은 아이콘이 숨겨진 상태에서 계속 실행됩니다.</value>
   </data>
   <data name="HideSysTray.Header" xml:space="preserve">
     <value>시스템 트레이 아이콘</value>
@@ -655,7 +655,7 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp; 적용.
     <value>배경화면 일시 중지 알고리즘</value>
   </data>
   <data name="PowerSavingModePower.Description" xml:space="preserve">
-    <value>Change playback when Windows Power Saving Mode is enabled</value>
+    <value>Windows 절전 모드를 사용하도록 설정한 경우 재생 변경</value>
   </data>
   <data name="RemoteDesktopPower.Description" xml:space="preserve">
     <value>원격 데스크톱 세션을 실행할 때 재생을 변경합니다.</value>
@@ -764,7 +764,7 @@ Edge는 Windows 10의 내장 웹뷰입니다.</value>
     <value>도움말 문서</value>
   </data>
   <data name="EnterUrl.Header" xml:space="preserve">
-    <value>Enter URL</value>
+    <value>URL 입력</value>
   </data>
   <data name="ExportLogs.Header" xml:space="preserve">
     <value>로그 파일</value>
@@ -981,10 +981,10 @@ Edge는 Windows 10의 내장 웹뷰입니다.</value>
     <value>저장</value>
   </data>
   <data name="UIMode.Description" xml:space="preserve">
-    <value>User interface effects and animations</value>
+    <value>사용자 인터페이스 효과 및 애니메이션</value>
   </data>
   <data name="UIMode.Header" xml:space="preserve">
-    <value>User interface</value>
+    <value>사용자 인터페이스</value>
   </data>
   <data name="UIModeLite.Content" xml:space="preserve">
     <value>라이트</value>
@@ -993,136 +993,136 @@ Edge는 Windows 10의 내장 웹뷰입니다.</value>
     <value>보통</value>
   </data>
   <data name="Screensaver.Description" xml:space="preserve">
-    <value>How screensaver is applied to connected to display devices</value>
+    <value>화면 보호기를 연결된 디스플레이 장치에 적용하는 방법</value>
   </data>
   <data name="Screensaver.Header" xml:space="preserve">
-    <value>Type of screensaver</value>
+    <value>화면 보호기 유형</value>
   </data>
   <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
-    <value>Configured separately</value>
+    <value>별도로 구성</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
-    <value>Same as running wallpaper</value>
+    <value>실행 중인 배경 화면과 동일</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
-    <value>Plugin required</value>
+    <value>플러그인 필요</value>
   </data>
   <data name="ScreensaverPluginMessage.Text" xml:space="preserve">
-    <value>One time setup is required to run screensaver</value>
+    <value>화면 보호기를 실행하려면 한 번 설정이 필요합니다.</value>
   </data>
   <data name="WallpaperLayoutScreenPicker.Content" xml:space="preserve">
-    <value>Always pick screen when choosing wallpaper</value>
+    <value>배경 화면을 선택할 때 항상 화면 선택</value>
   </data>
   <data name="GalleryAccount.Text" xml:space="preserve">
-    <value>Account</value>
+    <value>계정</value>
   </data>
   <data name="GalleryAccountDelete.Content" xml:space="preserve">
-    <value>Delete account</value>
+    <value>계정 삭제</value>
   </data>
   <data name="GalleryAccountExport.Content" xml:space="preserve">
-    <value>Export data</value>
+    <value>데이터 내보내기</value>
   </data>
   <data name="GalleryAccountLogin.Content" xml:space="preserve">
-    <value>Log in</value>
+    <value>로그인</value>
   </data>
   <data name="GalleryAccountLogout.Content" xml:space="preserve">
-    <value>Log out</value>
+    <value>로그아웃</value>
   </data>
   <data name="GalleryPageCollection.Content" xml:space="preserve">
-    <value>Collection</value>
+    <value>컬렉션</value>
   </data>
   <data name="GalleryPageHome.Content" xml:space="preserve">
-    <value>Home</value>
+    <value>홈</value>
   </data>
   <data name="GalleryPageManage.Content" xml:space="preserve">
-    <value>Manage</value>
+    <value>관리</value>
   </data>
   <data name="GalleryPageProfile.Content" xml:space="preserve">
-    <value>Profile</value>
+    <value>프로필</value>
   </data>
   <data name="GalleryPleaseLogin.Text" xml:space="preserve">
-    <value>Please log in to continue</value>
+    <value>계속하려면 로그인하세요.</value>
   </data>
   <data name="GalleryWelcomeMessage.Text" xml:space="preserve">
-    <value>Hi</value>
+    <value>안녕,</value>
   </data>
   <data name="RestoreWallpaper.Text" xml:space="preserve">
-    <value>We found these wallpapers in your account</value>
+    <value>귀하의 계정에서 이 배경 화면을 찾았습니다.</value>
   </data>
   <data name="TextDownloadNow.Content" xml:space="preserve">
-    <value>Download now</value>
+    <value>지금 다운로드</value>
   </data>
   <data name="TextMaybeLater.Content" xml:space="preserve">
-    <value>Maybe later</value>
+    <value>나중에</value>
   </data>
   <data name="TextSelectAll.Content" xml:space="preserve">
-    <value>Select all</value>
+    <value>모두 선택</value>
   </data>
   <data name="TextSelectNone.Content" xml:space="preserve">
-    <value>Select none</value>
+    <value>선택 없음</value>
   </data>
   <data name="TitleWelcomeback.Text" xml:space="preserve">
-    <value>Welcome back!</value>
+    <value>다시 오셔서 반갑습니다!</value>
   </data>
   <data name="ReportWallpaper.Header" xml:space="preserve">
-    <value>Reasons</value>
+    <value>이유</value>
   </data>
   <data name="ReportWallpaperCopyright.Content" xml:space="preserve">
-    <value>Copyright violation</value>
+    <value>저작권 위반</value>
   </data>
   <data name="ReportWallpaperMisleading.Content" xml:space="preserve">
-    <value>Misleading information</value>
+    <value>오해성 정보</value>
   </data>
   <data name="ReportWallpaperOther.Content" xml:space="preserve">
-    <value>Other</value>
+    <value>기타</value>
   </data>
   <data name="ReportWallpaperSpam.Content" xml:space="preserve">
-    <value>Spam</value>
+    <value>스팸</value>
   </data>
   <data name="ReportWallpaperViolence.Content" xml:space="preserve">
-    <value>Nudity or violence</value>
+    <value>나체 또는 폭력</value>
   </data>
   <data name="TextAdditionalNotes.Text" xml:space="preserve">
-    <value>Additional notes</value>
+    <value>추가 설명</value>
   </data>
   <data name="TextReportWallpaper.Text" xml:space="preserve">
-    <value>Report</value>
+    <value>신고하기</value>
   </data>
   <data name="TitleReportWallpaper.Text" xml:space="preserve">
-    <value>Report Wallpaper</value>
+    <value>배경 화면 신고</value>
   </data>
   <data name="Send.Content" xml:space="preserve">
-    <value>Send</value>
+    <value>보내기</value>
   </data>
   <data name="GalleryAccountDeleteConfirm.Text" xml:space="preserve">
-    <value>Please confirm this action as it CAN NOT be undone</value>
+    <value>취소할 수 없으므로 이 작업을 확인해주세요.</value>
   </data>
   <data name="GalleryAccountDeleteFail.Text" xml:space="preserve">
-    <value>Failed to delete account, please try again later</value>
+    <value>계정 삭제 실패, 나중에 다시 시도해보세요.</value>
   </data>
   <data name="TextConfirmCancel.Text" xml:space="preserve">
-    <value>Do you want to cancel it?</value>
+    <value>취소하시겠습니까?</value>
   </data>
   <data name="TextWait.Text" xml:space="preserve">
-    <value>Wait</value>
+    <value>대기</value>
   </data>
   <data name="TitleDownloadProgress.Text" xml:space="preserve">
-    <value>Download in Progress</value>
+    <value>다운로드 진행 중</value>
   </data>
   <data name="TextContributors.Text" xml:space="preserve">
-    <value>Contributors</value>
+    <value>후원자</value>
   </data>
   <data name="TextShare.Text" xml:space="preserve">
-    <value>Share</value>
+    <value>공유</value>
   </data>
   <data name="TitleShareWallpaper.Text" xml:space="preserve">
-    <value>Share Wallpaper</value>
+    <value>배경 화면 공유</value>
   </data>
   <data name="ExportWallpaperGallery.Text" xml:space="preserve">
-    <value>Gallery upload</value>
+    <value>갤러리 업로드</value>
   </data>
   <data name="ExportWallpaperLink.Text" xml:space="preserve">
-    <value>Copy link</value>
+    <value>링크 복사</value>
   </data>
   <data name="TextCustomiseWallpaper" xml:space="preserve">
     <value>배경 화면 사용자 정의</value>
@@ -1131,15 +1131,15 @@ Edge는 Windows 10의 내장 웹뷰입니다.</value>
     <value>배경 화면 닫기</value>
   </data>
   <data name="TitleChooseApplication.Text" xml:space="preserve">
-    <value>Choose Application</value>
+    <value>응용 프로그램 선택</value>
   </data>
   <data name="WallpaperInstallSize.Text" xml:space="preserve">
-    <value>Size</value>
+    <value>크기</value>
   </data>
   <data name="PluginNotFound.Message" xml:space="preserve">
-    <value>Please install the required plugin</value>
+    <value>필요한 플러그인을 설치하세요.</value>
   </data>
   <data name="PluginNotFound.Title" xml:space="preserve">
-    <value>Plugin not found</value>
+    <value>플러그인을 찾을 수 없음</value>
   </data>
 </root>
