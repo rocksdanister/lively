@@ -1134,9 +1134,9 @@ Edge este vizualizarea web integrată a Windows 10.</value>
     <value>Dimensiune</value>
   </data>
   <data name="PluginNotFound.Message" xml:space="preserve">
-    <value>Please install the required plugin</value>
+    <value>Vă rugăm să instalați plugin-ul necesar</value>
   </data>
   <data name="PluginNotFound.Title" xml:space="preserve">
-    <value>Plugin not found</value>
+    <value>Plugin-ul nu a fost găsit</value>
   </data>
 </root>

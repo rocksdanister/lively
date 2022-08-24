@@ -130,7 +130,7 @@
     <value>Suara</value>
   </data>
   <data name="CommunityPage.Content" xml:space="preserve">
-    <value>Online discussion forum</value>
+    <value>Forum diskusi online</value>
   </data>
   <data name="DocumentationPage.Content" xml:space="preserve">
     <value>Bantuan dan Dokumentasi API</value>
@@ -217,7 +217,7 @@ Lanjutkan jika aplikasi berasal dari sumber terpercaya</value>
 Akan sering dilakukan pembaharuan dan mungkin ada bugnya!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
-    <value>System-tray icon visibility, lively will continue to run with the icon hidden</value>
+    <value>Visibilitas ikon System-tray, lively akan terus berjalan di latar belakang dengan ikon tersembunyi</value>
   </data>
   <data name="HideSysTray.Header" xml:space="preserve">
     <value>Ikon System-tray</value>

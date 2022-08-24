@@ -569,6 +569,23 @@ namespace Lively.UI.WinUI.ViewModels
             }
         }
 
+        private bool _mouseMoveOnDesktop;
+        public bool MouseMoveOnDesktop
+        {
+            get { return _mouseMoveOnDesktop; }
+            set
+            {
+                _mouseMoveOnDesktop = value;
+                OnPropertyChanged();
+
+                if (userSettings.Settings.MouseInputMovAlways != _mouseMoveOnDesktop)
+                {
+                    userSettings.Settings.MouseInputMovAlways = _mouseMoveOnDesktop;
+                    UpdateSettingsConfigFile();
+                }
+            }
+        }
+
         private bool _isSelectedVideoPlayerAvailable;
         public bool IsSelectedVideoPlayerAvailable
         {
@@ -618,6 +635,13 @@ namespace Lively.UI.WinUI.ViewModels
             }
         }
 
+        private bool _isSelectedGifPlayerAvailable;
+        public bool IsSelectedGifPlayerAvailable
+        {
+            get { return _isSelectedGifPlayerAvailable; }
+            set { _isSelectedGifPlayerAvailable = value; OnPropertyChanged(); }
+        }
+
         private int _selectedGifPlayerIndex;
         public int SelectedGifPlayerIndex
         {
@@ -627,30 +651,16 @@ namespace Lively.UI.WinUI.ViewModels
             }
             set
             {
-                _selectedGifPlayerIndex = IsGifPlayerAvailable((LivelyGifPlayer)value) ? value : (int)LivelyGifPlayer.mpv;
+                _selectedGifPlayerIndex = value;
+                IsSelectedGifPlayerAvailable = IsGifPlayerAvailable((LivelyGifPlayer)value);
+                //_selectedGifPlayerIndex = IsGifPlayerAvailable((LivelyGifPlayer)value) ? value : (int)LivelyGifPlayer.mpv;
                 OnPropertyChanged();
+
                 if (userSettings.Settings.GifPlayer != (LivelyGifPlayer)_selectedGifPlayerIndex)
                 {
                     userSettings.Settings.GifPlayer = (LivelyGifPlayer)_selectedGifPlayerIndex;
                     UpdateSettingsConfigFile();
                     _ = WallpaperRestart(new WallpaperType[] { WallpaperType.gif, WallpaperType.picture });
-                }
-            }
-        }
-
-        private int _selectedWallpaperStreamQualityIndex;
-        public int SelectedWallpaperStreamQualityIndex
-        {
-            get { return _selectedWallpaperStreamQualityIndex; }
-            set
-            {
-                _selectedWallpaperStreamQualityIndex = value;
-                OnPropertyChanged();
-                if (userSettings.Settings.StreamQuality != (StreamQualitySuggestion)_selectedWallpaperStreamQualityIndex)
-                {
-                    userSettings.Settings.StreamQuality = (StreamQualitySuggestion)_selectedWallpaperStreamQualityIndex;
-                    UpdateSettingsConfigFile();
-                    _ = WallpaperRestart(new WallpaperType[] { WallpaperType.videostream });
                 }
             }
         }
@@ -685,23 +695,6 @@ namespace Lively.UI.WinUI.ViewModels
             }
         }
 
-        private bool _mouseMoveOnDesktop;
-        public bool MouseMoveOnDesktop
-        {
-            get { return _mouseMoveOnDesktop; }
-            set
-            {
-                _mouseMoveOnDesktop = value;
-                OnPropertyChanged();
-
-                if (userSettings.Settings.MouseInputMovAlways != _mouseMoveOnDesktop)
-                {
-                    userSettings.Settings.MouseInputMovAlways = _mouseMoveOnDesktop;
-                    UpdateSettingsConfigFile();
-                }
-            }
-        }
-
         private string _webDebuggingPort;
         public string WebDebuggingPort
         {
@@ -731,6 +724,38 @@ namespace Lively.UI.WinUI.ViewModels
                     UpdateSettingsConfigFile();
                 }
                 OnPropertyChanged();
+            }
+        }
+
+        public bool IsStreamSupported
+        {
+            get
+            {
+                try
+                {
+                    return File.Exists(Path.Combine(desktopCore.BaseDirectory, "plugins", "mpv", "youtube-dl.exe"));
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
+
+        private int _selectedWallpaperStreamQualityIndex;
+        public int SelectedWallpaperStreamQualityIndex
+        {
+            get { return _selectedWallpaperStreamQualityIndex; }
+            set
+            {
+                _selectedWallpaperStreamQualityIndex = value;
+                OnPropertyChanged();
+                if (userSettings.Settings.StreamQuality != (StreamQualitySuggestion)_selectedWallpaperStreamQualityIndex)
+                {
+                    userSettings.Settings.StreamQuality = (StreamQualitySuggestion)_selectedWallpaperStreamQualityIndex;
+                    UpdateSettingsConfigFile();
+                    _ = WallpaperRestart(new WallpaperType[] { WallpaperType.videostream });
+                }
             }
         }
 
