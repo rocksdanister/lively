@@ -20,6 +20,7 @@ using Lively.Common.Helpers;
 using Lively.UI.WinUI.Services;
 using Lively.Gallery.Client;
 using CommunityToolkit.Mvvm.Input;
+using Windows.ApplicationModel.Resources;
 
 namespace Lively.UI.WinUI.ViewModels
 {
@@ -584,7 +585,7 @@ namespace Lively.UI.WinUI.ViewModels
                     }
                     else
                     {
-                        throw new InvalidOperationException("Not Lively .zip");
+                        throw new InvalidOperationException(ResourceLoader.GetForViewIndependentUse().GetString("LivelyExceptionNotLivelyZip"));
                     }
                 }
                 else
@@ -608,7 +609,7 @@ namespace Lively.UI.WinUI.ViewModels
                     return AddWallpaper(dir, true);
                 }
             }
-            throw new InvalidOperationException($"Unsupported file ({Path.GetExtension(filePath)})");
+            throw new InvalidOperationException($"{ResourceLoader.GetForViewIndependentUse().GetString("TextUnsupportedFile")} ({Path.GetExtension(filePath)})");
         }
 
         public ILibraryModel AddWallpaperLink(string url)

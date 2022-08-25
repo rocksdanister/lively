@@ -31,7 +31,7 @@ namespace Lively.UI.WinUI.ViewModels
             appUpdater.UpdateChecked += AppUpdater_UpdateChecked;
         }
 
-        public bool IsNotWinStore => !Constants.ApplicationType.IsMSIX;
+        public bool IsWinStore => Constants.ApplicationType.IsMSIX;
 
         public string AppVersionText => "v" + desktopCore.AssemblyVersion +
                 (Constants.ApplicationType.IsTestBuild ? "b" : (Constants.ApplicationType.IsMSIX ? $" {languageResource.GetString("Store/Header")}" : string.Empty));
@@ -46,6 +46,14 @@ namespace Lively.UI.WinUI.ViewModels
                 OnPropertyChanged();
             }
         }
+
+        private string _updateStatusSeverity = "Warning";
+        public string UpdateStatusSeverity
+        {
+            get { return _updateStatusSeverity; }
+            set { _updateStatusSeverity = value; OnPropertyChanged(); }
+        }
+
 
         private string _updateDateText;
         public string UpdateDateText
@@ -113,22 +121,27 @@ namespace Lively.UI.WinUI.ViewModels
             {
                 case AppUpdateStatus.uptodate:
                     updateAvailable = false;
+                    UpdateStatusSeverity = "Informational";
                     UpdateStatusText = languageResource.GetString("TextUpdateUptodate");
                     break;
                 case AppUpdateStatus.available:
                     updateAvailable = true;
+                    UpdateStatusSeverity = "Success";
                     UpdateStatusText = $"{languageResource.GetString("DescriptionUpdateAvailable")} (v{version})";
                     break;
                 case AppUpdateStatus.invalid:
                     updateAvailable = false;
+                    UpdateStatusSeverity = "Error";
                     UpdateStatusText = "This software has unique version tag~";
                     break;
                 case AppUpdateStatus.notchecked:
                     updateAvailable = false;
+                    UpdateStatusSeverity = "Warning";
                     UpdateStatusText = languageResource.GetString("TextUpdateChecking");
                     break;
                 case AppUpdateStatus.error:
                     updateAvailable = false;
+                    UpdateStatusSeverity = "Error";
                     UpdateStatusText = languageResource.GetString("TextupdateCheckFail");
                     break;
             }

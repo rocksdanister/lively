@@ -53,9 +53,8 @@ namespace Lively.UI.WinUI.Helpers
             var filterCollection = new List<string>();
             if (anyFile)
             {
-                filterCollection.Append("*");
+                filterCollection.Add("*");
             }
-
             foreach (var item in FileFilter.LivelySupportedFormats)
             {
                 foreach (var extension in item.Extentions)
