@@ -51,9 +51,6 @@ namespace Lively.UI.WinUI.ViewModels
         [ObservableProperty]
         private string errorMessage;
 
-        [ObservableProperty]
-        private bool isError;
-
         private RelayCommand _browseWebCommand;
         public RelayCommand BrowseWebCommand => _browseWebCommand ??= new RelayCommand(WebBrowseAction);
 
@@ -94,7 +91,7 @@ namespace Lively.UI.WinUI.ViewModels
 
         private async Task FileBrowseAction()
         {
-            IsError = false;
+            ErrorMessage = null;
             var filePicker = new FileOpenPicker();
             filePicker.SetOwnerWindow(App.Services.GetRequiredService<MainWindow>());
             //filePicker.FileTypeFilter.Add("*");
@@ -130,7 +127,6 @@ namespace Lively.UI.WinUI.ViewModels
             catch (Exception ex)
             {
                 ErrorMessage = ex.Message;
-                IsError = true;
             }
         }
 
