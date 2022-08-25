@@ -1,9 +1,9 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Lively.Common;
 using Lively.Common.Helpers;
 using Lively.Common.Helpers.Archive;
 using Lively.Common.Helpers.Files;
-using Lively.Common.Helpers.MVVM;
 using Lively.Grpc.Client;
 using Lively.Models;
 using Lively.UI.WinUI.Helpers;
@@ -20,22 +20,19 @@ using Windows.Storage.Pickers;
 
 namespace Lively.UI.WinUI.ViewModels
 {
-    public class AddWallpaperViewModel : ObservableObject
+    public partial class AddWallpaperViewModel : ObservableObject
     {
         public ILibraryModel NewWallpaper { get; private set; }
         public List<string> NewWallpapers { get; private set; } = new List<string>();
         public event EventHandler OnRequestClose;
 
         private readonly IUserSettingsClient userSettings;
-        //private readonly LibraryViewModel libraryVm;
         private readonly LibraryViewModel libraryVm;
 
         public AddWallpaperViewModel(IUserSettingsClient userSettings, LibraryViewModel libraryVm)
         {
             this.userSettings = userSettings;
-            //this.libraryVm = libraryVm;
             this.libraryVm = libraryVm;
-            //this.appWindow = appWindow;
 
             WebUrlText = userSettings.Settings.SavedURL;
         }
@@ -48,16 +45,14 @@ namespace Lively.UI.WinUI.ViewModels
             });
         }
 
-        private string _webUrlText;
-        public string WebUrlText
-        {
-            get { return _webUrlText; }
-            set
-            {
-                _webUrlText = value;
-                OnPropertyChanged();
-            }
-        }
+        [ObservableProperty]
+        private string webUrlText;
+
+        [ObservableProperty]
+        private string errorMessage;
+
+        [ObservableProperty]
+        private bool isError;
 
         private RelayCommand _browseWebCommand;
         public RelayCommand BrowseWebCommand => _browseWebCommand ??= new RelayCommand(WebBrowseAction);
@@ -99,6 +94,7 @@ namespace Lively.UI.WinUI.ViewModels
 
         private async Task FileBrowseAction()
         {
+            IsError = false;
             var filePicker = new FileOpenPicker();
             filePicker.SetOwnerWindow(App.Services.GetRequiredService<MainWindow>());
             //filePicker.FileTypeFilter.Add("*");
@@ -131,9 +127,10 @@ namespace Lively.UI.WinUI.ViewModels
                 }
                 OnRequestClose?.Invoke(this, EventArgs.Empty);
             }
-            catch
+            catch (Exception ex)
             {
-                //TODO
+                ErrorMessage = ex.Message;
+                IsError = true;
             }
         }
 

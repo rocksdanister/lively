@@ -35,38 +35,7 @@ namespace Lively.UI.WinUI.Views.Pages
             this.InitializeComponent();
             var vm = App.Services.GetRequiredService<AboutViewModel>();
             this.DataContext = vm;
-            appUpdater = App.Services.GetRequiredService<IAppUpdaterClient>();
-            appUpdater.UpdateChecked += AboutView_UpdateChecked;
-            infoBar.Severity = GetSeverity(appUpdater.Status);
             markDownPatreon.Loaded += vm.OnPatreonLoaded;
-            //this.Unloaded += vm.OnWindowClosing;
-        }
-
-        private void AboutView_UpdateChecked(object sender, AppUpdaterEventArgs e)
-        {
-            _ = this.DispatcherQueue.TryEnqueue(() =>
-            {
-                infoBar.Severity = GetSeverity(e.UpdateStatus);
-            });
-        }
-
-        private InfoBarSeverity GetSeverity(AppUpdateStatus status)
-        {
-            return status switch
-            {
-                AppUpdateStatus.uptodate => InfoBarSeverity.Informational,
-                AppUpdateStatus.available => InfoBarSeverity.Success,
-                AppUpdateStatus.invalid => InfoBarSeverity.Error,
-                AppUpdateStatus.notchecked => InfoBarSeverity.Warning,
-                AppUpdateStatus.error => InfoBarSeverity.Error,
-                _ => InfoBarSeverity.Error,
-            };
-        }
-
-        //Issue: WinUI firing unloaded randomly..
-        private void Page_Unloaded(object sender, RoutedEventArgs e)
-        {
-            //appUpdater.UpdateChecked -= AboutView_UpdateChecked;
         }
 
         #region socials

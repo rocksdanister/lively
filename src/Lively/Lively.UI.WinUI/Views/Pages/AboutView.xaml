@@ -3,17 +3,17 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="using:SettingsUI.Controls"
-    xmlns:converters="using:CommunityToolkit.WinUI.UI.Converters"
+    xmlns:customconverters="using:Lively.UI.WinUI.Helpers.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Lively.UI.WinUI.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:wctc="using:CommunityToolkit.WinUI.UI.Controls"
     MinWidth="500"
-    Unloaded="Page_Unloaded"
     mc:Ignorable="d">
 
     <Page.Resources>
-        <converters:BoolToVisibilityConverter x:Key="VisibilityConverter" />
+        <customconverters:BooleanToVisibilityConverter x:Key="VisibilityConverter" />
+        <customconverters:StringToInfoBarSeverityConverter x:Key="InfoBarSeverityConverter" />
     </Page.Resources>
 
     <Grid>
@@ -80,7 +80,7 @@
                                 HorizontalAlignment="Right"
                                 Command="{Binding UpdateAppCommand}"
                                 Content="{Binding UpdateCommandText}"
-                                Visibility="{Binding IsNotWinStore, Mode=OneWay, Converter={StaticResource VisibilityConverter}}" />
+                                Visibility="{Binding IsWinStore, Converter={StaticResource VisibilityConverter}, Mode=OneWay, ConverterParameter=Reverse}" />
                         </StackPanel>
                     </controls:Setting.ActionContent>
                 </controls:Setting>
@@ -90,8 +90,8 @@
                     Margin="0,-1.5,0,0"
                     IsClosable="False"
                     IsOpen="True"
-                    Severity="Success"
-                    Visibility="{Binding IsNotWinStore, Mode=OneWay, Converter={StaticResource VisibilityConverter}}" />
+                    Severity="{Binding UpdateStatusSeverity, Converter={StaticResource InfoBarSeverityConverter}, Mode=OneWay}"
+                    Visibility="{Binding IsWinStore, Converter={StaticResource VisibilityConverter}, Mode=OneWay, ConverterParameter=Reverse}" />
 
                 <controls:SettingExpander IsExpanded="False">
                     <controls:SettingExpander.Header>
