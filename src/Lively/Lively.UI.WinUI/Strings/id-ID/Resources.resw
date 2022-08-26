@@ -518,7 +518,7 @@ Jika masih tidak berfungsi, tutup dan mulai ulang Lively/Windows.
     <value>Latar Belakang</value>
   </data>
   <data name="TaskbarThemeWallpaperFluent.Content" xml:space="preserve">
-    <value>Wallpaper Fluent</value>
+    <value>Wallpaper lancar</value>
   </data>
   <data name="TextTileSizeLarge" xml:space="preserve">
     <value>Besar</value>
@@ -656,10 +656,10 @@ Semua: Jeda wallpaper untuk semua layar jika ada aplikasi fullscreen/sedang difo
 Semua proses: Lebih berat, memindai semua proses untuk menentukan tingkah laku pemutaran</value>
   </data>
   <data name="PowerSavingModePower.Description" xml:space="preserve">
-    <value>Change playback when Windows Power Saving Mode is enabled</value>
+    <value>Ganti metode pemutaran ketika mode hemat daya aktif</value>
   </data>
   <data name="RemoteDesktopPower.Description" xml:space="preserve">
-    <value>Change playback when running a Remote Desktop session</value>
+    <value>Ganti metode pemutaran ketika sedang berada di mode kendali jarak jauh</value>
   </data>
   <data name="TipScreensaver" xml:space="preserve">
     <value>Setelah periode tidakaktif yang telah dipilah, gunakan wallpaper saat ini sebagai screensaver anda.</value>
@@ -815,7 +815,7 @@ Semua proses: Lebih berat, memindai semua proses untuk menentukan tingkah laku p
     <value>Saat mode Penghemat Baterai</value>
   </data>
   <data name="RemoteDesktopPower.Header" xml:space="preserve">
-    <value>When on Remote Desktop</value>
+    <value>Ketika sedang Remote Desktop</value>
   </data>
   <data name="ReportBug.Header" xml:space="preserve">
     <value>Laporkan Masalah</value>
@@ -830,7 +830,7 @@ Semua proses: Lebih berat, memindai semua proses untuk menentukan tingkah laku p
     <value>Screensaver</value>
   </data>
   <data name="TitleScreensaverLockOnResume" xml:space="preserve">
-    <value>On resume, display logon screen</value>
+    <value>Saat dilanjutkan, tampilkan layar log in dahulu</value>
   </data>
   <data name="TitleSelectFile" xml:space="preserve">
     <value>Pilih File</value>
@@ -906,7 +906,7 @@ Semua proses: Lebih berat, memindai semua proses untuk menentukan tingkah laku p
     <value>Web Browser</value>
   </data>
   <data name="WebBrowserDiskCache.Header" xml:space="preserve">
-    <value>Disk cache</value>
+    <value>Taruh cache di penyimpanan</value>
   </data>
   <data name="TitleWebBrowserEngine" xml:space="preserve">
     <value>Mesin</value>
@@ -993,7 +993,7 @@ Semua proses: Lebih berat, memindai semua proses untuk menentukan tingkah laku p
     <value>Normal</value>
   </data>
   <data name="Screensaver.Description" xml:space="preserve">
-    <value>How screensaver is applied to connected to display devices</value>
+    <value>Bagaimana screensaver diterapkan pada layar yang terhubung</value>
   </data>
   <data name="Screensaver.Header" xml:space="preserve">
     <value>Jenis latar belakang</value>

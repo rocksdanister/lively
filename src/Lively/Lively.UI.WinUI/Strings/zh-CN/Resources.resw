@@ -1002,7 +1002,7 @@ Edge 是 Windows 10 内置的浏览器。</value>
     <value>屏幕保护程序类型</value>
   </data>
   <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
-    <value>Configured separately</value>
+    <value>单独配置</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
     <value>与正在运行的壁纸相同</value>
@@ -1038,7 +1038,7 @@ Edge 是 Windows 10 内置的浏览器。</value>
     <value>主页</value>
   </data>
   <data name="GalleryPageManage.Content" xml:space="preserve">
-    <value>Manage</value>
+    <value>管理</value>
   </data>
   <data name="GalleryPageProfile.Content" xml:space="preserve">
     <value>个人资料</value>
@@ -1140,9 +1140,9 @@ Edge 是 Windows 10 内置的浏览器。</value>
     <value>文件大小</value>
   </data>
   <data name="PluginNotFound.Message" xml:space="preserve">
-    <value>Please install the required plugin</value>
+    <value>请安装所需插件</value>
   </data>
   <data name="PluginNotFound.Title" xml:space="preserve">
-    <value>Plugin not found</value>
+    <value>未找到插件</value>
   </data>
 </root>

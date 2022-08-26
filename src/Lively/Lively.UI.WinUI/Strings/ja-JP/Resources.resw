@@ -121,7 +121,7 @@
     <value>デスクトップがフォーカスされているときのみ音声を再生</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
-    <value>すべての壁紙の音量です。</value>
+    <value>すべての壁紙の音量</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
     <value>マスターボリューム</value>
@@ -217,7 +217,7 @@ Livelyのスクリーンセーバーの主な目的はあなたのPCのカスタ
 アップデートが頻繁に行われ、バグを含む可能性があります！</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
-    <value>System-tray icon visibility, lively will continue to run with the icon hidden</value>
+    <value>システムトレイアイコンの表示。Livelyはシステムトレイアイコンが非表示の状態で動作し続けます。</value>
   </data>
   <data name="HideSysTray.Header" xml:space="preserve">
     <value>システムトレイアイコン</value>
@@ -275,7 +275,7 @@ Windows 7 の場合は、"パフォーマンスを優先する"を選択する�
     <value>壁紙を再生するためには、Livelyをバックグラウンドで動作させる必要があります。</value>
   </data>
   <data name="Startup.Header" xml:space="preserve">
-    <value>Start with Windows</value>
+    <value>Windows起動時に自動起動</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
     <value>追加</value>
@@ -311,7 +311,7 @@ Windows 7 の場合は、"パフォーマンスを優先する"を選択する�
     <value>壁紙を閉じる</value>
   </data>
   <data name="TextCompleted" xml:space="preserve">
-    <value>完成！</value>
+    <value>完了！</value>
   </data>
   <data name="ControlPanel.Subtitle" xml:space="preserve">
     <value>クリックで壁紙の管理へ</value>
@@ -353,7 +353,7 @@ Windows 7 の場合は、"パフォーマンスを優先する"を選択する�
     <value>終了</value>
   </data>
   <data name="ExportWallpaperZip.Text" xml:space="preserve">
-    <value>lively.zip を出力する</value>
+    <value>zipファイルを出力する</value>
   </data>
   <data name="TextFeatureMissing" xml:space="preserve">
     <value>このバージョンのLivelyでは利用できない機能があります。</value>
@@ -371,7 +371,7 @@ Windows 7 の場合は、"パフォーマンスを優先する"を選択する�
     <value>GO</value>
   </data>
   <data name="TextHelpTranslate.Title" xml:space="preserve">
-    <value>Livelyの翻訳を手伝ってください。</value>
+    <value>Livelyの翻訳を助けてください！</value>
   </data>
   <data name="TextHours" xml:space="preserve">
     <value>時間</value>
@@ -416,7 +416,7 @@ Windows 7 の場合は、"パフォーマンスを優先する"を選択する�
     <value>オフ</value>
   </data>
   <data name="TextOK" xml:space="preserve">
-    <value>OK</value>
+    <value>決定</value>
   </data>
   <data name="TextOn.Content" xml:space="preserve">
     <value>オン</value>
@@ -455,7 +455,7 @@ Windows 7 の場合は、"パフォーマンスを優先する"を選択する�
     <value>プレビュー</value>
   </data>
   <data name="PrivacyPolicy.Header" xml:space="preserve">
-    <value>個人情報保護方針</value>
+    <value>プライバシーポリシー</value>
   </data>
   <data name="TextProcessingWallpaper" xml:space="preserve">
     <value>処理</value>
@@ -488,7 +488,7 @@ Windows 7 の場合は、"パフォーマンスを優先する"を選択する�
     <value>ストップ</value>
   </data>
   <data name="StoreReview.Content" xml:space="preserve">
-    <value>Livelyの使用を楽しんでいますか？ コメントをください :)</value>
+    <value>Livelyの壁紙に満足していますか？ コメントをください :)</value>
   </data>
   <data name="TextSupport.Content" xml:space="preserve">
     <value>サポート</value>
@@ -515,7 +515,7 @@ Windows 7 の場合は、"パフォーマンスを優先する"を選択する�
     <value>なめらか</value>
   </data>
   <data name="TaskbarThemeWallpaper.Content" xml:space="preserve">
-    <value>壁紙の色</value>
+    <value>壁紙</value>
   </data>
   <data name="TaskbarThemeWallpaperFluent.Content" xml:space="preserve">
     <value>壁紙の色（なめらか）</value>
@@ -678,7 +678,7 @@ Windows 7 の場合は、"パフォーマンスを優先する"を選択する�
     <value>ライブラリに表示される壁紙のタイルサイズです。</value>
   </data>
   <data name="TipUIMode" xml:space="preserve">
-    <value>ローエンドのシステムでは、ライトモードを選択してください。</value>
+    <value>性能の低い環境では、ライトモードを選択してください。</value>
   </data>
   <data name="VideoHardwareDecode.Description" xml:space="preserve">
     <value>使用可能であればハードウェアアクセラレーションを使用します。</value>
@@ -706,7 +706,7 @@ Windows 7 の場合は、"パフォーマンスを優先する"を選択する�
   </data>
   <data name="WebBrowser.Description" xml:space="preserve">
     <value>CEF(Chromium Embedded Framework)は、軽量のChromiumエンジンです。
-Edgeは、Windows 10に内蔵されたWebViewです。</value>
+Edge Webview2は、Windowsに内蔵されたWebViewです。</value>
   </data>
   <data name="About.Label" xml:space="preserve">
     <value>情報</value>
@@ -730,7 +730,7 @@ Edgeは、Windows 10に内蔵されたWebViewです。</value>
     <value>テーマ</value>
   </data>
   <data name="TitleAudioPlayOnScreen" xml:space="preserve">
-    <value>画面上で音声を再生します。</value>
+    <value>音声を再生します。</value>
   </data>
   <data name="BatteryPower.Header" xml:space="preserve">
     <value>バッテリー駆動時</value>
@@ -763,7 +763,7 @@ Edgeは、Windows 10に内蔵されたWebViewです。</value>
     <value>ドキュメント</value>
   </data>
   <data name="EnterUrl.Header" xml:space="preserve">
-    <value>Enter URL</value>
+    <value>URLを入力</value>
   </data>
   <data name="ExportLogs.Header" xml:space="preserve">
     <value>ログファイル</value>
@@ -808,7 +808,7 @@ Edgeは、Windows 10に内蔵されたWebViewです。</value>
     <value>プレイリスト</value>
   </data>
   <data name="PleaseWait.Text" xml:space="preserve">
-    <value>お待ちください</value>
+    <value>ちょっと待って</value>
   </data>
   <data name="PowerSavingModePower.Header" xml:space="preserve">
     <value>省電力モード有効時</value>
@@ -860,7 +860,7 @@ Edgeは、Windows 10に内蔵されたWebViewです。</value>
     <value>システム</value>
   </data>
   <data name="TaskbarTheme.Header" xml:space="preserve">
-    <value>タスクバーのテーマ</value>
+    <value>タスクバーのスタイル</value>
   </data>
   <data name="TitleTileSize" xml:space="preserve">
     <value>タイルのサイズ</value>
@@ -887,10 +887,10 @@ Edgeは、Windows 10に内蔵されたWebViewです。</value>
     <value>既存の壁紙を新しいフォルダに移動</value>
   </data>
   <data name="WallpaperFit.Header" xml:space="preserve">
-    <value>フィットの方法を選択</value>
+    <value>拡大方法を選択</value>
   </data>
   <data name="WallpaperInput.Header" xml:space="preserve">
-    <value>壁紙の入力</value>
+    <value>壁紙への入力</value>
   </data>
   <data name="WallpaperLayout.Header" xml:space="preserve">
     <value>配置方法</value>
@@ -914,43 +914,43 @@ Edgeは、Windows 10に内蔵されたWebViewです。</value>
     <value>Webページの読み込み</value>
   </data>
   <data name="FastUI.Description" xml:space="preserve">
-    <value>Keep User Interface running for faster startup</value>
+    <value>ユーザーインターフェースを維持し、起動を高速化します。</value>
   </data>
   <data name="FastUI.Header" xml:space="preserve">
-    <value>Fast startup</value>
+    <value>高速起動</value>
   </data>
   <data name="WallpaperDirGroup.Header" xml:space="preserve">
-    <value>File</value>
+    <value>ファイル</value>
   </data>
   <data name="AppThemeDark.Content" xml:space="preserve">
-    <value>Dark</value>
+    <value>ダーク</value>
   </data>
   <data name="AppThemeLight.Content" xml:space="preserve">
-    <value>Light</value>
+    <value>ライト</value>
   </data>
   <data name="AppThemeSystem.Content" xml:space="preserve">
     <value>システム</value>
   </data>
   <data name="WindowsSettingsColor.Content" xml:space="preserve">
-    <value>Windows color settings</value>
+    <value>ユーザーインターフェースのスタイル</value>
   </data>
   <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
-    <value>Laptops</value>
+    <value>ノートパソコン</value>
   </data>
   <data name="DeveloperGroup.Header" xml:space="preserve">
-    <value>Developer</value>
+    <value>開発者</value>
   </data>
   <data name="AppearanceBehaviour.Header" xml:space="preserve">
-    <value>Appearance &amp; behavior</value>
+    <value>外見と動作</value>
   </data>
   <data name="ActiveWallpapers.Label" xml:space="preserve">
-    <value>Active Wallpaper(s)</value>
+    <value>有効な壁紙</value>
   </data>
   <data name="TitleGallery" xml:space="preserve">
-    <value>Gallery</value>
+    <value>ギャラリー</value>
   </data>
   <data name="AboutMe.Text" xml:space="preserve">
-    <value>Hi, I'm Dani John also known as rocksdanister. I developed Lively a Free and open-source (FOSS) wallpaper application. Thanks for taking the time to look at my work.</value>
+    <value>こんにちは。rocksdanisterのDani Johnです。私はこのフリーかつオープンソース (FOSS) の壁紙アプリ、「Lively」を開発しました。利用していただきありがとうございます。</value>
   </data>
   <data name="LicenseLink.Content" xml:space="preserve">
     <value>ソフトウェアライセンス</value>
@@ -992,136 +992,136 @@ Edgeは、Windows 10に内蔵されたWebViewです。</value>
     <value>中</value>
   </data>
   <data name="Screensaver.Description" xml:space="preserve">
-    <value>How screensaver is applied to connected to display devices</value>
+    <value>複数ディスプレイへ壁紙を適用させる方法</value>
   </data>
   <data name="Screensaver.Header" xml:space="preserve">
-    <value>Type of screensaver</value>
+    <value>壁紙の配置方法</value>
   </data>
   <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
-    <value>Configured separately</value>
+    <value>別々に設定</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
-    <value>Same as running wallpaper</value>
+    <value>壁紙と同じ</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
-    <value>Plugin required</value>
+    <value>プラグインが必要</value>
   </data>
   <data name="ScreensaverPluginMessage.Text" xml:space="preserve">
-    <value>One time setup is required to run screensaver</value>
+    <value>最初の1回のみ、スクリーンセーバーの実行のためのセットアップが必要です。</value>
   </data>
   <data name="WallpaperLayoutScreenPicker.Content" xml:space="preserve">
-    <value>Always pick screen when choosing wallpaper</value>
+    <value>壁紙を選択するときは適用先のディスプレイを選択する</value>
   </data>
   <data name="GalleryAccount.Text" xml:space="preserve">
-    <value>Account</value>
+    <value>アカウント</value>
   </data>
   <data name="GalleryAccountDelete.Content" xml:space="preserve">
-    <value>Delete account</value>
+    <value>アカウント削除</value>
   </data>
   <data name="GalleryAccountExport.Content" xml:space="preserve">
-    <value>Export data</value>
+    <value>データのエクスポート</value>
   </data>
   <data name="GalleryAccountLogin.Content" xml:space="preserve">
     <value>ログイン</value>
   </data>
   <data name="GalleryAccountLogout.Content" xml:space="preserve">
-    <value>Log out</value>
+    <value>ログアウト</value>
   </data>
   <data name="GalleryPageCollection.Content" xml:space="preserve">
-    <value>Collection</value>
+    <value>コレクション</value>
   </data>
   <data name="GalleryPageHome.Content" xml:space="preserve">
-    <value>Home</value>
+    <value>ホーム</value>
   </data>
   <data name="GalleryPageManage.Content" xml:space="preserve">
-    <value>Manage</value>
+    <value>管理</value>
   </data>
   <data name="GalleryPageProfile.Content" xml:space="preserve">
-    <value>Profile</value>
+    <value>プロフィール</value>
   </data>
   <data name="GalleryPleaseLogin.Text" xml:space="preserve">
-    <value>Please log in to continue</value>
+    <value>ギャラリーを利用するにはサインインしてください</value>
   </data>
   <data name="GalleryWelcomeMessage.Text" xml:space="preserve">
-    <value>Hi</value>
+    <value>やあ</value>
   </data>
   <data name="RestoreWallpaper.Text" xml:space="preserve">
-    <value>We found these wallpapers in your account</value>
+    <value>アカウントから以下の壁紙が見つかりました</value>
   </data>
   <data name="TextDownloadNow.Content" xml:space="preserve">
-    <value>Download now</value>
+    <value>今すぐダウンロードする</value>
   </data>
   <data name="TextMaybeLater.Content" xml:space="preserve">
-    <value>Maybe later</value>
+    <value>あとで</value>
   </data>
   <data name="TextSelectAll.Content" xml:space="preserve">
-    <value>すべてを選択</value>
+    <value>全て選択</value>
   </data>
   <data name="TextSelectNone.Content" xml:space="preserve">
-    <value>Select none</value>
+    <value>全て解除</value>
   </data>
   <data name="TitleWelcomeback.Text" xml:space="preserve">
-    <value>Welcome back!</value>
+    <value>おかえりなさい!</value>
   </data>
   <data name="ReportWallpaper.Header" xml:space="preserve">
-    <value>Reasons</value>
+    <value>理由</value>
   </data>
   <data name="ReportWallpaperCopyright.Content" xml:space="preserve">
-    <value>Copyright violation</value>
+    <value>著作権の侵害</value>
   </data>
   <data name="ReportWallpaperMisleading.Content" xml:space="preserve">
-    <value>Misleading information</value>
+    <value>誤解を招くコンテンツ</value>
   </data>
   <data name="ReportWallpaperOther.Content" xml:space="preserve">
-    <value>Other</value>
+    <value>その他</value>
   </data>
   <data name="ReportWallpaperSpam.Content" xml:space="preserve">
-    <value>Spam</value>
+    <value>スパム</value>
   </data>
   <data name="ReportWallpaperViolence.Content" xml:space="preserve">
-    <value>Nudity or violence</value>
+    <value>ヌードまたは暴力</value>
   </data>
   <data name="TextAdditionalNotes.Text" xml:space="preserve">
-    <value>Additional notes</value>
+    <value>説明</value>
   </data>
   <data name="TextReportWallpaper.Text" xml:space="preserve">
-    <value>Report</value>
+    <value>報告</value>
   </data>
   <data name="TitleReportWallpaper.Text" xml:space="preserve">
-    <value>Report Wallpaper</value>
+    <value>この壁紙を報告する</value>
   </data>
   <data name="Send.Content" xml:space="preserve">
-    <value>Send</value>
+    <value>送信</value>
   </data>
   <data name="GalleryAccountDeleteConfirm.Text" xml:space="preserve">
-    <value>Please confirm this action as it CAN NOT be undone</value>
+    <value>この操作を元に戻すことはできません。本当に削除しますか。</value>
   </data>
   <data name="GalleryAccountDeleteFail.Text" xml:space="preserve">
-    <value>Failed to delete account, please try again later</value>
+    <value>アカウントを削除できませんでした。後でもう一度お試しください。</value>
   </data>
   <data name="TextConfirmCancel.Text" xml:space="preserve">
-    <value>Do you want to cancel it?</value>
+    <value>キャンセルしますか？</value>
   </data>
   <data name="TextWait.Text" xml:space="preserve">
-    <value>Wait</value>
+    <value>待つ</value>
   </data>
   <data name="TitleDownloadProgress.Text" xml:space="preserve">
-    <value>Download in Progress</value>
+    <value>ダウンロード中</value>
   </data>
   <data name="TextContributors.Text" xml:space="preserve">
-    <value>Contributors</value>
+    <value>開発者</value>
   </data>
   <data name="TextShare.Text" xml:space="preserve">
-    <value>Share</value>
+    <value>共有</value>
   </data>
   <data name="TitleShareWallpaper.Text" xml:space="preserve">
-    <value>Share Wallpaper</value>
+    <value>壁紙を共有</value>
   </data>
   <data name="ExportWallpaperGallery.Text" xml:space="preserve">
-    <value>Gallery upload</value>
+    <value>ギャラリーにアップロード</value>
   </data>
   <data name="ExportWallpaperLink.Text" xml:space="preserve">
-    <value>Copy link</value>
+    <value>リンクをコピー</value>
   </data>
   <data name="TextCustomiseWallpaper" xml:space="preserve">
     <value>壁紙のカスタマイズ</value>
@@ -1130,15 +1130,15 @@ Edgeは、Windows 10に内蔵されたWebViewです。</value>
     <value>壁紙を閉じる</value>
   </data>
   <data name="TitleChooseApplication.Text" xml:space="preserve">
-    <value>Choose Application</value>
+    <value>アプリを選択</value>
   </data>
   <data name="WallpaperInstallSize.Text" xml:space="preserve">
-    <value>Size</value>
+    <value>ファイルサイズ</value>
   </data>
   <data name="PluginNotFound.Message" xml:space="preserve">
-    <value>Please install the required plugin</value>
+    <value>必要なプラグインをインストールしてください</value>
   </data>
   <data name="PluginNotFound.Title" xml:space="preserve">
-    <value>Plugin not found</value>
+    <value>プラグインが見つかりません</value>
   </data>
 </root>
