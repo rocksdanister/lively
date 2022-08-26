@@ -1132,15 +1132,15 @@ Edge és la vista web integrada amb Windows 10.</value>
     <value>Tancar fons de pantalla</value>
   </data>
   <data name="TitleChooseApplication.Text" xml:space="preserve">
-    <value>Choose Application</value>
+    <value>Trieu una aplicació</value>
   </data>
   <data name="WallpaperInstallSize.Text" xml:space="preserve">
-    <value>Size</value>
+    <value>Mida</value>
   </data>
   <data name="PluginNotFound.Message" xml:space="preserve">
-    <value>Please install the required plugin</value>
+    <value>Si us plau, instal·leu l'extensió necessària</value>
   </data>
   <data name="PluginNotFound.Title" xml:space="preserve">
-    <value>Plugin not found</value>
+    <value>Extensió no trobada</value>
   </data>
 </root>

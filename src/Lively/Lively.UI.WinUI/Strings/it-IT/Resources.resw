@@ -207,16 +207,17 @@ Continua soltanto se l'applicazione proviene da una fonte sicura.</value>
     <value>Questa procedura guidata ti consentirà di iniziare a configurare Lively</value>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>La tua versione di Windows N/KN richiede più codecs per riprodurre dei video come sfondo.</value>
+    <value>La tua versione di Windows N/KN richiede più codecs addizionali per supportare la riproduzione dei sfondi video</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
-    <value>Mostra supporto comprando un caffe' allo sviluppatore</value>
+    <value>Mostra il tuo supporto comprando un caffè allo sviluppatore</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
-    <value>Stai per aggiornare Lively alla versione Sviluppatore (Beta). Questa verisione contiene più funzioni ma anche più bug</value>
+    <value>Stai per aggiornare Lively alla versione Sviluppatore (Beta). 
+Questa verisione contiene più funzioni ma anche più bug!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
-    <value>Visibilità dell'icona nel tray di sistema, lively continuerà a essere eseguito con l'icona nascosta</value>
+    <value>Visibilità delle icone nella barra delle applicazioni, lively continuerà a funzionare con le icone nascoste</value>
   </data>
   <data name="HideSysTray.Header" xml:space="preserve">
     <value>Icona della barra delle applicazioni</value>
@@ -225,13 +226,14 @@ Continua soltanto se l'applicazione proviene da una fonte sicura.</value>
     <value>Lively verrà riavviato per applicare la nuova lingua.</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
-    <value>Devi riavviare l'app</value>
+    <value>Lingua</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
-    <value>Aggiornamento non riuscito.</value>
+    <value>Aggiornamento non riuscito; prova a scaricare il programma di installazione da:
+https://github.com/rocksdanister/lively/releases</value>
   </data>
   <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
-    <value>Il wallpaper è danneggiato, prova a reinstallarlo.</value>
+    <value>File sfondo danneggiato, prova a reinstallarlo</value>
   </data>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
     <value>Oops... Sembra che qualcosa sia andato storto :(
@@ -240,39 +242,39 @@ Istruzioni per la condivisione del file di registro:
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
-    <value>Lively non lavora bene con Windows in modalità Alti Contrasti attivata!
-Disattiva la modalità e prova di nuovo.</value>
+    <value>Lively non funziona bene con la Modalità di Windows ad Alti Contrasti attiva!
+Disattiva la modalità e prova di nuovo</value>
   </data>
   <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
     <value>Riproduzione del media non riuscito :(
-Prova cambiando le impostazioni del videoplayer delle impostazioni dell'applicazioni
+Prova cambiando le impostazioni del videoplayer nelle impostazioni dell'applicazione
 
 Per risolvere il problema e saperne di piu', manda il log allo sviluppatore tramite questo link
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
-    <value>Questo non è un Lively.zip file.</value>
+    <value>Questo non è un file sfondo Lively</value>
   </data>
   <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
-    <value>Una nuova versione è disponibile!</value>
+    <value>Lively non è stata chiusa correttamente, inizializzando in modalità sicura.
+Vuoi ripristinare i sfondi in esecuzione in precedenza?</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
     <value>Sembra che qualche impostazione debba essere modificata per far funzionare Lively:  
-1. Questo PC(In Esplora file)
-2. Fai tasto destro in una zona vuota
-3. Seleziona proprietà
-4. Seleziona Impostazioni di Sistema avanzate
-5. Sotto la scheda di Avanzate, vai nella sezione Prestazioni, seleziona impostazioni
-6. Abilità i controlli per le animazione ed elementi dentro &amp; Applica.
+1. Premi Win + R per aprire Run, 
+2. Scrivi SystemPropertiesPerformance.exe in Run, Clicca "OK" per aprire le Impostazioni di Perfomance.
+3. Abilita "Anima le finestra quando vengono ingrandite o ridotte ad icona" (Se già abilitato, allora disabilita e riabilita) &amp; Applica.
+4. Clicca "Applica" dopo di che premi "OK" e chiudi la finestra.
 
 Se Windows 7 è stato appena impostato - Impostalo per le migliori animazioni &amp; Applica.
-Se non funziona ancora, chiudi &amp; riavvia Lively / riavvia windows.</value>
+Se non funziona ancora, chiudi &amp; riavvia Lively / riavvia Windows.
+(Non funziona in alcune versioni insider di Windows 10)</value>
   </data>
   <data name="Startup.Description" xml:space="preserve">
     <value>Lively deve essere eseguito in background per la riproduzione dello sfondo.</value>
   </data>
   <data name="Startup.Header" xml:space="preserve">
-    <value>Avvia all'avvio di Windows</value>
+    <value>Avvia insieme a Windows</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
     <value>Aggiungi</value>
@@ -296,22 +298,22 @@ Se non funziona ancora, chiudi &amp; riavvia Lively / riavvia windows.</value>
     <value>Esplora</value>
   </data>
   <data name="Cancel.Content" xml:space="preserve">
-    <value>Anulla</value>
+    <value>Annulla</value>
   </data>
   <data name="TextChangeWallpaper" xml:space="preserve">
-    <value>Cambia Wallpaper</value>
+    <value>Cambia Sfondo</value>
   </data>
   <data name="TextClose" xml:space="preserve">
     <value>Chiudi</value>
   </data>
   <data name="CloseWallpapers.Label" xml:space="preserve">
-    <value>Chiudi Wallpaper</value>
+    <value>Chiudi Sfondo</value>
   </data>
   <data name="TextCompleted" xml:space="preserve">
-    <value>Completato !</value>
+    <value>Completato!</value>
   </data>
   <data name="ControlPanel.Subtitle" xml:space="preserve">
-    <value>Clicca per gestire i wallpaper</value>
+    <value>Clicca qui per gestire gli sfondi</value>
   </data>
   <data name="TextConvertVideo" xml:space="preserve">
     <value>Converti in video</value>
@@ -323,22 +325,22 @@ Se non funziona ancora, chiudi &amp; riavvia Lively / riavvia windows.</value>
     <value>Personalizza</value>
   </data>
   <data name="CustomiseWallpaper.Label" xml:space="preserve">
-    <value>Personalizza Wallpaper</value>
+    <value>Personalizza Sfondo</value>
   </data>
   <data name="DeleteWallpaper.Text" xml:space="preserve">
-    <value>Cancella Wallpaper</value>
+    <value>Elimina</value>
   </data>
   <data name="Description.Text" xml:space="preserve">
     <value>Descrizione</value>
   </data>
   <data name="DisplayPauseRuleAllScreen.Content" xml:space="preserve">
-    <value>Tutte le Schermate</value>
+    <value>Tutte gli Schermi</value>
   </data>
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>Per Display</value>
   </data>
   <data name="TextDownload" xml:space="preserve">
-    <value>Download</value>
+    <value>Scarica</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
     <value>Modifica</value>
@@ -347,10 +349,10 @@ Se non funziona ancora, chiudi &amp; riavvia Lively / riavvia windows.</value>
     <value>Errore</value>
   </data>
   <data name="TextExit" xml:space="preserve">
-    <value>Esci</value>
+    <value>Chiudi</value>
   </data>
   <data name="ExportWallpaperZip.Text" xml:space="preserve">
-    <value>Esporta lively .zip</value>
+    <value>Salva su file</value>
   </data>
   <data name="TextFeatureMissing" xml:space="preserve">
     <value>Alcune funzionalità di Lively non sono disponibili in questa versione</value>
@@ -368,7 +370,7 @@ Se non funziona ancora, chiudi &amp; riavvia Lively / riavvia windows.</value>
     <value>VAI</value>
   </data>
   <data name="TextHelpTranslate.Title" xml:space="preserve">
-    <value>Aiuta a tradurre lively </value>
+    <value>Aiuta a tradurre Lively</value>
   </data>
   <data name="TextHours" xml:space="preserve">
     <value>ore</value>
@@ -383,7 +385,7 @@ Se non funziona ancora, chiudi &amp; riavvia Lively / riavvia windows.</value>
     <value>Ultimo Controllo</value>
   </data>
   <data name="TextLearnMore.Text" xml:space="preserve">
-    <value>Impara di più</value>
+    <value>Maggiori Informazioni</value>
   </data>
   <data name="License.Header" xml:space="preserve">
     <value>Licenza</value>
@@ -401,7 +403,7 @@ Se non funziona ancora, chiudi &amp; riavvia Lively / riavvia windows.</value>
     <value>Mouse</value>
   </data>
   <data name="MouseInteractOnDesktop.Content" xml:space="preserve">
-    <value>Interazione del muose quando una finestra di un applicazione e' attiva</value>
+    <value>Interazione del mouse quando l'applicazione è focalizzata</value>
   </data>
   <data name="TextNext" xml:space="preserve">
     <value>Prossimo</value>
@@ -410,13 +412,13 @@ Se non funziona ancora, chiudi &amp; riavvia Lively / riavvia windows.</value>
     <value>No</value>
   </data>
   <data name="TextOff.Content" xml:space="preserve">
-    <value>OFF</value>
+    <value>Non attivo</value>
   </data>
   <data name="TextOK" xml:space="preserve">
     <value>OK</value>
   </data>
   <data name="TextOn.Content" xml:space="preserve">
-    <value>ON</value>
+    <value>Attivo</value>
   </data>
   <data name="TextOnline" xml:space="preserve">
     <value>Online</value>
@@ -434,7 +436,7 @@ Se non funziona ancora, chiudi &amp; riavvia Lively / riavvia windows.</value>
     <value>Processo in primo piano</value>
   </data>
   <data name="TextPauseWallpapers" xml:space="preserve">
-    <value>Pausa riproduzione wallpapers</value>
+    <value>Pausa riproduzione sfondi</value>
   </data>
   <data name="TextPerformanceKill.Content" xml:space="preserve">
     <value>Arresto forzato</value>
@@ -452,7 +454,7 @@ Se non funziona ancora, chiudi &amp; riavvia Lively / riavvia windows.</value>
     <value>Anteprima</value>
   </data>
   <data name="PrivacyPolicy.Header" xml:space="preserve">
-    <value>Privacy Policy</value>
+    <value>Politica sulla Privacy</value>
   </data>
   <data name="TextProcessingWallpaper" xml:space="preserve">
     <value>Elaborazione...</value>
@@ -461,7 +463,7 @@ Se non funziona ancora, chiudi &amp; riavvia Lively / riavvia windows.</value>
     <value>Rimuovi</value>
   </data>
   <data name="TextRule" xml:space="preserve">
-    <value>Regola/e</value>
+    <value>Regole</value>
   </data>
   <data name="TextScreen" xml:space="preserve">
     <value>Schermo</value>
@@ -470,10 +472,10 @@ Se non funziona ancora, chiudi &amp; riavvia Lively / riavvia windows.</value>
     <value>Cerca</value>
   </data>
   <data name="SetWallpaper.Text" xml:space="preserve">
-    <value>Imposta come Wallpaper</value>
+    <value>Imposta come Sfondo</value>
   </data>
   <data name="ShowOnDisk.Text" xml:space="preserve">
-    <value>Mostra in cartella</value>
+    <value>Apri Posizione File</value>
   </data>
   <data name="WallpaperSource.Text" xml:space="preserve">
     <value>Fonte</value>
@@ -482,10 +484,10 @@ Se non funziona ancora, chiudi &amp; riavvia Lively / riavvia windows.</value>
     <value>Avvio</value>
   </data>
   <data name="TextStop" xml:space="preserve">
-    <value>Stop</value>
+    <value>Arresta</value>
   </data>
   <data name="StoreReview.Content" xml:space="preserve">
-    <value>Ti piace Lively ? Lascia un recensione</value>
+    <value>Ti piace Lively? Lascia un recensione :)</value>
   </data>
   <data name="TextSupport.Content" xml:space="preserve">
     <value>Supporto</value>
@@ -497,7 +499,7 @@ Se non funziona ancora, chiudi &amp; riavvia Lively / riavvia windows.</value>
     <value>Vai alla versione stabile</value>
   </data>
   <data name="TextTags" xml:space="preserve">
-    <value>Tag</value>
+    <value>Etichette</value>
   </data>
   <data name="TaskbarThemeBlur.Content" xml:space="preserve">
     <value>Sfocato</value>
@@ -533,7 +535,7 @@ Se non funziona ancora, chiudi &amp; riavvia Lively / riavvia windows.</value>
     <value>Senza Intestazione</value>
   </data>
   <data name="TextUILite" xml:space="preserve">
-    <value>Lite</value>
+    <value>Leggero</value>
   </data>
   <data name="TextUINormal" xml:space="preserve">
     <value>Normale</value>
@@ -548,13 +550,13 @@ Se non funziona ancora, chiudi &amp; riavvia Lively / riavvia windows.</value>
     <value>Controlla per aggiornamenti</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
-    <value>Si e' verificato un errore mentre cercavo nuovi aggiornamenti</value>
+    <value>Impossibile controllare l'aggiornamento del software</value>
   </data>
   <data name="TextUpdateChecking" xml:space="preserve">
-    <value>Controllando la disponibilità di aggiornamenti</value>
+    <value>Ricerca aggiornamenti</value>
   </data>
   <data name="TextUpdateUptodate" xml:space="preserve">
-    <value>Lively è da aggiornare!</value>
+    <value>Lively è aggiornato!</value>
   </data>
   <data name="TextVideo" xml:space="preserve">
     <value>Video</value>
@@ -572,10 +574,10 @@ Se non funziona ancora, chiudi &amp; riavvia Lively / riavvia windows.</value>
     <value>Uniforme </value>
   </data>
   <data name="WallpaperFitUniformToFill.Content" xml:space="preserve">
-    <value>Rimepimento Uniforme</value>
+    <value>Riempimento Uniforme</value>
   </data>
   <data name="WallpaperLayoutDuplicate.Content" xml:space="preserve">
-    <value>Duplica lo stesso wallpaper</value>
+    <value>Duplica Sfondo</value>
   </data>
   <data name="WallpaperLayoutPerScreen.Content" xml:space="preserve">
     <value>Solo schermo selezionato</value>
@@ -590,7 +592,7 @@ Se non funziona ancora, chiudi &amp; riavvia Lively / riavvia windows.</value>
     <value>Sito web</value>
   </data>
   <data name="TextWebStream" xml:space="preserve">
-    <value>Stream</value>
+    <value>Web Stream</value>
   </data>
   <data name="TextWelcome" xml:space="preserve">
     <value>Benvenuto</value>

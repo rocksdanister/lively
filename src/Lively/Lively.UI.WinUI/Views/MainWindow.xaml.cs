@@ -167,7 +167,7 @@ namespace Lively.UI.WinUI
                     infoBar.IsOpen = true;
                     var btn = new Button()
                     {
-                        Content = i18n.GetString("TextLearnMore"),
+                        Content = i18n.GetString("TextLearnMore/Text"),
                     };
                     btn.Click += (_, _) =>
                     {
