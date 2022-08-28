@@ -121,13 +121,13 @@
     <value>바탕 화면에 초점이 맞춰진 경우에만 오디오 재생</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
-    <value>모든 배경화면의 볼륨 수준.</value>
+    <value>모든 배경화면의 볼륨</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
-    <value>마스터 볼륨</value>
+    <value>볼륨</value>
   </data>
   <data name="AudioGroup.Header" xml:space="preserve">
-    <value>오디오</value>
+    <value>음량</value>
   </data>
   <data name="CommunityPage.Content" xml:space="preserve">
     <value>온라인 토론 포럼</value>

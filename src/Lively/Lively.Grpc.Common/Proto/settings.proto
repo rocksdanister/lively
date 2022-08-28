@@ -68,6 +68,7 @@ message SettingsDataModel {
     bool keep_awake_ui = 56;
     PicturePlayer picture_player = 57;
     bool remember_selected_screen = 58;
+    bool updated = 59;
 }
 
 message AppRulesSettings {

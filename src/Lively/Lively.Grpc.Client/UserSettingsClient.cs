@@ -250,6 +250,7 @@ namespace Lively.Grpc.Client
                 KeepAwakeUi = settings.KeepAwakeUI,
                 DisplayPauseSettings = (DisplayPauseRule)settings.DisplayPauseSettings,
                 RememberSelectedScreen = settings.RememberSelectedScreen,
+                Updated = settings.IsUpdated,
             };
         }
 
@@ -322,6 +323,7 @@ namespace Lively.Grpc.Client
                 KeepAwakeUI = settings.KeepAwakeUi,
                 DisplayPauseSettings = (DisplayPauseEnum)settings.DisplayPauseSettings,
                 RememberSelectedScreen = settings.RememberSelectedScreen,
+                IsUpdated = settings.Updated,
             };
         }
 

@@ -66,5 +66,6 @@ namespace Lively.Models
         string WebDebugPort { get; set; }
         bool KeepAwakeUI { get; set; }
         bool RememberSelectedScreen { get; set; }
+        bool IsUpdated { get; set; }
     }
 }

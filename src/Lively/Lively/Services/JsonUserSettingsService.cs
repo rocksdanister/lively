@@ -42,6 +42,7 @@ namespace Lively.Services
             if (!Settings.AppVersion.Equals(Assembly.GetExecutingAssembly().GetName().Version.ToString(), StringComparison.OrdinalIgnoreCase))
             {
                 Settings.AppVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+                Settings.IsUpdated = true;
             }
 
             //Ensure if the locale is supported..
