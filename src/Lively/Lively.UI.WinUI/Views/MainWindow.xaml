@@ -299,10 +299,7 @@
                     <ColumnDefinition Width="45" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <Image
-                    ui:VisualExtensions.CenterPoint="22.5,22.5,0"
-                    Source="ms-appx:///Assets/icon-lively-48.png"
-                    Visibility="Visible">
+                <Image ui:VisualExtensions.CenterPoint="22.5,22.5,0" Source="ms-appx:///Assets/icon-lively-48.png">
                     <animations:Implicit.ShowAnimations>
                         <animations:RotationInDegreesAnimation
                             From="0"
@@ -320,9 +317,9 @@
                     Grid.Column="1"
                     Margin="7.5,-2.5,0,0"
                     VerticalAlignment="Center">
-                    <TextBlock FontWeight="SemiBold" Text="Update complete" />
+                    <TextBlock x:Uid="UpdateCompleted" FontWeight="SemiBold" />
                     <HyperlinkButton NavigateUri="https://github.com/rocksdanister/lively/releases">
-                        <TextBlock Text="Check out what's new" />
+                        <TextBlock x:Uid="UpdateWhatsNew" />
                     </HyperlinkButton>
                 </StackPanel>
             </Grid>

@@ -184,7 +184,7 @@ El objetivo principal del salva pantallas en Lively es ofrecer más posibilidade
     <value>Por favor reinicia Lively para que las configuraciones tengan efecto.</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
-    <value>Porfavor parar antes de continuar.</value>
+    <value>Porfavor para antes de continuar</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
     <value>Presiona para empezar a grabar.</value>
@@ -783,7 +783,7 @@ Edge es la vista web integrada en Windows 10.</value>
     <value>Interacción</value>
   </data>
   <data name="TitleLibrary" xml:space="preserve">
-    <value>Bilbioteca</value>
+    <value>Biblioteca</value>
   </data>
   <data name="TitleLivelySetup" xml:space="preserve">
     <value>Configuración de Lively</value>
@@ -1142,5 +1142,11 @@ Edge es la vista web integrada en Windows 10.</value>
   </data>
   <data name="PluginNotFound.Title" xml:space="preserve">
     <value>Plug-in no encontrado</value>
+  </data>
+  <data name="UpdateCompleted.Text" xml:space="preserve">
+    <value>Update complete</value>
+  </data>
+  <data name="UpdateWhatsNew.Text" xml:space="preserve">
+    <value>Check out what's new</value>
   </data>
 </root>
