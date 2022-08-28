@@ -170,6 +170,7 @@ namespace Lively.RPC
             userSettings.Settings.KeepAwakeUI = req.KeepAwakeUi;
             userSettings.Settings.DisplayPauseSettings = (DisplayPauseEnum)req.DisplayPauseSettings;
             userSettings.Settings.RememberSelectedScreen = req.RememberSelectedScreen;
+            userSettings.Settings.IsUpdated = req.Updated;
 
             try
             {
@@ -271,6 +272,7 @@ namespace Lively.RPC
                 KeepAwakeUi = settings.KeepAwakeUI,
                 DisplayPauseSettings = (DisplayPauseRule)settings.DisplayPauseSettings,
                 RememberSelectedScreen = settings.RememberSelectedScreen,
+                Updated = settings.IsUpdated,
             };
             return Task.FromResult(resp);
         }

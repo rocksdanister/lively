@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Lively.UI.WinUI"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="using:CommunityToolkit.WinUI.UI"
     xmlns:winex="using:WinUIEx"
     Title="Lively Wallpaper"
     Width="875"
@@ -286,5 +287,45 @@
             Name="importBar"
             Grid.Row="1"
             IsClosable="False" />
+        <TeachingTip
+            Name="updatedNotice"
+            Grid.Row="1"
+            BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}"
+            BorderThickness="0,3,0,0"
+            PlacementMargin="0,55,0,0"
+            PreferredPlacement="TopRight">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="45" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Image
+                    ui:VisualExtensions.CenterPoint="22.5,22.5,0"
+                    Source="ms-appx:///Assets/icon-lively-48.png"
+                    Visibility="Visible">
+                    <animations:Implicit.ShowAnimations>
+                        <animations:RotationInDegreesAnimation
+                            From="0"
+                            To="0"
+                            Duration="0:0:2.0">
+                            <animations:ScalarKeyFrame Value="-720" />
+                        </animations:RotationInDegreesAnimation>
+                        <animations:OpacityAnimation
+                            From="0"
+                            To="1.0"
+                            Duration="0:0:0.5" />
+                    </animations:Implicit.ShowAnimations>
+                </Image>
+                <StackPanel
+                    Grid.Column="1"
+                    Margin="7.5,-2.5,0,0"
+                    VerticalAlignment="Center">
+                    <TextBlock FontWeight="SemiBold" Text="Update complete" />
+                    <HyperlinkButton NavigateUri="https://github.com/rocksdanister/lively/releases">
+                        <TextBlock Text="Check out what's new" />
+                    </HyperlinkButton>
+                </StackPanel>
+            </Grid>
+        </TeachingTip>
     </Grid>
 </winex:WindowEx>

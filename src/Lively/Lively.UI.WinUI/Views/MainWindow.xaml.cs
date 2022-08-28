@@ -1,4 +1,5 @@
 ﻿using Lively.Common;
+using Lively.Common.Helpers;
 using Lively.Common.Helpers.Pinvoke;
 using Lively.Gallery.Client;
 using Lively.Grpc.Client;
@@ -124,6 +125,15 @@ namespace Lively.UI.WinUI
                     authorizedBtn.Flyout.Hide();
                 });
             };
+
+            if (userSettings.Settings.IsUpdated && !Constants.ApplicationType.IsMSIX)
+            {
+                this.DispatcherQueue.TryEnqueue(async () =>
+                {
+                    await Task.Delay(1500);
+                    updatedNotice.IsOpen = true;
+                });
+            }
 
             _ = StdInListener();
         }
@@ -407,6 +417,14 @@ namespace Lively.UI.WinUI
                 };
                 await dlg.ShowAsyncQueue();
                 userSettings.Settings.IsFirstRun = false;
+                userSettings.Save<ISettingsModel>();
+                this.Close();
+            }
+
+            if (userSettings.Settings.IsUpdated)
+            {
+                args.Handled = true;
+                userSettings.Settings.IsUpdated = false;
                 userSettings.Save<ISettingsModel>();
                 this.Close();
             }
