@@ -1144,9 +1144,9 @@ O Edge é a webview embutida do Windows 10.</value>
     <value>Plugin não encontrado</value>
   </data>
   <data name="UpdateCompleted.Text" xml:space="preserve">
-    <value>Update complete</value>
+    <value>Atualização concluída</value>
   </data>
   <data name="UpdateWhatsNew.Text" xml:space="preserve">
-    <value>Check out what's new</value>
+    <value>Confira o que há de novo</value>
   </data>
 </root>

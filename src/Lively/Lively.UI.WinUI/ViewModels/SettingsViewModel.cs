@@ -607,7 +607,7 @@ namespace Lively.UI.WinUI.ViewModels
                 //_selectedVideoPlayerIndex = IsVideoPlayerAvailable((LivelyMediaPlayer)value) ? value : (int)LivelyMediaPlayer.mpv;
                 OnPropertyChanged();
 
-                if (userSettings.Settings.VideoPlayer != (LivelyMediaPlayer)_selectedVideoPlayerIndex)
+                if (userSettings.Settings.VideoPlayer != (LivelyMediaPlayer)_selectedVideoPlayerIndex && IsSelectedVideoPlayerAvailable)
                 {
                     userSettings.Settings.VideoPlayer = (LivelyMediaPlayer)_selectedVideoPlayerIndex;
                     UpdateSettingsConfigFile();
@@ -656,7 +656,7 @@ namespace Lively.UI.WinUI.ViewModels
                 //_selectedGifPlayerIndex = IsGifPlayerAvailable((LivelyGifPlayer)value) ? value : (int)LivelyGifPlayer.mpv;
                 OnPropertyChanged();
 
-                if (userSettings.Settings.GifPlayer != (LivelyGifPlayer)_selectedGifPlayerIndex)
+                if (userSettings.Settings.GifPlayer != (LivelyGifPlayer)_selectedGifPlayerIndex && IsSelectedGifPlayerAvailable)
                 {
                     userSettings.Settings.GifPlayer = (LivelyGifPlayer)_selectedGifPlayerIndex;
                     UpdateSettingsConfigFile();
@@ -686,7 +686,7 @@ namespace Lively.UI.WinUI.ViewModels
                 //_selectedWebBrowserIndex = IsWebPlayerAvailable((LivelyWebBrowser)value) ? value : (int)LivelyWebBrowser.cef;
                 OnPropertyChanged();
 
-                if (userSettings.Settings.WebBrowser != (LivelyWebBrowser)_selectedWebBrowserIndex)
+                if (userSettings.Settings.WebBrowser != (LivelyWebBrowser)_selectedWebBrowserIndex && IsSelectedWebBrowserAvailable)
                 {
                     userSettings.Settings.WebBrowser = (LivelyWebBrowser)_selectedWebBrowserIndex;
                     UpdateSettingsConfigFile();

@@ -1114,9 +1114,9 @@ Windows Utforskaren har startat om två gånger under de senaste 30 sekunderna! 
     <value>Tillägget hittades inte</value>
   </data>
   <data name="UpdateCompleted.Text" xml:space="preserve">
-    <value>Update complete</value>
+    <value>Uppdatering slutförd</value>
   </data>
   <data name="UpdateWhatsNew.Text" xml:space="preserve">
-    <value>Check out what's new</value>
+    <value>Ta en titt på vad som är nytt</value>
   </data>
 </root>
