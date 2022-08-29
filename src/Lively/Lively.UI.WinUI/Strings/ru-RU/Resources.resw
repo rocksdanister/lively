@@ -124,7 +124,7 @@
     <value>Уровень громкости всех обоев</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
-    <value>Общаяя громкость</value>
+    <value>Общая громкость</value>
   </data>
   <data name="AudioGroup.Header" xml:space="preserve">
     <value>Аудио</value>
@@ -1146,9 +1146,9 @@ Edge - встроенный в Windows 10 WebView.</value>
     <value>Плагин не найден</value>
   </data>
   <data name="UpdateCompleted.Text" xml:space="preserve">
-    <value>Update complete</value>
+    <value>Обновление завершено</value>
   </data>
   <data name="UpdateWhatsNew.Text" xml:space="preserve">
-    <value>Check out what's new</value>
+    <value>Узнайте, что нового</value>
   </data>
 </root>

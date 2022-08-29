@@ -1143,9 +1143,9 @@ Edge는 Windows 10의 내장 웹뷰입니다.</value>
     <value>플러그인을 찾을 수 없음</value>
   </data>
   <data name="UpdateCompleted.Text" xml:space="preserve">
-    <value>Update complete</value>
+    <value>업데이트 완료</value>
   </data>
   <data name="UpdateWhatsNew.Text" xml:space="preserve">
-    <value>Check out what's new</value>
+    <value>새로운 기능을 확인해보세요</value>
   </data>
 </root>
