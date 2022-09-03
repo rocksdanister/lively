@@ -161,16 +161,9 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                         Maximum = (double)item.Value["max"],
                         Value = (double)item.Value["value"],
                     };
-                    if (item.Value["step"] != null)
+                    if (item.Value["step"] != null && !string.IsNullOrWhiteSpace(item.Value["step"].ToString()))
                     {
-                        if (!string.IsNullOrWhiteSpace(item.Value["step"].ToString()))
-                        {
-                            slider.TickFrequency = (double)item.Value["step"];
-                        }
-                    }
-                    else
-                    {
-                        slider.TickFrequency = 1;
+                        slider.StepFrequency = (double)item.Value["step"];
                     }
                     slider.ValueChanged += XamlSlider_ValueChanged;
                     obj = slider;
@@ -392,7 +385,7 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
             try
             {
                 var item = (Slider)sender;
-                WallpaperSendMsg(new LivelySlider() { Name = item.Name, Value = item.Value, Step = item.TickFrequency });
+                WallpaperSendMsg(new LivelySlider() { Name = item.Name, Value = item.Value, Step = item.StepFrequency });
                 livelyPropertyCopyData[item.Name]["value"] = item.Value;
                 UpdatePropertyFile();
             }
