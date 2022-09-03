@@ -610,7 +610,7 @@ Se non funziona ancora, chiudi &amp; riavvia Lively / riavvia Windows.
     <value>Imposta la pagina web che hai inserito come sfondo</value>
   </data>
   <data name="AppFocus.Description" xml:space="preserve">
-    <value>Imposta cosa fare quando un'applicazione è a focus</value>
+    <value>Imposta cosa fare quando una qualsiasi applicazione è messa a fuoco</value>
   </data>
   <data name="AppFullScreen.Description" xml:space="preserve">
     <value>Imposta cosa fare quando giochi/app sono a schermo intero</value>
@@ -619,11 +619,7 @@ Se non funziona ancora, chiudi &amp; riavvia Lively / riavvia Windows.
     <value>Impostare diverse regole di riproduzione dello sfondo in base all'applicazione in esecuzione.</value>
   </data>
   <data name="TipAppTheme" xml:space="preserve">
-    <value>Lively si adatta alle impostazioni del tema di sistema, per cambiare l'aspetto vai a:
-1.Tramite Windows:
-Start&gt;Impostazioni&gt;Personalizzazione&gt;(Nel menu laterale)Colori&gt;Scegli il tuo colore&gt;Chiaro/Scuro/Personalizzato.
-2.Tramite Lively
-Apri area di notifica&gt;Tasto destro su Lively Wallpaper System&gt;Apri Lively&gt;(Nel menu superiore)Impostazioni&gt;Tema.</value>
+    <value>Lively si adatta alle impostazioni del tema di sistema, per cambiare l'aspetto vai a</value>
   </data>
   <data name="BatteryPower.Description" xml:space="preserve">
     <value>(Solo per sistemi a batteria) Modificare la riproduzione quando l'alimentazione AC è scollegata.</value>
@@ -633,30 +629,28 @@ Apri area di notifica&gt;Tasto destro su Lively Wallpaper System&gt;Apri Lively&
 Quando sei pronto, vai a: http://localhost:portnumber per accedere al portale dello sviluppatore.</value>
   </data>
   <data name="Debug.Description" xml:space="preserve">
-    <value>Mostra il menu' Sviluppatore </value>
+    <value>Mostra il menù Sviluppatore</value>
   </data>
   <data name="DesktopPicture.Description" xml:space="preserve">
     <value>Imposta un fotogramma dello sfondo animato come sfondo del desktop</value>
   </data>
   <data name="DisplayPauseRule.Description" xml:space="preserve">
-    <value>Per: Metti in pausa lo sfondo solo sullo schermo in cui l'applicazione è a focus/a schermo intero.
-Tutto: Metti in pausa lo sfondo su tutti gli schermi se un'applicazione è a focus/a schermo intero.</value>
+    <value>Metti in pausa lo sfondo su tutti gli schermi o solo lo schermo in cui l'applicazione è messa a fuoco</value>
   </data>
   <data name="ExportLogs.Description" xml:space="preserve">
     <value>Crea un log di segnalazione</value>
   </data>
   <data name="GifPlayer.Description" xml:space="preserve">
-    <value>Seleziona il Riproduttore per i gif.</value>
+    <value>Seleziona il Lettore per gòo Sfondi Animati</value>
   </data>
   <data name="TipLivelySetupOnClose" xml:space="preserve">
     <value>Termina la configurazione per continuare.</value>
   </data>
   <data name="LockscreenPicture.Description" xml:space="preserve">
-    <value>Imposta un fotogramma dello sfondo animato come sfondo della schermata di blocco.</value>
+    <value>Imposta un fotogramma dello sfondo animato come sfondo del desktop</value>
   </data>
   <data name="PauseAlgorithm.Description" xml:space="preserve">
-    <value>Primo piano: leggero, controlla solo il singolo processo in primo piano per determinare il comportamento di riproduzione dello sfondo.
-Tutto il processo: più pesante, analizza tutto il processo per determinare il comportamento di riproduzione.</value>
+    <value>Algoritmo di Stop per lo Sfondo</value>
   </data>
   <data name="PowerSavingModePower.Description" xml:space="preserve">
     <value>Cambia la riproduzione quando la modalità di risparmio energetico di Windows è abilitata</value>
@@ -991,16 +985,16 @@ Edge è la visualizzazione Web integrata di Windows 10.</value>
     <value>Interfaccia utente</value>
   </data>
   <data name="UIModeLite.Content" xml:space="preserve">
-    <value>Lite</value>
+    <value>Leggero</value>
   </data>
   <data name="UIModeNormal.Content" xml:space="preserve">
     <value>Normale</value>
   </data>
   <data name="Screensaver.Description" xml:space="preserve">
-    <value>Come lo screensaver viene applicato agli schermi connessi</value>
+    <value>Come lo sfondo viene applicato ai dispositivi di visualizzazione collegati</value>
   </data>
   <data name="Screensaver.Header" xml:space="preserve">
-    <value>Tipo di screensaver</value>
+    <value>Tipo di salvaschermo</value>
   </data>
   <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
     <value>Configurato separatamente</value>
@@ -1012,7 +1006,7 @@ Edge è la visualizzazione Web integrata di Windows 10.</value>
     <value>Plugin obbligatorio</value>
   </data>
   <data name="ScreensaverPluginMessage.Text" xml:space="preserve">
-    <value>Per eseguire salvaschermo è necessario One time setup</value>
+    <value>Per eseguire il salvaschermo è necessaria una configurazione unica</value>
   </data>
   <data name="WallpaperLayoutScreenPicker.Content" xml:space="preserve">
     <value>Scegli sempre lo schermo quando scegli lo sfondo</value>
@@ -1074,10 +1068,10 @@ Edge è la visualizzazione Web integrata di Windows 10.</value>
     <value>Motivi</value>
   </data>
   <data name="ReportWallpaperCopyright.Content" xml:space="preserve">
-    <value>Violazione di copyright</value>
+    <value>Violazione del Copyright</value>
   </data>
   <data name="ReportWallpaperMisleading.Content" xml:space="preserve">
-    <value>Informazioni fuorvianti</value>
+    <value>Informazioni ingannevoli</value>
   </data>
   <data name="ReportWallpaperOther.Content" xml:space="preserve">
     <value>Altro</value>
@@ -1104,10 +1098,10 @@ Edge è la visualizzazione Web integrata di Windows 10.</value>
     <value>Si prega di confermare questa azione in quanto non può essere annullata</value>
   </data>
   <data name="GalleryAccountDeleteFail.Text" xml:space="preserve">
-    <value>Non si è potuto Eliminare il profilo, la prego di riprovare più tardi</value>
+    <value>Impossibile eliminare l'account. Ti preghiamo di riprovare più tardi</value>
   </data>
   <data name="TextConfirmCancel.Text" xml:space="preserve">
-    <value>Vuoi cancellarlo?</value>
+    <value>Vuoi annullare?</value>
   </data>
   <data name="TextWait.Text" xml:space="preserve">
     <value>Attendere</value>
@@ -1149,9 +1143,9 @@ Edge è la visualizzazione Web integrata di Windows 10.</value>
     <value>Plugin non trovato</value>
   </data>
   <data name="UpdateCompleted.Text" xml:space="preserve">
-    <value>Update complete</value>
+    <value>Aggiornamento completato</value>
   </data>
   <data name="UpdateWhatsNew.Text" xml:space="preserve">
-    <value>Check out what's new</value>
+    <value>Tutte le novità</value>
   </data>
 </root>

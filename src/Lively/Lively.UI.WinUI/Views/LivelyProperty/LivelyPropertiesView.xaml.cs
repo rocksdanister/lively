@@ -182,7 +182,7 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                         Name = item.Key,
                         Text = item.Value["value"].ToString(),
                         AcceptsReturn = true,
-                        //MaxWidth = minWidth,
+                        MaxWidth = minWidth,
                         MinWidth = minWidth,
                         HorizontalAlignment = HorizontalAlignment.Left,
                         Margin = margin
@@ -196,7 +196,7 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                     {
                         Name = item.Key,
                         Content = item.Value["value"].ToString(),
-                        //MaxWidth = minWidth,
+                        MaxWidth = minWidth,
                         MinWidth = minWidth,
                         HorizontalAlignment = HorizontalAlignment.Left,
                         Margin = margin
@@ -310,16 +310,23 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                         MinWidth = minWidth,
                         MinHeight = 35,
                     };
-                    //filter syntax: "*.jpg|*.png"
-                    var files = GetFileNames(Path.Combine(Path.GetDirectoryName(libraryItem.FilePath), item.Value["folder"].ToString()),
-                                                item.Value["filter"].ToString(),
-                                                SearchOption.TopDirectoryOnly);
 
-                    foreach (var file in files)
+                    try
                     {
-                        cmbBox.Items.Add(file);
+                        var destDir = Path.Combine(Path.GetDirectoryName(libraryItem.FilePath), item.Value["folder"].ToString());
+                        Directory.CreateDirectory(destDir);
+                        //filter syntax: "*.jpg|*.png"
+                        var files = GetFileNames(destDir, item.Value["filter"].ToString(), SearchOption.TopDirectoryOnly);
+                        foreach (var file in files)
+                        {
+                            cmbBox.Items.Add(file);
+                        }
+                        cmbBox.SelectedIndex = Array.FindIndex(files, x => x.Contains(item.Value["value"].ToString())); //returns -1 if not found, none selected.
                     }
-                    cmbBox.SelectedIndex = Array.FindIndex(files, x => x.Contains(item.Value["value"].ToString())); //returns -1 if not found, none selected.
+                    catch (Exception ie1)
+                    {
+                        Logger.Error($"FolderDropDown({item.Key}) failed to initialize: {ie1.Message}");
+                    }
                     cmbBox.SelectionChanged += XamlFolderCmbBox_SelectionChanged;
 
                     var folderDropDownOpenFileBtn = new Button()

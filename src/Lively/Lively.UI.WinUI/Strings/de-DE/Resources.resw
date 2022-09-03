@@ -661,7 +661,7 @@ Wenn es immer noch nicht funktioniert, schließen &amp; starten Sie Lively oder 
     <value>Bei Inaktivität wird nach der festgelegten Zeit der aktuelle Hinergrund als Bildschirmschoner verwendet</value>
   </data>
   <data name="StreamWallpaperDetect.Description" xml:space="preserve">
-    <value>Wenn ein unterstützter Video-Stream-Link erkannt wird, verwenden Sie den Videoplayer, anstatt die Webseite zu laden</value>
+    <value>Bei unterstützten Streamingseiten den Videoplayer verwenden, statt die Website zu laden</value>
   </data>
   <data name="StreamWallpaperVideoQuality.Description" xml:space="preserve">
     <value>Bevorzugte Qualität für Videostreams auswählen</value>
@@ -796,7 +796,7 @@ Wenn es immer noch nicht funktioniert, schließen &amp; starten Sie Lively oder 
     <value>Stumm</value>
   </data>
   <data name="PauseAlgorithm.Header" xml:space="preserve">
-    <value>Fenster-Algorithmus</value>
+    <value>Anwendungserkennung</value>
   </data>
   <data name="TitlePerformance" xml:space="preserve">
     <value>Leistung</value>
@@ -808,7 +808,7 @@ Wenn es immer noch nicht funktioniert, schließen &amp; starten Sie Lively oder 
     <value>Bitte warten</value>
   </data>
   <data name="PowerSavingModePower.Header" xml:space="preserve">
-    <value>Wenn auf Energie sparen</value>
+    <value>Im Energiesparmodus</value>
   </data>
   <data name="RemoteDesktopPower.Header" xml:space="preserve">
     <value>Während Remotedesktop</value>
@@ -1140,9 +1140,9 @@ Wenn es immer noch nicht funktioniert, schließen &amp; starten Sie Lively oder 
     <value>Plugin nicht gefunden</value>
   </data>
   <data name="UpdateCompleted.Text" xml:space="preserve">
-    <value>Update complete</value>
+    <value>Aktualisierung abgeschlossen</value>
   </data>
   <data name="UpdateWhatsNew.Text" xml:space="preserve">
-    <value>Check out what's new</value>
+    <value>Sehen Sie sich die Neuheiten an</value>
   </data>
 </root>
