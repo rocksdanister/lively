@@ -27,6 +27,7 @@ using Lively.Views;
 using Lively.Grpc.Common.Proto.Update;
 using Lively.Common.Services;
 using Lively.Common.Helpers.Files;
+using Lively.Common.Helpers.Archive;
 using Lively.Models;
 using Lively.Common.Helpers;
 using Lively.Helpers.Theme;
@@ -141,6 +142,20 @@ namespace Lively
             Services.GetRequiredService<RawInputMsgWindow>().Show();
             Services.GetRequiredService<IPlayback>().Start();
             Services.GetRequiredService<ISystray>();
+
+            if (userSettings.Settings.IsUpdated)
+            {
+                //install any new wallpaper collection if present, do this before restoring wallpaper incase installed wallpaper is updated.
+                //first run default wallpapers are installed by UI to avoid slow startup times and better user experience.
+                var maxVersion = ExtractWallpaperBundle(userSettings.Settings.WallpaperBundleVersion,
+                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bundle"),
+                    userSettings.Settings.WallpaperDir);
+                if (maxVersion != userSettings.Settings.WallpaperBundleVersion)
+                {
+                    userSettings.Settings.WallpaperBundleVersion = maxVersion;
+                    userSettings.Save<ISettingsModel>();
+                }
+            }
 
             //restore wallpaper(s) from previous run.
             Services.GetRequiredService<IDesktopCore>().RestoreWallpaper();
@@ -321,6 +336,34 @@ namespace Lively
             Directory.CreateDirectory(Path.Combine(baseDirectory, Constants.CommonPartialPaths.WallpaperInstallDir));
             Directory.CreateDirectory(Path.Combine(baseDirectory, Constants.CommonPartialPaths.WallpaperInstallTempDir));
             Directory.CreateDirectory(Path.Combine(baseDirectory, Constants.CommonPartialPaths.WallpaperSettingsDir));
+        }
+
+        /// <summary>
+        /// Extract default wallpapers if any
+        /// </summary>
+        public static int ExtractWallpaperBundle(int currentBundleVer, string currentBundleDir, string currentWallpaperDir)
+        {
+            int maxExtracted = currentBundleVer;
+            try
+            {
+                //wallpaper bundles filenames are 0.zip, 1.zip ...
+                var sortedBundles = Directory.GetFiles(currentBundleDir).OrderBy(x => x);
+
+                foreach (var item in sortedBundles)
+                {
+                    if (int.TryParse(Path.GetFileNameWithoutExtension(item), out int val))
+                    {
+                        if (val > maxExtracted)
+                        {
+                            //will overwrite files if exists during extraction.
+                            ZipExtract.ZipExtractFile(item, Path.Combine(currentWallpaperDir, Constants.CommonPartialPaths.WallpaperInstallDir), false);
+                            maxExtracted = val;
+                        }
+                    }
+                }
+            }
+            catch { /* TODO */ }
+            return maxExtracted;
         }
 
         private void SetupUnhandledExceptionLogging()

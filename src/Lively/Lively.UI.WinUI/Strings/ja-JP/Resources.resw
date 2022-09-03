@@ -1142,9 +1142,9 @@ Edge Webview2は、Windowsに内蔵されたWebViewです。</value>
     <value>プラグインが見つかりません</value>
   </data>
   <data name="UpdateCompleted.Text" xml:space="preserve">
-    <value>Update complete</value>
+    <value>更新完了</value>
   </data>
   <data name="UpdateWhatsNew.Text" xml:space="preserve">
-    <value>Check out what's new</value>
+    <value>新機能を確認しましょう</value>
   </data>
 </root>

@@ -396,7 +396,7 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Thông tin</value>
   </data>
   <data name="TextMoreWallpapers" xml:space="preserve">
-    <value>Nhiều hình nền hơn</value>
+    <value>Thêm hình nền</value>
   </data>
   <data name="TextMouse.Content" xml:space="preserve">
     <value>Chuột</value>
@@ -1139,9 +1139,9 @@ Khi sắn sàng, đi tới http://localhost:portnumber để truy cập bảng �
     <value>Không tìm thấy được plugin</value>
   </data>
   <data name="UpdateCompleted.Text" xml:space="preserve">
-    <value>Update complete</value>
+    <value>Cập nhật thành công</value>
   </data>
   <data name="UpdateWhatsNew.Text" xml:space="preserve">
-    <value>Check out what's new</value>
+    <value>Kiểm tra xem có gì mới</value>
   </data>
 </root>
