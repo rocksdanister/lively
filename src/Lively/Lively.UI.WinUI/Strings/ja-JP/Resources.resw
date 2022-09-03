@@ -353,7 +353,7 @@ Windows 7 の場合は、"パフォーマンスを優先する"を選択する�
     <value>終了</value>
   </data>
   <data name="ExportWallpaperZip.Text" xml:space="preserve">
-    <value>zipファイルを出力する</value>
+    <value>zipで保存</value>
   </data>
   <data name="TextFeatureMissing" xml:space="preserve">
     <value>このバージョンのLivelyでは利用できない機能があります。</value>
@@ -416,7 +416,7 @@ Windows 7 の場合は、"パフォーマンスを優先する"を選択する�
     <value>オフ</value>
   </data>
   <data name="TextOK" xml:space="preserve">
-    <value>決定</value>
+    <value>OK</value>
   </data>
   <data name="TextOn.Content" xml:space="preserve">
     <value>オン</value>
@@ -1118,7 +1118,7 @@ Edge Webview2は、Windowsに内蔵されたWebViewです。</value>
     <value>壁紙を共有</value>
   </data>
   <data name="ExportWallpaperGallery.Text" xml:space="preserve">
-    <value>ギャラリーにアップロード</value>
+    <value>アップロード</value>
   </data>
   <data name="ExportWallpaperLink.Text" xml:space="preserve">
     <value>リンクをコピー</value>
