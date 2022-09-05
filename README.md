@@ -111,15 +111,15 @@ Its super easy.. barely an inconvenience, just drag & drop the files or webpages
 
 <a href='//www.microsoft.com/store/apps/9ntm2qc6qws7?cid=storebadge&ocid=badge'><img src='https://developer.microsoft.com/store/badges/images/English_get-it-from-MS.png' alt='English badge' width="142px" height="52px"/></a>
 
-##### Version: v2.0.2.8 (Windows 10 1903 or above)[What's new?](https://github.com/rocksdanister/lively/releases/tag/v2.0.2.8)
+##### Version: v2.0.3.2 (Windows 10 1903 or above)[What's new?](https://github.com/rocksdanister/lively/releases/tag/v2.0.3.2)
 - [`Installer`][direct-full-win32] 
 
-SHA256: e563c77218725f614135fc66d73ec8f8fa45daf37942d207baabafa7163eb847
+SHA256: 19286d360fd6197cf4eea6130a93eb28de30a266d58b0f94c4a55662f00732a2
 
 
-[direct-full-win32]: https://github.com/rocksdanister/lively/releases/download/v2.0.2.8/lively_setup_x86_full_v2028.exe
+[direct-full-win32]: https://github.com/rocksdanister/lively/releases/download/v2.0.3.2/lively_setup_x86_full_v2032.exe
 
-Installer will give Smartscreen warning, [discussion.](https://github.com/rocksdanister/lively/issues/9)
+Installer may give Smartscreen warning, [discussion.](https://github.com/rocksdanister/lively/issues/9)
 
 [Which version do I download?](https://github.com/rocksdanister/lively/wiki/Differences-Between-Distributions)
 
