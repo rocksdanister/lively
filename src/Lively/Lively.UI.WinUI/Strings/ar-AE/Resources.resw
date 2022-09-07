@@ -147,11 +147,9 @@
     <value>صفحة ويب Lively الرئيسية</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
-    <value>Most modern LCD and LED displays do not suffer from burn-in issue and therefore any wallpaper can be used as screensaver.
+    <value>معظم شاشات LCD و LED الحديثة لا تعاني من مشكلة الاحتراق ، وبالتالي يمكن استخدام أي "wallpaper" كشاشة توقف.
 
-For OLED, Plasma or CRT displays which are susceptibe to burn-in it is advised to use wallpaper with regular motion and an overall dark theme which is supposed to mitigate burn-in but this feature is untested and its effectiveness cannot be guaranteed.
-
-The main purpose of Lively's screensavers is to add another layer of customization to your pc, use screensavers as burn-in protection at your own risk!</value>
+إلا PLASMA, OLED أو CRT!</value>
   </data>
   <data name="ReportBugPage.Content" xml:space="preserve">
     <value>Report a problem with the software</value>
@@ -1098,7 +1096,7 @@ Edge هو عرض الويب المدمج في windows 10.</value>
     <value>Please confirm this action as it CAN NOT be undone</value>
   </data>
   <data name="GalleryAccountDeleteFail.Text" xml:space="preserve">
-    <value>Failed to delete account, please try again later</value>
+    <value>فشل حذف الحساب ، يرجى المحاولة مرة أخرى في وقت لاحق</value>
   </data>
   <data name="TextConfirmCancel.Text" xml:space="preserve">
     <value>Do you want to cancel it?</value>
@@ -1116,10 +1114,10 @@ Edge هو عرض الويب المدمج في windows 10.</value>
     <value>Share</value>
   </data>
   <data name="TitleShareWallpaper.Text" xml:space="preserve">
-    <value>Share Wallpaper</value>
+    <value>مشاركة خلفيات</value>
   </data>
   <data name="ExportWallpaperGallery.Text" xml:space="preserve">
-    <value>Gallery upload</value>
+    <value>تحميل المعرض</value>
   </data>
   <data name="ExportWallpaperLink.Text" xml:space="preserve">
     <value>Copy link</value>

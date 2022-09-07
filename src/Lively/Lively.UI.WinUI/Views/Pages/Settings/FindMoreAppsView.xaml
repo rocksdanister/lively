@@ -18,7 +18,7 @@
                 Padding="0,5,0,0"
                 Background="{ThemeResource SystemAltLowColor}"
                 CornerRadius="5"
-                ItemsSource="{Binding Applications}"
+                ItemsSource="{Binding ApplicationsFiltered}"
                 SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
                 <ListView.ItemTemplate>
                     <DataTemplate>

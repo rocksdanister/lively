@@ -431,7 +431,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>所有處理程序</value>
   </data>
   <data name="PauseAlgorithmTypeExclusiveMode.Content" xml:space="preserve">
-    <value>Direct3D</value>
+    <value>直接3D</value>
   </data>
   <data name="PauseAlgorithmTypeForegroundProcess.Content" xml:space="preserve">
     <value>前景處理程序</value>
@@ -992,16 +992,16 @@ Edge 是 Windows 10 的內建網頁繪製元件 (Webview)。</value>
     <value>正常</value>
   </data>
   <data name="Screensaver.Description" xml:space="preserve">
-    <value>How screensaver is applied to connected to display devices</value>
+    <value>屏幕保護程序如何應用於連接到顯示設備</value>
   </data>
   <data name="Screensaver.Header" xml:space="preserve">
-    <value>Type of screensaver</value>
+    <value>屏保類型</value>
   </data>
   <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
-    <value>Configured separately</value>
+    <value>螢幕保持模式不同壁紙.內容</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
-    <value>Same as running wallpaper</value>
+    <value>和跑步壁紙一樣</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
     <value>Plugin required</value>

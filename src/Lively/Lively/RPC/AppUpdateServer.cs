@@ -65,7 +65,7 @@ namespace Lively.RPC
                     void Updater_UpdateChecked(object sender, AppUpdaterEventArgs e)
                     {
                         updater.UpdateChecked -= Updater_UpdateChecked;
-                        tcs.SetResult(true);
+                        tcs.TrySetResult(true);
                     }
                     await tcs.Task;
 

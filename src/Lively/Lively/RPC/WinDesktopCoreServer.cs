@@ -189,7 +189,7 @@ namespace Lively.RPC
                     void WallpaperChanged(object s, EventArgs e)
                     {
                         desktopCore.WallpaperChanged -= WallpaperChanged;
-                        tcs.SetResult(true);
+                        tcs.TrySetResult(true);
                     }
                     await tcs.Task;
 
@@ -226,7 +226,7 @@ namespace Lively.RPC
                             IsAbsolutePath = e.Info.IsAbsolutePath,
                         };
                         desktopCore.WallpaperUpdated -= WallpaperUpdated;
-                        tcs.SetResult(true);
+                        tcs.TrySetResult(true);
                     }
                     await tcs.Task;
                     await responseStream.WriteAsync(resp);
@@ -263,7 +263,7 @@ namespace Lively.RPC
                             ScreenNotFoundException _ => ErrorCategory.ScreenNotFound,
                             _ => ErrorCategory.General,
                         };
-                        tcs.SetResult(true);
+                        tcs.TrySetResult(true);
                     }
                     await tcs.Task;
 
