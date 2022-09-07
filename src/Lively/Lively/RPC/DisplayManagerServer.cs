@@ -75,7 +75,7 @@ namespace Lively.RPC
                     void DisplayChanged(object s, EventArgs e)
                     {
                         displayManager.DisplayUpdated -= DisplayChanged;
-                        tcs.SetResult(true);
+                        tcs.TrySetResult(true);
                     }
                     await tcs.Task;
 

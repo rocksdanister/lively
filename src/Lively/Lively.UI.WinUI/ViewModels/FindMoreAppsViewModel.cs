@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.WinUI.UI;
 using Lively.Common.Helpers.Pinvoke;
 using Lively.Models;
 using Lively.UI.WinUI.Factories;
@@ -28,18 +29,24 @@ namespace Lively.UI.WinUI.ViewModels
 
         [ObservableProperty]
         private ObservableCollection<ApplicationModel> applications = new();
-
+        [ObservableProperty]
+        private AdvancedCollectionView applicationsFiltered = new();
         [ObservableProperty]
         private ApplicationModel selectedItem;
 
         public FindMoreAppsViewModel(IApplicationsFactory appFactory)
         {
             this.appFactory = appFactory;
+            ApplicationsFiltered = new AdvancedCollectionView(Applications, true);
+            ApplicationsFiltered.SortDescriptions.Add(new SortDescription("AppName", SortDirection.Ascending));
 
-            foreach (var item in Process.GetProcesses()
-                .Where(x => x.MainWindowHandle != IntPtr.Zero && !string.IsNullOrEmpty(x.MainWindowTitle) && !IsExcluded(x.MainWindowHandle)))
+            using (ApplicationsFiltered.DeferRefresh())
             {
-                Applications.Add(appFactory.CreateApp(item));
+                foreach (var item in Process.GetProcesses()
+                    .Where(x => x.MainWindowHandle != IntPtr.Zero && !string.IsNullOrEmpty(x.MainWindowTitle) && !IsExcluded(x.MainWindowHandle)))
+                {
+                    Applications.Add(appFactory.CreateApp(item));
+                }
             }
             SelectedItem = Applications.FirstOrDefault();
         }
@@ -56,7 +63,7 @@ namespace Lively.UI.WinUI.ViewModels
             if (file != null)
             {
                 var item = appFactory.CreateApp(file.Path);
-                Applications.Insert(0, item);
+                Applications.Add(item);
                 SelectedItem = item;
             }
         }

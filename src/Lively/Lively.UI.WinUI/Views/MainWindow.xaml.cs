@@ -126,7 +126,7 @@ namespace Lively.UI.WinUI
                 });
             };
 
-            if (userSettings.Settings.IsUpdated && !Constants.ApplicationType.IsMSIX)
+            if (userSettings.Settings.IsUpdated)
             {
                 this.DispatcherQueue.TryEnqueue(async () =>
                 {
