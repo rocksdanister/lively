@@ -17,15 +17,15 @@
     TaskBarIcon="appicon.ico"
     mc:Ignorable="d">
     <winex:WindowEx.Backdrop>
-        <!--<winex:MicaSystemBackdrop
+        <winex:MicaSystemBackdrop
             DarkLuminosityOpacity="0.9"
             DarkTintOpacity="0.5"
             LightLuminosityOpacity="0.9"
-            LightTintOpacity="0.5" />-->
-        <winex:AcrylicSystemBackdrop />
+            LightTintOpacity="0.5" />
+        <!--<winex:AcrylicSystemBackdrop />-->
     </winex:WindowEx.Backdrop>
 
-    <Grid Background="{ThemeResource AcrylicBackgroundCustomBrush}">
+    <Grid Background="{ThemeResource SystemAltMediumLowColor}">
         <Grid.RowDefinitions>
             <RowDefinition Height="32" />
             <RowDefinition Height="*" />
@@ -90,7 +90,7 @@
             <NavigationView.Resources>
                 <AcrylicBrush
                     x:Key="NavigationViewTopPaneBackground"
-                    Opacity="0.7"
+                    Opacity="0.4"
                     TintColor="{ThemeResource SystemAccentColor}"
                     TintOpacity="0.5" />
                 <!--
@@ -304,8 +304,8 @@
                         <animations:RotationInDegreesAnimation
                             From="0"
                             To="0"
-                            Duration="0:0:2.0">
-                            <animations:ScalarKeyFrame Value="-720" />
+                            Duration="0:0:1.2">
+                            <animations:ScalarKeyFrame Value="-360" />
                         </animations:RotationInDegreesAnimation>
                         <animations:OpacityAnimation
                             From="0"
