@@ -30,7 +30,7 @@ namespace Lively.UI.WinUI.ViewModels
         [ObservableProperty]
         private ObservableCollection<ApplicationModel> applications = new();
         [ObservableProperty]
-        private AdvancedCollectionView applicationsFiltered = new();
+        private AdvancedCollectionView applicationsFiltered;
         [ObservableProperty]
         private ApplicationModel selectedItem;
 
