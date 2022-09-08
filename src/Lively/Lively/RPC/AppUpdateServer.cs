@@ -67,7 +67,14 @@ namespace Lively.RPC
                         updater.UpdateChecked -= Updater_UpdateChecked;
                         tcs.TrySetResult(true);
                     }
+                    using var item = context.CancellationToken.Register(() => { tcs.TrySetResult(false); });
                     await tcs.Task;
+
+                    if (context.CancellationToken.IsCancellationRequested)
+                    {
+                        updater.UpdateChecked -= Updater_UpdateChecked;
+                        break;
+                    }
 
                     await responseStream.WriteAsync(new Empty());
                 }

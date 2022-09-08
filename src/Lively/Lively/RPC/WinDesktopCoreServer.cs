@@ -25,6 +25,7 @@ using Lively.Helpers;
 using Lively.Views;
 using static Lively.Common.Errors;
 using System.Reflection;
+using NLog;
 
 namespace Lively.RPC
 {
@@ -191,14 +192,21 @@ namespace Lively.RPC
                         desktopCore.WallpaperChanged -= WallpaperChanged;
                         tcs.TrySetResult(true);
                     }
+                    using var item = context.CancellationToken.Register(() => { tcs.TrySetResult(false); });
                     await tcs.Task;
+
+                    if (context.CancellationToken.IsCancellationRequested)
+                    {
+                        desktopCore.WallpaperChanged -= WallpaperChanged;
+                        break;
+                    }
 
                     await responseStream.WriteAsync(new Empty());
                 }
             }
             catch (Exception e)
             {
-                Debug.WriteLine(e.ToString());
+                Logger.Error(e);
             }
         }
 
@@ -228,13 +236,21 @@ namespace Lively.RPC
                         desktopCore.WallpaperUpdated -= WallpaperUpdated;
                         tcs.TrySetResult(true);
                     }
+                    using var item = context.CancellationToken.Register(() => { tcs.TrySetResult(false); });
                     await tcs.Task;
+
+                    if (context.CancellationToken.IsCancellationRequested)
+                    {
+                        desktopCore.WallpaperUpdated -= WallpaperUpdated;
+                        break;
+                    }
+
                     await responseStream.WriteAsync(resp);
                 }
             }
             catch (Exception e)
             {
-                Debug.WriteLine(e.ToString());
+                Logger.Error(e);
             }
         }
 
@@ -265,14 +281,21 @@ namespace Lively.RPC
                         };
                         tcs.TrySetResult(true);
                     }
+                    using var item = context.CancellationToken.Register(() => { tcs.TrySetResult(false); });
                     await tcs.Task;
+
+                    if (context.CancellationToken.IsCancellationRequested)
+                    {
+                        desktopCore.WallpaperError -= WallpaperError;
+                        break;
+                    }
 
                     await responseStream.WriteAsync(resp);
                 }
             }
             catch (Exception e)
             {
-                Debug.WriteLine(e.ToString());
+                Logger.Error(e);
             }
         }
 
