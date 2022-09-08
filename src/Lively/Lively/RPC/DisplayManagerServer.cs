@@ -2,16 +2,20 @@
 using Grpc.Core;
 using Lively.Core.Display;
 using Lively.Grpc.Common.Proto.Display;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Lively.RPC
 {
     internal class DisplayManagerServer : DisplayService.DisplayServiceBase
     {
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+
         private readonly IDisplayManager displayManager;
 
         public DisplayManagerServer(IDisplayManager displayManager)
@@ -77,14 +81,21 @@ namespace Lively.RPC
                         displayManager.DisplayUpdated -= DisplayChanged;
                         tcs.TrySetResult(true);
                     }
+                    using var item = context.CancellationToken.Register(() => { tcs.TrySetResult(false); });
                     await tcs.Task;
+
+                    if (context.CancellationToken.IsCancellationRequested)
+                    {
+                        displayManager.DisplayUpdated -= DisplayChanged;
+                        break;
+                    }
 
                     await responseStream.WriteAsync(new Empty());
                 }
             }
             catch (Exception e)
             {
-                Debug.WriteLine(e.ToString());
+                Logger.Error(e);
             }
         }
     }
