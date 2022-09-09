@@ -102,5 +102,11 @@ namespace Lively.RPC
             commandHandler.ParseArgs(request.Args.ToArray());
             return Task.FromResult(new Empty());
         }
+
+        public override Task<Empty> SaveRectUI(Empty _, ServerCallContext context)
+        {
+            runner.SaveRectUI();
+            return Task.FromResult(new Empty());
+        }
     }
 }

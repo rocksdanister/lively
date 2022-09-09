@@ -176,6 +176,14 @@ namespace Lively.Services
             }
         }
 
+        public void SaveRectUI()
+        {
+            if (processUI == null)
+                return;
+
+            NativeMethods.GetWindowRect(processUI.MainWindowHandle, out prevWindowRect);
+        }
+
         //TODO: Make it work by launching process in background.
         public void ShowControlPanel() => processUI?.StandardInput.WriteLine("LM SHOWCONTROLPANEL");
 

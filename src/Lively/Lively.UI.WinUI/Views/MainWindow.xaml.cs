@@ -459,8 +459,7 @@ namespace Lively.UI.WinUI
             }
             else
             {
-                //To sync GetWindowRect() to restore window state
-                await commands.CloseUI();
+                await commands.SaveRectUIAsync();
                 App.ShutDown();
             }
         }
