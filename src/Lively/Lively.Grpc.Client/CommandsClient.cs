@@ -85,5 +85,15 @@ namespace Lively.Grpc.Client
             request.Args.AddRange(args);
             _ = client.AutomationCommand(request);
         }
+
+        public void SaveRectUI()
+        {
+           client.SaveRectUI(new Empty());
+        }
+
+        public async Task SaveRectUIAsync()
+        {
+            await client.SaveRectUIAsync(new Empty());
+        }
     }
 }

@@ -10,6 +10,7 @@ service CommandsService {
   rpc Screensaver (ScreensaverRequest) returns (google.protobuf.Empty);
   rpc ShutDown (google.protobuf.Empty) returns (google.protobuf.Empty);
   rpc AutomationCommand (AutomationCommandRequest) returns (google.protobuf.Empty);
+  rpc SaveRectUI(google.protobuf.Empty) returns (google.protobuf.Empty);
 }
 
 message ScreensaverRequest {

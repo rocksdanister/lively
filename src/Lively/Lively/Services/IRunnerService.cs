@@ -12,5 +12,6 @@ namespace Lively.Services
         void ShowControlPanel();
         void ShowCustomisWallpaperePanel();
         bool IsVisibleUI { get; }
+        void SaveRectUI();
     }
 }
