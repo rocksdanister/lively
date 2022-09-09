@@ -42,6 +42,6 @@ Add any other context about the problem here.
 
 **Log file (Important)**
 Share the diagnostic files by:
-Open Lively settings (Gear icon) -> Misc. -> Log File
+Open Lively settings (Gear icon) top-right -> System -> Log File -> Save
 or 
 Navigate to Appdata folder `C:\Users\<UserName>\AppData\Local\Lively Wallpaper\logs`
