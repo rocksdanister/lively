@@ -105,7 +105,7 @@
                             HorizontalScrollBarVisibility="Hidden"
                             VerticalScrollBarVisibility="Auto">
                             <wctc:MarkdownTextBlock
-                                Name="markDownPatreon"
+                                x:Name="markDownPatreon"
                                 Background="Transparent"
                                 Text="{Binding PatreonMembers}" />
                         </ScrollViewer>

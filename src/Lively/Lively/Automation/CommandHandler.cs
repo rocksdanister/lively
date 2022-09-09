@@ -115,6 +115,16 @@ namespace Lively.Automation
             {
                 DesktopUtil.SetDesktopIconVisibility((bool)opts.ShowIcons);
             }
+
+            if (opts.ShutdownApp != null)
+            {
+                App.ShutDown();
+            }
+
+            if (opts.RestartApp != null)
+            {
+                //TODO
+            }
             return 0;
         }
 
