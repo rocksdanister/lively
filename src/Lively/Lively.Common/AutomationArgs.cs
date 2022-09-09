@@ -42,20 +42,15 @@ namespace Lively.Common
             HelpText = "Start with Windows (true/false).")]
             public bool? Startup { get; set; }
 
-            [Option("shutdownApp",
+            [Option("shutdown",
             Required = false,
             HelpText = "Quit application.")]
             public bool? ShutdownApp { get; set; }
 
-            [Option("restartApp",
-            Required = false,
-            HelpText = "Restart application.")]
-            public bool? RestartApp { get; set; }
-
             [Option("restart",
             Required = false,
-            HelpText = "Quit and relaunch running wallpapers.")]
-            public bool? Restart { get; set; }
+            HelpText = "Quit and relaunch application.")]
+            public bool? RestartApp { get; set; }
         }
 
         [Verb("setwp", HelpText = "Apply wallpaper.")]
