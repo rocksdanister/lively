@@ -89,7 +89,7 @@
                     <controls:SettingExpander IsExpanded="True">
                         <controls:SettingExpander.Header>
                             <controls:Setting
-                                Name="audioBtn"
+                                x:Name="audioBtn"
                                 x:Uid="Audio"
                                 Icon="&#xE767;"
                                 Style="{StaticResource ExpanderHeaderSettingStyle}">

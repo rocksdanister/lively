@@ -5,6 +5,8 @@ using System.Text;
 
 namespace Lively.Common
 {
+    //Note: Nullable bool is used because commandlineparser sets bool to true if argument is present regardless of user input.
+    //Issue: https://github.com/commandlineparser/commandline/issues/702
     public static class AutomationArgs
     {
         [Verb("app", isDefault: true, HelpText = "Application controls.")]
@@ -39,6 +41,21 @@ namespace Lively.Common
             Required = false,
             HelpText = "Start with Windows (true/false).")]
             public bool? Startup { get; set; }
+
+            [Option("shutdownApp",
+            Required = false,
+            HelpText = "Quit application.")]
+            public bool? ShutdownApp { get; set; }
+
+            [Option("restartApp",
+            Required = false,
+            HelpText = "Restart application.")]
+            public bool? RestartApp { get; set; }
+
+            [Option("restart",
+            Required = false,
+            HelpText = "Quit and relaunch running wallpapers.")]
+            public bool? Restart { get; set; }
         }
 
         [Verb("setwp", HelpText = "Apply wallpaper.")]
