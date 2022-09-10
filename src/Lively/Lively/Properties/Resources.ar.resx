@@ -147,14 +147,12 @@
     <value>صفحة ويب Lively الرئيسية</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
-    <value>Most modern LCD and LED displays do not suffer from burn-in issue and therefore any wallpaper can be used as screensaver.
+    <value>معظم شاشات LCD و LED الحديثة لا تعاني من مشكلة الاحتراق ، وبالتالي يمكن استخدام أي "wallpaper" كشاشة توقف.
 
-For OLED, Plasma or CRT displays which are susceptibe to burn-in it is advised to use wallpaper with regular motion and an overall dark theme which is supposed to mitigate burn-in but this feature is untested and its effectiveness cannot be guaranteed.
-
-The main purpose of Lively's screensavers is to add another layer of customization to your pc, use screensavers as burn-in protection at your own risk!</value>
+إلا PLASMA, OLED أو CRT!</value>
   </data>
   <data name="ReportBugPage.Content" xml:space="preserve">
-    <value>Report a problem with the software</value>
+    <value>الإبلاغ عن مشكلة في البرنامَج</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
     <value>حدد ملفا أو حدد عنوان url لموقع الويب لتعيينه كخلفية.</value>
@@ -212,8 +210,8 @@ The main purpose of Lively's screensavers is to add another layer of customizati
     <value>اضهر دعمك من خلال شراء قهوة للمطور</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
-    <value>You are about to change to beta (developer) build of Lively.
-Updates will be frequent and may contain bugs!</value>
+    <value>أنت على وشك التغير إلى النسخة التجربية (المطور) من Lively.
+التحديثات ستكون متكررة وقد تحتوي على أخطاء!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
     <value>System-tray icon visibility, lively will continue to run with the icon hidden</value>
@@ -526,7 +524,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>عادي</value>
   </data>
   <data name="TextTileSizeSmall" xml:space="preserve">
-    <value>صفير</value>
+    <value>صغير</value>
   </data>
   <data name="Title.Text" xml:space="preserve">
     <value>العنوان</value>
@@ -535,7 +533,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>بلا رأس</value>
   </data>
   <data name="TextUILite" xml:space="preserve">
-    <value>لايت</value>
+    <value>خفيف</value>
   </data>
   <data name="TextUINormal" xml:space="preserve">
     <value>عادي</value>
@@ -1005,7 +1003,7 @@ Edge هو عرض الويب المدمج في windows 10.</value>
     <value>Same as running wallpaper</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
-    <value>Plugin required</value>
+    <value>إضافة مطلوبة</value>
   </data>
   <data name="ScreensaverPluginMessage.Text" xml:space="preserve">
     <value>One time setup is required to run screensaver</value>
@@ -1032,13 +1030,13 @@ Edge هو عرض الويب المدمج في windows 10.</value>
     <value>Collection</value>
   </data>
   <data name="GalleryPageHome.Content" xml:space="preserve">
-    <value>Home</value>
+    <value>الرئيسية</value>
   </data>
   <data name="GalleryPageManage.Content" xml:space="preserve">
-    <value>Manage</value>
+    <value>إدارة</value>
   </data>
   <data name="GalleryPageProfile.Content" xml:space="preserve">
-    <value>Profile</value>
+    <value>الملف الشخصي</value>
   </data>
   <data name="GalleryPleaseLogin.Text" xml:space="preserve">
     <value>Please log in to continue</value>
@@ -1074,55 +1072,55 @@ Edge هو عرض الويب المدمج في windows 10.</value>
     <value>Misleading information</value>
   </data>
   <data name="ReportWallpaperOther.Content" xml:space="preserve">
-    <value>Other</value>
+    <value>آخر</value>
   </data>
   <data name="ReportWallpaperSpam.Content" xml:space="preserve">
-    <value>Spam</value>
+    <value>رسائل غير مرغوب بها</value>
   </data>
   <data name="ReportWallpaperViolence.Content" xml:space="preserve">
-    <value>Nudity or violence</value>
+    <value>العري أو العنف</value>
   </data>
   <data name="TextAdditionalNotes.Text" xml:space="preserve">
-    <value>Additional notes</value>
+    <value>ملاحظات إضافيه</value>
   </data>
   <data name="TextReportWallpaper.Text" xml:space="preserve">
-    <value>Report</value>
+    <value>إبلاغ</value>
   </data>
   <data name="TitleReportWallpaper.Text" xml:space="preserve">
-    <value>Report Wallpaper</value>
+    <value>الإبلاغ عن الخلفية</value>
   </data>
   <data name="Send.Content" xml:space="preserve">
-    <value>Send</value>
+    <value>إرسال</value>
   </data>
   <data name="GalleryAccountDeleteConfirm.Text" xml:space="preserve">
-    <value>Please confirm this action as it CAN NOT be undone</value>
+    <value>يرجى تأكيد هذا الإجراء لأنه (لا يمكن) التراجع عنه</value>
   </data>
   <data name="GalleryAccountDeleteFail.Text" xml:space="preserve">
-    <value>Failed to delete account, please try again later</value>
+    <value>فشل حذف الحساب ، يرجى المحاولة مرة أخرى في وقت لاحق</value>
   </data>
   <data name="TextConfirmCancel.Text" xml:space="preserve">
-    <value>Do you want to cancel it?</value>
+    <value>هل تريد الإلغاء؟</value>
   </data>
   <data name="TextWait.Text" xml:space="preserve">
-    <value>Wait</value>
+    <value>انتظر</value>
   </data>
   <data name="TitleDownloadProgress.Text" xml:space="preserve">
-    <value>Download in Progress</value>
+    <value>جاري التنزيل </value>
   </data>
   <data name="TextContributors.Text" xml:space="preserve">
-    <value>Contributors</value>
+    <value>المساهمين</value>
   </data>
   <data name="TextShare.Text" xml:space="preserve">
-    <value>Share</value>
+    <value>مشاركة</value>
   </data>
   <data name="TitleShareWallpaper.Text" xml:space="preserve">
-    <value>Share Wallpaper</value>
+    <value>مشاركة خلفيات</value>
   </data>
   <data name="ExportWallpaperGallery.Text" xml:space="preserve">
-    <value>Gallery upload</value>
+    <value>تحميل المعرض</value>
   </data>
   <data name="ExportWallpaperLink.Text" xml:space="preserve">
-    <value>Copy link</value>
+    <value>نسخ الرابط</value>
   </data>
   <data name="TextCustomiseWallpaper" xml:space="preserve">
     <value>تخصيص خلفية</value>
@@ -1131,15 +1129,21 @@ Edge هو عرض الويب المدمج في windows 10.</value>
     <value>إغلاق الخلفية</value>
   </data>
   <data name="TitleChooseApplication.Text" xml:space="preserve">
-    <value>Choose Application</value>
+    <value>اختر تطبيق</value>
   </data>
   <data name="WallpaperInstallSize.Text" xml:space="preserve">
-    <value>Size</value>
+    <value>الحجم</value>
   </data>
   <data name="PluginNotFound.Message" xml:space="preserve">
-    <value>Please install the required plugin</value>
+    <value>الرجاء تثبيت الإضافة المطلوبة</value>
   </data>
   <data name="PluginNotFound.Title" xml:space="preserve">
-    <value>Plugin not found</value>
+    <value>الإضافة غير موجودة</value>
+  </data>
+  <data name="UpdateCompleted.Text" xml:space="preserve">
+    <value>اكتمل التحديث</value>
+  </data>
+  <data name="UpdateWhatsNew.Text" xml:space="preserve">
+    <value>تحقق من الجديد</value>
   </data>
 </root>

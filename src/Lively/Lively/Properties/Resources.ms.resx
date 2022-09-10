@@ -157,7 +157,7 @@ Windows Explorer telah dimulakan semula sebanyak 2 kali dalam tempoh 30 saat yan
     <value>Laporkan masalah dengan software</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
-    <value>Pilih fail atau tentukan laman sesawang URL sebagai wallpaper.</value>
+    <value>Pilih fail</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
     <value>Tingkah laku main semula wallpaper berdasarkan aplikasi yang sedang berjalan.</value>
@@ -198,7 +198,7 @@ Hanya teruskan jika aplikasi ini berasal daripada sumber yang dipercayai.</value
     <value>Pilih skrin</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
-    <value>Perisian versi terbaharu sedia untuk dimuat turun!</value>
+    <value>Terdapat versi baharu perisian!</value>
   </data>
   <data name="DescriptionWebpageLoad" xml:space="preserve">
     <value>Masukkan pautan laman sesawang untuk dimuatkan. Pautan shader shadertoy.com disokong.</value>
@@ -1143,5 +1143,11 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
   </data>
   <data name="PluginNotFound.Title" xml:space="preserve">
     <value>Plugin gagal dijumpai</value>
+  </data>
+  <data name="UpdateCompleted.Text" xml:space="preserve">
+    <value>Kemas kini selesai</value>
+  </data>
+  <data name="UpdateWhatsNew.Text" xml:space="preserve">
+    <value>Tengok ciri-ciri terbaharu</value>
   </data>
 </root>

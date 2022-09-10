@@ -121,7 +121,7 @@
     <value>Audio alleen afspelen wanneer bureaublad gefocust is</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
-    <value>Volume van alle achtergronden.</value>
+    <value>Volume niveau van alle achtergronden</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
     <value>Master Volume</value>
@@ -1122,15 +1122,21 @@ Alle processen: Heavier, Scant alle processen om afspeelmogelijkheden te bepalen
     <value>Achtergronden Sluiten</value>
   </data>
   <data name="TitleChooseApplication.Text" xml:space="preserve">
-    <value>Choose Application</value>
+    <value>Kies toepassing</value>
   </data>
   <data name="WallpaperInstallSize.Text" xml:space="preserve">
-    <value>Size</value>
+    <value>Grootte</value>
   </data>
   <data name="PluginNotFound.Message" xml:space="preserve">
-    <value>Please install the required plugin</value>
+    <value>Installeer alstublieft de vereiste plugin</value>
   </data>
   <data name="PluginNotFound.Title" xml:space="preserve">
-    <value>Plugin not found</value>
+    <value>Plugin niet gevonden</value>
+  </data>
+  <data name="UpdateCompleted.Text" xml:space="preserve">
+    <value>Bijwerking voltooid</value>
+  </data>
+  <data name="UpdateWhatsNew.Text" xml:space="preserve">
+    <value>Bekijk wat er nieuw is</value>
   </data>
 </root>

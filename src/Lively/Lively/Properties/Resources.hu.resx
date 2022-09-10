@@ -127,7 +127,7 @@
     <value>Fő hangerő</value>
   </data>
   <data name="AudioGroup.Header" xml:space="preserve">
-    <value>Audió</value>
+    <value>Hang</value>
   </data>
   <data name="CommunityPage.Content" xml:space="preserve">
     <value>Online vitafórum</value>
@@ -513,7 +513,7 @@ Ha még mindig nem működik, zárd be &amp; indítsd el a Livelyt újra/ indít
     <value>Fluent</value>
   </data>
   <data name="TaskbarThemeWallpaper.Content" xml:space="preserve">
-    <value>Wallpaper</value>
+    <value>Háttérkép</value>
   </data>
   <data name="TaskbarThemeWallpaperFluent.Content" xml:space="preserve">
     <value>Wallpaper Fluent</value>
@@ -742,7 +742,7 @@ Az Edge a Windows 10 beépített WebView-ja (Lehetővé teszi, hogy webes tartal
     <value>Hibakeresési port</value>
   </data>
   <data name="TitleChangelog" xml:space="preserve">
-    <value>Changelog</value>
+    <value>Újdonságok</value>
   </data>
   <data name="Community.Header" xml:space="preserve">
     <value>Közösség</value>
@@ -763,7 +763,7 @@ Az Edge a Windows 10 beépített WebView-ja (Lehetővé teszi, hogy webes tartal
     <value>Dokumentáció</value>
   </data>
   <data name="EnterUrl.Header" xml:space="preserve">
-    <value>Enter URL</value>
+    <value>Adja meg az URL-t</value>
   </data>
   <data name="ExportLogs.Header" xml:space="preserve">
     <value>Log File</value>
@@ -817,7 +817,7 @@ Az Edge a Windows 10 beépített WebView-ja (Lehetővé teszi, hogy webes tartal
     <value>When on Remote Desktop</value>
   </data>
   <data name="ReportBug.Header" xml:space="preserve">
-    <value>Report Bug</value>
+    <value>Hibajelentés</value>
   </data>
   <data name="TitleScalingFit" xml:space="preserve">
     <value>Arányosítás/Illesztés</value>
@@ -826,7 +826,7 @@ Az Edge a Windows 10 beépített WebView-ja (Lehetővé teszi, hogy webes tartal
     <value>Képernyő elrendezés</value>
   </data>
   <data name="TitleScreensaver" xml:space="preserve">
-    <value>Screensaver</value>
+    <value>Képernyőkímélő</value>
   </data>
   <data name="TitleScreensaverLockOnResume" xml:space="preserve">
     <value>On resume, display logon screen</value>
@@ -838,10 +838,10 @@ Az Edge a Windows 10 beépített WebView-ja (Lehetővé teszi, hogy webes tartal
     <value>Beállítások</value>
   </data>
   <data name="TitleSkipConfirm" xml:space="preserve">
-    <value>Skip Confirmation</value>
+    <value>Átugrás Megerősítése</value>
   </data>
   <data name="SourceCode.Header" xml:space="preserve">
-    <value>Source Code</value>
+    <value>Forráskód</value>
   </data>
   <data name="Store.Header" xml:space="preserve">
     <value>Bolt</value>
@@ -857,10 +857,10 @@ Az Edge a Windows 10 beépített WebView-ja (Lehetővé teszi, hogy webes tartal
     <value>Videó Minőség</value>
   </data>
   <data name="System.Header" xml:space="preserve">
-    <value>System</value>
+    <value>Rendszer</value>
   </data>
   <data name="TaskbarTheme.Header" xml:space="preserve">
-    <value>Taskbar Theme</value>
+    <value>Tálca Téma</value>
   </data>
   <data name="TitleTileSize" xml:space="preserve">
     <value>Csempe Méret</value>
@@ -869,7 +869,7 @@ Az Edge a Windows 10 beépített WebView-ja (Lehetővé teszi, hogy webes tartal
     <value>Felhasználói Felület</value>
   </data>
   <data name="TitleUpdates" xml:space="preserve">
-    <value>Updates</value>
+    <value>Frissítések</value>
   </data>
   <data name="TitleVideo" xml:space="preserve">
     <value>Videó</value>
@@ -920,52 +920,52 @@ Az Edge a Windows 10 beépített WebView-ja (Lehetővé teszi, hogy webes tartal
     <value>Gyors indítás</value>
   </data>
   <data name="WallpaperDirGroup.Header" xml:space="preserve">
-    <value>File</value>
+    <value>Fájl</value>
   </data>
   <data name="AppThemeDark.Content" xml:space="preserve">
-    <value>Dark</value>
+    <value>Sötét</value>
   </data>
   <data name="AppThemeLight.Content" xml:space="preserve">
-    <value>Light</value>
+    <value>Világos</value>
   </data>
   <data name="AppThemeSystem.Content" xml:space="preserve">
-    <value>System</value>
+    <value>Rendszer</value>
   </data>
   <data name="WindowsSettingsColor.Content" xml:space="preserve">
-    <value>Windows color settings</value>
+    <value>Windows színbeállítások</value>
   </data>
   <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
-    <value>Laptops</value>
+    <value>Laptop</value>
   </data>
   <data name="DeveloperGroup.Header" xml:space="preserve">
-    <value>Developer</value>
+    <value>Fejlesztői</value>
   </data>
   <data name="AppearanceBehaviour.Header" xml:space="preserve">
-    <value>Appearance &amp; behavior</value>
+    <value>Kinézet &amp; működés</value>
   </data>
   <data name="ActiveWallpapers.Label" xml:space="preserve">
-    <value>Active Wallpaper(s)</value>
+    <value>Aktív Háttérkép(ek)</value>
   </data>
   <data name="TitleGallery" xml:space="preserve">
-    <value>Gallery</value>
+    <value>Galéria</value>
   </data>
   <data name="AboutMe.Text" xml:space="preserve">
     <value>Hi, I'm Dani John also known as rocksdanister. I developed Lively a Free and open-source (FOSS) wallpaper application. Thanks for taking the time to look at my work.</value>
   </data>
   <data name="LicenseLink.Content" xml:space="preserve">
-    <value>Software license</value>
+    <value>Szoftver engedély</value>
   </data>
   <data name="AttributionLink.Content" xml:space="preserve">
     <value>Third party software notice</value>
   </data>
   <data name="PrivacyPolicyLink.Content" xml:space="preserve">
-    <value>Data collection policy</value>
+    <value>Adatgyűjtési szabályzat</value>
   </data>
   <data name="AddWallpaperDrop.Text" xml:space="preserve">
-    <value>Add wallpaper</value>
+    <value>Háttérkép Hozzáadása</value>
   </data>
   <data name="ComingSoon.Text" xml:space="preserve">
-    <value>Coming soon</value>
+    <value>Hamarosan</value>
   </data>
   <data name="AboutMenu.Text" xml:space="preserve">
     <value>Róla</value>
@@ -974,16 +974,16 @@ Az Edge a Windows 10 beépített WebView-ja (Lehetővé teszi, hogy webes tartal
     <value>Weboldal</value>
   </data>
   <data name="TextOpen.Content" xml:space="preserve">
-    <value>Open</value>
+    <value>Megnyitás</value>
   </data>
   <data name="TextSave.Content" xml:space="preserve">
-    <value>Save</value>
+    <value>Mentés</value>
   </data>
   <data name="UIMode.Description" xml:space="preserve">
-    <value>User interface effects and animations</value>
+    <value>Felhasználói felület effektek és animációk</value>
   </data>
   <data name="UIMode.Header" xml:space="preserve">
-    <value>User interface</value>
+    <value>Felhasználói felület</value>
   </data>
   <data name="UIModeLite.Content" xml:space="preserve">
     <value>Egyszerű</value>
@@ -992,10 +992,10 @@ Az Edge a Windows 10 beépített WebView-ja (Lehetővé teszi, hogy webes tartal
     <value>Közepes</value>
   </data>
   <data name="Screensaver.Description" xml:space="preserve">
-    <value>How screensaver is applied to connected to display devices</value>
+    <value>Hogyan alkalmazott a képernyőkímélő a csatlakoztatott kijelzőkre</value>
   </data>
   <data name="Screensaver.Header" xml:space="preserve">
-    <value>Type of screensaver</value>
+    <value>Kédernyőkímélő fajta</value>
   </data>
   <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
     <value>Külön konfigurálva</value>
@@ -1140,5 +1140,11 @@ Az Edge a Windows 10 beépített WebView-ja (Lehetővé teszi, hogy webes tartal
   </data>
   <data name="PluginNotFound.Title" xml:space="preserve">
     <value>Plugin not found</value>
+  </data>
+  <data name="UpdateCompleted.Text" xml:space="preserve">
+    <value>Update complete</value>
+  </data>
+  <data name="UpdateWhatsNew.Text" xml:space="preserve">
+    <value>Check out what's new</value>
   </data>
 </root>

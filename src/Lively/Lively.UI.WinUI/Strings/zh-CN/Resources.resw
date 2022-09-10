@@ -261,17 +261,15 @@ https://github.com/rocksdanister/lively/wiki</value>
 您是否希望还原以前运行的壁纸?</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
-    <value>似乎需要进行一些设置才能使Lively工作：  
-1. 打开此电脑（我的电脑）
-2. 右键单击空白区域
-3. 选择"属性"
-4. 选择"高级系统设置"
-5. 在"性能"选项卡下，选择"设置"
-6. 启用"窗口内的动画控件和元素"并应用。
+    <value>需要更改设置才能正常使用Lively：  
+1. 按下 Win + R 「运行」；
+2. 运行 SystemPropertiesPerformance.exe ；
+3. 勾选“窗口内的动画控件和元素”（如果已启用，取消勾选并重新勾上），并应用；
+4. 点击“确定”，关闭窗口。
 
-如果是 Windows 7 系统只需设置"调整为最近外观"并应用。
-如果仍不起作用, 重启 Lively 或重启操作系统。
-(在一些 Windows 10 预览体验计划版本中无法工作)</value>
+Windows 7 系统只需设置"调整为最佳外观"&amp;并应用。
+如果仍然无法使用，可尝试重启 Lively 或系统。
+(可能在 Windows 10 预览版本中无法工作)</value>
   </data>
   <data name="Startup.Description" xml:space="preserve">
     <value>Lively 需要在后台运行以播放壁纸。</value>
@@ -996,10 +994,10 @@ Edge 是 Windows 10 内置的浏览器。</value>
     <value>正常 (Normal)</value>
   </data>
   <data name="Screensaver.Description" xml:space="preserve">
-    <value>壁纸应用于连接的显示设备的方式。</value>
+    <value>屏保应用于显示器的方式</value>
   </data>
   <data name="Screensaver.Header" xml:space="preserve">
-    <value>屏幕保护程序类型</value>
+    <value>屏保类型</value>
   </data>
   <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
     <value>单独配置</value>

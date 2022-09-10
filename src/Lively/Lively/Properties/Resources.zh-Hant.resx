@@ -431,7 +431,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>所有處理程序</value>
   </data>
   <data name="PauseAlgorithmTypeExclusiveMode.Content" xml:space="preserve">
-    <value>Direct3D</value>
+    <value>直接3D</value>
   </data>
   <data name="PauseAlgorithmTypeForegroundProcess.Content" xml:space="preserve">
     <value>前景處理程序</value>
@@ -992,34 +992,34 @@ Edge 是 Windows 10 的內建網頁繪製元件 (Webview)。</value>
     <value>正常</value>
   </data>
   <data name="Screensaver.Description" xml:space="preserve">
-    <value>How screensaver is applied to connected to display devices</value>
+    <value>屏幕保護程序如何應用於連接到顯示設備</value>
   </data>
   <data name="Screensaver.Header" xml:space="preserve">
-    <value>Type of screensaver</value>
+    <value>屏保類型</value>
   </data>
   <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
-    <value>Configured separately</value>
+    <value>螢幕保持模式不同壁紙.內容</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
-    <value>Same as running wallpaper</value>
+    <value>和跑步壁紙一樣</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
-    <value>Plugin required</value>
+    <value>需要插件</value>
   </data>
   <data name="ScreensaverPluginMessage.Text" xml:space="preserve">
-    <value>One time setup is required to run screensaver</value>
+    <value>一鍵安裝功能依賴Screensaver</value>
   </data>
   <data name="WallpaperLayoutScreenPicker.Content" xml:space="preserve">
-    <value>Always pick screen when choosing wallpaper</value>
+    <value>選擇壁紙時始終選擇屏幕</value>
   </data>
   <data name="GalleryAccount.Text" xml:space="preserve">
     <value>帳號</value>
   </data>
   <data name="GalleryAccountDelete.Content" xml:space="preserve">
-    <value>Delete account</value>
+    <value>刪除賬戶</value>
   </data>
   <data name="GalleryAccountExport.Content" xml:space="preserve">
-    <value>Export data</value>
+    <value>導出數據</value>
   </data>
   <data name="GalleryAccountLogin.Content" xml:space="preserve">
     <value>登入</value>
@@ -1028,49 +1028,49 @@ Edge 是 Windows 10 的內建網頁繪製元件 (Webview)。</value>
     <value>登出</value>
   </data>
   <data name="GalleryPageCollection.Content" xml:space="preserve">
-    <value>Collection</value>
+    <value>集合</value>
   </data>
   <data name="GalleryPageHome.Content" xml:space="preserve">
     <value>首頁</value>
   </data>
   <data name="GalleryPageManage.Content" xml:space="preserve">
-    <value>Manage</value>
+    <value>管理</value>
   </data>
   <data name="GalleryPageProfile.Content" xml:space="preserve">
-    <value>Profile</value>
+    <value>個人資料</value>
   </data>
   <data name="GalleryPleaseLogin.Text" xml:space="preserve">
-    <value>Please log in to continue</value>
+    <value>請先登入以繼續</value>
   </data>
   <data name="GalleryWelcomeMessage.Text" xml:space="preserve">
     <value>嗨</value>
   </data>
   <data name="RestoreWallpaper.Text" xml:space="preserve">
-    <value>We found these wallpapers in your account</value>
+    <value>我們在你的賬戶中發現了這些壁紙</value>
   </data>
   <data name="TextDownloadNow.Content" xml:space="preserve">
-    <value>Download now</value>
+    <value>現在下載</value>
   </data>
   <data name="TextMaybeLater.Content" xml:space="preserve">
-    <value>Maybe later</value>
+    <value>稍后再说</value>
   </data>
   <data name="TextSelectAll.Content" xml:space="preserve">
-    <value>Select all</value>
+    <value>全選</value>
   </data>
   <data name="TextSelectNone.Content" xml:space="preserve">
-    <value>Select none</value>
+    <value>取消選擇</value>
   </data>
   <data name="TitleWelcomeback.Text" xml:space="preserve">
-    <value>Welcome back!</value>
+    <value>歡迎回來！</value>
   </data>
   <data name="ReportWallpaper.Header" xml:space="preserve">
-    <value>Reasons</value>
+    <value>原因：</value>
   </data>
   <data name="ReportWallpaperCopyright.Content" xml:space="preserve">
-    <value>Copyright violation</value>
+    <value>侵權</value>
   </data>
   <data name="ReportWallpaperMisleading.Content" xml:space="preserve">
-    <value>Misleading information</value>
+    <value>誤導信息</value>
   </data>
   <data name="ReportWallpaperOther.Content" xml:space="preserve">
     <value>其他</value>
@@ -1079,37 +1079,37 @@ Edge 是 Windows 10 的內建網頁繪製元件 (Webview)。</value>
     <value>垃圾訊息</value>
   </data>
   <data name="ReportWallpaperViolence.Content" xml:space="preserve">
-    <value>Nudity or violence</value>
+    <value>色情暴力</value>
   </data>
   <data name="TextAdditionalNotes.Text" xml:space="preserve">
-    <value>Additional notes</value>
+    <value>補充説明</value>
   </data>
   <data name="TextReportWallpaper.Text" xml:space="preserve">
-    <value>Report</value>
+    <value>報告</value>
   </data>
   <data name="TitleReportWallpaper.Text" xml:space="preserve">
-    <value>Report Wallpaper</value>
+    <value>舉報壁紙</value>
   </data>
   <data name="Send.Content" xml:space="preserve">
-    <value>Send</value>
+    <value>發送</value>
   </data>
   <data name="GalleryAccountDeleteConfirm.Text" xml:space="preserve">
-    <value>Please confirm this action as it CAN NOT be undone</value>
+    <value>請確認該操作（將無法撤銷）</value>
   </data>
   <data name="GalleryAccountDeleteFail.Text" xml:space="preserve">
-    <value>Failed to delete account, please try again later</value>
+    <value>刪除賬戶失敗，請稍後再試</value>
   </data>
   <data name="TextConfirmCancel.Text" xml:space="preserve">
     <value>您確定要取消嗎？</value>
   </data>
   <data name="TextWait.Text" xml:space="preserve">
-    <value>Wait</value>
+    <value>稍等</value>
   </data>
   <data name="TitleDownloadProgress.Text" xml:space="preserve">
-    <value>Download in Progress</value>
+    <value>正在下載</value>
   </data>
   <data name="TextContributors.Text" xml:space="preserve">
-    <value>Contributors</value>
+    <value>貢獻者</value>
   </data>
   <data name="TextShare.Text" xml:space="preserve">
     <value>分享</value>
@@ -1118,7 +1118,7 @@ Edge 是 Windows 10 的內建網頁繪製元件 (Webview)。</value>
     <value>分享桌布</value>
   </data>
   <data name="ExportWallpaperGallery.Text" xml:space="preserve">
-    <value>Gallery upload</value>
+    <value>上傳到庫</value>
   </data>
   <data name="ExportWallpaperLink.Text" xml:space="preserve">
     <value>複製連結</value>
@@ -1136,9 +1136,15 @@ Edge 是 Windows 10 的內建網頁繪製元件 (Webview)。</value>
     <value>檔案大小：</value>
   </data>
   <data name="PluginNotFound.Message" xml:space="preserve">
-    <value>Please install the required plugin</value>
+    <value>請安裝插件依賴</value>
   </data>
   <data name="PluginNotFound.Title" xml:space="preserve">
-    <value>Plugin not found</value>
+    <value>找不到插件</value>
+  </data>
+  <data name="UpdateCompleted.Text" xml:space="preserve">
+    <value>更新完成！</value>
+  </data>
+  <data name="UpdateWhatsNew.Text" xml:space="preserve">
+    <value>看看最新内容</value>
   </data>
 </root>

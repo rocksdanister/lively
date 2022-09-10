@@ -1138,9 +1138,15 @@ Edge - веб-двигун з Windows 10 WebView.</value>
     <value>Розмір</value>
   </data>
   <data name="PluginNotFound.Message" xml:space="preserve">
-    <value>Please install the required plugin</value>
+    <value>Будь ласка, встановіть необхідний плагін</value>
   </data>
   <data name="PluginNotFound.Title" xml:space="preserve">
-    <value>Plugin not found</value>
+    <value>Плагін не знайдено.</value>
+  </data>
+  <data name="UpdateCompleted.Text" xml:space="preserve">
+    <value>Update complete</value>
+  </data>
+  <data name="UpdateWhatsNew.Text" xml:space="preserve">
+    <value>Check out what's new</value>
   </data>
 </root>

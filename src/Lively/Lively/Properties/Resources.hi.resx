@@ -147,11 +147,11 @@ Windows Explorer restarted twice in the last 30 seconds! This may be a conflict 
     <value>Official webpage of Lively Wallpaper</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
-    <value>Most modern LCD and LED displays do not suffer from burn-in issue and therefore any wallpaper can be used as screensaver.
+    <value>अधिकांश आधुनिक एलसीडी और एलईडी डिस्प्ले बर्न-इन समस्या से ग्रस्त नहीं हैं और इसलिए किसी भी वॉलपेपर को स्क्रीनसेवर के रूप में इस्तेमाल किया जा सकता है।
 
-For OLED, Plasma or CRT displays which are susceptibe to burn-in it is advised to use wallpaper with regular motion and an overall dark theme which is supposed to mitigate burn-in but this feature is untested and its effectiveness cannot be guaranteed.
+OLED, प्लाज्मा या CRT डिस्प्ले के लिए जो बर्न-इन के लिए अतिसंवेदनशील होते हैं, उन्हें नियमित गति के साथ वॉलपेपर और एक समग्र डार्क थीम का उपयोग करने की सलाह दी जाती है, जो बर्न-इन को कम करने के लिए माना जाता है, लेकिन यह सुविधा अप्रयुक्त है और इसकी प्रभावशीलता की गारंटी नहीं दी जा सकती है।
 
-The main purpose of Lively's screensavers is to add another layer of customization to your pc, use screensavers as burn-in protection at your own risk!</value>
+लाइवली के स्क्रीनसेवर का मुख्य उद्देश्य अपने पीसी में अनुकूलन की एक और परत जोड़ना है, स्क्रीनसेवर को अपने जोखिम पर बर्न-इन सुरक्षा के रूप में उपयोग करना है!</value>
   </data>
   <data name="ReportBugPage.Content" xml:space="preserve">
     <value>Report a problem with the software</value>
@@ -1144,5 +1144,11 @@ https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="PluginNotFound.Title" xml:space="preserve">
     <value>Plugin not found</value>
+  </data>
+  <data name="UpdateCompleted.Text" xml:space="preserve">
+    <value>Update complete</value>
+  </data>
+  <data name="UpdateWhatsNew.Text" xml:space="preserve">
+    <value>Check out what's new</value>
   </data>
 </root>

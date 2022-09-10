@@ -118,13 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AudioFocused.Content" xml:space="preserve">
-    <value>Tocar o áudio apenas com a área de trabalho em foco</value>
+    <value>Execute áudio somente quando a área de trabalho estiver em foco</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
     <value>Nível de volume de todos os planos de fundo</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
-    <value>Volume Principal</value>
+    <value>Volume</value>
   </data>
   <data name="AudioGroup.Header" xml:space="preserve">
     <value>Áudio</value>
@@ -605,7 +605,7 @@ Se ainda não funcionar, abra o Lively novamente ou reinicie o Windows.
     <value>Reprodutor de Vídeo</value>
   </data>
   <data name="AddWallpaperFileBrowse.Description" xml:space="preserve">
-    <value>Definir todos arquivos suportados como plano de fundo.</value>
+    <value>Definir todos os arquivos suportados como plano de fundo.</value>
   </data>
   <data name="EnterUrl.Description" xml:space="preserve">
     <value>Definir a página da web da URL selecionada como plano de fundo.</value>
@@ -1142,5 +1142,11 @@ O Edge é a webview embutida do Windows 10.</value>
   </data>
   <data name="PluginNotFound.Title" xml:space="preserve">
     <value>Plugin não encontrado</value>
+  </data>
+  <data name="UpdateCompleted.Text" xml:space="preserve">
+    <value>Atualização concluída</value>
+  </data>
+  <data name="UpdateWhatsNew.Text" xml:space="preserve">
+    <value>Confira o que há de novo</value>
   </data>
 </root>
