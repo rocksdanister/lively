@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AudioFocused.Content" xml:space="preserve">
-    <value>Reproducir audio solo cuando el escritorio esté enfocado</value>
+    <value>Reproducir audio solo cuando el escritorio esté en primer plano</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
-    <value>Nivel de volumen de todos los fondos.</value>
+    <value>Nivel de volumen para todos los fondos</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
     <value>Volumen General</value>
@@ -1140,9 +1140,15 @@ Edge es la vista web integrada en Windows 10.</value>
     <value>Tamaño</value>
   </data>
   <data name="PluginNotFound.Message" xml:space="preserve">
-    <value>Please install the required plugin</value>
+    <value>Por favor, instale el complemento requerido</value>
   </data>
   <data name="PluginNotFound.Title" xml:space="preserve">
-    <value>Plugin not found</value>
+    <value>Complemento no encontrado</value>
+  </data>
+  <data name="UpdateCompleted.Text" xml:space="preserve">
+    <value>Actualización completada</value>
+  </data>
+  <data name="UpdateWhatsNew.Text" xml:space="preserve">
+    <value>Consulte las novedades</value>
   </data>
 </root>

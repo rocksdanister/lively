@@ -1143,4 +1143,10 @@ Edge jest przeglądarką wbudowaną w windows 10.</value>
   <data name="PluginNotFound.Title" xml:space="preserve">
     <value>Nie znaleziono wtyczki</value>
   </data>
+  <data name="UpdateCompleted.Text" xml:space="preserve">
+    <value>Update complete</value>
+  </data>
+  <data name="UpdateWhatsNew.Text" xml:space="preserve">
+    <value>Check out what's new</value>
+  </data>
 </root>

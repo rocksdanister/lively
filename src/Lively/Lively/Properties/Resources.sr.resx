@@ -211,8 +211,8 @@ Glavni cilj Lively-a je dodavanje još jednog sloja prilagođavanja vašem raču
     <value>Pokaži podršku kupovinom kafe za developera</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
-    <value>You are about to change to beta (developer) build of Lively.
-Updates will be frequent and may contain bugs!</value>
+    <value>Spremate se da pređete na beta (programersku) verziju Liveli-a.
+Ažuriranja će biti česta i mogu sadržati greške!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
     <value>System-tray icon visibility, lively will continue to run with the icon hidden</value>
@@ -1125,5 +1125,11 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
   </data>
   <data name="PluginNotFound.Title" xml:space="preserve">
     <value>Plugin not found</value>
+  </data>
+  <data name="UpdateCompleted.Text" xml:space="preserve">
+    <value>Update complete</value>
+  </data>
+  <data name="UpdateWhatsNew.Text" xml:space="preserve">
+    <value>Check out what's new</value>
   </data>
 </root>

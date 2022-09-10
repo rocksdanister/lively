@@ -1144,4 +1144,10 @@ Edge est la vue Web intégrée de Windows 10.</value>
   <data name="PluginNotFound.Title" xml:space="preserve">
     <value>Plugin introuvable</value>
   </data>
+  <data name="UpdateCompleted.Text" xml:space="preserve">
+    <value>Mise à jour terminée</value>
+  </data>
+  <data name="UpdateWhatsNew.Text" xml:space="preserve">
+    <value>Découvrez les nouveautés</value>
+  </data>
 </root>

@@ -425,7 +425,7 @@ Jos ikkuna ei vieläkään toimi, sulje &amp; käynnistä eloisa uudestaan/uudel
     <value>Paikalla</value>
   </data>
   <data name="TextOpenLively" xml:space="preserve">
-    <value>Open Lively</value>
+    <value>Avaa Lively</value>
   </data>
   <data name="PauseAlgorithmTypeAllProcess.Content" xml:space="preserve">
     <value>Kaikki prosessit</value>
@@ -942,7 +942,7 @@ Jos ikkuna ei vieläkään toimi, sulje &amp; käynnistä eloisa uudestaan/uudel
     <value>Ulkoasu &amp; käyttäytyminen</value>
   </data>
   <data name="ActiveWallpapers.Label" xml:space="preserve">
-    <value>Aktiiviset Taustakuvat</value>
+    <value>Aktiivista taustakuvaa</value>
   </data>
   <data name="TitleGallery" xml:space="preserve">
     <value>Galleria</value>
@@ -1140,9 +1140,9 @@ Jos ikkuna ei vieläkään toimi, sulje &amp; käynnistä eloisa uudestaan/uudel
     <value>Liitännäistä ei löydy</value>
   </data>
   <data name="UpdateCompleted.Text" xml:space="preserve">
-    <value>Update complete</value>
+    <value>Päivitys valmistui</value>
   </data>
   <data name="UpdateWhatsNew.Text" xml:space="preserve">
-    <value>Check out what's new</value>
+    <value>Katso, mikä on uutta</value>
   </data>
 </root>

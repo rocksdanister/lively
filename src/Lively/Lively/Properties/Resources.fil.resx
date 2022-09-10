@@ -1141,4 +1141,10 @@ Edge is the built in webview of windows 10.</value>
   <data name="PluginNotFound.Title" xml:space="preserve">
     <value>Plugin not found</value>
   </data>
+  <data name="UpdateCompleted.Text" xml:space="preserve">
+    <value>Update complete</value>
+  </data>
+  <data name="UpdateWhatsNew.Text" xml:space="preserve">
+    <value>Check out what's new</value>
+  </data>
 </root>

@@ -697,7 +697,7 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp; 적용.
     <value>배경화면과 상호 작용하는 방법을 선택합니다.</value>
   </data>
   <data name="WallpaperLayout.Description" xml:space="preserve">
-    <value>연결된 디스플레이 장치에 배경화면을 적용하는 방법.</value>
+    <value>배경 화면을 연결된 디스플레이 장치에 적용하는 방법</value>
   </data>
   <data name="TipWallpaperPlayback" xml:space="preserve">
     <value>바탕 화면에 포커싱 되지 않을 때 배경화면 재생을 일시 중지합니다.</value>
@@ -894,7 +894,7 @@ Edge는 Windows 10의 내장 웹뷰입니다.</value>
     <value>배경화면 입력</value>
   </data>
   <data name="WallpaperLayout.Header" xml:space="preserve">
-    <value>배경화면 레이아웃</value>
+    <value>배경 화면 배치 방식</value>
   </data>
   <data name="WallpaperPlaybackGroup.Header" xml:space="preserve">
     <value>배경화면 재생</value>

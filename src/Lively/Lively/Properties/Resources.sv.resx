@@ -567,7 +567,7 @@ Windows Utforskaren har startat om två gånger under de senaste 30 sekunderna! 
     <value>Hemsida</value>
   </data>
   <data name="TextWebStream" xml:space="preserve">
-    <value>Web Stream</value>
+    <value>Webb ström</value>
   </data>
   <data name="TextWelcome" xml:space="preserve">
     <value>Välkommen</value>
@@ -627,10 +627,10 @@ Windows Utforskaren har startat om två gånger under de senaste 30 sekunderna! 
     <value>Algoritm för paus för bakgrundsbilder.</value>
   </data>
   <data name="PowerSavingModePower.Description" xml:space="preserve">
-    <value>Change playback when Windows Power Saving Mode is enabled</value>
+    <value>Ändra uppspelningen när en Windows energispararläge körs</value>
   </data>
   <data name="RemoteDesktopPower.Description" xml:space="preserve">
-    <value>Change playback when running a Remote Desktop session</value>
+    <value>Ändra uppspelningen när en fjärrskrivbordssession körs</value>
   </data>
   <data name="TipScreensaver" xml:space="preserve">
     <value>Efter den valda inaktivitetsperioden kan du använda den aktuella tapeten som skärmsläckare.</value>
@@ -735,7 +735,7 @@ Windows Utforskaren har startat om två gånger under de senaste 30 sekunderna! 
     <value>Dokumentation</value>
   </data>
   <data name="EnterUrl.Header" xml:space="preserve">
-    <value>Enter URL</value>
+    <value>Ange URL</value>
   </data>
   <data name="ExportLogs.Header" xml:space="preserve">
     <value>Loggfil</value>
@@ -783,10 +783,10 @@ Windows Utforskaren har startat om två gånger under de senaste 30 sekunderna! 
     <value>Vänligen vänta</value>
   </data>
   <data name="PowerSavingModePower.Header" xml:space="preserve">
-    <value>When on Battery Saver</value>
+    <value>Vid användning av batterisparläget</value>
   </data>
   <data name="RemoteDesktopPower.Header" xml:space="preserve">
-    <value>When on Remote Desktop</value>
+    <value>Vid användning av fjärrskrivbordet</value>
   </data>
   <data name="ReportBug.Header" xml:space="preserve">
     <value>Rapportera fel</value>
@@ -816,7 +816,7 @@ Windows Utforskaren har startat om två gånger under de senaste 30 sekunderna! 
     <value>Källkod</value>
   </data>
   <data name="Store.Header" xml:space="preserve">
-    <value>Store</value>
+    <value>Butik</value>
     <comment>For different version of Lively, example: Microsoft Store</comment>
   </data>
   <data name="StreamWallpaperVideoQuality.Header" xml:space="preserve">
@@ -859,7 +859,7 @@ Windows Utforskaren har startat om två gånger under de senaste 30 sekunderna! 
     <value>Flytta befintliga bakgrundsbilder till en ny mapp</value>
   </data>
   <data name="WallpaperFit.Header" xml:space="preserve">
-    <value>Choose a fit</value>
+    <value>Välj storleksanpassning</value>
   </data>
   <data name="WallpaperInput.Header" xml:space="preserve">
     <value>Bakgrundssinmatning</value>
@@ -886,10 +886,10 @@ Windows Utforskaren har startat om två gånger under de senaste 30 sekunderna! 
     <value>Ladda webbsidan</value>
   </data>
   <data name="FastUI.Description" xml:space="preserve">
-    <value>Keep User Interface running for faster startup</value>
+    <value>Håll igång användargränssnittet för en snabbare uppstart</value>
   </data>
   <data name="FastUI.Header" xml:space="preserve">
-    <value>Fast startup</value>
+    <value>Snabb uppstart</value>
   </data>
   <data name="WallpaperDirGroup.Header" xml:space="preserve">
     <value>Fil</value>
@@ -904,40 +904,40 @@ Windows Utforskaren har startat om två gånger under de senaste 30 sekunderna! 
     <value>System</value>
   </data>
   <data name="WindowsSettingsColor.Content" xml:space="preserve">
-    <value>Windows color settings</value>
+    <value>Windows färginställningar</value>
   </data>
   <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
-    <value>Laptops</value>
+    <value>Bärbara datorer</value>
   </data>
   <data name="DeveloperGroup.Header" xml:space="preserve">
     <value>Utvecklare</value>
   </data>
   <data name="AppearanceBehaviour.Header" xml:space="preserve">
-    <value>Appearance &amp; behavior</value>
+    <value>Utseende &amp; beteende</value>
   </data>
   <data name="ActiveWallpapers.Label" xml:space="preserve">
-    <value>Active Wallpaper(s)</value>
+    <value>Aktiva bakgrundsbild(er)</value>
   </data>
   <data name="TitleGallery" xml:space="preserve">
     <value>Album</value>
   </data>
   <data name="AboutMe.Text" xml:space="preserve">
-    <value>Hi, I'm Dani John also known as rocksdanister. I developed Lively a Free and open-source (FOSS) wallpaper application. Thanks for taking the time to look at my work.</value>
+    <value>Hej, jag heter Dani John men är också känd som rocksdanister. Jag skapade Lively, en gratis bakgrundsapplikation med öppen källkod. (FOSS) Tack för att du tar din tid att läsa om mitt arbete.</value>
   </data>
   <data name="LicenseLink.Content" xml:space="preserve">
-    <value>Software license</value>
+    <value>Programvarulicens</value>
   </data>
   <data name="AttributionLink.Content" xml:space="preserve">
-    <value>Third party software notice</value>
+    <value>Datatillgång för tredjepartsprogram</value>
   </data>
   <data name="PrivacyPolicyLink.Content" xml:space="preserve">
-    <value>Data collection policy</value>
+    <value>Datainsamlingspolicy</value>
   </data>
   <data name="AddWallpaperDrop.Text" xml:space="preserve">
-    <value>Add wallpaper</value>
+    <value>Lägg till bakgrundsbild</value>
   </data>
   <data name="ComingSoon.Text" xml:space="preserve">
-    <value>Coming soon</value>
+    <value>Kommer snart</value>
   </data>
   <data name="AboutMenu.Text" xml:space="preserve">
     <value>Om</value>
@@ -952,10 +952,10 @@ Windows Utforskaren har startat om två gånger under de senaste 30 sekunderna! 
     <value>Spara</value>
   </data>
   <data name="UIMode.Description" xml:space="preserve">
-    <value>User interface effects and animations</value>
+    <value>Effekter och animationer för användargränssnittet</value>
   </data>
   <data name="UIMode.Header" xml:space="preserve">
-    <value>User interface</value>
+    <value>Användargränssnitt</value>
   </data>
   <data name="UIModeLite.Content" xml:space="preserve">
     <value>Lätt</value>
@@ -967,22 +967,22 @@ Windows Utforskaren har startat om två gånger under de senaste 30 sekunderna! 
     <value>How screensaver is applied to connected to display devices</value>
   </data>
   <data name="Screensaver.Header" xml:space="preserve">
-    <value>Type of screensaver</value>
+    <value>Typ av skärmsläckare</value>
   </data>
   <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
-    <value>Configured separately</value>
+    <value>Konfigurera separat</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
-    <value>Same as running wallpaper</value>
+    <value>Samma som nuvarande bakgrundsbild</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
-    <value>Plugin required</value>
+    <value>Tillägg krävs</value>
   </data>
   <data name="ScreensaverPluginMessage.Text" xml:space="preserve">
-    <value>One time setup is required to run screensaver</value>
+    <value>Engångsinställning krävs för att köra skärmsläckare</value>
   </data>
   <data name="WallpaperLayoutScreenPicker.Content" xml:space="preserve">
-    <value>Always pick screen when choosing wallpaper</value>
+    <value>Välj alltid den här skärmen när du väljer bakgrundsbild</value>
   </data>
   <data name="GalleryAccount.Text" xml:space="preserve">
     <value>Konto</value>
@@ -991,7 +991,7 @@ Windows Utforskaren har startat om två gånger under de senaste 30 sekunderna! 
     <value>Radera konto</value>
   </data>
   <data name="GalleryAccountExport.Content" xml:space="preserve">
-    <value>Export data</value>
+    <value>Exportera data</value>
   </data>
   <data name="GalleryAccountLogin.Content" xml:space="preserve">
     <value>Logga in</value>
@@ -1000,28 +1000,28 @@ Windows Utforskaren har startat om två gånger under de senaste 30 sekunderna! 
     <value>Logga ut</value>
   </data>
   <data name="GalleryPageCollection.Content" xml:space="preserve">
-    <value>Collection</value>
+    <value>Samling</value>
   </data>
   <data name="GalleryPageHome.Content" xml:space="preserve">
-    <value>Home</value>
+    <value>Start</value>
   </data>
   <data name="GalleryPageManage.Content" xml:space="preserve">
-    <value>Manage</value>
+    <value>Hantera</value>
   </data>
   <data name="GalleryPageProfile.Content" xml:space="preserve">
-    <value>Profile</value>
+    <value>Profil</value>
   </data>
   <data name="GalleryPleaseLogin.Text" xml:space="preserve">
-    <value>Please log in to continue</value>
+    <value>Vänligen logga in för att fortsätta</value>
   </data>
   <data name="GalleryWelcomeMessage.Text" xml:space="preserve">
-    <value>Hi</value>
+    <value>Hej</value>
   </data>
   <data name="RestoreWallpaper.Text" xml:space="preserve">
-    <value>We found these wallpapers in your account</value>
+    <value>Vi hittade de här bakgrunderna på ditt konto</value>
   </data>
   <data name="TextDownloadNow.Content" xml:space="preserve">
-    <value>Download now</value>
+    <value>Hämta nu</value>
   </data>
   <data name="TextMaybeLater.Content" xml:space="preserve">
     <value>Kanske senare</value>
@@ -1108,9 +1108,15 @@ Windows Utforskaren har startat om två gånger under de senaste 30 sekunderna! 
     <value>Storlek</value>
   </data>
   <data name="PluginNotFound.Message" xml:space="preserve">
-    <value>Please install the required plugin</value>
+    <value>Vänligen installera det obligatoriska tilläget</value>
   </data>
   <data name="PluginNotFound.Title" xml:space="preserve">
-    <value>Plugin not found</value>
+    <value>Tillägget hittades inte</value>
+  </data>
+  <data name="UpdateCompleted.Text" xml:space="preserve">
+    <value>Uppdatering slutförd</value>
+  </data>
+  <data name="UpdateWhatsNew.Text" xml:space="preserve">
+    <value>Ta en titt på vad som är nytt</value>
   </data>
 </root>

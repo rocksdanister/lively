@@ -121,16 +121,16 @@
     <value>Hanya putar audio ketika fokus ke desktop</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
-    <value>Tingkat suara untuk semua wallpaper.</value>
+    <value>Tingkat suara untuk semua wallpaper</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
-    <value>Master Volume</value>
+    <value>Tingkat Suara</value>
   </data>
   <data name="AudioGroup.Header" xml:space="preserve">
     <value>Suara</value>
   </data>
   <data name="CommunityPage.Content" xml:space="preserve">
-    <value>Online discussion forum</value>
+    <value>Forum diskusi online</value>
   </data>
   <data name="DocumentationPage.Content" xml:space="preserve">
     <value>Bantuan dan Dokumentasi API</value>
@@ -141,10 +141,10 @@
 Windows Explorer memulai ulang dua kali dalam 30 detik terakhir! Ini mungkin ada konflik antara Lively dan perangkat lunak kustomisasi desktop lainnya atau Windows. Untuk menghindari masalah lebih lanjut, semua wallpaper dihentikan.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
-    <value>Program yang tidak kompatibel ditemukan, tema taskbar dinonaktifkan.</value>
+    <value>Program yang tidak kompatibel ditemukan, tema taskbar dinonaktifkan</value>
   </data>
   <data name="OfficialWebpage.Content" xml:space="preserve">
-    <value>Website resmi Lively Wallpaper</value>
+    <value>Halaman web resmi Lively Wallpaper</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
     <value>Sebagian besar layar LCD dan LED modern tidak mengalami masalah burn-in dan oleh karena itu wallpaper apa pun dapat digunakan sebagai screensaver.
@@ -160,19 +160,19 @@ Tujuan utama screensaver Lively adalah untuk menambahkan bagian kostumisasi lain
     <value>Pilih file atau URL halaman web untuk dijadikan sebagai wallpaper.</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
-    <value>Pemutaran wallpaper berdasarkan aplikasi yang sedang berjalan.</value>
+    <value>Pemutaran wallpaper berdasarkan aplikasi yang sedang berjalan</value>
   </data>
   <data name="DescriptionCancelQuestion" xml:space="preserve">
-    <value>Anda yakin akan membatalkan?</value>
+    <value>Anda yakin ingin membatalkan?</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
-    <value>Anda yakin akan menghapus wallpaper ini dari hard disk secara permanen?</value>
+    <value>Anda yakin ingin menghapus wallpaper ini secara permanen?</value>
   </data>
   <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
     <value>Anda yakin ingin menghapus wallpaper ini dari pustaka?</value>
   </data>
   <data name="DragDropFile.Text" xml:space="preserve">
-    <value>Seret dan lepaskan file pada pustaka.</value>
+    <value>Cukup drag dan drop file ke sini</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
     <value>Anda membuka aplikasi eksternal sebagai wallpaper.
@@ -186,10 +186,10 @@ Lanjutkan jika aplikasi berasal dari sumber terpercaya</value>
     <value>Mohon mulai ulang Lively agar pengaturan dapat diterapkan.</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
-    <value>Harap berhenti sebelum melanjutkan.</value>
+    <value>Harap berhenti sebelum melanjutkan</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
-    <value>Tekan untuk mulai merekam.</value>
+    <value>Tekan untuk mulai merekam</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
     <value>Sedang memulihkan wallpaper sebelumnya, mohon tunggu...</value>
@@ -198,13 +198,13 @@ Lanjutkan jika aplikasi berasal dari sumber terpercaya</value>
     <value>Pilih tampilan</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
-    <value>Versi terbaru Lively tersedia untuk didownload!</value>
+    <value>Versi terbaru Lively telah tersedia!</value>
   </data>
   <data name="DescriptionWebpageLoad" xml:space="preserve">
     <value>Masukkan URL halaman web untuk dimuat, tautan shader dari shadertoy.com dapat digunakan.</value>
   </data>
   <data name="DescriptionWelcomeWizard" xml:space="preserve">
-    <value>Wizard ini akan membantu anda untuk mengatur Lively.</value>
+    <value>Wizard ini akan membantu Anda memulai penyiapan Lively</value>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
     <value>Versi Windows N/KN kamu membutuhkan codec tambahan untuk mendukung pemutaran video di wallpaper</value>
@@ -213,11 +213,11 @@ Lanjutkan jika aplikasi berasal dari sumber terpercaya</value>
     <value>Bantu developer dengan membelikan kopi</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
-    <value>Anda akan berganti ke versi beta (pengembang) Lively.
-Akan sering dilakukan pembaharuan dan mungkin ada bugnya!</value>
+    <value>Anda akan mengubah ke versi beta (pengembang) Lively.
+Pembaruan akan sering dilakukan dan mungkin mengandung bug!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
-    <value>System-tray icon visibility, lively will continue to run with the icon hidden</value>
+    <value>Visibilitas ikon System-tray, lively akan terus berjalan di latar belakang dengan ikon tersembunyi</value>
   </data>
   <data name="HideSysTray.Header" xml:space="preserve">
     <value>Ikon System-tray</value>
@@ -234,17 +234,17 @@ https://github.com/rocksdanister/lively/releases
 </value>
   </data>
   <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
-    <value>File wallpaper rusak, coba unduh ulang.</value>
+    <value>File wallpaper rusak, coba unduh ulang</value>
   </data>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
-    <value>Waduuu... Keliatannya terjadi masalah :(
-Untuk mengetahui lebih lanjut tentang masalah ini dan memperbaikinya, bagikan file log kepada pengembang.
-Instruksi untuk membagikan file log:
+    <value>Oops... Sepertinya terjadi masalah :(
+Untuk lebih memahami kesalahan ini dan memperbaiki masalah, bagikan file log dengan pengembang.
+Petunjuk untuk berbagi file log:
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
-    <value>Lively tidak dapat berfungsi dengan Mode Kontras Tinggi Windows!
-Matikan ModeKontras Tinggi dan mulai ulang.</value>
+    <value>Lively tidak dapat bekerja dengan baik dengan mode Kontras Tinggi Windows jika diaktifkan!
+Nonaktifkan mode Kontras Tinggi dan coba lagi</value>
   </data>
   <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
     <value>Gagal memutar media:(
@@ -258,7 +258,8 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Bukan file wallpaper untuk Lively.</value>
   </data>
   <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
-    <value>Lively sebelumnya tidak dimatikan secara teratur, akan memulai dengan mode aman. Apakah Anda ingin memulihkan wallpaper yang berjalan sebelumnya?</value>
+    <value>Lively tidak ditutup dengan benar, akan dimulai dalam mode aman.
+Apakah Anda ingin memulihkan wallpaper yang berjalan sebelumnya?</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
     <value>Sepertinya beberapa pengaturan perlu dilakukan agar Lively dapat digunakan:
@@ -272,7 +273,7 @@ Jika masih tidak berfungsi, tutup dan mulai ulang Lively/Windows.
 (Tidak berfungsi untuk beberapa Windows 10 Insider)</value>
   </data>
   <data name="Startup.Description" xml:space="preserve">
-    <value>Lively harus berjalan di latar belakang untuk memutar wallpaper.</value>
+    <value>Lively perlu berjalan di latar belakang untuk pemutaran wallpaper</value>
   </data>
   <data name="Startup.Header" xml:space="preserve">
     <value>Mulai bersama Windows</value>
@@ -518,7 +519,7 @@ Jika masih tidak berfungsi, tutup dan mulai ulang Lively/Windows.
     <value>Latar Belakang</value>
   </data>
   <data name="TaskbarThemeWallpaperFluent.Content" xml:space="preserve">
-    <value>Wallpaper Fluent</value>
+    <value>Wallpaper lancar</value>
   </data>
   <data name="TextTileSizeLarge" xml:space="preserve">
     <value>Besar</value>
@@ -652,14 +653,13 @@ Semua: Jeda wallpaper untuk semua layar jika ada aplikasi fullscreen/sedang difo
     <value>Atur gambar wallpaper animasi sebagai wallpaper layar kunci.</value>
   </data>
   <data name="PauseAlgorithm.Description" xml:space="preserve">
-    <value>Latar depan: Ringan, hanya mencek satu proses yang tardapat di layar depan untuk menentukan tingkah laku pemutaran wallpaper.
-Semua proses: Lebih berat, memindai semua proses untuk menentukan tingkah laku pemutaran</value>
+    <value>Algoritma jeda wallpaper</value>
   </data>
   <data name="PowerSavingModePower.Description" xml:space="preserve">
-    <value>Change playback when Windows Power Saving Mode is enabled</value>
+    <value>Ganti metode pemutaran ketika mode hemat daya aktif</value>
   </data>
   <data name="RemoteDesktopPower.Description" xml:space="preserve">
-    <value>Change playback when running a Remote Desktop session</value>
+    <value>Ganti metode pemutaran ketika sedang berada di mode kendali jarak jauh</value>
   </data>
   <data name="TipScreensaver" xml:space="preserve">
     <value>Setelah periode tidakaktif yang telah dipilah, gunakan wallpaper saat ini sebagai screensaver anda.</value>
@@ -671,7 +671,7 @@ Semua proses: Lebih berat, memindai semua proses untuk menentukan tingkah laku p
     <value>Pilih kualitas video yang diinginkan untuk stream daring.</value>
   </data>
   <data name="TipSwitchSoftwareBranch" xml:space="preserve">
-    <value>Change software release from beta to stable or vice versa.</value>
+    <value>Ubah rilis perangkat lunak dari beta ke stabil atau sebaliknya</value>
   </data>
   <data name="TaskbarTheme.Description" xml:space="preserve">
     <value>Ubah tampilan taskbar sistem.</value>
@@ -707,7 +707,7 @@ Semua proses: Lebih berat, memindai semua proses untuk menentukan tingkah laku p
     <value>Simpan file sementara di harddisk daripada ram, pengaturan dikembalikan saat browser dimulai kembali.</value>
   </data>
   <data name="WebBrowser.Description" xml:space="preserve">
-    <value>CEF(Chromium Embedded Framework) adalah mesin chromium yang ringan. Edge adalah tampilan web bawaan dari windows 10.</value>
+    <value>Pilih pemutar yang digunakan untuk wallpaper html</value>
   </data>
   <data name="About.Label" xml:space="preserve">
     <value>Tentang</value>
@@ -815,7 +815,7 @@ Semua proses: Lebih berat, memindai semua proses untuk menentukan tingkah laku p
     <value>Saat mode Penghemat Baterai</value>
   </data>
   <data name="RemoteDesktopPower.Header" xml:space="preserve">
-    <value>When on Remote Desktop</value>
+    <value>Ketika sedang Remote Desktop</value>
   </data>
   <data name="ReportBug.Header" xml:space="preserve">
     <value>Laporkan Masalah</value>
@@ -830,7 +830,7 @@ Semua proses: Lebih berat, memindai semua proses untuk menentukan tingkah laku p
     <value>Screensaver</value>
   </data>
   <data name="TitleScreensaverLockOnResume" xml:space="preserve">
-    <value>On resume, display logon screen</value>
+    <value>Saat dilanjutkan, tampilkan layar log in dahulu</value>
   </data>
   <data name="TitleSelectFile" xml:space="preserve">
     <value>Pilih File</value>
@@ -906,7 +906,7 @@ Semua proses: Lebih berat, memindai semua proses untuk menentukan tingkah laku p
     <value>Web Browser</value>
   </data>
   <data name="WebBrowserDiskCache.Header" xml:space="preserve">
-    <value>Disk cache</value>
+    <value>Cache penyimpanan</value>
   </data>
   <data name="TitleWebBrowserEngine" xml:space="preserve">
     <value>Mesin</value>
@@ -960,7 +960,7 @@ Semua proses: Lebih berat, memindai semua proses untuk menentukan tingkah laku p
     <value>Catatan perangkat lunak pihak ketiga</value>
   </data>
   <data name="PrivacyPolicyLink.Content" xml:space="preserve">
-    <value>Aturan pengumpulan data</value>
+    <value>Kebijakan pengumpulan data</value>
   </data>
   <data name="AddWallpaperDrop.Text" xml:space="preserve">
     <value>Tambah Latar Belakang</value>
@@ -993,7 +993,7 @@ Semua proses: Lebih berat, memindai semua proses untuk menentukan tingkah laku p
     <value>Normal</value>
   </data>
   <data name="Screensaver.Description" xml:space="preserve">
-    <value>How screensaver is applied to connected to display devices</value>
+    <value>Bagaimana screensaver diterapkan pada layar yang terhubung</value>
   </data>
   <data name="Screensaver.Header" xml:space="preserve">
     <value>Jenis latar belakang</value>
@@ -1011,7 +1011,7 @@ Semua proses: Lebih berat, memindai semua proses untuk menentukan tingkah laku p
     <value>Pengaturan awal dibutuhkan untuk menjalankan latar belakang</value>
   </data>
   <data name="WallpaperLayoutScreenPicker.Content" xml:space="preserve">
-    <value>Always pick screen when choosing wallpaper</value>
+    <value>Selalu pilih layar tampilan ketika memilih wallpaper</value>
   </data>
   <data name="GalleryAccount.Text" xml:space="preserve">
     <value>Akun</value>
@@ -1044,7 +1044,7 @@ Semua proses: Lebih berat, memindai semua proses untuk menentukan tingkah laku p
     <value>Silahkan Masuk untuk melanjutkan</value>
   </data>
   <data name="GalleryWelcomeMessage.Text" xml:space="preserve">
-    <value>Hai</value>
+    <value>Hello</value>
   </data>
   <data name="RestoreWallpaper.Text" xml:space="preserve">
     <value>Kami menemukan latar belakang ini pada akun Anda</value>
@@ -1053,7 +1053,7 @@ Semua proses: Lebih berat, memindai semua proses untuk menentukan tingkah laku p
     <value>Unduh Sekarang</value>
   </data>
   <data name="TextMaybeLater.Content" xml:space="preserve">
-    <value>Nanti saja</value>
+    <value>Mungkin nanti</value>
   </data>
   <data name="TextSelectAll.Content" xml:space="preserve">
     <value>Pilih semua</value>
@@ -1065,19 +1065,19 @@ Semua proses: Lebih berat, memindai semua proses untuk menentukan tingkah laku p
     <value>Selamat datang kembali!</value>
   </data>
   <data name="ReportWallpaper.Header" xml:space="preserve">
-    <value>Alasannya</value>
+    <value>Berikan Alasan</value>
   </data>
   <data name="ReportWallpaperCopyright.Content" xml:space="preserve">
     <value>Pelanggaran hak cipta</value>
   </data>
   <data name="ReportWallpaperMisleading.Content" xml:space="preserve">
-    <value>Informasi menyesatkan</value>
+    <value>Informasi yang menyesatkan</value>
   </data>
   <data name="ReportWallpaperOther.Content" xml:space="preserve">
     <value>Lainnya</value>
   </data>
   <data name="ReportWallpaperSpam.Content" xml:space="preserve">
-    <value>Sampah</value>
+    <value>Spam</value>
   </data>
   <data name="ReportWallpaperViolence.Content" xml:space="preserve">
     <value>Konten dewasa atau kekerasan</value>
@@ -1137,9 +1137,15 @@ Semua proses: Lebih berat, memindai semua proses untuk menentukan tingkah laku p
     <value>Ukuran</value>
   </data>
   <data name="PluginNotFound.Message" xml:space="preserve">
-    <value>Pasang pengaya yang dibutuhkan</value>
+    <value>Pasang plugin yang dibutuhkan</value>
   </data>
   <data name="PluginNotFound.Title" xml:space="preserve">
-    <value>Pengaya tidak ditemukan</value>
+    <value>Plugin tidak ditemukan</value>
+  </data>
+  <data name="UpdateCompleted.Text" xml:space="preserve">
+    <value>Pembaruan selesai</value>
+  </data>
+  <data name="UpdateWhatsNew.Text" xml:space="preserve">
+    <value>Lihat apa yang terbaru</value>
   </data>
 </root>

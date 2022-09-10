@@ -124,7 +124,7 @@
     <value>Уровень громкости всех обоев</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
-    <value>Общаяя громкость</value>
+    <value>Общая громкость</value>
   </data>
   <data name="AudioGroup.Header" xml:space="preserve">
     <value>Аудио</value>
@@ -217,19 +217,19 @@
 Обновления будут частыми и могут содержать ошибки!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
-    <value>Отображение значка Lively в области уведомлений. Убрать значок Lively?</value>
+    <value>Отображение иконки в трее, lively продолжит работу если иконка скрыта</value>
   </data>
   <data name="HideSysTray.Header" xml:space="preserve">
     <value>Отображение значка в панели уведомлений</value>
   </data>
   <data name="Language.Description" xml:space="preserve">
-    <value>Lively перезапустится, чтобы сменить язык на новый.</value>
+    <value>Lively будет перезапущен, чтобы применить новый язык.</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
     <value>Язык</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
-    <value>Обновление не удалось. Попробуйте скачать установочник самостоятельно:
+    <value>Не удалось обновится. Попробуйте скачать установщик самостоятельно:
 https://github.com/rocksdanister/lively/releases </value>
   </data>
   <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
@@ -358,7 +358,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Экспорт в Lively.zip</value>
   </data>
   <data name="TextFeatureMissing" xml:space="preserve">
-    <value>Некоторые функции недоступны в этой версии Lively.</value>
+    <value>Некоторые возможности недоступны в этой версии Lively.</value>
   </data>
   <data name="TextFileNotFound" xml:space="preserve">
     <value>Файл не найден</value>
@@ -385,7 +385,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Клавиатура</value>
   </data>
   <data name="TextLastChecked" xml:space="preserve">
-    <value>Последний раз проверено</value>
+    <value>Последняя проверка</value>
   </data>
   <data name="TextLearnMore.Text" xml:space="preserve">
     <value>Узнать больше</value>
@@ -1140,9 +1140,15 @@ Edge - встроенный в Windows 10 WebView.</value>
     <value>Размер</value>
   </data>
   <data name="PluginNotFound.Message" xml:space="preserve">
-    <value>Please install the required plugin</value>
+    <value>Пожалуйста, установите требуемый плагин</value>
   </data>
   <data name="PluginNotFound.Title" xml:space="preserve">
-    <value>Plugin not found</value>
+    <value>Плагин не найден</value>
+  </data>
+  <data name="UpdateCompleted.Text" xml:space="preserve">
+    <value>Обновление завершено</value>
+  </data>
+  <data name="UpdateWhatsNew.Text" xml:space="preserve">
+    <value>Узнайте, что нового</value>
   </data>
 </root>
