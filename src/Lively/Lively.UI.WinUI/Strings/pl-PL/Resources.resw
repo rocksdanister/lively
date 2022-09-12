@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AudioFocused.Content" xml:space="preserve">
-    <value>Odtwarzaj dźwięk tylko jeśli pulpit ma fokus</value>
+    <value>Odtwarzaj dźwięk tylko po skupieniu na pulpicie</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
-    <value>Głośność dla wszystkich tapet</value>
+    <value>Poziom dźwięku dla wszystkich tapet.</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
     <value>Głośność</value>
@@ -1144,9 +1144,9 @@ Edge jest przeglądarką wbudowaną w windows 10.</value>
     <value>Nie znaleziono wtyczki</value>
   </data>
   <data name="UpdateCompleted.Text" xml:space="preserve">
-    <value>Update complete</value>
+    <value>Aktualizacja zakończona</value>
   </data>
   <data name="UpdateWhatsNew.Text" xml:space="preserve">
-    <value>Check out what's new</value>
+    <value>Sprawdź, co jest nowego</value>
   </data>
 </root>

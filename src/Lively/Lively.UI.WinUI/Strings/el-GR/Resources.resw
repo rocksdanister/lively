@@ -1024,7 +1024,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Export data</value>
   </data>
   <data name="GalleryAccountLogin.Content" xml:space="preserve">
-    <value>Log in</value>
+    <value>Συνδεθείτε</value>
   </data>
   <data name="GalleryAccountLogout.Content" xml:space="preserve">
     <value>Log out</value>
