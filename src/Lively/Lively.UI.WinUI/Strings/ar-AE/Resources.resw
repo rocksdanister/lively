@@ -118,13 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AudioFocused.Content" xml:space="preserve">
-    <value>تشغيل الصوت فقط عندما يكون سطح المكتب مركّزًا</value>
+    <value>تشغيل الصوت عندما يكون سطح المكتب مركّزًا فقط</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
     <value>مستوى الصوت من جميع خلفيات.</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
-    <value>حجم الصوت الرئيسي</value>
+    <value>مستوى الصوت</value>
   </data>
   <data name="AudioGroup.Header" xml:space="preserve">
     <value>صوتي</value>
@@ -141,10 +141,10 @@
 تم إعادة تشغيل Windows Explorer مرتين في آخر 30 ثانية! قد يكون هذا تعارضًا بين Lively وبرامج تخصيص سطح المكتب الأخرى أو Windows. لتجنب المزيد من المشكلات ، يتم إنهاء جميع الخلفيات.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
-    <value>تم العثور على برنامج غير متوافق ، تم تعطيل تطبيق سمات شريط المهام.</value>
+    <value>تم العثور على برنامج غير متوافق، تم تعطيل تطبيق سمات شريط المهام السفلي</value>
   </data>
   <data name="OfficialWebpage.Content" xml:space="preserve">
-    <value>صفحة ويب Lively الرئيسية</value>
+    <value>صفحة ويب Lively Wallpaper الرئيسية</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
     <value>معظم شاشات LCD و LED الحديثة لا تعاني من مشكلة الاحتراق ، وبالتالي يمكن استخدام أي "wallpaper" كشاشة توقف.
@@ -155,7 +155,7 @@
     <value>الإبلاغ عن مشكلة في البرنامَج</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
-    <value>حدد ملفا أو حدد عنوان url لموقع الويب لتعيينه كخلفية.</value>
+    <value>قم بتحديد ملف</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
     <value>تعيين الخلفية(ات) سلوك التشغيل بناءً على تشغيل التطبيق:-</value>
@@ -183,16 +183,16 @@
     <value>يرجى إعادة تشغيل البرنامج حتى تصبح الإعدادات نافذة المفعول.</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
-    <value>يرجى التوقف قبل المتابعة.</value>
+    <value>يرجى التوقف قبل المضي قدما</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
-    <value>اضغط لبدء التسجيل.</value>
+    <value>اضغط لبدء التسجيل</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
-    <value>إستعادة الخلفية(ات) السابقة..</value>
+    <value>إستعادة الخلفية (الخلفيات) السابقة...</value>
   </data>
   <data name="DescriptionScreenLayout" xml:space="preserve">
-    <value>اختيار الشاشة</value>
+    <value>اختار الشاشة</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
     <value>نسخة جديدة متوفرة!</value>
@@ -214,7 +214,7 @@
 التحديثات ستكون متكررة وقد تحتوي على أخطاء!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
-    <value>System-tray icon visibility, lively will continue to run with the icon hidden</value>
+    <value>رؤية رمز بصرية النظام ، سوف تستمر في تشغيل الأيقونة المخفية</value>
   </data>
   <data name="HideSysTray.Header" xml:space="preserve">
     <value>أيقونة علبة النظام</value>
@@ -994,40 +994,40 @@ Edge هو عرض الويب المدمج في windows 10.</value>
     <value>كيفية تطبيق ورق الجدران على أجهزة العرض المتصلة</value>
   </data>
   <data name="Screensaver.Header" xml:space="preserve">
-    <value>نوع شاشة التوقف</value>
+    <value>نوع شاشة التوفير</value>
   </data>
   <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
-    <value>Configured separately</value>
+    <value>تكوين بشكل منفصل</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
-    <value>Same as running wallpaper</value>
+    <value>نفس الخلفية قيد التشغيل</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
     <value>إضافة مطلوبة</value>
   </data>
   <data name="ScreensaverPluginMessage.Text" xml:space="preserve">
-    <value>One time setup is required to run screensaver</value>
+    <value>مطلوب في المرة الأولى الإعداد لتشغيل شاشة التوقف</value>
   </data>
   <data name="WallpaperLayoutScreenPicker.Content" xml:space="preserve">
-    <value>Always pick screen when choosing wallpaper</value>
+    <value>اختيار الشاشة دائماً عند اختيار الخلفية</value>
   </data>
   <data name="GalleryAccount.Text" xml:space="preserve">
-    <value>Account</value>
+    <value>الحساب</value>
   </data>
   <data name="GalleryAccountDelete.Content" xml:space="preserve">
-    <value>Delete account</value>
+    <value>حذف الحساب</value>
   </data>
   <data name="GalleryAccountExport.Content" xml:space="preserve">
-    <value>Export data</value>
+    <value>تصدير البيانات</value>
   </data>
   <data name="GalleryAccountLogin.Content" xml:space="preserve">
-    <value>Log in</value>
+    <value>تسجيل الدخول</value>
   </data>
   <data name="GalleryAccountLogout.Content" xml:space="preserve">
-    <value>Log out</value>
+    <value>تسجيل الخروج</value>
   </data>
   <data name="GalleryPageCollection.Content" xml:space="preserve">
-    <value>Collection</value>
+    <value>المجموعة</value>
   </data>
   <data name="GalleryPageHome.Content" xml:space="preserve">
     <value>الرئيسية</value>
@@ -1039,37 +1039,37 @@ Edge هو عرض الويب المدمج في windows 10.</value>
     <value>الملف الشخصي</value>
   </data>
   <data name="GalleryPleaseLogin.Text" xml:space="preserve">
-    <value>Please log in to continue</value>
+    <value>الرجاء تسجيل الدخول للمتابعة</value>
   </data>
   <data name="GalleryWelcomeMessage.Text" xml:space="preserve">
-    <value>Hi</value>
+    <value>مرحباً</value>
   </data>
   <data name="RestoreWallpaper.Text" xml:space="preserve">
-    <value>We found these wallpapers in your account</value>
+    <value>لقد وجدنا هذه الخلفيات في حسابك</value>
   </data>
   <data name="TextDownloadNow.Content" xml:space="preserve">
-    <value>Download now</value>
+    <value>حمل الان</value>
   </data>
   <data name="TextMaybeLater.Content" xml:space="preserve">
-    <value>Maybe later</value>
+    <value>ربما لاحقاً</value>
   </data>
   <data name="TextSelectAll.Content" xml:space="preserve">
-    <value>Select all</value>
+    <value>تحديد الكل</value>
   </data>
   <data name="TextSelectNone.Content" xml:space="preserve">
-    <value>Select none</value>
+    <value>عدم تحديد شيء</value>
   </data>
   <data name="TitleWelcomeback.Text" xml:space="preserve">
-    <value>Welcome back!</value>
+    <value>أهلاً بعودتك!</value>
   </data>
   <data name="ReportWallpaper.Header" xml:space="preserve">
-    <value>Reasons</value>
+    <value>أسباب</value>
   </data>
   <data name="ReportWallpaperCopyright.Content" xml:space="preserve">
-    <value>Copyright violation</value>
+    <value>انتهاك لحقوق النشر</value>
   </data>
   <data name="ReportWallpaperMisleading.Content" xml:space="preserve">
-    <value>Misleading information</value>
+    <value>معلومات مضلِّلة</value>
   </data>
   <data name="ReportWallpaperOther.Content" xml:space="preserve">
     <value>آخر</value>
