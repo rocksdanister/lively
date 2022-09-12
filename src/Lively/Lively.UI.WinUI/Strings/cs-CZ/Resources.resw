@@ -1,0 +1,1150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AudioFocused.Content" xml:space="preserve">
+    <value>Přehrát zvuk pouze při zaměření na plochu</value>
+  </data>
+  <data name="Audio.Description" xml:space="preserve">
+    <value>Úroveň hlasitosti všech tapet</value>
+  </data>
+  <data name="Audio.Header" xml:space="preserve">
+    <value>Hlasitost </value>
+  </data>
+  <data name="AudioGroup.Header" xml:space="preserve">
+    <value>Zvuk</value>
+  </data>
+  <data name="CommunityPage.Content" xml:space="preserve">
+    <value>Online diskuzní fórum</value>
+  </data>
+  <data name="DocumentationPage.Content" xml:space="preserve">
+    <value>API dokumentace a pomoc</value>
+  </data>
+  <data name="DescExplorerCrash" xml:space="preserve">
+    <value>V poslední době došlo k fatální chybě.
+
+Průzkumník Windows se za posledních 30 sekund restartoval! Může se jednat o konflikt mezi Lively a jiným softwarem pro přizpůsobení plochy nebo Windows. Aby se předešlo dalším problémům, všechny tapety jsou ukončeny.</value>
+  </data>
+  <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
+    <value>Nalezen nekompatibilní program, motivy hlavního panelu jsou zakázány</value>
+  </data>
+  <data name="OfficialWebpage.Content" xml:space="preserve">
+    <value>Oficiální webová stránka Lively Wallpaper.</value>
+  </data>
+  <data name="DescOledScreensaverNotice" xml:space="preserve">
+    <value>Většina moderních LCD a LED displejů netrpí vypalováním, a proto lze tapetu použít jako spořič obrazovky.
+
+Pro OLED, Plazma nebo CRT displeje, které jsou náchylné ke spálení, se doporučuje používat tapetu s pravidelným pohybem a celkový tmavý motiv, který má zmírnit spálení, ale tento prvek není otestován a jeho účinnost nemůže být zaručena.
+
+Hlavním účelem spořičů Lively's obrazovky je přidat další vrstvu přizpůsobení do vaší pc, použít spořiče obrazovky jako ochranu proti spálení na vlastní riziko!</value>
+  </data>
+  <data name="ReportBugPage.Content" xml:space="preserve">
+    <value>Nahlásit problém se softwarem</value>
+  </data>
+  <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
+    <value>Vybrat soubor</value>
+  </data>
+  <data name="DescriptionAppRules" xml:space="preserve">
+    <value>Chování přehrávání tapety na základě spuštěné aplikace</value>
+  </data>
+  <data name="DescriptionCancelQuestion" xml:space="preserve">
+    <value>Opravdu si přejete zrušit operaci?</value>
+  </data>
+  <data name="DescriptionDeleteConfirmation" xml:space="preserve">
+    <value>Opravdu chcete trvale smazat tuto tapetu z disku?</value>
+  </data>
+  <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
+    <value>Opravdu chcete smazat tuto tapetu z knihovny?</value>
+  </data>
+  <data name="DragDropFile.Text" xml:space="preserve">
+    <value>Jednoduše sem přetáhněte soubory</value>
+  </data>
+  <data name="DescriptionExternalAppWarning" xml:space="preserve">
+    <value>Otevíráte externí aplikaci jako tapetu.
+Škodlivé aplikace mohou hostit malware, virus. a poškozujte váš systém.
+Pokračujte pouze, pokud tato aplikace pochází z důvěryhodného zdroje.</value>
+  </data>
+  <data name="MinimizedTray.Text" xml:space="preserve">
+    <value>Lively je minimalizován na systémovou lištu, pravým tlačítkem myši na ikonu pokračovat.</value>
+  </data>
+  <data name="DescriptionPleaseRestartLively" xml:space="preserve">
+    <value>Pro použití změněných nastavení restartujte prosím aplikaci</value>
+  </data>
+  <data name="DescriptionPleaseStop" xml:space="preserve">
+    <value>Před pokračováním prosím zastavte</value>
+  </data>
+  <data name="DescriptionRecordStart" xml:space="preserve">
+    <value>Stiskněte pro zahájení nahrávání</value>
+  </data>
+  <data name="DescriptionRestoringWallpaper" xml:space="preserve">
+    <value>Currently restoring previous wallpaper(s), please wait...</value>
+  </data>
+  <data name="DescriptionScreenLayout" xml:space="preserve">
+    <value>Vybrat zobrazení</value>
+  </data>
+  <data name="DescriptionUpdateAvailable" xml:space="preserve">
+    <value>Je dostupná nová verze softwaru!</value>
+  </data>
+  <data name="DescriptionWebpageLoad" xml:space="preserve">
+    <value>Zadejte odkaz na webové stránky, který chcete načíst, jsou podporovány odkazy shadertoy.com na stínové stránky</value>
+  </data>
+  <data name="DescriptionWelcomeWizard" xml:space="preserve">
+    <value>Tento průvodce bude spuštěn při nastavení Lively</value>
+  </data>
+  <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
+    <value>Vaše verze Windows N/KN bude vyžadovat stažení dodatečných kodeků pro podporu přehrávání videa v tapetách</value>
+  </data>
+  <data name="DescSupperDev" xml:space="preserve">
+    <value>Ukázat podporu nákupem kávy vývojáře</value>
+  </data>
+  <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
+    <value>Chystáte se změnit na beta (vývojář) sestavení Lively.
+Aktualizace budou časté a mohou obsahovat chyby!</value>
+  </data>
+  <data name="HideSysTray.Description" xml:space="preserve">
+    <value>Viditelnost ikon systémového panelu, živě bude pokračovat se skrytou ikonou</value>
+  </data>
+  <data name="HideSysTray.Header" xml:space="preserve">
+    <value>Ikona systémové lišty</value>
+  </data>
+  <data name="Language.Description" xml:space="preserve">
+    <value>Pro použití nového jazyka se restartuje</value>
+  </data>
+  <data name="Language.Header" xml:space="preserve">
+    <value>Jazyk</value>
+  </data>
+  <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
+    <value>Aktualizace se nezdařila; zkuste stáhnout instalační program z:
+https://github.com/rocksdanister/lively/releasases</value>
+  </data>
+  <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
+    <value>Poškozený soubor tapety, zkuste stáhnout znovu</value>
+  </data>
+  <data name="LivelyExceptionGeneral" xml:space="preserve">
+    <value>Ups... Vypadá to, že se něco pokazilo :(
+Abychom tuto chybu lépe pochopili a opravili problém, sdílejte soubor protokolu s vývojářem.
+Pokyny ke sdílení log souboru:
+https://github.com/rocksdanister/lively/wiki</value>
+  </data>
+  <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
+    <value>Lively nemůže správně fungovat s povoleným režimem s vysokým kontrastem systému Windows!
+Zakažte režim s vysokým kontrastem a zkuste to znovu</value>
+  </data>
+  <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
+    <value>Media playback failed :(
+Try changing the videoplayer in lively settings.
+
+In order to better understand this error and fix the issue, share the log file with the developer.
+Instructions for sharing log file:
+https://github.com/rocksdanister/lively/wiki</value>
+  </data>
+  <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
+    <value>Soubor pozadí není Lively</value>
+  </data>
+  <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
+    <value>Live, nebyl správně zavřen, spustil se v bezpečném režimu.
+Přejete si obnovit dříve spuštěné tapety?</value>
+  </data>
+  <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
+    <value>Vypadá to, že je třeba nastavit některá nastavení, aby se Lively pracovalo:  
+1. Stisknutím tlačítka Win + R otevřete Spustit, 
+2. Zadejte systémové vlastnosti Výkonu.exe , klikněte na tlačítko "OK" pro otevření výkonových možností.
+3. Povolit/Zaškrtnout "Animovat ovládání a prvky uvnitř okna" (Je-li již zaškrtnuto, odškrtněte a zaškrtněte) &amp; Aplikovat.
+4. Klikněte na "Aplikovat" a stiskněte "OK" pro zavření okna.
+
+Pokud je pouze nastaveno Windows 7 - upravte pro nejlepší vzhled &amp; Aplikovat.
+Pokud stále nefunguje, zavřete a spusťte Lively znova/restartujte okna.
+(nefunguje v některých budovách uvnitř oken 10)</value>
+  </data>
+  <data name="Startup.Description" xml:space="preserve">
+    <value>Pro přehrávání tapety je nutné spustit režim na pozadí</value>
+  </data>
+  <data name="Startup.Header" xml:space="preserve">
+    <value>Spustit se systémem Windows</value>
+  </data>
+  <data name="TextAdd" xml:space="preserve">
+    <value>Přidat</value>
+  </data>
+  <data name="TextAllFiles" xml:space="preserve">
+    <value>Všechny soubory</value>
+  </data>
+  <data name="Application.Header" xml:space="preserve">
+    <value>Aplikace</value>
+  </data>
+  <data name="Attribution.Header" xml:space="preserve">
+    <value>Atributy</value>
+  </data>
+  <data name="Author.Text" xml:space="preserve">
+    <value>Autor</value>
+  </data>
+  <data name="TextBack" xml:space="preserve">
+    <value>Zpět</value>
+  </data>
+  <data name="TextBrowse" xml:space="preserve">
+    <value>Procházet</value>
+  </data>
+  <data name="Cancel.Content" xml:space="preserve">
+    <value>Zrušit</value>
+  </data>
+  <data name="TextChangeWallpaper" xml:space="preserve">
+    <value>Změnit tapetu</value>
+  </data>
+  <data name="TextClose" xml:space="preserve">
+    <value>Zavřít</value>
+  </data>
+  <data name="CloseWallpapers.Label" xml:space="preserve">
+    <value>Zavřít</value>
+  </data>
+  <data name="TextCompleted" xml:space="preserve">
+    <value>Dokončené!</value>
+  </data>
+  <data name="ControlPanel.Subtitle" xml:space="preserve">
+    <value>Klikněte zde pro správu tapet</value>
+  </data>
+  <data name="TextConvertVideo" xml:space="preserve">
+    <value>Převést na video</value>
+  </data>
+  <data name="TextCreatePreview" xml:space="preserve">
+    <value>Vytvořit náhledy odkazů</value>
+  </data>
+  <data name="Customise.Text" xml:space="preserve">
+    <value>Přizpůsobení</value>
+  </data>
+  <data name="CustomiseWallpaper.Label" xml:space="preserve">
+    <value>Přizpůsobení</value>
+  </data>
+  <data name="DeleteWallpaper.Text" xml:space="preserve">
+    <value>Odstranit</value>
+  </data>
+  <data name="Description.Text" xml:space="preserve">
+    <value>Popis:</value>
+  </data>
+  <data name="DisplayPauseRuleAllScreen.Content" xml:space="preserve">
+    <value>Všechny obrazovky</value>
+  </data>
+  <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
+    <value>Na obrazovku</value>
+  </data>
+  <data name="TextDownload" xml:space="preserve">
+    <value>Stáhnout</value>
+  </data>
+  <data name="EditWallpaper.Text" xml:space="preserve">
+    <value>Upravit</value>
+  </data>
+  <data name="TextError" xml:space="preserve">
+    <value>Chyba</value>
+  </data>
+  <data name="TextExit" xml:space="preserve">
+    <value>Konec</value>
+  </data>
+  <data name="ExportWallpaperZip.Text" xml:space="preserve">
+    <value>Ulož do souboru</value>
+  </data>
+  <data name="TextFeatureMissing" xml:space="preserve">
+    <value>Některé funkce nejsou v této verzi Lively k dispozici</value>
+  </data>
+  <data name="TextFileNotFound" xml:space="preserve">
+    <value>Soubor nebyl nalezen</value>
+  </data>
+  <data name="TextGIF" xml:space="preserve">
+    <value>Animovaný GIF</value>
+  </data>
+  <data name="GitHubStar.Content" xml:space="preserve">
+    <value>Ukažte lásku tím, že dáte hvězdičku</value>
+  </data>
+  <data name="TextGo" xml:space="preserve">
+    <value>GO</value>
+  </data>
+  <data name="TextHelpTranslate.Title" xml:space="preserve">
+    <value>Pomozte s překladem</value>
+  </data>
+  <data name="TextHours" xml:space="preserve">
+    <value>hodin(y)</value>
+  </data>
+  <data name="TextInstall" xml:space="preserve">
+    <value>Nainstalovat</value>
+  </data>
+  <data name="TextKeyboard.Content" xml:space="preserve">
+    <value>Klávesnice</value>
+  </data>
+  <data name="TextLastChecked" xml:space="preserve">
+    <value>Posední kontrola</value>
+  </data>
+  <data name="TextLearnMore.Text" xml:space="preserve">
+    <value>Zjistit více</value>
+  </data>
+  <data name="License.Header" xml:space="preserve">
+    <value>Licence</value>
+  </data>
+  <data name="TextMinutes" xml:space="preserve">
+    <value>minut(a/y)</value>
+  </data>
+  <data name="TextmoreInfo" xml:space="preserve">
+    <value>Informace</value>
+  </data>
+  <data name="TextMoreWallpapers" xml:space="preserve">
+    <value>Více tapet</value>
+  </data>
+  <data name="TextMouse.Content" xml:space="preserve">
+    <value>Myš</value>
+  </data>
+  <data name="MouseInteractOnDesktop.Content" xml:space="preserve">
+    <value>Interakce myší při zaměření aplikace</value>
+  </data>
+  <data name="TextNext" xml:space="preserve">
+    <value>Další</value>
+  </data>
+  <data name="TextNo" xml:space="preserve">
+    <value>Ne</value>
+  </data>
+  <data name="TextOff.Content" xml:space="preserve">
+    <value>Vyp.</value>
+  </data>
+  <data name="TextOK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="TextOn.Content" xml:space="preserve">
+    <value>Zap</value>
+  </data>
+  <data name="TextOnline" xml:space="preserve">
+    <value>Připojený</value>
+  </data>
+  <data name="TextOpenLively" xml:space="preserve">
+    <value>Otevřít Lively</value>
+  </data>
+  <data name="PauseAlgorithmTypeAllProcess.Content" xml:space="preserve">
+    <value>Všechny procesy</value>
+  </data>
+  <data name="PauseAlgorithmTypeExclusiveMode.Content" xml:space="preserve">
+    <value>Direct3D</value>
+  </data>
+  <data name="PauseAlgorithmTypeForegroundProcess.Content" xml:space="preserve">
+    <value>Proces v popředí</value>
+  </data>
+  <data name="TextPauseWallpapers" xml:space="preserve">
+    <value>Pozastavit tapetu</value>
+  </data>
+  <data name="TextPerformanceKill.Content" xml:space="preserve">
+    <value>Zabit</value>
+  </data>
+  <data name="TextPerformanceNone.Content" xml:space="preserve">
+    <value>Nic</value>
+  </data>
+  <data name="TextPerformancePause.Content" xml:space="preserve">
+    <value>Pozastavit</value>
+  </data>
+  <data name="TextPicture" xml:space="preserve">
+    <value>Obraz</value>
+  </data>
+  <data name="PreviewWallpaper.Text" xml:space="preserve">
+    <value>Náhled</value>
+  </data>
+  <data name="PrivacyPolicy.Header" xml:space="preserve">
+    <value>Ochrana osobních údajů</value>
+  </data>
+  <data name="TextProcessingWallpaper" xml:space="preserve">
+    <value>Zpracování</value>
+  </data>
+  <data name="TextRemove" xml:space="preserve">
+    <value>Odstranit</value>
+  </data>
+  <data name="TextRule" xml:space="preserve">
+    <value>Pravidlo</value>
+  </data>
+  <data name="TextScreen" xml:space="preserve">
+    <value>Obrazovka</value>
+  </data>
+  <data name="TextSearch" xml:space="preserve">
+    <value>Hledat</value>
+  </data>
+  <data name="SetWallpaper.Text" xml:space="preserve">
+    <value>Nastavit jako tapetu</value>
+  </data>
+  <data name="ShowOnDisk.Text" xml:space="preserve">
+    <value>Otevřít umístění souboru</value>
+  </data>
+  <data name="WallpaperSource.Text" xml:space="preserve">
+    <value>Zdroj</value>
+  </data>
+  <data name="TextStart" xml:space="preserve">
+    <value>Začít</value>
+  </data>
+  <data name="TextStop" xml:space="preserve">
+    <value>Zastavit</value>
+  </data>
+  <data name="StoreReview.Content" xml:space="preserve">
+    <value>Líbí se Vám Lively ? Zanechte recenzi :)</value>
+  </data>
+  <data name="TextSupport.Content" xml:space="preserve">
+    <value>Podpora</value>
+  </data>
+  <data name="TextSwitchBranchDev" xml:space="preserve">
+    <value>Přepnout na stabilní (výchozí kanál)</value>
+  </data>
+  <data name="TextSwitchBranchOfficial" xml:space="preserve">
+    <value>Přepnout na stabilní (výchozí kanál)</value>
+  </data>
+  <data name="TextTags" xml:space="preserve">
+    <value>Štítky</value>
+  </data>
+  <data name="TaskbarThemeBlur.Content" xml:space="preserve">
+    <value>Rozmazat</value>
+  </data>
+  <data name="TaskbarThemeClear.Content" xml:space="preserve">
+    <value>Vyčistit</value>
+  </data>
+  <data name="TaskbarThemeColor.Content" xml:space="preserve">
+    <value>Barva</value>
+  </data>
+  <data name="TaskbarThemeFluent.Content" xml:space="preserve">
+    <value>Fluid</value>
+  </data>
+  <data name="TaskbarThemeWallpaper.Content" xml:space="preserve">
+    <value>Tapeta</value>
+  </data>
+  <data name="TaskbarThemeWallpaperFluent.Content" xml:space="preserve">
+    <value>Plynule na pozadí</value>
+  </data>
+  <data name="TextTileSizeLarge" xml:space="preserve">
+    <value>Velké</value>
+  </data>
+  <data name="TextTileSizeNormal" xml:space="preserve">
+    <value>Normální</value>
+  </data>
+  <data name="TextTileSizeSmall" xml:space="preserve">
+    <value>Malé</value>
+  </data>
+  <data name="Title.Text" xml:space="preserve">
+    <value>Titulek</value>
+  </data>
+  <data name="TextUIHeadless" xml:space="preserve">
+    <value>Zahlaví</value>
+  </data>
+  <data name="TextUILite" xml:space="preserve">
+    <value>Lehký</value>
+  </data>
+  <data name="TextUINormal" xml:space="preserve">
+    <value>Normální</value>
+  </data>
+  <data name="TextUnsupportedFile" xml:space="preserve">
+    <value>Formát souboru není podporován</value>
+  </data>
+  <data name="TextUpdateAvailable" xml:space="preserve">
+    <value>K dispozici je aktualizace!</value>
+  </data>
+  <data name="TextUpdateCheck" xml:space="preserve">
+    <value>Zkontrolovat aktualizaci</value>
+  </data>
+  <data name="TextupdateCheckFail" xml:space="preserve">
+    <value>Nepodařilo se zkontrolovat aktualizace softwaru</value>
+  </data>
+  <data name="TextUpdateChecking" xml:space="preserve">
+    <value>Kontrola aktualizací</value>
+  </data>
+  <data name="TextUpdateUptodate" xml:space="preserve">
+    <value>Software je aktuální!</value>
+  </data>
+  <data name="TextVideo" xml:space="preserve">
+    <value>Video</value>
+  </data>
+  <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
+    <value>Zadejte volitelné argumenty příkazového řádku</value>
+  </data>
+  <data name="WallpaperFitFill.Content" xml:space="preserve">
+    <value>Vyplnit</value>
+  </data>
+  <data name="WallpaperFitNone.Content" xml:space="preserve">
+    <value>Žádné</value>
+  </data>
+  <data name="WallpaperFitUniform.Content" xml:space="preserve">
+    <value>Rovnoměrně</value>
+  </data>
+  <data name="WallpaperFitUniformToFill.Content" xml:space="preserve">
+    <value>Rovnoměrně vyplnit</value>
+  </data>
+  <data name="WallpaperLayoutDuplicate.Content" xml:space="preserve">
+    <value>Duplikovat tapetu</value>
+  </data>
+  <data name="WallpaperLayoutPerScreen.Content" xml:space="preserve">
+    <value>Pouze vybraná obrazovka</value>
+  </data>
+  <data name="WallpaperLayoutSpan.Content" xml:space="preserve">
+    <value>Štěpení napříč obrazovkami</value>
+  </data>
+  <data name="WallpaperType.Text" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="Website.Header" xml:space="preserve">
+    <value>Webová stránka</value>
+  </data>
+  <data name="TextWebStream" xml:space="preserve">
+    <value>Webový přenos</value>
+  </data>
+  <data name="TextWelcome" xml:space="preserve">
+    <value>Vítejte</value>
+  </data>
+  <data name="TextYes" xml:space="preserve">
+    <value>Ano</value>
+  </data>
+  <data name="VideoPlayer.Header" xml:space="preserve">
+    <value>Přehrávač videa</value>
+  </data>
+  <data name="AddWallpaperFileBrowse.Description" xml:space="preserve">
+    <value>Nastavit všechny podporované typy souborů jako tapetu</value>
+  </data>
+  <data name="EnterUrl.Description" xml:space="preserve">
+    <value>Nastavte webovou stránku URL, kterou jste zadali jako tapetu</value>
+  </data>
+  <data name="AppFocus.Description" xml:space="preserve">
+    <value>Nastavte, co se má dělat, když je nějaká aplikace zaostřena</value>
+  </data>
+  <data name="AppFullScreen.Description" xml:space="preserve">
+    <value>Nastavte, co se má dělat, když jsou spuštěny hry a aplikace na celou obrazovku</value>
+  </data>
+  <data name="AppRules.Description" xml:space="preserve">
+    <value>Pozastavit tapetu při spuštění těchto aplikací</value>
+  </data>
+  <data name="TipAppTheme" xml:space="preserve">
+    <value>Lively se přizpůsobí systémovému nastavení motivu, změní vzhled</value>
+  </data>
+  <data name="BatteryPower.Description" xml:space="preserve">
+    <value>Změnit přehrávání při odpojení napájení</value>
+  </data>
+  <data name="BrowserDebuggingPort.Description" xml:space="preserve">
+    <value>Vložte port pro ladění tapet webových stránek; po dokončení přejděte na http://localhost:portnumber pro přístup k konzoli vývojáře</value>
+  </data>
+  <data name="Debug.Description" xml:space="preserve">
+    <value>Zobrazit menu pro vývojáře</value>
+  </data>
+  <data name="DesktopPicture.Description" xml:space="preserve">
+    <value>Nastavit animaci jako tapetu</value>
+  </data>
+  <data name="DisplayPauseRule.Description" xml:space="preserve">
+    <value>Pozastavit tapetu na všech obrazovkách nebo pouze na obrazovce, na které je aplikace zaměřena</value>
+  </data>
+  <data name="ExportLogs.Description" xml:space="preserve">
+    <value>Vytvořit soubor protokolu</value>
+  </data>
+  <data name="GifPlayer.Description" xml:space="preserve">
+    <value>Vyberte přehrávač používaný pro Gif tapetu</value>
+  </data>
+  <data name="TipLivelySetupOnClose" xml:space="preserve">
+    <value>Pro pokračování dokončete nastavení</value>
+  </data>
+  <data name="LockscreenPicture.Description" xml:space="preserve">
+    <value>Nastavit obrázek animované tapety jako tapetu zámku obrazovky</value>
+  </data>
+  <data name="PauseAlgorithm.Description" xml:space="preserve">
+    <value>Algoritmus pozastavení tapety</value>
+  </data>
+  <data name="PowerSavingModePower.Description" xml:space="preserve">
+    <value>Změnit přehrávání, pokud je povolen úsporný režim Windows</value>
+  </data>
+  <data name="RemoteDesktopPower.Description" xml:space="preserve">
+    <value>Změnit přehrávání při spuštění relace vzdálené plochy</value>
+  </data>
+  <data name="TipScreensaver" xml:space="preserve">
+    <value>73 / 5 000
+Výsledky překladu
+Po uplynutí doby nečinnosti použijte jako spořič obrazovky aktuální tapetu</value>
+  </data>
+  <data name="StreamWallpaperDetect.Description" xml:space="preserve">
+    <value>Pokud je zjištěn podporovaný odkaz video streamu, použijte video přehrávač namísto načítání webové stránky</value>
+  </data>
+  <data name="StreamWallpaperVideoQuality.Description" xml:space="preserve">
+    <value>Vyberte požadovanou kvalitu videa pro on-line streamy</value>
+  </data>
+  <data name="TipSwitchSoftwareBranch" xml:space="preserve">
+    <value>Změna softwarového vydání z bety na stabilní a naopak</value>
+  </data>
+  <data name="TaskbarTheme.Description" xml:space="preserve">
+    <value>Změnit vzhled systémové lišty</value>
+  </data>
+  <data name="TipTileSize" xml:space="preserve">
+    <value>Velikost dlaždic pozadí v knihovně</value>
+  </data>
+  <data name="TipUIMode" xml:space="preserve">
+    <value>Pro méně náročné systémy vyberte režim Lite</value>
+  </data>
+  <data name="VideoHardwareDecode.Description" xml:space="preserve">
+    <value>Pokud je to možné, používejte hardwarovou akceleraci</value>
+  </data>
+  <data name="VideoPlayer.Description" xml:space="preserve">
+    <value>Vyberte přehrávač používaný pro video tapetu</value>
+  </data>
+  <data name="WallpaperDir.Description" xml:space="preserve">
+    <value>Cesta použitá pro ukládání souborů tapet</value>
+  </data>
+  <data name="WallpaperFit.Description" xml:space="preserve">
+    <value>Algoritmus škálování tapet</value>
+  </data>
+  <data name="WallpaperInput.Description" xml:space="preserve">
+    <value>Vyberte způsoby interakce s tapetou</value>
+  </data>
+  <data name="WallpaperLayout.Description" xml:space="preserve">
+    <value>Jak se tapeta aplikuje na připojená zobrazovací zařízení</value>
+  </data>
+  <data name="TipWallpaperPlayback" xml:space="preserve">
+    <value>Pozastavit přehrávání tapety pokud není aktivní plocha</value>
+  </data>
+  <data name="WebBrowserDiskCache.Description" xml:space="preserve">
+    <value>Uložit dočasné soubory na disk místo paměti</value>
+  </data>
+  <data name="WebBrowser.Description" xml:space="preserve">
+    <value>Vyberte přehrávač použitý pro tapetu html</value>
+  </data>
+  <data name="About.Label" xml:space="preserve">
+    <value>O programu</value>
+  </data>
+  <data name="AddWallpaper.Label" xml:space="preserve">
+    <value>Přidat tapetu</value>
+  </data>
+  <data name="AppFocus.Header" xml:space="preserve">
+    <value>Zaměření aplikací</value>
+  </data>
+  <data name="AppFullScreen.Header" xml:space="preserve">
+    <value>Aplikace přes celou obrazovku</value>
+  </data>
+  <data name="TitleAppName" xml:space="preserve">
+    <value>Živá tapeta</value>
+  </data>
+  <data name="AppRules.Header" xml:space="preserve">
+    <value>Zaměření aplikace</value>
+  </data>
+  <data name="AppTheme.Header" xml:space="preserve">
+    <value>Vzhled</value>
+  </data>
+  <data name="TitleAudioPlayOnScreen" xml:space="preserve">
+    <value>Přehrát zvuk na obrazovce</value>
+  </data>
+  <data name="BatteryPower.Header" xml:space="preserve">
+    <value>Při zapnutí baterie</value>
+  </data>
+  <data name="TitleBrowseFile" xml:space="preserve">
+    <value>Procházet video, gif, webstránka... soubor pro nastavení tapety</value>
+  </data>
+  <data name="BrowserDebuggingPort.Header" xml:space="preserve">
+    <value>Port ladění</value>
+  </data>
+  <data name="TitleChangelog" xml:space="preserve">
+    <value>Seznam změn</value>
+  </data>
+  <data name="Community.Header" xml:space="preserve">
+    <value>Komunita</value>
+  </data>
+  <data name="Debug.Header" xml:space="preserve">
+    <value>Ladění</value>
+  </data>
+  <data name="TitleDeleteConfirmation" xml:space="preserve">
+    <value>Potvrdit odstranění</value>
+  </data>
+  <data name="DesktopPicture.Header" xml:space="preserve">
+    <value>Obrázek plochy</value>
+  </data>
+  <data name="DisplayPauseRule.Header" xml:space="preserve">
+    <value>Zobrazit pravidlo pro pozastavení</value>
+  </data>
+  <data name="Documentation.Header" xml:space="preserve">
+    <value>Dokumentace</value>
+  </data>
+  <data name="EnterUrl.Header" xml:space="preserve">
+    <value>Zadejte URL</value>
+  </data>
+  <data name="ExportLogs.Header" xml:space="preserve">
+    <value>Log soubor</value>
+  </data>
+  <data name="TitleGeneral" xml:space="preserve">
+    <value>Všeobecné</value>
+  </data>
+  <data name="GifPlayer.Header" xml:space="preserve">
+    <value>Přehrávač Gif</value>
+  </data>
+  <data name="Help.Label" xml:space="preserve">
+    <value>Nápověda</value>
+  </data>
+  <data name="TitleInteraction" xml:space="preserve">
+    <value>Interakce</value>
+  </data>
+  <data name="TitleLibrary" xml:space="preserve">
+    <value>Knihovna</value>
+  </data>
+  <data name="TitleLivelySetup" xml:space="preserve">
+    <value>Lively Nastavení</value>
+  </data>
+  <data name="TitleLocation" xml:space="preserve">
+    <value>Lokalita</value>
+  </data>
+  <data name="LockscreenPicture.Header" xml:space="preserve">
+    <value>Obrázek zámku obrazovky</value>
+  </data>
+  <data name="TitleMisc" xml:space="preserve">
+    <value>Ostatní</value>
+  </data>
+  <data name="TitleMute" xml:space="preserve">
+    <value>Ztlumit</value>
+  </data>
+  <data name="PauseAlgorithm.Header" xml:space="preserve">
+    <value>Pozastavit algoritmus</value>
+  </data>
+  <data name="TitlePerformance" xml:space="preserve">
+    <value>Výkon</value>
+  </data>
+  <data name="TitlePlaylist" xml:space="preserve">
+    <value>Playlist</value>
+  </data>
+  <data name="PleaseWait.Text" xml:space="preserve">
+    <value>Počkejte prosím</value>
+  </data>
+  <data name="PowerSavingModePower.Header" xml:space="preserve">
+    <value>Při zapnutí spořiče baterie</value>
+  </data>
+  <data name="RemoteDesktopPower.Header" xml:space="preserve">
+    <value>Když jste na vzdálené ploše</value>
+  </data>
+  <data name="ReportBug.Header" xml:space="preserve">
+    <value>Nahlásit chybu</value>
+  </data>
+  <data name="TitleScalingFit" xml:space="preserve">
+    <value>Škálování/Úprava</value>
+  </data>
+  <data name="ControlPanel.Title" xml:space="preserve">
+    <value>Ovládací panel</value>
+  </data>
+  <data name="TitleScreensaver" xml:space="preserve">
+    <value>Spořič obrazovky</value>
+  </data>
+  <data name="TitleScreensaverLockOnResume" xml:space="preserve">
+    <value>Při obnovení, zobrazit přihlašovací obrazovku</value>
+  </data>
+  <data name="TitleSelectFile" xml:space="preserve">
+    <value>Vybrat Soubor</value>
+  </data>
+  <data name="TitleSettings" xml:space="preserve">
+    <value>Nastavení</value>
+  </data>
+  <data name="TitleSkipConfirm" xml:space="preserve">
+    <value>Přeskočit potvrzení</value>
+  </data>
+  <data name="SourceCode.Header" xml:space="preserve">
+    <value>Zdrojový Kód</value>
+  </data>
+  <data name="Store.Header" xml:space="preserve">
+    <value>Obchod</value>
+    <comment>For different version of Lively, example: Microsoft Store</comment>
+  </data>
+  <data name="StreamWallpaperVideoQuality.Header" xml:space="preserve">
+    <value>Streamování</value>
+  </data>
+  <data name="StreamWallpaperDetect.Header" xml:space="preserve">
+    <value>Detekovat streamy</value>
+  </data>
+  <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
+    <value>Kvalita videa</value>
+  </data>
+  <data name="System.Header" xml:space="preserve">
+    <value>Systém</value>
+  </data>
+  <data name="TaskbarTheme.Header" xml:space="preserve">
+    <value>Téma hlavního panelu</value>
+  </data>
+  <data name="TitleTileSize" xml:space="preserve">
+    <value>Velikost dlaždice</value>
+  </data>
+  <data name="TitleUIMode" xml:space="preserve">
+    <value>Uživatelské Rozhraní</value>
+  </data>
+  <data name="TitleUpdates" xml:space="preserve">
+    <value>Aktualizace</value>
+  </data>
+  <data name="TitleVideo" xml:space="preserve">
+    <value>Video</value>
+  </data>
+  <data name="VideoHardwareDecode.Header" xml:space="preserve">
+    <value>Dekódování GPU</value>
+  </data>
+  <data name="TitleWallpaper" xml:space="preserve">
+    <value>Tapeta</value>
+  </data>
+  <data name="WallpaperDir.Header" xml:space="preserve">
+    <value>Adresář tapet</value>
+  </data>
+  <data name="WallpaperDirMoveExisting.Content" xml:space="preserve">
+    <value>Přesunout existující tapety do nové složky</value>
+  </data>
+  <data name="WallpaperFit.Header" xml:space="preserve">
+    <value>Vybrat střih</value>
+  </data>
+  <data name="WallpaperInput.Header" xml:space="preserve">
+    <value>Vstup tapety</value>
+  </data>
+  <data name="WallpaperLayout.Header" xml:space="preserve">
+    <value>Metoda umístění</value>
+  </data>
+  <data name="WallpaperPlaybackGroup.Header" xml:space="preserve">
+    <value>Přehrávání tapety</value>
+  </data>
+  <data name="TitleWarning" xml:space="preserve">
+    <value>Upozornění</value>
+  </data>
+  <data name="WebBrowser.Header" xml:space="preserve">
+    <value>Webový prohlížeč</value>
+  </data>
+  <data name="WebBrowserDiskCache.Header" xml:space="preserve">
+    <value>Mezipaměť disku</value>
+  </data>
+  <data name="TitleWebBrowserEngine" xml:space="preserve">
+    <value>Modul</value>
+  </data>
+  <data name="TitleWebpageLoad" xml:space="preserve">
+    <value>Načíst webovou stránku</value>
+  </data>
+  <data name="FastUI.Description" xml:space="preserve">
+    <value>Udržet uživatelské rozhraní spuštěné pro rychlejší spuštění</value>
+  </data>
+  <data name="FastUI.Header" xml:space="preserve">
+    <value>Rychlé spuštění</value>
+  </data>
+  <data name="WallpaperDirGroup.Header" xml:space="preserve">
+    <value>Soubor</value>
+  </data>
+  <data name="AppThemeDark.Content" xml:space="preserve">
+    <value>Tmavý</value>
+  </data>
+  <data name="AppThemeLight.Content" xml:space="preserve">
+    <value>Světlý</value>
+  </data>
+  <data name="AppThemeSystem.Content" xml:space="preserve">
+    <value>Systémové</value>
+  </data>
+  <data name="WindowsSettingsColor.Content" xml:space="preserve">
+    <value>Nastavení barevy okna</value>
+  </data>
+  <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
+    <value>Notebooky</value>
+  </data>
+  <data name="DeveloperGroup.Header" xml:space="preserve">
+    <value>Vývojář</value>
+  </data>
+  <data name="AppearanceBehaviour.Header" xml:space="preserve">
+    <value>Vzhled a chování</value>
+  </data>
+  <data name="ActiveWallpapers.Label" xml:space="preserve">
+    <value>Aktivní tapeta</value>
+  </data>
+  <data name="TitleGallery" xml:space="preserve">
+    <value>Galerie</value>
+  </data>
+  <data name="AboutMe.Text" xml:space="preserve">
+    <value>Ahoj, jsem Dani Jan známý také jako rocksdanist. Vyvinul jsem Lively jako Free open source (FOSS). Děkuji že si moji práci věnovali čas.  </value>
+  </data>
+  <data name="LicenseLink.Content" xml:space="preserve">
+    <value>Softwarová licence</value>
+  </data>
+  <data name="AttributionLink.Content" xml:space="preserve">
+    <value>Softwarové oznámení třetích stran</value>
+  </data>
+  <data name="PrivacyPolicyLink.Content" xml:space="preserve">
+    <value>Zásady shromažďování údajů</value>
+  </data>
+  <data name="AddWallpaperDrop.Text" xml:space="preserve">
+    <value>Přidat tapetu</value>
+  </data>
+  <data name="ComingSoon.Text" xml:space="preserve">
+    <value>Připravujeme</value>
+  </data>
+  <data name="AboutMenu.Text" xml:space="preserve">
+    <value>O programu</value>
+  </data>
+  <data name="SourceWebsite.Text" xml:space="preserve">
+    <value>Webová stránka</value>
+  </data>
+  <data name="TextOpen.Content" xml:space="preserve">
+    <value>Otevřeno</value>
+  </data>
+  <data name="TextSave.Content" xml:space="preserve">
+    <value>Uložit</value>
+  </data>
+  <data name="UIMode.Description" xml:space="preserve">
+    <value>Efekty a animace uživatelského rozhraní</value>
+  </data>
+  <data name="UIMode.Header" xml:space="preserve">
+    <value>Uživatelské rozhraní</value>
+  </data>
+  <data name="UIModeLite.Content" xml:space="preserve">
+    <value>Lite</value>
+  </data>
+  <data name="UIModeNormal.Content" xml:space="preserve">
+    <value>Normální</value>
+  </data>
+  <data name="Screensaver.Description" xml:space="preserve">
+    <value>Jak je aplikován spořič obrazovky pro připojení k zobrazovacímu zařízení</value>
+  </data>
+  <data name="Screensaver.Header" xml:space="preserve">
+    <value>Typ spořiče obrazovky</value>
+  </data>
+  <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
+    <value>Nastavit samostatně</value>
+  </data>
+  <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
+    <value>Stejně jako běžící tapeta</value>
+  </data>
+  <data name="ScreensaverPlugin.Title" xml:space="preserve">
+    <value>Je vyžadován plug-in</value>
+  </data>
+  <data name="ScreensaverPluginMessage.Text" xml:space="preserve">
+    <value>Ke spuštění spořiče obrazovky je nutné jednorázové nastavení</value>
+  </data>
+  <data name="WallpaperLayoutScreenPicker.Content" xml:space="preserve">
+    <value>Vždy vybrat obrazovku při výběru tapety</value>
+  </data>
+  <data name="GalleryAccount.Text" xml:space="preserve">
+    <value>Účet</value>
+  </data>
+  <data name="GalleryAccountDelete.Content" xml:space="preserve">
+    <value>Smazat účet</value>
+  </data>
+  <data name="GalleryAccountExport.Content" xml:space="preserve">
+    <value>Exportovat data</value>
+  </data>
+  <data name="GalleryAccountLogin.Content" xml:space="preserve">
+    <value>Přihlásit se</value>
+  </data>
+  <data name="GalleryAccountLogout.Content" xml:space="preserve">
+    <value>Odhlásit se</value>
+  </data>
+  <data name="GalleryPageCollection.Content" xml:space="preserve">
+    <value>Kolekce</value>
+  </data>
+  <data name="GalleryPageHome.Content" xml:space="preserve">
+    <value>Hlavní stránka</value>
+  </data>
+  <data name="GalleryPageManage.Content" xml:space="preserve">
+    <value>Spravovat</value>
+  </data>
+  <data name="GalleryPageProfile.Content" xml:space="preserve">
+    <value>Profil</value>
+  </data>
+  <data name="GalleryPleaseLogin.Text" xml:space="preserve">
+    <value>Pro pokračování se přihlaste</value>
+  </data>
+  <data name="GalleryWelcomeMessage.Text" xml:space="preserve">
+    <value>Ahoj,</value>
+  </data>
+  <data name="RestoreWallpaper.Text" xml:space="preserve">
+    <value>Tyto tapety byly nalezeny ve Vašem účtu</value>
+  </data>
+  <data name="TextDownloadNow.Content" xml:space="preserve">
+    <value>Stáhnout nyní</value>
+  </data>
+  <data name="TextMaybeLater.Content" xml:space="preserve">
+    <value>Možná později</value>
+  </data>
+  <data name="TextSelectAll.Content" xml:space="preserve">
+    <value>Označit vše</value>
+  </data>
+  <data name="TextSelectNone.Content" xml:space="preserve">
+    <value>Zrušit výběr</value>
+  </data>
+  <data name="TitleWelcomeback.Text" xml:space="preserve">
+    <value>Vítejte zpět!</value>
+  </data>
+  <data name="ReportWallpaper.Header" xml:space="preserve">
+    <value>Důvod</value>
+  </data>
+  <data name="ReportWallpaperCopyright.Content" xml:space="preserve">
+    <value>Porušení autorských práv</value>
+  </data>
+  <data name="ReportWallpaperMisleading.Content" xml:space="preserve">
+    <value>Klamavé informace</value>
+  </data>
+  <data name="ReportWallpaperOther.Content" xml:space="preserve">
+    <value>Další</value>
+  </data>
+  <data name="ReportWallpaperSpam.Content" xml:space="preserve">
+    <value>Spam</value>
+  </data>
+  <data name="ReportWallpaperViolence.Content" xml:space="preserve">
+    <value>Nehoda nebo násilí</value>
+  </data>
+  <data name="TextAdditionalNotes.Text" xml:space="preserve">
+    <value>Další poznámky</value>
+  </data>
+  <data name="TextReportWallpaper.Text" xml:space="preserve">
+    <value>Zpráva</value>
+  </data>
+  <data name="TitleReportWallpaper.Text" xml:space="preserve">
+    <value>Nahlásit tapetu</value>
+  </data>
+  <data name="Send.Content" xml:space="preserve">
+    <value>Odeslat</value>
+  </data>
+  <data name="GalleryAccountDeleteConfirm.Text" xml:space="preserve">
+    <value>Potvrďte prosím tuto akci, protože ji NELZE vrátit zpět</value>
+  </data>
+  <data name="GalleryAccountDeleteFail.Text" xml:space="preserve">
+    <value>Odstranění účtu se nezdařilo, zkuste to prosím později</value>
+  </data>
+  <data name="TextConfirmCancel.Text" xml:space="preserve">
+    <value>Přejete si to zrušit?</value>
+  </data>
+  <data name="TextWait.Text" xml:space="preserve">
+    <value>Počkejte</value>
+  </data>
+  <data name="TitleDownloadProgress.Text" xml:space="preserve">
+    <value>Probíhá stahování...</value>
+  </data>
+  <data name="TextContributors.Text" xml:space="preserve">
+    <value>K vývoji přispěli</value>
+  </data>
+  <data name="TextShare.Text" xml:space="preserve">
+    <value>Sdílet</value>
+  </data>
+  <data name="TitleShareWallpaper.Text" xml:space="preserve">
+    <value>Sdílet Tapetu</value>
+  </data>
+  <data name="ExportWallpaperGallery.Text" xml:space="preserve">
+    <value>Nahrát galerii</value>
+  </data>
+  <data name="ExportWallpaperLink.Text" xml:space="preserve">
+    <value>Zkopírovat odkaz</value>
+  </data>
+  <data name="TextCustomiseWallpaper" xml:space="preserve">
+    <value>Přizpůsobit tapetu</value>
+  </data>
+  <data name="TextCloseWallpapers" xml:space="preserve">
+    <value>Zavřít tapety</value>
+  </data>
+  <data name="TitleChooseApplication.Text" xml:space="preserve">
+    <value>Vybrat aplikaci</value>
+  </data>
+  <data name="WallpaperInstallSize.Text" xml:space="preserve">
+    <value>Velikost</value>
+  </data>
+  <data name="PluginNotFound.Message" xml:space="preserve">
+    <value>Prosím, nainstalujte požadovaný plugin</value>
+  </data>
+  <data name="PluginNotFound.Title" xml:space="preserve">
+    <value>Plugin nebyl nalezen</value>
+  </data>
+  <data name="UpdateCompleted.Text" xml:space="preserve">
+    <value>Aktualizace byla dokončena</value>
+  </data>
+  <data name="UpdateWhatsNew.Text" xml:space="preserve">
+    <value>Podívejte se, co je nového</value>
+  </data>
+</root>
