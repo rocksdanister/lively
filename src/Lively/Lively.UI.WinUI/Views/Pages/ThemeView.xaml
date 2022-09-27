@@ -40,11 +40,11 @@
 
                             <Border
                                 Grid.Column="0"
-                                Margin="5"
+                                Margin="0,6,0,6"
                                 CornerRadius="5">
                                 <Image Source="{Binding Preview}" Stretch="UniformToFill" />
                             </Border>
-                            <StackPanel Grid.Column="1" Padding="5,5,5,5">
+                            <StackPanel Grid.Column="1" Padding="10,5,5,5">
                                 <TextBlock
                                     MaxLines="1"
                                     Style="{ThemeResource BodyTextBlockStyle}"

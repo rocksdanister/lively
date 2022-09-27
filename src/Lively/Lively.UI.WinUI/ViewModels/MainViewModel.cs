@@ -65,29 +65,30 @@ namespace Lively.UI.WinUI.ViewModels
                             if (wallpaper is null)
                             {
                                 AppThemeBackground = string.Empty;
-                                return;
-                            }
-
-                            var userThemeDir = Path.Combine(wallpaper.LivelyInfoFolderPath, "lively_theme");
-                            if (Directory.Exists(userThemeDir))
-                            {
-                                var themeFile = string.Empty;
-                                try
-                                {
-                                    themeFile = themeFactory.CreateTheme(userThemeDir).File;
-                                }
-                                catch { }
-                                AppThemeBackground = themeFile;
                             }
                             else
                             {
-                                var fileName = new DirectoryInfo(wallpaper.LivelyInfoFolderPath).Name + ".jpg";
-                                var filePath = Path.Combine(Constants.CommonPaths.ThemeCacheDir, fileName);
-                                if (!File.Exists(filePath))
+                                var userThemeDir = Path.Combine(wallpaper.LivelyInfoFolderPath, "lively_theme");
+                                if (Directory.Exists(userThemeDir))
                                 {
-                                    await desktopCore.TakeScreenshot(desktopCore.Wallpapers[0].Display.DeviceId, filePath);
+                                    var themeFile = string.Empty;
+                                    try
+                                    {
+                                        themeFile = themeFactory.CreateTheme(userThemeDir).File;
+                                    }
+                                    catch { }
+                                    AppThemeBackground = themeFile;
                                 }
-                                AppThemeBackground = filePath;
+                                else
+                                {
+                                    var fileName = new DirectoryInfo(wallpaper.LivelyInfoFolderPath).Name + ".jpg";
+                                    var filePath = Path.Combine(Constants.CommonPaths.ThemeCacheDir, fileName);
+                                    if (!File.Exists(filePath))
+                                    {
+                                        await desktopCore.TakeScreenshot(desktopCore.Wallpapers[0].Display.DeviceId, filePath);
+                                    }
+                                    AppThemeBackground = filePath;
+                                }
                             }
                         }
                         else
@@ -112,7 +113,9 @@ namespace Lively.UI.WinUI.ViewModels
                     }
                     break;
                 default:
-                    AppThemeBackground = string.Empty;
+                    {
+                        AppThemeBackground = string.Empty;
+                    }
                     break;
             }
         }

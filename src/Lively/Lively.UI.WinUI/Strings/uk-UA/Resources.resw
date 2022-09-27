@@ -124,7 +124,7 @@
     <value>Рівень гучності всіх шпалер.</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
-    <value>Загальна гучність</value>
+    <value>Исходный текст звук</value>
   </data>
   <data name="AudioGroup.Header" xml:space="preserve">
     <value>Аудіо</value>
@@ -1144,9 +1144,9 @@ Edge - веб-двигун з Windows 10 WebView.</value>
     <value>Плагін не знайдено.</value>
   </data>
   <data name="UpdateCompleted.Text" xml:space="preserve">
-    <value>Update complete</value>
+    <value>Оновлення завершено</value>
   </data>
   <data name="UpdateWhatsNew.Text" xml:space="preserve">
-    <value>Check out what's new</value>
+    <value>Перевірте, що нового</value>
   </data>
 </root>

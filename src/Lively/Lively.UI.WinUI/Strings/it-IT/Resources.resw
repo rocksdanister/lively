@@ -698,7 +698,7 @@ Quando sei pronto, vai a: http://localhost:portnumber per accedere al portale de
     <value>Come viene applicato lo sfondo ai dispositivi di visualizzazione collegati</value>
   </data>
   <data name="TipWallpaperPlayback" xml:space="preserve">
-    <value>Mette in pausa la riproduzione dello sfondo quando il desktop non è in primo piano</value>
+    <value>Mettere in pausa la riproduzione dello sfondo quando il desktop non è in primo piano</value>
   </data>
   <data name="WebBrowserDiskCache.Description" xml:space="preserve">
     <value>Memorizza i file temporanei su disco anziché in memoria</value>
@@ -710,19 +710,19 @@ Quando sei pronto, vai a: http://localhost:portnumber per accedere al portale de
     <value>Informazioni su</value>
   </data>
   <data name="AddWallpaper.Label" xml:space="preserve">
-    <value>Aggiungi uno sfondo</value>
+    <value>Aggiungi Sfondo</value>
   </data>
   <data name="AppFocus.Header" xml:space="preserve">
-    <value>Applicazioni focalizzate</value>
+    <value>Applicazioni Focalizzate</value>
   </data>
   <data name="AppFullScreen.Header" xml:space="preserve">
     <value>Applicazioni a tutto schermo</value>
   </data>
   <data name="TitleAppName" xml:space="preserve">
-    <value>Sfondo animato</value>
+    <value>Lively Wallpaper</value>
   </data>
   <data name="AppRules.Header" xml:space="preserve">
-    <value>Regole di applicazione</value>
+    <value>Regole Applicazione</value>
   </data>
   <data name="AppTheme.Header" xml:space="preserve">
     <value>Tema</value>
@@ -749,7 +749,7 @@ Quando sei pronto, vai a: http://localhost:portnumber per accedere al portale de
     <value>Debug</value>
   </data>
   <data name="TitleDeleteConfirmation" xml:space="preserve">
-    <value>Conferma l'eliminazione</value>
+    <value>Conferma Eliminazione</value>
   </data>
   <data name="DesktopPicture.Header" xml:space="preserve">
     <value>Immagine desktop</value>
@@ -821,7 +821,7 @@ Quando sei pronto, vai a: http://localhost:portnumber per accedere al portale de
     <value>Scalatura/Ridimensionamento</value>
   </data>
   <data name="ControlPanel.Title" xml:space="preserve">
-    <value>Pannello di controllo</value>
+    <value>Pannello di Controllo</value>
   </data>
   <data name="TitleScreensaver" xml:space="preserve">
     <value>Salvaschermo</value>
@@ -836,7 +836,7 @@ Quando sei pronto, vai a: http://localhost:portnumber per accedere al portale de
     <value>Impostazioni</value>
   </data>
   <data name="TitleSkipConfirm" xml:space="preserve">
-    <value>Salta la conferma</value>
+    <value>Salta la Conferma</value>
   </data>
   <data name="SourceCode.Header" xml:space="preserve">
     <value>Codice Sorgente</value>
@@ -861,10 +861,10 @@ Quando sei pronto, vai a: http://localhost:portnumber per accedere al portale de
     <value>Tema della barra delle applicazioni</value>
   </data>
   <data name="TitleTileSize" xml:space="preserve">
-    <value>Misura del riquadro</value>
+    <value>Misura del Riquadro</value>
   </data>
   <data name="TitleUIMode" xml:space="preserve">
-    <value>Interfaccia utente</value>
+    <value>Interfaccia Utente</value>
   </data>
   <data name="TitleUpdates" xml:space="preserve">
     <value>Aggiornamenti</value>
@@ -879,7 +879,7 @@ Quando sei pronto, vai a: http://localhost:portnumber per accedere al portale de
     <value>Sfondo</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">
-    <value>Cartella degli sfondi</value>
+    <value>Cartella degli Sfondi</value>
   </data>
   <data name="WallpaperDirMoveExisting.Content" xml:space="preserve">
     <value>Sposta gli sfondi in una nuova cartella</value>
