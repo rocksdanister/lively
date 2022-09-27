@@ -10,6 +10,7 @@ using Lively.Common;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 using System.Threading;
+using System.Linq;
 
 namespace Lively.Grpc.Client
 {
@@ -19,6 +20,7 @@ namespace Lively.Grpc.Client
 
         private readonly List<IDisplayMonitor> displayMonitors = new List<IDisplayMonitor>(2);
         public ReadOnlyCollection<IDisplayMonitor> DisplayMonitors => displayMonitors.AsReadOnly();
+        public IDisplayMonitor PrimaryMonitor { get; private set; }
         public System.Drawing.Rectangle VirtulScreenBounds { get; private set; }
 
         private readonly DisplayService.DisplayServiceClient client;
@@ -35,6 +37,7 @@ namespace Lively.Grpc.Client
             {
                 displayMonitors.AddRange(await GetScreens().ConfigureAwait(false));
                 VirtulScreenBounds = await GetVirtualScreenBounds().ConfigureAwait(false);
+                PrimaryMonitor = displayMonitors.FirstOrDefault(x => x.IsPrimary);
             }).Wait();
 
             cancellationTokeneDisplayChanged = new CancellationTokenSource();
@@ -44,10 +47,10 @@ namespace Lively.Grpc.Client
         private async Task<List<IDisplayMonitor>> GetScreens()
         {
             var resp = await client.GetScreensAsync(new Empty());
-            var displayMonitors = new List<IDisplayMonitor>();
+            var monitors = new List<IDisplayMonitor>();
             foreach (var screen in resp.Screens)
             {
-                displayMonitors.Add(new DisplayMonitor()
+                monitors.Add(new DisplayMonitor()
                 {
                     DeviceId = screen.DeviceId,
                     DisplayName = screen.DisplayName,
@@ -68,7 +71,7 @@ namespace Lively.Grpc.Client
 
                 });
             }
-            return displayMonitors;
+            return monitors;
         }
 
         private async Task<System.Drawing.Rectangle> GetVirtualScreenBounds()
@@ -97,6 +100,7 @@ namespace Lively.Grpc.Client
                         displayMonitors.Clear();
                         displayMonitors.AddRange(await GetScreens().ConfigureAwait(false));
                         VirtulScreenBounds = await GetVirtualScreenBounds().ConfigureAwait(false);
+                        PrimaryMonitor = displayMonitors.FirstOrDefault(x => x.IsPrimary);
                         DisplayChanged?.Invoke(this, EventArgs.Empty);
                     }
                     finally

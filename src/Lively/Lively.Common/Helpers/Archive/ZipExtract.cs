@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -97,6 +98,38 @@ namespace Lively.Common.Helpers.Archive
                 result = false;
             }
             return result;
+        }
+
+        /// <summary>
+        /// Extract zip files in filename order: 0.zip, 1.zip ...
+        /// </summary>
+        /// <param name="currentBundleVer">filename to start from</param>
+        /// <param name="sourceDir">Source folder</param>
+        /// <param name="destinationDir">Folder to extract</param>
+        /// <returns>Last extracted filename</returns>
+        public static int ExtractAssetBundle(int currentBundleVer, string sourceDir, string destinationDir)
+        {
+            int maxExtracted = currentBundleVer;
+            try
+            {
+                //wallpaper bundles filenames are 0.zip, 1.zip ...
+                var sortedBundles = Directory.GetFiles(sourceDir).OrderBy(x => x);
+
+                foreach (var item in sortedBundles)
+                {
+                    if (int.TryParse(Path.GetFileNameWithoutExtension(item), out int val))
+                    {
+                        if (val > maxExtracted)
+                        {
+                            //will overwrite files if exists during extraction.
+                            ZipExtractFile(item, destinationDir, false);
+                            maxExtracted = val;
+                        }
+                    }
+                }
+            }
+            catch { /* TODO */ }
+            return maxExtracted;
         }
     }
 }

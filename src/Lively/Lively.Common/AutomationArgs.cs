@@ -123,5 +123,19 @@ namespace Lively.Common
             HelpText = "Show the ss full-screen, false cancels running ss.")]
             public bool? Show { get; set; }
         }
+
+        [Verb("screenshot", HelpText = "Take wallpaper screenshot.")]
+        public class ScreenshotOptions
+        {
+            [Option("file",
+            Required = true,
+            HelpText = "Save filepath (.jpg)")]
+            public string File { get; set; }
+
+            [Option("monitor",
+            Required = false,
+            HelpText = "Index of the monitor to capture screenshot.")]
+            public int? Monitor { get; set; }
+        }
     }
 }

@@ -15,6 +15,7 @@ service DesktopService {
   rpc SubscribeUpdateWallpaper (google.protobuf.Empty) returns (stream UpdateWallpaperResponse);
   rpc SendMessageWallpaper(WallpaperMessageRequest) returns (google.protobuf.Empty);
   rpc GetCoreStats (google.protobuf.Empty) returns (GetCoreStatsResponse);
+  rpc TakeScreenshot(WallpaperScreenshotRequest) returns (google.protobuf.Empty);
 }
 
 message SetWallpaperRequest {
@@ -98,6 +99,11 @@ message WallpaperMessageRequest {
 	string monitor_id = 1;
 	string lively_info_path = 2;
 	string msg = 3;
+}
+
+message WallpaperScreenshotRequest {
+	string monitor_id = 1;
+	string save_path = 2;
 }
 
 message WallpaperErrorResponse {

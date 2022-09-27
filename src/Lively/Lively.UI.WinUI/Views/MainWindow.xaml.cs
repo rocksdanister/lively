@@ -65,6 +65,7 @@ namespace Lively.UI.WinUI
         private readonly ResourceLoader i18n;
 
         public MainWindow(IDesktopCoreClient desktopCore,
+            MainViewModel mainViewModel,
             IDialogService dialogService,
             ICommandsClient commands,
             IUserSettingsClient userSettings,
@@ -82,6 +83,7 @@ namespace Lively.UI.WinUI
             this.commands = commands;
 
             this.InitializeComponent();
+            Root.DataContext = mainViewModel;
             i18n = ResourceLoader.GetForViewIndependentUse();
             this.audioSlider.Value = settingsVm.GlobalWallpaperVolume;
             UpdateAudioSliderIcon(settingsVm.GlobalWallpaperVolume);
@@ -326,6 +328,8 @@ namespace Lively.UI.WinUI
 
         private void AppBarCoffeeBtn_Click(object sender, RoutedEventArgs e) =>
             LinkHandler.OpenBrowser("https://rocksdanister.github.io/lively/coffee/");
+
+        private void AppBarThemeButton_Click(object sender, RoutedEventArgs e) => dialogService.ShowThemeDialog();
 
         private void AppBarHelpButton_Click(object sender, RoutedEventArgs e)
         {

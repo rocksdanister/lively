@@ -181,6 +181,15 @@ namespace Lively.Grpc.Client
             });
         }
 
+        public async Task TakeScreenshot(string monitorId, string savePath)
+        {
+            await client.TakeScreenshotAsync(new WallpaperScreenshotRequest()
+            {
+                MonitorId = monitorId,
+                SavePath = savePath,
+            });
+        }
+
         private async Task SubscribeWallpaperChangedStream(CancellationToken token)
         {
             try

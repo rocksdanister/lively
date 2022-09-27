@@ -251,6 +251,9 @@ namespace Lively.Grpc.Client
                 DisplayPauseSettings = (DisplayPauseRule)settings.DisplayPauseSettings,
                 RememberSelectedScreen = settings.RememberSelectedScreen,
                 Updated = settings.IsUpdated,
+                ApplicationThemeBackground = (Common.Proto.Settings.AppThemeBackground)settings.ApplicationThemeBackground,
+                ApplicationThemeBackgroundPath = settings.ApplicationThemeBackgroundPath,
+                ThemeBundleVersion = settings.ThemeBundleVersion,
             };
         }
 
@@ -324,6 +327,9 @@ namespace Lively.Grpc.Client
                 DisplayPauseSettings = (DisplayPauseEnum)settings.DisplayPauseSettings,
                 RememberSelectedScreen = settings.RememberSelectedScreen,
                 IsUpdated = settings.Updated,
+                ApplicationThemeBackground = (Lively.Common.AppThemeBackground)settings.ApplicationThemeBackground,
+                ApplicationThemeBackgroundPath = settings.ApplicationThemeBackgroundPath,
+                ThemeBundleVersion = settings.ThemeBundleVersion,
             };
         }
 

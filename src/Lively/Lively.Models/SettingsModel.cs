@@ -116,6 +116,9 @@ namespace Lively.Models
         public bool KeepAwakeUI { get; set; }
         public bool RememberSelectedScreen { get; set; }
         public bool IsUpdated { get; set; }
+        public string ApplicationThemeBackgroundPath { get; set; }
+        public AppThemeBackground ApplicationThemeBackground { get; set; }
+        public int ThemeBundleVersion { get; set; }
 
         public SettingsModel()
         {
@@ -166,6 +169,7 @@ namespace Lively.Models
             AutoDetectOnlineStreams = true;
             ExtractStreamMetaData = true;
             WallpaperBundleVersion = -1;
+            ThemeBundleVersion = -1;
             AudioVolumeGlobal = 75;
             AudioOnlyOnDesktop = true;
             WallpaperScaling = WallpaperScaler.fill;
@@ -185,6 +189,8 @@ namespace Lively.Models
             KeepAwakeUI = false;
             RememberSelectedScreen = true;
             IsUpdated = false;
+            ApplicationThemeBackgroundPath = null;
+            ApplicationThemeBackground = AppThemeBackground.default_mica;
 
             try
             {

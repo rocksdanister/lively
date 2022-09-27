@@ -96,17 +96,27 @@ namespace Lively
 
             try
             {
+                //clear temp files from previous run if any..
+                FileOperations.EmptyDirectory(Constants.CommonPaths.TempDir);
+                FileOperations.EmptyDirectory(Constants.CommonPaths.ThemeCacheDir);
+            }
+            catch { /* TODO */ }
+
+            try
+            {
                 //create directories if not exist, eg: C:\Users\<User>\AppData\Local
                 Directory.CreateDirectory(Constants.CommonPaths.AppDataDir);
                 Directory.CreateDirectory(Constants.CommonPaths.LogDir);
+                Directory.CreateDirectory(Constants.CommonPaths.ThemeDir);
                 Directory.CreateDirectory(Constants.CommonPaths.TempDir);
                 Directory.CreateDirectory(Constants.CommonPaths.TempCefDir);
                 Directory.CreateDirectory(Constants.CommonPaths.TempVideoDir);
+                Directory.CreateDirectory(Constants.CommonPaths.ThemeCacheDir);
             }
             catch (Exception ex)
             {
                 //nothing much can be done here..
-                MessageBox.Show(ex.Message, "AppData Directory Initialize Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(ex.Message, "AppData directory creation failed, exiting Lively..", MessageBoxButton.OK, MessageBoxImage.Error);
                 ShutDown();
                 return;
             }
@@ -120,8 +130,6 @@ namespace Lively
                     File.Copy(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "mpv", "api", "LivelyProperties.json"),
                         Path.Combine(Constants.CommonPaths.TempVideoDir, "LivelyProperties.json"), true);
                 }
-                //clear temp files from previous run if any..
-                FileOperations.EmptyDirectory(Constants.CommonPaths.TempDir);
             }
             catch { /* TODO */ }
 
@@ -145,14 +153,18 @@ namespace Lively
 
             if (userSettings.Settings.IsUpdated)
             {
-                //install any new wallpaper collection if present, do this before restoring wallpaper incase installed wallpaper is updated.
-                //first run default wallpapers are installed by UI to avoid slow startup times and better user experience.
-                var maxVersion = ExtractWallpaperBundle(userSettings.Settings.WallpaperBundleVersion,
-                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bundle"),
-                    userSettings.Settings.WallpaperDir);
-                if (maxVersion != userSettings.Settings.WallpaperBundleVersion)
+                //Install any new asset collection if present, do this before restoring wallpaper incase wallpaper is updated.
+                //On first run default assets are installed by UI to avoid slow startup times and better user experience.
+                var maxWallpaper = ZipExtract.ExtractAssetBundle(userSettings.Settings.WallpaperBundleVersion,
+                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bundle", "wallpapers"),
+                    Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperInstallDir));
+                var maxTheme = ZipExtract.ExtractAssetBundle(userSettings.Settings.ThemeBundleVersion,
+                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bundle", "themes"),
+                    Path.Combine(Constants.CommonPaths.ThemeDir));
+                if (maxTheme != userSettings.Settings.ThemeBundleVersion || maxWallpaper != userSettings.Settings.WallpaperBundleVersion)
                 {
-                    userSettings.Settings.WallpaperBundleVersion = maxVersion;
+                    userSettings.Settings.WallpaperBundleVersion = maxWallpaper;
+                    userSettings.Settings.ThemeBundleVersion = maxTheme;
                     userSettings.Save<ISettingsModel>();
                 }
             }
@@ -336,34 +348,6 @@ namespace Lively
             Directory.CreateDirectory(Path.Combine(baseDirectory, Constants.CommonPartialPaths.WallpaperInstallDir));
             Directory.CreateDirectory(Path.Combine(baseDirectory, Constants.CommonPartialPaths.WallpaperInstallTempDir));
             Directory.CreateDirectory(Path.Combine(baseDirectory, Constants.CommonPartialPaths.WallpaperSettingsDir));
-        }
-
-        /// <summary>
-        /// Extract default wallpapers if any
-        /// </summary>
-        public static int ExtractWallpaperBundle(int currentBundleVer, string currentBundleDir, string currentWallpaperDir)
-        {
-            int maxExtracted = currentBundleVer;
-            try
-            {
-                //wallpaper bundles filenames are 0.zip, 1.zip ...
-                var sortedBundles = Directory.GetFiles(currentBundleDir).OrderBy(x => x);
-
-                foreach (var item in sortedBundles)
-                {
-                    if (int.TryParse(Path.GetFileNameWithoutExtension(item), out int val))
-                    {
-                        if (val > maxExtracted)
-                        {
-                            //will overwrite files if exists during extraction.
-                            ZipExtract.ZipExtractFile(item, Path.Combine(currentWallpaperDir, Constants.CommonPartialPaths.WallpaperInstallDir), false);
-                            maxExtracted = val;
-                        }
-                    }
-                }
-            }
-            catch { /* TODO */ }
-            return maxExtracted;
         }
 
         private void SetupUnhandledExceptionLogging()

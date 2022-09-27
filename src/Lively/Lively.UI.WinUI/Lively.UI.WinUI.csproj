@@ -48,11 +48,13 @@
   <ItemGroup>
     <None Remove="Assets\banner-lively-1080.jpg" />
     <None Remove="Assets\icon-lively-48.png" />
+    <None Remove="Assets\icons8-application-window-96.png" />
     <None Remove="Assets\icons8-github-96.png" />
     <None Remove="Assets\icons8-google-96.png" />
     <None Remove="Assets\icons8-mail-96.png" />
     <None Remove="Assets\icons8-reddit-96.png" />
     <None Remove="Assets\icons8-twitter-96.png" />
+    <None Remove="Assets\icons8-wallpaper-96.png" />
     <None Remove="Assets\icons8-youtube-96.png" />
     <None Remove="Assets\tray-tutorial.gif" />
     <None Remove="Nlog.config" />
@@ -80,6 +82,7 @@
     <None Remove="Views\Pages\SettingsSystemView.xaml" />
     <None Remove="Views\Pages\SettingsWallpaperView.xaml" />
     <None Remove="Views\Pages\Settings\FindMoreAppsView.xaml" />
+    <None Remove="Views\Pages\ThemeView.xaml" />
     <None Remove="Views\Pages\TrayMenuHelp.xaml" />
     <None Remove="Views\Pages\WallpaperLayoutCustomiseView.xaml" />
     <None Remove="Views\Pages\WallpaperLayoutView.xaml" />
@@ -157,6 +160,9 @@
     <Content Update="Assets\icons8-twitter-96.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Update="Assets\icons8-wallpaper-96.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Update="Assets\icons8-youtube-96.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -168,6 +174,12 @@
     <None Update="appicon.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Content Update="Assets\icons8-application-window-96.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Page Update="Views\Pages\ThemeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Update="Views\Pages\Settings\FindMoreAppsView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>

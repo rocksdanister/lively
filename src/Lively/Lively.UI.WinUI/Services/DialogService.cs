@@ -100,5 +100,17 @@ namespace Lively.UI.WinUI.Services
             await dialog.ShowAsyncQueue();
             return tb.Text;
         }
+
+        public async Task ShowThemeDialog()
+        {
+            await new ContentDialog()
+            {
+                Title = "Theme settings",
+                Content = new ThemeView(),
+                PrimaryButtonText = i18n.GetString("TextClose"),
+                DefaultButton = ContentDialogButton.Primary,
+                XamlRoot = App.Services.GetRequiredService<MainWindow>().Content.XamlRoot,
+            }.ShowAsyncQueue();
+        }
     }
 }

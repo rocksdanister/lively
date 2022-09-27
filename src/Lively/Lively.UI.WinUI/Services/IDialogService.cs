@@ -14,6 +14,7 @@ namespace Lively.UI.WinUI.Services
             string secondaryBtnText,
             bool isDefaultPrimary = true);
         Task<string> ShowTextInputDialog(string title);
+        Task ShowThemeDialog();
 
         public enum DialogResult
         {
