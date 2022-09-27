@@ -169,7 +169,7 @@ namespace Lively.Common
     }
 
     /// <summary>
-    /// Same as: https://docs.microsoft.com/en-us/dotnet/api/system.windows.media.stretch?view=netcore-3.1
+    /// Similar to <see href="https://docs.microsoft.com/en-us/dotnet/api/system.windows.media.stretch?view=netcore-3.1">System.Media.Stretch</see>
     /// </summary>
     public enum WallpaperScaler
     {
@@ -185,6 +185,17 @@ namespace Lively.Common
         Auto,
         Light,
         Dark,
+    }
+
+    /// <summary>
+    /// Combines with <see cref="AppTheme"/>
+    /// </summary>
+    public enum AppThemeBackground
+    {
+        default_mica,
+        default_acrylic,
+        dynamic,
+        custom
     }
 
     public enum ScreensaverIdleTime

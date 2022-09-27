@@ -13,7 +13,7 @@ namespace Lively.Commandline
     {
         static void Main(string[] args)
         {
-            _ = CommandLine.Parser.Default.ParseArguments<AppOptions, SetWallpaperOptions, CustomiseWallpaperOptions, CloseWallpaperOptions, ScreenSaverOptions, SeekWallpaperOptions>(args)
+            _ = CommandLine.Parser.Default.ParseArguments<AppOptions, SetWallpaperOptions, CustomiseWallpaperOptions, CloseWallpaperOptions, ScreenSaverOptions, SeekWallpaperOptions, ScreenshotOptions>(args)
              .MapResult(
                  (AppOptions opts) => RunAppOptions(opts),
                  (SetWallpaperOptions opts) => RunSetWallpaperOptions(opts),
@@ -21,6 +21,7 @@ namespace Lively.Commandline
                  (SeekWallpaperOptions opts) => RunSeekWallpaperOptions(opts),
                  (CustomiseWallpaperOptions opts) => RunCustomiseWallpaperOptions(opts),
                  (ScreenSaverOptions opts) => RunScreenSaverOptions(opts),
+                 (ScreenshotOptions opts) => RunScreenshotOptions(opts),
                  errs => HandleParseError(errs));
 
 
@@ -62,6 +63,11 @@ namespace Lively.Commandline
         }
 
         private static object RunScreenSaverOptions(ScreenSaverOptions opts)
+        {
+            return 0;
+        }
+
+        private static object RunScreenshotOptions(ScreenshotOptions opts)
         {
             return 0;
         }

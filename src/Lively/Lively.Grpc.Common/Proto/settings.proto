@@ -69,6 +69,9 @@ message SettingsDataModel {
     PicturePlayer picture_player = 57;
     bool remember_selected_screen = 58;
     bool updated = 59;
+    AppThemeBackground application_theme_background = 60;
+    string application_theme_background_path = 61;
+    int32 theme_bundle_version = 62;
 }
 
 message AppRulesSettings {
@@ -187,6 +190,13 @@ enum AppTheme {
     auto = 0;
     light = 1;
     dark = 2;
+}
+
+enum AppThemeBackground {
+    defaultMica = 0;
+    defaultAcrylic = 1;
+    dynamic = 2;
+    custom = 3;
 }
 
 enum TaskbarTheme {

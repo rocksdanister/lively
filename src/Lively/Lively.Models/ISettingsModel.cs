@@ -67,5 +67,8 @@ namespace Lively.Models
         bool KeepAwakeUI { get; set; }
         bool RememberSelectedScreen { get; set; }
         bool IsUpdated { get; set; }
+        string ApplicationThemeBackgroundPath { get; set; }
+        AppThemeBackground ApplicationThemeBackground { get; set; }
+        int ThemeBundleVersion { get; set; }
     }
 }

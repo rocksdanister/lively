@@ -293,6 +293,9 @@ namespace Lively.UI.WinUI.ViewModels
             }
         }
 
+        private RelayCommand _themeBackgroundCommand;
+        public RelayCommand ThemeBackgroundCommand => _themeBackgroundCommand ??= new RelayCommand(async () => await dialogService.ShowThemeDialog());
+
         #endregion general
 
         #region performance
@@ -481,7 +484,7 @@ namespace Lively.UI.WinUI.ViewModels
         }
 
         private RelayCommand _addAppRuleCommand;
-        public RelayCommand AddAppRuleCommand => _addAppRuleCommand ??= new RelayCommand(async() => await AppRuleAddProgram());
+        public RelayCommand AddAppRuleCommand => _addAppRuleCommand ??= new RelayCommand(async () => await AppRuleAddProgram());
 
         private RelayCommand _removeAppRuleCommand;
         public RelayCommand RemoveAppRuleCommand =>
@@ -1128,7 +1131,7 @@ namespace Lively.UI.WinUI.ViewModels
         private async Task WallpaperRestart(WallpaperType[] type)
         {
             var originalWallpapers = desktopCore.Wallpapers.Where(x => type.Any(y => y == x.Category)).ToList();
-            if (originalWallpapers.Count() > 0)
+            if (originalWallpapers.Any())
             {
                 foreach (var item in type)
                 {

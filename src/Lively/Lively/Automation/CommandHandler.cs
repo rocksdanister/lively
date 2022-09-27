@@ -55,7 +55,7 @@ namespace Lively.Automation
 
         public void ParseArgs(string[] args)
         {
-            _ = CommandLine.Parser.Default.ParseArguments<AppOptions, SetWallpaperOptions, CustomiseWallpaperOptions, CloseWallpaperOptions, ScreenSaverOptions, SeekWallpaperOptions>(args)
+            _ = CommandLine.Parser.Default.ParseArguments<AppOptions, SetWallpaperOptions, CustomiseWallpaperOptions, CloseWallpaperOptions, ScreenSaverOptions, SeekWallpaperOptions, ScreenshotOptions>(args)
                 .MapResult(
                     (AppOptions opts) => RunAppOptions(opts),
                     (SetWallpaperOptions opts) => RunSetWallpaperOptions(opts),
@@ -63,6 +63,7 @@ namespace Lively.Automation
                     (SeekWallpaperOptions opts) => RunSeekWallpaperOptions(opts),
                     (CustomiseWallpaperOptions opts) => RunCustomiseWallpaperOptions(opts),
                     (ScreenSaverOptions opts) => RunScreenSaverOptions(opts),
+                    (ScreenshotOptions opts) => RunScreenshotOptions(opts),
                     errs => HandleParseError(errs));
         }
 
@@ -437,6 +438,24 @@ namespace Lively.Automation
                     screenSaver.CreatePreview(new IntPtr((int)opts.Preview));
                 }
             }));
+            return 0;
+        }
+
+        private int RunScreenshotOptions(ScreenshotOptions opts)
+        {
+            if (opts.File is not null)
+            {
+                if (Path.GetExtension(opts.File) != ".jpg")
+                {
+                    opts.File += ".jpg";
+                }
+
+                //use primary screen if none found..
+                var screen = opts.Monitor != null ?
+                    displayManager.DisplayMonitors.FirstOrDefault(x => x.Index == ((int)opts.Monitor)) : displayManager.PrimaryDisplayMonitor;
+                var wallpaper = desktopCore.Wallpapers.FirstOrDefault(x => x.Screen.Equals(screen));
+                _ = wallpaper?.ScreenCapture(opts.File);
+            }
             return 0;
         }
 

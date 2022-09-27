@@ -319,5 +319,15 @@ namespace Lively.RPC
             }
             return Task.FromResult(new Empty());
         }
+
+        public override async Task<Empty> TakeScreenshot(WallpaperScreenshotRequest request, ServerCallContext context)
+        {
+            var wallpaper = desktopCore.Wallpapers.FirstOrDefault(x => request.MonitorId == x.Screen.DeviceId);
+            if (wallpaper is not null)
+            {
+                await wallpaper.ScreenCapture(request.SavePath);
+            }
+            return await Task.FromResult(new Empty());
+        }
     }
 }
