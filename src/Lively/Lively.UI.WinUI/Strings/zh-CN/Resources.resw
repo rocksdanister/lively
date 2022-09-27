@@ -141,7 +141,7 @@
 Windows 资源管理器在过去 30 秒内重新启动了两次！这可能是 Lively 与其他桌面自定义软件或 Windows 之间的冲突。为避免进一步的问题，所有壁纸都将停止。</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
-    <value>发现不兼容的程序，任务栏主题设计被禁用。</value>
+    <value>发现不兼容的程序，任务栏主题设计将会被禁用。</value>
   </data>
   <data name="OfficialWebpage.Content" xml:space="preserve">
     <value>Lively Wallpaper 的官方网页</value>
@@ -157,7 +157,7 @@ Lively 屏幕保护程序的主要目的是为您的电脑添加另一层自定�
     <value>报告软件问题</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
-    <value>选择一个文件或指定一个网站 URL 以设置为壁纸。</value>
+    <value>选择文件</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
     <value>根据正在运行的应用程序设置壁纸播放行为</value>
@@ -217,7 +217,7 @@ Lively 屏幕保护程序的主要目的是为您的电脑添加另一层自定�
 更新会很频繁，并且可能包含错误！</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
-    <value>系统托盘图标可视性 Lively 将隐藏图标继续运行</value>
+    <value>系统托盘图标可见性 关闭该选项时 Lively 将在隐藏图标的情况下继续运行</value>
   </data>
   <data name="HideSysTray.Header" xml:space="preserve">
     <value>系统托盘图标</value>
@@ -353,7 +353,7 @@ Windows 7 系统只需设置"调整为最佳外观"&amp;并应用。
     <value>退出</value>
   </data>
   <data name="ExportWallpaperZip.Text" xml:space="preserve">
-    <value>输出为 Lively .zip</value>
+    <value>另存为文件</value>
   </data>
   <data name="TextFeatureMissing" xml:space="preserve">
     <value>此版本不提供某些功能。</value>
@@ -626,8 +626,8 @@ Windows 7 系统只需设置"调整为最佳外观"&amp;并应用。
     <value>（仅电池供电的系统）当电源断开时改变播放方式。</value>
   </data>
   <data name="BrowserDebuggingPort.Description" xml:space="preserve">
-    <value>输入调试网页壁纸的端口，需要重新启动浏览器才能使修改生效。
-准备好后前往 http://localhost:portnumber ，进入开发者控制台。</value>
+    <value>输入调试网页壁纸的端口号，需要重新启动浏览器才能使修改生效。
+准备好后前往 http://localhost:&lt;端口号&gt; ，进入开发者控制台。</value>
   </data>
   <data name="Debug.Description" xml:space="preserve">
     <value>显示开发者选项</value>

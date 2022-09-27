@@ -44,7 +44,7 @@ namespace Lively.UI.WinUI.ViewModels
             dispatcherQueue = DispatcherQueue.GetForCurrentThread() ?? DispatcherQueueController.CreateOnCurrentThread().DispatcherQueue;
 
             //Defaults
-            Themes.Add(new ThemeModel() { Name = "Default", Description = "Use system default",  Preview = "ms-appx:///Assets/icons8-application-window-96.png", IsEditable = false });
+            Themes.Add(new ThemeModel() { Name = "Default", Description = "Use system default", Preview = "ms-appx:///Assets/icons8-application-window-96.png", IsEditable = false });
             Themes.Add(new ThemeModel() { Name = "Dynamic", Description = "Adapt to wallpaper", Preview = "ms-appx:///Assets/icons8-wallpaper-96.png", IsEditable = false });
             //User collection
             foreach (var item in Directory.GetDirectories(Constants.CommonPaths.ThemeDir, "*", SearchOption.TopDirectoryOnly))
@@ -108,9 +108,9 @@ namespace Lively.UI.WinUI.ViewModels
         }
 
         private RelayCommand _browseCommand;
-        public RelayCommand BrowseCommand => _browseCommand ??= new RelayCommand(async () => await BrowseApp());
+        public RelayCommand BrowseCommand => _browseCommand ??= new RelayCommand(async () => await BrowseTheme());
 
-        private async Task BrowseApp()
+        private async Task BrowseTheme()
         {
             var filePicker = new FileOpenPicker();
             filePicker.SetOwnerWindow(App.Services.GetRequiredService<MainWindow>());

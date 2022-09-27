@@ -1140,9 +1140,9 @@ Edge este vizualizarea web integrată a Windows 10.</value>
     <value>Plugin-ul nu a fost găsit</value>
   </data>
   <data name="UpdateCompleted.Text" xml:space="preserve">
-    <value>Update complete</value>
+    <value>Actualizare completă.</value>
   </data>
   <data name="UpdateWhatsNew.Text" xml:space="preserve">
-    <value>Check out what's new</value>
+    <value>Vezi ce e nou</value>
   </data>
 </root>

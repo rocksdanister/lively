@@ -223,7 +223,7 @@
     <value>סמל מגש המערכת</value>
   </data>
   <data name="Language.Description" xml:space="preserve">
-    <value>Lively תופעל מחדש כדי להחיל את השפה החדשה</value>
+    <value>Lively ייפעל מחדש כדי להחיל את השפה החדשה</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
     <value>שפה</value>

@@ -183,7 +183,7 @@
     <value>يرجى إعادة تشغيل البرنامج حتى تصبح الإعدادات نافذة المفعول.</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
-    <value>يرجى التوقف قبل المضي قدما</value>
+    <value>يرجى التوقف قبل المتابعة.</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
     <value>اضغط لبدء التسجيل</value>

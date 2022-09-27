@@ -141,7 +141,7 @@
 O Explorador do Windows reiniciou duas vezes nos últimos 30 segundos! Isso pode ser um conflito entre o Lively e outro software de customização ou o Windows. Para evitar maiores problemas, todos os planos de fundo foram encerrados.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
-    <value>Programa incompatível encontrado, estilo da barra de tarefas desativado</value>
+    <value>Programa incompatível encontrado, tema da barra de tarefas desativado</value>
   </data>
   <data name="OfficialWebpage.Content" xml:space="preserve">
     <value>Site oficial do Lively Wallpaper</value>
@@ -157,7 +157,7 @@ O foco principal dos protetores de tela do Lively é adicionar mais uma camada d
     <value>Reporte um problema com o software</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
-    <value>Selecione um arquivo</value>
+    <value>Escolha um arquivo</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
     <value>Definir o comportamento de reprodução do(s) plano(s) de fundo baseado no aplicativo ativo</value>
@@ -172,7 +172,7 @@ O foco principal dos protetores de tela do Lively é adicionar mais uma camada d
     <value>Tem certeza que deseja remover este plano de fundo da Biblioteca?</value>
   </data>
   <data name="DragDropFile.Text" xml:space="preserve">
-    <value>Simplesmente arraste os arquivos para a Biblioteca</value>
+    <value>Basta arrastar e soltar os arquivos aqui</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
     <value>Você está tentando abrir um aplicativo externo como plano de fundo.
@@ -261,21 +261,21 @@ https://github.com/rocksdanister/lively/wiki</value>
 Deseja restaurar os planos de fundos que estavam ativos?</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
-    <value>Parece que algumas opções precisam ser ativadas para que o Lively funcione:
+    <value>Parece que algumas cpnfigurações precisam ser feitas para que o Lively funcione corretamente:
 1. Aperte Win + R para abrir a janela de Executar.
 2. Digite "SystemPropertiesPerformance.exe" e aperte Enter para abrir as Opções de Desempenho.
 3. Ative/Marque "Animar controles e elementos no Windows" (Se já estiver marcado, então desmarque e marque de novo) &amp; Aplique.
 4. Clique em "Aplicar" e então aperte no "OK" para fechar a janela.
 
-Se estiver no Windows 7, ative "Ajustar para melhor aparência".
+Se estiver no Windows 7, ative "Ajustar para melhor aparência" &amp; Aplique.
 Se ainda não funcionar, abra o Lively novamente ou reinicie o Windows.
-(Não funciona nas versões insider do Windows 10)</value>
+(Não funciona em algumas versões insider do Windows 10)</value>
   </data>
   <data name="Startup.Description" xml:space="preserve">
     <value>O Lively precisa ser executado em segundo plano para reproduzir o plano de fundo</value>
   </data>
   <data name="Startup.Header" xml:space="preserve">
-    <value>Iniciar com o Windows</value>
+    <value>Iniciar com o windows</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
     <value>Adicionar</value>

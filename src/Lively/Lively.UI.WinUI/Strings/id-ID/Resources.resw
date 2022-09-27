@@ -121,7 +121,7 @@
     <value>Hanya putar audio ketika fokus ke desktop</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
-    <value>Tingkat suara untuk semua wallpaper</value>
+    <value>Tingkat suara untuk semua tampilan</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
     <value>Tingkat Suara</value>
