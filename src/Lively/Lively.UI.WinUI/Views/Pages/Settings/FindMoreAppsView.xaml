@@ -57,6 +57,7 @@
                 x:Uid="TextOpen"
                 MinWidth="150"
                 Margin="0,5,0,0"
+                HorizontalAlignment="Stretch"
                 Command="{Binding BrowseCommand}" />
         </StackPanel>
     </Grid>

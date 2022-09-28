@@ -1,4 +1,5 @@
-﻿using Lively.UI.WinUI.ViewModels;
+﻿using Lively.Common;
+using Lively.UI.WinUI.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -30,5 +31,8 @@ namespace Lively.UI.WinUI.Views.Pages
             this.InitializeComponent();
             this.DataContext = App.Services.GetRequiredService<ThemeViewModel>();
         }
+
+        //NavigateUri not working, Issue: https://github.com/microsoft/microsoft-ui-xaml/issues/5630
+        private void Color_HyperlinkButton_Click(object sender, RoutedEventArgs e) => LinkHandler.OpenBrowser("ms-settings:colors");
     }
 }

@@ -48,9 +48,6 @@ namespace Lively.UI.WinUI.Views.Pages.Settings
 
         private void Slider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e) => UpdateAudioSliderIcon(e.NewValue);
 
-        //NavigateUri not working, Issue: https://github.com/microsoft/microsoft-ui-xaml/issues/5630
-        private void Color_HyperlinkButton_Click(object sender, RoutedEventArgs e) => LinkHandler.OpenBrowser("ms-settings:colors");
-
         private void Language_HyperlinkButton_Click(object sender, RoutedEventArgs e) => LinkHandler.OpenBrowser("https://rocksdanister.github.io/lively/translation/");
     }
 }

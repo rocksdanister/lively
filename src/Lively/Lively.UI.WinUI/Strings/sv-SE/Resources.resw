@@ -1119,4 +1119,22 @@ Windows Utforskaren har startat om två gånger under de senaste 30 sekunderna! 
   <data name="UpdateWhatsNew.Text" xml:space="preserve">
     <value>Ta en titt på vad som är nytt</value>
   </data>
+  <data name="AppThemeColor.Header" xml:space="preserve">
+    <value>Färg</value>
+  </data>
+  <data name="DescriptionDefault.Text" xml:space="preserve">
+    <value>Use system default</value>
+  </data>
+  <data name="DescriptionDynamicTheme.Text" xml:space="preserve">
+    <value>Adapt to wallpaper</value>
+  </data>
+  <data name="TextDefault.Text" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="TextDynamicTheme.Text" xml:space="preserve">
+    <value>Dynamic</value>
+  </data>
+  <data name="Theme.Label" xml:space="preserve">
+    <value>Tema</value>
+  </data>
 </root>
