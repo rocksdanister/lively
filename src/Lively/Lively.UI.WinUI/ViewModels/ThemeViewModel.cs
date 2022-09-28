@@ -17,35 +17,30 @@ using System.Threading.Tasks;
 using Windows.Storage.Pickers;
 using Microsoft.UI.Dispatching;
 using Lively.UI.WinUI.Factories;
+using Windows.ApplicationModel.Resources;
 
 namespace Lively.UI.WinUI.ViewModels
 {
     public partial class ThemeViewModel : ObservableObject
     {
+        private readonly ResourceLoader i18n;
         private readonly DispatcherQueue dispatcherQueue;
-        private readonly SettingsViewModel settingsVm;
         private readonly IUserSettingsClient userSettings;
-        private readonly IDesktopCoreClient desktopCore;
         private readonly IThemeFactory themeFactory;
         private readonly MainViewModel mainVm;
 
-        public ThemeViewModel(SettingsViewModel settingsVm,
-            IDesktopCoreClient desktopCore,
-            IUserSettingsClient userSettings,
-            IThemeFactory themeFactory,
-            MainViewModel mainVm)
+        public ThemeViewModel(IUserSettingsClient userSettings, IThemeFactory themeFactory, MainViewModel mainVm)
         {
-            this.settingsVm = settingsVm;
-            this.desktopCore = desktopCore;
             this.userSettings = userSettings;
             this.themeFactory = themeFactory;
             this.mainVm = mainVm;
             //MainWindow dispatcher may not be ready yet, creating our own instead..
             dispatcherQueue = DispatcherQueue.GetForCurrentThread() ?? DispatcherQueueController.CreateOnCurrentThread().DispatcherQueue;
+            i18n = ResourceLoader.GetForViewIndependentUse();
 
             //Defaults
-            Themes.Add(new ThemeModel() { Name = "Default", Description = "Use system default", Preview = "ms-appx:///Assets/icons8-application-window-96.png", IsEditable = false });
-            Themes.Add(new ThemeModel() { Name = "Dynamic", Description = "Adapt to wallpaper", Preview = "ms-appx:///Assets/icons8-wallpaper-96.png", IsEditable = false });
+            Themes.Add(new ThemeModel() { Name = i18n.GetString("TextDefault/Text"), Description = i18n.GetString("DescriptionDefault/Text"), Preview = "ms-appx:///Assets/icons8-application-window-96.png", IsEditable = false });
+            Themes.Add(new ThemeModel() { Name = i18n.GetString("TextDynamicTheme/Text"), Description = i18n.GetString("DescriptionDynamicTheme/Text"), Preview = "ms-appx:///Assets/icons8-wallpaper-96.png", IsEditable = false });
             //User collection
             foreach (var item in Directory.GetDirectories(Constants.CommonPaths.ThemeDir, "*", SearchOption.TopDirectoryOnly))
             {
@@ -65,6 +60,7 @@ namespace Lively.UI.WinUI.ViewModels
                 AppThemeBackground.custom => Themes.Skip(2).FirstOrDefault(x => Directory.GetParent(x.File).FullName.Equals(userSettings.Settings.ApplicationThemeBackgroundPath)) ?? Themes[0],
                 _ => Themes[0],
             };
+            SelectedAppThemeIndex = (int)userSettings.Settings.ApplicationTheme;
         }
 
         [ObservableProperty]
@@ -98,11 +94,23 @@ namespace Lively.UI.WinUI.ViewModels
 
                 if (prevPath != userSettings.Settings.ApplicationThemeBackgroundPath || prevTheme != userSettings.Settings.ApplicationThemeBackground)
                 {
-                    _ = dispatcherQueue.TryEnqueue(() =>
-                    {
-                        userSettings.Save<ISettingsModel>();
-                    });
+                    UpdateSettingsConfigFile();
                     _ = mainVm.UpdateTheme();
+                }
+            }
+        }
+
+        private int _selectedAppThemeIndex;
+        public int SelectedAppThemeIndex
+        {
+            get => _selectedAppThemeIndex;
+            set
+            {
+                SetProperty(ref _selectedAppThemeIndex, value);
+                if (userSettings.Settings.ApplicationTheme != (AppTheme)value)
+                {
+                    userSettings.Settings.ApplicationTheme = (AppTheme)value;
+                    UpdateSettingsConfigFile();
                 }
             }
         }
@@ -149,5 +157,14 @@ namespace Lively.UI.WinUI.ViewModels
                     await DesktopBridgeUtil.OpenFolder(Directory.GetParent(obj.File).FullName);
                 }
             });
+
+        public void UpdateSettingsConfigFile()
+        {
+            _ = dispatcherQueue.TryEnqueue(() =>
+            {
+                userSettings.Save<ISettingsModel>();
+            });
+        }
+
     }
 }

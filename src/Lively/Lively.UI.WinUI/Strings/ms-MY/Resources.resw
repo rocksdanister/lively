@@ -1150,4 +1150,22 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
   <data name="UpdateWhatsNew.Text" xml:space="preserve">
     <value>Tengok ciri-ciri terbaharu</value>
   </data>
+  <data name="AppThemeColor.Header" xml:space="preserve">
+    <value>Warna</value>
+  </data>
+  <data name="DescriptionDefault.Text" xml:space="preserve">
+    <value>Use system default</value>
+  </data>
+  <data name="DescriptionDynamicTheme.Text" xml:space="preserve">
+    <value>Adapt to wallpaper</value>
+  </data>
+  <data name="TextDefault.Text" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="TextDynamicTheme.Text" xml:space="preserve">
+    <value>Dynamic</value>
+  </data>
+  <data name="Theme.Label" xml:space="preserve">
+    <value>Tema</value>
+  </data>
 </root>

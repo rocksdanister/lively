@@ -285,7 +285,7 @@
                     <!--<AppBarSeparator />-->
 
                     <CommandBar.SecondaryCommands>
-                        <AppBarButton Click="AppBarThemeButton_Click" Label="Theme settings">
+                        <AppBarButton x:Uid="Theme" Click="AppBarThemeButton_Click">
                             <AppBarButton.Icon>
                                 <FontIcon Glyph="&#xE790;" />
                             </AppBarButton.Icon>

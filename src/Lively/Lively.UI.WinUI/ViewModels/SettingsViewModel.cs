@@ -96,7 +96,6 @@ namespace Lively.UI.WinUI.ViewModels
             IsDesktopAutoWallpaper = userSettings.Settings.DesktopAutoWallpaper;
             //IsDebugMenuVisible = userSettings.Settings.DebugMenu;
             SelectedWebBrowserIndex = (int)userSettings.Settings.WebBrowser;
-            SelectedAppThemeIndex = (int)userSettings.Settings.ApplicationTheme;
             //SelectedScreensaverWaitIndex = (int)userSettings.Settings.ScreensaverIdleDelay;
             //IsScreensaverLockOnResume = userSettings.Settings.ScreensaverLockOnResume;
             IsKeepUIAwake = userSettings.Settings.KeepAwakeUI;
@@ -269,29 +268,6 @@ namespace Lively.UI.WinUI.ViewModels
         private RelayCommand _openWallpaperDirectory;
         public RelayCommand OpenWallpaperDirectory =>
             _openWallpaperDirectory ??= new RelayCommand(async () => await DesktopBridgeUtil.OpenFolder(userSettings.Settings.WallpaperDir));
-
-        //public event EventHandler<AppTheme> AppThemeChanged;
-        private int _selectedAppThemeIndex;
-        public int SelectedAppThemeIndex
-        {
-            get
-            {
-                return _selectedAppThemeIndex;
-            }
-            set
-            {
-                _selectedAppThemeIndex = value;
-                OnPropertyChanged();
-
-                //prevent running on startup etc.
-                if (userSettings.Settings.ApplicationTheme != (AppTheme)value)
-                {
-                    userSettings.Settings.ApplicationTheme = (AppTheme)value;
-                    UpdateSettingsConfigFile();
-                    //AppThemeChanged?.Invoke(this, userSettings.Settings.ApplicationTheme);
-                }
-            }
-        }
 
         private RelayCommand _themeBackgroundCommand;
         public RelayCommand ThemeBackgroundCommand => _themeBackgroundCommand ??= new RelayCommand(async () => await dialogService.ShowThemeDialog());

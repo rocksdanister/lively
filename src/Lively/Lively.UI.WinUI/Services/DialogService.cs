@@ -105,7 +105,7 @@ namespace Lively.UI.WinUI.Services
         {
             await new ContentDialog()
             {
-                Title = "Theme settings",
+                Title = i18n.GetString("AppTheme/Header"),
                 Content = new ThemeView(),
                 PrimaryButtonText = i18n.GetString("TextClose"),
                 DefaultButton = ContentDialogButton.Primary,
