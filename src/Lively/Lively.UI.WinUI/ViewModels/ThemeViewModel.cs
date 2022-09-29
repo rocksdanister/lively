@@ -125,6 +125,7 @@ namespace Lively.UI.WinUI.ViewModels
             filePicker.FileTypeFilter.Add(".jpeg");
             filePicker.FileTypeFilter.Add(".jpg");
             filePicker.FileTypeFilter.Add(".png");
+            filePicker.FileTypeFilter.Add(".gif");
             //filePicker.FileTypeFilter.Add(".lwt");
             var file = await filePicker.PickSingleFileAsync();
             if (file != null)

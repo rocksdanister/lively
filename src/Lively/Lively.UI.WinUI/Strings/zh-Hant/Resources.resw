@@ -1151,13 +1151,13 @@ Edge 是 Windows 10 的內建網頁繪製元件 (Webview)。</value>
     <value>顏色</value>
   </data>
   <data name="DescriptionDefault.Text" xml:space="preserve">
-    <value>Use system default</value>
+    <value>使用系統預設值</value>
   </data>
   <data name="DescriptionDynamicTheme.Text" xml:space="preserve">
     <value>Adapt to wallpaper</value>
   </data>
   <data name="TextDefault.Text" xml:space="preserve">
-    <value>Default</value>
+    <value>預設</value>
   </data>
   <data name="TextDynamicTheme.Text" xml:space="preserve">
     <value>Dynamic</value>

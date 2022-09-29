@@ -83,7 +83,7 @@
                     </InfoBar>
                 </controls:SettingsGroup>
 
-                <controls:SettingsGroup x:Uid="AudioGroup" Header="Audio">
+                <controls:SettingsGroup x:Uid="AudioGroup">
                     <controls:SettingExpander IsExpanded="True">
                         <controls:SettingExpander.Header>
                             <controls:Setting
