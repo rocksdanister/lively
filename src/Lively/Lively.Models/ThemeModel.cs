@@ -7,7 +7,7 @@ namespace Lively.Models
 {
     public class ThemeModel
     {
-        public ThemeModel(string file, string preview, ThemeType type, string name, string description, string contact)
+        public ThemeModel(string file, string preview, ThemeType type, string name, string description, string contact, string license)
         {
             Name = name;
             Description = description;
@@ -15,6 +15,7 @@ namespace Lively.Models
             File = file;
             Preview = preview;
             Type = type;
+            License = license;
         }
 
         public ThemeModel(ThemeModel model) 
@@ -33,6 +34,7 @@ namespace Lively.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public string Contact { get; set; }
+        public string License { get; set; }
         public string File { get; set; }
         public string Preview { get; set; }
         public ThemeType Type { get; set; }

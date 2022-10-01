@@ -1150,7 +1150,7 @@ Edge هو عرض الويب المدمج في windows 10.</value>
     <value>اللون</value>
   </data>
   <data name="DescriptionDefault.Text" xml:space="preserve">
-    <value>Use system default</value>
+    <value>استخدام الإعداد التلقائي للنظام</value>
   </data>
   <data name="DescriptionDynamicTheme.Text" xml:space="preserve">
     <value>Adapt to wallpaper</value>

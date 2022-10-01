@@ -170,7 +170,7 @@ Mục đích chính của Lively là để làm cho dàn PC của bạn đẹp h
     <value>Bạn có chắc chắn muốn xóa nền này khỏi thư viện?</value>
   </data>
   <data name="DragDropFile.Text" xml:space="preserve">
-    <value>Chỉ việc kéo thả file vào thư viện</value>
+    <value>Chỉ việc kéo thả tệp tin vào thư viện</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
     <value>Bạn đang mở một ứng dụng khác để làm hình nền.
@@ -1151,13 +1151,13 @@ Khi sắn sàng, đi tới http://localhost:portnumber để truy cập bảng �
     <value>Use system default</value>
   </data>
   <data name="DescriptionDynamicTheme.Text" xml:space="preserve">
-    <value>Adapt to wallpaper</value>
+    <value>Tie</value>
   </data>
   <data name="TextDefault.Text" xml:space="preserve">
-    <value>Default</value>
+    <value>Mặc định</value>
   </data>
   <data name="TextDynamicTheme.Text" xml:space="preserve">
-    <value>Dynamic</value>
+    <value>Động</value>
   </data>
   <data name="Theme.Label" xml:space="preserve">
     <value>Chủ đề</value>
