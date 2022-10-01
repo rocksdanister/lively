@@ -1150,16 +1150,16 @@ Edge ise windows 10 için geçerli web gösterim motorudur.</value>
     <value>Renk</value>
   </data>
   <data name="DescriptionDefault.Text" xml:space="preserve">
-    <value>Use system default</value>
+    <value>Sistem Varsayılanı Kullan</value>
   </data>
   <data name="DescriptionDynamicTheme.Text" xml:space="preserve">
-    <value>Adapt to wallpaper</value>
+    <value>Walpaper'a uyum sağlamak</value>
   </data>
   <data name="TextDefault.Text" xml:space="preserve">
-    <value>Default</value>
+    <value>Varsayılan</value>
   </data>
   <data name="TextDynamicTheme.Text" xml:space="preserve">
-    <value>Dynamic</value>
+    <value>Dinamik</value>
   </data>
   <data name="Theme.Label" xml:space="preserve">
     <value>Tema</value>

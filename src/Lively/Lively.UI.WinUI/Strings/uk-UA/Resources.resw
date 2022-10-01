@@ -124,7 +124,7 @@
     <value>Рівень гучності всіх шпалер.</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
-    <value>Исходный текст звук</value>
+    <value>Загальна гучність</value>
   </data>
   <data name="AudioGroup.Header" xml:space="preserve">
     <value>Аудіо</value>

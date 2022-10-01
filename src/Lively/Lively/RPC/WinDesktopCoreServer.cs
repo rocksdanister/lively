@@ -35,11 +35,13 @@ namespace Lively.RPC
 
         private readonly IDesktopCore desktopCore;
         private readonly IDisplayManager displayManager;
+        private readonly IUserSettingsService userSettings;
 
-        public WinDesktopCoreServer(IDesktopCore desktopCore, IDisplayManager displayManager)
+        public WinDesktopCoreServer(IDesktopCore desktopCore, IDisplayManager displayManager, IUserSettingsService userSettings)
         {
             this.desktopCore = desktopCore;
             this.displayManager = displayManager;
+            this.userSettings = userSettings;
         }
 
         public override Task<GetCoreStatsResponse> GetCoreStats(Empty _, ServerCallContext context)
@@ -322,10 +324,31 @@ namespace Lively.RPC
 
         public override async Task<Empty> TakeScreenshot(WallpaperScreenshotRequest request, ServerCallContext context)
         {
-            var wallpaper = desktopCore.Wallpapers.FirstOrDefault(x => request.MonitorId == x.Screen.DeviceId);
-            if (wallpaper is not null)
+            try
             {
-                await wallpaper.ScreenCapture(request.SavePath);
+                switch (userSettings.Settings.WallpaperArrangement)
+                {
+                    case WallpaperArrangement.per:
+                        {
+                            var wallpaper = desktopCore.Wallpapers.FirstOrDefault(x => request.MonitorId == x.Screen.DeviceId);
+                            if (wallpaper is not null)
+                            {
+                                await wallpaper.ScreenCapture(request.SavePath);
+                            }
+                        }
+                        break;
+                    case WallpaperArrangement.span:
+                    case WallpaperArrangement.duplicate:
+                        if (desktopCore.Wallpapers.Any())
+                        {
+                            await desktopCore.Wallpapers[0].ScreenCapture(request.SavePath);
+                        }
+                        break;
+                }
+            }
+            catch(Exception e)
+            {
+                Logger.Error(e);
             }
             return await Task.FromResult(new Empty());
         }
