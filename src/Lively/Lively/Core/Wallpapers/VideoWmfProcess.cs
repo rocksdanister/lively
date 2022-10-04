@@ -58,7 +58,7 @@ namespace Lively.Core.Wallpapers
                 FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "wmf", "Lively.PlayerWmf.exe"),
                 RedirectStandardInput = true,
                 RedirectStandardOutput = true,
-                RedirectStandardError = true,
+                RedirectStandardError = false,
                 UseShellExecute = false,
                 WorkingDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "wmf")
             };

@@ -19,8 +19,6 @@ namespace Lively.Services
         private Process processUI;
         private bool disposedValue;
         private readonly IDisplayManager displayManager;
-        private readonly string uiClientFileName;
-        private readonly bool uiOutputRedirect;
         private bool _isFirstRun = true;
         private NativeMethods.RECT prevWindowRect = new() { Left = 50, Top = 50, Right = 925, Bottom = 925 };
         private readonly string fileName, workingDirectory;
@@ -29,29 +27,20 @@ namespace Lively.Services
         {
             this.displayManager = displayManager;
 
-            uiClientFileName = Constants.ApplicationType.Client switch
-            {
-                ClientType.wpf => "Lively.UI.Wpf.exe",
-                ClientType.winui => "Lively.UI.WinUI.exe",
-                _ => throw new NotImplementedException(),
-            };
-            //winui source not using Debug.Writeline() for debugging.. wtf?
-            uiOutputRedirect = Constants.ApplicationType.Client != ClientType.winui;
-
             if (UAC.IsElevated)
             {
                 //Ref: https://github.com/rocksdanister/lively/issues/1060
-                Logger.Warn("Process is running elevated, winui may not work...");
+                Logger.Warn("Process is running elevated, UI may not function properly.");
             }
 
             if (Constants.ApplicationType.IsMSIX)
             {
-                fileName = Path.Combine(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\")), uiClientFileName);
+                fileName = Path.Combine(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\")), "Lively.UI.WinUI.exe");
                 workingDirectory = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\"));
             }
             else
             {
-                fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "UI", uiClientFileName);
+                fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "UI", "Lively.UI.WinUI.exe");
                 workingDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "UI");
             }
         }
@@ -79,8 +68,8 @@ namespace Lively.Services
                         {
                             FileName = fileName,
                             RedirectStandardInput = true,
-                            RedirectStandardOutput = uiOutputRedirect,
-                            RedirectStandardError = uiOutputRedirect,
+                            RedirectStandardOutput = false,
+                            RedirectStandardError = false,
                             UseShellExecute = false,
                             WorkingDirectory = workingDirectory,
                         },
@@ -89,10 +78,9 @@ namespace Lively.Services
                     processUI.Exited += Proc_UI_Exited;
                     processUI.OutputDataReceived += Proc_OutputDataReceived;
                     processUI.Start();
-                    if (uiOutputRedirect)
-                    {
-                        processUI.BeginOutputReadLine();
-                    }
+                    //winui writing debug information into output stream :/
+                    //processUI.BeginOutputReadLine();
+                    //processUI.BeginErrorReadLine();
                 }
                 catch (Exception e)
                 {
