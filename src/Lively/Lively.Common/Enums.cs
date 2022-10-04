@@ -244,12 +244,6 @@ namespace Lively.Common
         wallpaperFluent,
     }
 
-    public enum ClientType
-    {
-        wpf,
-        winui
-    }
-
     public enum UpdateWallpaperType
     {
         changed,

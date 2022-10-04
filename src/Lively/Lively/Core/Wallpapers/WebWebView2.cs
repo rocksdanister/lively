@@ -68,7 +68,7 @@ namespace Lively.Core.Wallpapers
                 FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "wv2", "Lively.PlayerWebView2.exe"),
                 RedirectStandardInput = true,
                 RedirectStandardOutput = true,
-                RedirectStandardError = true,
+                RedirectStandardError = false,
                 UseShellExecute = false,
                 WorkingDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "wv2")
             };
