@@ -283,7 +283,7 @@ Si cela ne fonctionne toujours pas, fermez et relancez Lively / redémarrez Wind
     <value>Tous les fichiers</value>
   </data>
   <data name="Application.Header" xml:space="preserve">
-    <value>Applications</value>
+    <value>Application</value>
   </data>
   <data name="Attribution.Header" xml:space="preserve">
     <value>Attribution</value>

@@ -208,7 +208,7 @@
     <value>Siz Lively proqramının beta (developer) quruluşuna keçmək üzrəsiniz. Yeniləmələr tez-tez olacaq və baqlar ola bilər!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
-    <value>System-tray icon visibility, lively will continue to run with the icon hidden</value>
+    <value>Sistem tepsisi simgesinin görünməsi, canlı simvol gizlədilmiş şəkildə işləməyə davam edəcək</value>
   </data>
   <data name="HideSysTray.Header" xml:space="preserve">
     <value>Sistem tepsisi nişanı</value>
@@ -247,7 +247,7 @@
     <value>Divar kağızı oxutmaq üçün Lively arxa planda işləməlidir.</value>
   </data>
   <data name="Startup.Header" xml:space="preserve">
-    <value>Start with Windows</value>
+    <value>Windows ilə başlayın</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
     <value>Əlavə et</value>
@@ -403,7 +403,7 @@
     <value>Bütün Proseslər</value>
   </data>
   <data name="PauseAlgorithmTypeExclusiveMode.Content" xml:space="preserve">
-    <value>Direct3D</value>
+    <value>PauseAlqoritmiNövüEksklüzivMode.Məzmun</value>
   </data>
   <data name="PauseAlgorithmTypeForegroundProcess.Content" xml:space="preserve">
     <value>Ön Proses</value>
@@ -475,7 +475,7 @@
     <value>Teqlər</value>
   </data>
   <data name="TaskbarThemeBlur.Content" xml:space="preserve">
-    <value>Blur</value>
+    <value>Tapşırıq çubuğuMövzuBlur.Məzmun</value>
   </data>
   <data name="TaskbarThemeClear.Content" xml:space="preserve">
     <value>Təmiz</value>

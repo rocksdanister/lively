@@ -925,7 +925,7 @@ Edge هو عرض الويب المدمج في windows 10.</value>
     <value>داكن</value>
   </data>
   <data name="AppThemeLight.Content" xml:space="preserve">
-    <value>فاتح</value>
+    <value>ابيض</value>
   </data>
   <data name="AppThemeSystem.Content" xml:space="preserve">
     <value>النظام</value>
@@ -1075,7 +1075,7 @@ Edge هو عرض الويب المدمج في windows 10.</value>
     <value>آخر</value>
   </data>
   <data name="ReportWallpaperSpam.Content" xml:space="preserve">
-    <value>رسائل غير مرغوب بها</value>
+    <value>رسائل متكررة</value>
   </data>
   <data name="ReportWallpaperViolence.Content" xml:space="preserve">
     <value>العري أو العنف</value>
@@ -1093,19 +1093,19 @@ Edge هو عرض الويب المدمج في windows 10.</value>
     <value>إرسال</value>
   </data>
   <data name="GalleryAccountDeleteConfirm.Text" xml:space="preserve">
-    <value>يرجى تأكيد هذا الإجراء لأنه (لا يمكن) التراجع عنه</value>
+    <value>يرجى تأكيد هذا الإجراء لأنه لا يمكن التراجع عنه</value>
   </data>
   <data name="GalleryAccountDeleteFail.Text" xml:space="preserve">
     <value>فشل حذف الحساب ، يرجى المحاولة مرة أخرى في وقت لاحق</value>
   </data>
   <data name="TextConfirmCancel.Text" xml:space="preserve">
-    <value>هل تريد الإلغاء؟</value>
+    <value>هل تريد إلغاءه؟</value>
   </data>
   <data name="TextWait.Text" xml:space="preserve">
-    <value>انتظر</value>
+    <value>يرجى الانتظار</value>
   </data>
   <data name="TitleDownloadProgress.Text" xml:space="preserve">
-    <value>جاري التنزيل </value>
+    <value>جاري التحميل</value>
   </data>
   <data name="TextContributors.Text" xml:space="preserve">
     <value>المساهمين</value>
@@ -1117,7 +1117,7 @@ Edge هو عرض الويب المدمج في windows 10.</value>
     <value>مشاركة خلفيات</value>
   </data>
   <data name="ExportWallpaperGallery.Text" xml:space="preserve">
-    <value>تحميل المعرض</value>
+    <value>تحميل المَعْرِض</value>
   </data>
   <data name="ExportWallpaperLink.Text" xml:space="preserve">
     <value>نسخ الرابط</value>
@@ -1153,7 +1153,7 @@ Edge هو عرض الويب المدمج في windows 10.</value>
     <value>استخدام الإعداد التلقائي للنظام</value>
   </data>
   <data name="DescriptionDynamicTheme.Text" xml:space="preserve">
-    <value>Adapt to wallpaper</value>
+    <value>التكيف مع الخلفية</value>
   </data>
   <data name="TextDefault.Text" xml:space="preserve">
     <value>Default</value>
@@ -1162,6 +1162,6 @@ Edge هو عرض الويب المدمج في windows 10.</value>
     <value>Dynamic</value>
   </data>
   <data name="Theme.Label" xml:space="preserve">
-    <value>سمة</value>
+    <value>خلفية</value>
   </data>
 </root>
