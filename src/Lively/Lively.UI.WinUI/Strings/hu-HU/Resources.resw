@@ -195,7 +195,7 @@ Csak akkor folytasd, ha ez az alkalmazás egy megbízható forrásból származi
     <value>Az előző hátter(ek) visszaállítása, kérem várjon...</value>
   </data>
   <data name="DescriptionScreenLayout" xml:space="preserve">
-    <value>Válassz képernyőt</value>
+    <value>Válassz kijelzőt</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
     <value>Egy új verziója elérhető a programnak!</value>
@@ -210,7 +210,7 @@ Csak akkor folytasd, ha ez az alkalmazás egy megbízható forrásból származi
     <value>Your Windows N/KN version will require the download of additional codecs to support video playback in wallpapers.</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
-    <value>Mutasson támogatást a fejlesztőknek egy kávé megvásárlásával</value>
+    <value>Támogassa a fejlesztőt egy kávéval</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
     <value>A Lively béta (fejlesztői) verziójára készül.
@@ -501,13 +501,13 @@ Ha még mindig nem működik, zárd be &amp; indítsd el a Livelyt újra/ indít
     <value>Címkék</value>
   </data>
   <data name="TaskbarThemeBlur.Content" xml:space="preserve">
-    <value>Blur</value>
+    <value>Elmosódás</value>
   </data>
   <data name="TaskbarThemeClear.Content" xml:space="preserve">
-    <value>Clear</value>
+    <value>Átlátszó</value>
   </data>
   <data name="TaskbarThemeColor.Content" xml:space="preserve">
-    <value>Color</value>
+    <value>Szín</value>
   </data>
   <data name="TaskbarThemeFluent.Content" xml:space="preserve">
     <value>Fluent</value>
@@ -561,7 +561,7 @@ Ha még mindig nem működik, zárd be &amp; indítsd el a Livelyt újra/ indít
     <value>Videó</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>Enter optional commandline arguments</value>
+    <value>Opcionális parancssori értékek</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>Kitölt</value>
@@ -766,7 +766,7 @@ Az Edge a Windows 10 beépített WebView-ja (Lehetővé teszi, hogy webes tartal
     <value>Adja meg az URL-t</value>
   </data>
   <data name="ExportLogs.Header" xml:space="preserve">
-    <value>Log File</value>
+    <value>Naplófájl</value>
   </data>
   <data name="TitleGeneral" xml:space="preserve">
     <value>Általános</value>
@@ -811,10 +811,10 @@ Az Edge a Windows 10 beépített WebView-ja (Lehetővé teszi, hogy webes tartal
     <value>Kérem várjon...</value>
   </data>
   <data name="PowerSavingModePower.Header" xml:space="preserve">
-    <value>When on Battery Saver</value>
+    <value>Akkumulátor-kímélő módban</value>
   </data>
   <data name="RemoteDesktopPower.Header" xml:space="preserve">
-    <value>When on Remote Desktop</value>
+    <value>Távoli asztal használata közben</value>
   </data>
   <data name="ReportBug.Header" xml:space="preserve">
     <value>Hibajelentés</value>
@@ -829,7 +829,7 @@ Az Edge a Windows 10 beépített WebView-ja (Lehetővé teszi, hogy webes tartal
     <value>Képernyőkímélő</value>
   </data>
   <data name="TitleScreensaverLockOnResume" xml:space="preserve">
-    <value>On resume, display logon screen</value>
+    <value>Számítógép zárolása</value>
   </data>
   <data name="TitleSelectFile" xml:space="preserve">
     <value>File kiválasztása</value>
@@ -1118,7 +1118,7 @@ Az Edge a Windows 10 beépített WebView-ja (Lehetővé teszi, hogy webes tartal
     <value>Háttérkép megosztása</value>
   </data>
   <data name="ExportWallpaperGallery.Text" xml:space="preserve">
-    <value>Galéria feltöltése</value>
+    <value>Feltöltés galériába</value>
   </data>
   <data name="ExportWallpaperLink.Text" xml:space="preserve">
     <value>Hivatkozás másolása</value>
@@ -1127,40 +1127,40 @@ Az Edge a Windows 10 beépített WebView-ja (Lehetővé teszi, hogy webes tartal
     <value>Háttérkép testreszabása</value>
   </data>
   <data name="TextCloseWallpapers" xml:space="preserve">
-    <value>Háttérkép</value>
+    <value>Háttérképek bezárása</value>
   </data>
   <data name="TitleChooseApplication.Text" xml:space="preserve">
-    <value>Alkalmazások választása</value>
+    <value>Válassz alkalmazást</value>
   </data>
   <data name="WallpaperInstallSize.Text" xml:space="preserve">
     <value>Méret</value>
   </data>
   <data name="PluginNotFound.Message" xml:space="preserve">
-    <value>Please install the required plugin</value>
+    <value>Telepítsd a szükséges bővítményt</value>
   </data>
   <data name="PluginNotFound.Title" xml:space="preserve">
-    <value>Plugin not found</value>
+    <value>Bővítmény nem található</value>
   </data>
   <data name="UpdateCompleted.Text" xml:space="preserve">
-    <value>Update complete</value>
+    <value>Frissítés kész</value>
   </data>
   <data name="UpdateWhatsNew.Text" xml:space="preserve">
-    <value>Check out what's new</value>
+    <value>Nézd meg az újdonságokat</value>
   </data>
   <data name="AppThemeColor.Header" xml:space="preserve">
-    <value>Color</value>
+    <value>Szín</value>
   </data>
   <data name="DescriptionDefault.Text" xml:space="preserve">
-    <value>Use system default</value>
+    <value>Rendszerbeállítás használata</value>
   </data>
   <data name="DescriptionDynamicTheme.Text" xml:space="preserve">
-    <value>Adapt to wallpaper</value>
+    <value>Igazodva a háttérhez</value>
   </data>
   <data name="TextDefault.Text" xml:space="preserve">
-    <value>Default</value>
+    <value>Alapértelmezett</value>
   </data>
   <data name="TextDynamicTheme.Text" xml:space="preserve">
-    <value>Dynamic</value>
+    <value>Dinamikus</value>
   </data>
   <data name="Theme.Label" xml:space="preserve">
     <value>Téma</value>

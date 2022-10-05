@@ -21,6 +21,7 @@ using Windows.ApplicationModel.Resources;
 
 namespace Lively.UI.WinUI.ViewModels
 {
+    //TODO: https://github.com/microsoft/microsoft-ui-xaml/issues/6394 (accent color.)
     public partial class ThemeViewModel : ObservableObject
     {
         private readonly ResourceLoader i18n;
@@ -42,11 +43,11 @@ namespace Lively.UI.WinUI.ViewModels
             Themes.Add(new ThemeModel() { Name = i18n.GetString("TextDefault/Text"), Description = i18n.GetString("DescriptionDefault/Text"), Preview = "ms-appx:///Assets/icons8-application-window-96.png", IsEditable = false });
             Themes.Add(new ThemeModel() { Name = i18n.GetString("TextDynamicTheme/Text"), Description = i18n.GetString("DescriptionDynamicTheme/Text"), Preview = "ms-appx:///Assets/icons8-wallpaper-96.png", IsEditable = false });
             //User collection
-            foreach (var item in Directory.GetDirectories(Constants.CommonPaths.ThemeDir, "*", SearchOption.TopDirectoryOnly))
+            foreach (var item in new DirectoryInfo(Constants.CommonPaths.ThemeDir).GetDirectories("*.*", SearchOption.TopDirectoryOnly).OrderBy(t => t.LastWriteTime))
             {
                 try
                 {
-                    var theme = themeFactory.CreateTheme(item);
+                    var theme = themeFactory.CreateTheme(item.FullName);
                     Themes.Add(theme);
                 }
                 catch { }

@@ -7,7 +7,7 @@ namespace Lively.Models
 {
     public class ThemeModel
     {
-        public ThemeModel(string file, string preview, ThemeType type, string name, string description, string contact, string license)
+        public ThemeModel(string file, string preview, ThemeType type, string name, string description, string contact, string license, string accentColor)
         {
             Name = name;
             Description = description;
@@ -16,6 +16,7 @@ namespace Lively.Models
             Preview = preview;
             Type = type;
             License = license;
+            AccentColor = accentColor;
         }
 
         public ThemeModel(ThemeModel model) 
@@ -26,6 +27,8 @@ namespace Lively.Models
             Preview = model.Preview;
             Type = model.Type;
             File = model.File;
+            License = model.License;
+            AccentColor = model.AccentColor;
         }
 
         public ThemeModel() { }
@@ -37,6 +40,10 @@ namespace Lively.Models
         public string License { get; set; }
         public string File { get; set; }
         public string Preview { get; set; }
+        /// <summary>
+        /// Accent color in hex
+        /// </summary>
+        public string AccentColor { get; set; }
         public ThemeType Type { get; set; }
 
         [JsonIgnore]

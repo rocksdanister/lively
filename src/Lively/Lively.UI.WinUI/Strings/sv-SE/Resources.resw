@@ -964,7 +964,7 @@ Windows Utforskaren har startat om två gånger under de senaste 30 sekunderna! 
     <value>Standard</value>
   </data>
   <data name="Screensaver.Description" xml:space="preserve">
-    <value>How screensaver is applied to connected to display devices</value>
+    <value>Hur skärmsläckare appliceras på anslutna bildskärmsenheter</value>
   </data>
   <data name="Screensaver.Header" xml:space="preserve">
     <value>Typ av skärmsläckare</value>
