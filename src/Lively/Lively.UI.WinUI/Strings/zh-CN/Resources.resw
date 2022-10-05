@@ -1153,16 +1153,16 @@ Edge 是 Windows 10 内置的浏览器。</value>
     <value>颜色</value>
   </data>
   <data name="DescriptionDefault.Text" xml:space="preserve">
-    <value>使用系统默认</value>
+    <value>使用系统默认设置</value>
   </data>
   <data name="DescriptionDynamicTheme.Text" xml:space="preserve">
-    <value>Adapt to wallpaper</value>
+    <value>调整至壁纸</value>
   </data>
   <data name="TextDefault.Text" xml:space="preserve">
     <value>默认</value>
   </data>
   <data name="TextDynamicTheme.Text" xml:space="preserve">
-    <value>Dynamic</value>
+    <value>动态</value>
   </data>
   <data name="Theme.Label" xml:space="preserve">
     <value>主题</value>
