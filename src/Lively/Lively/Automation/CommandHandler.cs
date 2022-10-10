@@ -453,8 +453,11 @@ namespace Lively.Automation
                 //use primary screen if none found..
                 var screen = opts.Monitor != null ?
                     displayManager.DisplayMonitors.FirstOrDefault(x => x.Index == ((int)opts.Monitor)) : displayManager.PrimaryDisplayMonitor;
-                var wallpaper = desktopCore.Wallpapers.FirstOrDefault(x => x.Screen.Equals(screen));
-                _ = wallpaper?.ScreenCapture(opts.File);
+                if (screen is not null)
+                {
+                    var wallpaper = desktopCore.Wallpapers.FirstOrDefault(x => x.Screen.Equals(screen));
+                    _ = wallpaper?.ScreenCapture(opts.File);
+                }
             }
             return 0;
         }
