@@ -183,7 +183,7 @@
     <value>يرجى إعادة تشغيل البرنامج حتى تصبح الإعدادات نافذة المفعول.</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
-    <value>يرجى التوقف قبل المتابعة.</value>
+    <value>يرجى التوقف قبل المتابعة</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
     <value>اضغط لبدء التسجيل</value>
@@ -1156,10 +1156,10 @@ Edge هو عرض الويب المدمج في windows 10.</value>
     <value>التكيف مع الخلفية</value>
   </data>
   <data name="TextDefault.Text" xml:space="preserve">
-    <value>Default</value>
+    <value>افتراضي</value>
   </data>
   <data name="TextDynamicTheme.Text" xml:space="preserve">
-    <value>Dynamic</value>
+    <value>متغير</value>
   </data>
   <data name="Theme.Label" xml:space="preserve">
     <value>خلفية</value>

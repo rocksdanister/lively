@@ -118,121 +118,121 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AudioFocused.Content" xml:space="preserve">
-    <value>Reproduzir áudio somente quando a área de trabalho estiver focada</value>
+    <value>Reproduzir áudio somente quando o ambiente de trabalho estiver focado</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
-    <value>Volume level of all wallpapers.</value>
+    <value>Volume geral de todos os papeis de parede</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
-    <value>Master Volume</value>
+    <value>Volume</value>
   </data>
   <data name="AudioGroup.Header" xml:space="preserve">
     <value>Áudio</value>
   </data>
   <data name="CommunityPage.Content" xml:space="preserve">
-    <value>Fórum de Discussão Online</value>
+    <value>Fórum online de discussão</value>
   </data>
   <data name="DocumentationPage.Content" xml:space="preserve">
     <value>Documentação da API e ajuda</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
-    <value>A pessoa encontrou um erro fatal.
+    <value>A aplicação encontrou um erro fatal.
 
-O Windows Explorer reiniciou duas vezes nos últimos 30 segundos! Este pode ser um conflito entre o Lively e outro software de personalização da área de trabalho ou do Windows. Para evitar mais problemas, todos os papéis de parede foram encerrados.</value>
+O Explorador do Windows reiniciou duas vezes nos últimos 30 segundos! Este pode ser um conflito entre a aplicação e outro software de personalização da área de trabalho, ou do Windows. Para evitar mais problemas, todos os papéis de parede foram encerrados.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
-    <value>Incompatible program found, taskbar theming disabled.</value>
+    <value>Programa incompatível encontrado, animação da barra de tarefas foi desativada</value>
   </data>
   <data name="OfficialWebpage.Content" xml:space="preserve">
-    <value>Página oficial do Lively Wallpaper</value>
+    <value>Página da internet oficial do Lively Wallpaper</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
-    <value>A maioria das telas modernas LCD e LED não sofrem com o problema de queimadura, pelo que qualquer papel de parede pode ser usado como um protetor de tela.
+    <value>A maioria das telas modernas LCD e LED não sofrem com o problema de burn-in, pelo que qualquer papel de parede pode ser usado como um protetor de tela.
 
-Para as telas OLED, Plasma ou CRT que são susceptíveis de sofrer com o problema de queimadura é aconselhável utilizar papel de parede com movimento regular e um tema escuro global que supostamente irá atenuar o efeito de queimadura, mas este recurso não está testado e a sua eficácia não pode ser garantida.
-
-O principal propósito do protetor de tela do Lively é adicionar outra camada de personalização ao pc, utilize o protetor de tela como proteção ao problema de queimadura por sua conta e risco!</value>
+Para as telas OLED, Plasma ou CRT que são susceptíveis de sofrer com o problema de burn-in é aconselhável utilizar um papel de parede com movimento regular e um tema escuro global que deverá atenuar o efeito de burn-in, no entanto a eficácia deste recurso não está testada, e a mesma não está garantida.
+O principal propósito do protetor de tela do Lively é adicionar outra camada de personalização ao computador, use por sua conta e risco!</value>
   </data>
   <data name="ReportBugPage.Content" xml:space="preserve">
-    <value>Relatar um problema com o software</value>
+    <value>Relatar um problema com o programa</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
-    <value>Seleccione um ficheiro ou especifique a hiperligação de um website para usar como fundo.</value>
+    <value>Escolha um ficheiro</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
     <value>Definir o comportamento da reprodução do(s) fundo(s) baseado na aplicação a correr</value>
   </data>
   <data name="DescriptionCancelQuestion" xml:space="preserve">
-    <value>De certeza que pretende cancelar?</value>
+    <value>Tem a certeza de que pretende cancelar?</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
-    <value>De certeza que quer apagar permanentemente o fundo do disco?</value>
+    <value>Tem a certeza de que deseja apagar permanentemente este papel de parede do seu disco?</value>
   </data>
   <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
-    <value>De certeza que quer apagar este fundo da sua biblioteca?</value>
+    <value>Tem a certeza de que pretende eliminar este papel de parede da sua biblioteca?</value>
   </data>
   <data name="DragDropFile.Text" xml:space="preserve">
-    <value>Simplesmente arraste e largue ficheiros na Biblioteca.</value>
+    <value>Arraste e largue os ficheiros aqui</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
-    <value>Está a abrir uma aplicação externa como fundo.
-Aplicações maliciosas podem conter malware, vírus.. e danificar o sistema.
+    <value>Está a abrir uma aplicação externa como papel de parede.
+Aplicações maliciosas podem conter malware, vírus... Estes também podem danificar o sistema.
 Apenas prossiga se a aplicação é proveniente de uma fonte confiável.</value>
   </data>
   <data name="MinimizedTray.Text" xml:space="preserve">
-    <value>Estou minimizado na área de notificação, clique com o botão direito no lively para mais opções.</value>
+    <value>O Lively está minimizado na área de notificação, clique com o botão direito na aplicação para visualizar mais opções.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
-    <value>Por favor reinicie o Lively para que as definições tenham efeito.</value>
+    <value>Por favor, reinicie a aplicação para que as definições tenham efeito</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
-    <value>Please stop before proceeding.</value>
+    <value>Por favor, pare antes de prosseguir</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
     <value>Pressione para iniciar a gravação.</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
-    <value>A restaurar o(s) fundo(s) anterior(es)..</value>
+    <value>A restaurar o(s) fundos anteriores, por favor aguarde...</value>
   </data>
   <data name="DescriptionScreenLayout" xml:space="preserve">
-    <value>Escolher Ecrã</value>
+    <value>Escolher tela</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
-    <value>Uma nova versão está disponível!</value>
+    <value>Uma nova versão da aplicação está disponível!</value>
   </data>
   <data name="DescriptionWebpageLoad" xml:space="preserve">
     <value>Insira o link da página web a carregar, links do Shadertoy.com são suportados</value>
   </data>
   <data name="DescriptionWelcomeWizard" xml:space="preserve">
-    <value>Este ajudante irá guia-lo na configuração inicial do Lively.</value>
+    <value>Este ajudante irá guiá-lo na configuração inicial do Lively</value>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>Your Windows N/KN version will require the download of additional codecs to support video playback in wallpapers.</value>
+    <value>A sua versão N/KN do windows necessitará de baixar codecs adicionais para suportar retrocesso de videos nos papéis de parede</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
-    <value>Mostre apoio comprando um café ao desenvolvedor</value>
+    <value>Demonstre apoio comprando um café ao desenvolvedor</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
-    <value>Você está prestes a mudar para versão beta (desenvolvedor) do Lively.
-As atualizações serão frequentes e podem conter erros!</value>
+    <value>Está prestes a mudar para versão beta (desenvolvedor) do Lively.
+As atualizações serão frequentes e poderão conter erros!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
-    <value>Visibilidade do ícone na bandeja de sistema, o Lively continuará em execução com o ícone oculto</value>
+    <value>O icone estará na bandeja do sistema, o Lively continuará em execução com o ícone oculto</value>
   </data>
   <data name="HideSysTray.Header" xml:space="preserve">
     <value>Ícone de bandeja de sistema</value>
   </data>
   <data name="Language.Description" xml:space="preserve">
-    <value>O Lively irá reiniciar para aplicar a nova língua.</value>
+    <value>O Lively irá reiniciar para aplicar o novo idioma</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
-    <value>Requer reinício da app</value>
+    <value>Idioma</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
-    <value>Atualização falhada. Tente descarregar o instalador novamente</value>
+    <value>Atualizaão mal-sucedida Tente descarregar o instalador novamente:
+https://github.com/rocksdanister/lively/releases</value>
   </data>
   <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
-    <value>Ficheiro de fundo danificado, tente descarregar novamente.</value>
+    <value>Ficheiro do papel de parede danificado, tente descarregar novamente</value>
   </data>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
     <value>Oops... Parece que algo correu mal :(
@@ -1153,16 +1153,16 @@ Edge é o webview integrado do windows 10.</value>
     <value>Cor</value>
   </data>
   <data name="DescriptionDefault.Text" xml:space="preserve">
-    <value>Use system default</value>
+    <value>Usar padrão do sistema</value>
   </data>
   <data name="DescriptionDynamicTheme.Text" xml:space="preserve">
-    <value>Adapt to wallpaper</value>
+    <value>Adaptar ao papel de parede</value>
   </data>
   <data name="TextDefault.Text" xml:space="preserve">
-    <value>Default</value>
+    <value>Padrão</value>
   </data>
   <data name="TextDynamicTheme.Text" xml:space="preserve">
-    <value>Dynamic</value>
+    <value>Dinâmico</value>
   </data>
   <data name="Theme.Label" xml:space="preserve">
     <value>Tema</value>

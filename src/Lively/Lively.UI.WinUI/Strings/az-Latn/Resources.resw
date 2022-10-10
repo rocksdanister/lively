@@ -718,7 +718,7 @@
     <value>İcma</value>
   </data>
   <data name="Debug.Header" xml:space="preserve">
-    <value>Debug</value>
+    <value>Sazlama</value>
   </data>
   <data name="TitleDeleteConfirmation" xml:space="preserve">
     <value>Silinməni təsdiqləyin</value>
@@ -733,7 +733,7 @@
     <value>Dokumentasiya</value>
   </data>
   <data name="EnterUrl.Header" xml:space="preserve">
-    <value>Enter URL</value>
+    <value>URL daxil edin</value>
   </data>
   <data name="ExportLogs.Header" xml:space="preserve">
     <value>Log Faylı</value>
@@ -763,7 +763,7 @@
     <value>Lockscreen Picture</value>
   </data>
   <data name="TitleMisc" xml:space="preserve">
-    <value>Misc</value>
+    <value>Müxtəlif</value>
   </data>
   <data name="TitleMute" xml:space="preserve">
     <value>Sustur</value>
