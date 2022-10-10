@@ -1151,10 +1151,10 @@ Quando sei pronto, vai a: http://localhost:portnumber per accedere al portale de
     <value>Colore</value>
   </data>
   <data name="DescriptionDefault.Text" xml:space="preserve">
-    <value>Usa le impostazioni predefinite di sistema</value>
+    <value>Utilizzare Impostazioni Predefinite di Sistema</value>
   </data>
   <data name="DescriptionDynamicTheme.Text" xml:space="preserve">
-    <value>Si adatta allo sfondo</value>
+    <value>Adatta allo Sfondo</value>
   </data>
   <data name="TextDefault.Text" xml:space="preserve">
     <value>Predefinito</value>

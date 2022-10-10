@@ -141,7 +141,7 @@
 O Explorador do Windows reiniciou duas vezes nos últimos 30 segundos! Isso pode ser um conflito entre o Lively e outro software de customização ou o Windows. Para evitar maiores problemas, todos os planos de fundo foram encerrados.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
-    <value>Programa incompatível encontrado, tema da barra de tarefas desativado</value>
+    <value>Programa incompatível detectado, o tema da barra de tarefas foi desativado</value>
   </data>
   <data name="OfficialWebpage.Content" xml:space="preserve">
     <value>Site oficial do Lively Wallpaper</value>
@@ -149,7 +149,7 @@ O Explorador do Windows reiniciou duas vezes nos últimos 30 segundos! Isso pode
   <data name="DescOledScreensaverNotice" xml:space="preserve">
     <value>A maioria das telas LCD e LED não sofrem de burn-in e portanto qualquer plano de fundo pode ser usado como protetor de tela.
 
-Para telas OLED, Plasma ou CRT que estão sujeitos a burn-in, é recomendável usar um plano de fundo com movimento regular e aparência escura no geral, que deve reduzir o burn-in mas esta função não foi testada e sua efetividade não pode ser garantida.
+Para telas OLED, Plasma ou CRT, que estão sujeitas a burn-in, é recomendável usar um plano de fundo com movimento regular e aparência escura no geral, que deve reduzir o burn-in, mas esta função não foi testada e sua efetividade não pode ser garantida.
 
 O foco principal dos protetores de tela do Lively é adicionar mais uma camada de customização em seu PC, use protetores de tela como prevenção ao burn-in por sua conta e risco!</value>
   </data>
@@ -180,7 +180,7 @@ Aplicativos maliciosos podem conter malware, vírus... que podem danificar o seu
 Prossiga apenas se confia na fonte do aplicativo.</value>
   </data>
   <data name="MinimizedTray.Text" xml:space="preserve">
-    <value>Lively está minimizado na barra de tarefas, clique com o botão direito no ícone do lively para continuar.</value>
+    <value>Lively está minimizado na barra de tarefas, clique com o botão direito no ícone do Lively para continuar</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
     <value>Reinicie o Lively para que as configurações tenham efeito</value>
