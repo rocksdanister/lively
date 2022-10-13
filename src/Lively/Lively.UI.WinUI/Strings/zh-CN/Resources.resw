@@ -124,10 +124,10 @@
     <value>所有壁纸的音量大小</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
-    <value>主音量</value>
+    <value>音量</value>
   </data>
   <data name="AudioGroup.Header" xml:space="preserve">
-    <value>音频</value>
+    <value>声音</value>
   </data>
   <data name="CommunityPage.Content" xml:space="preserve">
     <value>在线论坛</value>
@@ -136,28 +136,28 @@
     <value>API 文档和帮助</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
-    <value>Lively 遇到了一个致命错误。
+    <value>Lively 出现了一个严重错误。
 
-Windows 资源管理器在过去 30 秒内重新启动了两次！这可能是 Lively 与其他桌面自定义软件或 Windows 之间的冲突。为避免进一步的问题，所有壁纸都将停止。</value>
+Windows 资源管理器在过去 30 秒内重新启动了两次！这可能是 Lively 与 Windows 或者其他桌面个性化软件之间出现冲突。为避免更多问题，所有壁纸都将终止。</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
-    <value>发现不兼容的程序，任务栏主题设计将会被禁用。</value>
+    <value>发现不兼容的程序，已停用任务栏个性化主题。</value>
   </data>
   <data name="OfficialWebpage.Content" xml:space="preserve">
     <value>Lively Wallpaper 的官方网页</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
-    <value>大多数现代 LCD 和 LED 显示器都不会出现老化问题，因此任何墙纸都可以用作屏幕保护程序。
+    <value>大多数现代 LCD 和 LED 显示器都不会出现烧屏问题，因此任何墙纸都可以用作其屏幕保护程序。
 
-对于容易老化的 OLED、等离子或 CRT 显示器，建议使用有规律运动的墙纸和整体深色主题，以减轻老化，但此功能未经测试，无法保证其有效性。
+对于容易烧屏的 OLED、等离子或 CRT 显示器，建议使用有规律运动的墙纸和整体为深色的主题，以缓解烧屏现象，但此功能未经测试，无法保证其有效性。
 
-Lively 屏幕保护程序的主要目的是为您的电脑添加另一层自定义，使用屏幕保护程序作为老化保护，风险自负！</value>
+Lively的屏幕保护程序的主要目的是为您的电脑增加另一层个性化功能，若使用屏幕保护程序作为防烧屏保护则风险自负!</value>
   </data>
   <data name="ReportBugPage.Content" xml:space="preserve">
     <value>报告软件问题</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
-    <value>选择文件</value>
+    <value>选择一个文件</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
     <value>根据正在运行的应用程序设置壁纸播放行为</value>
@@ -169,15 +169,15 @@ Lively 屏幕保护程序的主要目的是为您的电脑添加另一层自定�
     <value>您确定要从磁盘上永久删除该壁纸吗？</value>
   </data>
   <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
-    <value>您确定要从图库中删除这张壁纸吗？</value>
+    <value>您确定要从库中删除这张壁纸吗？</value>
   </data>
   <data name="DragDropFile.Text" xml:space="preserve">
-    <value>拖曳文件至图库。</value>
+    <value>只需将文件拖到这里</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
-    <value>请注意, 您将使用一个外部应用程序作为壁纸。
-恶意应用程序可能趁机注入木马、病毒..这将损害您的系统。
-仅当您信任此应用程序时，方可继续。</value>
+    <value>你正在打开一个外部应用程序作为墙纸。
+恶意的应用程序可能携带恶意软件、病毒等，并对你的系统造成伤害。
+如果该应用来自可信赖来源，方可继续。</value>
   </data>
   <data name="MinimizedTray.Text" xml:space="preserve">
     <value>Lively 已被最小化到系统托盘，右键单击 Lively 的图标以获取更多选项。</value>
@@ -186,64 +186,64 @@ Lively 屏幕保护程序的主要目的是为您的电脑添加另一层自定�
     <value>请重新启动 Lively 以使设置生效。</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
-    <value>请先停止，然后再继续。</value>
+    <value>请先关闭后再继续</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
-    <value>按下以开始记录</value>
+    <value>按下开始录制</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
-    <value>正在恢复以前的壁纸..</value>
+    <value>正在恢复以前的壁纸，请稍候...</value>
   </data>
   <data name="DescriptionScreenLayout" xml:space="preserve">
-    <value>选择显示屏</value>
+    <value>选择显示器</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
-    <value>有新版本可用！</value>
+    <value>软件有新版本可用！</value>
   </data>
   <data name="DescriptionWebpageLoad" xml:space="preserve">
     <value>输入要加载的网站链接，支持 shadertoy.com 着色器链接</value>
   </data>
   <data name="DescriptionWelcomeWizard" xml:space="preserve">
-    <value>该向导将会帮助您设置 Lively 。</value>
+    <value>这个向导将帮助你开始设置Lively</value>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>您的Windows N / KN版本将需要下载其他编解码器，以支持壁纸中的视频播放。</value>
+    <value>您的Windows N / KN版本将需要下载额外的编解码器以支持壁纸中的视频播放。</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
-    <value>打赏以表示支持</value>
+    <value>给开发者买杯咖啡支持一下</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
-    <value>您即将更改为该软件的测试版（开发人员）版本。
-更新会很频繁，并且可能包含错误！</value>
+    <value>您即将切换到 Lively 的测试版(开发者版本)。
+更新会很频繁，可能会有BUG!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
-    <value>系统托盘图标可见性 关闭该选项时 Lively 将在隐藏图标的情况下继续运行</value>
+    <value>开启或关闭 Lively 图标系统托盘显示，关闭后 Lively 将在图标隐藏下继续运行</value>
   </data>
   <data name="HideSysTray.Header" xml:space="preserve">
     <value>系统托盘图标</value>
   </data>
   <data name="Language.Description" xml:space="preserve">
-    <value>重启 Lively 以应用新的语言。</value>
+    <value>Lively 将重启以应用新语言</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
     <value>语言</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
-    <value>更新失败。请尝试从此处下载安装程序：
+    <value>更新失败；请尝试从以下地址下载安装程序手动更新。
 https://github.com/rocksdanister/lively/releases</value>
   </data>
   <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
-    <value>壁纸文件已损坏，请尝试重新下载。</value>
+    <value>损坏的壁纸文件，请尝试重新下载。</value>
   </data>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
-    <value>哎呀...好像有什么东西坏掉了 :(
-为了更好地了解这个错误并修复问题，请将日志文件分享给开发者。
+    <value>哎呀... 看起来好像出了点问题 :(
+为了更好地了解这个错误并解决问题，请将日志文件分享给开发人员。
 分享日志文件的说明：
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
-    <value>Lively 无法在 Windows 高对比度 (Windows High Contrast) 模式下正常工作！
-请禁用高对比度模式，然后重试。</value>
+    <value>启用Windows高对比度模式后，Lively无法正常工作!
+请禁用高对比度模式并重新尝试</value>
   </data>
   <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
     <value>媒体播放失败 :(
@@ -254,22 +254,22 @@ https://github.com/rocksdanister/lively/wiki</value>
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
-    <value>不是合法的 Lively 壁纸文件。</value>
+    <value>不是 Lively 壁纸文件。</value>
   </data>
   <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
-    <value>Lively 没有被正确关闭, 正在以安全模式启动。
-您是否希望还原以前运行的壁纸?</value>
+    <value>Lively上次没有正常关闭，在安全模式下启动。
+您希望恢复以前运行的壁纸吗？</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
-    <value>需要更改设置才能正常使用Lively：  
-1. 按下 Win + R 「运行」；
-2. 运行 SystemPropertiesPerformance.exe ；
-3. 勾选“窗口内的动画控件和元素”（如果已启用，取消勾选并重新勾上），并应用；
-4. 点击“确定”，关闭窗口。
+    <value>看起来需要进行一些设置才能使 Lively 正常运行。 
+1. 按Win+R键，打开运行。
+2. 在 "运行 "中输入SystemPropertiesPerformance.exe，点击 "确定"，打开性能选项。
+3. 启用/勾选 "窗口内的动画控件和元素"（如果已经勾选，则取消勾选）并应用。
+4. 点击 "应用"，然后按 "确定"，关闭该窗口。
 
-Windows 7 系统只需设置"调整为最佳外观"&amp;并应用。
-如果仍然无法使用，可尝试重启 Lively 或系统。
-(可能在 Windows 10 预览版本中无法工作)</value>
+如果是Windows 7，只需设置 - 调整为最佳外观&amp; 应用。
+如果还是不行，关闭并重新启动 Lively 或重启系统。
+(在某些windows 10预览版本中不工作)</value>
   </data>
   <data name="Startup.Description" xml:space="preserve">
     <value>Lively 需要在后台运行以播放壁纸。</value>
@@ -287,7 +287,7 @@ Windows 7 系统只需设置"调整为最佳外观"&amp;并应用。
     <value>应用程序</value>
   </data>
   <data name="Attribution.Header" xml:space="preserve">
-    <value>说明/属性</value>
+    <value>归属</value>
   </data>
   <data name="Author.Text" xml:space="preserve">
     <value>作者</value>

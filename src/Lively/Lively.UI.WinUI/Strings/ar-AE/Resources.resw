@@ -118,16 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AudioFocused.Content" xml:space="preserve">
-    <value>تشغيل الصوت عندما يكون سطح المكتب مركّزًا فقط</value>
+    <value>تشغيل الصوت على سطح المكتب فقط</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
-    <value>مستوى الصوت من جميع خلفيات.</value>
+    <value>مستوى الصوت لجميع خلفيات سطح المكتب</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
     <value>مستوى الصوت</value>
   </data>
   <data name="AudioGroup.Header" xml:space="preserve">
-    <value>صوتي</value>
+    <value>الصوت</value>
   </data>
   <data name="CommunityPage.Content" xml:space="preserve">
     <value>منتدى المناقشة</value>
@@ -136,20 +136,22 @@
     <value>وثائق API والمساعدة</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
-    <value>لقد واجه Lively خطأ فادحاً.
+    <value>لقد واجه Lively خطأ فادحاً
 
-تم إعادة تشغيل Windows Explorer مرتين في آخر 30 ثانية! قد يكون هذا تعارضًا بين Lively وبرامج تخصيص سطح المكتب الأخرى أو Windows. لتجنب المزيد من المشكلات ، يتم إنهاء جميع الخلفيات.</value>
+تم إعادة تشغيل Windows Explorer مرتين في آخر 30 ثانية! قد يكون هذا تعارضًا بين Lively وبرامج تخصيص سطح المكتب الأخرى أو Windows. لتجنب المزيد من المشكلات ، سيتم إنهاء جميع خلفيات سطح المكتب.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
-    <value>تم العثور على برنامج غير متوافق، تم تعطيل تطبيق سمات شريط المهام السفلي</value>
+    <value>تم العثور على برنامج غير متوافق، تم تعطيل تطبيق سمات شريط المهام</value>
   </data>
   <data name="OfficialWebpage.Content" xml:space="preserve">
     <value>صفحة ويب Lively Wallpaper الرئيسية</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
-    <value>معظم شاشات LCD و LED الحديثة لا تعاني من مشكلة الاحتراق ، وبالتالي يمكن استخدام أي "wallpaper" كشاشة توقف.
+    <value>معظم شاشات LCD و LED الحديثة لا تعاني من مشكلة "حرق الالوان" نتيجة استخدام الخلفيات ، وبالتالي يمكن استخدام أي خلفية سطح المكتب كشاشة توقف.
 
-إلا PLASMA, OLED أو CRT!</value>
+يرجى الانتباه عند استخدامك البرنامج مع شاشات OLED, بلازما او CRT و التي يمكن ان تكون معرضه لترك اثر على الشاشه نتيجة استخدام خلفيات سطح مكتب فاتحه او غير غامقه لتفادي ترك اثر على الشاشه.
+
+الهدف الرئيسي لخلفيات حفظ الشاشه المدرجه ضمن Lively's screensavers هو اتاحة خيارات لتخصيص حفظ الشاشه, يرجى توخي الحذر و التفعيل على مسئولية المستخدم!</value>
   </data>
   <data name="ReportBugPage.Content" xml:space="preserve">
     <value>الإبلاغ عن مشكلة في البرنامَج</value>
@@ -161,7 +163,7 @@
     <value>تعيين الخلفية(ات) سلوك التشغيل بناءً على تشغيل التطبيق:-</value>
   </data>
   <data name="DescriptionCancelQuestion" xml:space="preserve">
-    <value>هل أنت متأكد أنك تريد الإلغاء؟</value>
+    <value>تأكيد الالغاء؟</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
     <value>هل أنت متأكد من حذف الخلفية بشكل دائم من القرص؟</value>
@@ -170,7 +172,7 @@
     <value>هل أنت متأكد أنك تريد حذف هذه الخلفية من المكتبة؟</value>
   </data>
   <data name="DragDropFile.Text" xml:space="preserve">
-    <value>ببساطة قم بسحب وإسقاط الملفات في المكتبة.</value>
+    <value>قم بسحب وإسقاط الملفات في المكتبة</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
     <value>أنت تفتح تطبيقاً خارجياً كخلفية, يمكن للتطبيقات الضارة أن تستضيف البرامج الضارة والفيروسات... والتي قد تُلحق الضرر بنظامك.
@@ -180,7 +182,7 @@
     <value>تم تصغيري إلى علبة النظام, أنقر بالزر الأيمن لمزيد من الخيارات.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
-    <value>يرجى إعادة تشغيل البرنامج حتى تصبح الإعدادات نافذة المفعول.</value>
+    <value>يرجى إعادة تشغيل البرنامج لتفعيل الاعدادات الجديده</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
     <value>يرجى التوقف قبل المتابعة</value>
@@ -189,10 +191,10 @@
     <value>اضغط لبدء التسجيل</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
-    <value>إستعادة الخلفية (الخلفيات) السابقة...</value>
+    <value>جاري إستعادة الخلفية (الخلفيات) السابقة, يرجى الانتظار...</value>
   </data>
   <data name="DescriptionScreenLayout" xml:space="preserve">
-    <value>اختار الشاشة</value>
+    <value>اختر الشاشة</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
     <value>نسخة جديدة متوفرة!</value>
@@ -1078,7 +1080,7 @@ Edge هو عرض الويب المدمج في windows 10.</value>
     <value>رسائل متكررة</value>
   </data>
   <data name="ReportWallpaperViolence.Content" xml:space="preserve">
-    <value>العري أو العنف</value>
+    <value>عنيف او يحوي تعري</value>
   </data>
   <data name="TextAdditionalNotes.Text" xml:space="preserve">
     <value>ملاحظات إضافيه</value>

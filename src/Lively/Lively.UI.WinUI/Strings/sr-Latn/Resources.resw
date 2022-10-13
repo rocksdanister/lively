@@ -215,7 +215,7 @@ Glavni cilj Lively-a je dodavanje još jednog sloja prilagođavanja vašem raču
 Ažuriranja će biti česta i mogu sadržati greške!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
-    <value>System-tray icon visibility, lively will continue to run with the icon hidden</value>
+    <value>Vidljivost system-tray ikonice. Lively će nastaviti da radi sa skrivenom ikonicom</value>
   </data>
   <data name="HideSysTray.Header" xml:space="preserve">
     <value>Ikona u pozadini sistema</value>
@@ -352,7 +352,7 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Animirani GIF</value>
   </data>
   <data name="GitHubStar.Content" xml:space="preserve">
-    <value>Show some love by dropping a star</value>
+    <value>Pokažite ljubav</value>
   </data>
   <data name="TextGo" xml:space="preserve">
     <value>Kreni</value>
@@ -475,16 +475,16 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Zaustavi</value>
   </data>
   <data name="StoreReview.Content" xml:space="preserve">
-    <value>Do you enjoy using Lively? Leave a review :)</value>
+    <value>Da li ste uživali u aplikaciji? Ostavite komentar :)</value>
   </data>
   <data name="TextSupport.Content" xml:space="preserve">
     <value>Podrška</value>
   </data>
   <data name="TextSwitchBranchDev" xml:space="preserve">
-    <value>Switch to beta (Dev channel)</value>
+    <value>Prebacite se na beta verziju (Dev kanal)</value>
   </data>
   <data name="TextSwitchBranchOfficial" xml:space="preserve">
-    <value>Switch to stable (Default channel)</value>
+    <value>Prebacite se na stabilnu verziju (Stable kanal)</value>
   </data>
   <data name="TextTags" xml:space="preserve">
     <value>Tagovi</value>
@@ -550,7 +550,7 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Video</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>Enter optional commandline arguments</value>
+    <value>Unesite opcione commandline argumente</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>Popuni</value>
@@ -580,7 +580,7 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Veb-sajt</value>
   </data>
   <data name="TextWebStream" xml:space="preserve">
-    <value>Web Stream</value>
+    <value>Web stream</value>
   </data>
   <data name="TextWelcome" xml:space="preserve">
     <value>Dobrodošao</value>
@@ -640,10 +640,10 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Prvi plan: Lako, samo provera proces sa jednim jezgrom koje je u prvom planu da odredi ponašanje plej-beka pozadine.Svi Procesi: Tezi, Skenira sve procese da odredi plej-bek ponašanje.</value>
   </data>
   <data name="PowerSavingModePower.Description" xml:space="preserve">
-    <value>Change playback when Windows Power Saving Mode is enabled</value>
+    <value>Promenite režim kada je Windows Power Saving uključen</value>
   </data>
   <data name="RemoteDesktopPower.Description" xml:space="preserve">
-    <value>Change playback when running a Remote Desktop session</value>
+    <value>Promenite režim dok je Remote Desktop aktivan</value>
   </data>
   <data name="TipScreensaver" xml:space="preserve">
     <value>After the selected inactivity period use the current wallpaper as your screensaver.</value>
@@ -727,7 +727,7 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Port za otklanjanje grešaka</value>
   </data>
   <data name="TitleChangelog" xml:space="preserve">
-    <value>Changelog</value>
+    <value>Log izmena</value>
   </data>
   <data name="Community.Header" xml:space="preserve">
     <value>Zajednica</value>
@@ -799,7 +799,7 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Kada je uključena ušteda baterije</value>
   </data>
   <data name="RemoteDesktopPower.Header" xml:space="preserve">
-    <value>When on Remote Desktop</value>
+    <value>Kada je uključen Remote Desktop</value>
   </data>
   <data name="ReportBug.Header" xml:space="preserve">
     <value>Prijavi bagove</value>
@@ -814,7 +814,7 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Čuvar ekrana</value>
   </data>
   <data name="TitleScreensaverLockOnResume" xml:space="preserve">
-    <value>On resume, display logon screen</value>
+    <value>Po nastavku, prikažite login ekran</value>
   </data>
   <data name="TitleSelectFile" xml:space="preserve">
     <value>Izaberi Fajl</value>
@@ -823,7 +823,7 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Podešavanja</value>
   </data>
   <data name="TitleSkipConfirm" xml:space="preserve">
-    <value>Skip Confirmation</value>
+    <value>Preskočite potvrdu</value>
   </data>
   <data name="SourceCode.Header" xml:space="preserve">
     <value>Izvorni kod</value>
@@ -899,7 +899,7 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Učitaj web stranicu</value>
   </data>
   <data name="FastUI.Description" xml:space="preserve">
-    <value>Keep User Interface running for faster startup</value>
+    <value>User Interface će raditi u pozadini radi bržeg prikaza</value>
   </data>
   <data name="FastUI.Header" xml:space="preserve">
     <value>Brzo pokretanje</value>
@@ -917,7 +917,7 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Sistem</value>
   </data>
   <data name="WindowsSettingsColor.Content" xml:space="preserve">
-    <value>Windows color settings</value>
+    <value>Opcije za prikaz boje</value>
   </data>
   <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
     <value>Laptopovi</value>
@@ -926,7 +926,7 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Developer</value>
   </data>
   <data name="AppearanceBehaviour.Header" xml:space="preserve">
-    <value>Appearance &amp; behavior</value>
+    <value>Prikaz i ponašanje</value>
   </data>
   <data name="ActiveWallpapers.Label" xml:space="preserve">
     <value>Aktivne pozadine</value>
@@ -935,16 +935,16 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Galerija</value>
   </data>
   <data name="AboutMe.Text" xml:space="preserve">
-    <value>Hi, I'm Dani John also known as rocksdanister. I developed Lively a Free and open-source (FOSS) wallpaper application. Thanks for taking the time to look at my work.</value>
+    <value>Zdravo, ja sam Dani John, poznat kao rocksdanister. Ja sam napravio Lively, besplatnu i open-source (FOSS) aplikaciju za desktop pozadine. Hvala vam što ste izdvojili vremena da pogledate moj rad.</value>
   </data>
   <data name="LicenseLink.Content" xml:space="preserve">
-    <value>Software license</value>
+    <value>Softverska licenca</value>
   </data>
   <data name="AttributionLink.Content" xml:space="preserve">
-    <value>Third party software notice</value>
+    <value>Informacije o third party softveru</value>
   </data>
   <data name="PrivacyPolicyLink.Content" xml:space="preserve">
-    <value>Data collection policy</value>
+    <value>Polisa o prikupljanju podataka</value>
   </data>
   <data name="AddWallpaperDrop.Text" xml:space="preserve">
     <value>Dodaj pozadinu</value>
@@ -977,7 +977,7 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Normalno</value>
   </data>
   <data name="Screensaver.Description" xml:space="preserve">
-    <value>How screensaver is applied to connected to display devices</value>
+    <value>Kako je screensaver primenjen na konektovanim monitorima</value>
   </data>
   <data name="Screensaver.Header" xml:space="preserve">
     <value>Tip čuvara ekrana</value>
@@ -986,7 +986,7 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Konfigurisano zasebno</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
-    <value>Same as running wallpaper</value>
+    <value>Isti kao desktop pozadina</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
     <value>Potrebna je dodatna komponenta</value>
@@ -1025,7 +1025,7 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Profil</value>
   </data>
   <data name="GalleryPleaseLogin.Text" xml:space="preserve">
-    <value>Please log in to continue</value>
+    <value>Molimo vas da se ulogujete kako bi nastavili</value>
   </data>
   <data name="GalleryWelcomeMessage.Text" xml:space="preserve">
     <value>Zdravo</value>
@@ -1043,19 +1043,19 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Izaberi sve</value>
   </data>
   <data name="TextSelectNone.Content" xml:space="preserve">
-    <value>Select none</value>
+    <value>Poništi selekciju</value>
   </data>
   <data name="TitleWelcomeback.Text" xml:space="preserve">
-    <value>Welcome back!</value>
+    <value>Dobrodošli nazad!</value>
   </data>
   <data name="ReportWallpaper.Header" xml:space="preserve">
-    <value>Reasons</value>
+    <value>Razlozi</value>
   </data>
   <data name="ReportWallpaperCopyright.Content" xml:space="preserve">
-    <value>Copyright violation</value>
+    <value>Kršenje autorskih prava</value>
   </data>
   <data name="ReportWallpaperMisleading.Content" xml:space="preserve">
-    <value>Misleading information</value>
+    <value>Obmanjujuće informacije</value>
   </data>
   <data name="ReportWallpaperOther.Content" xml:space="preserve">
     <value>Ostalo</value>
@@ -1067,7 +1067,7 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Golotinja ili nasilje</value>
   </data>
   <data name="TextAdditionalNotes.Text" xml:space="preserve">
-    <value>Additional notes</value>
+    <value>Dodatne informacije</value>
   </data>
   <data name="TextReportWallpaper.Text" xml:space="preserve">
     <value>Prijava</value>
@@ -1121,31 +1121,31 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Veličina</value>
   </data>
   <data name="PluginNotFound.Message" xml:space="preserve">
-    <value>Please install the required plugin</value>
+    <value>Molimo vas da instalirate neophodnu komponentu</value>
   </data>
   <data name="PluginNotFound.Title" xml:space="preserve">
-    <value>Plugin not found</value>
+    <value>Komponenta nije nađena</value>
   </data>
   <data name="UpdateCompleted.Text" xml:space="preserve">
-    <value>Update complete</value>
+    <value>Ažuriranje završeno</value>
   </data>
   <data name="UpdateWhatsNew.Text" xml:space="preserve">
-    <value>Check out what's new</value>
+    <value>Pogledajte šta je novo</value>
   </data>
   <data name="AppThemeColor.Header" xml:space="preserve">
     <value>Boja</value>
   </data>
   <data name="DescriptionDefault.Text" xml:space="preserve">
-    <value>Use system default</value>
+    <value>Koristi sistemska podešavanja</value>
   </data>
   <data name="DescriptionDynamicTheme.Text" xml:space="preserve">
-    <value>Adapt to wallpaper</value>
+    <value>Prilagoditi desktop pozadini</value>
   </data>
   <data name="TextDefault.Text" xml:space="preserve">
-    <value>Default</value>
+    <value>Podrazumevano</value>
   </data>
   <data name="TextDynamicTheme.Text" xml:space="preserve">
-    <value>Dynamic</value>
+    <value>Dinamičan</value>
   </data>
   <data name="Theme.Label" xml:space="preserve">
     <value>Tema</value>
