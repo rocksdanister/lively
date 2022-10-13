@@ -536,15 +536,27 @@ namespace Lively.UI.WinUI.ViewModels
                     UpdateSettingsConfigFile();
                 }
 
-                //todo: show msg to user desc whats happening.
                 if (userSettings.Settings.InputForward == InputForwardMode.mousekeyboard)
                 {
                     DesktopUtil.SetDesktopIconVisibility(false);
+                    IsDesktopIconsHidden = true;
                 }
                 else
                 {
                     DesktopUtil.SetDesktopIconVisibility(DesktopUtil.DesktopIconVisibilityDefault);
+                    IsDesktopIconsHidden = false;
                 }
+            }
+        }
+
+        private bool _isDesktopIconsHidden;
+        public bool IsDesktopIconsHidden
+        {
+            get => _isDesktopIconsHidden;
+            set
+            {
+                _isDesktopIconsHidden = value;
+                OnPropertyChanged();
             }
         }
 
