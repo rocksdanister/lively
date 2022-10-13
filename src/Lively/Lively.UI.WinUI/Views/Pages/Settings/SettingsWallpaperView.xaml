@@ -30,28 +30,6 @@
                         </controls:Setting.ActionContent>
                     </controls:Setting>
 
-                    <controls:SettingExpander IsExpanded="True">
-                        <controls:SettingExpander.Header>
-                            <controls:Setting
-                                x:Uid="WallpaperInput"
-                                Icon="&#xEC77;"
-                                Style="{StaticResource ExpanderHeaderSettingStyle}">
-                                <controls:Setting.ActionContent>
-                                    <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedWallpaperInputMode, Mode=TwoWay}">
-                                        <ComboBoxItem x:Uid="TextOff" />
-                                        <ComboBoxItem x:Uid="TextMouse" />
-                                        <ComboBoxItem x:Uid="TextKeyboard" />
-                                    </ComboBox>
-                                </controls:Setting.ActionContent>
-                            </controls:Setting>
-                        </controls:SettingExpander.Header>
-                        <controls:SettingExpander.Content>
-                            <controls:Setting HorizontalAlignment="Left" Style="{StaticResource ExpanderContentSettingStyle}">
-                                <CheckBox x:Uid="MouseInteractOnDesktop" IsChecked="{Binding MouseMoveOnDesktop, Mode=TwoWay}" />
-                            </controls:Setting>
-                        </controls:SettingExpander.Content>
-                    </controls:SettingExpander>
-
                     <controls:Setting x:Uid="WallpaperFit" Icon="&#xE73F;">
                         <controls:Setting.ActionContent>
                             <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedWallpaperScalingIndex, Mode=TwoWay}">
@@ -63,6 +41,58 @@
                         </controls:Setting.ActionContent>
                     </controls:Setting>
                 </controls:SettingsGroup>
+
+                <controls:SettingExpander IsExpanded="True">
+                    <controls:SettingExpander.Header>
+                        <controls:Setting
+                            x:Uid="WallpaperInput"
+                            Icon="&#xEC77;"
+                            Style="{StaticResource ExpanderHeaderSettingStyle}">
+                            <controls:Setting.ActionContent>
+                                <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedWallpaperInputMode, Mode=TwoWay}">
+                                    <ComboBoxItem x:Uid="TextOff" />
+                                    <ComboBoxItem x:Uid="TextMouse" />
+                                    <ComboBoxItem x:Uid="TextKeyboard" />
+                                </ComboBox>
+                            </controls:Setting.ActionContent>
+                        </controls:Setting>
+                    </controls:SettingExpander.Header>
+                    <controls:SettingExpander.Content>
+                        <controls:Setting HorizontalAlignment="Left" Style="{StaticResource ExpanderContentSettingStyle}">
+                            <CheckBox x:Uid="MouseInteractOnDesktop" IsChecked="{Binding MouseMoveOnDesktop, Mode=TwoWay}" />
+                        </controls:Setting>
+                    </controls:SettingExpander.Content>
+                </controls:SettingExpander>
+                <InfoBar
+                    Title="Desktop icon hidden"
+                    Margin="0,-2.5,0,0"
+                    VerticalAlignment="Top"
+                    IsClosable="False"
+                    IsOpen="True"
+                    Message="To prevent accidental selection desktop icons are currently hidden"
+                    Severity="Informational"
+                    Visibility="{Binding IsDesktopIconsHidden, Converter={StaticResource VisibilityConverter}, Mode=OneWay}">
+                    <animations:Implicit.ShowAnimations>
+                        <animations:TranslationAnimation
+                            From="0,-25,0"
+                            To="0"
+                            Duration="0:0:1" />
+                        <animations:OpacityAnimation
+                            From="0"
+                            To="1.0"
+                            Duration="0:0:1" />
+                    </animations:Implicit.ShowAnimations>
+                    <animations:Implicit.HideAnimations>
+                        <animations:TranslationAnimation
+                            From="0"
+                            To="0,-25,0"
+                            Duration="0:0:1" />
+                        <animations:OpacityAnimation
+                            From="1.0"
+                            To="0"
+                            Duration="0:0:1" />
+                    </animations:Implicit.HideAnimations>
+                </InfoBar>
 
                 <controls:SettingsGroup Header="Plugins">
                     <controls:SettingExpander IsExpanded="True">
