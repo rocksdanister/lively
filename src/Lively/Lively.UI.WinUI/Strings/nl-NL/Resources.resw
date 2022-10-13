@@ -124,7 +124,7 @@
     <value>Volume niveau van alle achtergronden</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
-    <value>Master Volume</value>
+    <value>Volume</value>
   </data>
   <data name="AudioGroup.Header" xml:space="preserve">
     <value>Geluid</value>
@@ -141,7 +141,7 @@
 Windows Explorer is in de laatste 30 seconden twee keer gestart! Dit kan een conflict zijn tussen Lively en andere desktop customisatie software van Windows. Om verdere problemen te vermijden, worden alle achtergronden beëindigd.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
-    <value>Incompatible program found, taskbar theming disabled.</value>
+    <value>Incompatibel programma gevonden, taakbalk thematisering uitgeschakeld</value>
   </data>
   <data name="OfficialWebpage.Content" xml:space="preserve">
     <value>Officiële webpagina van Lively</value>
@@ -1143,13 +1143,13 @@ Alle processen: Heavier, Scant alle processen om afspeelmogelijkheden te bepalen
     <value>Kleuren</value>
   </data>
   <data name="DescriptionDefault.Text" xml:space="preserve">
-    <value>Use system default</value>
+    <value>Gebruik standaard instellingen</value>
   </data>
   <data name="DescriptionDynamicTheme.Text" xml:space="preserve">
-    <value>Adapt to wallpaper</value>
+    <value>Aanpassen aan achtergrond</value>
   </data>
   <data name="TextDefault.Text" xml:space="preserve">
-    <value>Default</value>
+    <value>Standaard instellingen</value>
   </data>
   <data name="TextDynamicTheme.Text" xml:space="preserve">
     <value>Dynamic</value>
