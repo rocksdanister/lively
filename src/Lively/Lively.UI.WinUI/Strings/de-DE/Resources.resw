@@ -124,7 +124,7 @@
     <value>Lautstärke aller aktiven Hintergründe</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
-    <value>Gesamtlautstärke</value>
+    <value>Lautstärke</value>
   </data>
   <data name="AudioGroup.Header" xml:space="preserve">
     <value>Ton</value>

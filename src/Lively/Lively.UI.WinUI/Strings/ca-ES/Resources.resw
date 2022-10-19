@@ -136,12 +136,12 @@
     <value>Documentació de l'API i ajuda</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
-    <value>Lively s'ha trobat amb un error fatal.
+    <value>Lively ha trobat amb un error fatal.
 
 L'Explorador de Windows s'ha reiniciat dues vegades en els últims 30 segons. Això pot ser degut a un conflicte entre Lively i un altre software de personalització de l'escriptori. Per evitar futurs problemes, tots els fons de pantalla s'han tancat.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
-    <value>Programa incompatible trobat, deshabilitant la personalització de la barra de tasques</value>
+    <value>S'ha trobat programa incompatible, s'ha deshabilitat la personalització de la barra de tasques</value>
   </data>
   <data name="OfficialWebpage.Content" xml:space="preserve">
     <value>Pàgina web oficial de Lively Wallpaper</value>
@@ -154,7 +154,7 @@ Per a pantalles OLED, Plasma o CRT, que són susceptibles a cremades, es recoman
 El propòsit principal dels estalvis de pantalla Lively és afegir una nova capa de customització al teu PC, fes-lo servir com a protecció contra cremades de pantalla sota el teu risc!</value>
   </data>
   <data name="ReportBugPage.Content" xml:space="preserve">
-    <value>Reporta un problema amb el software</value>
+    <value>Reporta un problema amb el programari</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
     <value>Escull un fitxer</value>
@@ -163,13 +163,13 @@ El propòsit principal dels estalvis de pantalla Lively és afegir una nova capa
     <value>Comportament del fons de pantalla d'acord amb quina aplicació està en execució.</value>
   </data>
   <data name="DescriptionCancelQuestion" xml:space="preserve">
-    <value>Esteu segurs que voleu cancel·lar?</value>
+    <value>Esteu segur que voleu cancel·lar?</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
-    <value>Esteu segurs que voleu eliminar permanentment el fons de pantalla del disc dur?</value>
+    <value>Esteu segurs que voleu eliminar permanentment aquest fons de pantalla del disc dur?</value>
   </data>
   <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
-    <value>Esteu segurs que voleu suprimir aquest fons de pantalla de la Llibreria?</value>
+    <value>Esteu segurs que voleu eliminar aquest fons de pantalla de la Llibreria?</value>
   </data>
   <data name="DragDropFile.Text" xml:space="preserve">
     <value>Simplement arrossega i deixa anar els arxius aquí</value>

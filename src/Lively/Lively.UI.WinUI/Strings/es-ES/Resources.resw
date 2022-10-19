@@ -716,7 +716,7 @@ Edge es la vista web integrada en Windows 10.</value>
     <value>Acerca de</value>
   </data>
   <data name="AddWallpaper.Label" xml:space="preserve">
-    <value>Agregar fondo de pantalla</value>
+    <value>Añadir fondo de pantalla</value>
   </data>
   <data name="AppFocus.Header" xml:space="preserve">
     <value>Aplicaciones enfocadas</value>

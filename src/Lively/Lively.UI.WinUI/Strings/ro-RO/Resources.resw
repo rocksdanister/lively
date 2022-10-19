@@ -1149,16 +1149,16 @@ Edge este vizualizarea web integrată a Windows 10.</value>
     <value>Culoare</value>
   </data>
   <data name="DescriptionDefault.Text" xml:space="preserve">
-    <value>Use system default</value>
+    <value>Utilizați valoarea implicită a sistemului</value>
   </data>
   <data name="DescriptionDynamicTheme.Text" xml:space="preserve">
-    <value>Adapt to wallpaper</value>
+    <value>A se adapta la fundal</value>
   </data>
   <data name="TextDefault.Text" xml:space="preserve">
-    <value>Default</value>
+    <value>Implicită</value>
   </data>
   <data name="TextDynamicTheme.Text" xml:space="preserve">
-    <value>Dynamic</value>
+    <value>Dinamic</value>
   </data>
   <data name="Theme.Label" xml:space="preserve">
     <value>Temă</value>
