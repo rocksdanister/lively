@@ -18,7 +18,15 @@ namespace Lively.UI.WinUI.Factories
             Directory.CreateDirectory(themeDir);
             var copyFile = Path.Combine(themeDir, Path.GetFileName(filePath));
             File.Copy(filePath, Path.Combine(themeDir, copyFile));
-            var theme = new ThemeModel(file: copyFile, preview: copyFile, name: name, type: ThemeType.picture, description: description, contact: null, license: null, accentColor: null) { IsEditable = true };
+            var theme = new ThemeModel(file: copyFile,
+                preview: copyFile,
+                name: name,
+                type: ThemeType.picture,
+                description: description,
+                contact: null,
+                license: null,
+                accentColor: null,
+                tags: null) { IsEditable = true };
             JsonStorage<ThemeModel>.StoreData(Path.Combine(themeDir, "theme.json"),
                 new ThemeModel(theme) { File = Path.GetFileName(theme.File), Preview = Path.GetFileName(theme.Preview) });
             return theme;
