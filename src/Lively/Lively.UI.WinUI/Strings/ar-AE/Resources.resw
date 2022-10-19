@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AudioFocused.Content" xml:space="preserve">
-    <value>تشغيل الصوت على سطح المكتب فقط</value>
+    <value>تشغيل الصوت فقط عندما تكون في الشاشة الرئيسة</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
-    <value>مستوى الصوت لجميع خلفيات سطح المكتب</value>
+    <value>مستوى الصوت لجميع خلفيات</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
     <value>مستوى الصوت</value>
@@ -138,7 +138,7 @@
   <data name="DescExplorerCrash" xml:space="preserve">
     <value>لقد واجه Lively خطأ فادحاً
 
-تم إعادة تشغيل Windows Explorer مرتين في آخر 30 ثانية! قد يكون هذا تعارضًا بين Lively وبرامج تخصيص سطح المكتب الأخرى أو Windows. لتجنب المزيد من المشكلات ، سيتم إنهاء جميع خلفيات سطح المكتب.</value>
+تم إعادة تشغيل Windows Explorer مرتين في آخر 30 ثانية! قد يكون هذا تعارضًا بين Lively و برنامَج تخصيص الشاشة الرئيسة أخر أو Windows. لتجنب المزيد من المشكلات ، سيتم إقاف جميع الخلفيات.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
     <value>تم العثور على برنامج غير متوافق، تم تعطيل تطبيق سمات شريط المهام</value>

@@ -1152,10 +1152,10 @@ Semua: Jeda wallpaper untuk semua layar jika ada aplikasi fullscreen/sedang difo
     <value>Warna</value>
   </data>
   <data name="DescriptionDefault.Text" xml:space="preserve">
-    <value>Use system default</value>
+    <value>Gunakan standar sistem</value>
   </data>
   <data name="DescriptionDynamicTheme.Text" xml:space="preserve">
-    <value>Adapt to wallpaper</value>
+    <value>Jadikan Wallpaper</value>
   </data>
   <data name="TextDefault.Text" xml:space="preserve">
     <value>Default</value>

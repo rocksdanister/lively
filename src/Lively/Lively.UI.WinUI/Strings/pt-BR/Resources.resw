@@ -261,7 +261,7 @@ https://github.com/rocksdanister/lively/wiki</value>
 Deseja restaurar os planos de fundos que estavam ativos?</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
-    <value>Parece que algumas cpnfigurações precisam ser feitas para que o Lively funcione corretamente:
+    <value>Parece que algumas configurações precisam ser feitas para que o Lively funcione corretamente:
 1. Aperte Win + R para abrir a janela de Executar.
 2. Digite "SystemPropertiesPerformance.exe" e aperte Enter para abrir as Opções de Desempenho.
 3. Ative/Marque "Animar controles e elementos no Windows" (Se já estiver marcado, então desmarque e marque de novo) &amp; Aplique.
