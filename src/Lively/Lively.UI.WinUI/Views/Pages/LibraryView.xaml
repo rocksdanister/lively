@@ -11,7 +11,7 @@
     xmlns:media="using:CommunityToolkit.WinUI.UI.Media"
     xmlns:toolkit="using:CommunityToolkit.WinUI.UI.Controls"
     x:Name="rootPage"
-    AllowDrop="False"
+    AllowDrop="True"
     DragLeave="Page_DragLeave"
     DragOver="Page_DragOver"
     Drop="Page_Drop"
