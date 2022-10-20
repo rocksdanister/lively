@@ -94,6 +94,8 @@ namespace Lively.UI.WinUI
 
             //App startup is slower if done in NavView_Loaded..
             CreateMainMenu();
+            CreateSettingsMenu();
+            ShowMainMenu();
             NavViewNavigate(NavPages.library);
 
             //Issue: https://github.com/microsoft/microsoft-ui-xaml/issues/6070
@@ -222,7 +224,7 @@ namespace Lively.UI.WinUI
         {
             if (args.IsSettingsInvoked)
             {
-                CreateSettingsMenu();
+                ShowSettingsMenu();
                 NavViewNavigate(NavPages.settingsGeneral);
             }
             else if (args.InvokedItemContainer != null)
@@ -254,7 +256,7 @@ namespace Lively.UI.WinUI
 
         private void NavView_BackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)
         {
-            CreateMainMenu();
+            ShowMainMenu();
             NavViewNavigate(NavPages.library);
 
             //If audio changed in settings page..
@@ -368,26 +370,40 @@ namespace Lively.UI.WinUI
 
         private void CreateMainMenu()
         {
-            navView.MenuItems.Clear();
-            navView.FooterMenuItems.Clear();
-            navView.IsSettingsVisible = true;
-            navCommandBar.Visibility = Visibility.Visible;
-            navView.IsBackButtonVisible = NavigationViewBackButtonVisible.Collapsed;
             navView.MenuItems.Add(CreateMenu(i18n.GetString("TitleLibrary"), "library", "\uE8A9"));
             navView.MenuItems.Add(CreateMenu(i18n.GetString("TitleGallery"), "gallery", "\uE719"));
         }
 
         private void CreateSettingsMenu()
         {
-            navView.MenuItems.Clear();
-            navView.FooterMenuItems.Clear();
+            navView.MenuItems.Add(CreateMenu(i18n.GetString("TitleGeneral"), "settings_general"));
+            navView.MenuItems.Add(CreateMenu(i18n.GetString("TitlePerformance"), "settings_performance"));
+            navView.MenuItems.Add(CreateMenu(i18n.GetString("TitleWallpaper"), "settings_wallpaper"));
+            navView.MenuItems.Add(CreateMenu(i18n.GetString("System/Header"), "settings_system"));
+        }
+
+        //When items change selection not showing, ref: https://github.com/microsoft/microsoft-ui-xaml/issues/7216
+        private void ShowMainMenu()
+        {
+            navView.IsSettingsVisible = true;
+            navCommandBar.Visibility = Visibility.Visible;
+            navView.IsBackButtonVisible = NavigationViewBackButtonVisible.Collapsed;
+            foreach (NavigationViewItem item in navView.MenuItems)
+            {
+                item.Visibility = !item.Tag.ToString().StartsWith("settings_") ? Visibility.Visible : Visibility.Collapsed;
+            }
+        }
+
+        private void ShowSettingsMenu()
+        {
             navView.IsSettingsVisible = false;
             navCommandBar.Visibility = Visibility.Collapsed;
             navView.IsBackButtonVisible = NavigationViewBackButtonVisible.Visible;
-            navView.MenuItems.Add(CreateMenu(i18n.GetString("TitleGeneral"), "general"));
-            navView.MenuItems.Add(CreateMenu(i18n.GetString("TitlePerformance"), "performance"));
-            navView.MenuItems.Add(CreateMenu(i18n.GetString("TitleWallpaper"), "wallpaper"));
-            navView.MenuItems.Add(CreateMenu(i18n.GetString("System/Header"), "system"));
+            foreach (NavigationViewItem item in navView.MenuItems)
+            {
+                item.Visibility = item.Tag.ToString().StartsWith("settings_") ? Visibility.Visible : Visibility.Collapsed;
+
+            }
         }
 
         private void UpdateAudioSliderIcon(double volume) =>
@@ -612,13 +628,13 @@ namespace Lively.UI.WinUI
             library,
             [EnumMember(Value = "gallery")]
             gallery,
-            [EnumMember(Value = "general")]
+            [EnumMember(Value = "settings_general")]
             settingsGeneral,
-            [EnumMember(Value = "performance")]
+            [EnumMember(Value = "settings_performance")]
             settingsPerformance,
-            [EnumMember(Value = "wallpaper")]
+            [EnumMember(Value = "settings_wallpaper")]
             settingsWallpaper,
-            [EnumMember(Value = "system")]
+            [EnumMember(Value = "settings_system")]
             settingsSystem,
         }
 
