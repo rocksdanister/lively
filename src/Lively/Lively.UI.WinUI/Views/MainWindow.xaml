@@ -172,8 +172,8 @@
                         </interactivity:Interaction.Behaviors>
                         -->
                     </AppBarButton>
-                    <AppBarSeparator />
 
+                    <AppBarSeparator />
                     <AppBarButton
                         Name="audioBtn"
                         MaxWidth="50"
