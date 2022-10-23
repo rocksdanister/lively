@@ -2,14 +2,19 @@
     x:Class="Lively.UI.WinUI.Views.Pages.LibraryView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:animations="using:CommunityToolkit.WinUI.UI.Animations"
+    xmlns:behaviors="using:CommunityToolkit.WinUI.UI.Behaviors"
     xmlns:controls="using:Lively.UI.WinUI.UserControls"
     xmlns:converters="using:CommunityToolkit.WinUI.UI.Converters"
     xmlns:customconverters="using:Lively.UI.WinUI.Helpers.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:interactions="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:local="using:Lively.UI.WinUI.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:media="using:CommunityToolkit.WinUI.UI.Media"
     xmlns:toolkit="using:CommunityToolkit.WinUI.UI.Controls"
+    xmlns:ui="using:CommunityToolkit.WinUI.UI"
     x:Name="rootPage"
     AllowDrop="True"
     DragLeave="Page_DragLeave"
@@ -142,14 +147,48 @@
                             <RowDefinition Height="60" />
                         </Grid.RowDefinitions>
 
+                        <interactivity:Interaction.Behaviors>
+                            <interactions:EventTriggerBehavior EventName="PointerEntered">
+                                <behaviors:StartAnimationAction Animation="{Binding ElementName=ScaleAnimationEnter}" />
+                            </interactions:EventTriggerBehavior>
+                            <interactions:EventTriggerBehavior EventName="PointerExited">
+                                <behaviors:StartAnimationAction Animation="{Binding ElementName=ScaleAnimationExit}" />
+                            </interactions:EventTriggerBehavior>
+                        </interactivity:Interaction.Behaviors>
+
                         <Image
                             Grid.RowSpan="2"
                             Grid.ColumnSpan="2"
+                            ui:VisualExtensions.NormalizedCenterPoint="0.5"
                             Source="{Binding ImagePath}"
-                            Stretch="UniformToFill" />
+                            Stretch="UniformToFill">
+                            <animations:Explicit.Animations>
+                                <animations:AnimationSet x:Name="ScaleAnimationEnter">
+                                    <animations:ScaleAnimation
+                                        From="1"
+                                        To="1.1"
+                                        Duration="0:0:0.5" />
+                                </animations:AnimationSet>
+                                <animations:AnimationSet x:Name="ScaleAnimationExit">
+                                    <animations:ScaleAnimation
+                                        From="1.1"
+                                        To="1"
+                                        Duration="0:0:0.5" />
+                                </animations:AnimationSet>
+                            </animations:Explicit.Animations>
+                        </Image>
+
+                        <Rectangle Grid.RowSpan="2" Grid.ColumnSpan="2">
+                            <Rectangle.Fill>
+                                <LinearGradientBrush StartPoint="0.5,0.25" EndPoint="0.5,1">
+                                    <GradientStop Offset="0" Color="#00000000" />
+                                    <GradientStop Offset="1" Color="{ThemeResource SystemAltHighColor}" />
+                                </LinearGradientBrush>
+                            </Rectangle.Fill>
+                        </Rectangle>
 
                         <Grid
-                            Grid.Row="0"
+                            Grid.RowSpan="2"
                             Grid.ColumnSpan="2"
                             Visibility="{Binding IsDownloading, Mode=OneWay, Converter={StaticResource VisibilityConverter}}">
                             <Border>
@@ -160,7 +199,7 @@
                             <TextBlock
                                 Margin="2.5"
                                 HorizontalAlignment="Right"
-                                VerticalAlignment="Bottom"
+                                VerticalAlignment="Top"
                                 FontSize="10"
                                 FontWeight="Medium"
                                 Text="{Binding DownloadingProgressText, Mode=OneWay}" />
@@ -170,7 +209,6 @@
                             Grid.Row="1"
                             Grid.ColumnSpan="2"
                             Padding="7"
-                            Background="{ThemeResource AcrylicInAppCustomGridBrush}"
                             Orientation="Vertical">
                             <TextBlock
                                 Margin="0,0,30,0"
