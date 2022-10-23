@@ -56,8 +56,17 @@
                             Source="{Binding Image}"
                             Stretch="UniformToFill" />
 
+                        <Rectangle Grid.RowSpan="2" Grid.ColumnSpan="2">
+                            <Rectangle.Fill>
+                                <LinearGradientBrush StartPoint="0.5,0.25" EndPoint="0.5,1">
+                                    <GradientStop Offset="0" Color="#00000000" />
+                                    <GradientStop Offset="1" Color="{ThemeResource SystemAltHighColor}" />
+                                </LinearGradientBrush>
+                            </Rectangle.Fill>
+                        </Rectangle>
+
                         <Grid
-                            Grid.Row="0"
+                            Grid.RowSpan="2"
                             Grid.ColumnSpan="2"
                             Visibility="{Binding IsDownloading, Mode=OneWay, Converter={StaticResource VisibilityConverter}}">
                             <Border>
@@ -68,7 +77,7 @@
                             <TextBlock
                                 Margin="2.5"
                                 HorizontalAlignment="Right"
-                                VerticalAlignment="Bottom"
+                                VerticalAlignment="Top"
                                 FontSize="10"
                                 FontWeight="Medium"
                                 Text="{Binding DownloadingProgressText, Mode=OneWay}" />
@@ -78,7 +87,6 @@
                             Grid.Row="1"
                             Grid.ColumnSpan="2"
                             Padding="7"
-                            Background="{ThemeResource AcrylicInAppCustomGridBrush}"
                             Orientation="Vertical">
                             <TextBlock
                                 Margin="0,0,30,0"
