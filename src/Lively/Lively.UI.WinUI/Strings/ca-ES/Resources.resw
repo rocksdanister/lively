@@ -1167,4 +1167,10 @@ Edge és la vista web integrada amb Windows 10.</value>
   <data name="Theme.Label" xml:space="preserve">
     <value>Tema</value>
   </data>
+  <data name="IconsHidden.Message" xml:space="preserve">
+    <value>Per prevenir seleccions accidentals, les icones d'escriptori estan actualment amagades</value>
+  </data>
+  <data name="IconsHidden.Title" xml:space="preserve">
+    <value>Icones d'escriptori</value>
+  </data>
 </root>

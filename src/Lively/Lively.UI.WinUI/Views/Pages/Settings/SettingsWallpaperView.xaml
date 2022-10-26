@@ -64,12 +64,11 @@
                     </controls:SettingExpander.Content>
                 </controls:SettingExpander>
                 <InfoBar
-                    Title="Desktop icon hidden"
+                    x:Uid="IconsHidden"
                     Margin="0,-2.5,0,0"
                     VerticalAlignment="Top"
                     IsClosable="False"
                     IsOpen="True"
-                    Message="To prevent accidental selection desktop icons are currently hidden"
                     Severity="Informational"
                     Visibility="{Binding IsDesktopIconsHidden, Converter={StaticResource VisibilityConverter}, Mode=OneWay}">
                     <animations:Implicit.ShowAnimations>

@@ -130,7 +130,7 @@
     <value>الصوت</value>
   </data>
   <data name="CommunityPage.Content" xml:space="preserve">
-    <value>منتدى المناقشة</value>
+    <value>منتدى المناقشة عبر الإنترنت</value>
   </data>
   <data name="DocumentationPage.Content" xml:space="preserve">
     <value>وثائق API والمساعدة</value>
@@ -1165,5 +1165,11 @@ Edge هو عرض الويب المدمج في windows 10.</value>
   </data>
   <data name="Theme.Label" xml:space="preserve">
     <value>خلفية</value>
+  </data>
+  <data name="IconsHidden.Message" xml:space="preserve">
+    <value>لمنع التحديد العرضي لأيقونات سطح المكتب مخفية حاليا</value>
+  </data>
+  <data name="IconsHidden.Title" xml:space="preserve">
+    <value>ايقونة سطح المكتب</value>
   </data>
 </root>

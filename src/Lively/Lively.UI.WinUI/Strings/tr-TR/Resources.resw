@@ -189,7 +189,7 @@ Eğer güvenilir bir kaynak olduğuna inanıyorsanız devam edin.</value>
     <value>Lütfen devam etmeden önce biraz bekleyin.</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
-    <value>Kayıda başlamak için tıklayın.</value>
+    <value>Kayıt başlatmak için tıklayın</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
     <value>Geçmiş duvar kağıtları yükleniyor, Lütfen Bekleyin...</value>
@@ -1163,5 +1163,11 @@ Edge ise windows 10 için geçerli web gösterim motorudur.</value>
   </data>
   <data name="Theme.Label" xml:space="preserve">
     <value>Tema</value>
+  </data>
+  <data name="IconsHidden.Message" xml:space="preserve">
+    <value>To prevent accidental selection desktop icons are currently hidden</value>
+  </data>
+  <data name="IconsHidden.Title" xml:space="preserve">
+    <value>Desktop icons</value>
   </data>
 </root>
