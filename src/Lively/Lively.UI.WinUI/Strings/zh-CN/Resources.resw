@@ -233,7 +233,7 @@ Lively的屏幕保护程序的主要目的是为您的电脑增加另一层个�
 https://github.com/rocksdanister/lively/releases</value>
   </data>
   <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
-    <value>损坏的壁纸文件，请尝试重新下载。</value>
+    <value>壁纸文件已损坏，正在尝试重新下载。</value>
   </data>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
     <value>哎呀... 看起来好像出了点问题 :(
@@ -254,11 +254,11 @@ https://github.com/rocksdanister/lively/wiki</value>
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
-    <value>不是 Lively 壁纸文件。</value>
+    <value>不是 Lively 壁纸所储存的文件夹。</value>
   </data>
   <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
-    <value>Lively上次没有正常关闭，在安全模式下启动。
-您希望恢复以前运行的壁纸吗？</value>
+    <value>Lively上次没有关闭妥当，已在安全模式下启动。
+您希望恢复之前运行的所有壁纸吗？</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
     <value>看起来需要进行一些设置才能使 Lively 正常运行。 
@@ -1166,5 +1166,11 @@ Edge 是 Windows 10 内置的浏览器。</value>
   </data>
   <data name="Theme.Label" xml:space="preserve">
     <value>主题</value>
+  </data>
+  <data name="IconsHidden.Message" xml:space="preserve">
+    <value>为了避免被意外选中，桌面图标目前被隐藏</value>
+  </data>
+  <data name="IconsHidden.Title" xml:space="preserve">
+    <value>桌面图标</value>
   </data>
 </root>

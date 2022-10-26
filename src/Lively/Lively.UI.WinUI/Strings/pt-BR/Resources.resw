@@ -611,13 +611,13 @@ Se ainda não funcionar, abra o Lively novamente ou reinicie o Windows.
     <value>Definir a página da web da URL selecionada como plano de fundo.</value>
   </data>
   <data name="AppFocus.Description" xml:space="preserve">
-    <value>Defina o que fazer quando algum aplicativo está em foco.</value>
+    <value>Definir o que fazer quando algum aplicativo está em foco.</value>
   </data>
   <data name="AppFullScreen.Description" xml:space="preserve">
-    <value>Defina o que fazer quando algum jogo/aplicativo está em tela cheia.</value>
+    <value>Definir o que fazer quando algum jogo/aplicativo está em tela cheia.</value>
   </data>
   <data name="AppRules.Description" xml:space="preserve">
-    <value>Defina diferentes regras de reprodução dos planos de fundo baseado no aplicativo sendo executado.</value>
+    <value>Definir diferentes regras de reprodução dos planos de fundo baseado no aplicativo sendo executado.</value>
   </data>
   <data name="TipAppTheme" xml:space="preserve">
     <value>O Lively adapta sua aparência de acordo com o tema do sistema</value>
@@ -952,7 +952,7 @@ O Edge é a webview embutida do Windows 10.</value>
     <value>Galeria</value>
   </data>
   <data name="AboutMe.Text" xml:space="preserve">
-    <value>Oi, eu sou Dani John também conhecido como rocksdanister. Desenvolvi o Lively, um aplicativo gratuito e de código aberto (FOSS) de planos de fundo. Obrigado por reservar um tempo para dar uma olhada no meu trabalho.</value>
+    <value>Olá, eu sou Dani John, também conhecido como rocksdanister. Desenvolvi o Lively, um aplicativo gratuito e de código aberto (FOSS) de planos de fundo. Obrigado por reservar seu tempo para dar uma olhada no meu trabalho.</value>
   </data>
   <data name="LicenseLink.Content" xml:space="preserve">
     <value>Licença de software</value>
@@ -1166,5 +1166,11 @@ O Edge é a webview embutida do Windows 10.</value>
   </data>
   <data name="Theme.Label" xml:space="preserve">
     <value>Tema</value>
+  </data>
+  <data name="IconsHidden.Message" xml:space="preserve">
+    <value>Para evitar a seleção acidental, os ícones da área de trabalho foram no momento ocultos</value>
+  </data>
+  <data name="IconsHidden.Title" xml:space="preserve">
+    <value>Ícones da Área de Trabalho</value>
   </data>
 </root>

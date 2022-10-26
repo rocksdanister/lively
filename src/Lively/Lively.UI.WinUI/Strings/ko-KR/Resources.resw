@@ -1166,4 +1166,10 @@ Edge는 Windows 10의 내장 웹뷰입니다.</value>
   <data name="Theme.Label" xml:space="preserve">
     <value>테마</value>
   </data>
+  <data name="IconsHidden.Message" xml:space="preserve">
+    <value>실수에 의한 선택을 방지하기 위해 바탕 화면 아이콘이 현재 숨겨져 있습니다.</value>
+  </data>
+  <data name="IconsHidden.Title" xml:space="preserve">
+    <value>바탕 화면 아이콘</value>
+  </data>
 </root>

@@ -1163,4 +1163,10 @@ Jos ikkuna ei vieläkään toimi, sulje &amp; käynnistä eloisa uudestaan/uudel
   <data name="Theme.Label" xml:space="preserve">
     <value>Teema</value>
   </data>
+  <data name="IconsHidden.Message" xml:space="preserve">
+    <value>To prevent accidental selection desktop icons are currently hidden</value>
+  </data>
+  <data name="IconsHidden.Title" xml:space="preserve">
+    <value>Desktop icons</value>
+  </data>
 </root>

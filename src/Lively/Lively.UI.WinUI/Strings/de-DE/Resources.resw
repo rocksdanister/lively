@@ -1163,4 +1163,10 @@ Wenn es immer noch nicht funktioniert, schließen &amp; starten Sie Lively oder 
   <data name="Theme.Label" xml:space="preserve">
     <value>Farbschema</value>
   </data>
+  <data name="IconsHidden.Message" xml:space="preserve">
+    <value>Um eine versehentliche Auswahl zu vermeiden, sind Desktop Symbole aktuell unsichtbar</value>
+  </data>
+  <data name="IconsHidden.Title" xml:space="preserve">
+    <value>Desktopsymbole</value>
+  </data>
 </root>

@@ -982,10 +982,10 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>सेव करें</value>
   </data>
   <data name="UIMode.Description" xml:space="preserve">
-    <value>User interface effects and animations</value>
+    <value>उपयोगकर्ता इंटरफेस प्रभाव और एनीमेशन</value>
   </data>
   <data name="UIMode.Header" xml:space="preserve">
-    <value>User interface</value>
+    <value>उपयोगकर्ता इंटरफेस</value>
   </data>
   <data name="UIModeLite.Content" xml:space="preserve">
     <value>हल्का</value>
@@ -994,25 +994,25 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>साधारण</value>
   </data>
   <data name="Screensaver.Description" xml:space="preserve">
-    <value>How screensaver is applied to connected to display devices</value>
+    <value>स्क्रीनसेवर को कनेक्टेड डिस्प्ले डिवाइस पर कैसे लागू किया जाता है?</value>
   </data>
   <data name="Screensaver.Header" xml:space="preserve">
-    <value>Type of screensaver</value>
+    <value>स्क्रीनसेवर का प्रकार</value>
   </data>
   <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
-    <value>Configured separately</value>
+    <value>अलग से कॉन्फ़िगर किया गया</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
-    <value>Same as running wallpaper</value>
+    <value>वॉलपेपर चलाने के समान</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
-    <value>Plugin required</value>
+    <value>प्लगइन आवश्यक</value>
   </data>
   <data name="ScreensaverPluginMessage.Text" xml:space="preserve">
-    <value>One time setup is required to run screensaver</value>
+    <value>स्क्रीनसेवर चलाने के लिए वन टाइम सेटअप आवश्यक है</value>
   </data>
   <data name="WallpaperLayoutScreenPicker.Content" xml:space="preserve">
-    <value>Always pick screen when choosing wallpaper</value>
+    <value>वॉलपेपर चुनते समय हमेशा स्क्रीन चुनें</value>
   </data>
   <data name="GalleryAccount.Text" xml:space="preserve">
     <value>खाता</value>
@@ -1039,16 +1039,16 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>मैनेज करें</value>
   </data>
   <data name="GalleryPageProfile.Content" xml:space="preserve">
-    <value>Profile</value>
+    <value>प्रोफ़ाइल</value>
   </data>
   <data name="GalleryPleaseLogin.Text" xml:space="preserve">
-    <value>Please log in to continue</value>
+    <value>आगे बढ़ने के लिए लॉगिन करें</value>
   </data>
   <data name="GalleryWelcomeMessage.Text" xml:space="preserve">
-    <value>Hi</value>
+    <value>नमस्ते</value>
   </data>
   <data name="RestoreWallpaper.Text" xml:space="preserve">
-    <value>We found these wallpapers in your account</value>
+    <value>हमें ये वॉलपेपर आपके खाते में मिले हैं।</value>
   </data>
   <data name="TextDownloadNow.Content" xml:space="preserve">
     <value>Download now</value>
@@ -1166,5 +1166,11 @@ https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="Theme.Label" xml:space="preserve">
     <value>अंतर्वस्तु</value>
+  </data>
+  <data name="IconsHidden.Message" xml:space="preserve">
+    <value>To prevent accidental selection desktop icons are currently hidden</value>
+  </data>
+  <data name="IconsHidden.Title" xml:space="preserve">
+    <value>Desktop icons</value>
   </data>
 </root>
