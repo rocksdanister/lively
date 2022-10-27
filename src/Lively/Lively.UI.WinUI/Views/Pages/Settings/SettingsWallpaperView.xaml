@@ -73,23 +73,23 @@
                     Visibility="{Binding IsDesktopIconsHidden, Converter={StaticResource VisibilityConverter}, Mode=OneWay}">
                     <animations:Implicit.ShowAnimations>
                         <animations:TranslationAnimation
-                            From="0,-25,0"
+                            From="0,-15,0"
                             To="0"
-                            Duration="0:0:1" />
+                            Duration="0:0:0.4" />
                         <animations:OpacityAnimation
                             From="0"
                             To="1.0"
-                            Duration="0:0:1" />
+                            Duration="0:0:0.6" />
                     </animations:Implicit.ShowAnimations>
                     <animations:Implicit.HideAnimations>
-                        <animations:TranslationAnimation
-                            From="0"
-                            To="0,-25,0"
-                            Duration="0:0:1" />
                         <animations:OpacityAnimation
                             From="1.0"
                             To="0"
-                            Duration="0:0:1" />
+                            Duration="0:0:0.2" />
+                        <animations:TranslationAnimation
+                            From="0"
+                            To="0,-15,0"
+                            Duration="0:0:0.2" />
                     </animations:Implicit.HideAnimations>
                 </InfoBar>
 
@@ -133,23 +133,23 @@
                         </InfoBar.ActionButton>
                         <animations:Implicit.ShowAnimations>
                             <animations:TranslationAnimation
-                                From="0,-25,0"
+                                From="0,-15,0"
                                 To="0"
-                                Duration="0:0:1" />
+                                Duration="0:0:0.4" />
                             <animations:OpacityAnimation
                                 From="0"
                                 To="1.0"
-                                Duration="0:0:1" />
+                                Duration="0:0:0.6" />
                         </animations:Implicit.ShowAnimations>
                         <animations:Implicit.HideAnimations>
-                            <animations:TranslationAnimation
-                                From="0"
-                                To="0,-25,0"
-                                Duration="0:0:1" />
                             <animations:OpacityAnimation
                                 From="1.0"
                                 To="0"
-                                Duration="0:0:1" />
+                                Duration="0:0:0.2" />
+                            <animations:TranslationAnimation
+                                From="0"
+                                To="0,-15,0"
+                                Duration="0:0:0.2" />
                         </animations:Implicit.HideAnimations>
                     </InfoBar>
 
@@ -197,23 +197,23 @@
                         </InfoBar.ActionButton>
                         <animations:Implicit.ShowAnimations>
                             <animations:TranslationAnimation
-                                From="0,-25,0"
+                                From="0,-15,0"
                                 To="0"
-                                Duration="0:0:1" />
+                                Duration="0:0:0.4" />
                             <animations:OpacityAnimation
                                 From="0"
                                 To="1.0"
-                                Duration="0:0:1" />
+                                Duration="0:0:0.6" />
                         </animations:Implicit.ShowAnimations>
                         <animations:Implicit.HideAnimations>
-                            <animations:TranslationAnimation
-                                From="0"
-                                To="0,-25,0"
-                                Duration="0:0:1" />
                             <animations:OpacityAnimation
                                 From="1.0"
                                 To="0"
-                                Duration="0:0:1" />
+                                Duration="0:0:0.2" />
+                            <animations:TranslationAnimation
+                                From="0"
+                                To="0,-15,0"
+                                Duration="0:0:0.2" />
                         </animations:Implicit.HideAnimations>
                     </InfoBar>
 
@@ -243,23 +243,23 @@
                         </InfoBar.ActionButton>
                         <animations:Implicit.ShowAnimations>
                             <animations:TranslationAnimation
-                                From="0,-25,0"
+                                From="0,-15,0"
                                 To="0"
-                                Duration="0:0:1" />
+                                Duration="0:0:0.4" />
                             <animations:OpacityAnimation
                                 From="0"
                                 To="1.0"
-                                Duration="0:0:1" />
+                                Duration="0:0:0.6" />
                         </animations:Implicit.ShowAnimations>
                         <animations:Implicit.HideAnimations>
-                            <animations:TranslationAnimation
-                                From="0"
-                                To="0,-25,0"
-                                Duration="0:0:1" />
                             <animations:OpacityAnimation
                                 From="1.0"
                                 To="0"
-                                Duration="0:0:1" />
+                                Duration="0:0:0.2" />
+                            <animations:TranslationAnimation
+                                From="0"
+                                To="0,-15,0"
+                                Duration="0:0:0.2" />
                         </animations:Implicit.HideAnimations>
                     </InfoBar>
 
