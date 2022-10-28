@@ -285,8 +285,9 @@ namespace Lively.Services
             using var pixels = image.GetPixels();
             var color = pixels.GetPixel(0, 0).ToColor();
 
-            //ImageMagick color range is 0 - 65535.
-            return Color.FromArgb(255 * color.R / 65535, 255 * color.G / 65535, 255 * color.B / 65535);
+            //ImageMagick Q16 color range is 0 - 65535.
+            //ImageMagick Q8 color range is 0 - 255.
+            return Color.FromArgb(255 * color.R / 255, 255 * color.G / 255, 255 * color.B / 255);
         }
 
         #endregion //helpers
