@@ -31,6 +31,37 @@ namespace Lively.UI.WinUI.Views.Pages.Gallery
         {
             this.InitializeComponent();
             this.DataContext = App.Services.GetRequiredService<GalleryViewModel>();
+            this.Loaded += (_, _) =>
+            {
+                var scrollViewer = galleryGridView.FindDescendant<ScrollViewer>();
+                scrollViewer.ViewChanged += ScrollViewer_ViewChanged;
+            };
+        }
+
+        private void ScrollViewer_ViewChanged(object sender, ScrollViewerViewChangedEventArgs e)
+        {
+            var sv = sender as ScrollViewer;
+            var verticalOffset = sv.VerticalOffset;
+            var maxVerticalOffset = sv.ScrollableHeight;
+
+            if (maxVerticalOffset < 0 ||
+                verticalOffset == maxVerticalOffset)
+            {
+                // Scrolled to bottom
+                MoreMessage.Visibility = Visibility.Visible;
+            }
+            /*
+            else if (maxVerticalOffset < 0 ||
+                verticalOffset == 0)
+            {
+                // Scrolled to top
+            }
+            */
+            else
+            {
+                // Other
+                MoreMessage.Visibility = Visibility.Collapsed;
+            }
         }
     }
 }

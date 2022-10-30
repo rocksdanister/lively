@@ -49,6 +49,7 @@
     <None Remove="Assets\banner-lively-1080.jpg" />
     <None Remove="Assets\icon-lively-48.png" />
     <None Remove="Assets\icons8-application-window-96.png" />
+    <None Remove="Assets\icons8-cat-back-view-64.png" />
     <None Remove="Assets\icons8-github-96.png" />
     <None Remove="Assets\icons8-google-96.png" />
     <None Remove="Assets\icons8-mail-96.png" />
@@ -147,6 +148,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Update="Assets\icon-lively-48.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\icons8-cat-back-view-64.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Update="Assets\icons8-github-96.png">

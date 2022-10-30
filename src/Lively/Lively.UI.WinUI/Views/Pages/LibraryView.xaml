@@ -31,6 +31,10 @@
         <customconverters:BooleanToVisibilityConverter x:Key="VisibilityConverter" />
         <customconverters:ListViewSelectionModeStringToEnumConverter x:Key="ListViewSelectionModeStringToEnumConverter" />
         <customconverters:FloatToBoolConverter x:Key="ProgressRingIsIndeterminateConverter" />
+        <LinearGradientBrush x:Key="GridGradientBrush" StartPoint="0.5,0.25" EndPoint="0.5,1">
+            <GradientStop Offset="0" Color="#00000000" />
+            <GradientStop Offset="1" Color="{ThemeResource SystemAltHighColor}" />
+        </LinearGradientBrush>
     </Page.Resources>
 
     <Grid>
@@ -178,14 +182,10 @@
                             </animations:Explicit.Animations>
                         </Image>
 
-                        <Rectangle Grid.RowSpan="2" Grid.ColumnSpan="2">
-                            <Rectangle.Fill>
-                                <LinearGradientBrush StartPoint="0.5,0.25" EndPoint="0.5,1">
-                                    <GradientStop Offset="0" Color="#00000000" />
-                                    <GradientStop Offset="1" Color="{ThemeResource SystemAltHighColor}" />
-                                </LinearGradientBrush>
-                            </Rectangle.Fill>
-                        </Rectangle>
+                        <Rectangle
+                            Grid.RowSpan="2"
+                            Grid.ColumnSpan="2"
+                            Fill="{StaticResource GridGradientBrush}" />
 
                         <Grid
                             Grid.RowSpan="2"
