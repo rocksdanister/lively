@@ -271,7 +271,7 @@ namespace Lively.UI.WinUI.ViewModels
                     LibraryItems.Remove((LibraryModel)obj);
                     try
                     {
-                        if (string.IsNullOrEmpty(obj.LivelyInfoFolderPath))
+                        if (string.IsNullOrEmpty(obj.LivelyPropertyPath))
                             return;
 
                         //Delete LivelyProperties.json backup folder.
