@@ -1164,9 +1164,12 @@ Edge este vizualizarea web integrată a Windows 10.</value>
     <value>Temă</value>
   </data>
   <data name="IconsHidden.Message" xml:space="preserve">
-    <value>To prevent accidental selection desktop icons are currently hidden</value>
+    <value>Pentru a preveni selecția accidentală pictogramele de pe desktop sunt în prezent ascunse</value>
   </data>
   <data name="IconsHidden.Title" xml:space="preserve">
-    <value>Desktop icons</value>
+    <value>Pictograme desktop</value>
+  </data>
+  <data name="TextEndOfItems.Text" xml:space="preserve">
+    <value>That's all for now..</value>
   </data>
 </root>

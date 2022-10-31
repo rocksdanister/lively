@@ -1174,4 +1174,7 @@ Edge הוא תצוגת האינטרנט המובנית של Windows 10.</value>
   <data name="IconsHidden.Title" xml:space="preserve">
     <value>Desktop icons</value>
   </data>
+  <data name="TextEndOfItems.Text" xml:space="preserve">
+    <value>That's all for now..</value>
+  </data>
 </root>

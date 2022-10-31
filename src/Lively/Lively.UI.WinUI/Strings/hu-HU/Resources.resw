@@ -495,7 +495,7 @@ Ha még mindig nem működik, zárd be &amp; indítsd el a Livelyt újra/ indít
     <value>Váltás béta verzióra (fejlesztői csatorna)</value>
   </data>
   <data name="TextSwitchBranchOfficial" xml:space="preserve">
-    <value>Switch to stable (Default channel)</value>
+    <value>Váltás stabil-béta verzióra (alapértelmezett fejlesztői csatorna)</value>
   </data>
   <data name="TextTags" xml:space="preserve">
     <value>Címkék</value>
@@ -510,7 +510,7 @@ Ha még mindig nem működik, zárd be &amp; indítsd el a Livelyt újra/ indít
     <value>Szín</value>
   </data>
   <data name="TaskbarThemeFluent.Content" xml:space="preserve">
-    <value>Fluent</value>
+    <value>Gördülékeny</value>
   </data>
   <data name="TaskbarThemeWallpaper.Content" xml:space="preserve">
     <value>Háttérkép</value>
@@ -570,7 +570,7 @@ Ha még mindig nem működik, zárd be &amp; indítsd el a Livelyt újra/ indít
     <value>Semmi</value>
   </data>
   <data name="WallpaperFitUniform.Content" xml:space="preserve">
-    <value>Uniform</value>
+    <value>Egyenruha</value>
   </data>
   <data name="WallpaperFitUniformToFill.Content" xml:space="preserve">
     <value>Uniform Fill</value>
@@ -787,7 +787,7 @@ Az Edge a Windows 10 beépített WebView-ja (Lehetővé teszi, hogy webes tartal
     <value>Lively Felépítés</value>
   </data>
   <data name="TitleLocation" xml:space="preserve">
-    <value>Location</value>
+    <value>Pozíció</value>
   </data>
   <data name="LockscreenPicture.Header" xml:space="preserve">
     <value>Lockscreen Picture</value>
@@ -914,7 +914,7 @@ Az Edge a Windows 10 beépített WebView-ja (Lehetővé teszi, hogy webes tartal
     <value>Weboldal Betöltése</value>
   </data>
   <data name="FastUI.Description" xml:space="preserve">
-    <value>Keep User Interface running for faster startup</value>
+    <value>Tartsa futva a felhasználói felületet a gyorsabb indítás érdekében</value>
   </data>
   <data name="FastUI.Header" xml:space="preserve">
     <value>Gyors indítás</value>
@@ -1170,5 +1170,8 @@ Az Edge a Windows 10 beépített WebView-ja (Lehetővé teszi, hogy webes tartal
   </data>
   <data name="IconsHidden.Title" xml:space="preserve">
     <value>Desktop icons</value>
+  </data>
+  <data name="TextEndOfItems.Text" xml:space="preserve">
+    <value>That's all for now..</value>
   </data>
 </root>

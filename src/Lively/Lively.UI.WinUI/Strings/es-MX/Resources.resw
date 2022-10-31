@@ -130,7 +130,7 @@
     <value>Sonido</value>
   </data>
   <data name="CommunityPage.Content" xml:space="preserve">
-    <value>Foro de discusión</value>
+    <value>Foro de discusión online</value>
   </data>
   <data name="DocumentationPage.Content" xml:space="preserve">
     <value>Documentación de la API y ayuda</value>
@@ -1168,9 +1168,12 @@ Edge es la vista web integrada en Windows 10.</value>
     <value>Tema</value>
   </data>
   <data name="IconsHidden.Message" xml:space="preserve">
-    <value>To prevent accidental selection desktop icons are currently hidden</value>
+    <value>Para prevenir una seleccion accidental, los iconos del escritorio estan actualmente ocultos</value>
   </data>
   <data name="IconsHidden.Title" xml:space="preserve">
-    <value>Desktop icons</value>
+    <value>Iconos de escritorio</value>
+  </data>
+  <data name="TextEndOfItems.Text" xml:space="preserve">
+    <value>That's all for now..</value>
   </data>
 </root>
