@@ -185,7 +185,7 @@
                 VerticalAlignment="Center"
                 Orientation="Horizontal"
                 Visibility="Collapsed">
-                <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Text="That's all for now.." />
+                <TextBlock x:Uid="TextEndOfItems" Style="{ThemeResource BodyTextBlockStyle}" />
                 <BitmapIcon
                     Width="25"
                     Height="25"

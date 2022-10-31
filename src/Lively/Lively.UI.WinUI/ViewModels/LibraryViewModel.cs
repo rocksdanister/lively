@@ -269,24 +269,24 @@ namespace Lively.UI.WinUI.ViewModels
                     }
                     //remove from library.
                     LibraryItems.Remove((LibraryModel)obj);
+                    WallpaperDeleted?.Invoke(this, obj.LivelyInfo.Id);
                     try
                     {
-                        if (string.IsNullOrEmpty(obj.LivelyPropertyPath))
-                            return;
-
-                        //Delete LivelyProperties.json backup folder.
-                        string[] wpdataDir = Directory.GetDirectories(Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperSettingsDir));
-                        var wpFolderName = new DirectoryInfo(obj.LivelyInfoFolderPath).Name;
-                        for (int i = 0; i < wpdataDir.Length; i++)
+                        if (!string.IsNullOrEmpty(obj.LivelyPropertyPath))
                         {
-                            var item = new DirectoryInfo(wpdataDir[i]).Name;
-                            if (wpFolderName.Equals(item, StringComparison.Ordinal))
+                            //Delete LivelyProperties.json backup folder.
+                            string[] wpdataDir = Directory.GetDirectories(Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperSettingsDir));
+                            var wpFolderName = new DirectoryInfo(obj.LivelyInfoFolderPath).Name;
+                            for (int i = 0; i < wpdataDir.Length; i++)
                             {
-                                _ = FileOperations.DeleteDirectoryAsync(wpdataDir[i], 1000, 4000);
-                                break;
+                                var item = new DirectoryInfo(wpdataDir[i]).Name;
+                                if (wpFolderName.Equals(item, StringComparison.Ordinal))
+                                {
+                                    _ = FileOperations.DeleteDirectoryAsync(wpdataDir[i], 100, 1000);
+                                    break;
+                                }
                             }
                         }
-                        WallpaperDeleted?.Invoke(this, obj.LivelyInfo.Id);
                     }
                     catch (Exception e)
                     {
