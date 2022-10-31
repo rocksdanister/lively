@@ -1156,4 +1156,7 @@ Updates will be frequent and may contain bugs!</value>
   <data name="IconsHidden.Title" xml:space="preserve">
     <value>Desktop icons</value>
   </data>
+  <data name="TextEndOfItems.Text" xml:space="preserve">
+    <value>That's all for now..</value>
+  </data>
 </root>

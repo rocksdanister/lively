@@ -1171,4 +1171,7 @@ Edge 是 Windows 10 的內建網頁繪製元件 (Webview)。</value>
   <data name="IconsHidden.Title" xml:space="preserve">
     <value>桌面圖標</value>
   </data>
+  <data name="TextEndOfItems.Text" xml:space="preserve">
+    <value>That's all for now..</value>
+  </data>
 </root>
