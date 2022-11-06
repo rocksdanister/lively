@@ -82,15 +82,12 @@ namespace Lively.UI.WinUI.Views.Pages
             e.AcceptedOperation = DataPackageOperation.Copy;
             this.addPanel.Visibility = Visibility.Collapsed;
             this.addPanelDrop.Visibility = Visibility.Visible;
-            this.addGrid.Background = (SolidColorBrush)App.Current.Resources["SystemControlForegroundChromeMediumBrush"];
         }
 
         private void Page_DragLeave(object sender, DragEventArgs e)
         {
             this.addPanel.Visibility = Visibility.Visible;
             this.addPanelDrop.Visibility = Visibility.Collapsed;
-            this.addGrid.Background = new SolidColorBrush(Colors.Transparent);
         }
-
     }
 }

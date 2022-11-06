@@ -281,6 +281,18 @@
             x:Name="AddFilePanel"
             Background="{ThemeResource DragAcrylicBrush}"
             Visibility="Collapsed">
+            <animations:Implicit.ShowAnimations>
+                <animations:OpacityAnimation
+                    From="0"
+                    To="1.0"
+                    Duration="0:0:0.6" />
+            </animations:Implicit.ShowAnimations>
+            <animations:Implicit.HideAnimations>
+                <animations:OpacityAnimation
+                    From="1.0"
+                    To="0"
+                    Duration="0:0:0.2" />
+            </animations:Implicit.HideAnimations>
             <Rectangle
                 Margin="25"
                 Stroke="{ThemeResource SystemControlPageTextBaseMediumBrush}"

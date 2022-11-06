@@ -46,10 +46,10 @@
                 <FontIcon
                     FontSize="45"
                     Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
-                    Glyph="&#xE724;"
+                    Glyph="&#xE8C8;"
                     RenderTransformOrigin="0.5,0.5">
                     <FontIcon.RenderTransform>
-                        <RotateTransform Angle="-45" />
+                        <RotateTransform Angle="0" />
                     </FontIcon.RenderTransform>
                 </FontIcon>
                 <TextBlock
@@ -63,10 +63,10 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 Visibility="Collapsed">
-                <FontIcon
-                    FontSize="45"
-                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
-                    Glyph="&#xE710;" />
+                <ProgressRing
+                    Width="45"
+                    Height="45"
+                    IsActive="True" />
                 <TextBlock
                     x:Uid="AddWallpaperDrop"
                     Margin="0,15,0,0"
