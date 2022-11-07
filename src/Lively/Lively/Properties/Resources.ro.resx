@@ -1140,9 +1140,36 @@ Edge este vizualizarea web integrată a Windows 10.</value>
     <value>Plugin-ul nu a fost găsit</value>
   </data>
   <data name="UpdateCompleted.Text" xml:space="preserve">
-    <value>Update complete</value>
+    <value>Actualizare completă.</value>
   </data>
   <data name="UpdateWhatsNew.Text" xml:space="preserve">
-    <value>Check out what's new</value>
+    <value>Vezi ce e nou</value>
+  </data>
+  <data name="AppThemeColor.Header" xml:space="preserve">
+    <value>Culoare</value>
+  </data>
+  <data name="DescriptionDefault.Text" xml:space="preserve">
+    <value>Utilizați valoarea implicită a sistemului</value>
+  </data>
+  <data name="DescriptionDynamicTheme.Text" xml:space="preserve">
+    <value>A se adapta la fundal</value>
+  </data>
+  <data name="TextDefault.Text" xml:space="preserve">
+    <value>Implicită</value>
+  </data>
+  <data name="TextDynamicTheme.Text" xml:space="preserve">
+    <value>Dinamic</value>
+  </data>
+  <data name="Theme.Label" xml:space="preserve">
+    <value>Temă</value>
+  </data>
+  <data name="IconsHidden.Message" xml:space="preserve">
+    <value>Pentru a preveni selecția accidentală pictogramele de pe desktop sunt în prezent ascunse</value>
+  </data>
+  <data name="IconsHidden.Title" xml:space="preserve">
+    <value>Pictograme desktop</value>
+  </data>
+  <data name="TextEndOfItems.Text" xml:space="preserve">
+    <value>That's all for now..</value>
   </data>
 </root>

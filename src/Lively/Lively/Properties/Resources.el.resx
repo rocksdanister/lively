@@ -1024,7 +1024,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Export data</value>
   </data>
   <data name="GalleryAccountLogin.Content" xml:space="preserve">
-    <value>Log in</value>
+    <value>Συνδεθείτε</value>
   </data>
   <data name="GalleryAccountLogout.Content" xml:space="preserve">
     <value>Log out</value>
@@ -1148,5 +1148,32 @@ https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="UpdateWhatsNew.Text" xml:space="preserve">
     <value>Check out what's new</value>
+  </data>
+  <data name="AppThemeColor.Header" xml:space="preserve">
+    <value>Χρώμα</value>
+  </data>
+  <data name="DescriptionDefault.Text" xml:space="preserve">
+    <value>Use system default</value>
+  </data>
+  <data name="DescriptionDynamicTheme.Text" xml:space="preserve">
+    <value>Adapt to wallpaper</value>
+  </data>
+  <data name="TextDefault.Text" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="TextDynamicTheme.Text" xml:space="preserve">
+    <value>Dynamic</value>
+  </data>
+  <data name="Theme.Label" xml:space="preserve">
+    <value>Θέμα</value>
+  </data>
+  <data name="IconsHidden.Message" xml:space="preserve">
+    <value>To prevent accidental selection desktop icons are currently hidden</value>
+  </data>
+  <data name="IconsHidden.Title" xml:space="preserve">
+    <value>Desktop icons</value>
+  </data>
+  <data name="TextEndOfItems.Text" xml:space="preserve">
+    <value>That's all for now..</value>
   </data>
 </root>

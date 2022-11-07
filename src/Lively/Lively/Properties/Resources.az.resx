@@ -127,7 +127,7 @@
     <value>Əsas səs səviyyəsi</value>
   </data>
   <data name="AudioGroup.Header" xml:space="preserve">
-    <value>Audio</value>
+    <value>Səs</value>
   </data>
   <data name="CommunityPage.Content" xml:space="preserve">
     <value>Onlayn müzakirə forumu</value>
@@ -208,7 +208,7 @@
     <value>Siz Lively proqramının beta (developer) quruluşuna keçmək üzrəsiniz. Yeniləmələr tez-tez olacaq və baqlar ola bilər!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
-    <value>System-tray icon visibility, lively will continue to run with the icon hidden</value>
+    <value>Sistem tepsisi simgesinin görünməsi, canlı simvol gizlədilmiş şəkildə işləməyə davam edəcək</value>
   </data>
   <data name="HideSysTray.Header" xml:space="preserve">
     <value>Sistem tepsisi nişanı</value>
@@ -247,7 +247,7 @@
     <value>Divar kağızı oxutmaq üçün Lively arxa planda işləməlidir.</value>
   </data>
   <data name="Startup.Header" xml:space="preserve">
-    <value>Start with Windows</value>
+    <value>Windows ilə başlayın</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
     <value>Əlavə et</value>
@@ -403,7 +403,7 @@
     <value>Bütün Proseslər</value>
   </data>
   <data name="PauseAlgorithmTypeExclusiveMode.Content" xml:space="preserve">
-    <value>Direct3D</value>
+    <value>PauseAlqoritmiNövüEksklüzivMode.Məzmun</value>
   </data>
   <data name="PauseAlgorithmTypeForegroundProcess.Content" xml:space="preserve">
     <value>Ön Proses</value>
@@ -475,7 +475,7 @@
     <value>Teqlər</value>
   </data>
   <data name="TaskbarThemeBlur.Content" xml:space="preserve">
-    <value>Blur</value>
+    <value>Tapşırıq çubuğuMövzuBlur.Məzmun</value>
   </data>
   <data name="TaskbarThemeClear.Content" xml:space="preserve">
     <value>Təmiz</value>
@@ -718,7 +718,7 @@
     <value>İcma</value>
   </data>
   <data name="Debug.Header" xml:space="preserve">
-    <value>Debug</value>
+    <value>Sazlama</value>
   </data>
   <data name="TitleDeleteConfirmation" xml:space="preserve">
     <value>Silinməni təsdiqləyin</value>
@@ -733,7 +733,7 @@
     <value>Dokumentasiya</value>
   </data>
   <data name="EnterUrl.Header" xml:space="preserve">
-    <value>Enter URL</value>
+    <value>URL daxil edin</value>
   </data>
   <data name="ExportLogs.Header" xml:space="preserve">
     <value>Log Faylı</value>
@@ -763,7 +763,7 @@
     <value>Lockscreen Picture</value>
   </data>
   <data name="TitleMisc" xml:space="preserve">
-    <value>Misc</value>
+    <value>Müxtəlif</value>
   </data>
   <data name="TitleMute" xml:space="preserve">
     <value>Sustur</value>
@@ -1004,13 +1004,13 @@
     <value>Home</value>
   </data>
   <data name="GalleryPageManage.Content" xml:space="preserve">
-    <value>Manage</value>
+    <value>Idarə etmək</value>
   </data>
   <data name="GalleryPageProfile.Content" xml:space="preserve">
-    <value>Profile</value>
+    <value>Profil</value>
   </data>
   <data name="GalleryPleaseLogin.Text" xml:space="preserve">
-    <value>Please log in to continue</value>
+    <value>Davam etmək üçün daxil olun</value>
   </data>
   <data name="GalleryWelcomeMessage.Text" xml:space="preserve">
     <value>Hi</value>
@@ -1025,73 +1025,73 @@
     <value>Maybe later</value>
   </data>
   <data name="TextSelectAll.Content" xml:space="preserve">
-    <value>Select all</value>
+    <value>Hamısını seç</value>
   </data>
   <data name="TextSelectNone.Content" xml:space="preserve">
-    <value>Select none</value>
+    <value>Heç birini seçin</value>
   </data>
   <data name="TitleWelcomeback.Text" xml:space="preserve">
-    <value>Welcome back!</value>
+    <value>Yenidən xoş gəlmisiniz!</value>
   </data>
   <data name="ReportWallpaper.Header" xml:space="preserve">
-    <value>Reasons</value>
+    <value>Səbəb</value>
   </data>
   <data name="ReportWallpaperCopyright.Content" xml:space="preserve">
-    <value>Copyright violation</value>
+    <value>Müəllif hüquqlarının pozulması</value>
   </data>
   <data name="ReportWallpaperMisleading.Content" xml:space="preserve">
-    <value>Misleading information</value>
+    <value>Yanlış məlumat</value>
   </data>
   <data name="ReportWallpaperOther.Content" xml:space="preserve">
-    <value>Other</value>
+    <value>Digər</value>
   </data>
   <data name="ReportWallpaperSpam.Content" xml:space="preserve">
     <value>Spam</value>
   </data>
   <data name="ReportWallpaperViolence.Content" xml:space="preserve">
-    <value>Nudity or violence</value>
+    <value>Çılpaqlıq və ya zorakılıq</value>
   </data>
   <data name="TextAdditionalNotes.Text" xml:space="preserve">
-    <value>Additional notes</value>
+    <value>Əlavə qeydlər</value>
   </data>
   <data name="TextReportWallpaper.Text" xml:space="preserve">
-    <value>Report</value>
+    <value>Raport</value>
   </data>
   <data name="TitleReportWallpaper.Text" xml:space="preserve">
-    <value>Report Wallpaper</value>
+    <value>Raport divar kağızı</value>
   </data>
   <data name="Send.Content" xml:space="preserve">
-    <value>Send</value>
+    <value>Göndər</value>
   </data>
   <data name="GalleryAccountDeleteConfirm.Text" xml:space="preserve">
-    <value>Please confirm this action as it CAN NOT be undone</value>
+    <value>Lütfən, bu əməliyyatı təsdiq edin, çünki onu geri qaytarmaq OLMAZ</value>
   </data>
   <data name="GalleryAccountDeleteFail.Text" xml:space="preserve">
-    <value>Failed to delete account, please try again later</value>
+    <value>Hesabı silmək alınmadı, sonra yenidən cəhd edin</value>
   </data>
   <data name="TextConfirmCancel.Text" xml:space="preserve">
-    <value>Do you want to cancel it?</value>
+    <value>Ləğv etmək istəyirsiniz?</value>
   </data>
   <data name="TextWait.Text" xml:space="preserve">
-    <value>Wait</value>
+    <value>Gözləyin</value>
   </data>
   <data name="TitleDownloadProgress.Text" xml:space="preserve">
-    <value>Download in Progress</value>
+    <value>Yükləmə davam edir</value>
   </data>
   <data name="TextContributors.Text" xml:space="preserve">
-    <value>Contributors</value>
+    <value>Töhfəçilər</value>
   </data>
   <data name="TextShare.Text" xml:space="preserve">
-    <value>Share</value>
+    <value>Paylaş</value>
   </data>
   <data name="TitleShareWallpaper.Text" xml:space="preserve">
-    <value>Share Wallpaper</value>
+    <value>Divar kağızı paylaşın</value>
   </data>
   <data name="ExportWallpaperGallery.Text" xml:space="preserve">
-    <value>Gallery upload</value>
+    <value>Qalereya yükləmə</value>
   </data>
   <data name="ExportWallpaperLink.Text" xml:space="preserve">
-    <value>Copy link</value>
+    <value>Link köçürmək</value>
   </data>
   <data name="TextCustomiseWallpaper" xml:space="preserve">
     <value>Divar kağızını fərdiləşdirin</value>
@@ -1100,21 +1100,48 @@
     <value>Divar kağızlarını bağlayın</value>
   </data>
   <data name="TitleChooseApplication.Text" xml:space="preserve">
-    <value>Choose Application</value>
+    <value>Tətbiq seçin</value>
   </data>
   <data name="WallpaperInstallSize.Text" xml:space="preserve">
-    <value>Size</value>
+    <value>Həcm</value>
   </data>
   <data name="PluginNotFound.Message" xml:space="preserve">
-    <value>Please install the required plugin</value>
+    <value>Zəhmət olmasa tələb olunan plaqini quraşdırın</value>
   </data>
   <data name="PluginNotFound.Title" xml:space="preserve">
-    <value>Plugin not found</value>
+    <value>Plugin tapılmadı</value>
   </data>
   <data name="UpdateCompleted.Text" xml:space="preserve">
-    <value>Update complete</value>
+    <value>Yeniləmə tamamlandı</value>
   </data>
   <data name="UpdateWhatsNew.Text" xml:space="preserve">
-    <value>Check out what's new</value>
+    <value>Yeniliklərə baxın</value>
+  </data>
+  <data name="AppThemeColor.Header" xml:space="preserve">
+    <value>Rəng</value>
+  </data>
+  <data name="DescriptionDefault.Text" xml:space="preserve">
+    <value>Use system default</value>
+  </data>
+  <data name="DescriptionDynamicTheme.Text" xml:space="preserve">
+    <value>Adapt to wallpaper</value>
+  </data>
+  <data name="TextDefault.Text" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="TextDynamicTheme.Text" xml:space="preserve">
+    <value>Dynamic</value>
+  </data>
+  <data name="Theme.Label" xml:space="preserve">
+    <value>Mövzu</value>
+  </data>
+  <data name="IconsHidden.Message" xml:space="preserve">
+    <value>To prevent accidental selection desktop icons are currently hidden</value>
+  </data>
+  <data name="IconsHidden.Title" xml:space="preserve">
+    <value>Desktop icons</value>
+  </data>
+  <data name="TextEndOfItems.Text" xml:space="preserve">
+    <value>That's all for now..</value>
   </data>
 </root>

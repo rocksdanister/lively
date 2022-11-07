@@ -1145,4 +1145,31 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="UpdateWhatsNew.Text" xml:space="preserve">
     <value>Check out what's new</value>
   </data>
+  <data name="AppThemeColor.Header" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="DescriptionDefault.Text" xml:space="preserve">
+    <value>Use system default</value>
+  </data>
+  <data name="DescriptionDynamicTheme.Text" xml:space="preserve">
+    <value>Adapt to wallpaper</value>
+  </data>
+  <data name="TextDefault.Text" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="TextDynamicTheme.Text" xml:space="preserve">
+    <value>Dynamic</value>
+  </data>
+  <data name="Theme.Label" xml:space="preserve">
+    <value>Theme</value>
+  </data>
+  <data name="IconsHidden.Message" xml:space="preserve">
+    <value>To prevent accidental selection desktop icons are currently hidden</value>
+  </data>
+  <data name="IconsHidden.Title" xml:space="preserve">
+    <value>Desktop icons</value>
+  </data>
+  <data name="TextEndOfItems.Text" xml:space="preserve">
+    <value>That's all for now..</value>
+  </data>
 </root>

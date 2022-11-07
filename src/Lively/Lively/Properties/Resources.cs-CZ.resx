@@ -121,10 +121,10 @@
     <value>Přehrát zvuk pouze při zaměření na plochu</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
-    <value>Úroveň hlasitosti všech tapet</value>
+    <value>Úroveň hlasitosti všech pozadí </value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
-    <value>Hlasitost </value>
+    <value>Hlasitost</value>
   </data>
   <data name="AudioGroup.Header" xml:space="preserve">
     <value>Zvuk</value>
@@ -1146,5 +1146,32 @@ Po uplynutí doby nečinnosti použijte jako spořič obrazovky aktuální tapet
   </data>
   <data name="UpdateWhatsNew.Text" xml:space="preserve">
     <value>Podívejte se, co je nového</value>
+  </data>
+  <data name="AppThemeColor.Header" xml:space="preserve">
+    <value>Barva</value>
+  </data>
+  <data name="DescriptionDefault.Text" xml:space="preserve">
+    <value>Použít výchozí systémové nastavení</value>
+  </data>
+  <data name="DescriptionDynamicTheme.Text" xml:space="preserve">
+    <value>Přizpůsobit se tapetě</value>
+  </data>
+  <data name="TextDefault.Text" xml:space="preserve">
+    <value>Výchozí</value>
+  </data>
+  <data name="TextDynamicTheme.Text" xml:space="preserve">
+    <value>Dynamický</value>
+  </data>
+  <data name="Theme.Label" xml:space="preserve">
+    <value>Vzhled</value>
+  </data>
+  <data name="IconsHidden.Message" xml:space="preserve">
+    <value>Pro zamezení nežádaného využití, ikony jsou nyní skryté</value>
+  </data>
+  <data name="IconsHidden.Title" xml:space="preserve">
+    <value>Ikony na ploše</value>
+  </data>
+  <data name="TextEndOfItems.Text" xml:space="preserve">
+    <value>That's all for now..</value>
   </data>
 </root>

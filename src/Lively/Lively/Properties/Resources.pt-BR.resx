@@ -141,7 +141,7 @@
 O Explorador do Windows reiniciou duas vezes nos últimos 30 segundos! Isso pode ser um conflito entre o Lively e outro software de customização ou o Windows. Para evitar maiores problemas, todos os planos de fundo foram encerrados.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
-    <value>Programa incompatível encontrado, estilo da barra de tarefas desativado</value>
+    <value>Programa incompatível detectado, o tema da barra de tarefas foi desativado</value>
   </data>
   <data name="OfficialWebpage.Content" xml:space="preserve">
     <value>Site oficial do Lively Wallpaper</value>
@@ -149,7 +149,7 @@ O Explorador do Windows reiniciou duas vezes nos últimos 30 segundos! Isso pode
   <data name="DescOledScreensaverNotice" xml:space="preserve">
     <value>A maioria das telas LCD e LED não sofrem de burn-in e portanto qualquer plano de fundo pode ser usado como protetor de tela.
 
-Para telas OLED, Plasma ou CRT que estão sujeitos a burn-in, é recomendável usar um plano de fundo com movimento regular e aparência escura no geral, que deve reduzir o burn-in mas esta função não foi testada e sua efetividade não pode ser garantida.
+Para telas OLED, Plasma ou CRT, que estão sujeitas a burn-in, é recomendável usar um plano de fundo com movimento regular e aparência escura no geral, que deve reduzir o burn-in, mas esta função não foi testada e sua efetividade não pode ser garantida.
 
 O foco principal dos protetores de tela do Lively é adicionar mais uma camada de customização em seu PC, use protetores de tela como prevenção ao burn-in por sua conta e risco!</value>
   </data>
@@ -157,7 +157,7 @@ O foco principal dos protetores de tela do Lively é adicionar mais uma camada d
     <value>Reporte um problema com o software</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
-    <value>Selecione um arquivo</value>
+    <value>Escolha um arquivo</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
     <value>Definir o comportamento de reprodução do(s) plano(s) de fundo baseado no aplicativo ativo</value>
@@ -172,7 +172,7 @@ O foco principal dos protetores de tela do Lively é adicionar mais uma camada d
     <value>Tem certeza que deseja remover este plano de fundo da Biblioteca?</value>
   </data>
   <data name="DragDropFile.Text" xml:space="preserve">
-    <value>Simplesmente arraste os arquivos para a Biblioteca</value>
+    <value>Basta arrastar e soltar os arquivos aqui</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
     <value>Você está tentando abrir um aplicativo externo como plano de fundo.
@@ -180,7 +180,7 @@ Aplicativos maliciosos podem conter malware, vírus... que podem danificar o seu
 Prossiga apenas se confia na fonte do aplicativo.</value>
   </data>
   <data name="MinimizedTray.Text" xml:space="preserve">
-    <value>Lively está minimizado na barra de tarefas, clique com o botão direito no ícone do lively para continuar.</value>
+    <value>Lively está minimizado na barra de tarefas, clique com o botão direito no ícone do Lively para continuar</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
     <value>Reinicie o Lively para que as configurações tenham efeito</value>
@@ -261,21 +261,21 @@ https://github.com/rocksdanister/lively/wiki</value>
 Deseja restaurar os planos de fundos que estavam ativos?</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
-    <value>Parece que algumas opções precisam ser ativadas para que o Lively funcione:
+    <value>Parece que algumas configurações precisam ser feitas para que o Lively funcione corretamente:
 1. Aperte Win + R para abrir a janela de Executar.
 2. Digite "SystemPropertiesPerformance.exe" e aperte Enter para abrir as Opções de Desempenho.
 3. Ative/Marque "Animar controles e elementos no Windows" (Se já estiver marcado, então desmarque e marque de novo) &amp; Aplique.
 4. Clique em "Aplicar" e então aperte no "OK" para fechar a janela.
 
-Se estiver no Windows 7, ative "Ajustar para melhor aparência".
+Se estiver no Windows 7, ative "Ajustar para melhor aparência" &amp; Aplique.
 Se ainda não funcionar, abra o Lively novamente ou reinicie o Windows.
-(Não funciona nas versões insider do Windows 10)</value>
+(Não funciona em algumas versões insider do Windows 10)</value>
   </data>
   <data name="Startup.Description" xml:space="preserve">
     <value>O Lively precisa ser executado em segundo plano para reproduzir o plano de fundo</value>
   </data>
   <data name="Startup.Header" xml:space="preserve">
-    <value>Iniciar com o Windows</value>
+    <value>Iniciar com o windows</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
     <value>Adicionar</value>
@@ -611,13 +611,13 @@ Se ainda não funcionar, abra o Lively novamente ou reinicie o Windows.
     <value>Definir a página da web da URL selecionada como plano de fundo.</value>
   </data>
   <data name="AppFocus.Description" xml:space="preserve">
-    <value>Defina o que fazer quando algum aplicativo está em foco.</value>
+    <value>Definir o que fazer quando algum aplicativo está em foco.</value>
   </data>
   <data name="AppFullScreen.Description" xml:space="preserve">
-    <value>Defina o que fazer quando algum jogo/aplicativo está em tela cheia.</value>
+    <value>Definir o que fazer quando algum jogo/aplicativo está em tela cheia.</value>
   </data>
   <data name="AppRules.Description" xml:space="preserve">
-    <value>Defina diferentes regras de reprodução dos planos de fundo baseado no aplicativo sendo executado.</value>
+    <value>Definir diferentes regras de reprodução dos planos de fundo baseado no aplicativo sendo executado.</value>
   </data>
   <data name="TipAppTheme" xml:space="preserve">
     <value>O Lively adapta sua aparência de acordo com o tema do sistema</value>
@@ -952,7 +952,7 @@ O Edge é a webview embutida do Windows 10.</value>
     <value>Galeria</value>
   </data>
   <data name="AboutMe.Text" xml:space="preserve">
-    <value>Oi, eu sou Dani John também conhecido como rocksdanister. Desenvolvi o Lively, um aplicativo gratuito e de código aberto (FOSS) de planos de fundo. Obrigado por reservar um tempo para dar uma olhada no meu trabalho.</value>
+    <value>Olá, eu sou Dani John, também conhecido como rocksdanister. Desenvolvi o Lively, um aplicativo gratuito e de código aberto (FOSS) de planos de fundo. Obrigado por reservar seu tempo para dar uma olhada no meu trabalho.</value>
   </data>
   <data name="LicenseLink.Content" xml:space="preserve">
     <value>Licença de software</value>
@@ -1148,5 +1148,32 @@ O Edge é a webview embutida do Windows 10.</value>
   </data>
   <data name="UpdateWhatsNew.Text" xml:space="preserve">
     <value>Confira o que há de novo</value>
+  </data>
+  <data name="AppThemeColor.Header" xml:space="preserve">
+    <value>Cor</value>
+  </data>
+  <data name="DescriptionDefault.Text" xml:space="preserve">
+    <value>Usar o padrão do sistema</value>
+  </data>
+  <data name="DescriptionDynamicTheme.Text" xml:space="preserve">
+    <value>Adaptar ao plano de funo</value>
+  </data>
+  <data name="TextDefault.Text" xml:space="preserve">
+    <value>Padrão</value>
+  </data>
+  <data name="TextDynamicTheme.Text" xml:space="preserve">
+    <value>Dinâmico</value>
+  </data>
+  <data name="Theme.Label" xml:space="preserve">
+    <value>Tema</value>
+  </data>
+  <data name="IconsHidden.Message" xml:space="preserve">
+    <value>Para evitar a seleção acidental, os ícones da área de trabalho foram no momento ocultos</value>
+  </data>
+  <data name="IconsHidden.Title" xml:space="preserve">
+    <value>Ícones da Área de Trabalho</value>
+  </data>
+  <data name="TextEndOfItems.Text" xml:space="preserve">
+    <value>É tudo por enquanto.</value>
   </data>
 </root>

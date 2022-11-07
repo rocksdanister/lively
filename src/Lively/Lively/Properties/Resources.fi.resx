@@ -1145,4 +1145,31 @@ Jos ikkuna ei vieläkään toimi, sulje &amp; käynnistä eloisa uudestaan/uudel
   <data name="UpdateWhatsNew.Text" xml:space="preserve">
     <value>Katso, mikä on uutta</value>
   </data>
+  <data name="AppThemeColor.Header" xml:space="preserve">
+    <value>Väri</value>
+  </data>
+  <data name="DescriptionDefault.Text" xml:space="preserve">
+    <value>Käytä järjestelmän oletusarvoa</value>
+  </data>
+  <data name="DescriptionDynamicTheme.Text" xml:space="preserve">
+    <value>Mukauta taustakuvaksi</value>
+  </data>
+  <data name="TextDefault.Text" xml:space="preserve">
+    <value>Oletusarvo</value>
+  </data>
+  <data name="TextDynamicTheme.Text" xml:space="preserve">
+    <value>Dynaaminen</value>
+  </data>
+  <data name="Theme.Label" xml:space="preserve">
+    <value>Teema</value>
+  </data>
+  <data name="IconsHidden.Message" xml:space="preserve">
+    <value>Voit estää vahingossa valinnan työpöydän kuvakkeet ovat piilossa</value>
+  </data>
+  <data name="IconsHidden.Title" xml:space="preserve">
+    <value>Työpöydän kuvakkeet</value>
+  </data>
+  <data name="TextEndOfItems.Text" xml:space="preserve">
+    <value>Siinä kaikki tältä erää.</value>
+  </data>
 </root>
