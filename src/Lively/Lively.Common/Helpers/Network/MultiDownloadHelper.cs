@@ -21,11 +21,13 @@ namespace Lively.Common.Helpers.Network
                 BufferBlockSize = 8000, // usually, hosts support max to 8000 bytes, default values is 8000
                 ChunkCount = 1, // file parts to download, default value is 1
                 //MaximumBytesPerSecond = 1024 * 1024 * 1, // download speed limit
-                MaxTryAgainOnFailover = 100, // the maximum number of times to fail
-                OnTheFlyDownload = false, // caching in-memory or not? default values is true
+                MaxTryAgainOnFailover = 5, // the maximum number of times to fail
                 ParallelDownload = false, // download parts of file as parallel or not. Default value is false
-                //TempDirectory = "", // Set the temp path for buffering chunk files, the default path is Path.GetTempPath()
-                Timeout = 1000, // timeout (millisecond) per stream block reader, default values is 1000
+                Timeout = 3000, // timeout (millisecond) per stream block reader, default values is 1000
+                // clear package chunks data when download completed with failure, default value is false
+                ClearPackageOnCompletionWithFailure = false,
+                // Before starting the download, reserve the storage space of the file as file size, default value is false
+                ReserveStorageSpaceBeforeStartingDownload = false,
             };
 
             downloader = new DownloadService(downloadOpt);

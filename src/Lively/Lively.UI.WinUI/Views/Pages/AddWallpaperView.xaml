@@ -46,12 +46,7 @@
                 <FontIcon
                     FontSize="45"
                     Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
-                    Glyph="&#xE8C8;"
-                    RenderTransformOrigin="0.5,0.5">
-                    <FontIcon.RenderTransform>
-                        <RotateTransform Angle="0" />
-                    </FontIcon.RenderTransform>
-                </FontIcon>
+                    Glyph="&#xE8C8;" />
                 <TextBlock
                     x:Uid="DragDropFile"
                     Margin="0,15,0,0"
@@ -63,10 +58,10 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 Visibility="Collapsed">
-                <ProgressRing
-                    Width="45"
-                    Height="45"
-                    IsActive="True" />
+                <FontIcon
+                    FontSize="45"
+                    Foreground="{ThemeResource SystemAccentColor}"
+                    Glyph="&#xE8C8;" />
                 <TextBlock
                     x:Uid="AddWallpaperDrop"
                     Margin="0,15,0,0"
