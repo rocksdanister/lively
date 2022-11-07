@@ -1176,6 +1176,6 @@ Edge - встроенный в Windows 10 WebView.</value>
     <value>Ярлыки</value>
   </data>
   <data name="TextEndOfItems.Text" xml:space="preserve">
-    <value>That's all for now..</value>
+    <value>Пока это все..</value>
   </data>
 </root>

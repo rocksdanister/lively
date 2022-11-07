@@ -1151,27 +1151,27 @@ Edge Webview2は、Windowsに内蔵されたWebViewです。</value>
     <value>カラー</value>
   </data>
   <data name="DescriptionDefault.Text" xml:space="preserve">
-    <value>Use system default</value>
+    <value>システム設定に従う</value>
   </data>
   <data name="DescriptionDynamicTheme.Text" xml:space="preserve">
-    <value>Adapt to wallpaper</value>
+    <value>壁紙に合わせる</value>
   </data>
   <data name="TextDefault.Text" xml:space="preserve">
-    <value>Default</value>
+    <value>デフォルト</value>
   </data>
   <data name="TextDynamicTheme.Text" xml:space="preserve">
-    <value>Dynamic</value>
+    <value>ダイナミック</value>
   </data>
   <data name="Theme.Label" xml:space="preserve">
     <value>テーマ</value>
   </data>
   <data name="IconsHidden.Message" xml:space="preserve">
-    <value>To prevent accidental selection desktop icons are currently hidden</value>
+    <value>誤作動を防止するためデスクトップのアイコンを非表示になっています</value>
   </data>
   <data name="IconsHidden.Title" xml:space="preserve">
-    <value>Desktop icons</value>
+    <value>デスクトップのアイコン</value>
   </data>
   <data name="TextEndOfItems.Text" xml:space="preserve">
-    <value>That's all for now..</value>
+    <value>以上ですべてです</value>
   </data>
 </root>

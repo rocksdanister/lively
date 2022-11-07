@@ -1168,12 +1168,12 @@ Edge é o webview integrado do windows 10.</value>
     <value>Tema</value>
   </data>
   <data name="IconsHidden.Message" xml:space="preserve">
-    <value>To prevent accidental selection desktop icons are currently hidden</value>
+    <value>Para prevenir seleção acidental, os ícones da área de trabalho estão ocultados</value>
   </data>
   <data name="IconsHidden.Title" xml:space="preserve">
-    <value>Desktop icons</value>
+    <value>Ícones da Área de Trabalho</value>
   </data>
   <data name="TextEndOfItems.Text" xml:space="preserve">
-    <value>That's all for now..</value>
+    <value>É tudo por agora..</value>
   </data>
 </root>

@@ -184,7 +184,7 @@ Het belangrijkste doel van Lively's screensavers is om extra visuele aanpassinge
     <value>Herstart Lively om de nieuwe instellingen toe te passen. </value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
-    <value>Please stop before proceeding.</value>
+    <value>Stop alsjeblieft voordat je verder gaat</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
     <value>Druk om te beginnen met opnemen.</value>
@@ -291,7 +291,7 @@ Als dat niet werkt herstart Lively en Windows. (Werkt niet met sommige insider W
     <value>Bladeren</value>
   </data>
   <data name="Cancel.Content" xml:space="preserve">
-    <value>Annuleren</value>
+    <value>Annuleer</value>
   </data>
   <data name="TextChangeWallpaper" xml:space="preserve">
     <value>Achtergrond wijzigen</value>

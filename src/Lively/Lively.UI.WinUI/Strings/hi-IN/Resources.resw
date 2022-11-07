@@ -1051,28 +1051,28 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>हमें ये वॉलपेपर आपके खाते में मिले हैं।</value>
   </data>
   <data name="TextDownloadNow.Content" xml:space="preserve">
-    <value>Download now</value>
+    <value>अभी डाउनलोड करें</value>
   </data>
   <data name="TextMaybeLater.Content" xml:space="preserve">
-    <value>Maybe later</value>
+    <value>शायद बाद में</value>
   </data>
   <data name="TextSelectAll.Content" xml:space="preserve">
-    <value>Select all</value>
+    <value>सभी चुनें</value>
   </data>
   <data name="TextSelectNone.Content" xml:space="preserve">
-    <value>Select none</value>
+    <value>कोई नहीं चुनें</value>
   </data>
   <data name="TitleWelcomeback.Text" xml:space="preserve">
-    <value>Welcome back!</value>
+    <value>वापसी पर स्वागत है,</value>
   </data>
   <data name="ReportWallpaper.Header" xml:space="preserve">
-    <value>Reasons</value>
+    <value>कारण</value>
   </data>
   <data name="ReportWallpaperCopyright.Content" xml:space="preserve">
-    <value>Copyright violation</value>
+    <value>कॉपीराइट का उल्लंघन</value>
   </data>
   <data name="ReportWallpaperMisleading.Content" xml:space="preserve">
-    <value>Misleading information</value>
+    <value>स्पैम या भ्रामक जानकारी</value>
   </data>
   <data name="ReportWallpaperOther.Content" xml:space="preserve">
     <value>अन्य</value>
@@ -1081,7 +1081,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>अनचाही मेल (Spam)</value>
   </data>
   <data name="ReportWallpaperViolence.Content" xml:space="preserve">
-    <value>Nudity or violence</value>
+    <value>नग्नता या हिंसा</value>
   </data>
   <data name="TextAdditionalNotes.Text" xml:space="preserve">
     <value>अतिरिक्त नोट्स</value>
@@ -1096,7 +1096,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>भेजें</value>
   </data>
   <data name="GalleryAccountDeleteConfirm.Text" xml:space="preserve">
-    <value>Please confirm this action as it CAN NOT be undone</value>
+    <value>कृपया इस कार्रवाई की पुष्टि करें क्योंकि इसे पूर्ववत नहीं किया जा सकता</value>
   </data>
   <data name="GalleryAccountDeleteFail.Text" xml:space="preserve">
     <value>Failed to delete account, please try again later</value>
@@ -1174,6 +1174,6 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Desktop icons</value>
   </data>
   <data name="TextEndOfItems.Text" xml:space="preserve">
-    <value>That's all for now..</value>
+    <value>अभी के लिए बस इतना ही.</value>
   </data>
 </root>
