@@ -1151,4 +1151,31 @@ Edge - встроенный в Windows 10 WebView.</value>
   <data name="UpdateWhatsNew.Text" xml:space="preserve">
     <value>Узнайте, что нового</value>
   </data>
+  <data name="AppThemeColor.Header" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="DescriptionDefault.Text" xml:space="preserve">
+    <value>Используется по умолчанию</value>
+  </data>
+  <data name="DescriptionDynamicTheme.Text" xml:space="preserve">
+    <value>Адаптация к обоям</value>
+  </data>
+  <data name="TextDefault.Text" xml:space="preserve">
+    <value>Обычные</value>
+  </data>
+  <data name="TextDynamicTheme.Text" xml:space="preserve">
+    <value>Динамические</value>
+  </data>
+  <data name="Theme.Label" xml:space="preserve">
+    <value>Тема</value>
+  </data>
+  <data name="IconsHidden.Message" xml:space="preserve">
+    <value>Во избежание случайного выбора ярлыки рабочего стола скрыты</value>
+  </data>
+  <data name="IconsHidden.Title" xml:space="preserve">
+    <value>Ярлыки</value>
+  </data>
+  <data name="TextEndOfItems.Text" xml:space="preserve">
+    <value>Пока это все..</value>
+  </data>
 </root>

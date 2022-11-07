@@ -118,22 +118,22 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AudioFocused.Content" xml:space="preserve">
-    <value>Відтворювати аудіо тільки коли робочий стіл у фокусі</value>
+    <value>Включати аудіо тільки коли робочий стіл у фокусі</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
-    <value>Рівень гучності всіх шпалер.</value>
+    <value>Рівень гучності всіх фонів</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
     <value>Загальна гучність</value>
   </data>
   <data name="AudioGroup.Header" xml:space="preserve">
-    <value>Аудіо</value>
+    <value>Звук</value>
   </data>
   <data name="CommunityPage.Content" xml:space="preserve">
-    <value>Онлайн - форум</value>
+    <value>Онлайн дискусійний форум</value>
   </data>
   <data name="DocumentationPage.Content" xml:space="preserve">
-    <value>Документація API та допомога</value>
+    <value>API документація та допомога</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
     <value>Хай тобі грець, в Lively трапилася фатальна помилка.
@@ -1144,9 +1144,36 @@ Edge - веб-двигун з Windows 10 WebView.</value>
     <value>Плагін не знайдено.</value>
   </data>
   <data name="UpdateCompleted.Text" xml:space="preserve">
-    <value>Update complete</value>
+    <value>Оновлення завершено</value>
   </data>
   <data name="UpdateWhatsNew.Text" xml:space="preserve">
-    <value>Check out what's new</value>
+    <value>Перевірте, що нового</value>
+  </data>
+  <data name="AppThemeColor.Header" xml:space="preserve">
+    <value>Колір</value>
+  </data>
+  <data name="DescriptionDefault.Text" xml:space="preserve">
+    <value>Використовувати системні налаштування за замовчуванням</value>
+  </data>
+  <data name="DescriptionDynamicTheme.Text" xml:space="preserve">
+    <value>Адаптувати до фону</value>
+  </data>
+  <data name="TextDefault.Text" xml:space="preserve">
+    <value>За умовчанням</value>
+  </data>
+  <data name="TextDynamicTheme.Text" xml:space="preserve">
+    <value>Динамічний</value>
+  </data>
+  <data name="Theme.Label" xml:space="preserve">
+    <value>Тема</value>
+  </data>
+  <data name="IconsHidden.Message" xml:space="preserve">
+    <value>Щоб запобігти випадковому вибору, значки на робочому столі наразі приховані</value>
+  </data>
+  <data name="IconsHidden.Title" xml:space="preserve">
+    <value>Іконки робочого столу</value>
+  </data>
+  <data name="TextEndOfItems.Text" xml:space="preserve">
+    <value>Це все, що на даний момент..</value>
   </data>
 </root>

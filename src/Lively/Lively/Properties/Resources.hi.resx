@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AudioFocused.Content" xml:space="preserve">
-    <value>ऑडियो तभी चलायें जब डेस्कटॉप फोकस में हो</value>
+    <value>ऑडियो तभी चलायें जब Desktop फोकस में हो</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
     <value>सभी वॉलपेपर का वॉल्यूम स्तर।</value>
@@ -133,18 +133,16 @@
     <value>Online चर्चा मंच</value>
   </data>
   <data name="DocumentationPage.Content" xml:space="preserve">
-    <value>API documentation and help</value>
+    <value>एपीआई प्रलेखन और सहायता</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
-    <value>Lively has encountered a fatal error.
-
-Windows Explorer restarted twice in the last 30 seconds! This may be a conflict between Lively and other desktop customization software or Windows. To avoid further issues, all wallpapers are terminated.</value>
+    <value>Lively को एक घातक त्रुटि का सामना करना पड़ा है। (Fatal error)</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
     <value>Incompatible program found, taskbar theming disabled.</value>
   </data>
   <data name="OfficialWebpage.Content" xml:space="preserve">
-    <value>Official webpage of Lively Wallpaper</value>
+    <value>Lively Wallpaper का आधिकारिक वेबपेज (Official webpage)</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
     <value>अधिकांश आधुनिक एलसीडी और एलईडी डिस्प्ले बर्न-इन समस्या से ग्रस्त नहीं हैं और इसलिए किसी भी वॉलपेपर को स्क्रीनसेवर के रूप में इस्तेमाल किया जा सकता है।
@@ -154,7 +152,7 @@ OLED, प्लाज्मा या CRT डिस्प्ले के लि
 लाइवली के स्क्रीनसेवर का मुख्य उद्देश्य अपने पीसी में अनुकूलन की एक और परत जोड़ना है, स्क्रीनसेवर को अपने जोखिम पर बर्न-इन सुरक्षा के रूप में उपयोग करना है!</value>
   </data>
   <data name="ReportBugPage.Content" xml:space="preserve">
-    <value>Report a problem with the software</value>
+    <value>Software के साथ समस्या की रिपोर्ट करें।</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
     <value>एक फ़ाइल का चयन करें या वॉलपेपर के रूप में सेट करने के लिए एक वेबसाइट URL निर्दिष्ट करें।</value>
@@ -210,14 +208,14 @@ OLED, प्लाज्मा या CRT डिस्प्ले के लि
     <value>विंडोज एन / केएन के आपके संस्करण को वॉलपेपर पर वीडियो प्लेबैक का समर्थन करने के लिए अतिरिक्त कोडेक्स के डाउनलोड की आवश्यकता होगी।</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
-    <value>Show support by buying the developer coffee</value>
+    <value>Developer के लिए कॉफी खरीदकर समर्थन दिखाएं।</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
-    <value>You are about to change to beta (developer) build of Lively.
-Updates will be frequent and may contain bugs!</value>
+    <value>आप Lively के Beta Build में बदलने वाले हैं।
+अपडेट लगातार होंगे और इसमें गलतियाँ (Bugs) भी हो सकती हैं!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
-    <value>System-tray icon visibility, lively will continue to run with the icon hidden</value>
+    <value>Syste-tray icon visibility (दृश्यता), Lively छिपाकर पिछे चलता रहेगा।</value>
   </data>
   <data name="HideSysTray.Header" xml:space="preserve">
     <value>सिस्टम ट्रे आइकन</value>
@@ -302,7 +300,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>रद्द करना</value>
   </data>
   <data name="TextChangeWallpaper" xml:space="preserve">
-    <value>Change Wallpapers</value>
+    <value>वॉलपेपर बदलें</value>
   </data>
   <data name="TextClose" xml:space="preserve">
     <value>बंद करना</value>
@@ -344,7 +342,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>डाउनलोड</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
-    <value>Edit</value>
+    <value>संपादित (Edit)</value>
   </data>
   <data name="TextError" xml:space="preserve">
     <value>त्रुटि</value>
@@ -365,7 +363,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>एनिमेटेड GIF</value>
   </data>
   <data name="GitHubStar.Content" xml:space="preserve">
-    <value>Show some love by dropping a star</value>
+    <value>रेटिंग (Rating) के आधार पर कुछ प्यार दिखाएं</value>
   </data>
   <data name="TextGo" xml:space="preserve">
     <value> चले</value>
@@ -383,10 +381,10 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>कीबोर्ड</value>
   </data>
   <data name="TextLastChecked" xml:space="preserve">
-    <value>Last checked</value>
+    <value>आखिरी जाँच किया गया था</value>
   </data>
   <data name="TextLearnMore.Text" xml:space="preserve">
-    <value>Learn more</value>
+    <value>अधिक जानें</value>
   </data>
   <data name="License.Header" xml:space="preserve">
     <value>लाइसेंस</value>
@@ -496,31 +494,31 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>मर्थन</value>
   </data>
   <data name="TextSwitchBranchDev" xml:space="preserve">
-    <value>Switch to beta (Dev channel)</value>
+    <value>Beta पर प्रस्थान करें (Testing Channel)</value>
   </data>
   <data name="TextSwitchBranchOfficial" xml:space="preserve">
-    <value>Switch to stable (Default channel)</value>
+    <value>Stable पर प्रस्थान करें (Default Channel)</value>
   </data>
   <data name="TextTags" xml:space="preserve">
     <value>टैग</value>
   </data>
   <data name="TaskbarThemeBlur.Content" xml:space="preserve">
-    <value>Blur</value>
+    <value>धुंधला करें</value>
   </data>
   <data name="TaskbarThemeClear.Content" xml:space="preserve">
-    <value>Clear</value>
+    <value>साफ़ करें</value>
   </data>
   <data name="TaskbarThemeColor.Content" xml:space="preserve">
-    <value>Color</value>
+    <value>रंग बदलें</value>
   </data>
   <data name="TaskbarThemeFluent.Content" xml:space="preserve">
-    <value>Fluent</value>
+    <value>धाराप्रवाह करें (Fluent)</value>
   </data>
   <data name="TaskbarThemeWallpaper.Content" xml:space="preserve">
-    <value>Wallpaper</value>
+    <value>वॉलपेपर करें</value>
   </data>
   <data name="TaskbarThemeWallpaperFluent.Content" xml:space="preserve">
-    <value>Wallpaper Fluent</value>
+    <value>वॉलपेपर धाराप्रवाह करें (Fluent)</value>
   </data>
   <data name="TextTileSizeLarge" xml:space="preserve">
     <value>विशाल</value>
@@ -565,7 +563,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>वीडियो</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>Enter optional commandline arguments</value>
+    <value>वैकल्पिक (Optional) कमांडलाइन तर्क (Arguments) दर्ज करें</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>भरण</value>
@@ -658,10 +656,10 @@ https://github.com/rocksdanister/lively/wiki</value>
 संपूर्ण प्रक्रिया: भारी, प्रजनन व्यवहार का निर्धारण करने के लिए पूरी प्रक्रिया का विश्लेषण।</value>
   </data>
   <data name="PowerSavingModePower.Description" xml:space="preserve">
-    <value>Change playback when Windows Power Saving Mode is enabled</value>
+    <value>प्लेबैक बदलें जब Windows Power Saving चल रहा है</value>
   </data>
   <data name="RemoteDesktopPower.Description" xml:space="preserve">
-    <value>Change playback when running a Remote Desktop session</value>
+    <value>प्लेबैक बदलें जब Remote Desktop session चल रहा हो</value>
   </data>
   <data name="TipScreensaver" xml:space="preserve">
     <value>After the selected inactivity period use the current wallpaper as your screensaver.</value>
@@ -746,7 +744,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>डिबग पोर्ट</value>
   </data>
   <data name="TitleChangelog" xml:space="preserve">
-    <value>Changelog</value>
+    <value>परिवर्तन पत्र (Changelog)</value>
   </data>
   <data name="Community.Header" xml:space="preserve">
     <value>समुदाय</value>
@@ -767,10 +765,10 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>दस्तावेज़ीकरण</value>
   </data>
   <data name="EnterUrl.Header" xml:space="preserve">
-    <value>Enter URL</value>
+    <value>URL दर्ज करें</value>
   </data>
   <data name="ExportLogs.Header" xml:space="preserve">
-    <value>Log File</value>
+    <value>लॉग फ़ाइल (Log)</value>
   </data>
   <data name="TitleGeneral" xml:space="preserve">
     <value>सामान्य</value>
@@ -791,7 +789,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>एनिमेटेड सेटिंग्स</value>
   </data>
   <data name="TitleLocation" xml:space="preserve">
-    <value>Location</value>
+    <value>स्थान</value>
   </data>
   <data name="LockscreenPicture.Header" xml:space="preserve">
     <value>Lockscreen Picture</value>
@@ -815,13 +813,13 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>कृपया प्रतीक्षा करें</value>
   </data>
   <data name="PowerSavingModePower.Header" xml:space="preserve">
-    <value>When on Battery Saver</value>
+    <value>बैटरी सेवर पे होने पर</value>
   </data>
   <data name="RemoteDesktopPower.Header" xml:space="preserve">
-    <value>When on Remote Desktop</value>
+    <value>Remote Desktop पे होने पर</value>
   </data>
   <data name="ReportBug.Header" xml:space="preserve">
-    <value>Report Bug</value>
+    <value>बग रिपोर्ट करें (Bug)</value>
   </data>
   <data name="TitleScalingFit" xml:space="preserve">
     <value>स्केल / समायोजित करें</value>
@@ -830,10 +828,10 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>कंट्रोल पैनल</value>
   </data>
   <data name="TitleScreensaver" xml:space="preserve">
-    <value>Screensaver</value>
+    <value>स्क्रीन सेवर</value>
   </data>
   <data name="TitleScreensaverLockOnResume" xml:space="preserve">
-    <value>On resume, display logon screen</value>
+    <value>फिर से शुरू करने पर, लॉगऑन (Logon) स्क्रीन प्रदर्शन किया जाए</value>
   </data>
   <data name="TitleSelectFile" xml:space="preserve">
     <value>फ़ाइल का चयन करें</value>
@@ -842,10 +840,10 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>समायोजन</value>
   </data>
   <data name="TitleSkipConfirm" xml:space="preserve">
-    <value>Skip Confirmation</value>
+    <value>पुष्टि (Confirmation) करना छोड़कर आगे बढ़ें</value>
   </data>
   <data name="SourceCode.Header" xml:space="preserve">
-    <value>Source Code</value>
+    <value>स्रोत (Source) कोड</value>
   </data>
   <data name="Store.Header" xml:space="preserve">
     <value>दुकान</value>
@@ -861,10 +859,10 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>विडियो की गुणवत्ता</value>
   </data>
   <data name="System.Header" xml:space="preserve">
-    <value>System</value>
+    <value>प्रणाली (System)</value>
   </data>
   <data name="TaskbarTheme.Header" xml:space="preserve">
-    <value>Taskbar Theme</value>
+    <value>Taskbar थीम</value>
   </data>
   <data name="TitleTileSize" xml:space="preserve">
     <value>शीर्षक आकार</value>
@@ -873,7 +871,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>प्रयोक्ता इंटरफ़ेस</value>
   </data>
   <data name="TitleUpdates" xml:space="preserve">
-    <value>Updates</value>
+    <value>अपडेटस (Updates)</value>
   </data>
   <data name="TitleVideo" xml:space="preserve">
     <value>वीडियो</value>
@@ -918,58 +916,58 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>लोड वेब पेज</value>
   </data>
   <data name="FastUI.Description" xml:space="preserve">
-    <value>Keep User Interface running for faster startup</value>
+    <value>Faster Startup चलने पर User Interface रखें</value>
   </data>
   <data name="FastUI.Header" xml:space="preserve">
-    <value>Fast startup</value>
+    <value>जल्दी शुरुआत करें (Startup)</value>
   </data>
   <data name="WallpaperDirGroup.Header" xml:space="preserve">
-    <value>File</value>
+    <value>फ़ाइल</value>
   </data>
   <data name="AppThemeDark.Content" xml:space="preserve">
-    <value>Dark</value>
+    <value>डार्क</value>
   </data>
   <data name="AppThemeLight.Content" xml:space="preserve">
-    <value>Light</value>
+    <value>लाइट</value>
   </data>
   <data name="AppThemeSystem.Content" xml:space="preserve">
-    <value>System</value>
+    <value>प्रणाली (System)</value>
   </data>
   <data name="WindowsSettingsColor.Content" xml:space="preserve">
-    <value>Windows color settings</value>
+    <value>Windows Color स्थापना (Settings)</value>
   </data>
   <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
-    <value>Laptops</value>
+    <value>लैपटॉपस</value>
   </data>
   <data name="DeveloperGroup.Header" xml:space="preserve">
-    <value>Developer</value>
+    <value>डेवलपर</value>
   </data>
   <data name="AppearanceBehaviour.Header" xml:space="preserve">
-    <value>Appearance &amp; behavior</value>
+    <value>दिखावट/सूरत व व्यवहार</value>
   </data>
   <data name="ActiveWallpapers.Label" xml:space="preserve">
-    <value>Active Wallpaper(s)</value>
+    <value>वॉलपेपर(स) जो चल रहे हैं</value>
   </data>
   <data name="TitleGallery" xml:space="preserve">
-    <value>Gallery</value>
+    <value>गैलरी</value>
   </data>
   <data name="AboutMe.Text" xml:space="preserve">
-    <value>Hi, I'm Dani John also known as rocksdanister. I developed Lively a Free and open-source (FOSS) wallpaper application. Thanks for taking the time to look at my work.</value>
+    <value>नमस्ते, मैं डैनी जॉन हूं जिसे रॉक्सडेनिस्टर के नाम से भी जाना जाता है। मैंने ही 'लाइवली वॉलपेपर' एप्लिकेशन को फ्री और ओपन-सोर्स (FOSS) बनाया है। मेरे काम को देखने के लिए समय निकालने के लिए धन्यवाद।</value>
   </data>
   <data name="LicenseLink.Content" xml:space="preserve">
-    <value>Software license</value>
+    <value>सॉफ़्टवेयर (Software) लाइसेंस</value>
   </data>
   <data name="AttributionLink.Content" xml:space="preserve">
-    <value>Third party software notice</value>
+    <value>थर्ड-पार्टी सॉफ्टवेयर नोटिस</value>
   </data>
   <data name="PrivacyPolicyLink.Content" xml:space="preserve">
-    <value>Data collection policy</value>
+    <value>डेटा संग्रह (Collection) नीति (Policy)</value>
   </data>
   <data name="AddWallpaperDrop.Text" xml:space="preserve">
-    <value>Add wallpaper</value>
+    <value>वॉलपेपर जोड़ें</value>
   </data>
   <data name="ComingSoon.Text" xml:space="preserve">
-    <value>Coming soon</value>
+    <value>जल्द आ रहा है</value>
   </data>
   <data name="AboutMenu.Text" xml:space="preserve">
     <value>के बारे में</value>
@@ -978,16 +976,16 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>वेबसाइट</value>
   </data>
   <data name="TextOpen.Content" xml:space="preserve">
-    <value>Open</value>
+    <value>खोलें</value>
   </data>
   <data name="TextSave.Content" xml:space="preserve">
-    <value>Save</value>
+    <value>सेव करें</value>
   </data>
   <data name="UIMode.Description" xml:space="preserve">
-    <value>User interface effects and animations</value>
+    <value>उपयोगकर्ता इंटरफेस प्रभाव और एनीमेशन</value>
   </data>
   <data name="UIMode.Header" xml:space="preserve">
-    <value>User interface</value>
+    <value>उपयोगकर्ता इंटरफेस</value>
   </data>
   <data name="UIModeLite.Content" xml:space="preserve">
     <value>हल्का</value>
@@ -996,109 +994,109 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>साधारण</value>
   </data>
   <data name="Screensaver.Description" xml:space="preserve">
-    <value>How screensaver is applied to connected to display devices</value>
+    <value>स्क्रीनसेवर को कनेक्टेड डिस्प्ले डिवाइस पर कैसे लागू किया जाता है?</value>
   </data>
   <data name="Screensaver.Header" xml:space="preserve">
-    <value>Type of screensaver</value>
+    <value>स्क्रीनसेवर का प्रकार</value>
   </data>
   <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
-    <value>Configured separately</value>
+    <value>अलग से कॉन्फ़िगर किया गया</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
-    <value>Same as running wallpaper</value>
+    <value>वॉलपेपर चलाने के समान</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
-    <value>Plugin required</value>
+    <value>प्लगइन आवश्यक</value>
   </data>
   <data name="ScreensaverPluginMessage.Text" xml:space="preserve">
-    <value>One time setup is required to run screensaver</value>
+    <value>स्क्रीनसेवर चलाने के लिए वन टाइम सेटअप आवश्यक है</value>
   </data>
   <data name="WallpaperLayoutScreenPicker.Content" xml:space="preserve">
-    <value>Always pick screen when choosing wallpaper</value>
+    <value>वॉलपेपर चुनते समय हमेशा स्क्रीन चुनें</value>
   </data>
   <data name="GalleryAccount.Text" xml:space="preserve">
-    <value>Account</value>
+    <value>खाता</value>
   </data>
   <data name="GalleryAccountDelete.Content" xml:space="preserve">
-    <value>Delete account</value>
+    <value>खाता हटाएँ</value>
   </data>
   <data name="GalleryAccountExport.Content" xml:space="preserve">
-    <value>Export data</value>
+    <value>डेटा एक्सपोर्ट करें</value>
   </data>
   <data name="GalleryAccountLogin.Content" xml:space="preserve">
-    <value>Log in</value>
+    <value>लॉग इन करें</value>
   </data>
   <data name="GalleryAccountLogout.Content" xml:space="preserve">
-    <value>Log out</value>
+    <value>लॉग आउट करें</value>
   </data>
   <data name="GalleryPageCollection.Content" xml:space="preserve">
-    <value>Collection</value>
+    <value>संग्रह (Collection)</value>
   </data>
   <data name="GalleryPageHome.Content" xml:space="preserve">
-    <value>Home</value>
+    <value>होमपेज</value>
   </data>
   <data name="GalleryPageManage.Content" xml:space="preserve">
-    <value>Manage</value>
+    <value>मैनेज करें</value>
   </data>
   <data name="GalleryPageProfile.Content" xml:space="preserve">
-    <value>Profile</value>
+    <value>प्रोफ़ाइल</value>
   </data>
   <data name="GalleryPleaseLogin.Text" xml:space="preserve">
-    <value>Please log in to continue</value>
+    <value>आगे बढ़ने के लिए लॉगिन करें</value>
   </data>
   <data name="GalleryWelcomeMessage.Text" xml:space="preserve">
-    <value>Hi</value>
+    <value>नमस्ते</value>
   </data>
   <data name="RestoreWallpaper.Text" xml:space="preserve">
-    <value>We found these wallpapers in your account</value>
+    <value>हमें ये वॉलपेपर आपके खाते में मिले हैं।</value>
   </data>
   <data name="TextDownloadNow.Content" xml:space="preserve">
-    <value>Download now</value>
+    <value>अभी डाउनलोड करें</value>
   </data>
   <data name="TextMaybeLater.Content" xml:space="preserve">
-    <value>Maybe later</value>
+    <value>शायद बाद में</value>
   </data>
   <data name="TextSelectAll.Content" xml:space="preserve">
-    <value>Select all</value>
+    <value>सभी चुनें</value>
   </data>
   <data name="TextSelectNone.Content" xml:space="preserve">
-    <value>Select none</value>
+    <value>कोई नहीं चुनें</value>
   </data>
   <data name="TitleWelcomeback.Text" xml:space="preserve">
-    <value>Welcome back!</value>
+    <value>वापसी पर स्वागत है,</value>
   </data>
   <data name="ReportWallpaper.Header" xml:space="preserve">
-    <value>Reasons</value>
+    <value>कारण</value>
   </data>
   <data name="ReportWallpaperCopyright.Content" xml:space="preserve">
-    <value>Copyright violation</value>
+    <value>कॉपीराइट का उल्लंघन</value>
   </data>
   <data name="ReportWallpaperMisleading.Content" xml:space="preserve">
-    <value>Misleading information</value>
+    <value>स्पैम या भ्रामक जानकारी</value>
   </data>
   <data name="ReportWallpaperOther.Content" xml:space="preserve">
-    <value>Other</value>
+    <value>अन्य</value>
   </data>
   <data name="ReportWallpaperSpam.Content" xml:space="preserve">
-    <value>Spam</value>
+    <value>अनचाही मेल (Spam)</value>
   </data>
   <data name="ReportWallpaperViolence.Content" xml:space="preserve">
-    <value>Nudity or violence</value>
+    <value>नग्नता या हिंसा</value>
   </data>
   <data name="TextAdditionalNotes.Text" xml:space="preserve">
-    <value>Additional notes</value>
+    <value>अतिरिक्त नोट्स</value>
   </data>
   <data name="TextReportWallpaper.Text" xml:space="preserve">
-    <value>Report</value>
+    <value>रिपोर्ट</value>
   </data>
   <data name="TitleReportWallpaper.Text" xml:space="preserve">
-    <value>Report Wallpaper</value>
+    <value>रिपोर्ट वॉलपेपर</value>
   </data>
   <data name="Send.Content" xml:space="preserve">
-    <value>Send</value>
+    <value>भेजें</value>
   </data>
   <data name="GalleryAccountDeleteConfirm.Text" xml:space="preserve">
-    <value>Please confirm this action as it CAN NOT be undone</value>
+    <value>कृपया इस कार्रवाई की पुष्टि करें क्योंकि इसे पूर्ववत नहीं किया जा सकता</value>
   </data>
   <data name="GalleryAccountDeleteFail.Text" xml:space="preserve">
     <value>Failed to delete account, please try again later</value>
@@ -1107,7 +1105,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Do you want to cancel it?</value>
   </data>
   <data name="TextWait.Text" xml:space="preserve">
-    <value>Wait</value>
+    <value>प्रतीक्षा करें</value>
   </data>
   <data name="TitleDownloadProgress.Text" xml:space="preserve">
     <value>Download in Progress</value>
@@ -1150,5 +1148,32 @@ https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="UpdateWhatsNew.Text" xml:space="preserve">
     <value>Check out what's new</value>
+  </data>
+  <data name="AppThemeColor.Header" xml:space="preserve">
+    <value>रंग बदलें</value>
+  </data>
+  <data name="DescriptionDefault.Text" xml:space="preserve">
+    <value>Use system default</value>
+  </data>
+  <data name="DescriptionDynamicTheme.Text" xml:space="preserve">
+    <value>Adapt to wallpaper</value>
+  </data>
+  <data name="TextDefault.Text" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="TextDynamicTheme.Text" xml:space="preserve">
+    <value>Dynamic</value>
+  </data>
+  <data name="Theme.Label" xml:space="preserve">
+    <value>अंतर्वस्तु</value>
+  </data>
+  <data name="IconsHidden.Message" xml:space="preserve">
+    <value>To prevent accidental selection desktop icons are currently hidden</value>
+  </data>
+  <data name="IconsHidden.Title" xml:space="preserve">
+    <value>Desktop icons</value>
+  </data>
+  <data name="TextEndOfItems.Text" xml:space="preserve">
+    <value>अभी के लिए बस इतना ही.</value>
   </data>
 </root>

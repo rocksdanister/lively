@@ -118,16 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AudioFocused.Content" xml:space="preserve">
-    <value>پخش صدا وقتي دسکتاپ تحت تمرکز است.</value>
+    <value>صدا را فقط زمانی پخش کن که دسکتاپ فوکوس شده باشد</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
-    <value>میزان صدای همه پس زمینه ها</value>
+    <value>میزان صدای همه پس‌زمینه‌ها</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
-    <value>صدای اصلی</value>
+    <value>درجه صدا</value>
   </data>
   <data name="AudioGroup.Header" xml:space="preserve">
-    <value>صدا</value>
+    <value>صوتی</value>
   </data>
   <data name="CommunityPage.Content" xml:space="preserve">
     <value>انجمن گفتگوی آنلاین</value>
@@ -136,9 +136,9 @@
     <value>مستندات و راهنمای API</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
-    <value>Lively has encountered a fatal error.
+    <value>Lively با یک خطای مهلک مواجه شده است.
 
-Windows Explorer restarted twice in the last 30 seconds! This may be a conflict between Lively and other desktop customization software or Windows. To avoid further issues, all wallpapers are terminated.</value>
+Windows Explorer دو بار در 30 ثانیه گذشته راه‌اندازی مجدد شد! این ممکن است تضاد بین Lively و سایر نرم افزارهای سفارشی‌سازی دسکتاپ یا ویندوز باشد. برای جلوگیری از مشکلات بیشتر، تمام تصاویر زمینه بسته می‌شوند.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
     <value>Incompatible program found, taskbar theming disabled.</value>
@@ -147,11 +147,11 @@ Windows Explorer restarted twice in the last 30 seconds! This may be a conflict 
     <value>وبسایت رسمی Lively Wallpaper</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
-    <value>Most modern LCD and LED displays do not suffer from burn-in issue and therefore any wallpaper can be used as screensaver.
+    <value>اکثر نمایشگرهای LCD و LED مدرن مشکل سوختگی پیکسل ندارند و بنابراین می‎‌توان از هر تصویر زمینه به عنوان محافظ صفحه استفاده کرد.
 
-For OLED, Plasma or CRT displays which are susceptibe to burn-in it is advised to use wallpaper with regular motion and an overall dark theme which is supposed to mitigate burn-in but this feature is untested and its effectiveness cannot be guaranteed.
+برای نمایشگرهای OLED، پلاسما یا CRT که مستعد سوختن هستند، توصیه می‌شود از تصاویر زمینه با حرکت منظم و تم کلی تیره استفاده کنید که سوختگی پیکسل را کاهش می‌دهد، اما این ویژگی آزمایش نشده است و نمی‌توان کارایی آن را تضمین کرد.
 
-The main purpose of Lively's screensavers is to add another layer of customization to your pc, use screensavers as burn-in protection at your own risk!</value>
+هدف اصلی محافظ‌های صفحه نمایش Lively اضافه کردن لایه دیگری از سفارشی‌سازی به رایانه شما است، از محافظ‌های صفحه نمایش به عنوان محافظت در برابر سوختگی پیکسل با مسئولیت خود استفاده کنید!</value>
   </data>
   <data name="ReportBugPage.Content" xml:space="preserve">
     <value>گزارش مشکل درباره نرم‌افزار</value>
@@ -208,14 +208,14 @@ The main purpose of Lively's screensavers is to add another layer of customizati
     <value>براي اجراي ويديو در پس زمينه نسخه ويندوز شما نيازمند دانلود چند برنامه است.</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
-    <value>Show support by buying the developer coffee</value>
+    <value>با خرید قهوه برای توسعه‌دهنده حمایت خود را نشان دهید</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
-    <value>You are about to change to beta (developer) build of Lively.
-Updates will be frequent and may contain bugs!</value>
+    <value>شما در شرف تغییر به نسخه بتا (توسعه‌دهنده) Lively هستید.
+به‌روزرسانی‌ها مکرر خواهد بود و ممکن است حاوی اِشکال باشند!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
-    <value>System-tray icon visibility, lively will continue to run with the icon hidden</value>
+    <value>مشاهده آیکون سیستم، lively با آیکون پنهان به کار خود ادامه می دهد</value>
   </data>
   <data name="HideSysTray.Header" xml:space="preserve">
     <value>آیکون سیستم تری</value>
@@ -280,61 +280,61 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>اضافه</value>
   </data>
   <data name="TextAllFiles" xml:space="preserve">
-    <value>همه فايل ها</value>
+    <value>همه فايل‌ها</value>
   </data>
   <data name="Application.Header" xml:space="preserve">
     <value>برنامه</value>
   </data>
   <data name="Attribution.Header" xml:space="preserve">
-    <value>صفات</value>
+    <value>خصوصیات</value>
   </data>
   <data name="Author.Text" xml:space="preserve">
-    <value>سازنده</value>
+    <value>مؤلف</value>
   </data>
   <data name="TextBack" xml:space="preserve">
-    <value>برگشت</value>
+    <value>بازگشت</value>
   </data>
   <data name="TextBrowse" xml:space="preserve">
-    <value>مرور فايل ها</value>
+    <value>جستجو</value>
   </data>
   <data name="Cancel.Content" xml:space="preserve">
-    <value>لغو</value>
+    <value>انصراف</value>
   </data>
   <data name="TextChangeWallpaper" xml:space="preserve">
-    <value>تغییر پس زمینه</value>
+    <value>تغییر تصویر پس‌زمینه</value>
   </data>
   <data name="TextClose" xml:space="preserve">
     <value>بستن</value>
   </data>
   <data name="CloseWallpapers.Label" xml:space="preserve">
-    <value>بستن کاغذ ديواري ها</value>
+    <value>بستن</value>
   </data>
   <data name="TextCompleted" xml:space="preserve">
-    <value>تمام شد!</value>
+    <value>تکمیل شد!</value>
   </data>
   <data name="ControlPanel.Subtitle" xml:space="preserve">
-    <value>اينجا کليک کنيد تا کاغذ ديواري ها را مديريت کنيد.</value>
+    <value>اينجا کليک کنيد تا تصاویر پس‌زمینه را مديريت کنيد</value>
   </data>
   <data name="TextConvertVideo" xml:space="preserve">
     <value>تبديل به ويديو</value>
   </data>
   <data name="TextCreatePreview" xml:space="preserve">
-    <value>ساختن پيش نمايش</value>
+    <value>ساختن پيش‌نمايش</value>
   </data>
   <data name="Customise.Text" xml:space="preserve">
-    <value>شخصي سازي</value>
+    <value>سفارشی‌سازی</value>
   </data>
   <data name="CustomiseWallpaper.Label" xml:space="preserve">
-    <value>شخصي سازي کاغذ ديواري</value>
+    <value>سفارشی‌سازی</value>
   </data>
   <data name="DeleteWallpaper.Text" xml:space="preserve">
     <value>حذف</value>
   </data>
   <data name="Description.Text" xml:space="preserve">
-    <value>توضيحات</value>
+    <value>توضیحات</value>
   </data>
   <data name="DisplayPauseRuleAllScreen.Content" xml:space="preserve">
-    <value>کل صفحه</value>
+    <value>تمام صفحات</value>
   </data>
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>برای هر صفحه</value>
@@ -352,19 +352,19 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>خروج</value>
   </data>
   <data name="ExportWallpaperZip.Text" xml:space="preserve">
-    <value>استخراج فایل zip لایولی</value>
+    <value>ذخیره در فایل</value>
   </data>
   <data name="TextFeatureMissing" xml:space="preserve">
-    <value>بعضي از قابليت ها در اين نسخه از لايولي وجود ندارد.</value>
+    <value>برخی قابليت‌ها در اين نسخه از Lively وجود ندارد</value>
   </data>
   <data name="TextFileNotFound" xml:space="preserve">
-    <value>فايل پيدا نشد.</value>
+    <value>فايل پيدا نشد</value>
   </data>
   <data name="TextGIF" xml:space="preserve">
-    <value>گيف محرک</value>
+    <value>GIF متحرک</value>
   </data>
   <data name="GitHubStar.Content" xml:space="preserve">
-    <value>Show some love by dropping a star</value>
+    <value>با دادن ستاره علاقه‌تان را نشان دهید</value>
   </data>
   <data name="TextGo" xml:space="preserve">
     <value>برو</value>
@@ -493,10 +493,10 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>پشتیبانی</value>
   </data>
   <data name="TextSwitchBranchDev" xml:space="preserve">
-    <value>Switch to beta (Dev channel)</value>
+    <value>رفتن به نسخه بتا (کانال توسعه‌دهنده)</value>
   </data>
   <data name="TextSwitchBranchOfficial" xml:space="preserve">
-    <value>Switch to stable (Default channel)</value>
+    <value>تغییر به نسخه پایدار (کانال پیش‌فرض)</value>
   </data>
   <data name="TextTags" xml:space="preserve">
     <value>برچسب ها</value>
@@ -517,7 +517,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>پس زمینه</value>
   </data>
   <data name="TaskbarThemeWallpaperFluent.Content" xml:space="preserve">
-    <value>Wallpaper Fluent</value>
+    <value>تصویر زمینه Fluent</value>
   </data>
   <data name="TextTileSizeLarge" xml:space="preserve">
     <value>بزرگ</value>
@@ -562,7 +562,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>ویدیو</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>Enter optional commandline arguments</value>
+    <value>آرگومان‌های اختیاری خط فرمان را وارد کنید</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>پر کردن</value>
@@ -655,10 +655,10 @@ All: مکث تصوير زمينه در همه ي صفحه(ها) اگر هر بر
 همه ي پردازش ها: سنگین تر ، برای تعیین رفتار پخش ، تمام پردازش را اسکن می کند.</value>
   </data>
   <data name="PowerSavingModePower.Description" xml:space="preserve">
-    <value>Change playback when Windows Power Saving Mode is enabled</value>
+    <value>هنگامی که حالت ذخیره انرژی ویندوز فعال است، پخش را تغییر بده</value>
   </data>
   <data name="RemoteDesktopPower.Description" xml:space="preserve">
-    <value>Change playback when running a Remote Desktop session</value>
+    <value>هنگام اجرای یک جلسه دسکتاپ از راه دور، پخش را تغییر بده</value>
   </data>
   <data name="TipScreensaver" xml:space="preserve">
     <value>After the selected inactivity period use the current wallpaper as your screensaver.</value>
@@ -815,7 +815,7 @@ Edge is the built in webview of windows 10.</value>
     <value>وقتی که بهینه‌ساز باتری فعال است</value>
   </data>
   <data name="RemoteDesktopPower.Header" xml:space="preserve">
-    <value>When on Remote Desktop</value>
+    <value>وقتی روی دسکتاپ از راه دور هستید</value>
   </data>
   <data name="ReportBug.Header" xml:space="preserve">
     <value>گزارش اشکال</value>
@@ -827,10 +827,10 @@ Edge is the built in webview of windows 10.</value>
     <value>صفحه کنترل</value>
   </data>
   <data name="TitleScreensaver" xml:space="preserve">
-    <value>Screensaver</value>
+    <value>محافظ صفحه‌نمایش</value>
   </data>
   <data name="TitleScreensaverLockOnResume" xml:space="preserve">
-    <value>On resume, display logon screen</value>
+    <value>هنگام ادامه‌دادن، صفحه ورود به سیستم را نمایش بده</value>
   </data>
   <data name="TitleSelectFile" xml:space="preserve">
     <value>انتخاب فایل</value>
@@ -861,7 +861,7 @@ Edge is the built in webview of windows 10.</value>
     <value>سیستم</value>
   </data>
   <data name="TaskbarTheme.Header" xml:space="preserve">
-    <value>Taskbar Theme</value>
+    <value>تم نوار وظیفه</value>
   </data>
   <data name="TitleTileSize" xml:space="preserve">
     <value>اندازه کاشی</value>
@@ -915,10 +915,10 @@ Edge is the built in webview of windows 10.</value>
     <value>بارگیری صفحه وب</value>
   </data>
   <data name="FastUI.Description" xml:space="preserve">
-    <value>Keep User Interface running for faster startup</value>
+    <value>برای راه‌اندازی سریعتر، رابط کاربری را در حال اجرا نگه دار</value>
   </data>
   <data name="FastUI.Header" xml:space="preserve">
-    <value>Fast startup</value>
+    <value>راه‌اندازی سریع</value>
   </data>
   <data name="WallpaperDirGroup.Header" xml:space="preserve">
     <value>فایل</value>
@@ -957,10 +957,10 @@ Edge is the built in webview of windows 10.</value>
     <value>گواهی نامه نرم افزار</value>
   </data>
   <data name="AttributionLink.Content" xml:space="preserve">
-    <value>Third party software notice</value>
+    <value>اطلاعیه شخص ثالث نرم‌افزار</value>
   </data>
   <data name="PrivacyPolicyLink.Content" xml:space="preserve">
-    <value>Data collection policy</value>
+    <value>خط‌مشی جمع‌آوری داده</value>
   </data>
   <data name="AddWallpaperDrop.Text" xml:space="preserve">
     <value>اضافه کردن پس زمینه</value>
@@ -993,25 +993,25 @@ Edge is the built in webview of windows 10.</value>
     <value>عادی</value>
   </data>
   <data name="Screensaver.Description" xml:space="preserve">
-    <value>How screensaver is applied to connected to display devices</value>
+    <value>چگونه محافظ صفحه‌نمایش بر نمایشگرهاي متصل نمايش داده شده است</value>
   </data>
   <data name="Screensaver.Header" xml:space="preserve">
-    <value>Type of screensaver</value>
+    <value>نوع محافظ صفحه‌نمایش</value>
   </data>
   <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
     <value>جدا تنظیم شده</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
-    <value>Same as running wallpaper</value>
+    <value>مانند تصاویر زمینه در حال اجرا</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
     <value>پلاگین لازم است</value>
   </data>
   <data name="ScreensaverPluginMessage.Text" xml:space="preserve">
-    <value>One time setup is required to run screensaver</value>
+    <value>برای اجرای محافظ صفحه‌نمایش یک بار راه‌اندازی لازم است</value>
   </data>
   <data name="WallpaperLayoutScreenPicker.Content" xml:space="preserve">
-    <value>Always pick screen when choosing wallpaper</value>
+    <value>هنگام انتخاب تصویر زمینه، همیشه صفحه‌نمایش را انتخاب کن</value>
   </data>
   <data name="GalleryAccount.Text" xml:space="preserve">
     <value>حساب کاربری</value>
@@ -1137,15 +1137,42 @@ Edge is the built in webview of windows 10.</value>
     <value>اندازه‌</value>
   </data>
   <data name="PluginNotFound.Message" xml:space="preserve">
-    <value>Please install the required plugin</value>
+    <value>لطفا افزونه مورد نیاز را نصب کنید</value>
   </data>
   <data name="PluginNotFound.Title" xml:space="preserve">
-    <value>Plugin not found</value>
+    <value>افزونه پیدا نشد</value>
   </data>
   <data name="UpdateCompleted.Text" xml:space="preserve">
-    <value>Update complete</value>
+    <value>به‌روزرسانی کامل شد</value>
   </data>
   <data name="UpdateWhatsNew.Text" xml:space="preserve">
-    <value>Check out what's new</value>
+    <value>بررسی کنید چه چیزی جدید است</value>
+  </data>
+  <data name="AppThemeColor.Header" xml:space="preserve">
+    <value>رنگ</value>
+  </data>
+  <data name="DescriptionDefault.Text" xml:space="preserve">
+    <value>از سیستم پیش‌فرض استفاده کن</value>
+  </data>
+  <data name="DescriptionDynamicTheme.Text" xml:space="preserve">
+    <value>با تصویر زمینه سازگار شو</value>
+  </data>
+  <data name="TextDefault.Text" xml:space="preserve">
+    <value>پیش‌فرض</value>
+  </data>
+  <data name="TextDynamicTheme.Text" xml:space="preserve">
+    <value>پویا</value>
+  </data>
+  <data name="Theme.Label" xml:space="preserve">
+    <value>تم</value>
+  </data>
+  <data name="IconsHidden.Message" xml:space="preserve">
+    <value>To prevent accidental selection desktop icons are currently hidden</value>
+  </data>
+  <data name="IconsHidden.Title" xml:space="preserve">
+    <value>Desktop icons</value>
+  </data>
+  <data name="TextEndOfItems.Text" xml:space="preserve">
+    <value>That's all for now..</value>
   </data>
 </root>
