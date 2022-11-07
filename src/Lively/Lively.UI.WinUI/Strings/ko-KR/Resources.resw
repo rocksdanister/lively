@@ -1173,6 +1173,6 @@ Edge는 Windows 10의 내장 웹뷰입니다.</value>
     <value>바탕 화면 아이콘</value>
   </data>
   <data name="TextEndOfItems.Text" xml:space="preserve">
-    <value>That's all for now..</value>
+    <value>여기까지 입니다...</value>
   </data>
 </root>

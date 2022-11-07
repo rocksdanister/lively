@@ -147,14 +147,10 @@
     <value>Званична страница Лајвли апликације</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
-    <value>Most modern LCD and LED displays do not suffer from burn-in issue and therefore any wallpaper can be used as screensaver.
-
-For OLED, Plasma or CRT displays which are susceptibe to burn-in it is advised to use wallpaper with regular motion and an overall dark theme which is supposed to mitigate burn-in but this feature is untested and its effectiveness cannot be guaranteed.
-
-The main purpose of Lively's screensavers is to add another layer of customization to your pc, use screensavers as burn-in protection at your own risk!</value>
+    <value>Већина модерних ЛЦД и ЛЕД екрана не пати од проблема са нарезивања и зато се било који постер може користити као чувар екрана. За ОЛЕД, Плазму или ЦРТ дисплеје који су подложни њеном нарезивања саветује се коришћење тапета са редовним кретањем и целокупном тамном темом која би требало да ублажи урезивање али је ова функција неиспромљена и њена ефективност не може бити загарантована. Главна сврха Ливелy-јевих сцреенсавера је да додају још један слој прилагођавања рачунару, користе сцреенсаверс као заштиту при нарезивања на сопствену одговорност!</value>
   </data>
   <data name="ReportBugPage.Content" xml:space="preserve">
-    <value>Report a problem with the software</value>
+    <value>Пријавите проблем са софтвером</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
     <value>Изабери фајл или напиши адресу сајта од позадине.</value>
@@ -208,14 +204,13 @@ The main purpose of Lively's screensavers is to add another layer of customizati
     <value>Your Windows N/KN version will require the download of additional codecs to support video playback in wallpapers.</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
-    <value>Show support by buying the developer coffee</value>
+    <value>Покажите подршку куповином развојне кафе</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
-    <value>You are about to change to beta (developer) build of Lively.
-Updates will be frequent and may contain bugs!</value>
+    <value>Сада ћете се променити у бета (девелопер) буилд оф Ливелy. Исправке ће бити честе и могу садржати грешке!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
-    <value>System-tray icon visibility, lively will continue to run with the icon hidden</value>
+    <value>Видљивост икона системског лежишта, живахна ће наставити да ради са скривеном иконом</value>
   </data>
   <data name="HideSysTray.Header" xml:space="preserve">
     <value>Икона у позадини система</value>
@@ -289,7 +284,7 @@ Updates will be frequent and may contain bugs!</value>
     <value>Откажи</value>
   </data>
   <data name="TextChangeWallpaper" xml:space="preserve">
-    <value>Change Wallpapers</value>
+    <value>Мењање постера</value>
   </data>
   <data name="TextClose" xml:space="preserve">
     <value>Затвори</value>
@@ -331,7 +326,7 @@ Updates will be frequent and may contain bugs!</value>
     <value>Преузми</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
-    <value>Edit</value>
+    <value>Уређивање</value>
   </data>
   <data name="TextError" xml:space="preserve">
     <value>Грешка</value>
@@ -352,7 +347,7 @@ Updates will be frequent and may contain bugs!</value>
     <value>Анимирани ГИФ</value>
   </data>
   <data name="GitHubStar.Content" xml:space="preserve">
-    <value>Show some love by dropping a star</value>
+    <value>Покажи мало љубави испустивши звезду</value>
   </data>
   <data name="TextGo" xml:space="preserve">
     <value>Крени</value>
@@ -370,13 +365,13 @@ Updates will be frequent and may contain bugs!</value>
     <value>Тастатура</value>
   </data>
   <data name="TextLastChecked" xml:space="preserve">
-    <value>Last checked</value>
+    <value>Последњи пут проверено</value>
   </data>
   <data name="TextLearnMore.Text" xml:space="preserve">
-    <value>Learn more</value>
+    <value>Учи више</value>
   </data>
   <data name="License.Header" xml:space="preserve">
-    <value>License</value>
+    <value>Дозволу</value>
   </data>
   <data name="TextMinutes" xml:space="preserve">
     <value>minutes</value>
@@ -442,7 +437,7 @@ Updates will be frequent and may contain bugs!</value>
     <value>Преглед позадине</value>
   </data>
   <data name="PrivacyPolicy.Header" xml:space="preserve">
-    <value>Privacy Policy</value>
+    <value>Политика приватности</value>
   </data>
   <data name="TextProcessingWallpaper" xml:space="preserve">
     <value>Процесовање</value>
@@ -475,37 +470,37 @@ Updates will be frequent and may contain bugs!</value>
     <value>Заустави</value>
   </data>
   <data name="StoreReview.Content" xml:space="preserve">
-    <value>Do you enjoy using Lively? Leave a review :)</value>
+    <value>Да ли уживате у коришћењу Ливелy-ја? Оставите рецензију :)</value>
   </data>
   <data name="TextSupport.Content" xml:space="preserve">
     <value>Подршка</value>
   </data>
   <data name="TextSwitchBranchDev" xml:space="preserve">
-    <value>Switch to beta (Dev channel)</value>
+    <value>Пребацивање на бета (Дев канал)</value>
   </data>
   <data name="TextSwitchBranchOfficial" xml:space="preserve">
-    <value>Switch to stable (Default channel)</value>
+    <value>Пребацивање на стабилно (подразумевани канал)</value>
   </data>
   <data name="TextTags" xml:space="preserve">
     <value>Тагови</value>
   </data>
   <data name="TaskbarThemeBlur.Content" xml:space="preserve">
-    <value>Blur</value>
+    <value>Мрља</value>
   </data>
   <data name="TaskbarThemeClear.Content" xml:space="preserve">
-    <value>Clear</value>
+    <value>Опозовите избор</value>
   </data>
   <data name="TaskbarThemeColor.Content" xml:space="preserve">
-    <value>Color</value>
+    <value>Боја</value>
   </data>
   <data name="TaskbarThemeFluent.Content" xml:space="preserve">
-    <value>Fluent</value>
+    <value>Теино</value>
   </data>
   <data name="TaskbarThemeWallpaper.Content" xml:space="preserve">
-    <value>Wallpaper</value>
+    <value>Тапете</value>
   </data>
   <data name="TaskbarThemeWallpaperFluent.Content" xml:space="preserve">
-    <value>Wallpaper Fluent</value>
+    <value>Течно говори тапете</value>
   </data>
   <data name="TextTileSizeLarge" xml:space="preserve">
     <value>Огромно</value>
@@ -550,7 +545,7 @@ Updates will be frequent and may contain bugs!</value>
     <value>Видео</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>Enter optional commandline arguments</value>
+    <value>Уношење опционалних аргумената командне линије</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>Попуни</value>
@@ -1133,7 +1128,7 @@ Updates will be frequent and may contain bugs!</value>
     <value>Check out what's new</value>
   </data>
   <data name="AppThemeColor.Header" xml:space="preserve">
-    <value>Color</value>
+    <value>Боја</value>
   </data>
   <data name="DescriptionDefault.Text" xml:space="preserve">
     <value>Use system default</value>

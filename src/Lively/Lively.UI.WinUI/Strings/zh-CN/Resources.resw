@@ -226,7 +226,7 @@ Lively的屏幕保护程序的主要目的是为您的电脑增加另一层个�
     <value>Lively 将重启以应用新语言</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
-    <value>语言</value>
+    <value>语言设置</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
     <value>更新失败；请尝试从以下地址下载安装程序手动更新。
@@ -1174,6 +1174,6 @@ Edge 是 Windows 10 内置的浏览器。</value>
     <value>桌面图标</value>
   </data>
   <data name="TextEndOfItems.Text" xml:space="preserve">
-    <value>That's all for now..</value>
+    <value>暂时就这么多内容……</value>
   </data>
 </root>

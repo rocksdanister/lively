@@ -226,7 +226,7 @@ Lively 動態桌布的螢幕保護程式主要用於為您的電腦新增另一�
     <value>將 Lively 動態桌布重新啟動以套用新語言。</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
-    <value>語言</value>
+    <value>選擇語言</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
     <value>更新失敗；請嘗試從以下位址下載安裝程式: 
