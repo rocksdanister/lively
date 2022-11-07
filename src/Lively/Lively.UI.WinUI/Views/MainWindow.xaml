@@ -173,8 +173,9 @@
                         -->
                     </AppBarButton>
 
-                    <AppBarSeparator />
+                    <AppBarSeparator Visibility="Collapsed"/>
                     <AppBarButton
+                        Visibility="Collapsed"
                         Name="audioBtn"
                         MaxWidth="50"
                         LabelPosition="Collapsed">
