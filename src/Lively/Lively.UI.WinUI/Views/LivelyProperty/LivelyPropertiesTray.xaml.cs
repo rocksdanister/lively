@@ -27,28 +27,25 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
     /// <summary>
     /// An empty window that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class LivelyPropertiesTray : Window
+    public sealed partial class LivelyPropertiesTray : WindowEx
     {
         public LivelyPropertiesTray(ILibraryModel model)
         {
             this.InitializeComponent();
-
-            //var display = App.Services.GetRequiredService<IDisplayManagerClient>().DisplayMonitors.FirstOrDefault(x => x.IsPrimary);
-            //var height = 800;
-            //var width = 400;
-            //var left = display.WorkingArea.Right - width*1.5f;
-            //var top = display.WorkingArea.Bottom - height*1.5f;
-            //this.MoveAndResize(left, top, width, height);
-
-            this.SetWindowSize(400, 800);
-            //this.CenterOnScreen();
-            this.SetIsResizable(false);
-            this.SetIsMaximizable(false);
-            this.SetIsMinimizable(false);
             this.Title = model.Title;
+            this.SetTitleBarBackgroundColors(((SolidColorBrush)App.Current.Resources["SystemControlBackgroundChromeMediumLowBrush"]).Color);
+
+            //Position primary screen bottom-right
+            var display = App.Services.GetRequiredService<IDisplayManagerClient>().DisplayMonitors.FirstOrDefault(x => x.IsPrimary);
+            double width = this.Width, height = this.Height;
+            if (display is not null)
+            {
+                var left = display.WorkingArea.Right - width * 1.5f;
+                var top = display.WorkingArea.Bottom - height * 1.5f;
+                this.MoveAndResize(left, top, width, height);
+            }
 
             contentFrame.Navigate(typeof(LivelyPropertiesView), model);
-            //contentFrame.Content = new LivelyPropertiesView(model);
         }
     }
 }
