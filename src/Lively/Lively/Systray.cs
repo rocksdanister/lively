@@ -20,13 +20,13 @@ using System.Windows.Threading;
 
 namespace Lively
 {
-
-    //TODO: Switch to wpf-notifyicon library instead.
     public class Systray : ISystray
     {
         private readonly Random rng = new Random();
         private readonly NotifyIcon _notifyIcon = new NotifyIcon();
-        private ToolStripMenuItem pauseTrayBtn, customiseWallpaperBtn, updateTrayBtn;
+        private readonly ToolStripMenuItem pauseTrayBtn;
+        private readonly ToolStripMenuItem customiseWallpaperBtn;
+        private readonly ToolStripMenuItem updateTrayBtn;
         private bool disposedValue;
 
         private readonly IRunnerService runner;
@@ -54,7 +54,7 @@ namespace Lively
             tt.IsOpen = true;
             tt.IsOpen = false;
 
-            //Show UI
+            //Notifyicon properties
             _notifyIcon.DoubleClick += (s, args) => runner.ShowUI();
             _notifyIcon.ContextMenuStrip = new ContextMenuStrip();
             _notifyIcon.Icon = Properties.Icons.appicon;
@@ -70,27 +70,29 @@ namespace Lively
             _notifyIcon.ContextMenuStrip.Renderer = new ContextMenuTheme.RendererDark();
             _notifyIcon.ContextMenuStrip.Opening += ContextMenuStrip_Opening;
 
+            //Show UI
             _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextOpenLively, Properties.Icons.icons8_application_window_96).Click += (s, e) => runner.ShowUI();
+            //Close wallpaper
+            _notifyIcon.ContextMenuStrip.Items.Add(new ContextMenuTheme.StripSeparatorCustom().stripSeparator);
             _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextCloseWallpapers, null).Click += (s, e) => desktopCore.CloseAllWallpapers(true);
+            //Wallpaper playback
             pauseTrayBtn = new ToolStripMenuItem(Properties.Resources.TextPauseWallpapers, null);
             pauseTrayBtn.Click += (s, e) =>
             {
-                playbackMonitor.WallpaperPlayback = (playbackMonitor.WallpaperPlayback == PlaybackState.play) ? 
-                    playbackMonitor.WallpaperPlayback = PlaybackState.paused : PlaybackState.play;
+                playbackMonitor.WallpaperPlayback = (playbackMonitor.WallpaperPlayback == PlaybackState.play) ? PlaybackState.paused : PlaybackState.play;
             };
             _notifyIcon.ContextMenuStrip.Items.Add(pauseTrayBtn);
+            //Random Wallpaper
+            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextChangeWallpaper, null).Click += (s, e) => SetRandomWallpapers();
+            //Customise wallpaper
             customiseWallpaperBtn = new ToolStripMenuItem(Properties.Resources.TextCustomiseWallpaper, null)
             {
+                //Systray is initialized first before restoring wallpaper
                 Enabled = false,
-                Visible = false,
             };
             customiseWallpaperBtn.Click += CustomiseWallpaper;
             _notifyIcon.ContextMenuStrip.Items.Add(customiseWallpaperBtn);
-
-            //Random wallpaper
-            //_notifyIcon.ContextMenuStrip.Items.Add(new ContextMenuTheme.StripSeparatorCustom().stripSeparator);
-            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextChangeWallpaper, null).Click += (s, e) => SetRandomWallpapers();
-
+            //Update check
             if (!Constants.ApplicationType.IsMSIX)
             {
                 _notifyIcon.ContextMenuStrip.Items.Add(new ContextMenuTheme.StripSeparatorCustom().stripSeparator);
@@ -101,13 +103,15 @@ namespace Lively
                 updateTrayBtn.Click += (s, e) => App.AppUpdateDialog(appUpdater.LastCheckUri, appUpdater.LastCheckChangelog);
                 _notifyIcon.ContextMenuStrip.Items.Add(updateTrayBtn);
             }
-
+            //Report bug
             _notifyIcon.ContextMenuStrip.Items.Add(new ContextMenuTheme.StripSeparatorCustom().stripSeparator);
             _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.ReportBug_Header, Properties.Icons.icons8_website_bug_96).Click += (s, e) => 
                 LinkHandler.OpenBrowser("https://github.com/rocksdanister/lively/wiki/Common-Problems");
+            //Exit app
             _notifyIcon.ContextMenuStrip.Items.Add(new ContextMenuTheme.StripSeparatorCustom().stripSeparator);
             _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextExit, Properties.Icons.icons8_close_96).Click += (s, e) => App.ShutDown();
 
+            //Change events
             playbackMonitor.PlaybackStateChanged += Playback_PlaybackStateChanged;
             desktopCore.WallpaperChanged += DesktopCore_WallpaperChanged;
             appUpdater.UpdateChecked += (s, e) => { SetUpdateMenu(e.UpdateStatus); };
@@ -190,30 +194,9 @@ namespace Lively
         private void CustomiseWallpaper(object sender, EventArgs e)
         {
             var items = desktopCore.Wallpapers.Where(x => x.LivelyPropertyCopyPath != null);
-            if (items.Count() == 0)
+            if (items.Any())
             {
-                //not possible, menu should be disabled.
-                //nothing..
-            }
-            else if (items.Count() == 1)
-            {
-                //quick wallpaper customise tray widget.
                 runner.ShowCustomisWallpaperePanel();
-                
-            }
-            else if (items.Count() > 1)
-            {
-                switch (userSettings.Settings.WallpaperArrangement)
-                {
-                    case WallpaperArrangement.per:
-                        //multiple different wallpapers.. open control panel.
-                        runner.ShowControlPanel();
-                        break;
-                    case WallpaperArrangement.span:
-                    case WallpaperArrangement.duplicate:
-                        runner.ShowCustomisWallpaperePanel();
-                        break;
-                }
             }
         }
 

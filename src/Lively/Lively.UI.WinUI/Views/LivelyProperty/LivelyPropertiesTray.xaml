@@ -1,15 +1,32 @@
-﻿<Window
+﻿<winex:WindowEx
     x:Class="Lively.UI.WinUI.Views.LivelyProperty.LivelyPropertiesTray"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Lively.UI.WinUI.Views.LivelyProperty"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:winex="using:WinUIEx"
+    Width="360"
+    Height="800"
+    IsMaximizable="False"
+    IsMinimizable="False"
+    IsResizable="False"
+    TaskBarIcon="appicon.ico"
     mc:Ignorable="d">
+    <winex:WindowEx.Backdrop>
+        <winex:MicaSystemBackdrop
+            DarkLuminosityOpacity="0.9"
+            DarkTintOpacity="0.5"
+            LightLuminosityOpacity="0.9"
+            LightTintOpacity="0.5" />
+    </winex:WindowEx.Backdrop>
 
-    <Grid Margin="5">
-        <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
+    <Grid Background="{ThemeResource SystemAltMediumLowColor}">
+        <ScrollViewer
+            Margin="10,5"
+            HorizontalScrollBarVisibility="Hidden"
+            VerticalScrollBarVisibility="Auto">
             <Frame x:Name="contentFrame" />
         </ScrollViewer>
     </Grid>
-</Window>
+</winex:WindowEx>

@@ -1,4 +1,5 @@
-﻿using Lively.Common.Helpers;
+﻿using CommandLine;
+using Lively.Common.Helpers;
 using Lively.Common.Helpers.Archive;
 using Lively.Common.Helpers.Pinvoke;
 using Lively.Gallery.Client;
@@ -8,6 +9,7 @@ using Lively.UI.WinUI.Factories;
 using Lively.UI.WinUI.Helpers;
 using Lively.UI.WinUI.Services;
 using Lively.UI.WinUI.ViewModels;
+using Lively.UI.WinUI.Views.LivelyProperty;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using System;
@@ -21,6 +23,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources.Core;
 using Windows.Globalization;
+using WinUIEx;
 using static Lively.Common.Constants;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -47,6 +50,8 @@ namespace Lively.UI.WinUI
                 return serviceProvider ?? throw new InvalidOperationException("The service provider is not initialized");
             }
         }
+
+        public static StartArgs StartFlags { get; private set; } = new();
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -78,10 +83,46 @@ namespace Lively.UI.WinUI
         /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
-            //Issue: https://github.com/microsoft/microsoft-ui-xaml/issues/3368   
-            //Environment.GetCommandLineArgs()[1]
-            var m_window = Services.GetRequiredService<MainWindow>();
-            m_window.Activate();
+            //Workaround, LaunchActivatedEventArgs does not work: https://github.com/microsoft/microsoft-ui-xaml/issues/3368   
+            var cmdArgs = Environment.GetCommandLineArgs().Skip(1).ToArray();
+            if (cmdArgs.Any())
+            {
+                Parser.Default.ParseArguments<StartArgs>(cmdArgs)
+                    .WithParsed((x) => StartFlags = x)
+                    .WithNotParsed((x) => Logger.Error(x));
+                if (StartFlags.TrayWidget)
+                {
+                    var desktopCore = Services.GetRequiredService<IDesktopCoreClient>();
+                    var items = desktopCore.Wallpapers.Where(x => x.LivelyPropertyCopyPath != null);
+                    if (items.Any())
+                    {
+                        var selection = items.FirstOrDefault(x => x.Display.IsPrimary) ?? items.First();
+                        if (selection is not null)
+                        {
+                            var libraryVm = Services.GetRequiredService<LibraryViewModel>();
+                            var model = libraryVm.LibraryItems.FirstOrDefault(x => selection.LivelyInfoFolderPath == x.LivelyInfoFolderPath);
+                            if (model is not null)
+                            {
+                                var tray = new LivelyPropertiesTray(model);
+                                tray.Closed += (s, e) =>
+                                {
+                                    App.ShutDown();
+                                };
+                                tray.Show();
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    //TODO
+                }
+            }
+            else
+            {
+                var m_window = Services.GetRequiredService<MainWindow>();
+                m_window.Activate();
+            }
         }
 
         private IServiceProvider ConfigureServices()

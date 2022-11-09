@@ -7,6 +7,7 @@ using Lively.Models;
 using Lively.UI.WinUI.Helpers;
 using Lively.UI.WinUI.Services;
 using Lively.UI.WinUI.ViewModels;
+using Lively.UI.WinUI.Views.LivelyProperty;
 using Lively.UI.WinUI.Views.Pages;
 using Lively.UI.WinUI.Views.Pages.ControlPanel;
 using Lively.UI.WinUI.Views.Pages.Gallery;
@@ -316,7 +317,9 @@ namespace Lively.UI.WinUI
             }
         }
 
-        private void ControlPanelButton_Click(object sender, RoutedEventArgs e)
+        private void ControlPanelButton_Click(object sender, RoutedEventArgs e) => ShowControlPanelDialog();
+
+        private void ShowControlPanelDialog()
         {
             _ = new ContentDialog()
             {
@@ -522,32 +525,19 @@ namespace Lively.UI.WinUI
                                 {
                                     libraryVm.IsBusy = false;
                                 }
-                                /*
-                                if (args[1].Equals("SHOWCONTROLPANEL", StringComparison.OrdinalIgnoreCase))
-                                {
-                                    //this.ShowControlPanelDialog();
-                                }
                                 else if (args[1].Equals("SHOWCUSTOMISEPANEL", StringComparison.OrdinalIgnoreCase))
                                 {
-                                    var items = desktopCore.Wallpapers.Where(x => x.LivelyPropertyCopyPath != null);
-                                    if (items.Count() != 0)
-                                    {
-                                        //Usually this msg is sent when span/duplicate layout mode.
-                                        var model = libraryVm.LibraryItems.FirstOrDefault(x => items.First().LivelyInfoFolderPath == x.LivelyInfoFolderPath);
-                                        if (model != null)
-                                        {
-                                            var settingsWidget = new LivelyPropertiesTrayWidget(model);
-                                            settingsWidget.Show();
-                                        }
-                                    }
+                                    ShowControlPanelDialog();
                                 }
-                                */
                             }
                         });
                     }
                 });
             }
-            catch { }
+            catch (Exception ex)
+            {
+                Logger.Error(ex);
+            }
         }
 
         #region gallery

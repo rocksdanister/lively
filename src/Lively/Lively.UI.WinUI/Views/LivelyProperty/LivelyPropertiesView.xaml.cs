@@ -25,6 +25,9 @@ using Windows.UI;
 using Lively.Common.Helpers.Pinvoke;
 using System.Threading.Tasks;
 using System.Threading;
+using Microsoft.UI.Dispatching;
+using static Lively.Common.Helpers.Pinvoke.NativeMethods;
+
 
 namespace Lively.UI.WinUI.Views.LivelyProperty
 {
@@ -48,23 +51,20 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
         private readonly IUserSettingsClient userSettings;
         private readonly IDesktopCoreClient desktopCore;
         private readonly IDisplayManagerClient displayManager;
+        private readonly DispatcherQueue dispatcherQueue;
 
         public LivelyPropertiesView() // Default constructor for OnNavigatedTo
         {
+            this.InitializeComponent();
             userSettings = App.Services.GetRequiredService<IUserSettingsClient>();
             desktopCore = App.Services.GetRequiredService<IDesktopCoreClient>();
             displayManager = App.Services.GetRequiredService<IDisplayManagerClient>();
-
-            this.InitializeComponent();
+            //MainWindow dispatcher may not be ready yet, creating our own instead..
+            dispatcherQueue = DispatcherQueue.GetForCurrentThread() ?? DispatcherQueueController.CreateOnCurrentThread().DispatcherQueue;
         }
 
-        public LivelyPropertiesView(ILibraryModel model)
+        public LivelyPropertiesView(ILibraryModel model) : this()
         {
-            userSettings = App.Services.GetRequiredService<IUserSettingsClient>();
-            desktopCore = App.Services.GetRequiredService<IDesktopCoreClient>();
-            displayManager = App.Services.GetRequiredService<IDisplayManagerClient>();
-
-            this.InitializeComponent();
             CreateUI(model);
         }
 
@@ -449,7 +449,7 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                     if (uiElementType.Equals("folderDropdown", StringComparison.OrdinalIgnoreCase) && btn.Tag.ToString() == lp.Key)
                     {
                         var filePicker = new FileOpenPicker();
-                        filePicker.SetOwnerWindow(App.Services.GetRequiredService<MainWindow>());
+                        filePicker.SetOwnerWindow(App.StartFlags.TrayWidget ? new Window() : App.Services.GetRequiredService<MainWindow>());
                         var filterString = lp.Value["filter"].ToString();
                         var filter = filterString == "*" ? new string[] {"*"} : filterString.Replace("*", string.Empty).Split("|");
                         foreach (var item in filter)
@@ -725,7 +725,7 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
 
         private void WallpaperSendMsg(IpcMessage msg)
         {
-            _ = App.Services.GetRequiredService<MainWindow>().DispatcherQueue.TryEnqueue(() =>
+            _ = dispatcherQueue.TryEnqueue(() =>
             {
                 switch (userSettings.Settings.WallpaperArrangement)
                 {
