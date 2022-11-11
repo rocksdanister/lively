@@ -39,7 +39,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="GrpcDotNetNamedPipes" Version="1.4.4" />
+    <PackageReference Include="GrpcDotNetNamedPipes" Version="2.0.0" />
     <PackageReference Include="Magick.NET-Q8-AnyCPU" Version="12.2.1" />
     <PackageReference Include="MdXaml" Version="1.16.2" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
