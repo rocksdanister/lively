@@ -452,13 +452,15 @@ namespace Lively.UI.WinUI
                 this.Close();
             }
 
+            /*
             if (userSettings.Settings.KeepAwakeUI)
             {
                 args.Handled = true;
                 contentFrame.Visibility = Visibility.Collapsed; //drop resource usage.
                 NativeMethods.ShowWindow(this.GetWindowHandleEx(), (uint)NativeMethods.SHOWWINDOW.SW_HIDE);
             }
-            else if (libraryVm.IsWorking)
+            */
+            if (libraryVm.IsWorking)
             {
                 args.Handled = true;
 

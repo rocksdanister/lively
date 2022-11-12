@@ -25,11 +25,13 @@
                         </controls:Setting.ActionContent>
                     </controls:Setting>
 
+                    <!--
                     <controls:Setting x:Uid="FastUI" Icon="&#xEC4A;">
                         <controls:Setting.ActionContent>
                             <ToggleSwitch IsOn="{Binding IsKeepUIAwake, Mode=TwoWay}" />
                         </controls:Setting.ActionContent>
                     </controls:Setting>
+                    -->
 
                     <controls:Setting x:Uid="UIMode" Icon="&#xE8AB;">
                         <controls:Setting.ActionContent>
