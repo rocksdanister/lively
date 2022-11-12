@@ -149,7 +149,7 @@
 
 Còn đối với màn hình OLED, Plasma hoặc CRT thì sẽ có thể dễ bị burn-in nên lively khuyến cáo bạn nên sử dụng hình nền có ảnh động và tối để giảm thiểu hiệu ứng burn-in nhưng chức năng này cũng chưa được chứng nhận nên sẽ không đảm bảo màn hình của bạn sẽ không bị hỏng.
 
-Mục đích chính của Lively là để làm cho dàn PC của bạn đẹp hơn, nên trong trường hợp sử dụng Lively để làm màn hình chờ thì Lively sẽ không chịu trách nhiệm!</value>
+Mục đích chính của Lively là để làm cho màn hình desktop của bạn đẹp hơn, nên trong trường hợp sử dụng Lively để làm màn hình chờ thì Lively sẽ không chịu trách nhiệm!</value>
   </data>
   <data name="ReportBugPage.Content" xml:space="preserve">
     <value>Báo lỗi chương trình</value>
@@ -212,7 +212,7 @@ Chỉ tiếp tục nếu phần mềm này được tin tưởng.</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
     <value>Bạn chuẩn bị chuyển qua phiên bản beta (developer) của Lively.
-Chương trình sẽ được cập nhật thường xuyên hơn và sẽ bị lỗi nhiều hơn!</value>
+Lively sẽ được cập nhật thường xuyên hơn và sẽ bị lỗi nhiều hơn!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
     <value>Ẩn hiện tray icon của hệ thống, Lively sẽ tiếp tục chạy dù icon đã bị ẩn</value>
@@ -227,7 +227,7 @@ Chương trình sẽ được cập nhật thường xuyên hơn và sẽ bị l
     <value>Ngôn ngữ</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
-    <value>Cập nhật phiên bản thất bại; Hãy thử tải xuống bản cài đặt từ:
+    <value>Cập nhật phiên bản thất bại, hãy thử tải xuống bản cài đặt từ
 https://github.com/rocksdanister/lively/releases</value>
   </data>
   <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
@@ -318,7 +318,7 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Chuyển đổi thành Video</value>
   </data>
   <data name="TextCreatePreview" xml:space="preserve">
-    <value>Xem thử hình nền</value>
+    <value>Xem trước hình nền</value>
   </data>
   <data name="Customise.Text" xml:space="preserve">
     <value>Tùy chỉnh</value>
@@ -426,13 +426,13 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Mở Lively</value>
   </data>
   <data name="PauseAlgorithmTypeAllProcess.Content" xml:space="preserve">
-    <value>Tất cả Tiến trình</value>
+    <value>Tất cả ứng dụng</value>
   </data>
   <data name="PauseAlgorithmTypeExclusiveMode.Content" xml:space="preserve">
     <value>Direct3D</value>
   </data>
   <data name="PauseAlgorithmTypeForegroundProcess.Content" xml:space="preserve">
-    <value>Tiến trình ưu tiên</value>
+    <value>Ứng dụng được tập trung</value>
   </data>
   <data name="TextPauseWallpapers" xml:space="preserve">
     <value>Tạm dừng hình nền</value>
@@ -543,16 +543,16 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Định dạng tập tin không được hỗ trợ</value>
   </data>
   <data name="TextUpdateAvailable" xml:space="preserve">
-    <value>Xuất hiện bản cập nhật!</value>
+    <value>Đã có bản cập nhật mới!</value>
   </data>
   <data name="TextUpdateCheck" xml:space="preserve">
-    <value>Kiểm tra cập nhật mới</value>
+    <value>Kiểm tra phiên bản mới</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
-    <value>Kiểm tra cập nhật mới thất bại</value>
+    <value>Kiểm tra phiên bản mới thất bại</value>
   </data>
   <data name="TextUpdateChecking" xml:space="preserve">
-    <value>Kiểm tra cập nhật mới</value>
+    <value>Kiểm tra phiên bản mới</value>
   </data>
   <data name="TextUpdateUptodate" xml:space="preserve">
     <value>Phần mềm đã được cập nhật!</value>
@@ -694,13 +694,13 @@ Khi sắn sàng, đi tới http://localhost:portnumber để truy cập bảng �
     <value>Chọn các cách để tương tác với hình nền.</value>
   </data>
   <data name="WallpaperLayout.Description" xml:space="preserve">
-    <value>Cách áp dụng hình nền cho các thiết bị hiển thị được kết nối.</value>
+    <value>Cách áp dụng hình nền cho các màn hình</value>
   </data>
   <data name="TipWallpaperPlayback" xml:space="preserve">
     <value>Tạm dừng phát lại hình nền khi màn hình không được tập trung.</value>
   </data>
   <data name="WebBrowserDiskCache.Description" xml:space="preserve">
-    <value>Lưu trữ các tệp tạm thời trên đĩa thay vì RAM, cài đặt được khôi phục khi trình duyệt được khởi động lại.</value>
+    <value>Lưu trữ các tệp tạm thời trên đĩa thay vì RAM</value>
   </data>
   <data name="WebBrowser.Description" xml:space="preserve">
     <value>Chọn trình duyệt để sử dụng cho hình nền HTML</value>
@@ -733,7 +733,7 @@ Khi sắn sàng, đi tới http://localhost:portnumber để truy cập bảng �
     <value>Khi đang dùng pin</value>
   </data>
   <data name="TitleBrowseFile" xml:space="preserve">
-    <value>Chọn phim, ảnh động gif, trang web... để đặt làm hình nền</value>
+    <value>Tìm kiếm video, gif, trang web,... để đặt làm hình nền</value>
   </data>
   <data name="BrowserDebuggingPort.Header" xml:space="preserve">
     <value>Cổng debug</value>
@@ -860,7 +860,7 @@ Khi sắn sàng, đi tới http://localhost:portnumber để truy cập bảng �
     <value>Phông màu của Taskbar</value>
   </data>
   <data name="TitleTileSize" xml:space="preserve">
-    <value>Kích thướng ô xem trước</value>
+    <value>Kích thước ô</value>
   </data>
   <data name="TitleUIMode" xml:space="preserve">
     <value>Giao diện người dùng</value>
@@ -929,7 +929,7 @@ Khi sắn sàng, đi tới http://localhost:portnumber để truy cập bảng �
     <value>Hệ thống</value>
   </data>
   <data name="WindowsSettingsColor.Content" xml:space="preserve">
-    <value>Cài đặt màu Windows</value>
+    <value>Cài đặt màu cho Windows</value>
   </data>
   <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
     <value>Laptops</value>

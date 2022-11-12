@@ -516,7 +516,7 @@ Ha még mindig nem működik, zárd be &amp; indítsd el a Livelyt újra/ indít
     <value>Háttérkép</value>
   </data>
   <data name="TaskbarThemeWallpaperFluent.Content" xml:space="preserve">
-    <value>Wallpaper Fluent</value>
+    <value>"Folyékony" háttérkép</value>
   </data>
   <data name="TextTileSizeLarge" xml:space="preserve">
     <value>Nagy</value>
@@ -573,7 +573,7 @@ Ha még mindig nem működik, zárd be &amp; indítsd el a Livelyt újra/ indít
     <value>Egyenruha</value>
   </data>
   <data name="WallpaperFitUniformToFill.Content" xml:space="preserve">
-    <value>Uniform Fill</value>
+    <value>Arányosan kitöltött</value>
   </data>
   <data name="WallpaperLayoutDuplicate.Content" xml:space="preserve">
     <value>Azonos háttérkép duplikálása</value>
@@ -654,10 +654,10 @@ A kész vagy menj a http://localhost:portnumber hogy hozzáférj a fejlesztői k
 Összes folyamat: Nehezebb, az összes folyamatot beszkenneli, hogy meghatározza a lejátszás viselkedését.</value>
   </data>
   <data name="PowerSavingModePower.Description" xml:space="preserve">
-    <value>Change playback when Windows Power Saving Mode is enabled</value>
+    <value>A visszajátszás átváltása amikor a Windows Energiatakarékos Mód be van kapcsolva</value>
   </data>
   <data name="RemoteDesktopPower.Description" xml:space="preserve">
-    <value>Change playback when running a Remote Desktop session</value>
+    <value>A háttér átváltása amikor távoli asztal van használatban</value>
   </data>
   <data name="TipScreensaver" xml:space="preserve">
     <value>After the selected inactivity period use the current wallpaper as your screensaver.</value>
@@ -950,13 +950,13 @@ Az Edge a Windows 10 beépített WebView-ja (Lehetővé teszi, hogy webes tartal
     <value>Galéria</value>
   </data>
   <data name="AboutMe.Text" xml:space="preserve">
-    <value>Hi, I'm Dani John also known as rocksdanister. I developed Lively a Free and open-source (FOSS) wallpaper application. Thanks for taking the time to look at my work.</value>
+    <value>Szia! Én John Dani vagyok, másnéven: rocksdanister. Én fejlesztettem a Lively-t, ami egy ingyenes, open-source (FOSS) háttérkép alkalmazás. Köszönöm, hogy időt szántál a munkámra.</value>
   </data>
   <data name="LicenseLink.Content" xml:space="preserve">
     <value>Szoftver engedély</value>
   </data>
   <data name="AttributionLink.Content" xml:space="preserve">
-    <value>Third party software notice</value>
+    <value>A harmadik felek</value>
   </data>
   <data name="PrivacyPolicyLink.Content" xml:space="preserve">
     <value>Adatgyűjtési szabályzat</value>
@@ -1166,12 +1166,12 @@ Az Edge a Windows 10 beépített WebView-ja (Lehetővé teszi, hogy webes tartal
     <value>Téma</value>
   </data>
   <data name="IconsHidden.Message" xml:space="preserve">
-    <value>To prevent accidental selection desktop icons are currently hidden</value>
+    <value>A véletlen kiválasztás ellen elrejtettük az asztali ikonokat</value>
   </data>
   <data name="IconsHidden.Title" xml:space="preserve">
-    <value>Desktop icons</value>
+    <value>Asztali Ikonok Elrejtve</value>
   </data>
   <data name="TextEndOfItems.Text" xml:space="preserve">
-    <value>That's all for now..</value>
+    <value>Egyelőre ennyi.</value>
   </data>
 </root>

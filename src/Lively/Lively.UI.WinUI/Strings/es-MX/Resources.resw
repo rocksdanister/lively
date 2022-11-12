@@ -141,10 +141,10 @@
 ¡El Explorador de Windows se ha reiniciado dos veces en los últimos 30 segundos! Esto puede ser un conflicto entre Lively y otro software de personalización de escritorio o Windows. Para evitar más errores, todos los fondos de pantalla son terminados.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
-    <value>Programa incompatible encontrado, barra de tareas deshabilitado.</value>
+    <value>Se encontró un programa incompatible, tema de la barra de tareas desactivado</value>
   </data>
   <data name="OfficialWebpage.Content" xml:space="preserve">
-    <value>Página web oficial de Lively Wallpaper</value>
+    <value>Página web oficial del fondo de pantalla de Lively</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
     <value>La mayoría de pantallas modernas LCD y LED no sufren de quemado de pantalla, y por esa razón cualquier fondo de pantallas puede ser usado como salva pantallas.
@@ -157,7 +157,7 @@ El objetivo principal del salva pantallas en Lively es ofrecer más posibilidade
     <value>Reportar un problema con el software</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
-    <value>Seleccione un archivo o especifique un enlace a un sitio web para usarlo como fondo de pantalla.</value>
+    <value>Elija un archivo</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
     <value>Comportamiento del fondo de pantalla de acuerdo a que aplicación está en ejecución.</value>
@@ -224,14 +224,14 @@ El objetivo principal del salva pantallas en Lively es ofrecer más posibilidade
     <value>Lively se reiniciará para aplicar el nuevo idioma.</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
-    <value>Idioma</value>
+    <value>Lenguaje</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
     <value>Error al actualizar; intenta descargar el instalador desde:
 https://github.com/rocksdanister/lively/releases</value>
   </data>
   <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
-    <value>Archivo de fondo de pantalla dañado, intenta descargarlo nuevamente.</value>
+    <value>Archivo de fondo de pantalla dañado, intente volver a descargar</value>
   </data>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
     <value>Vaya... parece que algo salió mal :(
@@ -1174,6 +1174,6 @@ Edge es la vista web integrada en Windows 10.</value>
     <value>Iconos de escritorio</value>
   </data>
   <data name="TextEndOfItems.Text" xml:space="preserve">
-    <value>That's all for now..</value>
+    <value>Eso es todo por ahora..</value>
   </data>
 </root>

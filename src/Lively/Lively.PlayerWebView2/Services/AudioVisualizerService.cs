@@ -21,7 +21,7 @@ namespace Services
         private readonly int maxSample = 128;
         private WasapiLoopbackCapture capture;
         private readonly List<Complex[]> smooth = new();
-        private readonly static int vertical_smoothness = 3;
+        private readonly static int vertical_smoothness = 2;
         private readonly static int horizontal_smoothness = 1;
         private readonly MMDeviceEnumerator deviceEnum = new();
 
