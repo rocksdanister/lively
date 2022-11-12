@@ -217,7 +217,7 @@ Fahren Sie nur fort, wenn diese Anwendung aus einer vertrauenswürdigen Quelle s
 Aktualisierungen finden häufiger statt und können Fehler enthalten!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
-    <value>Sichtbarkeit des Symbols im Infobereich der Taskleiste (System Tray). Lively wird mit verstecktem Symbol ausgeführt</value>
+    <value>Sichtbarkeit des Lively-Symbols im Infobereich der Taskleiste. Lively läuft auch weiterhin, wenn diese Option ausgeschaltet ist.</value>
   </data>
   <data name="HideSysTray.Header" xml:space="preserve">
     <value>System-Tray Symbol</value>
@@ -805,7 +805,7 @@ Wenn es immer noch nicht funktioniert, schließen &amp; starten Sie Lively oder 
     <value>Wiedergabeliste</value>
   </data>
   <data name="PleaseWait.Text" xml:space="preserve">
-    <value>Bitte warten</value>
+    <value>Einen Moment...</value>
   </data>
   <data name="PowerSavingModePower.Header" xml:space="preserve">
     <value>Im Energiesparmodus</value>
@@ -941,8 +941,7 @@ Wenn es immer noch nicht funktioniert, schließen &amp; starten Sie Lively oder 
     <value>Aussehen und Verhalten</value>
   </data>
   <data name="ActiveWallpapers.Label" xml:space="preserve">
-    <value>Wallpaper aktiv
-</value>
+    <value>Aktive Hintergründe</value>
   </data>
   <data name="TitleGallery" xml:space="preserve">
     <value>Galerie</value>

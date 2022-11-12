@@ -9,7 +9,10 @@
 
     <Grid>
         <StackPanel>
-            <TextBlock Name="txtBlock" x:Uid="MinimizedTray" />
+            <TextBlock
+                Name="txtBlock"
+                x:Uid="MinimizedTray"
+                TextWrapping="WrapWholeWords" />
             <StackPanel Margin="0,10,0,0" CornerRadius="10">
                 <Image Source="/Assets/tray-tutorial.gif" />
             </StackPanel>
