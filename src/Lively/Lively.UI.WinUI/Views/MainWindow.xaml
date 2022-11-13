@@ -173,12 +173,12 @@
                         -->
                     </AppBarButton>
 
-                    <AppBarSeparator Visibility="Collapsed"/>
+                    <AppBarSeparator Visibility="Collapsed" />
                     <AppBarButton
-                        Visibility="Collapsed"
                         Name="audioBtn"
                         MaxWidth="50"
-                        LabelPosition="Collapsed">
+                        LabelPosition="Collapsed"
+                        Visibility="Collapsed">
                         <AppBarButton.Flyout>
                             <Flyout>
                                 <Slider
@@ -197,7 +197,8 @@
                         Name="coffeeBtn"
                         MaxWidth="50"
                         Click="AppBarCoffeeBtn_Click"
-                        LabelPosition="Collapsed">
+                        LabelPosition="Collapsed"
+                        ToolTipService.ToolTip="Patreon">
                         <AppBarButton.Icon>
                             <FontIcon Glyph="&#xEB51;" />
                         </AppBarButton.Icon>
@@ -314,10 +315,10 @@
             Grid.Row="1"
             IsClosable="False" />
         <TeachingTip
-            Name="updatedNotice"
             Grid.Row="1"
             BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}"
             BorderThickness="0,3,0,0"
+            IsOpen="{Binding IsUpdated, Mode=OneWay}"
             PlacementMargin="0,55,0,0"
             PreferredPlacement="TopRight">
             <Grid>
