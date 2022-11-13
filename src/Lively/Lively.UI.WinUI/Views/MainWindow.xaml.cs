@@ -131,15 +131,6 @@ namespace Lively.UI.WinUI
                 });
             };
 
-            if (userSettings.Settings.IsUpdated)
-            {
-                this.DispatcherQueue.TryEnqueue(async () =>
-                {
-                    await Task.Delay(1500);
-                    updatedNotice.IsOpen = true;
-                });
-            }
-
             _ = StdInListener();
         }
 

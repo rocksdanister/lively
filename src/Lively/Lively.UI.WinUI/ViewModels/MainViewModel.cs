@@ -42,7 +42,12 @@ namespace Lively.UI.WinUI.ViewModels
                     });
                 }
             };
+
+            IsUpdated = userSettings.Settings.IsUpdated;
         }
+
+        [ObservableProperty]
+        private bool isUpdated;
 
         [ObservableProperty]
         private string appThemeBackground = string.Empty;
