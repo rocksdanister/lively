@@ -152,11 +152,11 @@ namespace Lively
             Services.GetRequiredService<IPlayback>().Start();
             Services.GetRequiredService<ISystray>();
 
+            //Install any new asset collection if present, do this before restoring wallpaper incase wallpaper is updated.
+            //On first run default assets are installed by UI to avoid slow startup times and better user experience.
             if (userSettings.Settings.IsUpdated || userSettings.Settings.IsFirstRun)
             {
-                var spl = new SplashWindow(); spl.Show();
-                //Install any new asset collection if present, do this before restoring wallpaper incase wallpaper is updated.
-                //On first run default assets are installed by UI to avoid slow startup times and better user experience.
+                SplashWindow spl = userSettings.Settings.IsFirstRun ? new() : null; spl?.Show();
                 var maxWallpaper = ZipExtract.ExtractAssetBundle(userSettings.Settings.WallpaperBundleVersion,
                     Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bundle", "wallpapers"),
                     Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperInstallDir));
@@ -169,7 +169,7 @@ namespace Lively
                     userSettings.Settings.ThemeBundleVersion = maxTheme;
                     userSettings.Save<ISettingsModel>();
                 }
-                spl.Close();
+                spl?.Close();
             }
 
             //restore wallpaper(s) from previous run.
