@@ -30,6 +30,7 @@
   <ItemGroup>
     <None Remove="Nlog.config" />
     <None Remove="Resources\appicon_96.png" />
+    <None Remove="Resources\splash.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -56,6 +57,7 @@
 
   <ItemGroup>
     <Resource Include="Resources\appicon_96.png" />
+    <Resource Include="Resources\splash.png" />
   </ItemGroup>
 
   <ItemGroup>

@@ -32,6 +32,7 @@ using Lively.Models;
 using Lively.Common.Helpers;
 using Lively.Helpers.Theme;
 using Microsoft.Win32;
+using System.Reflection;
 
 namespace Lively
 {
@@ -151,8 +152,9 @@ namespace Lively
             Services.GetRequiredService<IPlayback>().Start();
             Services.GetRequiredService<ISystray>();
 
-            if (userSettings.Settings.IsUpdated)
+            if (userSettings.Settings.IsUpdated || userSettings.Settings.IsFirstRun)
             {
+                var spl = new SplashWindow(); spl.Show();
                 //Install any new asset collection if present, do this before restoring wallpaper incase wallpaper is updated.
                 //On first run default assets are installed by UI to avoid slow startup times and better user experience.
                 var maxWallpaper = ZipExtract.ExtractAssetBundle(userSettings.Settings.WallpaperBundleVersion,
@@ -167,6 +169,7 @@ namespace Lively
                     userSettings.Settings.ThemeBundleVersion = maxTheme;
                     userSettings.Save<ISettingsModel>();
                 }
+                spl.Close();
             }
 
             //restore wallpaper(s) from previous run.
