@@ -84,8 +84,6 @@ namespace Lively.UI.WinUI.ViewModels
             desktopCore.WallpaperChanged += DesktopCore_WallpaperChanged;
             desktopCore.WallpaperUpdated += DesktopCore_WallpaperUpdated;
             settingsVm.WallpaperDirChanged += (s, e) => WallpaperDirectoryUpdate(e);
-
-            _ = FirstRunSetup();
         }
 
         #region collections
@@ -812,32 +810,6 @@ namespace Lively.UI.WinUI.ViewModels
             foreach (var item in ScanWallpaperFolders(wallpaperScanFolders))
             {
                 LibraryItems.Insert(BinarySearch(LibraryItems, item.Title), item);
-            }
-        }
-
-        private async Task FirstRunSetup()
-        {
-            if (userSettings.Settings.IsFirstRun)
-            {
-                try
-                {
-                    IsBusy = true;
-                    await Task.Run(() =>
-                    {
-                        userSettings.Settings.WallpaperBundleVersion = ZipExtract.ExtractAssetBundle(userSettings.Settings.WallpaperBundleVersion,
-                            Path.Combine(desktopCore.BaseDirectory, "bundle", "wallpapers"),
-                            Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperInstallDir));
-                        userSettings.Settings.ThemeBundleVersion = ZipExtract.ExtractAssetBundle(userSettings.Settings.ThemeBundleVersion,
-                              Path.Combine(desktopCore.BaseDirectory, "bundle", "themes"),
-                              Path.Combine(Constants.CommonPaths.ThemeDir));
-                    });
-                    userSettings.Save<ISettingsModel>();
-                    await settingsVm.WallpaperDirectoryChange(userSettings.Settings.WallpaperDir);
-                }
-                finally
-                {
-                    IsBusy = false;
-                }
             }
         }
 
