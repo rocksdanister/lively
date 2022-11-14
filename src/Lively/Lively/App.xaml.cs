@@ -156,7 +156,7 @@ namespace Lively
             //On first run default assets are installed by UI to avoid slow startup times and better user experience.
             if (userSettings.Settings.IsUpdated || userSettings.Settings.IsFirstRun)
             {
-                SplashWindow spl = userSettings.Settings.IsFirstRun ? new() : null; spl?.Show();
+                SplashWindow spl = userSettings.Settings.IsFirstRun ? new(0, 500) : null; spl?.Show();
                 var maxWallpaper = ZipExtract.ExtractAssetBundle(userSettings.Settings.WallpaperBundleVersion,
                     Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bundle", "wallpapers"),
                     Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperInstallDir));
