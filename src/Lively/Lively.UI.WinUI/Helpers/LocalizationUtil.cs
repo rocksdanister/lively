@@ -21,7 +21,7 @@ namespace Lively.UI.WinUI.Helpers
             resourceLoader = ResourceLoader.GetForViewIndependentUse();
         }
 
-        public static string GetLocalizedWallpaperCategory(WallpaperType type)
+        public static string LocalizeWallpaperCategory(WallpaperType type)
         {
             return type switch
             {
@@ -38,16 +38,11 @@ namespace Lively.UI.WinUI.Helpers
                 WallpaperType.videostream => resourceLoader.GetString("TextWebStream"),
                 WallpaperType.picture => resourceLoader.GetString("TextPicture"),
                 //WallpaperType.heic => "HEIC",
-                (WallpaperType)(100) => resourceLoader.GetString("Lively Wallpaper"),
+                (WallpaperType)(100) => "Lively Wallpaper",
                 _ => resourceLoader.GetString("TextError"),
             };
         }
 
-        /// <summary>
-        /// Generating filter text for file dialog (culture localised.)
-        /// </summary>
-        /// <param name="anyFile">Show any filetype.</param>
-        /// <returns></returns>
         public static List<string> SupportedFileDialogFilter(bool anyFile = false)
         {
             var filterCollection = new List<string>();
@@ -63,6 +58,26 @@ namespace Lively.UI.WinUI.Helpers
                 }
             }
             return filterCollection.Distinct().ToList();
+        }
+
+        public static string SupportedFileDialogFilterNative(bool anyFile = false)
+        {
+            var filterString = new StringBuilder();
+            if (anyFile)
+            {
+                filterString.Append(resourceLoader.GetString("TextAllFiles")).Append("\0*.*\0");
+            }
+            foreach (var item in FileFilter.LivelySupportedFormats)
+            {
+                filterString.Append(LocalizeWallpaperCategory(item.Type)).Append('\0');
+                foreach (var extension in item.Extentions)
+                {
+                    filterString.Append('*').Append(extension).Append(';');
+                }
+                filterString.Remove(filterString.Length - 1, 1).Append('\0');
+            }
+            filterString.Remove(filterString.Length - 1, 1).Append('\0');
+            return filterString.ToString();
         }
     }
 }

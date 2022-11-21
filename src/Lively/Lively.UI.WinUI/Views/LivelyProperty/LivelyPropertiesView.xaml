@@ -5,17 +5,21 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Lively.UI.WinUI.Views.LivelyProperty"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    MinWidth="325"
     mc:Ignorable="d">
 
     <Grid>
-        <ScrollViewer Margin="0,0,0,35">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <ScrollViewer Grid.Row="0">
             <StackPanel Name="uiPanel" Orientation="Vertical" />
         </ScrollViewer>
         <Button
             Name="restoreDefaultBtn"
+            Grid.Row="1"
+            Margin="5"
             HorizontalAlignment="Right"
-            VerticalAlignment="Bottom"
             Click="DefaultBtn_Click"
             ToolTipService.ToolTip="Restore default">
             <FontIcon Glyph="&#xE777;" />

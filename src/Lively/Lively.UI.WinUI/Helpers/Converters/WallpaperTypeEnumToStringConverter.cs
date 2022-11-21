@@ -16,7 +16,7 @@ namespace Lively.UI.WinUI.Helpers.Converters
             try
             {
                 var type = (WallpaperType)value;
-                targetValue = LocalizationUtil.GetLocalizedWallpaperCategory(type);
+                targetValue = LocalizationUtil.LocalizeWallpaperCategory(type);
             }
             catch { }
             return targetValue;

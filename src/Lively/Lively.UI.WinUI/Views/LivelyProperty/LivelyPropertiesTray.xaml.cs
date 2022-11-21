@@ -1,4 +1,6 @@
-﻿using Lively.Grpc.Client;
+﻿using Google.Protobuf.WellKnownTypes;
+using Lively.Common.Helpers.Pinvoke;
+using Lively.Grpc.Client;
 using Lively.Models;
 using Lively.UI.WinUI.Views.Pages;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,6 +12,7 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.UI.Xaml.Navigation;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -36,13 +39,13 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
             this.SetTitleBarBackgroundColors(((SolidColorBrush)App.Current.Resources["SystemControlBackgroundChromeMediumLowBrush"]).Color);
 
             //Position primary screen bottom-right
-            var display = App.Services.GetRequiredService<IDisplayManagerClient>().DisplayMonitors.FirstOrDefault(x => x.IsPrimary);
-            double width = this.Width, height = this.Height;
+            var display = App.Services.GetRequiredService<IDisplayManagerClient>().PrimaryMonitor;
             if (display is not null)
             {
-                var left = display.WorkingArea.Right - width * 1.5f;
-                var top = display.WorkingArea.Bottom - height * 1.5f;
-                this.MoveAndResize(left, top, width, height);
+                this.Height = display.WorkingArea.Height / 1.25f;
+                var left = display.WorkingArea.Right - this.Width - 5;
+                var top = display.WorkingArea.Bottom - this.Height - 10;
+                NativeMethods.SetWindowPos(this.GetWindowHandle(), -2, (int)left, (int)top, (int)this.Width, (int)this.Height, (int)NativeMethods.SetWindowPosFlags.SWP_SHOWWINDOW);
             }
 
             contentFrame.Navigate(typeof(LivelyPropertiesView), model);

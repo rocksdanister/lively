@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Lively.Common.Helpers.Files;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,48 +11,43 @@ using Windows.Storage.Pickers;
 namespace Lively.UI.WinUI.Helpers
 {
 
+    //References:
     //https://github.com/microsoft/WindowsAppSDK/issues/2504
+    //https://learn.microsoft.com/en-us/previous-versions/dotnet/netframework-4.0/w5tyztk9(v=vs.100)
     public static class FilePickerUtil
     {
-        [DllImport("comdlg32.dll", SetLastError = true, CharSet = CharSet.Auto)]
-        private static extern bool GetOpenFileName(ref OpenFileName ofn);
+        [DllImport("Comdlg32.dll", CharSet = CharSet.Auto)]
+        private static extern bool GetOpenFileName([In, Out] OpenFileName ofn);
 
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
-        public struct OpenFileName
+        public class OpenFileName
         {
-            public int lStructSize;
-            public IntPtr hwndOwner;
-            public IntPtr hInstance;
-            public string lpstrFilter;
-            public string lpstrCustomFilter;
-            public int nMaxCustFilter;
-            public int nFilterIndex;
-            public string lpstrFile;
-            public int nMaxFile;
-            public string lpstrFileTitle;
-            public int nMaxFileTitle;
-            public string lpstrInitialDir;
-            public string lpstrTitle;
-            public int Flags;
-            public short nFileOffset;
-            public short nFileExtension;
-            public string lpstrDefExt;
-            public IntPtr lCustData;
-            public IntPtr lpfnHook;
-            public string lpTemplateName;
-            public IntPtr pvReserved;
-            public int dwReserved;
-            public int flagsEx;
+            public int structSize = 0;
+            public IntPtr hwnd = IntPtr.Zero;
+            public IntPtr hinst = IntPtr.Zero;
+            public string filter = null;
+            public string custFilter = null;
+            public int custFilterMax = 0;
+            public int filterIndex = 0;
+            public string file = null;
+            public int maxFile = 0;
+            public string fileTitle = null;
+            public int maxFileTitle = 0;
+            public string initialDir = null;
+            public string title = null;
+            public int flags = 0;
+            public short fileOffset = 0;
+            public short fileExtMax = 0;
+            public string defExt = null;
+            public int custData = 0;
+            public IntPtr pHook = IntPtr.Zero;
+            public string template = null;
         }
 
-        public static async Task<string> FilePicker(string[] filter) =>
-            false ? await FilePickerUwp(filter) : FilePickerCsWin32(filter);
-
-        private static async Task<string> FilePickerUwp(string[] filter)
+        public static async Task<string> FilePickerUwp(string[] filter)
         {
             var filePicker = new FileOpenPicker();
             filePicker.SetOwnerWindow(App.Services.GetRequiredService<MainWindow>());
-            //filePicker.FileTypeFilter.Add("*");
             foreach (var item in filter)
             {
                 filePicker.FileTypeFilter.Add(item);
@@ -59,26 +55,16 @@ namespace Lively.UI.WinUI.Helpers
             return (await filePicker.PickSingleFileAsync())?.Path;
         }
 
-        private static string FilePickerCsWin32(string[] filters)
+        public static string FilePickerNative(string filters)
         {
             var ofn = new OpenFileName();
-            ofn.lStructSize = Marshal.SizeOf(ofn);
-            /*
-            ofn.lpstrFilter = "filterName";
-            foreach (string filter in filters)
-            {
-                ofn.lpstrFilter += $"*{filter};";
-            }
-            ofn.lpstrFilter += "\0\0";
-            */
-            ofn.lpstrFile = new string(new char[256]);
-            ofn.nMaxFile = ofn.lpstrFile.Length;
-            ofn.lpstrFileTitle = new string(new char[64]);
-            ofn.nMaxFileTitle = ofn.lpstrFileTitle.Length;
-            //ofn.lpstrTitle = dialogTitle;
-            if (GetOpenFileName(ref ofn))
-                return ofn.lpstrFile;
-            return string.Empty;
+            ofn.structSize = Marshal.SizeOf(ofn);
+            ofn.file = new string(new char[256]);
+            ofn.maxFile = ofn.file.Length;
+            ofn.fileTitle = new string(new char[64]);
+            ofn.maxFileTitle = ofn.fileTitle.Length;
+            ofn.filter = filters;
+            return GetOpenFileName(ofn) ? ofn.file : string.Empty;
         }
     }
 }
