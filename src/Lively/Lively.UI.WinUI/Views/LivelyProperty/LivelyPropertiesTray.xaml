@@ -6,11 +6,11 @@
     xmlns:local="using:Lively.UI.WinUI.Views.LivelyProperty"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:winex="using:WinUIEx"
-    Width="360"
+    Width="450"
     Height="800"
     IsMaximizable="False"
     IsMinimizable="False"
-    IsResizable="False"
+    IsResizable="True"
     TaskBarIcon="appicon.ico"
     mc:Ignorable="d">
     <winex:WindowEx.Backdrop>
@@ -21,11 +21,8 @@
             LightTintOpacity="0.5" />
     </winex:WindowEx.Backdrop>
 
-    <Grid Background="{ThemeResource SystemAltMediumLowColor}">
-        <ScrollViewer
-            Margin="10,5"
-            HorizontalScrollBarVisibility="Hidden"
-            VerticalScrollBarVisibility="Auto">
+    <Grid Margin="10,5" Background="{ThemeResource SystemAltMediumLowColor}">
+        <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
             <Frame x:Name="contentFrame" />
         </ScrollViewer>
     </Grid>

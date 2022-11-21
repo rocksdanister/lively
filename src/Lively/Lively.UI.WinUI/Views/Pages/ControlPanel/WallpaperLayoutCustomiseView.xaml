@@ -25,6 +25,7 @@
         <Frame
             x:Name="contentFrame"
             Grid.ColumnSpan="2"
+            Width="325"
             Margin="0,5,0,5"
             HorizontalAlignment="Center" />
     </Grid>
