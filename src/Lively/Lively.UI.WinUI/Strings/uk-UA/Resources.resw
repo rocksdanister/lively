@@ -121,7 +121,7 @@
     <value>Включати аудіо тільки коли робочий стіл у фокусі</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
-    <value>Рівень гучності всіх фонів</value>
+    <value>Рівень звуку шпалерів</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
     <value>Загальна гучність</value>
@@ -195,7 +195,7 @@
     <value>Відновлення попередніх шпалер.</value>
   </data>
   <data name="DescriptionScreenLayout" xml:space="preserve">
-    <value>Виберіть дисплей</value>
+    <value>Виберіть монітор</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
     <value>Доступна нова версія!</value>
@@ -207,7 +207,7 @@
     <value>Цей майстер допоможе вам розпочати налаштування Lively.</value>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>Ваша версія Windows N/KN вимагає завантаження додаткових кодеків для підтримки відтворення відео в шпалерах.</value>
+    <value>Ваша версія Windows N/KN вимагає завантаження додаткових кодексів для підтримки відтворення відео в шпалерах.</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
     <value>Проявіть підтримку, купивши каву для розробників</value>
@@ -226,7 +226,7 @@
     <value>Потрібен перезапуск Lively для зміни мови.</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
-    <value>Потребує перезапуску програми</value>
+    <value>Мова</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
     <value>Помилка оновлення. Спробуйте завантажити інсталятор з</value>
@@ -278,7 +278,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Запускати разом з Windows</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
-    <value>Додати</value>
+    <value>ПООООН</value>
   </data>
   <data name="TextAllFiles" xml:space="preserve">
     <value>Всі файли</value>
