@@ -42,7 +42,8 @@ namespace Lively.Common.Helpers.Localization
             new LanguagesModel("Ελληνικά(el)", new string[] { "el", "el-GR", "el-CY" }),
             new LanguagesModel("हिन्दी(hi)", new string[] { "hi", "hi-IN" }),
             new LanguagesModel("Azərbaycan(az)", new string[] { "az", "az-Cyrl", "az-Cyrl-AZ" }),
-            new LanguagesModel("Čeština(cs)", new string[] { "cs", "cs-CZ" })
+            new LanguagesModel("Čeština(cs)", new string[] { "cs", "cs-CZ" }),
+            new LanguagesModel("български(bg)", new string[] { "bg", "bg-BG" }),
         };
 
         /// <summary>
