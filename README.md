@@ -1,4 +1,3 @@
-
 <p align="center">
   <img alt="Files Logo" src="resources/figma_promo_16x9.jpg" width="450" />
   <h2 align="center">Lively Wallpaper</h2>
