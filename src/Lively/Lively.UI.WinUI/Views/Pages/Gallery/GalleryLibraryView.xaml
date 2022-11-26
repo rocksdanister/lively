@@ -67,14 +67,6 @@
                             <RowDefinition Height="60" />
                         </Grid.RowDefinitions>
 
-                        <interactivity:Interaction.Behaviors>
-                            <interactions:EventTriggerBehavior EventName="PointerEntered">
-                                <behaviors:StartAnimationAction Animation="{Binding ElementName=ScaleAnimationEnter}" />
-                            </interactions:EventTriggerBehavior>
-                            <interactions:EventTriggerBehavior EventName="PointerExited">
-                                <behaviors:StartAnimationAction Animation="{Binding ElementName=ScaleAnimationExit}" />
-                            </interactions:EventTriggerBehavior>
-                        </interactivity:Interaction.Behaviors>
                         <animations:Explicit.Animations>
                             <animations:AnimationSet x:Name="ScaleAnimationEnter">
                                 <animations:ScaleAnimation
@@ -89,6 +81,14 @@
                                     Duration="0:0:0.5" />
                             </animations:AnimationSet>
                         </animations:Explicit.Animations>
+                        <interactivity:Interaction.Behaviors>
+                            <interactions:EventTriggerBehavior EventName="PointerEntered">
+                                <behaviors:StartAnimationAction Animation="{Binding ElementName=ScaleAnimationEnter}" />
+                            </interactions:EventTriggerBehavior>
+                            <interactions:EventTriggerBehavior EventName="PointerExited">
+                                <behaviors:StartAnimationAction Animation="{Binding ElementName=ScaleAnimationExit}" />
+                            </interactions:EventTriggerBehavior>
+                        </interactivity:Interaction.Behaviors>
 
                         <toolkit:ImageEx
                             Grid.RowSpan="2"
