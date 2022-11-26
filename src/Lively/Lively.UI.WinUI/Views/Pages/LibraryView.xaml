@@ -154,17 +154,6 @@
                             <RowDefinition Height="60" />
                         </Grid.RowDefinitions>
 
-                        <interactivity:Interaction.Behaviors>
-                            <interactions:EventTriggerBehavior EventName="PointerEntered">
-                                <behaviors:StartAnimationAction Animation="{Binding ElementName=ScaleAnimationEnter}" />
-                            </interactions:EventTriggerBehavior>
-                            <interactions:EventTriggerBehavior EventName="PointerExited">
-                                <behaviors:StartAnimationAction Animation="{Binding ElementName=ScaleAnimationExit}" />
-                            </interactions:EventTriggerBehavior>
-                            <interactions:EventTriggerBehavior EventName="PointerPressed">
-                                <behaviors:StartAnimationAction Animation="{Binding ElementName=ScaleAnimationPress}" />
-                            </interactions:EventTriggerBehavior>
-                        </interactivity:Interaction.Behaviors>
                         <animations:Explicit.Animations>
                             <animations:AnimationSet x:Name="ScaleAnimationEnter">
                                 <animations:ScaleAnimation
@@ -189,6 +178,17 @@
                                     Duration="0:0:0.5" />
                             </animations:AnimationSet>
                         </animations:Explicit.Animations>
+                        <interactivity:Interaction.Behaviors>
+                            <interactions:EventTriggerBehavior EventName="PointerEntered">
+                                <behaviors:StartAnimationAction Animation="{Binding ElementName=ScaleAnimationEnter}" />
+                            </interactions:EventTriggerBehavior>
+                            <interactions:EventTriggerBehavior EventName="PointerExited">
+                                <behaviors:StartAnimationAction Animation="{Binding ElementName=ScaleAnimationExit}" />
+                            </interactions:EventTriggerBehavior>
+                            <interactions:EventTriggerBehavior EventName="PointerPressed">
+                                <behaviors:StartAnimationAction Animation="{Binding ElementName=ScaleAnimationPress}" />
+                            </interactions:EventTriggerBehavior>
+                        </interactivity:Interaction.Behaviors>
 
                         <Image
                             Grid.RowSpan="2"
@@ -292,7 +292,7 @@
                                     PressedBackground="Transparent"
                                     SelectedBackground="Transparent"
                                     SelectedBorderBrush="{ThemeResource SystemAccentColor}"
-                                    SelectedBorderThickness="0,0,0,2.5"
+                                    SelectedBorderThickness="0,0,0,2"
                                     SelectedPointerOverBackground="Transparent"
                                     SelectedPressedBackground="Transparent" />
                             </ControlTemplate>
