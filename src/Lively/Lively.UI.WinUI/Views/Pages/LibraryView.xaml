@@ -139,7 +139,10 @@
             </MenuFlyout>
             <toolkit:AdaptiveGridView.ItemTemplate>
                 <DataTemplate>
-                    <Grid AutomationProperties.Name="{Binding Title}">
+                    <Grid
+                        ui:VisualExtensions.NormalizedCenterPoint="0.5"
+                        AutomationProperties.Name="{Binding Title}"
+                        CornerRadius="5">
 
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
@@ -158,29 +161,40 @@
                             <interactions:EventTriggerBehavior EventName="PointerExited">
                                 <behaviors:StartAnimationAction Animation="{Binding ElementName=ScaleAnimationExit}" />
                             </interactions:EventTriggerBehavior>
+                            <interactions:EventTriggerBehavior EventName="PointerPressed">
+                                <behaviors:StartAnimationAction Animation="{Binding ElementName=ScaleAnimationPress}" />
+                            </interactions:EventTriggerBehavior>
                         </interactivity:Interaction.Behaviors>
+                        <animations:Explicit.Animations>
+                            <animations:AnimationSet x:Name="ScaleAnimationEnter">
+                                <animations:ScaleAnimation
+                                    From="1"
+                                    To="1.05"
+                                    Duration="0:0:0.5" />
+                            </animations:AnimationSet>
+                            <animations:AnimationSet x:Name="ScaleAnimationExit">
+                                <animations:ScaleAnimation
+                                    From="1.05"
+                                    To="1"
+                                    Duration="0:0:0.5" />
+                            </animations:AnimationSet>
+                            <animations:AnimationSet x:Name="ScaleAnimationPress">
+                                <animations:ScaleAnimation
+                                    From="1.05"
+                                    To="1.025"
+                                    Duration="0:0:0.5" />
+                                <animations:ScaleAnimation
+                                    From="1.025"
+                                    To="1.05"
+                                    Duration="0:0:0.5" />
+                            </animations:AnimationSet>
+                        </animations:Explicit.Animations>
 
                         <Image
                             Grid.RowSpan="2"
                             Grid.ColumnSpan="2"
-                            ui:VisualExtensions.NormalizedCenterPoint="0.5"
                             Source="{Binding ImagePath}"
-                            Stretch="UniformToFill">
-                            <animations:Explicit.Animations>
-                                <animations:AnimationSet x:Name="ScaleAnimationEnter">
-                                    <animations:ScaleAnimation
-                                        From="1"
-                                        To="1.1"
-                                        Duration="0:0:0.5" />
-                                </animations:AnimationSet>
-                                <animations:AnimationSet x:Name="ScaleAnimationExit">
-                                    <animations:ScaleAnimation
-                                        From="1.1"
-                                        To="1"
-                                        Duration="0:0:0.5" />
-                                </animations:AnimationSet>
-                            </animations:Explicit.Animations>
-                        </Image>
+                            Stretch="UniformToFill" />
 
                         <Rectangle
                             Grid.RowSpan="2"
@@ -268,6 +282,24 @@
                     </Grid>
                 </DataTemplate>
             </toolkit:AdaptiveGridView.ItemTemplate>
+            <GridView.ItemContainerStyle>
+                <Style TargetType="GridViewItem">
+                    <Setter Property="Margin" Value="5,5,5,5" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="GridViewItem">
+                                <ListViewItemPresenter
+                                    PressedBackground="Transparent"
+                                    SelectedBackground="Transparent"
+                                    SelectedBorderBrush="{ThemeResource SystemAccentColor}"
+                                    SelectedBorderThickness="0,0,0,2.5"
+                                    SelectedPointerOverBackground="Transparent"
+                                    SelectedPressedBackground="Transparent" />
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </GridView.ItemContainerStyle>
             <!--
             <GridView.ItemsPanel>
                 <ItemsPanelTemplate>
