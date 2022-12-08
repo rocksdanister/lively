@@ -13,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -96,7 +97,7 @@ namespace Lively.Core.Wallpapers
                 _ => "--keepaspect=no",
             };
             ipcServerName = "mpvsocket" + Path.GetRandomFileName();
-            var configDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "mpv", "portable_config");
+            var configDir = GetConfigDir();
 
             StringBuilder cmdArgs = new StringBuilder();
             //startup volume will be 0
@@ -130,7 +131,7 @@ namespace Lively.Core.Wallpapers
             //gpu decode preference
             cmdArgs.Append(hwAccel ? "--hwdec=auto-safe " : "--hwdec=no ");
             //avoid global config file %APPDATA%\mpv\mpv.conf
-            cmdArgs.Append(Directory.Exists(configDir) ? "--config-dir=" + "\"" + configDir + "\" " : "--no-config ");
+            cmdArgs.Append(configDir is not null ? "--config-dir=" + "\"" + configDir + "\" " : "--no-config ");
             //screenshot location, important read: https://mpv.io/manual/master/#pseudo-gui-mode
             cmdArgs.Append("--screenshot-template=" + "\"" + Path.Combine(Constants.CommonPaths.TempDir, ipcServerName) + "\" --screenshot-format=jpg ");
             //file or online video stream path
@@ -160,6 +161,16 @@ namespace Lively.Core.Wallpapers
 
             //for logging purpose
             uniqueId = globalCount++;
+        }
+
+        private static string GetConfigDir()
+        {
+            //Priority list of configuration directories
+            string[] dirs = {
+                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "mpv", "portable_config"),
+                Path.Combine(Constants.CommonPaths.TempVideoDir, "portable_config") 
+            };
+            return dirs.FirstOrDefault(x => Directory.Exists(x));
         }
 
         public async void Close()
