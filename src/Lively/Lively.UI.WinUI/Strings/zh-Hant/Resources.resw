@@ -226,7 +226,7 @@ Lively 動態桌布的螢幕保護程式主要用於為您的電腦新增另一�
     <value>將 Lively 動態桌布重新啟動以套用新語言。</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
-    <value>選擇語言</value>
+    <value>語言</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
     <value>更新失敗；請嘗試從以下位址下載安裝程式: 
@@ -1001,7 +1001,7 @@ Edge 是 Windows 10 的內建網頁繪製元件 (Webview)。</value>
     <value>螢幕保持模式不同壁紙.內容</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
-    <value>和跑步壁紙一樣</value>
+    <value>與正在執行的桌布一致</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
     <value>需要插件</value>

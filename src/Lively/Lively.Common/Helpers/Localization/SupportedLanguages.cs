@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 
@@ -7,8 +8,7 @@ namespace Lively.Common.Helpers.Localization
 {
     public static class SupportedLanguages
     {
-        public readonly static List<LanguagesModel> Languages = new List<LanguagesModel>()
-        {
+        private readonly static LanguagesModel[] languages = {
             new LanguagesModel("English(en)", new string[]{"en", "en-US"}), //default
             new LanguagesModel("日本語(ja)", new string[]{"ja", "ja-JP"}),
             new LanguagesModel("中文(zh-CN)", new string[] { "zh", "zh-Hans", "zh-CN", "zh-SG" }),
@@ -44,7 +44,10 @@ namespace Lively.Common.Helpers.Localization
             new LanguagesModel("Azərbaycan(az)", new string[] { "az", "az-Cyrl", "az-Cyrl-AZ" }),
             new LanguagesModel("Čeština(cs)", new string[] { "cs", "cs-CZ" }),
             new LanguagesModel("български(bg)", new string[] { "bg", "bg-BG" }),
+            new LanguagesModel("Norwegian Bokmål(nb)", new string[] { "nb", "nb-NO" }),
         };
+
+        public static ReadOnlyCollection<LanguagesModel> Languages => Array.AsReadOnly(languages);
 
         /// <summary>
         /// Returns language code if exists, default language(en) otherwise.

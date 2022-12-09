@@ -224,7 +224,7 @@ El objetivo principal del salva pantallas en Lively es ofrecer más posibilidade
     <value>Lively se reiniciará para aplicar el nuevo idioma.</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
-    <value>Lenguaje</value>
+    <value>Spanish</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
     <value>Error al actualizar; intenta descargar el instalador desde:

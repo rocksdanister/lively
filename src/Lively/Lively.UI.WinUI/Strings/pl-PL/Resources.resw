@@ -141,7 +141,7 @@
 Eksplorator Windows został uruchomiony ponownie dwukrotnie w ciągu ostatnich 30 sekund! To może być konflikt pomiędzy Lively a innym oprogramowaniem do zmiany wyglądu lub Windows. Aby uniknąć dalszych problemów, wszystkie tapety zostały zakończone.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
-    <value>Wykryto niekompatybilny program, więc motywy paska zadań zostały wyłączone</value>
+    <value>Znaleziono niekompatybilny program, motywy paska zadań zostały wyłączone.</value>
   </data>
   <data name="OfficialWebpage.Content" xml:space="preserve">
     <value>Oficjalna strona Lively Wallpaper</value>
@@ -149,9 +149,9 @@ Eksplorator Windows został uruchomiony ponownie dwukrotnie w ciągu ostatnich 3
   <data name="DescOledScreensaverNotice" xml:space="preserve">
     <value>Większość nowoczesnych wyświetlaczy LCD i LED nie ma problemów z wypalaniem, dlatego jako wygaszacza ekranu można używać każdej tapety.
 
-Dla wyświetlaczy typu OLED, Plasma lub CRT które są podatbe na efekt wypalania zaleca się używanie ruchomej tapety w ogólnie ciemnych kolorach, co powinno zmiejszyć efekt wypalenia, ale jest sposobem niepotwierdzonym i niekoniecznie skutecznym.
+Dla wyświetlaczy typu OLED, Plasma lub CRT, które są podatne na efekt wypalania, zaleca się używanie ruchomej tapety w ogólnie ciemnych kolorach, co powinno zmniejszyć efekt wypalenia, ale jest sposobem niepotwierdzonym i niekoniecznie skutecznym.
 
-Głównym celem wygaszacza ekranu Lively jest dodanie kolejenej warstwy personalizacji do Twojego pc, używaj wygaszacza jako zabezpieczenia przed wypaleniem na własne ryzyko!</value>
+Głównym celem wygaszacza ekranu Lively jest dodanie kolejnej warstwy personalizacji do Twojego komputera, używaj wygaszacza jako zabezpieczenia przed wypaleniem na własne ryzyko!</value>
   </data>
   <data name="ReportBugPage.Content" xml:space="preserve">
     <value>Zgłoś problem z oprogramowaniem</value>

@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AudioFocused.Content" xml:space="preserve">
-    <value>Přehrát zvuk pouze při zaměření na plochu</value>
+    <value>Přehrát zvuk pouze pokud jste na ploše</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
     <value>Úroveň hlasitosti všech pozadí </value>
@@ -1172,6 +1172,6 @@ Po uplynutí doby nečinnosti použijte jako spořič obrazovky aktuální tapet
     <value>Ikony na ploše</value>
   </data>
   <data name="TextEndOfItems.Text" xml:space="preserve">
-    <value>That's all for now..</value>
+    <value>To je prozatím vše..</value>
   </data>
 </root>
