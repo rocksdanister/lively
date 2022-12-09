@@ -164,7 +164,8 @@ Mục đích chính của Lively là để làm cho màn hình desktop của b�
     <value>Bạn có chắc muốn hủy bỏ?</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
-    <value>Bạn có chắc chắn muốn xóa vĩnh viễn hình nền này khỏi bộ nhớ?</value>
+    <value>Bạn có chắc chắn muốn xóa vĩnh viễn hình nền này khỏi 
+bộ nhớ?</value>
   </data>
   <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
     <value>Bạn có chắc chắn muốn xóa nền này khỏi thư viện?</value>
@@ -255,7 +256,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Không phải file hình nền của Lively.</value>
   </data>
   <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
-    <value>Lively đã không được tắt đúng cách, khởi động Lively trong chế độ an toàn.
+    <value>Lively đã không được tắt đúng cách, khởi động lại Lively trong chế độ an toàn.
 Bạn có muốn khôi phục lại hình nền trước đây?</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
@@ -270,7 +271,7 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
 (Lively không hoạt động trên một vài bản build của windows 10)</value>
   </data>
   <data name="Startup.Description" xml:space="preserve">
-    <value>Lively cần chạy ngầm để phát lại hình nền</value>
+    <value>Lively cần chạy ngầm để tiếp tục phát lại hình nền</value>
   </data>
   <data name="Startup.Header" xml:space="preserve">
     <value>Khởi động cùng Windows</value>
@@ -279,7 +280,7 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Thêm</value>
   </data>
   <data name="TextAllFiles" xml:space="preserve">
-    <value>Mọi tập tin</value>
+    <value>Tất cả tập tin</value>
   </data>
   <data name="Application.Header" xml:space="preserve">
     <value>Ứng dụng</value>
@@ -363,7 +364,7 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>GIF động</value>
   </data>
   <data name="GitHubStar.Content" xml:space="preserve">
-    <value>Tặng sao để cảm ơn nhà phát triển Lively</value>
+    <value>Đánh giá của bạn sẻ góp phần cho sự phát triển Lively ở tương lai</value>
   </data>
   <data name="TextGo" xml:space="preserve">
     <value>ĐI</value>
@@ -402,7 +403,7 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Chuột</value>
   </data>
   <data name="MouseInteractOnDesktop.Content" xml:space="preserve">
-    <value>Tương tác chuột khi tập trung vào ứng dụng</value>
+    <value>Tương tác bằng chuột với hình nền khi đang ở trong ứng dụng</value>
   </data>
   <data name="TextNext" xml:space="preserve">
     <value>Tiếp theo</value>
@@ -426,13 +427,13 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Mở Lively</value>
   </data>
   <data name="PauseAlgorithmTypeAllProcess.Content" xml:space="preserve">
-    <value>Tất cả ứng dụng</value>
+    <value>Tất cả tiến trình</value>
   </data>
   <data name="PauseAlgorithmTypeExclusiveMode.Content" xml:space="preserve">
     <value>Direct3D</value>
   </data>
   <data name="PauseAlgorithmTypeForegroundProcess.Content" xml:space="preserve">
-    <value>Ứng dụng được tập trung</value>
+    <value>Tiến trình ưu tiên</value>
   </data>
   <data name="TextPauseWallpapers" xml:space="preserve">
     <value>Tạm dừng hình nền</value>
@@ -441,7 +442,7 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Dừng hẳn</value>
   </data>
   <data name="TextPerformanceNone.Content" xml:space="preserve">
-    <value>Không có gì</value>
+    <value>Không làm gì</value>
   </data>
   <data name="TextPerformancePause.Content" xml:space="preserve">
     <value>Tạm dừng</value>
@@ -474,7 +475,7 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Đặt làm hình nền</value>
   </data>
   <data name="ShowOnDisk.Text" xml:space="preserve">
-    <value>Mở nơi chứa tập tin</value>
+    <value>Mở thư mục chứa File</value>
   </data>
   <data name="WallpaperSource.Text" xml:space="preserve">
     <value>Nguồn</value>
@@ -486,16 +487,16 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Dừng lại</value>
   </data>
   <data name="StoreReview.Content" xml:space="preserve">
-    <value>Bạn có thích Lively không? Hãy để lại đánh giá nhé :)</value>
+    <value>Bạn có thích Lively không? Để lại cho bọn mình một lời góp ý nhé :)</value>
   </data>
   <data name="TextSupport.Content" xml:space="preserve">
     <value>Hỗ trợ</value>
   </data>
   <data name="TextSwitchBranchDev" xml:space="preserve">
-    <value>Chuyển qua bản thử nghiệm (Kênh lập trình)</value>
+    <value>Chuyển qua bản thử nghiệm (Dành cho lập trình viên)</value>
   </data>
   <data name="TextSwitchBranchOfficial" xml:space="preserve">
-    <value>Chuyển qua bản ổn định (Kênh mặc định)</value>
+    <value>Chuyển qua bản ổn định (Người dùng bình thường)</value>
   </data>
   <data name="TextTags" xml:space="preserve">
     <value>Thẻ</value>
@@ -549,7 +550,7 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Kiểm tra phiên bản mới</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
-    <value>Kiểm tra phiên bản mới thất bại</value>
+    <value>Có lỗi khi kiểm tra bản cập nhật</value>
   </data>
   <data name="TextUpdateChecking" xml:space="preserve">
     <value>Kiểm tra phiên bản mới</value>
@@ -573,10 +574,10 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Đồng nhất</value>
   </data>
   <data name="WallpaperFitUniformToFill.Content" xml:space="preserve">
-    <value>Đồng nhất lấp đầy</value>
+    <value>Áp dụng toàn bộ</value>
   </data>
   <data name="WallpaperLayoutDuplicate.Content" xml:space="preserve">
-    <value>Nhân bản hình nền</value>
+    <value>Đã có hình nền này</value>
   </data>
   <data name="WallpaperLayoutPerScreen.Content" xml:space="preserve">
     <value>Chỉ màn hình được chọn</value>
@@ -597,7 +598,7 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Chào mừng</value>
   </data>
   <data name="TextYes" xml:space="preserve">
-    <value>Có</value>
+    <value>Đồng ý</value>
   </data>
   <data name="VideoPlayer.Header" xml:space="preserve">
     <value>Trình phát Video</value>
@@ -609,32 +610,31 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Sử dụng đường dẫn liên kết của web bản vừa nhập để làm hình nền</value>
   </data>
   <data name="AppFocus.Description" xml:space="preserve">
-    <value>Cài đặt hoạt động của Lively khi bất cứ phần mềm nào được tập trung.</value>
+    <value>Cài đặt Lively sẽ làm gì khi ứng dụng đang được ưu tiên</value>
   </data>
   <data name="AppFullScreen.Description" xml:space="preserve">
     <value>Cài đặt hoạt động của Lively khi Game/Phần mềm sử dụng toàn màn hình hoạt động.</value>
   </data>
   <data name="AppRules.Description" xml:space="preserve">
-    <value>Đặt các quy tắc phát lại hình nền khác nhau dựa trên ứng dụng đang chạy.</value>
+    <value>Dừng Lively khi đang chạy các ứng dụng trên</value>
   </data>
   <data name="TipAppTheme" xml:space="preserve">
-    <value>Lively thích ứng với chủ đề hệ thống, để thay đổi giao diện đi tới...</value>
+    <value>Thích nghi Lively với các theme của hệ thống, đổi giao diện đến</value>
   </data>
   <data name="BatteryPower.Description" xml:space="preserve">
-    <value>Thay đổi quy luật phát lại khi nguồn AC bị ngắt.</value>
+    <value>Đổi lively sẽ làm gì khi dây sạc bị ngắt</value>
   </data>
   <data name="BrowserDebuggingPort.Description" xml:space="preserve">
-    <value>Nhập cổng để debug webpage hình nền, bắt buộc phải khởi động lại trình duyệt để thay đổi có hiệu lực.
-Khi sắn sàng, đi tới http://localhost:portnumber để truy cập bảng điều khiển cho nhà phát triển.</value>
+    <value>Thay đổi port để can thiệp sâu vào webpage hình nền; khi xong chuyển hướng tới http://localhost:portnumber để vào trung tâm điều khiển của nhà phát triển</value>
   </data>
   <data name="Debug.Description" xml:space="preserve">
     <value>Hiển thị menu của nhà phát triển</value>
   </data>
   <data name="DesktopPicture.Description" xml:space="preserve">
-    <value>Chuyển hình nền động qua hình nền tĩnh ở màn hình desktop</value>
+    <value>Chuyển hình nền động qua hình nền tĩnh ở màn hình chính</value>
   </data>
   <data name="DisplayPauseRule.Description" xml:space="preserve">
-    <value>Tạm dừng hình nền trên tất cả màn hình hay chỉ mỗi một màn hình tùy vào ứng dụng đang được sử dụng trong thời điểm hiện tại</value>
+    <value>Tạm dừng hình nền trên tất cả màn hình hay chỉ mỗi một màn hình khi vào ứng dụng đang được ưu tiên</value>
   </data>
   <data name="ExportLogs.Description" xml:space="preserve">
     <value>Tạo log file chứa lỗi</value>
@@ -646,13 +646,13 @@ Khi sắn sàng, đi tới http://localhost:portnumber để truy cập bảng �
     <value>Hoàn tất thiết lập để tiếp tục.</value>
   </data>
   <data name="LockscreenPicture.Description" xml:space="preserve">
-    <value>Chuyển hình nền động qua hình nền tĩnh ở màn hình lockscreen</value>
+    <value>Đồng bộ hình nền động ở màn hình chính qua màn hình khóa</value>
   </data>
   <data name="PauseAlgorithm.Description" xml:space="preserve">
     <value>Thuật toán ngừng phát wallpaper</value>
   </data>
   <data name="PowerSavingModePower.Description" xml:space="preserve">
-    <value>Chuyển chế độ chạy video khi Windows đang ở trong chế độ tiết kiệm điện</value>
+    <value>Thay đổi cách hoạt động khi windows đang ở trạng thái tiết kiệm pin</value>
   </data>
   <data name="RemoteDesktopPower.Description" xml:space="preserve">
     <value>Chuyển chế độ chạy video khi đang điều khiển máy tính từ xa</value>
@@ -664,7 +664,7 @@ Khi sắn sàng, đi tới http://localhost:portnumber để truy cập bảng �
     <value>Nếu phát hiện thấy Stream video được hỗ trợ, sử dụng trình phát video thay vì tải trang web.</value>
   </data>
   <data name="StreamWallpaperVideoQuality.Description" xml:space="preserve">
-    <value>Chọn chất lượng video mong muốn cho Online stream Videos.</value>
+    <value>Chọn chất lượng video mong muốn khi đang stream</value>
   </data>
   <data name="TipSwitchSoftwareBranch" xml:space="preserve">
     <value>Chuyển phiên bản hiện tại từ beta sang bản gốc hoặc ngược lại</value>
@@ -694,7 +694,7 @@ Khi sắn sàng, đi tới http://localhost:portnumber để truy cập bảng �
     <value>Chọn các cách để tương tác với hình nền.</value>
   </data>
   <data name="WallpaperLayout.Description" xml:space="preserve">
-    <value>Cách áp dụng hình nền cho các màn hình</value>
+    <value>Hình nền sẽ được áp dụng vào màn hình nào</value>
   </data>
   <data name="TipWallpaperPlayback" xml:space="preserve">
     <value>Tạm dừng phát lại hình nền khi màn hình không được tập trung.</value>
@@ -769,7 +769,7 @@ Khi sắn sàng, đi tới http://localhost:portnumber để truy cập bảng �
     <value>Tổng quát</value>
   </data>
   <data name="GifPlayer.Header" xml:space="preserve">
-    <value>Gif Player</value>
+    <value>Trình chiếu Gif</value>
   </data>
   <data name="Help.Label" xml:space="preserve">
     <value>Hỗ trợ</value>
@@ -787,7 +787,7 @@ Khi sắn sàng, đi tới http://localhost:portnumber để truy cập bảng �
     <value>Vị trí</value>
   </data>
   <data name="LockscreenPicture.Header" xml:space="preserve">
-    <value>Hình của màn hình khóa</value>
+    <value>Hình nền của màn hình khóa</value>
   </data>
   <data name="TitleMisc" xml:space="preserve">
     <value>Khác</value>
@@ -817,7 +817,7 @@ Khi sắn sàng, đi tới http://localhost:portnumber để truy cập bảng �
     <value>Báo lỗi</value>
   </data>
   <data name="TitleScalingFit" xml:space="preserve">
-    <value>Chia tỷ lệ</value>
+    <value>Kích thước/Tỷ lệ</value>
   </data>
   <data name="ControlPanel.Title" xml:space="preserve">
     <value>Bảng điều khiển</value>

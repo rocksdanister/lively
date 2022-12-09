@@ -118,130 +118,132 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AudioFocused.Content" xml:space="preserve">
-    <value>Magpatunog lamang kapag naka-focus ang desktop</value>
+    <value>Spill av lyd kun når skrivebordet er fokusert</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
-    <value>Volume level of all wallpapers.</value>
+    <value>Volumnivå til alle bakgrunner</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
-    <value>Master Volume</value>
+    <value>Lydnivå</value>
   </data>
   <data name="AudioGroup.Header" xml:space="preserve">
-    <value>Tunog</value>
+    <value>Lyd</value>
   </data>
   <data name="CommunityPage.Content" xml:space="preserve">
-    <value>Online discussion forum</value>
+    <value>Online diskusjonsforum</value>
   </data>
   <data name="DocumentationPage.Content" xml:space="preserve">
-    <value>API documentaion at tulong</value>
+    <value>API dokumentasjon og hjelp</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
-    <value>Lively has encountered a fatal error.
+    <value>Livlig har støtt på en alvorlig feil.
 
-Windows Explorer restarted twice in the last 30 seconds! This may be a conflict between Lively and other desktop customization software or Windows. To avoid further issues, all wallpapers are terminated.</value>
+Windows Explorer har startet på nytt to ganger i løpet av de siste 30 sekund! Årsaken kan være en konflikt mellom Lively og andre skrivebordstilpasningsprogramvare eller Windows. For å unngå ytterligere problemer avsluttes alle bakgrunnsbilder.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
-    <value>Incompatible program found, taskbar theming disabled.</value>
+    <value>Inkompatibelt program funnet, tema på oppgavelinjen er deaktivert</value>
   </data>
   <data name="OfficialWebpage.Content" xml:space="preserve">
-    <value>Opisyal webpage ng Lively Wallpaper</value>
+    <value>Offisiell nettside til Lively Wallpaper</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
-    <value>Most modern LCD and LED displays do not suffer from burn-in issue and therefore any wallpaper can be used as screensaver.
+    <value>De fleste moderne LCD og LED-skjermer opplever ikke innbrenningsproblemer, og derfor kan enhver bakgrunn brukes som skjermsparer.
 
-For OLED, Plasma or CRT displays which are susceptibe to burn-in it is advised to use wallpaper with regular motion and an overall dark theme which is supposed to mitigate burn-in but this feature is untested and its effectiveness cannot be guaranteed.
+For OLED, Plasma eller CRT skjermer som kan oppleve innbrenning, anbefales å bruke bakgrunnen med regelmessig bevegelse og et generelt mørkt tema til å motvirke innbrenning, men denne funksjonen er ikke testet og effektiviteten kan ikke garanteres.
 
-The main purpose of Lively's screensavers is to add another layer of customization to your pc, use screensavers as burn-in protection at your own risk!</value>
+Hovedformålet med Livelys skjermsparer er å legge til et ekstra lag med tilpasninger til din pc, bruk skjermspare til innbrenningsbeskyttelse på egen risiko!</value>
   </data>
   <data name="ReportBugPage.Content" xml:space="preserve">
-    <value>I-report ang problema sa software</value>
+    <value>Rapporter et problem med programvaren</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
-    <value>Pumili ng file</value>
+    <value>Velg en fil</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
-    <value>Pag-uugali ng pag-playback ng wallpaper batay sa pagpapatakbo ng application.</value>
+    <value>Wallpaper playback behaviour based on running application</value>
   </data>
   <data name="DescriptionCancelQuestion" xml:space="preserve">
-    <value>Sigurado ka bang gusto mong kanselahin?</value>
+    <value>Er du sikker på at du vil avbryte?</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
-    <value>Nais mo ba na tuluyang tanggalin ang wallpaper na ito na nagmumula sa disk?</value>
+    <value>Er du sikker på at du vil slette denne bakgrunnsbildet fra disken?</value>
   </data>
   <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
-    <value>Nais mo ba na tanggalin ang wallpaper na ito mula sa library?</value>
+    <value>Er du sikker på at du vil slette dette bakgrunnsbildet fra biblioteket?</value>
   </data>
   <data name="DragDropFile.Text" xml:space="preserve">
-    <value>I-drag at i-drop lamang ang mga file dito</value>
+    <value>Bare dra og slipp filer inn her</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
-    <value>Binubuksan mo ang isang panlabas na application bilang wallpaper. Ang mga nakakahamak na apllikasyon ay maaaring mag-host ng malware, virus.. na makakahamak sa iyong system. Patuloy lamang kung ang aplikasyon na ito ay nagmula sa mapagkakatiwalaang mapagkukunan</value>
+    <value>Du åpner et eksternt program som bakgrunn.
+Skadelige programmer kan inneholde ødeleggende programvare og virus og gjør skade på ditt system.
+Bare fortsett hvis dette programmet kommer fra en klarert kilde.</value>
   </data>
   <data name="MinimizedTray.Text" xml:space="preserve">
-    <value>Ang Lively ay nai-minimize sa system tray, mag--click sa Lively icon upang matuloy.</value>
+    <value>Livlig er minimert til systemstatusfeltet, høyreklikk på ikonet for å fortsette.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
-    <value>I-restart ang Lively para makita ang bagong mga setting</value>
+    <value>Vennligst start Lively på nytt for at denne innstillingen skal tre i kraft</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
-    <value>Please stop before proceeding.</value>
+    <value>Vennligst stopp før du fortsetter</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
-    <value>Pindutin upang simulan ang pag-record.</value>
+    <value>Trykk for å starte opptak</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
-    <value>Ibinabalik lamang ang naunang (mga) wallpaper, mangyaring maghintay...</value>
+    <value>Gjenoppretter tidligere bakgrunner, vennligst vent...</value>
   </data>
   <data name="DescriptionScreenLayout" xml:space="preserve">
-    <value>Pumili ng Display</value>
+    <value>Velg skjerm</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
-    <value>Maaari nang makuha ang bagong bersion ng software!</value>
+    <value>En ny versjon av programvaren er tilgjengelig!</value>
   </data>
   <data name="DescriptionWebpageLoad" xml:space="preserve">
-    <value>Ipasok ang link sa website upang mai-load, suportado ang mga link ng shadertoy.com</value>
+    <value>Enter website link to load, shadertoy.com shader links are supported</value>
   </data>
   <data name="DescriptionWelcomeWizard" xml:space="preserve">
-    <value>Sisimulan ka ng wizard na ito sa pag-set up ng Lively.</value>
+    <value>Denne veiviseren vil få deg igang med å sette opp Lively</value>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>Ang iyong bersyon ng Windows N/KN ay may kailangang i-download na karagdagang codecs para masuportahan ang pag-play ng video sa mga wallpapers</value>
+    <value>Din Windows N/KN versjon krever nedlasting av ekstra codecer for å støtte videoavspilling i bakgrunnene</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
-    <value>Suportahan ang developer sa paraan ng pagbili ng kape sa kanya</value>
+    <value>Vis støtte ved å kjøpe kaffe til utvikleren</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
-    <value>You are about to change to beta (developer) build of Lively.
-Updates will be frequent and may contain bugs!</value>
+    <value>Du er i ferd med å endre til beta (utvikler) versjon av Lively.
+Oppdateringer vil være hyppige og kan inneholde feil!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
-    <value>System-tray icon visibility, lively will continue to run with the icon hidden</value>
+    <value>Ikonsynlighet i systemstatusfeltet, fortsetter å kjøre med ikonet skjult for Lively</value>
   </data>
   <data name="HideSysTray.Header" xml:space="preserve">
-    <value>System-tray Icon</value>
+    <value>Systemstatusikon</value>
   </data>
   <data name="Language.Description" xml:space="preserve">
-    <value>Ang lively ay mai-restart upang ilapat ang bagong wika.</value>
+    <value>Livlig vil starte på nytt for å ta i bruk det nye språket</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
-    <value>Wika</value>
+    <value>Språk</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
-    <value>Nabigong i-update; subukang i-download ang installer mula sa:
+    <value>Kunne ikke oppdatere; prøv å laste ned installeringsprogrammet fra:
 https://github.com/rocksdanister/lively/releases</value>
   </data>
   <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
-    <value>Nasira ang file ng wallpaper, subukang muling i-download.</value>
+    <value>Skadet bakgrunnsfil, prøv å laste ned på nytt</value>
   </data>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
-    <value>Oops ... Mukhang may nanyaring mali :(
-Upang higit na maunawaan ang error na ito at ayusin ang isyu, ibahagi ang log file sa nag-develop.
-Mga tagubilin para sa pagbabahagi ng log file:
+    <value>Oops... Ser ut som noe gikk galt :(
+For å forstå denne feilen bedre og fikse problemet, del loggfilen med utvikleren.
+Instruksjoner for deling av loggfil:
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
-    <value>Ang lively ay hindi maaaring gumana nang maayos sa Windows High Contrast mode na pinagana!
-Huwag paganahin ang mode na High Contrast at subukang muli.</value>
+    <value>Lively kan ikke fungere riktig med Windows høy kontrastmodus aktivert!
+Deaktiver høy kontrastmodus og prøv igjen</value>
   </data>
   <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
     <value>Media playback failed :(
@@ -252,282 +254,283 @@ Instructions for sharing log file:
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
-    <value>Hindi Lively wallpaper file.</value>
+    <value>Ikke Lively bakgrunnsfil</value>
   </data>
   <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
-    <value>Ang Lively ay hindi nagsarado nang maayos, nagsisimula na ang Safe Mode. Nais mo bang ibalik ang dating mga tumatakbo na wallpaper?</value>
+    <value>Livliy ble ikke lukket riktig, starter i sikker modus.
+Ønsker du å gjenopprette den tidligere kjørende bakgrunn?</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
-    <value>Mukhang may kailangang baguhing mga settings upang mapagana ang Lively:
-1. Pindutin ang Win + R na key para magbukas ang Run,
-2. Itype ang SystemPropertiesPerformance.exe sa Run at i-click ang "OK" para buksan ang Performance Options.
-3. I-enable/check "Animate controls and elements inside windows" (pag naka-check na, i-uncheck at icheck uli) at i-apply.
-4. I-click ang "Apply" at pindutin ang "OK" para magsara ang window.
+    <value>Det ser ut som at noen innstillinger må settes for å gjøre Lively fungerende:  
+1. Trykk på Win + R for å åpne Kjør, 
+2. Skriv SystemPropertiesPerformance.exe i Kjør, klikk på "OK" for å utføre valget.
+3. Aktiver/sjekk "Animer kontroller og elementer inne i vinduer" (Hvis det allerede er merket, fjern avhuking og kontroller) &amp; Bruk.
+4. Klikk "Bruk" og trykk deretter "OK" for å lukke vinduet.
 
-Kapag Windows 7 just set - "Adjust for best appearance" at i-apply.
-Pag hindi pa gumagana, i-close at buksan ulit ang Lively/i-restart Windows.
-(Hindi gumagana sa piling mga Windows Insider builds)</value>
+Hvis Windows 7 bare sett - Juster for beste utseende &amp; Bruk.
+Hvis fortsatt ikke fungerer, lukk og start Lively igjen/restart Windows.
+(fungerer ikke i enkelte insiders Windows 10 builds)</value>
   </data>
   <data name="Startup.Description" xml:space="preserve">
-    <value>Lively needs to run in the background for wallpaper playback.</value>
+    <value>Lively må kjøres i bakgrunnen for å bruke bakgrunner</value>
   </data>
   <data name="Startup.Header" xml:space="preserve">
-    <value>I-start kasama ng Windows</value>
+    <value>Start med Windows</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
-    <value>Idagdag</value>
+    <value>Legg til</value>
   </data>
   <data name="TextAllFiles" xml:space="preserve">
-    <value>Lahat ang Files</value>
+    <value>Alle filer</value>
   </data>
   <data name="Application.Header" xml:space="preserve">
-    <value>Aplikasyon</value>
+    <value>Applikasjon</value>
   </data>
   <data name="Attribution.Header" xml:space="preserve">
-    <value>Pagkilala</value>
+    <value>Egenskaper</value>
   </data>
   <data name="Author.Text" xml:space="preserve">
-    <value>May-akda</value>
+    <value>Forfatter</value>
   </data>
   <data name="TextBack" xml:space="preserve">
-    <value>Balik</value>
+    <value>Tilbake</value>
   </data>
   <data name="TextBrowse" xml:space="preserve">
-    <value>Maghanap</value>
+    <value>Bla gjennom</value>
   </data>
   <data name="Cancel.Content" xml:space="preserve">
-    <value>Kanselahin</value>
+    <value>Avbryt</value>
   </data>
   <data name="TextChangeWallpaper" xml:space="preserve">
-    <value>Palitan ang wallpaper</value>
+    <value>Endre bakgrunn</value>
   </data>
   <data name="TextClose" xml:space="preserve">
-    <value>Isarado</value>
+    <value>Lukk</value>
   </data>
   <data name="CloseWallpapers.Label" xml:space="preserve">
-    <value>Isarado ang Wallpapers</value>
+    <value>Lukk</value>
   </data>
   <data name="TextCompleted" xml:space="preserve">
-    <value>Tapos!</value>
+    <value>Fullført!</value>
   </data>
   <data name="ControlPanel.Subtitle" xml:space="preserve">
-    <value>Click here to manage wallpapers.</value>
+    <value>Klikk her for å håndtere bakgrunner</value>
   </data>
   <data name="TextConvertVideo" xml:space="preserve">
-    <value>I-convert sa Video</value>
+    <value>Konverter til Video</value>
   </data>
   <data name="TextCreatePreview" xml:space="preserve">
-    <value>Gumawa ng Preview</value>
+    <value>Opprett forhåndsvisning</value>
   </data>
   <data name="Customise.Text" xml:space="preserve">
-    <value>I-customise</value>
+    <value>Tilpass</value>
   </data>
   <data name="CustomiseWallpaper.Label" xml:space="preserve">
-    <value>I-customise ang Wallpaper</value>
+    <value>Tilpass</value>
   </data>
   <data name="DeleteWallpaper.Text" xml:space="preserve">
-    <value>Tanggalin ang Wallpaper</value>
+    <value>Slett</value>
   </data>
   <data name="Description.Text" xml:space="preserve">
-    <value>Description</value>
+    <value>Beskrivelse</value>
   </data>
   <data name="DisplayPauseRuleAllScreen.Content" xml:space="preserve">
-    <value>Lahat ng (mga) screen</value>
+    <value>Alle skjermer</value>
   </data>
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
-    <value>Bawat Screen</value>
+    <value>Hver skjerm</value>
   </data>
   <data name="TextDownload" xml:space="preserve">
-    <value>I-download</value>
+    <value>Last ned</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
-    <value>I-Edit</value>
+    <value>Rediger</value>
   </data>
   <data name="TextError" xml:space="preserve">
-    <value>Error</value>
+    <value>Feil</value>
   </data>
   <data name="TextExit" xml:space="preserve">
-    <value>I-sara</value>
+    <value>Avslutt</value>
   </data>
   <data name="ExportWallpaperZip.Text" xml:space="preserve">
-    <value>I-save sa file</value>
+    <value>Lagre til fil</value>
   </data>
   <data name="TextFeatureMissing" xml:space="preserve">
-    <value>Hindi lahat ng features ay magagamit sa bersyon na ito ng Lively</value>
+    <value>Noen funksjoner er ikke tilgjengelige i denne versjonen av Lively</value>
   </data>
   <data name="TextFileNotFound" xml:space="preserve">
-    <value>Hindi makita ang file</value>
+    <value>Finner ikke filen</value>
   </data>
   <data name="TextGIF" xml:space="preserve">
-    <value>Animated GIF</value>
+    <value>Animert GIF</value>
   </data>
   <data name="GitHubStar.Content" xml:space="preserve">
-    <value>Magpakita ka ng mahal sa pag hulog ng bituin</value>
+    <value>Vis litt kjærlighet ved å slippe en stjerne</value>
   </data>
   <data name="TextGo" xml:space="preserve">
     <value>GO</value>
   </data>
   <data name="TextHelpTranslate.Title" xml:space="preserve">
-    <value>Tulungang magsalin</value>
+    <value>Hjelp med å oversette</value>
   </data>
   <data name="TextHours" xml:space="preserve">
-    <value>oras</value>
+    <value>time(r)</value>
   </data>
   <data name="TextInstall" xml:space="preserve">
-    <value>I-install</value>
+    <value>Installer</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
-    <value>Keyboard</value>
+    <value>Tastatur</value>
   </data>
   <data name="TextLastChecked" xml:space="preserve">
-    <value>Huling pagsusuri</value>
+    <value>Sist sjekket</value>
   </data>
   <data name="TextLearnMore.Text" xml:space="preserve">
-    <value>Higit pang matuto</value>
+    <value>Finn ut mer</value>
   </data>
   <data name="License.Header" xml:space="preserve">
-    <value>Lisensya</value>
+    <value>Lisens</value>
   </data>
   <data name="TextMinutes" xml:space="preserve">
-    <value>minuto</value>
+    <value>minutt(er)</value>
   </data>
   <data name="TextmoreInfo" xml:space="preserve">
-    <value>Impormasyon</value>
+    <value>Informasjon</value>
   </data>
   <data name="TextMoreWallpapers" xml:space="preserve">
-    <value>Marami pang mga Wallpaper</value>
+    <value>Flere bakgrunner</value>
   </data>
   <data name="TextMouse.Content" xml:space="preserve">
-    <value>Mouse</value>
+    <value>Mus</value>
   </data>
   <data name="MouseInteractOnDesktop.Content" xml:space="preserve">
-    <value>Pakikipag-ugnay sa mouse kapag nakatuon ang application</value>
+    <value>Museinteraksjon når programmet er fokusert</value>
   </data>
   <data name="TextNext" xml:space="preserve">
-    <value>Susunod</value>
+    <value>Neste</value>
   </data>
   <data name="TextNo" xml:space="preserve">
-    <value>Hindi</value>
+    <value>Nei</value>
   </data>
   <data name="TextOff.Content" xml:space="preserve">
-    <value>OFF</value>
+    <value>Av</value>
   </data>
   <data name="TextOK" xml:space="preserve">
-    <value>Ok</value>
+    <value>OK</value>
   </data>
   <data name="TextOn.Content" xml:space="preserve">
-    <value>ON</value>
+    <value>På</value>
   </data>
   <data name="TextOnline" xml:space="preserve">
     <value>Online</value>
   </data>
   <data name="TextOpenLively" xml:space="preserve">
-    <value>Buksan ang Lively</value>
+    <value>Åpne Lively</value>
   </data>
   <data name="PauseAlgorithmTypeAllProcess.Content" xml:space="preserve">
-    <value>Lahat ng proseso</value>
+    <value>Alle prosesser</value>
   </data>
   <data name="PauseAlgorithmTypeExclusiveMode.Content" xml:space="preserve">
     <value>Direct3D</value>
   </data>
   <data name="PauseAlgorithmTypeForegroundProcess.Content" xml:space="preserve">
-    <value>Paunang Proseso</value>
+    <value>Forgrunnsprosesser</value>
   </data>
   <data name="TextPauseWallpapers" xml:space="preserve">
-    <value>I-pause ang mga Wallpaper</value>
+    <value>Sett bakgrunn på pause</value>
   </data>
   <data name="TextPerformanceKill.Content" xml:space="preserve">
-    <value>Patayin</value>
+    <value>Steng</value>
   </data>
   <data name="TextPerformanceNone.Content" xml:space="preserve">
-    <value>Wala</value>
+    <value>Ingenting</value>
   </data>
   <data name="TextPerformancePause.Content" xml:space="preserve">
-    <value>I-hinto</value>
+    <value>Pause</value>
   </data>
   <data name="TextPicture" xml:space="preserve">
-    <value>Picture</value>
+    <value>Bilde</value>
   </data>
   <data name="PreviewWallpaper.Text" xml:space="preserve">
-    <value>Tingnan</value>
+    <value>Forhåndsvis</value>
   </data>
   <data name="PrivacyPolicy.Header" xml:space="preserve">
-    <value>Privacy Policy</value>
+    <value>Retningslinjer for personvern</value>
   </data>
   <data name="TextProcessingWallpaper" xml:space="preserve">
-    <value>Pinoproseso</value>
+    <value>Behandler</value>
   </data>
   <data name="TextRemove" xml:space="preserve">
-    <value>Alisin</value>
+    <value>Fjern</value>
   </data>
   <data name="TextRule" xml:space="preserve">
-    <value>Panuntunan</value>
+    <value>Regel</value>
   </data>
   <data name="TextScreen" xml:space="preserve">
-    <value>Screen</value>
+    <value>Skjerm</value>
   </data>
   <data name="TextSearch" xml:space="preserve">
-    <value>Maghanap</value>
+    <value>Søk</value>
   </data>
   <data name="SetWallpaper.Text" xml:space="preserve">
-    <value>Gawing Wallpaper</value>
+    <value>Velg som bakgrunn</value>
   </data>
   <data name="ShowOnDisk.Text" xml:space="preserve">
-    <value>Buksan ang lokasyon ng file</value>
+    <value>Åpne filplassering</value>
   </data>
   <data name="WallpaperSource.Text" xml:space="preserve">
-    <value>Pinagmulan</value>
+    <value>Kilde</value>
   </data>
   <data name="TextStart" xml:space="preserve">
-    <value>Magsimula</value>
+    <value>Start</value>
   </data>
   <data name="TextStop" xml:space="preserve">
-    <value>Maghinto</value>
+    <value>Stopp</value>
   </data>
   <data name="StoreReview.Content" xml:space="preserve">
-    <value>Nasisiyahan ka ba sa paggamit ng Lively? Mag-iwan ng review :)</value>
+    <value>Liker du Lively? Lag en anmeldelse :)</value>
   </data>
   <data name="TextSupport.Content" xml:space="preserve">
-    <value>Suporta</value>
+    <value>Støtte</value>
   </data>
   <data name="TextSwitchBranchDev" xml:space="preserve">
-    <value>Lumipat sa beta (Dev channel)</value>
+    <value>Bytt til beta (Dev kanal)</value>
   </data>
   <data name="TextSwitchBranchOfficial" xml:space="preserve">
-    <value>Lumipat sa stable (Default channel)</value>
+    <value>Bytt til stabil (standardkanal)</value>
   </data>
   <data name="TextTags" xml:space="preserve">
-    <value>Mga tags</value>
+    <value>Etiketter</value>
   </data>
   <data name="TaskbarThemeBlur.Content" xml:space="preserve">
-    <value>Labo</value>
+    <value>Uklarhet</value>
   </data>
   <data name="TaskbarThemeClear.Content" xml:space="preserve">
-    <value>Malinaw</value>
+    <value>Tøm</value>
   </data>
   <data name="TaskbarThemeColor.Content" xml:space="preserve">
-    <value>Kulay</value>
+    <value>Farger</value>
   </data>
   <data name="TaskbarThemeFluent.Content" xml:space="preserve">
-    <value>Fluent</value>
+    <value>Flytende</value>
   </data>
   <data name="TaskbarThemeWallpaper.Content" xml:space="preserve">
-    <value>Wolpeyper</value>
+    <value>Bakgrunn</value>
   </data>
   <data name="TaskbarThemeWallpaperFluent.Content" xml:space="preserve">
-    <value>Wallpaper Fluent</value>
+    <value>Flytende bakgrunn</value>
   </data>
   <data name="TextTileSizeLarge" xml:space="preserve">
-    <value>Malaki</value>
+    <value>Large</value>
   </data>
   <data name="TextTileSizeNormal" xml:space="preserve">
-    <value>Karaniwan</value>
+    <value>Normal</value>
   </data>
   <data name="TextTileSizeSmall" xml:space="preserve">
-    <value>Maliit</value>
+    <value>Small</value>
   </data>
   <data name="Title.Text" xml:space="preserve">
-    <value>Pamagat</value>
+    <value>Tittel</value>
   </data>
   <data name="TextUIHeadless" xml:space="preserve">
     <value>Headless</value>
@@ -536,640 +539,637 @@ Pag hindi pa gumagana, i-close at buksan ulit ang Lively/i-restart Windows.
     <value>Lite</value>
   </data>
   <data name="TextUINormal" xml:space="preserve">
-    <value>Karaniwan</value>
+    <value>Normal</value>
   </data>
   <data name="TextUnsupportedFile" xml:space="preserve">
-    <value>Ang format ng file ay hindi sinusuportahan</value>
+    <value>Filformatet støttes ikke</value>
   </data>
   <data name="TextUpdateAvailable" xml:space="preserve">
-    <value>May update!</value>
+    <value>Tilgjengelige oppdateringer!</value>
   </data>
   <data name="TextUpdateCheck" xml:space="preserve">
-    <value>Tumingin ng update</value>
+    <value>Se etter oppdateringer</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
-    <value>Nabigong suriin para sa pag-update ng software</value>
+    <value>Kunne ikke se etter programvareoppdatering</value>
   </data>
   <data name="TextUpdateChecking" xml:space="preserve">
-    <value>Tumitingin ng update</value>
+    <value>Ser etter oppdateringer</value>
   </data>
   <data name="TextUpdateUptodate" xml:space="preserve">
-    <value>Ang Software ay up-to-date na!</value>
+    <value>Programvaren er oppdatert!</value>
   </data>
   <data name="TextVideo" xml:space="preserve">
     <value>Video</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>Maglagay ng mga opsyonal na argumento sa command line</value>
+    <value>Skriv inn valgfrie kommandoarumenter</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
-    <value>Pagpuno</value>
+    <value>Fyll</value>
   </data>
   <data name="WallpaperFitNone.Content" xml:space="preserve">
-    <value>Wala</value>
+    <value>Ingen</value>
   </data>
   <data name="WallpaperFitUniform.Content" xml:space="preserve">
-    <value>Uniform</value>
+    <value>Enhetlig</value>
   </data>
   <data name="WallpaperFitUniformToFill.Content" xml:space="preserve">
-    <value>Uniform Fill</value>
+    <value>Enhetlig utfylling</value>
   </data>
   <data name="WallpaperLayoutDuplicate.Content" xml:space="preserve">
-    <value>I-duplicate ang parehong wallpaper</value>
+    <value>Duplisere samme bakgrunn</value>
   </data>
   <data name="WallpaperLayoutPerScreen.Content" xml:space="preserve">
-    <value>Piling screen lamang</value>
+    <value>Bare valgt skjerm</value>
   </data>
   <data name="WallpaperLayoutSpan.Content" xml:space="preserve">
-    <value>Span sa buong mga screen</value>
+    <value>Utvid over skjermene</value>
   </data>
   <data name="WallpaperType.Text" xml:space="preserve">
-    <value>Uri</value>
+    <value>Type</value>
   </data>
   <data name="Website.Header" xml:space="preserve">
-    <value>Website</value>
+    <value>Nettsted</value>
   </data>
   <data name="TextWebStream" xml:space="preserve">
-    <value>Web Stream</value>
+    <value>Web Strømming</value>
   </data>
   <data name="TextWelcome" xml:space="preserve">
-    <value>Maligayang Pagdating</value>
+    <value>Velkommen</value>
   </data>
   <data name="TextYes" xml:space="preserve">
-    <value>Oo</value>
+    <value>Ja</value>
   </data>
   <data name="VideoPlayer.Header" xml:space="preserve">
-    <value>Video Player</value>
+    <value>Videospiller</value>
   </data>
   <data name="AddWallpaperFileBrowse.Description" xml:space="preserve">
-    <value>Set all supported file types as wallpaper.</value>
+    <value>Angi alle støttede filtyper som bakgrunn</value>
   </data>
   <data name="EnterUrl.Description" xml:space="preserve">
-    <value>Set the web page of the URL you entered as wallpaper.</value>
+    <value>Angi websiden for URL-adressen du tastet inn som bakgrunn</value>
   </data>
   <data name="AppFocus.Description" xml:space="preserve">
-    <value>Itakda kung ano ang gagawin kapag nakatuon ang anumang aplikasyon</value>
+    <value>Angi hva du skal gjøre når et program er i fokus</value>
   </data>
   <data name="AppFullScreen.Description" xml:space="preserve">
-    <value>Itakda kung ano ang gagawin kapag tumatakbo ang mga laro / application ng fullscreen.</value>
+    <value>Velg hva som skal gjøres når ett fullskjerms- spill/programmer kjører</value>
   </data>
   <data name="AppRules.Description" xml:space="preserve">
-    <value>Itakda ang iba't ibang mga patakaran sa pag-playback ng wallpaper batay sa pagpapatakbo ng application.</value>
+    <value>Pause bakgrunnen når disse programmene kjører</value>
   </data>
   <data name="TipAppTheme" xml:space="preserve">
-    <value>Ang Lively ay umaayon sa mga setting ng tema ng system, upang baguhin ang hitsura.</value>
+    <value>Livlig tilpasser seg til systemets tema-innstillinger, for å endrer utseende gå til</value>
   </data>
   <data name="BatteryPower.Description" xml:space="preserve">
-    <value>(Para sa mga operating system lamang ng baterya) Baguhin ang pag-playback kapag ang AC ay hindi naka-disconnect.</value>
+    <value>Endre avspilling når strømnettet er koblet fra</value>
   </data>
   <data name="BrowserDebuggingPort.Description" xml:space="preserve">
-    <value>Ipasok ang port para sa pag-debug ng mga wallpaper ng web page, kinakailangan na i-restart ang browser para sa mga pagbabago na magkakabisa.
-Kapag handa na mag-navigate sa http://localhost:portnumber upang ma-access ang console ng developer.</value>
+    <value>Angi port for feilsøking av nettsidebakgrunn; når det er klart, navigere til http://localhost:portnumber for å få tilgang til utviklerkonsoll</value>
   </data>
   <data name="Debug.Description" xml:space="preserve">
-    <value>Ipakita ang developer menu</value>
+    <value>Vis utviklermeny</value>
   </data>
   <data name="DesktopPicture.Description" xml:space="preserve">
-    <value>Set a picture of animated wallpaper as desktop wallpaper.</value>
+    <value>Angi et bilde av animert bakgrunn som skrivebordbakgrunn</value>
   </data>
   <data name="DisplayPauseRule.Description" xml:space="preserve">
-    <value>Per: I-pause ang wallpaper lamang sa screen kung saan ang application ay nakatuon / fullscreen.
-Lahat: I-pause ang wallpaper sa lahat ng (mga) screen kung ang anumang application ay nakatuon / fullscreen.</value>
+    <value>Pause bakgrunnen på alle skjermer, eller bare skjermen der applikasjonen har fokus på</value>
   </data>
   <data name="ExportLogs.Description" xml:space="preserve">
-    <value>Create log report file.</value>
+    <value>Opprett loggrapportfil</value>
   </data>
   <data name="GifPlayer.Description" xml:space="preserve">
-    <value>Select the player used for gif wallpaper.</value>
+    <value>Velg avspilleren til bruk for gif-bakgrunnen</value>
   </data>
   <data name="TipLivelySetupOnClose" xml:space="preserve">
-    <value>Tapusin ang pag-setup upang magpatuloy.</value>
+    <value>Fullfør oppsettet for å fortsette</value>
   </data>
   <data name="LockscreenPicture.Description" xml:space="preserve">
-    <value>Set a picture of animated wallpaper as lockscreen wallpaper.</value>
+    <value>Angi et bilde av animert bakgrunn som låseskjermbakgrunn</value>
   </data>
   <data name="PauseAlgorithm.Description" xml:space="preserve">
-    <value>Tapusin ang pag-setup upang magpatuloy.</value>
+    <value>Pause bakgrunnsalgoritme</value>
   </data>
   <data name="PowerSavingModePower.Description" xml:space="preserve">
-    <value>Baguhin ang pag-playback kapag ang naka-enable ang Windows Power Saving Mode</value>
+    <value>Endre avspilling når Windows strømsparing er aktivert</value>
   </data>
   <data name="RemoteDesktopPower.Description" xml:space="preserve">
-    <value>Baguhin ang playback kapag tumatakbo ang Remote Desktop session</value>
+    <value>Endre avspilling når du kjører en fjernskrivebordsøkt</value>
   </data>
   <data name="TipScreensaver" xml:space="preserve">
-    <value>After the selected inactivity period use the current wallpaper as your screensaver.</value>
+    <value>Etter inaktivitet bruker du gjeldende bakgrunn som skjermsparer</value>
   </data>
   <data name="StreamWallpaperDetect.Description" xml:space="preserve">
-    <value>If supported video stream link is detected use the video player instead of loading the webpage.</value>
+    <value>Hvis støttet video stream link oppdages kan du bruke videospilleren i stedet for å laste inn nettsiden</value>
   </data>
   <data name="StreamWallpaperVideoQuality.Description" xml:space="preserve">
-    <value>Select the desired video quality for online streams.</value>
+    <value>Velg ønsket videokvalitet for online-strømmer</value>
   </data>
   <data name="TipSwitchSoftwareBranch" xml:space="preserve">
-    <value>Change software release from beta to stable or vice versa.</value>
+    <value>Endre programvareversjon fra beta til stabil eller vice versa</value>
   </data>
   <data name="TaskbarTheme.Description" xml:space="preserve">
-    <value>Change system taskbar appearance.</value>
+    <value>Endre systemoppgavelinjens utseende</value>
   </data>
   <data name="TipTileSize" xml:space="preserve">
-    <value>Size of the wallpaper tiles in Library.</value>
+    <value>Størrelse på bakgrunnsfliser i bibliotek</value>
   </data>
   <data name="TipUIMode" xml:space="preserve">
-    <value>For low-end systems select Lite mode.</value>
+    <value>For low-end systems select Lite mode</value>
   </data>
   <data name="VideoHardwareDecode.Description" xml:space="preserve">
-    <value>Use hardware acceleration when possible.</value>
+    <value>Bruk maskinvareakselerasjon når det er mulig</value>
   </data>
   <data name="VideoPlayer.Description" xml:space="preserve">
-    <value>Select the player used for video wallpaper.</value>
+    <value>Velg spilleren som brukes til videobakgrunn</value>
   </data>
   <data name="WallpaperDir.Description" xml:space="preserve">
-    <value>Path used to store wallpaper files.</value>
+    <value>Sti brukt til lagring av bakgrunnsfiler</value>
   </data>
   <data name="WallpaperFit.Description" xml:space="preserve">
-    <value>Wallpaper scaling algorithm.</value>
+    <value>Algoritme for skalering av bakgrunner</value>
   </data>
   <data name="WallpaperInput.Description" xml:space="preserve">
-    <value>Select ways to interact with wallpaper.</value>
+    <value>Velg måter å samhandle med bakgrunnen</value>
   </data>
   <data name="WallpaperLayout.Description" xml:space="preserve">
-    <value>How wallpaper is applied to connected display devices.</value>
+    <value>Hvordan bakgrunner brukes på tilkoblede skjermenheter</value>
   </data>
   <data name="TipWallpaperPlayback" xml:space="preserve">
-    <value>Pause wallpaper playback when desktop is not focused.</value>
+    <value>Pause bakgrunnsavspilling når skrivebordet ikke er fokusert</value>
   </data>
   <data name="WebBrowserDiskCache.Description" xml:space="preserve">
-    <value>Store temporary files on disk instead of memory, settings gets restored when browser is restarted.</value>
+    <value>Lagre midlertidige filer på disk i stedet for minne</value>
   </data>
   <data name="WebBrowser.Description" xml:space="preserve">
-    <value>CEF(Chromium Embedded Framework) is a lightweight chromium engine.
-Edge is the built in webview of windows 10.</value>
+    <value>Velg spilleren som brukes til html bakgrunn</value>
   </data>
   <data name="About.Label" xml:space="preserve">
-    <value>Tungkol sa</value>
+    <value>Om</value>
   </data>
   <data name="AddWallpaper.Label" xml:space="preserve">
-    <value>Magdagdag ng Wallpaper</value>
+    <value>Legg til bakgrunn</value>
   </data>
   <data name="AppFocus.Header" xml:space="preserve">
-    <value>Applications Focused</value>
+    <value>Fokusert applikasjon</value>
   </data>
   <data name="AppFullScreen.Header" xml:space="preserve">
-    <value>Applications Fullscreen</value>
+    <value>Applikasjonens fullskjerm</value>
   </data>
   <data name="TitleAppName" xml:space="preserve">
     <value>Lively Wallpaper</value>
   </data>
   <data name="AppRules.Header" xml:space="preserve">
-    <value>Application Rules</value>
+    <value>Applikasjonsregler</value>
   </data>
   <data name="AppTheme.Header" xml:space="preserve">
-    <value>Theme</value>
+    <value>Tema</value>
   </data>
   <data name="TitleAudioPlayOnScreen" xml:space="preserve">
-    <value>Play audio on screen</value>
+    <value>Spill av lyd på skjermen</value>
   </data>
   <data name="BatteryPower.Header" xml:space="preserve">
-    <value>When on Battery Power</value>
+    <value>Når den går på batteri</value>
   </data>
   <data name="TitleBrowseFile" xml:space="preserve">
-    <value>Pumili ng video, gif, at webpage... file para maging wallpaper</value>
+    <value>Bla igjennom videoer, gif, nettside... fil som skal velges som bakgrunn</value>
   </data>
   <data name="BrowserDebuggingPort.Header" xml:space="preserve">
-    <value>Debugging Port</value>
+    <value>Feilsøkingport</value>
   </data>
   <data name="TitleChangelog" xml:space="preserve">
-    <value>Mga pagbabago</value>
+    <value>Endringslogg</value>
   </data>
   <data name="Community.Header" xml:space="preserve">
-    <value>Komunidad</value>
+    <value>Nettsamfunn</value>
   </data>
   <data name="Debug.Header" xml:space="preserve">
-    <value>Debug</value>
+    <value>Feilsøk</value>
   </data>
   <data name="TitleDeleteConfirmation" xml:space="preserve">
-    <value>Kumpirmahin ang Pagbura</value>
+    <value>Bekreft sletting</value>
   </data>
   <data name="DesktopPicture.Header" xml:space="preserve">
-    <value>Desktop Picture</value>
+    <value>Skrivebordsbilde</value>
   </data>
   <data name="DisplayPauseRule.Header" xml:space="preserve">
-    <value>Display Pause Rule</value>
+    <value>Vis pauseregel</value>
   </data>
   <data name="Documentation.Header" xml:space="preserve">
-    <value>Dokumentasyon</value>
+    <value>Dokumentasjon</value>
   </data>
   <data name="EnterUrl.Header" xml:space="preserve">
-    <value>Magpasok ng URL</value>
+    <value>Skriv inn URL</value>
   </data>
   <data name="ExportLogs.Header" xml:space="preserve">
-    <value>Log File</value>
+    <value>Loggfil</value>
   </data>
   <data name="TitleGeneral" xml:space="preserve">
-    <value>General</value>
+    <value>Generelt</value>
   </data>
   <data name="GifPlayer.Header" xml:space="preserve">
-    <value>Gif Player</value>
+    <value>Gif spiller</value>
   </data>
   <data name="Help.Label" xml:space="preserve">
-    <value>Tulong</value>
+    <value>Hjelp</value>
   </data>
   <data name="TitleInteraction" xml:space="preserve">
-    <value>Interaksyon</value>
+    <value>Samspill</value>
   </data>
   <data name="TitleLibrary" xml:space="preserve">
-    <value>Library</value>
+    <value>Bibliotek</value>
   </data>
   <data name="TitleLivelySetup" xml:space="preserve">
-    <value>Setup ng Lively</value>
+    <value>Oppsett av Lively</value>
   </data>
   <data name="TitleLocation" xml:space="preserve">
-    <value>Lokasyon</value>
+    <value>Plassering</value>
   </data>
   <data name="LockscreenPicture.Header" xml:space="preserve">
-    <value>Lockscreen Picture</value>
+    <value>Låseskjermbilde</value>
   </data>
   <data name="TitleMisc" xml:space="preserve">
-    <value>Miscellaneous</value>
+    <value>Diverse</value>
   </data>
   <data name="TitleMute" xml:space="preserve">
-    <value>I-mute</value>
+    <value>Demp</value>
   </data>
   <data name="PauseAlgorithm.Header" xml:space="preserve">
-    <value>Pause Algorithm</value>
+    <value>Pause algoritme</value>
   </data>
   <data name="TitlePerformance" xml:space="preserve">
-    <value>Performance</value>
+    <value>Ytelse</value>
   </data>
   <data name="TitlePlaylist" xml:space="preserve">
-    <value>Playlist</value>
+    <value>Spilleliste</value>
   </data>
   <data name="PleaseWait.Text" xml:space="preserve">
-    <value>Please Wait</value>
+    <value>Vennligst vent</value>
   </data>
   <data name="PowerSavingModePower.Header" xml:space="preserve">
-    <value>When on Battery Saver</value>
+    <value>Når den går på batteri</value>
   </data>
   <data name="RemoteDesktopPower.Header" xml:space="preserve">
-    <value>When on Remote Desktop</value>
+    <value>Når den er på eksternt skrivebord</value>
   </data>
   <data name="ReportBug.Header" xml:space="preserve">
-    <value>Report Bug</value>
+    <value>Rapporter feil</value>
   </data>
   <data name="TitleScalingFit" xml:space="preserve">
-    <value>Scaling/Fit</value>
+    <value>Skalering/Tilpass</value>
   </data>
   <data name="ControlPanel.Title" xml:space="preserve">
-    <value>Screen Layout</value>
+    <value>Kontrollpanel</value>
   </data>
   <data name="TitleScreensaver" xml:space="preserve">
-    <value>Screensaver</value>
+    <value>Skjermsparer</value>
   </data>
   <data name="TitleScreensaverLockOnResume" xml:space="preserve">
-    <value>On resume, display logon screen</value>
+    <value>Når det gjenopptas, vis påloggingsskjerm</value>
   </data>
   <data name="TitleSelectFile" xml:space="preserve">
-    <value>Pumili ng file</value>
+    <value>Velg fil</value>
   </data>
   <data name="TitleSettings" xml:space="preserve">
-    <value>Settings</value>
+    <value>Innstillinger</value>
   </data>
   <data name="TitleSkipConfirm" xml:space="preserve">
-    <value>Skip Confirmation</value>
+    <value>Hopp over bekreftelse</value>
   </data>
   <data name="SourceCode.Header" xml:space="preserve">
-    <value>Source Code</value>
+    <value>Kildekode</value>
   </data>
   <data name="Store.Header" xml:space="preserve">
-    <value>Store</value>
+    <value>Butikk</value>
     <comment>For different version of Lively, example: Microsoft Store</comment>
   </data>
   <data name="StreamWallpaperVideoQuality.Header" xml:space="preserve">
-    <value>Stream</value>
+    <value>Strømming</value>
   </data>
   <data name="StreamWallpaperDetect.Header" xml:space="preserve">
-    <value>Detect Streams</value>
+    <value>Oppdag strømmer</value>
   </data>
   <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
-    <value>Video Quality</value>
+    <value>Videokvalitet</value>
   </data>
   <data name="System.Header" xml:space="preserve">
-    <value>Sistema</value>
+    <value>System</value>
   </data>
   <data name="TaskbarTheme.Header" xml:space="preserve">
-    <value>Taskbar Theme</value>
+    <value>Tema for oppgavelinjen</value>
   </data>
   <data name="TitleTileSize" xml:space="preserve">
-    <value>Tile Size</value>
+    <value>Ikonstørrelse</value>
   </data>
   <data name="TitleUIMode" xml:space="preserve">
-    <value>User Interface</value>
+    <value>Brukergrensesnitt</value>
   </data>
   <data name="TitleUpdates" xml:space="preserve">
-    <value>Updates</value>
+    <value>Oppdateringer</value>
   </data>
   <data name="TitleVideo" xml:space="preserve">
     <value>Video</value>
   </data>
   <data name="VideoHardwareDecode.Header" xml:space="preserve">
-    <value>GPU Decode</value>
+    <value>GPU dekoding</value>
   </data>
   <data name="TitleWallpaper" xml:space="preserve">
-    <value>Wolpeyper</value>
+    <value>Bakgrunn</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">
-    <value>Wallpaper Directory</value>
+    <value>Bakgrunnsmappe</value>
   </data>
   <data name="WallpaperDirMoveExisting.Content" xml:space="preserve">
-    <value>Move existing wallpapers to new folder</value>
+    <value>Flytt eksisterende bakgrunner til ny mappe</value>
   </data>
   <data name="WallpaperFit.Header" xml:space="preserve">
-    <value>Pumili ng fit</value>
+    <value>Velg en tilpasning</value>
   </data>
   <data name="WallpaperInput.Header" xml:space="preserve">
-    <value>Wallpaper Input</value>
+    <value>Bakgrunnsinputt</value>
   </data>
   <data name="WallpaperLayout.Header" xml:space="preserve">
-    <value>Wallpaper Layout</value>
+    <value>Plasseringsmetode</value>
   </data>
   <data name="WallpaperPlaybackGroup.Header" xml:space="preserve">
-    <value>Wallpaper Playback</value>
+    <value>Bakgrunnsavspilling</value>
   </data>
   <data name="TitleWarning" xml:space="preserve">
-    <value>Babala</value>
+    <value>Advarsel</value>
   </data>
   <data name="WebBrowser.Header" xml:space="preserve">
-    <value>Web Browser</value>
+    <value>Nettleser</value>
   </data>
   <data name="WebBrowserDiskCache.Header" xml:space="preserve">
-    <value>Disk cache</value>
+    <value>Mellomlager på disk</value>
   </data>
   <data name="TitleWebBrowserEngine" xml:space="preserve">
-    <value>Makina</value>
+    <value>Motor</value>
   </data>
   <data name="TitleWebpageLoad" xml:space="preserve">
-    <value>Load Webpage</value>
+    <value>Last nettside</value>
   </data>
   <data name="FastUI.Description" xml:space="preserve">
-    <value>Keep User Interface running for faster startup</value>
+    <value>Hold brukergrensesnittet i gang for raskere oppstart</value>
   </data>
   <data name="FastUI.Header" xml:space="preserve">
-    <value>Mabilis na pagbukas</value>
+    <value>Hurtig oppstart</value>
   </data>
   <data name="WallpaperDirGroup.Header" xml:space="preserve">
-    <value>File</value>
+    <value>Fil</value>
   </data>
   <data name="AppThemeDark.Content" xml:space="preserve">
-    <value>Dark</value>
+    <value>Mørk</value>
   </data>
   <data name="AppThemeLight.Content" xml:space="preserve">
-    <value>Maliwanag</value>
+    <value>Lys</value>
   </data>
   <data name="AppThemeSystem.Content" xml:space="preserve">
-    <value>Sistema</value>
+    <value>System</value>
   </data>
   <data name="WindowsSettingsColor.Content" xml:space="preserve">
-    <value>Setting sa Kulay ng Window</value>
+    <value>Fargeinnstillinger for Windows</value>
   </data>
   <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
-    <value>Laptops</value>
+    <value>Bærbar PC</value>
   </data>
   <data name="DeveloperGroup.Header" xml:space="preserve">
-    <value>Ang Developer</value>
+    <value>Utvikler</value>
   </data>
   <data name="AppearanceBehaviour.Header" xml:space="preserve">
-    <value>Itsura at pag-uugali</value>
+    <value>Utseende og adferd</value>
   </data>
   <data name="ActiveWallpapers.Label" xml:space="preserve">
-    <value>Active Wallpaper(s)</value>
+    <value>Aktive bakgrunn(er)</value>
   </data>
   <data name="TitleGallery" xml:space="preserve">
-    <value>Gallery</value>
+    <value>Galleri</value>
   </data>
   <data name="AboutMe.Text" xml:space="preserve">
-    <value>Kumusta, ako si Dani John ako din si rocksdanister. Ako ang gumawa ng Lively, ang Lively ay free at open source (FOSS) wallpaper application. Salamat sa paghihintay tumingin sa gawa ko.</value>
+    <value>Hei, jeg er Dani John også kjent som rocksdanister. Jeg utviklet Lively en gratis og åpen kildekode (FOSS) bakgrunnsaplikasjon. Takk for at du tok deg tid til å se på arbeidet mitt.</value>
   </data>
   <data name="LicenseLink.Content" xml:space="preserve">
-    <value>Lisensya ng Software</value>
+    <value>Programvarelisens</value>
   </data>
   <data name="AttributionLink.Content" xml:space="preserve">
-    <value>Third party software notice</value>
+    <value>Tredjeparts programvaremelding</value>
   </data>
   <data name="PrivacyPolicyLink.Content" xml:space="preserve">
-    <value>Data collection policy</value>
+    <value>Data retningslinjer</value>
   </data>
   <data name="AddWallpaperDrop.Text" xml:space="preserve">
-    <value>Maglagay pa ng Wallpaper</value>
+    <value>Legg til bakgrunn</value>
   </data>
   <data name="ComingSoon.Text" xml:space="preserve">
-    <value>Parating Na!</value>
+    <value>Kommer snart</value>
   </data>
   <data name="AboutMenu.Text" xml:space="preserve">
-    <value>About</value>
+    <value>Om</value>
   </data>
   <data name="SourceWebsite.Text" xml:space="preserve">
-    <value>Website</value>
+    <value>Nettsted</value>
   </data>
   <data name="TextOpen.Content" xml:space="preserve">
-    <value>I-bukas</value>
+    <value>Åpne</value>
   </data>
   <data name="TextSave.Content" xml:space="preserve">
-    <value>I-save</value>
+    <value>Lagre</value>
   </data>
   <data name="UIMode.Description" xml:space="preserve">
-    <value>User interface effects at animations</value>
+    <value>Brukergrensesnittets effekter og animasjoner</value>
   </data>
   <data name="UIMode.Header" xml:space="preserve">
-    <value>User Interface</value>
+    <value>Brukergrensesnitt</value>
   </data>
   <data name="UIModeLite.Content" xml:space="preserve">
-    <value>Lite</value>
+    <value>Lett</value>
   </data>
   <data name="UIModeNormal.Content" xml:space="preserve">
     <value>Normal</value>
   </data>
   <data name="Screensaver.Description" xml:space="preserve">
-    <value>Paano naka apply ang screensaver sa konekted na display devices</value>
+    <value>Hvordan bakgrunner brukes på tilkoblede skjermenheter</value>
   </data>
   <data name="Screensaver.Header" xml:space="preserve">
-    <value>Uri ng screensaver</value>
+    <value>Type skjermsparer</value>
   </data>
   <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
-    <value>Configured separately</value>
+    <value>Konfigurert separat</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
-    <value>Magkaparehas sa running wallpaper</value>
+    <value>Samme som kjørende bakgrunn</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
-    <value>Kailangan ng plugin</value>
+    <value>Programtillegg kreves</value>
   </data>
   <data name="ScreensaverPluginMessage.Text" xml:space="preserve">
-    <value>Unang beses na setup ay kailangan para gumana ang screensaver</value>
+    <value>Engangsoppsett er nødvendig for å kjøre skjermsparer</value>
   </data>
   <data name="WallpaperLayoutScreenPicker.Content" xml:space="preserve">
-    <value>Palaging piliin ang screen sa pag pili ng wallpaper</value>
+    <value>Velg alltid skjerm når du velger bakgrunn</value>
   </data>
   <data name="GalleryAccount.Text" xml:space="preserve">
-    <value>Account</value>
+    <value>Konto</value>
   </data>
   <data name="GalleryAccountDelete.Content" xml:space="preserve">
-    <value>Tanggalin ang account</value>
+    <value>Slett konto</value>
   </data>
   <data name="GalleryAccountExport.Content" xml:space="preserve">
-    <value>I-export ang data</value>
+    <value>Eksporter data</value>
   </data>
   <data name="GalleryAccountLogin.Content" xml:space="preserve">
-    <value>Mag-log in</value>
+    <value>Logg inn</value>
   </data>
   <data name="GalleryAccountLogout.Content" xml:space="preserve">
-    <value>Mag-log out</value>
+    <value>Logg ut</value>
   </data>
   <data name="GalleryPageCollection.Content" xml:space="preserve">
-    <value>Koleksyon</value>
+    <value>Samlinger</value>
   </data>
   <data name="GalleryPageHome.Content" xml:space="preserve">
-    <value>Home</value>
+    <value>Hjem</value>
   </data>
   <data name="GalleryPageManage.Content" xml:space="preserve">
-    <value>Manage</value>
+    <value>Administrer</value>
   </data>
   <data name="GalleryPageProfile.Content" xml:space="preserve">
-    <value>Profile</value>
+    <value>Profil</value>
   </data>
   <data name="GalleryPleaseLogin.Text" xml:space="preserve">
-    <value>Please log in to continue</value>
+    <value>Vennligst logg inn for å fortsette</value>
   </data>
   <data name="GalleryWelcomeMessage.Text" xml:space="preserve">
-    <value>Kumusta</value>
+    <value>Hei</value>
   </data>
   <data name="RestoreWallpaper.Text" xml:space="preserve">
-    <value>Nakahanap kami ng wallpaper sa account mo</value>
+    <value>Vi fant disse bakgrunnene i din konto</value>
   </data>
   <data name="TextDownloadNow.Content" xml:space="preserve">
-    <value>I-download na</value>
+    <value>Last ned nå</value>
   </data>
   <data name="TextMaybeLater.Content" xml:space="preserve">
-    <value>Mamaya</value>
+    <value>Kanskje senere</value>
   </data>
   <data name="TextSelectAll.Content" xml:space="preserve">
-    <value>Piliin lahat</value>
+    <value>Velg alle</value>
   </data>
   <data name="TextSelectNone.Content" xml:space="preserve">
-    <value>Walang piliin</value>
+    <value>Velg ingen</value>
   </data>
   <data name="TitleWelcomeback.Text" xml:space="preserve">
-    <value>Maligayang pagbalik!</value>
+    <value>Velkommen tilbake!</value>
   </data>
   <data name="ReportWallpaper.Header" xml:space="preserve">
-    <value>Reasons</value>
+    <value>Årsak</value>
   </data>
   <data name="ReportWallpaperCopyright.Content" xml:space="preserve">
-    <value>Copyright violation</value>
+    <value>Brudd på opphavsrett</value>
   </data>
   <data name="ReportWallpaperMisleading.Content" xml:space="preserve">
-    <value>Mali na Impormasyon</value>
+    <value>Villende informasjon</value>
   </data>
   <data name="ReportWallpaperOther.Content" xml:space="preserve">
-    <value>Iba pa</value>
+    <value>Annet</value>
   </data>
   <data name="ReportWallpaperSpam.Content" xml:space="preserve">
-    <value>Spam</value>
+    <value>Nettsøppel</value>
   </data>
   <data name="ReportWallpaperViolence.Content" xml:space="preserve">
-    <value>Nudity or violence</value>
+    <value>Nakenhet eller vold</value>
   </data>
   <data name="TextAdditionalNotes.Text" xml:space="preserve">
-    <value>Additional notes</value>
+    <value>Tilleggsopplysninger</value>
   </data>
   <data name="TextReportWallpaper.Text" xml:space="preserve">
-    <value>I-report</value>
+    <value>Rapporter</value>
   </data>
   <data name="TitleReportWallpaper.Text" xml:space="preserve">
-    <value>I-report ang Wallpaper</value>
+    <value>Rapporter bakgrunn</value>
   </data>
   <data name="Send.Content" xml:space="preserve">
-    <value>I-send</value>
+    <value>Send</value>
   </data>
   <data name="GalleryAccountDeleteConfirm.Text" xml:space="preserve">
-    <value>I-confirm ang aksyon na ito kasi hindi pwede ito mabalik</value>
+    <value>Vennligst bekreft denne handlingen da den IKKE kan angres</value>
   </data>
   <data name="GalleryAccountDeleteFail.Text" xml:space="preserve">
-    <value>Hindi pwede ma tangal ang account, gawin mo na lang mamaya</value>
+    <value>Kunne ikke slette kontoen, vennligst prøv igjen senere</value>
   </data>
   <data name="TextConfirmCancel.Text" xml:space="preserve">
-    <value>Gusto mo ba kanselahin?</value>
+    <value>Ønsker du å avbryte?</value>
   </data>
   <data name="TextWait.Text" xml:space="preserve">
-    <value>Maghintay</value>
+    <value>Vent</value>
   </data>
   <data name="TitleDownloadProgress.Text" xml:space="preserve">
-    <value>Download in Progress</value>
+    <value>Nedlasting pågår</value>
   </data>
   <data name="TextContributors.Text" xml:space="preserve">
-    <value>Mga Tumulong</value>
+    <value>Bidragsytere</value>
   </data>
   <data name="TextShare.Text" xml:space="preserve">
-    <value>Share</value>
+    <value>Del</value>
   </data>
   <data name="TitleShareWallpaper.Text" xml:space="preserve">
-    <value>Share Wallpaper</value>
+    <value>Del bakgrunn</value>
   </data>
   <data name="ExportWallpaperGallery.Text" xml:space="preserve">
-    <value>Gallery Upload</value>
+    <value>Last opp til galleri</value>
   </data>
   <data name="ExportWallpaperLink.Text" xml:space="preserve">
-    <value>Kopyahin ang link</value>
+    <value>Kopier lenke</value>
   </data>
   <data name="TextCustomiseWallpaper" xml:space="preserve">
-    <value>I-customise ang Wallpaper</value>
+    <value>Tilpass bakgrunn</value>
   </data>
   <data name="TextCloseWallpapers" xml:space="preserve">
-    <value>Isarado ang Wallpapers</value>
+    <value>Lukk bakgrunner</value>
   </data>
   <data name="TitleChooseApplication.Text" xml:space="preserve">
-    <value>Mamili ng aplikasyon</value>
+    <value>Velg applikasjon</value>
   </data>
   <data name="WallpaperInstallSize.Text" xml:space="preserve">
-    <value>Sukat</value>
+    <value>Størrelse</value>
   </data>
   <data name="PluginNotFound.Message" xml:space="preserve">
-    <value>Please install the required plugin</value>
+    <value>Vennligst installer det nødvendige programtillegget</value>
   </data>
   <data name="PluginNotFound.Title" xml:space="preserve">
-    <value>Plugin not found</value>
+    <value>Programtillegg ikke funnet</value>
   </data>
   <data name="UpdateCompleted.Text" xml:space="preserve">
-    <value>Update complete</value>
+    <value>Oppdatering fullført</value>
   </data>
   <data name="UpdateWhatsNew.Text" xml:space="preserve">
-    <value>Check out what's new</value>
+    <value>Sjekk ut hva som er nytt</value>
   </data>
   <data name="AppThemeColor.Header" xml:space="preserve">
-    <value>Kulay</value>
+    <value>Farger</value>
   </data>
   <data name="DescriptionDefault.Text" xml:space="preserve">
-    <value>Use system default</value>
+    <value>Bruk systemstandard</value>
   </data>
   <data name="DescriptionDynamicTheme.Text" xml:space="preserve">
-    <value>Adapt to wallpaper</value>
+    <value>Tilpass til bakgrunn</value>
   </data>
   <data name="TextDefault.Text" xml:space="preserve">
-    <value>Default</value>
+    <value>Standard</value>
   </data>
   <data name="TextDynamicTheme.Text" xml:space="preserve">
-    <value>Dynamic</value>
+    <value>Dynamisk</value>
   </data>
   <data name="Theme.Label" xml:space="preserve">
-    <value>Theme</value>
+    <value>Tema</value>
   </data>
   <data name="IconsHidden.Message" xml:space="preserve">
-    <value>To prevent accidental selection desktop icons are currently hidden</value>
+    <value>For å forhindre utilsiktet valg er skrivebordsikoner for øyeblikket skjult</value>
   </data>
   <data name="IconsHidden.Title" xml:space="preserve">
-    <value>Desktop icons</value>
+    <value>Skrivebordikoner</value>
   </data>
   <data name="TextEndOfItems.Text" xml:space="preserve">
-    <value>That's all for now..</value>
+    <value>Det var alt for denne gang..</value>
   </data>
 </root>
