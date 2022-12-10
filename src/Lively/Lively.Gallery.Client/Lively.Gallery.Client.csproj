@@ -9,7 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="CSharp.OperationResult" Version="0.1.6" />
-    <PackageReference Include="Watson" Version="4.3.4" />
+    <PackageReference Include="Watson" Version="4.3.5" />
   </ItemGroup>
 
   <ItemGroup>
