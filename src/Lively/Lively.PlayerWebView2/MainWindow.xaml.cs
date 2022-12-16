@@ -166,6 +166,7 @@ namespace Lively.PlayerWebView2
             //Ref: https://docs.microsoft.com/en-us/microsoft-edge/webview2/concepts/user-data-folder
             var env = await CoreWebView2Environment.CreateAsync(null, Constants.CommonPaths.TempWebView2Dir);
             await webView.EnsureCoreWebView2Async(env);
+
             webView.CoreWebView2.ProcessFailed += (s, e) =>
             {
                 App.WriteToParent(new LivelyMessageConsole()
@@ -174,7 +175,21 @@ namespace Lively.PlayerWebView2
                     Message = $"Process fail: {e.Reason}",
                 });
             };
-            webView.NavigationCompleted += WebView_NavigationCompleted;
+
+            webView.NavigationCompleted += async (s, e) =>
+            {
+                await RestoreLivelyProperties(startArgs.Properties);
+                App.WriteToParent(new LivelyMessageWallpaperLoaded() { Success = true });
+            };
+
+            webView.CoreWebView2.NewWindowRequested += (s, e) => 
+            {
+                if (e.IsUserInitiated) //avoid popups
+                {
+                    e.Handled = true;
+                    LinkHandler.OpenBrowser(e.Uri);
+                }
+            };
 
             if (startArgs.Type.Equals("online", StringComparison.OrdinalIgnoreCase))
             {
@@ -199,12 +214,6 @@ namespace Lively.PlayerWebView2
                 //webView.CoreWebView2.SetVirtualHostNameToFolderMapping(Path.GetFileName(startArgs.Url), Path.GetDirectoryName(startArgs.Url), CoreWebView2HostResourceAccessKind.Allow);
                 webView.CoreWebView2.Navigate(startArgs.Url);
             }
-        }
-
-        private async void WebView_NavigationCompleted(object sender, CoreWebView2NavigationCompletedEventArgs e)
-        {
-            await RestoreLivelyProperties(startArgs.Properties);
-            App.WriteToParent(new LivelyMessageWallpaperLoaded() { Success = true });
         }
 
         private class WallpaperPlaybackState
