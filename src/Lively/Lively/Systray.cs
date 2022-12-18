@@ -7,6 +7,7 @@ using Lively.Helpers;
 using Lively.Helpers.Theme;
 using Lively.Models;
 using Lively.Services;
+using Lively.Views;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -34,6 +35,8 @@ namespace Lively
         private readonly IDisplayManager displayManager;
         private readonly IUserSettingsService userSettings;
         private readonly IPlayback playbackMonitor;
+
+        private DiagnosticMenu diagnosticMenu;
 
         public Systray(IRunnerService runner,
             IUserSettingsService userSettings,
@@ -106,7 +109,14 @@ namespace Lively
             //Report bug
             _notifyIcon.ContextMenuStrip.Items.Add(new ContextMenuTheme.StripSeparatorCustom().stripSeparator);
             _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.ReportBug_Header, Properties.Icons.icons8_website_bug_96).Click += (s, e) => 
-                LinkHandler.OpenBrowser("https://github.com/rocksdanister/lively/wiki/Common-Problems");
+            {
+                if (diagnosticMenu is null)
+                {
+                    diagnosticMenu = new DiagnosticMenu();
+                    diagnosticMenu.Closed += (s, e) => diagnosticMenu = null;
+                    diagnosticMenu.Show();
+                }
+            };
             //Exit app
             _notifyIcon.ContextMenuStrip.Items.Add(new ContextMenuTheme.StripSeparatorCustom().stripSeparator);
             _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextExit, Properties.Icons.icons8_close_96).Click += (s, e) => App.ShutDown();
