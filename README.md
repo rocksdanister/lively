@@ -109,7 +109,7 @@ Its super easy.. barely an inconvenience, just drag & drop the files or webpages
 ## Download
 ##### Microsoft Store (Windows 10 1809 or above)
 
-<a href='//www.microsoft.com/store/apps/9ntm2qc6qws7?cid=storebadge&ocid=badge'><img src='https://developer.microsoft.com/store/badges/images/English_get-it-from-MS.png' alt='English badge' width="142px" height="52px"/></a>
+[<img src="https://get.microsoft.com/images/en-us%20dark.svg" alt="Get it from Microsoft" width="142px" height="52px">](https://apps.microsoft.com/store/detail/9NTM2QC6QWS7)
 
 ##### [Installer (Windows 10 1903 or above)](https://github.com/rocksdanister/lively/releases/latest)
 
