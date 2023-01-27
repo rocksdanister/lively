@@ -68,6 +68,27 @@
       },
       {
         "type": "object",
+        "title": "Text Box",
+        "description": "https://github.com/rocksdanister/lively/wiki/Web-Guide-IV-:-Interaction#textbox",
+        "properties": {
+          "type": {
+            "const": "textbox"
+          },
+          "value": {
+            "type": "string",
+            "title": "Value",
+            "description": "The default text box text."
+          },
+          "text": {
+            "type": "string",
+            "title": "Text",
+            "description": "The text box title."
+          }
+        },
+        "required": ["text"]
+      },
+      {
+        "type": "object",
         "title": "Dropdown",
         "description": "https://github.com/rocksdanister/lively/wiki/Web-Guide-IV-:-Interaction#dropdown",
         "properties": {
@@ -122,27 +143,6 @@
           }
         },
         "required": ["text", "filter", "folder"]
-      },
-      {
-        "type": "object",
-        "title": "Text Box",
-        "description": "https://github.com/rocksdanister/lively/wiki/Web-Guide-IV-:-Interaction#textbox",
-        "properties": {
-          "type": {
-            "const": "textbox"
-          },
-          "value": {
-            "type": "string",
-            "title": "Value",
-            "description": "The default text box text."
-          },
-          "text": {
-            "type": "string",
-            "title": "Text",
-            "description": "The text box title."
-          }
-        },
-        "required": ["text"]
       },
       {
         "type": "object",
@@ -211,11 +211,11 @@
           },
           "text": {
             "type": "string",
-            "description": "The check box title"
+            "description": "The check box title."
           },
           "value": {
             "type": "boolean",
-            "description": "The default check box state"
+            "description": "The default check box state."
           }
         },
         "required": ["text"]
