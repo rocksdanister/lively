@@ -6,7 +6,7 @@
   "additionalProperties": {
     "type": "object",
     "title": "Setting",
-    "description": "Describes a wallpaper setting.",
+    "description": "https://github.com/rocksdanister/lively/wiki/Web-Guide-IV-:-Interaction#controls",
     "properties": {
       "type": {
         "title": "Setting Type",
@@ -53,18 +53,14 @@
             "title": "Min",
             "description": "The minimum slider value."
           },
-          "tick": {
-            "type": "number",
-            "title": "Tick",
-            "description": ""
-          },
           "step": {
             "type": "number",
             "title": "Step",
             "description": "The precision used when selecting a value with the slider."
           }
         },
-        "required": ["text", "max", "min", "tick", "step"]
+        "required": ["text", "max", "min", "step"],
+        "additionalProperties": false
       },
       {
         "type": "object",
@@ -85,7 +81,8 @@
             "description": "The text box title."
           }
         },
-        "required": ["text"]
+        "required": ["text"],
+        "additionalProperties": false
       },
       {
         "type": "object",
@@ -111,7 +108,8 @@
             "description": "An array of labels for the dropdown."
           }
         },
-        "required": ["text", "items"]
+        "required": ["text", "items"],
+        "additionalProperties": false
       },
       {
         "type": "object",
@@ -142,7 +140,8 @@
             "description": "The default folder. Only works for directory within parent html file."
           }
         },
-        "required": ["text", "filter", "folder"]
+        "required": ["text", "filter", "folder"],
+        "additionalProperties": false
       },
       {
         "type": "object",
@@ -163,7 +162,8 @@
             "description": "The button title."
           }
         },
-        "required": ["text"]
+        "required": ["text"],
+        "additionalProperties": false
       },
       {
         "type": "object",
@@ -178,7 +178,8 @@
             "title": "Value",
             "description": "The label text."
           }
-        }
+        },
+        "additionalProperties": false
       },
       {
         "type": "object",
@@ -199,7 +200,8 @@
             "description": "The color picker title."
           }
         },
-        "required": ["text"]
+        "required": ["text"],
+        "additionalProperties": false
       },
       {
         "type": "object",
@@ -218,7 +220,8 @@
             "description": "The default check box state."
           }
         },
-        "required": ["text"]
+        "required": ["text"],
+        "additionalProperties": false
       }
     ],
     "required": ["type", "value"]
