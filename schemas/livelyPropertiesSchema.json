@@ -1,0 +1,229 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "JSON schema for Lively Wallpaper LivelyProperties.json files",
+  "description": "https://github.com/rocksdanister/lively/wiki/Web-Guide-IV-:-Interaction#lively-properties",
+  "type": "object",
+  "additionalProperties": {
+    "type": "object",
+    "title": "Setting",
+    "description": "https://github.com/rocksdanister/lively/wiki/Web-Guide-IV-:-Interaction#controls",
+    "properties": {
+      "type": {
+        "title": "Setting Type",
+        "description": "https://github.com/rocksdanister/lively/wiki/Web-Guide-IV-:-Interaction#controls",
+        "enum": [
+          "slider",
+          "textbox",
+          "dropdown",
+          "folderDropdown",
+          "button",
+          "label",
+          "color",
+          "checkbox"
+        ]
+      },
+      "value": {}
+    },
+    "oneOf": [
+      {
+        "type": "object",
+        "title": "Slider",
+        "description": "https://github.com/rocksdanister/lively/wiki/Web-Guide-IV-:-Interaction#slider",
+        "properties": {
+          "type": {
+            "const": "slider"
+          },
+          "value": {
+            "type": "number",
+            "title": "Value",
+            "description": "The default slider value."
+          },
+          "text": {
+            "type": "string",
+            "title": "Text",
+            "description": "The slider title."
+          },
+          "max": {
+            "type": "number",
+            "title": "Max",
+            "description": "The maximum slider value."
+          },
+          "min": {
+            "type": "number",
+            "title": "Min",
+            "description": "The minimum slider value."
+          },
+          "step": {
+            "type": "number",
+            "title": "Step",
+            "description": "The precision used when selecting a value with the slider."
+          }
+        },
+        "required": ["text", "max", "min", "step"],
+        "additionalProperties": false
+      },
+      {
+        "type": "object",
+        "title": "Text Box",
+        "description": "https://github.com/rocksdanister/lively/wiki/Web-Guide-IV-:-Interaction#textbox",
+        "properties": {
+          "type": {
+            "const": "textbox"
+          },
+          "value": {
+            "type": "string",
+            "title": "Value",
+            "description": "The default text box text."
+          },
+          "text": {
+            "type": "string",
+            "title": "Text",
+            "description": "The text box title."
+          }
+        },
+        "required": ["text"],
+        "additionalProperties": false
+      },
+      {
+        "type": "object",
+        "title": "Dropdown",
+        "description": "https://github.com/rocksdanister/lively/wiki/Web-Guide-IV-:-Interaction#dropdown",
+        "properties": {
+          "type": {
+            "const": "dropdown"
+          },
+          "value": {
+            "type": "integer",
+            "title": "Value",
+            "description": "The default item index, starting at 0."
+          },
+          "text": {
+            "type": "string",
+            "title": "Text",
+            "description": "The dropdown title."
+          },
+          "items": {
+            "type": "array",
+            "title": "Items",
+            "description": "An array of labels for the dropdown."
+          }
+        },
+        "required": ["text", "items"],
+        "additionalProperties": false
+      },
+      {
+        "type": "object",
+        "title": "Folder Dropdown",
+        "description": "https://github.com/rocksdanister/lively/wiki/Web-Guide-IV-:-Interaction#folder-dropdown",
+        "properties": {
+          "type": {
+            "const": "folderDropdown"
+          },
+          "value": {
+            "type": "string",
+            "title": "Value",
+            "description": "The default file."
+          },
+          "text": {
+            "type": "string",
+            "title": "Text",
+            "description": "The dropdown title."
+          },
+          "filter": {
+            "type": "string",
+            "title": "Filter",
+            "description": "Defines a filter of files to include (e.g. \"*.jpg|*.png\")."
+          },
+          "folder": {
+            "type": "string",
+            "title": "Folder",
+            "description": "The default folder. Only works for directory within parent html file."
+          }
+        },
+        "required": ["text", "filter", "folder"],
+        "additionalProperties": false
+      },
+      {
+        "type": "object",
+        "title": "Button",
+        "description": "https://github.com/rocksdanister/lively/wiki/Web-Guide-IV-:-Interaction#button",
+        "properties": {
+          "type": {
+            "const": "button"
+          },
+          "value": {
+            "type": "string",
+            "title": "Value",
+            "description": "The button label."
+          },
+          "text": {
+            "type": "string",
+            "title": "Text",
+            "description": "The button title."
+          }
+        },
+        "required": ["text"],
+        "additionalProperties": false
+      },
+      {
+        "type": "object",
+        "title": "Label",
+        "description": "https://github.com/rocksdanister/lively/wiki/Web-Guide-IV-:-Interaction#label",
+        "properties": {
+          "type": {
+            "const": "label"
+          },
+          "value": {
+            "type": "string",
+            "title": "Value",
+            "description": "The label text."
+          }
+        },
+        "additionalProperties": false
+      },
+      {
+        "type": "object",
+        "title": "Color Picker",
+        "description": "https://github.com/rocksdanister/lively/wiki/Web-Guide-IV-:-Interaction#color-picker",
+        "properties": {
+          "type": {
+            "const": "color"
+          },
+          "value": {
+            "type": "string",
+            "title": "Value",
+            "description": "The default hex color string (e.g. \"#C0C0C0\")."
+          },
+          "text": {
+            "type": "string",
+            "title": "Text",
+            "description": "The color picker title."
+          }
+        },
+        "required": ["text"],
+        "additionalProperties": false
+      },
+      {
+        "type": "object",
+        "title": "Check Box",
+        "description": "https://github.com/rocksdanister/lively/wiki/Web-Guide-IV-:-Interaction#checkbox",
+        "properties": {
+          "type": {
+            "const": "checkbox"
+          },
+          "text": {
+            "type": "string",
+            "description": "The check box title."
+          },
+          "value": {
+            "type": "boolean",
+            "description": "The default check box state."
+          }
+        },
+        "required": ["text"],
+        "additionalProperties": false
+      }
+    ],
+    "required": ["type", "value"]
+  }
+}
