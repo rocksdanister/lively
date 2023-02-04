@@ -30,8 +30,12 @@ namespace Lively.PlayerWebView2
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0044:Add readonly modifier", Justification = "Debug only")]
         private StartArgs startArgs;
-        private IAudioVisualizerService audioCapture;
         private bool isPaused = false;
+
+        private bool initializedServices = false; //delay API init till loaded page
+        private IAudioVisualizerService visualizerService;
+        private IHardwareUsageService hardwareUsageService;
+        private INowPlayingService nowPlayingService;
 
         public MainWindow(string[] args)
         {
@@ -44,7 +48,7 @@ namespace Lively.PlayerWebView2
                 //online or local(file)
                 Type = "local",
                 // LivelyProperties.json path if any
-                Properties = null,
+                Properties = @"",
                 SysInfo = false,
                 NowPlaying = false,
                 AudioVisualizer = false,
@@ -84,74 +88,6 @@ namespace Lively.PlayerWebView2
                 {
                     Hwnd = webView.Handle.ToInt32()
                 });
-
-                if (startArgs.NowPlaying)
-                {
-                    var nowPlayingService = new NowPlayingService();
-                    nowPlayingService.NowPlayingTrackChanged += (s, e) => {
-                        try
-                        {
-                            if (isPaused)
-                                return;
-
-                            //TODO: CefSharp CanExecuteJavascriptInMainFrame equivalent in webview
-                            this.Dispatcher.Invoke(() =>
-                            {
-                                _ = ExecuteScriptFunctionAsync("livelyCurrentTrack", JsonConvert.SerializeObject(e, Formatting.Indented));
-                            });
-                        }
-                        catch (Exception ex)
-                        {
-                            App.WriteToParent(new LivelyMessageConsole()
-                            {
-                                Category = ConsoleMessageType.log,
-                                Message = $"Error sending track:{ex.Message}",
-                            });
-
-                        }
-                    };
-                }
-
-
-                if (startArgs.SysInfo)
-                {
-                    var sysMonitor = new PerfCounterUsageService();
-                    sysMonitor.HWMonitor += (s, e) => {
-                        try
-                        {
-                            if (isPaused)
-                                return;
-
-                            //TODO: CefSharp CanExecuteJavascriptInMainFrame equivalent in webview
-                            this.Dispatcher.Invoke(() =>
-                            {
-                                _ = ExecuteScriptFunctionAsync("livelySystemInformation", JsonConvert.SerializeObject(e, Formatting.Indented));
-                            });
-                        }
-                        catch { }
-                    };
-                    sysMonitor.Start();
-                }
-
-                if (startArgs.AudioVisualizer)
-                {
-                    audioCapture = new AudioVisualizerService();
-                    audioCapture.AudioDataAvailable += (s, e) => {
-                        try
-                        {
-                            if (isPaused)
-                                return;
-
-                            //TODO: CefSharp CanExecuteJavascriptInMainFrame equivalent in webview
-                            this.Dispatcher.Invoke(() =>
-                            {
-                                _ = ExecuteScriptFunctionAsync("livelyAudioListener", e);
-                            });
-                        }
-                        catch { }
-                    };
-                    
-                }
             }
             finally
             {
@@ -176,11 +112,7 @@ namespace Lively.PlayerWebView2
                 });
             };
 
-            webView.NavigationCompleted += async (s, e) =>
-            {
-                await RestoreLivelyProperties(startArgs.Properties);
-                App.WriteToParent(new LivelyMessageWallpaperLoaded() { Success = true });
-            };
+            webView.NavigationCompleted += WebView_NavigationCompleted;
 
             webView.CoreWebView2.NewWindowRequested += (s, e) => 
             {
@@ -213,6 +145,82 @@ namespace Lively.PlayerWebView2
             {
                 //webView.CoreWebView2.SetVirtualHostNameToFolderMapping(Path.GetFileName(startArgs.Url), Path.GetDirectoryName(startArgs.Url), CoreWebView2HostResourceAccessKind.Allow);
                 webView.CoreWebView2.Navigate(startArgs.Url);
+            }
+        }
+
+        private async void WebView_NavigationCompleted(object sender, CoreWebView2NavigationCompletedEventArgs e)
+        {
+            await RestoreLivelyProperties(startArgs.Properties);
+            App.WriteToParent(new LivelyMessageWallpaperLoaded() { Success = true });
+
+            if (!initializedServices)
+            {
+                initializedServices = true;
+                if (startArgs.NowPlaying)
+                {
+                    nowPlayingService = new NowPlayingService();
+                    nowPlayingService.NowPlayingTrackChanged += (s, e) => {
+                        try
+                        {
+                            if (isPaused)
+                                return;
+
+                            //TODO: CefSharp CanExecuteJavascriptInMainFrame equivalent in webview
+                            _ = ExecuteScriptFunctionAsync("livelyCurrentTrack", JsonConvert.SerializeObject(e, Formatting.Indented));
+                        }
+                        catch (Exception ex)
+                        {
+                            App.WriteToParent(new LivelyMessageConsole()
+                            {
+                                Category = ConsoleMessageType.log,
+                                Message = $"Error sending track:{ex.Message}",
+                            });
+
+                        }
+                    };
+                    nowPlayingService.Start();
+                }
+
+
+                if (startArgs.SysInfo)
+                {
+                    hardwareUsageService = new PerfCounterUsageService();
+                    hardwareUsageService.HWMonitor += (s, e) => {
+                        try
+                        {
+                            if (isPaused)
+                                return;
+
+                            //TODO: CefSharp CanExecuteJavascriptInMainFrame equivalent in webview
+                            this.Dispatcher.Invoke(() =>
+                            {
+                                _ = ExecuteScriptFunctionAsync("livelySystemInformation", JsonConvert.SerializeObject(e, Formatting.Indented));
+                            });
+                        }
+                        catch { }
+                    };
+                    hardwareUsageService.Start();
+                }
+
+                if (startArgs.AudioVisualizer)
+                {
+                    visualizerService = new AudioVisualizerService();
+                    visualizerService.AudioDataAvailable += (s, e) => {
+                        try
+                        {
+                            if (isPaused)
+                                return;
+
+                            //TODO: CefSharp CanExecuteJavascriptInMainFrame equivalent in webview
+                            this.Dispatcher.Invoke(() =>
+                            {
+                                _ = ExecuteScriptFunctionAsync("livelyAudioListener", e);
+                            });
+                        }
+                        catch { }
+                    };
+                    visualizerService.Start();
+                }
             }
         }
 
@@ -421,7 +429,9 @@ namespace Lively.PlayerWebView2
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            audioCapture?.Dispose();
+            visualizerService?.Dispose();
+            hardwareUsageService?.Stop();
+            nowPlayingService?.Stop();
             webView?.Dispose();
         }
 

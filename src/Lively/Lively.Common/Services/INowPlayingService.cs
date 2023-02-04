@@ -7,6 +7,8 @@ namespace Lively.Common.Services
     public interface INowPlayingService
     {
         event EventHandler<NowPlayingModel> NowPlayingTrackChanged;
+        void Start();
+        void Stop();
     }
 
     public class NowPlayingModel : EventArgs
@@ -21,5 +23,16 @@ namespace Lively.Common.Services
         public string Thumbnail { get; set; }
         public string Title { get; set; }
         public int TrackNumber { get; set; }
+        //public ColorProperties Colors { get; set; }
+    }
+
+    //Future use
+    public class ColorProperties
+    {
+        public string PrimaryColor { get; set; }
+        public string SecondaryColor { get; set; }
+        public string TertiaryColor { get; set; }
+        public string TextColor { get; set; }
+        public string ComplementaryColor { get; set; }
     }
 }
