@@ -1,12 +1,11 @@
 ﻿using Lively.Common.Models;
 using System;
-using System.Collections.Generic;
-using System.Text;
+using System.ComponentModel;
 using System.Threading.Tasks;
 
-namespace Lively.Grpc.Client
+namespace Lively.Common.Services
 {
-    public interface IAppUpdaterClient : IDisposable
+    public interface IAppUpdaterService
     {
         string LastCheckChangelog { get; }
         DateTime LastCheckTime { get; }
@@ -16,7 +15,9 @@ namespace Lively.Grpc.Client
 
         event EventHandler<AppUpdaterEventArgs> UpdateChecked;
 
-        Task CheckUpdate();
-        Task StartUpdate();
+        Task<AppUpdateStatus> CheckUpdate(int fetchDelay = 45000);
+        Task<(Uri, Version, string)> GetLatestRelease(bool isBeta);
+        void Start();
+        void Stop();
     }
 }

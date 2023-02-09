@@ -1,4 +1,5 @@
-﻿using Lively.Helpers.Hardware;
+﻿using Lively.Common.Models;
+using Lively.Helpers.Hardware;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -9,8 +10,8 @@ namespace Lively.Common.Services
 {
     public class PerfCounterUsageService : IHardwareUsageService
     {
-        public event EventHandler<HWUsageMonitorEventArgs> HWMonitor = delegate { };
-        private readonly HWUsageMonitorEventArgs perfData = new HWUsageMonitorEventArgs();
+        public event EventHandler<HardwareUsageEventArgs> HWMonitor = delegate { };
+        private readonly HardwareUsageEventArgs perfData = new HardwareUsageEventArgs();
         private CancellationTokenSource ctsHwMonitor;
 
         //counter variables

@@ -13,15 +13,15 @@ using Windows.Media.Control;
 using Windows.Storage.Streams;
 using System.Diagnostics;
 using System.Windows.Threading;
-
+using Lively.Common.Models;
 
 namespace Services
 {
     public class NowPlayingService : INowPlayingService
     {
         private static readonly bool isWindows11_OrGreater = Environment.OSVersion.Version.Build >= 22000;
-        public event EventHandler<NowPlayingModel> NowPlayingTrackChanged;
-        private readonly NowPlayingModel model = new NowPlayingModel();
+        public event EventHandler<NowPlayingEventArgs> NowPlayingTrackChanged;
+        private readonly NowPlayingEventArgs model = new NowPlayingEventArgs();
         private readonly DispatcherTimer _timer; //to avoid GC
 
         public NowPlayingService()
@@ -41,7 +41,7 @@ namespace Services
 
         public void Stop() => _timer?.Stop();
 
-        private async Task<NowPlayingModel> GetCurrentTrackInfo()
+        private async Task<NowPlayingEventArgs> GetCurrentTrackInfo()
         {
             try
             {

@@ -1,4 +1,4 @@
-﻿using Lively.Common.Services;
+﻿using Lively.Common.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
@@ -149,7 +149,7 @@ namespace Lively.Common.API
     [Serializable]
     public class LivelySystemInformation : IpcMessage
     {
-        public HWUsageMonitorEventArgs Info { get; set; }
+        public HardwareUsageEventArgs Info { get; set; }
         public LivelySystemInformation() : base(MessageType.cmd_reload)
         {
         }
@@ -158,7 +158,7 @@ namespace Lively.Common.API
     [Serializable]
     public class LivelySystemNowPlaying : IpcMessage
     {
-        public NowPlayingModel Info { get; set; }
+        public NowPlayingEventArgs Info { get; set; }
         public LivelySystemNowPlaying() : base(MessageType.lsp_nowplaying)
         {
         }
