@@ -2,16 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Lively.Common.Services
+namespace Lively.Common.Models
 {
-    public interface INowPlayingService
-    {
-        event EventHandler<NowPlayingModel> NowPlayingTrackChanged;
-        void Start();
-        void Stop();
-    }
-
-    public class NowPlayingModel : EventArgs
+    public class NowPlayingEventArgs : EventArgs
     {
         public string AlbumArtist { get; set; }
         public string AlbumTitle { get; set; }
@@ -24,15 +17,5 @@ namespace Lively.Common.Services
         public string Title { get; set; }
         public int TrackNumber { get; set; }
         //public ColorProperties Colors { get; set; }
-    }
-
-    //Future use
-    public class ColorProperties
-    {
-        public string PrimaryColor { get; set; }
-        public string SecondaryColor { get; set; }
-        public string TertiaryColor { get; set; }
-        public string TextColor { get; set; }
-        public string ComplementaryColor { get; set; }
     }
 }

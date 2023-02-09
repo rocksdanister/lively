@@ -25,7 +25,6 @@ using Lively.Common.Helpers.Network;
 using System.Windows.Threading;
 using Lively.Views;
 using Lively.Grpc.Common.Proto.Update;
-using Lively.Common.Services;
 using Lively.Common.Helpers.Files;
 using Lively.Common.Helpers.Archive;
 using Lively.Models;
@@ -33,6 +32,8 @@ using Lively.Common.Helpers;
 using Lively.Helpers.Theme;
 using Microsoft.Win32;
 using System.Reflection;
+using Lively.Common.Services;
+using Lively.Common.Models;
 
 namespace Lively
 {

@@ -1,5 +1,6 @@
 ﻿using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
+using Lively.Common.Models;
 using Lively.Common.Services;
 using Lively.Grpc.Common.Proto.Update;
 using System;

@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using Lively.Common;
 using Lively.Common.Helpers.MVVM;
-using Lively.Common.Services;
+using Lively.Common.Models;
 using Lively.Grpc.Client;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;

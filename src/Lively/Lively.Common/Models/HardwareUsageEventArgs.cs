@@ -1,16 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace Lively.Common.Services
+namespace Lively.Common.Models
 {
-    public interface IHardwareUsageService
-    {
-        event EventHandler<HWUsageMonitorEventArgs> HWMonitor;
-
-        void Start();
-        void Stop();
-    }
-
-    public class HWUsageMonitorEventArgs : EventArgs
+    public class HardwareUsageEventArgs : EventArgs
     {
         /// <summary>
         /// Primary cpu name.

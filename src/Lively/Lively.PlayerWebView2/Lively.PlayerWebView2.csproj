@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Lively.Common.Services\Lively.Common.Services.csproj" />
     <ProjectReference Include="..\Lively.Common\Lively.Common.csproj" />
   </ItemGroup>
 

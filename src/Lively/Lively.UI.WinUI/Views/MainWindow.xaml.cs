@@ -1,6 +1,7 @@
 ﻿using Lively.Common;
 using Lively.Common.Helpers;
 using Lively.Common.Helpers.Pinvoke;
+using Lively.Common.Models;
 using Lively.Gallery.Client;
 using Lively.Grpc.Client;
 using Lively.Models;
@@ -164,9 +165,9 @@ namespace Lively.UI.WinUI
             });
         }
 
-        private void AppUpdater_UpdateChecked(object sender, Common.Services.AppUpdaterEventArgs e)
+        private void AppUpdater_UpdateChecked(object sender, AppUpdaterEventArgs e)
         {
-            if (e.UpdateStatus == Common.Services.AppUpdateStatus.available)
+            if (e.UpdateStatus == AppUpdateStatus.available)
             {
                 _ = this.DispatcherQueue.TryEnqueue(() =>
                 {
