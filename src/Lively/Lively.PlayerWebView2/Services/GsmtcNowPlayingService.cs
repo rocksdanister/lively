@@ -17,14 +17,15 @@ using Lively.Common.Models;
 
 namespace Services
 {
-    public class NowPlayingService : INowPlayingService
+    [Obsolete("Unresolved Windows API bugs; event does not work and using timer leads to NPSMsvc_XXXX high cpu usage. ref: https://github.com/ModernFlyouts-Community/ModernFlyouts/issues/29")]
+    public class GsmtcNowPlayingService : INowPlayingService
     {
         private static readonly bool isWindows11_OrGreater = Environment.OSVersion.Version.Build >= 22000;
         public event EventHandler<NowPlayingEventArgs> NowPlayingTrackChanged;
         private readonly NowPlayingEventArgs model = new NowPlayingEventArgs();
         private readonly DispatcherTimer _timer; //to avoid GC
 
-        public NowPlayingService()
+        public GsmtcNowPlayingService()
         {
             //There is a MediaPropertiesChanged bug where the event will stop firing after sometime, so using timer instead.
             _timer = new DispatcherTimer
