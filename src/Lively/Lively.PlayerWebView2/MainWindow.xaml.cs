@@ -4,6 +4,7 @@ using Lively.Common.API;
 using Lively.Common.Helpers;
 using Lively.Common.Helpers.Storage;
 using Lively.Common.Services;
+using Lively.PlayerWebView2.Services;
 using Microsoft.Web.WebView2.Core;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -100,7 +101,8 @@ namespace Lively.PlayerWebView2
         public async Task InitializeWebView()
         {
             //Ref: https://docs.microsoft.com/en-us/microsoft-edge/webview2/concepts/user-data-folder
-            var env = await CoreWebView2Environment.CreateAsync(null, Constants.CommonPaths.TempWebView2Dir);
+            CoreWebView2EnvironmentOptions options = new CoreWebView2EnvironmentOptions("--disk-cache-size=1"); //workaround: avoid cache
+            var env = await CoreWebView2Environment.CreateAsync(null, Constants.CommonPaths.TempWebView2Dir, options);
             await webView.EnsureCoreWebView2Async(env);
 
             webView.CoreWebView2.ProcessFailed += (s, e) =>
@@ -158,15 +160,18 @@ namespace Lively.PlayerWebView2
                 initializedServices = true;
                 if (startArgs.NowPlaying)
                 {
-                    nowPlayingService = new NowPlayingService();
+                    nowPlayingService = new NpsmNowPlayingService();
                     nowPlayingService.NowPlayingTrackChanged += (s, e) => {
                         try
                         {
                             if (isPaused)
                                 return;
 
-                            //TODO: CefSharp CanExecuteJavascriptInMainFrame equivalent in webview
-                            _ = ExecuteScriptFunctionAsync("livelyCurrentTrack", JsonConvert.SerializeObject(e, Formatting.Indented));
+                            this.Dispatcher.Invoke(() =>
+                            {
+                                //TODO: CefSharp CanExecuteJavascriptInMainFrame equivalent in webview
+                                _ = ExecuteScriptFunctionAsync("livelyCurrentTrack", JsonConvert.SerializeObject(e, Formatting.Indented));
+                            });
                         }
                         catch (Exception ex)
                         {
