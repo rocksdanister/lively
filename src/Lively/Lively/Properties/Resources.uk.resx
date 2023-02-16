@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AudioFocused.Content" xml:space="preserve">
-    <value>Включати аудіо тільки коли робочий стіл у фокусі</value>
+    <value>Відтворювати аудіо тільки коли робочий стіл у фокусі</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
-    <value>Рівень гучності всіх фонів</value>
+    <value>Рівень гучності звуку шпалер</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
     <value>Загальна гучність</value>
@@ -141,7 +141,7 @@
 Провідник Windows перезавантажився двічі за останні 30 секунд! Це може бути пов'язано з конфліктом між Lively та іншою програмою кастомізації системи. Для уникнення подальших проблем всі шпалери вимкнено.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
-    <value>Знайдена несумісна програма, тематизація панелі завдань вимкнена.</value>
+    <value>Знайдена несумісна програма, тема панелі завдань вимкнена</value>
   </data>
   <data name="OfficialWebpage.Content" xml:space="preserve">
     <value>Офіційна веб-сторінка Lively Wallpaper</value>
@@ -172,15 +172,15 @@
     <value>Ви впевнені, що хочете видалити ці шпалери з бібліотеки?</value>
   </data>
   <data name="DragDropFile.Text" xml:space="preserve">
-    <value>Просто перетягніть файли в бібліотеку.</value>
+    <value>Просто перетягніть файли в бібліотеку</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
     <value>Ви відкриваєте зовнішню програму як шпалери.
-Шкідливі програми можуть містити віруси і зашкодити Вашій системі.
+Шкідливі програми можуть містити віруси та зашкодити Вашій системі.
 Продовжуйте лише в тому разі, якщо програму отримано з надійного джерела.</value>
   </data>
   <data name="MinimizedTray.Text" xml:space="preserve">
-    <value>Я згорнувся до системного трею, натисніть правою кнопкою миші на значок lively для додаткових опцій.</value>
+    <value>Lively згорнено до системного трею, натисніть правою кнопкою миші на значок Lively для додаткових опцій.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
     <value>Будь ласка, перезапустіть Lively, щоб налаштування набрали чинності.</value>
@@ -195,7 +195,7 @@
     <value>Відновлення попередніх шпалер.</value>
   </data>
   <data name="DescriptionScreenLayout" xml:space="preserve">
-    <value>Виберіть дисплей</value>
+    <value>Виберіть монітор</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
     <value>Доступна нова версія!</value>
@@ -207,7 +207,7 @@
     <value>Цей майстер допоможе вам розпочати налаштування Lively.</value>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>Ваша версія Windows N/KN вимагає завантаження додаткових кодеків для підтримки відтворення відео в шпалерах.</value>
+    <value>Ваша версія Windows N/KN вимагає завантаження додаткових кодексів для підтримки відтворення відео в шпалерах.</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
     <value>Проявіть підтримку, купивши каву для розробників</value>
@@ -223,10 +223,10 @@
     <value>Іконка на панелі задач</value>
   </data>
   <data name="Language.Description" xml:space="preserve">
-    <value>Потрібен перезапуск Lively для зміни мови.</value>
+    <value>Потрібен перезапуск Lively для зміни мови</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
-    <value>Потребує перезапуску програми</value>
+    <value>Мова</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
     <value>Помилка оновлення. Спробуйте завантажити інсталятор з</value>
@@ -284,7 +284,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Всі файли</value>
   </data>
   <data name="Application.Header" xml:space="preserve">
-    <value>Додаток</value>
+    <value>Застосунок</value>
   </data>
   <data name="Attribution.Header" xml:space="preserve">
     <value>Атрибути</value>

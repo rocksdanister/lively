@@ -141,7 +141,7 @@
 Istraživač datoteka se restartovao dva puta u poslednjih 30 sekundi! Ovo može biti znak konflikta između Lively-a i nekog drugog programa za prilagođavanje radne površine ili Windows-a. Da bi se izbegli dalji problemi, sve pozadine su prekinute.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
-    <value>Incompatible program found, taskbar theming disabled.</value>
+    <value>Pronađen je nekompatibilan program, onemogućena je tema trake zadataka</value>
   </data>
   <data name="OfficialWebpage.Content" xml:space="preserve">
     <value>Zvaničan veb-sajt Lively Pozadina</value>
@@ -149,7 +149,7 @@ Istraživač datoteka se restartovao dva puta u poslednjih 30 sekundi! Ovo može
   <data name="DescOledScreensaverNotice" xml:space="preserve">
     <value>Većina modernih LCD i LED displeja ne pati od problema pregorevanja (burn-in efekat) stoga se može koristiti bilo koja pozadina kao čuvar ekrana.
 
-Za OLED, Plasma i CRT displeje koji su podložni burn-in efektu preporučeno je da koriste pozadinu sa redovnim kretanjem i opštom tamnom temom koja bi trebala da ublaži pregorevanje, ovo nije testirano tako da efektivnost se ne može garantovati.
+Za OLED, Plazma i CRT displeje koji su podložni burn-in efektu preporučeno je da koriste pozadinu sa redovnim kretanjem i opštom tamnom temom koja bi trebala da ublaži pregorevanje, ovo nije testirano tako da efektivnost se ne može garantovati.
 
 Glavni cilj Lively-a je dodavanje još jednog sloja prilagođavanja vašem računaru, koristite čuvare ekrana kao zaštitu od pregorevanja na sopstveni rizik!</value>
   </data>

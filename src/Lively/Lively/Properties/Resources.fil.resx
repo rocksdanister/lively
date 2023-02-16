@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AudioFocused.Content" xml:space="preserve">
-    <value>Play audio only when desktop is focused</value>
+    <value>Magpatunog lamang kapag naka-focus ang desktop</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
     <value>Volume level of all wallpapers.</value>
@@ -157,7 +157,7 @@ The main purpose of Lively's screensavers is to add another layer of customizati
     <value>I-report ang problema sa software</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
-    <value>Select a file or specify a website url to set as a wallpaper.</value>
+    <value>Pumili ng file</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
     <value>Pag-uugali ng pag-playback ng wallpaper batay sa pagpapatakbo ng application.</value>
@@ -166,13 +166,13 @@ The main purpose of Lively's screensavers is to add another layer of customizati
     <value>Sigurado ka bang gusto mong kanselahin?</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
-    <value>Sigurado ka bang nais mong permanenteng tanggalin ang wallpaper mula sa disk?</value>
+    <value>Nais mo ba na tuluyang tanggalin ang wallpaper na ito na nagmumula sa disk?</value>
   </data>
   <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
-    <value>Sigurado ka bang nais mong permanenteng tanggalin ang wallpaper mula sa disk?</value>
+    <value>Nais mo ba na tanggalin ang wallpaper na ito mula sa library?</value>
   </data>
   <data name="DragDropFile.Text" xml:space="preserve">
-    <value>I-drag lamang at i-drop ang mga file sa Library.</value>
+    <value>I-drag at i-drop lamang ang mga file dito</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
     <value>Binubuksan mo ang isang panlabas na application bilang wallpaper. Ang mga nakakahamak na apllikasyon ay maaaring mag-host ng malware, virus.. na makakahamak sa iyong system. Patuloy lamang kung ang aplikasyon na ito ay nagmula sa mapagkakatiwalaang mapagkukunan</value>
@@ -181,7 +181,7 @@ The main purpose of Lively's screensavers is to add another layer of customizati
     <value>Ang Lively ay nai-minimize sa system tray, mag--click sa Lively icon upang matuloy.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
-    <value>Please restart Lively for settings to take effect.</value>
+    <value>I-restart ang Lively para makita ang bagong mga setting</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
     <value>Please stop before proceeding.</value>
@@ -190,13 +190,13 @@ The main purpose of Lively's screensavers is to add another layer of customizati
     <value>Pindutin upang simulan ang pag-record.</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
-    <value>Kasalukuyang ibinabalik ang nakaraang mga wallpaper, magyayaring maghintay...</value>
+    <value>Ibinabalik lamang ang naunang (mga) wallpaper, mangyaring maghintay...</value>
   </data>
   <data name="DescriptionScreenLayout" xml:space="preserve">
-    <value>Mamili ng Display</value>
+    <value>Pumili ng Display</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
-    <value>May isang bagong bersyon ng sofware ay magagamit!</value>
+    <value>Maaari nang makuha ang bagong bersion ng software!</value>
   </data>
   <data name="DescriptionWebpageLoad" xml:space="preserve">
     <value>Ipasok ang link sa website upang mai-load, suportado ang mga link ng shadertoy.com</value>
@@ -205,10 +205,10 @@ The main purpose of Lively's screensavers is to add another layer of customizati
     <value>Sisimulan ka ng wizard na ito sa pag-set up ng Lively.</value>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>Your Windows N/KN version will require the download of additional codecs to support video playback in wallpapers.</value>
+    <value>Ang iyong bersyon ng Windows N/KN ay may kailangang i-download na karagdagang codecs para masuportahan ang pag-play ng video sa mga wallpapers</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
-    <value>Magpakita ng suporta sa developer sa pagbili ng Kape sa kanya</value>
+    <value>Suportahan ang developer sa paraan ng pagbili ng kape sa kanya</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
     <value>You are about to change to beta (developer) build of Lively.
@@ -258,23 +258,21 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Ang Lively ay hindi nagsarado nang maayos, nagsisimula na ang Safe Mode. Nais mo bang ibalik ang dating mga tumatakbo na wallpaper?</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
-    <value>Mukhang kailangang itakda ang ilang mga setting upang gumana ang Lively 
-1. Buksan ang This PC(My Computer)
-2. Mag-right-click na walang laman na lugar
-3. Piliin ang Properties
-4. Piliian Advanced System Settings
-5. Sa babang Performance Tab, piliin ang Settings
-6. Paganahin ang Animate Controls at Elements sa Windows at i-Apply.
+    <value>Mukhang may kailangang baguhing mga settings upang mapagana ang Lively:
+1. Pindutin ang Win + R na key para magbukas ang Run,
+2. Itype ang SystemPropertiesPerformance.exe sa Run at i-click ang "OK" para buksan ang Performance Options.
+3. I-enable/check "Animate controls and elements inside windows" (pag naka-check na, i-uncheck at icheck uli) at i-apply.
+4. I-click ang "Apply" at pindutin ang "OK" para magsara ang window.
 
-If Windows 7 just set - Adjust for best appearance &amp; Apply.
-Pag hindi pa gumagana, close &amp; buksan ulit ang Lively/ restart windows.
-(Hindi gumagana sa ibang mga insider windows 10 builds)</value>
+Kapag Windows 7 just set - "Adjust for best appearance" at i-apply.
+Pag hindi pa gumagana, i-close at buksan ulit ang Lively/i-restart Windows.
+(Hindi gumagana sa piling mga Windows Insider builds)</value>
   </data>
   <data name="Startup.Description" xml:space="preserve">
     <value>Lively needs to run in the background for wallpaper playback.</value>
   </data>
   <data name="Startup.Header" xml:space="preserve">
-    <value>Start with Windows</value>
+    <value>I-start kasama ng Windows</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
     <value>Idagdag</value>
@@ -322,7 +320,7 @@ Pag hindi pa gumagana, close &amp; buksan ulit ang Lively/ restart windows.
     <value>Gumawa ng Preview</value>
   </data>
   <data name="Customise.Text" xml:space="preserve">
-    <value>I-customise ang Wallpaper</value>
+    <value>I-customise</value>
   </data>
   <data name="CustomiseWallpaper.Label" xml:space="preserve">
     <value>I-customise ang Wallpaper</value>
@@ -334,7 +332,7 @@ Pag hindi pa gumagana, close &amp; buksan ulit ang Lively/ restart windows.
     <value>Description</value>
   </data>
   <data name="DisplayPauseRuleAllScreen.Content" xml:space="preserve">
-    <value>Lahat ng Screen</value>
+    <value>Lahat ng (mga) screen</value>
   </data>
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>Bawat Screen</value>
@@ -355,7 +353,7 @@ Pag hindi pa gumagana, close &amp; buksan ulit ang Lively/ restart windows.
     <value>I-save sa file</value>
   </data>
   <data name="TextFeatureMissing" xml:space="preserve">
-    <value>Some features are not available in this version of Lively.</value>
+    <value>Hindi lahat ng features ay magagamit sa bersyon na ito ng Lively</value>
   </data>
   <data name="TextFileNotFound" xml:space="preserve">
     <value>Hindi makita ang file</value>
@@ -370,10 +368,10 @@ Pag hindi pa gumagana, close &amp; buksan ulit ang Lively/ restart windows.
     <value>GO</value>
   </data>
   <data name="TextHelpTranslate.Title" xml:space="preserve">
-    <value>Help translate Lively.</value>
+    <value>Tulungang magsalin</value>
   </data>
   <data name="TextHours" xml:space="preserve">
-    <value>hours</value>
+    <value>oras</value>
   </data>
   <data name="TextInstall" xml:space="preserve">
     <value>I-install</value>
@@ -391,7 +389,7 @@ Pag hindi pa gumagana, close &amp; buksan ulit ang Lively/ restart windows.
     <value>Lisensya</value>
   </data>
   <data name="TextMinutes" xml:space="preserve">
-    <value>minutes</value>
+    <value>minuto</value>
   </data>
   <data name="TextmoreInfo" xml:space="preserve">
     <value>Impormasyon</value>
@@ -424,7 +422,7 @@ Pag hindi pa gumagana, close &amp; buksan ulit ang Lively/ restart windows.
     <value>Online</value>
   </data>
   <data name="TextOpenLively" xml:space="preserve">
-    <value>Buksan angLively</value>
+    <value>Buksan ang Lively</value>
   </data>
   <data name="PauseAlgorithmTypeAllProcess.Content" xml:space="preserve">
     <value>Lahat ng proseso</value>
@@ -445,16 +443,16 @@ Pag hindi pa gumagana, close &amp; buksan ulit ang Lively/ restart windows.
     <value>Wala</value>
   </data>
   <data name="TextPerformancePause.Content" xml:space="preserve">
-    <value>Huminto</value>
+    <value>I-hinto</value>
   </data>
   <data name="TextPicture" xml:space="preserve">
-    <value>Pictura</value>
+    <value>Picture</value>
   </data>
   <data name="PreviewWallpaper.Text" xml:space="preserve">
-    <value>Preview Wallpaper</value>
+    <value>Tingnan</value>
   </data>
   <data name="PrivacyPolicy.Header" xml:space="preserve">
-    <value>Patakaran sa Pagkapribado</value>
+    <value>Privacy Policy</value>
   </data>
   <data name="TextProcessingWallpaper" xml:space="preserve">
     <value>Pinoproseso</value>
@@ -472,10 +470,10 @@ Pag hindi pa gumagana, close &amp; buksan ulit ang Lively/ restart windows.
     <value>Maghanap</value>
   </data>
   <data name="SetWallpaper.Text" xml:space="preserve">
-    <value>Itakda bilang wallpaper</value>
+    <value>Gawing Wallpaper</value>
   </data>
   <data name="ShowOnDisk.Text" xml:space="preserve">
-    <value>Ipakita sa Disk</value>
+    <value>Buksan ang lokasyon ng file</value>
   </data>
   <data name="WallpaperSource.Text" xml:space="preserve">
     <value>Pinagmulan</value>
@@ -493,10 +491,10 @@ Pag hindi pa gumagana, close &amp; buksan ulit ang Lively/ restart windows.
     <value>Suporta</value>
   </data>
   <data name="TextSwitchBranchDev" xml:space="preserve">
-    <value>Switch to beta (Dev channel)</value>
+    <value>Lumipat sa beta (Dev channel)</value>
   </data>
   <data name="TextSwitchBranchOfficial" xml:space="preserve">
-    <value>Switch to stable (Default channel)</value>
+    <value>Lumipat sa stable (Default channel)</value>
   </data>
   <data name="TextTags" xml:space="preserve">
     <value>Mga tags</value>
@@ -544,16 +542,16 @@ Pag hindi pa gumagana, close &amp; buksan ulit ang Lively/ restart windows.
     <value>Ang format ng file ay hindi sinusuportahan</value>
   </data>
   <data name="TextUpdateAvailable" xml:space="preserve">
-    <value>Magagamit ang pag-Update!</value>
+    <value>May update!</value>
   </data>
   <data name="TextUpdateCheck" xml:space="preserve">
-    <value>Suriin para sa pag-Update</value>
+    <value>Tumingin ng update</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
     <value>Nabigong suriin para sa pag-update ng software</value>
   </data>
   <data name="TextUpdateChecking" xml:space="preserve">
-    <value>Pagsuri para sa pag-Update</value>
+    <value>Tumitingin ng update</value>
   </data>
   <data name="TextUpdateUptodate" xml:space="preserve">
     <value>Ang Software ay up-to-date na!</value>
@@ -580,7 +578,7 @@ Pag hindi pa gumagana, close &amp; buksan ulit ang Lively/ restart windows.
     <value>I-duplicate ang parehong wallpaper</value>
   </data>
   <data name="WallpaperLayoutPerScreen.Content" xml:space="preserve">
-    <value>Ang napiling screen lamang</value>
+    <value>Piling screen lamang</value>
   </data>
   <data name="WallpaperLayoutSpan.Content" xml:space="preserve">
     <value>Span sa buong mga screen</value>
@@ -1172,6 +1170,6 @@ Edge is the built in webview of windows 10.</value>
     <value>Desktop icons</value>
   </data>
   <data name="TextEndOfItems.Text" xml:space="preserve">
-    <value>That's all for now..</value>
+    <value>"yun lang muna para ngayon"..</value>
   </data>
 </root>

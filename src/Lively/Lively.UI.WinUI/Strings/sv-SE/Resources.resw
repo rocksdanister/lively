@@ -447,7 +447,7 @@ Windows Utforskaren har startat om två gånger under de senaste 30 sekunderna! 
     <value>Sök</value>
   </data>
   <data name="SetWallpaper.Text" xml:space="preserve">
-    <value>Ställa in som bakgrundsbild</value>
+    <value>Ställ in som bakgrundsbild</value>
   </data>
   <data name="ShowOnDisk.Text" xml:space="preserve">
     <value>Visa på disk</value>

@@ -206,17 +206,17 @@ Apenas prossiga se a aplicação é proveniente de uma fonte confiável.</value>
     <value>Este ajudante irá guiá-lo na configuração inicial do Lively</value>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>A sua versão N/KN do windows necessitará de baixar codecs adicionais para suportar retrocesso de videos nos papéis de parede</value>
+    <value>A sua versão N/KN do Windows necessitará de baixar codecs adicionais para suportar retrocesso de vídeos nos papéis de parede</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
-    <value>Demonstre apoio comprando um café ao desenvolvedor</value>
+    <value>Demonstre apoio comprando um café ao programador</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
-    <value>Está prestes a mudar para versão beta (desenvolvedor) do Lively.
+    <value>Está prestes a mudar para versão beta (para programadores) do Lively.
 As atualizações serão frequentes e poderão conter erros!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
-    <value>O icone estará na bandeja do sistema, o Lively continuará em execução com o ícone oculto</value>
+    <value>O ícone estará na bandeja do sistema, o Lively continuará em execução com o ícone oculto</value>
   </data>
   <data name="HideSysTray.Header" xml:space="preserve">
     <value>Ícone de bandeja de sistema</value>

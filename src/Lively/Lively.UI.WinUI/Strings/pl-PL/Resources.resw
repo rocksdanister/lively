@@ -121,7 +121,7 @@
     <value>Odtwarzaj dźwięk tylko po skupieniu na pulpicie</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
-    <value>Poziom dźwięku dla wszystkich tapet.</value>
+    <value>Poziom dźwięku dla wszystkich tapet</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
     <value>Głośność</value>
@@ -157,7 +157,7 @@ Głównym celem wygaszacza ekranu Lively jest dodanie kolejnej warstwy personali
     <value>Zgłoś problem z oprogramowaniem</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
-    <value>Wybierz plik lub określ adres strony aby ustawić jako tapetę.</value>
+    <value>Wybierz plik</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
     <value>Ustaw reguły odtwarzania tapet dla poszczególnych aplikacji</value>
@@ -169,10 +169,10 @@ Głównym celem wygaszacza ekranu Lively jest dodanie kolejnej warstwy personali
     <value>Na pewno chcesz nieodwracalnie usunąć plik tapety z dysku?</value>
   </data>
   <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
-    <value>Na pewno chcesz usunąć tapetę z Biblioteki?</value>
+    <value>Czy na pewno chcesz usunąć tę tapetę z Biblioteki?</value>
   </data>
   <data name="DragDropFile.Text" xml:space="preserve">
-    <value>Po prostu przeciągnij i upuść pliki do Biblioteki.</value>
+    <value>Po prostu przeciągnij i upuść tutaj pliki</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
     <value>Otwierasz zewnętrzną aplikację jako tapetę.
@@ -293,10 +293,10 @@ Jeśli ciągle nie działa,  uruchom ponownie Lively / system Windows.
     <value>Autor</value>
   </data>
   <data name="TextBack" xml:space="preserve">
-    <value>Wstecz</value>
+    <value>Cofnij</value>
   </data>
   <data name="TextBrowse" xml:space="preserve">
-    <value>Przeglądaj</value>
+    <value>Przeglądaj...</value>
   </data>
   <data name="Cancel.Content" xml:space="preserve">
     <value>Anuluj</value>
@@ -416,7 +416,7 @@ Jeśli ciągle nie działa,  uruchom ponownie Lively / system Windows.
     <value>Wył</value>
   </data>
   <data name="TextOK" xml:space="preserve">
-    <value>OK</value>
+    <value>Zatwierdź</value>
   </data>
   <data name="TextOn.Content" xml:space="preserve">
     <value>Wł</value>
@@ -443,10 +443,10 @@ Jeśli ciągle nie działa,  uruchom ponownie Lively / system Windows.
     <value>Wyłącz</value>
   </data>
   <data name="TextPerformanceNone.Content" xml:space="preserve">
-    <value>Bez zmiany</value>
+    <value>Nie wybrano</value>
   </data>
   <data name="TextPerformancePause.Content" xml:space="preserve">
-    <value>Pauza</value>
+    <value>Zatrzymaj</value>
   </data>
   <data name="TextPicture" xml:space="preserve">
     <value>Obraz</value>

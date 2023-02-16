@@ -637,76 +637,76 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Поставяне на тапет на пауза на всички екрани или само на екрана, в който приложението е фокусирано</value>
   </data>
   <data name="ExportLogs.Description" xml:space="preserve">
-    <value>Create log report file</value>
+    <value>Съхранете отчет за случила се грешка</value>
   </data>
   <data name="GifPlayer.Description" xml:space="preserve">
-    <value>Select the player used for gif wallpaper</value>
+    <value>Изберете плейъра, който ще бъде използван за видео тапети</value>
   </data>
   <data name="TipLivelySetupOnClose" xml:space="preserve">
-    <value>Finish the setup to continue</value>
+    <value>Завършете настройката за да продължите</value>
   </data>
   <data name="LockscreenPicture.Description" xml:space="preserve">
-    <value>Set a picture of animated wallpaper as lockscreen wallpaper</value>
+    <value>Задайте картина на анимиран тапет като тапет на началния екран</value>
   </data>
   <data name="PauseAlgorithm.Description" xml:space="preserve">
-    <value>Wallpaper pause algorithm</value>
+    <value>Комбинация за пауза</value>
   </data>
   <data name="PowerSavingModePower.Description" xml:space="preserve">
-    <value>Change playback when Windows Power Saving Mode is enabled</value>
+    <value>Променете възпроизвеждането, когато енергоспестяващият режим на Windows е активиран</value>
   </data>
   <data name="RemoteDesktopPower.Description" xml:space="preserve">
-    <value>Change playback when running a Remote Desktop session</value>
+    <value>Променете възпроизвеждането, когато изпълнявате сесия на отдалечен работен плот</value>
   </data>
   <data name="TipScreensaver" xml:space="preserve">
-    <value>After the inactivity period use the current wallpaper as your screensaver</value>
+    <value>След периода на неактивност използвайте текущия тапет като скрийнсейвър</value>
   </data>
   <data name="StreamWallpaperDetect.Description" xml:space="preserve">
-    <value>If supported video stream link is detected use the video player instead of loading the webpage</value>
+    <value>Ако поддържан линк към стрийм е засечен, използвай видео плейра вместо уеб страница</value>
   </data>
   <data name="StreamWallpaperVideoQuality.Description" xml:space="preserve">
-    <value>Select the desired video quality for online streams</value>
+    <value>Изберете предпочитаното от вас качество за онлайн стриймове</value>
   </data>
   <data name="TipSwitchSoftwareBranch" xml:space="preserve">
-    <value>Change software release from beta to stable or vice versa</value>
+    <value>Промяна на версията на софтуера от бета към стабилна или обратното</value>
   </data>
   <data name="TaskbarTheme.Description" xml:space="preserve">
-    <value>Change system taskbar appearance</value>
+    <value>Промени изгледа на лентата за задачи</value>
   </data>
   <data name="TipTileSize" xml:space="preserve">
-    <value>Size of the wallpaper tiles in Library</value>
+    <value>Размера на кутийките в бибилиотеката</value>
   </data>
   <data name="TipUIMode" xml:space="preserve">
     <value>For low-end systems select Lite mode</value>
   </data>
   <data name="VideoHardwareDecode.Description" xml:space="preserve">
-    <value>Use hardware acceleration when possible</value>
+    <value>Използване на хардуерно ускорение при възможност</value>
   </data>
   <data name="VideoPlayer.Description" xml:space="preserve">
-    <value>Select the player used for video wallpaper</value>
+    <value>Изберете плейъра, който ще бъде използван за видео тапети</value>
   </data>
   <data name="WallpaperDir.Description" xml:space="preserve">
-    <value>Path used to store wallpaper files</value>
+    <value>Пътя използван за съхранение на тапетите</value>
   </data>
   <data name="WallpaperFit.Description" xml:space="preserve">
-    <value>Wallpaper scaling algorithm</value>
+    <value>Алгоритъм за напасване на тапета</value>
   </data>
   <data name="WallpaperInput.Description" xml:space="preserve">
-    <value>Select ways to interact with wallpaper</value>
+    <value>Избери начин за взаимодействие с тапета</value>
   </data>
   <data name="WallpaperLayout.Description" xml:space="preserve">
-    <value>How wallpaper is applied to connected display devices</value>
+    <value>Как тапета е поставен на свързаните монитори</value>
   </data>
   <data name="TipWallpaperPlayback" xml:space="preserve">
-    <value>Pause wallpaper playback when desktop is not focused</value>
+    <value>Постави тапета на пауза когато работният плот не е фокусиран</value>
   </data>
   <data name="WebBrowserDiskCache.Description" xml:space="preserve">
-    <value>Store temporary files on disk instead of memory</value>
+    <value>Съхрани временните файлове на диск вместо на оперативната памет</value>
   </data>
   <data name="WebBrowser.Description" xml:space="preserve">
-    <value>Select the player used for html wallpaper</value>
+    <value>Избери плейъра използва за html тапети</value>
   </data>
   <data name="About.Label" xml:space="preserve">
-    <value>About</value>
+    <value>Относно</value>
   </data>
   <data name="AddWallpaper.Label" xml:space="preserve">
     <value>Добави тапет</value>
@@ -715,73 +715,73 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Фокусирани приложения</value>
   </data>
   <data name="AppFullScreen.Header" xml:space="preserve">
-    <value>Applications fullscreen</value>
+    <value>Приложения на цял екран</value>
   </data>
   <data name="TitleAppName" xml:space="preserve">
     <value>Lively Wallpaper</value>
   </data>
   <data name="AppRules.Header" xml:space="preserve">
-    <value>Application Rules</value>
+    <value>Правила за приложения</value>
   </data>
   <data name="AppTheme.Header" xml:space="preserve">
-    <value>Theme</value>
+    <value>Облик</value>
   </data>
   <data name="TitleAudioPlayOnScreen" xml:space="preserve">
-    <value>Play audio on screen</value>
+    <value>Възпроизвеждане на аудио върху екрана</value>
   </data>
   <data name="BatteryPower.Header" xml:space="preserve">
-    <value>When on Battery Power</value>
+    <value>Когато на Батерия</value>
   </data>
   <data name="TitleBrowseFile" xml:space="preserve">
-    <value>Browse for video, gif, webpage... file to set as wallpaper</value>
+    <value>Потърси видеа,gif-чета,уеб страници... файлове, които да използваш за тапет</value>
   </data>
   <data name="BrowserDebuggingPort.Header" xml:space="preserve">
-    <value>Debugging port</value>
+    <value>Порт за дебъгване</value>
   </data>
   <data name="TitleChangelog" xml:space="preserve">
-    <value>Changelog</value>
+    <value>Списък с промени</value>
   </data>
   <data name="Community.Header" xml:space="preserve">
-    <value>Community</value>
+    <value>Общност</value>
   </data>
   <data name="Debug.Header" xml:space="preserve">
-    <value>Debug</value>
+    <value>Дебъгване</value>
   </data>
   <data name="TitleDeleteConfirmation" xml:space="preserve">
-    <value>Confirm Deletion</value>
+    <value>Потвърдете Изтриването</value>
   </data>
   <data name="DesktopPicture.Header" xml:space="preserve">
-    <value>Desktop picture</value>
+    <value>Снимка на работния плот</value>
   </data>
   <data name="DisplayPauseRule.Header" xml:space="preserve">
-    <value>Display pause rule</value>
+    <value>Правила за пауза на дисплеите</value>
   </data>
   <data name="Documentation.Header" xml:space="preserve">
-    <value>Documentation</value>
+    <value>Документация</value>
   </data>
   <data name="EnterUrl.Header" xml:space="preserve">
     <value>Въведи URL</value>
   </data>
   <data name="ExportLogs.Header" xml:space="preserve">
-    <value>Log File</value>
+    <value>Лог файл</value>
   </data>
   <data name="TitleGeneral" xml:space="preserve">
     <value>Общи</value>
   </data>
   <data name="GifPlayer.Header" xml:space="preserve">
-    <value>Gif player</value>
+    <value>Gif плейър</value>
   </data>
   <data name="Help.Label" xml:space="preserve">
     <value>Помощ</value>
   </data>
   <data name="TitleInteraction" xml:space="preserve">
-    <value>Interaction</value>
+    <value>Взаимодействие</value>
   </data>
   <data name="TitleLibrary" xml:space="preserve">
     <value>Библиотека</value>
   </data>
   <data name="TitleLivelySetup" xml:space="preserve">
-    <value>Lively Setup</value>
+    <value>Настрой Lively</value>
   </data>
   <data name="TitleLocation" xml:space="preserve">
     <value>Местоположение</value>
@@ -790,83 +790,83 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Фон на заключения екран</value>
   </data>
   <data name="TitleMisc" xml:space="preserve">
-    <value>Misc</value>
+    <value>Различно</value>
   </data>
   <data name="TitleMute" xml:space="preserve">
-    <value>Mute</value>
+    <value>Без звук</value>
   </data>
   <data name="PauseAlgorithm.Header" xml:space="preserve">
-    <value>Pause algorithm</value>
+    <value>Паузиращ алгоритъм</value>
   </data>
   <data name="TitlePerformance" xml:space="preserve">
-    <value>Performance</value>
+    <value>Изпълнение</value>
   </data>
   <data name="TitlePlaylist" xml:space="preserve">
-    <value>Playlist</value>
+    <value>Плейлист</value>
   </data>
   <data name="PleaseWait.Text" xml:space="preserve">
-    <value>Please wait</value>
+    <value>Моля изчакайте</value>
   </data>
   <data name="PowerSavingModePower.Header" xml:space="preserve">
-    <value>When on Battery Saver</value>
+    <value>Когато в режим за Пестене на Батерия</value>
   </data>
   <data name="RemoteDesktopPower.Header" xml:space="preserve">
-    <value>When on Remote Desktop</value>
+    <value>Когато на преносим работен плот</value>
   </data>
   <data name="ReportBug.Header" xml:space="preserve">
-    <value>Report Bug</value>
+    <value>Докладване за проблем</value>
   </data>
   <data name="TitleScalingFit" xml:space="preserve">
-    <value>Scaling/Fit</value>
+    <value>Оразмеряване/Пасване</value>
   </data>
   <data name="ControlPanel.Title" xml:space="preserve">
-    <value>Control Panel</value>
+    <value>Контролен панел</value>
   </data>
   <data name="TitleScreensaver" xml:space="preserve">
-    <value>Screensaver</value>
+    <value>Скрийнсейвър</value>
   </data>
   <data name="TitleScreensaverLockOnResume" xml:space="preserve">
-    <value>On resume, display logon screen</value>
+    <value>При събужане на компютъра, покажи екрана за влизане</value>
   </data>
   <data name="TitleSelectFile" xml:space="preserve">
-    <value>Select File</value>
+    <value>Изберете файл</value>
   </data>
   <data name="TitleSettings" xml:space="preserve">
-    <value>Settings</value>
+    <value>Настройки</value>
   </data>
   <data name="TitleSkipConfirm" xml:space="preserve">
-    <value>Skip Confirmation</value>
+    <value>Пропусни потвърждаването</value>
   </data>
   <data name="SourceCode.Header" xml:space="preserve">
-    <value>Source Code</value>
+    <value>Изходен код</value>
   </data>
   <data name="Store.Header" xml:space="preserve">
-    <value>Store</value>
+    <value>Магазин</value>
     <comment>For different version of Lively, example: Microsoft Store</comment>
   </data>
   <data name="StreamWallpaperVideoQuality.Header" xml:space="preserve">
-    <value>Stream</value>
+    <value>Поток</value>
   </data>
   <data name="StreamWallpaperDetect.Header" xml:space="preserve">
-    <value>Detect streams</value>
+    <value>Засечи стриймове</value>
   </data>
   <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
-    <value>Video quality</value>
+    <value>Видео качество</value>
   </data>
   <data name="System.Header" xml:space="preserve">
-    <value>System</value>
+    <value>Система</value>
   </data>
   <data name="TaskbarTheme.Header" xml:space="preserve">
-    <value>Taskbar Theme</value>
+    <value>Изглед на лентата за задачи</value>
   </data>
   <data name="TitleTileSize" xml:space="preserve">
-    <value>Tile Size</value>
+    <value>Големина на Плочките</value>
   </data>
   <data name="TitleUIMode" xml:space="preserve">
     <value>Потребителски интерфейс</value>
   </data>
   <data name="TitleUpdates" xml:space="preserve">
-    <value>Updates</value>
+    <value>Актуализации</value>
   </data>
   <data name="TitleVideo" xml:space="preserve">
     <value>Видео</value>
@@ -884,31 +884,31 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Преместване на съществуващите тапети в новата папка</value>
   </data>
   <data name="WallpaperFit.Header" xml:space="preserve">
-    <value>Choose a fit</value>
+    <value>Избери побиране</value>
   </data>
   <data name="WallpaperInput.Header" xml:space="preserve">
-    <value>Wallpaper input</value>
+    <value>Взаимодействие с тапета</value>
   </data>
   <data name="WallpaperLayout.Header" xml:space="preserve">
-    <value>Placement Method</value>
+    <value>Начин на Поставяне</value>
   </data>
   <data name="WallpaperPlaybackGroup.Header" xml:space="preserve">
-    <value>Wallpaper playback</value>
+    <value>Възпроизвеждане на тапет</value>
   </data>
   <data name="TitleWarning" xml:space="preserve">
-    <value>Warning</value>
+    <value>Предпуреждение</value>
   </data>
   <data name="WebBrowser.Header" xml:space="preserve">
-    <value>Web browser</value>
+    <value>Уеб Браузър</value>
   </data>
   <data name="WebBrowserDiskCache.Header" xml:space="preserve">
-    <value>Disk cache</value>
+    <value>Дисков кеш</value>
   </data>
   <data name="TitleWebBrowserEngine" xml:space="preserve">
     <value>Двигател</value>
   </data>
   <data name="TitleWebpageLoad" xml:space="preserve">
-    <value>Load Webpage</value>
+    <value>Зареди Уебстраница</value>
   </data>
   <data name="FastUI.Description" xml:space="preserve">
     <value>Поддържайте потребителския интерфейс работещ за по-бързо стартиране</value>
@@ -983,16 +983,16 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Потребителски интерфейс</value>
   </data>
   <data name="UIModeLite.Content" xml:space="preserve">
-    <value>Lite</value>
+    <value>Леко</value>
   </data>
   <data name="UIModeNormal.Content" xml:space="preserve">
-    <value>Normal</value>
+    <value>Нормално</value>
   </data>
   <data name="Screensaver.Description" xml:space="preserve">
     <value>How screensaver is applied to connected to display devices</value>
   </data>
   <data name="Screensaver.Header" xml:space="preserve">
-    <value>Type of screensaver</value>
+    <value>Вид скрийсейвър</value>
   </data>
   <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
     <value>Configured separately</value>
@@ -1007,16 +1007,16 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>One time setup is required to run screensaver</value>
   </data>
   <data name="WallpaperLayoutScreenPicker.Content" xml:space="preserve">
-    <value>Always pick screen when choosing wallpaper</value>
+    <value>Винаги избирай екран при избиране на тапет</value>
   </data>
   <data name="GalleryAccount.Text" xml:space="preserve">
-    <value>Account</value>
+    <value>Акоунт</value>
   </data>
   <data name="GalleryAccountDelete.Content" xml:space="preserve">
-    <value>Delete account</value>
+    <value>Изтриване на Акоунт</value>
   </data>
   <data name="GalleryAccountExport.Content" xml:space="preserve">
-    <value>Export data</value>
+    <value>Експорт на данни</value>
   </data>
   <data name="GalleryAccountLogin.Content" xml:space="preserve">
     <value>Вход</value>
@@ -1025,19 +1025,19 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Изход</value>
   </data>
   <data name="GalleryPageCollection.Content" xml:space="preserve">
-    <value>Collection</value>
+    <value>Колекция</value>
   </data>
   <data name="GalleryPageHome.Content" xml:space="preserve">
-    <value>Home</value>
+    <value>Начало</value>
   </data>
   <data name="GalleryPageManage.Content" xml:space="preserve">
-    <value>Manage</value>
+    <value>Управление</value>
   </data>
   <data name="GalleryPageProfile.Content" xml:space="preserve">
-    <value>Profile</value>
+    <value>Профил</value>
   </data>
   <data name="GalleryPleaseLogin.Text" xml:space="preserve">
-    <value>Please log in to continue</value>
+    <value>Моля влезте, за да продължите</value>
   </data>
   <data name="GalleryWelcomeMessage.Text" xml:space="preserve">
     <value>Здравей</value>
@@ -1121,10 +1121,10 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Копирай линка</value>
   </data>
   <data name="TextCustomiseWallpaper" xml:space="preserve">
-    <value>Customise Wallpaper</value>
+    <value>Персонализиране на Тапет</value>
   </data>
   <data name="TextCloseWallpapers" xml:space="preserve">
-    <value>Close Wallpapers</value>
+    <value>Затваряна на Тапети</value>
   </data>
   <data name="TitleChooseApplication.Text" xml:space="preserve">
     <value>Избери приложение</value>
@@ -1133,10 +1133,10 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Размер</value>
   </data>
   <data name="PluginNotFound.Message" xml:space="preserve">
-    <value>Please install the required plugin</value>
+    <value>Моля инсталирайте необходимият плъгин</value>
   </data>
   <data name="PluginNotFound.Title" xml:space="preserve">
-    <value>Plugin not found</value>
+    <value>Плъгинът не е намерен</value>
   </data>
   <data name="UpdateCompleted.Text" xml:space="preserve">
     <value>Актуализацията е завършена</value>

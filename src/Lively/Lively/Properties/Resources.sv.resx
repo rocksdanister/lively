@@ -447,7 +447,7 @@ Windows Utforskaren har startat om två gånger under de senaste 30 sekunderna! 
     <value>Sök</value>
   </data>
   <data name="SetWallpaper.Text" xml:space="preserve">
-    <value>Ställa in som bakgrundsbild</value>
+    <value>Ställ in som bakgrundsbild</value>
   </data>
   <data name="ShowOnDisk.Text" xml:space="preserve">
     <value>Visa på disk</value>
@@ -1138,12 +1138,12 @@ Windows Utforskaren har startat om två gånger under de senaste 30 sekunderna! 
     <value>Tema</value>
   </data>
   <data name="IconsHidden.Message" xml:space="preserve">
-    <value>To prevent accidental selection desktop icons are currently hidden</value>
+    <value>För att förhindra oavsiktligt val av skrivbordet så är ikonerna för närvarande dolda</value>
   </data>
   <data name="IconsHidden.Title" xml:space="preserve">
-    <value>Desktop icons</value>
+    <value>Skrivbordsikoner</value>
   </data>
   <data name="TextEndOfItems.Text" xml:space="preserve">
-    <value>That's all for now..</value>
+    <value>Det är allt för tillfället..</value>
   </data>
 </root>

@@ -1166,12 +1166,12 @@ Quando sei pronto, vai a: http://localhost:portnumber per accedere al portale de
     <value>Tema</value>
   </data>
   <data name="IconsHidden.Message" xml:space="preserve">
-    <value>Per prevenire le icone accidentali del desktop di selezione sono attualmente nascoste</value>
+    <value>Le icone sul desktop sono attualmente nascoste per prevenire alcuni problemi</value>
   </data>
   <data name="IconsHidden.Title" xml:space="preserve">
-    <value>Icona del Desktop</value>
+    <value>icone sul desktop</value>
   </data>
   <data name="TextEndOfItems.Text" xml:space="preserve">
-    <value>E' tutto per ora.</value>
+    <value>È tutto, per ora..</value>
   </data>
 </root>

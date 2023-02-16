@@ -974,7 +974,7 @@ Po uplynutí doby nečinnosti použijte jako spořič obrazovky aktuální tapet
     <value>Webová stránka</value>
   </data>
   <data name="TextOpen.Content" xml:space="preserve">
-    <value>Otevřeno</value>
+    <value>Otevřít</value>
   </data>
   <data name="TextSave.Content" xml:space="preserve">
     <value>Uložit</value>

@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AudioFocused.Content" xml:space="preserve">
-    <value>Reproducir audio solo cuando el escritorio esté enfocado</value>
+    <value>Reproducir el audio solo cuando el escritorio esté enfocado</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
-    <value>Nivel de volumen de todos los fondos.</value>
+    <value>Volumen de todos los fondos</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
     <value>Volumen General</value>
@@ -130,7 +130,7 @@
     <value>Sonido</value>
   </data>
   <data name="CommunityPage.Content" xml:space="preserve">
-    <value>Foro de discusión online</value>
+    <value>Foro de discusión</value>
   </data>
   <data name="DocumentationPage.Content" xml:space="preserve">
     <value>Documentación de la API y ayuda</value>
@@ -144,7 +144,7 @@
     <value>Se encontró un programa incompatible, tema de la barra de tareas desactivado</value>
   </data>
   <data name="OfficialWebpage.Content" xml:space="preserve">
-    <value>Página web oficial del fondo de pantalla de Lively</value>
+    <value>Página web oficial de Lively Wallpaper</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
     <value>La mayoría de pantallas modernas LCD y LED no sufren de quemado de pantalla, y por esa razón cualquier fondo de pantallas puede ser usado como salva pantallas.
@@ -157,22 +157,22 @@ El objetivo principal del salva pantallas en Lively es ofrecer más posibilidade
     <value>Reportar un problema con el software</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
-    <value>Elija un archivo</value>
+    <value>Seleccionar un archivo</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
     <value>Comportamiento del fondo de pantalla de acuerdo a que aplicación está en ejecución.</value>
   </data>
   <data name="DescriptionCancelQuestion" xml:space="preserve">
-    <value>¿Estás seguro que deseas cancelar?</value>
+    <value>¿Está seguro que desea cancelar?</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
-    <value>¿Estás seguro que deseas eliminar permanentemente el fondo de pantalla del disco duro?</value>
+    <value>¿Estás seguro que deseas eliminar el fondo de pantalla permanentemente?</value>
   </data>
   <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
-    <value>Estás seguro de que quieres eliminar este fondo de pantalla de la biblioteca?</value>
+    <value>¿Estás seguro de que quieres eliminar este fondo de pantalla de la biblioteca?</value>
   </data>
   <data name="DragDropFile.Text" xml:space="preserve">
-    <value>Simplemente arrastra y suelta archivos en la Biblioteca.</value>
+    <value>Arrastra y suelta archivos en la Biblioteca</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
     <value>Estás abriendo una aplicación externa como fondo de pantalla. Las aplicaciones maliciosas pueden contener malwares, virus.. y dañar tu sistema. Solo continua si esta aplicación proviene de una fuente confiable.</value>
@@ -184,7 +184,7 @@ El objetivo principal del salva pantallas en Lively es ofrecer más posibilidade
     <value>Por favor reinicia Lively para que las configuraciones tengan efecto.</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
-    <value>Porfavor para antes de continuar</value>
+    <value>Porfavor detente antes de continuar</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
     <value>Presiona para empezar a grabar.</value>
@@ -208,14 +208,14 @@ El objetivo principal del salva pantallas en Lively es ofrecer más posibilidade
     <value>Tu versión de Windows N/KN requiere la descarga de códecs adicionales para soportar la reproducción de vídeos como fondos de pantalla</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
-    <value>Mostrar soporte comprando el café del desarrollador</value>
+    <value>Muestra apoyo al desarrollador comprandole un café</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
     <value>Estás a punto de cambiar a la versión beta (desarrollador) de Lively.
 ¡Las actualizaciones serán frecuentes y pueden contener errores!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
-    <value>Visibilidad del icono</value>
+    <value>Visibilidad del icono en el área de notificación; Lively seguirá ejecutándose con el icono oculto</value>
   </data>
   <data name="HideSysTray.Header" xml:space="preserve">
     <value>Icono de la bandeja del sistema</value>
@@ -224,14 +224,14 @@ El objetivo principal del salva pantallas en Lively es ofrecer más posibilidade
     <value>Lively se reiniciará para aplicar el nuevo idioma.</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
-    <value>Spanish</value>
+    <value>Idioma</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
     <value>Error al actualizar; intenta descargar el instalador desde:
 https://github.com/rocksdanister/lively/releases</value>
   </data>
   <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
-    <value>Archivo de fondo de pantalla dañado, intente volver a descargar</value>
+    <value>Archivo de fondo de pantalla dañado, intenta descargándolo nuevamente</value>
   </data>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
     <value>Vaya... parece que algo salió mal :(
@@ -967,7 +967,7 @@ Edge es la vista web integrada en Windows 10.</value>
     <value>Añadir fondo de pantalla</value>
   </data>
   <data name="ComingSoon.Text" xml:space="preserve">
-    <value>Viene Pronto</value>
+    <value>Próximamente</value>
   </data>
   <data name="AboutMenu.Text" xml:space="preserve">
     <value>Acerca de</value>
@@ -1120,7 +1120,7 @@ Edge es la vista web integrada en Windows 10.</value>
     <value>Compartir fondo de pantalla</value>
   </data>
   <data name="ExportWallpaperGallery.Text" xml:space="preserve">
-    <value>Subir a galería</value>
+    <value>Exportar desde galería</value>
   </data>
   <data name="ExportWallpaperLink.Text" xml:space="preserve">
     <value>Copiar enlace</value>
