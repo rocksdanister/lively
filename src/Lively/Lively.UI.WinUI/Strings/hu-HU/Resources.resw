@@ -294,7 +294,7 @@ Ha még mindig nem működik, zárd be &amp; indítsd el a Livelyt újra/ indít
     <value>Vissza</value>
   </data>
   <data name="TextBrowse" xml:space="preserve">
-    <value>Keres</value>
+    <value>Keresés</value>
   </data>
   <data name="Cancel.Content" xml:space="preserve">
     <value>Mégse</value>
@@ -1169,7 +1169,7 @@ Az Edge a Windows 10 beépített WebView-ja (Lehetővé teszi, hogy webes tartal
     <value>A véletlen kiválasztás ellen elrejtettük az asztali ikonokat</value>
   </data>
   <data name="IconsHidden.Title" xml:space="preserve">
-    <value>Asztali Ikonok Elrejtve</value>
+    <value>Asztali Ikonok</value>
   </data>
   <data name="TextEndOfItems.Text" xml:space="preserve">
     <value>Egyelőre ennyi.</value>

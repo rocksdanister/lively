@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using Lively.Common.Helpers.Localization;
 
-namespace Lively.Common.Helpers.Localization
+namespace Lively.Common
 {
     public static class SupportedLanguages
     {
@@ -45,6 +46,7 @@ namespace Lively.Common.Helpers.Localization
             new LanguagesModel("Čeština(cs)", new string[] { "cs", "cs-CZ" }),
             new LanguagesModel("български(bg)", new string[] { "bg", "bg-BG" }),
             new LanguagesModel("Norwegian Bokmål(nb)", new string[] { "nb", "nb-NO" }),
+            new LanguagesModel("lietuvių kalba(lt)", new string[] { "lt", "lt-LT" }),
         };
 
         public static ReadOnlyCollection<LanguagesModel> Languages => Array.AsReadOnly(languages);

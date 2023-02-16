@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AudioFocused.Content" xml:space="preserve">
-    <value>تشغيل الصوت فقط عندما تكون في شاشة سطح المكتب</value>
+    <value>تشغيل الصوت فقط عندما يكون سطح المكتب مفتوحا</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
-    <value>مستوى الصوت لجميع خلفيات</value>
+    <value>مستوى الصوت لجميع الخلفيات</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
     <value>مستوى الصوت</value>
@@ -130,31 +130,32 @@
     <value>الصوت</value>
   </data>
   <data name="CommunityPage.Content" xml:space="preserve">
-    <value>منتدى المناقشة عبر الإنترنت</value>
+    <value>منتدى المناقشات عبر الإنترنت</value>
   </data>
   <data name="DocumentationPage.Content" xml:space="preserve">
-    <value>وثائق API والمساعدة</value>
+    <value>مستندات API والمساعدة</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
-    <value>لقد واجه Lively خطأ فادحاً
+    <value>لقد واجهنا مشكلة غريبة...
 
-تم إعادة تشغيل Windows Explorer مرتين في آخر 30 ثانية! قد يكون هذا تعارضًا بين Lively و برنامَج تخصيص الشاشة الرئيسة أخر أو Windows. لتجنب المزيد من المشكلات ، سيتم إقاف جميع الخلفيات.</value>
+تم إعادة تشغيل مستكشف الملفات الخاص بالنظام مرتين في آخر 30 ثانية! قد يكون هذا تعارضًا بين التطبيق وبرنامج تخصيص آخر أو النظام نفسه.
+ لتجنب المزيد من المشكلات، سيتم إيقاف جميع الخلفيات حاليا.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
-    <value>تم العثور على برنامج غير متوافق، تم تعطيل تطبيق سمات شريط المهام</value>
+    <value>تم العثور على برنامج غير متوافق ، تم تعطيل تطبيق سمات شريط المهام.</value>
   </data>
   <data name="OfficialWebpage.Content" xml:space="preserve">
-    <value>صفحة ويب Lively Wallpaper الرئيسية</value>
+    <value>صفحة الإنترنت الرسمية لـ Lively Wallpaper</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
-    <value>معظم شاشات LCD و LED الحديثة لا تعاني من مشكلة "حرق الالوان" نتيجة استخدام الخلفيات ، وبالتالي يمكن استخدام أي خلفية سطح المكتب كشاشة توقف.
+    <value>لا تعاني معظم شاشات LCD و LED الحديثة من مشاكل الاحتراق؛ لذلك، يمكن استخدام أي خلفية كشاشة توقف.
 
-يرجى الانتباه عند استخدامك البرنامج مع شاشات OLED, بلازما او CRT و التي يمكن ان تكون معرضه لترك اثر على الشاشه نتيجة استخدام خلفيات سطح مكتب فاتحه او غير غامقه لتفادي ترك اثر على الشاشه.
+بالنسبة لشاشات OLED أو Plasma أو CRT المعرضة للاحتراق، يُنصح باستخدام الخلفيات المظلمة التي من المفترض أن تخفف الاحتراق. ومع ذلك، لم يتم اختبار هذه الميزة ولا يمكن ضمان فعاليتها.
 
-الهدف الرئيسي لخلفيات حفظ الشاشه المدرجه ضمن Lively's screensavers هو اتاحة خيارات لتخصيص حفظ الشاشه, يرجى توخي الحذر و التفعيل على مسئولية المستخدم!</value>
+الغرض الأساسي من شاشات توقف Lively هو إضافة طبقة أخرى من التخصيص إلى جهاز الكمبيوتر الخاص بك، واستخدام شاشات التوقف كحماية ضد الاحتراق هو على مسؤوليتك الخاصة!</value>
   </data>
   <data name="ReportBugPage.Content" xml:space="preserve">
-    <value>الإبلاغ عن مشكلة في البرنامَج</value>
+    <value>الإبلاغ عن مشكلة في البرنامج</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
     <value>قم بتحديد ملف</value>
@@ -172,17 +173,18 @@
     <value>هل أنت متأكد أنك تريد حذف هذه الخلفية من المكتبة؟</value>
   </data>
   <data name="DragDropFile.Text" xml:space="preserve">
-    <value>قم بسحب وإسقاط الملفات في المكتبة</value>
+    <value>ببساطة، ما عليك سوى سحب الملفات وإفلاتها هنا</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
-    <value>أنت تفتح تطبيقاً خارجياً كخلفية, يمكن للتطبيقات الضارة أن تستضيف البرامج الضارة والفيروسات... والتي قد تُلحق الضرر بنظامك.
-تابع فقط إذا كان التطبيق من مصدر موثوق.</value>
+    <value>أنت تفتح تطبيقًا خارجيا كخلفية.
+يمكن أن تحمل التطبيقات الخارجية برامج ضارة وفيروسات.. وتضر بنظامك.
+استمر فقط إذا كنت بمصدر هذا التطبيق.</value>
   </data>
   <data name="MinimizedTray.Text" xml:space="preserve">
-    <value>تم تصغيري إلى علبة النظام, أنقر بالزر الأيمن لمزيد من الخيارات.</value>
+    <value>تم تصغير  Lively Wallpaper إلى الأيقونات المصغرة بجانب الساعة، يرجى النقر بزر الفأرة الأيمن فوق الرمز التطبيق لمزيد من الخيارات...</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
-    <value>يرجى إعادة تشغيل البرنامج لتفعيل الاعدادات الجديده</value>
+    <value>يرجى إعادة تشغيل البرنامج لتطبيق الإعدادات الجديدة...</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
     <value>يرجى التوقف قبل المتابعة</value>
@@ -197,19 +199,19 @@
     <value>اختر الشاشة</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
-    <value>نسخة جديدة متوفرة!</value>
+    <value>إصدار جديد متوفر من التطبيق!</value>
   </data>
   <data name="DescriptionWebpageLoad" xml:space="preserve">
     <value>أدخل رابط الموقع للتحميل, Shadertoy.com  روابط هذا الموقع مدعومة:-</value>
   </data>
   <data name="DescriptionWelcomeWizard" xml:space="preserve">
-    <value>هذا المعالج سوف يمكنك البدء في إعداد البرنامج.</value>
+    <value>هذا المساعد سوف يمكنك من البدء في إعداد Lively</value>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
     <value>سيتطلب إصدار Windows N/KN تنزيل برامج ترميز إضافية لدعم تشغيل الفيديو في خلفيات.</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
-    <value>اضهر دعمك من خلال شراء قهوة للمطور</value>
+    <value>اضهر دعمك من خلال شراء كوب قهوة للمطور</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
     <value>أنت على وشك التغير إلى النسخة التجربية (المطور) من Lively.
@@ -222,13 +224,13 @@
     <value>أيقونة علبة النظام</value>
   </data>
   <data name="Language.Description" xml:space="preserve">
-    <value>سيتم إعادة تشغيل Lively لتطبيق اللغة الجديدة.</value>
+    <value>سيتم إعادة تشغيل البرنامج لتطبيق اللغة الجديدة</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
     <value>اللغة</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
-    <value>فشل التحديث؛ حاول تحميل المثبت من:
+    <value>فشل التحديث؛ حاول تحميل البرنامج من:
 https://github.com/rocksdanister/lively/releasases</value>
   </data>
   <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
@@ -277,7 +279,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>البدء مع ويندوز:</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
-    <value>إضافة</value>
+    <value>أضف</value>
   </data>
   <data name="TextAllFiles" xml:space="preserve">
     <value>جميع الملفات</value>
@@ -1080,7 +1082,7 @@ Edge هو عرض الويب المدمج في windows 10.</value>
     <value>رسائل متكررة</value>
   </data>
   <data name="ReportWallpaperViolence.Content" xml:space="preserve">
-    <value>عنيف او يحوي تعري</value>
+    <value>يحتوي على عنف أو تعري</value>
   </data>
   <data name="TextAdditionalNotes.Text" xml:space="preserve">
     <value>ملاحظات إضافيه</value>

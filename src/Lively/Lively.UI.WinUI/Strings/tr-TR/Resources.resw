@@ -254,7 +254,7 @@ Günlük dosyasını paylaşma hakkında detaylı bilgi:
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
-    <value>Not Lively duvar kağıdı dosyası</value>
+    <value>Lively duvar kağıdı dosyası değil</value>
   </data>
   <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
     <value>Lively düzgün kapatılamadı, güvenli modda başlatılıyor.
@@ -1011,8 +1011,7 @@ Edge ise windows 10 için geçerli web gösterim motorudur.</value>
     <value>Duvar kağıdı seçerken daima ekranı seç</value>
   </data>
   <data name="GalleryAccount.Text" xml:space="preserve">
-    <value>TÜRKÇE
-</value>
+    <value>Hesap</value>
   </data>
   <data name="GalleryAccountDelete.Content" xml:space="preserve">
     <value>Hesabı sil</value>
@@ -1165,7 +1164,7 @@ Edge ise windows 10 için geçerli web gösterim motorudur.</value>
     <value>Tema</value>
   </data>
   <data name="IconsHidden.Message" xml:space="preserve">
-    <value>Yanlışlıkla seçmenizi çnlemek için masaüstü simgeleri şu anda gizlidir</value>
+    <value>Yanlışlıkla seçmenizi önlemek için masaüstü simgeleri gizlendi.</value>
   </data>
   <data name="IconsHidden.Title" xml:space="preserve">
     <value>Masaüstü simgeleri</value>

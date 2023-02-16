@@ -121,24 +121,24 @@
     <value>הפעל אודיו רק כששולחן העבודה ממוקד</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
-    <value>רמת עוצמת הקול של כל הטפטים.</value>
+    <value>עוצמת הקול של כל הטפטים</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
-    <value>ווליום ראשי</value>
+    <value>עוצמת קול</value>
   </data>
   <data name="AudioGroup.Header" xml:space="preserve">
-    <value>אודיו</value>
+    <value>שמע</value>
   </data>
   <data name="CommunityPage.Content" xml:space="preserve">
     <value>פורום דיונים מקוון</value>
   </data>
   <data name="DocumentationPage.Content" xml:space="preserve">
-    <value>תיעוד ועזרה של API</value>
+    <value>עזרה ותיעוד של API</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
     <value>Lively נתקלה בשגיאה קטלנית.
 
-סייר Windows הופעל מחדש פעמיים ב-30 השניות האחרונות! זה עשוי להיות התנגשות בין Lively לבין תוכנות אחרות להתאמה אישית של שולחן העבודה או Windows. כדי למנוע בעיות נוספות, כל הטפטים מופסקים.</value>
+סייר Windows הופעל מחדש פעמיים ב-30 השניות האחרונות! זה עשוי להיות התנגשות בין Lively לבין תוכנות אחרות להתאמה אישית של שולחן העבודה או Windows. כדי למנוע בעיות נוספות, כל הטפטים מופסקים</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
     <value>נמצאה תוכנית לא תואמת, נושא שורת המשימות מושבת.</value>
@@ -183,7 +183,7 @@
     <value>Lively ממוזערת למגש המערכת, לחץ לחצן ימני על הסמל כדי להמשיך.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
-    <value>אנא הפעל מחדש את Lively כדי שההגדרות ייכנסו לתוקף.</value>
+    <value>אנא הפעל מחדש את האפליקציה כדי שההגדרות ייכנסו לתוקף</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
     <value>אנא הפסיקו לפני שתמשיכו.</value>
@@ -223,7 +223,7 @@
     <value>סמל מגש המערכת</value>
   </data>
   <data name="Language.Description" xml:space="preserve">
-    <value>Lively ייפעל מחדש כדי להחיל את השפה החדשה</value>
+    <value>האפליקציה תפעל מחדש כדי להחיל את השפה החדשה</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
     <value>שפה</value>
@@ -233,7 +233,7 @@
 https://github.com/rocksdanister/lively/releases</value>
   </data>
   <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
-    <value>קובץ טפט פגום, נסה להוריד מחדש.</value>
+    <value>קובץ טפט פגום, נסה להוריד מחדש</value>
   </data>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
     <value>אופס ... נראה שמשהו השתבש :(
@@ -294,7 +294,7 @@ https://github.com/rocksdanister/lively/wiki
     <value>שיוך</value>
   </data>
   <data name="Author.Text" xml:space="preserve">
-    <value>סופר</value>
+    <value>מפתחים</value>
   </data>
   <data name="TextBack" xml:space="preserve">
     <value>אחורה</value>
@@ -1169,12 +1169,12 @@ Edge הוא תצוגת האינטרנט המובנית של Windows 10.</value>
     <value>נושא</value>
   </data>
   <data name="IconsHidden.Message" xml:space="preserve">
-    <value>To prevent accidental selection desktop icons are currently hidden</value>
+    <value>כדי למנוע בחירה בבחירה, סמלי שולחן העבודה מוסתרים כעת</value>
   </data>
   <data name="IconsHidden.Title" xml:space="preserve">
-    <value>Desktop icons</value>
+    <value>סמלי שולחן העבודה</value>
   </data>
   <data name="TextEndOfItems.Text" xml:space="preserve">
-    <value>That's all for now..</value>
+    <value>זה הכל לעת עתה..</value>
   </data>
 </root>

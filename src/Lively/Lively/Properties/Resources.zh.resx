@@ -695,7 +695,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>壁纸缩放算法。</value>
   </data>
   <data name="WallpaperInput.Description" xml:space="preserve">
-    <value>选择与背景互动的方式。</value>
+    <value>选择与壁纸互动的方式。</value>
   </data>
   <data name="WallpaperLayout.Description" xml:space="preserve">
     <value>壁纸应用于连接的显示设备的方式。</value>
@@ -707,7 +707,8 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>将临时文件存储在磁盘而不是内存上，当浏览器重新启动时，设置将被恢复。</value>
   </data>
   <data name="WebBrowser.Description" xml:space="preserve">
-    <value>CEF (Chromium Embedded Framework) 是一个轻量级的Chromium引擎。
+    <value>选择网页壁纸使用的浏览器引擎。
+CEF (Chromium Embedded Framework) 是一个轻量级的Chromium引擎。
 Edge 是 Windows 10 内置的浏览器。</value>
   </data>
   <data name="About.Label" xml:space="preserve">
@@ -723,7 +724,7 @@ Edge 是 Windows 10 内置的浏览器。</value>
     <value>其他应用程序全屏</value>
   </data>
   <data name="TitleAppName" xml:space="preserve">
-    <value>Lively背景</value>
+    <value>Lively Wallpaper</value>
   </data>
   <data name="AppRules.Header" xml:space="preserve">
     <value>应用规则</value>
@@ -831,7 +832,7 @@ Edge 是 Windows 10 内置的浏览器。</value>
     <value>屏幕保护</value>
   </data>
   <data name="TitleScreensaverLockOnResume" xml:space="preserve">
-    <value>在恢复，显示登录界面</value>
+    <value>在恢复时显示登录界面</value>
   </data>
   <data name="TitleSelectFile" xml:space="preserve">
     <value>选择文件</value>
@@ -946,7 +947,7 @@ Edge 是 Windows 10 内置的浏览器。</value>
     <value>外观 &amp; 行为</value>
   </data>
   <data name="ActiveWallpapers.Label" xml:space="preserve">
-    <value>活动的壁纸(Active)</value>
+    <value>个活动的壁纸</value>
   </data>
   <data name="TitleGallery" xml:space="preserve">
     <value>库(Gallery)</value>

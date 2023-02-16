@@ -133,51 +133,51 @@
     <value>オンラインのディスカッションフォーラム</value>
   </data>
   <data name="DocumentationPage.Content" xml:space="preserve">
-    <value>APIのドキュメントとヘルプ</value>
+    <value>APIのドキュメントと説明</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
     <value>Livelyで致命的なエラーが発生しました。
 
-エクスプローラーは30秒以内に2回再起動しました！ これはLivelyと他のデスクトップカスタマイズソフトウェアまたはWindowsとの間で競合している可能性があります。 さらなる問題を避けるために全ての壁紙を終了します</value>
+エクスプローラーは30秒以内に2回再起動しました。 これはLivelyと他のアプリケーションまたはWindowsとの間で競合（互換性がない）している可能性があります。 さらなる問題を避けるために全ての壁紙をWindows標準壁紙にもどします。</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
-    <value>互換性のないプログラムが見つかりました。タスクバーのテーマは無効になります。</value>
+    <value>互換性のないプログラムが見つかりました。タスクバーのテーマは反映されなくなります。</value>
   </data>
   <data name="OfficialWebpage.Content" xml:space="preserve">
-    <value>Lively Wallpaper の公式Webサイト</value>
+    <value>Lively Wallpaper の公式ウェブサイト</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
     <value>最近の液晶ディスプレイやLEDディスプレイのほとんどは画面の焼き付きがないため、どんな壁紙でもスクリーンセーバーとして使用できます。
 
-焼き付きの影響を受けやすい有機ELやプラズマ、ブラウン管のディスプレイでは焼き付きを軽減するために動きのある壁紙や全体的に暗いテーマを使用することをお勧めしますが、この機能は検証されておらず、その効果は保証されていません。
+焼き付きの影響を受けやすい有機ELやプラズマ、ブラウン管のディスプレイでは焼き付きを軽減するために動きのある壁紙や全体的に暗いテーマを使用することをお勧めしますが、この機能は現在ベータ版のため、確実ではないため保証できません。
 
-Livelyのスクリーンセーバーの主な目的はあなたのPCのカスタマイズをより深めることであり、焼き付きの保護のために使用するのは自己責任です！</value>
+Livelyのスクリーンセーバーの主な目的はあなたのPCのカスタマイズをより幅広くするためであり、焼き付きの保護のために使用するのは自己責任ですのでご自身で判断お願いします。</value>
   </data>
   <data name="ReportBugPage.Content" xml:space="preserve">
-    <value>ソフトウェアの不具合を報告する</value>
+    <value>ソフトウェアの不具合を報告する。</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
-    <value>ファイルを選択するか、ウェブサイトのURLを指定して壁紙として設定します。</value>
+    <value>保存したファイルを選択するか、ウェブサイトのURLを指定して壁紙として設定します。</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
     <value>実行中のアプリケーションに基づく壁紙の再生動作です。</value>
   </data>
   <data name="DescriptionCancelQuestion" xml:space="preserve">
-    <value>本当にキャンセルしますか？</value>
+    <value>△本当にキャンセルしますか？△</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
-    <value>ディスクからこの壁紙を永久に削除しますか？</value>
+    <value>このPCからこの壁紙を完全に削除しますか？</value>
   </data>
   <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
-    <value>この壁紙をライブラリから削除してもよろしいですか？</value>
+    <value>❕この壁紙をライブラリから削除してもよろしいですか？</value>
   </data>
   <data name="DragDropFile.Text" xml:space="preserve">
-    <value>ライブラリにファイルをドラッグ＆ドロップしてください。</value>
+    <value>ライブラリにファイルをインポートしてください。</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
     <value>壁紙として外部アプリケーションを開いています。
-悪意のあるアプリケーションは、マルウェアやウイルスをホストし、システムに害を及ぼす可能性があります。
-このアプリケーションが信頼できるソースから来ている場合のみ続行してください。</value>
+悪意のあるアプリケーションは、マルウェアやウイルスを拡散し、システムに害を及ぼす可能性があります。
+このアプリケーションが信頼できる情報元から来ている場合のみ続行してください。</value>
   </data>
   <data name="MinimizedTray.Text" xml:space="preserve">
     <value>Livelyはシステムトレイに最小化されています。Livelyのアイコンを右クリックして続行します。</value>

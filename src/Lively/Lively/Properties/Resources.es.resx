@@ -127,7 +127,7 @@
     <value>Volumen General</value>
   </data>
   <data name="AudioGroup.Header" xml:space="preserve">
-    <value>Sonido</value>
+    <value>Audio</value>
   </data>
   <data name="CommunityPage.Content" xml:space="preserve">
     <value>Foro de discusión</value>
@@ -149,21 +149,21 @@
   <data name="DescOledScreensaverNotice" xml:space="preserve">
     <value>La mayoría de pantallas modernas LCD y LED no sufren de quemado de pantalla, y por esa razón cualquier fondo de pantallas puede ser usado como salva pantallas.
 
-Para pantallas OLED, Plasma o CRT que son susceptibles ha quemado y retención de imagen es recomendado el uso de salva pantallas con movimiento continuo, y que tenga un tema relativamente oscuro que ayuden a mitigar el quemado de la pantalla, pero la eficacia de este método no ah sido comprobado y no puede ser garantizado.
+Para pantallas OLED, Plasma o CRT que son susceptibles ha quemado y retención de imagen es recomendado el uso de salva pantallas con movimiento continuo, y que tenga un tema relativamente oscuro que ayuden a mitigar el quemado de la pantalla, pero la eficacia de este método no ha sido comprobado y no puede ser garantizado.
 
-El objetivo principal del salva pantallas en Lively es ofrecer más posibilidades para personalizar tu PC. Usa el salva pantallas para proteger contra el quemado de pantalla bajo tu propio riesgo.</value>
+El objetivo principal del salva pantallas en Lively es ofrecer más posibilidades para personalizar tu PC. Usa el salva pantallas para proteger contra el quemado de pantalla bajo tu propio riesgo!</value>
   </data>
   <data name="ReportBugPage.Content" xml:space="preserve">
     <value>Informar de un problema con la aplicación</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
-    <value>Seleccione un archivo o especifique un enlace a un sitio web para usarlo como fondo de pantalla.</value>
+    <value>Seleccione un archivo</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
     <value>Comportamiento del fondo de pantalla de acuerdo a que aplicación está en ejecución.</value>
   </data>
   <data name="DescriptionCancelQuestion" xml:space="preserve">
-    <value>¿Estás seguro de que deseas cancelar?</value>
+    <value>¿Estás seguro de que quieres cancelar?</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
     <value>¿Estás seguro de que quieres eliminar permanentemente el fondo de pantalla del disco duro?</value>
@@ -172,7 +172,7 @@ El objetivo principal del salva pantallas en Lively es ofrecer más posibilidade
     <value>¿Estás seguro de que quieres eliminar este fondo de pantalla de la biblioteca?</value>
   </data>
   <data name="DragDropFile.Text" xml:space="preserve">
-    <value>Simplemente arrastra y suelta archivos en la Biblioteca.</value>
+    <value>Simplemente arrastra y suelta los archivos aquí</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
     <value>Estás abriendo una aplicación externa como fondo de pantalla.
@@ -183,22 +183,22 @@ Continúa solo si confías en la fuente de la aplicación.</value>
     <value>Lively se minimiza en la bandeja del sistema, haz clic derecho en el icono de lively para continuar.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
-    <value>Por favor reinicie Lively para que las configuraciones tengan efecto Haga clic derecho en el icono de notificacion seleccione salir y abralo otra ves</value>
+    <value>Por favor reinicie Lively para que las configuraciones tengan efecto</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
     <value>Deténgase antes de continuar</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
-    <value>Presiona para empezar a grabar.</value>
+    <value>Presione para empezar a grabar</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
-    <value>Restaurando fondo(s) de pantalla anterior(es), por favor espera...</value>
+    <value>Restaurando fondo(s) de pantalla anterior(es), por favor espere...</value>
   </data>
   <data name="DescriptionScreenLayout" xml:space="preserve">
     <value>Elegir Pantalla</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
-    <value>¡Una nueva versión de software está disponible!</value>
+    <value>¡Una nueva versión del programa está disponible!</value>
   </data>
   <data name="DescriptionWebpageLoad" xml:space="preserve">
     <value>Ingresa el enlace de un sitio web para cargarlo, puedes utilizar enlaces de shadertoy.com</value>
@@ -210,7 +210,7 @@ Continúa solo si confías en la fuente de la aplicación.</value>
     <value>Tu versión de Windows N/KN requiere la descarga de códecs adicionales para soportar la reproducción de vídeos como fondos de pantalla</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
-    <value>Muestra tu apoyo comprando al desarrollador un café</value>
+    <value>Muestra tu apoyo comprándole un café al desarrollador</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
     <value>Estas a punto de cambiar a una versión beta (en desarrollo) de Lively.
@@ -236,14 +236,14 @@ https://github.com/rocksdanister/lively/releases</value>
     <value>Archivo de fondo de pantalla dañado, intenta descargándolo nuevamente</value>
   </data>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
-    <value>Vaya... parece que algo salió mal :(
-Para enteder mejor este error y solucionar el problema, comparte el archivo de registro con el desarrollador.
+    <value>Vaya... parece que algo salió mal:(
+Para entender mejor este error y solucionar el problema, comparte el archivo de registro con el desarrollador.
 Visita el siguiente enlace con instrucciones sobre como compartir el archivo de registro:
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
     <value>¡Lively no puede funcionar correctamente con el modo de alto contraste de Windows activado!
-Deshabilita el modo de alto contraste e intente nuevamente.</value>
+Deshabilite el modo de alto contraste e intente nuevamente.</value>
   </data>
   <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
     <value>El reproducto de contenido ha fallado :(
@@ -254,11 +254,11 @@ Visita el siguiente enlace con instrucciones sobre como compartir el archivo de 
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
-    <value>No es un archivo de fondo de Lively.</value>
+    <value>No es un archivo válido</value>
   </data>
   <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
     <value>Lively no se cerró correctamente, se iniciará en modo seguro.
-¿Desea restaurar los fondos de pantalla que estaban ejecutándose anteriormente?</value>
+¿Desea restaurar los fondos de pantalla que estaban ejecutando anteriormente?</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
     <value>Debes aplicar algunas configuraciones para que Lively funcione:
@@ -295,10 +295,10 @@ Si aún no funciona, cierra e inicia Lively nuevamente o reinicia Windows.
     <value>Autor</value>
   </data>
   <data name="TextBack" xml:space="preserve">
-    <value>Regresar</value>
+    <value>Volver</value>
   </data>
   <data name="TextBrowse" xml:space="preserve">
-    <value>Navegar</value>
+    <value>Buscar</value>
   </data>
   <data name="Cancel.Content" xml:space="preserve">
     <value>Cancelar</value>
@@ -319,7 +319,7 @@ Si aún no funciona, cierra e inicia Lively nuevamente o reinicia Windows.
     <value>Haz click aquí para administrar tus fondos de pantalla.</value>
   </data>
   <data name="TextConvertVideo" xml:space="preserve">
-    <value>Convertir a Video</value>
+    <value>Convertir a video</value>
   </data>
   <data name="TextCreatePreview" xml:space="preserve">
     <value>Crear vista previa</value>
@@ -331,7 +331,7 @@ Si aún no funciona, cierra e inicia Lively nuevamente o reinicia Windows.
     <value>Personalizar fondo de pantalla</value>
   </data>
   <data name="DeleteWallpaper.Text" xml:space="preserve">
-    <value>Eliminar fondo de pantalla</value>
+    <value>Eliminar</value>
   </data>
   <data name="Description.Text" xml:space="preserve">
     <value>Descripción</value>
@@ -373,7 +373,7 @@ Si aún no funciona, cierra e inicia Lively nuevamente o reinicia Windows.
     <value>Iniciar</value>
   </data>
   <data name="TextHelpTranslate.Title" xml:space="preserve">
-    <value>Ayuda a traducir Lively.</value>
+    <value>Ayúdanos a traducir nuestro programa</value>
   </data>
   <data name="TextHours" xml:space="preserve">
     <value>Horas</value>
@@ -385,7 +385,7 @@ Si aún no funciona, cierra e inicia Lively nuevamente o reinicia Windows.
     <value>Teclado</value>
   </data>
   <data name="TextLastChecked" xml:space="preserve">
-    <value>Ultima vez revisado</value>
+    <value>Última vez revisado</value>
   </data>
   <data name="TextLearnMore.Text" xml:space="preserve">
     <value>Aprender más</value>
@@ -505,10 +505,10 @@ Si aún no funciona, cierra e inicia Lively nuevamente o reinicia Windows.
     <value>Etiquetas</value>
   </data>
   <data name="TaskbarThemeBlur.Content" xml:space="preserve">
-    <value>Difuminado</value>
+    <value>Borroso</value>
   </data>
   <data name="TaskbarThemeClear.Content" xml:space="preserve">
-    <value>Limpiar</value>
+    <value>Transparente</value>
   </data>
   <data name="TaskbarThemeColor.Content" xml:space="preserve">
     <value>Color</value>
@@ -1176,6 +1176,6 @@ Edge es la vista web integrada en Windows 10.</value>
     <value>Iconos de escritorio</value>
   </data>
   <data name="TextEndOfItems.Text" xml:space="preserve">
-    <value>That's all for now..</value>
+    <value>Esto es todo por ahora..</value>
   </data>
 </root>

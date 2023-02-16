@@ -1,5 +1,4 @@
 ﻿using Lively.Common;
-using Lively.Common.Helpers.Localization;
 using Lively.Common.Helpers.Storage;
 using Lively.Core.Display;
 using Lively.Helpers;

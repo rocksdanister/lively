@@ -121,7 +121,7 @@
     <value>Відтворювати аудіо тільки коли робочий стіл у фокусі</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
-    <value>Рівень гучності звуку шпалерів</value>
+    <value>Рівень гучності звуку шпалер</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
     <value>Загальна гучність</value>
@@ -223,7 +223,7 @@
     <value>Іконка на панелі задач</value>
   </data>
   <data name="Language.Description" xml:space="preserve">
-    <value>Потрібен перезапуск Lively для зміни мови.</value>
+    <value>Потрібен перезапуск Lively для зміни мови</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
     <value>Мова</value>
@@ -278,13 +278,13 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Запускати разом з Windows</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
-    <value>ПООООН</value>
+    <value>Додати</value>
   </data>
   <data name="TextAllFiles" xml:space="preserve">
     <value>Всі файли</value>
   </data>
   <data name="Application.Header" xml:space="preserve">
-    <value>Додаток</value>
+    <value>Застосунок</value>
   </data>
   <data name="Attribution.Header" xml:space="preserve">
     <value>Атрибути</value>

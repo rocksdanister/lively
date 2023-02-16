@@ -121,7 +121,7 @@
     <value>Lire l'audio uniquement lorsque le bureau est au premier plan</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
-    <value>Définir le niveau sonore des fonds d'écran</value>
+    <value>Définir le volume sonore des fonds d'écran</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
     <value>Volume principal</value>
@@ -226,7 +226,7 @@ Les mises à jour seront fréquentes et pourront contenir des bugs !</value>
     <value>Lively doit redémarrer pour appliquer la nouvelle langue</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
-    <value>Langue</value>
+    <value>Language</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
     <value>Échec de la mise à jour. Essayez de télécharger l'installateur sur https://github.com/rocksdanister/lively/releases</value>
@@ -253,7 +253,7 @@ Instructions pour partager le fichier de log :
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
-    <value>Ceci n'est pas un fichier de Lively wallpaper</value>
+    <value>Ceci n'est pas un fichier de Lively wallpaper.</value>
   </data>
   <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
     <value>Lively n'a pas été fermé correctement et va redémarrer en mode sans échec.
@@ -295,7 +295,7 @@ Si cela ne fonctionne toujours pas, fermez et relancez Lively / redémarrez Wind
     <value>Retour</value>
   </data>
   <data name="TextBrowse" xml:space="preserve">
-    <value>Naviguer</value>
+    <value>Rechercher</value>
   </data>
   <data name="Cancel.Content" xml:space="preserve">
     <value>Annuler</value>
@@ -953,7 +953,7 @@ Edge est la vue Web intégrée de Windows 10.</value>
     <value>Galerie</value>
   </data>
   <data name="AboutMe.Text" xml:space="preserve">
-    <value>Salut, je suis Dani John aussi connu sous le nom de rockdanisher. Je développe Lively qui est une application de fond d'écrans gratuite et Open source (FOSS). Merci d'avoir pris le temps de regarder mon travail.</value>
+    <value>Salut, je suis Dani John aussi connu sous le nom de rocksdanister. Je développe Lively qui est une application de fond d'écrans gratuite et Open source (FOSS). Merci d'avoir pris le temps de regarder mon travail.</value>
   </data>
   <data name="LicenseLink.Content" xml:space="preserve">
     <value>Licence</value>

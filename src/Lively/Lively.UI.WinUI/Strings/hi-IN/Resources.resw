@@ -121,47 +121,49 @@
     <value>ऑडियो तभी चलायें जब Desktop फोकस में हो</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
-    <value>सभी वॉलपेपर का वॉल्यूम स्तर।</value>
+    <value>सभी वॉलपेपर का वॉल्यूम स्तर</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
-    <value>मुख्य मात्रा</value>
+    <value>आवाज़</value>
   </data>
   <data name="AudioGroup.Header" xml:space="preserve">
-    <value>ऑडियो</value>
+    <value>ध्वनि</value>
   </data>
   <data name="CommunityPage.Content" xml:space="preserve">
-    <value>Online चर्चा मंच</value>
+    <value>ऑनलाइन चर्चा मंच</value>
   </data>
   <data name="DocumentationPage.Content" xml:space="preserve">
     <value>एपीआई प्रलेखन और सहायता</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
-    <value>Lively को एक घातक त्रुटि का सामना करना पड़ा है। (Fatal error)</value>
+    <value>लाइवली को घातक त्रुटि का सामना करना पड़ा है।
+
+विंडोज एक्सप्लोरर पिछले 30 सेकंड में दो बार रीस्टार्ट हुआ! यह लाइवली और अन्य डेस्कटॉप अनुकूलन सॉफ्टवेयर या विंडोज के बीच विरोध हो सकता है। आगे की समस्याओं से बचने के लिए, सभी वॉलपेपर समाप्त कर दिए गए हैं।</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
-    <value>Incompatible program found, taskbar theming disabled.</value>
+    <value>स्रोत स्ट्रिंग असंगत प्रोग्राम मिला, टास्कबार थीमिंग अक्षम</value>
   </data>
   <data name="OfficialWebpage.Content" xml:space="preserve">
-    <value>Lively Wallpaper का आधिकारिक वेबपेज (Official webpage)</value>
+    <value>लाइवली वॉलपेपर का आधिकारिक वेबपेज</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
-    <value>अधिकांश आधुनिक एलसीडी और एलईडी डिस्प्ले बर्न-इन समस्या से ग्रस्त नहीं हैं और इसलिए किसी भी वॉलपेपर को स्क्रीनसेवर के रूप में इस्तेमाल किया जा सकता है।
+    <value>अधिकांश आधुनिक एलसीडी और एलईडी डिस्प्ले बर्न-इन इश्यू से पीड़ित नहीं होते हैं और इसलिए किसी भी वॉलपेपर को स्क्रीनसेवर के रूप में इस्तेमाल किया जा सकता है।
 
-OLED, प्लाज्मा या CRT डिस्प्ले के लिए जो बर्न-इन के लिए अतिसंवेदनशील होते हैं, उन्हें नियमित गति के साथ वॉलपेपर और एक समग्र डार्क थीम का उपयोग करने की सलाह दी जाती है, जो बर्न-इन को कम करने के लिए माना जाता है, लेकिन यह सुविधा अप्रयुक्त है और इसकी प्रभावशीलता की गारंटी नहीं दी जा सकती है।
+OLED, प्लाज्मा या CRT डिस्प्ले के लिए जो बर्न-इन के लिए अतिसंवेदनशील होते हैं, उन्हें नियमित गति वाले वॉलपेपर और एक समग्र डार्क थीम का उपयोग करने की सलाह दी जाती है, जो बर्न-इन को कम करने वाला माना जाता है, लेकिन यह सुविधा अप्रयुक्त है और इसकी प्रभावशीलता की गारंटी नहीं दी जा सकती है।
 
-लाइवली के स्क्रीनसेवर का मुख्य उद्देश्य अपने पीसी में अनुकूलन की एक और परत जोड़ना है, स्क्रीनसेवर को अपने जोखिम पर बर्न-इन सुरक्षा के रूप में उपयोग करना है!</value>
+लाइवली के स्क्रीनसेवर का मुख्य उद्देश्य आपके पीसी में अनुकूलन की एक और परत जोड़ना है, अपने जोखिम पर स्क्रीनसेवर को बर्न-इन सुरक्षा के रूप में उपयोग करें!</value>
   </data>
   <data name="ReportBugPage.Content" xml:space="preserve">
-    <value>Software के साथ समस्या की रिपोर्ट करें।</value>
+    <value>सॉफ़्टवेयर के साथ समस्या की रिपोर्ट करें</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
-    <value>एक फ़ाइल का चयन करें या वॉलपेपर के रूप में सेट करने के लिए एक वेबसाइट URL निर्दिष्ट करें।</value>
+    <value>कोई फ़ाइल चुनें</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
     <value>चल रहे एप्लिकेशन के आधार पर वॉलपेपर प्लेबैक व्यवहार।</value>
   </data>
   <data name="DescriptionCancelQuestion" xml:space="preserve">
-    <value>क्या आप वाकई इसे रद्द करना चाहते हैं?</value>
+    <value>क्या आप वाकई रद्द करना चाहते हैं?</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
     <value>क्या आप वाकई इस वॉलपेपर को डिस्क से स्थायी रूप से हटाना चाहते हैं?</value>
@@ -279,7 +281,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>जोड़ना</value>
   </data>
   <data name="TextAllFiles" xml:space="preserve">
-    <value>सभी फाइलें</value>
+    <value>सभी फ़ाइल</value>
   </data>
   <data name="Application.Header" xml:space="preserve">
     <value>निवेदन</value>
@@ -1099,31 +1101,31 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>कृपया इस कार्रवाई की पुष्टि करें क्योंकि इसे पूर्ववत नहीं किया जा सकता</value>
   </data>
   <data name="GalleryAccountDeleteFail.Text" xml:space="preserve">
-    <value>Failed to delete account, please try again later</value>
+    <value>खाता हटाने में असफल रहे, कृपया बाद में पुनः प्रयास करें</value>
   </data>
   <data name="TextConfirmCancel.Text" xml:space="preserve">
-    <value>Do you want to cancel it?</value>
+    <value>क्या आप रद्द करना चाहते हैं?</value>
   </data>
   <data name="TextWait.Text" xml:space="preserve">
     <value>प्रतीक्षा करें</value>
   </data>
   <data name="TitleDownloadProgress.Text" xml:space="preserve">
-    <value>Download in Progress</value>
+    <value>डाउनलोड हो रहा है</value>
   </data>
   <data name="TextContributors.Text" xml:space="preserve">
-    <value>Contributors</value>
+    <value>योगदानकर्ता</value>
   </data>
   <data name="TextShare.Text" xml:space="preserve">
-    <value>Share</value>
+    <value>शेयर करें</value>
   </data>
   <data name="TitleShareWallpaper.Text" xml:space="preserve">
-    <value>Share Wallpaper</value>
+    <value>वॉलपेपर शेयर करे</value>
   </data>
   <data name="ExportWallpaperGallery.Text" xml:space="preserve">
-    <value>Gallery upload</value>
+    <value>गैलरी अपलोड</value>
   </data>
   <data name="ExportWallpaperLink.Text" xml:space="preserve">
-    <value>Copy link</value>
+    <value>लिंक कॉपी करें</value>
   </data>
   <data name="TextCustomiseWallpaper" xml:space="preserve">
     <value>वॉलपेपर कस्टमाइज़ करें</value>
@@ -1132,46 +1134,46 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>वॉलपेपर बंद करें</value>
   </data>
   <data name="TitleChooseApplication.Text" xml:space="preserve">
-    <value>Choose Application</value>
+    <value>अप्लिकेशन को चुनें</value>
   </data>
   <data name="WallpaperInstallSize.Text" xml:space="preserve">
-    <value>Size</value>
+    <value>आकार</value>
   </data>
   <data name="PluginNotFound.Message" xml:space="preserve">
-    <value>Please install the required plugin</value>
+    <value>कृपया आवश्यक प्लगइन इंस्टॉल करें</value>
   </data>
   <data name="PluginNotFound.Title" xml:space="preserve">
-    <value>Plugin not found</value>
+    <value>प्लगइन नहीं पाया!</value>
   </data>
   <data name="UpdateCompleted.Text" xml:space="preserve">
-    <value>Update complete</value>
+    <value>अपडेट पूर्ण हो गया</value>
   </data>
   <data name="UpdateWhatsNew.Text" xml:space="preserve">
-    <value>Check out what's new</value>
+    <value>देखें कि नया क्या है</value>
   </data>
   <data name="AppThemeColor.Header" xml:space="preserve">
     <value>रंग बदलें</value>
   </data>
   <data name="DescriptionDefault.Text" xml:space="preserve">
-    <value>Use system default</value>
+    <value>सिस्टम डिफ़ॉल्ट का उपयोग करें</value>
   </data>
   <data name="DescriptionDynamicTheme.Text" xml:space="preserve">
-    <value>Adapt to wallpaper</value>
+    <value>वॉलपेपर के अनुकूल</value>
   </data>
   <data name="TextDefault.Text" xml:space="preserve">
-    <value>Default</value>
+    <value>डिफॉल्ट</value>
   </data>
   <data name="TextDynamicTheme.Text" xml:space="preserve">
-    <value>Dynamic</value>
+    <value>डायनेमिक</value>
   </data>
   <data name="Theme.Label" xml:space="preserve">
     <value>अंतर्वस्तु</value>
   </data>
   <data name="IconsHidden.Message" xml:space="preserve">
-    <value>To prevent accidental selection desktop icons are currently hidden</value>
+    <value>स्रोत स्ट्रिंग आकस्मिक चयन को रोकने के लिए डेस्कटॉप आइकन वर्तमान में छिपे हुए हैं</value>
   </data>
   <data name="IconsHidden.Title" xml:space="preserve">
-    <value>Desktop icons</value>
+    <value>डेस्कटॉप आइकनस</value>
   </data>
   <data name="TextEndOfItems.Text" xml:space="preserve">
     <value>अभी के लिए बस इतना ही.</value>

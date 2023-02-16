@@ -147,7 +147,11 @@
     <value>Званична страница Лајвли апликације</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
-    <value>Већина модерних ЛЦД и ЛЕД екрана не пати од проблема са нарезивања и зато се било који постер може користити као чувар екрана. За ОЛЕД, Плазму или ЦРТ дисплеје који су подложни њеном нарезивања саветује се коришћење тапета са редовним кретањем и целокупном тамном темом која би требало да ублажи урезивање али је ова функција неиспромљена и њена ефективност не може бити загарантована. Главна сврха Ливелy-јевих сцреенсавера је да додају још један слој прилагођавања рачунару, користе сцреенсаверс као заштиту при нарезивања на сопствену одговорност!</value>
+    <value>Већина модерних ЛЦД и ЛЕД дисплеја не пати од проблема прегоревања (бурн-ин ефекат) стога се може користити било која позадина као чувар екрана.
+
+За ОЛЕД, Плазма и ЦРТ дисплеје који су подложни бурн-ин ефекту препоручено је да користе позадину са редовним кретањем и општом тамном темом која би требала да ублажи прегоревање, ово није тестирано тако да ефективност се не може гарантовати.
+
+Главни циљ Лајвлија је додавање још једног слоја прилагођавања вашем рачунару, користите чуваре екрана као заштиту од прегоревања на сопствени ризик!</value>
   </data>
   <data name="ReportBugPage.Content" xml:space="preserve">
     <value>Пријавите проблем са софтвером</value>
@@ -635,10 +639,10 @@
     <value>Први план: Лако, само провера процес са једним језгром које је у првом плану да одреди понашање плеј-бека позадине.Сви Процеси: Тежи, Скенира све процесе да одреди плеј-бек понашање.</value>
   </data>
   <data name="PowerSavingModePower.Description" xml:space="preserve">
-    <value>Change playback when Windows Power Saving Mode is enabled</value>
+    <value>Промените репродукцију када је омогућен Windows Power Saving Mode</value>
   </data>
   <data name="RemoteDesktopPower.Description" xml:space="preserve">
-    <value>Change playback when running a Remote Desktop session</value>
+    <value>Промените репродукцију када покренете сесију удаљене радне површине</value>
   </data>
   <data name="TipScreensaver" xml:space="preserve">
     <value>After the selected inactivity period use the current wallpaper as your screensaver.</value>
@@ -722,7 +726,7 @@
     <value>Порт за отклањање грешака</value>
   </data>
   <data name="TitleChangelog" xml:space="preserve">
-    <value>Changelog</value>
+    <value>Списак промена</value>
   </data>
   <data name="Community.Header" xml:space="preserve">
     <value>Заједница</value>
@@ -743,10 +747,10 @@
     <value>Документација</value>
   </data>
   <data name="EnterUrl.Header" xml:space="preserve">
-    <value>Enter URL</value>
+    <value>Унесите УРЛ</value>
   </data>
   <data name="ExportLogs.Header" xml:space="preserve">
-    <value>Log File</value>
+    <value>Лог фајл</value>
   </data>
   <data name="TitleGeneral" xml:space="preserve">
     <value>Генерално</value>
@@ -767,7 +771,7 @@
     <value>Ливели инсталација</value>
   </data>
   <data name="TitleLocation" xml:space="preserve">
-    <value>Location</value>
+    <value>Локација</value>
   </data>
   <data name="LockscreenPicture.Header" xml:space="preserve">
     <value>Lockscreen Picture</value>
@@ -791,13 +795,13 @@
     <value>Молим вас сачекајте</value>
   </data>
   <data name="PowerSavingModePower.Header" xml:space="preserve">
-    <value>When on Battery Saver</value>
+    <value>Када је укључена уштеда батерије</value>
   </data>
   <data name="RemoteDesktopPower.Header" xml:space="preserve">
-    <value>When on Remote Desktop</value>
+    <value>Када сте на удаљеној радној површини</value>
   </data>
   <data name="ReportBug.Header" xml:space="preserve">
-    <value>Report Bug</value>
+    <value>Пријави Баг</value>
   </data>
   <data name="TitleScalingFit" xml:space="preserve">
     <value>Скалирање/Подесити</value>
@@ -806,10 +810,10 @@
     <value>Контролна табла</value>
   </data>
   <data name="TitleScreensaver" xml:space="preserve">
-    <value>Screensaver</value>
+    <value>Чувар екрана</value>
   </data>
   <data name="TitleScreensaverLockOnResume" xml:space="preserve">
-    <value>On resume, display logon screen</value>
+    <value>У наставку, прикажите екран за пријаву</value>
   </data>
   <data name="TitleSelectFile" xml:space="preserve">
     <value>Изабери Фајл</value>
@@ -818,13 +822,13 @@
     <value>Подешавања</value>
   </data>
   <data name="TitleSkipConfirm" xml:space="preserve">
-    <value>Skip Confirmation</value>
+    <value>Прескочи потврду</value>
   </data>
   <data name="SourceCode.Header" xml:space="preserve">
-    <value>Source Code</value>
+    <value>Изворни код</value>
   </data>
   <data name="Store.Header" xml:space="preserve">
-    <value>Store</value>
+    <value>Продавница</value>
     <comment>For different version of Lively, example: Microsoft Store</comment>
   </data>
   <data name="StreamWallpaperVideoQuality.Header" xml:space="preserve">
@@ -837,10 +841,10 @@
     <value>Квалитет видеа</value>
   </data>
   <data name="System.Header" xml:space="preserve">
-    <value>System</value>
+    <value>Систем</value>
   </data>
   <data name="TaskbarTheme.Header" xml:space="preserve">
-    <value>Taskbar Theme</value>
+    <value>Тема траке задатака</value>
   </data>
   <data name="TitleTileSize" xml:space="preserve">
     <value>Величина плочица</value>
@@ -849,7 +853,7 @@
     <value>Кориснички интерфејс</value>
   </data>
   <data name="TitleUpdates" xml:space="preserve">
-    <value>Updates</value>
+    <value>Ажурирања</value>
   </data>
   <data name="TitleVideo" xml:space="preserve">
     <value>Видео</value>
@@ -894,25 +898,25 @@
     <value>Учитај њеб страницу</value>
   </data>
   <data name="FastUI.Description" xml:space="preserve">
-    <value>Keep User Interface running for faster startup</value>
+    <value>Нека кориснички интерфејс ради, ради бржег покретања</value>
   </data>
   <data name="FastUI.Header" xml:space="preserve">
-    <value>Fast startup</value>
+    <value>Брзо покретање</value>
   </data>
   <data name="WallpaperDirGroup.Header" xml:space="preserve">
-    <value>File</value>
+    <value>Фајл</value>
   </data>
   <data name="AppThemeDark.Content" xml:space="preserve">
-    <value>Dark</value>
+    <value>Mрак</value>
   </data>
   <data name="AppThemeLight.Content" xml:space="preserve">
     <value>Светло</value>
   </data>
   <data name="AppThemeSystem.Content" xml:space="preserve">
-    <value>System</value>
+    <value>Систем</value>
   </data>
   <data name="WindowsSettingsColor.Content" xml:space="preserve">
-    <value>Windows color settings</value>
+    <value>Windows подешавања боја</value>
   </data>
   <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
     <value>Преносни рачунар</value>
@@ -1077,31 +1081,31 @@
     <value>Молимо Вас потврдите ову акцију јер НЕ МОЖЕ бити поништена</value>
   </data>
   <data name="GalleryAccountDeleteFail.Text" xml:space="preserve">
-    <value>Failed to delete account, please try again later</value>
+    <value>Брисање налога није успело, покушајте поново касније</value>
   </data>
   <data name="TextConfirmCancel.Text" xml:space="preserve">
-    <value>Do you want to cancel it?</value>
+    <value>Да ли желите да га откажете?</value>
   </data>
   <data name="TextWait.Text" xml:space="preserve">
-    <value>Wait</value>
+    <value>Чекајте</value>
   </data>
   <data name="TitleDownloadProgress.Text" xml:space="preserve">
-    <value>Download in Progress</value>
+    <value>Преузимање у току</value>
   </data>
   <data name="TextContributors.Text" xml:space="preserve">
-    <value>Contributors</value>
+    <value>Сарадници</value>
   </data>
   <data name="TextShare.Text" xml:space="preserve">
-    <value>Share</value>
+    <value>Рекламирај</value>
   </data>
   <data name="TitleShareWallpaper.Text" xml:space="preserve">
-    <value>Share Wallpaper</value>
+    <value>Делите позадину</value>
   </data>
   <data name="ExportWallpaperGallery.Text" xml:space="preserve">
-    <value>Gallery upload</value>
+    <value>Отпремање галерије</value>
   </data>
   <data name="ExportWallpaperLink.Text" xml:space="preserve">
-    <value>Copy link</value>
+    <value>Копирај везу</value>
   </data>
   <data name="TextCustomiseWallpaper" xml:space="preserve">
     <value>Измени позадину</value>
@@ -1110,48 +1114,48 @@
     <value>Затвори позадину</value>
   </data>
   <data name="TitleChooseApplication.Text" xml:space="preserve">
-    <value>Choose Application</value>
+    <value>Изаберите апликацију</value>
   </data>
   <data name="WallpaperInstallSize.Text" xml:space="preserve">
-    <value>Size</value>
+    <value>Величина</value>
   </data>
   <data name="PluginNotFound.Message" xml:space="preserve">
-    <value>Please install the required plugin</value>
+    <value>Молимо инсталирајте потребан додатак</value>
   </data>
   <data name="PluginNotFound.Title" xml:space="preserve">
-    <value>Plugin not found</value>
+    <value>Додатак није пронађен</value>
   </data>
   <data name="UpdateCompleted.Text" xml:space="preserve">
-    <value>Update complete</value>
+    <value>Ажурирање је завршено</value>
   </data>
   <data name="UpdateWhatsNew.Text" xml:space="preserve">
-    <value>Check out what's new</value>
+    <value>Проверите шта је ново</value>
   </data>
   <data name="AppThemeColor.Header" xml:space="preserve">
     <value>Боја</value>
   </data>
   <data name="DescriptionDefault.Text" xml:space="preserve">
-    <value>Use system default</value>
+    <value>Користи подразумевани систем</value>
   </data>
   <data name="DescriptionDynamicTheme.Text" xml:space="preserve">
-    <value>Adapt to wallpaper</value>
+    <value>Прилагодите се тапетама</value>
   </data>
   <data name="TextDefault.Text" xml:space="preserve">
-    <value>Default</value>
+    <value>Уобичајено</value>
   </data>
   <data name="TextDynamicTheme.Text" xml:space="preserve">
-    <value>Dynamic</value>
+    <value>Динамично</value>
   </data>
   <data name="Theme.Label" xml:space="preserve">
     <value>Тема</value>
   </data>
   <data name="IconsHidden.Message" xml:space="preserve">
-    <value>To prevent accidental selection desktop icons are currently hidden</value>
+    <value>Да бисте спречили случајни избор иконе на радној површини су тренутно скривене</value>
   </data>
   <data name="IconsHidden.Title" xml:space="preserve">
-    <value>Desktop icons</value>
+    <value>Иконе на радној површини</value>
   </data>
   <data name="TextEndOfItems.Text" xml:space="preserve">
-    <value>That's all for now..</value>
+    <value>То је све за сада..</value>
   </data>
 </root>

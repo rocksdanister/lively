@@ -121,10 +121,10 @@
     <value>Hanya main audio jika desktop di dalam fokus</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
-    <value>Darjah kekuatan bunyi bagi semua wallpaper.</value>
+    <value>Darjah kekuatan bunyi bagi semua latar belakang</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
-    <value>Kekuatan Bunyi (Utama)</value>
+    <value>Lantang</value>
   </data>
   <data name="AudioGroup.Header" xml:space="preserve">
     <value>Audio</value>
@@ -136,12 +136,12 @@
     <value>Dokumentasi API dan bantuan</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
-    <value>Lively telah mengalami ralat yang maut.
+    <value>Lively telah mengalami ralat yang serius.
 
-Windows Explorer telah dimulakan semula sebanyak 2 kali dalam tempoh 30 saat yang lalu. Ini mungkin disebabkan oleh konflik antara Lively dan software pemeribadian yang lain atau Windows. Untuk mengelakkan isu-isu yang lanjut, semua wallpaper telah ditamatkan.</value>
+Windows Explorer telah dimulakan semula sebanyak 2 kali dalam tempoh 30 saat yang lalu! Ini mungkin disebabkan oleh konflik antara Lively dan perisian pemeribadian yang lain atau Windows. Untuk mengelakkan sebarang isu mendatang, semua latar bekang telah ditamatkan.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
-    <value>Tema taskbar dinyahaktifkan kerana terjumpa program yang tidak serasi.</value>
+    <value>Tema taskbar dinyahaktifkan kerana terjumpa program yang tidak serasi</value>
   </data>
   <data name="OfficialWebpage.Content" xml:space="preserve">
     <value>Laman web rasmi Lively Wallpaper</value>
@@ -154,7 +154,7 @@ Windows Explorer telah dimulakan semula sebanyak 2 kali dalam tempoh 30 saat yan
       Tujuan utama screensaver Lively adalah untuk menambah satu lagi lapisan penyesuaian bagi PC anda. Gunakan screensaver sebagai pelindung 'burn-in' atas risiko anda sendiri!</value>
   </data>
   <data name="ReportBugPage.Content" xml:space="preserve">
-    <value>Laporkan masalah dengan software</value>
+    <value>Laporkan masalah perisian</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
     <value>Pilih fail</value>
@@ -163,19 +163,19 @@ Windows Explorer telah dimulakan semula sebanyak 2 kali dalam tempoh 30 saat yan
     <value>Tingkah laku main semula wallpaper berdasarkan aplikasi yang sedang berjalan.</value>
   </data>
   <data name="DescriptionCancelQuestion" xml:space="preserve">
-    <value>Adakah anda pasti anda mahu batalkan?</value>
+    <value>Anda pasti mahu batalkan?</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
-    <value>Adakah anda pasti anda mahu memadamkan wallpaper secara tetap daripada simpanan?</value>
+    <value>Adakah anda pasti anda mahu memadamkan latar belakang secara tetap daripada simpanan?</value>
   </data>
   <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
-    <value>Adakah anda mahu memadamkan wallpaper ini daripada pustaka?</value>
+    <value>Adakah anda mahu memadamkan latar belakang ini daripada pustaka?</value>
   </data>
   <data name="DragDropFile.Text" xml:space="preserve">
-    <value>Seret dan lepaskan fail ke dalam pustaka.</value>
+    <value>Seret dan lepaskan fail ke dalam pustaka</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
-    <value>Anda sedang membuka sebuah aplikasi sebagai wallpaper.
+    <value>Anda sedang membuka sebuah aplikasi sebagai latar belakang.
 Aplikasi sebegini mungkin mempunyai virus yang mampu merosakkan sistem anda.
 Hanya teruskan jika aplikasi ini berasal daripada sumber yang dipercayai.</value>
   </data>
@@ -183,19 +183,19 @@ Hanya teruskan jika aplikasi ini berasal daripada sumber yang dipercayai.</value
     <value>Lively diminimumkan ke dalam dulang sistem. Klik kanan ikon Lively untuk teruskan.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
-    <value>Mulakan semula Lively untuk mengemaskini konfigurasi.</value>
+    <value>Mulakan semula Lively untuk mengemaskini konfigurasi</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
-    <value>Sila berhenti sebelum meneruskan.</value>
+    <value>Sila berhenti sebelum meneruskan</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
-    <value>Tekan untuk mulakan rakaman.</value>
+    <value>Tekan untuk mulakan rakaman</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
-    <value>Mengembalikan wallpaper terdahulu, sila tunggu...</value>
+    <value>Mengembalikan hiasan latar terdahulu, sila tunggu...</value>
   </data>
   <data name="DescriptionScreenLayout" xml:space="preserve">
-    <value>Pilih skrin</value>
+    <value>Pilih Paparan</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
     <value>Terdapat versi baharu perisian!</value>
@@ -204,26 +204,26 @@ Hanya teruskan jika aplikasi ini berasal daripada sumber yang dipercayai.</value
     <value>Masukkan pautan laman sesawang untuk dimuatkan. Pautan shader shadertoy.com disokong.</value>
   </data>
   <data name="DescriptionWelcomeWizard" xml:space="preserve">
-    <value>Wizard ini akan membantu anda mengesetkan Lively.</value>
+    <value>Wizard ini akan membantu anda mengesetkan Lively</value>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>Bagi Windows versi N/KN muat turun pengekod penyahkod (codec) tambahan adalah diperlukan untuk menyokong main semula video didalam wallpaper.</value>
+    <value>N/KN Windows anda akan memerlukan muat-turun codec tambahan untuk menyokong main semula video dalam latar belakang</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
-    <value>Tunjukkan sokongan anda dengan membelikan developer secawan kopi</value>
+    <value>Tunjukkan sokongan anda dengan membelikan pembangun secawan kopi</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
-    <value>Anda akan menukar versi binaan Lively ke beta.
-      Kemaskini akan menjadi lebih kerap, tetapi mungkin mengandungi pepijat!</value>
+    <value>Anda akan menukar ke versi binaan Lively ke beta.
+Kemaskini akan menjadi lebih kerap dan mungkin akan mengandungi pepijat!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
-    <value>Darjah penglihatan ikon dulang sistem. Lively akan masih berjalan dengan ikon tersembunyi.</value>
+    <value>Darjah penglihatan ikon dulang sistem, Lively akan masih berjalan dengan ikon tersembunyi</value>
   </data>
   <data name="HideSysTray.Header" xml:space="preserve">
     <value>Ikon Dulang Sistem</value>
   </data>
   <data name="Language.Description" xml:space="preserve">
-    <value>Lively akan dimulakan semula bagi menggunakan bahasa terbaharu.</value>
+    <value>Lively akan dimulakan semula bagi menggunakan bahasa terbaharu</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
     <value>Bahasa</value>
@@ -233,17 +233,17 @@ Hanya teruskan jika aplikasi ini berasal daripada sumber yang dipercayai.</value
 https://github.com/rocksdanister/lively/releases</value>
   </data>
   <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
-    <value>Fail wallpaper rosak, muat turun semula wallpaper.</value>
+    <value>Fail latar belakang rosak, muat turun semula latar belakang</value>
   </data>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
-    <value>Ralat dikesan semasa proses sedang berjalan.
-Untuk memahami ralat ini secara lebih baik dan menyelesaikan isu, kongsikan fail log dengan pengarang.
-Panduan kongsi:
+    <value>Oops... ada sesuatu yang tak kena ni :(
+Untuk memahami ralat ini secara lebih baik dan menyelesaikan isu, kongsikan fail log dengan pembangun.
+Cara untuk kongsikan fail log:
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
     <value>Lively tidak berfungsi secara teratur jika mod Windows Kontras Tinggi diaktifkan!
-Nyahaktifkan mod Kontras Tinggi dan cuba semula.</value>
+Nyahaktifkan mod Kontras Tinggi dan cuba semula</value>
   </data>
   <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
     <value>Gagal memainkan media.
@@ -257,23 +257,21 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Fail bukan fail wallpaper Lively.</value>
   </data>
   <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
-    <value>Lively tidak ditamatkan secara teratur, memulakan aplikasi dalam mod selamat. Adakah anda mahu mengembalikan wallpaper yang sebelumnya?</value>
+    <value>Lively tidak ditamatkan secara teratur, memulakan aplikasi dalam mod selamat. Adakah anda mahu mengembalikan latar belakang yang sebelumnya?</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
     <value>Panduan bagi memulakan Lively secara teratur:  
-1. Buka This PC(My Computer)
-2. Klik kanan pada kawasan kosong.
-3. Pilih Properties
-4. Pilih Advanced System Settings
-5. Dibawah tab Performance pilih Settings
-6. Aktifkan "Animate controls and elements inside Windows" dan klik Apply.
+1. Tekan logo Win + R untuk membuka Run, 
+2. Taip SystemPropertiesPerformance.exe dalam Run, klik "OK" untuk membuka Performance Options.
+3. Tanda "Animate controls and elements inside windows" (Jika sudah bertanda, sila buang dan tandkan semula) &amp; Apply.
+4. Klik "Apply" kemudian tekan "OK" untuk menutup tetingkap.
 
-Bagi Windows 7 setkan - "Adjust for best appearance" dan klik Apply.
+Bagi Windows 7 setkan - "Adjust for best appearance" &amp; klik Apply.
 Jika masih tidak berkesan, mulakan semula Lively/Windows.
 (Tidak berfungsi untuk sebahagian binaan Windows 10 Insider)</value>
   </data>
   <data name="Startup.Description" xml:space="preserve">
-    <value>Lively mesti berjalan di latar belakang untuk memainkan semula wallpaper.</value>
+    <value>Lively mesti berjalan di belakang untuk memainkan semula latar belakang</value>
   </data>
   <data name="Startup.Header" xml:space="preserve">
     <value>Mula dengan Windows</value>
@@ -303,7 +301,7 @@ Jika masih tidak berkesan, mulakan semula Lively/Windows.
     <value>Batal</value>
   </data>
   <data name="TextChangeWallpaper" xml:space="preserve">
-    <value>Tukar Wallpaper</value>
+    <value>Tukar Latar Belakang</value>
   </data>
   <data name="TextClose" xml:space="preserve">
     <value>Tutup</value>
@@ -1169,12 +1167,12 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
     <value>Tema</value>
   </data>
   <data name="IconsHidden.Message" xml:space="preserve">
-    <value>To prevent accidental selection desktop icons are currently hidden</value>
+    <value>Bagi mengelakkan pemilihan tidak sengaja, ikon desktop sedang disorokkan</value>
   </data>
   <data name="IconsHidden.Title" xml:space="preserve">
-    <value>Desktop icons</value>
+    <value>Ikon Desktop</value>
   </data>
   <data name="TextEndOfItems.Text" xml:space="preserve">
-    <value>That's all for now..</value>
+    <value>Itu sahaja buat masa ini.</value>
   </data>
 </root>
