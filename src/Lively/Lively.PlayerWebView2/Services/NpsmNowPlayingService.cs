@@ -20,11 +20,11 @@ namespace Lively.PlayerWebView2.Services
         public event EventHandler<NowPlayingEventArgs> NowPlayingTrackChanged;
 
         private static readonly bool isWindows11_OrGreater = Environment.OSVersion.Version.Build >= 22000;
-        private readonly SemaphoreSlim semaphoreSlimLock = new SemaphoreSlim(1, 1);
-        private readonly NowPlayingSessionManager manager = new();
-        private readonly NowPlayingEventArgs model = new();
+        private readonly NowPlayingSessionManager manager = new NowPlayingSessionManager();
+        private static readonly object lockObject = new object();
         private MediaPlaybackDataSource src;
         private NowPlayingSession session;
+        private NowPlayingEventArgs model;
 
         public NpsmNowPlayingService() { }
 
@@ -43,7 +43,7 @@ namespace Lively.PlayerWebView2.Services
         {
             session = manager.CurrentSession;
             SetupEvents();
-            _ = UpdateMedia();
+            UpdateMedia();
         }
 
         private void SetupEvents()
@@ -55,69 +55,77 @@ namespace Lively.PlayerWebView2.Services
             }
         }
 
-        private void MediaPlaybackDataChanged(object sender, MediaPlaybackDataChangedArgs e) => _ = UpdateMedia();
+        private void MediaPlaybackDataChanged(object sender, MediaPlaybackDataChangedArgs e) => UpdateMedia();
 
-        private async Task UpdateMedia()
+        private void UpdateMedia()
         {
-            await semaphoreSlimLock.WaitAsync();
-
-            try
+            if (session != null)
             {
-                if (session is not null)
+                lock (lockObject)
                 {
-                    var media = src.GetMediaObjectInfo();
-                    var mediaPlaybackInfo = src.GetMediaPlaybackInfo();
-                    using var thumbnail = src.GetThumbnailStream();
-
-                    switch (mediaPlaybackInfo.PlaybackState)
+                    try
                     {
-                        case MediaPlaybackState.Changing:
-                        case MediaPlaybackState.Stopped:
-                        case MediaPlaybackState.Playing:
-                        case MediaPlaybackState.Paused:
-                            {
-                                //ignore if title is missing
-                                if (string.IsNullOrEmpty(media.Title))
-                                    break;
+                        var media = src.GetMediaObjectInfo();
+                        var mediaPlaybackInfo = src.GetMediaPlaybackInfo();
+                        using var thumbnail = src.GetThumbnailStream();
+                        var thumbnailString = thumbnail is null ? null : CreateThumbnail(thumbnail);
 
-                                //update and fire if track changed or when albumart become available
-                                if ((model.Thumbnail is null && thumbnail is not null)
-                                    || (media.Title != model.Title && media.AlbumTitle != model.AlbumTitle))
+                        switch (mediaPlaybackInfo.PlaybackState)
+                        {
+                            case MediaPlaybackState.Playing:
+                            case MediaPlaybackState.Changing:
+                            case MediaPlaybackState.Opened:
+                            case MediaPlaybackState.Paused:
                                 {
-                                    model.AlbumArtist = media.AlbumArtist;
-                                    model.AlbumTitle = media.AlbumTitle;
-                                    model.AlbumTrackCount = (int)media.AlbumTrackCount;
-                                    model.Artist = media.Artist;
-                                    model.Genres = media.Genres?.ToList();
-                                    model.PlaybackType = MediaPlaybackDataSource.MediaSchemaToMediaPlaybackMode(media.MediaClassPrimaryID).ToString();
-                                    model.Subtitle = media.Subtitle;
-                                    model.Thumbnail = thumbnail is null ? null : CreateThumbnail(thumbnail);
-                                    model.Title = media.Title;
-                                    model.TrackNumber = (int)media.TrackNumber;
+                                    //ignore if title is missing
+                                    if (string.IsNullOrEmpty(media.Title))
+                                        break;
 
-                                    NowPlayingTrackChanged?.Invoke(this, model);
+                                    //Media playback started.
+                                    //Rough media changed check.
+                                    //Thumbnail available (stream becomes available.)
+                                    //Thumbnail updated (stream updated to latest art.)
+                                    if (model is null
+                                        || (media.Title != model.Title && media.Artist != model.Artist)
+                                        || (model.Thumbnail is null && thumbnailString != null)
+                                        || (model.Thumbnail != null && thumbnailString != null && !thumbnailString.Equals(model.Thumbnail)))
+                                    {
+                                        model = new NowPlayingEventArgs
+                                        {
+                                            AlbumArtist = media.AlbumArtist,
+                                            AlbumTitle = media.AlbumTitle,
+                                            AlbumTrackCount = (int)media.AlbumTrackCount,
+                                            Artist = media.Artist,
+                                            Genres = media.Genres?.ToList(),
+                                            PlaybackType = MediaPlaybackDataSource.MediaSchemaToMediaPlaybackMode(media.MediaClassPrimaryID).ToString(),
+                                            Subtitle = media.Subtitle,
+                                            Thumbnail = thumbnailString,
+                                            Title = media.Title,
+                                            TrackNumber = (int)media.TrackNumber
+                                        };
+                                        NowPlayingTrackChanged?.Invoke(this, model);
+                                    }
                                 }
-                            }
-                            break;
-                        case MediaPlaybackState.Unknown:
-                        case MediaPlaybackState.Closed:
-                        case MediaPlaybackState.Opened:
-                            break;
+                                break;
+                            case MediaPlaybackState.Closed:
+                            case MediaPlaybackState.Stopped:
+                            case MediaPlaybackState.Unknown:
+                                break;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine(ex);
                     }
                 }
-                else
+            }
+            else
+            {
+                lock (lockObject)
                 {
-                    model.Title = model.AlbumTitle = null;
-                    NowPlayingTrackChanged?.Invoke(this, null);
+                    model = null;
+                    NowPlayingTrackChanged?.Invoke(this, model);
                 }
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine(e.ToString());
-            }
-            finally
-            {
-                semaphoreSlimLock.Release();
             }
         }
 
