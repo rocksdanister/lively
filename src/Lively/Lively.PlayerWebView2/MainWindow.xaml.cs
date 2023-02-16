@@ -164,9 +164,6 @@ namespace Lively.PlayerWebView2
                     nowPlayingService.NowPlayingTrackChanged += (s, e) => {
                         try
                         {
-                            if (isPaused)
-                                return;
-
                             this.Dispatcher.Invoke(() =>
                             {
                                 //TODO: CefSharp CanExecuteJavascriptInMainFrame equivalent in webview
