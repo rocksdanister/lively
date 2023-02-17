@@ -12,6 +12,21 @@
         <ScrollViewer>
             <StackPanel Margin="10,5,10,5">
                 <controls:SettingsGroup x:Uid="AppearanceBehaviour">
+                    <InfoBar
+                        Margin="0,0,0,-2.5"
+                        VerticalAlignment="Top"
+                        IsClosable="False"
+                        IsOpen="True"
+                        Message="Development on hold"
+                        Severity="Error">
+                        <InfoBar.ActionButton>
+                            <HyperlinkButton NavigateUri="https://github.com/rocksdanister/lively/issues/1569" ToolTipService.ToolTip="https://github.com/rocksdanister/lively/issues/1569">
+                                <HyperlinkButton.Content>
+                                    <TextBlock x:Uid="TextLearnMore" TextWrapping="Wrap" />
+                                </HyperlinkButton.Content>
+                            </HyperlinkButton>
+                        </InfoBar.ActionButton>
+                    </InfoBar>
                     <controls:Setting x:Uid="TaskbarTheme" Icon="&#xE771;">
                         <controls:Setting.ActionContent>
                             <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedTaskbarThemeIndex, Mode=TwoWay}">
