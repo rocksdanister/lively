@@ -8,15 +8,11 @@
 #define MyAppExeName "Lively.exe"
 
 [CustomMessages]
-english.RunAtStartup=Start with Windows
-chinese.RunAtStartup=开机自启动
-russian.RunAtStartup=Включение с Windows
-spanish.RunAtStartup=Iniciar con Windows
-
 english.DeleteEverythigMsgBox=Do you want to delete data folder?
-chinese.DeleteEverythigMsgBox=Do you want to delete data folder?
-russian.DeleteEverythigMsgBox=Do you want to delete data folder?
-spanish.DeleteEverythigMsgBox=Do you want to delete data folder?
+russian.DeleteEverythigMsgBox=Вы хотите удалить папку данных?
+spanish.DeleteEverythigMsgBox=¿Desea eliminar la carpeta de datos?
+chinese.DeleteEverythigMsgBox=您要删除数据文件夹吗？
+korean.DeleteEverythigMsgBox=데이터 폴더를 삭제하시겠습니까?
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
@@ -55,14 +51,43 @@ UninstallDisplayIcon={app}\{#MyAppExeName}
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"; LicenseFile: "License\License.txt";
-Name: "chinese"; MessagesFile: "Setup Languages\ChineseSimplified.isl"
 Name: "russian"; MessagesFile: "compiler:Languages\Russian.isl";
 Name: "spanish"; MessagesFile: "compiler:Languages\Spanish.isl";
+Name: "japanese"; MessagesFile: "compiler:Languages\Japanese.isl";
+Name: "bulgarian"; MessagesFile: "compiler:Languages\Bulgarian.isl";
+Name: "catalan"; MessagesFile: "compiler:Languages\Catalan.isl";
+Name: "czech"; MessagesFile: "compiler:Languages\Czech.isl";
+Name: "dutch"; MessagesFile: "compiler:Languages\Dutch.isl";
+Name: "finnish"; MessagesFile: "compiler:Languages\Finnish.isl";
+Name: "french"; MessagesFile: "compiler:Languages\French.isl";
+Name: "german"; MessagesFile: "compiler:Languages\German.isl";
+Name: "hebrew"; MessagesFile: "compiler:Languages\Hebrew.isl";
+Name: "hungarian"; MessagesFile: "compiler:Languages\Hungarian.isl";
+Name: "italian"; MessagesFile: "compiler:Languages\Italian.isl";
+Name: "japanese"; MessagesFile: "compiler:Languages\Japanese.isl";
+Name: "norwegian"; MessagesFile: "compiler:Languages\Norwegian.isl";
+Name: "polish"; MessagesFile: "compiler:Languages\Polish.isl";
+Name: "ukrainian"; MessagesFile: "compiler:Languages\Ukrainian.isl";
+Name: "turkish"; MessagesFile: "compiler:Languages\Turkish.isl";
+Name: "brazilianportuguese"; MessagesFile: "compiler:Languages\BrazilianPortuguese.isl";
+Name: "portuguese"; MessagesFile: "compiler:Languages\Portuguese.isl";
+Name: "spanish"; MessagesFile: "compiler:Languages\Spanish.isl";
+Name: "turkish"; MessagesFile: "compiler:Languages\Turkish.isl";
+Name: "chinese"; MessagesFile: "Languages\ChineseSimplified.isl";
+Name: "traditionalchinese"; MessagesFile: "Languages\ChineseTraditional.isl";
+Name: "arabic"; MessagesFile: "Languages\Arabic.isl";
+Name: "vietnamese"; MessagesFile: "Languages\Vietnamese.isl";
+Name: "greek"; MessagesFile: "Languages\Greek.isl";
+Name: "indonesian"; MessagesFile: "Languages\Indonesian.isl";
+Name: "korean"; MessagesFile: "Languages\Korean.isl";
+Name: "swedish"; MessagesFile: "Languages\Swedish.isl";
+Name: "serbiancyrillic"; MessagesFile: "Languages\SerbianCyrillic.isl";
+Name: "serbianlatin"; MessagesFile: "Languages\SerbianLatin.isl";
 
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; 
 ;GroupDescription: "{cm:AdditionalIcons}"
-Name: "windowsstartup";Description: "{cm:RunAtStartup}" 
+Name: "windowsstartup";Description: "{cm:AutoStartProgram,{#MyAppName}}" 
 
 [Registry]
 ;current user only
