@@ -112,9 +112,9 @@ Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: de
 [Run]
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall; Check: AutoLaunch 
 ;skipifsilent
-Filename: "{tmp}\VC_redist.x86.exe"; Parameters: /install /quiet /norestart; Check: VCRedistNeedsInstall and DependencyInstall; StatusMsg: Installing Visual C++ Redistributable...
+Filename: "{tmp}\VC_redist.x86.exe"; Parameters: /install /quiet /norestart; Check: VCRedistNeedsInstall; StatusMsg: Installing Visual C++ Redistributable...
 ;Filename: "{tmp}\WindowsAppRuntimeInstall_x86.exe"; Parameters: --quiet; Check: DependencyInstall; Flags: runhidden; StatusMsg: Installing Windows App SDK...
-Filename: "{tmp}\windowsdesktop-runtime-7.0.0-win-x86.exe"; Parameters: /install /quiet /norestart; Check: NetCoreNeedsInstall('7.0.0') and DependencyInstall;  StatusMsg: Installing .Net Core 7.0.0...
+Filename: "{tmp}\windowsdesktop-runtime-7.0.0-win-x86.exe"; Parameters: /install /quiet /norestart; Check: NetCoreNeedsInstall('7.0.0');  StatusMsg: Installing .Net Core 7.0.0...
 
 [Code]
 var
@@ -287,11 +287,6 @@ begin
       Result := False;
       Exit;
     end;
-end;
-
-function DependencyInstall(): Boolean;
-begin
-  Result := CmdLineParamNotExists('/NODEPENDENCIES');
 end;
 
 function AutoLaunch(): Boolean;
