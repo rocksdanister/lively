@@ -28,6 +28,8 @@ namespace Lively.PlayerWebView2.Services
 
         public NpsmNowPlayingService() { }
 
+        public NowPlayingEventArgs CurrentTrack => model;
+
         public void Start()
         {
             manager.SessionListChanged += SessionListChanged;
