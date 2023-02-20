@@ -212,6 +212,7 @@ namespace Lively
             _ = appUpdater.CheckUpdate();
             appUpdater.Start();
 #endif
+            Debug.WriteLine("App Update checking disabled in DEBUG mode.");
         }
 
         private IServiceProvider ConfigureServices()

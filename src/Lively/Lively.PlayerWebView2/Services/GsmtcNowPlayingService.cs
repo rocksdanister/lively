@@ -38,6 +38,8 @@ namespace Services
             };
         }
 
+        public NowPlayingEventArgs CurrentTrack => model;
+
         public void Start() => _timer?.Start();
 
         public void Stop() => _timer?.Stop();

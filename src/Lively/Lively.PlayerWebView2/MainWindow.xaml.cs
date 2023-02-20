@@ -164,6 +164,9 @@ namespace Lively.PlayerWebView2
                     nowPlayingService.NowPlayingTrackChanged += (s, e) => {
                         try
                         {
+                            if (isPaused)
+                                return;
+
                             this.Dispatcher.Invoke(() =>
                             {
                                 //TODO: CefSharp CanExecuteJavascriptInMainFrame equivalent in webview
@@ -262,15 +265,29 @@ namespace Lively.PlayerWebView2
                                             if (startArgs.PauseEvent && !isPaused)
                                             {
                                                 //TODO: check if js context ready
-                                                _ = ExecuteScriptFunctionAsync("livelyWallpaperPlaybackChanged", JsonConvert.SerializeObject(new WallpaperPlaybackState() { IsPaused = true }), Formatting.Indented);
+                                                _ = ExecuteScriptFunctionAsync("livelyWallpaperPlaybackChanged",
+                                                    JsonConvert.SerializeObject(new WallpaperPlaybackState() { IsPaused = true }),
+                                                    Formatting.Indented);
                                             }
                                             isPaused = true;
                                             break;
                                         case MessageType.cmd_resume:
-                                            if (startArgs.PauseEvent && isPaused)
+                                            if (isPaused)
                                             {
-                                                //TODO: check if js context ready
-                                                _ = ExecuteScriptFunctionAsync("livelyWallpaperPlaybackChanged", JsonConvert.SerializeObject(new WallpaperPlaybackState() { IsPaused = false }), Formatting.Indented);
+                                                if (startArgs.PauseEvent)
+                                                {
+                                                    //TODO: check if js context ready
+                                                    _ = ExecuteScriptFunctionAsync("livelyWallpaperPlaybackChanged",
+                                                        JsonConvert.SerializeObject(new WallpaperPlaybackState() { IsPaused = false }),
+                                                        Formatting.Indented);
+                                                }
+                                                
+                                                if (startArgs.NowPlaying)
+                                                {
+
+                                                    //TODO: CefSharp CanExecuteJavascriptInMainFrame equivalent in webview
+                                                    _ = ExecuteScriptFunctionAsync("livelyCurrentTrack", JsonConvert.SerializeObject(nowPlayingService?.CurrentTrack, Formatting.Indented));
+                                                }
                                             }
                                             isPaused = false;
                                             break;
