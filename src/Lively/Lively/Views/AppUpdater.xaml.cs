@@ -39,7 +39,7 @@ namespace Lively.Views
             {
                 downloadBtn.IsEnabled = false;
                 this.Title = Properties.Resources.TextupdateCheckFail;
-                changelog.Document.Blocks.Add(new Paragraph(new Run(Properties.Resources.LivelyExceptionAppUpdateFail)));
+                changelog.Markdown = Properties.Resources.LivelyExceptionAppUpdateFail;
             }
         }
 
@@ -72,8 +72,7 @@ namespace Lively.Views
                 else
                 {
                     taskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Error;
-                    changelog.Document.Blocks.Clear();
-                    changelog.Document.Blocks.Add(new Paragraph(new Run(Properties.Resources.LivelyExceptionAppUpdateFail)));
+                    changelog.Markdown = Properties.Resources.LivelyExceptionAppUpdateFail;
                     _forceClose = true;
                 }
             }));
@@ -131,8 +130,7 @@ namespace Lively.Views
                 {
                     Logger.Error(ex);
                     taskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Error;
-                    changelog.Document.Blocks.Clear();
-                    changelog.Document.Blocks.Add(new Paragraph(new Run(Properties.Resources.LivelyExceptionAppUpdateFail)));
+                    changelog.Markdown = Properties.Resources.LivelyExceptionAppUpdateFail;
                     _forceClose = true;
                 }
             }
