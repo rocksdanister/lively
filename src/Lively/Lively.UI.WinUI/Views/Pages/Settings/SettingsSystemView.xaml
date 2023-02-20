@@ -17,7 +17,7 @@
                         VerticalAlignment="Top"
                         IsClosable="False"
                         IsOpen="True"
-                        Message="Development on hold"
+                        Message="This feature development is on hold"
                         Severity="Error">
                         <InfoBar.ActionButton>
                             <HyperlinkButton NavigateUri="https://github.com/rocksdanister/lively/issues/1569" ToolTipService.ToolTip="https://github.com/rocksdanister/lively/issues/1569">
