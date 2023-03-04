@@ -126,6 +126,20 @@ namespace Lively.Automation
             {
                 //TODO
             }
+
+            if (!string.IsNullOrEmpty(opts.WallpaperArrangement))
+            {
+                desktopCore.CloseAllWallpapers();
+                userSettings.Settings.WallpaperArrangement = opts.WallpaperArrangement switch
+                {
+                    "per" => WallpaperArrangement.per,
+                    "span" => WallpaperArrangement.span,
+                    "duplicate" => WallpaperArrangement.duplicate,
+                    _ => WallpaperArrangement.per,
+                };
+                userSettings.Save<ISettingsModel>();
+            }
+
             return 0;
         }
 
