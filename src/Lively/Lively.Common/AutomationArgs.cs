@@ -51,6 +51,11 @@ namespace Lively.Common
             Required = false,
             HelpText = "Quit and relaunch application.")]
             public bool? RestartApp { get; set; }
+
+            [Option("layout",
+            Required = false,
+            HelpText = "Set wallpaper placement method (per, span or duplicate).")]
+            public string WallpaperArrangement { get; set; }
         }
 
         [Verb("setwp", HelpText = "Apply wallpaper.")]
