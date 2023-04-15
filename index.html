@@ -1,343 +1,394 @@
 <!DOCTYPE html>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r95/three.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.16/vanta.waves.min.js"></script>
-<!--
-	Hyperspace by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
   <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <!--
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-160230230-1"></script>
-		<script>
-		  window.dataLayer = window.dataLayer || [];
-		  function gtag(){dataLayer.push(arguments);}
-		  gtag('js', new Date());
-		  gtag('config', 'UA-160230230-1');
-		</script>
-		-->
-
-    <!-- Plausible analytics -->
-    <script data-goatcounter="https://rocksdanister.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <title>Lively Wallpaper by rocksdanister</title>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, user-scalable=no"
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;400;600;700&display=swap"
+      rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <noscript
-      ><link rel="stylesheet" href="assets/css/noscript.css"
-    /></noscript>
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/controls.css" />
+    <meta charset="utf-8" />
   </head>
+  <body>
+    <!-- background -->
+    <div id="container" class="container"></div>
+    <input id="filePicker" type="file" accept=".jpg, .jpeg, .png, .mp4, .webm" style="visibility: hidden" />
 
-  <body class="is-preload">
-    <!-- Sidebar -->
-    <section id="sidebar">
-      <div class="inner">
-        <nav>
-          <ul>
-            <li><a href="#intro">Welcome</a></li>
-            <li><a href="#one">About</a></li>
-            <li><a href="#two">Features</a></li>
-            <li><a href="#three">Download</a></li>
-          </ul>
-        </nav>
-      </div>
-    </section>
-
-    <!-- Wrapper -->
-    <div id="wrapper">
-      <!-- Intro -->
-      <section id="intro" class="wrapper style1 fullscreen fade-up">
-        <div class="inner">
-          <div style="position: relative; left: -2.5%">
-            <img class="imageRotate" src="images\logo.png" alt="logo" />
-            <h1>Lively Wallpaper</h1>
-          </div>
-          <p>
-            Animated desktop wallpapers, bring your desktop to life!<br />
-            Lively is a Free and Open Source Software (FOSS)
-            <a href="https://github.com/rocksdanister/lively">Project.</a>
-          </p>
-          <ul class="actions">
-            <li><a href="#three" class="button scrolly">Download</a></li>
-          </ul>
-          <img
-            class="award"
-            src="images/runner_up_light.png"
-            alt="Microsoft Store Community Choice Runner Up"
-          />
-        </div>
-      </section>
-
-      <script>
-        const effect = VANTA.WAVES({
-          el: "#intro",
-          mouseControls: true,
-          touchControls: true,
-          minHeight: 400.0,
-          minWidth: 400.0,
-          scale: 1.0,
-          scaleMobile: 1.0,
-          waveHeight: 20.0,
-          color: 0x50409a,
-          waveSpeed: 0.5,
-        });
-        //horizon scrollbar fix... sort of.
-        window.onload = function () {
-          window.dispatchEvent(new Event("resize"));
-        };
-      </script>
-
-      <!-- One -->
-      <section id="one" class="wrapper style2 spotlights">
-        <section>
-          <div class="content">
-            <div class="inner">
-              <h2>What is it?</h2>
-              <p>
-                Lively is a Free and Open-Source Software (FOSS) for animated
-                desktop wallpapers.
-              </p>
-              <iframe
-                width="854"
-                height="360"
-                src="https://www.youtube.com/embed/6fyA4pIux3w"
-                frameborder="0"
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-                style="
-                  width: 100%;
-                  width: -moz-available;
-                  width: -webkit-fill-available;
-                  max-width: 840px;
-                  height: 50vh;
-                "
-              ></iframe>
-              <iframe
-                width="854"
-                height="360"
-                src="https://www.youtube.com/embed/sU20riug44Y"
-                frameborder="0"
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-                style="
-                  width: 100%;
-                  width: -moz-available;
-                  width: -webkit-fill-available;
-                  max-width: 840px;
-                  height: 50vh;
-                "
-              ></iframe>
-            </div>
-          </div>
-        </section>
-      </section>
-
-      <!-- Two -->
-      <section id="two" class="wrapper style3 fade-up">
-        <div class="inner">
-          <h2>How is it?</h2>
-          <div class="features">
-            <section>
-              <span class="fab animate major fa-github"></span>
-              <h3>FOSS</h3>
-              <p>
-                Lively is Free and Open Source Software, no features are behind
-                a paywall; everything is made for the community with love <3.
-              </p>
-            </section>
-            <section>
-              <span class="fas icon solid major fa-power-off"></span>
-              <h3>Silent</h3>
-              <p>
-                Wallpaper playback pauses when fullscreen applications/games are
-                running (~0% resource usage.)
-              </p>
-            </section>
-            <section>
-              <span class="fas icon solid major fa-palette"></span>
-              <h3>Customisable</h3>
-              <p>
-                Use dynamic & interactive webpages, 3D applications, audio
-                visualisers as wallpapers.
-              </p>
-            </section>
-            <section>
-              <span class="fas icon solid major fa-desktop"></span>
-              <h3>Multiple Screens</h3>
-              <p>
-                Supports multiple monitors, HiDPI resolutions, Ultrawide aspect
-                ratios and many more.
-              </p>
-            </section>
-            <section>
-              <span class="fas icon solid major fa-hands-helping"></span>
-              <h3>Simple</h3>
-              <p>
-                User experience focused, Just drop videos & webpages into lively
-                window to set as wallpaper.
-              </p>
-            </section>
-            <section>
-              <span class="fas icon major fa-gem"></span>
-              <h3>Feature Packed</h3>
-              <p>
-                Stream wallpapers, Automatic tile generation, Multiple video
-                players, Performance settings and more...
-              </p>
-            </section>
-          </div>
-          <ul class="actions">
-            <li>
-              <a
-                href="https://github.com/rocksdanister/lively#features"
-                class="button"
-                >Learn more</a
-              >
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- Three -->
-      <section id="three" class="wrapper style1 fade-up">
-        <div class="inner">
-          <h2>Download</h2>
-          <div class="split style1">
-            <section>
-              <ul class="actions">
-                <li style="text-align: left">
-                  <h4>v2.0.6.1</h4>
-                  <script
-                    type="module"
-                    src="https://get.microsoft.com/badge/ms-store-badge.bundled.js"
-                  ></script>
-                  <ms-store-badge
-                    productid="9NTM2QC6QWS7"
-                    size="large"
-                    theme="dark"
-                  ></ms-store-badge>
-                </li>
-                <li style="flex-basis: 100%; height: 1rem"></li>
-                <li class="DownloadBtn">
-                  <!--<h4>v1.7.5.2 (old)</h4>-->
-                  <a
-                    href="https://github.com/rocksdanister/lively/releases/download/v2.0.6.1/lively_setup_x86_full_v2061.exe"
-                    class="button submit"
-                  >
-                    <i class="fas fa-download"></i>
-                    <span title="Installer">Installer</span>
-                  </a>
-                </li>
-              </ul>
-              <!--
-									<p><a href="https://github.com/rocksdanister/lively/releases">What's new? Changelog</a></p>
-									<p><a href="https://github.com/rocksdanister/lively/wiki/Differences-Between-Distributions">Which file should I download?</a></p>
-									<p>Installer will give Smartscreen warning, <a href="https://github.com/rocksdanister/lively/issues/9">discussion.</a></p>
-									-->
-                  <a href="https://github.com/rocksdanister/lively/releases"
-                >See what's new or download older releases.</a
-              >
-              <p>You can help Lively reach a wider audience!
-              <a href="https://crwd.in/lively-wallpaper"
-                >help translate.</a
-              ></p>
-              <h4>System Requirement</h4>
-              <p>
-                OS: Windows 10 1903 or above <br />
-                Processor: Intel i3 or equivalent<br />
-                Memory: 2048 MB RAM<br />
-                Graphics: HD Graphics 3000 or above<br />
-                DirectX: Version 10 or above<br />
-                Storage: 1GB available space
-              </p>
-            </section>
-            <section>
-              <ul class="contact">
-                <li>
-                  <img
-                    src="https://avatars.githubusercontent.com/rocksdanister"
-                    style="width: 200px; border-radius: 50%"
-                  />
-                </li>
-                <li>
-                  <h3>Dani John</h3>
-                  <div>Just a programmer who loves learning new things.</div>
-                </li>
-                <li>
-                  <h3>Email</h3>
-                  <a href="mailto: awoo.git@gmail.com">awoo.git@gmail.com</a>
-                </li>
-                 <li>
-                  <h3>Website</h3>
-                  <a href="https://www.rocksdanister.com/">rocksdanister.com</a>
-                </li>
-                <li>
-                  <h3>Socials</h3>
-                  <ul class="icons">
-                    <li>
-                      <a
-                        href="https://github.com/rocksdanister"
-                        class="icon brands fa-github"
-                        ><span class="label">GitHub</span></a
-                      >
-                    </li>
-                    <li>
-                      <a
-                        href="https://www.youtube.com/channel/UClep84ofxC41H8-R9UfNPSQ"
-                        class="icon brands fa-youtube"
-                        ><span class="label">Twitter</span></a
-                      >
-                    </li>
-                    <li>
-                      <a
-                        href="https://www.reddit.com/r/LivelyWallpaper/"
-                        class="icon brands fa-reddit"
-                        ><span class="label">Reddit</span></a
-                      >
-                    </li>
-                    <!--<li><a href="https://discord.gg/TwwtBCm" class="icon brands fa-discord"><span class="label">Discord</span></a></li>-->
-                    <li>
-                      <a
-                        href="https://twitter.com/rocksdanister"
-                        class="icon brands fa-twitter"
-                        ><span class="label">Twitter</span></a
-                      >
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </section>
-          </div>
-        </div>
-      </section>
+    <div class="indeterminate-progress-bar">
+      <div class="indeterminate-progress-bar__progress"></div>
     </div>
 
-    <!-- Footer -->
-    <footer id="footer" class="wrapper style1-alt">
-      <div class="inner">
-        <ul class="menu">
-          <li>Rocksdanister. All rights reserved.</li>
-          <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+    <!-- navigation -->
+    <div class="nav">
+      <div>
+        <img src="assets/logo.webp" alt="Logo" />
+        <h4>Lively Wallpaper</h4>
+      </div>
+      <div>
+        <ul>
+          <li>
+            <a text="Home" class="active">Home</a>
+          </li>
+          <li>
+            <a text="Magic" onClick="scrollToElement('page-home');">Magic</a>
+          </li>
+          <li>
+            <a text="Features" onClick="scrollToElement('page-features');">Features</a>
+          </li>
+          <li>
+            <a text="Gallery" onClick="scrollToElement('page-gallery');">Gallery</a>
+          </li>
+          <li>
+            <a text="Download" onClick="scrollToElement('page-download');">Download</a>
+          </li>
         </ul>
       </div>
-    </footer>
+    </div>
 
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="assets/js/jquery.scrollex.min.js"></script>
-    <script src="assets/js/jquery.scrolly.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
+    <!-- home -->
+    <div id="page-home">
+      <div class="heading">
+        <div>
+          <img src="assets/logo.webp" width="125" class="logo" />
+          <h1>Lively Wallpaper</h1>
+          <h3>Animated desktop wallpapers, bring your desktop to life!</h3>
+          <p>
+            Lively is a Free and Open Source Software (FOSS)
+            <a href="https://github.com/rocksdanister/lively" title="https://github.com/rocksdanister/lively"
+              >Project</a
+            >
+          </p>
+          <button class="acrylic-button" onClick="scrollToElement('page-download');"><span>Download</span></button>
+        </div>
+      </div>
+      <!-- ui -->
+      <div class="ui-app">
+        <!-- app wallpaper library -->
+        <div id="ui-app-library">
+          <!-- <div class="down-arrow" onClick="scrollToElement('page-home');"></div> -->
+          <div id="ui-app-titlebar">
+            <img src="assets/logo.webp" />
+            <a>Lively Wallpaper</a>
+          </div>
+          <img src="assets/app.webp" class="ui-app-img" />
+          <ul id="wallpapers" class="wallpapers">
+            <li id="rain" class="library">
+              <img src="assets/rain_preview.webp" style="outline: 2.5px solid #a425a0" width="600" height="400" />
+              <div>Rain</div>
+            </li>
+
+            <li id="snow" class="library">
+              <img src="assets/snow_preview.webp" width="600" height="400" />
+              <div>Snow</div>
+            </li>
+
+            <li id="synthwave" class="library">
+              <img src="assets/synthwave_preview.webp" width="600" height="400" />
+              <div>Synthwave</div>
+            </li>
+
+            <!-- <li id="clouds" class="library">
+              <img src="assets/clouds_preview.webp" width="600" height="400" />
+              <div>Cloud</div>
+            </li> -->
+          </ul>
+        </div>
+
+        <!-- app wallpaper customise -->
+        <div id="ui-app-customise">
+          <div id="ui-app-customize-heading" style="position: absolute; top: -175px; left: 15px; opacity: 0">
+            <h1>It's Magic</h1>
+            <h3>Anything is possible, go on try it..</h3>
+          </div>
+          <img src="assets/app_dialog.webp" class="ui-app-dialog-img" />
+          <div id="ui-app-customise-controls">
+            <div id="ui-app-customise-controls-test" style="display: none">
+              <p class="slider-label">Size</p>
+              <input style="background-size: 40% 100%" type="range" min="0" max="1" value="0.4" step="0.01" />
+              <br />
+              <div class="dropdown">
+                <button class="dropbtn">Dropdown</button>
+                <div class="dropdown-content">
+                  <a>Link 1</a>
+                  <a>Link 2</a>
+                  <a>Link 3</a>
+                </div>
+              </div>
+              <br />
+              <button class="fluent-button">Click Me</button>
+              <br />
+              <div>
+                <input type="checkbox" name="vox" checked />
+                <label class="checkbox-label">Check</label>
+              </div>
+            </div>
+
+            <div id="ui-app-customise-controls-rain">
+              <p class="slider-label">Intensity</p>
+              <input
+                style="background-size: 40% 100%"
+                type="range"
+                min="0"
+                max="1"
+                value="0.4"
+                step="0.01"
+                oninput="setProperty('u_intensity',this.value)"
+              />
+              <p class="slider-label">Size</p>
+              <input
+                style="background-size: 13% 100%"
+                type="range"
+                min="0.1"
+                max="3"
+                value="0.39"
+                step="0.01"
+                oninput="setProperty('u_zoom',3 - this.value)"
+              />
+              <p class="slider-label">Speed</p>
+              <input
+                style="background-size: 2.5% 100%"
+                type="range"
+                min="0"
+                max="10"
+                value="0.25"
+                step="0.01"
+                oninput="setProperty('u_speed',this.value)"
+              />
+              <br />
+              <div class="dropdown">
+                <button class="dropbtn">Change background</button>
+                <div class="dropdown-content">
+                  <a onclick="setTexture('u_tex0', 'media/rain_mountain.webp')">Moutain.jpg</a>
+                  <a onclick="setTexture('u_tex0', 'media/rain_forest.webp')">Forest.jpg</a>
+                  <a onclick="openFilePicker()">Custom</a>
+                </div>
+              </div>
+              <!-- <button class="fluent-button" onclick="openFilePicker()">Change background</button> -->
+              <div>
+                <input type="checkbox" unchecked onchange="setProperty('u_lightning',this.checked ? true : false)" />
+                <label class="checkbox-label">Lightning</label>
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  checked
+                  onchange="setProperty('u_post_processing',this.checked ? true : false)"
+                />
+                <label class="checkbox-label">Post processing</label>
+              </div>
+            </div>
+
+            <div id="ui-app-customise-controls-snow" style="display: none">
+              <!-- <p class="slider-label">Layers</p>
+              <input
+                style="background-size: 25% 100%"
+                type="range"
+                min="0"
+                max="200"
+                value="50"
+                step="1"
+                oninput="setProperty('u_layers',this.value)"
+              /> -->
+              <p class="slider-label">Depth</p>
+              <input
+                style="background-size: 50% 100%"
+                type="range"
+                min="0"
+                max="2"
+                value="1.0"
+                step="0.01"
+                oninput="setProperty('u_depth',this.value)"
+              />
+              <p class="slider-label">Width</p>
+              <input
+                style="background-size: 15% 100%"
+                type="range"
+                min="0"
+                max="2"
+                value="0.3"
+                step="0.01"
+                oninput="setProperty('u_width',this.value)"
+              />
+              <p class="slider-label">Speed</p>
+              <input
+                style="background-size: 30% 100%"
+                type="range"
+                min="0"
+                max="2"
+                value="0.6"
+                step="0.01"
+                oninput="setProperty('u_speed',this.value)"
+              />
+              <br />
+              <div class="dropdown">
+                <button class="dropbtn">Change background</button>
+                <div class="dropdown-content">
+                  <a onclick="setTexture('u_tex0', 'media/snow_landscape.webp')">Landscape.jpg</a>
+                  <a onclick="setTexture('u_tex0', 'media/snow_river.webp')">River.jpg</a>
+                  <a onclick="openFilePicker()">Custom</a>
+                </div>
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  checked
+                  onchange="setProperty('u_post_processing',this.checked ? true : false)"
+                />
+                <label class="checkbox-label">Post processing</label>
+              </div>
+            </div>
+
+            <div id="ui-app-customise-controls-synthwave" style="display: none">
+              <p class="slider-label">Draw</p>
+              <input
+                style="background-size: 50% 100%"
+                type="range"
+                min="0"
+                max="2"
+                value="1.0"
+                step="0.01"
+                oninput="setProperty('u_draw',this.value)"
+              />
+              <p class="slider-label">Plane</p>
+              <input
+                style="background-size: 70% 100%"
+                type="range"
+                min="0"
+                max="1"
+                value="0.7"
+                step="0.01"
+                oninput="setProperty('u_plane',this.value)"
+              />
+              <p class="slider-label">Sun</p>
+              <input
+                style="background-size: 50% 100%"
+                type="range"
+                min="0"
+                max="1"
+                value="0.5"
+                step="0.01"
+                oninput="setProperty('u_sun',this.value)"
+              />
+              <br />
+              <div>
+                <input type="checkbox" unchecked onchange="setProperty('u_crt_effect',this.checked ? true : false)" />
+                <label class="checkbox-label">CRT</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- features -->
+    <div id="page-features">
+      <h2>Features</h2>
+      <p>Ultrawide or multiple monitors? no problem..</p>
+      <ul class="cards">
+        <li class="card">
+          <img src="assets/icons/github.svg" class="white-filter" />
+          <div>Open Source</div>
+          <p>Free and Open Source Software (FOSS.) <br />Made by the community for the community <3</p>
+        </li>
+
+        <li class="card">
+          <img src="assets/icons/gauge-high.svg" class="white-filter" />
+          <div>Performance</div>
+          <p>Wallpaper pauses (~0% usage) when running fullscreen games or application</p>
+        </li>
+
+        <li class="card">
+          <img src="assets/icons/rocket.svg" class="white-filter" />
+          <div>Modern & Friendly</div>
+          <p>Latest Windows 11 design and friendly user experience</p>
+        </li>
+
+        <li class="card">
+          <img src="assets/icons/toolbox.svg" class="white-filter" />
+          <div>Tools</div>
+          <p>Create music visualizers, widgets and much more using rich wallpaper development tools</p>
+        </li>
+      </ul>
+      <a>
+        Want to learn more?
+        <a
+          href="https://github.com/rocksdanister/lively#features"
+          title="https://github.com/rocksdanister/lively#features"
+          target="_blank"
+          >click here</a
+        >
+      </a>
+    </div>
+
+    <!-- gallery -->
+    <div id="page-gallery">
+      <h2>Gallery</h2>
+      <p>Here are some cool desktops..</p>
+      <div class="gallery-container">
+        <div class="gallery-wrap">
+          <div class="item item-1" data-delayedsrc="url(assets/promo/gallery1.webp)"><p>Fluid Simulation</p></div>
+          <div class="item item-2" data-delayedsrc="url(assets/promo/gallery2.webp)"><p>Music TV</p></div>
+          <div class="item item-3" data-delayedsrc="url(assets/promo/gallery3.webp)"><p>The Great Wave</p></div>
+          <div class="item item-4" data-delayedsrc="url(assets/promo/gallery4.webp)"><p>Simple System</p></div>
+          <div class="item item-5" data-delayedsrc="url(assets/promo/gallery5.webp)"><p>Synthwave</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- download -->
+    <div id="page-download">
+      <h2>Ready to get started?</h2>
+      <div>
+        <ms-store-badge productid="9NTM2QC6QWS7" size="large" theme="dark" animation="on"></ms-store-badge>
+      </div>
+      <div>
+        <button class="download-button">
+          <a href="https://github.com/rocksdanister/lively/releases/download/v2.0.6.1/lively_setup_x86_full_v2061.exe">
+            <img src="assets/icons/download.svg" class="white-filter" />
+            <h1>Installer</h1>
+          </a>
+        </button>
+        <br />
+        <a
+          >Want to see what's new?
+          <a
+            href="https://github.com/rocksdanister/lively/releases"
+            title="https://github.com/rocksdanister/lively/releases"
+            target="_blank"
+            >click here</a
+          ></a
+        >
+      </div>
+    </div>
+
+    <div id="footer">
+      <div>
+        <img src="https://avatars.githubusercontent.com/rocksdanister" class="avatar" />
+        <h4>Dani John</h4>
+        <a href="mailto: awoo.git@gmail.com">awoo.git@gmail.com</a>
+        <br />
+        <a href="https://www.rocksdanister.com/">rocksdanister.com</a>
+      </div>
+      <div id="footer-attribution">
+        <a>Rocksdanister | <a href="https://github.com/rocksdanister/lively-webpage" target="_blank">Attribution</a></a>
+      </div>
+    </div>
   </body>
+  <script type="module" src="https://get.microsoft.com/badge/ms-store-badge.bundled.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.151.3/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.9/dat.gui.min.js"></script>
+  <!-- load in this order -->
+  <script src="js/controls.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/index.js"></script>
+  <!-- analytics -->
+  <!-- <script data-goatcounter="https://rocksdanister.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script> -->
 </html>

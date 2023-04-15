@@ -1,86 +1,59 @@
 <!DOCTYPE HTML>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r95/three.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.16/vanta.waves.min.js"></script>
-<!--
-	Hyperspace by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
 	<head>
-		<!-- Global site tag (gtag.js) - Google Analytics -->
-		<!--
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-160230230-1"></script>
-		<script>
-		  window.dataLayer = window.dataLayer || [];
-		  function gtag(){dataLayer.push(arguments);}
-		  gtag('js', new Date());
-		  gtag('config', 'UA-160230230-1');
-		</script>
-		-->
-		<link rel="shortcut icon" href="/lively/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="/lively/favicon.ico" type="image/x-icon">
 		<title>Lively Wallpaper Attributions</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="/lively/assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="/lively/assets/css/noscript.css" /></noscript>
 	</head>
+  <style>
+    body
+    {
+      background: #5e42a6;
+    }
 
-	<body class="is-preload">
-		<!-- Sidebar -->
-			<section id="sidebar">
-				<div class="inner">
-					<nav>
-						<ul>
-							<li><a href="#intro" onclick="window.location.href='/lively'">Home</a></li>
-              <li><a href="#table">Table Of Contents</a></li>
-              <li><a href="#disclaimer">Disclaimer</a></li>
-              <li><a href="#translation">Translations</a></li>
-              <li><a href="#articons">Art & Icons</a></li>
-              <li><a href="#attribution">Licenses & Attributions</a></li>
-						</ul>
-					</nav>
-				</div>
-			</section>
+    h1, h2, li
+    {
+      color: white;
+    }
 
-      
+    p, a, b
+    {
+      color: rgb(225, 225, 225);
+    }
 
+    license {
+      color: white;
+      display: block;
+      max-width: 100%;
+      min-width: 100px;
+      padding: 25px;
+      margin: 0px 50px 50px 50px;
+      text-align: center;
+      white-space: pre-line;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 0.25em;
+      border: solid 1px rgba(255, 255, 255, 0.15);
+      font-family: "Courier New", monospace;
+      font-size: 0.9em;
+    }
+
+    .inner {
+      text-align: center;
+    }
+  </style>
+
+	<body>
 		<!-- Wrapper -->
 			<div id="wrapper">
 
-        <section id="intro" class="wrapper style1 fullscreen fade-up">
-          <div class="inner">
-            <div style="position: relative; left: -2.5%;">
-              <img class="imageRotate" src="/lively/images/logo.png" alt="logo" />
-              <h1 >Lively Wallpaper</h1>
-            </div>
-            <p>Third party software notice and attributions</p>
-          </div>
+        <section id="intro" >
+          <h1 >Lively Wallpaper</h1>
+          <p>Third party software notice and attributions.</p>
         </section>
-
-        <script>
-        const effect = VANTA.WAVES({
-          el: "#intro",
-          mouseControls: true,
-          touchControls: true,
-          minHeight: 400.00,
-          minWidth: 400.00,
-          scale: 1.00, 
-          scaleMobile: 1.00,
-          waveHeight: 20.0,
-          color: 0x50409a,
-          waveSpeed: 0.50,
-        })
-        //horizon scrollbar fix... sort of.
-        window.onload = function() {
-          window.dispatchEvent(new Event('resize'));
-          };
-        </script>
+        
 				<!-- One -->
-					<section id="table" class="wrapper style2 spotlights fade-up">
-            <div class="inner">
+					<section id="table" >
+            <div >
               <h2>Table Of Contents</h2>
               <ul style="list-style: none;" id="content">
                 <li><a href="#disclaimer">Disclaimer</a></li>
@@ -123,91 +96,36 @@
                   </ul>
                 </li>
               </ul>
-              <p>Thank you to everyone that made Lively possible <3</p>
             </div>
           </section>
 
-          <section class="wrapper style1 spotlights fade-up" id="disclaimer">		
-            <div class="inner" class="scrolly"> 
+          <section id="disclaimer">		
+            <div class="inner" > 
               <h2>Disclaimer</h2>
               <div>
-                <license style="text-align: left; padding-left: 2rem;">
+                <license >
                   These materials are not sponsored by or affiliated with Unity Technologies or its affiliates. “Unity” is a trademark or registered trademark of Unity Technologies or its affiliates in the U.S. and elsewhere.
                 </license>
               </div>
             </div>
           </section>
 
-          <section class="wrapper style2 spotlights fade-up" id="translation">		
-            <div class="inner" class="scrolly"> 
+          <section  id="translation">		
+            <div class="inner" > 
               <h2>Translations</h2>
               <div>
                 <license>
-                  Ben Albrecht (German)
-                  Caio Marques (Brazilian Portuguese)
-                  David Surenyan (Russian)
-                  Felipespindola
-                  Frnx91 (Filipino)
-                  Hui Shao (Chinese)
-                  Interity (Italian)
-                  Jaehyung Lee (Korean) - <a href="http://www.kolanp.com" target="_blank">http://www.kolanp.com</a>
-                  João Branco (Portuguese)
-                  Makabeusz Orban(Polish)
-                  Mosab Ashraf (Arabic)
-                  Németh Olivér András (Hungarian)
-                  Orest Kostruba (Ukrainian)
-                  Philip Sjöblom (Swedish)
-                  Shai Léger
-                  SserVeG
-                  Tugdual Meeus (French)
-                  ANotThrowawayKonto (Malay)
-                  Lulucmy
-                  Marieau (Dutch)
-                  Zoriot
-                  ShaneVu (Vietnamese)
-                  Arthur (Catalan)
-                  Atakan Suslu (Turkish)
-                  Lesevic (Serbian)
-                  Pekatour
-                  Lavuan (Bahasa Indonesia)
-                  Kaiyohugo
-                  EnderLXXVII (Italian)
-                  Dimitris Psirrakis (Greek)
-                  Westor
-                  BobbyESP
-                  Sébastien OUDRY
-                  Gillian Titor
-                  Laís Chaves
-                  Fizzy Bubbele
-                  FireBlast
-                  Sebastian (Hindi)
-                  Rayr (Persian)
-                  Abdulkarim Aljubouri (Arabic)
-                  Dawid Izydor (Polish)
-                  Piotr (Polish)
-                  Snhun (Chinese)
-                  PlayDay3008 (Ukrainian)
-                  Leviolet (Chinese)
-                  Jeremia49 (Indonesian)
-                  GaryNLOL (Spanish)
-                  uDEV2019 (German)
-                  TragicLifeHu (Chinese)
-                  Amit Pinto (Hebrew)
-                  Haruka-San03 (Spanish)
-                  PC-CNT (Japanese)
-                  Derfire (French)
-                  Sha&#x2019;an Aliyev (Azerbaijani)
-
+                  Thanks to all translation members: <a href="https://crowdin.com/project/lively-wallpaper" target="_blank">https://crowdin.com/project/lively-wallpaper</a>
                 </license>
               </div>
             </div>
           </section>
 
-          <section class="wrapper style3 spotlights fade-up" id="articons">		
-            <div class="inner" class="scrolly"> 
+          <section  id="articons">		
+            <div class="inner" > 
               <h2>Art & Icons</h2>
               <div>
-                <license style="text-align: left; padding-left: 2rem;">
+                <license >
                   Art by Wayne Banner: <a href="https://waynebanner.artstation.com/" target="_blank">https://waynebanner.artstation.com</a>
                   Icons by icons8: <a href="https://icons8.com/" target="_blank">https://icons8.com</a>
                 </license>
@@ -215,8 +133,8 @@
             </div>
           </section>
 
-          <section class="wrapper style2 spotlights fade-up" id="attribution">		
-            <div class="inner" class="scrolly"> 
+          <section  id="attribution">		
+            <div class="inner" > 
               <h2>Licenses & Attributions</h2>		
               
               <div>
@@ -258,7 +176,6 @@
 
                 </license>
               </div>
-            
 
               <div>
                 <b id="newton">Newtonsoft.Json</b>
@@ -1214,7 +1131,7 @@
                 </license>
               </div>
 
-              <div class="inner" class="scrolly"> 
+              <div class="inner" > 
                 <b id="octokit">Octokit.net</b>
                 <div>
                   <a href="https://raw.githubusercontent.com/octokit/octokit.net/main/LICENSE.txt" target="_blank">MIT License</a>
@@ -1243,7 +1160,7 @@
                 </div>
               </div>
 
-<div class="inner" class="scrolly"> 
+<div class="inner" > 
   <b id="ytexplode">YoutubeExplode</b>
   <div>
     <a href="https://raw.githubusercontent.com/Tyrrrz/YoutubeExplode/master/License.txt" target="_blank">GPL v3</a>
@@ -2113,7 +2030,7 @@ Public License instead of this License.  But first, please read
   </div>
 </div>
 
-<div class="inner" class="scrolly"> 
+<div class="inner" > 
   <b id="wpf-notifyicon">Hardcodet NotifyIcon</b>
   <div>
     <a href="https://raw.githubusercontent.com/hardcodet/wpf-notifyicon/master/LICENSE" target="_blank">The Code Project Open License (CPOL) 1.02</a>
@@ -2181,7 +2098,7 @@ BY EXERCISING ANY RIGHTS TO THE WORK PROVIDED HEREIN, YOU ACCEPT AND AGREE TO BE
   </div>
 </div>
 
-<div class="inner" class="scrolly"> 
+<div class="inner" > 
   <b id="grpcnamedpipes">GrpcDotNetNamedPipes</b>
   <div>
     <a href="https://raw.githubusercontent.com/cyanfish/grpc-dotnet-namedpipes/master/LICENSE" target="_blank">Apache License 2.0</a>
@@ -2394,7 +2311,7 @@ BY EXERCISING ANY RIGHTS TO THE WORK PROVIDED HEREIN, YOU ACCEPT AND AGREE TO BE
   </div>
 </div>
 
-<div class="inner" class="scrolly"> 
+<div class="inner" > 
   <b id="google-protobuf">Google Protobuf</b>
   <div>
     <a href="https://raw.githubusercontent.com/protocolbuffers/protobuf/master/LICENSE" target="_blank">BSD License</a>
@@ -2437,7 +2354,7 @@ support library is itself covered by the above license.
   </div>
 </div>
 
-<div class="inner" class="scrolly"> 
+<div class="inner" > 
   <b id="grpc">Grpc</b>
   <div>
     <a href="https://raw.githubusercontent.com/grpc/grpc/master/LICENSE" target="_blank">Apache License 2.0</a>
@@ -2690,7 +2607,7 @@ obtain one at https://mozilla.org/MPL/2.0/.
   </div>
 </div>
 
-<div class="inner" class="scrolly"> 
+<div class="inner" > 
   <b id="audioflyout-display">Display Monitor</b>
   <div>
     <a href="https://raw.githubusercontent.com/ModernFlyouts-Community/ModernFlyouts/main/LICENSE" target="_blank">MIT license</a>
@@ -2722,7 +2639,7 @@ SOFTWARE.
   </div>
 </div>
 
-<div class="inner" class="scrolly"> 
+<div class="inner" > 
   <b id="dotnet-runtime">.NET runtime</b>
   <div>
     <a href="https://raw.githubusercontent.com/dotnet/runtime/main/LICENSE.TXT" target="_blank">MIT License</a>
@@ -2756,7 +2673,7 @@ SOFTWARE.
   </div>
 </div>
 
-<div class="inner" class="scrolly"> 
+<div class="inner" > 
   <b id="uachelper">UACHelper</b>
   <div>
     <a href="https://raw.githubusercontent.com/falahati/UACHelper/master/LICENSE" target="_blank">MIT License</a>
@@ -2788,7 +2705,7 @@ SOFTWARE.
   </div>
 </div>
 
-<div class="inner" class="scrolly"> 
+<div class="inner" > 
   <b id="winuiex">WinUIEx</b>
   <div>
     <a href="https://raw.githubusercontent.com/dotMorten/WinUIEx/main/LICENSE" target="_blank">MIT License</a>
@@ -2820,7 +2737,7 @@ SOFTWARE.
   </div>
 </div>
 
-<div class="inner" class="scrolly"> 
+<div class="inner" > 
   <b id="mdxaml">MdXaml</b>
   <div>
     <a href="https://raw.githubusercontent.com/whistyun/MdXaml/master/LICENSE.txt" target="_blank">MIT License</a>
@@ -2852,7 +2769,7 @@ SOFTWARE.
   </div>
 </div>
 
-<div class="inner" class="scrolly"> 
+<div class="inner" > 
   <b id="operationresult">OperationResult</b>
   <div>
     <a href="https://raw.githubusercontent.com/gnaeus/OperationResult/master/LICENSE" target="_blank">MIT License</a>
@@ -2884,7 +2801,7 @@ SOFTWARE.
   </div>
 </div>
 
-<div class="inner" class="scrolly"> 
+<div class="inner" > 
   <b id="watson">Watson Webserver</b>
   <div>
     <a href="https://raw.githubusercontent.com/gnaeus/OperationResult/master/LICENSE" target="_blank">MIT License</a>
@@ -2904,7 +2821,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   </div>
 </div>
 
-<div class="inner" class="scrolly"> 
+<div class="inner" > 
   <b id="naudio">NAudio</b>
   <div>
     <a href="https://raw.githubusercontent.com/naudio/NAudio/master/license.txt" target="_blank">MIT License</a>
@@ -2924,7 +2841,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   </div>
 </div>
 
-<div class="inner" class="scrolly"> 
+<div class="inner" > 
   <b id="mathnet">Math.NET</b>
   <div>
     <a href="https://raw.githubusercontent.com/mathnet/mathnet-numerics/master/LICENSE.md" target="_blank">MIT License</a>
@@ -2956,7 +2873,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   </div>
 </div>
 
-<div class="inner" class="scrolly"> 
+<div class="inner" > 
   <b id="npsmlib">NPSMLib</b>
   <div>
     <a href="https://raw.githubusercontent.com/ADeltaX/NPSMLib/main/LICENSE" target="_blank">MIT License</a>
@@ -2996,19 +2913,9 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 			<footer id="footer" class="wrapper style1-alt">
 				<div class="inner">
 					<ul class="menu">
-						<li>Rocksdanister. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						<li>Rocksdanister. All rights reserved.</li>
 					</ul>
 				</div>
 			</footer>
-		<!-- Scripts -->
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-			<script src="/lively/assets/js/jquery.scrollex.min.js"></script>
-			<script src="/lively/assets/js/jquery.scrolly.min.js"></script>
-			<script src="/lively/assets/js/browser.min.js"></script>
-			<script src="/lively/assets/js/breakpoints.min.js"></script>
-			<script src="/lively/assets/js/util.js"></script>
-			<script src="/lively/assets/js/main.js"></script>
-      <script src="/lively/assets/js/attribution.js"></script>
-
 	</body>
 </html>
