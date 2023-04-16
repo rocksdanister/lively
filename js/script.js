@@ -102,7 +102,7 @@ async function init() {
   await setScene("rain");
   render(); //since init is async
 
-  window.addEventListener("resize", resizeEvent);
+  window.addEventListener("resize", (e) => resize());
   //debugMenu();
 }
 
@@ -117,7 +117,7 @@ function setProperty(property, value) {
 
 function setTexture(texName, value, isBlur = false) {
   showTransition();
-  
+
   let ext = getExtension(value);
   disposeVideoElement(videoElement);
   material.uniforms[texName].value?.dispose();
@@ -244,9 +244,8 @@ async function setScene(name, geometry = quad) {
       });
     }
   }
-  //making sure dimensions are up-to-date
-  material.uniforms.u_resolution.value = new THREE.Vector2(window.innerWidth, window.innerHeight);
   geometry.material = material;
+  resize(); //update view
 
   if (!sceneLoaded) {
     sceneLoaded = true;
@@ -275,9 +274,8 @@ async function showTransition() {
   URL.revokeObjectURL(screenShot);
 }
 
-function resizeEvent(e) {
+function resize() {
   renderer.setSize(window.innerWidth, window.innerHeight, 2);
-
   material.uniforms.u_resolution.value = new THREE.Vector2(window.innerWidth, window.innerHeight);
 }
 

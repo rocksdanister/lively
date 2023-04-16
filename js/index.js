@@ -1,22 +1,21 @@
 //app ui
 var ul = document.getElementById("wallpapers");
 ul.onclick = function (event) {
+  var img = event.target;
+  if (img.tagName != "IMG") {
+    return;
+  }
+
+  //clear selection
   let lis = ul.getElementsByTagName("IMG");
   for (let i = 0; i <= lis.length - 1; i++) {
     lis[i].style.outline = "";
   }
 
-  var img = event.target;
-  //console.log(img.tagName);
-  if (img.tagName != "IMG") {
-    if (img.parentElement.tagName == "DIV" && !hasClass(img, "desc")) return;
-
-    img = img.parentElement.querySelector("img");
-    if (img == null) return;
-  }
+  //update selection
+  img.style.outline = "2.5px solid #a425a0";
 
   //update customise controls
-  img.style.outline = "2.5px solid #a425a0";
   $("*[id*=ui-app-customise-controls-]").css("display", "none");
   switch (img.parentElement.id) {
     case "rain":
