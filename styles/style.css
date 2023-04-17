@@ -222,11 +222,11 @@ li.library {
   font-size: 14px;
   margin: 5px;
   float: left;
-  width: 180px;
+  width: 170px;
 }
 
 li.library img:hover {
-  transform: scale(1.05);
+  transform: scale(1.04);
   transition: 0.5s;
   filter: brightness(1.2);
   cursor: pointer;
@@ -376,6 +376,7 @@ li.card p {
   /* -webkit-animation: spin 14s linear infinite;
   -moz-animation: spin 14s linear infinite;
   animation: spin 14s linear infinite; */
+  margin-bottom: -25px;
   filter: drop-shadow(10px 5px 7.5px rgba(0, 0, 0, 0.5));
   animation: fade-in 2s ease;
 }
@@ -495,7 +496,7 @@ li.card p {
 
 /*loading progressbar*/
 .indeterminate-progress-bar {
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
   background-color: #d1d5db;
   height: 5px;
   position: fixed;
@@ -511,7 +512,6 @@ li.card p {
   bottom: 0;
   top: 0;
   width: 50%;
-
   animation-duration: 2s;
   animation-iteration-count: infinite;
   animation-name: indeterminate-progress-bar;

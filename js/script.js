@@ -8,10 +8,11 @@ let sceneLoaded = false;
 const sceneLoadedEvent = new Event("sceneLoaded");
 const sceneChanged = new Event("sceneChanged");
 
+let isDebug = false;
 let isPaused = false;
 let currentScene = null;
 let scene, camera, renderer, material;
-let settings = { fps: 24, parallaxVal: 1 };
+let settings = { fps: 24, scale: 1, parallaxVal: 1 };
 let shaderUniforms = [
   {
     //rain
@@ -47,6 +48,10 @@ let shaderUniforms = [
   {
     //cloud
     u_time: { value: 0, type: "f" },
+    u_fog: { value: true, type: "b" },
+    u_speed: { value: 10, type: "f" },
+    u_scale: { value: 0.61, type: "f" },
+    u_color1: { value: new THREE.Color("#87b0b7"), type: "c" },
     u_brightness: { value: 0.75, type: "f" },
     u_mouse: { value: new THREE.Vector4(), type: "v4" },
     u_resolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight), type: "v2" },
@@ -84,8 +89,8 @@ async function init() {
     antialias: false,
     preserveDrawingBuffer: false,
   });
-  renderer.setSize(window.innerWidth, window.innerHeight, 2);
-  //renderer.setPixelRatio(0.5);
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(settings.scale);
   container.appendChild(renderer.domElement);
   scene = new THREE.Scene();
   camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
@@ -103,13 +108,23 @@ async function init() {
   render(); //since init is async
 
   window.addEventListener("resize", (e) => resize());
-  //debugMenu();
+
+  if (isDebug) {
+    debugMenu();
+    gui.show();
+  } else {
+    gui.hide();
+  }
 }
 
 //Example: setProperty("u_intensity", 0.5);
 function setProperty(property, value) {
   try {
-    material.uniforms[property].value = value;
+    if (material.uniforms[property].type == "v3") {
+      var rgb = hexToRgb(value);
+      material.uniforms[property].value = new THREE.Vector3(rgb.r, rgb.g, rgb.b);
+    } else if (material.uniforms[property].type == "c") material.uniforms[property].value = new THREE.Color(value);
+    else material.uniforms[property].value = value;
   } catch (ex) {
     console.log(`Property not found ${ex}`);
   }
@@ -161,6 +176,17 @@ function setPause(val) {
   isPaused = val;
 }
 
+function setScale(value) {
+  if (settings.scale == value) return;
+
+  settings.scale = value;
+  renderer.setPixelRatio(settings.scale);
+  material.uniforms.u_resolution.value = new THREE.Vector2(
+    window.innerWidth * settings.scale,
+    window.innerHeight * settings.scale
+  );
+}
+
 function openFilePicker() {
   document.getElementById("filePicker").click();
 }
@@ -184,7 +210,7 @@ async function setScene(name, geometry = quad) {
           vertexShader: vertexShader,
           fragmentShader: await (await fetch("shaders/rain.frag")).text(),
         });
-
+        setScale(1);
         material.uniforms.u_tex0_resolution.value = new THREE.Vector2(1920, 1080);
         material.uniforms.u_tex0.value = await new THREE.TextureLoader().loadAsync("media/rain_mountain.webp");
 
@@ -206,7 +232,7 @@ async function setScene(name, geometry = quad) {
           vertexShader: vertexShader,
           fragmentShader: await (await fetch("shaders/snow.frag")).text(),
         });
-
+        setScale(0.75);
         material.uniforms.u_tex0_resolution.value = new THREE.Vector2(1920, 1080);
         material.uniforms.u_tex0.value = await new THREE.TextureLoader().loadAsync("media/snow_landscape.webp");
       }
@@ -218,6 +244,8 @@ async function setScene(name, geometry = quad) {
           vertexShader: vertexShader,
           fragmentShader: await (await fetch("shaders/clouds.frag")).text(),
         });
+        setScale(0.25); //performance
+
         //this.onmousedown = mouseClick;
         function mouseClick(e) {
           material.uniforms.u_mouse.value.x = e.pageX;
@@ -234,6 +262,7 @@ async function setScene(name, geometry = quad) {
           vertexShader: vertexShader,
           fragmentShader: await (await fetch("shaders/synthwave.frag")).text(),
         });
+        setScale(0.75);
       }
       break;
     case "impulse": {
@@ -242,6 +271,7 @@ async function setScene(name, geometry = quad) {
         vertexShader: vertexShader,
         fragmentShader: await (await fetch("shaders/impulse.frag")).text(),
       });
+      setScale(1);
     }
   }
   geometry.material = material;
@@ -275,8 +305,11 @@ async function showTransition() {
 }
 
 function resize() {
-  renderer.setSize(window.innerWidth, window.innerHeight, 2);
-  material.uniforms.u_resolution.value = new THREE.Vector2(window.innerWidth, window.innerHeight);
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  material.uniforms.u_resolution.value = new THREE.Vector2(
+    window.innerWidth * settings.scale,
+    window.innerHeight * settings.scale
+  );
 }
 
 function render() {
@@ -327,6 +360,17 @@ document.getElementById("filePicker").addEventListener("change", function () {
 });
 
 //helpers
+function hexToRgb(hex) {
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result
+    ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16),
+      }
+    : null;
+}
+
 function getExtension(filePath) {
   return filePath.substring(filePath.lastIndexOf(".") + 1, filePath.length) || filePath;
 }
@@ -356,11 +400,22 @@ function disposeVideoElement(video) {
 //debug
 function debugMenu() {
   try {
+    debugScale();
     //debugSnow();
-    debugSynthwave();
+    //debugSynthwave();
+    //debugCloud();
   } catch (ex) {
     console.log(ex);
   }
+}
+
+function debugScale() {
+  gui
+    .add(settings, "scale", 0.1, 2, 0.01)
+    .name("Display Scale")
+    .onChange(function () {
+      setScale(settings.scale);
+    });
 }
 
 function debugSnow() {
@@ -375,4 +430,10 @@ function debugSynthwave() {
   gui.add(material.uniforms.u_draw, "value", 0, 2, 0.01).name("Draw");
   gui.add(material.uniforms.u_plane, "value", 0, 1, 0.01).name("Plane");
   gui.add(material.uniforms.u_crt_effect, "value", 0, 2, 0.01).name("CRT");
+}
+
+function debugCloud() {
+  gui.add(material.uniforms.u_fog, "value").name("Fog");
+  //gui.add(material.uniforms.u_color1.value, "r").name("Color1 R");
+  gui.add(material.uniforms.u_scale, "value", 0, 2, 0.01).name("Scale P");
 }

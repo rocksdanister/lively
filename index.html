@@ -94,10 +94,10 @@
               <div>Synthwave</div>
             </li>
 
-            <!-- <li id="clouds" class="library">
+            <li id="clouds" class="library">
               <img src="assets/clouds_preview.webp" width="600" height="400" />
               <div>Cloud</div>
-            </li> -->
+            </li>
           </ul>
         </div>
 
@@ -312,6 +312,43 @@
                 <label class="checkbox-label">CRT</label>
               </div>
             </div>
+
+            <div id="ui-app-customise-controls-clouds" style="display: none">
+              <p class="slider-label">Scale</p>
+              <input
+                autocomplete="off"
+                style="background-size: 30.5% 100%"
+                type="range"
+                min="0"
+                max="2"
+                value="0.61"
+                step="0.01"
+                oninput="setProperty('u_scale',this.value)"
+              />
+              <p class="slider-label">Speed</p>
+              <input
+                autocomplete="off"
+                style="background-size: 0% 100%"
+                type="range"
+                min="1"
+                max="10"
+                value="1"
+                step="0.1"
+                oninput="setProperty('u_speed',11 - this.value)"
+              />
+              <br />
+              <p class="slider-label">Base Color</p>
+              <input type="color" class="colorpicker" oninput="setProperty('u_color1',this.value)" value="#87b0b7" />
+              <div>
+                <input
+                  autocomplete="off"
+                  type="checkbox"
+                  checked
+                  onchange="setProperty('u_fog',this.checked ? true : false)"
+                />
+                <label class="checkbox-label">Fog</label>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -420,5 +457,5 @@
   <script src="js/script.js"></script>
   <script src="js/index.js"></script>
   <!-- analytics -->
-  <script data-goatcounter="https://rocksdanister.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  <!-- <script data-goatcounter="https://rocksdanister.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script> -->
 </html>

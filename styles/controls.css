@@ -168,6 +168,30 @@ input[type="checkbox"] {
   color: gray;
 }
 
+/*color picker*/
+.colorpicker {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 204px;
+  height: 15px;
+  padding: 0px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.colorpicker::-webkit-color-swatch {
+  border-radius: 5px;
+  border: none;
+}
+.colorpicker::-moz-color-swatch {
+  border-radius: 5px;
+  border: none;
+}
+.colorpicker:hover {
+  filter: brightness(1.05);
+}
+
 /*progressring*/
 .loader {
   border: 16px solid #00000000;
@@ -181,11 +205,19 @@ input[type="checkbox"] {
 
 /* Safari */
 @-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

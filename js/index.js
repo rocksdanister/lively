@@ -24,7 +24,7 @@ ul.onclick = function (event) {
       break;
     case "clouds":
       setScene("clouds");
-      $("#ui-app-customise-controls-test").css("display", "inline");
+      $("#ui-app-customise-controls-clouds").css("display", "inline");
       break;
     case "snow":
       setScene("snow");
