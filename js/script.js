@@ -123,10 +123,10 @@ function setProperty(property, value) {
     if (material.uniforms[property].type == "v3") {
       var rgb = hexToRgb(value);
       material.uniforms[property].value = new THREE.Vector3(rgb.r, rgb.g, rgb.b);
-    } else if (material.uniforms[property].type == "c") material.uniforms[property].value = new THREE.Color(value);
+    } else if (material.uniforms[property].type == "c") material.uniforms[property].value = new THREE.Color(value); //hex
     else material.uniforms[property].value = value;
   } catch (ex) {
-    console.log(`Property not found ${ex}`);
+    console.log(`Failed to update property ${property}=${value}, ${ex}`);
   }
 }
 

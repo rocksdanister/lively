@@ -253,7 +253,6 @@ li.library div {
 /* features */
 .cards {
   list-style-type: none;
-  animation: zoom-in 1.5s ease;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -546,6 +545,18 @@ li.card p {
   border-right: 4px solid;
   border-radius: 4px;
   transform: rotateZ(45deg);
+}
+
+.fade-in-start-1s {
+  animation: fade-in 1s ease;
+}
+
+.fade-in-start-1-5s {
+  animation: fade-in 1.5s ease;
+}
+
+.fade-in-start-2s {
+  animation: fade-in 2s ease;
 }
 
 @keyframes jumpInfinite {
