@@ -18,6 +18,11 @@
         <Setter Property="BorderThickness" Value="0.5" />
     </Style>
 
+    <!--  https://learn.microsoft.com/en-us/dotnet/desktop/wpf/controls/listview-styles-and-templates?redirectedfrom=MSDN&view=netframeworkdesktop-4.8  -->
+    <Style TargetType="{x:Type GridViewColumnHeader}">
+        <Setter Property="Background" Value="#2b2b2b" />
+    </Style>
+
     <Style TargetType="{x:Type TextBox}">
         <Setter Property="SelectionBrush" Value="DarkGray" />
         <!--  TODO: Accentcolor  -->
