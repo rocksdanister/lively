@@ -85,8 +85,13 @@ function callbackFunc(entries, observer) {
         }
         break;
       case "page-download":
-        //todo
+        if (entry.isIntersecting) {
+          $(".download-options").addClass("fade-in-start-2s");
+        }
         break;
+      case "footer":
+        //todo
+        break;  
     }
   });
 }
@@ -103,6 +108,7 @@ observer.observe($("#page-home")[0]);
 observer.observe($("#page-features")[0]);
 observer.observe($("#page-gallery")[0]);
 observer.observe($("#page-download")[0]);
+observer.observe($("#footer")[0]);
 
 //threejs scene first run
 document.addEventListener("sceneLoaded", () => {

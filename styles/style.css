@@ -380,6 +380,10 @@ li.card p {
   animation: fade-in 2s ease;
 }
 
+.download-options {
+  display: block;
+}
+
 .download-button {
   margin-top: 10px;
   background-color: black;
