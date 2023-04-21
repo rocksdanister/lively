@@ -49,9 +49,10 @@ let shaderUniforms = [
     //cloud
     u_time: { value: 0, type: "f" },
     u_fog: { value: true, type: "b" },
-    u_speed: { value: 10, type: "f" },
+    u_speed: { value: 0.25, type: "f" },
     u_scale: { value: 0.61, type: "f" },
     u_color1: { value: new THREE.Color("#87b0b7"), type: "c" },
+    u_fog_color: { value: new THREE.Color("#0F1C1C"), type: "c" },
     u_brightness: { value: 0.75, type: "f" },
     u_mouse: { value: new THREE.Vector4(), type: "v4" },
     u_resolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight), type: "v2" },

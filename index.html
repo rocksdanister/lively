@@ -328,13 +328,13 @@
               <p class="slider-label">Speed</p>
               <input
                 autocomplete="off"
-                style="background-size: 0% 100%"
+                style="background-size: 5% 100%"
                 type="range"
-                min="1"
-                max="10"
-                value="1"
-                step="0.1"
-                oninput="setProperty('u_speed',11 - this.value)"
+                min="0.0"
+                max="5"
+                value="0.25"
+                step="0.01"
+                oninput="setProperty('u_speed',this.value)"
               />
               <br />
               <p class="slider-label">Base Color</p>
@@ -344,6 +344,14 @@
                 class="colorpicker"
                 oninput="setProperty('u_color1',this.value)"
                 value="#87b0b7"
+              />
+              <p class="slider-label">Fog Color</p>
+              <input
+                autocomplete="off"
+                type="color"
+                class="colorpicker"
+                oninput="setProperty('u_fog_color',this.value)"
+                value="#0F1C1C"
               />
               <div>
                 <input

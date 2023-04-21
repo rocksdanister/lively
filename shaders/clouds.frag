@@ -14,6 +14,7 @@ uniform float u_brightness;
 uniform bool u_fog;
 uniform float u_scale;
 uniform vec3 u_color1;
+uniform vec3 u_fog_color;
 uniform float u_speed;
 
 mat2 rot(in float a) {
@@ -35,7 +36,7 @@ vec2 disp(float t) {
 }
 
 float time() {
-    return 1000. + u_time / u_speed;
+    return 1000. + u_time * u_speed;
 }
 
 vec2 map(vec3 p) {
@@ -87,7 +88,7 @@ vec4 render(in vec3 ro, in vec3 rd, float time) {
 
         float fogC = exp(t * 0.2 - 2.2);
         if(u_fog)
-            col.rgba += vec4(0.06, 0.11, 0.11, 0.1) * clamp(fogC - fogT, 0., 1.);
+            col.rgba += vec4(u_fog_color, 0.1) * clamp(fogC - fogT, 0., 1.);
         fogT = fogC;
         rez = rez + col * (1. - rez.a);
         t += clamp(0.5 - dn * dn * .05, 0.09, 0.3);

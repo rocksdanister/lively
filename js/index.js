@@ -76,17 +76,17 @@ function callbackFunc(entries, observer) {
         break;
       case "page-features":
         if (entry.isIntersecting) {
-          $(".cards").addClass("fade-in-start-2s");
+          // $(".cards").addClass("fade-in-start-2s");
         }
         break;
       case "page-gallery":
         if (entry.isIntersecting) {
-          $(".gallery-container").addClass("fade-in-start-2s");
+          // $(".gallery-container").addClass("fade-in-start-2s");
         }
         break;
       case "page-download":
         if (entry.isIntersecting) {
-          $(".download-options").addClass("fade-in-start-2s");
+          // $(".download-options").addClass("fade-in-start-2s");
         }
         break;
       case "footer":
