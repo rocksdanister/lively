@@ -52,7 +52,7 @@ let shaderUniforms = [
     u_speed: { value: 0.25, type: "f" },
     u_scale: { value: 0.61, type: "f" },
     u_color1: { value: new THREE.Color("#87b0b7"), type: "c" },
-    u_fog_color: { value: new THREE.Color("#0F1C1C"), type: "c" },
+    u_fog_color: { value: new THREE.Color("#0f1c1c"), type: "c" },
     u_brightness: { value: 0.75, type: "f" },
     u_mouse: { value: new THREE.Vector4(), type: "v4" },
     u_resolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight), type: "v2" },
@@ -124,7 +124,7 @@ function setProperty(property, value) {
     if (material.uniforms[property].type == "v3") {
       var rgb = hexToRgb(value);
       material.uniforms[property].value = new THREE.Vector3(rgb.r, rgb.g, rgb.b);
-    } else if (material.uniforms[property].type == "c") material.uniforms[property].value = new THREE.Color(value); //hex
+    } else if (material.uniforms[property].type == "c") material.uniforms[property].value = new THREE.Color(value);
     else material.uniforms[property].value = value;
   } catch (ex) {
     console.log(`Failed to update property ${property}=${value}, ${ex}`);
@@ -398,6 +398,16 @@ function disposeVideoElement(video) {
   }
 }
 
+//datgui threejs color menu
+function addColor(ui, property, displayName) {
+  var conf = { color: property.value.getHex() };
+  ui.addColor(conf, "color")
+    .onChange(function (val) {
+      property.value = new THREE.Color(val);
+    })
+    .name(displayName);
+}
+
 //debug
 function debugMenu() {
   try {
@@ -435,6 +445,6 @@ function debugSynthwave() {
 
 function debugCloud() {
   gui.add(material.uniforms.u_fog, "value").name("Fog");
-  //gui.add(material.uniforms.u_color1.value, "r").name("Color1 R");
-  gui.add(material.uniforms.u_scale, "value", 0, 2, 0.01).name("Scale P");
+  gui.add(material.uniforms.u_scale, "value", 0, 2, 0.01).name("Size1");
+  addColor(gui, material.uniforms.u_color1, "Density color");
 }

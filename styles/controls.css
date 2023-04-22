@@ -90,6 +90,7 @@ input[type="checkbox"] {
   box-shadow: none;
   font-size: 0.4em;
   box-shadow: 0 0 2px 0 #555;
+  cursor: pointer;
 }
 
 .checkbox-label {
@@ -189,7 +190,7 @@ input[type="checkbox"] {
   border: none;
 }
 .colorpicker:hover {
-  filter: brightness(1.05);
+  filter: brightness(1.1);
 }
 
 /*progressring*/
