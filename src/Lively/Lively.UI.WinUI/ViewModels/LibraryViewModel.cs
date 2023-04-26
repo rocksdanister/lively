@@ -64,6 +64,16 @@ namespace Lively.UI.WinUI.ViewModels
                 Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperInstallTempDir)
             };
 
+            //LibraryItemsFiltered = new AdvancedCollectionView(LibraryItems, true);
+            //LibraryItemsFiltered.SortDescriptions.Add(new SortDescription("Title", SortDirection.Ascending));
+            //using (LibraryItemsFiltered.DeferRefresh())
+            //{
+            //    foreach (var item in ScanWallpaperFolders(wallpaperScanFolders))
+            //    {
+            //        LibraryItems.Add(item);
+            //    }
+            //}
+
             foreach (var item in ScanWallpaperFolders(wallpaperScanFolders))
             {
                 LibraryItems.Insert(BinarySearch(LibraryItems, item.Title), item);
@@ -87,6 +97,17 @@ namespace Lively.UI.WinUI.ViewModels
         }
 
         #region collections
+
+        //private AdvancedCollectionView _libraryItemsFiltered;
+        //public AdvancedCollectionView LibraryItemsFiltered
+        //{
+        //    get => _libraryItemsFiltered;
+        //    set {
+        //        _libraryItemsFiltered = value;
+        //        OnPropertyChanged();
+        //    }
+        //}
+
 
         private ObservableCollection<LibraryModel> _libraryItems = new ObservableCollection<LibraryModel>();
         public ObservableCollection<LibraryModel> LibraryItems
