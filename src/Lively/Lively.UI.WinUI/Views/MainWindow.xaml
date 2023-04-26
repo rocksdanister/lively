@@ -29,7 +29,7 @@
 
     <Grid x:Name="Root" Background="{ThemeResource SystemAltMediumLowColor}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="32" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
@@ -50,35 +50,43 @@
             Stretch="Fill"
             Visibility="{Binding AppThemeBackground, Mode=OneWay, Converter={StaticResource StringVisibilityConverter}}" />
         <Rectangle
-            Grid.Row="1"
+            Grid.RowSpan="2"
             Fill="{ThemeResource SystemControlAcrylicElementBrush}"
             Stretch="Fill"
             Visibility="{Binding AppThemeBackground, Mode=OneWay, Converter={StaticResource StringVisibilityConverter}}" />
 
-        <Grid x:Name="customTitleBar">
+        <Grid x:Name="AppTitleBar" Height="48">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="LeftPaddingColumn" Width="0" />
+                <ColumnDefinition x:Name="IconColumn" Width="Auto" />
+                <ColumnDefinition x:Name="TitleColumn" Width="Auto" />
+                <ColumnDefinition x:Name="LeftDragColumn" Width="*" />
+                <ColumnDefinition x:Name="SearchColumn" Width="Auto" />
+                <ColumnDefinition x:Name="RightDragColumn" Width="*" />
+                <ColumnDefinition x:Name="RightPaddingColumn" Width="0" />
+            </Grid.ColumnDefinitions>
             <Image
+                x:Name="TitleBarIcon"
+                Grid.Column="1"
                 Width="16"
                 Height="16"
-                Margin="8,0"
-                HorizontalAlignment="Left"
+                Margin="8,-10,0,0"
                 Source="ms-appx:///Assets/icon-lively-48.png" />
             <TextBlock
-                x:Name="AppTitleTextBlock"
-                Margin="28,0,0,0"
+                x:Name="TitleTextBlock"
+                Grid.Column="2"
+                Margin="4,-10,0,0"
                 VerticalAlignment="Center"
                 Style="{StaticResource CaptionTextBlockStyle}"
-                Text="Lively Wallpaper"
-                TextWrapping="NoWrap" />
-            <!--
+                Text="Lively Wallpaper" />
             <AutoSuggestBox
-                Width="350"
-                MaxWidth="400"
-                MaxHeight="32"
-                Margin="100,5,100,5"
-                HorizontalAlignment="Center"
+                Grid.Column="4"
+                Width="360"
+                Margin="4,0"
+                VerticalAlignment="Center"
                 PlaceholderText="Search"
-                QueryIcon="Find" />
-            -->
+                QueryIcon="Find"
+                Visibility="Visible" />
         </Grid>
 
         <TeachingTip

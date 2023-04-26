@@ -14,6 +14,8 @@ using Lively.UI.WinUI.Views.Pages.ControlPanel;
 using Lively.UI.WinUI.Views.Pages.Gallery;
 using Lively.UI.WinUI.Views.Pages.Settings;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.UI.Windowing;
+using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -30,10 +32,12 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Numerics;
+using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources;
+using WinRT.Interop;
 using WinUIEx;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -100,15 +104,22 @@ namespace Lively.UI.WinUI
             ShowMainMenu();
             NavViewNavigate(NavPages.library);
 
-            //Issue: https://github.com/microsoft/microsoft-ui-xaml/issues/6070
-            ExtendsContentIntoTitleBar = true;
-            SetTitleBar(customTitleBar);
-            this.Activated += MainWindow_Activated;
-
-            //Issue: https://github.com/microsoft/microsoft-ui-xaml/issues/4056
-            //this.Title = "Lively Wallpaper";
-            //this.SetIconEx("appicon.ico");
-            //this.UseImmersiveDarkModeEx(userSettings.Settings.ApplicationTheme == AppTheme.Dark);
+            //ref: https://learn.microsoft.com/en-us/windows/apps/develop/title-bar?tabs=wasdk
+            if (AppWindowTitleBar.IsCustomizationSupported())
+            {
+                var titleBar = this.AppWindow.TitleBar;
+                titleBar.ExtendsContentIntoTitleBar = true;
+                titleBar.ButtonBackgroundColor = Colors.Transparent;
+                titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
+                AppTitleBar.Loaded += AppTitleBar_Loaded;
+                AppTitleBar.SizeChanged += AppTitleBar_SizeChanged;
+                this.Activated += MainWindow_Activated;
+            }
+            else
+            {
+                AppTitleBar.Visibility = Visibility.Collapsed;
+                this.UseImmersiveDarkModeEx(userSettings.Settings.ApplicationTheme == AppTheme.Dark);
+            }
 
             //Gallery
             InitializeGallery();
@@ -133,20 +144,6 @@ namespace Lively.UI.WinUI
             };
 
             _ = StdInListener();
-        }
-
-        private void MainWindow_Activated(object sender, WindowActivatedEventArgs args)
-        {
-            if (args.WindowActivationState == WindowActivationState.Deactivated)
-            {
-                AppTitleTextBlock.Foreground =
-                    (SolidColorBrush)App.Current.Resources["WindowCaptionForegroundDisabled"];
-            }
-            else
-            {
-                AppTitleTextBlock.Foreground =
-                    (SolidColorBrush)App.Current.Resources["WindowCaptionForeground"];
-            }
         }
 
         private void DesktopCore_WallpaperError(object sender, Exception e)
@@ -533,6 +530,107 @@ namespace Lively.UI.WinUI
                 Logger.Error(ex);
             }
         }
+
+        #region titlebar
+        private void AppTitleBar_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (AppWindowTitleBar.IsCustomizationSupported())
+            {
+                SetDragRegionForCustomTitleBar(this.AppWindow);
+            }
+        }
+
+        private void AppTitleBar_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (AppWindowTitleBar.IsCustomizationSupported()
+                && this.AppWindow.TitleBar.ExtendsContentIntoTitleBar)
+            {
+                // Update drag region if the size of the title bar changes.
+                SetDragRegionForCustomTitleBar(this.AppWindow);
+            }
+        }
+
+        private void MainWindow_Activated(object sender, WindowActivatedEventArgs args)
+        {
+            if (args.WindowActivationState == WindowActivationState.Deactivated)
+            {
+                TitleTextBlock.Foreground =
+                    (SolidColorBrush)App.Current.Resources["WindowCaptionForegroundDisabled"];
+            }
+            else
+            {
+                TitleTextBlock.Foreground =
+                    (SolidColorBrush)App.Current.Resources["WindowCaptionForeground"];
+            }
+        }
+
+        [DllImport("Shcore.dll", SetLastError = true)]
+        internal static extern int GetDpiForMonitor(IntPtr hmonitor, Monitor_DPI_Type dpiType, out uint dpiX, out uint dpiY);
+
+        internal enum Monitor_DPI_Type : int
+        {
+            MDT_Effective_DPI = 0,
+            MDT_Angular_DPI = 1,
+            MDT_Raw_DPI = 2,
+            MDT_Default = MDT_Effective_DPI
+        }
+
+        private double GetScaleAdjustment()
+        {
+            IntPtr hWnd = WindowNative.GetWindowHandle(this);
+            WindowId wndId = Win32Interop.GetWindowIdFromWindow(hWnd);
+            DisplayArea displayArea = DisplayArea.GetFromWindowId(wndId, DisplayAreaFallback.Primary);
+            IntPtr hMonitor = Win32Interop.GetMonitorFromDisplayId(displayArea.DisplayId);
+
+            // Get DPI.
+            int result = GetDpiForMonitor(hMonitor, Monitor_DPI_Type.MDT_Default, out uint dpiX, out uint _);
+            if (result != 0)
+            {
+                throw new Exception("Could not get DPI for monitor.");
+            }
+
+            uint scaleFactorPercent = (uint)(((long)dpiX * 100 + (96 >> 1)) / 96);
+            return scaleFactorPercent / 100.0;
+        }
+
+        private void SetDragRegionForCustomTitleBar(AppWindow appWindow)
+        {
+            if (AppWindowTitleBar.IsCustomizationSupported()
+                && appWindow.TitleBar.ExtendsContentIntoTitleBar)
+            {
+                double scaleAdjustment = GetScaleAdjustment();
+
+                RightPaddingColumn.Width = new GridLength(appWindow.TitleBar.RightInset / scaleAdjustment);
+                LeftPaddingColumn.Width = new GridLength(appWindow.TitleBar.LeftInset / scaleAdjustment);
+
+                List<Windows.Graphics.RectInt32> dragRectsList = new();
+
+                Windows.Graphics.RectInt32 dragRectL;
+                dragRectL.X = (int)((LeftPaddingColumn.ActualWidth) * scaleAdjustment);
+                dragRectL.Y = 0;
+                dragRectL.Height = (int)(AppTitleBar.ActualHeight * scaleAdjustment);
+                dragRectL.Width = (int)((IconColumn.ActualWidth
+                                        + TitleColumn.ActualWidth
+                                        + LeftDragColumn.ActualWidth) * scaleAdjustment);
+                dragRectsList.Add(dragRectL);
+
+                Windows.Graphics.RectInt32 dragRectR;
+                dragRectR.X = (int)((LeftPaddingColumn.ActualWidth
+                                    + IconColumn.ActualWidth
+                                    + TitleTextBlock.ActualWidth
+                                    + LeftDragColumn.ActualWidth
+                                    + SearchColumn.ActualWidth) * scaleAdjustment);
+                dragRectR.Y = 0;
+                dragRectR.Height = (int)(AppTitleBar.ActualHeight * scaleAdjustment);
+                dragRectR.Width = (int)(RightDragColumn.ActualWidth * scaleAdjustment);
+                dragRectsList.Add(dragRectR);
+
+                Windows.Graphics.RectInt32[] dragRects = dragRectsList.ToArray();
+
+                appWindow.TitleBar.SetDragRectangles(dragRects);
+            }
+        }
+        #endregion //titlebar
 
         #region gallery
 
