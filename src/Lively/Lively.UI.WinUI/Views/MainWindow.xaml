@@ -18,16 +18,16 @@
     Closed="Window_Closed"
     TaskBarIcon="appicon.ico"
     mc:Ignorable="d">
-    <winex:WindowEx.Backdrop>
+    <!--<winex:WindowEx.Backdrop>
         <winex:MicaSystemBackdrop
             DarkLuminosityOpacity="0.9"
             DarkTintOpacity="0.5"
             LightLuminosityOpacity="0.9"
             LightTintOpacity="0.5" />
-        <!--<winex:AcrylicSystemBackdrop />-->
-    </winex:WindowEx.Backdrop>
+    </winex:WindowEx.Backdrop>-->
 
-    <Grid x:Name="Root" Background="{ThemeResource SystemAltMediumLowColor}">
+    <!--  TODO: Background="{ThemeResource SystemAltMediumLowColor}"  -->
+    <Grid x:Name="Root">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />

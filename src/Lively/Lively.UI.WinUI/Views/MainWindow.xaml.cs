@@ -89,6 +89,7 @@ namespace Lively.UI.WinUI
             this.commands = commands;
 
             this.InitializeComponent();
+            this.SystemBackdrop = new MicaBackdrop();
             Root.DataContext = mainViewModel;
             i18n = ResourceLoader.GetForViewIndependentUse();
             this.audioSlider.Value = settingsVm.GlobalWallpaperVolume;
