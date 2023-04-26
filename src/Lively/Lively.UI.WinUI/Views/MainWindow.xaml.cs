@@ -630,6 +630,20 @@ namespace Lively.UI.WinUI
                 appWindow.TitleBar.SetDragRectangles(dragRects);
             }
         }
+
+        //private void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        //{
+        //    if (string.IsNullOrWhiteSpace(SearchBox.Text))
+        //    {
+        //        libraryVm.LibraryItemsFiltered.Filter = _ => true;
+        //    }
+        //    else
+        //    {
+        //        libraryVm.LibraryItemsFiltered.Filter = _ => true; //reset
+        //        libraryVm.LibraryItemsFiltered.Filter = x => ((LibraryModel)x).Title.Contains(SearchBox.Text, StringComparison.InvariantCultureIgnoreCase);
+        //    }
+        //}
+
         #endregion //titlebar
 
         #region gallery

@@ -80,13 +80,14 @@
                 Style="{StaticResource CaptionTextBlockStyle}"
                 Text="Lively Wallpaper" />
             <AutoSuggestBox
+                x:Name="SearchBox"
                 Grid.Column="4"
                 Width="360"
                 Margin="4,0"
                 VerticalAlignment="Center"
                 PlaceholderText="Search"
                 QueryIcon="Find"
-                Visibility="Visible" />
+                Visibility="Collapsed" />
         </Grid>
 
         <TeachingTip
