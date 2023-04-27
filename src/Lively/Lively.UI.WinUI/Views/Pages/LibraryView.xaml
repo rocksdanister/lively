@@ -55,7 +55,7 @@
             IsItemClickEnabled="True"
             ItemClickCommand="{Binding LibraryClickCommand}"
             ItemHeight="153"
-            ItemsSource="{Binding LibraryItems}"
+            ItemsSource="{Binding LibraryItemsFiltered}"
             RightTapped="libraryGridView_RightTapped"
             SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
             SelectionMode="{Binding LibrarySelectionMode, Mode=OneWay, Converter={StaticResource ListViewSelectionModeStringToEnumConverter}}"

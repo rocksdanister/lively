@@ -133,7 +133,7 @@ namespace Lively.UI.WinUI.ViewModels
         {
             JsonStorage<LivelyInfoModel>.StoreData(Path.Combine(libData.LivelyInfoFolderPath, "LivelyInfo.json"), libData.LivelyInfo);
             var libraryUtil = App.Services.GetRequiredService<LibraryViewModel>();
-            libraryUtil.SortWallpaper((LibraryModel)libData);
+            //libraryUtil.SortWallpaper((LibraryModel)libData);
         }
     }
 }
