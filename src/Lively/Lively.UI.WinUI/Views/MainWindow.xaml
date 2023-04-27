@@ -88,6 +88,8 @@
                 IsEnabled="True"
                 PlaceholderText="Search"
                 QueryIcon="Find"
+                QuerySubmitted="AutoSuggestBox_QuerySubmitted"
+                SuggestionChosen="AutoSuggestBox_SuggestionChosen"
                 TextChanged="AutoSuggestBox_TextChanged"
                 Visibility="Visible" />
         </Grid>
