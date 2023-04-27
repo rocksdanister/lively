@@ -633,7 +633,43 @@ namespace Lively.UI.WinUI
             }
         }
 
+        //ref: https://learn.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.autosuggestbox?view=winrt-22621
         private void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        {
+            switch (args.Reason)
+            {
+                case AutoSuggestionBoxTextChangeReason.UserInput:
+                    {
+                        if (string.IsNullOrWhiteSpace(SearchBox.Text))
+                        {
+                            sender.ItemsSource = null;
+                            libraryVm.LibraryItemsFiltered.Filter = _ => true;
+                        }
+                        else
+                        {
+                            sender.ItemsSource = libraryVm.LibraryItems.Where(x => x.Title.Contains(SearchBox.Text, StringComparison.InvariantCultureIgnoreCase))
+                                .Select(x => x.Title)
+                                .Distinct();
+                        }
+                    }
+                    break;
+                case AutoSuggestionBoxTextChangeReason.ProgrammaticChange:
+                case AutoSuggestionBoxTextChangeReason.SuggestionChosen:
+                    {
+                        Search();
+                    }
+                    break;
+            }
+        }
+
+        private void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
+        {
+            // Set sender.Text. You can use args.SelectedItem to build your text string.
+        }
+
+        private void AutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args) => Search();
+
+        private void Search()
         {
             if (string.IsNullOrWhiteSpace(SearchBox.Text))
             {
