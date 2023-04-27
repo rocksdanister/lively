@@ -242,6 +242,7 @@ namespace Lively.UI.WinUI
             if (!(_page is null) && !Type.Equals(preNavPageType, _page))
             {
                 contentFrame.Navigate(_page, null, new DrillInNavigationTransitionInfo());
+                UpdateSuggestBoxState();
             }
         }
 
@@ -632,18 +633,26 @@ namespace Lively.UI.WinUI
             }
         }
 
-        //private void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
-        //{
-        //    if (string.IsNullOrWhiteSpace(SearchBox.Text))
-        //    {
-        //        libraryVm.LibraryItemsFiltered.Filter = _ => true;
-        //    }
-        //    else
-        //    {
-        //        libraryVm.LibraryItemsFiltered.Filter = _ => true; //reset
-        //        libraryVm.LibraryItemsFiltered.Filter = x => ((LibraryModel)x).Title.Contains(SearchBox.Text, StringComparison.InvariantCultureIgnoreCase);
-        //    }
-        //}
+        private void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        {
+            if (string.IsNullOrWhiteSpace(SearchBox.Text))
+            {
+                libraryVm.LibraryItemsFiltered.Filter = _ => true;
+            }
+            else
+            {
+                libraryVm.LibraryItemsFiltered.Filter = _ => true; //reset
+                libraryVm.LibraryItemsFiltered.Filter = x => ((LibraryModel)x).Title.Contains(SearchBox.Text, StringComparison.InvariantCultureIgnoreCase);
+            }
+            libraryVm.UpdateSelectedWallpaper();
+        }
+
+        private void UpdateSuggestBoxState()
+        {
+            SearchBox.IsEnabled = contentFrame.CurrentSourcePageType == typeof(LibraryView);
+            if (!string.IsNullOrWhiteSpace(SearchBox.Text))
+                SearchBox.Text = string.Empty;
+        }
 
         #endregion //titlebar
 

@@ -21,6 +21,7 @@ using Lively.UI.WinUI.Services;
 using Lively.Gallery.Client;
 using CommunityToolkit.Mvvm.Input;
 using Windows.ApplicationModel.Resources;
+using CommunityToolkit.WinUI.UI;
 
 namespace Lively.UI.WinUI.ViewModels
 {
@@ -64,19 +65,14 @@ namespace Lively.UI.WinUI.ViewModels
                 Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperInstallTempDir)
             };
 
-            //LibraryItemsFiltered = new AdvancedCollectionView(LibraryItems, true);
-            //LibraryItemsFiltered.SortDescriptions.Add(new SortDescription("Title", SortDirection.Ascending));
-            //using (LibraryItemsFiltered.DeferRefresh())
-            //{
-            //    foreach (var item in ScanWallpaperFolders(wallpaperScanFolders))
-            //    {
-            //        LibraryItems.Add(item);
-            //    }
-            //}
-
-            foreach (var item in ScanWallpaperFolders(wallpaperScanFolders))
+            LibraryItemsFiltered = new AdvancedCollectionView(LibraryItems, false);
+            LibraryItemsFiltered.SortDescriptions.Add(new SortDescription("Title", SortDirection.Ascending));
+            using (LibraryItemsFiltered.DeferRefresh())
             {
-                LibraryItems.Insert(BinarySearch(LibraryItems, item.Title), item);
+                foreach (var item in ScanWallpaperFolders(wallpaperScanFolders))
+                {
+                    LibraryItems.Add(item);
+                }
             }
 
             LibrarySelectionMode = userSettings.Settings.RememberSelectedScreen ? "Single" : "None";
@@ -98,15 +94,16 @@ namespace Lively.UI.WinUI.ViewModels
 
         #region collections
 
-        //private AdvancedCollectionView _libraryItemsFiltered;
-        //public AdvancedCollectionView LibraryItemsFiltered
-        //{
-        //    get => _libraryItemsFiltered;
-        //    set {
-        //        _libraryItemsFiltered = value;
-        //        OnPropertyChanged();
-        //    }
-        //}
+        private AdvancedCollectionView _libraryItemsFiltered;
+        public AdvancedCollectionView LibraryItemsFiltered
+        {
+            get => _libraryItemsFiltered;
+            set
+            {
+                _libraryItemsFiltered = value;
+                OnPropertyChanged();
+            }
+        }
 
 
         private ObservableCollection<LibraryModel> _libraryItems = new ObservableCollection<LibraryModel>();
@@ -701,9 +698,10 @@ namespace Lively.UI.WinUI.ViewModels
             try
             {
                 var libItem = ScanWallpaperFolder(folderPath);
-                var index = processing ? 0 : BinarySearch(LibraryItems, libItem.Title);
+                //var index = processing ? 0 : BinarySearch(LibraryItems, libItem.Title);
                 libItem.DataType = processing ? LibraryItemType.processing : LibraryItemType.ready;
-                LibraryItems.Insert(index, libItem);
+                //LibraryItems.Insert(index, libItem);
+                LibraryItems.Add(libItem);
                 return libItem;
             }
             catch (Exception e)
@@ -769,30 +767,6 @@ namespace Lively.UI.WinUI.ViewModels
             throw new Exception("Wallpaper not found.");
         }
 
-        private List<LibraryModel> SortWallpapers(List<LibraryModel> data)
-        {
-            try
-            {
-                return data.OrderBy(x => x.LivelyInfo.Title).ToList();
-            }
-            catch (ArgumentNullException)
-            {
-                return null;
-            }
-        }
-
-        public void SortWallpaper(LibraryModel item)
-        {
-            try
-            {
-                LibraryItems.Remove(item);
-                var index = BinarySearch(LibraryItems, item.Title);
-                //LibraryItems.Move(LibraryItems.IndexOf(item), binarySearchIndex);
-                LibraryItems.Insert(index, item);
-            }
-            catch { }
-        }
-
         private int BinarySearch(ObservableCollection<LibraryModel> item, string x)
         {
             if (x is null)
@@ -828,9 +802,12 @@ namespace Lively.UI.WinUI.ViewModels
             wallpaperScanFolders.Clear();
             wallpaperScanFolders.Add(Path.Combine(newDir, Constants.CommonPartialPaths.WallpaperInstallDir));
             wallpaperScanFolders.Add(Path.Combine(newDir, Constants.CommonPartialPaths.WallpaperInstallTempDir));
-            foreach (var item in ScanWallpaperFolders(wallpaperScanFolders))
+            using (LibraryItemsFiltered.DeferRefresh())
             {
-                LibraryItems.Insert(BinarySearch(LibraryItems, item.Title), item);
+                foreach (var item in ScanWallpaperFolders(wallpaperScanFolders))
+                {
+                    LibraryItems.Add(item);
+                }
             }
         }
 
