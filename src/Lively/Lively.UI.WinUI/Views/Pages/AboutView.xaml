@@ -71,7 +71,6 @@
                         <StackPanel Orientation="Vertical">
                             <TextBlock Style="{StaticResource SecondaryTextStyle}">
                                 <Run Text="{Binding UpdateDateText}" />
-                                <Run Text="2021/09/10" />
                             </TextBlock>
                             <HyperlinkButton
                                 Margin="0,2,0,0"
