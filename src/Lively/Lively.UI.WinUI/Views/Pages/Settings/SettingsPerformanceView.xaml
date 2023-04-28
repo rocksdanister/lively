@@ -2,7 +2,7 @@
     x:Class="Lively.UI.WinUI.Views.Pages.Settings.SettingsPerformanceView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:controls="using:SettingsUI.Controls"
+    xmlns:controls="using:WinUICommunity"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Lively.UI.WinUI.Views.Pages.Settings"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -13,120 +13,143 @@
         <ScrollViewer>
             <StackPanel Margin="10,5,10,5">
                 <controls:SettingsGroup x:Uid="WallpaperPlaybackGroup">
-                    <controls:Setting x:Uid="AppFullScreen" Icon="&#xE90E;">
-                        <controls:Setting.ActionContent>
-                            <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedAppFullScreenIndex, Mode=TwoWay}">
-                                <ComboBoxItem x:Uid="TextPerformancePause" />
-                                <ComboBoxItem x:Uid="TextPerformanceNone" />
-                                <ComboBoxItem x:Uid="TextPerformanceKill" Visibility="Collapsed" />
-                            </ComboBox>
-                        </controls:Setting.ActionContent>
-                    </controls:Setting>
+                    <controls:SettingsCard x:Uid="AppFullScreen">
+                        <controls:SettingsCard.HeaderIcon>
+                            <FontIcon Glyph="&#xE90E;" />
+                        </controls:SettingsCard.HeaderIcon>
+                        <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedAppFullScreenIndex, Mode=TwoWay}">
+                            <ComboBoxItem x:Uid="TextPerformancePause" />
+                            <ComboBoxItem x:Uid="TextPerformanceNone" />
+                            <ComboBoxItem x:Uid="TextPerformanceKill" Visibility="Collapsed" />
+                        </ComboBox>
+                    </controls:SettingsCard>
 
-                    <controls:Setting x:Uid="AppFocus" Icon="&#xE90C;">
-                        <controls:Setting.ActionContent>
-                            <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedAppFocusIndex, Mode=TwoWay}">
-                                <ComboBoxItem x:Uid="TextPerformancePause" />
-                                <ComboBoxItem x:Uid="TextPerformanceNone" />
-                                <ComboBoxItem x:Uid="TextPerformanceKill" Visibility="Collapsed" />
-                            </ComboBox>
-                        </controls:Setting.ActionContent>
-                    </controls:Setting>
+                    <controls:SettingsCard x:Uid="AppFocus">
+                        <controls:SettingsCard.HeaderIcon>
+                            <FontIcon Glyph="&#xE90C;" />
+                        </controls:SettingsCard.HeaderIcon>
+                        <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedAppFocusIndex, Mode=TwoWay}">
+                            <ComboBoxItem x:Uid="TextPerformancePause" />
+                            <ComboBoxItem x:Uid="TextPerformanceNone" />
+                            <ComboBoxItem x:Uid="TextPerformanceKill" Visibility="Collapsed" />
+                        </ComboBox>
+                    </controls:SettingsCard>
 
                     <controls:SettingsGroup x:Uid="LaptopWallpaperPlaybackGroup">
-                        <controls:Setting x:Uid="BatteryPower" Icon="&#xE856;">
-                            <controls:Setting.ActionContent>
-                                <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedBatteryPowerIndex, Mode=TwoWay}">
-                                    <ComboBoxItem x:Uid="TextPerformancePause" />
-                                    <ComboBoxItem x:Uid="TextPerformanceNone" />
-                                    <ComboBoxItem x:Uid="TextPerformanceKill" Visibility="Collapsed" />
-                                </ComboBox>
-                            </controls:Setting.ActionContent>
-                        </controls:Setting>
+                        <controls:SettingsCard x:Uid="BatteryPower">
+                            <controls:SettingsCard.HeaderIcon>
+                                <FontIcon Glyph="&#xE856;" />
+                            </controls:SettingsCard.HeaderIcon>
+                            <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedBatteryPowerIndex, Mode=TwoWay}">
+                                <ComboBoxItem x:Uid="TextPerformancePause" />
+                                <ComboBoxItem x:Uid="TextPerformanceNone" />
+                                <ComboBoxItem x:Uid="TextPerformanceKill" Visibility="Collapsed" />
+                            </ComboBox>
+                        </controls:SettingsCard>
 
-                        <controls:Setting x:Uid="PowerSavingModePower" Icon="&#xE863;">
-                            <controls:Setting.ActionContent>
-                                <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedPowerSaveModeIndex, Mode=TwoWay}">
-                                    <ComboBoxItem x:Uid="TextPerformancePause" />
-                                    <ComboBoxItem x:Uid="TextPerformanceNone" />
-                                    <ComboBoxItem x:Uid="TextPerformanceKill" Visibility="Collapsed" />
-                                </ComboBox>
-                            </controls:Setting.ActionContent>
-                        </controls:Setting>
+                        <controls:SettingsCard x:Uid="PowerSavingModePower">
+                            <controls:SettingsCard.HeaderIcon>
+                                <FontIcon Glyph="&#xE863;" />
+                            </controls:SettingsCard.HeaderIcon>
+                            <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedPowerSaveModeIndex, Mode=TwoWay}">
+                                <ComboBoxItem x:Uid="TextPerformancePause" />
+                                <ComboBoxItem x:Uid="TextPerformanceNone" />
+                                <ComboBoxItem x:Uid="TextPerformanceKill" Visibility="Collapsed" />
+                            </ComboBox>
+                        </controls:SettingsCard>
                     </controls:SettingsGroup>
                 </controls:SettingsGroup>
 
                 <controls:SettingsGroup x:Uid="System">
-                    <controls:Setting x:Uid="RemoteDesktopPower" Icon="&#xE703;">
-                        <controls:Setting.ActionContent>
-                            <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedRemoteDestopPowerIndex, Mode=TwoWay}">
-                                <ComboBoxItem x:Uid="TextPerformancePause" />
-                                <ComboBoxItem x:Uid="TextPerformanceNone" />
-                                <ComboBoxItem x:Uid="TextPerformanceKill" Visibility="Collapsed" />
-                            </ComboBox>
-                        </controls:Setting.ActionContent>
-                    </controls:Setting>
+                    <controls:SettingsCard x:Uid="RemoteDesktopPower">
+                        <controls:SettingsCard.HeaderIcon>
+                            <FontIcon Glyph="&#xE703;" />
+                        </controls:SettingsCard.HeaderIcon>
+                        <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedRemoteDestopPowerIndex, Mode=TwoWay}">
+                            <ComboBoxItem x:Uid="TextPerformancePause" />
+                            <ComboBoxItem x:Uid="TextPerformanceNone" />
+                            <ComboBoxItem x:Uid="TextPerformanceKill" Visibility="Collapsed" />
+                        </ComboBox>
+                    </controls:SettingsCard>
 
-                    <controls:Setting x:Uid="DisplayPauseRule" Icon="&#xE7F4;">
-                        <controls:Setting.ActionContent>
-                            <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedDisplayPauseRuleIndex, Mode=TwoWay}">
-                                <ComboBoxItem x:Uid="DisplayPauseRulePerScreen" />
-                                <ComboBoxItem x:Uid="DisplayPauseRuleAllScreen" />
-                            </ComboBox>
-                        </controls:Setting.ActionContent>
-                    </controls:Setting>
+                    <controls:SettingsCard x:Uid="DisplayPauseRule">
+                        <controls:SettingsCard.HeaderIcon>
+                            <FontIcon Glyph="&#xE7F4;" />
+                        </controls:SettingsCard.HeaderIcon>
+                        <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedDisplayPauseRuleIndex, Mode=TwoWay}">
+                            <ComboBoxItem x:Uid="DisplayPauseRulePerScreen" />
+                            <ComboBoxItem x:Uid="DisplayPauseRuleAllScreen" />
+                        </ComboBox>
+                    </controls:SettingsCard>
 
-                    <controls:Setting x:Uid="PauseAlgorithm" Icon="&#xE769;">
-                        <controls:Setting.ActionContent>
-                            <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedPauseAlgorithmIndex, Mode=TwoWay}">
-                                <ComboBoxItem x:Uid="PauseAlgorithmTypeForegroundProcess" />
-                                <ComboBoxItem x:Uid="PauseAlgorithmTypeAllProcess" Visibility="Collapsed" />
-                                <ComboBoxItem x:Uid="PauseAlgorithmTypeExclusiveMode" />
-                            </ComboBox>
-                        </controls:Setting.ActionContent>
-                    </controls:Setting>
+                    <controls:SettingsCard x:Uid="PauseAlgorithm">
+                        <controls:SettingsCard.HeaderIcon>
+                            <FontIcon Glyph="&#xE769;" />
+                        </controls:SettingsCard.HeaderIcon>
+                        <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedPauseAlgorithmIndex, Mode=TwoWay}">
+                            <ComboBoxItem x:Uid="PauseAlgorithmTypeForegroundProcess" />
+                            <ComboBoxItem x:Uid="PauseAlgorithmTypeAllProcess" Visibility="Collapsed" />
+                            <ComboBoxItem x:Uid="PauseAlgorithmTypeExclusiveMode" />
+                        </ComboBox>
+                    </controls:SettingsCard>
+                    <InfoBar
+                        Title="?"
+                        Margin="0,-2.5,0,0"
+                        VerticalAlignment="Top"
+                        IsClosable="False"
+                        IsIconVisible="False"
+                        IsOpen="True"
+                        Severity="Informational">
+                        <InfoBar.ActionButton>
+                            <HyperlinkButton NavigateUri="https://github.com/rocksdanister/lively/wiki/Performance" ToolTipService.ToolTip="https://github.com/rocksdanister/lively/wiki/Performance">
+                                <HyperlinkButton.Content>
+                                    <TextBlock x:Uid="TextLearnMore" TextWrapping="Wrap" />
+                                </HyperlinkButton.Content>
+                            </HyperlinkButton>
+                        </InfoBar.ActionButton>
+                    </InfoBar>
                 </controls:SettingsGroup>
 
                 <controls:SettingsGroup x:Uid="Application">
-                    <controls:SettingExpander IsExpanded="False">
-                        <controls:SettingExpander.Header>
-                            <controls:Setting
-                                x:Uid="AppRules"
-                                Icon="&#xF0E3;"
-                                Style="{StaticResource ExpanderHeaderSettingStyle}" />
-                        </controls:SettingExpander.Header>
-                        <controls:SettingExpander.Content>
-                            <Grid Margin="{StaticResource ExpanderSettingMargin}">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="0.5*" />
-                                </Grid.ColumnDefinitions>
-                                <ListView
-                                    Grid.Column="0"
-                                    MinHeight="200"
-                                    MaxHeight="200"
-                                    Background="{ThemeResource ControlFillColorDefault}"
-                                    CornerRadius="5"
-                                    ItemsSource="{Binding AppRules}"
-                                    SelectedItem="{Binding SelectedAppRuleItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                    SelectionMode="Single">
-                                    <ListView.ItemTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Margin="0,5,0,5" Text="{Binding AppName}" />
-                                        </DataTemplate>
-                                    </ListView.ItemTemplate>
-                                </ListView>
-                                <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                                    <Button Margin="5" Command="{Binding AddAppRuleCommand}">
-                                        <FontIcon FontSize="12" Glyph="&#xE710;" />
-                                    </Button>
-                                    <Button Margin="5" Command="{Binding RemoveAppRuleCommand}">
-                                        <FontIcon FontSize="12" Glyph="&#xE738;" />
-                                    </Button>
-                                </StackPanel>
-                            </Grid>
-                        </controls:SettingExpander.Content>
-                    </controls:SettingExpander>
+                    <controls:SettingsExpander x:Uid="AppRules" IsExpanded="False">
+                        <controls:SettingsExpander.HeaderIcon>
+                            <FontIcon Glyph="&#xF0E3;" />
+                        </controls:SettingsExpander.HeaderIcon>
+                        <controls:SettingsExpander.Items>
+                            <controls:SettingsCard ContentAlignment="Left">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <ListView
+                                        Grid.Column="0"
+                                        MinWidth="500"
+                                        MinHeight="200"
+                                        MaxHeight="200"
+                                        Background="{ThemeResource ControlFillColorDefault}"
+                                        CornerRadius="5"
+                                        ItemsSource="{Binding AppRules}"
+                                        SelectedItem="{Binding SelectedAppRuleItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                        SelectionMode="Single">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Margin="0,5,0,5" Text="{Binding AppName}" />
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                    <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                        <Button Margin="5" Command="{Binding AddAppRuleCommand}">
+                                            <FontIcon FontSize="12" Glyph="&#xE710;" />
+                                        </Button>
+                                        <Button Margin="5" Command="{Binding RemoveAppRuleCommand}">
+                                            <FontIcon FontSize="12" Glyph="&#xE738;" />
+                                        </Button>
+                                    </StackPanel>
+                                </Grid>
+                            </controls:SettingsCard>
+                        </controls:SettingsExpander.Items>
+                    </controls:SettingsExpander>
                 </controls:SettingsGroup>
             </StackPanel>
         </ScrollViewer>

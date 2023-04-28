@@ -2,7 +2,7 @@
     x:Class="Lively.UI.WinUI.Views.Pages.AddWallpaperView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:controls="using:SettingsUI.Controls"
+    xmlns:controls="using:WinUICommunity"
     xmlns:converters="using:CommunityToolkit.WinUI.UI.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Lively.UI.WinUI.Views.Pages"
@@ -70,15 +70,15 @@
         </Grid>
 
         <StackPanel Grid.Row="1">
-            <controls:Setting
-                x:Uid="AddWallpaperFileBrowse"
-                Margin="0,10,0,0"
-                Icon="&#xEB9F;">
+            <controls:SettingsCard x:Uid="AddWallpaperFileBrowse" Margin="0,10,0,0">
+                <controls:SettingsCard.HeaderIcon>
+                    <FontIcon Glyph="&#xEB9F;" />
+                </controls:SettingsCard.HeaderIcon>
                 <Button
                     x:Uid="TextOpen"
                     MinWidth="150"
                     Command="{Binding BrowseFileCommand}" />
-            </controls:Setting>
+            </controls:SettingsCard>
             <InfoBar
                 IsClosable="False"
                 IsOpen="True"
@@ -86,28 +86,31 @@
                 Severity="Error"
                 Visibility="{Binding ErrorMessage, Converter={StaticResource StringVisibilityConverter}, Mode=OneWay}" />
 
-            <controls:SettingExpander Margin="0,2.5,0,0" IsExpanded="True">
-                <controls:SettingExpander.Header>
-                    <controls:Setting
-                        x:Uid="EnterUrl"
-                        Icon="&#xE71B;"
-                        Style="{StaticResource ExpanderHeaderSettingStyle}" />
-                </controls:SettingExpander.Header>
-                <controls:SettingExpander.Content>
-                    <controls:Setting Style="{StaticResource ExpanderContentSettingStyle}">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBox
-                                MinWidth="350"
-                                MaxWidth="350"
-                                HorizontalAlignment="Left"
-                                Text="{Binding WebUrlText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                            <Button Margin="5,0,0,0" Command="{Binding BrowseWebCommand}">
+            <controls:SettingsExpander
+                x:Uid="EnterUrl"
+                Margin="0,2.5,0,0"
+                IsExpanded="True">
+                <controls:SettingsExpander.HeaderIcon>
+                    <FontIcon Glyph="&#xE71B;" />
+                </controls:SettingsExpander.HeaderIcon>
+                <controls:SettingsExpander.Items>
+                    <controls:SettingsCard ContentAlignment="Left">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="325" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBox Grid.Column="0" Text="{Binding WebUrlText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            <Button
+                                Grid.Column="1"
+                                Margin="5,0,0,0"
+                                Command="{Binding BrowseWebCommand}">
                                 <FontIcon Glyph="&#xE72A;" />
                             </Button>
-                        </StackPanel>
-                    </controls:Setting>
-                </controls:SettingExpander.Content>
-            </controls:SettingExpander>
+                        </Grid>
+                    </controls:SettingsCard>
+                </controls:SettingsExpander.Items>
+            </controls:SettingsExpander>
         </StackPanel>
     </Grid>
 </Page>

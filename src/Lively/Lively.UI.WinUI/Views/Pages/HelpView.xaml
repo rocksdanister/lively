@@ -2,7 +2,7 @@
     x:Class="Lively.UI.WinUI.Views.Pages.HelpView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:controls="using:SettingsUI.Controls"
+    xmlns:controls="using:WinUICommunity"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Lively.UI.WinUI.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -11,35 +11,65 @@
 
     <Grid>
         <StackPanel Orientation="Vertical">
-            <controls:Setting x:Uid="Website" Icon="&#xEB41;">
-                <controls:Setting.Description>
-                    <HyperlinkButton x:Uid="OfficialWebpage" NavigateUri="https://livelywallpaper.net/" />
-                </controls:Setting.Description>
-            </controls:Setting>
+            <controls:SettingsCard
+                x:Uid="Website"
+                Click="WebsiteCard_Click"
+                IsClickEnabled="True">
+                <controls:SettingsCard.HeaderIcon>
+                    <FontIcon Glyph="&#xEB41;" />
+                </controls:SettingsCard.HeaderIcon>
+                <controls:SettingsCard.ActionIcon>
+                    <FontIcon Glyph="&#xE8A7;" />
+                </controls:SettingsCard.ActionIcon>
+            </controls:SettingsCard>
 
-            <controls:Setting x:Uid="Documentation" Icon="&#xE736;">
-                <controls:Setting.Description>
-                    <HyperlinkButton x:Uid="DocumentationPage" NavigateUri="https://github.com/rocksdanister/lively/wiki" />
-                </controls:Setting.Description>
-            </controls:Setting>
+            <controls:SettingsCard
+                x:Uid="Documentation"
+                Click="DocumentationCard_Click"
+                IsClickEnabled="True">
+                <controls:SettingsCard.HeaderIcon>
+                    <FontIcon Glyph="&#xE736;" />
+                </controls:SettingsCard.HeaderIcon>
+                <controls:SettingsCard.ActionIcon>
+                    <FontIcon Glyph="&#xE8A7;" />
+                </controls:SettingsCard.ActionIcon>
+            </controls:SettingsCard>
 
-            <controls:Setting x:Uid="Community" Icon="&#xEC27;">
-                <controls:Setting.Description>
-                    <HyperlinkButton x:Uid="CommunityPage" NavigateUri="https://www.reddit.com/r/LivelyWallpaper/" />
-                </controls:Setting.Description>
-            </controls:Setting>
+            <controls:SettingsCard
+                x:Uid="Community"
+                Click="CommunityCard_Click"
+                IsClickEnabled="True">
+                <controls:SettingsCard.HeaderIcon>
+                    <FontIcon Glyph="&#xEC27;" />
+                </controls:SettingsCard.HeaderIcon>
+                <controls:SettingsCard.ActionIcon>
+                    <FontIcon Glyph="&#xE8A7;" />
+                </controls:SettingsCard.ActionIcon>
+            </controls:SettingsCard>
 
-            <controls:Setting x:Uid="SourceCode" Icon="&#xE716;">
-                <controls:Setting.Description>
-                    <HyperlinkButton x:Uid="GitHubStar" NavigateUri="https://github.com/rocksdanister/lively" />
-                </controls:Setting.Description>
-            </controls:Setting>
+            <controls:SettingsCard
+                x:Uid="SourceCode"
+                Click="SoureCodeCard_Click"
+                IsClickEnabled="True">
+                <controls:SettingsCard.HeaderIcon>
+                    <FontIcon Glyph="&#xE716;" />
+                </controls:SettingsCard.HeaderIcon>
+                <controls:SettingsCard.ActionIcon>
+                    <FontIcon Glyph="&#xE8A7;" />
+                </controls:SettingsCard.ActionIcon>
+            </controls:SettingsCard>
 
-            <controls:Setting x:Uid="ReportBug" Icon="&#xEBE8;">
-                <controls:Setting.Description>
-                    <HyperlinkButton x:Uid="ReportBugPage" NavigateUri="https://github.com/rocksdanister/lively/issues" />
-                </controls:Setting.Description>
-            </controls:Setting>
+            <controls:SettingsCard
+                x:Uid="ReportBug"
+                Click="ReportBugCard_Click"
+                IsClickEnabled="True">
+                <controls:SettingsCard.HeaderIcon>
+                    <FontIcon Glyph="&#xEBE8;" />
+                </controls:SettingsCard.HeaderIcon>
+                <controls:SettingsCard.ActionIcon>
+                    <FontIcon Glyph="&#xE8A7;" />
+                </controls:SettingsCard.ActionIcon>
+            </controls:SettingsCard>
         </StackPanel>
     </Grid>
 </Page>
