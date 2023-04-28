@@ -22,7 +22,6 @@ using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.UI.Xaml.Media.Imaging;
-using SettingsUI.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -39,6 +38,7 @@ using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources;
 using WinRT.Interop;
 using WinUIEx;
+using WinUICommunity;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.

@@ -3,13 +3,13 @@ using Lively.UI.WinUI.ViewModels;
 using Lively.UI.WinUI.Views.Pages;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml.Controls;
-using SettingsUI.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources;
+using WinUICommunity;
 using static Lively.UI.WinUI.Services.IDialogService;
 
 namespace Lively.UI.WinUI.Services

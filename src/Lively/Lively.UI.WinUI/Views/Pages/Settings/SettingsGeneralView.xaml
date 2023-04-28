@@ -3,7 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:animations="using:CommunityToolkit.WinUI.UI.Animations"
-    xmlns:controls="using:SettingsUI.Controls"
+    xmlns:controls="using:WinUICommunity"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Lively.UI.WinUI.Views.Pages.Settings"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -13,18 +13,21 @@
         <ScrollViewer>
             <StackPanel Margin="10,5,10,5">
                 <controls:SettingsGroup x:Uid="AppearanceBehaviour">
-                    <controls:Setting x:Uid="Startup" Icon="&#xE768;">
-                        <controls:Setting.ActionContent>
-                            <ToggleSwitch IsOn="{Binding IsStartup, Mode=TwoWay}" />
-                        </controls:Setting.ActionContent>
-                    </controls:Setting>
+                    <controls:SettingsCard x:Uid="Startup">
+                        <controls:SettingsCard.HeaderIcon>
+                            <FontIcon Glyph="&#xE768;" />
+                        </controls:SettingsCard.HeaderIcon>
+                        <ToggleSwitch IsOn="{Binding IsStartup, Mode=TwoWay}" />
+                    </controls:SettingsCard>
 
-                    <controls:Setting x:Uid="HideSysTray" Icon="&#xED35;">
-                        <controls:Setting.ActionContent>
-                            <ToggleSwitch IsOn="{Binding IsSysTrayIconVisible, Mode=TwoWay}" />
-                        </controls:Setting.ActionContent>
-                    </controls:Setting>
+                    <controls:SettingsCard x:Uid="HideSysTray">
+                        <controls:SettingsCard.HeaderIcon>
+                            <FontIcon Glyph="&#xED35;" />
+                        </controls:SettingsCard.HeaderIcon>
+                        <ToggleSwitch IsOn="{Binding IsSysTrayIconVisible, Mode=TwoWay}" />
+                    </controls:SettingsCard>
 
+                    <!--  depreciated  -->
                     <!--
                     <controls:Setting x:Uid="FastUI" Icon="&#xEC4A;">
                         <controls:Setting.ActionContent>
@@ -33,42 +36,42 @@
                     </controls:Setting>
                     -->
 
-                    <controls:Setting x:Uid="UIMode" Icon="&#xE8AB;">
-                        <controls:Setting.ActionContent>
-                            <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedLivelyUIModeIndex, Mode=TwoWay}">
-                                <ComboBoxItem x:Uid="UIModeNormal" />
-                                <ComboBoxItem x:Uid="UIModeLite" />
-                                <ComboBoxItem Visibility="Collapsed">Headless</ComboBoxItem>
-                            </ComboBox>
-                        </controls:Setting.ActionContent>
-                    </controls:Setting>
+                    <controls:SettingsCard x:Uid="UIMode">
+                        <controls:SettingsCard.HeaderIcon>
+                            <FontIcon Glyph="&#xE8AB;" />
+                        </controls:SettingsCard.HeaderIcon>
+                        <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedLivelyUIModeIndex, Mode=TwoWay}">
+                            <ComboBoxItem x:Uid="UIModeNormal" />
+                            <ComboBoxItem x:Uid="UIModeLite" />
+                            <ComboBoxItem Visibility="Collapsed">Headless</ComboBoxItem>
+                        </ComboBox>
+                    </controls:SettingsCard>
 
-                    <Button Command="{Binding ThemeBackgroundCommand}" Style="{StaticResource SettingButtonStyle}">
-                        <controls:Setting
-                            x:Uid="AppTheme"
-                            Icon="&#xE790;"
-                            Style="{StaticResource ExpanderHeaderSettingStyle}">
-                            <controls:Setting.ActionContent>
-                                <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE76C;" />
-                            </controls:Setting.ActionContent>
-                        </controls:Setting>
-                    </Button>
+                    <controls:SettingsCard
+                        x:Uid="AppTheme"
+                        Command="{Binding ThemeBackgroundCommand}"
+                        IsClickEnabled="True">
+                        <controls:SettingsCard.HeaderIcon>
+                            <FontIcon Glyph="&#xE790;" />
+                        </controls:SettingsCard.HeaderIcon>
+                        <controls:SettingsCard.ActionIcon>
+                            <FontIcon Glyph="&#xE76C;" />
+                        </controls:SettingsCard.ActionIcon>
+                    </controls:SettingsCard>
 
-                    <controls:Setting
-                        x:Uid="Language"
-                        Icon="&#xF2B7;"
-                        IsEnabled="False">
-                        <controls:Setting.ActionContent>
-                            <StackPanel>
-                                <ComboBox
-                                    MinWidth="{StaticResource SettingActionControlMinWidth}"
-                                    DisplayMemberPath="Language"
-                                    ItemsSource="{Binding LanguageItems}"
-                                    SelectedIndex="0"
-                                    SelectedItem="{Binding SelectedLanguageItem, Mode=TwoWay}" />
-                            </StackPanel>
-                        </controls:Setting.ActionContent>
-                    </controls:Setting>
+                    <controls:SettingsCard x:Uid="Language" IsEnabled="False">
+                        <controls:SettingsCard.HeaderIcon>
+                            <FontIcon Glyph="&#xF2B7;" />
+                        </controls:SettingsCard.HeaderIcon>
+                        <StackPanel>
+                            <ComboBox
+                                MinWidth="{StaticResource SettingActionControlMinWidth}"
+                                DisplayMemberPath="Language"
+                                ItemsSource="{Binding LanguageItems}"
+                                SelectedIndex="0"
+                                SelectedItem="{Binding SelectedLanguageItem, Mode=TwoWay}" />
+                        </StackPanel>
+                    </controls:SettingsCard>
                     <InfoBar
                         x:Uid="TextHelpTranslate"
                         Margin="0,-2.5,0,0"
@@ -83,7 +86,7 @@
                                 </HyperlinkButton.Content>
                             </HyperlinkButton>
                         </InfoBar.ActionButton>
-                        <animations:Implicit.ShowAnimations>
+                        <!--<animations:Implicit.ShowAnimations>
                             <animations:TranslationAnimation
                                 From="0,-15,0"
                                 To="0"
@@ -102,52 +105,42 @@
                                 From="0"
                                 To="0,-15,0"
                                 Duration="0:0:0.2" />
-                        </animations:Implicit.HideAnimations>
+                        </animations:Implicit.HideAnimations>-->
                     </InfoBar>
                 </controls:SettingsGroup>
 
                 <controls:SettingsGroup x:Uid="AudioGroup">
-                    <controls:SettingExpander IsExpanded="True">
-                        <controls:SettingExpander.Header>
-                            <controls:Setting
-                                x:Name="audioBtn"
-                                x:Uid="Audio"
-                                Icon="&#xE767;"
-                                Style="{StaticResource ExpanderHeaderSettingStyle}">
-                                <controls:Setting.ActionContent>
-                                    <Slider
-                                        MinWidth="{StaticResource SettingActionControlMinWidth}"
-                                        Maximum="100"
-                                        Minimum="0"
-                                        ValueChanged="Slider_ValueChanged"
-                                        Value="{Binding GlobalWallpaperVolume, Mode=TwoWay}" />
-                                </controls:Setting.ActionContent>
-                            </controls:Setting>
-                        </controls:SettingExpander.Header>
-                        <controls:SettingExpander.Content>
-                            <CheckBox
-                                x:Uid="AudioFocused"
-                                Margin="{StaticResource ExpanderSettingMargin}"
-                                IsChecked="{Binding IsAudioOnlyOnDesktop, Mode=TwoWay}" />
-                        </controls:SettingExpander.Content>
-                    </controls:SettingExpander>
+                    <controls:SettingsExpander
+                        x:Name="audioBtn"
+                        x:Uid="Audio"
+                        IsExpanded="True">
+                        <controls:SettingsExpander.HeaderIcon>
+                            <FontIcon Glyph="&#xE767;" />
+                        </controls:SettingsExpander.HeaderIcon>
+                        <Slider
+                            MinWidth="{StaticResource SettingActionControlMinWidth}"
+                            Maximum="100"
+                            Minimum="0"
+                            ValueChanged="Slider_ValueChanged"
+                            Value="{Binding GlobalWallpaperVolume, Mode=TwoWay}" />
+                        <controls:SettingsExpander.Items>
+                            <controls:SettingsCard ContentAlignment="Left">
+                                <CheckBox x:Uid="AudioFocused" IsChecked="{Binding IsAudioOnlyOnDesktop, Mode=TwoWay}" />
+                            </controls:SettingsCard>
+                        </controls:SettingsExpander.Items>
+                    </controls:SettingsExpander>
                 </controls:SettingsGroup>
 
+                <!--  Icon="&#xF12B;"  -->
                 <controls:SettingsGroup x:Uid="WallpaperDirGroup" Header="File">
-                    <controls:SettingExpander IsExpanded="False">
-                        <controls:SettingExpander.Header>
-                            <controls:Setting
-                                x:Uid="WallpaperDir"
-                                Icon="&#xF12B;"
-                                Style="{StaticResource ExpanderHeaderSettingStyle}">
-                                <controls:Setting.ActionContent>
-                                    <ProgressRing IsActive="{Binding WallpaperDirectoryChangeOngoing}" />
-                                </controls:Setting.ActionContent>
-                            </controls:Setting>
-                        </controls:SettingExpander.Header>
-                        <controls:SettingExpander.Content>
-                            <StackPanel>
-                                <StackPanel Margin="{StaticResource ExpanderSettingMargin}" Orientation="Horizontal">
+                    <controls:SettingsExpander x:Uid="WallpaperDir" IsExpanded="False">
+                        <controls:SettingsExpander.HeaderIcon>
+                            <FontIcon Glyph="&#xF12B;" />
+                        </controls:SettingsExpander.HeaderIcon>
+                        <ProgressRing IsActive="{Binding WallpaperDirectoryChangeOngoing}" />
+                        <controls:SettingsExpander.Items>
+                            <controls:SettingsCard ContentAlignment="Left">
+                                <StackPanel Orientation="Horizontal">
                                     <Button
                                         MinWidth="450"
                                         MinHeight="35"
@@ -162,14 +155,12 @@
                                         <SymbolIcon Symbol="OpenLocal" />
                                     </Button>
                                 </StackPanel>
-                                <Rectangle Style="{StaticResource ExpanderSeparatorStyle}" />
-                                <CheckBox
-                                    x:Uid="WallpaperDirMoveExisting"
-                                    Margin="{StaticResource ExpanderSettingMargin}"
-                                    IsChecked="{Binding MoveExistingWallpaperNewDir, Mode=TwoWay}" />
-                            </StackPanel>
-                        </controls:SettingExpander.Content>
-                    </controls:SettingExpander>
+                            </controls:SettingsCard>
+                            <controls:SettingsCard ContentAlignment="Left">
+                                <CheckBox x:Uid="WallpaperDirMoveExisting" IsChecked="{Binding MoveExistingWallpaperNewDir, Mode=TwoWay}" />
+                            </controls:SettingsCard>
+                        </controls:SettingsExpander.Items>
+                    </controls:SettingsExpander>
                 </controls:SettingsGroup>
             </StackPanel>
         </ScrollViewer>

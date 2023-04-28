@@ -44,7 +44,7 @@ namespace Lively.UI.WinUI.Views.Pages.Settings
         }
 
         private void UpdateAudioSliderIcon(double volume) => 
-            audioBtn.Icon = audioIcons[(int)Math.Ceiling((audioIcons.Length - 1) * volume / 100)];
+            audioBtn.HeaderIcon = audioIcons[(int)Math.Ceiling((audioIcons.Length - 1) * volume / 100)];
 
         private void Slider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e) => UpdateAudioSliderIcon(e.NewValue);
 

@@ -3,7 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:animations="using:CommunityToolkit.WinUI.UI.Animations"
-    xmlns:controls="using:SettingsUI.Controls"
+    xmlns:controls="using:WinUICommunity"
     xmlns:customconverters="using:Lively.UI.WinUI.Helpers.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Lively.UI.WinUI.Views.Pages.Settings"
@@ -18,51 +18,46 @@
         <ScrollViewer>
             <StackPanel Margin="10,5,10,5">
                 <controls:SettingsGroup x:Uid="AppearanceBehaviour">
-                    <controls:Setting x:Uid="LockscreenPicture" Visibility="Collapsed">
-                        <controls:Setting.ActionContent>
-                            <ToggleSwitch IsOn="{Binding IsLockScreenAutoWallpaper, Mode=TwoWay}" />
-                        </controls:Setting.ActionContent>
-                    </controls:Setting>
+                    <!--  depreciated  -->
+                    <!--<controls:SettingsCard x:Uid="LockscreenPicture" Visibility="Collapsed">
+                        <ToggleSwitch IsOn="{Binding IsLockScreenAutoWallpaper, Mode=TwoWay}" />
+                    </controls:SettingsCard>-->
 
-                    <controls:Setting x:Uid="DesktopPicture" Icon="&#xE8B9;">
-                        <controls:Setting.ActionContent>
-                            <ToggleSwitch IsOn="{Binding IsDesktopAutoWallpaper, Mode=TwoWay}" />
-                        </controls:Setting.ActionContent>
-                    </controls:Setting>
+                    <controls:SettingsCard x:Uid="DesktopPicture">
+                        <controls:SettingsCard.HeaderIcon>
+                            <FontIcon Glyph="&#xE8B9;" />
+                        </controls:SettingsCard.HeaderIcon>
+                        <ToggleSwitch IsOn="{Binding IsDesktopAutoWallpaper, Mode=TwoWay}" />
+                    </controls:SettingsCard>
 
-                    <controls:Setting x:Uid="WallpaperFit" Icon="&#xE73F;">
-                        <controls:Setting.ActionContent>
-                            <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedWallpaperScalingIndex, Mode=TwoWay}">
-                                <ComboBoxItem x:Uid="WallpaperFitNone" />
-                                <ComboBoxItem x:Uid="WallpaperFitFill" />
-                                <ComboBoxItem x:Uid="WallpaperFitUniform" />
-                                <ComboBoxItem x:Uid="WallpaperFitUniformToFill" />
-                            </ComboBox>
-                        </controls:Setting.ActionContent>
-                    </controls:Setting>
+                    <controls:SettingsCard x:Uid="WallpaperFit">
+                        <controls:SettingsCard.HeaderIcon>
+                            <FontIcon Glyph="&#xE73F;" />
+                        </controls:SettingsCard.HeaderIcon>
+                        <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedWallpaperScalingIndex, Mode=TwoWay}">
+                            <ComboBoxItem x:Uid="WallpaperFitNone" />
+                            <ComboBoxItem x:Uid="WallpaperFitFill" />
+                            <ComboBoxItem x:Uid="WallpaperFitUniform" />
+                            <ComboBoxItem x:Uid="WallpaperFitUniformToFill" />
+                        </ComboBox>
+                    </controls:SettingsCard>
                 </controls:SettingsGroup>
 
-                <controls:SettingExpander IsExpanded="True">
-                    <controls:SettingExpander.Header>
-                        <controls:Setting
-                            x:Uid="WallpaperInput"
-                            Icon="&#xEC77;"
-                            Style="{StaticResource ExpanderHeaderSettingStyle}">
-                            <controls:Setting.ActionContent>
-                                <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedWallpaperInputMode, Mode=TwoWay}">
-                                    <ComboBoxItem x:Uid="TextOff" />
-                                    <ComboBoxItem x:Uid="TextMouse" />
-                                    <ComboBoxItem x:Uid="TextKeyboard" />
-                                </ComboBox>
-                            </controls:Setting.ActionContent>
-                        </controls:Setting>
-                    </controls:SettingExpander.Header>
-                    <controls:SettingExpander.Content>
-                        <controls:Setting HorizontalAlignment="Left" Style="{StaticResource ExpanderContentSettingStyle}">
+                <controls:SettingsExpander x:Uid="WallpaperInput" IsExpanded="True">
+                    <controls:SettingsExpander.HeaderIcon>
+                        <FontIcon Glyph="&#xEC77;" />
+                    </controls:SettingsExpander.HeaderIcon>
+                    <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedWallpaperInputMode, Mode=TwoWay}">
+                        <ComboBoxItem x:Uid="TextOff" />
+                        <ComboBoxItem x:Uid="TextMouse" />
+                        <ComboBoxItem x:Uid="TextKeyboard" />
+                    </ComboBox>
+                    <controls:SettingsExpander.Items>
+                        <controls:SettingsCard ContentAlignment="Left">
                             <CheckBox x:Uid="MouseInteractOnDesktop" IsChecked="{Binding MouseMoveOnDesktop, Mode=TwoWay}" />
-                        </controls:Setting>
-                    </controls:SettingExpander.Content>
-                </controls:SettingExpander>
+                        </controls:SettingsCard>
+                    </controls:SettingsExpander.Items>
+                </controls:SettingsExpander>
                 <InfoBar
                     x:Uid="IconsHidden"
                     Margin="0,-2.5,0,0"
@@ -71,7 +66,7 @@
                     IsOpen="True"
                     Severity="Informational"
                     Visibility="{Binding IsDesktopIconsHidden, Converter={StaticResource VisibilityConverter}, Mode=OneWay}">
-                    <animations:Implicit.ShowAnimations>
+                    <!--<animations:Implicit.ShowAnimations>
                         <animations:TranslationAnimation
                             From="0,-15,0"
                             To="0"
@@ -90,32 +85,26 @@
                             From="0"
                             To="0,-15,0"
                             Duration="0:0:0.2" />
-                    </animations:Implicit.HideAnimations>
+                    </animations:Implicit.HideAnimations>-->
                 </InfoBar>
 
                 <controls:SettingsGroup Header="Plugins">
-                    <controls:SettingExpander IsExpanded="True">
-                        <controls:SettingExpander.Header>
-                            <controls:Setting x:Uid="VideoPlayer" Style="{StaticResource ExpanderHeaderSettingStyle}">
-                                <controls:Setting.ActionContent>
-                                    <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedVideoPlayerIndex, Mode=TwoWay}">
-                                        <ComboBoxItem>wmf</ComboBoxItem>
-                                        <ComboBoxItem Visibility="Collapsed">libVLC</ComboBoxItem>
-                                        <ComboBoxItem Visibility="Collapsed">libVLC(External)</ComboBoxItem>
-                                        <ComboBoxItem Visibility="Collapsed">libMPV</ComboBoxItem>
-                                        <ComboBoxItem Visibility="Collapsed">libMPV(External)</ComboBoxItem>
-                                        <ComboBoxItem>mpv</ComboBoxItem>
-                                        <ComboBoxItem>vlc</ComboBoxItem>
-                                    </ComboBox>
-                                </controls:Setting.ActionContent>
-                            </controls:Setting>
-                        </controls:SettingExpander.Header>
-                        <controls:SettingExpander.Content>
-                            <controls:Setting x:Uid="VideoHardwareDecode" Style="{StaticResource ExpanderContentSettingStyle}">
-                                <CheckBox IsChecked="{Binding VideoPlayerHWDecode, Mode=TwoWay}" />
-                            </controls:Setting>
-                        </controls:SettingExpander.Content>
-                    </controls:SettingExpander>
+                    <controls:SettingsExpander x:Uid="VideoPlayer" IsExpanded="True">
+                        <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedVideoPlayerIndex, Mode=TwoWay}">
+                            <ComboBoxItem>wmf</ComboBoxItem>
+                            <ComboBoxItem Visibility="Collapsed">libVLC</ComboBoxItem>
+                            <ComboBoxItem Visibility="Collapsed">libVLC(External)</ComboBoxItem>
+                            <ComboBoxItem Visibility="Collapsed">libMPV</ComboBoxItem>
+                            <ComboBoxItem Visibility="Collapsed">libMPV(External)</ComboBoxItem>
+                            <ComboBoxItem>mpv</ComboBoxItem>
+                            <ComboBoxItem>vlc</ComboBoxItem>
+                        </ComboBox>
+                        <controls:SettingsExpander.Items>
+                            <controls:SettingsCard x:Uid="VideoHardwareDecode">
+                                <ToggleSwitch IsOn="{Binding VideoPlayerHWDecode, Mode=TwoWay}" />
+                            </controls:SettingsCard>
+                        </controls:SettingsExpander.Items>
+                    </controls:SettingsExpander>
                     <InfoBar
                         x:Uid="PluginNotFound"
                         Margin="0,-2.5,0,0"
@@ -131,7 +120,7 @@
                                 </HyperlinkButton.Content>
                             </HyperlinkButton>
                         </InfoBar.ActionButton>
-                        <animations:Implicit.ShowAnimations>
+                        <!--<animations:Implicit.ShowAnimations>
                             <animations:TranslationAnimation
                                 From="0,-15,0"
                                 To="0"
@@ -150,36 +139,23 @@
                                 From="0"
                                 To="0,-15,0"
                                 Duration="0:0:0.2" />
-                        </animations:Implicit.HideAnimations>
+                        </animations:Implicit.HideAnimations>-->
                     </InfoBar>
 
-                    <controls:SettingExpander IsExpanded="False">
-                        <controls:SettingExpander.Header>
-                            <controls:Setting x:Uid="WebBrowser" Style="{StaticResource ExpanderHeaderSettingStyle}">
-                                <controls:Setting.ActionContent>
-                                    <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedWebBrowserIndex, Mode=TwoWay}">
-                                        <ComboBoxItem>CefSharp</ComboBoxItem>
-                                        <ComboBoxItem>WebView2</ComboBoxItem>
-                                    </ComboBox>
-                                </controls:Setting.ActionContent>
-                            </controls:Setting>
-                        </controls:SettingExpander.Header>
-                        <controls:SettingExpander.Content>
-                            <StackPanel>
-                                <controls:Setting x:Uid="WebBrowserDiskCache" Style="{StaticResource ExpanderContentSettingStyle}">
-                                    <controls:Setting.ActionContent>
-                                        <CheckBox IsChecked="{Binding CefDiskCache, Mode=TwoWay}" />
-                                    </controls:Setting.ActionContent>
-                                </controls:Setting>
-
-                                <controls:Setting x:Uid="BrowserDebuggingPort" Style="{StaticResource ExpanderContentSettingStyle}">
-                                    <controls:Setting.ActionContent>
-                                        <NumberBox MinWidth="200" Text="{Binding WebDebuggingPort, Mode=TwoWay}" />
-                                    </controls:Setting.ActionContent>
-                                </controls:Setting>
-                            </StackPanel>
-                        </controls:SettingExpander.Content>
-                    </controls:SettingExpander>
+                    <controls:SettingsExpander x:Uid="WebBrowser" IsExpanded="False">
+                        <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedWebBrowserIndex, Mode=TwoWay}">
+                            <ComboBoxItem>CefSharp</ComboBoxItem>
+                            <ComboBoxItem>WebView2</ComboBoxItem>
+                        </ComboBox>
+                        <controls:SettingsExpander.Items>
+                            <controls:SettingsCard x:Uid="WebBrowserDiskCache">
+                                <ToggleSwitch IsOn="{Binding CefDiskCache, Mode=TwoWay}" />
+                            </controls:SettingsCard>
+                            <controls:SettingsCard x:Uid="BrowserDebuggingPort">
+                                <NumberBox MinWidth="200" Text="{Binding WebDebuggingPort, Mode=TwoWay}" />
+                            </controls:SettingsCard>
+                        </controls:SettingsExpander.Items>
+                    </controls:SettingsExpander>
                     <InfoBar
                         x:Uid="PluginNotFound"
                         Margin="0,-2.5,0,0"
@@ -195,7 +171,7 @@
                                 </HyperlinkButton.Content>
                             </HyperlinkButton>
                         </InfoBar.ActionButton>
-                        <animations:Implicit.ShowAnimations>
+                        <!--<animations:Implicit.ShowAnimations>
                             <animations:TranslationAnimation
                                 From="0,-15,0"
                                 To="0"
@@ -214,18 +190,16 @@
                                 From="0"
                                 To="0,-15,0"
                                 Duration="0:0:0.2" />
-                        </animations:Implicit.HideAnimations>
+                        </animations:Implicit.HideAnimations>-->
                     </InfoBar>
 
-                    <controls:Setting x:Uid="GifPlayer">
-                        <controls:Setting.ActionContent>
-                            <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedGifPlayerIndex, Mode=TwoWay}">
-                                <ComboBoxItem>Win10</ComboBoxItem>
-                                <ComboBoxItem Visibility="Collapsed">libMPV(External)</ComboBoxItem>
-                                <ComboBoxItem>mpv</ComboBoxItem>
-                            </ComboBox>
-                        </controls:Setting.ActionContent>
-                    </controls:Setting>
+                    <controls:SettingsCard x:Uid="GifPlayer">
+                        <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedGifPlayerIndex, Mode=TwoWay}">
+                            <ComboBoxItem>Win10</ComboBoxItem>
+                            <ComboBoxItem Visibility="Collapsed">libMPV(External)</ComboBoxItem>
+                            <ComboBoxItem>mpv</ComboBoxItem>
+                        </ComboBox>
+                    </controls:SettingsCard>
                     <InfoBar
                         x:Uid="PluginNotFound"
                         Margin="0,-2.5,0,0"
@@ -241,7 +215,7 @@
                                 </HyperlinkButton.Content>
                             </HyperlinkButton>
                         </InfoBar.ActionButton>
-                        <animations:Implicit.ShowAnimations>
+                        <!--<animations:Implicit.ShowAnimations>
                             <animations:TranslationAnimation
                                 From="0,-15,0"
                                 To="0"
@@ -260,31 +234,28 @@
                                 From="0"
                                 To="0,-15,0"
                                 Duration="0:0:0.2" />
-                        </animations:Implicit.HideAnimations>
+                        </animations:Implicit.HideAnimations>-->
                     </InfoBar>
 
-                    <controls:SettingExpander IsExpanded="False" Visibility="{Binding IsStreamSupported, Converter={StaticResource VisibilityConverter}, Mode=OneWay}">
-                        <controls:SettingExpander.Header>
-                            <controls:Setting x:Uid="StreamWallpaperVideoQuality" Style="{StaticResource ExpanderHeaderSettingStyle}">
-                                <controls:Setting.ActionContent>
-                                    <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedWallpaperStreamQualityIndex, Mode=TwoWay}">
-                                        <ComboBoxItem>144p</ComboBoxItem>
-                                        <ComboBoxItem>240p</ComboBoxItem>
-                                        <ComboBoxItem>360p</ComboBoxItem>
-                                        <ComboBoxItem>480p</ComboBoxItem>
-                                        <ComboBoxItem>720p</ComboBoxItem>
-                                        <ComboBoxItem>1080p</ComboBoxItem>
-                                        <ComboBoxItem>1080p+</ComboBoxItem>
-                                    </ComboBox>
-                                </controls:Setting.ActionContent>
-                            </controls:Setting>
-                        </controls:SettingExpander.Header>
-                        <controls:SettingExpander.Content>
-                            <controls:Setting x:Uid="StreamWallpaperDetect" Style="{StaticResource ExpanderContentSettingStyle}">
-                                <CheckBox IsChecked="{Binding DetectStreamWallpaper, Mode=TwoWay}" />
-                            </controls:Setting>
-                        </controls:SettingExpander.Content>
-                    </controls:SettingExpander>
+                    <controls:SettingsExpander
+                        x:Uid="StreamWallpaperVideoQuality"
+                        IsExpanded="False"
+                        Visibility="{Binding IsStreamSupported, Converter={StaticResource VisibilityConverter}, Mode=OneWay}">
+                        <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedWallpaperStreamQualityIndex, Mode=TwoWay}">
+                            <ComboBoxItem>144p</ComboBoxItem>
+                            <ComboBoxItem>240p</ComboBoxItem>
+                            <ComboBoxItem>360p</ComboBoxItem>
+                            <ComboBoxItem>480p</ComboBoxItem>
+                            <ComboBoxItem>720p</ComboBoxItem>
+                            <ComboBoxItem>1080p</ComboBoxItem>
+                            <ComboBoxItem>1080p+</ComboBoxItem>
+                        </ComboBox>
+                        <controls:SettingsExpander.Items>
+                            <controls:SettingsCard x:Uid="StreamWallpaperDetect">
+                                <ToggleSwitch IsOn="{Binding DetectStreamWallpaper, Mode=TwoWay}" />
+                            </controls:SettingsCard>
+                        </controls:SettingsExpander.Items>
+                    </controls:SettingsExpander>
                 </controls:SettingsGroup>
             </StackPanel>
         </ScrollViewer>
