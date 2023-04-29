@@ -47,6 +47,8 @@ namespace Lively.Common
             new LanguagesModel("български(bg)", new string[] { "bg", "bg-BG" }),
             new LanguagesModel("Norwegian Bokmål(nb)", new string[] { "nb", "nb-NO" }),
             new LanguagesModel("lietuvių kalba(lt)", new string[] { "lt", "lt-LT" }),
+            new LanguagesModel("Afrikaans(af)", new string[] { "af", "af-ZA" }),
+            new LanguagesModel("Dansk(da)", new string[] { "da", "da-DK" }),
         };
 
         public static ReadOnlyCollection<LanguagesModel> Languages => Array.AsReadOnly(languages);
