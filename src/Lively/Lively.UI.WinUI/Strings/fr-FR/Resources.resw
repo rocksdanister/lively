@@ -121,7 +121,7 @@
     <value>Lire l'audio uniquement lorsque le bureau est au premier plan</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
-    <value>Définir le volume sonore des fonds d'écran</value>
+    <value>Niveau de volume de tous les fonds d'écran</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
     <value>Volume principal</value>
@@ -129,31 +129,31 @@
   <data name="AudioGroup.Header" xml:space="preserve">
     <value>Son</value>
   </data>
-  <data name="CommunityPage.Content" xml:space="preserve">
+  <data name="Community.Description" xml:space="preserve">
     <value>Forum de discussion en ligne</value>
   </data>
-  <data name="DocumentationPage.Content" xml:space="preserve">
-    <value>Aide et documentation de l'API</value>
+  <data name="Documentation.Description" xml:space="preserve">
+    <value>Documentation de l'API et aide</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
-    <value>Lively a rencontré une erreur fatale !
+    <value>Lively a rencontré une erreur fatale.
 
-Windows Explorer a redémarré deux fois durant les 30 dernières secondes! Cela est peut-être un conflit entre Lively et d'autres applications de personnalisations de bureau ou de Windows. Pour éviter d'éventuelles erreurs, tous les fonds d'écran ont été arrêtés.</value>
+Windows Explorer a redémarré deux fois dans les 30 dernières secondes ! Cela est peut-être un conflit entre Lively et d'autres applications de personnalisations de bureau ou Windows. Pour éviter d'autres éventuelles erreurs, tous les fonds d'écran ont été arrêtés.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
     <value>Programme incompatible trouvé, thème de la barre des tâches désactivé</value>
   </data>
-  <data name="OfficialWebpage.Content" xml:space="preserve">
-    <value>Site Officiel de Lively Wallpaper</value>
+  <data name="Website.Description" xml:space="preserve">
+    <value>Site officiel de Lively Wallpaper</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
-    <value>La plupart des écrans modernes LCD et LED ne souffres pas de brûlures internes et donc n'importe quel fond d'écran peut être utilisé comme écran de veille.
+    <value>La plupart des écrans modernes LCD et LED ne souffrent pas de brûlures internes et donc n'importe quel fond d'écran peut être utilisé comme écran de veille.
 
-Pour les écrans OLED, Plasma ou CRT qui sont susceptibles aux brûlures internes, il est conseillé d'utiliser un fond d'écran avec un mouvement régulier et le thème sombre ce qui permet d'atténuer les brûlures internes, cependant son efficacité ne peut pas être garantie.
+Pour les écrans OLED, Plasma ou CRT qui sont susceptibles aux brûlures internes, il est conseillé d'utiliser le thème sombre ainsi qu'un fond d'écran dynamique, ce qui atténuera les brûlures internes. Cependant, son efficacité ne peut pas être garantie.
 
-La principale utilité des écrans de veille de Lively est d'ajouter une couche supplémentaire de personnalisation à votre ordinateur, utilisez les écrans de veilles comme protection contre les brûlures internes d'écrans à votre propre risque !</value>
+La principale utilité des économisateurs d'écran de Lively est d'ajouter une couche supplémentaire de personnalisation à votre ordinateur. Utilisez-les comme protection contre les brûlures internes d'écrans avec précaution !</value>
   </data>
-  <data name="ReportBugPage.Content" xml:space="preserve">
+  <data name="ReportBug.Description" xml:space="preserve">
     <value>Signaler un problème avec le logiciel</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
@@ -166,13 +166,13 @@ La principale utilité des écrans de veille de Lively est d'ajouter une couche 
     <value>Êtes-vous sûr de vouloir annuler ?</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
-    <value>Voulez-vous vraiment supprimer à jamais cette image du disque dur ?</value>
+    <value>Voulez-vous supprimer définitivement cette image du disque dur ?</value>
   </data>
   <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
     <value>Êtes-vous sûr de vraiment vouloir supprimer ce fond d'écran de la bibliothèque ?</value>
   </data>
   <data name="DragDropFile.Text" xml:space="preserve">
-    <value>Glisser-déposer les fichiers dans la bibliothèque</value>
+    <value>Simplement glisser et déposer les fichiers ici</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
     <value>Vous ouvrez une application externe comme fond d'écran.
@@ -183,13 +183,13 @@ Continuez seulement si cette application provient d'une source fiable.</value>
     <value>Lively est réduit dans la barre d'état, clic droit sur l'icône Lively pour plus d'options.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
-    <value>Veuillez redémarrer Lively pour prendre en compte les modifications</value>
+    <value>Lively doit être redémarrée pour que les nouveaux paramètres prennent effet</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
     <value>Veuillez arrêter avant de continuer</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
-    <value>Cliquer pour commencer l'enregistrement</value>
+    <value>Cliquez pour commencer l'enregistrement</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
     <value>Restauration des fonds d'écran précédents, veuillez patienter...</value>
@@ -214,7 +214,7 @@ Continuez seulement si cette application provient d'une source fiable.</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
     <value>Vous êtes sur le point de passer à la version bêta (développeur) de Lively.
-Les mises à jour seront fréquentes et pourront contenir des bugs !</value>
+Les mises à jour seront fréquentes et pourraient contenir des bugs !</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
     <value>Visibilité de l'icône dans la barre d'état, Lively continuera de fonctionner avec l'icône cachée</value>
@@ -226,7 +226,7 @@ Les mises à jour seront fréquentes et pourront contenir des bugs !</value>
     <value>Lively doit redémarrer pour appliquer la nouvelle langue</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
-    <value>Language</value>
+    <value>Langue</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
     <value>Échec de la mise à jour. Essayez de télécharger l'installateur sur https://github.com/rocksdanister/lively/releases</value>
@@ -253,7 +253,7 @@ Instructions pour partager le fichier de log :
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
-    <value>Ceci n'est pas un fichier de Lively wallpaper.</value>
+    <value>Ceci n'est pas un fichier de Lively wallpaper</value>
   </data>
   <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
     <value>Lively n'a pas été fermé correctement et va redémarrer en mode sans échec.
@@ -295,7 +295,7 @@ Si cela ne fonctionne toujours pas, fermez et relancez Lively / redémarrez Wind
     <value>Retour</value>
   </data>
   <data name="TextBrowse" xml:space="preserve">
-    <value>Rechercher</value>
+    <value>Parcourir</value>
   </data>
   <data name="Cancel.Content" xml:space="preserve">
     <value>Annuler</value>
@@ -328,7 +328,7 @@ Si cela ne fonctionne toujours pas, fermez et relancez Lively / redémarrez Wind
     <value>Personnaliser le fond d'écran</value>
   </data>
   <data name="DeleteWallpaper.Text" xml:space="preserve">
-    <value>Supprimer le fond d'écran</value>
+    <value>Supprimer</value>
   </data>
   <data name="Description.Text" xml:space="preserve">
     <value>Description</value>
@@ -363,7 +363,7 @@ Si cela ne fonctionne toujours pas, fermez et relancez Lively / redémarrez Wind
   <data name="TextGIF" xml:space="preserve">
     <value>GIF Animé</value>
   </data>
-  <data name="GitHubStar.Content" xml:space="preserve">
+  <data name="SourceCode.Description" xml:space="preserve">
     <value>Montrez votre soutien en laissant une étoile</value>
   </data>
   <data name="TextGo" xml:space="preserve">
@@ -385,7 +385,7 @@ Si cela ne fonctionne toujours pas, fermez et relancez Lively / redémarrez Wind
     <value>Dernière vérification</value>
   </data>
   <data name="TextLearnMore.Text" xml:space="preserve">
-    <value>En Savoir Plus</value>
+    <value>En savoir plus</value>
   </data>
   <data name="License.Header" xml:space="preserve">
     <value>Licence</value>
@@ -844,7 +844,7 @@ Edge est la vue Web intégrée de Windows 10.</value>
     <value>Passer la confirmation</value>
   </data>
   <data name="SourceCode.Header" xml:space="preserve">
-    <value>Code Source</value>
+    <value>Code source</value>
   </data>
   <data name="Store.Header" xml:space="preserve">
     <value>Magasin</value>
@@ -869,16 +869,16 @@ Edge est la vue Web intégrée de Windows 10.</value>
     <value>Taille de l'aperçu</value>
   </data>
   <data name="TitleUIMode" xml:space="preserve">
-    <value>Interface Utilisateur</value>
+    <value>Interface utilisateur</value>
   </data>
   <data name="TitleUpdates" xml:space="preserve">
-    <value>Mises à Jour</value>
+    <value>Mises à jour</value>
   </data>
   <data name="TitleVideo" xml:space="preserve">
     <value>Vidéo</value>
   </data>
   <data name="VideoHardwareDecode.Header" xml:space="preserve">
-    <value>Décodage GPU</value>
+    <value>Accélération GPU</value>
   </data>
   <data name="TitleWallpaper" xml:space="preserve">
     <value>Fond d'écran</value>
@@ -917,7 +917,7 @@ Edge est la vue Web intégrée de Windows 10.</value>
     <value>Charger la page web</value>
   </data>
   <data name="FastUI.Description" xml:space="preserve">
-    <value>Laisser l'interface lancée pour un démarrage plus rapide</value>
+    <value>Lancer l'application en arrière-plan pour un démarrage plus rapide</value>
   </data>
   <data name="FastUI.Header" xml:space="preserve">
     <value>Démarrage rapide</value>
@@ -938,7 +938,7 @@ Edge est la vue Web intégrée de Windows 10.</value>
     <value>Paramètres de couleur Windows</value>
   </data>
   <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
-    <value>Ordinateurs Portables</value>
+    <value>Ordinateurs portables</value>
   </data>
   <data name="DeveloperGroup.Header" xml:space="preserve">
     <value>Développeur</value>
@@ -992,7 +992,7 @@ Edge est la vue Web intégrée de Windows 10.</value>
     <value>Faible</value>
   </data>
   <data name="UIModeNormal.Content" xml:space="preserve">
-    <value>Normal</value>
+    <value>Par défaut</value>
   </data>
   <data name="Screensaver.Description" xml:space="preserve">
     <value>Comment l'économiseur d'écran est appliqué aux écrans</value>

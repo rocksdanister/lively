@@ -129,10 +129,10 @@
   <data name="AudioGroup.Header" xml:space="preserve">
     <value>Ήχος</value>
   </data>
-  <data name="CommunityPage.Content" xml:space="preserve">
+  <data name="Community.Description" xml:space="preserve">
     <value>Online φόρουμ συζήτησης</value>
   </data>
-  <data name="DocumentationPage.Content" xml:space="preserve">
+  <data name="Documentation.Description" xml:space="preserve">
     <value>Τεκμηρίωση και βοήθεια API</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
@@ -143,7 +143,7 @@
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
     <value>Βρέθηκε ασύμβατο πρόγραμμα, απενεργοποιήθηκε το θέμα της γραμμής εργασιών.</value>
   </data>
-  <data name="OfficialWebpage.Content" xml:space="preserve">
+  <data name="Website.Description" xml:space="preserve">
     <value>Επίσημη ιστοσελίδα της Lively Ταπετσαρίας</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
@@ -153,7 +153,7 @@
 
 Ο κύριος σκοπός της προφύλαξης οθόνης του Lively είναι να προσθέσετε ένα άλλο επίπεδο προσαρμογής στον υπολογιστή σας, χρησιμοποιήσετε την προφύλαξη οθόνης ως προστασία από burn-in με δική σας ευθύνη!</value>
   </data>
-  <data name="ReportBugPage.Content" xml:space="preserve">
+  <data name="ReportBug.Description" xml:space="preserve">
     <value>Αναφέρετε ένα πρόβλημα με το λογισμικό</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
@@ -364,7 +364,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextGIF" xml:space="preserve">
     <value>Κινούμενη GIF</value>
   </data>
-  <data name="GitHubStar.Content" xml:space="preserve">
+  <data name="SourceCode.Description" xml:space="preserve">
     <value>Δείξτε λίγη αγάπη ρίχνοντας ένα αστέρι</value>
   </data>
   <data name="TextGo" xml:space="preserve">

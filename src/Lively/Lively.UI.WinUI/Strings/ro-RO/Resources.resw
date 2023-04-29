@@ -124,15 +124,15 @@
     <value>Volumul tuturor fundalurilor.</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
-    <value>Volum Principal</value>
+    <value>Volum</value>
   </data>
   <data name="AudioGroup.Header" xml:space="preserve">
     <value>Audio</value>
   </data>
-  <data name="CommunityPage.Content" xml:space="preserve">
+  <data name="Community.Description" xml:space="preserve">
     <value>Forum discuții online</value>
   </data>
-  <data name="DocumentationPage.Content" xml:space="preserve">
+  <data name="Documentation.Description" xml:space="preserve">
     <value>Documentație API și ajutor</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
@@ -143,8 +143,8 @@ Windows Explorer a repornit de două ori în ultimele 30 de secunde! Acesta poat
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
     <value>Program incompatibil găsit, tematica din bara de activități dezactivată.</value>
   </data>
-  <data name="OfficialWebpage.Content" xml:space="preserve">
-    <value>Pagina oficială al Lively Wallpaper</value>
+  <data name="Website.Description" xml:space="preserve">
+    <value>Pagina oficială Lively Wallpaper</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
     <value>Majoritatea ecranelor LCD și LED moderne nu suferă de probleme de ardere și, prin urmare, orice fundal poate fi folosit ca screensaver.
@@ -153,11 +153,11 @@ Pentru afișajele OLED, cu plasmă sau CRT care sunt susceptibile de a arde, se 
 
 Scopul principal al screensaverelor de la Lively este de a adăuga un alt nivel de personalizare la computerul tău, folosește screensaverele ca protecție împotriva arderii pe propriu tău risc!</value>
   </data>
-  <data name="ReportBugPage.Content" xml:space="preserve">
+  <data name="ReportBug.Description" xml:space="preserve">
     <value>Raportează o problemă cu software-ul</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
-    <value>Selectează un fișier sau specifică o adresă URL a site-ului web pentru a seta ca imagine de fundal.</value>
+    <value>Selectează un fișier</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
     <value>Comportamentul de redare a imaginii de fundal bazat pe rularea aplicației.</value>
@@ -166,7 +166,7 @@ Scopul principal al screensaverelor de la Lively este de a adăuga un alt nivel 
     <value>Ești sigur ca vrei sa anulezi?</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
-    <value>Sigur ștergi acest fundal de pe disc?</value>
+    <value>Ești sigur ca vrei sa ștergi acest fundal de pe HDD?</value>
   </data>
   <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
     <value>Sigur ștergi acest fundal din Bibliotecă?</value>
@@ -362,7 +362,7 @@ Dacă tot nu funcționează, repornește Lively/Windows.
   <data name="TextGIF" xml:space="preserve">
     <value>GIF animat</value>
   </data>
-  <data name="GitHubStar.Content" xml:space="preserve">
+  <data name="SourceCode.Description" xml:space="preserve">
     <value>Arată puțină dragoste aruncând o stea</value>
   </data>
   <data name="TextGo" xml:space="preserve">

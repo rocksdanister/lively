@@ -129,10 +129,10 @@
   <data name="AudioGroup.Header" xml:space="preserve">
     <value>Dźwięk</value>
   </data>
-  <data name="CommunityPage.Content" xml:space="preserve">
+  <data name="Community.Description" xml:space="preserve">
     <value>Forum dyskusyjne</value>
   </data>
-  <data name="DocumentationPage.Content" xml:space="preserve">
+  <data name="Documentation.Description" xml:space="preserve">
     <value>Dokumentacja API i pomoc</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
@@ -143,7 +143,7 @@ Eksplorator Windows został uruchomiony ponownie dwukrotnie w ciągu ostatnich 3
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
     <value>Znaleziono niekompatybilny program, motywy paska zadań zostały wyłączone.</value>
   </data>
-  <data name="OfficialWebpage.Content" xml:space="preserve">
+  <data name="Website.Description" xml:space="preserve">
     <value>Oficjalna strona Lively Wallpaper</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
@@ -153,7 +153,7 @@ Dla wyświetlaczy typu OLED, Plasma lub CRT, które są podatne na efekt wypalan
 
 Głównym celem wygaszacza ekranu Lively jest dodanie kolejnej warstwy personalizacji do Twojego komputera, używaj wygaszacza jako zabezpieczenia przed wypaleniem na własne ryzyko!</value>
   </data>
-  <data name="ReportBugPage.Content" xml:space="preserve">
+  <data name="ReportBug.Description" xml:space="preserve">
     <value>Zgłoś problem z oprogramowaniem</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
@@ -166,7 +166,7 @@ Głównym celem wygaszacza ekranu Lively jest dodanie kolejnej warstwy personali
     <value>Na pewno przerwać?</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
-    <value>Na pewno chcesz nieodwracalnie usunąć plik tapety z dysku?</value>
+    <value>Czy jesteś pewny że chcesz usunąć tą tapetę z dysku na zawsze?</value>
   </data>
   <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
     <value>Czy na pewno chcesz usunąć tę tapetę z Biblioteki?</value>
@@ -195,7 +195,7 @@ Kontunuuj, tylko jeśli aplikacja pochodzi z zaufanego źródła.</value>
     <value>Przywracanie poprzedniej tapety..</value>
   </data>
   <data name="DescriptionScreenLayout" xml:space="preserve">
-    <value>Zamknij ekran</value>
+    <value>Wybierz ekran</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
     <value>Dostępna nowa wersja!</value>
@@ -217,13 +217,13 @@ Kontunuuj, tylko jeśli aplikacja pochodzi z zaufanego źródła.</value>
 Aktualizacje będą częste i mogą zawierać błędy!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
-    <value>Widoczność ikony zasobnika, lively będzie kontunuował dalszą pracę z ukrytą ikoną</value>
+    <value>Widoczność ikony zasobnika, Lively będzie kontynuował dalszą pracę z ukrytą ikoną</value>
   </data>
   <data name="HideSysTray.Header" xml:space="preserve">
     <value>Ikona zasobnika systemowego</value>
   </data>
   <data name="Language.Description" xml:space="preserve">
-    <value>Lively uruchomi się ponownie aby zastosować nowy język.</value>
+    <value>Lively uruchomi się ponownie, aby zastosować nowy język</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
     <value>Wybór języka</value>
@@ -232,17 +232,17 @@ Aktualizacje będą częste i mogą zawierać błędy!</value>
     <value>Aktualizacja zakończona niepowodzeniem.Spróbuj pobrać instalator z</value>
   </data>
   <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
-    <value>Uszkodzony plik tapety, spróbuj pobrać ponownie.</value>
+    <value>Uszkodzony plik tapety, spróbuj pobrać ponownie</value>
   </data>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
     <value>Oj... Coś poszło nie tak :(
-Aby lepiej zrozumieć i pomóc w naprawie błędu, wyślij plik dziennika do twórcy aplikacji.
+Aby lepiej zrozumieć błąd i pomóc w jego naprawie, wyślij plik dziennika do twórcy aplikacji.
 Instrukcje jak to zrobić znajdziesz pod adresem:
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
-    <value>Lively nie może współpracować poprawnie z systemem Widows w trybie Duży Kontrast!
-Wyłącz tryb Duży Kontrast (Ustawienia&gt;Ułatwienia dostępu&gt;Duży kontrast) i spróbuj ponownie.</value>
+    <value>Lively nie może współpracować poprawnie z systemem Windows w trybie Dużego Kontrastu!
+Wyłącz tryb Duży Kontrast (Ustawienia&gt;Ułatwienia dostępu&gt;Duży kontrast) i spróbuj ponownie</value>
   </data>
   <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
     <value>Niepowodzenie odtwarzania multimediów :(
@@ -253,10 +253,11 @@ Instrukcje jak to zrobić znajdziesz pod adresem:
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
-    <value>To nie jest plik tapety Lively.</value>
+    <value>To nie jest plik tapety Lively</value>
   </data>
   <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
-    <value>Dostępna nowa wersja!</value>
+    <value>Lively zostało niepoprawnie wyłączone, włączanie trybu awaryjnego.
+Czy chcesz przywrócić użyte poprzednio tapety?</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
     <value>Do poprawnego działania lively wymagane są dodatkowe ustawienia:-  
@@ -272,7 +273,7 @@ Jeśli ciągle nie działa,  uruchom ponownie Lively / system Windows.
 (Nie działa w wersji Windows 10 insider)</value>
   </data>
   <data name="Startup.Description" xml:space="preserve">
-    <value> Lively musi być uruchomiony w tle, aby móc odtwarzać tapety.</value>
+    <value>Lively musi być uruchomiony w tle, aby móc odtwarzać tapety</value>
   </data>
   <data name="Startup.Header" xml:space="preserve">
     <value>Uruchom przy starcie systemu</value>
@@ -364,7 +365,7 @@ Jeśli ciągle nie działa,  uruchom ponownie Lively / system Windows.
   <data name="TextGIF" xml:space="preserve">
     <value>Animowany GIF</value>
   </data>
-  <data name="GitHubStar.Content" xml:space="preserve">
+  <data name="SourceCode.Description" xml:space="preserve">
     <value>Okaż wsparcie dla projektu, dając gwiazdkę</value>
   </data>
   <data name="TextGo" xml:space="preserve">

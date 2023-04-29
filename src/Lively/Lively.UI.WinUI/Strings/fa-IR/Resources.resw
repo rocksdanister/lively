@@ -118,21 +118,21 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AudioFocused.Content" xml:space="preserve">
-    <value>صدا را فقط زمانی پخش کن که دسکتاپ فوکوس شده باشد</value>
+    <value>پخش صدا تنها زمانی که بر روی دسکتاپ هستید</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
-    <value>میزان صدای همه پس‌زمینه‌ها</value>
+    <value>میزان صدای همه پس زمینه ها</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
     <value>درجه صدا</value>
   </data>
   <data name="AudioGroup.Header" xml:space="preserve">
-    <value>صوتی</value>
+    <value>صدا</value>
   </data>
-  <data name="CommunityPage.Content" xml:space="preserve">
+  <data name="Community.Description" xml:space="preserve">
     <value>انجمن گفتگوی آنلاین</value>
   </data>
-  <data name="DocumentationPage.Content" xml:space="preserve">
+  <data name="Documentation.Description" xml:space="preserve">
     <value>مستندات و راهنمای API</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
@@ -141,9 +141,9 @@
 Windows Explorer دو بار در 30 ثانیه گذشته راه‌اندازی مجدد شد! این ممکن است تضاد بین Lively و سایر نرم افزارهای سفارشی‌سازی دسکتاپ یا ویندوز باشد. برای جلوگیری از مشکلات بیشتر، تمام تصاویر زمینه بسته می‌شوند.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
-    <value>Incompatible program found, taskbar theming disabled.</value>
+    <value>برنامه ای ناسازگار پیدا شده است، طرح نوار سیستم غیرفعال شد</value>
   </data>
-  <data name="OfficialWebpage.Content" xml:space="preserve">
+  <data name="Website.Description" xml:space="preserve">
     <value>وبسایت رسمی Lively Wallpaper</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
@@ -153,11 +153,11 @@ Windows Explorer دو بار در 30 ثانیه گذشته راه‌اندازی
 
 هدف اصلی محافظ‌های صفحه نمایش Lively اضافه کردن لایه دیگری از سفارشی‌سازی به رایانه شما است، از محافظ‌های صفحه نمایش به عنوان محافظت در برابر سوختگی پیکسل با مسئولیت خود استفاده کنید!</value>
   </data>
-  <data name="ReportBugPage.Content" xml:space="preserve">
+  <data name="ReportBug.Description" xml:space="preserve">
     <value>گزارش مشکل درباره نرم‌افزار</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
-    <value>یک فایل یا آدرس وبسایت انتخاب کنید تا پس زمینه تنظیم شود.</value>
+    <value>یک فایل انتخاب کنید</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
     <value>تنظیم رفتار پس زمینه بر اساس برنامه در حال اجرا.</value>
@@ -166,7 +166,7 @@ Windows Explorer دو بار در 30 ثانیه گذشته راه‌اندازی
     <value>آیا از لغو کردن مطمئنید؟</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
-    <value>آیا از حذف کردن کامل این پس زمینه از دیسک مطمئنید؟</value>
+    <value>آیا از حذف همیشگی این پس زمینه از حافظه مطمئنید؟</value>
   </data>
   <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
     <value>آیا از حذف کردن این پس زمینه از کتابخانه مطمئنید؟</value>
@@ -181,7 +181,7 @@ Windows Explorer دو بار در 30 ثانیه گذشته راه‌اندازی
     <value>لایولی کوچک شده و به سیستم تری انتقال یافته، برای ادامه آیکون لایولی را راست کلیک کنید.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
-    <value>لطفا لایولی را دوباره اجرا کنید تا تنظیمات اعمال شود.</value>
+    <value>به منظور اعمال تغییرات لطفا سیستم خود را از نو راه‌اندازی کنید</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
     <value>لطفا قبل از ادامه دست نگه دارید.</value>
@@ -190,22 +190,22 @@ Windows Explorer دو بار در 30 ثانیه گذشته راه‌اندازی
     <value>برای شروع ضبط فشار دهيد.</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
-    <value>در حال بازيابي کاغذ ديواري پيشين، لطفا صبر کنيد.</value>
+    <value>در حال بازيابي پس زمینه پيشين، لطفا صبر کنيد...</value>
   </data>
   <data name="DescriptionScreenLayout" xml:space="preserve">
-    <value>يک صفحه را انتخاب کنيد.</value>
+    <value>صفحه نمایش خود را انتخاب کنید</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
-    <value>يک نسخه جديد از برنامه موجود است!</value>
+    <value>نسخه جدیدی از نرم‌افزار در دسترس است!</value>
   </data>
   <data name="DescriptionWebpageLoad" xml:space="preserve">
     <value>آدرس وبسايت را وارد کنيد تا بارگذاري شود، از شِيدر هم پشتيباني ميشود. (shadertoy.com)</value>
   </data>
   <data name="DescriptionWelcomeWizard" xml:space="preserve">
-    <value>اين پنجره به تنظيم کردن لايولي کمکتان ميکند.</value>
+    <value>این پنجره شما را در مراحل نصب همراهی می کند</value>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>براي اجراي ويديو در پس زمينه نسخه ويندوز شما نيازمند دانلود چند برنامه است.</value>
+    <value>ویندوز شما نیازمند دانلود و نصب چندین برنامه برای پشتیبانی از اجرای ویدیو در پس زیمنه است</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
     <value>با خرید قهوه برای توسعه‌دهنده حمایت خود را نشان دهید</value>
@@ -218,30 +218,30 @@ Windows Explorer دو بار در 30 ثانیه گذشته راه‌اندازی
     <value>مشاهده آیکون سیستم، lively با آیکون پنهان به کار خود ادامه می دهد</value>
   </data>
   <data name="HideSysTray.Header" xml:space="preserve">
-    <value>آیکون سیستم تری</value>
+    <value>آیکون System-tray</value>
   </data>
   <data name="Language.Description" xml:space="preserve">
-    <value>براي اعمال زبان جديد لايولي دوباره اجرا ميشود.</value>
+    <value>براي اعمال زبان جديد لايولي مجددا اجرا خواهد شد</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
     <value>زبان</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
-    <value>آپديت با مشکل مواجه شد، لظفا نسخه آخر را از اينجا دانلود کنيد:
+    <value>بروز رسانی با مشکل مواجه شد، می توانید از لینک زیر برای دانلود نسخه جدید استفاده کنید
 https://github.com/rocksdanister/lively/releases</value>
   </data>
   <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
-    <value>فايل کاغذ ديواري آسيب ديده، لطفا دوباره دانلود کنيد.</value>
+    <value>فايل پس زمینه آسيب ديده، لطفا دوباره دانلود کنيد.</value>
   </data>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
     <value> 
-ظاهرا چيزي با مشکل برخورد :(
-براي درک بهتر اين مشکل و درست کردن آن فايل گزارش را به برنامه نويس يه اشتراک بگذاريد.
-راهنمايي براي به اشتراک گذاشتن فايل گذارش :
+اوووه... ظاهرا به مشکل خوردیم :(
+برای بهبود نرم افزار و رفع مشکل به وجود آمده می توانید فایل خطا ها را با توسعه دهنده این نرم افزار به اشتراک بگذارید.
+نحوه اشتراک گذاری فایل خطا ها:
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
-    <value>لايولي تا زمانيکه High Contrast mode فعال است نميتونه درست عمل کنه!
+    <value>لايولي تا زمانيکه گزینه کنتراست بالا فعال باشد نميتونه درست عمل کنه!
 لطفا آنرا غيرفعال کنيد سپس دوباره تلاش کنيد.</value>
   </data>
   <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
@@ -253,11 +253,11 @@ https://github.com/rocksdanister/lively/wiki</value>
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
-    <value>فايل کاغذ ديواري لايولي نيست.</value>
+    <value>این فایل پس زمینه برای لایولی نیست</value>
   </data>
   <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
-    <value>لايولي کامل بسته نشد، در حال اجرا در حالت امن.
-آيا ميخواهيد کاغذ ديواري قبلي در حال اجرا را بگردانيد؟</value>
+    <value>دفعه قبل لایولی به درستی بسته نشد، در تلاش برای اجرای آن در حالت امن.
+آيا ميخواهيد پس زمینه قبلي را بگردانيد؟</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
     <value>ظاهرا چند تنظيمات بايد تغيير کنند تا لايولي کار کند:
@@ -277,7 +277,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>روشن شدن با ویندوز</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
-    <value>اضافه</value>
+    <value>افزودن</value>
   </data>
   <data name="TextAllFiles" xml:space="preserve">
     <value>همه فايل‌ها</value>
@@ -289,7 +289,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>خصوصیات</value>
   </data>
   <data name="Author.Text" xml:space="preserve">
-    <value>مؤلف</value>
+    <value>سازنده</value>
   </data>
   <data name="TextBack" xml:space="preserve">
     <value>بازگشت</value>
@@ -363,7 +363,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextGIF" xml:space="preserve">
     <value>GIF متحرک</value>
   </data>
-  <data name="GitHubStar.Content" xml:space="preserve">
+  <data name="SourceCode.Description" xml:space="preserve">
     <value>با دادن ستاره علاقه‌تان را نشان دهید</value>
   </data>
   <data name="TextGo" xml:space="preserve">
@@ -791,7 +791,7 @@ Edge is the built in webview of windows 10.</value>
     <value>مکان</value>
   </data>
   <data name="LockscreenPicture.Header" xml:space="preserve">
-    <value>Lockscreen Picture</value>
+    <value>تصویر Lockscreen</value>
   </data>
   <data name="TitleMisc" xml:space="preserve">
     <value>غیره</value>
