@@ -129,10 +129,10 @@
   <data name="AudioGroup.Header" xml:space="preserve">
     <value>Ton</value>
   </data>
-  <data name="CommunityPage.Content" xml:space="preserve">
+  <data name="Community.Description" xml:space="preserve">
     <value>Online-Diskussionsforum</value>
   </data>
-  <data name="DocumentationPage.Content" xml:space="preserve">
+  <data name="Documentation.Description" xml:space="preserve">
     <value>API-Dokumentation und Hilfe</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
@@ -143,7 +143,7 @@ Windows Explorer wurde in den letzten 30 Sekunden zwei Mal neu gestartet! Dies k
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
     <value>Inkompatibles Programm gefunden, Taskleisten-Design deaktiviert</value>
   </data>
-  <data name="OfficialWebpage.Content" xml:space="preserve">
+  <data name="Website.Description" xml:space="preserve">
     <value>Offizielle Webseite von Lively Wallpaper</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
@@ -153,7 +153,7 @@ Bei OLED-, Plasma- und CRT-Bildschirmen kann es zu Einbrenneffekten kommen. Es w
 
 Der Hauptzweck von Livelys Bildschirmschonern ist das Hinzufügen einer weiteren Gestaltungsmöglichkeit zu ihrem Computer. Die Verwendung des Bildschirmschoners als Schutz gegen Einbrennen geschieht auf eigene Gefahr!</value>
   </data>
-  <data name="ReportBugPage.Content" xml:space="preserve">
+  <data name="ReportBug.Description" xml:space="preserve">
     <value>Ein Problem mit der Software melden</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
@@ -253,7 +253,7 @@ Anweisungen zur Freigabe der Protokolldatei:
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
-    <value>Keine Lively Hintergrund-Datei</value>
+    <value>Keine Lively-Wallpaper-Datei</value>
   </data>
   <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
     <value>Lively wurde nicht richtig beendet und startet daher im abgesicherten Modus.
@@ -363,7 +363,7 @@ Wenn dies immer noch nicht funktioniert, schließen &amp; starten Sie Lively ode
   <data name="TextGIF" xml:space="preserve">
     <value>Animiertes GIF</value>
   </data>
-  <data name="GitHubStar.Content" xml:space="preserve">
+  <data name="SourceCode.Description" xml:space="preserve">
     <value>Ein wenig Anerkennung zeigen und einen Stern da lassen</value>
   </data>
   <data name="TextGo" xml:space="preserve">

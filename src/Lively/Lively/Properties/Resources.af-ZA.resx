@@ -118,1063 +118,1058 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AudioFocused.Content" xml:space="preserve">
-    <value>تشغيل الصوت عندما يكون سطح المكتب مركّزًا فقط</value>
+    <value>Speel oudio slegs wanneer lessenaar gefokus is</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
-    <value>مستوى الصوت لجميع الخلفيات</value>
+    <value>Volumevlak van alle agtergronde</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
-    <value>مستوى الصوت</value>
+    <value>Volume</value>
   </data>
   <data name="AudioGroup.Header" xml:space="preserve">
-    <value>الصوت</value>
+    <value>Oudio</value>
   </data>
   <data name="Community.Description" xml:space="preserve">
-    <value>منتدى المناقشات عبر الإنترنت</value>
+    <value>Aanlyn besprekingsforum</value>
   </data>
   <data name="Documentation.Description" xml:space="preserve">
-    <value>مستندات API والمساعدة</value>
+    <value>API dokumentasie en hulp</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
-    <value>لقد واجهنا مشكلة غريبة...
+    <value>Lively het 'n noodlottige fout teëgekom.
 
-تم إعادة تشغيل مستكشف الملفات الخاص بالنظام مرتين في آخر 30 ثانية! قد يكون هذا تعارضًا بين التطبيق وبرنامج تخصيص آخر أو النظام نفسه.
- لتجنب المزيد من المشكلات، سيتم إيقاف جميع الخلفيات حاليا.</value>
+Windows Explorer het twee keer in die laaste 30 sekondes herbegin! Dit kan 'n konflik wees tussen Lively en ander rekenaaraanpassingsagteware of Windows. Om verdere probleme te vermy, word alle agtergronde beëindig.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
-    <value>تم العثور على برنامج غير متوافق ، تم تعطيل تطبيق سمات شريط المهام.</value>
+    <value>Onversoenbare program gevind, taakbalktema is gedeaktiveer</value>
   </data>
   <data name="Website.Description" xml:space="preserve">
-    <value>صفحة الإنترنت الرسمية لـ Lively Wallpaper</value>
+    <value>Amptelike webtuiste van Lively Wallpaper</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
-    <value>لا تعاني معظم شاشات LCD و LED الحديثة من مشاكل الاحتراق؛ لذلك، يمكن استخدام أي خلفية كشاشة توقف.
+    <value>Die meeste moderne LCD- en LED-skerms ly nie aan inbrandprobleme nie en daarom kan enige muurpapier as skermbewaarder gebruik word.
 
-بالنسبة لشاشات OLED أو Plasma أو CRT المعرضة للاحتراق، يُنصح باستخدام الخلفيات المظلمة التي من المفترض أن تخفف الاحتراق. ومع ذلك، لم يتم اختبار هذه الميزة ولا يمكن ضمان فعاليتها.
+Vir OLED-, Plasma- of CRT-skerms wat vatbaar is vir inbrand, word dit aangeraai om plakpapier met gereelde beweging te gebruik en 'n algehele donker tema wat veronderstel is om inbranding te versag, maar hierdie kenmerk is ongetoets en die doeltreffendheid daarvan kan nie gewaarborg word nie.
 
-الغرض الأساسي من شاشات توقف Lively هو إضافة طبقة أخرى من التخصيص إلى جهاز الكمبيوتر الخاص بك، واستخدام شاشات التوقف كحماية ضد الاحتراق هو على مسؤوليتك الخاصة!</value>
+Die hoofdoel van Lively se skermbeskermers is om nog 'n laag aanpassing by jou rekenaar te voeg, gebruik skermbeskermers as inbrandbeskerming op eie risiko!</value>
   </data>
   <data name="ReportBug.Description" xml:space="preserve">
-    <value>الإبلاغ عن مشكلة في البرنامج</value>
+    <value>Raporteer n probleem met die sagteware</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
-    <value>قم بتحديد ملف</value>
+    <value>Kies 'n lêer</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
-    <value>تعيين الخلفية(ات) سلوك التشغيل بناءً على تشغيل التطبيق:-</value>
+    <value>Wallpaper playback behaviour based on running application</value>
   </data>
   <data name="DescriptionCancelQuestion" xml:space="preserve">
-    <value>هل أنت متأكد من إلغاء هذه العملية؟</value>
+    <value>Is jy seker jy will kanseleer?</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
-    <value>هل أنت متأكد من حذف الخلفية بشكل دائم من القرص؟</value>
+    <value>Is jy seker jy wil hierdie muurpapier permanent van die skyf uitvee?</value>
   </data>
   <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
-    <value>هل أنت متأكد أنك تريد حذف هذه الخلفية من المكتبة؟</value>
+    <value>Is jy seker jy wil hierdie muurpapier uit die biblioteek uitvee?</value>
   </data>
   <data name="DragDropFile.Text" xml:space="preserve">
-    <value>ببساطة، ما عليك سوى سحب الملفات وإفلاتها هنا</value>
+    <value>Sleep eenvoudig lêers hierheen</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
-    <value>أنت تفتح تطبيقًا خارجيا كخلفية.
-يمكن أن تحمل التطبيقات الخارجية برامج ضارة وفيروسات.. وتضر بنظامك.
-استمر فقط إذا كنت بمصدر هذا التطبيق.</value>
+    <value>Jy maak 'n eksterne toepassing as muurpapier oop.
+Kwaadwillige toepassings kan wanware, virusse... en skade aan jou stelsel aanrig.
+Gaan net voort as hierdie toepassing van 'n betroubare bron kom.</value>
   </data>
   <data name="MinimizedTray.Text" xml:space="preserve">
-    <value>تم تصغير  Lively Wallpaper إلى الأيقونات المصغرة بجانب الساعة، يرجى النقر بزر الفأرة الأيمن فوق الرمز التطبيق لمزيد من الخيارات...</value>
+    <value>Lively is tot die system tray geminimaliseer, regskliek lewendige ikoon om voort te gaan.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
-    <value>يرجى إعادة تشغيل البرنامج لتطبيق الإعدادات الجديدة...</value>
+    <value>Herbegin asseblief Lively vir instellings om in werking te tree</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
-    <value>يرجى التوقف قبل المتابعة</value>
+    <value>Stop asseblief voordat jy voortgaan</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
-    <value>اضغط لبدء التسجيل</value>
+    <value>Druk om te begin opneem</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
-    <value>جاري إستعادة الخلفية (الخلفيات) السابقة, يرجى الانتظار...</value>
+    <value>Stel tans vorige muurpapier(e) terug, wag asseblief...</value>
   </data>
   <data name="DescriptionScreenLayout" xml:space="preserve">
-    <value>اختر الشاشة</value>
+    <value>Kies vertoning</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
-    <value>إصدار جديد متوفر من التطبيق!</value>
+    <value>'n Nuwe weergawe van sagteware is beskikbaar!</value>
   </data>
   <data name="DescriptionWebpageLoad" xml:space="preserve">
-    <value>أدخل رابط الموقع للتحميل, Shadertoy.com  روابط هذا الموقع مدعومة:-</value>
+    <value>Enter website link to load, shadertoy.com shader links are supported</value>
   </data>
   <data name="DescriptionWelcomeWizard" xml:space="preserve">
-    <value>هذا المساعد سوف يمكنك من البدء في إعداد Lively</value>
+    <value>Hierdie towenaar sal jou laat begin met die opstel van Lively</value>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>سيتطلب إصدار Windows N/KN تنزيل برامج ترميز إضافية لدعم تشغيل الفيديو في خلفيات.</value>
+    <value>Jou Windows N/KN-weergawe sal die aflaai van bykomende kodeks vereis om videoterugspeel in agtergronde te ondersteun</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
-    <value>اضهر دعمك من خلال شراء كوب قهوة للمطور</value>
+    <value>Wys ondersteuning deur die ontwikkelaarkoffie te koop</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
-    <value>أنت على وشك التغير إلى النسخة التجربية (المطور) من Lively.
-التحديثات ستكون متكررة وقد تحتوي على أخطاء!</value>
+    <value>Jy is op die punt om te verander na beta (ontwikkelaar) bou van Lively.
+Opdaterings sal gereeld wees en kan foute bevat!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
-    <value>رؤية رمز بصرية النظام ، سوف تستمر في تشغيل الأيقونة المخفية</value>
+    <value>Stelselbak-ikoon sigbaarheid, lewendig sal voortgaan om te loop met die ikoon versteek</value>
   </data>
   <data name="HideSysTray.Header" xml:space="preserve">
-    <value>أيقونة علبة النظام</value>
+    <value>Stelselbak-ikoon</value>
   </data>
   <data name="Language.Description" xml:space="preserve">
-    <value>سيتم إعادة تشغيل البرنامج لتطبيق اللغة الجديدة</value>
+    <value>Lively sal weer begin om die nuwe taal toe te pas</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
-    <value>اللغة</value>
+    <value>Taal</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
-    <value>فشل التحديث؛ حاول تحميل البرنامج من:
-https://github.com/rocksdanister/lively/releasases</value>
+    <value>Kon nie opdateer nie; probeer om die installeerder af te laai vanaf:
+https://github.com/rocksdanister/lively/releases</value>
   </data>
   <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
-    <value>ملف الخلفية تالف, حاول إعادة تنزيله.</value>
+    <value>Beskadigde muurpapierlêer, probeer weer aflaai</value>
   </data>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
-    <value>للأسف... يبدو أن شيئا ما قد احدث خطأ :(
-لفهم هذا الخطأ بشكل أفضل وإصلاح المشكلة ، شارك ملف السجل مع المطور.
-تعليمات لمشاركة ملف السجل:
+    <value>Oeps... Dit lyk of iets verkeerd geloop het :(
+Om hierdie fout beter te verstaan ​​en die probleem op te los, deel die loglêer met die ontwikkelaar.
+Instruksies vir die deel van loglêer:
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
-    <value>لا يمكن للايفلي أن يعمل بصورة صحيحة في حين أن وضع التباين العالي للويندوز مُمَكّن!
-عطّل وضع التباين العالي &amp; حاول مرة أخرى.</value>
+    <value>Lively kan nie behoorlik werk met Windows High Contrast-modus geaktiveer nie!
+Deaktiveer hoë kontras-modus en probeer weer</value>
   </data>
   <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
-    <value>تشغيل الوسائط فشل :(
-حاول تغيير مشغل الفيديو في إعدادات البرنامج.
+    <value>Media playback failed :(
+Try changing the videoplayer in lively settings.
 
-من أجل فهم هذا الخطأ بشكل أفضل وإصلاح المشكلة ، شارك ملف السجل مع المطور.
-تعليمات لمشاركة ملف السجل:
+In order to better understand this error and fix the issue, share the log file with the developer.
+Instructions for sharing log file:
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
-    <value>لا يوجد ملف خلفية حية.</value>
+    <value>Nie lewendige plakpapierlêer nie</value>
   </data>
   <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
-    <value>نسخة جديدة متوفرة!</value>
+    <value>Lively was nie behoorlik gesluit nie, begin in veilige modus.
+Wil jy agtergronde wat voorheen werk, herstel?</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
-    <value>يبدو أنه يجب ضبط بعد الإعدادات لجعل لايفلي يعمل:-  
-1. من سطح المكتب
-2. أنقر على زر البحث
-3. إبحث عن الأداء (أو Performance(
-4. أنقر على أول خيار
-5. ستظهر لوحة تحكم
-6. يجب أن يكون أول خيار مفعّل (علامة اختيار) &amp; تطبيق.
+    <value>Dit lyk of sommige instellings ingestel moet word om Lively te laat werk:
+1. Druk die Win + R-sleutels om Run oop te maak,
+2. Tik SystemPropertiesPerformance.exe in Run, klik op "OK" om Prestasie-opsies oop te maak.
+3. Aktiveer/merk "Animeer kontroles en elemente binne vensters" (As dit reeds gemerk is, ontmerk dan en merk) &amp; Pas toe.
+4. Klik "Pas toe" en druk dan "OK" om die venster toe te maak.
 
-إذا تم تعيين ويندوز 7 - يُعدل إلى ضبط لأفضل مظهر &amp; تطبيق.
-إذا كان لا يزال لا يعمل, أغلق &amp; شغِّل لايفلي مجدداً/ أعِد تشغيل ويندوز.</value>
+As Windows 7 pas gestel - Pas vir die beste voorkoms &amp; amp; Doen aansoek.
+As dit steeds nie werk nie, maak toe en begin Lively weer / herbegin vensters.
+(Werk nie in sommige insider Windows 10 builds nie)</value>
   </data>
   <data name="Startup.Description" xml:space="preserve">
-    <value>يحتاج Lively للتشغيل في الخلفية لتشغيل الخلفية.</value>
+    <value>Lewendig moet op die agtergrond hardloop vir agtergrondspeel</value>
   </data>
   <data name="Startup.Header" xml:space="preserve">
-    <value>البدء مع ويندوز:</value>
+    <value>Begin met Windows</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
-    <value>أضف</value>
+    <value>Voeg by</value>
   </data>
   <data name="TextAllFiles" xml:space="preserve">
-    <value>جميع الملفات</value>
+    <value>Alle lêers</value>
   </data>
   <data name="Application.Header" xml:space="preserve">
-    <value>التطبيق</value>
+    <value>Toepassing</value>
   </data>
   <data name="Attribution.Header" xml:space="preserve">
-    <value>الإسناد:</value>
+    <value>Erkenning</value>
   </data>
   <data name="Author.Text" xml:space="preserve">
-    <value>المؤلف:</value>
+    <value>Skrywer</value>
   </data>
   <data name="TextBack" xml:space="preserve">
-    <value>رجوع</value>
+    <value>Terug</value>
   </data>
   <data name="TextBrowse" xml:space="preserve">
-    <value>تصفح</value>
+    <value>Snuffel</value>
   </data>
   <data name="Cancel.Content" xml:space="preserve">
-    <value>إلغاء</value>
+    <value>Kanseleer</value>
   </data>
   <data name="TextChangeWallpaper" xml:space="preserve">
-    <value>تغيير الخلفية</value>
+    <value>Verander Agtergronde</value>
   </data>
   <data name="TextClose" xml:space="preserve">
-    <value>اغلاق</value>
+    <value>Sluit</value>
   </data>
   <data name="CloseWallpapers.Label" xml:space="preserve">
-    <value>إغلاق الخلفية</value>
+    <value>Sluit</value>
   </data>
   <data name="TextCompleted" xml:space="preserve">
-    <value>تم!</value>
+    <value>Voltooi!</value>
   </data>
   <data name="ControlPanel.Subtitle" xml:space="preserve">
-    <value>انقر هنا لإدارة خلفيات.</value>
+    <value>Klik hier om wallpapers te bestuur</value>
   </data>
   <data name="TextConvertVideo" xml:space="preserve">
-    <value>تحويل إلى فيديو</value>
+    <value>Skakel Na Video</value>
   </data>
   <data name="TextCreatePreview" xml:space="preserve">
-    <value>إنشاء معاينة</value>
+    <value>Skep Voorskou</value>
   </data>
   <data name="Customise.Text" xml:space="preserve">
-    <value>تخصيص</value>
+    <value>Pasmaak</value>
   </data>
   <data name="CustomiseWallpaper.Label" xml:space="preserve">
-    <value>تخصيص خلفية</value>
+    <value>Pasmaak</value>
   </data>
   <data name="DeleteWallpaper.Text" xml:space="preserve">
-    <value>حذف الخلفية</value>
+    <value>Vee uit</value>
   </data>
   <data name="Description.Text" xml:space="preserve">
-    <value>الوصف</value>
+    <value>Beskrywing</value>
   </data>
   <data name="DisplayPauseRuleAllScreen.Content" xml:space="preserve">
-    <value>جميع الشاشة(ات)</value>
+    <value>Alle skerm(s)</value>
   </data>
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
-    <value>لكل شاشة</value>
+    <value>Per skerm</value>
   </data>
   <data name="TextDownload" xml:space="preserve">
-    <value>تنزيل</value>
+    <value>Aflaai</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
-    <value>تحرير</value>
+    <value>Wysig</value>
   </data>
   <data name="TextError" xml:space="preserve">
-    <value>لايفلي: خطأ</value>
+    <value>Fout</value>
   </data>
   <data name="TextExit" xml:space="preserve">
-    <value>إغلاق</value>
+    <value>Verlaat</value>
   </data>
   <data name="ExportWallpaperZip.Text" xml:space="preserve">
-    <value>تصدير كـ lively .zip</value>
+    <value>Stoor na lêer</value>
   </data>
   <data name="TextFeatureMissing" xml:space="preserve">
-    <value>بعض الميزات غير متوفرة في هذا الإصدار من البرنامج</value>
+    <value>Sommige kenmerke is nie in hierdie weergawe van Lively beskikbaar nie</value>
   </data>
   <data name="TextFileNotFound" xml:space="preserve">
-    <value>لم يتم العثور على الملف</value>
+    <value>Lêer nie gevind nie</value>
   </data>
   <data name="TextGIF" xml:space="preserve">
-    <value>GIF المتحركة</value>
+    <value>Geanimeerde GIF</value>
   </data>
   <data name="SourceCode.Description" xml:space="preserve">
-    <value>أظهر بعض الحب بإسقاط نجمة</value>
+    <value>Toon 'n bietjie liefde deur 'n ster te laat val</value>
   </data>
   <data name="TextGo" xml:space="preserve">
-    <value>اذهب</value>
+    <value>GO</value>
   </data>
   <data name="TextHelpTranslate.Title" xml:space="preserve">
-    <value>مساعدة في ترجمة البرنامج.</value>
+    <value>Help vertaal</value>
   </data>
   <data name="TextHours" xml:space="preserve">
-    <value>hours</value>
+    <value>uur/ure</value>
   </data>
   <data name="TextInstall" xml:space="preserve">
-    <value>تثبيت</value>
+    <value>Installeer</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
-    <value>لوحة المفاتيح</value>
+    <value>Sleutelbord</value>
   </data>
   <data name="TextLastChecked" xml:space="preserve">
-    <value>آخر فحص</value>
+    <value>Laas nagegaan</value>
   </data>
   <data name="TextLearnMore.Text" xml:space="preserve">
-    <value>إعرف أكثر</value>
+    <value>Leer meer</value>
   </data>
   <data name="License.Header" xml:space="preserve">
-    <value>الترخيص</value>
+    <value>Lisensie</value>
   </data>
   <data name="TextMinutes" xml:space="preserve">
-    <value>minutes</value>
+    <value>minuut(minute)</value>
   </data>
   <data name="TextmoreInfo" xml:space="preserve">
-    <value>المعلومات</value>
+    <value>Inligting</value>
   </data>
   <data name="TextMoreWallpapers" xml:space="preserve">
-    <value>المزيد من الخلفيات...</value>
+    <value>Meer agtergronde</value>
   </data>
   <data name="TextMouse.Content" xml:space="preserve">
-    <value>الماوس</value>
+    <value>Muis</value>
   </data>
   <data name="MouseInteractOnDesktop.Content" xml:space="preserve">
-    <value>تفاعل الماوس عند التركيز على التطبيق</value>
+    <value>Muisinteraksie wanneer toepassing gefokus is</value>
   </data>
   <data name="TextNext" xml:space="preserve">
-    <value>التالي</value>
+    <value>Volgende</value>
   </data>
   <data name="TextNo" xml:space="preserve">
-    <value>لا</value>
+    <value>Geen</value>
   </data>
   <data name="TextOff.Content" xml:space="preserve">
-    <value>ايقاف</value>
+    <value>Af</value>
   </data>
   <data name="TextOK" xml:space="preserve">
-    <value>حسنا</value>
+    <value>OK</value>
   </data>
   <data name="TextOn.Content" xml:space="preserve">
-    <value>تشغيل</value>
+    <value>Aan</value>
   </data>
   <data name="TextOnline" xml:space="preserve">
-    <value>عبر الإنترنت</value>
+    <value>Aanlyn</value>
   </data>
   <data name="TextOpenLively" xml:space="preserve">
-    <value>تشغيل لايفلي</value>
+    <value>Maak Lively oop</value>
   </data>
   <data name="PauseAlgorithmTypeAllProcess.Content" xml:space="preserve">
-    <value>جميع العمليات (تجريبي)</value>
+    <value>Alle proses</value>
   </data>
   <data name="PauseAlgorithmTypeExclusiveMode.Content" xml:space="preserve">
     <value>Direct3D</value>
   </data>
   <data name="PauseAlgorithmTypeForegroundProcess.Content" xml:space="preserve">
-    <value>معالجة المقدمة</value>
+    <value>Voorgrond proses</value>
   </data>
   <data name="TextPauseWallpapers" xml:space="preserve">
-    <value>ايقاف مؤقت للخلفيات</value>
+    <value>Onderbreek agtergronde</value>
   </data>
   <data name="TextPerformanceKill.Content" xml:space="preserve">
-    <value>انهي</value>
+    <value>Doodmaak</value>
   </data>
   <data name="TextPerformanceNone.Content" xml:space="preserve">
-    <value>لاشئ</value>
+    <value>Niks</value>
   </data>
   <data name="TextPerformancePause.Content" xml:space="preserve">
-    <value>توقف مؤقت</value>
+    <value>Stop tydelik</value>
   </data>
   <data name="TextPicture" xml:space="preserve">
-    <value>الصورة</value>
+    <value>Prent</value>
   </data>
   <data name="PreviewWallpaper.Text" xml:space="preserve">
-    <value>معاينة الخلفية</value>
+    <value>Voorskou</value>
   </data>
   <data name="PrivacyPolicy.Header" xml:space="preserve">
-    <value>سياسة الخصوصية</value>
+    <value>Privaatheidsbeleid</value>
   </data>
   <data name="TextProcessingWallpaper" xml:space="preserve">
-    <value>المعالجة</value>
+    <value>Verwerking</value>
   </data>
   <data name="TextRemove" xml:space="preserve">
-    <value>إزلة</value>
+    <value>Verwyder</value>
   </data>
   <data name="TextRule" xml:space="preserve">
-    <value>القاعدة</value>
+    <value>Reël</value>
   </data>
   <data name="TextScreen" xml:space="preserve">
-    <value>شاشة</value>
+    <value>Skerm</value>
   </data>
   <data name="TextSearch" xml:space="preserve">
-    <value>بحث</value>
+    <value>Soek</value>
   </data>
   <data name="SetWallpaper.Text" xml:space="preserve">
-    <value>تعيين كخلفية</value>
+    <value>Stel as muurpapier</value>
   </data>
   <data name="ShowOnDisk.Text" xml:space="preserve">
-    <value>عرض على القرص</value>
+    <value>Maak lêerligging oop</value>
   </data>
   <data name="WallpaperSource.Text" xml:space="preserve">
-    <value>المصدر</value>
+    <value>Bron</value>
   </data>
   <data name="TextStart" xml:space="preserve">
-    <value>ابدأ</value>
+    <value>Begin</value>
   </data>
   <data name="TextStop" xml:space="preserve">
-    <value>توقف</value>
+    <value>Stop</value>
   </data>
   <data name="StoreReview.Content" xml:space="preserve">
-    <value>هل تستمتع باستخدام Lively ؟  اترك مراجعة :)</value>
+    <value>Geniet jy dit om Lively te gebruik? Laat 'n resensie :)</value>
   </data>
   <data name="TextSupport.Content" xml:space="preserve">
-    <value>الدعم</value>
+    <value>Ondersteuning</value>
   </data>
   <data name="TextSwitchBranchDev" xml:space="preserve">
-    <value>التبديل إلى النسخة التجريبية (قناة التطوير)</value>
+    <value>Skakel oor na beta (Ontwikkelingskanaal)</value>
   </data>
   <data name="TextSwitchBranchOfficial" xml:space="preserve">
-    <value>التبديل إلى النسخة المستقرة (القناة الافتراضية)</value>
+    <value>Skakel oor na stabiel (verstekkanaal)</value>
   </data>
   <data name="TextTags" xml:space="preserve">
-    <value>العلامات</value>
+    <value>Merkers</value>
   </data>
   <data name="TaskbarThemeBlur.Content" xml:space="preserve">
-    <value>ضبابي</value>
+    <value>Vervaag</value>
   </data>
   <data name="TaskbarThemeClear.Content" xml:space="preserve">
-    <value>صافي</value>
+    <value>Duidelik</value>
   </data>
   <data name="TaskbarThemeColor.Content" xml:space="preserve">
-    <value>اللون</value>
+    <value>Kleur</value>
   </data>
   <data name="TaskbarThemeFluent.Content" xml:space="preserve">
-    <value>طلق</value>
+    <value>Vlot</value>
   </data>
   <data name="TaskbarThemeWallpaper.Content" xml:space="preserve">
-    <value>ورق الجدران</value>
+    <value>Muurpapier</value>
   </data>
   <data name="TaskbarThemeWallpaperFluent.Content" xml:space="preserve">
-    <value>ورق الجدران بطلاقة</value>
+    <value>Wallpaper Vlot</value>
   </data>
   <data name="TextTileSizeLarge" xml:space="preserve">
-    <value>كبير</value>
+    <value>Large</value>
   </data>
   <data name="TextTileSizeNormal" xml:space="preserve">
-    <value>عادي</value>
+    <value>Normal</value>
   </data>
   <data name="TextTileSizeSmall" xml:space="preserve">
-    <value>صغير</value>
+    <value>Small</value>
   </data>
   <data name="Title.Text" xml:space="preserve">
-    <value>العنوان</value>
+    <value>Titel</value>
   </data>
   <data name="TextUIHeadless" xml:space="preserve">
-    <value>بلا رأس</value>
+    <value>Headless</value>
   </data>
   <data name="TextUILite" xml:space="preserve">
-    <value>خفيف</value>
+    <value>Lite</value>
   </data>
   <data name="TextUINormal" xml:space="preserve">
-    <value>عادي</value>
+    <value>Normal</value>
   </data>
   <data name="TextUnsupportedFile" xml:space="preserve">
-    <value>تنسيق الملف غير معتمد</value>
+    <value>Lêerformaat word nie ondersteun nie</value>
   </data>
   <data name="TextUpdateAvailable" xml:space="preserve">
-    <value>تحديث متوفر!</value>
+    <value>Opdatering beskikbaar!</value>
   </data>
   <data name="TextUpdateCheck" xml:space="preserve">
-    <value>تحقق من التحديث</value>
+    <value>Kyk vir opdatering</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
-    <value>خطأ في التحقق من التحديث</value>
+    <value>Kon nie kyk vir sagteware-opdatering nie</value>
   </data>
   <data name="TextUpdateChecking" xml:space="preserve">
-    <value>التحقق من وجود تحديث</value>
+    <value>Kyk tans vir opdatering</value>
   </data>
   <data name="TextUpdateUptodate" xml:space="preserve">
-    <value>لايفلي مُحدَّث!</value>
+    <value>Sagteware is op datum!</value>
   </data>
   <data name="TextVideo" xml:space="preserve">
-    <value>فيديو</value>
+    <value>Video</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>إدخال وسيطات سطر الأوامر الاختيارية</value>
+    <value>Voer opsionele opdragreëlargumente in</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
-    <value>ملء</value>
+    <value>Vul</value>
   </data>
   <data name="WallpaperFitNone.Content" xml:space="preserve">
-    <value>بلا</value>
+    <value>Geen</value>
   </data>
   <data name="WallpaperFitUniform.Content" xml:space="preserve">
-    <value>موحد</value>
+    <value>Uniform</value>
   </data>
   <data name="WallpaperFitUniformToFill.Content" xml:space="preserve">
-    <value>تعبئة موحدة</value>
+    <value>Eenvormige vul</value>
   </data>
   <data name="WallpaperLayoutDuplicate.Content" xml:space="preserve">
-    <value>تكرار نفس الخلفية</value>
+    <value>Dupliseer dieselfde plakpapier</value>
   </data>
   <data name="WallpaperLayoutPerScreen.Content" xml:space="preserve">
-    <value>اختيار الشاشة فقط</value>
+    <value>Slegs geselekteerde skerm</value>
   </data>
   <data name="WallpaperLayoutSpan.Content" xml:space="preserve">
-    <value>إمتداد(تجريبي)</value>
+    <value>Span oor skerms</value>
   </data>
   <data name="WallpaperType.Text" xml:space="preserve">
-    <value>النوع</value>
+    <value>Tik</value>
   </data>
   <data name="Website.Header" xml:space="preserve">
-    <value>موقع</value>
+    <value>Webwerf</value>
   </data>
   <data name="TextWebStream" xml:space="preserve">
-    <value>ستريم/فيديو مباشر</value>
+    <value>Webstroom</value>
   </data>
   <data name="TextWelcome" xml:space="preserve">
-    <value>مرحبا بكم</value>
+    <value>Welkom</value>
   </data>
   <data name="TextYes" xml:space="preserve">
-    <value>نعم</value>
+    <value>Ja</value>
   </data>
   <data name="VideoPlayer.Header" xml:space="preserve">
-    <value>مشغّل الفيديو:</value>
+    <value>Video-speler</value>
   </data>
   <data name="AddWallpaperFileBrowse.Description" xml:space="preserve">
-    <value>تعيين جميع أنواع الملفات المدعومة كخلفية.</value>
+    <value>Stel alle ondersteunde lêertipes as muurpapier</value>
   </data>
   <data name="EnterUrl.Description" xml:space="preserve">
-    <value>قم بتعيين صفحة الويب لعنوان URL الذي أدخلته كخلفية.</value>
+    <value>Stel die webbladsy van die URL wat jy as agtergrond ingevoer het</value>
   </data>
   <data name="AppFocus.Description" xml:space="preserve">
-    <value>تعيين ما يجب القيام به عندما يكون التطبيق في التركيز.</value>
+    <value>Stel wat om te doen wanneer enige toepassing in fokus is</value>
   </data>
   <data name="AppFullScreen.Description" xml:space="preserve">
-    <value>تعيين ما يجب القيام به عند تشغيل الألعاب / التطبيقات بوضع ملء الشاشة.</value>
+    <value>Stel wat om te doen wanneer volskermspeletjies/toepassings loop</value>
   </data>
   <data name="AppRules.Description" xml:space="preserve">
-    <value>تعيين قواعد تشغيل خلفية مختلفة على أساس تشغيل التطبيق.</value>
+    <value>Onderbreek muurpapier wanneer hierdie toepassings uitgevoer word</value>
   </data>
   <data name="TipAppTheme" xml:space="preserve">
-    <value>تتكيف البرنامج مع إعدادات موضوع النظام ، لتغيير المظهر ، انتقل إلى:</value>
+    <value>Lively pas by stelseltema-instellings aan om die voorkoms te verander</value>
   </data>
   <data name="BatteryPower.Description" xml:space="preserve">
-    <value>(بالنسبة للأنظمة التي تعمل بالبطارية فقط) قم بتغيير التشغيل عند فصل طاقة التيار المتردد.</value>
+    <value>Verander afspeel wanneer AC-krag ontkoppel is</value>
   </data>
   <data name="BrowserDebuggingPort.Description" xml:space="preserve">
-    <value>أدخل المنفذ لتصحيح أخطاء خلفيات صفحة الويب ، يلزم إعادة تشغيل المتصفح حتى تصبح التغييرات نافذة المفعول.
-عندما تكون جاهزة انتقل إلى http://localhost:portnumber للوصول إلى وحدة تحكم المطور.</value>
+    <value>Voer die poort in om webblad-agtergronde te ontfout; wanneer gereed, navigeer na http://localhost:portnommer om toegang te verkry tot ontwikkelaarkonsole</value>
   </data>
   <data name="Debug.Description" xml:space="preserve">
-    <value>عرض قائمة المطور</value>
+    <value>Wys ontwikkelaarkieslys</value>
   </data>
   <data name="DesktopPicture.Description" xml:space="preserve">
-    <value>تعيين صورة خلفية متحركة كخلفية سطح المكتب.</value>
+    <value>Stel 'n prentjie van geanimeerde plakpapier as lessenaarpapier</value>
   </data>
   <data name="DisplayPauseRule.Description" xml:space="preserve">
-    <value>لكل: وقفة خلفية فقط على الشاشة التي تركز التطبيق/ملء الشاشة.
-الكل: وقفة الخلفية على جميع الشاشة\ات إذا كان أي تطبيق يركز/ يملأ الشاشة.</value>
+    <value>Onderbreek muurpapier op alle skerms of slegs die skerm waarop toepassing gefokus is</value>
   </data>
   <data name="ExportLogs.Description" xml:space="preserve">
-    <value>إنشاء ملف تقرير السجل.</value>
+    <value>Skep logverslaglêer</value>
   </data>
   <data name="GifPlayer.Description" xml:space="preserve">
-    <value>حدد المشغل المستخدم لخلفية gif.</value>
+    <value>Kies die speler wat vir gif-muurpapier gebruik word</value>
   </data>
   <data name="TipLivelySetupOnClose" xml:space="preserve">
-    <value>الانتهاء من الإعداد للمتابعة.</value>
+    <value>Voltooi die opstelling om voort te gaan</value>
   </data>
   <data name="LockscreenPicture.Description" xml:space="preserve">
-    <value>قم بتعيين صورة خلفية متحركة كخلفية لشاشة القفل.</value>
+    <value>Stel 'n prentjie van geanimeerde muurpapier as sluitskerm-muurpapier</value>
   </data>
   <data name="PauseAlgorithm.Description" xml:space="preserve">
-    <value>المقدمة: خفيفة الوزن، يتحقق فقط من العملية الفردية الموجودة في المقدمة لتحديد سلوك تشغيل ورق الجدران.
-جميع العمليات: أثقل، بمسح كل عملية لتحديد سلوك التشغيل.</value>
+    <value>Wallpaper pouse algoritme</value>
   </data>
   <data name="PowerSavingModePower.Description" xml:space="preserve">
-    <value>تغيير التشغيل عند تمكين وضع توفير الطاقة للويندوز</value>
+    <value>Verander afspeel wanneer Windows Kragbesparingsmodus geaktiveer is</value>
   </data>
   <data name="RemoteDesktopPower.Description" xml:space="preserve">
-    <value>تغيير التشغيل عند تشغيل جلسة سطح المكتب البعيد</value>
+    <value>Verander afspeel wanneer 'n Remote Desktop-sessie uitgevoer word</value>
   </data>
   <data name="TipScreensaver" xml:space="preserve">
-    <value>After the selected inactivity period use the current wallpaper as your screensaver.</value>
+    <value>Gebruik na die onaktiwiteitsperiode die huidige muurpapier as jou skermbewaarder</value>
   </data>
   <data name="StreamWallpaperDetect.Description" xml:space="preserve">
-    <value>إذا تم اكتشاف رابط دفق الفيديو المدعوم ، استخدم مشغل الفيديو بدلا من تحميل صفحة الويب.</value>
+    <value>As ondersteunde videostroomskakel bespeur word, gebruik die videospeler in plaas daarvan om die webblad te laai</value>
   </data>
   <data name="StreamWallpaperVideoQuality.Description" xml:space="preserve">
-    <value>حدد جودة الفيديو المطلوبة للتدفقات عبر الإنترنت.</value>
+    <value>Kies die verlangde videokwaliteit vir aanlynstrome</value>
   </data>
   <data name="TipSwitchSoftwareBranch" xml:space="preserve">
-    <value>Change software release from beta to stable or vice versa.</value>
+    <value>Verander sagtewarevrystelling van beta na stabiel of andersom</value>
   </data>
   <data name="TaskbarTheme.Description" xml:space="preserve">
-    <value>تغيير مظهر شريط مهام النظام.</value>
+    <value>Verander stelsel taakbalk voorkoms</value>
   </data>
   <data name="TipTileSize" xml:space="preserve">
-    <value>حجم البلاط ورق الجدران في المكتبة.</value>
+    <value>Size of the wallpaper tiles in Library</value>
   </data>
   <data name="TipUIMode" xml:space="preserve">
-    <value>بالنسبة للأنظمة المنخفضة حدًا ، حدد الوضع البسيط.</value>
+    <value>For low-end systems select Lite mode</value>
   </data>
   <data name="VideoHardwareDecode.Description" xml:space="preserve">
-    <value>استخدام تسريع الأجهزة عندما يكون ذلك ممكنا.</value>
+    <value>Gebruik hardewareversnelling waar moontlik</value>
   </data>
   <data name="VideoPlayer.Description" xml:space="preserve">
-    <value>حدد المشغل المستخدم لخلفية الفيديو.</value>
+    <value>Kies die speler wat vir video-muurpapier gebruik word</value>
   </data>
   <data name="WallpaperDir.Description" xml:space="preserve">
-    <value>المسار المستخدم لتخزين ملفات ورق الجدران.</value>
+    <value>Pad wat gebruik word om plakpapierlêers te stoor</value>
   </data>
   <data name="WallpaperFit.Description" xml:space="preserve">
-    <value>خوارزمية قياس ورق الجدران.</value>
+    <value>Agtergrond skaal algoritme</value>
   </data>
   <data name="WallpaperInput.Description" xml:space="preserve">
-    <value>حدد طرق التفاعل مع ورق الجدران.</value>
+    <value>Kies maniere om met muurpapier te kommunikeer</value>
   </data>
   <data name="WallpaperLayout.Description" xml:space="preserve">
-    <value>كيفية تطبيق ورق الجدران على أجهزة العرض المتصلة.</value>
+    <value>How wallpaper is applied to connected display devices</value>
   </data>
   <data name="TipWallpaperPlayback" xml:space="preserve">
-    <value>إيقاف تشغيل خلفية الشاشة مؤقتا عندما لا يكون سطح المكتب مركزا.</value>
+    <value>Onderbreek muurpapier-afspeel wanneer lessenaar nie gefokus is nie</value>
   </data>
   <data name="WebBrowserDiskCache.Description" xml:space="preserve">
-    <value>تخزين الملفات المؤقتة على القرص بدلا من الذاكرة ، يتم استعادة الإعدادات عند إعادة تشغيل المتصفح.</value>
+    <value>Stoor tydelike lêers op skyf in plaas van geheue</value>
   </data>
   <data name="WebBrowser.Description" xml:space="preserve">
-    <value>CEF (Chromium Embedded Framework) هو محرك كروم خفيف الوزن.
-Edge هو عرض الويب المدمج في windows 10.</value>
+    <value>Kies die speler wat vir Html-muurpapier gebruik word</value>
   </data>
   <data name="About.Label" xml:space="preserve">
-    <value>حول</value>
+    <value>Oor</value>
   </data>
   <data name="AddWallpaper.Label" xml:space="preserve">
-    <value>إضافة</value>
+    <value>Voeg muurpapier by</value>
   </data>
   <data name="AppFocus.Header" xml:space="preserve">
-    <value>تركيز تطبيق آخر:</value>
+    <value>Toepassings gefokus</value>
   </data>
   <data name="AppFullScreen.Header" xml:space="preserve">
-    <value>تطبيقات وضع ملء الشاشة الأخرى:</value>
+    <value>Toepassings volskerm</value>
   </data>
   <data name="TitleAppName" xml:space="preserve">
-    <value>خلفيات حية</value>
+    <value>Lively Wallpaper</value>
   </data>
   <data name="AppRules.Header" xml:space="preserve">
-    <value>قواعد التطبيق</value>
+    <value>Toepassingsreëls</value>
   </data>
   <data name="AppTheme.Header" xml:space="preserve">
-    <value>سمة</value>
+    <value>Tema</value>
   </data>
   <data name="TitleAudioPlayOnScreen" xml:space="preserve">
-    <value>تشغيل الصوت على الشاشة</value>
+    <value>Speel oudio op die skerm</value>
   </data>
   <data name="BatteryPower.Header" xml:space="preserve">
-    <value>عندما يكون على وضع البطارية:</value>
+    <value>Wanneer op batterykrag</value>
   </data>
   <data name="TitleBrowseFile" xml:space="preserve">
-    <value>تصفح للفيديو ، صورة متحركة ، صفحة ويب. ملف للتعيين كخلفية</value>
+    <value>Blaaier vir video, gif, webblad ... lêer om as agtergrond te stel</value>
   </data>
   <data name="BrowserDebuggingPort.Header" xml:space="preserve">
-    <value>منفذ التصحيح</value>
+    <value>Ontfoutingpoort</value>
   </data>
   <data name="TitleChangelog" xml:space="preserve">
-    <value>سِجل التغييرات</value>
+    <value>Veranderlogboek</value>
   </data>
   <data name="Community.Header" xml:space="preserve">
-    <value>المجتمع</value>
+    <value>Gemeenskap</value>
   </data>
   <data name="Debug.Header" xml:space="preserve">
-    <value>التصحيح</value>
+    <value>Ontfout</value>
   </data>
   <data name="TitleDeleteConfirmation" xml:space="preserve">
-    <value>تأكيد الحذف</value>
+    <value>Bevestig uitvee</value>
   </data>
   <data name="DesktopPicture.Header" xml:space="preserve">
-    <value>صورة سطح المكتب</value>
+    <value>Desktop prentjie</value>
   </data>
   <data name="DisplayPauseRule.Header" xml:space="preserve">
-    <value>عرض قاعدة الإيقاف المؤقت:</value>
+    <value>Display pause rule</value>
   </data>
   <data name="Documentation.Header" xml:space="preserve">
-    <value>الوثائق</value>
+    <value>Documentation</value>
   </data>
   <data name="EnterUrl.Header" xml:space="preserve">
-    <value>ادخل عنوان URL</value>
+    <value>Enter URL</value>
   </data>
   <data name="ExportLogs.Header" xml:space="preserve">
-    <value>ملف السجل</value>
+    <value>Log File</value>
   </data>
   <data name="TitleGeneral" xml:space="preserve">
-    <value>عام:</value>
+    <value>General</value>
   </data>
   <data name="GifPlayer.Header" xml:space="preserve">
-    <value>مشغل Gif</value>
+    <value>Gif player</value>
   </data>
   <data name="Help.Label" xml:space="preserve">
-    <value>مساعدة</value>
+    <value>Help</value>
   </data>
   <data name="TitleInteraction" xml:space="preserve">
-    <value>التفاعل</value>
+    <value>Interaction</value>
   </data>
   <data name="TitleLibrary" xml:space="preserve">
-    <value>المكتبة</value>
+    <value>Biblioteek</value>
   </data>
   <data name="TitleLivelySetup" xml:space="preserve">
-    <value>الإعداد Lively </value>
+    <value>Lively Setup</value>
   </data>
   <data name="TitleLocation" xml:space="preserve">
-    <value>الموقع</value>
+    <value>Location</value>
   </data>
   <data name="LockscreenPicture.Header" xml:space="preserve">
-    <value>صورة شاشة القفل</value>
+    <value>Lockscreen picture</value>
   </data>
   <data name="TitleMisc" xml:space="preserve">
-    <value>متنوعة</value>
+    <value>Misc</value>
   </data>
   <data name="TitleMute" xml:space="preserve">
-    <value>كتم الصوت</value>
+    <value>Mute</value>
   </data>
   <data name="PauseAlgorithm.Header" xml:space="preserve">
-    <value>إيقاف مؤقت للخوارزمية:</value>
+    <value>Pause algorithm</value>
   </data>
   <data name="TitlePerformance" xml:space="preserve">
-    <value>الأداء:</value>
+    <value>Performance</value>
   </data>
   <data name="TitlePlaylist" xml:space="preserve">
-    <value>قائمة التشغيل</value>
+    <value>Snitlys</value>
   </data>
   <data name="PleaseWait.Text" xml:space="preserve">
-    <value>يرجى الإنتظار</value>
+    <value>Wag asseblief</value>
   </data>
   <data name="PowerSavingModePower.Header" xml:space="preserve">
-    <value>عندما يكون على وضع البطارية</value>
+    <value>When on Battery Saver</value>
   </data>
   <data name="RemoteDesktopPower.Header" xml:space="preserve">
-    <value>عندما يكون على سطح المكتب البعيد</value>
+    <value>When on Remote Desktop</value>
   </data>
   <data name="ReportBug.Header" xml:space="preserve">
-    <value>الإبلاغ عن الخطأ</value>
+    <value>Rapporteer fout</value>
   </data>
   <data name="TitleScalingFit" xml:space="preserve">
-    <value>التحجيم/ الاحتواء</value>
+    <value>Skaal/Pas</value>
   </data>
   <data name="ControlPanel.Title" xml:space="preserve">
-    <value>تخطيط الشاشة</value>
+    <value>Beheer paneel</value>
   </data>
   <data name="TitleScreensaver" xml:space="preserve">
-    <value>شاشة التوقف</value>
+    <value>Screensaver</value>
   </data>
   <data name="TitleScreensaverLockOnResume" xml:space="preserve">
-    <value>عند الاستئناف، عرض شاشة تسجيل الدخول</value>
+    <value>On resume, display logon screen</value>
   </data>
   <data name="TitleSelectFile" xml:space="preserve">
-    <value>تحديد ملف</value>
+    <value>Select File</value>
   </data>
   <data name="TitleSettings" xml:space="preserve">
-    <value>الإعدادات</value>
+    <value>Instellings</value>
   </data>
   <data name="TitleSkipConfirm" xml:space="preserve">
-    <value>تخطي التأكيد</value>
+    <value>Slaan bevestiging oor</value>
   </data>
   <data name="SourceCode.Header" xml:space="preserve">
-    <value>شفرة المصدر</value>
+    <value>Bronkode</value>
   </data>
   <data name="Store.Header" xml:space="preserve">
-    <value>متجر</value>
+    <value>Winkel</value>
     <comment>For different version of Lively, example: Microsoft Store</comment>
   </data>
   <data name="StreamWallpaperVideoQuality.Header" xml:space="preserve">
-    <value>ستريم/فيديو مباشر</value>
+    <value>Stroom</value>
   </data>
   <data name="StreamWallpaperDetect.Header" xml:space="preserve">
-    <value>كشف تيارات</value>
+    <value>Bespeur strome</value>
   </data>
   <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
-    <value>جودة الفيديو</value>
+    <value>Video kwaliteit</value>
   </data>
   <data name="System.Header" xml:space="preserve">
-    <value>النظام</value>
+    <value>Stelsel</value>
   </data>
   <data name="TaskbarTheme.Header" xml:space="preserve">
-    <value>موضوع شريط المهام</value>
+    <value>Taakbalk-tema</value>
   </data>
   <data name="TitleTileSize" xml:space="preserve">
-    <value>حجم البلاط</value>
+    <value>Teël grootte</value>
   </data>
   <data name="TitleUIMode" xml:space="preserve">
-    <value>واجهة المستخدم</value>
+    <value>Gebruikerskoppelvlak</value>
   </data>
   <data name="TitleUpdates" xml:space="preserve">
-    <value>التحديثات</value>
+    <value>Opdaterings</value>
   </data>
   <data name="TitleVideo" xml:space="preserve">
-    <value>فيديو</value>
+    <value>Video</value>
   </data>
   <data name="VideoHardwareDecode.Header" xml:space="preserve">
-    <value>وحدة فك تشفير GPU</value>
+    <value>GPU dekodeer</value>
   </data>
   <data name="TitleWallpaper" xml:space="preserve">
-    <value>ورق الجدران</value>
+    <value>Muurpapier</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">
-    <value>دليل ورق الجدران</value>
+    <value>Muurpapiergids</value>
   </data>
   <data name="WallpaperDirMoveExisting.Content" xml:space="preserve">
-    <value>نقل خلفيات موجودة إلى مجلد جديد</value>
+    <value>Skuif bestaande agtergronde na 'n nuwe gids</value>
   </data>
   <data name="WallpaperFit.Header" xml:space="preserve">
-    <value>اختيار صالح</value>
+    <value>Kies 'n pasvorm</value>
   </data>
   <data name="WallpaperInput.Header" xml:space="preserve">
-    <value>إدخال ورق الحائط</value>
+    <value>Muurpapier-invoer</value>
   </data>
   <data name="WallpaperLayout.Header" xml:space="preserve">
-    <value>حدد تخطيط الخلفية:-</value>
+    <value>Plasingsmetode</value>
   </data>
   <data name="WallpaperPlaybackGroup.Header" xml:space="preserve">
-    <value>تشغيل الخلفية:</value>
+    <value>Muurpapier speel</value>
   </data>
   <data name="TitleWarning" xml:space="preserve">
-    <value>تحذير</value>
+    <value>Waarskuwing</value>
   </data>
   <data name="WebBrowser.Header" xml:space="preserve">
-    <value>متصفح الويب:</value>
+    <value>Webblaaier</value>
   </data>
   <data name="WebBrowserDiskCache.Header" xml:space="preserve">
-    <value>ذاكرة التخزين المؤقت على القرص</value>
+    <value>Skyfkas</value>
   </data>
   <data name="TitleWebBrowserEngine" xml:space="preserve">
-    <value>محرك</value>
+    <value>Enjin</value>
   </data>
   <data name="TitleWebpageLoad" xml:space="preserve">
-    <value>تحميل الصفحة</value>
+    <value>Laai webblad</value>
   </data>
   <data name="FastUI.Description" xml:space="preserve">
-    <value>إبقاء واجهة المستخدم تعمل من أجل بدء تشغيل أسرع</value>
+    <value>Hou die gebruikerskoppelvlak aan die gang vir vinniger opstart</value>
   </data>
   <data name="FastUI.Header" xml:space="preserve">
-    <value>بدأ تشغيل اسرع</value>
+    <value>Vinnige opstart</value>
   </data>
   <data name="WallpaperDirGroup.Header" xml:space="preserve">
-    <value>الملف</value>
+    <value>Lêer</value>
   </data>
   <data name="AppThemeDark.Content" xml:space="preserve">
-    <value>داكن</value>
+    <value>Donker</value>
   </data>
   <data name="AppThemeLight.Content" xml:space="preserve">
-    <value>ابيض</value>
+    <value>Lig</value>
   </data>
   <data name="AppThemeSystem.Content" xml:space="preserve">
-    <value>النظام</value>
+    <value>Stelsel</value>
   </data>
   <data name="WindowsSettingsColor.Content" xml:space="preserve">
-    <value>إعدادات لون Windows</value>
+    <value>Windows color settings</value>
   </data>
   <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
-    <value>الحواسيب المحمولة</value>
+    <value>Laptops</value>
   </data>
   <data name="DeveloperGroup.Header" xml:space="preserve">
-    <value>مطور</value>
+    <value>Developer</value>
   </data>
   <data name="AppearanceBehaviour.Header" xml:space="preserve">
-    <value>المظهر والسلوك</value>
+    <value>Appearance &amp; behavior</value>
   </data>
   <data name="ActiveWallpapers.Label" xml:space="preserve">
-    <value>خلفيات نشطة</value>
+    <value>Aktiewe muurpapier(e)</value>
   </data>
   <data name="TitleGallery" xml:space="preserve">
-    <value>المعرض</value>
+    <value>Galery</value>
   </data>
   <data name="AboutMe.Text" xml:space="preserve">
-    <value>مرحباً، أنا داني جون معروف أيضًا باسم rocksdanister. لقد طورت تطبيق Lively والمفتوح المصدر (FOSS). شكراً على تخصيص الوقت للنظر في عملي.</value>
+    <value>Hallo, ek is Dani John ook bekend as rocksdanister. Ek het Lively 'n gratis en oopbron (FOSS) plakpapiertoepassing ontwikkel. Dankie dat jy die tyd geneem het om na my werk te kyk.</value>
   </data>
   <data name="LicenseLink.Content" xml:space="preserve">
-    <value>ترخيص البرنامج</value>
+    <value>Sagteware lisensie</value>
   </data>
   <data name="AttributionLink.Content" xml:space="preserve">
-    <value>إشعار برنامج الطرف الثالث</value>
+    <value>Third party software notice</value>
   </data>
   <data name="PrivacyPolicyLink.Content" xml:space="preserve">
-    <value>سياسة جمع البيانات</value>
+    <value>Data collection policy</value>
   </data>
   <data name="AddWallpaperDrop.Text" xml:space="preserve">
-    <value>إضافة خلفية</value>
+    <value>Add wallpaper</value>
   </data>
   <data name="ComingSoon.Text" xml:space="preserve">
-    <value>قريباً</value>
+    <value>Kom binnekort</value>
   </data>
   <data name="AboutMenu.Text" xml:space="preserve">
-    <value>حول</value>
+    <value>Oor</value>
   </data>
   <data name="SourceWebsite.Text" xml:space="preserve">
-    <value>موقع</value>
+    <value>Webwerf</value>
   </data>
   <data name="TextOpen.Content" xml:space="preserve">
-    <value>فتح</value>
+    <value>Maak oop</value>
   </data>
   <data name="TextSave.Content" xml:space="preserve">
-    <value>حفظ</value>
+    <value>Stoor</value>
   </data>
   <data name="UIMode.Description" xml:space="preserve">
-    <value>تأثيرات واجهة المستخدم والرسوم المتحركة</value>
+    <value>User interface effects and animations</value>
   </data>
   <data name="UIMode.Header" xml:space="preserve">
-    <value>واجهة المستخدم</value>
+    <value>Gebruikerskoppelvlak</value>
   </data>
   <data name="UIModeLite.Content" xml:space="preserve">
-    <value>خفيف</value>
+    <value>Lite</value>
   </data>
   <data name="UIModeNormal.Content" xml:space="preserve">
-    <value>عادي</value>
+    <value>Normaal</value>
   </data>
   <data name="Screensaver.Description" xml:space="preserve">
-    <value>كيفية تطبيق ورق الجدران على أجهزة العرض المتصلة</value>
+    <value>Hoe skermbewaarder toegepas word op gekoppelde aan vertoontoestelle</value>
   </data>
   <data name="Screensaver.Header" xml:space="preserve">
-    <value>نوع شاشة التوفير</value>
+    <value>Type of screensaver</value>
   </data>
   <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
-    <value>تكوين بشكل منفصل</value>
+    <value>Configured separately</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
-    <value>نفس الخلفية قيد التشغيل</value>
+    <value>Dieselfde as lopende plakpapier</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
-    <value>إضافة مطلوبة</value>
+    <value>Plugin required</value>
   </data>
   <data name="ScreensaverPluginMessage.Text" xml:space="preserve">
-    <value>مطلوب في المرة الأولى الإعداد لتشغيل شاشة التوقف</value>
+    <value>Eenmalige opstelling is nodig om skermbewaarder te laat loop</value>
   </data>
   <data name="WallpaperLayoutScreenPicker.Content" xml:space="preserve">
-    <value>اختيار الشاشة دائماً عند اختيار الخلفية</value>
+    <value>Kies altyd skerm wanneer u muurpapier kies</value>
   </data>
   <data name="GalleryAccount.Text" xml:space="preserve">
-    <value>الحساب</value>
+    <value>Rekening</value>
   </data>
   <data name="GalleryAccountDelete.Content" xml:space="preserve">
-    <value>حذف الحساب</value>
+    <value>Skrap rekening</value>
   </data>
   <data name="GalleryAccountExport.Content" xml:space="preserve">
-    <value>تصدير البيانات</value>
+    <value>Voer data uit</value>
   </data>
   <data name="GalleryAccountLogin.Content" xml:space="preserve">
-    <value>تسجيل الدخول</value>
+    <value>Teken aan</value>
   </data>
   <data name="GalleryAccountLogout.Content" xml:space="preserve">
-    <value>تسجيل الخروج</value>
+    <value>Teken uit</value>
   </data>
   <data name="GalleryPageCollection.Content" xml:space="preserve">
-    <value>المجموعة</value>
+    <value>Versameling</value>
   </data>
   <data name="GalleryPageHome.Content" xml:space="preserve">
-    <value>الرئيسية</value>
+    <value>Tuis</value>
   </data>
   <data name="GalleryPageManage.Content" xml:space="preserve">
-    <value>إدارة</value>
+    <value>Bestuur</value>
   </data>
   <data name="GalleryPageProfile.Content" xml:space="preserve">
-    <value>الملف الشخصي</value>
+    <value>Profiel</value>
   </data>
   <data name="GalleryPleaseLogin.Text" xml:space="preserve">
-    <value>الرجاء تسجيل الدخول للمتابعة</value>
+    <value>Meld asseblief aan om voort te gaan</value>
   </data>
   <data name="GalleryWelcomeMessage.Text" xml:space="preserve">
-    <value>مرحباً</value>
+    <value>Hi</value>
   </data>
   <data name="RestoreWallpaper.Text" xml:space="preserve">
-    <value>لقد وجدنا هذه الخلفيات في حسابك</value>
+    <value>Ons het hierdie agtergronde in jou rekening gevind</value>
   </data>
   <data name="TextDownloadNow.Content" xml:space="preserve">
-    <value>حمل الان</value>
+    <value>Laai nou af</value>
   </data>
   <data name="TextMaybeLater.Content" xml:space="preserve">
-    <value>ربما لاحقاً</value>
+    <value>Miskien later</value>
   </data>
   <data name="TextSelectAll.Content" xml:space="preserve">
-    <value>تحديد الكل</value>
+    <value>Kies alles</value>
   </data>
   <data name="TextSelectNone.Content" xml:space="preserve">
-    <value>عدم تحديد شيء</value>
+    <value>Kies geen</value>
   </data>
   <data name="TitleWelcomeback.Text" xml:space="preserve">
-    <value>أهلاً بعودتك!</value>
+    <value>Welkom terug!</value>
   </data>
   <data name="ReportWallpaper.Header" xml:space="preserve">
-    <value>أسباب</value>
+    <value>Redes</value>
   </data>
   <data name="ReportWallpaperCopyright.Content" xml:space="preserve">
-    <value>انتهاك لحقوق النشر</value>
+    <value>Kopieregskending</value>
   </data>
   <data name="ReportWallpaperMisleading.Content" xml:space="preserve">
-    <value>معلومات مضلِّلة</value>
+    <value>Misleidende inligting</value>
   </data>
   <data name="ReportWallpaperOther.Content" xml:space="preserve">
-    <value>آخر</value>
+    <value>Ander</value>
   </data>
   <data name="ReportWallpaperSpam.Content" xml:space="preserve">
-    <value>رسائل متكررة</value>
+    <value>Gemorspos</value>
   </data>
   <data name="ReportWallpaperViolence.Content" xml:space="preserve">
-    <value>يحتوي على عنف أو تعري</value>
+    <value>Naaktheid of geweld</value>
   </data>
   <data name="TextAdditionalNotes.Text" xml:space="preserve">
-    <value>ملاحظات إضافيه</value>
+    <value>Bykomende notas</value>
   </data>
   <data name="TextReportWallpaper.Text" xml:space="preserve">
-    <value>إبلاغ</value>
+    <value>Rapporteer</value>
   </data>
   <data name="TitleReportWallpaper.Text" xml:space="preserve">
-    <value>الإبلاغ عن الخلفية</value>
+    <value>Rapporteer muurpapier</value>
   </data>
   <data name="Send.Content" xml:space="preserve">
-    <value>إرسال</value>
+    <value>Stuur</value>
   </data>
   <data name="GalleryAccountDeleteConfirm.Text" xml:space="preserve">
-    <value>يرجى تأكيد هذا الإجراء لأنه لا يمكن التراجع عنه</value>
+    <value>Bevestig asseblief hierdie handeling, want dit KAN NIE ontdoen word nie</value>
   </data>
   <data name="GalleryAccountDeleteFail.Text" xml:space="preserve">
-    <value>فشل حذف الحساب ، يرجى المحاولة مرة أخرى في وقت لاحق</value>
+    <value>Kon nie rekening uitvee nie, probeer asseblief later weer</value>
   </data>
   <data name="TextConfirmCancel.Text" xml:space="preserve">
-    <value>هل تريد إلغاءه؟</value>
+    <value>Wil jy dit kanselleer?</value>
   </data>
   <data name="TextWait.Text" xml:space="preserve">
-    <value>يرجى الانتظار</value>
+    <value>Wag</value>
   </data>
   <data name="TitleDownloadProgress.Text" xml:space="preserve">
-    <value>جاري التحميل</value>
+    <value>Aflaai aan die gang</value>
   </data>
   <data name="TextContributors.Text" xml:space="preserve">
-    <value>المساهمين</value>
+    <value>Bydraers</value>
   </data>
   <data name="TextShare.Text" xml:space="preserve">
-    <value>مشاركة</value>
+    <value>Deel</value>
   </data>
   <data name="TitleShareWallpaper.Text" xml:space="preserve">
-    <value>مشاركة خلفيات</value>
+    <value>Deel muurpapier</value>
   </data>
   <data name="ExportWallpaperGallery.Text" xml:space="preserve">
-    <value>تحميل المَعْرِض</value>
+    <value>Galery oplaai</value>
   </data>
   <data name="ExportWallpaperLink.Text" xml:space="preserve">
-    <value>نسخ الرابط</value>
+    <value>Kopieer skakel</value>
   </data>
   <data name="TextCustomiseWallpaper" xml:space="preserve">
-    <value>تخصيص خلفية</value>
+    <value>Pas muurpapier aan</value>
   </data>
   <data name="TextCloseWallpapers" xml:space="preserve">
-    <value>إغلاق الخلفية</value>
+    <value>Maak agtergronde toe</value>
   </data>
   <data name="TitleChooseApplication.Text" xml:space="preserve">
-    <value>اختر تطبيق</value>
+    <value>Kies Toepassing</value>
   </data>
   <data name="WallpaperInstallSize.Text" xml:space="preserve">
-    <value>الحجم</value>
+    <value>Grootte</value>
   </data>
   <data name="PluginNotFound.Message" xml:space="preserve">
-    <value>الرجاء تثبيت الإضافة المطلوبة</value>
+    <value>Installeer asseblief die vereiste inprop</value>
   </data>
   <data name="PluginNotFound.Title" xml:space="preserve">
-    <value>الإضافة غير موجودة</value>
+    <value>Inprop nie gevind nie</value>
   </data>
   <data name="UpdateCompleted.Text" xml:space="preserve">
-    <value>اكتمل التحديث</value>
+    <value>Opdatering voltooi</value>
   </data>
   <data name="UpdateWhatsNew.Text" xml:space="preserve">
-    <value>تحقق من الجديد</value>
+    <value>Kyk wat is nuut</value>
   </data>
   <data name="AppThemeColor.Header" xml:space="preserve">
-    <value>اللون</value>
+    <value>Kleur</value>
   </data>
   <data name="DescriptionDefault.Text" xml:space="preserve">
-    <value>استخدام الإعداد التلقائي للنظام</value>
+    <value>Gebruik stelsel verstek</value>
   </data>
   <data name="DescriptionDynamicTheme.Text" xml:space="preserve">
-    <value>التكيف مع الخلفية</value>
+    <value>Pas aan by muurpapier</value>
   </data>
   <data name="TextDefault.Text" xml:space="preserve">
-    <value>افتراضي</value>
+    <value>Verstek</value>
   </data>
   <data name="TextDynamicTheme.Text" xml:space="preserve">
-    <value>متغير</value>
+    <value>Dinamies</value>
   </data>
   <data name="Theme.Label" xml:space="preserve">
-    <value>خلفية</value>
+    <value>Tema</value>
   </data>
   <data name="IconsHidden.Message" xml:space="preserve">
-    <value>لمنع التحديد العرضي لأيقونات سطح المكتب مخفية حاليا</value>
+    <value>Om toevallige seleksie te voorkom, word werkskermikone tans versteek</value>
   </data>
   <data name="IconsHidden.Title" xml:space="preserve">
-    <value>ايقونة سطح المكتب</value>
+    <value>Desktop ikone</value>
   </data>
   <data name="TextEndOfItems.Text" xml:space="preserve">
-    <value>That's all for now..</value>
+    <value>Dit is al vir nou..</value>
   </data>
 </root>

@@ -31,7 +31,7 @@
                 MinWidth="200"
                 MinHeight="35"
                 Click="Get_Help_Click"
-                Content="{x:Static p:Resources.ReportBugPage_Content}" />
+                Content="{x:Static p:Resources.ReportBug_Description}" />
         </StackPanel>
     </Grid>
 </Window>

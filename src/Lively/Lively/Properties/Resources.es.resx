@@ -124,15 +124,15 @@
     <value>Nivel de volumen de todos los fondos de pantalla</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
-    <value>Volumen General</value>
+    <value>Volumen</value>
   </data>
   <data name="AudioGroup.Header" xml:space="preserve">
     <value>Audio</value>
   </data>
-  <data name="CommunityPage.Content" xml:space="preserve">
+  <data name="Community.Description" xml:space="preserve">
     <value>Foro de discusión</value>
   </data>
-  <data name="DocumentationPage.Content" xml:space="preserve">
+  <data name="Documentation.Description" xml:space="preserve">
     <value>Documentación de la API y ayuda</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
@@ -143,7 +143,7 @@
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
     <value>Se ha encontrado un programa incompatible, se deshabilitará el tema de la barra de tareas</value>
   </data>
-  <data name="OfficialWebpage.Content" xml:space="preserve">
+  <data name="Website.Description" xml:space="preserve">
     <value>Página web oficial de Lively Wallpaper</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
@@ -153,7 +153,7 @@ Para pantallas OLED, Plasma o CRT que son susceptibles ha quemado y retención d
 
 El objetivo principal del salva pantallas en Lively es ofrecer más posibilidades para personalizar tu PC. Usa el salva pantallas para proteger contra el quemado de pantalla bajo tu propio riesgo!</value>
   </data>
-  <data name="ReportBugPage.Content" xml:space="preserve">
+  <data name="ReportBug.Description" xml:space="preserve">
     <value>Informar de un problema con la aplicación</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
@@ -366,7 +366,7 @@ Si aún no funciona, cierra e inicia Lively nuevamente o reinicia Windows.
   <data name="TextGIF" xml:space="preserve">
     <value>GIF animado</value>
   </data>
-  <data name="GitHubStar.Content" xml:space="preserve">
+  <data name="SourceCode.Description" xml:space="preserve">
     <value>Muestra algo de cariño dejando una estrella</value>
   </data>
   <data name="TextGo" xml:space="preserve">

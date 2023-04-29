@@ -118,42 +118,42 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AudioFocused.Content" xml:space="preserve">
-    <value>Spela upp ljudet endast när skrivbordet är fokuserat</value>
+    <value>Spela upp ljudet endast när skrivbordet är i fokus</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
-    <value>Volymnivå för alla bakgrunder.</value>
+    <value>Volymnivå för alla bakgrunder</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
-    <value>Huvudvolym</value>
+    <value>Volym</value>
   </data>
   <data name="AudioGroup.Header" xml:space="preserve">
     <value>Ljud</value>
   </data>
-  <data name="CommunityPage.Content" xml:space="preserve">
-    <value>Diskussionsforum online</value>
+  <data name="Community.Description" xml:space="preserve">
+    <value>Online diskussionsforum</value>
   </data>
-  <data name="DocumentationPage.Content" xml:space="preserve">
+  <data name="Documentation.Description" xml:space="preserve">
     <value>API-dokumentation och hjälp</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
-    <value>Lively har påträffat ett allvarligt fel.
+    <value>Lively har stött på ett allvarligt fel.
 
-Windows Utforskaren har startat om två gånger under de senaste 30 sekunderna! Detta kan vara en konflikt mellan Lively och andra anpassningsprogram för skrivbordet eller Windows. För att undvika ytterligare fel stängs alla bakgrunder av.</value>
+Utforskaren har startat om två gånger under de senaste 30 sekunderna! Detta kan vara en konflikt mellan Lively och andra anpassningsprogram för skrivbordet eller Windows. För att undvika ytterligare fel stängs alla bakgrunder av.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
     <value>Inkompatibelt program har hittats, tematisering i aktivitetsfältet är inaktiverad.</value>
   </data>
-  <data name="OfficialWebpage.Content" xml:space="preserve">
+  <data name="Website.Description" xml:space="preserve">
     <value>Officiell hemsida för Lively Wallpaper</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
     <value>De flesta moderna LCD- och LED-skärmar lider inte av problemet med inbränning och därför kan alla bakgrunder användas som skärmsläckare. För OLED-, plasma- eller CRT-skärmar som är känsliga för inbränning rekommenderas det att använda bakgrunder med regelbundna rörelser och ett övergripande mörkt tema som antas minska inbränningen, men den här funktionen är oprövad och dess effektivitet kan inte garanteras. Huvudsyftet med Livelys skärmsläckare är att lägga till ytterligare ett lager av anpassning till din dator, använd skärmsläckare som skydd mot inbränning på egen risk!</value>
   </data>
-  <data name="ReportBugPage.Content" xml:space="preserve">
+  <data name="ReportBug.Description" xml:space="preserve">
     <value>Rapportera ett problem med programvaran</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
-    <value>Välj en fil eller skriv in en webbadress som ska användas som bakgrundsbild.</value>
+    <value>Välj en fil</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
     <value>Bakgrundsbildens beteende baserad på programmet som används.</value>
@@ -338,7 +338,7 @@ Windows Utforskaren har startat om två gånger under de senaste 30 sekunderna! 
   <data name="TextGIF" xml:space="preserve">
     <value>Animerad GIF</value>
   </data>
-  <data name="GitHubStar.Content" xml:space="preserve">
+  <data name="SourceCode.Description" xml:space="preserve">
     <value>Visa kärlek genom att ge en stjärna</value>
   </data>
   <data name="TextGo" xml:space="preserve">
