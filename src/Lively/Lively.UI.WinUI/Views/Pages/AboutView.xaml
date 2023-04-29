@@ -35,30 +35,30 @@
                         VerticalAlignment="Center"
                         ProfilePicture="https://avatars.githubusercontent.com/rocksdanister" />
                 </StackPanel>
-                <CommandBar HorizontalAlignment="Center" OverflowButtonVisibility="Collapsed">
+                <CommandBar HorizontalAlignment="Left" OverflowButtonVisibility="Collapsed">
                     <AppBarButton Click="GithubButton_Click" ToolTipService.ToolTip="https://github.com/rocksdanister">
                         <AppBarButton.Icon>
-                            <BitmapIcon Foreground="{ThemeResource SystemControlBackgroundBaseHighBrush}" UriSource="ms-appx:///Assets/icons8-github-96.png" />
+                            <FontIcon FontFamily="{StaticResource CustomIconFonts}" Glyph="&#xE901;" />
                         </AppBarButton.Icon>
                     </AppBarButton>
                     <AppBarButton Click="TwitterButton_Click" ToolTipService.ToolTip="https://twitter.com/rocksdanister">
                         <AppBarButton.Icon>
-                            <BitmapIcon Foreground="{ThemeResource SystemControlBackgroundBaseHighBrush}" UriSource="ms-appx:///Assets/icons8-twitter-96.png" />
+                            <FontIcon FontFamily="{StaticResource CustomIconFonts}" Glyph="&#xE904;" />
                         </AppBarButton.Icon>
                     </AppBarButton>
                     <AppBarButton Click="RedditButton_Click" ToolTipService.ToolTip="https://reddit.com/u/rocksdanister">
                         <AppBarButton.Icon>
-                            <BitmapIcon Foreground="{ThemeResource SystemControlBackgroundBaseHighBrush}" UriSource="ms-appx:///Assets/icons8-reddit-96.png" />
+                            <FontIcon FontFamily="{StaticResource CustomIconFonts}" Glyph="&#xE903;" />
                         </AppBarButton.Icon>
                     </AppBarButton>
                     <AppBarButton Click="YoutubeButton_Click" ToolTipService.ToolTip="https://www.youtube.com/channel/UClep84ofxC41H8-R9UfNPSQ">
                         <AppBarButton.Icon>
-                            <BitmapIcon Foreground="{ThemeResource SystemControlBackgroundBaseHighBrush}" UriSource="ms-appx:///Assets/icons8-youtube-96.png" />
+                            <FontIcon FontFamily="{StaticResource CustomIconFonts}" Glyph="&#xE905;" />
                         </AppBarButton.Icon>
                     </AppBarButton>
                     <AppBarButton Click="EmailButton_Click" ToolTipService.ToolTip="awoo.git@gmail.com">
                         <AppBarButton.Icon>
-                            <BitmapIcon Foreground="{ThemeResource SystemControlBackgroundBaseHighBrush}" UriSource="ms-appx:///Assets/icons8-mail-96.png" />
+                            <FontIcon FontFamily="{StaticResource CustomIconFonts}" Glyph="&#xE902;" />
                         </AppBarButton.Icon>
                     </AppBarButton>
                 </CommandBar>
@@ -95,7 +95,7 @@
                     Severity="{Binding UpdateStatusSeverity, Converter={StaticResource InfoBarSeverityConverter}, Mode=OneWay}"
                     Visibility="{Binding IsWinStore, Converter={StaticResource VisibilityConverter}, Mode=OneWay, ConverterParameter=Reverse}" />
 
-                <controls:SettingsExpander Header="Patreon supporters" IsExpanded="False">
+                <controls:SettingsExpander Header="Patreon" IsExpanded="False">
                     <controls:SettingsExpander.HeaderIcon>
                         <FontIcon Glyph="&#xEB51;" />
                     </controls:SettingsExpander.HeaderIcon>

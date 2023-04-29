@@ -88,7 +88,7 @@
                     </animations:Implicit.HideAnimations>-->
                 </InfoBar>
 
-                <controls:SettingsGroup Header="Plugins">
+                <controls:SettingsGroup x:Uid="WallpaperPluginGroup">
                     <controls:SettingsExpander x:Uid="VideoPlayer" IsExpanded="True">
                         <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedVideoPlayerIndex, Mode=TwoWay}">
                             <ComboBoxItem>wmf</ComboBoxItem>

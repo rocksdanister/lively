@@ -47,6 +47,7 @@
   
   <ItemGroup>
     <None Remove="Assets\banner-lively-1080.jpg" />
+    <None Remove="Assets\CustomIcons.ttf" />
     <None Remove="Assets\icon-lively-48.png" />
     <None Remove="Assets\icons8-application-window-96.png" />
     <None Remove="Assets\icons8-cat-back-view-64.png" />
@@ -180,6 +181,9 @@
     <None Update="appicon.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Content Update="Assets\CustomIcons.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Update="Assets\icons8-application-window-96.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
