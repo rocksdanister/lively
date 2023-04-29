@@ -129,10 +129,10 @@
   <data name="AudioGroup.Header" xml:space="preserve">
     <value>Audio</value>
   </data>
-  <data name="CommunityPage.Content" xml:space="preserve">
+  <data name="Community.Description" xml:space="preserve">
     <value>Diskusijų forumas internete</value>
   </data>
-  <data name="DocumentationPage.Content" xml:space="preserve">
+  <data name="Documentation.Description" xml:space="preserve">
     <value>API dokumentacija ir pagalba</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
@@ -143,7 +143,7 @@
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
     <value>Rasta nesuderinama programa, užduočių juostos temos išjungtos</value>
   </data>
-  <data name="OfficialWebpage.Content" xml:space="preserve">
+  <data name="Website.Description" xml:space="preserve">
     <value>Oficialus Lively Wallpaper tinklalapis</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
@@ -153,7 +153,7 @@ OLED, plazminiams arba kineskopiniams ekranams, kurie yra linkę įdegti, patart
 
 Pagrindinis Lively ekrano užsklandų tikslas yra pridėti dar vieną tinkinimo sluoksnį prie kompiuterio, naudokite ekrano užsklandas kaip apsaugą nuo įsidegimo savo rizika!</value>
   </data>
-  <data name="ReportBugPage.Content" xml:space="preserve">
+  <data name="ReportBug.Description" xml:space="preserve">
     <value>Pranešti apie programinės įrangos problemą</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
@@ -262,7 +262,7 @@ Ar norite atkurti prieš tai veikiančius darbalaukio fonus?</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
     <value>Atrodo kai kurie nustatymai turi būti sutvarkyti, kad Lively veiktų: 
-1. Paspauskite Win po to R mygtukus kad atidarytumėte Vykdyti, 
+1. Paspauskite Win ir R mygtukus kad atidarytumėte Vykdyti, 
 2. Parašykite SystemPropertiesPerformance.exe į Vykdyti, paspauskite "OK" kad atidaryti Atlikimo Nustatymus.
 3. Įjunkite/Patikrinkite "Animuoti valdiklius ir elementus viduje Windows" (Jei pažymėta, atžymėkite ir vėl pažymėkite) ir Pritaikyti.
 4. Paspauskite "Pritaikyti" tada "OK" kad uždaryti langą.
@@ -364,7 +364,7 @@ Jei vis tiek neveikia, uždarykite ir iš naujo įjunkite Lively/perkraukite Win
   <data name="TextGIF" xml:space="preserve">
     <value>Animuotas Paveikslas</value>
   </data>
-  <data name="GitHubStar.Content" xml:space="preserve">
+  <data name="SourceCode.Description" xml:space="preserve">
     <value>Parodykite truputį meilės uždėdami žvaigždę</value>
   </data>
   <data name="TextGo" xml:space="preserve">

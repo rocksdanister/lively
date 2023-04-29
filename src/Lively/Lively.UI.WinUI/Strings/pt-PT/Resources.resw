@@ -129,10 +129,10 @@
   <data name="AudioGroup.Header" xml:space="preserve">
     <value>Áudio</value>
   </data>
-  <data name="CommunityPage.Content" xml:space="preserve">
+  <data name="Community.Description" xml:space="preserve">
     <value>Fórum online de discussão</value>
   </data>
-  <data name="DocumentationPage.Content" xml:space="preserve">
+  <data name="Documentation.Description" xml:space="preserve">
     <value>Documentação da API e ajuda</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
@@ -143,7 +143,7 @@ O Explorador do Windows reiniciou duas vezes nos últimos 30 segundos! Este pode
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
     <value>Programa incompatível encontrado, animação da barra de tarefas foi desativada</value>
   </data>
-  <data name="OfficialWebpage.Content" xml:space="preserve">
+  <data name="Website.Description" xml:space="preserve">
     <value>Página da internet oficial do Lively Wallpaper</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
@@ -152,7 +152,7 @@ O Explorador do Windows reiniciou duas vezes nos últimos 30 segundos! Este pode
 Para as telas OLED, Plasma ou CRT que são susceptíveis de sofrer com o problema de burn-in é aconselhável utilizar um papel de parede com movimento regular e um tema escuro global que deverá atenuar o efeito de burn-in, no entanto a eficácia deste recurso não está testada, e a mesma não está garantida.
 O principal propósito do protetor de tela do Lively é adicionar outra camada de personalização ao computador, use por sua conta e risco!</value>
   </data>
-  <data name="ReportBugPage.Content" xml:space="preserve">
+  <data name="ReportBug.Description" xml:space="preserve">
     <value>Relatar um problema com o programa</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
@@ -364,7 +364,7 @@ Se ainda não funcionar, fechei e inicie o Lively/ reinicei o Windows.
   <data name="TextGIF" xml:space="preserve">
     <value>GIF Animado</value>
   </data>
-  <data name="GitHubStar.Content" xml:space="preserve">
+  <data name="SourceCode.Description" xml:space="preserve">
     <value>Mostre um pouco de amor dando uma estrela</value>
   </data>
   <data name="TextGo" xml:space="preserve">

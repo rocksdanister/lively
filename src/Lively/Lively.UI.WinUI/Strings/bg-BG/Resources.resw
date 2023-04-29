@@ -129,10 +129,10 @@
   <data name="AudioGroup.Header" xml:space="preserve">
     <value>Звук</value>
   </data>
-  <data name="CommunityPage.Content" xml:space="preserve">
+  <data name="Community.Description" xml:space="preserve">
     <value>Онлайн форум за дискусия</value>
   </data>
-  <data name="DocumentationPage.Content" xml:space="preserve">
+  <data name="Documentation.Description" xml:space="preserve">
     <value>API документация и помощ</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
@@ -143,7 +143,7 @@ Windows Explorer е рестартирал два пъти в последнит
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
     <value>Намерена е несъвместима програма, лентата на задачите е деактивирана</value>
   </data>
-  <data name="OfficialWebpage.Content" xml:space="preserve">
+  <data name="Website.Description" xml:space="preserve">
     <value>Официалният уеб сайт на Lively Wallpaper</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
@@ -153,7 +153,7 @@ Windows Explorer е рестартирал два пъти в последнит
 
 Основната цел на скрийнсейвърите на Lively е да добавят още един слой персонализиране към вашия компютър, да използват скрийнсейвъри като защита от изгаряне на свой собствен риск!</value>
   </data>
-  <data name="ReportBugPage.Content" xml:space="preserve">
+  <data name="ReportBug.Description" xml:space="preserve">
     <value>Съобщете за проблем със софтуера</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
@@ -363,7 +363,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextGIF" xml:space="preserve">
     <value>Анимирано гифче</value>
   </data>
-  <data name="GitHubStar.Content" xml:space="preserve">
+  <data name="SourceCode.Description" xml:space="preserve">
     <value>Покажете любов, като пуснете звезда</value>
   </data>
   <data name="TextGo" xml:space="preserve">
@@ -989,22 +989,22 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Нормално</value>
   </data>
   <data name="Screensaver.Description" xml:space="preserve">
-    <value>How screensaver is applied to connected to display devices</value>
+    <value>Как скрийнсейвъра е поставен на свързаните монитори</value>
   </data>
   <data name="Screensaver.Header" xml:space="preserve">
     <value>Вид скрийсейвър</value>
   </data>
   <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
-    <value>Configured separately</value>
+    <value>Конфигуриран отделно</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
-    <value>Same as running wallpaper</value>
+    <value>Същия, като работещия тапет</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
-    <value>Plugin required</value>
+    <value>Необходим е плъгин</value>
   </data>
   <data name="ScreensaverPluginMessage.Text" xml:space="preserve">
-    <value>One time setup is required to run screensaver</value>
+    <value>Еднократно настройване е нужно за скрийсейвър</value>
   </data>
   <data name="WallpaperLayoutScreenPicker.Content" xml:space="preserve">
     <value>Винаги избирай екран при избиране на тапет</value>

@@ -129,10 +129,10 @@
   <data name="AudioGroup.Header" xml:space="preserve">
     <value>Suara</value>
   </data>
-  <data name="CommunityPage.Content" xml:space="preserve">
+  <data name="Community.Description" xml:space="preserve">
     <value>Forum diskusi online</value>
   </data>
-  <data name="DocumentationPage.Content" xml:space="preserve">
+  <data name="Documentation.Description" xml:space="preserve">
     <value>Bantuan dan Dokumentasi API</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
@@ -143,7 +143,7 @@ Windows Explorer memulai ulang dua kali dalam 30 detik terakhir! Ini mungkin ada
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
     <value>Program yang tidak kompatibel ditemukan, tema taskbar dinonaktifkan</value>
   </data>
-  <data name="OfficialWebpage.Content" xml:space="preserve">
+  <data name="Website.Description" xml:space="preserve">
     <value>Halaman web resmi Lively Wallpaper</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
@@ -153,7 +153,7 @@ Untuk tampilan OLED, Plasma, atau CRT yang rentan mengalami masalah burn-in, dis
 
 Tujuan utama screensaver Lively adalah untuk menambahkan bagian kostumisasi lain ke komputer Anda, gunakan screensaver sebagai perlindungan burn-in dengan risiko Anda sendiri!</value>
   </data>
-  <data name="ReportBugPage.Content" xml:space="preserve">
+  <data name="ReportBug.Description" xml:space="preserve">
     <value>Laporkan masalah dengan aplikasi</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
@@ -195,7 +195,7 @@ Lanjutkan jika aplikasi berasal dari sumber terpercaya</value>
     <value>Sedang memulihkan wallpaper sebelumnya, mohon tunggu...</value>
   </data>
   <data name="DescriptionScreenLayout" xml:space="preserve">
-    <value>Pilih tampilan</value>
+    <value>Pilih layar</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
     <value>Versi terbaru Lively telah tersedia!</value>
@@ -365,7 +365,7 @@ Jika masih tidak berfungsi, tutup dan mulai ulang Lively/Windows.
   <data name="TextGIF" xml:space="preserve">
     <value>GIF Beranimasi</value>
   </data>
-  <data name="GitHubStar.Content" xml:space="preserve">
+  <data name="SourceCode.Description" xml:space="preserve">
     <value>Tujukkan cinta dengan memberi bintang</value>
   </data>
   <data name="TextGo" xml:space="preserve">
@@ -504,22 +504,22 @@ Jika masih tidak berfungsi, tutup dan mulai ulang Lively/Windows.
     <value>Label</value>
   </data>
   <data name="TaskbarThemeBlur.Content" xml:space="preserve">
-    <value>Kabur</value>
+    <value>Buram</value>
   </data>
   <data name="TaskbarThemeClear.Content" xml:space="preserve">
-    <value>Hapus</value>
+    <value>Bersih</value>
   </data>
   <data name="TaskbarThemeColor.Content" xml:space="preserve">
-    <value>Warna</value>
+    <value>Berwarna</value>
   </data>
   <data name="TaskbarThemeFluent.Content" xml:space="preserve">
-    <value>Lancar</value>
+    <value>Fluent</value>
   </data>
   <data name="TaskbarThemeWallpaper.Content" xml:space="preserve">
-    <value>Latar Belakang</value>
+    <value>Wallpaper</value>
   </data>
   <data name="TaskbarThemeWallpaperFluent.Content" xml:space="preserve">
-    <value>Wallpaper lancar</value>
+    <value>Wallpaper Fluent</value>
   </data>
   <data name="TextTileSizeLarge" xml:space="preserve">
     <value>Besar</value>
@@ -618,7 +618,7 @@ Jika masih tidak berfungsi, tutup dan mulai ulang Lively/Windows.
     <value>Atur apa yang akan dilakukan jika permainan/aplikasi fullscreen sedang berjalan.</value>
   </data>
   <data name="AppRules.Description" xml:space="preserve">
-    <value>Atur pemutaran wallpaper yang berbeda berdasarkan aplikasi yang berjalan.</value>
+    <value>Jeda wallpaper saat menjalankan aplikasi berikut</value>
   </data>
   <data name="TipAppTheme" xml:space="preserve">
     <value>Lively mengadaptasi tema pada sistem, untuk mengubah penampilan pergi ke</value>
@@ -683,7 +683,7 @@ Semua: Jeda wallpaper untuk semua layar jika ada aplikasi fullscreen/sedang difo
     <value>Untuk sistem low-end pilih mode ringan.</value>
   </data>
   <data name="VideoHardwareDecode.Description" xml:space="preserve">
-    <value>Gunakan akselerasi hardware jika mungkin</value>
+    <value>Gunakan akselerasi hardware jika memungkinkan</value>
   </data>
   <data name="VideoPlayer.Description" xml:space="preserve">
     <value>Pilih pemutar yang akan digunakan untuk wallpaper video.</value>
@@ -692,7 +692,7 @@ Semua: Jeda wallpaper untuk semua layar jika ada aplikasi fullscreen/sedang difo
     <value>Lokasi yang digunakan untuk menyimpan file wallpaper.</value>
   </data>
   <data name="WallpaperFit.Description" xml:space="preserve">
-    <value>Algoritma skala wallpaper.</value>
+    <value>Algoritma penskalaan wallpaper</value>
   </data>
   <data name="WallpaperInput.Description" xml:space="preserve">
     <value>Pilih cara untuk berinteraksi dengan wallpaper.</value>
@@ -879,7 +879,7 @@ Semua: Jeda wallpaper untuk semua layar jika ada aplikasi fullscreen/sedang difo
     <value>Decode GPU</value>
   </data>
   <data name="TitleWallpaper" xml:space="preserve">
-    <value>Latar Belakang</value>
+    <value>Wallpaper</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">
     <value>Lokasi Wallpaper</value>
@@ -894,7 +894,7 @@ Semua: Jeda wallpaper untuk semua layar jika ada aplikasi fullscreen/sedang difo
     <value>Masukan Wallpaper</value>
   </data>
   <data name="WallpaperLayout.Header" xml:space="preserve">
-    <value>Metode Penyimpanan</value>
+    <value>Metode Peletakan</value>
   </data>
   <data name="WallpaperPlaybackGroup.Header" xml:space="preserve">
     <value>Pemutaran Wallpaper</value>
@@ -930,7 +930,7 @@ Semua: Jeda wallpaper untuk semua layar jika ada aplikasi fullscreen/sedang difo
     <value>Terang</value>
   </data>
   <data name="AppThemeSystem.Content" xml:space="preserve">
-    <value>Sistem</value>
+    <value>Ikuti Sistem</value>
   </data>
   <data name="WindowsSettingsColor.Content" xml:space="preserve">
     <value>Pengaturan Warna Windows</value>
@@ -942,10 +942,10 @@ Semua: Jeda wallpaper untuk semua layar jika ada aplikasi fullscreen/sedang difo
     <value>Pengembang</value>
   </data>
   <data name="AppearanceBehaviour.Header" xml:space="preserve">
-    <value>Tampilan &amp; Respon</value>
+    <value>Tampilan &amp; Perilaku</value>
   </data>
   <data name="ActiveWallpapers.Label" xml:space="preserve">
-    <value>Latara Belakang Aktif</value>
+    <value>Latar Belakang Aktif</value>
   </data>
   <data name="TitleGallery" xml:space="preserve">
     <value>Galeri</value>
@@ -1149,7 +1149,7 @@ Semua: Jeda wallpaper untuk semua layar jika ada aplikasi fullscreen/sedang difo
     <value>Lihat apa yang terbaru</value>
   </data>
   <data name="AppThemeColor.Header" xml:space="preserve">
-    <value>Warna</value>
+    <value>Berwarna</value>
   </data>
   <data name="DescriptionDefault.Text" xml:space="preserve">
     <value>Gunakan standar sistem</value>
@@ -1161,7 +1161,7 @@ Semua: Jeda wallpaper untuk semua layar jika ada aplikasi fullscreen/sedang difo
     <value>Default</value>
   </data>
   <data name="TextDynamicTheme.Text" xml:space="preserve">
-    <value>Dinamik</value>
+    <value>Dinamis</value>
   </data>
   <data name="Theme.Label" xml:space="preserve">
     <value>Tema</value>

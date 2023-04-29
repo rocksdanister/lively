@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AudioFocused.Content" xml:space="preserve">
-    <value>デスクトップがフォーカスされているときのみ音声を再生</value>
+    <value>デスクトップが表示されているときのみ音声を再生</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
     <value>すべての壁紙の音量</value>
@@ -129,10 +129,10 @@
   <data name="AudioGroup.Header" xml:space="preserve">
     <value>音声</value>
   </data>
-  <data name="CommunityPage.Content" xml:space="preserve">
+  <data name="Community.Description" xml:space="preserve">
     <value>オンラインのディスカッションフォーラム</value>
   </data>
-  <data name="DocumentationPage.Content" xml:space="preserve">
+  <data name="Documentation.Description" xml:space="preserve">
     <value>APIのドキュメントと説明</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
@@ -143,8 +143,8 @@
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
     <value>互換性のないプログラムが見つかりました。タスクバーのテーマは反映されなくなります。</value>
   </data>
-  <data name="OfficialWebpage.Content" xml:space="preserve">
-    <value>Lively Wallpaper の公式ウェブサイト</value>
+  <data name="Website.Description" xml:space="preserve">
+    <value>Lively Wallpaper の公式サイト</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
     <value>最近の液晶ディスプレイやLEDディスプレイのほとんどは画面の焼き付きがないため、どんな壁紙でもスクリーンセーバーとして使用できます。
@@ -153,26 +153,26 @@
 
 Livelyのスクリーンセーバーの主な目的はあなたのPCのカスタマイズをより幅広くするためであり、焼き付きの保護のために使用するのは自己責任ですのでご自身で判断お願いします。</value>
   </data>
-  <data name="ReportBugPage.Content" xml:space="preserve">
-    <value>ソフトウェアの不具合を報告する。</value>
+  <data name="ReportBug.Description" xml:space="preserve">
+    <value>問題を報告する</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
-    <value>保存したファイルを選択するか、ウェブサイトのURLを指定して壁紙として設定します。</value>
+    <value>ファイルを選択</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
     <value>実行中のアプリケーションに基づく壁紙の再生動作です。</value>
   </data>
   <data name="DescriptionCancelQuestion" xml:space="preserve">
-    <value>△本当にキャンセルしますか？△</value>
+    <value>本当にキャンセルしますか？</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
-    <value>このPCからこの壁紙を完全に削除しますか？</value>
+    <value>この壁紙を完全削除しますか？</value>
   </data>
   <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
-    <value>❕この壁紙をライブラリから削除してもよろしいですか？</value>
+    <value>この壁紙をライブラリから削除してよろしいですか？</value>
   </data>
   <data name="DragDropFile.Text" xml:space="preserve">
-    <value>ライブラリにファイルをインポートしてください。</value>
+    <value>ライブラリにファイルをドラッグ＆ドロップしてください。</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
     <value>壁紙として外部アプリケーションを開いています。
@@ -189,28 +189,28 @@ Livelyのスクリーンセーバーの主な目的はあなたのPCのカスタ
     <value>続行する前に停止してください。</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
-    <value>押して録画を開始します。</value>
+    <value>ボタンを押して録画開始</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
-    <value>前の壁紙を復元中、お待ちください...</value>
+    <value>前回の壁紙を読み込み中</value>
   </data>
   <data name="DescriptionScreenLayout" xml:space="preserve">
-    <value>ディスプレイの選択</value>
+    <value>ディスプレイを選択</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
-    <value>新しいバージョンのソフトウェアが利用可能です！</value>
+    <value>ソフトウェアのアップデートがあります！</value>
   </data>
   <data name="DescriptionWebpageLoad" xml:space="preserve">
     <value>ロードするウェブサイトのリンクを入力してください。shadertoy.comのシェーダーリンクがサポートされています</value>
   </data>
   <data name="DescriptionWelcomeWizard" xml:space="preserve">
-    <value>このウィザードではLivelyのセットアップを開始します。</value>
+    <value>Livelyのセットアップを開始します</value>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
     <value>お使いのWindows N/KN エディションでは、壁紙での動画再生をサポートするために追加のコーデックをダウンロードする必要があります。</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
-    <value>開発者にコーヒーを買ってサポートする</value>
+    <value>開発者にコーヒーを送ってサポートする</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
     <value>Livelyのベータ（開発者）版に変更しようとしています。
@@ -223,17 +223,17 @@ Livelyのスクリーンセーバーの主な目的はあなたのPCのカスタ
     <value>システムトレイアイコン</value>
   </data>
   <data name="Language.Description" xml:space="preserve">
-    <value>新しい言語を適用するためには、Livelyを再起動します。</value>
+    <value>新しい言語を適用するには、Livelyを再起動する必要があります。</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
     <value>言語</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
-    <value>アップデートに失敗しました。 下のサイトからインストーラーをダウンロードしてください。:
+    <value>アップデートに失敗しました。 下記のURLよりインストールしなおしてください。
 https://github.com/rocksdanister/lively/releases</value>
   </data>
   <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
-    <value>壁紙のファイルが破損しています。再ダウンロードをしてください。</value>
+    <value>壁紙に問題があります、壁紙をダウンロードしなおしてください。</value>
   </data>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
     <value>おっと... 何かがうまくいかなかったようです :(
@@ -364,7 +364,7 @@ Windows 7 の場合は、"パフォーマンスを優先する"を選択する�
   <data name="TextGIF" xml:space="preserve">
     <value>アニメーションGIF</value>
   </data>
-  <data name="GitHubStar.Content" xml:space="preserve">
+  <data name="SourceCode.Description" xml:space="preserve">
     <value>Starをあげてソフトウェアへの愛を伝える</value>
   </data>
   <data name="TextGo" xml:space="preserve">

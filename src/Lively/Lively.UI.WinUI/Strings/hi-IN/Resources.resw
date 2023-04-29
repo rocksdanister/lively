@@ -129,10 +129,10 @@
   <data name="AudioGroup.Header" xml:space="preserve">
     <value>ध्वनि</value>
   </data>
-  <data name="CommunityPage.Content" xml:space="preserve">
+  <data name="Community.Description" xml:space="preserve">
     <value>ऑनलाइन चर्चा मंच</value>
   </data>
-  <data name="DocumentationPage.Content" xml:space="preserve">
+  <data name="Documentation.Description" xml:space="preserve">
     <value>एपीआई प्रलेखन और सहायता</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
@@ -143,7 +143,7 @@
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
     <value>स्रोत स्ट्रिंग असंगत प्रोग्राम मिला, टास्कबार थीमिंग अक्षम</value>
   </data>
-  <data name="OfficialWebpage.Content" xml:space="preserve">
+  <data name="Website.Description" xml:space="preserve">
     <value>लाइवली वॉलपेपर का आधिकारिक वेबपेज</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
@@ -153,7 +153,7 @@ OLED, प्लाज्मा या CRT डिस्प्ले के लि
 
 लाइवली के स्क्रीनसेवर का मुख्य उद्देश्य आपके पीसी में अनुकूलन की एक और परत जोड़ना है, अपने जोखिम पर स्क्रीनसेवर को बर्न-इन सुरक्षा के रूप में उपयोग करें!</value>
   </data>
-  <data name="ReportBugPage.Content" xml:space="preserve">
+  <data name="ReportBug.Description" xml:space="preserve">
     <value>सॉफ़्टवेयर के साथ समस्या की रिपोर्ट करें</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
@@ -364,7 +364,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextGIF" xml:space="preserve">
     <value>एनिमेटेड GIF</value>
   </data>
-  <data name="GitHubStar.Content" xml:space="preserve">
+  <data name="SourceCode.Description" xml:space="preserve">
     <value>रेटिंग (Rating) के आधार पर कुछ प्यार दिखाएं</value>
   </data>
   <data name="TextGo" xml:space="preserve">

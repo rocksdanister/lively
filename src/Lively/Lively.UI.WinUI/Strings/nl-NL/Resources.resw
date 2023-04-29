@@ -129,10 +129,10 @@
   <data name="AudioGroup.Header" xml:space="preserve">
     <value>Geluid</value>
   </data>
-  <data name="CommunityPage.Content" xml:space="preserve">
+  <data name="Community.Description" xml:space="preserve">
     <value>Online discussie forum</value>
   </data>
-  <data name="DocumentationPage.Content" xml:space="preserve">
+  <data name="Documentation.Description" xml:space="preserve">
     <value>API documentatie en help</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
@@ -143,7 +143,7 @@ Windows Explorer is in de laatste 30 seconden twee keer gestart! Dit kan een con
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
     <value>Incompatibel programma gevonden, taakbalk thematisering uitgeschakeld</value>
   </data>
-  <data name="OfficialWebpage.Content" xml:space="preserve">
+  <data name="Website.Description" xml:space="preserve">
     <value>Officiële webpagina van Lively</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
@@ -153,7 +153,7 @@ Voor OLED Plasma of beeldbuis-displays die vatbaar zijn voor inbranden wordt aan
 
 Het belangrijkste doel van Lively's screensavers is om extra visuele aanpassingen te doen aan je PC, gebruik screensavers als inbrand bescherming op eigen risico!</value>
   </data>
-  <data name="ReportBugPage.Content" xml:space="preserve">
+  <data name="ReportBug.Description" xml:space="preserve">
     <value>Een probleem in de software melden</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
@@ -357,7 +357,7 @@ Als dat niet werkt herstart Lively en Windows. (Werkt niet met sommige insider W
     <value>Geanimeerde GIF
 Geanimeerde GIF</value>
   </data>
-  <data name="GitHubStar.Content" xml:space="preserve">
+  <data name="SourceCode.Description" xml:space="preserve">
     <value>Toon wat liefde door een ster achter te laten</value>
   </data>
   <data name="TextGo" xml:space="preserve">

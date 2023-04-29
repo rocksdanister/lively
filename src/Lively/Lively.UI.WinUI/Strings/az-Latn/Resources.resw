@@ -129,10 +129,10 @@
   <data name="AudioGroup.Header" xml:space="preserve">
     <value>Səs</value>
   </data>
-  <data name="CommunityPage.Content" xml:space="preserve">
+  <data name="Community.Description" xml:space="preserve">
     <value>Onlayn müzakirə forumu</value>
   </data>
-  <data name="DocumentationPage.Content" xml:space="preserve">
+  <data name="Documentation.Description" xml:space="preserve">
     <value>API sənədləri və kömək</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
@@ -141,13 +141,13 @@
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
     <value>Uyğun olmayan proqram tapıldı, tapşırıq paneli mövzusu deaktiv edilib.</value>
   </data>
-  <data name="OfficialWebpage.Content" xml:space="preserve">
+  <data name="Website.Description" xml:space="preserve">
     <value>Lively Wallpaper rəsmi internet səhifəsi</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
     <value>Müasir LCD və LED displeylərin əksəriyyəti yanma problemindən əziyyət çəkmir və buna görə də istənilən divar kağızı ekran qoruyucusu kimi istifadə edilə bilər. Yanmağa həssas olan OLED, Plazma və ya CRT displeylər üçün müntəzəm hərəkətli və bütövlükdə divar kağızı istifadə etmək tövsiyə olunur. Yanma ehtimalını azaltmalı olan qaranlıq mövzu həllindən də istifadə etmək olar, lakin bu xüsusiyyət sınaqdan keçirilməmişdir və onun effektivliyinə zəmanət verilə bilməz. Lively-nin ekran qoruyucularının əsas məqsədi kompüterinizə daha bir fərdiləşdirmə qatı əlavə etmək, ekran qoruyucularından yanmadan qorunma kimi istifadə etməkdir!</value>
   </data>
-  <data name="ReportBugPage.Content" xml:space="preserve">
+  <data name="ReportBug.Description" xml:space="preserve">
     <value>Proqramla bağlı problem barədə məlumat verin</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
@@ -336,7 +336,7 @@
   <data name="TextGIF" xml:space="preserve">
     <value>Animasiyalı GIF</value>
   </data>
-  <data name="GitHubStar.Content" xml:space="preserve">
+  <data name="SourceCode.Description" xml:space="preserve">
     <value>Ulduz ataraq sevginizi göstərin</value>
   </data>
   <data name="TextGo" xml:space="preserve">
@@ -905,25 +905,25 @@
     <value>Windows rəng parametrləri</value>
   </data>
   <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
-    <value>Laptops</value>
+    <value>Noutbuklar</value>
   </data>
   <data name="DeveloperGroup.Header" xml:space="preserve">
-    <value>Developer</value>
+    <value>İnkişaf etdirici</value>
   </data>
   <data name="AppearanceBehaviour.Header" xml:space="preserve">
-    <value>Appearance &amp; behavior</value>
+    <value>Görünüş və davranış</value>
   </data>
   <data name="ActiveWallpapers.Label" xml:space="preserve">
-    <value>Active Wallpaper(s)</value>
+    <value>Aktiv divar kağızı(lar)</value>
   </data>
   <data name="TitleGallery" xml:space="preserve">
-    <value>Gallery</value>
+    <value>Qalereya</value>
   </data>
   <data name="AboutMe.Text" xml:space="preserve">
-    <value>Hi, I'm Dani John also known as rocksdanister. I developed Lively a Free and open-source (FOSS) wallpaper application. Thanks for taking the time to look at my work.</value>
+    <value>Salam, mən Dani Con həm də rocksdanist kimi tanınıram. Mən Lively pulsuz və açıq mənbəli (FOSS) divar kağızı tətbiqini hazırladım. İşimə baxmaq üçün vaxt ayırdığınız üçün təşəkkür edirəm.</value>
   </data>
   <data name="LicenseLink.Content" xml:space="preserve">
-    <value>Software license</value>
+    <value>Proqram təminatı lisenziyası</value>
   </data>
   <data name="AttributionLink.Content" xml:space="preserve">
     <value>Third party software notice</value>
@@ -935,7 +935,7 @@
     <value>Add wallpaper</value>
   </data>
   <data name="ComingSoon.Text" xml:space="preserve">
-    <value>Coming soon</value>
+    <value>Tezliklə</value>
   </data>
   <data name="AboutMenu.Text" xml:space="preserve">
     <value>Haqqında</value>
@@ -944,16 +944,16 @@
     <value>Veb sayt</value>
   </data>
   <data name="TextOpen.Content" xml:space="preserve">
-    <value>Open</value>
+    <value>Açıq</value>
   </data>
   <data name="TextSave.Content" xml:space="preserve">
-    <value>Save</value>
+    <value>Yadda saxla</value>
   </data>
   <data name="UIMode.Description" xml:space="preserve">
-    <value>User interface effects and animations</value>
+    <value>İstifadəçi interfeysi effektləri və animasiyalar</value>
   </data>
   <data name="UIMode.Header" xml:space="preserve">
-    <value>User interface</value>
+    <value>İstifadəçi interfeysi</value>
   </data>
   <data name="UIModeLite.Content" xml:space="preserve">
     <value>Lite</value>
@@ -962,46 +962,46 @@
     <value>Normal</value>
   </data>
   <data name="Screensaver.Description" xml:space="preserve">
-    <value>How screensaver is applied to connected to display devices</value>
+    <value>Ekran qoruyucusu ekran cihazlarına qoşulanlara necə tətbiq edilir</value>
   </data>
   <data name="Screensaver.Header" xml:space="preserve">
-    <value>Type of screensaver</value>
+    <value>Ekran qoruyucu növü</value>
   </data>
   <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
-    <value>Configured separately</value>
+    <value>Ayrı-ayrılıqda konfiqurasiya edilmişdir</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
-    <value>Same as running wallpaper</value>
+    <value>Çalışan divar kağızı kimi</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
-    <value>Plugin required</value>
+    <value>Plugin tələb olunur</value>
   </data>
   <data name="ScreensaverPluginMessage.Text" xml:space="preserve">
-    <value>One time setup is required to run screensaver</value>
+    <value>Ekran qoruyucusunu işə salmaq üçün bir dəfə quraşdırma tələb olunur</value>
   </data>
   <data name="WallpaperLayoutScreenPicker.Content" xml:space="preserve">
-    <value>Always pick screen when choosing wallpaper</value>
+    <value>Divar kağızı seçərkən həmişə ekranı seçin</value>
   </data>
   <data name="GalleryAccount.Text" xml:space="preserve">
-    <value>Account</value>
+    <value>Hesab</value>
   </data>
   <data name="GalleryAccountDelete.Content" xml:space="preserve">
-    <value>Delete account</value>
+    <value>Hesabı silin</value>
   </data>
   <data name="GalleryAccountExport.Content" xml:space="preserve">
-    <value>Export data</value>
+    <value>Məlumatları ixrac edin</value>
   </data>
   <data name="GalleryAccountLogin.Content" xml:space="preserve">
-    <value>Log in</value>
+    <value>Daxil ol</value>
   </data>
   <data name="GalleryAccountLogout.Content" xml:space="preserve">
-    <value>Log out</value>
+    <value>Çıxış</value>
   </data>
   <data name="GalleryPageCollection.Content" xml:space="preserve">
-    <value>Collection</value>
+    <value>Kolleksiya</value>
   </data>
   <data name="GalleryPageHome.Content" xml:space="preserve">
-    <value>Home</value>
+    <value>Ev</value>
   </data>
   <data name="GalleryPageManage.Content" xml:space="preserve">
     <value>Idarə etmək</value>
@@ -1013,16 +1013,16 @@
     <value>Davam etmək üçün daxil olun</value>
   </data>
   <data name="GalleryWelcomeMessage.Text" xml:space="preserve">
-    <value>Hi</value>
+    <value>Salam</value>
   </data>
   <data name="RestoreWallpaper.Text" xml:space="preserve">
-    <value>We found these wallpapers in your account</value>
+    <value>Bu divar kağızlarını hesabınızda tapdıq</value>
   </data>
   <data name="TextDownloadNow.Content" xml:space="preserve">
-    <value>Download now</value>
+    <value>İndi yüklə</value>
   </data>
   <data name="TextMaybeLater.Content" xml:space="preserve">
-    <value>Maybe later</value>
+    <value>Bəlkə sonra</value>
   </data>
   <data name="TextSelectAll.Content" xml:space="preserve">
     <value>Hamısını seç</value>
@@ -1121,27 +1121,27 @@
     <value>Rəng</value>
   </data>
   <data name="DescriptionDefault.Text" xml:space="preserve">
-    <value>Use system default</value>
+    <value>Sistem standartını istifadə edin</value>
   </data>
   <data name="DescriptionDynamicTheme.Text" xml:space="preserve">
-    <value>Adapt to wallpaper</value>
+    <value>Sistem standartını istifadə edin</value>
   </data>
   <data name="TextDefault.Text" xml:space="preserve">
-    <value>Default</value>
+    <value>Defolt</value>
   </data>
   <data name="TextDynamicTheme.Text" xml:space="preserve">
-    <value>Dynamic</value>
+    <value>Dinamik</value>
   </data>
   <data name="Theme.Label" xml:space="preserve">
     <value>Mövzu</value>
   </data>
   <data name="IconsHidden.Message" xml:space="preserve">
-    <value>To prevent accidental selection desktop icons are currently hidden</value>
+    <value>Təsadüfi seçimin qarşısını almaq üçün masa üstü nişanlar hazırda gizlidir</value>
   </data>
   <data name="IconsHidden.Title" xml:space="preserve">
-    <value>Desktop icons</value>
+    <value>İş masası nişanları</value>
   </data>
   <data name="TextEndOfItems.Text" xml:space="preserve">
-    <value>That's all for now..</value>
+    <value>Hələlik bu qədər..</value>
   </data>
 </root>

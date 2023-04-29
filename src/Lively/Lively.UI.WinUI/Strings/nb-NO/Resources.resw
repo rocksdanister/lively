@@ -129,10 +129,10 @@
   <data name="AudioGroup.Header" xml:space="preserve">
     <value>Lyd</value>
   </data>
-  <data name="CommunityPage.Content" xml:space="preserve">
+  <data name="Community.Description" xml:space="preserve">
     <value>Online diskusjonsforum</value>
   </data>
-  <data name="DocumentationPage.Content" xml:space="preserve">
+  <data name="Documentation.Description" xml:space="preserve">
     <value>API dokumentasjon og hjelp</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
@@ -143,7 +143,7 @@ Windows Explorer har startet på nytt to ganger i løpet av de siste 30 sekund! 
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
     <value>Inkompatibelt program funnet, tema på oppgavelinjen er deaktivert</value>
   </data>
-  <data name="OfficialWebpage.Content" xml:space="preserve">
+  <data name="Website.Description" xml:space="preserve">
     <value>Offisiell nettside til Lively Wallpaper</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
@@ -153,7 +153,7 @@ For OLED, Plasma eller CRT skjermer som kan oppleve innbrenning, anbefales å br
 
 Hovedformålet med Livelys skjermsparer er å legge til et ekstra lag med tilpasninger til din pc, bruk skjermspare til innbrenningsbeskyttelse på egen risiko!</value>
   </data>
-  <data name="ReportBugPage.Content" xml:space="preserve">
+  <data name="ReportBug.Description" xml:space="preserve">
     <value>Rapporter et problem med programvaren</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
@@ -226,7 +226,7 @@ Oppdateringer vil være hyppige og kan inneholde feil!</value>
     <value>Livlig vil starte på nytt for å ta i bruk det nye språket</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
-    <value>Språk</value>
+    <value>Språk:</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
     <value>Kunne ikke oppdatere; prøv å laste ned installeringsprogrammet fra:
@@ -364,7 +364,7 @@ Hvis fortsatt ikke fungerer, lukk og start Lively igjen/restart Windows.
   <data name="TextGIF" xml:space="preserve">
     <value>Animert GIF</value>
   </data>
-  <data name="GitHubStar.Content" xml:space="preserve">
+  <data name="SourceCode.Description" xml:space="preserve">
     <value>Vis litt kjærlighet ved å slippe en stjerne</value>
   </data>
   <data name="TextGo" xml:space="preserve">
