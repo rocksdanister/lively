@@ -105,6 +105,11 @@ namespace Lively.UI.WinUI
             ShowMainMenu();
             NavViewNavigate(NavPages.library);
 
+            if (!userSettings.Settings.IsFirstRun)
+            {
+                CompactLabels();
+            }
+
             //ref: https://learn.microsoft.com/en-us/windows/apps/develop/title-bar?tabs=wasdk
             if (AppWindowTitleBar.IsCustomizationSupported())
             {
@@ -147,6 +152,17 @@ namespace Lively.UI.WinUI
             };
 
             _ = StdInListener();
+        }
+
+        private void CompactLabels()
+        {
+            separatorLabel1.Visibility = Visibility.Collapsed;
+            separatorLabel2.Visibility = Visibility.Collapsed;
+            separatorLabel3.Visibility = Visibility.Collapsed;
+            controlPanelLabel.LabelPosition = CommandBarLabelPosition.Collapsed;
+            addWallpaperLabel.LabelPosition = CommandBarLabelPosition.Collapsed;
+            controlPanelLabel.MaxWidth = 50;
+            addWallpaperLabel.MaxWidth = 50;
         }
 
         private void DesktopCore_WallpaperError(object sender, Exception e)
