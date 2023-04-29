@@ -214,6 +214,15 @@ namespace Lively.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Color.
+        /// </summary>
+        public static string AppThemeColor_Header {
+            get {
+                return ResourceManager.GetString("AppThemeColor.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dark.
         /// </summary>
         public static string AppThemeDark_Content {
@@ -367,20 +376,20 @@ namespace Lively.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Online discussion forum.
+        /// </summary>
+        public static string Community_Description {
+            get {
+                return ResourceManager.GetString("Community.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Community.
         /// </summary>
         public static string Community_Header {
             get {
                 return ResourceManager.GetString("Community.Header", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Online discussion forum.
-        /// </summary>
-        public static string CommunityPage_Content {
-            get {
-                return ResourceManager.GetString("CommunityPage.Content", resourceCulture);
             }
         }
         
@@ -508,6 +517,15 @@ namespace Lively.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Use system default.
+        /// </summary>
+        public static string DescriptionDefault_Text {
+            get {
+                return ResourceManager.GetString("DescriptionDefault.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to permanently delete this wallpaper from the disk?.
         /// </summary>
         public static string DescriptionDeleteConfirmation {
@@ -522,6 +540,15 @@ namespace Lively.Properties {
         public static string DescriptionDeleteConfirmationLibrary {
             get {
                 return ResourceManager.GetString("DescriptionDeleteConfirmationLibrary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adapt to wallpaper.
+        /// </summary>
+        public static string DescriptionDynamicTheme_Text {
+            get {
+                return ResourceManager.GetString("DescriptionDynamicTheme.Text", resourceCulture);
             }
         }
         
@@ -700,20 +727,20 @@ namespace Lively.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to API documentation and help.
+        /// </summary>
+        public static string Documentation_Description {
+            get {
+                return ResourceManager.GetString("Documentation.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Documentation.
         /// </summary>
         public static string Documentation_Header {
             get {
                 return ResourceManager.GetString("Documentation.Header", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to API documentation and help.
-        /// </summary>
-        public static string DocumentationPage_Content {
-            get {
-                return ResourceManager.GetString("DocumentationPage.Content", resourceCulture);
             }
         }
         
@@ -952,15 +979,6 @@ namespace Lively.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Show some love by dropping a star.
-        /// </summary>
-        public static string GitHubStar_Content {
-            get {
-                return ResourceManager.GetString("GitHubStar.Content", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Help.
         /// </summary>
         public static string Help_Label {
@@ -984,6 +1002,24 @@ namespace Lively.Properties {
         public static string HideSysTray_Header {
             get {
                 return ResourceManager.GetString("HideSysTray.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To prevent accidental selection desktop icons are currently hidden.
+        /// </summary>
+        public static string IconsHidden_Message {
+            get {
+                return ResourceManager.GetString("IconsHidden.Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Desktop icons.
+        /// </summary>
+        public static string IconsHidden_Title {
+            get {
+                return ResourceManager.GetString("IconsHidden.Title", resourceCulture);
             }
         }
         
@@ -1160,15 +1196,6 @@ namespace Lively.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Official webpage of Lively Wallpaper.
-        /// </summary>
-        public static string OfficialWebpage_Content {
-            get {
-                return ResourceManager.GetString("OfficialWebpage.Content", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Wallpaper pause algorithm.
         /// </summary>
         public static string PauseAlgorithm_Description {
@@ -1219,6 +1246,24 @@ namespace Lively.Properties {
         public static string PleaseWait_Text {
             get {
                 return ResourceManager.GetString("PleaseWait.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please install the required plugin.
+        /// </summary>
+        public static string PluginNotFound_Message {
+            get {
+                return ResourceManager.GetString("PluginNotFound.Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Plugin not found.
+        /// </summary>
+        public static string PluginNotFound_Title {
+            get {
+                return ResourceManager.GetString("PluginNotFound.Title", resourceCulture);
             }
         }
         
@@ -1286,20 +1331,20 @@ namespace Lively.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Report a problem with the software.
+        /// </summary>
+        public static string ReportBug_Description {
+            get {
+                return ResourceManager.GetString("ReportBug.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Report Bug.
         /// </summary>
         public static string ReportBug_Header {
             get {
                 return ResourceManager.GetString("ReportBug.Header", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Report a problem with the software.
-        /// </summary>
-        public static string ReportBugPage_Content {
-            get {
-                return ResourceManager.GetString("ReportBugPage.Content", resourceCulture);
             }
         }
         
@@ -1444,6 +1489,15 @@ namespace Lively.Properties {
         public static string ShowOnDisk_Text {
             get {
                 return ResourceManager.GetString("ShowOnDisk.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show some love by dropping a star.
+        /// </summary>
+        public static string SourceCode_Description {
+            get {
+                return ResourceManager.GetString("SourceCode.Description", resourceCulture);
             }
         }
         
@@ -1745,6 +1799,15 @@ namespace Lively.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Default.
+        /// </summary>
+        public static string TextDefault_Text {
+            get {
+                return ResourceManager.GetString("TextDefault.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Download.
         /// </summary>
         public static string TextDownload {
@@ -1759,6 +1822,24 @@ namespace Lively.Properties {
         public static string TextDownloadNow_Content {
             get {
                 return ResourceManager.GetString("TextDownloadNow.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dynamic.
+        /// </summary>
+        public static string TextDynamicTheme_Text {
+            get {
+                return ResourceManager.GetString("TextDynamicTheme.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to That&apos;s all for now...
+        /// </summary>
+        public static string TextEndOfItems_Text {
+            get {
+                return ResourceManager.GetString("TextEndOfItems.Text", resourceCulture);
             }
         }
         
@@ -1819,9 +1900,9 @@ namespace Lively.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Help translate.
         /// </summary>
-        public static string TextHelpTranslate {
+        public static string TextHelpTranslate_Title {
             get {
-                return ResourceManager.GetString("TextHelpTranslate", resourceCulture);
+                return ResourceManager.GetString("TextHelpTranslate.Title", resourceCulture);
             }
         }
         
@@ -1864,9 +1945,9 @@ namespace Lively.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Learn more.
         /// </summary>
-        public static string TextLearnMore {
+        public static string TextLearnMore_Text {
             get {
-                return ResourceManager.GetString("TextLearnMore", resourceCulture);
+                return ResourceManager.GetString("TextLearnMore.Text", resourceCulture);
             }
         }
         
@@ -2339,6 +2420,15 @@ namespace Lively.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Theme.
+        /// </summary>
+        public static string Theme_Label {
+            get {
+                return ResourceManager.GetString("Theme.Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Lively adapts to system theme settings, to change appearance goto.
         /// </summary>
         public static string TipAppTheme {
@@ -2443,6 +2533,15 @@ namespace Lively.Properties {
         public static string TitleChangelog {
             get {
                 return ResourceManager.GetString("TitleChangelog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose Application.
+        /// </summary>
+        public static string TitleChooseApplication_Text {
+            get {
+                return ResourceManager.GetString("TitleChooseApplication.Text", resourceCulture);
             }
         }
         
@@ -2753,6 +2852,24 @@ namespace Lively.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Update complete.
+        /// </summary>
+        public static string UpdateCompleted_Text {
+            get {
+                return ResourceManager.GetString("UpdateCompleted.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Check out what&apos;s new.
+        /// </summary>
+        public static string UpdateWhatsNew_Text {
+            get {
+                return ResourceManager.GetString("UpdateWhatsNew.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Use hardware acceleration when possible.
         /// </summary>
         public static string VideoHardwareDecode_Description {
@@ -2897,6 +3014,15 @@ namespace Lively.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Size.
+        /// </summary>
+        public static string WallpaperInstallSize_Text {
+            get {
+                return ResourceManager.GetString("WallpaperInstallSize.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to How wallpaper is applied to connected display devices.
         /// </summary>
         public static string WallpaperLayout_Description {
@@ -3010,6 +3136,15 @@ namespace Lively.Properties {
         public static string WebBrowserDiskCache_Header {
             get {
                 return ResourceManager.GetString("WebBrowserDiskCache.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Official webpage of Lively Wallpaper.
+        /// </summary>
+        public static string Website_Description {
+            get {
+                return ResourceManager.GetString("Website.Description", resourceCulture);
             }
         }
         

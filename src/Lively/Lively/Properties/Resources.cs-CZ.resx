@@ -129,10 +129,10 @@
   <data name="AudioGroup.Header" xml:space="preserve">
     <value>Zvuk</value>
   </data>
-  <data name="CommunityPage.Content" xml:space="preserve">
+  <data name="Community.Description" xml:space="preserve">
     <value>Online diskuzní fórum</value>
   </data>
-  <data name="DocumentationPage.Content" xml:space="preserve">
+  <data name="Documentation.Description" xml:space="preserve">
     <value>API dokumentace a pomoc</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
@@ -143,8 +143,8 @@ Průzkumník Windows se za posledních 30 sekund restartoval! Může se jednat o
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
     <value>Nalezen nekompatibilní program, motivy hlavního panelu jsou zakázány</value>
   </data>
-  <data name="OfficialWebpage.Content" xml:space="preserve">
-    <value>Oficiální webová stránka Lively Wallpaper.</value>
+  <data name="Website.Description" xml:space="preserve">
+    <value>Oficiální webová stránka Lively Wallpaper</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
     <value>Většina moderních LCD a LED displejů netrpí vypalováním, a proto lze tapetu použít jako spořič obrazovky.
@@ -153,7 +153,7 @@ Pro OLED, Plazma nebo CRT displeje, které jsou náchylné ke spálení, se dopo
 
 Hlavním účelem spořičů Lively's obrazovky je přidat další vrstvu přizpůsobení do vaší pc, použít spořiče obrazovky jako ochranu proti spálení na vlastní riziko!</value>
   </data>
-  <data name="ReportBugPage.Content" xml:space="preserve">
+  <data name="ReportBug.Description" xml:space="preserve">
     <value>Nahlásit problém se softwarem</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
@@ -226,7 +226,7 @@ Aktualizace budou časté a mohou obsahovat chyby!</value>
     <value>Pro použití nového jazyka se restartuje</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
-    <value>Jazyk</value>
+    <value>Jazyk Slavakia</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
     <value>Aktualizace se nezdařila; zkuste stáhnout instalační program z:
@@ -364,7 +364,7 @@ Pokud stále nefunguje, zavřete a spusťte Lively znova/restartujte okna.
   <data name="TextGIF" xml:space="preserve">
     <value>Animovaný GIF</value>
   </data>
-  <data name="GitHubStar.Content" xml:space="preserve">
+  <data name="SourceCode.Description" xml:space="preserve">
     <value>Ukažte lásku tím, že dáte hvězdičku</value>
   </data>
   <data name="TextGo" xml:space="preserve">

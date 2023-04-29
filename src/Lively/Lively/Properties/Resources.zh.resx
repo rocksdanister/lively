@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AudioFocused.Content" xml:space="preserve">
-    <value>仅在桌面聚焦时播放音频</value>
+    <value>仅在桌面为焦点时播放音频</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
     <value>所有壁纸的音量大小</value>
@@ -129,10 +129,10 @@
   <data name="AudioGroup.Header" xml:space="preserve">
     <value>声音</value>
   </data>
-  <data name="CommunityPage.Content" xml:space="preserve">
+  <data name="Community.Description" xml:space="preserve">
     <value>在线论坛</value>
   </data>
-  <data name="DocumentationPage.Content" xml:space="preserve">
+  <data name="Documentation.Description" xml:space="preserve">
     <value>API 文档和帮助</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
@@ -143,8 +143,8 @@ Windows 资源管理器在过去 30 秒内重新启动了两次！这可能是 L
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
     <value>发现不兼容的程序，已停用任务栏个性化主题。</value>
   </data>
-  <data name="OfficialWebpage.Content" xml:space="preserve">
-    <value>Lively Wallpaper 的官方网页</value>
+  <data name="Website.Description" xml:space="preserve">
+    <value>Lively 動態桌布官方網站</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
     <value>大多数现代 LCD 和 LED 显示器都不会出现烧屏问题，因此任何墙纸都可以用作其屏幕保护程序。
@@ -153,7 +153,7 @@ Windows 资源管理器在过去 30 秒内重新启动了两次！这可能是 L
 
 Lively的屏幕保护程序的主要目的是为您的电脑增加另一层个性化功能，若使用屏幕保护程序作为防烧屏保护则风险自负!</value>
   </data>
-  <data name="ReportBugPage.Content" xml:space="preserve">
+  <data name="ReportBug.Description" xml:space="preserve">
     <value>报告软件问题</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
@@ -172,7 +172,7 @@ Lively的屏幕保护程序的主要目的是为您的电脑增加另一层个�
     <value>您确定要从库中删除这张壁纸吗？</value>
   </data>
   <data name="DragDropFile.Text" xml:space="preserve">
-    <value>只需将文件拖到这里</value>
+    <value>拖拽文件至此以添加</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
     <value>你正在打开一个外部应用程序作为墙纸。
@@ -254,10 +254,10 @@ https://github.com/rocksdanister/lively/wiki</value>
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
-    <value>不是 Lively 壁纸所储存的文件夹。</value>
+    <value>不是Lively壁纸文件</value>
   </data>
   <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
-    <value>Lively上次没有关闭妥当，已在安全模式下启动。
+    <value>Lively未正常关闭，已在安全模式下启动。
 您希望恢复之前运行的所有壁纸吗？</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
@@ -364,7 +364,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextGIF" xml:space="preserve">
     <value>动态 GIF</value>
   </data>
-  <data name="GitHubStar.Content" xml:space="preserve">
+  <data name="SourceCode.Description" xml:space="preserve">
     <value>通过投下一颗星来表达爱意</value>
   </data>
   <data name="TextGo" xml:space="preserve">
@@ -416,7 +416,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>关</value>
   </data>
   <data name="TextOK" xml:space="preserve">
-    <value>好</value>
+    <value>确定</value>
   </data>
   <data name="TextOn.Content" xml:space="preserve">
     <value>开</value>
@@ -686,7 +686,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>尽可能使用硬件加速。</value>
   </data>
   <data name="VideoPlayer.Description" xml:space="preserve">
-    <value>选择壁纸使用的视频播放器。</value>
+    <value>选择视频壁纸使用的视频播放器。</value>
   </data>
   <data name="WallpaperDir.Description" xml:space="preserve">
     <value>存储壁纸的路径。</value>

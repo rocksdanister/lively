@@ -129,10 +129,10 @@
   <data name="AudioGroup.Header" xml:space="preserve">
     <value>Âm thanh</value>
   </data>
-  <data name="CommunityPage.Content" xml:space="preserve">
+  <data name="Community.Description" xml:space="preserve">
     <value>Thảo luận trong diễn đàn</value>
   </data>
-  <data name="DocumentationPage.Content" xml:space="preserve">
+  <data name="Documentation.Description" xml:space="preserve">
     <value>Tư liệu API và hỗ trợ</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
@@ -143,17 +143,17 @@ Windows Explorer đã khởi động lại 2 lần trong 30 giây! Đây có th�
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
     <value>Phát hiện chương trình không tương thích, taskbar theming đã bị tắt</value>
   </data>
-  <data name="OfficialWebpage.Content" xml:space="preserve">
-    <value>Trang chính thức của Lively Wallaper</value>
+  <data name="Website.Description" xml:space="preserve">
+    <value>Trang chính thức của Lively Wallpaper</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
     <value>Hầu như tất cả màn hình LCD và LED đều không bị burn-in(lưu ảnh màn hình) nên bất kỳ hình nền nào cũng có thể sử dụng làm màn hình chờ.
 
-Còn đối với màn hình OLED, Plasma hoặc CRT thì sẽ có thể dễ bị burn-in nên lively khuyến cáo bạn nên sử dụng hình nền có ảnh động và tối để giảm thiểu hiệu ứng burn-in nhưng chức năng này cũng chưa được chứng nhận nên sẽ không đảm bảo màn hình của bạn sẽ không bị hỏng.
+Còn đối với màn hình OLED, Plasma hoặc CRT thì sẽ có thể dễ bị burn-in nên lively khuyến cáo bạn nên sử dụng hình nền có ảnh động và tối để giảm thiểu hiệu ứng burn-in nhưng chức năng này cũng chưa được thử nghiệm nên sẽ không đảm bảo màn hình của bạn sẽ không bị hỏng.
 
 Mục đích chính của Lively là để làm cho màn hình desktop của bạn đẹp hơn, nên trong trường hợp sử dụng Lively để làm màn hình chờ thì Lively sẽ không chịu trách nhiệm!</value>
   </data>
-  <data name="ReportBugPage.Content" xml:space="preserve">
+  <data name="ReportBug.Description" xml:space="preserve">
     <value>Báo lỗi chương trình</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
@@ -364,7 +364,7 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
   <data name="TextGIF" xml:space="preserve">
     <value>GIF động</value>
   </data>
-  <data name="GitHubStar.Content" xml:space="preserve">
+  <data name="SourceCode.Description" xml:space="preserve">
     <value>Tặng sao để cảm ơn nhà phát triển Lively</value>
   </data>
   <data name="TextGo" xml:space="preserve">
@@ -566,16 +566,16 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Nhập thêm câu lệnh riêng</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
-    <value>Toàn màn hình (Không giữ nguyên độ phân giải)</value>
+    <value>Lấp đầy (Fill)</value>
   </data>
   <data name="WallpaperFitNone.Content" xml:space="preserve">
     <value>Không</value>
   </data>
   <data name="WallpaperFitUniform.Content" xml:space="preserve">
-    <value>Không toàn màn hình (Giữ nguyên độ phân giải)</value>
+    <value>Đồng nhất (Uniform)</value>
   </data>
   <data name="WallpaperFitUniformToFill.Content" xml:space="preserve">
-    <value>Toàn màn hình (Tối đa độ phân giải)</value>
+    <value>Đồng nhất lấp đầy (Uniform Fill)</value>
   </data>
   <data name="WallpaperLayoutDuplicate.Content" xml:space="preserve">
     <value>Nhân bản hình nền</value>

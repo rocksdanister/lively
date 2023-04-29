@@ -129,10 +129,10 @@
   <data name="AudioGroup.Header" xml:space="preserve">
     <value>Аудио</value>
   </data>
-  <data name="CommunityPage.Content" xml:space="preserve">
-    <value>Интернет-форум для обсуждения</value>
+  <data name="Community.Description" xml:space="preserve">
+    <value>Форум для обсуждения</value>
   </data>
-  <data name="DocumentationPage.Content" xml:space="preserve">
+  <data name="Documentation.Description" xml:space="preserve">
     <value>Документация и справка по API</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
@@ -143,7 +143,7 @@
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
     <value>Найдена несовместимая программа, тематизация панели задач отключена.</value>
   </data>
-  <data name="OfficialWebpage.Content" xml:space="preserve">
+  <data name="Website.Description" xml:space="preserve">
     <value>Официальная страница Lively Wallpaper</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
@@ -153,7 +153,7 @@
 
 Основная цель заставок Lively - добавить еще один уровень персонализации на ваш компьютер. Используйте заставки в качестве защиты от выгорания на свой страх и риск!</value>
   </data>
-  <data name="ReportBugPage.Content" xml:space="preserve">
+  <data name="ReportBug.Description" xml:space="preserve">
     <value>Сообщить о проблеме с программным обеспечением</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
@@ -226,7 +226,7 @@
     <value>Lively будет перезапущен, чтобы применить новый язык.</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
-    <value>Язык</value>
+    <value>Выбор языка</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
     <value>Не удалось обновится. Попробуйте скачать установщик самостоятельно:
@@ -366,8 +366,8 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextGIF" xml:space="preserve">
     <value>GIF-анимация</value>
   </data>
-  <data name="GitHubStar.Content" xml:space="preserve">
-    <value>Покажите свою любовь, нажав на звездочку</value>
+  <data name="SourceCode.Description" xml:space="preserve">
+    <value>Прояви свою любовь, нажав на звездочку</value>
   </data>
   <data name="TextGo" xml:space="preserve">
     <value>Добавить</value>
