@@ -216,7 +216,7 @@
                         LabelPosition="Collapsed"
                         ToolTipService.ToolTip="Patreon">
                         <AppBarButton.Icon>
-                            <FontIcon Glyph="&#xEB51;" />
+                            <FontIcon FontFamily="{StaticResource CustomIconFonts}" Glyph="&#xE900;" />
                         </AppBarButton.Icon>
                     </AppBarButton>
                     <AppBarSeparator />

@@ -27,11 +27,11 @@
                         </ComboBox>
                     </controls:SettingsCard>
                     <InfoBar
+                        x:Uid="DevelopmentOnHold"
                         Margin="0,-2.5,0,0"
                         VerticalAlignment="Top"
                         IsClosable="False"
                         IsOpen="True"
-                        Message="This feature development is on hold"
                         Severity="Error">
                         <InfoBar.ActionButton>
                             <HyperlinkButton NavigateUri="https://github.com/rocksdanister/lively/issues/1569" ToolTipService.ToolTip="https://github.com/rocksdanister/lively/issues/1569">

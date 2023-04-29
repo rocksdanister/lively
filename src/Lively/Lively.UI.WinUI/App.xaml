@@ -5,6 +5,8 @@
     xmlns:local="using:Lively.UI.WinUI">
     <Application.Resources>
         <ResourceDictionary>
+            <!--  ref: https://medium.com/@Niels9001/create-custom-icon-fonts-and-use-them-in-your-uwp-app-1c518febbda1  -->
+            <FontFamily x:Key="CustomIconFonts">ms-appx:///Assets/CustomIcons.ttf#CustomIcons</FontFamily>
             <ResourceDictionary.MergedDictionaries>
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
                 <ResourceDictionary Source="ms-appx:///SettingsUI/Themes/Generic.xaml" />
