@@ -143,12 +143,15 @@
             <!--  footer  -->
             <NavigationView.PaneFooter>
                 <CommandBar Name="navCommandBar" DefaultLabelPosition="Right">
-                    <AppBarButton x:Uid="AddWallpaper" Click="AddWallpaperButton_Click">
+                    <AppBarButton
+                        x:Name="addWallpaperLabel"
+                        x:Uid="AddWallpaper"
+                        Click="AddWallpaperButton_Click">
                         <AppBarButton.Icon>
                             <FontIcon Glyph="&#xE710;" />
                         </AppBarButton.Icon>
                     </AppBarButton>
-                    <AppBarSeparator />
+                    <AppBarSeparator x:Name="separatorLabel1" />
 
                     <AppBarButton
                         x:Name="controlPanelLabel"
@@ -186,7 +189,7 @@
                         -->
                     </AppBarButton>
 
-                    <AppBarSeparator Visibility="Collapsed" />
+                    <AppBarSeparator x:Name="separatorLabel2" Visibility="Collapsed" />
                     <AppBarButton
                         Name="audioBtn"
                         MaxWidth="50"
@@ -204,7 +207,7 @@
                             <FontIcon Glyph="&#xE994;" />
                         </AppBarButton.Icon>
                     </AppBarButton>
-                    <AppBarSeparator />
+                    <AppBarSeparator x:Name="separatorLabel3" />
 
                     <AppBarButton
                         Name="coffeeBtn"
