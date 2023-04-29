@@ -1,0 +1,1175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AudioFocused.Content" xml:space="preserve">
+    <value>Speel oudio slegs wanneer lessenaar gefokus is</value>
+  </data>
+  <data name="Audio.Description" xml:space="preserve">
+    <value>Volumevlak van alle agtergronde</value>
+  </data>
+  <data name="Audio.Header" xml:space="preserve">
+    <value>Volume</value>
+  </data>
+  <data name="AudioGroup.Header" xml:space="preserve">
+    <value>Oudio</value>
+  </data>
+  <data name="Community.Description" xml:space="preserve">
+    <value>Aanlyn besprekingsforum</value>
+  </data>
+  <data name="Documentation.Description" xml:space="preserve">
+    <value>API dokumentasie en hulp</value>
+  </data>
+  <data name="DescExplorerCrash" xml:space="preserve">
+    <value>Lively het 'n noodlottige fout teëgekom.
+
+Windows Explorer het twee keer in die laaste 30 sekondes herbegin! Dit kan 'n konflik wees tussen Lively en ander rekenaaraanpassingsagteware of Windows. Om verdere probleme te vermy, word alle agtergronde beëindig.</value>
+  </data>
+  <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
+    <value>Onversoenbare program gevind, taakbalktema is gedeaktiveer</value>
+  </data>
+  <data name="Website.Description" xml:space="preserve">
+    <value>Amptelike webtuiste van Lively Wallpaper</value>
+  </data>
+  <data name="DescOledScreensaverNotice" xml:space="preserve">
+    <value>Die meeste moderne LCD- en LED-skerms ly nie aan inbrandprobleme nie en daarom kan enige muurpapier as skermbewaarder gebruik word.
+
+Vir OLED-, Plasma- of CRT-skerms wat vatbaar is vir inbrand, word dit aangeraai om plakpapier met gereelde beweging te gebruik en 'n algehele donker tema wat veronderstel is om inbranding te versag, maar hierdie kenmerk is ongetoets en die doeltreffendheid daarvan kan nie gewaarborg word nie.
+
+Die hoofdoel van Lively se skermbeskermers is om nog 'n laag aanpassing by jou rekenaar te voeg, gebruik skermbeskermers as inbrandbeskerming op eie risiko!</value>
+  </data>
+  <data name="ReportBug.Description" xml:space="preserve">
+    <value>Raporteer n probleem met die sagteware</value>
+  </data>
+  <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
+    <value>Kies 'n lêer</value>
+  </data>
+  <data name="DescriptionAppRules" xml:space="preserve">
+    <value>Wallpaper playback behaviour based on running application</value>
+  </data>
+  <data name="DescriptionCancelQuestion" xml:space="preserve">
+    <value>Is jy seker jy will kanseleer?</value>
+  </data>
+  <data name="DescriptionDeleteConfirmation" xml:space="preserve">
+    <value>Is jy seker jy wil hierdie muurpapier permanent van die skyf uitvee?</value>
+  </data>
+  <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
+    <value>Is jy seker jy wil hierdie muurpapier uit die biblioteek uitvee?</value>
+  </data>
+  <data name="DragDropFile.Text" xml:space="preserve">
+    <value>Sleep eenvoudig lêers hierheen</value>
+  </data>
+  <data name="DescriptionExternalAppWarning" xml:space="preserve">
+    <value>Jy maak 'n eksterne toepassing as muurpapier oop.
+Kwaadwillige toepassings kan wanware, virusse... en skade aan jou stelsel aanrig.
+Gaan net voort as hierdie toepassing van 'n betroubare bron kom.</value>
+  </data>
+  <data name="MinimizedTray.Text" xml:space="preserve">
+    <value>Lively is tot die system tray geminimaliseer, regskliek lewendige ikoon om voort te gaan.</value>
+  </data>
+  <data name="DescriptionPleaseRestartLively" xml:space="preserve">
+    <value>Herbegin asseblief Lively vir instellings om in werking te tree</value>
+  </data>
+  <data name="DescriptionPleaseStop" xml:space="preserve">
+    <value>Stop asseblief voordat jy voortgaan</value>
+  </data>
+  <data name="DescriptionRecordStart" xml:space="preserve">
+    <value>Druk om te begin opneem</value>
+  </data>
+  <data name="DescriptionRestoringWallpaper" xml:space="preserve">
+    <value>Stel tans vorige muurpapier(e) terug, wag asseblief...</value>
+  </data>
+  <data name="DescriptionScreenLayout" xml:space="preserve">
+    <value>Kies vertoning</value>
+  </data>
+  <data name="DescriptionUpdateAvailable" xml:space="preserve">
+    <value>'n Nuwe weergawe van sagteware is beskikbaar!</value>
+  </data>
+  <data name="DescriptionWebpageLoad" xml:space="preserve">
+    <value>Enter website link to load, shadertoy.com shader links are supported</value>
+  </data>
+  <data name="DescriptionWelcomeWizard" xml:space="preserve">
+    <value>Hierdie towenaar sal jou laat begin met die opstel van Lively</value>
+  </data>
+  <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
+    <value>Jou Windows N/KN-weergawe sal die aflaai van bykomende kodeks vereis om videoterugspeel in agtergronde te ondersteun</value>
+  </data>
+  <data name="DescSupperDev" xml:space="preserve">
+    <value>Wys ondersteuning deur die ontwikkelaarkoffie te koop</value>
+  </data>
+  <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
+    <value>Jy is op die punt om te verander na beta (ontwikkelaar) bou van Lively.
+Opdaterings sal gereeld wees en kan foute bevat!</value>
+  </data>
+  <data name="HideSysTray.Description" xml:space="preserve">
+    <value>Stelselbak-ikoon sigbaarheid, lewendig sal voortgaan om te loop met die ikoon versteek</value>
+  </data>
+  <data name="HideSysTray.Header" xml:space="preserve">
+    <value>Stelselbak-ikoon</value>
+  </data>
+  <data name="Language.Description" xml:space="preserve">
+    <value>Lively sal weer begin om die nuwe taal toe te pas</value>
+  </data>
+  <data name="Language.Header" xml:space="preserve">
+    <value>Taal</value>
+  </data>
+  <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
+    <value>Kon nie opdateer nie; probeer om die installeerder af te laai vanaf:
+https://github.com/rocksdanister/lively/releases</value>
+  </data>
+  <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
+    <value>Beskadigde muurpapierlêer, probeer weer aflaai</value>
+  </data>
+  <data name="LivelyExceptionGeneral" xml:space="preserve">
+    <value>Oeps... Dit lyk of iets verkeerd geloop het :(
+Om hierdie fout beter te verstaan ​​en die probleem op te los, deel die loglêer met die ontwikkelaar.
+Instruksies vir die deel van loglêer:
+https://github.com/rocksdanister/lively/wiki</value>
+  </data>
+  <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
+    <value>Lively kan nie behoorlik werk met Windows High Contrast-modus geaktiveer nie!
+Deaktiveer hoë kontras-modus en probeer weer</value>
+  </data>
+  <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
+    <value>Media playback failed :(
+Try changing the videoplayer in lively settings.
+
+In order to better understand this error and fix the issue, share the log file with the developer.
+Instructions for sharing log file:
+https://github.com/rocksdanister/lively/wiki</value>
+  </data>
+  <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
+    <value>Nie lewendige plakpapierlêer nie</value>
+  </data>
+  <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
+    <value>Lively was nie behoorlik gesluit nie, begin in veilige modus.
+Wil jy agtergronde wat voorheen werk, herstel?</value>
+  </data>
+  <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
+    <value>Dit lyk of sommige instellings ingestel moet word om Lively te laat werk:
+1. Druk die Win + R-sleutels om Run oop te maak,
+2. Tik SystemPropertiesPerformance.exe in Run, klik op "OK" om Prestasie-opsies oop te maak.
+3. Aktiveer/merk "Animeer kontroles en elemente binne vensters" (As dit reeds gemerk is, ontmerk dan en merk) &amp; Pas toe.
+4. Klik "Pas toe" en druk dan "OK" om die venster toe te maak.
+
+As Windows 7 pas gestel - Pas vir die beste voorkoms &amp; amp; Doen aansoek.
+As dit steeds nie werk nie, maak toe en begin Lively weer / herbegin vensters.
+(Werk nie in sommige insider Windows 10 builds nie)</value>
+  </data>
+  <data name="Startup.Description" xml:space="preserve">
+    <value>Lewendig moet op die agtergrond hardloop vir agtergrondspeel</value>
+  </data>
+  <data name="Startup.Header" xml:space="preserve">
+    <value>Begin met Windows</value>
+  </data>
+  <data name="TextAdd" xml:space="preserve">
+    <value>Voeg by</value>
+  </data>
+  <data name="TextAllFiles" xml:space="preserve">
+    <value>Alle lêers</value>
+  </data>
+  <data name="Application.Header" xml:space="preserve">
+    <value>Toepassing</value>
+  </data>
+  <data name="Attribution.Header" xml:space="preserve">
+    <value>Erkenning</value>
+  </data>
+  <data name="Author.Text" xml:space="preserve">
+    <value>Skrywer</value>
+  </data>
+  <data name="TextBack" xml:space="preserve">
+    <value>Terug</value>
+  </data>
+  <data name="TextBrowse" xml:space="preserve">
+    <value>Snuffel</value>
+  </data>
+  <data name="Cancel.Content" xml:space="preserve">
+    <value>Kanseleer</value>
+  </data>
+  <data name="TextChangeWallpaper" xml:space="preserve">
+    <value>Verander Agtergronde</value>
+  </data>
+  <data name="TextClose" xml:space="preserve">
+    <value>Sluit</value>
+  </data>
+  <data name="CloseWallpapers.Label" xml:space="preserve">
+    <value>Sluit</value>
+  </data>
+  <data name="TextCompleted" xml:space="preserve">
+    <value>Voltooi!</value>
+  </data>
+  <data name="ControlPanel.Subtitle" xml:space="preserve">
+    <value>Klik hier om wallpapers te bestuur</value>
+  </data>
+  <data name="TextConvertVideo" xml:space="preserve">
+    <value>Skakel Na Video</value>
+  </data>
+  <data name="TextCreatePreview" xml:space="preserve">
+    <value>Skep Voorskou</value>
+  </data>
+  <data name="Customise.Text" xml:space="preserve">
+    <value>Pasmaak</value>
+  </data>
+  <data name="CustomiseWallpaper.Label" xml:space="preserve">
+    <value>Pasmaak</value>
+  </data>
+  <data name="DeleteWallpaper.Text" xml:space="preserve">
+    <value>Vee uit</value>
+  </data>
+  <data name="Description.Text" xml:space="preserve">
+    <value>Beskrywing</value>
+  </data>
+  <data name="DisplayPauseRuleAllScreen.Content" xml:space="preserve">
+    <value>Alle skerm(s)</value>
+  </data>
+  <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
+    <value>Per skerm</value>
+  </data>
+  <data name="TextDownload" xml:space="preserve">
+    <value>Aflaai</value>
+  </data>
+  <data name="EditWallpaper.Text" xml:space="preserve">
+    <value>Wysig</value>
+  </data>
+  <data name="TextError" xml:space="preserve">
+    <value>Fout</value>
+  </data>
+  <data name="TextExit" xml:space="preserve">
+    <value>Verlaat</value>
+  </data>
+  <data name="ExportWallpaperZip.Text" xml:space="preserve">
+    <value>Stoor na lêer</value>
+  </data>
+  <data name="TextFeatureMissing" xml:space="preserve">
+    <value>Sommige kenmerke is nie in hierdie weergawe van Lively beskikbaar nie</value>
+  </data>
+  <data name="TextFileNotFound" xml:space="preserve">
+    <value>Lêer nie gevind nie</value>
+  </data>
+  <data name="TextGIF" xml:space="preserve">
+    <value>Geanimeerde GIF</value>
+  </data>
+  <data name="SourceCode.Description" xml:space="preserve">
+    <value>Toon 'n bietjie liefde deur 'n ster te laat val</value>
+  </data>
+  <data name="TextGo" xml:space="preserve">
+    <value>GO</value>
+  </data>
+  <data name="TextHelpTranslate.Title" xml:space="preserve">
+    <value>Help vertaal</value>
+  </data>
+  <data name="TextHours" xml:space="preserve">
+    <value>uur/ure</value>
+  </data>
+  <data name="TextInstall" xml:space="preserve">
+    <value>Installeer</value>
+  </data>
+  <data name="TextKeyboard.Content" xml:space="preserve">
+    <value>Sleutelbord</value>
+  </data>
+  <data name="TextLastChecked" xml:space="preserve">
+    <value>Laas nagegaan</value>
+  </data>
+  <data name="TextLearnMore.Text" xml:space="preserve">
+    <value>Leer meer</value>
+  </data>
+  <data name="License.Header" xml:space="preserve">
+    <value>Lisensie</value>
+  </data>
+  <data name="TextMinutes" xml:space="preserve">
+    <value>minuut(minute)</value>
+  </data>
+  <data name="TextmoreInfo" xml:space="preserve">
+    <value>Inligting</value>
+  </data>
+  <data name="TextMoreWallpapers" xml:space="preserve">
+    <value>Meer agtergronde</value>
+  </data>
+  <data name="TextMouse.Content" xml:space="preserve">
+    <value>Muis</value>
+  </data>
+  <data name="MouseInteractOnDesktop.Content" xml:space="preserve">
+    <value>Muisinteraksie wanneer toepassing gefokus is</value>
+  </data>
+  <data name="TextNext" xml:space="preserve">
+    <value>Volgende</value>
+  </data>
+  <data name="TextNo" xml:space="preserve">
+    <value>Geen</value>
+  </data>
+  <data name="TextOff.Content" xml:space="preserve">
+    <value>Af</value>
+  </data>
+  <data name="TextOK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="TextOn.Content" xml:space="preserve">
+    <value>Aan</value>
+  </data>
+  <data name="TextOnline" xml:space="preserve">
+    <value>Aanlyn</value>
+  </data>
+  <data name="TextOpenLively" xml:space="preserve">
+    <value>Maak Lively oop</value>
+  </data>
+  <data name="PauseAlgorithmTypeAllProcess.Content" xml:space="preserve">
+    <value>Alle proses</value>
+  </data>
+  <data name="PauseAlgorithmTypeExclusiveMode.Content" xml:space="preserve">
+    <value>Direct3D</value>
+  </data>
+  <data name="PauseAlgorithmTypeForegroundProcess.Content" xml:space="preserve">
+    <value>Voorgrond proses</value>
+  </data>
+  <data name="TextPauseWallpapers" xml:space="preserve">
+    <value>Onderbreek agtergronde</value>
+  </data>
+  <data name="TextPerformanceKill.Content" xml:space="preserve">
+    <value>Doodmaak</value>
+  </data>
+  <data name="TextPerformanceNone.Content" xml:space="preserve">
+    <value>Niks</value>
+  </data>
+  <data name="TextPerformancePause.Content" xml:space="preserve">
+    <value>Stop tydelik</value>
+  </data>
+  <data name="TextPicture" xml:space="preserve">
+    <value>Prent</value>
+  </data>
+  <data name="PreviewWallpaper.Text" xml:space="preserve">
+    <value>Voorskou</value>
+  </data>
+  <data name="PrivacyPolicy.Header" xml:space="preserve">
+    <value>Privaatheidsbeleid</value>
+  </data>
+  <data name="TextProcessingWallpaper" xml:space="preserve">
+    <value>Verwerking</value>
+  </data>
+  <data name="TextRemove" xml:space="preserve">
+    <value>Verwyder</value>
+  </data>
+  <data name="TextRule" xml:space="preserve">
+    <value>Reël</value>
+  </data>
+  <data name="TextScreen" xml:space="preserve">
+    <value>Skerm</value>
+  </data>
+  <data name="TextSearch" xml:space="preserve">
+    <value>Soek</value>
+  </data>
+  <data name="SetWallpaper.Text" xml:space="preserve">
+    <value>Stel as muurpapier</value>
+  </data>
+  <data name="ShowOnDisk.Text" xml:space="preserve">
+    <value>Maak lêerligging oop</value>
+  </data>
+  <data name="WallpaperSource.Text" xml:space="preserve">
+    <value>Bron</value>
+  </data>
+  <data name="TextStart" xml:space="preserve">
+    <value>Begin</value>
+  </data>
+  <data name="TextStop" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="StoreReview.Content" xml:space="preserve">
+    <value>Geniet jy dit om Lively te gebruik? Laat 'n resensie :)</value>
+  </data>
+  <data name="TextSupport.Content" xml:space="preserve">
+    <value>Ondersteuning</value>
+  </data>
+  <data name="TextSwitchBranchDev" xml:space="preserve">
+    <value>Skakel oor na beta (Ontwikkelingskanaal)</value>
+  </data>
+  <data name="TextSwitchBranchOfficial" xml:space="preserve">
+    <value>Skakel oor na stabiel (verstekkanaal)</value>
+  </data>
+  <data name="TextTags" xml:space="preserve">
+    <value>Merkers</value>
+  </data>
+  <data name="TaskbarThemeBlur.Content" xml:space="preserve">
+    <value>Vervaag</value>
+  </data>
+  <data name="TaskbarThemeClear.Content" xml:space="preserve">
+    <value>Duidelik</value>
+  </data>
+  <data name="TaskbarThemeColor.Content" xml:space="preserve">
+    <value>Kleur</value>
+  </data>
+  <data name="TaskbarThemeFluent.Content" xml:space="preserve">
+    <value>Vlot</value>
+  </data>
+  <data name="TaskbarThemeWallpaper.Content" xml:space="preserve">
+    <value>Muurpapier</value>
+  </data>
+  <data name="TaskbarThemeWallpaperFluent.Content" xml:space="preserve">
+    <value>Wallpaper Vlot</value>
+  </data>
+  <data name="TextTileSizeLarge" xml:space="preserve">
+    <value>Large</value>
+  </data>
+  <data name="TextTileSizeNormal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="TextTileSizeSmall" xml:space="preserve">
+    <value>Small</value>
+  </data>
+  <data name="Title.Text" xml:space="preserve">
+    <value>Titel</value>
+  </data>
+  <data name="TextUIHeadless" xml:space="preserve">
+    <value>Headless</value>
+  </data>
+  <data name="TextUILite" xml:space="preserve">
+    <value>Lite</value>
+  </data>
+  <data name="TextUINormal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="TextUnsupportedFile" xml:space="preserve">
+    <value>Lêerformaat word nie ondersteun nie</value>
+  </data>
+  <data name="TextUpdateAvailable" xml:space="preserve">
+    <value>Opdatering beskikbaar!</value>
+  </data>
+  <data name="TextUpdateCheck" xml:space="preserve">
+    <value>Kyk vir opdatering</value>
+  </data>
+  <data name="TextupdateCheckFail" xml:space="preserve">
+    <value>Kon nie kyk vir sagteware-opdatering nie</value>
+  </data>
+  <data name="TextUpdateChecking" xml:space="preserve">
+    <value>Kyk tans vir opdatering</value>
+  </data>
+  <data name="TextUpdateUptodate" xml:space="preserve">
+    <value>Sagteware is op datum!</value>
+  </data>
+  <data name="TextVideo" xml:space="preserve">
+    <value>Video</value>
+  </data>
+  <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
+    <value>Voer opsionele opdragreëlargumente in</value>
+  </data>
+  <data name="WallpaperFitFill.Content" xml:space="preserve">
+    <value>Vul</value>
+  </data>
+  <data name="WallpaperFitNone.Content" xml:space="preserve">
+    <value>Geen</value>
+  </data>
+  <data name="WallpaperFitUniform.Content" xml:space="preserve">
+    <value>Uniform</value>
+  </data>
+  <data name="WallpaperFitUniformToFill.Content" xml:space="preserve">
+    <value>Eenvormige vul</value>
+  </data>
+  <data name="WallpaperLayoutDuplicate.Content" xml:space="preserve">
+    <value>Dupliseer dieselfde plakpapier</value>
+  </data>
+  <data name="WallpaperLayoutPerScreen.Content" xml:space="preserve">
+    <value>Slegs geselekteerde skerm</value>
+  </data>
+  <data name="WallpaperLayoutSpan.Content" xml:space="preserve">
+    <value>Span oor skerms</value>
+  </data>
+  <data name="WallpaperType.Text" xml:space="preserve">
+    <value>Tik</value>
+  </data>
+  <data name="Website.Header" xml:space="preserve">
+    <value>Webwerf</value>
+  </data>
+  <data name="TextWebStream" xml:space="preserve">
+    <value>Webstroom</value>
+  </data>
+  <data name="TextWelcome" xml:space="preserve">
+    <value>Welkom</value>
+  </data>
+  <data name="TextYes" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="VideoPlayer.Header" xml:space="preserve">
+    <value>Video-speler</value>
+  </data>
+  <data name="AddWallpaperFileBrowse.Description" xml:space="preserve">
+    <value>Stel alle ondersteunde lêertipes as muurpapier</value>
+  </data>
+  <data name="EnterUrl.Description" xml:space="preserve">
+    <value>Stel die webbladsy van die URL wat jy as agtergrond ingevoer het</value>
+  </data>
+  <data name="AppFocus.Description" xml:space="preserve">
+    <value>Stel wat om te doen wanneer enige toepassing in fokus is</value>
+  </data>
+  <data name="AppFullScreen.Description" xml:space="preserve">
+    <value>Stel wat om te doen wanneer volskermspeletjies/toepassings loop</value>
+  </data>
+  <data name="AppRules.Description" xml:space="preserve">
+    <value>Onderbreek muurpapier wanneer hierdie toepassings uitgevoer word</value>
+  </data>
+  <data name="TipAppTheme" xml:space="preserve">
+    <value>Lively pas by stelseltema-instellings aan om die voorkoms te verander</value>
+  </data>
+  <data name="BatteryPower.Description" xml:space="preserve">
+    <value>Verander afspeel wanneer AC-krag ontkoppel is</value>
+  </data>
+  <data name="BrowserDebuggingPort.Description" xml:space="preserve">
+    <value>Voer die poort in om webblad-agtergronde te ontfout; wanneer gereed, navigeer na http://localhost:portnommer om toegang te verkry tot ontwikkelaarkonsole</value>
+  </data>
+  <data name="Debug.Description" xml:space="preserve">
+    <value>Wys ontwikkelaarkieslys</value>
+  </data>
+  <data name="DesktopPicture.Description" xml:space="preserve">
+    <value>Stel 'n prentjie van geanimeerde plakpapier as lessenaarpapier</value>
+  </data>
+  <data name="DisplayPauseRule.Description" xml:space="preserve">
+    <value>Onderbreek muurpapier op alle skerms of slegs die skerm waarop toepassing gefokus is</value>
+  </data>
+  <data name="ExportLogs.Description" xml:space="preserve">
+    <value>Skep logverslaglêer</value>
+  </data>
+  <data name="GifPlayer.Description" xml:space="preserve">
+    <value>Kies die speler wat vir gif-muurpapier gebruik word</value>
+  </data>
+  <data name="TipLivelySetupOnClose" xml:space="preserve">
+    <value>Voltooi die opstelling om voort te gaan</value>
+  </data>
+  <data name="LockscreenPicture.Description" xml:space="preserve">
+    <value>Stel 'n prentjie van geanimeerde muurpapier as sluitskerm-muurpapier</value>
+  </data>
+  <data name="PauseAlgorithm.Description" xml:space="preserve">
+    <value>Wallpaper pouse algoritme</value>
+  </data>
+  <data name="PowerSavingModePower.Description" xml:space="preserve">
+    <value>Verander afspeel wanneer Windows Kragbesparingsmodus geaktiveer is</value>
+  </data>
+  <data name="RemoteDesktopPower.Description" xml:space="preserve">
+    <value>Verander afspeel wanneer 'n Remote Desktop-sessie uitgevoer word</value>
+  </data>
+  <data name="TipScreensaver" xml:space="preserve">
+    <value>Gebruik na die onaktiwiteitsperiode die huidige muurpapier as jou skermbewaarder</value>
+  </data>
+  <data name="StreamWallpaperDetect.Description" xml:space="preserve">
+    <value>As ondersteunde videostroomskakel bespeur word, gebruik die videospeler in plaas daarvan om die webblad te laai</value>
+  </data>
+  <data name="StreamWallpaperVideoQuality.Description" xml:space="preserve">
+    <value>Kies die verlangde videokwaliteit vir aanlynstrome</value>
+  </data>
+  <data name="TipSwitchSoftwareBranch" xml:space="preserve">
+    <value>Verander sagtewarevrystelling van beta na stabiel of andersom</value>
+  </data>
+  <data name="TaskbarTheme.Description" xml:space="preserve">
+    <value>Verander stelsel taakbalk voorkoms</value>
+  </data>
+  <data name="TipTileSize" xml:space="preserve">
+    <value>Size of the wallpaper tiles in Library</value>
+  </data>
+  <data name="TipUIMode" xml:space="preserve">
+    <value>For low-end systems select Lite mode</value>
+  </data>
+  <data name="VideoHardwareDecode.Description" xml:space="preserve">
+    <value>Gebruik hardewareversnelling waar moontlik</value>
+  </data>
+  <data name="VideoPlayer.Description" xml:space="preserve">
+    <value>Kies die speler wat vir video-muurpapier gebruik word</value>
+  </data>
+  <data name="WallpaperDir.Description" xml:space="preserve">
+    <value>Pad wat gebruik word om plakpapierlêers te stoor</value>
+  </data>
+  <data name="WallpaperFit.Description" xml:space="preserve">
+    <value>Agtergrond skaal algoritme</value>
+  </data>
+  <data name="WallpaperInput.Description" xml:space="preserve">
+    <value>Kies maniere om met muurpapier te kommunikeer</value>
+  </data>
+  <data name="WallpaperLayout.Description" xml:space="preserve">
+    <value>How wallpaper is applied to connected display devices</value>
+  </data>
+  <data name="TipWallpaperPlayback" xml:space="preserve">
+    <value>Onderbreek muurpapier-afspeel wanneer lessenaar nie gefokus is nie</value>
+  </data>
+  <data name="WebBrowserDiskCache.Description" xml:space="preserve">
+    <value>Stoor tydelike lêers op skyf in plaas van geheue</value>
+  </data>
+  <data name="WebBrowser.Description" xml:space="preserve">
+    <value>Kies die speler wat vir Html-muurpapier gebruik word</value>
+  </data>
+  <data name="About.Label" xml:space="preserve">
+    <value>Oor</value>
+  </data>
+  <data name="AddWallpaper.Label" xml:space="preserve">
+    <value>Voeg muurpapier by</value>
+  </data>
+  <data name="AppFocus.Header" xml:space="preserve">
+    <value>Toepassings gefokus</value>
+  </data>
+  <data name="AppFullScreen.Header" xml:space="preserve">
+    <value>Toepassings volskerm</value>
+  </data>
+  <data name="TitleAppName" xml:space="preserve">
+    <value>Lively Wallpaper</value>
+  </data>
+  <data name="AppRules.Header" xml:space="preserve">
+    <value>Toepassingsreëls</value>
+  </data>
+  <data name="AppTheme.Header" xml:space="preserve">
+    <value>Tema</value>
+  </data>
+  <data name="TitleAudioPlayOnScreen" xml:space="preserve">
+    <value>Speel oudio op die skerm</value>
+  </data>
+  <data name="BatteryPower.Header" xml:space="preserve">
+    <value>Wanneer op batterykrag</value>
+  </data>
+  <data name="TitleBrowseFile" xml:space="preserve">
+    <value>Blaaier vir video, gif, webblad ... lêer om as agtergrond te stel</value>
+  </data>
+  <data name="BrowserDebuggingPort.Header" xml:space="preserve">
+    <value>Ontfoutingpoort</value>
+  </data>
+  <data name="TitleChangelog" xml:space="preserve">
+    <value>Veranderlogboek</value>
+  </data>
+  <data name="Community.Header" xml:space="preserve">
+    <value>Gemeenskap</value>
+  </data>
+  <data name="Debug.Header" xml:space="preserve">
+    <value>Ontfout</value>
+  </data>
+  <data name="TitleDeleteConfirmation" xml:space="preserve">
+    <value>Bevestig uitvee</value>
+  </data>
+  <data name="DesktopPicture.Header" xml:space="preserve">
+    <value>Desktop prentjie</value>
+  </data>
+  <data name="DisplayPauseRule.Header" xml:space="preserve">
+    <value>Display pause rule</value>
+  </data>
+  <data name="Documentation.Header" xml:space="preserve">
+    <value>Documentation</value>
+  </data>
+  <data name="EnterUrl.Header" xml:space="preserve">
+    <value>Enter URL</value>
+  </data>
+  <data name="ExportLogs.Header" xml:space="preserve">
+    <value>Log File</value>
+  </data>
+  <data name="TitleGeneral" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="GifPlayer.Header" xml:space="preserve">
+    <value>Gif player</value>
+  </data>
+  <data name="Help.Label" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="TitleInteraction" xml:space="preserve">
+    <value>Interaction</value>
+  </data>
+  <data name="TitleLibrary" xml:space="preserve">
+    <value>Biblioteek</value>
+  </data>
+  <data name="TitleLivelySetup" xml:space="preserve">
+    <value>Lively Setup</value>
+  </data>
+  <data name="TitleLocation" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="LockscreenPicture.Header" xml:space="preserve">
+    <value>Lockscreen picture</value>
+  </data>
+  <data name="TitleMisc" xml:space="preserve">
+    <value>Misc</value>
+  </data>
+  <data name="TitleMute" xml:space="preserve">
+    <value>Mute</value>
+  </data>
+  <data name="PauseAlgorithm.Header" xml:space="preserve">
+    <value>Pause algorithm</value>
+  </data>
+  <data name="TitlePerformance" xml:space="preserve">
+    <value>Performance</value>
+  </data>
+  <data name="TitlePlaylist" xml:space="preserve">
+    <value>Snitlys</value>
+  </data>
+  <data name="PleaseWait.Text" xml:space="preserve">
+    <value>Wag asseblief</value>
+  </data>
+  <data name="PowerSavingModePower.Header" xml:space="preserve">
+    <value>When on Battery Saver</value>
+  </data>
+  <data name="RemoteDesktopPower.Header" xml:space="preserve">
+    <value>When on Remote Desktop</value>
+  </data>
+  <data name="ReportBug.Header" xml:space="preserve">
+    <value>Rapporteer fout</value>
+  </data>
+  <data name="TitleScalingFit" xml:space="preserve">
+    <value>Skaal/Pas</value>
+  </data>
+  <data name="ControlPanel.Title" xml:space="preserve">
+    <value>Beheer paneel</value>
+  </data>
+  <data name="TitleScreensaver" xml:space="preserve">
+    <value>Screensaver</value>
+  </data>
+  <data name="TitleScreensaverLockOnResume" xml:space="preserve">
+    <value>On resume, display logon screen</value>
+  </data>
+  <data name="TitleSelectFile" xml:space="preserve">
+    <value>Select File</value>
+  </data>
+  <data name="TitleSettings" xml:space="preserve">
+    <value>Instellings</value>
+  </data>
+  <data name="TitleSkipConfirm" xml:space="preserve">
+    <value>Slaan bevestiging oor</value>
+  </data>
+  <data name="SourceCode.Header" xml:space="preserve">
+    <value>Bronkode</value>
+  </data>
+  <data name="Store.Header" xml:space="preserve">
+    <value>Winkel</value>
+    <comment>For different version of Lively, example: Microsoft Store</comment>
+  </data>
+  <data name="StreamWallpaperVideoQuality.Header" xml:space="preserve">
+    <value>Stroom</value>
+  </data>
+  <data name="StreamWallpaperDetect.Header" xml:space="preserve">
+    <value>Bespeur strome</value>
+  </data>
+  <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
+    <value>Video kwaliteit</value>
+  </data>
+  <data name="System.Header" xml:space="preserve">
+    <value>Stelsel</value>
+  </data>
+  <data name="TaskbarTheme.Header" xml:space="preserve">
+    <value>Taakbalk-tema</value>
+  </data>
+  <data name="TitleTileSize" xml:space="preserve">
+    <value>Teël grootte</value>
+  </data>
+  <data name="TitleUIMode" xml:space="preserve">
+    <value>Gebruikerskoppelvlak</value>
+  </data>
+  <data name="TitleUpdates" xml:space="preserve">
+    <value>Opdaterings</value>
+  </data>
+  <data name="TitleVideo" xml:space="preserve">
+    <value>Video</value>
+  </data>
+  <data name="VideoHardwareDecode.Header" xml:space="preserve">
+    <value>GPU dekodeer</value>
+  </data>
+  <data name="TitleWallpaper" xml:space="preserve">
+    <value>Muurpapier</value>
+  </data>
+  <data name="WallpaperDir.Header" xml:space="preserve">
+    <value>Muurpapiergids</value>
+  </data>
+  <data name="WallpaperDirMoveExisting.Content" xml:space="preserve">
+    <value>Skuif bestaande agtergronde na 'n nuwe gids</value>
+  </data>
+  <data name="WallpaperFit.Header" xml:space="preserve">
+    <value>Kies 'n pasvorm</value>
+  </data>
+  <data name="WallpaperInput.Header" xml:space="preserve">
+    <value>Muurpapier-invoer</value>
+  </data>
+  <data name="WallpaperLayout.Header" xml:space="preserve">
+    <value>Plasingsmetode</value>
+  </data>
+  <data name="WallpaperPlaybackGroup.Header" xml:space="preserve">
+    <value>Muurpapier speel</value>
+  </data>
+  <data name="TitleWarning" xml:space="preserve">
+    <value>Waarskuwing</value>
+  </data>
+  <data name="WebBrowser.Header" xml:space="preserve">
+    <value>Webblaaier</value>
+  </data>
+  <data name="WebBrowserDiskCache.Header" xml:space="preserve">
+    <value>Skyfkas</value>
+  </data>
+  <data name="TitleWebBrowserEngine" xml:space="preserve">
+    <value>Enjin</value>
+  </data>
+  <data name="TitleWebpageLoad" xml:space="preserve">
+    <value>Laai webblad</value>
+  </data>
+  <data name="FastUI.Description" xml:space="preserve">
+    <value>Hou die gebruikerskoppelvlak aan die gang vir vinniger opstart</value>
+  </data>
+  <data name="FastUI.Header" xml:space="preserve">
+    <value>Vinnige opstart</value>
+  </data>
+  <data name="WallpaperDirGroup.Header" xml:space="preserve">
+    <value>Lêer</value>
+  </data>
+  <data name="AppThemeDark.Content" xml:space="preserve">
+    <value>Donker</value>
+  </data>
+  <data name="AppThemeLight.Content" xml:space="preserve">
+    <value>Lig</value>
+  </data>
+  <data name="AppThemeSystem.Content" xml:space="preserve">
+    <value>Stelsel</value>
+  </data>
+  <data name="WindowsSettingsColor.Content" xml:space="preserve">
+    <value>Windows color settings</value>
+  </data>
+  <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
+    <value>Laptops</value>
+  </data>
+  <data name="DeveloperGroup.Header" xml:space="preserve">
+    <value>Developer</value>
+  </data>
+  <data name="AppearanceBehaviour.Header" xml:space="preserve">
+    <value>Appearance &amp; behavior</value>
+  </data>
+  <data name="ActiveWallpapers.Label" xml:space="preserve">
+    <value>Aktiewe muurpapier(e)</value>
+  </data>
+  <data name="TitleGallery" xml:space="preserve">
+    <value>Galery</value>
+  </data>
+  <data name="AboutMe.Text" xml:space="preserve">
+    <value>Hallo, ek is Dani John ook bekend as rocksdanister. Ek het Lively 'n gratis en oopbron (FOSS) plakpapiertoepassing ontwikkel. Dankie dat jy die tyd geneem het om na my werk te kyk.</value>
+  </data>
+  <data name="LicenseLink.Content" xml:space="preserve">
+    <value>Sagteware lisensie</value>
+  </data>
+  <data name="AttributionLink.Content" xml:space="preserve">
+    <value>Third party software notice</value>
+  </data>
+  <data name="PrivacyPolicyLink.Content" xml:space="preserve">
+    <value>Data collection policy</value>
+  </data>
+  <data name="AddWallpaperDrop.Text" xml:space="preserve">
+    <value>Add wallpaper</value>
+  </data>
+  <data name="ComingSoon.Text" xml:space="preserve">
+    <value>Kom binnekort</value>
+  </data>
+  <data name="AboutMenu.Text" xml:space="preserve">
+    <value>Oor</value>
+  </data>
+  <data name="SourceWebsite.Text" xml:space="preserve">
+    <value>Webwerf</value>
+  </data>
+  <data name="TextOpen.Content" xml:space="preserve">
+    <value>Maak oop</value>
+  </data>
+  <data name="TextSave.Content" xml:space="preserve">
+    <value>Stoor</value>
+  </data>
+  <data name="UIMode.Description" xml:space="preserve">
+    <value>User interface effects and animations</value>
+  </data>
+  <data name="UIMode.Header" xml:space="preserve">
+    <value>Gebruikerskoppelvlak</value>
+  </data>
+  <data name="UIModeLite.Content" xml:space="preserve">
+    <value>Lite</value>
+  </data>
+  <data name="UIModeNormal.Content" xml:space="preserve">
+    <value>Normaal</value>
+  </data>
+  <data name="Screensaver.Description" xml:space="preserve">
+    <value>Hoe skermbewaarder toegepas word op gekoppelde aan vertoontoestelle</value>
+  </data>
+  <data name="Screensaver.Header" xml:space="preserve">
+    <value>Type of screensaver</value>
+  </data>
+  <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
+    <value>Configured separately</value>
+  </data>
+  <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
+    <value>Dieselfde as lopende plakpapier</value>
+  </data>
+  <data name="ScreensaverPlugin.Title" xml:space="preserve">
+    <value>Plugin required</value>
+  </data>
+  <data name="ScreensaverPluginMessage.Text" xml:space="preserve">
+    <value>Eenmalige opstelling is nodig om skermbewaarder te laat loop</value>
+  </data>
+  <data name="WallpaperLayoutScreenPicker.Content" xml:space="preserve">
+    <value>Kies altyd skerm wanneer u muurpapier kies</value>
+  </data>
+  <data name="GalleryAccount.Text" xml:space="preserve">
+    <value>Rekening</value>
+  </data>
+  <data name="GalleryAccountDelete.Content" xml:space="preserve">
+    <value>Skrap rekening</value>
+  </data>
+  <data name="GalleryAccountExport.Content" xml:space="preserve">
+    <value>Voer data uit</value>
+  </data>
+  <data name="GalleryAccountLogin.Content" xml:space="preserve">
+    <value>Teken aan</value>
+  </data>
+  <data name="GalleryAccountLogout.Content" xml:space="preserve">
+    <value>Teken uit</value>
+  </data>
+  <data name="GalleryPageCollection.Content" xml:space="preserve">
+    <value>Versameling</value>
+  </data>
+  <data name="GalleryPageHome.Content" xml:space="preserve">
+    <value>Tuis</value>
+  </data>
+  <data name="GalleryPageManage.Content" xml:space="preserve">
+    <value>Bestuur</value>
+  </data>
+  <data name="GalleryPageProfile.Content" xml:space="preserve">
+    <value>Profiel</value>
+  </data>
+  <data name="GalleryPleaseLogin.Text" xml:space="preserve">
+    <value>Meld asseblief aan om voort te gaan</value>
+  </data>
+  <data name="GalleryWelcomeMessage.Text" xml:space="preserve">
+    <value>Hi</value>
+  </data>
+  <data name="RestoreWallpaper.Text" xml:space="preserve">
+    <value>Ons het hierdie agtergronde in jou rekening gevind</value>
+  </data>
+  <data name="TextDownloadNow.Content" xml:space="preserve">
+    <value>Laai nou af</value>
+  </data>
+  <data name="TextMaybeLater.Content" xml:space="preserve">
+    <value>Miskien later</value>
+  </data>
+  <data name="TextSelectAll.Content" xml:space="preserve">
+    <value>Kies alles</value>
+  </data>
+  <data name="TextSelectNone.Content" xml:space="preserve">
+    <value>Kies geen</value>
+  </data>
+  <data name="TitleWelcomeback.Text" xml:space="preserve">
+    <value>Welkom terug!</value>
+  </data>
+  <data name="ReportWallpaper.Header" xml:space="preserve">
+    <value>Redes</value>
+  </data>
+  <data name="ReportWallpaperCopyright.Content" xml:space="preserve">
+    <value>Kopieregskending</value>
+  </data>
+  <data name="ReportWallpaperMisleading.Content" xml:space="preserve">
+    <value>Misleidende inligting</value>
+  </data>
+  <data name="ReportWallpaperOther.Content" xml:space="preserve">
+    <value>Ander</value>
+  </data>
+  <data name="ReportWallpaperSpam.Content" xml:space="preserve">
+    <value>Gemorspos</value>
+  </data>
+  <data name="ReportWallpaperViolence.Content" xml:space="preserve">
+    <value>Naaktheid of geweld</value>
+  </data>
+  <data name="TextAdditionalNotes.Text" xml:space="preserve">
+    <value>Bykomende notas</value>
+  </data>
+  <data name="TextReportWallpaper.Text" xml:space="preserve">
+    <value>Rapporteer</value>
+  </data>
+  <data name="TitleReportWallpaper.Text" xml:space="preserve">
+    <value>Rapporteer muurpapier</value>
+  </data>
+  <data name="Send.Content" xml:space="preserve">
+    <value>Stuur</value>
+  </data>
+  <data name="GalleryAccountDeleteConfirm.Text" xml:space="preserve">
+    <value>Bevestig asseblief hierdie handeling, want dit KAN NIE ontdoen word nie</value>
+  </data>
+  <data name="GalleryAccountDeleteFail.Text" xml:space="preserve">
+    <value>Kon nie rekening uitvee nie, probeer asseblief later weer</value>
+  </data>
+  <data name="TextConfirmCancel.Text" xml:space="preserve">
+    <value>Wil jy dit kanselleer?</value>
+  </data>
+  <data name="TextWait.Text" xml:space="preserve">
+    <value>Wag</value>
+  </data>
+  <data name="TitleDownloadProgress.Text" xml:space="preserve">
+    <value>Aflaai aan die gang</value>
+  </data>
+  <data name="TextContributors.Text" xml:space="preserve">
+    <value>Bydraers</value>
+  </data>
+  <data name="TextShare.Text" xml:space="preserve">
+    <value>Deel</value>
+  </data>
+  <data name="TitleShareWallpaper.Text" xml:space="preserve">
+    <value>Deel muurpapier</value>
+  </data>
+  <data name="ExportWallpaperGallery.Text" xml:space="preserve">
+    <value>Galery oplaai</value>
+  </data>
+  <data name="ExportWallpaperLink.Text" xml:space="preserve">
+    <value>Kopieer skakel</value>
+  </data>
+  <data name="TextCustomiseWallpaper" xml:space="preserve">
+    <value>Pas muurpapier aan</value>
+  </data>
+  <data name="TextCloseWallpapers" xml:space="preserve">
+    <value>Maak agtergronde toe</value>
+  </data>
+  <data name="TitleChooseApplication.Text" xml:space="preserve">
+    <value>Kies Toepassing</value>
+  </data>
+  <data name="WallpaperInstallSize.Text" xml:space="preserve">
+    <value>Grootte</value>
+  </data>
+  <data name="PluginNotFound.Message" xml:space="preserve">
+    <value>Installeer asseblief die vereiste inprop</value>
+  </data>
+  <data name="PluginNotFound.Title" xml:space="preserve">
+    <value>Inprop nie gevind nie</value>
+  </data>
+  <data name="UpdateCompleted.Text" xml:space="preserve">
+    <value>Opdatering voltooi</value>
+  </data>
+  <data name="UpdateWhatsNew.Text" xml:space="preserve">
+    <value>Kyk wat is nuut</value>
+  </data>
+  <data name="AppThemeColor.Header" xml:space="preserve">
+    <value>Kleur</value>
+  </data>
+  <data name="DescriptionDefault.Text" xml:space="preserve">
+    <value>Gebruik stelsel verstek</value>
+  </data>
+  <data name="DescriptionDynamicTheme.Text" xml:space="preserve">
+    <value>Pas aan by muurpapier</value>
+  </data>
+  <data name="TextDefault.Text" xml:space="preserve">
+    <value>Verstek</value>
+  </data>
+  <data name="TextDynamicTheme.Text" xml:space="preserve">
+    <value>Dinamies</value>
+  </data>
+  <data name="Theme.Label" xml:space="preserve">
+    <value>Tema</value>
+  </data>
+  <data name="IconsHidden.Message" xml:space="preserve">
+    <value>Om toevallige seleksie te voorkom, word werkskermikone tans versteek</value>
+  </data>
+  <data name="IconsHidden.Title" xml:space="preserve">
+    <value>Desktop ikone</value>
+  </data>
+  <data name="TextEndOfItems.Text" xml:space="preserve">
+    <value>Dit is al vir nou..</value>
+  </data>
+</root>

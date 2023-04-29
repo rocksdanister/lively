@@ -1,0 +1,1175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AudioFocused.Content" xml:space="preserve">
+    <value>Afspil kun lyd, når skrivebordet er fokuseret</value>
+  </data>
+  <data name="Audio.Description" xml:space="preserve">
+    <value>Volumenniveau for alle baggrunde</value>
+  </data>
+  <data name="Audio.Header" xml:space="preserve">
+    <value>Lydstyrke</value>
+  </data>
+  <data name="AudioGroup.Header" xml:space="preserve">
+    <value>Lyd</value>
+  </data>
+  <data name="Community.Description" xml:space="preserve">
+    <value>Online diskussionsforum</value>
+  </data>
+  <data name="Documentation.Description" xml:space="preserve">
+    <value>API dokumentation og hjælp</value>
+  </data>
+  <data name="DescExplorerCrash" xml:space="preserve">
+    <value>Livligt er stødt på en fatal fejl.
+
+Windows Explorer genstartet to gange i de sidste 30 sekunder! Dette kan være en konflikt mellem Lively og anden desktop tilpasning software eller Windows. For at undgå yderligere problemer, alle baggrunde afsluttes.</value>
+  </data>
+  <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
+    <value>Inkompatibelt program fundet, proceslinje tema deaktiveret</value>
+  </data>
+  <data name="Website.Description" xml:space="preserve">
+    <value>Officiel hjemmeside af Lively Wallpaper</value>
+  </data>
+  <data name="DescOledScreensaverNotice" xml:space="preserve">
+    <value>De fleste moderne LCD og LED-skærme ikke lider af burn-in problem, og derfor enhver tapet kan bruges som screensaver.
+
+For OLED, Plasma eller CRT skærme, som er tilbøjelige til at brænde i det rådes til at bruge tapet med regelmæssig bevægelse og en samlet mørk tema, som formodes at afbøde forbrænding, men denne funktion er uprøvet og dens effektivitet kan ikke garanteres.
+
+Hovedformålet med Lively's screensavers er at tilføje endnu et lag af tilpasning til din pc, bruge screensavers som burn-in beskyttelse på din egen risiko!</value>
+  </data>
+  <data name="ReportBug.Description" xml:space="preserve">
+    <value>Rapporter et problem med programmet</value>
+  </data>
+  <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
+    <value>Vælg en fil</value>
+  </data>
+  <data name="DescriptionAppRules" xml:space="preserve">
+    <value>Wallpaper playback behaviour based on running application</value>
+  </data>
+  <data name="DescriptionCancelQuestion" xml:space="preserve">
+    <value>Er du sikker på at du vil annullere?</value>
+  </data>
+  <data name="DescriptionDeleteConfirmation" xml:space="preserve">
+    <value>Er du sikker på, at du vil permanent slette dette baggrundsbillede fra biblioteket?</value>
+  </data>
+  <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
+    <value>Er du sikker på, at du vil slette dette baggrundsbillede fra biblioteket?</value>
+  </data>
+  <data name="DragDropFile.Text" xml:space="preserve">
+    <value>Du skal blot trække og slippe filer ind her</value>
+  </data>
+  <data name="DescriptionExternalAppWarning" xml:space="preserve">
+    <value>Du åbner et eksternt program som baggrund.
+Ondsindede programmer kan være vært malware, virus. og gør skade på dit system.
+Kun fortsætte, hvis denne applikation kommer fra en pålidelig kilde.</value>
+  </data>
+  <data name="MinimizedTray.Text" xml:space="preserve">
+    <value>Lively er minimeret til systembakke, højreklik Lively ikon for at fortsætte.</value>
+  </data>
+  <data name="DescriptionPleaseRestartLively" xml:space="preserve">
+    <value>Genstart venligst Lively for at indstillingerne kan træde i kraft</value>
+  </data>
+  <data name="DescriptionPleaseStop" xml:space="preserve">
+    <value>Stop inden du fortsætter</value>
+  </data>
+  <data name="DescriptionRecordStart" xml:space="preserve">
+    <value>Tryk for at begynde optagelse</value>
+  </data>
+  <data name="DescriptionRestoringWallpaper" xml:space="preserve">
+    <value>I øjeblikket gendanner tidligere baggrundsbilleder, Vent venligst...</value>
+  </data>
+  <data name="DescriptionScreenLayout" xml:space="preserve">
+    <value>Vælg Skærm</value>
+  </data>
+  <data name="DescriptionUpdateAvailable" xml:space="preserve">
+    <value>En ny version af software er tilgængelig!</value>
+  </data>
+  <data name="DescriptionWebpageLoad" xml:space="preserve">
+    <value>Enter website link to load, shadertoy.com shader links are supported</value>
+  </data>
+  <data name="DescriptionWelcomeWizard" xml:space="preserve">
+    <value>Denne guide vil få dig i gang med opsætning af Lively</value>
+  </data>
+  <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
+    <value>Din Windows N/KN version vil kræve download af yderligere codecs til at understøtte videoafspilning i baggrunde</value>
+  </data>
+  <data name="DescSupperDev" xml:space="preserve">
+    <value>Vis support ved at købe udviklerkaffe</value>
+  </data>
+  <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
+    <value>Du er ved at ændre til beta (udvikler) build af Lively.
+Opdateringer vil være hyppige og kan indeholde fejl!</value>
+  </data>
+  <data name="HideSysTray.Description" xml:space="preserve">
+    <value>Synlighed af statusikon, lively vil fortsætte med at køre med ikonet skjult</value>
+  </data>
+  <data name="HideSysTray.Header" xml:space="preserve">
+    <value>Ikon I Systembakken</value>
+  </data>
+  <data name="Language.Description" xml:space="preserve">
+    <value>Livligt vil genstarte for at anvende det nye sprog</value>
+  </data>
+  <data name="Language.Header" xml:space="preserve">
+    <value>Sprog</value>
+  </data>
+  <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
+    <value>Mislykkedes at opdatere; prøv at downloade installationsprogrammet fra:
+https://github.com/rocksdanister/lively/releases</value>
+  </data>
+  <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
+    <value>Beskadiget baggrundsfil, prøv at downloade igen</value>
+  </data>
+  <data name="LivelyExceptionGeneral" xml:space="preserve">
+    <value>Ups... Ser ud som om noget gik galt :(
+For bedre at forstå denne fejl og løse problemet, del logfilen med udvikleren.
+Instruktioner til deling af logfil:
+https://github.com/rocksdanister/lively/wiki</value>
+  </data>
+  <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
+    <value>Lively kan ikke fungere korrekt med Windows High Contrast mode aktiveret!
+Deaktivér High Contrast mode og prøv igen</value>
+  </data>
+  <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
+    <value>Media playback failed :(
+Try changing the videoplayer in lively settings.
+
+In order to better understand this error and fix the issue, share the log file with the developer.
+Instructions for sharing log file:
+https://github.com/rocksdanister/lively/wiki</value>
+  </data>
+  <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
+    <value>Ikke en lively baggrundsfil</value>
+  </data>
+  <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
+    <value>Lively blev ikke lukket korrekt, starter i fejlsikret tilstand.
+Ønsker du at gendanne tidligere kørende baggrundsbilleder?</value>
+  </data>
+  <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
+    <value>Det ser ud til at nogle indstillinger skal indstilles til at gøre Lively virker:  
+1. Tryk på Win + R-tasterne for at åbne Kør, 
+2. Type SystemPropertiesPerformance.exe ind i Kør, klik på "OK" for at åbne indstillinger for ydeevne.
+3. Aktiver/Check "Animér kontroller og elementer inde i vinduer" (Hvis allerede markeret, så fjern markering og kontrol) &amp; Anvend.
+4. Klik på "Anvend" og tryk derefter på "OK" for at lukke vinduet.
+
+Hvis Windows 7 bare indstillet - Justere for bedste udseende &amp; Anvende.
+Hvis det stadig ikke virker, luk &amp; start livligt igen/genstart vinduer.
+(virker ikke i nogle insider windows 10 byggere)</value>
+  </data>
+  <data name="Startup.Description" xml:space="preserve">
+    <value>Lively skal køre i baggrunden for at afspille baggrunden</value>
+  </data>
+  <data name="Startup.Header" xml:space="preserve">
+    <value>Start med Windows</value>
+  </data>
+  <data name="TextAdd" xml:space="preserve">
+    <value>Tilføj</value>
+  </data>
+  <data name="TextAllFiles" xml:space="preserve">
+    <value>Alle Filer</value>
+  </data>
+  <data name="Application.Header" xml:space="preserve">
+    <value>Applikation</value>
+  </data>
+  <data name="Attribution.Header" xml:space="preserve">
+    <value>Kreditering</value>
+  </data>
+  <data name="Author.Text" xml:space="preserve">
+    <value>Udsteder</value>
+  </data>
+  <data name="TextBack" xml:space="preserve">
+    <value>Tilbage</value>
+  </data>
+  <data name="TextBrowse" xml:space="preserve">
+    <value>Gennemse</value>
+  </data>
+  <data name="Cancel.Content" xml:space="preserve">
+    <value>Annuller</value>
+  </data>
+  <data name="TextChangeWallpaper" xml:space="preserve">
+    <value>Skift baggrundsbillede</value>
+  </data>
+  <data name="TextClose" xml:space="preserve">
+    <value>Luk</value>
+  </data>
+  <data name="CloseWallpapers.Label" xml:space="preserve">
+    <value>Luk</value>
+  </data>
+  <data name="TextCompleted" xml:space="preserve">
+    <value>Fuldført!</value>
+  </data>
+  <data name="ControlPanel.Subtitle" xml:space="preserve">
+    <value>Klik her for at administrere baggrunde</value>
+  </data>
+  <data name="TextConvertVideo" xml:space="preserve">
+    <value>Konverter til video</value>
+  </data>
+  <data name="TextCreatePreview" xml:space="preserve">
+    <value>Opret Forhåndsvisning</value>
+  </data>
+  <data name="Customise.Text" xml:space="preserve">
+    <value>Tilpas</value>
+  </data>
+  <data name="CustomiseWallpaper.Label" xml:space="preserve">
+    <value>Tilpas</value>
+  </data>
+  <data name="DeleteWallpaper.Text" xml:space="preserve">
+    <value>Slet</value>
+  </data>
+  <data name="Description.Text" xml:space="preserve">
+    <value>Beskriveslse</value>
+  </data>
+  <data name="DisplayPauseRuleAllScreen.Content" xml:space="preserve">
+    <value>Alle skærm(e)</value>
+  </data>
+  <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
+    <value>Per skærm</value>
+  </data>
+  <data name="TextDownload" xml:space="preserve">
+    <value>Hent</value>
+  </data>
+  <data name="EditWallpaper.Text" xml:space="preserve">
+    <value>Rediger</value>
+  </data>
+  <data name="TextError" xml:space="preserve">
+    <value>Fejl</value>
+  </data>
+  <data name="TextExit" xml:space="preserve">
+    <value>Luk</value>
+  </data>
+  <data name="ExportWallpaperZip.Text" xml:space="preserve">
+    <value>Gem i fil</value>
+  </data>
+  <data name="TextFeatureMissing" xml:space="preserve">
+    <value>Nogle funktioner er ikke tilgængelige i denne version af Lively</value>
+  </data>
+  <data name="TextFileNotFound" xml:space="preserve">
+    <value>Fil ikke fundet</value>
+  </data>
+  <data name="TextGIF" xml:space="preserve">
+    <value>Animeret GIF</value>
+  </data>
+  <data name="SourceCode.Description" xml:space="preserve">
+    <value>Vis noget kærlighed ved at give en stjerne</value>
+  </data>
+  <data name="TextGo" xml:space="preserve">
+    <value>GO</value>
+  </data>
+  <data name="TextHelpTranslate.Title" xml:space="preserve">
+    <value>Hjælp med oversættelse</value>
+  </data>
+  <data name="TextHours" xml:space="preserve">
+    <value>time(r)</value>
+  </data>
+  <data name="TextInstall" xml:space="preserve">
+    <value>Installer</value>
+  </data>
+  <data name="TextKeyboard.Content" xml:space="preserve">
+    <value>Tastatur</value>
+  </data>
+  <data name="TextLastChecked" xml:space="preserve">
+    <value>Sidst kontrolleret</value>
+  </data>
+  <data name="TextLearnMore.Text" xml:space="preserve">
+    <value>Lær mere</value>
+  </data>
+  <data name="License.Header" xml:space="preserve">
+    <value>Licens</value>
+  </data>
+  <data name="TextMinutes" xml:space="preserve">
+    <value>minut(ter)</value>
+  </data>
+  <data name="TextmoreInfo" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="TextMoreWallpapers" xml:space="preserve">
+    <value>Flere Baggrundsbilleder</value>
+  </data>
+  <data name="TextMouse.Content" xml:space="preserve">
+    <value>Mus</value>
+  </data>
+  <data name="MouseInteractOnDesktop.Content" xml:space="preserve">
+    <value>Mus interaktion ved applikation fokuseret</value>
+  </data>
+  <data name="TextNext" xml:space="preserve">
+    <value>Næste</value>
+  </data>
+  <data name="TextNo" xml:space="preserve">
+    <value>Nej</value>
+  </data>
+  <data name="TextOff.Content" xml:space="preserve">
+    <value>Fra</value>
+  </data>
+  <data name="TextOK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="TextOn.Content" xml:space="preserve">
+    <value>Til</value>
+  </data>
+  <data name="TextOnline" xml:space="preserve">
+    <value>Online</value>
+  </data>
+  <data name="TextOpenLively" xml:space="preserve">
+    <value>Åben Lively</value>
+  </data>
+  <data name="PauseAlgorithmTypeAllProcess.Content" xml:space="preserve">
+    <value>Alle processer</value>
+  </data>
+  <data name="PauseAlgorithmTypeExclusiveMode.Content" xml:space="preserve">
+    <value>Direct3D</value>
+  </data>
+  <data name="PauseAlgorithmTypeForegroundProcess.Content" xml:space="preserve">
+    <value>Forgrund proces</value>
+  </data>
+  <data name="TextPauseWallpapers" xml:space="preserve">
+    <value>Pause Baggrunde</value>
+  </data>
+  <data name="TextPerformanceKill.Content" xml:space="preserve">
+    <value>Dræb</value>
+  </data>
+  <data name="TextPerformanceNone.Content" xml:space="preserve">
+    <value>Ingenting</value>
+  </data>
+  <data name="TextPerformancePause.Content" xml:space="preserve">
+    <value>Pause</value>
+  </data>
+  <data name="TextPicture" xml:space="preserve">
+    <value>Billede</value>
+  </data>
+  <data name="PreviewWallpaper.Text" xml:space="preserve">
+    <value>Forhåndsvisning</value>
+  </data>
+  <data name="PrivacyPolicy.Header" xml:space="preserve">
+    <value>Fortrolighedspolitik</value>
+  </data>
+  <data name="TextProcessingWallpaper" xml:space="preserve">
+    <value>Behandler</value>
+  </data>
+  <data name="TextRemove" xml:space="preserve">
+    <value>Fjern</value>
+  </data>
+  <data name="TextRule" xml:space="preserve">
+    <value>Regel</value>
+  </data>
+  <data name="TextScreen" xml:space="preserve">
+    <value>Skærm</value>
+  </data>
+  <data name="TextSearch" xml:space="preserve">
+    <value>Søg</value>
+  </data>
+  <data name="SetWallpaper.Text" xml:space="preserve">
+    <value>Sæt som baggrundsbillede</value>
+  </data>
+  <data name="ShowOnDisk.Text" xml:space="preserve">
+    <value>Åbn filplacering</value>
+  </data>
+  <data name="WallpaperSource.Text" xml:space="preserve">
+    <value>Kilde</value>
+  </data>
+  <data name="TextStart" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="TextStop" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="StoreReview.Content" xml:space="preserve">
+    <value>Kan du lide at bruge Lively? Efterlad en anmeldelse :)</value>
+  </data>
+  <data name="TextSupport.Content" xml:space="preserve">
+    <value>Support</value>
+  </data>
+  <data name="TextSwitchBranchDev" xml:space="preserve">
+    <value>Skift til beta (Dev kanal)</value>
+  </data>
+  <data name="TextSwitchBranchOfficial" xml:space="preserve">
+    <value>Skift til stabil (Standard kanal)</value>
+  </data>
+  <data name="TextTags" xml:space="preserve">
+    <value>Etiketter</value>
+  </data>
+  <data name="TaskbarThemeBlur.Content" xml:space="preserve">
+    <value>Sløring</value>
+  </data>
+  <data name="TaskbarThemeClear.Content" xml:space="preserve">
+    <value>Ryd</value>
+  </data>
+  <data name="TaskbarThemeColor.Content" xml:space="preserve">
+    <value>Farver</value>
+  </data>
+  <data name="TaskbarThemeFluent.Content" xml:space="preserve">
+    <value>Flydende</value>
+  </data>
+  <data name="TaskbarThemeWallpaper.Content" xml:space="preserve">
+    <value>Baggrund</value>
+  </data>
+  <data name="TaskbarThemeWallpaperFluent.Content" xml:space="preserve">
+    <value>Baggrund Flydende</value>
+  </data>
+  <data name="TextTileSizeLarge" xml:space="preserve">
+    <value>Large</value>
+  </data>
+  <data name="TextTileSizeNormal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="TextTileSizeSmall" xml:space="preserve">
+    <value>Small</value>
+  </data>
+  <data name="Title.Text" xml:space="preserve">
+    <value>Titel</value>
+  </data>
+  <data name="TextUIHeadless" xml:space="preserve">
+    <value>Headless</value>
+  </data>
+  <data name="TextUILite" xml:space="preserve">
+    <value>Lite</value>
+  </data>
+  <data name="TextUINormal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="TextUnsupportedFile" xml:space="preserve">
+    <value>Filformatet understøttes ikke</value>
+  </data>
+  <data name="TextUpdateAvailable" xml:space="preserve">
+    <value>Opdatering tilgængelig!</value>
+  </data>
+  <data name="TextUpdateCheck" xml:space="preserve">
+    <value>Søg efter opdatering</value>
+  </data>
+  <data name="TextupdateCheckFail" xml:space="preserve">
+    <value>Kunne ikke tjekke for opdateringer</value>
+  </data>
+  <data name="TextUpdateChecking" xml:space="preserve">
+    <value>Søg efter opdateringer</value>
+  </data>
+  <data name="TextUpdateUptodate" xml:space="preserve">
+    <value>Programmet er opdateret!</value>
+  </data>
+  <data name="TextVideo" xml:space="preserve">
+    <value>Video</value>
+  </data>
+  <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
+    <value>Indtast valgfrie kommandolinjeargumenter</value>
+  </data>
+  <data name="WallpaperFitFill.Content" xml:space="preserve">
+    <value>Fyld</value>
+  </data>
+  <data name="WallpaperFitNone.Content" xml:space="preserve">
+    <value>Ingen</value>
+  </data>
+  <data name="WallpaperFitUniform.Content" xml:space="preserve">
+    <value>Uniform</value>
+  </data>
+  <data name="WallpaperFitUniformToFill.Content" xml:space="preserve">
+    <value>Uniform Fyld</value>
+  </data>
+  <data name="WallpaperLayoutDuplicate.Content" xml:space="preserve">
+    <value>Dupliker samme baggrund</value>
+  </data>
+  <data name="WallpaperLayoutPerScreen.Content" xml:space="preserve">
+    <value>Kun valgt skærme</value>
+  </data>
+  <data name="WallpaperLayoutSpan.Content" xml:space="preserve">
+    <value>Span på tværs af skærme</value>
+  </data>
+  <data name="WallpaperType.Text" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="Website.Header" xml:space="preserve">
+    <value>Webside</value>
+  </data>
+  <data name="TextWebStream" xml:space="preserve">
+    <value>Web Stream</value>
+  </data>
+  <data name="TextWelcome" xml:space="preserve">
+    <value>Velkommen</value>
+  </data>
+  <data name="TextYes" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="VideoPlayer.Header" xml:space="preserve">
+    <value>Videoafspiller</value>
+  </data>
+  <data name="AddWallpaperFileBrowse.Description" xml:space="preserve">
+    <value>Sæt alle understøttede filtyper som baggrund</value>
+  </data>
+  <data name="EnterUrl.Description" xml:space="preserve">
+    <value>Angiv websiden for den URL du indtastede som baggrund</value>
+  </data>
+  <data name="AppFocus.Description" xml:space="preserve">
+    <value>Indstil hvad der skal gøres, når et program er i fokus</value>
+  </data>
+  <data name="AppFullScreen.Description" xml:space="preserve">
+    <value>Indstil hvad der skal gøres, når fuldskærmsspil/-programmer kører</value>
+  </data>
+  <data name="AppRules.Description" xml:space="preserve">
+    <value>Sæt baggrundsbillede på pause, når du kører disse programmer</value>
+  </data>
+  <data name="TipAppTheme" xml:space="preserve">
+    <value>Lively tilpasser sig til systemtemaindstillinger, for at ændre udseende goto</value>
+  </data>
+  <data name="BatteryPower.Description" xml:space="preserve">
+    <value>Skift afspilning, når AC strømmen afbrydes</value>
+  </data>
+  <data name="BrowserDebuggingPort.Description" xml:space="preserve">
+    <value>Indtast porten for fejlfinding på webside baggrundsbilleder; naviger når du er klar til at navigere til http://localhost:portnumber for at få adgang til udviklerkonsol</value>
+  </data>
+  <data name="Debug.Description" xml:space="preserve">
+    <value>Vis udvikler menu</value>
+  </data>
+  <data name="DesktopPicture.Description" xml:space="preserve">
+    <value>Angiv et billede af animeret baggrund som skrivebordsbaggrund</value>
+  </data>
+  <data name="DisplayPauseRule.Description" xml:space="preserve">
+    <value>Pause baggrund på alle skærme eller kun skærmen, hvor applikationen er fokuseret</value>
+  </data>
+  <data name="ExportLogs.Description" xml:space="preserve">
+    <value>Opret lograpport fil</value>
+  </data>
+  <data name="GifPlayer.Description" xml:space="preserve">
+    <value>Vælg den afspiller der bruges til gif baggrund</value>
+  </data>
+  <data name="TipLivelySetupOnClose" xml:space="preserve">
+    <value>Afslut opsætningen for at fortsætte</value>
+  </data>
+  <data name="LockscreenPicture.Description" xml:space="preserve">
+    <value>Angiv et billede af den animerede baggrund som låse skærm baggrund</value>
+  </data>
+  <data name="PauseAlgorithm.Description" xml:space="preserve">
+    <value>Baggrunds pause algoritme</value>
+  </data>
+  <data name="PowerSavingModePower.Description" xml:space="preserve">
+    <value>Skift afspilning, når Windows Strømbesparende tilstand er aktiveret</value>
+  </data>
+  <data name="RemoteDesktopPower.Description" xml:space="preserve">
+    <value>Skift afspilning når en fjernskrivebordssession køres</value>
+  </data>
+  <data name="TipScreensaver" xml:space="preserve">
+    <value>Efter inaktivitet periode bruge den aktuelle baggrund som din screensaver</value>
+  </data>
+  <data name="StreamWallpaperDetect.Description" xml:space="preserve">
+    <value>Hvis understøttet video-stream link detekteres, skal du bruge videoafspilleren i stedet for at indlæse websiden</value>
+  </data>
+  <data name="StreamWallpaperVideoQuality.Description" xml:space="preserve">
+    <value>Vælg den ønskede videokvalitet til online streams</value>
+  </data>
+  <data name="TipSwitchSoftwareBranch" xml:space="preserve">
+    <value>Skift software frigivelse fra beta til stabil eller omvendt</value>
+  </data>
+  <data name="TaskbarTheme.Description" xml:space="preserve">
+    <value>Skift systemopgavelinjens udseende</value>
+  </data>
+  <data name="TipTileSize" xml:space="preserve">
+    <value>Størrelse af baggrund tiles i Bibliotek</value>
+  </data>
+  <data name="TipUIMode" xml:space="preserve">
+    <value>For low-end systems select Lite mode</value>
+  </data>
+  <data name="VideoHardwareDecode.Description" xml:space="preserve">
+    <value>Brug hardwareacceleration, når det er muligt</value>
+  </data>
+  <data name="VideoPlayer.Description" xml:space="preserve">
+    <value>Vælg den afspiller der bruges til video baggrund</value>
+  </data>
+  <data name="WallpaperDir.Description" xml:space="preserve">
+    <value>Sti der bruges til at gemme baggrundsfiler</value>
+  </data>
+  <data name="WallpaperFit.Description" xml:space="preserve">
+    <value>Baggrund skalerings algoritme</value>
+  </data>
+  <data name="WallpaperInput.Description" xml:space="preserve">
+    <value>Vælg måder at interagere med baggrund</value>
+  </data>
+  <data name="WallpaperLayout.Description" xml:space="preserve">
+    <value>Hvordan baggrund anvendes på tilsluttede skærmenheder</value>
+  </data>
+  <data name="TipWallpaperPlayback" xml:space="preserve">
+    <value>Sæt baggrundsafspilning på pause, når skrivebordet ikke er fokuseret</value>
+  </data>
+  <data name="WebBrowserDiskCache.Description" xml:space="preserve">
+    <value>Opbevar midlertidige filer på disken i stedet for hukommelse</value>
+  </data>
+  <data name="WebBrowser.Description" xml:space="preserve">
+    <value>Vælg den afspiller der bruges til html baggrund</value>
+  </data>
+  <data name="About.Label" xml:space="preserve">
+    <value>Om</value>
+  </data>
+  <data name="AddWallpaper.Label" xml:space="preserve">
+    <value>Tilføj baggrund</value>
+  </data>
+  <data name="AppFocus.Header" xml:space="preserve">
+    <value>Programmer fokuseret</value>
+  </data>
+  <data name="AppFullScreen.Header" xml:space="preserve">
+    <value>Programmer fuldskærm</value>
+  </data>
+  <data name="TitleAppName" xml:space="preserve">
+    <value>Lively Wallpaper</value>
+  </data>
+  <data name="AppRules.Header" xml:space="preserve">
+    <value>Program Regler</value>
+  </data>
+  <data name="AppTheme.Header" xml:space="preserve">
+    <value>Tema</value>
+  </data>
+  <data name="TitleAudioPlayOnScreen" xml:space="preserve">
+    <value>Afspil lyd på skærmen</value>
+  </data>
+  <data name="BatteryPower.Header" xml:space="preserve">
+    <value>Når du er på batteri</value>
+  </data>
+  <data name="TitleBrowseFile" xml:space="preserve">
+    <value>Søg efter video, gif, webside... fil til at indstille som baggrund</value>
+  </data>
+  <data name="BrowserDebuggingPort.Header" xml:space="preserve">
+    <value>Fejlfinding port</value>
+  </data>
+  <data name="TitleChangelog" xml:space="preserve">
+    <value>Ændringslog</value>
+  </data>
+  <data name="Community.Header" xml:space="preserve">
+    <value>Fællesskab</value>
+  </data>
+  <data name="Debug.Header" xml:space="preserve">
+    <value>Fejlsøgning</value>
+  </data>
+  <data name="TitleDeleteConfirmation" xml:space="preserve">
+    <value>Bekræft sletning</value>
+  </data>
+  <data name="DesktopPicture.Header" xml:space="preserve">
+    <value>Skrivebordsbillede</value>
+  </data>
+  <data name="DisplayPauseRule.Header" xml:space="preserve">
+    <value>Vis pause regel</value>
+  </data>
+  <data name="Documentation.Header" xml:space="preserve">
+    <value>Dokumentation</value>
+  </data>
+  <data name="EnterUrl.Header" xml:space="preserve">
+    <value>Indtast URL</value>
+  </data>
+  <data name="ExportLogs.Header" xml:space="preserve">
+    <value>Log Fil</value>
+  </data>
+  <data name="TitleGeneral" xml:space="preserve">
+    <value>Generelt</value>
+  </data>
+  <data name="GifPlayer.Header" xml:space="preserve">
+    <value>Gif afspiller</value>
+  </data>
+  <data name="Help.Label" xml:space="preserve">
+    <value>Hjælp</value>
+  </data>
+  <data name="TitleInteraction" xml:space="preserve">
+    <value>Interaktion</value>
+  </data>
+  <data name="TitleLibrary" xml:space="preserve">
+    <value>Bibliotek</value>
+  </data>
+  <data name="TitleLivelySetup" xml:space="preserve">
+    <value>Lively Opsætning</value>
+  </data>
+  <data name="TitleLocation" xml:space="preserve">
+    <value>Lokation</value>
+  </data>
+  <data name="LockscreenPicture.Header" xml:space="preserve">
+    <value>Låseskærm billede</value>
+  </data>
+  <data name="TitleMisc" xml:space="preserve">
+    <value>Diverse</value>
+  </data>
+  <data name="TitleMute" xml:space="preserve">
+    <value>Lyd fra</value>
+  </data>
+  <data name="PauseAlgorithm.Header" xml:space="preserve">
+    <value>Pause algoritme</value>
+  </data>
+  <data name="TitlePerformance" xml:space="preserve">
+    <value>Ydeevne</value>
+  </data>
+  <data name="TitlePlaylist" xml:space="preserve">
+    <value>Afspilningsliste</value>
+  </data>
+  <data name="PleaseWait.Text" xml:space="preserve">
+    <value>Vent venligst</value>
+  </data>
+  <data name="PowerSavingModePower.Header" xml:space="preserve">
+    <value>Når batterisparer er aktiveret</value>
+  </data>
+  <data name="RemoteDesktopPower.Header" xml:space="preserve">
+    <value>Når på fjernskrivebord</value>
+  </data>
+  <data name="ReportBug.Header" xml:space="preserve">
+    <value>Rapporter fejl</value>
+  </data>
+  <data name="TitleScalingFit" xml:space="preserve">
+    <value>Skalering/Tilpas</value>
+  </data>
+  <data name="ControlPanel.Title" xml:space="preserve">
+    <value>Kontrolpanel</value>
+  </data>
+  <data name="TitleScreensaver" xml:space="preserve">
+    <value>Pauseskærm</value>
+  </data>
+  <data name="TitleScreensaverLockOnResume" xml:space="preserve">
+    <value>Ved genoptagelse, vis login skærm</value>
+  </data>
+  <data name="TitleSelectFile" xml:space="preserve">
+    <value>Vælg fil</value>
+  </data>
+  <data name="TitleSettings" xml:space="preserve">
+    <value>Indstillinger</value>
+  </data>
+  <data name="TitleSkipConfirm" xml:space="preserve">
+    <value>Spring Bekræftelse Over</value>
+  </data>
+  <data name="SourceCode.Header" xml:space="preserve">
+    <value>Kildekode</value>
+  </data>
+  <data name="Store.Header" xml:space="preserve">
+    <value>Shop</value>
+    <comment>For different version of Lively, example: Microsoft Store</comment>
+  </data>
+  <data name="StreamWallpaperVideoQuality.Header" xml:space="preserve">
+    <value>Stream</value>
+  </data>
+  <data name="StreamWallpaperDetect.Header" xml:space="preserve">
+    <value>Opdag streams</value>
+  </data>
+  <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
+    <value>Videokvalitet</value>
+  </data>
+  <data name="System.Header" xml:space="preserve">
+    <value>System</value>
+  </data>
+  <data name="TaskbarTheme.Header" xml:space="preserve">
+    <value>Opgavelinje Tema</value>
+  </data>
+  <data name="TitleTileSize" xml:space="preserve">
+    <value>Title størrelse</value>
+  </data>
+  <data name="TitleUIMode" xml:space="preserve">
+    <value>Brugergrænseflade</value>
+  </data>
+  <data name="TitleUpdates" xml:space="preserve">
+    <value>Opdateringer</value>
+  </data>
+  <data name="TitleVideo" xml:space="preserve">
+    <value>Video</value>
+  </data>
+  <data name="VideoHardwareDecode.Header" xml:space="preserve">
+    <value>GPU decode</value>
+  </data>
+  <data name="TitleWallpaper" xml:space="preserve">
+    <value>Baggrund</value>
+  </data>
+  <data name="WallpaperDir.Header" xml:space="preserve">
+    <value>Baggrundsmappe</value>
+  </data>
+  <data name="WallpaperDirMoveExisting.Content" xml:space="preserve">
+    <value>Flyt eksisterende baggrunde til ny mappe</value>
+  </data>
+  <data name="WallpaperFit.Header" xml:space="preserve">
+    <value>Vælg en pasform</value>
+  </data>
+  <data name="WallpaperInput.Header" xml:space="preserve">
+    <value>Baggrund input</value>
+  </data>
+  <data name="WallpaperLayout.Header" xml:space="preserve">
+    <value>Placering Metode</value>
+  </data>
+  <data name="WallpaperPlaybackGroup.Header" xml:space="preserve">
+    <value>Baggrunds afspilning</value>
+  </data>
+  <data name="TitleWarning" xml:space="preserve">
+    <value>Advarsel</value>
+  </data>
+  <data name="WebBrowser.Header" xml:space="preserve">
+    <value>Webbrowser</value>
+  </data>
+  <data name="WebBrowserDiskCache.Header" xml:space="preserve">
+    <value>Disk cache</value>
+  </data>
+  <data name="TitleWebBrowserEngine" xml:space="preserve">
+    <value>Motor</value>
+  </data>
+  <data name="TitleWebpageLoad" xml:space="preserve">
+    <value>Indlæs Webside</value>
+  </data>
+  <data name="FastUI.Description" xml:space="preserve">
+    <value>Hold brugergrænsefladen kørende for hurtigere opstart</value>
+  </data>
+  <data name="FastUI.Header" xml:space="preserve">
+    <value>Fast startup</value>
+  </data>
+  <data name="WallpaperDirGroup.Header" xml:space="preserve">
+    <value>Fil</value>
+  </data>
+  <data name="AppThemeDark.Content" xml:space="preserve">
+    <value>Mørk</value>
+  </data>
+  <data name="AppThemeLight.Content" xml:space="preserve">
+    <value>Lys</value>
+  </data>
+  <data name="AppThemeSystem.Content" xml:space="preserve">
+    <value>System</value>
+  </data>
+  <data name="WindowsSettingsColor.Content" xml:space="preserve">
+    <value>Windows farveindstillinger</value>
+  </data>
+  <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
+    <value>Bærbare</value>
+  </data>
+  <data name="DeveloperGroup.Header" xml:space="preserve">
+    <value>Udvikler</value>
+  </data>
+  <data name="AppearanceBehaviour.Header" xml:space="preserve">
+    <value>Udseende &amp; opførsel</value>
+  </data>
+  <data name="ActiveWallpapers.Label" xml:space="preserve">
+    <value>Aktiv Baggrund(e)</value>
+  </data>
+  <data name="TitleGallery" xml:space="preserve">
+    <value>Galleri</value>
+  </data>
+  <data name="AboutMe.Text" xml:space="preserve">
+    <value>Hej, jeg er Dani John også kendt som rocksdanister. Jeg udviklede Lively en Free og open source (FOSS) Baggrunds applikation. Tak for at tage sig tid til at se på mit arbejde.</value>
+  </data>
+  <data name="LicenseLink.Content" xml:space="preserve">
+    <value>Software licens</value>
+  </data>
+  <data name="AttributionLink.Content" xml:space="preserve">
+    <value>Tredjeparts softwaremeddelelse</value>
+  </data>
+  <data name="PrivacyPolicyLink.Content" xml:space="preserve">
+    <value>Politik for dataindsamling</value>
+  </data>
+  <data name="AddWallpaperDrop.Text" xml:space="preserve">
+    <value>Tilføj baggrund</value>
+  </data>
+  <data name="ComingSoon.Text" xml:space="preserve">
+    <value>Kommer snart</value>
+  </data>
+  <data name="AboutMenu.Text" xml:space="preserve">
+    <value>Om</value>
+  </data>
+  <data name="SourceWebsite.Text" xml:space="preserve">
+    <value>Webside</value>
+  </data>
+  <data name="TextOpen.Content" xml:space="preserve">
+    <value>Åbn</value>
+  </data>
+  <data name="TextSave.Content" xml:space="preserve">
+    <value>Gem</value>
+  </data>
+  <data name="UIMode.Description" xml:space="preserve">
+    <value>Brugergrænseflade effekter og animationer</value>
+  </data>
+  <data name="UIMode.Header" xml:space="preserve">
+    <value>Brugergrænseflade</value>
+  </data>
+  <data name="UIModeLite.Content" xml:space="preserve">
+    <value>Let</value>
+  </data>
+  <data name="UIModeNormal.Content" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="Screensaver.Description" xml:space="preserve">
+    <value>Hvordan screensaver anvendes til tilsluttet for at vise enheder</value>
+  </data>
+  <data name="Screensaver.Header" xml:space="preserve">
+    <value>Type af pauseskærm</value>
+  </data>
+  <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
+    <value>Konfigureret særskilt</value>
+  </data>
+  <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
+    <value>Samme som kørende baggrund</value>
+  </data>
+  <data name="ScreensaverPlugin.Title" xml:space="preserve">
+    <value>Plugin påkrævet</value>
+  </data>
+  <data name="ScreensaverPluginMessage.Text" xml:space="preserve">
+    <value>Én gang opsætning er nødvendig for at køre screensaver</value>
+  </data>
+  <data name="WallpaperLayoutScreenPicker.Content" xml:space="preserve">
+    <value>Vælg altid skærmen, når du vælger baggrund</value>
+  </data>
+  <data name="GalleryAccount.Text" xml:space="preserve">
+    <value>Konto</value>
+  </data>
+  <data name="GalleryAccountDelete.Content" xml:space="preserve">
+    <value>Slet konto</value>
+  </data>
+  <data name="GalleryAccountExport.Content" xml:space="preserve">
+    <value>Eksporter data</value>
+  </data>
+  <data name="GalleryAccountLogin.Content" xml:space="preserve">
+    <value>Log ind</value>
+  </data>
+  <data name="GalleryAccountLogout.Content" xml:space="preserve">
+    <value>Log ud</value>
+  </data>
+  <data name="GalleryPageCollection.Content" xml:space="preserve">
+    <value>Samling</value>
+  </data>
+  <data name="GalleryPageHome.Content" xml:space="preserve">
+    <value>Hjem</value>
+  </data>
+  <data name="GalleryPageManage.Content" xml:space="preserve">
+    <value>Administrer</value>
+  </data>
+  <data name="GalleryPageProfile.Content" xml:space="preserve">
+    <value>Profil</value>
+  </data>
+  <data name="GalleryPleaseLogin.Text" xml:space="preserve">
+    <value>Venligst log ind for at fortsætte</value>
+  </data>
+  <data name="GalleryWelcomeMessage.Text" xml:space="preserve">
+    <value>Hej</value>
+  </data>
+  <data name="RestoreWallpaper.Text" xml:space="preserve">
+    <value>Vi fandt disse baggrunde på din konto</value>
+  </data>
+  <data name="TextDownloadNow.Content" xml:space="preserve">
+    <value>Download nu</value>
+  </data>
+  <data name="TextMaybeLater.Content" xml:space="preserve">
+    <value>Måske senere</value>
+  </data>
+  <data name="TextSelectAll.Content" xml:space="preserve">
+    <value>Vælg alle</value>
+  </data>
+  <data name="TextSelectNone.Content" xml:space="preserve">
+    <value>Vælg ingen</value>
+  </data>
+  <data name="TitleWelcomeback.Text" xml:space="preserve">
+    <value>Velkommen tilbage!</value>
+  </data>
+  <data name="ReportWallpaper.Header" xml:space="preserve">
+    <value>Begrundelse</value>
+  </data>
+  <data name="ReportWallpaperCopyright.Content" xml:space="preserve">
+    <value>Copyright overtrædelse</value>
+  </data>
+  <data name="ReportWallpaperMisleading.Content" xml:space="preserve">
+    <value>Misvisende information</value>
+  </data>
+  <data name="ReportWallpaperOther.Content" xml:space="preserve">
+    <value>Andet</value>
+  </data>
+  <data name="ReportWallpaperSpam.Content" xml:space="preserve">
+    <value>Spam</value>
+  </data>
+  <data name="ReportWallpaperViolence.Content" xml:space="preserve">
+    <value>Nøgenhed eller vold</value>
+  </data>
+  <data name="TextAdditionalNotes.Text" xml:space="preserve">
+    <value>Yderligere noter</value>
+  </data>
+  <data name="TextReportWallpaper.Text" xml:space="preserve">
+    <value>Rapport</value>
+  </data>
+  <data name="TitleReportWallpaper.Text" xml:space="preserve">
+    <value>Rapporter Baggrund</value>
+  </data>
+  <data name="Send.Content" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="GalleryAccountDeleteConfirm.Text" xml:space="preserve">
+    <value>Bekræft venligst denne handling, da det IKKE kan fortrydes</value>
+  </data>
+  <data name="GalleryAccountDeleteFail.Text" xml:space="preserve">
+    <value>Kunne ikke slette kontoen. Prøv igen senere</value>
+  </data>
+  <data name="TextConfirmCancel.Text" xml:space="preserve">
+    <value>Vil du annullere?</value>
+  </data>
+  <data name="TextWait.Text" xml:space="preserve">
+    <value>Vent</value>
+  </data>
+  <data name="TitleDownloadProgress.Text" xml:space="preserve">
+    <value>Download i gang</value>
+  </data>
+  <data name="TextContributors.Text" xml:space="preserve">
+    <value>Bidragsydere</value>
+  </data>
+  <data name="TextShare.Text" xml:space="preserve">
+    <value>Del</value>
+  </data>
+  <data name="TitleShareWallpaper.Text" xml:space="preserve">
+    <value>Del Baggrund</value>
+  </data>
+  <data name="ExportWallpaperGallery.Text" xml:space="preserve">
+    <value>Galleri upload</value>
+  </data>
+  <data name="ExportWallpaperLink.Text" xml:space="preserve">
+    <value>Kopiér link</value>
+  </data>
+  <data name="TextCustomiseWallpaper" xml:space="preserve">
+    <value>Tilpas Baggrund</value>
+  </data>
+  <data name="TextCloseWallpapers" xml:space="preserve">
+    <value>Luk Baggrunde</value>
+  </data>
+  <data name="TitleChooseApplication.Text" xml:space="preserve">
+    <value>Vælg Program</value>
+  </data>
+  <data name="WallpaperInstallSize.Text" xml:space="preserve">
+    <value>Størrelse</value>
+  </data>
+  <data name="PluginNotFound.Message" xml:space="preserve">
+    <value>Installér venligst det påkrævede plugin</value>
+  </data>
+  <data name="PluginNotFound.Title" xml:space="preserve">
+    <value>Plugin blev ikke fundet</value>
+  </data>
+  <data name="UpdateCompleted.Text" xml:space="preserve">
+    <value>Opdatering fuldført</value>
+  </data>
+  <data name="UpdateWhatsNew.Text" xml:space="preserve">
+    <value>Se hvad der er nyt</value>
+  </data>
+  <data name="AppThemeColor.Header" xml:space="preserve">
+    <value>Farver</value>
+  </data>
+  <data name="DescriptionDefault.Text" xml:space="preserve">
+    <value>Brug systemets standard</value>
+  </data>
+  <data name="DescriptionDynamicTheme.Text" xml:space="preserve">
+    <value>Tilpas til baggrund</value>
+  </data>
+  <data name="TextDefault.Text" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="TextDynamicTheme.Text" xml:space="preserve">
+    <value>Dynamisk</value>
+  </data>
+  <data name="Theme.Label" xml:space="preserve">
+    <value>Tema</value>
+  </data>
+  <data name="IconsHidden.Message" xml:space="preserve">
+    <value>For at forhindre utilsigtet markering er ikoner i øjeblikket skjult</value>
+  </data>
+  <data name="IconsHidden.Title" xml:space="preserve">
+    <value>Skrivebords ikon</value>
+  </data>
+  <data name="TextEndOfItems.Text" xml:space="preserve">
+    <value>Det er alt for nu..</value>
+  </data>
+</root>
