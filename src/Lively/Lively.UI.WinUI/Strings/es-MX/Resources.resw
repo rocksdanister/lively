@@ -1176,4 +1176,10 @@ Edge es la vista web integrada en Windows 10.</value>
   <data name="TextEndOfItems.Text" xml:space="preserve">
     <value>Eso es todo por ahora..</value>
   </data>
+  <data name="DevelopmentOnHold.Message" xml:space="preserve">
+    <value>This feature development is on hold</value>
+  </data>
+  <data name="WallpaperPluginGroup.Header" xml:space="preserve">
+    <value>Plugins</value>
+  </data>
 </root>

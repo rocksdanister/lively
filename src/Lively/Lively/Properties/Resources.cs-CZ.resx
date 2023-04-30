@@ -1174,4 +1174,10 @@ Po uplynutí doby nečinnosti použijte jako spořič obrazovky aktuální tapet
   <data name="TextEndOfItems.Text" xml:space="preserve">
     <value>To je prozatím vše..</value>
   </data>
+  <data name="DevelopmentOnHold.Message" xml:space="preserve">
+    <value>This feature development is on hold</value>
+  </data>
+  <data name="WallpaperPluginGroup.Header" xml:space="preserve">
+    <value>Plugins</value>
+  </data>
 </root>

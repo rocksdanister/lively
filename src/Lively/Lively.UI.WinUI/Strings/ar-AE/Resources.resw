@@ -1177,4 +1177,10 @@ Edge هو عرض الويب المدمج في windows 10.</value>
   <data name="TextEndOfItems.Text" xml:space="preserve">
     <value>That's all for now..</value>
   </data>
+  <data name="DevelopmentOnHold.Message" xml:space="preserve">
+    <value>This feature development is on hold</value>
+  </data>
+  <data name="WallpaperPluginGroup.Header" xml:space="preserve">
+    <value>Plugins</value>
+  </data>
 </root>

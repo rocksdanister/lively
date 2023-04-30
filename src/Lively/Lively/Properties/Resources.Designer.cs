@@ -691,6 +691,15 @@ namespace Lively.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This feature development is on hold.
+        /// </summary>
+        public static string DevelopmentOnHold_Message {
+            get {
+                return ResourceManager.GetString("DevelopmentOnHold.Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pause wallpaper on all screens or only the screen in which application is focused.
         /// </summary>
         public static string DisplayPauseRule_Description {
@@ -3082,6 +3091,15 @@ namespace Lively.Properties {
         public static string WallpaperPlaybackGroup_Header {
             get {
                 return ResourceManager.GetString("WallpaperPlaybackGroup.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Plugins.
+        /// </summary>
+        public static string WallpaperPluginGroup_Header {
+            get {
+                return ResourceManager.GetString("WallpaperPluginGroup.Header", resourceCulture);
             }
         }
         

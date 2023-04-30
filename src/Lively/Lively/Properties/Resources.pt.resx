@@ -228,7 +228,7 @@ As atualizações serão frequentes e poderão conter erros!</value>
     <value>Idioma</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
-    <value>Atualizaão mal-sucedida Tente descarregar o instalador novamente:
+    <value>Atualização mal-sucedida. Tente descarregar o instalador novamente:
 https://github.com/rocksdanister/lively/releases</value>
   </data>
   <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
@@ -1175,5 +1175,11 @@ Edge é o webview integrado do windows 10.</value>
   </data>
   <data name="TextEndOfItems.Text" xml:space="preserve">
     <value>É tudo por agora..</value>
+  </data>
+  <data name="DevelopmentOnHold.Message" xml:space="preserve">
+    <value>O desenvolvimento deste recurso está em espera</value>
+  </data>
+  <data name="WallpaperPluginGroup.Header" xml:space="preserve">
+    <value>Plugins</value>
   </data>
 </root>

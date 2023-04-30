@@ -1172,4 +1172,10 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
   <data name="TextEndOfItems.Text" xml:space="preserve">
     <value>Chỉ có như vậy thôi..</value>
   </data>
+  <data name="DevelopmentOnHold.Message" xml:space="preserve">
+    <value>This feature development is on hold</value>
+  </data>
+  <data name="WallpaperPluginGroup.Header" xml:space="preserve">
+    <value>Plugins</value>
+  </data>
 </root>

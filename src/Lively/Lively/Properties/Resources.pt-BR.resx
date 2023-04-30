@@ -1176,4 +1176,10 @@ O Edge é a webview embutida do Windows 10.</value>
   <data name="TextEndOfItems.Text" xml:space="preserve">
     <value>É tudo por enquanto.</value>
   </data>
+  <data name="DevelopmentOnHold.Message" xml:space="preserve">
+    <value>Esta funcionalidade está em desenvolvimento</value>
+  </data>
+  <data name="WallpaperPluginGroup.Header" xml:space="preserve">
+    <value>Plugins</value>
+  </data>
 </root>
