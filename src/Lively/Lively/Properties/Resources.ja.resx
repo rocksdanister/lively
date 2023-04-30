@@ -1174,4 +1174,10 @@ Edge Webview2は、Windowsに内蔵されたWebViewです。</value>
   <data name="TextEndOfItems.Text" xml:space="preserve">
     <value>以上ですべてです</value>
   </data>
+  <data name="DevelopmentOnHold.Message" xml:space="preserve">
+    <value>この機能の開発は保留中です</value>
+  </data>
+  <data name="WallpaperPluginGroup.Header" xml:space="preserve">
+    <value>拡張機能</value>
+  </data>
 </root>

@@ -1172,4 +1172,10 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextEndOfItems.Text" xml:space="preserve">
     <value>已是全部內容..</value>
   </data>
+  <data name="DevelopmentOnHold.Message" xml:space="preserve">
+    <value>此功能開發已暫停</value>
+  </data>
+  <data name="WallpaperPluginGroup.Header" xml:space="preserve">
+    <value>插件</value>
+  </data>
 </root>

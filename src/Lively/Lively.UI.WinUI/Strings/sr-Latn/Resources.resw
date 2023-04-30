@@ -1159,4 +1159,10 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
   <data name="TextEndOfItems.Text" xml:space="preserve">
     <value>To je sve za sada...</value>
   </data>
+  <data name="DevelopmentOnHold.Message" xml:space="preserve">
+    <value>This feature development is on hold</value>
+  </data>
+  <data name="WallpaperPluginGroup.Header" xml:space="preserve">
+    <value>Plugins</value>
+  </data>
 </root>

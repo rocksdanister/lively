@@ -1175,4 +1175,10 @@ Edge는 Windows 10의 내장 웹뷰입니다.</value>
   <data name="TextEndOfItems.Text" xml:space="preserve">
     <value>여기까지 입니다...</value>
   </data>
+  <data name="DevelopmentOnHold.Message" xml:space="preserve">
+    <value>이 기능 개발이 보류 중입니다</value>
+  </data>
+  <data name="WallpaperPluginGroup.Header" xml:space="preserve">
+    <value>플러그인</value>
+  </data>
 </root>

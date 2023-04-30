@@ -1146,4 +1146,10 @@ Utforskaren har startat om två gånger under de senaste 30 sekunderna! Detta ka
   <data name="TextEndOfItems.Text" xml:space="preserve">
     <value>Det är allt för tillfället..</value>
   </data>
+  <data name="DevelopmentOnHold.Message" xml:space="preserve">
+    <value>Utvecklingen av den här funktionen är pausad</value>
+  </data>
+  <data name="WallpaperPluginGroup.Header" xml:space="preserve">
+    <value>Tillägg</value>
+  </data>
 </root>

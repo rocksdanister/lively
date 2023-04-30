@@ -1177,4 +1177,10 @@ Edge 是 Windows 10 内置的浏览器。</value>
   <data name="TextEndOfItems.Text" xml:space="preserve">
     <value>暂时就这么多内容……</value>
   </data>
+  <data name="DevelopmentOnHold.Message" xml:space="preserve">
+    <value>此功能开发已暂停</value>
+  </data>
+  <data name="WallpaperPluginGroup.Header" xml:space="preserve">
+    <value>插件</value>
+  </data>
 </root>
