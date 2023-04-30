@@ -38,27 +38,27 @@
                 <CommandBar HorizontalAlignment="Left" OverflowButtonVisibility="Collapsed">
                     <AppBarButton Click="GithubButton_Click" ToolTipService.ToolTip="https://github.com/rocksdanister">
                         <AppBarButton.Icon>
-                            <FontIcon FontFamily="{StaticResource CustomIconFonts}" Glyph="&#xE901;" />
+                            <FontIcon FontFamily="{StaticResource CustomIconFonts}" Glyph="&#xE907;" />
                         </AppBarButton.Icon>
                     </AppBarButton>
                     <AppBarButton Click="TwitterButton_Click" ToolTipService.ToolTip="https://twitter.com/rocksdanister">
                         <AppBarButton.Icon>
-                            <FontIcon FontFamily="{StaticResource CustomIconFonts}" Glyph="&#xE904;" />
+                            <FontIcon FontFamily="{StaticResource CustomIconFonts}" Glyph="&#xE909;" />
                         </AppBarButton.Icon>
                     </AppBarButton>
                     <AppBarButton Click="RedditButton_Click" ToolTipService.ToolTip="https://reddit.com/u/rocksdanister">
                         <AppBarButton.Icon>
-                            <FontIcon FontFamily="{StaticResource CustomIconFonts}" Glyph="&#xE903;" />
+                            <FontIcon FontFamily="{StaticResource CustomIconFonts}" Glyph="&#xE908;" />
                         </AppBarButton.Icon>
                     </AppBarButton>
                     <AppBarButton Click="YoutubeButton_Click" ToolTipService.ToolTip="https://www.youtube.com/channel/UClep84ofxC41H8-R9UfNPSQ">
                         <AppBarButton.Icon>
-                            <FontIcon FontFamily="{StaticResource CustomIconFonts}" Glyph="&#xE905;" />
+                            <FontIcon FontFamily="{StaticResource CustomIconFonts}" Glyph="&#xE90a;" />
                         </AppBarButton.Icon>
                     </AppBarButton>
                     <AppBarButton Click="EmailButton_Click" ToolTipService.ToolTip="awoo.git@gmail.com">
                         <AppBarButton.Icon>
-                            <FontIcon FontFamily="{StaticResource CustomIconFonts}" Glyph="&#xE902;" />
+                            <FontIcon FontFamily="{StaticResource CustomIconFonts}" Glyph="&#xE906;" />
                         </AppBarButton.Icon>
                     </AppBarButton>
                 </CommandBar>

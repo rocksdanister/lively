@@ -226,6 +226,7 @@ namespace Lively.UI.WinUI
                     }
                 }
                 controlPanelLabel.Label = $"{desktopCore.Wallpapers.Count} {i18n.GetString("ActiveWallpapers/Label")}";
+                controlPanelMonitor.Glyph = monitorGlyphs[desktopCore.Wallpapers.Count >= monitorGlyphs.Length ? monitorGlyphs.Length - 1 : desktopCore.Wallpapers.Count];
             });
         }
 
@@ -813,6 +814,16 @@ namespace Lively.UI.WinUI
             new FontIcon(){ Glyph = "\uE993" },
             new FontIcon(){ Glyph = "\uE994" },
             new FontIcon(){ Glyph = "\uE995" },
+        };
+
+        private readonly string[] monitorGlyphs =
+        {
+            "\uE900",
+            "\uE901",
+            "\uE902",
+            "\uE903",
+            "\uE904",
+            "\uE905",
         };
 
         private static NavigationViewItem CreateMenu(string menuName, string tag, string glyph = "")
