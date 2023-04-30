@@ -158,7 +158,10 @@
                         x:Uid="ActiveWallpapers"
                         Click="ControlPanelButton_Click">
                         <AppBarButton.Icon>
-                            <FontIcon x:Name="controlPanelMonitor" Glyph="&#xE7F4;">
+                            <FontIcon
+                                x:Name="controlPanelMonitor"
+                                FontFamily="{StaticResource CustomIconFonts}"
+                                Glyph="&#xE900;">
                                 <animations:Explicit.Animations>
                                     <animations:AnimationSet x:Name="activeWallpaperOffsetAnimation">
                                         <animations:OffsetAnimation
@@ -216,7 +219,7 @@
                         LabelPosition="Collapsed"
                         ToolTipService.ToolTip="Patreon">
                         <AppBarButton.Icon>
-                            <FontIcon FontFamily="{StaticResource CustomIconFonts}" Glyph="&#xE900;" />
+                            <FontIcon FontFamily="{StaticResource CustomIconFonts}" Glyph="&#xE90b;" />
                         </AppBarButton.Icon>
                     </AppBarButton>
                     <AppBarSeparator />
