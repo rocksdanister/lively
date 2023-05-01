@@ -95,6 +95,7 @@ namespace Lively.UI.WinUI
             this.audioSlider.Value = settingsVm.GlobalWallpaperVolume;
             UpdateAudioSliderIcon(settingsVm.GlobalWallpaperVolume);
             this.controlPanelLabel.Label = $"{desktopCore.Wallpapers.Count} {i18n.GetString("ActiveWallpapers/Label")}";
+            controlPanelMonitor.Glyph = monitorGlyphs[desktopCore.Wallpapers.Count >= monitorGlyphs.Length ? monitorGlyphs.Length - 1 : desktopCore.Wallpapers.Count];
             desktopCore.WallpaperChanged += DesktopCore_WallpaperChanged;
             desktopCore.WallpaperError += DesktopCore_WallpaperError;
             appUpdater.UpdateChecked += AppUpdater_UpdateChecked;
