@@ -1176,9 +1176,9 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
     <value>Itu sahaja buat masa ini.</value>
   </data>
   <data name="DevelopmentOnHold.Message" xml:space="preserve">
-    <value>This feature development is on hold</value>
+    <value>Pembangunan ciri ini ditangguhkan</value>
   </data>
   <data name="WallpaperPluginGroup.Header" xml:space="preserve">
-    <value>Plugins</value>
+    <value>Pemalam</value>
   </data>
 </root>

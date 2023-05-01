@@ -1178,9 +1178,9 @@ Edge jest przeglądarką wbudowaną w windows 10.</value>
     <value>W tej chwili to wszystko..</value>
   </data>
   <data name="DevelopmentOnHold.Message" xml:space="preserve">
-    <value>This feature development is on hold</value>
+    <value>Rozwój tej funkcji jest wstrzymany</value>
   </data>
   <data name="WallpaperPluginGroup.Header" xml:space="preserve">
-    <value>Plugins</value>
+    <value>Wtyczki</value>
   </data>
 </root>
