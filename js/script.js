@@ -72,7 +72,7 @@ let shaderUniforms = [
     u_time: { value: 0, type: "f" },
     u_brightness: { value: 0.75, type: "f" },
     u_resolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight), type: "v2" },
-  }
+  },
 ];
 const quad = new THREE.Mesh(new THREE.PlaneGeometry(2, 2, 1, 1));
 let videoElement;
@@ -201,7 +201,7 @@ async function setScene(name, geometry = quad) {
   material?.uniforms?.u_tex0?.value?.dispose();
   material?.dispose();
   disposeVideoElement(videoElement);
-  this.onmousedown = this.onmousemove = null;
+  this.onmousedown = this.onmousemove = this.onmouseup = null;
 
   switch (name) {
     case "rain":
@@ -247,10 +247,32 @@ async function setScene(name, geometry = quad) {
         });
         setScale(0.25); //performance
 
-        //this.onmousedown = mouseClick;
-        function mouseClick(e) {
-          material.uniforms.u_mouse.value.x = e.pageX;
-          material.uniforms.u_mouse.value.y = e.pageY;
+        let startX,
+          startY,
+          delta = 10,
+          isDrag = false;
+        this.onmousedown = mouseDown;
+        this.onmousemove = mouseMove;
+        this.onmouseup = mouseUp;
+        function mouseUp(e) {
+          isDrag = false;
+        }
+        function mouseDown(e) {
+          if (e.target.id =="page-home")
+          {
+            isDrag = true;
+            startX = e.pageX;
+            startY = e.pageY;
+          }
+        }
+        function mouseMove(e) {
+          if ((Math.abs(e.pageX - startX) < delta && Math.abs(e.pageY - startY) < delta) || !isDrag) {
+            return;
+          }
+
+          //mouse pixel coords. xy: current (if MLB down), zw: click
+          material.uniforms.u_mouse.value.x = e.pageX * settings.scale;
+          material.uniforms.u_mouse.value.y = e.pageY * settings.scale;
           material.uniforms.u_mouse.value.z = 1;
           material.uniforms.u_mouse.value.w = 1;
         }
