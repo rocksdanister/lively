@@ -471,7 +471,7 @@ Si aún no funciona, cierra e inicia Lively nuevamente o reinicia Windows.
   <data name="TextScreen" xml:space="preserve">
     <value>Pantalla</value>
   </data>
-  <data name="TextSearch" xml:space="preserve">
+  <data name="SearchBox.PlaceholderText" xml:space="preserve">
     <value>Buscar</value>
   </data>
   <data name="SetWallpaper.Text" xml:space="preserve">

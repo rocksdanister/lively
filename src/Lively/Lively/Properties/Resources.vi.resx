@@ -130,7 +130,7 @@
     <value>Âm thanh</value>
   </data>
   <data name="Community.Description" xml:space="preserve">
-    <value>Thảo luận trong diễn đàn</value>
+    <value>Diễn đàn thảo luận online</value>
   </data>
   <data name="Documentation.Description" xml:space="preserve">
     <value>Tư liệu API và hỗ trợ</value>
@@ -154,7 +154,7 @@ Còn đối với màn hình OLED, Plasma hoặc CRT thì sẽ có thể dễ b�
 Mục đích chính của Lively là để làm cho màn hình desktop của bạn đẹp hơn, nên trong trường hợp sử dụng Lively để làm màn hình chờ thì Lively sẽ không chịu trách nhiệm!</value>
   </data>
   <data name="ReportBug.Description" xml:space="preserve">
-    <value>Báo lỗi chương trình</value>
+    <value>Báo lỗi</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
     <value>Chọn file</value>
@@ -469,7 +469,7 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
   <data name="TextScreen" xml:space="preserve">
     <value>Màn hình</value>
   </data>
-  <data name="TextSearch" xml:space="preserve">
+  <data name="SearchBox.PlaceholderText" xml:space="preserve">
     <value>Tìm kiếm</value>
   </data>
   <data name="SetWallpaper.Text" xml:space="preserve">
@@ -1173,9 +1173,9 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Chỉ có như vậy thôi..</value>
   </data>
   <data name="DevelopmentOnHold.Message" xml:space="preserve">
-    <value>This feature development is on hold</value>
+    <value>Quá trình phát triển tính năng này đang bị tạm dừng</value>
   </data>
   <data name="WallpaperPluginGroup.Header" xml:space="preserve">
-    <value>Plugins</value>
+    <value>Tính năng bổ sung</value>
   </data>
 </root>

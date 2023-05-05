@@ -443,7 +443,7 @@ Utforskaren har startat om två gånger under de senaste 30 sekunderna! Detta ka
   <data name="TextScreen" xml:space="preserve">
     <value>Skärm</value>
   </data>
-  <data name="TextSearch" xml:space="preserve">
+  <data name="SearchBox.PlaceholderText" xml:space="preserve">
     <value>Sök</value>
   </data>
   <data name="SetWallpaper.Text" xml:space="preserve">

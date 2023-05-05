@@ -469,7 +469,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextScreen" xml:space="preserve">
     <value>Οθόνη</value>
   </data>
-  <data name="TextSearch" xml:space="preserve">
+  <data name="SearchBox.PlaceholderText" xml:space="preserve">
     <value>Αναζήτηση</value>
   </data>
   <data name="SetWallpaper.Text" xml:space="preserve">

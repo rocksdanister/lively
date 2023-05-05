@@ -469,7 +469,7 @@ Jos ikkuna ei vieläkään toimi, sulje &amp; käynnistä eloisa uudestaan/uudel
   <data name="TextScreen" xml:space="preserve">
     <value>Näyttö</value>
   </data>
-  <data name="TextSearch" xml:space="preserve">
+  <data name="SearchBox.PlaceholderText" xml:space="preserve">
     <value>Hae</value>
   </data>
   <data name="SetWallpaper.Text" xml:space="preserve">

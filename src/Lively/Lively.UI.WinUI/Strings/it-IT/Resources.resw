@@ -468,7 +468,7 @@ Se non funziona ancora, chiudi &amp; riavvia Lively / riavvia Windows.
   <data name="TextScreen" xml:space="preserve">
     <value>Schermo</value>
   </data>
-  <data name="TextSearch" xml:space="preserve">
+  <data name="SearchBox.PlaceholderText" xml:space="preserve">
     <value>Cerca</value>
   </data>
   <data name="SetWallpaper.Text" xml:space="preserve">
@@ -1175,9 +1175,9 @@ Quando sei pronto, vai a: http://localhost:portnumber per accedere al portale de
     <value>È tutto, per ora..</value>
   </data>
   <data name="DevelopmentOnHold.Message" xml:space="preserve">
-    <value>This feature development is on hold</value>
+    <value>Lo sviluppo di questa funzione è in attesa</value>
   </data>
   <data name="WallpaperPluginGroup.Header" xml:space="preserve">
-    <value>Plugins</value>
+    <value>Plug-in</value>
   </data>
 </root>

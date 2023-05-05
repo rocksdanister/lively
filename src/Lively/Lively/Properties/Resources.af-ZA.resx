@@ -469,7 +469,7 @@ As dit steeds nie werk nie, maak toe en begin Lively weer / herbegin vensters.
   <data name="TextScreen" xml:space="preserve">
     <value>Skerm</value>
   </data>
-  <data name="TextSearch" xml:space="preserve">
+  <data name="SearchBox.PlaceholderText" xml:space="preserve">
     <value>Soek</value>
   </data>
   <data name="SetWallpaper.Text" xml:space="preserve">

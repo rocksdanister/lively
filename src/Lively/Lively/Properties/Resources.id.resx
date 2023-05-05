@@ -470,7 +470,7 @@ Jika masih tidak berfungsi, tutup dan mulai ulang Lively/Windows.
   <data name="TextScreen" xml:space="preserve">
     <value>Layar</value>
   </data>
-  <data name="TextSearch" xml:space="preserve">
+  <data name="SearchBox.PlaceholderText" xml:space="preserve">
     <value>Cari</value>
   </data>
   <data name="SetWallpaper.Text" xml:space="preserve">

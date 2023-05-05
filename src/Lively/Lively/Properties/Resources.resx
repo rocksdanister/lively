@@ -1178,4 +1178,7 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="WallpaperPluginGroup.Header" xml:space="preserve">
     <value>Plugins</value>
   </data>
+  <data name="SearchBox.PlaceholderText" xml:space="preserve">
+    <value>Search</value>
+  </data>
 </root>
