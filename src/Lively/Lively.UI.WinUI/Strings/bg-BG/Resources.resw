@@ -242,7 +242,7 @@ https://github.com/rocksdanister/lively/releases</value>
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
-    <value>Lively не може да работи правилно с активиран режим Windows High Contrast!
+    <value>Lively не може да работи правилно с активиран режим за висок контраст на Windows!
 Изключете режима на висок контраст и опитайте отново</value>
   </data>
   <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
@@ -468,7 +468,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextScreen" xml:space="preserve">
     <value>Екран</value>
   </data>
-  <data name="TextSearch" xml:space="preserve">
+  <data name="SearchBox.PlaceholderText" xml:space="preserve">
     <value>Търсене</value>
   </data>
   <data name="SetWallpaper.Text" xml:space="preserve">
@@ -1175,6 +1175,6 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>This feature development is on hold</value>
   </data>
   <data name="WallpaperPluginGroup.Header" xml:space="preserve">
-    <value>Plugins</value>
+    <value>Плъгини</value>
   </data>
 </root>

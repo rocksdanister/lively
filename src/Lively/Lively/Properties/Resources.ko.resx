@@ -469,7 +469,7 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp; 적용.
   <data name="TextScreen" xml:space="preserve">
     <value>화면</value>
   </data>
-  <data name="TextSearch" xml:space="preserve">
+  <data name="SearchBox.PlaceholderText" xml:space="preserve">
     <value>검색</value>
   </data>
   <data name="SetWallpaper.Text" xml:space="preserve">

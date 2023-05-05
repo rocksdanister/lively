@@ -467,7 +467,7 @@ Ha még mindig nem működik, zárd be &amp; indítsd el a Livelyt újra/ indít
   <data name="TextScreen" xml:space="preserve">
     <value>Képernyő</value>
   </data>
-  <data name="TextSearch" xml:space="preserve">
+  <data name="SearchBox.PlaceholderText" xml:space="preserve">
     <value>Keresés</value>
   </data>
   <data name="SetWallpaper.Text" xml:space="preserve">

@@ -470,7 +470,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextScreen" xml:space="preserve">
     <value>شاشة</value>
   </data>
-  <data name="TextSearch" xml:space="preserve">
+  <data name="SearchBox.PlaceholderText" xml:space="preserve">
     <value>بحث</value>
   </data>
   <data name="SetWallpaper.Text" xml:space="preserve">

@@ -127,7 +127,7 @@
     <value>Garsas</value>
   </data>
   <data name="AudioGroup.Header" xml:space="preserve">
-    <value>Audio</value>
+    <value>Garsas</value>
   </data>
   <data name="Community.Description" xml:space="preserve">
     <value>Diskusijų forumas internete</value>
@@ -469,7 +469,7 @@ Jei vis tiek neveikia, uždarykite ir iš naujo įjunkite Lively/perkraukite Win
   <data name="TextScreen" xml:space="preserve">
     <value>Ekranas</value>
   </data>
-  <data name="TextSearch" xml:space="preserve">
+  <data name="SearchBox.PlaceholderText" xml:space="preserve">
     <value>Ieškoti</value>
   </data>
   <data name="SetWallpaper.Text" xml:space="preserve">
@@ -1173,9 +1173,9 @@ Jei vis tiek neveikia, uždarykite ir iš naujo įjunkite Lively/perkraukite Win
     <value>Šiam kartui tiek..</value>
   </data>
   <data name="DevelopmentOnHold.Message" xml:space="preserve">
-    <value>This feature development is on hold</value>
+    <value>Šios funkcijos kūrimas – sustabdytas</value>
   </data>
   <data name="WallpaperPluginGroup.Header" xml:space="preserve">
-    <value>Plugins</value>
+    <value>Įskiepiai</value>
   </data>
 </root>

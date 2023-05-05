@@ -468,7 +468,7 @@ Si cela ne fonctionne toujours pas, fermez et relancez Lively / redémarrez Wind
   <data name="TextScreen" xml:space="preserve">
     <value>Écran</value>
   </data>
-  <data name="TextSearch" xml:space="preserve">
+  <data name="SearchBox.PlaceholderText" xml:space="preserve">
     <value>Recherche</value>
   </data>
   <data name="SetWallpaper.Text" xml:space="preserve">
@@ -1181,6 +1181,6 @@ Edge est la vue Web intégrée de Windows 10.</value>
     <value>Le développement de cette fonctionnalité est en attente</value>
   </data>
   <data name="WallpaperPluginGroup.Header" xml:space="preserve">
-    <value>Plugins</value>
+    <value>Extensions</value>
   </data>
 </root>

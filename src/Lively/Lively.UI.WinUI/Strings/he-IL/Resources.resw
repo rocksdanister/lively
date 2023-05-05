@@ -473,7 +473,7 @@ https://github.com/rocksdanister/lively/wiki
   <data name="TextScreen" xml:space="preserve">
     <value>מסך</value>
   </data>
-  <data name="TextSearch" xml:space="preserve">
+  <data name="SearchBox.PlaceholderText" xml:space="preserve">
     <value>חפש</value>
   </data>
   <data name="SetWallpaper.Text" xml:space="preserve">
@@ -1178,9 +1178,9 @@ Edge הוא תצוגת האינטרנט המובנית של Windows 10.</value>
     <value>זה הכל לעת עתה..</value>
   </data>
   <data name="DevelopmentOnHold.Message" xml:space="preserve">
-    <value>This feature development is on hold</value>
+    <value>פיתוח תכונה זו מוקפא</value>
   </data>
   <data name="WallpaperPluginGroup.Header" xml:space="preserve">
-    <value>Plugins</value>
+    <value>תוספים</value>
   </data>
 </root>

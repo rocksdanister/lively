@@ -469,7 +469,7 @@ Hvis det stadig ikke virker, luk &amp; start livligt igen/genstart vinduer.
   <data name="TextScreen" xml:space="preserve">
     <value>Skærm</value>
   </data>
-  <data name="TextSearch" xml:space="preserve">
+  <data name="SearchBox.PlaceholderText" xml:space="preserve">
     <value>Søg</value>
   </data>
   <data name="SetWallpaper.Text" xml:space="preserve">

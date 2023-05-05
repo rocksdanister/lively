@@ -469,7 +469,7 @@ Pokud stále nefunguje, zavřete a spusťte Lively znova/restartujte okna.
   <data name="TextScreen" xml:space="preserve">
     <value>Obrazovka</value>
   </data>
-  <data name="TextSearch" xml:space="preserve">
+  <data name="SearchBox.PlaceholderText" xml:space="preserve">
     <value>Hledat</value>
   </data>
   <data name="SetWallpaper.Text" xml:space="preserve">

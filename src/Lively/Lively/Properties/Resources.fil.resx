@@ -466,7 +466,7 @@ Pag hindi pa gumagana, i-close at buksan ulit ang Lively/i-restart Windows.
   <data name="TextScreen" xml:space="preserve">
     <value>Screen</value>
   </data>
-  <data name="TextSearch" xml:space="preserve">
+  <data name="SearchBox.PlaceholderText" xml:space="preserve">
     <value>Maghanap</value>
   </data>
   <data name="SetWallpaper.Text" xml:space="preserve">

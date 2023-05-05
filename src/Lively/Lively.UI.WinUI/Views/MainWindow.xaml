@@ -81,12 +81,12 @@
                 Text="Lively Wallpaper" />
             <AutoSuggestBox
                 x:Name="SearchBox"
+                x:Uid="SearchBox"
                 Grid.Column="4"
                 Width="360"
                 Margin="4,0"
                 VerticalAlignment="Center"
                 IsEnabled="True"
-                PlaceholderText="Search"
                 QueryIcon="Find"
                 QuerySubmitted="AutoSuggestBox_QuerySubmitted"
                 SuggestionChosen="AutoSuggestBox_SuggestionChosen"
