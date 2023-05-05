@@ -36,6 +36,7 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
         {
             this.InitializeComponent();
             this.Title = model.Title;
+            this.SystemBackdrop = new MicaBackdrop();
             this.SetTitleBarBackgroundColors(((SolidColorBrush)App.Current.Resources["SystemControlBackgroundChromeMediumLowBrush"]).Color);
 
             //Position primary screen bottom-right

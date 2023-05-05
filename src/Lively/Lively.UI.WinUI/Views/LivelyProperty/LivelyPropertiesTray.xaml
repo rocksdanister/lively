@@ -13,15 +13,7 @@
     IsResizable="True"
     TaskBarIcon="appicon.ico"
     mc:Ignorable="d">
-    <winex:WindowEx.Backdrop>
-        <winex:MicaSystemBackdrop
-            DarkLuminosityOpacity="0.9"
-            DarkTintOpacity="0.5"
-            LightLuminosityOpacity="0.9"
-            LightTintOpacity="0.5" />
-    </winex:WindowEx.Backdrop>
-
-    <Grid Margin="10,5" Background="{ThemeResource SystemAltMediumLowColor}">
+    <Grid Margin="10,5">
         <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
             <Frame x:Name="contentFrame" />
         </ScrollViewer>
