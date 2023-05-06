@@ -201,7 +201,7 @@ async function setScene(name, geometry = quad) {
   material?.uniforms?.u_tex0?.value?.dispose();
   material?.dispose();
   disposeVideoElement(videoElement);
-  this.onmousedown = this.onmousemove = this.onmouseup = null;
+  resetMouse();
 
   switch (name) {
     case "rain":
@@ -212,18 +212,9 @@ async function setScene(name, geometry = quad) {
           fragmentShader: await (await fetch("shaders/rain.frag")).text(),
         });
         setScale(1);
+        setMouseParallax();
         material.uniforms.u_tex0_resolution.value = new THREE.Vector2(1920, 1080);
         material.uniforms.u_tex0.value = await new THREE.TextureLoader().loadAsync("media/rain_mountain.webp");
-
-        this.onmousemove = parallax;
-        function parallax(event) {
-          if (settings.parallaxVal == 0) return;
-
-          const x = (window.innerWidth - event.pageX * settings.parallaxVal) / 90;
-          const y = (window.innerHeight - event.pageY * settings.parallaxVal) / 90;
-
-          container.style.transform = `translateX(${x}px) translateY(${y}px) scale(1.09)`;
-        }
       }
       break;
     case "snow":
@@ -234,6 +225,7 @@ async function setScene(name, geometry = quad) {
           fragmentShader: await (await fetch("shaders/snow.frag")).text(),
         });
         setScale(0.75);
+        setMouseDrag();
         material.uniforms.u_tex0_resolution.value = new THREE.Vector2(1920, 1080);
         material.uniforms.u_tex0.value = await new THREE.TextureLoader().loadAsync("media/snow_landscape.webp");
       }
@@ -246,36 +238,7 @@ async function setScene(name, geometry = quad) {
           fragmentShader: await (await fetch("shaders/clouds.frag")).text(),
         });
         setScale(0.25); //performance
-
-        let startX,
-          startY,
-          delta = 10,
-          isDrag = false;
-        this.onmousedown = mouseDown;
-        this.onmousemove = mouseMove;
-        this.onmouseup = mouseUp;
-        function mouseUp(e) {
-          isDrag = false;
-        }
-        function mouseDown(e) {
-          if (e.target.id =="page-home")
-          {
-            isDrag = true;
-            startX = e.pageX;
-            startY = e.pageY;
-          }
-        }
-        function mouseMove(e) {
-          if ((Math.abs(e.pageX - startX) < delta && Math.abs(e.pageY - startY) < delta) || !isDrag) {
-            return;
-          }
-
-          //mouse pixel coords. xy: current (if MLB down), zw: click
-          material.uniforms.u_mouse.value.x = e.pageX * settings.scale;
-          material.uniforms.u_mouse.value.y = e.pageY * settings.scale;
-          material.uniforms.u_mouse.value.z = 1;
-          material.uniforms.u_mouse.value.w = 1;
-        }
+        setMouseDrag();
       }
       break;
     case "synthwave":
@@ -286,6 +249,7 @@ async function setScene(name, geometry = quad) {
           fragmentShader: await (await fetch("shaders/synthwave.frag")).text(),
         });
         setScale(0.75);
+        setMouseParallax();
       }
       break;
     case "impulse":
@@ -307,6 +271,53 @@ async function setScene(name, geometry = quad) {
     document.dispatchEvent(sceneLoadedEvent);
   }
   document.dispatchEvent(sceneChanged);
+}
+
+function setMouseDrag() {
+  let startX,
+    startY,
+    delta = 10,
+    isDrag = false;
+  this.onmousedown = mouseDown;
+  this.onmousemove = mouseMove;
+  this.onmouseup = mouseUp;
+  function mouseUp(e) {
+    isDrag = false;
+  }
+  function mouseDown(e) {
+    if (e.target.id == "page-home") {
+      isDrag = true;
+      startX = e.pageX;
+      startY = e.pageY;
+    }
+  }
+  function mouseMove(e) {
+    if ((Math.abs(e.pageX - startX) < delta && Math.abs(e.pageY - startY) < delta) || !isDrag) {
+      return;
+    }
+
+    //mouse pixel coords. xy: current (if MLB down), zw: click
+    material.uniforms.u_mouse.value.x = e.pageX * settings.scale;
+    material.uniforms.u_mouse.value.y = e.pageY * settings.scale;
+    material.uniforms.u_mouse.value.z = 1;
+    material.uniforms.u_mouse.value.w = 1;
+  }
+}
+
+function setMouseParallax() {
+  this.onmousemove = mouseMove;
+  function mouseMove(event) {
+    if (settings.parallaxVal == 0) return;
+
+    const x = (window.innerWidth - event.pageX * settings.parallaxVal) / 90;
+    const y = (window.innerHeight - event.pageY * settings.parallaxVal) / 90;
+
+    container.style.transform = `translateX(${x}px) translateY(${y}px) scale(1.09)`;
+  }
+}
+
+function resetMouse() {
+  this.onmousedown = this.onmousemove = this.onmouseup = null;
 }
 
 async function showTransition() {
