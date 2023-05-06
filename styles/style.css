@@ -196,6 +196,14 @@ label {
   z-index: 2;
 }
 
+#ui-app-customize-heading {
+  position: absolute;
+  top: -175px;
+  left: 15px;
+  opacity: 0;
+  pointer-events: none;
+}
+
 #ui-app-customise-controls {
   position: absolute;
   left: 300px;

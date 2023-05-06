@@ -299,8 +299,23 @@ function setMouseDrag() {
     //mouse pixel coords. xy: current (if MLB down), zw: click
     material.uniforms.u_mouse.value.x = e.pageX * settings.scale;
     material.uniforms.u_mouse.value.y = e.pageY * settings.scale;
-    material.uniforms.u_mouse.value.z = 1;
-    material.uniforms.u_mouse.value.w = 1;
+    material.uniforms.u_mouse.value.z = 0;
+    material.uniforms.u_mouse.value.w = 0;
+  }
+}
+
+function setMouseMove() {
+  this.onmousemove = mouseMove;
+  function mouseMove(e) {
+    if (e.target.id != "page-home") {
+      return;
+    }
+
+    //mouse pixel coords. xy: current (if MLB down), zw: click
+    material.uniforms.u_mouse.value.x = e.pageX * settings.scale;
+    material.uniforms.u_mouse.value.y = e.pageY * settings.scale;
+    material.uniforms.u_mouse.value.z = 0;
+    material.uniforms.u_mouse.value.w = 0;
   }
 }
 
