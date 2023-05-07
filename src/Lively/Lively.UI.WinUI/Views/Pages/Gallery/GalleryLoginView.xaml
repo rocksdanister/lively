@@ -123,7 +123,7 @@
                     ui:Effects.Shadow="{StaticResource CommonShadow}"
                     Command="{Binding AuthGoogleCommand}">
                     <StackPanel Orientation="Horizontal">
-                        <BitmapIcon Foreground="{ThemeResource SystemControlBackgroundBaseHighBrush}" UriSource="ms-appx:///Assets/icons8-google-96.png" />
+                        <FontIcon FontFamily="{StaticResource CustomIconFonts}" Glyph="&#xE90C;" />
                         <TextBlock Margin="5,0,0,0" VerticalAlignment="Center">Google</TextBlock>
                     </StackPanel>
                 </Button>
@@ -135,7 +135,7 @@
                     Command="{Binding AuthGithubCommand}"
                     Visibility="Visible">
                     <StackPanel Orientation="Horizontal">
-                        <BitmapIcon Foreground="{ThemeResource SystemControlBackgroundBaseHighBrush}" UriSource="ms-appx:///Assets/icons8-github-96.png" />
+                        <FontIcon FontFamily="{StaticResource CustomIconFonts}" Glyph="&#xE907;" />
                         <TextBlock Margin="5,0,0,0" VerticalAlignment="Center">Github</TextBlock>
                     </StackPanel>
                 </Button>
