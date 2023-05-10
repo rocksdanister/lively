@@ -136,7 +136,7 @@
     <value>API dokumentace a pomoc</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
-    <value>V poslední době došlo k fatální chybě.
+    <value>V poslední době došlo k fatální chybě s Lively.
 
 Průzkumník Windows se za posledních 30 sekund restartoval! Může se jednat o konflikt mezi Lively a jiným softwarem pro přizpůsobení plochy nebo Windows. Aby se předešlo dalším problémům, všechny tapety jsou ukončeny.</value>
   </data>
@@ -1175,9 +1175,9 @@ Po uplynutí doby nečinnosti použijte jako spořič obrazovky aktuální tapet
     <value>To je prozatím vše..</value>
   </data>
   <data name="DevelopmentOnHold.Message" xml:space="preserve">
-    <value>This feature development is on hold</value>
+    <value>Vývoj této funkce je pozastaven</value>
   </data>
   <data name="WallpaperPluginGroup.Header" xml:space="preserve">
-    <value>Plugins</value>
+    <value>Doplňky</value>
   </data>
 </root>

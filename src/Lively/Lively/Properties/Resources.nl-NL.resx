@@ -121,7 +121,7 @@
     <value>Audio alleen afspelen wanneer bureaublad gefocust is</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
-    <value>Volume niveau van alle achtergronden</value>
+    <value>Geluidsvolume van alle achtergronden</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
     <value>Volume</value>
@@ -463,7 +463,7 @@ Geanimeerde GIF</value>
     <value>Scherm</value>
   </data>
   <data name="SearchBox.PlaceholderText" xml:space="preserve">
-    <value>Zoek</value>
+    <value>Zoeken</value>
   </data>
   <data name="SetWallpaper.Text" xml:space="preserve">
     <value>Als achtergrond instellen</value>
@@ -1167,7 +1167,7 @@ Alle processen: Heavier, Scant alle processen om afspeelmogelijkheden te bepalen
     <value>Dat is alles voor nu..</value>
   </data>
   <data name="DevelopmentOnHold.Message" xml:space="preserve">
-    <value>This feature development is on hold</value>
+    <value>Deze functionaliteit wordt momenteel niet verder ontwikkeld</value>
   </data>
   <data name="WallpaperPluginGroup.Header" xml:space="preserve">
     <value>Plugins</value>

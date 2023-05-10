@@ -1177,9 +1177,9 @@ Edge és la vista web integrada amb Windows 10.</value>
     <value>Això és tot per ara...</value>
   </data>
   <data name="DevelopmentOnHold.Message" xml:space="preserve">
-    <value>This feature development is on hold</value>
+    <value>El desenvolupament d'aquestes funcions està en espera</value>
   </data>
   <data name="WallpaperPluginGroup.Header" xml:space="preserve">
-    <value>Plugins</value>
+    <value>Connectors</value>
   </data>
 </root>
