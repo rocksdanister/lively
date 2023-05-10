@@ -470,7 +470,7 @@ Se ainda não funcionar, abra o Lively novamente ou reinicie o Windows.
     <value>Tela</value>
   </data>
   <data name="SearchBox.PlaceholderText" xml:space="preserve">
-    <value>Procurar</value>
+    <value>Busca</value>
   </data>
   <data name="SetWallpaper.Text" xml:space="preserve">
     <value>Definir como Plano de Fundo</value>

@@ -124,7 +124,7 @@
     <value>Tüm duvar kağıtları için ses seviyesi</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
-    <value>Ana ses</value>
+    <value>Ses Düzeyi</value>
   </data>
   <data name="AudioGroup.Header" xml:space="preserve">
     <value>Ses</value>
@@ -133,12 +133,12 @@
     <value>Çevrimiçi tartışma forumu</value>
   </data>
   <data name="Documentation.Description" xml:space="preserve">
-    <value>API dokümantasyonu ve yardımı</value>
+    <value>API belgeleri ve yardım</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
     <value>Lively ciddi bir sorunla karşılaştı.
 
-Windows Gezgini son 30 saniye içinde iki kez yeniden başlatıldı! Bu, Lively ile diğer masaüstü özelleştirme yazılımları veya Windows arasında bir çakışma olabilir. Daha fazla sorundan kaçınmak için tüm duvar kağıtları durduruldu.</value>
+Windows Gezgini son 30 saniye içinde iki kez yeniden başlatıldı! Bu, Lively ile diğer masaüstü özelleştirme yazılımları veya Windows arasındaki bir çakışmadan kaynaklanmış olabilir. Sorunun devam etmesini engellemek için tüm duvar kağıtları durduruldu.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
     <value>Uyumsuz program tespit edildi, görev çubuğu teması devre dışı bırakıldı.</value>
@@ -147,17 +147,17 @@ Windows Gezgini son 30 saniye içinde iki kez yeniden başlatıldı! Bu, Lively 
     <value>Lively Wallpaper Resmi İnternet Sitesi</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
-    <value>Modern LCD ve LED ekranların çoğu yanma sorunu yaşamaz ve bu nedenle herhangi bir duvar kağıdı ekran koruyucu olarak kullanılabilir.
+    <value>Çoğu modern LCD ve LED ekran yanma (burn-in) sorunu yaşamaz ve bu yüzden bu ekranlarda genelde herhangi bir duvar kağıdı ekran koruyucu olarak kullanılabilir.
 
 Yanmaya duyarlı OLED, Plazma veya CRT ekranlar için, normal hareketli duvar kağıdı ve yanmayı hafifletmesi beklenen genel bir karanlık tema kullanılması tavsiye edilir, ancak bu özellik test edilmemiştir ve etkinliği garanti edilemez.
 
-Lively'nin ekran koruyucularının temel amacı, bilgisayarınıza başka bir özelleştirme katmanı eklemek, ekran koruyucuları yanma koruması olarak kullanmak, riski size ait olmak üzere!</value>
+Lively'nin ekran koruyucularının temel amacı, bilgisayarınıza başka bir özelleştirme katmanı eklemektir, ancak Lively'i yanma koruması için ekran koruyucu olarak kullanmanın riski size aittir!</value>
   </data>
   <data name="ReportBug.Description" xml:space="preserve">
-    <value>Sorun bildir</value>
+    <value>Uygulamada sorun bildir</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
-    <value>Duvar kağıdı olarak ayarlamak için dosya seçin veya URL girin</value>
+    <value>Bir resim seçin</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
     <value>Duvar kağıdı davranışı çalışan uygulamaya göre belirlendi.</value>
@@ -166,61 +166,61 @@ Lively'nin ekran koruyucularının temel amacı, bilgisayarınıza başka bir ö
     <value>İptal etmek istediğinize emin misiniz?</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
-    <value>Duvar kağıdını kütüphaneden silmek istediğinize emin misiniz?</value>
+    <value>Duvar kağıdını kalıcı olarak diskten silmek istediğinize emin misiniz?</value>
   </data>
   <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
     <value>Duvar kağıdını kütüphaneden silmek istediğinize emin misiniz?</value>
   </data>
   <data name="DragDropFile.Text" xml:space="preserve">
-    <value>Dosyaları kütüphaneye sürükleyin ve bırakın.</value>
+    <value>Dosyaları buraya sürükleyin ve bırakın</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
-    <value>Duvar kağıdı olarak dışarıdan uygulama açıyorsunuz.
-Kötü niyetli uygulamalar sisteminize ciddi zararlar verebilir.
-Eğer güvenilir bir kaynak olduğuna inanıyorsanız devam edin.</value>
+    <value>Başka bir duvar kağıdı uygulaması açıyorsunuz.
+Şüpheli uygulamalar kötü amaçlı yazılımlar ve virüs içerebilir ve sisteminize ciddi zararlar verebilir.
+Sadece uygulama güvenilir bir kaynaktan geliyorsa devam edin.</value>
   </data>
   <data name="MinimizedTray.Text" xml:space="preserve">
-    <value>Lively durum çubuğuna küçültüldü, Lively ikonuna sağ tıklayarak devam edin.</value>
+    <value>Lively bildirim alanına küçültüldü, Lively'e geri dönmek için Lively simgesine sağ tıklayın.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
-    <value>Ayarların geçerli olması için Lively'yi yeniden başlatın.</value>
+    <value>Ayarların uygulanması için Lively'i yeniden başlatın</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
     <value>Lütfen devam etmeden önce biraz bekleyin.</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
-    <value>Kayıt başlatmak için tıklayın</value>
+    <value>Kayda başlamak için tıklayın</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
-    <value>Geçmiş duvar kağıtları yükleniyor, Lütfen Bekleyin...</value>
+    <value>Şu anda önceki duvar kağıtları geri yükleniyor, lütfen bekleyin...</value>
   </data>
   <data name="DescriptionScreenLayout" xml:space="preserve">
-    <value>Ekranı seç</value>
+    <value>Ekran seçimi</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
-    <value>Yazılımın yeni sürümü mevcut!</value>
+    <value>Yeni sürüm mevcut!</value>
   </data>
   <data name="DescriptionWebpageLoad" xml:space="preserve">
     <value>Yüklemek için website urlsi girin, shadertoy.com shader linkleri destekleniyor.</value>
   </data>
   <data name="DescriptionWelcomeWizard" xml:space="preserve">
-    <value>Kurulum sihirbazı Lively kurulumunu başlatacak.</value>
+    <value>Bu sihirbaz, Lively kurulumunda size yardımcı olacak</value>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>Windows N/KN versiyonunuzda video duvar kağıtlarının oynatılabilmesi için ek çözümleyicilerin indirilmesi gerekiyor.</value>
+    <value>Windows N/KN sürümü kullandığınız için, duvar kağıtlarında video oynatmayı desteklemek için ek codec bileşenlerinin indirilmesi gerekir</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
     <value>Bağışta bulunarak yazılımı destekle!</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
     <value>Lively'nin beta sürümüne geçmek üzeresiniz.
-Beta sürümünde hatalar bulunabilir ve sıklıkla güncellemeler yapılabilir!</value>
+Beta sürümünde hatalar olabilir ve sık sık güncelleme gelebilir.</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
     <value>Sistem tepsisinde ikon görünürlüğü, Lively ikon gizli bir şekilde çalışmaya devam edecek.</value>
   </data>
   <data name="HideSysTray.Header" xml:space="preserve">
-    <value>Kontrol çubuğu ikonu</value>
+    <value>Bildirim alanı simgesi</value>
   </data>
   <data name="Language.Description" xml:space="preserve">
     <value>Lively yeni dili uygulamak için yeniden başlatılacak.</value>
@@ -274,7 +274,7 @@ Daha önce çalışan duvar kağıdını geri yüklemek ister misiniz?</value>
     <value>Başlangıçta çalıştır</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
-    <value>bu derdime inan yar</value>
+    <value>Ekle</value>
   </data>
   <data name="TextAllFiles" xml:space="preserve">
     <value>Tüm dosyalar</value>
@@ -304,7 +304,7 @@ Daha önce çalışan duvar kağıdını geri yüklemek ister misiniz?</value>
     <value>Kapat</value>
   </data>
   <data name="CloseWallpapers.Label" xml:space="preserve">
-    <value>Duvar Kağıtlarını kapat</value>
+    <value>Kapat</value>
   </data>
   <data name="TextCompleted" xml:space="preserve">
     <value>Tamamlandı!</value>

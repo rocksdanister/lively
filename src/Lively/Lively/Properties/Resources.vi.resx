@@ -154,7 +154,7 @@ Còn đối với màn hình OLED, Plasma hoặc CRT thì sẽ có thể dễ b�
 Mục đích chính của Lively là để làm cho màn hình desktop của bạn đẹp hơn, nên trong trường hợp sử dụng Lively để làm màn hình chờ thì Lively sẽ không chịu trách nhiệm!</value>
   </data>
   <data name="ReportBug.Description" xml:space="preserve">
-    <value>Báo lỗi</value>
+    <value>Báo lỗi chương trình</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
     <value>Chọn file</value>

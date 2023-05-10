@@ -462,7 +462,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>المعالجة</value>
   </data>
   <data name="TextRemove" xml:space="preserve">
-    <value>إزلة</value>
+    <value>إزالة</value>
   </data>
   <data name="TextRule" xml:space="preserve">
     <value>القاعدة</value>
@@ -637,8 +637,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>تعيين صورة خلفية متحركة كخلفية سطح المكتب.</value>
   </data>
   <data name="DisplayPauseRule.Description" xml:space="preserve">
-    <value>لكل: وقفة خلفية فقط على الشاشة التي تركز التطبيق/ملء الشاشة.
-الكل: وقفة الخلفية على جميع الشاشة\ات إذا كان أي تطبيق يركز/ يملأ الشاشة.</value>
+    <value>إيقاف الخلفية مؤقتا على جميع الشاشات أو الشاشة التي يركز عليها التطبيق فقط</value>
   </data>
   <data name="ExportLogs.Description" xml:space="preserve">
     <value>إنشاء ملف تقرير السجل.</value>
@@ -1178,9 +1177,9 @@ Edge هو عرض الويب المدمج في windows 10.</value>
     <value>That's all for now..</value>
   </data>
   <data name="DevelopmentOnHold.Message" xml:space="preserve">
-    <value>This feature development is on hold</value>
+    <value>تطوير هذه الميزة قيد الانتظار</value>
   </data>
   <data name="WallpaperPluginGroup.Header" xml:space="preserve">
-    <value>Plugins</value>
+    <value>الإضافات</value>
   </data>
 </root>
