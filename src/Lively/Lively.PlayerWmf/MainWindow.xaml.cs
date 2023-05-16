@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Interop;
+using System.Windows.Media;
 
 namespace Lively.PlayerWmf
 {
@@ -32,7 +33,7 @@ namespace Lively.PlayerWmf
             {
                 mePlayer.LoadedBehavior = MediaState.Manual;
                 mePlayer.Source = new Uri(opts.FilePath);
-                //mePlayer.Stretch = (Stretch)opts.StretchMode;
+                mePlayer.Stretch = (Stretch)opts.StretchMode;
                 mePlayer.MediaEnded += MePlayer_MediaEnded;
                 mePlayer.MediaFailed += MePlayer_MediaFailed;
                 mePlayer.MediaOpened += (s, e) => App.WriteToParent(new LivelyMessageWallpaperLoaded() { Success = true });
