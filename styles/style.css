@@ -172,6 +172,21 @@ label {
   top: 0px;
 }
 
+#ui-app-titlebar-badge {
+  position: absolute;
+  display: block;
+  z-index: 1;
+  right: 14.5px;
+  top: 12px;
+  filter: drop-shadow(5px 0px 5px rgba(0, 0, 0, 0.5));
+  transition: 0.5s;
+}
+
+#ui-app-titlebar-badge:hover {
+  filter: drop-shadow(5px 0px 5px rgba(0, 0, 0, 0.5)) brightness(1.05);
+  transition: 0.5s;
+}
+
 #ui-app-titlebar img {
   padding: 15px 0px 0px 30px;
   width: 20px;
