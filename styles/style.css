@@ -176,14 +176,14 @@ label {
   position: absolute;
   display: block;
   z-index: 1;
-  right: 14.5px;
+  right: -1.5px;
   top: 12px;
-  filter: drop-shadow(5px 0px 5px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(-2.5px 0px 2.5px rgba(0, 0, 0, 0.5));
   transition: 0.5s;
 }
 
 #ui-app-titlebar-badge:hover {
-  filter: drop-shadow(5px 0px 5px rgba(0, 0, 0, 0.5)) brightness(1.05);
+  filter: drop-shadow(-2.5px 0px 2.5px rgba(0, 0, 0, 0.5)) brightness(1.1);
   transition: 0.5s;
 }
 
@@ -223,6 +223,54 @@ label {
   position: absolute;
   left: 300px;
   top: 125px;
+}
+
+.ui-app-body {
+  margin-left: 15px;
+  margin-top: 5px;
+  position: relative;
+}
+
+.ui-app-body-main {
+  width: 770px;
+  height: 709px;
+  border-radius: 0px 0px 8px 8px;
+  -webkit-backdrop-filter: blur(20px) saturate(125%);
+  backdrop-filter: blur(20px) saturate(125%);
+  background-color: rgba(247, 249, 252, 0.8);
+  box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+.ui-app-body-top {
+  width: 770px;
+  height: 80px;
+  border-radius: 8px 8px 0px 0px;
+  -webkit-backdrop-filter: blur(20px) saturate(125%);
+  backdrop-filter: blur(20px) saturate(125%);
+  background-color: rgba(238, 244, 249, 0.65);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.ui-app-overlay {
+  position: absolute;
+  margin-left: 15px;
+  margin-top: 5px;
+  width: 770px;
+  height: 709px;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.ui-app-dialog {
+  margin-left: 140px;
+  margin-top: 80px;
+  border-radius: 8px;
+  width: 520px;
+  height: 650px;
+  background-color: rgb(250, 250, 250);
+  filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.5));
 }
 
 .ui-app-img {

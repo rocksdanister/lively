@@ -75,6 +75,7 @@
       <div class="ui-app">
         <!-- app wallpaper library -->
         <div id="ui-app-library">
+          <div class="ui-app-overlay"></div>
           <!-- <div class="down-arrow" onClick="scrollToElement('page-home');"></div> -->
           <div id="ui-app-titlebar">
             <img src="assets/logo.webp" />
@@ -92,7 +93,11 @@
             </map>
             <img src="assets/store_award_badge.webp" width="155" usemap="#ms-store-award-map" />
           </div>
-          <img src="assets/app.webp" class="ui-app-img" draggable="false" />
+          <div class="ui-app-body">
+            <div class="ui-app-body-top"></div>
+            <div class="ui-app-body-main"></div>
+          </div>
+          <!-- <img src="assets/app.webp" class="ui-app-img" draggable="false" /> -->
           <ul id="wallpapers" class="wallpapers">
             <li id="rain" class="library">
               <img
@@ -128,7 +133,8 @@
             <h1>It's Magic</h1>
             <h3>Anything is possible, go on try it..</h3>
           </div>
-          <img src="assets/app_dialog.webp" class="ui-app-dialog-img" draggable="false" />
+          <div class="ui-app-dialog"></div>
+          <!-- <img src="assets/app_dialog.webp" class="ui-app-dialog-img" draggable="false" /> -->
           <div id="ui-app-customise-controls">
             <div id="ui-app-customise-controls-test" style="display: none">
               <p class="slider-label">Size</p>
@@ -203,7 +209,7 @@
                 </div>
               </div>
               <!-- <button class="fluent-button" onclick="openFilePicker()">Change background</button> -->
-              <div>
+              <!-- <div>
                 <input
                   autocomplete="off"
                   type="checkbox"
@@ -211,7 +217,7 @@
                   onchange="setProperty('u_lightning',this.checked ? true : false)"
                 />
                 <label class="checkbox-label">Lightning</label>
-              </div>
+              </div> -->
               <div>
                 <input
                   autocomplete="off"

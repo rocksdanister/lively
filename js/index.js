@@ -52,7 +52,8 @@ $(window).scroll(function () {
 
   $(".heading").css("opacity", alpha);
   $(".ui-app").css("margin-top", marginTop);
-  $("#ui-app-library").css("filter", `brightness(${1 - (1 - alpha) / 4})`);
+  //$("#ui-app-library").css("filter", `brightness(${1 - (1 - alpha) / 4})`);
+  $(".ui-app-overlay").css("background-color", `rgba(0, 0, 0, ${(1 - alpha) / 4})`);
   $("#ui-app-customize-heading").css("opacity", 1 - alpha);
   $("#ui-app-customise").css("opacity", 1 - alpha);
   setProperty("u_brightness", 0.75 + (1 - alpha) / 8);
@@ -91,7 +92,7 @@ function callbackFunc(entries, observer) {
         break;
       case "footer":
         //todo
-        break;  
+        break;
     }
   });
 }
