@@ -158,22 +158,26 @@ void main() {
     vec2 n = vec2(cx - c.x, cy - c.x);		// expensive normals
     #endif
 
-    vec3 col = texture2D(u_tex0, UV + n).rgb;
-    vec4 texCoord = vec4(UV.x + n.x, UV.y + n.y, 0, 1.0 * 25. * 0.01 / 7.);
+    float minBlur = 2.;
+    float maxBlur = mix(3., 6., rainAmount);
+    float focus = mix(maxBlur-c.y, minBlur, S(.1, .2, c.x));
+    vec3 col = textureLod(u_tex0, UV + n, u_blur ? focus : 0.).rgb;
+    //vec3 col = texture2D(u_tex0, UV + n).rgb;
 
     if(u_blur) {
-        float blur = 0.4 * 0.01;
-        int blurIterations = 16;
+        float blur = 0.004;
+        int iterations = 16;
         float a = N21(gl_FragCoord.xy) * 6.2831;
-        for(int m = 0; m < blurIterations; m++) {
+        vec4 texCoord = vec4(UV.x + n.x, UV.y + n.y, 0, 1.0 * 25. * 0.01 / 7.);
+        for(int m = 0; m < iterations; m++) {
             vec2 offs = vec2(sin(a), cos(a)) * blur;
             float d = fract(sin((float(m) + 1.) * 546.) * 5424.);
             d = sqrt(d);
             offs *= d;
-            col += texture2D(u_tex0, texCoord.xy + vec2(offs.x, offs.y)).xyz;
+            col += textureLod(u_tex0, texCoord.xy + vec2(offs.x, offs.y), focus).xyz;
             a++;
         }
-        col /= float(blurIterations);
+        col /= float(iterations);
     }
 
     t = (T + 3.) * .5;			// make time sync with first lightnoing
