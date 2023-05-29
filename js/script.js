@@ -123,7 +123,7 @@ async function init() {
 
   //preload default shader texture for transition effect
   shaders[1].uniform.u_tex0_resolution.value = new THREE.Vector2(1920, 1080);
-  shaders[1].uniform.u_tex0.value = await new THREE.TextureLoader().loadAsync("media/snow_landscape.webp");
+  shaders[1].uniform.u_tex0.value = await new THREE.TextureLoader().loadAsync("media/snow_tree.webp");
 
   await setScene("rain");
   render(); //since init is async
@@ -247,7 +247,7 @@ async function setScene(name, geometry = quad) {
         setScale(shaders[1].scale);
         setMouseDrag();
         material.uniforms.u_tex0_resolution.value = new THREE.Vector2(1920, 1080);
-        material.uniforms.u_tex0.value = await new THREE.TextureLoader().loadAsync("media/snow_landscape.webp");
+        material.uniforms.u_tex0.value = await new THREE.TextureLoader().loadAsync("media/snow_tree.webp");
       }
       break;
     case "clouds":
