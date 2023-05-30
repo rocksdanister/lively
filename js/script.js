@@ -426,8 +426,11 @@ document.getElementById("filePicker").addEventListener("change", function () {
     );
     material.uniforms.u_tex0.value = videoTexture;
   }
-  //always blur user image
+  //always blur user content
   material.uniforms.u_blur.value = true;
+
+  //https://stackoverflow.com/questions/4109276/how-to-detect-input-type-file-change-for-the-same-file
+  this.value = null;
 });
 
 //helpers
