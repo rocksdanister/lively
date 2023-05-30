@@ -20,6 +20,7 @@ uniform float u_zoom;
 uniform bool u_panning;
 uniform bool u_post_processing;
 uniform bool u_lightning;
+uniform vec4 u_mouse;
 
 #define S(a, b, t) smoothstep(a, b, t)
 //#define USE_POST_PROCESSING
@@ -125,7 +126,8 @@ float N21(vec2 p) {
 void main() {
     vec2 uv = (gl_FragCoord.xy - .5 * u_resolution.xy) / u_resolution.y;
     vec2 UV = gl_FragCoord.xy / u_resolution.xy;//-.5;
-    float T = u_time;
+    vec2 M = u_mouse.xy / u_resolution.xy;
+    float T = u_time + (M.y + M.x) * 4.;
 
     //uniform texture scaling
     float screenAspect = u_resolution.x / u_resolution.y;
@@ -160,7 +162,7 @@ void main() {
 
     float minBlur = 2.;
     float maxBlur = mix(3., 6., rainAmount);
-    float focus = mix(maxBlur-c.y, minBlur, S(.1, .2, c.x));
+    float focus = mix(maxBlur - c.y, minBlur, S(.1, .2, c.x));
     vec3 col = textureLod(u_tex0, UV + n, u_blur ? focus : 0.).rgb;
     //vec3 col = texture2D(u_tex0, UV + n).rgb;
 

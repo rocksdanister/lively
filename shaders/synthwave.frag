@@ -14,6 +14,7 @@ uniform float u_sun;
 uniform float u_plane;
 uniform float u_draw;
 uniform bool u_crt_effect;
+uniform vec4 u_mouse;
 
 float time() {
     return 1000. + u_time / 4.;
@@ -305,7 +306,9 @@ void main() {
     vec2 p = -1. + 2. * q;
     p.x *= u_resolution.x / u_resolution.y;
     vec3 col = vec3(0.0);
-    col = effect(p, q);
+    vec2 M = u_mouse.xy / u_resolution.xy;
+    float zoom = M.x + M.y > 0. ? M.x + M.y : 1.;
+    col = effect(p * zoom, q);
     col *= smoothstep(0.0, 4.0, time());
     col = postProcess(col, q);
     gl_FragColor = vec4(col * u_brightness, 1.0);
