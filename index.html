@@ -49,12 +49,7 @@
             <a text="Download" onClick="scrollToElement('page-download');">Download</a>
           </li>
           <li>
-            <a
-              text="Docs"
-              href="https://github.com/rocksdanister/lively/wiki/Getting-Started"
-              target="_blank"
-              >Docs</a
-            >
+            <a text="Docs" href="https://github.com/rocksdanister/lively/wiki/Getting-Started" target="_blank">Docs</a>
           </li>
         </ul>
       </div>
@@ -509,6 +504,13 @@
   <script src="js/controls.js"></script>
   <script src="js/script.js"></script>
   <script src="js/index.js"></script>
-  <!-- analytics -->
-  <script data-goatcounter="https://rocksdanister.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  <script defer>
+    if (window.location.href.indexOf("https://www.rocksdanister.com/lively/") > -1) {
+      let script = document.createElement("script");
+      script.setAttribute("src", "//gc.zgo.at/count.js");
+      script.setAttribute("data-goatcounter", "https://rocksdanister.goatcounter.com/count");
+      script.setAttribute("async", "");
+      document.body.appendChild(script);
+    }
+  </script>
 </html>

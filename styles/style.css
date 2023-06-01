@@ -552,6 +552,7 @@ li.card p {
   bottom: 0;
   z-index: 1;
 }
+
 .section a::before {
   border-radius: 2rem;
   left: 0;
@@ -560,13 +561,17 @@ li.card p {
 .nav li {
   padding-left: 5px;
 }
+
 .nav li a {
   position: relative;
+  text-decoration: none;
   transition: opacity 0.5s;
 }
+
 .nav li a:not(.active) {
   opacity: 0.5;
 }
+
 .nav li a:hover:not(.active) {
   opacity: 1;
 }
