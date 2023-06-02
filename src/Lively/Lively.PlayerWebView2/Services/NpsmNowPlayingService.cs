@@ -88,7 +88,7 @@ namespace Lively.PlayerWebView2.Services
                                     //Thumbnail available (stream becomes available.)
                                     //Thumbnail updated (stream updated to latest art.)
                                     if (model is null
-                                        || (media.Title != model.Title && media.Artist != model.Artist)
+                                        || (media.Title != model.Title || media.Artist != model.Artist)
                                         || (model.Thumbnail is null && thumbnailString != null)
                                         || (model.Thumbnail != null && thumbnailString != null && !thumbnailString.Equals(model.Thumbnail)))
                                     {
