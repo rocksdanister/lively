@@ -697,7 +697,44 @@ li.card p {
   }
 }
 
-/*portrait tweaks*/
+/*min desktop size*/
+@media screen and (max-height: 830px) {
+  /*customise ui*/
+  #ui-app-customise-controls {
+    top: 90px;
+  }
+
+  #ui-app-customize-heading {
+    top: -125px;
+  }
+
+  #ui-app-customize-heading h1 {
+    font-size: 30px;
+  }
+
+  #ui-app-customize-heading h3 {
+    font-size: 18px;
+  }
+
+  /*home font*/
+  .heading {
+    padding: 10px;
+  }
+
+  .heading h1 {
+    font-size: 30px;
+  }
+
+  .heading h3 {
+    font-size: 18px;
+  }
+
+  .heading p {
+    font-size: 14px;
+  }
+}
+
+/*portrait mode*/
 @media screen and (max-width: 768px) {
   /*hide ui, background customise*/
   .ui-app {
