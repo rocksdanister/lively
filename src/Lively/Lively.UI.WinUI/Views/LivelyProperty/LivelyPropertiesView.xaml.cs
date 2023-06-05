@@ -165,6 +165,10 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                     {
                         slider.StepFrequency = (double)item.Value["step"];
                     }
+                    if (item.Value["help"] != null && !string.IsNullOrWhiteSpace(item.Value["help"].ToString()))
+                    {
+                        ToolTipService.SetToolTip(slider, new ToolTip() { Content = (string)item.Value["help"] });
+                    }
                     slider.ValueChanged += XamlSlider_ValueChanged;
                     obj = slider;
                 }
@@ -180,6 +184,10 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                         HorizontalAlignment = HorizontalAlignment.Left,
                         Margin = margin
                     };
+                    if (item.Value["help"] != null && !string.IsNullOrWhiteSpace(item.Value["help"].ToString()))
+                    {
+                        ToolTipService.SetToolTip(tb, new ToolTip() { Content = (string)item.Value["help"] });
+                    }
                     tb.TextChanged += Textbox_TextChanged;
                     obj = tb;
                 }
@@ -194,6 +202,10 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                         HorizontalAlignment = HorizontalAlignment.Left,
                         Margin = margin
                     };
+                    if (item.Value["help"] != null && !string.IsNullOrWhiteSpace(item.Value["help"].ToString()))
+                    {
+                        ToolTipService.SetToolTip(btn, new ToolTip() { Content = (string)item.Value["help"] });
+                    }
                     btn.Click += Btn_Click;
                     obj = btn;
                 }
@@ -247,6 +259,10 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                         Name = item.Key,
                         Orientation = Orientation.Horizontal
                     };
+                    if (item.Value["help"] != null && !string.IsNullOrWhiteSpace(item.Value["help"].ToString()))
+                    {
+                        ToolTipService.SetToolTip(sb, new ToolTip() { Content = (string)item.Value["help"] });
+                    }
                     cpickerPanel.Children.Add(sb);
                     cpickerPanel.Children.Add(eyeDropBtn);
                     cpicker.ColorChanged += Cpicker_ColorChanged;
@@ -265,6 +281,10 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                         MinWidth = minWidth,
                         Margin = margin
                     };
+                    if (item.Value["help"] != null && !string.IsNullOrWhiteSpace(item.Value["help"].ToString()))
+                    {
+                        ToolTipService.SetToolTip(chk, new ToolTip() { Content = (string)item.Value["help"] });
+                    }
                     chk.Checked += Checkbox_CheckedChanged;
                     chk.Unchecked += Checkbox_CheckedChanged;
                     obj = chk;
@@ -283,6 +303,10 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                     foreach (var dropItem in item.Value["items"])
                     {
                         cmbBox.Items.Add(dropItem.ToString());
+                    }
+                    if (item.Value["help"] != null && !string.IsNullOrWhiteSpace(item.Value["help"].ToString()))
+                    {
+                        ToolTipService.SetToolTip(cmbBox, new ToolTip() { Content = (string)item.Value["help"] });
                     }
                     cmbBox.SelectionChanged += XamlCmbBox_SelectionChanged;
                     obj = cmbBox;
@@ -303,6 +327,10 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                         MinWidth = minWidth,
                         MinHeight = 35,
                     };
+                    if (item.Value["help"] != null && !string.IsNullOrWhiteSpace(item.Value["help"].ToString()))
+                    {
+                        ToolTipService.SetToolTip(cmbBox, new ToolTip() { Content = (string)item.Value["help"] });
+                    }
 
                     try
                     {
@@ -354,20 +382,24 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                     continue;
                 }
 
-                //Title
+                //Title for Slider, ComboBox..
                 if (item.Value["text"] != null &&
                     !uiElementType.Equals("checkbox", StringComparison.OrdinalIgnoreCase) &&
                     !uiElementType.Equals("label", StringComparison.OrdinalIgnoreCase))
                 {
-
-                    AddUIElement(new TextBlock
+                    var tb = new TextBlock
                     {
                         Text = item.Value["text"].ToString(),
                         HorizontalAlignment = HorizontalAlignment.Left,
                         //MaxWidth = minWidth,
                         MinWidth = minWidth,
                         Margin = margin
-                    });
+                    };
+                    AddUIElement(tb);
+                    if (item.Value["help"] != null && !string.IsNullOrWhiteSpace(item.Value["help"].ToString()))
+                    {
+                        ToolTipService.SetToolTip(tb, new ToolTip() { Content = (string)item.Value["help"] });
+                    }
                 }
 
                 AddUIElement(obj);
