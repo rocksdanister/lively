@@ -27,6 +27,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using Microsoft.UI.Dispatching;
 using static Lively.Common.Helpers.Pinvoke.NativeMethods;
+using System.Xml.Linq;
 
 
 namespace Lively.UI.WinUI.Views.LivelyProperty
@@ -44,9 +45,6 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
         //UI
         private readonly Thickness margin = new Thickness(0, 0, 20, 10);
         private readonly double minWidth = 200;
-        //Color picker
-        private SplitButton currColorPickerSplitBtn;
-        private ColorPicker currColorPicker;
 
         private readonly IUserSettingsClient userSettings;
         private readonly IDesktopCoreClient desktopCore;
@@ -144,7 +142,7 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                 return;
             }
 
-            dynamic obj = null;
+            UIElement obj = null;
             foreach (var item in livelyPropertyCopyData)
             {
                 string uiElementType = item.Value["type"].ToString();
@@ -212,10 +210,14 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                 else if (uiElementType.Equals("color", StringComparison.OrdinalIgnoreCase))
                 {
                     var selectedColorBrush = GetSolidColorBrush(item.Value["value"].ToString());
+                    var panel = new StackPanel()
+                    {
+                        Name = item.Key,
+                        Orientation = Orientation.Horizontal
+                    };
                     var cpicker = new ColorPicker
                     {
                         Tag = item.Key, //used for searching the splitbtn
-                        Name = "cpicker",
                         ColorSpectrumShape = ColorSpectrumShape.Box,
                         IsMoreButtonVisible = false,
                         IsColorSliderVisible = true,
@@ -227,7 +229,7 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                     };
                     var eyeDropBtn = new Button()
                     {
-                        Tag = item.Key, //used for searching the splitbtn
+                        //Tag = item.Key, //used for searching the splitbtn
                         //HorizontalAlignment = HorizontalAlignment.Right,
                         Margin = new Thickness(-15,0,0,10),
                         Width = 43,
@@ -240,7 +242,7 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                     };
                     var sb = new SplitButton
                     {
-                        Name = item.Key,
+                        //Name = item.Key,
                         Margin = margin,
                         Content = new Border
                         {
@@ -254,20 +256,15 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                             Content = cpicker,
                         },
                     };
-                    var cpickerPanel = new StackPanel() 
-                    {
-                        Name = item.Key,
-                        Orientation = Orientation.Horizontal
-                    };
                     if (item.Value["help"] != null && !string.IsNullOrWhiteSpace(item.Value["help"].ToString()))
                     {
                         ToolTipService.SetToolTip(sb, new ToolTip() { Content = (string)item.Value["help"] });
                     }
-                    cpickerPanel.Children.Add(sb);
-                    cpickerPanel.Children.Add(eyeDropBtn);
+                    panel.Children.Add(sb);
+                    panel.Children.Add(eyeDropBtn);
                     cpicker.ColorChanged += Cpicker_ColorChanged;
                     eyeDropBtn.Click += EyeDropBtn_Click;
-                    obj = cpickerPanel;
+                    obj = panel;
                 }
                 else if (uiElementType.Equals("checkbox", StringComparison.OrdinalIgnoreCase))
                 {
@@ -322,10 +319,19 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                     };
                     var cmbBox = new ComboBox
                     {
-                        Tag = item.Key,
+                        //Tag = item.Key,
                         MaxWidth = minWidth,
                         MinWidth = minWidth,
                         MinHeight = 35,
+                    };
+                    var fileOpenBtn = new Button()
+                    {
+                        //Tag = item.Key,
+                        Content = new FontIcon
+                        {
+                            Glyph = "\uE8E5",
+                        },
+                        Margin = new Thickness(5, 0, 0, 0),
                     };
                     if (item.Value["help"] != null && !string.IsNullOrWhiteSpace(item.Value["help"].ToString()))
                     {
@@ -349,19 +355,9 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                         Logger.Error($"FolderDropDown({item.Key}) failed to initialize: {ie1.Message}");
                     }
                     cmbBox.SelectionChanged += XamlFolderCmbBox_SelectionChanged;
-
-                    var folderDropDownOpenFileBtn = new Button()
-                    {
-                        Tag = item.Key,
-                        Content = new FontIcon
-                        {
-                            Glyph = "\uE8E5",
-                        },
-                        Margin = new Thickness(5,0,0,0),
-                    };
-                    folderDropDownOpenFileBtn.Click += FolderDropDownOpenFileBtn_Click;
+                    fileOpenBtn.Click += FolderDropDownOpenFileBtn_Click;
                     panel.Children.Add(cmbBox);
-                    panel.Children.Add(folderDropDownOpenFileBtn);
+                    panel.Children.Add(fileOpenBtn);
                     obj = panel;
                 }
                 else if (uiElementType.Equals("label", StringComparison.OrdinalIgnoreCase))
@@ -406,7 +402,7 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
             }
         }
 
-        private void AddUIElement(dynamic obj) => uiPanel.Children.Add(obj);
+        private void AddUIElement(UIElement obj) => uiPanel.Children.Add(obj);
 
         #endregion //init
 
@@ -428,20 +424,6 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
 
         #region dropdown
 
-        private void XamlFolderCmbBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            try
-            {
-                var menuItem = (ComboBox)sender;
-                var propertyName = menuItem.Tag.ToString();
-                var filePath = Path.Combine(livelyPropertyCopyData[propertyName]["folder"].ToString(), menuItem.SelectedItem.ToString()); //filename is unique.
-                WallpaperSendMsg(new LivelyFolderDropdown() { Name = propertyName, Value = filePath });
-                livelyPropertyCopyData[propertyName]["value"] = menuItem.SelectedItem.ToString();
-                UpdatePropertyFile();
-            }
-            catch { }
-        }
-
         private void XamlCmbBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
@@ -454,31 +436,33 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
             catch { }
         }
 
+        private void XamlFolderCmbBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                var menuItem = (ComboBox)sender;
+                var propertyName = (menuItem.Parent as StackPanel).Name;
+                var filePath = Path.Combine(livelyPropertyCopyData[propertyName]["folder"].ToString(), menuItem.SelectedItem.ToString()); //filename is unique.
+                WallpaperSendMsg(new LivelyFolderDropdown() { Name = propertyName, Value = filePath });
+                livelyPropertyCopyData[propertyName]["value"] = menuItem.SelectedItem.ToString();
+                UpdatePropertyFile();
+            }
+            catch { }
+        }
+
         private async void FolderDropDownOpenFileBtn_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 var btn = sender as Button;
-                //find the folderdropdown control..
-                ComboBox cmbBox = null;
-                foreach (object element in uiPanel.Children)
-                {
-                    if ((element as FrameworkElement).Name == btn.Tag.ToString())
-                    {
-                        var panel = (StackPanel)element;
-                        cmbBox = (ComboBox)panel.Children[0];
-                        break;
-                    }
-                }
-                if (cmbBox == null)
-                {
-                    return;
-                }
+                //find folder selection ComboBox
+                var panel = btn.Parent as StackPanel;
+                var cmbBox = panel.Children[0] as ComboBox;
 
                 foreach (var lp in livelyPropertyCopyData)
                 {
                     string uiElementType = lp.Value["type"].ToString();
-                    if (uiElementType.Equals("folderDropdown", StringComparison.OrdinalIgnoreCase) && btn.Tag.ToString() == lp.Key)
+                    if (uiElementType.Equals("folderDropdown", StringComparison.OrdinalIgnoreCase) && panel.Name == lp.Key)
                     {
                         var filePicker = new FileOpenPicker();
                         filePicker.SetOwnerWindow(App.StartFlags.TrayWidget ? new Window() : App.Services.GetRequiredService<MainWindow>());
@@ -550,25 +534,24 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
 
         #region color picker
 
+
         private void Cpicker_ColorChanged(ColorPicker sender, ColorChangedEventArgs args)
         {
             try
             {
-                StackPanel stackPanel = null;
+                StackPanel panel = null;
                 foreach (object element in uiPanel.Children)
                 {
                     if ((element as FrameworkElement).Name == sender.Tag.ToString())
                     {
-                        stackPanel = (StackPanel)element;
+                        panel = (StackPanel)element;
                         break;
                     }
                 }
-                if (stackPanel == null)
-                {
+                if (panel is null)
                     return;
-                }
 
-                Border border = (Border)((SplitButton)stackPanel.Children[0]).Content;
+                var border = (panel.Children[0] as SplitButton).Content as Border;
                 border.Background = new SolidColorBrush(Color.FromArgb(
                     255,
                     args.NewColor.R,
@@ -576,67 +559,45 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                     args.NewColor.B
                 ));
 
-                WallpaperSendMsg(new LivelyColorPicker() { Name = stackPanel.Name, Value = ToHexValue(args.NewColor) });
-                livelyPropertyCopyData[stackPanel.Name]["value"] = ToHexValue(args.NewColor);
+                WallpaperSendMsg(new LivelyColorPicker() { Name = panel.Name, Value = ToHexValue(args.NewColor) });
+                livelyPropertyCopyData[panel.Name]["value"] = ToHexValue(args.NewColor);
                 UpdatePropertyFile();
-
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                Logger.Error(ex);
+                Logger.Error(e);
             }
-          
         }
 
         private void EyeDropBtn_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                var eyeDropBtn = sender as Button;
-                StackPanel stackPanel = null;
-                foreach (object element in uiPanel.Children)
-                {
-                    if ((element as FrameworkElement).Name == eyeDropBtn.Tag.ToString())
-                    {
-                        stackPanel = (StackPanel)element;
-                        break;
-                    }
-                }
-                if (stackPanel == null)
-                {
-                    return;
-                }
-                currColorPickerSplitBtn = (SplitButton)stackPanel.Children[0];
-                currColorPicker = (ColorPicker)(((Flyout)currColorPickerSplitBtn.Flyout).Content);
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex);
-            }
-            
+            var stackPanel = (sender as Button).Parent as StackPanel;
+            var splitButton = stackPanel.Children[0] as SplitButton;
+            var colorPicker = (splitButton.Flyout as Flyout).Content as ColorPicker;
+
             var eyeDropper = new ColorEyeDropWindow();
             eyeDropper.Activate();
             eyeDropper.Closed += (_, _) =>
             {
-                if (eyeDropper.SelectedColor != null && currColorPicker != null && currColorPickerSplitBtn != null)
+                if (eyeDropper.SelectedColor != null && colorPicker != null && splitButton != null)
                 {
                     this.DispatcherQueue.TryEnqueue(() => {
                         try
                         {
                             var color = (Color)eyeDropper.SelectedColor;
-                            Border border = (Border)currColorPickerSplitBtn.Content;
+                            var border = splitButton.Content as Border;
                             border.Background = new SolidColorBrush(Color.FromArgb(
                                 255,
                                 color.R,
                                 color.G,
                                 color.B
                                 ));
-                            currColorPicker.Color = color; //ColorChanged event fire.
+                            colorPicker.Color = color; //ColorChanged event fire.
                         }
                         finally
                         {
-                            currColorPicker = null;
-                            currColorPickerSplitBtn = null;
+                            colorPicker = null;
+                            splitButton = null;
                         }
                     });
                 }
