@@ -738,6 +738,11 @@ li.card p {
     scale: 0.75;
     margin-bottom: -35px;
   }
+
+  /*dropdown open up*/
+  .dropdown-content {
+    bottom: 100%;
+  }
 }
 
 /*portrait mode*/
