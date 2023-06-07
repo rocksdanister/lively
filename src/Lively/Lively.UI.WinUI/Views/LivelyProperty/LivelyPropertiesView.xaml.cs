@@ -217,7 +217,7 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                     };
                     var cpicker = new ColorPicker
                     {
-                        Tag = item.Key, //used for searching the splitbtn
+                        Tag = panel, //used for updating border color
                         ColorSpectrumShape = ColorSpectrumShape.Box,
                         IsMoreButtonVisible = false,
                         IsColorSliderVisible = true,
@@ -539,18 +539,7 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
         {
             try
             {
-                StackPanel panel = null;
-                foreach (object element in uiPanel.Children)
-                {
-                    if ((element as FrameworkElement).Name == sender.Tag.ToString())
-                    {
-                        panel = (StackPanel)element;
-                        break;
-                    }
-                }
-                if (panel is null)
-                    return;
-
+                var panel = sender.Tag as StackPanel;
                 var border = (panel.Children[0] as SplitButton).Content as Border;
                 border.Background = new SolidColorBrush(Color.FromArgb(
                     255,
