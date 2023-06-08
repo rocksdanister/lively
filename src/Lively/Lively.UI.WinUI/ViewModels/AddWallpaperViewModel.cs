@@ -17,6 +17,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage.Pickers;
+using UAC = UACHelper.UACHelper;
 
 namespace Lively.UI.WinUI.ViewModels
 {
@@ -50,6 +51,8 @@ namespace Lively.UI.WinUI.ViewModels
 
         [ObservableProperty]
         private string errorMessage;
+
+        public bool IsElevated { get; } = UAC.IsElevated;
 
         private RelayCommand _browseWebCommand;
         public RelayCommand BrowseWebCommand => _browseWebCommand ??= new RelayCommand(WebBrowseAction);
@@ -92,23 +95,33 @@ namespace Lively.UI.WinUI.ViewModels
         private async Task FileBrowseAction()
         {
             ErrorMessage = null;
-            var filePicker = new FileOpenPicker();
-            filePicker.SetOwnerWindow(App.Services.GetRequiredService<MainWindow>());
-            //filePicker.FileTypeFilter.Add("*");
-            foreach (var item in LocalizationUtil.SupportedFileDialogFilter(true))
+            if (IsElevated)
             {
-                filePicker.FileTypeFilter.Add(item);
-            }
-            var files = await filePicker.PickMultipleFilesAsync();
-            if (files.Count > 0)
-            {
-                if (files.Count == 1)
+                var file = FilePickerUtil.FilePickerNative(LocalizationUtil.SupportedFileDialogFilterNative());
+                if (!string.IsNullOrEmpty(file))
                 {
-                    await AddWallpaperFile(files[0].Path);
+                    await AddWallpaperFile(file);
                 }
-                else
+            }
+            else
+            {
+                var filePicker = new FileOpenPicker();
+                filePicker.SetOwnerWindow(App.Services.GetRequiredService<MainWindow>());
+                foreach (var item in LocalizationUtil.SupportedFileDialogFilter(true))
                 {
-                    AddWallpaperFile(files.Select(x => x.Path).ToList());
+                    filePicker.FileTypeFilter.Add(item);
+                }
+                var files = await filePicker.PickMultipleFilesAsync();
+                if (files.Count > 0)
+                {
+                    if (files.Count == 1)
+                    {
+                        await AddWallpaperFile(files[0].Path);
+                    }
+                    else
+                    {
+                        AddWallpaperFile(files.Select(x => x.Path).ToList());
+                    }
                 }
             }
         }

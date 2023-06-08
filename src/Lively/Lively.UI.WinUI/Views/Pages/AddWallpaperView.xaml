@@ -67,6 +67,12 @@
                     Margin="0,15,0,0"
                     Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" />
             </StackPanel>
+            <InfoBar
+                Margin="5"
+                IsClosable="False"
+                IsOpen="{Binding IsElevated, Mode=OneWay}"
+                Message="Some functionality is not available when run as administrator"
+                Severity="Warning" />
         </Grid>
 
         <StackPanel Grid.Row="1">
