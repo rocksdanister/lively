@@ -64,7 +64,7 @@ namespace Lively.UI.WinUI.Helpers
             ofn.fileTitle = new string(new char[64]);
             ofn.maxFileTitle = ofn.fileTitle.Length;
             ofn.filter = filters;
-            return GetOpenFileName(ofn) ? ofn.file : string.Empty;
+            return GetOpenFileName(ofn) ? ofn.file : null;
         }
     }
 }
