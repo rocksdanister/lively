@@ -132,6 +132,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Lively.Common\Lively.Common.csproj" />
     <ProjectReference Include="..\Lively.Grpc.Client\Lively.Grpc.Client.csproj" />
+    <ProjectReference Include="..\Lively.ML\Lively.ML.csproj" />
     <ProjectReference Include="..\Lively.Models\Lively.Models.csproj" />
     <ProjectReference Include="..\Lively.Gallery.Client\Lively.Gallery.Client.csproj" />
   </ItemGroup>

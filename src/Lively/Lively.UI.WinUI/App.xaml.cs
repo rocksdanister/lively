@@ -4,6 +4,7 @@ using Lively.Common.Helpers.Archive;
 using Lively.Common.Helpers.Pinvoke;
 using Lively.Gallery.Client;
 using Lively.Grpc.Client;
+using Lively.ML.DepthEstimate;
 using Lively.Models;
 using Lively.UI.WinUI.Factories;
 using Lively.UI.WinUI.Helpers;
@@ -145,6 +146,7 @@ namespace Lively.UI.WinUI
                 .AddSingleton<GallerySubscriptionViewModel>()
                 .AddSingleton<SettingsViewModel>() //Some events..
                 .AddSingleton<ICacheService, DiskCacheService>((e) => new DiskCacheService(e.GetRequiredService<IHttpClientFactory>(), Path.Combine(Path.GetTempPath(), "Lively Wallpaper", "gallery")))
+                .AddSingleton<IDepthEstimate, MiDaS>()
                 //transient
                 //.AddTransient<HelpViewModel>()
                 .AddTransient<AboutViewModel>()
