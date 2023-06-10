@@ -68,6 +68,7 @@
     <None Remove="Views\Pages\AddWallpaperView.xaml" />
     <None Remove="Views\Pages\ChooseDisplayView.xaml" />
     <None Remove="Views\Pages\ControlPanelView.xaml" />
+    <None Remove="Views\Pages\DepthEstimateWallpaperView.xaml" />
     <None Remove="Views\Pages\GalleryView.xaml" />
     <None Remove="Views\Pages\Gallery\GalleryFeaturedView.xaml" />
     <None Remove="Views\Pages\Gallery\GallerySubscriptionView.xaml" />
@@ -182,6 +183,9 @@
     <None Update="appicon.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Page Update="Views\Pages\DepthEstimateWallpaperView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Content Update="Assets\CustomIcons.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

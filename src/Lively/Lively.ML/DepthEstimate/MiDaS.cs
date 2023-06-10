@@ -9,7 +9,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using QuantumType = System.Byte;
 
 namespace Lively.ML.DepthEstimate
 {
@@ -17,8 +16,8 @@ namespace Lively.ML.DepthEstimate
     {
         private readonly string modelPath = Constants.MachineLearning.MiDaSPath;
         private readonly InferenceSession session;
-        private readonly string inputName = "0";
-        private readonly int width = 256, height = 256;
+        private readonly string inputName;
+        private readonly int width, height;
 
         public MiDaS()
         {
@@ -57,14 +56,15 @@ namespace Lively.ML.DepthEstimate
             };
 
             using var results = session.Run(inputs);
-            var output = new ModelOutput(results.First().AsEnumerable<float>().ToArray());
-            var normalisedOutput = NormaliseOutput(output.Depth);
+            var output = results.First().AsEnumerable<float>().ToArray();
+            var normalisedOutput = NormaliseOutput(output);
+            var result = new ModelOutput(normalisedOutput);
 
             using var outputImage = FloatArrayToMagickImage(normalisedOutput, width, height);
             outputImage.Resize(new MagickGeometry(input.Width, input.Height) { IgnoreAspectRatio = true });
             outputImage.Write(savePath);
 
-            return output;
+            return result;
         }
 
         #region helpers
@@ -75,7 +75,7 @@ namespace Lively.ML.DepthEstimate
             var pixels = image.GetPixels();
             for (int i = 0; i < floatArray.Length; i++)
             {
-                pixels.SetPixel(i % width, i / width, new QuantumType[] { (QuantumType)(floatArray[i] * Quantum.Max) });
+                pixels.SetPixel(i % width, i / width, new byte[] { (byte)(floatArray[i] * Quantum.Max), (byte)(floatArray[i] * Quantum.Max), (byte)(floatArray[i] * Quantum.Max) });
             }
             return image;
         }
