@@ -29,13 +29,13 @@ namespace Lively.ML.DepthEstimate
             height = session.InputMetadata[inputName].Dimensions[3];
         }
 
-        public ModelOutput Run(string imagePath, string savePath)
+        public ModelOutput Run(string imagePath)
         {
             if (!File.Exists(imagePath))
                 throw new FileNotFoundException(imagePath);
 
             using var inputImage = new MagickImage(imagePath);
-            var input = new ModelInput(imagePath, inputImage.Width, inputImage.Height);
+            var inputModel = new ModelInput(imagePath, inputImage.Width, inputImage.Height);
             inputImage.Resize(new MagickGeometry(width, height) { IgnoreAspectRatio = true });
 
             var t1 = new DenseTensor<float>(new[] { 1, 3, height, width });
@@ -56,28 +56,10 @@ namespace Lively.ML.DepthEstimate
             };
 
             using var results = session.Run(inputs);
-            var output = results.First().AsEnumerable<float>().ToArray();
-            var normalisedOutput = NormaliseOutput(output);
-            var result = new ModelOutput(normalisedOutput);
+            var outputModel = results.First().AsEnumerable<float>().ToArray();
+            var normalisedOutput = NormaliseOutput(outputModel);
 
-            using var outputImage = FloatArrayToMagickImage(normalisedOutput, width, height);
-            outputImage.Resize(new MagickGeometry(input.Width, input.Height) { IgnoreAspectRatio = true });
-            outputImage.Write(savePath);
-
-            return result;
-        }
-
-        #region helpers
-
-        private static MagickImage FloatArrayToMagickImage(float[] floatArray, int width, int height)
-        {
-            var image = new MagickImage(MagickColor.FromRgb(0, 0, 0), width, height);
-            var pixels = image.GetPixels();
-            for (int i = 0; i < floatArray.Length; i++)
-            {
-                pixels.SetPixel(i % width, i / width, new byte[] { (byte)(floatArray[i] * Quantum.Max), (byte)(floatArray[i] * Quantum.Max), (byte)(floatArray[i] * Quantum.Max) });
-            }
-            return image;
+            return new ModelOutput(normalisedOutput, width, height,inputModel.Width, inputModel.Height);
         }
 
         private static float[] NormaliseOutput(float[] data)
@@ -90,7 +72,5 @@ namespace Lively.ML.DepthEstimate
                 .Select(n => ((1f - n) * 0f + n * 1f)).ToArray();
             return normalisedOutput;
         }
-
-        #endregion //helpers
     }
 }

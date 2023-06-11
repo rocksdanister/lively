@@ -2,6 +2,6 @@
 {
     public interface IDepthEstimate
     {
-        ModelOutput Run(string imagePath, string savePath);
+        ModelOutput Run(string imagePath);
     }
 }
