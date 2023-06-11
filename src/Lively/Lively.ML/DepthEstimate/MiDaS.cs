@@ -18,6 +18,7 @@ namespace Lively.ML.DepthEstimate
         private readonly InferenceSession session;
         private readonly string inputName;
         private readonly int width, height;
+        private bool disposedValue;
 
         public MiDaS()
         {
@@ -71,6 +72,35 @@ namespace Lively.ML.DepthEstimate
             var normalisedOutput = data.Select(d => (d - depthMin) / depthRange)
                 .Select(n => ((1f - n) * 0f + n * 1f)).ToArray();
             return normalisedOutput;
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    session?.Dispose();
+                }
+
+                // TODO: free unmanaged resources (unmanaged objects) and override finalizer
+                // TODO: set large fields to null
+                disposedValue = true;
+            }
+        }
+
+        // // TODO: override finalizer only if 'Dispose(bool disposing)' has code to free unmanaged resources
+        // ~MiDaS()
+        // {
+        //     // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+        //     Dispose(disposing: false);
+        // }
+
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
         }
     }
 }

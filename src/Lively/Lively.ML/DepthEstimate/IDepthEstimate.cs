@@ -1,6 +1,6 @@
 ﻿namespace Lively.ML.DepthEstimate
 {
-    public interface IDepthEstimate
+    public interface IDepthEstimate : IDisposable
     {
         ModelOutput Run(string imagePath);
     }
