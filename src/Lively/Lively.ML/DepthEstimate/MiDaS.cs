@@ -1,5 +1,4 @@
 ﻿using ImageMagick;
-using Lively.Common;
 using Microsoft.ML.OnnxRuntime;
 using Microsoft.ML.OnnxRuntime.Tensors;
 using System;
@@ -14,14 +13,19 @@ namespace Lively.ML.DepthEstimate
 {
     public class MiDaS : IDepthEstimate
     {
-        private readonly string modelPath = Constants.MachineLearning.MiDaSPath;
-        private readonly InferenceSession session;
-        private readonly string inputName;
-        private readonly int width, height;
+        private string modelPath;
+        private InferenceSession session;
+        private string inputName;
+        private int width, height;
         private bool disposedValue;
 
-        public MiDaS()
+        public MiDaS() { }
+
+        public void LoadModel(string path)
         {
+            modelPath = path;
+
+            session?.Dispose();
             session = new InferenceSession(modelPath);
             Debug.WriteLine($"Model version: {session.ModelMetadata.Version}");
 
@@ -32,6 +36,9 @@ namespace Lively.ML.DepthEstimate
 
         public ModelOutput Run(string imagePath)
         {
+            if (modelPath is null)
+                throw new FileNotFoundException("ONNX file not provided");
+
             if (!File.Exists(imagePath))
                 throw new FileNotFoundException(imagePath);
 

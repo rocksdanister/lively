@@ -2,6 +2,7 @@
 {
     public interface IDepthEstimate : IDisposable
     {
+        void LoadModel(string path);
         ModelOutput Run(string imagePath);
     }
 }

@@ -2,26 +2,99 @@
     x:Class="Lively.UI.WinUI.Views.Pages.DepthEstimateWallpaperView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:customconverters="using:Lively.UI.WinUI.Helpers.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Lively.UI.WinUI.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:toolkit="using:CommunityToolkit.WinUI.UI.Controls"
     mc:Ignorable="d">
 
+    <Page.Resources>
+        <AcrylicBrush
+            x:Key="AcrylicBrushCustom"
+            FallbackColor="{ThemeResource SystemAltMediumColor}"
+            TintColor="{ThemeResource SystemAltMediumColor}"
+            TintOpacity="0.5" />
+        <customconverters:BooleanToVisibilityConverter x:Key="VisibilityConverter" />
+    </Page.Resources>
+
     <Grid>
-        <StackPanel>
-            <Border
-                Margin="0,5"
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Border
+            Grid.Row="0"
+            BorderBrush="{ThemeResource SystemAltHighColor}"
+            BorderThickness="20"
+            CornerRadius="5">
+            <toolkit:TileControl
+                x:Name="tileControl"
+                Width="500"
+                Height="350"
+                AnimationDuration="30"
+                AnimationStepX="1"
+                AnimationStepY="1"
                 Background="{ThemeResource SystemAltMediumColor}"
-                CornerRadius="10">
-                <toolkit:ImageEx
-                    Width="512"
-                    Height="512"
-                    IsCacheEnabled="False"
-                    Stretch="Fill" />
-            </Border>
-            <TextBlock>Generating depthmap...</TextBlock>
-            <!--<ProgressBar IsIndeterminate="True" />-->
-        </StackPanel>
+                ImageAlignment="None"
+                ImageSource="{Binding BackgroundImage}"
+                IsAnimated="True"
+                OffsetX="0"
+                OffsetY="0"
+                ScrollOrientation="Both" />
+        </Border>
+        <Border
+            Grid.Row="0"
+            Background="{ThemeResource AcrylicBrushCustom}"
+            CornerRadius="5" />
+        <Grid Visibility="{Binding IsModelExists, Converter={StaticResource VisibilityConverter}, Mode=OneWay}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="25" />
+            </Grid.RowDefinitions>
+
+            <toolkit:ImageEx
+                x:Name="imgPreview"
+                Grid.Row="0"
+                Width="384"
+                Height="216"
+                CornerRadius="5"
+                IsCacheEnabled="False"
+                Source="{Binding PreviewImage}"
+                Stretch="UniformToFill" />
+            <TextBlock
+                x:Name="textPreview"
+                Grid.Row="1"
+                Text="{Binding PreviewText}"
+                TextAlignment="Center" />
+            <ProgressBar
+                Grid.Row="2"
+                VerticalAlignment="Bottom"
+                IsIndeterminate="True"
+                Visibility="{Binding IsRunning, Converter={StaticResource VisibilityConverter}, Mode=OneWay}" />
+        </Grid>
+        <InfoBar
+            Title="Download Required"
+            Grid.Row="0"
+            Margin="-1.25"
+            VerticalAlignment="Top"
+            IsClosable="False"
+            IsOpen="True"
+            Message="Additional files need to be downloaded for this feature"
+            Severity="Informational"
+            Visibility="{Binding IsModelExists, Converter={StaticResource VisibilityConverter}, Mode=OneWay, ConverterParameter=Reverse}">
+            <InfoBar.ActionButton>
+                <Button Command="{Binding DownloadModelCommand}" Content="Download" />
+            </InfoBar.ActionButton>
+        </InfoBar>
+        <Button
+            Grid.Row="1"
+            Margin="0,5,0,0"
+            HorizontalAlignment="Stretch"
+            Command="{Binding RunCommand}"
+            Content="Create Wallpaper" />
+
     </Grid>
 </Page>

@@ -11,8 +11,4 @@
     <PackageReference Include="Magick.NET-Q8-AnyCPU" Version="13.1.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Lively.Common\Lively.Common.csproj" />
-  </ItemGroup>
-
 </Project>

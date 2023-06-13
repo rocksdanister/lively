@@ -158,6 +158,7 @@ namespace Lively.UI.WinUI
                 .AddTransient<GalleryLoginViewModel>()
                 .AddTransient<ManageAccountViewModel>()
                 .AddTransient<RestoreWallpaperViewModel>()
+                .AddTransient<DepthEstimateWallpaperViewModel>()
                 .AddTransient<IDialogService, DialogService>()
                 .AddTransient<IApplicationsFactory, ApplicationsFactory>()
                 .AddTransient<IApplicationsRulesFactory, ApplicationsRulesFactory>()

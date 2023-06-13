@@ -94,7 +94,7 @@
 
             <controls:SettingsExpander
                 x:Uid="EnterUrl"
-                Margin="0,2.5,0,0"
+                Margin="0,0,0,0"
                 IsExpanded="True">
                 <controls:SettingsExpander.HeaderIcon>
                     <FontIcon Glyph="&#xE71B;" />
@@ -117,6 +117,20 @@
                     </controls:SettingsCard>
                 </controls:SettingsExpander.Items>
             </controls:SettingsExpander>
+
+            <controls:SettingsCard
+                Margin="0,2.5,0,0"
+                Command="{Binding ThemeBackgroundCommand}"
+                Description="Create a dynamic wallpaper"
+                Header="Custom"
+                IsClickEnabled="True">
+                <controls:SettingsCard.HeaderIcon>
+                    <FontIcon Glyph="&#xE790;" />
+                </controls:SettingsCard.HeaderIcon>
+                <controls:SettingsCard.ActionIcon>
+                    <FontIcon Glyph="&#xE76C;" />
+                </controls:SettingsCard.ActionIcon>
+            </controls:SettingsCard>
         </StackPanel>
     </Grid>
 </Page>

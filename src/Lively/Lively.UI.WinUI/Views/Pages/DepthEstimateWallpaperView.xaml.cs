@@ -1,4 +1,6 @@
-﻿using Microsoft.UI.Xaml.Controls;
+﻿using Lively.UI.WinUI.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
@@ -7,6 +9,7 @@ using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -24,6 +27,9 @@ namespace Lively.UI.WinUI.Views.Pages
         public DepthEstimateWallpaperView(string imagePath)
         {
             this.InitializeComponent();
+            var vm = App.Services.GetRequiredService<DepthEstimateWallpaperViewModel>();
+            vm.SelectedImage = imagePath;
+            this.DataContext = vm;
         }
     }
 }
