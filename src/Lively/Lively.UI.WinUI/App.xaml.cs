@@ -1,6 +1,7 @@
 ﻿using CommandLine;
 using Lively.Common.Helpers;
 using Lively.Common.Helpers.Archive;
+using Lively.Common.Helpers.Network;
 using Lively.Common.Helpers.Pinvoke;
 using Lively.Gallery.Client;
 using Lively.Grpc.Client;
@@ -163,6 +164,7 @@ namespace Lively.UI.WinUI
                 .AddTransient<IApplicationsFactory, ApplicationsFactory>()
                 .AddTransient<IApplicationsRulesFactory, ApplicationsRulesFactory>()
                 .AddTransient<IThemeFactory, ThemeFactory>()
+                .AddTransient<IDownloadHelper, MultiDownloadHelper>()
                 //https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests
                 .AddHttpClient()
                 .BuildServiceProvider();

@@ -1,4 +1,5 @@
-﻿using Lively.Grpc.Client;
+﻿using Lively.Common.Helpers.Files;
+using Lively.Grpc.Client;
 using Lively.Models;
 using Lively.UI.WinUI.Helpers;
 using Lively.UI.WinUI.ViewModels;
@@ -266,25 +267,40 @@ namespace Lively.UI.WinUI.Views.Pages
 
                     try
                     {
-                        var libItem = await libraryVm.AddWallpaperFile(item);
-                        if (libItem.DataType == LibraryItemType.processing)
+                        var type = FileFilter.GetLivelyFileType(item);
+                        if (type == Common.WallpaperType.picture)
                         {
-                            await desktopCore.SetWallpaper(libItem, userSettings.Settings.SelectedDisplay);
-                            /*
-                            var inputVm = new AddWallpaperDataViewModel(libItem);
-                            var inputDialog = new ContentDialog()
+                            _ = new ContentDialog()
                             {
-                                Title = i18n.GetString("AddWallpaper/Label"),
-                                Content = new AddWallpaperDataView(inputVm),
-                                PrimaryButtonText = i18n.GetString("TextOk"),
-                                SecondaryButtonText = i18n.GetString("Cancel/Content"),
+                                Title = "[AI] Depth Wallpaper",
+                                Content = new DepthEstimateWallpaperView(item),
+                                PrimaryButtonText = i18n.GetString("TextOK"),
                                 DefaultButton = ContentDialogButton.Primary,
                                 XamlRoot = this.Content.XamlRoot,
-                                SecondaryButtonCommand = inputVm.CancelCommand,
-                                PrimaryButtonCommand = inputVm.ProceedCommand,
-                            };
-                            await inputDialog.ShowAsyncQueue();
-                            */
+                            }.ShowAsyncQueue();
+                        }
+                        else
+                        {
+                            var libItem = await libraryVm.AddWallpaperFile(item);
+                            if (libItem.DataType == LibraryItemType.processing)
+                            {
+                                await desktopCore.SetWallpaper(libItem, userSettings.Settings.SelectedDisplay);
+                                /*
+                                var inputVm = new AddWallpaperDataViewModel(libItem);
+                                var inputDialog = new ContentDialog()
+                                {
+                                    Title = i18n.GetString("AddWallpaper/Label"),
+                                    Content = new AddWallpaperDataView(inputVm),
+                                    PrimaryButtonText = i18n.GetString("TextOk"),
+                                    SecondaryButtonText = i18n.GetString("Cancel/Content"),
+                                    DefaultButton = ContentDialogButton.Primary,
+                                    XamlRoot = this.Content.XamlRoot,
+                                    SecondaryButtonCommand = inputVm.CancelCommand,
+                                    PrimaryButtonCommand = inputVm.ProceedCommand,
+                                };
+                                await inputDialog.ShowAsyncQueue();
+                                */
+                            }
                         }
                     }
                     catch (Exception ie)

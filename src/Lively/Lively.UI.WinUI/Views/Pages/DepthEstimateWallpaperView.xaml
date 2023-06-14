@@ -68,7 +68,8 @@
                 x:Name="textPreview"
                 Grid.Row="1"
                 Text="{Binding PreviewText}"
-                TextAlignment="Center" />
+                TextAlignment="Center"
+                TextWrapping="Wrap" />
             <ProgressBar
                 Grid.Row="2"
                 VerticalAlignment="Bottom"
@@ -88,6 +89,15 @@
             <InfoBar.ActionButton>
                 <Button Command="{Binding DownloadModelCommand}" Content="Download" />
             </InfoBar.ActionButton>
+            <InfoBar.Content>
+                <StackPanel Margin="0,0,0,5" Orientation="Horizontal">
+                    <ProgressBar
+                        Width="300"
+                        Margin="0,0,5,-4.5"
+                        Value="{Binding ModelDownloadProgress, Mode=OneWay}" />
+                    <TextBlock Text="{Binding ModelDownloadProgressText, Mode=OneWay}" />
+                </StackPanel>
+            </InfoBar.Content>
         </InfoBar>
         <Button
             Grid.Row="1"
