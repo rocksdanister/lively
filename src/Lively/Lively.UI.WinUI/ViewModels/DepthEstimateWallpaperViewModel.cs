@@ -3,7 +3,9 @@ using CommunityToolkit.Mvvm.Input;
 using Downloader;
 using Lively.Common;
 using Lively.Common.Helpers;
+using Lively.Common.Helpers.Files;
 using Lively.Common.Helpers.Network;
+using Lively.Grpc.Client;
 using Lively.ML.DepthEstimate;
 using Lively.ML.Helpers;
 using Lively.Models;
@@ -21,14 +23,25 @@ namespace Lively.UI.WinUI.ViewModels
     public partial class DepthEstimateWallpaperViewModel : ObservableObject
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+        public event EventHandler OnRequestClose;
 
         private readonly IDepthEstimate depthEstimate;
         private readonly IDownloadHelper downloader;
+        private readonly LibraryViewModel libraryVm;
+        private readonly IUserSettingsClient userSettings;
+        private readonly IDesktopCoreClient desktopCore;
 
-        public DepthEstimateWallpaperViewModel(IDepthEstimate depthEstimate, IDownloadHelper downloader)
+        public DepthEstimateWallpaperViewModel(IDepthEstimate depthEstimate,
+            IDownloadHelper downloader,
+            LibraryViewModel libraryVm, 
+            IUserSettingsClient userSettings,
+            IDesktopCoreClient desktopCore)
         {
             this.depthEstimate = depthEstimate;
             this.downloader = downloader;
+            this.libraryVm = libraryVm;
+            this.userSettings = userSettings;
+            this.desktopCore = desktopCore;
 
             _canRunCommand = IsModelExists;
             RunCommand.NotifyCanExecuteChanged();
@@ -82,21 +95,22 @@ namespace Lively.UI.WinUI.ViewModels
                 IsRunning = true;
                 _canRunCommand = false;
                 RunCommand.NotifyCanExecuteChanged();
-                PreviewText = "Getting things ready..";
-           
-                depthEstimate.LoadModel(Constants.MachineLearning.MiDaSPath);
-                var output = depthEstimate.Run(SelectedImage);
-
-                await Task.Delay(1500);
                 PreviewText = "Approximating depth..";
 
+                //single use, otherwise don't reload model everytime
+                depthEstimate.LoadModel(Constants.MachineLearning.MiDaSPath);
+                var output = depthEstimate.Run(SelectedImage);
                 await Task.Delay(1500);
-                PreviewText = "Completed";
 
-                var img = ImageUtil.FloatArrayToMagickImageResize(output.Depth, output.Width, output.Height, output.OriginalWidth, output.OriginalHeight);
+                using var img = ImageUtil.FloatArrayToMagickImageResize(output.Depth, output.Width, output.Height, output.OriginalWidth, output.OriginalHeight);
                 var tempImgPath = Path.Combine(Constants.CommonPaths.TempDir, Path.GetRandomFileName() + ".jpg");
                 img.Write(tempImgPath);
                 PreviewImage = tempImgPath;
+                PreviewText = "Completed";
+                await Task.Delay(1500);
+
+                await CreateWallpaper();
+                OnRequestClose?.Invoke(this, EventArgs.Empty);
             }
             catch (Exception e)
             {
@@ -109,13 +123,31 @@ namespace Lively.UI.WinUI.ViewModels
             }
         }
 
+        private async Task CreateWallpaper()
+        {
+            var srcDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "WallpaperTemplates", "depthmap");
+            var destDir = Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperInstallDir, Path.GetRandomFileName());
+            FileOperations.DirectoryCopy(srcDir, destDir, true);
+            File.Copy(PreviewImage, Path.Combine(destDir, "media", "depth.jpg"), true);
+            File.Copy(SelectedImage, Path.Combine(destDir, "media", "image.jpg"), true); //todo: if not jpeg?
+
+            var item = libraryVm.AddWallpaperFolder(destDir);
+            await desktopCore.SetWallpaper(item, userSettings.Settings.SelectedDisplay);
+        }
+
+        //public async Task Close()
+        //{
+        //    await CreateWallpaper();
+        //    OnRequestClose?.Invoke(this, EventArgs.Empty);
+        //}
+
         private async Task DownloadModel()
         {
             _canDownloadModelCommand = false;
             DownloadModelCommand.NotifyCanExecuteChanged();
 
             var uri = await GetModelUrl();
-            downloader.DownloadFile(uri, Path.Combine(Constants.CommonPaths.TempDir, "test.onnx"));
+            downloader.DownloadFile(uri, Constants.MachineLearning.MiDaSPath);
             downloader.DownloadStarted += (s, e) => 
             {
                 _ = App.Services.GetRequiredService<MainWindow>().DispatcherQueue.TryEnqueue(() =>
@@ -147,8 +179,9 @@ namespace Lively.UI.WinUI.ViewModels
         private async Task<Uri> GetModelUrl()
         {
             //test
+            //manifest and update checker
             var userName = "rocksdanister";
-            var repositoryName = "lively-beta";
+            var repositoryName = "lively-ml-models";
             var gitRelease = await GithubUtil.GetLatestRelease(repositoryName, userName, 0);
 
             var gitUrl = await GithubUtil.GetAssetUrl("MiDaS_model-small.onnx",

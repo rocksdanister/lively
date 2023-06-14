@@ -270,14 +270,29 @@ namespace Lively.UI.WinUI.Views.Pages
                         var type = FileFilter.GetLivelyFileType(item);
                         if (type == Common.WallpaperType.picture)
                         {
-                            _ = new ContentDialog()
+                            var vm = App.Services.GetRequiredService<DepthEstimateWallpaperViewModel>();
+                            vm.SelectedImage = item;
+                            var depthDialog = new ContentDialog()
                             {
                                 Title = "[AI] Depth Wallpaper",
-                                Content = new DepthEstimateWallpaperView(item),
-                                PrimaryButtonText = i18n.GetString("TextOK"),
+                                Content = new DepthEstimateWallpaperView(vm),
+                                PrimaryButtonText = "Continue",
+                                SecondaryButtonText = "Cancel",
                                 DefaultButton = ContentDialogButton.Primary,
                                 XamlRoot = this.Content.XamlRoot,
-                            }.ShowAsyncQueue();
+                            };
+                            depthDialog.PrimaryButtonCommand = vm.RunCommand;
+                            vm.OnRequestClose += (_, _) => depthDialog.Hide();
+                            depthDialog.Closing += (s, e) =>
+                            {
+                                if (e.Result == ContentDialogResult.Primary)
+                                {
+                                    e.Cancel = true;
+                                    depthDialog.IsPrimaryButtonEnabled = false;
+                                    depthDialog.IsSecondaryButtonEnabled = false;
+                                }
+                            };
+                            await depthDialog.ShowAsyncQueue();
                         }
                         else
                         {

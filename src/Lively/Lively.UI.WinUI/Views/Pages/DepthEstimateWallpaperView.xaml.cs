@@ -24,11 +24,9 @@ namespace Lively.UI.WinUI.Views.Pages
     /// </summary>
     public sealed partial class DepthEstimateWallpaperView : Page
     {
-        public DepthEstimateWallpaperView(string imagePath)
+        public DepthEstimateWallpaperView(DepthEstimateWallpaperViewModel vm)
         {
             this.InitializeComponent();
-            var vm = App.Services.GetRequiredService<DepthEstimateWallpaperViewModel>();
-            vm.SelectedImage = imagePath;
             this.DataContext = vm;
         }
     }
