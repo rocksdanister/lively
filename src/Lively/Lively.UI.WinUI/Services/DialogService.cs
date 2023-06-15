@@ -1,4 +1,5 @@
-﻿using Lively.Common.Helpers.Files;
+﻿using Lively.Common;
+using Lively.Common.Helpers.Files;
 using Lively.Models;
 using Lively.UI.WinUI.ViewModels;
 using Lively.UI.WinUI.Views.Pages;
@@ -85,7 +86,7 @@ namespace Lively.UI.WinUI.Services
                 ContentDialogResult.None => DialogResult.none,
                 ContentDialogResult.Primary => DialogResult.primary,
                 ContentDialogResult.Secondary => DialogResult.seconday,
-                _=> DialogResult.none,
+                _ => DialogResult.none,
             };
         }
 
@@ -109,7 +110,7 @@ namespace Lively.UI.WinUI.Services
             {
                 Title = i18n.GetString("AppTheme/Header"),
                 Content = new ThemeView(),
-                PrimaryButtonText = i18n.GetString("TextClose"),
+                PrimaryButtonText = i18n.GetString("TextOk"),
                 DefaultButton = ContentDialogButton.Primary,
                 XamlRoot = App.Services.GetRequiredService<MainWindow>().Content.XamlRoot,
             }.ShowAsyncQueue();
@@ -121,7 +122,7 @@ namespace Lively.UI.WinUI.Services
             vm.SelectedImage = imagePath;
             var depthDialog = new ContentDialog
             {
-                Title = "[AI] Depth Wallpaper",
+                Title = "AI Depth Wallpaper",
                 Content = new DepthEstimateWallpaperView(vm),
                 PrimaryButtonText = "Continue",
                 SecondaryButtonText = "Cancel",
@@ -147,6 +148,27 @@ namespace Lively.UI.WinUI.Services
             };
             await depthDialog.ShowAsyncQueue();
             return vm.NewWallpaper;
+        }
+
+        public async Task<WallpaperCreateType?> ShowWallpaperCreateDialog(WallpaperType? filter)
+        {
+            //For now only pictures..
+            if (filter != WallpaperType.picture)
+                return WallpaperCreateType.none;
+
+            var vm = App.Services.GetRequiredService<AddWallpaperCreateViewModel>();
+            var dlg = new ContentDialog()
+            {
+                Title = "Create wallpaper",
+                Content = new AddWallpaperCreateView(vm),
+                PrimaryButtonText = "Continue",
+                SecondaryButtonText = "Cancel",
+                DefaultButton = ContentDialogButton.Primary,
+                XamlRoot = App.Services.GetRequiredService<MainWindow>().Content.XamlRoot,
+            };
+            vm.Filter(filter);
+            var dlgResult = await dlg.ShowAsyncQueue();
+            return  dlgResult == ContentDialogResult.Primary ? vm.SelectedItem.CreateType : null;
         }
     }
 }

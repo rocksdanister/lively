@@ -282,7 +282,7 @@ namespace Lively.UI.WinUI
             {
                 Title = i18n.GetString("AddWallpaper/Label"),
                 Content = new AddWallpaperView(addVm),
-                PrimaryButtonText = i18n.GetString("TextClose"),
+                PrimaryButtonText = i18n.GetString("TextOK"),
                 DefaultButton = ContentDialogButton.Primary,
                 XamlRoot = this.Content.XamlRoot,
             };

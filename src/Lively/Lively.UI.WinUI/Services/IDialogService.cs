@@ -1,4 +1,5 @@
-﻿using Lively.Models;
+﻿using Lively.Common;
+using Lively.Models;
 using System.Threading.Tasks;
 
 namespace Lively.UI.WinUI.Services
@@ -16,6 +17,7 @@ namespace Lively.UI.WinUI.Services
         Task<string> ShowTextInputDialog(string title);
         Task ShowThemeDialog();
         Task<ILibraryModel> ShowDepthWallpaperDialog(string imagePath);
+        Task<WallpaperCreateType?> ShowWallpaperCreateDialog(WallpaperType? filter);
 
         public enum DialogResult
         {
