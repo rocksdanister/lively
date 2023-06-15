@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Downloader;
+using ImageMagick;
 using Lively.Common;
 using Lively.Common.Helpers;
 using Lively.Common.Helpers.Files;
@@ -23,6 +24,7 @@ namespace Lively.UI.WinUI.ViewModels
     public partial class DepthEstimateWallpaperViewModel : ObservableObject
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+        public ILibraryModel NewWallpaper { get; private set; }
         public event EventHandler OnRequestClose;
 
         private readonly IDepthEstimate depthEstimate;
@@ -97,7 +99,7 @@ namespace Lively.UI.WinUI.ViewModels
                 RunCommand.NotifyCanExecuteChanged();
                 PreviewText = "Approximating depth..";
 
-                //single use, otherwise don't reload model everytime
+                //todo don't reload everytime
                 depthEstimate.LoadModel(Constants.MachineLearning.MiDaSPath);
                 var output = depthEstimate.Run(SelectedImage);
                 await Task.Delay(1500);
@@ -109,7 +111,7 @@ namespace Lively.UI.WinUI.ViewModels
                 PreviewText = "Completed";
                 await Task.Delay(1500);
 
-                await CreateWallpaper();
+                NewWallpaper = await CreateWallpaper();
                 OnRequestClose?.Invoke(this, EventArgs.Empty);
             }
             catch (Exception e)
@@ -123,23 +125,32 @@ namespace Lively.UI.WinUI.ViewModels
             }
         }
 
-        private async Task CreateWallpaper()
+        private async Task<ILibraryModel> CreateWallpaper()
         {
             var srcDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "WallpaperTemplates", "depthmap");
             var destDir = Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperInstallDir, Path.GetRandomFileName());
             FileOperations.DirectoryCopy(srcDir, destDir, true);
+
+            //metadata
+            using var img = new MagickImage(SelectedImage);
+            if (Path.GetExtension(SelectedImage) != ".jpg")
+                await img.WriteAsync(Path.Combine(destDir, "media", "image.jpg"));
+            else
+                File.Copy(SelectedImage, Path.Combine(destDir, "media", "image.jpg"));
+
             File.Copy(PreviewImage, Path.Combine(destDir, "media", "depth.jpg"), true);
-            File.Copy(SelectedImage, Path.Combine(destDir, "media", "image.jpg"), true); //todo: if not jpeg?
 
-            var item = libraryVm.AddWallpaperFolder(destDir);
-            await desktopCore.SetWallpaper(item, userSettings.Settings.SelectedDisplay);
+            img.Resize(new MagickGeometry()
+            {
+                Width = 480,
+                Height = 270,
+                IgnoreAspectRatio = false,
+                FillArea = false
+            });
+            await img.WriteAsync(Path.Combine(destDir, "thumbnail.jpg"));
+
+            return libraryVm.AddWallpaperFolder(destDir);
         }
-
-        //public async Task Close()
-        //{
-        //    await CreateWallpaper();
-        //    OnRequestClose?.Invoke(this, EventArgs.Empty);
-        //}
 
         private async Task DownloadModel()
         {

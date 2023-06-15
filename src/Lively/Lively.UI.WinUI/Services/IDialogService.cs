@@ -15,6 +15,7 @@ namespace Lively.UI.WinUI.Services
             bool isDefaultPrimary = true);
         Task<string> ShowTextInputDialog(string title);
         Task ShowThemeDialog();
+        Task<ILibraryModel> ShowDepthWallpaperDialog(string imagePath);
 
         public enum DialogResult
         {

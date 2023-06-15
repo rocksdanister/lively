@@ -2,6 +2,7 @@
 using Lively.Grpc.Client;
 using Lively.Models;
 using Lively.UI.WinUI.Helpers;
+using Lively.UI.WinUI.Services;
 using Lively.UI.WinUI.ViewModels;
 using Lively.UI.WinUI.Views.LivelyProperty;
 using Lively.UI.WinUI.Views.Pages.Gallery;
@@ -42,12 +43,14 @@ namespace Lively.UI.WinUI.Views.Pages
         private readonly IUserSettingsClient userSettings;
         private readonly IDesktopCoreClient desktopCore;
         private readonly LibraryViewModel libraryVm;
+        private readonly IDialogService dialogService;
 
         public LibraryView()
         {
             this.desktopCore = App.Services.GetRequiredService<IDesktopCoreClient>();
             this.libraryVm = App.Services.GetRequiredService<LibraryViewModel>();
             this.userSettings = App.Services.GetRequiredService<IUserSettingsClient>();
+            this.dialogService = App.Services.GetRequiredService<IDialogService>();
 
             this.InitializeComponent();
             i18n = ResourceLoader.GetForViewIndependentUse();
@@ -270,29 +273,9 @@ namespace Lively.UI.WinUI.Views.Pages
                         var type = FileFilter.GetLivelyFileType(item);
                         if (type == Common.WallpaperType.picture)
                         {
-                            var vm = App.Services.GetRequiredService<DepthEstimateWallpaperViewModel>();
-                            vm.SelectedImage = item;
-                            var depthDialog = new ContentDialog()
-                            {
-                                Title = "[AI] Depth Wallpaper",
-                                Content = new DepthEstimateWallpaperView(vm),
-                                PrimaryButtonText = "Continue",
-                                SecondaryButtonText = "Cancel",
-                                DefaultButton = ContentDialogButton.Primary,
-                                XamlRoot = this.Content.XamlRoot,
-                            };
-                            depthDialog.PrimaryButtonCommand = vm.RunCommand;
-                            vm.OnRequestClose += (_, _) => depthDialog.Hide();
-                            depthDialog.Closing += (s, e) =>
-                            {
-                                if (e.Result == ContentDialogResult.Primary)
-                                {
-                                    e.Cancel = true;
-                                    depthDialog.IsPrimaryButtonEnabled = false;
-                                    depthDialog.IsSecondaryButtonEnabled = false;
-                                }
-                            };
-                            await depthDialog.ShowAsyncQueue();
+                            var libItem = await dialogService.ShowDepthWallpaperDialog(item);
+                            if (libItem is not null)
+                                await desktopCore.SetWallpaper(libItem, userSettings.Settings.SelectedDisplay);
                         }
                         else
                         {

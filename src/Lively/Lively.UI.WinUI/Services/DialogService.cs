@@ -1,4 +1,5 @@
-﻿using Lively.Models;
+﻿using Lively.Common.Helpers.Files;
+using Lively.Models;
 using Lively.UI.WinUI.ViewModels;
 using Lively.UI.WinUI.Views.Pages;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources;
 using WinUICommunity;
 using static Lively.UI.WinUI.Services.IDialogService;
+using static WinUICommunity.LanguageDictionary;
 
 namespace Lively.UI.WinUI.Services
 {
@@ -111,6 +113,40 @@ namespace Lively.UI.WinUI.Services
                 DefaultButton = ContentDialogButton.Primary,
                 XamlRoot = App.Services.GetRequiredService<MainWindow>().Content.XamlRoot,
             }.ShowAsyncQueue();
+        }
+
+        public async Task<ILibraryModel> ShowDepthWallpaperDialog(string imagePath)
+        {
+            var vm = App.Services.GetRequiredService<DepthEstimateWallpaperViewModel>();
+            vm.SelectedImage = imagePath;
+            var depthDialog = new ContentDialog
+            {
+                Title = "[AI] Depth Wallpaper",
+                Content = new DepthEstimateWallpaperView(vm),
+                PrimaryButtonText = "Continue",
+                SecondaryButtonText = "Cancel",
+                DefaultButton = ContentDialogButton.Primary,
+                XamlRoot = App.Services.GetRequiredService<MainWindow>().Content.XamlRoot,
+                PrimaryButtonCommand = vm.RunCommand
+            };
+            vm.OnRequestClose += (_, _) => depthDialog.Hide();
+            depthDialog.Closing += (s, e) =>
+            {
+                if (e.Result == ContentDialogResult.Primary)
+                {
+                    e.Cancel = true;
+                }
+            };
+            vm.PropertyChanged += (s, e) =>
+            {
+                if (e.PropertyName == "IsRunning")
+                {
+                    depthDialog.IsPrimaryButtonEnabled = !vm.IsRunning;
+                    depthDialog.IsSecondaryButtonEnabled = !vm.IsRunning;
+                }
+            };
+            await depthDialog.ShowAsyncQueue();
+            return vm.NewWallpaper;
         }
     }
 }
