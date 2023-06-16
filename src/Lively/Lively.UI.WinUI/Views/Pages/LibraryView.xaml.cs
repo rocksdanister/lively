@@ -270,20 +270,17 @@ namespace Lively.UI.WinUI.Views.Pages
 
                     try
                     {
-                        var wallpaperType = FileFilter.GetLivelyFileType(item);
-                        var createType = await dialogService.ShowWallpaperCreateDialog(wallpaperType);
-                        if (createType is null)
+                        var customType = await dialogService.ShowWallpaperCreateDialog(item);
+                        if (customType is null)
                             return;
 
-                        switch (createType)
+                        switch (customType)
                         {
                             case WallpaperCreateType.none:
                                 {
-                                    var libItem = await libraryVm.AddWallpaperFile(item);
-                                    if (libItem.DataType == LibraryItemType.processing)
-                                    {
-                                        await desktopCore.SetWallpaper(libItem, userSettings.Settings.SelectedDisplay);
-                                    }
+                                    var result = await libraryVm.AddWallpaperFile(item);
+                                    if (result.DataType == LibraryItemType.processing)
+                                        await desktopCore.SetWallpaper(result, userSettings.Settings.SelectedDisplay);
                                 }
                                 break;
                             case WallpaperCreateType.depthmap:

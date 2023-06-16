@@ -41,23 +41,16 @@ namespace Lively.UI.WinUI.ViewModels
                 TypeSupported = WallpaperType.picture,
                 Icon = "ms-appx:///Assets/icons8-artificial-intelligence-100.png"
             });
-            WallpaperCategories.Add(new AddWallpaperCreateModel()
-            {
-                Title = "Edit Video",
-                Description = "Transcode, trim or optimize video",
-                CreateType = WallpaperCreateType.none,
-                TypeSupported = WallpaperType.video,
-                Icon = null
-            });
+            //WallpaperCategories.Add(new AddWallpaperCreateModel()
+            //{
+            //    Title = "Edit Video",
+            //    Description = "Transcode, trim or optimize video",
+            //    CreateType = WallpaperCreateType.none,
+            //    TypeSupported = WallpaperType.video,
+            //    Icon = null
+            //});
 
             SelectedItem = WallpaperCategories.FirstOrDefault();
-        }
-
-        public void Filter(WallpaperType? wallpaperType)
-        {
-            WallpaperCategoriesFiltered.Filter = _ => true; //reset
-            if (wallpaperType is not null)
-                WallpaperCategoriesFiltered.Filter = x => ((AddWallpaperCreateModel)x).TypeSupported == wallpaperType;
         }
     }
 }

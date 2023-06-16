@@ -150,12 +150,23 @@ namespace Lively.UI.WinUI.Services
             return vm.NewWallpaper;
         }
 
-        public async Task<WallpaperCreateType?> ShowWallpaperCreateDialog(WallpaperType? filter)
+        public async Task<WallpaperCreateType?> ShowWallpaperCreateDialog(string filePath)
         {
             //For now only pictures..
+            var filter = FileFilter.GetLivelyFileType(filePath);
             if (filter != WallpaperType.picture)
                 return WallpaperCreateType.none;
 
+            return await InnerShowWallpaperCreateDialog(filter);
+        }
+
+        public async Task<WallpaperCreateType?> ShowWallpaperCreateDialog()
+        {
+            return await InnerShowWallpaperCreateDialog(null);
+        }
+
+        private async Task<WallpaperCreateType?> InnerShowWallpaperCreateDialog(WallpaperType? filter)
+        {
             var vm = App.Services.GetRequiredService<AddWallpaperCreateViewModel>();
             var dlg = new ContentDialog()
             {
@@ -166,9 +177,20 @@ namespace Lively.UI.WinUI.Services
                 DefaultButton = ContentDialogButton.Primary,
                 XamlRoot = App.Services.GetRequiredService<MainWindow>().Content.XamlRoot,
             };
-            vm.Filter(filter);
+            vm.WallpaperCategoriesFiltered.Filter = _ => true; //reset
+            if (filter is not null)
+            {
+                vm.WallpaperCategoriesFiltered.Filter = x => ((AddWallpaperCreateModel)x).TypeSupported == filter;
+            }
+            else
+            {
+                //Don't display default open when all categories shown
+                vm.WallpaperCategoriesFiltered.Filter = x => ((AddWallpaperCreateModel)x).CreateType != WallpaperCreateType.none;
+                vm.SelectedItem = vm.WallpaperCategories[1];
+            }
+
             var dlgResult = await dlg.ShowAsyncQueue();
-            return  dlgResult == ContentDialogResult.Primary ? vm.SelectedItem.CreateType : null;
+            return dlgResult == ContentDialogResult.Primary ? vm.SelectedItem.CreateType : null;
         }
     }
 }

@@ -17,8 +17,8 @@ namespace Lively.UI.WinUI.Services
         Task<string> ShowTextInputDialog(string title);
         Task ShowThemeDialog();
         Task<ILibraryModel> ShowDepthWallpaperDialog(string imagePath);
-        Task<WallpaperCreateType?> ShowWallpaperCreateDialog(WallpaperType? filter);
-
+        Task<WallpaperCreateType?> ShowWallpaperCreateDialog(string filePath);
+        Task<WallpaperCreateType?> ShowWallpaperCreateDialog();
         public enum DialogResult
         {
             none,

@@ -39,6 +39,8 @@ using Windows.ApplicationModel.Resources;
 using WinRT.Interop;
 using WinUIEx;
 using WinUICommunity;
+using static WinUICommunity.LanguageDictionary;
+using Windows.Storage.Pickers;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -286,19 +288,45 @@ namespace Lively.UI.WinUI
                 DefaultButton = ContentDialogButton.Primary,
                 XamlRoot = this.Content.XamlRoot,
             };
-            addVm.OnRequestClose += (_, _) => addDialog.Hide();
-            await addDialog.ShowAsyncQueue();
+            addVm.OnRequestClose += async(_, _) =>
+            {
+                addDialog.Hide();
+                if (addVm.NewWallpapers.Count > 0)
+                {
+                    NavViewNavigate(NavPages.library);
+                    await AddWallpapers(addVm.NewWallpapers);
+                }
+                else if (addVm.NewWallpaper != null)
+                {
+                    NavViewNavigate(NavPages.library);
+                    await desktopCore.SetWallpaper(addVm.NewWallpaper, userSettings.Settings.SelectedDisplay);
+                }
+            };
+            addVm.OnRequestOpenCreate += async(_, _) =>
+            {
+                addDialog.Hide();
+                var customType = await dialogService.ShowWallpaperCreateDialog();
+                if (customType is null)
+                    return;
 
-            if (addVm.NewWallpapers.Count > 0)
-            {
-                NavViewNavigate(NavPages.library);
-                await AddWallpapers(addVm.NewWallpapers);
-            }
-            else if (addVm.NewWallpaper != null)
-            {
-                NavViewNavigate(NavPages.library);
-                await desktopCore.SetWallpaper(addVm.NewWallpaper, userSettings.Settings.SelectedDisplay);
-            }
+                switch (customType)
+                {
+                    case WallpaperCreateType.none: //none
+                        break;
+                    case WallpaperCreateType.depthmap:
+                        {
+                            var file = await FilePickerUtil.PickSingleFileUwp(LocalizationUtil.SupportedFileDialogFilter(WallpaperType.picture));
+                            if (file is not null)
+                            {
+                                var result = await dialogService.ShowDepthWallpaperDialog(file);
+                                if (result is not null)
+                                    await desktopCore.SetWallpaper(result, userSettings.Settings.SelectedDisplay);
+                            }
+                        }
+                        break;
+                }
+            };
+            await addDialog.ShowAsyncQueue();
         }
 
         public async Task AddWallpapers(List<string> files)

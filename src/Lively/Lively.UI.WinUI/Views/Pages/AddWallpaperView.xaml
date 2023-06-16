@@ -119,8 +119,8 @@
             </controls:SettingsExpander>
 
             <controls:SettingsCard
-                Margin="0,2.5,0,0"
-                Command="{Binding ThemeBackgroundCommand}"
+                Margin="0,1,0,0"
+                Command="{Binding CreateWallpaperCommand}"
                 Description="Create a dynamic wallpaper"
                 Header="Custom"
                 IsClickEnabled="True">

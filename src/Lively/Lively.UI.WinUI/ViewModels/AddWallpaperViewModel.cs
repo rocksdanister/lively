@@ -26,6 +26,7 @@ namespace Lively.UI.WinUI.ViewModels
         public ILibraryModel NewWallpaper { get; private set; }
         public List<string> NewWallpapers { get; private set; } = new List<string>();
         public event EventHandler OnRequestClose;
+        public event EventHandler OnRequestOpenCreate;
 
         private readonly IUserSettingsClient userSettings;
         private readonly LibraryViewModel libraryVm;
@@ -56,6 +57,10 @@ namespace Lively.UI.WinUI.ViewModels
 
         private RelayCommand _browseWebCommand;
         public RelayCommand BrowseWebCommand => _browseWebCommand ??= new RelayCommand(WebBrowseAction);
+
+        private RelayCommand _createWallpaperCommand;
+        public RelayCommand CreateWallpaperCommand => _createWallpaperCommand ??= 
+            new RelayCommand(()=> OnRequestOpenCreate?.Invoke(this, EventArgs.Empty));
 
         private void WebBrowseAction()
         {
@@ -97,7 +102,7 @@ namespace Lively.UI.WinUI.ViewModels
             ErrorMessage = null;
             if (IsElevated)
             {
-                var file = FilePickerUtil.FilePickerNative(LocalizationUtil.SupportedFileDialogFilterNative());
+                var file = FilePickerUtil.PickSingleFileNative(LocalizationUtil.SupportedFileDialogFilterNative());
                 if (!string.IsNullOrEmpty(file))
                 {
                     await AddWallpaperFile(file);
