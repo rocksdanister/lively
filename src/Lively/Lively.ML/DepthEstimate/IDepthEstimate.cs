@@ -4,5 +4,6 @@
     {
         void LoadModel(string path);
         ModelOutput Run(string imagePath);
+        string ModelPath { get; }
     }
 }

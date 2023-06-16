@@ -6,6 +6,7 @@ using Lively.Common;
 using Lively.Common.Helpers;
 using Lively.Common.Helpers.Files;
 using Lively.Common.Helpers.Network;
+using Lively.Common.Helpers.Storage;
 using Lively.Grpc.Client;
 using Lively.ML.DepthEstimate;
 using Lively.ML.Helpers;
@@ -18,6 +19,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Lively.Common.Helpers.Archive.ZipCreate;
 
 namespace Lively.UI.WinUI.ViewModels
 {
@@ -99,8 +101,8 @@ namespace Lively.UI.WinUI.ViewModels
                 RunCommand.NotifyCanExecuteChanged();
                 PreviewText = "Approximating depth..";
 
-                //todo don't reload everytime
-                depthEstimate.LoadModel(Constants.MachineLearning.MiDaSPath);
+                if (!Constants.MachineLearning.MiDaSPath.Equals(depthEstimate.ModelPath, StringComparison.Ordinal))
+                    depthEstimate.LoadModel(Constants.MachineLearning.MiDaSPath);
                 var output = depthEstimate.Run(SelectedImage);
                 await Task.Delay(1500);
 
@@ -131,15 +133,14 @@ namespace Lively.UI.WinUI.ViewModels
             var destDir = Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperInstallDir, Path.GetRandomFileName());
             FileOperations.DirectoryCopy(srcDir, destDir, true);
 
-            //metadata
             using var img = new MagickImage(SelectedImage);
             if (Path.GetExtension(SelectedImage) != ".jpg")
                 await img.WriteAsync(Path.Combine(destDir, "media", "image.jpg"));
             else
                 File.Copy(SelectedImage, Path.Combine(destDir, "media", "image.jpg"));
-
             File.Copy(PreviewImage, Path.Combine(destDir, "media", "depth.jpg"), true);
 
+            //metadata
             img.Resize(new MagickGeometry()
             {
                 Width = 480,
@@ -148,6 +149,21 @@ namespace Lively.UI.WinUI.ViewModels
                 FillArea = false
             });
             await img.WriteAsync(Path.Combine(destDir, "thumbnail.jpg"));
+            JsonStorage<ILivelyInfoModel>.StoreData(Path.Combine(destDir, "LivelyInfo.json"), new LivelyInfoModel()
+            {
+                Title = Path.GetFileNameWithoutExtension(SelectedImage),
+                Desc = "AI generated depth wallpaper template",
+                Type = WallpaperType.web,
+                IsAbsolutePath = false,
+                FileName = "index.html",
+                Contact = "https://github.com/rocksdanister/depthmap-wallpaper",
+                License = "See License.txt",
+                Author = "rocksdanister",
+                AppVersion = "2.0.6.6",
+                Preview = "preview.gif",
+                Thumbnail = "thumbnail.jpg",
+                Arguments = string.Empty,
+            });
 
             return libraryVm.AddWallpaperFolder(destDir);
         }

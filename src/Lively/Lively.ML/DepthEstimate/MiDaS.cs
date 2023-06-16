@@ -13,7 +13,7 @@ namespace Lively.ML.DepthEstimate
 {
     public class MiDaS : IDepthEstimate
     {
-        private string modelPath;
+        public string ModelPath { get; private set; }
         private InferenceSession session;
         private string inputName;
         private int width, height;
@@ -23,10 +23,10 @@ namespace Lively.ML.DepthEstimate
 
         public void LoadModel(string path)
         {
-            modelPath = path;
+            ModelPath = path;
 
             session?.Dispose();
-            session = new InferenceSession(modelPath);
+            session = new InferenceSession(ModelPath);
             Debug.WriteLine($"Model version: {session.ModelMetadata.Version}");
 
             inputName = session.InputMetadata.Keys.First();
@@ -36,7 +36,7 @@ namespace Lively.ML.DepthEstimate
 
         public ModelOutput Run(string imagePath)
         {
-            if (modelPath is null)
+            if (ModelPath is null)
                 throw new FileNotFoundException("ONNX file not provided");
 
             if (!File.Exists(imagePath))
