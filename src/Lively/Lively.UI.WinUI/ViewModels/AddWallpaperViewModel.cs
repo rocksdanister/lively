@@ -23,17 +23,15 @@ namespace Lively.UI.WinUI.ViewModels
 {
     public partial class AddWallpaperViewModel : ObservableObject
     {
-        public ILibraryModel NewWallpaper { get; private set; }
-        public List<string> NewWallpapers { get; private set; } = new List<string>();
-        public event EventHandler OnRequestClose;
+        public event EventHandler<List<string>> OnRequestAddFile;
+        public event EventHandler<string> OnRequestAddUrl;
+        public event EventHandler OnRequestOpenCreate;
 
         private readonly IUserSettingsClient userSettings;
-        private readonly LibraryViewModel libraryVm;
 
-        public AddWallpaperViewModel(IUserSettingsClient userSettings, LibraryViewModel libraryVm)
+        public AddWallpaperViewModel(IUserSettingsClient userSettings)
         {
             this.userSettings = userSettings;
-            this.libraryVm = libraryVm;
 
             WebUrlText = userSettings.Settings.SavedURL;
         }
@@ -57,6 +55,10 @@ namespace Lively.UI.WinUI.ViewModels
         private RelayCommand _browseWebCommand;
         public RelayCommand BrowseWebCommand => _browseWebCommand ??= new RelayCommand(WebBrowseAction);
 
+        private RelayCommand _createWallpaperCommand;
+        public RelayCommand CreateWallpaperCommand => _createWallpaperCommand ??= 
+            new RelayCommand(()=> OnRequestOpenCreate?.Invoke(this, EventArgs.Empty));
+
         private void WebBrowseAction()
         {
             Uri uri;
@@ -76,18 +78,7 @@ namespace Lively.UI.WinUI.ViewModels
             AddWallpaperLink(uri);
         }
 
-        public void AddWallpaperLink(Uri uri)
-        {
-            try
-            {
-                NewWallpaper = libraryVm.AddWallpaperLink(uri.OriginalString);
-                OnRequestClose?.Invoke(this, EventArgs.Empty);
-            }
-            catch
-            {
-                //TODO
-            }
-        }
+        public void AddWallpaperLink(Uri uri) => OnRequestAddUrl?.Invoke(this, uri.OriginalString);
 
         private RelayCommand _browseFileCommand;
         public RelayCommand BrowseFileCommand => _browseFileCommand ??= new RelayCommand(async () => await FileBrowseAction());
@@ -97,11 +88,9 @@ namespace Lively.UI.WinUI.ViewModels
             ErrorMessage = null;
             if (IsElevated)
             {
-                var file = FilePickerUtil.FilePickerNative(LocalizationUtil.SupportedFileDialogFilterNative());
+                var file = FilePickerUtil.PickSingleFileNative(LocalizationUtil.SupportedFileDialogFilterNative());
                 if (!string.IsNullOrEmpty(file))
-                {
-                    await AddWallpaperFile(file);
-                }
+                    AddWallpaperFile(file);
             }
             else
             {
@@ -115,38 +104,15 @@ namespace Lively.UI.WinUI.ViewModels
                 if (files.Count > 0)
                 {
                     if (files.Count == 1)
-                    {
-                        await AddWallpaperFile(files[0].Path);
-                    }
+                        AddWallpaperFile(files[0].Path);
                     else
-                    {
-                        AddWallpaperFile(files.Select(x => x.Path).ToList());
-                    }
+                        AddWallpaperFiles(files.Select(x => x.Path).ToList());
                 }
             }
         }
 
-        public async Task AddWallpaperFile(string path)
-        {
-            try
-            {
-                var item = await libraryVm.AddWallpaperFile(path);
-                if (item.DataType == LibraryItemType.processing)
-                {
-                    NewWallpaper = item;
-                }
-                OnRequestClose?.Invoke(this, EventArgs.Empty);
-            }
-            catch (Exception ex)
-            {
-                ErrorMessage = ex.Message;
-            }
-        }
+        public void AddWallpaperFile(string path) => OnRequestAddFile?.Invoke(this, new List<string>() { path });
 
-        public void AddWallpaperFile(List<string> path)
-        {
-            NewWallpapers.AddRange(path);
-            OnRequestClose?.Invoke(this, EventArgs.Empty);
-        }
+        public void AddWallpaperFiles(List<string> filePaths) => OnRequestAddFile?.Invoke(this, filePaths);
     }
 }

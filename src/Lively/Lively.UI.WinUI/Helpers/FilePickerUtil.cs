@@ -44,7 +44,7 @@ namespace Lively.UI.WinUI.Helpers
             public string template = null;
         }
 
-        public static async Task<string> FilePickerUwp(string[] filter)
+        public static async Task<string> PickSingleFileUwp(string[] filter)
         {
             var filePicker = new FileOpenPicker();
             filePicker.SetOwnerWindow(App.Services.GetRequiredService<MainWindow>());
@@ -55,7 +55,7 @@ namespace Lively.UI.WinUI.Helpers
             return (await filePicker.PickSingleFileAsync())?.Path;
         }
 
-        public static string FilePickerNative(string filters)
+        public static string PickSingleFileNative(string filters)
         {
             var ofn = new OpenFileName();
             ofn.structSize = Marshal.SizeOf(ofn);
