@@ -534,7 +534,6 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
 
         #region color picker
 
-
         private void Cpicker_ColorChanged(ColorPicker sender, ColorChangedEventArgs args)
         {
             try

@@ -6,7 +6,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Lively.UI.WinUI.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:media="using:CommunityToolkit.WinUI.UI.Media"
     xmlns:toolkit="using:CommunityToolkit.WinUI.UI.Controls"
+    xmlns:ui="using:CommunityToolkit.WinUI.UI"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -15,6 +17,7 @@
             FallbackColor="{ThemeResource SystemAltMediumColor}"
             TintColor="{ThemeResource SystemAltMediumColor}"
             TintOpacity="0.5" />
+        <ThemeShadow x:Name="BackgroundGridShadow" />
         <customconverters:BooleanToVisibilityConverter x:Key="VisibilityConverter" />
     </Page.Resources>
 
@@ -48,6 +51,8 @@
             Grid.Row="0"
             Background="{ThemeResource AcrylicBrushCustom}"
             CornerRadius="5" />
+
+        <Grid x:Name="BackgroundGrid" />
         <Grid Visibility="{Binding IsModelExists, Converter={StaticResource VisibilityConverter}, Mode=OneWay}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
@@ -58,7 +63,13 @@
             <Viewbox
                 Grid.Row="0"
                 Width="384"
-                Height="216">
+                Height="216"
+                Shadow="{StaticResource BackgroundGridShadow}"
+                Translation="0,0,32">
+                <!--  Sometimes do not work  -->
+                <!--<ui:Effects.Shadow>
+                    <media:AttachedCardShadow Offset="4" Color="{ThemeResource SystemAltMediumColor}" />
+                </ui:Effects.Shadow>-->
                 <toolkit:ImageEx
                     x:Name="imgPreview"
                     Height="250"
