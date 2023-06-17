@@ -41,10 +41,10 @@
 
   <ItemGroup>
     <PackageReference Include="GrpcDotNetNamedPipes" Version="2.0.0" />
-    <PackageReference Include="Magick.NET-Q8-AnyCPU" Version="13.1.0" />
-    <PackageReference Include="MdXaml" Version="1.18.1" />
+    <PackageReference Include="Magick.NET-Q8-AnyCPU" Version="13.1.3" />
+    <PackageReference Include="MdXaml" Version="1.19.2" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
-    <PackageReference Include="NLog" Version="5.1.4" />
+    <PackageReference Include="NLog" Version="5.2.0" />
     <PackageReference Include="RawInput.Sharp" Version="0.1.1" />
     <PackageReference Include="Sentinel.NLogViewer" Version="2.0.1" />
   </ItemGroup>
