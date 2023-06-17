@@ -34,7 +34,7 @@ namespace Lively.UI.WinUI.Services
                 Title = i18n.GetString("DescriptionScreenLayout"),
                 Content = new ChooseDisplayView(vm),
                 PrimaryButtonText = i18n.GetString("TextClose"),
-                DefaultButton = ContentDialogButton.Primary,
+                //DefaultButton = ContentDialogButton.Primary,
                 XamlRoot = App.Services.GetRequiredService<MainWindow>().Content.XamlRoot,
             };
             vm.OnRequestClose += (_, _) => dialog.Hide();
@@ -128,15 +128,19 @@ namespace Lively.UI.WinUI.Services
                 SecondaryButtonText = "Cancel",
                 DefaultButton = ContentDialogButton.Primary,
                 XamlRoot = App.Services.GetRequiredService<MainWindow>().Content.XamlRoot,
-                PrimaryButtonCommand = vm.RunCommand
+                PrimaryButtonCommand = vm.RunCommand,
+                IsPrimaryButtonEnabled = vm.IsModelExists,
             };
             vm.OnRequestClose += (_, _) => depthDialog.Hide();
             depthDialog.Closing += (s, e) =>
             {
                 if (e.Result == ContentDialogResult.Primary)
-                {
                     e.Cancel = true;
-                }
+            };
+            vm.RunCommand.CanExecuteChanged += (s, e) =>
+            {
+                //PrimaryButtonCommand binding is not updating otherwise
+                depthDialog.IsPrimaryButtonEnabled = vm.IsModelExists;
             };
             vm.PropertyChanged += (s, e) =>
             {
@@ -152,6 +156,9 @@ namespace Lively.UI.WinUI.Services
 
         public async Task<WallpaperCreateType?> ShowWallpaperCreateDialog(string filePath)
         {
+            if (filePath is null)
+                return await InnerShowWallpaperCreateDialog(null);
+
             //For now only pictures..
             var filter = FileFilter.GetLivelyFileType(filePath);
             if (filter != WallpaperType.picture)

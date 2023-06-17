@@ -45,7 +45,7 @@ namespace Lively.UI.WinUI.ViewModels
             //{
             //    Title = "Edit Video",
             //    Description = "Transcode, trim or optimize video",
-            //    CreateType = WallpaperCreateType.none,
+            //    CreateType = WallpaperCreateType.videotranscode,
             //    TypeSupported = WallpaperType.video,
             //    Icon = null
             //});

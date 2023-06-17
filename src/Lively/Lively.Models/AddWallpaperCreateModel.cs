@@ -48,5 +48,6 @@ namespace Lively.Models
     {
         none,
         depthmap,
+        //videotranscode,
     }
 }

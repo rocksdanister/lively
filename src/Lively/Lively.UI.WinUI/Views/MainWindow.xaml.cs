@@ -41,6 +41,7 @@ using WinUIEx;
 using WinUICommunity;
 using static WinUICommunity.LanguageDictionary;
 using Windows.Storage.Pickers;
+using ImageMagick;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -288,45 +289,61 @@ namespace Lively.UI.WinUI
                 DefaultButton = ContentDialogButton.Primary,
                 XamlRoot = this.Content.XamlRoot,
             };
-            addVm.OnRequestClose += async(_, _) =>
+            addVm.OnRequestAddUrl += async(_, e) =>
             {
                 addDialog.Hide();
-                if (addVm.NewWallpapers.Count > 0)
+                var libItem = libraryVm.AddWallpaperLink(e);
+                NavViewNavigate(NavPages.library);
+                await desktopCore.SetWallpaper(libItem, userSettings.Settings.SelectedDisplay);
+            };
+            addVm.OnRequestAddFile += async(_, e) =>
+            {
+                addDialog.Hide();
+                if (e.Count == 1)
                 {
                     NavViewNavigate(NavPages.library);
-                    await AddWallpapers(addVm.NewWallpapers);
+                    await CreateWallpaper(e[0]);
                 }
-                else if (addVm.NewWallpaper != null)
+                else if (e.Count > 1)
                 {
                     NavViewNavigate(NavPages.library);
-                    await desktopCore.SetWallpaper(addVm.NewWallpaper, userSettings.Settings.SelectedDisplay);
+                    await AddWallpapers(e);
                 }
             };
             addVm.OnRequestOpenCreate += async(_, _) =>
             {
                 addDialog.Hide();
-                var customType = await dialogService.ShowWallpaperCreateDialog();
-                if (customType is null)
-                    return;
-
-                switch (customType)
-                {
-                    case WallpaperCreateType.none: //none
-                        break;
-                    case WallpaperCreateType.depthmap:
-                        {
-                            var file = await FilePickerUtil.PickSingleFileUwp(LocalizationUtil.SupportedFileDialogFilter(WallpaperType.picture));
-                            if (file is not null)
-                            {
-                                var result = await dialogService.ShowDepthWallpaperDialog(file);
-                                if (result is not null)
-                                    await desktopCore.SetWallpaper(result, userSettings.Settings.SelectedDisplay);
-                            }
-                        }
-                        break;
-                }
+                await CreateWallpaper(null);
             };
             await addDialog.ShowAsyncQueue();
+        }
+
+        public async Task CreateWallpaper(string filePath)
+        {
+            var creationType = await dialogService.ShowWallpaperCreateDialog(filePath);
+            if (creationType is null)
+                return;
+
+            switch (creationType)
+            {
+                case WallpaperCreateType.none:
+                    {
+                        var libItem = await libraryVm.AddWallpaperFile(filePath);
+                        await desktopCore.SetWallpaper(libItem, userSettings.Settings.SelectedDisplay);
+                    }
+                    break;
+                case WallpaperCreateType.depthmap:
+                    {
+                        filePath ??= await FilePickerUtil.PickSingleFileUwp(LocalizationUtil.SupportedFileDialogFilter(WallpaperType.picture));
+                        if (filePath is not null)
+                        {
+                            var result = await dialogService.ShowDepthWallpaperDialog(filePath);
+                            if (result is not null)
+                                await desktopCore.SetWallpaper(result, userSettings.Settings.SelectedDisplay);
+                        }
+                    }
+                    break;
+            }
         }
 
         public async Task AddWallpapers(List<string> files)
@@ -348,11 +365,15 @@ namespace Lively.UI.WinUI
                     importBar.Message = "100%";
                     ct.Cancel();
                 };
-                await libraryVm.AddWallpapers(files, ct.Token, new Progress<int>(percent => { importBar.Message = $"{percent}%"; }));
+                await libraryVm.AddWallpapers(files, ct.Token, new Progress<int>(percent => { 
+                    importBar.Message = $"{percent}%"; 
+                    importBarProgress.Value = percent; 
+                }));
             }
             finally
             {
                 importBar.IsOpen = false;
+                importBarProgress.Value = 0;
             }
         }
 

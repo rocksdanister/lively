@@ -33,19 +33,16 @@ namespace Lively.UI.WinUI.ViewModels
         private readonly IDownloadHelper downloader;
         private readonly LibraryViewModel libraryVm;
         private readonly IUserSettingsClient userSettings;
-        private readonly IDesktopCoreClient desktopCore;
 
         public DepthEstimateWallpaperViewModel(IDepthEstimate depthEstimate,
             IDownloadHelper downloader,
             LibraryViewModel libraryVm, 
-            IUserSettingsClient userSettings,
-            IDesktopCoreClient desktopCore)
+            IUserSettingsClient userSettings)
         {
             this.depthEstimate = depthEstimate;
             this.downloader = downloader;
             this.libraryVm = libraryVm;
             this.userSettings = userSettings;
-            this.desktopCore = desktopCore;
 
             _canRunCommand = IsModelExists;
             RunCommand.NotifyCanExecuteChanged();
@@ -174,7 +171,8 @@ namespace Lively.UI.WinUI.ViewModels
             DownloadModelCommand.NotifyCanExecuteChanged();
 
             var uri = await GetModelUrl();
-            downloader.DownloadFile(uri, Constants.MachineLearning.MiDaSPath);
+            var tempPath = Path.Combine(Constants.CommonPaths.TempDir, Path.GetFileName(Constants.MachineLearning.MiDaSPath));
+            downloader.DownloadFile(uri, tempPath);
             downloader.DownloadStarted += (s, e) => 
             {
                 _ = App.Services.GetRequiredService<MainWindow>().DispatcherQueue.TryEnqueue(() =>
@@ -190,15 +188,27 @@ namespace Lively.UI.WinUI.ViewModels
                     ModelDownloadProgress = (float)e.Percentage;
                 });
             };
-            downloader.DownloadFileCompleted += (s, e) =>
+            downloader.DownloadFileCompleted += (s, success) =>
             {
                 _ = App.Services.GetRequiredService<MainWindow>().DispatcherQueue.TryEnqueue(() =>
                 {
-                    IsModelExists = CheckModel();
-                    BackgroundImage = IsModelExists ? SelectedImage : BackgroundImage;
+                    if (success)
+                    {
+                        File.Copy(tempPath, Constants.MachineLearning.MiDaSPath);
+                        IsModelExists = CheckModel();
+                        BackgroundImage = IsModelExists ? SelectedImage : BackgroundImage;
 
-                    _canRunCommand = IsModelExists;
-                    RunCommand.NotifyCanExecuteChanged();
+                        _canRunCommand = IsModelExists;
+                        RunCommand.NotifyCanExecuteChanged();
+                    }
+                    else
+                    {
+                        try
+                        {
+                            File.Delete(tempPath);
+                        }
+                        catch { }
+                    }
                 });
             };
         }

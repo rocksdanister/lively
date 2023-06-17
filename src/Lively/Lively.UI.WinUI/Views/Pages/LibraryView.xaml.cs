@@ -270,11 +270,11 @@ namespace Lively.UI.WinUI.Views.Pages
 
                     try
                     {
-                        var customType = await dialogService.ShowWallpaperCreateDialog(item);
-                        if (customType is null)
+                        var creationType = await dialogService.ShowWallpaperCreateDialog(item);
+                        if (creationType is null)
                             return;
 
-                        switch (customType)
+                        switch (creationType)
                         {
                             case WallpaperCreateType.none:
                                 {
