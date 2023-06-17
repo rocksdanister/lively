@@ -119,10 +119,9 @@
             </controls:SettingsExpander>
 
             <controls:SettingsCard
+                x:Uid="AddWallpaperAdvanced"
                 Margin="0,1,0,0"
                 Command="{Binding CreateWallpaperCommand}"
-                Description="Create a dynamic wallpaper"
-                Header="Custom"
                 IsClickEnabled="True">
                 <controls:SettingsCard.HeaderIcon>
                     <FontIcon Glyph="&#xE790;" />

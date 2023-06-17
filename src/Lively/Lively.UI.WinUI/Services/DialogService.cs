@@ -13,7 +13,6 @@ using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources;
 using WinUICommunity;
 using static Lively.UI.WinUI.Services.IDialogService;
-using static WinUICommunity.LanguageDictionary;
 
 namespace Lively.UI.WinUI.Services
 {
@@ -122,9 +121,9 @@ namespace Lively.UI.WinUI.Services
             vm.SelectedImage = imagePath;
             var depthDialog = new ContentDialog
             {
-                Title = "AI Depth Wallpaper",
+                Title = i18n.GetString("TitleDepthWallpaper/Content"),
                 Content = new DepthEstimateWallpaperView(vm),
-                PrimaryButtonText = i18n.GetString("TextOK"),
+                PrimaryButtonText = i18n.GetString("TextContinue/Content"),
                 SecondaryButtonText = i18n.GetString("Cancel/Content"),
                 DefaultButton = ContentDialogButton.Primary,
                 XamlRoot = App.Services.GetRequiredService<MainWindow>().Content.XamlRoot,
