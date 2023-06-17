@@ -140,7 +140,7 @@ namespace Lively.UI.WinUI.Services
             vm.RunCommand.CanExecuteChanged += (s, e) =>
             {
                 //PrimaryButtonCommand binding is not updating otherwise
-                depthDialog.IsPrimaryButtonEnabled = vm.IsModelExists;
+                depthDialog.IsPrimaryButtonEnabled = vm.IsModelExists && !vm.IsRunning;
             };
             vm.PropertyChanged += (s, e) =>
             {

@@ -39,9 +39,7 @@ using Windows.ApplicationModel.Resources;
 using WinRT.Interop;
 using WinUIEx;
 using WinUICommunity;
-using static WinUICommunity.LanguageDictionary;
-using Windows.Storage.Pickers;
-using ImageMagick;
+using Lively.Common.Helpers.Files;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -328,8 +326,9 @@ namespace Lively.UI.WinUI
             {
                 case WallpaperCreateType.none:
                     {
-                        var libItem = await libraryVm.AddWallpaperFile(filePath);
-                        await desktopCore.SetWallpaper(libItem, userSettings.Settings.SelectedDisplay);
+                        var item = await AddWallpaper(filePath);
+                        if (item is not null && item.DataType == LibraryItemType.processing)
+                            await desktopCore.SetWallpaper(item, userSettings.Settings.SelectedDisplay);
                     }
                     break;
                 case WallpaperCreateType.depthmap:
@@ -344,6 +343,38 @@ namespace Lively.UI.WinUI
                     }
                     break;
             }
+        }
+
+        public async Task<ILibraryModel> AddWallpaper(string filePath)
+        {
+            ILibraryModel result = null;
+            try
+            {
+                if (Path.GetExtension(filePath) == ".zip" && FileOperations.IsFileGreater(filePath, 10485760))
+                {
+                    importBar.IsOpen = true;
+                    importBar.Message = Path.GetFileName(filePath);
+                    importBarProgress.IsIndeterminate = true;
+                }
+                result = await libraryVm.AddWallpaperFile(filePath);
+            }
+            catch (Exception ex)
+            {
+                await new ContentDialog()
+                {
+                    Title = i18n.GetString("TextError"),
+                    Content = ex.Message,
+                    PrimaryButtonText = i18n.GetString("TextOk"),
+                    DefaultButton = ContentDialogButton.Primary,
+                    XamlRoot = this.Content.XamlRoot,
+                }.ShowAsyncQueue();
+            }
+            finally
+            {
+                importBar.IsOpen = false;
+                importBarProgress.IsIndeterminate = false;
+            }
+            return result;
         }
 
         public async Task AddWallpapers(List<string> files)

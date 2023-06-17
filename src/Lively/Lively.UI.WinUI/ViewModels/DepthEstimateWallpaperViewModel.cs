@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.WinUI;
 using Downloader;
 using ImageMagick;
 using Lively.Common;
@@ -12,6 +13,7 @@ using Lively.ML.DepthEstimate;
 using Lively.ML.Helpers;
 using Lively.Models;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.UI.Dispatching;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -28,6 +30,7 @@ namespace Lively.UI.WinUI.ViewModels
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         public ILibraryModel NewWallpaper { get; private set; }
         public event EventHandler OnRequestClose;
+        private readonly DispatcherQueue dispatcherQueue;
 
         private readonly IDepthEstimate depthEstimate;
         private readonly IDownloadHelper downloader;
@@ -43,6 +46,8 @@ namespace Lively.UI.WinUI.ViewModels
             this.downloader = downloader;
             this.libraryVm = libraryVm;
             this.userSettings = userSettings;
+
+            dispatcherQueue = DispatcherQueue.GetForCurrentThread() ?? DispatcherQueueController.CreateOnCurrentThread().DispatcherQueue;
 
             _canRunCommand = IsModelExists;
             RunCommand.NotifyCanExecuteChanged();
@@ -171,18 +176,18 @@ namespace Lively.UI.WinUI.ViewModels
             DownloadModelCommand.NotifyCanExecuteChanged();
 
             var uri = await GetModelUrl();
-            var tempPath = Path.Combine(Constants.CommonPaths.TempDir, Path.GetFileName(Constants.MachineLearning.MiDaSPath));
+            var tempPath = Path.Combine(Constants.CommonPaths.TempDir, Path.GetRandomFileName());
             downloader.DownloadFile(uri, tempPath);
             downloader.DownloadStarted += (s, e) => 
             {
-                _ = App.Services.GetRequiredService<MainWindow>().DispatcherQueue.TryEnqueue(() =>
+                _ = dispatcherQueue.TryEnqueue(() =>
                 {
                     ModelDownloadProgressText = $"0/{e.TotalSize}MB";
                 });
             };
             downloader.DownloadProgressChanged += (s, e) =>
             {
-                _ = App.Services.GetRequiredService<MainWindow>().DispatcherQueue.TryEnqueue(() =>
+                _ = dispatcherQueue.TryEnqueue(() =>
                 {
                     ModelDownloadProgressText = $"{e.DownloadedSize}/{e.TotalSize}MB";
                     ModelDownloadProgress = (float)e.Percentage;
@@ -190,24 +195,25 @@ namespace Lively.UI.WinUI.ViewModels
             };
             downloader.DownloadFileCompleted += (s, success) =>
             {
-                _ = App.Services.GetRequiredService<MainWindow>().DispatcherQueue.TryEnqueue(() =>
+                _ = dispatcherQueue.TryEnqueue(async() =>
                 {
                     if (success)
                     {
-                        File.Copy(tempPath, Constants.MachineLearning.MiDaSPath);
+                        await FileOperations.CopyFileAsync(tempPath, Constants.MachineLearning.MiDaSPath);
                         IsModelExists = CheckModel();
                         BackgroundImage = IsModelExists ? SelectedImage : BackgroundImage;
 
                         _canRunCommand = IsModelExists;
                         RunCommand.NotifyCanExecuteChanged();
-                    }
-                    else
-                    {
-                        try
-                        {
-                            File.Delete(tempPath);
-                        }
-                        catch { }
+
+                        //try
+                        //{
+                        //    File.Delete(tempPath);
+                        //}
+                        //catch
+                        //{
+                        //    //ignore, will get deleted on restart
+                        //}
                     }
                 });
             };
