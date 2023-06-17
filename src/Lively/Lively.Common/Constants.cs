@@ -43,6 +43,11 @@ namespace Lively.Common
             public static string WallpaperSettingsDir { get; } = Path.Combine("SaveData", "wpdata");
         }
 
+        public static class MachineLearning
+        {
+            public static string MiDaSPath { get; } = Path.Combine(CommonPaths.AppDataDir, "ML", "MiDaS", "MiDaS_model-small.onnx");
+        }
+
         public static class SingleInstance
         {
             public static string UniqueAppName { get; } = "LIVELY:DESKTOPWALLPAPERSYSTEM";

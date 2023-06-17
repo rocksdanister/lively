@@ -1,9 +1,11 @@
 ﻿using CommandLine;
 using Lively.Common.Helpers;
 using Lively.Common.Helpers.Archive;
+using Lively.Common.Helpers.Network;
 using Lively.Common.Helpers.Pinvoke;
 using Lively.Gallery.Client;
 using Lively.Grpc.Client;
+using Lively.ML.DepthEstimate;
 using Lively.Models;
 using Lively.UI.WinUI.Factories;
 using Lively.UI.WinUI.Helpers;
@@ -145,6 +147,7 @@ namespace Lively.UI.WinUI
                 .AddSingleton<GallerySubscriptionViewModel>()
                 .AddSingleton<SettingsViewModel>() //Some events..
                 .AddSingleton<ICacheService, DiskCacheService>((e) => new DiskCacheService(e.GetRequiredService<IHttpClientFactory>(), Path.Combine(Path.GetTempPath(), "Lively Wallpaper", "gallery")))
+                .AddSingleton<IDepthEstimate, MiDaS>()
                 //transient
                 //.AddTransient<HelpViewModel>()
                 .AddTransient<AboutViewModel>()
@@ -156,10 +159,13 @@ namespace Lively.UI.WinUI
                 .AddTransient<GalleryLoginViewModel>()
                 .AddTransient<ManageAccountViewModel>()
                 .AddTransient<RestoreWallpaperViewModel>()
+                .AddTransient<AddWallpaperCreateViewModel>()
+                .AddTransient<DepthEstimateWallpaperViewModel>()
                 .AddTransient<IDialogService, DialogService>()
                 .AddTransient<IApplicationsFactory, ApplicationsFactory>()
                 .AddTransient<IApplicationsRulesFactory, ApplicationsRulesFactory>()
                 .AddTransient<IThemeFactory, ThemeFactory>()
+                .AddTransient<IDownloadHelper, MultiDownloadHelper>()
                 //https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests
                 .AddHttpClient()
                 .BuildServiceProvider();

@@ -126,6 +126,32 @@ namespace Lively.Common.Helpers.Files
         }
 
         /// <summary>
+        /// Checks if file is greater than the given byte, false if exception
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <param name="bytes"></param>
+        /// <returns></returns>
+        public static bool IsFileGreater(string filePath, long bytes)
+        {
+            bool result = false;
+            try
+            {
+                result = new FileInfo(filePath).Length > bytes;
+            }
+            catch { 
+                //ignore
+            }
+            return result;
+        }
+
+        public static async Task CopyFileAsync(string src, string dest)
+        {
+            using FileStream sourceStream = File.Open(src, FileMode.Open);
+            using FileStream destinationStream = File.Create(dest);
+            await sourceStream.CopyToAsync(destinationStream);
+        }
+
+        /// <summary>
         /// Async folder delete operation after given delay.
         /// </summary>
         /// <param name="folderPath"></param>

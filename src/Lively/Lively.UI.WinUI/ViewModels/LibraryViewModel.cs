@@ -689,6 +689,11 @@ namespace Lively.UI.WinUI.ViewModels
             desktopCore.WallpaperChanged -= WallpaperChanged;
         }
 
+        public ILibraryModel AddWallpaperFolder(string folder)
+        {
+            return AddWallpaper(folder, false);
+        }
+
         #endregion //public methods
 
         #region helpers

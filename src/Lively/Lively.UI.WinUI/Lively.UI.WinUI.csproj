@@ -50,6 +50,7 @@
     <None Remove="Assets\CustomIcons.ttf" />
     <None Remove="Assets\icon-lively-48.png" />
     <None Remove="Assets\icons8-application-window-96.png" />
+    <None Remove="Assets\icons8-artificial-intelligence-100.png" />
     <None Remove="Assets\icons8-cat-back-view-64.png" />
     <None Remove="Assets\icons8-github-96.png" />
     <None Remove="Assets\icons8-google-96.png" />
@@ -64,10 +65,12 @@
     <None Remove="Views\LivelyProperty\LivelyPropertiesTray.xaml" />
     <None Remove="Views\LivelyProperty\LivelyPropertiesView.xaml" />
     <None Remove="Views\Pages\AboutView.xaml" />
+    <None Remove="Views\Pages\AddWallpaperCreateView.xaml" />
     <None Remove="Views\Pages\AddWallpaperDataView.xaml" />
     <None Remove="Views\Pages\AddWallpaperView.xaml" />
     <None Remove="Views\Pages\ChooseDisplayView.xaml" />
     <None Remove="Views\Pages\ControlPanelView.xaml" />
+    <None Remove="Views\Pages\DepthEstimateWallpaperView.xaml" />
     <None Remove="Views\Pages\GalleryView.xaml" />
     <None Remove="Views\Pages\Gallery\GalleryFeaturedView.xaml" />
     <None Remove="Views\Pages\Gallery\GallerySubscriptionView.xaml" />
@@ -132,6 +135,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Lively.Common\Lively.Common.csproj" />
     <ProjectReference Include="..\Lively.Grpc.Client\Lively.Grpc.Client.csproj" />
+    <ProjectReference Include="..\Lively.ML\Lively.ML.csproj" />
     <ProjectReference Include="..\Lively.Models\Lively.Models.csproj" />
     <ProjectReference Include="..\Lively.Gallery.Client\Lively.Gallery.Client.csproj" />
   </ItemGroup>
@@ -150,6 +154,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Update="Assets\icon-lively-48.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\icons8-artificial-intelligence-100.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Update="Assets\icons8-cat-back-view-64.png">
@@ -181,6 +188,12 @@
     <None Update="appicon.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Page Update="Views\Pages\AddWallpaperCreateView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\Pages\DepthEstimateWallpaperView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Content Update="Assets\CustomIcons.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -297,5 +310,14 @@
     <Page Update="Views\LivelyProperty\LivelyPropertiesView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
-  </ItemGroup>  
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="WallpaperTemplates\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="WallpaperTemplates\**">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 </Project>

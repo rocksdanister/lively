@@ -28,7 +28,6 @@ namespace Lively.UI.WinUI.Views.Pages
     /// </summary>
     public sealed partial class AboutView : Page
     {
-        private readonly IAppUpdaterClient appUpdater;
         public AboutView()
         {
             this.InitializeComponent();

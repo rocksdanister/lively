@@ -332,7 +332,9 @@
         <InfoBar
             Name="importBar"
             Grid.Row="1"
-            IsClosable="False" />
+            IsClosable="False">
+            <ProgressBar Name="importBarProgress" Margin="-50,0,0,0" />
+        </InfoBar>
         <TeachingTip
             Grid.Row="1"
             BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}"

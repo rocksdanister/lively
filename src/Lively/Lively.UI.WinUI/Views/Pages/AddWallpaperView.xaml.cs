@@ -68,11 +68,11 @@ namespace Lively.UI.WinUI.Views.Pages
                         return;
                     }
 
-                    await vm.AddWallpaperFile(item);
+                    vm.AddWallpaperFile(item);
                 }
                 else if (items.Count > 1)
                 {
-                    vm.AddWallpaperFile(items.Select(x => x.Path).ToList());
+                    vm.AddWallpaperFiles(items.Select(x => x.Path).ToList());
                 }
             }
         }

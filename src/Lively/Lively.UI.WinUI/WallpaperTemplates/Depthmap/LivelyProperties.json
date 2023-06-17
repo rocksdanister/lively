@@ -1,0 +1,31 @@
+{
+  "xThreshold": {
+    "max": 50,
+    "min": 1,
+    "text": "xThreshold",
+    "type": "slider",
+    "value": 20
+  },
+  "yThreshold": {
+    "max": 50,
+    "min": 1,
+    "text": "yThreshold",
+    "type": "slider",
+    "value": 35
+  },
+  "stretch": {
+    "type": "checkbox",
+    "value": true,
+    "text": "Scale to Fill"
+  },
+  "blur": {
+    "type": "checkbox",
+    "value": false,
+    "text": "Blur"
+  },
+  "fpsLock": {
+    "type": "checkbox",
+    "value": false,
+    "text": "30FPS Lock"
+  }
+}

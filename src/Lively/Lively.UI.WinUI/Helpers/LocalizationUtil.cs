@@ -60,6 +60,9 @@ namespace Lively.UI.WinUI.Helpers
             return filterCollection.Distinct().ToList();
         }
 
+        public static string[] SupportedFileDialogFilter(WallpaperType wallpaperType) => 
+            FileFilter.LivelySupportedFormats.First(x => x.Type == wallpaperType).Extentions;
+
         public static string SupportedFileDialogFilterNative(bool anyFile = false)
         {
             var filterString = new StringBuilder();

@@ -323,7 +323,7 @@
                 <animations:OpacityAnimation
                     From="1.0"
                     To="0"
-                    Duration="0:0:0.2" />
+                    Duration="0:0:1.0" />
             </animations:Implicit.HideAnimations>
             <Rectangle
                 Margin="25"

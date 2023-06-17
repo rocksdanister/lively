@@ -1,6 +1,8 @@
-﻿using Lively.Grpc.Client;
+﻿using Lively.Common.Helpers.Files;
+using Lively.Grpc.Client;
 using Lively.Models;
 using Lively.UI.WinUI.Helpers;
+using Lively.UI.WinUI.Services;
 using Lively.UI.WinUI.ViewModels;
 using Lively.UI.WinUI.Views.LivelyProperty;
 using Lively.UI.WinUI.Views.Pages.Gallery;
@@ -41,12 +43,14 @@ namespace Lively.UI.WinUI.Views.Pages
         private readonly IUserSettingsClient userSettings;
         private readonly IDesktopCoreClient desktopCore;
         private readonly LibraryViewModel libraryVm;
+        private readonly IDialogService dialogService;
 
         public LibraryView()
         {
             this.desktopCore = App.Services.GetRequiredService<IDesktopCoreClient>();
             this.libraryVm = App.Services.GetRequiredService<LibraryViewModel>();
             this.userSettings = App.Services.GetRequiredService<IUserSettingsClient>();
+            this.dialogService = App.Services.GetRequiredService<IDialogService>();
 
             this.InitializeComponent();
             i18n = ResourceLoader.GetForViewIndependentUse();
@@ -266,25 +270,26 @@ namespace Lively.UI.WinUI.Views.Pages
 
                     try
                     {
-                        var libItem = await libraryVm.AddWallpaperFile(item);
-                        if (libItem.DataType == LibraryItemType.processing)
+                        var creationType = await dialogService.ShowWallpaperCreateDialog(item);
+                        if (creationType is null)
+                            return;
+
+                        switch (creationType)
                         {
-                            await desktopCore.SetWallpaper(libItem, userSettings.Settings.SelectedDisplay);
-                            /*
-                            var inputVm = new AddWallpaperDataViewModel(libItem);
-                            var inputDialog = new ContentDialog()
-                            {
-                                Title = i18n.GetString("AddWallpaper/Label"),
-                                Content = new AddWallpaperDataView(inputVm),
-                                PrimaryButtonText = i18n.GetString("TextOk"),
-                                SecondaryButtonText = i18n.GetString("Cancel/Content"),
-                                DefaultButton = ContentDialogButton.Primary,
-                                XamlRoot = this.Content.XamlRoot,
-                                SecondaryButtonCommand = inputVm.CancelCommand,
-                                PrimaryButtonCommand = inputVm.ProceedCommand,
-                            };
-                            await inputDialog.ShowAsyncQueue();
-                            */
+                            case WallpaperCreateType.none:
+                                {
+                                    var result = await libraryVm.AddWallpaperFile(item);
+                                    if (result.DataType == LibraryItemType.processing)
+                                        await desktopCore.SetWallpaper(result, userSettings.Settings.SelectedDisplay);
+                                }
+                                break;
+                            case WallpaperCreateType.depthmap:
+                                {
+                                    var result = await dialogService.ShowDepthWallpaperDialog(item);
+                                    if (result is not null)
+                                        await desktopCore.SetWallpaper(result, userSettings.Settings.SelectedDisplay);
+                                }
+                                break;
                         }
                     }
                     catch (Exception ie)
