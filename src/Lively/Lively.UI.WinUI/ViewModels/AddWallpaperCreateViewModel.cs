@@ -9,11 +9,14 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Resources;
 
 namespace Lively.UI.WinUI.ViewModels
 {
     public partial class AddWallpaperCreateViewModel : ObservableObject
     {
+        private readonly ResourceLoader i18n;
+
         [ObservableProperty]
         private ObservableCollection<AddWallpaperCreateModel> wallpaperCategories = new();
         [ObservableProperty]
@@ -23,20 +26,22 @@ namespace Lively.UI.WinUI.ViewModels
 
         public AddWallpaperCreateViewModel()
         {
+            i18n = ResourceLoader.GetForViewIndependentUse();
+
             WallpaperCategoriesFiltered = new AdvancedCollectionView(WallpaperCategories, true);
 
             WallpaperCategories.Add(new AddWallpaperCreateModel()
             {
-                Title = "Open",
-                Description = "Create a simple wallpaper",
+                Title = i18n.GetString("TextOpen/Content"),
+                Description = i18n.GetString("TitleCreateWallpaperOpenItem/Description"),
                 TypeSupported = WallpaperType.picture,
                 CreateType = WallpaperCreateType.none,
                 Icon = "ms-appx:///Assets/icons8-wallpaper-96.png"
             });
             WallpaperCategories.Add(new AddWallpaperCreateModel()
             {
-                Title = "Depth Wallpaper",
-                Description = "Using AI transform photographs into 3D",
+                Title = i18n.GetString("TitleDepthWallpaperItem/Content"),
+                Description =  i18n.GetString("DescriptionDepthWallpaperItem/Content"),
                 CreateType = WallpaperCreateType.depthmap,
                 TypeSupported = WallpaperType.picture,
                 Icon = "ms-appx:///Assets/icons8-artificial-intelligence-100.png"

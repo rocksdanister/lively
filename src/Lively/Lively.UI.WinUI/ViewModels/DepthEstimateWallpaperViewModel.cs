@@ -21,6 +21,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Resources;
 using static Lively.Common.Helpers.Archive.ZipCreate;
 
 namespace Lively.UI.WinUI.ViewModels
@@ -31,6 +32,7 @@ namespace Lively.UI.WinUI.ViewModels
         public ILibraryModel NewWallpaper { get; private set; }
         public event EventHandler OnRequestClose;
         private readonly DispatcherQueue dispatcherQueue;
+        private readonly ResourceLoader i18n;
 
         private readonly IDepthEstimate depthEstimate;
         private readonly IDownloadHelper downloader;
@@ -48,6 +50,7 @@ namespace Lively.UI.WinUI.ViewModels
             this.userSettings = userSettings;
 
             dispatcherQueue = DispatcherQueue.GetForCurrentThread() ?? DispatcherQueueController.CreateOnCurrentThread().DispatcherQueue;
+            i18n = ResourceLoader.GetForViewIndependentUse();
 
             _canRunCommand = IsModelExists;
             RunCommand.NotifyCanExecuteChanged();
@@ -101,7 +104,7 @@ namespace Lively.UI.WinUI.ViewModels
                 IsRunning = true;
                 _canRunCommand = false;
                 RunCommand.NotifyCanExecuteChanged();
-                PreviewText = "Approximating depth..";
+                PreviewText = i18n.GetString("DescriptionDepthApprox/Content");
 
                 if (!Constants.MachineLearning.MiDaSPath.Equals(depthEstimate.ModelPath, StringComparison.Ordinal))
                     depthEstimate.LoadModel(Constants.MachineLearning.MiDaSPath);
@@ -112,7 +115,7 @@ namespace Lively.UI.WinUI.ViewModels
                 var tempImgPath = Path.Combine(Constants.CommonPaths.TempDir, Path.GetRandomFileName() + ".jpg");
                 img.Write(tempImgPath);
                 PreviewImage = tempImgPath;
-                PreviewText = "Completed";
+                PreviewText = i18n.GetString("TextCompleted");
                 await Task.Delay(1500);
 
                 NewWallpaper = await CreateWallpaper();
@@ -154,7 +157,7 @@ namespace Lively.UI.WinUI.ViewModels
             JsonStorage<ILivelyInfoModel>.StoreData(Path.Combine(destDir, "LivelyInfo.json"), new LivelyInfoModel()
             {
                 Title = Path.GetFileNameWithoutExtension(SelectedImage),
-                Desc = "AI generated depth wallpaper template",
+                Desc = i18n.GetString("DescriptionDepthWallpaperTemplate/Content"),
                 Type = WallpaperType.web,
                 IsAbsolutePath = false,
                 FileName = "index.html",
