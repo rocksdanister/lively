@@ -50,7 +50,7 @@ namespace Lively.UI.WinUI.ViewModels
             //    Icon = null
             //});
 
-            SelectedItem = WallpaperCategories.FirstOrDefault();
+            //SelectedItem = WallpaperCategories.FirstOrDefault();
         }
     }
 }

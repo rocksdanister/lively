@@ -55,15 +55,18 @@
                 <RowDefinition Height="25" />
             </Grid.RowDefinitions>
 
-            <toolkit:ImageEx
-                x:Name="imgPreview"
+            <Viewbox
                 Grid.Row="0"
                 Width="384"
-                Height="216"
-                CornerRadius="5"
-                IsCacheEnabled="False"
-                Source="{Binding PreviewImage}"
-                Stretch="UniformToFill" />
+                Height="216">
+                <toolkit:ImageEx
+                    x:Name="imgPreview"
+                    Height="250"
+                    CornerRadius="5"
+                    IsCacheEnabled="False"
+                    Source="{Binding PreviewImage}"
+                    Stretch="UniformToFill" />
+            </Viewbox>
             <TextBlock
                 x:Name="textPreview"
                 Grid.Row="1"

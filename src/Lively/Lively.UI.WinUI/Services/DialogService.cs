@@ -33,7 +33,7 @@ namespace Lively.UI.WinUI.Services
             {
                 Title = i18n.GetString("DescriptionScreenLayout"),
                 Content = new ChooseDisplayView(vm),
-                PrimaryButtonText = i18n.GetString("TextClose"),
+                PrimaryButtonText = i18n.GetString("Cancel/Content"),
                 //DefaultButton = ContentDialogButton.Primary,
                 XamlRoot = App.Services.GetRequiredService<MainWindow>().Content.XamlRoot,
             };
@@ -124,8 +124,8 @@ namespace Lively.UI.WinUI.Services
             {
                 Title = "AI Depth Wallpaper",
                 Content = new DepthEstimateWallpaperView(vm),
-                PrimaryButtonText = "Continue",
-                SecondaryButtonText = "Cancel",
+                PrimaryButtonText = i18n.GetString("TextOK"),
+                SecondaryButtonText = i18n.GetString("Cancel/Content"),
                 DefaultButton = ContentDialogButton.Primary,
                 XamlRoot = App.Services.GetRequiredService<MainWindow>().Content.XamlRoot,
                 PrimaryButtonCommand = vm.RunCommand,
@@ -177,27 +177,22 @@ namespace Lively.UI.WinUI.Services
             var vm = App.Services.GetRequiredService<AddWallpaperCreateViewModel>();
             var dlg = new ContentDialog()
             {
-                Title = "Create wallpaper",
+                Title = "Create Wallpaper",
                 Content = new AddWallpaperCreateView(vm),
-                PrimaryButtonText = "Continue",
-                SecondaryButtonText = "Cancel",
-                DefaultButton = ContentDialogButton.Primary,
+                SecondaryButtonText = i18n.GetString("Cancel/Content"),
                 XamlRoot = App.Services.GetRequiredService<MainWindow>().Content.XamlRoot,
             };
             vm.WallpaperCategoriesFiltered.Filter = _ => true; //reset
             if (filter is not null)
-            {
                 vm.WallpaperCategoriesFiltered.Filter = x => ((AddWallpaperCreateModel)x).TypeSupported == filter;
-            }
             else
-            {
-                //Don't display default open when all categories shown
                 vm.WallpaperCategoriesFiltered.Filter = x => ((AddWallpaperCreateModel)x).CreateType != WallpaperCreateType.none;
-                vm.SelectedItem = vm.WallpaperCategories[1];
-            }
-
-            var dlgResult = await dlg.ShowAsyncQueue();
-            return dlgResult == ContentDialogResult.Primary ? vm.SelectedItem.CreateType : null;
+            vm.PropertyChanged += (s, e) =>
+            {
+                if (e.PropertyName == "SelectedItem")
+                    dlg.Hide();
+            };
+            return await dlg.ShowAsyncQueue()  != ContentDialogResult.Secondary ? vm.SelectedItem.CreateType : null;
         }
     }
 }
