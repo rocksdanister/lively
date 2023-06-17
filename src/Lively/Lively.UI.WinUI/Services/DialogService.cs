@@ -176,7 +176,7 @@ namespace Lively.UI.WinUI.Services
             var vm = App.Services.GetRequiredService<AddWallpaperCreateViewModel>();
             var dlg = new ContentDialog()
             {
-                Title = "Create Wallpaper",
+                Title = i18n.GetString("TitleCreateWallpaper/Content"),
                 Content = new AddWallpaperCreateView(vm),
                 SecondaryButtonText = i18n.GetString("Cancel/Content"),
                 XamlRoot = App.Services.GetRequiredService<MainWindow>().Content.XamlRoot,

@@ -28,6 +28,11 @@ namespace Lively.UI.WinUI.Views.Pages
         {
             this.InitializeComponent();
             this.DataContext = vm;
+
+            this.Loaded += (_, _) =>
+            {
+                BackgroundGridShadow.Receivers.Add(BackgroundGrid);
+            };
         }
     }
 }
