@@ -179,7 +179,7 @@ namespace Lively.UI.WinUI.ViewModels
             DownloadModelCommand.NotifyCanExecuteChanged();
 
             var uri = await GetModelUrl();
-            Directory.CreateDirectory(Path.GetDirectoryName(Constants.MachineLearning.MiDaSPath));
+            Directory.CreateDirectory(Constants.MachineLearning.MiDaSDir);
             var tempPath = Path.Combine(Constants.CommonPaths.TempDir, Path.GetRandomFileName());
             downloader.DownloadFile(uri, tempPath);
             downloader.DownloadStarted += (s, e) => 

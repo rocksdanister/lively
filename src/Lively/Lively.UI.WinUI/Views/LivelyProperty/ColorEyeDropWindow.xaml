@@ -9,9 +9,9 @@
     MinWidth="182"
     MinHeight="65"
     mc:Ignorable="d">
-    <winex:WindowEx.Backdrop>
+    <!--<winex:WindowEx.Backdrop>
         <winex:AcrylicSystemBackdrop />
-    </winex:WindowEx.Backdrop>
+    </winex:WindowEx.Backdrop>-->
 
     <Grid Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
         <StackPanel

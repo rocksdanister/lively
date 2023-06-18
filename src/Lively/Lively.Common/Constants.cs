@@ -45,7 +45,9 @@ namespace Lively.Common
 
         public static class MachineLearning
         {
-            public static string MiDaSPath { get; } = Path.Combine(CommonPaths.AppDataDir, "ML", "MiDaS", "MiDaS_model-small.onnx");
+            public static string BaseDir { get; } = Path.Combine(CommonPaths.AppDataDir, "ML");
+            public static string MiDaSDir { get; } = Path.Combine(BaseDir, "MiDaS");
+            public static string MiDaSPath { get; } = Path.Combine(MiDaSDir, "MiDaS_model-small.onnx");
         }
 
         public static class SingleInstance

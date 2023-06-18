@@ -116,7 +116,7 @@ namespace Lively.UI.WinUI.Views.Pages
                         {
                             Title = obj.Title.Length > 35 ? obj.Title.Substring(0, 35) + "..." : obj.Title,
                             Content = new LivelyPropertiesView(obj) { MinWidth = 325 },
-                            PrimaryButtonText = i18n.GetString("TextClose"),
+                            PrimaryButtonText = i18n.GetString("TextOk"),
                             DefaultButton = ContentDialogButton.Primary,
                             XamlRoot = this.Content.XamlRoot,
                         }.ShowAsyncQueue();
