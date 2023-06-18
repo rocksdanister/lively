@@ -9,7 +9,6 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using Newtonsoft.Json.Linq;
@@ -17,18 +16,11 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.Storage.Pickers;
 using Windows.UI;
 using Lively.Common.Helpers.Pinvoke;
-using System.Threading.Tasks;
-using System.Threading;
 using Microsoft.UI.Dispatching;
-using static Lively.Common.Helpers.Pinvoke.NativeMethods;
-using System.Xml.Linq;
-
+using CommunityToolkit.WinUI.UI.Controls;
 
 namespace Lively.UI.WinUI.Views.LivelyProperty
 {
@@ -215,54 +207,33 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                         Name = item.Key,
                         Orientation = Orientation.Horizontal
                     };
-                    var cpicker = new ColorPicker
+                    var colorPickerBtn = new ColorPickerButton()
                     {
-                        Tag = panel, //used for updating border color
-                        ColorSpectrumShape = ColorSpectrumShape.Box,
-                        IsMoreButtonVisible = false,
-                        IsColorSliderVisible = true,
-                        IsColorChannelTextInputVisible = true,
-                        IsHexInputVisible = true,
-                        IsAlphaEnabled = false,
-                        IsAlphaSliderVisible = true,
-                        Color = selectedColorBrush.Color,
+                        SelectedColor = selectedColorBrush.Color,
+                        Width = 60,
+                        Height = 33,
                     };
-                    var eyeDropBtn = new Button()
+                    var eyeDropBtn = new AppBarButton()
                     {
                         //Tag = item.Key, //used for searching the splitbtn
                         //HorizontalAlignment = HorizontalAlignment.Right,
-                        Margin = new Thickness(-15,0,0,10),
-                        Width = 43,
-                        Height = 43,
+                        Margin = new Thickness(2.5, 0, 0, 0),
+                        Width = 45,
+                        Height = 45,
+                        LabelPosition = CommandBarLabelPosition.Collapsed,
                         Content = new FontIcon
                         {
                             Glyph = "\uEF3C",
-                            FontSize = 17,
+                            FontSize = 12,
                         },
                     };
-                    var sb = new SplitButton
-                    {
-                        //Name = item.Key,
-                        Margin = margin,
-                        Content = new Border
-                        {
-                            Width = 32,
-                            Height = 32,
-                            CornerRadius = new CornerRadius(4),
-                            Background = selectedColorBrush,
-                        },
-                        Flyout = new Flyout
-                        {
-                            Content = cpicker,
-                        },
-                    };
-                    if (item.Value["help"] != null && !string.IsNullOrWhiteSpace(item.Value["help"].ToString()))
-                    {
-                        ToolTipService.SetToolTip(sb, new ToolTip() { Content = (string)item.Value["help"] });
-                    }
-                    panel.Children.Add(sb);
+                    panel.Children.Add(colorPickerBtn);
                     panel.Children.Add(eyeDropBtn);
-                    cpicker.ColorChanged += Cpicker_ColorChanged;
+                    colorPickerBtn.Loaded += (_, _) =>
+                    {
+                        colorPickerBtn.ColorPicker.Tag = panel;
+                        colorPickerBtn.ColorPicker.ColorChanged += ColorPicker_ColorChanged;
+                    };
                     eyeDropBtn.Click += EyeDropBtn_Click;
                     obj = panel;
                 }
@@ -534,18 +505,18 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
 
         #region color picker
 
-        private void Cpicker_ColorChanged(ColorPicker sender, ColorChangedEventArgs args)
+        private void ColorPicker_ColorChanged(Microsoft.UI.Xaml.Controls.ColorPicker sender, ColorChangedEventArgs args)
         {
             try
             {
                 var panel = sender.Tag as StackPanel;
-                var border = (panel.Children[0] as SplitButton).Content as Border;
-                border.Background = new SolidColorBrush(Color.FromArgb(
+                var colorPickerBtn = panel.Children[0] as ColorPickerButton;
+                colorPickerBtn.SelectedColor = Color.FromArgb(
                     255,
                     args.NewColor.R,
                     args.NewColor.G,
                     args.NewColor.B
-                ));
+                );
 
                 WallpaperSendMsg(new LivelyColorPicker() { Name = panel.Name, Value = ToHexValue(args.NewColor) });
                 livelyPropertyCopyData[panel.Name]["value"] = ToHexValue(args.NewColor);
@@ -560,33 +531,19 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
         private void EyeDropBtn_Click(object sender, RoutedEventArgs e)
         {
             var stackPanel = (sender as Button).Parent as StackPanel;
-            var splitButton = stackPanel.Children[0] as SplitButton;
-            var colorPicker = (splitButton.Flyout as Flyout).Content as ColorPicker;
+            var colorPickerBtn = stackPanel.Children[0] as ColorPickerButton;
 
             var eyeDropper = new ColorEyeDropWindow();
             eyeDropper.Activate();
             eyeDropper.Closed += (_, _) =>
             {
-                if (eyeDropper.SelectedColor != null && colorPicker != null && splitButton != null)
+                if (eyeDropper.SelectedColor != null && colorPickerBtn != null)
                 {
                     this.DispatcherQueue.TryEnqueue(() => {
-                        try
-                        {
-                            var color = (Color)eyeDropper.SelectedColor;
-                            var border = splitButton.Content as Border;
-                            border.Background = new SolidColorBrush(Color.FromArgb(
-                                255,
-                                color.R,
-                                color.G,
-                                color.B
-                                ));
-                            colorPicker.Color = color; //ColorChanged event fire.
-                        }
-                        finally
-                        {
-                            colorPicker = null;
-                            splitButton = null;
-                        }
+                        var color = (Color)eyeDropper.SelectedColor;
+                        //not updating colorpicker
+                        //colorPickerBtn.SelectedColor = color;
+                        colorPickerBtn.ColorPicker.Color = color;
                     });
                 }
             };
