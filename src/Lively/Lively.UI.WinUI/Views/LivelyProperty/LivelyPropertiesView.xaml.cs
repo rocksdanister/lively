@@ -213,18 +213,17 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                         Width = 60,
                         Height = 33,
                     };
-                    var eyeDropBtn = new AppBarButton()
+                    var eyeDropBtn = new Button()
                     {
                         //Tag = item.Key, //used for searching the splitbtn
                         //HorizontalAlignment = HorizontalAlignment.Right,
-                        Margin = new Thickness(2.5, 0, 0, 0),
-                        Width = 45,
-                        Height = 45,
-                        LabelPosition = CommandBarLabelPosition.Collapsed,
+                        Margin = new Thickness(5, 0, 0, 0),
+                        Width = 40,
+                        Height = 33,
                         Content = new FontIcon
                         {
                             Glyph = "\uEF3C",
-                            FontSize = 12,
+                            FontSize = 15,
                         },
                     };
                     panel.Children.Add(colorPickerBtn);

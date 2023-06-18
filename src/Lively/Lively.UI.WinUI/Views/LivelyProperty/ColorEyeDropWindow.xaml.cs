@@ -35,6 +35,7 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
         public ColorEyeDropWindow()
         {
             this.InitializeComponent();
+            this.SystemBackdrop = new DesktopAcrylicBackdrop();
             //White border issue: https://github.com/microsoft/WindowsAppSDK/issues/2772
             this.IsTitleBarVisible = false;
 
