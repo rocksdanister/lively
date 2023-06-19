@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Net;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace Lively.Common.Helpers.Network
@@ -17,13 +18,14 @@ namespace Lively.Common.Helpers.Network
         private bool _initialized = false;
         private string fileName;
 
-        public void DownloadFile(Uri url, string filePath)
+        public Task DownloadFile(Uri url, string filePath)
         {
             webClient = new WebClient();
             webClient.DownloadProgressChanged += Client_DownloadProgressChanged;
             webClient.DownloadFileCompleted += Client_DownloadFileCompleted;
             webClient.DownloadFileAsync(url, filePath);
             fileName = System.IO.Path.GetFileName(filePath);
+            return Task.CompletedTask;
         }
 
         private void Client_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
