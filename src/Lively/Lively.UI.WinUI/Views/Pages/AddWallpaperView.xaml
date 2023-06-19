@@ -68,10 +68,10 @@
                     Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" />
             </StackPanel>
             <InfoBar
+                x:Uid="RunningAsAdminWarning"
                 Margin="5"
                 IsClosable="False"
                 IsOpen="{Binding IsElevated, Mode=OneWay}"
-                Message="Some functionality is not available when run as administrator"
                 Severity="Warning" />
         </Grid>
 

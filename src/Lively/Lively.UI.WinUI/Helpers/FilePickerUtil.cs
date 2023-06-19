@@ -39,7 +39,7 @@ namespace Lively.UI.WinUI.Helpers
             }
             filePicker.SetOwnerWindow(App.Services.GetRequiredService<MainWindow>());
             var files = await filePicker.PickMultipleFilesAsync();
-            return files.Any() ? files.Select(x => x.Path).ToList() : default;
+            return files.Any() ? files.Select(x => x.Path).ToList() : new List<string>();
         }
 
         public static string PickSingleFileNative(string filter)
