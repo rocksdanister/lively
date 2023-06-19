@@ -44,8 +44,7 @@
                                 Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
                                 MaxLines="1"
                                 Style="{ThemeResource CaptionTextBlockStyle}"
-                                Text="{Binding Description}"
-                                ToolTipService.ToolTip="{Binding AppPath}" />
+                                Text="{Binding Description}" />
                         </StackPanel>
                     </Grid>
                 </DataTemplate>

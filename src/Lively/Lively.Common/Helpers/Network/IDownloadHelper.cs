@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace Lively.Common.Helpers.Network
 {
@@ -36,7 +37,7 @@ namespace Lively.Common.Helpers.Network
         event EventHandler<DownloadProgressEventArgs> DownloadProgressChanged;
         event EventHandler<DownloadEventArgs> DownloadStarted;
 
-        void DownloadFile(Uri url, string filePath);
+        Task DownloadFile(Uri url, string filePath);
         void Cancel();
     }
 }

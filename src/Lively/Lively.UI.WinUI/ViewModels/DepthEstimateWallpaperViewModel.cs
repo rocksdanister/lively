@@ -1,7 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using CommunityToolkit.WinUI;
-using Downloader;
 using ImageMagick;
 using Lively.Common;
 using Lively.Common.Helpers;
@@ -12,17 +10,13 @@ using Lively.Grpc.Client;
 using Lively.ML.DepthEstimate;
 using Lively.ML.Helpers;
 using Lively.Models;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Dispatching;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources;
-using static Lively.Common.Helpers.Archive.ZipCreate;
 
 namespace Lively.UI.WinUI.ViewModels
 {
@@ -41,7 +35,7 @@ namespace Lively.UI.WinUI.ViewModels
 
         public DepthEstimateWallpaperViewModel(IDepthEstimate depthEstimate,
             IDownloadHelper downloader,
-            LibraryViewModel libraryVm, 
+            LibraryViewModel libraryVm,
             IUserSettingsClient userSettings)
         {
             this.depthEstimate = depthEstimate;
@@ -96,6 +90,9 @@ namespace Lively.UI.WinUI.ViewModels
         private bool _canDownloadModelCommand = true;
         private RelayCommand _downloadModelCommand;
         public RelayCommand DownloadModelCommand => _downloadModelCommand ??= new RelayCommand(async() => await DownloadModel(), () => _canDownloadModelCommand);
+
+        //private RelayCommand _cancelCommand;
+        //public RelayCommand CancelCommand => _cancelCommand ??= new RelayCommand(CancelOperations);
 
         private async Task PredictDepth()
         {
@@ -181,8 +178,7 @@ namespace Lively.UI.WinUI.ViewModels
             var uri = await GetModelUrl();
             Directory.CreateDirectory(Constants.MachineLearning.MiDaSDir);
             var tempPath = Path.Combine(Constants.CommonPaths.TempDir, Path.GetRandomFileName());
-            downloader.DownloadFile(uri, tempPath);
-            downloader.DownloadStarted += (s, e) => 
+            downloader.DownloadStarted += (s, e) =>
             {
                 _ = dispatcherQueue.TryEnqueue(() =>
                 {
@@ -221,6 +217,12 @@ namespace Lively.UI.WinUI.ViewModels
                     }
                 });
             };
+            await downloader.DownloadFile(uri, tempPath);
+        }
+
+        private void CancelOperations()
+        {
+            downloader?.Cancel();
         }
 
         private async Task<Uri> GetModelUrl()

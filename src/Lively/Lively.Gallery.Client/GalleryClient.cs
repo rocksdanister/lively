@@ -29,9 +29,9 @@ namespace Lively.Gallery.Client
         private string _authLink;
         private readonly string _githubAuthLink;
 
-        public GalleryClient(string host, string authLink, string githubAuthLink, ITokenStore tokenStore)
+        public GalleryClient(IHttpClientFactory httpClientFactory, string host, string authLink, string githubAuthLink, ITokenStore tokenStore)
         {
-            _client = new HttpClient();
+            _client = httpClientFactory.CreateClient();
             _client.BaseAddress = new Uri(host);
             _tokenStore = tokenStore;
             _slim = new ManualResetEventSlim();

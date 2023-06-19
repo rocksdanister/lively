@@ -138,7 +138,7 @@ namespace Lively.UI.WinUI
                 .AddSingleton<IAppUpdaterClient, AppUpdaterClient>()
                 .AddSingleton<MainWindow>()
                 .AddSingleton<MainViewModel>()
-                .AddSingleton<GalleryClient>((e) => new GalleryClient("http://api.livelywallpaper.net/api/",
+                .AddSingleton<GalleryClient>((e) => new GalleryClient(e.GetRequiredService<IHttpClientFactory>(), "http://api.livelywallpaper.net/api/",
                     "https://accounts.google.com/o/oauth2/auth/oauthchooseaccount?client_id=923081992071-qg27j4uhasb3r4lasb9cb19nbhvgbb34.apps.googleusercontent.com&redirect_uri=http://127.0.0.1:43821/signin-oidc&scope=email%20openid%20profile&response_type=code&state=asdafwswdwefwsdg&flowName=GeneralOAuthFlow",
                     "https://github.com/login/oauth/authorize?client_id=bbfd46fbb54895ecee74&redirect_uri=http://127.0.0.1:43821/signin-oidc-github&scope=user:email",
                     new JsonTokenStore()))

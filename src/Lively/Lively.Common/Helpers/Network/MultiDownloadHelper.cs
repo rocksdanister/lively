@@ -3,15 +3,18 @@ using Downloader;
 using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel;
+using System.Threading.Tasks;
 
 namespace Lively.Common.Helpers.Network
 {
     public class MultiDownloadHelper : IDownloadHelper
     {
-        private readonly DownloadService downloader;
         public event EventHandler<bool> DownloadFileCompleted;
         public event EventHandler<DownloadProgressEventArgs> DownloadProgressChanged;
         public event EventHandler<DownloadEventArgs> DownloadStarted;
+
+        private double previousDownloadedSize = -1;
+        private readonly DownloadService downloader;
 
         public MultiDownloadHelper()
         {
@@ -40,7 +43,7 @@ namespace Lively.Common.Helpers.Network
             downloader.DownloadFileCompleted += OnDownloadFileCompleted;
         }
 
-        public async void DownloadFile(Uri url, string filePath)
+        public async Task DownloadFile(Uri url, string filePath)
         {
             await downloader.DownloadFileTaskAsync(url.AbsoluteUri, filePath);
         }
@@ -58,12 +61,18 @@ namespace Lively.Common.Helpers.Network
 
         private void OnDownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
+            var downloadedSize = Math.Truncate(ByteToMegabyte(e.ReceivedBytesSize));
+            if (downloadedSize == previousDownloadedSize)
+                return;
+
             DownloadProgressEventArgs args = new DownloadProgressEventArgs()
             {
                 TotalSize = Math.Truncate(ByteToMegabyte(e.TotalBytesToReceive)),
-                DownloadedSize = Math.Truncate(ByteToMegabyte(e.ReceivedBytesSize)),
+                DownloadedSize = downloadedSize,
                 Percentage = e.ProgressPercentage,
             };
+            previousDownloadedSize = downloadedSize;
+
             DownloadProgressChanged?.Invoke(this, args);
         }
 
