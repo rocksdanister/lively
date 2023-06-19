@@ -2,30 +2,35 @@
   "xThreshold": {
     "max": 50,
     "min": 1,
-    "text": "xThreshold",
+    "text": "Horizontal",
     "type": "slider",
+    "help": "Horizontal movement intensity",
     "value": 30
   },
   "yThreshold": {
     "max": 50,
     "min": 1,
-    "text": "yThreshold",
+    "text": "Vertical",
     "type": "slider",
+    "help": "Vertical movement intensity",
     "value": 15
   },
   "stretch": {
     "type": "checkbox",
     "value": true,
+    "help": "Background scaling algorithm",
     "text": "Scale to Fill"
   },
   "blur": {
     "type": "checkbox",
     "value": false,
+    "help": "Blur distant objects",
     "text": "Blur"
   },
   "fpsLock": {
     "type": "checkbox",
     "value": false,
+    "help": "Improves performance",
     "text": "30FPS Lock"
   }
 }
