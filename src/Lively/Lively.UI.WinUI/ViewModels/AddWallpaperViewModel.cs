@@ -86,28 +86,16 @@ namespace Lively.UI.WinUI.ViewModels
         private async Task FileBrowseAction()
         {
             ErrorMessage = null;
-            if (IsElevated)
+            var files = IsElevated ?
+                FilePickerUtil.PickMultipleFileNative(LocalizationUtil.SupportedFileDialogFilterNative(true)) :
+                await FilePickerUtil.PickMultipleFileUwp(LocalizationUtil.SupportedFileDialogFilter(true).ToArray());
+
+            if (files.Count > 0)
             {
-                var file = FilePickerUtil.PickSingleFileNative(LocalizationUtil.SupportedFileDialogFilterNative());
-                if (!string.IsNullOrEmpty(file))
-                    AddWallpaperFile(file);
-            }
-            else
-            {
-                var filePicker = new FileOpenPicker();
-                filePicker.SetOwnerWindow(App.Services.GetRequiredService<MainWindow>());
-                foreach (var item in LocalizationUtil.SupportedFileDialogFilter(true))
-                {
-                    filePicker.FileTypeFilter.Add(item);
-                }
-                var files = await filePicker.PickMultipleFilesAsync();
-                if (files.Count > 0)
-                {
-                    if (files.Count == 1)
-                        AddWallpaperFile(files[0].Path);
-                    else
-                        AddWallpaperFiles(files.Select(x => x.Path).ToList());
-                }
+                if (files.Count == 1)
+                    AddWallpaperFile(files[0]);
+                else
+                    AddWallpaperFiles(files.ToList());
             }
         }
 
