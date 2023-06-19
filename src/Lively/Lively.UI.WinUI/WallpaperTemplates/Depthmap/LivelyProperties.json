@@ -4,14 +4,14 @@
     "min": 1,
     "text": "xThreshold",
     "type": "slider",
-    "value": 20
+    "value": 30
   },
   "yThreshold": {
     "max": 50,
     "min": 1,
     "text": "yThreshold",
     "type": "slider",
-    "value": 35
+    "value": 15
   },
   "stretch": {
     "type": "checkbox",

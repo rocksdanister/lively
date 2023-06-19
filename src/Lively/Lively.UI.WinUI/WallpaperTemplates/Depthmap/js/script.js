@@ -157,10 +157,10 @@ document.addEventListener("touchend", (event) => {
 function livelyPropertyListener(name, val) {
   switch (name) {
     case "xThreshold":
-      material.uniforms.u_threshold.value.x = val;
+      material.uniforms.u_threshold.value.x = 51 - val;
       break;
     case "yThreshold":
-      material.uniforms.u_threshold.value.y = val;
+      material.uniforms.u_threshold.value.y = 51 - val;
       break;
     case "stretch":
       material.uniforms.u_texture_fill.value = val;
