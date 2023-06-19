@@ -1208,4 +1208,7 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="TitleCreateWallpaper.Content" xml:space="preserve">
     <value>Create Wallpaper</value>
   </data>
+  <data name="RunningAsAdminWarning.Message" xml:space="preserve">
+    <value>Some functionalities may not be available when run as administrator</value>
+  </data>
 </root>
