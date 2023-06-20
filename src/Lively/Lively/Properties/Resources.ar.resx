@@ -1182,4 +1182,46 @@ Edge هو عرض الويب المدمج في windows 10.</value>
   <data name="WallpaperPluginGroup.Header" xml:space="preserve">
     <value>الإضافات</value>
   </data>
+  <data name="AddWallpaperAdvanced.Description" xml:space="preserve">
+    <value>إنشاء خلفية متحركة</value>
+  </data>
+  <data name="AddWallpaperAdvanced.Header" xml:space="preserve">
+    <value>متقدم</value>
+  </data>
+  <data name="DescriptionDepthApprox.Content" xml:space="preserve">
+    <value>حساب عمق تقريبي للصورة..</value>
+  </data>
+  <data name="DescriptionDepthWallpaperItem.Content" xml:space="preserve">
+    <value>استخدام الذكاء الاصطناعي لتحويل الصور إلى ثلاثية الأبعاد</value>
+  </data>
+  <data name="TextContinue.Content" xml:space="preserve">
+    <value>استمر</value>
+  </data>
+  <data name="TitleCreateWallpaperOpenItem.Description" xml:space="preserve">
+    <value>إنشاء خلفية بسيطة</value>
+  </data>
+  <data name="TitleDepthWallpaper.Content" xml:space="preserve">
+    <value>خلفية ذات عمق باستخدام الذكاء الاصطناعي</value>
+  </data>
+  <data name="TitleDepthWallpaperItem.Content" xml:space="preserve">
+    <value>خلفية ذات عمق</value>
+  </data>
+  <data name="DescriptionDepthWallpaperTemplate.Content" xml:space="preserve">
+    <value>خلفية ذات عمق مصنوعة باستخدام الذكاء الاصطناعي</value>
+  </data>
+  <data name="TitleCreateWallpaper.Content" xml:space="preserve">
+    <value>إنشاء خلفية</value>
+  </data>
+  <data name="RunningAsAdminWarning.Message" xml:space="preserve">
+    <value>بعض الوظائف قد لا تكون متاحة عند التشغيل كمدير</value>
+  </data>
+  <data name="DescriptionDownloadRequired.Text" xml:space="preserve">
+    <value>Additional files need to be downloaded for this feature</value>
+  </data>
+  <data name="TitleDownloadRequired.Text" xml:space="preserve">
+    <value>التنزيل مطلوب</value>
+  </data>
+  <data name="TitleDownload.Content" xml:space="preserve">
+    <value>تنزيل</value>
+  </data>
 </root>

@@ -939,7 +939,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Windows Color स्थापना (Settings)</value>
   </data>
   <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
-    <value>लैपटॉपस</value>
+    <value>लैपटॉप</value>
   </data>
   <data name="DeveloperGroup.Header" xml:space="preserve">
     <value>डेवलपर</value>
@@ -1143,7 +1143,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>कृपया आवश्यक प्लगइन इंस्टॉल करें</value>
   </data>
   <data name="PluginNotFound.Title" xml:space="preserve">
-    <value>प्लगइन नहीं पाया!</value>
+    <value>प्लगइन नहीं मिला</value>
   </data>
   <data name="UpdateCompleted.Text" xml:space="preserve">
     <value>अपडेट पूर्ण हो गया</value>
@@ -1158,7 +1158,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>सिस्टम डिफ़ॉल्ट का उपयोग करें</value>
   </data>
   <data name="DescriptionDynamicTheme.Text" xml:space="preserve">
-    <value>वॉलपेपर के अनुकूल</value>
+    <value>वॉलपेपर के अनुसार</value>
   </data>
   <data name="TextDefault.Text" xml:space="preserve">
     <value>डिफॉल्ट</value>
@@ -1179,9 +1179,51 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>अभी के लिए बस इतना ही.</value>
   </data>
   <data name="DevelopmentOnHold.Message" xml:space="preserve">
-    <value>This feature development is on hold</value>
+    <value>इस सुविधा के विकास में अभी प्रगति नहीं हो रही</value>
   </data>
   <data name="WallpaperPluginGroup.Header" xml:space="preserve">
-    <value>Plugins</value>
+    <value>प्लगइन्स</value>
+  </data>
+  <data name="AddWallpaperAdvanced.Description" xml:space="preserve">
+    <value>Create a dynamic wallpaper</value>
+  </data>
+  <data name="AddWallpaperAdvanced.Header" xml:space="preserve">
+    <value>Advanced</value>
+  </data>
+  <data name="DescriptionDepthApprox.Content" xml:space="preserve">
+    <value>Approximating depth..</value>
+  </data>
+  <data name="DescriptionDepthWallpaperItem.Content" xml:space="preserve">
+    <value>Using AI transform photographs into 3D</value>
+  </data>
+  <data name="TextContinue.Content" xml:space="preserve">
+    <value>Continue</value>
+  </data>
+  <data name="TitleCreateWallpaperOpenItem.Description" xml:space="preserve">
+    <value>Create a simple wallpaper</value>
+  </data>
+  <data name="TitleDepthWallpaper.Content" xml:space="preserve">
+    <value>AI Depth Wallpaper</value>
+  </data>
+  <data name="TitleDepthWallpaperItem.Content" xml:space="preserve">
+    <value>Depth Wallpaper</value>
+  </data>
+  <data name="DescriptionDepthWallpaperTemplate.Content" xml:space="preserve">
+    <value>AI generated depth wallpaper</value>
+  </data>
+  <data name="TitleCreateWallpaper.Content" xml:space="preserve">
+    <value>Create Wallpaper</value>
+  </data>
+  <data name="RunningAsAdminWarning.Message" xml:space="preserve">
+    <value>Some functionalities may not be available when run as administrator</value>
+  </data>
+  <data name="DescriptionDownloadRequired.Text" xml:space="preserve">
+    <value>Additional files need to be downloaded for this feature</value>
+  </data>
+  <data name="TitleDownloadRequired.Text" xml:space="preserve">
+    <value>Download Required</value>
+  </data>
+  <data name="TitleDownload.Content" xml:space="preserve">
+    <value>डाउनलोड</value>
   </data>
 </root>

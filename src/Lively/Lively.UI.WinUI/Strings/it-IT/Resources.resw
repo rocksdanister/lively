@@ -1180,4 +1180,46 @@ Quando sei pronto, vai a: http://localhost:portnumber per accedere al portale de
   <data name="WallpaperPluginGroup.Header" xml:space="preserve">
     <value>Plug-in</value>
   </data>
+  <data name="AddWallpaperAdvanced.Description" xml:space="preserve">
+    <value>Crea uno sfondo dinamico</value>
+  </data>
+  <data name="AddWallpaperAdvanced.Header" xml:space="preserve">
+    <value>Avanzato</value>
+  </data>
+  <data name="DescriptionDepthApprox.Content" xml:space="preserve">
+    <value>Aprrosimando la profondità..</value>
+  </data>
+  <data name="DescriptionDepthWallpaperItem.Content" xml:space="preserve">
+    <value>Usando l'IA trasforma fotografie in 3D</value>
+  </data>
+  <data name="TextContinue.Content" xml:space="preserve">
+    <value>Continua</value>
+  </data>
+  <data name="TitleCreateWallpaperOpenItem.Description" xml:space="preserve">
+    <value>Crea uno sfondo semplice</value>
+  </data>
+  <data name="TitleDepthWallpaper.Content" xml:space="preserve">
+    <value>Sfondo Profondità IA</value>
+  </data>
+  <data name="TitleDepthWallpaperItem.Content" xml:space="preserve">
+    <value>Sfondo Profondità</value>
+  </data>
+  <data name="DescriptionDepthWallpaperTemplate.Content" xml:space="preserve">
+    <value>Sfondo con profondità generata da IA</value>
+  </data>
+  <data name="TitleCreateWallpaper.Content" xml:space="preserve">
+    <value>Crea Sfondo</value>
+  </data>
+  <data name="RunningAsAdminWarning.Message" xml:space="preserve">
+    <value>Alcune funzionalità potrebbero non essere disponibili quando viene eseguito come amministratore</value>
+  </data>
+  <data name="DescriptionDownloadRequired.Text" xml:space="preserve">
+    <value>Additional files need to be downloaded for this feature</value>
+  </data>
+  <data name="TitleDownloadRequired.Text" xml:space="preserve">
+    <value>Download Required</value>
+  </data>
+  <data name="TitleDownload.Content" xml:space="preserve">
+    <value>Scarica</value>
+  </data>
 </root>

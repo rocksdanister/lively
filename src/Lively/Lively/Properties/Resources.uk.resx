@@ -124,7 +124,7 @@
     <value>Рівень гучності звуку шпалер</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
-    <value>Загальна гучність</value>
+    <value>Гучність</value>
   </data>
   <data name="AudioGroup.Header" xml:space="preserve">
     <value>Звук</value>
@@ -1177,9 +1177,51 @@ Edge - веб-двигун з Windows 10 WebView.</value>
     <value>Це все, що на даний момент..</value>
   </data>
   <data name="DevelopmentOnHold.Message" xml:space="preserve">
-    <value>This feature development is on hold</value>
+    <value>Розробка цієї функції призупинена</value>
   </data>
   <data name="WallpaperPluginGroup.Header" xml:space="preserve">
-    <value>Plugins</value>
+    <value>Плагіни</value>
+  </data>
+  <data name="AddWallpaperAdvanced.Description" xml:space="preserve">
+    <value>Створити динамічні шпалери</value>
+  </data>
+  <data name="AddWallpaperAdvanced.Header" xml:space="preserve">
+    <value>Додаткові налаштування</value>
+  </data>
+  <data name="DescriptionDepthApprox.Content" xml:space="preserve">
+    <value>Визначення глибини..</value>
+  </data>
+  <data name="DescriptionDepthWallpaperItem.Content" xml:space="preserve">
+    <value>Використання ШІ для перетворення фотографій у 3D</value>
+  </data>
+  <data name="TextContinue.Content" xml:space="preserve">
+    <value>Продовжити</value>
+  </data>
+  <data name="TitleCreateWallpaperOpenItem.Description" xml:space="preserve">
+    <value>Створити прості шпалери</value>
+  </data>
+  <data name="TitleDepthWallpaper.Content" xml:space="preserve">
+    <value>ШІ шпалери з глибиною</value>
+  </data>
+  <data name="TitleDepthWallpaperItem.Content" xml:space="preserve">
+    <value>Шпалери з глибиною</value>
+  </data>
+  <data name="DescriptionDepthWallpaperTemplate.Content" xml:space="preserve">
+    <value>Шпалери з глибиною згенеровані ШІ</value>
+  </data>
+  <data name="TitleCreateWallpaper.Content" xml:space="preserve">
+    <value>Створити шпалери</value>
+  </data>
+  <data name="RunningAsAdminWarning.Message" xml:space="preserve">
+    <value>Деякі функції можуть бути недоступними при запуску з правами адміністратора</value>
+  </data>
+  <data name="DescriptionDownloadRequired.Text" xml:space="preserve">
+    <value>Additional files need to be downloaded for this feature</value>
+  </data>
+  <data name="TitleDownloadRequired.Text" xml:space="preserve">
+    <value>Download Required</value>
+  </data>
+  <data name="TitleDownload.Content" xml:space="preserve">
+    <value>Завантажити</value>
   </data>
 </root>

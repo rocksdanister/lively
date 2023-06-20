@@ -1183,4 +1183,46 @@ Edge 是 Windows 10 内置的浏览器。</value>
   <data name="WallpaperPluginGroup.Header" xml:space="preserve">
     <value>插件</value>
   </data>
+  <data name="AddWallpaperAdvanced.Description" xml:space="preserve">
+    <value>创建动态壁纸</value>
+  </data>
+  <data name="AddWallpaperAdvanced.Header" xml:space="preserve">
+    <value>高级</value>
+  </data>
+  <data name="DescriptionDepthApprox.Content" xml:space="preserve">
+    <value>近似景深</value>
+  </data>
+  <data name="DescriptionDepthWallpaperItem.Content" xml:space="preserve">
+    <value>使用 AI 将照片转换为3D</value>
+  </data>
+  <data name="TextContinue.Content" xml:space="preserve">
+    <value>继续</value>
+  </data>
+  <data name="TitleCreateWallpaperOpenItem.Description" xml:space="preserve">
+    <value>创建简单壁纸</value>
+  </data>
+  <data name="TitleDepthWallpaper.Content" xml:space="preserve">
+    <value>AI 景深壁纸</value>
+  </data>
+  <data name="TitleDepthWallpaperItem.Content" xml:space="preserve">
+    <value>景深壁纸</value>
+  </data>
+  <data name="DescriptionDepthWallpaperTemplate.Content" xml:space="preserve">
+    <value>AI 生成的景深壁纸</value>
+  </data>
+  <data name="TitleCreateWallpaper.Content" xml:space="preserve">
+    <value>创建壁纸</value>
+  </data>
+  <data name="RunningAsAdminWarning.Message" xml:space="preserve">
+    <value>使用管理员权限运行时，某些功能将不可用</value>
+  </data>
+  <data name="DescriptionDownloadRequired.Text" xml:space="preserve">
+    <value>需要为此功能下载附加文件</value>
+  </data>
+  <data name="TitleDownloadRequired.Text" xml:space="preserve">
+    <value>下载请求</value>
+  </data>
+  <data name="TitleDownload.Content" xml:space="preserve">
+    <value>下载</value>
+  </data>
 </root>

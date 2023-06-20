@@ -1182,4 +1182,46 @@ O Edge é a webview embutida do Windows 10.</value>
   <data name="WallpaperPluginGroup.Header" xml:space="preserve">
     <value>Plugins</value>
   </data>
+  <data name="AddWallpaperAdvanced.Description" xml:space="preserve">
+    <value>Criar um papel de parede dinâmico</value>
+  </data>
+  <data name="AddWallpaperAdvanced.Header" xml:space="preserve">
+    <value>Avançado</value>
+  </data>
+  <data name="DescriptionDepthApprox.Content" xml:space="preserve">
+    <value>Profundidade aproximada..</value>
+  </data>
+  <data name="DescriptionDepthWallpaperItem.Content" xml:space="preserve">
+    <value>Usando IA, transforme fotografias em 3D</value>
+  </data>
+  <data name="TextContinue.Content" xml:space="preserve">
+    <value>Continuar</value>
+  </data>
+  <data name="TitleCreateWallpaperOpenItem.Description" xml:space="preserve">
+    <value>Crie um papel de parede simples</value>
+  </data>
+  <data name="TitleDepthWallpaper.Content" xml:space="preserve">
+    <value>Papel de parede de profundidade IA</value>
+  </data>
+  <data name="TitleDepthWallpaperItem.Content" xml:space="preserve">
+    <value>Papel de parede de profundidade</value>
+  </data>
+  <data name="DescriptionDepthWallpaperTemplate.Content" xml:space="preserve">
+    <value>Papel de parede de profundidade gerado por IA</value>
+  </data>
+  <data name="TitleCreateWallpaper.Content" xml:space="preserve">
+    <value>Criar papel de parede</value>
+  </data>
+  <data name="RunningAsAdminWarning.Message" xml:space="preserve">
+    <value>Algumas funcionalidades podem não estar disponíveis quando executar como administrador</value>
+  </data>
+  <data name="DescriptionDownloadRequired.Text" xml:space="preserve">
+    <value>Arquivos adicionais precisam ser baixados para esta funcionalidade</value>
+  </data>
+  <data name="TitleDownloadRequired.Text" xml:space="preserve">
+    <value>Download Necessário</value>
+  </data>
+  <data name="TitleDownload.Content" xml:space="preserve">
+    <value>Baixar</value>
+  </data>
 </root>

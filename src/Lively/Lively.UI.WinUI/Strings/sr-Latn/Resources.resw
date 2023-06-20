@@ -259,7 +259,7 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
 (Ne radi na nekim windows 10 sistemima)</value>
   </data>
   <data name="Startup.Description" xml:space="preserve">
-    <value>Lively mora da radi u pozadini za pozadinski plej-bek.</value>
+    <value>Lively mora da radi u pozadini za reprodukciju pozadine</value>
   </data>
   <data name="Startup.Header" xml:space="preserve">
     <value>Startuj sa Windowsom</value>
@@ -601,16 +601,16 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Postavi šta da radi aplikacija kada je drugi prozor fokusiran.</value>
   </data>
   <data name="AppFullScreen.Description" xml:space="preserve">
-    <value>Postavi šta da radi aplikacija kada je igirca ili aplikacija u fullscreenu.</value>
+    <value>Podesite šta treba da se dogodi kada je pokrenuta igra/aplikacija preko celog ekrana</value>
   </data>
   <data name="AppRules.Description" xml:space="preserve">
-    <value>Postavi drugačije plej-bek opcije kada je aplikacija fokusirana.</value>
+    <value>Zaustavi pozadinu kada je neka od navedenih aplikacija pokrenuta</value>
   </data>
   <data name="TipAppTheme" xml:space="preserve">
     <value>Lively menja izgled windowsa u skladu sa aplikacijom da vidis podešavanja idi na</value>
   </data>
   <data name="BatteryPower.Description" xml:space="preserve">
-    <value>(Sa sistemima sa baterijom(laptop)) Postavi drugačije plej-bek opcije kada je isključeno sa punjača</value>
+    <value>Promeni reprodukciju kada je uređaj na bateriji</value>
   </data>
   <data name="BrowserDebuggingPort.Description" xml:space="preserve">
     <value>Unesite port za otklanjanje grešaka u pozadinama veb stranica, potrebno je ponovno pokretanje pregledača da bi promene stupile na snagu. Kada budete spremni, idite na http: // localhost: broj porta za pristup konzoli za programere. Unesi port za uklanjanje grešaka pozadine, ponovno pokretanje pretraživača je obavezno da se promene dobile efekat.</value>
@@ -619,13 +619,13 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Pokaži meni za developere</value>
   </data>
   <data name="DesktopPicture.Description" xml:space="preserve">
-    <value>Set a picture of animated wallpaper as desktop wallpaper.</value>
+    <value>Postavi sliku animirane pozadine kao pozadinu radne površine</value>
   </data>
   <data name="DisplayPauseRule.Description" xml:space="preserve">
-    <value>Po: Pauziraj pozadinu na ekranu samo kad je aplikacija u fullscrenu ili fokusirana.Sve: Pauziraj pozadinu na svim ekranima ako je aplikacija fokusarina ili u fullscrenu</value>
+    <value>Pauziraj pozadinu na svim eknanima ili samo na ekranu u kojem je aplikacija fokusirana (preko celog ekrana)</value>
   </data>
   <data name="ExportLogs.Description" xml:space="preserve">
-    <value>Create log report file.</value>
+    <value>Kreiranje datoteke izveštaja evidencije</value>
   </data>
   <data name="GifPlayer.Description" xml:space="preserve">
     <value>Select the player used for gif wallpaper.</value>
@@ -667,7 +667,7 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Za slabije računare izaberite Lak mod.</value>
   </data>
   <data name="VideoHardwareDecode.Description" xml:space="preserve">
-    <value>Use hardware acceleration when possible.</value>
+    <value>Koristi hardversko ubrzanjе kada je moguće</value>
   </data>
   <data name="VideoPlayer.Description" xml:space="preserve">
     <value>Izaberi plejer za puštanje videa.</value>
@@ -685,7 +685,7 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Kako je pozadina nameštena sa konektovanim monitorima.</value>
   </data>
   <data name="TipWallpaperPlayback" xml:space="preserve">
-    <value>Pauziraj plej-bek kada pozadina nije fokusirana.</value>
+    <value>Pauziraj reprodukciju kada pozadina nije fokusirana</value>
   </data>
   <data name="WebBrowserDiskCache.Description" xml:space="preserve">
     <value>Čuvaj privremen fajlove u disku umesto ram memorije, podešavanja se vraćaju kada se pretraživač ponovo pokrene.</value>
@@ -703,7 +703,7 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Aplikacija je fokusirana</value>
   </data>
   <data name="AppFullScreen.Header" xml:space="preserve">
-    <value>Aplikacija je u Fullscreenu</value>
+    <value>Aplikacije preko celog ekrana</value>
   </data>
   <data name="TitleAppName" xml:space="preserve">
     <value>Lively pozadina</value>
@@ -718,7 +718,7 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Pusti audio na ekranu.</value>
   </data>
   <data name="BatteryPower.Header" xml:space="preserve">
-    <value>Kada je na snazi baterije</value>
+    <value>Kada se napaja baterijom</value>
   </data>
   <data name="TitleBrowseFile" xml:space="preserve">
     <value>Pretraži za video, gif, stranicu sajta... fajl za postavljanje kao pozadinu</value>
@@ -739,7 +739,7 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Potvrdi brisanje</value>
   </data>
   <data name="DesktopPicture.Header" xml:space="preserve">
-    <value>Desktop Picture</value>
+    <value>Pozadina rande površine</value>
   </data>
   <data name="DisplayPauseRule.Header" xml:space="preserve">
     <value>Prikaži Pravilo o Pauziranju</value>
@@ -860,7 +860,7 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Video</value>
   </data>
   <data name="VideoHardwareDecode.Header" xml:space="preserve">
-    <value>GPU Decode</value>
+    <value>GPU Dekodiranje</value>
   </data>
   <data name="TitleWallpaper" xml:space="preserve">
     <value>Pozadina</value>
@@ -881,7 +881,7 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Metod postavljanja</value>
   </data>
   <data name="WallpaperPlaybackGroup.Header" xml:space="preserve">
-    <value>Plej-bek pozadine</value>
+    <value>Reprodukcija pozadine</value>
   </data>
   <data name="TitleWarning" xml:space="preserve">
     <value>Upozorenje</value>
@@ -1139,7 +1139,7 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Koristi sistemska podešavanja</value>
   </data>
   <data name="DescriptionDynamicTheme.Text" xml:space="preserve">
-    <value>Prilagoditi desktop pozadini</value>
+    <value>Prilagodljiva pozadina</value>
   </data>
   <data name="TextDefault.Text" xml:space="preserve">
     <value>Podrazumevano</value>
@@ -1160,9 +1160,51 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>To je sve za sada...</value>
   </data>
   <data name="DevelopmentOnHold.Message" xml:space="preserve">
-    <value>This feature development is on hold</value>
+    <value>Razvijanje ove funkcije je pauzirano</value>
   </data>
   <data name="WallpaperPluginGroup.Header" xml:space="preserve">
-    <value>Plugins</value>
+    <value>Dodatne komponente</value>
+  </data>
+  <data name="AddWallpaperAdvanced.Description" xml:space="preserve">
+    <value>Create a dynamic wallpaper</value>
+  </data>
+  <data name="AddWallpaperAdvanced.Header" xml:space="preserve">
+    <value>Advanced</value>
+  </data>
+  <data name="DescriptionDepthApprox.Content" xml:space="preserve">
+    <value>Approximating depth..</value>
+  </data>
+  <data name="DescriptionDepthWallpaperItem.Content" xml:space="preserve">
+    <value>Using AI transform photographs into 3D</value>
+  </data>
+  <data name="TextContinue.Content" xml:space="preserve">
+    <value>Continue</value>
+  </data>
+  <data name="TitleCreateWallpaperOpenItem.Description" xml:space="preserve">
+    <value>Create a simple wallpaper</value>
+  </data>
+  <data name="TitleDepthWallpaper.Content" xml:space="preserve">
+    <value>AI Depth Wallpaper</value>
+  </data>
+  <data name="TitleDepthWallpaperItem.Content" xml:space="preserve">
+    <value>Depth Wallpaper</value>
+  </data>
+  <data name="DescriptionDepthWallpaperTemplate.Content" xml:space="preserve">
+    <value>AI generated depth wallpaper</value>
+  </data>
+  <data name="TitleCreateWallpaper.Content" xml:space="preserve">
+    <value>Create Wallpaper</value>
+  </data>
+  <data name="RunningAsAdminWarning.Message" xml:space="preserve">
+    <value>Some functionalities may not be available when run as administrator</value>
+  </data>
+  <data name="DescriptionDownloadRequired.Text" xml:space="preserve">
+    <value>Additional files need to be downloaded for this feature</value>
+  </data>
+  <data name="TitleDownloadRequired.Text" xml:space="preserve">
+    <value>Download Required</value>
+  </data>
+  <data name="TitleDownload.Content" xml:space="preserve">
+    <value>Preuzmi</value>
   </data>
 </root>

@@ -627,7 +627,7 @@ Utforskaren har startat om två gånger under de senaste 30 sekunderna! Detta ka
     <value>Algoritm för paus för bakgrundsbilder.</value>
   </data>
   <data name="PowerSavingModePower.Description" xml:space="preserve">
-    <value>Ändra uppspelningen när en Windows energispararläge körs</value>
+    <value>Ändra uppspelningen när Windows energispararläge körs</value>
   </data>
   <data name="RemoteDesktopPower.Description" xml:space="preserve">
     <value>Ändra uppspelningen när en fjärrskrivbordssession körs</value>
@@ -1151,5 +1151,47 @@ Utforskaren har startat om två gånger under de senaste 30 sekunderna! Detta ka
   </data>
   <data name="WallpaperPluginGroup.Header" xml:space="preserve">
     <value>Tillägg</value>
+  </data>
+  <data name="AddWallpaperAdvanced.Description" xml:space="preserve">
+    <value>Skapa en dynamisk bakgrundsbild</value>
+  </data>
+  <data name="AddWallpaperAdvanced.Header" xml:space="preserve">
+    <value>Avancerat</value>
+  </data>
+  <data name="DescriptionDepthApprox.Content" xml:space="preserve">
+    <value>Uppskattar djup..</value>
+  </data>
+  <data name="DescriptionDepthWallpaperItem.Content" xml:space="preserve">
+    <value>Använd AI för att omvandla foton till 3D</value>
+  </data>
+  <data name="TextContinue.Content" xml:space="preserve">
+    <value>Fortsätt</value>
+  </data>
+  <data name="TitleCreateWallpaperOpenItem.Description" xml:space="preserve">
+    <value>Skapa en simpel bakgrundsbild</value>
+  </data>
+  <data name="TitleDepthWallpaper.Content" xml:space="preserve">
+    <value>Bakgrundsbild med AI-genererat djup</value>
+  </data>
+  <data name="TitleDepthWallpaperItem.Content" xml:space="preserve">
+    <value>Bakgrundsbild med djup</value>
+  </data>
+  <data name="DescriptionDepthWallpaperTemplate.Content" xml:space="preserve">
+    <value>Bakgrundsbild med AI-genererat djup</value>
+  </data>
+  <data name="TitleCreateWallpaper.Content" xml:space="preserve">
+    <value>Skapa bakgrundsbild</value>
+  </data>
+  <data name="RunningAsAdminWarning.Message" xml:space="preserve">
+    <value>Vissa funktioner kan vara otillgänglig när programmet körs som administratör</value>
+  </data>
+  <data name="DescriptionDownloadRequired.Text" xml:space="preserve">
+    <value>Ytterligare filer behöver laddas ned för den här funktionen</value>
+  </data>
+  <data name="TitleDownloadRequired.Text" xml:space="preserve">
+    <value>Nedladdning krävs</value>
+  </data>
+  <data name="TitleDownload.Content" xml:space="preserve">
+    <value>Ladda ner</value>
   </data>
 </root>
