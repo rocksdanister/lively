@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
+using System.Reflection;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources;
 
@@ -55,6 +56,9 @@ namespace Lively.UI.WinUI.ViewModels
 
         [ObservableProperty]
         private bool isRunning;
+
+        [ObservableProperty]
+        private string errorText;
 
         [ObservableProperty]
         private string backgroundImage;
@@ -118,10 +122,10 @@ namespace Lively.UI.WinUI.ViewModels
                 NewWallpaper = await CreateWallpaper();
                 OnRequestClose?.Invoke(this, EventArgs.Empty);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Logger.Error(e);
-                PreviewText = $"Error: {e.Message}";
+                Logger.Error(ex);
+                ErrorText = $"{i18n.GetString("TextError")}: {ex.Message}";
             }
             finally
             {
@@ -161,7 +165,7 @@ namespace Lively.UI.WinUI.ViewModels
                 Contact = "https://github.com/rocksdanister/depthmap-wallpaper",
                 License = "See License.txt",
                 Author = "rocksdanister",
-                AppVersion = "2.0.6.6",
+                AppVersion = Assembly.GetEntryAssembly().GetName().Version.ToString(),
                 Preview = "preview.gif",
                 Thumbnail = "thumbnail.jpg",
                 Tags = new() {"depth", "depthmap"},
@@ -176,45 +180,50 @@ namespace Lively.UI.WinUI.ViewModels
             _canDownloadModelCommand = false;
             DownloadModelCommand.NotifyCanExecuteChanged();
 
-            var uri = await GetModelUrl();
-            Directory.CreateDirectory(Constants.MachineLearning.MiDaSDir);
-            var tempPath = Path.Combine(Constants.CommonPaths.TempDir, Path.GetRandomFileName());
-            downloader.DownloadProgressChanged += (s, e) =>
+            try
             {
-                _ = App.Services.GetRequiredService<MainWindow>().DispatcherQueue.TryEnqueue(() =>
+                var uri = await GetModelUrl();
+                Directory.CreateDirectory(Constants.MachineLearning.MiDaSDir);
+                var tempPath = Path.Combine(Constants.CommonPaths.TempDir, Path.GetRandomFileName());
+                downloader.DownloadProgressChanged += (s, e) =>
                 {
-                    ModelDownloadProgressText = $"{e.DownloadedSize}/{e.TotalSize} MB";
-                    ModelDownloadProgress = (float)e.Percentage;
-                });
-            };
-            downloader.DownloadFileCompleted += (s, success) =>
-            {
-                _ = App.Services.GetRequiredService<MainWindow>().DispatcherQueue.TryEnqueue(async() =>
-                {
-                    if (success)
+                    _ = App.Services.GetRequiredService<MainWindow>().DispatcherQueue.TryEnqueue(() =>
                     {
-                        await FileOperations.CopyFileAsync(tempPath, Constants.MachineLearning.MiDaSPath);
-                        IsModelExists = CheckModel();
-                        BackgroundImage = IsModelExists ? SelectedImage : BackgroundImage;
+                        ModelDownloadProgressText = $"{e.DownloadedSize}/{e.TotalSize} MB";
+                        ModelDownloadProgress = (float)e.Percentage;
+                    });
+                };
+                downloader.DownloadFileCompleted += (s, success) =>
+                {
+                    _ = App.Services.GetRequiredService<MainWindow>().DispatcherQueue.TryEnqueue(async () =>
+                    {
+                        if (success)
+                        {
+                            await FileOperations.CopyFileAsync(tempPath, Constants.MachineLearning.MiDaSPath);
+                            IsModelExists = CheckModel();
+                            BackgroundImage = IsModelExists ? SelectedImage : BackgroundImage;
 
-                        _canRunCommand = IsModelExists;
-                        RunCommand.NotifyCanExecuteChanged();
+                            //try
+                            //{
+                            //    File.Delete(tempPath);
+                            //}
+                            //catch { }
 
-                        //try
-                        //{
-                        //    File.Delete(tempPath);
-                        //}
-                        //catch
-                        //{
-                        //    //ignore, will get deleted on restart
-                        //}
-                    }
-                    else
-                        PreviewText = i18n.GetString("TextError");
-                });
-            };
+                            _canRunCommand = IsModelExists;
+                            RunCommand.NotifyCanExecuteChanged();
+                        }
+                        else
+                            ErrorText = $"{i18n.GetString("TextError")}: Download failed.";
+                    });
+                };
 
-            await downloader.DownloadFile(uri, tempPath);
+                await downloader.DownloadFile(uri, tempPath);
+            }
+            catch(Exception ex)
+            {
+                Logger.Error(ex);
+                ErrorText = $"{i18n.GetString("TextError")}: {ex.Message}";
+            }
         }
 
         private void CancelOperations()
@@ -222,15 +231,13 @@ namespace Lively.UI.WinUI.ViewModels
             downloader?.Cancel();
         }
 
-        private async Task<Uri> GetModelUrl()
+        private static async Task<Uri> GetModelUrl()
         {
-            //test
-            //manifest and update checker
             var userName = "rocksdanister";
             var repositoryName = "lively-ml-models";
             var gitRelease = await GithubUtil.GetLatestRelease(repositoryName, userName, 0);
 
-            var gitUrl = await GithubUtil.GetAssetUrl("MiDaS_model-small.onnx",
+            var gitUrl = await GithubUtil.GetAssetUrl("midas_model_small_v2100.onnx",
                 gitRelease, repositoryName, userName);
             var uri = new Uri(gitUrl);
 

@@ -20,6 +20,7 @@
             TintOpacity="0.5" />
         <ThemeShadow x:Name="BackgroundGridShadow" />
         <converters:BoolNegationConverter x:Key="BoolNegationConverter" />
+        <converters:StringVisibilityConverter x:Key="StringVisibilityConverter" />
         <customconverters:BooleanToVisibilityConverter x:Key="VisibilityConverter" />
     </Page.Resources>
 
@@ -44,7 +45,7 @@
                 ScrollOrientation="Both" />
         </Border>
         <Border Background="{ThemeResource AcrylicBrushCustom}" CornerRadius="5" />
-
+        <!--  Shadow background  -->
         <Grid x:Name="BackgroundGrid" />
         <Grid Visibility="{Binding IsModelExists, Converter={StaticResource VisibilityConverter}, Mode=OneWay}">
             <Grid.RowDefinitions>
@@ -52,7 +53,7 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="25" />
             </Grid.RowDefinitions>
-
+            <!--  Center UniformToFill  -->
             <Viewbox
                 Grid.Row="0"
                 Width="384"
@@ -105,6 +106,7 @@
                 </StackPanel>
             </InfoBar.Content>
         </InfoBar>-->
+        <!--  Model download  -->
         <Border
             Background="{ThemeResource SystemAltMediumColor}"
             CornerRadius="5"
@@ -134,7 +136,12 @@
                     Value="{Binding ModelDownloadProgress, Mode=OneWay}" />
                 <TextBlock Text="{Binding ModelDownloadProgressText, Mode=OneWay}" />
             </StackPanel>
-            <Button x:Uid="TextDownloadNow" Command="{Binding DownloadModelCommand}" />
+            <Button x:Uid="TitleDownload" Command="{Binding DownloadModelCommand}" />
+        </StackPanel>
+        <!--  Error message  -->
+        <StackPanel Margin="5" Visibility="{Binding ErrorText, Converter={StaticResource StringVisibilityConverter}, Mode=OneWay}">
+            <TextBlock Foreground="Red" Text="{Binding ErrorText}" />
+            <HyperlinkButton Content="https://github.com/rocksdanister/lively/wiki/machine-learning" NavigateUri="https://github.com/rocksdanister/lively/wiki/machine-learning" />
         </StackPanel>
     </Grid>
 </Page>
