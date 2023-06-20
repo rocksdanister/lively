@@ -1,4 +1,5 @@
-﻿using Lively.Common.Helpers.Files;
+﻿using Lively.Common;
+using Lively.Common.Helpers.Files;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage.Pickers;
+using UAC = UACHelper.UACHelper;
 
 namespace Lively.UI.WinUI.Helpers
 {
@@ -19,6 +21,34 @@ namespace Lively.UI.WinUI.Helpers
     //https://learn.microsoft.com/en-us/windows/win32/api/commdlg/ns-commdlg-openfilenamea
     public static class FilePickerUtil
     {
+        public static async Task<string> PickSingleFile(WallpaperType type)
+        {
+            return UAC.IsElevated ? 
+                PickSingleFileNative(LocalizationUtil.FileDialogFilterNative(type)) : 
+                await PickSingleFileUwp(LocalizationUtil.FileDialogFilter(type));
+        }
+
+        public static async Task<IReadOnlyList<string>> PickMultipleFile(WallpaperType type)
+        {
+            return UAC.IsElevated ?
+                PickMultipleFileNative(LocalizationUtil.FileDialogFilterNative(type)) :
+                await PickMultipleFileUwp(LocalizationUtil.FileDialogFilter(type));
+        }
+
+        public static async Task<string> PickLivelyWallpaperSingleFile()
+        {
+            return UAC.IsElevated ?
+                PickSingleFileNative(LocalizationUtil.FileDialogFilterAllNative(true)) :
+                await PickSingleFileUwp(LocalizationUtil.FileDialogFilterAll(true).ToArray());
+        }
+
+        public static async Task<IReadOnlyList<string>> PickLivelyWallpaperMultipleFile()
+        {
+            return UAC.IsElevated ?
+                PickMultipleFileNative(LocalizationUtil.FileDialogFilterAllNative(true)) :
+                await PickMultipleFileUwp(LocalizationUtil.FileDialogFilterAll(true).ToArray());
+        }
+
         public static async Task<string> PickSingleFileUwp(string[] filter)
         {
             var filePicker = new FileOpenPicker();

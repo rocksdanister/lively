@@ -43,7 +43,7 @@ namespace Lively.UI.WinUI.Helpers
             };
         }
 
-        public static List<string> SupportedFileDialogFilter(bool anyFile = false)
+        public static List<string> FileDialogFilterAll(bool anyFile = false)
         {
             var filterCollection = new List<string>();
             if (anyFile)
@@ -60,10 +60,24 @@ namespace Lively.UI.WinUI.Helpers
             return filterCollection.Distinct().ToList();
         }
 
-        public static string[] SupportedFileDialogFilter(WallpaperType wallpaperType) => 
+        public static string[] FileDialogFilter(WallpaperType wallpaperType) => 
             FileFilter.LivelySupportedFormats.First(x => x.Type == wallpaperType).Extentions;
 
-        public static string SupportedFileDialogFilterNative(bool anyFile = false)
+        public static string FileDialogFilterNative(WallpaperType wallpaperType)
+        {
+            var filterString = new StringBuilder();
+            var selection = FileFilter.LivelySupportedFormats.First(x => x.Type == wallpaperType);
+            filterString.Append(LocalizeWallpaperCategory(selection.Type)).Append('\0');
+            foreach (var extension in selection.Extentions)
+            {
+                filterString.Append('*').Append(extension).Append(';');
+            }
+            filterString.Remove(filterString.Length - 1, 1).Append('\0');
+            filterString.Remove(filterString.Length - 1, 1).Append('\0');
+            return filterString.ToString();
+        }
+
+        public static string FileDialogFilterAllNative(bool anyFile = false)
         {
             var filterString = new StringBuilder();
             if (anyFile)

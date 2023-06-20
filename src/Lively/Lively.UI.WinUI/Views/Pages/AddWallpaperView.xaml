@@ -85,12 +85,12 @@
                     MinWidth="150"
                     Command="{Binding BrowseFileCommand}" />
             </controls:SettingsCard>
-            <InfoBar
+            <!--<InfoBar
                 IsClosable="False"
                 IsOpen="True"
                 Message="{Binding ErrorMessage}"
                 Severity="Error"
-                Visibility="{Binding ErrorMessage, Converter={StaticResource StringVisibilityConverter}, Mode=OneWay}" />
+                Visibility="{Binding ErrorMessage, Converter={StaticResource StringVisibilityConverter}, Mode=OneWay}" />-->
 
             <controls:SettingsExpander
                 x:Uid="EnterUrl"
@@ -120,7 +120,7 @@
 
             <controls:SettingsCard
                 x:Uid="AddWallpaperAdvanced"
-                Margin="0,1,0,0"
+                Margin="0,2.5,0,0"
                 Command="{Binding CreateWallpaperCommand}"
                 IsClickEnabled="True">
                 <controls:SettingsCard.HeaderIcon>
