@@ -1175,9 +1175,51 @@ Az Edge a Windows 10 beépített WebView-ja (Lehetővé teszi, hogy webes tartal
     <value>Egyelőre ennyi.</value>
   </data>
   <data name="DevelopmentOnHold.Message" xml:space="preserve">
-    <value>This feature development is on hold</value>
+    <value>Jelenleg a fejlesztés felfüggesztve</value>
   </data>
   <data name="WallpaperPluginGroup.Header" xml:space="preserve">
-    <value>Plugins</value>
+    <value>Bővítmények</value>
+  </data>
+  <data name="AddWallpaperAdvanced.Description" xml:space="preserve">
+    <value>Create a dynamic wallpaper</value>
+  </data>
+  <data name="AddWallpaperAdvanced.Header" xml:space="preserve">
+    <value>Advanced</value>
+  </data>
+  <data name="DescriptionDepthApprox.Content" xml:space="preserve">
+    <value>Approximating depth..</value>
+  </data>
+  <data name="DescriptionDepthWallpaperItem.Content" xml:space="preserve">
+    <value>Using AI transform photographs into 3D</value>
+  </data>
+  <data name="TextContinue.Content" xml:space="preserve">
+    <value>Continue</value>
+  </data>
+  <data name="TitleCreateWallpaperOpenItem.Description" xml:space="preserve">
+    <value>Create a simple wallpaper</value>
+  </data>
+  <data name="TitleDepthWallpaper.Content" xml:space="preserve">
+    <value>AI Depth Wallpaper</value>
+  </data>
+  <data name="TitleDepthWallpaperItem.Content" xml:space="preserve">
+    <value>Depth Wallpaper</value>
+  </data>
+  <data name="DescriptionDepthWallpaperTemplate.Content" xml:space="preserve">
+    <value>AI generated depth wallpaper</value>
+  </data>
+  <data name="TitleCreateWallpaper.Content" xml:space="preserve">
+    <value>Create Wallpaper</value>
+  </data>
+  <data name="RunningAsAdminWarning.Message" xml:space="preserve">
+    <value>Néhány funkció előfordulhat, hogy nem működik, ha renszergazdaként van futtatva</value>
+  </data>
+  <data name="DescriptionDownloadRequired.Text" xml:space="preserve">
+    <value>Additional files need to be downloaded for this feature</value>
+  </data>
+  <data name="TitleDownloadRequired.Text" xml:space="preserve">
+    <value>Download Required</value>
+  </data>
+  <data name="TitleDownload.Content" xml:space="preserve">
+    <value>Letöltés</value>
   </data>
 </root>

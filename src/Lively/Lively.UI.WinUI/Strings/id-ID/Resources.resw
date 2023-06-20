@@ -157,7 +157,7 @@ Tujuan utama screensaver Lively adalah untuk menambahkan bagian kostumisasi lain
     <value>Laporkan masalah dengan aplikasi</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
-    <value>Pilih file atau URL halaman web untuk dijadikan sebagai wallpaper.</value>
+    <value>Pilih berkas</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
     <value>Pemutaran wallpaper berdasarkan aplikasi yang sedang berjalan</value>
@@ -183,7 +183,7 @@ Lanjutkan jika aplikasi berasal dari sumber terpercaya</value>
     <value>Lively dikecilkan ke systemtray, klik kanan pada ikon Lively untuk melanjutkan.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
-    <value>Mohon mulai ulang Lively agar pengaturan dapat diterapkan.</value>
+    <value>Mohon mulai ulang aplikasi agar pengaturan dapat diterapkan</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
     <value>Harap berhenti sebelum melanjutkan</value>
@@ -195,7 +195,7 @@ Lanjutkan jika aplikasi berasal dari sumber terpercaya</value>
     <value>Sedang memulihkan wallpaper sebelumnya, mohon tunggu...</value>
   </data>
   <data name="DescriptionScreenLayout" xml:space="preserve">
-    <value>Pilih layar</value>
+    <value>Pilih tampilan</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
     <value>Versi terbaru Lively telah tersedia!</value>
@@ -276,7 +276,7 @@ Jika masih tidak berfungsi, tutup dan mulai ulang Lively/Windows.
     <value>Lively perlu berjalan di latar belakang untuk pemutaran wallpaper</value>
   </data>
   <data name="Startup.Header" xml:space="preserve">
-    <value>Mulai bersama Windows</value>
+    <value>Memulai aplikasi saat Windows dinyalakan</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
     <value>Tambah</value>
@@ -291,7 +291,7 @@ Jika masih tidak berfungsi, tutup dan mulai ulang Lively/Windows.
     <value>Atribut</value>
   </data>
   <data name="Author.Text" xml:space="preserve">
-    <value>Pengarang</value>
+    <value>Pembuat</value>
   </data>
   <data name="TextBack" xml:space="preserve">
     <value>Kembali</value>
@@ -1176,9 +1176,51 @@ Semua: Jeda wallpaper untuk semua layar jika ada aplikasi fullscreen/sedang difo
     <value>Hanya itu saja untuk sekarang..</value>
   </data>
   <data name="DevelopmentOnHold.Message" xml:space="preserve">
-    <value>This feature development is on hold</value>
+    <value>Pengembangan fitur ini sedang ditahan</value>
   </data>
   <data name="WallpaperPluginGroup.Header" xml:space="preserve">
-    <value>Plugins</value>
+    <value>Plugin</value>
+  </data>
+  <data name="AddWallpaperAdvanced.Description" xml:space="preserve">
+    <value>Create a dynamic wallpaper</value>
+  </data>
+  <data name="AddWallpaperAdvanced.Header" xml:space="preserve">
+    <value>Advanced</value>
+  </data>
+  <data name="DescriptionDepthApprox.Content" xml:space="preserve">
+    <value>Approximating depth..</value>
+  </data>
+  <data name="DescriptionDepthWallpaperItem.Content" xml:space="preserve">
+    <value>Using AI transform photographs into 3D</value>
+  </data>
+  <data name="TextContinue.Content" xml:space="preserve">
+    <value>Continue</value>
+  </data>
+  <data name="TitleCreateWallpaperOpenItem.Description" xml:space="preserve">
+    <value>Create a simple wallpaper</value>
+  </data>
+  <data name="TitleDepthWallpaper.Content" xml:space="preserve">
+    <value>AI Depth Wallpaper</value>
+  </data>
+  <data name="TitleDepthWallpaperItem.Content" xml:space="preserve">
+    <value>Depth Wallpaper</value>
+  </data>
+  <data name="DescriptionDepthWallpaperTemplate.Content" xml:space="preserve">
+    <value>AI generated depth wallpaper</value>
+  </data>
+  <data name="TitleCreateWallpaper.Content" xml:space="preserve">
+    <value>Create Wallpaper</value>
+  </data>
+  <data name="RunningAsAdminWarning.Message" xml:space="preserve">
+    <value>Some functionalities may not be available when run as administrator</value>
+  </data>
+  <data name="DescriptionDownloadRequired.Text" xml:space="preserve">
+    <value>Additional files need to be downloaded for this feature</value>
+  </data>
+  <data name="TitleDownloadRequired.Text" xml:space="preserve">
+    <value>Download Required</value>
+  </data>
+  <data name="TitleDownload.Content" xml:space="preserve">
+    <value>Unduh</value>
   </data>
 </root>

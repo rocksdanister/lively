@@ -942,7 +942,7 @@ Jei vis tiek neveikia, uždarykite ir iš naujo įjunkite Lively/perkraukite Win
     <value>Išvaizda ir elgesys</value>
   </data>
   <data name="ActiveWallpapers.Label" xml:space="preserve">
-    <value>Aktyvus (-i) fonas (-ai)</value>
+    <value>Aktyvus (-ūs) fonas (-ai)</value>
   </data>
   <data name="TitleGallery" xml:space="preserve">
     <value>Galerija</value>
@@ -1177,5 +1177,47 @@ Jei vis tiek neveikia, uždarykite ir iš naujo įjunkite Lively/perkraukite Win
   </data>
   <data name="WallpaperPluginGroup.Header" xml:space="preserve">
     <value>Įskiepiai</value>
+  </data>
+  <data name="AddWallpaperAdvanced.Description" xml:space="preserve">
+    <value>Sukurti judantį darbalaukio foną</value>
+  </data>
+  <data name="AddWallpaperAdvanced.Header" xml:space="preserve">
+    <value>Papildomi nustatymai</value>
+  </data>
+  <data name="DescriptionDepthApprox.Content" xml:space="preserve">
+    <value>Vidurkinamas erdvės gylis..</value>
+  </data>
+  <data name="DescriptionDepthWallpaperItem.Content" xml:space="preserve">
+    <value>Naudojant DI transformuoti nuotraukas į erdvines</value>
+  </data>
+  <data name="TextContinue.Content" xml:space="preserve">
+    <value>Tęsti</value>
+  </data>
+  <data name="TitleCreateWallpaperOpenItem.Description" xml:space="preserve">
+    <value>Sukurti paprastą darbalaukio foną</value>
+  </data>
+  <data name="TitleDepthWallpaper.Content" xml:space="preserve">
+    <value>DI erdvinis darbalaukio fonas</value>
+  </data>
+  <data name="TitleDepthWallpaperItem.Content" xml:space="preserve">
+    <value>Erdvinis darbalaukio fonas</value>
+  </data>
+  <data name="DescriptionDepthWallpaperTemplate.Content" xml:space="preserve">
+    <value>DI sugeneruotas erdvinis darbalaukio fonas</value>
+  </data>
+  <data name="TitleCreateWallpaper.Content" xml:space="preserve">
+    <value>Sukurti darbalaukio foną</value>
+  </data>
+  <data name="RunningAsAdminWarning.Message" xml:space="preserve">
+    <value>Paleidus administratoriaus teisėmis kai kurios funkcijos gali būti nepasiekiamos</value>
+  </data>
+  <data name="DescriptionDownloadRequired.Text" xml:space="preserve">
+    <value>Norint naudoti šią funkciją, reikia atsisiųsti papildomų failų</value>
+  </data>
+  <data name="TitleDownloadRequired.Text" xml:space="preserve">
+    <value>Reikia atsisiųsti</value>
+  </data>
+  <data name="TitleDownload.Content" xml:space="preserve">
+    <value>Atsisiųsti</value>
   </data>
 </root>

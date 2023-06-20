@@ -1176,9 +1176,51 @@ Edge is the built in webview of windows 10.</value>
     <value>تموم شد.</value>
   </data>
   <data name="DevelopmentOnHold.Message" xml:space="preserve">
-    <value>This feature development is on hold</value>
+    <value>این قابلیت نگه داشته شده است</value>
   </data>
   <data name="WallpaperPluginGroup.Header" xml:space="preserve">
-    <value>Plugins</value>
+    <value>پلاگین‌‌ها</value>
+  </data>
+  <data name="AddWallpaperAdvanced.Description" xml:space="preserve">
+    <value>ساخت یک تصویر پس زمینه متحرک</value>
+  </data>
+  <data name="AddWallpaperAdvanced.Header" xml:space="preserve">
+    <value>پیشرفته</value>
+  </data>
+  <data name="DescriptionDepthApprox.Content" xml:space="preserve">
+    <value>عمق تقریبی..</value>
+  </data>
+  <data name="DescriptionDepthWallpaperItem.Content" xml:space="preserve">
+    <value>با استفاده از هوش مصنوعی عکس ها را 3 بعدی کنید</value>
+  </data>
+  <data name="TextContinue.Content" xml:space="preserve">
+    <value>ادامه</value>
+  </data>
+  <data name="TitleCreateWallpaperOpenItem.Description" xml:space="preserve">
+    <value>ساخت یک تصویر پس زمینه ساده</value>
+  </data>
+  <data name="TitleDepthWallpaper.Content" xml:space="preserve">
+    <value>AI Depth Wallpaper</value>
+  </data>
+  <data name="TitleDepthWallpaperItem.Content" xml:space="preserve">
+    <value>Depth Wallpaper</value>
+  </data>
+  <data name="DescriptionDepthWallpaperTemplate.Content" xml:space="preserve">
+    <value>AI generated depth wallpaper</value>
+  </data>
+  <data name="TitleCreateWallpaper.Content" xml:space="preserve">
+    <value>ساخت پس‌زمینه</value>
+  </data>
+  <data name="RunningAsAdminWarning.Message" xml:space="preserve">
+    <value>Some functionalities may not be available when run as administrator</value>
+  </data>
+  <data name="DescriptionDownloadRequired.Text" xml:space="preserve">
+    <value>برای فعال سازی این قابلیت باید ابتدا فایل های آن را دانلود کنید</value>
+  </data>
+  <data name="TitleDownloadRequired.Text" xml:space="preserve">
+    <value>بارگیری الزامی</value>
+  </data>
+  <data name="TitleDownload.Content" xml:space="preserve">
+    <value>دانلود</value>
   </data>
 </root>

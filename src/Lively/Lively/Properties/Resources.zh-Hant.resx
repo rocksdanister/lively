@@ -1178,4 +1178,46 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="WallpaperPluginGroup.Header" xml:space="preserve">
     <value>插件</value>
   </data>
+  <data name="AddWallpaperAdvanced.Description" xml:space="preserve">
+    <value>建立動態桌布</value>
+  </data>
+  <data name="AddWallpaperAdvanced.Header" xml:space="preserve">
+    <value>進階</value>
+  </data>
+  <data name="DescriptionDepthApprox.Content" xml:space="preserve">
+    <value>近似深度..</value>
+  </data>
+  <data name="DescriptionDepthWallpaperItem.Content" xml:space="preserve">
+    <value>使用 AI 將照片轉換為 3D</value>
+  </data>
+  <data name="TextContinue.Content" xml:space="preserve">
+    <value>繼續</value>
+  </data>
+  <data name="TitleCreateWallpaperOpenItem.Description" xml:space="preserve">
+    <value>建立簡易桌布</value>
+  </data>
+  <data name="TitleDepthWallpaper.Content" xml:space="preserve">
+    <value>AI Depth 桌布</value>
+  </data>
+  <data name="TitleDepthWallpaperItem.Content" xml:space="preserve">
+    <value>Depth 桌布</value>
+  </data>
+  <data name="DescriptionDepthWallpaperTemplate.Content" xml:space="preserve">
+    <value>AI 生成 Depth 桌布</value>
+  </data>
+  <data name="TitleCreateWallpaper.Content" xml:space="preserve">
+    <value>建立桌布</value>
+  </data>
+  <data name="RunningAsAdminWarning.Message" xml:space="preserve">
+    <value>當以管理員權限運作時，部分功能不一定可用</value>
+  </data>
+  <data name="DescriptionDownloadRequired.Text" xml:space="preserve">
+    <value>Additional files need to be downloaded for this feature</value>
+  </data>
+  <data name="TitleDownloadRequired.Text" xml:space="preserve">
+    <value>Download Required</value>
+  </data>
+  <data name="TitleDownload.Content" xml:space="preserve">
+    <value>下載</value>
+  </data>
 </root>

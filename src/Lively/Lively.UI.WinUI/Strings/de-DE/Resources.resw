@@ -1178,4 +1178,46 @@ Wenn dies immer noch nicht funktioniert, schließen &amp; starten Sie Lively ode
   <data name="WallpaperPluginGroup.Header" xml:space="preserve">
     <value>Plugins</value>
   </data>
+  <data name="AddWallpaperAdvanced.Description" xml:space="preserve">
+    <value>Erstelle einen dynamischen Hintergrund</value>
+  </data>
+  <data name="AddWallpaperAdvanced.Header" xml:space="preserve">
+    <value>Erweitert</value>
+  </data>
+  <data name="DescriptionDepthApprox.Content" xml:space="preserve">
+    <value>Tiefe wird abgeschätzt..</value>
+  </data>
+  <data name="DescriptionDepthWallpaperItem.Content" xml:space="preserve">
+    <value>Fotos mit KI in 3D umwandeln</value>
+  </data>
+  <data name="TextContinue.Content" xml:space="preserve">
+    <value>Weiter</value>
+  </data>
+  <data name="TitleCreateWallpaperOpenItem.Description" xml:space="preserve">
+    <value>Erstelle einen einfachen Hintergrund</value>
+  </data>
+  <data name="TitleDepthWallpaper.Content" xml:space="preserve">
+    <value>Hintergrund mit KI-Tiefe</value>
+  </data>
+  <data name="TitleDepthWallpaperItem.Content" xml:space="preserve">
+    <value>Tiefen-Hintergrund</value>
+  </data>
+  <data name="DescriptionDepthWallpaperTemplate.Content" xml:space="preserve">
+    <value>KI erzeugter Tiefen-Hintergrund</value>
+  </data>
+  <data name="TitleCreateWallpaper.Content" xml:space="preserve">
+    <value>Hintergrundbild erstellen</value>
+  </data>
+  <data name="RunningAsAdminWarning.Message" xml:space="preserve">
+    <value>Einige Funktionen sind möglicherweise nicht verfügbar, wenn sie als Administrator ausgeführt werden</value>
+  </data>
+  <data name="DescriptionDownloadRequired.Text" xml:space="preserve">
+    <value>Zusätzliche Dateien müssen für diese Funktion heruntergeladen werden</value>
+  </data>
+  <data name="TitleDownloadRequired.Text" xml:space="preserve">
+    <value>Download erforderlich</value>
+  </data>
+  <data name="TitleDownload.Content" xml:space="preserve">
+    <value>Herunterladen</value>
+  </data>
 </root>
