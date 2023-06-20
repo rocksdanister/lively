@@ -165,7 +165,7 @@ namespace Lively.UI.WinUI
                 .AddTransient<IApplicationsFactory, ApplicationsFactory>()
                 .AddTransient<IApplicationsRulesFactory, ApplicationsRulesFactory>()
                 .AddTransient<IThemeFactory, ThemeFactory>()
-                .AddTransient<IDownloadHelper, MultiDownloadHelper>()
+                .AddTransient<IDownloadHelper, SimpleDownloadHelper>()
                 //https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests
                 .AddHttpClient()
                 .BuildServiceProvider();

@@ -127,7 +127,7 @@ namespace Lively.UI.WinUI.Services
                 SecondaryButtonText = i18n.GetString("Cancel/Content"),
                 DefaultButton = ContentDialogButton.Primary,
                 XamlRoot = App.Services.GetRequiredService<MainWindow>().Content.XamlRoot,
-                //SecondaryButtonCommand = vm.CancelCommand,
+                SecondaryButtonCommand = vm.CancelCommand,
                 PrimaryButtonCommand = vm.RunCommand,
                 IsPrimaryButtonEnabled = vm.IsModelExists,
             };
