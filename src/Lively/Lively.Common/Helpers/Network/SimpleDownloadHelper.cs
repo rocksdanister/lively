@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
-using System.Runtime.InteropServices.ComTypes;
-using System.Security.Cryptography;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -18,9 +15,10 @@ namespace Lively.Common.Helpers.Network
         public event EventHandler<DownloadProgressEventArgs> DownloadProgressChanged;
         public event EventHandler<DownloadEventArgs> DownloadStarted;
 
+        private double previousDownloadedSize = -1;
         private readonly IHttpClientFactory httpClientFactory;
 
-        private readonly CancellationTokenSource cts = new CancellationTokenSource();
+        private CancellationTokenSource cts;
 
         public SimpleDownloadHelper(IHttpClientFactory httpClientFactory)
         {
@@ -29,26 +27,57 @@ namespace Lively.Common.Helpers.Network
 
         public async Task DownloadFile(Uri url, string filePath)
         {
-            using var stream = new MemoryStream();
-            await DownloadFileAsync(url, stream, cts.Token, (d, t) => DownloadProgressChanged?.Invoke(this,
-                new DownloadProgressEventArgs()
+            cts = new CancellationTokenSource();
+            Exception exception = null;
+
+            try
+            {
+                using var stream = File.Create(filePath);
+                await DownloadFileAsync(url, stream, cts.Token, (d, t) =>
                 {
-                    TotalSize = Math.Truncate(ByteToMegabyte(t)),
-                    DownloadedSize = Math.Truncate(ByteToMegabyte(d)),
-                    Percentage = (double)d * 100/ t
-                }));
+                    var downloadedSize = Math.Truncate(ByteToMegabyte(d));
+                    if (downloadedSize == previousDownloadedSize)
+                        return;
 
-            using FileStream fileStream = File.Create(filePath);
-            stream.Seek(0, SeekOrigin.Begin);
-            await stream.CopyToAsync(fileStream);
+                    DownloadProgressEventArgs args = new DownloadProgressEventArgs()
+                    {
+                        TotalSize = Math.Truncate(ByteToMegabyte(t)),
+                        DownloadedSize = Math.Truncate(ByteToMegabyte(d)),
+                        Percentage = (double)d * 100 / t
+                    };
+                    previousDownloadedSize = downloadedSize;
 
-            DownloadFileCompleted?.Invoke(this, true);
+                    DownloadProgressChanged?.Invoke(this, args);
+                });
+
+                //using FileStream fileStream = File.Create(filePath);
+                //stream.Seek(0, SeekOrigin.Begin);
+                //await stream.CopyToAsync(fileStream);
+            }
+            catch (Exception ex)
+            {
+                exception = ex;
+            }
+            finally
+            {
+                var success = !cts.IsCancellationRequested && exception is null;
+                DownloadFileCompleted?.Invoke(this, success);
+
+                //cleanup
+                if (!success)
+                {
+                    try
+                    {
+                        File.Delete(filePath);
+                    }
+                    catch { }
+                }
+                cts?.Dispose();
+                cts = null;
+            }
         }
 
-        public void Cancel()
-        {
-            cts?.Cancel();
-        }
+        public void Cancel() => cts?.Cancel();
 
         /// <summary>
         /// Downloads a file from the specified Uri into the specified stream

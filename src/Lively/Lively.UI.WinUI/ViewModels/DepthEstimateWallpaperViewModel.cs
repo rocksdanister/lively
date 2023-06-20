@@ -10,7 +10,7 @@ using Lively.Grpc.Client;
 using Lively.ML.DepthEstimate;
 using Lively.ML.Helpers;
 using Lively.Models;
-using Microsoft.UI.Dispatching;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -25,7 +25,6 @@ namespace Lively.UI.WinUI.ViewModels
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         public ILibraryModel NewWallpaper { get; private set; }
         public event EventHandler OnRequestClose;
-        private readonly DispatcherQueue dispatcherQueue;
         private readonly ResourceLoader i18n;
 
         private readonly IDepthEstimate depthEstimate;
@@ -43,15 +42,15 @@ namespace Lively.UI.WinUI.ViewModels
             this.libraryVm = libraryVm;
             this.userSettings = userSettings;
 
-            dispatcherQueue = DispatcherQueue.GetForCurrentThread() ?? DispatcherQueueController.CreateOnCurrentThread().DispatcherQueue;
             i18n = ResourceLoader.GetForViewIndependentUse();
 
+            IsModelExists = CheckModel();
             _canRunCommand = IsModelExists;
             RunCommand.NotifyCanExecuteChanged();
         }
 
         [ObservableProperty]
-        private bool isModelExists = CheckModel();
+        private bool isModelExists;
 
         [ObservableProperty]
         private bool isRunning;
@@ -69,7 +68,7 @@ namespace Lively.UI.WinUI.ViewModels
         private float modelDownloadProgress;
 
         [ObservableProperty]
-        private string modelDownloadProgressText = "--/--MB";
+        private string modelDownloadProgressText = "--/-- MB";
 
         private string _selectedImage;
         public string SelectedImage
@@ -78,7 +77,7 @@ namespace Lively.UI.WinUI.ViewModels
             set
             {
                 SetProperty(ref _selectedImage, value);
-                BackgroundImage = IsModelExists ? value : "ms-appx:///Assets/banner-lively-1080.jpg";
+                BackgroundImage = value;
                 PreviewImage = value;
             }
         }
@@ -91,8 +90,8 @@ namespace Lively.UI.WinUI.ViewModels
         private RelayCommand _downloadModelCommand;
         public RelayCommand DownloadModelCommand => _downloadModelCommand ??= new RelayCommand(async() => await DownloadModel(), () => _canDownloadModelCommand);
 
-        //private RelayCommand _cancelCommand;
-        //public RelayCommand CancelCommand => _cancelCommand ??= new RelayCommand(CancelOperations);
+        private RelayCommand _cancelCommand;
+        public RelayCommand CancelCommand => _cancelCommand ??= new RelayCommand(CancelOperations);
 
         private async Task PredictDepth()
         {
@@ -178,24 +177,17 @@ namespace Lively.UI.WinUI.ViewModels
             var uri = await GetModelUrl();
             Directory.CreateDirectory(Constants.MachineLearning.MiDaSDir);
             var tempPath = Path.Combine(Constants.CommonPaths.TempDir, Path.GetRandomFileName());
-            downloader.DownloadStarted += (s, e) =>
-            {
-                _ = dispatcherQueue.TryEnqueue(() =>
-                {
-                    ModelDownloadProgressText = $"0/{e.TotalSize}MB";
-                });
-            };
             downloader.DownloadProgressChanged += (s, e) =>
             {
-                _ = dispatcherQueue.TryEnqueue(() =>
+                _ = App.Services.GetRequiredService<MainWindow>().DispatcherQueue.TryEnqueue(() =>
                 {
-                    ModelDownloadProgressText = $"{e.DownloadedSize}/{e.TotalSize}MB";
+                    ModelDownloadProgressText = $"{e.DownloadedSize}/{e.TotalSize} MB";
                     ModelDownloadProgress = (float)e.Percentage;
                 });
             };
             downloader.DownloadFileCompleted += (s, success) =>
             {
-                _ = dispatcherQueue.TryEnqueue(async() =>
+                _ = App.Services.GetRequiredService<MainWindow>().DispatcherQueue.TryEnqueue(async() =>
                 {
                     if (success)
                     {
@@ -217,6 +209,7 @@ namespace Lively.UI.WinUI.ViewModels
                     }
                 });
             };
+
             await downloader.DownloadFile(uri, tempPath);
         }
 

@@ -33,6 +33,7 @@ namespace Lively.UI.WinUI.ViewModels
         {
             this.userSettings = userSettings;
 
+            IsElevated = UAC.IsElevated;
             WebUrlText = userSettings.Settings.SavedURL;
         }
 
@@ -50,7 +51,7 @@ namespace Lively.UI.WinUI.ViewModels
         [ObservableProperty]
         private string errorMessage;
 
-        public bool IsElevated { get; } = UAC.IsElevated;
+        public bool IsElevated { get; }
 
         private RelayCommand _browseWebCommand;
         public RelayCommand BrowseWebCommand => _browseWebCommand ??= new RelayCommand(WebBrowseAction);

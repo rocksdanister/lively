@@ -1211,4 +1211,10 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="RunningAsAdminWarning.Message" xml:space="preserve">
     <value>Some functionalities may not be available when run as administrator</value>
   </data>
+  <data name="DescriptionDownloadRequired.Text" xml:space="preserve">
+    <value>Additional files need to be downloaded for this feature</value>
+  </data>
+  <data name="TitleDownloadRequired.Text" xml:space="preserve">
+    <value>Download Required</value>
+  </data>
 </root>
