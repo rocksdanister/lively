@@ -333,7 +333,7 @@ namespace Lively.UI.WinUI
                     break;
                 case WallpaperCreateType.depthmap:
                     {
-                        filePath ??= await FilePickerUtil.PickSingleFileUwp(LocalizationUtil.SupportedFileDialogFilter(WallpaperType.picture));
+                        filePath ??= await FilePickerUtil.PickSingleFile(WallpaperType.picture);
                         if (filePath is not null)
                         {
                             var result = await dialogService.ShowDepthWallpaperDialog(filePath);

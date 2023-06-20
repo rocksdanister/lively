@@ -205,6 +205,7 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                     var panel = new StackPanel()
                     {
                         Name = item.Key,
+                        Margin = margin,
                         Orientation = Orientation.Horizontal
                     };
                     var colorPickerBtn = new ColorPickerButton()

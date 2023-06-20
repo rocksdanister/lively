@@ -12,6 +12,7 @@ using Lively.ML.Helpers;
 using Lively.Models;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
@@ -163,6 +164,7 @@ namespace Lively.UI.WinUI.ViewModels
                 AppVersion = "2.0.6.6",
                 Preview = "preview.gif",
                 Thumbnail = "thumbnail.jpg",
+                Tags = new() {"depth", "depthmap"},
                 Arguments = string.Empty,
             });
 
@@ -207,6 +209,8 @@ namespace Lively.UI.WinUI.ViewModels
                         //    //ignore, will get deleted on restart
                         //}
                     }
+                    else
+                        PreviewText = i18n.GetString("TextError");
                 });
             };
 

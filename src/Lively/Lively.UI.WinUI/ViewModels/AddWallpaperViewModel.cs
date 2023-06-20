@@ -87,9 +87,7 @@ namespace Lively.UI.WinUI.ViewModels
         private async Task FileBrowseAction()
         {
             ErrorMessage = null;
-            var files = IsElevated ?
-                FilePickerUtil.PickMultipleFileNative(LocalizationUtil.SupportedFileDialogFilterNative(true)) :
-                await FilePickerUtil.PickMultipleFileUwp(LocalizationUtil.SupportedFileDialogFilter(true).ToArray());
+            var files = await FilePickerUtil.PickLivelyWallpaperMultipleFile();
 
             if (files.Count > 0)
             {
