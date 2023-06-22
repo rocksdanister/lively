@@ -7,7 +7,7 @@
     <StartupObject></StartupObject>
     <ApplicationIcon>appicon.ico</ApplicationIcon>
     <ApplicationManifest>app.manifest</ApplicationManifest>
-    <AssemblyVersion>2.0.6.6</AssemblyVersion>
+    <AssemblyVersion>2.0.6.9</AssemblyVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

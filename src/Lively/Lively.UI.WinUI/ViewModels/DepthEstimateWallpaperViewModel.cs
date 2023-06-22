@@ -33,16 +33,19 @@ namespace Lively.UI.WinUI.ViewModels
         private readonly IDownloadHelper downloader;
         private readonly LibraryViewModel libraryVm;
         private readonly IUserSettingsClient userSettings;
+        private readonly IDesktopCoreClient desktopCore;
 
         public DepthEstimateWallpaperViewModel(IDepthEstimate depthEstimate,
             IDownloadHelper downloader,
             LibraryViewModel libraryVm,
-            IUserSettingsClient userSettings)
+            IUserSettingsClient userSettings,
+            IDesktopCoreClient desktopCore)
         {
             this.depthEstimate = depthEstimate;
             this.downloader = downloader;
             this.libraryVm = libraryVm;
             this.userSettings = userSettings;
+            this.desktopCore = desktopCore;
 
             i18n = ResourceLoader.GetForViewIndependentUse();
 
@@ -89,99 +92,116 @@ namespace Lively.UI.WinUI.ViewModels
 
         private bool _canRunCommand = false;
         private RelayCommand _runCommand;
-        public RelayCommand RunCommand => _runCommand ??= new RelayCommand(async() => await PredictDepth(), () => _canRunCommand);
+        public RelayCommand RunCommand => _runCommand ??= new RelayCommand(async() => await CreateDepthWallpaper(), () => _canRunCommand);
 
         private bool _canDownloadModelCommand = true;
         private RelayCommand _downloadModelCommand;
         public RelayCommand DownloadModelCommand => _downloadModelCommand ??= new RelayCommand(async() => await DownloadModel(), () => _canDownloadModelCommand);
 
+        private bool _canCancelCommand = true;
         private RelayCommand _cancelCommand;
-        public RelayCommand CancelCommand => _cancelCommand ??= new RelayCommand(CancelOperations);
+        public RelayCommand CancelCommand => _cancelCommand ??= new RelayCommand(CancelOperations, () => _canCancelCommand);
 
-        private async Task PredictDepth()
+        private async Task CreateDepthWallpaper()
         {
+            var templateDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "WallpaperTemplates", "depthmap");
+            var destDir = Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperInstallDir, Path.GetRandomFileName());
+            var depthImagePath = Path.Combine(destDir, "media", "depth.jpg");
+            var inputImageCopyPath = Path.Combine(destDir, "media", "image.jpg");
+            var inputImagePath = SelectedImage;
+
             try
             {
                 IsRunning = true;
                 _canRunCommand = false;
                 RunCommand.NotifyCanExecuteChanged();
+                _canCancelCommand = false;
+                CancelCommand.NotifyCanExecuteChanged();
                 PreviewText = i18n.GetString("DescriptionDepthApprox/Content");
 
-                if (!Constants.MachineLearning.MiDaSPath.Equals(depthEstimate.ModelPath, StringComparison.Ordinal))
-                    depthEstimate.LoadModel(Constants.MachineLearning.MiDaSPath);
-                var output = depthEstimate.Run(SelectedImage);
-                await Task.Delay(1500);
+                await Task.Run(async() =>
+                {
+                    using var inputImage = new MagickImage(inputImagePath);
+                    if (inputImage.Width > 3840)
+                    {
+                        //Resize input for performance and memory
+                        inputImage.Resize(new MagickGeometry()
+                        {
+                            Width = 3840,
+                            IgnoreAspectRatio = false
+                        });
+                    }
 
-                using var img = ImageUtil.FloatArrayToMagickImageResize(output.Depth, output.Width, output.Height, output.OriginalWidth, output.OriginalHeight);
-                var tempImgPath = Path.Combine(Constants.CommonPaths.TempDir, Path.GetRandomFileName() + ".jpg");
-                img.Write(tempImgPath);
-                PreviewImage = tempImgPath;
+                    if (!Constants.MachineLearning.MiDaSPath.Equals(depthEstimate.ModelPath, StringComparison.Ordinal))
+                        depthEstimate.LoadModel(Constants.MachineLearning.MiDaSPath);
+                    var depthOutput = depthEstimate.Run(inputImagePath);
+                    //Resize depth to same size as input
+                    using var depthImage = ImageUtil.FloatArrayToMagickImage(depthOutput.Depth, depthOutput.Width, depthOutput.Height);
+                    depthImage.Resize(new MagickGeometry(inputImage.Width, inputImage.Height) { IgnoreAspectRatio = true });
+
+                    //Create wallpaper from template
+                    FileOperations.DirectoryCopy(templateDir, destDir, true);
+                    await inputImage.WriteAsync(inputImageCopyPath);
+                    await depthImage.WriteAsync(depthImagePath);
+                    //Generate wallpaper metadata
+                    inputImage.Resize(new MagickGeometry()
+                    {
+                        Width = 480,
+                        Height = 270,
+                        IgnoreAspectRatio = false,
+                        FillArea = false
+                    });
+                    await inputImage.WriteAsync(Path.Combine(destDir, "thumbnail.jpg"));
+                    JsonStorage<ILivelyInfoModel>.StoreData(Path.Combine(destDir, "LivelyInfo.json"), new LivelyInfoModel()
+                    {
+                        Title = Path.GetFileNameWithoutExtension(inputImagePath),
+                        Desc = i18n.GetString("DescriptionDepthWallpaperTemplate/Content"),
+                        Type = WallpaperType.web,
+                        IsAbsolutePath = false,
+                        FileName = "index.html",
+                        Contact = "https://github.com/rocksdanister/depthmap-wallpaper",
+                        License = "See License.txt",
+                        Author = "rocksdanister",
+                        AppVersion = desktopCore.AssemblyVersion.ToString(),
+                        Preview = "preview.gif",
+                        Thumbnail = "thumbnail.jpg",
+                        Tags = new() { "depth", "depthmap" },
+                        Arguments = string.Empty,
+                    });
+                });
+
+                //Preview output to user
+                await Task.Delay(500);
+                PreviewImage = depthImagePath;
                 PreviewText = i18n.GetString("TextCompleted");
                 await Task.Delay(1500);
-
-                NewWallpaper = await CreateWallpaper();
+                //Install wallpaper and close dialog
+                NewWallpaper = libraryVm.AddWallpaperFolder(destDir);
                 OnRequestClose?.Invoke(this, EventArgs.Empty);
             }
             catch (Exception ex)
             {
                 Logger.Error(ex);
                 ErrorText = $"{i18n.GetString("TextError")}: {ex.Message}";
+                PreviewText = string.Empty;
+
+                await FileOperations.DeleteDirectoryAsync(destDir, 0, 1000);
             }
             finally
             {
                 IsRunning = false;
+                _canCancelCommand = true;
+                CancelCommand.NotifyCanExecuteChanged();
             }
-        }
-
-        private async Task<ILibraryModel> CreateWallpaper()
-        {
-            var srcDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "WallpaperTemplates", "depthmap");
-            var destDir = Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperInstallDir, Path.GetRandomFileName());
-            FileOperations.DirectoryCopy(srcDir, destDir, true);
-
-            using var img = new MagickImage(SelectedImage);
-            if (Path.GetExtension(SelectedImage) != ".jpg")
-                await img.WriteAsync(Path.Combine(destDir, "media", "image.jpg"));
-            else
-                File.Copy(SelectedImage, Path.Combine(destDir, "media", "image.jpg"));
-            File.Copy(PreviewImage, Path.Combine(destDir, "media", "depth.jpg"), true);
-
-            //metadata
-            img.Resize(new MagickGeometry()
-            {
-                Width = 480,
-                Height = 270,
-                IgnoreAspectRatio = false,
-                FillArea = false
-            });
-            await img.WriteAsync(Path.Combine(destDir, "thumbnail.jpg"));
-            JsonStorage<ILivelyInfoModel>.StoreData(Path.Combine(destDir, "LivelyInfo.json"), new LivelyInfoModel()
-            {
-                Title = Path.GetFileNameWithoutExtension(SelectedImage),
-                Desc = i18n.GetString("DescriptionDepthWallpaperTemplate/Content"),
-                Type = WallpaperType.web,
-                IsAbsolutePath = false,
-                FileName = "index.html",
-                Contact = "https://github.com/rocksdanister/depthmap-wallpaper",
-                License = "See License.txt",
-                Author = "rocksdanister",
-                AppVersion = Assembly.GetEntryAssembly().GetName().Version.ToString(),
-                Preview = "preview.gif",
-                Thumbnail = "thumbnail.jpg",
-                Tags = new() {"depth", "depthmap"},
-                Arguments = string.Empty,
-            });
-
-            return libraryVm.AddWallpaperFolder(destDir);
         }
 
         private async Task DownloadModel()
         {
-            _canDownloadModelCommand = false;
-            DownloadModelCommand.NotifyCanExecuteChanged();
-
             try
             {
+                _canDownloadModelCommand = false;
+                DownloadModelCommand.NotifyCanExecuteChanged();
+
                 var uri = await GetModelUrl();
                 Directory.CreateDirectory(Constants.MachineLearning.MiDaSDir);
                 var tempPath = Path.Combine(Constants.CommonPaths.TempDir, Path.GetRandomFileName());
@@ -223,6 +243,11 @@ namespace Lively.UI.WinUI.ViewModels
             {
                 Logger.Error(ex);
                 ErrorText = $"{i18n.GetString("TextError")}: {ex.Message}";
+            }
+            finally
+            {
+                _canDownloadModelCommand = true;
+                DownloadModelCommand.NotifyCanExecuteChanged();
             }
         }
 
