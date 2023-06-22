@@ -137,18 +137,14 @@ namespace Lively.UI.WinUI.Services
                 if (e.Result == ContentDialogResult.Primary)
                     e.Cancel = true;
             };
-            vm.RunCommand.CanExecuteChanged += (s, e) =>
+            //binding canExecute not working
+            vm.RunCommand.CanExecuteChanged += (_, _) =>
             {
-                //PrimaryButtonCommand binding is not updating otherwise
-                depthDialog.IsPrimaryButtonEnabled = vm.IsModelExists && !vm.IsRunning;
+                depthDialog.IsPrimaryButtonEnabled = !vm.IsRunning;
             };
-            vm.PropertyChanged += (s, e) =>
+            vm.CancelCommand.CanExecuteChanged += (s, e) =>
             {
-                if (e.PropertyName == "IsRunning")
-                {
-                    depthDialog.IsPrimaryButtonEnabled = !vm.IsRunning;
-                    depthDialog.IsSecondaryButtonEnabled = !vm.IsRunning;
-                }
+                depthDialog.IsSecondaryButtonEnabled = !vm.IsRunning;
             };
             await depthDialog.ShowAsyncQueue();
             return vm.NewWallpaper;

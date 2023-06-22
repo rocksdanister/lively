@@ -17,7 +17,7 @@ namespace Lively.Common.Helpers.Files
                     ".mkv", ".mov", ".mp4", ".mp4v", ".mpeg4",
                     ".mpg", ".webm", ".ogm", ".ogv", ".ogx" }),
             new FileData(WallpaperType.picture, new string[] {".jpg", ".jpeg", ".png", 
-                    ".bmp", ".tif", ".tiff", ".webp" }),
+                    ".bmp", ".tif", ".tiff", ".webp", ".jfif" }),
             new FileData(WallpaperType.gif, new string[]{".gif" }),
             //new FileData(WallpaperType.heic, new string[] {".heic" }),//, ".heics", ".heif", ".heifs" }),
             new FileData(WallpaperType.web, new string[]{".html" }),

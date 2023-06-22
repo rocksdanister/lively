@@ -52,9 +52,11 @@
     <None Remove="Assets\icons8-application-window-96.png" />
     <None Remove="Assets\icons8-artificial-intelligence-100.png" />
     <None Remove="Assets\icons8-cat-back-view-64.png" />
+    <None Remove="Assets\icons8-depth-effect-96.png" />
     <None Remove="Assets\icons8-github-96.png" />
     <None Remove="Assets\icons8-google-96.png" />
     <None Remove="Assets\icons8-mail-96.png" />
+    <None Remove="Assets\icons8-panorama-96.png" />
     <None Remove="Assets\icons8-reddit-96.png" />
     <None Remove="Assets\icons8-twitter-96.png" />
     <None Remove="Assets\icons8-wallpaper-96.png" />
@@ -167,6 +169,9 @@
     <Content Update="Assets\icons8-mail-96.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Update="Assets\icons8-panorama-96.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Update="Assets\icons8-reddit-96.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -187,6 +192,9 @@
     <None Update="appicon.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Content Update="Assets\icons8-depth-effect-96.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Page Update="Views\Pages\AddWallpaperCreateView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
