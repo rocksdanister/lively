@@ -1216,10 +1216,10 @@ Edge - веб-двигун з Windows 10 WebView.</value>
     <value>Деякі функції можуть бути недоступними при запуску з правами адміністратора</value>
   </data>
   <data name="DescriptionDownloadRequired.Text" xml:space="preserve">
-    <value>Additional files need to be downloaded for this feature</value>
+    <value>Необхідно завантажити додаткові файли</value>
   </data>
   <data name="TitleDownloadRequired.Text" xml:space="preserve">
-    <value>Download Required</value>
+    <value>Потрібне завантаження</value>
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
     <value>Завантажити</value>
